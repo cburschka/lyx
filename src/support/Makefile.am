@@ -2,11 +2,11 @@ include $(top_srcdir)/config/common.am
 
 SUBDIRS = . tests
 
-noinst_LTLIBRARIES = libsupport.la
-
-CLEANFILES += path_defines.C
+CLEANFILES += $(BUILT_SOURCES)
 
 EXTRA_DIST = package.C.in os_unix.C os_win32.C os_os2.C
+
+noinst_LTLIBRARIES = libsupport.la
 
 if USE_COMPRESSION
 COMPRESSION = gzstream.C gzstream.h

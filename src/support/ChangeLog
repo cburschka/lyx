@@ -1,3 +1,7 @@
+2005-02-25  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Makefile.am (CLEANFILES): clean generated files
+
 2005-02-17  Angus Leeming  <leeming@lyx.org>
 
 	* copy.C (copy): Pass the ios::in flag to the ifstream constructor.

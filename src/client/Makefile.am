@@ -1,5 +1,7 @@
 include $(top_srcdir)/config/common.am
 
+CLEANFILES += $(man_MANS)
+
 EXTRA_DIST = lyxclient.man
 
 man_MANS = lyxclient.1

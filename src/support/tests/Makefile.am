@@ -22,7 +22,7 @@ lstrings_SOURCES = \
 	lstrings.C \
 	boost.C
 
-regfiles: ${check_PROGRAMS}
+makeregfiles: ${check_PROGRAMS}
 	for all in ${check_PROGRAMS} ; do \
 		./$$all > ${srcdir}/regfiles/$$all ; \
 	done
