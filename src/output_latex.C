@@ -190,8 +190,9 @@ TeXEnvironment(Buffer const & buf,
 		texrow.newline();
 	}
 
-	lyxerr[Debug::LATEX] << "TeXEnvironment...done " << &*par << endl;
-	return par;  // ale970302
+	if (par != paragraphs.end() && lyxerr.debugging(Debug::LATEX))
+		lyxerr << "TeXEnvironment...done " << &*par << endl;
+	return par;
 }
 
 
@@ -416,7 +417,7 @@ paragraphs);
 		}
 	}
 
-	if (boost::next(pit) == const_cast<ParagraphList&>(paragraphs).end()
+	if (boost::next(pit) == paragraphs.end()
 	    && language->babel() != doc_language->babel()) {
 		// Since \selectlanguage write the language to the aux file,
 		// we need to reset the language at the end of footnote or
@@ -443,7 +444,9 @@ paragraphs);
 		texrow.newline();
 	}
 
-	lyxerr[Debug::LATEX] << "TeXOnePar...done " << &*boost::next(pit) << endl;
+	if (boost::next(pit) != paragraphs.end() &&
+	    lyxerr.debugging(Debug::LATEX))
+		lyxerr << "TeXOnePar...done " << &*boost::next(pit) << endl;
 	return ++pit;
 }
 

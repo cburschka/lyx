@@ -1,3 +1,9 @@
+2005-01-20  Angus Leeming  <leeming@lyx.org>
+
+	* output_latex.C (TeXOnePar, TeXEnvironment): prevent crash when
+	printing diagnostic data by not dereferecing an iterator past the
+	end.
+
 2005-01-19  Asger Ottar Alstrup  <aalstrup@laerdal.dk>
 
 	* buffer.C (readHeader): use "&&" rather than "and".
@@ -7,7 +13,7 @@
 2005-01-19  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_main.C (error_handler, init): protect SIGHUP with
-	#ifndef _WIN32 guards.
+	#ifdef SIGHUP guards.
 
 2005-01-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
