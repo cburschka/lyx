@@ -1,4 +1,13 @@
 
+2003-10-06  André Pönitz  <poenitz@gmx.net>
+
+	* metricsinfo.C: initialize LyXFont before changiging attribute.
+	(fixes the 'math in \emph is upright' bug)
+
+2003-10-06  André Pönitz  <poenitz@gmx.net>
+
+	* tabular.[Ch]: saner reinitialization, ret rid of LyXTabular::owner_
+
 2003-10-06  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* graph.C:

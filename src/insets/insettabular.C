@@ -146,9 +146,10 @@ bool InsetTabular::hasPasteBuffer() const
 
 
 InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
-	: tabular(buf.params(), this, max(rows, 1), max(columns, 1)),
+	: tabular(buf.params(), max(rows, 1), max(columns, 1)),
 	  buffer_(&buf), cursorx_(0), cursory_(0)
 {
+	tabular.setOwner(this);
 	// for now make it always display as display() inset
 	// just for test!!!
 	the_locking_inset = 0;
@@ -164,10 +165,10 @@ InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 
 
 InsetTabular::InsetTabular(InsetTabular const & tab)
-	: UpdatableInset(tab),
-		tabular(tab.buffer_->params(), this, tab.tabular),
+	: UpdatableInset(tab), tabular(tab.tabular),
 		buffer_(tab.buffer_), cursorx_(0), cursory_(0)
 {
+	tabular.setOwner(this);
 	the_locking_inset = 0;
 	old_locking_inset = 0;
 	locked = false;
@@ -2212,7 +2213,8 @@ bool InsetTabular::copySelection(BufferView * bv)
 		swap(sel_row_start, sel_row_end);
 
 	delete paste_tabular;
-	paste_tabular = new LyXTabular(bv->buffer()->params(), this, tabular);
+	paste_tabular = new LyXTabular(tabular);
+	paste_tabular->setOwner(this);
 
 	for (int i = 0; i < sel_row_start; ++i)
 		paste_tabular->deleteRow(0);
@@ -2530,18 +2532,14 @@ bool InsetTabular::insetAllowed(InsetOld::Code code) const
 
 bool InsetTabular::forceDefaultParagraphs(InsetOld const * in) const
 {
-	const int cell = tabular.getCellFromInset(in, actcell);
+	const int cell = tabular.getCellFromInset(in);
 
 	if (cell != -1)
 		return tabular.getPWidth(cell).zero();
 
 	// well we didn't obviously find it so maybe our owner knows more
-	if (owner())
-		return owner()->forceDefaultParagraphs(in);
-
-	lyxerr << "If we're here there is really something strange going on!"
-	       << endl;
-	return false;
+	BOOST_ASSERT(owner());
+	return owner()->forceDefaultParagraphs(in);
 }
 
 
@@ -2579,7 +2577,8 @@ bool InsetTabular::insertAsciiString(BufferView * bv, string const & buf,
 	if (usePaste) {
 		delete paste_tabular;
 		paste_tabular = new LyXTabular(bv->buffer()->params(),
-					       this, rows, maxCols);
+					       rows, maxCols);
+		paste_tabular->setOwner(this);
 		loctab = paste_tabular;
 		cols = 0;
 	} else {

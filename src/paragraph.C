@@ -871,7 +871,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	LyXLayout_ptr style;
 
 	// well we have to check if we are in an inset with unlimited
-	// lenght (all in one row) if that is true then we don't allow
+	// length (all in one row) if that is true then we don't allow
 	// any special options in the paragraph and also we don't allow
 	// any environment other then "Standard" to be valid!
 	bool asdefault =

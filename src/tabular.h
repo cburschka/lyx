@@ -171,14 +171,9 @@ public:
 	};
 
 	/// constructor
-	LyXTabular(BufferParams const &,
-		   InsetTabular *, int columns_arg, int rows_arg);
-	/// sort of copy constructor
-	LyXTabular(BufferParams const &,
-		   InsetTabular *, LyXTabular const &);
+	LyXTabular(BufferParams const &, int columns_arg, int rows_arg);
 	///
-	explicit
-	LyXTabular(Buffer const &, InsetTabular *, LyXLex & lex);
+	void setOwner(InsetTabular * inset);
 
 	/// Returns true if there is a topline, returns false if not
 	bool topLine(int cell, bool onlycolumn = false) const;
@@ -291,7 +286,9 @@ public:
 	int ascii(Buffer const &, std::ostream &, int const depth,
 		  bool onlydata, unsigned char delim) const;
 	///
-	bool isMultiColumn(int cell, bool real = false) const;
+	bool isMultiColumn(int cell) const;
+	///
+	bool isMultiColumnReal(int cell) const;
 	///
 	void setMultiColumn(Buffer *, int cell, int number);
 	///
@@ -369,8 +366,8 @@ public:
 	///
 	InsetText & getCellInset(int row, int column) const;
 	/// Search for \param inset in the tabular, with the
-	/// additional hint that it could be at \param maybe_cell
-	int getCellFromInset(InsetOld const * inset, int maybe_cell = -1) const;
+	/// 
+	int getCellFromInset(InsetOld const * inset) const;
 	///
 	int rows() const { return rows_; }
 	///
@@ -380,12 +377,7 @@ public:
 	/// Appends \c list with all labels found within this inset.
 	void getLabelList(Buffer const &, std::vector<string> & list) const;
 	///
-	/// recalculate the widths/heights only!
-	void reinit();
-	///
 //private:
-	///
-	mutable int cur_cell;
 	///
 	struct cellstruct {
 		///
@@ -506,15 +498,9 @@ public:
 	ltType endfoot;
 	/// endlastfoot data
 	ltType endlastfoot;
-	//
-	///
-	InsetTabular * owner_;
 
 	///
-	void init(BufferParams const &,
-		  int columns_arg, int rows_arg, LyXTabular const * lt = 0);
-	///
-	void Reinit(bool reset_widths = true);
+	void init(BufferParams const &, int rows_arg, int columns_arg);
 	///
 	void set_row_column_number_info(bool oldformat = false);
 	/// Returns true if a complete update is necessary, otherwise false
