@@ -24,7 +24,7 @@ public:
 	///
 	void Metrics(MathStyles st, int asc = 0, int des = 0);
 	///
-	void WriteNormal(ostream & os) const;
+	void WriteNormal(std::ostream & os) const;
 private:
 	///
 	int deco_;
