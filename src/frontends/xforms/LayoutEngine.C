@@ -97,7 +97,7 @@ Box::Packing Box::default_packing_ = Box::Shrink;
 
 
 Box::Box(dimension_t min_w, dimension_t min_h)
-	: visible_(false),
+	: visible_(true),
 	  min_w_(min_w),
 	  min_h_(min_h),
 	  w_(min_w),
@@ -193,7 +193,7 @@ Box::PreferedVisibility Box::preferedVisibility() const
 void Box::set(PreferedVisibility pv)
 {
 	prefered_visibility_ = pv;
-	if (pv == Invisible)
+	if (pv == Invisible && visible_)
 		hide();
 }
 
