@@ -25,9 +25,9 @@ public:
 	///
 	void Metrics(MathStyles st, int asc = 0, int des = 0);
 	///
-	void SetSpace(int sp);
+	bool isSpaceInset() const { return true; }
 	///
-	int GetSpace();
+	void incSpace();
 private:
 	///
 	int space_;

@@ -34,15 +34,14 @@ void MathSpaceInset::draw(Painter & pain, int x, int y)
 	xp[2] = x + width_ - 2;  yp[2] = y;
 	xp[3] = x + width_ - 2;  yp[3] = y - 3;
 	
-	pain.lines(xp, yp, 4, (space_) ? LColor::latex : LColor::math);
+	pain.lines(xp, yp, 4, space_ ? LColor::latex : LColor::math);
 }
 
 
 void MathSpaceInset::Write(std::ostream & os, bool /* fragile */) const
 {
-	if (space_ >= 0 && space_ < 6) {
+	if (space_ >= 0 && space_ < 6)
 		os << '\\' << latex_mathspace[space_] << ' ';
-	}
 }
 
 
@@ -54,26 +53,19 @@ void MathSpaceInset::WriteNormal(std::ostream & os) const
 
 void MathSpaceInset::Metrics(MathStyles st, int, int)
 {
-	size_ = st;
+	size_  = st;
 	width_ = space_ ? space_ * 2 : 2;
 	if (space_ > 3)
 		width_ *= 2;
 	if (space_ == 5)
 		width_ *= 2;
-	width_ += 4;
-	ascent_ = 4;
+	width_  += 4;
+	ascent_  = 4;
 	descent_ = 0;
 }
 
 
-void MathSpaceInset::SetSpace(int sp)
-{ 
-	space_ = sp;
-	Metrics(size_);
-}
-
-
-int MathSpaceInset::GetSpace()
+void MathSpaceInset::incSpace()
 {
-	return space_;
+	space_ = (space_ + 1) % 6;
 }

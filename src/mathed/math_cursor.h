@@ -26,6 +26,7 @@
 class MathInset;
 class MathFuncInset;
 class MathUpDownInset;
+class MathSpaceInset;
 class InsetFormulaBase;
 class MathArray;
 class MathXArray;
@@ -259,6 +260,8 @@ public:
 	MathInset * prevInset() const;
 	///
 	MathUpDownInset * prevUpDownInset() const;
+	///
+	MathSpaceInset * prevSpaceInset() const;
 
 	///
 	MathFuncInset * imacro;

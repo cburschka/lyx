@@ -182,6 +182,8 @@ public:
 	virtual bool isUpDownInset() const { return false; }
 	/// Identifies BigopInsets
 	virtual bool isBigopInset() const { return false; }
+	/// Identifies SpaceInsets
+	virtual bool isSpaceInset() const { return false; }
 	///
 	virtual bool isActive() const { return nargs() > 0; }
 

@@ -1103,6 +1103,14 @@ MathUpDownInset * MathCursor::prevUpDownInset() const
 }
 
 
+MathSpaceInset * MathCursor::prevSpaceInset() const
+{
+	normalize();
+	MathInset * p = array().prevInset(cursor().pos_);
+	return (p && p->isSpaceInset()) ? static_cast<MathSpaceInset *>(p) : 0;
+}
+
+
 MathArray & MathCursor::array() const
 {
 	static MathArray dummy;
