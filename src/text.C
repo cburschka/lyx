@@ -504,6 +504,8 @@ void LyXText::draw(BufferView * bview, Row const * row,
 //			tmpinset->update(bview, font, false);
 			tmpinset->draw(bview, font, offset+row->baseline(), x,
 				       cleared);
+			if (status == CHANGED_IN_DRAW)
+				UpdateInset(bview, tmpinset);
 		}
 		++vpos;
 

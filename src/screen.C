@@ -98,7 +98,13 @@ void LyXScreen::DrawFromTo(LyXText * text, int y1, int y2, int y_offset, int x_o
 	// y1 is now the real beginning of row on the screen
 	
 	while (row != 0 && y < y2) {
-		text->GetVisibleRow(owner.owner(), y+y_offset, x_offset, row, y + text->first);
+		LyXText::text_status st = text->status;
+		do {
+			text->status = st;
+			text->GetVisibleRow(owner.owner(), y+y_offset,
+					    x_offset, row, y + text->first);
+		} while (text->status == LyXText::CHANGED_IN_DRAW);
+		text->status = st;
 		y += row->height();
 		row = row->next();
 	}
@@ -121,7 +127,13 @@ void LyXScreen::DrawOneRow(LyXText * text, Row * row, long y_text,
 	if (y + row->height() > 0
 	    && y - row->height() <= long(owner.height())) {
 		// ok there is something visible
-		text->GetVisibleRow(owner.owner(), y, x_offset, row, y + text->first);
+		LyXText::text_status st = text->status;
+		do {
+			text->status = st;
+			text->GetVisibleRow(owner.owner(), y, x_offset, row,
+					    y + text->first);
+		} while (text->status == LyXText::CHANGED_IN_DRAW);
+		text->status = st;
 	}
 }
 
@@ -405,6 +417,7 @@ void LyXScreen::Update(LyXText * text, int y_offset, int x_offset)
 		       owner.workWidth(), text->refresh_row->height());
 	}
 	break;
+	case LyXText::CHANGED_IN_DRAW: // just to remove the warning
 	case LyXText::UNCHANGED:
 		// Nothing needs done
 		break;

@@ -41,7 +41,9 @@ public:
 		///
 		NEED_MORE_REFRESH,
 		///
-		NEED_VERY_LITTLE_REFRESH
+		NEED_VERY_LITTLE_REFRESH,
+		///
+		CHANGED_IN_DRAW
 	};
 
 	/// Constructor

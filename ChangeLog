@@ -1,3 +1,17 @@
+2000-07-07  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettext.C (draw): set the status of the bv->text to
+	CHANGED_IN_DRAW if top_x changed and so a reinit is necessary.
+
+	* src/screen.C (DrawOneRow): 
+	(DrawFromTo): redraw the actual row if something has changed in it
+	while drawing.
+
+	* src/text.C (draw): call an update of the toplevel-inset if something
+	has changed inside while drawing.
+
+	* src/lyxtext.h: added CHANGED_IN_DRAW status.
+
 2000-07-06  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* src/insets/insetbib.[Ch] (callback) new method, moving callback
