@@ -1,3 +1,11 @@
+2001-08-02  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* buffer.C (parseSingleLyXformat2Token): handle more latex
+	conversion cases.
+
+	* bufferview_funcs.[hC]: change function names to
+	begin with small char, adjust other files.
+
 2001-08-02  André Pönitz <poenitz@gmx.net>
 
 	* lyxfunc.C:
