@@ -35,7 +35,7 @@ MathMatrixInset::MathMatrixInset(MathMatrixInset * mt)
 	  nc_(mt->nc_), nr_(0), ws_(mt->nc_),
 	  v_align_(mt->v_align_), h_align_(mt->h_align_)
 {
-	array = *(mt->GetData());
+	array = mt->GetData();
 	if (mt->row_ != 0) {
 		MathedRowSt * ro = 0;
 		MathedRowSt * mrow = mt->row_;
@@ -84,10 +84,11 @@ void MathMatrixInset::SetAlign(char vv, string const & hh)
 
 
 // Check the number of tabs and crs
-void MathMatrixInset::setData(MathedArray * a)
+void MathMatrixInset::setData(MathedArray const & a)
 {
-	if (!a) return;
-	MathedIter it(a);
+	array = a;
+
+	MathedIter it(&array);
 	int nn = nc_ - 1;
 	nr_ = 1;
 	// count tabs per row
@@ -115,7 +116,6 @@ void MathMatrixInset::setData(MathedArray * a)
 	
 	// Automatically inserts tabs around bops
 	// DISABLED because it's very easy to insert tabs 
-	array = *a;
 }
 
 

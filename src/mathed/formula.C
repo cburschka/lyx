@@ -1224,7 +1224,7 @@ InsetFormula::LocalDispatch(BufferView * bv, int action, string const & arg)
 static
 void mathedValidate(LaTeXFeatures & features, MathParInset * par)
 {
-	MathedIter it(par->GetData());
+	MathedIter it(&par->GetData());
 
 	while (it.OK() && !(features.binom && features.boldsymbol)) {
 		if (it.IsInset()) {

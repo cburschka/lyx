@@ -63,11 +63,11 @@ public:
 	///
 	void SetFocus(int, int);
 	///
-	MathedArray * GetData();
+	MathedArray & GetData();
 	///
 	MathedRowSt * getRowSt() const;
 	///
-	void setData(MathedArray *);
+	void setData(MathedArray const &);
 	///
 	MathedTextCodes getTCode() const;
 	///

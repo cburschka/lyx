@@ -30,7 +30,7 @@ public:
 	///
 	void Metrics();
 	///
-	void setData(MathedArray *);
+	void setData(MathedArray const &);
 	///
 	void SetAlign(char, string const &);
 	///

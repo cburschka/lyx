@@ -59,14 +59,14 @@ void MathFracInset::SetStyle(short st)
 }
 
 
-void MathFracInset::SetData(MathedArray * n, MathedArray * d)
+void MathFracInset::SetData(MathedArray const & n, MathedArray const & d)
 {
 	den_->setData(d);
 	MathParInset::setData(n);
 }
 
 
-void MathFracInset::setData(MathedArray * d)
+void MathFracInset::setData(MathedArray const & d)
 {
 	if (idx_ == 0)
 		MathParInset::setData(d);
@@ -85,10 +85,10 @@ void MathFracInset::GetXY(int & x, int & y) const
 }
 
 
-MathedArray * MathFracInset::GetData()
+MathedArray & MathFracInset::GetData()
 {
 	if (idx_ == 0)
-		return &array;
+		return array;
 	else
 		return den_->GetData();
 }

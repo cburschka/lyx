@@ -48,7 +48,7 @@ MathedInset * MathRootInset::Clone()
 }
 
 
-void MathRootInset::setData(MathedArray * d)
+void MathRootInset::setData(MathedArray const & d)
 {
 	if (idx_ == 1)
 		MathParInset::setData(d);
@@ -77,10 +77,10 @@ void MathRootInset::GetXY(int & x, int & y) const
 }
 
 
-MathedArray * MathRootInset::GetData()
+MathedArray & MathRootInset::GetData()
 {
 	if (idx_ == 1)
-		return &array;
+		return array;
 	else
 		return uroot_->GetData();
 }

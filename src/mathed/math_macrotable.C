@@ -59,8 +59,8 @@ void MathMacroTable::builtinMacros()
 	MathMacroTemplate * m = new MathMacroTemplate("notin");  // this leaks
 	addTemplate(m);
 	{
-		MathedArray * array = new MathedArray; // this leaks
-		MathedIter iter(array);
+		MathedArray array;
+		MathedIter iter(&array);
 		iter.insertInset(new MathAccentInset(LM_in, LM_TC_BOPS, LM_not),
 				 LM_TC_INSET); // this leaks
 		m->setData(array);
@@ -70,8 +70,8 @@ void MathMacroTable::builtinMacros()
 	m = new MathMacroTemplate("emptyset"); // this leaks
 	addTemplate(m); 
 	{
-		MathedArray * array = new MathedArray; // this leaks
-		MathedIter iter(array);
+		MathedArray array;
+		MathedIter iter(&array);
 		iter.insertInset(new MathAccentInset('O', LM_TC_RM, LM_not),
 				 LM_TC_INSET); // this leaks
 		m->setData(array);
@@ -80,8 +80,8 @@ void MathMacroTable::builtinMacros()
 	m = new MathMacroTemplate("perp"); // this leaks
 	addTemplate(m);
 	{
-		MathedArray * array = new MathedArray; // this leaks
-		MathedIter iter(array);
+		MathedArray array;
+		MathedIter iter(&array);
 		iter.insert(LM_bot, LM_TC_BOP);
 		m->setData(array);
 	}
@@ -90,21 +90,21 @@ void MathMacroTable::builtinMacros()
 	m = new MathMacroTemplate("binom", 2);
 	addTemplate(m);
 	{
-		MathedArray * array = new MathedArray; 
+		MathedArray array;
 		m->setData(array);
-		MathedIter iter(array);
+		MathedIter iter(&array);
 		inset = new MathDelimInset('(', ')');
 		iter.insertInset(inset, LM_TC_ACTIVE_INSET);
-		array = new MathedArray; 
-		MathedIter iter2(array);
+		array = MathedArray();
+		MathedIter iter2(&array);
 		MathFracInset * frac = new MathFracInset(LM_OT_ATOP);
 		iter2.insertInset(frac, LM_TC_ACTIVE_INSET);
 		inset->setData(array);
-		array = new MathedArray;
-		MathedArray * array2 = new MathedArray;  
-		MathedIter iter3(array);
+		array = MathedArray();
+		MathedArray array2;
+		MathedIter iter3(&array);
 		iter3.insertInset(m->getMacroPar(0), LM_TC_INSET);
-		MathedIter iter4(array2);
+		MathedIter iter4(&array2);
 		iter4.insertInset(m->getMacroPar(1), LM_TC_INSET);
 		frac->SetData(array, array2);
 	}

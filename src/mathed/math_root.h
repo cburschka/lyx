@@ -47,11 +47,11 @@ public:
 	///
 	void SetFocus(int, int);
 	///
-	void setData(MathedArray *);
+	void setData(MathedArray const &);
 	///
 	void GetXY(int & x, int & y) const;
 	///
-	MathedArray * GetData();
+	MathedArray & GetData();
 	///
 	bool setArgumentIdx(int i);
 	///

@@ -31,9 +31,9 @@ public:
 	///
 	virtual void UserSetSize(short);
 	/// Data is stored in a LyXArray
-	virtual void setData(MathedArray *);
+	virtual void setData(MathedArray const &);
 	///
-	virtual MathedArray * GetData();
+	virtual MathedArray & GetData();
 	/// Paragraph position
 	virtual void GetXY(int &, int &) const;
 	///

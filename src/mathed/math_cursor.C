@@ -452,7 +452,6 @@ void MathedCursor::Insert(byte c, MathedTextCodes t)
 			mt->SetStyle(LM_ST_DISPLAY);
 			mt->SetType(type);
 			mt->setData(p->GetData());
-			p->setData(0);                          // BUG duda
 			delete p;
 			par = mt;
 			p = mt;
@@ -509,7 +508,7 @@ void MathedCursor::insertInset(MathedInset * p, int t)
 	if (selection) {
 		if (MathIsActive(t)) {
 			SelCut();
-			static_cast<MathParInset*>(p)->setData(&selarray);
+			static_cast<MathParInset*>(p)->setData(selarray);
 		} else
 			SelDel();
 	}
@@ -841,11 +840,11 @@ bool MathedCursor::pullArg()
 		if (!p) 
 			return false;
 		
-		MathedArray * a = p->GetData();
+		MathedArray a = p->GetData();
 		p->clear();
 		Delete();
-		if (!a->empty()) {
-			cursor->Merge(a);
+		if (!a.empty()) {
+			cursor->Merge(&a);
 			cursor->Adjust();
 		}
 

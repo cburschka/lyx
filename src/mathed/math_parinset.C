@@ -46,15 +46,9 @@ MathedInset * MathParInset::Clone()
 }
 
 
-void MathParInset::setData(MathedArray * a)
+void MathParInset::setData(MathedArray const & a)
 {
-	if (!a) {
-		lyxerr << "can't set Data from NULL pointer" << endl;
-		array = MathedArray();
-		return;
-	}
-
-	array = *a;
+	array = a;
 	
 	// A standard paragraph shouldn't have any tabs nor CRs.
 	MathedIter it(&array);
@@ -430,9 +424,9 @@ bool MathParInset::Permit(short f) const
 }
 
 
-MathedArray * MathParInset::GetData()
+MathedArray & MathParInset::GetData()
 {
-	return &array;
+	return array;
 }
 
 

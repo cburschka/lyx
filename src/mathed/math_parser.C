@@ -469,7 +469,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	  macro = new MathMacroTemplate(name, na);
 	  flags = FLAG_BRACE|FLAG_BRACE_LAST;
 	  *mtx = macro;
-	  macro->setData(array);
+	  macro->setData(*array);
 	  break;
       }
     case LM_TK_SPECIAL:
@@ -560,7 +560,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
       {  
 	 MathParInset * p = new MathParInset(size, "", LM_OT_SCRIPT);
 	 MathedArray * ar = mathed_parse(FLAG_BRACE_OPT|FLAG_BRACE_LAST, 0);
-	 p->setData(ar);
+	 p->setData(*ar);
 //	 lyxerr << "UP[" << p->GetStyle() << "]" << endl;
 	 data.insertInset(p, LM_TC_UP);
 	 break;
@@ -569,7 +569,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
       {
 	 MathParInset * p = new MathParInset(size, "", LM_OT_SCRIPT);
 	 MathedArray * ar = mathed_parse(FLAG_BRACE_OPT|FLAG_BRACE_LAST, 0);
-	 p->setData(ar);
+	 p->setData(*ar);
 	 data.insertInset(p, LM_TC_DOWN);
 	 break;
       }
@@ -672,7 +672,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	 MathFracInset * fc = new MathFracInset(fractype);
 	 MathedArray * num = mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST);
 	 MathedArray * den = mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST);
-	 fc->SetData(num, den);
+	 fc->SetData(*num, *den);
 	 data.insertInset(fc, LM_TC_ACTIVE_INSET);
 	 break;
       }
@@ -685,13 +685,13 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	 if (c == '[') {
 	     rt = new MathRootInset(size);
 	     rt->setArgumentIdx(0);
-	     rt->setData(mathed_parse(FLAG_BRACK_END, 0, &rt));
+	     rt->setData(*mathed_parse(FLAG_BRACK_END, 0, &rt));
 	     rt->setArgumentIdx(1);
 	 } else {
 		 yyis->putback(c);
 	     rt = new MathSqrtInset(size);
 	 }
-	 rt->setData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST, 0, &rt));
+	 rt->setData(*mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST, 0, &rt));
 	 data.insertInset(rt, LM_TC_ACTIVE_INSET);
 	 break;
       }
@@ -708,7 +708,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	 if (rgd == LM_TK_SYM || rgd == LM_TK_STR || rgd == LM_TK_BOP || rgd == LM_TK_SPECIAL)
 	   rgd = (rgd == LM_TK_SYM) ? yylval.l->id: yylval.i;	 
 	 MathDelimInset * dl = new MathDelimInset(lfd, rgd);
-	 dl->setData(a);
+	 dl->setData(*a);
 	 data.insertInset(dl, LM_TC_ACTIVE_INSET);
 //	 lyxerr << "RL[" << lfd << " " << rgd << "]";
   	 break;
@@ -736,7 +736,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
       {  
 	 MathDecorationInset * sq = new MathDecorationInset(yylval.l->id,
 							    size);
-	 sq->setData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST));
+	 sq->setData(*mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST));
 	 data.insertInset(sq, LM_TC_ACTIVE_INSET);
 	 break;
       }
@@ -781,7 +781,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	   else
 	     data.insertInset(p, p->getTCode());
 	   for (int i = 0; p->setArgumentIdx(i); ++i)
-	     p->setData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST));
+	     p->setData(*mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST));
        }
        else {
 	   MathedInset * q = new MathFuncInset(yylval.s, LM_OT_UNDEF);
@@ -802,7 +802,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 		 lyxerr << "[" << yylval.i << "]" << endl;
 	 --plevel;
 	 if (mt) { // && (flags & FLAG_END)) {
-	    mt->setData(array);
+	    mt->setData(*array);
 	    array = 0;
 	 }
 	 return array;
@@ -822,7 +822,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	    MathParInset * mm = new MathMatrixInset(nc, 0);
 	    mm->SetAlign(ar2[0], ar);
        	    data.insertInset(mm, LM_TC_ACTIVE_INSET);
-            mathed_parse(FLAG_END, mm->GetData(), &mm);
+            mathed_parse(FLAG_END, &mm->GetData(), &mm);
 	 } else if (is_eqn_type(yylval.i)) {
 	     if (plevel!= 0) {
 		 mathPrintError("Misplaced environment");
@@ -873,7 +873,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	     if (p) {
 		 data.insertInset(p, p->getTCode());
 		 p->setArgumentIdx(0);
-		 mathed_parse(FLAG_END, p->GetData(), reinterpret_cast<MathParInset**>(&p));
+		 mathed_parse(FLAG_END, &p->GetData(), reinterpret_cast<MathParInset**>(&p));
 //		 for (int i = 0; p->setArgumentIdx(i); ++i)
 //		   p->SetData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST));
 	     } else 

@@ -195,7 +195,7 @@ void MathedXIter::SetData(MathParInset * pp)
 {
 	p_ = pp;
 	x_ = y_ = 0;
-	array = p_->GetData();
+	array = &p_->GetData();
 	ncols = p_->GetColumns();
 	crow_ = p_->getRowSt();
 	if (p_->Permit(LMPF_ALLOW_CR))
@@ -209,7 +209,7 @@ void MathedXIter::SetData(MathParInset * pp)
 	} 
 	if (!array) {
 		array = new MathedArray; // this leaks
-		p_->setData(array);
+		p_->setData(*array);
 	}
 	size_ = p_->GetStyle();
 	Reset();

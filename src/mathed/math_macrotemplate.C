@@ -45,12 +45,7 @@ MathMacroTemplate::MathMacroTemplate(string const & nm, int na, int flg):
 
 
 MathMacroTemplate::~MathMacroTemplate()
-{
-	// prevent to delete already deleted objects
-	for (int i = 0; i < nargs_; ++i) {
-		args_[i].setData(0);
-	}
-}
+{}
 
 
 void MathMacroTemplate::setEditMode(bool ed)
@@ -154,7 +149,7 @@ void MathMacroTemplate::WriteDef(ostream & os, bool fragile)
 
 void MathMacroTemplate::setArgument(MathedArray * a, int i)
 {
-	args_[i].setData(a);
+	args_[i].setData(*a);
 }
 
 

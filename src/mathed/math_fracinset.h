@@ -22,12 +22,12 @@ public:
 	///
 	void Metrics();
 	
-	/** This does the same that SetData(MathedArray*) but for both
+	/** This does the same that SetData(MathedArray const &) but for both
 	    numerator and denominator at once.
 	*/
-	void SetData(MathedArray *, MathedArray *);
+	void SetData(MathedArray const &, MathedArray const &);
 	///
-	void setData(MathedArray *);
+	void setData(MathedArray const &);
 	///
 	void GetXY(int & x, int & y) const;
 	///
@@ -35,7 +35,7 @@ public:
 	///
 	bool Inside(int, int);
 	///
-	MathedArray * GetData();
+	MathedArray & GetData();
 	///
 	bool setArgumentIdx(int i); // was bool Up/down(void);
 	///
