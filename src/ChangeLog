@@ -1,5 +1,7 @@
 2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* pch.h: dont include <boost/function/function0.hpp>
+
 	* Makefile.am (lyx_SOURCES): remove ShareContainer.h
 
 	* paragraph_pimpl.h: remove usage of ShareContainer

@@ -1,6 +1,6 @@
 #include <config.h>
 
-#include <boost/function/function0.hpp>
+#include <boost/function.hpp>
 #include <boost/scoped_ptr.hpp>
 #include <boost/shared_ptr.hpp>
 #include <boost/signals/signal0.hpp>

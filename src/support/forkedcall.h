@@ -28,7 +28,6 @@
 
 #include <boost/shared_ptr.hpp>
 #include <boost/signals/signal2.hpp>
-#include <boost/function/function0.hpp>
 
 #include <sys/types.h>
 

@@ -7,7 +7,6 @@
 #include <boost/cregex.hpp>
 #include <boost/current_function.hpp>
 // #include <boost/format.hpp> // mult def symbols problem (_1, _2 etc)
-#include <boost/function/function0.hpp>
 #include <boost/function.hpp>
 #include <boost/iterator/indirect_iterator.hpp>
 #include <boost/optional.hpp>

@@ -24,8 +24,8 @@
 #ifndef GRAPHICSIMAGE_H
 #define GRAPHICSIMAGE_H
 
+#include <boost/function.hpp>
 #include <boost/shared_ptr.hpp>
-#include <boost/function/function0.hpp>
 #include <boost/signals/signal1.hpp>
 
 #include <vector>
@@ -43,12 +43,12 @@ public:
 	 */
 	typedef boost::shared_ptr<Image> ImagePtr;
 	///
-	static boost::function0<ImagePtr> newImage;
+	static boost::function<ImagePtr()> newImage;
 
 	/// Return the list of loadable formats.
 	typedef std::vector<std::string> FormatList;
 	///
-	static boost::function0<FormatList> loadableFormats;
+	static boost::function<FormatList()> loadableFormats;
 
 	///
 	virtual ~Image() {}

@@ -314,17 +314,17 @@ enum TransformID {
 };
 
 
-typedef boost::function1<TransformOption::ptr_type, ClipData>
+typedef boost::function<TransformOption::ptr_type(ClipData)>
 	ClipOptionFactory;
-typedef boost::function1<TransformOption::ptr_type, std::string>
+typedef boost::function<TransformOption::ptr_type(std::string)>
 	ExtraOptionFactory;
-typedef boost::function1<TransformOption::ptr_type, ResizeData>
+typedef boost::function<TransformOption::ptr_type(ResizeData)>
 	ResizeOptionFactory;
-typedef boost::function1<TransformOption::ptr_type, RotationData>
+typedef boost::function<TransformOption::ptr_type(RotationData)>
 	RotationOptionFactory;
-typedef boost::function1<TransformCommand::ptr_type, ResizeData>
+typedef boost::function<TransformCommand::ptr_type(ResizeData)>
 	ResizeCommandFactory;
-typedef boost::function1<TransformCommand::ptr_type, RotationData>
+typedef boost::function<TransformCommand::ptr_type(RotationData)>
 	RotationCommandFactory;
 
 

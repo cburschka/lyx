@@ -1,3 +1,11 @@
+2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* pch.h: include <boost/function.hpp> instead of
+	<boost/function/function0.hpp>
+
+	* GraphicsImage.C: Use preferred calling of boost::function
+	* GraphicsImage.h: ditto
+
 2004-08-16  José Matos  <jamatos@lyx.org>
 
 	* PreviewLoader.C (Impl::startLoading): remove space at end of line.

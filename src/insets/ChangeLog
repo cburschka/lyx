@@ -1,3 +1,7 @@
+2004-09-26  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* ExternalTransforms.h: User preferred calling of Boost.Function
+
 2004-09-24  Andreas Vox  <vox@isp.uni-luebeck.de>
 
 	* insetref.C (docbook): fixing problem where Docbook XML output
@@ -28,7 +32,7 @@
 
 	* pch.h: new file
 
-	* Makefile.am: support pch 
+	* Makefile.am: support pch
 
 2004-08-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
