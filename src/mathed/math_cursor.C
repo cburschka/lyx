@@ -1314,13 +1314,15 @@ void MathCursor::interpret(string const & s)
 
 	if (isalpha(c) && (lastcode_ == LM_TC_GREEK || lastcode_ == LM_TC_GREEK1)) {
 		static char const greekl[][26] =
-			{"alpha", "beta", "chi", "delta", "epsilon", "phi", "gamma", "eta",
-			 "iota", "", "kappa", "lambda", "mu", "nu", "omikron", "pi", "omega",
-			 "rho", "sigma", "tau", "theta", "", "", "xi", "ypsilon", "zeta"};
+			{"alpha", "beta", "chi", "delta", "epsilon", "phi",
+			 "gamma", "eta", "iota", "", "kappa", "lambda", "mu",
+			 "nu", "omikron", "pi", "omega", "rho", "sigma",
+			 "tau", "upsilon", "theta", "", "xi", "upsilon", "zeta"};
 		static char const greeku[][26] =
-			{"Alpha", "Beta", "Chi", "Delta", "Epsilon", "Phi", "Gamma", "Eta",
-			 "Iota", "", "Kappa", "Lambda", "Mu", "Nu", "Omikron", "Pi", "Omega",
-			 "Rho", "Sigma", "Tau", "Theta", "", "", "xi", "Ypsilon", "Zeta"};
+			{"Alpha", "Beta", "Chi", "Delta", "Epsilon", "Phi",
+			 "Gamma", "Eta", "Iota", "", "Kappa", "Lambda", "Mu",
+			 "Nu", "Omikron", "Pi", "Omega", "Rho", "Sigma", "Tau",
+			 "Upsilon", "Theta", "", "xi", "Upsilon", "Zeta"};
 	
 		latexkeys const * l = 0;	
 		if ('a' <= c && c <= 'z')
