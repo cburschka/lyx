@@ -9,21 +9,21 @@
 Input stdclass.inc
 
 # Global parameters.
-Sides		2
-PageStyle	Headings
+Sides           2
+PageStyle       Headings
 
 # There is no abstract environment in book.cls
-NoStyle	Abstract
-	
+NoStyle Abstract
+	      
 # a few changes to the bibliography
 Style Bibliography
-  TopSep		4
-  LabelString		Bibliography
-  # label font definition
-  LabelFont 
-    Series		Bold
-    Size		Huge
-  EndFont
+	TopSep                4
+	LabelString           Bibliography
+	# label font definition
+	LabelFont 
+	  Series              Bold
+	  Size                Huge
+	EndFont
 End
 
 

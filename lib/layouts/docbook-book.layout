@@ -7,11 +7,11 @@
 # Input general definitions
 Input db_stdclass.inc
 
-MaxCounter		Counter_Chapter
+MaxCounter              Counter_Chapter
 
 # Title style definition
 Style Title
-  LatexType		Command
-  LatexName		bookinfo
-  LatexParam		"1|"
+	LatexType             Command
+	LatexName             bookinfo
+	LatexParam            "1|"
 End

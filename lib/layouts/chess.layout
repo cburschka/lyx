@@ -19,11 +19,11 @@
 # 
 
 Preamble
-  \usepackage[ps,mover]{lyxskak}
+	\usepackage[ps,mover]{lyxskak}
 
-  %%% initialize board
-  %
-  \newgame
+	%%% initialize board
+	%
+	\newgame
 
 EndPreamble
 
@@ -36,25 +36,25 @@ End
 # starting a new paragraph.
 #
 Style Mainline
-  LatexType Command
-  LatexName mainline
-  Margin Static
-  LeftMargin MMMMMM
-  Labeltype Static
-  LabelString "Mainline: "
-  Newline 0
-  PassThru 1
-  TopSep 0.0
-  ParSep 0.0
+	LatexType Command
+	LatexName mainline
+	Margin Static
+	LeftMargin MMMMMM
+	Labeltype Static
+	LabelString "Mainline: "
+	Newline 0
+	PassThru 1
+	TopSep 0.0
+	ParSep 0.0
 
-  LabelFont
-    Color blue
-    Series bold
-  EndFont
+	LabelFont
+	  Color blue
+	  Series bold
+	EndFont
 
-  TextFont
-    Color blue
-  EndFont
+	TextFont
+	  Color blue
+	EndFont
 End
 
 # This is a variation. It shows up in the normal fashion (styleB).
@@ -62,134 +62,134 @@ End
 # as talked about in the skak documentation.
 #
 Style Variation
-  CopyStyle Mainline
-  LatexType Command
-  LatexName lyxvariation[1]
-  LabelString "Variation: "
-  LeftMargin MMMMMMMM
+	CopyStyle Mainline
+	LatexType Command
+	LatexName lyxvariation[1]
+	LabelString "Variation: "
+	LeftMargin MMMMMMMM
 End
 
 # This is a subvariation. 
 #
 Style SubVariation
-  CopyStyle Variation
-  LatexName lyxvariation[2]
-  LabelString "Subvariation: "
-  LeftMargin MMMMMMMMMMM
+	CopyStyle Variation
+	LatexName lyxvariation[2]
+	LabelString "Subvariation: "
+	LeftMargin MMMMMMMMMMM
 End
 
 # This is a subsubvariation. 
 #
 Style SubVariation2
-  CopyStyle Variation
-  LatexName lyxvariation[3]
-  LabelString "Subvariation(2): "
-  LeftMargin MMMMMMMMMMMMMM
+	CopyStyle Variation
+	LatexName lyxvariation[3]
+	LabelString "Subvariation(2): "
+	LeftMargin MMMMMMMMMMMMMM
 End
 
 # This is a subsubsubvariation. 
 #
 Style SubVariation3
-  CopyStyle Variation
-  LatexName lyxvariation[4]
-  LabelString "Subvariation(3): "
-  LeftMargin MMMMMMMMMMMMMMMMM
+	CopyStyle Variation
+	LatexName lyxvariation[4]
+	LabelString "Subvariation(3): "
+	LeftMargin MMMMMMMMMMMMMMMMM
 End
 
 # This is a subsubsubsubvariation. 
 #
 Style SubVariation4
-  CopyStyle Variation
-  LatexName lyxvariation[5]
-  LabelString "Subvariation(4): "
-  LeftMargin MMMMMMMMMMMMMMMMMMMM
+	CopyStyle Variation
+	LatexName lyxvariation[5]
+	LabelString "Subvariation(4): "
+	LeftMargin MMMMMMMMMMMMMMMMMMMM
 End
 
 # This is a subsubsubsubsubvariation. 
 #
 Style SubVariation5
-  CopyStyle Variation
-  LatexName lyxvariation[6]
-  LabelString "Subvariation(5): "
-  LeftMargin MMMMMMMMMMMMMMMMMMMMMMM
+	CopyStyle Variation
+	LatexName lyxvariation[6]
+	LabelString "Subvariation(5): "
+	LeftMargin MMMMMMMMMMMMMMMMMMMMMMM
 End
 
 # Same as mainline, but it does not print the moves (only updates the
 # board position.
 #
 Style HideMoves
-  CopyStyle Mainline
-  LatexName hidemoves
-  LabelString "HideMoves: "
+	CopyStyle Mainline
+	LatexName hidemoves
+	LabelString "HideMoves: "
 End
 
 # This simply prints a block left chessboard.
 #
 Style ChessBoard
-  CopyStyle Mainline
-  LatexType Command
-  LatexName showboard
-  LabelString "[chessboard]"
-  KeepEmpty 1
-  LabelFont
-    Color red
-  EndFont
+	CopyStyle Mainline
+	LatexType Command
+	LatexName showboard
+	LabelString "[chessboard]"
+	KeepEmpty 1
+	LabelFont
+	  Color red
+	EndFont
 End
 
 # This prints a centered chessboard.
 #
 Style BoardCentered
-  CopyStyle Mainline
-  LatexType Command
-  LatexName [\showboard\]
-  LeftMargin MMMMMMMMMMMMM
-  LabelString "[centered board]"
-  KeepEmpty 1
-  LabelFont
-    Color red
-  EndFont
+	CopyStyle Mainline
+	LatexType Command
+	LatexName [\showboard\]
+	LeftMargin MMMMMMMMMMMMM
+	LabelString "[centered board]"
+	KeepEmpty 1
+	LabelFont
+	  Color red
+	EndFont
 End
 
 # This should be a list of comma-separated chessboard squares.
 # Should be placed after a ChessBoard or BoardCentered.
 #
 Style HighLight
-  CopyStyle Mainline
-  LatexType Command
-  LatexName lyxhighlight
-  LeftMargin MMMMMMM
-  LabelString "Highlights: "
-  LabelFont
-    Color black
-    Series Bold
-    Shape SmallCaps
-  EndFont
-  TextFont
-    Series Bold
-    Color black
-  EndFont
+	CopyStyle Mainline
+	LatexType Command
+	LatexName lyxhighlight
+	LeftMargin MMMMMMM
+	LabelString "Highlights: "
+	LabelFont
+	  Color black
+	  Series Bold
+	  Shape SmallCaps
+	EndFont
+	TextFont
+	  Series Bold
+	  Color black
+	EndFont
 End
 
 # This should be a list of two squares with an ascii arrow (a1->c3)
 # Should be placed after a ChessBoard or BoardCentered.
 #
 Style Arrow
-  CopyStyle HighLight
-  LatexType Command
-  LatexName lyxprintarrow
-  LeftMargin MMMMMMM
-  LabelString "Arrow: "
+	CopyStyle HighLight
+	LatexType Command
+	LatexName lyxprintarrow
+	LeftMargin MMMMMMM
+	LabelString "Arrow: "
 End
 
 # This should be a list of two chessboard squares (again, like g1->e2)
 # Should be placed after a ChessBoard or BoardCentered.
 #
 Style KnightMove
-  CopyStyle Arrow
-  LatexType Command
-  LatexName lyxknightmove
-  LeftMargin MMMMMMM
-  LabelString "KnightMove: "
+	CopyStyle Arrow
+	LatexType Command
+	LatexName lyxknightmove
+	LeftMargin MMMMMMM
+	LabelString "KnightMove: "
 End
 
 Input article.layout

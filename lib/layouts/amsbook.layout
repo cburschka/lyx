@@ -10,25 +10,25 @@
 
 # General textclass parameters
 # Description          "book (AMS)"
-Columns			1
-Sides			2
-PageStyle		Headers
-MaxCounter		Counter_Chapter
+Columns                 1
+Sides                   2
+PageStyle               Headers
+MaxCounter              Counter_Chapter
 
 ClassOptions
-  FontSize   8|9|10|11|12
+	FontSize   8|9|10|11|12
 End  
 
 # Standard style definition
 Style Standard
-  Margin  		Static
-  LatexType 		Paragraph
-  LatexName 		dummy
-  ParIndent		MM
-  ParSkip 		0.4
-  Align 		Block
-  AlignPossible 	Block, Left, Right, Center
-  LabelType 		No_Label
+	Margin                Static
+	LatexType             Paragraph
+	LatexName             dummy
+	ParIndent             MM
+	ParSkip               0.4
+	Align                 Block
+	AlignPossible         Block, Left, Right, Center
+	LabelType             No_Label
 End
 
 
@@ -39,33 +39,33 @@ Input stdsections.inc
 
 # Redefine some of the section styles.
 Style Section
-  Align			Center
-  AlignPossible		Block, Center, Left
+	Align                 Center
+	AlignPossible         Block, Center, Left
 
-  # standard font definition
-  Font
-    Series 		Medium
-    Shape		Smallcaps
-    Size		Large
-  EndFont
+	# standard font definition
+	Font
+	  Series              Medium
+	  Shape               Smallcaps
+	  Size                Large
+	EndFont
 End
 
 # Subsection-numbered style definition
 Style Subsection
-  # standard font definition
-  Font
-    Series 		Bold
-    Size		Normal
-  EndFont
+	# standard font definition
+	Font
+	  Series              Bold
+	  Size                Normal
+	EndFont
 End
 
 # Subsubsection-numbered style definition
 Style Subsubsection
-  # standard font definition
-  Font
-    Shape 		Italic
-    Size		Normal
-  EndFont
+	# standard font definition
+	Font
+	  Shape               Italic
+	  Size                Normal
+	EndFont
 End
 
 # then define the unumbered sections, based on the numbered ones.
@@ -76,11 +76,11 @@ Input stdstarsections.inc
 # of the list box ??
 
 Preamble
-  \numberwithin{section}{chapter}
-  \theoremstyle{plain}    
-  \newtheorem{thm}{Theorem}[section]
-  \numberwithin{equation}{section} %% Comment out for sequentially-numbered
-  \numberwithin{figure}{section} %% Comment out for sequentially-numbered
+	\numberwithin{section}{chapter}
+	\theoremstyle{plain}    
+	\newtheorem{thm}{Theorem}[section]
+	\numberwithin{equation}{section} %% Comment out for sequentially-numbered
+	\numberwithin{figure}{section} %% Comment out for sequentially-numbered
 EndPreamble
 
 Input lyxmacros.inc
@@ -90,7 +90,7 @@ Input amsdefs.inc
  
 Input stdlayouts.inc
 NoStyle Verse    # Although mathematicians tend to be poets at times, 
-                 # we don't need this.
+	               # we don't need this.
 NoStyle Abstract  # there are no abstract in a book.
 
 Input stdlists.inc
@@ -101,33 +101,33 @@ Input stdcounters.inc
 
 # Chapter Exercises style definition
 Style Chapter_Exercises
-  Margin		First_Dynamic
-  LatexType		Item_Environment
-  LatexName		lyxxcb
-  NextNoIndent		1
-  LeftMargin		MMN
-  LabelSep		xx
-  ParSkip		0.0
-  ItemSep		0.2
-  TopSep		0.7
-  BottomSep		0.7
-  ParSep		0.3
-  Align			Block
-  AlignPossible		Block, Left
-  LabelType		Counter_EnumI
+	Margin                First_Dynamic
+	LatexType             Item_Environment
+	LatexName             lyxxcb
+	NextNoIndent          1
+	LeftMargin            MMN
+	LabelSep              xx
+	ParSkip               0.0
+	ItemSep               0.2
+	TopSep                0.7
+	BottomSep             0.7
+	ParSep                0.3
+	Align                 Block
+	AlignPossible         Block, Left
+	LabelType             Counter_EnumI
 
-  # standard font definition
+	# standard font definition
 
-  # label font definition
-  LabelFont
-    Shape		Up
-    Series		Bold
-  EndFont
+	# label font definition
+	LabelFont
+	  Shape               Up
+	  Series              Bold
+	EndFont
 
-  Preamble
-    \newenvironment{lyxxcb}{\begin{xcb}{Exercises}\begin{enumerate}}
-                       {\end{enumerate}\end{xcb}}
-  EndPreamble
+	Preamble
+	  \newenvironment{lyxxcb}{\begin{xcb}{Exercises}\begin{enumerate}}
+	                     {\end{enumerate}\end{xcb}}
+	EndPreamble
 
 End
 

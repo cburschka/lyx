@@ -4,5 +4,5 @@
 
 # List style definition
 Style List
-  ObsoletedBy           Labeling
+	ObsoletedBy           Labeling
 End

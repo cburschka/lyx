@@ -12,20 +12,20 @@
 # There are also a few AMS environments not impletemented by Elsevier,
 # so they are not included either.
 #
-# Version 1.0	19990506 R. Pinna Inital version
-# modified 2002-04-02	Herbert Voss <voss@perce.de>
-# 	for use of BeginTitle/EndTitle
+# Version 1.0   19990506 R. Pinna Inital version
+# modified 2002-04-02   Herbert Voss <voss@perce.de>
+#       for use of BeginTitle/EndTitle
 # modified 2003-03-11 JMarc for use of TitleLatexType/TitleLatexName
 
 # General textclass parameters
-Columns		1
-Sides		2
-PageStyle	headings
-MaxCounter	Counter_Subsection
+Columns         1
+Sides           2
+PageStyle       headings
+MaxCounter      Counter_Subsection
 
 
 ClassOptions
-#  FontSize	"default"	# controlled by class
+#  FontSize     "default"       # controlled by class
 End
 
 # elsart does not use the plain old \maketitle
@@ -33,44 +33,44 @@ TitleLatexType Environment
 TitleLatexName frontmatter
 
 DefaultFont
-  Family	Roman
-  Series	Medium
-  Shape		Up
-  Size		Normal
-  Color		None
+	Family        Roman
+	Series        Medium
+	Shape         Up
+	Size          Normal
+	Color         None
 EndFont
 
 
 Style Standard
-  LatexName 	dummy
-  LatexType	Paragraph
-  Margin	Static
-  ParIndent	MM
-  ParSkip 	0.4
-  ParSep	0.4
-  TopSep	1.0
-  BottomSep	1.0
-  Align 	Block
-  AlignPossible Block, Left, Right, Center
-  LabelType 	No_Label
+	LatexName     dummy
+	LatexType     Paragraph
+	Margin        Static
+	ParIndent     MM
+	ParSkip       0.4
+	ParSep        0.4
+	TopSep        1.0
+	BottomSep     1.0
+	Align         Block
+	AlignPossible Block, Left, Right, Center
+	LabelType     No_Label
 End
 
 
 Style Keywords
-  LatexName 	keyword
-  LatexType	Environment
-  Margin	Static
-  ParIndent	MM
-  InTitle	1
-  ParSkip 	0.4
-  ParSep	0.4
-  TopSep	1.0
-  BottomSep	1.0
-  Align 	Block
-  AlignPossible Block, Left, Right, Center
-  LabelType 	No_Label
+	LatexName     keyword
+	LatexType     Environment
+	Margin        Static
+	ParIndent     MM
+	InTitle       1
+	ParSkip       0.4
+	ParSep        0.4
+	TopSep        1.0
+	BottomSep     1.0
+	Align         Block
+	AlignPossible Block, Left, Right, Center
+	LabelType     No_Label
 Font
-    Color	blue
+	  Color       blue
 EndFont
 End
 
@@ -88,142 +88,142 @@ Input stdcounters.inc
 
 # Title style definition
 Style Title
-  Margin		Static
-  LatexType		Command
-  InTitle		1
-  LatexName		title
-  NextNoIndent		1
-  ParSkip		0.4
-  TopSep		1.3
-  BottomSep		0.7
-  ParSep		0.7
-  Align			Center
-  LabelType		No_Label
+	Margin                Static
+	LatexType             Command
+	InTitle               1
+	LatexName             title
+	NextNoIndent          1
+	ParSkip               0.4
+	TopSep                1.3
+	BottomSep             0.7
+	ParSep                0.7
+	Align                 Center
+	LabelType             No_Label
 # standard font definition
-  Font 
-    Family  		Sans
-    Series 		Bold
-    Size		Largest
-  EndFont
+	Font 
+	  Family              Sans
+	  Series              Bold
+	  Size                Largest
+	EndFont
 End
 
 # Author style definition
 Style Author
-  Margin		Static
-  LatexType		Command
-  InTitle		1
-  LatexName		author
-  NextNoIndent		1
-  ParSkip		0.4
-  TopSep		0.7
-  BottomSep		0.7
-  ItemSep		0
-  ParSep		0
-  Align			Center
-  AlignPossible		Center
-  # standard font definition
-  Font 
-    Series 		Bold
-  EndFont
+	Margin                Static
+	LatexType             Command
+	InTitle               1
+	LatexName             author
+	NextNoIndent          1
+	ParSkip               0.4
+	TopSep                0.7
+	BottomSep             0.7
+	ItemSep               0
+	ParSep                0
+	Align                 Center
+	AlignPossible         Center
+	# standard font definition
+	Font 
+	  Series              Bold
+	EndFont
 End
 
 # Author Adress
 Style Author_Address
-  Margin		Static
-  LatexType		Command
-  InTitle		1
-  LatexName		address
-  Align			Center
-  AlignPossible		Center
-  Labeltype             Static
-  LabelString           "Address: "
-  LabelFont
-    Shape		Italic
-  EndFont
+	Margin                Static
+	LatexType             Command
+	InTitle               1
+	LatexName             address
+	Align                 Center
+	AlignPossible         Center
+	Labeltype             Static
+	LabelString           "Address: "
+	LabelFont
+	  Shape               Italic
+	EndFont
 End
 
 Style Author_Email
-  Margin		Static
-  LatexType		Command
-  InTitle		1
-  PassThru              1
-  LatexName             ead
-  Align			Center
-  AlignPossible		Center
-  Labeltype             Static
-  LabelString           "Email: "
-  TextFont
-    Family              Typewriter
-  EndFont
-  LabelFont
-    Shape		Italic
-    Family              Roman
-  EndFont
+	Margin                Static
+	LatexType             Command
+	InTitle               1
+	PassThru              1
+	LatexName             ead
+	Align                 Center
+	AlignPossible         Center
+	Labeltype             Static
+	LabelString           "Email: "
+	TextFont
+	  Family              Typewriter
+	EndFont
+	LabelFont
+	  Shape               Italic
+	  Family              Roman
+	EndFont
 End
 
 Style Author_URL
-  Margin		Static
-  LatexType		Command
-  InTitle		1
-  PassThru              1
-  LatexName             ead
-  LatexParam		"[url]"
-  Align			Center
-  AlignPossible		Center
-  Labeltype             Static
-  LabelString           "URL: "
-  TextFont
-    Family              Typewriter
-  EndFont
-  LabelFont
-    Shape		Italic
-    Family              Roman
-  EndFont
+	Margin                Static
+	LatexType             Command
+	InTitle               1
+	PassThru              1
+	LatexName             ead
+	LatexParam            "[url]"
+	Align                 Center
+	AlignPossible         Center
+	Labeltype             Static
+	LabelString           "URL: "
+	TextFont
+	  Family              Typewriter
+	EndFont
+	LabelFont
+	  Shape               Italic
+	  Family              Roman
+	EndFont
 End
 
 # thanks is like a footnote
 Style Thanks
-  Margin		Static
-  LatexType		Command
-  LatexName		thanks		
-  InTitle		1
-  Font	
-    Size		Small
-    Family		Typewriter
-    Shape		Italic
-  EndFont	
+	Margin                Static
+	LatexType             Command
+	LatexName             thanks          
+	InTitle               1
+	Font  
+	  Size                Small
+	  Family              Typewriter
+	  Shape               Italic
+	EndFont       
 End
 
 # new Abstract style definition
 Style Abstract 
-  Margin		Static
-  LatexType		Environment
-  LatexName		abstract
-  NextNoIndent		1
-  InTitle		1
-  LeftMargin		MMM
-  RightMargin		MMM
-  ParIndent		MM
-  ItemSep		0
-  TopSep		0.7
-  BottomSep		0.7
-  ParSep		0
-  Align			Block
-  AlignPossible		Block
-  LabelType		Centered_Top_Environment
-  LabelString		Abstract
-  LabelBottomSep    	0.5
+	Margin                Static
+	LatexType             Environment
+	LatexName             abstract
+	NextNoIndent          1
+	InTitle               1
+	LeftMargin            MMM
+	RightMargin           MMM
+	ParIndent             MM
+	ItemSep               0
+	TopSep                0.7
+	BottomSep             0.7
+	ParSep                0
+	Align                 Block
+	AlignPossible         Block
+	LabelType             Centered_Top_Environment
+	LabelString           Abstract
+	LabelBottomSep        0.5
 
-  # standard font definition
-  Font 
-    Size		Small
-  EndFont
+	# standard font definition
+	Font 
+	  Size                Small
+	EndFont
 
-  # label font definition
-  LabelFont 
-    Series		Bold
-    Size		Large
-  EndFont
+	# label font definition
+	LabelFont 
+	  Series              Bold
+	  Size                Large
+	EndFont
 End 
 
 
@@ -255,42 +255,42 @@ End
 
 # Theorem-numbered style declaration
 Style Theorem
-  Margin		First_Dynamic
-  LatexType		Environment
-  LatexName		thm
-  NextNoIndent		1
-  LabelSep		xx
-  ParIndent             MMM  
-  ParSkip		0.4
-  ItemSep		0.2
-  TopSep		0.7
-  BottomSep		0.7
-  ParSep		0.3
-  Align			Block
-  AlignPossible		Block, Left
-  LabelType		Static
-  LabelString		"Theorem #."
+	Margin                First_Dynamic
+	LatexType             Environment
+	LatexName             thm
+	NextNoIndent          1
+	LabelSep              xx
+	ParIndent             MMM  
+	ParSkip               0.4
+	ItemSep               0.2
+	TopSep                0.7
+	BottomSep             0.7
+	ParSep                0.3
+	Align                 Block
+	AlignPossible         Block, Left
+	LabelType             Static
+	LabelString           "Theorem #."
 
-  
-  # standard font definition
-  Font
-    Shape 		Italic
-    Size		Normal
-  EndFont
+	
+	# standard font definition
+	Font
+	  Shape               Italic
+	  Size                Normal
+	EndFont
 
-  # label font definition
-  LabelFont
-    Shape		Up
-    Series		Bold
-  EndFont
+	# label font definition
+	LabelFont
+	  Shape               Up
+	  Series              Bold
+	EndFont
 
 End  
 
 # Lemma-numbered style declaration
 Style Lemma
-  CopyStyle		Theorem
-  LatexName		lem
-  LabelString		"Lemma #."
+	CopyStyle             Theorem
+	LatexName             lem
+	LabelString           "Lemma #."
 
 #  Preamble
 #    \theoremstyle{plain}    
@@ -300,9 +300,9 @@ End
 
 # Corollary-numbered style declaration
 Style Corollary
-  CopyStyle		Theorem
-  LatexName		cor
-  LabelString		"Corollary #."
+	CopyStyle             Theorem
+	LatexName             cor
+	LabelString           "Corollary #."
 
 #  Preamble
 #    \theoremstyle{plain}    
@@ -312,9 +312,9 @@ End
 
 # Proposition-numbered style declaration
 Style Proposition
-  CopyStyle		Theorem
-  LatexName		prop
-  LabelString		"Proposition #."
+	CopyStyle             Theorem
+	LatexName             prop
+	LabelString           "Proposition #."
 
 #  Preamble
 #    \theoremstyle{plain}    
@@ -324,9 +324,9 @@ End
 
 # Criterion-numbered style declaration
 Style Criterion
-  CopyStyle		Theorem
-  LatexName		crit
-  LabelString		"Criterion #."
+	CopyStyle             Theorem
+	LatexName             crit
+	LabelString           "Criterion #."
 
 #  Preamble
 #    \theoremstyle{plain}    
@@ -336,9 +336,9 @@ End
 
 # Algorithm-numbered style declaration
 Style Algorithm
-  CopyStyle		Theorem
-  LatexName		alg
-  LabelString		"Algorithm #."
+	CopyStyle             Theorem
+	LatexName             alg
+	LabelString           "Algorithm #."
 
 #  Preamble
 #    \theoremstyle{plain}    
@@ -348,20 +348,20 @@ End
 
 # Definition-numbered style declaration
 Style Definition
-  CopyStyle		Theorem
-  LatexName		defn
-  LabelString		"Definition #."
-  
-  # standard font definition
-  Font
-    Shape 		Up
-  EndFont
+	CopyStyle             Theorem
+	LatexName             defn
+	LabelString           "Definition #."
+	
+	# standard font definition
+	Font
+	  Shape               Up
+	EndFont
 
-  # label font definition
-  LabelFont
-    Shape		Up
-    Series		Bold
-  EndFont
+	# label font definition
+	LabelFont
+	  Shape               Up
+	  Series              Bold
+	EndFont
  
 #  Preamble
 #   \theoremstyle{definition}
@@ -371,9 +371,9 @@ End
 
 # Conjecture-numbered style declaration
 Style Conjecture
-  CopyStyle		Theorem
-  LatexName		conj
-  LabelString		"Conjecture #."
+	CopyStyle             Theorem
+	LatexName             conj
+	LabelString           "Conjecture #."
 
 #  Preamble
 #    \theoremstyle{plain}    
@@ -383,9 +383,9 @@ End
 
 # Example-numbered style declaration
 Style Example
-  CopyStyle		Theorem
-  LatexName		exmp
-  LabelString		"Example #."
+	CopyStyle             Theorem
+	LatexName             exmp
+	LabelString           "Example #."
 
 #  Preamble
 #   \theoremstyle{definition}
@@ -395,9 +395,9 @@ End
 
 # Problem-numbered style declaration
 Style Problem
-  CopyStyle		Theorem
-  LatexName		prob
-  LabelString		"Problem #."
+	CopyStyle             Theorem
+	LatexName             prob
+	LabelString           "Problem #."
 
 #  Preamble
 #   \theoremstyle{definition}
@@ -407,49 +407,49 @@ End
 
 # Remark-numbered style declaration
 Style Remark
-  CopyStyle		Theorem
-  LatexName		rem
-  LabelString		"Remark #."
+	CopyStyle             Theorem
+	LatexName             rem
+	LabelString           "Remark #."
 
 End  
 
 # Note-numbered style declaration
 Style Note
-  CopyStyle		Theorem
-  LatexName		note
-  LabelString		"Note #."
+	CopyStyle             Theorem
+	LatexName             note
+	LabelString           "Note #."
 
 End  
 
 # Claim-numbered style declaration
 Style Claim
-  CopyStyle		Theorem
-  LatexName		claim
-  LabelString		"Claim #."
+	CopyStyle             Theorem
+	LatexName             claim
+	LabelString           "Claim #."
 
 End  
 
 # Summary-numbered style declaration
 Style Summary
-  CopyStyle		Theorem
-  LatexName		summ
-  LabelString		"Summary #."
+	CopyStyle             Theorem
+	LatexName             summ
+	LabelString           "Summary #."
 
 End  
 
 # Case-numbered style declaration
 Style Case
-  CopyStyle		Theorem
-  LatexName		case
-  LabelString		"Case #."
+	CopyStyle             Theorem
+	LatexName             case
+	LabelString           "Case #."
 
 End  
 
 # Acknowledgement-numbered style declaration
 #Style Acknowledgement
-#  CopyStyle		Theorem
-#  LatexName		ack
-#  LabelString		"Acknowledgement #."
+#  CopyStyle            Theorem
+#  LatexName            ack
+#  LabelString          "Acknowledgement #."
 #
 #End  
 
@@ -459,17 +459,17 @@ End
 # style file.
 
 Style Acknowledgement
-  Margin		Static
-  LatexType		environment
-  LatexName		ack
-  Labeltype		Top_Environment
-  LabelBottomsep	1
-  LabelString		"Acknowledgement #."
-  parsep		0.3
+	Margin                Static
+	LatexType             environment
+	LatexName             ack
+	Labeltype             Top_Environment
+	LabelBottomsep        1
+	LabelString           "Acknowledgement #."
+	parsep                0.3
 
 LabelFont
-  Size			large
-  Series		Bold
+	Size                  large
+	Series                Bold
 EndFont
 
 End

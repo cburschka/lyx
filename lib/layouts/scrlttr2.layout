@@ -5,18 +5,18 @@
 
 # Standard style definition
 Style Standard
-  LatexName             dummy
-  ParSep                0.4
-  AlignPossible         Block, Left, Right, Center
+	LatexName             dummy
+	ParSep                0.4
+	AlignPossible         Block, Left, Right, Center
 End
 
 Input stdlists.inc
 
 # Modify Description
 Style Description
-  LabelFont
-    Family              Sans
-  EndFont
+	LabelFont
+	  Family              Sans
+	EndFont
 End
 
 # Delete List
@@ -24,19 +24,19 @@ NoStyle List
 
 # Labeling style definition
 Style Labeling
-  Margin		Manual
-  LatexType		List_Environment
-  LatexName             labeling
-  NextNoindent		1
-  LabelSep		xxx
-  ParSkip		0.4
-  TopSep		0.7
-  BottomSep		0.7
-  ParSep		0.5
-  Align			Block
-  AlignPossible		Block, Left
-  LabelType		Manual
-  LabelString		00.00.0000
+	Margin                Manual
+	LatexType             List_Environment
+	LatexName             labeling
+	NextNoindent          1
+	LabelSep              xxx
+	ParSkip               0.4
+	TopSep                0.7
+	BottomSep             0.7
+	ParSep                0.5
+	Align                 Block
+	AlignPossible         Block, Left
+	LabelType             Manual
+	LabelString           00.00.0000
 End
 
 Input stdlayouts.inc
@@ -46,328 +46,328 @@ NoStyle Caption
 
 # Letter style definition
 Style Address
-  LatexType             Command
-  LatexName             begin
-  LatexParam            {letter}
-  #Ugly hack!
-  Preamble
-  \AtEndDocument{\end{letter}}
-  EndPreamble
-  KeepEmpty             1
-  LeftMargin            xxxxxxxxxxxx::xx
-  LabelSep              xx
-  TopSep                1.5
-  BottomSep             1.5
-  ParSep                1.5
-  Align                 Left
-  AlignPossible         Left
-  LabelType             Static
-  LabelString           "Address:"
+	LatexType             Command
+	LatexName             begin
+	LatexParam            {letter}
+	#Ugly hack!
+	Preamble
+	\AtEndDocument{\end{letter}}
+	EndPreamble
+	KeepEmpty             1
+	LeftMargin            xxxxxxxxxxxx::xx
+	LabelSep              xx
+	TopSep                1.5
+	BottomSep             1.5
+	ParSep                1.5
+	Align                 Left
+	AlignPossible         Left
+	LabelType             Static
+	LabelString           "Address:"
 
-  LabelFont 
-    Series              Bold
-    Shape               Italic
-    Size                Small
-    Color               Blue
-  EndFont
+	LabelFont 
+	  Series              Bold
+	  Shape               Italic
+	  Size                Small
+	  Color               Blue
+	EndFont
 End
 
 # NextLetter style definition
 # Start new letter
 Style NextAddress
-  LatexType             Command
-  LatexName             end{letter}\begin{letter}
-  KeepEmpty             1
-  LeftMargin            xxxxxxxxxxxx::xx
-  LabelSep              xx
-  TopSep                1.5
-  BottomSep             1.5
-  ParSep                1.5
-  Align                 Left
-  AlignPossible         Left
-  LabelType             Static
-  LabelString           "Next Address:"
+	LatexType             Command
+	LatexName             end{letter}\begin{letter}
+	KeepEmpty             1
+	LeftMargin            xxxxxxxxxxxx::xx
+	LabelSep              xx
+	TopSep                1.5
+	BottomSep             1.5
+	ParSep                1.5
+	Align                 Left
+	AlignPossible         Left
+	LabelType             Static
+	LabelString           "Next Address:"
 
-  LabelFont 
-    Series              Bold
-    Shape               Italic
-    Size                Small
-    Color               Blue
-  EndFont
+	LabelFont 
+	  Series              Bold
+	  Shape               Italic
+	  Size                Small
+	  Color               Blue
+	EndFont
 End
 
 # Opening style definition
 Style Opening
-  LatexType             Command
-  LatexName             opening
-  KeepEmpty             0
-  LeftMargin            xxxxxxxxxxxx::xx
-  LabelSep              xx
-  TopSep                0.4
-  BottomSep             0.4
-  ParSep                0.4
-  Align                 Left
-  AlignPossible         Left
-  LabelType             Static
-  LabelString           "Opening:"
-  
-  LabelFont 
-    Series              Bold
-    Shape               Italic
-    Color               Magenta
-  EndFont
+	LatexType             Command
+	LatexName             opening
+	KeepEmpty             0
+	LeftMargin            xxxxxxxxxxxx::xx
+	LabelSep              xx
+	TopSep                0.4
+	BottomSep             0.4
+	ParSep                0.4
+	Align                 Left
+	AlignPossible         Left
+	LabelType             Static
+	LabelString           "Opening:"
+	
+	LabelFont 
+	  Series              Bold
+	  Shape               Italic
+	  Color               Magenta
+	EndFont
 End
 
 # Closing style definition
 Style Closing
-  CopyStyle             Opening
-  LatexType             Command
-  LatexName             closing
-  LabelString           "Closing:"
+	CopyStyle             Opening
+	LatexType             Command
+	LatexName             closing
+	LabelString           "Closing:"
 End
 
 # PS style definition
 Style PS
-  CopyStyle             Opening
-  LatexType             Command
-  LatexName             ps
-  LabelString           "Post Scriptum:"
+	CopyStyle             Opening
+	LatexType             Command
+	LatexName             ps
+	LabelString           "Post Scriptum:"
 End
 
 # CC style definition
 Style CC
-  CopyStyle             Opening
-  LatexType             Command
-  LatexName             cc
-  LabelString           "cc:"
+	CopyStyle             Opening
+	LatexType             Command
+	LatexName             cc
+	LabelString           "cc:"
 End
 
 # Encl style definition
 Style Encl
-  CopyStyle             Opening
-  LatexName             encl
-  LabelString           "encl:"
+	CopyStyle             Opening
+	LatexName             encl
+	LabelString           "encl:"
 End
 
 # Name style definition
 Style Name
-  LatexType             Command
-  LatexName             setkomavar
-  LatexParam            {fromname}
-  KeepEmpty             1
-  LeftMargin            xxxxxxxxxxxx::xx
-  LabelSep              xx
-  TopSep                0.4
-  BottomSep             0.4
-  ParSep                0.4
-  Align                 Left
-  AlignPossible         Left
-  LabelType             Static
-  LabelString           "Sender Name:"
+	LatexType             Command
+	LatexName             setkomavar
+	LatexParam            {fromname}
+	KeepEmpty             1
+	LeftMargin            xxxxxxxxxxxx::xx
+	LabelSep              xx
+	TopSep                0.4
+	BottomSep             0.4
+	ParSep                0.4
+	Align                 Left
+	AlignPossible         Left
+	LabelType             Static
+	LabelString           "Sender Name:"
 
-  LabelFont 
-    Series              Bold
-    Shape               Italic
-    Color               Blue
-  EndFont
+	LabelFont 
+	  Series              Bold
+	  Shape               Italic
+	  Color               Blue
+	EndFont
 End
 
 # Signature style definition
 Style Signature
-  CopyStyle             Name
-  LatexName             setkomavar
-  LatexParam            {signature}
-  LabelString           "Signature:"
+	CopyStyle             Name
+	LatexName             setkomavar
+	LatexParam            {signature}
+	LabelString           "Signature:"
 End
 
 # Address style definition
 Style SenderAddress
-  CopyStyle             Name
-  LatexName             setkomavar
-  LatexParam            {fromaddress}
-  LabelString           "Sender Address:"
+	CopyStyle             Name
+	LatexName             setkomavar
+	LatexParam            {fromaddress}
+	LabelString           "Sender Address:"
 End
 
 # Telephone style definition
 Style Telephone
-  CopyStyle             Name
-  LatexName             setkomavar
-  LatexParam            {fromphone}
-  LabelString           "Sender Phone:"
+	CopyStyle             Name
+	LatexName             setkomavar
+	LatexParam            {fromphone}
+	LabelString           "Sender Phone:"
 End
 
 # Fax style definition
 Style Fax
-  CopyStyle             Name
-  LatexName             setkomavar
-  LatexParam            {fromfax}
-  LabelString           "Sender Fax:"
+	CopyStyle             Name
+	LatexName             setkomavar
+	LatexParam            {fromfax}
+	LabelString           "Sender Fax:"
 End
 
 
 # E-Mail style definition
 Style E-Mail
-  CopyStyle             Name
-  LatexName             setkomavar
-  LatexParam            {fromemail}
-  LabelString           "Sender E-Mail:"
+	CopyStyle             Name
+	LatexName             setkomavar
+	LatexParam            {fromemail}
+	LabelString           "Sender E-Mail:"
 End
 
 # URL style definition
 Style URL
-  CopyStyle             Name
-  LatexName             setkomavar
-  LatexParam            {fromurl}
-  LabelString           "Sender URL:"
+	CopyStyle             Name
+	LatexName             setkomavar
+	LatexParam            {fromurl}
+	LabelString           "Sender URL:"
 End
 
 # Bank style definition
 Style Bank
-  CopyStyle             Name
-  LatexName             setkomavar
-  LatexParam            {frombank}
-  LabelString           "Bank:"
+	CopyStyle             Name
+	LatexName             setkomavar
+	LatexParam            {frombank}
+	LabelString           "Bank:"
 End
 
 # Logo style definition
 Style Logo
-  CopyStyle             Name
-  LatexName             setkomavar
-  LatexParam            {fromlogo}
-  LabelString           "Logo:"
+	CopyStyle             Name
+	LatexName             setkomavar
+	LatexParam            {fromlogo}
+	LabelString           "Logo:"
 End
 
 # Place style definition
 Style Place
-  CopyStyle             Name
-  LatexName             setkomavar
-  LatexParam            {place}
-  LabelString           "Place:"
+	CopyStyle             Name
+	LatexName             setkomavar
+	LatexParam            {place}
+	LabelString           "Place:"
 End
 
 # Date style definition
 Style Date
-  CopyStyle             Name
-  LatexName             setkomavar
-  LatexParam            {date}
-  LabelString           "Date:"
+	CopyStyle             Name
+	LatexName             setkomavar
+	LatexParam            {date}
+	LabelString           "Date:"
 End
 
 # Backaddress style definition
 Style Backaddress
-  CopyStyle             Name
-  LatexName             setkomavar
-  LatexParam            {backaddress}
-  LabelString           "Backaddress:"
+	CopyStyle             Name
+	LatexName             setkomavar
+	LatexParam            {backaddress}
+	LabelString           "Backaddress:"
 End
 
 # Specialmail style definition
 Style Specialmail
-  CopyStyle             Name
-  LatexName             setkomavar
-  LatexParam            {specialmail}
-  LabelString           "Specialmail:"
+	CopyStyle             Name
+	LatexName             setkomavar
+	LatexParam            {specialmail}
+	LabelString           "Specialmail:"
 End
 
 # Location style definition
 Style Location
-  CopyStyle             Name
-  LatexName             setkomavar
-  LatexParam            {location}
-  LabelString           "Location:"
+	CopyStyle             Name
+	LatexName             setkomavar
+	LatexParam            {location}
+	LabelString           "Location:"
 End
 
 # Title style definition
 Style Title
-  CopyStyle             Name
-  LatexName             setkomavar
-  LatexParam            {title}
-  LabelString           "Title:"
+	CopyStyle             Name
+	LatexName             setkomavar
+	LatexParam            {title}
+	LabelString           "Title:"
 End
 
 # Subject style definition
 Style Subject
-  CopyStyle             Name
-  LatexName             setkomavar
-  LatexParam            {subject}
-  LabelString           "Subject:"
+	CopyStyle             Name
+	LatexName             setkomavar
+	LatexParam            {subject}
+	LabelString           "Subject:"
 End
 
 # Yourref style definition
 Style Yourref
-  CopyStyle             Name
-  LatexName             setkomavar
-  LatexParam            {yourref}
-  LabelString           "Your ref.:"
+	CopyStyle             Name
+	LatexName             setkomavar
+	LatexParam            {yourref}
+	LabelString           "Your ref.:"
 
-  LabelFont 
-    Family              Sans
-    Series              Medium
-    Shape               Up
-    Size                Small
-    Color               None
-  EndFont
+	LabelFont 
+	  Family              Sans
+	  Series              Medium
+	  Shape               Up
+	  Size                Small
+	  Color               None
+	EndFont
 End
 
 # Yourmail style definition
 Style Yourmail
-  CopyStyle             Yourref
-  LatexName             setkomavar
-  LatexParam            {yourmail}
-  LabelString           "Your letter of:"
+	CopyStyle             Yourref
+	LatexName             setkomavar
+	LatexParam            {yourmail}
+	LabelString           "Your letter of:"
 End
 
 # Myref style definition
 Style Myref
-  CopyStyle             Yourref
-  LatexName             setkomavar
-  LatexParam            {myref}
-  LabelString           "Our ref.:"
+	CopyStyle             Yourref
+	LatexName             setkomavar
+	LatexParam            {myref}
+	LabelString           "Our ref.:"
 End
 
 # Customer style definition
 Style Customer
-  CopyStyle             Yourref
-  LatexName             setkomavar
-  LatexParam            {customer}
-  LabelString           "Customer no.:"
+	CopyStyle             Yourref
+	LatexName             setkomavar
+	LatexParam            {customer}
+	LabelString           "Customer no.:"
 End
 
 # Invoice style definition
 Style Invoice
-  CopyStyle             Yourref
-  LatexName             setkomavar
-  LatexParam            {invoice}
-  LabelString           "Invoice no.:"
+	CopyStyle             Yourref
+	LatexName             setkomavar
+	LatexParam            {invoice}
+	LabelString           "Invoice no.:"
 End
 
 # Comment style definition
 Style Comment
-  Margin		Dynamic
-  LatexType		Environment
-  LatexName		comment
-  NextNoIndent		1
-  LeftMargin		MMM
-  RightMargin           MMM
-  Align			Block
-  AlignPossible		Block, Left, Right, Center
-  LabelType		Static
-  LabelSep		:x
-  Labelstring		"Comment:"
+	Margin                Dynamic
+	LatexType             Environment
+	LatexName             comment
+	NextNoIndent          1
+	LeftMargin            MMM
+	RightMargin           MMM
+	Align                 Block
+	AlignPossible         Block, Left, Right, Center
+	LabelType             Static
+	LabelSep              :x
+	Labelstring           "Comment:"
 
-  LabelFont
-	Shape		Italic
-	Series		Bold
-	Color		black
-  EndFont
+	LabelFont
+	      Shape           Italic
+	      Series          Bold
+	      Color           black
+	EndFont
 
-  TextFont
-	Color		magenta
-	Shape		Italic
-  EndFont
+	TextFont
+	      Color           magenta
+	      Shape           Italic
+	EndFont
 
-  Preamble
-  \usepackage{verbatim}
-  EndPreamble
+	Preamble
+	\usepackage{verbatim}
+	EndPreamble
 
 End

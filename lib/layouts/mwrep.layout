@@ -10,18 +10,18 @@ Input stdclass.inc
 
 # a few changes to the bibliography
 Style Bibliography
-  TopSep		4
-  LabelString		Bibliography
+	TopSep                4
+	LabelString           Bibliography
 
-  # label font definition
-  LabelFont 
-    Series		Bold
-    Size		Huge
-  EndFont
+	# label font definition
+	LabelFont 
+	  Series              Bold
+	  Size                Huge
+	EndFont
 End
 
 # Page styles
 ClassOptions
-  PageStyle	empty|plain|outer|headings|myheadings|uheadings|myuheadings
+	PageStyle     empty|plain|outer|headings|myheadings|uheadings|myuheadings
 End
 

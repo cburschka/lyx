@@ -6,13 +6,13 @@
 # Input general definitions
 Input db_stdclass.inc
 
-MaxCounter		Counter_Subsection
+MaxCounter              Counter_Subsection
 
 # Title style definition
 Style Title
-  LatexType		Command
-  LatexName		"!-- --"
-  LatexParam		"3|"
+	LatexType             Command
+	LatexName             "!-- --"
+	LatexParam            "3|"
 End
 
 # Exclude higher, or equal, sections:

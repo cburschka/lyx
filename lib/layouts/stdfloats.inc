@@ -5,34 +5,34 @@
 
 
 Float
-  Type                  table
-  GuiName		Table
-  Placement             tbp
-  Extension             lot
-  NumberWithin          none
-  Style                 plain
-  ListName              "List of Tables"
-  LaTeXBuiltin          true
+	Type                  table
+	GuiName               Table
+	Placement             tbp
+	Extension             lot
+	NumberWithin          none
+	Style                 plain
+	ListName              "List of Tables"
+	LaTeXBuiltin          true
 End
-  
+	
 Float
-  Type                  figure
-  GuiName               Figure
-  Placement             tbp
-  Extension             lof
-  NumberWithin          none
-  Style                 plain
-  ListName              "List of Figures"
-  LaTeXBuiltin          true
+	Type                  figure
+	GuiName               Figure
+	Placement             tbp
+	Extension             lof
+	NumberWithin          none
+	Style                 plain
+	ListName              "List of Figures"
+	LaTeXBuiltin          true
 End
 
 Float
-  Type                  algorithm
-  GuiName               Algorithm
-  Placement             tbp
-  Extension             loa
-  NumberWithin          none
-  Style                 ruled
-  ListName              "List of Algorithms"
-  LaTeXBuiltin          false
+	Type                  algorithm
+	GuiName               Algorithm
+	Placement             tbp
+	Extension             loa
+	NumberWithin          none
+	Style                 ruled
+	ListName              "List of Algorithms"
+	LaTeXBuiltin          false
 End

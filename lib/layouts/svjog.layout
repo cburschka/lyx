@@ -25,29 +25,29 @@
 Input svjour.inc
 
 ClassOptions
-  Other		jog
+	Other         jog
 End
 
 # Abstract style definition
 Style Abstract 
-  Margin		First_Dynamic
-  LatexType		Command
-  LatexName		abstract
-  Newline		1
-  NextNoIndent		0
-  ParIndent		MM
-  LabelSep		xx
-  ItemSep		0
-  TopSep		0.7
-  BottomSep		0.7
-  ParSep		0
-  Align			Block
-  AlignPossible		Block, Left
-  LabelType		Top_Environment
-  LabelString		Abstract. 
+	Margin                First_Dynamic
+	LatexType             Command
+	LatexName             abstract
+	Newline               1
+	NextNoIndent          0
+	ParIndent             MM
+	LabelSep              xx
+	ItemSep               0
+	TopSep                0.7
+	BottomSep             0.7
+	ParSep                0
+	Align                 Block
+	AlignPossible         Block, Left
+	LabelType             Top_Environment
+	LabelString           Abstract. 
 
-  # label font definition
-  LabelFont 
-    Series		Bold
-  EndFont
+	# label font definition
+	LabelFont 
+	  Series              Bold
+	EndFont
 End 

@@ -4,9 +4,9 @@
 # 
 # Font Courier 12 pts
 # abbreviations used in scripts are as follows:
-# INT. - interior	EXT. - exterior
-#(O.S) - off screen	b.g. - background	PAN - camera movement
-#(V.O) - voice over	C.U. - close-up		INSERT - cut to close-up of
+# INT. - interior       EXT. - exterior
+#(O.S) - off screen     b.g. - background       PAN - camera movement
+#(V.O) - voice over     C.U. - close-up         INSERT - cut to close-up of
 # each page should be 1 minute of film
 # Spec scripts should not be more that 120 pages or less than 110.
 # Nothing goes in a script that you cannot see or hear.
@@ -21,57 +21,57 @@ SecNumDepth             2
 TocDepth                2
 
 ClassOptions
-FontSize		12
+FontSize                12
 End
 
 # This is just to show how to declare the default font.
 # The defaults are exactly those shown here.
 DefaultFont
-  Family                Typewriter
-  Series                Medium
-  Shape                 Up
-  Size                  Normal
-  Color                 None
+	Family                Typewriter
+	Series                Medium
+	Shape                 Up
+	Size                  Normal
+	Color                 None
 EndFont
 
 DefaultStyle   Dialogue
 
 # Dialogue style definition. Actor dialog
 Style Dialogue
-  Margin                Static
-  LatexType             Command
-  LatexName             dialogue
-  LeftMargin            MMMMMMMMMM
-  RightMargin		MMMMMMMMMMMMMMMMMMMMMMM
-  ParSkip               0.0
-  TopSep		0.0
-  BottomSep		0.0
-  Align                 Left
-  AlignPossible         Left
-  LabelType             No_Label
+	Margin                Static
+	LatexType             Command
+	LatexName             dialogue
+	LeftMargin            MMMMMMMMMM
+	RightMargin           MMMMMMMMMMMMMMMMMMMMMMM
+	ParSkip               0.0
+	TopSep                0.0
+	BottomSep             0.0
+	Align                 Left
+	AlignPossible         Left
+	LabelType             No_Label
 End
 
 # More: Use to break a long Dialogue
 Style More
-  Margin                Static
-  LatexType             Command
-  LatexName             more
-  LeftMargin            MMMMMMMMMMMMMMMMMMMMMMMMMMM
-  ParSkip               0.0
-  TopSep		0.0
-  BottomSep		0.0
-  KeepEmpty		1
-  Align                 Left
-  AlignPossible         Left
-  LabelType             Static
-  LabelString		"(MORE)"
+	Margin                Static
+	LatexType             Command
+	LatexName             more
+	LeftMargin            MMMMMMMMMMMMMMMMMMMMMMMMMMM
+	ParSkip               0.0
+	TopSep                0.0
+	BottomSep             0.0
+	KeepEmpty             1
+	Align                 Left
+	AlignPossible         Left
+	LabelType             Static
+	LabelString           "(MORE)"
 
 Font
-  Family                Typewriter
-  Series                Medium
-  Shape                 Up
-  Size                  Normal
-  Color                 Green
+	Family                Typewriter
+	Series                Medium
+	Shape                 Up
+	Size                  Normal
+	Color                 Green
 EndFont
 
 End
@@ -81,17 +81,17 @@ End
 # FADE_IN: and FADE_OUT: usually stand alone. If you want a more complicated
 # FADE_IN e.g. FADE_IN on STELLA:, use the Narrative Style.
 Style FADE_IN:
-  Margin                Dynamic
-  LatexType             Command
-  LatexName             fadein
-  ParIndent             ""
-  ParSkip               0.25
-  TopSep		0.25
-  Align                 Left
-  AlignPossible         Left
-  KeepEmpty		1
-  LabelType             Static
-  LabelString		"FADE IN: "
+	Margin                Dynamic
+	LatexType             Command
+	LatexName             fadein
+	ParIndent             ""
+	ParSkip               0.25
+	TopSep                0.25
+	Align                 Left
+	AlignPossible         Left
+	KeepEmpty             1
+	LabelType             Static
+	LabelString           "FADE IN: "
 End
 
 # Scene headings (ALL CAPS) This is a general case, probably not needed
@@ -100,86 +100,86 @@ End
 # Use Style EXT. for Exterior, INT. for Interior scenes. Last word should be
 # - DAY, or - NIGHT or similar to define lighting.
 Style INT.
-  Margin                Dynamic
-  LatexType             Command
-  LatexName             interiorshot
-  ParIndent             ""
-  ParSkip               0.25
-  TopSep		0.25
-  Align                 Left
-  AlignPossible         Left
-  LabelType             Static
-  LabelString		"INT. "
+	Margin                Dynamic
+	LatexType             Command
+	LatexName             interiorshot
+	ParIndent             ""
+	ParSkip               0.25
+	TopSep                0.25
+	Align                 Left
+	AlignPossible         Left
+	LabelType             Static
+	LabelString           "INT. "
 End
 
 Style EXT.
-  Margin                Dynamic
-  LatexType             Command
-  LatexName             exteriorshot
-  ParIndent             ""
-  ParSkip               0.25
-  TopSep		0.25
-  Align                 Left
-  AlignPossible         Left
-  LabelType             Static
-  LabelString		"EXT. "
+	Margin                Dynamic
+	LatexType             Command
+	LatexName             exteriorshot
+	ParIndent             ""
+	ParSkip               0.25
+	TopSep                0.25
+	Align                 Left
+	AlignPossible         Left
+	LabelType             Static
+	LabelString           "EXT. "
 End
 
 
 # Narrative description of Scene
 # same as narrative, but glued to INT., EXT., or Scene
 Style Description
-  Margin                Static
-  LatexType             Command
-  LatexName             description
-  ParIndent             ""
-  ParSkip               0.25
-  TopSep		0.25
-  RightMargin		MMMMM
-  Align                 Left
-  AlignPossible         Left
-  LabelType             No_Label
+	Margin                Static
+	LatexType             Command
+	LatexName             description
+	ParIndent             ""
+	ParSkip               0.25
+	TopSep                0.25
+	RightMargin           MMMMM
+	Align                 Left
+	AlignPossible         Left
+	LabelType             No_Label
 End
 
 # Speaker style definition, identifies speaker  ALL CAPS
 # Use this also for THE END
 Style Speaker
-  Margin                Static
-  LatexType             Command
-  LatexName             speaker
-  LeftMargin            MMMMMMMMMMMMMMMMMMMMMMM
-  ParSkip               0.0
-  TopSep		0.25
-  BottomSep		0.0
-  Align                 Left
-  AlignPossible         Left
-  LabelType             No_Label
+	Margin                Static
+	LatexType             Command
+	LatexName             speaker
+	LeftMargin            MMMMMMMMMMMMMMMMMMMMMMM
+	ParSkip               0.0
+	TopSep                0.25
+	BottomSep             0.0
+	Align                 Left
+	AlignPossible         Left
+	LabelType             No_Label
 End
 
 # Parenthetical instruction to speaker (in parenthises, l.c.)
 # The ( and ) will automatically appear on screen, so don't type any.
 Style Parenthetical
-  Margin                Static
-  LatexType             Command
-  LatexName             parenthetical
-  LeftMargin            MMMMMMMMMMMMMMMMMMM
-  RightMargin		MMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-  TopSep		0.0
-  BottomSep		0.0
-  ParSkip		0.0
-  Align                 Left
-  AlignPossible         Left
-  LabelType		Static
-  LabelString		(
-  EndLabelType		Static
-  EndLabelString	)
+	Margin                Static
+	LatexType             Command
+	LatexName             parenthetical
+	LeftMargin            MMMMMMMMMMMMMMMMMMM
+	RightMargin           MMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+	TopSep                0.0
+	BottomSep             0.0
+	ParSkip               0.0
+	Align                 Left
+	AlignPossible         Left
+	LabelType             Static
+	LabelString           (
+	EndLabelType          Static
+	EndLabelString        )
 
 Font
-  Family                Typewriter
-  Series                Medium
-  Shape                 Up
-  Size                  Normal
-  Color                 Blue
+	Family                Typewriter
+	Series                Medium
+	Shape                 Up
+	Size                  Normal
+	Color                 Blue
 EndFont
 
 End
@@ -187,41 +187,41 @@ End
 # Used when the same speaker continues after a narrative. Don't type
 # anything.
 Style Continuing
-  Margin                Static
-  LatexType             Command
-  LatexName             continuing
-  LeftMargin		MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-  TopSep		0.5
-  BottomSep		0.5
-  ParSkip		0.0
-  KeepEmpty		1
-  Align                 Left
-  AlignPossible         Left
-  LabelType		Static
-  LabelString		"(continuing)"
+	Margin                Static
+	LatexType             Command
+	LatexName             continuing
+	LeftMargin            MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+	TopSep                0.5
+	BottomSep             0.5
+	ParSkip               0.0
+	KeepEmpty             1
+	Align                 Left
+	AlignPossible         Left
+	LabelType             Static
+	LabelString           "(continuing)"
 
 Font
-  Family                Typewriter
-  Series                Medium
-  Shape                 Up
-  Size                  Normal
-  Color                 Green
+	Family                Typewriter
+	Series                Medium
+	Shape                 Up
+	Size                  Normal
+	Color                 Green
 EndFont
 
 End
 
 # Narrative description of action
 Style Narrative
-  Margin                Static
-  LatexType             Command
-  LatexName             narrative
-  ParIndent             ""
-  ParSkip               0.25
-  TopSep		0.25
-  RightMargin		MMMMM
-  Align                 Left
-  AlignPossible         Left
-  LabelType             No_Label
+	Margin                Static
+	LatexType             Command
+	LatexName             narrative
+	ParIndent             ""
+	ParSkip               0.25
+	TopSep                0.25
+	RightMargin           MMMMM
+	Align                 Left
+	AlignPossible         Left
+	LabelType             No_Label
 End
 
 
@@ -229,120 +229,120 @@ End
 
 # Transition style definition ALL CAPS
 Style Transition
-  Margin                Static
-  LatexType             Environment
-  LatexName             flushright
-  ParIndent             ""
-  TopSep		0.5
-  ParSkip               0.4
-  Align                 Right
-  AlignPossible         Right
-  LabelType             No_Label
+	Margin                Static
+	LatexType             Environment
+	LatexName             flushright
+	ParIndent             ""
+	TopSep                0.5
+	ParSkip               0.4
+	Align                 Right
+	AlignPossible         Right
+	LabelType             No_Label
 End
 
 Style TITLE_OVER:
-  Margin                Dynamic
-  LatexType             Command
-  LatexName             titleover
-  ParIndent             ""
-  ParSkip               0.5
-  TopSep		0.5
-  Align                 Left
-  AlignPossible         Left
-  KeepEmpty		1
-  LabelType             Static
-  LabelString		"TITLE OVER: "
+	Margin                Dynamic
+	LatexType             Command
+	LatexName             titleover
+	ParIndent             ""
+	ParSkip               0.5
+	TopSep                0.5
+	Align                 Left
+	AlignPossible         Left
+	KeepEmpty             1
+	LabelType             Static
+	LabelString           "TITLE OVER: "
 End
 
 Style INTERCUT
-  Margin                Dynamic
-  LatexType             Command
-  LatexName             intercut
-  ParIndent             ""
-  ParSkip               0.25
-  TopSep		0.5
-  Align                 Left
-  AlignPossible         Left
-  KeepEmpty		1
-  LabelType             Static
-  LabelString		"INTERCUT WITH: "
+	Margin                Dynamic
+	LatexType             Command
+	LatexName             intercut
+	ParIndent             ""
+	ParSkip               0.25
+	TopSep                0.5
+	Align                 Left
+	AlignPossible         Left
+	KeepEmpty             1
+	LabelType             Static
+	LabelString           "INTERCUT WITH: "
 End
 
 Style FADE_OUT
-  Margin                Dynamic
-  LatexType             Command
-  LatexName             fadeout
-  ParIndent             ""
-  ParSkip               0.8
-  TopSep		1.0
-  Align                 Left
-  AlignPossible         Left
-  KeepEmpty		1
-  LabelType             Static
-  LabelString		"FADE OUT "
+	Margin                Dynamic
+	LatexType             Command
+	LatexName             fadeout
+	ParIndent             ""
+	ParSkip               0.8
+	TopSep                1.0
+	Align                 Left
+	AlignPossible         Left
+	KeepEmpty             1
+	LabelType             Static
+	LabelString           "FADE OUT "
 End
 
 # Same as Standard, Standard deprecated 
 Style General
-  Margin                Static
-  LatexType             Paragraph
-  LatexName             dummy
-  ParIndent             ""
-  ParSkip               0.4
-  Align                 Left
-  AlignPossible         Block, Left, Right, Center
-  Labeltype             No_Label
+	Margin                Static
+	LatexType             Paragraph
+	LatexName             dummy
+	ParIndent             ""
+	ParSkip               0.4
+	Align                 Left
+	AlignPossible         Block, Left, Right, Center
+	Labeltype             No_Label
 End
 
 # General Left aligned CAPS
 Style Scene
-  Margin                Dynamic
-  LatexType             Command
-  LatexName             scene
-  ParIndent             ""
-  ParSkip               0.25
-  TopSep		0.25
-  Align                 Left
-  AlignPossible         Left
-  LabelType             No_Label
+	Margin                Dynamic
+	LatexType             Command
+	LatexName             scene
+	ParIndent             ""
+	ParSkip               0.25
+	TopSep                0.25
+	Align                 Left
+	AlignPossible         Left
+	LabelType             No_Label
 End
 
 # Right Address style
 Style Right_Address
-  Margin		Right_Address_Box
-  LatexType		Command
-  LatexName		address
-  InTitle		1
-  ParSkip		0.4
-  BottomSep		1.5
-  ParSep		1.5
-  Align			Left
-  AlignPossible		Left, Right
+	Margin                Right_Address_Box
+	LatexType             Command
+	LatexName             address
+	InTitle               1
+	ParSkip               0.4
+	BottomSep             1.5
+	ParSep                1.5
+	Align                 Left
+	AlignPossible         Left, Right
 End
 
 Style Author
-  Margin		Static
-  LatexType		Command
-  LatexName		author
-  InTitle		1
-  ParSkip		0.4
-  BottomSep		1.5
-  ParSep		1.5
-  Align			Center
-  AlignPossible		Left, Right, Center
+	Margin                Static
+	LatexType             Command
+	LatexName             author
+	InTitle               1
+	ParSkip               0.4
+	BottomSep             1.5
+	ParSep                1.5
+	Align                 Center
+	AlignPossible         Left, Right, Center
 
 End
 
 Style Title
-  Margin		Static
-  LatexType		Command
-  LatexName		title
-  InTitle		1
-  ParSkip		0.4
-  BottomSep		1.5
-  ParSep		1.5
-  Align			Center
-  AlignPossible		Left, Right, Center
+	Margin                Static
+	LatexType             Command
+	LatexName             title
+	InTitle               1
+	ParSkip               0.4
+	BottomSep             1.5
+	ParSep                1.5
+	Align                 Center
+	AlignPossible         Left, Right, Center
 
 End
 
@@ -360,13 +360,13 @@ End
 # wants to convert the spec script into a shooting script.
  
 #Style CONTINUED
-#  LatexType		Command
-#  LatexName		continued
+#  LatexType            Command
+#  LatexName            continued
 #End
 # Clears rfoot, does a pagebreak, and clears lhead.
 #Style NOT_CONTD
-#  LatexType		Command
-#  LatexName		endcontinued
+#  LatexType            Command
+#  LatexName            endcontinued
 #End
  
 Input stdtitle.inc

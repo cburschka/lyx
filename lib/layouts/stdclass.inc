@@ -7,32 +7,32 @@
 # ``standard'' layouts, like article and friends.
 
 # General textclass parameters
-Columns			1
-Sides			1
-SecNumDepth		2
-TocDepth		2
+Columns                 1
+Sides                   1
+SecNumDepth             2
+TocDepth                2
 DefaultStyle Standard
 
 # This is just to show how to declare the default font.
 # The defaults are exactly those shown here.
 DefaultFont
-  Family		Roman
-  Series		Medium
-  Shape			Up
-  Size			Normal
-  Color			None
+	Family                Roman
+	Series                Medium
+	Shape                 Up
+	Size                  Normal
+	Color                 None
 EndFont
 
 # Standard style definition
 Style Standard
-  Margin  		Static
-  LatexType 		Paragraph
-  LatexName 		dummy
-  ParIndent		MM
-  ParSkip 		0.4
-  Align 		Block
-  AlignPossible 	Block, Left, Right, Center
-  LabelType 		No_Label
+	Margin                Static
+	LatexType             Paragraph
+	LatexName             dummy
+	ParIndent             MM
+	ParSkip               0.4
+	Align                 Block
+	AlignPossible         Block, Left, Right, Center
+	LabelType             No_Label
 End
 
 Input stdlists.inc

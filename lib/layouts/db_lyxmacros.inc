@@ -9,21 +9,21 @@ Input lyxmacros.inc
 
 # Code style definition
 Style Code
-  CopyStyle		LyX-Code
-  LatexType		Environment
-  LatexName		programlisting
-  LatexParam		CDATA
-  PassThru		1
+	CopyStyle             LyX-Code
+	LatexType             Environment
+	LatexName             programlisting
+	LatexParam            CDATA
+	PassThru              1
 End
 
 # Comment style definition
 Style Comment
-  LatexType		Paragraph
-  LatexName		remark
+	LatexType             Paragraph
+	LatexName             remark
 End
 
 Style LyX-Code
-  ObsoletedBy		Code
+	ObsoletedBy           Code
 End
 
 NoStyle LyX-Code

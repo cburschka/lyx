@@ -10,25 +10,25 @@
 
 # General textclass parameters
 # Description          "article (AMS)"
-Columns			1
-Sides			2
-PageStyle		Headers
-MaxCounter		Counter_Section
+Columns                 1
+Sides                   2
+PageStyle               Headers
+MaxCounter              Counter_Section
 
 ClassOptions
-  FontSize   8|9|10|11|12
+	FontSize   8|9|10|11|12
 End  
 
 # Standard style definition
 Style Standard
-  Margin  		Static
-  LatexType 		Paragraph
-  LatexName 		dummy
-  ParIndent		MM
-  ParSkip 		0.4
-  Align 		Block
-  AlignPossible 	Block, Left, Right, Center
-  LabelType 		No_Label
+	Margin                Static
+	LatexType             Paragraph
+	LatexName             dummy
+	ParIndent             MM
+	ParSkip               0.4
+	Align                 Block
+	AlignPossible         Block, Left, Right, Center
+	LabelType             No_Label
 End
 
 ############### Sections.
@@ -38,54 +38,54 @@ Input stdsections.inc
 
 # Redefine some of the section styles.
 Style Section
-  Align			Center
-  AlignPossible		Block, Center, Left
+	Align                 Center
+	AlignPossible         Block, Center, Left
 
-  # standard font definition
-  Font
-    Series 		Medium
-    Shape		Smallcaps
-    Size		Large
-  EndFont
+	# standard font definition
+	Font
+	  Series              Medium
+	  Shape               Smallcaps
+	  Size                Large
+	EndFont
 End
 
 # Subsection-numbered style definition
 Style Subsection
-  # standard font definition
-  Font
-    Series 		Bold
-    Size		Normal
-  EndFont
+	# standard font definition
+	Font
+	  Series              Bold
+	  Size                Normal
+	EndFont
 End
 
 # Subsubsection-numbered style definition
 Style Subsubsection
-  # standard font definition
-  Font
-    Shape 		Italic
-    Size		Normal
-  EndFont
+	# standard font definition
+	Font
+	  Shape               Italic
+	  Size                Normal
+	EndFont
 End
 
 # then define the unumbered sections, based on the numbered ones.
 Input stdstarsections.inc
 
 # remove the layouts that we do not need.
-NoStyle		Chapter
-NoStyle		Paragraph
-NoStyle		Subparagraph
-NoStyle		Chapter*
-#NoStyle		Paragraph*
-#NoStyle		Subparagraph*
+NoStyle         Chapter
+NoStyle         Paragraph
+NoStyle         Subparagraph
+NoStyle         Chapter*
+#NoStyle                Paragraph*
+#NoStyle                Subparagraph*
 
 # Perharp's we should put this at the end of the file so it appears at the end
 # of the list box ??
 
 Preamble
-  \theoremstyle{plain}    
-  \newtheorem{thm}{Theorem}[section]
-  \numberwithin{equation}{section} %% Comment out for sequentially-numbered
-  \numberwithin{figure}{section} %% Comment out for sequentially-numbered
+	\theoremstyle{plain}    
+	\newtheorem{thm}{Theorem}[section]
+	\numberwithin{equation}{section} %% Comment out for sequentially-numbered
+	\numberwithin{figure}{section} %% Comment out for sequentially-numbered
 EndPreamble
 
 
@@ -97,7 +97,7 @@ Input amsdefs.inc
  
 Input stdlayouts.inc
 NoStyle Verse    # Although mathematicians tend to be poets at times, 
-                 # we don't need this.
+	               # we don't need this.
 
 
 Input stdlists.inc

@@ -18,32 +18,32 @@
 
 Columns                 1
 Sides                   1
-MaxCounter		Counter_Section
-SecNumDepth		3
-TocDepth		3
+MaxCounter              Counter_Section
+SecNumDepth             3
+TocDepth                3
 
 ClassOptions
-  FontSize              9|10|11|12
+	FontSize              9|10|11|12
 End  
 
 DefaultFont
-  Family		Roman
-  Series		Medium
-  Shape			Up
-  Size			Normal
-  Color			None
+	Family                Roman
+	Series                Medium
+	Shape                 Up
+	Size                  Normal
+	Color                 None
 EndFont
 
 # Standard style definition
 Style Standard
-  Margin  		Static
-  LatexType 		Paragraph
-  LatexName 		dummy
-  ParIndent		MM
-  ParSkip 		0.4
-  Align 		Block
-  AlignPossible 	Block, Left, Right, Center
-  LabelType 		No_Label
+	Margin                Static
+	LatexType             Paragraph
+	LatexName             dummy
+	ParIndent             MM
+	ParSkip               0.4
+	Align                 Block
+	AlignPossible         Block, Left, Right, Center
+	LabelType             No_Label
 End
 
 ##
@@ -63,225 +63,225 @@ Input stdlists.inc
 #
 # Theorem-numbered style *Template* declaration
 Style TheoremTemplate
-  Margin		First_Dynamic
-  LatexType		Environment
-  LabelSep		M
-  ParIndent		MM
-  ParSep		0.4
-  Align			Block
-  AlignPossible		Block, Left
-  LabelType		Static
+	Margin                First_Dynamic
+	LatexType             Environment
+	LabelSep              M
+	ParIndent             MM
+	ParSep                0.4
+	Align                 Block
+	AlignPossible         Block, Left
+	LabelType             Static
 
-  # label font definition
-  LabelFont
-    Shape		Italic
-  EndFont
+	# label font definition
+	LabelFont
+	  Shape               Italic
+	EndFont
 End
 
 # Proof style declaration
 Style Proof
-  CopyStyle		TheoremTemplate
-  LatexName		proof
-  LabelString		"Proof:"
-  EndLabelType          Filled_Box
+	CopyStyle             TheoremTemplate
+	LatexName             proof
+	LabelString           "Proof:"
+	EndLabelType          Filled_Box
 End
 
 # Theorem-numbered style declaration
 Style Theorem
-  CopyStyle		TheoremTemplate
-  LatexName		thm
-  LabelString		"Theorem #:"
+	CopyStyle             TheoremTemplate
+	LatexName             thm
+	LabelString           "Theorem #:"
 
-  Preamble
-    \newtheorem{thm}{Theorem}
-  EndPreamble
+	Preamble
+	  \newtheorem{thm}{Theorem}
+	EndPreamble
 End  
 
 # Lemma-numbered style declaration
 Style Lemma
-  CopyStyle		TheoremTemplate
-  LatexName		lemma
-  LabelString		"Lemma #:"
+	CopyStyle             TheoremTemplate
+	LatexName             lemma
+	LabelString           "Lemma #:"
 
-  Preamble
-    \newtheorem{lemma}{Lemma}
-  EndPreamble
+	Preamble
+	  \newtheorem{lemma}{Lemma}
+	EndPreamble
 End  
 
 # Corollary-numbered style declaration
 Style Corollary
-  CopyStyle		TheoremTemplate
-  LatexName	        cor
-  LabelString		"Corollary #:"
+	CopyStyle             TheoremTemplate
+	LatexName             cor
+	LabelString           "Corollary #:"
 
-  Preamble
-    \newtheorem{cor}{Corollary}
-  EndPreamble
+	Preamble
+	  \newtheorem{cor}{Corollary}
+	EndPreamble
 End
 
 # Proposition-numbered style declaration
 Style Proposition
-  CopyStyle		TheoremTemplate
-  LatexName		prop
-  LabelString		"Proposition #:"
+	CopyStyle             TheoremTemplate
+	LatexName             prop
+	LabelString           "Proposition #:"
 
-  Preamble
-    \newtheorem{prop}{Proposition}
-  EndPreamble
+	Preamble
+	  \newtheorem{prop}{Proposition}
+	EndPreamble
 End  
 
 # Conjecture-numbered style declaration
 Style Conjecture
-  CopyStyle		TheoremTemplate
-  LatexName		conject
-  LabelString		"Conjecture #:"
+	CopyStyle             TheoremTemplate
+	LatexName             conject
+	LabelString           "Conjecture #:"
 
-  Preamble
-    \newtheorem{conject}{Conjecture}
-  EndPreamble
+	Preamble
+	  \newtheorem{conject}{Conjecture}
+	EndPreamble
 End  
 
 # Criterion-numbered style declaration
 Style Criterion
-  CopyStyle		TheoremTemplate
-  LatexName		criter
-  LabelString		"Criterion #:"
+	CopyStyle             TheoremTemplate
+	LatexName             criter
+	LabelString           "Criterion #:"
 
-  Preamble
-    \newtheorem{criter}{Criterion}
-  EndPreamble
+	Preamble
+	  \newtheorem{criter}{Criterion}
+	EndPreamble
 End  
 
 # Fact-numbered style declaration
 Style Fact
-  CopyStyle		TheoremTemplate
-  LatexName		fact
-  LabelString		"Fact #:"
+	CopyStyle             TheoremTemplate
+	LatexName             fact
+	LabelString           "Fact #:"
 
-  Preamble
-    \newtheorem{fact}{Fact}
-  EndPreamble
+	Preamble
+	  \newtheorem{fact}{Fact}
+	EndPreamble
 End  
 
 # Axiom-numbered style declaration
 Style Axiom
-  CopyStyle		TheoremTemplate
-  LatexName		axi
-  LabelString		"Axiom #:"
+	CopyStyle             TheoremTemplate
+	LatexName             axi
+	LabelString           "Axiom #:"
 
-  Preamble
-    \newtheorem{axi}{Axiom}
-  EndPreamble
+	Preamble
+	  \newtheorem{axi}{Axiom}
+	EndPreamble
 End  
 
 # Definition-numbered style declaration
 Style Definition
-  CopyStyle		TheoremTemplate
-  LatexName		definitn
-  LabelString		"Definition #:"
+	CopyStyle             TheoremTemplate
+	LatexName             definitn
+	LabelString           "Definition #:"
 
-  Preamble
-    \newtheorem{definitn}{Definition}
-  EndPreamble
+	Preamble
+	  \newtheorem{definitn}{Definition}
+	EndPreamble
 End
 
 # Example-numbered style declaration
 Style Example
-  CopyStyle		TheoremTemplate
-  LatexName		example
-  LabelString		"Example #:"
+	CopyStyle             TheoremTemplate
+	LatexName             example
+	LabelString           "Example #:"
 
-  Preamble
-    \newtheorem{example}{Example}
-  EndPreamble
+	Preamble
+	  \newtheorem{example}{Example}
+	EndPreamble
 End
 
 # Condition-numbered style declaration
 Style Condition
-  CopyStyle		TheoremTemplate
-  LatexName		condition
-  LabelString		"Condition #:"
+	CopyStyle             TheoremTemplate
+	LatexName             condition
+	LabelString           "Condition #:"
 
-  Preamble
-    \newtheorem{condition}{Condition}
-  EndPreamble
+	Preamble
+	  \newtheorem{condition}{Condition}
+	EndPreamble
 End
 
 # Problem-numbered style declaration
 Style Problem
-  CopyStyle		TheoremTemplate
-  LatexName		problem
-  LabelString		"Problem #:"
+	CopyStyle             TheoremTemplate
+	LatexName             problem
+	LabelString           "Problem #:"
 
-  Preamble
-    \newtheorem{problem}{Problem}
-  EndPreamble
+	Preamble
+	  \newtheorem{problem}{Problem}
+	EndPreamble
 End
 
 # Exercise-numbered style declaration
 Style Exercise
-  CopyStyle		TheoremTemplate
-  LatexName		exacise
-  LabelString		"Exercise #:"
+	CopyStyle             TheoremTemplate
+	LatexName             exacise
+	LabelString           "Exercise #:"
 
-  Preamble
-    \newtheorem{exacise}{Exercise}
-  EndPreamble
+	Preamble
+	  \newtheorem{exacise}{Exercise}
+	EndPreamble
 End
 
 # Remark-numbered style declaration
 Style Remark
-  CopyStyle		TheoremTemplate
-  LatexName		remrk
-  LabelString		"Remark #:"
+	CopyStyle             TheoremTemplate
+	LatexName             remrk
+	LabelString           "Remark #:"
 
-  Preamble
-    \newtheorem{remrk}{Remark}
-  EndPreamble
+	Preamble
+	  \newtheorem{remrk}{Remark}
+	EndPreamble
 End
 
 # Claim-numbered style declaration
 Style Claim
-  CopyStyle		TheoremTemplate
-  LatexName		claim
-  LabelString		"Claim #:"
+	CopyStyle             TheoremTemplate
+	LatexName             claim
+	LabelString           "Claim #:"
 
-  Preamble
-    \newtheorem{claim}{Claim}
-  EndPreamble
+	Preamble
+	  \newtheorem{claim}{Claim}
+	EndPreamble
 End
 
 # Note-numbered style declaration
 Style Note
-  CopyStyle		TheoremTemplate
-  LatexName		note
-  LabelString		"Note #:"
+	CopyStyle             TheoremTemplate
+	LatexName             note
+	LabelString           "Note #:"
 
-  Preamble
-    \newtheorem{note}{Note}
-  EndPreamble
+	Preamble
+	  \newtheorem{note}{Note}
+	EndPreamble
 End
 
 # Notation-numbered style declaration
 Style Notation
-  CopyStyle		TheoremTemplate
-  LatexName		notation
-  LabelString		"Notation #:"
+	CopyStyle             TheoremTemplate
+	LatexName             notation
+	LabelString           "Notation #:"
 
-  Preamble
-    \newtheorem{notation}{Notation}
-  EndPreamble
+	Preamble
+	  \newtheorem{notation}{Notation}
+	EndPreamble
 End
 
 # Case-numbered style declaration
 Style Case
-  CopyStyle		TheoremTemplate
-  LatexName		case
-  LabelString		"Case #:"
+	CopyStyle             TheoremTemplate
+	LatexName             case
+	LabelString           "Case #:"
 
-  Preamble
-    \newtheorem{case}{Case}
-  EndPreamble
+	Preamble
+	  \newtheorem{case}{Case}
+	EndPreamble
 End
 
 NoStyle TheoremTemplate
@@ -300,53 +300,53 @@ NoStyle                 Subparagraph
 NoStyle                 Subparagraph*
 
 Style Section
-  Align			Center
-  AlignPossible		Block, Center, Left
+	Align                 Center
+	AlignPossible         Block, Center, Left
 
-  Font
-     Shape              Smallcaps
-     Size               Normal
-  EndFont
+	Font
+	   Shape              Smallcaps
+	   Size               Normal
+	EndFont
 End
 
 
 Style Subsection
-  Font
-     Shape              Italic
-     Size               Normal
-  EndFont
+	Font
+	   Shape              Italic
+	   Size               Normal
+	EndFont
 End
 
 Style Subsubsection
-  Font
-     Shape              Up
-     Size               Normal
-  EndFont
+	Font
+	   Shape              Up
+	   Size               Normal
+	EndFont
 End
 
 Style Section*
-  Align			Center
-  AlignPossible		Block, Center, Left
+	Align                 Center
+	AlignPossible         Block, Center, Left
 
-  Font
-     Shape              Smallcaps
-     Size               Normal
-  EndFont
+	Font
+	   Shape              Smallcaps
+	   Size               Normal
+	EndFont
 End
 
 
 Style Subsection*
-  Font
-     Shape              Italic
-     Size               Normal
-  EndFont
+	Font
+	   Shape              Italic
+	   Size               Normal
+	EndFont
 End
 
 Style Subsubsection*
-  Font
-     Shape              Up
-     Size               Normal
-  EndFont
+	Font
+	   Shape              Up
+	   Size               Normal
+	EndFont
 End
 
 ##
@@ -356,116 +356,116 @@ Input stdtitle.inc
 Input stdstruct.inc
 
 Style Abstract
-  Margin                First_Dynamic
-  LeftMargin		""
-  RightMargin		""
-#  ParIndent		MM
-  LabelSep              M
-  LabelType		Static
-  LabelString		"Abstract---"
+	Margin                First_Dynamic
+	LeftMargin            ""
+	RightMargin           ""
+#  ParIndent            MM
+	LabelSep              M
+	LabelType             Static
+	LabelString           "Abstract---"
 #  LabelBottomSep        0.0
 
-  # standard font definition
-  Font 
-    Series              Bold
-    Size		Small
-  EndFont
+	# standard font definition
+	Font 
+	  Series              Bold
+	  Size                Small
+	EndFont
 
-  # label font definition
-  LabelFont
-    Shape               Italic
-    Series		Medium
-    Size		Small
-  EndFont
+	# label font definition
+	LabelFont
+	  Shape               Italic
+	  Series              Medium
+	  Size                Small
+	EndFont
 End 
 
 Style Keywords
-  Margin		Dynamic
-  LatexType		Environment
-  InTitle		0
-  LatexName		keywords
-  ParSkip		0.4
-  BottomSep		1.5
-  ParSep		1.5
-  Align			Left
-  AlignPossible		Block, Left, Right, Center
-  LabelType		Static
-  LabelString		"Keywords---"
-  # label font definition
-  TextFont
-    Shape               Up
-    Size                Small
-  EndFont
-  LabelFont
-    Shape		Italic
-    Size                Small
-  EndFont
+	Margin                Dynamic
+	LatexType             Environment
+	InTitle               0
+	LatexName             keywords
+	ParSkip               0.4
+	BottomSep             1.5
+	ParSep                1.5
+	Align                 Left
+	AlignPossible         Block, Left, Right, Center
+	LabelType             Static
+	LabelString           "Keywords---"
+	# label font definition
+	TextFont
+	  Shape               Up
+	  Size                Small
+	EndFont
+	LabelFont
+	  Shape               Italic
+	  Size                Small
+	EndFont
 End
 
 # Bibliography style definition
 Style Bibliography
-  # label font definition
-  LabelFont
-    Shape               Smallcaps             
-    Series		Medium
-    Size		Normal
-  EndFont
+	# label font definition
+	LabelFont
+	  Shape               Smallcaps             
+	  Series              Medium
+	  Size                Normal
+	EndFont
 End
 
 Style Appendix
-  Margin		Static
-  LatexType		Command
-  InTitle		0
-  LatexName		appendix
-  ParSkip		0.4
-  BottomSep		1.5
-  ParSep		1.5
-  Align			Block
-  AlignPossible		Block, Left, Right, Center
-  LabelType		Static
-  LabelString		"Appendix"
-  # label font definition
-  TextFont
-    Shape               Up
-    Size                Normal
-  EndFont
-  LabelFont
-    Shape		Smallcaps
-    Size                Normal
-  EndFont
+	Margin                Static
+	LatexType             Command
+	InTitle               0
+	LatexName             appendix
+	ParSkip               0.4
+	BottomSep             1.5
+	ParSep                1.5
+	Align                 Block
+	AlignPossible         Block, Left, Right, Center
+	LabelType             Static
+	LabelString           "Appendix"
+	# label font definition
+	TextFont
+	  Shape               Up
+	  Size                Normal
+	EndFont
+	LabelFont
+	  Shape               Smallcaps
+	  Size                Normal
+	EndFont
 End
 
 Style Appendices
-  Margin		Static
-  LatexType		Command
-  InTitle		0
-  LatexName		appendices
-  ParSkip		0.4
-  BottomSep		1.5
-  ParSep		1.5
-  Align			Center
-  AlignPossible		Block, Left, Right, Center
-  LabelType		Static
-  LabelString		"Appendices"
-  # label font definition
-  TextFont
-    Shape               Up
-    Size                Small
-  EndFont
-  LabelFont
-    Shape		Smallcaps
-    Size                Normal
-  EndFont
+	Margin                Static
+	LatexType             Command
+	InTitle               0
+	LatexName             appendices
+	ParSkip               0.4
+	BottomSep             1.5
+	ParSep                1.5
+	Align                 Center
+	AlignPossible         Block, Left, Right, Center
+	LabelType             Static
+	LabelString           "Appendices"
+	# label font definition
+	TextFont
+	  Shape               Up
+	  Size                Small
+	EndFont
+	LabelFont
+	  Shape               Smallcaps
+	  Size                Normal
+	EndFont
 End
 
 Style Biography
-  LaTeXType		Environment
-  LaTeXName		biography
-  Align			Block
-  AlignPossible		Block
-  TextFont
-    Size		Small
-  EndFont
+	LaTeXType             Environment
+	LaTeXName             biography
+	Align                 Block
+	AlignPossible         Block
+	TextFont
+	  Size                Small
+	EndFont
 End
 
 ##
@@ -474,39 +474,39 @@ End
 Input stdlayouts.inc
 
 Style Caption
-  LabelFont
-    Series              Medium
-  EndFont
+	LabelFont
+	  Series              Medium
+	EndFont
 End
 
 Style Footernote
-  Margin		Static
-  LatexType		Command
-  InTitle		0
-  LatexName		footernote
-  ParSkip		0.4
-  BottomSep		1.5
-  ParSep		1.5
-  Align			Center
-  AlignPossible		Block, Left, Right, Center
-  LabelType		Static
-  LabelString		"Footernote"
-  # label font definition
-  TextFont
-    Shape               Up
-    Size                Small
-  EndFont
-  LabelFont
-    Shape		Italic
-    Size                Small
-  EndFont
+	Margin                Static
+	LatexType             Command
+	InTitle               0
+	LatexName             footernote
+	ParSkip               0.4
+	BottomSep             1.5
+	ParSep                1.5
+	Align                 Center
+	AlignPossible         Block, Left, Right, Center
+	LabelType             Static
+	LabelString           "Footernote"
+	# label font definition
+	TextFont
+	  Shape               Up
+	  Size                Small
+	EndFont
+	LabelFont
+	  Shape               Italic
+	  Size                Small
+	EndFont
 End
 
 Style MarkBoth
-  LaTeXType		Command
-  LaTeXName		markboth
-  Align			Center
-  AlignPossible		Center
+	LaTeXType             Command
+	LaTeXName             markboth
+	Align                 Center
+	AlignPossible         Center
 End
 
 ##

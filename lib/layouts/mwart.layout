@@ -12,34 +12,34 @@ Input stdclass.inc
 NoStyle Chapter
 NoStyle Chapter*
 
-MaxCounter		Counter_Section
-SecNumDepth		3
-TocDepth		3
+MaxCounter              Counter_Section
+SecNumDepth             3
+TocDepth                3
 
 # Page styles
 ClassOptions
-  PageStyle	empty|plain|outer|headings|myheadings|uheadings|myuheadings
+	PageStyle     empty|plain|outer|headings|myheadings|uheadings|myuheadings
 End
 
 # Change a bit Part and Part*
 Style Part
-  Align			Left
-  AlignPossible		Left
-  TopSep                2
-  BottomSep             1.5
+	Align                 Left
+	AlignPossible         Left
+	TopSep                2
+	BottomSep             1.5
 
-  Font
-    Size		Larger
-  EndFont
+	Font
+	  Size                Larger
+	EndFont
 End
 
 Style Part*
-  Align			Left
-  AlignPossible		Left
-  TopSep                2
-  BottomSep             1.5
+	Align                 Left
+	AlignPossible         Left
+	TopSep                2
+	BottomSep             1.5
 
-  Font
-    Size		Larger
-  EndFont
+	Font
+	  Size                Larger
+	EndFont
 End

@@ -8,14 +8,14 @@ Input scrclass.inc
 Sides                   2
 PageStyle               Headings
 NoStyle Abstract
-        
+	      
 # Modify bibliography
 Style Bibliography
-  TopSep                4
-  LabelString           Bibliography
+	TopSep                4
+	LabelString           Bibliography
 
-  LabelFont 
-    Series              Bold
-    Size                Largest
-  EndFont
+	LabelFont 
+	  Series              Bold
+	  Size                Largest
+	EndFont
 End

@@ -8,9 +8,9 @@
 
 # Title style definition
 Style LaTeX_Title
-  ObsoletedBy		Title
+	ObsoletedBy           Title
 End
 
 Style LaTeX
-  ObsoletedBy   Standard
+	ObsoletedBy   Standard
 End

@@ -9,9 +9,9 @@ Input stdstruct.inc
 
 # Abstract style definition
 Style Abstract
-  LatexType		Environment
-  LatexName		abstract
-  LatexParam		para
+	LatexType             Environment
+	LatexName             abstract
+	LatexParam            para
 End 
 
 NoStyle Bibliography

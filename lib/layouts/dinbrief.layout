@@ -13,185 +13,185 @@ Input letter.layout
 
 # My Address style
 Style My_Address
-  Margin		Static
-  LeftMargin            Unterschr
-  LabelType		Static
-  LabelString           Briefkopf:
-  LabelSep              x
-  LabelFont 
-    Shape		Italic
-    Size                Small
-    Color               blue
-  EndFont
-  BottomSep             0.5
-  Spacing               Other 0.9
+	Margin                Static
+	LeftMargin            Unterschr
+	LabelType             Static
+	LabelString           Briefkopf:
+	LabelSep              x
+	LabelFont 
+	  Shape               Italic
+	  Size                Small
+	  Color               blue
+	EndFont
+	BottomSep             0.5
+	Spacing               Other 0.9
 End
 
 # Send To Adress style changes
 Style Send_To_Address
-  Margin                Static
-  BottomSep             0.1
-  LeftMargin            Unterschr
-  LabelType		Static
-  LabelString           Adresse:
-  LabelSep              x
-  LabelFont 
-    Series		Medium
-    Shape		Italic
-    Size                Small
-    Color               blue
-  EndFont
-  Spacing               Other 0.9
+	Margin                Static
+	BottomSep             0.1
+	LeftMargin            Unterschr
+	LabelType             Static
+	LabelString           Adresse:
+	LabelSep              x
+	LabelFont 
+	  Series              Medium
+	  Shape               Italic
+	  Size                Small
+	  Color               blue
+	EndFont
+	Spacing               Other 0.9
 End
 
 # Opening style definition
 Style Opening
-  LeftMargin            Unterschr
-  LabelString		Anrede:
-  LabelSep              x
-  LabelFont 
-    Series              Medium
-    Shape		Italic
-    Size                Small
-    Color               blue
-  EndFont
+	LeftMargin            Unterschr
+	LabelString           Anrede:
+	LabelSep              x
+	LabelFont 
+	  Series              Medium
+	  Shape               Italic
+	  Size                Small
+	  Color               blue
+	EndFont
 End
 
 # Signature style definition
 Style Signature
-  LeftMargin            Unterschr
-  LabelString		Unterschrift:
-  LabelSep              x
-  LabelFont 
-    Series              Medium
-    Shape		Italic
-    Size                Small
-    Color               blue
-  EndFont
+	LeftMargin            Unterschr
+	LabelString           Unterschrift:
+	LabelSep              x
+	LabelFont 
+	  Series              Medium
+	  Shape               Italic
+	  Size                Small
+	  Color               blue
+	EndFont
 End
 
 # Closing style definition
 Style Closing
-  LeftMargin            Unterschr
-  LabelString		Gruﬂ:
-  LabelSep              x
-  LabelFont 
-    Series              Medium
-    Shape		Italic
-    Size                Small
-    Color               blue
-  EndFont
+	LeftMargin            Unterschr
+	LabelString           Gruﬂ:
+	LabelSep              x
+	LabelFont 
+	  Series              Medium
+	  Shape               Italic
+	  Size                Small
+	  Color               blue
+	EndFont
 End
 
 # encl style definition
 Style encl
-  LabelString		Anlagen:
-  LeftMargin            Unterschr
-  LabelSep              x
-  LabelFont 
-    Series		Medium
-    Shape		Italic
-    Size                Small
-    Color               blue
-  EndFont
+	LabelString           Anlagen:
+	LeftMargin            Unterschr
+	LabelSep              x
+	LabelFont 
+	  Series              Medium
+	  Shape               Italic
+	  Size                Small
+	  Color               blue
+	EndFont
 End
 
 # ps style definition
 Style ps
-  Margin  		Static
-  LatexType 		Command
-  LatexName 		ps
-  LeftMargin            Unterschr
-  LabelSep		x
-  TopSep		0.4
-  BottomSep		0.4
-  ParSep		0.4
-  Align 		Block
-  AlignPossible 	Block, Left
-  LabelType		Static
-  LabelString		PS:
-  LabelFont 
-    Series		Medium
-    Shape		Italic
-    Size                Small
-    Color               blue
-  EndFont
+	Margin                Static
+	LatexType             Command
+	LatexName             ps
+	LeftMargin            Unterschr
+	LabelSep              x
+	TopSep                0.4
+	BottomSep             0.4
+	ParSep                0.4
+	Align                 Block
+	AlignPossible         Block, Left
+	LabelType             Static
+	LabelString           PS:
+	LabelFont 
+	  Series              Medium
+	  Shape               Italic
+	  Size                Small
+	  Color               blue
+	EndFont
 End
 
 # ps style definition
 Style cc
-  LabelString		Verteiler:
-  LeftMargin            Unterschr
-  LabelSep		x
-  LabelFont 
-    Series		Medium
-    Shape		Italic
-    Size                Small
-    Color               blue
-  EndFont
+	LabelString           Verteiler:
+	LeftMargin            Unterschr
+	LabelSep              x
+	LabelFont 
+	  Series              Medium
+	  Shape               Italic
+	  Size                Small
+	  Color               blue
+	EndFont
 End
 
 # Oggetto style definition
 Style Betreff
-  Margin  		Static
-  LatexType 		Command
-  LatexName 		subject
-  LeftMargin		Unterschr
-  LabelSep		x
-  KeepEmpty             1  
-  TopSep		0.4
-  BottomSep		0.4
-  ParSep		0.4
-  Align 		Block
-  AlignPossible 	Block, Left
-  LabelType		Static
-  LabelString		Betreff:
-  LabelFont 
-    Shape		Italic
-    Size                Small
-    Color               blue
-  EndFont
-  TextFont
-    Shape               Italic
-  EndFont
+	Margin                Static
+	LatexType             Command
+	LatexName             subject
+	LeftMargin            Unterschr
+	LabelSep              x
+	KeepEmpty             1  
+	TopSep                0.4
+	BottomSep             0.4
+	ParSep                0.4
+	Align                 Block
+	AlignPossible         Block, Left
+	LabelType             Static
+	LabelString           Betreff:
+	LabelFont 
+	  Shape               Italic
+	  Size                Small
+	  Color               blue
+	EndFont
+	TextFont
+	  Shape               Italic
+	EndFont
 End
 
 # Stadt style definition
 Style Stadt
-  Margin  		Right_Address_Box
-  LatexType 		Command
-  LatexName 		place
-  LabelSep		x
-  TopSep		0.1
-  BottomSep		0.1
-  ParSep		0.1
-  Align 		Block
-  AlignPossible 	Block, Left
-  LabelType		Static
-  LabelString		Stadt:
-  LabelFont 
-    Shape		Italic
-    Size                Small
-    Color               blue
-  EndFont
+	Margin                Right_Address_Box
+	LatexType             Command
+	LatexName             place
+	LabelSep              x
+	TopSep                0.1
+	BottomSep             0.1
+	ParSep                0.1
+	Align                 Block
+	AlignPossible         Block, Left
+	LabelType             Static
+	LabelString           Stadt:
+	LabelFont 
+	  Shape               Italic
+	  Size                Small
+	  Color               blue
+	EndFont
 End
 
 # Data style definition
 Style Datum
-  Margin  		Right_Address_Box
-  LatexType 		Command
-  LatexName 		date
-  LabelSep		x
-  TopSep		0.1
-  BottomSep		0.1
-  ParSep		0.1
-  Align 		Block
-  AlignPossible 	Block, Left
-  LabelType		Static
-  LabelString		Datum:
-  LabelFont 
-    Shape		Italic
-    Size                Small
-    Color               blue
-  EndFont
+	Margin                Right_Address_Box
+	LatexType             Command
+	LatexName             date
+	LabelSep              x
+	TopSep                0.1
+	BottomSep             0.1
+	ParSep                0.1
+	Align                 Block
+	AlignPossible         Block, Left
+	LabelType             Static
+	LabelString           Datum:
+	LabelFont 
+	  Shape               Italic
+	  Size                Small
+	  Color               blue
+	EndFont
 End

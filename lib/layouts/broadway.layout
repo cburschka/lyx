@@ -9,220 +9,220 @@ SecNumDepth             2
 TocDepth                2
 
 ClassOptions
-FontSize		12
+FontSize                12
 End
 
 # This is just to show how to declare the default font.
 # The defaults are exactly those shown here.
 DefaultFont
-  Family                Roman
-  Series                Medium
-  Shape                 Up
-  Size                  Normal
-  Color                 None
+	Family                Roman
+	Series                Medium
+	Shape                 Up
+	Size                  Normal
+	Color                 None
 EndFont
 
 # Dialogue style definition. Actor dialog
 Style Dialogue
-  Margin                Static
-  LatexType             Command
-  LatexName             dialogue
-  LeftMargin            MMMMMMM
-  RightMargin		MMMMMMM
-  Align                 Left
-  AlignPossible         Left
-  LabelType             No_Label
+	Margin                Static
+	LatexType             Command
+	LatexName             dialogue
+	LeftMargin            MMMMMMM
+	RightMargin           MMMMMMM
+	Align                 Left
+	AlignPossible         Left
+	LabelType             No_Label
 End
 
 
 
 # Narrative description of Scene
 Style Narrative
-  Margin                Static
-  LatexType             Command
-  LatexName             narrative
-  ParIndent             ""
-  ParSkip               0.8
-  TopSep		1.0
-  Align                 Left
-  AlignPossible         Left
-  LabelType             No_Label
+	Margin                Static
+	LatexType             Command
+	LatexName             narrative
+	ParIndent             ""
+	ParSkip               0.8
+	TopSep                1.0
+	Align                 Left
+	AlignPossible         Left
+	LabelType             No_Label
 Font
-  Family                Roman
-  Series                Medium
-  Shape                 Italic
-  Size                  Normal
-  Color                 Black
+	Family                Roman
+	Series                Medium
+	Shape                 Italic
+	Size                  Normal
+	Color                 Black
 EndFont
 End
 
 Style ACT
-  Margin                Static
-  LatexType             Command
-  LatexName             act
-  ParIndent             ""
-  ParSkip               0.8
-  TopSep		1.0
-#  KeepEmpty		1
-  Align                 Center
-  AlignPossible         Center
-  LabelType             Counter_Chapter
-  LabelString		"ACT "
+	Margin                Static
+	LatexType             Command
+	LatexName             act
+	ParIndent             ""
+	ParSkip               0.8
+	TopSep                1.0
+#  KeepEmpty            1
+	Align                 Center
+	AlignPossible         Center
+	LabelType             Counter_Chapter
+	LabelString           "ACT "
 End
 
 
 Style SCENE
-  Margin                Dynamic
-  LatexType             Command
-  LatexName             scene
-  ParIndent             ""
-  ParSkip               0.8
-  TopSep		1.0
-#  KeepEmpty		1
-  Align                 Center
-  AlignPossible         Center
-  LabelType             Counter_Section
-  LabelString		"SCENE "
+	Margin                Dynamic
+	LatexType             Command
+	LatexName             scene
+	ParIndent             ""
+	ParSkip               0.8
+	TopSep                1.0
+#  KeepEmpty            1
+	Align                 Center
+	AlignPossible         Center
+	LabelType             Counter_Section
+	LabelString           "SCENE "
 End
 
 Style SCENE*
-  Margin                Dynamic
-  LatexType             Command
-  LatexName             scenestar
-  ParIndent             ""
-  ParSkip               0.8
-  TopSep		1.0
-  KeepEmpty		1
-  Align                 Center
-  AlignPossible         Center
-  LabelType             Static
-  LabelString		"SCENE "
+	Margin                Dynamic
+	LatexType             Command
+	LatexName             scenestar
+	ParIndent             ""
+	ParSkip               0.8
+	TopSep                1.0
+	KeepEmpty             1
+	Align                 Center
+	AlignPossible         Center
+	LabelType             Static
+	LabelString           "SCENE "
 End
 
 Style AT_RISE:
-  Margin                Dynamic
-  LatexType             Command
-  LatexName             atrise
-  ParIndent             ""
-  ParSkip               0.8
-  TopSep		1.0
-  Align                 Left
-  AlignPossible         Left
-  KeepEmpty		1
-  LabelType             Static
-  LabelString		"AT RISE: "
+	Margin                Dynamic
+	LatexType             Command
+	LatexName             atrise
+	ParIndent             ""
+	ParSkip               0.8
+	TopSep                1.0
+	Align                 Left
+	AlignPossible         Left
+	KeepEmpty             1
+	LabelType             Static
+	LabelString           "AT RISE: "
 End
 
 # Speaker style definition, identifies speaker  ALL CAPS
 Style Speaker
-  Margin                Static
-  LatexType             Command
-  LatexName             speaker
-  ParSkip               0.4
-  TopSep		0.4
-  Align                 Center
-  AlignPossible         Center
-  LabelType             No_Label
+	Margin                Static
+	LatexType             Command
+	LatexName             speaker
+	ParSkip               0.4
+	TopSep                0.4
+	Align                 Center
+	AlignPossible         Center
+	LabelType             No_Label
 End
 
 # Parenthetical instruction to speaker (in parenthises, l.c.)
 # The ( and ) will automatically appear on screen, so don't type any.
 Style Parenthetical
-  Margin                Static
-  LatexType             Command
-  LatexName             parenthetical
-  LeftMargin            MMMMMMMMMMMMM
-  RightMargin		MMMM
-  TopSep		0.0
-  BottomSep		0.0
-  ParSkip		0.0
-  Align                 Left
-  AlignPossible         Left
-  LabelType		Static
-  LabelString		(
-  EndLabelType		Static
-  EndLabelString	)
+	Margin                Static
+	LatexType             Command
+	LatexName             parenthetical
+	LeftMargin            MMMMMMMMMMMMM
+	RightMargin           MMMM
+	TopSep                0.0
+	BottomSep             0.0
+	ParSkip               0.0
+	Align                 Left
+	AlignPossible         Left
+	LabelType             Static
+	LabelString           (
+	EndLabelType          Static
+	EndLabelString        )
 
 Font
-  Family                Roman
-  Series                Medium
-  Shape                 Italic
-  Size                  Normal
-  Color                 Blue
+	Family                Roman
+	Series                Medium
+	Shape                 Italic
+	Size                  Normal
+	Color                 Blue
 EndFont
 
 LabelFont
-  Family                Roman
-  Series                Medium
-  Shape                 Up
-  Size                  Normal
-  Color                 Blue
+	Family                Roman
+	Series                Medium
+	Shape                 Up
+	Size                  Normal
+	Color                 Blue
 EndFont
 End
 
 
 Style CURTAIN
-  Margin                Static
-  LatexType             Command
-  LatexName             curtain
-  ParIndent             ""
-  ParSkip               0.8
-  TopSep		1.0
-  KeepEmpty		1
-  Align                 Center
-  AlignPossible         Center
-  LabelType             Static
-  LabelString		"CURTAIN"
+	Margin                Static
+	LatexType             Command
+	LatexName             curtain
+	ParIndent             ""
+	ParSkip               0.8
+	TopSep                1.0
+	KeepEmpty             1
+	Align                 Center
+	AlignPossible         Center
+	LabelType             Static
+	LabelString           "CURTAIN"
 End
 
 # Standard style definition (I kept this one to provide a general case)
 Style Standard
-  Margin                Static
-  LatexType             Paragraph
-  LatexName             dummy
-  ParIndent             ""
-  ParSkip               0.4
-  Align                 Left
-  AlignPossible         Block, Left, Right, Center
-  Labeltype             No_Label
+	Margin                Static
+	LatexType             Paragraph
+	LatexName             dummy
+	ParIndent             ""
+	ParSkip               0.4
+	Align                 Left
+	AlignPossible         Block, Left, Right, Center
+	Labeltype             No_Label
 End
 
 Style Title
-  Margin		Static
-  LatexType		Command
-  LatexName		title
-  InTitle		1
-  ParSkip		0.4
-  BottomSep		1.5
-  ParSep		1.5
-  Align			Center
-  AlignPossible		Left, Right, Center
+	Margin                Static
+	LatexType             Command
+	LatexName             title
+	InTitle               1
+	ParSkip               0.4
+	BottomSep             1.5
+	ParSep                1.5
+	Align                 Center
+	AlignPossible         Left, Right, Center
 
 End
 
 Style Author
-  Margin		Static
-  LatexType		Command
-  LatexName		author
-  InTitle		1
-  ParSkip		0.4
-  BottomSep		1.5
-  ParSep		1.5
-  Align			Center
-  AlignPossible		Left, Right, Center
+	Margin                Static
+	LatexType             Command
+	LatexName             author
+	InTitle               1
+	ParSkip               0.4
+	BottomSep             1.5
+	ParSep                1.5
+	Align                 Center
+	AlignPossible         Left, Right, Center
 End
 
 # Right Address style
 Style Right_Address
-  Margin		Right_Address_Box
-  LatexType		Command
-  LatexName		address
-  InTitle		1
-  ParSkip		0.4
-  BottomSep		1.5
-  ParSep		1.5
-  Align			Left
-  AlignPossible		Left, Right
+	Margin                Right_Address_Box
+	LatexType             Command
+	LatexName             address
+	InTitle               1
+	ParSkip               0.4
+	BottomSep             1.5
+	ParSep                1.5
+	Align                 Left
+	AlignPossible         Left, Right
 End
  
 Input stdtitle.inc

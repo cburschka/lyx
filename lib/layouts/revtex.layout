@@ -10,26 +10,26 @@
 #                       made by Jean-Marc Lasgouttes to amsart.layout)
 
 # General textclass parameters
-Columns			1
-Sides			1
-PageStyle		Headers
-MaxCounter		Counter_Section
+Columns                 1
+Sides                   1
+PageStyle               Headers
+MaxCounter              Counter_Section
 
 # Default textclass options. The user may need to modify this.
 ClassOptions
-  Other			"aps,manuscript"
+	Other                 "aps,manuscript"
 End
 
 # Standard style definition
 Style Standard
-  Margin  		Static
-  LatexType 		Paragraph
-  LatexName 		dummy
-  ParIndent		MM
-  ParSkip 		0.4
-  Align 		Block
-  AlignPossible 	Block, Left, Right, Center
-  LabelType 		No_Label
+	Margin                Static
+	LatexType             Paragraph
+	LatexName             dummy
+	ParIndent             MM
+	ParSkip               0.4
+	Align                 Block
+	AlignPossible         Block, Left, Right, Center
+	LabelType             No_Label
 End
 
 ############### Sections.
@@ -40,45 +40,45 @@ Input stdsections.inc
 
 # Section-numbered style definition
 Style Section
-  Align			Center
-  AlignPossible		Block, Center, Left
+	Align                 Center
+	AlignPossible         Block, Center, Left
 
-  # standard font definition
-  Font
-    Series 		Medium
-    Shape		Smallcaps
-    Size		Large
-  EndFont
+	# standard font definition
+	Font
+	  Series              Medium
+	  Shape               Smallcaps
+	  Size                Large
+	EndFont
 End
 
 # Subsection-numbered style definition
 Style Subsection
-  # standard font definition
-  Font
-    Series 		Bold
-    Size		Normal
-  EndFont
+	# standard font definition
+	Font
+	  Series              Bold
+	  Size                Normal
+	EndFont
 End
 
 # Subsubsection-numbered style definition
 Style Subsubsection
-  # standard font definition
-  Font
-    Shape  		Italic
-    Size		Normal
-  EndFont
+	# standard font definition
+	Font
+	  Shape               Italic
+	  Size                Normal
+	EndFont
 End
 
 # Paragraph-numbered style definition
 Style Paragraph
-  TopSep		0.7
-  ParSep		0.4
+	TopSep                0.7
+	ParSep                0.4
 
-  # standard font definition
-  Font
-    Shape  		Italic
-    Size		Normal
-  EndFont
+	# standard font definition
+	Font
+	  Shape               Italic
+	  Size                Normal
+	EndFont
 End
 
 # then define the unumbered sections, based on the numbered ones.
@@ -87,8 +87,8 @@ Input stdstarsections.inc
 # remove the layouts that do not make sense.
 NoStyle         Chapter
 NoStyle         Chapter*
-NoStyle		Subparagraph
-NoStyle		Subparagraph*
+NoStyle         Subparagraph
+NoStyle         Subparagraph*
 
 ########### LAYOUTS quotes, etc.
 Input stdlayouts.inc
@@ -102,68 +102,68 @@ Input stdstruct.inc
 
 # Title style definition
 Style Title
-  # standard font definition
-  Font
-    Series 		Bold
-    Size		Large
-  EndFont
+	# standard font definition
+	Font
+	  Series              Bold
+	  Size                Large
+	EndFont
 End
 
 # Author style definition
 # Same as stdstruct.inc except the font
 Style Author
-  # standard font definition
-  Font
-    Size		Large
-    Shape		Smallcaps
-  EndFont
+	# standard font definition
+	Font
+	  Size                Large
+	  Shape               Smallcaps
+	EndFont
 End
 
 # Date style definition
 Style Date
-  LabelType		Static
-  LabelString		"Date: "
+	LabelType             Static
+	LabelString           "Date: "
 
-  # standard font definition
-  LabelFont
-    Shape		Italic
-    Size		Large
-  EndFont
+	# standard font definition
+	LabelFont
+	  Shape               Italic
+	  Size                Large
+	EndFont
 End
 
 # Address style definition
 Style Address
-  Margin		Dynamic
-  LatexType		Command
-  InTitle		1
-  LatexName		address
-  ParSkip		0.4
-  BottomSep		1.5
-  ParSep		1.5
-  Align			Center
-  AlignPossible		Block, Left, Right, Center
-  LabelType		Static
-  LabelString           "Address: "
+	Margin                Dynamic
+	LatexType             Command
+	InTitle               1
+	LatexName             address
+	ParSkip               0.4
+	BottomSep             1.5
+	ParSep                1.5
+	Align                 Center
+	AlignPossible         Block, Left, Right, Center
+	LabelType             Static
+	LabelString           "Address: "
 
-  LabelFont
-    Shape		Italic
-  EndFont
+	LabelFont
+	  Shape               Italic
+	EndFont
 End  
 
 # Abstract style definition
 Style Abstract 
-  ItemSep		0.2
-  ParSep		0.3
+	ItemSep               0.2
+	ParSep                0.3
 
-  # standard font definition
-  Font
-    Size		Normal
-  EndFont
+	# standard font definition
+	Font
+	  Size                Normal
+	EndFont
 
-  # label font definition
-  LabelFont
-    Size		Large
-  EndFont
+	# label font definition
+	LabelFont
+	  Size                Large
+	EndFont
 End 
 
 Input stdfloats.inc
@@ -173,5 +173,5 @@ Input stdcounters.inc
 Input obsolete.inc
 
 Style REVTEX_Title
-  ObsoletedBy		Title
+	ObsoletedBy           Title
 End

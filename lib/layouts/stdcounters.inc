@@ -5,69 +5,69 @@
 
 
 Counter
-  Name                 part
+	Name                 part
 End
 
 Counter
-  Name                 chapter
+	Name                 chapter
 End
 
 Counter
-  Name                 section
-  Within               chapter
+	Name                 section
+	Within               chapter
 End
 
 Counter
-  Name                 subsection
-  Within               section
+	Name                 subsection
+	Within               section
 End
 
 Counter
-  Name                 subsubsection
-  Within               subsection
+	Name                 subsubsection
+	Within               subsection
 End
 
 Counter
-  Name                 paragraph
-  Within               subsubsection
+	Name                 paragraph
+	Within               subsubsection
 End
 
 Counter
-  Name                 subparagraph
-  Within               paragraph
+	Name                 subparagraph
+	Within               paragraph
 End
 
 Counter
-  Name                 enumi
+	Name                 enumi
 End
 
 Counter
-  Name                 enumii
-  Within               enumi
+	Name                 enumii
+	Within               enumi
 End
 
 Counter
-  Name                 enumiii
-  Within               enumii
+	Name                 enumiii
+	Within               enumii
 End
 
 Counter
-  Name                 enumiv
-  Within               enumiii
+	Name                 enumiv
+	Within               enumiii
 End
 
 Counter
-  Name                 bibitem
+	Name                 bibitem
 End
 
 Counter
-  Name                 figure
+	Name                 figure
 End
 
 Counter
-  Name                 table
+	Name                 table
 End
 
 Counter
-  Name                 algorithm
+	Name                 algorithm
 End

@@ -27,7 +27,7 @@
 Input svjour.inc
 
 ClassOptions
-  Other		probth
+	Other         probth
 End
 
 
@@ -35,29 +35,29 @@ End
 
 # Title style definition
 Style Title
-  # standard font definition
-  Font 
-    Family  		Roman
-    Series 		Bold
-    Size		Larger
-  EndFont
+	# standard font definition
+	Font 
+	  Family              Roman
+	  Series              Bold
+	  Size                Larger
+	EndFont
 End
 
 # Subtitle style definition
 Style Subtitle
-  # standard font definition
-  Font 
-    Family  		Roman
-    Series 		Bold
-    Size		Large
-  EndFont
+	# standard font definition
+	Font 
+	  Family              Roman
+	  Series              Bold
+	  Size                Large
+	EndFont
 End
 
 # Author style definition
 Style Author
-  # standard font definition
-  Font 
-    Series 		Medium
-    Shape		Up
-  EndFont
+	# standard font definition
+	Font 
+	  Series              Medium
+	  Shape               Up
+	EndFont
 End

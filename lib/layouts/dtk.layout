@@ -6,36 +6,36 @@
 # Author : Herbert Voss <voss@lyx.org> 2001/08/13
 #
 # General textclass parameters
-Columns			1
-Sides			2
-SecNumDepth		-1		#no counting
-TocDepth		-1
-MaxCounter		Counter_EnumI	#no counting of sections
+Columns                 1
+Sides                   2
+SecNumDepth             -1              #no counting
+TocDepth                -1
+MaxCounter              Counter_EnumI   #no counting of sections
 #
 ClassOptions
-  FontSize		default		#only 10pt in fact of A5
-  PageStyle		""		# controlled by class
+	FontSize              default         #only 10pt in fact of A5
+	PageStyle             ""              # controlled by class
 End
 #
-DefaultFont				# only for screen
-  Family		Roman
-  Series		Medium
-  Shape			Up
-  Size			Normal
-  Color			None
+DefaultFont                             # only for screen
+	Family                Roman
+	Series                Medium
+	Shape                 Up
+	Size                  Normal
+	Color                 None
 EndFont
 #
 # Standard style definition
 #
 Style Standard
-  Margin  		Static
-  LatexType 		Paragraph
-  LatexName 		dummy		# no special latex env
-  ParSkip 		0.5		# default
-  ParSep		0.5		# default
-  Align 		Block
-  AlignPossible 	Block, Left, Right, Center
-  LabelType 		No_Label
+	Margin                Static
+	LatexType             Paragraph
+	LatexName             dummy           # no special latex env
+	ParSkip               0.5             # default
+	ParSep                0.5             # default
+	Align                 Block
+	AlignPossible         Block, Left, Right, Center
+	LabelType             No_Label
 End
 #
 #
