@@ -18,6 +18,7 @@
 
 #include "QBrowseBox.h"
 
+#include <cmath>
 
 
 QBrowseBox::QBrowseBox(int rows, int cols, QWidget* parent, const char * name, WFlags f)

@@ -10,8 +10,6 @@
 
 #include <config.h>
 
-
-
 #include "qt_helpers.h"
 #include "controllers/ControlCitation.h"
 
@@ -28,7 +26,6 @@
 using std::vector;
 using std::find;
 using std::max;
-using std::endl;
 
 
 QCitationDialog::QCitationDialog(QCitation * form)

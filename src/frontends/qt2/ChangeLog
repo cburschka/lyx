@@ -1,6 +1,14 @@
+2003-09-06  Angus Leeming  <leeming@lyx.org>
+
+	* QCitationDialog.C:
+	* QMathDialog.C:
+	* QTabularDialog.C: remove using std::endl directive.
+
 2003-09-06  Kornel Benko  <kornel.benko@berlin.de>
 
 	* QLyXKeySym.C: re-add <map> header file.
+	* QBrowseBox.C: re-add <cmath> header file.
+	* qttableview.C: re-add <limits.h> header file.
 
 2003-09-05  Angus Leeming  <leeming@lyx.org>
 
