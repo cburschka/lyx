@@ -567,7 +567,7 @@ void LyXText::draw(BufferView * bview, Row const * row,
 		if (c == LyXParagraph::META_INSET) {
 		Inset * tmpinset = row->par()->GetInset(pos);
 		if (tmpinset) {
-			tmpinset->update(bview, font);
+			tmpinset->update(bview, font, false);
 			tmpinset->draw(bview, font, offset+row->baseline(), x,
 				       cleared);
 		}
@@ -1699,7 +1699,7 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
    row_ptr->width(maxwidth+x);
    if (inset_owner) {
 	   Row * r = firstrow;
-	   width = 0;
+	   width = max(0,workWidth(bview));
 	   while(r) {
 		   if (r->width() > width)
 			   width = r->width();

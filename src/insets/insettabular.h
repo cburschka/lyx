@@ -91,7 +91,7 @@ public:
     ///
     void draw(BufferView *, const LyXFont &, int , float &, bool) const;
     ///
-    void update(BufferView *, LyXFont const &, bool);
+    void update(BufferView *, LyXFont const &, bool =false);
     ///
     const char * EditMessage() const;
     ///

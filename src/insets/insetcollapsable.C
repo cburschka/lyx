@@ -156,11 +156,11 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 	return;
     }
 
-    if (!cleared && ((need_update == FULL) ||
+    if (!cleared && ((inset->need_update == InsetText::FULL) ||
 		     (top_x!=int(x)) || (top_baseline!=baseline))) {
 	int w =  owner()? width(pain, f) : pain.paperWidth();
 	int h = ascent(pain,f) + descent(pain, f);
-	int tx = (display() && !owner())? 0:int(x);
+	int tx = (needFullRow() && !owner())? 0:int(x);
 	int ty = baseline - ascent(pain,f);
 	
 	if (ty < 0)
@@ -291,8 +291,8 @@ int InsetCollapsable::getMaxTextWidth(Painter & pain,
 }
 
 
-void InsetCollapsable::update(BufferView * bv,
-			      LyXFont const & font, bool dodraw)
+void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
+			      bool dodraw)
 {
     if (!widthCollapsed) {
 	widthCollapsed = width_collapsed(bv->painter(), font);

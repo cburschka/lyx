@@ -45,7 +45,8 @@ public:
 	CURSOR_PAR,
 	CURSOR,
 	SELECTION,
-	FRAME
+	DRAW_FRAME,
+	CLEAR_FRAME
     };
     ///
     enum DrawFrame {
@@ -135,6 +136,8 @@ public:
     ///
     void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
     ///
+    int getMaxWidth(Painter &, UpdatableInset const *) const;
+    ///
     void init(InsetText const * ins = 0);
     ///
     void WriteParagraphData(Buffer const *, std::ostream &) const;
@@ -153,12 +156,12 @@ public:
     void deleteLyXText(BufferView *);
 
     LyXParagraph * par;
+    ///
+    mutable UpdateCodes need_update;
 
 protected:
     ///
     void UpdateLocal(BufferView *, UpdateCodes, bool mark_dirty);
-    ///
-    virtual int getMaxTextWidth(Painter &, UpdatableInset const *) const;
 
     mutable int drawTextXOffset;
     mutable int drawTextYOffset;
@@ -167,8 +170,6 @@ protected:
     DrawFrame drawFrame;
     ///
     LColor::color frame_color;
-    ///
-    mutable UpdateCodes need_update;
 
 private:
     ///
