@@ -37,6 +37,8 @@ public:
 
 	///
 	PreviewedInset(Inset & inset) : inset_(inset), pimage_(0) {}
+	///
+	virtual ~PreviewedInset() {}
 
 	/** Find the PreviewLoader, add a LaTeX snippet to it and
 	 *  start the loading process.
