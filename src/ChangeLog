@@ -1,3 +1,12 @@
+2001-07-20  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* src/LColor.[Ch]: remove noteframe. Change note to "yellow".
+
+	* src/BufferView_pimpl.C (insertNote): use InsetNote in place of
+	InsetInfo.
+
+	* src/buffer.C (readInset): ditto.
+
 2001-07-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* BufferView_pimpl.C (specialChar): new method. Obsoletes

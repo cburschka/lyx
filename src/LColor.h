@@ -83,8 +83,6 @@ public:
 		note,
 		/// Background color of notes
 		notebg,
-		/// Frame color for notes
-		noteframe,
 
 
 		/// Color for the depth bars in the margin

@@ -55,7 +55,7 @@
 #include "insets/insetlabel.h"
 #include "insets/insetref.h"
 #include "insets/inseturl.h"
-#include "insets/insetinfo.h"
+#include "insets/insetnote.h"
 #include "insets/insetquotes.h"
 #include "insets/insetlatexaccent.h"
 #include "insets/insetbib.h" 
@@ -1389,7 +1389,7 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 		} else if (tmptok == "Figure") {
 			inset = new InsetFig(100, 100, *this);
 		} else if (tmptok == "Info") {
-			inset = new InsetInfo;
+			inset = new InsetNote;
 		} else if (tmptok == "Include") {
 			InsetCommandParams p( "Include" );
 			inset = new InsetInclude(p, *this);

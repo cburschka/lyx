@@ -41,7 +41,7 @@
 #include "insets/insetref.h"
 #include "insets/insetparent.h"
 #include "insets/insetindex.h"
-#include "insets/insetinfo.h"
+#include "insets/insetnote.h"
 #include "insets/insetinclude.h"
 #include "insets/insetcite.h"
 #include "insets/insetert.h"
@@ -3279,9 +3279,9 @@ void BufferView::Pimpl::specialChar(InsetSpecialChar::Kind kind)
 
 void BufferView::Pimpl::insertNote()
 {
-	InsetInfo * new_inset = new InsetInfo();
-	insertInset(new_inset);
-	new_inset->edit(bv_, 0, 0, 0);
+	Inset * inset = new InsetNote;
+	insertInset(inset);
+	inset->edit(bv_, 0, 0, 0);
 }
 
 

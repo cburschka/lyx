@@ -13,6 +13,7 @@ src/ext_l10n.h
 src/figureForm.C
 src/figure_form.C
 src/FontLoader.C
+src/frontends/controllers/biblio.C
 src/frontends/controllers/ButtonController.h
 src/frontends/controllers/character.C
 src/frontends/controllers/ControlAboutlyx.C
@@ -170,11 +171,11 @@ src/insets/insetfoot.C
 src/insets/insetgraphics.C
 src/insets/insetinclude.C
 src/insets/insetindex.C
-src/insets/insetinfo.C
 src/insets/insetlabel.C
 src/insets/insetlist.C
 src/insets/insetmarginal.C
 src/insets/insetminipage.C
+src/insets/insetnote.C
 src/insets/insetparent.C
 src/insets/insetref.C
 src/insets/insettabular.C
