@@ -1,13 +1,12 @@
 #include "math_bigopinset.h"
-#include "Painter.h"
-#include "mathed/support.h"
+#include "mathed/math_parser.h"
 #include "support/LOstream.h"
 
 
 using std::ostream;
 
-MathBigopInset::MathBigopInset(string const & name, int id)
-	: MathInset(0, name), sym_(id)
+MathBigopInset::MathBigopInset(const latexkeys * l)
+	: sym_(l)
 {}
 
 
@@ -19,34 +18,30 @@ MathInset * MathBigopInset::clone() const
 
 void MathBigopInset::write(ostream & os, bool /* fragile */) const
 {
-	//bool f = sym_ != LM_int && sym_ != LM_oint && size() == LM_ST_DISPLAY;
-	os << '\\' << name();
+	os << '\\' << sym_->name;
 }
 
 
 void MathBigopInset::writeNormal(ostream & os) const
 {
-	os << "[bigop " << name() << "] ";
+	os << "[bigop " << sym_->name << "] ";
 }
 
 
 void MathBigopInset::metrics(MathStyles st)
 {
-	//cerr << "\nBigopDraw: " << name_ << ": " << sym_ << "\n";
 	size(st);
 	
-	if (sym_ && (sym_ < 256 || sym_ == LM_oint)) {
+	if (sym_->id > 0 && sym_->id < 256) {
 		ssym_ = string();
-		ssym_ += (sym_ == LM_oint) ? LM_int : sym_;
+		ssym_ += sym_->id;
 		code_ = LM_TC_BSYM;
 	} else {
-		ssym_ = name();
+		ssym_ = sym_->name;
 		code_ = LM_TC_TEXTRM;
 	}
 
 	mathed_string_dim(code_, size(), ssym_, ascent_, descent_, width_);
-	if (sym_ == LM_oint)
-		width_ += 2;
 }
 
 
@@ -56,10 +51,4 @@ void MathBigopInset::draw(Painter & pain, int x, int y)
 	yo(y);
 
 	drawStr(pain, code_, size_, x, y, ssym_);
-
-	if (sym_ == LM_oint) {
-		int xx = x - 1;
-		int yy = y - (ascent_ - descent_) / 2;
-		pain.arc(xx, yy, width_, width_, 0, 360 * 64, LColor::mathline);
-	}
 }

@@ -4,11 +4,13 @@
 
 #include "math_inset.h"
 
+struct latexkeys;
+
 /// big operators
 class MathBigopInset : public MathInset {
 public:
 	///
-	MathBigopInset(string const &, int);
+	explicit MathBigopInset(latexkeys const *);
 	///
 	MathInset * clone() const;
 	///
@@ -23,7 +25,7 @@ public:
 	bool isScriptable() const { return true; }
 private:
 	///
-	int sym_;
+	latexkeys const * sym_;
 	///
 	string ssym_;
 	///

@@ -184,7 +184,7 @@ latexkeys const wordlist[] =
 	{"nu",  LM_TK_SYM, LM_nu, LMB_NONE},
 	{"nwarrow",  LM_TK_SYM, LM_nwarrow, LMB_NONE},
 	{"odot",  LM_TK_SYM, LM_odot, LMB_OPERATOR},
-	{"oint",  LM_TK_BIGSYM, LM_oint, LMB_NONE},
+	//{"oint",  LM_TK_BIGSYM, LM_oint, LMB_NONE},
 	{"omega",  LM_TK_SYM, LM_omega, LMB_NONE},
 	{"ominus",  LM_TK_SYM, LM_ominus, LMB_OPERATOR},
 	{"oplus",  LM_TK_SYM, LM_oplus, LMB_OPERATOR},

@@ -633,7 +633,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 		case LM_TK_BIGSYM:  
 		case LM_TK_FUNCLIM:
 			limits = 0;
-			array.push_back(new MathBigopInset(yylval.l->name, yylval.l->id));
+			array.push_back(new MathBigopInset(yylval.l));
 			break;
 		
 		case LM_TK_SYM:

@@ -667,7 +667,7 @@ void MathCursor::interpret(string const & s)
 		switch (l->token) {
 			case LM_TK_BIGSYM: 
 			case LM_TK_FUNCLIM:
-				p = new MathBigopInset(s, l->id);
+				p = new MathBigopInset(l);
 				break;
 				
 			case LM_TK_SYM: {
