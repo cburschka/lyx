@@ -54,7 +54,7 @@ public:
 	void update();
 
 	/// update the layout combox
-	void setLayout(int layout);
+	void setLayout(string const & layout);
 	/// Populate the layout combox; re-do everything if force is true.
 	void updateLayoutList(bool force);
 	/// Drop down the layout list

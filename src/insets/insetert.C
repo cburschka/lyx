@@ -199,8 +199,7 @@ void InsetERT::write(Buffer const * buf, ostream & os) const
 	   << "status "<< st << "\n";
 
 	//inset.writeParagraphData(buf, os);
-	string const layout =
-		textclasslist.NameOfLayout(buf->params.textclass, 0);
+	string const layout(textclasslist[buf->params.textclass].defaultLayoutName());
 	Paragraph * par = inset.paragraph();
 	while (par) {
 		os << "\n\\layout " << layout << "\n";
@@ -453,7 +452,7 @@ InsetERT::localDispatch(BufferView * bv, kb_action action, string const & arg)
 
 	switch (action) {
 	case LFUN_LAYOUT:
-		bv->owner()->setLayout(inset.paragraph()->getLayout());
+		bv->owner()->setLayout(inset.paragraph()->layout());
 		break;
 	default:
 		result = InsetCollapsable::localDispatch(bv, action, arg);

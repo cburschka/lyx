@@ -61,9 +61,8 @@ public:
 	/// update the state of the icons
 	void update();
 
- 
 	/// select the right layout in the combox
-	void setLayout(int layout);
+	void setLayout(string const & layout);
 	/// Populate the layout combox; re-do everything if force is true.
 	void updateLayoutList(bool force);
 	/// Drop down the layout list

@@ -521,8 +521,7 @@ Paragraph * Paragraph::Pimpl::TeXDeeper(Buffer const * buf,
 	Paragraph * par = owner_;
 
 	while (par && par->params().depth() == owner_->params().depth()) {
-		if (textclasslist.Style(bparams.textclass, 
-					par->layout).isEnvironment()) {
+		if (textclasslist[bparams.textclass][par->layout()].isEnvironment()) {
 			par = par->TeXEnvironment(buf, bparams,
 						  os, texrow);
 		} else {
@@ -557,12 +556,12 @@ LyXFont const Paragraph::Pimpl::realizeFont(LyXFont const & font,
 	// check for environment font information
 	char par_depth = owner_->getDepth();
 	Paragraph const * par = owner_;
+	LyXTextClass const & tclass = textclasslist[bparams.textclass];
+	
 	while (par && par->getDepth() && !tmpfont.resolved()) {
 		par = par->outerHook();
 		if (par) {
-			tmpfont.realize(textclasslist.
-					Style(bparams.textclass,
-					      par->getLayout()).font
+			tmpfont.realize(tclass[par->layout()].font
 #ifdef INHERIT_LANGUAGE
 					, bparams.language
 #endif
@@ -571,8 +570,7 @@ LyXFont const Paragraph::Pimpl::realizeFont(LyXFont const & font,
 		}
 	}
 
-	tmpfont.realize(textclasslist.TextClass(bparams.textclass)
-			.defaultfont()
+	tmpfont.realize(tclass.defaultfont()
 #ifdef INHERIT_LANGUAGE
 		, bparams.language
 #endif

@@ -167,8 +167,10 @@ public:
 	void clearContents();
 
 	///
-	lyx::layout_type layout;
-
+	string const & layout() const;
+	///
+	void layout(string const & new_layout);
+	
 	///
 	void setCounter(int i, int v);
 	///
@@ -218,17 +220,13 @@ public:
 	///
 	void setLabelWidthString(string const & s);
 	///
-	lyx::layout_type getLayout() const;
-	///
 	char getAlign() const;
 	/// The nesting depth of a paragraph
 	depth_type getDepth() const;
 	/// The maximal possible depth of a paragraph after this one
 	depth_type getMaxDepthAfter(Buffer const *) const;
 	///
-	void setLayout(lyx::layout_type new_layout);
-	///
-	void setOnlyLayout(lyx::layout_type new_layout);
+	void applyLayout(string const & new_layout);
 	///
 	int getFirstCounter(int i) const;
 	///
@@ -347,7 +345,8 @@ public:
 	ParagraphParameters & params();
 	ParagraphParameters const & params() const;
 private:
-	
+	///
+	string layout_;
 	///
 	struct InsetTable {
 		///

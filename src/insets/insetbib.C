@@ -145,7 +145,7 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 	// 1. \bibliographystyle{style}
 	// 2. \addcontentsline{...} - if option bibtotoc set
 	// 3. \bibliography{database}
-	string adb, db_out;
+	string adb;
 	string db_in = getContents();
 	db_in = split(db_in, adb, ',');
 
@@ -174,7 +174,8 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 		// part of its name, because it's than book.
 		// For the "official" lyx-layouts it's no problem to support
 		// all well
-		if (!contains(textclasslist.NameOfClass(buffer->params.textclass),"art")) {
+		if (!contains(textclasslist[buffer->params.textclass].name(),
+			      "art")) {
 			if (buffer->params.sides == LyXTextClass::OneSide) {
 				// oneside
 				os << "\\clearpage";
@@ -196,6 +197,7 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 	// If we generate in a temp dir, we might need to give an
 	// absolute path there. This is a bit complicated since we can
 	// have a comma-separated list of bibliographies
+	string db_out;
 	while (!adb.empty()) {
 		if (!buffer->niceFile &&
 		    IsFileReadable(MakeAbsPath(adb, buffer->filePath())+".bib")) 

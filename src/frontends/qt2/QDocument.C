@@ -566,7 +566,7 @@ void QDocument::class_update(BufferParams const & params)
 	if (!class_.get())
 		return;
 
-	LyXTextClass const & tclass = textclasslist.TextClass(params.textclass);
+	LyXTextClass const & tclass = textclasslist[params.textclass];
 
 	combo_doc_class->select_text(
 				 textclasslist.DescOfClass(params.textclass));

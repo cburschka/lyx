@@ -601,7 +601,7 @@ int BufferView::unlockInset(UpdatableInset * inset)
 		inset->insetUnlock(this);
 		theLockingInset(0);
 		// make sure we update the combo !
-		owner()->setLayout(getLyXText()->cursor.par()->getLayout());
+		owner()->setLayout(getLyXText()->cursor.par()->layout());
 		finishUndo();
 		return 0;
 	} else if (inset && theLockingInset() &&

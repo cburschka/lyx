@@ -26,7 +26,6 @@
 
 using std::pair;
 using lyx::pos_type;
-using lyx::layout_type;
 using lyx::textclass_type;
 
 extern BufferView * current_view;
@@ -380,26 +379,28 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 	ParIterator end = ParIterator();
 	for (ParIterator it = ParIterator(par); it != end; ++it) {
 		par = *it;
-		string const name = textclasslist.NameOfLayout(c1, par->layout);
-		int lay = 0;
-		pair<bool, layout_type> pp =
-			textclasslist.NumberOfLayout(c2, name);
-		if (pp.first) {
-			lay = pp.second;
-		} else {
-			// not found: use default layout "Standard" (0)
-			lay = 0;
-		}
-		par->layout = lay;
+		string const name = par->layout();
+		LyXTextClass const & tclass = textclasslist[c2];
 		
-		if (name != textclasslist.NameOfLayout(c2, par->layout)) {
+		bool hasLayout = tclass.hasLayout(name);
+		
+		string lay = tclass.defaultLayoutName();
+		if (hasLayout) {
+			lay = name;
+		} else {
+			// not found: use default layout
+			lay = tclass.defaultLayoutName();
+		}
+		par->layout(lay);
+		
+		if (name != par->layout()) {
 			++ret;
 			string const s = _("Layout had to be changed from\n")
 				+ name + _(" to ")
-				+ textclasslist.NameOfLayout(c2, par->layout)
+				+ par->layout()
 				+ _("\nbecause of class conversion from\n")
-				+ textclasslist.NameOfClass(c1) + _(" to ")
-				+ textclasslist.NameOfClass(c2);
+				+ textclasslist[c1].name() + _(" to ")
+				+ textclasslist[c2].name();
 			InsetError * new_inset = new InsetError(s);
 			par->insertInset(0, new_inset,
 					 LyXFont(LyXFont::ALL_INHERIT,

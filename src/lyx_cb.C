@@ -421,15 +421,13 @@ void MenuInsertLabel(BufferView * bv, string const & arg)
 	bv->owner()->prohibitInput();
 	if (label.empty()) {
 		Paragraph * par = bv->getLyXText()->cursor.par();
-		LyXLayout const * layout =
-			&textclasslist.Style(bv->buffer()->params.textclass,
-					     par->getLayout());
+		LyXTextClass const & tclass =
+			textclasslist[bv->buffer()->params.textclass];
+		LyXLayout const * layout = &tclass[par->layout()];
 
 		if (layout->latextype == LATEX_PARAGRAPH && par->previous()) {
 			Paragraph * par2 = par->previous();
-			LyXLayout const * layout2 =
-				&textclasslist.Style(bv->buffer()->params.textclass,
-						     par2->getLayout());
+			LyXLayout const * layout2 = &tclass[par2->layout()];
 			if (layout2->latextype != LATEX_PARAGRAPH) {
 				par = par2;
 				layout = layout2;

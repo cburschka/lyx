@@ -1,5 +1,44 @@
 2002-03-02  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* text2.C: layout as string
+
+	* text.C: layout as string
+
+	* paragraph_pimpl.C: layout as string
+
+	* paragraph.[Ch]: layout as string
+
+	* lyxtextclasslist.[Ch]: layout as string
+
+	* lyxtextclass.[Ch]: layout as string
+
+	* lyxtext.h: layout as string
+
+	* lyxlayout.[Ch]: layout as string
+
+	* lyx_cb.C: layout as string
+
+	* bufferview_funcs.C: layout as string
+
+	* bufferparams.C: layout as string
+
+	* buffer.C: layout as string
+
+	* LyXView.[Ch]: layout as string
+
+	* LaTeXFeatures.[Ch]: layout as string
+
+	* CutAndPaste.C (SwitchLayoutsBetweenClasses): layout as string
+
+	* BufferView_pimpl.C: change current_layout to string, remove
+	lyx::layout_type.
+	(Dispatch): 
+	(smartQuote): 
+	(insertInset): 
+	(workAreaButtonRelease): layout as string
+
+	* BufferView2.C (unlockInset): adjust
+
 	* vspace.C (asLatexCommand): use an explict temp variable.
 
 2002-03-01  John Levon  <moz@compsoc.man.ac.uk>

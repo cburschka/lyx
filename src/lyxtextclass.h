@@ -58,30 +58,36 @@ public:
 	bool hasLayout(string const & name) const;
 
 	///
-	LyXLayout const & GetLayout(string const & vname) const;
+	LyXLayout const & operator[](string const & vname) const;
 
 	///
-	LyXLayout & GetLayout(string const & vname);
+	LyXLayout & operator[](string const & vname);
 
 	/// Sees to that the textclass structure has been loaded
-	void load();
+	bool load() const;
 
 	///
-	string const & name() const { return name_; }
+	string const defaultLayoutName() const;
 	///
-	string const & latexname() const { return latexname_; }
+	LyXLayout const & defaultLayout() const;
 	///
-	string const & description() const { return description_; }
+	LyXLayout & defaultLayout();
 	///
-	string const & opt_fontsize() const { return opt_fontsize_; }
+	string const & name() const;
 	///
-	string const & opt_pagestyle() const { return opt_pagestyle_; }
+	string const & latexname() const;
 	///
-	string const & options() const { return options_; }
+	string const & description() const;
 	///
-	string const & pagestyle() const { return pagestyle_; }
+	string const & opt_fontsize() const;
 	///
-	string const & preamble() const { return preamble_; }
+	string const & opt_pagestyle() const;
+	///
+	string const & options() const;
+	///
+	string const & pagestyle() const;
+	///
+	string const & preamble() const;
 
 	/// Packages that are already loaded by the class
 	enum Provides {
@@ -95,10 +101,10 @@ public:
 		url = 4
 	};
 	///
-	bool provides(Provides p) const { return provides_ & p; }
+	bool provides(Provides p) const;
 	
 	///
-	unsigned int columns() const { return columns_; }
+	unsigned int columns() const;
 	///
 	enum PageSides {
 		///
@@ -107,14 +113,14 @@ public:
 		TwoSides
 	};
 	///
-	PageSides sides() const { return sides_; }
+	PageSides sides() const;
 	///
-	int secnumdepth() const { return secnumdepth_; }
+	int secnumdepth() const;
 	///
-	int tocdepth() const { return tocdepth_; }
+	int tocdepth() const;
 
 	///
-	OutputType outputType() const { return outputType_; }
+	OutputType outputType() const;
 
 	///
 	LyXFont const & defaultfont() const;
@@ -125,13 +131,9 @@ public:
 	/// Text that dictates how wide the right margin is on the screen
 	string const & rightmargin() const;
         ///
-	int maxcounter() const { return maxcounter_; }
+	int maxcounter() const;
 	///
-	lyx::layout_type numLayouts() const { return layoutlist.size(); }
-	///
-	LyXLayout const & operator[](lyx::layout_type i) const {
-		return layoutlist[i];
-	}
+	int size() const;
 private:
 	///
 	bool delete_layout(string const &);
@@ -151,6 +153,8 @@ private:
 	string options_;
 	///
 	string pagestyle_;
+	///
+	string defaultlayout_;
 	///
 	string preamble_;
 	///
@@ -183,8 +187,9 @@ private:
 	LayoutList layoutlist;
 
 	/// Has this layout file been loaded yet?
-	bool loaded;
+	mutable bool loaded;
 };
+
 
 ///
 inline

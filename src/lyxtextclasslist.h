@@ -41,18 +41,6 @@ public:
 	const_iterator begin() const { return classlist.begin(); }
 	///
 	const_iterator end() const { return classlist.end(); }
-	
-	/// Gets layout structure from layout number and textclass number
-	LyXLayout const & Style(lyx::textclass_type textclass,
-	                        lyx::layout_type layout) const;
-
-	/// Gets layout number from textclass number and layout name
-	std::pair<bool, lyx::layout_type> const
-	NumberOfLayout(lyx::textclass_type textclass, string const & name) const;
-
-	/// Gets a layout name from layout number and textclass number
-	string const &
-	NameOfLayout(lyx::textclass_type textclass, lyx::layout_type layout) const;
 
 	/** Gets textclass number from name.
 	    Returns -1 if textclass name does not exist
@@ -61,31 +49,17 @@ public:
 	NumberOfClass(string const & textclass) const;
 
 	///
-	string const & NameOfClass(lyx::textclass_type number) const;
-
-	///
-	string const & LatexnameOfClass(lyx::textclass_type number) const;
-
-	///
-	string const & DescOfClass(lyx::textclass_type number) const;
-
-	///
-	LyXTextClass const & TextClass(lyx::textclass_type textclass) const;
+	LyXTextClass const & operator[](lyx::textclass_type textclass) const;
 
 	/** Read textclass list.
 	    Returns false if this fails
 	*/
 	bool Read();
-
-	/** Load textclass.
-	    Returns false if this fails
-	*/
-	bool Load(lyx::textclass_type number) const;
 private:
 	///
 	mutable ClassList classlist;
 	///
-	void Add (LyXTextClass const &);
+	void Add(LyXTextClass const &);
 };
 
 /// 

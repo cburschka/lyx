@@ -23,10 +23,6 @@ namespace lyx
 	/// a type for sizes
 	typedef std::vector<char>::size_type         size_type;
 
-	/// a type used for numbering layouts	within a text class
-	// used to be LyXTextClass::size_type
-	typedef std::vector<char>::size_type         layout_type;
-
 	/// a type used for numbering text classes
 	// used to be LyXTextClassList::size_type
 	typedef std::vector<char>::size_type         textclass_type;
@@ -48,22 +44,6 @@ namespace lyx
 		private:
 		base_type data_;
 	};
-		
-
-	struct layout_type {
-		///
-		typedef std::vector<char>::size_type  base_type;
-		///
-		layout_type(base_type t) { data_ = t; }
-		///
-		operator base_type() const { return data_; }
-		///
-		void operator++() { ++data_; }
-		///
-		private:
-		base_type data_;
-	};
-		
 
 	struct textclass_type {
 		///

@@ -48,8 +48,13 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
+#include <functional>
+
+using std::bind2nd;
+
 using Liason::setMinibuffer;
 using SigC::slot;
+using std::vector;
 
 FormDocument::FormDocument(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("Document Layout")),
@@ -122,12 +127,20 @@ void FormDocument::build()
 
 	// Create the contents of the unit choices
 	// Don't include the "%" terms...
-	std::vector<string> units_vec = getLatexUnits();
-	for (std::vector<string>::iterator it = units_vec.begin();
+	vector<string> units_vec = getLatexUnits();
+#if 0
+	for (vector<string>::iterator it = units_vec.begin();
 		it != units_vec.end(); ++it) {
 		if (contains(*it, "%"))
 			it = units_vec.erase(it, it+1) - 1;
 	}
+#else
+	vector<string>::iterator ret =
+		remove_if(units_vec.begin(),
+			  units_vec.end(),
+			  bind2nd(contains_functor(), "%"));
+	units_vec.erase(ret, units_vec.end());
+#endif
 	string units = getStringFromVector(units_vec, "|");
 
 	fl_addto_choice(paper_->choice_custom_width_units,  units.c_str());
@@ -724,7 +737,7 @@ bool FormDocument::class_apply()
 
 	if (params.textclass != old_class) {
 		// try to load new_class
-		if (textclasslist.Load(params.textclass)) {
+		if (textclasslist[params.textclass].load()) {
 			// successfully loaded
 			redo = true;
 			setMinibuffer(lv_, _("Converting document to new document class..."));
@@ -734,7 +747,7 @@ bool FormDocument::class_apply()
 				lv_->buffer()->params);
 			if (ret) {
 				string s;
-				if (ret==1) {
+				if (ret == 1) {
 					s = _("One paragraph couldn't be converted");
 				} else {
 					s += tostr(ret);
@@ -932,10 +945,9 @@ void FormDocument::class_update(BufferParams const & params)
 	if (!class_.get())
 		return;
 
-	LyXTextClass const & tclass = textclasslist.TextClass(params.textclass);
+	LyXTextClass const & tclass = textclasslist[params.textclass];
 
-	combo_doc_class->select(
-		textclasslist.DescOfClass(params.textclass));
+	combo_doc_class->select(tclass.description());
 	fl_set_choice_text(class_->choice_doc_fonts, params.fonts.c_str());
 	fl_clear_choice(class_->choice_doc_fontsize);
 	fl_addto_choice(class_->choice_doc_fontsize, "default");
@@ -1416,7 +1428,7 @@ void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
 	lv_->prohibitInput();
 
 	unsigned int tc = combo_doc_class->get() - 1;
-	if (textclasslist.Load(tc)) {
+	if (textclasslist[tc].load()) {
 		// we use a copy of the bufferparams because we do not
 		// want to modify them yet.
 		BufferParams params = lv_->buffer()->params;

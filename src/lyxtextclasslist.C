@@ -29,7 +29,6 @@
 
 #include <utility>
 
-using lyx::layout_type;
 using lyx::textclass_type;
 using std::pair;
 using std::make_pair;
@@ -51,88 +50,9 @@ LyXTextClassList::NumberOfClass(string const & textclass) const
 }
 
 
-// Gets layout structure from style number and textclass number
-LyXLayout const &
-LyXTextClassList::Style(textclass_type textclass,
-			layout_type layout) const
-{
-	classlist[textclass].load();
-	if (layout < classlist[textclass].numLayouts())
-		return classlist[textclass][layout];
-	return classlist[textclass][0];
-}
-
-
-// Gets layout number from name and textclass number
-pair<bool, layout_type> const
-LyXTextClassList::NumberOfLayout(textclass_type textclass,
-				 string const & name) const
-{
-	classlist[textclass].load();
-	for (unsigned int i = 0; i < classlist[textclass].numLayouts(); ++i) {
-		if (classlist[textclass][i].name() == name)
-			return make_pair(true, i);
-	}
-	return make_pair(false, layout_type(0)); // not found
-}
-
-
-// Gets a layout (style) name from layout number and textclass number
-string const &
-LyXTextClassList::NameOfLayout(textclass_type textclass,
-			  layout_type layout) const
-{
-	static string const dummy("dummy");
-	classlist[textclass].load();
-	if (layout < classlist[textclass].numLayouts())
-		return classlist[textclass][layout].name();
-	return dummy;
-}
-
-
-// Gets a textclass name from number
-string const &
-LyXTextClassList::NameOfClass(textclass_type number) const
-{
-	static string const dummy("dummy");
-	if (classlist.empty()) {
-		return dummy;
-	}
-	lyx::Assert(number < classlist.size());
-	return classlist[number].name();
-}
-
-
-// Gets a textclass latexname from number
-string const &
-LyXTextClassList::LatexnameOfClass(textclass_type number) const
-{
-	static string const dummy("dummy");
-	classlist[number].load();
-	if (classlist.empty()) {
-		return dummy;
-	}
-	lyx::Assert(number < classlist.size());
-	return classlist[number].latexname();
-}
-
-
-// Gets a textclass description from number
-string const &
-LyXTextClassList::DescOfClass(textclass_type number) const
-{
-	static string const dummy("dummy");
-	if (classlist.empty()) {
-		return dummy;
-	}
-	lyx::Assert(number < classlist.size());
-	return classlist[number].description();
-}
-
-
 // Gets a textclass structure from number
 LyXTextClass const &
-LyXTextClassList::TextClass(textclass_type textclass) const
+LyXTextClassList::operator[](textclass_type textclass) const
 {
 	classlist[textclass].load();
 	if (textclass < classlist.size())
@@ -242,24 +162,6 @@ bool LyXTextClassList::Read ()
 	// Ok everything loaded ok, now sort the list.
 	sort(classlist.begin(), classlist.end(), less_textclass_desc());
 	return true;
-}
-
-	
-/* Load textclass
-   Returns false if this fails
-*/
-bool LyXTextClassList::Load(textclass_type number) const
-{
-	bool result = true;
-	if (number < classlist.size()) {
-		classlist[number].load();
-		if (classlist[number].numLayouts() == 0) {
-			result = false;
-		}
-	} else {
-		result = false;
-	}
-	return result;
 }
 
 

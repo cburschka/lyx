@@ -242,9 +242,9 @@ int InsetInclude::latex(Buffer const * buffer, ostream & os,
 			lyxerr << "WARNING: Included file `"
 			       << MakeDisplayPath(getFileName())
 			       << "' has textclass `"
-			       << textclasslist.NameOfClass(tmp->params.textclass)
+			       << textclasslist[tmp->params.textclass].name()
 			       << "' while parent file has textclass `"
-			       << textclasslist.NameOfClass(buffer->params.textclass)
+			       << textclasslist[buffer->params.textclass].name()
 			       << "'." << endl;
 			//return 0;
 		}

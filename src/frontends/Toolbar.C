@@ -75,7 +75,8 @@ void Toolbar::update()
 }
 
 
-void Toolbar::setLayout(int layout)
+
+void Toolbar::setLayout(string const & layout)
 {
 	pimpl_->setLayout(layout);
 }

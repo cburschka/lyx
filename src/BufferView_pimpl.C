@@ -73,7 +73,7 @@
 #include <clocale>
 
 
-extern lyx::layout_type current_layout;
+extern string current_layout;
 
 using std::vector;
 using std::find_if;
@@ -85,7 +85,6 @@ using std::min;
 using SigC::slot;
 
 using lyx::pos_type;
-using lyx::layout_type;
 using lyx::textclass_type;
 
 /* the selection possible is needed, that only motion events are 
@@ -870,9 +869,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 
 	// Maybe we want to edit a bibitem ale970302
 	if (bv_->text->cursor.par()->bibkey && x < 20 + 
-	    bibitemMaxWidth(bv_, textclasslist.
-			    TextClass(buffer_->
-				      params.textclass).defaultfont())) {
+	    bibitemMaxWidth(bv_, textclasslist[buffer_->params.textclass].defaultfont())) {
 		bv_->text->cursor.par()->bibkey->edit(bv_, 0, 0, 0);
 	}
 
@@ -1669,34 +1666,34 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number). */    
 		textclass_type tclass = buffer_->params.textclass;
-		pair <bool, layout_type> layout = 
-			textclasslist.NumberOfLayout(tclass, argument);
+		bool hasLayout =
+			textclasslist[tclass].hasLayout(argument);
+		string layout = argument;
 
 		// If the entry is obsolete, use the new one instead.
-		if (layout.first) {
-			string obs = textclasslist.Style(tclass, layout.second)
+		if (hasLayout) {
+			string const & obs = textclasslist[tclass][layout]
 				.obsoleted_by();
 			if (!obs.empty()) 
-				layout = textclasslist.NumberOfLayout(tclass, obs);
+				layout = obs;
 		}
 
-		// see if we found the layout number:
-		if (!layout.first) {
+		if (!hasLayout) {
 			owner_->getLyXFunc()->setErrorMessage(
 				string(N_("Layout ")) + argument +
 				N_(" not known"));
 			break;
 		}
 
-		if (current_layout != layout.second) {
+		if (current_layout != layout) {
 			LyXText * lt = bv_->getLyXText();
 			hideCursor();
-			current_layout = layout.second;
+			current_layout = layout;
 			update(lt,
 			       BufferView::SELECT
 			       | BufferView::FITCUR);
-			lt->setLayout(bv_, layout.second);
-			owner_->setLayout(layout.second);
+			lt->setLayout(bv_, layout);
+			owner_->setLayout(layout);
 			update(lt,
 			       BufferView::SELECT
 			       | BufferView::FITCUR
@@ -2341,9 +2338,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	{
 		LyXText * lt = bv_->getLyXText();
 
-		LyXLayout const & style = textclasslist
-			.Style(buffer_->params.textclass,
-			       lt->cursor.par()->getLayout());
+		LyXLayout const & style = textclasslist[buffer_->params.textclass][lt->cursor.par()->layout()];
 
 		if (style.free_spacing) {
 			lt->insertChar(bv_, ' ');
@@ -2879,7 +2874,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	break;
 	
 	case LFUN_GETLAYOUT:
-		owner_->getLyXFunc()->setMessage(tostr(bv_->getLyXText()->cursor.par()->layout));
+		owner_->getLyXFunc()->setMessage(tostr(bv_->getLyXText()->cursor.par()->layout()));
 		break;
 			
 	case LFUN_GETFONT:
@@ -3308,8 +3303,8 @@ void BufferView::Pimpl::smartQuote()
 
 	hideCursor();
 
-	LyXLayout const & style = textclasslist.Style(
-		bv_->buffer()->params.textclass, par->getLayout());
+	LyXLayout const & style =
+		textclasslist[bv_->buffer()->params.textclass][par->layout()];
 	
 	if (style.pass_thru ||
 		(!insertInset(new InsetQuotes(c, bv_->buffer()->params))))
@@ -3369,17 +3364,20 @@ bool BufferView::Pimpl::insertInset(Inset * inset, string const & lout)
 			update(bv_->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		}
 
-		pair<bool, layout_type> lres =
-			textclasslist.NumberOfLayout(buffer_->params .textclass, lout);
-		layout_type lay = 0;
-		if (lres.first != false) {
+		string lres = lout;
+		LyXTextClass const & tclass =
+			textclasslist[buffer_->params.textclass];
+		bool hasLayout = tclass.hasLayout(lres);
+		string lay = tclass.defaultLayoutName();
+
+		if (hasLayout != false) {
 			// layout found
-			lay = lres.second;
+			lay = lres;
 		} else {
-			// layout not fount using default "Standard" (0)
-			lay = 0;
+			// layout not fount using default
+			lay = tclass.defaultLayoutName();
 		}
-		 
+
 		bv_->text->setLayout(bv_, lay);
 		
 		bv_->text->setParagraph(bv_, 0, 0,

@@ -53,8 +53,7 @@ public:
 	Toolbar * getToolbar() const;
 
 	/// sets the layout in the toolbar layout combox
-	void setLayout(lyx::layout_type layout);
-
+	void setLayout(string const & layout);
 	/// update the toolbar
 	void updateToolbar();
 

@@ -28,7 +28,6 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
-using lyx::layout_type;
 using lyx::textclass_type;
 
 using std::endl;
@@ -38,8 +37,8 @@ using std::find;
 using std::ostream;
 
 
-LaTeXFeatures::LaTeXFeatures(BufferParams const & p, layout_type n)
-	: layout(n, false), params(p)
+LaTeXFeatures::LaTeXFeatures(BufferParams const & p)
+	: params(p)
 {}
 
 
@@ -52,9 +51,9 @@ void LaTeXFeatures::require(string const & name)
 }
 
 
-void LaTeXFeatures::useLayout(vector<bool>::size_type const & idx)
+void LaTeXFeatures::useLayout(string const & lyt)
 {
-	layout[idx] = true;
+	layout.insert(lyt);
 }
 
 
@@ -152,8 +151,7 @@ const int nb_simplefeatures = sizeof(simplefeatures) / sizeof(char const *);
 string const LaTeXFeatures::getPackages() const
 {
 	ostringstream packages;
-	LyXTextClass const & tclass =
-		textclasslist.TextClass(params.textclass);
+	LyXTextClass const & tclass = textclasslist[params.textclass];
 
 
 	/**
@@ -325,17 +323,17 @@ string const LaTeXFeatures::getMacros() const
 string const LaTeXFeatures::getTClassPreamble() const
 {
 	// the text class specific preamble 
-	LyXTextClass const & tclass = textclasslist.TextClass(params.textclass);
+	LyXTextClass const & tclass = textclasslist[params.textclass];
 	ostringstream tcpreamble;
 
 	tcpreamble << tclass.preamble();
 
-	for (layout_type i = 0; i < tclass.numLayouts(); ++i) {
-		if (layout[i]) {
-			tcpreamble << tclass[i].preamble();
-		}
+	set<string>::const_iterator cit = layout.begin();
+	set<string>::const_iterator end = layout.end();
+	for (; cit != end; ++cit) {
+		tcpreamble << tclass[*cit].preamble();
 	}
-
+	
 	return tcpreamble.str().c_str();
 }	
 
@@ -382,6 +380,7 @@ BufferParams const & LaTeXFeatures::bufferParams() const
 {
 	return params;
 }
+
 
 void LaTeXFeatures::getFloatDefinitions(ostream & os) const
 {

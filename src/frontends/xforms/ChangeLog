@@ -1,3 +1,12 @@
+2002-03-02  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* Toolbar_pimpl.[Ch]: layout as string
+
+	* FormParagraph.C: layout as string
+
+	* FormDocument.C (build): use remove_if and contains_functor
+	layout as string
+
 2002-03-01  Martin Vermeer <martin.vermeer@hut.fi>
 
 	* FormMathsBitmap.[Ch]:

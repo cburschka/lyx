@@ -234,8 +234,7 @@ void Toolbar::Pimpl::layoutSelected()
 {
 	string const & layoutguiname = combox->getline();
 	LyXTextClass const & tc =
-		textclasslist.TextClass(owner->buffer()->
-					params.textclass);
+		textclasslist[owner->buffer()->params.textclass];
 	
 	LyXTextClass::const_iterator end = tc.end();
 	for (LyXTextClass::const_iterator cit = tc.begin();
@@ -250,12 +249,11 @@ void Toolbar::Pimpl::layoutSelected()
 }
  
 
-void Toolbar::Pimpl::setLayout(int layout)
+void Toolbar::Pimpl::setLayout(string const & layout)
 {
 	if (combox) {
 		LyXTextClass const & tc =
-			textclasslist.TextClass(owner->buffer()->
-						params.textclass);
+			textclasslist[owner->buffer()->params.textclass];
 		combox->select(_(tc[layout].name()));
 	}
 }
@@ -270,8 +268,7 @@ void Toolbar::Pimpl::updateLayoutList(bool force)
 	if (combox->empty() || force) {
 		combox->clear();
 		LyXTextClass const & tc =
-			textclasslist.TextClass(owner->buffer()->
-						params.textclass);
+			textclasslist[owner->buffer()->params.textclass];
 		LyXTextClass::const_iterator end = tc.end();
 		for (LyXTextClass::const_iterator cit = tc.begin();
 		     cit != end; ++cit) {

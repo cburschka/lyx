@@ -58,8 +58,7 @@ LyXText::LyXText(BufferView * bv)
 	: number_of_rows(0), height(0), width(0), first(0),
 	  bv_owner(bv), inset_owner(0), the_locking_inset(0),
 	  need_break_row(0), refresh_y(0), refresh_row(0),
-	  status_(LyXText::UNCHANGED), firstrow(0), lastrow(0),
-	  copylayouttype(0)
+	  status_(LyXText::UNCHANGED), firstrow(0), lastrow(0)
 {}
 
 
@@ -67,9 +66,9 @@ LyXText::LyXText(InsetText * inset)
 	:  number_of_rows(0),  height(0), width(0), first(0),
 	   bv_owner(0), inset_owner(inset), the_locking_inset(0),
 	   need_break_row(0), refresh_y(0), refresh_row(0),
-	   status_(LyXText::UNCHANGED), firstrow(0), lastrow(0),
-	   copylayouttype(0)
+	   status_(LyXText::UNCHANGED), firstrow(0), lastrow(0)
 {}
+
 
 void LyXText::init(BufferView * bview, bool reinit)
 {
@@ -82,7 +81,8 @@ void LyXText::init(BufferView * bview, bool reinit)
 			firstrow = tmprow;
 		}
 		lastrow = refresh_row = need_break_row = 0;
-		width = height = copylayouttype = 0;
+		width = height = 0;
+		copylayouttype.erase();
 		number_of_rows = first = refresh_y = 0;
 		status_ = LyXText::UNCHANGED;
 	} else if (firstrow)
@@ -125,13 +125,12 @@ LyXFont const realizeFont(LyXFont const & font,
 		par = par->outerHook();
 		if (par) {
 #ifndef INHERIT_LANGUAGE
-			tmpfont.realize(textclasslist.
-					Style(buf->params.textclass,
-					      par->getLayout()).font);
+			tmpfont.realize(textclasslist[buf->params.textclass][
+					      par->layout()].font);
 #else
 			tmpfont.realize(textclasslist.
 					Style(buf->params.textclass,
-					      par->getLayout()).font,
+					      par->layout()).font,
 					buf->params.language);
 #endif
 			par_depth = par->getDepth();
@@ -139,9 +138,9 @@ LyXFont const realizeFont(LyXFont const & font,
 	}
 
 #ifndef INHERIT_LANGUAGE
-	tmpfont.realize(textclasslist.TextClass(buf->params.textclass).defaultfont());
+	tmpfont.realize(textclasslist[buf->params.textclass].defaultfont());
 #else
-	tmpfont.realize(textclasslist.TextClass(buf->params.textclass).defaultfont(),
+	tmpfont.realize(textclasslist[buf->params.textclass].defaultfont(),
 	                buf->params.language);
 #endif
 
@@ -164,7 +163,7 @@ LyXFont const LyXText::getFont(Buffer const * buf, Paragraph * par,
 	lyx::Assert(pos >= 0);
 	
 	LyXLayout const & layout = 
-		textclasslist.Style(buf->params.textclass, par->getLayout());
+		textclasslist[buf->params.textclass][par->layout()];
 	
 	Paragraph::depth_type par_depth = par->getDepth();
 	// We specialize the 95% common case:
@@ -220,7 +219,7 @@ LyXFont const LyXText::getFont(Buffer const * buf, Paragraph * par,
 LyXFont const LyXText::getLayoutFont(Buffer const * buf, Paragraph * par) const
 {
 	LyXLayout const & layout = 
-		textclasslist.Style(buf->params.textclass, par->getLayout());
+		textclasslist[buf->params.textclass][par->layout()];
 
 	Paragraph::depth_type par_depth = par->getDepth();
 
@@ -235,7 +234,7 @@ LyXFont const LyXText::getLayoutFont(Buffer const * buf, Paragraph * par) const
 LyXFont const LyXText::getLabelFont(Buffer const * buf, Paragraph * par) const
 {
 	LyXLayout const & layout = 
-		textclasslist.Style(buf->params.textclass, par->getLayout());
+		textclasslist[buf->params.textclass][par->layout()];
 
 	Paragraph::depth_type par_depth = par->getDepth();
 
@@ -266,7 +265,6 @@ void LyXText::setCharFont(BufferView * bv, Paragraph * par,
 
 	// Plug thru to version below:
 	setCharFont(buf, par, pos, font);
-	
 }
 
 
@@ -275,9 +273,8 @@ void LyXText::setCharFont(Buffer const * buf, Paragraph * par,
 {
 	LyXFont font(fnt);
 
-	LyXLayout const & layout =
-		textclasslist.Style(buf->params.textclass,
-				    par->getLayout());
+	LyXTextClass const & tclass = textclasslist[buf->params.textclass];
+	LyXLayout const & layout = tclass[par->layout()];
 
 	// Get concrete layout font to reduce against
 	LyXFont layoutfont;
@@ -294,23 +291,20 @@ void LyXText::setCharFont(Buffer const * buf, Paragraph * par,
 			tp = tp->outerHook();
 			if (tp)
 #ifndef INHERIT_LANGUAGE
-				layoutfont.realize(textclasslist.
-				                   Style(buf->params.textclass,
-							 tp->getLayout()).font);
+				layoutfont.realize(tclass[tp->layout()].font);
 #else
 				layoutfont.realize(textclasslist.
 				                   Style(buf->params.textclass,
-				                         tp->getLayout()).font,
+				                         tp->layout()).font,
 				                   buf->params.language);
 #endif
 		}
 	}
 
 #ifndef INHERIT_LANGUAGE
-	layoutfont.realize(textclasslist.TextClass(buf->params.textclass).defaultfont());
+	layoutfont.realize(tclass.defaultfont());
 #else
-	layoutfont.realize(textclasslist.TextClass(buf->params.textclass).defaultfont(),
-	                   buf->params.language);
+	layoutfont.realize(tclass.defaultfont(), buf->params.language);
 #endif
 
 	// Now, reduce font against full layout font
@@ -464,7 +458,7 @@ void LyXText::makeFontEntriesLayoutSpecific(Buffer const * buf,
 					    Paragraph * par)
 {
 	LyXLayout const & layout =
-		textclasslist.Style(buf->params.textclass, par->getLayout());
+		textclasslist[buf->params.textclass][par->layout()];
 
 	LyXFont layoutfont;
 	for (pos_type pos = 0; pos < par->size(); ++pos) {
@@ -483,7 +477,7 @@ void LyXText::makeFontEntriesLayoutSpecific(Buffer const * buf,
 Paragraph * LyXText::setLayout(BufferView * bview,
 			       LyXCursor & cur, LyXCursor & sstart_cur,
 			       LyXCursor & send_cur,
-			       lyx::layout_type layout)
+			       string const & layout)
 {
 	Paragraph * endpar = send_cur.par()->next();
 	Paragraph * undoendpar = endpar;
@@ -503,12 +497,12 @@ Paragraph * LyXText::setLayout(BufferView * bview,
 	// ok we have a selection. This is always between sstart_cur
 	// and sel_end cursor
 	cur = sstart_cur;
-	
+
 	LyXLayout const & lyxlayout =
-		textclasslist.Style(bview->buffer()->params.textclass, layout);
+		textclasslist[bview->buffer()->params.textclass][layout];
 	
 	do {
-		cur.par()->setLayout(layout);
+		cur.par()->applyLayout(layout);
 		makeFontEntriesLayoutSpecific(bview->buffer(), cur.par());
 		Paragraph * fppar = cur.par();
 		fppar->params().spaceTop(lyxlayout.fill_top ?
@@ -527,13 +521,13 @@ Paragraph * LyXText::setLayout(BufferView * bview,
 		if (cur.par() != send_cur.par())
 			cur.par(cur.par()->next());
 	} while (cur.par() != send_cur.par());
-
+	
 	return endpar;
 }
 
 
 // set layout over selection and make a total rebreak of those paragraphs
-void LyXText::setLayout(BufferView * bview, lyx::layout_type layout)
+void LyXText::setLayout(BufferView * bview, string const & layout)
 {
 	LyXCursor tmpcursor = cursor;  /* store the current cursor  */
 
@@ -595,10 +589,12 @@ void  LyXText::incDepth(BufferView * bview)
    
 	bool anything_changed = false;
    
+	LyXTextClass const & tclass =
+		textclasslist[bview->buffer()->params.textclass];
+	
 	while (true) {
 		// NOTE: you can't change the depth of a bibliography entry
-		if (textclasslist.Style(bview->buffer()->params.textclass,
-					cursor.par()->getLayout()).labeltype != LABEL_BIBLIO) {
+		if (tclass[cursor.par()->layout()].labeltype != LABEL_BIBLIO) {
 			Paragraph * prev = cursor.par()->previous();
 
 			if (prev) {
@@ -1138,8 +1134,8 @@ string LyXText::getStringToIndex(BufferView * bview)
 pos_type LyXText::beginningOfMainBody(Buffer const * buf,
 			     Paragraph const * par) const
 {
-	if (textclasslist.Style(buf->params.textclass,
-				par->getLayout()).labeltype != LABEL_MANUAL)
+	if (textclasslist[buf->params.textclass][
+				par->layout()].labeltype != LABEL_MANUAL)
 		return 0;
 	else
 		return par->beginningOfMainBody();
@@ -1187,6 +1183,9 @@ void LyXText::setParagraph(BufferView * bview,
 
 	
 	Paragraph * tmppar = selection.end.par();
+	LyXTextClass const & tclass =
+		textclasslist[bview->buffer()->params.textclass];
+	
 	while (tmppar != selection.start.par()->previous()) {
 		setCursor(bview, tmppar, 0);
 		status(bview, LyXText::NEED_MORE_REFRESH);
@@ -1200,16 +1199,12 @@ void LyXText::setParagraph(BufferView * bview,
 		cursor.par()->params().spaceBottom(space_bottom);
                 cursor.par()->params().spacing(spacing);
 		// does the layout allow the new alignment?
+		LyXLayout const & layout = tclass[cursor.par()->layout()];
+		
 		if (align == LYX_ALIGN_LAYOUT)
-			align = textclasslist
-				.Style(bview->buffer()->params.textclass,
-				       cursor.par()->getLayout()).align;
-		if (align & textclasslist
-		    .Style(bview->buffer()->params.textclass,
-			   cursor.par()->getLayout()).alignpossible) {
-			if (align == textclasslist
-			    .Style(bview->buffer()->params.textclass,
-				   cursor.par()->getLayout()).align)
+			align = layout.align;
+		if (align & layout.alignpossible) {
+			if (align == layout.align)
 				cursor.par()->params().align(LYX_ALIGN_LAYOUT);
 			else
 				cursor.par()->params().align(align);
@@ -1289,12 +1284,9 @@ string const romanCounter(int n)
 // set the counter of a paragraph. This includes the labels
 void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 {
-	LyXLayout const & layout =
-		textclasslist.Style(buf->params.textclass, 
-				    par->getLayout());
+	LyXTextClass const & textclass = textclasslist[buf->params.textclass];
+	LyXLayout const & layout = textclass[par->layout()];
 
-	LyXTextClass const & textclass =
-		textclasslist.TextClass(buf->params.textclass);
 
 	// copy the prev-counters to this one,
 	// unless this is the first paragraph
@@ -1329,9 +1321,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 	 */
 	if (par->previous()
 	    && par->previous()->getDepth() < par->getDepth()
-	    && textclasslist.Style(buf->params.textclass,
-				   par->previous()->getLayout()
-		    ).labeltype == LABEL_COUNTER_ENUMI
+	    && textclass[par->previous()->layout()].labeltype == LABEL_COUNTER_ENUMI
 	    && par->enumdepth < 3
 	    && layout.labeltype != LABEL_BIBLIO) {
 		par->enumdepth++;
@@ -1632,11 +1622,12 @@ void LyXText::updateCounters(BufferView * bview, Row * row) const
 		
 		// now check for the headline layouts. remember that they
 		// have a dynamic left margin
-		if ((textclasslist.Style(bview->buffer()->params.textclass,
-					 par->layout).margintype == MARGIN_DYNAMIC
-		     || textclasslist.Style(bview->buffer()->params.textclass,
-					    par->layout).labeltype == LABEL_SENSITIVE)) {
-			
+		LyXTextClass const & tclass =
+			textclasslist[bview->buffer()->params.textclass];
+		LyXLayout const & layout = tclass[par->layout()];
+		
+		if (layout.margintype == MARGIN_DYNAMIC
+		    || layout.labeltype == LABEL_SENSITIVE) {
 			// Rebreak the paragraph
 			removeParagraph(row);
 			appendParagraph(bview, row);
@@ -1671,7 +1662,7 @@ void LyXText::insertInset(BufferView * bview, Inset * inset)
 
 void LyXText::copyEnvironmentType()
 {
-	copylayouttype = cursor.par()->getLayout();
+	copylayouttype = cursor.par()->layout();
 }
 
 
@@ -1976,8 +1967,8 @@ void LyXText::checkParagraph(BufferView * bview, Paragraph * par,
 		status(bview, LyXText::NEED_MORE_REFRESH); 
 	
 	// check the special right address boxes
-	if (textclasslist.Style(bview->buffer()->params.textclass,
-				par->getLayout()).margintype
+	if (textclasslist[bview->buffer()->params.textclass][
+				par->layout()].margintype
 	    == MARGIN_RIGHT_ADDRESS_BOX)
 	{
 		tmpcursor.par(par);
@@ -2116,9 +2107,9 @@ void LyXText::setCursor(BufferView * bview, LyXCursor & cur, Paragraph * par,
 		pos = vis2log(vpos);
 		if (main_body > 0 && pos == main_body - 1) {
 			x += fill_label_hfill +
-				lyxfont::width(textclasslist.Style(
-					bview->buffer()->params.textclass,
-					row->par()->getLayout())
+				lyxfont::width(textclasslist[
+						       bview->buffer()->params.textclass][
+					row->par()->layout()]
 					       .labelsep,
 					       getLabelFont(bview->buffer(), row->par()));
 			if (row->par()->isLineSeparator(main_body-1))
@@ -2334,8 +2325,8 @@ bool LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 	if (selection.set()) return false;
 
 	// We allow all kinds of "mumbo-jumbo" when freespacing.
-	if (textclasslist.Style(bview->buffer()->params.textclass,
-				old_cursor.par()->getLayout()).free_spacing
+	if (textclasslist[bview->buffer()->params.textclass][
+				old_cursor.par()->layout()].free_spacing
 	    || old_cursor.par()->isFreeSpacing())
 	{
 		return false;
@@ -2403,8 +2394,9 @@ bool LyXText::deleteEmptyParagraphMechanism(BufferView * bview,
 		return false;
 	
 	// Do not delete empty paragraphs with keepempty set.
-	if ((textclasslist.Style(bview->buffer()->params.textclass,
-				 old_cursor.par()->getLayout())).keepempty)
+	if (textclasslist
+	    [bview->buffer()->params.textclass]
+	    [old_cursor.par()->layout()].keepempty)
 		return false;
 
 	// only do our magic if we changed paragraph

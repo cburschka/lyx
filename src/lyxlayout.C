@@ -180,29 +180,44 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 
 		case LT_COPYSTYLE:     // initialize with a known style
 		        if (lexrc.next()) {
-				if (tclass.hasLayout(lexrc.getString())) {
-					string const tmpname = name_;
-					this->operator= (tclass.GetLayout(lexrc.getString()));
-					name_ = tmpname;
+				string const style = lowercase(lexrc.getString());
+			
+				if (tclass.hasLayout(style)) {
+					string const tmpname = lowercase(name_);
+					this->operator=(tclass[style]);
+					name_ = lowercase(tmpname);
 				} else {
-					lexrc.printError("Cannot copy known "
-							 "style `$$Token'");
+					lyxerr << "Cannot copy unknown style `" << style << "'" << endl;
+					LyXTextClass::const_iterator it = tclass.begin();
+					LyXTextClass::const_iterator end = tclass.end();
+					lyxerr << "All layouts so far:" << endl;
+					for (; it != end; ++it) {
+						//lyxerr << it->name() << endl;
+						fprintf(stderr, "%s\n", it->name().c_str());
+					}
+					
+					//lexrc.printError("Cannot copy known "
+					//		 "style `$$Token'");
 				}
 			}
 			break;
 
 		case LT_OBSOLETEDBY:     // replace with a known style
 		        if (lexrc.next()) {
-				if (tclass.hasLayout(lexrc.getString())) {
+				string const style = lowercase(lexrc.getString());
+				
+				if (tclass.hasLayout(style)) {
 					string const tmpname = name_;
-					this->operator= (tclass.GetLayout(lexrc.getString()));
+					this->operator=(tclass[style]);
 					name_ = tmpname;
 					if (obsoleted_by().empty())
-						obsoleted_by_ = lexrc.getString();
+						obsoleted_by_ = style;
 				} else {
-					lexrc.printError("Cannot replace with" 
-							 " unknown style "
-							 "`$$Token'");
+					lyxerr << "Cannot replace with unknown style `" << style << "'" << endl;
+					
+					//lexrc.printError("Cannot replace with" 
+					//		 " unknown style "
+					//		 "`$$Token'");
 				}
 			}
 			break;
@@ -717,4 +732,26 @@ void LyXLayout::readSpacing(LyXLex & lexrc)
 		spacing.set(Spacing::Other, lexrc.getFloat());
 		break;
 	}
+}
+
+
+string const & LyXLayout::name() const
+{
+	static string name_t;
+	name_t = lowercase(name_);
+	return name_t;
+}
+
+
+void LyXLayout::setName(string const & n)
+{
+	name_ = lowercase(n);
+}
+
+
+string const & LyXLayout::obsoleted_by() const
+{
+	static string obsoleted_by_t;
+	obsoleted_by_t = lowercase(obsoleted_by_);
+	return obsoleted_by_t;
 }

@@ -128,7 +128,6 @@ using std::stack;
 using std::list;
 
 using lyx::pos_type;
-using lyx::layout_type;
 using lyx::textclass_type;
 
 // all these externs should eventually be removed.
@@ -466,9 +465,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		string const layoutname = lex.getString();
 		//lyxerr << "Looking for layout '"
 		// << layoutname << "'!" << endl;
-		
-		pair<bool, layout_type> pp
-		  = textclasslist.NumberOfLayout(params.textclass, layoutname);
 
 		//lyxerr << "Result: " << pp.first << "/" << pp.second << endl;
 		
@@ -537,37 +533,12 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 				par = new Paragraph(par);
 			}
 			pos = 0;
-			if (pp.first) {
-				par->layout = pp.second;
-#ifndef NO_COMPABILITY
-			} else if (ert_comp.active) {
-				par->layout = 0;
-#endif
-			} else {
-				// layout not found
-				// use default layout "Standard" (0)
-				//lyxerr << "Layout '" << layoutname
-				//       << "' was not found!" << endl;
-				
-				par->layout = 0;
-				++unknown_layouts;
-				string const s = _("Layout had to be changed from\n")
-					+ layoutname + _(" to ")
-					+ textclasslist.NameOfLayout(params.textclass, par->layout);
-				InsetError * new_inset = new InsetError(s);
-				par->insertInset(0, new_inset, 
-						 LyXFont(LyXFont::ALL_INHERIT,
-							 params.language));
-			}
+			par->layout(layoutname);
 			// Test whether the layout is obsolete.
 			LyXLayout const & layout =
-				textclasslist.Style(params.textclass,
-						    par->layout);
+				textclasslist[params.textclass][par->layout()];
 			if (!layout.obsoleted_by().empty())
-				par->layout = textclasslist
-					.NumberOfLayout(params.textclass,
-							layout.obsoleted_by())
-					.second;
+				par->layout(layout.obsoleted_by());
 			par->params().depth(depth);
 			font = LyXFont(LyXFont::ALL_INHERIT, params.language);
 			if (file_format < 216
@@ -696,7 +667,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 				string(_("LyX will not be able to produce output correctly.")));
 			params.textclass = 0;
 		}
-		if (!textclasslist.Load(params.textclass)) {
+		if (!textclasslist[params.textclass].load()) {
 			// if the textclass wasn't loaded properly
 			// we need to either substitute another
 			// or stop loading the file.
@@ -704,7 +675,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			// stop loading... ideas??  ARRae980418
 			Alert::alert(_("Textclass Loading Error!"),
 				   string(_("Can't load textclass ")) +
-				   textclasslist.NameOfClass(params.textclass),
+				   textclasslist[params.textclass].name(),
 				   _("-- substituting default"));
 			params.textclass = 0;
 		}
@@ -1098,8 +1069,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #endif
 	} else if (token == "\\SpecialChar") {
 		LyXLayout const & layout =
-			textclasslist.Style(params.textclass, 
-					    par->getLayout());
+			textclasslist[params.textclass][par->layout()];
 
 		// Insets don't make sense in a free-spacing context! ---Kayvan
 		if (layout.free_spacing || par->isFreeSpacing()) {
@@ -1157,8 +1127,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		// Remove it later some time...introduced with fileformat
 		// 2.16. (Lgb)
 		LyXLayout const & layout =
-			textclasslist.Style(params.textclass, 
-					    par->getLayout());
+			textclasslist[params.textclass][par->layout()];
 
 		if (layout.free_spacing || par->isFreeSpacing()) {
 			par->insertChar(pos, ' ', font);
@@ -1249,8 +1218,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 	if (checkminipage && (call_depth == 1)) {
 	checkminipage = false;
 	if (minipar && (minipar != par) &&
-	    (par->params().pextraType()==Paragraph::PEXTRA_MINIPAGE))
-	{
+	    (par->params().pextraType() == Paragraph::PEXTRA_MINIPAGE)) {
 		lyxerr << "minipages in a row" << endl;
 		if (par->params().pextraStartMinipage()) {
 			lyxerr << "start new minipage" << endl;
@@ -1271,10 +1239,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			// create a new paragraph to insert the
 			// minipages in the following case
 			if (par->params().pextraStartMinipage() &&
-			    !par->params().pextraHfill())
-			{
+			    !par->params().pextraHfill()) {
 				Paragraph * p = new Paragraph;
-				p->layout = 0;
+				p->layout(textclasslist[params.textclass].defaultLayoutName());
+				
 				p->previous(parBeforeMinipage);
 				parBeforeMinipage->next(p);
 				p->next(0);
@@ -1348,7 +1316,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		// a sequence of minipages
 		// in its own paragraph.
 		Paragraph * p = new Paragraph;
-		p->layout = 0;
+		p->layout(textclasslist[params.textclass].defaultLayoutName());
 		p->previous(par->previous());
 		p->next(0);
 		p->params().depth(depth);
@@ -1392,11 +1360,11 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 void Buffer::insertStringAsLines(Paragraph *& par, pos_type & pos,
                                  LyXFont const & fn,string const & str) const
 {
-	LyXLayout const & layout = textclasslist.Style(params.textclass, 
-	                                               par->getLayout());
+	LyXLayout const & layout =
+		textclasslist[params.textclass][par->layout()];
 	LyXFont font = fn;
 	
-	(void)par->checkInsertChar(font);
+	par->checkInsertChar(font);
 	// insert the string, don't insert doublespace
 	bool space_inserted = true;
 	for(string::const_iterator cit = str.begin(); 
@@ -1824,11 +1792,11 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 #endif
 		
 	// First write the layout
-	string const tmp = textclasslist.NameOfLayout(params.textclass, par->layout);
-	if (tmp == "Itemize") {
+	string const & tmp = lowercase(par->layout());
+	if (tmp == "itemize") {
 		ltype = 1;
 		ltype_depth = depth + 1;
-	} else if (tmp == "Enumerate") {
+	} else if (tmp == "enumerate") {
 		ltype = 2;
 		ltype_depth = depth + 1;
 	} else if (contains(tmp, "ection")) {
@@ -1837,13 +1805,13 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 	} else if (contains(tmp, "aragraph")) {
 		ltype = 4;
 		ltype_depth = depth + 1;
-	} else if (tmp == "Description") {
+	} else if (tmp == "description") {
 		ltype = 5;
 		ltype_depth = depth + 1;
-	} else if (tmp == "Abstract") {
+	} else if (tmp == "abstract") {
 		ltype = 6;
 		ltype_depth = 0;
-	} else if (tmp == "Bibliography") {
+	} else if (tmp == "bibliography") {
 		ltype = 7;
 		ltype_depth = 0;
 	} else {
@@ -2048,7 +2016,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 	tex_code_break_column = lyxrc.ascii_linelen;
 
         LyXTextClass const & tclass =
-		textclasslist.TextClass(params.textclass);
+		textclasslist[params.textclass];
 
 	ofstream ofs(fname.c_str());
 	if (!ofs) {
@@ -2058,7 +2026,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 	
 	// validate the buffer.
 	lyxerr[Debug::LATEX] << "  Validating buffer..." << endl;
-	LaTeXFeatures features(params, tclass.numLayouts());
+	LaTeXFeatures features(params, tclass.size());
 	validate(features);
 	lyxerr[Debug::LATEX] << "  Buffer validation done." << endl;
 	
@@ -2191,7 +2159,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 		}
 		
 		ofs << '{'
-		    << textclasslist.LatexnameOfClass(params.textclass)
+		    << textclasslist[params.textclass].latexname()
 		    << "}\n";
 		texrow.newline();
 		// end of \documentclass defs
@@ -2549,7 +2517,7 @@ void Buffer::latexParagraphs(ostream & ofs, Paragraph * par,
 		// any environment other then "Standard" to be valid!
 		if ((in == 0) || !in->forceDefaultParagraphs(in)) {
 			LyXLayout const & layout =
-				textclasslist.Style(params.textclass, par->layout);
+				textclasslist[params.textclass][par->layout()];
 			
 			if (layout.intitle) {
 				if (already_title) {
@@ -2584,32 +2552,34 @@ void Buffer::latexParagraphs(ostream & ofs, Paragraph * par,
 
 bool Buffer::isLatex() const
 {
-	return textclasslist.TextClass(params.textclass).outputType() == LATEX;
+	return textclasslist[params.textclass].outputType() == LATEX;
 }
 
 
 bool Buffer::isLinuxDoc() const
 {
-	return textclasslist.TextClass(params.textclass).outputType() == LINUXDOC;
+	return textclasslist[params.textclass].outputType() == LINUXDOC;
 }
 
 
 bool Buffer::isLiterate() const
 {
-	return textclasslist.TextClass(params.textclass).outputType() == LITERATE;
+	return textclasslist[params.textclass].outputType() == LITERATE;
 }
 
 
 bool Buffer::isDocBook() const
 {
-	return textclasslist.TextClass(params.textclass).outputType() == DOCBOOK;
+	return textclasslist[params.textclass].outputType() == DOCBOOK;
 }
 
 
 bool Buffer::isSGML() const
 {
-	return textclasslist.TextClass(params.textclass).outputType() == LINUXDOC ||
-	       textclasslist.TextClass(params.textclass).outputType() == DOCBOOK;
+	LyXTextClass const & tclass = textclasslist[params.textclass];
+	
+	return tclass.outputType() == LINUXDOC ||
+	       tclass.outputType() == DOCBOOK;
 }
 
 
@@ -2642,15 +2612,15 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 	niceFile = nice; // this will be used by included files.
 
-        LyXTextClass const & tclass =
-		textclasslist.TextClass(params.textclass);
+        LyXTextClass const & tclass = textclasslist[params.textclass];
 
-	LaTeXFeatures features(params, tclass.numLayouts());
+	LaTeXFeatures features(params, tclass.size());
+	
 	validate(features);
 
 	texrow.reset();
 
-	string top_element = textclasslist.LatexnameOfClass(params.textclass);
+	string top_element = textclasslist[params.textclass].latexname();
 
 	if (!body_only) {
 		ofs << "<!doctype linuxdoc system";
@@ -2685,8 +2655,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 	while (par) {
 		LyXLayout const & style =
-			textclasslist.Style(params.textclass,
-					    par->layout);
+			textclasslist[params.textclass][par->layout()];
 
 		// treat <toc> as a special case for compatibility with old code
 		if (par->isInset(0)) {
@@ -2872,8 +2841,8 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 				  Paragraph * par, 
 				  Paragraph::depth_type /*depth*/)
 {
-	LyXLayout const & style = textclasslist.Style(params.textclass,
-						      par->getLayout());
+	LyXLayout const & style =
+		textclasslist[params.textclass][par->layout()];
 	string::size_type char_line_count = 5;     // Heuristic choice ;-) 
 
 	// gets paragraph main font
@@ -3085,14 +3054,14 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 	niceFile = nice; // this will be used by Insetincludes.
 
         LyXTextClass const & tclass =
-		textclasslist.TextClass(params.textclass);
+		textclasslist[params.textclass];
 
-	LaTeXFeatures features(params, tclass.numLayouts());
+	LaTeXFeatures features(params, tclass.size());
 	validate(features);
    
 	texrow.reset();
 
-	string top_element = textclasslist.LatexnameOfClass(params.textclass);
+	string top_element = textclasslist[params.textclass].latexname();
 
 	if (!only_body) {
 		ofs << "<!DOCTYPE " << top_element
@@ -3142,8 +3111,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		int desc_on = 0; // description mode
 
 		LyXLayout const & style =
-			textclasslist.Style(params.textclass,
-					    par->layout);
+			textclasslist[params.textclass][par->layout()];
 
 		// environment tag closing
 		for (; depth > par->params().depth(); --depth) {
@@ -3380,8 +3348,8 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 {
 	bool emph_flag = false;
 
-	LyXLayout const & style = textclasslist.Style(params.textclass,
-						      par->getLayout());
+	LyXLayout const & style =
+		textclasslist[params.textclass][par->layout()];
 
 	LyXFont font_old = style.labeltype == LABEL_MANUAL ? style.labelfont : style.font;
 
@@ -3502,8 +3470,7 @@ int Buffer::runChktex()
 void Buffer::validate(LaTeXFeatures & features) const
 {
 	Paragraph * par = paragraph;
-        LyXTextClass const & tclass = 
-		textclasslist.TextClass(params.textclass);
+        LyXTextClass const & tclass = textclasslist[params.textclass];
     
         // AMS Style is at document level
         if (params.use_amsmath || tclass.provides(LyXTextClass::amsmath))
@@ -3599,25 +3566,12 @@ Buffer::Lists const Buffer::getLists() const
 	Lists l;
 	Paragraph * par = paragraph;
 
-#if 1
-	std::pair<bool, textclass_type> const tmp =
-		textclasslist.NumberOfLayout(params.textclass, "Caption");
-	bool const found = tmp.first;
-	textclass_type const cap = tmp.second;
-	
-#else
-	// This is the prefered way to to this, but boost::tie can break
-	// some compilers
-	bool found;
-	textclass_type cap;
-	boost::tie(found, cap) = textclasslist
-		.NumberOfLayout(params.textclass, "Caption");
-#endif
+	LyXTextClass const & textclass = textclasslist[params.textclass];
+	bool found = textclass.hasLayout("caption");
+	string const layout("caption");
 
 	while (par) {
-		char const labeltype =
-			textclasslist.Style(params.textclass, 
-					    par->getLayout()).labeltype;
+		char const labeltype = textclass[par->layout()].labeltype;
 		
 		if (labeltype >= LABEL_COUNTER_CHAPTER
 		    && labeltype <= LABEL_COUNTER_CHAPTER + params.tocdepth) {
@@ -3625,7 +3579,7 @@ Buffer::Lists const Buffer::getLists() const
 			SingleList & item = l["TOC"];
 			int depth = max(0,
 					labeltype - 
-					textclasslist.TextClass(params.textclass).maxcounter());
+					textclass.maxcounter());
 			item.push_back(TocItem(par, depth, par->asString(this, true)));
 		}
 		// For each paragrph, traverse its insets and look for
@@ -3649,7 +3603,7 @@ Buffer::Lists const Buffer::getLists() const
 					// the inset...
 					Paragraph * tmp = il->inset.paragraph();
 					while (tmp) {
-						if (tmp->layout == cap) {
+						if (tmp->layout() == layout) {
 							SingleList & item = l[type];
 							string const str =
 								tostr(item.size()+1) + ". " + tmp->asString(this, false);

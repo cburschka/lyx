@@ -331,10 +331,11 @@ void FormParagraph::update()
     fl_set_button(dialog_->radio_align_center, 0);
     fl_set_button(dialog_->radio_align_block, 0);
 
+    LyXTextClass const & tclass = textclasslist[buf->params.textclass];
+    
     int align = par_->getAlign();
     if (align == LYX_ALIGN_LAYOUT)
-	align = textclasslist.Style(buf->params.textclass,
-				    par_->getLayout()).align;
+	    align = tclass[par_->layout()].align;
 
     switch (align) {
     case LYX_ALIGN_RIGHT:
@@ -351,9 +352,7 @@ void FormParagraph::update()
 	break;
     }
 
-    LyXAlignment alignpos =
-	    textclasslist.Style(buf->params.textclass,
-				par_->getLayout()).alignpossible;
+    LyXAlignment alignpos = tclass[par_->layout()].alignpossible;
 
     setEnabled(dialog_->radio_align_block,  bool(alignpos & LYX_ALIGN_BLOCK));
     setEnabled(dialog_->radio_align_center, bool(alignpos & LYX_ALIGN_CENTER));

@@ -79,6 +79,7 @@ enum TextClassTags {
 	TC_OUTPUTTYPE = 1,
 	TC_INPUT,
 	TC_STYLE,
+	TC_DEFAULTSTYLE,
 	TC_NOSTYLE,
 	TC_COLUMNS,
 	TC_SIDES,
@@ -104,6 +105,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 		{ "classoptions",    TC_CLASSOPTIONS },
 		{ "columns",         TC_COLUMNS },
 		{ "defaultfont",     TC_DEFAULTFONT },
+		{ "defaultstyle",    TC_DEFAULTSTYLE },
 		{ "input",           TC_INPUT },
 		{ "leftmargin",      TC_LEFTMARGIN },
 		{ "maxcounter",      TC_MAXCOUNTER },
@@ -168,12 +170,19 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 			}
 			break;
 
+		case TC_DEFAULTSTYLE:
+			if (lexrc.next()) {
+				string const name = subst(lowercase(lexrc.getString()), '_', ' ');
+				defaultlayout_ = name;
+			}
+			break;
+			
 		case TC_STYLE:
 			if (lexrc.next()) {
-				string name = subst(lexrc.getString(),
+				string const name = subst(lowercase(lexrc.getString()),
 						    '_', ' ');
 				if (hasLayout(name)) {
-					LyXLayout & lay = GetLayout(name);
+					LyXLayout & lay = operator[](name);
 					error = do_readStyle(lexrc, lay);
 				} else {
 					LyXLayout lay;
@@ -190,11 +199,12 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 
 		case TC_NOSTYLE:
 			if (lexrc.next()) {
-				string const style = subst(lexrc.getString(),
+				string const style = subst(lowercase(lexrc.getString()),
 						     '_', ' ');
 				if (!delete_layout(style))
-					lexrc.printError("Cannot delete style"
-							 " `$$Token'");
+					lyxerr << "Cannot delete style `" << style << "'" << endl;
+//					lexrc.printError("Cannot delete style"
+//							 " `$$Token'");
 			}
 			break;
 
@@ -291,6 +301,11 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 		lyxerr[Debug::TCLASS] << "Finished reading textclass " 
 				      << MakeDisplayPath(filename)
 				      << endl;
+		if (defaultlayout_.empty()) {
+			lyxerr << "Error: Textclass '" << name_
+			       << "' is missing a defaultstyle." << endl;
+			error = true;
+		}
 	} else
 		lyxerr[Debug::TCLASS] << "Finished reading input file " 
 				      << MakeDisplayPath(filename)
@@ -470,38 +485,73 @@ string const & LyXTextClass::rightmargin() const
 }
 
 
-bool LyXTextClass::hasLayout(string const & name) const
+bool LyXTextClass::hasLayout(string const & n) const
 {
+	string const name = (n.empty() ? defaultLayoutName() : lowercase(n));
+	
 	return find_if(layoutlist.begin(), layoutlist.end(),
 		       lyx::compare_memfun(&LyXLayout::name, name))
 		!= layoutlist.end();
 }
 
 
-LyXLayout const & LyXTextClass::GetLayout (string const & name) const
+LyXLayout const & LyXTextClass::operator[](string const & n) const
 {
+	if (n.empty())
+		lyxerr << "Operator[] called with empty n" << endl;
+	
+	string const name = (n.empty() ? defaultLayoutName() : lowercase(n));
+	
 	LayoutList::const_iterator cit =
 		find_if(layoutlist.begin(),
 			layoutlist.end(),
 			lyx::compare_memfun(&LyXLayout::name, name));
-	lyx::Assert(cit != layoutlist.end()); // we require the name to exist
-	return (*cit);
+
+	if (cit == layoutlist.end()) {
+		lyxerr << "We failed to find the layout '" << name
+		       << "' in the layout list. You MUST investigate!"
+		       << endl;
+		
+		// we require the name to exist
+		lyx::Assert(false);
+	}
+
+	return *cit;
 }
 
 
-LyXLayout & LyXTextClass::GetLayout(string const & name)
+LyXLayout & LyXTextClass::operator[](string const & n)
 {
+	if (n.empty())
+		lyxerr << "Operator[] called with empty n" << endl;
+
+	string const name = (n.empty() ? defaultLayoutName() : lowercase(n));
+	
 	LayoutList::iterator it =
 		find_if(layoutlist.begin(),
 			layoutlist.end(),
 			lyx::compare_memfun(&LyXLayout::name, name));
-	lyx::Assert(it != layoutlist.end()); // we require the name to exist
-	return (*it);
+
+	if (it == layoutlist.end()) {
+		lyxerr << "We failed to find the layout '" << name
+		       << "' in the layout list. You MUST investigate!"
+		       << endl;
+		
+		// we require the name to exist
+		lyx::Assert(false);
+	}
+	
+	return *it;
 }
 
 
-bool LyXTextClass::delete_layout(string const & name)
+bool LyXTextClass::delete_layout(string const & n)
 {
+	string const name = lowercase(n);
+
+	if (name == defaultLayoutName())
+		return false;
+	
 	LayoutList::iterator it =
 		remove_if(layoutlist.begin(), layoutlist.end(),
 			  lyx::compare_memfun(&LyXLayout::name, name));
@@ -513,21 +563,141 @@ bool LyXTextClass::delete_layout(string const & name)
 
 
 // Load textclass info if not loaded yet
-void LyXTextClass::load()
+bool LyXTextClass::load() const
 {
-	if (loaded) return;
+	if (loaded)
+		return true;
 
 	// Read style-file
 	string const real_file = LibFileSearch("layouts", name_, "layout");
 
-	if (Read(real_file)) {
+	if (const_cast<LyXTextClass*>(this)->Read(real_file)) {
 		lyxerr << "Error reading `"
 		       << MakeDisplayPath(real_file)
 		       << "'\n(Check `" << name_
 		       << "')\nCheck your installation and "
 			"try Options/Reconfigure..." << endl;
+		loaded = false;
 	}
 	loaded = true;
+	return loaded;
+	
+}
+
+
+string const LyXTextClass::defaultLayoutName() const
+{
+	// This really should come from the actual layout... (Lgb)
+	return defaultlayout_;
+}
+
+
+LyXLayout const & LyXTextClass::defaultLayout() const
+{
+	return operator[](defaultLayoutName());
+}
+
+
+LyXLayout & LyXTextClass::defaultLayout()
+{
+	return operator[](defaultLayoutName());
+}
+
+
+string const & LyXTextClass::name() const
+{
+	return name_;
+}
+
+
+string const & LyXTextClass::latexname() const
+{
+	const_cast<LyXTextClass*>(this)->load();
+	return latexname_;
+}
+
+
+string const & LyXTextClass::description() const
+{
+	return description_;
+}
+
+
+string const & LyXTextClass::opt_fontsize() const
+{
+	return opt_fontsize_;
+}
+
+
+string const & LyXTextClass::opt_pagestyle() const
+{
+	return opt_pagestyle_;
+}
+
+
+string const & LyXTextClass::options() const
+{
+	return options_;
+}
+
+
+string const & LyXTextClass::pagestyle() const
+{
+	return pagestyle_;
+}
+
+
+string const & LyXTextClass::preamble() const
+{
+	return preamble_;
+}
+
+
+LyXTextClass::PageSides LyXTextClass::sides() const
+{
+	return sides_;
+}
+
+
+int LyXTextClass::secnumdepth() const
+{
+	return secnumdepth_;
+}
+
+
+int LyXTextClass::tocdepth() const
+{
+	return tocdepth_;
+}
+
+
+OutputType LyXTextClass::outputType() const
+{
+	return outputType_;
+}
+
+
+bool LyXTextClass::provides(LyXTextClass::Provides p) const
+{
+	return provides_ & p;
+}
+	
+
+unsigned int LyXTextClass::columns() const
+{
+	return columns_;
+}
+
+
+int LyXTextClass::maxcounter() const
+{
+	return maxcounter_;
+}
+
+
+int LyXTextClass::size() const
+{
+	return layoutlist.size();
 }
 
 

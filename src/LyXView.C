@@ -28,6 +28,7 @@
 #include "gettext.h"
 #include "lyxfunc.h"
 #include "BufferView.h"
+#include "lyxtextclasslist.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/Toolbar.h"
@@ -40,12 +41,11 @@
 #include <unistd.h>
 
 using std::endl;
-using lyx::layout_type;
 
 extern void AutoSave(BufferView *);
 extern void QuitLyX();
 
-layout_type current_layout = 0;
+string current_layout;
 
 
 LyXView::LyXView()
@@ -104,7 +104,7 @@ Toolbar * LyXView::getToolbar() const
 }
 
 
-void LyXView::setLayout(layout_type layout)
+void LyXView::setLayout(string const & layout)
 {
 	toolbar->setLayout(layout);
 }
@@ -205,12 +205,13 @@ void LyXView::updateLayoutChoice()
 	if (last_textclass != int(buffer()->params.textclass)) {
 		toolbar->updateLayoutList(true);
 		last_textclass = int(buffer()->params.textclass);
-		current_layout = 0;
+		current_layout = textclasslist[last_textclass].defaultLayoutName();
 	} else {
 		toolbar->updateLayoutList(false);
 	}
-	
-	layout_type layout = bufferview->getLyXText()->cursor.par()->getLayout();
+
+	string const & layout =
+		bufferview->getLyXText()->cursor.par()->layout();
 
 	if (layout != current_layout) {
 		toolbar->setLayout(layout);

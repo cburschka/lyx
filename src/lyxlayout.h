@@ -28,10 +28,9 @@ class LyXTextClass;
 class LyXLayout {
 public:
 	///
-	LyXLayout ();
-
+	LyXLayout();
 	///
-	bool Read (LyXLex &, LyXTextClass const &);
+	bool Read(LyXLex &, LyXTextClass const &);
 	///
 	void readAlign(LyXLex &);
 	///
@@ -47,11 +46,11 @@ public:
 	///
 	void readSpacing(LyXLex &);
 	///
-	string const & name() const { return name_; }
+	string const & name() const;
 	///
-	void setName(string const & n) { name_ = n; }
+	void setName(string const & n);
 	///
-	string const & obsoleted_by() const { return obsoleted_by_; }
+	string const & obsoleted_by() const;
 	///
 	string const & latexname() const { return latexname_; }
 	///

@@ -75,7 +75,7 @@ void BufferParams::writeFile(ostream & os) const
 	// Prints out the buffer info into the .lyx file given by file
 
  	// the textclass
- 	os << "\\textclass " << textclasslist.NameOfClass(textclass) << '\n';
+ 	os << "\\textclass " << textclasslist[textclass].name() << '\n';
 	
 	// then the the preamble
 	if (!preamble.empty()) {
@@ -209,7 +209,7 @@ void BufferParams::setPaperStuff()
 
 void BufferParams::useClassDefaults()
 {
-	LyXTextClass const & tclass = textclasslist.TextClass(textclass);
+	LyXTextClass const & tclass = textclasslist[textclass];
 
 	sides = tclass.sides();
 	columns = tclass.columns();
@@ -222,7 +222,7 @@ void BufferParams::useClassDefaults()
 
 bool BufferParams::hasClassDefaults() const
 {
-	LyXTextClass const & tclass = textclasslist.TextClass(textclass);
+	LyXTextClass const & tclass = textclasslist[textclass];
 	
 	return (sides == tclass.sides()
 		&& columns == tclass.columns()

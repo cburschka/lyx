@@ -115,11 +115,11 @@ public:
 	  those paragraphs
 	  */
 	Paragraph * setLayout(BufferView *, LyXCursor & actual_cursor,
-				 LyXCursor & selection_start,
-				 LyXCursor & selection_end,
-				 lyx::layout_type layout);
+			      LyXCursor & selection_start,
+			      LyXCursor & selection_end,
+			      string const & layout);
 	///
-	void setLayout(BufferView *, lyx::layout_type layout);
+	void setLayout(BufferView *, string const & layout);
 	
 	/// used in setlayout
 	void makeFontEntriesLayoutSpecific(Buffer const *, Paragraph * par);
@@ -514,8 +514,7 @@ private:
 	  Asger has learned that this should be a buffer-property instead
 	  Lgb has learned that 'char' is a lousy type for non-characters
 	  */
-	lyx::layout_type copylayouttype;
-
+	string copylayouttype;
 	/** inserts a new row behind the specified row, increments
 	    the touched counters */
 	void insertRow(Row * row, Paragraph * par, lyx::pos_type pos) const;

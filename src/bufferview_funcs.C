@@ -159,9 +159,7 @@ string const currentState(BufferView * bv)
 		Buffer * buffer = bv->buffer();
 		LyXFont font = text->real_current_font;
 		LyXFont const & defaultfont =
-			textclasslist
-			.TextClass(buffer->params.textclass)
-			.defaultfont();
+			textclasslist[buffer->params.textclass].defaultfont();
 		font.reduce(defaultfont);
 
 		state << _("Font:") << ' '

@@ -45,7 +45,7 @@ struct Language;
 class LaTeXFeatures {
 public:
 	///
-	LaTeXFeatures(BufferParams const &, lyx::layout_type n) ;
+	LaTeXFeatures(BufferParams const &);
 	/// The packages needed by the document
 	string const getPackages() const;
 	/// The macros definitions needed by the document
@@ -79,8 +79,7 @@ public:
 	///
 	std::set<string> getEncodingSet(string const & doc_encoding);
 	///
-	///
-	void useLayout(std::vector<bool>::size_type const & idx);
+	void useLayout(string const & lyt);
 	///
 	BufferParams const & bufferParams() const;
 	///
@@ -88,7 +87,7 @@ public:
 private:
 	string externalPreambles;
 
-	std::vector<bool> layout;
+	std::set<string> layout;
 
 	/// Static preamble bits from the external material insets
 

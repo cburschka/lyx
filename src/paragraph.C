@@ -55,7 +55,6 @@ using std::upper_bound;
 using std::reverse;
 
 using lyx::pos_type;
-using lyx::layout_type;
 
 int tex_code_break_column = 72;  // needs non-zero initialization. set later.
 // this is a bad idea, but how can Paragraph find its buffer to get
@@ -78,7 +77,7 @@ extern BufferView * current_view;
 
 
 Paragraph::Paragraph()
-	: layout(0), pimpl_(new Paragraph::Pimpl(this))
+	: pimpl_(new Paragraph::Pimpl(this))
 {
 	for (int i = 0; i < 10; ++i)
 		setCounter(i, 0);
@@ -93,7 +92,7 @@ Paragraph::Paragraph()
 
 // This constructor inserts the new paragraph in a list.
 Paragraph::Paragraph(Paragraph * par)
-	: layout(0), pimpl_(new Paragraph::Pimpl(this))
+	: pimpl_(new Paragraph::Pimpl(this))
 {
 	for (int i = 0; i < 10; ++i)
 		setCounter(i, 0);
@@ -115,7 +114,7 @@ Paragraph::Paragraph(Paragraph * par)
 
 
 Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
-	: layout(0), pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this, same_ids))
+	: pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this, same_ids))
 {
 	for (int i = 0; i < 10; ++i)
 		setCounter(i, 0);
@@ -126,7 +125,7 @@ Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
 
 	// this is because of the dummy layout of the paragraphs that
 	// follow footnotes
-	layout = lp.layout;
+	layout_ = lp.layout();
 
 	// ale970302
 	if (lp.bibkey) {
@@ -191,9 +190,7 @@ void Paragraph::writeFile(Buffer const * buf, ostream & os,
 	}
 	
 	// First write the layout
-	os << "\n\\layout "
-	   << textclasslist.NameOfLayout(bparams.textclass, layout)
-	   << "\n";
+	os << "\n\\layout " << layout() << "\n";
 	
 	// Maybe some vertical spaces.
 	if (params().spaceTop().kind() != VSpace::NONE)
@@ -341,7 +338,7 @@ void Paragraph::validate(LaTeXFeatures & features) const
 		features.require("setspace");
 	
 	// then the layouts
-	features.useLayout(getLayout());
+	features.useLayout(layout());
 
 	// then the fonts
 	Language const * doc_language = bparams.language;
@@ -388,14 +385,13 @@ void Paragraph::validate(LaTeXFeatures & features) const
 	}
 
 	// then the insets
-	LyXLayout const & layout =
-             textclasslist.Style(bparams.textclass, getLayout());
+	LyXLayout const & lout = textclasslist[bparams.textclass][layout()];
 
 	for (InsetList::const_iterator cit = insetlist.begin();
 	     cit != insetlist.end(); ++cit) {
 		if (cit->inset) {
 			cit->inset->validate(features);
-			if (layout.needprotect &&
+			if (lout.needprotect &&
 			    cit->inset->lyxCode() == Inset::FOOT_CODE)
 				features.require("NeedLyXFootnoteCode");
 		}
@@ -480,8 +476,9 @@ bool Paragraph::insertFromMinibuffer(pos_type pos)
 void Paragraph::clear()
 {
 	params().clear();
-	
-	layout = 0;
+
+	layout_.erase();
+
 	bibkey = 0;
 }
 
@@ -634,18 +631,17 @@ LyXFont const Paragraph::getFont(BufferParams const & bparams,
 {
 	lyx::Assert(pos >= 0);
 	
-	LyXLayout const & layout =
-		textclasslist.Style(bparams.textclass, 
-				    getLayout());
+	LyXLayout const & lout =
+		textclasslist[bparams.textclass][layout()];
 	pos_type main_body = 0;
-	if (layout.labeltype == LABEL_MANUAL)
+	if (lout.labeltype == LABEL_MANUAL)
 		main_body = beginningOfMainBody();
 
 	LyXFont layoutfont;
 	if (pos < main_body)
-		layoutfont = layout.labelfont;
+		layoutfont = lout.labelfont;
 	else
-		layoutfont = layout.font;
+		layoutfont = lout.font;
 	
 	LyXFont tmpfont = getFontSettings(bparams, pos);
 #ifndef INHERIT_LANGUAGE
@@ -660,10 +656,10 @@ LyXFont const Paragraph::getFont(BufferParams const & bparams,
 
 LyXFont const Paragraph::getLabelFont(BufferParams const & bparams) const
 {
-	LyXLayout const & layout =
-		textclasslist.Style(bparams.textclass, getLayout());
+	LyXLayout const & lout =
+		textclasslist[bparams.textclass][layout()];
 	
-	LyXFont tmpfont = layout.labelfont;
+	LyXFont tmpfont = lout.labelfont;
 	tmpfont.setLanguage(getParLanguage(bparams));
 
 	return pimpl_->realizeFont(tmpfont, bparams);
@@ -672,11 +668,10 @@ LyXFont const Paragraph::getLabelFont(BufferParams const & bparams) const
 
 LyXFont const Paragraph::getLayoutFont(BufferParams const & bparams) const
 {
-	LyXLayout const & layout =
-		textclasslist.Style(bparams.textclass, 
-				    getLayout());
+	LyXLayout const & lout =
+		textclasslist[bparams.textclass][layout()];
 
-	LyXFont tmpfont = layout.font;
+	LyXFont tmpfont = lout.font;
 	tmpfont.setLanguage(getParLanguage(bparams));
 
 	return pimpl_->realizeFont(tmpfont, bparams);
@@ -872,12 +867,12 @@ void Paragraph::breakParagraph(BufferParams const & bparams,
 	
 	// layout stays the same with latex-environments
 	if (flag) {
-		tmp->setOnlyLayout(layout);
+		tmp->layout(layout());
 		tmp->setLabelWidthString(params().labelWidthString());
 	}
 	
 	if (size() > pos || !size() || flag == 2) {
-		tmp->setOnlyLayout(layout);
+		tmp->layout(layout());
 		tmp->params().align(params().align());
 		tmp->setLabelWidthString(params().labelWidthString());
 		
@@ -915,7 +910,7 @@ void Paragraph::breakParagraph(BufferParams const & bparams,
 		clear();
 		// layout stays the same with latex-environments
 		if (flag) {
-			setOnlyLayout(tmp->layout);
+			layout(tmp->layout());
 			setLabelWidthString(tmp->params().labelWidthString());
 			params().depth(tmp->params().depth());
 		}
@@ -925,7 +920,7 @@ void Paragraph::breakParagraph(BufferParams const & bparams,
 
 void Paragraph::makeSameLayout(Paragraph const * par)
 {
-	layout = par->layout;
+	layout(par->layout());
 	// move to pimpl?
 	params() = par->params();
 }
@@ -933,9 +928,8 @@ void Paragraph::makeSameLayout(Paragraph const * par)
 
 int Paragraph::stripLeadingSpaces(lyx::textclass_type tclass) 
 {
-	if (textclasslist.Style(tclass, getLayout()).free_spacing ||
-		isFreeSpacing())
-	{
+	if (textclasslist[tclass][layout()].free_spacing ||
+	    isFreeSpacing()) {
 		return 0;
 	}
 	
@@ -952,7 +946,7 @@ int Paragraph::stripLeadingSpaces(lyx::textclass_type tclass)
 bool Paragraph::hasSameLayout(Paragraph const * par) const
 {
 	return 
-		par->layout == layout &&
+		par->layout() == layout() &&
 		params().sameLayout(par->params());
 }
 
@@ -1022,10 +1016,9 @@ int Paragraph::getEndLabel(BufferParams const & bparams) const
 	Paragraph const * par = this;
 	depth_type par_depth = getDepth();
 	while (par) {
-		layout_type layout = par->getLayout();
+		string const & layout = par->layout();
 		int const endlabeltype =
-			textclasslist.Style(bparams.textclass,
-					    layout).endlabeltype;
+			textclasslist[bparams.textclass][layout].endlabeltype;
 		if (endlabeltype != END_LABEL_NO_LABEL) {
 			if (!next_)
 				return endlabeltype;
@@ -1033,7 +1026,7 @@ int Paragraph::getEndLabel(BufferParams const & bparams) const
 			depth_type const next_depth = next_->getDepth();
 			if (par_depth > next_depth ||
 			    (par_depth == next_depth
-			     && layout != next_->getLayout()))
+			     && layout != next_->layout()))
 				return endlabeltype;
 			break;
 		}
@@ -1055,8 +1048,7 @@ Paragraph::depth_type Paragraph::getDepth() const
 
 Paragraph::depth_type Paragraph::getMaxDepthAfter(Buffer const * buffer) const
 {
-	const bool isenv = textclasslist.Style(buffer->params.textclass,
-					       getLayout()).isEnvironment();
+	bool const isenv = textclasslist[buffer->params.textclass][layout()].isEnvironment();
 
 	if (isenv)
 		return params().depth() + 1;
@@ -1099,15 +1091,9 @@ void Paragraph::setLabelWidthString(string const & s)
 }
 
 
-void Paragraph::setOnlyLayout(layout_type new_layout)
+void Paragraph::applyLayout(string const & new_layout)
 {
-	layout = new_layout;
-}
-
-
-void Paragraph::setLayout(layout_type new_layout)
-{
-	layout = new_layout;
+	layout(new_layout);
 	params().labelWidthString(string());
 	params().align(LYX_ALIGN_LAYOUT);
 	params().spaceTop(VSpace(VSpace::NONE));
@@ -1246,7 +1232,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	// any special options in the paragraph and also we don't allow
 	// any environment other then "Standard" to be valid!
 	if ((in == 0) || !in->forceDefaultParagraphs(in)) {
-		style = textclasslist.Style(bparams.textclass, layout);
+		style = textclasslist[bparams.textclass][layout()];
 
 		if (params().startOfAppendix()) {
 			os << "\\appendix\n";
@@ -1284,7 +1270,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 			texrow.newline();
 		}
 	} else {
-		style = textclasslist.Style(bparams.textclass, 0);
+		style = textclasslist[bparams.textclass].defaultLayout();
 	}
 
 	Language const * language = getParLanguage(bparams);
@@ -1295,7 +1281,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	if (language->babel() != previous_language->babel()
 	    // check if we already put language command in TeXEnvironment()
 	    && !(style.isEnvironment()
-	         && (!previous() || previous()->layout != layout ||
+	         && (!previous() || previous()->layout() != layout() ||
 		         previous()->params().depth() != params().depth())))
 	{
 		if (!lyxrc.language_command_end.empty() &&
@@ -1382,7 +1368,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 		// if its the last paragraph of the current environment
 		// skip it otherwise fall through
 		if (next_
-		    && (next_->layout != layout
+		    && (next_->layout() != layout()
 			|| next_->params().depth() != params().depth()))
 			break;
 		// fall through possible
@@ -1554,9 +1540,9 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 		(inInset() && inInset()->forceDefaultParagraphs(inInset()));
 
 	if (asdefault) {
-		style = textclasslist.Style(bparams.textclass, 0);
+		style = textclasslist[bparams.textclass].defaultLayout();
 	} else {
-		style = textclasslist.Style(bparams.textclass, layout);
+		style = textclasslist[bparams.textclass][layout()];
 	}
 	
 	LyXFont basefont;
@@ -1805,8 +1791,7 @@ Paragraph * Paragraph::TeXEnvironment(Buffer const * buf,
 	lyxerr[Debug::LATEX] << "TeXEnvironment...     " << this << endl;
 
 	LyXLayout const & style =
-		textclasslist.Style(bparams.textclass,
-				    layout);
+		textclasslist[bparams.textclass][layout()];
 
 	Language const * language = getParLanguage(bparams);
 	Language const * doc_language = bparams.language;
@@ -1853,8 +1838,7 @@ Paragraph * Paragraph::TeXEnvironment(Buffer const * buf,
 		par = par->TeXOnePar(buf, bparams, os, texrow, false);
 
 		if (par && par->params().depth() > params().depth()) {
-			if (textclasslist.Style(bparams.textclass,
-						par->layout).isParagraph()
+			if (textclasslist[bparams.textclass][par->layout()].isParagraph()
 			    // Thinko!
 			    // How to handle this? (Lgb)
 			    //&& !suffixIs(os, "\n\n")
@@ -1875,7 +1859,7 @@ Paragraph * Paragraph::TeXEnvironment(Buffer const * buf,
 			par = par->pimpl_->TeXDeeper(buf, bparams, os, texrow);
 		}
 	} while (par
-		 && par->layout == layout
+		 && par->layout() == layout()
 		 && par->params().depth() == params().depth());
  
 	if (style.isEnvironment()) {
@@ -2130,9 +2114,15 @@ void  Paragraph::id(int id_arg)
 }
 
 
-layout_type Paragraph::getLayout() const
+string const & Paragraph::layout() const
 {
-	return layout;
+	return layout_;
+}
+
+
+void Paragraph::layout(string const & new_layout)
+{
+	layout_ = new_layout;
 }
 
 
@@ -2140,7 +2130,7 @@ bool Paragraph::isFirstInSequence() const
 {
 	Paragraph const * dhook = depthHook(getDepth());
 	return (dhook == this
-		|| dhook->getLayout() != getLayout()
+		|| dhook->layout() != layout()
 		|| dhook->getDepth() != getDepth());
 }
 

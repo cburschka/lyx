@@ -65,7 +65,6 @@ using std::vector;
 using std::pair;
 
 using lyx::pos_type;
-using lyx::layout_type;
 using lyx::textclass_type;
 
 extern unsigned char getCurrentTextClass(Buffer *);
@@ -620,7 +619,7 @@ void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty) const
 	bv->owner()->updateMenubar();
 	bv->owner()->updateToolbar();
 	if (old_par != cpar(bv)) {
-		bv->owner()->setLayout(cpar(bv)->getLayout());
+		bv->owner()->setLayout(cpar(bv)->layout());
 		old_par = cpar(bv);
 	}
 }
@@ -749,9 +748,9 @@ void InsetText::insetUnlock(BufferView * bv)
 		code = FULL;
 	} else if (owner()) {
 		bv->owner()->setLayout(owner()->getLyXText(bv)
-		                       ->cursor.par()->getLayout());
+		                       ->cursor.par()->layout());
 	} else
-		bv->owner()->setLayout(bv->text->cursor.par()->getLayout());
+		bv->owner()->setLayout(bv->text->cursor.par()->layout());
 	// hack for deleteEmptyParMech
 	if (par->size()) {
 		lt->setCursor(bv, par, 0);
@@ -975,7 +974,7 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 				lt = 0;
 			updateLocal(bv, CURSOR, false);
 		}
-		bv->owner()->setLayout(cpar(bv)->getLayout());
+		bv->owner()->setLayout(cpar(bv)->layout());
 		old_par = cpar(bv);
 		// Insert primary selection with middle mouse
 		// if there is a local selection in the current buffer,
@@ -1320,39 +1319,40 @@ InsetText::localDispatch(BufferView * bv,
 	case LFUN_LAYOUT:
 		// do not set layouts on non breakable textinsets
 		if (autoBreakRows) {
-			layout_type cur_layout = cpar(bv)->layout;
+			string cur_layout = cpar(bv)->layout();
 	  
 			// Derive layout number from given argument (string)
 			// and current buffer's textclass (number). */    
 			textclass_type tclass = bv->buffer()->params.textclass;
-			pair<bool, layout_type> layout = 
-				textclasslist.NumberOfLayout(tclass, arg);
+			string layout = lowercase(arg);
+			bool hasLayout = textclasslist[tclass].hasLayout(layout);
 
 			// If the entry is obsolete, use the new one instead.
-			if (layout.first) {
-				string obs = textclasslist.Style(tclass,layout.second).
+			if (hasLayout) {
+				string const & obs =
+					textclasslist[tclass][layout].
 					obsoleted_by();
 				if (!obs.empty()) 
-					layout = textclasslist.NumberOfLayout(tclass, obs);
+					layout = lowercase(obs);
 			}
 
 			// see if we found the layout number:
-			if (!layout.first) {
+			if (!hasLayout) {
 				string const msg = string(N_("Layout ")) + arg + N_(" not known");
 				bv->owner()->getLyXFunc()->dispatch(LFUN_MESSAGE, msg);
 				break;
 			}
 
-			if (cur_layout != layout.second) {
-				cur_layout = layout.second;
-				lt->setLayout(bv, layout.second);
-				bv->owner()->setLayout(cpar(bv)->getLayout());
+			if (cur_layout != layout) {
+				cur_layout = layout;
+				lt->setLayout(bv, layout);
+				bv->owner()->setLayout(cpar(bv)->layout());
 				updwhat = CURSOR_PAR;
 				updflag = true;
 			}
 		} else {
 			// reset the layout box
-			bv->owner()->setLayout(cpar(bv)->getLayout());
+			bv->owner()->setLayout(cpar(bv)->layout());
 		}
 		break;
 	case LFUN_PARAGRAPH_SPACING:
@@ -1469,8 +1469,7 @@ int InsetText::docbook(Buffer const * buf, ostream & os) const
 		int desc_on = 0; // description mode
 
 		LyXLayout const & style =
-			textclasslist.Style(buf->params.textclass,
-					    p->layout);
+			textclasslist[buf->params.textclass][p->layout()];
 
 		// environment tag closing
 		for (; depth > p->params().depth(); --depth) {
@@ -1650,8 +1649,7 @@ void InsetText::validate(LaTeXFeatures & features) const
 
 int InsetText::beginningOfMainBody(Buffer const * buf, Paragraph * p) const
 {
-	if (textclasslist.Style(buf->params.textclass,
-				p->getLayout()).labeltype != LABEL_MANUAL)
+	if (textclasslist[buf->params.textclass][p->layout()].labeltype != LABEL_MANUAL)
 		return 0;
 	else
 		return p->beginningOfMainBody();
