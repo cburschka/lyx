@@ -170,6 +170,7 @@ void RCS::registrer(string const & msg)
 	cmd += OnlyFilename(owner_->fileName());
 	cmd += '"';
 	doVCCommand(cmd, owner_->filePath());
+	reload();
 }
 
 
