@@ -32,7 +32,7 @@ for fil in config/libtool.m4 ; do
     cat $fil >> sigc++/acinclude.m4
 done
 touch boost/acinclude.m4
-for fil in config/boost.m4 ; do
+for fil in config/boost.m4 config/libtool.m4 ; do
     cat $fil >> boost/acinclude.m4
 done
 echo "done."
@@ -41,7 +41,7 @@ echo "done."
 if ( aclocal --version ) </dev/null > /dev/null 2>&1; then
 	echo "Building macros..."
 	for dir in . lib/reLyX sigc++ boost ; do
-	    echo -e "\t$dir"
+	    echo "        $dir"
 	    ( cd $dir ; $ACLOCAL )
 	done
 #	$ACLOCAL ; ( cd lib/reLyX; $ACLOCAL ) ; ( cd sigc++; $ACLOCAL ) 
@@ -55,7 +55,7 @@ fi
 if ( autoheader --version ) </dev/null > /dev/null 2>&1; then
 	echo "Building config header template..."
 	for dir in . sigc++ boost ; do
-	    echo -e "\t$dir"
+	    echo "        $dir"
 	    ( cd $dir ; $AUTOHEADER )
 	done
 #	$AUTOHEADER ; ( cd sigc++; $AUTOHEADER ) ; ( cd boost; $AUTOHEADER ) 
@@ -68,7 +68,7 @@ fi
 if ( $AUTOMAKE --version ) </dev/null > /dev/null 2>&1; then
 	echo "Building Makefile templates..."
 	for dir in . lib/reLyX sigc++ boost ; do
-	    echo -e "\t$dir"
+	    echo "        $dir"
 	    ( cd $dir ; $AUTOMAKE )
 	done
 #	$AUTOMAKE ; ( cd lib/reLyX ; $AUTOMAKE ) ; ( cd sigc++; $AUTOMAKE ) 
@@ -82,7 +82,7 @@ fi
 if ( $AUTOCONF --version ) </dev/null > /dev/null 2>&1; then
 	echo "Building configure..."
 	for dir in . lib/reLyX sigc++ boost ; do
-	    echo -e "\t$dir"
+	    echo "       $dir"
 	    ( cd $dir ; $AUTOCONF )
 	done
 #	$AUTOCONF ; ( cd lib/reLyX ; $AUTOCONF ) ; ( cd sigc++; $AUTOCONF )
