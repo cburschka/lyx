@@ -531,6 +531,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 					+ textclasslist.NameOfLayout(params.textclass, par->layout);
 				InsetError * new_inset = new InsetError(s);
 				par->insertInset(0, new_inset);
+				par->setFont(0, LyXFont(LyXFont::ALL_INHERIT,
+							params.language));
 			}
 			// Test whether the layout is obsolete.
 			LyXLayout const & layout =
@@ -1169,6 +1171,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 
 		InsetError * new_inset = new InsetError(s);
 		par->insertInset(pos, new_inset);
+		par->setFont(pos, LyXFont(LyXFont::ALL_INHERIT,
+					  params.language));
 
 #ifndef NO_COMPABILITY
 		}
@@ -2964,6 +2968,7 @@ void Buffer::sgmlError(Paragraph * par, int pos,
 	// insert an error marker in text
 	InsetError * new_inset = new InsetError(message);
 	par->insertInset(pos, new_inset);
+	par->setFont(pos, LyXFont(LyXFont::ALL_INHERIT, params.language));
 }
 
 
