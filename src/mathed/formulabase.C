@@ -40,7 +40,6 @@
 #include "font.h"
 #include "math_arrayinset.h"
 #include "math_spaceinset.h"
-#include "math_scopeinset.h"
 #include "math_macrotable.h"
 #include "math_factory.h"
 #include "support/lyxlib.h"
