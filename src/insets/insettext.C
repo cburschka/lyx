@@ -615,6 +615,9 @@ void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty) const
 		lt = 0;
 	if (flag)
 		bv->updateInset(const_cast<InsetText *>(this), mark_dirty);
+	else
+		bv->fitCursor();
+	
 	if (need_update == CURSOR)
 		need_update = NONE;
 	bv->owner()->showState();
@@ -947,7 +950,7 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 		}
 
 		lt->setCursorFromCoordinates(bv, x - drawTextXOffset,
-					     y + insetAscent);
+		                             y + insetAscent);
 		// set the selection cursor!
 		lt->selection.cursor = lt->cursor;
 		lt->cursor.x_fix(lt->cursor.x());
@@ -961,6 +964,7 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 			lt->clearSelection();
 			if (clear)
 				lt = 0;
+			updateLocal(bv, CURSOR, false);
 		}
 		bv->owner()->setLayout(cpar(bv)->getLayout());
 		old_par = cpar(bv);

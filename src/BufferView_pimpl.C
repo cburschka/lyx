@@ -3412,8 +3412,7 @@ void BufferView::Pimpl::updateInset(Inset * inset, bool mark_dirty)
 				return;
 			}
 		} else if (bv_->theLockingInset()->updateInsetInInset(bv_, inset)) {
-			if (bv_->text->updateInset(bv_,
-			                           bv_->theLockingInset())) {
+			if (bv_->text->updateInset(bv_,  bv_->theLockingInset())) {
 				update();
 				if (mark_dirty){
 					buffer_->markDirty();
