@@ -42,10 +42,40 @@ extern string current_layout;
 
 namespace {
 
-	void finishChange(BufferView * bv, bool fitcur = false)
+	void moveCursorUpdate(BufferView * bv, bool selecting)
+	{
+		LyXText * lt = bv->getLyXText();
+
+		if (selecting || lt->selection.mark()) {
+			lt->setSelection(bv);
+			if (lt->bv_owner)
+				bv->toggleToggle();
+			else
+				bv->updateInset(lt->inset_owner, false);
+		}
+		if (lt->bv_owner) {
+			//if (fitcur)
+			//	bv->update(lt, BufferView::SELECT|BufferView::FITCUR);
+			//else
+				bv->update(lt, BufferView::SELECT);
+			bv->showCursor();
+		} else if (bv->text->status() != LyXText::UNCHANGED) {
+			bv->theLockingInset()->hideInsetCursor(bv);
+			bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
+			bv->showCursor();
+		}
+
+		if (!lt->selection.set())
+			bv->workarea().haveSelection(false);
+
+		bv->switchKeyMap();
+	}
+
+
+	void finishChange(BufferView * bv, bool selecting = false)
 	{
 		finishUndo();
-		bv->moveCursorUpdate(fitcur);
+		moveCursorUpdate(bv, selecting);
 		bv->owner()->view_state_changed();
 	}
 
@@ -523,7 +553,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		finishChange(bv, false);
 		// was:
 		// finishUndo();
-		// moveCursorUpdate(false, false);
+		// moveCursorUpdate(bv, false, false);
 		// owner_->view_state_changed();
 		break;
 
@@ -556,7 +586,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		insertChar(bv, Paragraph::META_NEWLINE);
 		update(bv, true);
 		setCursor(bv, cursor.par(), cursor.pos());
-		bv->moveCursorUpdate(false);
+		moveCursorUpdate(bv, false);
 		break;
 
 	case LFUN_DELETE:
@@ -572,7 +602,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			cutSelection(bv, true);
 			update(bv);
 		}
-		bv->moveCursorUpdate(false);
+		moveCursorUpdate(bv, false);
 		bv->owner()->view_state_changed();
 		bv->switchKeyMap();
 		break;
@@ -769,7 +799,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		} else {
 			specialChar(this, bv, InsetSpecialChar::PROTECTED_SEPARATOR);
 		}
-		bv->moveCursorUpdate(false);
+		moveCursorUpdate(bv, false);
 		break;
 
 	case LFUN_HYPHENATION:
@@ -997,7 +1027,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		// this was originally a beforeChange(bv->text), i.e
 		// the outermost LyXText!
 		bv->beforeChange(this);
-		string const clip(bv->workarea().getClipboard());
+		string const clip = bv->workarea().getClipboard();
 		if (!clip.empty()) {
 			if (cmd.argument == "paragraph")
 				insertStringAsParagraphs(bv, clip);
@@ -1030,7 +1060,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		Paragraph const * par = cursor.par();
 		lyx::pos_type pos = cursor.pos();
 		char c;
-
 		if (!pos)
 			c = ' ';
 		else if (par->isInset(pos - 1) && par->getInset(pos - 1)->isSpace())
@@ -1067,7 +1096,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			update(bv, true);
 		}
 		selection.cursor = cursor;
-		bv->moveCursorUpdate(false);
+		moveCursorUpdate(bv, false);
 		break;
 	}
 
@@ -1100,7 +1129,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 		update(bv);
 		selection.cursor = cursor;
-		bv->moveCursorUpdate(false);
+		moveCursorUpdate(bv, false);
 
 		// real_current_font.number can change so we need to
 		// update the minibuffer

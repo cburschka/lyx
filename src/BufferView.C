@@ -230,9 +230,3 @@ bool BufferView::dispatch(FuncRequest const & ev)
 {
 	return pimpl_->dispatch(ev);
 }
-
-
-void BufferView::moveCursorUpdate(bool selecting, bool fitcur)
-{
-	pimpl_->moveCursorUpdate(selecting, fitcur);
-}

@@ -1227,36 +1227,6 @@ void BufferView::Pimpl::stuffClipboard(string const & stuff) const
  */
 
 
-void BufferView::Pimpl::moveCursorUpdate(bool selecting, bool fitcur)
-{
-	LyXText * lt = bv_->getLyXText();
-
-	if (selecting || lt->selection.mark()) {
-		lt->setSelection(bv_);
-		if (lt->bv_owner)
-			toggleToggle();
-		else
-			updateInset(lt->inset_owner, false);
-	}
-	if (lt->bv_owner) {
-		if (fitcur)
-			update(lt, BufferView::SELECT|BufferView::FITCUR);
-		else
-			update(lt, BufferView::SELECT);
-		showCursor();
-	} else if (bv_->text->status() != LyXText::UNCHANGED) {
-		bv_->theLockingInset()->hideInsetCursor(bv_);
-		update(bv_->text, BufferView::SELECT|BufferView::FITCUR);
-		showCursor();
-	}
-
-	if (!lt->selection.set())
-		workarea().haveSelection(false);
-
-	switchKeyMap();
-}
-
-
 Inset * BufferView::Pimpl::getInsetByCode(Inset::Code code)
 {
 #if 0

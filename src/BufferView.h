@@ -190,8 +190,6 @@ public:
 	void stuffClipboard(string const &) const;
 	///
 	bool dispatch(FuncRequest const & argument);
-	///
-	void moveCursorUpdate(bool selecting, bool fitcur = true);
 private:
 	///
 	struct Pimpl;
