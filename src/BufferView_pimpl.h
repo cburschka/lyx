@@ -60,8 +60,10 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	void updateScrollbar();
 	///
 	void scrollDocView(int value);
-	/// wheel mouse scroll
-	int scroll(long time);
+	/**
+	 * Wheel mouse scroll, move by multiples of text->defaultHeight().
+	 */
+	void scroll(int lines);
 	///
 	void workAreaKeyPress(LyXKeySymPtr key, key_modifier::state state);
 	///

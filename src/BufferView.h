@@ -165,8 +165,8 @@ public:
 	void toggleToggle();
 	///
 	void center();
-	///
-	int scroll(long time);
+	/// scroll document by the given number of lines of default height
+	void scroll(int lines);
 
 	/// Scroll the view by a number of pixels
 	void scrollDocView(int);

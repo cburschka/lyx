@@ -1,3 +1,11 @@
+2002-10-21  John Levon  <levon@movementarian.org>
+
+	* BufferView.h:
+	* BufferView.C:
+	* BufferView_pimpl.h:
+	* BufferView_pimpl.C: fix mouse wheel handling based on
+	  patch from Darren Freeman
+ 
 2002-10-09  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lyx_main.C (queryUserLyXDir): Fix automatic reconfiguration.

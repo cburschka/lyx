@@ -384,19 +384,25 @@ void BufferView::Pimpl::scrollDocView(int value)
 }
 
 
-int BufferView::Pimpl::scroll(long time)
+void BufferView::Pimpl::scroll(int lines)
 {
-	if (!buffer_)
-		return 0;
+	if (!buffer_) {
+		return;
+	}
 
 	LyXText const * t = bv_->text;
+	int const line_height = t->defaultHeight();
 
-	double const diff = t->defaultHeight()
-		+ double(time) * double(time) * 0.125;
+	int const disp = lines * line_height;
 
-	scrollDocView(int(diff));
+	// Restrict to a valid value
+	int new_first_y = std::min(t->height - 4 * line_height, disp);
+	new_first_y = std::max(0, disp);
+
+	scrollDocView(new_first_y);
+
+	// Update the scrollbar.
 	workarea().setScrollbarParams(t->height, t->first_y, t->defaultHeight());
-	return 0;
 }
 
 
