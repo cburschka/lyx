@@ -29,7 +29,6 @@
 #include <vector>
 
 
-class AuthorList;
 class BufferParams;
 class ErrorItem;
 class LyXFont;
@@ -300,10 +299,6 @@ public:
 	TexRow & texrow();
 	TexRow const & texrow() const;
 
-	/// the author list for the document
-	AuthorList & authors();
-
-	///
 	class inset_iterator {
 	public:
 		typedef std::input_iterator_tag iterator_category;

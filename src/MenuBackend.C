@@ -16,27 +16,31 @@
 #include <config.h>
 
 #include "MenuBackend.h"
-#include "bufferparams.h"
-#include "lyxlex.h"
-#include "LyXAction.h"
-#include "debug.h"
-#include "gettext.h"
-#include "kbmap.h"
-#include "lastfiles.h"
-#include "lyxfunc.h"
-#include "lyx_main.h" // for lastfiles
-#include "bufferlist.h"
+
+#include "BranchList.h"
 #include "buffer.h"
-#include "format.h"
+#include "bufferlist.h"
+#include "bufferparams.h"
+#include "CutAndPaste.h"
+#include "debug.h"
 #include "exporter.h"
-#include "importer.h"
 #include "Floating.h"
 #include "FloatList.h"
+#include "format.h"
+#include "gettext.h"
+#include "importer.h"
+#include "kbmap.h"
+#include "lastfiles.h"
+#include "LyXAction.h"
+#include "lyx_main.h" // for lastfiles
+#include "lyxfunc.h"
+#include "lyxlex.h"
 #include "toc.h"
-#include "CutAndPaste.h"
+
 #include "frontends/LyXView.h"
-#include "support/LAssert.h"
+
 #include "support/filetools.h"
+#include "support/LAssert.h"
 #include "support/lyxfunctional.h"
 #include "support/lstrings.h"
 #include "support/tostr.h"
@@ -658,8 +662,8 @@ void expandBranches(Menu & tomenu, LyXView const * view)
 
 	BufferParams const & params = view->buffer()->params();
 
-	std::list<Branch>::const_iterator cit = params.branchlist.begin();
-	std::list<Branch>::const_iterator end = params.branchlist.end();
+	std::list<Branch>::const_iterator cit = params.branchlist().begin();
+	std::list<Branch>::const_iterator end = params.branchlist().end();
 
 	for (int ii = 1; cit != end; ++cit, ++ii) {
 		string label = cit->getBranch();

@@ -17,6 +17,8 @@
 
 #include "bufferparams.h"
 
+#include "author.h"
+#include "BranchList.h"
 #include "Bullet.h"
 #include "debug.h"
 #include "encoding.h"
@@ -28,14 +30,20 @@
 #include "lyxrc.h"
 #include "lyxtextclasslist.h"
 #include "tex-strings.h"
+#include "Spacing.h"
 #include "texrow.h"
+#include "vspace.h"
 
 #include "frontends/Alert.h"
 
+#include "support/LAssert.h"
 #include "support/lyxalgo.h" // for lyx::count
+
+#include <boost/array.hpp>
 
 #include "support/std_sstream.h"
 
+namespace support = lyx::support;
 using namespace lyx::support;
 
 using std::endl;
@@ -46,15 +54,39 @@ using std::ostringstream;
 using std::pair;
 
 
+struct BufferParams::Impl
+{
+	Impl();
+
+	AuthorList authorlist;
+	BranchList branchlist;
+	boost::array<Bullet, 4> temp_bullets;
+	boost::array<Bullet, 4> user_defined_bullets;
+	Spacing spacing;
+	/** This is the amount of space used for paragraph_separation "skip",
+	 * and for detached paragraphs in "indented" documents.
+	 */
+	VSpace defskip;
+};
+
+
+BufferParams::Impl::Impl()
+	: defskip(VSpace::MEDSKIP)
+{
+	// set initial author
+	authorlist.record(Author(lyxrc.user_name, lyxrc.user_email));
+}
+
+
 BufferParams::BufferParams()
-	// Initialize textclass to point to article. if `first' is
-	// true in the returned pair, then `second' is the textclass
-	// number; if it is false, second is 0. In both cases, second
-	// is what we want.
-	: textclass(textclasslist.NumberOfClass("article").second)
+	: pimpl_(new Impl),
+	  // Initialize textclass to point to article. if `first' is
+	  // true in the returned pair, then `second' is the textclass
+	  // number; if it is false, second is 0. In both cases, second
+	  // is what we want.
+	  textclass(textclasslist.NumberOfClass("article").second)
 {
 	paragraph_separation = PARSEP_INDENT;
-	defskip = VSpace(VSpace::MEDSKIP);
 	quotes_language = InsetQuotes::EnglishQ;
 	quotes_times = InsetQuotes::DoubleQ;
 	fontsize = "default";
@@ -80,9 +112,89 @@ BufferParams::BufferParams()
 	pagestyle = "default";
 	compressed = false;
 	for (int iter = 0; iter < 4; ++iter) {
-		user_defined_bullets[iter] = ITEMIZE_DEFAULTS[iter];
-		temp_bullets[iter] = ITEMIZE_DEFAULTS[iter];
+		user_defined_bullet(iter) = ITEMIZE_DEFAULTS[iter];
+		temp_bullet(iter) = ITEMIZE_DEFAULTS[iter];
 	}
+}
+
+
+BufferParams::~BufferParams()
+{}
+
+
+AuthorList & BufferParams::authors()
+{
+	return pimpl_->authorlist;
+}
+
+
+AuthorList const & BufferParams::authors() const
+{
+	return pimpl_->authorlist;
+}
+
+
+BranchList & BufferParams::branchlist()
+{
+	return pimpl_->branchlist;
+}
+
+
+BranchList const & BufferParams::branchlist() const
+{
+	return pimpl_->branchlist;
+}
+
+
+Bullet & BufferParams::temp_bullet(lyx::size_type index)
+{
+	support::Assert(index < 4);
+	return pimpl_->temp_bullets[index];
+}
+
+
+Bullet const & BufferParams::temp_bullet(lyx::size_type index) const
+{
+	support::Assert(index < 4);
+	return pimpl_->temp_bullets[index];
+}
+
+
+Bullet & BufferParams::user_defined_bullet(lyx::size_type index)
+{
+	support::Assert(index < 4);
+	return pimpl_->user_defined_bullets[index];
+}
+
+
+Bullet const & BufferParams::user_defined_bullet(lyx::size_type index) const
+{
+	support::Assert(index < 4);
+	return pimpl_->user_defined_bullets[index];
+}
+
+
+Spacing & BufferParams::spacing()
+{
+	return pimpl_->spacing;
+}
+
+
+Spacing const & BufferParams::spacing() const
+{
+	return pimpl_->spacing;
+}
+
+
+VSpace const & BufferParams::getDefSkip() const
+{
+	return pimpl_->defskip;
+}
+
+
+void BufferParams::setDefSkip(VSpace const & vs)
+{
+	pimpl_->defskip = vs;
 }
 
 
@@ -128,7 +240,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 			static_cast<PARSEP>(tmpret);
 	} else if (token == "\\defskip") {
 		lex.nextToken();
-		defskip = VSpace(lex.getString());
+		pimpl_->defskip = VSpace(lex.getString());
 	} else if (token == "\\quotes_language") {
 		// FIXME: should be params.readQuotes()
 		int tmpret = lex.findToken(string_quotes_language);
@@ -200,7 +312,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 	} else if (token == "\\branch") {
 		lex.nextToken();
 		string branch = lex.getString();
-		branchlist.add(branch);
+		branchlist().add(branch);
 		while (true) {
 			lex.nextToken();
 			string const tok = lex.getString();
@@ -208,13 +320,13 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 				break;
 			if (tok == "\\selected") {
 				lex.nextToken();
-				branchlist.setSelected(branch, lex.getInteger());
+				branchlist().setSelected(branch, lex.getInteger());
 			}
 			// not yet operational
 			if (tok == "\\color") {
 				lex.nextToken();
 				string color = lex.getString();
-				branchlist.setColor(branch, color);
+				branchlist().setColor(branch, color);
 				// Update also the LColor table:
 				if (color == "none") 
 					color = lcolor.getX11Name(LColor::background);
@@ -227,7 +339,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		istringstream ss(STRCONV(lex.getString()));
 		Author a;
 		ss >> a;
-		author_map.push_back(authorlist.record(a));
+		author_map.push_back(pimpl_->authorlist.record(a));
 	} else if (token == "\\paperorientation") {
 		int tmpret = lex.findToken(string_orientation);
 		if (tmpret == -1)
@@ -283,16 +395,16 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		int const index = lex.getInteger();
 		lex.nextToken();
 		int temp_int = lex.getInteger();
-		user_defined_bullets[index].setFont(temp_int);
-		temp_bullets[index].setFont(temp_int);
+		user_defined_bullet(index).setFont(temp_int);
+		temp_bullet(index).setFont(temp_int);
 		lex.nextToken();
 		temp_int = lex.getInteger();
-		user_defined_bullets[index].setCharacter(temp_int);
-		temp_bullets[index].setCharacter(temp_int);
+		user_defined_bullet(index).setCharacter(temp_int);
+		temp_bullet(index).setCharacter(temp_int);
 		lex.nextToken();
 		temp_int = lex.getInteger();
-		user_defined_bullets[index].setSize(temp_int);
-		temp_bullets[index].setSize(temp_int);
+		user_defined_bullet(index).setSize(temp_int);
+		temp_bullet(index).setSize(temp_int);
 		lex.nextToken();
 		string const temp_str = lex.getString();
 		if (temp_str != "\\end_bullet") {
@@ -322,8 +434,8 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 			temp_str = lex.getString();
 		}
 
-		user_defined_bullets[index].setText(sum_str);
-		temp_bullets[index].setText(sum_str);
+		user_defined_bullet(index).setText(sum_str);
+		temp_bullet(index).setText(sum_str);
 	} else if (token == "\\secnumdepth") {
 		lex.nextToken();
 		secnumdepth = lex.getInteger();
@@ -354,7 +466,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		if (first_par)
 			par->params().spacing(Spacing(tmp_space, tmp_val));
 #endif
-		spacing.set(tmp_space, tmp_val);
+		spacing().set(tmp_space, tmp_val);
 	} else if (token == "\\float_placement") {
 		lex.nextToken();
 		float_placement = lex.getString();
@@ -400,7 +512,7 @@ void BufferParams::writeFile(ostream & os) const
 	}
 	os << "\\paperfontsize " << fontsize << '\n';
 
-	spacing.writeFile(os);
+	spacing().writeFile(os);
 
 	os << "\\papersize " << string_papersize[papersize2]
 	   << "\n\\paperpackage " << string_paperpackages[paperpackage]
@@ -411,8 +523,8 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\paperorientation " << string_orientation[orientation]
 	   << '\n';
 
-	std::list<Branch>::const_iterator it = branchlist.begin();
-	std::list<Branch>::const_iterator end = branchlist.end();
+	std::list<Branch>::const_iterator it = branchlist().begin();
+	std::list<Branch>::const_iterator end = branchlist().end();
 	for (; it != end; ++it) {
 		os << "\\branch " << it->getBranch()
 		   << "\n\\selected " << it->getSelected()	
@@ -452,7 +564,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\tocdepth " << tocdepth
 	   << "\n\\paragraph_separation "
 	   << string_paragraph_separation[paragraph_separation]
-	   << "\n\\defskip " << defskip.asLyXCommand()
+	   << "\n\\defskip " << getDefSkip().asLyXCommand()
 	   << "\n\\quotes_language "
 	   << string_quotes_language[quotes_language] << '\n';
 	switch (quotes_times) {
@@ -466,21 +578,21 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\papersides " << sides
 	   << "\n\\paperpagestyle " << pagestyle << '\n';
 	for (int i = 0; i < 4; ++i) {
-		if (user_defined_bullets[i] != ITEMIZE_DEFAULTS[i]) {
-			if (user_defined_bullets[i].getFont() != -1) {
+		if (user_defined_bullet(i) != ITEMIZE_DEFAULTS[i]) {
+			if (user_defined_bullet(i).getFont() != -1) {
 				os << "\\bullet " << i
 				   << "\n\t"
-				   << user_defined_bullets[i].getFont()
+				   << user_defined_bullet(i).getFont()
 				   << "\n\t"
-				   << user_defined_bullets[i].getCharacter()
+				   << user_defined_bullet(i).getCharacter()
 				   << "\n\t"
-				   << user_defined_bullets[i].getSize()
+				   << user_defined_bullet(i).getSize()
 				   << "\n\\end_bullet\n";
 			}
 			else {
 				os << "\\bulletLaTeX " << i
 				   << "\n\t\""
-				   << user_defined_bullets[i].getText()
+				   << user_defined_bullet(i).getText()
 				   << "\"\n\\end_bullet\n";
 			}
 		}
@@ -489,8 +601,8 @@ void BufferParams::writeFile(ostream & os) const
 	os << "\\tracking_changes " << tracking_changes << "\n";
 
 	if (tracking_changes) {
-		AuthorList::Authors::const_iterator it = authorlist.begin();
-		AuthorList::Authors::const_iterator end = authorlist.end();
+		AuthorList::Authors::const_iterator it = pimpl_->authorlist.begin();
+		AuthorList::Authors::const_iterator end = pimpl_->authorlist.end();
 		for (; it != end; ++it) {
 			os << "\\author " << it->second << "\n";
 		}
@@ -765,7 +877,7 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 	}
 
 	if (paragraph_separation) {
-		switch (defskip.kind()) {
+		switch (getDefSkip().kind()) {
 		case VSpace::SMALLSKIP:
 			os << "\\setlength\\parskip{\\smallskipamount}\n";
 			break;
@@ -777,7 +889,7 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 			break;
 		case VSpace::LENGTH:
 			os << "\\setlength\\parskip{"
-			   << defskip.length().asLatexString()
+			   << getDefSkip().length().asLatexString()
 			   << "}\n";
 			break;
 		default: // should never happen // Then delete it.
@@ -830,7 +942,7 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 	// at \begin{document} time -- JMarc
 	string bullets_def;
 	for (int i = 0; i < 4; ++i) {
-		if (user_defined_bullets[i] != ITEMIZE_DEFAULTS[i]) {
+		if (user_defined_bullet(i) != ITEMIZE_DEFAULTS[i]) {
 			if (bullets_def.empty())
 				bullets_def="\\AtBeginDocument{\n";
 			bullets_def += "  \\renewcommand{\\labelitemi";
@@ -849,7 +961,7 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 				break;
 			}
 			bullets_def += "}{" +
-				user_defined_bullets[i].getText()
+				user_defined_bullet(i).getText()
 				+ "}\n";
 		}
 	}

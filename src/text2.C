@@ -41,6 +41,7 @@
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
+#include "vspace.h"
 
 #include "frontends/font_metrics.h"
 #include "frontends/LyXView.h"

@@ -21,6 +21,7 @@
 #include "language.h"
 #include "LaTeXFeatures.h"
 #include "latexrunparams.h"
+#include "lyxlength.h"
 #include "lyxrc.h"
 #include "texrow.h"
 

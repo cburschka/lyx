@@ -15,27 +15,28 @@
 #ifndef BUFFERPARAMS_H
 #define BUFFERPARAMS_H
 
-#include "author.h"
-#include "BranchList.h"
-#include "Bullet.h"
 #include "lyxtextclass.h"
 #include "paper.h"
-#include "Spacing.h"
-#include "vspace.h"
 
 #include "insets/insetquotes.h"
 
+#include "support/cow_ptr.h"
 #include "support/types.h"
-
-#include <boost/array.hpp>
 
 #include "support/std_string.h"
 #include <vector>
 
+
+class AuthorList;
+class BranchList;
+class Bullet;
 class LyXLex;
 class LatexFeatures;
+class Spacing;
 class TexRow;
+class VSpace;
 struct Language;
+
 
 /** Buffer parameters.
    This class contains all the parameters for this a buffer uses. Some
@@ -53,6 +54,7 @@ public:
 	};
 	///
 	BufferParams();
+	~BufferParams();
 
 	/// read a header token, if unrecognised, return it or an unknown class name
 	string const readToken(LyXLex & lex, string const & token);
@@ -76,10 +78,10 @@ public:
 	bool hasClassDefaults() const;
 
 	///
-	VSpace const & getDefSkip() const { return defskip; }
+	VSpace const & getDefSkip() const;
 
 	///
-	void setDefSkip(VSpace const & vs) { defskip = vs; }
+	void setDefSkip(VSpace const & vs);
 
 	/** Wether paragraphs are separated by using a indent like in
 	  articles or by using a little skip like in letters.
@@ -132,7 +134,8 @@ public:
 	///
 	string fonts;
 	///
-	Spacing spacing;
+	Spacing & spacing();
+	Spacing const & spacing() const;
 	///
 	int secnumdepth;
 	///
@@ -140,7 +143,8 @@ public:
 	///
 	Language const * language;
 	/// BranchList:
-	BranchList branchlist;
+	BranchList & branchlist();
+	BranchList const & branchlist() const;
 	///
 	string inputenc;
 	///
@@ -155,10 +159,12 @@ public:
 	LyXTextClass::PageSides sides;
 	///
 	string pagestyle;
-	///
-	boost::array<Bullet, 4> temp_bullets;
-	///
-	boost::array<Bullet, 4> user_defined_bullets;
+	/// \param index should lie in the range 0 <= \c index <= 3.
+	Bullet & temp_bullet(lyx::size_type index);
+	Bullet const & temp_bullet(lyx::size_type index) const;
+	/// \param index should lie in the range 0 <= \c index <= 3.
+	Bullet & user_defined_bullet(lyx::size_type index);
+	Bullet const & user_defined_bullet(lyx::size_type index) const;
 	///
 	void readPreamble(LyXLex &);
 	///
@@ -184,6 +190,10 @@ public:
 	///
 	bool compressed;
 
+	/// the author list for the document
+	AuthorList & authors();
+	AuthorList const & authors() const;
+
 	/// map of the file's author IDs to buffer author IDs
 	std::vector<int> author_map;
 	///
@@ -192,15 +202,11 @@ public:
 	string const paperSizeName() const;
 
 private:
-	/// the author list
-	AuthorList authorlist;
-
-	///
-	friend class Buffer;
-	/** This is the amount of space used for paragraph_separation "skip",
-	  and for detached paragraphs in "indented" documents.
-	*/
-	VSpace defskip;
+	/** Use the Pimpl idiom to hide those member variables that would otherwise
+	    drag in other header files.
+	 */
+	class Impl;
+	lyx::support::cow_ptr<Impl> pimpl_;
 };
 
 #endif

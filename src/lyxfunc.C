@@ -21,6 +21,7 @@
 
 #include "lyxfunc.h"
 
+#include "BranchList.h"
 #include "buffer.h"
 #include "buffer_funcs.h"
 #include "bufferlist.h"
@@ -631,7 +632,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 	case LFUN_INSERT_BRANCH:
 		code = InsetOld::BRANCH_CODE;
-		if (buf->params().branchlist.empty())
+		if (buf->params().branchlist().empty())
 			disable = true;
 		break;
 	case LFUN_INSERT_LABEL:

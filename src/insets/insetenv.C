@@ -18,6 +18,8 @@
 #include "paragraph_funcs.h"
 #include "texrow.h"
 
+#include "support/std_ostream.h"
+
 using std::auto_ptr;
 using std::ostream;
 

@@ -200,7 +200,7 @@ void InsetList::insetsOpenCloseBranch(BufferView * bv)
 	for (; it != end; ++it) {
 		if (it->inset && it->inset->lyxCode() == InsetOld::BRANCH_CODE) {
 			InsetBranch * inset = static_cast<InsetBranch *>(it->inset);
-			if (bp.branchlist.selected(inset->params().branch)) {
+			if (bp.branchlist().selected(inset->params().branch)) {
 				inset->open(bv);
 			} else {
 				inset->close(bv);

@@ -12,9 +12,11 @@
 
 #include "buffer.h"
 
+#include "author.h"
 #include "buffer_funcs.h"
 #include "bufferlist.h"
 #include "bufferparams.h"
+#include "Bullet.h"
 #include "Chktex.h"
 #include "debug.h"
 #include "errorlist.h"
@@ -166,9 +168,6 @@ Buffer::Buffer(string const & file, bool ronly)
 	: pimpl_(new Impl(*this, file, ronly))
 {
 	lyxerr[Debug::INFO] << "Buffer::Buffer()" << endl;
-
-	// set initial author
-	authors().record(Author(lyxrc.user_name, lyxrc.user_email));
 }
 
 
@@ -330,12 +329,6 @@ void Buffer::setReadonly(bool flag)
 		pimpl_->read_only = flag;
 		readonly(flag);
 	}
-}
-
-
-AuthorList & Buffer::authors()
-{
-	return params().authorlist;
 }
 
 
@@ -2071,11 +2064,11 @@ void Buffer::validate(LaTeXFeatures & features) const
 	// the bullet shapes are buffer level not paragraph level
 	// so they are tested here
 	for (int i = 0; i < 4; ++i) {
-		if (params().user_defined_bullets[i] != ITEMIZE_DEFAULTS[i]) {
-			int const font = params().user_defined_bullets[i].getFont();
+		if (params().user_defined_bullet(i) != ITEMIZE_DEFAULTS[i]) {
+			int const font = params().user_defined_bullet(i).getFont();
 			if (font == 0) {
 				int const c = params()
-					.user_defined_bullets[i]
+					.user_defined_bullet(i)
 					.getCharacter();
 				if (c == 16
 				   || c == 17

@@ -30,6 +30,7 @@
 #include "lyxrc.h"
 #include "lyxrow.h"
 #include "texrow.h"
+#include "vspace.h"
 
 #include "insets/insetbibitem.h"
 #include "insets/insetoptarg.h"

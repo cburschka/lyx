@@ -26,6 +26,7 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "language.h"
+#include "lyxlength.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
 #include "lyxrow_funcs.h"
@@ -34,6 +35,7 @@
 #include "rowpainter.h"
 #include "text_funcs.h"
 #include "undo_funcs.h"
+#include "vspace.h"
 #include "WordLangTuple.h"
 
 #include "frontends/font_metrics.h"
@@ -909,7 +911,7 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, RowList::iterator rit)
 	if (!pit->params().spacing().isDefault())
 		spacing_val = pit->params().spacing().getValue();
 	else
-		spacing_val = bv()->buffer()->params().spacing.getValue();
+		spacing_val = bv()->buffer()->params().spacing().getValue();
 	//lyxerr << "spacing_val = " << spacing_val << endl;
 
 	int maxasc  = int(font_metrics::maxAscent(font) *
@@ -1034,7 +1036,7 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, RowList::iterator rit)
 			if (!pit->params().spacing().isDefault()) {
 				spacing_val = pit->params().spacing().getValue();
 			} else {
-				spacing_val = bufparams.spacing.getValue();
+				spacing_val = bufparams.spacing().getValue();
 			}
 
 			labeladdon = int(font_metrics::maxDescent(labelfont) *
@@ -1056,7 +1058,7 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, RowList::iterator rit)
 			if (!pit->params().spacing().isDefault()) {
 				spacing_val = pit->params().spacing().getValue();
 			} else {
-				spacing_val = bufparams.spacing.getValue();
+				spacing_val = bufparams.spacing().getValue();
 			}
 
 			labeladdon = int(

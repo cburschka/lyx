@@ -26,6 +26,7 @@
 #include "lyxrc.h"
 #include "paragraph_pimpl.h"
 #include "texrow.h"
+#include "vspace.h"
 
 #include "insets/insetbibitem.h"
 #include "insets/insethfill.h"

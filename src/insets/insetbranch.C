@@ -40,7 +40,7 @@ InsetBranch::InsetBranch(BufferParams const & bp, string const & label)
 	params_.branch = label;
 	// Hack: stash the list of all allowable branch labels from this
 	// buffer into inset's parm list as a "stowaway":
-	params_.branchlist = bp.branchlist;
+	params_.branchlist = bp.branchlist();
 	init();
 }
 
@@ -149,7 +149,7 @@ dispatch_result InsetBranch::localDispatch(FuncRequest const & cmd)
 int InsetBranch::latex(Buffer const & buf, ostream & os,
 	LatexRunParams const & runparams) const
 {
-	string const branch_sel = buf.params().branchlist.allSelected();
+	string const branch_sel = buf.params().branchlist().allSelected();
 	if (branch_sel.find(params_.branch, 0) != string::npos)
 		return inset.latex(buf, os, runparams);
 	return 0;
@@ -165,7 +165,7 @@ int InsetBranch::linuxdoc(Buffer const &, std::ostream &) const
 int InsetBranch::docbook(Buffer const & buf, std::ostream & os, bool mixcont) const
 {
 	// untested - MV
-	string const branch_sel = buf.params().branchlist.allSelected();
+	string const branch_sel = buf.params().branchlist().allSelected();
 	if (branch_sel.find(params_.branch, 0) != string::npos)
 		return inset.docbook(buf, os, mixcont);
 	return 0;
@@ -174,7 +174,7 @@ int InsetBranch::docbook(Buffer const & buf, std::ostream & os, bool mixcont) co
 
 int InsetBranch::ascii(Buffer const & buf, std::ostream & os, int ll) const
 {
-	string const branch_sel = buf.params().branchlist.allSelected();
+	string const branch_sel = buf.params().branchlist().allSelected();
 	if (branch_sel.find(params_.branch, 0) != string::npos) {
 		return inset.ascii(buf, os, ll);
 	}
@@ -199,14 +199,14 @@ InsetBranchMailer::InsetBranchMailer(string const & name,
 string const InsetBranchMailer::inset2string(Buffer const & buf) const
 {
 	InsetBranchParams params = inset_.params();
-	params.branchlist = buf.params().branchlist;
+	params.branchlist = buf.params().branchlist();
 	inset_.setParams(params);
 	return params2string(name_, params);
 }
 
 
 string const InsetBranchMailer::params2string(string const & name,
-				InsetBranchParams const & params)
+					      InsetBranchParams const & params)
 {
 	ostringstream data;
 	data << name << ' ';

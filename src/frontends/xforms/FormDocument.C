@@ -31,11 +31,13 @@
 #include "controllers/frnt_lang.h"
 #include "controllers/helper_funcs.h"
 
+#include "Bullet.h"
 #include "bufferparams.h"
 #include "language.h"
 #include "lyxrc.h"
 #include "lyxtextclasslist.h"
 #include "tex-strings.h"
+#include "vspace.h"
 
 #include "support/tostr.h"
 #include "support/lstrings.h" // contains_functor, getStringFromVector
@@ -671,10 +673,10 @@ void FormDocument::branch_input(FL_OBJECT * ob)
 	if (ob == branch_->button_add_branch) {
 		string new_branch = fl_get_input(branch_->input_all_branches);
 		if (!new_branch.empty()) {
-			params.branchlist.add(new_branch);
+			params.branchlist().add(new_branch);
 			fl_set_input(branch_->input_all_branches, "");
 			// Update branch list
-			string const all_branches = params.branchlist.allBranches();
+			string const all_branches = params.branchlist().allBranches();
 			fl_clear_browser(branch_->browser_all_branches);
 			vec = getVectorFromString(all_branches, "|");
 			for (unsigned i = 0; i < vec.size(); ++i) {
@@ -690,9 +692,9 @@ void FormDocument::branch_input(FL_OBJECT * ob)
 		string const current_branch =
 			fl_get_browser_line(branch_->browser_all_branches, i);
 		if (!current_branch.empty()) {
-			params.branchlist.remove(current_branch);
+			params.branchlist().remove(current_branch);
 			// Update branch list
-			string const all_branches = params.branchlist.allBranches();
+			string const all_branches = params.branchlist().allBranches();
 			fl_clear_browser(branch_->browser_all_branches);
 			vec = getVectorFromString(all_branches, "|");
 			for (unsigned i = 0; i < vec.size(); ++i) {
@@ -700,7 +702,7 @@ void FormDocument::branch_input(FL_OBJECT * ob)
 								vec[i].c_str());
 			}
 			// Update selected-list...
-			string const all_selected = params.branchlist.allSelected();
+			string const all_selected = params.branchlist().allSelected();
 			fl_clear_browser(branch_->browser_selection);
 			vec = getVectorFromString(all_selected, "|");
 			for (unsigned i = 0; i < vec.size(); ++i) {
@@ -713,8 +715,8 @@ void FormDocument::branch_input(FL_OBJECT * ob)
 			fl_get_browser_line(branch_->browser_all_branches, i);
 		if (!current_branch.empty()) {
 			fl_clear_browser(branch_->browser_selection);
-			params.branchlist.setSelected(current_branch, true);
-			string const all_selected = params.branchlist.allSelected();
+			params.branchlist().setSelected(current_branch, true);
+			string const all_selected = params.branchlist().allSelected();
 			vec = getVectorFromString(all_selected, "|");
 			for (unsigned i = 0; i < vec.size(); ++i) {
 				fl_addto_browser(branch_->browser_selection,
@@ -727,8 +729,8 @@ void FormDocument::branch_input(FL_OBJECT * ob)
 			fl_get_browser_line(branch_->browser_selection, i);
 		if (!current_sel.empty()) {
 			fl_clear_browser(branch_->browser_selection);
-			params.branchlist.setSelected(current_sel, false);
-			string const all_selected = params.branchlist.allSelected();
+			params.branchlist().setSelected(current_sel, false);
+			string const all_selected = params.branchlist().allSelected();
 			vec = getVectorFromString(all_selected, "|");
 			for (unsigned i = 0; i < vec.size(); ++i) {
 				fl_addto_browser(branch_->browser_selection,
@@ -741,7 +743,7 @@ void FormDocument::branch_input(FL_OBJECT * ob)
 			fl_get_browser_line(branch_->browser_all_branches, i);
 		
 		RGBColor before;
-		string x11hexname = params.branchlist.getColor(current_branch);
+		string x11hexname = params.branchlist().getColor(current_branch);
 		if (x11hexname[0] == '#') {
 			before = RGBColor(x11hexname);
 		} else{
@@ -765,7 +767,7 @@ void FormDocument::branch_input(FL_OBJECT * ob)
 			lyxColorHandler->updateColor(c);
 			// what about system_lcolor?
 			// Here set colour in BranchList:
-			params.branchlist.setColor(current_branch, x11hexname);
+			params.branchlist().setColor(current_branch, x11hexname);
 		}
 	} else if (ob == branch_->browser_all_branches) {
 		unsigned i = fl_get_browser(branch_->browser_all_branches);
@@ -774,7 +776,7 @@ void FormDocument::branch_input(FL_OBJECT * ob)
 		// make button_color track selected branch:
 
 		RGBColor rgb;
-		string x11hexname = params.branchlist.getColor(current_branch);
+		string x11hexname = params.branchlist().getColor(current_branch);
 		if (x11hexname[0] == '#') {
 			rgb = RGBColor(x11hexname);
 		} else {
@@ -792,7 +794,7 @@ void FormDocument::branch_input(FL_OBJECT * ob)
 	setEnabled(branch_->button_modify,
 		(fl_get_browser(branch_->browser_all_branches) > 0));
 
-	branchlist_ = params.branchlist;
+	branchlist_ = params.branchlist();
 }
 
 
@@ -857,27 +859,27 @@ bool FormDocument::class_apply(BufferParams &params)
 	else
 		params.sides = LyXTextClass::OneSide;
 
-	Spacing tmpSpacing = params.spacing;
+	Spacing tmpSpacing = params.spacing();
 	switch (fl_get_choice(class_->choice_spacing)) {
 	case 1:
 		lyxerr[Debug::INFO] << "Spacing: SINGLE" << endl;
-		params.spacing.set(Spacing::Single);
+		params.spacing().set(Spacing::Single);
 		break;
 	case 2:
 		lyxerr[Debug::INFO] << "Spacing: ONEHALF" << endl;
-		params.spacing.set(Spacing::Onehalf);
+		params.spacing().set(Spacing::Onehalf);
 		break;
 	case 3:
 		lyxerr[Debug::INFO] << "Spacing: DOUBLE" << endl;
-		params.spacing.set(Spacing::Double);
+		params.spacing().set(Spacing::Double);
 		break;
 	case 4:
 		lyxerr[Debug::INFO] << "Spacing: OTHER" << endl;
-		params.spacing.set(Spacing::Other,
+		params.spacing().set(Spacing::Other,
 				   getString(class_->input_spacing));
 		break;
 	}
-	if (tmpSpacing != params.spacing)
+	if (tmpSpacing != params.spacing())
 		redo = true;
 
 	params.options = getString(class_->input_extra);
@@ -1015,7 +1017,7 @@ void FormDocument::bullets_apply(BufferParams & params)
 	BufferParams & buf_params = controller().params();
 
 	for (int i = 0; i < 4; ++i) {
-		params.user_defined_bullets[i] = buf_params.temp_bullets[i];
+		params.user_defined_bullet(i) = buf_params.temp_bullet(i);
 	}
 }
 
@@ -1024,8 +1026,8 @@ void FormDocument::branch_apply(BufferParams & params)
 {
 	BufferParams & prms = controller().params();
 	if (branchlist_.empty())
-		branchlist_ = prms.branchlist;
-	params.branchlist = branchlist_;
+		branchlist_ = prms.branchlist();
+	params.branchlist() = branchlist_;
 	branchlist_.clear();
 }
 
@@ -1117,7 +1119,7 @@ void FormDocument::class_update(BufferParams const & params)
 
 	fl_set_input(class_->input_extra, params.options.c_str());
 
-	switch (params.spacing.getSpace()) {
+	switch (params.spacing().getSpace()) {
 	case Spacing::Other:
 		pos = 4;
 		break;
@@ -1137,7 +1139,7 @@ void FormDocument::class_update(BufferParams const & params)
 
 	bool const spacing_input = pos == 4;
 	setEnabled(class_->input_spacing, spacing_input);
-	string const input = spacing_input ? tostr(params.spacing.getValue()) : string();
+	string const input = spacing_input ? tostr(params.spacing().getValue()) : string();
 	fl_set_input(class_->input_spacing, input.c_str());
 }
 
@@ -1289,9 +1291,9 @@ void FormDocument::bullets_update(BufferParams const & params)
 
 	fl_set_button(bullets_->radio_depth_1, 1);
 	fl_set_input(bullets_->input_latex,
-		     params.user_defined_bullets[0].getText().c_str());
+		     params.user_defined_bullet(0).getText().c_str());
 	fl_set_choice(bullets_->choice_size,
-		      params.user_defined_bullets[0].getSize() + 2);
+		      params.user_defined_bullet(0).getSize() + 2);
 }
 
 
@@ -1300,7 +1302,7 @@ void FormDocument::branch_update(BufferParams const & params)
 	if (!branch_.get())
 		return;
 	
-	string const all_branches = params.branchlist.allBranches();
+	string const all_branches = params.branchlist().allBranches();
 	fl_clear_browser(branch_->browser_all_branches);
 	string current_branch("none");
 	
@@ -1318,7 +1320,7 @@ void FormDocument::branch_update(BufferParams const & params)
 	}
 
 	// display proper selection...
-	string const all_selected = params.branchlist.allSelected();
+	string const all_selected = params.branchlist().allSelected();
 	fl_clear_browser(branch_->browser_selection);
 	if (!all_selected.empty()) {
 		std::vector<string> vec = getVectorFromString(all_selected, "|");
@@ -1332,7 +1334,7 @@ void FormDocument::branch_update(BufferParams const & params)
 	if (current_branch == "none")
 		x11hexname = "none";
 	else
-		x11hexname = params.branchlist.getColor(current_branch);
+		x11hexname = params.branchlist().getColor(current_branch);
 	if (x11hexname[0] == '#') {
 		rgb = RGBColor(x11hexname);
 	} else {
@@ -1368,9 +1370,9 @@ void FormDocument::ChoiceBulletSize(FL_OBJECT * ob, long /*data*/)
 	BufferParams & param = controller().params();
 
 	// convert from 1-6 range to -1-4
-	param.temp_bullets[current_bullet_depth].setSize(fl_get_choice(ob) - 2);
+	param.temp_bullet(current_bullet_depth).setSize(fl_get_choice(ob) - 2);
 	fl_set_input(bullets_->input_latex,
-		     param.temp_bullets[current_bullet_depth].getText().c_str());
+		     param.temp_bullet(current_bullet_depth).getText().c_str());
 }
 
 
@@ -1378,7 +1380,7 @@ void FormDocument::InputBulletLaTeX(FL_OBJECT *, long)
 {
 	BufferParams & param = controller().params();
 
-	param.temp_bullets[current_bullet_depth].
+	param.temp_bullet(current_bullet_depth).
 		setText(getString(bullets_->input_latex));
 }
 
@@ -1408,13 +1410,13 @@ void FormDocument::BulletDepth(FL_OBJECT * ob)
 	switch (fl_get_button_numb(ob)) {
 	case 3:
 		// right mouse button resets to default
-		param.temp_bullets[data] = ITEMIZE_DEFAULTS[data];
+		param.temp_bullet(data) = ITEMIZE_DEFAULTS[data];
 	default:
 		current_bullet_depth = data;
 		fl_set_input(bullets_->input_latex,
-			     param.temp_bullets[data].getText().c_str());
+			     param.temp_bullet(data).getText().c_str());
 		fl_set_choice(bullets_->choice_size,
-			      param.temp_bullets[data].getSize() + 2);
+			      param.temp_bullet(data).getSize() + 2);
 	}
 }
 
@@ -1483,10 +1485,10 @@ void FormDocument::BulletBMTable(FL_OBJECT * ob, long /*data*/)
 
 	/* try to keep the button held down till another is pushed */
 	/*  fl_set_bmtable(ob, 1, bmtable_button); */
-	param.temp_bullets[current_bullet_depth].setFont(current_bullet_panel);
-	param.temp_bullets[current_bullet_depth].setCharacter(bmtable_button);
+	param.temp_bullet(current_bullet_depth).setFont(current_bullet_panel);
+	param.temp_bullet(current_bullet_depth).setCharacter(bmtable_button);
 	fl_set_input(bullets_->input_latex,
-		     param.temp_bullets[current_bullet_depth].getText().c_str());
+		     param.temp_bullet(current_bullet_depth).getText().c_str());
 }
 
 

@@ -25,6 +25,7 @@
 #include "metricsinfo.h"
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
+#include "vspace.h"
 
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
@@ -749,7 +750,7 @@ void RowPainter::paintFirst()
 					if (!parparams.spacing().isDefault()) {
 						spacing_val = parparams.spacing().getValue();
 					} else {
-						spacing_val = buffer.params().spacing.getValue();
+						spacing_val = buffer.params().spacing().getValue();
 					}
 
 					int const maxdesc =
@@ -792,7 +793,7 @@ void RowPainter::paintFirst()
 			if (!parparams.spacing().isDefault()) {
 				spacing_val = parparams.spacing().getValue();
 			} else {
-				spacing_val = buffer.params().spacing.getValue();
+				spacing_val = buffer.params().spacing().getValue();
 			}
 
 			int maxdesc =

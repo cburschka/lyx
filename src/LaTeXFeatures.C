@@ -259,12 +259,12 @@ string const LaTeXFeatures::getPackages() const
 	}
 
 	// setspace.sty
-	if ((params.spacing.getSpace() != Spacing::Single
-	     && !params.spacing.isDefault())
+	if ((params.spacing().getSpace() != Spacing::Single
+	     && !params.spacing().isDefault())
 	    || isRequired("setspace")) {
 		packages << "\\usepackage{setspace}\n";
 	}
-	switch (params.spacing.getSpace()) {
+	switch (params.spacing().getSpace()) {
 	case Spacing::Default:
 	case Spacing::Single:
 		// we dont use setspace.sty so dont print anything
@@ -278,7 +278,7 @@ string const LaTeXFeatures::getPackages() const
 		break;
 	case Spacing::Other:
 		packages << "\\setstretch{"
-			 << params.spacing.getValue() << "}\n";
+			 << params.spacing().getValue() << "}\n";
 		break;
 	}
 

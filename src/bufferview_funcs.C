@@ -15,6 +15,7 @@
 
 #include "bufferview_funcs.h"
 
+#include "author.h"
 #include "buffer.h"
 #include "bufferparams.h"
 #include "BufferView.h"
@@ -306,7 +307,7 @@ string const currentState(BufferView * bv)
 
 	if (show_change) {
 		Change change(c.par()->lookupChangeFull(c.pos()));
-		Author const & a(bv->buffer()->authors().get(change.author));
+		Author const & a(bv->buffer()->params().authors().get(change.author));
 		state << _("Change: ") << a.name();
 		if (!a.email().empty()) {
 			state << " (" << a.email() << ")";

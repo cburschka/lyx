@@ -231,10 +231,10 @@ void QDocument::apply()
 	params.secnumdepth = dialog_->numberingModule->depthSL->value();
 
 	// bullets
-	params.user_defined_bullets[0] = dialog_->bulletsModule->getBullet(0);
-	params.user_defined_bullets[1] = dialog_->bulletsModule->getBullet(1);
-	params.user_defined_bullets[2] = dialog_->bulletsModule->getBullet(2);
-	params.user_defined_bullets[3] = dialog_->bulletsModule->getBullet(3);
+	params.user_defined_bullet(0) = dialog_->bulletsModule->getBullet(0);
+	params.user_defined_bullet(1) = dialog_->bulletsModule->getBullet(1);
+	params.user_defined_bullet(2) = dialog_->bulletsModule->getBullet(2);
+	params.user_defined_bullet(3) = dialog_->bulletsModule->getBullet(3);
 
 	// packages
 	params.graphicsDriver =
@@ -264,16 +264,16 @@ void QDocument::apply()
 
 	switch (dialog_->textLayoutModule->lspacingCO->currentItem()) {
 	case 0:
-		params.spacing.set(Spacing::Single);
+		params.spacing().set(Spacing::Single);
 		break;
 	case 1:
-		params.spacing.set(Spacing::Onehalf);
+		params.spacing().set(Spacing::Onehalf);
 		break;
 	case 2:
-		params.spacing.set(Spacing::Double);
+		params.spacing().set(Spacing::Double);
 		break;
 	case 3:
-		params.spacing.set(Spacing::Other,
+		params.spacing().set(Spacing::Other,
 				   dialog_->textLayoutModule->
 				   lspacingLE->text().toFloat()
 				   );
@@ -466,10 +466,10 @@ void QDocument::update_contents()
 	dialog_->updateNumbering();
 
 	// bullets
-	dialog_->bulletsModule->setBullet(0,params.user_defined_bullets[0]);
-	dialog_->bulletsModule->setBullet(1,params.user_defined_bullets[1]);
-	dialog_->bulletsModule->setBullet(2,params.user_defined_bullets[2]);
-	dialog_->bulletsModule->setBullet(3,params.user_defined_bullets[3]);
+	dialog_->bulletsModule->setBullet(0,params.user_defined_bullet(0));
+	dialog_->bulletsModule->setBullet(1,params.user_defined_bullet(1));
+	dialog_->bulletsModule->setBullet(2,params.user_defined_bullet(2));
+	dialog_->bulletsModule->setBullet(3,params.user_defined_bullet(3));
 
 	// packages
 	QString text = toqstr(params.graphicsDriver);
@@ -487,7 +487,7 @@ void QDocument::update_contents()
 	dialog_->mathsModule->amsautoCB->setChecked(
 		params.use_amsmath == BufferParams::AMS_AUTO);
 
-	switch (params.spacing.getSpace()) {
+	switch (params.spacing().getSpace()) {
 		case Spacing::Other: nitem = 3; break;
 		case Spacing::Double: nitem = 2; break;
 		case Spacing::Onehalf: nitem = 1; break;
@@ -512,9 +512,9 @@ void QDocument::update_contents()
 	}
 
 	dialog_->textLayoutModule->lspacingCO->setCurrentItem(nitem);
-	if (params.spacing.getSpace() == Spacing::Other) {
+	if (params.spacing().getSpace() == Spacing::Other) {
 		dialog_->textLayoutModule->lspacingLE->setText(
-			toqstr(tostr(params.spacing.getValue())));
+			toqstr(tostr(params.spacing().getValue())));
 		dialog_->setLSpacing(3);
 	}
 

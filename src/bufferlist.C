@@ -12,6 +12,7 @@
 
 #include "bufferlist.h"
 
+#include "author.h"
 #include "buffer.h"
 #include "bufferparams.h"
 #include "debug.h"
@@ -329,6 +330,6 @@ void BufferList::setCurrentAuthor(string const & name, string const & email)
 	BufferStorage::iterator it = bstore.begin();
 	BufferStorage::iterator end = bstore.end();
 	for (; it != end; ++it) {
-		(*it)->authors().record(0, Author(name, email));
+		(*it)->params().authors().record(0, Author(name, email));
 	}
 }

@@ -11,6 +11,8 @@
 #include <config.h>
 
 #include "ControlChanges.h"
+
+#include "author.h"
 #include "buffer.h"
 #include "bufferparams.h"
 #include "BufferView.h"
@@ -50,7 +52,7 @@ string const ControlChanges::getChangeAuthor()
 	if (c.type == Change::UNCHANGED)
 		return string();
 
-	Author const & a(kernel().buffer().authors().get(c.author));
+	Author const & a(kernel().buffer().params().authors().get(c.author));
 
 	string author(a.name());
 

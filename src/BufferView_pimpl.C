@@ -42,6 +42,7 @@
 #include "ParagraphParameters.h"
 #include "TextCache.h"
 #include "undo_funcs.h"
+#include "vspace.h"
 
 #include "insets/insetfloatlist.h"
 #include "insets/insetref.h"

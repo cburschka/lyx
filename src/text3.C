@@ -32,6 +32,7 @@
 #include "ParagraphParameters.h"
 #include "text_funcs.h"
 #include "undo_funcs.h"
+#include "vspace.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
