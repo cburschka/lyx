@@ -65,9 +65,6 @@ namespace {
 // local global
 int first_x;
 int first_y;
-int hack_x;
-int hack_y;
-int hack_button;
 
 
 void handleFont(BufferView * bv, string const & arg, MathTextCodes t)
