@@ -19,6 +19,14 @@
 
 2004-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* paragraph_pimpl.C (simpleTeXSpecialChars): remove special
+	treatment for ']'
+
+	* paragraph.C (simpleTeXOnePar): when we have a \item with
+	optional argument, enclose the argument with curly brackets (in
+	case it contains a closing square bracket)
+
+	* text2.C (editXY): 
 	* text2.C (editXY):
 	* text3.C (checkInsetHit): constify
 

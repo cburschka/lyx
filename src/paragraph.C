@@ -920,8 +920,10 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	unsigned int column = 0;
 
 	if (body_pos > 0) {
-		os << '[';
-		++column;
+		// the optional argument is kept in curly brackets in
+		// case it contains a ']'
+		os << "[{";
+		column += 2;
 		basefont = getLabelFont(bparams, outerfont);
 	} else {
 		basefont = getLayoutFont(bparams, outerfont);
@@ -959,8 +961,8 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 				}
 				basefont = getLayoutFont(bparams, outerfont);
 				running_font = basefont;
-				os << ']';
-				++column;
+				os << "}] ";
+				column +=3;
 			}
 			if (style->isCommand()) {
 				os << '{';

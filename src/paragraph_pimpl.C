@@ -666,7 +666,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			column += 17;
 			break;
 
-		case '*': case '[': case ']':
+		case '*': case '[': 
 			// avoid being mistaken for optional arguments
 			os << '{' << c << '}';
 			column += 2;

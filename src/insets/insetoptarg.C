@@ -17,10 +17,12 @@
 #include "LColor.h"
 #include "paragraph.h"
 
+#include <sstream>
 
 using std::string;
 using std::auto_ptr;
 using std::ostream;
+using std::ostringstream;
 
 
 InsetOptArg::InsetOptArg(BufferParams const & ins)
@@ -72,8 +74,11 @@ int InsetOptArg::latex(Buffer const &, ostream &,
 int InsetOptArg::latexOptional(Buffer const & buf, ostream & os,
 			       OutputParams const & runparams) const
 {
-	os << '[';
-	int const i = InsetText::latex(buf, os, runparams);
-	os << ']';
-	return i + 2;
+	ostringstream ss;
+	InsetText::latex(buf, ss, runparams);
+	string str = ss.str();
+	if (str.find(']') != string::npos) 
+		str = '{' + str + '}';
+	os << '[' << str << ']';
+	return str.length() + 2;
 }

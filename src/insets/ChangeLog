@@ -1,7 +1,9 @@
 2004-08-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* insettext.C (editXY): 
+	* insetoptarg.C (latexOptional): if the optional argument contains
+	a ']' enclose it in {curly brackets}
 
+	* insettext.C (editXY): 
 	* insettabular.C (editXY): 
 	* insetcollapsable.C (editXY): 
 	* insetbase.C (editXY): constify
