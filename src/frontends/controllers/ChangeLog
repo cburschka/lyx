@@ -1,6 +1,11 @@
 2001-03-27  Angus Leeming  <a.leeming@ic.ac.uk>
 
-	* ControlPrint.[Ch]: new file; controller for the Print popups.
+	* ControlPrint.[Ch]:
+	* ControlSplash.[Ch]: new files; controller for the Print popup and
+	Splash screen respectively.
+
+	* ViewBase.h (ViewSplash): new base class for GUI-specific Splash
+	screens.
 
 	* GUI.h:
 	* Makefile.am: associated changes.

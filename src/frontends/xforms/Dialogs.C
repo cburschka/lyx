@@ -31,6 +31,7 @@
 #include "ControlPrint.h"
 #include "ControlRef.h"
 #include "ControlSearch.h"
+#include "ControlSplash.h"
 #include "ControlTabularCreate.h"
 #include "ControlUrl.h"
 #include "ControlVCLog.h"
@@ -50,6 +51,7 @@
 #include "form_print.h"
 #include "form_ref.h"
 #include "form_search.h"
+#include "form_splash.h"
 #include "form_tabular_create.h"
 #include "form_url.h"
 
@@ -65,6 +67,7 @@
 #include "FormPrint.h"
 #include "FormRef.h"
 #include "FormSearch.h"
+#include "FormSplash.h"
 #include "FormTabularCreate.h"
 #include "FormUrl.h"
 #include "FormVCLog.h"
@@ -77,7 +80,6 @@
 #include "FormParagraph.h"
 #include "FormPreamble.h"
 #include "FormPreferences.h"
-#include "FormSplash.h"
 #include "FormTabular.h"
 #include "FormToc.h"
 #include "FormMinipage.h"
@@ -88,7 +90,7 @@ SigC::Signal0<void> Dialogs::redrawGUI;
 
 Dialogs::Dialogs(LyXView * lv)
 {
-	splash_.reset(new FormSplash(lv, this));
+	splash_.reset(new GUISplash<FormSplash>(*this));
 
 	add(new GUIBibitem<FormBibitem, xformsBC>(*lv, *this));
 	add(new GUIBibtex<FormBibtex, xformsBC>(*lv, *this));
@@ -114,7 +116,6 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new FormParagraph(lv, this));
 	add(new FormPreamble(lv, this));
 	add(new FormPreferences(lv, this));
-	add(new FormSplash(lv, this));
 	add(new FormTabular(lv, this));
 	add(new FormToc(lv, this));
 	add(new FormMinipage(lv, this));

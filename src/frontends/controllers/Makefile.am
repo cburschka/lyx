@@ -46,6 +46,8 @@ libcontrollers_la_SOURCES=\
 	ControlRef.h \
 	ControlSearch.C \
 	ControlSearch.h \
+	ControlSplash.C \
+	ControlSplash.h \
 	ControlTabularCreate.C \
 	ControlTabularCreate.h \
 	ControlUrl.C \
