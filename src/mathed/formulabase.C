@@ -172,7 +172,7 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int y, mouse_button::state)
 {
 	if (!bv->lockInset(this))
 		lyxerr[Debug::MATHED] << "Cannot lock inset!!!" << endl;
-	delete mathcursor;
+	releaseMathCursor(bv);
 	mathcursor = new MathCursor(this, true);
 	metrics(bv);
 	mathcursor->setPos(x, y);
@@ -187,8 +187,8 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int y, mouse_button::state)
 void InsetFormulaBase::edit(BufferView * bv, bool front)
 {
 	if (!bv->lockInset(this))
-		lyxerr[Debug::MATHED] << "Cannot lock inset!!!" << endl;
-	delete mathcursor;
+		lyxerr << "Cannot lock math inset in edit call!\n";
+	releaseMathCursor(bv);
 	mathcursor = new MathCursor(this, front);
 	metrics(bv);
 	bv->updateInset(this, false);
@@ -202,8 +202,7 @@ void InsetFormulaBase::insetUnlock(BufferView * bv)
 			mathcursor->macroModeClose();
 			updateLocal(bv, true);
 		}
-		delete mathcursor;
-		mathcursor = 0;
+		releaseMathCursor(bv);
 	}
 	bv->updateInset(this, false);
 }
@@ -215,31 +214,17 @@ void InsetFormulaBase::getCursorPos(BufferView * bv, int & x, int & y) const
 	mathcursor->getPos(x, y);
 	//x -= xo_;
 	y -= yo_;
-	//lyxerr << "getCursorPos: " << x << " " << y << "\n";
+	lyxerr << "getCursorPos: " << x << " " << y << "\n";
 }
 
 
 void InsetFormulaBase::toggleInsetCursor(BufferView * bv)
 {
-	if (!mathcursor)
-		return;
-
+	//lyxerr << "toggleInsetCursor: " << isCursorVisible() << "\n";
 	if (isCursorVisible())
-		bv->hideLockedInsetCursor();
-	else {
-		metrics(bv);
-		int x = 0;
-		int y = 0;
-		mathcursor->getPos(x, y);
-		y -= yo_;
-		int asc = 0;
-		int des = 0;
-		math_font_max_dim(font_, asc, des);
-		bv->showLockedInsetCursor(x, y, asc, des);
-		//lyxerr << "toggleInsetCursor: " << x << " " << y << "\n";
-	}
-
-	toggleCursorVisible();
+		hideInsetCursor(bv);
+	else
+		showInsetCursor(bv);
 }
 
 
@@ -247,26 +232,23 @@ void InsetFormulaBase::showInsetCursor(BufferView * bv, bool)
 {
 	if (isCursorVisible())
 		return;
-	if (mathcursor) {
-		metrics(bv);
-		int x;
-		int y;
-		mathcursor->getPos(x, y);
-		y -= yo_;
-		int asc = 0;
-		int des = 0;
-		math_font_max_dim(font_, asc, des);
-		bv->fitLockedInsetCursor(x, y, asc, des);
-		//lyxerr << "showInsetCursor: x: " << x << " y: " << y << " yo: " << yo_ << "\n";
-	}
-	toggleInsetCursor(bv);
+	fitInsetCursor(bv);
+	int x, y, asc, des;
+	getCursorPos(bv, x, y);
+	math_font_max_dim(font_, asc, des);
+	bv->showLockedInsetCursor(x, y, asc, des);
+	setCursorVisible(true);
+	//lyxerr << "showInsetCursor: " << x << " " << y << "\n";
 }
 
 
 void InsetFormulaBase::hideInsetCursor(BufferView * bv)
 {
-	if (isCursorVisible())
-		toggleInsetCursor(bv);
+	if (!isCursorVisible())
+		return;
+	bv->hideLockedInsetCursor();
+	setCursorVisible(false);
+	//lyxerr << "hideInsetCursor: \n";
 }
 
 
@@ -274,13 +256,12 @@ void InsetFormulaBase::fitInsetCursor(BufferView * bv) const
 {
 	if (!mathcursor)
 		return;
-
-	int const asc = font_metrics::maxAscent(font_);
-	int const desc = font_metrics::maxDescent(font_);
-	int x, y;
-
+	int x, y, asc, des;
+	math_font_max_dim(font_, asc, des);
 	getCursorPos(bv, x, y);
-	bv->fitLockedInsetCursor(x, y, asc, desc);
+	//y += yo_;
+	//lyxerr << "fitInsetCursor: x: " << x << " y: " << y << " yo: " << yo_ << "\n";
+	bv->fitLockedInsetCursor(x, y, asc, des);
 }
 
 
@@ -346,12 +327,12 @@ bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
 void InsetFormulaBase::insetButtonPress(BufferView * bv,
 					int x, int y, mouse_button::state button)
 {
-	lyxerr << "insetButtonPress: "
-		<< x << " " << y << " but: " << button << "\n";
-	lyxerr << "formula: ";
+	//lyxerr << "insetButtonPress: "
+	//	<< x << " " << y << " but: " << button << "\n";
+	//lyxerr << "formula: ";
 	par()->dump();
 
-	delete mathcursor;
+	releaseMathCursor(bv);
 	mathcursor = new MathCursor(this, x == 0);
 
 	if (button == mouse_button::button1) {
@@ -416,10 +397,9 @@ UpdatableInset::RESULT
 InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 			    string const & arg)
 {
-	//lyxerr << "InsetFormulaBase::localDispatch: act: " << action
-	//	<< " arg: '" << arg
-	//	<< "' cursor: " << mathcursor
-	//	<< "\n";
+	lyxerr << "InsetFormulaBase::localDispatch: act: " << action
+		<< " arg: '" << arg
+		<< "' cursor: " << mathcursor << "\n";
 
 	if (!mathcursor)
 		return UNDISPATCHED;
@@ -436,11 +416,8 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 	switch (action) {
 
-	// --- Cursor Movements ---------------------------------------------
-
 	case LFUN_RIGHTSEL:
 		sel = true; // fall through...
-
 	case LFUN_RIGHT:
 		result = mathcursor->right(sel) ? DISPATCHED : FINISHED_RIGHT;
 		//lyxerr << "calling scroll 20\n";
@@ -450,46 +427,50 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		//bv->owner()->message(mathcursor->info());
 		break;
 
-
 	case LFUN_LEFTSEL:
 		sel = true; // fall through
-
 	case LFUN_LEFT:
 		result = mathcursor->left(sel) ? DISPATCHED : FINISHED;
 		updateLocal(bv, false);
 		break;
 
-
 	case LFUN_UPSEL:
-		sel = true;
-
+		sel = true; // fall through
 	case LFUN_UP:
 		result = mathcursor->up(sel) ? DISPATCHED : FINISHED_UP;
 		updateLocal(bv, false);
 		break;
 
-
 	case LFUN_DOWNSEL:
-		sel = true;
-
+		sel = true; // fall through
 	case LFUN_DOWN:
 		result = mathcursor->down(sel) ? DISPATCHED : FINISHED_DOWN;
 		updateLocal(bv, false);
 		break;
 
 	case LFUN_HOMESEL:
-		sel = true;
-
+		sel = true; // fall through
 	case LFUN_HOME:
 		result = mathcursor->home(sel) ? DISPATCHED : FINISHED;
 		updateLocal(bv, false);
 		break;
 
 	case LFUN_ENDSEL:
-		sel = true;
-
+		sel = true; // fall through
 	case LFUN_END:
 		result = mathcursor->end(sel) ? DISPATCHED : FINISHED_RIGHT; 
+		updateLocal(bv, false);
+		break;
+
+	case LFUN_PRIORSEL:
+	case LFUN_PRIOR:
+		result = FINISHED_UP;
+		updateLocal(bv, false);
+		break;
+
+	case LFUN_NEXTSEL:
+	case LFUN_NEXT:
+		result = FINISHED_DOWN;
 		updateLocal(bv, false);
 		break;
 
@@ -577,6 +558,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 			updateLocal(bv, true);
 		}
 		break;
+
 	case LFUN_UMLAUT:
 	case LFUN_ACUTE:
 	case LFUN_GRAVE:
@@ -795,12 +777,14 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		toggleInsetSelection(bv);
 
 	if (result == DISPATCHED || result == DISPATCHED_NOUPDATE ||
-	    result == UNDISPATCHED)
+	    result == UNDISPATCHED) {
+		fitInsetCursor(bv);
 		showInsetCursor(bv);
-	else
+		revealCodes(bv);
+	} else {
+		releaseMathCursor(bv);
 		bv->unlockInset(this);
-
-	revealCodes(bv);
+	}
 
 	return result;  // original version
 }

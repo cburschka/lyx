@@ -26,6 +26,7 @@
 #include "LString.h"
 
 class InsetFormulaBase;
+class BufferView;
 class MathPainterInfo;
 class MathUnknownInset;
 class Selection;
@@ -321,5 +322,6 @@ private:
 };
 
 extern MathCursor * mathcursor;
+void releaseMathCursor(BufferView * bv);
 
 #endif

@@ -24,6 +24,7 @@
 
 #include "support/lstrings.h"
 #include "support/LAssert.h"
+#include "BufferView.h"
 #include "debug.h"
 #include "LColor.h"
 #include "frontends/Painter.h"
@@ -1753,4 +1754,14 @@ MathInset::mode_type MathCursor::currentMode() const
 			return res;
 	}
 	return MathInset::UNDECIDED_MODE;
+}
+
+
+void releaseMathCursor(BufferView * bv)
+{
+	if (!mathcursor)
+		return;
+	mathcursor->formula()->hideInsetCursor(bv);
+	delete mathcursor;
+	mathcursor = 0;
 }
