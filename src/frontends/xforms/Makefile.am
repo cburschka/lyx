@@ -23,6 +23,8 @@ libxforms_la_SOURCES = \
 	forms_gettext.h \
 	bmtable.c \
 	bmtable.h \
+	checkedwidgets.C \
+	checkedwidgets.h \
 	combox.C \
 	combox.h \
 	input_validators.C \
@@ -85,8 +87,6 @@ libxforms_la_SOURCES = \
 	FormExternal.h \
 	FormFloat.C \
 	FormFloat.h \
-	FormWrap.C \
-	FormWrap.h \
 	FormForks.C \
 	FormForks.h \
 	FormGraphics.C \
@@ -147,6 +147,8 @@ libxforms_la_SOURCES = \
 	FormUrl.h \
 	FormVCLog.C \
 	FormVCLog.h \
+	FormWrap.C \
+	FormWrap.h \
 	LyXKeySymFactory.C \
 	LyXScreenFactory.C \
 	MathsCallbacks.h \

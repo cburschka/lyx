@@ -29,17 +29,22 @@ template <class Button, class Widget>
 void GuiBC<Button, Widget>::refresh()
 {
 	lyxerr[Debug::GUI] << "Calling BC refresh()" << std::endl; 
- 
+
+	bool const all_valid = checkWidgets();
+
 	if (okay_) {
-		bool const enabled = bp().buttonStatus(ButtonPolicy::OKAY);
+		bool const enabled =
+			all_valid && bp().buttonStatus(ButtonPolicy::OKAY);
 		setButtonEnabled(okay_, enabled);
 	}
 	if (apply_) {
-		bool const enabled = bp().buttonStatus(ButtonPolicy::APPLY);
+		bool const enabled = 
+			all_valid && bp().buttonStatus(ButtonPolicy::APPLY);
 		setButtonEnabled(apply_, enabled);
 	}
 	if (restore_) {
-		bool const enabled = bp().buttonStatus(ButtonPolicy::RESTORE);
+		bool const enabled = 
+			all_valid && bp().buttonStatus(ButtonPolicy::RESTORE);
 		setButtonEnabled(restore_, enabled);
 	}
 	if (cancel_) {

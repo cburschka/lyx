@@ -52,8 +52,6 @@ libcontrollers_la_SOURCES= \
 	ControlExternal.h \
 	ControlFloat.C \
 	ControlFloat.h \
-	ControlWrap.C \
-	ControlWrap.h \
 	ControlForks.C \
 	ControlForks.h \
 	ControlGraphics.C \
@@ -97,6 +95,8 @@ libcontrollers_la_SOURCES= \
 	ControlUrl.h \
 	ControlVCLog.C \
 	ControlVCLog.h \
+	ControlWrap.C \
+	ControlWrap.h \
 	GUI.h \
 	ViewBase.h \
 	helper_funcs.C \

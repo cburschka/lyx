@@ -18,6 +18,10 @@
 #include "debug.h"
 
 
+CheckedWidget::~CheckedWidget()
+{}
+
+
 ButtonControllerBase::ButtonControllerBase(string const & cancel,
 					   string const & close)
 	: cancel_label_(cancel), close_label_(close)
@@ -98,3 +102,27 @@ void ButtonControllerBase::readWrite()
 {
 	readOnly(false);
 }
+
+
+void ButtonControllerBase::addCheckedWidget(CheckedWidget * ptr)
+{
+	if (ptr)
+		checked_widgets.push_back(checked_widget_ptr(ptr));
+}
+
+
+bool ButtonControllerBase::checkWidgets()
+{
+	bool valid = true;
+
+	checked_widget_list::const_iterator it  = checked_widgets.begin();
+	checked_widget_list::const_iterator end = checked_widgets.end();
+
+	for (; it != end; ++it) {
+		valid &= (*it)->check();
+	}
+
+	// return valid status after checking ALL widgets
+	return valid;
+}
+

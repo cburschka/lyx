@@ -1,3 +1,21 @@
+2002-10-22  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am (libcontrollers_la_SOURCES): arrange list into
+	alphabetical order once again.
+
+	* ButtonControllerBase.[Ch]: define an abstract base class CheckedWidget
+	Add a list of CheckedWidget ptrs to ButtonControllerBase
+	together with methods addCheckedWidget and checkWidgets to use it.
+
+	* ButtonController.tmpl (refresh): use the return value of
+	checkWidgets to control the activation state of the Ok, Apply, Restore
+	buttons.
+
+	* ControlDialog.tmpl (show, update):
+	* ControlInset.tmpl (showInset, update):
+	invoke ButtonController::refresh to ensure that the activation state of
+	the Ok, Apply buttons reflects the valid-state of the widgets.
+
 2002-10-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* tex_helpers.C (rescanTexStyles): don't pop p

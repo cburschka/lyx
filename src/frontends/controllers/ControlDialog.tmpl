@@ -45,6 +45,9 @@ void ControlDialog<Base>::show()
 
 	bc().readOnly(bufferIsReadonly());
 	view().show();
+
+	// The widgets may not be valid, so refresh the button controller
+	bc().refresh();
 }
 
 template <class Base>
@@ -61,6 +64,9 @@ void ControlDialog<Base>::update()
 
 	bc().readOnly(bufferIsReadonly());
 	view().update();
+
+	// The widgets may not be valid, so refresh the button controller
+	bc().refresh();
 }
 
 template <class Base>

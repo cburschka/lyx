@@ -1,3 +1,14 @@
+2002-10-22  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am (libxforms_la_SOURCES): arrange list into alphabetical
+	order once again.
+	Add checkedwidgets.[Ch].
+
+	* checkedwidgets.[Ch]: new files, defining CheckedLyXLength and
+	CheckedGlueLength.
+
+	* xforms_helpers.[Ch] (isActive): new helper function.
+
 2002-10-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* xfont_loader.C (doLoad): typo

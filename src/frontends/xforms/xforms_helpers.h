@@ -32,6 +32,9 @@ string const choice_Length_All =
 string const choice_Length_WithUnit =
     "cm|mm|in|ex|em|pt|sp|bp|dd|pc|cc|mu";	// all with a Unit
 
+/// return the (in)active state of the object
+bool isActive(FL_OBJECT * ob);
+
 /// Set an FL_OBJECT to activated or deactivated
 void setEnabled(FL_OBJECT *, bool enable);
 

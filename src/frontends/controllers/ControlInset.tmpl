@@ -34,6 +34,9 @@ void ControlInset<Inset, Params>::showInset(Inset * inset)
 
 	connectInset(inset);
 	show(getParams(*inset));
+
+	// The widgets may not be valid, so refresh the button controller
+	bc().refresh();
 }
 
 
@@ -91,6 +94,9 @@ void ControlInset<Inset, Params>::update()
 
 	bc().readOnly(bufferIsReadonly());
 	view().update();
+
+	// The widgets may not be valid, so refresh the button controller
+	bc().refresh();
 }
 
 

@@ -35,6 +35,12 @@ using std::ofstream;
 using std::pair;
 using std::vector;
 
+bool isActive(FL_OBJECT * ob)
+{
+	return ob && ob->active > 0;
+}
+
+
 // Set an FL_OBJECT to activated or deactivated
 void setEnabled(FL_OBJECT * ob, bool enable)
 {

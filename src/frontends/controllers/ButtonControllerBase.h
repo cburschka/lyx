@@ -19,6 +19,21 @@
 #include "ButtonPolicies.h"
 #include "LString.h"
 
+#include <boost/shared_ptr.hpp>
+#include <list>
+
+struct CheckedWidget {
+	///
+	virtual ~CheckedWidget();
+
+	/** Returns true if the widget is in a valid state.
+	*  Might also change the visual appearance of the widget,
+	*  to reflect this state.
+	*/
+	virtual bool check() const = 0;
+};
+
+
 /** Abstract base class for a ButtonController
 
  * Controls the activation of the OK, Apply and Cancel buttons.
@@ -69,11 +84,23 @@ public:
 	void valid(bool = true);
 	///
 	void invalid();
+	///
+	void addCheckedWidget(CheckedWidget * ptr);
+
 protected:
 	///
 	string cancel_label_;
 	///
 	string close_label_;
+	///
+	bool checkWidgets();
+
+private:
+	///
+	typedef boost::shared_ptr<CheckedWidget> checked_widget_ptr;
+	typedef std::list<checked_widget_ptr> checked_widget_list;
+	///
+	checked_widget_list checked_widgets;
 };
 
 #endif // BUTTONCONTROLLERBASE_H
