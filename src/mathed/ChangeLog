@@ -1,3 +1,9 @@
+2003-09-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_symbolinset.C (metrics): apply a different hack to metrics
+	when running under OSX. Hopefully this will not break the X11
+	version under darwin (or hopefully nobody cares :)
+
 2003-06-13  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* formulabase.C (mathDispatchCreation): do not modify clipboard
