@@ -3046,7 +3046,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		} else {
 			// if we don't have an argument there was something
 			// strange going on so we just tell this to someone!
-			owner_->getLyXFunc()->setErrorMessage(N_("No argument givven"));
+			owner_->getLyXFunc()->setErrorMessage(N_("No argument given"));
 		}
 		break;
 	}
