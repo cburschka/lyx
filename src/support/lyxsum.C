@@ -22,6 +22,8 @@
 
 #include "support/lyxlib.h"
 
+using std::ifstream;
+
 /* Number of bytes to read at once.  */
 #define BUFLEN (1 << 16)
 

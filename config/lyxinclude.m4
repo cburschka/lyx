@@ -425,10 +425,11 @@ dnl   good enough to suit our needs.
 AC_DEFUN(LYX_CXX_NAMESPACES,[
 AC_CACHE_CHECK(for correct namespaces support,lyx_cv_cxx_namespace,
  [AC_TRY_COMPILE([
-  #include <vector>
-  using std::vector;
+  namespace foo {
+    int bar;
+  }
 ],[
-	vector<int> test;
+        foo::bar = 0;
 	return 0;
 ],lyx_cv_cxx_namespace=yes,lyx_cv_cxx_namespace=no)
 ])

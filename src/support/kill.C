@@ -5,7 +5,7 @@
 
 #ifdef CXX_WORKING_NAMESPACES
 namespace lyx {
-	int kill(pid_t pid, int sig)
+	int kill(long int pid, int sig)
 	{
 		return ::kill(pid, sig);
 	}
@@ -13,7 +13,7 @@ namespace lyx {
 #else
 #include "lyxlib.h"
 
-int lyx::kill(pid_t pid, int sig)
+int lyx::kill(long int pid, int sig)
 {
 	return ::kill(pid, sig);
 }

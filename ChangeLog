@@ -1,3 +1,26 @@
+2000-01-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/support/LAssert.h: do not do partial specialization. We do
+	not really need it.
+
+	* src/support/lyxlib.h: note that lyx::getUserName() and
+	lyx::date() are not in use right now. Should these be suppressed?
+
+	* src/buffer.C (makeLaTeXFile): we do not need the user name here.
+	(makeLinuxDocFile): do not put date and user name in linuxdoc
+	headers. 
+
+	* src/support/lyxlib.h (kill): change first argument to long int,
+	since that's what solaris uses.
+
+	* src/support/kill.C (kill): fix declaration to match prototype.
+
+	* config/lyxinclude.m4 (LYX_CXX_NAMESPACES): fix the macro to
+	actually check whether namespaces are supported. This is not what
+	it used to do.
+
+	* src/support/lyxsum.C: add a using directive.
+
 2000-01-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/kill.C: if we have namespace support we don't have

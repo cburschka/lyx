@@ -17,19 +17,6 @@ template<class A> inline void Assert(A assertion)
 	}
 }
 
-#ifdef HAVE_PARTIAL_SPECIALIZATION
-// Not too sure if this is the correct way to specialize
-template<class A> inline void Assert(A * ptr)
-{
-	Assert<void const *>(ptr);
-}
-template<> inline void Assert(void const * ptr)
-{
-	if (!ptr) {
-		lyx::abort();
-	}
-}
-#endif /* HAVE_PARTIAL_SPECIALIZATION  */ 
 
 //template<class A, class E> inline void Assert(A assertion, E except)
 //{

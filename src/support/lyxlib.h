@@ -25,14 +25,14 @@ namespace lyx {
 	char * getcwd(char * buffer, size_t size);
 	///
 	int chdir(char const * name);
-	/// generates an checksum
+	/// generates a checksum
 	unsigned long sum(char const * file);
-	/// returns a date string
+	/// returns a date string (not used currently)
 	char * date(); 
-	///
+	/// returns the name of the user (not used currently)
 	string getUserName();
 	///
-	int kill(int pid, int sig);
+	int kill(long int pid, int sig);
 	///
 	void abort();
 }
@@ -42,14 +42,14 @@ struct lyx {
 	static char * getcwd(char * buffer, size_t size);
 	///
 	static int chdir(char const * name);
-	/// generates an checksum
+	/// generates a checksum
 	static unsigned long sum(char const * file);
-	/// returns a date string
+	/// returns a date string (not used currently)
 	static char * date(); 
-	///
+	/// returns the name of the user (not used currently)
 	static string getUserName();
 	///
-	static int kill(int pid, int sig);
+	static int kill(long int pid, int sig);
 	///
 	static void abort();
 };
