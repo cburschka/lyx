@@ -114,10 +114,14 @@ string escapeString(string const & raw)
 
 void openTag(ostream & os, string const & name, string const & attribute)
 {
+	// This should be fixed in layout files later.
+	string param = subst(attribute, "<", "\"");
+	param = subst(param, ">", "\"");
+
 	if (!name.empty() && name != "!-- --") {
 		os << '<' << name;
-		if (!attribute.empty())
-			os << " " << attribute;
+		if (!param.empty())
+			os << " " << param;
 		os << '>';
 	}
 }
@@ -157,8 +161,6 @@ void openTag(Buffer const & buf, ostream & os, Paragraph const & par)
 				counters.step(style->latexname());
 			int i = counters.value(name);
 			attribute = subst(param, "#", tostr(i));
-			attribute = subst(attribute, "<", "\"");
-			attribute = subst(attribute, ">", "\"");
 		} else {
 			attribute = param;
 		}

@@ -24,6 +24,7 @@
 #include "lyxtext.h"
 #include "metricsinfo.h"
 #include "paragraph.h"
+#include "sgml.h"
 
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
@@ -208,12 +209,11 @@ int InsetCharStyle::latex(Buffer const &, ostream & os,
 int InsetCharStyle::linuxdoc(Buffer const &, std::ostream & os,
 			     OutputParams const &) const
 {
-	os << "<" << params_.latexname;
-	if (!params_.latexparam.empty())
-		os << " " << params_.latexparam;
-	os << ">";
-	int const i = outputVerbatim(os, *this);
-	os << "</" << params_.latexname << ">";
+	ostringstream oss;
+	int i = outputVerbatim(oss, *this);
+	sgml::openTag(os, params_.latexname, params_.latexparam);
+	os << sgml::escapeString(oss.str());
+	sgml::closeTag(os, params_.latexname);
 	return i;
 }
 
@@ -221,12 +221,11 @@ int InsetCharStyle::linuxdoc(Buffer const &, std::ostream & os,
 int InsetCharStyle::docbook(Buffer const &, std::ostream & os,
 			    OutputParams const &) const
 {
-	os << "<" << params_.latexname;
-	if (!params_.latexparam.empty())
-		os << " " << params_.latexparam;
-	os << ">";
-	int const i = outputVerbatim(os, *this);
-	os << "</" << params_.latexname << ">";
+	ostringstream oss;
+	int i = outputVerbatim(oss, *this);
+	sgml::openTag(os, params_.latexname, params_.latexparam);
+	os << sgml::escapeString(oss.str());
+	sgml::closeTag(os, params_.latexname);
 	return i;
 }
 

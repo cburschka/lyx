@@ -1,4 +1,10 @@
-2004-10-25  José Matos  <jamatos@lyx.org>
+2004-10-28  José Matos  <jamatos@lyx.org>
+
+	* output_docbook.C (makeEnvironment): move id to broadest possible scope.
+
+	* sgml.C (openTag): apply substitution of <> for all attribuites.
+
+2004-10-28  José Matos  <jamatos@lyx.org>
 
 	* buffer.C (makeLinuxDocFile, makeDocBookFile):
 	* output_docbook.C (makeParagraph, makeEnvironment, makeCommand):

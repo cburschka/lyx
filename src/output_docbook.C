@@ -142,13 +142,13 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		switch (bstyle->latextype) {
 		case LATEX_ENVIRONMENT:
 			if (!bstyle->innertag().empty() and bstyle->innertag() != "CDATA") {
-				sgml::openTag(os, bstyle->innertag());
+				sgml::openTag(os, bstyle->innertag(), id);
 			}
 			break;
 
 		case LATEX_ITEM_ENVIRONMENT:
 			if (!bstyle->labeltag().empty()) {
-				sgml::openTag(os, bstyle->innertag());
+				sgml::openTag(os, bstyle->innertag(), id);
 				sgml::openTag(os, bstyle->labeltag());
 				sep = par->getFirstWord(buf, os, runparams) + 1;
 				sgml::closeTag(os, bstyle->labeltag());
@@ -163,7 +163,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 		case LATEX_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT: {
 			if(par->params().depth() == pbegin->params().depth()) {
-				sgml::openTag(os, wrapper, id);
+				sgml::openTag(os, wrapper);
 				par->simpleDocBookOnePar(buf, os, runparams, outerFont(par - paragraphs.begin(), paragraphs), sep);
 				sgml::closeTag(os, wrapper);
 				++par;
