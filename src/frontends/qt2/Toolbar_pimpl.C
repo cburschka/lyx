@@ -47,7 +47,7 @@ QPixmap getIconPixmap(int action)
 	string xpm_name;
 
 	if (f.action == LFUN_INSERT_MATH && !f.argument.empty()) {
-		xpm_name = "math/" + subst(f.argument, ' ', '_');
+		xpm_name = "math/" + subst(f.argument.substr(1), ' ', '_');
 	} else {
 		string const name = lyxaction.getActionName(f.action);
 		if (!f.argument.empty())
