@@ -2992,7 +2992,8 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	if (cleared) {
 		clear_area = true;
 	} else if (clear_area) {
-		int w = (inset_owner ? inset_owner->width(bview, font) : ww);
+#warning Should be fixed with a lyxinset::clear_width(bv, font) function! (Jug)
+		int w = (inset_owner ? inset_owner->width(bview, font)-2 : ww);
 		pain.fillRectangle(x_offset, y_offset, w, row_ptr->height());
 	} else if (inset != 0) {
 		int h = row_ptr->baseline() - inset->ascent(bview, font);

@@ -336,7 +336,9 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
     }
     TEXT(bv)->refresh_y = 0;
     TEXT(bv)->status = LyXText::UNCHANGED;
-    if ((drawFrame == ALWAYS) || ((drawFrame == LOCKED) && locked)) {
+    if ((need_update != CURSOR_PAR) &&
+	((drawFrame == ALWAYS) || ((drawFrame == LOCKED) && locked)))
+    {
 	    pain.rectangle(top_x + 1, baseline - insetAscent + 1,
 			   width(bv, f) - 1, insetAscent + insetDescent - 1,
 			   frame_color);
@@ -467,6 +469,7 @@ void InsetText::Edit(BufferView * bv, int x, int y, unsigned int button)
 					   y+TEXT(bv)->first+insetAscent);
     TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
     bv->text->FinishUndo();
+    ShowInsetCursor(bv);
     UpdateLocal(bv, FULL, false);
 }
 
@@ -769,6 +772,7 @@ InsetText::LocalDispatch(BufferView * bv,
     case LFUN_RIGHT:
 	result = moveRight(bv);
 	bv->text->FinishUndo();
+	TEXT(bv)->ClearSelection();
 	UpdateLocal(bv, CURSOR, false);
 	break;
     case LFUN_LEFTSEL:
@@ -780,6 +784,7 @@ InsetText::LocalDispatch(BufferView * bv,
     case LFUN_LEFT:
 	bv->text->FinishUndo();
 	result= moveLeft(bv);
+	TEXT(bv)->ClearSelection();
 	UpdateLocal(bv, CURSOR, false);
 	break;
     case LFUN_DOWNSEL:
@@ -791,6 +796,7 @@ InsetText::LocalDispatch(BufferView * bv,
     case LFUN_DOWN:
 	bv->text->FinishUndo();
 	result = moveDown(bv);
+	TEXT(bv)->ClearSelection();
 	UpdateLocal(bv, CURSOR, false);
 	break;
     case LFUN_UPSEL:
@@ -802,6 +808,7 @@ InsetText::LocalDispatch(BufferView * bv,
     case LFUN_UP:
 	bv->text->FinishUndo();
 	result = moveUp(bv);
+	TEXT(bv)->ClearSelection();
 	UpdateLocal(bv, CURSOR, false);
 	break;
     case LFUN_HOME:

@@ -186,7 +186,7 @@ private:
     void DrawCellSelection(Painter &, int x, int baseline,
 			   int row, int column, int cell) const;
     ///
-    void ShowInsetCursor(BufferView *);
+    void ShowInsetCursor(BufferView *, bool show=true);
     ///
     void HideInsetCursor(BufferView *);
     ///

@@ -1,3 +1,16 @@
+2000-10-02  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.C (LocalDispatch): fixed selection code,
+	now you can type or do stuff inside the table-cell also when in dummy
+	position, fixed visible cursor.
+
+	* src/insets/insettext.C (Edit): fixing cursor-view position.
+
+	* src/lyxfunc.C (Dispatch): use * text variable so that it can
+	be used for equal functions in lyxfunc and insettext.
+
+	* src/text.C (GetVisibleRow): fixed a small clear_area bug.
+
 2000-10-02  John Levon  <moz@compsoc.man.ac.uk>
 
 	* src/frontends/gnome/FormCitation.h:
