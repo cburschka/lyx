@@ -376,11 +376,24 @@ void FileDialog::Private::Reread()
 // SetDirectory: sets dialog current directory
 void FileDialog::Private::SetDirectory(string const & Path)
 {
+	string tmp;
+ 
 	if (!pszDirectory.empty()) {
 		string TempPath = ExpandPath(Path); // Expand ~/
 		TempPath = MakeAbsPath(TempPath, pszDirectory);
-		pszDirectory = MakeAbsPath(TempPath);
-	} else pszDirectory = MakeAbsPath(Path);
+		tmp = MakeAbsPath(TempPath);
+	} else {
+		tmp = MakeAbsPath(Path);
+	}
+ 
+	// must check the directory exists
+	DIR * pDirectory = ::opendir(tmp.c_str());
+	if (!pDirectory) {
+		WriteFSAlert(_("Warning! Couldn't open directory."), tmp);
+	} else {
+		::closedir(pDirectory);
+		pszDirectory = tmp;
+	}
 }
 
 
