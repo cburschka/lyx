@@ -26,8 +26,8 @@
 #include "support/path.h"
 #include "exporter.h"
 #include "converter.h"
-#include "minibuffer.h"
 #include "support/syscall.h"
+#include "lyxfunc.h"
 
 using std::endl;
 
@@ -155,9 +155,11 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 	return res == 0;
 }
 
-void setMinibuffer(LyXView * lv, char const * msg)
+
+void setMinibuffer(LyXView * lv, string const & msg)
 {
-	lv->getMiniBuffer()->Set(msg);
+	Assert(lv);
+	lv->message(msg);
 }
 
 } // namespace Liason

@@ -50,7 +50,7 @@ class InsetMinipage;
     The list of dialog signals isn't comprehensive but should be a good guide
     for any future additions.  Remember don't go overboard -- think minimal.
  */
-class Dialogs : public boost::noncopyable
+class Dialogs : boost::noncopyable
 {
 public:
 	///

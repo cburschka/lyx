@@ -30,6 +30,8 @@
 #pragma interface
 #endif
 
+#include "LString.h"
+
 class PrinterParams;
 class Buffer;
 class LyXView;
@@ -52,7 +54,7 @@ namespace Liason {
 	/// print the current buffer
 	bool printBuffer(Buffer *, PrinterParams const &);
 	/// set the minibuffer
-	void setMinibuffer(LyXView *, char const  * msg);
+	void setMinibuffer(LyXView *, string const & msg);
 	//@}
 
 } // namespace Liason
