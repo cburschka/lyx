@@ -75,6 +75,21 @@ extern int const LEFT_MARGIN = PAPER_MARGIN + CHANGEBAR_MARGIN;
 int bibitemMaxWidth(BufferView *, LyXFont const &);
 
 
+namespace {
+
+unsigned int maxParagraphWidth(ParagraphList const & plist)
+{
+	unsigned int width = 0;
+	ParagraphList::const_iterator pit = plist.begin();
+	ParagraphList::const_iterator end = plist.end();
+		for (; pit != end; ++pit)
+			width = std::max(width, pit->width);
+	return width;
+}
+
+} // namespace anon
+
+
 BufferView * LyXText::bv()
 {
 	BOOST_ASSERT(bv_owner != 0);
@@ -1169,15 +1184,8 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, Row & row)
 
 	row.width(maxwidth);
 
-	if (inset_owner) {
-		width = max(0, workWidth());
-		ParagraphList::iterator pit = ownerParagraphs().begin();
-		ParagraphList::iterator end = ownerParagraphs().end();
-		for ( ; pit != end; ++pit) {
-			if (width < pit->width)
-				width = pit->width;
-		}
-	}
+	if (inset_owner)
+		width = max(workWidth(), int(maxParagraphWidth(ownerParagraphs())));
 }
 
 
@@ -2195,16 +2203,12 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 	lyxerr << "LyXText::metrics: width: " << mi.base.textwidth
 		<< " workWidth: " << workWidth() << "\nfont: " << mi.base.font << endl;
 	//BOOST_ASSERT(mi.base.textwidth);
-
-	// rebuild row cache
 	//anchor_y_ = 0;
+
+	// rebuild row cache. This recomputes height as well.
 	redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());
 
-	width = 0;
-	ParagraphList::iterator pit = ownerParagraphs().begin();
-	ParagraphList::iterator end = ownerParagraphs().end();
-	for ( ; pit != end; ++pit) 
-		width = std::max(pit->width, width);
+	width = maxParagraphWidth(ownerParagraphs());
 
 	// final dimension
 	dim.asc = firstRow()->ascent_of_text();
