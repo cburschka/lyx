@@ -75,12 +75,13 @@ void Tooltips::init(FL_OBJECT * ob, string const & tip)
 	if (it != tooltipsMap.end())
 		return;
 
-	string const str = trim(tip);
+	string str = trim(tip);
 	if (str.empty())
 		return;
 
 	// Store the tooltip string
-	tooltipsMap[ob] = formatted(str, 400);
+	str = formatted(str, 400);
+	tooltipsMap[ob] = str;
 
 	// Set the tooltip
 	char const * const c_str = enabled_ ? str.c_str() : 0;
