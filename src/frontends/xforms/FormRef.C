@@ -63,13 +63,13 @@ void FormRef::build()
 	bc().addReadOnly(dialog_->input_ref);
 
 	// set up the tooltips
-	string str = _("Select a document for references.");
+	string str = _("Select a document for labels.");
 	tooltips().init(dialog_->choice_document, str);
-	str = _("Sort the references alphabetically.");
+	str = _("Sort the labels alphabetically.");
 	tooltips().init(dialog_->check_sort, str);
-	str = _("Go to selected reference.");
+	str = _("Go to selected label.");
 	tooltips().init(dialog_->button_go, str);
-	str = _("Update the list of references.");
+	str = _("Update the list of labels.");
 	tooltips().init(dialog_->button_update, str);
 	str = _("Select format style of the reference.");
 	tooltips().init(dialog_->choice_format, str);
@@ -276,7 +276,7 @@ void FormRef::switch_go_button()
 		tooltips().init(dialog_->button_go, _("Go back to original place."));
 	} else {
 		fl_set_object_label(dialog_->button_go, _("Go to"));
-		tooltips().init(dialog_->button_go, _("Go to selected reference."));
+		tooltips().init(dialog_->button_go, _("Go to selected label."));
 	}
 	fl_set_button_shortcut(dialog_->button_go, "#G", 1);
 	fl_show_object(dialog_->button_go);

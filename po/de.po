@@ -14,7 +14,7 @@
 #   bibliography (entry) -> Literaturliste / Literatureintrag
 #   bind (file)          -> Tastaturkürzel(-Datei)
 #   border               -> Rahmen
-#   browse               -> durchsuchen
+#   browse               -> (durch)suchen
 #   button               -> Knopf 
 #   caption              -> Beschriftung    (Jürgen S.)
 #   command              -> Befehl
@@ -63,7 +63,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.4\n"
-"POT-Creation-Date: 2005-02-02 14:46+0100\n"
+"POT-Creation-Date: 2005-02-12 16:12+0100\n"
 "PO-Revision-Date: 2004-09-14 23:48+0100\n"
 "Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -1649,8 +1649,8 @@ msgid "Name:|#N"
 msgstr "Name:|#N"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:207
-msgid "Reference:|#e"
-msgstr "Querverweis:|#Q"
+msgid "Label:|#e"
+msgstr "Marke:|#M"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:243
 msgid "Go to|#G"
@@ -2367,7 +2367,7 @@ msgstr "&Durchsuchen..."
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:120
 msgid "Browse for a BibTeX database file"
-msgstr "Verzeichnis nach BibTeX-Datenbank-Dateien durchsuchen"
+msgstr "Nach einer BibTeX-Datenbank-Datei suchen"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:131
 msgid "&Delete"
@@ -4176,28 +4176,28 @@ msgid "Reference"
 msgstr "Querverweis"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:71
-msgid "Update the reference list"
-msgstr "Liste der Referenzen aktualisieren"
+msgid "Update the label list"
+msgstr "Liste der Marken aktualisieren"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:125
 msgid "&Goto"
 msgstr "&Gehe zu"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:93
-msgid "Move the document cursor to reference"
-msgstr "Cursor im Dokument auf die Referenz setzen"
+msgid "Move the document cursor to label"
+msgstr "Cursor im Dokument auf die Marke setzen"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:106
 msgid "Sort"
 msgstr "Sortieren"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:110
-msgid "Sort references in alphabetical order"
-msgstr "Querverweise alphabetisch sortieren"
+msgid "Sort labels in alphabetical order"
+msgstr "Marken alphabetisch sortieren"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:125
 msgid "<reference>"
-msgstr "<Referenz>"
+msgstr "<Querverweis>"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:131
 msgid "<page>"
@@ -4209,7 +4209,7 @@ msgstr "auf Seite <Seite>"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:143
 msgid "<reference> on page <page>"
-msgstr "<Referenz> auf Seite <Seite>"
+msgstr "<Querverweis> auf Seite <Seite>"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:149
 msgid "Formatted reference"
@@ -4220,8 +4220,8 @@ msgid "Reference as it appears in output"
 msgstr "Querverweis, wie er in der Ausgabe erscheint"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
-msgid "&Reference:"
-msgstr "&Querverweis:"
+msgid "&Label:"
+msgstr "&Marke:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:198
 msgid "&Format:"
@@ -4232,12 +4232,12 @@ msgid "&Name:"
 msgstr "&Name:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:321
-msgid "Available references in selected document:"
-msgstr "Verfügbare Referenzen im ausgewählten Dokument:"
+msgid "Available labels in selected document:"
+msgstr "Verfügbare Marken im ausgewählten Dokument:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:343
-msgid "Available references"
-msgstr "Verfügbare Referenzen"
+msgid "Available labels"
+msgstr "Verfügbare Marken"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:354
 msgid "&Document:"
@@ -4627,7 +4627,7 @@ msgstr "&Neu lesen"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:184
 msgid "Built new file list"
-msgstr "Dateiliste neu erzeugen"
+msgstr "Dateiliste neu erstellen"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
 msgid "&View"
@@ -4717,7 +4717,7 @@ msgstr "&Hyperlink erzeugen"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:124
 msgid "Output as a hyperlink ?"
-msgstr "Als Hyperlink ausgeben ?"
+msgstr "Als Hyperlink ausgeben?"
 
 #: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:22
 msgid "Version control log"
@@ -4726,7 +4726,7 @@ msgstr "Protokoll der Versionskontrolle"
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23 src/frontends/qt2/QWrap.C:32
 #: src/frontends/xforms/FormWrap.C:29
 msgid "Wrap Options"
-msgstr "Optionen für umflossenes Objekt"
+msgstr "Optionen für umflossenes Gleitobjekt"
 
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:87
 msgid "Default (outer)"
@@ -4741,7 +4741,7 @@ msgid "&Placement:"
 msgstr "&Platzierung:"
 
 #: ../lib/layouts/IEEEtran.layout:38 ../lib/layouts/aa.layout:30
-#: ../lib/layouts/aapaper.layout:33 ../lib/layouts/aastex.layout:54
+#: ../lib/layouts/aapaper.layout:33 ../lib/layouts/aastex.layout:55
 #: ../lib/layouts/amsart.layout:23 ../lib/layouts/amsbook.layout:23
 #: ../lib/layouts/apa.layout:31 ../lib/layouts/broadway.layout:179
 #: ../lib/layouts/chess.layout:30 ../lib/layouts/cl2emult.layout:127
@@ -4763,7 +4763,7 @@ msgstr "Standard"
 
 #: ../lib/layouts/IEEEtran.layout:65
 msgid "TheoremTemplate"
-msgstr "TheoremVorlage"
+msgstr "Theorem-Vorlage"
 
 #: ../lib/layouts/IEEEtran.layout:82 ../lib/layouts/elsart.layout:298
 #: ../lib/layouts/foils.layout:301 ../lib/layouts/heb-article.layout:97
@@ -4897,8 +4897,8 @@ msgstr "Fall"
 
 #: ../lib/layouts/IEEEtran.layout:302 ../lib/layouts/aa.layout:44
 #: ../lib/layouts/aa.layout:239 ../lib/layouts/aapaper.layout:59
-#: ../lib/layouts/aapaper.layout:115 ../lib/layouts/aastex.layout:68
-#: ../lib/layouts/aastex.layout:141 ../lib/layouts/amsart.layout:40
+#: ../lib/layouts/aapaper.layout:115 ../lib/layouts/aastex.layout:69
+#: ../lib/layouts/aastex.layout:148 ../lib/layouts/amsart.layout:40
 #: ../lib/layouts/amsbook.layout:41 ../lib/layouts/cv.layout:26
 #: ../lib/layouts/egs.layout:29 ../lib/layouts/ijmpd.layout:86
 #: ../lib/layouts/kluwer.layout:55 ../lib/layouts/latex8.layout:39
@@ -4914,8 +4914,8 @@ msgstr "Abschnitt"
 
 #: ../lib/layouts/IEEEtran.layout:313 ../lib/layouts/aa.layout:46
 #: ../lib/layouts/aa.layout:249 ../lib/layouts/aapaper.layout:61
-#: ../lib/layouts/aapaper.layout:124 ../lib/layouts/aastex.layout:70
-#: ../lib/layouts/aastex.layout:154 ../lib/layouts/amsart.layout:53
+#: ../lib/layouts/aapaper.layout:124 ../lib/layouts/aastex.layout:71
+#: ../lib/layouts/aastex.layout:161 ../lib/layouts/amsart.layout:53
 #: ../lib/layouts/amsbook.layout:54 ../lib/layouts/cv.layout:49
 #: ../lib/layouts/egs.layout:55 ../lib/layouts/ijmpd.layout:104
 #: ../lib/layouts/kluwer.layout:64 ../lib/layouts/latex8.layout:46
@@ -4930,8 +4930,8 @@ msgstr "Unterabschnitt"
 
 #: ../lib/layouts/IEEEtran.layout:320 ../lib/layouts/aa.layout:48
 #: ../lib/layouts/aa.layout:261 ../lib/layouts/aapaper.layout:63
-#: ../lib/layouts/aapaper.layout:135 ../lib/layouts/aastex.layout:72
-#: ../lib/layouts/aastex.layout:167 ../lib/layouts/amsart.layout:62
+#: ../lib/layouts/aapaper.layout:135 ../lib/layouts/aastex.layout:73
+#: ../lib/layouts/aastex.layout:174 ../lib/layouts/amsart.layout:62
 #: ../lib/layouts/amsbook.layout:63 ../lib/layouts/ijmpd.layout:114
 #: ../lib/layouts/kluwer.layout:73 ../lib/layouts/linuxdoc.layout:121
 #: ../lib/layouts/llncs.layout:66 ../lib/layouts/ltugboat.layout:93
@@ -4970,8 +4970,8 @@ msgstr "Unterunterabschn.*"
 msgid "Abstract"
 msgstr "Zusammenfassung"
 
-#: ../lib/layouts/IEEEtran.layout:382 ../lib/layouts/aastex.layout:98
-#: ../lib/layouts/aastex.layout:256 ../lib/layouts/elsart.layout:63
+#: ../lib/layouts/IEEEtran.layout:382 ../lib/layouts/aastex.layout:99
+#: ../lib/layouts/aastex.layout:263 ../lib/layouts/elsart.layout:63
 #: ../lib/layouts/kluwer.layout:283 ../lib/layouts/paper.layout:165
 #: ../lib/layouts/revtex4.layout:243 ../lib/layouts/siamltex.layout:159
 #: ../lib/layouts/spie.layout:42 ../lib/layouts/amsdefs.inc:241
@@ -4994,8 +4994,8 @@ msgstr "Stichwörter"
 msgid "Bibliography"
 msgstr "Literaturliste"
 
-#: ../lib/layouts/IEEEtran.layout:415 ../lib/layouts/aastex.layout:102
-#: ../lib/layouts/aastex.layout:382 ../lib/layouts/ijmpd.layout:166
+#: ../lib/layouts/IEEEtran.layout:415 ../lib/layouts/aastex.layout:103
+#: ../lib/layouts/aastex.layout:389 ../lib/layouts/ijmpd.layout:166
 #: ../lib/layouts/kluwer.layout:324
 msgid "Appendix"
 msgstr "Anhang"
@@ -5010,7 +5010,7 @@ msgstr "Biographie"
 
 #: ../lib/layouts/IEEEtran.layout:476 ../lib/layouts/aa.layout:58
 #: ../lib/layouts/aa.layout:218 ../lib/layouts/aapaper.layout:55
-#: ../lib/layouts/aastex.layout:114 ../lib/layouts/aastex.layout:499
+#: ../lib/layouts/aastex.layout:115 ../lib/layouts/aastex.layout:506
 #: ../lib/layouts/egs.layout:667 ../lib/layouts/latex8.layout:115
 #: ../lib/layouts/db_stdlayouts.inc:45 ../lib/layouts/stdlayouts.inc:84
 msgid "Caption"
@@ -5025,7 +5025,7 @@ msgid "MarkBoth"
 msgstr "Beides markieren"
 
 #: ../lib/layouts/aa.layout:50 ../lib/layouts/aapaper.layout:47
-#: ../lib/layouts/aastex.layout:76 ../lib/layouts/apa.layout:281
+#: ../lib/layouts/aastex.layout:77 ../lib/layouts/apa.layout:281
 #: ../lib/layouts/cv.layout:86 ../lib/layouts/egs.layout:200
 #: ../lib/layouts/linuxdoc.layout:211 ../lib/layouts/manpage.layout:86
 #: ../lib/layouts/db_stdlists.inc:11 ../lib/layouts/stdlists.inc:9
@@ -5033,7 +5033,7 @@ msgid "Itemize"
 msgstr "Auflistung"
 
 #: ../lib/layouts/aa.layout:52 ../lib/layouts/aapaper.layout:49
-#: ../lib/layouts/aastex.layout:78 ../lib/layouts/apa.layout:299
+#: ../lib/layouts/aastex.layout:79 ../lib/layouts/apa.layout:299
 #: ../lib/layouts/egs.layout:182 ../lib/layouts/linuxdoc.layout:195
 #: ../lib/layouts/manpage.layout:69 ../lib/layouts/db_stdlists.inc:17
 #: ../lib/layouts/stdlists.inc:27
@@ -5041,7 +5041,7 @@ msgid "Enumerate"
 msgstr "Aufzählung"
 
 #: ../lib/layouts/aa.layout:54 ../lib/layouts/aapaper.layout:51
-#: ../lib/layouts/aastex.layout:80 ../lib/layouts/egs.layout:218
+#: ../lib/layouts/aastex.layout:81 ../lib/layouts/egs.layout:218
 #: ../lib/layouts/hollywood.layout:131 ../lib/layouts/linuxdoc.layout:228
 #: ../lib/layouts/manpage.layout:104 ../lib/layouts/paper.layout:102
 #: ../lib/layouts/scrlettr.layout:16 ../lib/layouts/scrlttr2.layout:16
@@ -5051,14 +5051,14 @@ msgid "Description"
 msgstr "Beschreibung"
 
 #: ../lib/layouts/aa.layout:56 ../lib/layouts/aapaper.layout:53
-#: ../lib/layouts/aastex.layout:82 ../lib/layouts/egs.layout:165
+#: ../lib/layouts/aastex.layout:83 ../lib/layouts/egs.layout:165
 #: ../lib/layouts/scrmacros.inc:6 ../lib/layouts/stdlists.inc:69
 msgid "List"
 msgstr "Liste"
 
 #: ../lib/layouts/aa.layout:60 ../lib/layouts/aa.layout:271
 #: ../lib/layouts/aapaper.layout:65 ../lib/layouts/aapaper.layout:145
-#: ../lib/layouts/aastex.layout:84 ../lib/layouts/aastex.layout:181
+#: ../lib/layouts/aastex.layout:85 ../lib/layouts/aastex.layout:188
 #: ../lib/layouts/apa.layout:45 ../lib/layouts/broadway.layout:190
 #: ../lib/layouts/cl2emult.layout:42 ../lib/layouts/cv.layout:130
 #: ../lib/layouts/docbook-book.layout:13
@@ -5087,7 +5087,7 @@ msgstr "Untertitel"
 
 #: ../lib/layouts/aa.layout:64 ../lib/layouts/aa.layout:283
 #: ../lib/layouts/aapaper.layout:69 ../lib/layouts/aapaper.layout:156
-#: ../lib/layouts/aastex.layout:86 ../lib/layouts/aastex.layout:194
+#: ../lib/layouts/aastex.layout:87 ../lib/layouts/aastex.layout:201
 #: ../lib/layouts/apa.layout:116 ../lib/layouts/broadway.layout:203
 #: ../lib/layouts/cl2emult.layout:59 ../lib/layouts/egs.layout:336
 #: ../lib/layouts/elsart.layout:115 ../lib/layouts/entcs.layout:22
@@ -5126,7 +5126,7 @@ msgstr "Post"
 
 #: ../lib/layouts/aa.layout:72 ../lib/layouts/aa.layout:295
 #: ../lib/layouts/aapaper.layout:79 ../lib/layouts/aapaper.layout:167
-#: ../lib/layouts/aastex.layout:94 ../lib/layouts/aastex.layout:207
+#: ../lib/layouts/aastex.layout:95 ../lib/layouts/aastex.layout:214
 #: ../lib/layouts/egs.layout:548 ../lib/layouts/foils.layout:153
 #: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/g-brief2.layout:820
 #: ../lib/layouts/kluwer.layout:144 ../lib/layouts/linuxdoc.layout:321
@@ -5140,7 +5140,7 @@ msgstr "Datum"
 
 #: ../lib/layouts/aa.layout:74 ../lib/layouts/aa.layout:307
 #: ../lib/layouts/aapaper.layout:81 ../lib/layouts/aapaper.layout:178
-#: ../lib/layouts/aastex.layout:96 ../lib/layouts/aastex.layout:219
+#: ../lib/layouts/aastex.layout:97 ../lib/layouts/aastex.layout:226
 #: ../lib/layouts/egs.layout:565 ../lib/layouts/elsart.layout:205
 #: ../lib/layouts/entcs.layout:56 ../lib/layouts/kluwer.layout:259
 #: ../lib/layouts/latex8.layout:98 ../lib/layouts/llncs.layout:265
@@ -5164,14 +5164,14 @@ msgstr "Danksagung"
 msgid "LaTeX"
 msgstr "LaTeX"
 
-#: ../lib/layouts/aapaper.layout:73 ../lib/layouts/aastex.layout:90
-#: ../lib/layouts/aastex.layout:282 ../lib/layouts/latex8.layout:53
+#: ../lib/layouts/aapaper.layout:73 ../lib/layouts/aastex.layout:91
+#: ../lib/layouts/aastex.layout:289 ../lib/layouts/latex8.layout:53
 #: ../lib/layouts/llncs.layout:257 ../lib/layouts/aapaper.inc:49
 #: ../lib/layouts/amsdefs.inc:205
 msgid "Email"
 msgstr "EMail"
 
-#: ../lib/layouts/aastex.layout:74 ../lib/layouts/egs.layout:76
+#: ../lib/layouts/aastex.layout:75 ../lib/layouts/egs.layout:76
 #: ../lib/layouts/kluwer.layout:82 ../lib/layouts/linuxdoc.layout:146
 #: ../lib/layouts/llncs.layout:75 ../lib/layouts/ltugboat.layout:117
 #: ../lib/layouts/paper.layout:70 ../lib/layouts/revtex.layout:73
@@ -5182,52 +5182,64 @@ msgstr "EMail"
 msgid "Paragraph"
 msgstr "Paragraph"
 
-#: ../lib/layouts/aastex.layout:88 ../lib/layouts/aastex.layout:238
+#: ../lib/layouts/aastex.layout:89 ../lib/layouts/aastex.layout:245
 #: ../lib/layouts/apa.layout:148 ../lib/layouts/latex8.layout:78
 #: ../lib/layouts/revtex4.layout:150 ../lib/layouts/aguplus.inc:52
 msgid "Affiliation"
 msgstr "Zugehörigkeit"
 
-#: ../lib/layouts/aastex.layout:92 ../lib/layouts/aastex.layout:322
+#: ../lib/layouts/aastex.layout:93 ../lib/layouts/aastex.layout:329
 msgid "And"
 msgstr "Und"
 
-#: ../lib/layouts/aastex.layout:100 ../lib/layouts/aastex.layout:300
+#: ../lib/layouts/aastex.layout:101 ../lib/layouts/aastex.layout:307
 #: ../lib/layouts/apa.layout:212 ../lib/layouts/egs.layout:588
 #: ../lib/layouts/kluwer.layout:303 ../lib/layouts/svjour.inc:321
 msgid "Acknowledgements"
 msgstr "Danksagungen"
 
-#: ../lib/layouts/aastex.layout:104 ../lib/layouts/aastex.layout:415
+#: ../lib/layouts/aastex.layout:105 ../lib/layouts/aastex.layout:422
 #: ../lib/layouts/kluwer.layout:345 src/buffer.C:1544
 msgid "References"
 msgstr "Referenzen"
 
-#: ../lib/layouts/aastex.layout:106 ../lib/layouts/aastex.layout:342
+#: ../lib/layouts/aastex.layout:107 ../lib/layouts/aastex.layout:349
 msgid "PlaceFigure"
 msgstr "Abbildung platzieren"
 
-#: ../lib/layouts/aastex.layout:108 ../lib/layouts/aastex.layout:362
+#: ../lib/layouts/aastex.layout:109 ../lib/layouts/aastex.layout:369
 msgid "PlaceTable"
 msgstr "Tabelle platzieren"
 
-#: ../lib/layouts/aastex.layout:110 ../lib/layouts/aastex.layout:480
+#: ../lib/layouts/aastex.layout:111 ../lib/layouts/aastex.layout:487
 msgid "TableComments"
 msgstr "Tabellen-Kommentare"
 
-#: ../lib/layouts/aastex.layout:112 ../lib/layouts/aastex.layout:461
+#: ../lib/layouts/aastex.layout:113 ../lib/layouts/aastex.layout:468
 msgid "TableRefs"
 msgstr "Tabellen-Verweise"
 
-#: ../lib/layouts/aastex.layout:116 ../lib/layouts/aastex.layout:403
+#: ../lib/layouts/aastex.layout:117 ../lib/layouts/aastex.layout:410
 msgid "MathLetters"
 msgstr "Mathe-Buchstaben"
 
-#: ../lib/layouts/aastex.layout:118 ../lib/layouts/aastex.layout:441
+#: ../lib/layouts/aastex.layout:119 ../lib/layouts/aastex.layout:448
 msgid "NoteToEditor"
 msgstr "Hinweis für Herausgeber"
 
-#: ../lib/layouts/aastex.layout:519
+#: ../lib/layouts/aastex.layout:121 ../lib/layouts/aastex.layout:541
+msgid "Facility"
+msgstr "Einrichtung"
+
+#: ../lib/layouts/aastex.layout:123 ../lib/layouts/aastex.layout:567
+msgid "Objectname"
+msgstr "Objektname"
+
+#: ../lib/layouts/aastex.layout:125 ../lib/layouts/aastex.layout:594
+msgid "Dataset"
+msgstr "Datensatz"
+
+#: ../lib/layouts/aastex.layout:526
 msgid "FigCaption"
 msgstr "Bild-Beschriftung"
 
@@ -5611,7 +5623,7 @@ msgstr "Einschränkung"
 
 #: ../lib/layouts/foils.layout:215
 msgid "Right_Footer"
-msgstr "RechteFußzeile"
+msgstr "Rechte Fußzeile"
 
 #: ../lib/layouts/foils.layout:320 ../lib/layouts/siamltex.layout:249
 #: ../lib/layouts/amsmaths.inc:93
@@ -5670,19 +5682,19 @@ msgstr "Land"
 
 #: ../lib/layouts/g-brief-de.layout:173
 msgid "RetourAdresse"
-msgstr "RetourAdresse"
+msgstr "Retour-Adresse"
 
 #: ../lib/layouts/g-brief-de.layout:194
 msgid "MeinZeichen"
-msgstr "MeinZeichen"
+msgstr "Mein Zeichen"
 
 #: ../lib/layouts/g-brief-de.layout:214
 msgid "IhrZeichen"
-msgstr "IhrZeichen"
+msgstr "Ihr Zeichen"
 
 #: ../lib/layouts/g-brief-de.layout:236
 msgid "IhrSchreiben"
-msgstr "IhrSchreiben"
+msgstr "Ihr Schreiben"
 
 #: ../lib/layouts/g-brief-de.layout:261
 msgid "Telefon"
@@ -5768,15 +5780,15 @@ msgstr "Rücksende-Adresse"
 
 #: ../lib/layouts/g-brief-en.layout:194 ../lib/layouts/g-brief2.layout:714
 msgid "MyRef"
-msgstr "MeinZeichen"
+msgstr "Mein Zeichen"
 
 #: ../lib/layouts/g-brief-en.layout:214 ../lib/layouts/g-brief2.layout:734
 msgid "YourRef"
-msgstr "IhrZeichen"
+msgstr "Ihr Zeichen"
 
 #: ../lib/layouts/g-brief-en.layout:236 ../lib/layouts/g-brief2.layout:756
 msgid "YourMail"
-msgstr "IhrBrief"
+msgstr "Ihr Brief"
 
 #: ../lib/layouts/g-brief-en.layout:261
 msgid "Phone"
@@ -5804,127 +5816,127 @@ msgstr "Anlagen"
 
 #: ../lib/layouts/g-brief2.layout:75
 msgid "NameRowA"
-msgstr "NameZeileA"
+msgstr "Name Zeile A"
 
 #: ../lib/layouts/g-brief2.layout:95
 msgid "NameRowB"
-msgstr "NameZeileB"
+msgstr "Name Zeile B"
 
 #: ../lib/layouts/g-brief2.layout:114
 msgid "NameRowC"
-msgstr "NameZeileC"
+msgstr "Name Zeile C"
 
 #: ../lib/layouts/g-brief2.layout:133
 msgid "NameRowD"
-msgstr "NameZeileD"
+msgstr "Name Zeile D"
 
 #: ../lib/layouts/g-brief2.layout:152
 msgid "NameRowE"
-msgstr "NameZeileE"
+msgstr "Name Zeile E"
 
 #: ../lib/layouts/g-brief2.layout:171
 msgid "NameRowF"
-msgstr "NameZeileF"
+msgstr "Name Zeile F"
 
 #: ../lib/layouts/g-brief2.layout:190
 msgid "NameRowG"
-msgstr "NameZeileG"
+msgstr "Name Zeile G"
 
 #: ../lib/layouts/g-brief2.layout:230
 msgid "AddressRowA"
-msgstr "AdresseZeileA"
+msgstr "Adresse Zeile A"
 
 #: ../lib/layouts/g-brief2.layout:250
 msgid "AddressRowB"
-msgstr "AdresseZeileB"
+msgstr "Adresse Zeile B"
 
 #: ../lib/layouts/g-brief2.layout:269
 msgid "AddressRowC"
-msgstr "AdresseZeileC"
+msgstr "Adresse Zeile C"
 
 #: ../lib/layouts/g-brief2.layout:288
 msgid "AddressRowD"
-msgstr "AdresseZeileD"
+msgstr "Adresse Zeile D"
 
 #: ../lib/layouts/g-brief2.layout:307
 msgid "AddressRowE"
-msgstr "AdresseZeileE"
+msgstr "Adresse Zeile E"
 
 #: ../lib/layouts/g-brief2.layout:326
 msgid "AddressRowF"
-msgstr "AdresseZeileF"
+msgstr "Adresse Zeile F"
 
 #: ../lib/layouts/g-brief2.layout:345
 msgid "TelephoneRowA"
-msgstr "TelefonZeileA"
+msgstr "Telefon Zeile A"
 
 #: ../lib/layouts/g-brief2.layout:365
 msgid "TelephoneRowB"
-msgstr "TelefonZeileB"
+msgstr "Telefon Zeile B"
 
 #: ../lib/layouts/g-brief2.layout:384
 msgid "TelephoneRowC"
-msgstr "TelefonZeileC"
+msgstr "Telefon Zeile C"
 
 #: ../lib/layouts/g-brief2.layout:403
 msgid "TelephoneRowD"
-msgstr "TelefonZeileD"
+msgstr "Telefon Zeile D"
 
 #: ../lib/layouts/g-brief2.layout:422
 msgid "TelephoneRowE"
-msgstr "TelefonZeileE"
+msgstr "Telefon Zeile E"
 
 #: ../lib/layouts/g-brief2.layout:441
 msgid "TelephoneRowF"
-msgstr "TelefonZeileF"
+msgstr "Telefon Zeile F"
 
 #: ../lib/layouts/g-brief2.layout:460
 msgid "InternetRowA"
-msgstr "InternetZeileA"
+msgstr "Internet Zeile A"
 
 #: ../lib/layouts/g-brief2.layout:480
 msgid "InternetRowB"
-msgstr "InternetZeileB"
+msgstr "Internet Zeile B"
 
 #: ../lib/layouts/g-brief2.layout:499
 msgid "InternetRowC"
-msgstr "InternetZeileC"
+msgstr "Internet Zeile C"
 
 #: ../lib/layouts/g-brief2.layout:518
 msgid "InternetRowD"
-msgstr "InternetZeileD"
+msgstr "Internet Zeile D"
 
 #: ../lib/layouts/g-brief2.layout:537
 msgid "InternetRowE"
-msgstr "InternetZeileE"
+msgstr "Internet Zeile E"
 
 #: ../lib/layouts/g-brief2.layout:556
 msgid "InternetRowF"
-msgstr "InternetZeileF"
+msgstr "Internet Zeile F"
 
 #: ../lib/layouts/g-brief2.layout:575
 msgid "BankRowA"
-msgstr "BankZeileA"
+msgstr "Bank Zeile A"
 
 #: ../lib/layouts/g-brief2.layout:595
 msgid "BankRowB"
-msgstr "BankZeileB"
+msgstr "Bank Zeile B"
 
 #: ../lib/layouts/g-brief2.layout:614
 msgid "BankRowC"
-msgstr "BankZeileC"
+msgstr "Bank Zeile C"
 
 #: ../lib/layouts/g-brief2.layout:633
 msgid "BankRowD"
-msgstr "BankZeileD"
+msgstr "Bank Zeile D"
 
 #: ../lib/layouts/g-brief2.layout:652
 msgid "BankRowE"
-msgstr "BankZeileE"
+msgstr "Bank Zeile E"
 
 #: ../lib/layouts/g-brief2.layout:671
 msgid "BankRowF"
-msgstr "BankZeileF"
+msgstr "Bank Zeile F"
 
 #: ../lib/layouts/heb-article.layout:16 ../lib/layouts/scrlttr2.layout:347
 #: ../lib/layouts/db_lyxmacros.inc:20 ../lib/layouts/lyxmacros.inc:47
@@ -6120,15 +6132,15 @@ msgstr "Betreff"
 
 #: ../lib/layouts/scrlettr.layout:220 ../lib/layouts/scrlttr2.layout:299
 msgid "Yourref"
-msgstr "IhrZeichen"
+msgstr "Ihr Zeichen"
 
 #: ../lib/layouts/scrlettr.layout:235 ../lib/layouts/scrlttr2.layout:315
 msgid "Yourmail"
-msgstr "IhrBrief"
+msgstr "Ihr Brief"
 
 #: ../lib/layouts/scrlettr.layout:242 ../lib/layouts/scrlttr2.layout:323
 msgid "Myref"
-msgstr "MeinZeichen"
+msgstr "Mein Zeichen"
 
 #: ../lib/layouts/scrlettr.layout:249 ../lib/layouts/scrlttr2.layout:331
 msgid "Customer"
@@ -6233,7 +6245,7 @@ msgstr "CCC"
 
 #: ../lib/layouts/aguplus.inc:140
 msgid "PaperId"
-msgstr "PaperId"
+msgstr "Paper-Id"
 
 #: ../lib/layouts/aguplus.inc:147
 msgid "AuthorAddr"
@@ -6395,7 +6407,6 @@ msgstr "Zusatztitel"
 #: ../lib/layouts/scrclass.inc:246
 msgid "Captionabove"
 msgstr "Beschriftung oben"
-
 
 #: ../lib/layouts/scrclass.inc:252
 msgid "Captionbelow"
@@ -7123,7 +7134,7 @@ msgstr "Externes Material...|E"
 
 #: ../lib/ui/default.ui:220
 msgid "Superscript|S"
-msgstr "Hochgestellt|o"
+msgstr "Hochgestellt|H"
 
 #: ../lib/ui/default.ui:221
 msgid "Subscript|u"
@@ -7131,7 +7142,7 @@ msgstr "Tiefgestellt|e"
 
 #: ../lib/ui/default.ui:222
 msgid "HFill|H"
-msgstr "HFill|H"
+msgstr "Variabler horiz. Abstand|V"
 
 #: ../lib/ui/default.ui:223
 msgid "Hyphenation Point|P"
@@ -7375,7 +7386,7 @@ msgstr "Fehler|F"
 
 #: ../lib/ui/default.ui:342
 msgid "Refs|R"
-msgstr "Referenzen|R"
+msgstr "Querverweise|Q"
 
 #: ../lib/ui/default.ui:343
 msgid "Bookmarks|B"
@@ -7868,7 +7879,7 @@ msgstr "Automatisch speichern"
 
 #: src/LyXAction.C:119
 msgid "Go to beginning of document"
-msgstr "Zum Anfang des Dokuments"
+msgstr "Gehe zum Anfang des Dokuments"
 
 #: src/LyXAction.C:121
 msgid "Select to beginning of document"
@@ -7880,7 +7891,7 @@ msgstr "TeX prüfen"
 
 #: src/LyXAction.C:127
 msgid "Go to end of document"
-msgstr "Zum Ende des Dokuments"
+msgstr "Gehe zum Ende des Dokuments"
 
 #: src/LyXAction.C:129
 msgid "Select to end of document"
@@ -8008,7 +8019,7 @@ msgstr "ASCII-Datei als Absatz einfügen"
 
 #: src/LyXAction.C:194
 msgid "Open a file"
-msgstr "Öffnen"
+msgstr "Datei öffnen"
 
 #: src/LyXAction.C:195
 msgid "Find & Replace"
@@ -8156,7 +8167,7 @@ msgstr "Tabellenformat öffnen"
 
 #: src/LyXAction.C:263
 msgid "Go to beginning of line"
-msgstr "Zum Anfang der Zeile"
+msgstr "Gehe zum Anfang der Zeile"
 
 #: src/LyXAction.C:265
 msgid "Select to beginning of line"
@@ -8164,7 +8175,7 @@ msgstr "Auswählen bis zum Anfang der Zeile"
 
 #: src/LyXAction.C:267
 msgid "Go to end of line"
-msgstr "Zum Ende der Zeile"
+msgstr "Gehe zum Ende der Zeile"
 
 #: src/LyXAction.C:269
 msgid "Select to end of line"
@@ -8212,7 +8223,7 @@ msgstr "Nächsten Absatz auswählen"
 
 #: src/LyXAction.C:312
 msgid "Go to paragraph"
-msgstr "Gehe zu Absatz"
+msgstr "Gehe zum Absatz"
 
 #: src/LyXAction.C:315
 msgid "Go one paragraph up"
@@ -8485,11 +8496,11 @@ msgstr "Zusammenfassung: "
 
 #: src/buffer.C:1547
 msgid "References: "
-msgstr "Referenzen: "
+msgstr "Querverweise: "
 
 #: src/buffer.C:1661
 msgid "Error: Cannot write file:"
-msgstr "Fehler! Die Datei kann nicht geschrieben werden werden:"
+msgstr "Fehler! Die Datei kann nicht geschrieben werden:"
 
 #: src/buffer.C:1691
 msgid "Error: Cannot open file: "
@@ -8683,7 +8694,7 @@ msgstr "nach "
 
 #: src/converter.C:772 src/converter.C:775
 msgid "Error while trying to move file:"
-msgstr "Fehler beim Umbenennen der Datei:"
+msgstr "Fehler beim Verschieben der Datei:"
 
 #: src/converter.C:856 src/converter.C:924
 msgid "One error detected"
@@ -8780,7 +8791,7 @@ msgstr "Schrift-Handhabung"
 
 #: src/debug.C:45
 msgid "Textclass files reading"
-msgstr "Lesen der Textklasse Dateien"
+msgstr "Lesen der Textklassen-Dateien"
 
 #: src/debug.C:46
 msgid "Version control"
@@ -8792,7 +8803,7 @@ msgstr "Externe Kontroll-Schnittstelle"
 
 #: src/debug.C:48
 msgid "Keep *roff temporary files"
-msgstr "Temporäre *roff Dateien nicht löschen"
+msgstr "Temporäre *roff-Dateien nicht löschen"
 
 #: src/debug.C:49
 msgid "User commands"
@@ -9575,7 +9586,7 @@ msgstr "Größe%"
 
 #: src/frontends/qt2/QLPrintDialog.C:51
 msgid "PostScript files (*.ps)"
-msgstr "PostScript Dateien (*.ps)"
+msgstr "PostScript-Dateien (*.ps)"
 
 #: src/frontends/qt2/QLPrintDialog.C:53
 msgid "Select a file to print to"
@@ -9792,7 +9803,7 @@ msgstr "Gehe zurück"
 
 #: src/frontends/qt2/QRef.C:127
 msgid "Go to reference"
-msgstr "Gehe zur Referenz"
+msgstr "Gehe zum Querverweis"
 
 #: src/frontends/qt2/QSendto.C:33 src/frontends/xforms/FormSendto.C:28
 msgid "Send document to command"
@@ -9800,7 +9811,7 @@ msgstr "Dokument an Shell-Befehl senden"
 
 #: src/frontends/qt2/QShowFile.C:27
 msgid "ShowFile"
-msgstr "ZeigeDatei"
+msgstr "Zeige Datei"
 
 #: src/frontends/qt2/QTabular.C:34
 msgid "LyX: Edit Table"
@@ -10078,7 +10089,7 @@ msgid ""
 "Reference\"). Move the ones you want to cite with the arrow buttons into the "
 "left browser window."
 msgstr ""
-"Alle Einträge der Datenbank die Sie (via \"Einfügen->Listen&Inhalt->BibTeX "
+"Alle Einträge der Datenbank die Sie (via \"Einfügen->Listen&Inhalt->BibTeX-"
 "Referenz\") geladen haben. Kopieren Sie die gewünschten Einträge mit den "
 "Pfeil-Knöpfen in das linke Auswahlfenster."
 
@@ -10302,7 +10313,7 @@ msgstr "Größe%%|"
 #. set up the tooltips for the filesection
 #: src/frontends/xforms/FormGraphics.C:139
 msgid "The file you want to insert."
-msgstr "Das einzufügende LyX-Dokument."
+msgstr "Die Datei, die Sie einfügen möchten."
 
 #: src/frontends/xforms/FormGraphics.C:141
 msgid "Browse the directories."
@@ -10390,7 +10401,8 @@ msgstr "Schneide das Bild auf die Werte der Begrenzungsbox zu."
 msgid ""
 "Insert the rotation angle in degrees. Positive value rotates anti-clockwise, "
 "negative value clockwise."
-msgstr "Fügen Sie den Drehwinkel in Grad ein. Positive Werte drehen gegen den "
+msgstr ""
+"Fügen Sie den Drehwinkel in Grad ein. Positive Werte drehen gegen den "
 "Uhrzeigersinn, negative Werte im Uhrzeigersinn."
 
 #: src/frontends/xforms/FormGraphics.C:255
@@ -10841,20 +10853,20 @@ msgstr "Die Reihenfolge der gedruckten Seiten umkehren."
 
 #. set up the tooltips
 #: src/frontends/xforms/FormRef.C:66
-msgid "Select a document for references."
-msgstr "Wählen Sie ein Dokument für Querverweise."
+msgid "Select a document for labels."
+msgstr "Wählen Sie ein Dokument für Marken."
 
 #: src/frontends/xforms/FormRef.C:68
-msgid "Sort the references alphabetically."
-msgstr "Querverweise alphabetisch sortieren"
+msgid "Sort the labels alphabetically."
+msgstr "Marken alphabetisch sortieren."
 
 #: src/frontends/xforms/FormRef.C:70 src/frontends/xforms/FormRef.C:279
-msgid "Go to selected reference."
-msgstr "Gehe zur ausgewählten Referenz."
+msgid "Go to selected label."
+msgstr "Gehe zur ausgewählten Marke."
 
 #: src/frontends/xforms/FormRef.C:72
-msgid "Update the list of references."
-msgstr "Referenzliste aktualisieren"
+msgid "Update the list of labels."
+msgstr "Liste der Marken aktualisieren."
 
 #: src/frontends/xforms/FormRef.C:74
 msgid "Select format style of the reference."
@@ -11042,7 +11054,7 @@ msgstr "*** Keine Listen ***"
 
 #: src/frontends/xforms/FormUrl.C:23
 msgid "Url"
-msgstr "Url"
+msgstr "URL"
 
 #: src/frontends/xforms/FormVCLog.C:23
 msgid "Version Control Log"
@@ -11137,7 +11149,7 @@ msgstr "Keine Datei eingegeben."
 #: src/frontends/xforms/xforms_helpers.C:443
 #: src/frontends/xforms/xforms_helpers.C:489
 msgid "A file is required, not a directory."
-msgstr "Es wird ein Dateiname benötigt, kein Verzeichnis."
+msgstr "Es wird eine Datei benötigt, kein Verzeichnis."
 
 #: src/frontends/xforms/xforms_helpers.C:448
 msgid "Cannot write to this file."
@@ -11475,11 +11487,11 @@ msgstr "Unbekannte TOC Liste"
 
 #: src/insets/inseturl.C:45
 msgid "Url: "
-msgstr "Url: "
+msgstr "URL: "
 
 #: src/insets/inseturl.C:47
 msgid "HtmlUrl: "
-msgstr "HtmlUrl: "
+msgstr "HTML-URL: "
 
 #: src/insets/insetwrap.C:53
 msgid "wrap: "
@@ -11603,7 +11615,7 @@ msgstr "(Das Dokument wird bei 'Nein' nicht gespeichert!)"
 
 #: src/lyx_cb.C:111
 msgid "Choose a filename to save document as"
-msgstr "Geben Sie einen Dateinamen für das Dokument an"
+msgstr "Wählen Sie einen Dateinamen für das Dokument"
 
 #: src/lyx_cb.C:115 src/lyxfunc.C:1654
 msgid "Templates|#T#t"
@@ -11897,12 +11909,12 @@ msgstr "Die Option --execute verlangt die Angabe eines Befehls"
 #: src/lyx_main.C:780
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
-"Die Option --export verlangt die Angabe eines Datei-Typs [z.B. latex, ps...]"
+"Die Option --export verlangt die Angabe eines Dateityps [z.B. latex, ps...]"
 
 #: src/lyx_main.C:792
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
-"Die Option --import verlangt die Angabe eines Datei-Typs [z.B. latex, ps...]"
+"Die Option --import verlangt die Angabe eines Dateityps [z.B. latex, ps...]"
 
 #: src/lyx_main.C:797
 msgid "Missing filename for --import"
@@ -12093,7 +12105,7 @@ msgstr "Datei nicht vorhanden"
 
 #: src/lyxfunc.C:1727
 msgid "Start a new document with this filename ?"
-msgstr "Möchten Sie ein neues Dokument mit diesem Namen anlegen?"
+msgstr "Möchten Sie ein neues Dokument mit diesem Dateinamen anlegen?"
 
 #: src/lyxfunc.C:1739
 #, c-format
@@ -12239,7 +12251,7 @@ msgid ""
 msgstr ""
 "Zusatz-Optionen, die an das Druckprogramm weitergegeben werden sollen, und "
 "zwar nach allen anderen Optionen, aber noch vor dem Namen der zu druckenden "
-"DVI Datei."
+"DVI-Datei."
 
 #: src/lyxrc.C:1921
 msgid ""
@@ -12426,7 +12438,7 @@ msgstr ""
 msgid "Maximal number of lastfiles. Up to 9 can appear in the file menu."
 msgstr ""
 "Die maximale Anzahl der zuletzt geöffneten Dateien. Bis zu neun passen in "
-"das Menü."
+"das 'Datei'-Menü."
 
 #: src/lyxrc.C:2029
 msgid "Select to check whether the lastfiles still exist."

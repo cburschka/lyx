@@ -68,7 +68,7 @@
                     </property>
                     <property>
                         <name>toolTip</name>
-                        <string>Update the reference list</string>
+                        <string>Update the label list</string>
                     </property>
                 </widget>
                 <widget>
@@ -90,7 +90,7 @@
                     </property>
                     <property>
                         <name>toolTip</name>
-                        <string>Move the document cursor to reference</string>
+                        <string>Move the document cursor to label</string>
                     </property>
                 </widget>
             </hbox>
@@ -107,7 +107,7 @@
             </property>
             <property>
                 <name>toolTip</name>
-                <string>Sort references in alphabetical order</string>
+                <string>Sort labels in alphabetical order</string>
             </property>
         </widget>
         <widget row="4"  column="1" >
@@ -173,7 +173,7 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>&amp;Reference:</string>
+                <string>&amp;Label:</string>
             </property>
             <property stdset="1">
                 <name>alignment</name>
@@ -318,7 +318,7 @@
             </property>
             <property stdset="1">
                 <name>text</name>
-                <string>Available references in selected document:</string>
+                <string>Available labels in selected document:</string>
             </property>
         </widget>
         <widget row="2"  column="0"  rowspan="1"  colspan="2" >
@@ -340,7 +340,7 @@
             </property>
             <property>
                 <name>toolTip</name>
-                <string>Available references</string>
+                <string>Available labels</string>
             </property>
         </widget>
         <widget row="0"  column="0" >

@@ -1,3 +1,9 @@
+2005-02-11  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* FormRef.C:
+	* forms/form_ref.fd: semantic fix: substitute "reference" by
+	"label" in text messages
+
 2005-01-20  Angus Leeming  <leeming@lyx.org>
 
 	* FormPreferences.C: change the tooltip messages to reflect the
