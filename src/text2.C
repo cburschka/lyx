@@ -760,10 +760,7 @@ void LyXText::partialRebreak()
 // need the selection cursor:
 void LyXText::setSelection()
 {
-	bool const lsel = TextCursor::setSelection();
-
-	if (inset_owner && (selection.set() || lsel))
-		inset_owner->setUpdateStatus(InsetText::SELECTION);
+	TextCursor::setSelection();
 }
 
 
@@ -849,8 +846,6 @@ void LyXText::toggleFree(LyXFont const & font, bool toggleall)
 		setCursor(cursor.par(), cursor.pos());
 		selection.cursor = cursor;
 	}
-	if (inset_owner)
-		inset_owner->setUpdateStatus(InsetText::CURSOR_PAR);
 }
 
 
