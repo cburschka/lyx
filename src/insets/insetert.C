@@ -516,7 +516,7 @@ string const InsetERT::get_new_label() const
 		la += inset.paragraphs.begin()->getChar(j);
 		++i;
 	}
-	if (p_siz > 1 || (i > 0 && j < p_siz)) {
+	if (inset.paragraphs.size() > 1 || (i > 0 && j < p_siz)) {
 		la += "...";
 	}
 	if (la.empty()) {

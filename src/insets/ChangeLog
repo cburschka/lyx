@@ -1,3 +1,8 @@
+2003-08-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetert.C (get_new_label): only add ... to the (closed) label
+	when the string has been shortened
+
 2003-08-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* Always use std::endl with lyxerr
