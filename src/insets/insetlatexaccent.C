@@ -65,44 +65,7 @@ void InsetLatexAccent::checkContents()
 		return;
 	}
 
-	// REMOVE IN 0.13
-	// Dirty Hack for backward compability. remove in 0.13 (Lgb)
 	contents = trim(contents);
-	if (!contains(contents, '{') && !contains(contents, '}')) {
-		if (contents.length() == 2) {
-			string tmp;
-			tmp += contents[0];
-			tmp += contents[1];
-			tmp += "{}";
-			contents = tmp;
-		} else if (contents.length() == 3) {
-			string tmp;
-			tmp += contents[0];
-			tmp += contents[1];
-			tmp += '{';
-			tmp += contents[2];
-			tmp += '}';
-			contents = tmp;
-		} else if (contents.length() == 4 && contents[2] == ' ') {
-			string tmp;
-			tmp += contents[0];
-			tmp += contents[1];
-			tmp += '{';
-			tmp += contents[3];
-			tmp += '}';
-			contents = tmp;
-		} else if  (contents.length() == 4 && contents[2] == '\\'
-			    && (contents[3] == 'i' || contents[3] == 'j')) {
-			string tmp;
-			tmp += contents[0];
-			tmp += contents[1];
-			tmp += '{';
-			tmp += contents[2];
-			tmp += contents[3];
-			tmp += '}';
-			contents = tmp;
-		}
-	}
 	if (contents[0] != '\\') { // demand that first char is a '\\'
 		lyxerr[Debug::KEY] << "Cannot decode: " << contents << endl;
 		return;

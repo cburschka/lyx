@@ -1,3 +1,8 @@
+2004-12-02  José Matos  <jamatos@lyx.org>
+
+	* insetlatexaccent.C (checkContents): remove compatibility code,
+	moved to lyx2lyx.
+
 2004-11-30  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetbase.h (getStatus): add better comment from src/cursor.C
