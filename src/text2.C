@@ -149,20 +149,21 @@ InsetBase * LyXText::checkInsetHit(int x, int y) const
 // The difference is that this one is used for displaying, and thus we
 // are allowed to make cosmetic improvements. For instance make footnotes
 // smaller. (Asger)
-LyXFont LyXText::getFont(par_type pit, pos_type pos) const
+LyXFont LyXText::getFont(par_type const pit, pos_type const pos) const
 {
 	BOOST_ASSERT(pos >= 0);
 
-	LyXLayout_ptr const & layout = pars_[pit].layout();
+	Paragraph const & par = pars_[pit];
+	LyXLayout_ptr const & layout = par.layout();
 #ifdef WITH_WARNINGS
 #warning broken?
 #endif
 	BufferParams const & params = bv()->buffer()->params();
-	pos_type const body_pos = pars_[pit].beginOfBody();
+	pos_type const body_pos = par.beginOfBody();
 
 	// We specialize the 95% common case:
-	if (!pars_[pit].getDepth()) {
-		LyXFont f = pars_[pit].getFontSettings(params, pos);
+	if (!par.getDepth()) {
+		LyXFont f = par.getFontSettings(params, pos);
 		if (!isMainText())
 			f.realize(font_);
 		if (layout->labeltype == LABEL_MANUAL && pos < body_pos)
@@ -178,7 +179,7 @@ LyXFont LyXText::getFont(par_type pit, pos_type pos) const
 	else
 		layoutfont = layout->font;
 
-	LyXFont font = pars_[pit].getFontSettings(params, pos);
+	LyXFont font = par.getFontSettings(params, pos);
 	font.realize(layoutfont);
 
 	if (!isMainText())
@@ -192,7 +193,7 @@ LyXFont LyXText::getFont(par_type pit, pos_type pos) const
 }
 
 
-LyXFont LyXText::getLayoutFont(par_type pit) const
+LyXFont LyXText::getLayoutFont(par_type const pit) const
 {
 	LyXLayout_ptr const & layout = pars_[pit].layout();
 
