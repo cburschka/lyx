@@ -728,7 +728,7 @@ void LyXFunc::verboseDispatch(kb_action action,
 {
 	string res = dispatch(action, argument);
 
-	commandshortcut.erase();
+	string commandshortcut;
 
 	if (show_sc && action != LFUN_SELFINSERT) {
 		// Put name of command and list of shortcuts

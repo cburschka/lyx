@@ -112,8 +112,6 @@ private:
 	/** Buffer to store messages and result data from getStatus
 	*/
 	mutable string status_buffer;
-	/// Command name and shortcut information
-	string commandshortcut;
 
 	// I think the following should be moved to BufferView. (Asger)
 
