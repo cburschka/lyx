@@ -239,11 +239,11 @@ string const getInfo(InfoMap const & map, string const & key)
 namespace {
 
 // Escape special chars.
-// All characters are literals except: .|*?+(){}[]^$\
+// All characters are literals except: '.|*?+(){}[]^$\'
 // These characters are literals when preceded by a "\", which is done here
 string const escape_special_chars(string const & expr)
 {
-	// Search for all chars .|*?+(){}[^$]\
+	// Search for all chars '.|*?+(){}[^$]\'
 	// Note that '[', ']' and '\' must be escaped.
 	// This is a limitation of boost::regex, but all other chars in BREs
 	// are assumed literal.
