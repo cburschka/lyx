@@ -34,6 +34,7 @@ void QLyXKeySym::set(QKeyEvent * ev)
 {
 	key_ = ev->key();
 	text_ = ev->text();
+	lyxerr[Debug::KEY] << "Setting key to " << key_ << ", " <<  text_.latin1() << endl;
 }
 
 
@@ -41,19 +42,23 @@ void QLyXKeySym::init(string const & symbolname)
 {
 	key_ = string_to_qkey(symbolname);
 	text_ = symbolname.c_str();
-	lyxerr[Debug::KEY] << "Init key to " << key_ << ", " << text_ << endl;
+	lyxerr[Debug::KEY] << "Init key to " << key_ << ", " << text_.latin1() << endl;
 }
 
 
 bool QLyXKeySym::isOK() const
 {
-	return ! key_ == 0;
+	bool const ok(!(text_.isEmpty() && key_ == Qt::Key_unknown));
+	lyxerr[Debug::KEY] << "isOK is " << ok << endl;
+	return ok;
 }
 
-
+ 
 bool QLyXKeySym::isModifier() const
 {
-	return q_is_modifier(key_);
+	bool const mod(q_is_modifier(key_));
+	lyxerr[Debug::KEY] << "isMod is " << mod << endl;
+	return mod;
 }
 
 
@@ -78,6 +83,20 @@ char QLyXKeySym::getISOEncoded() const
 }
 
 
+bool QLyXKeySym::isText() const
+{
+	if (text_.isEmpty()) {
+		lyxerr[Debug::KEY] << "text_ empty, isText() == false" << endl;
+		return false;
+	}
+
+	QChar const c(text_[0]);
+	lyxerr[Debug::KEY] << "isText for key " << key_ 
+		<< " isPrint is " << c.isPrint() << endl;
+	return c.isPrint();
+}
+
+ 
 bool operator==(LyXKeySym const & k1, LyXKeySym const & k2)
 {
 	// note we ignore text_ here (non-strict ==), because

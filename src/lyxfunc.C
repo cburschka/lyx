@@ -171,6 +171,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 	}
 
 	if (keysym->isModifier()) {
+		lyxerr[Debug::KEY] << "isModifier true" << endl;
 		return;
 	}
 
@@ -214,16 +215,24 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 		owner->message(keyseq.print());
 	}
 
-	if (action == LFUN_UNKNOWN_ACTION) {
-		// It is unknown, but what if we remove all
-		// the modifiers? (Lgb)
+ 
+	// Maybe user can only reach the key via holding down shift.
+	// Let's see. But only if shift is the only modifier
+	if (action == LFUN_UNKNOWN_ACTION && state == key_modifier::shift) {
+		lyxerr[Debug::KEY] << "Trying without shift" << endl;
 		action = keyseq.addkey(keysym, key_modifier::none);
-
-		lyxerr[Debug::KEY] << "Removing modifiers...\n"
-			<< "Action now set to ["
-			<< action << ']' << endl;
-
-		if (action == LFUN_UNKNOWN_ACTION) {
+		lyxerr[Debug::KEY] << "Action now " << action << endl;
+	}
+ 
+	if (action == LFUN_UNKNOWN_ACTION) {
+		// Hmm, we didn't match any of the keysequences. See
+		// if it's normal insertable text not already covered
+		// by a binding
+		if (keysym->isText() && keyseq.length() == 1) {
+			lyxerr[Debug::KEY] << "isText() is true, inserting." << endl;
+			action = LFUN_SELFINSERT;
+		} else {
+			lyxerr[Debug::KEY] << "Unknown, !isText() - giving up" << endl;
 			owner->message(_("Unknown function."));
 			return;
 		}
@@ -233,6 +242,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 		char c = keysym->getISOEncoded();
 		string argument;
 
+		// FIXME: why ...
 		if (c != 0)
 			argument = c;
 

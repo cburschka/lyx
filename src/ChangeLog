@@ -1,3 +1,9 @@
+2002-12-12  John Levon  <levon@movementarian.org>
+
+	* lyxfunc.C: use LyXKeySym->isText() as last-ditch
+	  insert. Only remove shift modifier under strict
+	  circumstances.
+ 
 2002-12-09  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* MenuBackend.C (expandToc): fix crash.

@@ -34,10 +34,6 @@ bool q_is_modifier(int qkey)
 		case Qt::Key_Meta:
 		case Qt::Key_Alt:
 			return true;
-
-		// AltGr becomes Key_unknown on at least one keyboard
-		case Qt::Key_unknown:
-			return true;
 	}
 	return false;
 }
