@@ -25,6 +25,7 @@
 #include "Liason.h"
 
 #include "frontends/LyXView.h"
+#include "frontends/Alert.h"
 
 #include "support/lstrings.h"
 
@@ -200,6 +201,7 @@ void ControlSpellchecker::clearParams()
 
 		// make sure that the dialog is not launched
 		emergency_exit_ = true;
+		Alert::alert("The spellchecker has failed", message_);
 	}
 
 	delete speller_;
