@@ -1,3 +1,10 @@
+2002-08-07  Juergen Vigna  <jug@lyx.org>
+
+	* insettabular.C (localDispatch): make delete not put the stuff
+	in the clipboard only do this on a cut operation.
+
+	* insettext.C (localDispatch): make delete and backspace not put
+	selected stuff to the clipboard.
 
 2002-08-07  André Pönitz <poenitz@gmx.net>
 

@@ -1107,7 +1107,6 @@ InsetTabular::localDispatch(BufferView * bv, FuncRequest const & ev)
 	case LFUN_UP_PARAGRAPH:
 	case LFUN_UP_PARAGRAPHSEL:
 	case LFUN_BACKSPACE:
-	case LFUN_DELETE:
 	case LFUN_HOME:
 	case LFUN_HOMESEL:
 	case LFUN_END:
@@ -1141,6 +1140,8 @@ InsetTabular::localDispatch(BufferView * bv, FuncRequest const & ev)
 	case LFUN_CUT:
 		if (!copySelection(bv))
 			break;
+		// no break here!
+	case LFUN_DELETE:
 		setUndo(bv, Undo::DELETE,
 			bv->text->cursor.par(),
 			bv->text->cursor.par()->next());
@@ -1593,7 +1594,7 @@ void InsetTabular::resetPos(BufferView * bv) const
 	} else if ((cursor_.x() - offset) < 20) {
 		scroll(bv, 20 - cursor_.x() + offset);
 		updateLocal(bv, FULL, false);
-	} else if (scroll(false) && top_x > 20 &&
+	} else if (scroll() && top_x > 20 &&
 		   (top_x + tabular->GetWidthOfTabular()) > (bv->workWidth() - 20)) {
 		scroll(bv, old_x - cursor_.x());
 		updateLocal(bv, FULL, false);
