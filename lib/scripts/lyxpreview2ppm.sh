@@ -116,8 +116,8 @@ rm -f ${SEDSCRIPT}
 EXECUTABLE="extracting metrics"; CHECK_STATUS
 
 # The ppm files have spurious (?! say some !) white space on the left and right
-# sides. If you don't want this set REMOVE_WS=0.
-REMOVE_WS=1
+# sides. If you want this set REMOVE_WS=1.
+REMOVE_WS=0
 
 which pnmcrop > /dev/null
 STATUS=$?
@@ -126,17 +126,16 @@ if [ ${STATUS} -ne 0 ]; then
 	REMOVE_WS=0
 fi
 
-if [ REMOVE_WS -eq 1 ]; then
+if [ ${REMOVE_WS} -eq 1 ]; then
 	TMP=.${BASE}.ppm
-	for FILE=`ls ${BASE}???.ppm`
+	for FILE in `ls ${BASE}???.ppm`
 	do
-		pnmcrop -left -right ${FILE} > ${TMP}
+		pnmcrop -left ${FILE} | pnmcrop -right > ${TMP}
 		STATUS=$?
 		if [ ${STATUS} -eq 0 ]; then
 			mv -f ${TMP} ${FILE}
 		fi
 	done
-	rm -f ${TMP}
 fi
 
 # All was successful, so remove everything except the ppm files and the
