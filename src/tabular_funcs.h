@@ -28,11 +28,16 @@
 template<class T>
 string const write_attribute(string const & name, T const & t)
 {
+	if (tostr(t).empty())
+		return string();
+	
 	string str = " " + name + "=\"" + tostr(t) + "\"";
 	return str;
 }
 template<>
 string const write_attribute(string const & name, bool const & b);
+template<>
+string const write_attribute(string const & name, int const & b);
 template<>
 string const write_attribute(string const & name, LyXLength const & value);
 string const tostr(LyXAlignment const & num);

@@ -1,3 +1,13 @@
+2002-02-26  Juergen Vigna  <jug@sad.it>
+
+	* tabular_funcs.C (write_attribute): changed so that some default
+	attributes are not written at all.
+	(getTokenValue): set default values before trying to read the
+	value so we have the return value always set as default if we don't
+	find the token we search for.
+
+	* tabular.C (Write): write bools as bools not as strings!
+
 2002-02-22  Juergen Vigna  <jug@sad.it>
 
 	* BufferView_pimpl.C (workAreaButtonPress): call edit() before calling

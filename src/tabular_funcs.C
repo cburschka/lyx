@@ -35,7 +35,18 @@ string const write_attribute(string const & name, bool const & b)
 	if (!b)
 		return string();
 	
-	return write_attribute(name, int(b));
+	return write_attribute(name, tostr(b));
+}
+
+template <>
+string const write_attribute(string const & name, int const & i)
+{
+	// we write only true attribute values so we remove a bit of the
+	// file format bloat for tabulars.
+	if (!i)
+		return string();
+	
+	return write_attribute(name, tostr(i));
 }
 
 template <>
@@ -158,13 +169,13 @@ bool string2type(string const str, bool & num)
 
 bool getTokenValue(string const & str, const char * token, string & ret)
 {
+	ret.erase();
 	size_t token_length = strlen(token);
 	string::size_type pos = str.find(token);
 
 	if (pos == string::npos || pos + token_length + 1 >= str.length()
 		|| str[pos + token_length] != '=')
 		return false;
-	ret.erase();
 	pos += token_length + 1;
 	char ch = str[pos];
 	if ((ch != '"') && (ch != '\'')) { // only read till next space
@@ -181,6 +192,7 @@ bool getTokenValue(string const & str, const char * token, string & ret)
 bool getTokenValue(string const & str, const char * token, int & num)
 {
 	string tmp;
+	num = 0;
 	if (!getTokenValue(str, token, tmp))
 		return false;
 	num = strToInt(tmp);
