@@ -20,6 +20,7 @@
 
 #include "BufferView.h"
 #include "CutAndPaste.h"
+#include "FuncStatus.h"
 #include "LColor.h"
 #include "LaTeXFeatures.h"
 #include "cursor.h"
@@ -48,6 +49,7 @@
 #include <sstream>
 
 using lyx::cap::grabAndEraseSelection;
+using lyx::support::bformat;
 using lyx::support::subst;
 
 using std::endl;
@@ -1102,19 +1104,35 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		if (!rowChangeOK()
 		    && (s == "append-row"
 			|| s == "delete-row"
-			|| s == "copy-row"))
-			return false;
+			|| s == "copy-row")) {
+			flag.message(bformat(
+				N_("Can't change number of rows in '%1$s'"),
+				type_));
+			flag.enabled(false);
+			return true;
+		}
 		if (nrows() <= 1
-		    && (s == "delete-row" || s == "swap-row"))
-			return false;
+		    && (s == "delete-row" || s == "swap-row")) {
+			flag.message(N_("Only one row"));
+			flag.enabled(false);
+			return true;
+		}
 		if (!colChangeOK()
 		    && (s == "append-column"
 			|| s == "delete-column"
-			|| s == "copy-column"))
-			return false;
+			|| s == "copy-column")) {
+			flag.message(bformat(
+				N_("Can't change number of columns in '%1$s'"),
+				type_));
+			flag.enabled(false);
+			return true;
+		}
 		if (ncols() <= 1
-		    && (s == "delete-column" || s == "swap-column"))
-			return false;
+		    && (s == "delete-column" || s == "swap-column")) {
+			flag.message(N_("Only one column"));
+			flag.enabled(false);
+			return true;
+		}
 		return MathGridInset::getStatus(cur, cmd, flag);
 	}
 	default:
