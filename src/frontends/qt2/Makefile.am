@@ -23,38 +23,42 @@ libqt2_la_LIBADD = \
 	../xforms/Alert_pimpl.lo \
 	../xforms/Color.lo \
 	../xforms/DropDown.lo \
+	../xforms/FormBase.lo \
 	../xforms/FormBaseDeprecated.lo	\
 	../xforms/FormBrowser.lo \
-	../xforms/FormDocument.lo \
-	../xforms/FormIndex.lo \
-	../xforms/FormInset.lo \
+	../xforms/FormERT.lo \
+	../xforms/FormFloat.lo \
+	../xforms/FormMathsBitmap.lo \
+	../xforms/FormMathsDeco.lo \
+	../xforms/FormMathsDelim.lo \
+	../xforms/FormMathsMatrix.lo \
+	../xforms/FormMathsPanel.lo \
+	../xforms/FormMathsSpace.lo \
+	../xforms/FormParagraph.lo \
 	../xforms/FormPreferences.lo \
-	../xforms/FormRef.lo \
+	../xforms/FormShowFile.lo \
 	../xforms/FormTabular.lo \
+	../xforms/FormDocument.lo \
+	../xforms/FormInset.lo \
 	../xforms/FormToc.lo \
-	../xforms/FormUrl.lo \
 	../xforms/MathsSymbols.lo \
 	../xforms/Menubar_pimpl.lo \
 	../xforms/RadioButtonGroup.lo \
 	../xforms/Toolbar_pimpl.lo \
 	../xforms/bmtable.lo \
-	../xforms/form_bibitem.lo \
-	../xforms/form_bibtex.lo \
 	../xforms/form_browser.lo \
 	../xforms/form_document.lo \
-	../xforms/form_error.lo \
-	../xforms/form_external.lo \
-	../xforms/form_index.lo \
-	../xforms/form_graphics.lo \
-	../xforms/form_include.lo \
-	../xforms/form_index.lo \
-	../xforms/form_minipage.lo \
-	../xforms/form_preamble.lo \
+	../xforms/form_ert.lo \
+	../xforms/form_float.lo \
 	../xforms/form_preferences.lo \
-	../xforms/form_ref.lo \
 	../xforms/form_tabular.lo \
 	../xforms/form_toc.lo \
-	../xforms/form_url.lo \
+	../xforms/form_maths_deco.lo \
+	../xforms/form_maths_delim.lo \
+	../xforms/form_maths_matrix.lo \
+	../xforms/form_maths_panel.lo \
+	../xforms/form_maths_space.lo \
+	../xforms/form_paragraph.lo \
 	../xforms/input_validators.lo \
 	../xforms/xformsBC.lo \
 	../xforms/xforms_helpers.lo \

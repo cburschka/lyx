@@ -89,12 +89,29 @@
 #include "controllers/ControlUrl.h"
 #include "controllers/ControlVCLog.h"
 #if 0
-#include "controllers/ControlCitation.h"
-#include "controllers/ControlFloat.h"
-#include "controllers/ControlRef.h"
 #include "controllers/ControlToc.h"
 #endif
 
+// xforms stuff
+#include "controllers/ControlERT.h"
+#include "controllers/ControlFloat.h"
+#include "controllers/ControlShowFile.h"
+#include "controllers/ControlToc.h"
+#include "xforms/FormBrowser.h"
+#include "xforms/form_browser.h"
+#include "xforms/FormDocument.h"
+#include "xforms/FormERT.h"
+#include "xforms/form_ert.h"
+#include "xforms/FormFloat.h"
+#include "xforms/form_float.h"
+#include "xforms/FormMathsPanel.h"
+#include "xforms/FormParagraph.h"
+#include "xforms/FormPreferences.h"
+#include "xforms/FormShowFile.h"
+#include "xforms/FormTabular.h"
+#include "xforms/FormToc.h"
+#include "xforms/form_toc.h"
+ 
 #include "GUI.h"
 
 // this makes no real sense for Qt2
@@ -127,6 +144,19 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIUrl<QURL, Qt2BC>(*lv, *this));
 	add(new GUIVCLog<QVCLog, Qt2BC>(*lv, *this));
 
+	// dialogs not yet converted
+	add(new GUIERT<FormERT, xformsBC>(*lv, *this));
+	add(new GUIFloat<FormFloat, xformsBC>(*lv, *this));
+	add(new GUIShowFile<FormShowFile, xformsBC>(*lv, *this));
+	add(new GUIToc<FormToc, xformsBC>(*lv, *this));
+
+	// dialogs not yet MVCd
+	add(new FormDocument(lv, this));
+ 	add(new FormMathsPanel(lv, this));
+	add(new FormParagraph(lv, this));
+	add(new FormPreferences(lv, this));
+	add(new FormTabular(lv, this));
+ 
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.
 	hideAll.connect(hideBufferDependent.slot());
