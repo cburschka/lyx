@@ -175,9 +175,8 @@ XWorkArea::XWorkArea(LyXView & owner, int w, int h)
 	XGCValues val;
 
 	val.function = GXcopy;
-	val.graphics_exposures = false;
 	copy_gc = XCreateGC(fl_get_display(), RootWindow(fl_get_display(), 0),
-			    GCFunction | GCGraphicsExposures, &val);
+			    GCFunction, &val);
 }
 
 
@@ -189,13 +188,17 @@ XWorkArea::~XWorkArea()
 }
 
 
-void XWorkArea::updateGeometry(int width, int height)
+void XWorkArea::redraw(int width, int height)
 {
 	static int cur_width = -1;
 	static int cur_height = -1;
 
-	if (cur_width == width && cur_height == height && workareapixmap)
+	if (cur_width == width && cur_height == height && workareapixmap) {
+		XCopyArea(fl_get_display(),
+			  getPixmap(), getWin(), copy_gc,
+			  0, 0, width, height, xpos(), ypos());
 		return;
+	}
 
 	cur_width = width;
 	cur_height = height;
@@ -216,20 +219,6 @@ void XWorkArea::updateGeometry(int width, int height)
 				       fl_get_visual_depth());
 
 	workAreaResize();
-}
-
-
-void XWorkArea::paint(int x, int y, int w, int h)
-{
-	lyxerr[Debug::WORKAREA]
-		<< "XWorkarea::paint " << w << 'x' << h
-		<< '+' << x << '+' << y << endl;
-
-	updateGeometry(workWidth(), workHeight());
-	XCopyArea(fl_get_display(),
-		  getPixmap(), getWin(),
-		  copy_gc, x, y, w, h,
-		  work_area->x + x, work_area->y + y);
 }
 
 
@@ -295,7 +284,7 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 				 FL_Coord, FL_Coord,
 				 int key, void * xev)
 {
-	if (event != 11)
+	if (event != 10 && event != 11)
 		lyxerr[Debug::WORKAREA] << "Workarea event: EVENT: " << event << endl;
 
 	XEvent * ev = static_cast<XEvent*>(xev);
@@ -306,35 +295,12 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 
 	switch (event) {
 
-	case FL_DRAW: {
+	case FL_DRAW:
 		if (!area->work_area || !area->work_area->form->visible)
 			return 1;
-
-		if (ev) {
-			lyxerr[Debug::WORKAREA]
-				<< "work_area_handler, handling X11 "
-				"expose event "
-				<< ev->xexpose.width << 'x'
-				<< ev->xexpose.height << '+'
-				<< ev->xexpose.x << '+'
-				<< ev->xexpose.y << endl;
-
-			// X11 generates XEvents with x, y relative to the
-			// top left corner of the window.
-			// XScreen::expose emulates this behaviour.
-			// We therefore need to remove this offset before
-			// generating the pixmap.
-			 int const x = ev->xexpose.x - ob->x;
-			 int const y = ev->xexpose.y - ob->y;
-
-			area->paint(x, y,
-				    ev->xexpose.width, ev->xexpose.height);
-		} else
-			area->paint(0, 0,
-				    area->workWidth(), area->workHeight());
-
+		lyxerr[Debug::WORKAREA] << "Workarea event: DRAW" << endl;
+		area->redraw(area->workWidth(), area->workHeight());
 		break;
-	}
 
 	case FL_PUSH:
 		if (!ev || ev->xbutton.button == 0) break;

@@ -1,3 +1,11 @@
+2004-11-26  Angus Leeming  <leeming@lyx.org>
+
+	* xscreen.C:
+	* XWorkArea.C: revert the 2004-05-04 patch that used graphics
+	exposure events to paint the changing screen efficiently. It
+	currently results in spurious release events being emitted,
+	buggering up selection, etc.
+
 2004-11-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* input_validators.C: use support::contains instead of strchr
