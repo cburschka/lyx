@@ -175,8 +175,13 @@ bool prefixIs(string const & a, char const * pre)
 	unsigned int l = strlen(pre);
 	if (l > a.length() || a.empty())
 		return false;
-	else
+	else {
+#if !defined(USE_INCLUDED_STRING)
+		return ::strncmp(a.c_str(), pre, l) == 0;
+#else
 		return a.compare(0, l, pre, l) == 0;
+#endif
+	}
 }
 
 
@@ -193,7 +198,12 @@ bool suffixIs(string const & a, char const * suf)
 	if (suflen > a.length())
 		return false;
 	else {
+#if !defined(USE_INCLUDED_STRING)
+		string const tmp(a, a.length() - suflen);
+		return ::strncmp(tmp.c_str(), suf, suflen) == 0;
+#else
 		return a.compare(a.length() - suflen, suflen, suf) == 0;
+#endif
 	}
 }
 

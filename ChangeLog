@@ -1,3 +1,11 @@
+2000-12-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lstrings.C (prefixIs): make it compile with
+	!USE_INCLUDED_STRING 
+	(suffixIs): ditto
+
+	* src/paragraph.C (TeXFootnote): Change HAVE_OSTREAM to HAVE_SSTREAM
+
 2000-11-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/bufferview_funcs.C (FontSize): fix the font-size changing

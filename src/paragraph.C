@@ -4021,7 +4021,7 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 				"Footnote in a Footnote -- not supported"
 			       << endl;
 		}
-#ifndef HAVE_OSTREAM
+#ifndef HAVE_SSTREAM
 		delete [] dummy.str();
 #endif
 	}
