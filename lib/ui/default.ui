@@ -170,9 +170,9 @@ Menuset
 	Item "Cross Reference...|R" "reference-insert"
 	Item "Label...|L" "label-insert"
 	Item "Footnote|F" "footnote-insert"
-	Item "Marginal Note|M" "marginpar-insert"
+	Item "Marginal Note|M" "marginalnote-insert"
 	Item "Index Entry...|I" "index-insert"
-	Item "Index Entry of Preceeding Word|W" "index-insert-last"
+	Item "Index Entry of Preceding Word|W" "index-insert-last"
 	Item "URL...|U" "url-insert"
 	Item "Note...|N" "note-insert"
 	Submenu "Lists & TOC|O" "insert_toc"
@@ -200,12 +200,12 @@ Menuset
     End
 
     Menu "insert_floats"
-	Item "Figure|F" "buffer-float-insert figure"
-	Item "Table|T" "buffer-float-insert table"
-	Item "Wide Figure|W" "buffer-float-insert wide-fig"
-	Item "Wide Table|d" "buffer-float-insert wide-tab"
+	Item "Figure|F" "float-insert figure"
+	Item "Table|T" "float-insert table"
+	Item "Wide Figure|W" "float-insert wide-fig"
+	Item "Wide Table|d" "float-insert wide-tab"
 	Separator
-	Item "Algorithm|A" "buffer-float-insert algorithm"
+	Item "Algorithm|A" "float-insert algorithm"
     End
 
     Menu "insert_toc"
@@ -351,7 +351,7 @@ Toolbar
     Icon "math-mode"
     Separator
     Icon "footnote-insert"
-    Icon "marginpar-insert"
+    Icon "marginalnote-insert"
     Icon "depth-next"
     Separator
     Icon "figure-insert"

@@ -33,8 +33,8 @@ FormMinipage::FormMinipage(LyXView * lv, Dialogs * d)
     // let the dialog be shown
     // This is a permanent connection so we won't bother
     // storing a copy because we won't be disconnecting.
-    d->showMinipage.connect(slot(this, &FormMinipage::showInset));
-    d->updateMinipage.connect(slot(this, &FormMinipage::updateInset));
+    d->showMinipage.connect(SigC::slot(this, &FormMinipage::showInset));
+    d->updateMinipage.connect(SigC::slot(this, &FormMinipage::updateInset));
 }
 
 
@@ -60,7 +60,7 @@ void FormMinipage::showInset(InsetMinipage * inset)
     // If connected to another inset, disconnect from it.
     if (inset_ != inset) {
 	ih_.disconnect();
-	ih_ = inset->hideDialog.connect(slot(this, &FormMinipage::hide));
+	ih_ = inset->hideDialog.connect(SigC::slot(this, &FormMinipage::hide));
 	inset_ = inset;
     }
 
@@ -75,7 +75,7 @@ void FormMinipage::updateInset(InsetMinipage * inset)
     // If connected to another inset, disconnect from it.
     if (inset_ != inset) {
 	ih_.disconnect();
-	ih_ = inset->hideDialog.connect(slot(this, &FormMinipage::hide));
+	ih_ = inset->hideDialog.connect(SigC::slot(this, &FormMinipage::hide));
 	inset_ = inset;
     }
 
