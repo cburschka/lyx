@@ -8,13 +8,13 @@
 # ==================================================================
 
 #
-# This is the Mac flavour bind file, based on 
+# This is the Mac flavour bind file for LyX/Mac 1.4.x, based on 
 # bindings found in the Mac world.
 #
 # DO NOT CHANGE THIS DEFAULT BINDING FILE! It will be replaced
 # with every new install of LyX and your changes will be lost. 
 # Instead, customize a copy of this file placed in 
-# ~/.lyx/bind/mac-1.4.0.bind
+# ~/.lyx/bind/.
 #
 # Happy tuning!
 
@@ -64,8 +64,8 @@
 \bind "~S-C-quotedbl"		"quote-insert single"
 \bind "M-S-quotedbl"		"self-insert \""
 \bind "C-minus"			"hyphenation-point-insert"
-\bind "M-S-Right"		"depth-increment"
-\bind "M-S-Left"		"depth-decrement"
+\bind "M-C-Right"		"depth-increment"
+\bind "M-C-Left"		"depth-decrement"
 \bind "C-S-L"			"ligature-break-insert"
 \bind "C-l"			"ert-insert"		# 'l' for LaTeX
 
