@@ -38,17 +38,17 @@ unsigned int InsetOld::inset_id = 0;
 InsetOld::InsetOld()
 	: InsetBase(),
 	top_x(0), top_baseline(0), scx(0),
-	id_(inset_id++), owner_(0), par_owner_(0),
+	id_(inset_id++), owner_(0),
 	background_color_(LColor::inherit)
 {}
 
 
 InsetOld::InsetOld(InsetOld const & in)
 	: InsetBase(),
-	top_x(0), top_baseline(0), scx(0), id_(in.id_), owner_(0),
+	top_x(0), top_baseline(0), scx(0),
+	id_(in.id_), owner_(0),
 	name_(in.name_), background_color_(in.background_color_)
-{
-}
+{}
 
 
 bool InsetOld::directWrite() const

@@ -66,7 +66,7 @@ using lyx::pos_type;
 
 
 Paragraph::Paragraph()
-	: pimpl_(new Paragraph::Pimpl(this)), y(0)
+	: y(0), pimpl_(new Paragraph::Pimpl(this))
 {
 	enumdepth = 0;
 	itemdepth = 0;
@@ -75,7 +75,7 @@ Paragraph::Paragraph()
 
 
 Paragraph::Paragraph(Paragraph const & lp)
-	: pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this)), y(0)
+	: y(0), pimpl_(new Paragraph::Pimpl(*lp.pimpl_, this))
 {
 	enumdepth = 0;
 	itemdepth = 0;
@@ -90,8 +90,6 @@ Paragraph::Paragraph(Paragraph const & lp)
 	for (; it != end; ++it) {
 		// currently we hold Inset*, not InsetBase*
 		it->inset = static_cast<InsetOld*>(it->inset->clone().release());
-		// tell the new inset who is the boss now
-		it->inset->parOwner(this);
 	}
 }
 
@@ -119,8 +117,6 @@ void Paragraph::operator=(Paragraph const & lp)
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it) {
 		it->inset = static_cast<InsetOld*>(it->inset->clone().release());
-		// tell the new inset who is the boss now
-		it->inset->parOwner(this);
 	}
 }
 

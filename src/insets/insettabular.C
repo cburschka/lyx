@@ -32,6 +32,7 @@
 #include "undo_funcs.h"
 #include "WordLangTuple.h"
 #include "metricsinfo.h"
+#include "paragraph_funcs.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
@@ -1094,7 +1095,7 @@ int InsetTabular::latex(Buffer const * buf, ostream & os,
 int InsetTabular::ascii(Buffer const * buf, ostream & os, int ll) const
 {
 	if (ll > 0)
-		return tabular.ascii(buf, os, (int)parOwner()->params().depth(),
+		return tabular.ascii(buf, os, ownerPar(*buf, this).params().depth(),
 				      false, 0);
 	return tabular.ascii(buf, os, 0, false, 0);
 }
@@ -2245,7 +2246,7 @@ bool InsetTabular::copySelection(BufferView * bv)
 
 	ostringstream os;
 	paste_tabular->ascii(bv->buffer(), os,
-			     (int)parOwner()->params().depth(), true, '\t');
+			     ownerPar(*bv->buffer(), this).params().depth(), true, '\t');
 	bv->stuffClipboard(STRCONV(os.str()));
 	return true;
 }

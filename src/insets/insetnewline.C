@@ -18,7 +18,10 @@
 #include "paragraph.h"
 #include "lyxtext.h"
 #include "metricsinfo.h"
+#include "paragraph_funcs.h"
+
 #include "support/LOstream.h"
+
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
 
@@ -83,7 +86,8 @@ void InsetNewline::draw(PainterInfo & pi, int x, int y) const
 	int const asc = font_metrics::maxAscent(pi.base.font);
 
 	// hack, and highly dubious
-	lyx::pos_type pos = parOwner()->getPositionOfInset(this);
+	lyx::pos_type pos = ownerPar(*pi.base.bv->buffer(), this)
+		.getPositionOfInset(this);
 	bool const ltr_pos = (pi.base.bv->text->bidi_level(pos) % 2 == 0);
 
 	int xp[3];

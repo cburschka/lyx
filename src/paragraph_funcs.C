@@ -60,7 +60,6 @@ bool moveItem(Paragraph & from, Paragraph & to,
 		if (from.getInset(i)) {
 			// the inset is not in a paragraph anymore
 			tmpinset = from.insetlist.release(i);
-			tmpinset->parOwner(0);
 		}
 
 		if (!to.insetAllowed(tmpinset->lyxCode()))
@@ -1048,10 +1047,10 @@ LyXFont const outerFont(ParagraphList::iterator pit,
 }
 
 
-ParagraphList::iterator outerPar(Buffer & buf, InsetOld * inset)
+ParagraphList::iterator outerPar(Buffer const & buf, InsetOld const * inset)
 {
-	ParIterator pit = buf.par_iterator_begin();
-	ParIterator end = buf.par_iterator_end();
+	ParIterator pit = const_cast<Buffer &>(buf).par_iterator_begin();
+	ParIterator end = const_cast<Buffer &>(buf).par_iterator_end();
 	for ( ; pit != end; ++pit) {
 		InsetList::iterator ii = pit->insetlist.begin();
 		InsetList::iterator iend = pit->insetlist.end();
@@ -1061,6 +1060,22 @@ ParagraphList::iterator outerPar(Buffer & buf, InsetOld * inset)
 	}
 	lyxerr << "outerPar: should not happen\n";
 	Assert(false);
-	return end.pit(); // shut up compiler
+	return const_cast<Buffer &>(buf).paragraphs.end(); // shut up compiler
 }
 
+
+Paragraph const & ownerPar(Buffer const & buf, InsetOld const * inset)
+{
+	ParConstIterator pit = buf.par_iterator_begin();
+	ParConstIterator end = buf.par_iterator_end();
+	for ( ; pit != end; ++pit) {
+		InsetList::const_iterator ii = pit->insetlist.begin();
+		InsetList::const_iterator iend = pit->insetlist.end();
+		for ( ; ii != iend; ++ii)
+			if (ii->inset == inset)
+				return *pit.pit();
+	}
+	lyxerr << "ownerPar: should not happen\n";
+	Assert(false);
+	return buf.paragraphs.front(); // shut up compiler
+}

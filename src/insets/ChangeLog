@@ -1,25 +1,35 @@
+
+2003-08-26  André Pönitz  <poenitz@gmx.net>
+
+	* insetfoot.C:
+	* insetnewline.C:
+	* insetquotes.C:
+	* insettabular.C:
+	* inset.[Ch]: remove InsetOld::par_owner_ & handling
+
 2003-08-26  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* insetbranch.C: Small fix to prevent a crash on loading.
 
 2003-08-25  Martin Vermeer  <martin.vermeer@hut.fi>
 
-	* insets/inset.h:
-	* insets/insetbibtex.[Ch]:
-	* insets/insetbranch.[Ch]:
-	* insets/insetcollapsable.h:
-	* insets/insetert.[Ch]:
-	* insets/insetfloatlist.[Ch]:
-	* insets/insetfootlike.[Ch]:
-	* insets/insetinclude.[Ch]:
-	* insets/insetindex.[Ch]:
-	* insets/insetindex.h:
-	* insets/insetminipage.h:
-	* insets/insetnote.[Ch]:
-	* insets/insettext.C:
-	* insets/insettheorem.[Ch]:
-	* insets/insettoc.[Ch]: eliminates the needFullRow/display() stuff
-	altogether, putting the logic in metrics/draw in the insets.
+	* inset.h:
+	* insetbibtex.[Ch]:
+	* insetbranch.[Ch]:
+	* insetcollapsable.h:
+	* insetert.[Ch]:
+	* insetfloatlist.[Ch]:
+	* insetfootlike.[Ch]:
+	* insetinclude.[Ch]:
+	* insetindex.[Ch]:
+	* insetindex.h:
+	* insetminipage.h:
+	* insetnote.[Ch]:
+	* insettext.C:
+	* insettheorem.[Ch]:
+	* insettoc.[Ch]: eliminates the needFullRow/display() stuff
+	altogether, putting the logic in metrics/draw in the insets.=20
+	Draws short single row insets with more or less realistic metrics.
 
 2003-08-19  André Pönitz  <poenitz@gmx.net>
 

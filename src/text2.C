@@ -1003,9 +1003,10 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 					isOK = true;
 					break;
 				} else {
+					Paragraph const * owner = &ownerPar(*buf, in);
 					tmppit = ownerParagraphs().begin();
 					for ( ; tmppit != end; ++tmppit)
-						if (&*tmppit == in->parOwner())
+						if (&*tmppit == owner)
 							break;
 				}
 			}

@@ -3,6 +3,12 @@
 
 	* paragraph_func.[Ch] (outerPar): new function
 
+	* paragraph.C:
+	* paragraph_funcs.C:
+	* paragraph_funcs.h:
+	* paragraph_pimpl.C:
+	* text2.C: remove Inset::par_owner
+
 2003-08-25  Martin Vermeer  <martin.vermeer@hut.fi>
  
 	* lyxrow_funcs.C:

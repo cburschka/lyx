@@ -23,8 +23,7 @@
 // the following are needed just to get the layout of the enclosing
 // paragraph. This seems a bit too much to me (JMarc)
 #include "lyxlayout.h"
-#include "buffer.h"
-#include "paragraph.h"
+#include "paragraph_funcs.h"
 
 
 using std::ostream;
@@ -63,9 +62,8 @@ int InsetFoot::latex(Buffer const * buf, ostream & os,
 		     LatexRunParams const & runparams_in) const
 {
 	LatexRunParams runparams = runparams_in;
-	if (buf && parOwner()) {
-		LyXLayout_ptr const & layout = parOwner()->layout();
-		runparams.moving_arg |= layout->intitle;
+	if (buf) {
+		runparams.moving_arg |= ownerPar(*buf, this).layout()->intitle;
 	}
 
 	os << "%\n\\footnote{";

@@ -24,8 +24,11 @@
 #include "lyxrc.h"
 #include "paragraph.h"
 #include "metricsinfo.h"
+#include "paragraph_funcs.h"
+
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
+
 #include "support/LAssert.h"
 #include "support/lstrings.h"
 
@@ -254,7 +257,7 @@ int InsetQuotes::latex(Buffer const * buf, ostream & os,
 		       LatexRunParams const & runparams) const
 {
 	// How do we get the local language here??
-	lyx::pos_type curr_pos = parOwner()->getPositionOfInset(this);
+	lyx::pos_type curr_pos = ownerPar(*buf, this).getPositionOfInset(this);
 	Assert(curr_pos != -1);
 
 #warning FIXME. We _must_ find another way to get the language. (Lgb)

@@ -76,7 +76,10 @@ LyXFont const outerFont(ParagraphList::iterator pit,
 			ParagraphList const & plist);
 
 /// find outermost paragraph containing an inset
-ParagraphList::iterator outerPar(Buffer & buf, InsetOld * inset);
+ParagraphList::iterator outerPar(Buffer const & buf, InsetOld const * inset);
+
+/// find owning paragraph containing an inset
+Paragraph const & ownerPar(Buffer const & buf, InsetOld const * inset);
 
 
 #endif // PARAGRAPH_FUNCS_H
