@@ -65,7 +65,6 @@ libsupport_la_SOURCES = \
 	package.h \
 	putenv.C \
 	rename.C \
-	rmdir.C \
 	socktools.C \
 	socktools.h \
 	std_istream.h \

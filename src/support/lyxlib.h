@@ -44,8 +44,6 @@ int mkdir(std::string const & pathname, unsigned long int mode);
 bool putenv(std::string const & varname, std::string const & value);
 /// unlink the given file
 int unlink(std::string const & file);
-/// remove the given directory
-int rmdir(std::string const & file);
 /// (securely) create a temporary file in the given dir with the given prefix
 std::string const tempName(std::string const & dir = std::string(),
 		      std::string const & mask = std::string());

@@ -1,5 +1,13 @@
 2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* Makefile.am (libsupport_la_SOURCES): remove rmdir.C 
+
+	* rmdir.C: delete file
+
+	* lyxlib.h: remove rmdir decl
+	
+2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
 	* .cvsignore: add package.C
 
 	* FileInfo.C, FileInfo.h: delete files
