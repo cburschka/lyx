@@ -81,6 +81,13 @@ void mathed_parse(MathArray & data, unsigned flags);
 
 namespace {
 
+unsigned char getuchar(std::istream * is)
+{
+	char c;
+	is->get(c);
+	return static_cast<unsigned char>(c);
+}
+
 const unsigned char LM_TK_OPEN  = '{';
 const unsigned char LM_TK_CLOSE = '}';
 
@@ -185,8 +192,7 @@ void LexInitCodes()
 unsigned char LexGetArg(unsigned char lf, bool accept_spaces = false)
 {
 	while (yyis->good()) {
-		unsigned char c;
-		yyis->get(c);
+		unsigned char c = getuchar(yyis);
 		if (c > ' ') {
 			if (!lf) 
 				lf = c;
@@ -208,8 +214,7 @@ unsigned char LexGetArg(unsigned char lf, bool accept_spaces = false)
 	yytext.erase();
 	int bcnt = 1;
 	do {
-		unsigned char c;
-		yyis->get(c);
+		unsigned char c = getuchar(yyis);
 		if (c == lf) ++bcnt;
 		if (c == rg) --bcnt;
 		if ((c > ' ' || (c == ' ' && accept_spaces)) && bcnt > 0)
@@ -227,8 +232,7 @@ int yylex()
 	if (!init_done) LexInitCodes();
 	
 	while (yyis->good()) {
-		unsigned char c;
-		yyis->get(c);
+		unsigned char c = getuchar(yyis);
 		lyxerr << "reading byte: '" << c << "' code: " << lexcode[c] << endl;
 		lyxerr << "              code: " << lexcode['ü'] << endl;
 		
@@ -240,7 +244,7 @@ int yylex()
 			continue;
 		} else if (lexcode[c] == LexComment) {
 			do {
-				yyis->get(c);
+				c = getuchar(yyis);
 			} while (c != '\n' && yyis->good());  // eat comments
 		} else if (lexcode[c] == LexDigit
 			   || lexcode[c] == LexOther
@@ -256,7 +260,7 @@ int yylex()
 		} else if (lexcode[c] == LexSelf) {
 			return c;
 		} else if (lexcode[c] == LexArgument) {
-			yyis->get(c);
+			c = getuchar(yyis);
 			yylval.i = c - '0';
 			return LM_TK_ARGUMENT; 
 		} else if (lexcode[c] == LexOpen) {
@@ -264,7 +268,7 @@ int yylex()
 		} else if (lexcode[c] == LexClose) {
 			return LM_TK_CLOSE;
 		} else if (lexcode[c] == LexESC)   {
-			yyis->get(c);
+			c = getuchar(yyis);
 			if (c == '\\')	{
 				yylval.i = -1;
 				return LM_TK_NEWLINE;
@@ -300,7 +304,7 @@ int yylex()
 				yytext.erase();
 				while (lexcode[c] == LexAlpha || lexcode[c] == LexDigit) {
 					yytext += c;
-					yyis->get(c);
+					c = getuchar(yyis);
 				}
 				if (yyis->good())
 					yyis->putback(c);
@@ -733,8 +737,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 
 		case LM_TK_SQRT:
 		{	    
-			unsigned char c;
-			yyis->get(c);
+			unsigned char c = getuchar(yyis);
 			if (c == '[') {
 				MathRootInset * rt = new MathRootInset;
 				mathed_parse(rt->cell(0), FLAG_BRACK_END);
