@@ -72,7 +72,9 @@ int main(int argc, char * argv[])
 	KApplication a( argc, argv );
 #endif
 #ifdef GTKGUI
-	Gnome::Main  a(PACKAGE,VERSION,1,argv); //argc, argv );
+	string app_id(PACKAGE);
+	string app_version(VERSION);
+	Gnome::Main  a(app_id, app_version, 1, argv); //argc, argv );
 	GLyxAppWin   appWin;
 	mainAppWin = &appWin;
 #endif

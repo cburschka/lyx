@@ -61,8 +61,11 @@
 #include "encoding.h"
 
 //#define USE_PSPELL 1
+
 #ifdef USE_PSPELL
+
 #include <pspell/pspell.h>
+
 #endif
 
 using std::reverse;
@@ -111,18 +114,26 @@ extern void sigchldchecker(pid_t pid, int *status);
 
 struct isp_result {
 	int flag;
-	int count;
-	string str;
-	char ** misses;
+	char * str;
+	char * b;
+	char * e;
+	const char * next_miss();
 	isp_result() {
 		flag = ISP_UNKNOWN;
-		count = 0;
-		misses = static_cast<char**>(0);
+		str = 0;
 	}
 	~isp_result() {
-		delete[] misses;
+		delete[] str;
 	}
 };
+
+const char * isp_result::next_miss() {
+	if (str == 0 || *(e+1) == '\0') return 0;
+	b = e + 2;
+	e = strpbrk(b, ",\n");
+	*e = '\0';
+	return b;
+}
 
 #else
 
@@ -148,7 +159,6 @@ const char * isp_result::next_miss()
 #endif
 
 const char * spell_error;
-
 
 
 /***** Spellchecker options *****/
@@ -270,7 +280,6 @@ void SpellCheckerOptions()
 	}
 }
 
-
 #ifndef USE_PSPELL
 
 /***** Spellchecker *****/
@@ -278,7 +287,7 @@ void SpellCheckerOptions()
 // Could also use a clean up. (Asger Alstrup)
 
 static
-void create_ispell_pipe(BufferParams const & params, string const & lang)
+void init_spell_checker(BufferParams const & params, string const & lang)
 {
 	static char o_buf[BUFSIZ];  // jc: it could be smaller
 	int pipein[2], pipeout[2];
@@ -289,19 +298,19 @@ void create_ispell_pipe(BufferParams const & params, string const & lang)
 
 	if(pipe(pipein) == -1 || pipe(pipeout) == -1) {
 		lyxerr << "LyX: Can't create pipe for spellchecker!" << endl;
-		return;
+		goto END;
 	}
 
 	if ((out = fdopen(pipein[1], "w")) == 0) {
 		lyxerr << "LyX: Can't create stream for pipe for spellchecker!"
 		       << endl;
-		return;
+		goto END;
 	}
 
 	if ((in = fdopen(pipeout[0], "r")) == 0) {
 		lyxerr <<"LyX: Can't create stream for pipe for spellchecker!"
 		       << endl;
-		return;
+		goto END;
 	}
 
 	setvbuf(out, o_buf, _IOLBF, BUFSIZ);
@@ -313,9 +322,9 @@ void create_ispell_pipe(BufferParams const & params, string const & lang)
 	if(isp_pid == -1) {
 		lyxerr << "LyX: Can't create child process for spellchecker!"
 		       << endl;
-		return;
+		goto END;
 	}
-
+	
 	if(isp_pid == 0) {        
 		/* child process */
 		dup2(pipein[0], STDIN_FILENO);
@@ -405,7 +414,7 @@ void create_ispell_pipe(BufferParams const & params, string const & lang)
 		lyxerr << "LyX: Failed to start ispell!" << endl;
 		_exit(0);
 	}
-
+	{
 	/* Parent process: Read ispells identification message */
 	// Hmm...what are we using this id msg for? Nothing? (Lgb)
 	// Actually I used it to tell if it's truly Ispell or if it's
@@ -438,6 +447,9 @@ void create_ispell_pipe(BufferParams const & params, string const & lang)
 		  actual_spell_checker = ASC_ASPELL;
 		else
 		  actual_spell_checker = ASC_ISPELL;
+
+		fputs("!\n", out); // Set terse mode (silently accept correct words)
+
 		
 	} else if (retval == 0) {
 		// timeout. Give nice message to user.
@@ -451,17 +463,39 @@ void create_ispell_pipe(BufferParams const & params, string const & lang)
 		// Select returned error
 		lyxerr << "Select on ispell returned error, what now?" << endl;
 	}
+	}
+ END:
+	if (isp_pid == -1) {
+		spell_error = 
+			"\n\n"
+			"The ispell-process has died for some reason. *One* possible reason\n"
+			"could be that you do not have a dictionary file\n"
+			"for the language of this document installed.\n"
+			"Check /usr/lib/ispell or set another\n"
+			"dictionary in the Spellchecker Options menu.";
+	} else {
+		spell_error = 0;
+	}
 }
 
+static
+bool sc_still_alive() {
+	return isp_pid != -1;
+}
+
+static
+void sc_clean_up_after_error() 
+{
+	fclose(out);
+}
 
 // Send word to ispell and get reply
 static
-isp_result *ispell_check_word(char *word)
+isp_result * sc_check_word(char *word)
 {
 	//Please rewrite to use string.
 	isp_result *result;
-	char buf[1024], *p;
-	int count, i;
+	char buf[1024];
 
 	fputs(word, out); 
 	fputc('\n', out);
@@ -494,25 +528,10 @@ isp_result *ispell_check_word(char *word)
 	case '&': // Not found, but we have near misses
 	{
 		result->flag = ISP_MISSED;
-		result->str = buf;
-		// nb is leaked! where should it be freed? I have to
-		// admit I do not understand the intent of the code :(
-		// (JMarc) 
-		char * nb = new char[result->str.length() + 1];
-		result->str.copy(nb, result->str.length());
-		nb[result->str.length()]= '\0';
-		p = strpbrk(nb+2, " ");
-		sscanf(p, "%d", &count); // Get near misses count
-		result->count = count;
-		if (count) result->misses = new char*[count];
-		p = strpbrk(nb, ":");
-		p += 2;
-		for (i = 0; i < count; ++i) {
-			result->misses[i] = p;
-			p = strpbrk(p, ",\n");
-			*p = 0;
-			p += 2;
-		}
+		char * p = strpbrk(buf, ":");
+		result->str = new char[strlen(p) + 1];
+		result->e   = result->str;
+		strcpy(result->str, p);
 		break;
 	}
 	default: // This shouldn't happend, but you know Murphy
@@ -527,8 +546,8 @@ isp_result *ispell_check_word(char *word)
 }
 
 
-static inline
-void ispell_terminate()
+static inline 
+void close_spell_checker()
 {
         // Note: If you decide to optimize this out when it is not 
         // needed please note that when Aspell is used this command 
@@ -542,15 +561,8 @@ void ispell_terminate()
 }
 
 
-static inline
-void ispell_terse_mode()
-{
-	fputs("!\n", out); // Set terse mode (silently accept correct words)
-}
-
-
-static inline
-void ispell_insert_word(char const *word)
+static inline 
+void sc_insert_word(char const *word)
 {
 	fputc('*', out); // Insert word in personal dictionary
 	fputs(word, out);
@@ -558,8 +570,8 @@ void ispell_insert_word(char const *word)
 }
 
 
-static inline
-void ispell_accept_word(char const *word) 
+static inline 
+void sc_accept_word(char const *word) 
 {
 	fputc('@', out); // Accept in this session
 	fputs(word, out);
@@ -567,7 +579,7 @@ void ispell_accept_word(char const *word)
 }
 
 static inline
-void ispell_store_replacement(char const *mis, string const & cor) {
+void sc_store_replacement(char const *mis, string const & cor) {
         if(actual_spell_checker == ASC_ASPELL) {
                 fputs("$$ra ", out);
                 fputs(mis, out);
@@ -582,7 +594,7 @@ void ispell_store_replacement(char const *mis, string const & cor) {
 PspellCanHaveError * spell_error_object;
 
 static
-void init_spell_checker(string const & /* lang */)
+void init_spell_checker(BufferParams const &, string const & lang)
 {
 	PspellConfig * config = new_pspell_config();
 	spell_error_object = new_pspell_manager(config);
@@ -635,28 +647,27 @@ isp_result * sc_check_word(char *word)
 }
 
 
-static
-inline void close_spell_checker()
+static inline 
+void close_spell_checker()
 {
 	pspell_manager_save_all_word_lists(sc);
 }
 
-
-static
-inline void sc_insert_word(char const *word)
+static inline 
+void sc_insert_word(char const *word)
 {
 	pspell_manager_add_to_personal(sc, word);
 }
 
 
-static
-inline void sc_accept_word(char const *word) 
+static inline 
+void sc_accept_word(char const *word) 
 {
 	pspell_manager_add_to_personal(sc, word);
 }
 
-static
-inline void sc_store_replacement(char const *mis, string const & cor) {
+static inline 
+void sc_store_replacement(char const *mis, string const & cor) {
 	pspell_manager_store_replacement(sc, mis, cor.c_str());
 }
 
@@ -792,33 +803,16 @@ bool RunSpellChecker(BufferView * bv)
 	float newval = 0.0;
    
 	/* create ispell process */
+	init_spell_checker(bv->buffer()->params, tmp);
 
-#ifndef USE_PSPELL
-
-	create_ispell_pipe(bv->buffer()->params, tmp);
-	if (isp_pid == -1) {
-		fl_show_message(
-			_("\n\n"
-			  "The ispell-process has died for some reason. *One* possible reason\n"
-			  "could be that you do not have a dictionary file\n"
-			  "for the language of this document installed.\n"
-			  "Check /usr/lib/ispell or set another\n"
-			  "dictionary in the Spellchecker Options menu."), "", "");
-		fclose(out);
-		return false;
-	}
-	// Put ispell in terse mode to improve speed
-	ispell_terse_mode();
-#else
-	init_spell_checker(tmp);
 	if (spell_error != 0) {
 		fl_show_message(_(spell_error), "", "");
 		sc_clean_up_after_error();
- 		return true;
- 	}
-#endif
+		return false;
+	}
 
 	unsigned int word_count = 0;
+
 	while (true) {
 		char * word = bv->nextWord(newval);
 		if (word == 0) break;
@@ -829,39 +823,24 @@ bool RunSpellChecker(BufferView * bv)
 		if(newvalue!= oldval) {
 			oldval = newvalue;
 			fl_set_slider_value(fd_form_spell_check->slider, oldval);
- 		}
+		}
 
 		if (word_count%1000 == 0) {
 			obj =  fl_check_forms();
 			if (obj == fd_form_spell_check->stop) {
 				delete[] word;
-#ifndef USE_PSPELL
-				ispell_terminate();
-#else
 				close_spell_checker();
-#endif
 				return true;
 			}
 			if (obj == fd_form_spell_check->done) {
 				delete[] word;
-#ifndef USE_PSPELL
-				ispell_terminate();
-#else
 				close_spell_checker();
-#endif
 				return false;
 			}
 		}
 
-#ifndef USE_PSPELL
-		result = ispell_check_word(word);
-		if (isp_pid == -1)
-#else
 		result = sc_check_word(word);
-		if (!sc_still_alive())
-#endif
-		{
-
+		if (!sc_still_alive()) {
 			delete result;
 			delete[] word;
 			break;
@@ -880,40 +859,25 @@ bool RunSpellChecker(BufferView * bv)
 				fl_set_object_label(fd_form_spell_check->text, word);
 			fl_set_input(fd_form_spell_check->input, word);
 			fl_clear_browser(fd_form_spell_check->browser);
-#ifndef USE_PSPELL
-			int i;
-			for (i = 0; i < result->count; ++i) {
+			const char * w;
+			while ((w = result->next_miss()) != 0) {
 				if (rtl) {
-					string tmp = result->misses[i];
+					string tmp = w;
 					reverse(tmp.begin(),tmp.end());
 					fl_add_browser_line(fd_form_spell_check->browser, tmp.c_str());
 				} else
-					fl_add_browser_line(fd_form_spell_check->browser, result->misses[i]);
+					fl_add_browser_line(fd_form_spell_check->browser, w);
 			}
-#else
-			const char * w;
-			while ((w = result->next_miss()) != 0) {
-				fl_add_browser_line(fd_form_spell_check->browser, w);
-			}
-#endif
 
 			int clickline = -1;
 			while (true) {
 				obj = fl_do_forms();
 				if (obj == fd_form_spell_check->insert) {
-#ifndef USE_PSPELL
-					ispell_insert_word(word);
-#else
 					sc_insert_word(word);
-#endif
 					break;
 				}
 				if (obj == fd_form_spell_check->accept) {
-#ifndef USE_PSPELL
-					ispell_accept_word(word);
-#else
 					sc_accept_word(word);
-#endif
 					break;
 				}
 				if (obj == fd_form_spell_check->ignore) {
@@ -921,11 +885,7 @@ bool RunSpellChecker(BufferView * bv)
 				}
 				if (obj == fd_form_spell_check->replace || 
 				    obj == fd_form_spell_check->input) {
-#ifndef USE_PSPELL
-				        ispell_store_replacement(word, fl_get_input(fd_form_spell_check->input));
-#else
 				        sc_store_replacement(word, fl_get_input(fd_form_spell_check->input));
-#endif
 					bv->replaceWord(fl_get_input(fd_form_spell_check->input));
 					break;
 				}
@@ -934,11 +894,7 @@ bool RunSpellChecker(BufferView * bv)
 					// sent to lyx@via by Mark Burton <mark@cbl.leeds.ac.uk>
 					if (clickline == 
 					    fl_get_browser(fd_form_spell_check->browser)) {
-#ifndef USE_PSPELL
-				                ispell_store_replacement(word, fl_get_input(fd_form_spell_check->input));
-#else
 				                sc_store_replacement(word, fl_get_input(fd_form_spell_check->input));
-#endif
 						bv->replaceWord(fl_get_input(fd_form_spell_check->input));
 						break;
 					}
@@ -958,22 +914,14 @@ bool RunSpellChecker(BufferView * bv)
 				if (obj == fd_form_spell_check->stop) {
 					delete result;
 					delete[] word;
-#ifndef USE_PSPELL
-					ispell_terminate();
-#else
 					close_spell_checker();
-#endif
 					return true;
 				}
 	    
 				if (obj == fd_form_spell_check->done) {
 					delete result;
 					delete[] word;
-#ifndef USE_PSPELL
-					ispell_terminate();
-#else
 					close_spell_checker();
-#endif
 					return false;
 				}
 			}
@@ -983,14 +931,9 @@ bool RunSpellChecker(BufferView * bv)
 			delete[] word;
 		}
 	}
-
-#ifndef USE_PSPELL
-	if(isp_pid!= -1) {
-		ispell_terminate();
-#else
+   
 	if(sc_still_alive()) {
 		close_spell_checker();
-#endif
 		string word_msg(tostr(word_count));
 		if (word_count != 1) {
 			word_msg += _(" words checked.");
@@ -1001,15 +944,9 @@ bool RunSpellChecker(BufferView * bv)
 				word_msg.c_str());
 		return false;
 	} else {
-#ifndef USE_PSPELL
-		fl_show_message(_("The ispell-process has died for some reason.\n"
-				"Maybe it has been killed."), "", "");
-		fclose(out);
-#else
 		fl_show_message(_("The spell checker has died for some reason.\n"
 				"Maybe it has been killed."), "", "");
 		sc_clean_up_after_error();
-#endif
 		return true;
 	}
 }
@@ -1031,7 +968,7 @@ void sigchldhandler(pid_t pid, int * status)
 
 #else
 
-void sigchldhandler(pid_t /* pid */, int * /* status */)
+void sigchldhandler(pid_t, int *)
 { 
 	// do nothing
 }

@@ -49,6 +49,7 @@ AC_DEFUN(CHECK_WITH_PSPELL,
       USE_PSPELL="yes ($pspell_use_include $pspell_use_lib)"
       AC_SUBST(PSPELL_INCLUDES)
       AC_SUBST(PSPELL_LIBS)
+      lyx_flags="$lyx_flags use-pspell"
     fi
     AC_MSG_RESULT($USE_PSPELL)
   ])

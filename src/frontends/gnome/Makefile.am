@@ -33,6 +33,8 @@ LYXDATADIRS =
 libgnome_la_SOURCES = \
 	Dialogs.C \
 	GUIRunTime.C \
+	FormCitation.C \
+	FormCitation.h \
 	FormCopyright.C \
 	FormCopyright.h \
 	FormPrint.C \
@@ -64,7 +66,11 @@ libgnome_la_SOURCES = \
 	diatoc_callbacks.c  \
 	diatoc_interface.c  \
 	diatoc_callbacks.h \
-	diatoc_interface.h 
+	diatoc_interface.h \
+	diainsertcitation_interface.c \
+	diainsertcitation_interface.h \
+	diainsertcitation_callbacks.c \
+	diainsertcitation_callbacks.h 
 
 # These still have to be added. Sooner or later. ARRae-20000411
 #	GUI_defaults.C \

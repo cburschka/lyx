@@ -20,7 +20,7 @@ using SigC::bind;
 using SigC::slot;
 
 GLyxAppWin::GLyxAppWin() :
-  Gnome::App("GnomeLyX","LyX Gnomified"),
+  Gnome::App(PACKAGE,"LyX Gnomified"),
 	 status_(false, true, GNOME_PREFERENCES_NEVER)
 {
   init();
@@ -36,7 +36,7 @@ void GLyxAppWin::init()
   // set defaults
   set_policy(false, true, false);
   set_default_size(250, 350);
-  set_wmclass("lyx", "GnomeLyX");
+  set_wmclass(PACKAGE, "GnomeLyX");
 
   frame_.set_shadow_type(GTK_SHADOW_IN);
 

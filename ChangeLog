@@ -1,3 +1,26 @@
+2000-09-05  Juergen Vigna  <jug@sad.it>
+
+	* config/pspell.m4: added entry to lyx-flags
+
+	* src/spellchecker.C: modified version from Kevin for using pspell
+
+2000-09-01  Marko Vendelin <markov@ioc.ee>
+	* src/frontends/gnome/Makefile.am
+	* src/frontends/gnome/FormCitation.C
+	* src/frontends/gnome/FormCitation.h
+	* src/frontends/gnome/diainsertcitation_callbacks.c
+	* src/frontends/gnome/diainsertcitation_callbacks.h
+	* src/frontends/gnome/diainsertcitation_interface.c
+	* src/frontends/gnome/diainsertcitation_interface.h
+	* src/frontends/gnome/dialogs/diainsertcitation.glade: Insert Citation 
+	dialog for Gnome frontend
+
+	* src/main.C: Gnome libraries require keeping application name
+	and its version as strings
+
+	* src/frontends/gnome/mainapp.C: Change the name of the main window
+	from GnomeLyX to PACKAGE
+
 2000-09-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/frontends/Liason.C: add "using: declaration.
