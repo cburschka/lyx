@@ -1314,7 +1314,7 @@
   \closetypesetting}
 \def\typeset@AA(#1 #2){%
   \EqStr{Z}{#1}%
-  {}%
+  {\EqStr{Z}{#2}{}{\typeset@AA(#2)}}%
   {\EqStr{[}{#1}%
     {\typeset@printcomment#1#2QXXQX}%
     {{\TypeSetNumberNext%
