@@ -28,10 +28,27 @@ class BufferView;
 
 
 /**
- * These are the elements put on the undo stack. Each object
- * contains complete paragraphs and sufficient information
- * to restore the state.
- */
+These are the elements put on the undo stack. Each object contains complete
+paragraphs from some cell and sufficient information to restore the cursor
+state.
+
+The cell is given by a DocIterator pointing to this cell, the 'interesting'
+range of paragraphs by counting them from begin and end of cell,
+respectively.
+
+The cursor is also given as DocIterator and should point to some place in
+the stored paragraph range.  In case of math, we simply store the whole
+cell, as there usually is just a simple paragraph in a cell.
+
+The idea is to store the contents of 'interesting' paragraphs in some
+structure ('Undo') _before_ it is changed in some edit operation.
+Obviously, the stored ranged should be as small as possible. However, it
+there is a lower limit: The StableDocIterator pointing stored in the undo
+struct must be valid after the changes, too, as it will used as a pointer
+where to insert the stored bits when performining undo. 
+
+*/
+
 struct Undo {
 	/// This is used to combine consecutive undo recordings of the same kind.
 	enum undo_kind {
@@ -53,22 +70,24 @@ struct Undo {
 	undo_kind kind;
 	/// the position of the cursor
 	StableDocIterator cursor;
-	/// counted from begin of buffer
+	/// the position of the cell described 
+	StableDocIterator cell;
+	/// counted from begin of cell
 	lyx::par_type from;
 	/// complement to end of this cell
 	lyx::par_type end;
-	/// the contents of the saved paragraphs (for texted)
+	/// the contents of the saved Paragraphs (for texted)
 	ParagraphList pars;
-	/// the contents of the saved matharray (for mathed)
+	/// the stringified contents of the saved MathArray (for mathed)
 	std::string array;
 };
 
 
 /// this will undo the last action - returns false if no undo possible
-bool textUndo(BufferView &);
+bool textUndo(BufferView & bv);
 
 /// this will redo the last undo - returns false if no redo possible
-bool textRedo(BufferView &);
+bool textRedo(BufferView & bv);
 
 /// makes sure the next operation will be stored
 void finishUndo();

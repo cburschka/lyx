@@ -455,7 +455,8 @@ DocIterator StableDocIterator::asDocIterator(InsetBase * inset) const
 			lyxerr << "Should not happen, but does e.g. after C-n C-l C-z S-C-z"
 				<< endl << "dit: " << dit << endl
 				<< " lastpos: " << dit.lastpos() << endl;
-			break;
+			//break;
+			BOOST_ASSERT(false);
 		}
 		dit.push_back(data_[i]);
 		dit.back().inset_ = inset;
