@@ -1,3 +1,7 @@
+2001-02-27  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* BufferView_pimpl.C: add using std::find_if
+
 2001-02-27  José Matos  <jamatos@fep.up.pt>
 	
 	* LaTeXFeatures.C (getIncludedFiles): call to BasePath replaced

@@ -1,3 +1,11 @@
+2001-02-27  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* math_parinset.C (draw): move MathedXiter data(this) up. and
+	remove it two other places.
+
+	* math_macro.C (MathMacro): use array directly, don't use
+	setArgumentIdx and GetData
+
 2001-02-26  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* math_macroarg.C (MathMacroArgument): delete

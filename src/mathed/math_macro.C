@@ -44,8 +44,8 @@ ostream & operator<<(ostream & o, MathedTextCodes mtc)
 }
 
 
-MathMacro::MathMacro(MathMacroTemplate * t): 
-	MathParInset(LM_ST_TEXT, "", LM_OT_MACRO), tmplate_(t)
+MathMacro::MathMacro(MathMacroTemplate * t)
+	: MathParInset(LM_ST_TEXT, "", LM_OT_MACRO), tmplate_(t)
 {
 	nargs_ = tmplate_->getNoArgs();
 	tcode_ = tmplate_->getTCode();
@@ -58,8 +58,8 @@ MathMacro::MathMacro(MathMacroTemplate * t):
 }
 
 
-MathMacro::MathMacro(MathMacro * m): 
-	MathParInset(LM_ST_TEXT, m->GetName(), LM_OT_MACRO)
+MathMacro::MathMacro(MathMacro * m)
+	: MathParInset(LM_ST_TEXT, m->GetName(), LM_OT_MACRO)
 {
 	tmplate_ = m->tmplate_;
 	nargs_ = tmplate_->getNoArgs();
@@ -68,9 +68,10 @@ MathMacro::MathMacro(MathMacro * m):
 	idx_ = 0;
 	SetName(tmplate_->GetName());
 	for (int i = 0; i < tmplate_->getNoArgs(); ++i) {
-		m->setArgumentIdx(i);
+		//m->setArgumentIdx(i);
 		args_[i].row   = m->args_[i].row;
-		args_[i].array = m->GetData();
+		//args_[i].array = m->GetData();
+		args_[i].array = m->args_[i].array;
 	}
 }
 

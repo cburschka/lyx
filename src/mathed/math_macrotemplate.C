@@ -59,8 +59,7 @@ void MathMacroTemplate::setEditMode(bool ed)
 		for (int i = 0; i < nargs_; ++i) {
 			args_[i].setExpand(false);
 		}
-	}
-	else {
+	} else {
 		flags_ &= ~MMF_Edit;
 		for (int i = 0; i < nargs_; ++i) {
 			args_[i].setExpand(true);
@@ -73,7 +72,7 @@ void MathMacroTemplate::draw(Painter & pain, int x, int y)
 {
 	int x2;
 	int y2;
-	bool expnd = (nargs_ > 0) ? args_[0].getExpand(): false;
+	bool expnd = (nargs_ > 0) ? args_[0].getExpand() : false;
 	if (flags_ & MMF_Edit) {
 		for (int i = 0; i < nargs_; ++i) {
 			args_[i].setExpand(false);
@@ -99,7 +98,7 @@ void MathMacroTemplate::draw(Painter & pain, int x, int y)
 
 void MathMacroTemplate::Metrics()
 {
-	bool expnd = (nargs_ > 0) ? args_[0].getExpand(): false;
+	bool expnd = (nargs_ > 0) ? args_[0].getExpand() : false;
     
 	if (flags_ & MMF_Edit) {
 		for (int i = 0; i < nargs_; ++i) {

@@ -63,6 +63,7 @@ extern int greek_kb_flag;
 using SigC::slot;
 #endif
 
+using std::find_if;
 using std::pair;
 using std::endl;
 using std::make_pair;
