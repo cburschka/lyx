@@ -1,6 +1,6 @@
 dnl Process with autoconf to generate configure script   -*- sh -*-
 
-AC_INIT(src/lyx.C)
+AC_INIT(src/lyxfind.C)
 AC_PREREQ(2.13) dnl We want to use autoconf 2.13
 AM_CONFIG_HEADER(src/config.h)
 dnl This is a trick to make autoheader do the right thing
