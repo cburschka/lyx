@@ -1,3 +1,7 @@
+2000-04-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyx_main.C (error_handler): use extern "C"
+
 2000-04-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/insets/figinset.C (DocBook): small patch from Jose (jamatos)

@@ -578,6 +578,7 @@ bool LyX::easyParse(int * argc, char * argv[])
 }
 
 
+extern "C"
 void error_handler(int err_sig)
 {
 	switch (err_sig) {
