@@ -1,3 +1,19 @@
+2000-07-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/version.h (LYX_VERSION): reset version number to
+	1.1.5fixcvs. 
+
+	* src/insets/insetbib.h (Clone): pass owner when creating a copy.
+
+2000-07-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyxrc.C (read): do not use LyXLex::lex() to parse set_color
+	arguments. 
+
+2000-07-20  Serge Winitzki <winitzki@erebus.phys.cwru.edu>
+
+	* lib/bind/sciword.bind: updated.
+
 2000-07-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* version 1.1.5fix1 released.

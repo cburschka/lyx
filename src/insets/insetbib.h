@@ -122,7 +122,7 @@ public:
 
         ///
 	Inset * Clone() const {
-		return new InsetBibtex(contents, options, 0);
+		return new InsetBibtex(contents, options, owner);
 	}
 	///  
 	Inset::Code LyxCode() const

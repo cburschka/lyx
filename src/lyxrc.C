@@ -852,17 +852,17 @@ int LyXRC::read(string const & filename)
 		{
 			string lyx_name, x11_name;
 
-			if (lexrc.lex() == LyXLex::LEX_DATA)  {
+			if (lexrc.next())  {
 				lyx_name = lexrc.GetString();
 			} else {
-				lexrc.printError("Bad color tag: `$$Token'");
+				lexrc.printError("Missing color tag.");
 				break;
 			}
 			
-			if (lexrc.lex() == LyXLex::LEX_DATA) {
+			if (lexrc.next()) {
 				x11_name = lexrc.GetString();
 			} else {
-				lexrc.printError("Bad color name: `$$Token'");
+				lexrc.printError("Missing color name for color : `$$Token'");
 				break;
 			}
 
