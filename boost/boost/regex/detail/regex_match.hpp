@@ -56,8 +56,10 @@ inline int string_compare(const std::basic_string<C,T,A>& s, const C* p)
 { return s.compare(p); }
 inline int string_compare(const std::string& s, const char* p)
 { return std::strcmp(s.c_str(), p); }
+# ifndef BOOST_NO_WREGEX
 inline int string_compare(const std::wstring& s, const wchar_t* p)
 { return std::wcscmp(s.c_str(), p); }
+# endif
 # define STR_COMP(s,p) string_compare(s,p)
 #endif
 
