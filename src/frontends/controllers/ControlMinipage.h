@@ -43,7 +43,7 @@ struct MinipageParams {
 ///
 bool operator==(MinipageParams const &, MinipageParams const &);
 ///
-//bool operator!=(MinipageParams const &, MinipageParams const &);
+bool operator!=(MinipageParams const &, MinipageParams const &);
 
 
 /** A controller for Minipage dialogs.

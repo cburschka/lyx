@@ -1,3 +1,12 @@
+2001-07-29  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormMathsBitmap.C: initialise form_
+
+2001-07-29  Baruch Even  <baruch@lyx.org>
+
+	* src/forms/form_graphics.fd:
+	* src/FormGraphics.C: Added support for the new horizontal scale factor.
+
 2001-07-30  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* forms/makefile (SRCS): add form_float.fd
@@ -33,14 +42,14 @@
 2001-07-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C:
-	* Makefile.am: 
+	* Makefile.am:
 	* FormThesaurus.h:
 	* FormThesaurus.C:
 	* form_thesaurus.h:
 	* form_thesaurus.C:
 	* forms/makefile:
 	* forms/form_thesaurus.fd: add thesaurus
- 
+
 2001-07-26  Baruch Even  <baruch@lyx.org>
 
 	* FormGraphics.h:

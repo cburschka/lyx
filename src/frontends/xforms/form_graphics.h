@@ -44,6 +44,7 @@ struct FD_form_graphics {
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_cancel;
+	FL_OBJECT *radio_height_scale;
 };
 
 #endif /* FD_form_graphics_h_ */

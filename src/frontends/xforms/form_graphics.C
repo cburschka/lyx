@@ -145,6 +145,8 @@ FD_form_graphics * FormGraphics::build_graphics()
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
+  fdui->radio_height_scale = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 140, 160, 96, 30, _("Scale"));
+    fl_set_object_callback(obj, C_FormBaseInputCB, CHECKINPUT);
   fl_end_form();
 
   fdui->form->fdui = fdui;

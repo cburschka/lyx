@@ -1,3 +1,11 @@
+2001-07-30  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlFloat.h: add a != operator for FloatParams.
+	Lars, how did you get this to compile!!!
+
+	* ControlMinipage.[Ch]: uncommented someone's commenting out of
+	operator != for MinipageParams. Who's changing stuff and not compiling?
+
 2001-07-30  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* Makefile.am (libcontrollers_la_SOURCES): add ControlFloat.h and

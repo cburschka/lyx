@@ -75,7 +75,8 @@ struct InsetGraphicsParams
 	    CM,
 	    INCH,
 	    PERCENT_PAGE,
-	    PERCENT_COLUMN
+	    PERCENT_COLUMN,
+		SCALE
 	};
 
 

@@ -8,14 +8,25 @@
 
 	* insetfoot.h: remove InsetFoot:: qualifier.
 
-2001-07-30  Baruch Even  <baruch@lyx.org>
+2001-07-29  Baruch Even  <baruch@lyx.org>
+
+	* ChangeLog: Hiding time travel evidence.
+
+	* insetgraphicsParams.h:
+	* insetgraphicsParams.C: 
+	* insetgraphics.C: Added horizontal scale option, it actually scales both
+	directions since it keeps image proportions.
+
+	* insetgraphics.C: Fixed EPS detection to be non-hacky.
+
+2001-07-29  Baruch Even  <baruch@lyx.org>
 
 	* insetgraphics.C (decideOutputImageFormat): when doing postscript output
 	convert PNG/GIF/JPG to EPS, assume the rest are EPS already. 
 
 	HACKY! Will need to add an EPS detection routine like old InsetFig does!
 
-2001-07-30  Baruch Even  <baruch@lyx.org>
+2001-07-29  Baruch Even  <baruch@lyx.org>
 
 	* insetgraphics.C: Added EPSI to be an alias of EPS.
 

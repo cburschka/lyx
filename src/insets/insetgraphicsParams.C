@@ -61,6 +61,7 @@ InsetGraphicsParams::InsetGraphicsParams()
 		resizeTranslator.addPair(INCH, "inch");
 		resizeTranslator.addPair(PERCENT_PAGE, "percentOfPage");
 		resizeTranslator.addPair(PERCENT_COLUMN, "percentOfColumn");
+		resizeTranslator.addPair(SCALE, "scale");
 
 		// Fill the origin translator
 		originTranslator.addPair(DEFAULT, "default");
@@ -155,17 +156,20 @@ void InsetGraphicsParams::testInvariant() const
 	       widthResize == CM ||
 	       widthResize == INCH ||
 	       widthResize == PERCENT_PAGE ||
-	       widthResize == PERCENT_COLUMN
+	       widthResize == PERCENT_COLUMN ||
+		   widthResize == SCALE
 	      );
 
 	lyx::Assert(heightResize == DEFAULT_SIZE ||
 	       heightResize == CM ||
 	       heightResize == INCH ||
-	       heightResize == PERCENT_PAGE
+	       heightResize == PERCENT_PAGE ||
+		   heightResize == SCALE
 	      );
 
-	lyx::Assert(widthSize >= 0.0);
-	lyx::Assert(heightSize >= 0.0);
+	// For SCALE these can be negative.
+	//lyx::Assert(widthSize >= 0.0);
+	//lyx::Assert(heightSize >= 0.0);
 
 	// Angle is in degrees and ranges -360 < angle < 360
 	// The reason for this is that in latex there is a meaning for the

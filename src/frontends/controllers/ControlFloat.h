@@ -42,6 +42,13 @@ bool operator==(FloatParams const & p1, FloatParams const & p2)
 }
 
 
+inline
+bool operator!=(FloatParams const & p1, FloatParams const & p2) 
+{
+	return !(p1 == p2);
+}
+
+
 /** A controller for Minipage dialogs.
  */
 class ControlFloat : public ControlInset<InsetFloat, FloatParams>  {

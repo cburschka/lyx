@@ -41,6 +41,14 @@ Known BUGS:
 	* We do not dither or resize the image in a WYSIWYM way, we load it at
 		its original size and color, resizing is done in the final output,
 		but not in the LyX window.
+
+	* The scale option is only handled for the horizontal part, the vertical
+		part will not work. For now it is also shown only for horizontal
+		resizing on the form.
+
+	* EPS figures are not fully detected, they may have a lot of possible
+		suffixes so we need to read the file and detect if it's EPS or not.
+		[Implemented, need testing]
 		
 TODO Before initial production release:
     * Replace insetfig everywhere
@@ -146,6 +154,7 @@ TODO Extended features:
 #include "lyxtext.h"
 #include "lyxrc.h"
 #include "font.h" // For the lyxfont class.
+#include "fstream" // for ifstream in isEPS
 #include <algorithm> // For the std::max
 #include "support/lyxmanip.h"
 #include "debug.h"
@@ -153,6 +162,7 @@ TODO Extended features:
 
 extern string system_tempdir;
 
+using std::ifstream;
 using std::ostream;
 using std::endl;
 
@@ -480,6 +490,8 @@ void formatResize(ostream & os, string const & key,
 		os << key << '=' << size / 100 << "\\column" << key << ',';
 		break;
 
+	case InsetGraphicsParams::SCALE:
+		os << "scale" << '=' << size << ',';
 	}
 }
 
@@ -511,28 +523,85 @@ InsetGraphics::createLatexOptions() const
 }
 
 namespace {
-	
-string decideOutputImageFormat(string const & in_fmt)
+
+enum FileType {
+	EPS,
+	PNG,
+	JPEG,
+	GIF,
+	PDF,
+	UNKNOWN
+};
+
+bool isEPS(string const & filename)
+{
+	if (filename.empty() || !IsFileReadable(filename)) return false;
+
+	ifstream ifs(filename.c_str());
+
+	if (!ifs) return false;	// Couldn't open file...
+
+	bool is_eps = false; // Have we recognized the file as EPS?
+	string to_find = "%!PS-Adobe-"; // The string we use to recognize
+	int const max_attempts = 500; // Maximum strings to read to attempt recognition
+	int count = 0; // Counter of attempts.
+	string str;
+	for (; count < max_attempts; ++count) {
+		if (ifs.eof()) {
+			lyxerr[Debug::INFO] << "InsetGraphics (isEPS)"
+				" End of file reached and it wasn't found to be EPS!" << endl;
+			break;
+		}
+
+		ifs >> str;
+		if (str.find(to_find)) {
+			is_eps = true;
+			break;
+		}
+	}
+
+	return is_eps;
+}
+
+enum FileType classifyFileType(string const & filename, string const & suffix)
+{
+	if (suffix == "png")
+		return PNG;
+	else if (suffix == "jpg" || suffix == "jpeg")
+		return JPEG;
+	else if (suffix == "gif")
+		return GIF;
+	else if (suffix == "pdf")
+		return PDF;
+	else if (isEPS(filename))
+		return EPS;
+
+	return UNKNOWN;
+}
+
+string decideOutputImageFormat(string const & suffix, enum FileType type)
 {
 	// lyxrc.pdf_mode means:
 	// Are we creating a PDF or a PS file?
 	// (Should actually mean, are we using latex or pdflatex).
 	
 	if (lyxrc.pdf_mode) {
-		if (in_fmt == "eps" || in_fmt == "epsi" || in_fmt == "pdf")
+		if (type == EPS || type == EPS || type == PDF)
 			return "pdf";
-		else if (in_fmt == "jpg" || in_fmt == "jpeg")
-			return in_fmt;
+		else if (type == JPEG)
+			return suffix;
 		else
 			return "png";
 	}
 
 	// If it's postscript, we always do eps.
-	// Garst has many eps files with various extensions, we just assume
-	// whatever goes in (except those we know to be otherwise) is eps
-	if (in_fmt == "gif" || in_fmt == "png" || in_fmt == "jpg")
-		return "eps";
-	return in_fmt;
+	// There are many suffixes that are actually EPS (ask Garst for example)
+	// so we detect if it's an EPS by looking in the file, if it is, we return
+	// the same suffix of the file so it won't be converted.
+	if (type == EPS)
+		return suffix;
+	
+	return "eps";
 }
 
 } // Anon. namespace
@@ -559,10 +628,11 @@ InsetGraphics::prepareFile(Buffer const *buf) const
 	
 	// Get the extension (format) of the original file.
 	string const extension = GetExtension(params.filename);
+	FileType type = classifyFileType(params.filename, extension);
 	
 	// Are we creating a PDF or a PS file?
 	// (Should actually mean, are we usind latex or pdflatex).
-	string const image_target = decideOutputImageFormat(extension);
+	string const image_target = decideOutputImageFormat(extension, type);
 
 	if (extension == image_target)
 		return params.filename;

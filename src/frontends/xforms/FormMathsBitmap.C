@@ -40,7 +40,7 @@ FormMathsBitmap::FormMathsBitmap(LyXView * lv, Dialogs * d,
 				 FormMathsPanel const & p,
 				 vector<string> const & l)
 	: FormMathsSub(lv, d, p, _("Maths Bitmaps")),
-	  latex_(l), ww_(0), x_(0), y_(0), w_(0), h_(0)
+	  latex_(l), form_(0), ww_(0), x_(0), y_(0), w_(0), h_(0)
 {
 	ww_ = 2 * FL_abs(FL_BOUND_WIDTH);
 	x_ = y_ = ww_;

@@ -10,7 +10,7 @@ Unit of measure: FL_COORD_PIXEL
 Name: form_graphics
 Width: 490
 Height: 390
-Number of Objects: 36
+Number of Objects: 37
 
 --------------------
 class: FL_BOX
@@ -662,6 +662,24 @@ gravity: FL_NoGravity FL_NoGravity
 name: button_cancel
 callback: C_FormBaseCancelCB
 argument: 0
+
+--------------------
+class: FL_CHECKBUTTON
+type: RADIO_BUTTON
+box: 140 160 96 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Scale
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_height_scale
+callback: C_FormBaseInputCB
+argument: CHECKINPUT
 
 ==============================
 create_the_forms

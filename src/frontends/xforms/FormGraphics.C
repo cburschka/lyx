@@ -99,6 +99,8 @@ void FormGraphics::build()
 	                                  InsetGraphicsParams::INCH);
 	heightButtons.registerRadioButton(dialog_->radio_height_percent_page,
 	                                  InsetGraphicsParams::PERCENT_PAGE);
+	heightButtons.registerRadioButton(dialog_->radio_height_scale,
+	                                  InsetGraphicsParams::SCALE);
 
 	// Add the widgets of the display radio buttons to their group
 	displayButtons.reset();

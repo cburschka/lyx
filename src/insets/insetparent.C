@@ -21,6 +21,7 @@
 #include "support/filetools.h"
 #include "BufferView.h"
 #include "LyXView.h"
+#include "support/LOstream.h"
 #include "commandtags.h"
 #include "buffer.h"
 #include "gettext.h"

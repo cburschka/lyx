@@ -78,10 +78,10 @@ bool operator==(MinipageParams const & p1, MinipageParams const & p2)
 }
 
 
-//bool operator!=(MinipageParams const & p1, MinipageParams const & p2)
-//{
-//	return !(p1 == p2);
-//}
+bool operator!=(MinipageParams const & p1, MinipageParams const & p2)
+{
+	return !(p1 == p2);
+}
 
 namespace minipage {
 
