@@ -17,6 +17,8 @@
 #pragma interface
 #endif
 
+#include <utility>
+ 
 #include "ControlDialogs.h"
 
 /** A controller for the TabularCreate Dialog.
@@ -25,8 +27,11 @@ class ControlTabularCreate : public ControlDialog<ControlConnectBD> {
 public:
 	/// 
 	ControlTabularCreate(LyXView &, Dialogs &);
+ 
+	typedef std::pair<unsigned int, unsigned int> rowsCols;
+
 	///
-	string & params() const;
+	rowsCols & params();
 
 private:
 	/// Apply from dialog
@@ -34,11 +39,9 @@ private:
 
 	/// set the params before show or update
 	virtual void setParams();
-	/// clean-up on hide.
-	virtual void clearParams();
     
-	///
-	string * params_;
+	/// rows, cols params
+	rowsCols params_;
 };
 
 #endif // CONTROLTABULARCREATE_H

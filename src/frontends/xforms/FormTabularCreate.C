@@ -11,6 +11,7 @@
  */
 
 #include <config.h>
+#include <utility>
 
 #ifdef __GNUG__
 #pragma implementation
@@ -49,8 +50,8 @@ void FormTabularCreate::build()
 
 void FormTabularCreate::apply()
 {
-	int ysize = int(fl_get_slider_value(dialog_->slider_columns) + 0.5);
-	int xsize = int(fl_get_slider_value(dialog_->slider_rows) + 0.5);
+	unsigned int ysize = (unsigned int)(fl_get_slider_value(dialog_->slider_columns) + 0.5);
+	unsigned int xsize = (unsigned int)(fl_get_slider_value(dialog_->slider_rows) + 0.5);
 
-	controller().params() = tostr(xsize) + " " + tostr(ysize);
+	controller().params() = std::make_pair(xsize, ysize);
 }

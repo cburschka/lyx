@@ -21,6 +21,7 @@
 #include "Dialogs.h"
 #include "LyXView.h"
 #include "lyxfunc.h"
+#include "support/lstrings.h"
 
 ControlTabularCreate::ControlTabularCreate(LyXView & lv, Dialogs & d)
 	: ControlDialog<ControlConnectBD>(lv, d)
@@ -30,28 +31,15 @@ ControlTabularCreate::ControlTabularCreate(LyXView & lv, Dialogs & d)
 }
 
 
-string & ControlTabularCreate::params() const
+ControlTabularCreate::rowsCols & ControlTabularCreate::params()
 {
-	Assert(params_);
-	return *params_;
+		return params_;
 }
 
 
 void ControlTabularCreate::setParams()
 {
-	if (params_) delete params_;
-	params_ = new string;
-
 	bc().valid(); // so that the user can press Ok
-}
-
-
-void ControlTabularCreate::clearParams()
-{
-	if (params_) {
-		delete params_;
-		params_ = 0;
-	}
 }
 
 
@@ -62,5 +50,7 @@ void ControlTabularCreate::apply()
    
 	view().apply();
 
-	lv_.getLyXFunc()->Dispatch(LFUN_INSET_TABULAR, params());
+	string const val(tostr(params().first) + " " + tostr(params().second)); 
+ 
+	lv_.getLyXFunc()->Dispatch(LFUN_INSET_TABULAR, val);
 }
