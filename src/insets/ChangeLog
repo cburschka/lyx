@@ -8,7 +8,8 @@
 	ChangeCitationsIfUnique.
 
 	* insetbibtex.[Ch] (clone): move out of line; use copy c-tor.
-	
+
+	* insetexternal.C (read): use pushpophelper.
 
 2003-07-28  José Matos  <jamatos@lyx.org>
 

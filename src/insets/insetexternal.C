@@ -309,7 +309,7 @@ void InsetExternal::read(Buffer const * buffer, LyXLex & lex)
 		{ "template", EX_TEMPLATE }
 	};
 
-	lex.pushTable(external_tags, EX_END);
+	pushpophelper pph(lex, external_tags, EX_END);
 
 	bool found_end  = false;
 	bool read_error = false;
@@ -362,8 +362,6 @@ void InsetExternal::read(Buffer const * buffer, LyXLex & lex)
 		lex.printError("ExternalInset::read: "
 			       "Missing \\end_inset.");
 	}
-
-	lex.popTable();
 
 	// Replace the inset's store
 	setParams(params, buffer);
