@@ -822,7 +822,7 @@ void MenuMakeLaTeX(Buffer * buffer)
 		return;
 	
 	// Get LaTeX-Filename
-	string s = buffer->getLatexName();
+	string s = buffer->getLatexName(false);
 	
 	FileInfo fi(s);
 	if (fi.readable() &&
@@ -968,7 +968,7 @@ void MenuMakeHTML(Buffer * buffer)
 	// latex, but the html file name can be
 	// anything.
 	string result = ChangeExtension(file, ".html", false);
-	string infile = buffer->getLatexName();
+	string infile = buffer->getLatexName(false);
 	string tmp = lyxrc->html_command;
 	tmp = subst(tmp, "$$FName", infile);
 	tmp = subst(tmp, "$$OutName", result);

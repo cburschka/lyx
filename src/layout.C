@@ -408,7 +408,7 @@ void LyXLayout::readAlign(LyXLex & lexrc)
 	switch (le) {
 	case LyXLex::LEX_UNDEF:
 		lexrc.printError("Unknown alignment `$$Token'");
-		return; break;
+		return; 
 	default: break;
 	};
 	switch(static_cast<AlignTags>(le)) {
@@ -515,7 +515,7 @@ void LyXLayout::readLabelType(LyXLex & lexrc)
 	switch (le) {
 	case LyXLex::LEX_UNDEF:
 		lexrc.printError("Unknown labeltype tag `$$Token'");
-		return; break;
+		return; 
 	default: break;
 	}
 	switch (static_cast<LabelTypeTags>(le)) {
@@ -599,7 +599,7 @@ void LyXLayout::readMargin(LyXLex & lexrc)
 	switch(le) {
 	case LyXLex::LEX_UNDEF:
 		lexrc.printError("Unknown margin type tag `$$Token'");
-		return; break;
+		return; 
 	default: break;
 	}
 	switch(static_cast<MarginTags>(le)) {
@@ -647,7 +647,7 @@ void LyXLayout::readLatexType(LyXLex & lexrc)
 	switch (le) {
 	case LyXLex::LEX_UNDEF:
 		lexrc.printError("Unknown latextype tag `$$Token'");
-		return; break;
+		return; 
 	default: break;
 	}
 	switch (static_cast<LatexTypeTags>(le)) {
@@ -693,7 +693,7 @@ void LyXLayout::readSpacing(LyXLex & lexrc)
 	switch(le) {
 	case LyXLex::LEX_UNDEF:
 		lexrc.printError("Unknown spacing token `$$Token'");
-		return; break;
+		return;
 	default: break;
 	}
 	switch(static_cast<SpacingTags>(le)) {
@@ -995,7 +995,7 @@ void LyXTextClass::readOutputType(LyXLex & lexrc)
 	switch(le) {
 	case LyXLex::LEX_UNDEF:
 		lexrc.printError("Unknown output type `$$Token'");
-		return; break;
+		return; 
 	default: break;
 	}
 	switch(static_cast<OutputTypeTags>(le)) {
@@ -1050,7 +1050,7 @@ void LyXTextClass::readMaxCounter(LyXLex & lexrc)
 	switch(le) {
 	case LyXLex::LEX_UNDEF:
 		lexrc.printError("Unknown MaxCounter tag `$$Token'");
-		return; break;
+		return; 
 	default: break;
 	}
 	switch (static_cast<MaxCounterTags>(le)) {

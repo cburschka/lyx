@@ -1,3 +1,33 @@
+1999-12-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/mathed/math_draw.C (Draw, Metrics): fix a bug where a prime
+	and a subscript would give bad display (patch from Dekel Tsur
+	<dekel@math.tau.ac.il>). 
+
+	* src/insets/insetlatexaccent.h: make sure ACCENT_TYPES is public. 
+
+	* src/spellchecker.C (create_ispell_pipe): use a const_cast to
+	please sun CC.
+
+	* src/chset.h: add a few 'using' directives
+
+	* src/lyxfunc.C (Dispatch): check that LFUN_UNKNOWN_ACTION is not
+	triggered when no buffer is active
+
+	* src/layout.C: removed `break' after `return' in switch(), since
+	it is unreachable.
+
+	* src/lyx_main.C (init): make sure LyX can be ran in place even
+	when libtool has done its magic with shared libraries. Fix the
+	test for the case when the system directory has not been found.
+
+	* src/lyx_cb.C (MenuMakeLaTeX): make sure to keep the full path
+	name for the latex file.
+	(MenuMakeHTML): ditto
+
+	* src/buffer.h: add an optional boolean argument, which is passed
+	to ChangeExtension.
+
 1999-12-20  Allan Rae  <rae@lyx.org>
 
 	* lib/templates/IEEEtran.lyx: small correction and update.

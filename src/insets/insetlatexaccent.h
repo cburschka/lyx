@@ -72,7 +72,6 @@ public:
 	Inset::Code LyxCode()const;
 	///
 	inline bool CanDisplay();
-private:
 	/// all the accent types
 	enum ACCENT_TYPES{
 		///
@@ -118,7 +117,7 @@ private:
 		///
  		LSLASH
 	};
-
+private:
 	friend ostream & operator<<(ostream &, ACCENT_TYPES);
 	/// Check if we know the modifier and can display it ok on screen.
 	void checkContents();

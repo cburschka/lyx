@@ -77,7 +77,7 @@ MathParInset::Draw(int x, int y)
       if (cx >= ' ') {
 	 byte *s = data.GetString(ls);
 	  drawStr(data.FCode(), size, x, y, s, ls);
-	  mathed_char_height(data.FCode(), size, s[ls-1], asc, des);
+	  mathed_char_height(LM_TC_CONST, size, 'y', asc, des);
 	  limits = false;
       } else {
 	  if (cx == 0) break;
@@ -168,6 +168,7 @@ MathParInset::Metrics()
 	    if (asc > ascent) ascent = asc;
 	    if (des > descent) descent = des;
 	    limits = false;
+	    mathed_char_height(LM_TC_CONST, size, 'y', asc, des);
 	} else
 	  if (MathIsInset(cx)) {
 	      MathedInset *p = data.GetInset();

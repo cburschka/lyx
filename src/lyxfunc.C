@@ -2368,6 +2368,12 @@ string LyXFunc::Dispatch(int ac,
 	
 	case LFUN_UNKNOWN_ACTION:
 	{
+		if(!owner->buffer()) {
+			LyXBell();
+			setErrorMessage(N_("No document open"));
+			break;
+		}
+
 		if (owner->buffer()->isReadonly()) {
 			LyXBell();
 			setErrorMessage(N_("Document is read only"));

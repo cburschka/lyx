@@ -160,18 +160,24 @@ void LyX::init(int */*argc*/, char **argv)
 	string binpath = subst(argv[0], '\\', '/');
 	string binname = OnlyFilename(argv[0]);
 	// Sorry for system specific code. (SMiyata)
-	if (suffixIs(binname, ".exe")) binname.erase(binname.length()-4, string::npos);
+	if (suffixIs(binname, ".exe")) 
+		binname.erase(binname.length()-4, string::npos);
 	
 	binpath = ExpandPath(binpath); // This expands ./ and ~/
 	
 	if (!AbsolutePath(binpath)) {
 		string binsearchpath = GetEnvPath("PATH");
-		binsearchpath += ";."; // This will make "src/lyx" work always :-)
+		// This will make "src/lyx" work always :-)
+		binsearchpath += ";."; 
 		binpath = FileOpenSearch(binsearchpath, argv[0]);
 	}
 
 	fullbinpath = binpath;
 	binpath = MakeAbsPath(OnlyPath(binpath));
+
+	// In case we are running in place and compiled with shared libraries
+	if (suffixIs(binpath, "/.libs/"))
+		binpath.erase(binpath.length()-6, string::npos);
 
 	if (binpath.empty()) {
 		lyxerr << _("Warning: could not determine path of binary.")
@@ -275,7 +281,7 @@ void LyX::init(int */*argc*/, char **argv)
 	}
 
 	// Warn the user if we couldn't find "chkconfig.ltx"
-	if (system_lyxdir.empty()) {
+	if (system_lyxdir == "./") {
 		lyxerr <<_("LyX Warning! Couldn't determine system directory.")
 		       <<_("Try the '-sysdir' command line parameter or")
 		       <<_("set the environment variable LYX_DIR_11x to the "

@@ -7,6 +7,12 @@
 #endif
 
 #include <map>
+using std::map;
+
+#include <utility>
+using std::pair;
+using std::make_pair;  // may also be put in chset.C
+
 #include "LString.h"
 
 using std::map;

@@ -236,8 +236,10 @@ public:
 	string const & fileName() const { return filename; }
 
 	/// A transformed version of the file name, adequate for LaTeX  
-	string getLatexName() const {
-		return ChangeExtension(MakeLatexName(filename), ".tex", true); 
+	/* The path is stripped if no_path is true (default) */
+	string getLatexName(bool no_path = true) const {
+		return ChangeExtension(MakeLatexName(filename), 
+				       ".tex", no_path); 
 	}
 
 	/// Change name of buffer. Updates "read-only" flag.
