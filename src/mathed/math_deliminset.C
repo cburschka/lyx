@@ -1,5 +1,9 @@
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "math_deliminset.h"
 #include "math_iter.h"
 #include "math_parser.h"
@@ -78,8 +82,8 @@ void
 MathDelimInset::Metrics()
 {
 	MathParInset::Metrics();
+
 	int d;
-	
 	mathed_char_height(LM_TC_CONST, size(), 'I', d, dh_);
 	dh_ /= 2;
 	ascent += 2 + dh_;

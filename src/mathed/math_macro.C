@@ -75,11 +75,6 @@ MathMacro::MathMacro(MathMacro * m):
 }
 
 
-MathMacro::~MathMacro()
-{
-}
-
-
 MathedInset * MathMacro::Clone()
 {
 	return new MathMacro(this);

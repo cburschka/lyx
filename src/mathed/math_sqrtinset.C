@@ -1,5 +1,9 @@
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "math_sqrtinset.h"
 #include "math_iter.h"
 #include "LColor.h"
@@ -8,6 +12,7 @@
 #include "support/LOstream.h"
 
 using std::ostream;
+
 
 MathSqrtInset::MathSqrtInset(short st)
 	: MathParInset(st, "sqrt", LM_OT_SQRT) {}

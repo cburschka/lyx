@@ -4,6 +4,10 @@
 
 #include "math_parinset.h"
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 /** A delimiter
     \author Alejandro Aguilar Sierra
 */

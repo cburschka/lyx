@@ -7,6 +7,10 @@
 #include "math_parinset.h"
 #include "math_macroarg.h"
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 class MathMacro;
 
 /** This class contains the macro definition
@@ -18,7 +22,7 @@ public:
 	explicit
 	MathMacroTemplate(string const &, int na = 0, int f = 0);
 	///
-	~MathMacroTemplate();
+	//~MathMacroTemplate();
 	///
 	void draw(Painter &, int, int);
 	///
@@ -45,9 +49,7 @@ public:
 	/// Replace the appropriate arguments with a specific macro's data
 	void update(MathMacro * m = 0);
 	///
-	short flags() const {
-		return flags_;
-	}
+	short flags() const;
 private:
 	///
 	short flags_;
@@ -58,4 +60,10 @@ private:
 	///
 	int nargs_;
 };
+
+
+inline
+short MathMacroTemplate::flags() const {
+	return flags_;
+}
 #endif

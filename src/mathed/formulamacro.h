@@ -33,7 +33,7 @@ public:
 	InsetFormulaMacro();
 	///
 	explicit
-	InsetFormulaMacro(string name, int na = 0, bool env = false);
+	InsetFormulaMacro(string name, int na = 0);
 	///
 	~InsetFormulaMacro();
 	///
@@ -58,7 +58,7 @@ public:
 	///
 	Inset * Clone(Buffer const &) const;
 	///
-	Inset::Code LyxCode() const { return Inset::MATHMACRO_CODE; }
+	Inset::Code LyxCode() const;
 	/// what appears in the minibuffer when opening
 	string const EditMessage() const;
 	///
@@ -70,11 +70,17 @@ public:
 
 private:
 	///
-        bool opened;
+        bool opened_;
 	///
-        string name;
+        string name_;
 	///
-        MathMacroTemplate * tmacro;
+        MathMacroTemplate * tmacro_;
 };
 
+
+inline
+Inset::Code InsetFormulaMacro::LyxCode() const
+{
+	return Inset::MATHMACRO_CODE;
+}
 #endif

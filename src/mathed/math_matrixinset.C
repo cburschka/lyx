@@ -1,5 +1,9 @@
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "math_matrixinset.h"
 #include "math_rowst.h"
 #include "math_xiter.h"
@@ -171,7 +175,7 @@ void MathMatrixInset::Metrics()
 		cxrow = cxrow->getNext();
 	}
 	
-	int hl = Descent();
+	int const hl = Descent();
 	h -= MATH_ROWSEP;
 	
 	//  Compute vertical align
@@ -229,7 +233,7 @@ void MathMatrixInset::Metrics()
 					lf = (ws_[i] - cxrow->getTab(i))/2; 
 				break;
 			}
-			int ww = (isvoid) ? lf : lf + cxrow->getTab(i);
+			int const ww = (isvoid) ? lf : lf + cxrow->getTab(i);
 			cxrow->setTab(i, lf + rg);
 			rg = ws_[i] - ww + MATH_COLSEP;
 			if (cxrow == row_)

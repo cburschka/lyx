@@ -1,5 +1,9 @@
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "math_fracinset.h"
 #include "math_iter.h"
 #include "LColor.h"
@@ -96,7 +100,7 @@ MathedArray & MathFracInset::GetData()
 
 bool MathFracInset::Inside(int x, int y) 
 {
-	int xx = xo() - (width - w0_) / 2;
+	int const xx = xo() - (width - w0_) / 2;
 	
 	return x >= xx
 		&& x <= xx + width

@@ -1,3 +1,21 @@
+2001-02-26  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* math_macroarg.C (MathMacroArgument): delete
+	* math_macro.C (~MathMacro): delete
+	* math_macrotemplate.C (~MathMacroTemplate): delete
+	
+	* math_decorationinset.[Ch]: add pragma
+	* math_deliminset.[Ch]: likewise
+	* math_fracinset.[Ch]: likewise
+	* math_macroarg.[Ch]: likewise
+	* math_macrotemplate.[Ch]: likewise
+	* math_matrixinset.[Ch]: likewise
+	
+	* formulamacro.C (Read): set contents of tmacro_ to ar.
+
+	* formulamacro.h: add '_' to private variables.
+	* formalamacro.C: changes because of this.
+
 2001-02-23  Juergen Vigna  <jug@sad.it>
 
 	* formula.C (LocalDispatch):  changed action to be a kb_action (as it

@@ -4,6 +4,10 @@
 
 #include "math_parinset.h"
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 /** Fraction like objects (frac, stackrel, binom)
     \author Alejandro Aguilar Sierra
  */

@@ -15,13 +15,12 @@
 #ifndef MATH_ROOT
 #define MATH_ROOT
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "math_sqrtinset.h"
 #include "symbol_def.h"
 
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 /** The general n-th root inset.
     \author Alejandro Aguilar Sierra

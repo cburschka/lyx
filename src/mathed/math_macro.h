@@ -41,8 +41,6 @@ public:
 	explicit
 	MathMacro(MathMacro *);
 	///
-	~MathMacro();
-	///
 	void draw(Painter &, int, int);
 	///
 	void Metrics();

@@ -1,5 +1,9 @@
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "math_macroarg.h"
 #include "mathed/support.h"
 #include "debug.h"
@@ -16,12 +20,6 @@ MathMacroArgument::MathMacroArgument(int n)
 	: expnd_mode_(false), number_(n)
 {
 	SetType(LM_OT_MACRO_ARG);
-}
-
-
-MathMacroArgument::~MathMacroArgument()
-{
-	lyxerr << "help, destroyme!" << std::endl;
 }
 
 

@@ -1,5 +1,9 @@
 #include <config.h>
 
+#ifdef __GNUG__
+#pragma implementation
+#endif
+
 #include "math_decorationinset.h"
 #include "math_iter.h"
 #include "mathed/support.h"
@@ -39,8 +43,8 @@ MathDecorationInset::draw(Painter & pain, int x, int y)
 void
 MathDecorationInset::Metrics()
 {
-	int h = 2 * mathed_char_height(LM_TC_VAR, size(), 'I',
-				       ascent, descent);  
+	int const h = 2 * mathed_char_height(LM_TC_VAR, size(), 'I',
+					     ascent, descent);  
 	MathParInset::Metrics();
 	int w = Width() + 4;
 	if (w < 16) w = 16;

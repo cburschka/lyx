@@ -6,6 +6,10 @@
 
 #include "math_parinset.h"
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 /** Multiline math paragraph base class.
     This is the base to all multiline editable math objects
     like array and eqnarray.
@@ -20,9 +24,9 @@ public:
 	explicit
 	MathMatrixInset(MathMatrixInset *);
 	///
-	MathedInset * Clone();
+	~MathMatrixInset();
 	///
-	virtual ~MathMatrixInset();
+	MathedInset * Clone();
 	///
 	void draw(Painter &, int, int);
 	///

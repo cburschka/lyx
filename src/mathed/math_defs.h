@@ -120,7 +120,7 @@ enum MathedTextCodes  {
 	LM_TC_MAX
 };
 
-///
+/// Defined in math_macro.C
 std::ostream & operator<<(std::ostream &, MathedTextCodes mtc);
 
 

@@ -1,8 +1,12 @@
-
+// -*- C++ -*-
 #ifndef MATH_SQRTINSET_H
 #define MATH_SQRTINSET_H
 
 #include "math_parinset.h"
+
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 /** The square root inset.
     \author Alejandro Aguilar Siearra

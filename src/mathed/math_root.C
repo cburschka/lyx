@@ -19,8 +19,8 @@
 #pragma implementation
 #endif
 
-#include "math_iter.h"
 #include "math_root.h"
+#include "math_iter.h"
 #include "support/LOstream.h"
 
 using std::ostream;

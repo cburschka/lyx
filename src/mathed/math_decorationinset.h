@@ -1,12 +1,17 @@
+// -*- C++ -*-
 #ifndef MATH_DECORATIONINSET_H
 #define MATH_DECORATIONINSET_H
 
 #include "math_parinset.h"
 
+#ifdef __GNUG__
+#pragma interface
+#endif
+
 /** Decorations over (below) a math object
     \author Alejandro Aguilar Sierra
  */
-class MathDecorationInset: public MathParInset {
+class MathDecorationInset : public MathParInset {
 public:
 	///
 	MathDecorationInset(int, short st = LM_ST_TEXT);
