@@ -88,6 +88,7 @@ latexkeys wordlist[] =
 	{"bowtie",  LM_TK_NOGLYPH, 0, LMB_RELATION},
 	{"breve",  LM_TK_DECORATION, LM_breve, LMB_NONE},
 	{"bullet",  LM_TK_SYM, LM_bullet, LMB_OPERATOR},
+	{"cal",  LM_TK_OLDFONT, LM_TC_CAL, LMB_OPERATOR},
 	{"cap",  LM_TK_SYM, LM_cap, LMB_OPERATOR},
 	{"cdot",  LM_TK_SYM, LM_cdot, LMB_OPERATOR},
 	{"cdots",  LM_TK_DOTS, LM_cdots, LMB_NONE},

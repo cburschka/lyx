@@ -59,8 +59,7 @@ void MathCharInset::write(std::ostream & os, bool) const
 	if (code_ >= LM_TC_RM && code_ <= LM_TC_TEXTRM) 
 		os << '\\' << math_font_name[code_ - LM_TC_RM] << '{';
 
-	if ((code_ == LM_TC_TEX && char_ != '{' && char_ != '}') ||
-			(code_ == LM_TC_SPECIAL))
+	if (code_ == LM_TC_TEX || code_ == LM_TC_SPECIAL)
 		os << '\\';
 
 	os << char_;

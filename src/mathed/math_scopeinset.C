@@ -5,6 +5,7 @@
 #include "math_scopeinset.h"
 #include "LColor.h"
 #include "Painter.h"
+#include "support.h"
 #include "support/LOstream.h"
 
 
@@ -23,9 +24,9 @@ void MathScopeInset::metrics(MathStyles st) const
 {
 	xcell(0).metrics(st);
 	size_    = st;
-	ascent_  = xcell(0).ascent()  + 2;
-	descent_ = xcell(0).descent() + 2;
-	width_   = xcell(0).width()   + 4;
+	ascent_  = xcell(0).ascent();
+	descent_ = xcell(0).descent();
+	width_   = xcell(0).width() + mathed_string_width(LM_TC_TEX, st, "{}");
 }
 
 
@@ -33,8 +34,11 @@ void MathScopeInset::draw(Painter & pain, int x, int y) const
 { 
 	xo(x);
 	yo(y);
-	xcell(0).draw(pain, x + 2, y); 
-	pain.rectangle(x, y - ascent_, width_, height(), LColor::mathline);
+	int d = mathed_char_width(LM_TC_TEX, size_, '{');
+	drawChar(pain, LM_TC_TEX, size_, x, y, '{');
+	xcell(0).draw(pain, x + d, y); 
+	drawChar(pain, LM_TC_TEX, size_, x + width_ - d, y, '}');
+	//pain.rectangle(x, y - ascent_, width_, height(), LColor::mathline);
 }
 
 

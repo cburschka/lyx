@@ -41,6 +41,8 @@
 #include "math_matrixinset.h"
 #include "math_noglyphinset.h"
 #include "math_rootinset.h"
+#include "math_scopeinset.h"
+#include "math_sqrtinset.h"
 #include "math_scriptinset.h"
 #include "math_sizeinset.h"
 #include "math_spaceinset.h"
@@ -116,7 +118,6 @@ enum {
 	FLAG_BRACE_LAST = 1 << 1,  //  // { Last } ends the parsing process
 	FLAG_RIGHT      = 1 << 2,  //  Next right ends the parsing process
 	FLAG_END        = 1 << 3,  //  Next end ends the parsing process
-	FLAG_BRACE_FONT = 1 << 4,  //  // { Next } closes a font
 	FLAG_BRACK_END  = 1 << 5,  //  // [ Next ] ends the parsing process
 	FLAG_AMPERSAND  = 1 << 6,  //  Next & ends the parsing process
 	FLAG_NEWLINE    = 1 << 7,  //  Next \\ ends the parsing process
@@ -613,29 +614,14 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 			break;
 
 		case LM_TK_OPEN:
-			++brace;
-			if (flags & FLAG_BRACE)
-				flags &= ~FLAG_BRACE;
-			else 
-				array.push_back(new MathCharInset('{', LM_TC_TEX));
+			array.push_back(new MathScopeInset);
+			parse_into(array.back()->cell(0), FLAG_BRACE_LAST);
 			break;
 
 		case LM_TK_CLOSE:
-			--brace;
-			if (brace < 0) {
-				error("Unmatching braces");
-				panic = true;
-				break;
-			}
-			if (flags & FLAG_BRACE_FONT) {
-				yyvarcode = LM_TC_VAR;
-				flags &= ~FLAG_BRACE_FONT;
-				break;
-			}
-			if (brace == 0 && (flags & FLAG_BRACE_LAST))
+			if (flags & FLAG_BRACE_LAST) {
 				flags |= FLAG_LEAVE;
-			else
-				array.push_back(new MathCharInset('}', LM_TC_TEX));
+			}
 			break;
 		
 		case '[':
@@ -775,8 +761,18 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 			break;
 		
 		case LM_TK_FONT:
+		{
+			MathTextCodes t = static_cast<MathTextCodes>(lval_->id);
+			MathArray ar;
+			parse_into(ar, FLAG_ITEM);
+			for (MathArray::iterator it = ar.begin(); it != ar.end(); ++it)
+				(*it)->handleFont(t);
+			array.push_back(ar);
+			break;
+		}
+
+		case LM_TK_OLDFONT:
 			yyvarcode = static_cast<MathTextCodes>(lval_->id);
-			flags |= (FLAG_BRACE | FLAG_BRACE_FONT);
 			break;
 
 		case LM_TK_STY:

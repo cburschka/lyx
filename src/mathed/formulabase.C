@@ -39,6 +39,7 @@
 #include "font.h"
 #include "math_arrayinset.h"
 #include "math_spaceinset.h"
+#include "math_scopeinset.h"
 #include "math_macrotable.h"
 #include "support/lyxlib.h"
 #include "mathed/support.h"
@@ -750,12 +751,12 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 				if (greek_kb_flag < 2)
 					greek_kb_flag = 0;
 				
-			} else if (strchr("!,:;{}", c) && (varcode == LM_TC_TEX||was_macro)) {
+			} else if (c == '{') {
+				mathcursor->insert(new MathScopeInset);
+				mathcursor->left();
+				mathcursor->clearLastCode();
+			} else if (strchr("!,:;", c) && (varcode == LM_TC_TEX||was_macro)) {
 				mathcursor->insert(c, LM_TC_TEX);
-				if (c == '{') {
-					mathcursor->insert('}', LM_TC_TEX);
-					mathcursor->left();
-				}
 				mathcursor->clearLastCode();
 			} else if (c == '_' && varcode == LM_TC_TEX) {
 				mathcursor->insert(c, LM_TC_SPECIAL);
