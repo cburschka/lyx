@@ -504,8 +504,9 @@ void expandToc(Menu & tomenu, Buffer const * buf)
 			menu->add(MenuItem(MenuItem::Command,
 					   label, ccit->action()));
 		}
-		MenuItem item(MenuItem::Submenu,
-			      _(floats[cit->first]->second.name()));
+		string const & floatName = cit->first;
+		// Is the _(...) really needed here? (Lgb)
+		MenuItem item(MenuItem::Submenu, _(floatName));
 		item.submenu(menu);
 		tomenu.add(item);
 	}
