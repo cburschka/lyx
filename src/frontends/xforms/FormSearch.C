@@ -88,7 +88,7 @@ bool FormSearch::input(FL_OBJECT * obj, long)
    return 0;
 }
 
-void FormSearch::Find(bool const next = true)
+void FormSearch::Find(bool const next)
 {
    bool found = LyXFind(lv_->view(),
 			fl_get_input(dialog_->input_search),
@@ -98,10 +98,10 @@ void FormSearch::Find(bool const next = true)
    
    if (!found)
      setMinibuffer(lv_, _("String not found!"));
- };
+}
 
 
-void FormSearch::Replace(bool const all = false)
+void FormSearch::Replace(bool const all)
 {
    int replace_count = LyXReplace(lv_->view(),
 				  fl_get_input(dialog_->input_search),
@@ -122,6 +122,6 @@ void FormSearch::Replace(bool const all = false)
 	 setMinibuffer(lv_, str.c_str());
       }
    }
-};
+}
 
 

@@ -1,3 +1,11 @@
+2001-03-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyxfind.C (LyXReplace): do not redefine default argument in
+	implementation. 
+	(IsStringInText): ditto
+	(SearchForward): ditto
+	(SearchBackward): ditto
+
 2001-03-06  Juergen Vigna  <jug@sad.it>
 
 	* lyxfind.C (IsStringInText): put parentes around expressions.

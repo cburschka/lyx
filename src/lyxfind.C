@@ -20,7 +20,7 @@ int LyXReplace(BufferView * bv,
 		bool const & casesens,
 		bool const & matchwrd,
 		bool const & forward,
-		bool const & replaceall=false)
+		bool const & replaceall)
 {
    int replace_count = 0;
  
@@ -110,8 +110,8 @@ bool LyXFind(BufferView * bv,
 
 // returns true if the specified string is at the specified position
 bool IsStringInText(LyXParagraph * par, LyXParagraph::size_type pos,
-		    string const & str, bool const & cs = true,
-		    bool const & mw = false)
+		    string const & str, bool const & cs,
+		    bool const & mw)
 {
 	if (!par)
 		return false;
@@ -142,7 +142,7 @@ bool IsStringInText(LyXParagraph * par, LyXParagraph::size_type pos,
 // if the string can be found: return true and set the cursor to
 // the new position, cs = casesensitive, mw = matchword
 bool SearchForward(BufferView * bv, string const & str,
-		   bool const & cs = true, bool const & mw = false)
+		   bool const & cs, bool const & mw)
 {
 	LyXParagraph * par = bv->text->cursor.par();
 	LyXParagraph::size_type pos = bv->text->cursor.pos();
@@ -168,7 +168,7 @@ bool SearchForward(BufferView * bv, string const & str,
 // if the string can be found: return true and set the cursor to
 // the new position, cs = casesensitive, mw = matchword
 bool SearchBackward(BufferView * bv, string const & str,
-		    bool const & cs = true, bool const & mw = false)
+		    bool const & cs, bool const & mw)
 {
 	LyXParagraph * par = bv->text->cursor.par();
 	LyXParagraph::size_type pos = bv->text->cursor.pos();
