@@ -424,8 +424,7 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 
 	// Ensure that we have really read a bind file, so that LyX is
 	// usable.
-	if (!lyxrc.hasBindFile)
-		lyxrc.ReadBindFile();
+	lyxrc.readBindFileIfNeeded();
 
 	// Read menus
 	ReadUIFile(lyxrc.ui_file);

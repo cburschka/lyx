@@ -153,6 +153,8 @@ LyXRC::LyXRC()
 
 
 void LyXRC::setDefaults() {
+	bind_file = "cua";
+	hasBindFile = false;
 	ui_file = "default";
 	// Get printer from the environment. If fail, use default "",
 	// assuming that everything is set up correctly.
@@ -222,7 +224,6 @@ void LyXRC::setDefaults() {
 	isp_use_pers_dict = false;
 	isp_use_esc_chars = false;
 	use_kbmap = false;
-	hasBindFile = false;
 	rtl_support = false;
 	auto_number = true;
 	mark_foreign_language = true;
@@ -260,12 +261,14 @@ int LyXRC::ReadBindFile(string const & name)
 	return result;
 }
 
+void LyXRC::readBindFileIfNeeded()
+{
+	if (!hasBindFile)
+		ReadBindFile(bind_file);
+}
 
 int LyXRC::read(string const & filename)
-{
-	// Default bindfile.
-	static string const bindFile("cua");
-	
+{	
 	LyXLex lexrc(lyxrcTags, lyxrcCount);
 	if (lyxerr.debugging(Debug::PARSER))
 		lexrc.printTable(lyxerr);
@@ -306,13 +309,16 @@ int LyXRC::read(string const & filename)
 		case RC_BINDFILE:                     // RVDK_PATCH_5
 			if (lexrc.next()) {
 				string tmp(lexrc.GetString());
-				if (bind_file.empty()) {
-					// we only need the name of the first
-					// bind file since that (usually)
-					// includes several others.
+				if (hasBindFile)
+					// We are already in the
+					// "actually read bind file"
+					// mode.
+					ReadBindFile(tmp);
+				else
+					// We are still in the "just
+					// remember the name of the
+					// bind file" mode.
 					bind_file = tmp;
-				}
-				ReadBindFile(tmp);
 			}
 			break;
 			
@@ -678,10 +684,8 @@ int LyXRC::read(string const & filename)
 			// we should not do an explicit binding before
 			// loading a bind file. So, in this case, load
 			// the default bind file.
-			if (!hasBindFile) {
-				bind_file = bindFile;
-				ReadBindFile();
-			}
+			readBindFileIfNeeded();
+
 			// !!!chb, dynamic key binding...
 			int action, res = 0;
 			string seq, cmd;

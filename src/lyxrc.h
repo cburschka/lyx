@@ -130,15 +130,13 @@ enum LyXRCTags {
 	///
 	int read (string const & filename);
 	///
+	void readBindFileIfNeeded();
+	///
 	void write(string const & filename) const;
 	///
         void print() const;
 	///
 	void output(std::ostream & os) const;
-	/// Is a bind file already (or currently) read?
-	bool hasBindFile;
-	///
-	int ReadBindFile(string const & name = "cua");
 	///
 	static string const getDescription(LyXRCTags);
 	///
@@ -334,6 +332,11 @@ enum LyXRCTags {
 	bool cursor_follows_scrollbar;
 	///
 	int label_init_length;
+private:
+	/// Is a bind file already (or currently) read?
+	bool hasBindFile;
+	///
+	int ReadBindFile(string const & name);
 };
 
 ///

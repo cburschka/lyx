@@ -1,5 +1,12 @@
 2000-12-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/lyxrc.C (readBindFileIfNeeded): new method. Reads the main
+	bind file if it has not been done yet.
+	(read): remove local bindFile variable. Try to fix the handling of
+	RC_BIND and RC_BINDFILE.
+
+	* src/lyx_main.C (init): use readBindFileIfNeeded().
+
 	* lib/languages: Change description of german to "German (new
 	spelling)".
 
