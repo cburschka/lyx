@@ -416,12 +416,8 @@ void MathHullInset::addFancyCol(col_type col)
 		addFancyCol(col);
 	}
 
-	else if (type_ == "align") {
-		mutate("alignat");
-		addFancyCol(col);
-	}
-
-	else if (type_ == "alignat" || type_ == "xalignat" || type_ == "xxalignat") 
+	else if (type_ == "align" || type_ == "alignat"
+	      || type_ == "xalignat" || type_ == "xxalignat") 
 		MathGridInset::addCol(col);
 }
 
