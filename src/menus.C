@@ -1288,33 +1288,42 @@ void Add_to_toc_menu(vector<Buffer::TocItem> const & toclist,
 		     int menu, vector<int> & menus, FL_OBJECT * ob)
 {
 	unsigned int const max_number_of_items = 25;
-	if (to - from <= max_number_of_items)
-		for (unsigned int i = from; i < to; ++i)
-			fl_addtopup(menu,
-				    (string(4*max(0,toclist[i].depth-depth),' ')
-				     + toclist[i].str + "%x"
-				     + tostr(i+1)).c_str());
-	else {
+	if (to - from <= max_number_of_items) {
+		for (unsigned int i = from; i < to; ++i) {
+			
+			string line(4 * max(0, toclist[i].depth - depth),' ');
+			line += toclist[i].str;
+			line += "%x";
+			line += tostr(i + 1);
+			string entry(line, 0, 40);
+			
+			fl_addtopup(menu, entry.c_str());
+		}
+	} else {
 		unsigned int pos = from;
 		while (pos < to) {
 			unsigned int new_pos = pos+1;
 			while (new_pos < to &&
 			       toclist[new_pos].depth > depth)
 				++new_pos;
-			if (new_pos == pos+1) {
-				fl_addtopup(menu,
-					    (string(4*max(0,toclist[pos].depth-depth),' ')
-					     + toclist[pos].str + "%x"
-					     + tostr(pos+1)).c_str() );
+			if (new_pos == pos + 1) {
+				string line(4 * max(0, toclist[pos].depth - depth), ' ');
+				line += toclist[pos].str;
+				line += "%x";
+				line += tostr(pos + 1);
+				string entry(line, 0, 40);
+				
+				fl_addtopup(menu, entry.c_str());
 			} else {
 				int menu2 = fl_newpup(FL_ObjWin(ob));
 				menus.push_back(menu2);
 				Add_to_toc_menu(toclist, pos, new_pos,
-						depth+1, menu2, menus,ob);
-				fl_addtopup(menu,
-					    (string(4*max(0,toclist[pos].depth-depth),' ')
-					     + toclist[pos].str+"%m").c_str(),
-					    menu2);
+						depth + 1, menu2, menus,ob);
+				string line(4 * max(0, toclist[pos].depth - depth), ' ');
+				line += toclist[pos].str;
+				line += "%m";
+				string entry(line, 0, 40);
+				fl_addtopup(menu, entry.c_str(), menu2);
 			}
 			pos = new_pos;
 		}

@@ -161,11 +161,11 @@ extern "C" void error_handler(int err_sig);
 void LyX::init(int */*argc*/, char **argv, bool gui)
 {
 	// Install the signal handlers
-	std::signal(SIGHUP, error_handler);
-	std::signal(SIGFPE, error_handler);
-	std::signal(SIGSEGV, error_handler);
-	std::signal(SIGINT, error_handler);
-	std::signal(SIGTERM, error_handler);
+	signal(SIGHUP, error_handler);
+	signal(SIGFPE, error_handler);
+	signal(SIGSEGV, error_handler);
+	signal(SIGINT, error_handler);
+	signal(SIGTERM, error_handler);
 
 	//
 	// Determine path of binary

@@ -1,5 +1,15 @@
 2000-05-21  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/language.C (initL): change the initialization of languages
+	so that compiles goes _fast_.
+
+	* src/menus.C (Add_to_toc_menu): limit the line length in TOC to
+	40 chars.
+
+	* src/lyxfunc.C (processKeyEvent): initalize keysym_return to 0.
+
+2000-05-21  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
 	* release 1.1.5pre3
 
 2000-05-20  Lars Gullik Bjønnes  <larsbj@lyx.org>

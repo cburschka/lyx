@@ -190,7 +190,7 @@ int LyXFunc::processKeyEvent(XEvent * ev)
 	char s_r[10];
 	string argument;
 	XKeyEvent * keyevent = &ev->xkey;
-	KeySym keysym_return;
+	KeySym keysym_return = 0;
 
 	int num_bytes = LyXLookupString(ev, s_r, 10, &keysym_return);
 	s_r[num_bytes] = '\0';
