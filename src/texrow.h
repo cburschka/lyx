@@ -79,10 +79,6 @@ public:
 	};
 	///
 	typedef std::list<RowItem> RowList;
-	/// increment position of all other RowItems
-	/// with same par id, to avoid placing error insets
-	/// at the same position
-	void increasePos(int id, int pos);
 private:
 	/// number of lines
 	unsigned int count;

@@ -14,7 +14,6 @@
 #include <algorithm>
 
 using std::find_if;
-using std::for_each;
 using std::endl;
 
 namespace {
@@ -29,37 +28,6 @@ public:
 
 private:
 	int row_;
-};
-
-
-/// increment the pos value of the argument if the par id
-/// is the same, and the pos parameter is larger
-class increase_pos {
-public:
-	increase_pos(int id, int pos)
-		: id_(id), pos_(pos) {}
-
-	void operator()(TexRow::RowList::value_type & vt) const {
-		if (vt.id() != id_ || vt.pos() >= pos_)
-			return;
-		vt.pos(vt.pos() + 1);
-
-		lyxerr[Debug::INFO]
-			<< "TeXRow::increasePos: ideally this "
-			"should never happen..." << endl;
-
-		// FIXME: When verified to work this clause should be deleted.
-		if (id_ == vt.id() && pos_ == vt.pos()) {
-			lyxerr[Debug::INFO]
-				<< "TexRow::increasePos: this should happen "
-				"maximum one time for each run of "
-				"increasePos!" << endl;
-		}
-	}
-
-private:
-	int id_;
-	int pos_;
 };
 
 } // namespace anon
@@ -103,12 +71,6 @@ bool TexRow::getIdFromRow(int row, int & id, int & pos) const
 	id = -1;
 	pos = 0;
 	return false;
-}
-
-
-void TexRow::increasePos(int id, int pos)
-{
-	for_each(rowlist.begin(), rowlist.end(), increase_pos(id, pos));
 }
 
 

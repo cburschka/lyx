@@ -29,11 +29,6 @@ using std::find;
 bool Exporter::Export(Buffer * buffer, string const & format,
 		      bool put_in_tempdir, string & result_file)
 {
-	// There are so many different places that this function can be called
-	// from that the removal of auto insets is best done here.  This ensures
-	// we always have a clean buffer for inserting errors found during export.
-	BufferView * bv = buffer->getUser();
-
 	string backend_format;
 	LatexRunParams runparams;
 	runparams.flavor = LatexRunParams::LATEX;

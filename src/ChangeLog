@@ -1,3 +1,9 @@
+
+2003-05-23  Alfredo Braunstein  <abraunst@libero.it>
+
+	* texrow.[Ch] (increasePos): remove function
+	* exporter.C (export): removed unused var and outdated comment
+
 2003-05-23  Angus Leeming  <leeming@lyx.org>
 
 	* latexrunparams.h: rename fragile as moving_arg.
