@@ -19,8 +19,14 @@
 #include <string>
 #include <vector>
 
+class FuncRequest;
+
 namespace lyx {
 namespace frontend {
+
+// Get a GTK stockID from a lyx function id.
+// Return Gtk::Stock::MISSING_IMAGE if no suitable stock found
+Gtk::BuiltinStockID getGTKStockIcon(FuncRequest const & func);
 
 std::string const getDefaultUnit();
 

@@ -285,10 +285,10 @@ void GBox::updateInnerBoxCombo()
 		innerboxcombo_->set_active(i);
 	} else {
 		// we're not changing the liststore, just selecting i
-		if (!frameless)
-			innerboxcombo_->set_active(i);
 		if (frameless)
 			innerboxcombo_->set_active(i - 1);
+		else
+			innerboxcombo_->set_active(i);
 	}
 
 	// Update the width units list if we've changed inner box type

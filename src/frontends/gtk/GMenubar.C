@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Huang Ying
+ * \author John Spray
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -12,6 +13,10 @@
 
 #include "GMenubar.h"
 #include "GView.h"
+#include "ghelpers.h"
+
+#include "ToolbarBackend.h" // for getIcon
+
 #include "debug.h"
 #include "lyxfunc.h"
 
@@ -133,6 +138,11 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 		item->submenu() :
 		&menubackend.getMenu(item->submenuname());
 
+	// Choose size for icons on command items
+	int iconwidth = 16;
+	int iconheight = 16;
+	Gtk::IconSize::lookup(Gtk::ICON_SIZE_MENU, iconwidth, iconheight);
+
 	menubackend.expand(*fmenu, lyxmenu->getBackMenu(), view_);
 	Menu::const_iterator i = lyxmenu->getBackMenu().begin();
 	Menu::const_iterator end = lyxmenu->getBackMenu().end();
@@ -168,10 +178,32 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 						gmenu->items().back());
 				citem.set_active(on);
 			} else {
-				// This is necessary because add_accel_label is protected,
+				// Choose an icon from the funcrequest
+				Gtk::BuiltinStockID stockID = getGTKStockIcon(i->func());
+				Gtk::Image * image = NULL;
+				// Prefer stock graphics
+				if (stockID != Gtk::Stock::MISSING_IMAGE) {
+					image = Gtk::manage(new Gtk::Image(stockID, Gtk::ICON_SIZE_MENU));
+				} else {
+					Glib::ustring xpmName =
+						Glib::locale_to_utf8(toolbarbackend.getIcon(i->func()));
+					if (xpmName.find("unknown.xpm") == -1) {
+						// Load icon and shrink it for menu size
+						Glib::RefPtr<Gdk::Pixbuf> bigicon =
+							Gdk::Pixbuf::create_from_file(xpmName);
+						Glib::RefPtr<Gdk::Pixbuf> smallicon =
+							bigicon->scale_simple(iconwidth,iconheight,Gdk::INTERP_TILES);
+						image = Gtk::manage(new Gtk::Image(smallicon));
+					}
+				}
+
+				Gtk::ImageMenuItem * item = Gtk::manage(new Gtk::ImageMenuItem);
+				if (image)
+					item->set_image(*image);
+
+				// This hbox is necessary because add_accel_label is protected,
 				// and even if you subclass Gtk::MenuItem then add_accel_label
 				// doesn't do what you'd expect.
-				Gtk::MenuItem * item = Gtk::manage(new Gtk::MenuItem);
 				Gtk::HBox * hbox = Gtk::manage(new Gtk::HBox);
 				Gtk::Label * label1 = Gtk::manage(new Gtk::Label(
 					labelTrans(i->label(), i->shortcut()), true));

@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Huang Ying
+ * \author John Spray
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -12,6 +13,8 @@
 
 #include "GToolbar.h"
 #include "GView.h"
+
+#include "ghelpers.h"
 
 #include "buffer.h"
 #include "bufferparams.h"
@@ -219,17 +222,26 @@ void GToolbar::add(FuncRequest const & func, string const & tooltip)
 	}
 
 	default: {
-		Glib::ustring xpmName =
-			Glib::locale_to_utf8(toolbarbackend.getIcon(func));
+		// choose an icon from the funcrequest
+		Gtk::BuiltinStockID stockID = getGTKStockIcon(func);
+
 		Glib::ustring tip = Glib::locale_to_utf8(tooltip);
+
 		Gtk::ToolButton * toolbutton;
-		if (xpmName.size() == 0) {
-			toolbutton = Gtk::manage(new Gtk::ToolButton);
+		if (stockID != Gtk::Stock::MISSING_IMAGE) {
+			// Prefer stock gtk graphics
+			Gtk::IconSize size(Gtk::ICON_SIZE_LARGE_TOOLBAR);
+			Gtk::Image * image = Gtk::manage(new Gtk::Image(stockID, size));
+			image->show();
+			toolbutton = Gtk::manage(new Gtk::ToolButton(*image));
 		} else {
+			Glib::ustring xpmName =
+				Glib::locale_to_utf8(toolbarbackend.getIcon(func));
 			Gtk::Image * image = Gtk::manage(new Gtk::Image(xpmName));
 			image->show();
 			toolbutton = Gtk::manage(new Gtk::ToolButton(*image));
 		}
+
 		// This code is putting a function reference into the GObject data field
 		// named gToolData.  That's how we know how to update the status of the
 		// toolitem later.
@@ -237,7 +249,6 @@ void GToolbar::add(FuncRequest const & func, string const & tooltip)
 			reinterpret_cast<void*>(&const_cast<FuncRequest &>(func)));
 
 		toolbutton->set_tooltip(*toolbar_.get_tooltips_object(),tip);
-		/*toolbar_.get_tooltips_object()->set_tip(*toolbutton, tip);*/
 
 		toolbutton->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this,
 			&GToolbar::clicked), FuncRequest(func)));

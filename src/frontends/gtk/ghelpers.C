@@ -4,6 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Angus Leeming
+ * \author John Spray
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -13,6 +14,7 @@
 #include "ghelpers.h"
 
 #include "lyxrc.h"
+#include "funcrequest.h"
 #include "debug.h"
 
 #include "support/filetools.h"
@@ -23,6 +25,44 @@ using std::vector;
 
 namespace lyx {
 namespace frontend {
+
+Gtk::BuiltinStockID getGTKStockIcon(FuncRequest const & func)
+{
+	switch (func.action) {
+
+		case LFUN_MENUWRITE: return Gtk::Stock::SAVE;
+		case LFUN_MENUNEW: return Gtk::Stock::NEW;
+		case LFUN_WRITEAS: return Gtk::Stock::SAVE_AS;
+
+		case LFUN_CENTER: return Gtk::Stock::JUSTIFY_CENTER;
+		case LFUN_TOCVIEW: return Gtk::Stock::INDEX;
+		case LFUN_CLOSEBUFFER: return Gtk::Stock::CLOSE;
+		case LFUN_QUIT: return Gtk::Stock::QUIT;
+		case LFUN_UNDO: return Gtk::Stock::UNDO;
+		case LFUN_REDO: return Gtk::Stock::REDO;
+		case LFUN_PASTE: return Gtk::Stock::PASTE;
+		case LFUN_PASTESELECTION: return Gtk::Stock::PASTE;
+		case LFUN_CUT: return Gtk::Stock::CUT;
+		case LFUN_COPY: return Gtk::Stock::COPY;
+		case LFUN_BOLD: return Gtk::Stock::BOLD;
+		case LFUN_ITAL: return Gtk::Stock::ITALIC;
+		case LFUN_FILE_OPEN: return Gtk::Stock::OPEN;
+		case LFUN_RECONFIGURE: return Gtk::Stock::REFRESH;
+		case LFUN_DIALOG_SHOW:
+			if (func.argument == "findreplace")
+				return Gtk::Stock::FIND_AND_REPLACE;
+			else if (func.argument == "print")
+				return Gtk::Stock::PRINT;
+			else if (func.argument == "spellchecker")
+				return Gtk::Stock::SPELL_CHECK;
+			else if (func.argument == "prefs")
+				return Gtk::Stock::PREFERENCES;
+			else
+				return Gtk::Stock::MISSING_IMAGE;
+			break;
+		default: return Gtk::Stock::MISSING_IMAGE;
+	}
+}
 
 string const getDefaultUnit()
 {
