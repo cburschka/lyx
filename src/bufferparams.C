@@ -38,6 +38,7 @@
 #include "frontends/Alert.h"
 
 #include "support/lyxalgo.h" // for lyx::count
+#include "support/translator.h"
 
 #include <boost/array.hpp>
 
@@ -58,26 +59,197 @@ using std::pair;
 namespace biblio = lyx::biblio;
 
 
-// anonym namespace
+// Local translators
 namespace {
-int findToken(char const * const str[], string const search_token)
-{
-	int i = 0;
 
-	if (search_token != "default") {
-		while (str[i][0] && str[i] != search_token) {
-			++i;
-		}
-		if (!str[i][0]) {
-			lyxerr << "Unknown argument: '"
-			       << search_token << "'\n";
-			i = -1;
-		}
-	}
+// Paragraph separation
+typedef Translator<std::string, BufferParams::PARSEP> ParSepTranslator;
 
-	return i;
+
+ParSepTranslator const init_parseptranslator() {
+	ParSepTranslator translator(string_paragraph_separation[0], BufferParams::PARSEP_INDENT);
+	translator.addPair(string_paragraph_separation[1], BufferParams::PARSEP_SKIP);
+	return translator;
 }
 
+
+ParSepTranslator const & parseptranslator() {
+	static ParSepTranslator translator = init_parseptranslator();
+	return translator;
+}
+
+// Quotes language
+typedef Translator<std::string, InsetQuotes::quote_language> QuotesLangTranslator;
+
+
+QuotesLangTranslator const init_quoteslangtranslator() {
+	QuotesLangTranslator translator(string_quotes_language[0], InsetQuotes::EnglishQ);
+	translator.addPair(string_quotes_language[1], InsetQuotes::SwedishQ);
+	translator.addPair(string_quotes_language[2], InsetQuotes::GermanQ);
+	translator.addPair(string_quotes_language[3], InsetQuotes::PolishQ);
+	translator.addPair(string_quotes_language[4], InsetQuotes::FrenchQ);
+	translator.addPair(string_quotes_language[5], InsetQuotes::DanishQ);
+	return translator;
+}
+
+
+QuotesLangTranslator const & quoteslangtranslator() {
+	static QuotesLangTranslator translator = init_quoteslangtranslator();
+	return translator;
+}
+
+// Quote times
+typedef Translator<int, InsetQuotes::quote_times> QuotesTimesTranslator;
+
+
+QuotesTimesTranslator const init_quotestimestranslator() {
+	QuotesTimesTranslator translator(1, InsetQuotes::SingleQ);
+	translator.addPair(2, InsetQuotes::DoubleQ);
+	return translator;
+}
+
+
+QuotesTimesTranslator const & quotestimestranslator() {
+	static QuotesTimesTranslator translator = init_quotestimestranslator();
+	return translator;
+}
+
+// Paper size
+typedef Translator<std::string, VMARGIN_PAPER_TYPE> PaperSizeTranslator;
+
+
+PaperSizeTranslator const init_papersizetranslator() {
+	PaperSizeTranslator translator(string_papersize[0], VM_PAPER_DEFAULT);
+	translator.addPair(string_papersize[1], VM_PAPER_CUSTOM);
+	translator.addPair(string_papersize[2], VM_PAPER_USLETTER);
+	translator.addPair(string_papersize[3], VM_PAPER_USLEGAL);
+	translator.addPair(string_papersize[4], VM_PAPER_USEXECUTIVE);
+	translator.addPair(string_papersize[5], VM_PAPER_A3);
+	translator.addPair(string_papersize[6], VM_PAPER_A4);
+	translator.addPair(string_papersize[7], VM_PAPER_A5);
+	translator.addPair(string_papersize[8], VM_PAPER_B3);
+	translator.addPair(string_papersize[9], VM_PAPER_B4);
+	translator.addPair(string_papersize[10], VM_PAPER_B5);
+	return translator;
+}
+
+
+PaperSizeTranslator const & papersizetranslator() {
+	static PaperSizeTranslator translator = init_papersizetranslator();
+	return translator;
+}
+
+// Paper packages
+typedef Translator<std::string, PAPER_PACKAGES> PaperPackagesTranslator;
+
+
+PaperPackagesTranslator const init_paperpackagestranslator() {
+	PaperPackagesTranslator translator(string_paperpackages[0], PACKAGE_NONE);
+	translator.addPair(string_paperpackages[1], PACKAGE_A4);
+	translator.addPair(string_paperpackages[2], PACKAGE_A4WIDE);
+	translator.addPair(string_paperpackages[3], PACKAGE_WIDEMARGINSA4);
+	return translator;
+}
+
+
+PaperPackagesTranslator const & paperpackagestranslator() {
+	static PaperPackagesTranslator translator = init_paperpackagestranslator();
+	return translator;
+}
+
+
+// Paper orientation
+typedef Translator<std::string, PAPER_ORIENTATION> PaperOrientationTranslator;
+
+
+PaperOrientationTranslator const init_paperorientationtranslator() {
+	PaperOrientationTranslator translator(string_orientation[0], ORIENTATION_PORTRAIT);
+	translator.addPair(string_orientation[1], ORIENTATION_LANDSCAPE);
+	return translator;
+}
+
+
+PaperOrientationTranslator const & paperorientationtranslator() {
+	static PaperOrientationTranslator translator = init_paperorientationtranslator();
+	return translator;
+}
+
+
+// Page sides
+typedef Translator<int, LyXTextClass::PageSides> SidesTranslator;
+
+
+SidesTranslator const init_sidestranslator() {
+	SidesTranslator translator(1, LyXTextClass::OneSide);
+	translator.addPair(2, LyXTextClass::TwoSides);
+	return translator;
+}
+
+
+SidesTranslator const & sidestranslator() {
+	static SidesTranslator translator = init_sidestranslator();
+	return translator;
+}
+
+
+
+// AMS
+typedef Translator<int, BufferParams::AMS> AMSTranslator;
+
+
+AMSTranslator const init_amstranslator() {
+	AMSTranslator translator(0, BufferParams::AMS_OFF);
+	translator.addPair(1, BufferParams::AMS_AUTO);
+	translator.addPair(2, BufferParams::AMS_ON);
+	return translator;
+}
+
+
+AMSTranslator const & amstranslator() {
+	static AMSTranslator translator = init_amstranslator();
+	return translator;
+}
+
+
+
+// Cite engine
+typedef Translator<string, biblio::CiteEngine> CiteEngineTranslator;
+
+
+CiteEngineTranslator const init_citeenginetranslator() {
+	CiteEngineTranslator translator("basic", biblio::ENGINE_BASIC);
+	translator.addPair("natbib_numerical", biblio::ENGINE_NATBIB_NUMERICAL);
+	translator.addPair("natbib_authoryear", biblio::ENGINE_NATBIB_AUTHORYEAR);
+	translator.addPair("jurabib", biblio::ENGINE_JURABIB);
+	return translator;
+}
+
+
+CiteEngineTranslator const & citeenginetranslator() {
+	static CiteEngineTranslator translator = init_citeenginetranslator();
+	return translator;
+}
+
+
+// Spacing
+typedef Translator<string, Spacing::Space> SpaceTranslator;
+
+
+SpaceTranslator const init_spacetranslator() {
+	SpaceTranslator translator("default", Spacing::Default);
+	translator.addPair("single", Spacing::Single);
+	translator.addPair("onehalf", Spacing::Onehalf);
+	translator.addPair("double", Spacing::Double);
+	return translator;
+}
+
+
+SpaceTranslator const & spacetranslator() {
+	static SpaceTranslator translator = init_spacetranslator();
+	return translator;
+}
+
+// ends annonym namespace
 }
 
 
@@ -265,103 +437,48 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 	} else if (token == "\\language") {
 		readLanguage(lex);
 	} else if (token == "\\inputencoding") {
-		lex.next();
-		inputenc = lex.getString();
+		lex >> inputenc;
 	} else if (token == "\\graphics") {
 		readGraphicsDriver(lex);
 	} else if (token == "\\fontscheme") {
-		lex.next();
-		fonts = lex.getString();
+		lex >> fonts;
 	} else if (token == "\\paragraph_separation") {
-		lex.next();
-		int tmpret = findToken(string_paragraph_separation, lex.getString());
-		if (tmpret == -1)
-			++tmpret;
-		paragraph_separation =
-			static_cast<PARSEP>(tmpret);
+		string parsep;
+		lex >> parsep;
+		paragraph_separation = parseptranslator().find(parsep);
 	} else if (token == "\\defskip") {
 		lex.next();
 		pimpl_->defskip = VSpace(lex.getString());
 	} else if (token == "\\quotes_language") {
-		// FIXME: should be params.readQuotes()
-		lex.next();
-		int tmpret = findToken(string_quotes_language, lex.getString());
-		if (tmpret == -1)
-			++tmpret;
-		InsetQuotes::quote_language tmpl =
-			InsetQuotes::EnglishQ;
-		switch (tmpret) {
-		case 0:
-			tmpl = InsetQuotes::EnglishQ;
-			break;
-		case 1:
-			tmpl = InsetQuotes::SwedishQ;
-			break;
-		case 2:
-			tmpl = InsetQuotes::GermanQ;
-			break;
-		case 3:
-			tmpl = InsetQuotes::PolishQ;
-			break;
-		case 4:
-			tmpl = InsetQuotes::FrenchQ;
-			break;
-		case 5:
-			tmpl = InsetQuotes::DanishQ;
-			break;
-		}
-		quotes_language = tmpl;
+		string quotes_lang;
+		lex >> quotes_lang;
+		quotes_language = quoteslangtranslator().find(quotes_lang);
 	} else if (token == "\\quotes_times") {
-		// FIXME: should be params.readQuotes()
-		lex.next();
-		switch (lex.getInteger()) {
-		case 1:
-			quotes_times = InsetQuotes::SingleQ;
-			break;
-		case 2:
-			quotes_times = InsetQuotes::DoubleQ;
-			break;
-		}
+		int qtimes;
+		lex >> qtimes;
+		quotes_times = quotestimestranslator().find(qtimes);
 	} else if (token == "\\papersize") {
-		lex.next();
-		int tmpret = findToken(string_papersize, lex.getString());
-		if (tmpret == -1)
-			++tmpret;
-		else
-			papersize2 = VMARGIN_PAPER_TYPE(tmpret);
+		string ppsize;
+		lex >> ppsize;
+		papersize2 = papersizetranslator().find(ppsize);
 	} else if (token == "\\paperpackage") {
-		lex.next();
-		int tmpret = findToken(string_paperpackages, lex.getString());
-		if (tmpret == -1) {
-			++tmpret;
-			paperpackage = PACKAGE_NONE;
-		} else
-			paperpackage = PAPER_PACKAGES(tmpret);
+		string ppackage;
+		lex >> ppackage;
+		paperpackage = paperpackagestranslator().find(ppackage);
 	} else if (token == "\\use_geometry") {
-		lex.next();
-		use_geometry = lex.getInteger();
+		lex >> use_geometry;
 	} else if (token == "\\use_amsmath") {
-		lex.next();
-		use_amsmath = static_cast<AMS>(
-			lex.getInteger());
+		int use_ams;
+		lex >> use_ams;
+		use_amsmath = amstranslator().find(use_ams);
 	} else if (token == "\\cite_engine") {
-		lex.next();
-		string const engine = lex.getString();
-
-		cite_engine = biblio::ENGINE_BASIC;
-		if (engine == "natbib_numerical")
-			cite_engine = biblio::ENGINE_NATBIB_NUMERICAL;
-		else if (engine == "natbib_authoryear")
-			cite_engine = biblio::ENGINE_NATBIB_AUTHORYEAR;
-		else if (engine == "jurabib")
-			cite_engine = biblio::ENGINE_JURABIB;
-
+		string engine;
+		lex >> engine;
+		cite_engine = citeenginetranslator().find(engine);
 	} else if (token == "\\use_bibtopic") {
-		lex.next();
-		use_bibtopic = lex.getInteger();
+		lex >> use_bibtopic;
 	} else if (token == "\\tracking_changes") {
-		lex.next();
-		tracking_changes = lex.getInteger();
+		lex >> tracking_changes;
 	} else if (token == "\\branch") {
 		lex.next();
 		string branch = lex.getString();
@@ -397,108 +514,55 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		ss >> a;
 		author_map.push_back(pimpl_->authorlist.record(a));
 	} else if (token == "\\paperorientation") {
-		lex.next();
-		int tmpret = findToken(string_orientation, lex.getString());
-		if (tmpret == -1)
-			++tmpret;
-		orientation =
-			static_cast<PAPER_ORIENTATION>(tmpret);
+		string orient;
+		lex >> orient;
+		orientation = paperorientationtranslator().find(orient);
 	} else if (token == "\\paperwidth") {
-		lex.next();
-		paperwidth = lex.getString();
+		lex >> paperwidth;
 	} else if (token == "\\paperheight") {
-		lex.next();
-		paperheight = lex.getString();
+		lex >> paperheight;
 	} else if (token == "\\leftmargin") {
-		lex.next();
-		leftmargin = lex.getString();
+		lex >> leftmargin;
 	} else if (token == "\\topmargin") {
-		lex.next();
-		topmargin = lex.getString();
+		lex >> topmargin;
 	} else if (token == "\\rightmargin") {
-		lex.next();
-		rightmargin = lex.getString();
+		lex >> rightmargin;
 	} else if (token == "\\bottommargin") {
-		lex.next();
-		bottommargin = lex.getString();
+		lex >> bottommargin;
 	} else if (token == "\\headheight") {
-		lex.next();
-		headheight = lex.getString();
+		lex >> headheight;
 	} else if (token == "\\headsep") {
-		lex.next();
-		headsep = lex.getString();
+		lex >> headsep;
 	} else if (token == "\\footskip") {
-		lex.next();
-		footskip = lex.getString();
+		lex >> footskip;
 	} else if (token == "\\paperfontsize") {
-		lex.next();
-		fontsize = lex.getString();
+		lex >> fontsize;
 	} else if (token == "\\papercolumns") {
-		lex.next();
-		columns = lex.getInteger();
+		lex >> columns;
 	} else if (token == "\\papersides") {
-		lex.next();
-		switch (lex.getInteger()) {
-		default:
-		case 1: sides = LyXTextClass::OneSide; break;
-		case 2: sides = LyXTextClass::TwoSides; break;
-		}
+		int psides;
+		lex >> psides;
+		sides = sidestranslator().find(psides);
 	} else if (token == "\\paperpagestyle") {
-		lex.next();
-		pagestyle = lex.getString();
+		lex >> pagestyle;
 	} else if (token == "\\bullet") {
-		// FIXME: should be params.readBullets()
-		lex.next();
-		int const index = lex.getInteger();
-		lex.next();
-		int temp_int = lex.getInteger();
-		user_defined_bullet(index).setFont(temp_int);
-		temp_bullet(index).setFont(temp_int);
-		lex.next();
-		temp_int = lex.getInteger();
-		user_defined_bullet(index).setCharacter(temp_int);
-		temp_bullet(index).setCharacter(temp_int);
-		lex.next();
-		temp_int = lex.getInteger();
-		user_defined_bullet(index).setSize(temp_int);
-		temp_bullet(index).setSize(temp_int);
+		readBullets(lex);
 	} else if (token == "\\bulletLaTeX") {
-		// The bullet class should be able to read this.
-		lex.next();
-		int const index = lex.getInteger();
-		lex.next(true);
-		string temp_str = lex.getString();
-
-		user_defined_bullet(index).setText(temp_str);
-		temp_bullet(index).setText(temp_str);
+		readBulletsLaTeX(lex);
 	} else if (token == "\\secnumdepth") {
-		lex.next();
-		secnumdepth = lex.getInteger();
+		lex >> secnumdepth;
 	} else if (token == "\\tocdepth") {
-		lex.next();
-		tocdepth = lex.getInteger();
+		lex >> tocdepth;
 	} else if (token == "\\spacing") {
-		lex.next();
-		string const tmp = lex.getString();
-		Spacing::Space tmp_space = Spacing::Default;
+		string nspacing;
+		lex >> nspacing;
 		float tmp_val = 0.0;
-		if (tmp == "single") {
-			tmp_space = Spacing::Single;
-		} else if (tmp == "onehalf") {
-			tmp_space = Spacing::Onehalf;
-		} else if (tmp == "double") {
-			tmp_space = Spacing::Double;
-		} else if (tmp == "other") {
-			lex.next();
-			tmp_space = Spacing::Other;
-			tmp_val = lex.getFloat();
-		} else {
-			lex.printError("Unknown spacing token: '$$Token'");
+		if (nspacing == "other") {
+			lex >> tmp_val;
 		}
-		spacing().set(tmp_space, tmp_val);
+		spacing().set(spacetranslator().find(nspacing), tmp_val);
 	} else if (token == "\\float_placement") {
-		lex.next();
-		float_placement = lex.getString();
+		lex >> float_placement;
 	} else {
 		return token;
 	}
@@ -543,26 +607,11 @@ void BufferParams::writeFile(ostream & os) const
 
 	spacing().writeFile(os);
 
-	string cite_engine_str = "basic";
-	switch (cite_engine) {
-	case biblio::ENGINE_BASIC:
-		break;
-	case biblio::ENGINE_NATBIB_NUMERICAL:
-		cite_engine_str = "natbib_numerical";
-		break;
-	case biblio::ENGINE_NATBIB_AUTHORYEAR:
-		cite_engine_str = "natbib_authoryear";
-		break;
-	case biblio::ENGINE_JURABIB:
-		cite_engine_str = "jurabib";
-		break;
-	}
-
 	os << "\\papersize " << string_papersize[papersize2]
 	   << "\n\\paperpackage " << string_paperpackages[paperpackage]
 	   << "\n\\use_geometry " << use_geometry
 	   << "\n\\use_amsmath " << use_amsmath
-	   << "\n\\cite_engine " << cite_engine_str
+	   << "\n\\cite_engine " << citeenginetranslator().find(cite_engine)
 	   << "\n\\use_bibtopic " << use_bibtopic
 	   << "\n\\paperorientation " << string_orientation[orientation]
 	   << '\n';
@@ -610,15 +659,10 @@ void BufferParams::writeFile(ostream & os) const
 	   << string_paragraph_separation[paragraph_separation]
 	   << "\n\\defskip " << getDefSkip().asLyXCommand()
 	   << "\n\\quotes_language "
-	   << string_quotes_language[quotes_language] << '\n';
-	switch (quotes_times) {
-		// An output operator for insetquotes would be nice
-	case InsetQuotes::SingleQ:
-		os << "\\quotes_times 1\n"; break;
-	case InsetQuotes::DoubleQ:
-		os << "\\quotes_times 2\n"; break;
-	}
-	os << "\\papercolumns " << columns
+	   << string_quotes_language[quotes_language] << '\n'
+	   << "\\quotes_times "
+	   << quotestimestranslator().find(quotes_times)
+	   << "\n\\papercolumns " << columns
 	   << "\n\\papersides " << sides
 	   << "\n\\paperpagestyle " << pagestyle << '\n';
 	for (int i = 0; i < 4; ++i) {
@@ -1154,6 +1198,37 @@ void BufferParams::readGraphicsDriver(LyXLex & lex)
 			break;
 		}
 	}
+}
+
+
+void BufferParams::readBullets(LyXLex & lex)
+{
+	if (!lex.next()) return;
+
+	int const index = lex.getInteger();
+	lex.next();
+	int temp_int = lex.getInteger();
+	user_defined_bullet(index).setFont(temp_int);
+	temp_bullet(index).setFont(temp_int);
+	lex >> temp_int;
+	user_defined_bullet(index).setCharacter(temp_int);
+	temp_bullet(index).setCharacter(temp_int);
+	lex >> temp_int;
+	user_defined_bullet(index).setSize(temp_int);
+	temp_bullet(index).setSize(temp_int);	
+}
+
+
+void BufferParams::readBulletsLaTeX(LyXLex & lex)
+{
+	// The bullet class should be able to read this.
+	if (!lex.next()) return;
+	int const index = lex.getInteger();
+	lex.next(true);
+	string temp_str = lex.getString();
+
+	user_defined_bullet(index).setText(temp_str);
+	temp_bullet(index).setText(temp_str);
 }
 
 

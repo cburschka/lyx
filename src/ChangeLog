@@ -1,4 +1,10 @@
 2004-10-05  José Matos  <jamatos@lyx.org>
+
+	* bufferparams.[Ch] (readBullets, readBulletsLaTeX): new methods.
+	Add new translators to help reading and writing the lyx file.
+
+2004-10-05  José Matos  <jamatos@lyx.org>
+
 	* ParagraphParameters.C (read):
 	* text.C (readParToken): replace nexToken by more appropriate lex
 	methods.

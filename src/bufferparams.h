@@ -191,6 +191,10 @@ public:
 	void readLanguage(LyXLex &);
 	///
 	void readGraphicsDriver(LyXLex &);
+	///
+	void readBullets(LyXLex &);
+	///
+	void readBulletsLaTeX(LyXLex &);
 
 	/// use AMS package, not, or auto
 	enum AMS {
