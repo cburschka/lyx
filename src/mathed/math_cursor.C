@@ -195,7 +195,7 @@ void MathCursor::seldump(char const * str) const
 	lyxerr << "\n";
 	for (unsigned int i = 0; i < Anchor_.size(); ++i) 
 		lyxerr << Anchor_[i].par_ << "\n'" << Anchor_[i].cell() << "'\n";
-	//lyxerr << "\ncursor.pos_: " << cursor().pos_;
+	//lyxerr << "\ncursor.pos_: " << pos();
 	//lyxerr << "\nanchor.pos_: " << anchor().pos_;
 	lyxerr << "\n===================^^^^^^^^^^^^=====================\n\n\n";
 }
@@ -262,11 +262,11 @@ bool MathCursor::left(bool sel)
 		push(p, false);
 		return true;
 	} 
-	if (cursor().pos_) {
+	if (pos()) {
 		plainLeft();
 		return true;
 	}
-	if (cursor().par_->idxLeft(cursor().idx_, cursor().pos_))
+	if (par()->idxLeft(idx(), pos()))
 		return true;
 	if (pop())
 		return true;
@@ -289,11 +289,11 @@ bool MathCursor::right(bool sel)
 		push(p, true);
 		return true;
 	}
-	if (cursor().pos_ != array().size()) {
+	if (pos() != array().size()) {
 		plainRight();
 		return true;
 	}
-	if (cursor().par_->idxRight(cursor().idx_, cursor().pos_)) {
+	if (par()->idxRight(idx(), pos())) {
 		return true;
 	}
 	if (pop()) {
@@ -330,12 +330,12 @@ void MathCursor::setPos(int x, int y)
 	cursor().par_  = outerPar();
 
 	while (1) {
-		cursor().idx_ = -1;
+		idx() = -1;
 		cursor().pos_ = -1;
-		//lyxerr << "found idx: " << idx_ << " cursor: " << cursor().pos_  << "\n";
+		//lyxerr << "found idx: " << idx_ << " cursor: " << pos()  << "\n";
 		int distmin = 1 << 30; // large enough
-		for (int i = 0; i < cursor().par_->nargs(); ++i) {
-			MathXArray const & ar = cursor().par_->xcell(i);
+		for (int i = 0; i < par()->nargs(); ++i) {
+			MathXArray const & ar = par()->xcell(i);
 			int x1 = x - ar.xo();
 			int y1 = y - ar.yo();
 			int c  = ar.x2pos(x1);
@@ -345,12 +345,12 @@ void MathCursor::setPos(int x, int y)
 			//	<< " c: " << c  << " xo: " << ar.xo() << "\n";
 			if (yy + xx <= distmin) {
 				distmin        = yy + xx;
-				cursor().idx_  = i;
-				cursor().pos_  = c;
+				idx()  = i;
+				pos()  = c;
 			}
 		}
-		//lyxerr << "found idx: " << cursor().idx_ << " cursor: "
-		//	<< cursor().pos_  << "\n";
+		//lyxerr << "found idx: " << idx() << " cursor: "
+		//	<< pos()  << "\n";
 		MathInset * n = nextInset();
 		MathInset * p = prevInset();
 		if (openable(n, selection_, true) && n->covers(x, y))
@@ -370,7 +370,7 @@ void MathCursor::home()
 	dump("home 1");
 	macroModeClose();
 	clearLastCode();
-	if (!cursor().par_->idxHome(cursor().idx_, cursor().pos_)) 
+	if (!par()->idxHome(idx(), pos())) 
 		pop();
 	dump("home 2");
 }
@@ -381,9 +381,9 @@ void MathCursor::end()
 	dump("end 1");
 	macroModeClose();
 	clearLastCode();
-	if (!cursor().par_->idxEnd(cursor().idx_, cursor().pos_)) {
+	if (!par()->idxEnd(idx(), pos())) {
 		pop();
-		++cursor().pos_;
+		++pos();
 	}
 	dump("end 2");
 }
@@ -391,7 +391,7 @@ void MathCursor::end()
 
 void MathCursor::plainErase()
 {
-	array().erase(cursor().pos_);
+	array().erase(pos());
 }
 
 
@@ -415,7 +415,7 @@ void MathCursor::insert(char c, MathTextCodes t)
 		}
 	}
 
-	array().insert(cursor().pos_, c, t);
+	array().insert(pos(), c, t);
 	plainRight();
 }
 
@@ -431,7 +431,7 @@ void MathCursor::insert(MathInset * p)
 			selDel();
 	}
 
-	array().insert(cursor().pos_, p);
+	array().insert(pos(), p);
 	plainRight();
 }
 
@@ -442,8 +442,30 @@ void MathCursor::insert(MathArray const & ar)
 	if (selection_)
 		selCut();
 
-	array().insert(cursor().pos_, ar);
-	cursor().pos_ += ar.size();
+	array().insert(pos(), ar);
+	pos() += ar.size();
+}
+
+
+void MathCursor::backspace()
+{
+	if (inMacroMode()) {
+		left();
+		return;
+	}
+
+	if (pos()) {
+		plainLeft();
+		plainErase();
+		return;
+	}
+
+	if (array().size()) {
+		pullArg(false);
+		return;
+	}
+
+	erase();
 }
 
 
@@ -459,16 +481,16 @@ void MathCursor::erase()
 	}
 
 	// delete empty cells if necessary
-	if (cursor().pos_ == 0 && array().empty()) {
+	if (pos() == 0 && array().empty()) {
 		bool popit;
 		bool removeit;
-		cursor().par_->idxDelete(cursor().idx_, popit, removeit);
+		par()->idxDelete(idx(), popit, removeit);
 		if (popit && pop() && removeit)
 			plainErase();
 		return;
 	}
 
-	if (cursor().pos_ < array().size())
+	if (pos() < array().size())
 		plainErase();
 
 	dump("erase 2");
@@ -484,8 +506,8 @@ void MathCursor::delLine()
 		return;
 	}
 
-	if (cursor().par_->nrows() > 1)
-		cursor().par_->delRow(row());
+	if (par()->nrows() > 1)
+		par()->delRow(row());
 }
 
 
@@ -496,9 +518,9 @@ bool MathCursor::up(bool sel)
 	selHandle(sel);
 
 	if (selection_) {
-		int x = xarray().pos2x(cursor().pos_);
+		int x = xarray().pos2x(pos());
 		if (cursor().idxDown()) {
-			cursor().pos_ = xarray().x2pos(x);
+			pos() = xarray().x2pos(x);
 			return true;
 		}
 		if (pop()) 
@@ -509,11 +531,11 @@ bool MathCursor::up(bool sel)
 	// check whether we could move into an inset on the right or on the left
 	MathInset * p = nextInset();
 	if (p) {
-		int idx, pos;
-		if (p->idxFirstUp(idx, pos)) {
+		int idxx, poss;
+		if (p->idxFirstUp(idxx, poss)) {
 			push(p, true);
-			cursor().idx_ = idx;
-			cursor().pos_ = pos;
+			idx() = idxx;
+			pos() = poss;
 			dump("up 3");
 			return true;
 		}
@@ -521,20 +543,20 @@ bool MathCursor::up(bool sel)
 
 	p = prevInset();
 	if (p) {
-		int idx, pos;
-		if (p->idxLastUp(idx, pos)) {
+		int idxx, poss;
+		if (p->idxLastUp(idxx, poss)) {
 			plainLeft();
 			push(p, false);
-			cursor().idx_ = idx;
-			cursor().pos_ = pos;
+			idx() = idxx;
+			pos() = poss;
 			dump("up 4");
 			return true;
 		}
 	}
 
-	int x = xarray().pos2x(cursor().pos_);
+	int x = xarray().pos2x(pos());
 	if (cursor().idxUp()) {
-		cursor().pos_ = xarray().x2pos(x);
+		pos() = xarray().x2pos(x);
 		return true;
 	}
 	if (pop())
@@ -550,9 +572,9 @@ bool MathCursor::down(bool sel)
 	selHandle(sel);
 
 	if (selection_) {
-		int x = xarray().pos2x(cursor().pos_);
+		int x = xarray().pos2x(pos());
 		if (cursor().idxDown()) {
-			cursor().pos_ = xarray().x2pos(x);
+			pos() = xarray().x2pos(x);
 			return true;
 		}
 		if (pop()) 
@@ -563,11 +585,12 @@ bool MathCursor::down(bool sel)
 	// check whether we could move into an inset on the right or on the left
 	MathInset * p = nextInset();
 	if (p) {
-		int idx, pos;
-		if (p->idxFirstDown(idx, pos)) {
+		int idxx = 0;
+		int poss = 0;
+		if (p->idxFirstDown(idxx, poss)) {
 			push(p, true);
-			cursor().idx_ = idx;
-			cursor().pos_ = pos;
+			idx() = idxx;
+			pos() = poss;
 			dump("Down 3");
 			return true;
 		}
@@ -575,20 +598,21 @@ bool MathCursor::down(bool sel)
 
 	p = prevInset();
 	if (p) {
-		int idx, pos;
-		if (p->idxLastDown(idx, pos)) {
+		int idxx = 0;
+		int poss = 0;
+		if (p->idxLastDown(idxx, poss)) {
 			plainLeft();
 			push(p, false);
-			cursor().idx_ = idx;
-			cursor().pos_ = pos;
+			idx() = idxx;
+			pos() = poss;
 			dump("Down 4");
 			return true;
 		}
 	}
 
-	int x = xarray().pos2x(cursor().pos_);
+	int x = xarray().pos2x(pos());
 	if (cursor().idxDown()) {
-		cursor().pos_ = xarray().x2pos(x);
+		pos() = xarray().x2pos(x);
 		return true;
 	}
 	if (pop())
@@ -610,7 +634,7 @@ bool MathCursor::toggleLimits()
 
 void MathCursor::setSize(MathStyles size)
 {
-	cursor().par_->userSetSize(size);
+	par()->userSetSize(size);
 }
 
 
@@ -632,7 +656,7 @@ void MathCursor::interpret(string const & s)
 			if (b && b->isScriptable()) {
 				p = new MathScriptInset(up, !up, b->clone());
 				plainLeft();
-				erase();
+				plainErase();
 			} else {
 				p = new MathScriptInset(up, !up);
 			}
@@ -644,8 +668,8 @@ void MathCursor::interpret(string const & s)
 			p->up(true);
 		else
 			p->down(true);
-		cursor().idx_ = up ? 0 : 1;
-		cursor().pos_ = 0;
+		idx() = up ? 0 : 1;
+		pos() = 0;
 		selPaste();
 		return;
 	}
@@ -746,8 +770,8 @@ void MathCursor::macroModeOpen()
 {
 	if (!imacro_) {
 		imacro_ = new MathFuncInset("");
-		array().insert(cursor().pos_, imacro_);
-		++cursor().pos_;
+		array().insert(pos(), imacro_);
+		++pos();
 		//insert(imacro_);
 	} else
 		lyxerr << "Math Warning: Already in macro mode" << endl;
@@ -920,20 +944,20 @@ void MathCursor::handleDelim(int l, int r)
 
 void MathCursor::getPos(int & x, int & y)
 {
-	x = xarray().xo() + xarray().pos2x(cursor().pos_);
+	x = xarray().xo() + xarray().pos2x(pos());
 	y = xarray().yo();
 }
 
 
 MathTextCodes MathCursor::nextCode() const
 {
-	return array().getCode(cursor().pos_); 
+	return array().getCode(pos()); 
 }
 
 
 MathTextCodes MathCursor::prevCode() const
 {
-	return array().getCode(cursor().pos_ - 1); 
+	return array().getCode(pos() - 1); 
 }
 
 
@@ -949,7 +973,25 @@ InsetFormulaBase const * MathCursor::formula()
 }
 
 
+int MathCursor::idx() const
+{
+	return cursor().idx_;
+}
+
+
+int & MathCursor::idx()
+{
+	return cursor().idx_;
+}
+
+
 int MathCursor::pos() const
+{
+	return cursor().pos_;
+}
+
+
+int & MathCursor::pos()
 {
 	return cursor().pos_;
 }
@@ -1004,9 +1046,9 @@ void MathCursor::pullArg(bool goright)
 	MathArray a = array();
 	if (pop()) {
 		plainErase();
-		array().insert(cursor().pos_, a);
+		array().insert(pos(), a);
 		if (goright) 
-			cursor().pos_ += a.size();
+			pos() += a.size();
 	}
 }
 
@@ -1024,34 +1066,34 @@ void MathCursor::normalize() const
 #endif
 	MathCursor * it = const_cast<MathCursor *>(this);
 
-	if (cursor().idx_ < 0 || cursor().idx_ > cursor().par_->nargs() - 1)
+	if (idx() < 0 || idx() > par()->nargs() - 1)
 		lyxerr << "this should not really happen - 1\n";
-	it->cursor().idx_    = max(cursor().idx_, 0);
- 	it->cursor().idx_    = min(cursor().idx_, cursor().par_->nargs() - 1);
+	it->idx()    = max(idx(), 0);
+ 	it->idx()    = min(idx(), par()->nargs() - 1);
 
-	if (cursor().pos_ < 0 || cursor().pos_ > array().size())
+	if (pos() < 0 || pos() > array().size())
 		lyxerr << "this should not really happen - 2\n";
-	it->cursor().pos_ = max(cursor().pos_, 0);
-	it->cursor().pos_ = min(cursor().pos_, array().size());
+	it->pos() = max(pos(), 0);
+	it->pos() = min(pos(), array().size());
 }
 
 
 int MathCursor::col() const
 {
-	return par()->col(cursor().idx_);
+	return par()->col(idx());
 }
 
 
 int MathCursor::row() const
 {
-	return par()->row(cursor().idx_);
+	return par()->row(idx());
 }
 
 
 /*
 char MathCursorPos::getChar() const
 {
-	return array().getChar(cursor().pos_);
+	return array().getChar(pos());
 }
 
 
@@ -1070,17 +1112,16 @@ string MathCursorPos::readString()
 MathInset * MathCursor::prevInset() const
 {
 	normalize();
-	int pos = cursor().pos_;
-	if (!pos)
+	if (!pos())
 		return 0;
-	return array().nextInset(pos - 1);
+	return array().nextInset(pos() - 1);
 }
 
 
 MathInset * MathCursor::nextInset() const
 {
 	normalize();
-	return array().nextInset(cursor().pos_);
+	return array().nextInset(pos());
 }
 
 
@@ -1103,13 +1144,13 @@ MathSpaceInset * MathCursor::prevSpaceInset() const
 MathArray & MathCursor::array() const
 {
 	static MathArray dummy;
-	if (!cursor().par_) {
+	if (!par()) {
 		lyxerr << "############  par_ not valid\n";
 		return dummy;
 	}
 
-	if (cursor().idx_ < 0 || cursor().idx_ >= cursor().par_->nargs()) {
-		lyxerr << "############  idx_ " << cursor().idx_ << " not valid\n";
+	if (idx() < 0 || idx() >= par()->nargs()) {
+		lyxerr << "############  idx_ " << idx() << " not valid\n";
 		return dummy;
 	}
 
@@ -1126,37 +1167,37 @@ MathXArray & MathCursor::xarray() const
 int MathCursor::xpos() const 
 {
 	normalize();
-	return xarray().pos2x(cursor().pos_);
+	return xarray().pos2x(pos());
 }
 
 
 void MathCursor::gotoX(int x)
 {
-	cursor().pos_ = xarray().x2pos(x);	
+	pos() = xarray().x2pos(x);	
 }
 
 
 void MathCursor::idxNext()
 {
-	cursor().par_->idxNext(cursor().idx_, cursor().pos_);
+	par()->idxNext(idx(), pos());
 }
 
 
 void MathCursor::idxPrev()
 {
-	cursor().par_->idxPrev(cursor().idx_, cursor().pos_);
+	par()->idxPrev(idx(), pos());
 }
 
 
 void MathCursor::splitCell()
 {
-	if (cursor().idx_ == cursor().par_->nargs() - 1) 
+	if (idx() == par()->nargs() - 1) 
 		return;
 	MathArray ar = array();
-	ar.erase(0, cursor().pos_);
-	array().erase(cursor().pos_, array().size());
-	++cursor().idx_;
-	cursor().pos_ = 0;
+	ar.erase(0, pos());
+	array().erase(pos(), array().size());
+	++idx();
+	pos() = 0;
 	array().insert(0, ar);
 }
 
@@ -1167,8 +1208,8 @@ void MathCursor::breakLine()
 	if (p->getType() == LM_OT_SIMPLE || p->getType() == LM_OT_EQUATION) {
 		p->mutate(LM_OT_EQNARRAY);
 		p->addRow(0);
-		cursor().idx_ = p->nrows();
-		cursor().pos_ = 0;
+		idx() = p->nrows();
+		pos() = 0;
 	} else {
 		p->addRow(row());
 
@@ -1183,7 +1224,7 @@ void MathCursor::breakLine()
 
 		// split cell
 		splitCell();
-		p->cell(cursor().idx_).swap(p->cell(cursor().idx_ + p->ncols() - 1));
+		p->cell(idx()).swap(p->cell(idx() + p->ncols() - 1));
 	}
 }
 

@@ -447,25 +447,14 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		break;
 
 	case LFUN_BACKSPACE:
-		// if (!mathcursor->inMacroMode() && mathcursor->pos() == 0)
-		if (mathcursor->pos() == 0) {
-			bv->lockedInsetStoreUndo(Undo::DELETE);
-			mathcursor->pullArg(false);
-			bv->updateInset(this, true);
-			break;
-		}
-		if (mathcursor->inMacroMode())
-			mathcursor->left();
-		else
-			mathcursor->plainLeft();
-		// fall through...
+		bv->lockedInsetStoreUndo(Undo::DELETE);
+		mathcursor->backspace();
+		bv->updateInset(this, true);
+		break;
 
 	case LFUN_DELETE:
 		bv->lockedInsetStoreUndo(Undo::DELETE);
-		if (mathcursor->pos() == mathcursor->array().size()) 
-			mathcursor->pullArg(true);
-		else
-			mathcursor->erase();
+		mathcursor->erase();
 		bv->updateInset(this, true);
 		break;
 

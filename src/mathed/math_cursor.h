@@ -82,6 +82,8 @@ public:
 	///
 	void erase();
 	///
+	void backspace();
+	///
 	void home();
 	///
 	void end();
@@ -119,6 +121,8 @@ public:
 	InsetFormulaBase const * formula();
 	///
 	int pos() const;
+	///
+	int idx() const;
 	///
 	void interpret(string const &);
 	///
@@ -168,8 +172,6 @@ public:
 	void breakLine();
 	///
 	MathTextCodes getLastCode() const;
-	///
-	int idx() const { return cursor().idx_; }
 	///
 	void idxNext();
 	///
@@ -265,6 +267,11 @@ public:
 	MathScriptInset * prevScriptInset() const;
 	///
 	MathSpaceInset * prevSpaceInset() const;
+private:
+	///
+	int & pos();
+	///
+	int & idx();
 };
 
 extern MathCursor * mathcursor;
