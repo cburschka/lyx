@@ -23,7 +23,7 @@ public:
 	///
 	void write(MathWriteInfo & os) const;
 	///
-	void writeNormal(ostream & os) const;
+	void writeNormal(std::ostream & os) const;
 	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
@@ -32,7 +32,7 @@ public:
 	///
 	void write(MathInset const *, MathWriteInfo & os) const;
 	///
-	void writeNormal(MathInset const *, ostream & os) const;
+	void writeNormal(MathInset const *, std::ostream & os) const;
 	///
 	void metrics(MathInset const * nucleus, MathMetricsInfo const & st) const;
 	///

@@ -5,6 +5,8 @@
 #include "math_nestinset.h"
 #include "debug.h"
 
+using std::max;
+using std::min;
 
 MathNestInset::MathNestInset(idx_type nargs)
 	: MathDimInset(), cells_(nargs)

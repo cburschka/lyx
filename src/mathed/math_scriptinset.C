@@ -13,6 +13,7 @@
 
 #include "math_scriptinset.h"
 
+using std::ostream;
 using std::ostringstream;
 
 

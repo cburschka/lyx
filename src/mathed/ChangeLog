@@ -1,3 +1,8 @@
+2001-10-24  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* math_nestinset.C: added using std::max, min directives.
+	* math_scriptinset.C: added using std::ostream directive.
+	* math_scriptinset.h: replaced ostream with std::ostream.
 
 2001-10-17  André Pönitz  <poenitz@gmx.net>
 
