@@ -35,6 +35,6 @@ namespace lyx_gui {
 
 	/// initialise graphics
 	void init_graphics();
-};
+}
 
 #endif // LYX_GUI_H
