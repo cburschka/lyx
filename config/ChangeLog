@@ -1,4 +1,7 @@
-2005-01-28  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+2005-02-02  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.in:
+	* configure.ac: when testing for AikSaurus, do not require libbz2.
 
 	* relyx_configure.in: 
 	* relyx_configure.ac: use RELYX_USE_PACKAGING as in main configure.
