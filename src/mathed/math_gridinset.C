@@ -532,7 +532,7 @@ string MathGridInset::eolString(row_type row, bool fragile) const
 	if (eol.empty() && row + 1 == nrows())
 		return string();
 
-	return (fragile ? "\\protect\\\\" : "\\\\") + eol + '\n';
+	return (fragile ? "\\protect\\\\" : "\\\\") + eol;
 }
 
 
@@ -905,16 +905,18 @@ void MathGridInset::write(WriteStream & os) const
 		os << verboseHLine(rowinfo_[row].lines_);
 		// don't write & and empty cells at end of line
 		col_type lastcol = 0;
+		bool emptyline = true;
 		for (col_type col = 0; col < ncols(); ++col)
-			if (!cell(index(row, col)).empty())
+			if (!cell(index(row, col)).empty()) {
 				lastcol = col + 1;
+				emptyline = false;
+			}
 		for (col_type col = 0; col < lastcol; ++col)
 			os << cell(index(row, col)) << eocString(col, lastcol);
-		// I _really_ hate LaTeX's syntax quirks. Why is 
-		// \begin{eqnarray}\end{eqnarray} not valid?
-		if (lastcol == 0 && os.latex())
-			os << "\\ ";
 		os << eolString(row, os.fragile());
+		// append newline only if line wasn't completely empty
+		if (!emptyline)
+			os << "\n";
 	}
 	string const s = verboseHLine(rowinfo_[nrows()].lines_);
 	if (!s.empty() && s != " ") {
