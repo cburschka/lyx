@@ -169,7 +169,10 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	if (had_depfile) {
 		lyxerr[Debug::DEPEND] << "Dependency file exists" << endl;
 		// Read the dep file:
-		head.read(depfile);
+		had_depfile = head.read(depfile);
+	}
+
+	if (had_depfile) {
 		// Update the checksums
 		head.update();
 		// Can't just check if anything has changed because it might have aborted
@@ -190,7 +193,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 			run_bibtex = true;
 	} else
 		lyxerr[Debug::DEPEND]
-			<< "Dependency file does not exist" << endl;
+			<< "Dependency file does not exist, or has wrong format" << endl;
 
 	/// We scan the aux file even when had_depfile = false,
 	/// because we can run pdflatex on the file after running latex on it,

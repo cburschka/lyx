@@ -237,7 +237,7 @@ void DepTable::write(string const & f) const
 }
 
 
-void DepTable::read(string const & f)
+bool DepTable::read(string const & f)
 {
 	ifstream ifs(f.c_str());
 	string nome;
@@ -255,4 +255,5 @@ void DepTable::read(string const & f)
 		}
 		deplist[nome] = di;
 	}
+	return deplist.size();
 }

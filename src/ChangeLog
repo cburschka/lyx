@@ -1,3 +1,8 @@
+2003-03-07  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* LaTeX.C (run): Fix a bug where the DVI file was not updated due
+	to an old format .dep file.
+	
 2003-02-17  John Levon  <levon@movementarian.org>
 
 	* lyxfunc.C: fix bug 738 - revert behaves sensibly

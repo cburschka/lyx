@@ -36,8 +36,8 @@ public:
 
 	///
 	void write(string const & f) const;
-	///
-	void read(string const & f);
+	/// returns true if dep file was read successfully
+	bool read(string const & f);
 	/// returns true if any of the files has changed
 	bool sumchange() const;
 	/// return true if fil has changed.
