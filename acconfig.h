@@ -18,24 +18,9 @@
 
 @TOP@
 
-/* Define to 1 if NLS is requested.  */
-#undef ENABLE_NLS
-
 /* define this to the location of forms.h to be used with #include,
   e.g. <forms.h> */
 #undef FORMS_H_LOCATION
-
-/* Define if your locale.h file contains LC_MESSAGES.  */
-#undef HAVE_LC_MESSAGES
-
-/* Define as 1 if you have catgets and don't want to use GNU gettext.  */
-#undef HAVE_CATGETS
-
-/* Define as 1 if you have gettext and don't want to use GNU gettext.  */
-#undef HAVE_GETTEXT
-
-/* Define as 1 if you have the stpcopy function */
-#undef HAVE_STPCPY
 
 /* define this to the location of xpm.h to be used with #include,
   e.g. <xpm.h> */

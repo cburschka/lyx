@@ -6,6 +6,9 @@ AUTOMAKE="automake -a -c --foreign"
 AUTOCONF=autoconf
 GNUM4=
 
+ACINCLUDE_FILES="lyxinclude.m4 libtool.m4 codeset.m4 gettext.m4 glibc21.m4 iconv.m4 isc-posix.m4 lcmessage.m4 progtest.m4 sigc++.m4 qt2.m4 gtk--.m4 gnome--.m4 gnome.m4 pspell.m4"
+SIGCPP_ACINCLUDE_FILES="libtool.m4"
+
 echo -n "Locating GNU m4... "
 for prog in $M4 gm4 gnum4 m4 ; do
   case `$prog --version 2>&1` in
@@ -23,14 +26,8 @@ fi
 # Generate acinclude.m4
 echo -n "Generate acinclude.m4... "
 rm -f acinclude.m4 sigc++/acinclude.m4
-touch acinclude.m4
-for fil in config/lyxinclude.m4 config/libtool.m4 config/gettext.m4 config/lcmessage.m4 config/progtest.m4 config/sigc++.m4 config/qt2.m4 config/gtk--.m4 config/gnome--.m4 config/gnome.m4 config/pspell.m4; do
-    cat $fil >> acinclude.m4
-done
-touch sigc++/acinclude.m4
-for fil in config/libtool.m4 ; do
-    cat $fil >> sigc++/acinclude.m4
-done
+(cd config ; cat ${ACINCLUDE_FILES} >../acinclude.m4)
+(cd config ; cat ${SIGCPP_ACINCLUDE_FILES} >../sigc++/acinclude.m4)
 echo "done."
 
 # Generate the Makefiles and configure files

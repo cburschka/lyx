@@ -1,3 +1,14 @@
+2001-07-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* codeset.m4:
+	* glibc21.m4:
+	* iconv.m4:
+	* isc-posix.m4: new files from gettext 0.10.38
+
+	* lcmessage.m4:
+	* progtest.m4:
+	* gettext.m4: updated to gettext 0.10.38
+
 2001-06-11  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxinclude.m4 (tr_hdr): add LYX_PROG_LIBTOOL and AC_FIND_FILE
