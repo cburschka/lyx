@@ -64,13 +64,9 @@ struct key_type {
 key_type wordlist_array[] =
 {
 	{"!",  "space", ""},
-	//{"(",  "begin", ""},
-	//{")",  "end", ""},
 	{",",  "space", ""},
 	{":",  "space", ""},
 	{";",  "space", ""},
-	//{"[",  "begin", ""},
-	//{"]",  "end", ""},
 	{"Vmatrix",  "matrix", ""},
 	{"acute",  "decoration", ""},
 	{"bar",  "decoration", ""},

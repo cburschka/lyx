@@ -550,7 +550,7 @@ bool Parser::parse_macro(string & name)
 
 
 	if (getToken().cat() != catBegin) {
-		lyxerr << "'{' in macro definition expected (2)\n";
+		error("'{' in macro definition expected (2)\n");
 		return false;
 	}
 
@@ -561,7 +561,7 @@ bool Parser::parse_macro(string & name)
 	MathArray test;
 	test.push_back(createMathInset(name));
 	if (ar1.contains(test)) {
-		lyxerr << "we cannot handle recursive macros at all.\n";
+		error("we cannot handle recursive macros at all.\n");
 		return false;
 	}
 
@@ -712,9 +712,7 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 		else if (t.cat() == catEnd) {
 			if (flags & FLAG_BRACE_LAST)
 				return;
-			lyxerr << "found '}' unexpectedly, cell: '" << cell << "'\n";
-			dump();
-			//lyxerr << "found '}' unexpectedly\n";
+			error("found '}' unexpectedly");
 			//lyx::Assert(0);
 			//add(cell, '}', LM_TC_TEX);
 		}
@@ -743,9 +741,6 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 			p->limits(limits);
 			limits = 0;
 		}
-
-		else if (t.character() == ')' && (flags & FLAG_SIMPLE2))
-			return;
 
 		else if (t.character() == ']' && (flags & FLAG_BRACK_END))
 			return;
@@ -778,15 +773,20 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 				// FIXME: check that we ended the correct environment
 				return;
 			}
-			lyxerr << "found 'end' unexpectedly, cell: '" << cell << "'\n";
-			dump();
+			error("found 'end' unexpectedly");
 		}
 
-		else if (t.cs() == ")")
-			break;
+		else if (t.cs() == ")") {
+			if (flags & FLAG_SIMPLE2)
+				return;
+			error("found '\\)' unexpectedly");
+		}
 
-		else if (t.cs() == "]")
-			break;
+		else if (t.cs() == "]") {
+			if (flags & FLAG_EQUATION)
+				return;
+			error("found '\\]' unexpectedly");
+		}
 
 		else if (t.cs() == "\\") {
 			grid.vcrskip(LyXLength(getArg('[', ']')), cellrow);
