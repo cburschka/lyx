@@ -2927,6 +2927,10 @@ int InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
+#warning CHECK verify that this is a sane value to return.
+	if (in.empty())
+		return -1;
+	
 	if (lex.isOK()) {
 		lex.next();
 		string const token = lex.getString();

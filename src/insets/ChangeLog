@@ -1,3 +1,15 @@
+2003-04-24  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insetexternal.C (string2params): dont do anything if the string
+	is empty.
+	* insetgraphics.C (string2params): ditto
+	* insetcommand.C (string2params): ditto
+	* insetert.C (string2params): ditto
+	* insetfloat.C (string2params): ditto
+	* insetinclude.C (string2params): ditto
+	* insetminipage.C (string2params): ditto
+	* insettabular.C (string2params): ditto
+	* insetwrap.C (string2params): ditto
 
 2003-04-24 André Pönitz <poenitz@gmx.net>
 

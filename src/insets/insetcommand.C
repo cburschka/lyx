@@ -121,6 +121,9 @@ void InsetCommandMailer::string2params(string const & in,
 	params.setContents(string());
 	params.setOptions(string());
 
+	if (in.empty())
+		return;
+	
 	istringstream data(in);
 	LyXLex lex(0,0);
 	lex.setStream(data);

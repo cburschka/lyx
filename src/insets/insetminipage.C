@@ -375,6 +375,9 @@ void InsetMinipageMailer::string2params(string const & in,
 {
 	params = InsetMinipage::Params();
 
+	if (in.empty())
+		return;
+	
 	istringstream data(in);
 	LyXLex lex(0,0);
 	lex.setStream(data);

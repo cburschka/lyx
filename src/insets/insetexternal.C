@@ -382,6 +382,9 @@ void InsetExternalMailer::string2params(string const & in,
 {
 	params = InsetExternal::Params();
 
+	if (in.empty())
+		return;
+
 	istringstream data(in);
 	LyXLex lex(0,0);
 	lex.setStream(data);
@@ -403,7 +406,7 @@ void InsetExternalMailer::string2params(string const & in,
 	}
 
 	if (lex.isOK()) {
-		InsetExternal inset;	
+		InsetExternal inset;
 		inset.read(0, lex);
 		params = inset.params();
 	}

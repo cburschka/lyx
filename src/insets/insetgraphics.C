@@ -896,6 +896,9 @@ void InsetGraphicsMailer::string2params(string const & in,
 {
 	params = InsetGraphicsParams();
 
+	if (in.empty())
+		return;
+
 	istringstream data(in);
 	LyXLex lex(0,0);
 	lex.setStream(data);
@@ -908,7 +911,7 @@ void InsetGraphicsMailer::string2params(string const & in,
 	}
 
 	if (lex.isOK()) {
-		InsetGraphics inset;	
+		InsetGraphics inset;
 		inset.readInsetGraphics(lex);
 		params = inset.params();
 	}

@@ -35,7 +35,7 @@ public:
 	///
 	~InsetGraphics();
 	///
-	virtual dispatch_result localDispatch(FuncRequest const & cmd);	
+	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///

@@ -177,7 +177,7 @@ void InsetInclude::set(Params const & p)
 	params_ = p;
 
 	string command;
- 
+
 	switch (params_.flag) {
 		case INCLUDE:
 			command="include";
@@ -192,9 +192,9 @@ void InsetInclude::set(Params const & p)
 			command="verbatiminput*";
 			break;
 	}
- 
-	params_.cparams.setCmdName(command); 
- 
+
+	params_.cparams.setCmdName(command);
+
 	if (preview_->monitoring())
 		preview_->stopMonitoring();
 
@@ -306,7 +306,7 @@ bool InsetInclude::loadIfNeeded() const
 	if (!finfo.isOK())
 		return false;
 
- 	return bufferlist.loadLyXFile(getFileName(), false) != 0;
+	return bufferlist.loadLyXFile(getFileName(), false) != 0;
 }
 
 
@@ -641,6 +641,9 @@ void InsetIncludeMailer::string2params(string const & in,
 {
 	params = InsetInclude::Params();
 
+	if (in.empty())
+		return;
+	
 	istringstream data(in);
 	LyXLex lex(0,0);
 	lex.setStream(data);
@@ -662,7 +665,7 @@ void InsetIncludeMailer::string2params(string const & in,
 	}
 
 	if (lex.isOK()) {
-		InsetInclude inset(params);	
+		InsetInclude inset(params);
 		inset.read(0, lex);
 		params = inset.params();
 	}

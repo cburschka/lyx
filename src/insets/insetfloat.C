@@ -401,6 +401,9 @@ void InsetFloatMailer::string2params(string const & in,
 {
 	params = InsetFloatParams();
 
+	if (in.empty())
+		return;
+	
 	istringstream data(in);
 	LyXLex lex(0,0);
 	lex.setStream(data);
