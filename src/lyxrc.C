@@ -592,7 +592,7 @@ int LyXRC::read(LyXLex & lexrc)
 				dpi = lexrc.getInteger();
 			}
 			break;
-1G
+
 		case RC_SCREEN_ZOOM:
 			if (lexrc.next()) {
 				zoom = lexrc.getInteger();
