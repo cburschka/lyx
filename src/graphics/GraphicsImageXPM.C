@@ -61,7 +61,7 @@ GImageXPM::GImageXPM(GImageXPM const & other)
 
 GImageXPM::~GImageXPM()
 {
-	if (pixmap_status_ == PIXMAP_SUCCESS)
+	if (pixmap_ && pixmap_status_ == PIXMAP_SUCCESS)
 		XFreePixmap(GUIRunTime::x11Display(), pixmap_);
 }
 	
@@ -152,16 +152,10 @@ bool GImageXPM::setPixmap(GParams const & params)
 		return false;
 	}
 
-	if (pixmap_status_ == PIXMAP_FAILED) {
-		return false;
-	}
-
-	if (pixmap_status_ == PIXMAP_SUCCESS) {
-		return true;
-	}
-
-	using namespace grfx;
 	Display * display = GUIRunTime::x11Display();
+
+	if (pixmap_ && pixmap_status_ == PIXMAP_SUCCESS)
+		XFreePixmap(display, pixmap_);
 
 	//(BE 2000-08-05)
 	// This might be a dirty thing, but I dont know any other solution.
@@ -669,11 +663,8 @@ string const unique_color_string(XpmImage const & image)
 			}
 		}
 
-		if (!found_it) {
-			std::cerr << "unique_color_string: \"" << id
-				  << "\"" << std::endl;
+		if (!found_it)
 			return id;
-		}
 
 		// Loop over the printable characters in the ASCII table.
 		// Ie, count from char 32 (' ') to char 126 ('~')
