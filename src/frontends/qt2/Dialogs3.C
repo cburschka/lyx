@@ -15,6 +15,7 @@
 
 #include "ControlAboutlyx.h"
 #include "ControlBibtex.h"
+#include "ControlChanges.h"
 #include "ControlCitation.h"
 #include "ControlError.h"
 #include "ControlERT.h"
@@ -35,6 +36,8 @@
 #include "QBibitemDialog.h"
 #include "QBibtex.h"
 #include "QBibtexDialog.h"
+#include "QChanges.h"
+#include "QChangesDialog.h"
 #include "QCitation.h"
 #include "QCitationDialog.h"
 #include "QError.h"
@@ -89,10 +92,10 @@ typedef ButtonController<NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 
 namespace {
 
-char const * const dialognames[] = { "about", "bibitem", "bibtex", "citation",
-				     "error", "ert", "external", "float",
-				     "graphics", "include", "index", "label",
-				     "minipage", "ref", "tabular",
+char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes",
+				     "citation", "error", "ert", "external",
+				     "float", "graphics", "include", "index",
+				     "label", "minipage", "ref", "tabular",
 				     "tabularcreate", "toc", "url", "wrap" };
 
 char const * const * const end_dialognames =
@@ -136,6 +139,10 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "bibtex") {
 		dialog->setController(new ControlBibtex(*dialog));
 		dialog->setView(new QBibtex(*dialog));
+		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+	} else if (name == "changes") {
+		dialog->setController(new ControlChanges(*dialog));
+		dialog->setView(new QChanges(*dialog));
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	} else if (name == "citation") {
 		dialog->setController(new ControlCitation(*dialog));

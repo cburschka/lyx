@@ -17,6 +17,7 @@
 
 #include "ControlAboutlyx.h"
 #include "ControlBibtex.h"
+#include "ControlChanges.h"
 #include "ControlCitation.h"
 #include "ControlCommand.h"
 #include "ControlError.h"
@@ -38,6 +39,8 @@
 #include "forms/form_bibitem.h"
 #include "FormBibtex.h"
 #include "forms/form_bibtex.h"
+#include "FormChanges.h"
+#include "forms/form_changes.h"
 #include "FormCitation.h"
 #include "forms/form_citation.h"
 #include "FormError.h"
@@ -136,6 +139,10 @@ Dialog * Dialogs::build(string const & name)
 	} else if (name == "bibtex") {
 		dialog->setController(new ControlBibtex(*dialog));
 		dialog->setView(new FormBibtex(*dialog));
+		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+	} else if (name == "changes") {
+		dialog->setController(new ControlChanges(*dialog));
+		dialog->setView(new FormChanges(*dialog));
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	} else if (name == "citation") {
 		dialog->setController(new ControlCitation(*dialog));

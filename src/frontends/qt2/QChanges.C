@@ -20,11 +20,11 @@
 #include "QChanges.h"
 #include "Qt2BC.h"
 
-typedef Qt2CB<ControlChanges, Qt2DB<QChangesDialog> > base_class;
+typedef QController<ControlChanges, QView<QChangesDialog> > base_class;
 
 
-QChanges::QChanges()
-	: base_class(qt_("LyX: Merge Changes"))
+QChanges::QChanges(Dialog & parent)
+	: base_class(parent, qt_("LyX: Merge Changes"))
 {
 }
 

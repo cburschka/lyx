@@ -1,5 +1,10 @@
 2003-03-09  Angus Leeming  <leeming@lyx.org>
 
+	* BufferView_pimpl.C (trackChanges, dispatch): call
+	Dialogs::show("changes") rather than Dialogs::showMergeChanges().
+
+2003-03-09  Angus Leeming  <leeming@lyx.org>
+
 	* lyxfunc.C (dispatch): call Dialogs::show("about") rather
 	than Dialogs::showAboutlyx().
 

@@ -12,7 +12,7 @@
 #ifndef FORMCHANGES_H
 #define FORMCHANGES_H
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 
 class ControlChanges;
 struct FD_changes;
@@ -20,9 +20,10 @@ struct FD_changes;
 /**
  * This class provides an XForms implementation of the Merge Changes Dialog.
  */
-class FormChanges : public FormCB<ControlChanges, FormDB<FD_changes> > {
+class FormChanges
+	: public FormController<ControlChanges, FormView<FD_changes> > {
 public:
-	FormChanges();
+	FormChanges(Dialog &);
 
 private:
 	/// not needed.

@@ -12,15 +12,23 @@
 #ifndef CONTROLCHANGES_H
 #define CONTROLCHANGES_H
 
-#include "ControlDialog_impl.h"
-#include "LString.h"
+#include "Dialog.h"
 
 /**
  * A controller for the merge changes dialog.
  */
-class ControlChanges : public ControlDialogBD {
+class ControlChanges : public Dialog::Controller {
 public:
-	ControlChanges(LyXView &, Dialogs &);
+	///
+	ControlChanges(Dialog &);
+	///
+	virtual void initialiseParams(string const &) {}
+	///
+	virtual void clearParams() {}
+	///
+	virtual void dispatchParams() {}
+	///
+	virtual bool isBufferDependent() const { return true; }
 
 	/// find the next merge chunk and highlight it
 	void find();
@@ -36,10 +44,6 @@ public:
 
 	/// reject the current merge
 	void reject();
-
-private:
-	/// not needed.
-	virtual void apply() {}
 };
 
 #endif // CONTROLCHANGES_H

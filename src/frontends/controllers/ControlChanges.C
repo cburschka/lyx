@@ -10,35 +10,32 @@
 
 #include <config.h>
 
-#include "ViewBase.h"
-#include "ButtonControllerBase.h"
 #include "ControlChanges.h"
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
 #include "buffer.h"
+#include "BufferView.h"
+#include "funcrequest.h"
 #include "lyxfind.h"
 #include "lyxfunc.h"
-#include "debug.h"
-#include "BufferView.h"
-#include "support/lstrings.h"
-#include "funcrequest.h"
 #include "author.h"
+#include "support/lstrings.h"
 
-ControlChanges::ControlChanges(LyXView & lv, Dialogs & d)
-	: ControlDialogBD(lv, d)
-{
-}
+
+ControlChanges::ControlChanges(Dialog & parent)
+	: Dialog::Controller(parent)
+{}
 
 
 void ControlChanges::find()
 {
-	lyxfind::findNextChange(bufferview());
+	lyxfind::findNextChange(kernel().bufferview());
 }
 
 
 string const ControlChanges::getChangeDate()
 {
-	Change c(bufferview()->getCurrentChange());
+	Change c(kernel().bufferview()->getCurrentChange());
 	if (c.type == Change::UNCHANGED || !c.changetime)
 		return string();
 	return ctime(&c.changetime);
@@ -47,11 +44,11 @@ string const ControlChanges::getChangeDate()
 
 string const ControlChanges::getChangeAuthor()
 {
-	Change c(bufferview()->getCurrentChange());
+	Change c(kernel().bufferview()->getCurrentChange());
 	if (c.type == Change::UNCHANGED)
 		return string();
 
-	Author const & a(bufferview()->buffer()->authors().get(c.author));
+	Author const & a(kernel().buffer()->authors().get(c.author));
 
 	string author(a.name());
 
@@ -66,13 +63,13 @@ string const ControlChanges::getChangeAuthor()
 
 void ControlChanges::accept()
 {
-	lv_.dispatch(FuncRequest(LFUN_ACCEPT_CHANGE));
-	lyxfind::findNextChange(bufferview());
+	kernel().dispatch(FuncRequest(LFUN_ACCEPT_CHANGE));
+	lyxfind::findNextChange(kernel().bufferview());
 }
 
 
 void ControlChanges::reject()
 {
-	lv_.dispatch(FuncRequest(LFUN_REJECT_CHANGE));
-	lyxfind::findNextChange(bufferview());
+	kernel().dispatch(FuncRequest(LFUN_REJECT_CHANGE));
+	lyxfind::findNextChange(kernel().bufferview());
 }

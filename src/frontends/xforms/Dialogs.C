@@ -26,8 +26,7 @@ Dialogs::~Dialogs()
 
 
 Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
-	: changes(lv, d),
-	  character(lv, d),
+	: character(lv, d),
 	  document(lv, d),
 	  file(lv, d),
 	  forks(lv, d),

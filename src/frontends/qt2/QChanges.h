@@ -12,18 +12,18 @@
 #ifndef QCHANGES_H
 #define QCHANGES_H
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
 
 class ControlChanges;
 class QChangesDialog;
 
 class QChanges
-	: public Qt2CB<ControlChanges, Qt2DB<QChangesDialog> >
+	: public QController<ControlChanges, QView<QChangesDialog> >
 {
 public:
 	friend class QChangesDialog;
 
-	QChanges();
+	QChanges(Dialog &);
 
 	void accept();
 

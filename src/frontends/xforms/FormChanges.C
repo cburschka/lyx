@@ -17,10 +17,10 @@
 
 #include FORMS_H_LOCATION
 
-typedef FormCB<ControlChanges, FormDB<FD_changes> > base_class;
+typedef FormController<ControlChanges, FormView<FD_changes> > base_class;
 
-FormChanges::FormChanges()
-	: base_class(_("LyX: Merge changes"))
+FormChanges::FormChanges(Dialog & parent)
+	: base_class(parent, _("LyX: Merge changes"))
 {}
 
 

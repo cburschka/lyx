@@ -945,7 +945,7 @@ void BufferView::Pimpl::trackChanges()
 
 		bool found = lyxfind::findNextChange(bv_);
 		if (found) {
-			owner_->getDialogs().showMergeChanges();
+			owner_->getDialogs().show("changes");
 			return;
 		}
 
@@ -1227,7 +1227,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		break;
 
 	case LFUN_MERGE_CHANGES:
-		owner_->getDialogs().showMergeChanges();
+		owner_->getDialogs().show("changes");
 		break;
 
 	case LFUN_ACCEPT_ALL_CHANGES: {
