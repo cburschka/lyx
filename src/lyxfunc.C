@@ -2926,7 +2926,6 @@ void LyXFunc::doImportHelper(
 
 	// notify user of import ahead
 	string displaypath = MakeDisplayPath(filename);
-	owner->view()->buffer(bufferlist.newFile(lyxfile, string()));
 	owner->getMiniBuffer()->Set(_("Importing"), displaypath, "...");
 
 	// call real importer
@@ -2942,6 +2941,7 @@ void LyXFunc::doImportHelper(
 static
 bool doImportASCIIasLines(BufferView * view, string const & filename)
 {
+	view->buffer(bufferlist.newFile(filename, string()));
 	InsertAsciiFile(view, filename, false);
 	return true;
 }
@@ -2949,24 +2949,35 @@ bool doImportASCIIasLines(BufferView * view, string const & filename)
 static
 bool doImportASCIIasParagraphs(BufferView * view, string const & filename)
 {
+	view->buffer(bufferlist.newFile(filename, string()));
 	InsertAsciiFile(view, filename, true);
 	return true;
 }
 
 static
-bool doImportLaTeX(BufferView *, string const & filename)
+bool doImportLaTeX(BufferView * view, string const & filename)
 {
 	ImportLaTeX myImport(filename);
 	Buffer * openbuf = myImport.run();
-	return openbuf != NULL;		
+	if (openbuf) { 
+		view->buffer(openbuf);
+		return true;
+	}
+	else
+		return false;
 }
 
 static
-bool doImportNoweb(BufferView *, string const & filename)
+bool doImportNoweb(BufferView * view, string const & filename)
 {
 	ImportNoweb myImport(filename);
 	Buffer * openbuf = myImport.run();
-	return openbuf != NULL;		
+	if (openbuf) { 
+		view->buffer(openbuf);
+		return true;
+	}
+	else
+		return false;
 }
 
 static

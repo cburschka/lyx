@@ -1,5 +1,10 @@
 2000-05-31  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/lyxfunc.C (doImportHelper): do not create the file before
+	doing the actual import. 
+	(doImportASCIIasLines): create a new file before doing the insert.
+	(doImportASCIIasParagraphs): ditto.
+
 	* lib/lyxrc.example: remove mention of non-existing commands
 
 	* lyx.man: remove mention of color-related switches.
