@@ -382,10 +382,11 @@ void LyXText::removeParagraph(Row * row) const
 void LyXText::insertParagraph(BufferView * bview, Paragraph * par,
 			      Row * row) const
 {
-	insertRow(row, par, 0);            /* insert a new row, starting
-					    * at position 0 */
+	// insert a new row, starting at position 0 
+	insertRow(row, par, 0); 
 
-	setCounter(bview->buffer(), par);  // set the counters
+	// set the counters
+	setCounter(bview->buffer(), par);
 
 	// and now append the whole paragraph behind the new row
 	if (!row) {
@@ -1264,13 +1265,13 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 	}
 
 	// is it a layout that has an automatic label?
-	if (layout->labeltype >=  LABEL_COUNTER_CHAPTER) {
+	if (layout->labeltype >= LABEL_COUNTER_CHAPTER) {
 
 		int i = layout->labeltype - LABEL_COUNTER_CHAPTER;
 		string numbertype, langtype;
 		ostringstream s;
 
-		if (i >= 0 && i<= buf->params.secnumdepth) {
+		if (i >= 0 && i <= buf->params.secnumdepth) {
 
 			buf->counters().step(buf->counters().sects[i]);
 
@@ -1360,16 +1361,16 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 				o << fl.name() << " #:";
 				s = o.str();
 			} else {
-				/* par->SetLayout(0);
-				   s = layout->labelstring;  */
+				// par->SetLayout(0);
+				// s = layout->labelstring; 
 				s = (par->getParLanguage(buf->params)->lang() == "hebrew")
 					? " :תועמשמ רסח" : "Senseless: ";
 			}
 		}
 		par->params().labelString(s);
 
-		/* reset the enumeration counter. They are always resetted
-		 * when there is any other layout between */
+		// reset the enumeration counter. They are always resetted
+		// when there is any other layout between 
 		for (int i = par->enumdepth + 1; i < 4; i++) {
 			buf->counters().set(buf->counters().enums[i], 0);
 		}
