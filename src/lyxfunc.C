@@ -1912,15 +1912,16 @@ void LyXFunc::open(string const & fname)
 }
 
 
-// checks for running without gui are missing.
 void LyXFunc::doImport(string const & argument)
 {
 	string format;
 	string filename = split(argument, format, ' ');
+
 	lyxerr[Debug::INFO] << "LyXFunc::doImport: " << format
 			    << " file: " << filename << endl;
-
-	if (filename.empty()) { // need user interaction
+ 
+	// need user interaction
+	if (filename.empty()) {
 		string initpath = lyxrc.document_path;
 
 		if (owner->view()->available()) {
@@ -1957,7 +1958,6 @@ void LyXFunc::doImport(string const & argument)
 			owner->message(_("Canceled."));
 	}
 
-	// still no filename? abort
 	if (filename.empty())
 		return;
 
@@ -1967,35 +1967,35 @@ void LyXFunc::doImport(string const & argument)
 	string const lyxfile = ChangeExtension(filename, ".lyx");
 
 	// Check if the document already is open
-	if (bufferlist.exists(lyxfile)) {
+	if (lyxrc.use_gui && bufferlist.exists(lyxfile)) {
 		switch (Alert::askConfirmation(_("Document is already open:"),
 					MakeDisplayPath(lyxfile, 50),
 					_("Do you want to close that document now?\n"
 					  "('No' will just switch to the open version)")))
 			{
-			case 1: // Yes: close the document
-				if (!bufferlist.close(bufferlist.getBuffer(lyxfile)))
+			case 1:
 				// If close is canceled, we cancel here too.
+				if (!bufferlist.close(bufferlist.getBuffer(lyxfile)))
 					return;
 				break;
-			case 2: // No: switch to the open document
+			case 2:
 				owner->view()->buffer(bufferlist.getBuffer(lyxfile));
 				return;
-			case 3: // Cancel: Do nothing
+			case 3:
 				owner->message(_("Canceled."));
 				return;
 			}
 	}
 
-	// Check if a LyX document by the same root exists in filesystem
-	FileInfo const f(lyxfile, true);
-	if (f.exist() && !Alert::askQuestion(_("A document by the name"),
-				      MakeDisplayPath(lyxfile),
-				      _("already exists. Overwrite?"))) {
-		owner->message(_("Canceled"));
-		return;
+	// if the file exists already, and we didn't do 
+	// -i lyx thefile.lyx, warn
+	if (FileInfo(lyxfile, true).exist() && filename != lyxfile) {
+		if (!Alert::askQuestion(_("A document by the name"),
+			MakeDisplayPath(lyxfile), _("already exists. Overwrite?"))) {
+			owner->message(_("Canceled"));
+			return;
+		}
 	}
-	// filename should be valid now
 
 	Importer::Import(owner, filename, format);
 }
