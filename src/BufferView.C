@@ -373,7 +373,7 @@ bool BufferView::removeAutoInsets()
 	ParIterator it = buffer()->par_iterator_begin();
 	ParIterator end = buffer()->par_iterator_end();
 	for (; it != end; ++it) {
-		Paragraph * par = *it;
+		Paragraph * par = &*(*it);
 		Paragraph * par_prev = par ? par->previous() : 0;
 		bool removed = false;
 
@@ -495,7 +495,7 @@ void BufferView::showErrorList(string const & action) const
 }
 
 
-ErrorList const & 
+ErrorList const &
 BufferView::getErrorList() const
 {
 	return pimpl_->errorlist_;
@@ -764,7 +764,7 @@ bool BufferView::ChangeInsets(Inset::Code code,
 	ParIterator end = buffer()->par_iterator_end();
 	for (ParIterator it = buffer()->par_iterator_begin();
 	     it != end; ++it) {
-		Paragraph * par = *it;
+		Paragraph * par = &*(*it);
 		bool changed_inset = false;
 		for (InsetList::iterator it2 = par->insetlist.begin();
 		     it2 != par->insetlist.end(); ++it2) {

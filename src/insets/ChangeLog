@@ -1,3 +1,6 @@
+2003-05-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insetfloat.C (addToToc): adjust
 
 2003-05-21  André Pönitz  <poenitz@gmx.net>
 
@@ -24,17 +27,17 @@
 	* insetspecialchar.[Ch]:
 	* insettabular.[Ch]:
 	* insettext.[Ch]: dimensions() instead of ascend/descend/width
-	
+
 2003-05-19  André Pönitz  <poenitz@gmx.net>
 
 	* insetenv.[Ch]:
-	* insettext.C: more insetenv 
+	* insettext.C: more insetenv
 
 2003-05-16  André Pönitz  <poenitz@gmx.net>
 
 	* insetcommand.C:
 	* insetminimpage.[Ch]:
-	* insetcollapsable.[Ch]: fix #832 
+	* insetcollapsable.[Ch]: fix #832
 
 2003-05-16  André Pönitz  <poenitz@gmx.net>
 
@@ -61,7 +64,7 @@
 	* insettoc.[Ch]:
 	* inseturl.[Ch]:
 	* updatableinset.[Ch]: edit() -> LFUN_INSET_EDIT
-	
+
 2003-05-13  André Pönitz <poenitz@gmx.net>
 
 	* insetbibitem.C:

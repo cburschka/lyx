@@ -148,7 +148,7 @@ Buffer::~Buffer()
 		users->buffer(0);
 
 	if (!tmppath.empty() && destroyDir(tmppath) != 0) {
-		Alert::warning(_("Could not remove temporary directory"), 
+		Alert::warning(_("Could not remove temporary directory"),
 			bformat(_("Could not remove the temporary directory %1$s"), tmppath));
 	}
 
@@ -249,7 +249,7 @@ namespace {
 
 void unknownClass(string const & unknown)
 {
-	Alert::warning(_("Unknown document class"), 
+	Alert::warning(_("Unknown document class"),
 		bformat(_("Using the default document class, because the "
 			" class %1$s is unknown."), unknown));
 }
@@ -1969,7 +1969,7 @@ int Buffer::runChktex()
 			_("Could not run chktex successfully."));
 	} else if (res > 0) {
 		// Insert all errors as errors boxes
-		ErrorList el (*this, terr); 
+		ErrorList el (*this, terr);
 		users->setErrorList(el);
 		users->showErrorList(_("ChkTeX"));
 	}
@@ -2249,24 +2249,24 @@ bool Buffer::hasParWithID(int id) const
 
 ParIterator Buffer::par_iterator_begin()
 {
-	return ParIterator(&*(paragraphs.begin()));
+	return ParIterator(paragraphs.begin(), paragraphs);
 }
 
 
 ParIterator Buffer::par_iterator_end()
 {
-	return ParIterator();
+	return ParIterator(paragraphs.end(), paragraphs);
 }
 
 ParConstIterator Buffer::par_iterator_begin() const
 {
-	return ParConstIterator(&*(paragraphs.begin()));
+	return ParConstIterator(paragraphs.begin(), paragraphs);
 }
 
 
 ParConstIterator Buffer::par_iterator_end() const
 {
-	return ParConstIterator();
+	return ParConstIterator(paragraphs.end(), paragraphs);
 }
 
 

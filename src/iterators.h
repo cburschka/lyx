@@ -1,119 +1,83 @@
 // -*- C++ -*-
+/* \file iterators.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author unknown
+ * \author Lars Gullik Bjønnes
+ *
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifndef ITERATORS_H
 #define ITERATORS_H
 
-#include <stack>
+#include "ParagraphList.h"
 
-#include "paragraph.h"
-
-class ParPosition {
-public:
-	ParPosition(Paragraph * p)
-		: par(p), it(p->insetlist.begin()), index(-1) {}
-	///
-	Paragraph * par;
-	///
-	InsetList::iterator it;
-	///
-	int index;
-};
-
-
-inline
-bool operator==(ParPosition const & pos1, ParPosition const & pos2) {
-	return pos1.par == pos2.par &&
-		pos1.it == pos2.it &&
-		pos1.index == pos2.index;
-}
-
-inline
-bool operator!=(ParPosition const & pos1, ParPosition const & pos2) {
-	return !(pos1 == pos2);
-}
-
+#include <boost/scoped_ptr.hpp>
 
 class ParIterator {
 public:
 	///
-	typedef std::stack<ParPosition> PosHolder;
+	ParIterator(ParagraphList::iterator pit, ParagraphList const & pl);
 	///
-	ParIterator() {}
+	~ParIterator();
 	///
-	ParIterator(Paragraph * par) {
-		positions.push(ParPosition(par));
-	}
+	ParIterator(ParIterator const &);
 	///
 	ParIterator & operator++();
 	///
-	Paragraph * operator*() {
-		return positions.top().par;
-	}
+	ParagraphList::iterator operator*();
 	///
-	PosHolder::size_type size() const
-		{ return positions.size(); }
+	ParagraphList::iterator operator->();
+	///
+	size_t size() const;
 	///
 	friend
 	bool operator==(ParIterator const & iter1, ParIterator const & iter2);
 private:
-	///
-	PosHolder positions;
+	struct Pimpl;
+	boost::scoped_ptr<Pimpl> pimpl_;
 };
 
+///
+bool operator==(ParIterator const & iter1, ParIterator const & iter2);
 
 ///
-inline
-bool operator==(ParIterator const & iter1, ParIterator const & iter2) {
-	return iter1.positions == iter2.positions;
-}
-
-
-///
-inline
-bool operator!=(ParIterator const & iter1, ParIterator const & iter2) {
-	return !(iter1 == iter2);
-}
+bool operator!=(ParIterator const & iter1, ParIterator const & iter2);
 
 
 class ParConstIterator {
 public:
 	///
-	typedef std::stack<ParPosition> PosHolder;
+	ParConstIterator(ParagraphList::iterator pit, ParagraphList const & pl);
 	///
-	ParConstIterator() {}
+	~ParConstIterator();
 	///
-	ParConstIterator(Paragraph * par) {
-		positions.push(ParPosition(par));
-	}
+	ParConstIterator(ParConstIterator const &);
 	///
 	ParConstIterator & operator++();
 	///
-	Paragraph const * operator*() {
-		return positions.top().par;
-	}
+	ParagraphList::iterator operator*();
+
 	///
-	PosHolder::size_type size() const
-		{ return positions.size(); }
+	ParagraphList::iterator operator->();
+
+	///
+	size_t size() const;
 	///
 	friend
 	bool operator==(ParConstIterator const & iter1,
 			ParConstIterator const & iter2);
 private:
-	///
-	PosHolder positions;
+	struct Pimpl;
+	boost::scoped_ptr<Pimpl> pimpl_;
 };
 
+bool operator==(ParConstIterator const & iter1,
+		ParConstIterator const & iter2);
 
-///
-inline
-bool operator==(ParConstIterator const & iter1, ParConstIterator const & iter2) {
-	return iter1.positions == iter2.positions;
-}
-
-///
-inline
-bool operator!=(ParConstIterator const & iter1, ParConstIterator const & iter2) {
-	return !(iter1 == iter2);
-}
+bool operator!=(ParConstIterator const & iter1,
+		ParConstIterator const & iter2);
 
 #endif

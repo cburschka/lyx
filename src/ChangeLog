@@ -1,3 +1,17 @@
+2003-05-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* toc.C (getTocList): adjust
+
+	* iterators.[Ch]: rework for parlist
+
+	* buffer.C (par_iterator_begin): adjust
+	(par_iterator_end): adjust
+
+	* CutAndPaste.C (SwitchLayoutsBetweenClasses): adjust
+
+	* BufferView.C (removeAutoInsets): adjust
+	(ChangeInsets): adjust
+
 2003-05-21  Alfredo Braunstein  <abraunst@libero.it>
 
 	* text.C (top_y): fix bug 1110
@@ -55,13 +69,13 @@
 	* ParagraphParameters.C (params2string): small bug fixed
 
 2003-05-16  André Pönitz  <poenitz@gmx.net>
-	
+
 	* debug.C:
-	* bufferview_funcs.C: patch from Kornel Benko to prevent 
+	* bufferview_funcs.C: patch from Kornel Benko to prevent
 	  crash when _(...) is called twice in a statement
 
 2003-05-16  André Pönitz  <poenitz@gmx.net>
-	
+
 	* BufferView.C:
 	* lyxfunc.C:
 	* text.C:
@@ -74,7 +88,7 @@
 	* lyx_main.C (init): remove spurious static_cast
 
 2003-05-14  André Pönitz  <poenitz@gmx.net>
-	
+
 	* BufferView.C: fix format string
 
 2003-05-12  Alfredo Braunstein  <abraunst@libero.it>
@@ -85,7 +99,7 @@
 	* converter.C (scanLog): call showErrorList instead of inserterrors
 
 2003-05-13  André Pönitz  <poenitz@gmx.net>
-	
+
 	* BufferView_pimpl.C:
 	* buffer.C:
 	* bufferview_func.C:

@@ -78,26 +78,24 @@ TocList const getTocList(Buffer const * buf)
 	ParConstIterator pit = buf->par_iterator_begin();
 	ParConstIterator end = buf->par_iterator_end();
 	for (; pit != end; ++pit) {
-		Paragraph const * par = *pit;
-
 #ifdef WITH_WARNINGS
 #warning bogus type (Lgb)
 #endif
-		char const labeltype = par->layout()->labeltype;
+		char const labeltype = pit->layout()->labeltype;
 
 		if (labeltype >= LABEL_COUNTER_CHAPTER
 		    && labeltype <= LABEL_COUNTER_CHAPTER + buf->params.tocdepth) {
 				// insert this into the table of contents
 			const int depth = max(0, labeltype - textclass.maxcounter());
-			TocItem const item(par->id(), depth,
-					   par->asString(buf, true));
+			TocItem const item(pit->id(), depth,
+					   pit->asString(buf, true));
 			toclist["TOC"].push_back(item);
 		}
 
 		// For each paragraph, traverse its insets and look for
 		// FLOAT_CODE or WRAP_CODE
-		InsetList::iterator it = par->insetlist.begin();
-		InsetList::iterator end = par->insetlist.end();
+		InsetList::iterator it = pit->insetlist.begin();
+		InsetList::iterator end = pit->insetlist.end();
 		for (; it != end; ++it) {
 			if (it.getInset()->lyxCode() == Inset::FLOAT_CODE) {
 				InsetFloat * il =

@@ -1409,7 +1409,7 @@ MathCursorPos MathCursor::normalAnchor() const
 
 dispatch_result MathCursor::dispatch(FuncRequest const & cmd)
 {
-	// mouse clicks are somewhat special 
+	// mouse clicks are somewhat special
 	// check
 	switch (cmd.action) {
 		case LFUN_MOUSE_PRESS:

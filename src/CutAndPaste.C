@@ -223,7 +223,7 @@ CutAndPaste::pasteSelection(ParagraphList & pars,
 	// new environment and set also another font if that is required.
 
 	// Make sure there is no class difference.
-	SwitchLayoutsBetweenClasses(textclass, tc, simple_cut_clone, 
+	SwitchLayoutsBetweenClasses(textclass, tc, simple_cut_clone,
 				    errorlist);
 
 	ParagraphList::iterator tmpbuf = simple_cut_clone.begin();
@@ -338,17 +338,15 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 {
 	lyx::Assert(!pars.empty());
 
-	Paragraph * par = &*pars.begin();
-
 	int ret = 0;
 	if (c1 == c2)
 		return ret;
 
 	LyXTextClass const & tclass1 = textclasslist[c1];
 	LyXTextClass const & tclass2 = textclasslist[c2];
-	ParIterator end = ParIterator();
-	for (ParIterator it = ParIterator(par); it != end; ++it) {
-		par = *it;
+	ParIterator end = ParIterator(pars.end(), pars);
+	for (ParIterator it = ParIterator(pars.begin(), pars); it != end; ++it) {
+		Paragraph * par = &*(*it);
 		string const name = par->layout()->name();
 		bool hasLayout = tclass2.hasLayout(name);
 
@@ -364,8 +362,8 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 				"because of class conversion from\n%3$s to %4$s"),
 			 name, par->layout()->name(), tclass1.name(), tclass2.name());
 			// To warn the user that something had to be done.
-			errorlist.push_back(ErrorItem("Changed Layout", s, 
-						      par->id(), 0, 
+			errorlist.push_back(ErrorItem("Changed Layout", s,
+						      par->id(), 0,
 						      par->size()));
 		}
 	}

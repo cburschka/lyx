@@ -127,7 +127,7 @@ void InsetCollapsable::dimension(BufferView * bv, LyXFont const & font,
 	Dimension & dim) const
 {
 	dimension_collapsed(dim);
-	if (collapsed_) 
+	if (collapsed_)
 		return;
 	Dimension insetdim;
 	inset.dimension(bv, font, insetdim);

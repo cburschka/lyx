@@ -617,7 +617,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 		if (flags & FLAG_ITEM) {
 
-	  	if (t.cat() == catBegin) {
+		if (t.cat() == catBegin) {
 				// skip the brace and collect everything to the next matching
 				// closing brace
 				parse1(grid, FLAG_BRACE_LAST, mode, numbered);

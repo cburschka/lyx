@@ -44,8 +44,8 @@ dispatch_result InsetError::localDispatch(FuncRequest const & cmd)
 	dispatch_result result = UNDISPATCHED;
 
 	switch (cmd.action) {
-	case LFUN_MOUSE_RELEASE: 
-	case LFUN_INSET_EDIT: 
+	case LFUN_MOUSE_RELEASE:
+	case LFUN_INSET_EDIT:
 		cmd.view()->owner()->getDialogs().show("error", getContents(), this);
 		return DISPATCHED;
 

@@ -842,9 +842,9 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 	string const disp_fn = MakeDisplayPath(filename);
 	owner_->message(bformat(_("Inserting document %1$s..."), disp_fn));
 	bool const res = bv_->insertLyXFile(filename);
-	if (res) 
+	if (res)
 		owner_->message(bformat(_("Document %1$s inserted."), disp_fn));
-	else 
+	else
 		owner_->message(bformat(_("Could not insert document %1$s"), disp_fn));
 }
 

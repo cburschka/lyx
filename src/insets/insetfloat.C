@@ -362,12 +362,12 @@ void InsetFloat::wide(bool w, BufferParams const & bp)
 
 void InsetFloat::addToToc(toc::TocList & toclist, Buffer const * buf) const
 {
-	ParIterator pit(&*inset.paragraphs.begin());
-	ParIterator end;
+	ParIterator pit(inset.paragraphs.begin(), inset.paragraphs);
+	ParIterator end(inset.paragraphs.end(), inset.paragraphs);
 
 	// Find a caption layout in one of the (child inset's) pars
 	for (; pit != end; ++pit) {
-		Paragraph * tmp = *pit;
+		Paragraph * tmp = &*(*pit);
 
 		if (tmp->layout()->name() == caplayout) {
 			string const name = floatname(params_.type, buf->params);
@@ -401,7 +401,7 @@ void InsetFloatMailer::string2params(string const & in,
 
 	if (in.empty())
 		return;
-	
+
 	istringstream data(STRCONV(in));
 	LyXLex lex(0,0);
 	lex.setStream(data);
