@@ -288,8 +288,10 @@ TeXEnvironment(Buffer const * buf,
 
 	Language const * language = pit->getParLanguage(bparams);
 	Language const * doc_language = bparams.language;
-	Language const * previous_language = pit->previous()
-		? pit->previous()->getParLanguage(bparams) : doc_language;
+	Language const * previous_language =
+		(pit != buf->paragraphs.begin())
+		? boost::prior(pit)->getParLanguage(bparams)
+		: doc_language;
 	if (language->babel() != previous_language->babel()) {
 
 		if (!lyxrc.language_command_end.empty() &&
@@ -424,7 +426,7 @@ TeXOnePar(Buffer const * buf,
 		}
 
 		if (!pit->params().spacing().isDefault()
-			&& (!pit->previous() || !pit->previous()->hasSameLayout(&*pit))) {
+			&& (pit == buf->paragraphs.begin() || !boost::prior(pit)->hasSameLayout(&*pit))) {
 			os << pit->params().spacing().writeEnvirBegin() << '\n';
 			texrow.newline();
 		}
@@ -459,16 +461,18 @@ TeXOnePar(Buffer const * buf,
 
 	Language const * language = pit->getParLanguage(bparams);
 	Language const * doc_language = bparams.language;
-	Language const * previous_language = pit->previous()
-		? pit->previous()->getParLanguage(bparams) : doc_language;
+	Language const * previous_language =
+		(pit != buf->paragraphs.begin())
+		? boost::prior(pit)->getParLanguage(bparams)
+		: doc_language;
 
 	if (language->babel() != previous_language->babel()
 	    // check if we already put language command in TeXEnvironment()
 	    && !(style->isEnvironment()
-		 && (!pit->previous() ||
-		     (pit->previous()->layout() != pit->layout() &&
-		      pit->previous()->getDepth() <= pit->getDepth())
-		     || pit->previous()->getDepth() < pit->getDepth())))
+		 && (pit == buf->paragraphs.begin() ||
+		     (boost::prior(pit)->layout() != pit->layout() &&
+		      boost::prior(pit)->getDepth() <= pit->getDepth())
+		     || boost::prior(pit)->getDepth() < pit->getDepth())))
 	{
 		if (!lyxrc.language_command_end.empty() &&
 		    previous_language->babel() != doc_language->babel())
@@ -538,7 +542,9 @@ TeXOnePar(Buffer const * buf,
 
 	bool is_command = style->isCommand();
 
-	if (style->resfont.size() != font.size() && pit->next() && !is_command) {
+	if (style->resfont.size() != font.size()
+	    && boost::next(pit) != buf->paragraphs.end()
+	    && !is_command) {
 		if (!need_par)
 			os << '{';
 		os << "\\" << font.latexSize() << " \\par}";
@@ -550,7 +556,8 @@ TeXOnePar(Buffer const * buf,
 	switch (style->latextype) {
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
-		if (pit->next() && (pit->params().depth() < pit->next()->params().depth())) {
+		if (boost::next(pit) != buf->paragraphs.end()
+		    && (pit->params().depth() < boost::next(pit)->params().depth())) {
 			os << '\n';
 			texrow.newline();
 		}
@@ -558,14 +565,14 @@ TeXOnePar(Buffer const * buf,
 	case LATEX_ENVIRONMENT:
 		// if its the last paragraph of the current environment
 		// skip it otherwise fall through
-		if (pit->next()
-		    && (pit->next()->layout() != pit->layout()
-			|| pit->next()->params().depth() != pit->params().depth()))
+		if (boost::next(pit) != buf->paragraphs.end()
+		    && (boost::next(pit)->layout() != pit->layout()
+			|| boost::next(pit)->params().depth() != pit->params().depth()))
 			break;
 		// fall through possible
 	default:
 		// we don't need it for the last paragraph!!!
-		if (pit->next()) {
+		if (boost::next(pit) != buf->paragraphs.end()) {
 			os << '\n';
 			texrow.newline();
 		}
@@ -594,14 +601,14 @@ TeXOnePar(Buffer const * buf,
 		}
 
 		if (!pit->params().spacing().isDefault()
-			&& (!pit->next() || !pit->next()->hasSameLayout(&*pit))) {
+			&& (boost::next(pit) == buf->paragraphs.end()|| !boost::next(pit)->hasSameLayout(&*pit))) {
 			os << pit->params().spacing().writeEnvirEnd() << '\n';
 			texrow.newline();
 		}
 	}
 
 	// we don't need it for the last paragraph!!!
-	if (pit->next()) {
+	if (boost::next(pit) != buf->paragraphs.end()) {
 		os << '\n';
 		texrow.newline();
 	} else {
@@ -624,6 +631,6 @@ TeXOnePar(Buffer const * buf,
 		}
 	}
 
-	lyxerr[Debug::LATEX] << "TeXOnePar...done " << pit->next() << endl;
+	lyxerr[Debug::LATEX] << "TeXOnePar...done " << &*boost::next(pit) << endl;
 	return ++pit;
 }
