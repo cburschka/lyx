@@ -23,7 +23,7 @@
 #include "controllers/ButtonController.h"
 #include "controllers/ControlTabular.h"
 
-#include "support/tostr.h"
+#include "support/convert.h"
 
 #include <qcheckbox.h>
 #include <qlineedit.h>

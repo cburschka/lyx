@@ -21,7 +21,7 @@
 
 #include "insets/insetwrap.h"
 
-#include "support/tostr.h"
+#include "support/convert.h"
 #include "support/lstrings.h"
 
 #include <qlineedit.h>

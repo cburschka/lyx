@@ -29,7 +29,7 @@
 #include "insets/insetgraphicsParams.h"
 
 #include "support/lstrings.h"
-#include "support/tostr.h"
+#include "support/convert.h"
 #include "support/lyxlib.h"
 
 #include <qlineedit.h>

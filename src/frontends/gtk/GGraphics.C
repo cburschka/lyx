@@ -28,7 +28,7 @@
 
 #include "support/lyxlib.h"  // for float_equal
 #include "support/lstrings.h"
-#include "support/tostr.h"
+#include "support/convert.h"
 
 #include "debug.h"
 

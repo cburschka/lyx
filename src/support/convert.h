@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file tostr.h
+ * \file convert.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -13,8 +13,8 @@
  * Some of these would certainly benefit from a rewrite/optimization.
  */
 
-#ifndef TOSTR_H
-#define TOSTR_H
+#ifndef CONVERT_H
+#define CONVERT_H
 
 #include <boost/static_assert.hpp>
 
