@@ -631,7 +631,6 @@ void InsetERT::status(BufferView * bv, ERTStatus const st) const
 		need_update = FULL;
 		switch (st) {
 		case Inlined:
-#warning Another gross hack. (Lgb)
 			if (bv)
 				inset.setUpdateStatus(bv, InsetText::INIT);
 			break;

@@ -72,11 +72,15 @@ InsetMinipage::InsetMinipage(BufferParams const & bp)
 #if 0
 	setAutoCollapse(false);
 #endif
+
+#if 0
 #ifdef WITH_WARNINGS
 #warning Remove this color definitions before 1.2.0 final!
 #endif
 	// just for experimentation :)
 	setBackgroundColor(LColor::green);
+#endif
+	
 	inset.setFrameColor(0, LColor::blue);
 	setInsetName("Minipage");
 }
