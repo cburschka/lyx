@@ -1,3 +1,11 @@
+2001-08-16  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C: implemented the new FINISHED states.
+
+	* insettabular.C: ditto 
+
+	* inset.h: added more FINISHED states for cursor right,up,down
+
 2001-08-14  Juergen Vigna  <jug@sad.it>
 
 	* insetert.C (edit): forgot to set status_ in edit calls!

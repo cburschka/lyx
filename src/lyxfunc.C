@@ -866,12 +866,40 @@ string const LyXFunc::dispatch(int ac,
 					inset->edit(owner->view(),slx,sly,0); 
 				return string();
 			} else if (((result=owner->view()->theLockingInset()->
-				   localDispatch(owner->view(), action,
-						 argument)) ==
-				   UpdatableInset::DISPATCHED) ||
-				   (result == UpdatableInset::DISPATCHED_NOUPDATE))
+			             localDispatch(owner->view(), action, argument)) ==
+			            UpdatableInset::DISPATCHED) ||
+			           (result == UpdatableInset::DISPATCHED_NOUPDATE))
 				return string();
-			else {
+			else if (result == UpdatableInset::FINISHED) {
+					if (TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
+						TEXT()->cursorRight(owner->view());
+						moveCursorUpdate(true, false);
+						owner->showState();
+					}
+					return string();
+			} else if (result == UpdatableInset::FINISHED_RIGHT) {
+				if (!TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
+					TEXT()->cursorRight(owner->view());
+					moveCursorUpdate(true, false);
+					owner->showState();
+				}
+				return string();
+			} else if (result == UpdatableInset::FINISHED_UP) {
+				if (TEXT()->cursor.row()->previous()) {
+					TEXT()->cursorUp(owner->view());
+					moveCursorUpdate(true, false);
+					owner->showState();
+				}
+				return string();
+			} else if (result == UpdatableInset::FINISHED_DOWN) {
+				if (TEXT()->cursor.row()->next())
+					TEXT()->cursorDown(owner->view());
+				else
+					TEXT()->cursorRight(owner->view());
+				moveCursorUpdate(true, false);
+				owner->showState();
+				return string();
+			} else {
 				//setMessage(N_("Text mode"));
 				switch (action) {
 				case LFUN_UNKNOWN_ACTION:

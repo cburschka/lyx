@@ -1105,7 +1105,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 			// reset need_update setted in above function!
 			need_update = NONE;
 			result = the_locking_inset->localDispatch(bv, action, arg);
-			if ((result == UNDISPATCHED) || (result == FINISHED)) {
+			if ((result == UNDISPATCHED) || (result >= FINISHED)) {
 				unlockInsetInInset(bv, the_locking_inset);
 				nodraw(false);
 				the_locking_inset = 0;
@@ -1121,7 +1121,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 		}
 		break;
 	}
-	if (result!=FINISHED) {
+	if (result < FINISHED) {
 		if (!the_locking_inset) {
 			showInsetCursor(bv);
 		}
@@ -1400,7 +1400,7 @@ UpdatableInset::RESULT InsetTabular::moveRight(BufferView * bv, bool lock)
 		bool moved = isRightToLeft(bv)
 			? movePrevCell(bv) : moveNextCell(bv);
 		if (!moved)
-			return FINISHED;
+			return FINISHED_RIGHT;
 		if (lock && activateCellInset(bv))
 			return DISPATCHED;
 	}
@@ -1428,7 +1428,7 @@ UpdatableInset::RESULT InsetTabular::moveUp(BufferView * bv, bool lock)
 	int const ocell = actcell;
 	actcell = tabular->GetCellAbove(actcell);
 	if (actcell == ocell) // we moved out of the inset
-		return FINISHED;
+		return FINISHED_UP;
 	resetPos(bv);
 	if (lock) {
 		int x = 0;
@@ -1449,7 +1449,7 @@ UpdatableInset::RESULT InsetTabular::moveDown(BufferView * bv, bool lock)
 	int const ocell = actcell;
 	actcell = tabular->GetCellBelow(actcell);
 	if (actcell == ocell) // we moved out of the inset
-		return FINISHED;
+		return FINISHED_DOWN;
 	resetPos(bv);
 	if (lock) {
 		int x = 0;

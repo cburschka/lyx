@@ -1319,7 +1319,7 @@ InsetText::localDispatch(BufferView * bv,
 		setFont(bv, font, false);
 	}
 
-	if (result != FINISHED) {
+	if (result < FINISHED) {
 		showInsetCursor(bv);
 	} else
 		bv->unlockInset(this);
@@ -1499,10 +1499,10 @@ InsetText::moveLeft(BufferView * bv, bool activate_inset, bool selecting)
 
 UpdatableInset::RESULT
 InsetText::moveRightIntern(BufferView * bv, bool behind, 
-			   bool activate_inset, bool selecting)
+                           bool activate_inset, bool selecting)
 {
 	if (!cpar(bv)->next() && (cpos(bv) >= cpar(bv)->size()))
-		return FINISHED;
+		return FINISHED_RIGHT;
 	if (activate_inset && checkAndActivateInset(bv, behind))
 		return DISPATCHED;
 	getLyXText(bv)->cursorRight(bv);
@@ -1514,7 +1514,7 @@ InsetText::moveRightIntern(BufferView * bv, bool behind,
 
 UpdatableInset::RESULT
 InsetText::moveLeftIntern(BufferView * bv, bool behind,
-			  bool activate_inset, bool selecting)
+                          bool activate_inset, bool selecting)
 {
 	if (!cpar(bv)->previous() && (cpos(bv) <= 0))
 		return FINISHED;
@@ -1531,7 +1531,7 @@ UpdatableInset::RESULT
 InsetText::moveUp(BufferView * bv)
 {
 	if (!crow(bv)->previous())
-		return FINISHED;
+		return FINISHED_UP;
 	getLyXText(bv)->cursorUp(bv);
 	return DISPATCHED_NOUPDATE;
 }
@@ -1541,7 +1541,7 @@ UpdatableInset::RESULT
 InsetText::moveDown(BufferView * bv)
 {
 	if (!crow(bv)->next())
-		return FINISHED;
+		return FINISHED_DOWN;
 	getLyXText(bv)->cursorDown(bv);
 	return DISPATCHED_NOUPDATE;
 }
