@@ -13,9 +13,10 @@
 using std::ostream;
 
 
-MathMacroTemplate::MathMacroTemplate(string const & nm, int na, int flg):
+MathMacroTemplate::MathMacroTemplate(string const & nm, int na):
 	MathParInset(LM_ST_TEXT, nm, LM_OT_MACRO), 
-	flags_(flg), nargs_(na)
+	edit_(false),
+	nargs_(na)
 {
 	if (nargs_ > 0) {
 		tcode_ = LM_TC_ACTIVE_INSET;
@@ -52,12 +53,12 @@ int MathMacroTemplate::getNoArgs() const
 void MathMacroTemplate::setEditMode(bool ed)
 {
 	if (ed) {
-		flags_ |= MMF_Edit;
+		edit_ = true;
 		for (int i = 0; i < nargs_; ++i) {
 			args_[i].setExpand(false);
 		}
 	} else {
-		flags_ &= ~MMF_Edit;
+		edit_ = false;
 		for (int i = 0; i < nargs_; ++i) {
 			args_[i].setExpand(true);
 		}
@@ -70,7 +71,7 @@ void MathMacroTemplate::draw(Painter & pain, int x, int y)
 	int x2;
 	int y2;
 	bool expnd = (nargs_ > 0) ? args_[0].getExpand() : false;
-	if (flags_ & MMF_Edit) {
+	if (edit_) {
 		for (int i = 0; i < nargs_; ++i) {
 			args_[i].setExpand(false);
 		}
@@ -95,9 +96,9 @@ void MathMacroTemplate::draw(Painter & pain, int x, int y)
 
 void MathMacroTemplate::Metrics()
 {
-	bool expnd = (nargs_ > 0) ? args_[0].getExpand() : false;
+	bool const expnd = (nargs_ > 0) ? args_[0].getExpand() : false;
     
-	if (flags_ & MMF_Edit) {
+	if (edit_) {
 		for (int i = 0; i < nargs_; ++i) {
 			args_[i].setExpand(false);
 		}
@@ -117,7 +118,7 @@ void MathMacroTemplate::Metrics()
 void MathMacroTemplate::update(MathMacro * macro)
 {
 	Assert(macro);
-	int idx = macro->getArgumentIdx();
+	int const idx = macro->getArgumentIdx();
 	for (int i = 0; i < nargs_; ++i) {
 			macro->setArgumentIdx(i);
 			args_[i].setData(macro->GetData());
@@ -142,12 +143,6 @@ void MathMacroTemplate::WriteDef(ostream & os, bool fragile)
 	}	 
 	Write(os, fragile);
 	os << "}\n";
-}
-
-
-void MathMacroTemplate::setArgument(MathedArray * a, int i)
-{
-	args_[i].setData(*a);
 }
 
 

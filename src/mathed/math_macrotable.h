@@ -2,33 +2,39 @@
 #ifndef MATHMACROTABLE
 #define MATHMACROTABLE
 
-#include <vector>
+#include <map>
 #include "LString.h"
+
+#include <boost/utility.hpp>
+#include <boost/smart_ptr.hpp>
+
+#ifdef __GNUG__
+#pragma interface
+#endif
 
 class MathMacroTemplate;
 class MathMacro;
 
 ///
-class MathMacroTable {
+class MathMacroTable : noncopyable {
 public:
-    ///
-    void addTemplate(MathMacroTemplate *);
-    ///
-    MathMacro * getMacro(string const &) const;
-    ///
-    MathMacroTemplate * getTemplate(string const &) const;
-    ///
-    void builtinMacros();
-    ///
-    static MathMacroTable mathMTable;
-    ///
-    static bool built;
+	///
+	void addTemplate(boost::shared_ptr<MathMacroTemplate> const &);
+	///
+	MathMacro * createMacro(string const &) const;
+	///
+	boost::shared_ptr<MathMacroTemplate> const
+	getTemplate(string const &) const;
+	///
+	void builtinMacros();
+	///
+	static MathMacroTable mathMTable;
+	///
+	static bool built;
 private:
-    ///
-    typedef std::vector<MathMacroTemplate *> table_type;
-    ///
-    typedef table_type::size_type size_type;
-    ///
-    table_type macro_table;
+	///
+	typedef std::map<string, boost::shared_ptr<MathMacroTemplate> > table_type;
+	///
+	table_type macro_table;
 };
 #endif

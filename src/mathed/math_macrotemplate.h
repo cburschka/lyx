@@ -4,6 +4,8 @@
 
 #include <vector>
 
+#include <boost/utility.hpp>
+
 #include "math_parinset.h"
 #include "math_macroarg.h"
 
@@ -16,11 +18,11 @@ class MathMacro;
 /** This class contains the macro definition
     \author Alejandro Aguilar Sierra
  */
-class MathMacroTemplate : public MathParInset {
+class MathMacroTemplate : public MathParInset, public noncopyable {
 public:
 	/// A template constructor needs all the data
 	explicit
-	MathMacroTemplate(string const &, int na = 0, int f = 0);
+	MathMacroTemplate(string const &, int na);
 	///
 	void draw(Painter &, int, int);
 	///
@@ -28,11 +30,9 @@ public:
 	///
 	void WriteDef(std::ostream &, bool fragile);
 	/// useful for special insets
-	void  setTCode(MathedTextCodes t);
+	void setTCode(MathedTextCodes t);
 	///
 	MathedTextCodes getTCode() const;
-	/// 
-	void setArgument(MathedArray *, int i= 0);
 	/// Number of arguments
 	int getNoArgs() const;
 	///
@@ -46,11 +46,9 @@ public:
 	
 	/// Replace the appropriate arguments with a specific macro's data
 	void update(MathMacro * m);
-	///
-	short flags() const;
 private:
-	///
-	short flags_;
+	/// Are we in edit mode or not?
+	bool edit_;
 	///
 	MathedTextCodes tcode_;
 	///
@@ -58,10 +56,4 @@ private:
 	///
 	int nargs_;
 };
-
-
-inline
-short MathMacroTemplate::flags() const {
-	return flags_;
-}
 #endif

@@ -783,7 +783,7 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 		{
 			
 			MathMacro * p = 
-				MathMacroTable::mathMTable.getMacro(yylval.s);
+				MathMacroTable::mathMTable.createMacro(yylval.s);
 			if (p) {
 				if (accent) 
 					data.insertInset(doAccent(p), p->getTCode());
@@ -881,7 +881,7 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 			} else {
 //	     lyxerr << "MATHCRO[" << yytext << "]";
 				MathMacro * p = 
-					MathMacroTable::mathMTable.getMacro(yytext.data());
+					MathMacroTable::mathMTable.createMacro(yytext.data());
 				if (p) {
 					data.insertInset(p, p->getTCode());
 					p->setArgumentIdx(0);
@@ -898,7 +898,7 @@ void mathed_parse(MathedArray & array, unsigned flags = 0,
 		case LM_TK_MACRO:
 		{ 
 			MathedInset * p = 
-				MathMacroTable::mathMTable.getMacro(yylval.l->name);
+				MathMacroTable::mathMTable.createMacro(yylval.l->name);
 			
 			if (p) {
 				if (accent) {

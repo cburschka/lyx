@@ -17,11 +17,13 @@
 #ifndef INSET_FORMULA_MACRO_H 
 #define INSET_FORMULA_MACRO_H
 
+#include <boost/smart_ptr.hpp>
+
+#include "formula.h"
+
 #ifdef __GNUG__
 #pragma interface
 #endif
-
-#include "formula.h"
 
 class MathMacroTemplate;
 
@@ -33,7 +35,7 @@ public:
 	InsetFormulaMacro();
 	///
 	explicit
-	InsetFormulaMacro(string name, int na = 0);
+	InsetFormulaMacro(string name, int na);
 	///
 	~InsetFormulaMacro();
 	///
@@ -74,7 +76,7 @@ private:
 	///
         string name_;
 	///
-        MathMacroTemplate * tmacro_;
+        boost::shared_ptr<MathMacroTemplate> tmacro_;
 };
 
 

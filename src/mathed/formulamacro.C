@@ -42,7 +42,6 @@ using std::istream;
 InsetFormulaMacro::InsetFormulaMacro()
 	: InsetFormula(true)
 {
-	tmacro_ = 0;
 	opened_ = false;
 }
 
@@ -51,8 +50,8 @@ InsetFormulaMacro::InsetFormulaMacro(string nm, int na)
         : InsetFormula(true), name_(nm)
 {
 	tmacro_ = MathMacroTable::mathMTable.getTemplate(name_);
-	if (!tmacro_) {
-		tmacro_ = new MathMacroTemplate(name_, na);
+	if (!tmacro_.get()) {
+		tmacro_.reset(new MathMacroTemplate(name_, na));
 		MathMacroTable::mathMTable.addTemplate(tmacro_);
 	}
 	opened_ = false;
@@ -61,13 +60,16 @@ InsetFormulaMacro::InsetFormulaMacro(string nm, int na)
 
 InsetFormulaMacro::~InsetFormulaMacro()
 {
+	// We do not want the InsetFormula destructor to
+	// delete this. That is taken care of elsewhere (Lgb)
 	par = 0;
 }
 
 
 Inset * InsetFormulaMacro::Clone(Buffer const &) const
 {
-	return new InsetFormulaMacro(name_);
+	// This should really use a proper copy constructor
+	return new InsetFormulaMacro(name_, 0);
 }
 
 
@@ -105,7 +107,7 @@ void InsetFormulaMacro::Read(Buffer const *, LyXLex & lex)
 	MathedArray ar;
 	
 	mathed_parse(ar, 0, reinterpret_cast<MathParInset **>(&tmacro_));
-	// since tmacro_ == 0 when mathed_parse is called we need to sett
+	// Since tmacro_ == 0 when mathed_parse is called we need to set
 	// its contents explicitly afterwards (Lgb)
 	tmacro_->setData(ar);
 	
@@ -114,7 +116,7 @@ void InsetFormulaMacro::Read(Buffer const *, LyXLex & lex)
 	
 	MathMacroTable::mathMTable.addTemplate(tmacro_);
 	name_ = tmacro_->GetName();
-	par = tmacro_;
+	par = tmacro_.get();
 
 	// reading of end_inset in the inset!!!
 	while (lex.IsOK()) {

@@ -22,6 +22,8 @@
 #endif
 
 #include <vector>
+#include <boost/smart_ptr.hpp>
+
 #include "math_parinset.h"
 
 class MathMacroTemplate;
@@ -35,7 +37,7 @@ class MathMacro : public MathParInset {
 public:
 	/// A macro can only be builded from an existing template
 	explicit
-	MathMacro(MathMacroTemplate *);
+	MathMacro(boost::shared_ptr<MathMacroTemplate> const &);
 	/// or from another macro.
 	explicit
 	MathMacro(MathMacro const &);
@@ -73,20 +75,16 @@ public:
 	bool Permit(short) const;
 private:
 	///
-	MathMacroTemplate * tmplate_;
+	boost::shared_ptr<MathMacroTemplate> tmplate_;
 	///
 	struct MacroArgumentBase {
-		/// Position of the macro
-		int x;
-		///
-		int y;
 		///
 		MathedRowSt * row;
 		///
 		MathedArray array;
 		///
 		MacroArgumentBase()
-			: x(0), y(0), row(0)
+			:  row(0)
 			{}
 	};
 	std::vector<MacroArgumentBase> args_;

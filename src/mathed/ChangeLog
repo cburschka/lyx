@@ -1,5 +1,45 @@
 2001-03-01  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
+	* math_macrotemplate.h: make noncopyable, remove last arg to
+	constructor, remove flags_ add edit_
+	(flags): remove method
+
+	* math_macrotemplate.C (setArgument): delete method
+	(update): make idx const
+	(Metrics): use edit_, remove flags_
+	(draw): use edit_, remove flags_
+	(setEditMode): set edit_, remove flags_
+	(MathMacroTemplate): initialize edit_, remove flags_
+
+	* math_macro.h: remove x,y from MacroArgumentBase, make tmplate_ a
+	shared_ptr, let constructor take a shared_ptr
+
+	* math_macro.C (MathMacro): take shared_ptr as arg, remove double
+	initialization. 
+	(draw): remove unneded update, remove removed update of x,y
+	(GetXY): call tmplates GetMacroXY directly
+	(SetFocus): call Metrics() instead of update()
+	(Write): remove support for math macro environments, simplifications.
+
+	* math_macrotable.h: make class noncopyable, change getMacro to
+	createMacro, change vector to map store a
+	shared_ptr<MathMacroTemplate> in it., remove unneeded typedef
+
+	* math_macrotable.C: add pragma
+	(createMacro): change name from getMacro, use shared_ptr
+	(getTemplate): Use map lookup to get macro, return shared_ptr
+	(addTemplate): assert that m containse a valid pointer, use map[]
+	insert.
+	(builtinMacros): by using shared_ptr fix the mem leak, remove
+	commented out unsupported macros
+
+	* math_cursor.C: changes because of the above
+	* math_parser.C: changes because of the abobe
+	
+	* formulamacro.h: change tmacro_ to be a shared_ptr, remove
+	default arg on constructor.
+	* formulamacro.C: changes because of the above
+
 	* math_parinset.h: add pragma
 	(SetAlign): move inline out of class def
 	(GetColumns): ditto

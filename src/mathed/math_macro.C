@@ -44,15 +44,13 @@ ostream & operator<<(ostream & o, MathedTextCodes mtc)
 }
 
 
-MathMacro::MathMacro(MathMacroTemplate * t)
-	: MathParInset(LM_ST_TEXT, "", LM_OT_MACRO), tmplate_(t)
+MathMacro::MathMacro(boost::shared_ptr<MathMacroTemplate> const & t)
+	: MathParInset(LM_ST_TEXT, "", LM_OT_MACRO),
+	  tmplate_(t)
 {
 	nargs_ = tmplate_->getNoArgs();
 	tcode_ = tmplate_->getTCode();
 	args_.resize(nargs_);
-	for (int i = 0; i < nargs_; ++i) {
-		args_[i].row = 0;
-	}
 	idx_ = 0;
 	SetName(tmplate_->GetName());
 }
@@ -103,12 +101,8 @@ void MathMacro::draw(Painter & pain, int x, int y)
 	xo(x);
 	yo(y);
 	Metrics();
-	tmplate_->update(this);
 	tmplate_->SetStyle(size());
 	tmplate_->draw(pain, x, y);
-	for (int i = 0; i < nargs_; ++i) {
-		tmplate_->GetMacroXY(i, args_[i].x, args_[i].y);
-	}
 }
 
 
@@ -154,8 +148,13 @@ int MathMacro::GetColumns() const
 
 void MathMacro::GetXY(int & x, int & y) const
 {
-	x = args_[idx_].x;
-	y = args_[idx_].y;
+#if 0
+	x = args_[idx_].x_;
+	y = args_[idx_].y_;
+#else
+	const_cast<MathMacro*>(this)->Metrics();
+	tmplate_->GetMacroXY(idx_, x, y);
+#endif
 }
 
 
@@ -169,7 +168,7 @@ bool MathMacro::Permit(short f) const
 
 void MathMacro::SetFocus(int x, int y)
 {
-	tmplate_->update(this);
+	Metrics();
 	tmplate_->SetMacroFocus(idx_, x, y);
 }
 
@@ -178,8 +177,6 @@ void MathMacro::setData(MathedArray const & a)
 {
 	args_[idx_].array = a;
 }
-
-
 
 
 MathedRowSt * MathMacro::getRowSt() const
@@ -196,43 +193,18 @@ MathedTextCodes MathMacro::getTCode() const
 
 void MathMacro::Write(ostream & os, bool fragile)
 {
-	if (tmplate_->flags() & MMF_Exp) {
-		lyxerr[Debug::MATHED] << "Expand " << tmplate_->flags()
-				      << ' ' << MMF_Exp << endl; 
-		tmplate_->update(this);
-		tmplate_->Write(os, fragile);
-	} else {
-		if (tmplate_->flags() & MMF_Env) {
-			os << "\\begin{"
-			   << name
-			   << "} ";
-		} else {
-			os << '\\' << name;
-		}
-//	if (options) { 
-//	  file += '[';
-//	  file += options;
-//	  file += ']';
-//      }
-	
-		if (!(tmplate_->flags() & MMF_Env) && nargs_ > 0) 
-			os << '{';
-	
+	os << '\\' << name;
+
+	if (nargs_ > 0) {
+		os << '{';
+		
 		for (int i = 0; i < nargs_; ++i) {
 			array = args_[i].array;
 			MathParInset::Write(os, fragile);
 			if (i < nargs_ - 1)  
 				os << "}{";
-		}   
-		if (tmplate_->flags() & MMF_Env) {
-			os << "\\end{"
-			   << name
-			   << '}';
-		} else {
-			if (nargs_ > 0) 
-				os << '}';
-			else
-				os << ' ';
 		}
-	}
+		os << '}';
+	} else
+		os << ' ';
 }

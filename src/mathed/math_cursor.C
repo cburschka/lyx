@@ -40,6 +40,7 @@
 #include "math_decorationinset.h"
 #include "math_dotsinset.h"
 #include "math_accentinset.h"
+#include "math_macrotemplate.h"
 #include "mathed/support.h"
 
 static MathedArray selarray;
@@ -751,7 +752,7 @@ void MathedCursor::Interpret(string const & s)
 		l = in_word_set(s);
 
 	if (!l) {
-		p = MathMacroTable::mathMTable.getMacro(s);
+		p = MathMacroTable::mathMTable.createMacro(s);
 		if (!p) {
 		lyxerr[Debug::MATHED] << "Macro2 " << s << ' ' << tcode << endl;
 		if (s == "root") {
@@ -815,7 +816,7 @@ void MathedCursor::Interpret(string const & s)
 				break;
 
 			case LM_TK_MACRO:
-				p = MathMacroTable::mathMTable.getMacro(s);
+				p = MathMacroTable::mathMTable.createMacro(s);
 				tcode = static_cast<MathMacro*>(p)->getTCode();
 				lyxerr[Debug::MATHED] << "Macro " << s << ' ' << tcode << endl;
 				break;
@@ -872,7 +873,7 @@ void MathedCursor::MacroModeClose()
 		latexkeys const * l = in_word_set(imacro->GetName());
 		if (!imacro->GetName().empty()
 		&& (!l || (l && IsMacro(l->token, l->id))) &&
-		!MathMacroTable::mathMTable.getMacro(imacro->GetName())) {
+		!MathMacroTable::mathMTable.createMacro(imacro->GetName())) {
 			if (!l) {
 				//imacro->SetName(macrobf);
 				// This guarantees that the string will be removed by destructor
@@ -886,7 +887,7 @@ void MathedCursor::MacroModeClose()
 					static_cast<MathAccentInset*>(cursor->GetInset())->getAccentCode());
 			}
 			cursor->Delete();
-			if (l || MathMacroTable::mathMTable.getMacro(imacro->GetName())) {
+			if (l || MathMacroTable::mathMTable.createMacro(imacro->GetName())) {
 				Interpret(imacro->GetName());
 			}
 			imacro->SetName("");
