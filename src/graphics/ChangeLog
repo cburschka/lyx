@@ -12,6 +12,9 @@
 
 	* GraphicsImageXPM.C (copy c-tor): don't copy pixmap.
 
+	* GraphicsCacheItem.C (findTargetFormat): if we can load direct without
+	conversion, then do that.
+
 2002-02-27  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* GraphicsCache.C: improve commentary to graphicsInit and where it

@@ -401,19 +401,25 @@ string const findTargetFormat(string const & from)
 	// There must be a format to load from.	
 	lyx::Assert(!formats.empty());
 
-	grfx::GConverter const & graphics_converter = grfx::GConverter::get();
-
-	FormatList::const_iterator it  = formats.begin();
+	// First ascertain if we can load directly with no conversion
+	FormatList::const_iterator it1  = formats.begin();
 	FormatList::const_iterator end = formats.end();
-	for (; it != end; ++it) {
-		if (graphics_converter.isReachable(from, *it))
-			break;
+	for (; it1 != end; ++it1) {
+		if (from == *it1)
+			return *it1;
 	}
 
-	if (it == end)
-		return string();
+	// So, we have to convert to a loadable format. Can we?
+	grfx::GConverter const & graphics_converter = grfx::GConverter::get();
 
-	return *it;
+	FormatList::const_iterator it2  = formats.begin();
+	for (; it2 != end; ++it2) {
+		if (graphics_converter.isReachable(from, *it2))
+			return *it2;
+	}
+
+	// Failed!
+	return string();
 }
 
 } // anon namespace
