@@ -1,3 +1,8 @@
+2004-07-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* BufferView_pimpl.C (setBuffer): set the layout combox value only
+	after it has been populated
+
 2004-06-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text2.C (insertInset): move cursor when inserting inset.

@@ -338,7 +338,6 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 		// hidden. This should go here because some dialogs (eg ToC)
 		// require bv_->text.
 		owner_->getDialogs().updateBufferDependent(true);
-		owner_->setLayout(bv_->text()->getPar(0).layout()->name());
 	} else {
 		lyxerr[Debug::INFO] << "  No Buffer!" << endl;
 		// we are closing the buffer, use the first buffer as current
@@ -352,6 +351,11 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 	owner_->updateToolbars();
 	owner_->updateLayoutChoice();
 	owner_->updateWindowTitle();
+
+	// This is done after the layout combox has been populated
+	if (buffer_)
+		owner_->setLayout(cursor_.paragraph().layout()->name());
+		
 
 	if (buffer_ && lyx::graphics::Previews::status() != LyXRC::PREVIEW_OFF)
 		lyx::graphics::Previews::get().generateBufferPreviews(*buffer_);
