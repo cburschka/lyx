@@ -24,6 +24,7 @@
 #include "lyxtext.h"
 #include "WordLangTuple.h"
 #include "funcrequest.h"
+#include "buffer.h"
 
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
@@ -245,7 +246,8 @@ void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
 		first_after_edit = true;
 		if (!bv->lockInset(this))
 			return;
-		bv->updateInset(this, false);
+		bv->updateInset(this);
+		bv->buffer()->markDirty();
 		inset.edit(bv);
 	} else {
 		if (!bv->lockInset(this))
@@ -273,7 +275,8 @@ void InsetCollapsable::edit(BufferView * bv, bool front)
 		if (!bv->lockInset(this))
 			return;
 		inset.setUpdateStatus(bv, InsetText::FULL);
-		bv->updateInset(this, false);
+		bv->updateInset(this);
+		bv->buffer()->markDirty();
 		inset.edit(bv, front);
 		first_after_edit = true;
 	} else {
@@ -307,7 +310,7 @@ void InsetCollapsable::insetUnlock(BufferView * bv)
 	inset.insetUnlock(bv);
 	if (scroll())
 		scroll(bv, 0.0F);
-	bv->updateInset(this, false);
+	bv->updateInset(this);
 }
 
 
@@ -337,11 +340,13 @@ bool InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 // should not be called on inset open!
 //			inset.insetButtonRelease(bv, 0, 0, button);
 			inset.setUpdateStatus(bv, InsetText::FULL);
-			bv->updateInset(this, false);
+			bv->updateInset(this);
+			bv->buffer()->markDirty();
 		} else {
 			collapsed_ = true;
 			bv->unlockInset(this);
-			bv->updateInset(this, false);
+			bv->updateInset(this);
+			bv->buffer()->markDirty();
 		}
 	} else if (!collapsed_ && (cmd.y > button_bottom_y)) {
 		LyXFont font(LyXFont::ALL_SANE);
@@ -624,7 +629,7 @@ void InsetCollapsable::open(BufferView * bv)
 	if (!collapsed_) return;
 
 	collapsed_ = false;
-	bv->updateInset(this, false);
+	bv->updateInset(this);
 }
 
 
@@ -634,7 +639,7 @@ void InsetCollapsable::close(BufferView * bv) const
 		return;
 
 	collapsed_ = true;
-	bv->updateInset(const_cast<InsetCollapsable *>(this), false);
+	bv->updateInset(const_cast<InsetCollapsable *>(this));
 }
 
 

@@ -66,7 +66,7 @@ dispatch_result InsetBibitem::localDispatch(FuncRequest const & cmd)
 		}
 
 		setParams(p);
-		cmd.view()->updateInset(this, true);
+		cmd.view()->updateInset(this);
 		result = DISPATCHED;
 	}
 	break;

@@ -1,3 +1,26 @@
+2003-03-19  John Levon  <levon@movementarian.org>
+
+	* lyxfunc.C: mark buffer dirty if we executed a "dirtying" lfun.
+	fit the cursor after an lfun
+
+	* BufferView.h:
+	* BufferView.C:
+	* BufferView_pimpl.h:
+	* BufferView_pimpl.C: remove BufferView::FITCUR/CHANGE
+
+	* LyXAction.C: layout-character should have ReadOnly
+
+	* ParagraphParameters.C:
+	* buffer.C:
+	* bufferview_funcs.C:
+	* lyx_cb.C:
+	* lyxfind.C:
+	* lyxtext.h:
+	* text.C:
+	* text2.C:
+	* text3.C:
+	* undo_funcs.C: changes from above
+
 2003-03-18  John Levon  <levon@movementarian.org>
 
 	* BufferView_pimpl.C (scrollDocView): add updateLayoutChoice(),

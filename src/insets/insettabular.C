@@ -535,7 +535,7 @@ void InsetTabular::updateLocal(BufferView * bv, UpdateCodes what,
 		need_update = what;
 	// Dirty Cast! (Lgb)
 	if (need_update != NONE) {
-		bv->updateInset(const_cast<InsetTabular *>(this), mark_dirty);
+		bv->updateInset(const_cast<InsetTabular *>(this));
 		if (locked)
 			resetPos(bv);
 	}

@@ -165,7 +165,7 @@ dispatch_result InsetFloat::localDispatch(FuncRequest const & cmd)
 		params_.placement = params.placement;
 		params_.wide      = params.wide;
 
-		cmd.view()->updateInset(this, true);
+		cmd.view()->updateInset(this);
 		result = DISPATCHED;
 	}
 	break;

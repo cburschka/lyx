@@ -586,7 +586,7 @@ void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty)
 	bv->fitCursor();
 #endif
 	if (flag)
-		bv->updateInset(const_cast<InsetText *>(this), mark_dirty);
+		bv->updateInset(const_cast<InsetText *>(this));
 
 	if (need_update == CURSOR)
 		need_update = NONE;

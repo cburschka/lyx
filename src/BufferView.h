@@ -44,10 +44,8 @@ public:
 	 * of the document rendering.
 	 */
 	enum UpdateCodes {
-		UPDATE = 0, //< FIXME
-		SELECT = 1, //< selection change
-		FITCUR = 2, //< the cursor needs fitting into the view
-		CHANGE = 4  //< document data has changed
+		UPDATE = 0, //< repaint
+		SELECT = 1 //< reset selection to current cursor pos
 	};
 
 	/**
@@ -88,8 +86,10 @@ public:
 	void update();
 	// update for a particular lyxtext
 	void update(LyXText *, UpdateCodes uc);
+	/// update for the top-level lyxtext
+	void update(UpdateCodes uc);
 	/// update for a particular inset
-	void updateInset(Inset * inset, bool mark_dirty);
+	void updateInset(Inset * inset);
 	/// reset the scrollbar to reflect current view position
 	void updateScrollbar();
 	/// FIXME

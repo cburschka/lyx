@@ -92,16 +92,20 @@ int LyXReplace(BufferView * bv,
 			 (text->inset_owner == text->inset_owner->getLockingInset())))
 		{
 			bv->hideCursor();
-			bv->update(text, BufferView::SELECT|BufferView::FITCUR);
+			bv->update(text, BufferView::SELECT);
 			bv->toggleSelection(false);
 			text->replaceSelectionWithString(replacestr);
 			text->setSelectionRange(replacestr.length());
-			bv->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+			bv->update(text, BufferView::SELECT);
 			++replace_count;
 		}
 		if (!once)
 			found = LyXFind(bv, searchstr, fw, casesens, matchwrd);
 	} while (!once && replaceall && found);
+
+	// FIXME: should be called via an LFUN
+	bv->buffer()->markDirty();
+	bv->fitCursor();
 
 	return replace_count;
 }
@@ -115,7 +119,7 @@ bool LyXFind(BufferView * bv,
 		return false;
 
 	bv->hideCursor();
-	bv->update(bv->getLyXText(), BufferView::SELECT|BufferView::FITCUR);
+	bv->update(bv->getLyXText(), BufferView::SELECT);
 
 	if (bv->theLockingInset()) {
 		bool found = forward ?
@@ -153,15 +157,17 @@ bool LyXFind(BufferView * bv,
 	// inset did it already.
 	if (result == SR_FOUND) {
 		bv->unlockInset(bv->theLockingInset());
-		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
+		bv->update(text, BufferView::SELECT);
 		text->setSelectionRange(searchstr.length());
 		bv->toggleSelection(false);
-		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
+		bv->update(text, BufferView::SELECT);
 	} else if (result == SR_NOT_FOUND) {
 		bv->unlockInset(bv->theLockingInset());
-		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
+		bv->update(text, BufferView::SELECT);
 		found = false;
 	}
+
+	bv->fitCursor();
 
 	return found;
 }
@@ -383,7 +389,7 @@ bool findNextChange(BufferView * bv)
 		return false;
 
 	bv->hideCursor();
-	bv->update(bv->getLyXText(), BufferView::SELECT | BufferView::FITCUR);
+	bv->update(bv->getLyXText(), BufferView::SELECT);
 
 	pos_type length;
 
@@ -421,15 +427,17 @@ bool findNextChange(BufferView * bv)
 	// inset did it already.
 	if (result == SR_FOUND) {
 		bv->unlockInset(bv->theLockingInset());
-		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
+		bv->update(text, BufferView::SELECT);
 		text->setSelectionRange(length);
 		bv->toggleSelection(false);
-		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
+		bv->update(text, BufferView::SELECT);
 	} else if (result == SR_NOT_FOUND) {
 		bv->unlockInset(bv->theLockingInset());
-		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
+		bv->update(text, BufferView::SELECT);
 		found = false;
 	}
+
+	bv->fitCursor();
 
 	return found;
 }

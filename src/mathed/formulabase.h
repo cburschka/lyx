@@ -89,8 +89,6 @@ public:
 	///
 	virtual MathAtom & par() = 0;
 	///
-	virtual void updateLocal(BufferView * bv, bool mark_dirty);
-	///
 	// And shouldn't this really return a shared_ptr<BufferView> instead?
 	BufferView * view() const;
 

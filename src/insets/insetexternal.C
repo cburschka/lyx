@@ -74,7 +74,7 @@ dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
 			break;
 
 		setFromParams(p);
-		cmd.view()->updateInset(this, true);
+		cmd.view()->updateInset(this);
 		result = DISPATCHED;
 	}
 	break;

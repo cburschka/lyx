@@ -1041,7 +1041,6 @@ dispatch_result MathGridInset::dispatch
 		case LFUN_TABINSERT:
 			//bv->lockedInsetStoreUndo(Undo::EDIT);
 			splitCell(idx, pos);
-			//updateLocal(bv, true);
 			return DISPATCHED_POP;
 
 		case LFUN_BREAKLINE: {
@@ -1061,7 +1060,6 @@ dispatch_result MathGridInset::dispatch
 			pos = cell(idx).size();
 
 			//mathcursor->normalize();
-			//updateLocal(bv, true);
 			return DISPATCHED_POP;
 		}
 

@@ -117,7 +117,7 @@ dispatch_result InsetMinipage::localDispatch(FuncRequest const & cmd)
 		params_.pos   = params.pos;
 		params_.width = params.width;
 
-		cmd.view()->updateInset(this, true);
+		cmd.view()->updateInset(this);
 		result = DISPATCHED;
 	}
 	break;

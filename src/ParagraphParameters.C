@@ -438,12 +438,7 @@ void setParagraphParams(BufferView & bv, string const & data)
 			   params.noindent());
 
 	// Actually apply these settings
-	bv.update(text,
-		  BufferView::SELECT |
-		  BufferView::FITCUR |
-		  BufferView::CHANGE);
-
-	bv.buffer()->markDirty();
+	bv.update(text, BufferView::SELECT);
 
 	bv.owner()->message(_("Paragraph layout set"));
 }

@@ -232,7 +232,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			t->updateCounters();
 			bv->fitCursor();
 		}
-		bv->updateInset(it, false);
+		bv->updateInset(it);
 		bv->text->setCursorIntern(bv->text->cursor.par(),
 					  bv->text->cursor.pos());
 	} else {

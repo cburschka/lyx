@@ -445,7 +445,7 @@ Inset::RESULT InsetERT::localDispatch(FuncRequest const & cmd)
 		InsetERTMailer::string2params(cmd.argument, status_);
 
 		status(bv, status_);
-		bv->updateInset(this, true);
+		bv->updateInset(this);
 		result = DISPATCHED;
 	}
 	break;
@@ -640,8 +640,10 @@ void InsetERT::status(BufferView * bv, ERTStatus const st) const
 				bv->unlockInset(const_cast<InsetERT *>(this));
 			break;
 		}
-		if (bv)
-			bv->updateInset(const_cast<InsetERT *>(this), false);
+		if (bv) {
+			bv->updateInset(const_cast<InsetERT *>(this));
+			bv->buffer()->markDirty();
+		}
 	}
 }
 

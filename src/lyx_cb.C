@@ -408,8 +408,7 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 	else
 		bv->getLyXText()->insertStringAsParagraphs(tmpstr);
 	if (flag)
-		bv->update(bv->text,
-			   BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		bv->update(BufferView::SELECT);
 }
 
 

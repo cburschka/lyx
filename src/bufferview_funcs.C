@@ -177,7 +177,6 @@ void apply_freefont(BufferView * bv)
 {
 	toggleAndShow(bv, freefont, toggleall);
 	bv->owner()->view_state_changed();
-	bv->buffer()->markDirty();
 	bv->owner()->message(_("Character set"));
 }
 
@@ -234,14 +233,14 @@ void changeDepth(BufferView * bv, LyXText * text, int decInc)
 	    return;
 
 	bv->hideCursor();
-	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
+	bv->update(BufferView::SELECT);
 	if (decInc >= 0)
 		text->incDepth();
 	else
 		text->decDepth();
 	if (text->inset_owner)
-		bv->updateInset((Inset *)text->inset_owner, true);
-	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		bv->updateInset((Inset *)text->inset_owner);
+	bv->update(BufferView::SELECT);
 }
 
 
@@ -397,9 +396,9 @@ void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 		return;
 
 	bv->hideCursor();
-	bv->update(text, BufferView::SELECT | BufferView::FITCUR);
+	bv->update(text, BufferView::SELECT);
 	text->toggleFree(font, toggleall);
-	bv->update(text, BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
+	bv->update(text, BufferView::SELECT);
 
 	if (font.language() != ignore_language ||
 	    font.number() != LyXFont::IGNORE) {

@@ -137,7 +137,7 @@ dispatch_result RefInset::localDispatch(FuncRequest const & cmd)
 // 	if (cmd.view())
 //                 // This does not compile because updateInset expects
 //                 // an Inset* and 'this' isn't.
-// 		cmd.view()->updateInset(this, true);
+// 		cmd.view()->updateInset(this);
 	return DISPATCHED;
 }
 

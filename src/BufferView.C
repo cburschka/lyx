@@ -197,6 +197,12 @@ void BufferView::update(LyXText * text, UpdateCodes f)
 }
 
 
+void BufferView::update(UpdateCodes f)
+{
+	pimpl_->update(f);
+}
+
+
 void BufferView::switchKeyMap()
 {
 	pimpl_->switchKeyMap();
@@ -554,7 +560,7 @@ bool BufferView::gotoLabel(string const & label)
 			beforeChange(text);
 			text->setCursor(it.getPar(), it.getPos());
 			text->selection.cursor = text->cursor;
-			update(text, BufferView::SELECT|BufferView::FITCUR);
+			update(text, BufferView::SELECT);
 			return true;
 		}
 	}
@@ -570,11 +576,11 @@ void BufferView::undo()
 	owner()->message(_("Undo"));
 	hideCursor();
 	beforeChange(text);
-	update(text, BufferView::SELECT|BufferView::FITCUR);
+	update(text, BufferView::SELECT);
 	if (!textUndo(this))
 		owner()->message(_("No further undo information"));
 	else
-		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		update(text, BufferView::SELECT);
 	switchKeyMap();
 }
 
@@ -587,11 +593,11 @@ void BufferView::redo()
 	owner()->message(_("Redo"));
 	hideCursor();
 	beforeChange(text);
-	update(text, BufferView::SELECT|BufferView::FITCUR);
+	update(text, BufferView::SELECT);
 	if (!textRedo(this))
 		owner()->message(_("No further redo information"));
 	else
-		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		update(text, BufferView::SELECT);
 	switchKeyMap();
 }
 
@@ -610,7 +616,7 @@ void BufferView::pasteEnvironment()
 	if (available()) {
 		text->pasteEnvironmentType();
 		owner()->message(_("Paragraph environment type set"));
-		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		update(text, BufferView::SELECT);
 	}
 }
 
@@ -638,7 +644,7 @@ void BufferView::selectLastWord()
 	text->selection.cursor = cur;
 	text->selectSelectedWord();
 	toggleSelection(false);
-	update(text, BufferView::SELECT|BufferView::FITCUR);
+	update(text, BufferView::SELECT);
 }
 
 
@@ -650,7 +656,7 @@ void BufferView::endOfSpellCheck()
 	beforeChange(text);
 	text->selectSelectedWord();
 	text->clearSelection();
-	update(text, BufferView::SELECT|BufferView::FITCUR);
+	update(text, BufferView::SELECT);
 }
 
 
@@ -661,11 +667,11 @@ void BufferView::replaceWord(string const & replacestring)
 
 	LyXText * tt = getLyXText();
 	hideCursor();
-	update(tt, BufferView::SELECT|BufferView::FITCUR);
+	update(tt, BufferView::SELECT);
 
 	// clear the selection (if there is any)
 	toggleSelection(false);
-	update(tt, BufferView::SELECT|BufferView::FITCUR);
+	update(tt, BufferView::SELECT);
 
 	// clear the selection (if there is any)
 	toggleSelection(false);
@@ -677,7 +683,11 @@ void BufferView::replaceWord(string const & replacestring)
 	for (string::size_type i = 0; i < replacestring.length() + 1; ++i) {
 		tt->cursorLeft(this);
 	}
-	update(tt, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+	update(tt, BufferView::SELECT);
+
+	// FIXME: should be done through LFUN
+	buffer()->markDirty();
+	fitCursor();
 }
 // End of spellchecker stuff
 
@@ -814,9 +824,9 @@ void BufferView::lockedInsetStoreUndo(Undo::undo_kind kind)
 }
 
 
-void BufferView::updateInset(Inset * inset, bool mark_dirty)
+void BufferView::updateInset(Inset * inset)
 {
-	pimpl_->updateInset(inset, mark_dirty);
+	pimpl_->updateInset(inset);
 }
 
 

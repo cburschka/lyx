@@ -95,7 +95,7 @@ dispatch_result InsetWrap::localDispatch(FuncRequest const & cmd)
 		params_.placement = params.placement;
 		params_.width     = params.width;
 
-		cmd.view()->updateInset(this, true);
+		cmd.view()->updateInset(this);
 		result = DISPATCHED;
 	}
 	break;

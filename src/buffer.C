@@ -338,7 +338,6 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 	} else {
 		// We are inserting into an existing document
 		users->text->breakParagraph(paragraphs);
-		markDirty();
 
 		// We don't want to adopt the parameters from the
 		// document we insert, so read them into a temporary buffer

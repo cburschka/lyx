@@ -47,6 +47,8 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	void update();
 	//
 	void update(LyXText *, BufferView::UpdateCodes);
+	/// update the toplevel lyx text
+	void update(BufferView::UpdateCodes);
 	/**
 	 * Repaint pixmap. Used for when we've made a visible
 	 * change but don't need the full update() logic
@@ -99,7 +101,7 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	bool insertInset(Inset * inset, string const & lout = string());
 	///
-	void updateInset(Inset * inset, bool mark_dirty);
+	void updateInset(Inset * inset);
 	///
 	bool dispatch(FuncRequest const & ev);
 private:

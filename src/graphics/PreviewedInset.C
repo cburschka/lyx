@@ -122,7 +122,7 @@ void PreviewedInset::imageReady(grfx::PreviewImage const & pimage) const
 	pimage_ = &pimage;
 
 	if (view())
-		view()->updateInset(&inset_, false);
+		view()->updateInset(&inset_);
 }
 
 } // namespace grfx

@@ -230,7 +230,7 @@ dispatch_result InsetGraphics::localDispatch(FuncRequest const & cmd)
 
 		string const filepath = cmd.view()->buffer()->filePath();
 		setParams(p, filepath);
-		cmd.view()->updateInset(this, true);
+		cmd.view()->updateInset(this);
 		result = DISPATCHED;
 	}
 	break;
@@ -835,7 +835,7 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 void InsetGraphics::statusChanged()
 {
 	if (!cache_->view.expired())
-		cache_->view.lock()->updateInset(this, false);
+		cache_->view.lock()->updateInset(this);
 }
 
 

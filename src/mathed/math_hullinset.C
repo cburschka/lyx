@@ -768,7 +768,6 @@ dispatch_result MathHullInset::dispatch
 					for (row_type row = 0; row < nrows(); ++row)
 						numbered(row, !old);
 				//bv->owner()->message(old ? _("No number") : _("Number"));
-				//updateLocal(bv, true);
 			}
 			return DISPATCHED;
 
@@ -779,7 +778,6 @@ dispatch_result MathHullInset::dispatch
 				bool old = numbered(r);
 				//bv->owner()->message(old ? _("No number") : _("Number"));
 				numbered(r, !old);
-				//updateLocal(bv, true);
 			}
 			return DISPATCHED;
 

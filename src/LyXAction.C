@@ -240,7 +240,7 @@ void LyXAction::init()
 		{ LFUN_LATEX_LOG, "latex-view-log", N_("View LaTeX log"),
 		  ReadOnly },
 		{ LFUN_LAYOUT, "layout", "", Noop },
-		{ LFUN_LAYOUT_CHARACTER, "layout-character", "", Noop },
+		{ LFUN_LAYOUT_CHARACTER, "layout-character", "", ReadOnly },
 		{ LFUN_LAYOUT_COPY, "layout-copy",
 		  N_("Copy paragraph environment type"), Noop },
 		{ LFUN_LAYOUT_DOCUMENT, "layout-document", "", ReadOnly },

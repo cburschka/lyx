@@ -127,15 +127,15 @@ void InsetFormulaBase::handleFont
 	bv->lockedInsetStoreUndo(Undo::EDIT);
 	if (mathcursor->par()->name() == font) {
 		mathcursor->handleFont(font);
-		updateLocal(bv, true);
+		bv->updateInset(this);
 	} else {
 		bool sel = mathcursor->selection();
 		if (sel)
-			updateLocal(bv, true);
+			bv->updateInset(this);
 		mathcursor->handleNest(createMathInset(font));
 		mathcursor->insert(arg);
 		if (!sel)
-			updateLocal(bv, false);
+			bv->updateInset(this);
 	}
 }
 
@@ -185,7 +185,7 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int y, mouse_button::state)
 	mathcursor->setPos(x + xo_, y + yo_);
 	// if that is removed, we won't get the magenta box when entering an
 	// inset for the first time
-	bv->updateInset(this, false);
+	bv->updateInset(this);
 }
 
 
@@ -196,7 +196,7 @@ void InsetFormulaBase::edit(BufferView * bv, bool front)
 	releaseMathCursor(bv);
 	mathcursor = new MathCursor(this, front);
 	metrics(bv);
-	bv->updateInset(this, false);
+	bv->updateInset(this);
 }
 
 
@@ -205,12 +205,12 @@ void InsetFormulaBase::insetUnlock(BufferView * bv)
 	if (mathcursor) {
 		if (mathcursor->inMacroMode()) {
 			mathcursor->macroModeClose();
-			updateLocal(bv, true);
+			bv->updateInset(this);
 		}
 		releaseMathCursor(bv);
 	}
 	generatePreview();
-	bv->updateInset(this, false);
+	bv->updateInset(this);
 }
 
 
@@ -291,19 +291,13 @@ void InsetFormulaBase::fitInsetCursor(BufferView * bv) const
 void InsetFormulaBase::toggleInsetSelection(BufferView * bv)
 {
 	if (mathcursor)
-		bv->updateInset(this, false);
+		bv->updateInset(this);
 }
 
 
 vector<string> const InsetFormulaBase::getLabelList() const
 {
   return vector<string>();
-}
-
-
-void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
-{
-	bv->updateInset(this, dirty);
 }
 
 
@@ -315,7 +309,7 @@ dispatch_result InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 	BufferView * bv = cmd.view();
 	hideInsetCursor(bv);
 	showInsetCursor(bv);
-	bv->updateInset(this, false);
+	bv->updateInset(this);
 	//lyxerr << "lfunMouseRelease: buttons: " << cmd.button() << endl;
 
 	if (cmd.button() == mouse_button::button3) {
@@ -332,7 +326,7 @@ dispatch_result InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 		mathcursor->selClear();
 		mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
 		mathcursor->insert(asArray(bv->getClipboard()));
-		bv->updateInset(this, true);
+		bv->updateInset(this);
 		return DISPATCHED;
 	}
 
@@ -379,7 +373,7 @@ dispatch_result InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
 		return DISPATCHED;
 	}
 
-	bv->updateInset(this, false);
+	bv->updateInset(this);
 	return DISPATCHED;
 }
 
@@ -409,7 +403,7 @@ dispatch_result InsetFormulaBase::lfunMouseMotion(FuncRequest const & cmd)
 	hideInsetCursor(bv);
 	mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
 	showInsetCursor(bv);
-	bv->updateInset(this, false);
+	bv->updateInset(this);
 	return DISPATCHED;
 }
 
@@ -472,7 +466,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_MATH_LIMITS:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->dispatch(cmd);
-		updateLocal(bv, true);
+		bv->updateInset(this);
 		break;
 
 	case LFUN_RIGHTSEL:
@@ -481,7 +475,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		result = mathcursor->right(sel) ? DISPATCHED : FINISHED_RIGHT;
 		//lyxerr << "calling scroll 20\n";
 		//scroll(bv, 20);
-		updateLocal(bv, false);
+		bv->updateInset(this);
 		// write something to the minibuffer
 		//bv->owner()->message(mathcursor->info());
 		break;
@@ -490,27 +484,27 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		sel = true; // fall through
 	case LFUN_LEFT:
 		result = mathcursor->left(sel) ? DISPATCHED : FINISHED;
-		updateLocal(bv, false);
+		bv->updateInset(this);
 		break;
 
 	case LFUN_UPSEL:
 		sel = true; // fall through
 	case LFUN_UP:
 		result = mathcursor->up(sel) ? DISPATCHED : FINISHED_UP;
-		updateLocal(bv, false);
+		bv->updateInset(this);
 		break;
 
 	case LFUN_DOWNSEL:
 		sel = true; // fall through
 	case LFUN_DOWN:
 		result = mathcursor->down(sel) ? DISPATCHED : FINISHED_DOWN;
-		updateLocal(bv, false);
+		bv->updateInset(this);
 		break;
 
 	case LFUN_WORDSEL:
 		mathcursor->home(false);
 		mathcursor->end(true);
-		updateLocal(bv, false);
+		bv->updateInset(this);
 		break;
 
 	case LFUN_UP_PARAGRAPHSEL:
@@ -518,7 +512,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_DOWN_PARAGRAPHSEL:
 	case LFUN_DOWN_PARAGRAPH:
 		result = FINISHED;
-		updateLocal(bv, false);
+		bv->updateInset(this);
 		break;
 
 	case LFUN_HOMESEL:
@@ -527,7 +521,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_HOME:
 	case LFUN_WORDLEFT:
 		result = mathcursor->home(sel) ? DISPATCHED : FINISHED;
-		updateLocal(bv, false);
+		bv->updateInset(this);
 		break;
 
 	case LFUN_ENDSEL:
@@ -536,7 +530,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_END:
 	case LFUN_WORDRIGHT:
 		result = mathcursor->end(sel) ? DISPATCHED : FINISHED_RIGHT;
-		updateLocal(bv, false);
+		bv->updateInset(this);
 		break;
 
 	case LFUN_PRIORSEL:
@@ -544,7 +538,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_BEGINNINGBUFSEL:
 	case LFUN_BEGINNINGBUF:
 		result = FINISHED;
-		updateLocal(bv, false);
+		bv->updateInset(this);
 		break;
 
 	case LFUN_NEXTSEL:
@@ -552,17 +546,17 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_ENDBUFSEL:
 	case LFUN_ENDBUF:
 		result = FINISHED_RIGHT;
-		updateLocal(bv, false);
+		bv->updateInset(this);
 		break;
 
 	case LFUN_TAB:
 		mathcursor->idxNext();
-		updateLocal(bv, false);
+		bv->updateInset(this);
 		break;
 
 	case LFUN_SHIFT_TAB:
 		mathcursor->idxPrev();
-		updateLocal(bv, false);
+		bv->updateInset(this);
 		break;
 
 	case LFUN_DELETE_WORD_BACKWARD:
@@ -574,7 +568,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 			result = FINISHED;
 			remove_inset = true;
 		}
-		updateLocal(bv, true);
+		bv->updateInset(this);
 		break;
 
 	case LFUN_DELETE_WORD_FORWARD:
@@ -586,7 +580,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 			result = FINISHED;
 			remove_inset = true;
 		}
-		updateLocal(bv, true);
+		bv->updateInset(this);
 		break;
 
 	//    case LFUN_GETXY:
@@ -600,7 +594,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		istringstream is(cmd.argument.c_str());
 		is >> x >> y;
 		mathcursor->setPos(x, y);
-		updateLocal(bv, false);
+		bv->updateInset(this);
 		break;
 	}
 
@@ -609,13 +603,13 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 			mathcursor->macroModeClose();
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->selPaste();
-		updateLocal(bv, true);
+		bv->updateInset(this);
 		break;
 
 	case LFUN_CUT:
 		bv->lockedInsetStoreUndo(Undo::DELETE);
 		mathcursor->selCut();
-		updateLocal(bv, true);
+		bv->updateInset(this);
 		break;
 
 	case LFUN_COPY:
@@ -631,7 +625,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 			// deadkeys
 			bv->lockedInsetStoreUndo(Undo::EDIT);
 			mathcursor->script(true);
-			updateLocal(bv, true);
+			bv->updateInset(this);
 		}
 		break;
 
@@ -673,7 +667,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_MATH_MODE:
 		if (mathcursor->currentMode() == MathInset::TEXT_MODE) {
 			mathcursor->niceInsert(MathAtom(new MathHullInset("simple")));
-			updateLocal(bv, true);
+			bv->updateInset(this);
 		} else {
 			handleFont(bv, cmd.argument, "textrm");
 		}
@@ -685,7 +679,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		if (!arg.empty()) {
 			bv->lockedInsetStoreUndo(Undo::EDIT);
 			mathcursor->setSize(arg);
-			updateLocal(bv, true);
+			bv->updateInset(this);
 		}
 #endif
 		break;
@@ -703,7 +697,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		v_align += 'c';
 		mathcursor->niceInsert(
 			MathAtom(new MathArrayInset("array", m, n, v_align[0], h_align)));
-			updateLocal(bv, true);
+			bv->updateInset(this);
 		break;
 	}
 
@@ -712,7 +706,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	{
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->script(cmd.action == LFUN_SUPERSCRIPT);
-		updateLocal(bv, true);
+		bv->updateInset(this);
 		break;
 	}
 
@@ -729,7 +723,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->handleNest(MathAtom(new MathDelimInset(ls, rs)));
-		updateLocal(bv, true);
+		bv->updateInset(this);
 		break;
 	}
 
@@ -737,7 +731,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_MATH_SPACE:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->insert(MathAtom(new MathSpaceInset(",")));
-		updateLocal(bv, true);
+		bv->updateInset(this);
 		break;
 
 	case LFUN_UNDO:
@@ -753,7 +747,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		// interpret this as if a backslash was typed
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->interpret('\\');
-		updateLocal(bv, true);
+		bv->updateInset(this);
 		break;
 
 	case LFUN_BREAKPARAGRAPH:
@@ -768,7 +762,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_INSERT_MATH:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
 		mathcursor->niceInsert(argument);
-		updateLocal(bv, true);
+		bv->updateInset(this);
 		break;
 
 	case -1:
@@ -779,7 +773,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 				result = mathcursor->interpret(argument[0]) ? DISPATCHED : FINISHED_RIGHT;
 			else
 				mathcursor->insert(asArray(argument));
-			updateLocal(bv, true);
+			bv->updateInset(this);
 		}
 		break;
 
@@ -796,7 +790,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 	case LFUN_INSET_TOGGLE:
 		mathcursor->insetToggle();
-		updateLocal(bv, true);
+		bv->updateInset(this);
 		break;
 
 	case LFUN_DIALOG_SHOW_NEW_INSET: {
@@ -833,7 +827,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 			}
 		}
 		if (result == DISPATCHED)
-			updateLocal(bv, true);
+			bv->updateInset(this);
 	}
 	break;
 
@@ -970,7 +964,7 @@ bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
 			mathcursor->setSelection(it, ar.size());
 			current = it;
 			it.jump(ar.size());
-			updateLocal(bv, false);
+			bv->updateInset(this);
 			return true;
 		}
 	}

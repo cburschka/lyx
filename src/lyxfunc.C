@@ -125,7 +125,7 @@ void LyXFunc::moveCursorUpdate(bool flag, bool selecting)
 		if (!TEXT(flag)->isInInset())
 		    view()->toggleToggle();
 	}
-	view()->update(TEXT(flag), BufferView::SELECT|BufferView::FITCUR);
+	view()->update(TEXT(flag), BufferView::SELECT);
 	view()->showCursor();
 
 	view()->switchKeyMap();
@@ -146,8 +146,7 @@ void LyXFunc::handleKeyFunc(kb_action action)
 	// actions
 	keyseq.clear();
 	// copied verbatim from do_accent_char
-	view()->update(TEXT(false),
-	       BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+	view()->update(TEXT(false), BufferView::SELECT);
 	TEXT(false)->selection.cursor = TEXT(false)->cursor;
 }
 
@@ -835,7 +834,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 					moveCursorUpdate(true, false);
 					owner->view_state_changed();
 				} else {
-					view()->update(TEXT(), BufferView::SELECT|BufferView::FITCUR);
+					view()->update(TEXT(), BufferView::SELECT);
 				}
 				goto exit_with_message;
 			} else if (result == FINISHED_DOWN) {
@@ -948,8 +947,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	case LFUN_PREFIX:
 	{
 		if (view()->available() && !view()->theLockingInset()) {
-			view()->update(TEXT(),
-					      BufferView::SELECT|BufferView::FITCUR);
+			view()->update(TEXT(), BufferView::SELECT);
 		}
 		owner->message(keyseq.printOptions());
 	}
@@ -1580,6 +1578,12 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	} // end of switch
 
 	view()->owner()->updateLayoutChoice();
+	view()->fitCursor();
+	
+	// If we executed a mutating lfun, mark the buffer as dirty
+	if (!lyxaction.funcHasFlag(ev.action, LyXAction::NoBuffer)
+	    && !lyxaction.funcHasFlag(ev.action, LyXAction::ReadOnly))
+		view()->buffer()->markDirty();
 	
 exit_with_message:
 	sendDispatchMessage(getMessage(), ev, verbose);

@@ -581,7 +581,7 @@ public:
 	 * with a dynamic left margin will be rebroken. */
 	void updateCounters();
 	///
-	void update(bool changed = true);
+	void update();
 	/**
 	 * Returns an inset if inset was hit, or 0 if not.
 	 * If hit, the coordinates are changed relative to the inset.

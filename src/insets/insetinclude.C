@@ -127,7 +127,7 @@ dispatch_result InsetInclude::localDispatch(FuncRequest const & cmd)
 		set(p);
 		params_.masterFilename_ = cmd.view()->buffer()->fileName();
 
-		cmd.view()->updateInset(this, true);
+		cmd.view()->updateInset(this);
 		result = DISPATCHED;
 	}
 	break;
@@ -624,7 +624,7 @@ void InsetInclude::PreviewImpl::restartLoading()
 	lyxerr << "restartLoading()" << std::endl;
 	removePreview();
 	if (view())
-		view()->updateInset(&parent(), false);
+		view()->updateInset(&parent());
 	generatePreview();
 }
 

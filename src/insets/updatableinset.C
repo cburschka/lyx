@@ -110,8 +110,6 @@ void UpdatableInset::scroll(BufferView * bv, float s) const
 	if ((tmp_top_x + scx + width(bv, font)) < (workW / 2)) {
 		scx += (workW / 2) - (tmp_top_x + scx + width(bv, font));
 	}
-
-	// bv->updateInset(const_cast<UpdatableInset *>(this), false);
 }
 
 void UpdatableInset::scroll(BufferView * bv, int offset) const
@@ -134,7 +132,6 @@ void UpdatableInset::scroll(BufferView * bv, int offset) const
 			scx += offset;
 		}
 	}
-//	bv->updateInset(const_cast<UpdatableInset *>(this), false);
 }
 
 
@@ -152,7 +149,7 @@ Inset::RESULT UpdatableInset::localDispatch(FuncRequest const & ev)
 			int const xx = strToInt(ev.argument);
 			scroll(ev.view(), xx);
 		}
-		ev.view()->updateInset(this, false);
+		ev.view()->updateInset(this);
 
 		return DISPATCHED;
 	}
