@@ -1,3 +1,7 @@
+2003-01-15  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* symbols: Fix \Box, \Diamond, \cong, and \surd.
+
 2003-01-15  Michael Schmitt  <Michael.Schmitt@teststep.org>
 
 	* reLyX/MakePreamble.pm (translate_preamble):
@@ -82,6 +86,7 @@
 	* layouts/broadway.layout:
 	* layouts/hollywood.layout: remove spurious spaces
 
+>>>>>>> 1.351
 2002-12-20  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* mathed.lyx: Removed big delimiters table as they are not symbols.

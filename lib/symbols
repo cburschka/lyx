@@ -350,7 +350,9 @@ sqsubset           msa          64   0 mathrel  x
 sqsupset           msa          65   0 mathrel  x
 mho                msb         102   0 mathord  x
 square             msa         164   0 mathord  x
+Box                msa         164   0 mathord  x
 lozenge            msa         167   0 mathord  x
+Diamond            msa         167   0 mathord  x
 vartriangleright   msa          66   0 mathrel  x
 vartriangleleft    msa          67   0 mathrel  x
 trianglerighteq    msa          68   0 mathrel  x
@@ -702,8 +704,8 @@ inve               wasy          85   0 x        x
 
 #mho               wasy          48    0  mathord x
 #Join              wasy          49    0  mathrel x
-Box                wasy          50    0  mathord x
-Diamond            wasy          51    0  mathord x
+#Box               wasy          50    0  mathord x
+#Diamond           wasy          51    0  mathord x
 leadsto            wasy          59    0  mathrel x
 #sqsubset          wasy          60    0  mathrel x
 #sqsupset          wasy          61    0  mathrel x
@@ -773,23 +775,23 @@ $                  mathnormal    0   0 special  x
 #
 
 \def\neq{\not=}
+\def\ne{\not=}
 \def\notin{\not\in}
 \def\slash{/}
 
-\def\longleftrightarrow{\leftarrow\kern-12mu\rightarrow} 
-\def\Longleftrightarrow{\Leftarrow\kern-12mu\Rightarrow}
+\def\longleftrightarrow{\leftarrow\kern-12.5mu\rightarrow} 
+\def\Longleftrightarrow{\Leftarrow\kern-12.5mu\Rightarrow}
+\def\iff{\Leftarrow\kern-12.5mu\Rightarrow}
 \def\doteq{\stackrel{\cdot}{=}}
 
-# The value 9.5 comes from the length of 0.5em = 9mu that is added to
-# relation operators. The 0.5 is added due to rounding errors.
 iffont cmsy
-\def\longrightarrow{\lyxbar\kern-9.5mu\rightarrow}
-\def\longleftarrow{\leftarrow\kern-9.5mu\lyxbar}
+\def\longrightarrow{\lyxbar\kern-11mu\rightarrow}
+\def\longleftarrow{\leftarrow\kern-11mu\lyxbar}
 \def\Longrightarrow{\lyxeq\kern-9.5mu\Rightarrow}
 \def\Longleftarrow{\Leftarrow\kern-9.5mu\lyxeq}
 \def\implies{\Longrightarrow}
 \def\mapsto{\mapstochar\kern-9mu\rightarrow}
-\def\longmapsto{\mapstochar\kern-6mu\lyxbar\kern-9.5mu\rightarrow}
+\def\longmapsto{\mapstochar\kern-6mu\lyxbar\kern-11mu\rightarrow}
 \def\models{\vert\kern-7mu\lyxeq}
 endif
 iffont cmm
@@ -807,10 +809,17 @@ iffont msb
 endif
 \def\mathcircumflex{\mbox{\^{}}}
 
-ne                 lyxsymbol             185 0 mathrel  x
 textdegree         lyxsymbol             176 0 mathord  x
+
+iffont cmsy
+# The \sim is placed too high...
+\def\cong{\stackrel{_\sim}{=}}
+lyxsurd               cmsy        112 0 mathord  x
+\def\surd{^\lyxsurd}
+else
 cong               lyxsymbol             64  0 mathrel  x
 surd               lyxsymbol             214 0 mathord  x
-                               
+endif
+                         
 #"{\hat{}}
 
