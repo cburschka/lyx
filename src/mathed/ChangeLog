@@ -1,7 +1,14 @@
+2001-07-12 André Pönitz  <poenitz@htwm.de>
+
+	* math_cursor.[hC]: multicell selection (multicell pasete still defunct)
+
+	* several files: supporting changes
+
 2001-07-13  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	Consistent use of Lsstream.h:
 	* formula.C: removed using std::ostringstream directive.
+
 	* math_cursor.C: std::istringstream -> istringstream.
 
 2001-07-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
@@ -11,7 +18,7 @@
 2001-07-12 André Pönitz  <poenitz@htwm.de>
 
 	* math_updowninset.[hC]: new base class for script and bigop insets
-		*.[hC]: subsequnet changes to all Metric() functions
+		*.[hC]: subsequent changes to all Metric() functions
 	
 	* math_parser.C: small changes (\sqrt0 is read properly now)
 	
