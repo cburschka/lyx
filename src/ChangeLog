@@ -1,3 +1,7 @@
+2003-10-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxsocket.C: include <cerrno>
+
 2003-10-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lyxfunc.C (dispatch): remove textcache stuff

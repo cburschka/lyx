@@ -22,9 +22,11 @@
 #include <cerrno>
 
 using std::endl;
-using std::strerror;
-
 using std::string;
+
+#ifndef CXX_GLOBAL_CSTD
+using std::strerror;
+#endif
 
 // This MACRO eppears to be defined only on Linux.
 #if !defined(SUN_LEN)

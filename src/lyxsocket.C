@@ -25,6 +25,7 @@
 #include "support/socktools.h"
 
 #include <iostream>
+#include <cerrno>
 
 using std::endl;
 using std::string;
