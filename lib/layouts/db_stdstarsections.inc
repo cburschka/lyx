@@ -14,7 +14,7 @@ Style Part*
 	Margin                Static
 	LatexName             bridgehead
 	LatexType             Environment
-	InnerTag	      !-- --
+	InnerTag	      "!-- --"
 	LabelType             No_Label
 	LatexParam	      renderas="part"
 End
@@ -24,7 +24,7 @@ Style Chapter*
 	CopyStyle             Chapter
 	Margin                Static
 	LatexType             Environment
-	InnerTag	      !-- --
+	InnerTag	      "!-- --"
 	LatexName             bridgehead
 	LabelType             No_Label
 	OptionalArgs          0
@@ -37,7 +37,7 @@ Style Section*
 	Margin                Static
 	LatexName             bridgehead
 	LatexType             Environment
-	InnerTag	      !-- --
+	InnerTag	      "!-- --"
 	LabelType             No_Label
 	OptionalArgs          0
 	LatexParam	      renderas="sect1"
@@ -49,7 +49,7 @@ Style Subsection*
 	Margin                Static
 	LatexName             bridgehead
 	LatexType             Environment
-	InnerTag	      !-- --
+	InnerTag	      "!-- --"
 	LabelType             No_Label
 	OptionalArgs          0
 	LatexParam	      renderas="sect2"
@@ -61,7 +61,7 @@ Style Subsubsection*
 	Margin                Static
 	LatexName             bridgehead
 	LatexType             Environment
-	InnerTag	      !-- --
+	InnerTag	      "!-- --"
 	LabelType             No_Label
 	OptionalArgs          0
 	LatexParam	      renderas="sect3"
@@ -73,7 +73,7 @@ Style Paragraph*
 	Margin                Static
 	LatexName             bridgehead
 	LatexType             Environment
-	InnerTag	      !-- --
+	InnerTag	      "!-- --"
 	LabelType             No_Label
 	OptionalArgs          0
 	LatexParam	      renderas="sect4"
@@ -85,7 +85,7 @@ Style Subparagraph*
 	Margin                Static
 	LatexName             bridgehead
 	LatexType             Environment
-	InnerTag	      !-- --
+	InnerTag	      "!-- --"
 	LabelType             No_Label
 	OptionalArgs          0
 	LatexParam	      renderas="sect5"
