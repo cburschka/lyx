@@ -13,7 +13,6 @@
 #include "insetfloatlist.h"
 
 #include "buffer.h"
-#include "BufferView.h"
 #include "debug.h"
 #include "Floating.h"
 #include "FloatList.h"
@@ -23,14 +22,13 @@
 #include "lyxlex.h"
 #include "metricsinfo.h"
 #include "toc.h"
-#include "Lsstream.h"
 
 #include "support/lstrings.h"
 
 using namespace lyx::support;
 
-using std::ostream;
 using std::endl;
+using std::ostream;
 
 
 InsetFloatList::InsetFloatList()

@@ -13,16 +13,12 @@
 #include "insetquotes.h"
 
 #include "buffer.h"
-#include "BufferView.h"
 #include "debug.h"
-#include "dimension.h"
 #include "language.h"
 #include "LaTeXFeatures.h"
 #include "latexrunparams.h"
-#include "lyxfont.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
-#include "paragraph.h"
 #include "metricsinfo.h"
 #include "paragraph_funcs.h"
 
@@ -34,9 +30,10 @@
 
 using namespace lyx::support;
 
-using std::ostream;
 using std::endl;
 using std::auto_ptr;
+using std::ostream;
+
 
 namespace {
 

@@ -11,67 +11,45 @@
 #include <config.h>
 
 #include "insettext.h"
+#include "insetnewline.h"
 
 #include "buffer.h"
 #include "BufferView.h"
-#include "bufferview_funcs.h"
 #include "CutAndPaste.h"
 #include "debug.h"
-#include "dimension.h"
 #include "funcrequest.h"
 #include "gettext.h"
-#include "errorlist.h"
 #include "intl.h"
-#include "LaTeXFeatures.h"
-#include "LColor.h"
-#include "Lsstream.h"
-#include "lyxfont.h"
-#include "lyxcursor.h"
 #include "lyxfind.h"
 #include "lyxlex.h"
-#include "lyxrow.h"
 #include "lyxrc.h"
-#include "lyxtext.h"
-#include "paragraph.h"
+#include "metricsinfo.h"
+#include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
-#include "trans_mgr.h"
+#include "rowpainter.h"
+#include "sgml.h"
 #include "undo_funcs.h"
 #include "WordLangTuple.h"
-#include "paragraph_funcs.h"
-#include "sgml.h"
-#include "rowpainter.h"
-#include "insetnewline.h"
-#include "metricsinfo.h"
-#include "textcursor.h"
 
 #include "frontends/Alert.h"
-#include "frontends/Dialogs.h"
 #include "frontends/font_metrics.h"
 #include "frontends/LyXView.h"
 #include "frontends/Painter.h"
-#include "frontends/screen.h"
 
-#include "support/textutils.h"
-#include "support/LAssert.h"
-#include "support/lstrings.h"
 #include "support/lyxalgo.h" // lyx::count
 
 #include <boost/bind.hpp>
 
-#include <fstream>
-#include <algorithm>
-#include <cstdlib>
-
-using std::ostream;
-using std::ifstream;
 using std::endl;
+using std::for_each;
 using std::min;
 using std::max;
 using std::make_pair;
-using std::vector;
-using std::pair;
-using std::for_each;
 using std::auto_ptr;
+using std::ostream;
+using std::ifstream;
+using std::pair;
+using std::vector;
 
 using namespace lyx::support;
 using namespace lyx::graphics;

@@ -14,15 +14,17 @@
 #include <config.h>
 
 #include "updatableinset.h"
+
 #include "BufferView.h"
-#include "funcrequest.h"
 #include "debug.h"
-#include "lyxfont.h"
-#include "WordLangTuple.h"
+#include "funcrequest.h"
 #include "lyxtext.h"
+#include "WordLangTuple.h"
+
 #include "support/lstrings.h"
 
 using namespace lyx::support;
+
 
 // some stuff for inset locking
 

@@ -10,19 +10,21 @@
 
 #include <config.h>
 
-
 #include "insettheorem.h"
-#include "metricsinfo.h"
-#include "gettext.h"
-#include "lyxfont.h"
-#include "BufferView.h"
-#include "lyxtext.h"
-#include "support/LOstream.h"
-#include "debug.h"
 #include "insets/insettext.h"
 
-using std::ostream;
+#include "debug.h"
+#include "BufferView.h"
+#include "gettext.h"
+#include "lyxfont.h"
+#include "lyxtext.h"
+#include "metricsinfo.h"
+
+#include "support/LOstream.h"
+
 using std::endl;
+using std::ostream;
+
 
 /*
   The intention is to be able to create arbitrary theorem like environments

@@ -12,21 +12,21 @@
 
 #include "ExternalTemplate.h"
 
-#include "lyxlex.h"
 #include "debug.h"
-#include "support/path.h"
-#include "support/LAssert.h"
-#include "support/filetools.h"
-#include "support/lstrings.h"
-#include "support/path_defines.h"
+#include "lyxlex.h"
 
-#include <algorithm>
+#include "support/filetools.h"
+#include "support/LAssert.h"
+#include "support/lstrings.h"
+#include "support/path.h"
+#include "support/path_defines.h"
 
 namespace support = lyx::support;
 
 using std::endl;
-using std::ostream;
 using std::for_each;
+using std::ostream;
+
 
 // We have to have dummy default commands for security reasons!
 

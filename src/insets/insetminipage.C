@@ -12,28 +12,19 @@
 #include <config.h>
 
 #include "insetminipage.h"
-#include "insettext.h"
 
 #include "BufferView.h"
 #include "debug.h"
-#include "dimension.h"
 #include "funcrequest.h"
 #include "gettext.h"
-#include "Lsstream.h"
-#include "lyxfont.h"
 #include "lyxlex.h"
-#include "lyxtext.h"
-#include "Lsstream.h"
 #include "metricsinfo.h"
 
-#include "frontends/LyXView.h"
-#include "frontends/Dialogs.h"
+#include "Lsstream.h"
 
-#include "support/LOstream.h"
-
-using std::ostream;
 using std::endl;
 using std::auto_ptr;
+using std::ostream;
 
 
 // Some information about Minipages in LaTeX:

@@ -21,17 +21,12 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "latexrunparams.h"
-#include "lyx_main.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "Lsstream.h"
 
 #include "frontends/lyx_gui.h"
-#include "frontends/LyXView.h"
-#include "frontends/Dialogs.h"
 
-#include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/forkedcall.h"
 #include "support/lstrings.h"
@@ -40,19 +35,16 @@
 #include "support/path.h"
 #include "support/path_defines.h"
 #include "support/tostr.h"
-#include "support/LAssert.h"
 #include "support/translator.h"
 
 #include <boost/bind.hpp>
 
-#include <cstdio>
-#include <utility>
-
 namespace support = lyx::support;
 
-using std::ostream;
 using std::endl;
 using std::auto_ptr;
+using std::ostream;
+
 
 namespace lyx {
 namespace graphics {

@@ -13,20 +13,21 @@
 #include "insetlatexaccent.h"
 
 #include "debug.h"
-#include "lyxrc.h"
-#include "support/lstrings.h"
-#include "BufferView.h"
-#include "frontends/Painter.h"
-#include "frontends/font_metrics.h"
 #include "language.h"
 #include "lyxlex.h"
+#include "lyxrc.h"
 #include "metricsinfo.h"
+
+#include "frontends/font_metrics.h"
+#include "frontends/Painter.h"
+
+#include "support/lstrings.h"
 
 using namespace lyx::support;
 
-using std::ostream;
 using std::endl;
 using std::auto_ptr;
+using std::ostream;
 
 
 /* LatexAccent. Proper handling of accented characters */

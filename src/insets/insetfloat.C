@@ -12,7 +12,6 @@
 #include <config.h>
 
 #include "insetfloat.h"
-#include "insettext.h"
 
 #include "buffer.h"
 #include "BufferView.h"
@@ -23,24 +22,18 @@
 #include "gettext.h"
 #include "iterators.h"
 #include "LaTeXFeatures.h"
-#include "Lsstream.h"
-#include "lyxfont.h"
 #include "lyxlex.h"
-#include "lyxtext.h"
-#include "Lsstream.h"
 
-#include "support/LOstream.h"
 #include "support/lstrings.h"
 #include "support/tostr.h"
 
-#include "frontends/LyXView.h"
-#include "frontends/Dialogs.h"
+#include "Lsstream.h"
 
 using namespace lyx::support;
 
-using std::ostream;
 using std::endl;
 using std::auto_ptr;
+using std::ostream;
 
 
 // With this inset it will be possible to support the latex package

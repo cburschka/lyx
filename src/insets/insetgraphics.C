@@ -53,7 +53,6 @@ TODO
 #include <config.h>
 
 #include "insets/insetgraphics.h"
-#include "insets/insetgraphicsParams.h"
 #include "insets/renderers.h"
 
 #include "buffer.h"
@@ -64,18 +63,14 @@ TODO
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "latexrunparams.h"
 #include "Lsstream.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
-#include "paragraph_funcs.h"
-#include "lyxtext.h"
 
 #include "frontends/Alert.h"
-#include "frontends/Dialogs.h"
 
-#include "support/LAssert.h"
 #include "support/filetools.h"
+#include "support/LAssert.h"
 #include "support/lyxalgo.h" // lyx::count
 #include "support/lyxlib.h" // float_equal
 #include "support/os.h"
@@ -85,16 +80,12 @@ TODO
 #include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>
 
-#include <algorithm> // For the std::max
-
-// set by Exporters
-
 namespace support = lyx::support;
 using namespace lyx::support;
 
-using std::ostream;
 using std::endl;
 using std::auto_ptr;
+using std::ostream;
 
 
 namespace {

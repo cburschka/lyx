@@ -10,11 +10,10 @@
 
 #include <config.h>
 
-
 #include "insethfill.h"
-#include "support/LOstream.h"
 
 using std::ostream;
+
 
 InsetHFill::InsetHFill()
 	: InsetCommand(InsetCommandParams("hfill"))

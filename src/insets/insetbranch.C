@@ -10,26 +10,19 @@
 
 #include <config.h>
 
-#include "Lsstream.h"
-
 #include "insetbranch.h"
-#include "gettext.h"
-#include "lyxfont.h"
-#include "language.h"
+
 #include "buffer.h"
 #include "BufferView.h"
 #include "funcrequest.h"
-#include "LaTeXFeatures.h"
-#include "latexrunparams.h"
+#include "gettext.h"
 #include "lyxlex.h"
-#include "lyxtext.h"
-#include "insets/insettext.h"
-#include "support/LOstream.h"
-#include "support/lstrings.h"
-#include "debug.h"
 
-using std::ostream;
+#include "Lsstream.h"
+
 using std::auto_ptr;
+using std::ostream;
+
 
 void InsetBranch::init()
 {

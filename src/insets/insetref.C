@@ -9,21 +9,22 @@
  */
 #include <config.h>
 
-
 #include "insetref.h"
+
 #include "buffer.h"
+#include "BufferView.h"
 #include "funcrequest.h"
-#include "debug.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
+
 #include "frontends/LyXView.h"
-#include "frontends/Dialogs.h"
-#include "BufferView.h"
+
 #include "support/lstrings.h"
 
 using namespace lyx::support;
 
 using std::ostream;
+
 
 InsetRef::InsetRef(InsetCommandParams const & p, Buffer const & buf)
 	: InsetCommand(p), isLatex(buf.isLatex())

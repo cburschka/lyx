@@ -11,19 +11,14 @@
 
 #include <config.h>
 
-
 #include "insetmarginal.h"
+
 #include "gettext.h"
-#include "lyxfont.h"
-#include "BufferView.h"
-#include "lyxtext.h"
-#include "insets/insettext.h"
+
 #include "support/LOstream.h"
-#include "debug.h"
 
-
-using std::ostream;
 using std::auto_ptr;
+using std::ostream;
 
 
 InsetMarginal::InsetMarginal(BufferParams const & bp)

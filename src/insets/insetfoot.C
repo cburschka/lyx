@@ -12,22 +12,18 @@
 #include <config.h>
 
 #include "insetfoot.h"
+
 #include "gettext.h"
-#include "lyxfont.h"
-#include "BufferView.h"
 #include "latexrunparams.h"
-#include "lyxtext.h"
-#include "insets/insettext.h"
-#include "support/LOstream.h"
-#include "debug.h"
 // the following are needed just to get the layout of the enclosing
 // paragraph. This seems a bit too much to me (JMarc)
 #include "lyxlayout.h"
 #include "paragraph_funcs.h"
 
+#include "support/LOstream.h"
 
-using std::ostream;
 using std::auto_ptr;
+using std::ostream;
 
 
 InsetFoot::InsetFoot(BufferParams const & bp)

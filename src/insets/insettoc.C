@@ -11,18 +11,13 @@
 
 #include "insettoc.h"
 
-#include "BufferView.h"
-#include "debug.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "metricsinfo.h"
 #include "toc.h"
-#include "frontends/LyXView.h"
-#include "frontends/Dialogs.h"
 
-
-using std::vector;
 using std::ostream;
+using std::vector;
 
 
 InsetTOC::InsetTOC(InsetCommandParams const & p)

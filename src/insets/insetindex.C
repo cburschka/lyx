@@ -9,18 +9,15 @@
  */
 #include <config.h>
 
-
 #include "insetindex.h"
-#include "metricsinfo.h"
-#include "BufferView.h"
+
 #include "funcrequest.h"
-#include "frontends/LyXView.h"
-#include "frontends/Dialogs.h"
-#include "LaTeXFeatures.h"
 #include "gettext.h"
-#include "support/LOstream.h"
+#include "LaTeXFeatures.h"
+#include "metricsinfo.h"
 
 using std::ostream;
+
 
 InsetIndex::InsetIndex(InsetCommandParams const & p)
 	: InsetCommand(p)

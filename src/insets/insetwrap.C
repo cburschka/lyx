@@ -11,31 +11,25 @@
 #include <config.h>
 
 #include "insetwrap.h"
-#include "insettext.h"
 
 #include "buffer.h"
 #include "BufferView.h"
 #include "debug.h"
-#include "funcrequest.h"
 #include "Floating.h"
 #include "FloatList.h"
+#include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "Lsstream.h"
-#include "lyxfont.h"
 #include "lyxlex.h"
-#include "lyxtext.h"
-#include "Lsstream.h"
 
-#include "frontends/LyXView.h"
-#include "frontends/Dialogs.h"
-
-#include "support/LOstream.h"
 #include "support/tostr.h"
 
-using std::ostream;
+#include "Lsstream.h"
+
 using std::endl;
 using std::auto_ptr;
+using std::ostream;
+
 
 namespace {
 

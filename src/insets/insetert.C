@@ -11,8 +11,6 @@
 #include <config.h>
 
 #include "insetert.h"
-#include "insettext.h"
-#include "metricsinfo.h"
 
 #include "buffer.h"
 #include "BufferView.h"
@@ -20,28 +18,23 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "language.h"
-#include "lyxfont.h"
 #include "lyxlex.h"
-#include "lyxrow.h"
-#include "lyxtext.h"
+#include "metricsinfo.h"
 #include "WordLangTuple.h"
 
 #include "frontends/Alert.h"
-#include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
 
-#include "support/LOstream.h"
-#include "support/LAssert.h"
 #include "support/tostr.h"
 
 using namespace lyx::support;
 
 using lyx::pos_type;
 
-using std::ostream;
 using std::min;
 using std::endl;
 using std::auto_ptr;
+using std::ostream;
 
 
 void InsetERT::init()

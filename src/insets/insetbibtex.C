@@ -11,31 +11,29 @@
 #include <config.h>
 
 #include "insetbibtex.h"
-#include "metricsinfo.h"
+
 #include "buffer.h"
-#include "BufferView.h"
 #include "debug.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "latexrunparams.h"
+#include "metricsinfo.h"
 
 #include "support/filetools.h"
-#include "support/path.h"
-#include "support/os.h"
 #include "support/lstrings.h"
-#include "support/LAssert.h"
+#include "support/os.h"
+#include "support/path.h"
 
 #include <fstream>
-#include <cstdlib>
 
 using namespace lyx::support;
 
-using std::ostream;
-using std::ifstream;
-using std::getline;
 using std::endl;
-using std::vector;
+using std::getline;
+using std::ifstream;
+using std::ostream;
 using std::pair;
+using std::vector;
 
 
 InsetBibtex::InsetBibtex(InsetCommandParams const & p)

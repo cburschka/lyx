@@ -14,23 +14,11 @@
 #include <config.h>
 
 #include "inset.h"
+#include "updatableinset.h"
+
 #include "BufferView.h"
-#include "funcrequest.h"
 #include "gettext.h"
-#include "lyxfont.h"
-#include "lyxtext.h"
-#include "dimension.h"
-#include "metricsinfo.h"
 
-#include "insets/updatableinset.h"
-
-#include "frontends/Painter.h"
-#include "frontends/mouse_state.h"
-
-#include "support/lstrings.h"
-
-
-#include "debug.h"
 
 // Initialization of the counter for the inset id's,
 unsigned int InsetOld::inset_id = 0;

@@ -11,26 +11,28 @@
 #include <config.h>
 
 #include "insetcaption.h"
-#include "frontends/Painter.h"
-#include "frontends/font_metrics.h"
-#include "BufferView.h"
+#include "insetfloat.h"
+#include "insetwrap.h"
+
 #include "buffer.h"
+#include "BufferView.h"
 #include "Floating.h"
 #include "FloatList.h"
-#include "insets/insetfloat.h"
-#include "insets/insetwrap.h"
-#include "debug.h"
 #include "gettext.h"
-#include "Lsstream.h"
 #include "metricsinfo.h"
-#include "support/lstrings.h"
+
+#include "frontends/Painter.h"
+#include "frontends/font_metrics.h"
+
 #include "support/LAssert.h"
-#include "support/BoostFormat.h"
+#include "support/lstrings.h"
+
+#include "Lsstream.h"
 
 using namespace lyx::support;
 
-using std::ostream;
 using std::endl;
+using std::ostream;
 
 
 InsetCaption::InsetCaption(BufferParams const & bp)

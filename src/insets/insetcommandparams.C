@@ -10,15 +10,13 @@
 
 #include <config.h>
 
-
 #include "insetcommandparams.h"
-#include "lyxlex.h"
+
 #include "debug.h"
+#include "lyxlex.h"
 
-#include "support/LOstream.h"
-
-using std::ostream;
 using std::endl;
+using std::ostream;
 
 
 InsetCommandParams::InsetCommandParams()

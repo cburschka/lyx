@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "insetinclude.h"
+
 #include "buffer.h"
 #include "buffer_funcs.h"
 #include "bufferlist.h"
@@ -20,36 +21,31 @@
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "latexrunparams.h"
-#include "Lsstream.h"
 #include "lyxlex.h"
-#include "lyxrc.h"
 #include "metricsinfo.h"
-#include "dimension.h"
 
-#include "frontends/Dialogs.h"
-#include "frontends/LyXView.h"
 #include "frontends/Painter.h"
-
-#include "support/filetools.h"
-#include "support/FileInfo.h"
-#include "support/FileMonitor.h"
-#include "support/lstrings.h" // contains
-#include "support/tostr.h"
 
 #include "graphics/PreviewedInset.h"
 #include "graphics/PreviewImage.h"
 
+#include "support/FileInfo.h"
+#include "support/FileMonitor.h"
+#include "support/filetools.h"
+#include "support/lstrings.h" // contains
+#include "support/tostr.h"
+
 #include <boost/bind.hpp>
 
-#include <cstdlib>
+#include "Lsstream.h"
 
 using namespace lyx::support;
 
-using std::ostream;
 using std::endl;
-using std::vector;
-using std::pair;
 using std::auto_ptr;
+using std::ostream;
+using std::pair;
+using std::vector;
 
 
 extern BufferList bufferlist;

@@ -11,55 +11,41 @@
 #include <config.h>
 
 #include "insettabular.h"
-#include "insettext.h"
 
 #include "buffer.h"
 #include "BufferView.h"
-#include "lfuns.h"
 #include "debug.h"
-#include "dimension.h"
 #include "funcrequest.h"
 #include "FuncStatus.h"
 #include "gettext.h"
 #include "language.h"
-#include "LaTeXFeatures.h"
-#include "Lsstream.h"
 #include "lyx_cb.h"
-#include "lyxfunc.h"
-#include "lyxlength.h"
 #include "lyxlex.h"
-#include "lyxtext.h"
+#include "metricsinfo.h"
+#include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
 #include "WordLangTuple.h"
-#include "metricsinfo.h"
-#include "paragraph_funcs.h"
 
 #include "frontends/Alert.h"
-#include "frontends/Dialogs.h"
 #include "frontends/font_metrics.h"
 #include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 
 #include "support/LAssert.h"
-#include "support/lstrings.h"
 
-#include <fstream>
-#include <algorithm>
-#include <cstdlib>
-
+#include "Lsstream.h"
 
 using namespace lyx::support;
 using namespace lyx::graphics;
 
-using std::vector;
-using std::ostream;
-using std::ifstream;
-using std::max;
 using std::endl;
-using std::swap;
 using std::max;
+using std::swap;
 using std::auto_ptr;
+using std::ifstream;
+using std::ostream;
+using std::vector;
 
 
 namespace {

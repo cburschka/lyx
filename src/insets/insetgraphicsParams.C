@@ -11,25 +11,25 @@
 
 #include <config.h>
 
-
 #include "insetgraphicsParams.h"
+
+#include "debug.h"
+#include "lyxlex.h"
+#include "lyxrc.h"
+
+#include "frontends/lyx_gui.h"
 
 #include "graphics/GraphicsParams.h"
 
 #include "support/filetools.h"
 #include "support/lyxlib.h"
-#include "support/LOstream.h"
-#include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/translator.h"
-#include "lyxrc.h"
-#include "debug.h"
-#include "lyxlex.h"
-#include "frontends/lyx_gui.h"
 
 using namespace lyx::support;
 
 using std::ostream;
+
 
 namespace lyx {
 namespace graphics {

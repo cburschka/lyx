@@ -12,15 +12,11 @@
 #include <config.h>
 
 #include "insetcommand.h"
+
 #include "BufferView.h"
-#include "debug.h"
 #include "funcrequest.h"
 #include "lyxlex.h"
 #include "metricsinfo.h"
-
-#include "frontends/Painter.h"
-
-#include "support/lstrings.h"
 
 #include "Lsstream.h"
 

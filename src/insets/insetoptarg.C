@@ -10,23 +10,15 @@
 
 #include <config.h>
 
+#include "insetoptarg.h"
 
 #include "debug.h"
-
-#include "insetoptarg.h"
-#include "support/LOstream.h"
-#include "frontends/Alert.h"
-#include "support/lstrings.h" // frontStrip, strip
-#include "lyxtext.h"
-#include "buffer.h"
 #include "gettext.h"
-#include "BufferView.h"
-#include "support/lstrings.h"
 
-using std::ostream;
-using std::vector;
-using std::pair;
 using std::auto_ptr;
+using std::ostream;
+using std::pair;
+using std::vector;
 
 
 InsetOptArg::InsetOptArg(BufferParams const & ins)

@@ -10,6 +10,7 @@
 #include <config.h>
 
 #include "insetbibitem.h"
+
 #include "buffer.h"
 #include "BufferView.h"
 #include "funcrequest.h"
@@ -17,8 +18,8 @@
 
 #include "frontends/font_metrics.h"
 
-#include "support/tostr.h"
 #include "support/lstrings.h"
+#include "support/tostr.h"
 
 using namespace lyx::support;
 

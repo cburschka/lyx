@@ -11,12 +11,9 @@
 #include <config.h>
 
 #include "insetfootlike.h"
-#include "metricsinfo.h"
-#include "lyxfont.h"
-#include "buffer.h"
-#include "lyxtext.h"
-#include "support/LOstream.h"
 
+#include "buffer.h"
+#include "metricsinfo.h"
 
 using std::ostream;
 

@@ -12,22 +12,22 @@
 #include <config.h>
 
 #include "insetcite.h"
-#include "funcrequest.h"
+
 #include "buffer.h"
 #include "BufferView.h"
+#include "funcrequest.h"
 #include "LaTeXFeatures.h"
 
 #include "frontends/controllers/biblio.h"
 
 #include "support/lstrings.h"
 
-#include <map>
-
 using namespace lyx::support;
 
 using std::ostream;
 using std::vector;
 using std::map;
+
 
 namespace {
 

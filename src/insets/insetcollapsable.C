@@ -13,34 +13,28 @@
 #include <config.h>
 
 #include "insetcollapsable.h"
-#include "insettext.h"
 
+#include "buffer.h"
 #include "BufferView.h"
 #include "debug.h"
-#include "dimension.h"
-#include "gettext.h"
-#include "lyxfont.h"
 #include "lyxlex.h"
-#include "lyxtext.h"
-#include "WordLangTuple.h"
 #include "funcrequest.h"
-#include "buffer.h"
 #include "metricsinfo.h"
+#include "WordLangTuple.h"
 
 #include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
 #include "frontends/LyXView.h"
 
 #include "support/LAssert.h"
-#include "support/LOstream.h"
 
 using namespace lyx::support;
 using namespace lyx::graphics;
 
-using std::vector;
-using std::ostream;
 using std::endl;
 using std::max;
+using std::vector;
+using std::ostream;
 
 
 InsetCollapsable::InsetCollapsable(BufferParams const & bp, bool collapsed)

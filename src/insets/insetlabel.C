@@ -10,23 +10,18 @@
 
 #include <config.h>
 
-
 #include "insetlabel.h"
-#include "buffer.h"
+
 #include "BufferView.h"
 #include "funcrequest.h"
-#include "gettext.h"
-#include "lyxtext.h"
 
 #include "support/lstrings.h"
-#include "support/LOstream.h"
-#include "support/lstrings.h" //frontStrip, strip
 
 using namespace lyx::support;
 
 using std::ostream;
-using std::vector;
 using std::pair;
+using std::vector;
 
 
 InsetLabel::InsetLabel(InsetCommandParams const & p)

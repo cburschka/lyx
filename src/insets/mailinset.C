@@ -11,14 +11,16 @@
 #include <config.h>
 
 #include "mailinset.h"
-#include "inset.h"
+
 #include "BufferView.h"
-#include "frontends/LyXView.h"
+
 #include "frontends/Dialogs.h"
+#include "frontends/LyXView.h"
+
 #include "support/LAssert.h"
-#include "Lsstream.h"
 
 using namespace lyx::support;
+
 
 void MailInset::showDialog(BufferView * bv) const
 {

@@ -11,18 +11,15 @@
 #include <config.h>
 
 #include "insetenv.h"
+
 #include "bufferparams.h"
-#include "debug.h"
 #include "gettext.h"
-#include "lyxlayout.h"
-#include "lyxtextclass.h"
 #include "paragraph_funcs.h"
 #include "texrow.h"
-#include "support/LOstream.h"
 
-using std::ostream;
 using std::endl;
 using std::auto_ptr;
+using std::ostream;
 
 
 InsetEnvironment::InsetEnvironment

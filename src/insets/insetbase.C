@@ -9,6 +9,7 @@
  */
 
 #include <config.h>
+
 #include "insetbase.h"
 
 

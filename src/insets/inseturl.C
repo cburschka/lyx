@@ -11,15 +11,13 @@
 #include <config.h>
 
 #include "inseturl.h"
+
 #include "funcrequest.h"
-#include "BufferView.h"
-#include "LaTeXFeatures.h"
 #include "latexrunparams.h"
-#include "frontends/LyXView.h"
-#include "debug.h"
-#include "frontends/Dialogs.h"
-#include "support/lstrings.h"
+#include "LaTeXFeatures.h"
 #include "gettext.h"
+
+#include "support/lstrings.h"
 
 using namespace lyx::support;
 

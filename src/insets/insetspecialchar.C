@@ -15,18 +15,16 @@
 #include "insetspecialchar.h"
 
 #include "debug.h"
-#include "dimension.h"
 #include "LaTeXFeatures.h"
-#include "BufferView.h"
-#include "frontends/Painter.h"
-#include "frontends/font_metrics.h"
 #include "lyxlex.h"
-#include "lyxfont.h"
 #include "metricsinfo.h"
 
-using std::ostream;
+#include "frontends/font_metrics.h"
+#include "frontends/Painter.h"
+
 using std::max;
 using std::auto_ptr;
+using std::ostream;
 
 
 InsetSpecialChar::InsetSpecialChar(Kind k)

@@ -14,19 +14,15 @@
 
 #include "BufferView.h"
 #include "debug.h"
-#include "dimension.h"
-#include "paragraph.h"
 #include "lyxtext.h"
 #include "metricsinfo.h"
 #include "paragraph_funcs.h"
 
-#include "support/LOstream.h"
-
-#include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
+#include "frontends/Painter.h"
 
-using std::ostream;
 using std::endl;
+using std::ostream;
 
 
 void InsetNewline::read(Buffer const &, LyXLex &)

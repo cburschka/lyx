@@ -13,26 +13,18 @@
 #include <config.h>
 
 #include "insetnote.h"
-#include "insettext.h"
 
-#include "buffer.h"
 #include "BufferView.h"
-#include "debug.h"
 #include "funcrequest.h"
 #include "gettext.h"
-#include "language.h"
 #include "LaTeXFeatures.h"
-#include "lyxfont.h"
 #include "lyxlex.h"
-#include "lyxtext.h"
 #include "metricsinfo.h"
-#include "support/LOstream.h"
-#include "support/lstrings.h"
 
 #include "Lsstream.h"
 
-using std::ostream;
 using std::auto_ptr;
+using std::ostream;
 
 
 void InsetNote::init()

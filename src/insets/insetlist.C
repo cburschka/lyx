@@ -9,18 +9,20 @@
  */
 #include <config.h>
 
-
 #include "insetlist.h"
+#include "insets/insettext.h"
+
+#include "BufferView.h"
+#include "debug.h"
 #include "gettext.h"
 #include "lyxfont.h"
-#include "BufferView.h"
 #include "lyxtext.h"
-#include "insets/insettext.h"
-#include "support/LOstream.h"
-#include "debug.h"
 
-using std::ostream;
+#include "support/LOstream.h"
+
 using std::endl;
+using std::ostream;
+
 
 // This class is _far_ from finished. I hope that we can have a inset to
 // handle the different lists that we have. It should also be possible
