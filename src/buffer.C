@@ -3702,12 +3702,46 @@ map<string, vector<Buffer::TocItem> > const Buffer::getTocList() const
 				par->inset_iterator_begin();
 			LyXParagraph::inset_iterator end =
 				par->inset_iterator_end();
-			for (; it != end; ++it) {
-				if ((*it)->LyxCode() == Inset::FLOAT_CODE) {
-					lyxerr << "Found a float!" << endl;
-					// Now find the caption in the float...
+			bool found;
+			LyXTextClassList::size_type cap;
+			tie(found, cap) = textclasslist
+				.NumberOfLayout(params.textclass, "Caption");
+			if (found) {
+				for (; it != end; ++it) {
+					if ((*it)->LyxCode() == Inset::FLOAT_CODE) {
+						InsetFloat * il =
+							static_cast<InsetFloat*>(*it);
+						
+						//lyxerr << "Found a float!" << endl;
+						string const type = il->type();
+						// Now find the caption in the float...
+						// We now tranverse the paragraphs of
+						// the inset...
+						LyXParagraph * tmp = il->inset->par;
+						while (tmp) {
+							if (tmp->layout == cap) {
+								TocItem ti;
+								ti.par = tmp;
+								ti.depth = 0;
+								ti.str = tmp->String(this, false);
+								map<string, vector<TocItem> >::iterator it = l.find(type);
+								if (it == l.end()) {
+									vector<TocItem> vti;
+									vti.push_back(ti);
+									l[type] = vti;
+								} else {
+									it->second.push_back(ti);
+								}
+							}
+							tmp = tmp->next();
+						}
+						
+					}
 				}
+			} else {
+				lyxerr << "caption not found" << endl;
 			}
+			
 #endif
 #ifndef NEW_INSETS
 		}

@@ -1,5 +1,8 @@
 2001-03-11  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
+	* buffer.C (getTocList): make the list also when NEW_INSETS is
+	defined.
+
 	* buffer.h: remove TocType
 
 	* buffer.C (getTocList): change to return a map<string,
