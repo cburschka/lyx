@@ -1,3 +1,10 @@
+2002-07-05  Angus Leeming  <leeming@lyx.org>
+
+	* buffer.[Ch] (makeLaTeXFile): create two methods where there was one.
+	The body of the code is now in the method that is passed an ostream &
+	rather than a file name.
+	Pass an additional only_preamble parameter, useful for the forthcoming
+	preview stuff.
 
 2002-07-03  André Pönitz <poenitz@gmx.net>
 

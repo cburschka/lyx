@@ -63,7 +63,7 @@ public:
 	/// We are explicit about when we begin the loading process.
 	void startLoading();
 
-	///  How far have we got in loading the image?
+	/// How far have we got in loading the image?
 	ImageStatus status() const;
 
 	/// This signal is emitted when the image loading status changes.

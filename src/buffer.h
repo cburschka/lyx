@@ -157,10 +157,18 @@ public:
 	///
 	string const asciiParagraph(Paragraph const *, unsigned int linelen,
 				    bool noparbreak = false) const;
-	///
+	/// Just a wrapper for the method below, first creating the ofstream.
 	void makeLaTeXFile(string const & filename,
 			   string const & original_path,
-			   bool nice, bool only_body = false);
+			   bool nice,
+			   bool only_body = false,
+			   bool only_preamble = false);
+	///
+	void makeLaTeXFile(std::ostream & os,
+			   string const & original_path,
+			   bool nice,
+			   bool only_body = false,
+			   bool only_preamble = false);
 	/** LaTeX all paragraphs from par to endpar.
 	    \param \a endpar if == 0 then to the end
 	*/

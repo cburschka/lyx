@@ -2165,7 +2165,7 @@ bool use_babel;
 
 void Buffer::makeLaTeXFile(string const & fname,
 			   string const & original_path,
-			   bool nice, bool only_body)
+			   bool nice, bool only_body, bool only_preamble)
 {
 	lyxerr[Debug::LATEX] << "makeLaTeXFile..." << endl;
 
@@ -2175,6 +2175,19 @@ void Buffer::makeLaTeXFile(string const & fname,
 		return;
 	}
 
+	makeLaTeXFile(ofs, original_path, nice, only_body, only_preamble);
+
+	ofs.close();
+	if (ofs.fail()) {
+		lyxerr << "File was not closed properly." << endl;
+	}
+}
+
+
+void Buffer::makeLaTeXFile(ostream & os,
+			   string const & original_path,
+			   bool nice, bool only_body, bool only_preamble)
+{
 	niceFile = nice; // this will be used by Insetincludes.
 
 	tex_code_break_column = lyxrc.ascii_linelen;
@@ -2191,7 +2204,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 	texrow.start(paragraph, 0);
 
 	if (!only_body && nice) {
-		ofs << "%% " << lyx_docversion << " created this file.  "
+		os << "%% " << lyx_docversion << " created this file.  "
 			"For more info, see http://www.lyx.org/.\n"
 			"%% Do not edit unless you really know what "
 			"you are doing.\n";
@@ -2211,14 +2224,14 @@ void Buffer::makeLaTeXFile(string const & fname,
 	if (!only_body) {
 		if (!nice) {
 			// code for usual, NOT nice-latex-file
-			ofs << "\\batchmode\n"; // changed
+			os << "\\batchmode\n"; // changed
 			// from \nonstopmode
 			texrow.newline();
 		}
 		if (!original_path.empty()) {
 			string inputpath = os::external_path(original_path);
 			subst(inputpath, "~", "\\string~");
-			ofs << "\\makeatletter\n"
+			os << "\\makeatletter\n"
 			    << "\\def\\input@path{{"
 			    << inputpath << "/}}\n"
 			    << "\\makeatother\n";
@@ -2227,7 +2240,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 			texrow.newline();
 		}
 
-		ofs << "\\documentclass";
+		os << "\\documentclass";
 
 		LyXTextClass const & tclass = textclasslist[params.textclass];
 
@@ -2314,10 +2327,10 @@ void Buffer::makeLaTeXFile(string const & fname,
 		string strOptions(options.str().c_str());
 		if (!strOptions.empty()) {
 			strOptions = strip(strOptions, ',');
-			ofs << '[' << strOptions << ']';
+			os << '[' << strOptions << ']';
 		}
 
-		ofs << '{' << tclass.latexname() << "}\n";
+		os << '{' << tclass.latexname() << "}\n";
 		texrow.newline();
 		// end of \documentclass defs
 
@@ -2325,16 +2338,16 @@ void Buffer::makeLaTeXFile(string const & fname,
 		// The ae package is not needed when using OT1 font encoding.
 		if (params.fonts != "default" &&
 		    (params.fonts != "ae" || lyxrc.fontenc != "default")) {
-			ofs << "\\usepackage{" << params.fonts << "}\n";
+			os << "\\usepackage{" << params.fonts << "}\n";
 			texrow.newline();
 			if (params.fonts == "ae") {
-				ofs << "\\usepackage{aecompl}\n";
+				os << "\\usepackage{aecompl}\n";
 				texrow.newline();
 			}
 		}
 		// this one is not per buffer
 		if (lyxrc.fontenc != "default") {
-			ofs << "\\usepackage[" << lyxrc.fontenc
+			os << "\\usepackage[" << lyxrc.fontenc
 			    << "]{fontenc}\n";
 			texrow.newline();
 		}
@@ -2347,13 +2360,13 @@ void Buffer::makeLaTeXFile(string const & fname,
 			// in the document
 			set<string> encodings = features.getEncodingSet(doc_encoding);
 
-			ofs << "\\usepackage[";
+			os << "\\usepackage[";
 			std::copy(encodings.begin(), encodings.end(),
-				  std::ostream_iterator<string>(ofs, ","));
-			ofs << doc_encoding << "]{inputenc}\n";
+				  std::ostream_iterator<string>(os, ","));
+			os << doc_encoding << "]{inputenc}\n";
 			texrow.newline();
 		} else if (params.inputenc != "default") {
-			ofs << "\\usepackage[" << params.inputenc
+			os << "\\usepackage[" << params.inputenc
 			    << "]{inputenc}\n";
 			texrow.newline();
 		}
@@ -2362,124 +2375,124 @@ void Buffer::makeLaTeXFile(string const & fname,
 		if (params.paperpackage != BufferParams::PACKAGE_NONE) {
 			switch (params.paperpackage) {
 			case BufferParams::PACKAGE_A4:
-				ofs << "\\usepackage{a4}\n";
+				os << "\\usepackage{a4}\n";
 				texrow.newline();
 				break;
 			case BufferParams::PACKAGE_A4WIDE:
-				ofs << "\\usepackage{a4wide}\n";
+				os << "\\usepackage{a4wide}\n";
 				texrow.newline();
 				break;
 			case BufferParams::PACKAGE_WIDEMARGINSA4:
-				ofs << "\\usepackage[widemargins]{a4}\n";
+				os << "\\usepackage[widemargins]{a4}\n";
 				texrow.newline();
 				break;
 			}
 		}
 		if (params.use_geometry) {
-			ofs << "\\usepackage{geometry}\n";
+			os << "\\usepackage{geometry}\n";
 			texrow.newline();
-			ofs << "\\geometry{verbose";
+			os << "\\geometry{verbose";
 			if (params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
-				ofs << ",landscape";
+				os << ",landscape";
 			switch (params.papersize2) {
 			case BufferParams::VM_PAPER_CUSTOM:
 				if (!params.paperwidth.empty())
-					ofs << ",paperwidth="
+					os << ",paperwidth="
 					    << params.paperwidth;
 				if (!params.paperheight.empty())
-					ofs << ",paperheight="
+					os << ",paperheight="
 					    << params.paperheight;
 				break;
 			case BufferParams::VM_PAPER_USLETTER:
-				ofs << ",letterpaper";
+				os << ",letterpaper";
 				break;
 			case BufferParams::VM_PAPER_USLEGAL:
-				ofs << ",legalpaper";
+				os << ",legalpaper";
 				break;
 			case BufferParams::VM_PAPER_USEXECUTIVE:
-				ofs << ",executivepaper";
+				os << ",executivepaper";
 				break;
 			case BufferParams::VM_PAPER_A3:
-				ofs << ",a3paper";
+				os << ",a3paper";
 				break;
 			case BufferParams::VM_PAPER_A4:
-				ofs << ",a4paper";
+				os << ",a4paper";
 				break;
 			case BufferParams::VM_PAPER_A5:
-				ofs << ",a5paper";
+				os << ",a5paper";
 				break;
 			case BufferParams::VM_PAPER_B3:
-				ofs << ",b3paper";
+				os << ",b3paper";
 				break;
 			case BufferParams::VM_PAPER_B4:
-				ofs << ",b4paper";
+				os << ",b4paper";
 				break;
 			case BufferParams::VM_PAPER_B5:
-				ofs << ",b5paper";
+				os << ",b5paper";
 				break;
 			default:
 				// default papersize ie BufferParams::VM_PAPER_DEFAULT
 				switch (lyxrc.default_papersize) {
 				case BufferParams::PAPER_DEFAULT: // keep compiler happy
 				case BufferParams::PAPER_USLETTER:
-					ofs << ",letterpaper";
+					os << ",letterpaper";
 					break;
 				case BufferParams::PAPER_LEGALPAPER:
-					ofs << ",legalpaper";
+					os << ",legalpaper";
 					break;
 				case BufferParams::PAPER_EXECUTIVEPAPER:
-					ofs << ",executivepaper";
+					os << ",executivepaper";
 					break;
 				case BufferParams::PAPER_A3PAPER:
-					ofs << ",a3paper";
+					os << ",a3paper";
 					break;
 				case BufferParams::PAPER_A4PAPER:
-					ofs << ",a4paper";
+					os << ",a4paper";
 					break;
 				case BufferParams::PAPER_A5PAPER:
-					ofs << ",a5paper";
+					os << ",a5paper";
 					break;
 				case BufferParams::PAPER_B5PAPER:
-					ofs << ",b5paper";
+					os << ",b5paper";
 					break;
 				}
 			}
 			if (!params.topmargin.empty())
-				ofs << ",tmargin=" << params.topmargin;
+				os << ",tmargin=" << params.topmargin;
 			if (!params.bottommargin.empty())
-				ofs << ",bmargin=" << params.bottommargin;
+				os << ",bmargin=" << params.bottommargin;
 			if (!params.leftmargin.empty())
-				ofs << ",lmargin=" << params.leftmargin;
+				os << ",lmargin=" << params.leftmargin;
 			if (!params.rightmargin.empty())
-				ofs << ",rmargin=" << params.rightmargin;
+				os << ",rmargin=" << params.rightmargin;
 			if (!params.headheight.empty())
-				ofs << ",headheight=" << params.headheight;
+				os << ",headheight=" << params.headheight;
 			if (!params.headsep.empty())
-				ofs << ",headsep=" << params.headsep;
+				os << ",headsep=" << params.headsep;
 			if (!params.footskip.empty())
-				ofs << ",footskip=" << params.footskip;
-			ofs << "}\n";
+				os << ",footskip=" << params.footskip;
+			os << "}\n";
 			texrow.newline();
 		}
 
 		if (tokenPos(tclass.opt_pagestyle(),
 			     '|', params.pagestyle) >= 0) {
 			if (params.pagestyle == "fancy") {
-				ofs << "\\usepackage{fancyhdr}\n";
+				os << "\\usepackage{fancyhdr}\n";
 				texrow.newline();
 			}
-			ofs << "\\pagestyle{" << params.pagestyle << "}\n";
+			os << "\\pagestyle{" << params.pagestyle << "}\n";
 			texrow.newline();
 		}
 
 		if (params.secnumdepth != tclass.secnumdepth()) {
-			ofs << "\\setcounter{secnumdepth}{"
+			os << "\\setcounter{secnumdepth}{"
 			    << params.secnumdepth
 			    << "}\n";
 			texrow.newline();
 		}
 		if (params.tocdepth != tclass.tocdepth()) {
-			ofs << "\\setcounter{tocdepth}{"
+			os << "\\setcounter{tocdepth}{"
 			    << params.tocdepth
 			    << "}\n";
 			texrow.newline();
@@ -2488,26 +2501,26 @@ void Buffer::makeLaTeXFile(string const & fname,
 		if (params.paragraph_separation) {
 			switch (params.defskip.kind()) {
 			case VSpace::SMALLSKIP:
-				ofs << "\\setlength\\parskip{\\smallskipamount}\n";
+				os << "\\setlength\\parskip{\\smallskipamount}\n";
 				break;
 			case VSpace::MEDSKIP:
-				ofs << "\\setlength\\parskip{\\medskipamount}\n";
+				os << "\\setlength\\parskip{\\medskipamount}\n";
 				break;
 			case VSpace::BIGSKIP:
-				ofs << "\\setlength\\parskip{\\bigskipamount}\n";
+				os << "\\setlength\\parskip{\\bigskipamount}\n";
 				break;
 			case VSpace::LENGTH:
-				ofs << "\\setlength\\parskip{"
+				os << "\\setlength\\parskip{"
 				    << params.defskip.length().asLatexString()
 				    << "}\n";
 				break;
 			default: // should never happen // Then delete it.
-				ofs << "\\setlength\\parskip{\\medskipamount}\n";
+				os << "\\setlength\\parskip{\\medskipamount}\n";
 				break;
 			}
 			texrow.newline();
 
-			ofs << "\\setlength\\parindent{0pt}\n";
+			os << "\\setlength\\parindent{0pt}\n";
 			texrow.newline();
 		}
 
@@ -2599,36 +2612,39 @@ void Buffer::makeLaTeXFile(string const & fname,
 
 		preamble += "\\makeatother\n";
 
-		ofs << preamble;
+		os << preamble;
+
+		if (only_preamble)
+			return;
 
 		// make the body.
-		ofs << "\\begin{document}\n";
+		os << "\\begin{document}\n";
 		texrow.newline();
 	} // only_body
 	lyxerr[Debug::INFO] << "preamble finished, now the body." << endl;
 
 	if (!lyxrc.language_auto_begin) {
-		ofs << subst(lyxrc.language_command_begin, "$$lang",
+		os << subst(lyxrc.language_command_begin, "$$lang",
 			     params.language->babel())
 		    << endl;
 		texrow.newline();
 	}
 
-	latexParagraphs(ofs, paragraph, 0, texrow);
+	latexParagraphs(os, paragraph, 0, texrow);
 
 	// add this just in case after all the paragraphs
-	ofs << endl;
+	os << endl;
 	texrow.newline();
 
 	if (!lyxrc.language_auto_end) {
-		ofs << subst(lyxrc.language_command_end, "$$lang",
+		os << subst(lyxrc.language_command_end, "$$lang",
 			     params.language->babel())
 		    << endl;
 		texrow.newline();
 	}
 
 	if (!only_body) {
-		ofs << "\\end{document}\n";
+		os << "\\end{document}\n";
 		texrow.newline();
 
 		lyxerr[Debug::LATEX] << "makeLaTeXFile...done" << endl;
@@ -2645,11 +2661,6 @@ void Buffer::makeLaTeXFile(string const & fname,
 	// in math_write.C) so we must set it to a non-zero
 	// value when we leave otherwise we save incorrect .lyx files.
 	tex_code_break_column = lyxrc.ascii_linelen;
-
-	ofs.close();
-	if (ofs.fail()) {
-		lyxerr << "File was not closed properly." << endl;
-	}
 
 	lyxerr[Debug::INFO] << "Finished making latex file." << endl;
 	lyxerr[Debug::INFO] << "Row count was " << texrow.rows()-1 << "." << endl;
