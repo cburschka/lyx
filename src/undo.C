@@ -23,6 +23,8 @@
 #include "lyxtext.h"
 #include "paragraph.h"
 
+#include "insets/updatableinset.h" // for dynamic_cast<UpdatableInset *>
+
 using lyx::paroffset_type;
 
 
@@ -188,22 +190,24 @@ bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 		<< " inset: " << pit.inset()
 		<< " index: " << undo.index
 		<< std::endl;
-	InsetOld * inset = pit.inset();
-	if (inset) {
-		// magic needed to cope with inset locking
-		inset->edit(bv, undo.index);
-	}
 
 	// set cursor again to force the position to be the right one
-	text->setCursorIntern(undo.cursor_par, undo.cursor_pos);
+	text->cursor.par(undo.cursor_par);
+	text->cursor.pos(undo.cursor_pos);
 
 	// clear any selection
 	text->clearSelection();
 	text->selection.cursor = text->cursor;
 	text->updateCounters();
 
-	// rebreak the entire document
+	// rebreak the entire lyxtext
 	bv->text->fullRebreak();
+
+	InsetOld * inset = pit.inset();
+	if (inset) {
+		// magic needed to cope with inset locking
+		bv->lockInset(dynamic_cast<UpdatableInset *>(inset));
+	}
 
 	finishUndo();
 	return true;
