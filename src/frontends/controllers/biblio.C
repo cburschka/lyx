@@ -355,7 +355,8 @@ string const parseBibTeX(string data, string const & findkey)
 		}
 		dummy = token(data, '\n', ++Entries);
 	}
-	data = data_;
+	// replace double commas with "" for easy scanning
+	data = subst(data_, ",,", "\"\"");
 
 	// unlikely!
 	if (data.empty())
@@ -370,9 +371,12 @@ string const parseBibTeX(string data, string const & findkey)
 	while (!contains(lowercase(dummy), findkey) && !dummy.empty())
 		dummy = token(data, ',', ++Entries);
 	if (dummy.empty())
-		return string();			// no such keyword
-	// we are not sure, if we get all, because "key= "blah, blah" is allowed.
-	// therefore we read all until the next "=" character, which follows a
+		// no such keyword
+		return string();
+
+	// we are not sure, if we get all, because "key= "blah, blah" is
+	// allowed.
+	// Therefore we read all until the next "=" character, which follows a
 	// new keyword
 	keyvalue = dummy;
 	dummy = token(data, ',', ++Entries);
@@ -380,10 +384,17 @@ string const parseBibTeX(string data, string const & findkey)
 		keyvalue += (',' + dummy);
 		dummy = token(data, ',', ++Entries);
 	}
-	data = keyvalue;		// now we have the important line
-	data = strip(data, ' ');		// all spaces
-	if (!contains(data, '{'))	// no opening '{'
-		data = strip(data, '}');// maybe there is a main closing '}'
+
+	// replace double "" with originals ,, (two commas)
+	// leaving us with the all-important line
+	data = subst(keyvalue, "\"\"", ",,");
+
+	// Clean-up.
+	// 1. Spaces
+	data = strip(data, ' ');
+	// 2. if there is no opening '{' then a closing '{' is probably cruft.
+	if (!contains(data, '{'))
+		data = strip(data, '}');
 	// happens, when last keyword
 	string::size_type const idx =
 		!data.empty() ? data.find('=') : string::npos;

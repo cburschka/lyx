@@ -1,3 +1,8 @@
+2002-04-16  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* insetbib.C (getKeys): strip leading '\t's from the line too.
+	With thanks to Henry Pfister <hpfister@ucsd.edu>.
+
 2002-04-12  Juergen Vigna  <jug@sad.it>
 
 	* insettext.h: added cix() helper function and use it where appropriate

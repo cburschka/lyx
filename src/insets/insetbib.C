@@ -264,6 +264,7 @@ vector<pair<string, string> > const InsetBibtex::getKeys(Buffer const * buffer) 
 				    && !prefixIs(tmp, "@preamble")) {
 					linebuf = split(linebuf, tmp, ',');
 					tmp = frontStrip(tmp);
+					tmp = frontStrip(tmp,'\t');
 					if (!tmp.empty()) {
 						keys.push_back(pair<string,string>(tmp,string()));
 					}

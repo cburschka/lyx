@@ -1,3 +1,8 @@
+2002-04-15  Herbert Voss  <voss@perce.de>
+
+	* biblio.[Ch] (parseBibTeX): fix bug while scanning bibtexentries
+	with something like ,,...blah...`` (two commas)
+
 2002-04-14  Herbert Voss  <voss@perce.de>
 
 	* helper_funcs.[Ch]: move the getVectorFromString and the vice versa
