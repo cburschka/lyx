@@ -1,5 +1,7 @@
 2002-10-24  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* lyxlength.C (inPixels): Fix returned value.
+
 	* paragraph.C (TeXOnePar): Fix bug with language changes in nested
 	environment.
 
