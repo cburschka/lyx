@@ -1479,6 +1479,7 @@ void InsetTabular::fitInsetCursor(BufferView * bv) const
 
 	int const asc = lyxfont::maxAscent(font);
 	int const desc = lyxfont::maxDescent(font);
+	resetPos(bv);
 	if (bv->fitLockedInsetCursor(cursor_.x(), cursor_.y(), asc, desc))
 		need_update = FULL;
 }
