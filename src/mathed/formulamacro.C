@@ -47,10 +47,10 @@ InsetFormulaMacro::InsetFormulaMacro()
 }
 
 
-InsetFormulaMacro::InsetFormulaMacro(string name, int nargs)
+InsetFormulaMacro::InsetFormulaMacro(string const & name, int nargs)
 {
 	setInsetName(name);
-	MathMacroTable::create(name, nargs, string());
+	MathMacroTable::create(name, nargs);
 }
 
 

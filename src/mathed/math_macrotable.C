@@ -47,10 +47,17 @@ MathAtom & MathMacroTable::provide(string const & name)
 }
 
 
+void MathMacroTable::create(string const & name, int na)
+{
+	macro_table[name] = MathAtom(new MathMacroTemplate(name, na));
+}
+
+
 void MathMacroTable::create(string const & name, int na, string const & text)
 {
 	MathAtom t(new MathMacroTemplate(name, na));
-	mathed_parse_cell(t->cell(0), text);
+	mathed_parse_cell(t->cell(0), name);
+	mathed_parse_cell(t->cell(1), text);
 	macro_table[name] = t;
 }
 

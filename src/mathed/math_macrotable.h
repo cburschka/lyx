@@ -16,7 +16,7 @@ class MathArray;
 struct MathMacroTable {
 public:
 	///
-	static void create(string const &, int, string const &);
+	static void create(string const &, int);
 	///
 	static void create(string const &, int, MathArray const &, MathArray const &);
 	///
@@ -25,13 +25,15 @@ public:
 	static bool has(string const &);
 	///
 	static void builtinMacros();
+	///
+	static void dump();
 private:
+	/// create internal macros (like \longrightarrow...)
+	static void create(string const &, int, string const &);
+
 	///
 	typedef std::map<string, MathAtom> table_type;
 	//
 	static table_type macro_table;
-public:
-	///
-	static void dump();
 };
 #endif
