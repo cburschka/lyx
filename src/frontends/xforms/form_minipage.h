@@ -27,6 +27,7 @@ struct FD_form_minipage {
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_restore;
+	FL_OBJECT *text_warning;
 };
 
 #endif /* FD_form_minipage_h_ */

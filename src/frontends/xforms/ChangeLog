@@ -8,6 +8,13 @@
 	* xforms-helpers.h: added two choice const for the LyXLength
 	one with all and one only with length which have a unit.
 
+2002-01-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* forms/form_minipage.fd: add text_warning field.
+
+	*FormMinipage.[Ch]: added input filters and warnings
+	(ButtonPolicy::SMInput FormMinipage::input)
+
 2002-01-28  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormAboutlyx.[Ch]: Removed redundant form() method and

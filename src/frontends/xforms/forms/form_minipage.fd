@@ -10,7 +10,7 @@ Unit of measure: FL_COORD_PIXEL
 Name: form_minipage
 Width: 430
 Height: 170
-Number of Objects: 14
+Number of Objects: 15
 
 --------------------
 class: FL_BOX
@@ -105,7 +105,7 @@ argument: 0
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 10 10 0
+box: 0 0 0 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -263,6 +263,24 @@ gravity: FL_NoGravity FL_NoGravity
 name: button_restore
 callback: C_FormBaseRestoreCB
 argument: 0
+
+--------------------
+class: FL_TEXT
+type: NORMAL_TEXT
+box: 20 90 210 30
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: text_warning
+callback: 
+argument: 
 
 ==============================
 create_the_forms

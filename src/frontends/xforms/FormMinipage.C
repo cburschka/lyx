@@ -90,3 +90,28 @@ void FormMinipage::update()
 	break;
     }
 }
+
+ButtonPolicy::SMInput FormMinipage::input(FL_OBJECT * ob, long)
+{
+	ButtonPolicy::SMInput action = ButtonPolicy::SMI_NOOP;
+
+	// disallow senseless data
+	// warnings if input is senseless
+	//
+	string input = fl_get_input(dialog_->input_width);
+	bool invalid = false;
+
+	if (ob == dialog_->input_width) {
+		invalid = !isValidLength(input) && !isStrDbl(input);
+		if (invalid) {
+			fl_set_object_label(dialog_->text_warning,
+				_("Warning: Invalid Length!"));
+			fl_show_object(dialog_->text_warning);
+			action = ButtonPolicy::SMI_INVALID;
+		} else {
+			fl_hide_object(dialog_->text_warning);
+			action = ButtonPolicy::SMI_VALID;
+		}
+	}
+	return action;
+}

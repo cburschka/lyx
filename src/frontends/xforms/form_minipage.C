@@ -89,6 +89,8 @@ FD_form_minipage * FormMinipage::build_minipage()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseRestoreCB, 0);
+  fdui->text_warning = obj = fl_add_text(FL_NORMAL_TEXT, 20, 90, 210, 30, "");
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
   fl_end_form();
 
   fdui->form->fdui = fdui;

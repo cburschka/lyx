@@ -339,14 +339,18 @@ string const LaTeXFeatures::getTClassPreamble() const
 	// the text class specific preamble 
 	LyXTextClass const & tclass = textclasslist.TextClass(params.textclass);
 	ostringstream tcpreamble;
-	
+
 	tcpreamble << tclass.preamble();
 
 	for (layout_type i = 0; i < tclass.numLayouts(); ++i) {
 		if (layout[i]) {
-			tcpreamble  << tclass[i].preamble();
+			tcpreamble << tclass[i].preamble();
 		}
 	}
+
+	// DEC's implementation of ostringstream has a bug which can be
+	// overcome with this forcing.
+	tcpreamble.seekp(std::ios::beg);
 
 	return tcpreamble.str().c_str();
 }	
