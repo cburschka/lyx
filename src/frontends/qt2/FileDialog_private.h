@@ -19,23 +19,24 @@
 
 #include <qfiledialog.h>
 
-class LyXView;
+class QToolButton;
 
 class LyXFileDialog : public QFileDialog
 {
-  Q_OBJECT
-
+	Q_OBJECT
 public:
-	LyXFileDialog(LyXView * lv, kb_action a, string const & p, string const & m, string const & t);
-
-	friend class FileDialog;
+	LyXFileDialog(string const & p, string const & m, string const & t,
+		FileDialog::Button const & b1, FileDialog::Button const & b2);
 
 public slots:
-	void done(int);
-
+	void buttonClicked();
+ 
 private:
-	LyXView * lv_;
-	kb_action action_;
+	QToolButton * b1_;
+	string b1_dir_;
+ 
+	QToolButton * b2_;
+	string b2_dir_;
 };
 
 #endif // FILEDIALOG_PRIVATE_H

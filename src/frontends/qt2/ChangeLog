@@ -1,5 +1,18 @@
 2002-08-25  John Levon  <levon@movementarian.org>
 
+	* FileDialog.C:
+	* FileDialog_private.h:
+	* FileDialog_private.C: disable non-sync code due
+	  to Qt bug. Add support for buttons
+ 
+2002-08-25  John Levon  <levon@movementarian.org>
+
+	* QLPopupMenu.C: implement optional() support
+ 
+	* TODO: update
+ 
+2002-08-25  John Levon  <levon@movementarian.org>
+
 	* Makefile.am:
 	* Menubar_pimpl.h:
 	* Menubar_pimpl.C:

@@ -92,9 +92,11 @@ void QLPopupMenu::showing()
 			int id(createMenu(this, m, owner_));
 			setItemEnabled(id, !disabled(m->submenuname()));
 		} else {
-			insertItem(getLabel(*m).c_str(), m->action());
 			FuncStatus const status =
 				owner_->view()->getLyXFunc().getStatus(m->action());
+			if (status.disabled() && m->optional())
+				continue;
+			insertItem(getLabel(*m).c_str(), m->action());
 			setItemEnabled(m->action(), !status.disabled());
 			setItemChecked(m->action(), status.onoff(true));
 		}

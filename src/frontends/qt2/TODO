@@ -4,25 +4,14 @@ is incomplete.
 
 Those with asterisks are what I perceive as being "big jobs"
 
-FileDialog
-
-	- add buttons for Documents, Templates, etc. to the file dialog toolbar
-	- work around Qt crash bug with double click
- 
 lyx_gui (qt)
 
 	- move out lyxserver
-	- do dpi
+	- do dpi (cannot easily fix)
  
 Menubar_pimpl
 
-	- fix disabling submenu labels when appropriate
-	- implement dynamic menus (may need serious backend changes) (*)(*)
-		- dynamic last files
-		- import/export/view/update
-		- navigate
 	- implement openByName
-	- why is note disabled, index enabled with no doc etc. ? 
 
 QAbout
 
@@ -40,7 +29,7 @@ QContentPane
  
 QDocument
 
-	- implement me. Need MVC (*)
+	- implement me. Need MVC (Edwin is on this)
 
 qfont_loader
 
@@ -56,16 +45,12 @@ QForks
  
 QGraphics
 	
-	- UI cleanups and fixes
+	- remaining UI cleanups and fixes
  
 QInclude
 
 	- check no load stuff works ?
 
-qlkey
-
-	- finish off the lists
- 
 QLImage
 
 	- get jpeg etc. to work
@@ -79,7 +64,6 @@ QLPainter
 
 QLyXKeySym
 
-	- isOK() - meaningful or not ?
 	- getISOEncoded - get this to work (*)
 	 
 QPreferences
