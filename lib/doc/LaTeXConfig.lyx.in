@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 218
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass article
 \language english
 \inputencoding default
@@ -11,6 +11,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 2
 \tocdepth 3
@@ -61,7 +63,9 @@ Found
 
  item is no) and you need its functionality, you can grab it at your nearest
  CTAN ftp site
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 The participating hosts in the Comprehensive TeX Archive Network are:
@@ -78,7 +82,8 @@ ftp://ftp.tex.ac.uk/tex-archive
 
 There are also a zillion mirror sites which are listed at the three primary
  sites.
-\end_float 
+\end_inset 
+
  at the location indicated in the 
 \begin_inset Quotes eld
 \end_inset 
@@ -118,7 +123,9 @@ ptions\SpecialChar \menuseparator
 R
 \bar default 
 econfigure
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 or, if you want to change the system-wide settings, issue the command 
@@ -130,7 +137,8 @@ or, if you want to change the system-wide settings, issue the command
 /usr/local/lib/lyx/
 \family default 
 )
-\end_float 
+\end_inset 
+
  and reload this file to see if the new package was recognized.
  If the 
 \begin_inset Quotes eld
@@ -171,12 +179,15 @@ The LaTeX version that LyX will use is:
  
 \family typewriter 
 1995/12/01
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 In case it is not clear to you, this number is the date at which the version
  has been released.
-\end_float 
+\end_inset 
+
 .
  In fact, earlier versions may work for many things, but will certainly
  fail in some cases.
@@ -844,6 +855,37 @@ ieeetran.cls
  to a newer version which has IEEE in capitals.
 \layout Subsection
 
+kluwer
+\layout Description
+
+Found: @chk_kluwer@
+\layout Description
+
+CTAN: N/A (available from the Kluwer Academic Publishers site 
+\begin_inset LatexCommand \url{http://www.wkap.nl/kaphtml.htm/STYLEFILES}
+
+\end_inset 
+
+).
+\layout Description
+
+Notes: The document class 
+\family sans 
+kluwer
+\family default 
+ can be used to write articles for submission to the journals published
+ by Kluwer Academic Publishers, such as 
+\emph on 
+Astrophysics and Space Science, Solar Physics
+\emph default 
+ and many others (see a full list at 
+\begin_inset LatexCommand \url{http://www.wkap.nl/jrnllist.htm/JRNLHOME}
+
+\end_inset 
+
+).
+\layout Subsection
+
 latex8
 \layout Description
 
@@ -1413,27 +1455,22 @@ ghostview
 \end_inset 
 
 
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 Here, a value of 
-\latex no_latex 
-
 \begin_inset Quotes eld
 \end_inset 
 
-
-\latex default 
 default
-\latex no_latex 
-
 \begin_inset Quotes erd
 \end_inset 
 
-
-\latex default 
  means that your LaTeX installation provides a sensible value for this parameter.
-\end_float 
+\end_inset 
+
 .
 \layout Subsection
 
@@ -1472,7 +1509,8 @@ Notes: The package
 \family sans 
 natbib
 \family default 
- is needed by LyX to produce a flexible interface to most of the available bibliographic styles.
+ is needed by LyX to produce a flexible interface to most of the available
+ bibliographic styles.
 \layout Subsection
 
 prettyref
