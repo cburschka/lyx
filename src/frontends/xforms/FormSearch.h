@@ -31,8 +31,8 @@ private:
 	virtual void apply() {}
 	/// Build the dialog
 	virtual void build();
-	/// not needed.
-	virtual void update() {}
+	/// update the dialog
+	virtual void update();
 
 	/// Filter the inputs
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);

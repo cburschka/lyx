@@ -1,8 +1,14 @@
+2002-06-18  John Levon  <moz@compsoc.man.ac.uk>
+
+	* FormSearch.h:
+ 	* FormSearch.C: focus and select search string on open (bug #77)
+
 2002-06-16  Lars Gullik Bjønnes  <larsbj@birdstep.com>
-
+ 
 	* changes to let the function setup happen in frontends
-	* guiapi.C: new file
 
+	* guiapi.C: new file
+ 
 2002-06-16    <alstrup@diku.dk>
 
 	* xscreen.C (draw): After drawing, we wait for X with XSync..
