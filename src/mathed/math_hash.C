@@ -70,6 +70,7 @@ key_type wordlist_array[] =
 	{"end",  LM_TK_END, 0},
 	{"exp",  LM_TK_FUNC, 0},
 	{"frac",  LM_TK_FRAC, 0},
+	{"frak",  LM_TK_FONT, LM_TC_EUFRAK},
 	{"gcd",  LM_TK_FUNCLIM, 0},
 	{"grave",  LM_TK_DECORATION, 0},
 	{"hat",  LM_TK_DECORATION, 0},
