@@ -27,6 +27,7 @@
 #include "rowpainter.h"
 #include "insets/updatableinset.h"
 #include "mathed/formulabase.h"
+#include "lyx_gui.h"
 
 // Splash screen-specific stuff
 #include "lyxfont.h"
@@ -131,6 +132,10 @@ LyXScreen::~LyXScreen()
 
 void LyXScreen::showCursor(BufferView & bv)
 {
+	// this is needed to make sure we copy back the right
+	// pixmap on the hide for the Qt frontend
+	lyx_gui::sync_events();
+
 	if (cursor_visible_)
 		return;
 
@@ -189,9 +194,8 @@ void LyXScreen::showCursor(BufferView & bv)
 	if (y < 0 || y + h > workarea().workHeight())
 		return;
 
-	showCursor(x, y, h, shape);
-
 	cursor_visible_ = true;
+	showCursor(x, y, h, shape);
 }
 
 
@@ -200,8 +204,8 @@ void LyXScreen::hideCursor()
 	if (!cursor_visible_)
 		return;
 
-	removeCursor();
 	cursor_visible_ = false;
+	removeCursor();
 }
 
 

@@ -325,6 +325,12 @@ void exit()
 }
 
 
+void sync_events()
+{
+	// FIXME
+}
+
+
 FuncStatus getStatus(FuncRequest const & /*ev*/)
 {
 	// Nothing interesting to do here

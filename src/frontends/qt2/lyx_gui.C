@@ -177,6 +177,12 @@ void start(string const & batch, vector<string> const & files)
 }
 
 
+void sync_events()
+{
+	qApp->processEvents();
+}
+
+
 void exit()
 {
 	delete lyxserver;

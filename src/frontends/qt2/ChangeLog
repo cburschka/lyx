@@ -1,5 +1,10 @@
 2003-06-03  John Levon  <levon@movementarian.org>
 
+	* lyx_gui.C: add sync_events()
+	* qscreen.C: remove previous hack for bug 818
+
+2003-06-03  John Levon  <levon@movementarian.org>
+
 	* qscreen.C: paint before saving the cursor pixmap
 	(bug 818)
 

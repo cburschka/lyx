@@ -129,17 +129,12 @@ void QScreen::showCursor(int x, int y, int h, Cursor_Shape shape)
 		nocursor_pixmap_.reset(new QPixmap(cursor_w_, cursor_h_));
 	}
 
-	// save old area
-	bitBlt(nocursor_pixmap_.get(), 0, 0, owner_.getPixmap(),
-		cursor_x_, cursor_y_, cursor_w_, cursor_h_);
-
 	if (!qApp->focusWidget())
 		return;
 
-	// We could have pending paints. If we don't process them
-	// before, we end up with pixel dirt when the cursor is
-	// in insets
-	qApp->processEvents();
+	// save old area
+	bitBlt(nocursor_pixmap_.get(), 0, 0, owner_.getPixmap(),
+		cursor_x_, cursor_y_, cursor_w_, cursor_h_);
 
 	Painter & pain(owner_.getPainter());
 	pain.start();

@@ -54,6 +54,11 @@ void parse_lyxrc();
 void start(string const & batch, std::vector<string> const & files);
 
 /**
+ * Synchronise all pending events.
+ */
+void sync_events();
+
+/**
  * quit running LyX
  */
 void exit();
