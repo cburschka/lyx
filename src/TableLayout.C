@@ -213,8 +213,13 @@ bool UpdateLayoutTable(int flag)
 	    fl_set_object_lcol(fd_form_table_options->radio_lt_newpage,
 			       FL_INACTIVE);
         }
-        fl_set_button(fd_form_table_options->radio_rotate_table,table->RotateTable());
+        fl_set_button(fd_form_table_options->radio_rotate_table,
+		      table->RotateTable());
+	fl_set_focus_object(fd_form_table_options->form_table_options,
+			    fd_form_table_options->button_table_delete);
     } else if (fd_form_table_options->form_table_options->visible) {
+	fl_set_focus_object(fd_form_table_options->form_table_options,
+			    fd_form_table_options->button_table_delete);
         fl_hide_form(fd_form_table_options->form_table_options);
     }
     return update;
@@ -428,21 +433,27 @@ void TableOptionsCB(FL_OBJECT *ob, long)
             current_view->currentBuffer()->text->TableFeatures(num);
         current_view->currentBuffer()->update(1);
     }
-    if (num == LyXTable::DELETE_TABLE)
+    if (num == LyXTable::DELETE_TABLE) {
+	fl_set_focus_object(fd_form_table_options->form_table_options,
+			    fd_form_table_options->button_table_delete);
         fl_hide_form(fd_form_table_options->form_table_options);
-    else
+    } else
         UpdateLayoutTable(true);
     return;
 }
 
 void TableOptCloseCB(FL_OBJECT *, long)
 {
+    fl_set_focus_object(fd_form_table_options->form_table_options,
+			fd_form_table_options->button_table_delete);
     fl_hide_form(fd_form_table_options->form_table_options);
     return;
 }
 
 void TableSpeCloseCB(FL_OBJECT *, long)
 {
+    fl_set_focus_object(fd_form_table_options->form_table_options,
+			fd_form_table_options->button_table_delete);
     fl_hide_form(fd_form_table_extra->form_table_extra);
     return;
 }

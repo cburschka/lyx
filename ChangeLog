@@ -1,3 +1,16 @@
+1999-10-19  Juergen Vigna  <jug@sad.it>
+
+	* src/support/lyxstring.C (lyxstring): we permit to have a null
+	pointer as assignment value and just don't assign it.
+
+	* src/vspace.C (nextToken): corrected this function substituting
+	find_first(_not)_of with find_last_of.
+
+	* src/TableLayout.C (UpdateLayoutTable) (TableOptionsCB)
+ 		(TableOptCloseCB) (TableSpeCloseCB):
+	inserted fl_set_focus call for problem with fl_hide_form() in
+ 	xforms-0.89.
+
 1999-10-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyx_cb.C (LayoutsCB): fix bug where int was added to a

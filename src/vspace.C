@@ -92,8 +92,9 @@ static char nextToken (string & data)
 		string::size_type i;
 
 		// I really mean assignment ("=") below, not equality!
-		if ((i = data.find_first_not_of("0123456789.")) != string::npos) {
+		if ((i = data.find_last_of("0123456789.")) != string::npos) {
 			if (number_index > 3) return 'E';  // Error
+			++i;
                         string buffer = data.substr(0, i);
 			if (sscanf (buffer.c_str(),
 				    "%f", &number[number_index]) == 1) {
@@ -102,9 +103,10 @@ static char nextToken (string & data)
 				return 'n';
 			} else 
 				return 'E';  // Error
-		} else if (( i = data
-			     .find_first_of("abcdefghijklmnopqrstuvwxyz")) != string::npos) {
+		} else if ((i=data.find_last_of("abcdefghijklmnopqrstuvwxyz"))
+			   != string::npos) {
 			if (unit_index > 3) return 'E';  // Error
+			++i;
 			string buffer = data.substr(0, i);
 			unit[unit_index] = unitFromString (buffer);
 			if (unit[unit_index] != LyXLength::UNIT_NONE) {
