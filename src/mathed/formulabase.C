@@ -25,7 +25,6 @@
 #include "formula.h"
 #include "formulamacro.h"
 #include "commandtags.h"
-#include "math_cursor.h"
 #include "BufferView.h"
 #include "lyxtext.h"
 #include "lyxfunc.h"
@@ -37,19 +36,18 @@
 #include "LyXView.h"
 #include "Painter.h"
 #include "font.h"
+#include "math_cursor.h"
 #include "math_arrayinset.h"
 #include "math_spaceinset.h"
 #include "math_macrotable.h"
 #include "math_factory.h"
-#include "support/lyxlib.h"
 #include "undo_funcs.h"
 
 using std::endl;
 using std::ostream;
 using std::vector;
 
-extern char const * latex_mathenv[];
-MathCursor        * mathcursor = 0;
+MathCursor * mathcursor = 0;
 
 
 namespace {
