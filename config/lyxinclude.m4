@@ -46,6 +46,7 @@ AC_ARG_WITH(version-suffix,
 AC_MSG_RESULT([$lyxname])
 ])
 
+
 dnl Usage: LYX_ERROR(message)  Displays the warning "message" and sets the
 dnl flag lyx_error to yes.
 AC_DEFUN(LYX_ERROR,[
@@ -346,51 +347,6 @@ if test $lyx_cv_modern_streams = yes ; then
 fi])
 
 
-dnl Usage: LYX_CXX_STL_STRING : checks whether the C++ compiler
-dnl   has a std::string that is usable for LyX. LyX does not require this
-dnl   std::string to be standard.
-AC_DEFUN(LYX_CXX_STL_STRING,[
-    AC_REQUIRE([AC_PROG_CXX])
-    AC_MSG_CHECKING(whether the included std::string should be used)
-    AC_ARG_WITH(included-string,
-       [  --with-included-string  use LyX string class instead of STL string],
-       [lyx_cv_with_included_string=$withval
-	AC_MSG_RESULT([$with_included_string])],
-       [AC_CACHE_CHECK([],lyx_cv_with_included_string,
-	[AC_TRY_COMPILE([
-	    #include <string>
-	    using std::string;
-	],[
-	    // LyX has reduced its requirements on the basic_string
-	    // implementation so that the basic_string supplied
-	    // with gcc is usable. In particular this means that
-	    // lyx does not use std::string::clear and not the
-	    // strncmp version of std::string::compare. This is mainly
-	    // done so that LyX can use precompiled C++ libraries that
-	    // already uses the systems basic_string, e.g. gtk--
-	    string a("hello there");
-	    a.erase();
-	    a = "hey";
-	    //char s[] = "y";
-	    //int t = a.compare(a.length() - 1, 1, s);
-	    a.erase();
-	],[
-	    lyx_cv_with_included_string=no
-	],[
-	    lyx_cv_with_included_string=yes
-	])
-	])
-    ])
-    if test x$lyx_cv_with_included_string = xyes ; then
-	AC_DEFINE(USE_INCLUDED_STRING, 1,
-	    [Define to use the lyxstring class bundled with LyX.])
-	    lyx_flags="$lyx_flags included-string"
-    fi
-    AM_CONDITIONAL(USE_LYXSTRING, test x$lyx_cv_with_included_string = xyes)
-dnl    AC_MSG_RESULT([$with_included_string])
-])
-
-
 dnl Usage: LYX_USE_INCLUDED_BOOST : select if the included boost should
 dnl        be used.
 AC_DEFUN(LYX_USE_INCLUDED_BOOST,[
@@ -400,42 +356,6 @@ AC_DEFUN(LYX_USE_INCLUDED_BOOST,[
 		AC_MSG_RESULT([$with_included_boost])],
 	    [lyx_cv_with_included_boost=yes])
 	AM_CONDITIONAL(USE_INCLUDED_BOOST, test x$lyx_cv_with_included_boost = xyes)
-])
-
-dnl Usage: LYX_CXX_GOOD_STD_STRING : checks whether the C++ compiler
-dnl   has a std::string that is close to the standard. So close that
-dnl   methods not found in "unstandard" std::strings are present here.
-AC_DEFUN(LYX_CXX_GOOD_STD_STRING,[
-    AC_REQUIRE([AC_PROG_CXX])
-    AC_CACHE_CHECK([whether the systems std::string is really good],
-    [lyx_cv_std_string_good],
-    [AC_TRY_COMPILE([
-	    #include <string>
-	    using std::string;
-	],[
-	    // From a std::string that is supposed to be close to the
-	    // standard we require at least three things:
-	    // - clear() and erase()
-	    // - the strncmp of compare()
-	    // - push_back()
-	    string a("hello there");
-	    a.erase();
-	    a = "hey";
-	    char s[] = "y";
-	    int t = a.compare(a.length() - 1, 1, s);
-	    a.push_back('g');
-	    a.clear();
-	],[
-	    lyx_cv_std_string_good=yes
-	],[
-	    lyx_cv_std_string_good=no
-
-	])
-    ])
-    if test x$lyx_cv_std_string_good = xyes ; then
-	AC_DEFINE(STD_STRING_IS_GOOD, 1,
-	    [Define if the systems std::string is really good.])
-    fi
 ])
 
 
@@ -486,6 +406,7 @@ if test $lyx_cv_cxx_cheaders = no ; then
   LYX_ADD_INC_DIR(lyx_cppflags,\$(top_srcdir)/src/cheaders)
 fi])
 
+
 dnl Usage: LYX_CXX_GLOBAL_CSTD: checks whether C library functions
 dnl   are already in the global namespace
 AC_DEFUN(LYX_CXX_GLOBAL_CSTD,[
@@ -502,6 +423,7 @@ AC_DEFUN(LYX_CXX_GLOBAL_CSTD,[
 	[Define if your C++ compiler puts C library functions in the global namespace])
     fi
 ])
+
 
 dnl Usage: LYX_WITH_DIR(dir-name,desc,dir-var-name,default-value,
 dnl                       [default-yes-value])
