@@ -18,6 +18,7 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
+#include "outputparams.h"
 
 #include "frontends/LyXView.h"
 
@@ -110,9 +111,11 @@ int InsetRef::linuxdoc(Buffer const &, ostream & os,
 
 
 int InsetRef::docbook(Buffer const &, ostream & os,
-		      OutputParams const &) const
+		      OutputParams const & runparams) const
 {
-	if (getOptions().empty()) {
+	if (getOptions().empty() && runparams.flavor == OutputParams::XML) {
+		os << "<xref linkend=\"" << getContents() << "\" />";
+	} else if (getOptions().empty()) {
 		os << "<xref linkend=\"" << getContents() << "\">";
 	} else {
 		os << "<link linkend=\"" << getContents()

@@ -1,3 +1,8 @@
+2004-09-24  Andreas Vox  <vox@isp.uni-luebeck.de>
+
+	* insetref.C (docbook): fixing problem where Docbook XML output
+        had unclosed <xref ... >
+
 2004-08-16  José Matos  <jamatos@lyx.org>
 
 	* insethfill.C (write):
