@@ -167,7 +167,7 @@ for frontend in $FRONTENDS ; do
   case "$frontend" in
     xforms)
 	  XFORMS_DO_IT_ALL
-	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-xforms"
+	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-xforms\$(EXEEXT)"
 	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS xforms"
 	  RPM_FRONTEND="xforms"
 	  RPM_FRONTEND_DEPS='libforms >= 1.0'
@@ -190,7 +190,7 @@ for frontend in $FRONTENDS ; do
   dnl	;;
     qt)
 	  QT_DO_IT_ALL
-	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-qt"
+	  FRONTENDS_PROGS="$FRONTENDS_PROGS lyx-qt\$(EXEEXT)"
 	  FRONTENDS_SUBDIRS="$FRONTENDS_SUBDIRS qt2"
 	  RPM_FRONTEND="qt"
 	  RPM_FRONTEND_DEPS='qt >= 2.2.1'

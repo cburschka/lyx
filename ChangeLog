@@ -1,3 +1,7 @@
+2003-08-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.ac: add $(EXEEXT) to program names in FRONTEND_PROGS
+
 2003-08-02  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* configure.ac: only configure the frontends that have been
