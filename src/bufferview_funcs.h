@@ -86,7 +86,8 @@ extern string const currentState(BufferView *);
 ///
 extern void toggleAndShow(BufferView *, LyXFont const &,
 			  bool toggleall = true);
-
+/// replace selection with insertion
+extern void replaceSelection(LyXText * lt);
 }; // namespace bv_funcs
 
 #endif

@@ -414,4 +414,15 @@ void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 	}
 }
 
+
+// deletes a selection during an insertion
+void replaceSelection(LyXText * lt)
+{
+	if (lt->selection.set()) {
+		lt->update();
+		lt->cutSelection(true, false);
+		lt->update();
+	}
+}
+
 }; // namespace bv_funcs

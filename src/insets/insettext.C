@@ -14,6 +14,7 @@
 
 #include "buffer.h"
 #include "BufferView.h"
+#include "bufferview_funcs.h"
 #include "CutAndPaste.h"
 #include "debug.h"
 #include "dimension.h"
@@ -71,6 +72,7 @@ using std::pair;
 using std::for_each;
 
 using namespace lyx::support;
+using namespace bv_funcs;
 
 using lyx::pos_type;
 using lyx::textclass_type;
@@ -1151,6 +1153,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			}
 		}
 
+		replaceSelection(bv->getLyXText());
 		size_t sel_index = 0;
 		string const & arg = cmd.argument;
 		if (isStrUnsignedInt(arg)) {
@@ -1171,6 +1174,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			result = DISPATCHED;
 			break;
 		}
+		replaceSelection(bv->getLyXText());
 		text_.breakParagraph(paragraphs, 0);
 		updwhat = CURSOR | FULL;
 		updflag = true;
@@ -1181,6 +1185,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			result = DISPATCHED;
 			break;
 		}
+		replaceSelection(bv->getLyXText());
 		text_.breakParagraph(paragraphs, 1);
 		updwhat = CURSOR | FULL;
 		updflag = true;
@@ -1192,6 +1197,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			break;
 		}
 
+		replaceSelection(bv->getLyXText());
 		text_.insertInset(new InsetNewline);
 		updwhat = CURSOR | CURSOR_PAR;
 		updflag = true;

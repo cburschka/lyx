@@ -20,6 +20,7 @@
 #include "debug.h"
 #include "bufferparams.h"
 #include "buffer.h"
+#include "bufferview_funcs.h"
 #include "ParagraphParameters.h"
 #include "gettext.h"
 #include "factory.h"
@@ -44,6 +45,7 @@
 #include <clocale>
 
 using namespace lyx::support;
+using namespace bv_funcs;
 
 using std::endl;
 using std::find;
@@ -369,6 +371,7 @@ void specialChar(LyXText * lt, BufferView * bv, InsetSpecialChar::Kind kind)
 {
 	lt->update();
 	InsetSpecialChar * new_inset = new InsetSpecialChar(kind);
+	replaceSelection(lt);
 	if (!bv->insertInset(new_inset))
 		delete new_inset;
 	else
@@ -723,7 +726,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		if (cursor.pos() <= body)
 			break;
 
-		bv->beforeChange(this);
+		replaceSelection(bv->getLyXText());
 		insertInset(new InsetNewline);
 		update();
 		setCursor(cursor.par(), cursor.pos());
@@ -833,7 +836,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_BREAKPARAGRAPH:
-		bv->beforeChange(this);
+		replaceSelection(bv->getLyXText());
 		breakParagraph(bv->buffer()->paragraphs, 0);
 		update();
 		selection.cursor = cursor;
@@ -842,7 +845,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
-		bv->beforeChange(this);
+		replaceSelection(bv->getLyXText());
 		breakParagraph(bv->buffer()->paragraphs, 1);
 		update();
 		selection.cursor = cursor;
@@ -855,7 +858,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		// indentation and add a "defskip" at the top.
 		// Otherwise, do the same as LFUN_BREAKPARAGRAPH.
 		LyXCursor cur = cursor;
-		bv->beforeChange(this);
+		replaceSelection(bv->getLyXText());
 		if (cur.pos() == 0) {
 			if (cur.par()->params().spaceTop() == VSpace(VSpace::NONE)) {
 				setParagraph(
@@ -1028,10 +1031,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_PASTE: {
 		cmd.message(_("Paste"));
-		// clear the selection
-		bv->toggleSelection();
-		clearSelection();
-		update();
+		replaceSelection(bv->getLyXText());
 		size_t sel_index = 0;
 		string const & arg = cmd.argument;
 		if (isStrUnsignedInt(arg)) {
@@ -1200,6 +1200,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_QUOTE: {
+		replaceSelection(bv->getLyXText());
 		ParagraphList::iterator pit = cursor.par();
 		lyx::pos_type pos = cursor.pos();
 		char c;
@@ -1221,6 +1222,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_DATE_INSERT: {
+		replaceSelection(bv->getLyXText());
 		time_t now_time_t = time(NULL);
 		struct tm * now_tm = localtime(&now_time_t);
 		setlocale(LC_TIME, "");

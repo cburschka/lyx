@@ -1,4 +1,9 @@
 
+2003-07-14  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* insettext.C: use bufferview_funcs->replaceSelection()
+	to delete selections in some cases (bugs 441, 673, 702, 954).
+
 2003-07-14  André Pönitz  <poenitz@gmx.net>
 
 	* insettext.C (draw): use slimmed down rowpainter interface
