@@ -73,6 +73,9 @@ Paragraph::Paragraph()
 #ifndef NO_NEXT
 	next_ = 0;
 	previous_ = 0;
+#else
+	next_par_ = 0;
+	prev_par_ = 0;
 #endif
 	enumdepth = 0;
 	itemdepth = 0;
@@ -88,6 +91,9 @@ Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
 #ifndef NO_NEXT
 	next_     = 0;
 	previous_ = 0;
+#else
+	next_par_ = 0;
+	prev_par_ = 0;
 #endif
 	// this is because of the dummy layout of the paragraphs that
 	// follow footnotes

@@ -1,3 +1,7 @@
+2003-05-22  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* paragraph.C (Paragraph): initialize next_par_ and prev_par_
+
 2003-05-22  Angus Leeming  <leeming@lyx.org>
 
 	* latexrunparams.h: new file containing struct LatexRunParams.
