@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 218
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
 \textclass kluwer
 \language english
 \inputencoding default
@@ -7,11 +7,13 @@
 \graphics default
 \float_placement t
 \paperfontsize default
-\spacing single 
+\spacing single
 \papersize Default
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 4
 \tocdepth 0
@@ -26,17 +28,20 @@
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 begin{article}
 \layout Standard
 
-
-\latex latex 
-
 \backslash 
 begin{opening}
+\end_inset 
+
+
 \layout Title
 
 <Title of the article>
@@ -47,59 +52,95 @@ begin{opening}
 
 <First-1>.<Middle-1>.
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
  
 \backslash 
 surname{
-\latex default 
+\end_inset 
+
 <Surname-1>
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }
 \backslash 
 email{
-\latex default 
+\end_inset 
+
 <e-mail-1>
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }
-\latex default 
+\end_inset 
+
 ,
 \newline 
 <First-2>.<Middle-2>.
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
  
 \backslash 
 surname{
-\latex default 
+\end_inset 
+
 <Surname-2>
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }
 \backslash 
 email{
-\latex default 
+\end_inset 
+
 <e-mail-2>
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }
-\latex default 
+\end_inset 
+
  and
 \newline 
 <First-3>.<Middle-3>.
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
  
 \backslash 
 surname{
-\latex default 
+\end_inset 
+
 <Surname-3>
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }
 \backslash 
 email{
-\latex default 
+\end_inset 
+
 <e-mail-3>
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }
-\latex default 
+\end_inset 
+
 .
 \layout Address
 
@@ -119,10 +160,16 @@ email{
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{opening}
+\end_inset 
+
+
 \layout Section
 
 Introduction
@@ -188,8 +235,14 @@ volume
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 end{article}
+\end_inset 
+
+
 \the_end

@@ -1,16 +1,17 @@
-#This file was created by <rae> Wed Sep 16 09:48:15 1998
-#LyX 0.12 (C) 1995-1998 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
 \textclass latex8
 \language english
 \inputencoding default
 \fontscheme default
 \graphics default
 \paperfontsize 10
-\spacing single 
+\spacing single
 \papersize Default
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 2
 \tocdepth 2
@@ -35,24 +36,37 @@ Dept.
 Institution 
 \newline 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 and
 \newline 
 
-\latex default 
+\end_inset 
+
 Second Author
 \newline 
 Dept.
  of Something
 \newline 
 Another Institution
-\layout LaTeX
+\layout Standard
+
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 
 \backslash 
 thispagestyle{empty}
+\end_inset 
+
+
 \layout Abstract
 
 A short description of about 60 words.

@@ -1,16 +1,18 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 218
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
 \textclass aa
 \language english
 \inputencoding auto
 \fontscheme times
 \graphics default
 \paperfontsize default
-\spacing single 
+\spacing single
 \papersize Default
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -31,55 +33,91 @@ your subtitle
 \layout Author
 
 Me
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 inst{
-\latex default 
+\end_inset 
+
 1
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }
 \backslash 
 and 
-\latex default 
+\end_inset 
+
 You
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 inst{
-\latex default 
+\end_inset 
+
 2
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }
+\end_inset 
+
+
 \layout Address
 
 Here 
 \newline 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 email{
-\latex default 
+\end_inset 
+
 myaddress
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }
 \newline 
 
 \backslash 
 and
-\latex default 
+\end_inset 
+
  There
 \newline 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 email{
-\latex default 
+\end_inset 
+
 youraddress
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }
+\end_inset 
+
+
 \layout Offprint
 
 Me
@@ -89,16 +127,26 @@ Received ; Accepted
 \layout Abstract
 
 Short abstract
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \newline 
 
 \backslash 
 keywords{
-\latex default 
+\end_inset 
+
 keywords
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }
+\end_inset 
+
+
 \layout Section
 
 Introduction

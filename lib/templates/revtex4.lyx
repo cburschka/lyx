@@ -1,7 +1,8 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 2.16
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
 \textclass revtex4
 \options aps,preprint
+\language english
 
 \layout Preprint
 
@@ -97,11 +98,15 @@ Special REVTeX macros must be typed in TeX mode, so typing
 openone
 \family default 
  in TeX mode yields 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 openone{}
-\latex default 
+\end_inset 
+
 .
  REVTeX macros can also be used freely in the math editor, so you can type
  

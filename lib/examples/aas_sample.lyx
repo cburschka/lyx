@@ -1,6 +1,5 @@
-#This file was created by <mike> Sun Jul 25 23:59:27 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
 \textclass aastex
 \begin_preamble
 \newcommand{\vdag}{(v)^\dagger}
@@ -14,11 +13,13 @@
 \fontscheme default
 \graphics default
 \paperfontsize default
-\spacing single 
+\spacing single
 \papersize Default
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -32,26 +33,33 @@
 
 \layout Title
 
-Collapsed Cores in Globular Clusters,  Gauge-Boson Couplings, and AASTeX
-\latex latex 
- 
-\latex default 
+Collapsed Cores in Globular Clusters,  Gauge-Boson Couplings, and AASTeX 
 Examples
 \layout Author
 
 S.
  Djorgovski
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 altaffilmark{1,2,3}
-\latex default 
+\end_inset 
+
  and Ivan R.
  King
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 altaffilmark{1}
+\end_inset 
+
+
 \layout Affiliation
 
 Astronomy Department, University of California, Berkeley, CA 94720
@@ -60,10 +68,16 @@ Astronomy Department, University of California, Berkeley, CA 94720
 C.
  D.
  Biemesderfer
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 altaffilmark{4,5}
+\end_inset 
+
+
 \layout Affiliation
 
 National Optical Astronomy Observatories, Tucson, AZ 85719
@@ -77,17 +91,26 @@ aastex-help@aas.org
 R.
  J.
  Hanisch
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 altaffilmark{5}
+\end_inset 
+
+
 \layout Affiliation
 
 Space Telescope Science Institute, Baltimore, MD 21218
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 altaffiltext{1}{Visiting Astronomer, Cerro Tololo Inter-American Observatory.
@@ -96,34 +119,25 @@ altaffiltext{1}{Visiting Astronomer, Cerro Tololo Inter-American Observatory.
  under contract to the National Science Foundation.} 
 \layout Standard
 
-
-\latex latex 
-
 \backslash 
 altaffiltext{2}{Society of Fellows, Harvard University.} 
 \layout Standard
-
-
-\latex latex 
 
 \backslash 
 altaffiltext{3}{present address: Center for Astrophysics, 60 Garden Street,
  Cambridge, MA 02138} 
 \layout Standard
 
-
-\latex latex 
-
 \backslash 
 altaffiltext{4}{Visiting Programmer, Space Telescope Science Institute}
  
 \layout Standard
 
-
-\latex latex 
-
 \backslash 
 altaffiltext{5}{Patron, Alonso's Bar and Grill}
+\end_inset 
+
+
 \layout Abstract
 
 This is a preliminary report on surface photometry of the major fraction
@@ -141,39 +155,59 @@ Introduction
 
 A focal problem today in the dynamics of globular clusters is core collapse.
  It has been predicted by theory for decades 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 citep{hen61,lyn68,spi85}
-\latex default 
+\end_inset 
+
 , but observation has been less alert to the phenomenon.
  For many years the central brightness peak in M15 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 citep{kin75,new78}
-\latex default 
+\end_inset 
+
  seemed a unique anomaly.
  Then 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 citet{aur82}
-\latex default 
+\end_inset 
+
  suggested a central peak in NGC 6397, and a limited photographic survey
  of ours 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 citep[Paper I]{djo84}
-\latex default 
+\end_inset 
+
  found three more cases, including NGC 6624, whose sharp center had often
  been remarked on 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 citep{can78}
-\latex default 
+\end_inset 
+
 .
  
 \layout Section
@@ -237,23 +271,35 @@ The CCD images are unfortunately not always suitable, for very poor clusters
  Since the latter are easily studied by other means, we augmented our own
  CCD profiles by collecting from the literature a number of star-count profiles
  
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 citep{kin68,pet76,har84,ort85}
-\latex default 
+\end_inset 
+
 , as well as photoelectric profiles 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 citep{kin66,kin75}
-\latex default 
+\end_inset 
+
  and electronographic profiles 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 citep{kro84}
-\latex default 
+\end_inset 
+
 .
  In a few cases we judged normality by eye estimates on one of the Sky Surveys.
 \layout Section
@@ -263,11 +309,14 @@ Helicity Amplitudes
 
 It has been realized that helicity amplitudes provide a convenient means
  for Feynman diagram
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 Footnotes can be inserted like this.
-\end_float 
+\end_inset 
+
  evaluations.
  These amplitude-level techniques are particularly convenient for calculations
  involving many Feynman diagrams, where the usual trace techniques for the
@@ -297,8 +346,7 @@ A tree-level amplitude in
 \end_inset 
 
  collisions can be expressed in terms of fermion strings of the form 
-\begin_inset Formula 
-\begin{equation}
+\begin_inset Formula \begin{equation}
 \bar{v}(p_{2},\sigma _{2})P_{-\tau }\hat{a}_{1}\hat{a}_{2}\cdots \hat{a}_{n}u(p_{1},\sigma _{1}),
 \end{equation}
 
@@ -358,8 +406,7 @@ In the chiral representation the
 \end_inset 
 
  and the unit matrix 1 as 
-\begin_inset Formula 
-\begin{eqnarray}
+\begin_inset Formula \begin{eqnarray}
 \gamma ^{\mu } & = & \left( \begin{array}{cc}
 0 & \sigma ^{\mu }_{+}\\
 \sigma ^{\mu }_{-} & 0
@@ -373,8 +420,7 @@ In the chiral representation the
 \end_inset 
 
  giving 
-\begin_inset Formula 
-\begin{equation}
+\begin_inset Formula \begin{equation}
 \hat{a}=\left( \begin{array}{cc}
 0 & (\hat{a})_{+}\\
 (\hat{a})_{-} & 0
@@ -384,8 +430,7 @@ In the chiral representation the
 \end_inset 
 
  The spinors are expressed in terms of two-component Weyl spinors as 
-\begin_inset Formula 
-\begin{equation}
+\begin_inset Formula \begin{equation}
 u=\left( \begin{array}{c}
 (u)_{-}\\
 (u)_{+}
@@ -409,8 +454,7 @@ The Weyl spinors are given in terms of helicity eigenstates
 \layout MathLetters
 
 
-\begin_inset Formula 
-\begin{eqnarray}
+\begin_inset Formula \begin{eqnarray}
 u(p,\lambda )_{\pm } & = & (E\pm \lambda |{\textbf {p}}|)^{1/2}\chi _{\lambda }(p),\\
 v(p,\lambda )_{\pm } & = & \pm \lambda (E\mp \lambda |{\textbf {p}}|)^{1/2}\chi _{-\lambda }(p)
 \end{eqnarray}
@@ -425,16 +469,14 @@ Floating material and so forth
 
 Consider a task that computes profile parameters for a modified Lorentzian
  of the form 
-\begin_inset Formula 
-\begin{equation}
+\begin_inset Formula \begin{equation}
 I=\frac{1}{1+d_{1}^{P(1+d_{2})}}
 \end{equation}
 
 \end_inset 
 
  where 
-\begin_inset Formula 
-\[
+\begin_inset Formula \[
 d_{1}=\sqrt{\left( \begin{array}{c}
 \frac{x_{1}}{R_{maj}}
 \end{array}\right) ^{2}+\left( \begin{array}{c}
@@ -444,8 +486,7 @@ d_{1}=\sqrt{\left( \begin{array}{c}
 \end_inset 
 
 
-\begin_inset Formula 
-\[
+\begin_inset Formula \[
 d_{2}=\sqrt{\left( \begin{array}{c}
 \frac{x_{1}}{PR_{maj}}
 \end{array}\right) ^{2}+\left( \begin{array}{c}
@@ -455,15 +496,13 @@ d_{2}=\sqrt{\left( \begin{array}{c}
 \end_inset 
 
 
-\begin_inset Formula 
-\[
+\begin_inset Formula \[
 x_{1}=(x-x_{0})\cos \Theta +(y-y_{0})\sin \Theta \]
 
 \end_inset 
 
 
-\begin_inset Formula 
-\[
+\begin_inset Formula \[
 y_{1}=-(x-x_{0})\sin \Theta +(y-y_{0})\cos \Theta \]
 
 \end_inset 
@@ -488,8 +527,7 @@ In these expressions
 \end_inset 
 
  axis.
- Results of this task are shown in table
-\protected_separator 
+ Results of this task are shown in table\SpecialChar ~
 
 \begin_inset LatexCommand \ref{tbl-2}
 
@@ -502,27 +540,39 @@ In these expressions
 \end_inset 
 
 , but the assumption is that the alternate results should be less than 90
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 degr
 \backslash 
  
-\latex default 
+\end_inset 
+
 out of phase with previous values.
  We have no observations of 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 ion{Ca}{2}
-\latex default 
+\end_inset 
+
 .
  Roughly 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 slantfrac{4}{5}
-\latex default 
+\end_inset 
+
  of the electronically submitted abstracts for AAS meetings are error-free.
 \layout Acknowledgements
 
@@ -533,8 +583,7 @@ We are grateful to V.
  Han, and R.
  J.
  N.
- Phillips for doing the math in section
-\protected_separator 
+ Phillips for doing the math in section\SpecialChar ~
 
 \begin_inset LatexCommand \ref{bozomath}
 
@@ -542,20 +591,22 @@ We are grateful to V.
 
 .
  More information on the AASTeX macros package are available at 
-\latex latex 
 
 \begin_inset LatexCommand \url{http://www.aas.org/publications/aastex}
 
 \end_inset 
 
 
-\latex default 
  or the 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 anchor{ftp://www.aas.org/pubs/}{AAS ftp site}
-\latex default 
+\end_inset 
+
 .
 \layout Appendix
 
@@ -566,8 +617,7 @@ Appendicial material
 
 Consider once again a task that computes profile parameters for a modified
  Lorentzian of the form 
-\begin_inset Formula 
-\begin{equation}
+\begin_inset Formula \begin{equation}
 I=\frac{1}{1+d_{1}^{P(1+d_{2})}}
 \end{equation}
 
@@ -577,8 +627,7 @@ I=\frac{1}{1+d_{1}^{P(1+d_{2})}}
 \layout MathLetters
 
 
-\begin_inset Formula 
-\[
+\begin_inset Formula \[
 d_{1}=\frac{3}{4}\sqrt{\left( \begin{array}{c}
 \frac{x_{1}}{R_{maj}}
 \end{array}\right) ^{2}+\left( \begin{array}{c}
@@ -588,8 +637,7 @@ d_{1}=\frac{3}{4}\sqrt{\left( \begin{array}{c}
 \end_inset 
 
 
-\begin_inset Formula 
-\begin{equation}
+\begin_inset Formula \begin{equation}
 d_{2}=\case {3}{4}\sqrt{\left( \begin{array}{c}
 \frac{x_{1}}{PR_{maj}}
 \end{array}\right) ^{2}+\left( \begin{array}{c}
@@ -600,8 +648,7 @@ d_{2}=\case {3}{4}\sqrt{\left( \begin{array}{c}
 \end_inset 
 
 
-\begin_inset Formula 
-\begin{eqnarray}
+\begin_inset Formula \begin{eqnarray}
 x_{1} & = & (x-x_{0})\cos \Theta +(y-y_{0})\sin \Theta \\
 y_{1} & = & -(x-x_{0})\sin \Theta +(y-y_{0})\cos \Theta 
 \end{eqnarray}
@@ -613,8 +660,7 @@ y_{1} & = & -(x-x_{0})\sin \Theta +(y-y_{0})\cos \Theta
 
 For completeness, here is one last equation.
  
-\begin_inset Formula 
-\begin{equation}
+\begin_inset Formula \begin{equation}
 e=mc^{2}
 \end{equation}
 
@@ -627,11 +673,15 @@ e=mc^{2}
 Auri\i \`{e}
 re, M.
  1982, 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 aap
-\latex default 
+\end_inset 
+
 , 109, 301 
 \layout References
 \bibitem [Canizares et al.(1978)]{can78}
@@ -642,11 +692,15 @@ Canizares, C.
  A., Liller, W., and McClintock, J.
  E.
  1978, 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 apj
-\latex default 
+\end_inset 
+
 , 224, 39 
 \layout References
 \bibitem [Djorgovski and King(1984)]{djo84}
@@ -654,11 +708,15 @@ apj
 Djorgovski, S., and King, I.
  R.
  1984, 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 apjl
-\latex default 
+\end_inset 
+
 , 277, L49 
 \layout References
 \bibitem [Hagiwara and Zeppenfeld(1986)]{hag86}
@@ -671,11 +729,15 @@ Hagiwara, K., and Zeppenfeld, D.
 Harris, W.
  E., and van den Bergh, S.
  1984, 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 aj
-\latex default 
+\end_inset 
+
 , 89, 1816 
 \layout References
 \bibitem [H\`enon(1961)]{hen61}
@@ -689,11 +751,15 @@ non, M.
 King, I.
  R.
  1966, 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 aj
-\latex default 
+\end_inset 
+
 , 71, 276 
 \layout References
 \bibitem [King(1975)]{kin75}
@@ -710,11 +776,15 @@ King, I.
  M., and White, R.
  E.
  1968, 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 aj
-\latex default 
+\end_inset 
+
 , 73, 456 
 \layout References
 \bibitem [Kron et al.(1984)]{kro84}
@@ -724,22 +794,30 @@ Kron, G.
  V., and Wasserman, L.
  H.
  1984, 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 pasp
-\latex default 
+\end_inset 
+
 , 96, 198 
 \layout References
 \bibitem [Lynden-Bell and Wood(1968)]{lyn68}
 
 Lynden-Bell, D., and Wood, R.
  1968, 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 mnras
-\latex default 
+\end_inset 
+
 , 138, 495 
 \layout References
 \bibitem [Newell and O'Neil(1978)]{new78}
@@ -748,22 +826,30 @@ Newell, E.
  B., and O'Neil, E.
  J.
  1978, 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 apjs
-\latex default 
+\end_inset 
+
 , 37, 27 
 \layout References
 \bibitem [Ortolani et al.(1985)]{ort85}
 
 Ortolani, S., Rosino, L., and Sandage, A.
  1985, 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 aj
-\latex default 
+\end_inset 
+
 , 90, 473 
 \layout References
 \bibitem [Peterson(1976)]{pet76}
@@ -771,11 +857,15 @@ aj
 Peterson, C.
  J.
  1976, 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 aj
-\latex default 
+\end_inset 
+
 , 81, 617 
 \layout References
 \bibitem [Spitzer(1985)]{spi85}
@@ -787,10 +877,16 @@ Spitzer, L.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 clearpage
+\end_inset 
+
+
 \layout FigCaption
 
 
@@ -822,13 +918,22 @@ This figure has no associated EPS file, so the optional parameter is omitted.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 clearpage
+\end_inset 
+
+
 \layout Standard
 
-\begin_float tab 
+\begin_inset Float table
+wide false
+collapsed false
+
 \layout Caption
 \added_space_bottom medskip 
 Terribly relevant tabular information.
@@ -838,378 +943,870 @@ Terribly relevant tabular information.
 
 
 \layout Standard
-\LyXTable
-multicol5
-7 13 0 0 -1 -1 -1 -1
-0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-0 0 0 0
-8 0 0 "" ""
-4 0 0 "" ""
-4 0 0 "" ""
-4 0 0 "" ""
-4 0 0 "" ""
-4 0 0 "" ""
-4 0 0 "" ""
-4 0 0 "" ""
-4 0 0 "" ""
-4 0 0 "" ""
-4 0 0 "" ""
-4 0 0 "" ""
-8 0 0 "" ""
-0 8 1 1 0 0 0 "" ""
-0 4 1 1 0 0 0 "" ""
-0 4 1 1 0 0 0 "" ""
-0 4 1 1 0 0 0 "" ""
-0 4 1 1 0 0 0 "" ""
-0 4 1 1 0 0 0 "" ""
-0 4 1 1 0 0 0 "" ""
-0 4 1 1 0 0 0 "" ""
-1 8 0 0 0 0 0 "" ""
-0 4 1 1 0 0 0 "" ""
-0 4 1 1 0 0 0 "" ""
-1 8 0 0 0 0 0 "" ""
-0 8 0 0 0 0 0 "" ""
-0 8 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 8 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 8 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 8 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 8 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 4 0 0 0 0 0 "" ""
-0 8 0 1 0 0 0 "" ""
-0 4 0 1 0 0 0 "" ""
-0 4 0 1 0 0 0 "" ""
-0 4 0 1 0 0 0 "" ""
-0 4 0 1 0 0 0 "" ""
-0 4 0 1 0 0 0 "" ""
-0 4 0 1 0 0 0 "" ""
-0 4 0 1 0 0 0 "" ""
-0 4 0 1 0 0 0 "" ""
-0 4 0 1 0 0 0 "" ""
-0 4 0 1 0 0 0 "" ""
-0 4 0 1 0 0 0 "" ""
-0 4 0 1 0 0 0 "" ""
+
+
+\begin_inset  Tabular
+<lyxtabular version="3" rows="7" columns="13">
+<features endhead="-1" endfirsthead="-1" endfoot="-1" endlastfoot="-1">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="right" valignment="top" width="0pt">
+<column alignment="right" valignment="top" width="0pt">
+<column alignment="right" valignment="top" width="0pt">
+<column alignment="right" valignment="top" width="0pt">
+<column alignment="right" valignment="top" width="0pt">
+<column alignment="right" valignment="top" width="0pt">
+<column alignment="right" valignment="top" width="0pt">
+<column alignment="right" valignment="top" width="0pt">
+<column alignment="right" valignment="top" width="0pt">
+<column alignment="right" valignment="top" width="0pt">
+<column alignment="right" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
 
 Star 
-\newline 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
  Height 
-\newline 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
  
 \begin_inset Formula \( d_{x} \)
 \end_inset 
 
 
-\newline 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
  
 \begin_inset Formula \( d_{y} \)
 \end_inset 
 
 
-\newline 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
  
 \begin_inset Formula \( n \)
 \end_inset 
 
 
-\newline 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
  
 \begin_inset Formula \( \chi ^{2} \)
 \end_inset 
 
 
-\newline 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
  
 \begin_inset Formula \( R_{maj} \)
 \end_inset 
 
 
-\newline 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
  
 \begin_inset Formula \( R_{min} \)
 \end_inset 
 
 
-\newline 
+\end_inset 
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 
 \begin_inset Formula \( P \)
 \end_inset 
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 tablenotemark{a}
-\latex default 
+\end_inset 
 
-\newline 
+
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
  
 \begin_inset Formula \( PR_{maj} \)
 \end_inset 
 
 
-\newline 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
  
 \begin_inset Formula \( PR_{min} \)
 \end_inset 
 
 
-\newline 
+\end_inset 
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 
 \begin_inset Formula \( \Theta  \)
 \end_inset 
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 tablenotemark{b}
-\latex default 
+\end_inset 
 
-\newline 
+
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 Ref.
-\newline 
+\end_inset 
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
 
-\latex latex 
-
-\backslash 
-tableline
-\backslash 
-tableline
-\latex default 
-1 
-\newline 
-33472.5 
-\newline 
--0.1 
-\newline 
-0.4 
-\newline 
-53 
-\newline 
-27.4 
-\newline 
-2.065 
-\newline 
-1.940 
-\newline 
-3.900 
-\newline 
-68.3 
-\newline 
-116.2 
-\newline 
--27.639
-\newline 
-1,2
-\newline 
- 2 
-\newline 
-27802.4 
-\newline 
--0.3 
-\newline 
--0.2 
-\newline 
-60 
-\newline 
-3.7 
-\newline 
-1.628 
-\newline 
-1.510 
-\newline 
-2.156 
-\newline 
-6.8 
-\newline 
-7.5 
-\newline 
--26.764
-\newline 
-3
-\newline 
- 3 
-\newline 
-29210.6 
-\newline 
-0.9 
-\newline 
-0.3 
-\newline 
-60 
-\newline 
-3.4 
-\newline 
-1.622 
-\newline 
-1.551 
-\newline 
-2.159 
-\newline 
-6.7 
-\newline 
-7.3 
-\newline 
--40.272
-\newline 
-4
-\newline 
- 4 
-\newline 
-32733.8 
-\newline 
--1.2
-\latex latex 
-
-\backslash 
-tablenotemark{c}
-\latex default 
-
-\newline 
--0.5 
-\newline 
-41 
-\newline 
-54.8 
-\newline 
-2.282 
-\newline 
-2.156 
-\newline 
-4.313 
-\newline 
-117.4 
-\newline 
-78.2 
-\newline 
--35.847
-\newline 
-5,6
-\newline 
- 5 
-\newline 
- 9607.4 
-\newline 
--0.4 
-\newline 
--0.4 
-\newline 
-60 
-\newline 
-1.4 
-\newline 
-1.669
-\latex latex 
-
-\backslash 
-tablenotemark{c}
-\latex default 
-
-\newline 
-1.574 
-\newline 
-2.343 
-\newline 
-8.0 
-\newline 
-8.9 
-\newline 
--33.417
-\newline 
-7
-\newline 
- 6 
-\newline 
-31638.6 
-\newline 
-1.6 
-\newline 
-0.1 
-\newline 
-39 
-\newline 
-315.2 
-\newline 
- 3.433 
-\newline 
-3.075 
-\newline 
-7.488 
-\newline 
-92.1 
-\newline 
-25.3 
-\newline 
--12.052 
-\newline 
-8
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+tableline
+\backslash 
+tableline
+\end_inset 
+
+1 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+33472.5 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+-0.1 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+0.4 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+53 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+27.4 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+2.065 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+1.940 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+3.900 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+68.3 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+116.2 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+-27.639
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+1,2
+\end_inset 
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+ 2 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+27802.4 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+-0.3 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+-0.2 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+60 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+3.7 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+1.628 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+1.510 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+2.156 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+6.8 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+7.5 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+-26.764
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+3
+\end_inset 
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+ 3 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+29210.6 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+0.9 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+0.3 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+60 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+3.4 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+1.622 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+1.551 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+2.159 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+6.7 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+7.3 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+-40.272
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+4
+\end_inset 
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+ 4 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+32733.8 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+-1.2
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+tablenotemark{c}
+\end_inset 
+
+
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+-0.5 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+41 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+54.8 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+2.282 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+2.156 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+4.313 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+117.4 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+78.2 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+-35.847
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+5,6
+\end_inset 
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+ 5 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+ 9607.4 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+-0.4 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+-0.4 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+60 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+1.4 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+1.669
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+tablenotemark{c}
+\end_inset 
+
+
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+1.574 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+2.343 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+8.0 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+8.9 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+-33.417
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+7
+\end_inset 
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+ 6 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+31638.6 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+1.6 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+0.1 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+39 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+315.2 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+ 3.433 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+3.075 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+7.488 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+92.1 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+25.3 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+-12.052 
+\end_inset 
+</cell>
+<cell alignment="right" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
+8
+\end_inset 
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset 
+
+
+\layout Standard
+
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 tablenotetext{a}{Sample footnote for table~
@@ -1221,22 +1818,19 @@ LaTeX
  table environment} 
 \layout Standard
 
-
-\latex latex 
-
 \backslash 
 tablenotetext{b}{Yet another sample footnote for table~
 \backslash 
 ref{tbl-2}} 
 \layout Standard
 
-
-\latex latex 
-
 \backslash 
 tablenotetext{c}{Another sample footnote for table~
 \backslash 
 ref{tbl-2}}
+\end_inset 
+
+
 \layout TableComments
 
 We can also attach a long-ish paragraph of explanatory material to a table.
@@ -1259,47 +1853,81 @@ tablerefs to append a list of references.
  1984; (23) Spite & Spite 1986; (24) Hobbs & Thorburn 1991; (25) Hobbs et
  al.
  1991; (26) Olsen 1983.
-\end_float 
+\end_inset 
+
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 % LyX can load deluxetable files verbatim.
  To see this in action, uncomment the following
+\end_inset 
+
+
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 % line (delete the 
-\latex default 
+\end_inset 
+
 
 \begin_inset Quotes eld
 \end_inset 
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 %
-\latex default 
+\end_inset 
+
 
 \begin_inset Quotes erd
 \end_inset 
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 ) and copy the file table.tex from the AASTeX 5.0 distribution into
+\end_inset 
+
+
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 % the same directory as this file.
+\end_inset 
+
+
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 %
+\end_inset 
+
+
 \begin_inset Include \input{table}
 
 \end_inset 
+
 
 
 \the_end

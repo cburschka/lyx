@@ -75,7 +75,16 @@ behaviour to mimic 1.2 in all cases, so this might take some time to
 get accustomed to. On the pro side, the new structure allowed
 implementing support for LaTeX's \mbox and \fbox and general
 "switching back to text mode within math", so a lot of "evil red text"
-trickery is not needed anymore.
+trickery is not needed anymore. The most visible changes are the following:
+
+- Pressing { and } will insert LaTeX's \{ and \} which show up as { }
+  in the printout. To get LaTeX's {} nesting, you need to type \{.
+
+- Fonts changes now really nest. Repeated application of a font change
+  will result in nested font changes!  To remove a font change without
+  removing the "contents", it is now possible to "pull the argument"
+  like in other insets, i.e. put the cursor in the first position of
+  the inset and press 'backspace'.
 
 ** Reading old files
 

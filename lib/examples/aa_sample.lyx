@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 218
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
 \textclass aa
 \begin_preamble
 \usepackage{graphicx}
@@ -10,11 +10,13 @@
 \fontscheme default
 \graphics default
 \paperfontsize default
-\spacing single 
+\spacing single
 \papersize Default
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -41,7 +43,10 @@ I.
 
 G.
  Wuchterl 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 inst{1} 
@@ -49,20 +54,31 @@ inst{1}
 and
 \newline 
           
-\latex default 
+\end_inset 
+
 C.
  Ptolemy
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 inst{2}
 \backslash 
 fnmsep
-\begin_float footnote 
+\end_inset 
+
+
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 Just to show the usage of the elements in the author field
-\end_float 
+\end_inset 
+
+
  
 \layout Offprint
 
@@ -75,7 +91,10 @@ rkenschanzstrasse
  17, A-1180 Vienna
 \newline 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 email{wuchterl@amok.ast.univie.ac.at} 
@@ -83,21 +102,30 @@ email{wuchterl@amok.ast.univie.ac.at}
 and
 \newline 
 
-\latex default 
+\end_inset 
+
 University of Alexandria, Department of Geography, ...
 \newline 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 email{c.ptolemy@hipparch.uheaven.space}
-\latex default 
+\end_inset 
+
  
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 The university of heaven temporarily does not accept e-mails
-\end_float 
+\end_inset 
+
+
  
 \layout Date
 
@@ -160,7 +188,10 @@ leated instability' of proto
 \end_inset 
 
 -mechanism is widespread under `cool' conditions.
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \newline 
 
@@ -172,7 +203,8 @@ keywords{giant planet formation --
 kappa
 \backslash 
 )-mechanism -- stability of gas spheres }
-\latex default 
+\end_inset 
+
  
 \layout Section
 
@@ -182,12 +214,17 @@ Introduction
 In the 
 \emph on 
 nucleated instability
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 /{}
+\end_inset 
+
+
 \emph default 
-\latex default 
  (also called core instability) hypothesis of giant planet formation, a
  critical mass for static core envelope protoplanets has been found.
  Mizuno (
@@ -244,7 +281,10 @@ lar cores and protogiant planets serve as a further motivation for this
 Baker's standard one-zone model
 \layout Standard
 
-\begin_float wide-fig 
+\begin_inset Float figure
+wide true
+collapsed false
+
 \layout Caption
 
 Adiabatic exponent 
@@ -281,7 +321,8 @@ Adiabatic exponent
 \end_inset 
 
 
-\end_float 
+\end_inset 
+
  In this section the one-zone model of Baker (
 \begin_inset LatexCommand \cite{baker}
 
@@ -315,23 +356,35 @@ energy transport by grey radiation diffusion.
 \noindent 
 For the one-zone-model Baker obtains necessary conditions for dynamical,
  secular and vibrational (or pulsational) stability (Eqs.
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
  
-\latex default 
+\end_inset 
+
 (34a,
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 ,
-\latex default 
+\end_inset 
+
 b,
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 ,
-\latex default 
+\end_inset 
+
 c) in Baker 
 \begin_inset LatexCommand \cite{baker}
 
@@ -360,12 +413,17 @@ E_{\textrm{th}} &  & \textrm{thermal energy of the zone}
 and with the definitions of the 
 \emph on 
 local cooling time
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 /{}
+\end_inset 
+
+
 \emph default 
-\latex default 
  (see Fig.\SpecialChar ~
 
 \begin_inset LatexCommand \ref{FigGam}
@@ -464,12 +522,17 @@ e=mc^{2}
  one obtains, after some pages of algebra, the conditions for 
 \emph on 
 stability
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 /{}
+\end_inset 
+
+
 \emph default 
-\latex default 
  given below: 
 \begin_inset Formula \begin{eqnarray}
 \frac{\pi ^{2}}{8}\frac{1}{\tau _{\mathrm{ff}}^{2}}(3\Gamma _{1}-4) & > & 0\label{ZSDynSta} \\
@@ -531,11 +594,15 @@ The first factors, depending on only timescales, are positive by definition.
  The one-zone stability can therefore be determined from a simple equation
  of state, given for example, as a function of density and temperature.
  Once the microphysics, i.e.
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
  
-\latex default 
+\end_inset 
+
 the thermodynamics and opacities (see Table\SpecialChar ~
 
 \begin_inset LatexCommand \ref{KapSou}
@@ -551,7 +618,10 @@ the thermodynamics and opacities (see Table\SpecialChar ~
  different for layers in different objects.
 \layout Standard
 
-\begin_float tab 
+\begin_inset Float table
+wide false
+collapsed false
+
 \layout Caption
 
 
@@ -564,12 +634,12 @@ Opacity sources
 
 
 \begin_inset  Tabular
-<lyxtabular version="2" rows="4" columns="2">
-<features rotate="false" islongtable="false" endhead="0" endfirsthead="0" endfoot="0" endlastfoot="0">
-<column alignment="left" valignment="top" leftline="false" rightline="false" width="" special="">
-<column alignment="left" valignment="top" leftline="false" rightline="false" width="" special="">
-<row topline="true" bottomline="false" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<lyxtabular version="3" rows="4" columns="2">
+<features>
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -577,7 +647,7 @@ Opacity sources
 Source
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -590,8 +660,8 @@ Source
 \end_inset 
 </cell>
 </row>
-<row topline="true" bottomline="false" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row topline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -599,7 +669,7 @@ Source
 Yorke 1979, Yorke 1980a
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -612,8 +682,8 @@ Yorke 1979, Yorke 1980a
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="false" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -621,7 +691,7 @@ Yorke 1979, Yorke 1980a
 Krügel 1971
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -634,8 +704,8 @@ Krügel 1971
 \end_inset 
 </cell>
 </row>
-<row topline="false" bottomline="true" newpage="false">
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<row bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -643,7 +713,7 @@ Krügel 1971
 Cox & Stewart 1969
 \end_inset 
 </cell>
-<cell multicolumn="0" alignment="center" valignment="top" topline="true" bottomline="false" leftline="true" rightline="false" rotate="false" usebox="none" width="" special="">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \layout Standard
@@ -668,7 +738,8 @@ Cox & Stewart 1969
 \end_inset 
 
 This is footnote a
-\end_float 
+\end_inset 
+
  We will now write down the sign (and therefore stability) determining parts
  of the left-hand sides of the inequalities (
 \begin_inset LatexCommand \ref{ZSDynSta}
@@ -808,7 +879,10 @@ e relations
 1.
 \layout Standard
 
-\begin_float fig 
+\begin_inset Float figure
+wide false
+collapsed false
+
 \layout Caption
 
 Vibrational stability equation of state 
@@ -829,7 +903,8 @@ Vibrational stability equation of state
 \end_inset 
 
 
-\end_float 
+\end_inset 
+
 \layout Section
 
 Conclusions
@@ -878,12 +953,17 @@ schungs\SpecialChar \-
 ge\SpecialChar \-
 mein\SpecialChar \-
 schaft, DFG
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 /{}
+\end_inset 
+
+
 \emph default 
-\latex default 
  project number Ts\SpecialChar ~
 17/2--1.
  
@@ -892,11 +972,15 @@ schaft, DFG
 
  Baker, N.
  1966, in Stellar Evolution, ed.
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
  
-\latex default 
+\end_inset 
+
 R.
  F.
  Stein,& A.
