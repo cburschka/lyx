@@ -1,3 +1,8 @@
+2002-04-08  Herbert Voss  <voss@perce.de>
+
+       * insetgraphic.C (write): write the rotating angle as
+       a float as is. test only for != 0.0
+
 2002-04-11  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C: new function ciy() and use it for setting inset_y.

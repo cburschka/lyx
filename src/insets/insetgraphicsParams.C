@@ -198,7 +198,7 @@ void InsetGraphicsParams::Write(ostream & os) const
 		os << "\tkeepAspectRatio\n";
 	if (rotate)
 		os << "\trotate\n";
-	if (!lyx::float_equal(rotateAngle, 0.0, 0.001))
+	if (rotateAngle != 0.0)
 		os << "\trotateAngle " << rotateAngle << '\n';
 	if (!rotateOrigin.empty())
 		os << "\trotateOrigin " << rotateOrigin << '\n';
