@@ -1,14 +1,14 @@
 # Slovenski prevodi menujev za LyX.
 # Copyright (C) 2000, The LyX team.
 # Roman Maurer <roman.maurer@hermes.si>, 2000.
-# $Id: sl.po,v 1.20 2000/04/28 20:52:30 larsbj Exp $
+# $Id: sl.po,v 1.21 2000/05/02 15:23:17 lasgouttes Exp $
 # $Source: /home/lyx/cvs/lyx-devel/po/sl.po,v $
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: LyX 1.1.4pre2\n"
+"Project-Id-Version: LyX 1.1.5pre1\n"
 "POT-Creation-Date: 2000-04-28 23:28+0200\n"
-"PO-Revision-Date: 2000-01-24 21:10+01:00\n"
+"PO-Revision-Date: 2000-05-02 16:10+0200\n"
 "Last-Translator:  Roman Maurer <roman.maurer@hermes.si>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -346,7 +346,7 @@ msgstr "Vstavljamo opombo na robu..."
 
 #: src/bufferview_funcs.C:78
 msgid "Error! unknown language"
-msgstr ""
+msgstr "Napaka! neznan jezik"
 
 #: src/LyXAction.C:289 src/bufferview_funcs.C:86
 msgid "Melt"
@@ -376,7 +376,7 @@ msgstr "Enojni|#S"
 
 #: src/bufferview_funcs.C:263
 msgid "Onehalf"
-msgstr ""
+msgstr "Polovièni"
 
 #: src/bufferview_funcs.C:266
 #, fuzzy
@@ -385,7 +385,7 @@ msgstr "Dvojni|#D"
 
 #: src/bufferview_funcs.C:269
 msgid "Other ("
-msgstr ""
+msgstr "Drugi ("
 
 #: src/BufferView_pimpl.C:219
 msgid "Formatting document..."
@@ -511,7 +511,7 @@ msgstr "Opozorilo ChkTeXa #"
 
 #: src/ColorHandler.C:82
 msgid "LyX: Unknown X11 color "
-msgstr ""
+msgstr "LyX: Neznana barva za X11 "
 
 #: src/ColorHandler.C:83
 #, fuzzy
@@ -520,36 +520,35 @@ msgstr " z dne "
 
 #: src/ColorHandler.C:84
 msgid "     Using black instead, sorry!."
-msgstr ""
+msgstr "     Namesto nje uporabljamo èrno!"
 
 #: src/ColorHandler.C:91
 msgid "LyX: X11 color "
-msgstr ""
+msgstr "LyX: Barva za X11 "
 
 #: src/ColorHandler.C:92 src/ColorHandler.C:98
 msgid " allocated for "
-msgstr ""
+msgstr " dodeljena za "
 
 #: src/ColorHandler.C:97
 msgid "LyX: Using approximated X11 color "
-msgstr ""
+msgstr "LyX: Uporabljamo pribli¾no barvo za X11 "
 
 #: src/ColorHandler.C:138
 msgid "LyX: Couldn't allocate '"
-msgstr ""
+msgstr "LyX: Ne moremo dodeliti ,"
 
 #: src/ColorHandler.C:139
-#, fuzzy
 msgid "' for "
-msgstr "` po "
+msgstr "` za "
 
 #: src/ColorHandler.C:140
 msgid " with (r,g,b)=("
-msgstr ""
+msgstr " z (r,g,b)=("
 
 #: src/ColorHandler.C:143
 msgid "     Using closest allocated color with (r,g,b)=("
-msgstr ""
+msgstr "     Uporabljamo najbli¾jo dodeljeno barvo z (r,g,b)=("
 
 #: src/credits.C:55
 msgid "ERROR: LyX wasn't able to read CREDITS file"
@@ -859,7 +858,7 @@ msgstr "Vrstice"
 
 #: src/form1.C:318
 msgid "Find|#n"
-msgstr "I¹èimo|#n"
+msgstr "I¹èi|#n"
 
 #: src/form1.C:322
 msgid "Replace with|#W"
@@ -907,7 +906,7 @@ msgstr "[ni datoteke]"
 
 #: src/insets/figinset.C:1070
 msgid "[bad file name]"
-msgstr ""
+msgstr "[neveljavno ime datoteke]"
 
 #: src/insets/figinset.C:1072
 msgid "[not displayed]"
@@ -957,7 +956,7 @@ msgstr "presledek, '#', '~', '$' ali '%'."
 
 #: src/insets/form_graphics.C:34 src/insets/form_graphics.C:35
 msgid "Graphics file|#G"
-msgstr ""
+msgstr "Grafièna datoteka|#G"
 
 #: src/insets/form_url.C:19
 msgid "Url"
@@ -1050,17 +1049,17 @@ msgid "LaTeX Error"
 msgstr "Napaka LaTeXa"
 
 #: src/insets/insetert.C:29
+# ZRB = Zlobno Rdeèe besedilo (aka ERT = Evil Red Text)
 msgid "ERT"
-msgstr ""
+msgstr "ZRB"
 
 #: src/insets/insetert.C:55
-#, fuzzy
 msgid "Opened ERT Inset"
-msgstr "Odprt vstavek"
+msgstr "Odprt vstavek z ZRB"
 
 #: src/insets/insetert.C:68
 msgid "Not permitted to change font-types inside ERT-insets!"
-msgstr ""
+msgstr "Znotraj vstavkov z ZRB ni dovoljeno spreminjati vrste pisav!"
 
 #: src/insets/insetfoot.C:28
 #, fuzzy
@@ -1074,7 +1073,7 @@ msgstr "Odprta zabele¾ka"
 
 #: src/insets/insetgraphics.C:87 src/insets/insetgraphics.C:163
 msgid "Graphics"
-msgstr ""
+msgstr "Grafika"
 
 #: src/insets/insetinclude.C:42 src/insets/insetinclude.C:43
 msgid "Browse|#B"
@@ -1238,172 +1237,168 @@ msgstr "  izbire: "
 
 #: src/language.C:38
 msgid "Afrikaans"
-msgstr ""
+msgstr "afrikans"
 
 #: src/language.C:39
 msgid "American"
-msgstr ""
+msgstr "amerikan¹èina"
 
 #: src/language.C:40
 msgid "Arabic"
-msgstr ""
+msgstr "arab¹èina"
 
 #: src/language.C:41
 msgid "Austrian"
-msgstr ""
+msgstr "avstrij¹èina"
 
 #: src/language.C:42
 msgid "Bahasa"
-msgstr ""
+msgstr "baha¹èina"
 
 #: src/language.C:43
 msgid "Brazil"
-msgstr ""
+msgstr "brazil¹èina"
 
 #: src/language.C:44
-#, fuzzy
 msgid "Breton"
-msgstr "Okrasek"
+msgstr "breton¹èina"
 
 #: src/language.C:45
 msgid "Catalan"
-msgstr ""
+msgstr "katalon¹èina"
 
 #: src/language.C:46
-#, fuzzy
 msgid "Croatian"
-msgstr "Zavrtitev"
+msgstr "hrva¹èina"
 
 #: src/language.C:47
 msgid "Czech"
-msgstr ""
+msgstr "èe¹èina"
 
 #: src/language.C:48
 msgid "Danish"
-msgstr ""
+msgstr "dan¹èina"
 
 #: src/language.C:49
 msgid "Dutch"
-msgstr ""
+msgstr "nizozem¹èina"
 
 #: src/language.C:50
 msgid "English"
-msgstr ""
+msgstr "angle¹èina"
 
 #: src/language.C:51
 msgid "Esperanto"
-msgstr ""
+msgstr "esperanto"
 
 #: src/language.C:52
 msgid "Estonian"
-msgstr ""
+msgstr "eston¹èina"
 
 #: src/language.C:53
 msgid "Finnish"
-msgstr ""
+msgstr "fin¹èina"
 
 #: src/language.C:54
+# Hm ...  Tole je èudno, ne?
 msgid "Francais"
-msgstr ""
+msgstr "francaj¹èina"
 
 #: src/language.C:55
 msgid "French"
-msgstr ""
+msgstr "franco¹èina"
 
 #: src/language.C:56
 msgid "Frenchb"
-msgstr ""
+msgstr "franco¹èinab"
 
 #: src/language.C:57
 msgid "Galician"
-msgstr ""
+msgstr "galicij¹èina"
 
 #: src/language.C:58
 msgid "German"
-msgstr ""
+msgstr "nem¹èina"
 
 #: src/language.C:59 src/mathed/math_forms.C:26
 msgid "Greek"
-msgstr "Gr¹ko"
+msgstr "gr¹èina"
 
 #: src/language.C:60
 msgid "Hebrew"
-msgstr ""
+msgstr "hebrej¹èina"
 
 #: src/language.C:61
 msgid "Hungarian"
-msgstr ""
+msgstr "mad¾ar¹èina"
 
 #: src/language.C:62
 msgid "Irish"
-msgstr ""
+msgstr "ir¹èina"
 
 #: src/language.C:63
-#, fuzzy
 msgid "Italian"
-msgstr "kurzivna"
+msgstr "italijan¹èina"
 
 #: src/language.C:64
 msgid "Lsorbian"
-msgstr ""
+msgstr "lsrb¹èina"
 
 #: src/language.C:65
-#, fuzzy
 msgid "Magyar"
-msgstr "Vijolièna"
+msgstr "Magyar"
 
 #: src/language.C:66
 msgid "Norsk"
-msgstr ""
+msgstr "Norsk"
 
 #: src/language.C:67
 msgid "Polish"
-msgstr ""
+msgstr "pol¹èina"
 
 #: src/language.C:68
 msgid "Portuges"
-msgstr ""
+msgstr "portugal¹èina"
 
 #: src/language.C:69
-#, fuzzy
 msgid "Romanian"
-msgstr "pokonèna"
+msgstr "romun¹èina"
 
 #: src/language.C:70
 msgid "Russian"
-msgstr ""
+msgstr "ru¹èina"
 
 #: src/language.C:71
 msgid "Scottish"
-msgstr ""
+msgstr "¹kot¹èina"
 
 #: src/language.C:72
 msgid "Spanish"
-msgstr ""
+msgstr "¹pan¹èina"
 
 #: src/language.C:73
 msgid "Slovak"
-msgstr ""
+msgstr "slova¹èina"
 
 #: src/language.C:74
 msgid "Slovene"
-msgstr ""
+msgstr "sloven¹èina"
 
 #: src/language.C:75
 msgid "Swedish"
-msgstr ""
+msgstr "¹ved¹èina"
 
 #: src/language.C:76
 msgid "Turkish"
-msgstr ""
+msgstr "tur¹èina"
 
 #: src/language.C:77
 msgid "Usorbian"
-msgstr ""
+msgstr "usrb¹èina"
 
 #: src/language.C:78
 msgid "Welsh"
-msgstr ""
+msgstr "vale¾ansko"
 
 #: src/LaTeX.C:175 src/LaTeX.C:200 src/LaTeX.C:265 src/LaTeX.C:315
 msgid "LaTeX run number "
@@ -1973,11 +1968,11 @@ msgstr "Rumena"
 
 #: src/LColor.C:51
 msgid "background"
-msgstr ""
+msgstr "ozadje"
 
 #: src/LColor.C:52
 msgid "foreground"
-msgstr ""
+msgstr "ospredje"
 
 #: src/LColor.C:53
 #, fuzzy
@@ -1991,7 +1986,7 @@ msgstr "LaTeX "
 
 #: src/LColor.C:55
 msgid "floats"
-msgstr ""
+msgstr "plovke"
 
 #: src/LColor.C:56
 #, fuzzy
@@ -2000,23 +1995,23 @@ msgstr "Opomba"
 
 #: src/LColor.C:57
 msgid "note background"
-msgstr ""
+msgstr "ozadja opombe"
 
 #: src/LColor.C:58
 msgid "note frame"
-msgstr ""
+msgstr "okvir opombe"
 
 #: src/LColor.C:59
 msgid "depth bar"
-msgstr ""
+msgstr "globina pravokotnika"
 
 #: src/LColor.C:60
 msgid "command-inset"
-msgstr ""
+msgstr "ukaz-vstavek"
 
 #: src/LColor.C:61
 msgid "command-inset background"
-msgstr ""
+msgstr "ozadje ukaza-vstavka"
 
 #: src/LColor.C:62 src/LColor.C:79
 #, fuzzy
@@ -2030,28 +2025,27 @@ msgstr "Nadrejeni:"
 
 #: src/LColor.C:64
 msgid "accent background"
-msgstr ""
+msgstr "ozadje akcenta"
 
 #: src/LColor.C:65
 msgid "accent frame"
-msgstr ""
+msgstr "okvir akcenta"
 
 #: src/LColor.C:66
 msgid "minipage line"
-msgstr ""
+msgstr "vrstica minipage"
 
 #: src/LColor.C:67
 msgid "special char"
-msgstr ""
+msgstr "posebni znak"
 
 #: src/LColor.C:68
-#, fuzzy
 msgid "math"
-msgstr "Matematika"
+msgstr "matematika"
 
 #: src/LColor.C:69
 msgid "math background"
-msgstr ""
+msgstr "ozadje matematike"
 
 #: src/LColor.C:70
 #, fuzzy
@@ -2060,7 +2054,7 @@ msgstr "Matematièni naèin"
 
 #: src/LColor.C:71
 msgid "math cursor"
-msgstr ""
+msgstr "matematièni kurzor"
 
 #: src/LColor.C:72
 #, fuzzy
@@ -2074,34 +2068,31 @@ msgstr "Vstavimo opombo pod èrto"
 
 #: src/LColor.C:74
 msgid "footnote background"
-msgstr ""
+msgstr "ozadje opombe pod èrto"
 
 #: src/LColor.C:75
 msgid "footnote frame"
-msgstr ""
+msgstr "okvir opombe pod èrto"
 
 #: src/LColor.C:76
-#, fuzzy
 msgid "ert"
-msgstr "Vstavimo"
+msgstr "zrb"
 
 #: src/LColor.C:77
-#, fuzzy
 msgid "inset"
-msgstr "Vstavimo"
+msgstr "vstavek"
 
 #: src/LColor.C:78
 msgid "inset background"
-msgstr ""
+msgstr "ozadje vstavka"
 
 #: src/LColor.C:80
-#, fuzzy
 msgid "error"
-msgstr "Napaka"
+msgstr "napaka"
 
 #: src/LColor.C:81
 msgid "end-of-line marker"
-msgstr ""
+msgstr "znak za konec vrstice"
 
 #: src/LColor.C:82
 #, fuzzy
