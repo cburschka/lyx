@@ -24,7 +24,6 @@
 
 
 using std::ostringstream;
-using std::setprecision;
 using std::string;
 
 
@@ -64,25 +63,25 @@ string const LyXLength::asLatexString() const
 	ostringstream os;
 	switch (unit_) {
 	case PTW:
-		os << setprecision(2) << val_/100.0 << "\\textwidth";
+		os << val_ / 100.0 << "\\textwidth";
 		break;
 	case PCW:
-		os << setprecision(2) << val_/100.0 << "\\columnwidth";
+		os << val_ / 100.0 << "\\columnwidth";
 		break;
 	case PPW:
-		os << setprecision(2) << val_/100.0 << "\\paperwidth";
+		os << val_ / 100.0 << "\\paperwidth";
 		break;
 	case PLW:
-		os << setprecision(2) << val_/100.0 << "\\linewidth";
+		os << val_ / 100.0 << "\\linewidth";
 		break;
 	case PPH:
-		os << setprecision(2) << val_/100.0 << "\\paperheight";
+		os << val_ / 100.0 << "\\paperheight";
 		break;
 	case PTH:
-		os << setprecision(2) << val_/100.0 << "\\textheight";
+		os << val_ / 100.0 << "\\textheight";
 		break;
 	default:
-		os << setprecision(2) << val_ << unit_name[unit_];
+		os << val_ << unit_name[unit_];
 	  break;
 	}
 	return os.str();
