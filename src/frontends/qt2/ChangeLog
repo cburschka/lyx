@@ -1,3 +1,8 @@
+2004-12-16  Angus Leeming  <leeming@lyx.org>
+
+	* qt_helpers.C (fromqstr): Don't use std::string(0) to construct
+	a string. Bad things will happen.
+
 2004-12-14  Angus Leeming  <leeming@lyx.org>
 
 	* qgridview.h (class QGridView): remove invalid Q_EXPORT declaration
