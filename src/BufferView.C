@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Alfredo Braustein
+ * \author Alfredo Braunstein
  * \author Lars Gullik Bjønnes
  * \author John Levon
  * \author André Pönitz
@@ -280,15 +280,15 @@ bool BufferView::insertLyXFile(string const & filen)
 void BufferView::showErrorList(string const & action) const
 {
 	if (getErrorList().size()) {
-		string const title = bformat(_("LyX: %1$s errors (%2$s)"), action, buffer()->fileName());
+		string const title = bformat(_("LyX: %1$s errors (%2$s)"),
+			action, buffer()->fileName());
 		owner()->getDialogs().show("errorlist", title);
 		pimpl_->errorlist_.clear();
 	}
 }
 
 
-ErrorList const &
-BufferView::getErrorList() const
+ErrorList const & BufferView::getErrorList() const
 {
 	return pimpl_->errorlist_;
 }
@@ -402,14 +402,14 @@ void BufferView::replaceWord(string const & replacestring)
 	if (!available())
 		return;
 
-	LyXText * tt = getLyXText();
+	LyXText * text = getLyXText();
 
-	tt->replaceSelectionWithString(replacestring);
-	tt->setSelectionRange(replacestring.length());
+	text->replaceSelectionWithString(replacestring);
+	text->setSelectionRange(replacestring.length());
 
 	// Go back so that replacement string is also spellchecked
 	for (string::size_type i = 0; i < replacestring.length() + 1; ++i)
-		tt->cursorLeft(this);
+		text->cursorLeft(this);
 
 	// FIXME: should be done through LFUN
 	buffer()->markDirty();

@@ -113,9 +113,10 @@ bool hfillExpansion(Paragraph const & par, Row const & row, pos_type pos)
 
 	// at the end of a row it does not count
 	// unless another hfill exists on the line
-	if (pos >= lastPos(par, row))
+	if (pos >= lastPos(par, row)) {
 		for (pos_type i = row.pos(); i < pos && !par.isHfill(i); ++i)
 			return false;
+	}
 
 	// at the beginning of a row it does not count, if it is not
 	// the first row of a paragaph

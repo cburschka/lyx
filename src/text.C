@@ -109,7 +109,7 @@ int LyXText::workWidth() const
 int LyXText::getRealCursorX() const
 {
 	int x = cursor.x();
-	if (the_locking_inset && (the_locking_inset->getLyXText(bv())!= this))
+	if (the_locking_inset && the_locking_inset->getLyXText(bv()) != this)
 		x = the_locking_inset->getLyXText(bv())->getRealCursorX();
 	return x;
 }
@@ -157,7 +157,7 @@ unsigned char LyXText::transformChar(unsigned char c, Paragraph const & par,
 // There are some issues in this file and I don't think they are
 // really related to the FIX_DOUBLE_SPACE patch. I'd rather think that
 // this is a problem that has been here almost from day one and that a
-// larger userbase with differenct access patters triggers the bad
+// larger userbase with different access patters triggers the bad
 // behaviour. (segfaults.) What I think happen is: In several places
 // we store the paragraph in the current cursor and then moves the
 // cursor. This movement of the cursor will delete paragraph at the
