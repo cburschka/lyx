@@ -47,6 +47,7 @@
 #include <qspinbox.h>
 #include <qcombobox.h> 
 #include <qlistbox.h>
+#include <qlabel.h>
 #include "qcoloritem.h"
  
 using std::vector;
@@ -339,6 +340,13 @@ void QPrefs::update_contents()
 
 	// FIXME: can derive CB from the two EDs 
 	keymod->keymapCB->setChecked(rc.use_kbmap);
+	// no idea why we need these. Fscking Qt.
+	keymod->firstKeymapED->setEnabled(rc.use_kbmap);
+	keymod->firstKeymapPB->setEnabled(rc.use_kbmap);
+	keymod->firstKeymapLA->setEnabled(rc.use_kbmap);
+	keymod->secondKeymapED->setEnabled(rc.use_kbmap);
+	keymod->secondKeymapPB->setEnabled(rc.use_kbmap);
+	keymod->secondKeymapLA->setEnabled(rc.use_kbmap);
 	keymod->firstKeymapED->setText(rc.primary_kbmap.c_str());
 	keymod->secondKeymapED->setText(rc.secondary_kbmap.c_str());
  

@@ -99,7 +99,7 @@ void QScreen::showManualCursor(LyXText const * text, int x, int y,
 		bitBlt(nocursor_pixmap_.get(), 0, 0, owner_.getPixmap(),
 			cursor_x_, cursor_y_, cursor_w_, cursor_h_);
 
-		owner_.getPainter().line(x, y1, x, y2);
+		owner_.getPainter().line(x, y1, x, y2, LColor::cursor);
 		switch (shape) {
 		case BAR_SHAPE:
 			break;

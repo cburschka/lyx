@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>342</width>
+            <width>338</width>
             <height>253</height>
         </rect>
     </property>
@@ -138,6 +138,44 @@
         </widget>
     </grid>
 </widget>
+<connections>
+    <connection>
+        <sender>keymapCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>firstKeymapLA</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>keymapCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>secondKeymapLA</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>keymapCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>firstKeymapED</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>keymapCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>secondKeymapED</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>keymapCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>firstKeymapPB</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+        <sender>keymapCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>secondKeymapPB</receiver>
+        <slot>setEnabled(bool)</slot>
+    </connection>
+</connections>
 <tabstops>
     <tabstop>keymapCB</tabstop>
     <tabstop>firstKeymapED</tabstop>
