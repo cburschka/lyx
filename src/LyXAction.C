@@ -302,7 +302,7 @@ void LyXAction::init()
 		{ LFUN_MESSAGE, "message", NoBuffer },
 		{ LFUN_TRANSPOSE_CHARS, "chars-transpose", Noop },
 		{ LFUN_FLOAT_LIST, "float-list", Noop },
-		{ LFUN_ESCAPE, "escape", Noop },
+		{ LFUN_ESCAPE, "escape", ReadOnly },
 		{ LFUN_HELP_ABOUTLYX, "help-aboutlyx", NoBuffer },
 		{ LFUN_HELP_TEXINFO, "help-Texinfo", NoBuffer },
 		{ LFUN_FORKS_SHOW, "show-forks", NoBuffer },
