@@ -193,7 +193,7 @@ string MathGridInset::halign() const
 		res += string(colinfo_[col].lines_, '|');
 		res += colinfo_[col].align;
 	}
-	return res + string(colinfo_[ncols()].lines_, '|');
+	return res; 
 }
 
 
@@ -422,8 +422,6 @@ void MathGridInset::metricsT(TextMetricsInfo const & mi) const
 		rowinfo_[row].descent_ = desc;
 	}
 	//rowinfo_[0].ascent_       += hlinesep() * rowinfo_[0].lines_;
-	rowinfo_[nrows()].ascent_  = 0;
-	rowinfo_[nrows()].descent_ = 0;
 
 	// compute vertical offsets
 	rowinfo_[0].offset_ = 0;
@@ -460,7 +458,6 @@ void MathGridInset::metricsT(TextMetricsInfo const & mi) const
 			wid = max(wid, cell(index(row, col)).width());
 		colinfo_[col].width_ = wid;
 	}
-	colinfo_[ncols()].width_  = 0;
 
 	// compute horizontal offsets
 	colinfo_[0].offset_ = border();
