@@ -704,7 +704,7 @@ string const LyXFileDlg::Select(string const & title, string const & path,
 		     FL_FULLBORDER, title.c_str());
 
 	isOk = RunDialog();
-
+	
 	fl_hide_form(pFileDlgForm->FileDlg);
 	fl_activate_all_forms();
 	pCurrentDlg = 0;

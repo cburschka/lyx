@@ -127,10 +127,10 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, FL_Coord, FL_Coord,
 		mini->PrepareForCommand();
 		return 1;
 	case FL_DRAW:
-		lyxerr << "Minibuffer event: DRAW" << endl;
+		//lyxerr << "Minibuffer event: DRAW" << endl;
 		break;
 	default:
-		lyxerr << "Unhandled minibuffer event!" << endl;
+		//lyxerr << "Unhandled minibuffer event!" << endl;
 		break;
 	}
 	

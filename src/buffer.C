@@ -1045,7 +1045,7 @@ bool Buffer::readFile(LyXLex & lex, LyXParagraph * par)
 		if (token == "\\lyxformat") { // the first token _must_ be...
 			lex.EatLine();
 			format = lex.GetFloat();
-			if (format > 1) {
+			if (format > 1.0) {
 				if (LYX_FORMAT - format > 0.05) {
 					lyxerr << fmt(_("Warning: need lyxformat %.2f but found %.2f"),
 						      LYX_FORMAT, format) << endl;
@@ -1068,7 +1068,7 @@ bool Buffer::readFile(LyXLex & lex, LyXParagraph * par)
 				// We simulate a safe reading anyways to allow
 				// users to take the chance... (Asger)
 				return true;
-			} // format < 1
+			} // format < 1.0
 			else {
 				WriteAlert(_("ERROR!"),
 					   _("Old LyX file format found. "

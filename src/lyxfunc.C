@@ -3086,7 +3086,6 @@ void LyXFunc::setupLocalKeymap()
 
 void LyXFunc::MenuNew(bool fromTemplate)
 {
-	string fname;
 	string initpath = lyxrc.document_path;
 	LyXFileDlg fileDlg;
 
@@ -3104,7 +3103,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 		ProhibitInput(owner->view());
 		fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
 		fileDlg.SetButton(1, _("Templates"), lyxrc.template_path);
-		fname = fileDlg.Select(_("Enter Filename for new document"), 
+		string fname = fileDlg.Select(_("Enter Filename for new document"), 
 				       initpath, "*.lyx", _("newfile"));
 		AllowInput(owner->view());
 	
@@ -3176,13 +3175,12 @@ void LyXFunc::MenuNew(bool fromTemplate)
 	string templname;
 	if (fromTemplate) {
 		ProhibitInput(owner->view());
-		fname = fileDlg.Select(_("Choose template"),
+		string fname = fileDlg.Select(_("Choose template"),
 				       lyxrc.template_path,
 				       "*.lyx");
-		if (fname.empty())
-			return;
-                templname = fname;
 		AllowInput(owner->view());
+		if (fname.empty()) return;
+                templname = fname;
 	}
   
 	// find a free buffer
