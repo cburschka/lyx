@@ -14,66 +14,75 @@
 
 class Painter;
 
+
+/** This class extends a MathArray by drawing routines and caches for
+ * metric information.
+ */
 class MathXArray
 {
 public:
-	///
+	/// type for positions and sizes
 	typedef MathArray::size_type       size_type;
-	///
+	/// const iterator into the underlying MathArray
 	typedef MathArray::const_iterator  const_iterator;
 
-	///
+	/// constructor
 	MathXArray();
-	///
+	/// rebuild cached metrics information
 	void metrics(MathMetricsInfo const & st) const;
-	///
+	/// redraw cell using cache metrics information
 	void draw(Painter & pain, int x, int y) const;
 
-	///
+	/// access to cached x coordinate of last drawing
 	int xo() const { return xo_; }
-	///
+	/// access to cached y coordinate of last drawing
 	int yo() const { return yo_; }
-	///
+	/// returns x coordinate of given position in the array
 	int pos2x(size_type pos) const;
-	///
+	/// returns position of given x coordinate
 	size_type x2pos(int pos) const;
 	/// returns distance of this cell to the point given by x and y
 	// assumes valid position and size cache
 	int dist(int x, int y) const;
 
-	///
+	/// ascent of this cell above the baseline
 	int ascent() const { return ascent_; }
-	///
+	/// descent of this cell below the baseline
 	int descent() const { return descent_; }
-	///
+	/// height of the cell
 	int height() const { return ascent_ + descent_; }
-	///
+	/// width of this cell
 	int width() const { return width_; }
 	/// do we cover point(x, y)?
 	bool covers(int x, int y) const;
+	/// bounding box of this cell
+	void boundingBox(int & xlow, int & xhigh, int & ylow, int & yhigh);
+	/// find best position to do things
+	//void findPos(PosFinder &) const;
 
-	///
+	/// begin iterator of the underlying MathArray
 	const_iterator begin() const { return data_.begin(); }
-	///
+	/// end iterator of the underlying MathArray
 	const_iterator end() const { return data_.end(); }
 	
 public:
-	///
+	/// the underlying MathArray
 	MathArray data_;
-	///
+	/// cached width of cell
 	mutable int width_;
-	///
+	/// cached ascent of cell
 	mutable int ascent_;
-	///
+	/// cached descent of cell
 	mutable int descent_;
-	///
+	/// cached x coordinate of last drawing
 	mutable int xo_;
-	///
+	/// cached y coordinate of last drawing
 	mutable int yo_;
-	///
+	/// cache size information of last drawing
 	mutable MathMetricsInfo size_;
 };
 
+/// output cell on a stream
 std::ostream & operator<<(std::ostream & os, MathXArray const & ar);
 
 #endif

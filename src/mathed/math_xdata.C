@@ -151,3 +151,39 @@ bool MathXArray::covers(int x, int y) const
 	int const y1 = yo_ + descent_;
 	return x >= x0 && x <= x1 && y >= y0 && y <= y1;
 }
+
+
+void MathXArray::boundingBox(int & x1, int & x2, int & y1, int & y2)
+{
+	x1 = xo_;
+	x2 = xo_ + width_;
+	y1 = yo_ - ascent_;
+	y2 = yo_ + descent_;
+}
+
+/*
+void MathXArray::findPos(MathPosFinder & f) const
+{
+	double x = xo_;
+	double y = yo_; 
+	for (const_iterator it = begin(); it < end(); ++it) {
+		// check this position in the cell first
+		f.visit(x, y);
+		f.nextPos();
+
+		// check inset
+		MathInset const * p = it->nucleus();
+		p->findPos(f);
+
+		// move on
+		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
+		if (q) {
+			x += q->width(p);
+			f.nextPos();
+			++it;
+		} else {
+			x += p->width();
+		}
+	}
+}
+*/

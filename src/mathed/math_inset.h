@@ -72,6 +72,7 @@ class LaTeXFeatures;
 class BufferView;
 class UpdatableInset;
 class MathMacroTemplate;
+class MathPosFinder;
 
 
 class MathInset {

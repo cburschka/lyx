@@ -487,31 +487,27 @@ int MathGridInset::cellYOffset(idx_type idx) const
 }
 
 
-bool MathGridInset::idxUp(idx_type & /*idx*/, pos_type & /*pos*/) const
+bool MathGridInset::idxUp(idx_type & idx, pos_type & pos) const
 {
-	return false;
-/*
+	//return false;
 	if (idx < ncols())
 		return false;
 	int x = cellXOffset(idx) + xcell(idx).pos2x(pos);
 	idx -= ncols();
 	pos = xcell(idx).x2pos(x - cellXOffset(idx));
 	return true;
-*/
 }
 
 	
-bool MathGridInset::idxDown(idx_type & /*idx*/, pos_type & /*pos*/) const
+bool MathGridInset::idxDown(idx_type & idx, pos_type & pos) const
 {
-	return false;
-/*
+	//return false;
 	if (idx >= ncols() * (nrows() - 1))
 		return false;
 	int x = cellXOffset(idx) + xcell(idx).pos2x(pos);
 	idx += ncols();
 	pos = xcell(idx).x2pos(x - cellXOffset(idx));
 	return true;
-*/
 }
 	
 	

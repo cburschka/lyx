@@ -42,13 +42,12 @@ this formula's mathHullInset to the current position.
 
 
 /// Description of a position 
-struct MathCursorPos {
-	/// pointer to an inset
-	MathAtom * par_;
-	/// cell index of a position in this inset
-	MathInset::idx_type idx_;
-	/// position in this cell
-	MathInset::pos_type pos_;
+class MathCursorPos {
+public:
+	/// 
+	MathCursorPos();
+	/// 
+	explicit MathCursorPos(MathInset * p);
 
 	/// returns cell corresponding to this position
 	MathArray & cell() const;
@@ -58,12 +57,28 @@ struct MathCursorPos {
 	MathXArray & xcell() const;
 	/// returns xcell corresponding to this position
 	MathXArray & xcell(MathInset::idx_type idx) const;
+	///
+	int xpos() const;
+	///
+	int ypos() const;
+
+public:
+	/// pointer to an inset
+	MathInset * par_;
+	/// cell index of a position in this inset
+	MathInset::idx_type idx_;
+	/// position in this cell
+	MathInset::pos_type pos_;
 };
 
 /// test for equality
 bool operator==(MathCursorPos const &, MathCursorPos const &);
-/// test for unequality
+/// test for inequality
+bool operator!=(MathCursorPos const &, MathCursorPos const &);
+/// test for order
 bool operator<(MathCursorPos const &, MathCursorPos const &);
+/// output
+std::ostream & operator<<(std::ostream &, MathCursorPos const &);
 
 
 /// see above
@@ -128,7 +143,7 @@ public:
 	/// in pixels from top of screen
 	void getPos(int & x, int & y);
 	/// 
-	MathAtom & par() const;
+	MathInset * par() const;
 	/// return the next enclosing grid inset and the cursor's index in it
 	MathGridInset * enclosingGrid(idx_type &) const;
 	///
@@ -275,6 +290,8 @@ private:
 	bool goDown();
 	/// moves position somehow down
 	bool bruteUpDown(int ylow, int yhigh);
+	/// moves position into box
+	bool bruteFind(int xlow, int xhigh, int ylow, int yhigh);
 
 	///
 	string macroName() const;

@@ -68,6 +68,8 @@ libmathed_la_SOURCES = \
 	math_hullinset.h \
 	math_inset.C \
 	math_inset.h \
+	math_iterator.C \
+	math_iterator.h \
 	math_kerninset.C \
 	math_kerninset.h \
 	math_lefteqninset.C \

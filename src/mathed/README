@@ -26,12 +26,12 @@ Inset hierarchy:
 
       /   \
 
- Array     "Matrix"
+ Array    Hull
          (base for eqnarray/align/...)
 
 
 
 There are only two "real LyXInsets" in here:
 
-Formula       - containing a pointer to a  MathMatrixInset (a misnomer...)
+Formula       - containing a pointer to a  MathHullInset 
 FormulaMacro  - containing a pointer to a  MathMacroTemplate
