@@ -195,14 +195,17 @@ static string unique_id() {
 #ifdef HAVE_SSTREAM
 	std::ostringstream ost;
 	ost << "file" << ++seed;
+
+	// Needed if we use lyxstring.
+	return ost.str().c_str();
 #else
 	char ctmp[16];
 	ostrstream ost(ctmp,16);
 	ost << "file" << ++seed << '\0';
-#endif
 
 	// Needed if we use lyxstring.
-	return ost.str().c_str();
+	return ost.str();
+#endif
 }
 
 
