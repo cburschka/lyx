@@ -44,6 +44,7 @@
 #   the images correctly on the screen.
 
 import glob, os, re, string, sys
+from legacy_lyxpreview2ppm import legacy_conversion
 
 
 # Pre-compiled regular expressions.
@@ -159,7 +160,16 @@ def main(argv):
     # External programs used by the script.
     path = string.split(os.getenv("PATH"), os.pathsep)
     latex = find_exe_or_terminate(["pplatex", "latex2e", "latex"], path)
-    dvipng = find_exe_or_terminate(["dvipng"], path)
+
+    # This can go once dvipng becomes widespread.
+    dvipng = find_exe(["dvipng"], path)
+    if dvipng == None:
+        if output_format == "ppm":
+            return legacy_conversion(argv)
+        else:
+            error("The old 'dvi->ps->ppm' conversion requires "
+                  "ppm as the output format")
+
     pngtopnm = ""
     if output_format == "ppm":
         pngtopnm = find_exe_or_terminate(["pngtopnm"], path)
@@ -191,6 +201,7 @@ def main(argv):
     if output_format == "ppm":
         convert_to_ppm_format(pngtopnm, latex_file_re.sub("", latex_file))
 
+    return 0
 
 if __name__ == "__main__":
     main(sys.argv)

@@ -1,5 +1,12 @@
 2004-04-19  Angus Leeming  <leeming@lyx.org>
 
+	* scripts/legacy_lyxpreview2ppm.py: new file. Called automatically
+	by lyxpreview2bitmap.py if dvipng is not found.
+
+	* scripts/lyxpreview2bitmap.py (main): changes to suit.
+
+2004-04-19  Angus Leeming  <leeming@lyx.org>
+
 	* scripts/lyxpreview2bitmap.py (extract_metrics_info): make the
 	regex a little more robust. Now recognizes negative integers.
 
