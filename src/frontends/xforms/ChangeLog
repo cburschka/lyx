@@ -3,6 +3,13 @@
 	* xformsGImage.C (clip): no need to check if the width, height are > 0
 	because the BoundingBox would be empty() in this weren't the case.
 
+2002-04-08  Juergen Spitzmueller <j.spitzmueller@gmx.de>
+
+	* FormDocument.[Ch]: Add a new method UpdateClassParams
+	which is used in CheckChoiceClass to update the fontsizes
+	and other necessary stuff (pagestyle) on class change
+	(hopefully finally fix bug #306)
+
 2002-04-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* forms/Makefile.am (SUFFIXES): instead of .SUFFIXES

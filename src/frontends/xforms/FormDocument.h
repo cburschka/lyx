@@ -108,6 +108,8 @@ private:
 	void CheckChoiceClass(FL_OBJECT * ob, long);
 	///
 	void UpdateLayoutDocument(BufferParams const & params);
+	///
+	void UpdateClassParams(BufferParams const & params);
 
 	///
 	void paper_update(BufferParams const &);

@@ -964,28 +964,38 @@ void FormDocument::bullets_apply()
 	bullets_apply(lv_->buffer()->params);
 }
 
+void FormDocument::UpdateClassParams(BufferParams const & params)
+{
+	// These are the params that have to be updated on any class change
+	// (even if the class defaults are not used) (JSpitzm 2002-04-08)
+
+	LyXTextClass const & tclass = textclasslist[params.textclass];
+
+	combo_doc_class->select(tclass.description());
+	fl_clear_choice(class_->choice_doc_fontsize);
+	fl_addto_choice(class_->choice_doc_fontsize, "default");
+	fl_addto_choice(class_->choice_doc_fontsize,
+			tclass.opt_fontsize().c_str());
+	fl_set_choice_text(class_->choice_doc_fontsize,
+			params.fontsize.c_str());
+	fl_clear_choice(class_->choice_doc_pagestyle);
+	fl_addto_choice(class_->choice_doc_pagestyle, "default");
+	fl_addto_choice(class_->choice_doc_pagestyle,
+			tclass.opt_pagestyle().c_str());
+	fl_set_choice_text(class_->choice_doc_pagestyle,
+			params.pagestyle.c_str());
+
+}
 
 void FormDocument::class_update(BufferParams const & params)
 {
 	if (!class_.get())
 		return;
 
-	LyXTextClass const & tclass = textclasslist[params.textclass];
+	UpdateClassParams(params);
 
-	combo_doc_class->select(tclass.description());
-	fl_set_choice_text(class_->choice_doc_fonts, params.fonts.c_str());
-	fl_clear_choice(class_->choice_doc_fontsize);
-	fl_addto_choice(class_->choice_doc_fontsize, "default");
-	fl_addto_choice(class_->choice_doc_fontsize,
-			tclass.opt_fontsize().c_str());
-	fl_set_choice(class_->choice_doc_fontsize,
-		      tokenPos(tclass.opt_fontsize(), '|', params.fontsize)+2);
-	fl_clear_choice(class_->choice_doc_pagestyle);
-	fl_addto_choice(class_->choice_doc_pagestyle, "default");
-	fl_addto_choice(class_->choice_doc_pagestyle,
-			tclass.opt_pagestyle().c_str());
-	fl_set_choice(class_->choice_doc_pagestyle,
-		      tokenPos(tclass.opt_pagestyle(), '|', params.pagestyle)+2);
+	fl_set_choice_text(class_->choice_doc_fonts,
+		params.fonts.c_str());
 	fl_set_button(class_->radio_doc_indent, 0);
 	fl_set_button(class_->radio_doc_skip, 0);
 	if (params.paragraph_separation == BufferParams::PARSEP_INDENT)
@@ -1459,8 +1469,10 @@ void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
 			params.useClassDefaults();
 			UpdateLayoutDocument(params);
 		} else {
+			// update the params which are needed in any case
+			// (fontsizes, pagestyle)
 			params.textclass = tc;
-			UpdateLayoutDocument(params);
+			UpdateClassParams(params);
 		}
 
 	} else {
