@@ -54,6 +54,9 @@ What's new
   
 - fix handling of counters in the scrlettr and scrlttr2 classes.
 
+- fix off-by-one-error which caused LyX to chose the wrong custom margin 
+  package.
+
 * User Interface:
 
 - use opening quotation marks after an opening square bracket

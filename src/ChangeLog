@@ -1,3 +1,8 @@
+2004-06-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* tex-strings.C: add "none" to string_paperpackages[], fixes
+	off-by-one-error in the paperpackage selection.
+
 2004-04-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text2.C (setCounter): 
