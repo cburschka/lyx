@@ -14,10 +14,13 @@
 
 
 #include "lyxfont.h"
-#include "LColor.h"
 
 #include <utility>
 #include <vector>
+
+
+class EnumLColor;
+
 
 /** Functions of use to the character GUI controller and view */
 namespace frnt {
@@ -47,7 +50,7 @@ typedef std::pair<string, LyXFont::FONT_SIZE>   SizePair;
 ///
 typedef std::pair<string, FONT_STATE> BarPair;
 ///
-typedef std::pair<string, LColor::color> ColorPair;
+typedef std::pair<string, EnumLColor> ColorPair;
 
 ///
 std::vector<FamilyPair>   const getFamilyData();

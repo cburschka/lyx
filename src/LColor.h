@@ -238,6 +238,23 @@ private:
 	boost::scoped_ptr<Pimpl> pimpl_;
 };
 
+
+/** \c EnumLColor is a wrapper for LColor::color. It can be forward-declared and
+ *  passed as a function argument without having to expose LColor.h.
+ */
+class EnumLColor {
+        LColor::color val_;
+public:
+        /** The default constructor is nasty,
+	 *  but allows us to use EnumLColor in STL containers.
+	 */
+	EnumLColor() : val_(static_cast<LColor::color>(-1)) {}
+
+	EnumLColor(LColor::color val) : val_(val) {}
+        operator LColor::color() const{ return val_; }
+};
+
+
 /// the current color definitions
 extern LColor lcolor;
 /// the system color definitions

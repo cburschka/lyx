@@ -12,6 +12,7 @@
 
 #include "QWorkArea.h"
 #include "debug.h"
+#include "LColor.h"
 #include "qt_helpers.h"
 #include "lcolorcache.h"
 #include "funcrequest.h"

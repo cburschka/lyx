@@ -20,6 +20,7 @@
 #include "format.h"
 #include "gettext.h"
 #include "funcrequest.h"
+#include "LColor.h"
 #include "lfuns.h"
 
 #include "frontends/Dialogs.h"
@@ -133,7 +134,7 @@ void ControlPrefs::redrawGUI()
 }
 
 
-void ControlPrefs::setColor(LColor::color col, string const & hex)
+void ControlPrefs::setColor(EnumLColor col, string const & hex)
 {
 	string const s = lcolor.getLyXName(col) + ' ' + hex;
 	lv_.dispatch(FuncRequest(LFUN_SET_COLOR, s));

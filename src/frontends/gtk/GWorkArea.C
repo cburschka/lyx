@@ -13,11 +13,13 @@
 #include <X11/Xft/Xft.h>
 
 #include "GWorkArea.h"
-#include "debug.h"
-#include "funcrequest.h"
 #include "GView.h"
 #include "GtkmmX.h"
 #include "GLyXKeySym.h"
+
+#include "debug.h"
+#include "funcrequest.h"
+#include "LColor.h"
 
 ColorCache colorCache;
 
@@ -35,7 +37,7 @@ void ColorCache::clear()
 }
 
 
-XftColor * ColorHandler::getXftColor(LColor::color clr)
+XftColor * ColorHandler::getXftColor(EnumLColor clr)
 {
 	XftColor * xclr = colorCache.getXftColor(clr);
 	if (!xclr) {
@@ -52,7 +54,7 @@ XftColor * ColorHandler::getXftColor(LColor::color clr)
 }
 
 
-Gdk::Color * ColorHandler::getGdkColor(LColor::color clr)
+Gdk::Color * ColorHandler::getGdkColor(EnumLColor clr)
 {
 	Gdk::Color * gclr = colorCache.getColor(clr);
 	if (!gclr) {

@@ -1,5 +1,18 @@
 2003-09-15  Angus Leeming  <leeming@lyx.org>
 
+	* LColor.h: add an EnumLColor wrapper for LColor::color.
+
+	* lyxfont.[Ch] (color, setColor, realColor):
+	* lyxtext.h, text.C (backgroundColor):
+	pass EnumLColor args to/from the functions, rather than LColor::color ones.
+
+	* lyxfont.h:
+	* lyxtext.h: forward declare EnumLColor.
+
+	* lyx_main.C: add #include "LColor.h".
+
+2003-09-15  Angus Leeming  <leeming@lyx.org>
+
 	* .cvsignore: add lyx-gtk.
 
 2003-09-15  Lars Gullik Bjønnes  <larsbj@gullik.net>

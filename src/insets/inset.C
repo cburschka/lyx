@@ -84,13 +84,13 @@ LyXText * InsetOld::getLyXText(BufferView const * bv, bool /*recursive*/) const
 }
 
 
-void InsetOld::setBackgroundColor(LColor::color color)
+void InsetOld::setBackgroundColor(EnumLColor color)
 {
 	background_color_ = color;
 }
 
 
-LColor::color InsetOld::backgroundColor() const
+EnumLColor InsetOld::backgroundColor() const
 {
 	if (background_color_ == LColor::inherit) {
 		if (owner())

@@ -14,6 +14,8 @@
 
 #include "lyx_forms.h"
 
+#include "LColor.h"
+
 #include "support/std_sstream.h"
 
 #include <cmath>
@@ -48,7 +50,7 @@ int hexstrToInt(string const & str)
 
 
 
-bool getRGBColor(LColor::color col,
+bool getRGBColor(EnumLColor col,
 		 unsigned int & r, unsigned int & g, unsigned int & b)
 {
 	string const name = lcolor.getX11Name(col);

@@ -27,6 +27,7 @@ class Buffer;
 class BufferParams;
 class BufferView;
 class Dimension;
+class EnumLColor;
 class InsetText;
 class LyXCursor;
 class MetricsInfo;
@@ -398,7 +399,7 @@ public:
 		lyx::pos_type pos, char c, LyXFont const & Font) const;
 
 	/// return the color of the canvas
-	LColor::color backgroundColor() const;
+	EnumLColor backgroundColor() const;
 
 	///
 	mutable bool bidi_same_direction;

@@ -1,3 +1,16 @@
+2003-09-15  Angus Leeming  <leeming@lyx.org>
+
+	* ControlCharacter.C (setColor, getColor):
+	pass EnumLColor args, rather than LColor::color ones.
+
+	* ControlPrefs.C: add #include "LColor.h".
+	* ControlPrefs.h:remove #include "LColor.h".
+
+	* ControlPrefs.[Ch] (setColor): pass EnumLColor arg, not than LColor::color one.
+
+	* character.h:remove #include "LColor.h".
+	typedef ColorPair as a std::pair<string, EnumLColor>.
+
 2003-09-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* ControlAboutlyx.C

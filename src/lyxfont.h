@@ -20,6 +20,7 @@
 #include "support/std_string.h"
 #include <iosfwd>
 
+class EnumLColor;
 class LyXLex;
 class BufferParams;
 class Language;
@@ -207,7 +208,7 @@ public:
 	FONT_MISC_STATE number() const;
 
 	///
-	LColor::color color() const;
+	EnumLColor color() const;
 
 	///
 	Language const * language() const;
@@ -238,7 +239,7 @@ public:
 	///
 	LyXFont & setNumber(LyXFont::FONT_MISC_STATE n);
 	///
-	LyXFont & setColor(LColor::color c);
+	LyXFont & setColor(EnumLColor c);
 	///
 	LyXFont & setLanguage(Language const * l);
 
@@ -310,7 +311,7 @@ public:
 	string const stateText(BufferParams * params) const;
 
 	///
-	LColor::color realColor() const;
+	EnumLColor realColor() const;
 
 	///
 	friend

@@ -11,21 +11,26 @@
 #include <config.h>
 #include <gtkmm.h>
 
-#include <algorithm>
+#include "GScreen.h"
+
+#include "GWorkArea.h"
+
+#include "buffer.h"
+#include "BufferView.h"
+#include "debug.h"
+#include "language.h"
+#include "LColor.h"
+#include "lyxtext.h"
+#include "lyxrow.h"
 
 #include "frontends/screen.h"
 #include "frontends/font_metrics.h"
-#include "GWorkArea.h"
-#include "GScreen.h"
-#include "lyxtext.h"
-#include "lyxrow.h"
-#include "Painter.h"
-#include "WorkArea.h"
-#include "buffer.h"
-#include "BufferView.h"
+#include "frontends/Painter.h"
+#include "frontends/WorkArea.h"
+
 #include "insets/insettext.h"
-#include "language.h"
-#include "debug.h"
+
+#include <algorithm>
 
 
 GScreen::GScreen(GWorkArea & o)

@@ -202,7 +202,7 @@ LyXFont::FONT_MISC_STATE LyXFont::underbar() const
 }
 
 
-LColor::color LyXFont::color() const
+EnumLColor LyXFont::color() const
 {
 	return bits.color;
 }
@@ -282,7 +282,7 @@ LyXFont & LyXFont::setNoun(LyXFont::FONT_MISC_STATE n)
 }
 
 
-LyXFont & LyXFont::setColor(LColor::color c)
+LyXFont & LyXFont::setColor(EnumLColor c)
 {
 	bits.color = c;
 	return *this;
@@ -930,7 +930,7 @@ int LyXFont::latexWriteEndChanges(ostream & os, LyXFont const & base,
 }
 
 
-LColor::color LyXFont::realColor() const
+EnumLColor LyXFont::realColor() const
 {
 	if (color() == LColor::none)
 		return LColor::foreground;

@@ -28,6 +28,7 @@ class Buffer;
 class BufferParams;
 class BufferView;
 class Dimension;
+class EnumLColor;
 class LyXCursor;
 class Painter;
 class Paragraph;
@@ -128,7 +129,7 @@ public:
 	///
 	void setDrawFrame(DrawFrame);
 	///
-	void setFrameColor(LColor::color);
+	void setFrameColor(EnumLColor);
 	///
 	LyXText * getLyXText(BufferView const *,
 			     bool const recursive = false) const;

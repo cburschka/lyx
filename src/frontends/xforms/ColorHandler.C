@@ -14,6 +14,7 @@
 
 #include "debug.h"
 #include "gettext.h"
+#include "LColor.h"
 
 #include "support/lstrings.h"
 #include "support/tostr.h"
@@ -76,7 +77,7 @@ LyXColorHandler::~LyXColorHandler()
 }
 
 
-unsigned long LyXColorHandler::colorPixel(LColor::color c)
+unsigned long LyXColorHandler::colorPixel(EnumLColor c)
 {
 	XGCValues val;
 	XGetGCValues(display, getGCForeground(c), GCForeground, &val);
@@ -162,7 +163,7 @@ GC LyXColorHandler::getGCForeground(string const & s)
 
 // Gets GC according to color
 // Uses caching
-GC LyXColorHandler::getGCForeground(LColor::color c)
+GC LyXColorHandler::getGCForeground(EnumLColor c)
 {
 	if (static_cast<unsigned>(c) >= colorGCcache.size()) {
 		colorGCcache.resize(c + 1, 0);
@@ -187,7 +188,7 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 
 // Gets GC for line
 GC LyXColorHandler::getGCLinepars(Painter::line_style ls,
-				  Painter::line_width lw, LColor::color c)
+				  Painter::line_width lw, EnumLColor c)
 {
 	//if (lyxerr.debugging()) {
 	//	lyxerr << "Painter drawable: " << drawable() << endl;
@@ -233,7 +234,7 @@ GC LyXColorHandler::getGCLinepars(Painter::line_style ls,
 
 
 // update GC cache after color redefinition
-void LyXColorHandler::updateColor (LColor::color c)
+void LyXColorHandler::updateColor (EnumLColor c)
 {
 	// color GC cache
 	GC gc = colorGCcache[c];

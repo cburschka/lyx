@@ -15,33 +15,34 @@
 #include <gdk/gdkx.h>
 #include "frontends/WorkArea.h"
 #include "GPainter.h"
-#include "LColor.h"
 #include <gtk/gtk.h>
 #include <X11/Xft/Xft.h>
 
+class EnumLColor;
+
 class ColorCache
 {
-	typedef std::map<LColor::color, Gdk::Color *> Map;
+	typedef std::map<EnumLColor, Gdk::Color *> Map;
 	typedef Map::iterator MapIt;
-	typedef std::map<LColor::color, XftColor *> Map2;
+	typedef std::map<EnumLColor, XftColor *> Map2;
 	typedef Map2::iterator MapIt2;
 public:
 	~ColorCache() { clear(); }
-	Gdk::Color * getColor(LColor::color clr)
+	Gdk::Color * getColor(EnumLColor clr)
 	{
 		MapIt it = cache_.find(clr);
 		return it == cache_.end() ? 0 : it->second;
 	}
-	XftColor * getXftColor(LColor::color clr)
+	XftColor * getXftColor(EnumLColor clr)
 	{
 		MapIt2 it = cache2_.find(clr);
 		return it == cache2_.end() ? 0 : it->second;
 	}
-	void cacheColor(LColor::color clr, Gdk::Color * gclr)
+	void cacheColor(EnumLColor clr, Gdk::Color * gclr)
 	{
 		cache_[clr] = gclr;
 	}
-	void cacheXftColor(LColor::color clr, XftColor * xclr)
+	void cacheXftColor(EnumLColor clr, XftColor * xclr)
 	{
 		cache2_[clr] = xclr;
 	}
@@ -57,8 +58,8 @@ class ColorHandler
 {
 public:
 	ColorHandler(GWorkArea& owner) : owner_(owner) {}
-	XftColor * getXftColor(LColor::color clr);
-	Gdk::Color * getGdkColor(LColor::color clr);
+	XftColor * getXftColor(EnumLColor clr);
+	Gdk::Color * getGdkColor(EnumLColor clr);
 private:
 	GWorkArea & owner_;
 };

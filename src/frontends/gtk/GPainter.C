@@ -18,6 +18,7 @@
 #include "lyxrc.h"
 #include "encoding.h"
 #include "language.h"
+#include "LColor.h"
 #include "xftFontLoader.h"
 #include "xformsImage.h"
 #include "frontends/font_metrics.h"
@@ -50,7 +51,7 @@ int GPainter::paperHeight() const
 }
 
 
-void GPainter::setForeground(Glib::RefPtr<Gdk::GC> gc, LColor::color clr)
+void GPainter::setForeground(Glib::RefPtr<Gdk::GC> gc, EnumLColor clr)
 {
 	Gdk::Color * gclr = owner_.getColorHandler().getGdkColor(clr);
 	gc->set_foreground(*gclr);
@@ -84,7 +85,7 @@ void GPainter::setLineParam(Glib::RefPtr<Gdk::GC> gc,
 }
 
 
-Painter & GPainter::point(int x, int y, LColor::color c)
+Painter & GPainter::point(int x, int y, EnumLColor c)
 {
 	setForeground(owner_.getGC(), c);
 	owner_.getPixmap()->draw_point(owner_.getGC(), x, y);
@@ -94,7 +95,7 @@ Painter & GPainter::point(int x, int y, LColor::color c)
 
 Painter & GPainter::line(int x1, int y1,
 	int x2, int y2,
-	LColor::color col,
+	EnumLColor col,
 	line_style ls,
 	line_width lw)
 {
@@ -107,7 +108,7 @@ Painter & GPainter::line(int x1, int y1,
 
 Painter & GPainter::lines(int const * xp, int const * yp,
 	int np,
-	LColor::color col,
+	EnumLColor col,
 	line_style ls,
 	line_width lw)
 {
@@ -126,7 +127,7 @@ Painter & GPainter::lines(int const * xp, int const * yp,
 
 Painter & GPainter::rectangle(int x, int y,
 	int w, int h,
-	LColor::color col,
+	EnumLColor col,
 	line_style ls,
 	line_width lw)
 {
@@ -139,7 +140,7 @@ Painter & GPainter::rectangle(int x, int y,
 
 Painter & GPainter::fillRectangle(int x, int y,
 	int w, int h,
-	LColor::color col)
+	EnumLColor col)
 {
 	setForeground(owner_.getGC(), col);
 	owner_.getPixmap()->draw_rectangle(owner_.getGC(), true, x, y, w, h);
@@ -148,7 +149,7 @@ Painter & GPainter::fillRectangle(int x, int y,
 
 
 Painter & GPainter::fillPolygon(int const * xp, int const * yp,
-	int np, LColor::color col)
+	int np, EnumLColor col)
 {
 	setForeground(owner_.getGC(), col);
 	std::vector<Gdk::Point> points(np);
@@ -164,7 +165,7 @@ Painter & GPainter::fillPolygon(int const * xp, int const * yp,
 
 Painter & GPainter::arc(int x, int y,
 	unsigned int w, unsigned int h,
-	int a1, int a2, LColor::color col)
+	int a1, int a2, EnumLColor col)
 {
 	setForeground(owner_.getGC(), col);
 	owner_.getPixmap()->draw_arc(owner_.getGC(),

@@ -29,6 +29,7 @@
 #include "kbmap.h"
 #include "language.h"
 #include "lastfiles.h"
+#include "LColor.h"
 #include "lyxfunc.h"
 #include "lyxlex.h"
 #include "lyxrc.h"

@@ -12,13 +12,13 @@
 #ifndef LYX_GUI_H
 #define LYX_GUI_H
 
-#include "LColor.h"
 #include "support/std_string.h"
 #include "FuncStatus.h"
 
 #include <vector>
 
 class Dialogs;
+class EnumLColor;
 class LyXFont;
 class LyXComm;
 class FuncRequest;
@@ -72,12 +72,12 @@ FuncStatus getStatus(FuncRequest const & ev);
 /** Eg, passing LColor::black returns "000000",
  *      passing LColor::white returns "ffffff".
  */
-string const hexname(LColor::color col);
+string const hexname(EnumLColor col);
 
 /**
  * update an altered GUI color
  */
-void update_color(LColor::color col);
+void update_color(EnumLColor col);
 
 /**
  * update the font cache

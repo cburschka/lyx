@@ -18,12 +18,15 @@
 
 
 #include "support/std_string.h"
-#include "LColor.h"
+
+
+class EnumLColor;
+
 
 /** Given col, fills r, g, b in the range 0-255.
     The function returns true if successful.
     It returns false on failure and sets r, g, b to 0. */
-bool getRGBColor(LColor::color col,
+bool getRGBColor(EnumLColor col,
 		 unsigned int & r, unsigned int & g, unsigned int & b);
 
 struct RGBColor;

@@ -1,5 +1,25 @@
 2003-09-15  Angus Leeming  <leeming@lyx.org>
 
+	* QLPainter.C: add #include "LColor.h".
+	* QLPainter.[Ch] (setPen, point, line, lines, rectangle, fillPolygon, arc):
+	pass EnumLColor args, rather than LColor::color ones.
+
+	* QPrefsDialog.C: add #include "LColor.h".
+	* QPrefsDialog.h: remove #include "LColor.h". Store a vector<EnumLColor> colors_;
+
+	* QWorkArea.C: add #include "LColor.h".
+
+	* lcolorcache.C: add #include "LColor.h".
+	* lcolorcache.h: store a map<EnumLColor, QColor>.
+	* lcolorcache.[Ch] (get):pass EnumLColor args, rather than LColor::color ones.
+
+	* qscreen.C: add #include "LColor.h".
+
+	* lyx_gui.C (hexname, update_color): pass EnumLColor args, rather
+	than LColor::color ones.
+
+2003-09-15  Angus Leeming  <leeming@lyx.org>
+
 	* QAbout.C (build_dialog): 
 	* QPrefs.C (apply): remove STRCONV.
 

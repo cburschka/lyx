@@ -15,8 +15,9 @@
 
 
 #include "support/std_string.h"
-#include "LColor.h"
 
+
+class EnumLColor;
 class LyXFont;
 
 namespace lyx {
@@ -77,7 +78,7 @@ public:
 	virtual Painter & line(
 		int x1, int y1,
 		int x2, int y2,
-		LColor::color = LColor::foreground,
+		EnumLColor,
 		line_style = line_solid,
 		line_width = line_thin) = 0;
 
@@ -91,7 +92,7 @@ public:
 		int const * xp,
 		int const * yp,
 		int np,
-		LColor::color = LColor::foreground,
+		EnumLColor,
 		line_style = line_solid,
 		line_width = line_thin) = 0;
 
@@ -99,7 +100,7 @@ public:
 	virtual Painter & rectangle(
 		int x, int y,
 		int w, int h,
-		LColor::color = LColor::foreground,
+		EnumLColor,
 		line_style = line_solid,
 		line_width = line_thin) = 0;
 
@@ -107,26 +108,26 @@ public:
 	virtual Painter & fillRectangle(
 		int x, int y,
 		int w, int h,
-		LColor::color) = 0;
+		EnumLColor) = 0;
 
 	/// draw a filled (irregular) polygon
 	virtual Painter & fillPolygon(
 		int const * xp,
 		int const * yp,
 		int np,
-		LColor::color = LColor::foreground) = 0;
+		EnumLColor) = 0;
 
 	/// draw an arc
 	virtual Painter & arc(
 		int x, int y,
 		unsigned int w, unsigned int h,
 		int a1, int a2,
-		LColor::color = LColor::foreground) = 0;
+		EnumLColor) = 0;
 
 	/// draw a pixel
 	virtual Painter & point(
 		int x, int y,
-		LColor::color = LColor::foreground) = 0;
+		EnumLColor) = 0;
 
 	/// draw a filled rectangle with the shape of a 3D button
 	virtual Painter & button(int x, int y,
@@ -162,8 +163,8 @@ public:
 	Painter & rectText(int x, int baseline,
 		string const & string,
 		LyXFont const & font,
-		LColor::color back = LColor::none,
-		LColor::color frame = LColor::none);
+		EnumLColor back,
+		EnumLColor frame);
 
 	/// draw a string and enclose it inside a button frame
 	Painter & buttonText(int x,

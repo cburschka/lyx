@@ -17,6 +17,7 @@
 #include "XWorkArea.h"
 
 #include "debug.h"
+#include "LColor.h"
 
 using std::endl;
 

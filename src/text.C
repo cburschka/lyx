@@ -876,7 +876,7 @@ int LyXText::labelFill(ParagraphList::iterator pit, Row const & row) const
 }
 
 
-LColor::color LyXText::backgroundColor() const
+EnumLColor LyXText::backgroundColor() const
 {
 	if (inset_owner)
 		return inset_owner->backgroundColor();

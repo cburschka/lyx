@@ -14,9 +14,11 @@
 
 #include <map>
 
-#include "LColor.h"
-
 #include <qcolor.h>
+
+
+class EnumLColor;
+
 
 // FIXME: use a fixed-size array not a map ?
 
@@ -28,13 +30,13 @@ public:
 	LColorCache();
 
 	/// get the given color
-	QColor const & get(LColor::color color) const;
+	QColor const & get(EnumLColor color) const;
 
 	/// clear all colors
 	void clear();
 
 private:
-	typedef std::map<LColor::color, QColor> lcolor_map;
+	typedef std::map<EnumLColor, QColor> lcolor_map;
 
 	mutable lcolor_map colormap;
 };

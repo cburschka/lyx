@@ -1451,7 +1451,7 @@ void InsetText::setDrawFrame(DrawFrame how)
 }
 
 
-void InsetText::setFrameColor(LColor::color col)
+void InsetText::setFrameColor(EnumLColor col)
 {
 	frame_color = col;
 }

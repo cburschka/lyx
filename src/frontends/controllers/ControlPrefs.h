@@ -16,10 +16,10 @@
 #include "ControlDialog_impl.h"
 #include "support/std_string.h"
 #include "lyxrc.h"
-#include "LColor.h"
 
 
 class Converters;
+class EnumLColor;
 class Formats;
 
 class ControlPrefs : public ControlDialogBI {
@@ -50,7 +50,7 @@ public:
 	void redrawGUI();
 
 	/// set a color
-	void setColor(LColor::color col, string const & hex);
+	void setColor(EnumLColor col, string const & hex);
 
 	/// update the screen fonts after change
 	void updateScreenFonts();

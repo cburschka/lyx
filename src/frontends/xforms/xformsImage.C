@@ -11,10 +11,14 @@
 #include <config.h>
 
 #include "xformsImage.h"
-#include "graphics/GraphicsParams.h"
 #include "Color.h"
-#include "format.h"
+
 #include "debug.h"
+#include "format.h"
+#include "LColor.h"
+
+#include "graphics/GraphicsParams.h"
+
 #include "support/lstrings.h"
 #include "support/lyxfunctional.h"  // compare_memfun
 #include "support/lyxlib.h"

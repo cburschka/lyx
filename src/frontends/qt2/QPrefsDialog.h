@@ -13,12 +13,11 @@
 #define QPREFSDIALOG_H
 
 
-#include "LColor.h"
-
 #include "ui/QPrefsDialogBase.h"
 
 #include <vector>
 
+class EnumLColor;
 class QPrefs;
 class QPrefAsciiModule;
 class QPrefDateModule;
@@ -84,7 +83,7 @@ protected:
 
 private:
 
-	std::vector<LColor::color> colors_;
+	std::vector<EnumLColor> colors_;
 
 	QPrefAsciiModule * asciiModule;
 	QPrefDateModule * dateModule;

@@ -12,6 +12,8 @@
 
 #include "lcolorcache.h"
 
+#include "LColor.h"
+
 LColorCache lcolorcache;
 
 
@@ -20,7 +22,7 @@ LColorCache::LColorCache()
 }
 
 
-QColor const & LColorCache::get(LColor::color col) const
+QColor const & LColorCache::get(EnumLColor col) const
 {
 	lcolor_map::const_iterator cit = colormap.find(col);
 	if (cit != colormap.end())

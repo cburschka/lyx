@@ -22,6 +22,7 @@
 
 #include "encoding.h"
 #include "language.h"
+#include "LColor.h"
 #include "lyxfont.h"
 #include "lyxrc.h"
 
@@ -48,7 +49,7 @@ int XPainter::paperHeight() const
 }
 
 
-Painter & XPainter::point(int x, int y, LColor::color c)
+Painter & XPainter::point(int x, int y, EnumLColor c)
 {
 	XDrawPoint(fl_get_display(), owner_.getPixmap(),
 		lyxColorHandler->getGCForeground(c), x, y);
@@ -58,7 +59,7 @@ Painter & XPainter::point(int x, int y, LColor::color c)
 
 Painter & XPainter::line(int x1, int y1,
 	int x2, int y2,
-	LColor::color col,
+	EnumLColor col,
 	line_style ls,
 	line_width lw)
 {
@@ -71,7 +72,7 @@ Painter & XPainter::line(int x1, int y1,
 
 Painter & XPainter::lines(int const * xp, int const * yp,
 	int np,
-	LColor::color col,
+	EnumLColor col,
 	line_style ls,
 	line_width lw)
 {
@@ -92,7 +93,7 @@ Painter & XPainter::lines(int const * xp, int const * yp,
 
 Painter & XPainter::rectangle(int x, int y,
 	int w, int h,
-	LColor::color col,
+	EnumLColor col,
 	line_style ls,
 	line_width lw)
 {
@@ -105,7 +106,7 @@ Painter & XPainter::rectangle(int x, int y,
 
 Painter & XPainter::fillRectangle(int x, int y,
 	int w, int h,
-	LColor::color col)
+	EnumLColor col)
 {
 	XFillRectangle(fl_get_display(), owner_.getPixmap(),
 		lyxColorHandler->getGCForeground(col), x, y, w, h);
@@ -114,7 +115,7 @@ Painter & XPainter::fillRectangle(int x, int y,
 
 
 Painter & XPainter::fillPolygon(int const * xp, int const * yp,
-	int np, LColor::color col)
+	int np, EnumLColor col)
 {
 	boost::scoped_array<XPoint> points(new XPoint[np]);
 
@@ -133,7 +134,7 @@ Painter & XPainter::fillPolygon(int const * xp, int const * yp,
 
 Painter & XPainter::arc(int x, int y,
 	unsigned int w, unsigned int h,
-	int a1, int a2, LColor::color col)
+	int a1, int a2, EnumLColor col)
 {
 	XDrawArc(fl_get_display(), owner_.getPixmap(),
 		lyxColorHandler->getGCForeground(col),

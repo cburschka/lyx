@@ -1,3 +1,22 @@
+2003-09-15  Angus Leeming  <leeming@lyx.org>
+
+	* GPainter.C: add #include "LColor.h".
+	* GPainter.[Ch] (setForeground, point, line, lines, rectangle, fillRectangle,
+	fillPolygon, arc): pass EnumLColor args, rather than LColor::color ones.
+
+	* GScreen.C:
+	* GWorkArea.C: add #include "LColor.h".
+
+	* GWorkArea.h: remove #include "LColor.h".
+	change typedefs to take an EnumLColor arg rather than an LColor::color one.
+
+	* GWorkArea.h (getColor, getXftColor, cacheColor, cacheXftColor):
+	* GWorkArea.[Ch] (getXftColor, getGdkColor): pass EnumLColor args, rather
+	than LColor::color ones.
+
+	* lyx_gui.C (hexname, update_color): pass EnumLColor args, rather
+	than LColor::color ones.
+
 2003-09-10  Angus Leeming  <leeming@lyx.org>
 
 	* GToolbar.C (onLayoutSelected): missed a change from a call to the

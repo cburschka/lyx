@@ -16,6 +16,7 @@
 #include "FormDialogView.h"
 #include "ControlCharacter.h" // for ControlCharacter enum
 
+struct EnumLColor;
 struct FD_character;
 
 /**
@@ -53,7 +54,7 @@ private:
 	///
 	std::vector<frnt::FONT_STATE>      bar_;
 	///
-	std::vector<LColor::color>         color_;
+	std::vector<EnumLColor>            color_;
 	///
 	std::vector<string>                lang_;
 };

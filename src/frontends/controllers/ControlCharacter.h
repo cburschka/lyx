@@ -17,6 +17,9 @@
 #include "character.h"
 
 
+class EnumLColor;
+
+
 class ControlCharacter : public Dialog::Controller {
 public:
 	///
@@ -41,7 +44,7 @@ public:
 	///
 	void setBar(frnt::FONT_STATE);
 	///
-	void setColor(LColor::color);
+	void setColor(EnumLColor);
 	///
 	void setLanguage(string const &);
 	///
@@ -58,7 +61,7 @@ public:
 	///
 	frnt::FONT_STATE getBar() const;
 	///
-	LColor::color getColor() const;
+	EnumLColor getColor() const;
 	///
 	string getLanguage() const;
 	///

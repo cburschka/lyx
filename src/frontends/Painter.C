@@ -13,8 +13,10 @@
 
 #include "Painter.h"
 #include "font_metrics.h"
-#include "lyxfont.h"
 #include "WorkArea.h"
+
+#include "LColor.h"
+#include "lyxfont.h"
 
 using std::max;
 
@@ -57,8 +59,8 @@ Painter & Painter::buttonFrame(int x, int y, int w, int h)
 Painter & Painter::rectText(int x, int baseline,
 	string const & str,
 	LyXFont const & font,
-	LColor::color back,
-	LColor::color frame)
+	EnumLColor back,
+	EnumLColor frame)
 {
 	int width;
 	int ascent;

@@ -38,7 +38,7 @@ public:
 	virtual Painter & line(
 		int x1, int y1,
 		int x2, int y2,
-		LColor::color = LColor::foreground,
+		EnumLColor,
 		line_style = line_solid,
 		line_width = line_thin);
 
@@ -52,7 +52,7 @@ public:
 		int const * xp,
 		int const * yp,
 		int np,
-		LColor::color = LColor::foreground,
+		EnumLColor,
 		line_style = line_solid,
 		line_width = line_thin);
 
@@ -60,7 +60,7 @@ public:
 	virtual Painter & rectangle(
 		int x, int y,
 		int w, int h,
-		LColor::color = LColor::foreground,
+		EnumLColor,
 		line_style = line_solid,
 		line_width = line_thin);
 
@@ -68,26 +68,26 @@ public:
 	virtual Painter & fillRectangle(
 		int x, int y,
 		int w, int h,
-		LColor::color);
+		EnumLColor);
 
 	/// draw a filled (irregular) polygon
 	virtual Painter & fillPolygon(
 		int const * xp,
 		int const * yp,
 		int np,
-		LColor::color = LColor::foreground);
+		EnumLColor);
 
 	/// draw an arc
 	virtual Painter & arc(
 		int x, int y,
 		unsigned int w, unsigned int h,
 		int a1, int a2,
-		LColor::color = LColor::foreground);
+		EnumLColor);
 
 	/// draw a pixel
 	virtual Painter & point(
 		int x, int y,
-		LColor::color = LColor::foreground);
+		EnumLColor);
 
 	/// draw an image from the image cache
 	virtual Painter & image(int x, int y,
