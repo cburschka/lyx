@@ -1,3 +1,7 @@
+2002-07-16  Angus Leeming  <leeming@lyx.org>
+
+	* XPainter.C: add some #ifdef ugliness to enable the home grown image
+	loader to work too.
 
 2002-07-16  André Pönitz <poenitz@gmx.net>
 
