@@ -62,7 +62,6 @@ InsetOld * createInset(FuncRequest const & cmd)
 {
 	BufferView * bv = cmd.view();
 	BufferParams const & params = bv->buffer()->params;
-	string arg;
 
 	switch (cmd.action) {
 	case LFUN_HFILL:
@@ -72,11 +71,12 @@ InsetOld * createInset(FuncRequest const & cmd)
 		return new InsetMinipage(params);
 
 	case LFUN_INSERT_NOTE:
-		arg = cmd.getArg(0);
-		if (arg.empty())
-			arg = "Note";
-		return new InsetNote(params, arg);
-
+		{
+			string arg = cmd.getArg(0);
+			if (arg.empty())
+				arg = "Note";
+			return new InsetNote(params, arg);
+		}
 	case LFUN_INSET_ERT:
 		return new InsetERT(params);
 
