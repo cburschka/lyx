@@ -1411,6 +1411,32 @@ MathCursorPos MathCursor::normalAnchor() const
 
 dispatch_result MathCursor::dispatch(FuncRequest const & cmd)
 {
+	// mouse clicks are somewhat special 
+	// check
+	switch (cmd.action) {
+		case LFUN_MOUSE_PRESS:
+		case LFUN_MOUSE_MOTION:
+		case LFUN_MOUSE_RELEASE:
+		case LFUN_MOUSE_DOUBLE: {
+			MathCursorPos & pos = Cursor_.back();
+			dispatch_result res = UNDISPATCHED;
+			int x = 0, y = 0;
+			getPos(x, y);
+			if (x < cmd.x && hasPrevAtom()) {
+				res = prevAtom().nucleus()->dispatch(cmd, pos.idx_, pos.pos_);
+				if (res != UNDISPATCHED)
+					return res;
+			}
+			if (x > cmd.x && hasNextAtom()) {
+				res = nextAtom().nucleus()->dispatch(cmd, pos.idx_, pos.pos_);
+				if (res != UNDISPATCHED)
+					return res;
+			}
+		}
+		default:
+			break;
+	}
+
 	for (int i = Cursor_.size() - 1; i >= 0; --i) {
 		MathCursorPos & pos = Cursor_[i];
 		dispatch_result res = pos.par_->dispatch(cmd, pos.idx_, pos.pos_);

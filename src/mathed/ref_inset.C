@@ -40,6 +40,7 @@ dispatch_result
 RefInset::dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {
+		lyxerr << "dispatching " << cmd.argument << "\n";
 		case LFUN_MOUSE_RELEASE:
 			if (cmd.button() == mouse_button::button3) {
 				lyxerr << "trying to goto ref" << cell(0) << "\n";

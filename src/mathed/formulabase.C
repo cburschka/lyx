@@ -318,6 +318,7 @@ dispatch_result InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 		// try to dispatch to enclosed insets first
 		if (mathcursor->dispatch(cmd) == UNDISPATCHED) {
 			// launch math panel for right mouse button
+			lyxerr << "lfunMouseRelease: undispatched: " << cmd.button() << endl;
 			bv->owner()->getDialogs().showMathPanel();
 		}
 		return DISPATCHED;
@@ -422,10 +423,12 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 
 	switch (cmd.action) {
 		case LFUN_MOUSE_PRESS:
+			//lyxerr << "Mouse single press\n";
 			return lfunMousePress(cmd);
 		case LFUN_MOUSE_MOTION:
-			return lfunMouseMotion(cmd);
+			//return lfunMouseMotion(cmd);
 		case LFUN_MOUSE_RELEASE:
+			lyxerr << "Mouse single release\n";
 			return lfunMouseRelease(cmd);
 		case LFUN_MOUSE_DOUBLE:
 			//lyxerr << "Mouse double\n";

@@ -355,6 +355,7 @@ void MathArray::boundingBox(int & x1, int & x2, int & y1, int & y2)
 	y2 = yo_ + descent();
 }
 
+
 void MathArray::center(int & x, int & y) const
 {
 	x = xo_ + width() / 2;
