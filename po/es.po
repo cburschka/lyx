@@ -1,18 +1,20 @@
+# translation of es-1.7.4.21.po to Español
+# translation of es.po to Español
 # Mensajes en español para LyX.
 # Copyright (C) 1997-1999 LyX Team.
-# Alejandro Aguilar Sierra <asierra@servidor.unam.mx>, 1997.
-# David Suárez de lis <fafefito@usc.es>, 1999, 2000
-# German Poo Caaman~o <gpoo@ubiobio.cl>, 2001
-# Alfredo Braunstein <abraunst@ictp.trieste.it>, 2002, 2003
-# Eulogio Serradilla Rodríguez <eulogio.sr@terra.es>, 2003
 #
 # -----------------------------------------
 # Lista de terminos comunes -> traducciones
 # Por favor seguir y completar esta lista, o encontrar
 # términos mejores y hacer los cambios necesarios:
-# Log -> Reporte 
+# Log -> Reporte
 # Build -> Construir
 # -----------------------------------------
+# Alejandro Aguilar Sierra <asierra@servidor.unam.mx>, 1997.
+# David Suárez de lis <fafefito@usc.es>, 1999, 2000.
+# German Poo Caaman~o <gpoo@ubiobio.cl>, 2001.
+# Alfredo Braunstein <abraunst@ictp.trieste.it>, 2002, 2003.
+# Eulogio Serradilla Rodríguez <eulogio.sr@terra.es>, 2003.
 # Alejandro Aguilar Sierra <asierra@servidor.unam.mx>, 1997.
 # David Suárez de lis <fafefito@usc.es>, 1999, 2000.
 # German Poo Caaman~o <gpoo@ubiobio.cl>, 2001.
@@ -20,9 +22,9 @@
 # Eulogio Serradilla Rodríguez <eulogio.sr@terra.es>, 2003, 2004.
 msgid ""
 msgstr ""
-"Project-Id-Version: es\n"
+"Project-Id-Version: es-1.7.4.21\n"
 "POT-Creation-Date: 2004-09-27 14:24+0200\n"
-"PO-Revision-Date: 2004-09-27 19:17+0200\n"
+"PO-Revision-Date: 2004-09-28 15:41+0200\n"
 "Last-Translator: Eulogio Serradilla Rodríguez <eulogio.sr@terra.es>\n"
 "Language-Team: Español\n"
 "MIME-Version: 1.0\n"
@@ -293,7 +295,7 @@ msgstr "Expresión Regular|#x"
 #: ../src/frontends/xforms/forms/form_citation.fd:242
 #: ../src/frontends/xforms/forms/form_search.fd:134
 msgid "Case sensitive|#C"
-msgstr "Mayúsculas/Minúsculas|#M"
+msgstr "Distinguir mayúsculas|#m"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:260
 msgid "Previous|#P"
@@ -305,7 +307,7 @@ msgstr "Siguiente|#n"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:314
 msgid "Full author list|#F"
-msgstr "Lista completa de autores"
+msgstr "Lista completa de autores|#c"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:332
 msgid "Force upper case|#u"
@@ -661,7 +663,7 @@ msgstr "Arriba de la página|#A"
 
 #: ../src/frontends/xforms/forms/form_float.fd:116
 msgid "Here, if possible|#r"
-msgstr "Aquí, si es posible"
+msgstr "Aquí, si es posible|#q"
 
 #: ../src/frontends/xforms/forms/form_float.fd:206
 msgid "Span columns|#S"
@@ -677,7 +679,7 @@ msgstr "Alternativas|#l"
 
 #: ../src/frontends/xforms/forms/form_float.fd:278
 msgid "Here, definitely!|#H"
-msgstr "¡Aquí, definitivamente!"
+msgstr "¡Aquí, definitivamente!|#d"
 
 #: ../src/frontends/xforms/forms/form_float.fd:296
 msgid "Document default|#D"
@@ -731,7 +733,7 @@ msgstr "%"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:392
 msgid "Display:|#D"
-msgstr "Mostrar:|#M"
+msgstr "Pantalla:|#n"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:434
 msgid "Right top:|#R"
@@ -759,7 +761,7 @@ msgstr "Recortar a los límites de la caja|#C"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:578
 msgid "Get from file|#G"
-msgstr "Obtener de archivo"
+msgstr "Obtener de archivo|#O"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:620
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:481
@@ -885,11 +887,11 @@ msgstr "Negativo|#N"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:80
 msgid "Neg Medium|#E"
-msgstr "Neg. Medio"
+msgstr "Negativo Mediano|#e"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:98
 msgid "Neg Thick|#T"
-msgstr "Neg. Grueso"
+msgstr "Negativo Grueso|#r"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:116
 msgid "Thick|#H"
@@ -988,7 +990,7 @@ msgstr "Mantener|#M"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:242
 msgid "Vertical space:|#e"
-msgstr "Espacio vertical:|#e"
+msgstr "Espaciado vertical:|#e"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:278
 msgid "Keep|#p"
@@ -1000,7 +1002,7 @@ msgstr "Espaciado:|#s"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:332
 msgid "Maximum label width:|#M"
-msgstr "Ancho máximo de etiqueta:"
+msgstr "Ancho máximo de etiqueta:|#m"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:350
 msgid "No Indent|#d"
@@ -1051,7 +1053,7 @@ msgstr "Typewriter:|#T"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:344
 msgid "Rescale bitmap fonts|#b"
-msgstr "Reescalar fuentes de mapa de bits"
+msgstr "Reescalar fuentes de mapa de bits|#b"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:363
 msgid "Zoom %:|#Z"
@@ -1129,7 +1131,7 @@ msgstr "Fuente negrita:|#g"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:683
 msgid "Popup Encoding:|#P"
-msgstr "Codificación:"
+msgstr "Codificación emergente:|#e"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:701
 msgid "Layout & Bindings"
@@ -1198,7 +1200,7 @@ msgstr "Modificar|#M"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1097
 msgid "Auto region delete|#A"
-msgstr "Auto-eliminar selección"
+msgstr "Auto-eliminar selección|#A"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1116
 msgid "Cursor follows scrollbar|#C"
@@ -1206,7 +1208,7 @@ msgstr "El cursor sigue a la barra de desplazamiento|#C"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1135
 msgid "Dialogs iconify with main window|#D"
-msgstr "Los diálogos se iconifican con la ventana principal"
+msgstr "Los diálogos se iconifican con la ventana principal|#d"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1154
 msgid "Wheel mouse jump:"
@@ -1218,7 +1220,7 @@ msgstr "Intervalo de autoguardado:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1198
 msgid "Instant Preview|#P"
-msgstr "Vista preliminar instantánea"
+msgstr "Vista preliminar inmediata|#p"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1217
 msgid "Graphics display:|#G"
@@ -1226,11 +1228,11 @@ msgstr "Gráficos:|#G"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1259
 msgid "Spell command:|#S"
-msgstr "Comando de ortografía:"
+msgstr "Comando de ortografía:|#o"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1277
 msgid "Alternative language:|#a"
-msgstr "Idioma alternativo:"
+msgstr "Idioma alternativo:|#I"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1313
 msgid "Escape characters:|#e"
@@ -1246,7 +1248,7 @@ msgstr "Aceptar palabras compuestas|#m"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1421
 msgid "Use input encoding|#i"
-msgstr "Usar codificación de entrada"
+msgstr "Usar codificación de entrada|#e"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1439
 msgid "Advanced Options"
@@ -1303,7 +1305,7 @@ msgstr "Usar babel|#i"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1715
 msgid "Mark foreign|#M"
-msgstr "Marcar extránjeros"
+msgstr "Marcar extránjeros|#x"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1733
 msgid "Auto finish|#f"
@@ -1366,7 +1368,7 @@ msgstr "Todos los convertidores:|#T"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2069
 msgid "From:|#F"
-msgstr "Desde:|#D"
+msgstr "De:|#D"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2087
 #: ../src/frontends/xforms/forms/form_print.fd:188
@@ -1401,23 +1403,23 @@ msgstr "Examinar..."
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2237
 msgid "Template path:|#T"
-msgstr "Ruta de plantillas:"
+msgstr "Ruta de plantillas:|#p"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2273
 msgid "Temp dir:|#d"
-msgstr "Directorio temp:"
+msgstr "Directorio temp:|#t"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2328
 msgid "Check last files:|#C"
-msgstr "Archivos recientes:"
+msgstr "Archivos recientes:|#A"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2383
 msgid "Last file count:|#L"
-msgstr "Número de archivos recientes:"
+msgstr "Número de archivos recientes:|#N"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2405
 msgid "Backup path:|#B"
-msgstr "Ruta copias de seguridad:"
+msgstr "Ruta copias de seguridad:|#p"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2460
 msgid "LyXServer pipe:|#S"
@@ -1521,7 +1523,7 @@ msgstr "Interacción código externo"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3040
 msgid "ASCII roff:|#r"
-msgstr "roff ASCII:"
+msgstr "roff ASCII:|#r"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3058
 msgid "Checktex:|#c"
@@ -1575,11 +1577,11 @@ msgstr "Impresora:|#p"
 
 #: ../src/frontends/xforms/forms/form_print.fd:427
 msgid "All|#l"
-msgstr "Todas|#T"
+msgstr "Todo|#T"
 
 #: ../src/frontends/xforms/forms/form_print.fd:445
 msgid "From:|#m"
-msgstr "Desde:|#D"
+msgstr "De:|#D"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:80
 msgid "Sort|#S"
@@ -1629,7 +1631,7 @@ msgstr "Reemplazar todos|#R"
 
 #: ../src/frontends/xforms/forms/form_search.fd:188
 msgid "Search backwards|#S"
-msgstr "Buscar hacia atrás"
+msgstr "Buscar hacia atrás|#h"
 
 #: ../src/frontends/xforms/forms/form_sendto.fd:43
 msgid "Export format:|#E"
@@ -1741,18 +1743,18 @@ msgstr "Superior|#A"
 #: ../src/frontends/xforms/forms/form_tabular.fd:488
 #: ../src/frontends/xforms/forms/form_tabular.fd:928
 msgid "Right|#r"
-msgstr "Derecha"
+msgstr "Derecha|#D"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:524
 #: ../src/frontends/xforms/forms/form_tabular.fd:964
 msgid "Left|#e"
-msgstr "Izquierda"
+msgstr "Izquierda|#z"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:543
 #: ../src/frontends/xforms/forms/form_tabular.fd:983
 #: ../src/frontends/xforms/forms/form_wrap.fd:134
 msgid "Right|#i"
-msgstr "Derecha"
+msgstr "Derecha|#e"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:561
 #: ../src/frontends/xforms/forms/form_tabular.fd:1001
@@ -1762,17 +1764,17 @@ msgstr "Centro|#C"
 #: ../src/frontends/xforms/forms/form_tabular.fd:615
 #: ../src/frontends/xforms/forms/form_tabular.fd:1055
 msgid "Top|#p"
-msgstr "Arriba"
+msgstr "Superior|#p"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:634
 #: ../src/frontends/xforms/forms/form_tabular.fd:1074
 msgid "Center|#n"
-msgstr "Centro"
+msgstr "Centro|#n"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:652
 #: ../src/frontends/xforms/forms/form_tabular.fd:1092
 msgid "Bottom|#o"
-msgstr "Inferior"
+msgstr "Inferior|#f"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:688
 #: ../src/frontends/xforms/forms/form_tabular.fd:1146
@@ -1791,7 +1793,7 @@ msgstr "Alineación V."
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:742
 msgid "Block|#k"
-msgstr "Justificado"
+msgstr "Justificado|#J"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:784
 msgid "Special Cell"
@@ -1807,7 +1809,7 @@ msgstr "Multicolumna|#M"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:1182
 msgid "Use Minipage|#s"
-msgstr "Usar Minipágina"
+msgstr "Usar Minipágina|#s"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:1368
 #: ../src/frontends/xforms/forms/form_tabular.fd:1386
@@ -1869,7 +1871,7 @@ msgstr "Contenidos"
 
 #: ../src/frontends/xforms/forms/form_texinfo.fd:80
 msgid "Show Path|#P"
-msgstr "Mostrar ruta"
+msgstr "Mostrar ruta|#u"
 
 #: ../src/frontends/xforms/forms/form_texinfo.fd:134
 msgid "Run TeXhash|#T"
@@ -1906,7 +1908,7 @@ msgstr "Exterior|#E"
 
 #: ../src/frontends/xforms/forms/form_wrap.fd:170
 msgid "Default|#D"
-msgstr "Predeterminado"
+msgstr "Predeterminado|#P"
 
 #: ../src/frontends/qt2/ui/BiblioModuleBase.ui:22
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:22
@@ -1950,7 +1952,7 @@ msgstr "Marcas"
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:251
 #: src/frontends/qt2/QDocument.C:131 src/frontends/qt2/QDocument.C:141
 msgid "default"
-msgstr "normal"
+msgstr "predeterminado"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:203
 msgid "Set &Bullet"
@@ -2496,7 +2498,7 @@ msgstr "Interpretar entrada de búsqueda como expresión regular"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:172
 msgid "&Case sensitive"
-msgstr "&Mayús/Minús"
+msgstr "Distinguir &mayúsculas"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:176
 msgid "Make the search case-sensitive"
@@ -2643,7 +2645,7 @@ msgstr "Reiniciar valores por defecto de la clase actual"
 
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:296
 msgid "Save as Document Defaults"
-msgstr "Guardar como Predeterminados del Documento"
+msgstr "Guardar como valores predeterminados"
 
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:300
 msgid "Save settings as LyX's default template"
@@ -2843,7 +2845,7 @@ msgstr "Mostrar imagen en LyX"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:170
 msgid "Display:"
-msgstr "Presentación:"
+msgstr "Pantalla:"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:178
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:213
@@ -3395,12 +3397,12 @@ msgstr "&Valor:"
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:290
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:339
 msgid "None"
-msgstr "Ninguna"
+msgstr "Ninguno"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:296
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:345
 msgid "DefSkip"
-msgstr "SaltoPred."
+msgstr "SaltoPred"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:302
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:351
@@ -3580,7 +3582,7 @@ msgstr "Mostrar &Gráficos:"
 
 #: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:104
 msgid "Instant &preview"
-msgstr "Vista &preliminar instantánea"
+msgstr "Vista &preliminar inmediata"
 
 #: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:22
 msgid "File Formats"
@@ -3604,7 +3606,7 @@ msgstr "&Visor:"
 
 #: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:228
 msgid "S&hortcut:"
-msgstr "Ata&jo:"
+msgstr "A&celerador:"
 
 #: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:243
 msgid "E&xtension:"
@@ -4168,7 +4170,7 @@ msgstr "Reemplazar &con:"
 
 #: ../src/frontends/qt2/ui/QSearchDialogBase.ui:161
 msgid "Case &sensitive"
-msgstr "&Mayúsculas/Minúsculas"
+msgstr "Distinguir &mayúsculas"
 
 #: ../src/frontends/qt2/ui/QSearchDialogBase.ui:172
 msgid "Match whole words onl&y"
@@ -5074,7 +5076,7 @@ msgstr "LaTeX"
 #: ../lib/layouts/llncs.layout:257 ../lib/layouts/aapaper.inc:49
 #: ../lib/layouts/amsdefs.inc:205
 msgid "Email"
-msgstr "CorreoElectrónico"
+msgstr "CorreoE"
 
 #: ../lib/layouts/aastex.layout:74 ../lib/layouts/egs.layout:76
 #: ../lib/layouts/kluwer.layout:82 ../lib/layouts/linuxdoc.layout:146
@@ -5603,7 +5605,7 @@ msgstr "Telex"
 
 #: ../lib/layouts/g-brief-de.layout:323 ../lib/layouts/g-brief-en.layout:323
 msgid "EMail"
-msgstr "EMail"
+msgstr "CorreoE"
 
 #: ../lib/layouts/g-brief-de.layout:343 ../lib/layouts/g-brief-en.layout:343
 msgid "HTTP"
@@ -6451,7 +6453,7 @@ msgstr "Hebreo"
 
 #: ../lib/languages:35
 msgid "Icelandic"
-msgstr ""
+msgstr "Islandés"
 
 #: ../lib/languages:36
 msgid "Irish"
@@ -6466,13 +6468,12 @@ msgid "Kazakh"
 msgstr "Kazakh"
 
 #: ../lib/languages:39
-#, fuzzy
 msgid "Latvian"
-msgstr "Localización"
+msgstr "Letón"
 
 #: ../lib/languages:40
 msgid "Lithuanian"
-msgstr ""
+msgstr "Lituano"
 
 #: ../lib/languages:41
 msgid "Lsorbian"
@@ -6487,9 +6488,8 @@ msgid "Norsk"
 msgstr "Noruego"
 
 #: ../lib/languages:45
-#, fuzzy
 msgid "Nynorsk"
-msgstr "Noruego"
+msgstr "Noruego nuevo"
 
 #: ../lib/languages:46
 msgid "Polish"
@@ -6793,7 +6793,7 @@ msgstr "Eliminar fila|m"
 
 #: ../lib/ui/default.ui:111 ../lib/ui/default.ui:142
 msgid "Copy Row"
-msgstr "Copiar fila|o"
+msgstr "Copiar fila"
 
 #: ../lib/ui/default.ui:112 ../lib/ui/default.ui:143
 msgid "Swap Rows"
@@ -6861,11 +6861,11 @@ msgstr "Predeterminado|P"
 
 #: ../lib/ui/default.ui:153
 msgid "Display|D"
-msgstr "Presentación|r"
+msgstr "Pantalla|n"
 
 #: ../lib/ui/default.ui:154
 msgid "Inline|I"
-msgstr "Insertado"
+msgstr "Insertado|#I"
 
 #: ../lib/ui/default.ui:158
 msgid "Octave"
@@ -6909,7 +6909,7 @@ msgstr "Entorno Eqnarray|q"
 
 #: ../lib/ui/default.ui:172
 msgid "Align Environment|A"
-msgstr "Entorno Align"
+msgstr "Entorno Align|A"
 
 #: ../lib/ui/default.ui:173
 msgid "AlignAt Environment"
@@ -6917,7 +6917,7 @@ msgstr "Entorno AlignAt"
 
 #: ../lib/ui/default.ui:174
 msgid "Flalign Environment|f"
-msgstr "Entorno Flalign"
+msgstr "Entorno Flalign|F"
 
 #: ../lib/ui/default.ui:177
 msgid "Gather Environment"
@@ -7077,7 +7077,7 @@ msgstr "Presentación|D"
 
 #: ../lib/ui/default.ui:236
 msgid "Eqnarray Environment|E"
-msgstr "Entorno EqnArray"
+msgstr "Entorno EqnArray|E"
 
 #: ../lib/ui/default.ui:237
 msgid "AMS align Environment|A"
@@ -7085,11 +7085,11 @@ msgstr "Entorno AMS align|A"
 
 #: ../lib/ui/default.ui:238
 msgid "AMS alignat Environment|t"
-msgstr "Entorno AMS alignat"
+msgstr "Entorno AMS alignat|M"
 
 #: ../lib/ui/default.ui:239
 msgid "AMS flalign Environment|f"
-msgstr "Entorno AMS flalign"
+msgstr "Entorno AMS flalign|l"
 
 #: ../lib/ui/default.ui:242
 msgid "AMS gather Environment"
@@ -7101,11 +7101,11 @@ msgstr "AMS multi-línea"
 
 #: ../lib/ui/default.ui:245
 msgid "Array Environment|y"
-msgstr "Entorno Array (Arreglo)"
+msgstr "Entorno Array|y"
 
 #: ../lib/ui/default.ui:246
 msgid "Cases Environment|C"
-msgstr "Entorno Cases (Casos)"
+msgstr "Entorno Casos|C"
 
 #: ../lib/ui/default.ui:248
 msgid "Font Change|f"
@@ -7313,7 +7313,7 @@ msgstr "Ir al Marcador 3|3"
 
 #: ../lib/ui/default.ui:368
 msgid "Tooltips|o"
-msgstr "Mensajes emergentes"
+msgstr "Mensajes emergentes|g"
 
 #: ../lib/ui/default.ui:370
 msgid "Introduction|I"
@@ -8657,7 +8657,6 @@ msgid "GUI handling"
 msgstr "Manejo de interfaz"
 
 #: src/debug.C:43
-#, fuzzy
 msgid "Lyxlex grammar parser"
 msgstr "Analizador gramatical Lyxlex"
 
@@ -10635,7 +10634,7 @@ msgstr "Monócromo|Grises|Color|No mostrar"
 
 #: src/frontends/xforms/FormPreferences.C:1976
 msgid " default | US letter | US legal | US executive | A3 | A4 | A5 | B5 "
-msgstr " predeterminado | carta US | oficio US | ejecutivo US | A3 | A4 |A5 | B5 "
+msgstr " predeterminado | carta US | oficio US | ejecutivo US | A3 | A4 | A5 | B5 "
 
 #: src/frontends/xforms/FormPreferences.C:2217
 msgid "Default path"
