@@ -1,78 +1,71 @@
-Public release of LyX version 1.3.2
+Public release of LyX version 1.3.3
 ===================================
 
-We are pleased to announce the release of LyX 1.3.2.
+We are pleased to announce the release of LyX 1.3.3.
 
-This is a maintenance release which improves upon 1.3.1 in
-three main areas:
-  * the spellchecker code has been overhauled and many bugs 
-    have been squashed;
+This is a maintenance release which improves upon 1.3.2 in
+four main areas:
+  * import of old LyX files and export to DocBook have been improved;
   * many small bugs in the Qt frontend have been fixed;
-  * several languages now benefit from an improved translation of 
-    the user interface.
+  * MacOSX users can now compile LyX and enjoy the native MacOSX interface;
+  * several languages now benefit from an improved translation of
+    the user interface amd documentation.
 
 The complete list of improvements and fixes can be found at the end of
-this message. There have been bug fixes to the xforms frontend also,
-but most of these have been made to xforms itself. To benefit you must
-recompile LyX against xforms 1.0.2 or greater which is currently
-available only from CVS on the new xforms development site
-http://www.nongnu.org/xforms/. Note that that is _compile_ aginst the
-new xforms, not _link_ against a new version of the library, as the
-work-arounds will otherwise still be in place. Note also that
-development of xforms is currently accelerating. We hope to have an
-official xforms release soon that will cure many of the small 
-annoyances from which LyX currently suffers.
+this message.
 
 In case you are wondering what LyX is, here is what
 http://www.lyx.org/ has to say on the subject:
 
-  LyX is an advanced open source document processor that encourages an
-  approach to writing based on the structure of your documents, not their
-  appearance. LyX lets you concentrate on writing, leaving details of 
-  visual layout to the software.
+   LyX is an advanced open source document processor that encourages
+   an approach to writing based on the structure of your documents,
+   not their appearance. LyX lets you concentrate on writing, leaving
+   details of visual layout to the software.
 
-  LyX runs on many Unix platforms (including MacOS X), OS/2, and under
-  Windows/Cygwin. Note that all these ports still need an X server.
+   LyX runs on many Unix platforms, OS/2, and under Windows/Cygwin
+   (this port requires an X server). It can also run natively on Mac
+   OS X, thanks to the Qt/Mac library.
 
-You can download LyX 1.3.2 here (the .bz2 are compressed with bzip2,
+You can download LyX 1.3.3 here (the .bz2 are compressed with bzip2,
 which yields smaller files) :
 
-	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.3.2.tar.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.3.2.tar.bz2
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.3.2.tar.gz
-	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.3.2.tar.bz2
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.3.3.tar.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/lyx-1.3.3.tar.bz2
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.3.3.tar.gz
+	ftp://ftp.devel.lyx.org/pub/lyx/lyx-1.3.3.tar.bz2
 
 and it should shortly propagate to the following mirrors (also with
 the .bz2 versions):
 
-        ftp://ftp.sdsc.edu/pub/other/lyx/stable/lyx-1.3.2.tar.gz
-        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.3.2.tar.gz
-        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.3.2.tar.gz
-        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.3.2.tar.gz
-        ftp://ftp.icm.edu.pl/vol/rzm0/lyx/stable/lyx-1.3.2.tar.gz
+        ftp://ftp.sdsc.edu/pub/other/lyx/stable/lyx-1.3.3.tar.gz
+        ftp://ftp.lip6.fr/pub/lyx/stable/lyx-1.3.3.tar.gz
+        ftp://gd.tuwien.ac.at/publishing/tex/lyx/stable/lyx-1.3.3.tar.gz
+        ftp://ftp.ntua.gr/pub/X11/LyX/stable/lyx-1.3.3.tar.gz
+        ftp://ftp.icm.edu.pl/vol/rzm0/lyx/stable/lyx-1.3.3.tar.gz
 
 
-Prebuild binaries (mainly rpms for linux distributions) should soon be 
+Prebuild binaries (mainly rpms for linux distributions) should soon be
 available at
-	ftp://ftp.lyx.org/pub/lyx/bin/1.3.2/
- 
-If you already have LyX 1.3.1 sources, you may want to apply the
-following patch instead
-	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.3.2.gz
-	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.3.2.bz2
+	ftp://ftp.lyx.org/pub/lyx/bin/1.3.3/
+
+If you already have LyX 1.3.2 sources, you may want to apply one
+of the following patchws instead
+	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.3.3.gz
+	ftp://ftp.lyx.org/pub/lyx/stable/patch-1.3.3.bz2
 
 
-If you find what you think is a bug in LyX 1.3.2, you may either
+If you find what you think is a bug in LyX 1.3.3, you may either
 e-mail the LyX developers' mailing list (lyx-devel@lists.lyx.org), or open
 a bug report at http://bugzilla.lyx.org
 
 If you're having trouble using the new version of LyX, or have a question,
-first check out http://www.lyx.org/help/, and e-mail the LyX users' list 
-(lyx-users@lists.lyx.org) if you can't find an answer there.  
+first check out http://www.lyx.org/help/, and e-mail the LyX users' list
+(lyx-users@lists.lyx.org) if you can't find an answer there.
 
 Enjoy!
 
 The LyX team.
+
 
 
 What's new
@@ -80,84 +73,91 @@ What's new
 
 ** Updates
 
-- The spell-checking system has been over-hauled, including the following
-  changes :
+- add basic support for the memoir class
 
-  o start spell-checking immediately on pressing F7
-  o xforms' broken start/stop button removed
-  o better spell progress feedback
-  o long hang on ispell error changed
-  o infinite hang on ispell error fixed
-  o reports ispell errors back to the user
-  o the personal dictionaries are always correctly written out
-  o "Accept" button became "Ignore All" for clarity
+- add Proof layout to elsart class and get sections to be numbered
 
-- add support for the hspell spell-checker for hebrew [Qt only]
+- make LyX compile almost out-of-the-box with Qt/Mac (see README.MacOSX)
 
-- add support for scalable tabfolders and for 'native' tooltips
-  in browser widgets. You must recompile against xforms 1.0.2 or greater
-  to enable these new features [xforms only]
+- add a bit of documentation of the AGU journals support in the
+  Extended manual; small tweaks to the english documentation; german
+  documentation overhaul; french documentation and examples update
 
-- update dutch, finnish, german, polish [bug #1002], romanian, russian
-  and spanish interface localisation. Add support for nynorsk. Fix
-  Help>Table of Contents.
+- completely new italian localization; french, german and slovenian
+  localization updates
 
 ** Bug fixes
 
-- attempting to navigate to deleted text via the TOC dialog no longer
-  crash [bug #913]
+- fix possible crash when changing text class [bug #1050]
 
-- fix a new crash in 1.3.1 on OK in External dialog [Qt only]
+- fix language setting when switching textclass
 
-- fix mismatch between section depth and TOC depth in Document dialog
+- fix math bug where formulas containing for example a \prettyref
+  would not be parsed correctly [bug #1126]
+
+- speed up conversion of large old files on some systems
+
+- fix bad conversion of tables from LyX 1.0 [bug #1045]
+
+- convert old files (0.11 series) correctly, suppressing space
+  between number and units [bug #763]
+
+- fix docbook export with nested environments [bug #821]
+
+- output newline and hfill correctly in docbook [bug #1148]
+
+- when pressing delete or backspace over a selection, do not modify
+  the clipboard [bug #1049]
+
+- when inserting a float or a note over a selection, make sure that
+  the insets and font changes in the selection are correctly kept
+  (note however that doing this now modifies the clipboard)
+
+- clean-up properly after completed graphics conversion processes.
+
+- enable graphics conversion using the default convertDefault.sh converter
+  when exporting, even if convertDefault.sh is not executable.
+
+- work around a Qt 3.1.2 bug with the environment combo box [bug #1136]
+
+- fix bug where browsing for files in graphics inset would always
+  return an absolute path [bug #1028, Qt only]
+
+- do not write in preference file the colors which are still at their
+  default value [bug #1069, Qt only]
+
+- fix loading of symbol fonts [Qt 3.2.0 only]
+
+- fix loading of symbol fonts on solaris
+
+- fix the math panel symbols [Qt 3.2.0 only]
+
+- do not reset natbib style when adding a new entry to a citation [Qt
+  only]
+
+- allow insertion of width strings like "2.5in" into tabular dialog
   [Qt only]
 
-- fix float placement text not being updated in Document dialog [Qt only]
+- fix some cases where the View>TeX information dialog would get
+  confused because the same file gets listed several times
 
-- fix duplicate keyboard accelerator in the paragraph dialog [Qt only]
+- remove annoying message on console when LyX tries to make TeX fonts
+  available to the X server
 
-- in the include dialog, make "show preview" activate the OK button
-  [Qt only]
+- it was not possible to view the french versions of the Extended and
+  Customization manual.
 
-- fix display of bullet pixmaps in document dialog [bug #908, Qt 3.1.1 only]
+- the lib/configure script now works correctly with zsh [bug #977]
 
-- fix loading of included files that are under revision control
+- add missing c_str.sed file in the distribution
 
-- the Home/End keys no longer mark the document as "(changed)"
+- hopefully really fix problems with patch requiring aclocal-1.6
 
-- the window title no longer wrongly marks document paths as coming from ~/
-  [bug #993]
+- fix compilation on HP-UX 11.x
 
-- fix reading of subcaptions (in graphics inset) that contain explicit
-  double quote characters [bug #656]
+- do not report failed inlining when compiling with gcc
 
-- fix reading of subcaptions in files from LyX 1.1.6 or older
+- fix compilation with new development versions of xforms
 
-- add a converter from grace (.agr) files to PPM, in order to display
-  them in xforms frontend
+- fix compilation with AikSaurus 1.0
 
-- fix support for \framebox macro in mathed: the argument is handled
-  as text, and a second optional argument is now supported
-
-- text-mode parts of math equations are now drawn in foreground color
-  instead of being hardcoded to black
-
-- add support for macro \bmod in mathed
-
-- add macro \Pr in the list of selectable functions of the math panel
-
-- fix document class for mwbk textclass
-
-- fix a couple of layouts in llncs [bug #1068]
-
-- fix building of xforms dialogs' source on SMP machines [Bug #944,
-  xforms only]
-
-- fix bug in generation of the RPM spec file for the Qt frontend
-
-- make automatic generation of autoscripts optional; this was annoying
-  for patches.
-
-- fix building on cygwin
-
-- fix building on NetBSD [bug #1007]
