@@ -88,7 +88,7 @@ struct InsetGraphicsParams
 	///
 	InsetGraphicsParams & operator=(InsetGraphicsParams const &);
 	/// Save the parameters in the LyX format stream.
-	void Write(Buffer const * buf, std::ostream & os) const;
+	void Write(std::ostream & os) const;
 	/// If the token belongs to our parameters, read it.
 	bool Read(LyXLex & lex, string const & token);
 

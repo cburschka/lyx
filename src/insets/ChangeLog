@@ -1,3 +1,11 @@
+2002-03-25  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* insetgraphics.C (prepareFile): ensure that the file has an absolute
+	path when preparing export.
+
+	* insetgraphicsParams.[Ch] (Write): no longer passed Buffer *, as we
+	no longer MakeRelPath.
+
 2002-03-22  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insetgraphics.[Ch] (c-tor, setParams, updateInset): passed filepath.

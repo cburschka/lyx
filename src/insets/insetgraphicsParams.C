@@ -182,13 +182,11 @@ bool operator!=(InsetGraphicsParams const & left,
 }
 
 
-void InsetGraphicsParams::Write(Buffer const * buf, ostream & os) const
+void InsetGraphicsParams::Write(ostream & os) const
 {
 	// If there is no filename, write nothing for it.
-	if (! filename.empty()) {
-		os << "\tfilename "
-		<< MakeRelPath(filename, buf->filePath())
-		<< '\n';
+	if (!filename.empty()) {
+		os << "\tfilename " << filename << '\n';
 	}
 	if (!bb.empty())		// bounding box
 		os << "\tBoundingBox " << bb << '\n';

@@ -382,10 +382,10 @@ Inset::EDITABLE InsetGraphics::editable() const
 }
 
 
-void InsetGraphics::write(Buffer const * buf, ostream & os) const
+void InsetGraphics::write(Buffer const *, ostream & os) const
 {
 	os << "Graphics FormatVersion " << VersionNumber << '\n';
-	params().Write(buf, os);
+	params().Write(os);
 }
 
 
@@ -402,6 +402,7 @@ void InsetGraphics::read(Buffer const * buf, LyXLex & lex)
 
 	updateInset(buf->filePath());
 }
+
 
 void InsetGraphics::readInsetGraphics(LyXLex & lex)
 {
@@ -608,7 +609,7 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	//   return original filename without the extension
 	//
 	// if it's a zipped one, than let LaTeX do the rest!!!
-	string filename_  = params().filename;
+	string filename_  = MakeAbsPath(params().filename, buf->filePath());
 	bool const zipped = zippedFile(filename_);
 
 	if ((zipped && params().noUnzip) || buf->niceFile) {
