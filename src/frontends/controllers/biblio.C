@@ -294,14 +294,12 @@ string const getInfo(InfoMap const & map, string const & key)
 	if (!year.empty())
 		result << ", " << year;
 
-	char const * const tmp = result.str().c_str();
-	string result_str = tmp ? strip(tmp) : string();
+	string const result_str = strip(result.str().c_str());
+	if (!result_str.empty())
+		return result_str;
 
-	if (result_str.empty())
-		// This should never happen (or at least be very unusual!)
-		result_str = it->second;
-
-	return result_str;
+	// This should never happen (or at least be very unusual!)
+	return it->second;
 }
  
 

@@ -1,3 +1,8 @@
+2002-03-18  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* biblio.C (getInfo): string::c_str() never returns NULL. Don't test
+	for it.
+
 2002-03-11  Herbert Voss  <voss@lyx.org>
 
 	* biblio.C (parseBibTeX): fix another minibug with an
