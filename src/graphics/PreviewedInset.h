@@ -57,7 +57,7 @@ public:
 	void removePreview(Buffer const &);
 
 	/// The preview has been generated and is ready to use.
-	bool previewReady(Buffer const &) const;
+	bool previewReady() const;
 
 	/// If the preview is not ready, returns 0.
 	lyx::graphics::PreviewImage const * const pimage() const { return pimage_; }

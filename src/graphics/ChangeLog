@@ -1,5 +1,10 @@
 2003-10-09  Angus Leeming  <leeming@lyx.org>
 
+	* PreviewedInset.[Ch] (previewReady): remove the side effects.
+	Now simply reports whether the preview is ready.
+
+2003-10-09  Angus Leeming  <leeming@lyx.org>
+
 	* PreviewedInset.[Ch]: move PreviewedInset out of namespace lyx::graphics.
 	Remove the inset and view member functions.
 	Add a new connect member function and preview_ready_signal_ member

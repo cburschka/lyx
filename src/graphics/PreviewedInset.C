@@ -91,17 +91,8 @@ void PreviewedInset::removePreview(Buffer const & buffer)
 }
 
 
-bool PreviewedInset::previewReady(Buffer const & buffer) const
+bool PreviewedInset::previewReady() const
 {
-	if (!activated() || !previewWanted(buffer))
-		return false;
-
-	if (!pimage_ || snippet_ != pimage_->snippet()) {
-		graphics::PreviewLoader & ploader =
-			graphics::Previews::get().loader(buffer);
-		pimage_ = ploader.preview(snippet_);
-	}
-
 	return pimage_ ? pimage_->image() : false;
 }
 

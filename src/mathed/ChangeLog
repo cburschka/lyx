@@ -1,5 +1,13 @@
 2003-10-09  Angus Leeming  <leeming@lyx.org>
 
+	* formula.C (metrics, draw): no longer need to pass a Buffer arg
+	to PreviewedInset::previewReady because it no longer has the side
+	effect of secretly starting preview generation.
+	(draw): call PreviewedInset::generatePreview explicitly if the
+	inset is no longer being edited.
+
+2003-10-09  Angus Leeming  <leeming@lyx.org>
+
 	* formula.[Ch]: mods to PreviewImpl due to the changes to
 	PreviewedInset.
 	

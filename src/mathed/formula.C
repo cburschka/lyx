@@ -193,11 +193,18 @@ void InsetFormula::read(Buffer const &, LyXLex & lex)
 
 void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 {
-	cache(pi.base.bv);
-	// This initiates the loading of the preview, so should come
-	// before the metrics are computed.
-	Buffer const * buffer_ptr = pi.base.bv ? pi.base.bv->buffer() : 0;
-	bool const use_preview = buffer_ptr && preview_->previewReady(*buffer_ptr);
+	BufferView * bv = pi.base.bv;
+	cache(bv);
+
+	// The previews are drawn only when we're not editing the inset.
+	bool const editing_inset = mathcursor && mathcursor->formula() == this;
+	bool const use_preview = !editing_inset && preview_->previewReady();
+
+	if (!editing_inset && bv) {
+		Buffer const * buffer_ptr = bv->buffer();
+		if (buffer_ptr)
+			preview_->generatePreview(*buffer_ptr);
+	}
 
 	int const w = dim_.wid;
 	int const d = dim_.des;
@@ -208,7 +215,7 @@ void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 		pi.pain.image(x + 1, y - a, w, h,   // one pixel gap in front
 			      *(preview_->pimage()->image()));
 	} else {
-		PainterInfo p(pi.base.bv);
+		PainterInfo p(bv);
 		p.base.style = LM_ST_TEXT;
 		p.base.font  = pi.base.font;
 		p.base.font.setColor(LColor::math);
@@ -216,9 +223,7 @@ void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 			    != lcolor.getX11Name(LColor::background))
 			p.pain.fillRectangle(x, y - a, w, h, LColor::mathbg);
 
-		if (mathcursor &&
-				const_cast<InsetFormulaBase const *>(mathcursor->formula()) == this)
-		{
+		if (editing_inset) {
 			mathcursor->drawSelection(pi);
 			//p.pain.rectangle(x, y - a, w, h, LColor::mathframe);
 		}
@@ -262,8 +267,11 @@ bool InsetFormula::insetAllowed(InsetOld::Code code) const
 void InsetFormula::metrics(MetricsInfo & m, Dimension & dim) const
 {
 	view_ = m.base.bv;
-	Buffer const * buffer_ptr = m.base.bv ? m.base.bv->buffer() : 0;
-	if (buffer_ptr && preview_->previewReady(*buffer_ptr)) {
+
+	bool const editing_inset = mathcursor && mathcursor->formula() == this;
+	bool const use_preview = !editing_inset && preview_->previewReady();
+
+	if (use_preview) {
 		dim.asc = preview_->pimage()->ascent();
 		dim.des = preview_->pimage()->descent();
 		// insert a one pixel gap in front of the formula

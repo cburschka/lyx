@@ -539,8 +539,7 @@ void InsetInclude::fillWithBibKeys(Buffer const & buffer,
 
 void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	Buffer const * buffer_ptr = mi.base.bv ? mi.base.bv->buffer() : 0;
-	if (buffer_ptr && preview_->previewReady(*buffer_ptr)) {
+	if (preview_->previewReady()) {
 		dim.asc = preview_->pimage()->ascent();
 		dim.des = preview_->pimage()->descent();
 		dim.wid = preview_->pimage()->width();
@@ -565,10 +564,8 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 {
 	cache(pi.base.bv);
-	Buffer const * buffer_ptr = pi.base.bv ? pi.base.bv->buffer() : 0;
-	bool const use_preview = buffer_ptr && preview_->previewReady(*buffer_ptr);
 
-	if (!use_preview) {
+	if (!preview_->previewReady()) {
 		button_.draw(pi, x + button_.box().x1, y);
 		return;
 	}

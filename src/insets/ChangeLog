@@ -1,5 +1,10 @@
 2003-10-09  Angus Leeming  <leeming@lyx.org>
 
+	* insetinclude.C (metrics, draw): no longer need to pass a Buffer arg
+	to PreviewedInset::previewReady.
+
+2003-10-09  Angus Leeming  <leeming@lyx.org>
+
 	* insetexternal.[Ch] (statusChanged):
 	* insetgraphics.[Ch] (statusChanged): make a const member function.
 
