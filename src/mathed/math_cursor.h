@@ -130,6 +130,8 @@ public:
 	MathUnknownInset * inMacroMode() const;
 	/// are we currently typing '#1' or '#2' or...?
 	bool inMacroArgMode() const;
+	/// are we in an mbox?
+	bool inMathMode() const;
 
 	// Local selection methods
 	///

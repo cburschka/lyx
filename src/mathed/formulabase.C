@@ -591,15 +591,12 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		break;
 
 	case LFUN_MATH_MODE:
-#if 1
-		handleFont(bv, arg, "textrm");
-#endif
-
-#if 0
-		mathcursor->niceInsert(MathAtom(new MathHullInset(LM_OT_SIMPLE)));
-		updateLocal(bv, true);
-#endif
-
+		if (mathcursor->inMathMode()) {
+			handleFont(bv, arg, "textrm");
+		} else {
+			mathcursor->niceInsert(MathAtom(new MathHullInset(LM_OT_SIMPLE)));
+			updateLocal(bv, true);
+		}
 		//bv->owner()->message(_("math text mode toggled"));
 		break;
 

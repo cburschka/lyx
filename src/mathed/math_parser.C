@@ -128,7 +128,7 @@ enum {
 	FLAG_RIGHT      = 1 << 2,  //  next \\right ends the parsing process
 	FLAG_END        = 1 << 3,  //  next \\end ends the parsing process
 	FLAG_BRACK_END  = 1 << 4,  //  next closing bracket ends the parsing process
-	FLAG_BOX        = 1 << 5,  //  we are in a box
+	FLAG_TEXTMODE        = 1 << 5,  //  we are in a box
 	FLAG_ITEM       = 1 << 6,  //  read a (possibly braced token)
 	FLAG_BLOCK      = 1 << 7,  //  next block ends the parsing process
 	FLAG_BLOCK2     = 1 << 8,  //  next block2 ends the parsing process
@@ -775,19 +775,20 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags, bool numbered)
 		// cat codes
 		//
 		if (t.cat() == catMath) {
+			dump();
+			if (flags & FLAG_TEXTMODE) {
+				// we are inside some text mode thingy, so opening new math is allowed
+				MathAtom at(new MathHullInset(LM_OT_SIMPLE));
+				parse_into2(at, FLAG_SIMPLE, false);
+				cell->push_back(at);
+			} else {
+				lyxerr << "something strange in the parser\n";
+				break;
+			}
+
 			if (flags & FLAG_SIMPLE) {
 				// this is the end of the formula
 				return;
-			}
-				
-			if (flags & FLAG_BOX) {
-				// we are inside an mbox, so opening new math is allowed
-				push_back(t);
-				cell->push_back(MathAtom(new MathHullInset(LM_OT_SIMPLE)));
-				parse_normal(cell->back());
-			} else {
-				lyxerr << "somthing strange in the parser\n";
-				break;
 			}
 		}
 
@@ -1048,18 +1049,10 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags, bool numbered)
 			if (l) {
 				if (l->inset == "font") {
 					lyxerr << "starting font " << t.cs() << "\n";
-					//CatCode catSpaceSave = theCatcode[' '];
-					//if (l->id == LM_TC_TEXTRM) {
-					//	// temporarily change catcode
-					//	theCatcode[' '] = catLetter;
-					//}
-
 					MathAtom p = createMathInset(t.cs());
-					parse_into(p->cell(0), FLAG_ITEM);
+					bool textmode = (t.cs()[0] == 't');
+					parse_into(p->cell(0), FLAG_ITEM | (textmode ? FLAG_TEXTMODE : 0));
 					cell->push_back(p);
-
-					// undo catcode changes
-					//theCatcode[' '] = catSpaceSave;
 					//lyxerr << "ending font\n";
 				}
 
@@ -1072,7 +1065,7 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags, bool numbered)
 
 				else if (l->inset == "box") {
 					MathAtom p = createMathInset(t.cs());
-					parse_into(p->cell(0), FLAG_ITEM | FLAG_BOX);
+					parse_into(p->cell(0), FLAG_ITEM | FLAG_TEXTMODE);
 					cell->push_back(p);
 				}
 

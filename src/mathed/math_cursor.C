@@ -1406,6 +1406,12 @@ bool MathCursor::script(bool up)
 }
 
 
+bool MathCursor::inMathMode() const
+{
+	return !par()->asBoxInset();
+}
+
+
 bool MathCursor::interpret(char c)
 {
 	//lyxerr << "interpret 2: '" << c << "'\n";
@@ -1470,13 +1476,13 @@ bool MathCursor::interpret(char c)
 
 	selClearOrDel();
 
-	if (/*lastcode_ == LM_TC_TEXTRM ||*/ par()->asBoxInset()) {
+	if (!inMathMode()) {
 		// suppress direct insertion of two spaces in a row
 		// the still allows typing  '<space>a<space>' and deleting the 'a', but
 		// it is better than nothing...
 		if (c == ' ' && hasPrevAtom() && prevAtom()->getChar() == ' ')
 			return true;
-		insert(c); // LM_TC_TEXTRM;
+		insert(c);
 		return true;
 	}
 

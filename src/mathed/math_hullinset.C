@@ -159,6 +159,7 @@ int MathHullInset::defaultColSpace(col_type col)
 
 void MathHullInset::metrics(MathMetricsInfo & mi) const
 {
+	MathFontSetChanger dummy(mi.base, "mathnormal");
 
 	// let the cells adjust themselves
 	MathGridInset::metrics(mi);
@@ -169,7 +170,7 @@ void MathHullInset::metrics(MathMetricsInfo & mi) const
 	}
 
 	if (numberedType()) {
-		//augmentFont(mi_.base.font, "mathbf");
+		MathFontSetChanger dummy(mi.base, "mathbf");
 		int l = 0;
 		for (row_type row = 0; row < nrows(); ++row)
 			l = max(l, mathed_string_width(mi.base.font, nicelabel(row)));
@@ -189,6 +190,7 @@ void MathHullInset::metrics(MathMetricsInfo & mi) const
 
 void MathHullInset::draw(MathPainterInfo & pi, int x, int y) const
 {
+	MathFontSetChanger dummy(pi.base, "mathnormal");
 	MathGridInset::draw(pi, x, y);
 
 	if (numberedType()) {
