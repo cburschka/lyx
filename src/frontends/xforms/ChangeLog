@@ -1,5 +1,12 @@
 2003-03-26  Angus Leeming  <leeming@lyx.org>
 
+	* combox.C (show):
+	* FormBase.C (hide, PrehandlerCB):
+	* FormDialogView.C (hide, PrehandlerCB):
+	remove support for xforms < 1.0.
+
+2003-03-26  Angus Leeming  <leeming@lyx.org>
+
 	* Dialogs.C:
 	* Dialogs2.C:
 	* Dialogs3.C:

@@ -169,12 +169,6 @@ void FormBase::show()
 
 void FormBase::hide()
 {
-#if FL_VERSION < 1
-	// Does no harm if none is visible and ensures that the tooltip form
-	// is hidden should the dialog be closed from the keyboard.
-	fl_hide_tooltip();
-#endif
-
 	// xforms sometimes tries to process a hint-type MotionNotify, and
 	// use XQueryPointer, without verifying if the window still exists.
 	// So we try to clear out motion events in the queue before the
@@ -258,54 +252,35 @@ void FormBase::PrehandlerCB(FL_OBJECT * ob, int event, int key)
 		return;
 	}
 
-	switch (event) {
-	case FL_ENTER:
-	case FL_LEAVE:
-		if (message_widget_) {
+	if (message_widget_) {
+		switch (event) {
+		case FL_ENTER:
+		case FL_LEAVE:
 			// Post feedback as the mouse enters the object,
 			// remove it as the mouse leaves.
 			MessageCB(ob, event);
+			break;
 		}
-
-#if FL_VERSION < 1
-		if (ob->objclass == FL_TABFOLDER) {
-			// This prehandler is used to work-around an xforms
-			// bug and ensures that the form->x, form->y coords of
-			// the active tabfolder are up to date.
-
-			// The tabfolder itself can be very narrow, being just
-			// the visible border to the tabs.
-			// We thus use both FL_ENTER and FL_LEAVE as flags,
-			// in case the FL_ENTER event is not caught.
-
-			FL_FORM * const folder = fl_get_active_folder(ob);
-			if (folder && folder->window) {
-				fl_get_winorigin(folder->window,
-						 &(folder->x), &(folder->y));
-			}
-		}
-#endif
-		break;
 	}
 
 	// Tooltips are not displayed on browser widgets due to an xforms' bug.
 	// I have a fix, but it's not yet in the xforms sources.
 	// This is a work-around:
-	switch (event) {
-	case FL_ENTER:
-		if (ob->objclass == FL_BROWSER &&
-		    ob->tooltip && *(ob->tooltip)) {
-			int const x = ob->form->x + ob->x;
-			int const y = ob->form->y + ob->y + ob->h + 1;
-			fl_show_tooltip(ob->tooltip, x, y);
-		}
-		break;
-	case FL_LEAVE:
-	case FL_PUSH:
-	case FL_KEYPRESS:
-		if (ob->objclass == FL_BROWSER)
+	if (ob->objclass == FL_BROWSER) {
+		switch (event) {
+		case FL_ENTER:
+			if (ob->tooltip && *(ob->tooltip)) {
+				int const x = ob->form->x + ob->x;
+				int const y = ob->form->y + ob->y + ob->h + 1;
+				fl_show_tooltip(ob->tooltip, x, y);
+			}
+			break;
+		case FL_LEAVE:
+		case FL_PUSH:
+		case FL_KEYPRESS:
 			fl_hide_tooltip();
-		break;
+			break;
+		}
 	}
 }
 
