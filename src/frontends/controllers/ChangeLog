@@ -1,3 +1,14 @@
+2002-11-15  John Levon  <levon@movementarian.org>
+
+	* ControlButtons.h: make OKButton() virtual for prefs
+
+	* ControlPrefs.h:
+	* ControlPrefs.C: updates for xforms port to MVC
+
+	* Makefile.am: 
+	* ControlTabular.h:
+	* ControlTabular.C: add simple MVC port
+ 
 2002-11-14  Juergen Spitzmueller <j.spitzmueller@gmx.de>
 
 	* ControlInclude.C: fix file format masks for qt's use

@@ -85,6 +85,8 @@ libcontrollers_la_SOURCES= \
 	ControlShowFile.h \
 	ControlSpellchecker.C \
 	ControlSpellchecker.h \
+	ControlTabular.C \
+	ControlTabular.h \
 	ControlTabularCreate.C \
 	ControlTabularCreate.h \
 	ControlTexinfo.C \

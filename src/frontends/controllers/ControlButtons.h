@@ -49,8 +49,8 @@ public:
 	 */
 	///
 	void ApplyButton();
-	///
-	void OKButton();
+	/// virtual for ControlPrefs
+	virtual void OKButton();
 	///
 	void CancelButton();
 	///

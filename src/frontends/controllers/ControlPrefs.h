@@ -20,7 +20,12 @@
 #include "LString.h"
 #include "funcrequest.h"
 #include "lyxrc.h"
+#include "LColor.h"
 
+#include <utility>
+ 
+class Converters;
+class Formats;
  
 class ControlPrefs : public ControlDialogBI {
 public:
@@ -34,10 +39,37 @@ public:
 
 	LyXRC const & rc() const { return rc_; }
  
-	/// save the rc
-	void save();
+	/// make OK do the save
+	virtual void OKButton();
  
+	/// various file pickers
+	string const browsebind(string const & file);
+	string const browseUI(string const & file);
+	string const browsekbmap(string const & file);
+	string const browsedict(string const & file);
+ 
+	/// general browse
+	string const browse(string const & file, string const & title);
+
+	/// redraw widgets (for xforms color change)
+	void redrawGUI();
+ 
+	/// set a color
+	void setColor(LColor::color col, string const & hex);
+ 
+	/// update the screen fonts after change
+	void updateScreenFonts();
+ 
+	/// set global converters
+	void setConverters(Converters const & conv);
+
+	/// set global formats
+	void setFormats(Formats const & form);
+
 private:
+	/// get current lyxrc
+	virtual void update();
+ 
 	/// apply current lyxrc
 	virtual void apply();
  
