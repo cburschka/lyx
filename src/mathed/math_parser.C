@@ -631,17 +631,10 @@ void mathed_parse(MathArray & array, unsigned flags)
 			break;
 		
 		case LM_TK_BIGSYM:  
+		case LM_TK_SYM:
 		case LM_TK_FUNCLIM:
 			limits = 0;
 			array.push_back(new MathBigopInset(yylval.l));
-			break;
-		
-		case LM_TK_SYM:
-			if (yylval.l->id < 256) {
-				MathTextCodes tc = yylval.l->bin == LMB_NONE ? LM_TC_SYMB : LM_TC_BOPS;
-				array.push_back(yylval.l->id, tc);
-			} else 
-				array.push_back(new MathFuncInset(yylval.l->name));
 			break;
 
 		case LM_TK_BOP:

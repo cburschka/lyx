@@ -665,19 +665,11 @@ void MathCursor::interpret(string const & s)
 			p = new MathFuncInset(s);
 	} else {
 		switch (l->token) {
+			case LM_TK_SYM: 
 			case LM_TK_BIGSYM: 
 			case LM_TK_FUNCLIM:
 				p = new MathBigopInset(l);
 				break;
-				
-			case LM_TK_SYM: {
-				MathTextCodes code = static_cast<MathTextCodes>(l->id);
-				if (code < 255)
-					insert(l->id, l->bin != LMB_NONE ? LM_TC_BOPS : LM_TC_SYMB);
-				else
-					p = new MathFuncInset(l->name);
-				break;
-			}
 
 			case LM_TK_STACK:
 				p = new MathFracInset("stackrel");

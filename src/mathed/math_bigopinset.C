@@ -18,7 +18,7 @@ MathInset * MathBigopInset::clone() const
 
 void MathBigopInset::write(ostream & os, bool /* fragile */) const
 {
-	os << '\\' << sym_->name;
+	os << '\\' << sym_->name << ' ';
 }
 
 
@@ -35,7 +35,7 @@ void MathBigopInset::metrics(MathStyles st)
 	if (sym_->id > 0 && sym_->id < 256) {
 		ssym_ = string();
 		ssym_ += sym_->id;
-		code_ = LM_TC_BSYM;
+		code_ = (sym_->token == LM_TK_BIGSYM) ? LM_TC_BSYM : LM_TC_SYMB;
 	} else {
 		ssym_ = sym_->name;
 		code_ = LM_TC_TEXTRM;

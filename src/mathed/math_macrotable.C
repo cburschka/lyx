@@ -95,7 +95,7 @@ void MathMacroTable::builtinMacros()
 	{
 		MathMacroTemplate * t = new MathMacroTemplate("notin", 0);
 		MathDecorationInset * p = new MathDecorationInset("not", LM_not);
-		p->cell(0).push_back(LM_in, LM_TC_BOPS);
+		p->cell(0).push_back(LM_in, LM_TC_SYMB);
 		t->push_back(p);
 		insertTemplate(t);
 	}

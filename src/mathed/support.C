@@ -30,13 +30,13 @@ bool MathIsAlphaFont(MathTextCodes x)
 
 bool MathIsBinary(MathTextCodes x)
 {
-	return x == LM_TC_BOP || x == LM_TC_BOPS;
+	return x == LM_TC_BOP;
 }
 
 
 bool MathIsSymbol(MathTextCodes x)
 {
-	return x == LM_TC_SYMB || x == LM_TC_BOPS || x == LM_TC_BSYM;
+	return x == LM_TC_SYMB || x == LM_TC_BSYM;
 }
      
 
@@ -159,9 +159,6 @@ LyXFont WhichFont(MathTextCodes type, MathStyles size)
 
 	switch (type) {
 	case LM_TC_SYMB:	
-		f = Math_Fonts[2];
-		break;
-
 	case LM_TC_BSYM:	
 		f = Math_Fonts[2];
 		break;

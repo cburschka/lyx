@@ -81,9 +81,7 @@ enum MathTextCodes  {
 	LM_TC_BOP,
 	/// Internal code for symbols
 	LM_TC_SYMB,
-	///
-	LM_TC_BOPS,
-	///
+	/// Internal code for symbols that get bigger in displayed math
 	LM_TC_BSYM,
 	///
 	LM_FONT_END,
