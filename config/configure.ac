@@ -1,6 +1,6 @@
 dnl Process with autoconf to generate configure script   -*- sh -*-
 
-AC_INIT(lyx,1.3.5,lyx-devel@lists.lyx.org)
+AC_INIT(lyx,1.3.6cvs,lyx-devel@lists.lyx.org)
 AC_PREREQ(2.52)
 AC_CONFIG_SRCDIR(src/main.C)
 AM_CONFIG_HEADER([src/config.h])
@@ -8,7 +8,7 @@ AM_CONFIG_HEADER([src/config.h])
 AC_CONFIG_AUX_DIR(config)
 
 PACKAGE=lyx${program_suffix}
-VERSION="1.3.5"
+VERSION="1.3.6cvs"
 LYX_CHECK_VERSION
 
 AM_MAINTAINER_MODE
