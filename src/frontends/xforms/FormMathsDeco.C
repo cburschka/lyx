@@ -26,6 +26,7 @@
 static char const * decoration_names[] = {
 	"widehat", "widetilde", "overbrace", "overleftarrow", "overrightarrow", 
 	"overline", "underbrace", "underline", "underleftarrow", "underrightarrow",
+	"underleftrightarrow", "overleftrightarrow",
 	"hat", "acute", "bar", "dot",
 	"check", "grave", "vec", "ddot", 
 	"breve", "tilde"
@@ -54,7 +55,7 @@ void FormMathsDeco::build()
 
 	fl_set_bmtable_data(dialog_->bmtable_deco1, 3, 4,
 			    deco1_width, deco1_height, deco1_bits);
-	fl_set_bmtable_maxitems(dialog_->bmtable_deco1, 10);
+	fl_set_bmtable_maxitems(dialog_->bmtable_deco1, 12);
 
 	fl_set_bmtable_data(dialog_->bmtable_deco2, 4, 3,
 			    deco2_width, deco2_height, deco2_bits);
@@ -85,4 +86,4 @@ bool FormMathsDeco::input(FL_OBJECT * ob, long)
 	apply();
 	return true;
 }
-				
+

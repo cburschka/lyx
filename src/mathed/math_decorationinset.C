@@ -35,8 +35,10 @@ bool MathDecorationInset::isScriptable() const
 			name_ == "underbrace" ||
 			name_ == "overleftarrow" ||
 			name_ == "overrightarrow" ||
+			name_ == "overleftrightarrow" ||
 			name_ == "underleftarrow" ||
-			name_ == "underrightarrow";
+			name_ == "underrightarrow" ||
+			name_ == "underleftrightarrow";
 }
 
 
@@ -47,8 +49,10 @@ bool MathDecorationInset::protect() const
 			name_ == "underbrace" ||
 			name_ == "overleftarrow" ||
 			name_ == "overrightarrow" ||
+			name_ == "overleftrightarrow" ||
 			name_ == "underleftarrow" ||
-			name_ == "underrightarrow";
+			name_ == "underrightarrow" ||
+			name_ == "underleftrightarrow";
 }
 
 
@@ -61,10 +65,12 @@ bool MathDecorationInset::wide() const
 			name_ == "underbrace" ||
 			name_ == "overleftarrow" ||
 			name_ == "overrightarrow" ||
+			name_ == "overleftrightarrow" ||
 			name_ == "widehat" ||
 			name_ == "widetilde" ||
 			name_ == "underleftarrow" ||
-			name_ == "underrightarrow";
+			name_ == "underrightarrow" ||
+			name_ == "underleftrightarrow";
 }
 
 

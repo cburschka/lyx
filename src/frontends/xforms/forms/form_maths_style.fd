@@ -9,14 +9,14 @@ SnapGrid: 2
 
 =============== FORM ===============
 Name: form_maths_style
-Width: 321
-Height: 293
+Width: 257
+Height: 253
 Number of Objects: 8
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 321 293
+box: 0 0 257 253
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -34,7 +34,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: PUSH_BUTTON
-box: 212 10 100 120
+box: 148 10 100 120
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -52,7 +52,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: PUSH_BUTTON
-box: 8 10 134 110
+box: 8 10 60 60
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -70,7 +70,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 190 234 80 30
+box: 90 206 80 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -88,7 +88,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: PUSH_BUTTON
-box: 8 120 134 164
+box: 8 70 60 120
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -106,7 +106,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: PUSH_BUTTON
-box: 152 10 60 200
+box: 88 10 60 180
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -124,7 +124,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 212 170 100 40
+box: 148 160 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -142,7 +142,7 @@ argument: 13
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 212 130 100 40
+box: 148 130 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
