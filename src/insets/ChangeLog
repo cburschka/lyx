@@ -4,6 +4,11 @@
 
 2003-05-22  Angus Leeming  <leeming@lyx.org>
 
+	* inset*.[Ch] (latex): no longer has a free_spacing arg. Data is now
+	passed through the LatexRunParams arg.
+
+2003-05-22  Angus Leeming  <leeming@lyx.org>
+
 	* inset*.[Ch] (latex): no longer has a fragile arg. Data is now passed
 	through the LatexRunParams arg.
 

@@ -61,8 +61,8 @@ public:
 	/// Will not be used when lyxf3
 	void read(Buffer const *, LyXLex & lex);
 	///
-	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
-		  bool free_spc) const;
+	int latex(Buffer const *, std::ostream &,
+		  LatexRunParams const &) const;
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///

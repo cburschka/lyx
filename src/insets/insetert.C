@@ -323,8 +323,8 @@ void InsetERT::lfunMouseMotion(FuncRequest const & cmd)
 }
 
 
-int InsetERT::latex(Buffer const *, ostream & os, LatexRunParams const &,
-		    bool /*free_spc*/) const
+int InsetERT::latex(Buffer const *, ostream & os,
+		    LatexRunParams const &) const
 {
 	ParagraphList::iterator par = inset.paragraphs.begin();
 	ParagraphList::iterator end = inset.paragraphs.end();

@@ -106,8 +106,7 @@ void InsetCaption::draw(BufferView * bv, LyXFont const & f,
 
 
 int InsetCaption::latex(Buffer const * buf, ostream & os,
-			LatexRunParams const & runparams,
-			bool free_spc) const
+			LatexRunParams const & runparams) const
 {
 	// This is a bit too simplistic to take advantage of
 	// caption options we must add more later. (Lgb)
@@ -115,7 +114,7 @@ int InsetCaption::latex(Buffer const * buf, ostream & os,
 	// \caption{...}, later we will make it take advantage
 	// of the one of the caption packages. (Lgb)
 	ostringstream ost;
-	int const l = InsetText::latex(buf, ost, runparams, free_spc);
+	int const l = InsetText::latex(buf, ost, runparams);
 	os << "\\caption{" << ost.str() << "}\n";
 	return l + 1;
 }

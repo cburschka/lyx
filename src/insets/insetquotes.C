@@ -239,8 +239,7 @@ void InsetQuotes::read(Buffer const *, LyXLex & lex)
 
 
 int InsetQuotes::latex(Buffer const * buf, ostream & os,
-		       LatexRunParams const & runparams,
-		       bool /* free_spc */) const
+		       LatexRunParams const & runparams) const
 {
 	// How do we get the local language here??
 	lyx::pos_type curr_pos = parOwner()->getPositionOfInset(this);

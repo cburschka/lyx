@@ -84,8 +84,7 @@ string const InsetBibtex::getScreenLabel(Buffer const *) const
 
 
 int InsetBibtex::latex(Buffer const * buffer, ostream & os,
-		       LatexRunParams const & runparams,
-		       bool/*fs*/) const
+		       LatexRunParams const & runparams) const
 {
 	// changing the sequence of the commands
 	// 1. \bibliographystyle{style}

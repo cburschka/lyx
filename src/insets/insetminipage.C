@@ -251,8 +251,7 @@ string const InsetMinipage::editMessage() const
 
 
 int InsetMinipage::latex(Buffer const * buf, ostream & os,
-			 LatexRunParams const & runparams,
-			 bool fp) const
+			 LatexRunParams const & runparams) const
 {
 	string s_pos;
 	switch (params_.pos) {
@@ -269,7 +268,7 @@ int InsetMinipage::latex(Buffer const * buf, ostream & os,
 	os << "\\begin{minipage}[" << s_pos << "]{"
 	   << params_.width.asLatexString() << "}%\n";
 
-	int i = inset.latex(buf, os, runparams, fp);
+	int i = inset.latex(buf, os, runparams);
 
 	os << "\\end{minipage}%\n";
 	return i + 2;

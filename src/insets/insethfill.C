@@ -21,8 +21,8 @@ InsetHFill::InsetHFill()
 {}
 
 
-int InsetHFill::latex(Buffer const *, ostream & os, LatexRunParams const &,
-		      bool /*fs*/) const
+int InsetHFill::latex(Buffer const *, ostream & os,
+		      LatexRunParams const &) const
 {
 	os << getCommand();
 	return 0;

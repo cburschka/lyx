@@ -100,8 +100,7 @@ public:
 	///
 	bool simpleTeXOnePar(Buffer const *, BufferParams const &,
 			     LyXFont const & outerfont, std::ostream &,
-			     TexRow & texrow, LatexRunParams const &,
-			     bool moving_arg);
+			     TexRow & texrow, LatexRunParams const &);
 
 	///
 	bool hasSameLayout(Paragraph const & par) const;

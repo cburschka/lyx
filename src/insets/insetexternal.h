@@ -54,8 +54,7 @@ public:
 	 is in a free-spacing paragraph.
 	 */
 	virtual int latex(Buffer const *, std::ostream &,
-			  LatexRunParams const &,
-			  bool free_spc) const;
+			  LatexRunParams const &) const;
 	/// write ASCII output to the ostream
 	virtual int ascii(Buffer const *, std::ostream &, int linelen) const;
 	/// write LinuxDoc output to the ostream

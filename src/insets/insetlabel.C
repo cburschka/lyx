@@ -82,8 +82,8 @@ dispatch_result InsetLabel::localDispatch(FuncRequest const & cmd)
 }
 
 
-int InsetLabel::latex(Buffer const *, ostream & os, LatexRunParams const &,
-		      bool /*fs*/) const
+int InsetLabel::latex(Buffer const *, ostream & os,
+		      LatexRunParams const &) const
 {
 	os << escape(getCommand());
 	return 0;

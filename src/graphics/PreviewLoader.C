@@ -568,6 +568,7 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 	runparams.flavor = LatexRunParams::LATEX;
 	runparams.nice = true;
 	runparams.fragile = true;
+	runparams.free_spacing = true;
 	tmp.makeLaTeXFile(os, buffer_.filePath(), runparams, false, true);
 
 	// FIXME! This is a HACK! The proper fix is to control the 'true'
@@ -589,7 +590,7 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 
 	for (; it != end; ++it)
 		if (it->lyxCode() == Inset::MATHMACRO_CODE)
-			it->latex(&buffer_, os, runparams, true);
+			it->latex(&buffer_, os, runparams);
 
 	// All equation lables appear as "(#)" + preview.sty's rendering of
 	// the label name

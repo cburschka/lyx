@@ -66,8 +66,7 @@ string const InsetEnvironment::editMessage() const
 
 
 int InsetEnvironment::latex(Buffer const * buf, ostream & os,
-			    LatexRunParams const & runparams,
-			    bool) const
+			    LatexRunParams const & runparams) const
 {
 	os << layout_->latexheader;
 	TexRow texrow;

@@ -272,8 +272,7 @@ string const InsetFloat::editMessage() const
 
 
 int InsetFloat::latex(Buffer const * buf, ostream & os,
-		      LatexRunParams const & runparams,
-		      bool fp) const
+		      LatexRunParams const & runparams) const
 {
 	FloatList const & floats = buf->params.getLyXTextClass().floats();
 	string const tmptype = (params_.wide ? params_.type + "*" : params_.type);
@@ -304,7 +303,7 @@ int InsetFloat::latex(Buffer const * buf, ostream & os,
 	}
 	os << '\n';
 
-	int const i = inset.latex(buf, os, runparams, fp);
+	int const i = inset.latex(buf, os, runparams);
 
 	// The \n is used to force \end{<floatname>} to appear in a new line.
 	// In this case, we do not case if the current output line is empty.

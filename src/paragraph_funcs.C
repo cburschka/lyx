@@ -15,7 +15,6 @@
 #include "buffer.h"
 #include "ParagraphParameters.h"
 #include "lyxtextclasslist.h"
-#include "latexrunparams.h"
 #include "debug.h"
 #include "gettext.h"
 #include "language.h"
@@ -304,7 +303,7 @@ TeXDeeper(Buffer const * buf,
 					     os, texrow, runparams);
 		} else {
 			par = TeXOnePar(buf, paragraphs, par,
-					     os, texrow, runparams, false);
+					     os, texrow, runparams);
 		}
 	}
 	lyxerr[Debug::LATEX] << "TeXDeeper...done " << &*par << endl;
@@ -378,7 +377,7 @@ TeXEnvironment(Buffer const * buf,
 	}
 	ParagraphList::iterator par = pit;
 	do {
-		par = TeXOnePar(buf, paragraphs, par, os, texrow, runparams, false);
+		par = TeXOnePar(buf, paragraphs, par, os, texrow, runparams);
 
 		if (par != paragraphs.end()&& par->params().depth() > pit->params().depth()) {
 			    if (par->layout()->isParagraph()) {
@@ -552,8 +551,7 @@ TeXOnePar(Buffer const * buf,
 		if (style->optionalargs == 1) {
 			InsetOptArg * it = optArgInset(*pit);
 			if (it)
-				it->latexOptional(buf, os, runparams,
-						  false);
+				it->latexOptional(buf, os, runparams);
 		}
 		else
 			os << style->latexparam();
@@ -572,8 +570,7 @@ TeXOnePar(Buffer const * buf,
 	os << everypar;
 	bool need_par = pit->simpleTeXOnePar(buf, bparams,
 					     outerFont(pit, paragraphs),
-					     os, texrow, runparams,
-					     runparams.fragile);
+					     os, texrow, runparams);
 
 	// Make sure that \\par is done with the font of the last
 	// character if this has another size as the default.

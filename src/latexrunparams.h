@@ -19,7 +19,8 @@ struct LatexRunParams {
         };
 
         LatexRunParams() : flavor(LATEX), nice(false),
-			   fragile(false), use_babel(false) {}
+			   fragile(false), free_spacing(false),
+			   use_babel(false) {}
 
 	/** The latex that we export depends occasionally on what is to
 	    compile the file.
@@ -38,6 +39,11 @@ struct LatexRunParams {
 	*/
 	bool fragile;
 
+	/** free_spacing == true means that the inset is in a free-spacing
+	    paragraph.
+	*/
+	bool free_spacing;
+	
 	/** This var is set by the return value from BufferParams::writeLaTeX
 	 */
 	bool use_babel;

@@ -18,6 +18,7 @@
 #include "debug.h"
 #include "dimension.h"
 #include "LaTeXFeatures.h"
+#include "latexrunparams.h"
 #include "BufferView.h"
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
@@ -156,33 +157,33 @@ void InsetSpace::read(Buffer const *, LyXLex & lex)
 }
 
 
-int InsetSpace::latex(Buffer const *, ostream & os, LatexRunParams const &,
-		      bool free_space) const
+int InsetSpace::latex(Buffer const *, ostream & os,
+		      LatexRunParams const & runparams) const
 {
 	switch (kind_) {
 	case NORMAL:
-		os << (free_space ? " " : "\\ ");
+		os << (runparams.free_spacing ? " " : "\\ ");
 		break;
 	case PROTECTED:
-		os << (free_space ? ' ' : '~');
+		os << (runparams.free_spacing ? ' ' : '~');
 		break;
 	case THIN:
-		os << (free_space ? " " : "\\,");
+		os << (runparams.free_spacing ? " " : "\\,");
 		break;
 	case QUAD:
-		os << (free_space ? " " : "\\quad{}");
+		os << (runparams.free_spacing ? " " : "\\quad{}");
 		break;
 	case QQUAD:
-		os << (free_space ? " " : "\\qquad{}");
+		os << (runparams.free_spacing ? " " : "\\qquad{}");
 		break;
 	case ENSPACE:
-		os << (free_space ? " " : "\\enspace{}");
+		os << (runparams.free_spacing ? " " : "\\enspace{}");
 		break;
 	case ENSKIP:
-		os << (free_space ? " " : "\\enskip{}");
+		os << (runparams.free_spacing ? " " : "\\enskip{}");
 		break;
 	case NEGTHIN:
-		os << (free_space ? " " : "\\negthinspace{}");
+		os << (runparams.free_spacing ? " " : "\\negthinspace{}");
 		break;
 	}
 	return 0;

@@ -1048,7 +1048,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 		texrow.newline();
 	}
 
-	latexParagraphs(this, paragraphs, os, texrow, runparams, false);
+	latexParagraphs(this, paragraphs, os, texrow, runparams);
 
 	// add this just in case after all the paragraphs
 	os << endl;

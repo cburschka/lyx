@@ -161,8 +161,7 @@ void InsetSpecialChar::read(Buffer const *, LyXLex & lex)
 
 
 int InsetSpecialChar::latex(Buffer const *, ostream & os,
-			    LatexRunParams const &,
-			    bool free_space) const
+			    LatexRunParams const &) const
 {
 	switch (kind_) {
 	case HYPHENATION:

@@ -581,8 +581,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 			running_font = basefont;
 		}
 
-		int tmp = inset->latex(buf, os, runparams,
-				       style.free_spacing);
+		int tmp = inset->latex(buf, os, runparams);
 
 		if (close)
 			os << '}';

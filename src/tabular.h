@@ -291,8 +291,8 @@ public:
 	///
 	void Read(Buffer const *, LyXLex &);
 	///
-	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
-		  bool) const;
+	int latex(Buffer const *, std::ostream &,
+		  LatexRunParams const &) const;
 	///
 	int docbook(Buffer const * buf, std::ostream & os, bool mixcont) const;
 	///
@@ -561,12 +561,12 @@ private:
 	int TeXCellPostamble(std::ostream &, int cell) const;
 	///
 	int TeXLongtableHeaderFooter(std::ostream &, Buffer const * buf,
-				     LatexRunParams const &, bool fp) const;
+				     LatexRunParams const &) const;
 	///
 	bool isValidRow(int const row) const;
 	///
 	int TeXRow(std::ostream &, int const row, Buffer const * buf,
-		   LatexRunParams const &, bool fp) const;
+		   LatexRunParams const &) const;
 	///
 	// helper function for ASCII returns number of newlines
 	///

@@ -38,8 +38,7 @@ public:
 			  int baseline, float & x) const;
 	///
 	virtual int latex(Buffer const * buf, std::ostream & os,
-			  LatexRunParams const &,
-			  bool free_spc) const;
+			  LatexRunParams const &) const;
 	///
 	int ascii(Buffer const * buf, std::ostream & os, int linelen) const;
 	///

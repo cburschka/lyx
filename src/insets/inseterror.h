@@ -38,8 +38,8 @@ public:
 	///
 	void read(Buffer const *, LyXLex &) {}
 	///
-	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
-		  bool) const { return 0; }
+	int latex(Buffer const *, std::ostream &,
+		  LatexRunParams const &) const { return 0; }
 	///
 	int ascii(Buffer const *, std::ostream &, int) const { return 0; }
 	///

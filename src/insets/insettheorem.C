@@ -72,11 +72,11 @@ string const InsetTheorem::editMessage() const
 
 
 int InsetTheorem::latex(Buffer const * buf, ostream & os,
-			LatexRunParams const & runparams, bool fp) const
+			LatexRunParams const & runparams) const
 {
 	os << "\\begin{theorem}%\n";
 
-	int i = inset.latex(buf, os, runparams, fp);
+	int i = inset.latex(buf, os, runparams);
 	os << "\\end{theorem}%\n";
 
 	return i + 2;

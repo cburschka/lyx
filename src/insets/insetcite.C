@@ -354,8 +354,7 @@ int InsetCitation::ascii(Buffer const * buffer, ostream & os, int) const
 // citations and then changes his mind, turning natbib support off. The output
 // should revert to \cite[]{}
 int InsetCitation::latex(Buffer const * buffer, ostream & os,
-			 LatexRunParams const &,
-			 bool/*fs*/) const
+			 LatexRunParams const &) const
 {
 	os << "\\";
 	if (buffer->params.use_natbib)

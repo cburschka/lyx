@@ -193,8 +193,7 @@ string const InsetWrap::editMessage() const
 
 
 int InsetWrap::latex(Buffer const * buf, ostream & os,
-		     LatexRunParams const & runparams,
-		     bool fp) const
+		     LatexRunParams const & runparams) const
 {
 	os << "\\begin{floating" << params_.type << '}';
 	if (!params_.placement.empty()) {
@@ -202,7 +201,7 @@ int InsetWrap::latex(Buffer const * buf, ostream & os,
 	}
 	os  << '{' << params_.width.asLatexString() << "}%\n";
 
-	int const i = inset.latex(buf, os, runparams, fp);
+	int const i = inset.latex(buf, os, runparams);
 
 	os << "\\end{floating" << params_.type << "}%\n";
 	return i + 2;

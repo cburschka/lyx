@@ -1448,8 +1448,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 
 
 int InsetText::latex(Buffer const * buf, ostream & os,
-		     LatexRunParams const & runparams,
-		     bool) const
+		     LatexRunParams const & runparams) const
 {
 	TexRow texrow;
 	latexParagraphs(buf, paragraphs, os, texrow, runparams);

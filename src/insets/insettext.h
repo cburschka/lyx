@@ -112,8 +112,8 @@ public:
 	///
 	RESULT localDispatch(FuncRequest const &);
 	///
-	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
-		  bool free_spc) const;
+	int latex(Buffer const *, std::ostream &,
+		  LatexRunParams const &) const;
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///

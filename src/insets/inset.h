@@ -188,13 +188,9 @@ public:
 	virtual void write(Buffer const *, std::ostream &) const = 0;
 	///
 	virtual void read(Buffer const *, LyXLex & lex) = 0;
-	/** returns the number of rows (\n's) of generated tex code.
-	    If the free_spc (freespacing) variable is set, then this inset
-	    is in a free-spacing paragraph.
-	*/
+	/// returns the number of rows (\n's) of generated tex code.
 	virtual int latex(Buffer const *, std::ostream &,
-			  LatexRunParams const &,
-			  bool free_spc) const = 0;
+			  LatexRunParams const &) const = 0;
 	///
 	virtual int ascii(Buffer const *,
 			  std::ostream &, int linelen = 0) const = 0;

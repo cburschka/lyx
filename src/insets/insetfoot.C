@@ -59,8 +59,7 @@ string const InsetFoot::editMessage() const
 
 
 int InsetFoot::latex(Buffer const * buf, ostream & os,
-		     LatexRunParams const & runparams_in,
-		     bool fp) const
+		     LatexRunParams const & runparams_in) const
 {
 	LatexRunParams runparams = runparams_in;
 	if (buf && parOwner()) {
@@ -70,7 +69,7 @@ int InsetFoot::latex(Buffer const * buf, ostream & os,
 
 	os << "%\n\\footnote{";
 
-	int const i = inset.latex(buf, os, runparams, fp);
+	int const i = inset.latex(buf, os, runparams);
 	os << "%\n}";
 
 	return i + 2;

@@ -20,6 +20,22 @@
 
 2003-05-22  Angus Leeming  <leeming@lyx.org>
 
+	* latexrunparams.h: add a free_spacing variable.
+
+	* paragraph.[Ch] (simpleTeXOnePar): further fragile clean-up; no need
+	to pass moving_arg, as the data is stored in runparams.fragile.
+
+	* paragraph_funcs.C (TeXOnePar): no longer pass free_spacing arg
+	to Inset::latexOptional or to simpleTeXOnePar.
+
+	* paragraph_pimpl.C (simpleTeXSpecialChars): no longer pass
+	free_spacing arg to Inset::latexOptional.
+
+	* tabular.[Ch] (TeXLongtableHeaderFooter, TeXRow): no longer have
+	free_spacing arg.
+
+2003-05-22  Angus Leeming  <leeming@lyx.org>
+
 	* latexrunparams.h: add fragile and use_babel variables.
 
 	* bufferparams.[Ch] (writeLaTeX): return use_babel.

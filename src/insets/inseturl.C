@@ -72,8 +72,7 @@ string const InsetUrl::getScreenLabel(Buffer const *) const
 
 
 int InsetUrl::latex(Buffer const *, ostream & os,
-		    LatexRunParams const & runparams,
-		    bool /*free_spc*/) const
+		    LatexRunParams const & runparams) const
 {
 	if (!getOptions().empty())
 		os << getOptions() + ' ';

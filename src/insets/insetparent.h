@@ -39,8 +39,8 @@ public:
 	///
 	Inset::Code lyxCode() const { return Inset::PARENT_CODE; }
 	///
-	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
-		  bool free_spc) const;
+	int latex(Buffer const *, std::ostream &,
+		  LatexRunParams const &) const;
 	///
 	void setParent(string const & fn) { setContents(fn); }
 };

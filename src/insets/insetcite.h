@@ -37,8 +37,8 @@ public:
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
-	int latex(Buffer const *, std::ostream &, LatexRunParams const &,
-		  bool) const;
+	int latex(Buffer const *, std::ostream &,
+		  LatexRunParams const &) const;
 	///
 	dispatch_result localDispatch(FuncRequest const & cmd);
 	///

@@ -622,8 +622,7 @@ void InsetLatexAccent::read(Buffer const *, LyXLex & lex)
 
 
 int InsetLatexAccent::latex(Buffer const *, ostream & os,
-			    LatexRunParams const &,
-			    bool/*fs*/) const
+			    LatexRunParams const &) const
 {
 	os << contents;
 	return 0;
