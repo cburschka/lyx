@@ -1,3 +1,17 @@
+2000-09-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/images/*: rename a bunch of icons to match Dekel converter
+	changes. 
+
+	* src/buffer.C (SimpleLinuxDocOnePar): add a const qualifier to
+	last parameter.
+
+	* src/frontends/xforms/FormBase.C (disconnect): remove bogus test. 
+
+	* sigc++/macros/basic_signal.h.m4: fix class Signal_ to have a
+	virtual destructor
+	* sigc++/handle.h: ditto for class Handle. 
+
 2000-09-27  John Levon  <moz@compsoc.man.ac.uk>
 
 	* config/kde.m4: make Qt fail immediately if Qt2 is picked up

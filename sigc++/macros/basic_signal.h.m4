@@ -61,7 +61,7 @@ class LIBSIGC_API Signal_
       SlotData* out_connect(SlotData *s);
 
       Signal_();
-      ~Signal_();
+      virtual ~Signal_();
 
     public:
       bool empty() const;

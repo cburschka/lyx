@@ -93,9 +93,7 @@ void FormBase::connect()
 
 void FormBase::disconnect()
 {
-	if (u_) {
-		u_.disconnect();
-	}
+	u_.disconnect();
 	h_.disconnect();
 }
 

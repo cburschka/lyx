@@ -2706,7 +2706,7 @@ void linux_doc_line_break(ostream & os, string::size_type & colcount,
 
 
 void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
-				  int desc_on, int /*depth*/)
+				  int desc_on, int const /*depth*/)
 {
 	LyXFont font1;
 	char c;
