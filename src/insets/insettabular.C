@@ -534,7 +534,7 @@ void InsetTabular::update(BufferView * bv, LyXFont const & font, bool reinit)
 			need_update = INIT;
 		break;
 	case SELECTION:
-		need_update = INIT;
+		need_update = FULL;
 		break;
 	default:
 		break;
@@ -612,7 +612,7 @@ void InsetTabular::insetUnlock(BufferView * bv)
 
 
 void InsetTabular::updateLocal(BufferView * bv, UpdateCodes what,
-			       bool mark_dirty) const
+                               bool mark_dirty) const
 {
 	if (what == INIT) {
 		LyXFont font;
@@ -1204,6 +1204,9 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 				return UNDISPATCHED;
 			} else if (hs) {
 				clearSelection();
+				// so the below CELL is not set because this is higher
+				// priority and we get a full redraw
+				need_update = SELECTION;
 			}
 			nodraw(false);
 			updateLocal(bv, CELL, false);
