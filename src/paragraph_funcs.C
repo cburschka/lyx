@@ -262,9 +262,24 @@ int getEndLabel(Paragraph * para, BufferParams const & bparams)
 #endif
 
 
+namespace {
+
+ParagraphList::iterator
+TeXEnvironment(Buffer const * buf,
+	       ParagraphList const & paragraphs,
+	       ParagraphList::iterator pit,
+	       ostream & os, TexRow & texrow);
+
+ParagraphList::iterator
+TeXOnePar(Buffer const * buf,
+	  ParagraphList const & paragraphs,
+	  ParagraphList::iterator pit,
+	  ostream & os, TexRow & texrow,
+	  bool moving_arg);
+
+
 ParagraphList::iterator
 TeXDeeper(Buffer const * buf,
-	  BufferParams const & bparams,
 	  ParagraphList const & paragraphs,
 	  ParagraphList::iterator pit,
 	  ostream & os, TexRow & texrow)
@@ -274,10 +289,10 @@ TeXDeeper(Buffer const * buf,
 
 	while (par != paragraphs.end()&& par->params().depth() == pit->params().depth()) {
 		if (par->layout()->isEnvironment()) {
-			par = TeXEnvironment(buf, bparams, paragraphs, par,
+			par = TeXEnvironment(buf, paragraphs, par,
 						  os, texrow);
 		} else {
-			par = TeXOnePar(buf, bparams, paragraphs, par,
+			par = TeXOnePar(buf, paragraphs, par,
 					     os, texrow, false);
 		}
 	}
@@ -289,12 +304,13 @@ TeXDeeper(Buffer const * buf,
 
 ParagraphList::iterator
 TeXEnvironment(Buffer const * buf,
-	       BufferParams const & bparams,
 	       ParagraphList const & paragraphs,
 	       ParagraphList::iterator pit,
 	       ostream & os, TexRow & texrow)
 {
 	lyxerr[Debug::LATEX] << "TeXEnvironment...     " << &*pit << endl;
+
+	BufferParams const & bparams = buf->params;
 
 	LyXLayout_ptr const & style = pit->layout();
 
@@ -350,7 +366,7 @@ TeXEnvironment(Buffer const * buf,
 	}
 	ParagraphList::iterator par = pit;
 	do {
-		par = TeXOnePar(buf, bparams, paragraphs, par, os, texrow, false);
+		par = TeXOnePar(buf, paragraphs, par, os, texrow, false);
 
 		if (par != paragraphs.end()&& par->params().depth() > pit->params().depth()) {
 			    if (par->layout()->isParagraph()) {
@@ -372,7 +388,7 @@ TeXEnvironment(Buffer const * buf,
 				os << '\n';
 				texrow.newline();
 			}
-			par = TeXDeeper(buf, bparams, paragraphs, par, os, texrow);
+			par = TeXDeeper(buf, paragraphs, par, os, texrow);
 		}
 	} while (par != paragraphs.end()
 		 && par->layout() == pit->layout()
@@ -394,8 +410,6 @@ TeXEnvironment(Buffer const * buf,
 }
 
 
-namespace {
-
 InsetOptArg * optArgInset(Paragraph const & par)
 {
 	// Find the entry.
@@ -410,18 +424,17 @@ InsetOptArg * optArgInset(Paragraph const & par)
 	return 0;
 }
 
-} // end namespace
-
 
 ParagraphList::iterator
 TeXOnePar(Buffer const * buf,
-	  BufferParams const & bparams,
 	  ParagraphList const & paragraphs,
 	  ParagraphList::iterator pit,
 	  ostream & os, TexRow & texrow,
 	  bool moving_arg)
 {
 	lyxerr[Debug::LATEX] << "TeXOnePar...     " << &*pit << endl;
+	BufferParams const & bparams = buf->params;
+
 	Inset const * in = pit->inInset();
 	bool further_blank_line = false;
 	LyXLayout_ptr style;
@@ -648,6 +661,8 @@ TeXOnePar(Buffer const * buf,
 	return ++pit;
 }
 
+} // anon namespace
+
 
 //
 // LaTeX all paragraphs from par to endpar, if endpar == 0 then to the end
@@ -705,12 +720,12 @@ void latexParagraphs(Buffer const * buf,
 			if (layout->isEnvironment() ||
 				!par->params().leftIndent().zero())
 			{
-				par = TeXEnvironment(buf, buf->params, paragraphs, par, ofs, texrow);
+				par = TeXEnvironment(buf, paragraphs, par, ofs, texrow);
 			} else {
-				par = TeXOnePar(buf, buf->params, paragraphs, par, ofs, texrow, moving_arg);
+				par = TeXOnePar(buf, paragraphs, par, ofs, texrow, moving_arg);
 			}
 		} else {
-			par = TeXOnePar(buf, buf->params, paragraphs, par, ofs, texrow, moving_arg);
+			par = TeXOnePar(buf, paragraphs, par, ofs, texrow, moving_arg);
 		}
 	}
 	// It might be that we only have a title in this document

@@ -57,27 +57,6 @@ bool isFirstInSequence(Paragraph * par);
 int getEndLabel(Paragraph * para, BufferParams const & bparams);
 #endif
 
-ParagraphList::iterator
-TeXDeeper(Buffer const * buf,
-	  BufferParams const & bparams,
-	  ParagraphList const & paragraphs,
-	  ParagraphList::iterator pit,
-	  std::ostream & os, TexRow & texrow);
-
-ParagraphList::iterator
-TeXEnvironment(Buffer const * buf,
-	       BufferParams const & bparams,
-	       ParagraphList const & paragraphs,
-	       ParagraphList::iterator pit,
-	       std::ostream & os, TexRow & texrow);
-
-ParagraphList::iterator
-TeXOnePar(Buffer const * buf,
-	  BufferParams const & bparams,
-	  ParagraphList const & paragraphs,
-	  ParagraphList::iterator pit,
-	  std::ostream & os, TexRow & texrow,
-	  bool moving_arg);
 
 void latexParagraphs(Buffer const * buf,
 		     ParagraphList const & paragraphs,

@@ -1,3 +1,10 @@
+2003-03-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* paragraph_funcs.C (TeXDeeper): reduce number of args, move into
+	anon namespace
+	(TeXEnvironment): ditto
+	(TeXOnePar): ditto
+
 2003-03-17  John Levon  <levon@movementarian.org>
 
 	* text.C (rowBreakPoint): remove attempt to fix displayed
