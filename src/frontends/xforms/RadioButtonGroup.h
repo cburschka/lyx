@@ -41,8 +41,13 @@ public:
 	void set(size_type value) const;
 	void set(FL_OBJECT * ob) const;
 
+	// None of the radiobuttons are set.
+	void unset() const;
+
 	// Get the active button's value.
 	size_type get() const;
+
+	void setEnabled(bool enabled);
 
 private:
 	///

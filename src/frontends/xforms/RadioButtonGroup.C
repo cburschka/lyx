@@ -14,6 +14,7 @@
 
 #include "RadioButtonGroup.h"
 #include "lyx_forms.h"
+#include "xforms_helpers.h"
 
 #include "support/LAssert.h"
 #include "debug.h" // for lyxerr
@@ -83,6 +84,21 @@ struct is_set_button {
 };
 
 
+void RadioButtonGroup::unset() const
+{
+	// Find the active button.
+	ButtonValueMap::const_iterator it =
+		find_if(map.begin(), map.end(),
+			is_set_button<ButtonValuePair> ());
+
+	if (it == map.end())
+		// Nothing to do. No button is set.
+		return;
+
+	fl_set_button(it->first, 0);
+}
+
+
 RadioButtonGroup::size_type RadioButtonGroup::get() const
 {
 	// Find the active button.
@@ -96,4 +112,14 @@ RadioButtonGroup::size_type RadioButtonGroup::get() const
 	// We found nothing: report it and return 0
 	lyxerr << "BUG: No active radio button found." << endl;
 	return 0;
+}
+
+
+void RadioButtonGroup::setEnabled(bool enable)
+{
+	ButtonValueMap::iterator it  = map.begin();
+	ButtonValueMap::iterator end = map.end();
+	for (; it != end; ++it) {
+		::setEnabled(it->first, enable);
+	}
 }
