@@ -80,8 +80,6 @@ libxforms_la_SOURCES = \
 	FormExternal.h \
 	FormFloat.C \
 	FormFloat.h \
-	FormForks.C \
-	FormForks.h \
 	FormGraphics.C \
 	FormGraphics.h \
 	FormInclude.C \

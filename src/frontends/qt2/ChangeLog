@@ -1,3 +1,10 @@
+2005-02-23  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs2.C (showForks): removed.
+	* Dialogs_impl.h: remove #include "ControlForks.h".
+
+	* lyx_gui.C (getStatus): remove LFUN_FORKS_SHOW special casing.
+
 2005-02-11  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* ui/QRefDialogBase.ui: semantic fix: substitute "reference" by 

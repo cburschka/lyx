@@ -1,3 +1,12 @@
+2005-02-23  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C (Dialogs_impl c-tor): remove forks dialog.
+	* Dialogs2.C (showForks): removed.
+	* Dialogs_impl.h: remove forked process dialog.
+
+	* FormForks.[Ch], forms/form_forks.fd: removed.
+	* Makefile.am, forms/Makefile.am: associated changes.
+
 2005-02-11  Michael Schmitt  <michael.schmitt@teststep.org>
 
 	* FormRef.C:

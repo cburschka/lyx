@@ -1,3 +1,9 @@
+2005-02-23  Angus Leeming  <leeming@lyx.org>
+
+	* commandtags.h:
+	* LyXAction.C (init):
+	* lyxfunc.C (dispatch): remove LFUN_FORKS_SHOW and LFUN_FORKS_KILL.
+
 2005-02-14  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* bufferparams.C (readGraphicsDriver): prevent crash

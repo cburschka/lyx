@@ -243,7 +243,6 @@ FuncStatus lyx_gui::getStatus(FuncRequest const & ev)
 	switch (ev.action) {
 	case LFUN_LAYOUT_PREAMBLE:
 	case LFUN_TOOLTIPS_TOGGLE:
-	case LFUN_FORKS_SHOW:
 		flag.unknown(true);
 		break;
 	default:

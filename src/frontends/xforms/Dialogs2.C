@@ -99,12 +99,6 @@ void Dialogs::showFloat(InsetFloat * ifl)
 }
 
 
-void Dialogs::showForks()
-{
-	pimpl_->forks.controller().show();
-}
-
-
 void Dialogs::showGraphics(InsetGraphics * ig)
 {
 	pimpl_->graphics.controller().showInset(ig);

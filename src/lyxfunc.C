@@ -1524,21 +1524,6 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		owner->message(argument);
 		break;
 
-	case LFUN_FORKS_SHOW:
-		owner->getDialogs().showForks();
-		break;
-
-	case LFUN_FORKS_KILL:
-	{
-		if (!isStrInt(argument))
-			break;
-
-		pid_t const pid = strToInt(argument);
-		ForkedcallsController & fcc = ForkedcallsController::get();
-		fcc.kill(pid);
-		break;
-	}
-
 	case LFUN_TOOLTIPS_TOGGLE:
 		owner->getDialogs().toggleTooltips();
 		break;

@@ -108,8 +108,6 @@ public:
 	void showFloat(InsetFloat *);
 	///
 	void showWrap(InsetWrap *);
-	/// show all forked child processes
-	void showForks();
 	///
 	void showGraphics(InsetGraphics *);
 	/// show the details of a LyX file include inset

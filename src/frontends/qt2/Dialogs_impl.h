@@ -24,7 +24,6 @@
 #include "ControlERT.h"
 #include "ControlExternal.h"
 #include "ControlFloat.h"
-#include "ControlForks.h"
 #include "ControlGraphics.h"
 #include "insets/insetgraphicsParams.h"
 #include "ControlInclude.h"
@@ -67,7 +66,6 @@
 #include "QExternalDialog.h"
 #include "QFloat.h"
 #include "QFloatDialog.h"
-//#include "QForks.h"
 // Here would be an appropriate point to lecture on the evils
 // of the Qt headers, those most fucked up of disgusting ratholes.
 // But I won't.

@@ -61,10 +61,6 @@
 #include "FormFloat.h"
 #include "forms/form_float.h"
 
-#include "ControlForks.h"
-#include "FormForks.h"
-#include "forms/form_forks.h"
-
 #include "ControlGraphics.h"
 #include "FormGraphics.h"
 #include "forms/form_graphics.h"
@@ -190,9 +186,6 @@ FileDialog;
 typedef GUI<ControlFloat, FormFloat, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 FloatDialog;
 
-typedef GUI<ControlForks, FormForks, OkApplyCancelPolicy, xformsBC>
-ForksDialog;
-
 typedef GUI<ControlGraphics, FormGraphics, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 GraphicsDialog;
 
@@ -275,7 +268,6 @@ struct Dialogs::Impl {
 	ExternalDialog      external;
 	FileDialog          file;
 	FloatDialog         floats;
-	ForksDialog         forks;
 	GraphicsDialog      graphics;
 	IncludeDialog       include;
 	IndexDialog         index;

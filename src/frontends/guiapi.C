@@ -104,12 +104,6 @@ extern "C" {
 		d.showWrap(iw);
 	}
 
-	void gui_ShowForks(Dialogs & d)
-	{
-		d.showForks();
-	}
-
-
 	void gui_ShowGraphics(InsetGraphics * ig, Dialogs & d)
 	{
 		d.showGraphics(ig);
