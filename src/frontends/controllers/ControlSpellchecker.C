@@ -13,24 +13,21 @@
 #endif
 
 #include "ControlSpellchecker.h"
-
 #include "ViewBase.h"
-
 #include "buffer.h"
 #include "BufferView.h"
 #include "gettext.h"
 #include "language.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
-
 #include "frontends/Alert.h"
-
 #include "support/lstrings.h"
 
 #include "ispell.h"
 #ifdef USE_PSPELL
 # include "pspell.h"
 #endif
+
 
 ControlSpellchecker::ControlSpellchecker(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d),
@@ -192,7 +189,6 @@ void ControlSpellchecker::clearParams()
 		message_ = tostr(count_);
 		if (count_ != 1) {
 			message_ += _(" words checked.");
-
 		} else {
 			message_ += _(" word checked.");
 		}

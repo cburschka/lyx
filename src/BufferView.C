@@ -18,11 +18,12 @@
 #include "lyxtext.h"
 #include "frontends/screen.h"
 #include "frontends/WorkArea.h"
+#include "frontends/LyXView.h"
 
 
-BufferView::BufferView(LyXView * o, int xpos, int ypos,
+BufferView::BufferView(LyXView * owner, int xpos, int ypos,
 		       int width, int height)
-	: pimpl_(new Pimpl(this, o, xpos, ypos, width, height))
+	: pimpl_(new Pimpl(this, owner, xpos, ypos, width, height))
 {
 	text = 0;
 }
@@ -44,6 +45,12 @@ Buffer * BufferView::buffer() const
 LyXScreen & BufferView::screen() const
 {
 	return pimpl_->screen();
+}
+
+
+WorkArea & BufferView::workarea() const
+{
+	return pimpl_->workarea();
 }
 
 
@@ -136,6 +143,12 @@ bool BufferView::available() const
 void BufferView::beforeChange(LyXText * text)
 {
 	pimpl_->beforeChange(text);
+}
+
+
+void BufferView::finishChange(bool fitcur)
+{
+	pimpl_->finishChange(fitcur);
 }
 
 
@@ -240,4 +253,16 @@ BufferView::UpdateCodes operator|(BufferView::UpdateCodes uc1,
 bool BufferView::dispatch(FuncRequest const & ev)
 {
 	return pimpl_->dispatch(ev);
+}
+
+
+void BufferView::moveCursorUpdate(bool selecting, bool fitcur = true)
+{
+	pimpl_->moveCursorUpdate(selecting, fitcur);
+}
+
+
+void BufferView::message(string const & msg) const
+{
+	owner()->message(msg);
 }

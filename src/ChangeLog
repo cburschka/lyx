@@ -9,6 +9,14 @@
 	caption, make sure to recurse to parent insets (so that a caption
 	in a minipage in a figure float works) (bug #568)
 
+2002-08-20  André Pönitz <poenitz@gmx.net>
+
+	* text3.C: new file for LyXText::dispatch() and helpers
+
+	* BufferView.[Ch]: move text related stuff to LyXText::dispatch()
+
+	* funcrequest.[Ch]: add message() do avoid direct access to LyXFunc
+
 2002-08-19  André Pönitz <poenitz@gmx.net>
 
 	* lyxtext.h:

@@ -63,7 +63,8 @@ bool BufferView::insertLyXFile(string const & filen)
 	//
 	// Moved from lyx_cb.C (Lgb)
 {
-	if (filen.empty()) return false;
+	if (filen.empty())
+		return false;
 
 	string const fname = MakeAbsPath(filen);
 
@@ -455,7 +456,8 @@ WordLangTuple const BufferView::nextWord(float & value)
 
 void BufferView::selectLastWord()
 {
-	if (!available()) return;
+	if (!available())
+		return;
 
 	LyXCursor cur = text->selection.cursor;
 	hideCursor();
@@ -481,17 +483,18 @@ void BufferView::endOfSpellCheck()
 
 void BufferView::replaceWord(string const & replacestring)
 {
-	if (!available()) return;
+	if (!available())
+		return;
 
 	LyXText * tt = getLyXText();
 	hideCursor();
 	update(tt, BufferView::SELECT|BufferView::FITCUR);
 
-	/* clear the selection (if there is any) */
+	// clear the selection (if there is any)
 	toggleSelection(false);
 	update(tt, BufferView::SELECT|BufferView::FITCUR);
 
-	/* clear the selection (if there is any) */
+	// clear the selection (if there is any)
 	toggleSelection(false);
 	tt->replaceSelectionWithString(this, replacestring);
 

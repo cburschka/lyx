@@ -28,7 +28,6 @@
 #include "funcrequest.h"
 #include "BufferView.h"
 #include "lyxtext.h"
-#include "lyxfunc.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "debug.h"
@@ -945,7 +944,7 @@ void mathDispatchCreation(FuncRequest const & cmd, bool display)
 		bv->getLyXText()->cutSelection(bv);
 		openNewInset(bv, f);
 	}
-	bv->owner()->getLyXFunc().setMessage(N_("Math editor mode"));
+	cmd.message(N_("Math editor mode"));
 }
 
 
@@ -971,7 +970,7 @@ void mathDispatch(FuncRequest const & cmd)
 
 		case LFUN_MATH_MACRO:
 			if (cmd.argument.empty())
-				bv->owner()->getLyXFunc().setErrorMessage(N_("Missing argument"));
+				cmd.errorMessage(N_("Missing argument"));
 			else {
 				string s = cmd.argument;
 				string const s1 = token(s, ' ', 1);

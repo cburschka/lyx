@@ -100,6 +100,8 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	void beforeChange(LyXText *);
 	///
+	void finishChange(bool fitcur);
+	///
 	void savePosition(unsigned int i);
 	///
 	void restorePosition(unsigned int i);
@@ -125,6 +127,8 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	void updateInset(Inset * inset, bool mark_dirty);
 	///
 	bool dispatch(FuncRequest const & ev);
+	///
+	void message(string const & msg);
 private:
 	/**
 	 * Return the on-screen dimensions of the inset at the cursor.
@@ -142,8 +146,6 @@ private:
 	friend class BufferView;
 	/// open and lock an updatable inset
 	bool open_new_inset(UpdatableInset * new_inset, bool behind = false);
-	///
-	void specialChar(InsetSpecialChar::Kind);
 	///
 	void hfill();
 	///

@@ -314,9 +314,6 @@ void initMath();
 
 /// here to ssave a few includes in the insets
 class Dialogs;
-class LyXFunc;
-
 Dialogs & getDialogs();
-LyXFunc & getLyXFunc();
 
 #endif

@@ -173,7 +173,7 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 void lyx_gui::parse_lyxrc()
 {
 	// FIXME !!!!
-	lyxrc.dpi = 95;
+	//lyxrc.dpi = 95;
 
 	XformsColor::read(AddName(user_lyxdir, "preferences.xform"));
 

@@ -30,6 +30,7 @@ class Language;
 class Painter;
 class UpdatableInset;
 class WordLangTuple;
+class WorkArea;
 
 ///
 class BufferView : boost::noncopyable {
@@ -56,6 +57,8 @@ public:
 	Painter & painter() const;
 	///
 	LyXScreen & screen() const;
+	/// return the work area for this bview
+	WorkArea & workarea() const;
 	///
 	void buffer(Buffer * b);
 	///
@@ -88,6 +91,8 @@ public:
 	LyXView * owner() const;
 	///
 	void beforeChange(LyXText *);
+	///
+	void finishChange(bool fitcur = false);
 	///
 	void savePosition(unsigned int i);
 	///
@@ -128,6 +133,8 @@ public:
 	WordLangTuple const nextWord(float & value);
 	///
 	bool gotoLabel(string const & label);
+	///
+	void message(string const & msg) const;
 	///
 	void paste();
 	///
@@ -203,6 +210,8 @@ public:
 	void stuffClipboard(string const &) const;
 	///
 	bool dispatch(FuncRequest const & argument);
+	///
+	void moveCursorUpdate(bool selecting, bool fitcur = true);
 private:
 	///
 	struct Pimpl;

@@ -359,12 +359,6 @@ public:
 	///
 	void backspace(BufferView *);
 	///
-	void deleteWordForward(BufferView *);
-	///
-	void deleteWordBackward(BufferView *);
-	///
-	void deleteLineForward(BufferView *);
-	///
 	bool selectWordWhenUnderCursor(BufferView *,
 				       word_location const);
 	///
@@ -619,11 +613,17 @@ public:
 	/** Updates all counters starting BEHIND the row. Changed paragraphs
 	 * with a dynamic left margin will be rebroken. */
 	void updateCounters(BufferView *) const;
+	/// 
+	void update(BufferView * bv, bool changed = true);
 private:
 	///
 	void setCounter(Buffer const *, Paragraph * par) const;
 	///
-	Inset::RESULT lfunAppendix(FuncRequest const & cmd);
+	void deleteWordForward(BufferView *);
+	///
+	void deleteWordBackward(BufferView *);
+	///
+	void deleteLineForward(BufferView *);
 
 	/*
 	 * some low level functions

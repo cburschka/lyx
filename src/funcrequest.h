@@ -34,12 +34,20 @@ public:
 	/// for mouse events
 	FuncRequest(BufferView * view, kb_action act,
 		int x, int y, mouse_button::state button);
+	/// for changing requests a bit
+	FuncRequest(FuncRequest const & cmd, string const & arg);
+
 	/// access to the view
 	BufferView * view() const;
 	/// access to the view
 	void setView(BufferView * view);
 	/// access to button
 	mouse_button::state button() const;
+
+	/// output a message
+	void message(string const & msg) const;
+	/// output an error message
+	void errorMessage(string const & msg) const;
 
 private:
 	/// the BufferView we are talking to

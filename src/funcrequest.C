@@ -7,6 +7,11 @@
  */
 
 #include "funcrequest.h"
+#include "BufferView.h"
+#include "lyxfunc.h" // only for setMessage()
+#include "frontends/LyXView.h"
+#include "debug.h"
+
 
 FuncRequest::FuncRequest()
 	: view_(0), action(LFUN_UNKNOWN_ACTION)
@@ -39,6 +44,13 @@ FuncRequest::FuncRequest
 {}
 
 
+
+FuncRequest::FuncRequest(FuncRequest const & cmd, string const & arg)
+	: view_(cmd.view_), action(cmd.action), argument(arg),
+	  x(cmd.x), y(cmd.y), button_(cmd.button_)
+{}
+	
+
 BufferView * FuncRequest::view() const
 {
 	return view_;
@@ -56,3 +68,20 @@ mouse_button::state FuncRequest::button() const
 	return button_;
 }
 
+
+void FuncRequest::message(string const & msg) const
+{
+	if (view_)
+		view_->owner()->getLyXFunc().setMessage(msg);
+	else
+		lyxerr  << "Dropping message '" << msg << "'\n";
+}
+
+
+void FuncRequest::errorMessage(string const & msg) const
+{
+	if (view_)
+		view_->owner()->getLyXFunc().setErrorMessage(msg);
+	else
+		lyxerr  << "Dropping error message '" << msg << "'\n";
+}

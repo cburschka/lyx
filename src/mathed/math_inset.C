@@ -306,9 +306,3 @@ Dialogs & getDialogs()
 {
 	return mathcursor->formula()->view()->owner()->getDialogs();
 }
-
-
-LyXFunc & getLyXFunc()
-{
-	return mathcursor->formula()->view()->owner()->getLyXFunc();
-}
