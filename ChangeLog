@@ -1,3 +1,23 @@
+2000-01-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyx_cb.C (MakeLaTeXOutput): name change from MakeDVIOutput
+	(CreatePostscript): name change from MenuRunDVIPS (or something)
+	(PreviewPostscript): name change from MenuPreviewPS
+	(PreviewDVI): name change from MenuPreviewDVI
+
+	* lib/lyxrc.example: added \pdflatex_command, \pdf_mode,
+	\view_pdf_command., \pdf_to_ps_command
+
+	* lib/configure.m4: added search for PDF viewer, and search for
+	PDF to PS converter. 
+	(lyxrc.defaults output): add \pdflatex_command,
+	\view_pdf_command and \pdf_to_ps_command.
+
+	* src/lyx_cb.C (MenuPreviewDVI): renamed from MenuPreview.
+
+	* src/bufferlist.C (write): we don't use blocksize for anything so
+	I removed it.
+
 2000-01-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/support/block.h: disable operator T* (), since it causes
@@ -23,6 +43,15 @@
 
 	* src/lyxlex.h: include LIstream.h, for Sun CC this time.
 	* src/mathed/math_defs.h: ditto.
+
+2000-01-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyxrc.[Ch]: New tag and variable "\make_backup". Defaults to
+	true, decides if we create a backup file or not when saving. New
+	tag and variable \pdf_mode, defaults to false. New tag and
+	variable \pdflatex_command, defaults to pdflatex. New tag and
+	variable \view_pdf_command, defaults to xpdf. New tag and variable
+	\pdf_to_ps_command, defaults to pdf2ps.
 
 2000-01-08  Lars Gullik Bjønnes  <larsbj@lyx.org>
 

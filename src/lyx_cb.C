@@ -284,7 +284,7 @@ void SetUpdateTimer(float time)
 void MenuWrite(Buffer * buffer)
 {
 	XFlush(fl_display);
-	if (!bufferlist.write(buffer)) {
+	if (!bufferlist.write(buffer, lyxrc->make_backup)) {
 		string fname = buffer->fileName();
 		string s = MakeAbsPath(fname);
 		if (AskQuestion(_("Save failed. Rename and try again?"),
@@ -470,14 +470,12 @@ int MenuRunChktex(Buffer * buffer)
 }
 
  
-int MakeDVIOutput(Buffer * buffer)
+int MakeLaTeXOutput(Buffer * buffer)
 {
 	// Who cares?
 	//if (!bv->text)
 	//	return 1;
-
 	int ret = 0;
-
 	string path = OnlyPath(buffer->fileName());
 	if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = buffer->tmppath;
@@ -504,7 +502,7 @@ bool RunScript(Buffer * buffer, bool wait,
 	string name = orgname;
 	int result = 0;
 	
-	if (MakeDVIOutput(buffer) > 0)
+	if (MakeLaTeXOutput(buffer) > 0)
 		return false;
 	/* get DVI-Filename */
 	if (name.empty())
@@ -565,7 +563,7 @@ bool RunScript(Buffer * buffer, bool wait,
 
 
 // Returns false if we fail
-bool MenuRunDvips(Buffer * buffer, bool wait = false)
+bool CreatePostscript(Buffer * buffer, bool wait = false)
 {
 	// Who cares?
 	//if (!bv->text)
@@ -574,7 +572,7 @@ bool MenuRunDvips(Buffer * buffer, bool wait = false)
 	ProhibitInput();
 
 	// Generate dvi file
-        if (MakeDVIOutput(buffer) > 0) {
+        if (MakeLaTeXOutput(buffer) > 0) {
             	AllowInput();
 		return false;
         }
@@ -616,7 +614,7 @@ bool MenuRunDvips(Buffer * buffer, bool wait = false)
 	}
 
 	// Make postscript file.
-	string command = "dvips " + lyxrc->print_to_file + ' ';
+	string command = lyxrc->dvi_to_ps_command + ' ' + lyxrc->print_to_file + ' ';
 	command += QuoteName(psname);
 	if (buffer->params.use_geometry
 	    && buffer->params.papersize2 == BufferParams::VM_PAPER_CUSTOM
@@ -653,14 +651,15 @@ bool MenuRunDvips(Buffer * buffer, bool wait = false)
 
 
 // Returns false if we fail
-bool MenuPreviewPS(Buffer * buffer)
+//bool MenuPreviewPS(Buffer * buffer)
+bool PreviewPostscript(Buffer * buffer)
 {
 	// Who cares?
 	//if (!bv->text)
 	//	return false;
 
 	// Generate postscript file
-	if (!MenuRunDvips(buffer, true)) {
+	if (!CreatePostscript(buffer, true)) {
 		return false;
 	}
 
@@ -687,7 +686,7 @@ void MenuFax(Buffer * buffer)
 	//	return;
 
 	// Generate postscript file
-	if (!MenuRunDvips(buffer, true)) {
+	if (!CreatePostscript(buffer, true)) {
 		return;
 	}
 
@@ -708,7 +707,7 @@ void MenuFax(Buffer * buffer)
 
 
 // Returns false if we fail
-bool MenuPreview(Buffer * buffer)
+bool PreviewDVI(Buffer * buffer)
 {
 	// Who cares?
 	//if (!bv->text)

@@ -78,8 +78,16 @@ public:
         string custom_export_command;
 	///
 	string custom_export_format;
+	///
+	bool pdf_mode;
 	/// program for running latex
 	string latex_command;
+	///
+	string pdflatex_command;
+	///
+	string pdf_to_ps_command;
+	///
+	string dvi_to_ps_command;
         /// program for performing literate programming
         string literate_command;
         string literate_extension;
@@ -97,6 +105,8 @@ public:
 	string view_pspic_command;
 	/// program for viewing dvi output (default "xdvi")
 	string view_dvi_command;
+	/// program for viewing pdf output (default "xpdf")
+	string view_pdf_command;
         /// default paper size for local xdvi/dvips/ghostview/whatever
         BufferParams::PAPER_SIZE default_papersize;
 	/// command to run chktex incl. options
@@ -121,6 +131,8 @@ public:
 	string lastfiles;
 	/// maximal number of lastfiles
 	unsigned int num_lastfiles;
+	/// shall a backup file be created
+	bool make_backup;
 	/// Zoom factor for screen fonts
 	unsigned int zoom;
 	/// Screen font sizes in points for each font size

@@ -19,12 +19,9 @@
 #include <config.h>
 
 #include <fstream>
-using std::ifstream;
-using std::ofstream;
-using std::ios;
-
 #include <sys/types.h>
 #include <utime.h>
+
 #include "bufferlist.h"
 #include "lyx_main.h"
 #include "minibuffer.h"
@@ -42,6 +39,10 @@ using std::ios;
 
 extern BufferView * current_view;
 extern int RunLinuxDoc(int, string const &);
+
+using std::ifstream;
+using std::ofstream;
+using std::ios;
 
 //
 // Class BufferStorage
@@ -131,8 +132,12 @@ bool BufferList::QwriteAll()
 // Should probably be moved to somewhere else: BufferView? LyXView?
 bool BufferList::write(Buffer * buf, bool makeBackup)
 {
-	current_view->owner()->getMiniBuffer()->Set(_("Saving document"),
-			MakeDisplayPath(buf->fileName()), "...");
+	if (buf->getUser())
+		buf->getUser()
+			->owner()
+			->getMiniBuffer()
+			->Set(_("Saving document"),
+			      MakeDisplayPath(buf->fileName()), "...");
 
 	// We don't need autosaves in the immediate future. (Asger)
 	buf->resetAutosaveTimers();
@@ -171,15 +176,13 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 
 			times->actime = finfo.getAccessTime();
 			times->modtime = finfo.getModificationTime();
-			long blksize = finfo.getBlockSize();
-			lyxerr.debug() << "BlockSize: " << blksize << endl;
 			ifstream ifs(buf->fileName().c_str());
 			ofstream ofs(s.c_str(), ios::out|ios::trunc);
 			if (ifs && ofs) {
 				char c = 0;
 				while (ifs.get(c)) {
 					ofs.put(c);
-				};
+				}
 				ifs.close();
 				ofs.close();
 				chmod(s.c_str(), fmode);
@@ -257,7 +260,7 @@ bool BufferList::close(Buffer * buf)
 				       MakeDisplayPath(buf->fileName(), 50),
 				       _("Save document?"))){
 		case 1: // Yes
-			if (write(buf)) {
+			if (write(buf, lyxrc->make_backup)) {
 				lastfiles->newFile(buf->fileName());
 			} else {
 				AllowInput();

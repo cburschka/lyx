@@ -127,7 +127,13 @@ enum LyXRCTags {
 	RC_DISPLAY_SHORTCUTS,
 	RC_RELYX_COMMAND,
 	RC_HTML_COMMAND,
-	RC_LAST	
+	RC_MAKE_BACKUP,
+	RC_PDFLATEX_COMMAND,
+	RC_PDF_MODE,
+	RC_VIEWPDF_COMMAND,
+	RC_PDF_TO_PS_COMMAND,
+	RC_DVI_TO_PS_COMMAND,
+	RC_LAST
 };
 
 
@@ -152,6 +158,7 @@ static keyword_item lyxrcTags[] = {
 	{ "\\default_papersize", RC_DEFAULT_PAPERSIZE },
 	{ "\\display_shortcuts", RC_DISPLAY_SHORTCUTS },
 	{ "\\document_path", RC_DOCUMENTPATH },
+	{ "\\dvi_to_ps_command", RC_DVI_TO_PS_COMMAND },
 	{ "\\escape_chars", RC_ESC_CHARS },
 	{ "\\exit_confirmation", RC_EXIT_CONFIRMATION },
 	{ "\\fast_selection", RC_FAST_SELECTION },
@@ -168,7 +175,11 @@ static keyword_item lyxrcTags[] = {
         { "\\literate_command", RC_LITERATE_COMMAND },
         { "\\literate_error_filter", RC_LITERATE_ERROR_FILTER },
         { "\\literate_extension", RC_LITERATE_EXTENSION },
+	{ "\\make_backup", RC_MAKE_BACKUP },
 	{ "\\num_lastfiles", RC_NUMLASTFILES },
+	{ "\\pdf_mode", RC_PDF_MODE },
+	{ "\\pdf_to_ps_command", RC_PDF_TO_PS_COMMAND },
+	{ "\\pdflatex_command", RC_PDFLATEX_COMMAND },
 	{ "\\personal_dictionary", RC_PERS_DICT },
 	{ "\\phone_book", RC_PHONEBOOK },
 	{ "\\print_adapt_output", RC_PRINT_ADAPTOUTPUT },
@@ -213,6 +224,7 @@ static keyword_item lyxrcTags[] = {
 	{ "\\use_personal_dictionary", RC_USE_PERS_DICT },
 	{ "\\use_tempdir", RC_USETEMPDIR },
 	{ "\\view_dvi_command", RC_VIEWDVI_COMMAND },
+	{ "\\view_pdf_command", RC_VIEWPDF_COMMAND },
 	{ "\\view_ps_command", RC_VIEWPS_COMMAND },
         { "\\view_pspic_command", RC_VIEWPSPIC_COMMAND }
 };
@@ -250,7 +262,11 @@ LyXRC::LyXRC()
 	document_path = GetEnvPath("HOME");
 	tempdir_path = "/tmp";
 	use_tempdir = true;
+	pdf_mode = false;
 	latex_command = "latex";
+	pdflatex_command = "pdflatex";
+	pdf_to_ps_command = "pdf2ps";
+	dvi_to_ps_command = "dvips";
         literate_command = "none";
         literate_extension = "none";
         literate_error_filter = "cat";
@@ -261,6 +277,7 @@ LyXRC::LyXRC()
 	view_ps_command = "ghostview -swap";
 	view_pspic_command = "ghostview";
 	view_dvi_command = "xdvi";
+	view_pdf_command = "xpdf";
 	default_papersize = BufferParams::PAPER_USLETTER;
 	custom_export_format = "ps";
 	chktex_command = "chktex -n1 -n3 -n6 -n9 -n22 -n25 -n30 -n38";
@@ -292,6 +309,7 @@ LyXRC::LyXRC()
 	ascii_linelen = 75;
 	num_lastfiles = 4;
 	check_lastfiles = true;
+	make_backup = true;
 	exit_confirmation = true;
 	display_shortcuts = true;
 	// Spellchecker settings:
@@ -318,6 +336,7 @@ int LyXRC::ReadBindFile(string const & name)
 	}
 	return result;
 }
+
 
 int LyXRC::read(string const & filename)
 {
@@ -502,10 +521,30 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				custom_export_format = lexrc.GetString();
 			break;
+
+		case RC_PDF_MODE:
+			if (lexrc.next())
+				pdf_mode = lexrc.GetBool();
+			break;
 			
 		case RC_LATEX_COMMAND:
 			if (lexrc.next())
 				latex_command = lexrc.GetString();
+			break;
+
+		case RC_PDFLATEX_COMMAND:
+			if (lexrc.next())
+				pdflatex_command = lexrc.GetString();
+			break;
+
+		case RC_PDF_TO_PS_COMMAND:
+			if (lexrc.next())
+				pdf_to_ps_command = lexrc.GetString();
+			break;
+
+		case RC_DVI_TO_PS_COMMAND:
+			if (lexrc.next())
+				dvi_to_ps_command = lexrc.GetString();
 			break;
 			
                 case RC_LITERATE_COMMAND:
@@ -567,6 +606,11 @@ int LyXRC::read(string const & filename)
 		case RC_VIEWDVI_COMMAND:
 			if (lexrc.next())
 				view_dvi_command = lexrc.GetString();
+			break;
+
+		case RC_VIEWPDF_COMMAND:
+			if (lexrc.next())
+				view_pdf_command = lexrc.GetString();
 			break;
 			
 		case RC_PS_COMMAND:
@@ -853,6 +897,10 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				isp_esc_chars = lexrc.GetString();
 			break;
+		case RC_MAKE_BACKUP:
+		        if (lexrc.next())
+		                make_backup = lexrc.GetBool();
+			break;
 		case RC_LAST: break; // this is just a dummy
 		}
 	}
@@ -967,8 +1015,16 @@ void LyXRC::output(ostream & os) const
 	case RC_CUSTOM_EXPORT_FORMAT:
 		os << "\\custom_export_format \"" << custom_export_format
 		   << "\"\n";
+	case RC_PDF_MODE:
+		os << "\\pdf_mode " << tostr(pdf_mode) << "\n";
 	case RC_LATEX_COMMAND:
 		os << "\\latex_command \"" << latex_command << "\"\n";
+	case RC_PDFLATEX_COMMAND:
+		os << "\\pdflatex_command \"" << pdflatex_command << "\"\n";
+	case RC_PDF_TO_PS_COMMAND:
+		os << "\\pdf_to_ps_command \"" << pdf_to_ps_command << "\"\n";
+	case RC_DVI_TO_PS_COMMAND:
+		os << "\\dvi_to_ps_command \"" << dvi_to_ps_command << "\"\n";
 	case RC_LITERATE_COMMAND:
 		os << "\\literate_command \"" << literate_command << "\"\n";
 	case RC_LITERATE_EXTENSION:
@@ -1014,6 +1070,8 @@ void LyXRC::output(ostream & os) const
 		   << "\n";
 	case RC_VIEWDVI_COMMAND:
 		os << "\\view_dvi_command \"" << view_dvi_command << "\"\n";
+	case RC_VIEWPDF_COMMAND:
+		os << "\\view_pdf_command \"" << view_pdf_command << "\"\n";
 	case RC_DEFAULT_PAPERSIZE:
 		os << "\\default_papersize \"";
 		switch (default_papersize) {
@@ -1131,6 +1189,8 @@ void LyXRC::output(ostream & os) const
 		os << "\\personal_dictionary \"" << isp_pers_dict << "\"\n";
 	case RC_ESC_CHARS:
 		os << "\\escape_chars \"" << isp_esc_chars << "\"\n";
+	case RC_MAKE_BACKUP:
+		os << "\\make_backup " << tostr(make_backup) << "\n";
 	}
 	os.flush();
 }

@@ -194,6 +194,15 @@ SEARCH_PROG([for a Postscript interpreter],GS, gs)
 # Search something to preview postscript
 SEARCH_PROG([for a Postscript previewer],GHOSTVIEW,gv ghostview)
 
+# Search for a program to preview pdf
+SEARCH_PROG([for a PDF preview],PDFVIEWER,xpdf acroread gv ghostview)
+
+# Search for a program to convert pdf to ps
+SEARCH_PROG([for a PDF to PS converter],PDFPS,pdf2ps pdftops)
+
+# Search for a program to convert dvi to ps
+SEARCH_PROG([for a DVI to PS converter],DVIPS,dvips)
+
 # Search a *roff program (used to translate tables in ASCII export)
 SEARCH_PROG([for a *roff formatter],ROFF,groff nroff)
 ascii_roff_command=$ROFF
@@ -327,6 +336,10 @@ cat >lyxrc.defaults <<EOF
 # ~/.lyx/lyxrc and edit this file instead. Any setting in lyxrc will
 # override the values given here.
 \\latex_command "$LATEX"
+\\pdflatex_command "$PDFLATEX"
+\\view_pdf_command "$PDFVIEWER"
+\\pdf_to_ps_command "$PDFPS"
+\\dvi_to_ps_command "$DVIPS"
 \\relyx_command "$RELYX"
 \\literate_command "$LITERATE"
 \\literate_extension "$LITERATE_EXT"

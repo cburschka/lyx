@@ -45,7 +45,7 @@ extern LyXRC * lyxrc;
 // ale970405
 extern string bibitemWidthest();
 
-/* this is a minibuffer */
+// this is a minibuffer
 static char minibuffer_char;
 static LyXFont minibuffer_font;
 static Inset * minibuffer_inset;
@@ -66,8 +66,10 @@ LyXParagraph::LyXParagraph()
 	itemdepth = 0;
 	next = 0;
 	previous = 0;
-#ifndef NEW_TABLE
+#ifndef NEW_FONTTABLE // OK
 	fonttable = 0;
+#endif
+#ifndef NEW_INSETTABLE
 	insettable = 0;
 #endif
 	footnoteflag = LyXParagraph::NO_FOOTNOTE;
@@ -83,7 +85,7 @@ LyXParagraph::LyXParagraph()
 }
 
 
-/* this konstruktor inserts the new paragraph in a list */ 
+// This konstruktor inserts the new paragraph in a list.
 LyXParagraph::LyXParagraph(LyXParagraph * par)
 {
 	text.reserve(500);
@@ -98,8 +100,10 @@ LyXParagraph::LyXParagraph(LyXParagraph * par)
 		next->previous = this;
 	previous = par;
 	previous->next = this;
-#ifndef NEW_TABLE
+#ifndef NEW_FONTTABLE // OK
 	fonttable = 0;
+#endif
+#ifndef NEW_INSETTABLE
 	insettable = 0;
 #endif
 	footnoteflag = LyXParagraph::NO_FOOTNOTE;
@@ -129,7 +133,7 @@ void LyXParagraph::writeFile(ostream & os, BufferParams & params,
 	    || !previous
 	    || previous->footnoteflag == LyXParagraph::NO_FOOTNOTE){
 		
-		/* The beginning or the end of a footnote environment? */ 
+		// The beginning or the end of a footnote environment?
 		if (footflag != footnoteflag) {
 			footflag = footnoteflag;
 			if (footflag) {
@@ -142,7 +146,7 @@ void LyXParagraph::writeFile(ostream & os, BufferParams & params,
 			}
 		}
 
-		/* The beginning or end of a deeper (i.e. nested) area? */
+		// The beginning or end of a deeper (i.e. nested) area?
 		if (dth != depth) {
 			if (depth > dth) {
 				while (depth > dth) {
@@ -158,12 +162,12 @@ void LyXParagraph::writeFile(ostream & os, BufferParams & params,
 			}
 		}
 
-		/* First write the layout */ 
+		// First write the layout
 		os << "\n\\layout "
 		   << textclasslist.NameOfLayout(params.textclass, layout)
 		   << "\n";
 
-		/* maybe some vertical spaces */ 
+		// Maybe some vertical spaces.
 		if (added_space_top.kind() != VSpace::NONE)
 			os << "\\added_space_top "
 			   << added_space_top.asLyXCommand() << " ";
@@ -171,32 +175,32 @@ void LyXParagraph::writeFile(ostream & os, BufferParams & params,
 			os << "\\added_space_bottom "
 			   << added_space_bottom.asLyXCommand() << " ";
 			
-		/* The labelwidth string used in lists */
+		// The labelwidth string used in lists.
 		if (!labelwidthstring.empty())
 			os << "\\labelwidthstring "
 			   << labelwidthstring << '\n';
 
-		/* Lines above or below? */
+		// Lines above or below?
 		if (line_top)
 			os << "\\line_top ";
 		if (line_bottom)
 			os << "\\line_bottom ";
 
-		/* Pagebreaks above or below? */
+		// Pagebreaks above or below?
 		if (pagebreak_top)
 			os << "\\pagebreak_top ";
 		if (pagebreak_bottom)
 			os << "\\pagebreak_bottom ";
 			
-		/* Start of appendix? */
+		// Start of appendix?
 		if (start_of_appendix)
 			os << "\\start_of_appendix ";
 
-		/* Noindent? */
+		// Noindent?
 		if (noindent)
 			os << "\\noindent ";
 			
-		/* Alignment? */
+		// Alignment?
 		if (align != LYX_ALIGN_LAYOUT) {
 			switch (align) {
 			case LYX_ALIGN_LEFT: h = 1; break;
@@ -229,12 +233,12 @@ void LyXParagraph::writeFile(ostream & os, BufferParams & params,
                 }
 	}
 	else {
-   		/* Dummy layout. This means that a footnote ended */
+   		// Dummy layout. This means that a footnote ended.
 		os << "\n\\end_float ";
 		footflag = LyXParagraph::NO_FOOTNOTE;
 	}
 		
-	/* It might be a table */ 
+	// It might be a table.
 	if (table){
 		os << "\\LyXTable\n";
 		table->Write(os);
@@ -338,7 +342,8 @@ void LyXParagraph::validate(LaTeXFeatures & features)
 	// then the layouts
 	features.layout[GetLayout()] = true;
 
-#ifdef NEW_TABLE
+	// then the fonts
+#ifdef NEW_FONTTABLE // OK, but does not affect structure anyway
 	for (FontList::const_iterator cit = fontlist.begin();
 	     cit != fontlist.end(); ++cit) {
 		if ((*cit).font.noun() == LyXFont::ON) {
@@ -353,7 +358,8 @@ void LyXParagraph::validate(LaTeXFeatures & features)
 		switch ((*cit).font.color()) {
 		case LyXFont::NONE:
 		case LyXFont::INHERIT_COLOR:
-		case LyXFont::IGNORE_COLOR:  break;
+		case LyXFont::IGNORE_COLOR:
+			break;
 		default:
 			features.color = true;
 			lyxerr[Debug::LATEX] << "Color enabled. Font: "
@@ -362,7 +368,6 @@ void LyXParagraph::validate(LaTeXFeatures & features)
 		}
 	}
 #else
-	// then the fonts
 	FontTable * tmpfonttable = fonttable;
 	while (tmpfonttable) {
 		if (tmpfonttable->font.noun() == LyXFont::ON) {
@@ -388,13 +393,14 @@ void LyXParagraph::validate(LaTeXFeatures & features)
 		tmpfonttable = tmpfonttable->next;
 	}
 #endif
-#ifdef NEW_TABLE
+	// then the insets
+#ifdef NEW_INSETTABLE
 	for (InsetList::const_iterator cit = insetlist.begin();
 	     cit != insetlist.end(); ++cit) {
-		(*cit).inset->Validate(features);
+		if ((*cit).inset)
+			(*cit).inset->Validate(features);
 	}
 #else
-	// then the insets
 	InsetTable * tmpinsettable = insettable;
 	while (tmpinsettable) {
 		if (tmpinsettable->inset) {
@@ -403,6 +409,7 @@ void LyXParagraph::validate(LaTeXFeatures & features)
 		tmpinsettable = tmpinsettable->next;
 	}
 #endif
+
         if (table && table->IsLongTable())
 		features.longtable = true;
         if (pextra_type == PEXTRA_INDENT)
@@ -422,7 +429,7 @@ void LyXParagraph::validate(LaTeXFeatures & features)
 }
 
 
-/* first few functions needed for cut and paste and paragraph breaking */
+// First few functions needed for cut and paste and paragraph breaking.
 void LyXParagraph::CopyIntoMinibuffer(LyXParagraph::size_type pos) const
 {
 	minibuffer_char = GetChar(pos);
@@ -450,21 +457,22 @@ void LyXParagraph::CutIntoMinibuffer(LyXParagraph::size_type pos)
 			// This is a little hack since I want exactly
 			// the inset, not just a clone. Otherwise
 			// the inset would be deleted when calling Erase(pos)
-#ifdef NEW_TABLE
+			// find the entry
+#ifdef NEW_INSETTABLE
 			for (InsetList::iterator it = insetlist.begin();
 			     it != insetlist.end(); ++it) {
 				if ((*it).pos == pos) {
 					(*it).inset = 0;
 					break;
 				}
+					
 			}
 #else
-			/* find the entry */ 
 			InsetTable * tmpi = insettable;
 			while (tmpi && tmpi->pos != pos) {
 				tmpi= tmpi->next;
 			}
-			if (tmpi) {  /* This should always be true */
+			if (tmpi) {  // This should always be true.
 				tmpi->inset = 0;
 			}
 #endif
@@ -476,7 +484,7 @@ void LyXParagraph::CutIntoMinibuffer(LyXParagraph::size_type pos)
 
 	}
 
-	/* Erase(pos); now the caller is responsible for that*/
+	// Erase(pos); now the caller is responsible for that.
 }
 
 
@@ -488,7 +496,7 @@ void LyXParagraph::InsertFromMinibuffer(LyXParagraph::size_type pos)
 		InsertInset(pos, minibuffer_inset);
 }
 
-/* end of minibuffer */ 
+// end of minibuffer
 
 
 
@@ -523,7 +531,7 @@ void LyXParagraph::Clear()
 }
 
 
-/* the destructor removes the new paragraph from the list */ 
+// the destructor removes the new paragraph from the list
 LyXParagraph::~LyXParagraph()
 {
 	if (previous)
@@ -531,7 +539,12 @@ LyXParagraph::~LyXParagraph()
 	if (next)
 		next->previous = previous;
 
-#ifndef NEW_TABLE
+#ifdef NEW_INSETTABLE
+	for (InsetList::iterator it = insetlist.begin();
+	     it != insetlist.end(); ++it) {
+		delete (*it).inset;
+	}
+#else
 	InsetTable * tmpinset;
 	while (insettable) {
 		tmpinset = insettable;
@@ -550,7 +563,8 @@ LyXParagraph::~LyXParagraph()
 			break;
 		}
 	}
-
+#endif
+#ifndef NEW_FONTTABLE // OK
 	FontTable * tmpfont;
 	while (fonttable) {
 		tmpfont = fonttable;
@@ -572,8 +586,8 @@ LyXParagraph::~LyXParagraph()
 
 void LyXParagraph::Erase(LyXParagraph::size_type pos)
 {
-	/* > because last is the next unused position, and you can 
-	 * use it if you want  */
+	// > because last is the next unused position, and you can 
+	// use it if you want
 	if (pos > size()) {
 		if (next && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
 			NextAfterFootnote()->Erase(pos - text.size() - 1);
@@ -583,28 +597,24 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 		return;
 	}
 	if (pos < size()) { // last is free for insertation, but should be empty
-#ifdef NEW_TABLE
-		/* if it is an inset, delete the inset entry */ 
+		// if it is an inset, delete the inset entry 
 		if (text[pos] == LyXParagraph::META_INSET) {
-			/* find the entry */
-			for(InsetList::iterator it = insetlist.begin();
-			    it != insetlist.end(); ++it) {
+			// find the entry
+#ifdef NEW_INSETTABLE
+			for (InsetList::iterator it = insetlist.begin();
+			     it != insetlist.end(); ++it) {
 				if ((*it).pos == pos) {
 					delete (*it).inset;
 					insetlist.erase(it);
 					break;
 				}
 			}
-		}
 #else
-		/* if it is an inset, delete the inset entry */ 
-		if (text[pos] == LyXParagraph::META_INSET) {
-			/* find the entry */ 
 			InsetTable *tmpi = insettable;
 			InsetTable *tmpi2 = tmpi;
 			while (tmpi && tmpi->pos != pos) {
-				tmpi2= tmpi;
-				tmpi= tmpi->next;
+				tmpi2 = tmpi;
+				tmpi = tmpi->next;
 			}
 			if (tmpi) {	// this should always be true
 				if (tmpi->inset) // delete the inset if it exists
@@ -615,38 +625,33 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 					tmpi2->next = tmpi->next;
 				delete tmpi;
 			}
-		}
 #endif
+		}
 		text.erase(text.begin() + pos);
-#ifdef NEW_TABLE
-		/* erase entries in the tables */
-		for(FontList::iterator it = fontlist.begin();
-		    it != fontlist.end(); ++it) {
+		// Erase entries in the tables.
+#ifdef NEW_FONTTABLE // Seems OK
+		for (FontList::iterator it = fontlist.begin();
+		     it != fontlist.end(); ++it) {
 			if (pos >= (*it).pos && pos <= (*it).pos_end) {
 				if ((*it).pos == (*it).pos_end) {
+					// If it is a multi-character font
+					// entry, we just make it smaller
+					// (see update below), otherwise we
+					// should delete it.
 					fontlist.erase(it);
 					break;
 				}
 			}
 		}
-
-		/* update all other entries */
-		for(FontList::iterator it = fontlist.begin();
-		    it != fontlist.end(); ++it) {
+		// Update all other entries.
+		for (FontList::iterator it = fontlist.begin();
+		     it != fontlist.end(); ++it) {
 			if ((*it).pos > pos)
 				(*it).pos--;
 			if ((*it).pos_end >= pos)
 				(*it).pos_end--;
 		}
-      
-		/* update the inset table */
-		for(InsetList::iterator it = insetlist.begin();
-		    it != insetlist.end(); ++it) {
-			if ((*it).pos > pos)
-				(*it).pos--;
-		}
 #else
-		/* erase entries in the tables */ 
 		int found = 0;
 		FontTable * tmp = fonttable;
 		FontTable * prev = 0;
@@ -660,9 +665,9 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 		}
       
 		if (found && tmp->pos == tmp->pos_end) {  
-			/* if it is a multi-character font entry, we just make 
-			 * it smaller (see update below), otherwise we should 
-			 * delete it */
+			// if it is a multi-character font entry, we just make 
+			// it smaller (see update below), otherwise we should 
+			// delete it
 			if (prev)
 				prev->next = tmp->next;
 			else
@@ -671,7 +676,7 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 			delete tmp;
 		}
 
-		/* update all other entries */
+		// Update all other entries.
 
 		tmp = fonttable;
 		while (tmp) {
@@ -681,15 +686,22 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 				tmp->pos_end--;
 			tmp = tmp->next;
 		}
-      
-		/* update the inset table */ 
+#endif      
+		// Update the inset table.
+#ifdef NEW_INSETTABLE
+		for (InsetList::iterator it = insetlist.begin();
+		     it != insetlist.end(); ++it) {
+			if ((*it).pos > pos)
+				(*it).pos--;
+		}
+#else
 		InsetTable * tmpi = insettable;
 		while (tmpi) {
 			if (tmpi->pos > pos)
 				tmpi->pos--;
 			tmpi= tmpi->next;
 		}
-#endif      
+#endif
 	} else {
 		lyxerr << "ERROR (LyXParagraph::Erase): "
 			"can't erase non-existant char." << endl;
@@ -699,8 +711,8 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 
 void LyXParagraph::InsertChar(LyXParagraph::size_type pos, char c)
 {
-	/* > because last is the next unused position, and you can 
-	 * use it if you want  */
+	// > because last is the next unused position, and you can 
+	// use it if you want
 	if (pos > size()) {
 		if (next
 		    && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
@@ -712,23 +724,16 @@ void LyXParagraph::InsertChar(LyXParagraph::size_type pos, char c)
 		return;
 	}
 	text.insert(text.begin() + pos, c);
-#ifdef NEW_TABLE
-	// update the font table
-	for(FontList::iterator it = fontlist.begin();
-	    it != fontlist.end(); ++it) {
+	// Update the font table.
+#ifdef NEW_FONTTABLE // Seems OK
+	for (FontList::iterator it = fontlist.begin();
+	     it != fontlist.end(); ++it) {
 		if ((*it).pos >= pos)
 			(*it).pos++;
 		if ((*it).pos_end >= pos)
 			(*it).pos_end++;
 	}
-	// update the inset table
-	for(InsetList::iterator it = insetlist.begin();
-	    it != insetlist.end(); ++it) {
-		if ((*it).pos >= pos)
-			(*it).pos++;
-	}
 #else
-	/* update the font table */ 
 	FontTable * tmp = fonttable;
 	while (tmp) {
 		if (tmp->pos >= pos)
@@ -737,8 +742,16 @@ void LyXParagraph::InsertChar(LyXParagraph::size_type pos, char c)
 			tmp->pos_end++;
 		tmp = tmp->next;
 	}
+#endif
    
-	/* update the inset table */ 
+	// Update the inset table.
+#ifdef NEW_INSETTABLE
+	for (InsetList::iterator it = insetlist.begin();
+	     it != insetlist.end(); ++it) {
+		if ((*it).pos >= pos)
+			(*it).pos++;
+	}
+#else
 	InsetTable * tmpi = insettable;
 	while (tmpi) {
 		if (tmpi->pos >= pos)
@@ -752,8 +765,8 @@ void LyXParagraph::InsertChar(LyXParagraph::size_type pos, char c)
 void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
 			       Inset * inset)
 {
-	/* > because last is the next unused position, and you can 
-	 * use it if you want  */
+	// > because last is the next unused position, and you can 
+	// use it if you want
 	if (pos > size()) {
 		if (next
 		    && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
@@ -770,24 +783,22 @@ void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
 		return;
 	}
 
-#ifdef NEW_TABLE
 	if (inset) {
-		InsetTable tmp;
-		tmp.pos = pos;
-		tmp.inset = inset;
-		insetlist.push_back(tmp);
-	}
-		
+		// Add a new entry in the inset table.
+#ifdef NEW_INSETTABLE
+		InsetTable tmpi;
+		InsetList::iterator it =
+			insetlist.insert(insetlist.begin(), tmpi);
+		(*it).inset = inset;
+		(*it).pos = pos;
 #else
-	if (inset) {
-		/* add a new entry in the inset table */ 
 		InsetTable * tmpi = new InsetTable;
 		tmpi->pos = pos;
 		tmpi->inset = inset;
 		tmpi->next = insettable;
 		insettable = tmpi;
-	}
 #endif
+	}
 }
 
 
@@ -805,24 +816,23 @@ Inset * LyXParagraph::GetInset(LyXParagraph::size_type pos)
 		}
 		return 0;
 	}
-#ifdef NEW_TABLE
-	/* find the inset */
-	for(InsetList::iterator it = insetlist.begin();
-	    it != insetlist.end(); ++it) {
+	// Find the inset.
+#ifdef NEW_INSETTABLE
+	for (InsetList::iterator it = insetlist.begin();
+	     it != insetlist.end(); ++it) {
 		if ((*it).pos == pos) {
 			return (*it).inset;
 		}
 	}
 	lyxerr << "ERROR (LyXParagraph::GetInset): "
 		"Inset does not exist: " << pos << endl;
-	text[pos] = ' '; /// WHY!!! does this set the pos to ' '????
+	text[pos] = ' '; // WHY!!! does this set the pos to ' '????
 	// Did this commenting out introduce a bug? So far I have not
-	// seen any, please enlighten me. (Lgb)
+	// see any, please enlighten me. (Lgb)
 	// My guess is that since the inset does not exist, we might
-	// as well replace it with a space to prevent crashes. (Asger)
+	// as well replace it with a space to prevent craches. (Asger)
 	return 0;
 #else
-	/* find the inset */ 
 	InsetTable * tmpi = insettable;
 
 	while (tmpi && tmpi->pos != pos)
@@ -858,24 +868,23 @@ Inset const * LyXParagraph::GetInset(LyXParagraph::size_type pos) const
 		}
 		return 0;
 	}
-#ifdef NEW_TABLE
-	/* find the inset */
-	for(InsetList::const_iterator cit = insetlist.begin();
-	    cit != insetlist.end(); ++cit) {
+	// Find the inset.
+#ifdef NEW_INSETTABLE
+	for (InsetList::const_iterator cit = insetlist.begin();
+	     cit != insetlist.end(); ++cit) {
 		if ((*cit).pos == pos) {
 			return (*cit).inset;
 		}
 	}
 	lyxerr << "ERROR (LyXParagraph::GetInset): "
 		"Inset does not exist: " << pos << endl;
-	text[pos] = ' '; /// WHY!!! does this set the pos to ' '????
+	//text[pos] = ' '; // WHY!!! does this set the pos to ' '????
 	// Did this commenting out introduce a bug? So far I have not
-	// seen any, please enlighten me. (Lgb)
+	// see any, please enlighten me. (Lgb)
 	// My guess is that since the inset does not exist, we might
-	// as well replace it with a space to prevent crashes. (Asger)
+	// as well replace it with a space to prevent craches. (Asger)
 	return 0;
 #else
-	/* find the inset */ 
 	InsetTable * tmpi = insettable;
 
 	while (tmpi && tmpi->pos != pos)
@@ -903,11 +912,11 @@ Inset const * LyXParagraph::GetInset(LyXParagraph::size_type pos) const
 LyXFont LyXParagraph::GetFontSettings(LyXParagraph::size_type pos) const
 {
 	if (pos < size()) {
-#ifdef NEW_TABLE
-		for(FontList::iterator it = fontlist.begin();
-		    it != fontlist.end(); ++it) {
-			if (pos >= (*it).pos && pos <= (*it).pos_end)
-				return (*it).font;
+#ifdef NEW_FONTTABLE // Seems OK
+		for (FontList::const_iterator cit = fontlist.begin();
+		     cit != fontlist.end(); ++cit) {
+			if (pos >= (*cit).pos && pos <= (*cit).pos_end)
+				return (*cit).font;
 		}
 #else
 		FontTable * tmp = fonttable;
@@ -918,8 +927,8 @@ LyXFont LyXParagraph::GetFontSettings(LyXParagraph::size_type pos) const
 		}
 #endif
 	}
-	/* > because last is the next unused position, and you can 
-	 * use it if you want  */
+	// > because last is the next unused position, and you can 
+	// use it if you want
 	else if (pos > size()) {
 		if (next
 		    && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
@@ -994,12 +1003,14 @@ LyXFont LyXParagraph::getFont(LyXParagraph::size_type pos) const
 
 
 /// Returns the height of the highest font in range
-LyXFont::FONT_SIZE LyXParagraph::HighestFontInRange(LyXParagraph::size_type startpos, LyXParagraph::size_type endpos) const
+LyXFont::FONT_SIZE
+LyXParagraph::HighestFontInRange(LyXParagraph::size_type startpos,
+				 LyXParagraph::size_type endpos) const
 {
 	LyXFont::FONT_SIZE maxsize = LyXFont::SIZE_TINY;
-#ifdef NEW_TABLE
-	for(FontList::const_iterator cit = fontlist.begin();
-	    cit != fontlist.end(); ++cit) {
+#ifdef NEW_FONTTABLE // Seems OK
+	for (FontList::const_iterator cit = fontlist.begin();
+	     cit != fontlist.end(); ++cit) {
 		if (startpos <= (*cit).pos_end && endpos >= (*cit).pos) {
 			LyXFont::FONT_SIZE size = (*cit).font.size();
 			if (size > maxsize && size <= LyXFont::SIZE_HUGER)
@@ -1023,13 +1034,13 @@ LyXFont::FONT_SIZE LyXParagraph::HighestFontInRange(LyXParagraph::size_type star
 
 char LyXParagraph::GetChar(LyXParagraph::size_type pos)
 {
-	Assert(pos>=0);
+	Assert(pos >= 0);
 
 	if (pos < size()) {
 		return text[pos];
 	}
-	/* > because last is the next unused position, and you can 
-	 * use it if you want  */
+	// > because last is the next unused position, and you can 
+	// use it if you want
 	else if (pos > size()) {
 		if (next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE) 
 			return NextAfterFootnote()
@@ -1042,7 +1053,7 @@ char LyXParagraph::GetChar(LyXParagraph::size_type pos)
 		}
 		return '\0';
 	} else {
-		/* we should have a footnote environment */ 
+		// We should have a footnote environment.
 		if (!next || next->footnoteflag == LyXParagraph::NO_FOOTNOTE) {
 			// Notice that LyX does request the
 			// last char from time to time. (Asger)
@@ -1071,13 +1082,13 @@ char LyXParagraph::GetChar(LyXParagraph::size_type pos)
 
 char LyXParagraph::GetChar(LyXParagraph::size_type pos) const
 {
-	Assert(pos>=0);
+	Assert(pos >= 0);
 
 	if (pos < size()) {
 		return text[pos];
 	}
-	/* > because last is the next unused position, and you can 
-	 * use it if you want  */
+	// > because last is the next unused position, and you can 
+	// use it if you want
 	else if (pos > size()) {
 		if (next && next->footnoteflag != LyXParagraph::NO_FOOTNOTE) 
 			return NextAfterFootnote()
@@ -1090,7 +1101,7 @@ char LyXParagraph::GetChar(LyXParagraph::size_type pos) const
 		}
 		return '\0';
 	} else {
-		/* we should have a footnote environment */ 
+		// We should have a footnote environment.
 		if (!next || next->footnoteflag == LyXParagraph::NO_FOOTNOTE) {
 			// Notice that LyX does request the
 			// last char from time to time. (Asger)
@@ -1168,8 +1179,8 @@ LyXParagraph::size_type LyXParagraph::Last() const
 {
 	if (next && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE)
 		return text.size() + NextAfterFootnote()->Last() + 1;
-	/* the 1 is the symbol
-	   for the footnote */
+	// the 1 is the symbol
+	// for the footnote
 	else
 		return text.size();
 }
@@ -1177,8 +1188,8 @@ LyXParagraph::size_type LyXParagraph::Last() const
 
 LyXParagraph * LyXParagraph::ParFromPos(LyXParagraph::size_type pos)
 {
-	/* > because last is the next unused position, and you can 
-	 * use it if you want  */
+	// > because last is the next unused position, and you can 
+	// use it if you want
 	if (pos > size()) {
 		if (next
 		    && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
@@ -1196,8 +1207,8 @@ LyXParagraph * LyXParagraph::ParFromPos(LyXParagraph::size_type pos)
 
 int LyXParagraph::PositionInParFromPos(LyXParagraph::size_type pos) const
 {
-	/* > because last is the next unused position, and you can 
-	 * use it if you want  */
+	// > because last is the next unused position, and you can 
+	// use it if you want
 	if (pos > size()) {
 		if (next
 		    && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
@@ -1217,8 +1228,8 @@ int LyXParagraph::PositionInParFromPos(LyXParagraph::size_type pos) const
 void LyXParagraph::SetFont(LyXParagraph::size_type pos,
 			   LyXFont const & font)
 {
-	/* > because last is the next unused position, and you can 
-	 * use it if you want  */
+	// > because last is the next unused position, and you can 
+	// use it if you want
 	if (pos > size()) {
 		if (next && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
 			NextAfterFootnote()->SetFont(pos - text.size() - 1,
@@ -1231,99 +1242,116 @@ void LyXParagraph::SetFont(LyXParagraph::size_type pos,
 	}
 	LyXFont patternfont(LyXFont::ALL_INHERIT);
 
-// First, reduce font against layout/label font
-// Update: The SetCharFont() routine in text2.C already reduces font, so
-// we don't need to do that here. (Asger)
-// No need to simplify this because it will disappear in a new kernel. (Asger)
-#ifdef NEW_TABLE
+	// First, reduce font against layout/label font
+	// Update: The SetCharFont() routine in text2.C already
+	// reduces font, so we don't need to do that here. (Asger)
+	// No need to simplify this because it will disappear
+	// in a new kernel. (Asger)
 	// Next search font table
-	for(FontList::iterator it = fontlist.begin();
-	    it != fontlist.end(); ++it) {
-		if (pos >= (*it).pos && pos <= (*it).pos_end) {
-			// found it
-			// we found a font entry. maybe we have to
-			// split it and create a new one 
-			
-			if ((*it).pos != (*it).pos_end) {
-				// more than one character
-				if (pos == (*it).pos) {
-					// maybe we could enlarge
-					// the left fonttable
-					for(FontList::iterator fit = fontlist.begin();
-					    fit != fontlist.end(); ++fit) {
-						if (pos - 1 >= (*fit).pos
-						    && pos - 1 <= (*fit).pos_end
-						    && (*fit).font == font) {
-							// put the position
-							// under the font
-							(*fit).pos_end++;
-							(*it).pos++;
-							return;
-						}
-					}
-					// Add a new entry in the 
-					// fonttable for the position
-					FontTable tmp;
-					tmp.pos = pos + 1;
-					tmp.pos_end = (*it).pos_end;
-					tmp.font = (*it).font;
-					(*it).pos_end = pos;
-					fontlist.push_back(tmp);
-				} else if (pos == (*it).pos_end) {
-					// Add a new entry in the 
-					// fonttable for the position
-					FontTable tmp;
-					tmp.pos = (*it).pos;
-					tmp.pos_end = (*it).pos_end - 1;
-					tmp.font = (*it).font;
-					(*it).pos = (*it).pos_end;
-					fontlist.push_back(tmp);
-				} else {
-					// Add a new entry in the 
-					// fonttable for the position
-					FontTable tmp;
-					tmp.pos = (*it).pos;
-					tmp.pos_end = pos - 1;
-					tmp.font = (*it).font;
-					fontlist.push_back(tmp);
-
-					tmp.pos = pos + 1;
-					tmp.pos_end = (*it).pos_end;
-					tmp.font = (*it).font;
-					fontlist.push_back(tmp);
-					
-					(*it).pos = pos;
-					(*it).pos_end = pos;
-				}
-			}
-			(*it).font = font;
-			return;
+#ifdef NEW_FONTTABLE
+	FontList::iterator tmp = fontlist.begin();
+	for (; tmp != fontlist.end(); ++tmp) {
+		if (pos >= (*tmp).pos && pos <= (*tmp).pos_end) {
+			break;
 		}
+	}
+	if (tmp == fontlist.end()) { // !found
+		// if we did not find a font entry, but if the font at hand
+		// is the same as default, we just forget it
+		if (font == patternfont) return;
+
+		// ok, we did not find a font entry. But maybe there is exactly
+		// the needed font ientry one position left
+		FontList::iterator tmp2 = fontlist.begin();
+		for (; tmp2 != fontlist.end(); ++tmp2) {
+			if (pos - 1 >= (*tmp2).pos
+			    && pos - 1 <= (*tmp2).pos_end)
+				break;
+		}
+		if (tmp2 != fontlist.end()) {
+			// ok there is one, maybe it is exactly
+			// the needed font
+			if ((*tmp2).font == font) {
+				// put the position under the font
+				(*tmp2).pos_end++;
+				return;
+			}
+		}
+		// Add a new entry in the
+		// fontlist for the position
+		FontTable ft;
+		ft.pos = pos;
+		ft.pos_end = pos;
+		ft.font = font; // or patternfont
+		// It seems that using font instead of patternfont here
+		// fixes all the problems. This also surfaces a "bug" in
+		// the old code.
+		fontlist.insert(fontlist.begin(), ft);
+	} else if ((*tmp).pos != (*tmp).pos_end) { // we found a font entry. maybe we have to split it and create a new one.
+
+// more than one character
+		if (pos == (*tmp).pos) {
+			// maybe we should enlarge the left fonttable
+			FontList::iterator tmp2 = fontlist.begin();
+			for (; tmp2 != fontlist.end(); ++tmp2) {
+				if (pos - 1 >= (*tmp2).pos
+				    && pos - 1 <= (*tmp2).pos_end)
+					break;
+			}
+			// Is there is one, and is it exactly
+			// the needed font?
+			if (tmp2 != fontlist.end() &&
+			    (*tmp2).font == font) {
+				// Put the position under the font
+				(*tmp2).pos_end++;
+				(*tmp).pos++;
+				return;
+			}
+
+			// Add a new entry in the
+			// fontlist for the position
+			FontTable ft;
+			ft.pos = pos + 1;
+			ft.pos_end = (*tmp).pos_end;
+			ft.font = (*tmp).font;
+			(*tmp).pos_end = pos;
+			(*tmp).font = font;
+			fontlist.insert(fontlist.begin(), ft);
+		} else if (pos == (*tmp).pos_end) {
+			// Add a new entry in the
+			// fontlist for the position
+			FontTable ft;
+			ft.pos = (*tmp).pos;
+			ft.pos_end = (*tmp).pos_end - 1;
+			ft.font = (*tmp).font;
+			(*tmp).pos = (*tmp).pos_end;
+			(*tmp).font = font;
+			fontlist.insert(fontlist.begin(), ft);
+		} else {
+			// Add a new entry in the
+			// fontlist for the position
+			FontTable ft;
+			ft.pos = (*tmp).pos;
+			ft.pos_end = pos - 1;
+			ft.font = (*tmp).font;
+			
+			FontTable ft2;
+			ft2.pos = pos + 1;
+			ft2.pos_end = (*tmp).pos_end;
+			ft2.font = (*tmp).font;
+			
+			(*tmp).pos = pos;
+			(*tmp).pos_end = pos;
+			(*tmp).font = font;
+			
+			fontlist.insert(fontlist.begin(), ft);
+			fontlist.insert(fontlist.begin(), ft2);
+		}
+	} else {
+		(*tmp).font = font;
 	}
 	
-	// if we did not find a font entry, but if the font at hand
-	// is the same as default, we just forget it
-	if (font == patternfont) return;
-
-	// ok, we did not find a font entry. But maybe there is exactly
-	// the needed font entry one position left
-	for(FontList::iterator it = fontlist.begin();
-	    it != fontlist.end(); ++it) {
-		if (pos - 1 >= (*it).pos && pos - 1 <= (*it).pos_end
-		    && (*it).font == font) {
-			(*it).pos_end++;
-			return;
-		}
-	}
-	// Add a new entry in the 
-	// fonttable for the position
-	FontTable tmp;
-	tmp.pos = pos;
-	tmp.pos_end = pos;
-	tmp.font = patternfont;
-	fontlist.push_back(tmp);
 #else
-	// Next search font table
 	FontTable * tmp2;
 
 	bool found = false;
@@ -1336,13 +1364,13 @@ void LyXParagraph::SetFont(LyXParagraph::size_type pos,
 	}
 
 	if (!found) {
-		/* if we did not find a font entry, but if the font at hand
-		 * is the same as default, we just forget it */
+		// if we did not find a font entry, but if the font at hand
+		// is the same as default, we just forget it
 		if (font == patternfont)
 			return;
 
-		/* ok, we did not find a font entry. But maybe there is exactly
-		 * the needed font entry one position left */ 
+		// ok, we did not find a font entry. But maybe there is exactly
+		// the needed font entry one position left
 		found = false;
 		tmp2 = fonttable;
 		while (tmp2 && !found) {
@@ -1352,30 +1380,33 @@ void LyXParagraph::SetFont(LyXParagraph::size_type pos,
 				tmp2 = tmp2->next;
 		}
 		if (found) {
-			/* ok there is one. maybe it is exactly the needed font */
+			// ok there is one. maybe it is exactly
+			// the needed font
 			if (tmp2->font == font) {
-				/* put the position under the font */ 
+				// put the position under the font
 				tmp2->pos_end++;
 				return;
 			}
 		}
-		/* Add a new entry in the 
-		 * fonttable for the position */
+		// Add a new entry in the
+		// fonttable for the position
 		tmp = new FontTable;
 		tmp->pos = pos;
 		tmp->pos_end = pos;
-		tmp->font = patternfont;
+		tmp->font = patternfont; // It seems that is actually totally
+		// wrong to use patternfont here, the correct should be font
+		// lockily at the end of this function we have
+		// tmp->font = font, so this one setting it to patternfont
+		// is negated.
 		tmp->next = fonttable;
 		fonttable = tmp;
 	} else {
-		/* we found a font entry. maybe we have to split it and create
-		 * a new one */ 
+		// we found a font entry. maybe we have
+		// to split it and create a new one
 
-		if (tmp->pos != tmp->pos_end) {  /* more than one character  */
-
+		if (tmp->pos != tmp->pos_end) {  // more than one character
 			if (pos == tmp->pos) {
-				/* maybe we could enlarge the left fonttable */ 
-
+				// maybe we could enlarge the left fonttable
 				found = false;
 				tmp2 = fonttable;
 				while (tmp2 && !found) {
@@ -1385,16 +1416,17 @@ void LyXParagraph::SetFont(LyXParagraph::size_type pos,
 						tmp2 = tmp2->next;
 				}
 
-				/* Is there is one, and is it exactly the needed font? */
+				// Is there is one, and is it exactly
+				// the needed font?
 				if (found && tmp2->font == font) {
-					/* put the position under the font */ 
+					// Put the position under the font
 					tmp2->pos_end++;
 					tmp->pos++;
 					return;
 				}
 
-				/* Add a new entry in the 
-				 * fonttable for the position */
+				// Add a new entry in the 
+				// fonttable for the position
 				tmp2 = new FontTable;
 				tmp2->pos = pos + 1;
 				tmp2->pos_end = tmp->pos_end;
@@ -1404,8 +1436,8 @@ void LyXParagraph::SetFont(LyXParagraph::size_type pos,
 				fonttable = tmp2;
 			}
 			else if (pos == tmp->pos_end) {
-				/* Add a new entry in the 
-				 * fonttable for the position */
+				// Add a new entry in the
+				// fonttable for the position
 				tmp2 = new FontTable;
 				tmp2->pos = tmp->pos;
 				tmp2->pos_end = tmp->pos_end - 1;
@@ -1415,8 +1447,8 @@ void LyXParagraph::SetFont(LyXParagraph::size_type pos,
 				fonttable = tmp2;
 			}
 			else {
-				/* Add a new entry in the 
-				 * fonttable for the position */
+				// Add a new entry in the 
+				// fonttable for the position
 				tmp2 = new FontTable;
 				tmp2->pos = tmp->pos;
 				tmp2->pos_end = pos - 1;
@@ -1441,7 +1473,7 @@ void LyXParagraph::SetFont(LyXParagraph::size_type pos,
 }
 
    
-/* this function is able to hide closed footnotes */
+// This function is able to hide closed footnotes.
 LyXParagraph * LyXParagraph::Next()
 {
 	if (next && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
@@ -1454,7 +1486,7 @@ LyXParagraph * LyXParagraph::Next()
 					       footnote in a logical
 					       paragraph */
 		else
-			return next;	/* this should never happen! */
+			return next;  // This should never happen!
 	}
 	else
 		return next;
@@ -1471,7 +1503,7 @@ LyXParagraph * LyXParagraph::NextAfterFootnote()
 			return tmp;   /* there can be more than one footnote
 					 in a logical paragraph */
 		else
-			return next; 	 /* this should never happen! */
+			return next;  // This should never happen!
 	}
 	else
 		return next;
@@ -1488,7 +1520,7 @@ LyXParagraph const * LyXParagraph::NextAfterFootnote() const
 			return tmp;   /* there can be more than one footnote
 					 in a logical paragraph */
 		else
-			return next; 	 /* this should never happen! */
+			return next;  // This should never happen!
 	}
 	else
 		return next;
@@ -1506,7 +1538,7 @@ LyXParagraph * LyXParagraph::PreviousBeforeFootnote()
 			return tmp;    /* there can be more than one footnote
 					  in a logical paragraph */
 		else
-			return previous;   /* this should never happen! */
+			return previous;  // This should never happen!
 	}
 	else
 		return previous;
@@ -1539,7 +1571,7 @@ LyXParagraph * LyXParagraph::FirstPhysicalPar()
 		tmppar = tmppar->previous;
    
 	if (!tmppar)
-		return this;	       /* this should never happen!  */
+		return this; // This should never happen!
 	else
 		return tmppar;
 }
@@ -1556,13 +1588,13 @@ LyXParagraph const * LyXParagraph::FirstPhysicalPar() const
 		tmppar = tmppar->previous;
    
 	if (!tmppar)
-		return this;	       /* this should never happen!  */
+		return this;  // This should never happen!
 	else
 		return tmppar;
 }
 
 
-/* this function is able to hide closed footnotes */
+// This function is able to hide closed footnotes.
 LyXParagraph * LyXParagraph::Previous()
 {
 	LyXParagraph * tmp = previous;
@@ -1586,7 +1618,7 @@ LyXParagraph * LyXParagraph::Previous()
 }
 
 
-/* this function is able to hide closed footnotes */
+// This function is able to hide closed footnotes.
 LyXParagraph const * LyXParagraph::Previous() const
 {
 	LyXParagraph * tmp = previous;
@@ -1614,7 +1646,7 @@ void LyXParagraph::BreakParagraph(LyXParagraph::size_type pos,
 				  int flag)
 {
 	size_type i, pos_end, pos_first;
-	/* create a new paragraph */
+	// create a new paragraph
 	LyXParagraph * par = ParFromPos(pos);
 	LyXParagraph * firstpar = FirstPhysicalPar();
    
@@ -1623,10 +1655,10 @@ void LyXParagraph::BreakParagraph(LyXParagraph::size_type pos,
 	tmp->footnoteflag = footnoteflag;
 	tmp->footnotekind = footnotekind;
    
-	/* this is an idea for a more userfriendly layout handling, I will
-	 * see what the users say */
+	// this is an idea for a more userfriendly layout handling, I will
+	// see what the users say */
    
-	/* layout stays the same with latex-environments */ 
+	// layout stays the same with latex-environments
 	if (flag) {
 		tmp->SetOnlyLayout(firstpar->layout);
 		tmp->SetLabelWidthString(firstpar->labelwidthstring);
@@ -1647,9 +1679,8 @@ void LyXParagraph::BreakParagraph(LyXParagraph::size_type pos,
 		tmp->depth = firstpar->depth;
 		tmp->noindent = firstpar->noindent;
    
-		/* copy everything behind the break-position
-		   to the new paragraph
-		*/
+		// copy everything behind the break-position
+		// to the new paragraph
 		pos_first = 0;
 		while (ParFromPos(pos_first) != par)
 			pos_first++;
@@ -1668,14 +1699,14 @@ void LyXParagraph::BreakParagraph(LyXParagraph::size_type pos,
 		par->text.resize(par->text.size());
 	}
 
-	/* just an idea of me */ 
+	// just an idea of me
 	if (!pos) {
 		tmp->line_top = firstpar->line_top;
 		tmp->pagebreak_top = firstpar->pagebreak_top;
 		tmp->added_space_top = firstpar->added_space_top;
 		tmp->bibkey = firstpar->bibkey;
 		firstpar->Clear();
-		/* layout stays the same with latex-environments */ 
+		// layout stays the same with latex-environments
 		if (flag) {
 			firstpar->SetOnlyLayout(tmp->layout);
 			firstpar->SetLabelWidthString(tmp->labelwidthstring);
@@ -1726,7 +1757,7 @@ LyXParagraph * LyXParagraph::FirstSelfrowPar()
 		tmppar = tmppar->previous;
    
 	if (!tmppar)
-		return this;	       /* this should never happen!  */
+		return this;  // This should never happen!
 	else
 		return tmppar;
 }
@@ -1734,13 +1765,13 @@ LyXParagraph * LyXParagraph::FirstSelfrowPar()
 
 LyXParagraph * LyXParagraph::Clone() const
 {
-	/* create a new paragraph */
+	// create a new paragraph
 	LyXParagraph * result = new LyXParagraph;
    
 	result->MakeSameLayout(this);
 
-	/* this is because of the dummy layout of the paragraphs that
-	   follow footnotes */
+	// this is because of the dummy layout of the paragraphs that
+	// follow footnotes
 	result->layout = layout;
    
 	/* table stuff -- begin*/ 
@@ -1754,7 +1785,7 @@ LyXParagraph * LyXParagraph::Clone() const
         result->bibkey = (bibkey) ? new InsetBibKey(bibkey): 0;
                
     
-	/* copy everything behind the break-position to the new paragraph */
+	// copy everything behind the break-position to the new paragraph
    
 	for (size_type i = 0; i < size(); i++) {
 		CopyIntoMinibuffer(i);
@@ -1803,25 +1834,25 @@ void LyXParagraph::BreakParagraphConservative(LyXParagraph::size_type pos)
 {
 	size_type i, pos_end, pos_first;
 	
-	/* create a new paragraph */
+	// create a new paragraph
 	LyXParagraph * par = ParFromPos(pos);
 
 	LyXParagraph * tmp = new LyXParagraph(par);
    
 	tmp->MakeSameLayout(par);
    
-	if (Last() > pos) {   
-		/* copy everything behind the break-position to the new
-		   paragraph */
+	if (Last() > pos) {
+		// copy everything behind the break-position to the new
+		// paragraph
 		pos_first = 0;
 		while (ParFromPos(pos_first) != par)
 			pos_first++;
 		pos_end = pos_first + par->text.size() - 1;
-		/* make shure there is enough memory for the now larger
-		   paragraph. This is not neccessary, because
-		   InsertFromMinibuffer will enlarge the memory (it uses
-		   InsertChar of course). But doing it by hand
-		   is MUCH faster! (only one time, not thousend times!!) */
+		// make shure there is enough memory for the now larger
+		// paragraph. This is not neccessary, because
+		// InsertFromMinibuffer will enlarge the memory (it uses
+		// InsertChar of course). But doing it by hand
+		// is MUCH faster! (only one time, not thousend times!!)
 		tmp->text.reserve(pos_end - pos);
 
 		for (i = pos; i <= pos_end; i++) {
@@ -1837,15 +1868,15 @@ void LyXParagraph::BreakParagraphConservative(LyXParagraph::size_type pos)
 }
    
 
-/* be carefull, this does not make any check at all */ 
+// Be carefull, this does not make any check at all.
 void LyXParagraph::PasteParagraph()
 {
-	/* copy the next paragraph to this one */
+	// copy the next paragraph to this one
 	LyXParagraph * the_next = Next();
    
 	LyXParagraph * firstpar = FirstPhysicalPar();
    
-	/* first the DTP-stuff */ 
+	// first the DTP-stuff
 	firstpar->line_bottom = the_next->line_bottom;
 	firstpar->added_space_bottom = the_next->added_space_bottom;
 	firstpar->pagebreak_bottom = the_next->pagebreak_bottom;
@@ -1854,13 +1885,13 @@ void LyXParagraph::PasteParagraph()
 	size_type pos_insert = Last();
 	size_type i;
 
-	/* ok, now copy the paragraph */ 
+	// ok, now copy the paragraph
 	for (i = 0; i <= pos_end; i++) {
 		the_next->CutIntoMinibuffer(i);
 		InsertFromMinibuffer(pos_insert + i);
 	}
    
-	/* delete the next paragraph */
+	// delete the next paragraph
 	delete the_next;
 }
 
@@ -1917,7 +1948,7 @@ int LyXParagraph::GetFirstCounter(int i) const
 }
 
 
-/* the next two functions are for the manual labels */ 
+// the next two functions are for the manual labels
 string LyXParagraph::GetLabelWidthString() const
 {
 	if (!FirstPhysicalPar()->labelwidthstring.empty())
@@ -2030,12 +2061,12 @@ void LyXParagraph::SetLayout(LyXTextClass::LayoutList::size_type new_layout)
 }
 
 
-/* if the layout of a paragraph contains a manual label, the beginning of the 
-* main body is the beginning of the second word. This is what the par-
-* function returns. If the layout does not contain a label, the main
-* body always starts with position 0. This differentiation is necessary,
-* because there cannot be a newline or a blank <= the beginning of the 
-* main body in TeX. */ 
+// if the layout of a paragraph contains a manual label, the beginning of the 
+// main body is the beginning of the second word. This is what the par-
+// function returns. If the layout does not contain a label, the main
+// body always starts with position 0. This differentiation is necessary,
+// because there cannot be a newline or a blank <= the beginning of the 
+// main body in TeX.
 
 int LyXParagraph::BeginningOfMainBody() const
 {
@@ -2117,14 +2148,19 @@ LyXParagraph const * LyXParagraph::DepthHook(int deth) const
 
 int LyXParagraph::AutoDeleteInsets()
 {
-#ifdef NEW_TABLE
+#ifdef NEW_INSETTABLE
+	vector<size_type> tmpvec;
 	int i = 0;
 	for (InsetList::iterator it = insetlist.begin();
 	     it != insetlist.end(); ++it) {
-		if ((*it).inset->AutoDelete()) {
+		if ((*it).inset && (*it).inset->AutoDelete()) {
+			tmpvec.push_back((*it).pos);
 			++i;
-			Erase((*it).pos);
 		}
+	}
+	for (vector<size_type>::const_iterator cit = tmpvec.begin();
+	     cit != tmpvec.end(); ++cit) {
+		Erase((*cit));
 	}
 	return i;
 #else
@@ -2134,14 +2170,15 @@ int LyXParagraph::AutoDeleteInsets()
 	while (tmpi) {
 		tmpi2 = tmpi;
 		tmpi = tmpi->next;
-		if (tmpi2->inset)
+		if (tmpi2->inset) {
 			if (tmpi2->inset->AutoDelete()) {
 				i++;
 				Erase(tmpi2->pos);
-			} else {}
-		else
+			}
+		} else {
 			lyxerr << "ERROR (LyXParagraph::AutoDeleteInsets): "
 				"cannot auto-delete insets" << endl;
+		}
 	}
 	return i;
 #endif
@@ -2150,20 +2187,20 @@ int LyXParagraph::AutoDeleteInsets()
 
 Inset * LyXParagraph::ReturnNextInsetPointer(LyXParagraph::size_type & pos)
 {
-#ifdef NEW_TABLE
-	InsetTable * tmp = 0;
+#ifdef NEW_INSETTABLE
+	InsetList::iterator it2 = insetlist.end();
 	for (InsetList::iterator it = insetlist.begin();
 	     it != insetlist.end(); ++it) {
-		if ((*it).pos >= pos && (!tmp || (*it).pos < tmp->pos)) {
-			tmp = &(*it);
+		if ((*it).pos >= pos) {
+			if (it2 != insetlist.end() || (*it).pos < (*it2).pos)
+				it2 = it;
 		}
 	}
-	if (tmp) {
-		pos = tmp->pos;
-		return tmp->inset;
+	if (it2 != insetlist.end()) {
+		pos = (*it2).pos;
+		return (*it2).inset;
 	}
 	return 0;
-		
 #else
 	InsetTable * tmpi = insettable;
 	InsetTable * tmpi2 = 0;
@@ -2184,44 +2221,34 @@ Inset * LyXParagraph::ReturnNextInsetPointer(LyXParagraph::size_type & pos)
 }
 
 
-/* returns -1 if inset not found */
+// returns -1 if inset not found
 int LyXParagraph::GetPositionOfInset(Inset * inset) const
 {
-#ifdef NEW_TABLE
-	for (InsetList::iterator it = insetlist.begin();
-	     it != insetlist.end(); ++it) {
-		if ((*it).inset == inset) {
-			return (*it).pos;
+	// Find the entry.
+#ifdef NEW_INSETTABLE
+	for (InsetList::const_iterator cit = insetlist.begin();
+	     cit != insetlist.end(); ++cit) {
+		if ((*cit).inset == inset) {
+			return (*cit).pos;
 		}
 	}
-	// Think about footnotes
-	if (footnoteflag == LyXParagraph::NO_FOOTNOTE
-	    && next && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
-		int further = NextAfterFootnote()->GetPositionOfInset(inset);
-		if (further != -1)
-			return size() + 1 + further;
-	}
-	return -1;
 #else
-	/* find the entry */ 
 	InsetTable * tmpi = insettable;
 	while (tmpi && tmpi->inset != inset) {
 		tmpi = tmpi->next;
 	}
 	if (tmpi && tmpi->inset)
 		return tmpi->pos;
-	else{
-		/* think about footnotes */
-		if (footnoteflag == LyXParagraph::NO_FOOTNOTE 
-		    && next && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
-			int further = 
-				NextAfterFootnote()->GetPositionOfInset(inset);
-			if (further != -1)
-				return text.size() + 1 + further;
-		}
-		return -1;
-	}
 #endif
+	// Think about footnotes.
+	if (footnoteflag == LyXParagraph::NO_FOOTNOTE 
+	    && next && next->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
+		int further = 
+			NextAfterFootnote()->GetPositionOfInset(inset);
+		if (further != -1)
+			return text.size() + 1 + further;
+	}
+	return -1;
 }
 
 
@@ -2414,7 +2441,7 @@ bool LyXParagraph::SimpleTeXOnePar(string & file, TexRow & texrow)
 	LyXLayout const & style = textclasslist.Style(current_view->buffer()->params.textclass, GetLayout());
 	LyXFont basefont;
 
-	/* maybe we have to create a optional argument */ 
+	// Maybe we have to create a optional argument.
 	if (style.labeltype != LABEL_MANUAL)
 		main_body = 0;
 	else
@@ -2568,7 +2595,7 @@ bool LyXParagraph::SimpleTeXOnePar(string & file, TexRow & texrow)
 		running_font.latexWriteEndChanges(file, basefont);
 	}
 
-	/* needed if there is an optional argument but no contents */ 
+	// Needed if there is an optional argument but no contents.
 	if (main_body > 0 && main_body == size()) {
 		file += "]~";
 		return_value = false;
@@ -2902,7 +2929,7 @@ bool LyXParagraph::linuxDocConvertChar(char c, string & sgml_string)
 		retval = true;
 		sgml_string = ' ';
 		break;
-	case '\0': /* Ignore :-) */
+	case '\0': // Ignore :-)
 		sgml_string.clear();
 		break;
 	default:
@@ -2934,7 +2961,7 @@ void LyXParagraph::SimpleDocBookOneTablePar(string & file, string & extra,
 	else
 		main_body = BeginningOfMainBody();
 	
-	/* gets paragraph main font */
+	// Gets paragraph main font.
 	if (main_body > 0)
 		font1 = style.labelfont;
 	else
@@ -2949,7 +2976,7 @@ void LyXParagraph::SimpleDocBookOneTablePar(string & file, string & extra,
 	int current_cell_number = -1;
 	int tmp = table->DocBookEndOfCell(file, current_cell_number, depth);
 	
-	/* parsing main loop */
+	// Parsing main loop.
 	for (size_type i = 0; i < size(); ++i) {
 		c = GetChar(i);
 		if (table->IsContRow(current_cell_number+1)) {
@@ -2962,7 +2989,7 @@ void LyXParagraph::SimpleDocBookOneTablePar(string & file, string & extra,
 		// Fully instantiated font
 		font2 = getFont(i);
 		
-		/* handle <emphasis> tag */
+		// Handle <emphasis> tag.
 		if (font1.emph() != font2.emph() && i) {
 			if (font2.emph() == LyXFont::ON) {
 				file += "<emphasis>";
@@ -2973,7 +3000,7 @@ void LyXParagraph::SimpleDocBookOneTablePar(string & file, string & extra,
 			}
 		}
 		if (c == LyXParagraph::META_NEWLINE) {
-			// we have only to control for emphasis open here!
+			// We have only to control for emphasis open here!
 			if (emph_flag) {
 				file += "</emphasis>";
 				emph_flag= false;
@@ -3052,7 +3079,7 @@ void LyXParagraph::SimpleDocBookOneTablePar(string & file, string & extra,
 		font1 = font2;
 	}
 	
-	/* needed if there is an optional argument but no contents */
+	// Needed if there is an optional argument but no contents.
 	if (main_body > 0 && main_body == size()) {
 		font1 = style.font;
 	}
@@ -3063,10 +3090,10 @@ void LyXParagraph::SimpleDocBookOneTablePar(string & file, string & extra,
 	
 	current_cell_number++;
 	tmp = table->DocBookEndOfCell(file, current_cell_number, depth);
-	/* resets description flag correctly */
+	// Resets description flag correctly.
 	switch(desc_on){
 	case 1:
-		/* <term> not closed... */
+		// <term> not closed...
 		file += "</term>";
 		break;
 	}
@@ -3106,7 +3133,7 @@ void LyXParagraph::DocBookContTableRows(string & file, string & extra,
 	else
 		main_body = BeginningOfMainBody();
 	
-	/* gets paragraph main font */
+	// Gets paragraph main font.
 	if (main_body > 0)
 		font1 = style.labelfont;
 	else
@@ -3143,7 +3170,7 @@ void LyXParagraph::DocBookContTableRows(string & file, string & extra,
 			// Fully instantiated font
 			font2 = getFont(i);
 			
-			/* handle <emphasis> tag */
+			// Handle <emphasis> tag.
 			if (font1.emph() != font2.emph() && i) {
 				if (font2.emph() == LyXFont::ON) {
 					file += "<emphasis>";
@@ -3437,7 +3464,7 @@ void LyXParagraph::SimpleTeXSpecialChars(string & file, TexRow & texrow,
 				break;
 
 			case ' ':
-				/* blanks are printed before font switching */
+				// Blanks are printed before font switching.
 				// Sure? I am not! (try nice-latex)
 				// I am sure it's correct. LyX might be smarter
 				// in the future, but for now, nothing wrong is
@@ -3446,7 +3473,7 @@ void LyXParagraph::SimpleTeXSpecialChars(string & file, TexRow & texrow,
 
 			default:
 				/* idea for labels --- begin*/
-				/* check for LyX */
+				// Check for "LyX"
 				if (c ==  'L'
 				    && i <= size() - 3
 				    && font.family() != LyXFont::TYPEWRITER_FAMILY
@@ -3456,7 +3483,7 @@ void LyXParagraph::SimpleTeXSpecialChars(string & file, TexRow & texrow,
 					i += 2;
 					column += 5;
 				}
-				/* check for TeX */ 
+				// Check for "TeX"
 				else if (c == 'T'
 					 && i <= size() - 3
 					 && font.family() != LyXFont::TYPEWRITER_FAMILY
@@ -3466,7 +3493,7 @@ void LyXParagraph::SimpleTeXSpecialChars(string & file, TexRow & texrow,
 					i += 2;
 					column += 5;
 				}
-				/* check for LaTeX2e */ 
+				// Check for "LaTeX2e"
 				else if (c == 'L'
 					 && i <= size() - 7
 					 && font.family() != LyXFont::TYPEWRITER_FAMILY
@@ -3480,7 +3507,7 @@ void LyXParagraph::SimpleTeXSpecialChars(string & file, TexRow & texrow,
 					i += 6;
 					column += 8;
 				}
-				/* check for LaTeX */ 
+				// Check for "LaTeX"
 				else if (c == 'L'
 					 && i <= size() - 5
 					 && font.family() != LyXFont::TYPEWRITER_FAMILY

@@ -83,7 +83,7 @@ extern void MenuWriteAs(Buffer *);
 extern int  MenuRunLaTeX(Buffer *);
 extern int  MenuBuildProg(Buffer *);
 extern int  MenuRunChktex(Buffer *);
-extern bool MenuRunDvips(Buffer *, bool);
+extern bool CreatePostscript(Buffer *, bool);
 extern void MenuPrint(Buffer *);
 extern void MenuSendto();
 extern void QuitLyX();
@@ -98,8 +98,8 @@ extern void AutoSave();
 extern void MenuSearch();
 extern void SetUpdateTimer(float timer = 0.3);
 extern void FreeUpdateTimer();
-extern bool MenuPreview(Buffer *);
-extern bool MenuPreviewPS(Buffer *);
+extern bool PreviewDVI(Buffer *);
+extern bool PreviewPostscript(Buffer *);
 extern void MenuInsertLabel(char const *);
 extern void MenuInsertRef();
 extern void MenuLayoutCharacter();
@@ -695,11 +695,11 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_PREVIEW:
-		MenuPreview(owner->buffer());
+		PreviewDVI(owner->buffer());
 		break;
 			
 	case LFUN_PREVIEWPS:
-		MenuPreviewPS(owner->buffer());
+		PreviewPostscript(owner->buffer());
 		break;
 		
 	case LFUN_RUNLATEX:
@@ -715,7 +715,7 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_RUNDVIPS:
-		MenuRunDvips(owner->buffer(), false);
+		CreatePostscript(owner->buffer(), false);
 		break;
 		
 	case LFUN_MENUPRINT:

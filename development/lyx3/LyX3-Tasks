@@ -45,14 +45,6 @@ towards code quality:
 
 	o always try to use POSIX commands.
 	o switch to use POSIX signals
-	o rewrite LString to be a true subset of STL string
-		then it will be _very_ easy to switch to
-		multibyte characters later if we want to.
-	o use STL storage containers (or prepare for it)
-		code reuse. Very often faster and better tested 
-		than what we make/do ourselves.
-	o use C++ iostreams
-		better interface and typesafe
 	o make as much as possible of the code reentreanant(?)
 		should make it easier to move to threads later.
 	o signal slot mechanism (borrowed from GTK-- project)
@@ -70,7 +62,6 @@ towards code quality:
 
 
 Some other things related to structure and services in the code:
-	o change pathpush and pathpop to be a class instead.
 	o class FileInfo does way too much, move the unneeded parts to
 	  a super class or friends.
 	o a process manager class to handle execution of external
@@ -81,23 +72,8 @@ Some other things related to structure and services in the code:
 		  the same time. 
 		- to setup file descriptors where communicating with
 		  the processes can take place.
-	o make a liblyx for functions/classes delivering services to LyX
-		- lyxsum
-		- FileInfo
-		- syscall/syscontr/syssingleton
-		- strerror.C
-	o get rid of definitions.h
 	o pass an inforeceiver around in the object structure.
 	  (this instead of passing minibuffers, and lyxerrors.)
-	o get a regexp package (GNU) and use it in filedialogs, search
-	  and the like.
-
-
-Some small things to do with the linker:
-
-	o link partially in the subdirs, should make linking faster.
-		PostgreSQL does this so we should be able to do it
-		too. 
 
 ================
 
@@ -245,15 +221,11 @@ some packages, I think these are the packages supported by 0.12:
 
 ======================
 
-Wild thoughts:
-
-	o the internal text-encoding could be Cork (T1)
-	o always keep the output file (.tex) 7bit.
-	o use plugins for insets.
-
-
-====================== 
-
 If you have other wishes for features, or comments, please let us know.
 
 	Lgb
+
+Interesting links:
+
+http://freshmeat.net/appindex/1999/11/30/943979651.html
+http://freshmeat.net/appindex/1999/12/09/944757708.html

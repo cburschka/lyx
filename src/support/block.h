@@ -17,11 +17,6 @@ public:
 	typedef T * iterator;
 	typedef T const * const_iterator;
 	size_type size() const { return s; }
-#warning I disabled this to be able to compile... (JMarc)
-  // I think that, sor the same reason that string->char* is not
-  // automatic, we should have a c_array() method to do that. However,
-  // Lars, it is your choice...  
-  //	operator T* () { return arr; }
 	reference at(int i) {
 		Assert(i >= 0 && i < s);
 		return arr[i];

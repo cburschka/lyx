@@ -90,7 +90,7 @@ public:
 	bool empty();
 
 	/// Saves buffer. Returns false if unsuccesful.
-	bool write(Buffer *, bool makeBackup = true);
+	bool write(Buffer *, bool makeBackup);
 
 	///
         bool QwriteAll();

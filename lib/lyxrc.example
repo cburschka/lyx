@@ -94,6 +94,12 @@
 # executive, a3, a4, a5, or b5 as the default papersize.
 #\default_papersize "a4"
 
+# Define which program to use to view pdf files here.
+# You can include any options you need by "quoting" the entire command
+# The default is auto-detected, but you might want to override it.
+# Usual values are: xpdf, acroread, gv, ghostscript.
+#\view_pdf_command "xpdf"
+
 # Define which program to use to view postscript files here.
 # You can include any options you need by "quoting" the entire command
 # The default is auto-detected, but you might want to override it.
@@ -417,6 +423,17 @@
 # If the auto-detection for some reasons fail, you can override it
 # here:
 #\latex_command latex2e
+
+# The command used to generate pdf files directly from a latex file.
+# A program that works in anyother way is not guarantied to work.
+#\pdflatex_command pdflatex
+
+# The command used to generate postscript files from pdf files.
+#\pdf_to_ps_command pdf2ps
+
+# If to use pdf as native export format instead of dvi. This makes LyX use
+# pdflatex, pdf2ps and other utility programs. Default is false.
+#\pdf_mode false
 
 # The font encoding used for the LaTeX2e fontenc package.
 # T1 is highly recommended for non-English languages. LyX uses T1 as a

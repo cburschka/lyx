@@ -16,6 +16,9 @@
 #pragma interface
 #endif
 
+#include <vector>
+#include <list>
+
 #include "insets/lyxinset.h"
 #include "insets/insetbib.h"
 #include "table.h"
@@ -23,13 +26,9 @@
 #include "layout.h"
 #include "support/block.h"
 
-//#define NEW_TABLE 1
 
-#ifdef NEW_TABLE
-#include <list>
-#endif
-
-#include <vector>
+#define NEW_INSETTABLE 1
+#define NEW_FONTTABLE 1
 
 class BufferParams;
 class LyXBuffer;
@@ -492,7 +491,7 @@ private:
 		allowed in these font tables.
 		*/
 		LyXFont font;
-#ifndef NEW_TABLE
+#ifndef NEW_FONTTABLE
 		/// Pointer to next font entry
 		FontTable * next;
 #endif
@@ -503,23 +502,26 @@ private:
 		size_type pos;
 		///
 		Inset * inset;
-#ifndef NEW_TABLE
+#ifndef NEW_INSETTABLE
 		///
 		InsetTable * next;
 #endif
 	};
-#ifdef NEW_TABLE
+#ifdef NEW_FONTTABLE
 	///
 	typedef list<FontTable> FontList;
 	///
-	typedef list<InsetTable> InsetList;
-	///
 	FontList fontlist;
-	///
-	InsetList insetlist;
 #else
 	///
 	FontTable * fonttable;
+#endif
+#ifdef NEW_INSETTABLE
+	///
+	typedef list<InsetTable> InsetList;
+	///
+	InsetList insetlist;
+#else
 	///
 	InsetTable * insettable;
 #endif

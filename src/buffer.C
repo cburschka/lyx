@@ -3167,7 +3167,9 @@ int Buffer::runLaTeX()
 
 	// do the LaTex run(s)
 	TeXErrors terr;
-	LaTeX latex(lyxrc->latex_command, name, filepath);
+	string latex_command = lyxrc->pdf_mode ?
+		lyxrc->pdflatex_command : lyxrc->latex_command;
+	LaTeX latex(latex_command, name, filepath);
 	int res = latex.run(terr,
 			    users->owner()->getMiniBuffer()); // running latex
 
@@ -3233,7 +3235,9 @@ int Buffer::runLiterate()
 		markDviDirty();
 	}
 
-        Literate literate(lyxrc->latex_command, name, filepath, 
+	string latex_command = lyxrc->pdf_mode ?
+		lyxrc->pdflatex_command : lyxrc->latex_command;
+        Literate literate(latex_command, name, filepath, 
 			  lit_name,
 			  lyxrc->literate_command, lyxrc->literate_error_filter,
 			  lyxrc->build_command, lyxrc->build_error_filter);
@@ -3301,8 +3305,10 @@ int Buffer::buildProgram()
                 makeLaTeXFile(lit_name, org_path, false);
                 markNwDirty();
         }
- 
-        Literate literate(lyxrc->latex_command, name, filepath, 
+
+	string latex_command = lyxrc->pdf_mode ?
+		lyxrc->pdflatex_command : lyxrc->latex_command;
+        Literate literate(latex_command, name, filepath, 
 			  lit_name,
 			  lyxrc->literate_command, lyxrc->literate_error_filter,
 			  lyxrc->build_command, lyxrc->build_error_filter);

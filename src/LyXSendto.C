@@ -15,8 +15,8 @@
 
 extern FD_form_sendto * fd_form_sendto;
 extern BufferView * current_view;
-extern int MakeDVIOutput(Buffer * buffer);
-extern bool MenuRunDvips(Buffer * buffer, bool wait);
+extern int MakeLaTeXOutput(Buffer * buffer);
+extern bool CreatePostscript(Buffer * buffer, bool wait);
 
 // Whereas this feature is under the menu item File->Export->Custom,
 // I kept the old name sendto in the code because I am lazy (JMarc)
@@ -57,7 +57,7 @@ void SendtoApplyCB(FL_OBJECT *, long)
         fl_get_button(fd_form_sendto->radio_ftype_ps)) {
         ProhibitInput();
         // Generate dvi file and check if there are errors in the .lyx file
-        if (MakeDVIOutput(buffer) > 0) {
+        if (MakeLaTeXOutput(buffer) > 0) {
             AllowInput();
             return;
         }
@@ -74,7 +74,7 @@ void SendtoApplyCB(FL_OBJECT *, long)
         ftypeext = ".txt";
     else {
         ftypeext = ".ps_tmp";
-        if (!MenuRunDvips(buffer, true)) {
+        if (!CreatePostscript(buffer, true)) {
 	    return;
 	}
     }
@@ -94,7 +94,7 @@ void SendtoApplyCB(FL_OBJECT *, long)
     if (fl_get_button(fd_form_sendto->radio_ftype_lyx))
         buffer->writeFile(fname, true);
     // if the .tex file is requested save it to the tempdir
-    // as now we don't do the MakeDVIOutput anymore
+    // as now we don't do the MakeLaTeXOutput anymore
     if (fl_get_button(fd_form_sendto->radio_ftype_latex))
         buffer->makeLaTeXFile(fname, path, false);
     // create the .txt file in tmp_dir if this filetype is requested
