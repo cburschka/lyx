@@ -4,7 +4,7 @@
  * Read the file COPYING
  *
  * \author Baruch Even <baruch.even@writeme.com>
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming <leeming@lyx.org>
  */
 
 #include <config.h>

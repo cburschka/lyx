@@ -5,7 +5,7 @@
  * Read the file COPYING
  *
  * \author Baruch Even <baruch.even@writeme.com>
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming <leeming@lyx.org>
  *
  * The graphics cache is a container of grfx::CacheItems.
  * Each grfx::CacheItem, definedhere represents a separate image file.

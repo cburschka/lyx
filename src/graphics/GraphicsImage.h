@@ -5,7 +5,7 @@
  *  Read the file COPYING
  *
  *  \author Baruch Even <baruch.even@writeme.com>
- *  \author Angus Leeming <a.leeming@ic.ac.uk>
+ *  \author Angus Leeming <leeming@lyx.org>
  *
  *  An abstract base class for the images themselves.
  *  Allows the user to retrieve the pixmap, once loaded and to issue commands

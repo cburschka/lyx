@@ -5,7 +5,7 @@
  *  Read the file COPYING
  *
  * \author Baruch Even <baruch.even@writeme.com>
- * \author Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming <leeming@lyx.org>
  *
  *  grfx::Cache is the manager of the image cache.
  *  It is responsible for creating the grfx::CacheItem's and maintaining them.
