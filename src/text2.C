@@ -2249,7 +2249,16 @@ void LyXText::setCursorFromCoordinates(BufferView * bview, LyXCursor & cur,
 	cur.pos(row->pos() + column);
 	cur.x(x);
 	cur.y(y + row->baseline());
-	cur.iy(cur.y());
+	Inset * ins;
+	if (row->next() && cur.pos() &&
+		cur.par()->getChar(cur.pos()) == Paragraph::META_INSET &&
+		(ins=cur.par()->getInset(cur.pos())) &&
+		(ins->needFullRow() || ins->display()))
+	{
+		cur.iy(y + row->height() + row->next()->baseline());
+	} else {
+		cur.iy(cur.y());
+	}
 	cur.row(row);
 	cur.boundary(bound);
 }
