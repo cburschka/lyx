@@ -109,6 +109,8 @@ Gtk::BuiltinStockID getGTKStockIcon(FuncRequest const & func)
 				return Gtk::Stock::SPELL_CHECK;
 			else if (func.argument == "prefs")
 				return Gtk::Stock::PREFERENCES;
+			else if (func.argument == "document")
+				return Gtk::Stock::PROPERTIES;
 			else
 				return Gtk::Stock::MISSING_IMAGE;
 			break;
