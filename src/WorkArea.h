@@ -151,8 +151,6 @@ private:
 	Pixmap workareapixmap;
 	///
 	Painter painter_;
-	///
-	FL_OBJECT * figinset_canvas;
 	/// if we call redraw with true needed for locking-insets
 	bool screen_cleared;
 };

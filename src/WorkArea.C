@@ -39,8 +39,6 @@ using std::endl;
 using std::abs;
 using std::hex;
 
-FL_OBJECT * figinset_canvas;
-
 namespace {
 
 inline
@@ -84,8 +82,6 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 {
 	fl_freeze_all_forms();
 
-	figinset_canvas = 0;
-
 	if (lyxerr.debugging(Debug::WORKAREA))
 		lyxerr << "Creating work area: +"
 		       << xpos << '+' << ypos << ' '
@@ -93,14 +89,6 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 	//
 	FL_OBJECT * obj;
 	int const bw = int(abs(fl_get_border_width()));
-
-	// We really want to get rid of figinset_canvas.
-	::figinset_canvas = figinset_canvas = obj =
-		  fl_add_canvas(FL_NORMAL_CANVAS,
-				xpos + 1, ypos + 1, 1, 1, "");
-	fl_set_object_boxtype(obj, FL_NO_BOX);
-	fl_set_object_resize(obj, FL_RESIZE_ALL);
-	fl_set_object_gravity(obj, NorthWestGravity, NorthWestGravity);
 
 	// a box
 	if (lyxerr.debugging(Debug::WORKAREA))
