@@ -963,7 +963,7 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
 		}
 
-		else if (t.cs() == "ref") {
+		else if (t.cs() == "ref" || t.cs() == "prettyref") {
 			cell->push_back(MathAtom(new RefInset));
 			parse(cell->back().nucleus()->cell(1), FLAG_OPTION, mode);
 			parse(cell->back().nucleus()->cell(0), FLAG_ITEM, mode);
