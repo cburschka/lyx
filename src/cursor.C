@@ -215,7 +215,6 @@ int LCursor::currentMode()
 LyXText * LCursor::innerText() const
 {
 	BOOST_ASSERT(!cursor_.empty());
-	//lyxerr << "LCursor::innerText()  depth: " << cursor_.size() << endl;
 	if (cursor_.size() > 1) {
 		// go up until first non-0 text is hit
 		// (innermost text is 0 in mathed)
@@ -230,7 +229,6 @@ LyXText * LCursor::innerText() const
 CursorSlice const & LCursor::innerTextSlice() const
 {
 	BOOST_ASSERT(!cursor_.empty());
-	//lyxerr << "LCursor::innerTextSlice()  depth: " << cursor_.size() << endl;
 	if (cursor_.size() > 1) {
 		// go up until first non-0 text is hit
 		// (innermost text is 0 in mathed)
@@ -254,21 +252,14 @@ void LCursor::updatePos()
 void LCursor::getDim(int & asc, int & des) const
 {
 	BOOST_ASSERT(!cursor_.empty());
-	LyXText * text = innerText();
-#warning crashes with text-in-math
-	if (0 && text) {
-		RowList::iterator const rit = text->cursorRow();
-		if (rit != text->endRow()) {
-			asc = rit->baseline();
-			des = rit->height() - asc;
-		} else {
-			asc = 10;
-			des = 10;
-		}
-	} else {
+	if (inMathed()) {
+		//inset()->asMathInset()->getCursorDim(asc, des);
 		asc = 10;
 		des = 10;
-		//innerInset()->getCursorDim(asc, des);
+	} else {
+		Row const & row = *text()->cursorRow();
+		asc = row.baseline();
+		des = row.height() - asc;
 	}
 }
 
