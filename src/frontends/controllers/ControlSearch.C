@@ -58,9 +58,13 @@ void ControlSearch::find(string const & search,
 void ControlSearch::replace(string const & search, string const & replace,
 			    bool casesensitive, bool matchword, bool all) const
 {
+	// If not replacing all instances of the word, then do not
+	// move on to the next instance once the present instance has been
+	// changed
+	bool const once = !all;
 	int const replace_count = LyXReplace(lv_.view(),
 	                                     search, replace, true, casesensitive, 
-	                                     matchword, all);
+	                                     matchword, all, once);
 				  
 	if (replace_count == 0) {
 		setMinibuffer(&lv_, _("String not found!"));
