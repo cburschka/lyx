@@ -63,7 +63,7 @@ This version has been released under the LGPL (Lesser General Public
 License), and the availability of the source means that many bugs that
 have been plaguing LyX have been fixed in xforms. You are advised to
 upgrade to xforms 1.0 to enjoy all these new fixes.
-In fact, LyX 1.3.0 no longer supports versions of xforms older than 0.89.5.
+In fact, LyX 1.3.x no longer supports versions of xforms older than 0.89.5.
 
 You can get the source from
 	http://world.std.com/~xforms/
@@ -201,7 +201,7 @@ LyX:
     care.
 
   o You can also set the environment variable LINGUAS to a list of
-    language in case ou do not want to install all the translation
+    language in case you do not want to install all the translation
     files. For example, if you are only interested in German and
     Finnish, you can type (with sh or bash)
         export LINGUAS='de fi'
