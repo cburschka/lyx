@@ -470,7 +470,7 @@ sub basic_lyx {
 		    $thistable->nextcol;
 		} else {warn "& is illegal outside a table!"}
 
-	    } elsif ($name eq '\\\\' || $name eq '\\newline') {
+	    } elsif ($name eq '\\\\' || $name eq '\\newline' || $name eq "\\tabularnewline") {
 		&CheckForNewParagraph; # could be at beginning of par?
                 print OUTFILE "\n\\newline \n";
 
