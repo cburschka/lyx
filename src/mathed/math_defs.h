@@ -279,7 +279,7 @@ class MathedInset  {
     ///
     static int df_width;
     /// In a near future maybe we use a better fonts renderer than X
-    void drawStr(Painter &, short, int, int, int, byte const *, int);
+    void drawStr(Painter &, short, int, int, int, string const &);
     ///
     friend class MathedCursor;
     ///

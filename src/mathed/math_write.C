@@ -192,38 +192,39 @@ void MathParInset::Write(ostream & os, bool fragile)
 	while (data.OK()) {
 		byte cx = data.GetChar();
 		if (cx >= ' ') {
-			int ls;
-			byte * s = data.GetString(ls);
+			string str = data.GetString();
 			
 			if (data.FCode() >= LM_TC_RM && data.FCode() <= LM_TC_TEXTRM) {
 				os << '\\' << math_font_name[data.FCode()-LM_TC_RM] << '{';
 			}
-			while (ls > 0) {
+			for (string::const_iterator s = str.begin();
+			     s != str.end(); ++s) {
+				byte c = *s;
 				if (MathIsSymbol(data.FCode())) {
-					l = lm_get_key_by_id(*s, (data.FCode() == LM_TC_BSYM) ?
+					l = lm_get_key_by_id(c, (data.FCode() == LM_TC_BSYM) ?
 							     LM_TK_BIGSYM : LM_TK_SYM);
 					if (l) {
 						os << '\\' << l->name << ' ';
-					} else { 
-						lyxerr << "Illegal symbol code[" << *s
-						       << " " << ls << " " << data.FCode() << "]";
+					} else {
+#warning This does not compile (Lgb)
+						//lyxerr << "Illegal symbol code[" << c
+						//     << " " << str.end() - s << " " << data.FCode() << "]";
 					}
 				} else {
 					// Is there a standard logical XOR?
-					if ((data.FCode() == LM_TC_TEX && *s != '{' && *s != '}') ||
+					if ((data.FCode() == LM_TC_TEX && c != '{' && c != '}') ||
 					    (data.FCode() == LM_TC_SPECIAL))
 						os << '\\';
 					else {
-						if (*s == '{') ++brace;
-						if (*s == '}') --brace;
+						if (c == '{') ++brace;
+						if (c == '}') --brace;
 					}
-					if (*s == '}' && data.FCode() == LM_TC_TEX && brace < 0) 
+					if (c == '}' && data.FCode() == LM_TC_TEX && brace < 0) 
 						lyxerr <<"Math warning: Unexpected closing brace."
 						       << endl;
 					else	       
-						os << char(*s);
+						os << char(c);
 				}
-				++s; --ls;
 			}
 			if (data.FCode()>= LM_TC_RM && data.FCode()<= LM_TC_TEXTRM)
 				os << '}';

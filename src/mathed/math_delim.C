@@ -527,15 +527,17 @@ MathDecorationInset::Metrics()
 void
 MathAccentInset::draw(Painter & pain, int x, int y)
 {
-    int dw = width - 2;
+	int dw = width - 2;
 
-    if (inset) {
-	inset->draw(pain, x, y);
-    } else {
-	drawStr(pain, fn, size, x, y, &c, 1);
-    }
-    x += (code == LM_not) ? (width-dw) / 2 : 2;
-    mathed_draw_deco(pain, x, y - dy, dw, dh, code);
+	if (inset) 
+		inset->draw(pain, x, y);
+	else {
+		string s;
+		s += c;
+		drawStr(pain, fn, size, x, y, s);
+	}
+	x += (code == LM_not) ? (width-dw) / 2 : 2;
+	mathed_draw_deco(pain, x, y - dy, dw, dh, code);
 }
 
 

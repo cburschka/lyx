@@ -68,8 +68,6 @@ class MathedIter {
     ///
     byte GetChar() const;
     ///
-    byte * GetString(int & len) const;
-    ///
     string const GetString() const;
     ///
     MathedInset * GetInset() const;

@@ -49,8 +49,8 @@ ostream & operator<<(ostream & o, MathedMacroFlag mmf)
 	return o << int(mmf);
 }
 
-extern int mathed_string_width(short type, int style, byte const* s, int ls);
-extern int mathed_string_height(short, int, byte const*, int, int&, int&);
+extern int mathed_string_width(short type, int style, string const & s);
+extern int mathed_string_height(short, int, string const &, int &, int &);
 
 
 MathMacro::MathMacro(MathMacroTemplate* t): 
@@ -216,30 +216,28 @@ MathMacroArgument::MathMacroArgument(int n)
 
 void MathMacroArgument::draw(Painter & pain, int x, int baseline)
 {
-    if (expnd_mode) {
-	MathParInset::draw(pain, x, baseline);
-    } else {
-	    std::ostringstream ost;
-	    ost << '#' << number;
-	    drawStr(pain, LM_TC_TEX, size, x, baseline, 
-		    reinterpret_cast<byte const *>(ost.str().c_str()), 2);
-    }
+	if (expnd_mode) {
+		MathParInset::draw(pain, x, baseline);
+	}
+	else {
+		std::ostringstream ost;
+		ost << '#' << number;
+		drawStr(pain, LM_TC_TEX, size, x, baseline, ost.str());
+	}
 }
 
 
 void MathMacroArgument::Metrics()
 {
-    if (expnd_mode) {
-	MathParInset::Metrics();
-    } else {
-	    std::ostringstream ost;
-	    ost << '#' << number;
-	    width = mathed_string_width(LM_TC_TEX, size, 
-					reinterpret_cast<byte const *>(ost.str().c_str()), 2);
-	    mathed_string_height(LM_TC_TEX, size,
-				 reinterpret_cast<byte const *>(ost.str().c_str()), 
-				 2, ascent, descent);
-    }
+	if (expnd_mode) {
+		MathParInset::Metrics();
+	}
+	else {
+		std::ostringstream ost;
+		ost << '#' << number;
+		width = mathed_string_width(LM_TC_TEX, size, ost.str());
+		mathed_string_height(LM_TC_TEX, size, ost.str(), ascent, descent);
+	}
 }
 
 

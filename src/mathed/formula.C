@@ -197,55 +197,44 @@ LyXFont mathed_get_font(short type, int size)
 }
 
 
-int mathed_string_width(short type, int size, byte const * s, int ls)
+int mathed_string_width(short type, int size, string const & s)
 {
 	string st;
 	if (MathIsBinary(type))
-		for (int i = 0; i < ls; ++i) {
+		for (string::const_iterator it = s.begin(); it != s.end(); ++it) {
 			st += ' ';
-			st += s[i];
+			st += *it;
 			st += ' ';
 		}
 	else
-		st = string(reinterpret_cast<char const *>(s), ls);
+		st = s;
 
 	LyXFont const f = WhichFont(type, size);
 	return lyxfont::width(st, f);
 }
 
-int mathed_string_width(short type, int size, string const & str)
-{
-	return mathed_string_width(type, size, reinterpret_cast<unsigned char const *>(str.c_str()), str.length());
-}
-
-
 int mathed_char_width(short type, int size, byte c)
 {
-    int t = (MathIsBinary(type)) ? mathed_string_width(type, size, &c, 1) :
-           lyxfont::width(c, WhichFont(type, size));
-    return t;
+	if (MathIsBinary(type)) {
+		string s;
+		s += c;
+		return mathed_string_width(type, size, s);
+	}
+	else
+    return lyxfont::width(c, WhichFont(type, size));
 }
 
 
-int mathed_string_height(short type, int size, byte const * s,
-			 int ls, int & asc, int & des)
-{
-   LyXFont font = WhichFont(type, size);
-   asc = des = 0;
-   for (int i = 0; i < ls; ++i) {
-      des = max(des, lyxfont::descent(s[i], font));
-      asc = max(asc, lyxfont::ascent(s[i], font));
-   }
-   return asc + des;
-}
-
-
-int mathed_string_height(short type, int size, string const & str,
+int mathed_string_height(short type, int size, string const & s,
 			 int & asc, int & des)
 {
-	return mathed_string_height(type, size,
-				    reinterpret_cast<unsigned char const *>(str.c_str()), str.length(),
-				    asc, des);
+	LyXFont font = WhichFont(type, size);
+	asc = des = 0;
+	for (string::const_iterator it = s.begin(); it != s.end(); ++it) {
+		des = max(des, lyxfont::descent(*it, font));
+		asc = max(asc, lyxfont::ascent(*it, font));
+	}
+	return asc + des;
 }
 
 
@@ -260,17 +249,17 @@ int mathed_char_height(short type, int size, byte c, int & asc, int & des)
 
 // In a near future maybe we use a better fonts renderer
 void MathedInset::drawStr(Painter & pain, short type, int siz,
-			  int x, int y, byte const * s, int ls)
+			  int x, int y, string const & s)
 {
 	string st;
 	if (MathIsBinary(type))
-		for (int i = 0; i < ls; ++i) {
+		for (string::const_iterator it = s.begin(); it != s.end(); ++it) {
 			st += ' ';
-			st += char(s[i]);
+			st += *it;
 			st += ' ';
 		}
 	else
-		st = string(reinterpret_cast<char const *>(s), ls);
+		st = s;
 
 	LyXFont const mf = mathed_get_font(type, siz);
 	pain.text(x, y, st, mf);

@@ -32,7 +32,7 @@ using std::endl;
 const int SizeInset = sizeof(char*) + 2;
 
 extern int mathed_char_width(short type, int style, byte c);
-extern int mathed_string_width(short type, int style, byte const * s, int ls);
+extern int mathed_string_width(short type, int style, string const & s);
 extern int mathed_char_height(short, int, byte, int &, int &);
 
 // the builtin memcpy() is broken in egcs and gcc 2.95.x on alpha
@@ -73,27 +73,18 @@ byte MathedIter::GetChar() const
 }
 
 
-byte * MathedIter::GetString(int & len) const
-{
-    if (IsFont()) { 
-	fcode = array->bf[++pos];
-	++pos;
-    }
-    byte * s = &array->bf[pos];
-    len = pos;
-    while (array->bf[pos] >= ' ' && pos < array->last) ++pos;
-    len = pos - len;
-   
-   return s;
-}
-
 string const MathedIter::GetString() const
 {
-	int ls = 0;
-	byte const * s = GetString(ls);
-	return string(reinterpret_cast<char const *>(s), ls);
-}
+	if (IsFont()) { 
+		fcode = array->bf[++pos];
+		++pos;
+	}
+	string s;
+	for ( ; array->bf[pos] >= ' ' && pos < array->last; ++pos)
+		s += array->bf[pos];
 
+	return s;
+}
 	
 MathedInset * MathedIter::GetInset() const
 {
@@ -587,25 +578,11 @@ void MathedXIter::SetData(MathParInset * pp)
 }
 
 
-byte * MathedXIter::GetString(int & ls) const
-{  
-   static byte s[255];
-   byte const * sxs =  MathedIter::GetString(ls);
-   if (ls > 0) {
-       strncpy(reinterpret_cast<char*>(s),
-	       reinterpret_cast<char const *>(sxs), ls);
-       x += mathed_string_width(fcode, size, s, ls);
-       return &s[0];
-   } 	    
-    return 0;
-}
-
-
 string const MathedXIter::GetString() const
 {
-	int ls;
-	byte const * s = GetString(ls);
-	return string(reinterpret_cast<char const *>(s), ls);
+	string s = MathedIter::GetString();
+	x += mathed_string_width(fcode, size, s);
+	return s;
 }
 
 
