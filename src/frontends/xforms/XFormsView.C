@@ -57,7 +57,8 @@ int C_XFormsView_atCloseMainFormCB(FL_FORM * form, void * p)
 
 
 XFormsView::XFormsView(int width, int height)
-	: LyXView()
+	: LyXView(),
+	  icon_pixmap_(0), icon_mask_(0)
 {
 	create_form_form_main(width, height);
 	fl_set_form_atclose(getForm(), C_XFormsView_atCloseMainFormCB, 0);
@@ -73,6 +74,9 @@ XFormsView::XFormsView(int width, int height)
 
 XFormsView::~XFormsView()
 {
+	if (icon_pixmap_)
+		XFreePixmap(fl_get_display(), icon_pixmap_);
+
 	minibuffer_->freeze();
 	fl_hide_form(form_);
 	fl_free_form(form_);
@@ -159,19 +163,18 @@ void XFormsView::create_form_form_main(int width, int height)
 		air, height - (25 + air), width - (2 * air), 25));
 
 	//  assign an icon to main form
-	string iconname = LibFileSearch("images", "lyx", "xpm");
+	string const iconname = LibFileSearch("images", "lyx", "xpm");
 	if (!iconname.empty()) {
 		unsigned int w, h;
-		Pixmap lyx_p, lyx_mask;
-		lyx_p = fl_read_pixmapfile(fl_root,
+		icon_pixmap_ = fl_read_pixmapfile(fl_root,
 					   iconname.c_str(),
 					   &w,
 					   &h,
-					   &lyx_mask,
+					   &icon_mask_,
 					   0,
 					   0,
-					   0); // this leaks
-		fl_set_form_icon(getForm(), lyx_p, lyx_mask);
+					   0);
+		fl_set_form_icon(getForm(), icon_pixmap_, icon_mask_);
 	}
 
 	// set min size

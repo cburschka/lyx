@@ -19,6 +19,7 @@
 #include "forms_fwd.h"
 
 #include "frontends/LyXView.h"
+#include <X11/Xlib.h> // for Pixmap
 
 class XMiniBuffer;
 
@@ -81,5 +82,9 @@ private:
 
 	/// the main form.
 	FL_FORM * form_;
+	/// Passed to the window manager to give a pretty little symbol ;-)
+	Pixmap icon_pixmap_;
+	///
+	Pixmap icon_mask_;
 };
 #endif

@@ -20,13 +20,13 @@
 #endif
 
 #include "ViewBase.h"
-#include "LString.h"
 #include "ButtonPolicies.h"
 #include "FeedbackController.h"
-
-#include <boost/scoped_ptr.hpp>
-
 #include "forms_fwd.h"
+
+#include "LString.h"
+#include <boost/scoped_ptr.hpp>
+#include <X11/Xlib.h> // for Pixmap
 
 class xformsBC;
 class Tooltips;
@@ -79,14 +79,23 @@ private:
 	 */
 	virtual void redraw();
 
+	/** Called on the first show() request, initialising various bits and
+	 *  pieces.
+	 */
+	void prepare_to_show();
+
 	/// The dialog's minimum allowable dimensions.
 	int minw_;
 	///
 	int minh_;
 	/// Can the dialog be resized after it has been created?
 	bool allow_resize_;
-	/// dialog title, displayed by WM.
+	/// dialog title, displayed by the window manager.
 	string title_;
+	/// Passed to the window manager to give a pretty little symbol ;-)
+	Pixmap icon_pixmap_;
+	///
+	Pixmap icon_mask_;
 	///
 	Tooltips * tooltips_;
 };

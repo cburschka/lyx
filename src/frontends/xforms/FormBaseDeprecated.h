@@ -22,14 +22,14 @@
 #pragma interface
 #endif
 
-#include "LString.h"
 #include "xformsBC.h"
 #include "FeedbackController.h"
-
 #include "forms_fwd.h"
 
+#include "LString.h"
 #include <boost/utility.hpp>
 #include <boost/signals/connection.hpp>
+#include <X11/Xlib.h> // for Pixmap
 
 class Buffer;
 class Dialogs;
@@ -131,6 +131,15 @@ protected: // methods
 	string title_;
 
 private:
+	/** Called on the first show() request, initialising various bits and
+	 *  pieces.
+	 */
+	void prepare_to_show();
+
+	/// Passed to the window manager to give a pretty little symbol ;-)
+	Pixmap icon_pixmap_;
+	///
+	Pixmap icon_mask_;
 	/// The dialog's minimum allowable dimensions.
 	int minw_;
 	///

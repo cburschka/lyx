@@ -1,3 +1,19 @@
+2002-09-30  Angus Leeming  <leeming@lyx.org>
+
+	* FormBase.[Ch]:
+	* FormBaseDeprecated.[Ch]:
+	(icon_pixmap_, icon_mask_) new member variables.
+	(prepare_to_show) new method, containing initialisation code invoked
+	the first time show() is called.
+	(d-tor) destroy icon_pixmap_, if it exists.
+	(show) ensure that the icon pixmap is generated only once.
+
+	* XFormsView.[Ch]:
+	(icon_pixmap_, icon_mask_) new member variables.
+	(d-tor) destroy icon_pixmap_, if it exists.
+	(create_form_form_main) assign the generated pixmap to the new
+	icon_pixmap_ member variable.
+
 2002-09-26  Angus Leeming  <leeming@lyx.org>
 
 	* xscreen.h: don't #include "XWorkArea.h", forward-declare XWorkArea.

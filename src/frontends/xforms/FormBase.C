@@ -40,12 +40,16 @@ static int C_PrehandlerCB(FL_OBJECT *, int, FL_Coord, FL_Coord, int, void *);
 
 FormBase::FormBase(string const & t, bool allowResize)
 	: ViewBase(), minw_(0), minh_(0), allow_resize_(allowResize),
-	  title_(t), tooltips_(new Tooltips())
+	  title_(t), icon_pixmap_(0), icon_mask_(0),
+	  tooltips_(new Tooltips())
 {}
 
 
 FormBase::~FormBase()
 {
+	if (icon_pixmap_)
+		XFreePixmap(fl_get_display(), icon_pixmap_);
+
 	delete tooltips_;
 }
 
@@ -70,30 +74,55 @@ xformsBC & FormBase::bc()
 }
 
 
+void FormBase::prepare_to_show()
+{
+	double const scale = scale_to_fit_tabs(form());
+	if (scale > 1.001)
+		scale_form(form(), scale);
+
+	bc().refresh();
+
+	// work around dumb xforms sizing bug
+	minw_ = form()->w;
+	minh_ = form()->h;
+
+	fl_set_form_atclose(form(), C_WMHideCB, 0);
+
+	// set the title for the minimized form
+	if (!getController().IconifyWithMain())
+		fl_winicontitle(form()->window, title_.c_str());
+
+	//  assign an icon to the form
+	string const iconname = LibFileSearch("images", "lyx", "xpm");
+	if (!iconname.empty()) {
+		unsigned int w, h;
+		icon_pixmap_ = fl_read_pixmapfile(fl_root,
+						  iconname.c_str(),
+						  &w,
+						  &h,
+						  &icon_mask_,
+						  0, 0, 0);
+		fl_set_form_icon(form(), icon_pixmap_, icon_mask_);
+	}
+}
+
+
 void FormBase::show()
 {
-	if (!form()) {
-		build();
-	}
+	// build() is/should be called from the controller, so form() should
+	// always exist.
+	lyx::Assert(form());
 
-	// use minw_ to flag whether the dialog has ever been shown
-	// (Needed now that build() is/should be called from the controller)
+	// we use minw_ to flag whether the dialog has ever been shown.
+	// In turn, prepare_to_show() initialises various bits 'n' pieces
+	// (including minw_).
 	if (minw_ == 0) {
-		double const scale = scale_to_fit_tabs(form());
-		if (scale > 1.001)
-			scale_form(form(), scale);
-
-		bc().refresh();
-
-		// work around dumb xforms sizing bug
-		minw_ = form()->w;
-		minh_ = form()->h;
-
-		fl_set_form_atclose(form(), C_WMHideCB, 0);
+		prepare_to_show();
 	}
 
+	// make sure the form is up to date.
 	fl_freeze_form(form());
-	update();  // make sure its up-to-date
+	update();
 	fl_unfreeze_form(form());
 
 	if (form()->visible) {
@@ -115,35 +144,17 @@ void FormBase::show()
 			fl_set_form_maxsize(form(), minw_, minh_);
 
 		string const maximize_title = "LyX: " + title_;
-		int const iconify_policy = getController().IconifyWithMain() ?
-						FL_TRANSIENT : 0;
+		int const iconify_policy =
+			getController().IconifyWithMain() ? FL_TRANSIENT : 0;
 
 		fl_show_form(form(),
 			     FL_PLACE_MOUSE | FL_FREE_SIZE,
 			     iconify_policy,
 			     maximize_title.c_str());
-
-		if (iconify_policy == 0) {
-			// set title for minimized form
-			string const minimize_title = title_;
-			fl_winicontitle(form()->window, minimize_title.c_str());
-
-			//  assign an icon to form
-			string const iconname = LibFileSearch("images", "lyx", "xpm");
-			if (!iconname.empty()) {
-				unsigned int w, h;
-				Pixmap icon_mask;
-				Pixmap const icon_p = fl_read_pixmapfile(fl_root,
-							iconname.c_str(),
-							&w,
-							&h,
-							&icon_mask,
-							0, 0, 0); // this leaks
-                		fl_set_form_icon(form(), icon_p, icon_mask);
-        		}
-		}
 	}
 
+	// For some strange reason known only to xforms, the tooltips can only
+	// be set on a form that is already visible...
 	tooltips().set();
 }
 
