@@ -622,7 +622,6 @@ void BufferView::Pimpl::update(bool fitcursor, bool forceupdate)
 		if (forceupdate) {
 			// second drawing step
 			screen().redraw(*bv_, vi);
-			theCoords.doneUpdating();
 		} else {
 			// Abort updating of the coord cache - just restore the old one
 			std::swap(theCoords, backup);
