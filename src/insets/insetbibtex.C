@@ -201,7 +201,7 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 		db_in = split(db_in, adb,',');
 	}
 	db_out = rtrim(db_out, ",");
-	os   << "\\bibliography{" << db_out << "}\n";
+	os << "\\bibliography{" << db_out << "}\n";
 	return 2;
 }
 

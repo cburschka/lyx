@@ -384,25 +384,21 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 
 	owner_->message(_("Formatting document..."));
 
-	lyxerr << "### resizeCurrentBuffer: text" << bv_->text() << endl;
+	lyxerr << "### resizeCurrentBuffer: text " << bv_->text() << endl;
 	if (!bv_->text())
 		return;
 
-	//if (bv_->text()) {
-		par = bv_->text()->cursor.par();
-		pos = bv_->text()->cursor.pos();
-		selstartpar = bv_->text()->selection.start.par();
-		selstartpos = bv_->text()->selection.start.pos();
-		selendpar = bv_->text()->selection.end.par();
-		selendpos = bv_->text()->selection.end.pos();
-		selection = bv_->text()->selection.set();
-		mark_set = bv_->text()->selection.mark();
-		bv_->text()->fullRebreak();
-		update();
-	//} else {
-	//	bv_->setText(new LyXText(bv_, 0, false, bv_->buffer()->paragraphs()));
-	//	bv_->text()->init(bv_);
-	//}
+	par = bv_->text()->cursor.par();
+	pos = bv_->text()->cursor.pos();
+	selstartpar = bv_->text()->selection.start.par();
+	selstartpos = bv_->text()->selection.start.pos();
+	selendpar = bv_->text()->selection.end.par();
+	selendpos = bv_->text()->selection.end.pos();
+	selection = bv_->text()->selection.set();
+	mark_set = bv_->text()->selection.mark();
+	bv_->text()->textwidth_ = bv_->workWidth();
+	bv_->text()->fullRebreak();
+	update();
 
 	if (par != -1) {
 		bv_->text()->selection.set(true);
