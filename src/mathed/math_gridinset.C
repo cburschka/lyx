@@ -1100,6 +1100,10 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 				copyRow(cur.row());
 		else if (s == "swap-row")
 			swapRow(cur.row());
+		else if (s == "add-hline-above")
+			rowinfo_[cur.row()].lines_++;
+		else if (s == "delete-hline-above")
+			rowinfo_[cur.row()].lines_ = 0;
 		else if (s == "append-column")
 			for (int i = 0, n = extractInt(is); i < n; ++i) {
 				row_type r = cur.row();
@@ -1120,6 +1124,10 @@ void MathGridInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 			copyCol(col(cur.idx()));
 		else if (s == "swap-column")
 			swapCol(col(cur.idx()));
+		else if (s == "add-vline-left")
+			colinfo_[col(cur.idx())].lines_++;			
+		else if (s == "delete-vline-left")
+			colinfo_[col(cur.idx())].lines_ = 0;
 		else {
 			cur.undispatched();
 			break;
