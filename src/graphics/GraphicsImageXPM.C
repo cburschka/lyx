@@ -204,7 +204,7 @@ bool GImageXPM::setPixmap(GParams const & params)
 	// some image magick versions use this
 	xpm_col[1].name = 0;
 	xpm_col[1].value = "opaque";
-	xpm_col[1].pixel = lyxColorHandler->colorPixel(LColor::white);
+	xpm_col[1].pixel = lyxColorHandler->colorPixel(LColor::black);
 
 	attrib.numsymbols = 2;
 	attrib.colorsymbols = xpm_col;
