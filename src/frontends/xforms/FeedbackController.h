@@ -52,6 +52,8 @@ protected:
 	    message_widget direct. The message will persist till the mouse
 	    movesto a new object. */
 	void postWarning(string const & warning);
+	/// Reset the message_widget_
+	void clearMessage();
 
 private:
 	/** Get the feedback message for ob.

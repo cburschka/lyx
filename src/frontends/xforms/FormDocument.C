@@ -92,6 +92,9 @@ void FormDocument::build()
 	// the tabbed folder
 	dialog_.reset(build_tabbed_document());
 
+	// Allow the base class to control messages
+	setMessageWidget(dialog_->text_warning);
+
 	// Manage the restore, ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
@@ -1224,14 +1227,12 @@ void FormDocument::checkReadOnly()
 	if (bc().readOnly(lv_->buffer()->isReadonly())) {
 		combo_doc_class->deactivate();
 		combo_language->deactivate();
-		fl_set_object_label(dialog_->text_warning,
-				    _("Document is read-only."
-				      " No changes to layout permitted."));
-		fl_show_object(dialog_->text_warning);
+		postWarning(_("Document is read-only."
+			      " No changes to layout permitted."));
 	} else {
 		combo_doc_class->activate();
 		combo_language->activate();
-		fl_hide_object(dialog_->text_warning);
+		clearMessage();
 	}
 }
 
@@ -1278,12 +1279,10 @@ bool FormDocument::CheckDocumentInput(FL_OBJECT * ob, long)
 			|| ob == paper_->input_head_sep
 			|| ob == paper_->input_foot_skip) {
 		if (!ok) {
-			fl_set_object_label(dialog_->text_warning,
-                		_("Warning: Invalid Length (valid example: 10mm)"));
-			fl_show_object(dialog_->text_warning);
+			postWarning(_("Invalid Length (valid example: 10mm)"));
 			return false;
         	} else {
-			fl_hide_object(dialog_->text_warning);
+			clearMessage();
 			return true;
 		}
 	}

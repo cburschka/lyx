@@ -3,6 +3,20 @@
 	* xforms_helpers.C (setCursorColor):
 	* Tooltips.C (set): remove XC_question_arrow code.
 
+	* FeedbackController.[Ch] (clearMessage): new method.
+
+	* FeedbackController.C (postMessage): the warning message is now
+	displayed in red!
+
+	* FormParagraph.C: define some helper functions to minimise the amount
+	of repeated code.
+
+	* FormDocument.C:
+	* FormGraphics.C:
+	* FormMinipage.C:
+	* FormTabular.C: use the FeedbackController to post the warning
+	messages.
+
 2002-03-19  André Pönitz <poenitz@gmx.net>
 
 	* FormParagraph.C: whitespace changes

@@ -32,6 +32,9 @@ void FormMinipage::build()
 {
 	dialog_.reset(build_minipage());
 
+	// Allow the base class to control messages
+	setMessageWidget(dialog_->text_warning);
+
 	fl_set_input_return(dialog_->input_width, FL_RETURN_CHANGED);
 	setPrehandler(dialog_->input_width);
 
@@ -56,7 +59,7 @@ void FormMinipage::apply()
 {
 	controller().params().pageWidth =
 		LyXLength(getLengthFromWidgets(dialog_->input_width,
-			dialog_->choice_width_units));
+					       dialog_->choice_width_units));
 
 	if (fl_get_button(dialog_->radio_top))
 		controller().params().pos = InsetMinipage::top;
@@ -69,31 +72,34 @@ void FormMinipage::apply()
 
 void FormMinipage::update()
 {
-    LyXLength len(controller().params().pageWidth);
-    fl_set_input(dialog_->input_width, tostr(len.value()).c_str());
-    fl_set_choice(dialog_->choice_width_units, len.unit() + 1);
+	LyXLength len(controller().params().pageWidth);
+	fl_set_input(dialog_->input_width, tostr(len.value()).c_str());
+	fl_set_choice(dialog_->choice_width_units, len.unit() + 1);
 
-    switch (controller().params().pos) {
-    case InsetMinipage::top:
-	fl_set_button(dialog_->radio_top, 1);
-	break;
-    case InsetMinipage::center:
-	fl_set_button(dialog_->radio_middle, 1);
-	break;
-    case InsetMinipage::bottom:
-	fl_set_button(dialog_->radio_bottom, 1);
-	break;
-    }
+	switch (controller().params().pos) {
+	case InsetMinipage::top:
+		fl_set_button(dialog_->radio_top, 1);
+		break;
+	case InsetMinipage::center:
+		fl_set_button(dialog_->radio_middle, 1);
+		break;
+	case InsetMinipage::bottom:
+		fl_set_button(dialog_->radio_bottom, 1);
+		break;
+	}
 }
+
 
 ButtonPolicy::SMInput FormMinipage::input(FL_OBJECT * ob, long)
 {
+	clearMessage();
+
 	ButtonPolicy::SMInput action = ButtonPolicy::SMI_NOOP;
 
 	if (ob == dialog_->radio_top || 
-		ob == dialog_->radio_middle ||
-		ob == dialog_->radio_bottom ||
-		ob == dialog_->choice_width_units)
+	    ob == dialog_->radio_middle ||
+	    ob == dialog_->radio_bottom ||
+	    ob == dialog_->choice_width_units)
 		return ButtonPolicy::SMI_VALID;
 
 	// disallow senseless data
@@ -102,12 +108,9 @@ ButtonPolicy::SMInput FormMinipage::input(FL_OBJECT * ob, long)
 		string const input = getStringFromInput(dialog_->input_width);
 		bool const invalid = !isValidLength(input) && !isStrDbl(input);
 		if (invalid) {
-			fl_set_object_label(dialog_->text_warning,
-				_("Warning: Invalid Length!"));
-			fl_show_object(dialog_->text_warning);
+			postWarning(_("Invalid Length!"));
 			action = ButtonPolicy::SMI_INVALID;
 		} else {
-			fl_hide_object(dialog_->text_warning);
 			action = ButtonPolicy::SMI_VALID;
 		}
 	}

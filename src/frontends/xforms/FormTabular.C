@@ -111,6 +111,9 @@ void FormTabular::build()
 {
 	dialog_.reset(build_tabular());
 
+	// Allow the base class to control messages
+	setMessageWidget(dialog_->text_warning);
+
 	setPrehandler(dialog_->input_tabular_column);
 	setPrehandler(dialog_->input_tabular_row);
 
@@ -187,7 +190,7 @@ void FormTabular::update()
 	int cell = inset_->getActCell();
 	actCell_ = cell;
 	int column = tabular->column_of_cell(cell) + 1;
-	fl_set_object_label(dialog_->text_warning, "");
+	clearMessage();
 	fl_activate_object(column_options_->input_special_alignment);
 	fl_activate_object(cell_options_->input_special_multialign);
 	fl_activate_object(column_options_->input_column_width);
@@ -555,9 +558,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
  
 	if (actCell_ != cell) {
 		update();
-		fl_set_object_label(dialog_->text_warning,
-			_("Warning: Wrong Cursor position, updated window"));
-		fl_show_object(dialog_->text_warning);
+		postWarning(_("Wrong Cursor position, updated window"));
 		return false;
 	}
 	// No point in processing directives that you can't do anything with
@@ -578,14 +579,14 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 	string const input =
 		fl_get_input(column_options_->input_column_width);
 	if (!input.empty() && !isValidLength(input) && !isStrDbl(input)) {
-		fl_set_object_label(dialog_->text_warning,
-			_("Warning: Invalid Length (valid example: 10mm)"));
-		fl_show_object(dialog_->text_warning);
+		postWarning(_("Invalid Length (valid example: 10mm)"));
 		return false;
 	}
-		update(); // update for alignment
-		return true;
+
+	update(); // update for alignment
+	return true;
 	}
+	
 	if ((ob == cell_options_->input_mcolumn_width) ||
 		(ob == cell_options_->choice_value_mcolumn_width))
 	{
@@ -598,9 +599,7 @@ bool FormTabular::input(FL_OBJECT * ob, long)
 		string const input =
 			fl_get_input(cell_options_->input_mcolumn_width);
 		if (!input.empty() && !isValidLength(input) && !isStrDbl(input)) {
-			fl_set_object_label(dialog_->text_warning,
-				_("Warning: Invalid Length (valid example: 10mm)"));
-			fl_show_object(dialog_->text_warning);
+			postWarning(_("Invalid Length (valid example: 10mm)"));
 			return false;
 		}
 		update(); // update for alignment

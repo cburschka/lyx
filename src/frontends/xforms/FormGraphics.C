@@ -65,6 +65,9 @@ void FormGraphics::build()
 {
 	dialog_.reset(build_graphics());
 
+	// Allow the base class to control messages
+	setMessageWidget(dialog_->text_warning);
+
         // Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
@@ -642,12 +645,10 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 	    ob == size_->input_width || ob == size_->input_height || 
 	    ob == lyxview_->input_lyxwidth || ob == lyxview_->input_lyxheight) {
 		if (invalid) {
-			fl_set_object_label(dialog_->text_warning,
-				_("Warning: Invalid Length!"));
-			fl_show_object(dialog_->text_warning);
+			postWarning(_("Invalid Length!"));
 			return ButtonPolicy::SMI_INVALID;
 		} else {
-			fl_hide_object(dialog_->text_warning);
+			clearMessage();
 		}
 	}
 
