@@ -38,7 +38,7 @@
 #include <cwchar>             // for WCHAR_MIN and WCHAR_MAX
 #include <boost/config.hpp>
 
-#if defined(__sparc) || defined(__sparc__) || defined(__powerpc__) || defined(__ppc__) || defined(__hppa) || defined(_MIPSEB)
+#if defined(__sparc) || defined(__sparc__) || defined(__powerpc__) || defined(__ppc__) || defined(__hppa) || defined(_MIPSEB) || defined(_POWER)
 #define BOOST_BIG_ENDIAN
 #elif defined(__i386__) || defined(__alpha__)
 #define BOOST_LITTLE_ENDIAN
