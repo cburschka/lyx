@@ -365,12 +365,13 @@ void LyXText::cursorPrevious()
 {
 
 	RowList::iterator crit = cursorRow();
+	ParagraphList::iterator cpar = cursorPar();
 
 	int x = bv()->x_target() - xo_;
 	int y = bv()->top_y() - yo_;
 	setCursorFromCoordinates(x, y);
 
-	if (crit == cursorRow()) {
+	if (cpar == cursorPar() && crit == cursorRow()) {
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the previous row instead.
 		cursorUp(true);
@@ -384,12 +385,13 @@ void LyXText::cursorPrevious()
 void LyXText::cursorNext()
 {
 	RowList::iterator crit = cursorRow();
+	ParagraphList::iterator cpar = cursorPar();
 
 	int x = bv()->x_target() - xo_;
 	int y = bv()->top_y() + bv()->workHeight() - yo_;
 	setCursorFromCoordinates(x, y);
 
-	if (crit == cursorRow()) {
+	if (cpar == cursorPar() && crit == cursorRow()) {
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the next row instead.
 		cursorDown(true);

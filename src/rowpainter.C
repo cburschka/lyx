@@ -389,12 +389,13 @@ void RowPainter::paintSelection()
 	int const h = row_.height();
 
 	int const row_y = pit_->y + row_.y_offset();
-	
+
 	if (text_.bidi.same_direction()) {
 		int x;
 		int y = yo_;
 		int w;
-		if (startrow == rit_ && endrow == rit_) {
+		if ((startpit == pit_ && startrow == rit_) &&
+		    (endpit == pit_ && endrow == rit_)) {
 			if (startx < endx) {
 				x = int(xo_) + startx;
 				w = endx - startx;
@@ -403,22 +404,23 @@ void RowPainter::paintSelection()
 				w = startx - endx;
 			}
 			pain_.fillRectangle(x, y, w, h, LColor::selection);
-		} else if (startrow == rit_) {
+		} else if (startpit == pit_ && startrow == rit_) {
 			int const x = is_rtl ? int(xo_) : int(xo_ + startx);
 			int const w = is_rtl ? startx : (width_ - startx);
 			pain_.fillRectangle(x, y, w, h, LColor::selection);
-		} else if (endrow == rit_) {
+		} else if (endpit == pit_ && endrow == rit_) {
 			int const x = is_rtl ? int(xo_ + endx) : int(xo_);
 			int const w = is_rtl ? (width_ - endx) : endx;
 			pain_.fillRectangle(x, y, w, h, LColor::selection);
 		} else if (row_y > starty && row_y < endy) {
-		
+
 			pain_.fillRectangle(int(xo_), y, width_, h, LColor::selection);
 		}
 		return;
 	}
 
-	if (startrow != rit_ && endrow != rit_) {
+	if ((startpit != pit_ && startrow != rit_) &&
+	    (endpit != pit_ && endrow != rit_)) {
 		if (y_ > starty && y_ < endy) {
 			int w = width_;
 			pain_.fillRectangle(int(xo_), yo_, w, h, LColor::selection);
@@ -426,7 +428,7 @@ void RowPainter::paintSelection()
 		return;
 	}
 
-	if ((startrow != rit_ && !is_rtl) || (endrow != rit_ && is_rtl))
+	if ((startpit != pit_ && startrow != rit_ && !is_rtl) || (endpit != pit_ && endrow != rit_ && is_rtl))
 		pain_.fillRectangle(int(xo_), yo_,
 			int(x_), h, LColor::selection);
 
@@ -459,15 +461,16 @@ void RowPainter::paintSelection()
 				tmpx += separator_;
 		}
 
-		if ((startrow != rit_ || text_.selection.start.pos() <= pos) &&
-			(endrow != rit_ || pos < text_.selection.end.pos())) {
+		if (((startpit != pit_ && startrow != rit_) || text_.selection.start.pos() <= pos) &&
+			((endpit != pit_ && endrow != rit_) || pos < text_.selection.end.pos())) {
 			// Here we do not use x_ as xo_ was added to x_.
 			pain_.fillRectangle(int(old_tmpx), yo_,
 				int(tmpx - old_tmpx + 1), h, LColor::selection);
 		}
 	}
 
-	if ((startrow != rit_ && is_rtl) || (endrow != rit_ && !is_rtl)) {
+	if ((startpit != pit_ && startrow != rit_ && is_rtl) ||
+	    (endpit != pit_ && endrow != rit_ && !is_rtl)) {
 		pain_.fillRectangle(int(xo_ + tmpx),
 			yo_, int(bv_.workWidth() - tmpx), h, LColor::selection);
 	}

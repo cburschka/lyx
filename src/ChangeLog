@@ -1,5 +1,12 @@
 2003-11-22  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* text3.C (cursorPrevious): make sure that we do not compare
+	iterators form different containers.
+	(cursorNext): ditto
+
+	* rowpainter.C (paintSelection): make sure that we do not compare
+	iterators from different containers.
+
 	* text3.C (dispatch): [PRIOR] make sure that we do not compare
 	iterators from different ParagraphList containers.
 	[NEXT] ditto
