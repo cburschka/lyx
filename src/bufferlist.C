@@ -27,7 +27,6 @@
 #include "frontends/Alert.h"
 
 #include "support/filetools.h"
-#include "support/lyxfunctional.h"
 
 #include <boost/bind.hpp>
 
@@ -47,6 +46,7 @@ using boost::bind;
 
 using std::auto_ptr;
 using std::endl;
+using std::equal_to;
 using std::find;
 using std::find_if;
 using std::for_each;
@@ -338,7 +338,9 @@ void BufferList::emergencyWrite(Buffer * buf)
 bool BufferList::exists(string const & s) const
 {
 	return find_if(bstore.begin(), bstore.end(),
-		       lyx::compare_memfun(&Buffer::fileName, s))
+		       bind(equal_to<string>(),
+			    bind(&Buffer::fileName, _1),
+			    s))
 		!= bstore.end();
 }
 
@@ -356,7 +358,10 @@ Buffer * BufferList::getBuffer(string const & s)
 {
 	BufferStorage::iterator it =
 		find_if(bstore.begin(), bstore.end(),
-			lyx::compare_memfun(&Buffer::fileName, s));
+			bind(equal_to<string>(),
+			     bind(&Buffer::fileName, _1),
+			     s));
+
 	return it != bstore.end() ? (*it) : 0;
 }
 

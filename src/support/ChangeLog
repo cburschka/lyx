@@ -1,5 +1,10 @@
 2004-11-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* lyxfunctional.h: delete compare_memfun and helper classes
+
+	* forkedcontr.C (find_pid): use bind, equal_to instead of
+	compare_memfun 
+
 	* lyxfunctional.h: delete back_inserter_fun functions and helper
 	classes.
 

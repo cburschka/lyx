@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.3.2\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
-"POT-Creation-Date: 2004-09-16 19:56+0200\n"
+"POT-Creation-Date: 2004-09-26 18:52+0200\n"
 "PO-Revision-Date: 2004-06-01 20:50+0200\n"
 "Last-Translator: Tomasz £uczak <tlu@technodat.com.pl>\n"
 "Language-Team: polish <pl@li.org>\n"
@@ -79,7 +79,7 @@ msgid "OK"
 msgstr "OK"
 
 #: src/frontends/xforms/forms/form_bibitem.fd:80
-#: src/frontends/gtk/Dialogs.C:254 src/frontends/xforms/Dialogs.C:251
+#: src/frontends/gtk/Dialogs.C:255 src/frontends/xforms/Dialogs.C:251
 msgid "Label:|#L"
 msgstr "Etykieta:|#L"
 
@@ -1083,7 +1083,7 @@ msgstr "Funkcje:"
 
 #: src/frontends/xforms/forms/form_maths_panel.fd:153
 #: src/frontends/xforms/forms/form_maths_panel.fd:459
-#: src/frontends/gtk/Dialogs.C:331 src/frontends/xforms/Dialogs.C:327
+#: src/frontends/gtk/Dialogs.C:332 src/frontends/xforms/Dialogs.C:327
 #: src/frontends/xforms/FormPreferences.C:234
 #: src/frontends/xforms/FormPreferences.C:254
 #: src/frontends/xforms/FormPreferences.C:262
@@ -1091,7 +1091,7 @@ msgid "Misc"
 msgstr "Inne"
 
 #: src/frontends/xforms/forms/form_maths_panel.fd:297
-#: src/frontends/qt2/ui/QMathDialogBase.ui:523 src/frontends/gtk/Dialogs.C:348
+#: src/frontends/qt2/ui/QMathDialogBase.ui:523 src/frontends/gtk/Dialogs.C:349
 #: src/frontends/xforms/Dialogs.C:344
 msgid "Dots"
 msgstr "Kropki"
@@ -2037,7 +2037,7 @@ msgstr "Poka¿ ¶cie¿ki|#P"
 msgid "Run TeXhash|#T"
 msgstr "Uruchom texhash|#U"
 
-#: src/frontends/xforms/forms/form_text.fd:43 src/frontends/gtk/Dialogs.C:248
+#: src/frontends/xforms/forms/form_text.fd:43 src/frontends/gtk/Dialogs.C:249
 #: src/frontends/xforms/Dialogs.C:246
 msgid "Keyword:|#K"
 msgstr "S³owo kluczowe:|#k"
@@ -2611,7 +2611,7 @@ msgid "Lay out the page for double-sided printing"
 msgstr ""
 
 #: src/frontends/qt2/ui/QAboutDialogBase.ui:22 lib/ui/classic.ui:415
-#: lib/ui/stdmenus.ui:445 src/frontends/qt2/QAbout.C:43
+#: lib/ui/stdmenus.ui:436 src/frontends/qt2/QAbout.C:43
 #: src/frontends/xforms/FormAboutlyx.C:46
 msgid "About LyX"
 msgstr "O LyX-ie"
@@ -2682,7 +2682,7 @@ msgid "&Cancel"
 msgstr "&Anuluj"
 
 #: src/frontends/qt2/ui/QBibitemDialogBase.ui:22
-#: src/frontends/qt2/ui/QIndexDialogBase.ui:22 src/frontends/gtk/Dialogs.C:248
+#: src/frontends/qt2/ui/QIndexDialogBase.ui:22 src/frontends/gtk/Dialogs.C:249
 #: src/frontends/xforms/Dialogs.C:246 src/insets/insetindex.C:70
 msgid "Index"
 msgstr "Indeks"
@@ -2767,7 +2767,7 @@ msgstr "Dostêpne klucze"
 #: src/frontends/qt2/ui/QCitationFindDialogBase.ui:149
 #: src/frontends/qt2/ui/QIndexDialogBase.ui:143
 #: src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/BufferView_pimpl.C:275
-#: src/frontends/gtk/GBC.h:28 src/frontends/qt2/Qt2BC.h:36
+#: src/frontends/gtk/GBC.h:27 src/frontends/qt2/Qt2BC.h:36
 #: src/frontends/xforms/xformsBC.h:29 src/lyxfunc.C:656
 msgid "Cancel"
 msgstr "Anuluj"
@@ -3586,7 +3586,7 @@ msgstr "&Podpis:"
 #: src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
 #: src/frontends/qt2/ui/QPrintDialogBase.ui:366
 #: src/frontends/qt2/ui/QTabularCreateDialogBase.ui:323
-#: src/frontends/qt2/ui/QTabularDialogBase.ui:1216 src/frontends/gtk/GBC.h:29
+#: src/frontends/qt2/ui/QTabularDialogBase.ui:1216 src/frontends/gtk/GBC.h:28
 #: src/frontends/qt2/Qt2BC.h:36 src/frontends/xforms/xformsBC.h:29
 msgid "Close"
 msgstr "Zamknij"
@@ -3822,11 +3822,11 @@ msgid "Relations"
 msgstr "Relacje"
 
 #: src/frontends/qt2/ui/QMathDialogBase.ui:511 lib/languages:32
-#: src/frontends/gtk/Dialogs.C:318 src/frontends/xforms/Dialogs.C:314
+#: src/frontends/gtk/Dialogs.C:319 src/frontends/xforms/Dialogs.C:314
 msgid "Greek"
 msgstr "Greka"
 
-#: src/frontends/qt2/ui/QMathDialogBase.ui:517 src/frontends/gtk/Dialogs.C:282
+#: src/frontends/qt2/ui/QMathDialogBase.ui:517 src/frontends/gtk/Dialogs.C:283
 #: src/frontends/xforms/Dialogs.C:278
 msgid "Arrows"
 msgstr "Strza³ki"
@@ -5159,7 +5159,7 @@ msgstr "&URL"
 
 #: src/frontends/qt2/ui/QURLDialogBase.ui:53
 #: src/frontends/qt2/ui/QURLDialogBase.ui:94 lib/layouts/scrlttr2.layout:212
-#: lib/layouts/amsdefs.inc:182 src/frontends/gtk/GUrl.C:27
+#: lib/layouts/amsdefs.inc:182 src/frontends/gtk/GUrl.C:28
 #: src/frontends/xforms/FormUrl.C:27
 msgid "URL"
 msgstr "URL"
@@ -5315,7 +5315,7 @@ msgstr "Formatowanie dokumentu"
 #: lib/layouts/slides.layout:59 lib/layouts/agu_stdclass.inc:21
 #: lib/layouts/db_stdclass.inc:20 lib/layouts/scrclass.inc:12
 #: lib/layouts/stdclass.inc:27 lib/layouts/stdletter.inc:11
-#: lib/layouts/svjour.inc:26 src/insets/insetref.C:138
+#: lib/layouts/svjour.inc:26 src/insets/insetref.C:141
 #: src/mathed/ref_inset.C:155
 msgid "Standard"
 msgstr "Standard"
@@ -5599,8 +5599,8 @@ msgstr "Lista"
 #: lib/layouts/aastex.layout:86 lib/layouts/aastex.layout:199
 #: lib/layouts/apa.layout:38 lib/layouts/broadway.layout:185
 #: lib/layouts/cl2emult.layout:39 lib/layouts/cv.layout:121
-#: lib/layouts/docbook-book.layout:11 lib/layouts/docbook-chapter.layout:10
-#: lib/layouts/docbook-section.layout:10 lib/layouts/egs.layout:245
+#: lib/layouts/docbook-book.layout:10 lib/layouts/docbook-chapter.layout:9
+#: lib/layouts/docbook-section.layout:9 lib/layouts/egs.layout:245
 #: lib/layouts/elsart.layout:92 lib/layouts/entcs.layout:36
 #: lib/layouts/foils.layout:128 lib/layouts/hollywood.layout:339
 #: lib/layouts/ijmpd.layout:35 lib/layouts/kluwer.layout:104
@@ -7434,7 +7434,7 @@ msgstr "Tabela|T"
 msgid "Math|M"
 msgstr "Matematyka|M"
 
-#: lib/ui/classic.ui:100 lib/ui/stdmenus.ui:412
+#: lib/ui/classic.ui:100 lib/ui/stdmenus.ui:403
 msgid "Spellchecker...|S"
 msgstr "Pisownia|S"
 
@@ -7442,7 +7442,7 @@ msgstr "Pisownia|S"
 msgid "Thesaurus..."
 msgstr ""
 
-#: lib/ui/classic.ui:102 lib/ui/stdmenus.ui:414
+#: lib/ui/classic.ui:102 lib/ui/stdmenus.ui:405
 msgid "Check TeX|h"
 msgstr "Check TeX|X"
 
@@ -7456,11 +7456,11 @@ msgstr "Otwórz/Zamknij wstawki|O"
 msgid "Change Tracking|g"
 msgstr "Zmieñ jêzyk"
 
-#: lib/ui/classic.ui:106 lib/ui/stdmenus.ui:421
+#: lib/ui/classic.ui:106 lib/ui/stdmenus.ui:412
 msgid "Preferences...|P"
 msgstr "Ustawienia|U"
 
-#: lib/ui/classic.ui:107 lib/ui/stdmenus.ui:420
+#: lib/ui/classic.ui:107 lib/ui/stdmenus.ui:411
 msgid "Reconfigure|R"
 msgstr "Rekonfiguruj|R"
 
@@ -7719,7 +7719,7 @@ msgid "URL...|U"
 msgstr "Adres URL|U"
 
 #: lib/ui/classic.ui:222 lib/ui/classic.ui:368 lib/ui/stdmenus.ui:231
-#: lib/ui/stdmenus.ui:391
+#: lib/ui/stdmenus.ui:382
 msgid "Note|N"
 msgstr "Notka|N"
 
@@ -7988,21 +7988,21 @@ msgstr "ASCII jako wiersze|w"
 msgid "ASCII as Paragraphs...|P"
 msgstr "ASCII jako akapity|a"
 
-#: lib/ui/classic.ui:319 lib/ui/stdmenus.ui:380
+#: lib/ui/classic.ui:319 lib/ui/stdmenus.ui:371
 #, fuzzy
 msgid "Track Changes|T"
 msgstr "Nanie¶ zmiany i zablokuj|N"
 
-#: lib/ui/classic.ui:320 lib/ui/stdmenus.ui:381
+#: lib/ui/classic.ui:320 lib/ui/stdmenus.ui:372
 #, fuzzy
 msgid "Merge Changes...|M"
 msgstr "Nanie¶ zmiany i zablokuj|N"
 
-#: lib/ui/classic.ui:321 lib/ui/stdmenus.ui:382
+#: lib/ui/classic.ui:321 lib/ui/stdmenus.ui:373
 msgid "Accept All Changes|A"
 msgstr ""
 
-#: lib/ui/classic.ui:322 lib/ui/stdmenus.ui:383
+#: lib/ui/classic.ui:322 lib/ui/stdmenus.ui:374
 msgid "Reject All Changes|R"
 msgstr ""
 
@@ -8050,7 +8050,7 @@ msgstr "Preambu³a LaTeX-a|r"
 msgid "Start Appendix Here|S"
 msgstr "Tutaj w³±cz Dodatek|D"
 
-#: lib/ui/classic.ui:350 lib/ui/stdmenus.ui:370
+#: lib/ui/classic.ui:350 lib/ui/stdmenus.ui:361
 msgid "Build Program|B"
 msgstr "Zbuduj program|p"
 
@@ -8066,23 +8066,23 @@ msgstr "Komunikaty LaTeX-a|L"
 msgid "TeX Information|X"
 msgstr "Konfiguracja LaTeX-a|X"
 
-#: lib/ui/classic.ui:369 lib/ui/stdmenus.ui:392
+#: lib/ui/classic.ui:369 lib/ui/stdmenus.ui:383
 msgid "Refs|R"
 msgstr "Odno¶niki|O"
 
-#: lib/ui/classic.ui:370 lib/ui/stdmenus.ui:390
+#: lib/ui/classic.ui:370 lib/ui/stdmenus.ui:381
 msgid "Bookmarks|B"
 msgstr "Zak³adki|Z"
 
-#: lib/ui/classic.ui:374 lib/ui/stdmenus.ui:398
+#: lib/ui/classic.ui:374 lib/ui/stdmenus.ui:389
 msgid "Save Bookmark 1|S"
 msgstr "Zapisz zak³adkê 1|Z"
 
-#: lib/ui/classic.ui:375 lib/ui/stdmenus.ui:399
+#: lib/ui/classic.ui:375 lib/ui/stdmenus.ui:390
 msgid "Save Bookmark 2"
 msgstr "Zapisz zak³adkê 2"
 
-#: lib/ui/classic.ui:376 lib/ui/stdmenus.ui:400
+#: lib/ui/classic.ui:376 lib/ui/stdmenus.ui:391
 msgid "Save Bookmark 3"
 msgstr "Zapisz zak³adkê 3"
 
@@ -8102,35 +8102,35 @@ msgstr "Id¼ do zak³adki 3|3"
 msgid "Tooltips|o"
 msgstr "Podpowiedzi|P"
 
-#: lib/ui/classic.ui:397 lib/ui/stdmenus.ui:428
+#: lib/ui/classic.ui:397 lib/ui/stdmenus.ui:419
 msgid "Introduction|I"
 msgstr "Wprowadzenie|W"
 
-#: lib/ui/classic.ui:398 lib/ui/stdmenus.ui:429
+#: lib/ui/classic.ui:398 lib/ui/stdmenus.ui:420
 msgid "Tutorial|T"
 msgstr "Samouczek|S"
 
-#: lib/ui/classic.ui:399 lib/ui/stdmenus.ui:430
+#: lib/ui/classic.ui:399 lib/ui/stdmenus.ui:421
 msgid "User's Guide|U"
 msgstr "Podrêcznik u¿ytkownika|u"
 
-#: lib/ui/classic.ui:400 lib/ui/stdmenus.ui:431
+#: lib/ui/classic.ui:400 lib/ui/stdmenus.ui:422
 msgid "Extended Features|E"
 msgstr "Zaawansowane mo¿liwo¶ci|m"
 
-#: lib/ui/classic.ui:401 lib/ui/stdmenus.ui:432
+#: lib/ui/classic.ui:401 lib/ui/stdmenus.ui:423
 msgid "Customization|C"
 msgstr "Konfiguracja|K"
 
-#: lib/ui/classic.ui:403 lib/ui/stdmenus.ui:433
+#: lib/ui/classic.ui:403 lib/ui/stdmenus.ui:424
 msgid "FAQ|F"
 msgstr "Czêsto zadawane pytania|C"
 
-#: lib/ui/classic.ui:404 lib/ui/stdmenus.ui:434
+#: lib/ui/classic.ui:404 lib/ui/stdmenus.ui:425
 msgid "Table of Contents|a"
 msgstr "Spis tre¶ci|t"
 
-#: lib/ui/classic.ui:405 lib/ui/stdmenus.ui:435
+#: lib/ui/classic.ui:405 lib/ui/stdmenus.ui:426
 msgid "LaTeX Configuration|L"
 msgstr "Konfiguracja LaTeX-a|L"
 
@@ -8138,12 +8138,12 @@ msgstr "Konfiguracja LaTeX-a|L"
 msgid "About LyX|X"
 msgstr "O LyX-ie|X"
 
-#: lib/ui/classic.ui:416 lib/ui/stdmenus.ui:446
+#: lib/ui/classic.ui:416 lib/ui/stdmenus.ui:437
 #, fuzzy
 msgid "Preferences..."
 msgstr "Ustawienia|U"
 
-#: lib/ui/classic.ui:417 lib/ui/stdmenus.ui:447
+#: lib/ui/classic.ui:417 lib/ui/stdmenus.ui:438
 #, fuzzy
 msgid "Quit LyX"
 msgstr "O LyX-ie"
@@ -8308,25 +8308,25 @@ msgstr "Spisy|S"
 msgid "Float|a"
 msgstr "Wstawki|W"
 
-#: lib/ui/stdmenus.ui:232 src/frontends/xforms/FormBox.C:47
+#: lib/ui/stdmenus.ui:232
+msgid "Branch|B"
+msgstr ""
+
+#: lib/ui/stdmenus.ui:233
+#, fuzzy
+msgid "Character Style|y"
+msgstr "Kodowanie"
+
+#: lib/ui/stdmenus.ui:234
+#, fuzzy
+msgid "File|e"
+msgstr "Plik|P"
+
+#: lib/ui/stdmenus.ui:235 src/frontends/xforms/FormBox.C:47
 #: src/insets/insetbox.C:143 src/insets/insetbox.C:145
 #: src/insets/insetbox.C:147
 msgid "Box"
 msgstr ""
-
-#: lib/ui/stdmenus.ui:233
-msgid "Branch|B"
-msgstr ""
-
-#: lib/ui/stdmenus.ui:234
-#, fuzzy
-msgid "Character Style"
-msgstr "Kodowanie"
-
-#: lib/ui/stdmenus.ui:235
-#, fuzzy
-msgid "File|e"
-msgstr "Plik|P"
 
 #: lib/ui/stdmenus.ui:240
 #, fuzzy
@@ -8401,87 +8401,62 @@ msgstr "Komentarz"
 msgid "Greyed Out|G"
 msgstr ""
 
-#: lib/ui/stdmenus.ui:348
-msgid "Frameless|F"
-msgstr ""
-
-#: lib/ui/stdmenus.ui:349
-msgid "Boxed|B"
-msgstr ""
-
-#: lib/ui/stdmenus.ui:350
-msgid "Oval Box|O"
-msgstr ""
-
-#: lib/ui/stdmenus.ui:351
-msgid "Oval Box, Thick|T"
-msgstr ""
-
-#: lib/ui/stdmenus.ui:352
-msgid "Shadow Box|S"
-msgstr ""
-
-#: lib/ui/stdmenus.ui:353
-#, fuzzy
-msgid "Double Box|D"
-msgstr "Podwójny|#d"
-
-#: lib/ui/stdmenus.ui:369
+#: lib/ui/stdmenus.ui:360
 #, fuzzy
 msgid "Change Tracking|C"
 msgstr "Zmieñ jêzyk"
 
-#: lib/ui/stdmenus.ui:371
+#: lib/ui/stdmenus.ui:362
 #, fuzzy
 msgid "LaTeX Log File...|L"
 msgstr "Komunikaty LaTeX-a|L"
 
-#: lib/ui/stdmenus.ui:372
+#: lib/ui/stdmenus.ui:363
 #, fuzzy
 msgid "Table of Contents...|T"
 msgstr "Spis tre¶ci|S"
 
-#: lib/ui/stdmenus.ui:373
+#: lib/ui/stdmenus.ui:364
 #, fuzzy
 msgid "LaTeX Preamble...|P"
 msgstr "Preambu³a LaTeX-a"
 
-#: lib/ui/stdmenus.ui:374
+#: lib/ui/stdmenus.ui:365
 #, fuzzy
 msgid "Start Appendix Here|A"
 msgstr "Tutaj w³±cz Dodatek|D"
 
-#: lib/ui/stdmenus.ui:376
+#: lib/ui/stdmenus.ui:367
 #, fuzzy
 msgid "Settings...|S"
 msgstr "Ustawienia"
 
-#: lib/ui/stdmenus.ui:402
+#: lib/ui/stdmenus.ui:393
 #, fuzzy
 msgid "Go to Bookmark 1|1"
 msgstr "Id¼ do zak³adki 1|1"
 
-#: lib/ui/stdmenus.ui:403
+#: lib/ui/stdmenus.ui:394
 #, fuzzy
 msgid "Go to Bookmark 2|2"
 msgstr "Id¼ do zak³adki 2|2"
 
-#: lib/ui/stdmenus.ui:404
+#: lib/ui/stdmenus.ui:395
 #, fuzzy
 msgid "Go to Bookmark 3|3"
 msgstr "Id¼ do zak³adki 3|3"
 
-#: lib/ui/stdmenus.ui:413
+#: lib/ui/stdmenus.ui:404
 #, fuzzy
 msgid "Thesaurus...|T"
 msgstr "Tabela|T"
 
-#: lib/ui/stdmenus.ui:415
+#: lib/ui/stdmenus.ui:406
 #, fuzzy
 msgid "TeX Information...|I"
 msgstr "Konfiguracja LaTeX-a|X"
 
-#: lib/ui/stdmenus.ui:437
+#: lib/ui/stdmenus.ui:428
 #, fuzzy
 msgid "About LyX...|X"
 msgstr "O LyX-ie|X"
@@ -8874,7 +8849,7 @@ msgstr "Wybierz dokument LyX-a do wstawienia"
 #: src/frontends/controllers/ControlBibtex.C:59
 #: src/frontends/controllers/ControlExternal.C:160
 #: src/frontends/controllers/ControlGraphics.C:94
-#: src/frontends/controllers/ControlInclude.C:89 src/lyx_cb.C:130
+#: src/frontends/controllers/ControlInclude.C:90 src/lyx_cb.C:130
 #: src/lyxfunc.C:1550 src/lyxfunc.C:1587 src/lyxfunc.C:1663
 msgid "Documents|#o#O"
 msgstr "Dokumenty|#o"
@@ -9916,11 +9891,11 @@ msgstr "Wybierz plik rysunku"
 msgid "Clipart|#C#c"
 msgstr "Rysunek|R"
 
-#: src/frontends/controllers/ControlInclude.C:76
+#: src/frontends/controllers/ControlInclude.C:77
 msgid "Select document to include"
 msgstr "Wybierz dokument do wstawienia"
 
-#: src/frontends/controllers/ControlInclude.C:83
+#: src/frontends/controllers/ControlInclude.C:84
 #, fuzzy
 msgid "LaTeX/LyX Documents (*.tex *.lyx)"
 msgstr "*.(tex|lyx)| Dokumenty LaTeX-a/LyX-a (*.tex *.lyx)"
@@ -9988,7 +9963,7 @@ msgstr ""
 "Program sprawdzania pisowni zakoñczy³ dzia³anie z kilku powodów.\n"
 "Byæ mo¿e jego proces zosta³ usuniêty."
 
-#: src/frontends/controllers/ControlSpellchecker.C:233
+#: src/frontends/controllers/ControlSpellchecker.C:234
 #, fuzzy
 msgid ""
 "The spell-checker has died for some reason.\n"
@@ -9997,23 +9972,23 @@ msgstr ""
 "Program sprawdzania pisowni zakoñczy³ dzia³anie z kilku powodów.\n"
 "Byæ mo¿e jego proces zosta³ usuniêty."
 
-#: src/frontends/controllers/ControlSpellchecker.C:238
+#: src/frontends/controllers/ControlSpellchecker.C:239
 #, fuzzy
 msgid "The spell-checker has failed"
 msgstr ""
 "Program sprawdzania pisowni zakoñczy³ dzia³anie z kilku powodów.\n"
 "Byæ mo¿e jego proces zosta³ usuniêty."
 
-#: src/frontends/controllers/ControlSpellchecker.C:252
+#: src/frontends/controllers/ControlSpellchecker.C:253
 #, fuzzy, c-format
 msgid "%1$s words checked."
 msgstr "Sprawdzono jedno s³owo."
 
-#: src/frontends/controllers/ControlSpellchecker.C:254
+#: src/frontends/controllers/ControlSpellchecker.C:255
 msgid "One word checked."
 msgstr "Sprawdzono jedno s³owo."
 
-#: src/frontends/controllers/ControlSpellchecker.C:257
+#: src/frontends/controllers/ControlSpellchecker.C:258
 #, fuzzy
 msgid "Spell-checking is complete"
 msgstr "Sprawdzanie pisowni zakoñczone!"
@@ -10185,54 +10160,54 @@ msgstr "Nie mo¿na zaimportowaæ pliku"
 msgid "Couldn't create pixmap from file: %s"
 msgstr "Nie mo¿na wyeksportowaæ pliku"
 
-#: src/frontends/gtk/Dialogs.C:254 src/frontends/xforms/Dialogs.C:251
+#: src/frontends/gtk/Dialogs.C:255 src/frontends/xforms/Dialogs.C:251
 #, fuzzy
 msgid "Label"
 msgstr "&Etykieta"
 
-#: src/frontends/gtk/Dialogs.C:269 src/frontends/xforms/Dialogs.C:265
+#: src/frontends/gtk/Dialogs.C:270 src/frontends/xforms/Dialogs.C:265
 msgid "Maths Decorations & Accents"
 msgstr "Dekoracje i akcenty matematyczne"
 
-#: src/frontends/gtk/Dialogs.C:296 src/frontends/xforms/Dialogs.C:292
+#: src/frontends/gtk/Dialogs.C:297 src/frontends/xforms/Dialogs.C:292
 msgid "Binary Ops"
 msgstr "Operatory binarne"
 
-#: src/frontends/gtk/Dialogs.C:307 src/frontends/xforms/Dialogs.C:303
+#: src/frontends/gtk/Dialogs.C:308 src/frontends/xforms/Dialogs.C:303
 #, fuzzy
 msgid "Binary Relations"
 msgstr "Relacje binarne"
 
-#: src/frontends/gtk/Dialogs.C:359 src/frontends/xforms/Dialogs.C:355
+#: src/frontends/gtk/Dialogs.C:360 src/frontends/xforms/Dialogs.C:355
 msgid "Big Operators"
 msgstr "Du¿e operatory"
 
-#: src/frontends/gtk/Dialogs.C:370 src/frontends/xforms/Dialogs.C:366
+#: src/frontends/gtk/Dialogs.C:371 src/frontends/xforms/Dialogs.C:366
 msgid "AMS Misc"
 msgstr "Inne AMS"
 
-#: src/frontends/gtk/Dialogs.C:383 src/frontends/xforms/Dialogs.C:379
+#: src/frontends/gtk/Dialogs.C:384 src/frontends/xforms/Dialogs.C:379
 msgid "AMS Arrows"
 msgstr "Strza³ki AMS"
 
-#: src/frontends/gtk/Dialogs.C:396 src/frontends/xforms/Dialogs.C:392
+#: src/frontends/gtk/Dialogs.C:397 src/frontends/xforms/Dialogs.C:392
 msgid "AMS Relations"
 msgstr "Relacje AMS"
 
-#: src/frontends/gtk/Dialogs.C:407 src/frontends/xforms/Dialogs.C:403
+#: src/frontends/gtk/Dialogs.C:408 src/frontends/xforms/Dialogs.C:403
 msgid "AMS Negated Rel"
 msgstr "Relacje negacji AMS"
 
-#: src/frontends/gtk/Dialogs.C:418 src/frontends/xforms/Dialogs.C:414
+#: src/frontends/gtk/Dialogs.C:419 src/frontends/xforms/Dialogs.C:414
 msgid "AMS Operators"
 msgstr "Operatory AMS"
 
-#: src/frontends/gtk/GMathDelim.C:88 src/frontends/xforms/FormMathsDelim.C:59
+#: src/frontends/gtk/GMathDelim.C:96 src/frontends/xforms/FormMathsDelim.C:59
 #, fuzzy
 msgid "Math Delimiters"
 msgstr "Ograniczniki matematyczne"
 
-#: src/frontends/gtk/GMathPanel.C:97 src/frontends/xforms/FormMathsPanel.C:41
+#: src/frontends/gtk/GMathPanel.C:100 src/frontends/xforms/FormMathsPanel.C:41
 #, fuzzy
 msgid "Math Panel"
 msgstr "Panel symboli matematycznych"
@@ -12354,50 +12329,50 @@ msgstr "pt"
 msgid "Opened Optional Argument Inset"
 msgstr "Otwarta wstawka"
 
-#: src/insets/insetref.C:138 src/mathed/ref_inset.C:155
+#: src/insets/insetref.C:141 src/mathed/ref_inset.C:155
 msgid "Ref: "
 msgstr ""
 
-#: src/insets/insetref.C:139 src/mathed/ref_inset.C:156
+#: src/insets/insetref.C:142 src/mathed/ref_inset.C:156
 #, fuzzy
 msgid "Equation"
 msgstr "Podpis"
 
-#: src/insets/insetref.C:139 src/mathed/ref_inset.C:156
+#: src/insets/insetref.C:142 src/mathed/ref_inset.C:156
 msgid "EqRef: "
 msgstr ""
 
-#: src/insets/insetref.C:140 src/mathed/ref_inset.C:157
+#: src/insets/insetref.C:143 src/mathed/ref_inset.C:157
 msgid "Page Number"
 msgstr "Numer strony"
 
-#: src/insets/insetref.C:140 src/mathed/ref_inset.C:157
+#: src/insets/insetref.C:143 src/mathed/ref_inset.C:157
 msgid "Page: "
 msgstr "Strona: "
 
-#: src/insets/insetref.C:141 src/mathed/ref_inset.C:158
+#: src/insets/insetref.C:144 src/mathed/ref_inset.C:158
 #, fuzzy
 msgid "Textual Page Number"
 msgstr "Numer strony"
 
-#: src/insets/insetref.C:141 src/mathed/ref_inset.C:158
+#: src/insets/insetref.C:144 src/mathed/ref_inset.C:158
 #, fuzzy
 msgid "TextPage: "
 msgstr "Strona: "
 
-#: src/insets/insetref.C:142 src/mathed/ref_inset.C:159
+#: src/insets/insetref.C:145 src/mathed/ref_inset.C:159
 msgid "Standard+Textual Page"
 msgstr ""
 
-#: src/insets/insetref.C:142 src/mathed/ref_inset.C:159
+#: src/insets/insetref.C:145 src/mathed/ref_inset.C:159
 msgid "Ref+Text: "
 msgstr ""
 
-#: src/insets/insetref.C:143 src/mathed/ref_inset.C:160
+#: src/insets/insetref.C:146 src/mathed/ref_inset.C:160
 msgid "PrettyRef"
 msgstr ""
 
-#: src/insets/insetref.C:143 src/mathed/ref_inset.C:160
+#: src/insets/insetref.C:146 src/mathed/ref_inset.C:160
 msgid "PrettyRef: "
 msgstr ""
 
@@ -12835,25 +12810,25 @@ msgstr "Brak typu pliku (np latex, ps...) po opcji --import"
 msgid "Missing filename for --import"
 msgstr "Brak nazwy pliku po opcji --import"
 
-#: src/lyxfind.C:141
+#: src/lyxfind.C:142
 #, fuzzy
 msgid "Search error"
 msgstr "Szukaj"
 
-#: src/lyxfind.C:141
+#: src/lyxfind.C:142
 #, fuzzy
 msgid "Search string is empty"
 msgstr "Wynikowy plik jest pusty"
 
-#: src/lyxfind.C:293 src/lyxfind.C:323
+#: src/lyxfind.C:294 src/lyxfind.C:324
 msgid "String not found!"
 msgstr "Nie znaleziono tego ci±gu znaków!"
 
-#: src/lyxfind.C:326
+#: src/lyxfind.C:327
 msgid "String has been replaced."
 msgstr "Ci±g znaków zosta³ zast±piony."
 
-#: src/lyxfind.C:329
+#: src/lyxfind.C:330
 msgid " strings have been replaced."
 msgstr " zast±piono."
 
@@ -13790,6 +13765,10 @@ msgstr "Kodowanie"
 #: src/text3.C:1537
 msgid "Paragraph layout set"
 msgstr "Styl akapitu ustawiony"
+
+#, fuzzy
+#~ msgid "Double Box|D"
+#~ msgstr "Podwójny|#d"
 
 #, fuzzy
 #~ msgid ""

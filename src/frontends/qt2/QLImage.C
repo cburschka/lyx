@@ -20,16 +20,19 @@
 #include "graphics/GraphicsParams.h"
 
 #include "support/lstrings.h"       // lowercase
-#include "support/lyxfunctional.h"  // compare_memfun
 
 #include <qimage.h>
 #include <qpainter.h>
 
+#include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>
 
 using lyx::support::lowercase;
 
+using boost::bind;
+
 using std::endl;
+using std::equal_to;
 using std::find_if;
 using std::string;
 
@@ -75,7 +78,10 @@ Image::FormatList QLImage::loadableFormats()
 			ext = "jpg";
 
 		Formats::const_iterator fit =
-			find_if(begin, end, lyx::compare_memfun(&Format::extension, ext));
+			find_if(begin, end,
+				bind(equal_to<string>(),
+				     bind(&Format::extension, _1),
+				     ext));
 		if (fit != end)
 			fmts.push_back(fit->name());
 	}

@@ -1,5 +1,10 @@
 2004-11-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* bufferlist.C (exists): use bind and equal_to instead of
+	compare_memfun 
+	(getBuffer): ditto
+	* lyxtextclasslist.C (NumberOfClass): ditto
+
 	* cursor.C (insert): use for_each instead of explicit for loop
 
 	* bufferlist.C (getFileNames): use std::transform and

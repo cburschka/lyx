@@ -22,56 +22,6 @@
 
 namespace lyx {
 
-template <class R, class C, class A>
-class compare_memfun_t {
-public:
-	compare_memfun_t(R(C::*p)(), A const & a)
-		: pmf(p), arg(a) {}
-	bool operator()(C * c) {
-		return (c->*pmf)() == arg;
-	}
-	bool operator()(C & c) {
-		return (c.*pmf)() == arg;
-	}
-private:
-	R(C::*pmf)();
-	A const & arg;
-};
-
-
-template <class R, class C, class A>
-class const_compare_memfun_t {
-public:
-	const_compare_memfun_t(R(C::*p)() const, A const & a)
-		: pmf(p), arg(a) {}
-	bool operator()(C const * c) {
-		return (c->*pmf)() == arg;
-	}
-	bool operator()(C const & c) {
-		return (c.*pmf)() == arg;
-	}
-private:
-	R(C::*pmf)() const;
-	A const & arg;
-};
-
-
-template <class R, class C, class A>
-compare_memfun_t<R, C, A>
-compare_memfun(R(C::*p)(), A const & a)
-{
-	return compare_memfun_t<R, C, A>(p, a);
-}
-
-
-template <class R, class C, class A>
-const_compare_memfun_t<R, C, A>
-compare_memfun(R(C::*p)() const, A const & a)
-{
-	return const_compare_memfun_t<R, C, A>(p, a);
-}
-
-
 // Functors used in the template.
 
 ///

@@ -16,10 +16,10 @@
 
 #include "forkedcontr.h"
 #include "forkedcall.h"
-#include "lyxfunctional.h"
 
 #include "debug.h"
 
+#include <boost/bind.hpp>
 #include <boost/iterator/indirect_iterator.hpp>
 
 #include <cerrno>
@@ -27,7 +27,10 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
+using boost::bind;
+
 using std::endl;
+using std::equal_to;
 using std::find_if;
 
 using std::string;
@@ -229,8 +232,9 @@ ForkedcallsController::iterator ForkedcallsController::find_pid(pid_t pid)
 	iterator begin = boost::make_indirect_iterator(forkedCalls.begin());
 	iterator end   = boost::make_indirect_iterator(forkedCalls.end());
 	iterator it = find_if(begin, end,
-			      lyx::compare_memfun(&Forkedcall::pid, pid));
-
+			      bind(equal_to<pid_t>(),
+				   bind(&Forkedcall::pid, _1),
+				   pid));
 	return it.base();
 }
 

@@ -1,5 +1,8 @@
 2004-11-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* QLImage.C (loadableFormats): use bind, equal_to instead of
+	compare_memfun 
+
 	* lyx_gui.C (start): use for_each instead of explict for loop
 
 2004-10-26  Angus Leeming  <leeming@lyx.org>

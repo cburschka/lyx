@@ -16,19 +16,23 @@
 #include "debug.h"
 #include "lyxlex.h"
 
-#include "support/lyxfunctional.h"
 #include "support/filetools.h"
+
+#include <boost/bind.hpp>
 
 using lyx::textclass_type;
 
 using lyx::support::LibFileSearch;
 using lyx::support::MakeDisplayPath;
 
+using boost::bind;
+
 #ifndef CXX_GLOBAL_CSTD
 using std::exit;
 #endif
 
 using std::endl;
+using std::equal_to;
 using std::find_if;
 using std::make_pair;
 using std::sort;
@@ -42,7 +46,10 @@ LyXTextClassList::NumberOfClass(string const & textclass) const
 {
 	ClassList::const_iterator cit =
 		find_if(classlist_.begin(), classlist_.end(),
-			lyx::compare_memfun(&LyXTextClass::name, textclass));
+			bind(equal_to<string>(),
+			     bind(&LyXTextClass::name, _1),
+			     textclass));
+
 	return cit != classlist_.end() ?
 		make_pair(true, textclass_type(cit - classlist_.begin())) :
 		make_pair(false, textclass_type(0));

@@ -20,7 +20,6 @@
 #include "graphics/GraphicsParams.h"
 
 #include "support/lstrings.h"
-#include "support/lyxfunctional.h"  // compare_memfun
 #include "support/lyxlib.h"
 
 #include "lyx_forms.h"
@@ -33,6 +32,7 @@
 # endif
 #endif
 
+#include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>
 
 using lyx::frontend::getRGBColor;
@@ -41,6 +41,9 @@ using lyx::support::float_equal;
 using lyx::support::prefixIs;
 using lyx::support::rtrim;
 
+using boost::bind;
+
+using std::equal_to;
 using std::find_if;
 using std::string;
 
@@ -104,7 +107,9 @@ Image::FormatList xformsImage::loadableFormats()
 
 		Formats::const_iterator it =
 			find_if(begin, end,
-				lyx::compare_memfun(&Format::extension, ext));
+				bind(equal_to<string>(),
+				     bind(&Format::extension, _1),
+				     ext));
 		if (it != end)
 			fmts.push_back(it->name());
 	}
