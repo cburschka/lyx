@@ -68,7 +68,7 @@ public:
 
 private:
 	/// get current lyxrc
-	virtual void update();
+	virtual void setParams();
  
 	/// apply current lyxrc
 	virtual void apply();

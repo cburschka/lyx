@@ -38,10 +38,9 @@ ControlPrefs::ControlPrefs(LyXView & lv, Dialogs & d)
 {}
 
 
-void ControlPrefs::update()
+void ControlPrefs::setParams()
 {
 	rc_ = lyxrc;
-	view().update();
 }
 
 

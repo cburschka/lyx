@@ -1,5 +1,10 @@
 2002-11-15  John Levon  <levon@movementarian.org>
 
+	* ControlPrefs.h:
+	* ControlPrefs.C: use setParams()
+ 
+2002-11-15  John Levon  <levon@movementarian.org>
+
 	* ControlButtons.h: make OKButton() virtual for prefs
 
 	* ControlPrefs.h:
