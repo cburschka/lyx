@@ -225,10 +225,6 @@ ScopeIterator_ ScopeList::erase(Iterator pos)
    return tmp;
   }
 
-ScopeIterator_::ScopeIterator_(const ScopeIterator_ & n)
-	: node_(n.node_) 
-{}
-
 void ScopeList::swap_elements(Iterator p1,Iterator p2)
   {
    NodeType *loc1=p1.node();

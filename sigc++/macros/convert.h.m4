@@ -98,14 +98,14 @@ struct [AdaptorConvertSlot]NUM($2)[_]NUM($3): public AdaptorSlot_
    typedef __SLOT__($1,[$2]) SlotType;
    typedef __SLOT__(R2,[$3]) InSlotType;
    typedef typename InSlotType::Callback Callback;
-   typedef RType (*Func)  (Callback*,ARG_TYPE($2));
-   typedef $1    (*InFunc)(Callback*,ARG_TYPE($2));
+   typedef RType (*Func)  (LIST(Callback*,1,ARG_TYPE($2),[$2]));
+   typedef $1    (*InFunc)(LIST(Callback*,1,ARG_TYPE($2),[$2]));
    typedef CallDataObj3<typename SlotType::Func,Callback,Func> CallData;
 
    static RType callback(LIST(void* d,1,ARG_BOTH($2),[$2]))
      {
       CallData* data=(CallData*)d;
-      ifelse($1,void,,return) (data->func)(data->obj,ARG_NAME($2));
+      ifelse($1,void,,return) (data->func)(LIST(data->obj,1,ARG_NAME($2),[$2]));
      }
 
    static SlotData* create(SlotData *s,InFunc func)

@@ -77,7 +77,7 @@ define([BASIC_SIGNAL],
 ****************************************************************/
 LINE(]__line__[)dnl
 
-template <LIST(class R,1,ARG_CLASS($1),[$1],[typename Marsh=class Marshal<R> ],1)>
+template <LIST(class R,1,ARG_CLASS($1),[$1],[typename Marsh=Marshal<R> ],1)>
   class [Signal]NUM($1):public Signal_
   {
    public:

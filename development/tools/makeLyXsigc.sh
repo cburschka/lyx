@@ -157,6 +157,12 @@ echo "Creating custom sigc++/configure.in"
 #
 # Move sigc++config.h out of the now removed config/.
 #
+#    -e 's/--dis\(able-threads\)/--en\1/' \
+#    -e 's;dis\(ables.*threading\);en\1;' \
+#    -e 's;\(^enable.*threads=\"\)yes;\1no;' \
+#
+# Don't use threads.
+#
 #    -e '/.*\.spec.*/d' \
 #    -e '\%.*sigc++/Makefile.*%d' \
 #    -e '\%.*config/Makefile.*%d'
@@ -231,6 +237,9 @@ done\
 LYX_FIX_MAKEFILE_IN%' \
     -e 's%\(AUX_DIR(\)scripts%\1../config%' \
     -e 's%config/\(sigc++config\.h\)%\1%' \
+    -e 's/--dis\(able-threads\)/--en\1/' \
+    -e 's;dis\(ables.*threading\);en\1;' \
+    -e 's;\(^enable.*threads=\"\)yes;\1no;' \
     -e '/.*\.spec.*/d' \
     -e '\%.*sigc++/Makefile.*%d' \
     -e '\%.*config/Makefile.*%d' \
@@ -303,6 +312,12 @@ echo "Modifying sigc++/Makefile.am"
 #
 # We don't want the extra bits that libsigc++ does.
 #
+#    -e 's/\(libsigc_la_SOURCES=\)\(.*\)/\1 $(BUILT_SOURCES)\2/' \
+#    -e '/%.h:/i\
+#Makefile: $(BUILT_SOURCES)\
+#'
+# Make sure the built sources are built.
+#
 ( cd $package/sigc++;
   sed < Makefile.am > Makefile.tmp \
     -e 's%\(SUBDIRS =\)\(.*\)config\(.*\)%\1\2\3\
@@ -318,7 +333,11 @@ ETAGS_ARGS = --lang=c++%' \
     -e 's/\(LTLIB\)/noinst_\1/' \
     -e '/EXTRA_DIST.*/d' \
     -e 's/-version-info.*ION)//' \
-    -e 's/-release.*EASE)//';
+    -e 's/-release.*EASE)//' \
+    -e 's/\(libsigc_la_SOURCES=\)\(.*\)/\1 $(BUILT_SOURCES)\2/' \
+    -e '/%.h:/i\
+Makefile: $(BUILT_SOURCES)\
+';
   rm -f Makefile.am ;
   mv Makefile.tmp Makefile.am )
 
