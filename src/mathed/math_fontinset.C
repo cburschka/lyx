@@ -72,6 +72,7 @@ string MathFontInset::name() const
 
 void MathFontInset::validate(LaTeXFeatures & features) const
 {
+	MathNestInset::validate(features);
 	// Make sure amssymb is put in preamble if Blackboard Bold or
 	// Fraktur used:
 	if (key_->name == "mathfrak" || key_->name == "mathbb")
