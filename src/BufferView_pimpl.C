@@ -427,7 +427,7 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 		selendpar = bv_->text->ownerParagraphs().end();
 	}
 
-#warning doesn't help much
+#warning does not help much
 	bv_->text->redoParagraphs(bv_->text->ownerParagraphs().begin(),
 		bv_->text->ownerParagraphs().end());
 
