@@ -87,26 +87,35 @@
 #define S_ISNWK(m) (((m) & S_IFMT) == S_IFNWK)
 #endif
 
-// Since major is a function on SVR4, we can't use `ifndef major'.
-// might want to put MAJOR_IN_MKDEV for SYSV
-#ifdef MAJOR_IN_MKDEV
-#include <sys/mkdev.h>
-#define HAVE_MAJOR
-#endif
-#ifdef MAJOR_IN_SYSMACROS
-#include <sys/sysmacros.h>
-#define HAVE_MAJOR
-#endif
-#ifdef major
-#define HAVE_MAJOR
-#endif
 
-#ifndef HAVE_MAJOR
-#define major(dev)  (((dev) >> 8) & 0xff)
-#define minor(dev)  ((dev) & 0xff)
-#define makedev(maj, min)  (((maj) << 8) | (min))
+namespace {
+
+/// builds 'rwx' string describing file access rights
+void flagRWX(mode_t i, char * str)
+{
+	str[0] = (i & S_IRUSR) ? 'r' : '-';
+	str[1] = (i & S_IWUSR) ? 'w' : '-';
+	str[2] = (i & S_IXUSR) ? 'x' : '-';
+}
+
+/// updates mode string to match suid/sgid/sticky bits
+void setSticky(mode_t i, char * str)
+{
+#ifdef S_ISUID
+	if (i & S_ISUID) 
+		str[3] = (str[3] == 'x') ? 's' : 'S';
 #endif
-#undef HAVE_MAJOR
+#ifdef S_ISGID
+	if (i & S_ISGID)
+		str[6] = (str[6] == 'x') ? 's' : 'S';
+#endif
+#ifdef S_ISVTX
+	if (i & S_ISVTX) 
+		str[9] = (str[9] == 'x') ? 's' : 'S';
+#endif
+}
+
+} // namespace anon
 
 
 FileInfo::FileInfo()
@@ -116,7 +125,7 @@ FileInfo::FileInfo()
 
 
 FileInfo::FileInfo(string const & path, bool link)
-	: fname(path)
+	: fname_(path)
 {
 	init();
 	dostat(link);
@@ -126,48 +135,47 @@ FileInfo::FileInfo(string const & path, bool link)
 FileInfo::FileInfo(int fildes)
 {
 	init();
-	status = fstat(fildes, &buf);
-	if (status) err = errno;
+	status_ = fstat(fildes, &buf_);
+	if (status_)
+		err_ = errno;
 }
 
 
 void FileInfo::init()
 {
-	status = 0;
-	err = NoErr;
+	status_ = 0;
+	err_ = NoErr;
 }
 
 
 void FileInfo::dostat(bool link)
 {
-	if (link) {
-		status = ::lstat(fname.c_str(), &buf);
-	} else {
-		status = ::stat(fname.c_str(), &buf);
-	}
-	if (status) err = errno;
+	if (link)
+		status_ = ::lstat(fname_.c_str(), &buf_);
+	else
+		status_ = ::stat(fname_.c_str(), &buf_);
+	if (status_)
+		err_ = errno;
 }
 
 
 FileInfo & FileInfo::newFile(string const & path, bool link)
 {
-	fname = path;
-
-	status = 0;
-	err = NoErr;
-
+	fname_  = path;
+	status_ = 0;
+	err_    = NoErr;
 	dostat(link);
-
 	return *this;
 }
 
 
 FileInfo & FileInfo::newFile(int fildes)
 {
-	status = 0;
-	err = NoErr;
-	status = fstat(fildes, &buf);
-	if (status) err = errno;
+	status_ = 0;
+	err_    = NoErr;
+	status_ = fstat(fildes, &buf_);
+	if (status_)
+		err_ = errno;
 	return *this;
 }
 
@@ -176,19 +184,22 @@ FileInfo & FileInfo::newFile(int fildes)
 char const * FileInfo::typeIndicator() const
 {
 	lyx::Assert(isOK());
-
-	if (S_ISDIR(buf.st_mode)) return ("/");
+	if (S_ISDIR(buf_.st_mode))
+		return "/";
 #ifdef S_ISLNK
-	if (S_ISLNK(buf.st_mode)) return ("@");
+	if (S_ISLNK(buf_.st_mode))
+		return "@";
 #endif
 #ifdef S_ISFIFO
-	if (S_ISFIFO(buf.st_mode)) return ("|");
+	if (S_ISFIFO(buf_.st_mode))
+		return "|";
 #endif
 #ifdef S_ISSOCK
-	if (S_ISSOCK(buf.st_mode)) return ("=");
+	if (S_ISSOCK(buf_.st_mode))
+		return "=";
 #endif
-	if (S_ISREG(buf.st_mode) && (buf.st_mode & (S_IEXEC | S_IXGRP | S_IXOTH)))
-		return ("*");
+	if (S_ISREG(buf_.st_mode) && (buf_.st_mode & (S_IEXEC | S_IXGRP | S_IXOTH)))
+		return "*";
 	return "";
 }
 
@@ -196,20 +207,20 @@ char const * FileInfo::typeIndicator() const
 mode_t FileInfo::getMode() const
 {
 	lyx::Assert(isOK());
-
-	return buf.st_mode;
+	return buf_.st_mode;
 }
 
 
 // should not be in FileInfo
-void FileInfo::modeString(char * szString) const
+void FileInfo::modeString(char * str) const
 {
-	szString[0] = typeLetter();
-	flagRWX((buf.st_mode & 0700) << 0, &szString[1]);
-	flagRWX((buf.st_mode & 0070) << 3, &szString[4]);
-	flagRWX((buf.st_mode & 0007) << 6, &szString[7]);
-	setSticky(szString);
-	szString[10] = 0;
+	str[0] = typeLetter();
+	flagRWX((buf_.st_mode & 0700) << 0, &str[1]);
+	flagRWX((buf_.st_mode & 0070) << 3, &str[4]);
+	flagRWX((buf_.st_mode & 0007) << 6, &str[7]);
+	lyx::Assert(isOK());
+	setSticky(buf_.st_mode, str);
+	str[10] = 0;
 }
 
 
@@ -219,168 +230,131 @@ char FileInfo::typeLetter() const
 	lyx::Assert(isOK());
 
 #ifdef S_ISBLK
-	if (S_ISBLK(buf.st_mode)) return 'b';
+	if (S_ISBLK(buf_.st_mode)) return 'b';
 #endif
-	if (S_ISCHR(buf.st_mode)) return 'c';
-	if (S_ISDIR(buf.st_mode)) return 'd';
-	if (S_ISREG(buf.st_mode)) return '-';
+	if (S_ISCHR(buf_.st_mode)) return 'c';
+	if (S_ISDIR(buf_.st_mode)) return 'd';
+	if (S_ISREG(buf_.st_mode)) return '-';
 #ifdef S_ISFIFO
-	if (S_ISFIFO(buf.st_mode)) return 'p';
+	if (S_ISFIFO(buf_.st_mode)) return 'p';
 #endif
 #ifdef S_ISLNK
-	if (S_ISLNK(buf.st_mode)) return 'l';
+	if (S_ISLNK(buf_.st_mode)) return 'l';
 #endif
 #ifdef S_ISSOCK
-	if (S_ISSOCK(buf.st_mode)) return 's';
+	if (S_ISSOCK(buf_.st_mode)) return 's';
 #endif
 #ifdef S_ISMPC
-	if (S_ISMPC(buf.st_mode)) return 'm';
+	if (S_ISMPC(buf_.st_mode)) return 'm';
 #endif
 #ifdef S_ISNWK
-	if (S_ISNWK(buf.st_mode)) return 'n';
+	if (S_ISNWK(buf_.st_mode)) return 'n';
 #endif
 	return '?';
 }
 
 
-// should not be in FileInfo
-void FileInfo::flagRWX(mode_t i, char * szString) const
-{
-	szString[0] = (i & S_IRUSR) ? 'r' : '-';
-	szString[1] = (i & S_IWUSR) ? 'w' : '-';
-	szString[2] = (i & S_IXUSR) ? 'x' : '-';
-}
-
-
-// should not be in FileInfo
-void FileInfo::setSticky(char * szString) const
-{
-	lyx::Assert(isOK());
-
-#ifdef S_ISUID
-	if (buf.st_mode & S_ISUID) {
-		if (szString[3] != 'x') szString[3] = 'S';
-		else szString[3] = 's';
-	}
-#endif
-#ifdef S_ISGID
-	if (buf.st_mode & S_ISGID) {
-		if (szString[6] != 'x') szString[6] = 'S';
-		else szString[6] = 's';
-	}
-#endif
-#ifdef S_ISVTX
-	if (buf.st_mode & S_ISVTX) {
-		if (szString[9] != 'x') szString[9] = 'T';
-		else szString[9] = 't';
-	}
-#endif
-}
-
 
 time_t FileInfo::getModificationTime() const
 {
 	lyx::Assert(isOK());
-	return buf.st_mtime;
+	return buf_.st_mtime;
 }
 
 
 time_t FileInfo::getAccessTime() const
 {
 	lyx::Assert(isOK());
-	return buf.st_atime;
+	return buf_.st_atime;
 }
 
 
 time_t FileInfo::getStatusChangeTime() const
 {
 	lyx::Assert(isOK());
-	return buf.st_ctime;
+	return buf_.st_ctime;
 }
 
 
 nlink_t FileInfo::getNumberOfLinks() const
 {
 	lyx::Assert(isOK());
-	return buf.st_nlink;
+	return buf_.st_nlink;
 }
 
 
 uid_t FileInfo::getUid() const
 {
 	lyx::Assert(isOK());
-	return buf.st_uid;
+	return buf_.st_uid;
 }
 
 
 gid_t FileInfo::getGid() const
 {
 	lyx::Assert(isOK());
-	return buf.st_gid;
+	return buf_.st_gid;
 }
 
 
 off_t FileInfo::getSize() const
 {
 	lyx::Assert(isOK());
-	return buf.st_size;
+	return buf_.st_size;
 }
 
 
 int FileInfo::getError() const
 {
-	return err;
+	return err_;
 }
 
 
 bool FileInfo::isOK() const
 {
-	// DEC cxx 6.0 chokes on this bizarre construct (compiler bug)
-	// return (status) ? false : true;
-	// So I replaced it with a simpler one (JMarc)
-	return status == 0;
+	return status_ == 0;
 }
 
 
 bool FileInfo::isLink() const
 {
 	lyx::Assert(isOK());
-	return S_ISLNK(buf.st_mode);
+	return S_ISLNK(buf_.st_mode);
 }
 
 
 bool FileInfo::isRegular() const
 {
 	lyx::Assert(isOK());
-	return S_ISREG(buf.st_mode);
+	return S_ISREG(buf_.st_mode);
 }
 
 
 bool FileInfo::isDir() const
 {
 	lyx::Assert(isOK());
-	return S_ISDIR(buf.st_mode);
+	return S_ISDIR(buf_.st_mode);
 }
 
 
 bool FileInfo::isChar() const
 {
 	lyx::Assert(isOK());
-	return S_ISCHR(buf.st_mode);
+	return S_ISCHR(buf_.st_mode);
 }
 
 
 bool FileInfo::isBlock() const
 {
 	lyx::Assert(isOK());
-	return S_ISBLK(buf.st_mode);
+	return S_ISBLK(buf_.st_mode);
 }
 
 
 bool FileInfo::isFifo() const
 {
 	lyx::Assert(isOK());
-	return S_ISFIFO(buf.st_mode);
+	return S_ISFIFO(buf_.st_mode);
 }
 
 
@@ -388,7 +362,7 @@ bool FileInfo::isSocket() const
 {
 	lyx::Assert(isOK());
 #ifdef S_ISSOCK
-	return S_ISSOCK(buf.st_mode);
+	return S_ISSOCK(buf_.st_mode);
 #else
 	return false;
 #endif
@@ -399,13 +373,10 @@ bool FileInfo::isSocket() const
 bool FileInfo::access(int p) const
 {
 	// if we don't have a filename we fail
-	if (fname.empty()) return false;
-
-	if (::access(fname.c_str(), p) == 0)
-		return true;
-	else {
-		// If we were really kind, we would also tell why
-		// the file access failed.
+	if (fname_.empty())
 		return false;
-	}
+
+	// If we were really kind, we would also tell why
+	// the file access failed.
+	return ::access(fname_.c_str(), p) == 0;
 }

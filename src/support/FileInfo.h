@@ -57,16 +57,10 @@ public:
 	mode_t getMode() const;
 
 	/// Constructs standard mode string (ls style)
-	void modeString(char * szString) const;
+	void modeString(char * str) const;
 
 	/// returns a letter describing a file type (ls style)
 	char typeLetter() const;
-
-	/// builds 'rwx' string describing file access rights
-	void flagRWX(mode_t i, char * szString) const;
-
-	/// updates mode string to match suid/sgid/sticky bits
-	void setSticky(char * szString) const;
 
 	///
 	time_t getModificationTime() const;
@@ -139,14 +133,15 @@ private:
 	void init();
 	///
 	void dostat(bool);
+
 	///
-	struct stat buf;
+	struct stat buf_;
 	///
-	int status;
+	int status_;
 	///
-	int err;
+	int err_;
 	///
-	string fname;
+	string fname_;
 };
 
 #endif
