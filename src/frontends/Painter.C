@@ -22,15 +22,14 @@ using std::max;
 using std::string;
 
 
-Painter & Painter::button(int x, int y, int w, int h)
+void Painter::button(int x, int y, int w, int h)
 {
 	fillRectangle(x, y, w, h, LColor::buttonbg);
 	buttonFrame(x, y, w, h);
-	return * this;
 }
 
 
-Painter & Painter::buttonFrame(int x, int y, int w, int h)
+void Painter::buttonFrame(int x, int y, int w, int h)
 {
 	//  Width of a side of the button
 	int const d = 2;
@@ -52,12 +51,10 @@ Painter & Painter::buttonFrame(int x, int y, int w, int h)
 	x1[2] = x + w; y1[2] = (y + h - d);
 	x1[3] = x + w; y1[3] = y;
 	fillPolygon(x1, y1, 4, LColor::right);
-
-	return *this;
 }
 
 
-Painter & Painter::rectText(int x, int baseline,
+void Painter::rectText(int x, int baseline,
 	string const & str,
 	LyXFont const & font,
 	LColor_color back,
@@ -79,11 +76,10 @@ Painter & Painter::rectText(int x, int baseline,
 	}
 
 	text(x + 3, baseline, str, font);
-	return *this;
 }
 
 
-Painter & Painter::buttonText(int x, int baseline,
+void Painter::buttonText(int x, int baseline,
 	string const & str,
 	LyXFont const & font)
 {
@@ -95,7 +91,6 @@ Painter & Painter::buttonText(int x, int baseline,
 
 	button(x, baseline - ascent, width, descent + ascent);
 	text(x + 4, baseline, str, font);
-	return *this;
 }
 
 

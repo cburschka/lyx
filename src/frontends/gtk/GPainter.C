@@ -86,7 +86,7 @@ void GPainter::setLineParam(Glib::RefPtr<Gdk::GC> gc,
 }
 
 
-Painter & GPainter::point(int x, int y, LColor_color c)
+void GPainter::point(int x, int y, LColor_color c)
 {
 	setForeground(owner_.getGC(), c);
 	owner_.getPixmap()->draw_point(owner_.getGC(), x, y);
@@ -94,7 +94,7 @@ Painter & GPainter::point(int x, int y, LColor_color c)
 }
 
 
-Painter & GPainter::line(int x1, int y1,
+void GPainter::line(int x1, int y1,
 	int x2, int y2,
 	LColor_color col,
 	line_style ls,
@@ -107,8 +107,7 @@ Painter & GPainter::line(int x1, int y1,
 }
 
 
-Painter & GPainter::lines(int const * xp, int const * yp,
-	int np,
+void GPainter::lines(int const * xp, int const * yp, int np,
 	LColor_color col,
 	line_style ls,
 	line_width lw)
@@ -126,8 +125,7 @@ Painter & GPainter::lines(int const * xp, int const * yp,
 }
 
 
-Painter & GPainter::rectangle(int x, int y,
-	int w, int h,
+void GPainter::rectangle(int x, int y, int w, int h,
 	LColor_color col,
 	line_style ls,
 	line_width lw)
@@ -139,8 +137,7 @@ Painter & GPainter::rectangle(int x, int y,
 }
 
 
-Painter & GPainter::fillRectangle(int x, int y,
-	int w, int h,
+void GPainter::fillRectangle(int x, int y, int w, int h,
 	LColor_color col)
 {
 	setForeground(owner_.getGC(), col);
@@ -149,7 +146,7 @@ Painter & GPainter::fillRectangle(int x, int y,
 }
 
 
-Painter & GPainter::fillPolygon(int const * xp, int const * yp,
+void GPainter::fillPolygon(int const * xp, int const * yp,
 	int np, LColor_color col)
 {
 	setForeground(owner_.getGC(), col);
@@ -164,8 +161,7 @@ Painter & GPainter::fillPolygon(int const * xp, int const * yp,
 }
 
 
-Painter & GPainter::arc(int x, int y,
-	unsigned int w, unsigned int h,
+void GPainter::arc(int x, int y, unsigned int w, unsigned int h,
 	int a1, int a2, LColor_color col)
 {
 	setForeground(owner_.getGC(), col);
@@ -175,8 +171,7 @@ Painter & GPainter::arc(int x, int y,
 }
 
 
-Painter & GPainter::image(int x, int y,
-	int w, int h,
+void GPainter::image(int x, int y, int w, int h,
 	lyx::graphics::Image const & i)
 {
 	lyx::graphics::xformsImage const & image =
@@ -189,8 +184,7 @@ Painter & GPainter::image(int x, int y,
 }
 
 
-Painter & GPainter::text(int x, int y,
-	std::string const & s, LyXFont const & f)
+void GPainter::text(int x, int y, std::string const & s, LyXFont const & f)
 {
 	size_t size = s.length() + 1;
 	wchar_t * wcs = (wchar_t *) alloca(size * sizeof(wchar_t));
@@ -199,8 +193,7 @@ Painter & GPainter::text(int x, int y,
 }
 
 
-Painter & GPainter::text(int x, int y,
-	char c, LyXFont const & f)
+void GPainter::text(int x, int y, char c, LyXFont const & f)
 {
 	char s[2] = { c, '\0' };
 	return text(x, y, s, 1, f);
@@ -222,8 +215,7 @@ int width(wchar_t const *s, size_t n, LyXFont const & f);
 }
 
 
-Painter & GPainter::text(int x, int y, wchar_t const * s, int ls,
-                      LyXFont const & f)
+void GPainter::text(int x, int y, wchar_t const * s, int ls, LyXFont const & f)
 {
 	XftFont * font = getXftFont(f);
 	XftColor * xftClr = owner_.getColorHandler().
@@ -258,9 +250,7 @@ Painter & GPainter::text(int x, int y, wchar_t const * s, int ls,
 }
 
 
-Painter & GPainter::text(int x, int y,
-	char const * s, size_t ls,
-	LyXFont const & f)
+void GPainter::text(int x, int y, char const * s, size_t ls, LyXFont const & f)
 {
 	boost::scoped_array<wchar_t> wcs(new wchar_t[ls + 1]);
 	size_t len;

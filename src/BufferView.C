@@ -379,22 +379,9 @@ void BufferView::setCursor(ParIterator const & par, lyx::pos_type pos)
 		par[i].inset().edit(cursor(), true);
 
 	cursor().setCursor(makeDocIterator(par, pos), false);
+	par.bottom().text()->redoParagraph(par.bottom().par());
 }
 
-
-/*
-if the fitCursor call refers to some point in never-explored-land, then we
-don't have y information in insets there, then we cannot even do an update
-to get it (because we need the y infomation for setting top_y first). So
-this is solved in putSelectionAt with:
-
-- setting top_y to the y of the outerPar (that has good info)
-- calling update
-- calling cursor().updatePos()
-- then call fitCursor()
-
-Ab.
-*/
 
 void BufferView::putSelectionAt(DocIterator const & cur,
 				int length, bool backwards)
@@ -403,15 +390,7 @@ void BufferView::putSelectionAt(DocIterator const & cur,
 
 	cursor().clearSelection();
 
-	LyXText & text = *cur[0].text();
 	setCursor(par, cur.pos());
-
-	// hack for the chicken and egg problem
-	top_y(text.getPar(par.outerPar()).y);
-
-	update();
-	//text.setCursor(cursor(), cur.par(), cur.pos());
-	cursor().updatePos();
 
 	if (length) {
 		if (backwards) {
@@ -422,9 +401,6 @@ void BufferView::putSelectionAt(DocIterator const & cur,
 		} else
 			cursor().setSelection(cursor(), length);
 	}
-
-	fitCursor();
-	update();
 }
 
 

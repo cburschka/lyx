@@ -51,15 +51,14 @@ int XPainter::paperHeight() const
 }
 
 
-Painter & XPainter::point(int x, int y, LColor_color c)
+void XPainter::point(int x, int y, LColor_color c)
 {
 	XDrawPoint(fl_get_display(), owner_.getPixmap(),
 		lyxColorHandler->getGCForeground(c), x, y);
-	return *this;
 }
 
 
-Painter & XPainter::line(int x1, int y1,
+void XPainter::line(int x1, int y1,
 	int x2, int y2,
 	LColor_color col,
 	line_style ls,
@@ -68,11 +67,10 @@ Painter & XPainter::line(int x1, int y1,
 	XDrawLine(fl_get_display(), owner_.getPixmap(),
 		lyxColorHandler->getGCLinepars(ls, lw, col),
 		x1, y1, x2, y2);
-	return *this;
 }
 
 
-Painter & XPainter::lines(int const * xp, int const * yp,
+void XPainter::lines(int const * xp, int const * yp,
 	int np,
 	LColor_color col,
 	line_style ls,
@@ -88,12 +86,10 @@ Painter & XPainter::lines(int const * xp, int const * yp,
 	XDrawLines(fl_get_display(), owner_.getPixmap(),
 		lyxColorHandler->getGCLinepars(ls, lw, col),
 		points.get(), np, CoordModeOrigin);
-
-	return *this;
 }
 
 
-Painter & XPainter::rectangle(int x, int y,
+void XPainter::rectangle(int x, int y,
 	int w, int h,
 	LColor_color col,
 	line_style ls,
@@ -102,21 +98,19 @@ Painter & XPainter::rectangle(int x, int y,
 	XDrawRectangle(fl_get_display(), owner_.getPixmap(),
 		lyxColorHandler->getGCLinepars(ls, lw, col),
 		x, y, w, h);
-	return *this;
 }
 
 
-Painter & XPainter::fillRectangle(int x, int y,
+void XPainter::fillRectangle(int x, int y,
 	int w, int h,
 	LColor_color col)
 {
 	XFillRectangle(fl_get_display(), owner_.getPixmap(),
 		lyxColorHandler->getGCForeground(col), x, y, w, h);
-	return *this;
 }
 
 
-Painter & XPainter::fillPolygon(int const * xp, int const * yp,
+void XPainter::fillPolygon(int const * xp, int const * yp,
 	int np, LColor_color col)
 {
 	boost::scoped_array<XPoint> points(new XPoint[np]);
@@ -129,23 +123,20 @@ Painter & XPainter::fillPolygon(int const * xp, int const * yp,
 	XFillPolygon(fl_get_display(), owner_.getPixmap(),
 		lyxColorHandler->getGCForeground(col), points.get(),
 		np, Nonconvex, CoordModeOrigin);
-
-	return *this;
 }
 
 
-Painter & XPainter::arc(int x, int y,
+void XPainter::arc(int x, int y,
 	unsigned int w, unsigned int h,
 	int a1, int a2, LColor_color col)
 {
 	XDrawArc(fl_get_display(), owner_.getPixmap(),
 		lyxColorHandler->getGCForeground(col),
 		x, y, w, h, a1, a2);
-	return *this;
 }
 
 
-Painter & XPainter::image(int x, int y,
+void XPainter::image(int x, int y,
 			  int w, int h,
 			  lyx::graphics::Image const & i)
 {
@@ -159,18 +150,17 @@ Painter & XPainter::image(int x, int y,
 	XCopyArea(fl_get_display(), image.getPixmap(), owner_.getPixmap(),
 		gc, 0, 0, w, h, x, y);
 	XFreeGC(fl_get_display(), gc);
-	return *this;
 }
 
 
-Painter & XPainter::text(int x, int y,
+void XPainter::text(int x, int y,
 	string const & s, LyXFont const & f)
 {
 	return text(x, y, s.data(), s.length(), f);
 }
 
 
-Painter & XPainter::text(int x, int y,
+void XPainter::text(int x, int y,
 	char c, LyXFont const & f)
 {
 	char s[2] = { c, '\0' };
@@ -178,7 +168,7 @@ Painter & XPainter::text(int x, int y,
 }
 
 
-Painter & XPainter::text(int x, int y,
+void XPainter::text(int x, int y,
 	char const * s, size_t ls,
 	LyXFont const & f)
 {
@@ -199,7 +189,7 @@ Painter & XPainter::text(int x, int y,
 			xs[i].byte2 = c & 0xff;
 		}
 		text(x, y, xs.get(), ls, font);
-		return *this;
+		return;
 	}
 
 	GC gc = lyxColorHandler->getGCForeground(f.realColor());
@@ -229,12 +219,10 @@ Painter & XPainter::text(int x, int y,
 	if (f.underbar() == LyXFont::ON) {
 		underline(f, x, y, font_metrics::width(s, ls, f));
 	}
-
-	return *this;
 }
 
 
-Painter & XPainter::text(int x, int y,
+void XPainter::text(int x, int y,
 	XChar2b const * s, size_t ls,
 	LyXFont const & f)
 {
@@ -271,6 +259,4 @@ Painter & XPainter::text(int x, int y,
 	if (f.underbar() == LyXFont::ON) {
 		underline(f, x, y, xfont_metrics::width(s, ls, f));
 	}
-
-	return *this;
 }

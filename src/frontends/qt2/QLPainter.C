@@ -86,26 +86,22 @@ QPainter & QLPainter::setPen(LColor_color c,
 }
 
 
-Painter & QLPainter::point(int x, int y, LColor_color c)
+void QLPainter::point(int x, int y, LColor_color c)
 {
 	setPen(c).drawPoint(x, y);
-	return *this;
 }
 
 
-Painter & QLPainter::line(int x1, int y1,
-	int x2, int y2,
+void QLPainter::line(int x1, int y1, int x2, int y2,
 	LColor_color col,
 	line_style ls,
 	line_width lw)
 {
 	setPen(col, ls, lw).drawLine(x1, y1, x2, y2);
-	return *this;
 }
 
 
-Painter & QLPainter::lines(int const * xp, int const * yp,
-	int np,
+void QLPainter::lines(int const * xp, int const * yp, int np,
 	LColor_color col,
 	line_style ls,
 	line_width lw)
@@ -121,38 +117,31 @@ Painter & QLPainter::lines(int const * xp, int const * yp,
 	}
 
 	setPen(col, ls, lw).drawPolyline(QPointArray(np, points.get()));
-
-	return *this;
 }
 
 
-Painter & QLPainter::rectangle(int x, int y,
-	int w, int h,
+void QLPainter::rectangle(int x, int y, int w, int h,
 	LColor_color col,
 	line_style ls,
 	line_width lw)
 {
 	setPen(col, ls, lw).drawRect(x, y, w, h);
-	return *this;
 }
 
 
-Painter & QLPainter::fillRectangle(int x, int y,
-	int w, int h,
-	LColor_color col)
+void QLPainter::fillRectangle(int x, int y, int w, int h, LColor_color col)
 {
 	qp_->fillRect(x, y, w, h, lcolorcache.get(col));
-	return *this;
 }
 
 
-Painter & QLPainter::fillPolygon(int const * xp, int const * yp,
+void QLPainter::fillPolygon(int const * xp, int const * yp,
 	int np, LColor_color col)
 {
 	// Must use new as np is not known at compile time.
 	boost::scoped_array<QCOORD> points(new QCOORD[np * 2]);
 
-	//if (1) return *this;
+	//if (1) return;
 
 	for (int i = 0, j = 0; i < np; ++i) {
 		points[j++] = xp[i];
@@ -163,39 +152,31 @@ Painter & QLPainter::fillPolygon(int const * xp, int const * yp,
 	qp_->setBrush(lcolorcache.get(col));
 	qp_->drawPolygon(QPointArray(np, points.get()));
 	qp_->setBrush(Qt::NoBrush);
-
-	return *this;
 }
 
 
-Painter & QLPainter::arc(int x, int y,
-	unsigned int w, unsigned int h,
+void QLPainter::arc(int x, int y, unsigned int w, unsigned int h,
 	int a1, int a2, LColor_color col)
 {
 	// LyX usings 1/64ths degree, Qt usings 1/16th
 	setPen(col).drawArc(x, y, w, h, a1 / 4, a2 / 4);
-	return *this;
 }
 
 
-Painter & QLPainter::image(int x, int y,
-	int w, int h,
+void QLPainter::image(int x, int y, int w, int h,
 	lyx::graphics::Image const & i)
 {
 	qp_->drawPixmap(x, y, static_cast<lyx::graphics::QLImage const &>(i).qpixmap(), 0, 0, w, h);
-	return *this;
 }
 
 
-Painter & QLPainter::text(int x, int y,
-	string const & s, LyXFont const & f)
+void QLPainter::text(int x, int y, string const & s, LyXFont const & f)
 {
 	return text(x, y, s.data(), s.length(), f);
 }
 
 
-Painter & QLPainter::text(int x, int y,
-	char c, LyXFont const & f)
+void QLPainter::text(int x, int y, char c, LyXFont const & f)
 {
 	char s[2] = { c, '\0' };
 	return text(x, y, s, 1, f);
@@ -230,8 +211,7 @@ void QLPainter::smallCapsText(int x, int y,
 }
 
 
-Painter & QLPainter::text(int x, int y,
-	char const * s, size_t ls,
+void QLPainter::text(int x, int y, char const * s, size_t ls,
 	LyXFont const & f)
 {
 	setPen(f.realColor());
@@ -269,6 +249,4 @@ Painter & QLPainter::text(int x, int y,
 	if (f.underbar() == LyXFont::ON) {
 		underline(f, x, y, font_metrics::width(s, ls, f));
 	}
-
-	return *this;
 }

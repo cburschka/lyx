@@ -44,6 +44,7 @@
 #include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "pariterator.h"
+#include "rowpainter.h"
 #include "undo.h"
 #include "vspace.h"
 
@@ -66,6 +67,7 @@
 #include "support/globbing.h"
 #include "support/path_defines.h"
 #include "support/tostr.h"
+#include "support/types.h"
 
 #include <boost/bind.hpp>
 
@@ -358,6 +360,12 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 
 bool BufferView::Pimpl::fitCursor()
 {
+	// to get the correct y cursor info
+	lyxerr << "BufferView::fitCursor" << std::endl;
+	lyx::par_type const pit = bv_->cursor().bottom().par();
+	bv_->text()->redoParagraph(pit);
+	refreshPar(*bv_, *bv_->text(), pit);
+
 	if (!screen().fitCursor(bv_))
 		return false;
 	updateScrollbar();
@@ -388,7 +396,6 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 
 	text->init(bv_);
 	update();
-	bv_->cursor().updatePos();
 	fitCursor();
 
 	switchKeyMap();
@@ -896,11 +903,11 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 	if (!res.dispatched())
 		res = cur.dispatch(cmd);
 
-	// Redraw if requested or necessary.
-	if (res.update())
-		update();
-	if (fitCursor())
-		update();
+	if (res.dispatched()) {
+		// Redraw if requested or necessary.
+		if (fitCursor() || res.update())
+			update();
+	}
 
 	// see workAreaKeyPress
 	cursor_timeout.restart();
@@ -1089,7 +1096,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 #endif
 		while (lyx::find::findNextChange(bv_))
 			bv_->getLyXText()->rejectChange(bv_->cursor());
-		update();
 		break;
 	}
 
@@ -1103,7 +1109,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 
 	case LFUN_MARK_OFF:
 		cur.clearSelection();
-		update();
 		cur.resetAnchor();
 		cur.message(N_("Mark off"));
 		break;
@@ -1111,7 +1116,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 	case LFUN_MARK_ON:
 		cur.clearSelection();
 		cur.mark() = true;
-		update();
 		cur.resetAnchor();
 		cur.message(N_("Mark on"));
 		break;
@@ -1126,7 +1130,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 			cur.message(N_("Mark set"));
 		}
 		cur.resetAnchor();
-		update();
 		break;
 
 	case LFUN_CENTER:

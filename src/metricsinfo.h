@@ -76,7 +76,7 @@ struct MetricsInfo {
 //
 struct PainterInfo {
 	///
-	explicit PainterInfo(BufferView * bv);
+	PainterInfo(BufferView * bv, Painter & pain);
 	///
 	void draw(int x, int y, char c);
 

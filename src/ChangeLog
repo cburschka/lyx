@@ -1,3 +1,31 @@
+
+2004-04-07  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* BufferView.C (setCursor): call redoParagraph (some insets could
+	have been opened) 
+	(putSelectionAt): remove the 'double update' trick
+
+	* BufferView_pimpl.C (fitCursor): call refreshPar
+	(workAreaDispatch): remove an uneeded update call
+	(dispatch): remove some manual update calls
+
+	* cursor.[Ch]: remove cached_y_, updatePos
+	(selHandle): set noUpdate when appropriate
+
+	* lyxfunc.C (dispatch): track if we need an update
+	
+	* metricsinfo.[Ch]: PainterInfo receive a Painter & on construction
+
+	* rowpainter.[Ch] (RowPainter): remove superfluous xo_ parameter
+	(paintSelection): cheap optimization, do not call cursorX when not
+	needed 
+	(paintPars): change signature
+	(refreshPar): add
+	(paintText): adjust
+	(paintTextInset): adjust
+
+	* text.C: adjust
+
 2004-04-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lengthcommon.C: compilation fix: remove explicit array size from

@@ -142,8 +142,6 @@ public:
 
 	/// access to normalized selection anchor
 	CursorSlice anchor() const;
-	/// cache the absolute coordinate from the top inset
-	void updatePos();
 	/// sets anchor to cursor position
 	void resetAnchor();
 	/// access to owning BufferView
@@ -180,8 +178,6 @@ public:
 	DispatchResult disp_;
 
 private:
-	///
-	int cached_y_;
 	/**
 	 * The target x position of the cursor. This is used for when
 	 * we have text like :

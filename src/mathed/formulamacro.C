@@ -144,7 +144,7 @@ void InsetFormulaMacro::draw(PainterInfo & p, int x, int y) const
 	LyXFont font = p.base.font;
 	font.setColor(LColor::math);
 
-	PainterInfo pi(p.base.bv);
+	PainterInfo pi(p.base.bv, p.pain);
 	pi.base.style = LM_ST_TEXT;
 	pi.base.font  = font;
 

@@ -35,5 +35,7 @@ libfrontends_la_SOURCES = \
 	key_state.h \
 	lyx_gui.h \
 	mouse_state.h \
+	nullpainter.C \
+	nullpainter.h \
 	screen.C \
 	screen.h

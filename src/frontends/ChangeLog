@@ -1,3 +1,13 @@
+
+2004-04-07  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* Makefile.am: adjust
+
+	* Painter.[Ch]: remove Painter & return value everywhere, make
+	virtual all remaining nonvirtual methods
+	
+	* nullpainter.[Ch]: add no-op painter
+
 2004-04-05  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.h: remove redundant header file. Clean up comments.

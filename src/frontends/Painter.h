@@ -74,7 +74,7 @@ public:
 	virtual int paperHeight() const = 0;
 
 	/// draw a line from point to point
-	virtual Painter & line(
+	virtual void line(
 		int x1, int y1,
 		int x2, int y2,
 		LColor_color,
@@ -87,7 +87,7 @@ public:
 	 * @param yp array of points' y co-ords
 	 * @param np size of the points array
 	 */
-	virtual Painter & lines(
+	virtual void lines(
 		int const * xp,
 		int const * yp,
 		int np,
@@ -96,7 +96,7 @@ public:
 		line_width = line_thin) = 0;
 
 	/// draw a rectangle
-	virtual Painter & rectangle(
+	virtual void rectangle(
 		int x, int y,
 		int w, int h,
 		LColor_color,
@@ -104,53 +104,53 @@ public:
 		line_width = line_thin) = 0;
 
 	/// draw a filled rectangle
-	virtual Painter & fillRectangle(
+	virtual void fillRectangle(
 		int x, int y,
 		int w, int h,
 		LColor_color) = 0;
 
 	/// draw a filled (irregular) polygon
-	virtual Painter & fillPolygon(
+	virtual void fillPolygon(
 		int const * xp,
 		int const * yp,
 		int np,
 		LColor_color) = 0;
 
 	/// draw an arc
-	virtual Painter & arc(
+	virtual void arc(
 		int x, int y,
 		unsigned int w, unsigned int h,
 		int a1, int a2,
 		LColor_color) = 0;
 
 	/// draw a pixel
-	virtual Painter & point(
+	virtual void point(
 		int x, int y,
 		LColor_color) = 0;
 
 	/// draw a filled rectangle with the shape of a 3D button
-	virtual Painter & button(int x, int y,
+	virtual void button(int x, int y,
 		int w, int h);
 
 	/// draw an image from the image cache
-	virtual Painter & image(int x, int y,
+	virtual void image(int x, int y,
 		int w, int h,
 		lyx::graphics::Image const & image) = 0;
 
 	/// draw a string at position x, y (y is the baseline)
-	virtual Painter & text(int x, int y,
+	virtual void text(int x, int y,
 		std::string const & str, LyXFont const & f) = 0;
 
 	/**
 	 * Draw a string at position x, y (y is the baseline)
 	 * This is just for fast drawing
 	 */
-	virtual Painter & text(int x, int y,
+	virtual void text(int x, int y,
 		char const * str, size_t l,
 		LyXFont const & f) = 0;
 
 	/// draw a char at position x, y (y is the baseline)
-	virtual Painter & text(int x, int y,
+	virtual void text(int x, int y,
 		char c, LyXFont const & f) = 0;
 
 	/**
@@ -159,24 +159,24 @@ public:
 	 * the given color. If frame is specified, a thin frame is drawn
 	 * around the text with the given color.
 	 */
-	Painter & rectText(int x, int baseline,
+	virtual void rectText(int x, int baseline,
 		std::string const & str,
 		LyXFont const & font,
 		LColor_color back,
 		LColor_color frame);
 
 	/// draw a string and enclose it inside a button frame
-	Painter & buttonText(int x,
+	virtual void buttonText(int x,
 		int baseline, std::string const & s,
 		LyXFont const & font);
 
 protected:
 	/// check the font, and if set, draw an underline
-	void underline(LyXFont const & f,
+	virtual void underline(LyXFont const & f,
 		int x, int y, int width);
 
 	/// draw a bevelled button border
-	Painter & buttonFrame(int x, int y, int w, int h);
+	virtual void buttonFrame(int x, int y, int w, int h);
 };
 
 #endif // PAINTER_H

@@ -32,6 +32,7 @@
 #include "vspace.h"
 
 #include "frontends/font_metrics.h"
+#include "frontends/nullpainter.h"
 #include "frontends/Painter.h"
 
 #include "insets/insettext.h"
@@ -57,8 +58,8 @@ namespace {
 class RowPainter {
 public:
 	/// initialise and run painter
-	RowPainter(BufferView const & bv, LyXText const & text,
-		par_type pit, RowList::iterator rit, int xo, int yo);
+	RowPainter(BufferView const & bv, Painter & pain, LyXText const & text,
+		par_type pit, RowList::iterator rit, int y);
 private:
 	// paint various parts
 	void paintBackground();
@@ -118,10 +119,11 @@ private:
 };
 
 
-RowPainter::RowPainter(BufferView const & bv, LyXText const & text,
-     par_type pit, RowList::iterator rit, int xo, int yo)
-	: bv_(bv), pain_(bv_.painter()), text_(text), pars_(text.paragraphs()),
-		rit_(rit), row_(*rit), pit_(pit), xo_(xo), yo_(yo), width_(text_.width())
+RowPainter::RowPainter(BufferView const & bv, Painter & pain,
+	LyXText const & text, par_type pit, RowList::iterator rit, int y)
+	: bv_(bv), pain_(pain), text_(text), pars_(text.paragraphs()),
+	  rit_(rit), row_(*rit), pit_(pit),
+	  xo_(text_.xo_), yo_(y), width_(text_.width())
 {
 	//lyxerr << "RowPainter: x: " << x_ << " xo: " << xo << " yo: " << yo
 	//	<< " pit->y: " << pit_->y
@@ -196,7 +198,7 @@ void RowPainter::paintInset(pos_type const pos)
 {
 	InsetBase const * inset = pars_[pit_].getInset(pos);
 	BOOST_ASSERT(inset);
-	PainterInfo pi(const_cast<BufferView *>(&bv_));
+	PainterInfo pi(const_cast<BufferView *>(&bv_), pain_);
 	pi.base.font = getFont(pos);
 	inset->drawSelection(pi, int(x_), yo_ + row_.baseline());
 	inset->draw(pi, int(x_), yo_ + row_.baseline());
@@ -396,8 +398,6 @@ void RowPainter::paintSelection()
 
 	// the current selection
 	LCursor const & cur = bv_.cursor();
-	int const startx = text_.cursorX(cur.selBegin());
-	int const endx = text_.cursorX(cur.selEnd());
 	int const starty = text_.cursorY(cur.selBegin());
 	int const endy = text_.cursorY(cur.selEnd());
 	par_type startpit = cur.selBegin().par();
@@ -414,14 +414,18 @@ void RowPainter::paintSelection()
 
 	if (text_.bidi.same_direction()) {
 		if (sel_on_one_row) {
+			int const startx = text_.cursorX(cur.selBegin());
+			int const endx = text_.cursorX(cur.selEnd());
 			int const x1 = is_rtl ? endx : startx;
 			int const x2 = is_rtl ? startx : endx;
 			pain_.fillRectangle(x1, yo_, x2 - x1, h, LColor::selection);
 		} else if (sel_starts_here) {
+			int const startx = text_.cursorX(cur.selBegin());
 			int const x1 = is_rtl ? int(xo_) : startx;
 			int const x2 = is_rtl ? startx : int(xo_) + width_;
 			pain_.fillRectangle(x1, yo_, x2 - x1, h, LColor::selection);
 		} else if (sel_ends_here) {
+			int const endx = text_.cursorX(cur.selEnd());
 			int const x1 = is_rtl ? endx : int(xo_);
 			int const x2 = is_rtl ? int(xo_) + width_ : endx;
 			pain_.fillRectangle(x1, yo_, x2 - x1, h, LColor::selection);
@@ -844,43 +848,53 @@ void RowPainter::paintText()
 }
 
 
-int paintPars(BufferView const & bv, LyXText const & text,
-	par_type pit, int xo, int yo, int y)
+int paintPars(BufferView const & bv, Painter & pain,
+	      LyXText const & text, par_type pit, par_type end)
 {
 	//lyxerr << "  paintRows: pit: " << &*pit << endl;
-	int const y2 = bv.painter().paperHeight();
-	y -= bv.top_y();
-
 	ParagraphList & pars = text.paragraphs();
-	for ( ; pit != par_type(pars.size()); ++pit) {
+
+	int y = pars[pit].y + text.yo_ - bv.top_y();
+	int const y2 = pain.paperHeight();
+
+	for (; pit != end; ++pit) {
 		RowList::iterator row = pars[pit].rows.begin();
 		RowList::iterator rend = pars[pit].rows.end();
 
 		for ( ; row != rend; ++row) {
-			RowPainter(bv, text, pit, row, xo, y + yo);
+			RowPainter(bv, pain, text, pit, row, y);
 			y += row->height();
+			if (y >= y2)
+				break;
 		}
-		if (yo + y >= y2)
-			break;
-	}
 
+	}
 	return y;
 }
+
 
 } // namespace anon
 
 
-int paintText(BufferView const & bv)
+void refreshPar(BufferView const & bv, LyXText const & text, par_type pit)
 {
-	par_type pit;
-	bv.text()->updateParPositions();
-	bv.text()->getRowNearY(bv.top_y(), pit);
-	//lyxerr << "top_y: " << bv.top_y() << " y: " << pit->y << endl;
-	return paintPars(bv, *bv.text(), pit, 0, 0, bv.text()->paragraphs()[pit].y);
+	
+	static NullPainter nop;
+	paintPars(bv, nop, text, pit, pit + 1);
 }
 
 
-void paintTextInset(LyXText const & text, PainterInfo & pi, int xo, int yo)
+int paintText(BufferView const & bv)
 {
-	paintPars(*pi.base.bv, text, 0, xo, yo, 0);
+	par_type pit, end;
+	getParsInRange(bv.text()->paragraphs(), bv.top_y(),
+		       bv.top_y() + bv.workHeight(), pit, end);
+	//lyxerr << "top_y: " << bv.top_y() << " y: " << pit->y << endl;
+	return paintPars(bv, bv.painter(), *bv.text(), pit, end);
+}
+
+
+void paintTextInset(LyXText const & text, PainterInfo & pi)
+{
+	paintPars(*pi.base.bv, pi.pain, text, 0, text.paragraphs().size());
 }

@@ -1863,7 +1863,7 @@ void LyXText::draw(PainterInfo & pi, int x, int y) const
 {
 	xo_ = x;
 	yo_ = y;
-	paintTextInset(*this, pi, x, y);
+	paintTextInset(*this, pi);
 }
 
 

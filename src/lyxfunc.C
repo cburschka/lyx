@@ -586,6 +586,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 	dispatch_buffer.erase();
 	selection_possible = false;
 
+	bool update = true;
+	
 	// We cannot use this function here
 	if (!getStatus(cmd).enabled()) {
 		lyxerr[Debug::ACTION] << "LyXFunc::dispatch: "
@@ -1356,17 +1358,20 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 		}
 
 		default: {
+			update = false;
 			DispatchResult res = view()->cursor().dispatch(cmd);
-			if (!res.dispatched());
-				view()->dispatch(cmd);
+			if (res.dispatched())
+				update |= res.update();
+			else
+				update |= view()->dispatch(cmd);
+			
 			break;
 		}
 		}
 
 		if (view()->available()) {
-			view()->fitCursor();
-			view()->update();
-			view()->cursor().updatePos();
+			if (view()->fitCursor() || update)
+				view()->update();
 			// if we executed a mutating lfun, mark the buffer as dirty
 			if (getStatus(cmd).enabled()
 					&& !lyxaction.funcHasFlag(cmd.action, LyXAction::NoBuffer)

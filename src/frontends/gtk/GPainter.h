@@ -38,7 +38,7 @@ public:
 			  line_style ls, line_width lw);
 	XftColor * getXftColor(LColor_color clr);
 	/// draw a line from point to point
-	virtual Painter & line(
+	virtual void line(
 		int x1, int y1,
 		int x2, int y2,
 		LColor_color,
@@ -51,7 +51,7 @@ public:
 	 * @param yp array of points' y co-ords
 	 * @param np size of the points array
 	 */
-	virtual Painter & lines(
+	virtual void lines(
 		int const * xp,
 		int const * yp,
 		int np,
@@ -60,7 +60,7 @@ public:
 		line_width = line_thin);
 
 	/// draw a rectangle
-	virtual Painter & rectangle(
+	virtual void rectangle(
 		int x, int y,
 		int w, int h,
 		LColor_color,
@@ -68,55 +68,55 @@ public:
 		line_width = line_thin);
 
 	/// draw a filled rectangle
-	virtual Painter & fillRectangle(
+	virtual void fillRectangle(
 		int x, int y,
 		int w, int h,
 		LColor_color);
 
 	/// draw a filled (irregular) polygon
-	virtual Painter & fillPolygon(
+	virtual void fillPolygon(
 		int const * xp,
 		int const * yp,
 		int np,
 		LColor_color);
 
 	/// draw an arc
-	virtual Painter & arc(
+	virtual void arc(
 		int x, int y,
 		unsigned int w, unsigned int h,
 		int a1, int a2,
 		LColor_color);
 
 	/// draw a pixel
-	virtual Painter & point(
+	virtual void point(
 		int x, int y,
 		LColor_color);
 
 	/// draw an image from the image cache
-	virtual Painter & image(int x, int y,
+	virtual void image(int x, int y,
 		int w, int h,
 		lyx::graphics::Image const & image);
 
 	/// draw a string at position x, y (y is the baseline)
-	virtual Painter & text(int x, int y,
+	virtual void text(int x, int y,
 		std::string const & str, LyXFont const & f);
 
 	/** Draw a string at position x, y (y is the baseline)
 	 *  This is just for fast drawing
 	 */
-	virtual Painter & text(int x, int y,
+	virtual void text(int x, int y,
 		char const * str, size_t l,
 		LyXFont const & f);
 
-        virtual Painter & text(int x, int y, wchar_t const * str, int l,
+        virtual void text(int x, int y, wchar_t const * str, int l,
 			       LyXFont const & f);
 
 	/// draw a char at position x, y (y is the baseline)
-	virtual Painter & text(int x, int y,
+	virtual void text(int x, int y,
 			       char c, LyXFont const & f);
 
 	/// draw a wide string at position x, y
-	Painter & text(int x, int y,
+	void text(int x, int y,
 		XChar2b const * str, size_t l,
 		LyXFont const & f);
 
