@@ -2412,7 +2412,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 	// calculates the space between the baselines according
 	// to this font. (Matthias)
 	LyXFont font = getFont(bparams, Last() - 1);
-	if (need_par) {
+	if (need_par && next) {
 		if (style.resfont.size() != font.size()) {
 			os << '\\'
 			   << font.latexSize()
@@ -2427,7 +2427,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 			   << ' ';
 		}
 		os << '}';
-	} else if (style.resfont.size() != font.size()){
+	} else if ((style.resfont.size() != font.size()) && next){
 		os << "{\\" << font.latexSize() << " \\par}";
 	}
 
@@ -4591,20 +4591,28 @@ LyXParagraph::getParLanguage(BufferParams const & bparams) const
 		return FirstPhysicalPar()->getParLanguage(bparams);
 	else
 #endif
-	if (size() > 0)
+	if (size() > 0) {
+		Language const * lang = 0;
 #ifndef NEW_TABULAR
 		if (!table)
 #endif
-			return GetFirstFontSettings().language();
+			lang = GetFirstFontSettings().language();
 #ifndef NEW_TABULAR
 		else {
-			for (size_type pos = 0; pos < size(); ++pos)
-				if (IsNewline(pos))
-					return GetFontSettings(bparams, pos).language();
-			return GetFirstFontSettings().language();
+			for (size_type pos = 0; pos < size(); ++pos) {
+				if (IsNewline(pos)) {
+					lang = GetFontSettings(bparams, pos).language();
+					break;
+				}
+			}
+			if (!lang)
+				lang = GetFirstFontSettings().language();
 		}
 #endif
-	else if (previous)
+		if (lang->lang() == "default")
+			return bparams.language_info;
+		return lang;
+	} else if (previous)
 		return previous->getParLanguage(bparams);
 	//else
 		return bparams.language_info;

@@ -1,3 +1,20 @@
+2000-09-08  Juergen Vigna  <jug@sad.it>
+
+	* src/lyx_gui.C (create_forms): don't display the "default" entry as
+	we have already "Reset".
+
+	* src/language.C (initL): inserted "default" language and made this
+	THE default language (and not american!)
+
+	* src/paragraph.C: inserted handling of "default" language!
+
+	* src/lyxfont.C: ditto
+
+	* src/text.C: ditto
+
+	* src/paragraph.C: output the \\par only if we have a following
+	paragraph otherwise it's not needed.
+
 2000-09-05  Juergen Vigna  <jug@sad.it>
 
 	* config/pspell.m4: added entry to lyx-flags

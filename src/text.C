@@ -526,6 +526,7 @@ void LyXText::draw(BufferView * bview, Row const * row,
 		++vpos;
 
 		if (lyxrc.mark_foreign_language &&
+		    font.language()->lang() != "default" &&
 		    font.language() != bview->buffer()->params.language_info) {
 			int y = offset + row->height() - 1;
 			pain.line(int(tmpx), y, int(x), y,
@@ -637,6 +638,7 @@ void LyXText::draw(BufferView * bview, Row const * row,
 	}
 
 	if (lyxrc.mark_foreign_language &&
+	    font.language()->lang() != "default" &&
 	    font.language() != bview->buffer()->params.language_info) {
 		int y = offset + row->height() - 1;
 		pain.line(int(tmpx), y, int(x), y,

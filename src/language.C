@@ -64,6 +64,7 @@ void LangInit::initL()
 	{ "croatian", N_("Croatian"), false, &iso8859_2 },
 	{ "czech", N_("Czech"), false, &iso8859_2 },
 	{ "danish", N_("Danish"), false, &iso8859_1 },
+	{ "default", N_("Document wide language"), false, &iso8859_1 },
 	{ "dutch", N_("Dutch"), false, &iso8859_1 },
 	{ "english", N_("English"), false, &iso8859_1 },
 	{ "esperanto", N_("Esperanto"), false, &iso8859_3 },
@@ -109,7 +110,7 @@ void LangInit::initL()
 		++i;
 	}
 	
-	default_language = &languages["american"];
+	default_language = &languages["default"];
 }
 
 

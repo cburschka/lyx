@@ -411,7 +411,8 @@ string LyXFont::stateText(BufferParams * params) const
 		ost << _("Latex ") << _(GUIMiscNames[latex()]) << ", ";
 	if (bits == inherit)
 		ost << _("Default") << ", ";
-	if (!params || language() != params->language_info)
+	if (!params || (language() != params->language_info &&
+			language()->lang() != "default"))
 		ost << _("Language: ") << _(language()->display().c_str());
 #ifdef HAVE_SSTREAM
 	string buf(ost.str().c_str());
@@ -664,7 +665,8 @@ void LyXFont::lyxWriteChanges(LyXFont const & orgfont, ostream & os) const
 		if (col_str == "inherit") col_str = "default";
 		os << "\\color " << col_str << "\n";
 	}
-	if (orgfont.language() != language()) {
+	if (orgfont.language() != language() &&
+	    language()->lang() != "default") {
 		if (language())
 			os << "\\lang " << language()->lang() << "\n";
 		else
@@ -681,7 +683,8 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 	int count = 0;
 	bool env = false;
 
-	if (language() != base.language() && language() != prev.language()) {
+	if (language() != base.language() && language() != prev.language() &&
+	    language()->lang() != "default") {
 		if (isRightToLeft() != prev.isRightToLeft()) {
 			if (isRightToLeft()) {
 				os << "\\R{";
@@ -773,7 +776,8 @@ int LyXFont::latexWriteEndChanges(ostream & os, LyXFont const & base,
 	int count = 0;
 	bool env = false;
 
-	if (language() != base.language() && language() != next.language()) {
+	if (language() != base.language() && language() != next.language()
+	    && language()->lang() != "default") {
 		os << "}";
 		++count;
 		env = true; // Size change need not bother about closing env.
