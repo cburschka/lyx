@@ -16,7 +16,6 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 
-
 using std::string;
 using std::auto_ptr;
 
@@ -53,6 +52,7 @@ void MathUnknownInset::normalize(NormalStream & os) const
 void MathUnknownInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	mathed_string_dim(mi.base.font, name_, dim);
+	dim_ = dim;
 }
 
 
@@ -62,6 +62,8 @@ void MathUnknownInset::draw(PainterInfo & pi, int x, int y) const
 		drawStrBlack(pi, x, y, name_);
 	else
 		drawStrRed(pi, x, y, name_);
+	xo_ = x;
+	yo_ = y;
 }
 
 

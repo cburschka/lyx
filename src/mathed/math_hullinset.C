@@ -810,7 +810,7 @@ MathHullInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 				else
 					for (row_type row = 0; row < nrows(); ++row)
 						numbered(row, !old);
-				//cur.bv()->owner()->message(old ? _("No number") : _("Number"));
+				cur.message(old ? _("No number") : _("Number"));
 			}
 			return DispatchResult(true, true);
 
@@ -819,7 +819,7 @@ MathHullInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 				row_type r = (type_ == "multline") ? nrows() - 1 : cur.row();
 				////recordUndo(cur, Undo::INSERT);
 				bool old = numbered(r);
-				//cur.bv()->owner()->message(old ? _("No number") : _("Number"));
+				cur.message(old ? _("No number") : _("Number"));
 				numbered(r, !old);
 			}
 			return DispatchResult(true, true);
@@ -1152,7 +1152,7 @@ void MathHullInset::revealCodes(LCursor & cur) const
 		return;
 	ostringstream os;
 	cur.info(os);
-	cur.bv().owner()->message(os.str());
+	cur.message(os.str());
 /*
 	// write something to the minibuffer
 	// translate to latex
@@ -1177,7 +1177,7 @@ void MathHullInset::revealCodes(LCursor & cur) const
 		res = res.substr(pos - 30);
 	if (res.size() > 60)
 		res = res.substr(0, 60);
-	bv.owner()->message(res);
+	cur.message(res);
 */
 }
 
@@ -1372,7 +1372,7 @@ void mathDispatchCreation(LCursor & cur, FuncRequest const & cmd,
 		cur.bv().getLyXText()->cutSelection(true, false);
 		openNewInset(cur, f);
 	}
-	cmd.message(N_("Math editor mode"));
+	cur.message(N_("Math editor mode"));
 }
 
 } // namespace anon

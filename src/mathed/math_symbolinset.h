@@ -35,6 +35,9 @@ public:
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
+	int width() const { return width_; }
+
+	///
 	bool isRelOp() const;
 	/// do we take scripts?
 	bool isScriptable() const;
@@ -69,6 +72,8 @@ private:
 	latexkeys const * sym_;
 	///
 	mutable int h_;
+	/// cached width
+	mutable int width_;
 	///
 	mutable bool scriptable_;
 };

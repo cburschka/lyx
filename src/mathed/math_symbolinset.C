@@ -91,6 +91,8 @@ void MathSymbolInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	if (mi.base.style == LM_ST_DISPLAY)
 		if (sym_->inset == "cmex" || sym_->extra == "funclim")
 			scriptable_ = true;
+
+	width_ = dim.wid;
 }
 
 

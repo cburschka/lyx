@@ -48,4 +48,5 @@ protected:
 	///
 	mutable int yo_;
 };
+
 #endif
