@@ -174,13 +174,6 @@ void InsetFormula::read(Buffer const &, LyXLex & lex)
 }
 
 
-//ostream & operator<<(ostream & os, LyXCursor const & c)
-//{
-//	os << '[' << c.x() << ' ' << c.y() << ' ' << c.pos() << ']';
-//	return os;
-//}
-
-
 namespace {
 
 bool editing_inset(InsetFormula const * inset)

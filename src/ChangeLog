@@ -19,6 +19,18 @@
 	* cursor.h:
 	* cursor_slice.[Ch]: some integer type changes for inset unification
 
+	* lyxcursor.[hC]: remove, it's CursorSlice now.
+
+	* Makefile.am: 
+	* BufferView_pimpl.[Ch]:
+	* bufferview_funcs.C:
+	* cursor_slice.C:
+	* lyxtext.h:
+	* text.C:
+	* text2.C:
+	* text3.C:
+	* textcursor.[Ch]: adjust
+
 2004-01-08  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* text2.C (undoSpan): add and use

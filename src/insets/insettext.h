@@ -28,7 +28,7 @@ class BufferParams;
 class BufferView;
 class Dimension;
 class LColor_color;
-class LyXCursor;
+class CursorSlice;
 class Painter;
 class Paragraph;
 class Row;

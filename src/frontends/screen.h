@@ -14,7 +14,7 @@
 #define SCREEN_H
 
 class LyXText;
-class LyXCursor;
+class CursorSlice;
 class WorkArea;
 class BufferView;
 

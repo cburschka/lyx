@@ -1088,7 +1088,7 @@ void LyXText::cursorRightOneWord()
 // of prior word, not to end of next prior word.
 void LyXText::cursorLeftOneWord()
 {
-	LyXCursor tmpcursor = cursor();
+	CursorSlice tmpcursor = cursor();
 	cursorLeftOneWord(tmpcursor);
 	setCursor(getPar(tmpcursor), tmpcursor.pos());
 }
@@ -1096,8 +1096,8 @@ void LyXText::cursorLeftOneWord()
 
 void LyXText::selectWord(word_location loc)
 {
-	LyXCursor from = cursor();
-	LyXCursor to = cursor();
+	CursorSlice from = cursor();
+	CursorSlice to = cursor();
 	getWord(from, to, loc);
 	if (cursor() != from)
 		setCursor(from.par(), from.pos());
@@ -1127,8 +1127,8 @@ void LyXText::acceptChange()
 		return;
 
 	if (selStart().par() == selEnd().par()) {
-		LyXCursor const & startc = selStart();
-		LyXCursor const & endc = selEnd();
+		CursorSlice const & startc = selStart();
+		CursorSlice const & endc = selEnd();
 		recordUndo(Undo::INSERT, this, startc.par());
 		getPar(startc)->acceptChange(startc.pos(), endc.pos());
 		finishUndo();
@@ -1146,8 +1146,8 @@ void LyXText::rejectChange()
 		return;
 
 	if (selStart().par() == selEnd().par()) {
-		LyXCursor const & startc = selStart();
-		LyXCursor const & endc = selEnd();
+		CursorSlice const & startc = selStart();
+		CursorSlice const & endc = selEnd();
 		recordUndo(Undo::INSERT, this, startc.par());
 		getPar(startc)->rejectChange(startc.pos(), endc.pos());
 		finishUndo();
@@ -1165,7 +1165,7 @@ void LyXText::deleteWordForward()
 	if (cursorPar()->empty())
 		cursorRight(bv());
 	else {
-		LyXCursor tmpcursor = cursor();
+		CursorSlice tmpcursor = cursor();
 		selection.set(true); // to avoid deletion
 		cursorRightOneWord();
 		setCursor(tmpcursor, tmpcursor.par(), tmpcursor.pos());
@@ -1183,7 +1183,7 @@ void LyXText::deleteWordBackward()
 	if (cursorPar()->empty())
 		cursorLeft(bv());
 	else {
-		LyXCursor tmpcursor = cursor();
+		CursorSlice tmpcursor = cursor();
 		selection.set(true); // to avoid deletion
 		cursorLeftOneWord();
 		setCursor(tmpcursor, tmpcursor.par(), tmpcursor.pos());
@@ -1202,7 +1202,7 @@ void LyXText::deleteLineForward()
 		// Paragraph is empty, so we just go to the right
 		cursorRight(bv());
 	} else {
-		LyXCursor tmpcursor = cursor();
+		CursorSlice tmpcursor = cursor();
 		selection.set(true); // to avoid deletion
 		cursorEnd();
 		setCursor(tmpcursor, tmpcursor.par(), tmpcursor.pos());
@@ -1220,8 +1220,8 @@ void LyXText::deleteLineForward()
 
 void LyXText::changeCase(LyXText::TextCase action)
 {
-	LyXCursor from;
-	LyXCursor to;
+	CursorSlice from;
+	CursorSlice to;
 
 	if (selection.set()) {
 		from = selStart();
@@ -1270,7 +1270,7 @@ void LyXText::changeCase(LyXText::TextCase action)
 void LyXText::Delete()
 {
 	// this is a very easy implementation
-	LyXCursor old_cursor = cursor();
+	CursorSlice old_cursor = cursor();
 
 	// just move to the right
 	cursorRight(true);
@@ -1387,7 +1387,7 @@ RowList::iterator LyXText::cursorRow() const
 }
 
 
-ParagraphList::iterator LyXText::getPar(LyXCursor const & cur) const
+ParagraphList::iterator LyXText::getPar(CursorSlice const & cur) const
 {
 	return getPar(cur.par());
 }
@@ -1646,7 +1646,7 @@ bool LyXText::isFirstRow(ParagraphList::iterator pit, Row const & row) const
 }
 
 
-void LyXText::cursorLeftOneWord(LyXCursor & cur)
+void LyXText::cursorLeftOneWord(CursorSlice & cur)
 {
 	// treat HFills, floats and Insets as words
 
@@ -1680,7 +1680,7 @@ void LyXText::cursorLeftOneWord(LyXCursor & cur)
 }
 
 
-void LyXText::cursorRightOneWord(LyXCursor & cur)
+void LyXText::cursorRightOneWord(CursorSlice & cur)
 {
 	// treat floats, HFills and Insets as words
 	ParagraphList::iterator pit = cursorPar();
@@ -1706,7 +1706,7 @@ void LyXText::cursorRightOneWord(LyXCursor & cur)
 }
 
 
-void LyXText::getWord(LyXCursor & from, LyXCursor & to, word_location const loc)
+void LyXText::getWord(CursorSlice & from, CursorSlice & to, word_location const loc)
 {
 	ParagraphList::iterator from_par = getPar(from);
 	ParagraphList::iterator to_par = getPar(to);
@@ -1865,7 +1865,7 @@ int LyXText::cursorY() const
 }
 
 
-int LyXText::cursorX(LyXCursor const & cur) const
+int LyXText::cursorX(CursorSlice const & cur) const
 {
 	ParagraphList::iterator pit = getPar(cur);
 	if (pit->rows.empty())
@@ -1926,7 +1926,7 @@ int LyXText::cursorX(LyXCursor const & cur) const
 }
 
 
-int LyXText::cursorY(LyXCursor const & cur) const
+int LyXText::cursorY(CursorSlice const & cur) const
 {
 	Paragraph & par = *getPar(cur);
 	Row & row = *par.getRow(cur.pos());
@@ -1934,25 +1934,25 @@ int LyXText::cursorY(LyXCursor const & cur) const
 }
 
 
-LyXCursor & LyXText::cursor()
+CursorSlice & LyXText::cursor()
 {
 	return cursor_;
 }
 
 
-LyXCursor const & LyXText::cursor() const
+CursorSlice const & LyXText::cursor() const
 {
 	return cursor_;
 }
 
 
-LyXCursor & LyXText::anchor()
+CursorSlice & LyXText::anchor()
 {
 	return anchor_;
 }
 
 
-LyXCursor const & LyXText::anchor() const
+CursorSlice const & LyXText::anchor() const
 {
 	return anchor_;
 }

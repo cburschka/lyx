@@ -15,7 +15,7 @@
 #ifndef TEXTCURSOR_H
 #define TEXTCURSOR_H
 
-#include "lyxcursor.h"
+#include "cursor_slice.h"
 
 // Do not even think of forward declaring LyXText/BufferView etc here!
 // If you need Paragraph proper, go to text_func.h
@@ -63,16 +63,16 @@ struct TextCursor {
 	void clearSelection();
 
 	// actual cursor position
-	LyXCursor cursor_;
+	CursorSlice cursor_;
 	// the other end of the selection
-	LyXCursor anchor_;
+	CursorSlice anchor_;
 
 	Selection selection;
 
-	LyXCursor const & selStart() const;
-	LyXCursor const & selEnd() const;
-	LyXCursor & selStart();
-	LyXCursor & selEnd();
+	CursorSlice const & selStart() const;
+	CursorSlice const & selEnd() const;
+	CursorSlice & selStart();
+	CursorSlice & selEnd();
 };
 
 #endif

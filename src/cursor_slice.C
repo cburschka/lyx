@@ -149,6 +149,12 @@ bool operator<(CursorSlice const & p, CursorSlice const & q)
 }
 
 
+bool operator>(CursorSlice const & p, CursorSlice const & q)
+{
+	return q < p;
+}
+
+
 //std::ostream & operator<<(std::ostream & os, CursorSlice const & p)
 //{
 //	os << "(par: " << p.inset_ << " idx: " << p.idx_ << " pos: " << p.pos_ << ')';

@@ -41,6 +41,7 @@ class WorkArea;
 class LyXScreen;
 class FuncRequest;
 
+
 ///
 struct BufferView::Pimpl : public boost::signals::trackable {
 	///
@@ -195,8 +196,8 @@ private:
 	WorkArea & workarea() const;
 	/// this is used to handle XSelection events in the right manner
 	struct {
-		LyXCursor cursor;
-		LyXCursor anchor;
+		CursorSlice cursor;
+		CursorSlice anchor;
 		bool set;
 	} xsel_cache_;
 	///

@@ -538,7 +538,7 @@ void LyXText::toggleFree(LyXFont const & font, bool toggleall)
 	// Try implicit word selection
 	// If there is a change in the language the implicit word selection
 	// is disabled.
-	LyXCursor resetCursor = cursor();
+	CursorSlice resetCursor = cursor();
 	bool implicitSelection =
 		font.language() == ignore_language
 		&& font.number() == LyXFont::IGNORE
@@ -562,7 +562,7 @@ string LyXText::getStringToIndex()
 	// Try implicit word selection
 	// If there is a change in the language the implicit word selection
 	// is disabled.
-	LyXCursor const reset_cursor = cursor();
+	CursorSlice const reset_cursor = cursor();
 	bool const implicitSelection =
 		selectWordWhenUnderCursor(lyx::PREVIOUS_WORD);
 
@@ -1150,13 +1150,13 @@ void LyXText::setCursor(ParagraphList::iterator pit, pos_type pos)
 bool LyXText::setCursor(paroffset_type par, pos_type pos, bool setfont,
 	bool boundary)
 {
-	LyXCursor old_cursor = cursor();
+	CursorSlice old_cursor = cursor();
 	setCursorIntern(par, pos, setfont, boundary);
 	return deleteEmptyParagraphMechanism(old_cursor);
 }
 
 
-void LyXText::setCursor(LyXCursor & cur, paroffset_type par,
+void LyXText::setCursor(CursorSlice & cur, paroffset_type par,
 	pos_type pos, bool boundary)
 {
 	BOOST_ASSERT(par != int(paragraphs().size()));
@@ -1362,7 +1362,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 
 void LyXText::setCursorFromCoordinates(int x, int y)
 {
-	LyXCursor old_cursor = cursor();
+	CursorSlice old_cursor = cursor();
 	setCursorFromCoordinates(cursor(), x, y);
 	setCurrentFont();
 	deleteEmptyParagraphMechanism(old_cursor);
@@ -1370,7 +1370,7 @@ void LyXText::setCursorFromCoordinates(int x, int y)
 
 
 // x,y are coordinates relative to this LyXText
-void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
+void LyXText::setCursorFromCoordinates(CursorSlice & cur, int x, int y)
 {
 	ParagraphList::iterator pit;
 	Row const & row = *getRowNearY(y, pit);
@@ -1562,7 +1562,7 @@ void LyXText::cursorDownParagraph()
 
 // fix the cursor `cur' after a characters has been deleted at `where'
 // position. Called by deleteEmptyParagraphMechanism
-void LyXText::fixCursorAfterDelete(LyXCursor & cur, LyXCursor const & where)
+void LyXText::fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where)
 {
 	// if cursor is not in the paragraph where the delete occured,
 	// do nothing
@@ -1581,7 +1581,7 @@ void LyXText::fixCursorAfterDelete(LyXCursor & cur, LyXCursor const & where)
 }
 
 
-bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
+bool LyXText::deleteEmptyParagraphMechanism(CursorSlice const & old_cursor)
 {
 	// Would be wrong to delete anything if we have a selection.
 	if (selection.set())
@@ -1637,7 +1637,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 #warning This will not work anymore when we have multiple views of the same buffer
 // In this case, we will have to correct also the cursors held by
 // other bufferviews. It will probably be easier to do that in a more
-// automated way in LyXCursor code. (JMarc 26/09/2001)
+// automated way in CursorSlice code. (JMarc 26/09/2001)
 #endif
 			// correct all cursors held by the LyXText
 			fixCursorAfterDelete(cursor(), old_cursor);
@@ -1665,7 +1665,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 	if (old_pit->empty()
 	    || (old_pit->size() == 1 && old_pit->isLineSeparator(0))) {
 		// ok, we will delete something
-		LyXCursor tmpcursor;
+		CursorSlice tmpcursor;
 
 		deleted = true;
 

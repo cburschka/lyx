@@ -32,7 +32,7 @@ class BufferParams;
 class BufferView;
 class Dimension;
 class LColor_color;
-class LyXCursor;
+class CursorSlice;
 class MetricsInfo;
 class Paragraph;
 class Row;
@@ -141,7 +141,7 @@ public:
 	friend class LyXScreen;
 
 	/// returns an iterator pointing to a cursor paragraph
-	ParagraphList::iterator getPar(LyXCursor const & cursor) const;
+	ParagraphList::iterator getPar(CursorSlice const & cursor) const;
 	///
 	ParagraphList::iterator getPar(lyx::paroffset_type par) const;
 	///
@@ -170,7 +170,7 @@ public:
 	void clearSelection();
 
 	/// select the word we need depending on word_location
-	void getWord(LyXCursor & from, LyXCursor & to, lyx::word_location const);
+	void getWord(CursorSlice & from, CursorSlice & to, lyx::word_location const);
 	/// just selects the word the cursor is in
 	void selectWord(lyx::word_location loc);
 	/// returns the inset at cursor (if it exists), 0 otherwise
@@ -188,7 +188,7 @@ public:
 	bool setCursor(lyx::paroffset_type par, lyx::pos_type pos,
 		       bool setfont = true, bool boundary = false);
 	///
-	void setCursor(LyXCursor &, lyx::paroffset_type par,
+	void setCursor(CursorSlice &, lyx::paroffset_type par,
 		       lyx::pos_type pos, bool boundary = false);
 	///
 	void setCursorIntern(lyx::paroffset_type par, lyx::pos_type pos,
@@ -203,7 +203,7 @@ public:
 	///
 	void setCursorFromCoordinates(int x, int y);
 	///
-	void setCursorFromCoordinates(LyXCursor &, int x, int y);
+	void setCursorFromCoordinates(CursorSlice &, int x, int y);
 	///
 	void cursorUp(bool selecting = false);
 	///
@@ -367,9 +367,9 @@ public:
 	///
 	double spacing(Paragraph const &) const;
 	///
-	void cursorLeftOneWord(LyXCursor &);
+	void cursorLeftOneWord(CursorSlice &);
 	///
-	void cursorRightOneWord(LyXCursor &);
+	void cursorRightOneWord(CursorSlice &);
 
 	///
 	DispatchResult moveRight();
@@ -402,18 +402,18 @@ public:
 	///
 	int cursorY() const;
 	///
-	int cursorX(LyXCursor const & cursor) const;
+	int cursorX(CursorSlice const & cursor) const;
 	///
-	int cursorY(LyXCursor const & cursor) const;
+	int cursorY(CursorSlice const & cursor) const;
 
 	/// the topmost cursor slice
-	LyXCursor & cursor();
+	CursorSlice & cursor();
 	/// the topmost cursor slice
-	LyXCursor const & cursor() const;
+	CursorSlice const & cursor() const;
 	/// access to the selection anchor
-	LyXCursor & anchor();
+	CursorSlice & anchor();
 	/// access to the selection anchor
-	LyXCursor const & anchor() const;
+	CursorSlice const & anchor() const;
 
 
 public:
@@ -465,10 +465,10 @@ private:
 
 	// fix the cursor `cur' after a characters has been deleted at `where'
 	// position. Called by deleteEmptyParagraphMechanism
-	void fixCursorAfterDelete(LyXCursor & cur, LyXCursor const & where);
+	void fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where);
 
 	/// delete double space (false) or empty paragraphs (true) around old_cursor
-	bool deleteEmptyParagraphMechanism(LyXCursor const & old_cursor);
+	bool deleteEmptyParagraphMechanism(CursorSlice const & old_cursor);
 
 	///
 	void setCounter(Buffer const &, ParagraphList::iterator pit);

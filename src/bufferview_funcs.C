@@ -179,7 +179,7 @@ string const currentState(BufferView * bv)
 
 	LyXText * text = bv->getLyXText();
 	Buffer * buffer = bv->buffer();
-	LyXCursor const & c = text->cursor();
+	CursorSlice const & c = text->cursor();
 
 	bool const show_change = buffer->params().tracking_changes
 		&& text->cursor().pos() != text->cursorPar()->size()

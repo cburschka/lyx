@@ -739,7 +739,7 @@ void BufferView::Pimpl::stuffClipboard(string const & stuff) const
 InsetOld * BufferView::Pimpl::getInsetByCode(InsetOld::Code code)
 {
 #if 0
-	LyXCursor cursor = bv_->getLyXText()->cursor;
+	CursorSlice cursor = bv_->getLyXText()->cursor;
 	Buffer::inset_iterator it =
 		find_if(Buffer::inset_iterator(
 			cursorPar(), cursor().pos()),
@@ -1286,7 +1286,7 @@ bool BufferView::Pimpl::ChangeInsets(InsetOld::Code code,
 				     string const & from, string const & to)
 {
 	bool need_update = false;
-	LyXCursor cur = bv_->text()->cursor();
+	CursorSlice cur = bv_->text()->cursor();
 
 	ParIterator end = bv_->buffer()->par_iterator_end();
 	for (ParIterator it = bv_->buffer()->par_iterator_begin();

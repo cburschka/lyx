@@ -24,7 +24,7 @@ class Buffer;
 class LColor_color;
 class FuncRequest;
 class OutputParams;
-class LyXCursor;
+class CursorSlice;
 class LyXLex;
 class LyXText;
 class Painter;

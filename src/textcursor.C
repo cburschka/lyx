@@ -13,7 +13,7 @@
 #include "textcursor.h"
 
 
-LyXCursor const & TextCursor::selStart() const
+CursorSlice const & TextCursor::selStart() const
 {
 	if (!selection.set())
 		return cursor_;
@@ -22,7 +22,7 @@ LyXCursor const & TextCursor::selStart() const
 }
 
 
-LyXCursor const & TextCursor::selEnd() const
+CursorSlice const & TextCursor::selEnd() const
 {
 	if (!selection.set())
 		return cursor_;
@@ -30,7 +30,7 @@ LyXCursor const & TextCursor::selEnd() const
 }
 
 
-LyXCursor & TextCursor::selStart()
+CursorSlice & TextCursor::selStart()
 {
 	if (!selection.set())
 		return cursor_;
@@ -38,7 +38,7 @@ LyXCursor & TextCursor::selStart()
 }
 
 
-LyXCursor & TextCursor::selEnd()
+CursorSlice & TextCursor::selEnd()
 {
 	if (!selection.set())
 		return cursor_;

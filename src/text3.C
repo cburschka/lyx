@@ -91,7 +91,7 @@ namespace {
 
 		if (font.language() != ignore_language ||
 				font.number() != LyXFont::IGNORE) {
-			LyXCursor & cur = text->cursor();
+			CursorSlice & cur = text->cursor();
 			Paragraph & par = *text->cursorPar();
 			text->bidi.computeTables(par, *bv->buffer(),
 				*par.getRow(cur.pos()));
@@ -337,7 +337,7 @@ void LyXText::gotoInset(vector<InsetOld::Code> const & codes,
 
 	if (!gotoNextInset(codes, contents)) {
 		if (cursor().pos() || cursorPar() != paragraphs().begin()) {
-			LyXCursor tmp = cursor();
+			CursorSlice tmp = cursor();
 			cursor().par(0);
 			cursor().pos(0);
 			if (!gotoNextInset(codes, contents)) {
@@ -634,8 +634,8 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_WORDSEL: {
-		LyXCursor cur1 = cursor();
-		LyXCursor cur2;
+		CursorSlice cur1 = cursor();
+		CursorSlice cur2;
 		getWord(cur1, cur2, lyx::WHOLE_WORD);
 		setCursor(cur1.par(), cur1.pos());
 		clearSelection();
@@ -770,7 +770,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_BACKSPACE_SKIP:
 		// Reverse the effect of LFUN_BREAKPARAGRAPH_SKIP.
 		if (!selection.set()) {
-			LyXCursor cur = cursor();
+			CursorSlice cur = cursor();
 			backspace();
 			anchor() = cur;
 		} else {
@@ -801,7 +801,7 @@ DispatchResult LyXText::dispatch(FuncRequest const & cmd)
 		// When at the beginning of a paragraph, remove
 		// indentation and add a "defskip" at the top.
 		// Otherwise, do the same as LFUN_BREAKPARAGRAPH.
-		LyXCursor cur = cursor();
+		CursorSlice cur = cursor();
 		replaceSelection(bv->getLyXText());
 		if (cur.pos() == 0) {
 			ParagraphParameters & params = getPar(cur)->params();

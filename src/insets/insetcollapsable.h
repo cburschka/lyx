@@ -23,7 +23,7 @@
 class Painter;
 class LyXText;
 class Paragraph;
-class LyXCursor;
+class CursorSlice;
 
 /** A collapsable text inset
 
