@@ -395,6 +395,11 @@ public:
 	/// returns whether we've seen our usual 'end' marker
 	bool read(Buffer const & buf, LyXLex & lex);
 
+	///
+	int ascent() const;
+	///
+	int descent() const;
+
 public:
 	///
 	int height;

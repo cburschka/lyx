@@ -35,6 +35,7 @@ using std::endl;
 std::ostream & operator<<(std::ostream & os, CursorItem const & item)
 {
 	os << " inset: " << item.inset_
+	   << " code: " << item.inset_->lyxCode()
 	   << " text: " << item.text()
 //	   << " par: " << item.par_
 //	   << " pos: " << item.pos_

@@ -61,8 +61,6 @@ public:
 	/// can we go further down on mouse click?
 	bool descendable() const;
 	///
-	bool insertInset(BufferView *, InsetOld * inset);
-	///
 	bool insetAllowed(InsetOld::Code code) const;
 	///
 	bool isTextInset() const { return true; }

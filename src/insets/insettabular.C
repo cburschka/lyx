@@ -388,12 +388,6 @@ void InsetTabular::updateLocal(BufferView * bv) const
 }
 
 
-bool InsetTabular::insertInset(BufferView * bv, InsetOld * inset)
-{
-	return the_locking_inset && the_locking_inset->insertInset(bv, inset);
-}
-
-
 void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 {
 	if (hasSelection() && cmd.button() == mouse_button::button3)
@@ -404,10 +398,15 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 
 	BufferView * bv = cmd.view();
 
-	the_locking_inset = 0;
-	setPos(bv, cmd.x, cmd.y);
-	clearSelection();
-	the_locking_inset = 0;
+	int cell = getCell(cmd.x + xo_, cmd.y + yo_);
+	lyxerr << "# InsetTabular::lfunMousePress cell: " << cell << endl;
+	if (cell == -1) {
+	} else {
+		the_locking_inset = 0;
+		setPos(bv, cmd.x, cmd.y);
+		clearSelection();
+		the_locking_inset = 0;
+	}
 
 	if (cmd.button() == mouse_button::button2)
 		dispatch(FuncRequest(bv, LFUN_PASTESELECTION, "paragraph"));
@@ -481,12 +480,11 @@ void InsetTabular::edit(BufferView * bv, int x, int y)
 DispatchResult
 InsetTabular::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 {
-	lyxerr << "InsetTabular::dispatch: " << cmd << endl;
+	lyxerr << "# InsetTabular::dispatch: " << cmd << endl;
 	// We need to save the value of the_locking_inset as the call to
 	// the_locking_inset->localDispatch might unlock it.
 	DispatchResult result(true, true);
-	BufferView * bv  = cmd.view();
-	bool hs = hasSelection();
+	BufferView * bv = cmd.view();
 
 	switch (cmd.action) {
 
@@ -616,7 +614,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 		break;
 
 	case LFUN_NEXT: {
-		if (hs)
+		if (hasSelection())
 			clearSelection();
 		int column = actcol;
 		if (bv->top_y() + bv->painter().paperHeight()
@@ -632,7 +630,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 	}
 
 	case LFUN_PRIOR: {
-		if (hs)
+		if (hasSelection())
 			clearSelection();
 		int column = actcol;
 		if (yo_ < 0) {
@@ -845,7 +843,7 @@ InsetTabular::priv_dispatch(FuncRequest const & cmd, idx_type &, pos_type &)
 				result = DispatchResult(false);
 				break;
 			}
-			if (hs)
+			if (hasSelection())
 				clearSelection();
 		}
 		break;
@@ -1594,7 +1592,7 @@ bool InsetTabular::activateCellInset(BufferView * bv, int x, int y, bool behind)
 	if (!the_locking_inset)
 		return false;
 	updateLocal(bv);
-	return the_locking_inset;
+	return true;
 }
 
 

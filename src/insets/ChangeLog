@@ -1,3 +1,15 @@
+
+2003-12-10  André Pönitz  <poenitz@gmx.net>
+
+	* inset.h:
+	* insetert.[Ch]:
+	* insettabular.[Ch]:
+	* insettext.[Ch]: remove unused insetInset()
+
+	* insetert.C: disable some  LFUNs
+
+	* insettoc.[Ch]: metrics() and draw() of InsetButton is enough.
+
 2003-12-04  Martin Vermeer  <martin.vermee@hut.fi>
 
 	* insetcharstyle.[Ch]: Conglomerate-style CharStyles

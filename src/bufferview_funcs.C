@@ -309,4 +309,4 @@ void put_selection_at(BufferView * bv, PosIterator const & cur,
 }
 
 
-}; // namespace bv_funcs
+} // namespace bv_funcs

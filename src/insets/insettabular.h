@@ -80,8 +80,6 @@ public:
 	///
 	void updateLocal(BufferView *) const;
 	///
-	bool insertInset(BufferView *, InsetOld *);
-	///
 	bool insetAllowed(InsetOld::Code code) const;
 	///
 	bool isTextInset() const { return true; }
@@ -149,14 +147,8 @@ public:
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 
-	//
-	// Public structures and variables
-	///
-	mutable LyXTabular tabular;
-
 	/// are some cells selected ?
 	bool hasSelection() const { return has_selection; }
-
 	///
 	Buffer const & buffer() const;
 
@@ -168,6 +160,12 @@ public:
 	void edit(BufferView * bv, int, int);
 	/// can we go further down on mouse click?
 	bool descendable() const { return true; }
+
+	//
+	// Public structures and variables
+	///
+	mutable LyXTabular tabular;
+
 protected:
 	///
 	virtual

@@ -85,11 +85,6 @@ InsetERT::InsetERT(BufferParams const & bp,
 	status_ = collapsed ? Collapsed : Open;
 
 	LyXFont font(LyXFont::ALL_INHERIT, l);
-#ifdef SET_HARD_FONT
-	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
-	font.setColor(LColor::latex);
-#endif
-
 	string::const_iterator cit = contents.begin();
 	string::const_iterator end = contents.end();
 	pos_type pos = 0;
@@ -136,21 +131,6 @@ void InsetERT::read(Buffer const & buf, LyXLex & lex)
 		}
 	}
 	inset.read(buf, lex);
-
-#ifdef SET_HARD_FONT
-	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
-	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
-	font.setColor(LColor::latex);
-
-	ParagraphList::iterator pit = inset.paragraphs().begin();
-	ParagraphList::iterator pend = inset.paragraphs().end();
-	for (; pit != pend; ++pit) {
-		pos_type siz = pit->size();
-		for (pos_type i = 0; i < siz; ++i) {
-			pit->setFont(i, font);
-		}
-	}
-#endif
 
 	if (!token_found) {
 		if (isOpen())
@@ -215,12 +195,6 @@ void InsetERT::write(Buffer const & buf, ostream & os) const
 string const InsetERT::editMessage() const
 {
 	return _("Opened ERT Inset");
-}
-
-
-bool InsetERT::insertInset(BufferView *, InsetOld *)
-{
-	return false;
 }
 
 
@@ -396,16 +370,7 @@ void InsetERT::edit(BufferView * bv, bool left)
 DispatchResult
 InsetERT::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
-	BufferView * bv = cmd.view();
-
 	switch (cmd.action) {
-
-	case LFUN_INSET_MODIFY: {
-		InsetERTMailer::string2params(cmd.argument, status_);
-		setButtonLabel();
-		bv->update();
-		return DispatchResult(true, true);
-	}
 
 	case LFUN_MOUSE_PRESS:
 		lfunMousePress(cmd);
@@ -419,8 +384,26 @@ InsetERT::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 		lfunMouseRelease(cmd);
 		return DispatchResult(true, true);
 
+	case LFUN_INSET_MODIFY:
+		InsetERTMailer::string2params(cmd.argument, status_);
+		setButtonLabel();
+		return DispatchResult(true, true);
+
 	case LFUN_LAYOUT:
-		bv->owner()->setLayout(inset.paragraphs().begin()->layout()->name());
+	case LFUN_BOLD:
+	case LFUN_CODE:
+	case LFUN_DEFAULT:
+	case LFUN_EMPH:
+	case LFUN_FREEFONT_APPLY:
+	case LFUN_FREEFONT_UPDATE:
+	case LFUN_NOUN:
+	case LFUN_ROMAN:
+	case LFUN_SANS:
+	case LFUN_FRAK:
+	case LFUN_ITAL:
+	case LFUN_FONT_SIZE:
+	case LFUN_FONT_STATE:
+	case LFUN_UNDERLINE:
 		return DispatchResult(true);
 
 	default:

@@ -750,13 +750,13 @@ InsetOld * BufferView::Pimpl::getInsetByCode(InsetOld::Code code)
 	Buffer::inset_iterator beg = b->inset_iterator_begin();
 	Buffer::inset_iterator end = b->inset_iterator_end();
 
-	bool cursorPar_seen = false;
+	bool cursor_par_seen = false;
 
 	for (; beg != end; ++beg) {
 		if (beg.getPar() == text->cursorPar()) {
-			cursorPar_seen = true;
+			cursor_par_seen = true;
 		}
-		if (cursorPar_seen) {
+		if (cursor_par_seen) {
 			if (beg.getPar() == text->cursorPar()
 			    && beg.getPos() >= text->cursor.pos()) {
 				break;
@@ -871,21 +871,25 @@ namespace {
 
 	InsetOld * insetFromCoords(BufferView * bv, int x, int y)
 	{
+		lyxerr << "insetFromCoords" << endl;
 		LyXText * text = bv->text();
 		InsetOld * inset = 0;
 		theTempCursor = LCursor(bv);
 		while (true) {
-			InsetOld * inset_hit = text->checkInsetHit(x, y);
+			InsetOld * const inset_hit = text->checkInsetHit(x, y);
 			if (!inset_hit) {
 				lyxerr << "no further inset hit" << endl;
 				break;
 			}
 			inset = inset_hit;
-			if (!inset_hit->descendable()) {
+			if (!inset->descendable()) {
 				lyxerr << "not descendable" << endl;
 				break;
 			}
-			text = inset_hit->getText(0);
+			int const cell = inset->getCell(x, y);
+			if (cell == -1)
+				break;
+			text = inset_hit->getText(cell);
 			lyxerr << "Hit inset: " << inset << " at x: " << x
 				<< " text: " << text << " y: " << y << endl;
 			theTempCursor.push(static_cast<UpdatableInset*>(inset));
@@ -1255,16 +1259,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 
 bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 {
-#ifdef LOCK
-	// if we are in a locking inset we should try to insert the
-	// inset there otherwise this is a illegal function now
-	if (bv_->theLockingInset()) {
-		if (bv_->theLockingInset()->insetAllowed(inset))
-			return bv_->theLockingInset()->insertInset(bv_, inset);
-		return false;
-	}
-#endif
-
 	// not quite sure if we want this...
 	bv_->text()->recUndo(bv_->text()->cursor.par());
 	freezeUndo();

@@ -23,9 +23,6 @@
 
 class UpdatableInset : public InsetOld {
 public:
-	/// check if the font of the char we want inserting is correct
-	/// and modify it if it is not.
-	virtual bool checkInsertChar(LyXFont &) { return true; }
 	///
 	virtual EDITABLE editable() const;
 
@@ -33,8 +30,6 @@ public:
 	virtual void getCursorPos(int &, int &) const {}
 	/// return the cursor dim
 	virtual void getCursorDim(int &, int &) const;
-	///
-	virtual bool insertInset(BufferView *, InsetOld *) { return false; }
 	// We need this method to not clobber the real method in Inset
 	int scroll(bool recursive = true) const
 		{ return InsetOld::scroll(recursive); }

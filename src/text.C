@@ -1844,3 +1844,16 @@ bool LyXText::read(Buffer const & buf, LyXLex & lex)
 	}
 	return the_end_read;
 }
+
+
+int LyXText::ascent() const
+{
+	return firstRow()->ascent_of_text();
+}
+
+
+int LyXText::descent() const
+{
+	return height - firstRow()->ascent_of_text();
+}
+

@@ -90,8 +90,6 @@ public:
 	/// FIXME, document
 	void getCursorPos(int & x, int & y) const;
 	///
-	bool insertInset(BufferView *, InsetOld *);
-	///
 	bool insetAllowed(InsetOld::Code) const;
 	///
 	void setFont(BufferView *, LyXFont const &,

@@ -248,7 +248,7 @@ CutAndPaste::pasteSelection(Buffer const & buffer,
 		// this new max depth level so that subsequent
 		// paragraphs are aligned correctly to this paragraph
 		// at level 0.
-		if ((int(tmpbuf->params().depth()) + depth_delta) < 0)
+		if (int(tmpbuf->params().depth()) + depth_delta < 0)
 			depth_delta = 0;
 
 		// Set the right depth so that we are not too deep or shallow.
@@ -265,17 +265,8 @@ CutAndPaste::pasteSelection(Buffer const & buffer,
 		tmpbuf->setInsetOwner(pit->inInset());
 		for (pos_type i = 0; i < tmpbuf->size(); ++i) {
 			if (tmpbuf->getChar(i) == Paragraph::META_INSET) {
-				if (!pit->insetAllowed(tmpbuf->getInset(i)->lyxCode())) {
+				if (!pit->insetAllowed(tmpbuf->getInset(i)->lyxCode()))
 					tmpbuf->erase(i--);
-				}
-			} else {
-				LyXFont f1 = tmpbuf->getFont(buffer.params(), i, outerFont(pit, pars));
-				LyXFont f2 = f1;
-				if (!pit->checkInsertChar(f1)) {
-					tmpbuf->erase(i--);
-				} else if (f1 != f2) {
-					tmpbuf->setFont(i, f1);
-				}
 			}
 		}
 	}

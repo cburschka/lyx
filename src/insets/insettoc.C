@@ -58,22 +58,6 @@ InsetOld::Code InsetTOC::lyxCode() const
 }
 
 
-void InsetTOC::metrics(MetricsInfo & mi, Dimension & dim) const
-{
-	InsetCommand::metrics(mi, dim);
-	int const x1 = (mi.base.textwidth - dim.wid) / 2;
-	button().setBox(Box(x1, x1 + dim.wid, -dim.asc, dim.des));
-	dim.wid = mi.base.textwidth;
-	dim_ = dim;
-}
-
-
-void InsetTOC::draw(PainterInfo & pi, int, int y) const
-{
-	InsetCommand::draw(pi, button().box().x1, y);
-}
-
-
 DispatchResult
 InsetTOC::priv_dispatch(FuncRequest const & cmd,
 			idx_type & idx, pos_type & pos)

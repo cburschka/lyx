@@ -226,6 +226,8 @@ public:
 	virtual LyXText * getText(int /*num*/) const { return 0; }
 	///
 	virtual int numParagraphs() const { return 0; }
+	/// returns cell covering position (x,y), -1 if none exists
+	virtual int getCell(int x, int y) const;
 
 	/// used to toggle insets
 	// is the inset open?

@@ -17,7 +17,9 @@
 #include "updatableinset.h"
 
 #include "BufferView.h"
+#include "debug.h"
 #include "gettext.h"
+#include "lyxtext.h"
 #include "LColor.h"
 
 
@@ -114,6 +116,30 @@ int InsetOld::scroll(bool recursive) const
 	return 0;
 }
 
+
+int InsetOld::getCell(int x, int y) const
+{
+	for (int i = 0, n = numParagraphs(); i < n; ++i) {
+		LyXText * text = getText(i);
+		//lyxerr << "### text: " << text << " i: " << i
+		//	<< " xo: " << text->xo_ << "..." << text->xo_ + text->width
+		//	<< " yo: " << text->yo_ 
+		//	<< " yo: " << text->yo_ - text->ascent() << "..."
+		//		<<  text->yo_ + text->descent()
+		//	<< std::endl;	
+		if (x >= text->xo_
+				&& x <= text->xo_ + text->width
+				&& y >= text->yo_ 
+				&& y <= text->yo_ + text->height)
+		{
+			lyxerr << "### found text # " << i << std::endl;	
+			return i;
+		}
+	}
+	return -1;
+}
+
+
 bool isEditableInset(InsetOld const * i)
 {
 	return i && i->editable();
@@ -124,3 +150,5 @@ bool isHighlyEditableInset(InsetOld const * i)
 {
 	return i && i->editable() == InsetOld::HIGHLY_EDITABLE;
 }
+
+

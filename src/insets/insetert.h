@@ -49,8 +49,6 @@ public:
 	///
 	std::string const editMessage() const;
 	///
-	bool insertInset(BufferView *, InsetOld *);
-	///
 	bool insetAllowed(InsetOld::Code code) const;
 	///
 	int latex(Buffer const &, std::ostream &,

@@ -65,17 +65,6 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & in)
 }
 
 
-bool InsetCollapsable::insertInset(BufferView * bv, InsetOld * in)
-{
-	if (!insetAllowed(in->lyxCode())) {
-		lyxerr << "InsetCollapsable::InsertInset: "
-			"Unable to insert inset." << endl;
-		return false;
-	}
-	return inset.insertInset(bv, in);
-}
-
-
 void InsetCollapsable::write(Buffer const & buf, ostream & os) const
 {
 	os << "collapsed " << (status_ == Collapsed ? "true" : "false") << "\n";

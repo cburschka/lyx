@@ -252,7 +252,6 @@ string const freefont2string()
 }
 
 
-
 InsetOld * LyXText::checkInsetHit(int x, int y)
 {
 	ParagraphList::iterator pit;

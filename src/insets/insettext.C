@@ -207,7 +207,7 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 
 	if (!owner())
 		x += scroll();
-	y += bv->top_y() - text_.firstRow()->ascent_of_text();
+	y += bv->top_y() - text_.ascent();
 
 	text_.draw(pi, x, y);
 
@@ -390,16 +390,6 @@ void InsetText::getCursorPos(int & x, int & y) const
 {
 	x = text_.cursor.x() + TEXT_TO_INSET_OFFSET;
 	y = text_.cursor.y() - dim_.asc + TEXT_TO_INSET_OFFSET;
-}
-
-
-bool InsetText::insertInset(BufferView * bv, InsetOld * inset)
-{
-	inset->setOwner(this);
-	text_.insertInset(inset);
-	updateLocal(bv);
-#warning should we mark the buffer dirty?
-	return true;
 }
 
 

@@ -12,14 +12,10 @@
 #ifndef INSET_TOC_H
 #define INSET_TOC_H
 
-
 #include "insetcommand.h"
 
-class MetricsInfo;
 
-
-/** Used to insert table of contents
- */
+/// Used to insert table of contents and similar lists
 class InsetTOC : public InsetCommand {
 public:
 	///
@@ -28,10 +24,6 @@ public:
 	~InsetTOC();
 	///
 	std::auto_ptr<InsetBase> clone() const;
-	///
-	void metrics(MetricsInfo &, Dimension &) const;
-	///
-	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	std::string const getScreenLabel(Buffer const &) const;
 	///
