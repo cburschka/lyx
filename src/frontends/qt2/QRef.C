@@ -157,7 +157,7 @@ void QRef::updateRefs()
 	if (at_ref_)
 		gotoRef();
 	dialog_->refsLB->clear();
-	refs_ = controller().getLabelList();
+	refs_ = controller().getLabelList(string());
 	dialog_->sortCB->setEnabled(!refs_.empty());
 	dialog_->refsLB->setEnabled(!refs_.empty()); 
 	redoRefs();
