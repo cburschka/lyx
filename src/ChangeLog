@@ -1,4 +1,23 @@
 
+2004-02-11  André Pönitz  <poenitz@gmx.net>
+
+	* lyxfunc.C:
+	* BufferView.[Ch]:
+	* BufferView_pimpl.C: shift undo/redo handling
+
+	* cursor.[Ch]: fix mathed crash
+
+	* lyxfind.C:
+	* lyxtext.h: move selectionAsText to LCursor
+
+	* output_latex.C:
+	* paragraph.C:
+	* text.C:
+	* text2.C:
+	* text3.C: adjust
+
+	* rowpainter.C: fix excessive drawing
+
 2004-02-06  André Pönitz  <poenitz@gmx.net>
 
 	* BufferView.[Ch]:
