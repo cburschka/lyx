@@ -61,7 +61,7 @@ Toolbar "Standard" "on,top"
 	Item "Insert table" "tabular-insert 4 4"
 End
 
-Toolbar "Extra" "on,top"
+Toolbar "Extra" "off,top"
 	Item "Numbered list" "layout Enumerate"
 	Item "Itemized list" "layout Itemize"
 	Item "List" "layout List"
@@ -90,7 +90,7 @@ Toolbar "Extra" "on,top"
 	Item "Thesaurus" "thesaurus-entry"
 End
 
-Toolbar "Table" "table,bottom"
+Toolbar "Table" "off,table,bottom"
 	Item "Add row" "tabular-feature append-row"
 	Item "Add column" "tabular-feature append-column"
 	Item "Delete row" "tabular-feature delete-row"
@@ -115,7 +115,7 @@ Toolbar "Table" "table,bottom"
 	Item "Set multi-column" "tabular-feature multicolumn"
 End
 
-Toolbar "Math" "math,bottom"
+Toolbar "Math" "off,math,bottom"
 	Item "Show math panel" "math-panel"
 	Item "Set display mode" "math-display"
 	Item "Subscript" "math-subscript"
@@ -139,6 +139,6 @@ Toolbar "Math" "math,bottom"
 	Item "Delete column" "tabular-feature delete-column"
 End
 
-Toolbar "Command Buffer" "on,bottom"
+Toolbar "Command Buffer" "off,bottom"
 	Minibuffer
 End
