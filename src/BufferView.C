@@ -126,9 +126,8 @@ void BufferView::reload()
 
 void BufferView::resize()
 {
-	if (pimpl_->buffer_) {
+	if (pimpl_->buffer_)
 		pimpl_->resizeCurrentBuffer();
-	}
 }
 
 
@@ -327,6 +326,8 @@ bool BufferView::insertLyXFile(string const & filen)
 	lex.setStream(ifs);
 
 	bool res = true;
+
+	text->breakParagraph(buffer()->paragraphs);
 
 	if (c == '#') {
 		// FIXME: huh ? No we won't !

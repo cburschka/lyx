@@ -3,7 +3,6 @@
 #include "vc-backend.h"
 #include "debug.h"
 #include "buffer.h"
-#include "BufferView.h"
 #include "frontends/LyXView.h"
 #include "funcrequest.h"
 
@@ -44,15 +43,6 @@ int VCS::doVCCommand(string const & cmd, string const & path)
 	Path p(path);
 	int const ret = one.startscript(Systemcall::Wait, cmd);
 	return ret;
-}
-
-
-void VCS::reload()
-{
-	owner_->getUser()->reload();
-	/* Watch out ! We have deleted ourselves here
-	 * via the ->reload() !
-	 */
 }
 
 
@@ -172,7 +162,6 @@ void RCS::registrer(string const & msg)
 	cmd += OnlyFilename(owner_->fileName());
 	cmd += '"';
 	doVCCommand(cmd, owner_->filePath());
-	reload();
 }
 
 
@@ -181,7 +170,6 @@ void RCS::checkIn(string const & msg)
 	doVCCommand("ci -q -u -m\"" + msg + "\" \""
 		    + OnlyFilename(owner_->fileName()) + '"',
 		    owner_->filePath());
-	reload();
 }
 
 
@@ -191,7 +179,6 @@ void RCS::checkOut()
 	doVCCommand("co -q -l \""
 		    + OnlyFilename(owner_->fileName()) + '"',
 		    owner_->filePath());
-	reload();
 }
 
 
@@ -202,7 +189,6 @@ void RCS::revert()
 		    owner_->filePath());
 	// We ignore changes and just reload!
 	owner_->markClean();
-	reload();
 }
 
 
@@ -311,7 +297,6 @@ void CVS::registrer(string const & msg)
 	doVCCommand("cvs -q add -m \"" + msg + "\" \""
 		    + OnlyFilename(owner_->fileName()) + '"',
 		    owner_->filePath());
-	reload();
 }
 
 
@@ -320,7 +305,6 @@ void CVS::checkIn(string const & msg)
 	doVCCommand("cvs -q commit -m \"" + msg + "\" \""
 		    + OnlyFilename(owner_->fileName()) + '"',
 		    owner_->filePath());
-	reload();
 }
 
 
@@ -340,7 +324,6 @@ void CVS::revert()
 	doVCCommand("rm -f \"" + fil + "\"; cvs update \"" + fil + '"',
 		    owner_->filePath());
 	owner_->markClean();
-	reload();
 }
 
 

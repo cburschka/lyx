@@ -32,7 +32,6 @@
 #include "errorlist.h"
 #include "Lsstream.h"
 #include "format.h"
-#include "BufferView.h"
 #include "ParagraphParameters.h"
 #include "iterators.h"
 #include "lyxtextclasslist.h"
@@ -124,7 +123,7 @@ const int LYX_FORMAT = 224;
 Buffer::Buffer(string const & file, bool ronly)
 	: niceFile(true), lyx_clean(true), bak_clean(true),
 	  unnamed(false), read_only(ronly),
-	  filename_(file), users(0)
+	  filename_(file)
 {
 	lyxerr[Debug::INFO] << "Buffer::Buffer()" << endl;
 	filepath_ = OnlyPath(file);
@@ -145,11 +144,6 @@ Buffer::~Buffer()
 	lyxerr[Debug::INFO] << "Buffer::~Buffer()" << endl;
 	// here the buffer should take care that it is
 	// saved properly, before it goes into the void.
-
-	// make sure that views using this buffer
-	// forgets it.
-	if (users)
-		users->buffer(0);
 
 	if (!tmppath.empty() && destroyDir(tmppath) != 0) {
 		Alert::warning(_("Could not remove temporary directory"),
@@ -209,9 +203,7 @@ void Buffer::setReadonly(bool flag)
 {
 	if (read_only != flag) {
 		read_only = flag;
-		updateTitles();
-		if (users)
-			users->owner()->getDialogs().updateBufferDependent(false);
+		readonly(flag);
 	}
 }
 
@@ -219,24 +211,6 @@ void Buffer::setReadonly(bool flag)
 AuthorList & Buffer::authors()
 {
 	return params.authorlist;
-}
-
-
-/// Update window titles of all users
-// Should work on a list
-void Buffer::updateTitles() const
-{
-	if (users)
-		users->owner()->updateWindowTitle();
-}
-
-
-/// Reset autosave timer of all users
-// Should work on a list
-void Buffer::resetAutosaveTimers() const
-{
-	if (users)
-		users->owner()->resetAutosaveTimer();
 }
 
 
@@ -321,9 +295,6 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 			params.textclass = 0;
 		}
 	} else {
-		// We are inserting into an existing document
-		users->text->breakParagraph(paragraphs);
-
 		// We don't want to adopt the parameters from the
 		// document we insert, so read them into a temporary buffer
 		// and then discard it
@@ -1904,8 +1875,6 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 // Other flags: -wall -v0 -x
 int Buffer::runChktex()
 {
-	if (!users->text) return 0;
-
 	busy(true);
 
 	// get LaTeX-Filename
@@ -2087,22 +2056,6 @@ bool Buffer::dispatch(int action, string const & argument, bool * result)
 }
 
 
-void Buffer::resizeInsets(BufferView * bv)
-{
-	/// then remove all LyXText in text-insets
-	for_each(paragraphs.begin(), paragraphs.end(),
-		 boost::bind(&Paragraph::resizeInsetsLyXText, _1, bv));
-}
-
-
-void Buffer::redraw()
-{
-#warning repaint needed here, or do you mean update() ?
-	users->repaint();
-	users->fitCursor();
-}
-
-
 void Buffer::changeLanguage(Language const * from, Language const * to)
 {
 	lyxerr << "Changing Language!" << endl;
@@ -2222,19 +2175,6 @@ ParConstIterator Buffer::par_iterator_end() const
 }
 
 
-
-void Buffer::addUser(BufferView * u)
-{
-	users = u;
-}
-
-
-void Buffer::delUser(BufferView *)
-{
-	users = 0;
-}
-
-
 Language const * Buffer::getLanguage() const
 {
 	return params.language;
@@ -2325,12 +2265,6 @@ string const & Buffer::filePath() const
 bool Buffer::isReadonly() const
 {
 	return read_only;
-}
-
-
-BufferView * Buffer::getUser() const
-{
-	return users;
 }
 
 

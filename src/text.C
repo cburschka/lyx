@@ -1495,8 +1495,8 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	// paragraph before or behind and we should react on that one
 	// but we can fix this in 1.3.0 (Jug 20020509)
 	bool const isempty = (cursor.par()->allowEmpty() && cursor.par()->empty());
-	::breakParagraph(bv()->buffer()->params, paragraphs, cursor.par(), cursor.pos(),
-		       keep_layout);
+	::breakParagraph(bv()->buffer()->params, paragraphs, cursor.par(), 
+			 cursor.pos(), keep_layout);
 
 	// well this is the caption hack since one caption is really enough
 	if (layout->labeltype == LABEL_SENSITIVE) {

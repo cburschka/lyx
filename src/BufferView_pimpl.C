@@ -138,6 +138,13 @@ void BufferView::Pimpl::addError(ErrorItem const & ei)
 }
 
 
+void BufferView::Pimpl::showReadonly(bool)
+{
+	owner_->updateWindowTitle();
+	owner_->getDialogs().updateBufferDependent(false);
+}
+
+
 void BufferView::Pimpl::connectBuffer(Buffer & buf)
 {
 	if (errorConnection_.connected())
@@ -146,6 +153,9 @@ void BufferView::Pimpl::connectBuffer(Buffer & buf)
 	errorConnection_ = buf.error.connect(boost::bind(&BufferView::Pimpl::addError, this, _1));
 	messageConnection_ = buf.message.connect(boost::bind(&LyXView::message, owner_, _1));
 	busyConnection_ = buf.busy.connect(boost::bind(&LyXView::busy, owner_, _1));
+	titleConnection_ = buf.updateTitles.connect(boost::bind(&LyXView::updateWindowTitle, owner_));
+	timerConnection_ = buf.resetAutosaveTimers.connect(boost::bind(&LyXView::resetAutosaveTimer, owner_));
+	readonlyConnection_ = buf.readonly.connect(boost::bind(&BufferView::Pimpl::showReadonly, this, _1));
 }
 
 
@@ -154,6 +164,9 @@ void BufferView::Pimpl::disconnectBuffer()
 	errorConnection_.disconnect();
 	messageConnection_.disconnect();
 	busyConnection_.disconnect();
+	titleConnection_.disconnect();
+	timerConnection_.disconnect();
+	readonlyConnection_.disconnect();
 }
 
 
@@ -246,8 +259,6 @@ void BufferView::Pimpl::buffer(Buffer * b)
 			    << b << ')' << endl;
 	if (buffer_) {
 		disconnectBuffer();
-		buffer_->delUser(bv_);
-
 		// Put the old text into the TextCache, but
 		// only if the buffer is still loaded.
 		// Also set the owner of the test to 0
@@ -273,7 +284,6 @@ void BufferView::Pimpl::buffer(Buffer * b)
 
 	if (buffer_) {
 		lyxerr[Debug::INFO] << "Buffer addr: " << buffer_ << endl;
-		buffer_->addUser(bv_);
 		connectBuffer(*buffer_);
 
 		// If we don't have a text object for this, we make one
@@ -381,7 +391,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		selection = bv_->text->selection.set();
 		mark_set = bv_->text->selection.mark();
 		the_locking_inset = bv_->theLockingInset();
-		buffer_->resizeInsets(bv_);
+		resizeInsets(bv_);
 		bv_->text->init(bv_);
 	} else {
 		lyxerr << "text not available!\n";
@@ -399,11 +409,11 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 			if (lyxerr.debugging())
 				textcache.show(lyxerr, "resizeCurrentBuffer");
 
-			buffer_->resizeInsets(bv_);
+			resizeInsets(bv_);
 		} else {
 			lyxerr << "no text in cache!\n";
 			bv_->text = new LyXText(bv_);
-			buffer_->resizeInsets(bv_);
+			resizeInsets(bv_);
 			bv_->text->init(bv_);
 		}
 
@@ -605,7 +615,7 @@ void BufferView::Pimpl::workAreaResize()
 				textcache.show(lyxerr, "Expose delete all");
 			textcache.clear();
 			// FIXME: this is already done in resizeCurrentBuffer() ??
-			buffer_->resizeInsets(bv_);
+			resizeInsets(bv_);
 		} else if (heightChange) {
 			// fitCursor() ensures we don't jump back
 			// to the start of the document on vertical
@@ -946,11 +956,12 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 
 	string const disp_fn = MakeDisplayPath(filename);
 	owner_->message(bformat(_("Inserting document %1$s..."), disp_fn));
-	bool const res = bv_->insertLyXFile(filename);
-	if (res)
-		owner_->message(bformat(_("Document %1$s inserted."), disp_fn));
+	if (bv_->insertLyXFile(filename))
+		owner_->message(bformat(_("Document %1$s inserted."), 
+					disp_fn));
 	else
-		owner_->message(bformat(_("Could not insert document %1$s"), disp_fn));
+		owner_->message(bformat(_("Could not insert document %1$s"), 
+					disp_fn));
 
 #warning remove this if update() is gone
 	bv_->text->fullRebreak();

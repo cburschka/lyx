@@ -799,7 +799,27 @@ void LyXFunc::dispatch(int ac, bool verbose)
 	dispatch(lyxaction.retrieveActionArg(ac), verbose);
 }
 
+namespace {
+	bool ensureBufferClean(BufferView * bv) {
 
+		Buffer & buf = *bv->buffer();
+		if (buf.isClean())
+			return true;
+		
+		string const file = MakeDisplayPath(buf.fileName(), 30);
+		string text = bformat(_("The document %1$s has unsaved "
+					"changes.\n\nDo you want to save "
+					"the document?"), file);
+		int const ret = Alert::prompt(_("Save changed document?"),
+					      text, 0, 1, _("&Save"), 
+					      _("&Cancel"));
+
+		if (ret == 0) 
+			bv->owner()->dispatch(FuncRequest(LFUN_MENUWRITE));
+
+		return buf.isClean();
+	}
+} //namespace anon
 
 void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 {
@@ -1211,36 +1231,50 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		// --- version control -------------------------------
 	case LFUN_VC_REGISTER:
 	{
-		if (!owner->buffer()->lyxvc.inUse())
+		if (!ensureBufferClean(view()))
+			break;
+		if (!owner->buffer()->lyxvc.inUse()) {
 			owner->buffer()->lyxvc.registrer();
+			view()->reload();
+		}
 	}
 	break;
 
 	case LFUN_VC_CHECKIN:
 	{
+		if (!ensureBufferClean(view()))
+			break;
 		if (owner->buffer()->lyxvc.inUse()
-		    && !owner->buffer()->isReadonly())
+		    && !owner->buffer()->isReadonly()) {
 			owner->buffer()->lyxvc.checkIn();
+			view()->reload();
+		}
 	}
 	break;
 
 	case LFUN_VC_CHECKOUT:
 	{
+		if (!ensureBufferClean(view()))
+			break;
 		if (owner->buffer()->lyxvc.inUse()
-		    && owner->buffer()->isReadonly())
+		    && owner->buffer()->isReadonly()) {
 			owner->buffer()->lyxvc.checkOut();
+			view()->reload();
+		}
 	}
 	break;
 
 	case LFUN_VC_REVERT:
 	{
 		owner->buffer()->lyxvc.revert();
+		view()->reload();
 	}
 	break;
 
 	case LFUN_VC_UNDO:
 	{
 		owner->buffer()->lyxvc.undoLast();
+		view()->reload();
 	}
 	break;
 
@@ -1875,6 +1909,7 @@ void LyXFunc::closeBuffer()
 {
 	if (bufferlist.close(owner->buffer(), true) && !quitting) {
 		if (bufferlist.empty()) {
+			view()->buffer(0);
 			// need this otherwise SEGV may occur while trying to
 			// set variables that don't exist
 			// since there's no current buffer

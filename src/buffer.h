@@ -25,9 +25,9 @@
 #include "errorlist.h"
 
 #include <boost/scoped_ptr.hpp>
+#include <boost/signals/signal0.hpp>
 #include <boost/signals/signal1.hpp>
 
-class BufferView;
 class LyXRC;
 class TeXErrors;
 class LaTeXFeatures;
@@ -69,29 +69,6 @@ public:
 	/// Maybe we know the function already by number...
 	bool dispatch(int ac, string const & argument, bool * result = 0);
 
-	///
-	void resizeInsets(BufferView *);
-
-	/// Update window titles of all users.
-	void updateTitles() const;
-
-	/// Reset autosave timers for all users.
-	void resetAutosaveTimers() const;
-
-	/** Adds the BufferView to the users list.
-	    Later this func will insert the \c BufferView into a real list,
-	    not just setting a pointer.
-	*/
-	void addUser(BufferView * u);
-
-	/** Removes the #BufferView# from the users list.
-	    Since we only can have one at the moment, we just reset it.
-	*/
-	void delUser(BufferView *);
-
-	///
-	void redraw();
-
 	/// Load the autosaved file.
 	void loadAutoSaveFile();
 
@@ -132,8 +109,15 @@ public:
 	boost::signal1<void, ErrorItem> error;
 	/// This signal is emitted when some message shows up.
 	boost::signal1<void, string> message;
-	/// This signal is emmtted when the buffer busy status change.
+	/// This signal is emitted when the buffer busy status change.
 	boost::signal1<void, bool> busy;
+	/// This signal is emitted when the buffer readonly status change.
+	boost::signal1<void, bool> readonly;
+	/// Update window titles of all users.
+	boost::signal0<void> updateTitles;
+	/// Reset autosave timers for all users.
+	boost::signal0<void> resetAutosaveTimers;
+
 
 	/** Save file.
 	    Takes care of auto-save files and backup file if requested.
@@ -264,10 +248,6 @@ public:
 	///
 	void getLabelList(std::vector<string> &) const;
 
-	/** This will clearly have to change later. Later we can have more
-	    than one user per buffer. */
-	BufferView * getUser() const;
-
 	///
 	void changeLanguage(Language const * from, Language const * to);
 
@@ -335,14 +315,6 @@ private:
 
 	/// Format number of buffer
 	int file_format;
-	/** A list of views using this buffer.
-	    Why not keep a list of the BufferViews that use this buffer?
-
-	    At least then we don't have to do a lot of magic like:
-	    #buffer->lyx_gui->bufferview->updateLayoutChoice#. Just ask each
-	    of the buffers in the list of users to do a #updateLayoutChoice#.
-	*/
-	BufferView * users;
 	///
 	boost::scoped_ptr<Messages> messages_;
 public:

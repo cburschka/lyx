@@ -206,9 +206,16 @@ InsetBase * InsetTabular::clone() const
 }
 
 
+Buffer const * InsetTabular::buffer() const
+{
+	return buffer_;
+}
+
+
 BufferView * InsetTabular::view() const
 {
-	return buffer_->getUser();
+	Assert(false);
+	return 0;
 }
 
 
@@ -2910,9 +2917,7 @@ int InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 	if (!lex.isOK())
 		return -1;
 
-	// FIXME: even current_view would be better than this.
-	BufferView * const bv = inset.view();
-	Buffer const * const buffer = bv ? bv->buffer() : 0;
+	Buffer const * const buffer = inset.buffer();
 	if (buffer)
 		inset.read(buffer, lex);
 
@@ -2924,9 +2929,7 @@ int InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 
 string const InsetTabularMailer::params2string(InsetTabular const & inset)
 {
-	// FIXME: even current_view would be better than this.
-	BufferView * const bv = inset.view();
-	Buffer const * const buffer = bv ? bv->buffer() : 0;
+	Buffer const * const buffer = inset.buffer();
 	if (!buffer)
 		return string();
 

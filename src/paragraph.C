@@ -1253,14 +1253,12 @@ void Paragraph::setInsetOwner(UpdatableInset * inset)
 
 void Paragraph::deleteInsetsLyXText(BufferView * bv)
 {
-	// then the insets
 	insetlist.deleteInsetsLyXText(bv);
 }
 
 
 void Paragraph::resizeInsetsLyXText(BufferView * bv)
 {
-	// then the insets
 	insetlist.resizeInsetsLyXText(bv);
 }
 

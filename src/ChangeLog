@@ -1,3 +1,15 @@
+2003-07-10  Alfredo Brauntein  <abraunst@libero.it>
+
+	* buffer.[Ch]: take out all bv-related from buffer
+	* BufferView.C: 
+	* BufferView_pimpl.[Ch]: connect to new signals
+	* CutAndPaste.C: removed useless asserts
+	* bufferview_funcs.[Ch] (resizeInsets): moved from buffer
+	* lyxvc.[Ch]:
+	* vc-backend.[Ch]:
+	* lyxfunc.C: moved view-related funciontality from vc here
+	* paragraph.C: removed outdated comments
+	* text.C: ws
 
 2003-07-10  André Pönitz  <poenitz@gmx.net>
 

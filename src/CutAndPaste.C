@@ -181,8 +181,6 @@ bool CutAndPaste::copySelection(ParagraphList::iterator startpit,
 				ParagraphList::iterator endpit,
 				int start, int end, textclass_type tc)
 {
-	Assert(&*startpit);
-	Assert(&*endpit);
 	Assert(0 <= start && start <= startpit->size());
 	Assert(0 <= end && end <= endpit->size());
 	Assert(startpit != endpit || start <= end);

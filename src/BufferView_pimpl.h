@@ -119,12 +119,20 @@ private:
 	boost::signals::connection messageConnection_;
 	/// buffer busy status signal connection
 	boost::signals::connection busyConnection_;
+	/// buffer title changed signal connection
+	boost::signals::connection titleConnection_;
+	/// buffer reset timers signal connection
+	boost::signals::connection timerConnection_;
+	/// buffer readonly status changed signal connection
+	boost::signals::connection readonlyConnection_;
 	/// connect to signals in the given buffer
 	void connectBuffer(Buffer & buf);
 	/// disconnect from signals in the given buffer
 	void disconnectBuffer();
 	/// track changes for the document
 	void trackChanges();
+	/// notify readonly status
+	void showReadonly(bool);
 
 	///
 	friend class BufferView;

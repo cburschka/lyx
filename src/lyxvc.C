@@ -4,7 +4,6 @@
 #include "vc-backend.h"
 #include "debug.h"
 #include "buffer.h"
-#include "BufferView.h"
 #include "gettext.h"
 #include "funcrequest.h"
 
@@ -21,10 +20,6 @@ using namespace lyx::support;
 using std::endl;
 using std::pair;
 
-
-/* WARNING: Several of the vcs-> methods end up
- * deleting this object via BufferView::reload() !
- */
 
 LyXVC::LyXVC()
 {
@@ -76,25 +71,6 @@ void LyXVC::buffer(Buffer * buf)
 }
 
 
-bool LyXVC::ensureClean()
-{
-	if (owner_->isClean())
-		return true;
-
-	string const file = MakeDisplayPath(owner_->fileName(), 30);
-	string text = bformat(_("The document %1$s has unsaved changes.\n\n"
-		"Do you want to save the document?"), file);
-	int const ret = Alert::prompt(_("Save changed document?"),
-		text, 0, 1, _("&Save"), _("&Cancel"));
-
-	if (ret == 0) {
-		vcs->owner()->getUser()->owner()->dispatch(FuncRequest(LFUN_MENUWRITE));
-	}
-
-	return owner_->isClean();
-}
-
-
 void LyXVC::registrer()
 {
 	string const filename = owner_->fileName();
@@ -102,8 +78,8 @@ void LyXVC::registrer()
 	// there must be a file to save
 	if (!IsFileReadable(filename)) {
 		Alert::error(_("Document not saved"),
-			_("You must save the document "
-			  "before it can be registered."));
+			     _("You must save the document "
+			       "before it can be registered."));
 		return;
 	}
 
@@ -129,11 +105,6 @@ void LyXVC::registrer()
 		vcs->owner(owner_);
 	}
 
-	// Maybe the save fails, or we answered "no". In both cases,
-	// the document will be dirty, and we abort.
-	if (!ensureClean())
-		return;
-
 	lyxerr[Debug::LYXVC] << "LyXVC: registrer" << endl;
 	pair<bool, string> tmp =
 		Alert::askForText(_("LyX VC: Initial description"),
@@ -150,16 +121,6 @@ void LyXVC::registrer()
 
 void LyXVC::checkIn()
 {
-	// If the document is changed, we might want to save it
-	if (!vcs->owner()->isClean()) {
-		vcs->owner()->getUser()->owner()
-			->dispatch(FuncRequest(LFUN_MENUWRITE));
-	}
-
-	// Maybe the save fails, or we answered "no". In both cases,
-	// the document will be dirty, and we abort.
-	if (!vcs->owner()->isClean())
-		return;
 
 	lyxerr[Debug::LYXVC] << "LyXVC: checkIn" << endl;
 	pair<bool, string> tmp = Alert::askForText(_("LyX VC: Log Message"));
@@ -177,8 +138,6 @@ void LyXVC::checkIn()
 void LyXVC::checkOut()
 {
 	lyxerr[Debug::LYXVC] << "LyXVC: checkOut" << endl;
-	if (!ensureClean())
-		return;
 
 	vcs->checkOut();
 }

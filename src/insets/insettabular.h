@@ -225,6 +225,8 @@ public:
 
 	///
 	virtual BufferView * view() const;
+	///
+	Buffer const * buffer() const;
 
 	/// set the owning buffer
 	void buffer(Buffer * b);

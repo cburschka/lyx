@@ -35,6 +35,8 @@
 #include "Lsstream.h"
 
 #include "insets/updatableinset.h"
+#include <boost/bind.hpp>
+#include <algorithm>
 
 using namespace lyx::support;
 
@@ -47,6 +49,16 @@ bool toggleall(false);
 }
 
 namespace bv_funcs {
+
+
+void resizeInsets(BufferView * bv)
+{
+	ParagraphList & paragraphs = bv->buffer()->paragraphs;
+	/// then remove all LyXText in text-insets
+	std::for_each(paragraphs.begin(), paragraphs.end(),
+		      boost::bind(&Paragraph::resizeInsetsLyXText, _1, bv));
+}
+
 
 // Set data using font and toggle
 // If successful, returns true
