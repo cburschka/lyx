@@ -309,6 +309,13 @@ test $dvi_to_pdf_command = "dvipdfm" && dvi_to_pdf_command="dvipdfm \$\$i"
 # We have a script to convert previewlyx to ppm or to png
 lyxpreview_to_bitmap_command='python $$s/lyxpreview2bitmap.py'
 
+# Search for 'dvipng'. Only enable the conversion from lyxpreview -> png
+# if dvipng is found.
+SEARCH_PROG([for dvipng],DVIPNG,dvipng)
+
+test "$DVIPNG" = "dvipng" && \
+	lyxpreview_to_png_command = $lyxpreview_to_bitmap_command
+
 # Search a *roff program (used to translate tables in ASCII export)
 LYXRC_PROG([for a *roff formatter], \ascii_roff_command, dnl
   'groff -t -Tlatin1 $$FName' nroff,dnl
@@ -565,7 +572,7 @@ cat >$outfile <<EOF
 \\converter linuxdoc   lyx        "$linuxdoc_to_lyx_command"	""
 \\converter literate   latex      "$literate_to_tex_command"	""
 \\converter literate   lyx        "$literate_to_lyx_command"	""
-\\converter lyxpreview png        "$lyxpreview_to_bitmap_command"	""
+\\converter lyxpreview png        "$lyxpreview_to_png_command"	""
 \\converter lyxpreview ppm        "$lyxpreview_to_bitmap_command"	""
 \\converter ps         fax        "$fax_command"	""
 \\converter ps         pdf        "$ps_to_pdf_command"	""

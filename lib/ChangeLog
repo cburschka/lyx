@@ -1,3 +1,8 @@
+2004-04-27  Angus Leeming  <leeming@lyx.org>
+
+	* configure.m4: don't create a lyxpreview -> png converter if
+	dvipng is not found.
+
 2004-04-26  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* CREDITS: add Huang Ying.
