@@ -263,7 +263,8 @@ def update_language(header):
         header.append('\\language english')
         return
     # This is the lyx behaviour: defaults to english
-    header[i] = '\\language english'
+    if string.split(header[i])[1] == 'default':
+        header[i] = '\\language english'
     return
 
 def convert(header,body):
