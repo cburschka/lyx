@@ -42,13 +42,13 @@ void MathDotsInset::metrics(MathMetricsInfo const & mi) const
 } 
 
 
-void MathDotsInset::write(MathWriteInfo & os) const
+void MathDotsInset::write(WriteStream & os) const
 {
 	os << '\\' << name_.c_str() << ' ';
 }
 
 
-void MathDotsInset::writeNormal(NormalStream & os) const
+void MathDotsInset::normalize(NormalStream & os) const
 {
 	os << "[" << name_.c_str() << "] ";
 }

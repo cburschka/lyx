@@ -55,6 +55,14 @@ MathAtom::~MathAtom()
 }
 
 
+void MathAtom::reset(MathInset * p)
+{
+	done();
+	nucleus_ = p;
+}
+
+
+
 void MathAtom::done()
 {
 	delete nucleus_;

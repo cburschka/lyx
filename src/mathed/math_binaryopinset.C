@@ -45,13 +45,13 @@ void MathBinaryOpInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathBinaryOpInset::write(MathWriteInfo & os) const
+void MathBinaryOpInset::write(WriteStream & os) const
 {
 	os << '{' << cell(0) << op_ << cell(1) << '}';
 }
 
 
-void MathBinaryOpInset::writeNormal(NormalStream & os) const
+void MathBinaryOpInset::normalize(NormalStream & os) const
 {
 	os << "[binop " << op_ << ' ' << cell(0) << ' ' << cell(1) << ']';
 }

@@ -1,6 +1,7 @@
 
 #include "math_inset.h"
 #include "math_mathmlstream.h"
+#include "math_extern.h"
 
 
 MathMLStream::MathMLStream(std::ostream & os)
@@ -17,7 +18,7 @@ MathMLStream & MathMLStream::operator<<(MathInset const * p)
 
 MathMLStream & MathMLStream::operator<<(MathArray const & ar)
 {
-	ar.mathmlize(*this);
+	mathmlize(ar, *this);
 	return *this;		
 }
 
@@ -76,7 +77,7 @@ MapleStream & MapleStream::operator<<(MathInset const * p)
 
 MapleStream & MapleStream::operator<<(MathArray const & ar)
 {
-	ar.maplize(*this);
+	maplize(ar, *this);
 	return *this;		
 }
 
@@ -95,6 +96,12 @@ MapleStream & MapleStream::operator<<(char c)
 }
 
 
+MapleStream & MapleStream::operator<<(int i)
+{
+	os_ << i;
+	return *this;		
+}
+
 
 //////////////////////////////////////////////////////////////////////
 
@@ -108,7 +115,7 @@ OctaveStream & OctaveStream::operator<<(MathInset const * p)
 
 OctaveStream & OctaveStream::operator<<(MathArray const & ar)
 {
-	ar.octavize(*this);
+	octavize(ar, *this);
 	return *this;		
 }
 
@@ -132,14 +139,14 @@ OctaveStream & OctaveStream::operator<<(char c)
 
 NormalStream & NormalStream::operator<<(MathInset const * p)
 {
-	p->writeNormal(*this);
+	p->normalize(*this);
 	return *this;		
 }
 
 
 NormalStream & NormalStream::operator<<(MathArray const & ar)
 {
-	ar.writeNormal(*this);
+	normalize(ar, *this);
 	return *this;		
 }
 
@@ -162,39 +169,39 @@ NormalStream & NormalStream::operator<<(char c)
 //////////////////////////////////////////////////////////////////////
 
 
-MathWriteInfo::MathWriteInfo
+WriteStream::WriteStream
 		(Buffer const * buffer_, std::ostream & os_, bool fragile_)
 	: buffer(buffer_), os(os_), fragile(fragile_)
 {}
 
 
-MathWriteInfo::MathWriteInfo(std::ostream & os_)
+WriteStream::WriteStream(std::ostream & os_)
 	: buffer(0), os(os_), fragile(false)
 {}
 
 
-MathWriteInfo & MathWriteInfo::operator<<(MathInset const * p)
+WriteStream & WriteStream::operator<<(MathInset const * p)
 {
 	p->write(*this);
 	return *this;		
 }
 
 
-MathWriteInfo & MathWriteInfo::operator<<(MathArray const & ar)
+WriteStream & WriteStream::operator<<(MathArray const & ar)
 {
-	ar.write(*this);
+	write(ar, *this);
 	return *this;		
 }
 
 
-MathWriteInfo & MathWriteInfo::operator<<(char const * s)
+WriteStream & WriteStream::operator<<(char const * s)
 {
 	os << s;
 	return *this;		
 }
 
 
-MathWriteInfo & MathWriteInfo::operator<<(char c)
+WriteStream & WriteStream::operator<<(char c)
 {
 	os << c;
 	return *this;		

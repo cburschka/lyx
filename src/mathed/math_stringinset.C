@@ -55,7 +55,7 @@ void MathStringInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathStringInset::write(MathWriteInfo & os) const
+void MathStringInset::write(WriteStream & os) const
 {
 	if (math_font_name(code_)) 
 		os << '\\' << math_font_name(code_) << '{' << str_.c_str() << '}';
@@ -64,7 +64,7 @@ void MathStringInset::write(MathWriteInfo & os) const
 }
 
 
-void MathStringInset::writeNormal(NormalStream & os) const
+void MathStringInset::normalize(NormalStream & os) const
 {
 	os << "[string " << str_.c_str() << ' ' << "mathalpha" << "]";
 }

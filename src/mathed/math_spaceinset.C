@@ -21,14 +21,14 @@ MathInset * MathSpaceInset::clone() const
 }
 
 
-void MathSpaceInset::write(MathWriteInfo & os) const
+void MathSpaceInset::write(WriteStream & os) const
 {
 	if (space_ >= 0 && space_ < 6)
 		os << '\\' << latex_mathspace[space_] << ' ';
 }
 
 
-void MathSpaceInset::writeNormal(NormalStream & os) const
+void MathSpaceInset::normalize(NormalStream & os) const
 {
 	os << "[space " << space_ << "] ";
 }

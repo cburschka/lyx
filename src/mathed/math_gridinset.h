@@ -64,10 +64,6 @@ public:
 	///
 	MathGridInset(int m, int n, char valign, string const & halign);
 	///
-	void write(MathWriteInfo & os) const;
-	///
-	void writeNormal(NormalStream &) const;
-	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
 	void draw(Painter &, int x, int y) const;
@@ -150,11 +146,17 @@ public:
 	void setDefaults();
 
 	///
+	void write(WriteStream & os) const;
+	///
+	void normalize(NormalStream &) const;
+/*
+	///
 	void maplize(MapleStream &) const;
 	///
 	void mathmlize(MathMLStream &) const;
 	///
 	void octavize(OctaveStream &) const;
+*/
 
 protected:
 	/// returns proper 'end of line' code for LaTeX

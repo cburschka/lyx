@@ -14,13 +14,13 @@ MathInset * MathNotInset::clone() const
 }
 
 
-void MathNotInset::write(MathWriteInfo & os) const
+void MathNotInset::write(WriteStream & os) const
 {
 	os << "\\not ";
 }
 
 
-void MathNotInset::writeNormal(NormalStream & os) const
+void MathNotInset::normalize(NormalStream & os) const
 {
 	os << "[not] ";
 }

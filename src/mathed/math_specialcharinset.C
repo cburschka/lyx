@@ -48,13 +48,13 @@ void MathSpecialCharInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathSpecialCharInset::write(MathWriteInfo & os) const
+void MathSpecialCharInset::write(WriteStream & os) const
 {
 	os << "\\" << char_;
 }
 
 
-void MathSpecialCharInset::writeNormal(NormalStream & os) const
+void MathSpecialCharInset::normalize(NormalStream & os) const
 {
 	os << "\\" << char_;
 }

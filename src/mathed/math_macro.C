@@ -155,13 +155,13 @@ void MathMacro::dump() const
 	lyxerr << "\n macro: '" << this << "'\n";
 	lyxerr << " name: '" << name() << "'\n";
 	lyxerr << " template: '";
-	MathWriteInfo wi(lyxerr);
+	WriteStream wi(lyxerr);
 	tmplate_->write(wi);
 	lyxerr << "'\n";
 }
 
 
-void MathMacro::write(MathWriteInfo & os) const
+void MathMacro::write(WriteStream & os) const
 {
 	os << '\\' << name();
 	for (idx_type i = 0; i < nargs(); ++i)
@@ -171,14 +171,12 @@ void MathMacro::write(MathWriteInfo & os) const
 }
 
 
-void MathMacro::writeNormal(NormalStream & os) const
+void MathMacro::normalize(NormalStream & os) const
 {
 	os << "[macro " << name() << " ";
-	for (idx_type i = 0; i < nargs(); ++i) {
-		cell(i).writeNormal(os);
-		os << ' ';
-	}
-	os << "] ";
+	for (idx_type i = 0; i < nargs(); ++i) 
+		os << cell(i) << ' ';
+	os << ']';
 }
 
 

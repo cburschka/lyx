@@ -17,13 +17,13 @@ MathInset * MathExFuncInset::clone() const
 }
 
 
-void MathExFuncInset::write(MathWriteInfo & os) const
+void MathExFuncInset::write(WriteStream & os) const
 {
 	os << '\\' << name_.c_str() << '{' << cell(0) << '}';
 }
 
 
-void MathExFuncInset::writeNormal(NormalStream & os) const
+void MathExFuncInset::normalize(NormalStream & os) const
 {
 	os << '[' << name_.c_str() << ' ' << cell(0) << ']';
 }

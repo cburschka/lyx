@@ -272,14 +272,14 @@ bool MathScriptInset::idxLeft(MathInset::idx_type &,
 }
 
 
-void MathScriptInset::write(MathWriteInfo & os) const
+void MathScriptInset::write(WriteStream & os) const
 {  
 	//lyxerr << "unexpected call to MathScriptInset::write()\n";
 	write(0, os);
 }
 
 
-void MathScriptInset::write(MathInset const * nuc, MathWriteInfo & os) const
+void MathScriptInset::write(MathInset const * nuc, WriteStream & os) const
 {
 	if (nuc) {
 		os << nuc;
@@ -301,14 +301,14 @@ void MathScriptInset::write(MathInset const * nuc, MathWriteInfo & os) const
 }
 
 
-void MathScriptInset::writeNormal(NormalStream & os) const
+void MathScriptInset::normalize(NormalStream & os) const
 {  
-	//lyxerr << "unexpected call to MathScriptInset::writeNormal()\n";
-	writeNormal(0, os);
+	//lyxerr << "unexpected call to MathScriptInset::normalize()\n";
+	normalize(0, os);
 }
 
 
-void MathScriptInset::writeNormal(MathInset const * nuc, NormalStream & os) const
+void MathScriptInset::normalize(MathInset const * nuc, NormalStream & os) const
 {
 	bool d = hasDown() && down().data_.size();
 	bool u = hasUp() && up().data_.size();

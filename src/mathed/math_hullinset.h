@@ -25,9 +25,9 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void write(MathWriteInfo & os) const;
+	void write(WriteStream & os) const;
 	///
-	void writeNormal(NormalStream &) const;
+	void normalize(NormalStream &) const;
 	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
@@ -51,9 +51,9 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	/// identifies MatrixInsets
-	virtual MathHullInset const * asMatrixInset() const { return this; }
-	/// identifies MatrixInsets
-	virtual MathHullInset * asMatrixInset() { return this; }
+	virtual MathHullInset const * asHullInset() const { return this; }
+	/// identifies HullInset
+	virtual MathHullInset * asHullInset() { return this; }
 
 	///
 	void addRow(row_type);

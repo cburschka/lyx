@@ -37,17 +37,13 @@ void MathStackrelInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathStackrelInset::write(MathWriteInfo & os) const
+void MathStackrelInset::write(WriteStream & os) const
 {
 	os << "\\stackrel{" << cell(0) << "}{" << cell(1) << '}';
 }
 
 
-void MathStackrelInset::writeNormal(NormalStream & os) const
+void MathStackrelInset::normalize(NormalStream & os) const
 {
-	os << "[stackrel ";
-	cell(0).writeNormal(os);
-	os << " ";
-	cell(1).writeNormal(os);
-	os << "] ";
+	os << "[stackrel " << cell(0) << ' ' << cell(1) << ']';
 }

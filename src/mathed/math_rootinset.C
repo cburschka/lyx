@@ -58,19 +58,15 @@ void MathRootInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathRootInset::write(MathWriteInfo & os) const
+void MathRootInset::write(WriteStream & os) const
 {
 	os << "\\sqrt[" << cell(0) << "]{" << cell(1) << '}';
 }
 
 
-void MathRootInset::writeNormal(NormalStream & os) const
+void MathRootInset::normalize(NormalStream & os) const
 {
-	os << "[root ";
-	cell(1).writeNormal(os);  
-	os << " ";
-	cell(0).writeNormal(os);
-	os << "]";
+	os << "[root " << cell(1) << ' ' << cell(1) << ']';
 }
 
 
@@ -102,5 +98,5 @@ void MathRootInset::octavize(OctaveStream & os) const
 
 void MathRootInset::mathmlize(MathMLStream & os) const
 {
-	os << "<mroot>" << cell(1) << cell(0) << "</mroot>";
+	os << MTag("mroot") << cell(1) << cell(0) << ETag("mroot");
 }

@@ -44,7 +44,7 @@ int MathInset::height() const
 
 std::ostream & operator<<(std::ostream & os, MathInset const & inset)
 {
-	MathWriteInfo wi(0, os, false);
+	WriteStream wi(0, os, false);
 	inset.write(wi);
 	return os;
 }
@@ -161,10 +161,10 @@ void MathInset::idxDeleteRange(idx_type, idx_type)
 {}
 
 
-void MathInset::writeNormal(NormalStream & os) const
+void MathInset::normalize(NormalStream & os) const
 {
 	os << "[unknown ";
-	MathWriteInfo wi(0, os.os_, false);
+	WriteStream wi(0, os.os_, false);
 	write(wi);
 	os << "] ";
 }
@@ -173,7 +173,7 @@ void MathInset::writeNormal(NormalStream & os) const
 void MathInset::dump() const
 {
 	lyxerr << "---------------------------------------------\n";
-	MathWriteInfo wi(0, lyxerr, false);
+	WriteStream wi(0, lyxerr, false);
 	write(wi);
 	lyxerr << "\n---------------------------------------------\n";
 }
@@ -212,7 +212,7 @@ void MathInset::draw(Painter &, int, int) const
 }
 
 
-void MathInset::write(MathWriteInfo &) const
+void MathInset::write(WriteStream &) const
 {
 	lyxerr << "MathInset::write() called directly!\n";
 }
@@ -221,19 +221,19 @@ void MathInset::write(MathWriteInfo &) const
 void MathInset::octavize(OctaveStream & os) const
 {
 	NormalStream ns(os.os_);
-	writeNormal(ns);
+	normalize(ns);
 }
 
 
 void MathInset::maplize(MapleStream & os) const
 {
 	NormalStream ns(os.os_);
-	writeNormal(ns);
+	normalize(ns);
 }
 
 
 void MathInset::mathmlize(MathMLStream & os) const
 {
 	NormalStream ns(os.os_);
-	writeNormal(ns);
+	normalize(ns);
 }

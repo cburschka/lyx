@@ -16,13 +16,13 @@ MathInset * MathSymbolInset::clone() const
 }
 
 
-void MathSymbolInset::write(MathWriteInfo & os) const
+void MathSymbolInset::write(WriteStream & os) const
 {
 	os << '\\' << sym_->name.c_str() << ' ';
 }
 
 
-void MathSymbolInset::writeNormal(NormalStream & os) const
+void MathSymbolInset::normalize(NormalStream & os) const
 {
 	os << "[symbol " << sym_->name.c_str() << "]";
 }

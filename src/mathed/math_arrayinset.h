@@ -20,13 +20,16 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void write(MathWriteInfo & os) const;
-	///
-	void writeNormal(NormalStream &) const;
-	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
 	MathArrayInset * asArrayInset() { return this; }
+
+	///
+	void write(WriteStream & os) const;
+	///
+	void normalize(NormalStream &) const;
+	///
+	void maplize(MapleStream &) const;
 };
 
 #endif

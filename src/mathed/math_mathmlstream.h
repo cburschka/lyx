@@ -78,6 +78,8 @@ struct MapleStream {
 	MapleStream & operator<<(char const *);
 	///
 	MapleStream & operator<<(char);
+	///
+	MapleStream & operator<<(int);
 };
 
 
@@ -97,20 +99,20 @@ struct OctaveStream {
 };
 
 
-struct MathWriteInfo {
+struct WriteStream {
 	///
-	MathWriteInfo(Buffer const * buffer_, std::ostream & os_, bool fragile_);
+	WriteStream(Buffer const * buffer_, std::ostream & os_, bool fragile_);
 	///
-	explicit MathWriteInfo(std::ostream & os_);
+	explicit WriteStream(std::ostream & os_);
 
 	///
-	MathWriteInfo & operator<<(MathInset const *);
+	WriteStream & operator<<(MathInset const *);
 	///
-	MathWriteInfo & operator<<(MathArray const &);
+	WriteStream & operator<<(MathArray const &);
 	///
-	MathWriteInfo & operator<<(char const *);
+	WriteStream & operator<<(char const *);
 	///
-	MathWriteInfo & operator<<(char);
+	WriteStream & operator<<(char);
 
 	///
 	Buffer const * buffer;

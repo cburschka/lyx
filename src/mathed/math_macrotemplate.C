@@ -64,7 +64,7 @@ void MathMacroTemplate::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathMacroTemplate::write(MathWriteInfo & os) const
+void MathMacroTemplate::write(WriteStream & os) const
 {
 	os << "\n\\newcommand{\\" << name_.c_str() << '}';
 	if (numargs_ > 0)

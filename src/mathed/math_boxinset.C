@@ -45,13 +45,13 @@ UpdatableInset * MathBoxInset::asHyperActiveInset() const
 }
 
 
-void MathBoxInset::write(MathWriteInfo & os) const
+void MathBoxInset::write(WriteStream & os) const
 {
 	os << "\\" << name_.c_str() << "{" << cell(0) << "}";
 }
 
 
-void MathBoxInset::writeNormal(NormalStream & os) const
+void MathBoxInset::normalize(NormalStream & os) const
 {
 	os << "[mbox ";
 	//text_->write(buffer(), os);

@@ -262,7 +262,7 @@ void MathGridInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathGridInset::write(MathWriteInfo & os) const
+void MathGridInset::write(WriteStream & os) const
 {
 	for (row_type row = 0; row < nrows(); ++row) {
 		for (col_type col = 0; col < ncols(); ++col) 
@@ -272,7 +272,7 @@ void MathGridInset::write(MathWriteInfo & os) const
 }
 
 
-void MathGridInset::writeNormal(NormalStream & os) const
+void MathGridInset::normalize(NormalStream & os) const
 {
 	os << "[grid ";
 	for (row_type row = 0; row < nrows(); ++row) {
@@ -583,48 +583,3 @@ std::vector<MathInset::idx_type>
 	return res;
 }
 
-
-void MathGridInset::maplize(MapleStream & os) const
-{
-	os << "array([";
-	for (row_type row = 0; row < nrows(); ++row) {
-		if (row)
-			os << ',';
-		os << '[';
-		for (col_type col = 0; col < ncols(); ++col) {
-			if (col)
-				os << ',';
-			os << cell(index(row, col));
-		}
-		os << ']';
-	}
-	os << "])";
-}
-
-
-void MathGridInset::mathmlize(MathMLStream & os) const
-{
-	os << MTag("mtable");
-	for (row_type row = 0; row < nrows(); ++row) {
-		os << MTag("mtr");
-		for (col_type col = 0; col < ncols(); ++col) 
-			os << cell(index(row, col));
-		os << ETag("mtr");
-	}
-	os << ETag("mtable");
-}
-
-
-void MathGridInset::octavize(OctaveStream & os) const
-{
-	os << '[';
-	for (row_type row = 0; row < nrows(); ++row) {
-		if (row)
-			os << ';';
-		os << '[';
-		for (col_type col = 0; col < ncols(); ++col) 
-			os << cell(index(row, col)) << ' ';
-		os << ']';
-	}
-	os << ']';
-}

@@ -91,7 +91,7 @@ void MathDecorationInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathDecorationInset::write(MathWriteInfo & os) const
+void MathDecorationInset::write(WriteStream & os) const
 {
 	if (os.fragile && protect())
 		os << "\\protect";
@@ -99,7 +99,7 @@ void MathDecorationInset::write(MathWriteInfo & os) const
 }
 
 
-void MathDecorationInset::writeNormal(NormalStream & os) const
+void MathDecorationInset::normalize(NormalStream & os) const
 {
 	os << "[deco " << name_.c_str() << ' ' <<  cell(0) << ']';
 }

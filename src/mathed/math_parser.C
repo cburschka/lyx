@@ -492,7 +492,7 @@ bool Parser::parse_lines(MathAtom & t, bool numbered, bool outmost)
 		}
 
 		if (outmost) {
-			MathHullInset * m = t->asMatrixInset();
+			MathHullInset * m = t->asHullInset();
 			if (!m) {
 				lyxerr << "error in Parser::parse_lines() 2\n";
 				return false;
@@ -579,7 +579,7 @@ bool Parser::parse_normal(MathAtom & matrix)
 		if (n.cat() == catMath) {
 			// TeX's $$...$$ syntax for displayed math
 			matrix = MathAtom(new MathHullInset(LM_OT_EQUATION));
-			MathHullInset * p = matrix->asMatrixInset();
+			MathHullInset * p = matrix->asHullInset();
 			parse_into(p->cell(0), 0);
 			p->numbered(0, curr_num_);
 			p->label(0, curr_label_);
@@ -603,7 +603,7 @@ bool Parser::parse_normal(MathAtom & matrix)
 		curr_num_ = 0;
 		curr_label_.erase();
 		matrix = MathAtom(new MathHullInset(LM_OT_EQUATION));
-		MathHullInset * p = matrix->asMatrixInset();
+		MathHullInset * p = matrix->asHullInset();
 		parse_into(p->cell(0), 0);
 		p->numbered(0, curr_num_);
 		p->label(0, curr_label_);
@@ -621,7 +621,7 @@ bool Parser::parse_normal(MathAtom & matrix)
 		curr_num_ = (name == "equation");
 		curr_label_.erase();
 		matrix = MathAtom(new MathHullInset(LM_OT_EQUATION));
-		MathHullInset * p = matrix->asMatrixInset();
+		MathHullInset * p = matrix->asHullInset();
 		parse_into(p->cell(0), FLAG_END);
 		p->numbered(0, curr_num_);
 		p->label(0, curr_label_);

@@ -4,11 +4,11 @@
 
 #include "math_arrayinset.h"
 #include "math_parser.h"
-#include "support/LOstream.h"
-#include "Lsstream.h"
 #include "math_mathmlstream.h"
+#include "Lsstream.h"
 
 using std::vector;
+using std::istringstream;
 
 
 MathArrayInset::MathArrayInset(int m, int n)
@@ -52,7 +52,16 @@ MathInset * MathArrayInset::clone() const
 }
 
 
-void MathArrayInset::write(MathWriteInfo & os) const
+void MathArrayInset::metrics(MathMetricsInfo const & st) const
+{
+	MathMetricsInfo mi = st;
+	if (mi.style == LM_ST_DISPLAY)
+		mi.style = LM_ST_TEXT;
+	MathGridInset::metrics(mi);
+}
+
+
+void MathArrayInset::write(WriteStream & os) const
 {
 	if (os.fragile)
 		os << "\\protect";
@@ -74,18 +83,17 @@ void MathArrayInset::write(MathWriteInfo & os) const
 }
 
 
-void MathArrayInset::writeNormal(NormalStream & os) const
+void MathArrayInset::normalize(NormalStream & os) const
 {
 	os << "[array ";
-	MathGridInset::writeNormal(os);
+	MathGridInset::normalize(os);
 	os << "]";
 }
 
 
-void MathArrayInset::metrics(MathMetricsInfo const & st) const
+void MathArrayInset::maplize(MapleStream & os) const
 {
-	MathMetricsInfo mi = st;
-	if (mi.style == LM_ST_DISPLAY)
-		mi.style = LM_ST_TEXT;
-	MathGridInset::metrics(mi);
+	os << "array(";
+	MathGridInset::maplize(os);
+	os << ")";
 }

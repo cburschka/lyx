@@ -21,9 +21,9 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void write(MathWriteInfo & os) const;
+	void write(WriteStream & os) const;
 	///
-	void writeNormal(NormalStream & os) const;
+	void normalize(NormalStream & os) const;
 	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
@@ -78,9 +78,9 @@ public:
 	void ensure(bool up);
 
 	///
-	void write(MathInset const * nuc, MathWriteInfo & os) const;
+	void write(MathInset const * nuc, WriteStream & os) const;
 	///
-	void writeNormal(MathInset const * nuc, NormalStream & os) const;
+	void normalize(MathInset const * nuc, NormalStream & os) const;
 	///
 	void octavize(MathInset const * nuc, OctaveStream & os) const;
 	///

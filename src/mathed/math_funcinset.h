@@ -23,9 +23,9 @@ public:
 	///
 	void draw(Painter &, int x, int y) const;
 	///
-	void write(MathWriteInfo &) const;
+	void write(WriteStream &) const;
 	///
-	void writeNormal(NormalStream &) const;
+	void normalize(NormalStream &) const;
 	///
 	string const & name() const;
 	///

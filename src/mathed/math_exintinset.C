@@ -18,14 +18,14 @@ MathInset * MathExIntInset::clone() const
 }
 
 
-void MathExIntInset::write(MathWriteInfo & os) const
+void MathExIntInset::write(WriteStream & os) const
 {
 	scripts_.write(int_.nucleus(), os);
 	os << core_ << "d" << diff_;
 }
 
 
-void MathExIntInset::writeNormal(NormalStream & os) const
+void MathExIntInset::normalize(NormalStream & os) const
 {
 	//os << "[int " << scripts_ << ' ' << core_ << ' ' << diff_ << ']'
 }

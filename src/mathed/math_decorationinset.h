@@ -22,11 +22,11 @@ public:
 	///
 	void draw(Painter &, int x, int y) const;
 	///
-	void write(MathWriteInfo & os) const;
+	void write(WriteStream & os) const;
 	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
-	void writeNormal(NormalStream & os) const;
+	void normalize(NormalStream & os) const;
 	///
 	bool isScriptable() const;
 

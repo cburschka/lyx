@@ -43,17 +43,15 @@ void MathSqrtInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathSqrtInset::write(MathWriteInfo & os) const
+void MathSqrtInset::write(WriteStream & os) const
 {
 	os << "\\sqrt{" << cell(0) << '}';
 }
 
 
-void MathSqrtInset::writeNormal(NormalStream & os) const
+void MathSqrtInset::normalize(NormalStream & os) const
 {
-	os << "[sqrt ";
-	cell(0).writeNormal(os); 
-	os << "]";
+	os << "[sqrt " << cell(0) << ']';
 }
 
 
@@ -65,5 +63,5 @@ void MathSqrtInset::maplize(MapleStream & os) const
 
 void MathSqrtInset::mathmlize(MathMLStream & os) const
 {
-	os << "<msqrt>" << cell(0) << "</msqrt>";
+	os << MTag("msqrt") << cell(0) << ETag("msqrt");
 }

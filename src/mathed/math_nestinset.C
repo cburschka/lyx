@@ -136,7 +136,7 @@ bool MathNestInset::idxEnd(idx_type & idx, pos_type & pos) const
 
 void MathNestInset::dump() const
 {
-	MathWriteInfo os(lyxerr);
+	WriteStream os(lyxerr);
 	os << "---------------------------------------------\n";
 	write(os);
 	os << "\n";

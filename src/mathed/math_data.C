@@ -3,9 +3,11 @@
 #endif
 
 #include "math_inset.h"
+#include "math_deliminset.h"
 #include "math_charinset.h"
 #include "math_scriptinset.h"
 #include "math_stringinset.h"
+#include "math_matrixinset.h"
 #include "math_mathmlstream.h"
 #include "math_support.h"
 #include "math_data.h"
@@ -26,19 +28,6 @@ void MathArray::substitute(MathMacro const & m)
 {
 	for (iterator it = begin(); it != end(); ++it)
 		it->nucleus()->substitute(m);
-}
-
-
-MathScriptInset const * MathArray::asScript(const_iterator it) const
-{
-	if (it->nucleus()->asScriptInset())
-		return 0;
-	const_iterator jt = it + 1;
-	if (jt == end())
-		return 0;
-	if (!jt->nucleus())
-		return 0;
-	return jt->nucleus()->asScriptInset();
 }
 
 
@@ -146,147 +135,6 @@ void MathArray::dump() const
 }
 
 
-// returns sequence of char with same code starting at it up to end
-// it might be less, though...
-string charSequence(MathArray::const_iterator it, MathArray::const_iterator end)
-{
-	string s;
-	MathCharInset const * p = it->nucleus()->asCharInset();
-	if (!p)
-		return s;
-
-	for (MathTextCodes c = p->code(); it != end; ++it) {
-		if (!it->nucleus())
-			break;
-		p = it->nucleus()->asCharInset();
-		if (!p || p->code() != c)
-			break;
-		s += p->getChar();
-	}
-	return s;
-}
-
-
-MathArray MathArray::glueChars() const
-{
-	MathArray ar;
-	const_iterator it = begin();
-	while (it != end()) {
-		if (it->nucleus() && it->nucleus()->asCharInset()) {
-			string s = charSequence(it, end());
-			MathTextCodes c = it->nucleus()->asCharInset()->code();
-			ar.push_back(MathAtom(new MathStringInset(s, c)));
-			it += s.size();
-		} else {
-			ar.push_back(*it);
-			++it;
-		}
-	}
-	return ar;
-}
-
-
-bool needAsterisk(MathAtom const &, MathAtom const &)
-{
-	return false;
-}
-
-
-MathArray MathArray::guessAsterisks() const
-{
-	if (size() <= 1)
-		return *this;
-	MathArray ar;
-	ar.push_back(*begin());
-	for (const_iterator it = begin(), jt = begin()+1 ; jt != end(); ++it, ++jt) {
-		if (needAsterisk(*it, *jt))
-			ar.push_back(MathAtom(new MathCharInset('*')));
-		ar.push_back(*it);
-	}
-	ar.push_back(*end());
-	return ar;
-}
-
-
-void MathArray::write(MathWriteInfo & wi) const
-{
-	MathArray ar = glueChars();
-	for (const_iterator it = ar.begin(); it != ar.end(); ++it) {
-		MathInset const * p = it->nucleus();
-		if (MathScriptInset const * q = ar.asScript(it)) {
-			q->write(p, wi);
-			++it;
-		} else {
-			p->write(wi);
-		}
-	}
-}
-
-
-void MathArray::writeNormal(NormalStream & os) const
-{
-	MathArray ar = glueChars();
-	for (const_iterator it = ar.begin(); it != ar.end(); ++it) {
-		MathInset const * p = it->nucleus();
-		if (MathScriptInset const * q = ar.asScript(it)) {
-			q->writeNormal(p, os);
-			++it;
-		} else 
-			p->writeNormal(os);
-	}
-}
-
-
-void MathArray::octavize(OctaveStream & os) const
-{
-	MathArray ar = glueChars();
-	for (const_iterator it = ar.begin(); it != ar.end(); ++it) {
-		MathInset const * p = it->nucleus();
-		if (MathScriptInset const * q = ar.asScript(it)) {
-			q->octavize(p, os);
-			++it;
-		} else 
-			p->octavize(os);
-	}
-}
-
-
-void MathArray::maplize(MapleStream & os) const
-{
-	MathArray ar = glueChars();
-	for (const_iterator it = ar.begin(); it != ar.end(); ++it) {
-		MathInset const * p = it->nucleus();
-		if (MathScriptInset const * q = ar.asScript(it)) {
-			q->maplize(p, os);
-			++it;
-		} else 
-			p->maplize(os);
-	}
-}
-
-
-void MathArray::mathmlize(MathMLStream & os) const
-{
-	MathArray ar = glueChars();
-	if (ar.size() == 0)
-		os << "<mrow/>";
-	else if (ar.size() == 1)
-		os << ar.begin()->nucleus();
-	else {
-		os << MTag("mrow");
-		for (const_iterator it = ar.begin(); it != ar.end(); ++it) {
-			MathInset const * p = it->nucleus();
-			if (MathScriptInset const * q = ar.asScript(it)) {
-				q->mathmlize(p, os);
-				++it;
-			} else 
-				p->mathmlize(os);
-		}
-		os << ETag("mrow");
-	}
-}
-
-
 void MathArray::validate(LaTeXFeatures & features) const
 {
 	for (const_iterator it = begin(); it != end(); ++it)
@@ -327,11 +175,3 @@ MathArray::iterator MathArray::end()
 {
 	return bf_.end();
 }
-
-
-bool MathArray::isMatrix() const
-{
-	return size() == 1 && begin()->nucleus() && begin()->nucleus()->isMatrix();
-}
-
-

@@ -21,20 +21,6 @@ MathInset * MathBraceInset::clone() const
 }
 
 
-void MathBraceInset::write(MathWriteInfo & os) const
-{
-	os << '{' << cell(0) << '}';
-}
-
-
-void MathBraceInset::writeNormal(NormalStream & os) const
-{
-	os << "[block ";
-	cell(0).writeNormal(os);
-	os << "]";
-}
-
-
 void MathBraceInset::metrics(MathMetricsInfo const & mi) const
 {
 	xcell(0).metrics(mi);
@@ -52,3 +38,17 @@ void MathBraceInset::draw(Painter & pain, int x, int y) const
 	xcell(0).draw(pain, x + wid_, y);
 	drawChar(pain, LM_TC_TEX, mi_, x + width_ - wid_, y, '}');
 }
+
+
+void MathBraceInset::write(WriteStream & os) const
+{
+	os << '{' << cell(0) << '}';
+}
+
+
+void MathBraceInset::normalize(NormalStream & os) const
+{
+	os << "[block " << cell(0) << ']';
+}
+
+

@@ -35,13 +35,13 @@ void MathSizeInset::metrics(MathMetricsInfo const & mi) const
 }
 
 
-void MathSizeInset::write(MathWriteInfo & os) const
+void MathSizeInset::write(WriteStream & os) const
 {
 	os << "{\\" << key_->name.c_str() << ' ' << cell(0) << '}';
 }
 
 
-void MathSizeInset::writeNormal(NormalStream & os) const
+void MathSizeInset::normalize(NormalStream & os) const
 {
 	os << "[" << key_->name.c_str() << ' ' << cell(0) << ']';
 }

@@ -4,12 +4,13 @@
 #pragma implementation
 #endif
 
-#include "math_inset.h"
 #include "math_scriptinset.h"
 #include "math_support.h"
-#include "math_defs.h"
 #include "Painter.h"
 #include "debug.h"
+
+
+extern MathScriptInset const * asScript(MathArray::const_iterator it);
 
 
 MathXArray::MathXArray()
@@ -32,7 +33,8 @@ void MathXArray::metrics(MathMetricsInfo const & st) const
 	
 	for (const_iterator it = begin(); it != end(); ++it) {
 		MathInset const * p = it->nucleus();
-		if (MathScriptInset const * q = data_.asScript(it)) {
+		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
+		if (q) {
 			q->metrics(p, st);
 			ascent_  = std::max(ascent_,  q->ascent(p));
 			descent_ = std::max(descent_, q->descent(p));
@@ -62,7 +64,8 @@ void MathXArray::draw(Painter & pain, int x, int y) const
 
 	for (const_iterator it = begin(); it != end(); ++it) {
 		MathInset const * p = it->nucleus();
-		if (MathScriptInset const * q = data_.asScript(it)) {
+		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
+		if (q) {
 			q->draw(p, pain, x, y);
 			x += q->width(p);
 			++it;
@@ -80,7 +83,8 @@ int MathXArray::pos2x(size_type targetpos) const
 	const_iterator target = std::min(begin() + targetpos, end());
 	for (const_iterator it = begin(); it < target; ++it) {
 		MathInset const * p = it->nucleus();
-		if (MathScriptInset const * q = data_.asScript(it)) {
+		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
+		if (q) {
 			++it;
 			if (it < target)
 				x += q->width(p);
@@ -103,7 +107,10 @@ MathArray::size_type MathXArray::x2pos(int targetx) const
 
 		int wid = 0;
 		MathInset const * p = it->nucleus();
-		if (MathScriptInset const * q = data_.asScript(it)) {
+		MathScriptInset const * q = 0;
+		if (it + 1 != end())
+			q = asScript(it);
+		if (q) {
 			wid = q->width(p);
 			++it;
 		} else

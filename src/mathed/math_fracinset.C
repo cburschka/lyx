@@ -41,7 +41,7 @@ void MathFracInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathFracInset::write(MathWriteInfo & os) const
+void MathFracInset::write(WriteStream & os) const
 {
 	if (atop_)
 		os << '{' << cell(0) << "\\atop " << cell(1) << '}';
@@ -50,16 +50,13 @@ void MathFracInset::write(MathWriteInfo & os) const
 }
 
 
-void MathFracInset::writeNormal(NormalStream & os) const
+void MathFracInset::normalize(NormalStream & os) const
 {
 	if (atop_) 
 		os << "[atop ";
 	else
 		os << "[frac ";
-	cell(0).writeNormal(os);
-	os << " ";
-	cell(1).writeNormal(os);
-	os << "] ";
+	os << cell(0) << ' ' << cell(1) << ']';
 }
 
 

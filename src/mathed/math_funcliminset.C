@@ -20,13 +20,13 @@ bool MathFuncLimInset::isScriptable() const
 }
 
 
-void MathFuncLimInset::write(MathWriteInfo & os) const
+void MathFuncLimInset::write(WriteStream & os) const
 {
 	os << '\\' << name_.c_str() << ' ';
 }
 
 
-void MathFuncLimInset::writeNormal(NormalStream & os) const
+void MathFuncLimInset::normalize(NormalStream & os) const
 {
 	os << "[funclim " << name_.c_str() << ']';
 }

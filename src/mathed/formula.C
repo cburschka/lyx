@@ -87,7 +87,7 @@ namespace {
 				"subs(`\\,`=`\\cdot `,"
 					"eval(`latex/latex/*`)):\n";
 
-		// replace spurious \\noalign{\\medskip} in table output
+		// remove spurious \\noalign{\\medskip} in matrix output
 		header += 
 			"`latex/latex/matrix`:= "
 				"subs(`\\\\\\\\\\\\noalign{\\\\medskip}` = `\\\\\\\\`,"
@@ -226,7 +226,7 @@ namespace {
 		ostringstream os;
 		NormalStream ns(os);
 		os << "[" << extra << ' ';
-		ar.writeNormal(ns); 
+		ns << ar;
 		os << "]";
 		string data = os.str().c_str();
 
@@ -290,7 +290,7 @@ void InsetFormula::write(Buffer const * buf, ostream & os) const
 int InsetFormula::latex(Buffer const * buf, ostream & os, bool fragil, bool)
 	const
 {
-	MathWriteInfo wi(buf, os, fragil);
+	WriteStream wi(buf, os, fragil);
 	par_->write(wi);
 	return 1;
 }
@@ -298,7 +298,7 @@ int InsetFormula::latex(Buffer const * buf, ostream & os, bool fragil, bool)
 
 int InsetFormula::ascii(Buffer const * buf, ostream & os, int) const
 {
-	MathWriteInfo wi(buf, os, false);
+	WriteStream wi(buf, os, false);
 	par_->write(wi);
 	return 1;
 }
@@ -539,15 +539,15 @@ bool InsetFormula::display() const
 
 MathHullInset const * InsetFormula::mat() const
 {
-	lyx::Assert(par_->asMatrixInset());
-	return par_->asMatrixInset();
+	lyx::Assert(par_->asHullInset());
+	return par_->asHullInset();
 }
 
 
 MathHullInset * InsetFormula::mat()
 {
-	lyx::Assert(par_->asMatrixInset());
-	return par_->asMatrixInset();
+	lyx::Assert(par_->asHullInset());
+	return par_->asHullInset();
 }
 
 

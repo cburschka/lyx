@@ -19,7 +19,7 @@ MathInset * MathSplitInset::clone() const
 }
 
 
-void MathSplitInset::write(MathWriteInfo & os) const
+void MathSplitInset::write(WriteStream & os) const
 {
 	if (os.fragile)
 		os << "\\protect";

@@ -645,7 +645,7 @@ void MathHullInset::mutate(MathInsetTypes newtype)
 }
 
 
-void MathHullInset::write(MathWriteInfo & os) const
+void MathHullInset::write(WriteStream & os) const
 {
   header_write(os.os);
 
@@ -667,10 +667,10 @@ void MathHullInset::write(MathWriteInfo & os) const
 }
 
 
-void MathHullInset::writeNormal(NormalStream & os) const
+void MathHullInset::normalize(NormalStream & os) const
 {
 	os << "[formula " << normalName(getType()).c_str() << " ";
-	MathGridInset::writeNormal(os);
+	MathGridInset::normalize(os);
 	os << "] ";
 }
 

@@ -41,12 +41,21 @@
 class MathArrayInset;
 class MathBoxInset;
 class MathCharInset;
+class MathDelimInset;
 class MathGridInset;
-class MathNestInset;
 class MathHullInset;
+class MathMatrixInset;
+class MathNestInset;
 class MathScriptInset;
 class MathSpaceInset;
 class MathMacroTemplate;
+
+class NormalStream;
+class OctaveStream;
+class MapleStream;
+class MathMLStream;
+class WriteStream;
+class MathArray;
 
 class LaTeXFeatures;
 class BufferView;
@@ -74,7 +83,7 @@ public:
 	/// draw the object
 	virtual void draw(Painter &, int x, int y) const;
 	/// write LaTeX and Lyx code
-	virtual void write(MathWriteInfo & os) const;
+	virtual void write(WriteStream & os) const;
 	/// reproduce itself
 	virtual MathInset * clone() const = 0;
 	///substitutes macro arguments if necessary
@@ -168,18 +177,24 @@ public:
 	virtual MathScriptInset const * asScriptInset() const { return 0; }
 	/// identifies ScriptInsets
 	virtual MathScriptInset * asScriptInset() { return 0; }
-	/// identifies MatrixInsets
-	virtual MathHullInset const * asMatrixInset() const { return 0; }
-	/// identifies MatrixInsets
-	virtual MathHullInset * asMatrixInset() { return 0; }
+	/// identifies HullInsets
+	virtual MathHullInset const * asHullInset() const { return 0; }
+	/// identifies HullInsets
+	virtual MathHullInset * asHullInset() { return 0; }
 	/// identifies SpaceInset
 	virtual MathSpaceInset * asSpaceInset() { return 0; }
 	/// identifies GridInset
 	virtual MathGridInset * asGridInset() { return 0; }
 	/// identifies ArrayInsets
 	virtual MathArrayInset * asArrayInset() { return 0; }
+	/// identifies MatrixInsets
+	virtual MathMatrixInset const * asMatrixInset() const { return 0; }
 	/// identifies BoxInsets
 	virtual MathBoxInset * asBoxInset() { return 0; }
+	/// identifies DelimInsets
+	virtual MathDelimInset * asDelimInset() { return 0; }
+	/// identifies DelimInsets
+	virtual MathDelimInset const * asDelimInset() const { return 0; }
 	/// identifies macro templates
 	virtual MathMacroTemplate * asMacroTemplate() { return 0; }
 	/// identifies hyperactive insets
@@ -195,8 +210,6 @@ public:
 	virtual bool isRelOp() const { return false; }
 	///
 	virtual bool isMacro() const { return false; }
-	/// is this a matrix or matrix expression?
-	virtual bool isMatrix() const { return false; }
 
 	///
 	virtual char getChar() const { return 0; }
@@ -216,7 +229,7 @@ public:
 	virtual void handleFont(MathTextCodes) {}
 
 	/// write normalized content
-	virtual void writeNormal(NormalStream &) const;
+	virtual void normalize(NormalStream &) const;
 	///
 	virtual void maplize(MapleStream &) const;
 	///

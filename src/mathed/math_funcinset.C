@@ -36,13 +36,13 @@ void MathFuncInset::setName(string const & n)
 }
 
 
-void MathFuncInset::write(MathWriteInfo & os) const
+void MathFuncInset::write(WriteStream & os) const
 {
 	os << "\\" << name_.c_str() << ' ';
 }
 
 
-void MathFuncInset::writeNormal(NormalStream & os) const
+void MathFuncInset::normalize(NormalStream & os) const
 {
 	os << "[func " << name_.c_str() << ']';
 }

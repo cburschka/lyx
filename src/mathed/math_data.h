@@ -23,13 +23,7 @@
 
 class MathScriptInset;
 class MathMacro;
-class MathWriteInfo;
-class MathMetricsInfo;
 class LaTeXFeatures;
-class NormalStream;
-class MapleStream;
-class MathMLStream;
-class OctaveStream;
 
 
 #ifdef __GNUG__
@@ -104,10 +98,6 @@ public:
 	MathAtom & at(size_type pos);
 	///
 	MathAtom const & at(size_type pos) const;
-	/// glue chars if necessary
-	void write(MathWriteInfo & os) const;
-	///
-	void writeNormal(NormalStream &) const;
 	///
 	void validate(LaTeXFeatures &) const;
 	///
@@ -118,22 +108,6 @@ public:
 	iterator begin();
 	///
 	iterator end();
-	///
-	MathScriptInset const * asScript(const_iterator it) const;
-	/// glues chars with the same attributes into MathStringInsets
-	MathArray glueChars() const;
-	/// insert asterisks in "suitable" places
-	MathArray guessAsterisks() const;
-
-	/// interface to Octave
-	void octavize(OctaveStream &) const;
-	/// interface to Maple
-	void maplize(MapleStream &) const;
-	/// interface to MathML
-	void mathmlize(MathMLStream &) const;
-
-	///
-	bool isMatrix() const;
 
 private:
 	/// Buffer

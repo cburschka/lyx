@@ -44,13 +44,13 @@ void MathKernInset::metrics(MathMetricsInfo const &) const
 }
 
 
-void MathKernInset::write(MathWriteInfo & os) const
+void MathKernInset::write(WriteStream & os) const
 {
 	os << "\\kern" << wid_.asLatexString().c_str() << " ";
 }
 
 
-void MathKernInset::writeNormal(NormalStream & os) const
+void MathKernInset::normalize(NormalStream & os) const
 {
 	os << "[kern " << wid_.asLatexString().c_str() << "]";
 }

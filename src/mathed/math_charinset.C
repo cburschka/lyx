@@ -94,7 +94,7 @@ void MathCharInset::writeRaw(std::ostream & os) const
 }
 
 
-void MathCharInset::write(MathWriteInfo & os) const
+void MathCharInset::write(WriteStream & os) const
 {
 	writeHeader(os.os);
 	writeRaw(os.os);
@@ -102,7 +102,7 @@ void MathCharInset::write(MathWriteInfo & os) const
 }
 
 
-void MathCharInset::writeNormal(NormalStream & os) const
+void MathCharInset::normalize(NormalStream & os) const
 {
 	os << "[char " << char_ << " " << "mathalpha" << "]";
 }

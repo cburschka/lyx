@@ -974,7 +974,7 @@ void MathCursor::normalize() const
 		lyxerr << "this should not really happen - 2: "
 			<< pos() << " " << size() <<  " in idx: " << it->idx()
 			<< " in atom: '";
-		MathWriteInfo wi(0, lyxerr, false);
+		WriteStream wi(0, lyxerr, false);
 		it->par()->write(wi);
 		lyxerr << "\n";
 		dump("error 4");
@@ -1091,7 +1091,7 @@ void MathCursor::breakLine()
 	while (popRight())
 		;
 
-	MathHullInset * p = formula()->par()->asMatrixInset();
+	MathHullInset * p = formula()->par()->asHullInset();
 	if (!p)
 		return;
 
@@ -1104,12 +1104,8 @@ void MathCursor::breakLine()
 
 		// split line
 		const row_type r = row();
-		for (col_type c = col() + 1; c < p->ncols(); ++c) {
-			const MathHullInset::idx_type i1 = p->index(r, c);
-			const MathHullInset::idx_type i2 = p->index(r + 1, c);	
-			//lyxerr << "swapping cells " << i1 << " and " << i2 << "\n";
-			p->cell(i1).swap(p->cell(i2));
-		}
+		for (col_type c = col() + 1; c < p->ncols(); ++c)
+			p->cell(p->index(r, c)).swap(p->cell(p->index(r + 1, c)));
 
 		// split cell
 		splitCell();

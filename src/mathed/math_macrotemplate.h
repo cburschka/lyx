@@ -25,7 +25,7 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void write(MathWriteInfo & os) const;
+	void write(WriteStream & os) const;
 	/// Number of arguments
 	int numargs() const;
 	///

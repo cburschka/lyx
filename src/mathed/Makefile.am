@@ -41,6 +41,8 @@ libmathed_la_SOURCES = \
 	math_diminset.h \
 	math_dotsinset.C \
 	math_dotsinset.h \
+	math_extern.C \
+	math_extern.h \
 	math_exfuncinset.C \
 	math_exfuncinset.h \
 	math_exintinset.C \
@@ -76,6 +78,8 @@ libmathed_la_SOURCES = \
 	math_macrotable.h \
 	math_mathmlstream.C \
 	math_mathmlstream.h \
+	math_matrixinset.C \
+	math_matrixinset.h \
 	math_metricsinfo.h \
 	math_metricsinfo.C \
 	math_nestinset.C \

@@ -20,28 +20,31 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void draw(Painter &, int x, int y) const;
+	MathDelimInset * asDelimInset() { return this; }
 	///
-	void write(MathWriteInfo & os) const;
-	/// write normalized content
-	void writeNormal(NormalStream &) const;
+	MathDelimInset const * asDelimInset() const { return this; }
 	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
-	bool isMatrix() const;
+	void draw(Painter &, int x, int y) const;
+
+	///
+	void write(WriteStream & os) const;
+	/// write normalized content
+	void normalize(NormalStream &) const;
 	///
 	void maplize(MapleStream &) const;
 	///
 	void mathmlize(MathMLStream &) const;
 	///
 	void octavize(OctaveStream &) const;
-private:
-	///
-	int dw() const;
 	///
 	string left_;
 	///
 	string right_;
+private:
+	///
+	int dw() const;
 	///
 	static string latexName(string const & name);
 };

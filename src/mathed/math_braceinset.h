@@ -22,9 +22,9 @@ public:
 	///
 	void draw(Painter &, int x, int y) const;
 	///
-	void write(MathWriteInfo & os) const;
+	void write(WriteStream & os) const;
 	/// write normalized content
-	void writeNormal(NormalStream &) const;
+	void normalize(NormalStream &) const;
 	///
 	void metrics(MathMetricsInfo const & st) const;
 

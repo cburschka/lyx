@@ -41,6 +41,8 @@ public:
 	///
 	void operator=(MathAtom const &);
 	///
+	void reset(MathInset * p);
+	///
 	MathInset * nucleus() const;
 	///
 	MathInset * operator->() const;

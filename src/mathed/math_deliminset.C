@@ -7,8 +7,8 @@
 #include "math_deliminset.h"
 #include "math_parser.h"
 #include "math_support.h"
-#include "support/LOstream.h"
 #include "math_mathmlstream.h"
+#include "math_extern.h"
 
 
 MathDelimInset::MathDelimInset(string const & l, string const & r)
@@ -42,14 +42,14 @@ string MathDelimInset::latexName(string const & name)
 }
 
 
-void MathDelimInset::write(MathWriteInfo & os) const
+void MathDelimInset::write(WriteStream & os) const
 {
 	os << "\\left" << latexName(left_).c_str() << cell(0)
 	   << "\\right" << latexName(right_).c_str();
 }
 
 
-void MathDelimInset::writeNormal(NormalStream & os) const
+void MathDelimInset::normalize(NormalStream & os) const
 {
 	os << "[delim " << latexName(left_).c_str() << ' '
 		<< latexName(right_).c_str() << ' ' << cell(0) << ']';
@@ -91,17 +91,13 @@ void MathDelimInset::draw(Painter & pain, int x, int y) const
 }
 
 
-bool MathDelimInset::isMatrix() const
-{
-	return left_ == "(" && right_ == ")" && cell(0).size() == 1 && 
-		cell(0).begin()->nucleus() && cell(0).begin()->nucleus()->asArrayInset();
-}
-
-
 void MathDelimInset::maplize(MapleStream & os) const
 {
 	if (left_ == "|" && right_ == "|") {
-		if (cell(0).isMatrix())	
+		bool mat =
+			cell(0).size() == 1 && cell(0).begin()->nucleus()
+					&& cell(0).begin()->nucleus()->asMatrixInset();
+		if (mat)	
 			os << "linalg[det](" << cell(0) << ")";
 		else
 			os << "abs(" << cell(0) << ")";

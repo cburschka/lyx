@@ -39,16 +39,13 @@ void MathLefteqnInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathLefteqnInset::write(MathWriteInfo & os) const
+void MathLefteqnInset::write(WriteStream & os) const
 {
-	os << "\\lefteqn{" << cell(0) << "}";
+	os << "\\lefteqn{" << cell(0) << '}';
 }
 
 
-void MathLefteqnInset::writeNormal(NormalStream & os) const
+void MathLefteqnInset::normalize(NormalStream & os) const
 {
-	os << "[lefteqn ";
-	MathWriteInfo wi(os.os_);
-	cell(0).write(wi);
-	os << "]";
+	os << "[lefteqn " << cell(0) << ']';
 }

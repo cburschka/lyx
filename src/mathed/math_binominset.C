@@ -51,17 +51,13 @@ void MathBinomInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathBinomInset::write(MathWriteInfo & os) const
+void MathBinomInset::write(WriteStream & os) const
 {
 	os << '{' << cell(0) << " \\choose " << cell(1) << '}';
 }
 
 
-void MathBinomInset::writeNormal(NormalStream & os) const
+void MathBinomInset::normalize(NormalStream & os) const
 {
-	os << "[binom ";
-	cell(0).writeNormal(os);
-	os << " ";
-	cell(1).writeNormal(os);
-	os << "] ";
+	os << "[binom " << cell(0) << ' ' << cell(1) << ']';
 }

@@ -18,13 +18,14 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void write(MathWriteInfo & os) const;
-	///
-	void writeNormal(NormalStream &) const;
-	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
 	void draw(Painter &, int x, int y) const;
+
+	///
+	void write(WriteStream & os) const;
+	///
+	void normalize(NormalStream &) const;
 };
 
 #endif
