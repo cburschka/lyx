@@ -3040,7 +3040,10 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			}
 
 			sgmlOpenTag(ofs, depth + command_depth, command_name);
-			item_name = "title";
+			if (c_params.empty())
+				item_name = "title";
+			else
+				item_name = c_params;
 			sgmlOpenTag(ofs, depth + 1 + command_depth, item_name);
 			break;
 
@@ -3123,7 +3126,10 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		// write closing SGML tags
 		switch (style.latextype) {
 		case LATEX_COMMAND:
-			end_tag = "title";
+			if (c_params.empty())
+				end_tag = "title";
+			else
+				end_tag = c_params;
 			sgmlCloseTag(ofs, depth + command_depth, end_tag);
 			break;
 		case LATEX_ENVIRONMENT:
