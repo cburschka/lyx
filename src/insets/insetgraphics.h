@@ -36,6 +36,8 @@ public:
 	///
 	InsetGraphics();
 	///
+	InsetGraphics(InsetGraphics const &, bool same_id = false);
+	///
 	~InsetGraphics();
 	///
 	int ascent(BufferView *, LyXFont const &) const;

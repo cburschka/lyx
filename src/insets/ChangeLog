@@ -1,3 +1,8 @@
+2001-07-14  Baruch Even  <baruch@lyx.org>
+
+	* insetgraphics.h:
+	* insetgraphics.C: Added a copy c-tor and handled the same_id case. 
+
 2001-07-13  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	Consistent use of Lsstream.h:

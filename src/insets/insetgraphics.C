@@ -165,6 +165,17 @@ InsetGraphics::InsetGraphics()
 {}
 
 
+InsetGraphics::InsetGraphics(InsetGraphics const & ig, bool same_id)
+	: Inset(), SigC::Object()
+	, cacheHandle(ig.cacheHandle)
+	, imageLoaded(ig.imageLoaded)
+{
+	setParams(ig.getParams());
+	if (same_id)
+		id_ = ig.id_;
+}
+
+
 InsetGraphics::~InsetGraphics()
 {
 	// Emits the hide signal to the dialog connected (if any)
@@ -555,7 +566,8 @@ int InsetGraphics::docBook(Buffer const * buf, ostream & os) const
 {
 	// Change the path to be relative to the main file.
 	string const buffer_dir = OnlyPath(buf->fileName());
-	string const filename = RemoveExtension(MakeRelPath(params.filename, buffer_dir));
+	string const filename = RemoveExtension(
+	                           MakeRelPath(params.filename, buffer_dir));
 
 	// In DocBook v5.0, the graphic tag will be eliminated from DocBook, will 
 	// need to switch to MediaObject. However, for now this is sufficient and 
@@ -621,18 +633,7 @@ InsetGraphicsParams InsetGraphics::getParams() const
 }
 
 
-Inset * InsetGraphics::clone(Buffer const &, bool) const
+Inset * InsetGraphics::clone(Buffer const &, bool same_id) const
 {
-#ifdef WITH_WARNINGS
-#warning use the copy constructor instead. (Lgb)
-#warning and then please honor the same_id flag (Jug)
-#endif
-	InsetGraphics * newInset = new InsetGraphics;
-
-	newInset->cacheHandle = cacheHandle;
-	newInset->imageLoaded = imageLoaded;
-
-	newInset->setParams(getParams());
-
-	return newInset;
+	return new InsetGraphics(*this, same_id);
 }
