@@ -93,4 +93,4 @@ libqt2xforms.la: link_files $(libqt2xforms_la_OBJECTS)
 link_files:
 	for i in $(libqt2xforms_la_SOURCES); do \
 		ln -sf "${top_srcdir}/src/frontends/xforms/$$i" . ; \
-	 done
+	done
