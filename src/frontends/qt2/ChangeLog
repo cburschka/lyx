@@ -1,3 +1,10 @@
+2003-03-05  Angus Leeming  <leeming@lyx.org>
+
+	* QIndex.[Ch]: minimal changes needed to use this dialog
+	for both the Index and the Label dialogs.
+
+	* Dialogs3.C: add label dialog.
+
 2003-03-03  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* qfont_loader.C (available): Rewrite as the old version did not

@@ -17,14 +17,15 @@
 #include "QIndexDialog.h"
 #include "QIndex.h"
 #include "Qt2BC.h"
+#include <qlabel.h>
 #include <qlineedit.h>
 #include <qpushbutton.h>
 
-typedef QController<ControlIndex, QView<QIndexDialog> > base_class;
+typedef QController<ControlCommand, QView<QIndexDialog> > base_class;
 
 
-QIndex::QIndex(Dialog & parent)
-	: base_class(parent, qt_("LyX: Insert Index Entry"))
+QIndex::QIndex(Dialog & parent, QString const & title, QString const & label)
+	: base_class(parent, title), label_(label)
 {
 }
 
@@ -32,6 +33,8 @@ QIndex::QIndex(Dialog & parent)
 void QIndex::build_dialog()
 {
 	dialog_.reset(new QIndexDialog(this));
+
+	dialog_->keywordLA->setText(label_);
 
 	bc().setOK(dialog_->okPB);
 	bc().setCancel(dialog_->closePB);

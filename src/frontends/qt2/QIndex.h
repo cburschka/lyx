@@ -16,17 +16,17 @@
 
 #include "QDialogView.h"
 
-class ControlIndex;
+class ControlCommand;
 class QIndexDialog;
 
 
 class QIndex :
-	public QController<ControlIndex, QView<QIndexDialog> >
+	public QController<ControlCommand, QView<QIndexDialog> >
 {
 public:
 	friend class QIndexDialog;
 
-	QIndex(Dialog &);
+	QIndex(Dialog &, QString const & title, QString const & label);
 protected:
 	virtual bool isValid();
 private:
@@ -36,6 +36,9 @@ private:
 	virtual void update_contents();
 	/// build the dialog
 	virtual void build_dialog();
+
+	///
+	QString const label_;
 };
 
 #endif // QINDEX_H

@@ -19,6 +19,7 @@
 #include "ControlError.h"
 #include "ControlERT.h"
 #include "ControlIndex.h"
+#include "ControlLabel.h"
 #include "ControlRef.h"
 #include "ControlToc.h"
 #include "ControlUrl.h"
@@ -48,6 +49,7 @@
 
 #include "Qt2BC.h"
 #include "ButtonController.h"
+#include "qt_helpers.h"
 
 
 typedef ButtonController<OkCancelPolicy, Qt2BC>
@@ -63,7 +65,7 @@ typedef ButtonController<NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 namespace {
 
 char const * const dialognames[] = { "bibitem", "bibtex", "citation",
-				     "error", "ert", "index", "ref",
+				     "error", "ert", "index", "label", "ref",
 				     "toc", "url" };
 
 char const * const * const end_dialognames =
@@ -118,7 +120,15 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	} else if (name == "index") {
 		dialog->setController(new ControlIndex(*dialog));
-		dialog->setView(new QIndex(*dialog));
+		dialog->setView(new QIndex(*dialog,
+					   qt_("LyX: Insert Index Entry"),
+					   qt_("&Keyword")));
+		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
+	} else if (name == "label") {
+		dialog->setController(new ControlLabel(*dialog));
+		dialog->setView(new QIndex(*dialog,
+					   qt_("LyX: Insert Label"),
+					   qt_("&Label")));
 		dialog->setButtonController(new NoRepeatedApplyReadOnlyBC);
 	} else if (name == "ref") {
 		dialog->setController(new ControlRef(*dialog));
