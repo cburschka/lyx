@@ -373,7 +373,15 @@ void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 	std::vector<string> const oldUnits =
 		getVectorFromString("pt,cm,in,p%,c%");
 	bool finished = false;
-	
+	// set the display default	
+	if (lyxrc.display_graphics == "mono") 
+	    params.display = InsetGraphicsParams::MONOCHROME;
+	else if (lyxrc.display_graphics == "gray") 
+	    params.display = InsetGraphicsParams::GRAYSCALE;
+	else if (lyxrc.display_graphics == "color") 
+	    params.display = InsetGraphicsParams::COLOR;
+	else
+	    params.display = InsetGraphicsParams::NONE;
 	while (lex.isOK() && !finished) {
 		lex.next();
 
@@ -409,13 +417,15 @@ void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 			if (lex.next())
 				params.lyxheight = LyXLength(lex.getString()+"pt");
 		} else if (token == "flags") {
-			InsetGraphicsParams::DisplayType tmp = InsetGraphicsParams::COLOR;
 			if (lex.next())
 				switch (lex.getInteger()) {
-				case 1: tmp = InsetGraphicsParams::MONOCHROME; break;
-				case 2: tmp = InsetGraphicsParams::GRAYSCALE; break;
+				case 1: params.display = InsetGraphicsParams::MONOCHROME; 
+				    break;
+				case 2: params.display = InsetGraphicsParams::GRAYSCALE; 
+				    break;
+				case 3: params.display = InsetGraphicsParams::COLOR; 
+				    break;
 				}
-			params.display = tmp;
 		} else if (token == "subfigure") {
 			params.subcaption = true;
 		} else if (token == "width") {

@@ -104,17 +104,20 @@ string const ControlGraphics::readBB(string const & file)
 // in a file it's an entry like %%BoundingBox:23 45 321 345
 // the first number can following without a space, so we have
 // to check a bit more. 
-//	ControlGraphics::bbChanged = false;
+// on the other hand some plot programs write the bb at the
+// end of the file. Than we have in the header a
+// 	%%BoundingBox: (atend)
+// In this case we must check until the end.
 	std::ifstream is(file.c_str());
-	int count = 0;
-	int const max_count = 50;	// don't search the whole file
-	while (is && (++count < max_count)) {
+	if (!contains(getExtFromContents(file),"ps"))	// bb exists? 
+	    return string();
+	while (is) {
 		string s;
 		is >> s;
 		if (contains(s,"%%BoundingBox:")) {
 			string a, b, c, d;
 			is >> a >> b >> c >> d;
-			if (is) {
+			if (is && !contains(a,"atend")) { // bb at the end?
 				if (s != "%%BoundingBox:") 
 				    return (s.substr(14)+" "+a+" "+b+" "+c+" ");
 				else
