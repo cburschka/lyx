@@ -34,7 +34,9 @@ InsetCollapsable::InsetCollapsable(Buffer * bf): InsetText(bf)
 
 Inset * InsetCollapsable::Clone() const
 {
-    Inset * result = new InsetCollapsable(buffer);
+    InsetCollapsable * result = new InsetCollapsable(buffer);
+    result->init(buffer, par);
+
     return result;
 }
 

@@ -1,3 +1,17 @@
+2000-03-29  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insetcollapsable.C (Clone): same as in InsetFoot
+
+	* src/insets/insetfoot.C (Clone): small change as for the below
+	new init function in the text-inset
+
+	* src/insets/insettext.C (init): new function as I've seen that
+	clone did not copy the Paragraph-Data!
+	(LocalDispatch): Added code so that now we have some sort of Undo
+	functionality (well actually we HAVE Undo ;)
+
+	* src/text.C (Backspace): Small fix for the a | a Backspace problem
+
 2000-03-24  Dekel Tsur <dekel@math.tau.ac.il>
 	
 	* src/paragraph.C (AutoDeleteInsets) Fixed a bug (wrong positions

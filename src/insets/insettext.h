@@ -101,6 +101,8 @@ public:
     UpdatableInset * GetLockingInset();
     ///
     void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
+    ///
+    void init(Buffer *, LyXParagraph * p = 0);
 
     LyXParagraph * par;
 

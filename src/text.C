@@ -3454,7 +3454,19 @@ void LyXText::Backspace()
 		SetUndo(Undo::DELETE, 
 			cursor.par->ParFromPos(cursor.pos)->previous, 
 			cursor.par->ParFromPos(cursor.pos)->next); 
-		CursorLeftIntern();
+		// We used to do CursorLeftIntern() here, but it is
+		// not a good idea since it triggers the auto-delete
+		// mechanism. So we do a CursorLeftIntern()-lite,
+		// without the dreaded mechanism. (JMarc)
+		if (cursor.pos > 0) {
+			SetCursorIntern(cursor.par, cursor.pos - 1);
+		}
+		else if (cursor.par->Previous()) { 
+			// steps into the above paragraph.
+			SetCursorIntern(cursor.par->Previous(), 
+					cursor.par->Previous()->Last());
+		}
+//		CursorLeftIntern();
 		
 		// some insets are undeletable here
 		if (cursor.par->GetChar(cursor.pos) == LyXParagraph::META_INSET) {
