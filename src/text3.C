@@ -83,10 +83,6 @@ using std::vector;
 
 extern string current_layout;
 
-// the selection possible is needed, that only motion events are
-// used, where the button press event was on the drawing area too
-bool selection_possible = false;
-
 
 namespace {
 
@@ -1084,7 +1080,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_TRIPLE:
 		if (cmd.button() == mouse_button::button1) {
-			selection_possible = true;
 			cursorHome(cur);
 			cur.resetAnchor();
 			cursorEnd(cur);
@@ -1095,7 +1090,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_MOUSE_DOUBLE:
 		if (cmd.button() == mouse_button::button1) {
-			selection_possible = true;
 			selectWord(cur, lyx::WHOLE_WORD_STRICT);
 			bv->haveSelection(cur.selection());
 		}
@@ -1106,7 +1100,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// Right click on a footnote flag opens float menu
 		if (cmd.button() == mouse_button::button3) {
 			cur.clearSelection();
-			selection_possible = false;
 			break;
 		}
 
@@ -1119,8 +1112,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			bv->owner()->dispatch(FuncRequest(LFUN_COPY));
 			paste_internally = true;
 		}
-
-		selection_possible = true;
 
 		// Clear the selection
 		cur.clearSelection();
@@ -1137,10 +1128,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// Set cursor here.
 		bv->cursor() = cur;
 
-		// Don't allow selection after a big jump.
-		//if (bv->fitCursor())
-		//	selection_possible = false;
-
 		// Insert primary selection with middle mouse
 		// if there is a local selection in the current buffer,
 		// insert this
@@ -1149,7 +1136,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 				bv->owner()->dispatch(FuncRequest(LFUN_PASTE));
 			else
 				bv->owner()->dispatch(FuncRequest(LFUN_PASTESELECTION, "paragraph"));
-			selection_possible = false;
 		}
 
 		break;
@@ -1159,14 +1145,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		// Only use motion with button 1
 		//if (cmd.button() != mouse_button::button1)
 		//	return false;
-		// We want to use only motion events for which
-		// the button press event was on the drawing area too.
-		if (!selection_possible) {
-			lyxerr[Debug::ACTION] << "BufferView::Pimpl::"
-				"dispatch: no selection possible\n";
-			lyxerr << "BufferView::Pimpl::dispatch: no selection possible\n";
-			break;
-		}
 
 		// ignore motions deeper nested than the real anchor
 		LCursor & bvcur = cur.bv().cursor();
@@ -1205,8 +1183,6 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	case LFUN_MOUSE_RELEASE: {
-		selection_possible = false;
-
 		if (cmd.button() == mouse_button::button2)
 			break;
 

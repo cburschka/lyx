@@ -134,7 +134,6 @@ namespace biblio = lyx::biblio;
 
 extern BufferList bufferlist;
 extern LyXServer * lyxserver;
-extern bool selection_possible;
 
 extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
@@ -615,7 +614,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 	// we have not done anything wrong yet.
 	errorstat = false;
 	dispatch_buffer.erase();
-	selection_possible = false;
 
 	bool update = true;
 
