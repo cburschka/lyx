@@ -1,3 +1,21 @@
+2004-09-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* lyx_gui.C (start): change comment
+	(start): use for_each instead of explicit loop
+
+	* GWorkArea.h: store shared_ptr in the Maps.
+
+	* GWorkArea.C (~ColorCache): delete
+	(getColor): adjust
+	(getXftColor): adjust
+	(cacheColor): adjust
+	(cacheXftColor): adjust
+	(clear): simplify
+
+	* GView.C (GView): use show_all() instead of explict loop
+
+	* GMathPanel.C (doBuild): ws change
+
 2004-09-27  John Spray  <spray_john@users.sourceforge.net>
 
 	* The Character dialog

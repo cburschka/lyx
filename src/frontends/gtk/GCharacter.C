@@ -39,7 +39,7 @@ public:
 	{
 		add(name);
 	}
-	
+
 	Gtk::TreeModelColumn<Glib::ustring> name;
 };
 

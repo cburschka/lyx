@@ -76,10 +76,7 @@ GView::GView()
 
 	// Make all Boxes visible.
 	top_box_.show();
-	BoxStore::iterator it = box_store_.begin();
-	BoxStore::iterator const end = box_store_.end();
-	for (; it != end; ++it)
-		(*it)->show();
+	top_box_.show_all();
 
 	// Define the components making up the window.
 	menubar_.reset(new GMenubar(this, menubackend));

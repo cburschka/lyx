@@ -29,11 +29,10 @@ namespace frontend {
 
 class ColorCache {
 public:
-	typedef std::map<LColor_color, Gdk::Color *> Map;
+	typedef std::map<LColor_color, boost::shared_ptr<Gdk::Color> > Map;
 	typedef Map::iterator MapIt;
-	typedef std::map<LColor_color, XftColor *> Map2;
+	typedef std::map<LColor_color, boost::shared_ptr<XftColor> > Map2;
 	typedef Map2::iterator MapIt2;
-	~ColorCache();
 	Gdk::Color * getColor(LColor_color);
 	XftColor * getXftColor(LColor_color);
 	void cacheColor(LColor_color, Gdk::Color *);

@@ -129,7 +129,7 @@ void GMathPanel::doBuild()
 	listStore_ = Gtk::ListStore::create(listCols_);
 	functions_->set_model(listStore_);
 	functions_->append_column("Functions", listCol_);
-		
+
 	listSel_ = functions_->get_selection();
 	listSel_->signal_changed().connect(
 		sigc::mem_fun(*this, &GMathPanel::onFunctionSelected));

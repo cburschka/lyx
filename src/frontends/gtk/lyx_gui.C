@@ -336,16 +336,14 @@ void lyx_gui::start(string const & batch, std::vector<string> const & files)
 	view.show();
 	view.init();
 
-	// FIXME: some code below needs moving
+	// FIXME: server code below needs moving
 
 	lyxserver = new LyXServer(&view.getLyXFunc(), lyxrc.lyxpipes);
 	lyxsocket = new LyXServerSocket(&view.getLyXFunc(),
 			  os::slashify_path(os::getTmpDir() + "/lyxsocket"));
 
-	std::vector<string>::const_iterator cit = files.begin();
-	std::vector<string>::const_iterator end = files.end();
-	for (; cit != end; ++cit)
-		view.view()->loadLyXFile(*cit, true);
+	for_each(files.begin(), files.end(),
+		 bind(&BufferView::loadLyXFile, view.view(), _1, true));
 
 	// handle the batch commands the user asked for
 	if (!batch.empty()) {

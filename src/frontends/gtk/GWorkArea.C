@@ -19,6 +19,8 @@
 #include "funcrequest.h"
 #include "LColor.h"
 
+using boost::shared_ptr;
+
 using std::string;
 
 namespace lyx {
@@ -27,47 +29,35 @@ namespace frontend {
 ColorCache colorCache;
 
 
-ColorCache::~ColorCache()
-{
-	clear();
-}
-
-
 Gdk::Color * ColorCache::getColor(LColor_color clr)
 {
 	MapIt it = cache_.find(clr);
-	return it == cache_.end() ? 0 : it->second;
+	return it == cache_.end() ? 0 : it->second.get();
 }
 
 
 XftColor * ColorCache::getXftColor(LColor_color clr)
 {
 	MapIt2 it = cache2_.find(clr);
-	return it == cache2_.end() ? 0 : it->second;
+	return it == cache2_.end() ? 0 : it->second.get();
 }
 
 
 void ColorCache::cacheColor(LColor_color clr, Gdk::Color * gclr)
 {
-	cache_[clr] = gclr;
+	cache_[clr] = shared_ptr<Gdk::Color>(gclr);
 }
 
 
 void ColorCache::cacheXftColor(LColor_color clr, XftColor * xclr)
 {
-	cache2_[clr] = xclr;
+	cache2_[clr] = shared_ptr<XftColor>(xclr);
 }
 
 
 void ColorCache::clear()
 {
-	MapIt it = cache_.begin();
-	for (; it != cache_.end(); ++it)
-		delete it->second;
 	cache_.clear();
-	MapIt2 it2 = cache2_.begin();
-	for (; it2 != cache2_.end(); ++it2)
-		delete it2->second;
 	cache2_.clear();
 }
 
