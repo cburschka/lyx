@@ -1563,11 +1563,11 @@ void Menus::ShowRefsMenu(FL_OBJECT * ob, long)
 			men->_view->getLyXFunc()->Dispatch(LFUN_REFGOTO,
 							   label_list[num].c_str());
 		else {
-			static string const commands[5]
-				= { "\\ref", "\\pageref", "\\vref", "\\vpageref",
-				    "\\prettyref"};
-			string t = commands[type] + "{" + label_list[num] + "}";
-			men->currentView()->insertInset(new InsetRef(t, buffer));
+			static string const cmdname[5]
+				= { "ref", "pageref", "vref", "vpageref", "prettyref"};
+			InsetCommandParams p( cmdname[type] );
+			p.setContents( label_list[num] );
+			men->currentView()->insertInset(new InsetRef(p, buffer));
 		}
 	}
 
@@ -1901,7 +1901,7 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 		case 14: tmpfunc->Dispatch(LFUN_INSERT_REF); break;
 		case 15: tmpfunc->Dispatch(LFUN_CITATION_CREATE); break;
 		case 16: tmpfunc->Dispatch(LFUN_INDEX_CREATE); break;
-		case 17: tmpfunc->Dispatch(LFUN_INDEX_CREATE_LAST); break;
+		case 17: tmpfunc->Dispatch(LFUN_INDEX_INSERT_LAST); break;
 		case 18: tmpfunc->Dispatch(LFUN_URL); break;
 		}
 	}

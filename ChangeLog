@@ -1,3 +1,56 @@
+2000-08-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/support/strerror.c: remove C++ comment.
+
+2000-08-04  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* src/commandtags.h: LFUN_INDEX_CREATE_LAST reverts to
+	LFUN_INDEX_INSERT_LAST
+
+	* src/texrow.C (getIdFromRow): changed from const_iterator to
+	iterator, allowing code to compile with DEC cxx
+
+	* src/frontends/xforms/FormCitation.[Ch]: made vector<string>
+	stores part of the class, as suggested by Allan. Will allow
+	multiple LyXViews.
+	(apply): test to apply uses InsetCommandParams operator!=
+
+	* src/frontends/xforms/FormIndex.C: moved set_minsize into build
+	(apply): test to apply uses InsetCommandParams operator!=
+
+	* src/frontends/xforms/FormToc.[Ch]: made vector<string>
+	stores part of the class.
+	(update): removed limits on min/max size.
+
+	* src/frontends/xforms/FormUrl.C: moved set_minsize into build
+	(apply): test to apply uses InsetCommandParams operator!=
+
+	* src/insets/insetcommand.[Ch] InsetCommand made noncopyable
+	(Read, Write, scanCommand, getCommand): moved functionality
+	into InsetCommandParams.
+	(Clone): removed
+	(getScreenLabel): made pure virtual
+	new InsetCommandParams operators== and !=
+	
+	* src/insets/insetbib.[Ch] (InsetBibKey, InsetBibtex): new
+	c-tors based on InsetCommandParams. Removed others.
+	* src/insets/insetinclude.[Ch]: ditto
+	* src/insets/insetlabel.[Ch]: ditto
+	* src/insets/insetparent.[Ch]: ditto
+	* src/insets/insetref.[Ch]: ditto. Also moved gotoLabel into .C
+	
+	* src/buffer.C (parseSingleLyXformat2Token, readInset): all
+	insets derived from InsetCommand created using similar c-tors
+	based on InsetCommandParams
+	* src/lyx_cb.C (MenuInsertLabel, RefSelectCB): ditto
+	* src/menus.C (ShowRefsMenu): ditto
+	* src/paragraph.C (Clone): ditto
+	* src/text2.C (SetCounter): ditto
+	* src/lyxfunc.C (Dispatch) ditto
+	Also recreated old InsetIndex behaviour exactly. Can now
+	index-insert at the start of a paragraph and index-insert-last
+	without launching the pop-up.
+
 2000-08-03  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* lib/lyxrc.example: mark te pdf options as non functional.

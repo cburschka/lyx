@@ -1651,8 +1651,10 @@ LyXParagraph * LyXParagraph::Clone() const
 	result->inset_owner = inset_owner;
    
         // ale970302
-        result->bibkey = (bibkey) ? new InsetBibKey(bibkey): 0;
-               
+	if (bibkey)
+		result->bibkey = static_cast<InsetBibKey *>(bibkey->Clone());
+	else
+		result->bibkey = 0;
     
 	// copy everything behind the break-position to the new paragraph
 

@@ -16,8 +16,8 @@
 #endif
 
 #include "insetcommand.h"
-#include "buffer.h"
 
+class Buffer;
 struct LaTeXFeatures;
 
 /** The reference inset  
@@ -43,27 +43,19 @@ public:
 	};
 	
 	///
-	InsetRef() : InsetCommand("ref") { flag = InsetRef::REF; }
+	InsetRef(InsetCommandParams const &, Buffer *);
 	///
-	InsetRef(string const &, Buffer *);
+	Inset * Clone() const { return new InsetRef(params(), master); }
 	///
-	InsetRef(InsetCommand const &, Buffer *);
-        ///
-        Inset * Clone() const {
-		return new InsetRef (getCommand(), master);
-	}
+	string getScreenLabel() const;
+	///
+	EDITABLE Editable() const { return IS_EDITABLE; }
 	///
 	Inset::Code LyxCode() const { return Inset::REF_CODE; }
 	///
 	void Edit(BufferView *, int, int, unsigned int);
-	///
-	EDITABLE Editable() const {
-		return IS_EDITABLE;
-	}
         ///
 	bool display() const { return false; }
-	///
-	string getScreenLabel() const;
 	///
 	void Toggle();
         ///
@@ -89,13 +81,4 @@ private:
         ///
 	Buffer * master;
 };
-
-
-inline
-void InsetRef::gotoLabel()
-{
-    if (master) {
-	master->getUser()->gotoLabel(getContents());
-    }
-}
 #endif

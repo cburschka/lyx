@@ -249,7 +249,7 @@ void LyXAction::init()
 		  N_("Insert hyphenation point"), Noop },
 		{ LFUN_INDEX_CREATE, "index-insert",
 		  N_("Insert index item"), Noop },
-		{ LFUN_INDEX_CREATE_LAST, "index-insert-last",
+		{ LFUN_INDEX_INSERT_LAST, "index-insert-last",
 		  N_("Insert last index item"), Noop },
 		{ LFUN_INDEX_PRINT, "index-print", N_("Insert index list"),
 		  Noop },

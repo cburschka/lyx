@@ -17,28 +17,23 @@
 #endif
 
 #include "insetcommand.h"
-#include "LString.h"
 
-///
 class InsetLabel : public InsetCommand {
 public:
 	///
-	explicit
-	InsetLabel(string const & cmd);
+	InsetLabel(InsetCommandParams const &);
 	///
-	InsetLabel() : InsetCommand("label") {}
-	///
-	Inset * Clone() const;
-	///
-	Inset::Code LyxCode() const { return Inset::LABEL_CODE; }
-	///
-	std::vector<string> getLabelList() const;
+	Inset * Clone() const { return new InsetLabel(params()); }
 	///
 	string getScreenLabel() const { return getContents(); }
 	///
 	EDITABLE Editable() const { return IS_EDITABLE; }
 	///
+	Inset::Code LyxCode() const { return Inset::LABEL_CODE; }
+	///
 	void Edit(BufferView *, int, int, unsigned int);
+	///
+	std::vector<string> getLabelList() const;
 	///
 	int Latex(Buffer const *, std::ostream &,
 		  bool fragile, bool free_spc) const;

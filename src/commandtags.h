@@ -199,7 +199,7 @@ enum kb_action {
 	LFUN_CITATION_INSERT,           // AAS 97-02-23
 	LFUN_INSERT_BIBTEX,             // AAS 97-02-23
 	LFUN_INDEX_CREATE,              // Lgb 97-02-27
-	LFUN_INDEX_CREATE_LAST, // 180  // Reh 98-09-17
+	LFUN_INDEX_INSERT_LAST, // 180  // Reh 98-09-17
 	LFUN_INDEX_PRINT,               // Lgb 97-02-27
 	LFUN_APROPOS,                   // Asger 1997-02-27
 	LFUN_LATEX_LOG,                 // Lgb 97-04-05

@@ -26,26 +26,21 @@ class Buffer;
  */
 class InsetParent : public InsetCommand {
 public:
-	/// Non-standard LyX macro
-	InsetParent() : InsetCommand("lyxparent") {}
 	///
-	explicit
-        InsetParent(string const & fn, Buffer * owner = 0);
-	/// 
-	int Latex(Buffer const *, std::ostream &,
-		  bool fragile, bool free_spc) const;
-        ///
-        Inset * Clone() const { return new InsetParent(getContents()); }
+	InsetParent(InsetCommandParams const &, Buffer * owner = 0);
+	///
+	Inset * Clone() const { return new InsetParent(params()); }
     	///
 	string getScreenLabel() const;
         ///
-	void Edit(BufferView *, int, int, unsigned int);
-        ///
-	EDITABLE Editable() const {
-		return IS_EDITABLE;
-	}
+	EDITABLE Editable() const { return IS_EDITABLE; }
         ///
         Inset::Code LyxCode() const { return Inset::PARENT_CODE; }
+        ///
+	void Edit(BufferView *, int, int, unsigned int);
+	/// 
+	int Latex(Buffer const *, std::ostream &,
+		  bool fragile, bool free_spc) const;
         ///
         void setParent(string fn) { setContents(fn); }
 };

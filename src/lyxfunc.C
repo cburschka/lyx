@@ -2572,20 +2572,19 @@ string LyXFunc::Dispatch(int ac,
 		// ale970405+lasgoutt970425
 		// The argument can be up to two tokens separated 
 		// by a space. The first one is the bibstyle.
-		string lsarg(argument);
-		string bibstyle = token(lsarg, ' ', 1);
+		string db       = token(argument, ' ', 0);
+		string bibstyle = token(argument, ' ', 1);
 		if (bibstyle.empty())
 			bibstyle = "plain";
-		InsetBibtex * new_inset 
-			= new InsetBibtex(token(lsarg, ' ', 0),
-					  bibstyle,
-					  owner->buffer());
+
+		InsetCommandParams p( "BibTeX", db, bibstyle );
+		InsetBibtex * inset = new InsetBibtex(p, owner->buffer());
 		
-		if (owner->view()->insertInset(new_inset)) {
-			if (lsarg.empty())
-				new_inset->Edit(owner->view(), 0, 0, 0);
+		if (owner->view()->insertInset(inset)) {
+			if (argument.empty())
+				inset->Edit(owner->view(), 0, 0, 0);
 		} else
-			delete new_inset;
+			delete inset;
 	}
 	break;
 		
@@ -2621,28 +2620,22 @@ string LyXFunc::Dispatch(int ac,
 	break;
 		
 	case LFUN_INDEX_CREATE:
-	case LFUN_INDEX_CREATE_LAST:
 	{
-	  	// Can't do that at the beginning of a paragraph.
-	  	if (owner->view()->text->cursor.pos() - 1 < 0)
-			break;
-
 		InsetCommandParams p( "index" );
 		
-		if (!argument.empty()) {
-			p.setContents( argument );
-		} else {
-			//get the current word for an argument
-			LyXParagraph::size_type lastpos = 
+		if( argument.empty() ) {
+			// Get the word immediately preceding the cursor
+			LyXParagraph::size_type curpos = 
 				owner->view()->text->cursor.pos() - 1;
-			// Get the current word. note that this must be done
-			// before inserting the inset, or the inset will
-			// break the word
-			string curstring(owner->view()
-					 ->text->cursor.par()->GetWord(lastpos));
 
-			//make the new inset and write the current word into it
+			string curstring;
+			if( curpos >= 0 )
+				curstring = owner->view()->text
+					    ->cursor.par()->GetWord(curpos);
+
 			p.setContents( curstring );
+		} else {
+			p.setContents( argument );
 		}
 
 		owner->getDialogs()->createIndex( p.getAsString() );
@@ -2653,8 +2646,29 @@ string LyXFunc::Dispatch(int ac,
 	{
 		InsetCommandParams p;
 		p.setFromString( argument );
-
 		InsetIndex * inset = new InsetIndex( p );
+
+		if (!owner->view()->insertInset(inset))
+			delete inset;
+		else
+			owner->view()->updateInset( inset, true );
+	}
+	break;
+		    
+	case LFUN_INDEX_INSERT_LAST:
+	{
+		// Get word immediately preceding the cursor
+		LyXParagraph::size_type curpos = 
+			owner->view()->text->cursor.pos() - 1;
+	  	// Can't do that at the beginning of a paragraph
+	  	if( curpos < 0 ) break;
+
+		string curstring( owner->view()->text
+				  ->cursor.par()->GetWord(curpos) );
+
+		InsetCommandParams p( "index", curstring );
+		InsetIndex * inset = new InsetIndex( p );
+
 		if (!owner->view()->insertInset(inset))
 			delete inset;
 		else
@@ -2664,7 +2678,7 @@ string LyXFunc::Dispatch(int ac,
 		    
 	case LFUN_INDEX_PRINT:
 	{
-		InsetCommandParams p("printindex");
+		InsetCommandParams p( "printindex" );
 		Inset * inset = new InsetPrintIndex(p);
 		if (!owner->view()->insertInset(inset, "Standard", true))
 			delete inset;
@@ -2674,20 +2688,21 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_PARENTINSERT:
 	{
 		lyxerr << "arg " << argument << endl;
-		Inset * new_inset = new InsetParent(argument, owner->buffer());
-		if (!owner->view()->insertInset(new_inset, "Standard", true))
-			delete new_inset;
+		InsetCommandParams p( "lyxparent", argument );
+		Inset * inset = new InsetParent(p, owner->buffer());
+		if (!owner->view()->insertInset(inset, "Standard", true))
+			delete inset;
 	}
 	break;
 
 	case LFUN_CHILDINSERT:
 	{
-		Inset * new_inset = new InsetInclude(argument,
-						     owner->buffer());
-		if (owner->view()->insertInset(new_inset, "Standard", true))
-			new_inset->Edit(owner->view(), 0, 0, 0);
+		InsetCommandParams p( "Include", argument );
+		Inset * inset = new InsetInclude(p, owner->buffer());
+		if (owner->view()->insertInset(inset, "Standard", true))
+			inset->Edit(owner->view(), 0, 0, 0);
 		else
-			delete new_inset;
+			delete inset;
 	}
 	break;
 

@@ -47,12 +47,18 @@ FormUrl::~FormUrl()
 void FormUrl::build()
 {
 	dialog_ = build_url();
+
+	int w = form()->w;
+	int h = form()->h;
+
+	fl_set_form_minsize(form(), w,   h);
+	fl_set_form_maxsize(form(), 2*w, h);
 }
 
 
 FL_FORM * const FormUrl::form() const
 {
-	if( dialog_ && dialog_->form_url )
+	if( dialog_ ) // no need to test for dialog_->form_url
 		return dialog_->form_url;
 	else
 		return 0;
@@ -61,18 +67,6 @@ FL_FORM * const FormUrl::form() const
 
 void FormUrl::update()
 {
-	static int ow = -1, oh;
-
-	if (ow < 0) {
-		ow = dialog_->form_url->w;
-		oh = dialog_->form_url->h;
-
-		fl_set_form_minsize(dialog_->form_url, ow, oh);
-		fl_set_form_maxsize(dialog_->form_url, 2*ow, oh);
-	}
-
-	fl_freeze_form( dialog_->form_url );
-
 	fl_set_input(dialog_->url,  params.getContents().c_str());
 	fl_set_input(dialog_->name, params.getOptions().c_str());
 
@@ -94,8 +88,6 @@ void FormUrl::update()
 		fl_activate_object( dialog_->ok );
 		fl_set_object_lcol( dialog_->ok, FL_BLACK );
 	}
-
-	fl_unfreeze_form( dialog_->form_url );
 }
 
 
@@ -114,9 +106,7 @@ void FormUrl::apply()
 	if( inset_ != 0 )
 	{
 		// Only update if contents have changed
-		if( params.getCmdName()  != inset_->getCmdName()  ||
-		    params.getContents() != inset_->getContents() ||
-		    params.getOptions()  != inset_->getOptions() ) {
+		if( params != inset_->params() ) {
 			inset_->setParams( params );
 			lv_->view()->updateInset( inset_, true );
 		}

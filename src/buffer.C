@@ -489,7 +489,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		if (pp.first) {
 			params.textclass = pp.second;
 		} else {
-			lex.printError("Unknown textclass `$$Token'");
+		  lex.printError("Unknown textclass `$$Token'");
 			params.textclass = 0;
 		}
 		if (!textclasslist.Load(params.textclass)) {
@@ -889,7 +889,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			par->InsertInset(pos, inset, font);
 			++pos;
 		} else if (tmptok == "Include") {
-			Inset * inset = new InsetInclude(string(), this);
+			InsetCommandParams p( "Include" );
+			Inset * inset = new InsetInclude(p, this);
 			inset->Read(this, lex);
 			par->InsertInset(pos, inset, font);
 			++pos;
@@ -951,25 +952,25 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 			par->InsertInset(pos, inset, font);
             ++pos;
 		} else if (tmptok == "LatexCommand") {
-			InsetCommand inscmd;
-			inscmd.Read(this, lex);
+			InsetCommandParams inscmd;
+			inscmd.Read(lex);
 			Inset * inset = 0;
 			if (inscmd.getCmdName() == "cite") {
-				inset = new InsetCitation(inscmd.params());
+				inset = new InsetCitation(inscmd);
 			} else if (inscmd.getCmdName() == "bibitem") {
 				lex.printError("Wrong place for bibitem");
-				inset = inscmd.Clone();
+				inset = new InsetBibKey(inscmd);
 			} else if (inscmd.getCmdName() == "BibTeX") {
-				inset = new InsetBibtex(inscmd.getContents(), inscmd.getOptions(), this);
+				inset = new InsetBibtex(inscmd, this);
 			} else if (inscmd.getCmdName() == "index") {
-				inset = new InsetIndex(inscmd.params());
+				inset = new InsetIndex(inscmd);
 			} else if (inscmd.getCmdName() == "include") {
-				inset = new InsetInclude(inscmd.getContents(), this);
+				inset = new InsetInclude(inscmd, this);
 			} else if (inscmd.getCmdName() == "label") {
-				inset = new InsetLabel(inscmd.getCommand());
+				inset = new InsetLabel(inscmd);
 			} else if (inscmd.getCmdName() == "url"
 				   || inscmd.getCmdName() == "htmlurl") {
-				inset = new InsetUrl(inscmd.params());
+				inset = new InsetUrl(inscmd);
 			} else if (inscmd.getCmdName() == "ref"
 				   || inscmd.getCmdName() == "pageref"
 				   || inscmd.getCmdName() == "vref"
@@ -982,11 +983,11 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				   || inscmd.getCmdName() == "listofalgorithms"
 				   || inscmd.getCmdName() == "listoffigures"
 				   || inscmd.getCmdName() == "listoftables") {
-				inset = new InsetTOC(inscmd.params());
+				inset = new InsetTOC(inscmd);
 			} else if (inscmd.getCmdName() == "printindex") {
-				inset = new InsetPrintIndex(inscmd.params());
+				inset = new InsetPrintIndex(inscmd);
 			} else if (inscmd.getCmdName() == "lyxparent") {
-				inset = new InsetParent(inscmd.getContents(), this);
+				inset = new InsetParent(inscmd, this);
 			}
 			       
 			if (inset) {
@@ -1054,8 +1055,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		}
 		++pos;
 	} else if (token == "\\bibitem") {  // ale970302
-		if (!par->bibkey)
-			par->bibkey = new InsetBibKey;
+		if (!par->bibkey) {
+			InsetCommandParams p( "bibitem" );
+			par->bibkey = new InsetBibKey(p);
+		}
 		par->bibkey->Read(this, lex);		        
 	}else if (token == "\\backslash") {
 		par->InsertChar(pos, '\\', font);
@@ -1120,7 +1123,8 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 		par->InsertInset(pos, inset, font);
 		++pos;
 	} else if (tmptok == "Include") {
-		Inset * inset = new InsetInclude(string(), this);
+		InsetCommandParams p( "Include" );
+		Inset * inset = new InsetInclude(p, this);
 		inset->Read(this, lex);
 		par->InsertInset(pos, inset, font);
 		++pos;
@@ -1181,26 +1185,25 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 				//inset->Read(this, lex);
 		par->InsertInset(pos, inset, font);
 	} else if (tmptok == "LatexCommand") {
-		InsetCommand inscmd;
-		inscmd.Read(this, lex);
+		InsetCommandParams inscmd;
+		inscmd.Read(lex);
 		Inset * inset = 0;
 		if (inscmd.getCmdName() == "cite") {
-			inset = new InsetCitation(inscmd.params());
+			inset = new InsetCitation(inscmd);
 		} else if (inscmd.getCmdName() == "bibitem") {
 			lex.printError("Wrong place for bibitem");
-			inset = inscmd.Clone();
+			inset = new InsetBibKey(inscmd);
 		} else if (inscmd.getCmdName() == "BibTeX") {
-			inset = new InsetBibtex(inscmd.getContents(),
-						inscmd.getOptions(), this);
+			inset = new InsetBibtex(inscmd, this);
 		} else if (inscmd.getCmdName() == "index") {
-			inset = new InsetIndex(inscmd.params());
+			inset = new InsetIndex(inscmd);
 		} else if (inscmd.getCmdName() == "include") {
-			inset = new InsetInclude(inscmd.getContents(), this);
+			inset = new InsetInclude(inscmd, this);
 		} else if (inscmd.getCmdName() == "label") {
-			inset = new InsetLabel(inscmd.getCommand());
+			inset = new InsetLabel(inscmd);
 		} else if (inscmd.getCmdName() == "url"
 			   || inscmd.getCmdName() == "htmlurl") {
-			inset = new InsetUrl(inscmd.params());
+			inset = new InsetUrl(inscmd);
 		} else if (inscmd.getCmdName() == "ref"
 			   || inscmd.getCmdName() == "pageref"
 			   || inscmd.getCmdName() == "vref"
@@ -1214,11 +1217,11 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 			   || inscmd.getCmdName() == "listofalgorithms"
 			   || inscmd.getCmdName() == "listoffigures"
 			   || inscmd.getCmdName() == "listoftables") {
-			inset = new InsetTOC(inscmd.params());
+			inset = new InsetTOC(inscmd);
 		} else if (inscmd.getCmdName() == "printindex") {
-			inset = new InsetPrintIndex(inscmd.params());
+			inset = new InsetPrintIndex(inscmd);
 		} else if (inscmd.getCmdName() == "lyxparent") {
-			inset = new InsetParent(inscmd.getContents(), this);
+			inset = new InsetParent(inscmd, this);
 		}
 		
 		if (inset) {

@@ -28,16 +28,9 @@ using std::pair;
 /* Label. Used to insert a label automatically */
 
 
-InsetLabel::InsetLabel(string const & cmd)
-{
-	scanCommand(cmd);
-}
-
-
-Inset * InsetLabel::Clone() const
-{
-	return new InsetLabel(getCommand());
-}
+InsetLabel::InsetLabel(InsetCommandParams const & p)
+	: InsetCommand(p)
+{}
 
 
 vector<string> InsetLabel::getLabelList() const

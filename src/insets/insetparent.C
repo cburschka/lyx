@@ -28,11 +28,12 @@
 
 using std::ostream;
 
-InsetParent::InsetParent(string const & fn, Buffer * owner)
-	: InsetCommand("lyxparent")
+InsetParent::InsetParent(InsetCommandParams const & p, Buffer * bf)
+	: InsetCommand(p)
 {
-	if (owner)
-		setContents(MakeAbsPath(fn, OnlyPath(owner->fileName())));
+	string fn = p.getContents();
+	if (bf)
+		setContents(MakeAbsPath(fn, OnlyPath(bf->fileName())));
 	else
 		setContents(fn);
 }

@@ -17,6 +17,7 @@
 #endif
 
 #include "FormCommand.h"
+#include "buffer.h"
 struct FD_form_toc;
 
 /** This class provides an XForms implementation of the FormToc Dialog.
@@ -50,6 +51,8 @@ private:
 
 	/// Real GUI implementation.
 	FD_form_toc * dialog_;
+	///
+	std::vector<Buffer::TocItem> toclist;
 };
 
 #endif

@@ -23,11 +23,8 @@
 #include "Dialogs.h"
 #include "FormToc.h"
 #include "LyXView.h"
-#include "buffer.h"
 #include "form_toc.h"
 #include "lyxtext.h"
-
-static vector<Buffer::TocItem> toclist;
 
 FormToc::FormToc(LyXView * lv, Dialogs * d)
 	: FormCommand(lv, d, _("Table of Contents")), dialog_(0)
@@ -58,12 +55,14 @@ void FormToc::build()
 	dialog_ = build_toc();
 	fl_addto_choice(dialog_->type,
 			_(" TOC | LOF | LOT | LOA "));
+
+	// Don't need to limit size of this dialog
 }
 
 
 FL_FORM * const FormToc::form() const
 {
-	if( dialog_ && dialog_->form_toc )
+	if( dialog_ ) // no need to test for dialog_->form_toc
 		return dialog_->form_toc;
 	else
 		return 0;
@@ -72,16 +71,6 @@ FL_FORM * const FormToc::form() const
 
 void FormToc::update()
 {
-	static int ow = -1, oh;
-		
-	if (ow < 0) {
-		ow = form()->w;
-		oh = form()->h;
-
-		fl_set_form_minsize(form(), ow, oh);
-		fl_set_form_maxsize(form(), 2*ow, oh);
-	}
-
 	Buffer::TocType type;
 
 	if( params.getCmdName() == "tableofcontents" )

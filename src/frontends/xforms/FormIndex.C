@@ -47,12 +47,18 @@ FormIndex::~FormIndex()
 void FormIndex::build()
 {
 	dialog_ = build_index();
+
+	int w = form()->w;
+	int h = form()->h;
+
+	fl_set_form_minsize(form(), w,   h);
+	fl_set_form_maxsize(form(), 2*w, h);
 }
 
 
 FL_FORM * const FormIndex::form() const
 {
-	if( dialog_ && dialog_->form_index )
+	if( dialog_ ) // no need to test for dialog_->form_index
 		return dialog_->form_index;
 	else
 		return 0;
@@ -61,18 +67,6 @@ FL_FORM * const FormIndex::form() const
 
 void FormIndex::update()
 {
-	static int ow = -1, oh;
-
-	if (ow < 0) {
-		ow = dialog_->form_index->w;
-		oh = dialog_->form_index->h;
-
-		fl_set_form_minsize(dialog_->form_index, ow, oh);
-		fl_set_form_maxsize(dialog_->form_index, 2*ow, oh);
-	}
-
-	fl_freeze_form( dialog_->form_index );
-
 	fl_set_input(dialog_->key, params.getContents().c_str());
 
 	if( lv_->buffer()->isReadonly() ) {
@@ -84,8 +78,6 @@ void FormIndex::update()
 		fl_activate_object( dialog_->ok );
 		fl_set_object_lcol( dialog_->ok, FL_BLACK );
 	}
-
-	fl_unfreeze_form( dialog_->form_index );
 }
 
 
@@ -98,7 +90,7 @@ void FormIndex::apply()
 	if( inset_ != 0 )
 	{
 		// Only update if contents have changed
-		if( params.getContents() != inset_->getContents() ) {
+		if( params != inset_->params() ) {
 			inset_->setParams( params );
 			lv_->view()->updateInset( inset_, true );
 		}

@@ -53,8 +53,8 @@ void TexRow::newline()
 
 void TexRow::getIdFromRow(int row, int & id, int & pos) const
 {
-	RowList::const_iterator cit = rowlist.begin();
-	RowList::const_iterator end = rowlist.end();
+	RowList::iterator cit = rowlist.begin();
+	RowList::iterator end = rowlist.end();
 	for (; cit != end; ++cit) {
 		if ((*cit).rownumber() == row) break;
 	}

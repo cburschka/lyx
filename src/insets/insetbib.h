@@ -16,8 +16,8 @@
 #pragma interface
 #endif
 
-#include "insetcommand.h"
 #include <vector>
+#include "insetcommand.h"
 
 class Buffer;
 struct FD_bibitem_form;
@@ -30,17 +30,11 @@ struct FD_bibitem_form;
 class InsetBibKey : public InsetCommand {
 public:
 	///
-	InsetBibKey() : InsetCommand("bibitem") { counter = 1; }
-	///
-	explicit
-	InsetBibKey(string const & key, string const & label = string());
-	///
-	explicit
-	InsetBibKey(InsetBibKey const *);
+	InsetBibKey(InsetCommandParams const &);
 	///
 	~InsetBibKey();
 	///
-        Inset * Clone() const { return new InsetBibKey(this); }
+	Inset * Clone() const;
 	/** Currently \bibitem is used as a LyX2.x command,
 	    so we need this method.
 	*/
@@ -83,25 +77,18 @@ private:
   */
 class InsetBibtex : public InsetCommand {
 public:
-	/// 
-	InsetBibtex() : InsetCommand("BibTeX") { owner = 0; }
 	///
-	InsetBibtex(string const & dbase, string const & style,
-		    Buffer *);
+	InsetBibtex(InsetCommandParams const &, Buffer *);
 	///
 	~InsetBibtex();
-
-        ///
-	Inset * Clone() const {
-		return new InsetBibtex(getContents(), getOptions(), owner);
-	}
 	///
-	Inset::Code LyxCode() const
-	{
-		return Inset::BIBTEX_CODE;
-	}
+	Inset * Clone() const { return new InsetBibtex(params(), owner); }
 	///
 	string getScreenLabel() const;
+	///
+	EDITABLE Editable() const { return IS_EDITABLE; }
+	///
+	Inset::Code LyxCode() const { return Inset::BIBTEX_CODE; }
 	///
 	void Edit(BufferView *, int x, int y, unsigned int button);
 	/// 
@@ -109,10 +96,6 @@ public:
 		  bool fragile, bool freespace) const;
 	///
 	std::vector<std::pair<string,string> > getKeys() const;
-	///
-	EDITABLE Editable() const {
-		return IS_EDITABLE;
-	}
         ///
         bool addDatabase(string const &);
         ///

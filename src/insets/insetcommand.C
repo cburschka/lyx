@@ -59,38 +59,25 @@ void InsetCommandParams::setFromString( string const & b )
 }
 
 
-InsetCommand::InsetCommand()
-{}
-
-
-InsetCommand::InsetCommand( string const & n,
-			    string const & c, 
-			    string const & o )
-	: p_(n, c, o)
-{}
-
-
-InsetCommand::InsetCommand( InsetCommandParams const & p )
-	: p_( p.getCmdName(), p.getContents(), p.getOptions() )
-{}
-
-
-void InsetCommand::setParams(InsetCommandParams const & p )
+bool InsetCommandParams::operator==(InsetCommandParams const & o) const
 {
-	p_.setCmdName( p.getCmdName() );
-	p_.setContents( p.getContents() );
-	p_.setOptions( p.getOptions() );
+	if( cmdname  != o.cmdname )  return false;
+	if( contents != o.contents ) return false;
+	if( options  != o.options )  return false;
+	return true;
 }
 
 
-// In lyxf3 this will be just LaTeX
-void InsetCommand::Write(Buffer const *, ostream & os) const
+bool InsetCommandParams::operator!=(InsetCommandParams const & o) const
 {
-	os << "LatexCommand " << getCommand() << "\n";
+	if( cmdname  != o.cmdname )  return true;
+	if( contents != o.contents ) return true;
+	if( options  != o.options )  return true;
+	return false;
 }
 
 
-void InsetCommand::scanCommand(string const & cmd)
+void InsetCommandParams::scanCommand(string const & cmd)
 {
 	string tcmdname, toptions, tcontents;
 
@@ -153,7 +140,7 @@ void InsetCommand::scanCommand(string const & cmd)
 
 
 // This function will not be necessary when lyx3
-void InsetCommand::Read(Buffer const *, LyXLex & lex)
+void InsetCommandParams::Read(LyXLex & lex)
 {    
 	string token;
 
@@ -172,6 +159,35 @@ void InsetCommand::Read(Buffer const *, LyXLex & lex)
 		lex.printError("Missing \\end_inset at this point. "
 			       "Read: `$$Token'");
 	}
+}
+
+
+void InsetCommandParams::Write(ostream & os) const
+{
+	os << "LatexCommand " << getCommand() << "\n";
+}
+
+
+string InsetCommandParams::getCommand() const
+{	
+	string s;
+	if (!getCmdName().empty()) s += "\\"+getCmdName();
+	if (!getOptions().empty()) s += "["+getOptions()+']';
+	s += "{"+getContents()+'}';
+	return s;
+}
+
+
+InsetCommand::InsetCommand( InsetCommandParams const & p )
+	: p_( p.getCmdName(), p.getContents(), p.getOptions() )
+{}
+
+
+void InsetCommand::setParams(InsetCommandParams const & p )
+{
+	p_.setCmdName( p.getCmdName() );
+	p_.setContents( p.getContents() );
+	p_.setOptions( p.getOptions() );
 }
 
 
@@ -198,20 +214,4 @@ int InsetCommand::Linuxdoc(Buffer const *, ostream &) const
 int InsetCommand::DocBook(Buffer const *, ostream &) const
 {
 	return 0;
-}
-
-
-Inset * InsetCommand::Clone() const
-{
-	return new InsetCommand(getCmdName(), getContents(), getOptions());
-}
-
-
-string InsetCommand::getCommand() const
-{	
-	string s;
-	if (!getCmdName().empty()) s += "\\"+getCmdName();
-	if (!getOptions().empty()) s += "["+getOptions()+']';
-	s += "{"+getContents()+'}';
-	return s;
 }

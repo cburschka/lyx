@@ -18,6 +18,7 @@
 
 #include "insetbutton.h"
 #include <sigc++/signal_system.h>
+#include "support/utility.hpp"
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::Signal0;
@@ -39,6 +40,18 @@ public:
 			    string const & c = string(),
 			    string const & o = string());
 	///
+	bool operator==(InsetCommandParams const &) const;
+	///
+	bool operator!=(InsetCommandParams const &) const;
+	///
+	void Read(LyXLex &);
+	/// Parse the command
+	void scanCommand(string const &);
+	///
+	void Write(std::ostream &) const;
+	/// Build the complete LaTeX command
+	string getCommand() const;
+	///
 	string const & getCmdName() const { return cmdname; }
 	///
 	string const & getOptions() const { return options; }
@@ -54,7 +67,6 @@ public:
 	string getAsString() const;
 	///
 	void setFromString( string const & );
-
 private:
 	///    
 	string cmdname;
@@ -65,27 +77,20 @@ private:
 };
 
 
-class InsetCommand : public InsetButton {
+class InsetCommand : public InsetButton, public noncopyable {
 public:
-	///
-	InsetCommand();
-	///
-	explicit
-	InsetCommand(string const & n,
-		     string const & c = string(), 
-		     string const & o = string());
-	///
 	explicit
 	InsetCommand(InsetCommandParams const &);
 	///
 	virtual ~InsetCommand() { hide(); };
 	///
-	void Write(Buffer const *, std::ostream &) const;
-
-	/// Parse the command.
-	void scanCommand(string const & cmd);
+	void Write(Buffer const *, std::ostream & os) const
+		{ p_.Write( os ); }
 	///
-	virtual void Read(Buffer const *, LyXLex & lex);
+	virtual void Read(Buffer const *, LyXLex & lex)
+		{ p_.Read( lex ); }
+	/// Can remove one InsetBibKey is modified
+	void scanCommand(string const & c) { p_.scanCommand( c ); };
 	/// 
 	virtual int Latex(Buffer const *, std::ostream &,
 			  bool fragile, bool free_spc) const;
@@ -96,12 +101,7 @@ public:
 	///
 	virtual int DocBook(Buffer const *, std::ostream &) const;
 	///
-	Inset * Clone() const;
-	///  
-	Inset::Code LyxCode() const
-	{
-		return Inset::NO_CODE;
-	}
+	Inset::Code LyxCode() const { return Inset::NO_CODE; }
 	
 	/** Get the label that appears at screen.
 	  
@@ -109,9 +109,9 @@ public:
          confusion with lyxinset::getLabel(int), but I've seen that
          it wasn't. I hope you never confuse again both methods.  (ale)
 	 */
-	virtual string getScreenLabel() const { return getCommand(); }
-	/// Build the complete LaTeX command
-	string getCommand() const;
+	virtual string getScreenLabel() const = 0;
+	///
+	string getCommand() const { return p_.getCommand(); }
 	///
 	string const & getCmdName() const { return p_.getCmdName(); }
 	///

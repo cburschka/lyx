@@ -26,15 +26,8 @@ struct LaTeXFeatures;
  */
 class InsetInclude: public InsetCommand {
 public:
-#if 0
 	///
-	InsetInclude(): InsetCommand("include")
-	{
-		flag = InsetInclude::INCLUDE;
-	}
-#endif
-	///
-	InsetInclude(string const &,  Buffer *);
+	InsetInclude(InsetCommandParams const &, Buffer *);
 	///
 	~InsetInclude();
         ///

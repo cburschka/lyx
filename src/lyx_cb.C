@@ -1145,9 +1145,9 @@ void MenuInsertLabel(char const * arg)
 		}
 	}
 	if (!label.empty()) {
-		InsetLabel * new_inset = new InsetLabel;
-		new_inset->setContents(label);
-		current_view->insertInset(new_inset);
+		InsetCommandParams p( "label", label );
+		InsetLabel * inset = new InsetLabel( p );
+		current_view->insertInset( inset );
 	}
 	AllowInput(current_view);
 }
@@ -2928,19 +2928,16 @@ extern "C" void RefSelectCB(FL_OBJECT *, long data)
 	        return;
 	}	
 
-	static string const commands[5]
-		= { "\\ref", "\\pageref", "\\vref", "\\vpageref",
-		    "\\prettyref"};
-	string t = commands[data];
-
+	static string const cmdname[5]
+		= { "ref", "pageref", "vref", "vpageref", "prettyref"};
+	InsetCommandParams p( cmdname[data] );
+	p.setContents( s );
+	
 	if (current_view->buffer()->isSGML())
-		t += "[" + u + "]" + "{" + s + "}";
-	else
-		t += "{" + s + "}";
+		p.setOptions( u );
 
-	Inset * new_inset = 
-		new InsetRef(t, current_view->buffer());
-	current_view->insertInset(new_inset);
+	Inset * inset = new InsetRef( p, current_view->buffer() );
+	current_view->insertInset( inset );
 }
 
 

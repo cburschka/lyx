@@ -2027,8 +2027,10 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 		int i = LABEL_COUNTER_ENUMI - LABEL_COUNTER_CHAPTER + par->enumdepth;
 		par->incCounter(i);
 		int number = par->getCounter(i);
-		if (!par->bibkey)
-			par->bibkey = new InsetBibKey();
+		if (!par->bibkey) {
+			InsetCommandParams p( "bibitem" );
+			par->bibkey = new InsetBibKey(p);
+		}
 		par->bibkey->setCounter(number);
 		par->labelstring = layout.labelstring();
 		

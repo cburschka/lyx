@@ -16,11 +16,10 @@
 #endif
 
 #include "insetcommand.h"
-#include "support/utility.hpp"
 
 /** Used to insert citations  
  */
-class InsetCitation : public InsetCommand, public noncopyable {
+class InsetCitation : public InsetCommand {
 public:
 	///
 	InsetCitation(InsetCommandParams const &);

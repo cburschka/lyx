@@ -210,11 +210,9 @@ static string unique_id() {
 }
 
 
-InsetInclude::InsetInclude(string const & fname, Buffer * bf)
-	: InsetCommand("include") 
+InsetInclude::InsetInclude(InsetCommandParams const & p, Buffer * bf)
+	: InsetCommand(p), master(bf)
 {
-	master = bf;
-	setContents(fname);
 	flag = InsetInclude::INCLUDE;
 	noload = false;
 	include_label = unique_id();
@@ -240,7 +238,7 @@ InsetInclude::~InsetInclude()
 
 Inset * InsetInclude::Clone() const
 { 
-	InsetInclude * ii = new InsetInclude (getContents(), master); 
+	InsetInclude * ii = new InsetInclude (params(), master); 
 	ii->setNoLoad(isNoLoad());
 	// By default, the newly created inset is of `include' type,
 	// so we do not test this case.

@@ -23,23 +23,11 @@ using std::endl;
 extern BufferView * current_view;
 
 
-InsetRef::InsetRef(string const & cmd, Buffer * bf)
-	: master(bf)
+InsetRef::InsetRef(InsetCommandParams const & p, Buffer * bf)
+	: InsetCommand(p), master(bf)
 {
-	scanCommand(cmd);
 	GenerateFlag();
 }
-
-
-InsetRef::InsetRef(InsetCommand const & inscmd, Buffer * bf)
-	: master(bf)
-{
-	setCmdName(inscmd.getCmdName());
-	setContents(inscmd.getContents());
-	setOptions(inscmd.getOptions());
-	GenerateFlag();
-}
-
 
 void InsetRef::GenerateFlag()
 {
@@ -101,10 +89,8 @@ int InsetRef::Latex(Buffer const *, ostream & os,
 	if(getOptions().empty())
 		os << escape(getCommand());
 	else {
-		string ns;
-		InsetCommand clone(getCmdName(),
-				   getContents(), ns);
-		os << escape(clone.getCommand());
+		InsetCommandParams p( getCmdName(), getContents(), "" );
+		os << escape(p.getCommand());
 	}
 	return 0;
 }
@@ -167,4 +153,12 @@ void InsetRef::Validate(LaTeXFeatures & features) const
 	case PAGE_REF:
 		break;
 	}
+}
+
+
+void InsetRef::gotoLabel()
+{
+    if (master) {
+	master->getUser()->gotoLabel(getContents());
+    }
 }

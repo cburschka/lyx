@@ -23,6 +23,15 @@ struct FD_form_citation;
  */
 class FormCitation : public FormCommand {
 public:
+	/**@name Constructors and Destructors */
+	//@{
+	///
+	FormCitation(LyXView *, Dialogs *);
+	///
+	~FormCitation();
+	//@}
+
+private:
 	///
 	enum State {
 		DOWN,
@@ -34,15 +43,6 @@ public:
 		ON,
 		OFF
 	};
-	/**@name Constructors and Destructors */
-	//@{
-	/// #FormCitation x(LyXFunc ..., Dialogs ...);#
-	FormCitation(LyXView *, Dialogs *);
-	///
-	~FormCitation();
-	//@}
-
-private:
 	/// Build the dialog
 	virtual void build();
 	/// Filter the inputs
@@ -69,6 +69,12 @@ private:
 
 	/// Real GUI implementation.
 	FD_form_citation * dialog_;
+	///
+	std::vector<string> citekeys;
+	///
+	std::vector<string> bibkeys;
+	///
+	std::vector<string> bibkeysInfo;
 };
 
 #endif

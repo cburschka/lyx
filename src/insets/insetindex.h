@@ -17,13 +17,12 @@
 #endif
 
 #include "insetcommand.h"
-#include "support/utility.hpp"
 
 struct LaTeXFeatures;
 
 /** Used to insert index labels  
   */
-class InsetIndex : public InsetCommand, public noncopyable {
+class InsetIndex : public InsetCommand {
 public:
 	///
 	InsetIndex(InsetCommandParams const &);
@@ -38,7 +37,7 @@ public:
 };
 
 
-class InsetPrintIndex : public InsetCommand, public noncopyable {
+class InsetPrintIndex : public InsetCommand {
 public:
 	///
 	InsetPrintIndex(InsetCommandParams const &);

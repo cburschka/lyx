@@ -72,19 +72,10 @@ FD_bibitem_form * create_form_bibitem_form(void)
 }
 
 
-InsetBibKey::InsetBibKey(string const & key, string const & label)
-	: InsetCommand("bibitem", key, label)
+InsetBibKey::InsetBibKey(InsetCommandParams const & p)
+	: InsetCommand(p)
 {
 	counter = 1;
-	if (key.empty())
-		setCmdName(" ");
-}
-
-
-InsetBibKey::InsetBibKey(InsetBibKey const * b)
-	: InsetCommand("bibitem", b->getContents(), b->getOptions())
-{
-	counter = b->counter;
 }
 
 
@@ -94,6 +85,14 @@ InsetBibKey::~InsetBibKey()
 	   && bibitem_form->bibitem_form->visible
 	   && bibitem_form->bibitem_form->u_vdata == &holder)
 		fl_hide_form(bibitem_form->bibitem_form);
+}
+
+
+Inset * InsetBibKey::Clone() const
+{
+	InsetBibKey * b = new InsetBibKey(params());
+	b->setCounter(counter);
+	return b;
 }
 
 
@@ -201,9 +200,8 @@ void InsetBibKey::Edit(BufferView * bv, int, int, unsigned int)
 }
 
 
-InsetBibtex::InsetBibtex(string const & dbase, string const & style,
-			 Buffer * o)
-	: InsetCommand("BibTeX", dbase, style), owner(o)
+InsetBibtex::InsetBibtex(InsetCommandParams const & p, Buffer * o)
+	: InsetCommand(p), owner(o)
 {}
 
 

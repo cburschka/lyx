@@ -35,10 +35,6 @@ using std::max;
 using std::min;
 using std::find;
 
-static vector<string> citekeys;
-static vector<string> bibkeys;
-static vector<string> bibkeysInfo;
-
 FormCitation::FormCitation(LyXView * lv, Dialogs * d)
 	: FormCommand(lv, d, _("Citation")), dialog_(0)
 {
@@ -73,7 +69,7 @@ void FormCitation::build()
 
 FL_FORM * const FormCitation::form() const
 {
-	if( dialog_ && dialog_->form_citation )
+	if( dialog_ ) // no need to test for dialog_->citation
 		return dialog_->form_citation;
 	else
 		return 0;
@@ -102,8 +98,6 @@ void FormCitation::update()
 		keys = frontStrip( split(keys, tmp, ',') );
 	}
 
-	fl_freeze_form( dialog_->form_citation );
-
 	updateBrowser( dialog_->bibBrsr,  bibkeys );
 	updateBrowser( dialog_->citeBrsr, citekeys );
 	fl_clear_browser( dialog_->infoBrsr );
@@ -123,8 +117,6 @@ void FormCitation::update()
 	setSize( size, bibPresent );
 
 	fl_set_input( dialog_->textAftr, params.getOptions().c_str() );
-
-	fl_unfreeze_form( dialog_->form_citation );
 }
 
 
@@ -417,9 +409,7 @@ void FormCitation::apply()
 	if( inset_ != 0 )
 	{
 		// Only update if contents have changed
-		if( params.getCmdName()  != inset_->getCmdName()  ||
-		    params.getContents() != inset_->getContents() ||
-		    params.getOptions()  != inset_->getOptions() ) {
+		if( params != inset_->params() ) {
 			inset_->setParams( params );
 			lv_->view()->updateInset( inset_, true );
 		}
