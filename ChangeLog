@@ -1,3 +1,25 @@
+2000-09-15  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* src/frontends/kde/FormCitation.h: added some using directives.
+
+	* src/frontends/kde/FormToc.h: corrected definition of doTree.
+
+	* src/frontends/kde/GUIRunTime.C (initApplication): use lyxerr not
+	cerr. 
+
+	* src/mathed/math_defs.h: redefine SetAlign to use string rather
+	than char *.
+	
+2000-09-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/buffer.C (pop_tag): revert for the second time a change by
+	Lars, who seems to really hate having non-local loop variables :)
+
+	* src/Lsstream.h: add "using" statements.
+
+	* src/support/copy.C (copy): add a bunch of std:: qualifiers
+	* src/buffer.C (writeFile): ditto
+
 2000-09-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/buffer.C (writeFile): try to fix the locale modified format

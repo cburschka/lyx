@@ -373,10 +373,10 @@ MathedInset * MathMatrixInset::Clone()
 }
 
 
-void MathMatrixInset::SetAlign(char vv, char const * hh)
+void MathMatrixInset::SetAlign(char vv, string const & hh)
 {
    v_align = vv;
-   strncpy(h_align, hh, nc);
+   strncpy(h_align, hh.c_str(), nc);
 }
 
 

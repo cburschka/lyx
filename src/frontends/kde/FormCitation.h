@@ -102,7 +102,7 @@ private:
 	Connection ih_;
 
 	/// available citation keys
-	std::vector<pair<string, string> > keys;
+	std::vector<std::pair<string, string> > keys;
 	/// chosen citation keys
 	std::vector<string> chosenkeys;
  

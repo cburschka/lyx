@@ -55,7 +55,7 @@ private:
 	void showTOC(InsetCommand * const);
 	 
 	/// hierarchical tree
-	int FormToc::doTree(vector < Buffer::TocItem>::const_iterator & , int, int, int);
+	int doTree(vector < Buffer::TocItem>::const_iterator & , int, int, int);
 	/// update the Toc
 	void updateToc(void);
 

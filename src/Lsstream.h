@@ -14,6 +14,8 @@
 
 #ifdef HAVE_SSTREAM
 #include <sstream>
+using std::istringstream;
+using std::ostringstream;
 #else
 #include "support/sstream.h"
 #endif

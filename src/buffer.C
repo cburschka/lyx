@@ -1268,7 +1268,7 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 
 #ifdef HAVE_LOCALE
 	// Use the standard "C" locale for file output.
-	ofs.imbue(locale::classic());
+	ofs.imbue(std::locale::classic());
 #endif
 
 	// The top of the file should not be written by params.
@@ -2662,16 +2662,22 @@ void Buffer::push_tag(ostream & os, string const & tag,
 void Buffer::pop_tag(ostream & os, string const & tag,
                      int & pos, char stack[5][3])
 {
+#ifdef WITH_WARNINGS
 #warning Use a real stack! (Lgb)
+#endif
+	// Please, Lars, do not remove the global variable. I already
+	// had to reintroduce it twice! (JMarc) 
+	int j;
+	
         // pop all tags till specified one
-        for (int j = pos; (j >= 0) && (strcmp(stack[j], tag.c_str())); --j)
+        for (j = pos; (j >= 0) && (strcmp(stack[j], tag.c_str())); --j)
                 os << "</" << stack[j] << ">";
 
         // closes the tag
         os << "</" << tag << ">";
-
+	
         // push all tags, but the specified one
-        for (int j = j + 1; j <= pos; ++j) {
+        for (j = j + 1; j <= pos; ++j) {
                 os << "<" << stack[j] << ">";
                 strcpy(stack[j-1], stack[j]);
         }

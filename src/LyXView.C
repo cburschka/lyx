@@ -453,7 +453,7 @@ void LyXView::updateWindowTitle()
 	if (view()->available()) {
 		string cur_title = buffer()->fileName();
 		if (!cur_title.empty()){
-			title += ": " + OnlyFilename(cur_title);
+			title += ": " + MakeDisplayPath(cur_title);
 			if (!buffer()->isLyxClean())
 				title += _(" (Changed)");
 			if (buffer()->isReadonly())

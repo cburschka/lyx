@@ -490,7 +490,7 @@ class MathMatrixInset: public MathParInset {
     ///
     void SetData(LyxArrayBase *);
     ///
-    void SetAlign(char, char const *);
+    void SetAlign(char, string const &);
     ///
     char * GetAlign(char * vv) {
 	*vv = v_align;
