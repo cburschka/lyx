@@ -29,6 +29,9 @@
 #include <config.h> // needed at least for compilers that do not
 #endif              // understand `explicit' (JMarc)
 
+#include "LOstream.h"
+#include "LIstream.h"
+
 #if 0
 #include <iterator>
 #endif
@@ -588,7 +591,6 @@ lyxstring operator+(lyxstring::value_type a, lyxstring const & b);
 lyxstring operator+(lyxstring const & a, lyxstring::value_type const * b);
 lyxstring operator+(lyxstring const & a, lyxstring::value_type b);
 
-class istream; class ostream;
 istream & operator>>(istream &, lyxstring &);
 ostream & operator<<(ostream &, lyxstring const &);
 istream & getline(istream &, lyxstring &, lyxstring::value_type delim = '\n');

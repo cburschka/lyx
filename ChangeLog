@@ -1,3 +1,24 @@
+1999-10-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* configure.in: use LYX_CXX_STL_MODERN_STREAMS; check for headers
+	<ostream> and <istream>.
+	
+	* acinclude.m4 (LYX_CXX_STL_MODERN_STREAMS): new test. Checks
+	whether <fstream> provides the latest standard features, or if we
+	have an oldstyle library (like in egcs).
+	(LYX_CXX_STL_STRING): fix the test.
+
+	* src/support/DebugStream.{C,h}: use L{I,O}stream.h and condition the
+	code on MODERN_STL_STREAM.
+
+	* src/support/lyxstring.h: use L{I,O}stream.h.
+
+	* src/support/L{I,O}stream.h: new files, designed to setup
+	correctly streams for our use
+	  - includes the right header depending on STL capabilities
+	  - puts std::ostream and std::endl (for LOStream.h) or
+	  std::istream (LIStream.h) in toplevel namespace.
+
 1999-10-22  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/insets/figinset.C: added ifdef guards around the fl_free

@@ -12,25 +12,7 @@
 #ifndef DEBUGSTREAM_H
 #define DEBUGSTREAM_H
 
-#ifdef _STANDARD_C_PLUS_PLUS
-#define MODERN_STL
-#endif
-
-#ifdef MODERN_STL
-#include <ostream>
-#else
-#include <iostream>
-#endif
-
-//#ifdef MODERN_STL
-using std::ostream;
-using std::streambuf;
-using std::streamsize;
-using std::filebuf;
-using std::cerr;
-using std::ios;
-using std::endl; 
-//#endif
+#include "LOstream.h"
 
 #ifdef TEST_DEBUGSTREAM
 #include <string>

@@ -6,7 +6,6 @@
 // but should be adaptable to any project.
 
 //#define TEST_DEBUGSTREAM
-//#define MODERN_STL
 
 //#include "DebugStream.h"
 #include "debug.h"
@@ -14,9 +13,15 @@
 // Since the current C++ lib in egcs does not have a standard implementation
 // of basic_streambuf and basic_filebuf we don't have to include this
 // header.
-#ifdef MODERN_STL
+#ifdef MODERN_STL_STREAMS
 #include <fstream>
 #endif
+
+using std::streambuf;
+using std::streamsize;
+using std::filebuf;
+using std::cerr;
+using std::ios;
 
 ostream & operator<<(ostream & o, Debug::type t)
 {
@@ -54,7 +59,7 @@ public:
 protected:
 	///
 	virtual int sync() {
-#ifdef MODERN_STL
+#ifdef MODERN_STL_STREAMS
 		sb2->pubsync();
 		return sb1->pubsync();
 #else
@@ -64,7 +69,7 @@ protected:
 	}
 	///
 	virtual streamsize xsputn(char const * p, streamsize n) {
-#ifdef MODERN_STL
+#ifdef MODERN_STL_STREAMS
 		sb2->sputn(p, n);
 		return sb1->sputn(p, n);
 #else
@@ -74,7 +79,7 @@ protected:
 	}
 	///
 	virtual int overflow(int c = EOF) {
-#ifdef MODERN_STL
+#ifdef MODERN_STL_STREAMS
 		sb2->sputc(c);
 		return sb1->sputc(c);
 #else
@@ -98,7 +103,7 @@ public:
 protected:
 	///
 	virtual int sync() {
-#ifdef MODERN_STL
+#ifdef MODERN_STL_STREAMS
 		return sb->pubsync();
 #else
 		return sb->sync();
@@ -106,7 +111,7 @@ protected:
 	}
 	///
 	virtual streamsize xsputn(char const * p, streamsize n) {
-#ifdef MODERN_STL
+#ifdef MODERN_STL_STREAMS
 		return sb->sputn(p, n);
 #else
 		return sb->xsputn(p, n);
@@ -114,7 +119,7 @@ protected:
 	}
 	///
 	virtual int overflow(int c = EOF) {
-#ifdef MODERN_STL
+#ifdef MODERN_STL_STREAMS
 		return sb->sputc(c);
 #else
 		return sb->overflow(c);

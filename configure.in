@@ -67,8 +67,10 @@ LYX_CXX_STL_STRING
 LYX_CXX_NAMESPACES
 LYX_CXX_CHEADERS
 LYX_CXX_RTTI
+AC_CHECK_HEADERS(ostream istream)
+LYX_CXX_STL_MODERN_STREAMS
 
-### Libarary Files
+### Library Files
 dnl by testing these we check if it is ok to have
 dnl -lc and -lm as args to the compiler
 AC_CHECK_LIB(m, sin)

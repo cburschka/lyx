@@ -281,6 +281,7 @@ AC_DEFUN(LYX_CXX_STL_STACK,[
 AC_CACHE_CHECK(for broken STL stack template,lyx_cv_broken_stack,
  [AC_TRY_COMPILE([
 #include <stack>
+using std::stack;
 ],[
     stack<int> stakk;
     stakk.push(0);
@@ -290,6 +291,22 @@ if test $lyx_cv_broken_stack = yes ; then
   AC_DEFINE(BROKEN_STL_STACK, 1, 
    [Define if you have the STL from libg++ 2.7.x, where stack<> is not defined
    correctly])
+fi])
+
+dnl Usage: LYX_CXX_STL_MODERN_STREAMS : checks whether the C++ compiler
+dnl   supports modern STL streams
+AC_DEFUN(LYX_CXX_STL_MODERN_STREAMS,[
+AC_CACHE_CHECK(for modern STL streams,lyx_cv_modern_streams,
+ [AC_TRY_COMPILE([
+#include <fstream>
+],[
+ std::streambuf * test = std::cerr.rdbuf();
+ test->pubsync();
+],lyx_cv_modern_streams=yes,lyx_cv_modern_streams=no)
+])
+if test $lyx_cv_modern_streams = yes ; then
+  AC_DEFINE(MODERN_STL_STREAMS, 1, 
+   [Define if you have modern standard-compliant STL streams])
 fi])
 
 
@@ -306,6 +323,7 @@ AC_DEFUN(LYX_CXX_STL_STRING,[
     ],[
 	AC_TRY_COMPILE([
 	    #include <string>
+	    using std::string;
 	],[
 	    string a("hello there");
 	    a.clear();
@@ -315,14 +333,18 @@ AC_DEFUN(LYX_CXX_STL_STRING,[
 	    with_included_string=no
 	],[
 	    with_included_string=yes
-	    AC_DEFINE(USE_INCLUDED_STRING, 1,
-	    [Define to use the lyxstring class bundled with LyX.])
-	    lyx_flags="$lyx_flags included-string"
+	    
 	])
     ])
+    if test x$with_included_string = xyes ; then
+	AC_DEFINE(USE_INCLUDED_STRING, 1,
+	    [Define to use the lyxstring class bundled with LyX.])
+	    lyx_flags="$lyx_flags included-string"
+    fi
     AM_CONDITIONAL(USE_LYXSTRING, test x$with_included_string = xyes)
     AC_MSG_RESULT([$with_included_string])
 ])
+
 
 
 dnl LYX_CXX_MUTABLE
