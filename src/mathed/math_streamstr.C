@@ -4,6 +4,7 @@
 #include "math_mathmlstream.h"
 
 #include <algorithm>
+#include <iostream>
 
 
 WriteStream & operator<<(WriteStream & ws, string const & s)
