@@ -194,7 +194,7 @@ lyx_xpm.h: stamp-xpm
 	@:
 
 stamp-xpm: lyx_xpm.h-tmp
-	if cmp -s $< lyx_xpm.h || {\
+	cmp -s $< lyx_xpm.h || {\
 		rm -f lyx_xpm.h ;\
 		cp $< lyx_xpm.h ;\
 	}
