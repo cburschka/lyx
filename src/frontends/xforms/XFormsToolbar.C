@@ -162,7 +162,6 @@ void XFormsToolbar::toolbarItem::generateInactivePixmaps()
 	// "o c <inactive_color>",
 	// "oooooooooooooooo", // <width> 'o' chars.
 	// repeated <height> times.
-
 	std::ostringstream line1_ss;
 	line1_ss << width << ' ' << height << " 1 1";
 	string const line1 = line1_ss.str();
@@ -173,20 +172,15 @@ void XFormsToolbar::toolbarItem::generateInactivePixmaps()
 	inactive_data[0] = const_cast<char *>(line1.c_str());
 	inactive_data[1] = const_cast<char *>(line2.c_str());
 
-	char ** raw_inactive_data =
-		const_cast<char **>(&*inactive_data.begin());
+	char ** raw_inactive_data = &*inactive_data.begin();
 
 	// Generate a pixmap of this data set.
 	// Together with 'mask' above, this is sufficient to display
 	// an inactive version of our active_pixmap.
 	Screen * screen = ScreenOfDisplay(display, fl_screen);
 
-	XpmCreatePixmapFromData(fl_get_display(),
-				XRootWindowOfScreen(screen),
-				raw_inactive_data,
-				&inactive_pixmap,
-				0,
-				0);
+	XpmCreatePixmapFromData(display, XRootWindowOfScreen(screen),
+				raw_inactive_data, &inactive_pixmap, 0, 0);
 }
 
 
