@@ -1428,38 +1428,6 @@ void LyXText::insertStringAsParagraphs(string const & str)
 }
 
 
-void LyXText::checkParagraph(ParagraphList::iterator pit, pos_type pos)
-{
-	breakAgain(getRow(pit, pos));
-	setCursorIntern(cursor.par(), cursor.pos(), false, cursor.boundary());
-}
-
-
-// returns false if inset wasn't found
-bool LyXText::updateInset(InsetOld * inset)
-{
-	// first check the current paragraph
-	int pos = cursor.par()->getPositionOfInset(inset);
-	if (pos != -1) {
-		checkParagraph(cursor.par(), pos);
-		return true;
-	}
-
-	// check every paragraph
-	ParagraphList::iterator par = ownerParagraphs().begin();
-	ParagraphList::iterator end = ownerParagraphs().end();
-	for (; par != end; ++par) {
-		pos = par->getPositionOfInset(inset);
-		if (pos != -1) {
-			checkParagraph(par, pos);
-			return true;
-		}
-	}
-
-	return false;
-}
-
-
 bool LyXText::setCursor(ParagraphList::iterator pit,
 			pos_type pos,
 			bool setfont, bool boundary)

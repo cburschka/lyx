@@ -364,14 +364,7 @@ public:
 		       bool same_content);
 	///
 	void gotoInset(InsetOld::Code code, bool same_content);
-	///
 
-	/* for the greater insets */
-
-	/// returns false if inset wasn't found
-	bool updateInset(InsetOld *);
-	///
-	void checkParagraph(ParagraphList::iterator pit, lyx::pos_type pos);
 	///
 	int workWidth() const;
 

@@ -1389,7 +1389,7 @@ void LyXText::breakAgain(RowList::iterator rit)
 
 	bool not_ready = true;
 
-	do  {
+	do {
 		pos_type z = rowBreakPoint(*rit);
 		RowList::iterator tmprit = rit;
 		RowList::iterator end = rows().end();
@@ -2103,8 +2103,6 @@ void LyXText::changeCase(LyXText::TextCase action)
 		}
 #warning changes
 		pit->setChar(pos, c);
-		checkParagraph(pit, pos);
-
 		++pos;
 	}
 }

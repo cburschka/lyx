@@ -532,7 +532,6 @@ bool InsetText::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 		return false;
 	if (the_locking_inset == inset) {
 		the_locking_inset->insetUnlock(bv);
-		getLyXText(bv)->updateInset(inset);
 		the_locking_inset = 0;
 		if (lr)
 			moveRightIntern(bv, true, false);

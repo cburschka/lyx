@@ -984,10 +984,9 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_TRANSPOSE_CHARS:
 		recordUndo(bv, Undo::ATOMIC, cursor.par());
-		if (transposeChars(cursor))
-			checkParagraph(cursor.par(), cursor.pos());
 		if (inset_owner)
 			bv->updateInset();
+		redoParagraph();
 		update();
 		break;
 
