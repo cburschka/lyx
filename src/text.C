@@ -3316,7 +3316,7 @@ void LyXText::paintFirstRow(DrawRowParams & p)
 							lyxfont::width(str, font);
 					}
  
-					p.pain->text(int(x), p.yo +
+					p.pain->text(int(x),
 						p.yo + p.row->baseline() - 
 						p.row->ascent_of_text() - maxdesc,
 						str, font);
@@ -3325,9 +3325,10 @@ void LyXText::paintFirstRow(DrawRowParams & p)
 				if (is_rtl) {
 					x = ww - leftMargin(p.bv, p.row)
 						+ lyxfont::width(layout.labelsep, font);
-				} else
+				} else {
 					x = p.x - lyxfont::width(layout.labelsep, font)
 						- lyxfont::width(str, font);
+				}
 
 				p.pain->text(int(x), p.yo + p.row->baseline(), str, font);
 			}
