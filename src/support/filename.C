@@ -86,6 +86,13 @@ string const FileName::mangledFilename() const
 	mname = subst(mname, ".", "_");
 	// Add the extension back on
 	mname = ChangeExtension(mname, GetExtension(name_));
+
+#if defined(__CYGWIN__) || defined(__CYGWIN32__) || defined(_WIN32)
+	// Mangle the drive letter in a Windows-style path.
+	if (mname.size() >= 2 && mname[1] == ':')
+		mname[1] = '_';
+#endif
+
 	// Prepend a counter to the filename. This is necessary to make
 	// the mangled name unique.
 	static int counter = 0;

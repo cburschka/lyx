@@ -1,5 +1,11 @@
 2004-12-16  Angus Leeming  <leeming@lyx.org>
 
+	* filename.C (mangledFilename): Given a Windows-style path, don't
+	forget to mangle the drive letter too when generating a unique
+	temporary file name.
+
+2004-12-16  Angus Leeming  <leeming@lyx.org>
+
 	* mkdir.C: move the HAVE_MKDIR conditional code out of config.h
 	and into here.
 
