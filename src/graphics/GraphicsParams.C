@@ -15,6 +15,7 @@
 #include "GraphicsParams.h"
 #include "insets/insetgraphicsParams.h"
 #include "lyxrc.h"
+#include "debug.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/LAssert.h"
@@ -37,6 +38,7 @@ GParams::GParams(InsetGraphicsParams const & iparams, string const & filepath)
 
 		// Get the original Bounding Box from the file
 		string const tmp = readBB_from_PSFile(filename);
+		lyxerr[Debug::GRAPHICS] << "BB_from_File: " << tmp << std::endl;
 		if (!tmp.empty()) {
 			int const bb_orig_xl = strToInt(token(tmp, ' ', 0));
 			int const bb_orig_yb = strToInt(token(tmp, ' ', 1));
@@ -147,23 +149,12 @@ BoundingBox::BoundingBox(string const & bb)
 	string a, b, c, d;
 	is >> a >> b >> c >> d;
 
-	// Don't need to check that the strings are valid LyXLength's
-	// because this is done in the LyXLength c-tor.
-	LyXLength const length_xl(a);
-	LyXLength const length_yb(b);
-	LyXLength const length_xr(c);
-	LyXLength const length_yt(d);
-
-	// inPixels returns the length in inches, scaled by
-	// lyxrc.dpi and lyxrc.zoom.
-	// We want, therefore, to undo all this lyxrc nonsense because we
-	// want the bounding box in Postscript pixels.
+	// inBP returns the length in Postscript points.
 	// Note further that there are 72 Postscript pixels per inch.
-	double const scaling_factor = 7200.0 / (lyxrc.dpi * lyxrc.zoom);
-	int const xl_tmp = int(scaling_factor * length_xl.inPixels(1, 1));
-	int const yb_tmp = int(scaling_factor * length_yb.inPixels(1, 1));
-	int const xr_tmp = int(scaling_factor * length_xr.inPixels(1, 1));
-	int const yt_tmp = int(scaling_factor * length_yt.inPixels(1, 1));
+	int const xl_tmp = LyXLength(a).inBP();
+	int const yb_tmp = LyXLength(b).inBP();
+	int const xr_tmp = LyXLength(c).inBP();
+	int const yt_tmp = LyXLength(d).inBP();
 
 	if (xr_tmp <= xl_tmp || yt_tmp <= yb_tmp)
 		return;

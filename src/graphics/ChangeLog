@@ -1,3 +1,8 @@
+2002-04-09  Herbert Voss  <voss@lyx.org>
+
+	* GraphicsParams.C (BoundingBox c-tor): fix rounding errors by using
+	LyXLength::inBP instead of inPixels.
+
 2002-04-10  Herbert Voss  <voss@perce.de>
 
 	* GraphicsCache.[Ch]:
