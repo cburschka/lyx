@@ -389,7 +389,7 @@ int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os,
 
 		// write it to a file (so far the complete file)
 		string writefile = ChangeExtension(included_file, ".sgml");
-		if (!buffer.temppath().empty() && !buffer.niceFile()) {
+		if (!buffer.temppath().empty() && !runparams.nice) {
 			incfile = subst(incfile, '/','@');
 			writefile = AddName(buffer.temppath(), incfile);
 		} else
@@ -402,7 +402,6 @@ int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os,
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
 		OutputParams runp = runparams;
-		runp.nice = buffer.niceFile();		
 		tmp->makeLinuxDocFile(writefile, runp, true);
 	}
 
@@ -433,7 +432,7 @@ int InsetInclude::docbook(Buffer const & buffer, ostream & os,
 
 		// write it to a file (so far the complete file)
 		string writefile = ChangeExtension(included_file, ".sgml");
-		if (!buffer.temppath().empty() && !buffer.niceFile()) {
+		if (!buffer.temppath().empty() && !runparams.nice) {
 			incfile = subst(incfile, '/','@');
 			writefile = AddName(buffer.temppath(), incfile);
 		} else
@@ -445,7 +444,6 @@ int InsetInclude::docbook(Buffer const & buffer, ostream & os,
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
 		OutputParams runp = runparams;
-		runp.nice = buffer.niceFile();
 		tmp->makeDocBookFile(writefile, runp, true);
 	}
 
@@ -469,16 +467,19 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 
 	string const included_file = includedFilename(buffer, params_);
 
-	if (!buffer.temppath().empty() &&
-	    !buffer.niceFile() &&
-	    !isVerbatim(params_)) {
+	if (IsLyXFilename(included_file))
+		writefile = ChangeExtension(writefile, ".sgml");
+	else if (!buffer.temppath().empty() &&
+	         !features.nice() &&
+	         !isVerbatim(params_)) {
 		incfile = subst(incfile, '/','@');
+#ifdef __EMX__
+// FIXME: It seems that the following is necessary (see latex() above)
+//		incfile = subst(incfile, ':', '$');
+#endif
 		writefile = AddName(buffer.temppath(), incfile);
 	} else
 		writefile = included_file;
-
-	if (IsLyXFilename(included_file))
-		writefile = ChangeExtension(writefile, ".sgml");
 
 	features.includeFile(include_label, writefile);
 
@@ -491,10 +492,8 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 	if (loadIfNeeded(buffer, params_)) {
 		// a file got loaded
 		Buffer * const tmp = bufferlist.getBuffer(included_file);
-		if (tmp) {
-			tmp->niceFile() = buffer.niceFile();
+		if (tmp)
 			tmp->validate(features);
-		}
 	}
 }
 

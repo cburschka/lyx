@@ -39,7 +39,7 @@ struct Language;
 class LaTeXFeatures {
 public:
 	///
-	LaTeXFeatures(Buffer const &, BufferParams const &);
+	LaTeXFeatures(Buffer const &, BufferParams const &, bool);
 	/// The packages needed by the document
 	std::string const getPackages() const;
 	/// The macros definitions needed by the document
@@ -82,6 +82,8 @@ public:
 	BufferParams const & bufferParams() const;
 	/// the return value is dependent upon both LyXRC and LaTeXFeatures.
 	bool useBabel() const;
+	///
+	bool nice() const { return nice_; };
 
 private:
 	std::list<std::string> usedLayouts_;
@@ -108,6 +110,10 @@ private:
 	Buffer const & buffer_;
 	///
 	BufferParams const & params_;
+	/** If we are writing a nice LaTeX file or not.
+	 *  Only needed by InsetInclude::validate().
+	 */
+	bool nice_;
 };
 
 #endif

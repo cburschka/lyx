@@ -633,9 +633,9 @@ int InsetGraphics::plaintext(Buffer const &, ostream & os,
 
 
 int InsetGraphics::linuxdoc(Buffer const & buf, ostream & os,
-			    OutputParams const &) const
+			    OutputParams const & runparams) const
 {
-	string const file_name = buf.niceFile() ?
+	string const file_name = runparams.nice ?
 				params().filename.relFilename(buf.filePath()):
 				params().filename.absFilename();
 

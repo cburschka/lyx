@@ -148,7 +148,6 @@ struct Buffer::Impl
 	BufferParams params;
 	LyXVC lyxvc;
 	string temppath;
-	bool nicefile;
 	TexRow texrow;
 
 	/// need to regenerate .tex ?
@@ -186,8 +185,7 @@ struct Buffer::Impl
 
 
 Buffer::Impl::Impl(Buffer & parent, string const & file, bool readonly_)
-	: nicefile(true),
-	  lyx_clean(true), bak_clean(true), unnamed(false), read_only(readonly_),
+	: lyx_clean(true), bak_clean(true), unnamed(false), read_only(readonly_),
 	  filename(file), filepath(OnlyPath(file)), file_fully_loaded(false),
 		text(0, 0)
 {
@@ -291,18 +289,6 @@ LyXVC const & Buffer::lyxvc() const
 string const & Buffer::temppath() const
 {
 	return pimpl_->temppath;
-}
-
-
-bool & Buffer::niceFile()
-{
-	return pimpl_->nicefile;
-}
-
-
-bool Buffer::niceFile() const
-{
-	return pimpl_->nicefile;
 }
 
 
@@ -848,11 +834,10 @@ void Buffer::makeLaTeXFile(ostream & os,
 			   bool output_preamble, bool output_body)
 {
 	OutputParams runparams = runparams_in;
-	niceFile() = runparams.nice; // this will be used by Insetincludes.
 
 	// validate the buffer.
 	lyxerr[Debug::LATEX] << "  Validating buffer..." << endl;
-	LaTeXFeatures features(*this, params());
+	LaTeXFeatures features(*this, params(), runparams.nice);
 	validate(features);
 	lyxerr[Debug::LATEX] << "  Buffer validation done." << endl;
 
@@ -944,9 +929,6 @@ void Buffer::makeLaTeXFile(ostream & os,
 	lyxerr[Debug::INFO] << "Finished making LaTeX file." << endl;
 	lyxerr[Debug::INFO] << "Row count was " << texrow().rows() - 1
 			    << '.' << endl;
-
-	// we want this to be true outside previews (for insetexternal)
-	niceFile() = true;
 }
 
 
@@ -991,10 +973,7 @@ void Buffer::makeLinuxDocFile(string const & fname,
 	if (!openFileWrite(ofs, fname))
 		return;
 
-	niceFile() = runparams.nice; // this will be used by included files.
-
-	LaTeXFeatures features(*this, params());
-
+	LaTeXFeatures features(*this, params(), runparams.nice);
 	validate(features);
 
 	texrow().reset();
@@ -1040,9 +1019,6 @@ void Buffer::makeLinuxDocFile(string const & fname,
 
 	ofs.close();
 	// How to check for successful close
-
-	// we want this to be true outside previews (for insetexternal)
-	niceFile() = true;
 }
 
 
@@ -1054,9 +1030,7 @@ void Buffer::makeDocBookFile(string const & fname,
 	if (!openFileWrite(ofs, fname))
 		return;
 
-	niceFile() = runparams.nice; // this will be used by Insetincludes.
-
-	LaTeXFeatures features(*this, params());
+	LaTeXFeatures features(*this, params(), runparams.nice);
 	validate(features);
 
 	texrow().reset();
@@ -1101,9 +1075,6 @@ void Buffer::makeDocBookFile(string const & fname,
 
 	ofs.close();
 	// How to check for successful close
-
-	// we want this to be true outside previews (for insetexternal)
-	niceFile() = true;
 }
 
 

@@ -42,8 +42,8 @@ using std::ostringstream;
 using std::set;
 
 
-LaTeXFeatures::LaTeXFeatures(Buffer const & b, BufferParams const & p)
-	: buffer_(b), params_(p)
+LaTeXFeatures::LaTeXFeatures(Buffer const & b, BufferParams const & p, bool n)
+	: buffer_(b), params_(p), nice_(n)
 {}
 
 

@@ -275,12 +275,6 @@ public:
 	/// Where to put temporary files.
 	std::string const & temppath() const;
 
-	/** If we are writing a nice LaTeX file or not.
-	    While writing as LaTeX, tells whether we are
-	    doing a 'nice' LaTeX file */
-	bool & niceFile();
-	bool niceFile() const;
-
 	/// Used when typesetting to place errorboxes.
 	TexRow & texrow();
 	TexRow const & texrow() const;
