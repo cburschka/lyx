@@ -1,3 +1,13 @@
+2000-11-02  Lior Silberman  <lior@Princeton.EDU>
+
+	* lib/examples/*.lyx : '\language default' => '\language english'
+	
+	* lib/examples/it_splash.lyx : except where it should be italian
+
+	* lib/templates/*.lyx : the same
+
+	* doc/*.lyx* : the same
+
 2000-11-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/bind/menus.bind: remove the Layout menu entries, which I
