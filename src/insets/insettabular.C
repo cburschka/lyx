@@ -1546,8 +1546,8 @@ int InsetTabular::getMaxWidth(Painter & pain,
 	return -1;
     int w = GetMaxWidthOfCell(pain, cell);
     if (w > 0)
-	// because the inset then subtracts it's top_x
-	w += inset->x();
+	// because the inset then subtracts it's top_x and owner->x()
+	w += (inset->x() - top_x);
     return w;
 }
 

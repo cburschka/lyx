@@ -233,15 +233,7 @@ int InsetText::width(BufferView * bv, LyXFont const &) const
 int InsetText::textWidth(Painter & pain) const
 {
     int w = getMaxWidth(pain, this);
-    if (w < 0) {
-	return w;
-    }
-    if (owner()) {
-	w = w - top_x + owner()->x();
-	return w;
-    }
-    w -= (2 * TEXT_TO_INSET_OFFSET);
-    return w - top_x;
+    return w;
 }
 
 
@@ -1207,9 +1199,16 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 int InsetText::getMaxWidth(Painter & pain, UpdatableInset const * inset) const
 {
     int w = UpdatableInset::getMaxWidth(pain, inset);
-    if (w < 0)
+    if (w < 0) {
 	return w;
-    return  w - (2*TEXT_TO_INSET_OFFSET);
+    }
+    if (owner()) {
+	w = w - top_x + owner()->x();
+	return w;
+    }
+    w -= (2 * TEXT_TO_INSET_OFFSET);
+    return w - top_x;
+//    return  w - (2*TEXT_TO_INSET_OFFSET);
 }
 
 
