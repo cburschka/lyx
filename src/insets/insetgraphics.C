@@ -116,6 +116,8 @@ TODO Before initial production release:
 #include "support/lyxmanip.h"
 #include "debug.h"
 #include "gettext.h"
+//#include "LOStream.h"
+#include "support/lyxalgo.h"
 
 extern string system_tempdir;
 
@@ -502,7 +504,7 @@ string decideOutputImageFormat(string const & suffix)
 	// lyxrc.pdf_mode means:
 	// Are we creating a PDF or a PS file?
 	// (Should actually mean, are we using latex or pdflatex).	
-	lyxerr << "decideOutput::lyxrc.pdf_mode = " << lyxrc.pdf_mode << "\n";
+	lyxerr[Debug::INFO] << "decideOutput::lyxrc.pdf_mode = " << lyxrc.pdf_mode << "\n";
 	if (lyxrc.pdf_mode) {
 		if (contains(suffix,"ps") || suffix == "pdf")
 			return "pdf";
@@ -512,7 +514,7 @@ string decideOutputImageFormat(string const & suffix)
 			return "png";
 	}
 	// If it's postscript, we always do eps.
-	lyxerr << "decideOutput: we have PostScript mode\n";
+	lyxerr[Debug::INFO] << "decideOutput: we have PostScript mode\n";
 	if (suffix != "ps")
 	    return "eps";
 	else
@@ -535,11 +537,9 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	//   convert_place = original file directory
 	//   return original filename without the extension
 	//
-	// first check if file is viewed in LyX. First local
-	// than global
 	// if it's a zipped one, than let LaTeX do the rest!!!
 	if ((zippedFile(params.filename) && params.noUnzip) || buf->niceFile) {
-	    lyxerr << "don't unzip file or export latex" 
+	    lyxerr[Debug::INFO] << "don't unzip file or export latex" 
 		    << params.filename << endl;
 	    return params.filename;
 	}
@@ -555,18 +555,19 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	string const image_target = decideOutputImageFormat(extension);
 	if (extension == image_target)		// :-)
 		return filename_;
-	if (!IsFileReadable(filename_)) {	// :-(
-		Alert::alert(_("File") + params.filename,
-			   _("isn't readable or doesn't exists!"));
-		return filename_;
-	}
+//	commented out to check if the "not exist"bug is fixed.
+//	if (!IsFileReadable(filename_)) {	// :-(
+//		Alert::alert(_("File") + params.filename,
+//			   _("isn't readable or doesn't exists!"));
+//		return filename_;
+//	}
 	string outfile;
 	string const temp = AddName(buf->tmppath, filename_);
 	outfile = RemoveExtension(temp);
-	lyxerr << "tempname = " << temp << "\n";
-	lyxerr << "buf::tmppath = " << buf->tmppath << "\n";
-	lyxerr << "filename_ = " << filename_ << "\n";
-	lyxerr << "outfile = " << outfile << endl;
+	lyxerr[Debug::INFO] << "tempname = " << temp << "\n";
+	lyxerr[Debug::INFO] << "buf::tmppath = " << buf->tmppath << "\n";
+	lyxerr[Debug::INFO] << "filename_ = " << filename_ << "\n";
+	lyxerr[Debug::INFO] << "outfile = " << outfile << endl;
 	converters.convert(buf, filename_, outfile, extension, image_target);
 	return outfile;
 }

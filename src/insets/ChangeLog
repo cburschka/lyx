@@ -1,5 +1,10 @@
 2002-02-12  Herbert Voss  <voss@lyx.org>
 
+	* insetgraphics.C: (prepareFile) do not check at this time
+	if the file is present.
+
+2002-02-12  Herbert Voss  <voss@lyx.org>
+
 	* insetgraphics.C: latex(), return the correct newlines
 
 2002-02-13  José Matos  <jamatos@fep.up.pt>
