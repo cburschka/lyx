@@ -1,5 +1,10 @@
 2005-01-06  José Matos  <jamatos@lyx.org>
 
+	* lyx_1_4.py (normalize_paragraph_params): add start_of_appendix
+	to the allowed parameters list.
+
+2005-01-06  José Matos  <jamatos@lyx.org>
+
 	* lyx_1_4.py (normalize_paragraph_params): update file format to 239.
 
 	* LyX.py (convert): simplify code and add running times
