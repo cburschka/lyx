@@ -95,6 +95,15 @@ void InsetWrap::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetWrapMailer(*this).updateDialog(&cur.bv());
 		break;
+		
+	case LFUN_MOUSE_RELEASE: {
+		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
+			InsetWrapMailer(*this).showDialog(&cur.bv());
+			break;
+		}
+		InsetCollapsable::priv_dispatch(cur, cmd);
+		break;
+	}
 
 	default:
 		InsetCollapsable::priv_dispatch(cur, cmd);
@@ -116,29 +125,25 @@ void InsetWrapParams::write(ostream & os) const
 
 void InsetWrapParams::read(LyXLex & lex)
 {
-	if (lex.isOK()) {
-		lex.next();
-		string token = lex.getString();
-		if (token == "placement") {
-			lex.next();
-			placement = lex.getString();
-		} else {
-			// take countermeasures
-			lex.pushToken(token);
-		}
+	string token;
+	lex >> token;
+	if (token == "placement")
+		lex >> placement;
+	else {
+		// take countermeasures
+		lex.pushToken(token);
 	}
-	if (lex.isOK()) {
+	if (!lex)
+		return;
+	lex >> token;
+	if (token == "width") {
 		lex.next();
-		string token = lex.getString();
-		if (token == "width") {
-			lex.next();
-			width = LyXLength(lex.getString());
-		} else {
-			lyxerr << "InsetWrap::Read:: Missing 'width'-tag!"
-			       << endl;
-			// take countermeasures
-			lex.pushToken(token);
-		}
+		width = LyXLength(lex.getString());
+	} else {
+		lyxerr << "InsetWrap::Read:: Missing 'width'-tag!"
+			<< endl;
+		// take countermeasures
+		lex.pushToken(token);
 	}
 }
 
@@ -274,6 +279,8 @@ void InsetWrapMailer::string2params(string const & in, InsetWrapParams & params)
 	if (!lex || id != "Wrap")
 		return print_mailer_error("InsetBoxMailer", in, 2, "Wrap");
 
+	// We have to read the type here!
+	lex >> params.type;
 	params.read(lex);
 }
 

@@ -1,3 +1,8 @@
+2004-04-02  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* insetfloat.C (read): fix yesterday's float fix.
+	* insetwrap.C (read): apply the fixed float fix.
+
 2004-04-01  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetfloat.C (read): fix reading of float params 

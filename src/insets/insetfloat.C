@@ -192,8 +192,7 @@ void InsetFloat::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 void InsetFloatParams::write(ostream & os) const
 {
-	os << "Float " // getInsetName()
-	   << type << '\n';
+	os << "Float " << type << '\n';
 
 	if (!placement.empty())
 		os << "placement " << placement << "\n";
@@ -212,43 +211,26 @@ void InsetFloatParams::write(ostream & os) const
 
 void InsetFloatParams::read(LyXLex & lex)
 {
-	if (lex.isOK()) {
-		lex.next();
-		type = lex.getString();
-	}
-	if (!lex.isOK())
-		return;
-	lex.next();
-	string token = lex.getString();
+	string token;
+	lex >> token;
 	if (token == "placement") {
-		lex.next();
-		placement = lex.getString();
+		lex >> placement;
 	} else {
 		// take countermeasures
 		lex.pushToken(token);
 	}
-	if (!lex.isOK())
-		return;
-	lex.next();
-	token = lex.getString();
+	lex >> token;
 	if (token == "wide") {
-		lex.next();
-		string const tmptoken = lex.getString();
-		wide = (tmptoken == "true");
+		lex >> wide;
 	} else {
 		lyxerr << "InsetFloat::Read:: Missing wide!"
 		<< endl;
 		// take countermeasures
 		lex.pushToken(token);
 	}
-	if (!lex.isOK())
-		return;
-	lex.next();
-	token = lex.getString();
+	lex >> token;
 	if (token == "sideways") {
-		lex.next();
-		string const tmptoken = lex.getString();
-		sideways = (tmptoken == "true");
+		lex >> sideways;
 	} else {
 		lyxerr << "InsetFloat::Read:: Missing sideways!"
 		<< endl;
@@ -489,6 +471,8 @@ void InsetFloatMailer::string2params(string const & in,
 	if (!lex || id != "Float")
 		return print_mailer_error("InsetBoxMailer", in, 2, "Float");
 
+	// We have to read the type here!
+	lex >> params.type;
 	params.read(lex);
 }
 
