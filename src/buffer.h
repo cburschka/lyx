@@ -164,7 +164,7 @@ public:
 			     Paragraph * endpar, TexRow & texrow) const;
 
         ///
-	void simpleDocBookOnePar(std::ostream &, string & extra,
+	void simpleDocBookOnePar(std::ostream &,
 				 Paragraph * par, int & desc_on,
 				 Paragraph::depth_type depth) const ;
         ///

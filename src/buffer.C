@@ -3197,9 +3197,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			break;
 		}
 
-		string extra_par;
-		simpleDocBookOnePar(ofs, extra_par, par, desc_on,
-				    depth + 1 + command_depth);
+		simpleDocBookOnePar(ofs, par, desc_on, depth+1+command_depth);
 		par = par->next();
 
 		string end_tag;
@@ -3264,7 +3262,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 }
 
 
-void Buffer::simpleDocBookOnePar(ostream & os, string & extra,
+void Buffer::simpleDocBookOnePar(ostream & os,
 				 Paragraph * par, int & desc_on,
 				 Paragraph::depth_type depth) const
 {

@@ -1497,8 +1497,7 @@ int InsetText::docbook(Buffer const * buf, ostream & os) const
 			break;
 		}
 
-		string extra_par;
-		buf->simpleDocBookOnePar(os, extra_par, p, desc_on,
+		buf->simpleDocBookOnePar(os, p, desc_on,
 					 depth + 1 + command_depth);
 		p = p->next();
 
