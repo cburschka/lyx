@@ -26,7 +26,6 @@
 #include "lyx_cb.h"
 #include "language.h"
 #include "gettext.h"
-#include "lyxfunc.h"
 
 #ifndef NEW_INSETS
 void Foot(BufferView * bv)
@@ -72,7 +71,7 @@ void Noun(BufferView * bv)
 void Margin(BufferView * bv)
 {
 	if (bv->available()) {
-		bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("Inserting margin note...");
+		bv->owner()->message(_("Inserting margin note...");
 		bv->hideCursor();
 		bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
 		bv->text->InsertFootnoteEnvironment(bv, LyXParagraph::MARGIN);
@@ -105,7 +104,7 @@ void Melt(BufferView * bv)
 {
 	if (!bv->available()) return;
 
-	bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("Melt"));
+	bv->owner()->message(_("Melt"));
 	bv->hideCursor();
 	bv->beforeChange(bv->text);
 	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
@@ -140,10 +139,8 @@ void changeDepth(BufferView * bv, LyXText * text, int decInc)
 	if (text->inset_owner)
 	    bv->updateInset((Inset *)text->inset_owner, true);
 	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-	bv->owner()->getLyXFunc()
-		->Dispatch(LFUN_MESSAGE,
-			   _("Changed environment depth "
-			     "(in possible range, maybe not)"));
+	bv->owner()->message(_("Changed environment depth "
+			       "(in possible range, maybe not)"));
 }
 
 

@@ -33,7 +33,6 @@
 #include "support/lyxfunctional.h" //equal_1st_in_pair
 #include "language.h"
 #include "gettext.h"
-#include "lyxfunc.h"
 
 extern BufferList bufferlist;
 
@@ -425,8 +424,7 @@ void BufferView::insertNote()
 void BufferView::openStuff()
 {
 	if (available()) {
-		owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
-						_("Open/Close..."));
+		owner()->message(_("Open/Close..."));
 		hideCursor();
 		beforeChange(text);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
@@ -440,8 +438,7 @@ void BufferView::openStuff()
 void BufferView::toggleFloat()
 {
 	if (available()) {
-		owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
-						_("Open/Close..."));
+		owner()->message(_("Open/Close..."));
 		hideCursor();
 		beforeChange(text);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
@@ -455,13 +452,12 @@ void BufferView::toggleFloat()
 void BufferView::menuUndo()
 {
 	if (available()) {
-		owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("Undo"));
+		owner()->message(_("Undo"));
 		hideCursor();
 		beforeChange(text);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		if (!text->TextUndo(this))
-			owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
-							_("No forther undo information"));
+			owner()->message(_("No forther undo information"));
 		else
 			update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		setState();
@@ -472,20 +468,17 @@ void BufferView::menuUndo()
 void BufferView::menuRedo()
 {
 	if (theLockingInset()) {
-		owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
-						_("Redo not yet supported in math mode"));
+		owner()->message(_("Redo not yet supported in math mode"));
 		return;
 	}    
    
 	if (available()) {
-		owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
-						_("Redo"));
+		owner()->message(_("Redo"));
 		hideCursor();
 		beforeChange(text);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		if (!text->TextRedo(this))
-			owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
-							_("No further redo information"));
+			owner()->message(_("No further redo information"));
 		else
 			update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		setState();
@@ -586,8 +579,7 @@ void BufferView::copyEnvironment()
 		toggleSelection();
 		text->ClearSelection(this);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
-		owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
-						_("Paragraph environment type copied"));
+		owner()->message(_("Paragraph environment type copied"));
 	}
 }
 
@@ -596,8 +588,7 @@ void BufferView::pasteEnvironment()
 {
 	if (available()) {
 		text->pasteEnvironmentType(this);
-		owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
-						_("Paragraph environment type set"));
+		owner()->message(_("Paragraph environment type set"));
 		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
 }
@@ -611,7 +602,7 @@ void BufferView::copy()
 		toggleSelection();
 		text->ClearSelection(this);
 		update(text, BufferView::SELECT|BufferView::FITCUR);
-		owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("Copy"));
+		owner()->message(_("Copy"));
 	}
 }
 
@@ -622,7 +613,7 @@ void BufferView::cut()
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->CutSelection(this);
 		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("Cut"));
+		owner()->message(_("Cut"));
 	}
 }
 
@@ -631,7 +622,7 @@ void BufferView::paste()
 {
 	if (!available()) return;
 
-	owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("Paste"));
+	owner()->message(_("Paste"));
 
 	hideCursor();
 	// clear the selection
@@ -677,14 +668,10 @@ void BufferView::gotoInset(std::vector<Inset::Code> const & codes,
 				text->cursor.pos(0);
 				if (!text->GotoNextInset(this, codes, contents)) {
 					text->cursor = tmp;
-					owner()->getLyXFunc()
-						->Dispatch(LFUN_MESSAGE,
-							   _("No more insets"));
+					owner()->message(_("No more insets"));
 				}
 			} else {
-				owner()->getLyXFunc()
-					->Dispatch(LFUN_MESSAGE,
-						   _("No more insets"));
+				owner()->message(_("No more insets"));
 			}
 	}
 	update(text, BufferView::SELECT|BufferView::FITCUR);

@@ -19,7 +19,6 @@
 #include "debug.h"
 #include "support/lstrings.h"
 #include "LyXView.h"
-#include "lyxfunc.h"
 
 #if FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5)
 #include "lyxlookup.h"

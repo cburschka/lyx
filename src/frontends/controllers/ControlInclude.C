@@ -18,7 +18,6 @@
 #include "ControlInclude.h"
 #include "buffer.h"
 #include "Dialogs.h"
-#include "lyxfunc.h"
 #include "LyXView.h"
 #include "gettext.h"
 

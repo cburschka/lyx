@@ -20,6 +20,7 @@
 #include "converter.h"
 #include "LyXView.h"
 #include "lyxfunc.h"
+
 #include "bufferlist.h"
 #include "support/filetools.h"
 #include "lyx_gui_misc.h" //WriteAlert
@@ -37,7 +38,7 @@ bool Importer::Import(LyXView * lv, string const & filename,
 {
 	string const displaypath = MakeDisplayPath(filename);
 	string const s1 = _("Importing") + ' ' + displaypath + "...";
-	lv->getLyXFunc()->Dispatch(LFUN_MESSAGE, s1);
+	lv->message(s1);
 
 	string const lyxfile = ChangeExtension(filename, ".lyx");
 
@@ -79,7 +80,7 @@ bool Importer::Import(LyXView * lv, string const & filename,
 	}
 
 	// we are done
-	lv->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("imported."));
+	lv->message(_("imported."));
 	return true;
 }
 

@@ -29,7 +29,6 @@
 #include "bufferview_funcs.h"
 #include "support/filetools.h"
 #include "lyxrc.h"
-#include "lyxfunc.h"
 
 using std::pair;
 using std::make_pair;
@@ -139,14 +138,14 @@ char const * flyx_ident_extract(char const * sc)
 //
 void WriteAlert(string const & s1, string const & s2, string const & s3)
 {
-	LyXFunc * lfun = 0;
+	LyXView * lview = 0;
 	if (current_view && current_view->owner())
-		lfun = current_view->owner()->getLyXFunc();
-	if (lfun) {
+		lview = current_view->owner();
+	if (lview) {
 		/// Write to minibuffer
 		ProhibitInput(current_view);
 		string const msg = s1 + ' ' + s2 + ' ' + s3;
-		lfun->Dispatch(LFUN_MESSAGE, msg);
+		lview->message(msg);
 		fl_set_resource("flAlert.dismiss.label", _("Dismiss"));
 		fl_show_alert(s1.c_str(), s2.c_str(), s3.c_str(), 0);
 		AllowInput(current_view);

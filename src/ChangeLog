@@ -1,5 +1,21 @@
 2001-04-24  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* call message directly through LyXView instead of through LyXFunc
+	* BufferView2.C: adjust
+	* BufferView_pimpl.C: adjust
+	* FontLoader.C: adjust
+	* buffer.C: adjust
+	* bufferview_funcs.C: adjust
+	* converter.C: adjust
+	* figureForm.C: adjust
+	* importer.C: adjust
+	* lyx_cb.C: adjust
+	* lyx_gui_misc.C: adjust
+	* lyxfunc.C: adjust
+	* lyxvc.C: adjust
+	* text2.C: adjust
+	+ more files in subdirs
+	
 	* lyxparagraph.h (size): move up int file
 	(GetLayout): ditto
 

@@ -28,7 +28,6 @@
 #include "lyx_gui_misc.h"
 #include "lyx_cb.h" // ShowMessage()
 #include "support/lyxfunctional.h"
-#include "lyxfunc.h"
 #include "gettext.h"
 
 using std::vector;
@@ -818,8 +817,7 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 
 	if (bv) {
 		ProhibitInput(bv);
-		bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
-						    _("Running LaTeX..."));
+		bv->owner()->message(_("Running LaTeX..."));
 		// Remove all error insets
 		need_redraw = bv->removeAutoInsets();
 	}

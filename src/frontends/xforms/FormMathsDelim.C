@@ -19,10 +19,10 @@
 #include "form_maths_delim.h"
 #include "Dialogs.h"
 #include "LyXView.h"
-#include "lyxfunc.h"
 #include "bmtable.h"
 #include "debug.h"
 #include "mathed/symbol_def.h"
+#include "lyxfunc.h"
 
 #include "delim.xbm"
 #include "delim0.xpm"
@@ -80,8 +80,8 @@ void FormMathsDelim::build()
 
 void FormMathsDelim::apply()
 {
-	int left = int(dialog_->radio_left->u_ldata);
-	int right= int(dialog_->radio_right->u_ldata);
+	int const left = int(dialog_->radio_left->u_ldata);
+	int const right= int(dialog_->radio_right->u_ldata);
 
 	std::ostringstream ost;
 	ost << delim_values[left] << ' ' << delim_values[right];

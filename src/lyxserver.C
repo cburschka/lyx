@@ -50,10 +50,10 @@
 #endif
 
 #include "lyxserver.h"
-#include "lyxfunc.h"
 #include "lyx_main.h"
 #include "debug.h"
 #include "LyXAction.h"
+#include "lyxfunc.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 

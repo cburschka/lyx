@@ -3482,8 +3482,7 @@ int Buffer::runChktex()
 	}
 
 	Path p(path); // path to LaTeX file
-	users->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
-					       _("Running chktex..."));
+	users->owner()->message(_("Running chktex..."));
 
 	// Remove all error insets
 	bool const removedErrorInsets = users->removeAutoInsets();

@@ -22,8 +22,6 @@
 #include "LyXView.h"
 #include "buffer.h"
 
-#include "lyxfunc.h"
-
 using SigC::slot;
 
 ControlUrl::ControlUrl(LyXView & lv, Dialogs & d)

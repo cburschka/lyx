@@ -17,11 +17,11 @@
 
 #include "Dialogs.h"
 #include "LyXView.h"
-#include "lyxfunc.h"
 #include "FormMathsPanel.h"
 #include "form_maths_panel.h"
 #include "MathsSymbols.h"
 #include "debug.h"
+#include "lyxfunc.h"
 
 #include "form_maths_deco.h"
 #include "form_maths_delim.h"

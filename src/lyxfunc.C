@@ -1604,7 +1604,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 				       _("newfile"));
 	
 		if (result.second.empty()) {
-			Dispatch(LFUN_MESSAGE, _("Canceled."));
+			owner->message(_("Canceled."));
 			lyxerr.debug() << "New Document Cancelled." << endl;
 			return;
 		}
@@ -1631,7 +1631,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 				owner->view()->buffer(bufferlist.getBuffer(s));
 				return;
 			case 3: // Cancel: Do nothing
-				Dispatch(LFUN_MESSAGE, _("Canceled."));
+				owner->message(_("Canceled."));
 				return;
 			}
 		}
@@ -1643,14 +1643,14 @@ void LyXFunc::MenuNew(bool fromTemplate)
 					MakeDisplayPath(s, 50),
 					_("Do you want to open the document?"))) {
 				// loads document
-				Dispatch(LFUN_MESSAGE, _("Opening document")
-					 + ' ' + MakeDisplayPath(s) + "...");
+				owner->message(_("Opening document") + ' '
+					       + MakeDisplayPath(s) + "...");
 				XFlush(fl_get_display());
 				owner->view()->buffer(
 					bufferlist.loadLyXFile(s));
-				Dispatch(LFUN_MESSAGE, _("Document")
-					 + ' ' + MakeDisplayPath(s) + ' '
-					 + _("opened."));
+				owner->message(_("Document") + ' '
+					       + MakeDisplayPath(s) + ' '
+					       + _("opened."));
 				return;
 			}
 		}
@@ -1729,7 +1729,7 @@ void LyXFunc::Open(string const & fname)
  
 		// check selected filename
 		if (filename.empty()) {
-			Dispatch(LFUN_MESSAGE, _("Canceled."));
+			owner->message(_("Canceled."));
 			return;
 		}
 	} else
@@ -1742,19 +1742,17 @@ void LyXFunc::Open(string const & fname)
 		filename += ".lyx";
 
 	// loads document
-	Dispatch(LFUN_MESSAGE,
-		 _("Opening document") + ' '
-		 + MakeDisplayPath(filename) + "...");
+	owner->message(_("Opening document") + ' '
+		       + MakeDisplayPath(filename) + "...");
 	Buffer * openbuf = bufferlist.loadLyXFile(filename);
 	if (openbuf) {
 		owner->view()->buffer(openbuf);
-		Dispatch(LFUN_MESSAGE,
-			 _("Document") + ' '
-			 + MakeDisplayPath(filename) + ' ' + _("opened."));
+		owner->message(_("Document") + ' '
+			       + MakeDisplayPath(filename)
+			       + ' ' + _("opened."));
 	} else {
-		Dispatch(LFUN_MESSAGE,
-			 _("Could not open document") + ' '
-			 + MakeDisplayPath(filename));
+		owner->message(_("Could not open document") + ' '
+			       + MakeDisplayPath(filename));
 	}
 }
 
@@ -1801,7 +1799,7 @@ void LyXFunc::doImport(string const & argument)
  
 		// check selected filename
 		if (filename.empty())
-			Dispatch(LFUN_MESSAGE, _("Canceled."));
+			owner->message(_("Canceled."));
 	}
 
 	// still no filename? abort
@@ -1829,7 +1827,7 @@ void LyXFunc::doImport(string const & argument)
 				owner->view()->buffer(bufferlist.getBuffer(lyxfile));
 				return;
 			case 3: // Cancel: Do nothing
-				Dispatch(LFUN_MESSAGE, _("Canceled."));
+				owner->message(_("Canceled."));
 				return;
 			}
 	}
@@ -1839,7 +1837,7 @@ void LyXFunc::doImport(string const & argument)
 	if (f.exist() && !AskQuestion(_("A document by the name"), 
 				      MakeDisplayPath(lyxfile),
 				      _("already exists. Overwrite?"))) {
-		Dispatch(LFUN_MESSAGE, _("Canceled"));
+		owner->message(_("Canceled"));
 		return;
 	}
 	// filename should be valid now

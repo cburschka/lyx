@@ -19,8 +19,8 @@
 #include "form_maths_matrix.h"
 #include "Dialogs.h"
 #include "LyXView.h"
-#include "lyxfunc.h"
 #include "Lsstream.h"
+#include "lyxfunc.h"
 
 static char h_align_str[80] = "c";
 static char v_align_c[] = "tcb";

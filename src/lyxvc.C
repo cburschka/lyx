@@ -15,8 +15,8 @@
 #include "gettext.h"
 #include "support/filetools.h"
 #include "support/lyxlib.h"
-#include "lyxfunc.h"
 #include "LyXView.h"
+#include "lyxfunc.h"
 
 using std::endl;
 using std::pair;

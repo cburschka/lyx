@@ -20,7 +20,6 @@
 #include "gettext.h"
 #include "support/FileInfo.h"
 #include "layout.h"
-#include "lyxfunc.h"
 
 using std::ostream;
 using std::endl;

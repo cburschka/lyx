@@ -27,7 +27,6 @@
 #include "exporter.h"
 #include "converter.h"
 #include "support/syscall.h"
-#include "lyxfunc.h"
 
 using std::endl;
 

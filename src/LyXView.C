@@ -23,7 +23,6 @@
 #include "lyxlookup.h"
 #endif
 #include "minibuffer.h"
-#include "lyxfunc.h"
 #include "debug.h"
 #include "intl.h"
 #include "lyxrc.h"
@@ -39,6 +38,7 @@
 #include "lyx_gui_misc.h"	// [update,Close,Redraw]AllBufferRelatedDialogs
 #include "bufferview_funcs.h" // CurrentState()
 #include "gettext.h"
+#include "lyxfunc.h"
 
 using std::endl;
 

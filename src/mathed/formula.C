@@ -45,7 +45,6 @@
 #include "math_spaceinset.h"
 #include "math_deliminset.h"
 #include "mathed/support.h"
-#include "lyxfunc.h"
 
 using std::ostream;
 using std::istream;
@@ -859,7 +858,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 	case LFUN_GREEK:
 		if (!greek_kb_flag) {
 			greek_kb_flag = 1;
-			bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("Math greek mode on"));
+			bv->owner()->message(_("Math greek mode on"));
 		} else
 			greek_kb_flag = 0;
 		break;
@@ -868,9 +867,9 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 	case LFUN_GREEK_TOGGLE:
 		greek_kb_flag = (greek_kb_flag) ? 0 : 2;
 		if (greek_kb_flag)
-			bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("Math greek keyboard on"));
+			bv->owner()->message(_("Math greek keyboard on"));
 		else
-			bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("Math greek keyboard off"));
+			bv->owner()->message(_("Math greek keyboard off"));
 		break;
 
 		//  Math fonts
@@ -884,7 +883,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 	case LFUN_TEX:
 		// varcode = LM_TC_TEX;
 		mathcursor->setLastCode(LM_TC_TEX);
-		bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("TeX mode"));
+		bv->owner()->message(_("TeX mode"));
 		break;
 
 	case LFUN_MATH_NUMBER:
@@ -901,10 +900,10 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 					label_.erase();
 				}
 */
-				bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("No number"));
+				bv->owner()->message(_("No number"));
 			} else {
 				++type;
-				bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("Number"));
+				bv->owner()->message(_("Number"));
 			}
 			par->SetType(type);
 			// Andre:
@@ -1115,8 +1114,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 		// Invalid actions under math mode
 	case LFUN_MATH_MODE:
 		if (mathcursor->getLastCode()!= LM_TC_TEXTRM) {
-			bv->owner()->getLyXFunc()
-				->Dispatch(LFUN_MESSAGE, _("math text mode"));
+			bv->owner()->message(_("math text mode"));
 			varcode = LM_TC_TEXTRM;
 		} else {
 			varcode = LM_TC_VAR;
@@ -1125,9 +1123,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 		break;
 
 	case LFUN_UNDO:
-		bv->owner()->getLyXFunc()
-			->Dispatch(LFUN_MESSAGE,
-				   _("Invalid action in math mode!"));
+		bv->owner()->message(_("Invalid action in math mode!"));
 		break;
 
 		//------- dummy actions
@@ -1246,7 +1242,10 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 				if (was_macro)
 					mathcursor->MacroModeClose();
 				// This line nukes the mathcursor. Why?
-				//bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, _("TeX mode"));
+#ifdef WITH_WARNINGS
+#warning Still? (Lgb)
+#endif
+				bv->owner()->message(_("TeX mode"));
 				mathcursor->setLastCode(LM_TC_TEX);
 			}
 			// Andre:

@@ -46,7 +46,6 @@
 #include "trans_mgr.h"
 #include "lyxscreen.h"
 #include "WorkArea.h"
-#include "lyxfunc.h"
 #include "gettext.h"
 
 using std::ostream;
@@ -1099,8 +1098,8 @@ InsetText::LocalDispatch(BufferView * bv,
 			// and current buffer's textclass (number). */    
 			LyXTextClassList::ClassList::size_type tclass =
 				bv->buffer()->params.textclass;
-			std::pair <bool, LyXTextClass::size_type> layout = 
-				textclasslist.NumberOfLayout(tclass, arg);
+			std::pair<bool, LyXTextClass::size_type> layout = 
+					textclasslist.NumberOfLayout(tclass, arg);
 
 			// If the entry is obsolete, use the new one instead.
 			if (layout.first) {
@@ -1113,8 +1112,7 @@ InsetText::LocalDispatch(BufferView * bv,
 			// see if we found the layout number:
 			if (!layout.first) {
 				string const msg = string(N_("Layout ")) + arg + N_(" not known");
-				bv->owner()->getLyXFunc()
-					->Dispatch(LFUN_MESSAGE, msg);
+				bv->owner()->message(msg);
 				break;
 			}
 

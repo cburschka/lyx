@@ -20,8 +20,8 @@
 #include "ControlCommand.h"
 #include "buffer.h"
 #include "Dialogs.h"
-#include "lyxfunc.h"
 #include "LyXView.h"
+#include "lyxfunc.h"
 
 ControlCommand::ControlCommand(LyXView & lv, Dialogs & d, kb_action ac)
 	: ControlInset<InsetCommand, InsetCommandParams>(lv, d),
@@ -36,16 +36,19 @@ InsetCommandParams const ControlCommand::getParams(string const & arg)
 	return params;
 }
 
+
 InsetCommandParams const ControlCommand::getParams(InsetCommand const & inset)
 {
 	return inset.params();
 }
+
 
 void ControlCommand::applyParamsToInset()
 {
 	inset()->setParams(params());
 	lv_.view()->updateInset(inset(), true);
 }
+
 
 void ControlCommand::applyParamsNoInset()
 {

@@ -31,7 +31,6 @@
 #include "LyXView.h"
 #include "buffer.h"
 #include "form_ref.h"
-#include "lyxfunc.h"
 */
 
 using std::find;

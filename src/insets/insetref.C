@@ -10,9 +10,9 @@
 #include "debug.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
-#include "lyxfunc.h"
 #include "LyXView.h"
 #include "frontends/Dialogs.h"
+#include "lyxfunc.h"
 
 using std::ostream;
 

@@ -42,7 +42,6 @@
 #include "lyxrc.h"
 #include "FloatList.h"
 #include "language.h"
-#include "lyxfunc.h"
 
 using std::copy;
 using std::find;
@@ -1322,9 +1321,7 @@ void LyXText::ToggleFree(BufferView * bview,
 	// If the mask is completely neutral, tell user
 	if (font == LyXFont(LyXFont::ALL_IGNORE)) {
 		// Could only happen with user style
-		bview->owner()->getLyXFunc()
-			->Dispatch(LFUN_MESSAGE,
-				   _("No font change defined. Use Character under the Layout menu to define font change."));
+		bview->owner()->message(_("No font change defined. Use Character under the Layout menu to define font change."));
 		return;
 	}
 

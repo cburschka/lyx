@@ -23,7 +23,6 @@
 #include "lyxrc.h"	// lyxrc.font_*
 #include "BufferView.h"
 #include "LyXView.h"
-#include "lyxfunc.h"
 
 using std::endl;
 
@@ -246,9 +245,7 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 
 	XFontStruct * fs = 0;
 
-	current_view->owner()->getLyXFunc()
-		->Dispatch(LFUN_MESSAGE_PUSH,
-			   _("Loading font into X-Server..."));
+	current_view->owner()->messagePush(_("Loading font into X-Server..."));
 
 	fs = XLoadQueryFont(fl_get_display(), font.c_str());
 	
@@ -276,7 +273,7 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 		       << "' matched by\n" << font << endl;
 	}
 
-	current_view->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE_POP);
+	current_view->owner()->messagePop();
 
 	fontstruct[family][series][shape][size] = fs;
 	return fs;

@@ -22,7 +22,6 @@
 #include "BufferView.h"
 #include "lyxtext.h"
 #include "LyXView.h"
-#include "lyxfunc.h"
 #include "gettext.h"
 
 extern FD_form_figure * fd_form_figure;
@@ -51,15 +50,11 @@ void FigureApplyCB(FL_OBJECT *, long)
 	if (buffer->isReadonly()) // paranoia
 		return;
 
-	current_view->owner()->getLyXFunc()
-		->Dispatch(LFUN_MESSAGE,
-			   _("Inserting figure..."));
+	current_view->owner()->message(_("Inserting figure..."));
 	if (fl_get_button(fd_form_figure->radio_inline)) {
 		InsetFig * new_inset = new InsetFig(100, 20, *buffer);
 		current_view->insertInset(new_inset);
-		current_view->owner()->getLyXFunc()
-			->Dispatch(LFUN_MESSAGE,
-				   _("Figure inserted"));
+		current_view->owner()->message(_("Figure inserted"));
 		new_inset->Edit(current_view, 0, 0, 0);
 		return;
 	}
@@ -119,8 +114,7 @@ void FigureApplyCB(FL_OBJECT *, long)
 	current_view->insertInset(new_inset);
 	new_inset->Edit(current_view, 0, 0, 0);
 	current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR);
-	current_view->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
-						      _("Figure inserted"));
+	current_view->owner()->message(_("Figure inserted"));
 	current_view->text->UnFreezeUndo();
 	current_view->setState();
 }

@@ -21,10 +21,10 @@
 #include "support/filetools.h"
 #include "BufferView.h"
 #include "LyXView.h"
-#include "lyxfunc.h"
 #include "commandtags.h"
 #include "buffer.h"
 #include "gettext.h"
+#include "lyxfunc.h"
 
 using std::ostream;
 

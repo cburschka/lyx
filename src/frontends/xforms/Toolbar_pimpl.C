@@ -20,9 +20,9 @@
 #endif
 
 #include "Toolbar_pimpl.h"
-#include "lyxfunc.h"
 #include "debug.h"
 #include "LyXView.h"
+#include "lyxfunc.h"
 #include "BufferView.h"
 #include "buffer.h"
 #include "LyXAction.h"

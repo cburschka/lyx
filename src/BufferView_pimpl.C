@@ -16,7 +16,6 @@
 #include "lyxrow.h"
 #include "LyXView.h"
 #include "commandtags.h"
-#include "lyxfunc.h"
 #include "font.h"
 #include "bufferview_funcs.h"
 #include "TextCache.h"
@@ -288,8 +287,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 
 	ProhibitInput(bv_);
 
-	owner_->getLyXFunc()->Dispatch(LFUN_MESSAGE,
-				       _("Formatting document..."));
+	owner_->message(_("Formatting document..."));
 
 	if (bv_->text) {
 		par = bv_->text->cursor.par();
@@ -634,8 +632,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		UpdatableInset * inset = static_cast<UpdatableInset *>(inset_hit);
 		selection_possible = false;
 		owner_->updateLayoutChoice();
-		owner_->getLyXFunc()->Dispatch(LFUN_MESSAGE,
-					       inset->EditMessage());
+		owner_->message(inset->EditMessage());
 		inset->InsetButtonPress(bv_, xpos, ypos, button);
 		inset->Edit(bv_, xpos, ypos, button);
 		return;
@@ -797,8 +794,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 			bv_->text->SetCursorParUndo(bv_->buffer());
 		}
 
-		owner_->getLyXFunc()->Dispatch(LFUN_MESSAGE,
-					       inset_hit->EditMessage());
+		owner_->message(inset_hit->EditMessage());
 
 		if (inset_hit->Editable()==Inset::HIGHLY_EDITABLE) {
 			// Highly editable inset, like math
@@ -1213,7 +1209,7 @@ void BufferView::Pimpl::savePosition(unsigned int i)
 				      bv_->text->cursor.pos());
 	if (i > 0) {
 		string const str = _("Saved bookmark") + ' ' + tostr(i);
-		owner_->getLyXFunc()->Dispatch(LFUN_MESSAGE, str);
+		owner_->message(str);
 	}
 }
 
@@ -1248,7 +1244,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 	update(bv_->text, BufferView::SELECT|BufferView::FITCUR);
 	if (i > 0) {
 		string const str = _("Moved to bookmark") + ' ' + tostr(i);
-		owner_->getLyXFunc()->Dispatch(LFUN_MESSAGE, str);
+		owner_->message(str);
 	}
 }
 
@@ -1467,8 +1463,7 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 
 		// check selected filename
 		if (filename.empty()) {
-			owner_->getLyXFunc()->Dispatch(LFUN_MESSAGE,
-						       _("Canceled."));
+			owner_->message(_("Canceled."));
 			return;
 		}
 	}
@@ -1482,16 +1477,16 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 	// Inserts document
 	string const s1 = _("Inserting document") + ' '
 		+ MakeDisplayPath(filename) + " ...";
-	owner_->getLyXFunc()->Dispatch(LFUN_MESSAGE, s1);
+	owner_->message(s1);
 	bool const res = bv_->insertLyXFile(filename);
 	if (res) {
 		string const str = _("Document") + ' '
 			+ MakeDisplayPath(filename) + ' ' + _("inserted.");
-		owner_->getLyXFunc()->Dispatch(LFUN_MESSAGE, str);
+		owner_->message(str);
 	} else {
 		string const str = _("Could not insert document") + ' '
 			+ MakeDisplayPath(filename);
-		owner_->getLyXFunc()->Dispatch(LFUN_MESSAGE, str);
+		owner_->message(str);
 	}
 }
 

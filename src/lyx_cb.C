@@ -32,7 +32,6 @@
 #include "support/filetools.h"
 #include "support/path.h"
 #include "support/syscall.h"
-#include "lyxfunc.h"
 #include "gettext.h"
 
 using std::vector;
@@ -117,8 +116,7 @@ void ShowMessage(Buffer const * buf,
 {
 	if (lyxrc.use_gui) {
 		string const str = msg1 + ' ' + msg2 + ' ' + msg3;
-		buf->getUser()->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
-								str);
+		buf->getUser()->owner()->message(str);
 	} else
 		lyxerr << msg1 << msg2 << msg3 << endl;
 }
@@ -317,9 +315,7 @@ void AutoSave(BufferView * bv)
 		return;
 	}
 
-	bv->owner()->getLyXFunc()
-		->Dispatch(LFUN_MESSAGE,
-			   _("Autosaving current document..."));
+	bv->owner()->message(_("Autosaving current document..."));
 	
 	// create autosave filename
 	string fname = 	OnlyPath(bv->buffer()->fileName());
@@ -359,9 +355,7 @@ void AutoSave(BufferView * bv)
 				// It is dangerous to do this in the child,
 				// but safe in the parent, so...
 				if (pid == -1)
-					bv->owner()->getLyXFunc()
-						->Dispatch(LFUN_MESSAGE,
-							   _("Autosave Failed!"));
+					bv->owner()->message(_("Autosave Failed!"));
 			}
 		}
 		if (pid == 0) { // we are the child so...
@@ -573,16 +567,14 @@ void MenuLayoutSave(BufferView * bv)
 // reconfigure the automatic settings.
 void Reconfigure(BufferView * bv)
 {
-	bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
-					    _("Running configure..."));
+	bv->owner()->message(_("Running configure..."));
 
 	// Run configure in user lyx directory
 	Path p(user_lyxdir);
 	Systemcalls one(Systemcalls::System, 
 			AddName(system_lyxdir, "configure"));
 	p.pop();
-	bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE,
-					    _("Reloading configuration..."));
+	bv->owner()->message(_("Reloading configuration..."));
 	lyxrc.read(LibFileSearch(string(), "lyxrc.defaults"));
 	WriteAlert(_("The system has been reconfigured."), 
 		   _("You need to restart LyX to make use of any"),
