@@ -2,6 +2,11 @@
 
         * de.po: update
 
+2003-01-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Makefile.in.in: Ignore items and submenus 
+        for pot file generation if they are commented out
+
 2003-01-26  Alfredo Braunstein  <abraunst@libero.it>
 
 	* es.po: update

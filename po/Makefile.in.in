@@ -274,14 +274,14 @@ $(srcdir)/languages_l10n.pot: $(top_srcdir)/lib/languages
 
 $(srcdir)/default_ui_l10n.pot: $(top_srcdir)/lib/ui/default.ui
 	awk ' \
-	    /Submenu/ { \
+	    /^[^#]*Submenu/ { \
 		line=$$0; \
                 sub(/[^"]*"/, "", line); \
                 sub(/".*/, "", line); \
 	        printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
                        FILENAME, FNR, line); \
             } \
-            /Item/ { \
+            /^[^#]*Item/ { \
 		line=$$0; \
                 sub(/[^"]*"/, "", line); \
                 sub(/".*/, "", line); \
