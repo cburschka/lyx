@@ -287,7 +287,7 @@ int InsetGraphics::descent(BufferView *, LyXFont const &) const
 int InsetGraphics::width(BufferView *, LyXFont const & font) const
 {
 	if (imageIsDrawable())
-		return cache_->loader.image()->getWidth();
+		return cache_->loader.image()->getWidth() + 2 * TEXT_TO_INSET_OFFSET;
 	else {
 		int font_width = 0;
 
@@ -358,15 +358,14 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 	Painter & paint = bv->painter();
 
 	if (imageIsDrawable()) {
-		paint.image(old_x + 2, baseline - lascent,
-			    lwidth - 4, lascent + ldescent,
+		paint.image(old_x + TEXT_TO_INSET_OFFSET, baseline - lascent,
+			    lwidth - 2 * TEXT_TO_INSET_OFFSET, lascent + ldescent,
 			    *cache_->loader.image());
 
 	} else {
 
-		paint.rectangle(old_x + 2, baseline - lascent,
-				lwidth - 4,
-				lascent + ldescent);
+		paint.rectangle(old_x + TEXT_TO_INSET_OFFSET, baseline - lascent,
+				lwidth - 2 * TEXT_TO_INSET_OFFSET, lascent + ldescent);
 
 		// Print the file name.
 		LyXFont msgFont(font);
@@ -374,7 +373,7 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 		string const justname = OnlyFilename (params().filename);
 		if (!justname.empty()) {
 			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
-			paint.text(old_x + 8,
+			paint.text(old_x + TEXT_TO_INSET_OFFSET + 6,
 				   baseline - font_metrics::maxAscent(msgFont) - 4,
 				   justname, msgFont);
 		}
@@ -383,7 +382,7 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 		string const msg = statusMessage();
 		if (!msg.empty()) {
 			msgFont.setSize(LyXFont::SIZE_TINY);
-			paint.text(old_x + 8, baseline - 4, msg, msgFont);
+			paint.text(old_x + TEXT_TO_INSET_OFFSET + 6, baseline - 4, msg, msgFont);
 		}
 	}
 

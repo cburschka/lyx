@@ -213,7 +213,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 	MathPainterInfo pi(bv->painter());
 
 	if (use_preview) {
-		pi.pain.image(x, y - a, w, h,
+		pi.pain.image(x + 1, y - a, w, h,   // one pixel gap in front
 			      *(preview_->pimage()->image(*this, *bv)));
 	} else {
 		pi.base.style = LM_ST_TEXT;
@@ -291,7 +291,8 @@ int InsetFormula::width(BufferView * bv, LyXFont const & font) const
 {
 	metrics(bv, font);
 	return preview_->previewReady() ?
-		preview_->pimage()->width() : par_->width();
+		1 + preview_->pimage()->width() : par_->width();
+		// insert a one pixel gap in front of the formula
 }
 
 
