@@ -40,6 +40,9 @@ public:
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
 	///
+	int docbook(Buffer const &, std::ostream &,
+		  OutputParams const &) const;
+	///
 	void validate(LaTeXFeatures &) const;
 
 private:

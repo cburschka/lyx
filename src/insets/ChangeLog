@@ -1,3 +1,8 @@
+2004-10-17  Andreas Vox  <vox@isp.uni-luebeck.de>
+
+	* insetcite.[hC] (docbook, latex, cleanupWhitespace): implementing
+	DocBook output for this inset ( <citation>content</citation> )
+
 2004-10-05  Andreas Vox  <vox@isp.uni-luebeck.de>
 
 	* insetgraphics.C (docbook) : using mediaobject for XML;

@@ -324,6 +324,35 @@ int InsetCitation::plaintext(Buffer const & buffer, ostream & os, OutputParams c
 }
 
 
+namespace {
+	
+string const cleanupWhitespace(string const & citelist)
+{
+	string::const_iterator it  = citelist.begin();
+	string::const_iterator end = citelist.end();
+	// Paranoia check: make sure that there is no whitespace in here
+	// -- at least not behind commas or at the beginning
+	string result;
+	char last = ',';
+	for (; it != end; ++it) {
+		if (*it != ' ')
+			last = *it;
+		if (*it != ' ' || last != ',')
+			result += *it;
+	}
+	return result;
+}
+
+// end anon namyspace
+}
+
+int InsetCitation::docbook(Buffer const &, ostream & os, OutputParams const &) const
+{
+	os << "<citation>" << cleanupWhitespace(getContents()) << "</citation>";
+	return 0;
+}
+
+
 // Have to overwrite the default InsetCommand method in order to check that
 // the \cite command is valid. Eg, the user has natbib enabled, inputs some
 // citations and then changes his mind, turning natbib support off. The output
@@ -344,19 +373,7 @@ int InsetCitation::latex(Buffer const & buffer, ostream & os,
 	else if (!after.empty())
 		os << '[' << after << ']';
 
-	string::const_iterator it  = getContents().begin();
-	string::const_iterator end = getContents().end();
-	// Paranoia check: make sure that there is no whitespace in here
-	string content;
-	char last = ',';
-	for (; it != end; ++it) {
-		if (*it != ' ')
-			last = *it;
-		if (*it != ' ' || last != ',')
-			content += *it;
-	}
-
-	os << '{' << content << '}';
+	os << '{' << cleanupWhitespace(getContents()) << '}';
 
 	return 0;
 }
