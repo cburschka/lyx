@@ -849,8 +849,8 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 				// not found -> use everything as "numerator"
 				p->cell(0).swap(array);
 			}
-			array.push_back(p);
 			parse_into(p->cell(1), FLAG_BLOCK);
+			array.push_back(p);
 		}
 	
 		else if (t.cs().size()) {
