@@ -22,6 +22,7 @@
 #include "debug.h"
 #include "LyXView.h"
 #include "language.h"
+#include "frnt_lang.h"
 #include "lyxfunc.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
@@ -58,7 +59,6 @@ using SigC::slot;
 
 extern string system_lyxdir;
 extern string user_lyxdir;
-extern Languages languages;
 
 namespace {
 
@@ -1582,7 +1582,8 @@ FD_form_language const * FormPreferences::Language::dialog()
 
 void FormPreferences::Language::apply()
 {
-	lyxrc.default_language = combo_default_lang->getline();
+	int const pos = combo_default_lang->get();
+	lyxrc.default_language = lang_[pos-1];
 
 	int button = fl_get_button(dialog_->check_use_kbmap);
 	string const name_1 = fl_get_input(dialog_->input_kbmap1);
@@ -1631,6 +1632,10 @@ void FormPreferences::Language::build()
 	fl_set_input_return(dialog_->input_command_begin, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_command_end, FL_RETURN_CHANGED);
 
+	// Store the lang identifiers for later
+	vector<frnt::LanguagePair> const langs = frnt::getLanguageData();
+	lang_ = getSecond(langs);
+
 	// The default_language is a combo-box and has to be inserted manually
 	fl_freeze_form(dialog_->form);
 	fl_addto_form(dialog_->form);
@@ -1644,10 +1649,12 @@ void FormPreferences::Language::build()
 	combo_default_lang->shortcut("#L",1);
 	combo_default_lang->setcallback(ComboCB, &parent_);
 
-	for (Languages::const_iterator cit = languages.begin();
-	     cit != languages.end(); ++cit) {
-		combo_default_lang->addto(cit->second.lang());
+	vector<frnt::LanguagePair>::const_iterator lit  = langs.begin();
+	vector<frnt::LanguagePair>::const_iterator lend = langs.end();
+	for (; lit != lend; ++lit) {
+		combo_default_lang->addto(_(lit->first));
 	}
+	combo_default_lang->select(1);
 
 	fl_end_form();
 	fl_unfreeze_form(dialog_->form);
@@ -1751,12 +1758,28 @@ bool FormPreferences::Language::input(FL_OBJECT const * const ob)
 }
 
 
+namespace {
+
+template<class A>
+typename vector<A>::size_type findPos(vector<A> const & vec, A const & val)
+{
+	typename vector<A>::const_iterator it =
+		std::find(vec.begin(), vec.end(), val);
+	if (it == vec.end())
+		return 0;
+	return it - vec.begin();
+}
+
+} // namespace anon
+
+
 void FormPreferences::Language::update()
 {
 	fl_set_button(dialog_->check_use_kbmap,
 		      lyxrc.use_kbmap);
 
-	combo_default_lang->select(lyxrc.default_language);
+	int const pos = int(findPos(lang_, lyxrc.default_language));
+	combo_default_lang->select(pos+1);
 
 	if (lyxrc.use_kbmap) {
 		fl_set_input(dialog_->input_kbmap1,

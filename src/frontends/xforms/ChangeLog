@@ -1,13 +1,16 @@
 2002-04-29  Angus Leeming  <a.leeming@ic.ac.uk>
 
-	* FormCharacter.h: store a vector<string> lang_ of language identifiers.
+	* FormCharacter.h:
+	* FormDocument.h:
+	* FormPreferences.h: store a vector<string> lang_ of language
+	identifiers.
 
 	* FormCharacter.C: changes associated with frnt::getLanguageData
 	returning a vector<LanguagePair> rather than a vector<string>.
 
-	* FormDocument.h: store a vector<string> lang_ of language identifiers.
-
-	* FormDocument.C: internationalise the languages on display.
+	* FormDocument.C:
+	* FormPreferences.C: internationalise the languages on display, similar
+	to the changes in FormCharacter.C.
 
 2002-04-26  John Levon  <moz@compsoc.man.ac.uk>
 

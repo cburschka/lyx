@@ -344,6 +344,8 @@ private:
 		boost::scoped_ptr<FD_form_language> dialog_;
 		///
 		boost::scoped_ptr<Combox> combo_default_lang;
+		///
+		std::vector<string> lang_;
 	};
 	///
 	friend class Language;
