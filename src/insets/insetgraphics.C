@@ -674,7 +674,12 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 
 	// if no special converter defined, then we take the default one
 	// from ImageMagic: convert from:inname.from to:outname.to
-	if (!converters.convert(&buf, temp_file, temp_file, from, to)) {
+	if (converters.convert(&buf, temp_file, temp_file, from, to)) {
+		runparams.exportdata->addExternalFile("latex",
+				to_file, output_to_file);
+		runparams.exportdata->addExternalFile("dvi",
+				to_file, output_to_file);
+	} else {
 		string const command =
 			"sh " + LibFileSearch("scripts", "convertDefault.sh") +
 				' ' + formats.extension(from) + ':' + temp_file +

@@ -62,7 +62,8 @@ void editExternal(InsetExternalParams const & params, Buffer const & buffer)
 
 string const doSubstitution(InsetExternalParams const & params,
 			    Buffer const & buffer, string const & s,
-			    bool external_in_tmpdir)
+                            bool external_in_tmpdir,
+                            Substitute what)
 {
 	Buffer const * m_buffer = buffer.getMasterBuffer();
 	string const parentpath = external_in_tmpdir ?
@@ -71,43 +72,52 @@ string const doSubstitution(InsetExternalParams const & params,
 	string const filename = external_in_tmpdir ?
 		params.filename.mangledFilename() :
 		params.filename.outputFilename(parentpath);
-	string result;
 	string const basename = support::ChangeExtension(
 			support::OnlyFilename(filename), string());
 	string const absname = support::MakeAbsPath(filename, parentpath);
-	string const filepath = support::OnlyPath(filename);
-	string const abspath = support::OnlyPath(absname);
-	string const masterpath = external_in_tmpdir ?
-		m_buffer->temppath() :
-		m_buffer->filePath();
-	string relToMasterPath = support::OnlyPath(
-			support::MakeRelPath(absname, masterpath));
-	if (relToMasterPath == "./")
-		relToMasterPath.clear();
-	string relToParentPath = support::OnlyPath(
-			support::MakeRelPath(absname, parentpath));
-	if (relToParentPath == "./")
-		relToParentPath.clear();
 
-	result = support::subst(s, "$$FName", filename);
+	string result = s;
+	if (what != ALL_BUT_PATHS) {
+		string const filepath = support::OnlyPath(filename);
+		string const abspath = support::OnlyPath(absname);
+		string const masterpath = external_in_tmpdir ?
+			m_buffer->temppath() :
+			m_buffer->filePath();
+		string relToMasterPath = support::OnlyPath(
+				support::MakeRelPath(absname, masterpath));
+		if (relToMasterPath == "./")
+			relToMasterPath.clear();
+		string relToParentPath = support::OnlyPath(
+				support::MakeRelPath(absname, parentpath));
+		if (relToParentPath == "./")
+			relToParentPath.clear();
+
+		result = support::subst(result, "$$FPath", filepath);
+		result = support::subst(result, "$$AbsPath", abspath);
+		result = support::subst(result, "$$RelPathMaster",
+		                        relToMasterPath);
+		result = support::subst(result, "$$RelPathParent",
+		                        relToParentPath);
+		if (support::AbsolutePath(filename)) {
+			result = support::subst(result, "$$AbsOrRelPathMaster",
+			                        abspath);
+			result = support::subst(result, "$$AbsOrRelPathParent",
+			                        abspath);
+		} else {
+			result = support::subst(result, "$$AbsOrRelPathMaster",
+			                        relToMasterPath);
+			result = support::subst(result, "$$AbsOrRelPathParent",
+			                        relToParentPath);
+		}
+	}
+
+	if (what == PATHS)
+		return result;
+
+	result = support::subst(result, "$$FName", filename);
 	result = support::subst(result, "$$Basename", basename);
 	result = support::subst(result, "$$Extension",
 			'.' + support::GetExtension(filename));
-	result = support::subst(result, "$$FPath", filepath);
-	result = support::subst(result, "$$AbsPath", abspath);
-	result = support::subst(result, "$$RelPathMaster", relToMasterPath);
-	result = support::subst(result, "$$RelPathParent", relToParentPath);
-	if (support::AbsolutePath(filename)) {
-		result = support::subst(result, "$$AbsOrRelPathMaster",
-		                        abspath);
-		result = support::subst(result, "$$AbsOrRelPathParent",
-		                        abspath);
-	} else {
-		result = support::subst(result, "$$AbsOrRelPathMaster",
-		                        relToMasterPath);
-		result = support::subst(result, "$$AbsOrRelPathParent",
-		                        relToParentPath);
-	}
 	result = support::subst(result, "$$Tempname", params.tempname());
 	result = support::subst(result, "$$Sysdir",
 				support::package().system_support());
@@ -139,8 +149,8 @@ string const doSubstitution(InsetExternalParams const & params,
 namespace {
 
 /** update the file represented by the template.
-    If \param external_in_tmpdir == true, then the generated file is
-    place in the buffer's temporary directory.
+    If \p external_in_tmpdir == true, then the generated file is
+    placed in the buffer's temporary directory.
 */
 void updateExternal(InsetExternalParams const & params,
 		    string const & format,
@@ -238,9 +248,17 @@ void updateExternal(InsetExternalParams const & params,
 					doSubstitution(params, buffer, *fit,
 					               true),
 					m_buffer->temppath());
-			string const file = doSubstitution(params, buffer,
-			                                   *fit,
-			                                   external_in_tmpdir);
+			// The path of the referenced file is never the
+			// temp path, but the filename may be the mangled
+			// or the real name. Therefore we substitute the
+			// paths and names separately.
+			string file = support::subst(*fit, "$$FName",
+					"$$FPath$$Basename$$Extension");
+			file = doSubstitution(params, buffer, file, false,
+			                      PATHS);
+			file = doSubstitution(params, buffer, file,
+			                      external_in_tmpdir,
+			                      ALL_BUT_PATHS);
 			// if file is a relative name, it is interpreted
 			// relative to the master document.
 			exportdata.addExternalFile(rit->first, source, file);

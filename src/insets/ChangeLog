@@ -1,3 +1,11 @@
+2005-01-11  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetgraphics.C (prepareFile): add missing calls to addExternalFile
+	* updateExternal.[Ch] (doSubstitution): take a new parameter that
+	determines what variables are substituted
+	* updateExternal.C (updateExternal): fix substitution of
+	ReferencedFiles
+
 2005-01-10  Angus Leeming  <leeming@lyx.org>
 
 	* ExternalTemplate.C: use support/package.h to provide the paths to the

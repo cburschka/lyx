@@ -34,6 +34,12 @@ void editExternal(InsetExternalParams const & params,
 		  Buffer const & buffer);
 
 
+enum Substitute {
+	ALL,
+	PATHS,
+	ALL_BUT_PATHS
+};
+
 /** Substitute meta-variables in string \p s, making use of \p params and
     \p buffer.
     If \p external_in_tmpdir is true, all files are assumed to be in the
@@ -44,12 +50,13 @@ void editExternal(InsetExternalParams const & params,
 std::string const doSubstitution(InsetExternalParams const & params,
 				 Buffer const & buffer,
                                  std::string const & s,
-                                 bool external_in_tmpdir = false);
+                                 bool external_in_tmpdir = false,
+                                 Substitute what = ALL);
 
 
 /** Write the output for a specific file format
     and generate any external data files.
-    If \param external_in_tmpdir == true, then the generated file is
+    If \p external_in_tmpdir == true, then the generated file is
     place in the buffer's temporary directory.
 */
 int writeExternal(InsetExternalParams const &,
