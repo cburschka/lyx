@@ -44,6 +44,10 @@ public:
 	///
 	int x() const;
 	///
+	void ix(int i);
+	///
+	int ix() const;
+	///
 	void x_fix(int i);
 	///
 	int x_fix() const;
@@ -68,6 +72,9 @@ private:
 	bool boundary_;
 	///
 	int x_;
+	/// the x position of the position before the inset when we put
+	/// the cursor on the end of the row before, otherwise equal to x.
+	int ix_;
 	///
 	int x_fix_;
 	///

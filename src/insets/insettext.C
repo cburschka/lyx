@@ -424,7 +424,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 
 	if (the_locking_inset && (cpar(bv) == inset_par)
 		&& (cpos(bv) == inset_pos)) {
-		inset_x = cx(bv) - top_x + drawTextXOffset;
+		inset_x = cix(bv) - top_x + drawTextXOffset;
 		inset_y = ciy(bv) + drawTextYOffset;
 	}
 	if (!cleared && (need_update == CURSOR)
@@ -555,10 +555,10 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 	}
 
 	if (!autoBreakRows && par->next())
-		collapseParagraphs(bv->buffer()->params);
+		collapseParagraphs(bv);
 
 	if (the_locking_inset) {
-		inset_x = cx(bv) - top_x + drawTextXOffset;
+		inset_x = cix(bv) - top_x + drawTextXOffset;
 		inset_y = ciy(bv) + drawTextYOffset;
 		the_locking_inset->update(bv, font, reinit);
 	}
@@ -610,7 +610,7 @@ void InsetText::setUpdateStatus(BufferView * bv, int what) const
 void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty) const
 {
 	if (!autoBreakRows && par->next())
-		collapseParagraphs(bv->buffer()->params);
+		collapseParagraphs(bv);
 	bool clear = false;
 	if (!lt) {
 		lt = getLyXText(bv);
@@ -625,8 +625,15 @@ void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty) const
 		lt->selection.cursor = lt->cursor;
 	if (clear)
 		lt = 0;
+#if 0
+	// IMO this is not anymore needed as we do this in fitInsetCursor!
+	// and we always get "true" as returnvalue of this function in the
+	// case of a locking inset (Jug 20020412)
 	if (locked && (need_update & CURSOR) && bv->fitCursor())
 		need_update |= FULL;
+#else
+	bv->fitCursor();
+#endif
 	if (flag)
 		bv->updateInset(const_cast<InsetText *>(this), mark_dirty);
 
@@ -785,7 +792,7 @@ void InsetText::insetUnlock(BufferView * bv)
 void InsetText::lockInset(BufferView * bv, UpdatableInset * inset)
 {
 	the_locking_inset = inset;
-	inset_x = cx(bv) - top_x + drawTextXOffset;
+	inset_x = cix(bv) - top_x + drawTextXOffset;
 	inset_y = ciy(bv) + drawTextYOffset;
 	inset_pos = cpos(bv);
 	inset_par = cpar(bv);
@@ -831,7 +838,7 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 	} else if (the_locking_inset && (the_locking_inset == inset)) {
 		if (cpar(bv) == inset_par && cpos(bv) == inset_pos) {
 			lyxerr[Debug::INSETS] << "OK" << endl;
-			inset_x = cx(bv) - top_x + drawTextXOffset;
+			inset_x = cix(bv) - top_x + drawTextXOffset;
 			inset_y = ciy(bv) + drawTextYOffset;
 		} else {
 			lyxerr[Debug::INSETS] << "cursor.pos != inset_pos" << endl;
@@ -870,7 +877,7 @@ bool InsetText::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 bool InsetText::updateInsetInInset(BufferView * bv, Inset * inset)
 {
 	if (!autoBreakRows && par->next())
-		collapseParagraphs(bv->buffer()->params);
+		collapseParagraphs(bv);
 	if (inset == this)
 		return true;
 	bool clear = false;
@@ -909,7 +916,7 @@ bool InsetText::updateInsetInInset(BufferView * bv, Inset * inset)
 		if (the_locking_inset &&
 		    cpar(bv) == inset_par && cpos(bv) == inset_pos)
 		{
-			inset_x = cx(bv) - top_x + drawTextXOffset;
+			inset_x = cix(bv) - top_x + drawTextXOffset;
 			inset_y = ciy(bv) + drawTextYOffset;
 		}
 	}
@@ -942,7 +949,7 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 		else if (inset) {
 			// otherwise unlock the_locking_inset and lock the new inset
 			the_locking_inset->insetUnlock(bv);
-			inset_x = cx(bv) - top_x + drawTextXOffset;
+			inset_x = cix(bv) - top_x + drawTextXOffset;
 			inset_y = ciy(bv) + drawTextYOffset;
 			the_locking_inset = 0;
 			inset->insetButtonPress(bv, x - inset_x,
@@ -1043,7 +1050,7 @@ bool InsetText::insetButtonRelease(BufferView * bv, int x, int y, int button)
 			ret = inset->insetButtonRelease(bv, x - inset_x,
 							y - inset_y, button);
 		} else {
-			inset_x = cx(bv) - top_x + drawTextXOffset;
+			inset_x = cix(bv) - top_x + drawTextXOffset;
 			inset_y = ciy(bv) + drawTextYOffset;
 			ret = inset->insetButtonRelease(bv, x - inset_x,
 							y - inset_y, button);
@@ -2009,7 +2016,7 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 			x = insetWidth;
 		if (y < 0)
 			y = insetDescent;
-		inset_x = cx(bv) - top_x + drawTextXOffset;
+		inset_x = cix(bv) - top_x + drawTextXOffset;
 		inset_y = ciy(bv) + drawTextYOffset;
 		inset->edit(bv, x - inset_x, y - inset_y, button);
 		if (!the_locking_inset)
@@ -2110,6 +2117,21 @@ int InsetText::cx(BufferView * bv) const
 	// we do nothing dangerous so we use a local cache
 	LyXText * llt = getLyXText(bv);
 	int x = llt->cursor.x() + top_x + TEXT_TO_INSET_OFFSET;
+	if (the_locking_inset) {
+		LyXFont font = llt->getFont(bv->buffer(), llt->cursor.par(),
+					    llt->cursor.pos());
+		if (font.isVisibleRightToLeft())
+			x -= the_locking_inset->width(bv, font);
+	}
+	return x;
+}
+
+
+int InsetText::cix(BufferView * bv) const
+{
+	// we do nothing dangerous so we use a local cache
+	LyXText * llt = getLyXText(bv);
+	int x = llt->cursor.ix() + top_x + TEXT_TO_INSET_OFFSET;
 	if (the_locking_inset) {
 		LyXFont font = llt->getFont(bv->buffer(), llt->cursor.par(),
 					    llt->cursor.pos());
@@ -2282,7 +2304,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 	t->init(bv, true);
 	restoreLyXTextState(bv, t);
 	if (the_locking_inset) {
-		inset_x = cx(bv) - top_x + drawTextXOffset;
+		inset_x = cix(bv) - top_x + drawTextXOffset;
 		inset_y = ciy(bv) + drawTextYOffset;
 	}
 
@@ -2323,7 +2345,7 @@ void InsetText::reinitLyXText() const
 		t->init(bv, true);
 		restoreLyXTextState(bv, t);
 		if (the_locking_inset) {
-			inset_x = cx(bv) - top_x + drawTextXOffset;
+			inset_x = cix(bv) - top_x + drawTextXOffset;
 			inset_y = ciy(bv) + drawTextYOffset;
 		}
 		if (bv->screen()) {
@@ -2656,13 +2678,28 @@ bool InsetText::checkInsertChar(LyXFont & font)
 }
 
 
-void InsetText::collapseParagraphs(BufferParams const & bparams) const
+void InsetText::collapseParagraphs(BufferView * bv) const
 {
+	BufferParams const & bparams = bv->buffer()->params;
+	LyXText * llt = getLyXText(bv);
+	
 	while(par->next()) {
 		if (par->size() && par->next()->size() &&
 			!par->isSeparator(par->size()-1))
 		{
 			par->insertChar(par->size(), ' ');
+		}
+		if (llt->selection.set()) {
+			if (llt->selection.start.par() == par->next()) {
+				llt->selection.start.par(par);
+				llt->selection.start.pos(
+					llt->selection.start.pos() + par->size());
+			}
+			if (llt->selection.end.par() == par->next()) {
+				llt->selection.end.par(par);
+				llt->selection.end.pos(
+					llt->selection.end.pos() + par->size());
+			}
 		}
 		par->pasteParagraph(bparams);
 	}

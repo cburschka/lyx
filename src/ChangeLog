@@ -1,7 +1,21 @@
 2002-04-12  Juergen Vigna  <jug@sad.it>
 
+	* BufferView_pimpl.C (workAreaMotionNotify): use new ix() cursor pos.
+
+	* text2.C (getCursorX): new helper function
+	(setCursor): compute also ix_
+	(setCursorFromCoordinates): set also ix.
+
+	* lyxcursor.h: added ix_ and helper functions.
+
+	* BufferView_pimpl.C (workAreaMotionNotify): forgot to use iy().
+
+	* buffer.C (insertStringAsLines): dont break paragraph if the this
+	paragraph is inside an inset which does not permit it!
+
 	* text.C (breakParagraph): honor keepempty flag and break the paragraph
 	also with no chars on this paragraph.
+	(paintRowText): only paint stuff if it's inside the workarea!
 
 	* paragraph.C (breakParagraph): honor keepempty flag and break the
 	paragraph always below not above.

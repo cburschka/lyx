@@ -547,12 +547,12 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 						  cursor.par(), cursor.pos());
 		int width = bv_->theLockingInset()->width(bv_, font);
 		int inset_x = font.isVisibleRightToLeft()
-			? cursor.x() - width : cursor.x();
+			? cursor.ix() - width : cursor.ix();
 		int start_x = inset_x + bv_->theLockingInset()->scroll();
 		bv_->theLockingInset()->
 			insetMotionNotify(bv_,
 					  x - start_x,
-					  y - cursor.y() + bv_->text->first_y,
+					  y - cursor.iy() + bv_->text->first_y,
 					  state);
 		return;
 	}

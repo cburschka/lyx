@@ -321,6 +321,9 @@ public:
 			     bool setfont = true,
 			     bool boundary = false) const;
 	///
+	float getCursorX(BufferView *, Row *, lyx::pos_type pos,
+					 lyx::pos_type last, bool boundary) const;
+	///
 	void setCurrentFont(BufferView *) const;
 
 	///

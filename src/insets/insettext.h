@@ -321,6 +321,8 @@ private:
 	///
 	int cx(BufferView *) const;
 	///
+	int cix(BufferView *) const;
+	///
 	int cy(BufferView *) const;
 	///
 	int ciy(BufferView *) const;
@@ -345,7 +347,7 @@ private:
 	///
 	void reinitLyXText() const;
 	///
-	void collapseParagraphs(BufferParams const & bparams) const;
+	void collapseParagraphs(BufferView *) const;
 
 	/* Private structures and variables */
 	///

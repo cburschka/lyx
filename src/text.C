@@ -3609,7 +3609,14 @@ void LyXText::paintRowText(DrawRowParams & p)
 
 	pos_type vpos = p.row->pos();
 	while (vpos <= last) {
+		if (p.x > p.bv->workWidth())
+			break;
 		pos_type pos = vis2log(vpos);
+		if (p.x + singleWidth(p.bv, par, pos) < 0) {
+			p.x += singleWidth(p.bv, par, pos);
+			++vpos;
+			continue;
+		}
 		if (main_body > 0 && pos == main_body - 1) {
 			int const lwidth = lyxfont::width(layout.labelsep,
 				getLabelFont(buffer, par));

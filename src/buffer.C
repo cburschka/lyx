@@ -1400,10 +1400,12 @@ void Buffer::insertStringAsLines(Paragraph *& par, pos_type & pos,
 	par->checkInsertChar(font);
 	// insert the string, don't insert doublespace
 	bool space_inserted = true;
+	bool autobreakrows = !par->inInset() ||
+		static_cast<InsetText *>(par->inInset())->getAutoBreakRows();
 	for(string::const_iterator cit = str.begin();
 	    cit != str.end(); ++cit) {
 		if (*cit == '\n') {
-			if (par->size() || layout.keepempty) {
+			if (autobreakrows && (par->size() || layout.keepempty)) {
 				par->breakParagraph(params, pos,
 						    layout.isEnvironment());
 				par = par->next();

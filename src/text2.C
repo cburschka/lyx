@@ -2083,14 +2083,6 @@ void LyXText::setCursor(BufferView * bview, LyXCursor & cur, Paragraph * par,
 	// y is now the cursor baseline
 	cur.y(y);
 
-	// now get the cursors x position
-	float x;
-	float fill_separator;
-	float fill_hfill;
-	float fill_label_hfill;
-	prepareToPrint(bview, row, x, fill_separator, fill_hfill,
-		       fill_label_hfill);
-	pos_type cursor_vpos = 0;
 	pos_type last = rowLastPrintable(old_row);
 
 	if (pos > last + 1) {
@@ -2101,6 +2093,30 @@ void LyXText::setCursor(BufferView * bview, LyXCursor & cur, Paragraph * par,
 		pos = row->pos();
 		cur.pos(pos);
 	}
+
+	// now get the cursors x position
+	float x = getCursorX(bview, row, pos, last, boundary);
+	cur.x(int(x));
+	cur.x_fix(cur.x());
+	if (old_row != row) {
+		x = getCursorX(bview, old_row, pos, last, boundary);
+		cur.ix(int(x));
+	} else
+		cur.ix(cur.x());
+}
+
+
+float LyXText::getCursorX(BufferView * bview, Row * row,
+						  pos_type pos, pos_type last, bool boundary) const
+{
+	pos_type cursor_vpos = 0;
+	float x;
+	float fill_separator;
+	float fill_hfill;
+	float fill_label_hfill;
+	// This call HAS to be here because of the BidiTables!!!
+	prepareToPrint(bview, row, x, fill_separator, fill_hfill,
+	               fill_label_hfill);
 
 	if (last < row->pos())
 		cursor_vpos = row->pos();
@@ -2125,7 +2141,7 @@ void LyXText::setCursor(BufferView * bview, LyXCursor & cur, Paragraph * par,
 		main_body = 0;
 
 	for (pos_type vpos = row->pos(); vpos < cursor_vpos; ++vpos) {
-		pos = vis2log(vpos);
+		pos_type pos = vis2log(vpos);
 		if (main_body > 0 && pos == main_body - 1) {
 			x += fill_label_hfill +
 				lyxfont::width(textclasslist[
@@ -2149,9 +2165,7 @@ void LyXText::setCursor(BufferView * bview, LyXCursor & cur, Paragraph * par,
 		} else
 			x += singleWidth(bview, row->par(), pos);
 	}
-
-	cur.x(int(x));
-	cur.x_fix(cur.x());
+	return x;
 }
 
 
@@ -2248,6 +2262,7 @@ void LyXText::setCursorFromCoordinates(BufferView * bview, LyXCursor & cur,
 	cur.par(row->par());
 	cur.pos(row->pos() + column);
 	cur.x(x);
+	cur.ix(x);
 	cur.y(y + row->baseline());
 	Inset * ins;
 	if (row->next() && cur.pos() &&
