@@ -151,7 +151,7 @@ src/insets/insetbibtex.C
 src/insets/insetbox.C
 src/insets/insetbranch.C
 src/insets/insetcaption.C
-src/insets/insetelement.C
+src/insets/insetcharstyle.C
 src/insets/insetenv.C
 src/insets/insetert.C
 src/insets/insetexternal.C
@@ -199,7 +199,6 @@ src/output_plaintext.C
 src/paragraph.C
 src/paragraph_funcs.C
 src/rowpainter.C
-src/support/path_defines.C
 src/text.C
 src/text2.C
 src/text3.C

@@ -1,3 +1,12 @@
+2003-11-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* forms/form_maths_panel.fd (label): replace label "Greek" by
+	"abg" for alpha beta gamma.
+
+	* forms/form_tabular.fd (label): 
+	* FormDocument.C (build): remove use of latin1 in
+	some translatable strings. This confuses gettext.
+
 2003-11-20  Angus Leeming  <leeming@lyx.org>
 
 	* ColorHandler.C (ctor):

@@ -1,3 +1,11 @@
+2003-11-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* ui/QMathDialogBase.ui: remove mention of \frac in tooltip, since
+	\f is interpreted by gettext as a special sequence.
+
+	* QDocument.C (build_dialog): remove use of latin1 in
+	some translatable strings. It confuses gettext.
+
 2003-11-20  Angus Leeming  <leeming@lyx.org>
 
 	* BulletsModule.C (setBullet): squash gcc 'may be uninitialized' warning.
