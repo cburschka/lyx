@@ -7,7 +7,9 @@
 
 2001-01-17  Dekel Tsur  <dekelts@tau.ac.il>
 
-	* WorkArea.C (work_area_handler): Decrease keyboard purge thershold.
+	* text.C (IsBoundary): Remove the error message
+	
+	* WorkArea.C (work_area_handler): Decrease keyboard purge threshold.
 
 	* lyxrc.C (setDefaults): Correct initialization value for
  	font_norm_type.
@@ -32,4 +34,3 @@
 	alignment commands (when needed).
 
 	* text.C (InsertChar): Add ':' to number separator chars.
-

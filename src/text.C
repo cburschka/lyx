@@ -348,7 +348,8 @@ bool LyXText::IsBoundary(Buffer const * buf, LyXParagraph * par,
 		return false;
 
 	if (!bidi_InRange(pos - 1)) {
-		lyxerr << "LyXText::IsBoundary This shouldn't happen." << endl;
+		/// This can happen if pos is the first char of a row.
+		/// Returning false in this case is incorrect!
 		return false;
 	}
 
