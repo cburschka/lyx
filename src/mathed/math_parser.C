@@ -15,8 +15,6 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
-// {[(
-
 #include <config.h>
 
 #include <cctype>
@@ -58,13 +56,13 @@ using std::istream;
 using std::endl;
 
 
+namespace {
 
 // These are lexical codes, not semantic
 enum lexcode_enum {
 	LexNone,
 	LexESC,
 	LexAlpha,
-	LexDigit,
 	LexBOP,         // Binary operators or relations
 	LexOpen,
 	LexClose,
@@ -79,8 +77,6 @@ enum lexcode_enum {
 
 lexcode_enum lexcode[256];  
 
-
-namespace {
 
 void mathed_parse_into(MathArray & array, unsigned flags);
 
@@ -165,7 +161,7 @@ void lexInit()
 {
 	for (int i = 0; i <= 255; ++i) {
 		if (isdigit(i))
-			lexcode[i] = LexDigit;
+			lexcode[i] = LexOther;
 		else if (isspace(i))
 			lexcode[i] = LexSpace;
 		else
@@ -254,7 +250,7 @@ int yylex()
 			do {
 				c = getuchar(yyis);
 			} while (c != '\n' && yyis->good());  // eat comments
-		} else if (lexcode[c] == LexDigit || lexcode[c] == LexOther) {
+		} else if (lexcode[c] == LexOther) {
 			yylval.i = c;
 			return LM_TK_STR;
 		} else if (lexcode[c] == LexAlpha || lexcode[c] == LexSpace) {
@@ -486,7 +482,7 @@ MathMatrixInset * mathed_parse_normal()
 latexkeys const * read_delim()
 {
 	int ld = yylex();
-	lyxerr << "found symbol: " << ld << "\n";
+	//lyxerr << "found symbol: " << ld << "\n";
 	latexkeys const * l = in_word_set(".");
 	switch (ld) {
 		case LM_TK_SYM:
@@ -494,14 +490,14 @@ latexkeys const * read_delim()
 		case LM_TK_SPECIAL:
 		case LM_TK_BEGIN:
 			l = yylval.l;
-			lyxerr << "found key 1: '" << l << "'\n";
-			lyxerr << "found key 1: '" << l->name << "'\n";
+			//lyxerr << "found key 1: '" << l << "'\n";
+			//lyxerr << "found key 1: '" << l->name << "'\n";
 			break;
 		case LM_TK_STR:
 			string s;
 			s += yylval.i;
 			l = in_word_set(s);
-			lyxerr << "found key 2: '" << l->name << "'\n";
+			//lyxerr << "found key 2: '" << l->name << "'\n";
 	}
 	return l;
 }
@@ -835,6 +831,21 @@ void mathed_parse_into(MathArray & array, unsigned flags)
 	--plevel;
 }
 
+void mathed_parse_end(LyXLex & lex)
+{
+	// Update line number
+	lex.setLineNo(yylineno);
+
+	// reading of end_inset
+	while (lex.isOK()) {
+		lex.nextToken();
+		if (lex.getString() == "\\end_inset")
+			break;
+		lyxerr[Debug::MATHED] << "InsetFormula::Read: Garbage before \\end_inset,"
+			" or missing \\end_inset!" << endl;
+	}
+}
+
 }
 
 
@@ -849,28 +860,12 @@ MathArray mathed_parse_cell(string const & str)
 }
 
 
+
 MathMacroTemplate * mathed_parse_macro(string const & str)
 {
 	istringstream is(str.c_str());
 	return mathed_parse_macro(is);
 }
-
-
-MathMatrixInset * mathed_parse_normal(string const & str)
-{
-	istringstream is(str.c_str());
-	return mathed_parse_normal(is);
-}
-
-
-
-MathMatrixInset * mathed_parse_normal(istream & is)
-{
-	yyis     = &is;
-	yylineno = 0;
-	return mathed_parse_normal();
-}
-
 
 MathMacroTemplate * mathed_parse_macro(istream & is)
 {
@@ -879,49 +874,36 @@ MathMacroTemplate * mathed_parse_macro(istream & is)
 	return mathed_parse_macro();
 }
 
+MathMacroTemplate * mathed_parse_macro(LyXLex & lex)
+{
+	yyis     = &lex.getStream();
+	yylineno = lex.getLineNo();
+	MathMacroTemplate * p = mathed_parse_macro();
+	mathed_parse_end(lex);
+	return p;
+}
 
+
+
+MathMatrixInset * mathed_parse_normal(string const & str)
+{
+	istringstream is(str.c_str());
+	return mathed_parse_normal(is);
+}
+
+MathMatrixInset * mathed_parse_normal(istream & is)
+{
+	yyis     = &is;
+	yylineno = 0;
+	return mathed_parse_normal();
+}
 
 MathMatrixInset * mathed_parse_normal(LyXLex & lex)
 {
 	yyis     = &lex.getStream();
 	yylineno = lex.getLineNo();
-
 	MathMatrixInset * p = mathed_parse_normal();
-
-	// Update line number
-	lex.setLineNo(yylineno);
-
-	// reading of end_inset
-	while (lex.isOK()) {
-		lex.nextToken();
-		if (lex.getString() == "\\end_inset")
-			break;
-		lyxerr[Debug::MATHED] << "InsetFormula::Read: Garbage before \\end_inset,"
-			" or missing \\end_inset!" << endl;
-	}
-
+	mathed_parse_end(lex);
 	return p;
 }
 
-MathMacroTemplate * mathed_parse_macro(LyXLex & lex)
-{
-	yyis     = &lex.getStream();
-	yylineno = lex.getLineNo();
-
-	MathMacroTemplate * p = mathed_parse_macro();
-
-	// Update line number
-	lex.setLineNo(yylineno);
-
-	// reading of end_inset
-	while (lex.isOK()) {
-		lex.nextToken();
-		if (lex.getString() == "\\end_inset")
-			break;
-		lyxerr[Debug::MATHED] << "InsetFormula::Read: Garbage before \\end_inset,"
-			" or missing \\end_inset!" << endl;
-	}
-
-	return p;
-}
-//]})
