@@ -118,7 +118,7 @@ struct BufferView::Pimpl {
 	///
 	Buffer * buffer_;
 	///
-	LyXScreen * screen;
+	LyXScreen * screen_;
 	///
 	long current_scrollbar_value;
 	///

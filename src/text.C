@@ -3780,7 +3780,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	int y_top, y_bottom;
 	float fill_separator, fill_hfill, fill_label_hfill;
 
-	LyXFont font;
+	LyXFont font(LyXFont::ALL_SANE);
 	int maxdesc;
 	if (row_ptr->height() <= 0) {
 		lyxerr << "LYX_ERROR: row.height: "
@@ -3793,9 +3793,12 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	x += x_offset;
 	
 	// clear the area where we want to paint/print
-	int ww = workWidth(bview);
-	if (ww < 0)
+	int ww;
+	if (inset_owner)
+		ww = inset_owner->width(bview->painter(), font) - 1;
+	else
 		ww = bview->workWidth();
+
 	if (bv_owner)
 		pain.fillRectangle(x_offset, y_offset, ww, row_ptr->height());
 	
@@ -3805,12 +3808,14 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 			if (sel_start_cursor.row() == row_ptr &&
 			    sel_end_cursor.row() == row_ptr) {
 				if (sel_start_cursor.x() < sel_end_cursor.x())
-					pain.fillRectangle(sel_start_cursor.x(), y_offset,
+					pain.fillRectangle(x_offset + sel_start_cursor.x(),
+							   y_offset,
 							   sel_end_cursor.x() - sel_start_cursor.x(),
 							   row_ptr->height(),
 							   LColor::selection);
 				else
-					pain.fillRectangle(sel_end_cursor.x(), y_offset,
+					pain.fillRectangle(x_offset + sel_end_cursor.x(),
+							   y_offset,
 							   sel_start_cursor.x() - sel_end_cursor.x(),
 							   row_ptr->height(),
 							   LColor::selection);
@@ -3821,13 +3826,15 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 							   row_ptr->height(),
 							   LColor::selection);
 				else
-					pain.fillRectangle(sel_start_cursor.x(), y_offset,
+					pain.fillRectangle(x_offset + sel_start_cursor.x(),
+							   y_offset,
 							   ww - sel_start_cursor.x(),
 							   row_ptr->height(),
 							   LColor::selection);
 			} else if (sel_end_cursor.row() == row_ptr) {
 				if (is_rtl)
-					pain.fillRectangle(sel_end_cursor.x(), y_offset,
+					pain.fillRectangle(x_offset + sel_end_cursor.x(),
+							   y_offset,
 							   ww - sel_end_cursor.x(),
 							   row_ptr->height(),
 							   LColor::selection);
@@ -3838,15 +3845,16 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 							   LColor::selection);
 			} else if (y > long(sel_start_cursor.y())
 				   && y < long(sel_end_cursor.y())) {
-				pain.fillRectangle(x_offset, y_offset,
-						   ww, row_ptr->height(),
+				pain.fillRectangle(x_offset, y_offset, ww,
+						   row_ptr->height(),
 						   LColor::selection);
 			}
 		} else if ( sel_start_cursor.row() != row_ptr &&
 			    sel_end_cursor.row() != row_ptr &&
 			    y > long(sel_start_cursor.y())
 			    && y < long(sel_end_cursor.y())) {
-			pain.fillRectangle(x_offset, y_offset, ww, row_ptr->height(),
+			pain.fillRectangle(x_offset, y_offset, ww,
+					   row_ptr->height(),
 					   LColor::selection);
 		} else if (sel_start_cursor.row() == row_ptr ||
 			   sel_end_cursor.row() == row_ptr) {
@@ -3882,7 +3890,8 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 					      sel_start_cursor.pos() <= pos) &&
 					     (sel_end_cursor.row() != row_ptr ||
 					      pos < sel_end_cursor.pos()) )
-						pain.fillRectangle(int(old_tmpx), y_offset,
+						pain.fillRectangle(x_offset + int(old_tmpx),
+								   y_offset,
 								   int(tmpx - old_tmpx + 1),
 								   row_ptr->height(),
 								   LColor::selection);
@@ -3922,17 +3931,19 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 					      sel_start_cursor.pos() <= pos) &&
 					     (sel_end_cursor.row() != row_ptr ||
 					      pos < sel_end_cursor.pos()) )
-						pain.fillRectangle(int(old_tmpx), y_offset,
+						pain.fillRectangle(x_offset + int(old_tmpx),
+								   y_offset,
 								   int(tmpx - old_tmpx + 1),
 								   row_ptr->height(),
-							   LColor::selection);
+								   LColor::selection);
 				}
 #ifndef NEW_TABULAR
 			}
 #endif
 			if ( (sel_start_cursor.row() != row_ptr && is_rtl) ||
 			     (sel_end_cursor.row() != row_ptr && !is_rtl) )
-				pain.fillRectangle(int(tmpx), y_offset,
+				pain.fillRectangle(x_offset + int(tmpx),
+						   y_offset,
 						   int(ww - tmpx),
 						   row_ptr->height(),
 						   LColor::selection);

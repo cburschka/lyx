@@ -1,4 +1,4 @@
-/** Header file generated with fdesign on Mon Jun 12 06:32:31 2000.**/
+/** Header file generated with fdesign on Mon Jun 19 12:55:08 2000.**/
 
 #ifndef FD_form_document_h_
 #define FD_form_document_h_
@@ -115,16 +115,16 @@ typedef struct {
 	void *vdata;
 	char *cdata;
 	long  ldata;
-	FL_OBJECT *choice_language;
 	FL_OBJECT *choice_family;
 	FL_OBJECT *choice_series;
 	FL_OBJECT *choice_shape;
-	FL_OBJECT *choice_color;
-	FL_OBJECT *check_toggle_all;
 	FL_OBJECT *choice_size;
 	FL_OBJECT *choice_bar;
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_close;
+	FL_OBJECT *choice_color;
+	FL_OBJECT *check_toggle_all;
+	FL_OBJECT *choice_language;
 } FD_form_character;
 
 extern FD_form_character * create_form_form_character(void);

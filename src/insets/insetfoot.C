@@ -18,6 +18,7 @@
 #include "lyxfont.h"
 #include "BufferView.h"
 #include "Painter.h"
+#include "lyxtext.h"
 #include "support/LOstream.h"
 
 using std::ostream;
@@ -84,7 +85,7 @@ bool InsetFoot::InsertInsetAllowed(Inset * inset) const
 
 LyXFont InsetFoot::GetDrawFont(Buffer const * buf, LyXParagraph * p, int pos) const
 {
-    LyXFont fn = InsetCollapsable::GetDrawFont(buf, p, pos);
+    LyXFont fn = text->GetFont(buf, p, pos);
     fn.decSize().decSize();
     return fn;
 }

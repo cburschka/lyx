@@ -1281,11 +1281,11 @@ bool InsetTabular::InsetHit(BufferView * bv, int x, int ) const
 // in pixels if we have a pwidth for this cell.
 int InsetTabular::GetMaxWidthOfCell(Painter &, int cell) const
 {
-    string w;
+    string s = tabular->GetPWidth(cell);
 
-    if ((w=tabular->GetPWidth(cell)).empty())
+    if (s.empty())
 	return -1;
-    return VSpace(w).inPixels( 0, 0);
+    return VSpace(s).inPixels( 0, 0);
 }
 
 int InsetTabular::getMaxWidth(Painter & pain,
@@ -1320,7 +1320,6 @@ void InsetTabular::recomputeTextInsets(BufferView * bv, const LyXFont & font) co
 	    cell = tabular->GetCellNumber(i,j);
 	    inset = tabular->GetCellInset(cell);
 	    inset->update(bv, font);
-	    inset->computeTextRows(bv->painter());
 	    tabular->SetWidthOfCell(cell, inset->width(bv->painter(), font));
 	}
 //	cell = tabular->GetCellNumber(0, j);

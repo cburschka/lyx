@@ -23,6 +23,7 @@ class LyXView;
 class LyXText;
 class TeXErrors;
 class Buffer;
+class LyXScreen;
 
 ///
 class BufferView {
@@ -43,6 +44,8 @@ public:
 	Buffer * buffer() const;
 	///
 	Painter & painter();
+	///
+	LyXScreen * screen() const;
 	///
 	void buffer(Buffer * b);
 	///

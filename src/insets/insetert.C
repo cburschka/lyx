@@ -28,7 +28,6 @@ InsetERT::InsetERT() : InsetCollapsable()
     setLabel(_("ERT"));
     LyXFont font(LyXFont::ALL_SANE);
     font.setLatex (LyXFont::ON);
-    real_current_font = current_font = font;
     labelfont = LyXFont(LyXFont::ALL_SANE);
     labelfont.decSize();
     labelfont.decSize();
@@ -72,5 +71,4 @@ void InsetERT::Edit(BufferView * bv, int x, int y, unsigned int button)
     InsetCollapsable::Edit(bv, x, y, button);
     LyXFont font(LyXFont::ALL_SANE);
     font.setLatex (LyXFont::ON);
-    current_font = real_current_font = font;
 }

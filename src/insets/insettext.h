@@ -124,7 +124,7 @@ public:
     ///
     void SetFrameColor(LColor::color);
     ///
-    void computeTextRows(Painter &) const;
+    LyXFont GetDrawFont(Buffer const *, LyXParagraph *, int pos) const;
     ///
     LyXParagraph * par;
     ///
@@ -135,32 +135,9 @@ protected:
     ///
     void WriteParagraphData(Buffer const *, std::ostream &) const;
     ///
-    void resetPos(Painter &) const;
-    ///
-    void drawSelection(Painter &, int pos, int baseline, float x);
-    ///
-    void SingleHeight(Painter &, LyXParagraph * par,int pos,
-		      int & asc, int & desc) const;
-    ///
-    int SingleWidth(Painter &, LyXParagraph * par, int pos) const;
-    ///
-    LyXFont GetFont(Buffer const *, LyXParagraph * par, int pos) const;
-    ///
-    virtual LyXFont GetDrawFont(Buffer const *, LyXParagraph * par, int pos) const;
-    ///
     virtual int getMaxTextWidth(Painter &, UpdatableInset const *) const;
 
     LyXText * text;
-    ///
-    LyXFont current_font;
-    ///
-    LyXFont real_current_font;
-    ///
-    mutable int maxAscent;
-    ///
-    mutable int maxDescent;
-    ///
-    mutable int insetWidth;
     ///
     mutable int drawTextXOffset;
     mutable int drawTextYOffset;
@@ -172,21 +149,11 @@ protected:
 
 private:
     ///
-    void drawRowSelection(Painter &, int startpos, int endpos, int row,
-			  int baseline, float x) const;
-    ///
-    void drawRowText(Painter &, int startpos, int endpos, int baseline,
-                     float x) const;
-    ///
-    void computeBaselines(int) const;
-    ///
     int BeginningOfMainBody(Buffer const *, LyXParagraph * par) const;
     ///
     void ShowInsetCursor(BufferView *);
     ///
     void HideInsetCursor(BufferView *);
-    ///
-    void setPos(Painter &, int x, int y) const;
     ///
     UpdatableInset::RESULT moveRight(BufferView *, bool activate_inset = true);
     ///
@@ -197,15 +164,6 @@ private:
     UpdatableInset::RESULT moveDown(BufferView *);
     ///
     bool Delete();
-    ///
-    bool cutSelection(Buffer const *);
-    ///
-    bool copySelection(Buffer const *);
-    ///
-    bool pasteSelection(Buffer const *);
-    ///
-    bool hasSelection() const
-        { return (selection_start_cursor != selection_end_cursor); }
     ///
     void SetCharFont(Buffer const *, int pos, LyXFont const & font);
     ///
@@ -231,16 +189,6 @@ private:
     ///
     int interline_space;
     ///
-    LyXCursor selection_start_cursor;
-    ///
-    LyXCursor selection_end_cursor;
-    ///
-    mutable LyXCursor cursor;
-    ///
-    mutable LyXCursor old_cursor;
-    ///
-    mutable int actrow;
-    ///
     bool no_selection;
     ///
     mutable float xpos;
@@ -248,21 +196,6 @@ private:
     mutable bool init_inset;
     ///
     UpdatableInset * the_locking_inset;
-    ///
-    struct row_struct {
-	///
-	int asc;
-	///
-	int desc;
-	///
-	int pos;
-	///
-	int baseline;
-    };
-    ///
-    typedef std::vector<row_struct> RowList;
-    ///
-    mutable RowList rows;
     ///
     LyXParagraph * old_par;
 };

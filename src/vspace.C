@@ -96,9 +96,10 @@ char nextToken (string & data)
 		// I really mean assignment ("=") below, not equality!
 		if ((i = data.find_last_of("0123456789.")) != string::npos) {
 			if (number_index > 3) return 'E';  // Error
-                        string buffer = data.substr(0, i + 1);
-			if (sscanf (buffer.c_str(),
-				    "%f", &number[number_index]) == 1) {
+                        string buffer = data.substr(0, i + 1).c_str();
+			double x = strToDbl(buffer);
+			if (x) {
+				number[number_index] = x;
 				lyx_advance (data, i + 1);
 				++number_index;
 				return 'n';

@@ -745,7 +745,7 @@ void BufferView::showLockedInsetCursor(long x, long y, int asc, int desc)
 			text->SetCursor(this, cursor,
 					cursor.par(), cursor.pos() - 1);
 		y += cursor.y() + the_locking_inset->InsetInInsetY();
-		pimpl_->screen->ShowManualCursor(x, y, asc, desc,
+		pimpl_->screen_->ShowManualCursor(x, y, asc, desc,
 					 LyXScreen::BAR_SHAPE);
 	}
 }
@@ -754,7 +754,7 @@ void BufferView::showLockedInsetCursor(long x, long y, int asc, int desc)
 void BufferView::hideLockedInsetCursor()
 {
 	if (the_locking_inset && available()) {
-		pimpl_->screen->HideCursor();
+		pimpl_->screen_->HideCursor();
 	}
 }
 
@@ -763,7 +763,7 @@ void BufferView::fitLockedInsetCursor(long x, long y, int asc, int desc)
 {
 	if (the_locking_inset && available()){
 		y += text->cursor.y() + the_locking_inset->InsetInInsetY();
-		if (pimpl_->screen->FitManualCursor(x, y, asc, desc))
+		if (pimpl_->screen_->FitManualCursor(x, y, asc, desc))
 			updateScrollbar();
 	}
 }

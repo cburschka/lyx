@@ -17,15 +17,15 @@ SHELL = /bin/sh
 # Various commands
 FDESIGN = fdesign
 
-SRCS = bullet_forms.fd cite.fd credits_form.fd form1.fd \
+SRCS = bullet_forms.fd credits_form.fd form1.fd \
 	latexoptions.fd layout_forms.fd lyx.fd lyx_sendfax.fd math_forms.fd \
 	print_form.fd sp_form.fd
 
-OBJS = bullet_forms.c cite.c credits_form.c form1.c \
+OBJS = bullet_forms.c credits_form.c form1.c \
 	latexoptions.c layout_forms.c lyx.c lyx_sendfax.c math_forms.c \
 	print_form.c sp_form.c
 
-COBJS = bullet_forms.C cite.C credits_form.C form1.C \
+COBJS = bullet_forms.C credits_form.C form1.C \
 	latexoptions.C layout_forms.C lyx.C lyx_sendfax.C math_forms.C \
 	print_form.C sp_form.C
 

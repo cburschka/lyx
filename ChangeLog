@@ -1,3 +1,16 @@
+2000-06-19  Juergen Vigna  <jug@sad.it>
+
+	* src/BufferView.h: added screen() function.
+
+	* src/insets/insettext.C (LocalDispatch): some selection code
+	fixed.
+
+	* src/vspace.C (nextToken): use stringfunctions instead of sscanf.
+
+	* src/insets/insettext.C (SetParagraphData):
+	(Read): 
+	(InsetText):  fixes for multiple paragraphs.
+
 2000-06-17  Kayvan A. Sylvan  <kayvan@sylvan.com>
 
 	* development/lyx.spec.in: Call configure with ``--without-warnings''

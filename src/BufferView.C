@@ -19,6 +19,7 @@
 #include "BufferView_pimpl.h"
 #include "lyxtext.h"
 #include "WorkArea.h"
+#include "lyxscreen.h"
 
 
 BufferView::BufferView(LyXView * o, int xpos, int ypos,
@@ -41,6 +42,12 @@ BufferView::~BufferView()
 Buffer * BufferView::buffer() const
 {
 	return pimpl_->buffer_;
+}
+
+
+LyXScreen * BufferView::screen() const
+{
+	return pimpl_->screen_;
 }
 
 
