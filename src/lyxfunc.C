@@ -881,10 +881,12 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 				owner->view()->menuRedo();
 				goto exit_with_message;
 			} else if (((result=owner->view()->theLockingInset()->
+				     // Hand-over to inset's own dispatch:
 			             localDispatch(owner->view(), action, argument)) ==
 			            UpdatableInset::DISPATCHED) ||
 			           (result == UpdatableInset::DISPATCHED_NOUPDATE))
 				goto exit_with_message;
+					// If UNDISPATCHED, just soldier on
 			else if (result == UpdatableInset::FINISHED) {
 					if (TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
 						TEXT()->cursorRight(owner->view());
@@ -1616,6 +1618,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 
 	default:
 		// Then if it was none of the above
+		// Trying the BufferView::pimpl dispatch:
 		if (!owner->view()->Dispatch(action, argument))
 			lyxerr << "A truly unknown func ["
 			       << lyxaction.getActionName(action) << "]!"

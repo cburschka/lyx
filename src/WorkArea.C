@@ -577,11 +577,16 @@ extern "C" {
 
 void WorkArea::event_cb(XEvent * xev)
 {
-	if (xev->type != SelectionRequest)
-		return;
- 
-	selectionRequested.emit();
-	return;
+	switch (xev->type) {
+		case SelectionRequest:
+			lyxerr[Debug::GUI] << "X requested selection." << endl;
+			selectionRequested.emit();
+			break;
+		case SelectionClear:
+			lyxerr[Debug::GUI] << "Lost selection." << endl;
+			selectionLost.emit();
+			break; 
+	}
 }
 
 

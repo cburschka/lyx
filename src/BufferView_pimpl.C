@@ -157,6 +157,8 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 		.connect(slot(this, &BufferView::Pimpl::workAreaKeyPress));
 	workarea_.selectionRequested
 		.connect(slot(this, &BufferView::Pimpl::selectionRequested)); 
+	workarea_.selectionLost
+		.connect(slot(this, &BufferView::Pimpl::selectionLost));
 	
 	cursor_timeout.timeout.connect(slot(this,
 					    &BufferView::Pimpl::cursorToggle));
@@ -750,6 +752,15 @@ void BufferView::Pimpl::selectionRequested()
 	if (!sel.empty()) {
 		workarea_.putClipboard(sel);
 	}
+}
+
+ 
+void BufferView::Pimpl::selectionLost()
+{
+	hideCursor();
+	toggleSelection();
+	bv_->getLyXText()->clearSelection();
+	showCursor(); 
 }
 
  

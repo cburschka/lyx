@@ -457,4 +457,6 @@ int VSpace::inPixels(BufferView * bv) const
 	case LENGTH:
 		return len_.len().inPixels(default_width, default_height);
 	}
+	// we cannot go there, but there is a compiler warning...
+	return 0;
 }

@@ -1,3 +1,19 @@
+2002-02-07  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxfunc.C (dispatch): a few comments from Martin
+
+2002-02-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* WorkArea.h:
+	* WorkArea.C:
+	* BufferView_pimpl.h:
+	* BufferView_pimpl.C: clear our selection when X tells us we've lost
+	  the X selection.
+
+2002-02-07  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* vspace.C (inPixels): fix compiler warning
+
 2002-02-06  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyxfunc.C (getStatus): fix status message for disabled commands. 

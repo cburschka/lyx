@@ -80,6 +80,8 @@ struct BufferView::Pimpl : public SigC::Object {
 	///
 	void selectionRequested();
 	///
+	void selectionLost();
+	///
 	void enterView();
 	///
 	void leaveView();

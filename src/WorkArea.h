@@ -128,6 +128,8 @@ public:
 	SigC::Signal3<void, int, int, unsigned int> workAreaTripleClick;
 	/// emitted when an X client has requested our selection
 	SigC::Signal0<void> selectionRequested;
+	/// emitted when another X client has stolen our selection
+	SigC::Signal0<void> selectionLost;
  
 	/// handles SelectionRequest X Event, to fill the clipboard
 	void event_cb(XEvent * xev);
