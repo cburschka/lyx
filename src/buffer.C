@@ -1201,11 +1201,14 @@ bool Buffer::writeFile(string const & filename, bool flag)
 	string userName(getUserName()) ;
 
 	// write out a comment in the top of the file
+// We do not print this anymore, since it annoys cvs and is useless
+// anyway. It could even be seen as including private
+// information without telling the user :) -- JMarc 
+//  	fprintf(file,
+//  		"#This file was created by <%s> %s",
+//  		userName.c_str(),(char*)date());
 	fprintf(file,
-		"#This file was created by <%s> %s",
-		userName.c_str(),(char*)date());
-	fprintf(file,
-		"#LyX 1.0 (C) 1995-1999 Matthias Ettrich"
+		"#LyX 1.1 (C) 1995-1999 Matthias Ettrich"
 		" and the LyX Team\n");
 	
 	// at the very beginning the used lyx format
@@ -1946,26 +1949,37 @@ void Buffer::makeLaTeXFile(string const & filename,
 		// Itemize bullet settings need to be last in case the user
 		// defines their own bullets that use a package included
 		// in the user-defined preamble -- ARRae
+		// Actually it has to be done much later than that
+		// since some packages like frenchb make modifications
+		// at \begin{document} time -- JMarc 
+		string bullets_def;
 		for (int i = 0; i < 4; ++i) {
 			if (params.user_defined_bullets[i] != ITEMIZE_DEFAULTS[i]) {
-				preamble += "\\renewcommand\\labelitemi";
+				if (bullets_def.empty())
+					bullets_def="\\AtBeginDocument{\n";
+				bullets_def += "  \\renewcommand{\\labelitemi";
 				switch (i) {
-					// `i' is one less than the item to modify
+				// `i' is one less than the item to modify
 				case 0:
 					break;
 				case 1:
-					preamble += 'i';
+					bullets_def += 'i';
 					break;
 				case 2:
-					preamble += "ii";
+					bullets_def += "ii";
 					break;
 				case 3:
-					preamble += 'v';
+					bullets_def += 'v';
 					break;
 				}
-				preamble += "[0]{" + params.user_defined_bullets[i].getText() + "}\n";
+				bullets_def += "}{" + 
+				  params.user_defined_bullets[i].getText() 
+				  + "}\n";
 			}
 		}
+
+		if (!bullets_def.empty())
+		  preamble += bullets_def + "}\n\n";
 
 		for (int j = countChar(preamble, '\n'); j-- ;) {
 			texrow.newline();

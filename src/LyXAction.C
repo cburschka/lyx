@@ -112,6 +112,7 @@ kb_func_table const lyx_func_table[] = {
         { "citation-insert",			  LFUN_INSERT_CITATION },
 	{ "command-execute", 			  LFUN_EXEC_COMMAND },
 	{ "command-prefix",                       LFUN_PREFIX },
+	{ "command-sequence",                       LFUN_SEQUENCE },
 	{ "copy",                                 LFUN_COPY },
 	{ "cut",                                  LFUN_CUT },
 	{ "delete-backward",                      LFUN_BACKSPACE },

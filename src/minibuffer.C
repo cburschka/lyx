@@ -54,22 +54,8 @@ void MiniBuffer::ExecutingCB(FL_OBJECT * ob, long)
 	obj->Set(_("Executing:"), obj->cur_cmd);
 	obj->addHistory(obj->cur_cmd);
 	
-	// Split command into function and argument
-	string arg = obj->cur_cmd;
-	string function;
-	if (contains(arg, " ")) {
-		arg = split(arg, function, ' ');
-		function = strip(function);
-	} else {
-		function = arg;
-		arg.clear();
-	}
-	lyxerr.debug() << "Function: " << function
-		       << "\nArg     : " << arg << endl;
-
 	// Dispatch only returns requested data for a few commands (ale)
-	string res = obj->owner->getLyXFunc()->Dispatch(function.c_str(),
-						       arg.c_str());
+	string res = obj->owner->getLyXFunc()->Dispatch(obj->cur_cmd);
 	lyxerr.debug() << "Minibuffer Res: " << res << endl;
 	obj->shows_no_match = false;
 

@@ -31,9 +31,8 @@ public:
 	string Dispatch(int action, char const* arg = 0);
 			 
 	/// The same but uses the name of a lyx command.
-	string Dispatch(string const &cmd, string const &arg = string());
+	string Dispatch(string const &cmd);
 
-	
 	/// A keyboard event is processed to execute a lyx action. 
 	int  processKeyEvent(XEvent *ev);
      

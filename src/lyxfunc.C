@@ -311,10 +311,13 @@ int LyXFunc::processKeyEvent(XEvent *ev)
 } 
 
 
-string LyXFunc::Dispatch(string const &cmd, string const &arg)
+string LyXFunc::Dispatch(string const& s) 
 {
-	return Dispatch(lyxaction.LookupFunc(cmd.c_str()),
-			arg.c_str());
+  // Split command string into command and argument
+	string cmd, line = frontStrip(s);
+	string arg = strip(frontStrip(split(line, cmd, ' ')));
+
+	return Dispatch(lyxaction.LookupFunc(cmd.c_str()), arg.c_str());
 }
 
 
@@ -2361,6 +2364,17 @@ string LyXFunc::Dispatch(int ac,
 		owner->buffer()->text->sel_cursor = 
 			owner->buffer()->text->cursor;
 		moveCursorUpdate(false);
+	}
+	break;
+
+	case LFUN_SEQUENCE: 
+	{
+		// argument contains ';'-terminated commands
+		while (argument.find(';') != string::npos) {
+			string first;
+			argument = split(argument, first, ';');
+			Dispatch(first);
+		}
 	}
 	break;
 
