@@ -1,8 +1,8 @@
 
-#ifndef BOOST_MPL_BOOL_HPP_INCLUDED
-#define BOOST_MPL_BOOL_HPP_INCLUDED
+#ifndef BOOST_MPL_SIZE_T_HPP_INCLUDED
+#define BOOST_MPL_SIZE_T_HPP_INCLUDED
 
-// + file: boost/mpl/bool.hpp
+// + file: boost/mpl/size_t.hpp
 // + last modified: 08/mar/03
 
 // Copyright (c) 2000-03
@@ -18,19 +18,12 @@
 //
 // See http://www.boost.org/libs/mpl for documentation.
 
-#include "boost/mpl/bool_fwd.hpp"
-#include "boost/mpl/aux_/config/static_constant.hpp"
+#include "boost/mpl/size_t_fwd.hpp"
 
-namespace boost { namespace mpl {
+#define AUX_WRAPPER_VALUE_TYPE std::size_t
+#define AUX_WRAPPER_NAME size_t
+#define AUX_WRAPPER_PARAMS(N) std::size_t N
 
-template< bool C_ > struct bool_
-{
-    BOOST_STATIC_CONSTANT(bool, value = C_);
-    typedef bool_ type;
-    typedef bool value_type;
-    operator bool() const { return this->value; }
-};
+#include "boost/mpl/aux_/integral_wrapper.hpp"
 
-}} // namespace boost::mpl
-
-#endif // BOOST_MPL_BOOL_HPP_INCLUDED
+#endif // BOOST_MPL_SIZE_T_HPP_INCLUDED
