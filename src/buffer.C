@@ -1293,7 +1293,7 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 	ofs << "\\lyxformat " << setw(4) <<  LYX_FORMAT << "\n";
 #endif
 #else
-	ofs << "\\lyxformat" << LYX_FORMAT << "\n";
+	ofs << "\\lyxformat " << LYX_FORMAT << "\n";
 #endif
 	// now write out the buffer paramters.
 	params.writeFile(ofs);

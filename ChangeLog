@@ -1,5 +1,7 @@
 2001-01-11  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/buffer.C (writeFile): add missing ' ' after lyxformat.
+
 	* src/buffer.h: change format to int, and change name to file_format
 
 	* src/buffer.C: change LYX_FORMAT to int, and bump version number
