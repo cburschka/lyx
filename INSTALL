@@ -63,9 +63,6 @@ to compile LyX are gcc 2.8.1 and 2.95.x, the various versions of egcs
 and Digital C++ version 6.1. Please tell us your experience with other
 compilers. 
 
-If you compile LyX with gcc, you should not need to have libg++ installed 
-on most systems.  However, see the note in the section `Problems'.
-
 If you make modifications to files in src/ (for example by applying a 
 patch), you will need to have the GNU gettext package installed, due to 
 some dependencies in the makefiles. You can find the latest (alpha) 

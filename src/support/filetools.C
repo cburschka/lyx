@@ -307,7 +307,9 @@ string GetEnvPath(string const & name)
 
 bool PutEnv(string const & envstr)
 {
+#ifdef WITH_WARNINGS
 #warning Look at and fix this.
+#endif
         // f.ex. what about error checking?
         int retval = 0;
 #if HAVE_PUTENV
@@ -329,7 +331,9 @@ bool PutEnv(string const & envstr)
 bool PutEnvPath(string const & envstr)
 {
         string pathlist = envstr;
+#ifdef WITH_WARNINGS
 #warning Verify that this is correct.
+#endif
 #ifdef __EMX__
         pathlist = subst(pathlist, ':', ';');
         pathlist = subst(pathlist, '/', '\\');

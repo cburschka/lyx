@@ -70,7 +70,9 @@ string FontInfo::getFontname(int size)
 /// Build newly sized font string 
 string FontInfo::resize(string const & font, int size) const {
 	// Find the position of the size spec
+#ifdef WITH_WARNINGS
 #warning rewrite to use std::string constructs
+#endif
 	int cut = 0, before = 0, after = 0;
 	for (string::size_type i = 0; i < font.length(); ++i) {
 		if (font[i] == '-') {

@@ -1,3 +1,12 @@
+1999-10-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/support/syscall.C (Systemcalls::kill): 
+	  src/support/filetools.C (PutEnv, PutEnvPath): 
+	  src/lyx_cb.C (addNewlineAndDepth): 
+	  src/FontInfo.C (FontInfo::resize): condition some #warning
+	directives with WITH_WARNINGS.
+	
+
 1999-10-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/form1.C (create_form_Figure): added a couple fo "no-c-format"

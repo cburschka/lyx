@@ -4071,7 +4071,9 @@ void UpdateInsetUpdateList()
 	InsetUpdateList = 0;
 }
 
+#ifdef WITH_WARNINGS
 #warning UGLY!!
+#endif
 // I know we shouldn't put anything in here but this seems the fastest
 // way to do this (and the cleanest for now). This function just inserts
 // a newline in the string and the inserts 'depth'-spaces so that the
