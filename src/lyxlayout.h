@@ -190,7 +190,7 @@ public:
 	bool intitle;
 	/// Does this layout allow for an optional parameter?
 	int optionalargs;
-	
+
 private:
 	/// Name of the layout/paragraph environment
 	string name_;
