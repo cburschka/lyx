@@ -39,7 +39,6 @@
 #include "font.h"
 #include "math_arrayinset.h"
 #include "math_spaceinset.h"
-#include "math_deliminset.h"
 #include "support/lyxlib.h"
 #include "mathed/support.h"
 #include "undo_funcs.h"
@@ -78,6 +77,18 @@ void handleFont(BufferView * bv, MathTextCodes t)
 	mathcursor->handleFont(t);
 }
 
+void handleAccent(BufferView * bv, int code)
+{
+	bv->lockedInsetStoreUndo(Undo::EDIT);
+	mathcursor->handleAccent(code);
+}
+
+void handleDelim(BufferView * bv, int l, int r)
+{
+	bv->lockedInsetStoreUndo(Undo::EDIT);
+	mathcursor->handleDelim(l, r);
+}
+
 bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
 {
 	LyXText * lt = bv->getLyXText();
@@ -91,6 +102,7 @@ bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
 	new_inset->edit(bv, 0, 0, 0);
 	return true;
 }
+
 
 } // namespaces
 
@@ -621,16 +633,16 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 		// --- accented characters ------------------------------
 
-	case LFUN_UMLAUT:     mathcursor->setAccent(LM_ddot); break;
-	case LFUN_CIRCUMFLEX: mathcursor->setAccent(LM_hat); break;
-	case LFUN_GRAVE:      mathcursor->setAccent(LM_grave); break;
-	case LFUN_ACUTE:      mathcursor->setAccent(LM_acute); break;
-	case LFUN_TILDE:      mathcursor->setAccent(LM_tilde); break;
-	case LFUN_MACRON:     mathcursor->setAccent(LM_bar); break;
-	case LFUN_DOT:        mathcursor->setAccent(LM_dot); break;
-	case LFUN_CARON:      mathcursor->setAccent(LM_check); break;
-	case LFUN_BREVE:      mathcursor->setAccent(LM_breve); break;
-	case LFUN_VECTOR:     mathcursor->setAccent(LM_vec); break;
+	case LFUN_UMLAUT:     handleAccent(bv, LM_ddot); break;
+	case LFUN_CIRCUMFLEX: handleAccent(bv, LM_hat); break;
+	case LFUN_GRAVE:      handleAccent(bv, LM_grave); break;
+	case LFUN_ACUTE:      handleAccent(bv, LM_acute); break;
+	case LFUN_TILDE:      handleAccent(bv, LM_tilde); break;
+	case LFUN_MACRON:     handleAccent(bv, LM_bar); break;
+	case LFUN_DOT:        handleAccent(bv, LM_dot); break;
+	case LFUN_CARON:      handleAccent(bv, LM_check); break;
+	case LFUN_BREVE:      handleAccent(bv, LM_breve); break;
+	case LFUN_VECTOR:     handleAccent(bv, LM_vec); break;
 
 		// Greek mode
 	case LFUN_GREEK:
@@ -735,16 +747,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		} else if (vdelim.find(rt[0]) != string::npos)
 				irt = rt[0];
 
-		if (mathcursor->selection) {
-			MathDelimInset * p = new MathDelimInset(ilt, irt);
-			MathArray ar;
-		 	mathcursor->selArray(ar);
-			lyxerr << "selarray: " << ar << "\n";
-			p->cell(0) = ar; 
-			mathcursor->insert(p);
-		} else {
-			mathcursor->insert(new MathDelimInset(ilt, irt));
-		}
+		handleDelim(bv, ilt, irt);
 		updateLocal(bv);
 		break;
 	}
@@ -843,15 +846,10 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	default:
 		if ((action == -1 || action == LFUN_SELFINSERT) && !arg.empty()) {
 			unsigned char c = arg[0];
-			lyxerr << "char: '" << c << "'  int: " << int(c) << endl;
+			//lyxerr << "char: '" << c << "'  int: " << int(c) << endl;
 			//owner_->getIntl()->getTrans().TranslateAndInsert(c, lt);	
-			lyxerr << "trans: '" << c << "'  int: " << int(c) << endl;
+			//lyxerr << "trans: '" << c << "'  int: " << int(c) << endl;
 			bv->lockedInsetStoreUndo(Undo::INSERT);
-
-			if (c == ' ' && mathcursor->getAccent() == LM_hat) {
-				c = '^';
-				mathcursor->setAccent(0);
-			}
 
 			if (c == 0) {      // Dead key, do nothing
 				//lyxerr << "deadkey" << endl;

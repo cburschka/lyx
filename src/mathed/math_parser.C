@@ -227,9 +227,12 @@ unsigned char LexGetArg(unsigned char lf, bool accept_spaces = false)
 
 int yylex()
 {
-	static int init_done;
+	static bool init_done = false;
 	
-	if (!init_done) LexInitCodes();
+	if (!init_done) {
+		LexInitCodes();
+		init_done = true;
+	}
 	
 	while (yyis->good()) {
 		unsigned char c = getuchar(yyis);
@@ -327,68 +330,6 @@ int yylex()
 		}
 	}
 	return 0;
-}
-
-
-// Accent hacks only for 0.12. Stolen from Cursor.
-int accent = 0;
-int nestaccent[8];
-
-void setAccent(int ac)
-{
-	if (ac > 0 && accent < 8)
-		nestaccent[accent++] = ac;
-	else
-	  accent = 0;  // consumed!
-}
-
-
-MathInset * doAccent(unsigned char c, MathTextCodes t)
-{
-	MathInset * ac = 0;
-	
-	for (int i = accent - 1; i >= 0; --i) {
-		if (i == accent - 1)
-		  ac = new MathAccentInset(c, t, nestaccent[i]);
-		else 
-		  ac = new MathAccentInset(ac, nestaccent[i]);
-	}
-	accent = 0;  // consumed!
-	
-	return ac;
-}
-
-
-MathInset * doAccent(MathInset * p)
-{
-	MathInset * ac = 0;
-	
-	for (int i = accent - 1; i >= 0; --i) {
-		if (i == accent - 1)
-		  ac = new MathAccentInset(p, nestaccent[i]);
-		else 
-		  ac = new MathAccentInset(ac, nestaccent[i]);
-	}
-	accent = 0;  // consumed!
-	
-	return ac;
-}
-
-
-void do_insert(MathArray & dat, MathInset * m)
-{
-	if (accent) 
-		dat.push_back(doAccent(m));
-	else
-		dat.push_back(m);
-}
-
-void do_insert(MathArray & dat, unsigned char ch, MathTextCodes fcode)
-{
-	if (accent) 
-		dat.push_back(doAccent(ch, fcode));
-	else
-		dat.push_back(ch, fcode);
 }
 
 
@@ -548,8 +489,6 @@ void mathed_parse(MathArray & array, unsigned flags)
 	yyvarcode = LM_TC_VAR;
 	
 	int brace = 0;
-	int acc_brace = 0;
-	int acc_braces[8];
 
 	++plevel;
 	while (t) {
@@ -569,7 +508,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 		switch (t) {
 			
 		case LM_TK_ALPHA:
-			do_insert(array, yylval.i, yyvarcode);
+			array.push_back(yylval.i, yyvarcode);
 			break;
 
 		case LM_TK_ARGUMENT:
@@ -581,15 +520,11 @@ void mathed_parse(MathArray & array, unsigned flags)
 			break;
 
 		case LM_TK_STR:
-			do_insert(array, yylval.i, LM_TC_CONST);
+			array.push_back(yylval.i, LM_TC_CONST);
 			break;
 
 		case LM_TK_OPEN:
 			++brace;
-			if (accent && tprev == LM_TK_ACCENT) {
-				acc_braces[acc_brace++] = brace;
-				break;
-			}
 			if (flags & FLAG_BRACE_OPT) {
 				flags &= ~FLAG_BRACE_OPT;
 				flags |= FLAG_BRACE;
@@ -606,10 +541,6 @@ void mathed_parse(MathArray & array, unsigned flags)
 			if (brace < 0) {
 				mathPrintError("Unmatching braces");
 				panic = true;
-				break;
-			}
-			if (acc_brace && brace == acc_braces[acc_brace - 1] - 1) {
-				--acc_brace;
 				break;
 			}
 			if (flags & FLAG_BRACE_FONT) {
@@ -704,13 +635,13 @@ void mathed_parse(MathArray & array, unsigned flags)
 		case LM_TK_SYM:
 			if (yylval.l->id < 256) {
 				MathTextCodes tc = MathIsBOPS(yylval.l->id) ? LM_TC_BOPS: LM_TC_SYMB;
-				do_insert(array, yylval.l->id, tc);
+				array.push_back(yylval.l->id, tc);
 			} else 
-				do_insert(array, new MathFuncInset(yylval.l->name));
+				array.push_back(new MathFuncInset(yylval.l->name));
 			break;
 
 		case LM_TK_BOP:
-			do_insert(array, yylval.i, LM_TC_BOP);
+			array.push_back(yylval.i, LM_TC_BOP);
 			break;
 
 		case LM_TK_SPACE:
@@ -801,15 +732,19 @@ void mathed_parse(MathArray & array, unsigned flags)
 
 		case LM_TK_WIDE:
 		{  
-			MathDecorationInset * sq = new MathDecorationInset(yylval.l->id);
-			mathed_parse(sq->cell(0), FLAG_BRACE | FLAG_BRACE_LAST);
-			array.push_back(sq);
+			MathDecorationInset * p = new MathDecorationInset(yylval.l->id);
+			mathed_parse(p->cell(0), FLAG_BRACE | FLAG_BRACE_LAST);
+			array.push_back(p);
 			break;
 		}
 		
 		case LM_TK_ACCENT:
-			setAccent(yylval.l->id);
+		{
+			MathAccentInset * p = new MathAccentInset(yylval.l->id);
+			mathed_parse(p->cell(0), FLAG_BRACE | FLAG_BRACE_LAST);
+			array.push_back(p);
 			break;
+		}
 			
 		case LM_TK_NONUM:
 			curr_num = false;
@@ -817,9 +752,9 @@ void mathed_parse(MathArray & array, unsigned flags)
 		
 		case LM_TK_PMOD:
 		case LM_TK_FUNC:
-			if (accent) 
-				array.push_back(t, LM_TC_CONST);
-			else 
+			//if (accent) 
+			//	array.push_back(t, LM_TC_CONST);
+			//else 
 				array.push_back(new MathFuncInset(yylval.l->name));
 			break;
 		
@@ -832,10 +767,10 @@ void mathed_parse(MathArray & array, unsigned flags)
 				MathMacro * m = MathMacroTable::cloneTemplate(yytext);
 				for (int i = 0; i < m->nargs(); ++i) 
 					mathed_parse(m->cell(i), FLAG_BRACE_OPT | FLAG_BRACE_LAST);
-				do_insert(array, m);
+				array.push_back(m);
 				m->Metrics(LM_ST_TEXT);
 			} else
-				do_insert(array, new MathFuncInset(yytext, LM_OT_UNDEF));
+				array.push_back(new MathFuncInset(yytext, LM_OT_UNDEF));
 			break;
 		
 		case LM_TK_END:
@@ -862,7 +797,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 				mm->halign(halign);
 
 				mathed_parse_lines(mm, halign.size(), latex_mathenv[i].numbered, false);
-				do_insert(array, mm);
+				array.push_back(mm);
 				//lyxerr << "read matrix " << *mm << "\n";	
 				break;
 			} else 
@@ -871,7 +806,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 		}
 	
 		case LM_TK_MACRO:
-			do_insert(array, MathMacroTable::cloneTemplate(yylval.l->name));
+			array.push_back(MathMacroTable::cloneTemplate(yylval.l->name));
 			break;
 		
 		case LM_TK_LABEL:
@@ -944,5 +879,3 @@ MathInset * mathed_parse(LyXLex & lex)
 
 	return p;
 }
-
-

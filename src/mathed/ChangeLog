@@ -1,4 +1,12 @@
-2001-07-04 André Pönitz  <poenitz@htwm.de>
+
+2001-07-10 André Pönitz  <poenitz@htwm.de>
+	
+	* math_accentinset.[hC]: rewrite
+
+	* math_parser.C:
+		math_cursor.C: subsequent changes
+
+2001-07-10 André Pönitz  <poenitz@htwm.de>
 
 	* math_grid.C: <Delete> in the first cell of a completely empty row
 	  deletes that row, <C-Return> places the cursor in the first of the

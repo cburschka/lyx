@@ -80,10 +80,6 @@ public:
 	void SetSize(MathStyles);
 	///
 	bool toggleLimits();
-	/// Set accent: if argument = 0 it's considered consumed 
-	void setAccent(int ac = 0);
-	/// Returns last accent
-	int getAccent() const;
 	///
 	// Macro mode methods
 	void MacroModeOpen();
@@ -117,6 +113,10 @@ public:
 	void setLastCode(MathTextCodes t);
 	///
 	void handleFont(MathTextCodes t);
+	///
+	void handleAccent(int code);
+	///
+	void handleDelim(int l, int r);
 	/// Splits cells and shifts right part to the next cell
 	void splitCell();
 	/// Splits line and insert new row of cell 
@@ -137,8 +137,6 @@ public:
 	MathTextCodes nextCode() const;
 	///
 	MathTextCodes prevCode() const;
-	///
-	void selArray(MathArray &) const;
 	///
 	char valign() const;
 	///
@@ -165,14 +163,6 @@ public:
 	MathInset	* par_;
 	///
 	InsetFormulaBase * const formula_;
-	///
-	void doAccent(char c, MathTextCodes t);
-	///
-	void doAccent(MathInset * p);
-	///
-	int accent;
-	///
-	int nestaccent[8];
 	///
 	MathTextCodes lastcode;
 

@@ -42,6 +42,7 @@
 #include "math_fracinset.h"
 #include "math_decorationinset.h"
 #include "math_dotsinset.h"
+#include "math_deliminset.h"
 #include "math_accentinset.h"
 #include "math_macrotemplate.h"
 #include "math_sqrtinset.h"
@@ -79,7 +80,6 @@ bool IsMacro(short tok, int id)
 MathCursor::MathCursor(InsetFormulaBase * formula)
 	: formula_(formula)
 {
-	accent     = 0;
 	lastcode   = LM_TC_MIN;
 	macro_mode = false;
 	first();
@@ -345,10 +345,9 @@ void MathCursor::End()
 }
 
 
-
 void MathCursor::insert(char c, MathTextCodes t)
 {
-	lyxerr << "inserting '" << c << "'\n";
+	//lyxerr << "inserting '" << c << "'\n";
 	if (selection)
 		SelDel();
 
@@ -366,15 +365,10 @@ void MathCursor::insert(char c, MathTextCodes t)
 		}
 	}
 
-	if (accent)
-		doAccent(c, t);
-	else {
-		array().insert(cursor_, c, t);
-		array().next(cursor_);
-	}
+	array().insert(cursor_, c, t);
+	array().next(cursor_);
 
 	lastcode = t;
-	return;
 }
 
 
@@ -389,15 +383,8 @@ void MathCursor::insert(MathInset * p)
 			SelDel();
 	}
 
-	if (accent && !p->nargs())
-		doAccent(p);
-	else {
-		array().insert(cursor_, p);
-		array().next(cursor_);
-	}
-
-	//if (p->nargs()) 
-	//	push(p, true);
+	array().insert(cursor_, p);
+	array().next(cursor_);
 }
 
 
@@ -670,7 +657,7 @@ in_word_set(s) << " \n";
 				break;
 
 			case LM_TK_ACCENT:
-				setAccent(l->id);
+				p = new MathAccentInset(l->id);
 				break;
 
 			case LM_TK_MACRO:
@@ -727,9 +714,6 @@ void MathCursor::MacroModeClose()
 				imacro->SetName(l->name);
 		} else {
 			Left();
-			if (nextInset()->isAccentInset()) 
-				setAccent(
-					static_cast<MathAccentInset*>(nextInset())->getAccentCode());
 			array().erase(cursor_);
 			if (l || MathMacroTable::hasTemplate(imacro->name())) 
 				Interpret(imacro->name());
@@ -752,16 +736,6 @@ void MathCursor::SelCopy()
 		SelClear();
 	}
 }
-
-void MathCursor::selArray(MathArray & ar) const
-{
-	int const p1 = min(cursor_, anchor_);
-	int const p2 = max(cursor_, anchor_);
-	ar = array();
-	ar.erase(p2, ar.size());
-	ar.erase(0, p1);
-}
-
 
 void MathCursor::SelCut()
 {
@@ -892,57 +866,6 @@ void MathCursor::SelGetArea(int * xpoint, int * ypoint, int & n)
 }
 
 
-void MathCursor::setAccent(int ac)
-{
-	if (ac > 0 && accent < 8)
-		nestaccent[accent++] = ac;
-	else
-		accent = 0;  // consumed!
-}
-
-
-int MathCursor::getAccent() const
-{
-	return accent > 0 ? nestaccent[accent - 1] : 0;
-}
-
-
-void MathCursor::doAccent(char c, MathTextCodes t)
-{
-	MathInset * ac = 0;
-
-	for (int i = accent - 1; i >= 0; --i) {
-		if (i == accent - 1)
-			ac = new MathAccentInset(c, t, nestaccent[i]);
-		else
-			ac = new MathAccentInset(ac, nestaccent[i]);
-	}
-	
-	if (ac)
-		insert(ac);
-
-	accent = 0;  // consumed!
-}
-
-
-void MathCursor::doAccent(MathInset * p)
-{
-	MathInset * ac = 0;
-
-	for (int i = accent - 1; i >= 0; --i) {
-		if (i == accent - 1)
-			ac = new MathAccentInset(p, nestaccent[i]);
-		else
-			ac = new MathAccentInset(ac, nestaccent[i]);
-	}
-
-	if (ac)
-		insert(ac);
-
-	accent = 0;  // consumed!
-}
-
-
 void MathCursor::handleFont(MathTextCodes t)
 {
 	if (selection)	{
@@ -960,6 +883,27 @@ void MathCursor::handleFont(MathTextCodes t)
 		else
 			lastcode = t;
 	}
+}
+
+
+void MathCursor::handleAccent(int code)
+{
+	MathAccentInset * p = new MathAccentInset(code);
+	if (selection) {
+		SelCut();
+		p->cell(0) = selarray;
+	}
+	insert(p);
+}
+
+void MathCursor::handleDelim(int l, int r)
+{
+	MathDelimInset * p = new MathDelimInset(l, r);
+	if (selection) {
+		SelCut();
+		p->cell(0) = selarray;
+	}
+	insert(p);
 }
 
 

@@ -94,7 +94,9 @@ void MathMacroTable::builtinMacros()
 	// This macro doesn't have arguments
 	{
 		MathMacroTemplate * t = new MathMacroTemplate("notin", 0);
-		t->push_back(new MathAccentInset(LM_in, LM_TC_BOPS, LM_not));
+		MathAccentInset * p = new MathAccentInset(LM_not);
+		p->cell(0).push_back(LM_in, LM_TC_BOPS);
+		t->push_back(p);
 		insertTemplate(t);
 	}
 
@@ -111,7 +113,9 @@ void MathMacroTable::builtinMacros()
 
 	{
 		MathMacroTemplate * t = new MathMacroTemplate("emptyset", 0);
-		t->push_back(new MathAccentInset('0', LM_TC_RM, LM_not));
+		MathAccentInset * p = new MathAccentInset(LM_not);
+		p->cell(0).push_back('0', LM_TC_VAR);
+		t->push_back(p);
 		insertTemplate(t);
 	}
 

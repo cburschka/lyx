@@ -10,13 +10,9 @@
 class MathAccentInset : public MathInset {
 public:
 	///
-	MathAccentInset(byte, MathTextCodes, int);
+	explicit MathAccentInset(int);
 	///
-	MathAccentInset(MathInset *, int);
-	///
-	~MathAccentInset();
-	///
-	MathInset *  clone() const;
+	MathInset * clone() const;
 	///
 	void draw(Painter &, int, int);
 	///
@@ -29,17 +25,13 @@ public:
 	int getAccentCode() const;
 	///
 	bool isAccentInset() const { return true; }
-protected:
-	///
-	byte c;
-	///
-	MathTextCodes fn;
+private:
 	///
 	int code;
 	///
-	MathInset * inset;
+	int dh;
 	///
-	int dh, dy;
+	int dy;
 };
 
 #endif
