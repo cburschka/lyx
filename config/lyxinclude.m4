@@ -31,6 +31,25 @@ if test $lyx_devel_version = yes ; then
   AC_DEFINE(DEVEL_VERSION, 1, Define if you are building a development version of LyX)
 fi])
 
+ 
+dnl Define the option to set a LyX version on installed executables and directories 
+dnl
+dnl
+AC_DEFUN(LYX_VERSION_SUFFIX,[ 
+AC_MSG_CHECKING([for install target ... ])
+AC_ARG_WITH(version-suffix,
+  [  --with-version-suffix[=<version>]  install lyx files as lyx<version>],
+  [if test "x$withval" = "xyes";
+   then
+     withval="-$VERSION"
+     ac_configure_args=`echo $ac_configure_args | sed "s,--with-version-suffix,--with-version-suffix=$withval,"`
+   fi
+   lyxname="lyx$withval"
+   program_suffix=$withval],
+  [lyxname=lyx])
+AC_MSG_RESULT([$lyxname])
+])
+
 dnl Usage: LYX_ERROR(message)  Displays the warning "message" and sets the
 dnl flag lyx_error to yes.
 AC_DEFUN(LYX_ERROR,[

@@ -6,10 +6,10 @@ AC_CONFIG_AUX_DIR(../../config)
 dnl PACKAGE=reLyX
 dnl Do this to install in $datadir/lyx/reLyX instead of $datadir/reLyX/reLyX
 
-AC_ARG_WITH(lyx-suffix,
-  [  --with-lyx-suffix       install lyx files as lyx-<suffix>],
-  [lyxname="lyx-$withval"
-   program_suffix=-$withval],
+AC_ARG_WITH(version-suffix,
+  [  --with-version-suffix[=<version>]  install lyx files as lyx<version>],
+  [lyxname="lyx$withval"
+   program_suffix=$withval],
   [lyxname=lyx])
 
 dnl must make a macro that gets the reLyX version

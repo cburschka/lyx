@@ -1,8 +1,8 @@
 #LyX 1.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 218
 \textclass article
-\language french
-\inputencoding default
+\language frenchb
+\inputencoding latin1
 \fontscheme default
 \graphics default
 \paperfontsize default
@@ -25,6 +25,13 @@
 \layout Title
 
 CECI EST LE TITRE DU DOCUMENT
+\begin_inset Info
+Informations de révision :
+Traduction : Mise à jour, Date: 2001/02/16
+Original : Révision: 1.4, Date: 2000/11/03
+\end_inset 
+
+
 \layout Author
 
 par Fée LyX
@@ -62,7 +69,7 @@ LyX utilise LaTeX, un système de préparation de documents conçu par Leslie
 
 \end_inset 
 
-):
+) :
 \layout Quote
 
 Le but de la typographie est d'aider le lecteur à comprendre l'idée de l'auteur.
@@ -109,7 +116,7 @@ What you see is what you mean
  de LaTeX.
  C'est une bonne chose.
  De plus, le format de fichier est indépendant du système.
- Et pour finir, c'est un logiciel LIBRE! 
+ Et pour finir, c'est un logiciel LIBRE ! 
 \layout Section
 
 Fonctionnalités de LyX
@@ -119,7 +126,7 @@ LyX possède un bon nombre de fonctionnalités qui facilitent l'écriture.
 \begin_float footnote 
 \layout Standard
 
-Après tout, quelle autre raison pourrait vous le faire utiliser?
+Après tout, quelle autre raison pourrait vous le faire utiliser ?
 \end_float 
  Je 
 \shape italic 
@@ -165,7 +172,7 @@ J'ai écrit un programme ces derniers jours.
 \begin_inset Quotes eld
 \end_inset 
 
-JE SUIS SUPER!
+JE SUIS SUPER !
 \begin_inset Quotes erd
 \end_inset 
 
@@ -208,7 +215,7 @@ alors
  2).
 \layout Standard
 
-Une autre favorite, la base du calcul différentiel: 
+Une autre favorite, la base du calcul différentiel : 
 \layout Standard
 
 
@@ -222,7 +229,7 @@ Une autre favorite, la base du calcul différentiel:
 Notes
 \layout Standard
 
-Quelques notes à propos de la LyXification de ce fichier:
+Quelques notes à propos de la LyXification de ce fichier :
 \layout Itemize
 
 J'ai pu éliminer les lignes de tirets.
@@ -271,8 +278,8 @@ Bibliography
 Lamport, Leslie.
  
 \emph on 
-LaTeX: A Document Preparation System.
+LaTeX : A Document Preparation System.
 
 \emph default 
- Addison-Wesley, Reading, Massachusetts, second edition, 1994.
+ Addison-Wesley, Reading, Massachusetts, deuxième édition, 1994.
 \the_end

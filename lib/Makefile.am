@@ -54,9 +54,13 @@ install-exec-local: libinstalldirs
 
 uninstall-local:
 	@$(NORMAL_UNINSTALL)
-	files=`cd ${srcdir} ; echo $(LIBINSTFILES)` ; \
+	files=`cd ${srcdir} ; echo $(LIBINSTFILES) $(LYXSCRIPTS)` ; \
 	for i in $${files} ; do \
 	   rm -f $(pkgdatadir)/$$i ; \
+	done ; \
+	dirs=`cd ${srcdir} ; echo $(LYXLIBDIRS)` ; \
+	for i in $${dirs} ; do \
+	   rm -rf $(pkgdatadir)/$$i ; \
 	done
 
 dist-hook:

@@ -1,8 +1,8 @@
 #LyX 1.1 created this file. For more info see http://www.lyx.org/
 \lyxformat 218
 \textclass article
-\language french
-\inputencoding default
+\language frenchb
+\inputencoding latin1
 \fontscheme default
 \graphics default
 \paperfontsize default
@@ -24,21 +24,28 @@
 
 \layout Title
 
-Bienvenue dans l'univers de LyX!
+Bienvenue dans l'univers de LyX !
+\begin_inset Info
+Informations de révision :
+Traduction : Mise à jour, Date: 2001/02/16
+Original : Révision: 1.5, Date: 2000/12/28
+\end_inset 
+
+
 \layout Section*
 
 Le Top N des choses à connaître pour utiliser LyX
 \layout Enumerate
 
 LyX est fourni avec une excellente documentation -- servez-vous-en s'il
- vous plaît! Vous pouvez commencer par 
+ vous plaît ! Vous pouvez commencer par 
 \family sans 
 \bar under 
 A
 \bar default 
-ide
+ide\SpecialChar \menuseparator
+
 \bar under 
-\SpecialChar \menuseparator
 I
 \bar default 
 ntroduction
@@ -73,12 +80,12 @@ LyX est ce qu'on appelle un
 \begin_float footnote 
 \layout Standard
 
-Avons-nous déjà mentionné que vous devez lire la documentation? 
+Avons-nous déjà mentionné que vous devez lire la documentation ? 
 \end_float 
 .
 \layout Enumerate
 
-Les résultats de mise en page de LyX sont très esthétiques! Sélectionnez
+Les résultats de mise en page de LyX sont très esthétiques ! Sélectionnez
  
 \family sans 
 \bar under 
@@ -94,8 +101,8 @@ VI
  pour vous en convaincre.
 \layout Enumerate
 
-Oui! LyX est capable d'imiter (presque) toutes les fonctionnalités de LaTeX.
- Et de nouveau Oui! LyX sait lire les fichiers LaTeX.
+Oui ! LyX est capable d'imiter (presque) toutes les fonctionnalités de LaTeX.
+ Et de nouveau Oui ! LyX sait lire les fichiers LaTeX.
  Les utilisateurs de LaTeX peuvent survoler le 
 \emph on 
 Manuel\SpecialChar ~
@@ -110,7 +117,7 @@ d'Apprentissage
 \end_inset 
 
 .
- (Pour tous les autres: ne vous inquiétez pas, vous n'avez pas besoin de
+ (Pour tous les autres : ne vous inquiétez pas, vous n'avez pas besoin de
  connaître LaTeX pour vous servir de LyX).
 \layout Enumerate
 
@@ -135,9 +142,10 @@ pour les détails.
 \layout Enumerate
 
 Le site web de LyX est 
-\family typewriter 
-www.lyx.org
-\family default 
+\begin_inset LatexCommand \url{http://www.lyx.org/}
+
+\end_inset 
+
 .
  Vous pouvez y piocher des informations, souscrire à l'une ou l'autre des
  listes de diffusion, faire le tour de LyX (par l'image), et plus encore.
