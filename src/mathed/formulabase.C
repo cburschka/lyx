@@ -269,14 +269,21 @@ void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
 
 
 bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
-					  int /*x*/, int /*y*/, int /*button*/)
+					  int /*x*/, int /*y*/, int button)
 {
 	//lyxerr << "insetButtonRelease: " << x << " " << y << "\n";
+
 	if (!mathcursor)
 		return false;
 	hideInsetCursor(bv);
 	showInsetCursor(bv);
 	bv->updateInset(this, false);
+
+	if (button == 3) {
+		// launch math panel for right mouse button
+		bv->owner()->getDialogs()->showMathPanel();
+		return true;
+	}
 	return false;
 }
 
