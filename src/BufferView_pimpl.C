@@ -3302,7 +3302,7 @@ void BufferView::Pimpl::smartQuote()
 	
 	if (style.pass_thru ||
 		(!insertInset(new InsetQuotes(c, bv_->buffer()->params))))
-		Dispatch(LFUN_SELFINSERT, "\"");
+		bv_->owner()->getLyXFunc()->dispatch(LFUN_SELFINSERT, "\"");
 }
 
 

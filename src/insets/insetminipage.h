@@ -17,7 +17,7 @@
 #endif
 
 #include "insetcollapsable.h"
-#include "vspace.h"
+#include "lyxlength.h"
 #include <sigc++/signal_system.h>
 
 /** The minipage inset
@@ -71,13 +71,13 @@ public:
 	///
 	void innerPos(InnerPosition);
 	///
-	string const & pageHeight() const;
+	LyXLength const & pageHeight() const;
 	///
-	void pageHeight(string const &);
+	void pageHeight(LyXLength const &);
 	///
-	string const & pageWidth() const;
+	LyXLength const & pageWidth() const;
 	///
-	void pageWidth(string const &);
+	void pageWidth(LyXLength const &);
 	///
 	SigC::Signal0<void> hideDialog;
 	///
@@ -93,9 +93,9 @@ private:
 	///
 	InnerPosition inner_pos_;
 	///
-	string height_;
+	LyXLength height_;
 	///
-	string width_;
+	LyXLength width_;
 };
 
 #endif

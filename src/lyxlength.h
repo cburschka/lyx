@@ -18,6 +18,8 @@
 
 #include "LString.h"
 
+class BufferView;
+
 //
 ///  LyXLength Class
 //
@@ -83,6 +85,8 @@ public:
 	string const asString() const;
 	///
 	string const asLatexString() const;
+	///
+	int inPixels(BufferView const * bv) const;
 
 	/** If "data" is valid, the length represented by it is
 	  stored into "result", if that is not 0. */

@@ -60,8 +60,8 @@ void FormMinipage::build()
 void FormMinipage::apply()
 {
 	controller().params().pageWidth =
-		getLengthFromWidgets(dialog_->input_width,
-			dialog_->choice_width_units);
+		LyXLength(getLengthFromWidgets(dialog_->input_width,
+			dialog_->choice_width_units));
 
 	if (fl_get_button(dialog_->radio_top))
 		controller().params().pos = InsetMinipage::top;

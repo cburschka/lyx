@@ -1,3 +1,10 @@
+2002-01-17  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insettabular.C (getMaxWidthOfCell): use LyXLength::inPixels
+
+	* insetminipage.[Ch]: change width_ and height_ to be LyXLength
+	instead of string
+
 2002-01-17  Juergen Vigna  <jug@sad.it>
 
 	* insettabular.C (lockInsetInInset): same change as in insettext.

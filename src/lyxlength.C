@@ -16,6 +16,9 @@
 
 #include "lyxlength.h"
 #include "lengthcommon.h"
+#include "lyxrc.h"
+#include "BufferView.h"
+#include "lyxtext.h"
 
 #include "Lsstream.h"
 
@@ -105,6 +108,98 @@ void LyXLength::unit(LyXLength::UNIT u)
 bool LyXLength::zero() const 
 {
 	return val_ == 0.0;
+}
+
+
+int LyXLength::inPixels(BufferView const * bv) const
+{
+	// Height of a normal line in pixels (zoom factor considered)
+	int height = bv->text->defaultHeight(); // [pixels]
+	int default_width  = bv->workWidth();
+
+	// Zoom factor specified by user in percent
+	double const zoom = lyxrc.zoom / 100.0; // [percent]
+
+	// DPI setting for monitor: pixels/inch
+	double const dpi = lyxrc.dpi; // screen resolution [pixels/inch]
+
+	// Pixel values are scaled so that the ratio
+	// between lengths and font sizes on the screen
+	// is the same as on paper.
+
+	// we don't care about sign of value, we
+	// display negative space with text too
+	double result = 0.0;
+	int val_sign = val_ < 0.0 ? -1 : 1;
+		
+	switch (unit_) {
+	case LyXLength::SP:
+		// Scaled point: sp = 1/65536 pt
+		result = zoom * dpi * val_
+			/ (72.27 * 65536); // 4736286.7
+		break;
+	case LyXLength::PT:
+		// Point: 1 pt = 1/72.27 inch
+		result = zoom * dpi * val_
+			/ 72.27; // 72.27
+		break;
+	case LyXLength::BP:
+		// Big point: 1 bp = 1/72 inch
+		result = zoom * dpi * val_
+			/ 72; // 72
+		break;
+	case LyXLength::DD:
+		// Didot: 1157dd = 1238 pt?
+		result = zoom * dpi * val_
+			/ (72.27 / (0.376 * 2.845)); // 67.559735
+		break;
+	case LyXLength::MM:
+		// Millimeter: 1 mm = 1/25.4 inch
+		result = zoom * dpi * val_
+			/ 25.4; // 25.4
+		break;
+	case LyXLength::PC:
+		// Pica: 1 pc = 12 pt
+		result = zoom * dpi * val_
+			/ (72.27 / 12); // 6.0225
+		break;
+	case LyXLength::CC:
+		// Cicero: 1 cc = 12 dd
+		result = zoom * dpi * val_
+			/ (72.27 / (12 * 0.376 * 2.845)); // 5.6299779
+		break;
+	case LyXLength::CM:
+		// Centimeter: 1 cm = 1/2.54 inch
+		result = zoom * dpi * val_
+			/ 2.54; // 2.54
+		break;
+	case LyXLength::IN:
+		// Inch
+		result = zoom * dpi * val_;
+		break;
+	case LyXLength::EX:
+		// Ex: The height of an "x"
+		result = zoom * val_ * height / 2; // what to / width?
+		break;
+	case LyXLength::EM: // what to / width?
+		// Em: The width of an "m"
+		result = zoom * val_ * height / 2; // Why 2?
+		break;
+	case LyXLength::MU: // This is probably only allowed in
+		// math mode
+		result = zoom * val_ * height;
+		break;
+	case LyXLength::PW: // Always % of workarea
+	case LyXLength::PE:
+	case LyXLength::PP:
+	case LyXLength::PL:
+		result = val_ * default_width / 100;
+		break;
+	case LyXLength::UNIT_NONE:
+		result = 0;  // this cannot happen
+		break;
+	}
+	return static_cast<int>(result * val_sign + 0.5);
 }
 
 

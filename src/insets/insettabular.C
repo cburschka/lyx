@@ -2115,10 +2115,7 @@ int InsetTabular::getMaxWidthOfCell(BufferView * bv, int cell) const
 	
 	if (len.zero())
 		return -1;
-#ifdef WITH_WARNINGS
-#warning Remove use of VSpace as soon as LyXLength::inPixels exists (JMarc)
-#endif
-	return VSpace(len).inPixels(bv);
+	return len.inPixels(bv);
 }
 
 

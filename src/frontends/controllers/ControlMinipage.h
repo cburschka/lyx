@@ -34,7 +34,7 @@ struct MinipageParams {
 	///
 	MinipageParams(InsetMinipage const &);
 	///
-	string pageWidth;
+	LyXLength pageWidth;
 	///
 	InsetMinipage::Position pos;
 };

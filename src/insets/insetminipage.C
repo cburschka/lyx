@@ -61,7 +61,7 @@ using std::endl;
 
 InsetMinipage::InsetMinipage()
 	: InsetCollapsable(), pos_(center),
-	  inner_pos_(inner_center)
+	  inner_pos_(inner_center), width_(100, LyXLength::PW)
 {
 	setLabel(_("minipage"));
 	LyXFont font(LyXFont::ALL_SANE);
@@ -79,7 +79,6 @@ InsetMinipage::InsetMinipage()
 	setBackgroundColor(LColor::green);
 	inset.setFrameColor(0, LColor::blue);
 	setInsetName("Minipage");
-	width_ = "100%"; // set default to 100% of column_width
 }
 
 
@@ -107,8 +106,8 @@ void InsetMinipage::write(Buffer const * buf, ostream & os) const
 	os << getInsetName() << "\n"
 	   << "position " << pos_ << "\n"
 	   << "inner_position " << inner_pos_ << "\n"
-	   << "height \"" << height_ << "\"\n"
-	   << "width \"" << width_ << "\"\n";
+	   << "height \"" << height_.asString() << "\"\n"
+	   << "width \"" << width_.asString() << "\"\n";
 	InsetCollapsable::write(buf, os);
 }
 
@@ -146,7 +145,7 @@ void InsetMinipage::read(Buffer const * buf, LyXLex & lex)
 		string const token = lex.getString();
 		if (token == "height") {
 			lex.next();
-			height_ = lex.getString();
+			height_ = LyXLength(lex.getString());
 		} else {
 			lyxerr << "InsetMinipage::Read: Missing 'height'-tag!"
 				   << endl;
@@ -159,7 +158,7 @@ void InsetMinipage::read(Buffer const * buf, LyXLex & lex)
 		string const token = lex.getString();
 		if (token == "width") {
 			lex.next();
-			width_ = lex.getString();
+			width_ = LyXLength(lex.getString());
 		} else {
 			lyxerr << "InsetMinipage::Read: Missing 'width'-tag!"
 				   << endl;
@@ -241,7 +240,7 @@ int InsetMinipage::latex(Buffer const * buf,
 		break;
 	}
 	os << "\\begin{minipage}[" << s_pos << "]{"
-	   << LyXLength(width_).asLatexString() << "}%\n";
+	   << width_.asLatexString() << "}%\n";
 	
 	int i = inset.latex(buf, os, fragile, fp);
 
@@ -286,13 +285,13 @@ void InsetMinipage::innerPos(InsetMinipage::InnerPosition ip)
 }
 
 
-string const & InsetMinipage::pageHeight() const
+LyXLength const & InsetMinipage::pageHeight() const
 {
 	return height_;
 }
 
 
-void InsetMinipage::pageHeight(string const & ll)
+void InsetMinipage::pageHeight(LyXLength const & ll)
 {
 	if (height_ != ll) {
 		height_ = ll;
@@ -301,13 +300,13 @@ void InsetMinipage::pageHeight(string const & ll)
 }
 
 
-string const & InsetMinipage::pageWidth() const
+LyXLength const & InsetMinipage::pageWidth() const
 {
 	return width_;
 }
 
 
-void InsetMinipage::pageWidth(string const & ll)
+void InsetMinipage::pageWidth(LyXLength const & ll)
 {
 	if (ll != width_) {
 		width_ = ll;
@@ -332,17 +331,16 @@ int InsetMinipage::getMaxWidth(BufferView * bv, UpdatableInset const * inset)
 	{
 		return -1;
 	}
-	if (!width_.empty()) {
-		LyXLength len(width_);
-		switch(len.unit()) {
+	if (!width_.zero()) {
+		switch(width_.unit()) {
 		case LyXLength::PW: // Always % of workarea
 		case LyXLength::PE:
 		case LyXLength::PP:
 		case LyXLength::PL:
-			return (InsetCollapsable::getMaxWidth(bv, inset) * (int)len.value()) / 100;
+			return (InsetCollapsable::getMaxWidth(bv, inset) * (int)width_.value()) / 100;
 		default: 
 		{
-			int ww1 = VSpace(width_).inPixels(bv);
+			int ww1 = width_.inPixels(bv);
 			int ww2 = InsetCollapsable::getMaxWidth(bv, inset);
 			if (ww2 > 0 && ww2 < ww1) {
 				return ww2;
