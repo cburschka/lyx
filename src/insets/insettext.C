@@ -1758,25 +1758,6 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 }
 
 
-int InsetText::getMaxWidth(BufferView * bv, UpdatableInset const * inset) const
-{
-#if 0
-	int w = UpdatableInset::getMaxWidth(bv, inset);
-	if (w < 0) {
-		return -1;
-	}
-	if (owner()) {
-		w = w - top_x + owner()->x();
-		return w;
-	}
-	w -= (2 * TEXT_TO_INSET_OFFSET);
-	return w - top_x;
-#else
-	return UpdatableInset::getMaxWidth(bv, inset);
-#endif
-}
-
-
 void InsetText::setParagraphData(ParagraphList const & plist)
 {
 	// we have to unlock any locked inset otherwise we're in troubles
@@ -1961,10 +1942,6 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 
 	Assert(bv);
 	setViewCache(bv);
-
-	// one endless line, resize normally not necessary
-	if (!force && getMaxWidth(bv, this) < 0)
-		return;
 
 	saveLyXTextState();
 

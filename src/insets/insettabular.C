@@ -2073,39 +2073,6 @@ bool InsetTabular::insetHit(BufferView *, int x, int) const
 }
 
 
-// This returns paperWidth() if the cell-width is unlimited or the width
-// in pixels if we have a pwidth for this cell.
-int InsetTabular::getMaxWidthOfCell(BufferView * bv, int cell) const
-{
-	LyXLength const len = tabular.getPWidth(cell);
-
-	if (len.zero())
-		return -1;
-	return len.inPixels(latexTextWidth(bv));
-}
-
-
-int InsetTabular::getMaxWidth(BufferView * bv,
-			      UpdatableInset const * inset) const
-{
-	int cell = tabular.getCellFromInset(inset, actcell);
-
-	if (cell == -1) {
-		lyxerr << "Own inset not found, shouldn't really happen!"
-		       << endl;
-		return -1;
-	}
-
-	int w = getMaxWidthOfCell(bv, cell);
-	if (w > 0) {
-		// because the inset then subtracts it's top_x and owner->x()
-		w += (inset->x() - top_x);
-	}
-
-	return w;
-}
-
-
 void InsetTabular::deleteLyXText(BufferView * bv, bool recursive) const
 {
 	resizeLyXText(bv, recursive);

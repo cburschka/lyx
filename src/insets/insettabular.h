@@ -146,8 +146,6 @@ public:
 	void setFont(BufferView *, LyXFont const &, bool toggleall = false,
 		     bool selectall = false);
 	///
-	int getMaxWidth(BufferView *, UpdatableInset const *) const;
-	///
 	LyXText * getLyXText(BufferView const *,
 			     bool const recursive = false) const;
 	///
@@ -288,8 +286,6 @@ private:
 				  mouse_button::state button = mouse_button::none);
 	///
 	bool insetHit(BufferView * bv, int x, int y) const;
-	///
-	int getMaxWidthOfCell(BufferView * bv, int cell) const;
 	///
 	bool hasPasteBuffer() const;
 	///

@@ -1,6 +1,15 @@
 
 2003-07-18  André Pönitz  <poenitz@gmx.net>
 
+	* insetert.[Ch]:
+	* insetminipage.[Ch]:
+	* insettabular.[Ch]:
+	* insettext.[Ch]:
+	* insetwrap.[Ch]:
+	* updatableinset.[Ch]: remove unneeded Inset::getMaxWidth()
+
+2003-07-18  André Pönitz  <poenitz@gmx.net>
+
 	* inset.[Ch]:
 	* insetbibitem.C:
 	* insetcollapsable.C:

@@ -91,8 +91,6 @@ public:
 	///  An updatable inset could handle lyx editing commands
 	virtual RESULT localDispatch(FuncRequest const & cmd);
 	///
-	virtual int getMaxWidth(BufferView * bv, UpdatableInset const *) const;
-	///
 	int scroll(bool recursive = true) const {
 		// We need this method to not clobber the real method in Inset
 		return Inset::scroll(recursive);

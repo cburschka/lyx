@@ -133,36 +133,6 @@ Inset::RESULT UpdatableInset::localDispatch(FuncRequest const & ev)
 }
 
 
-int UpdatableInset::getMaxWidth(BufferView * bv, UpdatableInset const *) const
-{
-	int w;
-
-	if (owner()) {
-		w = owner()->getMaxWidth(bv, this);
-	} else {
-		w = bv->text->workWidth(this);
-	}
-	if (w < 0) {
-		return -1;
-	}
-	// check for margins left/right and extra right margin "const 5"
-	if ((w - (2 * TEXT_TO_INSET_OFFSET + 5)) >= 0)
-		w -= 2 * TEXT_TO_INSET_OFFSET + 5;
-
-	// Deep magic. I don't understand this either.
-	if (owner() && owner()->owner()) {
-		// add the right paper margin
-		w -= 20;
-	}
-
-	// FIXME: why ?
-	if (w < 10) {
-		w = 10;
-	}
-	return w;
-}
-
-
 LyXCursor const & Inset::cursor(BufferView * bv) const
 {
 	if (owner())

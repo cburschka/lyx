@@ -79,8 +79,6 @@ public:
 	///
 	bool insetAllowed(Inset::Code) const;
 	///
-	int getMaxWidth(BufferView *, UpdatableInset const *) const;
-	///
 	bool needFullRow() const { return false; }
 	/** returns true if, when outputing LaTeX, font changes should
 	    be closed before generating this inset. This is needed for

@@ -62,8 +62,6 @@ public:
 	///
 	bool insetAllowed(Inset::Code) const;
 	///
-	int getMaxWidth(BufferView *, UpdatableInset const *) const;
-	///
 	void addToToc(toc::TocList &, Buffer const *) const;
 	///
 	bool  showInsetDialog(BufferView *) const;

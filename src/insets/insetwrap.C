@@ -218,26 +218,6 @@ bool InsetWrap::insetAllowed(Inset::Code code) const
 }
 
 
-int InsetWrap::getMaxWidth(BufferView * bv, UpdatableInset const * inset)
-	const
-{
-	if (owner() &&
-	    static_cast<UpdatableInset*>(owner())->getMaxWidth(bv, inset) < 0) {
-		return -1;
-	}
-	if (!params_.width.zero()) {
-		int const ww1 = latexTextWidth(bv);
-		int const ww2 = InsetCollapsable::getMaxWidth(bv, inset);
-		if (ww2 > 0 && ww2 < ww1) {
-			return ww2;
-		}
-		return ww1;
-	}
-	// this should not happen!
-	return InsetCollapsable::getMaxWidth(bv, inset);
-}
-
-
 int InsetWrap::latexTextWidth(BufferView * bv) const
 {
 	return params_.width.inPixels(InsetCollapsable::latexTextWidth(bv));

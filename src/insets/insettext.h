@@ -142,8 +142,6 @@ public:
 		     bool toggleall = false,
 		     bool selectall = false);
 	///
-	int getMaxWidth(BufferView *, UpdatableInset const *) const;
-	///
 	void init(InsetText const * ins);
 	///
 	void writeParagraphData(Buffer const *, std::ostream &) const;

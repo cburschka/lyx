@@ -647,22 +647,6 @@ void InsetERT::getDrawFont(LyXFont & font) const
 }
 
 
-int InsetERT::getMaxWidth(BufferView * bv, UpdatableInset const * in) const
-{
-	int w = InsetCollapsable::getMaxWidth(bv, in);
-	if (status_ != Inlined || w < 0)
-		return w;
-	LyXText * text = inset.getLyXText(bv);
-	int rw = text->rows().begin()->width();
-	if (!rw)
-		rw = w;
-	rw += 40;
-	if (text->rows().size() == 1 && rw < w)
-		return -1;
-	return w;
-}
-
-
 string const InsetERTMailer::name_("ert");
 
 InsetERTMailer::InsetERTMailer(InsetERT & inset)
