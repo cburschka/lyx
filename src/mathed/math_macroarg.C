@@ -59,8 +59,8 @@ void MathMacroArgument::WriteNormal(std::ostream & os) const
 }
 
 
-void MathMacroArgument::substitute(MathArray & arr, MathMacro const & m) const
+void MathMacroArgument::substitute(MathArray & array, MathMacro const & m) const
 {
-	arr.push_back(m.cell(number_ - 1));
+	array.push_back(m.cell(number_ - 1));
 }
 
