@@ -1,19 +1,35 @@
 How do I upgrade my existing LyX system to version 1.1.6?
 ---------------------------------------------------------
 
-If you upgrade from version 1.1.6, you shouldn't have 
-any problems.
+If you upgrade from version 1.1.6 or 1.1.5, you shouldn't have any
+problems. It is nevertheless a goo idea to advise all users to run
+Edit>Reconfigure.
+
+If you have your own layout files, you may need to update them a little:
+
+- all layout files should have a "DefaultStyle" entry
+
+- the "Latex" font style does not exist anymore. If you really need
+  its functionality, consider using the "PassThru" keyword instead.
+
+The new layout format keywords are described in the Customization
+manual.
 
 Document transfer
 -----------------
 
 In general, you don't need to convert any documents saved with LyX
-v1.1.6 to use them with LyX v1.2.0.
+1.1.5 or 1.1.6 to use them with LyX 1.2.0.
 
-LyX v1.2.0 can read all documents saved with lyx-1.1.6 correctly.
+LyX 1.2.0 can read all documents saved with lyx 1.1.6 correctly.
+However, older LyX versions will almost certainly fail to read files
+produced by LyX 1.2.0.
 
-Note that as a consequence to all the changes is that older LyX
-versions will almost certainly fail to read files produced by LyX
-1.2.0.
+Note that the babel package is now loaded after the user-defined
+preamble (because some packages really need to be loaded before
+babel). If you relied, on babel being loaded before your own
+definitions, you can add an extra "\usepackage{babel}" statement at
+the beginning of your preamble.
+
 
 
