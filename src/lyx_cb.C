@@ -518,7 +518,6 @@ void MenuInsertLabel(BufferView * bv, string const & arg)
 	string label(arg);
 	ProhibitInput(bv);
 	if (label.empty()) {
-#ifdef LABEL_INIT
 #ifndef NEW_INSETS
 		LyXParagraph * par =
 			bv->text->cursor.par()->FirstPhysicalPar();
@@ -576,17 +575,13 @@ void MenuInsertLabel(BufferView * bv, string const & arg)
 			string head;
 			par_text = split(par_text, head, ' ');
 			if (i > 0)
-				text += '_'; // Is it legal to use spaces in
+				text += '-'; // Is it legal to use spaces in
 			                     // labels ?
 			text += head;
 		}
 
 		pair<bool, string> result =
 			askForText(_("Enter new label to insert:"), text);
-#else
-		pair<bool, string> result =
-			askForText(_("Enter new label to insert:"));
-#endif
 		if (result.first) {
 			label = frontStrip(strip(result.second));
 		}
