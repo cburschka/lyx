@@ -182,9 +182,11 @@ void ControlSpellchecker::check()
 	}
 
 	lyxerr[Debug::GUI] << "Found word \"" << word_.word() << "\"" << endl;
+	lyxerr << "Found word \"" << word_.word() << "\"" << endl;
 
 	if (!word_.word().empty()) {
 		bufferview()->selectLastWord();
+		bufferview()->fitCursor();
 	} else {
 		showSummary();
 		endSession();
