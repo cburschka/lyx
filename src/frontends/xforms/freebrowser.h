@@ -1,6 +1,11 @@
 /**
  * \file freebrowser.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
  * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS
  *
  * A freebrowser is a browser widget in its own form.
  * It is used for example to instantiate the drop-down list beneath a
@@ -15,10 +20,10 @@ extern "C"
 {
 #endif
 
-enum freebrowser_position {
+typedef enum {
     FL_FREEBROWSER_BELOW,
     FL_FREEBROWSER_ABOVE
-};
+} FL_FREEBROWSER_POSITION;
 
 typedef struct fl_freebrowser_ {
     /** Use this and you'll be told when something happens.

@@ -1,3 +1,20 @@
+2003-04-03  Angus Leeming  <leeming@lyx.org>
+
+	* combox.[ch]: add an FL_NORMAL_COMBOX type.
+
+	* forms/fdfixc.sed: enable the use of both combox types.
+
+2003-04-03  Angus Leeming  <leeming@lyx.org>
+
+	* freebrowser.c (peek_event): write C89, not C99, code.
+
+	* combox.[ch]:
+	* freebrowser.[ch]: these files belong to LyX, so say so.
+
+	* combox.[ch] (fl_create_combox, fl_add_combox,
+	fl_set_combox_position): change the function prototypes to use enums
+	rather than ints.
+
 2003-04-02  Angus Leeming  <leeming@lyx.org>
 
 	Rename some variables.

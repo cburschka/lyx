@@ -1,8 +1,12 @@
 /**
  * \file combox.c
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Alejandro Aguilar Sierra
  * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS
  *
  * This is a rewrite of Alejandro's C++ Combox class, originally written
  * for LyX in 1996. The rewrite turns it into a native xforms widget.
@@ -12,7 +16,6 @@
 #include FORMS_H_LOCATION
 #include "combox.h"
 #include "freebrowser.h"
-
 
 extern void fl_add_child(FL_OBJECT *, FL_OBJECT *);
 extern void fl_addto_freelist(void *);
@@ -61,7 +64,7 @@ static void set_state_label(COMBOX_SPEC * sp, int state);
 static void attrib_change(COMBOX_SPEC * sp);
 
 
-FL_OBJECT * fl_create_combox(int type,
+FL_OBJECT * fl_create_combox(FL_COMBOX_TYPE type,
 			     FL_Coord x, FL_Coord y, FL_Coord w, FL_Coord h,
 			     char const * label)
 {
@@ -72,6 +75,9 @@ FL_OBJECT * fl_create_combox(int type,
     /* The width and x-position of button_state, respectively. */
     FL_Coord const ws = 0.7 * h;
     FL_Coord const xs = x + w - ws;
+
+    /* The width of button_chosen */
+    FL_Coord const wc = (type == FL_DROPLIST_COMBOX) ? (w - ws) : w;
 
     ob = fl_make_object(FL_COMBOX, type, x, y, w, h, label, combox_handle);
     ob->align = FL_ALIGN_LEFT;
@@ -84,20 +90,23 @@ FL_OBJECT * fl_create_combox(int type,
     sp->browser = fl_create_freebrowser(sp);
     sp->browser->callback = update_button_chosen;
 
-    sp->button_state = fl_add_button(FL_NORMAL_BUTTON, xs, y, ws, h, "");
+    sp->button_state = 0;
+    if (type == FL_DROPLIST_COMBOX) {
+	sp->button_state = fl_add_button(FL_NORMAL_BUTTON, xs, y, ws, h, "");
 
-    button = sp->button_state;
-    fl_set_object_lalign(button, FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
-    fl_set_object_callback(button, state_cb, 0);
-    fl_set_object_posthandler(button, combox_post);
-    fl_set_object_prehandler(button,  combox_pre);
-    set_state_label(sp, COMBOX_CLOSED);
+	button = sp->button_state;
+	fl_set_object_lalign(button, FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
+	fl_set_object_callback(button, state_cb, 0);
+	fl_set_object_posthandler(button, combox_post);
+	fl_set_object_prehandler(button,  combox_pre);
+	set_state_label(sp, COMBOX_CLOSED);
 
-    set_activation(button, DEACTIVATE);
-    button->parent = ob;
-    button->u_vdata = sp;
+	set_activation(button, DEACTIVATE);
+	button->parent = ob;
+	button->u_vdata = sp;
+    }
 
-    sp->button_chosen = fl_add_button(FL_NORMAL_TEXT, x, y, (w - ws), h, "");
+    sp->button_chosen = fl_add_button(FL_NORMAL_TEXT, x, y, wc, h, "");
 
     button = sp->button_chosen;
     fl_set_object_boxtype(button, FL_FRAME_BOX);
@@ -113,14 +122,15 @@ FL_OBJECT * fl_create_combox(int type,
 }
 
 
-FL_OBJECT * fl_add_combox(int type,
+FL_OBJECT * fl_add_combox(FL_COMBOX_TYPE type,
 			  FL_Coord x, FL_Coord y, FL_Coord w, FL_Coord h,
 			  char const * label)
 {
     FL_OBJECT * ob = fl_create_combox(type, x, y, w, h, label);
     COMBOX_SPEC * sp = ob->spec;
 
-    fl_add_child(ob, sp->button_state);
+    if (sp->button_state)
+	fl_add_child(ob, sp->button_state);
     fl_add_child(ob, sp->button_chosen);
 
     fl_add_object(fl_current_form, ob);
@@ -140,7 +150,7 @@ void fl_set_combox_browser_height(FL_OBJECT * ob, int bh)
 }
 
 
-void fl_set_combox_position(FL_OBJECT * ob, int position)
+void fl_set_combox_position(FL_OBJECT * ob, FL_COMBOX_POSITION position)
 {
     COMBOX_SPEC * sp;
 
@@ -148,7 +158,7 @@ void fl_set_combox_position(FL_OBJECT * ob, int position)
 	return;
 
     sp = ob->spec;
-    sp->browser_position = (position == FL_FREEBROWSER_ABOVE) ?
+    sp->browser_position = (position == FL_COMBOX_ABOVE) ?
 	FL_FREEBROWSER_ABOVE : FL_FREEBROWSER_BELOW;
 
     set_state_label(sp, COMBOX_CLOSED);
@@ -207,7 +217,8 @@ void fl_addto_combox(FL_OBJECT * ob, char const * text)
     if (!fl_get_browser(browser)) {
 	fl_set_object_label(sp->button_chosen, text);
 	set_activation(sp->button_chosen, ACTIVATE);
-	set_activation(sp->button_state,  ACTIVATE);
+	if (sp->button_state)
+	    set_activation(sp->button_state,  ACTIVATE);
     }
 }
 
@@ -431,6 +442,10 @@ static void set_state_label(COMBOX_SPEC * sp, int state)
     char const * const up   = "@2<-";
     char const * const down = "@2->";
     char const * label = 0;
+
+    if (!sp->button_state)
+	return;
+
     if (sp->browser_position == FL_FREEBROWSER_BELOW) {
 	label = (state == COMBOX_OPEN) ? up : down;
     } else {
@@ -451,10 +466,12 @@ static void attrib_change(COMBOX_SPEC * sp)
     button->col2    = parent->col2;
     button->bw      = parent->bw;
 
-    button = sp->button_state;
+    if (sp->button_state) {
+	button = sp->button_state;
 
-    /* The boxtype is not changed */
-    button->col1    = parent->col1;
-    button->col2    = parent->col2;
-    button->bw      = parent->bw;
+	/* The boxtype is not changed */
+	button->col1    = parent->col1;
+	button->col2    = parent->col2;
+	button->bw      = parent->bw;
+    }
 }

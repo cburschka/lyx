@@ -76,7 +76,13 @@ s/\(	fdui->form\)\(.*bgn_form.*\)/\1\2\
 
 # For all lines containing "combox",
 # replace "fl_add_choice" with "fl_add_combox"
-/combox/ s/fl_add_choice([^,]*/fl_add_combox(FL_DROPLIST_COMBOX/
+# Note that only two combox types exist, whilst there are four choice types.
+/combox/ {
+s/fl_add_choice/fl_add_combox/
+s/BROWSER/NORMAL/
+s/CHOICE2/COMBOX/
+s/CHOICE/COMBOX/
+}
 
 
 # For all lines containing fl_add_choice,

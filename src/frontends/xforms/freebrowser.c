@@ -1,8 +1,12 @@
 /**
  * \file freebrowser.c
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Alejandro Aguilar Sierra
  * \author Angus Leeming
+ *
+ * Full author contact details are available in file CREDITS
  *
  * This is a rewrite of Alejandro's C++ Combox class, originally written
  * for LyX in 1996. The rewrite turns it into a native xforms widget.
@@ -16,7 +20,6 @@
 extern void fl_hide_tooltip(void);
 
 static void browser_cb(FL_OBJECT * ob, long data);
-
 static int peek_event(FL_FORM * form, void * xev);
 
 
@@ -147,8 +150,9 @@ static int peek_event(FL_FORM * form, void * ev)
     }
 
     if (xev->type == KeyPress) {
-	char s_r[10]; s_r[9] = '\0';
 	KeySym keysym_return;
+	char s_r[10];
+	s_r[9] = '\0';
 	XLookupString(&xev->xkey, s_r, 10, &keysym_return, 0);
 
 	XFlush(fl_get_display());
