@@ -34,9 +34,9 @@ void uniqueInsert(QComboBox * box, QString const & text)
 
 	box->insertItem(text);
 }
- 
+
 };
- 
+
 
 QSearchDialog::QSearchDialog(QSearch * form)
 	: QSearchDialogBase(0, 0, false, 0),

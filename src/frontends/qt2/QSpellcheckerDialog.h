@@ -23,7 +23,7 @@ public:
 	QSpellcheckerDialog(QSpellchecker * form);
 public slots:
 	virtual void suggestionChanged(const QString &);
- 
+
 protected slots:
 	virtual void acceptClicked();
 	virtual void addClicked();

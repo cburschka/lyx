@@ -97,7 +97,7 @@ void QLPopupMenu::populate(Menu * menu)
 			res.second->populate(m->submenu());
 		} else {
 			FuncStatus const status = m->status();
-			
+
 			insertItem(toqstr(getLabel(*m)), m->action());
 			setItemEnabled(m->action(), !status.disabled());
 			setItemChecked(m->action(), status.onoff(true));

@@ -382,7 +382,7 @@ void QPrefs::update_contents()
 	QPrefIdentityModule * idmod(dialog_->identityModule);
 	idmod->nameED->setText(toqstr(rc.user_name));
 	idmod->emailED->setText(toqstr(rc.user_email));
-	
+
 
 	QPrefKeyboardModule * keymod(dialog_->keyboardModule);
 

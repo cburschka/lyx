@@ -351,7 +351,7 @@ qfont_loader::font_info * qfont_loader::getfontinfo(LyXFont const & f)
 	font_info * fi = fontinfo_[f.family()][f.series()][f.realShape()][f.size()];
 	if (fi)
 		return fi;
- 
+
 	font_info * fi2 = new font_info(f);
 	fontinfo_[f.family()][f.series()][f.realShape()][f.size()] = fi2;
 	return fi2;
@@ -371,7 +371,7 @@ int qfont_loader::charwidth(LyXFont const & f, Uchar val)
 	return w;
 }
 
- 
+
 bool qfont_loader::available(LyXFont const & f)
 {
 	if (!lyxrc.use_gui)

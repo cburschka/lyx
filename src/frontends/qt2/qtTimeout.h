@@ -13,7 +13,7 @@
 #define QTTIMEOUT_H
 
 #include "frontends/Timeout.h"
-#include <qobject.h> 
+#include <qobject.h>
 
 // stupid Qt
 #undef emit

@@ -71,7 +71,7 @@ void QBibtex::update_contents()
 		if (!bib.empty())
 			dialog_->databaseLB->insertItem(toqstr(bib));
 	}
-	
+
 	dialog_->addBibCB->clear();
 
 	vector<string> const bib_str = getVectorFromString(

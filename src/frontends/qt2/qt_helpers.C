@@ -14,9 +14,9 @@
 #include "support/lstrings.h"
 #include "gettext.h"
 #include "qt_helpers.h"
- 
+
 #include "lengthcombo.h"
- 
+
 #include <qglobal.h>
 #include <qlineedit.h>
 #include <qtextcodec.h>
@@ -53,7 +53,7 @@ pair<string,string> parseFontName(string const & name)
 #endif
 }
 
- 
+
 string widgetsToLength(QLineEdit const * input, LengthCombo const * combo)
 {
 	QString length = input->text();

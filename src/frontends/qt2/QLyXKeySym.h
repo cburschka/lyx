@@ -49,7 +49,7 @@ public:
 
 	/// Is this normal insertable text ? (last ditch attempt only)
 	virtual bool isText() const;
- 
+
 	/**
 	 * Return the value of the keysym into the local ISO encoding.
 	 * This converts the LyXKeySym to a 8-bit encoded character.

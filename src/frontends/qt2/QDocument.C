@@ -144,7 +144,7 @@ void QDocument::build_dialog()
 	dialog_->layoutModule->pagestyleCO->insertItem(qt_("plain"));
 	dialog_->layoutModule->pagestyleCO->insertItem(qt_("headings"));
 	dialog_->layoutModule->pagestyleCO->insertItem(qt_("fancy"));
-	
+
 	dialog_->layoutModule->lspacingCO->insertItem(
 		qt_("Single"), Spacing::Single);
 	dialog_->layoutModule->lspacingCO->insertItem(
@@ -244,7 +244,7 @@ void QDocument::apply()
 	// layout
 	params.textclass =
 		dialog_->layoutModule->classCO->currentItem();
-		
+
 	params.fonts =
 		fromqstr(dialog_->layoutModule->fontsCO->currentText());
 
@@ -253,7 +253,7 @@ void QDocument::apply()
 
 	params.pagestyle =
 		fromqstr(dialog_->layoutModule->pagestyleCO->currentText());
-		
+
 	switch (dialog_->layoutModule->lspacingCO->currentItem()) {
 	case 0:
 		params.spacing.set(Spacing::Single);
@@ -345,8 +345,8 @@ void QDocument::apply()
 		margin = margin - 1;
 	}
 	params.paperpackage = char(margin);
-	
-	// set params.papersize from params.papersize2 
+
+	// set params.papersize from params.papersize2
 	// and params.paperpackage
 	params.setPaperStuff();
 
@@ -436,7 +436,7 @@ void QDocument::update_contents()
 
 	dialog_->langModule->quoteStyleCO->setCurrentItem(
 		params.quotes_language);
-		
+
 	dialog_->langModule->defaultencodingCB->setChecked(true);
 
 	if (params.inputenc != "auto") {

@@ -69,9 +69,9 @@ void QBibtexDialog::browsePressed()
 			}
 		}
 
-		if (!present) 
+		if (!present)
 			styleCB->insertItem(toqstr(filen),0);
-		
+
 		styleCB->setCurrentItem(pres);
 		form_->changed();
 	}

@@ -183,7 +183,7 @@ void lyx_gui::exit()
 	// into a static dialog return in the lyx code (for example,
 	// load autosave file QMessageBox. We have to just get the hell
 	// out.
-	
+
 	::exit(0);
 }
 

@@ -72,7 +72,7 @@ void QIncludeDialog::typeChanged(int v)
 			previewCB->setEnabled(false);
 			previewCB->setChecked(false);
 			break;
- 
+
 		default:
 			visiblespaceCB->setEnabled(true);
 			previewCB->setEnabled(false);

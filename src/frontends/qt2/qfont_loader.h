@@ -14,13 +14,13 @@
 
 
 #include <map>
- 
+
 #include "encoding.h"
 #include "lyxfont.h"
 
 #include <qfont.h>
 #include <qfontmetrics.h>
- 
+
 /**
  * Qt font loader for LyX. Matches LyXFonts against
  * actual QFont instances, and also caches metrics.
@@ -59,7 +59,7 @@ private:
 		QFontMetrics metrics;
 
 		typedef std::map<Uchar, int> WidthCache;
-		/// cache of char widths 
+		/// cache of char widths
 		WidthCache widthcache;
 	};
 

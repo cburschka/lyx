@@ -34,7 +34,7 @@ public:
 	void setBullet(int level, const Bullet & bullet);
 	///
 	Bullet getBullet(int level);
-	
+
 protected slots:
 	///
 	void standard(int row, int col);
@@ -54,7 +54,7 @@ protected slots:
 	void setActive(QListViewItem*);
 	/// set size
 	void setSize(int size);
-	
+
 private:
 	/// get the pixmap that matches font/character
 	QPixmap getPixmap(int font, int character);
@@ -72,7 +72,7 @@ private:
 	QListViewItem * activeitem_;
 	/// store results
 	boost::array<Bullet,4> bullets_;
-	
+
 	QBrowseBox * standard_;
 	QBrowseBox * maths_;
 	QBrowseBox * ding1_;

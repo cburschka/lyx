@@ -21,7 +21,7 @@
 
 #include <qfontmetrics.h>
 #include <qfont.h>
- 
+
 namespace {
 
 QFontMetrics const & metrics(LyXFont const & f)
@@ -29,12 +29,12 @@ QFontMetrics const & metrics(LyXFont const & f)
 	return fontloader.metrics(f);
 }
 
- 
+
 int charwidth(Uchar val, LyXFont const & f)
 {
 	if (!lyxrc.use_gui)
 		return 1;
-	return fontloader.charwidth(f, val); 
+	return fontloader.charwidth(f, val);
 }
 
 } // namespace anon
@@ -104,7 +104,7 @@ Encoding const * fontencoding(LyXFont const & f)
 		encoding = encodings.symbol_encoding();
 	return encoding;
 }
- 
+
 
 int smallcapswidth(char const * s, size_t ls, LyXFont const & f)
 {
@@ -119,7 +119,7 @@ int smallcapswidth(char const * s, size_t ls, LyXFont const & f)
 	QFontMetrics const & qsmallm = fontloader.metrics(smallfont);
 
 	Encoding const * encoding(fontencoding(f));
- 
+
 	int w = 0;
 
 	for (size_t i = 0; i < ls; ++i) {
@@ -132,7 +132,7 @@ int smallcapswidth(char const * s, size_t ls, LyXFont const & f)
 	}
 	return w;
 }
- 
+
 
 int width(char const * s, size_t ls, LyXFont const & f)
 {
@@ -142,7 +142,7 @@ int width(char const * s, size_t ls, LyXFont const & f)
 	if (f.realShape() == LyXFont::SMALLCAPS_SHAPE) {
 		return smallcapswidth(s, ls, f);
 	}
- 
+
 	Encoding const * encoding(fontencoding(f));
 
 	if (ls == 1) {
@@ -150,11 +150,11 @@ int width(char const * s, size_t ls, LyXFont const & f)
 	}
 
 	int w = 0;
- 
+
 	for (size_t i = 0; i < ls; ++i) {
 		w += charwidth(encoding->ucs(s[i]), f);
 	}
- 
+
 	return w;
 }
 

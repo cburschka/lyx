@@ -18,22 +18,22 @@
 #include <utility>
 
 #include "lyxlength.h"
- 
+
 class LengthCombo;
 class QLineEdit;
 class QString;
- 
+
 string makeFontName(string const & family, string const & foundry);
- 
+
 std::pair<string,string> parseFontName(string const & name);
 
 /// method to get a LyXLength from widgets
 string widgetsToLength(QLineEdit const * input, LengthCombo const * combo);
- 
+
 /// method to set widgets from a LyXLength
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
 	string const & len, LyXLength::UNIT default_unit);
- 
+
 /**
  * toqstr - convert char * into unicode
  *

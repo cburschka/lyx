@@ -51,7 +51,7 @@ void QURL::update_contents()
 	dialog_->urlED->setText(toqstr(params.getContents()));
 	dialog_->nameED->setText(toqstr(params.getOptions()));
 	dialog_->hyperlinkCB->setChecked(params.getCmdName() != "url");
-	
+
 	bc().valid(isValid());
 }
 

@@ -239,7 +239,7 @@ QDocumentDialog::QDocumentDialog(QDocument * form)
 	connect(paperModule->facingPagesCB, SIGNAL(toggled(bool)),
 		 this, SLOT(change_adaptor()));
 
-	// bullets 
+	// bullets
 	connect(bulletsModule->bulletsizeCO, SIGNAL(activated(int)),
 		 this, SLOT(change_adaptor()));
 	connect(bulletsModule->bulletsLV, SIGNAL(selectionChanged()),

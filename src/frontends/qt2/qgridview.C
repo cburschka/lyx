@@ -1,5 +1,5 @@
 /****************************************************************************
-** $Id: qgridview.C,v 1.1 2003/01/13 10:39:18 larsbj Exp $
+** $Id: qgridview.C,v 1.2 2003/02/25 13:35:26 leeming Exp $
 **
 ** Implementation of QGridView class
 **
@@ -146,7 +146,7 @@ void QGridView::setCellWidth( int cellWidth )
     cellw = cellWidth;
     updateGrid();
     updateContents( contentsX(), contentsY(), visibleWidth(), visibleHeight() );
-    
+
 }
 
 /*! \property QGridView::cellHeight
@@ -161,7 +161,7 @@ void QGridView::setCellHeight( int cellHeight )
     cellh = cellHeight;
     updateGrid();
     updateContents( contentsX(), contentsY(), visibleWidth(), visibleHeight() );
-    
+
 }
 
 /*!

@@ -125,7 +125,7 @@ bool QLyXKeySym::isOK() const
 	return ok;
 }
 
- 
+
 bool QLyXKeySym::isModifier() const
 {
 	bool const mod(q_is_modifier(key_));
@@ -163,12 +163,12 @@ bool QLyXKeySym::isText() const
 	}
 
 	QChar const c(text_[0]);
-	lyxerr[Debug::KEY] << "isText for key " << key_ 
+	lyxerr[Debug::KEY] << "isText for key " << key_
 		<< " isPrint is " << c.isPrint() << endl;
 	return c.isPrint();
 }
 
- 
+
 bool operator==(LyXKeySym const & k1, LyXKeySym const & k2)
 {
 	QLyXKeySym const & q1(static_cast<QLyXKeySym const &>(k1));

@@ -33,7 +33,7 @@ BulletsModule::BulletsModule(QWidget * parent,  char const * name, WFlags fl)
 	for (int iter = 0; iter < 4; ++iter) {
 		bullets_[iter] = ITEMIZE_DEFAULTS[iter];
 	}
-	
+
 	QPopupMenu * pm = new QPopupMenu(this);
 
 	QPopupMenu * pm1 = new QPopupMenu(pm);
@@ -170,7 +170,7 @@ void BulletsModule::setBullet(int font, int character)
 {
 	activeitem_->setText(0,"");
 	activeitem_->setPixmap(0,getPixmap(font,character));
-	
+
 	activebullet_->setFont(font);
 	activebullet_->setCharacter(character);
 }
@@ -180,7 +180,7 @@ void BulletsModule::setBullet(string text)
 {
 	activeitem_->setPixmap(0, QPixmap());
 	activeitem_->setText(0, toqstr(text));
-	
+
 	activebullet_->setText(text);
 }
 
@@ -240,7 +240,7 @@ void BulletsModule::ding2(int row, int col)
 void BulletsModule::ding3(int row, int col)
 {
 	setBullet(4,6*row + col);
-}	
+}
 
 
 void BulletsModule::ding4(int row, int col)

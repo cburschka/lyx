@@ -69,7 +69,7 @@ void QSpellchecker::replace()
 
 void QSpellchecker::partialUpdate(int s)
 {
-	ControlSpellchecker::State const state = 
+	ControlSpellchecker::State const state =
 		static_cast<ControlSpellchecker::State>(s);
 
 	switch (state) {
