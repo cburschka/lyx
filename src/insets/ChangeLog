@@ -1,3 +1,8 @@
+2001-03-14  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* insetminipage.h: add pos, inner_pos, width and height. + getters
+	and setters for all of them.
+
 2001-03-13  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insetinclude.C (Latex): Do not exit when the textclass of the

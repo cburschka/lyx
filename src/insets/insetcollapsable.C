@@ -3,7 +3,7 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *          Copyright (C) 1998 The LyX Team.
+ *          Copyright 1998-2001 The LyX Team.
  *
  * ======================================================
  */
@@ -32,9 +32,9 @@ using std::endl;
 using std::max;
 
 InsetCollapsable::InsetCollapsable()
-	: UpdatableInset()
+	: UpdatableInset(), inset(new InsetText)
 {
-    inset = new InsetText;
+	//inset = new InsetText;
     inset->setOwner(this);
     collapsed = true;
     label = "Label";
@@ -84,7 +84,7 @@ void InsetCollapsable::Read(Buffer const * buf, LyXLex & lex)
 {
     if (lex.IsOK()) {
 	lex.next();
-        string token = lex.GetString();
+        string const token = lex.GetString();
 	if (token == "collapsed") {
 	    lex.next();
 	    collapsed = lex.GetBool();
@@ -222,7 +222,7 @@ void InsetCollapsable::Edit(BufferView * bv, int x, int y, unsigned int button)
     } else if (!collapsed) {
 	if (!bv->lockInset(this))
 	    return;
-	inset->Edit(bv, x-widthCollapsed, y, button);
+	inset->Edit(bv, x - widthCollapsed, y, button);
     }
 }
 
@@ -248,7 +248,7 @@ void InsetCollapsable::InsetUnlock(BufferView * bv)
 void InsetCollapsable::InsetButtonPress(BufferView * bv,int x,int y,int button)
 {
     if (!collapsed && (x >= button_length)) {
-	inset->InsetButtonPress(bv, x-widthCollapsed, y, button);
+	inset->InsetButtonPress(bv, x - widthCollapsed, y, button);
     }
 }
 
@@ -268,7 +268,7 @@ void InsetCollapsable::InsetButtonRelease(BufferView * bv,
 	    bv->updateInset(this, false);
 	}
     } else if (!collapsed && (x >= button_length) && (y >= button_top_y)) {
-	inset->InsetButtonRelease(bv, x-widthCollapsed, y, button);
+	inset->InsetButtonRelease(bv, x - widthCollapsed, y, button);
     }
 }
 

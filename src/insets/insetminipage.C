@@ -55,7 +55,8 @@ using std::endl;
 // (Lgb)
 
 InsetMinipage::InsetMinipage()
-	: InsetCollapsable()
+	: InsetCollapsable(), pos_(center),
+	  inner_pos_(inner_center)
 {
 	setLabel(_("minipage"));
 	LyXFont font(LyXFont::ALL_SANE);
@@ -110,4 +111,52 @@ bool InsetMinipage::InsertInsetAllowed(Inset * in) const
 		return false;
 	}
 	return true;
+}
+
+
+InsetMinipage::Position InsetMinipage::pos() const 
+{
+	return pos_;
+}
+
+
+void InsetMinipage::pos(InsetMinipage::Position p)
+{
+	pos_ = p;
+}
+
+
+InsetMinipage::InnerPosition InsetMinipage::innerPos() const
+{
+	return inner_pos_;
+}
+
+
+void InsetMinipage::innerPos(InsetMinipage::InnerPosition ip)
+{
+	inner_pos_ = ip;
+}
+
+
+LyXLength const & InsetMinipage::height() const
+{
+	return height_;
+}
+
+
+void InsetMinipage::height(LyXLength const & ll)
+{
+	height_ = ll;
+}
+
+
+LyXLength const & InsetMinipage::width() const
+{
+	return width_;
+}
+
+
+void InsetMinipage::width(LyXLength const & ll)
+{
+	width_ = ll;
 }

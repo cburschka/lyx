@@ -17,12 +17,26 @@
 #endif
 
 #include "insetcollapsable.h"
+#include "vspace.h"
 
 /** The minipage inset
   
 */
 class InsetMinipage : public InsetCollapsable {
 public:
+	///
+	enum Position {
+		center,
+		top,
+		bottom
+	};
+	///
+	enum InnerPosition {
+		inner_center,
+		inner_top,
+		inner_bottom,
+		inner_stretch
+	};
 	///
 	InsetMinipage();
 	///
@@ -37,6 +51,31 @@ public:
 	string const EditMessage() const;
 	///
 	bool InsertInsetAllowed(Inset * inset) const;
+	///
+	Position pos() const;
+	///
+	void pos(Position);
+	///
+	InnerPosition innerPos() const;
+	///
+	void innerPos(InnerPosition);
+	///
+	LyXLength const & height() const;
+	///
+	void height(LyXLength const &);
+	///
+	LyXLength const & width() const;
+	///
+	void width(LyXLength const &);
+private:
+	///
+	Position pos_;
+	///
+	InnerPosition inner_pos_;
+	///
+	LyXLength height_;
+	///
+	LyXLength width_;
 };
 
 #endif

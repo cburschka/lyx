@@ -40,7 +40,7 @@ InsetExternal::InsetExternal()
 	: view(0)
 {
 	tempname = lyx::tempName(string(), "lyxext");
-	ExternalTemplateManager::Templates::const_iterator i1;
+	//ExternalTemplateManager::Templates::const_iterator i1;
 	params_.templ = ExternalTemplateManager::get().getTemplates().begin()->second;
 }
 
