@@ -143,9 +143,25 @@ string const RemoveExtension(string const & filename)
 }
 
 
+namespace {
+
+string const unique_id()
+{
+	static unsigned int seed = 1000;
+
+	ostringstream ost;
+	ost << "graph" << ++seed;
+
+	// Needed if we use lyxstring.
+	return ost.str().c_str();
+}
+
+} // namespace anon
+
+
 // Initialize only those variables that do not have a constructor.
 InsetGraphics::InsetGraphics()
-	: cacheHandle(0), imageLoaded(false)
+	: cacheHandle(0), imageLoaded(false), graphic_label(unique_id())
 {}
 
 
@@ -153,6 +169,7 @@ InsetGraphics::InsetGraphics(InsetGraphics const & ig, bool same_id)
 	: Inset(), SigC::Object()
 	, cacheHandle(ig.cacheHandle)
 	, imageLoaded(ig.imageLoaded)
+	, graphic_label(unique_id())
 {
 	setParams(ig.getParams());
 	if (same_id)
@@ -640,20 +657,12 @@ int InsetGraphics::linuxdoc(Buffer const *, ostream &) const
 // For explanation on inserting graphics into DocBook checkout:
 // http://linuxdoc.org/LDP/LDP-Author-Guide/inserting-pictures.html
 // See also the docbook guide at http://www.docbook.org/
-int InsetGraphics::docbook(Buffer const * buf, ostream & os) const
+int InsetGraphics::docbook(Buffer const *, ostream & os) const
 {
-	// Change the path to be relative to the main file.
-	string const buffer_dir = buf->filePath();
-	string filename = RemoveExtension(
-		MakeRelPath(params.filename, buffer_dir));
-
-	if (suffixIs(filename, ".eps"))
-		filename.erase(filename.length() - 4);
-
 	// In DocBook v5.0, the graphic tag will be eliminated from DocBook, will 
 	// need to switch to MediaObject. However, for now this is sufficient and 
 	// easier to use.
-	os << "<graphic fileref=\"" << filename << "\"></graphic>";
+	os << "<graphic fileref=\"&" << graphic_label << ";\">";
 	return 0;
 }
 
@@ -663,6 +672,8 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 	// If we have no image, we should not require anything.
 	if (params.filename.empty())
 		return ;
+
+	features.includeFile(graphic_label, RemoveExtension(params.filename));
 
 	features.require("graphicx");
 

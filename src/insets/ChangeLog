@@ -1,3 +1,21 @@
+2002-02-20  José Matos  <jamatos@fep.up.pt>
+
+	* insetinclude.h: include_label made string const.
+
+	* insetinclude.C (InsetInclude): moved include_label initialization.
+	(linuxdoc):
+	(docbook):
+	(validate): fix support for temporary directory, for docbook and
+	linuxdoc.
+
+	* insetgraphics.h : new private member, graphic_label, that holds
+	the entity name that defines the graphics location (SGML).
+
+	* insetgraphics.C (unique_id): new function to give a unique label
+	for graphic.
+	(docbook):
+	(validate): the file locatation is given by an entity reference.
+
 2002-02-18  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insetexternal.C Changes due to the renaming of support/syscall.[Ch]

@@ -129,8 +129,8 @@ private:
 
 	/// the parameters
 	Params params_;
-	///
-	string include_label;
+	/// holds the entity name that defines the file location (SGML) 
+	string const include_label;
 };
 
 

@@ -117,8 +117,10 @@ private:
 	mutable boost::shared_ptr<GraphicsCacheItem> cacheHandle;
 	/// is the pixmap initialized?
 	mutable bool imageLoaded;
-	///
+	/// the parameters
 	InsetGraphicsParams params;
+	/// holds the entity name that defines the graphics location (SGML).
+	string const graphic_label;
 };
 
 #endif 
