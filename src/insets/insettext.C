@@ -167,7 +167,7 @@ void InsetText::init(InsetText const * ins, bool same_id)
 	insetWidth = 0;
 	old_max_width = 0;
 	no_selection = false;
-	need_update = INIT;
+	need_update = FULL;
 	drawTextXOffset = 0;
 	drawTextYOffset = 0;
 	xpos = 0.0;
@@ -267,7 +267,7 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 		lex.printError("Missing \\end_inset at this point. "
 					   "Read: `$$Token'");
 	}
-	need_update = INIT;
+	need_update = FULL;
 }
 
 
@@ -476,7 +476,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		clearFrame(pain, cleared);
 	x += last_width /* was width(bv, f) */ - TEXT_TO_INSET_OFFSET;
 	if (bv->text->status() == LyXText::CHANGED_IN_DRAW) {
-		need_update |= INIT;
+		need_update |= FULL;
 	} else if (need_update != INIT)
 		need_update = NONE;
 	if (clear)
@@ -540,6 +540,7 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 		lt = getLyXText(bv);
 		clear = true;
 	}
+#if 0
 	int oldw = insetWidth;
 	insetWidth = lt->width + (2 * TEXT_TO_INSET_OFFSET);
 	if (oldw != insetWidth) {
@@ -550,6 +551,7 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 		in_update = false;
 		return;
 	}
+#endif
 	if ((need_update & CURSOR_PAR) && (lt->status() == LyXText::UNCHANGED) &&
 		the_locking_inset)
 	{
@@ -1903,6 +1905,7 @@ void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
 
 void InsetText::resizeLyXText(BufferView * bv, bool force) const
 {
+//	lyxerr << "InsetText::resizeLyXText\n";
 	if (!par->next() && !par->size()) // no data, resize not neccessary!
 		return;
 	// one endless line, resize normally not necessary
@@ -1942,6 +1945,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 
 void InsetText::reinitLyXText(bool wrong_cursor) const
 {
+//	lyxerr << "InsetText::reinitLyXText\n";
 	for(Cache::iterator it = cache.begin(); it != cache.end(); ++it) {
 		lyx::Assert(it->second.text.get());
 
@@ -2115,7 +2119,7 @@ void InsetText::paragraph(Paragraph * p)
 	}
 #endif
 	// redraw myself when asked for
-	need_update |= INIT;
+	need_update = INIT;
 }
 
 
