@@ -81,8 +81,6 @@ void MathSymbolInset::metrics(MathMetricsInfo const & mi) const
 
 void MathSymbolInset::draw(Painter & pain, int x, int y) const
 {  
-	xo(x);
-	yo(y);
 	MathTextCodes Code = code();
 	if (sym_->latex_font_id > 0 && math_font_available(Code))
 		drawChar(pain, Code, mi_, x, y - h_, sym_->latex_font_id);

@@ -173,9 +173,6 @@ void MathMatrixInset::metrics(MathMetricsInfo const & mi) const
 
 void MathMatrixInset::draw(Painter & pain, int x, int y) const
 {
-	xo(x);
-	yo(y);
-
 	MathGridInset::draw(pain, x, y);
 
 	if (numberedType()) {

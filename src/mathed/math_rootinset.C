@@ -42,8 +42,6 @@ void MathRootInset::metrics(MathMetricsInfo const & mi) const
 
 void MathRootInset::draw(Painter & pain, int x, int y) const
 {
-	xo(x);
-	yo(y);
 	int const w = xcell(0).width();
 	xcell(0).draw(pain, x, y - 5 - xcell(0).descent());       // the "exponent"
 	xcell(1).draw(pain, x + w + 8, y);   // the "base"

@@ -20,8 +20,6 @@ MathInset * MathSizeInset::clone() const
 
 void MathSizeInset::draw(Painter & pain, int x, int y) const
 {
-	xo(x);
-	yo(y);
 	xcell(0).draw(pain, x, y);
 }
 

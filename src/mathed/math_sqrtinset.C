@@ -30,8 +30,6 @@ void MathSqrtInset::metrics(MathMetricsInfo const & mi) const
 
 void MathSqrtInset::draw(Painter & pain, int x, int y) const
 { 
-	xo(x);
-	yo(y);
 	xcell(0).draw(pain, x + 10, y); 
 	int const a = ascent_;
 	int const d = descent_;

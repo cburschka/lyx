@@ -44,8 +44,6 @@ void MathSpecialCharInset::metrics(MathMetricsInfo const & mi) const
 
 void MathSpecialCharInset::draw(Painter & pain, int x, int y) const
 { 
-	xo(x);
-	yo(y);
 	drawChar(pain, LM_TC_CONST, mi_, x, y, char_);
 }
 

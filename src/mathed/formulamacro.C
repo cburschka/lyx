@@ -115,7 +115,7 @@ void InsetFormulaMacro::read(Buffer const *, LyXLex & lex)
 {
 	string name = mathed_parse_macro(lex);
 	setInsetName(name);
-	lyxerr << "metrics disabled";
+	//lyxerr << "metrics disabled";
 	metrics();
 }
 
@@ -202,7 +202,7 @@ MathInsetTypes InsetFormulaMacro::getType() const
 
 
 void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
-			     int baseline, float & x, bool /*cleared*/) const
+			     int y, float & x, bool /*cleared*/) const
 {
 	Painter & pain = bv->painter();
 	LyXFont font(f);
@@ -210,24 +210,23 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 	// label
 	font.setColor(LColor::math);
 	
-	int const y = baseline - ascent(bv, font) + 1;
+	int const a = y - ascent(bv, font) + 1;
 	int const w = width(bv, font) - 2;
 	int const h = ascent(bv, font) + descent(bv, font) - 2;
 
 	// LColor::mathbg used to be "AntiqueWhite" but is "linen" now, too
-	pain.fillRectangle(int(x), y , w, h, LColor::mathmacrobg);
-	pain.rectangle(int(x), y, w, h, LColor::mathframe);
+	pain.fillRectangle(int(x), a , w, h, LColor::mathmacrobg);
+	pain.rectangle(int(x), a, w, h, LColor::mathframe);
 
 	if (mathcursor && mathcursor->formula() == this)
 		mathcursor->drawSelection(pain);
 
-	pain.text(int(x + 2), baseline, prefix(), font);
+	pain.text(int(x + 2), y, prefix(), font);
 	x += width(bv, font);
 
 	// formula
-	float t = par()->width() + 5;
-	x -= t;
-	par()->draw(pain, int(x), baseline);
-	x += t;
+	xo_ = int(x) - par()->width() - 5;
+	yo_ = y;
+	par()->draw(pain, xo_, yo_);
 }
 

@@ -750,7 +750,7 @@ void MathCursor::selClear()
 void MathCursor::selGet(MathArray & ar)
 {
 	seldump("selGet");
-	if (selection_)
+	if (!selection_)
 		return;
 
 	theSelection.grab(*this);
@@ -1179,9 +1179,8 @@ bool MathCursor::goUp()
 	int y0;
 	getPos(x0, y0);
 	std::vector<MathCursorPos> save = Cursor_;
-	MathAtom const & out = formula()->par();
 	y0 -= xarray().ascent();
-	for (int y = y0 - 4; y > out->yo() - out->ascent(); y -= 4) {
+	for (int y = y0 - 4; y > formula()->upperY(); y -= 4) {
 		setPos(x0, y);
 		if (save != Cursor_ && xarray().yo() < y0)
 			return true;	
@@ -1212,9 +1211,8 @@ bool MathCursor::goDown()
 	int y0;
 	getPos(x0, y0);
 	std::vector<MathCursorPos> save = Cursor_;
-	MathAtom const & out = formula()->par();
 	y0 += xarray().descent();
-	for (int y = y0 + 4; y < out->yo() + out->descent(); y += 4) {
+	for (int y = y0 + 4; y < formula()->lowerY(); y += 4) {
 		setPos(x0, y);
 		if (save != Cursor_ && xarray().yo() > y0)
 			return true;	

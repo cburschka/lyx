@@ -58,7 +58,5 @@ void MathFuncInset::metrics(MathMetricsInfo const & mi) const
 
 void MathFuncInset::draw(Painter & pain, int x, int y) const
 { 
-	xo(x);
-	yo(y);
 	drawStr(pain, LM_TC_TEX, mi_, x, y, name_);
 }

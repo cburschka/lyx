@@ -25,7 +25,6 @@
 
 
 MathInset::MathInset()
-	: xo_(0), yo_(0)
 {}
 
 
@@ -44,30 +43,6 @@ std::ostream & operator<<(std::ostream & os, MathInset const & inset)
 	MathWriteInfo wi(0, os, false);
 	inset.write(wi);
 	return os;
-}
-
-
-int MathInset::xo() const
-{
-	return xo_;
-}
-
-
-int MathInset::yo() const
-{
-	return yo_;
-}
-
-
-void MathInset::xo(int x) const
-{
-	xo_ = x;
-}
-
-
-void MathInset::yo(int y) const
-{
-	yo_ = y;
 }
 
 
@@ -182,13 +157,6 @@ void MathInset::idxDeleteRange(idx_type, idx_type)
 {}
 
 
-void MathInset::getXY(int & x, int & y) const
-{
-	x = xo();
-	y = yo();
-}
-
-
 void MathInset::writeNormal(std::ostream & os) const
 {
 	os << "[unknown ";
@@ -209,13 +177,8 @@ void MathInset::dump() const
 
 bool MathInset::covers(int x, int y) const
 {
-	//lyxerr << "cover? p: " << this << " x: " << x << " y: " <<  y
-	//	<< " xo_: " << xo_ << " yo_: " << yo_  << endl;
-	return
-		x >= xo_ &&
-		x <= xo_ + width() &&
-		y >= yo_ - ascent() &&
-		y <= yo_ + descent();
+	lyxerr << "MathInset::covers() called directly!\n";
+	return false;
 }
 
 

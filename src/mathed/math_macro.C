@@ -113,9 +113,6 @@ void MathMacro::metrics(MathMetricsInfo const & mi) const
 
 void MathMacro::draw(Painter & pain, int x, int y) const
 {
-	xo(x);
-	yo(y);
-
 	metrics(mi_);
 
 	if (defining()) {

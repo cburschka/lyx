@@ -76,9 +76,6 @@ void MathDelimInset::metrics(MathMetricsInfo const & mi) const
 
 void MathDelimInset::draw(Painter & pain, int x, int y) const
 { 
-	xo(x);
-	yo(y); 
-
 	int const w = dw();
 	int const b = y - ascent_;
 	xcell(0).draw(pain, x + w + 2, y);

@@ -209,9 +209,6 @@ void MathScriptInset::draw(Painter & pain, int x, int y) const
 void MathScriptInset::draw(MathInset const * nuc, Painter & pain,
 	int x, int y) const
 {  
-	xo(x);
-	yo(y);
-
 	if (nuc)
 		nuc->draw(pain, x + dxx(nuc), y);
 	else

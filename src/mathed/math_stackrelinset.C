@@ -31,8 +31,6 @@ void MathStackrelInset::metrics(MathMetricsInfo const & mi) const
 
 void MathStackrelInset::draw(Painter & pain, int x, int y) const
 {
-	xo(x);
-	yo(y);
 	int m = x + width() / 2;
 	xcell(0).draw(pain, m - xcell(0).width() / 2, y - xcell(0).height() - 4);
 	xcell(1).draw(pain, m - xcell(1).width() / 2, y);

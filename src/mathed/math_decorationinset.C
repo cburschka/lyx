@@ -84,8 +84,6 @@ void MathDecorationInset::metrics(MathMetricsInfo const & st) const
 
 void MathDecorationInset::draw(Painter & pain, int x, int y) const
 { 
-	xo(x);
-	yo(x);
 	xcell(0).draw(pain, x, y);
 	if (wide()) 
 		mathed_draw_deco(pain, x, y + dy_, width_, dh_, name_);

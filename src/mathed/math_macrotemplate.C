@@ -67,8 +67,6 @@ void MathMacroTemplate::metrics(MathMetricsInfo const & mi) const
 
 void MathMacroTemplate::draw(Painter & pain, int x, int y) const
 {
-	xo(x);
-	yo(y);
 	xcell(0).draw(pain, x + 2, y + 1);
 	pain.rectangle(x, y - ascent(), width(), height(), LColor::blue);
 }

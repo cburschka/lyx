@@ -104,7 +104,7 @@ public:
 	/// the virtual base destructor
 	virtual ~MathInset(); 
 
-	/// draw the object, sets xo_ and yo_ cached values 
+	/// draw the object
 	virtual void draw(Painter &, int x, int y) const;
 	/// write LaTeX and Lyx code
 	virtual void write(MathWriteInfo & os) const;
@@ -172,16 +172,6 @@ public:
 	virtual MathXArray const & xcell(idx_type) const;
 			
 	///
-	virtual int xo() const;
-	///
-	virtual int yo() const;
-	///
-	virtual void xo(int tx) const;
-	///
-	virtual void yo(int ty) const;
-	///
-
-	///
 	virtual col_type ncols() const { return 1; }
 	///
 	virtual row_type nrows() const { return 1; }
@@ -202,8 +192,6 @@ public:
 	///
 	virtual void delCol(col_type) {}
 
-	///
-	virtual void getXY(int & x, int & y) const;
 	///
 	virtual bool covers(int x, int y) const;
 
@@ -253,13 +241,6 @@ public:
 	virtual void validate(LaTeXFeatures & features) const;
 	///
 	virtual void handleFont(MathTextCodes) {}
-
-private:
-	/// the following are used for positioning the cursor with the mouse
-	/// cached cursor start position in pixels from the document left
-	mutable int xo_;
-	/// cached cursor start position in pixels from the document top
-	mutable int yo_;
 };
 
 std::ostream & operator<<(std::ostream &, MathInset const &);

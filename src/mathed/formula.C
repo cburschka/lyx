@@ -163,6 +163,8 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 
 	par_->draw(pain, x, y);
 	xx += par_->width();
+	xo_ = x;
+	yo_ = y;
 
 	setCursorVisible(false);
 }
@@ -365,11 +367,17 @@ void InsetFormula::handleExtern(const string & arg)
 	if (!mathcursor)
 		return; 
 
+	bool selected = mathcursor->selection();
+
 	MathArray ar;
-	if (mathcursor->selection())
+	if (selected) {
 		mathcursor->selGet(ar);
-	else 
+		lyxerr << "use selection: " << ar << "\n";
+	} else {
 		ar = mathcursor->cursor().cell();
+		lyxerr << "use whole cell: " << ar << "\n";
+	}
+
 
 	// parse args
 	string lang;
@@ -392,15 +400,14 @@ void InsetFormula::handleExtern(const string & arg)
 	string code = os.str().c_str();
 
 	// run external sript
-	string script = "lyx2" + arg + " '" + code + "' " + outfile;
+	string script = "lyx2" + lang + " '" + code + "' " + outfile;
 	lyxerr << "calling: " << script << endl;
 	Systemcalls cmd(Systemcalls::System, script, 0);
 
-	// append a '='
-	//ar.push_back(MathAtom(new MathCharInset('=')));
-	
 	// append result
 	MathArray br;
+	if (selected)
+		br.push_back(MathAtom(new MathCharInset('=', LM_TC_VAR)));
 	ifstream is(outfile.c_str());
 	mathed_parse_cell(br, is);
 	mathcursor->insert(br);

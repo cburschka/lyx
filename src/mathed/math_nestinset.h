@@ -68,6 +68,8 @@ public:
 
 	///
 	void validate(LaTeXFeatures & features) const;
+	///
+	bool covers(int x, int y) const;
 
 protected:
 	///

@@ -103,7 +103,7 @@ MathArrayInset * matrixpar(MathInset::idx_type & idx)
 
 
 InsetFormulaBase::InsetFormulaBase()
-	: view_(0), font_()
+	: view_(0), font_(), xo_(0), yo_(0)
 {
 	// This is needed as long the math parser is not re-entrant
 	MathMacroTable::builtinMacros();
@@ -172,9 +172,9 @@ void InsetFormulaBase::insetUnlock(BufferView * bv)
 void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
 {
 	mathcursor->getPos(x, y);
-	x -= par()->xo();
-	y -= par()->yo();
-	y -= 3;
+	x += xo_;
+	y += yo_ - 3;
+	//lyxerr << "getCursorPos: " << x << " " << y << "\n";
 }
 
 
@@ -189,14 +189,14 @@ void InsetFormulaBase::toggleInsetCursor(BufferView * bv)
 		int x;
 		int y;
 		mathcursor->getPos(x, y);
-		//x -= par()->xo();
-		y -= par()->yo();
 		y -= 3;
+		y -= yo_;
 		int asc = 0;
 		int des = 0;
 		MathMetricsInfo mi(bv, font_, LM_ST_TEXT);
 		math_font_max_dim(LM_TC_TEXTRM, mi, asc, des);
 		bv->showLockedInsetCursor(x, y, asc, des);
+		//lyxerr << "toggleInsetCursor: " << x << " " << y << "\n";
 	}
 
 	toggleCursorVisible();
@@ -210,13 +210,12 @@ void InsetFormulaBase::showInsetCursor(BufferView * bv, bool)
 			int x;
 			int y;
 			mathcursor->getPos(x, y);
-			x -= par()->xo();
-			y -= par()->yo();
 			int asc = 0;
 			int des = 0;
 			MathMetricsInfo mi(bv, font_, LM_ST_TEXT);
 			math_font_max_dim(LM_TC_TEXTRM, mi, asc, des);
 			bv->fitLockedInsetCursor(x, y, asc, des);
+			//lyxerr << "showInsetCursor: " << x << " " << y << "\n";
 		}
 		toggleInsetCursor(bv);
 	}
@@ -255,9 +254,8 @@ void InsetFormulaBase::insetButtonRelease(BufferView * bv,
 {
 	if (mathcursor) {
 		hideInsetCursor(bv);
-		x += par()->xo();
-		y += par()->yo();
-		mathcursor->setPos(x, y);
+		mathcursor->setPos(x + xo_, y + yo_);
+		//lyxerr << "insetButtonRelease: " << x + xo_ << " " << y + yo_ << "\n";
 		showInsetCursor(bv);
 		if (sel_flag) {
 			sel_flag = false;
@@ -288,14 +286,12 @@ void InsetFormulaBase::insetMotionNotify(BufferView * bv,
 	if (sel_x && sel_y && abs(x-sel_x) > 4 && !sel_flag) {
 		sel_flag = true;
 		hideInsetCursor(bv);
-		mathcursor->setPos(sel_x + par()->xo(), sel_y + par()->yo());
+		mathcursor->setPos(sel_x, sel_y);
 		mathcursor->selStart();
 		showInsetCursor(bv);
 		mathcursor->getPos(sel_x, sel_y);
 	} else if (sel_flag) {
 		hideInsetCursor(bv);
-		x += par()->xo();
-		y += par()->yo();
 		mathcursor->setPos(x, y);
 		showInsetCursor(bv);
 		mathcursor->getPos(x, y);
@@ -429,14 +425,11 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		//      break;
 	case LFUN_SETXY: {
 		lyxerr << "LFUN_SETXY broken!\n";
-		int x;
-		int y;
-		int x1;
-		int y1;
+		int x = 0;
+		int y = 0;
 		istringstream is(arg.c_str());
 		is >> x >> y;
-		par()->getXY(x1, y1);
-		mathcursor->setPos(x1 + x, y1 + y);
+		mathcursor->setPos(x, y);
 		updateLocal(bv, false);
 		break;
 	}
@@ -683,6 +676,21 @@ Inset::Code InsetFormulaBase::lyxCode() const
 }
 
 
+int InsetFormulaBase::upperY() const
+{
+	return yo_ - ascent(view_, font_);
+}
+
+
+int InsetFormulaBase::lowerY() const
+{
+	return yo_ + descent(view_, font_);
+}
+
+
+/////////////////////////////////////////////////////////////////////
+
+
 void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
 {
 	if (bv->available()) {
@@ -794,4 +802,5 @@ void mathDispatchGreek(BufferView * bv, string const & arg)
 		}
 	}
 }	   
+
 

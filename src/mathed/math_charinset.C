@@ -84,8 +84,6 @@ void MathCharInset::metrics(MathMetricsInfo const & mi) const
 
 void MathCharInset::draw(Painter & pain, int x, int y) const
 { 
-	xo(x);
-	yo(y);
 	//lyxerr << "drawing '" << char_ << "' code: " << code_ << endl;
 	drawChar(pain, code_, mi_, x, y, char_);
 }

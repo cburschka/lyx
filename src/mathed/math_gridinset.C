@@ -257,8 +257,6 @@ void MathGridInset::metrics(MathMetricsInfo const & mi) const
 
 void MathGridInset::draw(Painter & pain, int x, int y) const
 {
-	xo(x);
-	yo(y);
 	for (idx_type idx = 0; idx < nargs(); ++idx)
 		xcell(idx).draw(pain, x + cellXOffset(idx), y + cellYOffset(idx));
 }

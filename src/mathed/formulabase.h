@@ -45,6 +45,10 @@ public:
 	virtual void draw(BufferView *,LyXFont const &, int, float &, bool) const = 0;
 	///
 	virtual MathInsetTypes getType() const = 0;
+	/// upper y coordinate
+	virtual int upperY() const;
+	/// lower y coordinate
+	virtual int lowerY() const;
 
 public:
 	///
@@ -93,6 +97,10 @@ public:
 	virtual void metrics(BufferView * bv = 0, LyXFont const & font = LyXFont()) const;
 	///
 	virtual void updateLocal(BufferView * bv, bool mark_dirty);
+	///
+	int xo() const { return xo_; }
+	///
+	int yo() const { return yo_; }
 private:
 	/// unimplemented
 	void operator=(const InsetFormulaBase &);
@@ -100,6 +108,11 @@ private:
 	mutable BufferView * view_;	
 	///
 	mutable LyXFont font_;
+protected:
+	///
+	mutable int xo_;
+	///
+	mutable int yo_;
 };
 
 // We don't really mess want around with mathed stuff outside mathed.
