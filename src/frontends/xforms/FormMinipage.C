@@ -21,6 +21,8 @@
 #include "xforms_helpers.h"
 #include "lyx_forms.h"
 
+using namespace lyx::support;
+
 typedef FormController<ControlMinipage, FormView<FD_minipage> > base_class;
 
 FormMinipage::FormMinipage(Dialog & parent)

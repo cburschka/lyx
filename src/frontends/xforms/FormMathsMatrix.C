@@ -29,6 +29,8 @@
 
 #include <algorithm>
 
+using namespace lyx::support;
+
 #ifndef CXX_GLOBAL_CSTD
 using std::strlen;
 #endif
@@ -44,10 +46,10 @@ extern "C" {
 	int C_FormMathsMatrixAlignFilter(FL_OBJECT * ob, char const *,
 					 char const * cur, int c)
 	{
-		lyx::Assert(ob);
+		Assert(ob);
 		FormMathsMatrix * pre =
 			static_cast<FormMathsMatrix *>(ob->u_vdata);
-		lyx::Assert(pre);
+		Assert(pre);
 		return pre->AlignFilter(cur, c);
 	}
 

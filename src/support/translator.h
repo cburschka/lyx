@@ -50,7 +50,7 @@ public:
 
 	/// Find the mapping for the first argument
 	T2 const & find(T1 const & first) const {
-		lyx::Assert(!map.empty());
+		Assert(!map.empty());
 
 		// For explanation see the next find() function.
 		typename Map::const_iterator it =
@@ -67,7 +67,7 @@ public:
 
 	/// Find the mapping for the second argument
 	T1 const & find(T2 const & second) const {
-		lyx::Assert(!map.empty());
+		Assert(!map.empty());
 
 		// The idea is as follows:
 		// find_if() will try to compare the data in the vector with

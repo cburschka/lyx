@@ -29,6 +29,8 @@
 
 #include <fstream>
 
+using namespace lyx::support;
+
 using std::ifstream;
 using std::getline;
 
@@ -80,7 +82,7 @@ int Chktex::scanLogFile(TeXErrors & terr)
 		token = split(token, warno, ':');
 		token = split(token, warning, ':');
 
-		int const lineno = lyx::atoi(line);
+		int const lineno = atoi(line);
 
 #if USE_BOOST_FORMAT
 		msg % warno;

@@ -16,6 +16,9 @@
 #include "lyxlib.h"
 #include <boost/utility.hpp>
 
+namespace lyx {
+namespace support {
+
 /**
  * Path - utility closs for stackable working directories
  *
@@ -37,8 +40,8 @@ public:
 		: popped_(false)
 	{
 		if (!path.empty()) {
-			pushedDir_ = lyx::getcwd();
-			if (pushedDir_.empty() || lyx::chdir(path))
+			pushedDir_ = getcwd();
+			if (pushedDir_.empty() || chdir(path))
 				/* FIXME: throw */;
 		} else {
 			popped_ = true;
@@ -67,5 +70,8 @@ private:
 ///
 #define Path(x) unnamed_Path;
 // Tip gotten from Bobby Schmidt's column in C/C++ Users Journal
+
+} // namespace support
+} // namespace lyx
 
 #endif // PATH_H

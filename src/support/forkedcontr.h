@@ -26,8 +26,12 @@
 #include <list>
 #include <vector>
 
-class ForkedProcess;
 class Timeout;
+
+namespace lyx {
+namespace support {
+
+class ForkedProcess;
 
 class ForkedcallsController : public boost::signals::trackable {
 public:
@@ -80,5 +84,8 @@ private:
 	 */
 	Timeout * timeout_;
 };
+
+} // namespace support
+} // namespace lyx
 
 #endif // FORKEDCONTR_H

@@ -24,6 +24,8 @@
 
 #include <utility>
 
+using namespace lyx::support;
+
 #ifndef CXX_GLOBAL_CSTD
 using std::exit;
 #endif

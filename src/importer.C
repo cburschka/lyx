@@ -26,6 +26,8 @@
 
 #include <algorithm>
 
+using namespace lyx::support;
+
 using std::vector;
 using std::find;
 

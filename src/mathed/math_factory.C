@@ -1,4 +1,3 @@
-
 #include <config.h>
 
 #include "math_parser.h"
@@ -52,9 +51,11 @@
 #include <map>
 #include <fstream>
 
-bool has_math_fonts;
+using namespace lyx::support;
 
 using std::endl;
+
+bool has_math_fonts;
 
 
 namespace {
@@ -324,4 +325,3 @@ bool createMathInset_fromDialogStr(string const & str, MathArray & ar)
 
 	return ar[0].nucleus();
 }
-

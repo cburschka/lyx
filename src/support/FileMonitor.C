@@ -20,6 +20,9 @@
 #include <boost/bind.hpp>
 #include <boost/signals/trackable.hpp>
 
+namespace lyx {
+namespace support {
+
 struct FileMonitor::Impl : public boost::signals::trackable {
 
 	///
@@ -87,7 +90,7 @@ void FileMonitor::start() const
 		return;
 
 	pimpl_->timestamp_ = finfo.getModificationTime();
-	pimpl_->checksum_ = lyx::sum(pimpl_->filename_);
+	pimpl_->checksum_ = sum(pimpl_->filename_);
 
 	if (pimpl_->timestamp_ && pimpl_->checksum_) {
 		pimpl_->timer_.start();
@@ -117,7 +120,7 @@ unsigned long FileMonitor::checksum() const
 	// If we aren't actively monitoring the file, then recompute the
 	// checksum explicitly.
 	if (!pimpl_->timer_.running() && !pimpl_->filename_.empty())
-		return lyx::sum(pimpl_->filename_);
+		return sum(pimpl_->filename_);
 
 	return pimpl_->checksum_;
 }
@@ -160,7 +163,7 @@ void FileMonitor::Impl::monitorFile()
 		if (new_timestamp != timestamp_) {
 			timestamp_ = new_timestamp;
 
-			unsigned long const new_checksum = lyx::sum(filename_);
+			unsigned long const new_checksum = sum(filename_);
 			if (new_checksum != checksum_) {
 				checksum_ = new_checksum;
 				changed = true;
@@ -172,3 +175,6 @@ void FileMonitor::Impl::monitorFile()
 	if (changed)
 		fileChanged_();
 }
+
+} // namespace support
+} // namespace lyx

@@ -32,6 +32,8 @@
 #include "support/filetools.h"
 #include "support/FileInfo.h"
 
+using namespace lyx::support;
+
 using std::pair;
 using std::make_pair;
 using std::vector;

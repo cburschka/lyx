@@ -34,6 +34,8 @@
 #include "support/LAssert.h"
 #include "support/LOstream.h"
 
+using namespace lyx::support;
+
 using std::vector;
 using std::ostream;
 using std::endl;
@@ -144,7 +146,7 @@ void InsetCollapsable::draw_collapsed(PainterInfo & pi, int x, int y) const
 
 void InsetCollapsable::draw(PainterInfo & pi, int x, int y, bool inlined) const
 {
-	lyx::Assert(pi.base.bv);
+	Assert(pi.base.bv);
 	cache(pi.base.bv);
 
 	if (nodraw())

@@ -24,6 +24,8 @@
 
 #include "support/lstrings.h"
 
+using namespace lyx::support;
+
 using std::ostream;
 using std::endl;
 

@@ -21,6 +21,8 @@
 #include "support/lyxalgo.h"
 #include "support/lstrings.h"
 
+using namespace lyx::support;
+
 using std::vector;
 using std::back_inserter;
 using std::transform;

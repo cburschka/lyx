@@ -14,7 +14,7 @@
 
 #include "lyxlib.h"
 
-int lyx::unlink(string const & pathname)
+int lyx::support::unlink(string const & pathname)
 {
 	return ::unlink(pathname.c_str());
 }

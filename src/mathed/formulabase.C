@@ -29,6 +29,7 @@
 #include "metricsinfo.h"
 #include "math_data.h"
 #include "support/lstrings.h"
+#include "support/lyxlib.h"
 #include "frontends/LyXView.h"
 #include "frontends/font_metrics.h"
 #include "frontends/mouse_state.h"
@@ -51,6 +52,8 @@
 #include "ref_inset.h"
 
 #include <fstream>
+
+using namespace lyx::support;
 
 using std::endl;
 using std::ostream;
@@ -664,7 +667,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 			bv->lockedInsetStoreUndo(Undo::EDIT);
 			if (argument.size() == 1)
 				result = mathcursor->interpret(argument[0]) ? DISPATCHED : FINISHED_RIGHT;
-			else 
+			else
 				mathcursor->insert(argument);
 		}
 		break;
@@ -731,7 +734,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	mathcursor->normalize();
 	mathcursor->touch();
 
-	lyx::Assert(mathcursor);
+	Assert(mathcursor);
 
 	if (mathcursor->selection() || was_selection)
 		toggleInsetSelection(bv);
@@ -954,7 +957,7 @@ void mathDispatch(FuncRequest const & cmd)
 			else {
 				string s = cmd.argument;
 				string const s1 = token(s, ' ', 1);
-				int const na = s1.empty() ? 0 : lyx::atoi(s1);
+				int const na = s1.empty() ? 0 : atoi(s1);
 				openNewInset(bv, new InsetFormulaMacro(token(s, ' ', 0), na));
 			}
 			break;

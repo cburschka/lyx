@@ -22,6 +22,8 @@
 #include "support/lstrings.h"
 #include "bufferparams.h" // stateText
 
+using namespace lyx::support;
+
 using std::ostream;
 using std::endl;
 

@@ -9,9 +9,6 @@
  * Full author contact details are available in file CREDITS
  */
 
-#include <vector>
-
-
 #include <config.h>
 
 #include "xformsBC.h"
@@ -28,6 +25,10 @@
 #include "frnt_lang.h"
 
 #include "support/lstrings.h"
+
+#include <vector>
+
+using namespace lyx::support;
 
 using std::vector;
 using std::find;

@@ -15,6 +15,8 @@
 
 #include <iomanip>
 
+using namespace lyx::support;
+
 using std::ostream;
 using std::setw;
 using std::endl;

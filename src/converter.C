@@ -35,6 +35,8 @@
 
 #include <cctype>
 
+using namespace lyx::support;
+
 #ifndef CXX_GLOBAL_CSTD
 using std::isdigit;
 #endif
@@ -344,7 +346,7 @@ bool Converters::convert(Buffer const * buffer,
 				res = one.startscript(type, command);
 
 			if (!real_outfile.empty()) {
-				if (!lyx::rename(outfile, real_outfile))
+				if (!rename(outfile, real_outfile))
 					res = -1;
 				else
 					lyxerr[Debug::FILES]
@@ -394,7 +396,7 @@ bool Converters::convert(Buffer const * buffer,
 					    token_base, from_base);
 			string to = subst(conv.result_dir,
 					  token_base, to_base);
-			if (!lyx::rename(from, to)) {
+			if (!rename(from, to)) {
 				Alert::error(_("Cannot convert file"),
 					bformat(_("Could not move a temporary file from %1$s to %2$s."),
 						from, to));
@@ -430,8 +432,8 @@ bool Converters::move(string const & from, string const & to, bool copy)
 			lyxerr[Debug::FILES] << "moving " << from2
 					     << " to " << to2 << endl;
 			bool const moved = (copy)
-				? lyx::copy(from2, to2)
-				: lyx::rename(from2, to2);
+				? lyx::support::copy(from2, to2)
+				: rename(from2, to2);
 			if (!moved && no_errors) {
 				Alert::error(_("Cannot convert file"),
 					bformat(_("Could not move a temporary file from %1$s to %2$s."),

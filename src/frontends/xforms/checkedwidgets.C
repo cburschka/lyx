@@ -21,6 +21,7 @@
 
 #include "lyx_forms.h"
 
+using namespace lyx::support;
 
 void addCheckedLyXLength(BCView & bcview,
 			 FL_OBJECT * input, FL_OBJECT * label)
@@ -65,7 +66,7 @@ void setWidget(bool valid, FL_OBJECT * input, FL_OBJECT * label)
 CheckedLyXLength::CheckedLyXLength(FL_OBJECT * input, FL_OBJECT * label)
 	: input_(input), label_(label ? label : input)
 {
-	lyx::Assert(input && input->objclass == FL_INPUT);
+	Assert(input && input->objclass == FL_INPUT);
 }
 
 
@@ -85,7 +86,7 @@ bool CheckedLyXLength::check() const
 CheckedGlueLength::CheckedGlueLength(FL_OBJECT * input, FL_OBJECT * label)
 	: input_(input), label_(label ? label : input)
 {
-	lyx::Assert(input && input->objclass == FL_INPUT);
+	Assert(input && input->objclass == FL_INPUT);
 }
 
 

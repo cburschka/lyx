@@ -1,4 +1,3 @@
-
 #include <config.h>
 
 #include "LString.h"
@@ -12,6 +11,8 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+
+using namespace lyx::support;
 
 using std::ifstream;
 using std::istream;

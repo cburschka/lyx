@@ -17,6 +17,8 @@
 #include "support/LIstream.h"
 #include "support/lstrings.h"
 
+using namespace lyx::support;
+
 bool operator==(Author const & l, Author const & r)
 {
 	return l.name() == r.name() && l.email() == r.email();
@@ -62,7 +64,7 @@ int AuthorList::record(Author const & a)
 
 void AuthorList::record(int id, Author const & a)
 {
-	lyx::Assert(unsigned(id) < authors_.size());
+	Assert(unsigned(id) < authors_.size());
 
 	authors_[id] = a;
 }
@@ -71,7 +73,7 @@ void AuthorList::record(int id, Author const & a)
 Author const & AuthorList::get(int id)
 {
 	Authors::const_iterator it(authors_.find(id));
-	lyx::Assert(it != authors_.end());
+	Assert(it != authors_.end());
 	return it->second;
 }
 

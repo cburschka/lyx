@@ -1,9 +1,12 @@
+2003-07-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* introduce namespace lyx::support
 
 2003-06-30  André Pönitz  <poenitz@gmx.net>
 
-	* insetcite.C (localDispatch): fix case of missing return value 
+	* insetcite.C (localDispatch): fix case of missing return value
 
-	* insetcite.C (ascii): remove unneeded temporary 
+	* insetcite.C (ascii): remove unneeded temporary
 
 2003-06-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 

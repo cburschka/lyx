@@ -22,6 +22,8 @@
 #include "support/LOstream.h"
 #include "support/lstrings.h" //frontStrip, strip
 
+using namespace lyx::support;
+
 using std::ostream;
 using std::vector;
 using std::pair;

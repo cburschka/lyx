@@ -9,6 +9,8 @@
 
 #include <algorithm>
 
+using namespace lyx::support;
+
 using std::sort;
 using std::ostream;
 using std::ios;

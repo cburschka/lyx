@@ -62,7 +62,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 	// Set the right(new) inset-owner of the paragraph if there is any.
 	UpdatableInset * inset =
 		static_cast<UpdatableInset *>(buf->getInsetFromID(undo.inset_id));
-	
+
 	ParagraphList::iterator pit = undo.pars.begin();
 	ParagraphList::iterator end = undo.pars.end();
 	for ( ; pit != end; ++pit)
@@ -130,7 +130,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			inset->localDispatch(cmd);
 		}
 	}
-	
+
 	if (inset) {
 		lyxerr << "fit cursor...\n";
 		bv->fitCursor();
@@ -192,10 +192,10 @@ void createUndo(BufferView * bv, Undo::undo_kind kind,
 	plist = &buf->paragraphs;
 	// this is what we'd like to have in the end for small grained undo
 	for (ParIterator it = buf->par_iterator_begin(); it != null; ++it) {
-		if (it->id() == first->id()) 
-			first = it.outerPar(); 
+		if (it->id() == first->id())
+			first = it.outerPar();
 		if (it->id() == last->id())
-			last = it.outerPar(); 
+			last = it.outerPar();
 	}
 
 #endif

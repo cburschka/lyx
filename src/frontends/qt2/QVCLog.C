@@ -26,6 +26,8 @@
 
 #include "support/BoostFormat.h"
 
+using namespace lyx::support;
+
 typedef QController<ControlVCLog, QView<QVCLogDialog> > base_class;
 
 
@@ -45,7 +47,7 @@ void QVCLog::build_dialog()
 
 void QVCLog::update_contents()
 {
-	setTitle(bformat(_("Version control log for %1$s"), 
+	setTitle(bformat(_("Version control log for %1$s"),
 			 controller().getBufferFileName()));
 
 	dialog_->vclogTV->setText("");

@@ -32,21 +32,21 @@ namespace io {
 namespace detail {
 
   template<class Ch, class Stream> inline
-  bool wrap_isdigit(Ch c, Stream &os) 
+  bool wrap_isdigit(Ch c, Stream &os)
   {
 #ifndef BOOST_NO_LOCALE_ISIDIGIT
     return std::isdigit(c, os.rdbuf()->getloc() );
 # else
     using namespace std;
-    return isdigit(c); 
-#endif 
+    return isdigit(c);
+#endif
   } //end- wrap_isdigit(..)
 
   template<class Res, class Ch, class Tr> inline
-  Res str2int(const std::basic_string<Ch, Tr>& s, 
-              typename std::basic_string<Ch, Tr>::size_type start, 
+  Res str2int(const std::basic_string<Ch, Tr>& s,
+              typename std::basic_string<Ch, Tr>::size_type start,
               BOOST_IO_STD basic_ios<Ch,Tr> &os,
-              const Res = Res(0)  ) 
+              const Res = Res(0)  )
     // Input : char string, with starting index
     //         a basic_ios& merely to call its widen/narrow member function in the desired locale.
     // Effects : reads s[start:] and converts digits into an integral n, of type Res
@@ -64,7 +64,7 @@ namespace detail {
   }
 
   template<class Ch, class Tr>
-  void skip_asterisk(const std::basic_string<Ch,Tr> & buf, 
+  void skip_asterisk(const std::basic_string<Ch,Tr> & buf,
                      typename std::basic_string<Ch,Tr>::size_type * pos_p,
                      BOOST_IO_STD basic_ios<Ch, Tr> &os)
     // skip printf's "asterisk-fields" directives in the format-string buf
@@ -92,7 +92,7 @@ namespace detail {
     if(exceptions & io::bad_format_string_bit)
           boost::throw_exception(io::bad_format_string());
   }
-    
+
 
 
   template<class Ch, class Tr>
@@ -104,15 +104,15 @@ namespace detail {
     // Input   : a 'printf-directive' in the format-string, starting at buf[ *pos_p ]
     //           a basic_ios& merely to call its widen/narrow member function in the desired locale.
     //           a bitset'excpetions' telling whether to throw exceptions on errors.
-    // Returns : true if parse somehow succeeded (possibly ignoring errors if exceptions disabled) 
+    // Returns : true if parse somehow succeeded (possibly ignoring errors if exceptions disabled)
     //           false if it failed so bad that the directive should be printed verbatim
     // Effects : - *pos_p is incremented so that buf[*pos_p] is the first char after the directive
     //           - *fpar is set with the parameters read in the directive
   {
     typedef format_item<Ch, Tr>  format_item_t;
     BOOST_ASSERT( pos_p != 0);
-    typename std::basic_string<Ch, Tr>::size_type       &i1 = *pos_p,      
-                                                        i0; 
+    typename std::basic_string<Ch, Tr>::size_type       &i1 = *pos_p,
+                                                        i0;
     fpar->argN_ = format_item_t::argN_no_posit;  // if no positional-directive
 
     bool in_brackets=false;
@@ -126,38 +126,38 @@ namespace detail {
       }
 
     // the flag '0' would be picked as a digit for argument order, but here it's a flag :
-    if(buf[i1]==os.widen('0')) 
+    if(buf[i1]==os.widen('0'))
       goto parse_flags;
 
     // handle argument order (%2$d)  or possibly width specification: %2d
     i0 = i1;  // save position before digits
     while (i1 < buf.size() && wrap_isdigit(buf[i1], os))
       ++i1;
-    if (i1!=i0) 
+    if (i1!=i0)
       {
         if( i1 >= buf.size() ) {
           maybe_throw_exception(exceptions);
           return false;
         }
         int n=str2int(buf,i0, os, int(0) );
-        
+
         // %N% case : this is already the end of the directive
-        if( buf[i1] == os.widen('%') ) 
+        if( buf[i1] == os.widen('%') )
           {
             fpar->argN_ = n-1;
             ++i1;
-            if( in_brackets) 
-              maybe_throw_exception(exceptions); 
+            if( in_brackets)
+              maybe_throw_exception(exceptions);
               // but don't return.  maybe "%" was used in lieu of '$', so we go on.
             else return true;
           }
 
-        if ( buf[i1]==os.widen('$') ) 
+        if ( buf[i1]==os.widen('$') )
           {
             fpar->argN_ = n-1;
             ++i1;
-          } 
-        else  
+          }
+        else
           {
             // non-positionnal directive
             fpar->ref_state_.width_ = n;
@@ -165,13 +165,13 @@ namespace detail {
             goto parse_precision;
           }
       }
-    
-  parse_flags: 
+
+  parse_flags:
     // handle flags
     while ( i1 <buf.size()) // as long as char is one of + - = # 0 l h   or ' '
-      {  
+      {
         // misc switches
-        switch (os.narrow(buf[i1], 0)) 
+        switch (os.narrow(buf[i1], 0))
           {
           case '\'' : break; // no effect yet. (painful to implement)
           case 'l':
@@ -190,7 +190,7 @@ namespace detail {
             fpar->ref_state_.flags_ |= std::ios_base::showpos;
             break;
           case '0':
-            fpar->pad_scheme_ |= format_item_t::zeropad; 
+            fpar->pad_scheme_ |= format_item_t::zeropad;
             // need to know alignment before really setting flags,
             // so just add 'zeropad' flag for now, it will be processed later.
             break;
@@ -204,7 +204,7 @@ namespace detail {
       } // loop on flag.
     if( i1>=buf.size()) {
       maybe_throw_exception(exceptions);
-      return true; 
+      return true;
     }
 
   parse_width:
@@ -213,17 +213,17 @@ namespace detail {
     i0 = i1;  // save position before digits
     while (i1<buf.size() && wrap_isdigit(buf[i1], os))
       i1++;
-    
-    if (i1!=i0) 
+
+    if (i1!=i0)
       { fpar->ref_state_.width_ = str2int( buf,i0, os, std::streamsize(0) ); }
 
   parse_precision:
-    if( i1>=buf.size()) { 
+    if( i1>=buf.size()) {
       maybe_throw_exception(exceptions);
       return true;
     }
     // handle precision spec
-    if (buf[i1]==os.widen('.'))  
+    if (buf[i1]==os.widen('.'))
       {
         ++i1;
         skip_asterisk(buf, &i1, os);
@@ -233,25 +233,25 @@ namespace detail {
 
         if(i1==i0)
           fpar->ref_state_.precision_ = 0;
-        else 
+        else
           fpar->ref_state_.precision_ = str2int(buf,i0, os, std::streamsize(0) );
       }
-    
+
     // handle  formatting-type flags :
-    while( i1<buf.size() && 
+    while( i1<buf.size() &&
            ( buf[i1]==os.widen('l') || buf[i1]==os.widen('L') || buf[i1]==os.widen('h')) )
       ++i1;
     if( i1>=buf.size()) {
       maybe_throw_exception(exceptions);
       return true;
     }
-    
-    if( in_brackets && buf[i1]==os.widen('|') ) 
+
+    if( in_brackets && buf[i1]==os.widen('|') )
       {
         ++i1;
         return true;
       }
-    switch (os.narrow(buf[i1], 0) )  
+    switch (os.narrow(buf[i1], 0) )
       {
       case 'X':
         fpar->ref_state_.flags_ |= std::ios_base::uppercase;
@@ -260,7 +260,7 @@ namespace detail {
         fpar->ref_state_.flags_ &= ~std::ios_base::basefield;
         fpar->ref_state_.flags_ |= std::ios_base::hex;
         break;
-      
+
       case 'o':
         fpar->ref_state_.flags_ &= ~std::ios_base::basefield;
         fpar->ref_state_.flags_ |=  std::ios_base::oct;
@@ -275,7 +275,7 @@ namespace detail {
         fpar->ref_state_.flags_ &= ~std::ios_base::basefield;
         fpar->ref_state_.flags_ |=  std::ios_base::dec;
         break;
-      
+
       case 'f':
         fpar->ref_state_.flags_ &= ~std::ios_base::floatfield;
         fpar->ref_state_.flags_ |=  std::ios_base::fixed;
@@ -293,12 +293,12 @@ namespace detail {
         else
           fpar->ref_state_.fill_ = buf[i1];
         fpar->pad_scheme_ |= format_item_t::tabulation;
-        fpar->argN_ = format_item_t::argN_tabulation; 
+        fpar->argN_ = format_item_t::argN_tabulation;
         break;
-      case 't': 
+      case 't':
         fpar->ref_state_.fill_ = os.widen(' ');
         fpar->pad_scheme_ |= format_item_t::tabulation;
-        fpar->argN_ = format_item_t::argN_tabulation; 
+        fpar->argN_ = format_item_t::argN_tabulation;
         break;
 
       case 'G':
@@ -309,29 +309,29 @@ namespace detail {
         fpar->ref_state_.flags_ |=  std::ios_base::dec;
 
         // CLEAR all floatield flags, so stream will CHOOSE
-        fpar->ref_state_.flags_ &= ~std::ios_base::floatfield; 
+        fpar->ref_state_.flags_ &= ~std::ios_base::floatfield;
         break;
 
       case 'C':
-      case 'c': 
+      case 'c':
         fpar->truncate_ = 1;
         break;
       case 'S':
-      case 's': 
+      case 's':
         fpar->truncate_ = fpar->ref_state_.precision_;
         fpar->ref_state_.precision_ = -1;
         break;
-      case 'n' :  
+      case 'n' :
         fpar->argN_ = format_item_t::argN_ignored;
         break;
-      default: 
+      default:
         maybe_throw_exception(exceptions);
       }
     ++i1;
 
     if( in_brackets )
       {
-        if( i1<buf.size() && buf[i1]==os.widen('|') ) 
+        if( i1<buf.size() && buf[i1]==os.widen('|') )
           {
             ++i1;
             return true;
@@ -349,19 +349,19 @@ namespace detail {
 //  format :: parse(..)
 
 template<class Ch, class Traits>
-void basic_format<Ch, Traits> ::parse(const string_t & buf) 
+void basic_format<Ch, Traits> ::parse(const string_t & buf)
   // parse the format-string
 {
     using namespace std;
     const Ch arg_mark = oss_.widen('%');
-    bool ordered_args=true; 
+    bool ordered_args=true;
     int max_argN=-1;
     typename string_t::size_type i1=0;
     int num_items=0;
-    
+
     // A: find upper_bound on num_items and allocates arrays
-    i1=0; 
-    while( (i1=buf.find(arg_mark,i1)) != string::npos ) 
+    i1=0;
+    while( (i1=buf.find(arg_mark,i1)) != string_t::npos )
     {
       if( i1+1 >= buf.size() ) {
         if(exceptions() & io::bad_format_string_bit)
@@ -370,7 +370,7 @@ void basic_format<Ch, Traits> ::parse(const string_t & buf)
       }
       if(buf[i1+1] == buf[i1] ) { i1+=2; continue; } // escaped "%%" / "##"
       ++i1;
-      
+
       // in case of %N% directives, dont count it double (wastes allocations..) :
       while(i1 < buf.size() && io::detail::wrap_isdigit(buf[i1],oss_)) ++i1;
       if( i1 < buf.size() && buf[i1] == arg_mark ) ++ i1;
@@ -378,28 +378,28 @@ void basic_format<Ch, Traits> ::parse(const string_t & buf)
       ++num_items;
     }
     items_.assign( num_items, format_item_t() );
-    
+
     // B: Now the real parsing of the format string :
     num_items=0;
     i1 = 0;
     typename string_t::size_type i0 = i1;
     bool special_things=false;
     int cur_it=0;
-    while( (i1=buf.find(arg_mark,i1)) != string::npos ) 
+    while( (i1=buf.find(arg_mark,i1)) != string_t::npos )
     {
       string_t & piece = (cur_it==0) ? prefix_ : items_[cur_it-1].appendix_;
 
       if( buf[i1+1] == buf[i1] ) // escaped mark, '%%'
       {
-        piece += buf.substr(i0, i1-i0) + buf[i1]; 
+        piece += buf.substr(i0, i1-i0) + buf[i1];
         i1+=2; i0=i1;
-        continue; 
+        continue;
       }
       BOOST_ASSERT(  static_cast<unsigned int>(cur_it) < items_.size() || cur_it==0);
 
       if(i1!=i0) piece += buf.substr(i0, i1-i0);
       ++i1;
-      
+
       bool parse_ok;
       parse_ok = io::detail::parse_printf_directive(buf, &i1, &items_[cur_it], oss_, exceptions());
       if( ! parse_ok ) continue; // the directive will be printed verbatim
@@ -418,12 +418,12 @@ void basic_format<Ch, Traits> ::parse(const string_t & buf)
       ++cur_it;
     } // loop on %'s
     BOOST_ASSERT(cur_it == num_items);
-    
+
     // store the final piece of string
     string_t & piece = (cur_it==0) ? prefix_ : items_[cur_it-1].appendix_;
     piece += buf.substr(i0);
-    
-    if( !ordered_args) 
+
+    if( !ordered_args)
     {
       if(max_argN >= 0 )  // dont mix positional with non-positionnal directives
         {
@@ -434,14 +434,14 @@ void basic_format<Ch, Traits> ::parse(const string_t & buf)
       // set things like it would have been with positional directives :
       int non_ordered_items = 0;
       for(int i=0; i< num_items; ++i)
-        if(items_[i].argN_ == format_item_t::argN_no_posit) 
+        if(items_[i].argN_ == format_item_t::argN_no_posit)
           {
             items_[i].argN_ = non_ordered_items;
             ++non_ordered_items;
           }
       max_argN = non_ordered_items-1;
     }
-    
+
     // C: set some member data :
     items_.resize(num_items);
 

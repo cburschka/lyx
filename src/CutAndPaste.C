@@ -38,6 +38,7 @@ using std::make_pair;
 using std::for_each;
 using std::vector;
 
+using namespace lyx::support;
 using lyx::pos_type;
 using lyx::textclass_type;
 
@@ -180,11 +181,11 @@ bool CutAndPaste::copySelection(ParagraphList::iterator startpit,
 				ParagraphList::iterator endpit,
 				int start, int end, textclass_type tc)
 {
-	lyx::Assert(&*startpit);
-	lyx::Assert(&*endpit);
-	lyx::Assert(0 <= start && start <= startpit->size());
-	lyx::Assert(0 <= end && end <= endpit->size());
-	lyx::Assert(startpit != endpit || start <= end);
+	Assert(&*startpit);
+	Assert(&*endpit);
+	Assert(0 <= start && start <= startpit->size());
+	Assert(0 <= end && end <= endpit->size());
+	Assert(startpit != endpit || start <= end);
 
 	ParagraphList paragraphs;
 
@@ -229,7 +230,7 @@ CutAndPaste::pasteSelection(Buffer const & buffer,
 	if (!checkPastePossible())
 		return make_pair(PitPosPair(pit, pos), pit);
 
-	lyx::Assert (pos <= pit->size());
+	Assert (pos <= pit->size());
 
 	// Make a copy of the CaP paragraphs.
 	ParagraphList simple_cut_clone = cuts[cut_index].first;
@@ -384,7 +385,7 @@ int CutAndPaste::SwitchLayoutsBetweenClasses(textclass_type c1,
 					     ParagraphList & pars,
 					     ErrorList & errorlist)
 {
-	lyx::Assert(!pars.empty());
+	Assert(!pars.empty());
 
 	int ret = 0;
 	if (c1 == c2)

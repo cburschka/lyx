@@ -21,6 +21,8 @@
 #include "support/lstrings.h"
 #include "gettext.h"
 
+using namespace lyx::support;
+
 using std::ostream;
 
 

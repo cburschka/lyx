@@ -16,6 +16,7 @@
 #include "frontends/Painter.h"
 #include "textpainter.h"
 
+using namespace lyx::support;
 
 using std::max;
 using std::min;
@@ -41,14 +42,14 @@ void MathArray::substitute(MathMacro const & m)
 
 MathAtom & MathArray::operator[](pos_type pos)
 {
-	lyx::Assert(pos < size());
+	Assert(pos < size());
 	return base_type::operator[](pos);
 }
 
 
 MathAtom const & MathArray::operator[](pos_type pos) const
 {
-	lyx::Assert(pos < size());
+	Assert(pos < size());
 	return base_type::operator[](pos);
 }
 
@@ -61,7 +62,7 @@ void MathArray::insert(size_type pos, MathAtom const & t)
 
 void MathArray::insert(size_type pos, MathArray const & ar)
 {
-	lyx::Assert(pos <= size());
+	Assert(pos <= size());
 	base_type::insert(begin() + pos, ar.begin(), ar.end());
 }
 

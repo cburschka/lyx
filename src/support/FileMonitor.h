@@ -21,6 +21,9 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/signal0.hpp>
 
+namespace lyx {
+namespace support {
+
 class FileMonitor : boost::noncopyable {
 public:
 	/** Once monitoring begins, the file will be monitored every
@@ -62,5 +65,8 @@ private:
 	/// The pointer never changes although *pimpl_'s contents may.
 	boost::scoped_ptr<Impl> const pimpl_;
 };
+
+} // namespace support
+} // namespace lyx
 
 #endif // FILEMONITOR_H

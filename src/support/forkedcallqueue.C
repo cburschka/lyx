@@ -20,6 +20,9 @@
 using std::endl;
 using std::queue;
 
+namespace lyx {
+namespace support {
+
 ForkedCallQueue & ForkedCallQueue::get()
 {
 	static ForkedCallQueue singleton;
@@ -90,3 +93,6 @@ bool ForkedCallQueue::running() const
 {
 	return running_ ;
 }
+
+} // namespace support
+} // namespace lyx

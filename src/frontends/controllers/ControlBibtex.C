@@ -23,6 +23,8 @@
 
 #include "support/filetools.h"
 
+using namespace lyx::support;
+
 using std::pair;
 using std::vector;
 

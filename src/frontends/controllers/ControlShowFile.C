@@ -13,6 +13,8 @@
 #include "ControlShowFile.h"
 #include "support/filetools.h"
 
+using namespace lyx::support;
+
 
 ControlShowFile::ControlShowFile(Dialog & parent)
 	: Dialog::Controller(parent)

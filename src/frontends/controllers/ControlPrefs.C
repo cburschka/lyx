@@ -30,6 +30,8 @@ extern string system_lyxdir;
 extern string user_lyxdir;
 extern BufferList bufferlist;
 
+using namespace lyx::support;
+
 using std::endl;
 using std::pair;
 

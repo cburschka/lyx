@@ -83,6 +83,8 @@ extern string system_lyxdir;
 extern string build_lyxdir;
 extern string user_lyxdir;
 
+namespace lyx {
+namespace support {
 
 bool IsLyXFilename(string const & filename)
 {
@@ -158,12 +160,12 @@ bool IsDirWriteable(string const & path)
 {
 	lyxerr[Debug::FILES] << "IsDirWriteable: " << path << endl;
 
-	string const tmpfl(lyx::tempName(path, "lyxwritetest"));
+	string const tmpfl(tempName(path, "lyxwritetest"));
 
 	if (tmpfl.empty())
 		return false;
 
-	lyx::unlink(tmpfl);
+	unlink(tmpfl);
 	return true;
 }
 
@@ -430,7 +432,7 @@ int DeleteAllFilesInDir(string const & path)
 		FileInfo fi(unlinkpath);
 		if (fi.isOK() && fi.isDir())
 			deleted = (DeleteAllFilesInDir(unlinkpath) == 0);
-		deleted &= (lyx::unlink(unlinkpath) == 0);
+		deleted &= (unlink(unlinkpath) == 0);
 		if (!deleted)
 			return_value = -1;
 	}
@@ -445,14 +447,14 @@ string const CreateTmpDir(string const & tempdir, string const & mask)
 		<< "CreateTmpDir: tempdir=`" << tempdir << "'\n"
 		<< "CreateTmpDir:    mask=`" << mask << '\'' << endl;
 
-	string const tmpfl(lyx::tempName(tempdir, mask));
+	string const tmpfl(tempName(tempdir, mask));
 	// lyx::tempName actually creates a file to make sure that it
 	// stays unique. So we have to delete it before we can create
 	// a dir with the same name. Note also that we are not thread
 	// safe because of the gap between unlink and mkdir. (Lgb)
-	lyx::unlink(tmpfl.c_str());
+	unlink(tmpfl);
 
-	if (tmpfl.empty() || lyx::mkdir(tmpfl, 0700))
+	if (tmpfl.empty() || mkdir(tmpfl, 0700))
 		return string();
 
 	return MakeAbsPath(tmpfl);
@@ -469,7 +471,7 @@ int destroyDir(string const & tmpdir)
 	if (DeleteAllFilesInDir(tmpdir))
 		return -1;
 
-	if (lyx::rmdir(tmpdir))
+	if (rmdir(tmpdir))
 		return -1;
 
 	return 0;
@@ -484,7 +486,7 @@ string const CreateBufferTmpDir(string const & pathfor)
 	// In fact I wrote this code to circumvent a problematic behaviour (bug?)
 	// of EMX mkstemp().
 	string const tmpfl = tmpdir + "/lyx_tmpbuf" + tostr(count++);
-	if (lyx::mkdir(tmpfl, 0777)) {
+	if (mkdir(tmpfl, 0777)) {
 		return string();
 	}
 	return tmpfl;
@@ -494,7 +496,7 @@ string const CreateBufferTmpDir(string const & pathfor)
 string const CreateLyXTmpDir(string const & deflt)
 {
 	if ((!deflt.empty()) && (deflt  != "/tmp")) {
-		if (lyx::mkdir(deflt, 0777)) {
+		if (mkdir(deflt, 0777)) {
 #ifdef __EMX__
 		Path p(user_lyxdir);
 #endif
@@ -514,9 +516,9 @@ bool createDirectory(string const & path, int permission)
 {
 	string temp(rtrim(os::slashify_path(path), "/"));
 
-	lyx::Assert(!temp.empty());
+	Assert(!temp.empty());
 
-	if (lyx::mkdir(temp, permission))
+	if (mkdir(temp, permission))
 		return false;
 
 	return true;
@@ -556,7 +558,7 @@ string const MakeAbsPath(string const & RelPath, string const & BasePath)
 	if (os::is_absolute_path(BasePath))
 		TempBase = BasePath;
 	else
-		TempBase = AddPath(lyx::getcwd(), BasePath);
+		TempBase = AddPath(getcwd(), BasePath);
 
 	// Handle /./ at the end of the path
 	while (suffixIs(TempBase, "/./"))
@@ -661,7 +663,7 @@ string const ExpandPath(string const & path)
 	RTemp = split(RTemp, Temp, '/');
 
 	if (Temp == ".") {
-		return lyx::getcwd() /*GetCWD()*/ + '/' + RTemp;
+		return getcwd() + '/' + RTemp;
 	}
 	if (Temp == "~") {
 		return GetEnvPath("HOME") + '/' + RTemp;
@@ -1137,7 +1139,7 @@ bool zippedFile(string const & name)
 string const unzipFile(string const & zipped_file)
 {
 	string const file = ChangeExtension(zipped_file, string());
-	string  const tempfile = lyx::tempName(string(), file);
+	string  const tempfile = tempName(string(), file);
 	// Run gunzip
 	string const command = "gunzip -c " + zipped_file + " > " + tempfile;
 	Systemcall one;
@@ -1284,7 +1286,7 @@ void removeAutosaveFile(string const & filename)
 	a += '#';
 	FileInfo const fileinfo(a);
 	if (fileinfo.exist())
-		lyx::unlink(a);
+		unlink(a);
 }
 
 
@@ -1293,8 +1295,9 @@ void readBB_lyxerrMessage(string const & file, bool & zipped,
 {
 	lyxerr[Debug::GRAPHICS] << "[readBB_from_PSFile] "
 		<< message << std::endl;
+#warning Why is this func deleting a file? (Lgb)
 	if (zipped)
-		lyx::unlink(file);
+		unlink(file);
 }
 
 
@@ -1334,7 +1337,7 @@ string const readBB_from_PSFile(string const & file)
 
 string const copyFileToDir(string const & path, string const & file_in)
 {
-	lyx::Assert(AbsolutePath(path));
+	Assert(AbsolutePath(path));
 
 	// First, make the file path relative to path.
 	string file_out = MakeRelPath(path, NormalizePath(file_in));
@@ -1365,8 +1368,11 @@ string const copyFileToDir(string const & path, string const & file_in)
 		if (!fi2.exist() ||
 		    difftime(fi.getModificationTime(),
 			     fi2.getModificationTime()) >= 0)
-			success = lyx::copy(file_in, file_out);
+			success = copy(file_in, file_out);
 	}
 
 	return success ? file_out : string();
 }
+
+} //namespace support
+} // namespace lyx

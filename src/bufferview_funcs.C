@@ -36,6 +36,8 @@
 
 #include "insets/updatableinset.h"
 
+using namespace lyx::support;
+
 
 namespace {
 

@@ -11,8 +11,6 @@
  */
 
 #include <config.h>
-#include <algorithm>
-
 
 #include "debug.h"
 
@@ -25,6 +23,10 @@
 #include "xforms_helpers.h" // setEnabled
 #include "support/lstrings.h" // strip
 #include "lyx_forms.h"
+
+#include <algorithm>
+
+using namespace lyx::support;
 
 typedef FormController<ControlInclude, FormView<FD_include> > base_class;
 

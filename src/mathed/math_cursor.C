@@ -49,6 +49,8 @@
 
 //#define FILEDEBUG 1
 
+using namespace lyx::support;
+
 using std::endl;
 using std::min;
 using std::max;
@@ -836,28 +838,28 @@ bool MathCursor::hasNextAtom() const
 
 MathAtom const & MathCursor::prevAtom() const
 {
-	lyx::Assert(pos() > 0);
+	Assert(pos() > 0);
 	return array()[pos() - 1];
 }
 
 
 MathAtom & MathCursor::prevAtom()
 {
-	lyx::Assert(pos() > 0);
+	Assert(pos() > 0);
 	return array()[pos() - 1];
 }
 
 
 MathAtom const & MathCursor::nextAtom() const
 {
-	lyx::Assert(pos() < size());
+	Assert(pos() < size());
 	return array()[pos()];
 }
 
 
 MathAtom & MathCursor::nextAtom()
 {
-	lyx::Assert(pos() < size());
+	Assert(pos() < size());
 	return array()[pos()];
 }
 
@@ -923,14 +925,14 @@ void MathCursor::getSelection(CursorPos & i1, CursorPos & i2) const
 
 CursorPos & MathCursor::cursor()
 {
-	lyx::Assert(depth());
+	Assert(depth());
 	return Cursor_.back();
 }
 
 
 CursorPos const & MathCursor::cursor() const
 {
-	lyx::Assert(depth());
+	Assert(depth());
 	return Cursor_.back();
 }
 

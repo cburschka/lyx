@@ -33,6 +33,7 @@
 #include "support/LAssert.h"
 #include "support/tostr.h"
 
+using namespace lyx::support;
 
 using std::ostream;
 using std::min;

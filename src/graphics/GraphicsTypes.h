@@ -15,6 +15,7 @@
 #ifndef GRAPHICSTYPES_H
 #define GRAPHICSTYPES_H
 
+#include "LString.h"
 #include "support/translator.h"
 
 namespace grfx {

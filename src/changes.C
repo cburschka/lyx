@@ -17,6 +17,8 @@
 #include "support/LAssert.h"
 #include "support/LOstream.h"
 
+using namespace lyx::support;
+
 using std::vector;
 using std::endl;
 using lyx::pos_type;
@@ -325,7 +327,7 @@ Change const Changes::lookupFull(pos_type pos) const
 	}
 
 	check();
-	lyx::Assert(0);
+	Assert(false);
 	return Change(Change::UNCHANGED);
 }
 
@@ -347,7 +349,7 @@ Change::Type Changes::lookup(pos_type pos) const
 	}
 
 	check();
-	lyx::Assert(0);
+	Assert(0);
 	return Change::UNCHANGED;
 }
 
@@ -485,7 +487,7 @@ void Changes::check() const
 	if (lyxerr.debugging(Debug::CHANGES))
 		lyxerr[Debug::CHANGES] << "End" << endl;
 
-	lyx::Assert(dont_assert);
+	Assert(dont_assert);
 }
 
 

@@ -18,6 +18,7 @@
 #include "LString.h"
 
 namespace lyx {
+namespace support {
 
 /// get the current working directory
 string const getcwd();
@@ -64,6 +65,7 @@ inline bool float_equal(float var, float number, float error)
 	return (number - error <= var && var <= number + error);
 }
 
+} // namespace support
 } // namespace lyx
 
 #endif /* LYX_LIB_H */

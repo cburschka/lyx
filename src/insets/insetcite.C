@@ -23,6 +23,8 @@
 
 #include <map>
 
+using namespace lyx::support;
+
 using std::ostream;
 using std::vector;
 using std::map;

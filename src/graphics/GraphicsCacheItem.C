@@ -22,10 +22,13 @@
 
 #include "support/LAssert.h"
 #include "support/filetools.h"
+#include "support/lyxlib.h"
 
 #include <boost/shared_ptr.hpp>
 #include <boost/bind.hpp>
 #include <boost/signals/trackable.hpp>
+
+using namespace lyx::support;
 
 using std::endl;
 
@@ -207,11 +210,11 @@ void CacheItem::Impl::reset()
 {
 	zipped_ = false;
 	if (!unzipped_filename_.empty())
-		lyx::unlink(unzipped_filename_);
+		unlink(unzipped_filename_);
 	unzipped_filename_.erase();
 
 	if (remove_loaded_file_ && !file_to_load_.empty())
-		lyx::unlink(file_to_load_);
+		unlink(file_to_load_);
 	remove_loaded_file_ = false;
 	file_to_load_.erase();
 
@@ -259,7 +262,7 @@ void CacheItem::Impl::imageConverted(bool success)
 		setStatus(ErrorConverting);
 
 		if (zipped_)
-			lyx::unlink(unzipped_filename_);
+			unlink(unzipped_filename_);
 
 		return;
 	}
@@ -291,10 +294,10 @@ void CacheItem::Impl::imageLoaded(bool success)
 
 	// Clean up after loading.
 	if (zipped_)
-		lyx::unlink(unzipped_filename_);
+		unlink(unzipped_filename_);
 
 	if (remove_loaded_file_ && unzipped_filename_ != file_to_load_)
-		lyx::unlink(file_to_load_);
+		unlink(file_to_load_);
 
 	cl_.disconnect();
 
@@ -319,7 +322,7 @@ string const findTargetFormat(string const & from)
 	FormatList const formats = grfx::Image::loadableFormats();
 
 	// There must be a format to load from.
-	lyx::Assert(!formats.empty());
+	Assert(!formats.empty());
 
 	// First ascertain if we can load directly with no conversion
 	FormatList::const_iterator it  = formats.begin();
@@ -392,11 +395,11 @@ void CacheItem::Impl::convertToDisplayFormat()
 
 	// Add some stuff to create a uniquely named temporary file.
 	// This file is deleted in loadImage after it is loaded into memory.
-	string const to_file_base = lyx::tempName(string(), temp);
+	string const to_file_base = tempName(string(), temp);
 	remove_loaded_file_ = true;
 
 	// Remove the temp file, we only want the name...
-	lyx::unlink(to_file_base);
+	unlink(to_file_base);
 
 	// Connect a signal to this->imageConverted and pass this signal to
 	// the graphics converter so that we can load the modified file

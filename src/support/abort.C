@@ -14,7 +14,7 @@
 
 #include "support/lyxlib.h"
 
-void lyx::abort()
+void lyx::support::abort()
 {
 	::abort();
 }

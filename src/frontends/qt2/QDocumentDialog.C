@@ -52,6 +52,7 @@
 #include <qslider.h>
 #include "lengthcombo.h"
 
+using namespace lyx::support;
 
 QDocumentDialog::QDocumentDialog(QDocument * form)
 	: QDocumentDialogBase(0, 0, false, 0), form_(form)
@@ -309,7 +310,7 @@ void QDocumentDialog::updateFontsize(string const & items, string const & sel)
 	textLayoutModule->fontsizeCO->clear();
 	textLayoutModule->fontsizeCO->insertItem("default");
 
-	for (int n=0; !token(items,'|',n).empty(); ++n)
+	for (int n = 0; !token(items,'|',n).empty(); ++n)
 		textLayoutModule->fontsizeCO->
 			insertItem(toqstr(token(items,'|',n)));
 

@@ -21,6 +21,8 @@
 #include "gettext.h" // _()
 #include "frontends/Alert.h"
 
+using namespace lyx::support;
+
 using std::pair;
 using std::vector;
 using std::make_pair;

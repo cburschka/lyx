@@ -18,6 +18,7 @@
 #include "author.h"
 #include "support/lstrings.h"
 
+using namespace lyx::support;
 
 ControlChanges::ControlChanges(Dialog & parent)
 	: Dialog::Controller(parent)

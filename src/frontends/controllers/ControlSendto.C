@@ -24,6 +24,8 @@
 #include "support/lstrings.h"
 #include "support/systemcall.h"
 
+using namespace lyx::support;
+
 using std::vector;
 
 

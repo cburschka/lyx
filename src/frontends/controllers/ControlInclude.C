@@ -23,6 +23,8 @@
 
 #include <utility>
 
+using namespace lyx::support;
+
 using std::pair;
 
 

@@ -20,6 +20,9 @@
 
 #include "LString.h"
 
+namespace lyx {
+namespace support {
+
 ///
 int compare_no_case(string const & s, string const & s2);
 
@@ -209,5 +212,8 @@ string bformat(string const & fmt, string const & arg1, string const & arg2,
 // arguments %1$s and %2$s and %3$s and %4$s
 string bformat(string const & fmt, string const & arg1, string const & arg2,
                string const & arg3, string const & arg4);
+
+} // namespace support
+} // namespace lyx
 
 #endif

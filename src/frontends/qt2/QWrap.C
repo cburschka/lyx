@@ -28,6 +28,7 @@
 #include <qcombobox.h>
 #include <qlineedit.h>
 
+using namespace lyx::support;
 
 typedef QController<ControlWrap, QView<QWrapDialog> > base_class;
 

@@ -1,4 +1,3 @@
-
 #include "config.h"
 #include "math_pos.h"
 #include "math_inset.h"
@@ -6,6 +5,7 @@
 #include "support/LAssert.h"
 #include "support/LOstream.h"
 
+using namespace lyx::support;
 
 CursorPos::CursorPos()
 	: inset_(0), idx_(0), pos_(0)
@@ -15,21 +15,21 @@ CursorPos::CursorPos()
 CursorPos::CursorPos(MathInset * p)
 	: inset_(p), idx_(0), pos_(0)
 {
-	lyx::Assert(inset_);
+	Assert(inset_);
 }
 
 
 
 MathArray & CursorPos::cell(MathArray::idx_type idx) const
 {
-	lyx::Assert(inset_);
+	Assert(inset_);
 	return inset_->cell(idx);
 }
 
 
 MathArray & CursorPos::cell() const
 {
-	lyx::Assert(inset_);
+	Assert(inset_);
 	return inset_->cell(idx_);
 }
 

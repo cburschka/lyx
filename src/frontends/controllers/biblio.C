@@ -26,6 +26,8 @@
 
 #include <algorithm>
 
+using namespace lyx::support;
+
 using std::vector;
 
 
@@ -57,7 +59,7 @@ string const familyName(string const & name)
 
 string const getAbbreviatedAuthor(InfoMap const & map, string const & key)
 {
-	lyx::Assert(!map.empty());
+	Assert(!map.empty());
 
 	InfoMap::const_iterator it = map.find(key);
 	if (it == map.end())
@@ -109,7 +111,7 @@ string const getAbbreviatedAuthor(InfoMap const & map, string const & key)
 
 string const getYear(InfoMap const & map, string const & key)
 {
-	lyx::Assert(!map.empty());
+	Assert(!map.empty());
 
 	InfoMap::const_iterator it = map.find(key);
 	if (it == map.end())
@@ -173,7 +175,7 @@ vector<string> const getKeys(InfoMap const & map)
 
 string const getInfo(InfoMap const & map, string const & key)
 {
-	lyx::Assert(!map.empty());
+	Assert(!map.empty());
 
 	InfoMap::const_iterator it = map.find(key);
 	if (it == map.end())

@@ -27,6 +27,8 @@
 #include <qpushbutton.h>
 #include <qcombobox.h>
 
+using namespace lyx::support;
+
 BulletsModule::BulletsModule(QWidget * parent,  const char * name, WFlags fl)
 	: BulletsModuleBase(parent, name, fl), tmpbulletset(0)
 {
@@ -238,7 +240,7 @@ void BulletsModule::setBullet(int level, const Bullet & bullet)
 		case 1: pb = bullet2PB; co = bulletsize2CO; break;
 		case 2: pb = bullet3PB; co = bulletsize3CO; break;
 		case 3: pb = bullet4PB; co = bulletsize4CO; break;
-		default: lyx::Assert(false); break;
+		default: Assert(false); break;
 	}
 
 	setBullet(pb, co, bullet);

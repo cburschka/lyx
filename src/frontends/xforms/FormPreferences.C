@@ -66,6 +66,8 @@ using std::setfill;
 extern string system_lyxdir;
 extern string user_lyxdir;
 
+using namespace lyx::support;
+
 namespace {
 
 // These should probably go inside the class definition...
@@ -336,7 +338,7 @@ void FormPreferences::apply()
 
 string const FormPreferences::getFeedback(FL_OBJECT * ob)
 {
-	lyx::Assert(ob);
+	Assert(ob);
 
 	if (ob->form->fdui == colors_.dialog())
 		return colors_.feedback(ob);
@@ -369,7 +371,7 @@ string const FormPreferences::getFeedback(FL_OBJECT * ob)
 
 ButtonPolicy::SMInput FormPreferences::input(FL_OBJECT * ob, long)
 {
-	lyx::Assert(ob);
+	Assert(ob);
 
 	bool valid = true;
 

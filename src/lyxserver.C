@@ -60,6 +60,9 @@
 #include "support/os2_errortable.h"
 #endif
 
+
+using namespace lyx::support;
+
 using std::endl;
 
 // provide an empty mkfifo() if we do not have one. This disables the
@@ -190,7 +193,7 @@ int LyXComm::startPipe(string const & filename, bool write)
 	if (fd < 0) {
 		lyxerr << "LyXComm: Could not open pipe " << filename << '\n'
 		       << strerror(errno) << endl;
-		lyx::unlink(filename);
+		unlink(filename);
 		return -1;
 	}
 
@@ -231,7 +234,7 @@ void LyXComm::endPipe(int & fd, string const & filename, bool write)
 
 // OS/2 pipes are deleted automatically
 #ifndef __EMX__
-	if (lyx::unlink(filename) < 0) {
+	if (unlink(filename) < 0) {
 		lyxerr << "LyXComm: Could not remove pipe " << filename
 		       << '\n' << strerror(errno) << endl;
 	};

@@ -42,7 +42,7 @@ template class boost::detail::crc_table_t<32, 0x04C11DB7, true>;
 #include <sys/mman.h>
 
 
-unsigned long lyx::sum(string const & file)
+unsigned long lyx::support::sum(string const & file)
 {
 	lyxerr[Debug::FILES] << "lyx::sum() using mmap (lightning fast)"
 			     << endl;
@@ -98,7 +98,7 @@ unsigned long do_crc(InputIterator first, InputIterator last)
 using std::ifstream;
 using std::istreambuf_iterator;
 
-unsigned long lyx::sum(string const & file)
+unsigned long lyx::support::sum(string const & file)
 {
 	lyxerr[Debug::FILES] << "lyx::sum() using istreambuf_iterator (fast)"
 			     << endl;
@@ -116,7 +116,7 @@ unsigned long lyx::sum(string const & file)
 using std::istream_iterator;
 using std::ios;
 
-unsigned long lyx::sum(string const & file)
+unsigned long lyx::support::sum(string const & file)
 {
 	lyxerr[Debug::FILES]
 		<< "lyx::sum() using istream_iterator (slow as a snail)"

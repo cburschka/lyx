@@ -29,6 +29,8 @@
 
 #include <cstring> // for size_t
 
+namespace lyx {
+
 /** A string class for LyX
 
   This is a permanent String class. It is modeled closely after the C++ STL
@@ -84,7 +86,7 @@ When you want to copy an lyxstring, just do
 
   The class automatically handles deep copying when required.
 */
-class lyxstring {
+class string {
 public:
 	/* Typedefs */
 
@@ -146,28 +148,28 @@ public:
 	/// "all characters" marker
 	static const size_type npos;
 
-	/// #lyxstring x;#
-	lyxstring();
+	/// #string x;#
+	string();
 
-	/// #lyxstring x(lyxstring ...)#
-	lyxstring(lyxstring const &, size_type pos = 0, size_type n = npos);
+	/// #string x(string ...)#
+	string(string const &, size_type pos = 0, size_type n = npos);
 
-	/// #lyxstring x("abc", 2) -> "ab"#
-	lyxstring(value_type const *, size_type n);
+	/// #string x("abc", 2) -> "ab"#
+	string(value_type const *, size_type n);
 
-	// #lyxstring x("abc")#
-	lyxstring(value_type const *);
+	// #string x("abc")#
+	string(value_type const *);
 
-	/// lyxstring(5, 'n') -> "nnnnn"
-	lyxstring(size_type n, value_type c);
+	/// string(5, 'n') -> "nnnnn"
+	string(size_type n, value_type c);
 
 #if 0
 	///
-	lyxstring(const_iterator first, const_iterator last);
+	string(const_iterator first, const_iterator last);
 #else
 	///
 	template<class InputIterator>
-	lyxstring::lyxstring(InputIterator begin, InputIterator end) {
+	string(InputIterator begin, InputIterator end) {
 		while (begin != end) {
 			push_back(*begin);
 			++begin;
@@ -175,7 +177,7 @@ public:
 	}
 #endif
 	///
-	~lyxstring();
+	~string();
 
 	/// number of characters
 	size_type size() const;
@@ -202,36 +204,36 @@ public:
 	void reserve(size_type res_arg = 0);
 
 	///
-	lyxstring & operator=(lyxstring const &);
+	string & operator=(string const &);
 
 	///
-	lyxstring & operator=(value_type const *);
+	string & operator=(value_type const *);
 
 	///
-	lyxstring & operator=(value_type);
+	string & operator=(value_type);
 
 	///
-	lyxstring & assign(lyxstring const &);
+	string & assign(string const &);
 
 	///
-	lyxstring & assign(lyxstring const &, size_type pos, size_type n);
+	string & assign(string const &, size_type pos, size_type n);
 
 	///
-	lyxstring & assign(value_type const * p, size_type n);
+	string & assign(value_type const * p, size_type n);
 
 	///
-	lyxstring & assign(value_type const * p);
+	string & assign(value_type const * p);
 
 	///
-	lyxstring & assign(size_type n, value_type c);
+	string & assign(size_type n, value_type c);
 
 #if 1
 	///
-	lyxstring & assign(const_iterator first, const_iterator last);
+	string & assign(const_iterator first, const_iterator last);
 #else
 	///
 	template<class InputIterator>
-	lyxstring & assign(InputIterator begin, InputIterator end) {
+	string & assign(InputIterator begin, InputIterator end) {
 		clear;
 		while (begin != end) {
 			push_back((*begin));
@@ -255,39 +257,39 @@ public:
 	// add characters after (*this)[length()-1]:
 
 	///
-	lyxstring & operator+=(lyxstring const &);
+	string & operator+=(string const &);
 
 	///
-	lyxstring & operator+=(value_type const *);
+	string & operator+=(value_type const *);
 
 	///
-	lyxstring & operator+=(value_type);
+	string & operator+=(value_type);
 
 	///
 	void push_back(value_type);
 
 	///
-	lyxstring & append(lyxstring const &);
+	string & append(string const &);
 
 	///
-	lyxstring & append(lyxstring const &, size_type pos, size_type n);
+	string & append(string const &, size_type pos, size_type n);
 
 	///
-	lyxstring & append(value_type const *, size_type n);
+	string & append(value_type const *, size_type n);
 
 	///
-	lyxstring & append(value_type const *);
+	string & append(value_type const *);
 
 	///
-	lyxstring & append(size_type n, value_type);
+	string & append(size_type n, value_type);
 
 #if 1
 	///
-	lyxstring & append(iterator first, iterator last);
+	string & append(iterator first, iterator last);
 #else
 	///
 	template<class InputIterator>
-	lyxstring & append(InputIterator begin, InputIterator end) {
+	string & append(InputIterator begin, InputIterator end) {
 		while (begin != end) {
 			push_back((*begin));
 			++begin;
@@ -298,21 +300,21 @@ public:
 	// insert characters before (*this)[pos]:
 
 	///
-	lyxstring & insert(size_type pos, lyxstring const &);
+	string & insert(size_type pos, string const &);
 
 	///
-	lyxstring & insert(size_type pos, lyxstring const &,
+	string & insert(size_type pos, string const &,
 			size_type pos2, size_type n);
 
 	///
-	lyxstring & insert(size_type pos, value_type const * p,
+	string & insert(size_type pos, value_type const * p,
 			 size_type n);
 
 	///
-	lyxstring & insert(size_type pos, value_type const * p);
+	string & insert(size_type pos, value_type const * p);
 
 	///
-	lyxstring & insert(size_type pos, size_type n, value_type c);
+	string & insert(size_type pos, size_type n, value_type c);
 
 	// insert characters before p
 
@@ -338,7 +340,7 @@ public:
 #endif
 
 	///
-	size_type find(lyxstring const &, size_type i = 0) const;
+	size_type find(string const &, size_type i = 0) const;
 
 	///
 	size_type find(value_type const * p,
@@ -351,7 +353,7 @@ public:
 	size_type find(value_type c, size_type i = 0) const;
 
 	///
-	size_type rfind(lyxstring const &, size_type i = npos) const;
+	size_type rfind(string const &, size_type i = npos) const;
 
 	///
 	size_type rfind(value_type const * p, size_type i, size_type n) const;
@@ -363,7 +365,7 @@ public:
 	size_type rfind(value_type c, size_type i = npos) const;
 
 	///
-	size_type find_first_of(lyxstring const &, size_type i = 0) const;
+	size_type find_first_of(string const &, size_type i = 0) const;
 
 	///
 	size_type find_first_of(value_type const * p, size_type i,
@@ -376,7 +378,7 @@ public:
 	size_type find_first_of(value_type c, size_type i = 0) const;
 
 	///
-	size_type find_last_of(lyxstring const &, size_type i = npos) const;
+	size_type find_last_of(string const &, size_type i = npos) const;
 
 	///
 	size_type find_last_of(value_type const * p, size_type i,
@@ -389,7 +391,7 @@ public:
 	size_type find_last_of(value_type c, size_type i = npos) const;
 
 	///
-	size_type find_first_not_of(lyxstring const &, size_type i = 0) const;
+	size_type find_first_not_of(string const &, size_type i = 0) const;
 
 	///
 	size_type find_first_not_of(value_type const * p, size_type i,
@@ -403,7 +405,7 @@ public:
 	size_type find_first_not_of(value_type c, size_type i = 0) const;
 
 	///
-	size_type find_last_not_of(lyxstring const &,
+	size_type find_last_not_of(string const &,
 				   size_type i = npos) const;
 
 	///
@@ -420,52 +422,52 @@ public:
 	// replace [(*this)[i], (*this)[i+n]] with other characters:
 
 	///
-	lyxstring & replace(size_type i, size_type n, lyxstring const & str);
+	string & replace(size_type i, size_type n, string const & str);
 
 	///
-	lyxstring & replace(size_type i, size_type n, lyxstring const & s,
+	string & replace(size_type i, size_type n, string const & s,
 			  size_type i2, size_type n2);
 
 	///
-	lyxstring & replace(size_type i, size_type n, value_type const * p,
+	string & replace(size_type i, size_type n, value_type const * p,
 			  size_type n2);
 
 	///
-	lyxstring & replace(size_type i, size_type n, value_type const * p);
+	string & replace(size_type i, size_type n, value_type const * p);
 
 	///
-	lyxstring & replace(size_type i, size_type n,
+	string & replace(size_type i, size_type n,
 			    size_type n2, value_type c);
 
 	/// FY! FY! FY! go away !
-	lyxstring & replace(size_type i, size_type n,
+	string & replace(size_type i, size_type n,
 			    value_type c);
 
 	///
-	lyxstring & replace(iterator i, iterator i2, const lyxstring & str);
+	string & replace(iterator i, iterator i2, const string & str);
 
 	///
-	lyxstring & replace(iterator i, iterator i2,
+	string & replace(iterator i, iterator i2,
 			  value_type const * p, size_type n);
 
 	///
-	lyxstring & replace(iterator i, iterator i2, value_type const * p);
+	string & replace(iterator i, iterator i2, value_type const * p);
 
 	///
-	lyxstring & replace(iterator i, iterator i2,
+	string & replace(iterator i, iterator i2,
 			    size_type n , value_type c);
 
 	///
-	lyxstring & replace(iterator i, iterator i2, iterator j, iterator j2);
+	string & replace(iterator i, iterator i2, iterator j, iterator j2);
 
 	///
-	void swap(lyxstring & str);
+	void swap(string & str);
 
 	/// Erase n chars from position i.
-	lyxstring & erase(size_type i = 0, size_type n = npos);
+	string & erase(size_type i = 0, size_type n = npos);
 
 	///
-	lyxstring & clear() {
+	string & clear() {
 		return erase(0, npos);
 	}
 
@@ -490,16 +492,16 @@ public:
 
 
 	///
-	int compare(lyxstring const & str) const;
+	int compare(string const & str) const;
 
 	///
 	int compare(value_type const * p) const;
 
 	///
-	int compare(size_type pos, size_type n, lyxstring const & str) const;
+	int compare(size_type pos, size_type n, string const & str) const;
 
 	///
-	int compare(size_type pos, size_type n, lyxstring const & str,
+	int compare(size_type pos, size_type n, string const & str,
 		    size_type pos2, size_type n2) const;
 
 	///
@@ -508,7 +510,7 @@ public:
 
 
 	///
-	lyxstring substr(size_type i = 0, size_type n = npos) const;
+	string substr(size_type i = 0, size_type n = npos) const;
 
 private:
 	// These three operators can be used to discover erronous use of
@@ -517,11 +519,11 @@ private:
 	// in. Use them for debugging only (or perhaps not even then.)
 	// Lgb.
 	//
-	//lyxstring & operator+(int);
+	//string & operator+(int);
 	//
-	//lyxstring & operator=(int);
+	//string & operator=(int);
 	//
-	//lyxstring & operator+=(int);
+	//string & operator+=(int);
 
 	/// Compare this with s. works with embedded '\0' chars also.
 	int internal_compare(size_type pos, size_type n,
@@ -537,7 +539,7 @@ private:
 	Srep * rep;
 
 	/* Note: The empty_rep is a local static in each function that
-	    benefits from one. There is no "global" empty srep but lyxstring
+	    benefits from one. There is no "global" empty srep but string
 	    doesn't need one (no code actually relies upon a single
 	    empty srep).
 	    This overcomes *all* "static initialization" problems,
@@ -547,55 +549,57 @@ private:
 
 #ifdef ENABLE_ASSERTIONS
 	/// lyxstringInvariant is used to test the lyxstring Invariant
-	friend class lyxstringInvariant;
+	friend class stringInvariant;
 #endif
 };
 
 // The usual comparison operators ==, !=, >, <, >=, <= are
 // provided for lyxstrings
 
-bool operator==(lyxstring const &, lyxstring const &);
-bool operator==(lyxstring::value_type const *, lyxstring const &);
-bool operator==(lyxstring const &, lyxstring::value_type const *);
+bool operator==(string const &, string const &);
+bool operator==(string::value_type const *, string const &);
+bool operator==(string const &, string::value_type const *);
 
 
-bool operator!=(lyxstring const &, lyxstring const &);
-bool operator!=(lyxstring::value_type const *, lyxstring const &);
-bool operator!=(lyxstring const &, lyxstring::value_type const *);
+bool operator!=(string const &, string const &);
+bool operator!=(string::value_type const *, string const &);
+bool operator!=(string const &, string::value_type const *);
 
 
-bool operator>(lyxstring const &, lyxstring const &);
-bool operator>(lyxstring::value_type const *, lyxstring const &);
-bool operator>(lyxstring const &, lyxstring::value_type const *);
+bool operator>(string const &, string const &);
+bool operator>(string::value_type const *, string const &);
+bool operator>(string const &, string::value_type const *);
 
 
-bool operator<(lyxstring const &, lyxstring const &);
-bool operator<(lyxstring::value_type const *, lyxstring const &);
-bool operator<(lyxstring const &, lyxstring::value_type const *);
+bool operator<(string const &, string const &);
+bool operator<(string::value_type const *, string const &);
+bool operator<(string const &, string::value_type const *);
 
 
-bool operator>=(lyxstring const &, lyxstring const &);
-bool operator>=(lyxstring::value_type const *, lyxstring const &);
-bool operator>=(lyxstring const &, lyxstring::value_type const *);
+bool operator>=(string const &, string const &);
+bool operator>=(string::value_type const *, string const &);
+bool operator>=(string const &, string::value_type const *);
 
 
-bool operator<=(lyxstring const &, lyxstring const &);
-bool operator<=(lyxstring::value_type const *, lyxstring const &);
-bool operator<=(lyxstring const &, lyxstring::value_type const *);
+bool operator<=(string const &, string const &);
+bool operator<=(string::value_type const *, string const &);
+bool operator<=(string const &, string::value_type const *);
 
 
 // Concatenation
 
-lyxstring operator+(lyxstring const & a, lyxstring const & b);
-lyxstring operator+(char const * a, lyxstring const & b);
-lyxstring operator+(lyxstring::value_type a, lyxstring const & b);
-lyxstring operator+(lyxstring const & a, lyxstring::value_type const * b);
-lyxstring operator+(lyxstring const & a, lyxstring::value_type b);
+string operator+(string const & a, string const & b);
+string operator+(char const * a, string const & b);
+string operator+(string::value_type a, string const & b);
+string operator+(string const & a, string::value_type const * b);
+string operator+(string const & a, string::value_type b);
 
-void swap(lyxstring & s1, lyxstring & s2);
+void swap(string & s1, string & s2);
 
-std::istream & operator>>(std::istream &, lyxstring &);
-std::ostream & operator<<(std::ostream &, lyxstring const &);
-std::istream & getline(std::istream &, lyxstring &, lyxstring::value_type delim = '\n');
+std::istream & operator>>(std::istream &, string &);
+std::ostream & operator<<(std::ostream &, string const &);
+std::istream & getline(std::istream &, string &, string::value_type delim = '\n');
+
+} // namespace lyx
 
 #endif

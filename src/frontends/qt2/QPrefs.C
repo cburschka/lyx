@@ -54,6 +54,8 @@
 #include <qfontinfo.h>
 #include "qcoloritem.h"
 
+using namespace lyx::support;
+
 using std::vector;
 using std::pair;
 using std::ostringstream;
@@ -302,7 +304,7 @@ void QPrefs::apply()
 		// FIXME: dubious, but it's what xforms does
 		if (qcol != ci->color()) {
 			ostringstream ostr;
-			
+
 			ostr << '#' << std::setbase(16) << setfill('0')
 			     << setw(2) << ci->color().red()
 			     << setw(2) << ci->color().green()
@@ -352,7 +354,7 @@ void setComboxFont(QComboBox * cb, string const & family, string const & foundry
 
 	// Bleh, default fonts, and the names couldn't be found. Hack
 	// for bug 1063. Qt makes baby Jesus cry.
-	
+
 	QFont font;
 
 	if (family == lyx_gui::roman_font_name()) {
@@ -501,7 +503,7 @@ void QPrefs::update_contents()
 	} else if (rc.isp_command == "hspell") {
 		spellmod->spellCommandCO->setCurrentItem(2);
 	}
-	
+
 	if (rc.use_spell_lib) {
 #if defined(USE_ASPELL) || defined(USE_PSPELL)
 		spellmod->spellCommandCO->setCurrentItem(3);

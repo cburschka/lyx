@@ -24,6 +24,8 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
+using namespace lyx::support;
+
 using lyx::textclass_type;
 
 using std::endl;

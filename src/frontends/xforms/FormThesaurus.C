@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "ControlThesaurus.h"
 #include "FormThesaurus.h"
 #include "forms/form_thesaurus.h"
@@ -19,7 +18,10 @@
 #include "debug.h"
 #include "support/lstrings.h"
 #include "lyx_forms.h"
+
 #include <cctype>
+
+using namespace lyx::support;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::isupper;

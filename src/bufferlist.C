@@ -41,6 +41,8 @@
 #include <functional>
 
 
+using namespace lyx::support;
+
 using std::vector;
 using std::find;
 using std::endl;
@@ -118,7 +120,7 @@ bool BufferList::quitWriteAll()
 
 void BufferList::release(Buffer * buf)
 {
-	lyx::Assert(buf);
+	Assert(buf);
 	BufferStorage::iterator it = find(bstore.begin(), bstore.end(), buf);
 	if (it != bstore.end()) {
 		// Make sure that we don't store a LyXText in
@@ -157,7 +159,7 @@ void BufferList::closeAll()
 
 bool BufferList::close(Buffer * buf, bool ask)
 {
-	lyx::Assert(buf);
+	Assert(buf);
 
 	// FIXME: is the quitting check still necessary ?
 	if (!ask || buf->isClean() || quitting || buf->paragraphs.empty()) {
@@ -316,7 +318,7 @@ bool BufferList::exists(string const & s) const
 
 bool BufferList::isLoaded(Buffer const * b) const
 {
-	lyx::Assert(b);
+	Assert(b);
 
 	BufferStorage::const_iterator cit =
 		find(bstore.begin(), bstore.end(), b);

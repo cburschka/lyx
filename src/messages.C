@@ -13,6 +13,8 @@
 #include "debug.h"
 #include "support/filetools.h"
 
+using namespace lyx::support;
+
 
 #ifdef ENABLE_NLS
 

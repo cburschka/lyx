@@ -3,6 +3,7 @@
  * Copyright 2002 the LyX Team
  * Read the file COPYING
  *
+ * \author Lars Gullik Bjønnes
  * \author various
  */
 
@@ -75,6 +76,7 @@ using std::make_pair;
 using std::min;
 
 using lyx::pos_type;
+using namespace lyx::support;
 using namespace bv_funcs;
 
 extern BufferList bufferlist;
@@ -168,7 +170,7 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 	Buffer * b = bufferlist.newBuffer(s);
 
 	//attach to the error signal in the buffer
-	b->parseError.connect(boost::bind(&BufferView::Pimpl::addError, 
+	b->parseError.connect(boost::bind(&BufferView::Pimpl::addError,
 					  this, _1));
 
 	bool loaded = ::loadLyXFile(b, s);
@@ -187,7 +189,7 @@ bool BufferView::Pimpl::loadLyXFile(string const & filename, bool tolastfiles)
 		else
 			return false;
 
-	} 
+	}
 
 	buffer(b);
 
@@ -358,7 +360,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		mark_set = bv_->text->selection.mark();
 		the_locking_inset = bv_->theLockingInset();
 		buffer_->resizeInsets(bv_);
-		// I don't think the delete and new are necessary here we 
+		// I don't think the delete and new are necessary here we
 		// just could call only init! (Jug 20020419)
 		delete bv_->text;
 		bv_->text = new LyXText(bv_);
@@ -720,7 +722,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 			b = bufferlist.newBuffer(fname);
 			::loadLyXFile(b, fname); // don't ask, just load it
 		}
-		if (b != 0) 
+		if (b != 0)
 			buffer(b);
 	}
 

@@ -33,6 +33,8 @@
 using std::time;
 #endif
 
+using namespace lyx::support;
+
 using std::make_pair;
 using std::ofstream;
 using std::ifstream;
@@ -57,7 +59,7 @@ void DepTable::insert(string const & fi, bool upd)
 		di.crc_prev = 0;
 		if (upd) {
 			lyxerr[Debug::DEPEND] << " CRC..." << flush;
-			di.crc_cur = lyx::sum(f);
+			di.crc_cur = sum(f);
 			lyxerr[Debug::DEPEND] << "done." << endl;
 			struct stat f_info;
 			stat(fi.c_str(), &f_info);
@@ -90,7 +92,7 @@ void DepTable::update()
 			} else {
 				di.crc_prev = di.crc_cur;
 				lyxerr[Debug::DEPEND] << itr->first << " CRC... ";
-				di.crc_cur = lyx::sum(itr->first);
+				di.crc_cur = sum(itr->first);
 				lyxerr[Debug::DEPEND] << "done";
 			}
 		} else {

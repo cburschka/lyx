@@ -21,6 +21,8 @@
 #include "support/LAssert.h"
 #include "support/filetools.h"
 
+using namespace lyx::support;
+
 using std::endl;
 using std::ostream;
 using std::for_each;
@@ -248,7 +250,7 @@ void ExternalTemplate::readTemplate(LyXLex & lex)
 		default:
 			lex.printError("ExternalTemplate::readTemplate: "
 				       "Wrong tag: $$Token");
-			lyx::Assert(false);
+			Assert(false);
 			break;
 		}
 	}

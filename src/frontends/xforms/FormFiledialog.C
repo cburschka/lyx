@@ -61,6 +61,8 @@ using std::sort;
 #include "forms/form_filedialog.h"
 #include "lyx_forms.h"
 
+using namespace lyx::support;
+
 namespace {
 
 // six months, in seconds
@@ -196,7 +198,7 @@ void FileDialog::Private::Reread()
 		Alert::err_alert(_("Warning! Couldn't open directory."),
 			directory_);
 #endif
-		directory_ = lyx::getcwd();
+		directory_ = getcwd();
 		dir = ::opendir(directory_.c_str());
 	}
 
@@ -356,7 +358,7 @@ void FileDialog::Private::SetDirectory(string const & path)
 {
 	string tmp;
 	if (path.empty())
-		tmp = lyx::getcwd();
+		tmp = getcwd();
 	else
 		tmp = MakeAbsPath(ExpandPath(path), directory_);
 

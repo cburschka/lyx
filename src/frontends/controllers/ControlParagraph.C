@@ -20,6 +20,7 @@
 #include "support/LAssert.h"
 #include "Lsstream.h"
 
+using namespace lyx::support;
 
 ControlParagraph::ControlParagraph(Dialog & parent)
 	: Dialog::Controller(parent), ininset_(false)
@@ -125,14 +126,14 @@ void ControlParagraph::dispatchParams()
 
 ParagraphParameters & ControlParagraph::params()
 {
-	lyx::Assert(params_.get());
+	Assert(params_.get());
 	return *params_;
 }
 
 
 ParagraphParameters const & ControlParagraph::params() const
 {
-	lyx::Assert(params_.get());
+	Assert(params_.get());
 	return *params_;
 }
 

@@ -21,6 +21,8 @@
 
 #include "lyx_forms.h"
 
+using namespace lyx::support;
+
 typedef FormController<ControlCommand, FormView<FD_text> > base_class;
 
 FormText::FormText(Dialog & parent, string const & title, string const & label)

@@ -85,6 +85,8 @@ TODO
 extern string system_tempdir;
 // set by Exporters
 
+using namespace lyx::support;
+
 using std::ostream;
 using std::endl;
 
@@ -169,7 +171,7 @@ void InsetGraphics::statusChanged()
 	if (bv)
 		bv->updateInset(this);
 }
-	
+
 
 dispatch_result InsetGraphics::localDispatch(FuncRequest const & cmd)
 {
@@ -284,8 +286,8 @@ string const InsetGraphics::createLatexOptions() const
 	    options << "  draft,\n";
 	if (params().clip)
 	    options << "  clip,\n";
-	if (!lyx::float_equal(params().scale, 0.0, 0.05)) {
-		if (!lyx::float_equal(params().scale, 100.0, 0.05))
+	if (!float_equal(params().scale, 0.0, 0.05)) {
+		if (!float_equal(params().scale, 100.0, 0.05))
 			options << "  scale=" << params().scale / 100.0
 				<< ",\n";
 	} else {
@@ -299,7 +301,7 @@ string const InsetGraphics::createLatexOptions() const
 
 	// Make sure rotation angle is not very close to zero;
 	// a float can be effectively zero but not exactly zero.
-	if (!lyx::float_equal(params().rotateAngle, 0, 0.001)) {
+	if (!float_equal(params().rotateAngle, 0, 0.001)) {
 	    options << "  angle=" << params().rotateAngle << ",\n";
 	    if (!params().rotateOrigin.empty()) {
 		options << "  origin=" << params().rotateOrigin[0];
@@ -361,8 +363,8 @@ string const InsetGraphics::prepareFile(Buffer const * buf,
 		temp_file = MakeAbsPath(OnlyFilename(temp_file), buf->tmppath);
 		lyxerr[Debug::GRAPHICS]
 			<< "\ttemp_file: " << temp_file << endl;
-  		if (graphic_->hasFileChanged() || !IsFileReadable(temp_file)) {
-			bool const success = lyx::copy(orig_file, temp_file);
+		if (graphic_->hasFileChanged() || !IsFileReadable(temp_file)) {
+			bool const success = copy(orig_file, temp_file);
 			lyxerr[Debug::GRAPHICS]
 				<< "\tCopying zipped file from "
 				<< orig_file << " to " << temp_file
@@ -405,14 +407,14 @@ string const InsetGraphics::prepareFile(Buffer const * buf,
 		<< "\tthe orig file is: " << orig_file << endl;
 
 	if (lyxrc.use_tempdir) {
- 		temp_file = copyFileToDir(buf->tmppath, orig_file);
+		temp_file = copyFileToDir(buf->tmppath, orig_file);
 		if (temp_file.empty()) {
 			string str = bformat(_("Could not copy the file\n%1$s\n"
 					       "into the temporary directory."),
 					     orig_file);
 			Alert::error(_("Graphics display failed"), str);
 			return orig_file;
-  		}
+		}
 
 		if (from == to) {
 			// No conversion is needed. LaTeX can handle the
@@ -589,8 +591,8 @@ bool InsetGraphics::setParams(InsetGraphicsParams const & p)
 	// Copy the new parameters.
 	params_ = p;
 
-  	// Update the display using the new parameters.
-  	graphic_->update(params().as_grfxParams());
+	// Update the display using the new parameters.
+	graphic_->update(params().as_grfxParams());
 
 	// We have changed data, report it.
 	return true;

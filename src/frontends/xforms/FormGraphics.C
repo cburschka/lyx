@@ -40,6 +40,8 @@
 
 #include "lyx_forms.h"
 
+using namespace lyx::support;
+
 using std::endl;
 using std::vector;
 
@@ -317,7 +319,7 @@ void FormGraphics::apply()
 	// first item in choice_width means scaling
 	if (fl_get_choice(file_->choice_width) == 1) {
 		igp.scale = strToDbl(getString(file_->input_width));
-		if (lyx::float_equal(igp.scale, 0.0, 0.05)) {
+		if (float_equal(igp.scale, 0.0, 0.05)) {
 			igp.scale = 100.0;
 		}
 		igp.width = LyXLength();
@@ -443,7 +445,7 @@ void FormGraphics::update() {
 	}
 
 	// set width input fields according to scaling or width/height input
-	if (!lyx::float_equal(igp.scale, 0.0, 0.05)) {
+	if (!float_equal(igp.scale, 0.0, 0.05)) {
 		fl_set_input_filter(file_->input_width, fl_unsigned_float_filter);
 		fl_set_input_maxchars(file_->input_width, 0);
 		fl_set_input(file_->input_width, tostr(igp.scale).c_str());
@@ -459,7 +461,7 @@ void FormGraphics::update() {
 				igp.height, defaultUnit);
 
 	// disable height input in case of scaling
-	bool const disable_height = !lyx::float_equal(igp.scale, 0.0, 0.05);
+	bool const disable_height = !float_equal(igp.scale, 0.0, 0.05);
 	setEnabled(file_->input_height, !disable_height);
 	setEnabled(file_->choice_height, !disable_height);
 

@@ -22,6 +22,8 @@
 
 #include <map>
 
+using namespace lyx::support;
+
 namespace grfx {
 
 bool Previews::activated()
@@ -58,7 +60,7 @@ Previews::~Previews()
 
 PreviewLoader & Previews::loader(Buffer const * buffer) const
 {
-	lyx::Assert(buffer);
+	Assert(buffer);
 
 	Impl::CacheType::iterator it = pimpl_->cache.find(buffer);
 

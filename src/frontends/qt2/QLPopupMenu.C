@@ -23,6 +23,8 @@
 
 #include <boost/scoped_ptr.hpp>
 
+using namespace lyx::support;
+
 using std::endl;
 using std::pair;
 using std::make_pair;

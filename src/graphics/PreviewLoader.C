@@ -42,6 +42,8 @@
 #include <utility>
 #include <vector>
 
+using namespace lyx::support;
+
 using std::endl;
 using std::find;
 using std::fill;
@@ -291,13 +293,13 @@ void InProgress::stop() const
 		ForkedcallsController::get().kill(pid, 0);
 
 	if (!metrics_file.empty())
-		lyx::unlink(metrics_file);
+		unlink(metrics_file);
 
 	BitmapFile::const_iterator vit  = snippets.begin();
 	BitmapFile::const_iterator vend = snippets.end();
 	for (; vit != vend; ++vit) {
 		if (!vit->second.empty())
-			lyx::unlink(vit->second);
+			unlink(vit->second);
 	}
 }
 
@@ -455,7 +457,7 @@ void PreviewLoader::Impl::startLoading()
 	string directory = buffer_.tmppath;
 	if (directory.empty())
 		directory = buffer_.filePath();
-	
+
 	string const filename_base(unique_filename(directory));
 
 	// Create an InProgress instance to place in the map of all
@@ -741,7 +743,7 @@ void setAscentFractions(vector<double> & ascent_fractions,
 			double const a = ascent + tp_ascent;
 			double const d = descent - tp_descent;
 
-			if (!lyx::float_equal(a + d, 0, 0.1))
+			if (!float_equal(a + d, 0, 0.1))
 				*it = a / (a + d);
 
 			if (++it == end)

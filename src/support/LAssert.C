@@ -11,11 +11,18 @@
 #include <config.h>
 
 #include "LAssert.h"
+#include "support/lyxlib.h"
 
 #ifdef ENABLE_ASSERTIONS
 #include "lyx_main.h"
 
-void emergencyCleanup() {
+namespace lyx {
+namespace support {
+
+namespace {
+
+void emergencyCleanup()
+{
 	static bool didCleanup;
 	if (didCleanup)
 		return;
@@ -24,5 +31,18 @@ void emergencyCleanup() {
 
 	LyX::emergencyCleanup();
 }
+
+} // namespace anon
+
+void Assert(bool assertion)
+{
+	if (!assertion) {
+		emergencyCleanup();
+		lyx::support::abort();
+	}
+}
+
+} // namespace support
+} // namespace lyx
 
 #endif

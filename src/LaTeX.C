@@ -33,6 +33,8 @@
 #include <fstream>
 #include <cstdio>  // sscanf
 
+using namespace lyx::support;
+
 #ifndef CXX_GLOBAL_CSTD
 using std::sscanf;
 #endif
@@ -129,7 +131,7 @@ void LaTeX::deleteFilesOnError() const
 	// What files do we have to delete?
 
 	// This will at least make latex do all the runs
-	lyx::unlink(depfile);
+	unlink(depfile);
 
 	// but the reason for the error might be in a generated file...
 
@@ -137,15 +139,15 @@ void LaTeX::deleteFilesOnError() const
 
 	// bibtex file
 	string const bbl = ChangeExtension(ofname, ".bbl");
-	lyx::unlink(bbl);
+	unlink(bbl);
 
 	// makeindex file
 	string const ind = ChangeExtension(ofname, ".ind");
-	lyx::unlink(ind);
+	unlink(ind);
 
 	// Also remove the aux file
 	string const aux = ChangeExtension(ofname, ".aux");
-	lyx::unlink(aux);
+	unlink(aux);
 }
 
 
@@ -164,7 +166,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	bool rerun = false; // rerun requested
 
 	// The class LaTeX does not know the temp path.
-	bufferlist.updateIncludedTeXfiles(lyx::getcwd(), runparams);
+	bufferlist.updateIncludedTeXfiles(getcwd(), runparams);
 
 	// Never write the depfile if an error was encountered.
 

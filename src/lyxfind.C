@@ -14,6 +14,8 @@
 #include "insets/insettext.h"
 #include "changes.h"
 
+using namespace lyx::support;
+
 using lyx::pos_type;
 using std::endl;
 

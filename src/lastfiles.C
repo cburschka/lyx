@@ -20,6 +20,8 @@
 #include <iterator>
 
 
+using namespace lyx::support;
+
 using std::ifstream;
 using std::ofstream;
 using std::getline;

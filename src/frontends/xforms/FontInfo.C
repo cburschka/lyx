@@ -23,6 +23,8 @@
 
 #include <cmath>	// abs()
 
+using namespace lyx::support;
+
 using std::endl;
 using std::abs;
 
@@ -134,14 +136,14 @@ void FontInfo::query()
 			string name(list[i]);
 			lyxerr[Debug::FONT] << "match #" << i << ' '
 					    << name << endl;
-			sizes[i] = lyx::atoi(token(name, '-', 7));
+			sizes[i] = atoi(token(name, '-', 7));
 			strings[i] = name;
 			if (sizes[i] == 0) {
 				if (scaleindex == -1) {
 					scaleindex = i;
 				}
 				scalable = true;
-			} else if (lyx::atoi(token(name, '-', 12)) == 0)
+			} else if (atoi(token(name, '-', 12)) == 0)
 				// Ignore bogus matches of scalable fonts.
 				sizes[i] = 0;
 		};

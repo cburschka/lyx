@@ -30,6 +30,8 @@
 
 #include <algorithm>
 
+using namespace lyx::support;
+
 using std::ostream;
 using std::istringstream;
 using std::find_if;

@@ -26,6 +26,8 @@
 #include "support/LAssert.h"
 #include "support/BoostFormat.h"
 
+using namespace lyx::support;
+
 using std::ostream;
 using std::endl;
 
@@ -85,7 +87,7 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 	else if (i2->lyxCode() == WRAP_CODE)
 		type = static_cast<InsetWrap *>(i2)->params().type;
 	else
-		lyx::Assert(0);
+		Assert(0);
 
 	FloatList const & floats =
 		pi.base.bv->buffer()->params.getLyXTextClass().floats();

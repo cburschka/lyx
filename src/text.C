@@ -43,6 +43,8 @@
 
 #include <algorithm>
 
+using namespace lyx::support;
+
 using std::max;
 using std::min;
 using std::endl;
@@ -62,14 +64,14 @@ extern int bibitemMaxWidth(BufferView *, LyXFont const &);
 
 BufferView * LyXText::bv()
 {
-	lyx::Assert(bv_owner != 0);
+	Assert(bv_owner != 0);
 	return bv_owner;
 }
 
 
 BufferView * LyXText::bv() const
 {
-	lyx::Assert(bv_owner != 0);
+	Assert(bv_owner != 0);
 	return bv_owner;
 }
 
@@ -150,10 +152,10 @@ int LyXText::workWidth(Inset const * inset) const
 	ParagraphList::iterator par = std::find(ownerParagraphs().begin(),
 						ownerParagraphs().end(),
 						*inset->parOwner());
-	//lyx::Assert(par);
+	//Assert(par);
 
 	pos_type pos = par->getPositionOfInset(inset);
-	lyx::Assert(pos != -1);
+	Assert(pos != -1);
 
 	LyXLayout_ptr const & layout = par->layout();
 
@@ -971,7 +973,7 @@ int LyXText::labelFill(Row const & row) const
 
 	pos_type last = pit->beginningOfBody();
 
-	lyx::Assert(last > 0);
+	Assert(last > 0);
 
 	// -1 because a label ends either with a space that is in the label,
 	// or with the beginning of a footnote that is outside the label.
@@ -1011,7 +1013,7 @@ LColor::color LyXText::backgroundColor() const
 
 void LyXText::setHeightOfRow(RowList::iterator rit)
 {
-	lyx::Assert(rit != rows().end());
+	Assert(rit != rows().end());
 
 	// get the maximum ascent and the maximum descent
 	float layoutasc = 0;
@@ -1323,7 +1325,7 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 // start at the implicit given position
 void LyXText::appendParagraph(RowList::iterator rowit)
 {
-	lyx::Assert(rowit != rowlist_.end());
+	Assert(rowit != rowlist_.end());
 
 	pos_type const last = rowit->par()->size();
 	bool done = false;
@@ -1353,7 +1355,7 @@ void LyXText::appendParagraph(RowList::iterator rowit)
 
 void LyXText::breakAgain(RowList::iterator rit)
 {
-	lyx::Assert(rit != rows().end());
+	Assert(rit != rows().end());
 
 	bool not_ready = true;
 
@@ -1406,7 +1408,7 @@ void LyXText::breakAgain(RowList::iterator rit)
 // this is just a little changed version of break again
 void LyXText::breakAgainOneRow(RowList::iterator rit)
 {
-	lyx::Assert(rit != rows().end());
+	Assert(rit != rows().end());
 
 	pos_type z = rowBreakPoint(*rit);
 	RowList::iterator tmprit = rit;

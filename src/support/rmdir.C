@@ -14,7 +14,7 @@
 
 #include "lyxlib.h"
 
-int lyx::rmdir(string const & dir)
+int lyx::support::rmdir(string const & dir)
 {
 	return ::rmdir(dir.c_str());
 }

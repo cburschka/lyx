@@ -12,6 +12,9 @@
 
 #include "path.h"
 
+namespace lyx {
+namespace support {
+
 int Path::pop()
 {
 	if (popped_) {
@@ -20,7 +23,7 @@ int Path::pop()
 		return 0;
 	}
 
-	if (lyx::chdir(pushedDir_)) {
+	if (chdir(pushedDir_)) {
 		// should throw an exception
 		// throw DirChangeError();
 	}
@@ -28,3 +31,6 @@ int Path::pop()
 
 	return 0;
 }
+
+} // namespace support
+} // namespace lyx

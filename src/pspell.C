@@ -23,6 +23,8 @@ extern "C" {
 #include "pspell.h"
 #include "WordLangTuple.h"
 
+using namespace lyx::support;
+
 using std::endl;
 
 PSpell::PSpell(BufferParams const &, string const & lang)
@@ -92,14 +94,14 @@ enum PSpell::Result PSpell::check(WordLangTuple const & word)
 	PspellManager * m = it->second.manager;
 
 	int word_ok = pspell_manager_check(m, word.word().c_str());
-	lyx::Assert(word_ok != -1);
+	Assert(word_ok != -1);
 
 	if (word_ok) {
 		res = OK;
 	} else {
 		PspellWordList const * sugs =
 			pspell_manager_suggest(m, word.word().c_str());
-		lyx::Assert(sugs != 0);
+		Assert(sugs != 0);
 		els = pspell_word_list_elements(sugs);
 		if (pspell_word_list_empty(sugs))
 			res = UNKNOWN;

@@ -21,6 +21,8 @@
 #include "BufferView.h"
 #include "support/lstrings.h"
 
+using namespace lyx::support;
+
 using std::ostream;
 
 InsetRef::InsetRef(InsetCommandParams const & p, Buffer const & buf)

@@ -47,6 +47,8 @@
 
 #include <boost/tuple/tuple.hpp>
 
+using namespace lyx::support;
+
 using std::vector;
 using std::copy;
 using std::endl;
@@ -115,7 +117,7 @@ void LyXText::init(BufferView * bview, bool reinit)
 LyXFont const LyXText::getFont(Buffer const * buf, ParagraphList::iterator pit,
 			       pos_type pos) const
 {
-	lyx::Assert(pos >= 0);
+	Assert(pos >= 0);
 
 	LyXLayout_ptr const & layout = pit->layout();
 
@@ -1128,7 +1130,7 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 				else if (in->lyxCode() == Inset::WRAP_CODE)
 					type = static_cast<InsetWrap*>(in)->params().type;
 				else
-					lyx::Assert(0);
+					Assert(0);
 
 				Floating const & fl = textclass.floats().getType(type);
 
@@ -1567,7 +1569,7 @@ bool LyXText::setCursor(ParagraphList::iterator pit,
 void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 			pos_type pos, bool boundary)
 {
-	lyx::Assert(pit != ownerParagraphs().end());
+	Assert(pit != ownerParagraphs().end());
 
 	cur.par(pit);
 	cur.pos(pos);

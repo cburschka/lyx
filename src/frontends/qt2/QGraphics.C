@@ -19,6 +19,7 @@
 #include "support/tostr.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
+#include "support/lyxlib.h"
 #include "insets/insetgraphicsParams.h"
 #include "lyxrc.h"
 #include "lengthcombo.h"
@@ -39,6 +40,8 @@
 #include "QGraphicsDialog.h"
 #include "QGraphics.h"
 #include "Qt2BC.h"
+
+using namespace lyx::support;
 
 using std::vector;
 using std::endl;
@@ -242,7 +245,7 @@ void QGraphics::update_contents()
 	for (int i = 0; i < num_units; i++)
 		dialog_->widthUnit->insertItem(unit_name_gui[i], -1);
 
-	if (!lyx::float_equal(igp.scale, 0.0, 0.05)) {
+	if (!float_equal(igp.scale, 0.0, 0.05)) {
 		// there is a scale value > 0.05
 		dialog_->width->setText(toqstr(tostr(igp.scale)));
 		dialog_->widthUnit->setCurrentItem(0);

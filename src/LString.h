@@ -31,8 +31,7 @@ using std::string;
 #define __STRING__
 #endif
 #include "support/lyxstring.h"
-// using lyx::string;
-typedef lyxstring string;
+using lyx::string;
 #define STRCONV(STR) STR.c_str()
 #endif
 

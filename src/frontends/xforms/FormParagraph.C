@@ -35,6 +35,8 @@
 
 #include <functional>
 
+using namespace lyx::support;
+
 using std::vector;
 using std::bind2nd;
 using std::remove_if;
@@ -440,7 +442,7 @@ namespace {
 void validateVSpaceWidgets(FL_OBJECT * choice_type, FL_OBJECT * input_length)
 {
 	// Paranoia check!
-	lyx::Assert(choice_type  && choice_type->objclass  == FL_CHOICE &&
+	Assert(choice_type  && choice_type->objclass  == FL_CHOICE &&
 		    input_length && input_length->objclass == FL_INPUT);
 
 	if (fl_get_choice(choice_type) != 7)
@@ -460,7 +462,7 @@ VSpace const setVSpaceFromWidgets(FL_OBJECT * choice_type,
 				  FL_OBJECT * check_keep)
 {
 	// Paranoia check!
-	lyx::Assert(choice_type   && choice_type->objclass   == FL_CHOICE &&
+	Assert(choice_type   && choice_type->objclass   == FL_CHOICE &&
 		    input_length  && input_length->objclass  == FL_INPUT &&
 		    choice_length && choice_length->objclass == FL_CHOICE &&
 		    check_keep    && check_keep->objclass    == FL_CHECKBUTTON);
@@ -508,7 +510,7 @@ void setWidgetsFromVSpace(VSpace const & space,
 			  FL_OBJECT * check_keep)
 {
 	// Paranoia check!
-	lyx::Assert(choice_type   && choice_type->objclass   == FL_CHOICE &&
+	Assert(choice_type   && choice_type->objclass   == FL_CHOICE &&
 		    input_length  && input_length->objclass  == FL_INPUT &&
 		    choice_length && choice_length->objclass == FL_CHOICE &&
 		    check_keep    && check_keep->objclass    == FL_CHECKBUTTON);

@@ -21,6 +21,8 @@
 #include <qlayout.h>
 #include <qgroupbox.h>
 
+using namespace lyx::support;
+
 // FIXME: set disabled doesn't work properly
 
 FloatPlacement::FloatPlacement(QWidget * parent, char * name)

@@ -32,6 +32,8 @@
 #include "QBibtex.h"
 #include "Qt2BC.h"
 
+using namespace lyx::support;
+
 using std::vector;
 
 typedef QController<ControlBibtex, QView<QBibtexDialog> > base_class;

@@ -48,6 +48,9 @@ using std::endl;
 using std::strerror;
 #endif
 
+namespace lyx {
+namespace support {
+
 
 namespace {
 
@@ -59,7 +62,7 @@ public:
 		if (secs > 0) {
 			new Murder(secs, pid);
 		} else if (pid != 0) {
-			lyx::kill(pid, SIGKILL);
+			lyx::support::kill(pid, SIGKILL);
 		}
 	}
 
@@ -67,7 +70,7 @@ public:
 	void kill()
 	{
 		if (pid_ != 0) {
-			lyx::kill(pid_, SIGKILL);
+			lyx::support::kill(pid_, SIGKILL);
 		}
 		lyxerr << "Killed " << pid_ << std::endl;
 		delete this;
@@ -175,7 +178,7 @@ void ForkedProcess::kill(int tol)
 		Murder::killItDead(0, pid());
 
 	} else {
-		int ret = lyx::kill(pid(), SIGHUP);
+		int ret = lyx::support::kill(pid(), SIGHUP);
 
 		// The process is already dead if wait_for_death is false
 		bool const wait_for_death = (ret == 0 && errno != ESRCH);
@@ -299,3 +302,6 @@ int Forkedcall::generateChild()
 
 	return cpid;
 }
+
+} // namespace support
+} // namespace lyx

@@ -26,6 +26,8 @@
 #include "lyxlex.h"
 #include "frontends/lyx_gui.h"
 
+using namespace lyx::support;
+
 using std::ostream;
 
 
@@ -118,7 +120,7 @@ bool operator==(InsetGraphicsParams const & left,
 	    left.bb == right.bb &&
 	    left.clip == right.clip &&
 
-	    lyx::float_equal(left.rotateAngle, right.rotateAngle, 0.001) &&
+	    float_equal(left.rotateAngle, right.rotateAngle, 0.001) &&
 	    left.rotateOrigin == right.rotateOrigin &&
 	    left.subcaption == right.subcaption &&
 	    left.subcaptionText == right.subcaptionText &&
@@ -148,8 +150,8 @@ void InsetGraphicsParams::Write(ostream & os, string const & bufpath) const
 		os << "\tlyxscale " << lyxscale << '\n';
 	if (display != grfx::DefaultDisplay)
 		os << "\tdisplay " << grfx::displayTranslator.find(display) << '\n';
-	if (!lyx::float_equal(scale, 0.0, 0.05)) {
-		if (!lyx::float_equal(scale, 100.0, 0.05))
+	if (!float_equal(scale, 0.0, 0.05)) {
+		if (!float_equal(scale, 100.0, 0.05))
 			os << "\tscale " << scale << '\n';
 	} else {
 		if (!width.zero())

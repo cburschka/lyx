@@ -19,7 +19,7 @@
 using std::atoi;
 #endif
 
-int lyx::atoi(string const & nstr)
+int lyx::support::atoi(string const & nstr)
 {
 	return ::atoi(nstr.c_str());
 }

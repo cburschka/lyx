@@ -25,6 +25,8 @@
 
 #include "lyx_forms.h"
 
+using namespace lyx::support;
+
 using std::endl;
 
 // The global fontloader

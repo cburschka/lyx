@@ -3,7 +3,7 @@
  * Copyright 1995-2002 the LyX Team
  * Read the file COPYING
  *
- * \author unknown
+ * \author Lars Gullik Bjønnes
  * \author John Levon <moz@compsoc.man.ac.uk>
  */
 
@@ -49,6 +49,7 @@
 extern BufferList bufferlist;
 
 using lyx::pos_type;
+using namespace lyx::support;
 
 using std::pair;
 using std::endl;

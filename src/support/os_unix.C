@@ -24,7 +24,8 @@ string tmpdir_;
 
 }
 
-
+namespace lyx {
+namespace support {
 namespace os {
 
 void init(int * /*argc*/, char ** argv[])
@@ -144,4 +145,6 @@ shell_type shell()
 	return UNIX;
 }
 
-} // end namespace os
+} // namespace os
+} // namespace support
+} // namespace lyx

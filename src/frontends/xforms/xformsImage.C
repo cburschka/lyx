@@ -18,6 +18,7 @@
 #include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/lyxfunctional.h"  // compare_memfun
+#include "support/lyxlib.h"
 
 #include "lyx_forms.h"
 
@@ -30,6 +31,8 @@
 #endif
 
 #include <boost/tuple/tuple.hpp>
+
+using namespace lyx::support;
 
 using std::find_if;
 
@@ -296,7 +299,7 @@ void xformsImage::rotate(Params const & params)
 	if (!image_)
 		return ;
 
-	if (lyx::float_equal(params.angle, 0.0, 0.1))
+	if (float_equal(params.angle, 0.0, 0.1))
 		// No rotation is necessary.
 		return;
 
@@ -306,7 +309,7 @@ void xformsImage::rotate(Params const & params)
 	// Work around xforms bug when params.angle == 270
 	// the 'InternalError: bad special angle' error.
 	// This bug fix is not needed in xforms 1.0 and greater.
-	if (lyx::float_equal(params.angle, 270.0, 0.1)) {
+	if (float_equal(params.angle, 270.0, 0.1)) {
 		flimage_rotate(image_,  900, FLIMAGE_SUBPIXEL);
 		flimage_rotate(image_, 1800, FLIMAGE_SUBPIXEL);
 	} else {
@@ -370,7 +373,7 @@ extern "C" {
 
 int status_report(FL_IMAGE * ob, const char *s)
 {
-	lyx::Assert(ob && ob->u_vdata);
+	Assert(ob && ob->u_vdata);
 
 	string const str = s ? rtrim(s) : string();
 	if (str.empty())
@@ -389,7 +392,7 @@ int status_report(FL_IMAGE * ob, const char *s)
 
 static void error_report(FL_IMAGE * ob, const char *s)
 {
-	lyx::Assert(ob && ob->u_vdata);
+	Assert(ob && ob->u_vdata);
 
 	string const str = s ? rtrim(s) : string();
 	if (str.empty())

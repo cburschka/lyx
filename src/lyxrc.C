@@ -31,6 +31,8 @@
 #include "support/lstrings.h"
 #include "support/userinfo.h"
 
+using namespace lyx::support;
+
 using std::ostream;
 using std::ofstream;
 using std::cout;
@@ -260,9 +262,9 @@ void LyXRC::setDefaults() {
 	preview_hashed_labels  = false;
 	preview_scale_factor = 0.9;
 
-	user_name = lyx::user_name();
+	user_name = lyx::support::user_name();
 
-	user_email = lyx::user_email();
+	user_email = lyx::support::user_email();
 
 	if (user_email.empty())
 		user_email = _("email address unknown");

@@ -29,6 +29,8 @@
 
 #include "LString.h"
 
+using namespace lyx::support;
+
 using std::vector;
 using std::endl;
 

@@ -24,6 +24,8 @@
 
 #include <algorithm>
 
+using namespace lyx::support;
+
 using std::endl;
 using std::find_if;
 using std::remove_if;
@@ -755,7 +757,7 @@ bool LyXTextClass::hasLayout(string const & n) const
 
 LyXLayout_ptr const & LyXTextClass::operator[](string const & name) const
 {
-	lyx::Assert(!name.empty());
+	Assert(!name.empty());
 
 	LayoutList::const_iterator cit =
 		find_if(layoutlist_.begin(),
@@ -771,7 +773,7 @@ LyXLayout_ptr const & LyXTextClass::operator[](string const & name) const
 			lyxerr  << " " << it->get()->name() << endl;
 
 		// we require the name to exist
-		lyx::Assert(false);
+		Assert(false);
 	}
 
 	return (*cit);

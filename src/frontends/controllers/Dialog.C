@@ -18,6 +18,7 @@
 #include "debug.h"
 #include "support/LAssert.h"
 
+using namespace lyx::support;
 
 Dialog::Dialog(LyXView & lv, string const & name)
 	: is_closing_(false), kernel_(lv), name_(name),
@@ -123,7 +124,7 @@ void Dialog::apply()
 
 	if (controller().disconnectOnApply() && !is_closing_) {
 		kernel().disconnect(name());
- 		controller().initialiseParams(string());
+		controller().initialiseParams(string());
 		view().update();
 	}
 }
@@ -143,21 +144,21 @@ void Dialog::redraw()
 
 ButtonController & Dialog::bc() const
 {
-	lyx::Assert(bc_ptr_.get());
+	Assert(bc_ptr_.get());
 	return *bc_ptr_.get();
 }
 
 
 Dialog::Controller & Dialog::controller() const
 {
-	lyx::Assert(controller_ptr_.get());
+	Assert(controller_ptr_.get());
 	return *controller_ptr_.get();
 }
 
 
 Dialog::View & Dialog::view() const
 {
-	lyx::Assert(view_ptr_.get());
+	Assert(view_ptr_.get());
 	return *view_ptr_.get();
 }
 
@@ -176,13 +177,13 @@ string const & Dialog::View::getTitle() const
 
 void Dialog::setController(Controller * i)
 {
-	lyx::Assert(i && !controller_ptr_.get());
+	Assert(i && !controller_ptr_.get());
 	controller_ptr_.reset(i);
 }
 
 
 void Dialog::setView(View * v)
 {
-	lyx::Assert(v && !view_ptr_.get());
+	Assert(v && !view_ptr_.get());
 	view_ptr_.reset(v);
 }

@@ -28,6 +28,8 @@
 
 #include "debug.h"    // temporary
 
+using namespace lyx::support;
+
 namespace grfx {
 
 bool PreviewedInset::activated()

@@ -18,6 +18,8 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
+using namespace lyx::support;
+
 using std::ostream;
 using std::istream;
 using std::endl;

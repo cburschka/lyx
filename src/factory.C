@@ -54,6 +54,8 @@
 
 #include <cstdio>
 
+using namespace lyx::support;
+
 using std::endl;
 
 Inset * createInset(FuncRequest const & cmd)

@@ -21,6 +21,8 @@
 
 #include <boost/bind.hpp>
 
+using namespace lyx::support;
+
 using std::vector;
 
 

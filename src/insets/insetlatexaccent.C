@@ -22,6 +22,8 @@
 #include "lyxlex.h"
 #include "metricsinfo.h"
 
+using namespace lyx::support;
+
 using std::ostream;
 using std::endl;
 

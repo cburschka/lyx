@@ -17,6 +17,8 @@
 #include "support/lyxlib.h"
 #include <fstream>
 
+using namespace lyx::support;
+
 using std::endl;
 using std::ostream;
 
@@ -48,5 +50,5 @@ void ControlVCLog::getVCLogFile(ostream & ss) const
 	if (!found)
 		ss << _("No version control log file found.") << endl;
 
-	lyx::unlink(name);
+	unlink(name);
 }

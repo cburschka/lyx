@@ -39,6 +39,8 @@
 #include <qmenubar.h>
 #include <qstatusbar.h>
 
+using namespace lyx::support;
+
 using std::endl;
 
 namespace {

@@ -43,6 +43,8 @@
 
 #include <cstdlib>
 
+using namespace lyx::support;
+
 using std::ostream;
 using std::endl;
 using std::vector;

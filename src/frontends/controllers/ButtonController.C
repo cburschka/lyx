@@ -15,10 +15,11 @@
 #include "support/LAssert.h"
 #include "debug.h"
 
+using namespace lyx::support;
 
 BCView & ButtonController::view() const
 {
-	lyx::Assert(view_.get());
+	Assert(view_.get());
 	return *view_.get();
 }
 
@@ -30,7 +31,7 @@ void ButtonController::view(BCView * view)
 
 ButtonPolicy & ButtonController::bp() const
 {
-	lyx::Assert(bp_.get());
+	Assert(bp_.get());
 	return *bp_.get();
 }
 

@@ -12,6 +12,8 @@
 #include "lyxrc.h"
 #include "support/lstrings.h"
 
+using namespace lyx::support;
+
 using std::endl;
 using std::pair;
 

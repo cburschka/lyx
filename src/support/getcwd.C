@@ -31,7 +31,7 @@ char * l_getcwd(char * buffer, size_t size)
 
 
 // Returns current working directory
-string const lyx::getcwd()
+string const lyx::support::getcwd()
 {
 	int n = 256;	// Assume path is less than 256 chars
 	char * err;

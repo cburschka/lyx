@@ -18,6 +18,7 @@
 #include "support/lstrings.h"
 #include "support/filetools.h"
 
+using namespace lyx::support;
 
 ControlMath::ControlMath(Dialog & dialog)
 	: Dialog::Controller(dialog)

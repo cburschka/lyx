@@ -17,6 +17,8 @@
 #include "insets/insettabular.h"
 #include "support/LAssert.h"
 
+using namespace lyx::support;
+
 
 ControlTabular::ControlTabular(Dialog & parent)
 	: Dialog::Controller(parent), active_cell_(-1)
@@ -54,7 +56,7 @@ int ControlTabular::getActiveCell() const
 
 LyXTabular const & ControlTabular::tabular() const
 {
-	lyx::Assert(params_.get());
+	Assert(params_.get());
 	return *params_.get();
 }
 

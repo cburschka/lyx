@@ -27,6 +27,8 @@
 
 #include "lyx_forms.h"
 
+using namespace lyx::support;
+
 extern "C" {
 
 #if FL_VERSION == 0 || (FL_REVISION == 0 && FL_FIXLEVEL == 0)
@@ -123,7 +125,7 @@ void FormBase::show()
 {
 	// build() is/should be called from the controller, so form() should
 	// always exist.
-	lyx::Assert(form());
+	Assert(form());
 
 	// we use minw_ to flag whether the dialog has ever been shown.
 	// In turn, prepare_to_show() initialises various bits 'n' pieces
@@ -182,14 +184,14 @@ void FormBase::hide()
 
 void FormBase::setPrehandler(FL_OBJECT * ob)
 {
-	lyx::Assert(ob);
+	Assert(ob);
 	fl_set_object_prehandler(ob, C_PrehandlerCB);
 }
 
 
 void FormBase::setMessageWidget(FL_OBJECT * ob)
 {
-	lyx::Assert(ob && ob->objclass == FL_TEXT);
+	Assert(ob && ob->objclass == FL_TEXT);
 	message_widget_ = ob;
 	fl_set_object_lsize(message_widget_, FL_NORMAL_SIZE);
 }
@@ -216,7 +218,7 @@ ButtonPolicy::SMInput FormBase::input(FL_OBJECT *, long)
 // preemptive handler for feedback messages
 void FormBase::MessageCB(FL_OBJECT * ob, int event)
 {
-	lyx::Assert(ob);
+	Assert(ob);
 
 	switch (event) {
 	case FL_ENTER:
@@ -243,7 +245,7 @@ void FormBase::MessageCB(FL_OBJECT * ob, int event)
 
 void FormBase::PrehandlerCB(FL_OBJECT * ob, int event, int key)
 {
-	lyx::Assert(ob);
+	Assert(ob);
 
 	if (ob->objclass == FL_INPUT && event == FL_PUSH && key == 2) {
 		// Trigger an input event when pasting in an xforms input object
@@ -295,7 +297,7 @@ void FormBase::postWarning(string const & warning)
 
 void FormBase::clearMessage()
 {
-	lyx::Assert(message_widget_);
+	Assert(message_widget_);
 
 	warning_posted_ = false;
 
@@ -312,10 +314,9 @@ void FormBase::clearMessage()
 
 void FormBase::postMessage(string const & message)
 {
-	lyx::Assert(message_widget_);
+	Assert(message_widget_);
 
 	int const width = message_widget_->w - 10;
-
 	string const tmp = warning_posted_ ?
 		bformat(_("WARNING! %1$s"), message) :
 		message;
@@ -335,7 +336,7 @@ namespace {
 
 FormBase * GetForm(FL_OBJECT * ob)
 {
-	lyx::Assert(ob && ob->form && ob->form->u_vdata);
+	Assert(ob && ob->form && ob->form->u_vdata);
 	FormBase * ptr = static_cast<FormBase *>(ob->form->u_vdata);
 	return ptr;
 }
@@ -379,7 +380,7 @@ void C_FormBaseInputCB(FL_OBJECT * ob, long d)
 static int C_WMHideCB(FL_FORM * form, void *)
 {
 	// Close the dialog cleanly, even if the WM is used to do so.
-	lyx::Assert(form && form->u_vdata);
+	Assert(form && form->u_vdata);
 	FormBase * ptr = static_cast<FormBase *>(form->u_vdata);
 	ptr->getController().CancelButton();
 	return FL_CANCEL;
@@ -390,7 +391,7 @@ static int C_PrehandlerCB(FL_OBJECT * ob, int event,
 {
 	// Note that the return value is important in the pre-emptive handler.
 	// Don't return anything other than 0.
-	lyx::Assert(ob);
+	Assert(ob);
 
 	// Don't Assert this one, as it can happen quite naturally when things
 	// are being deleted in the d-tor.

@@ -32,6 +32,8 @@
 
 extern BufferList bufferlist;
 
+using namespace lyx::support;
+
 
 namespace {
 
@@ -98,7 +100,7 @@ bool readFile(Buffer * b, string const & s)
 					b->markDirty();
 				} else {
 					// Here, we should delete the autosave
-					lyx::unlink(a);
+					unlink(a);
 				}
 			}
 		}
@@ -126,8 +128,8 @@ bool loadLyXFile(Buffer * b, string const & s)
 			b->lyxvc.file_found_hook(s);
 			return true;
 		}
-		break; 
-	case -1: 
+		break;
+	case -1:
 		string const file = MakeDisplayPath(s, 20);
 		// Here we probably should run
 		if (LyXVC::file_not_found_hook(s)) {
@@ -150,7 +152,7 @@ bool loadLyXFile(Buffer * b, string const & s)
 }
 
 
-Buffer * newFile(string const & filename, string const & templatename, 
+Buffer * newFile(string const & filename, string const & templatename,
 		 bool isNamed)
 {
 	// get a free buffer
@@ -198,7 +200,7 @@ Buffer * newFile(string const & filename, string const & templatename,
 }
 
 
-void parseErrors(Buffer const & buf, TeXErrors const & terr) 
+void parseErrors(Buffer const & buf, TeXErrors const & terr)
 {
 	TeXErrors::Errors::const_iterator cit = terr.begin();
 	TeXErrors::Errors::const_iterator end = terr.end();
@@ -217,12 +219,12 @@ void parseErrors(Buffer const & buf, TeXErrors const & terr)
 }
 
 
-void parseErrors(Buffer const & buf, ErrorList const & el) 
+void parseErrors(Buffer const & buf, ErrorList const & el)
 {
 	ErrorList::const_iterator it = el.begin();
 	ErrorList::const_iterator end = el.end();
 
-	for (; it != end; ++it) 
+	for (; it != end; ++it)
 		buf.parseError(*it);
 }
 

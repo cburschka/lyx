@@ -139,6 +139,9 @@ char typeLetter(mode_t i)
 } // namespace anon
 
 
+namespace lyx {
+namespace support {
+
 FileInfo::FileInfo()
 {
 	init();
@@ -204,7 +207,7 @@ FileInfo & FileInfo::newFile(int fildes)
 // should not be in FileInfo
 char FileInfo::typeIndicator() const
 {
-	lyx::Assert(isOK());
+	Assert(isOK());
 	if (S_ISDIR(buf_.st_mode))
 		return '/';
 #ifdef S_ISLNK
@@ -227,7 +230,7 @@ char FileInfo::typeIndicator() const
 
 mode_t FileInfo::getMode() const
 {
-	lyx::Assert(isOK());
+	Assert(isOK());
 	return buf_.st_mode;
 }
 
@@ -235,7 +238,7 @@ mode_t FileInfo::getMode() const
 // should not be in FileInfo
 string FileInfo::modeString() const
 {
-	lyx::Assert(isOK());
+	Assert(isOK());
 	char str[11];
 	str[0] = typeLetter(buf_.st_mode);
 	flagRWX((buf_.st_mode & 0700) << 0, &str[1]);
@@ -250,49 +253,49 @@ string FileInfo::modeString() const
 
 time_t FileInfo::getModificationTime() const
 {
-	lyx::Assert(isOK());
+	Assert(isOK());
 	return buf_.st_mtime;
 }
 
 
 time_t FileInfo::getAccessTime() const
 {
-	lyx::Assert(isOK());
+	Assert(isOK());
 	return buf_.st_atime;
 }
 
 
 time_t FileInfo::getStatusChangeTime() const
 {
-	lyx::Assert(isOK());
+	Assert(isOK());
 	return buf_.st_ctime;
 }
 
 
 nlink_t FileInfo::getNumberOfLinks() const
 {
-	lyx::Assert(isOK());
+	Assert(isOK());
 	return buf_.st_nlink;
 }
 
 
 uid_t FileInfo::getUid() const
 {
-	lyx::Assert(isOK());
+	Assert(isOK());
 	return buf_.st_uid;
 }
 
 
 gid_t FileInfo::getGid() const
 {
-	lyx::Assert(isOK());
+	Assert(isOK());
 	return buf_.st_gid;
 }
 
 
 off_t FileInfo::getSize() const
 {
-	lyx::Assert(isOK());
+	Assert(isOK());
 	return buf_.st_size;
 }
 
@@ -311,49 +314,49 @@ bool FileInfo::isOK() const
 
 bool FileInfo::isLink() const
 {
-	lyx::Assert(isOK());
+	Assert(isOK());
 	return S_ISLNK(buf_.st_mode);
 }
 
 
 bool FileInfo::isRegular() const
 {
-	lyx::Assert(isOK());
+	Assert(isOK());
 	return S_ISREG(buf_.st_mode);
 }
 
 
 bool FileInfo::isDir() const
 {
-	lyx::Assert(isOK());
+	Assert(isOK());
 	return S_ISDIR(buf_.st_mode);
 }
 
 
 bool FileInfo::isChar() const
 {
-	lyx::Assert(isOK());
+	Assert(isOK());
 	return S_ISCHR(buf_.st_mode);
 }
 
 
 bool FileInfo::isBlock() const
 {
-	lyx::Assert(isOK());
+	Assert(isOK());
 	return S_ISBLK(buf_.st_mode);
 }
 
 
 bool FileInfo::isFifo() const
 {
-	lyx::Assert(isOK());
+	Assert(isOK());
 	return S_ISFIFO(buf_.st_mode);
 }
 
 
 bool FileInfo::isSocket() const
 {
-	lyx::Assert(isOK());
+	Assert(isOK());
 #ifdef S_ISSOCK
 	return S_ISSOCK(buf_.st_mode);
 #else
@@ -373,3 +376,6 @@ bool FileInfo::access(int p) const
 	// the file access failed.
 	return ::access(fname_.c_str(), p) == 0;
 }
+
+} // namespace support
+} // namespace lyx

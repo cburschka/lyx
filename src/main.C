@@ -17,6 +17,8 @@
 #include <ios>
 #endif
 
+using namespace lyx::support;
+
 int main(int argc, char * argv[])
 {
 #ifdef HAVE_IOS

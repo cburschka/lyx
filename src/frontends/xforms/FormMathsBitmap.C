@@ -29,6 +29,8 @@
 extern  "C" void C_FormDialogView_CancelCB(FL_OBJECT *, long);
 extern  "C" void C_FormDialogView_InputCB(FL_OBJECT *, long);
 
+using namespace lyx::support;
+
 using std::vector;
 using std::max;
 
@@ -76,7 +78,7 @@ void FormMathsBitmap::addBitmap(BitmapStore const & bm)
 
 void FormMathsBitmap::build()
 {
-	lyx::Assert(bitmaps_.size() > 0);
+	Assert(bitmaps_.size() > 0);
 
 	h_+= 42; // Allow room for a Close button
 

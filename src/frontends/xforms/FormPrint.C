@@ -25,6 +25,7 @@
 #include "lyx_forms.h"
 #include "support/tostr.h"
 
+using namespace lyx::support;
 
 typedef FormCB<ControlPrint, FormDB<FD_print> > base_class;
 

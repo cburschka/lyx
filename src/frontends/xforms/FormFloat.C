@@ -23,6 +23,8 @@
 #include "support/lstrings.h"
 #include "lyx_forms.h"
 
+using namespace lyx::support;
+
 namespace {
 
 enum {

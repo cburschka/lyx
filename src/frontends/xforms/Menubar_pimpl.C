@@ -26,6 +26,8 @@
 
 #include <algorithm>
 
+using namespace lyx::support;
+
 using std::endl;
 using std::vector;
 using std::max;
@@ -342,7 +344,7 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 	}
 
 	// Paranoia check
-	lyx::Assert(item->kind() == MenuItem::Submenu);
+	Assert(item->kind() == MenuItem::Submenu);
 
 	// set tabstop length
 	fl_set_tabstop(menu_tabstop);

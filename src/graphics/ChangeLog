@@ -1,3 +1,7 @@
+2003-07-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* introcude namespace lyx::support
+
 2003-06-04  Angus Leeming  <leeming@lyx.org>
 
 	* GraphicsLoader.C (Loader copy c-tor): make it work as expected. ;-)
@@ -38,7 +42,7 @@
 
 2003-05-12 André Pönitz <poenitz@gmx.net>
 
-	* PreviewLoader.C:  boost::format -> bformat 
+	* PreviewLoader.C:  boost::format -> bformat
 
 2003-04-15  Angus Leeming  <leeming@lyx.org>
 
@@ -61,17 +65,17 @@
 
 	* GraphicsLoader.[Ch],
 	* PreviewImage.[Ch],
-	* PreviewedInset.C: Removed unneeded list of owner insets 
+	* PreviewedInset.C: Removed unneeded list of owner insets
 
 2003-02-25  Alfredo Braunstein  <abraunst@libero.it>
 
 	* GraphicsConverter (startConversion): add the call to
-	ForkedCallQueue::add 
+	ForkedCallQueue::add
 
 	* GraphicsLoader.[Ch],
 	* PreviewImage.[Ch],
-	* PreviewedInset.C: Removed unneeded BufferView 
-	
+	* PreviewedInset.C: Removed unneeded BufferView
+
 2003-02-25  Alfredo Braunstein  <abraunst@libero.it>
 
 	* LoaderQueue.[Ch]: a simplification of the code, eliminated
@@ -85,10 +89,10 @@
 	* PreviewLoader.C (FindFirst): use ==, not < with std::find.
 
 2003-02-21  Alfredo Braunstein  <abraunst@libero.it>
-	
+
 	* LoaderQueue.[Ch] (setPriority): added
-	
-	* PreviewLoader.C (finishedGenerating): reversed the loading order so 
+
+	* PreviewLoader.C (finishedGenerating): reversed the loading order so
 	first images get 'touched' last, and so load first.
 
 2003-02-20  Alfredo Braunstein  <abraunst@libero.it>
@@ -111,7 +115,7 @@
 
 2002-12-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
-	* Makefile.am (EXTRA_DIST): remove variable 
+	* Makefile.am (EXTRA_DIST): remove variable
 
 2002-12-13  Angus Leeming  <leeming@lyx.org>
 

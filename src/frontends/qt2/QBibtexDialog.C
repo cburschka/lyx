@@ -32,6 +32,7 @@
 
 #include <vector>
 
+using namespace lyx::support;
 
 QBibtexDialog::QBibtexDialog(QBibtex * form)
 	: QBibtexDialogBase(0, 0, false, 0),

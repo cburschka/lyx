@@ -19,6 +19,8 @@
 
 #include "support/filetools.h" // MakeAbsPath, MakeDisplayPath
 
+using namespace lyx::support;
+
 using std::vector;
 
 extern BufferList bufferlist;

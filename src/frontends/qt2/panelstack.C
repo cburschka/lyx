@@ -18,6 +18,8 @@
 #include <qlayout.h>
 #include <qlistview.h>
 
+using namespace lyx::support;
+
 using std::map;
 
 
@@ -59,7 +61,7 @@ void PanelStack::addCategory(string const & n, string const & parent)
 
 	if (!parent.empty()) {
 		PanelMap::iterator it = panel_map_.find(parent);
-		lyx::Assert(it != panel_map_.end());
+		Assert(it != panel_map_.end());
 
 		QListViewItem * before = it->second->firstChild();
 		if (before) {
@@ -108,7 +110,7 @@ void PanelStack::addPanel(QWidget * panel, string const & name, string const & p
 void PanelStack::setCurrentPanel(string const & name)
 {
 	PanelMap::const_iterator cit = panel_map_.find(name);
-	lyx::Assert(cit != panel_map_.end());
+	Assert(cit != panel_map_.end());
 
 	// force on first set
 	if (list_->currentItem() ==  cit->second)

@@ -11,6 +11,8 @@
 #include "support/lstrings.h"
 #include "input_validators.h"
 
+using namespace lyx::support;
+
 #if defined(__cplusplus)
 extern "C"
 {

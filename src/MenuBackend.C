@@ -40,6 +40,8 @@
 extern BufferList bufferlist;
 extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 
+using namespace lyx::support;
+
 using std::endl;
 using std::vector;
 using std::max;
@@ -619,10 +621,10 @@ void expandPasteRecent(Menu & tomenu, LyXView const * view)
 {
 	vector<string> const selL =
 		CutAndPaste::availableSelections(*view->buffer());
-	
+
 	vector<string>::const_iterator cit = selL.begin();
 	vector<string>::const_iterator end = selL.end();
-	
+
 	for (unsigned int index = 0; cit != end; ++cit, ++index) {
 		int const action = lyxaction.getPseudoAction(LFUN_PASTE,
 							     tostr(index));
@@ -780,7 +782,7 @@ Menu const & MenuBackend::getMenu(string const & name) const
 				     lyx::compare_memfun(&Menu::name, name));
 	if (cit == end())
 		lyxerr << "No submenu named " << name << endl;
-	lyx::Assert(cit != end());
+	Assert(cit != end());
 	return (*cit);
 }
 
@@ -790,7 +792,7 @@ Menu & MenuBackend::getMenu(string const & name)
 	MenuList::iterator it =
 		find_if(menulist_.begin(), menulist_.end(),
 			lyx::compare_memfun(&Menu::name, name));
-	lyx::Assert(it != menulist_.end());
+	Assert(it != menulist_.end());
 	return (*it);
 }
 

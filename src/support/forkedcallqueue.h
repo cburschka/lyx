@@ -5,14 +5,14 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Alfredo Braunstein (based on an idea from Angus Leeming)
- * 
+ *
  * Full author contact details are available in file CREDITS
- * 
- * This class implements a queue of forked processes. In order not to 
- * hose the system with multiple processes running simultaneously, you can 
- * request the addition of your process to this queue and it will be  
+ *
+ * This class implements a queue of forked processes. In order not to
+ * hose the system with multiple processes running simultaneously, you can
+ * request the addition of your process to this queue and it will be
  * executed when its turn comes.
- * 
+ *
  */
 
 #ifndef FORKEDCALLQUEUE_H
@@ -23,6 +23,9 @@
 #include <queue>
 #include <utility>
 #include "LString.h"
+
+namespace lyx {
+namespace support {
 
 class ForkedCallQueue {
 public:
@@ -41,11 +44,11 @@ public:
 
 private:
 
-	/** this class is a singleton class... use 
+	/** this class is a singleton class... use
 	 *  ForkedCallQueue::get() instead
 	 */
 	ForkedCallQueue();
-	/// in-progress queue 
+	/// in-progress queue
 	std::queue<Process> callQueue_;
 	///
 	bool running_;
@@ -58,5 +61,8 @@ private:
 	///
 	void callback(pid_t, int);
 };
+
+} // namespace support
+} // namespace lyx
 
 #endif // FORKEDCALLQUEUE_H

@@ -36,6 +36,9 @@ using std::find_if;
 using std::strerror;
 #endif
 
+namespace lyx {
+namespace support {
+
 // Ensure, that only one controller exists inside process
 ForkedcallsController & ForkedcallsController::get()
 {
@@ -206,3 +209,6 @@ void ForkedcallsController::kill(pid_t pid, int tolerance)
 		timeout_->stop();
 	}
 }
+
+} // namespace support
+} // namespace lyx

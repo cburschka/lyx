@@ -17,7 +17,11 @@
 #include <cstdio>
 
 class BufferParams;
+namespace lyx {
+namespace support {
 class ForkedProcess;
+}
+}
 
 /// i/a spell process-based spellchecker
 class ISpell : public SpellBase {
@@ -67,7 +71,7 @@ private:
 	/// spell error
 	string error_;
 
-	boost::scoped_ptr<ForkedProcess> child_;
+	boost::scoped_ptr<lyx::support::ForkedProcess> child_;
 
 	// vileness below ... please FIXME
 	/// str ???

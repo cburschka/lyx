@@ -17,6 +17,8 @@
 
 #include <map>
 
+using namespace lyx::support;
+
 using std::endl;
 
 
@@ -198,7 +200,7 @@ void LColor::setColor(LColor::color col, string const & x11name)
 		return;
 	}
 	lyxerr << "LyX internal error: color and such.\n";
-	lyx::Assert(false);
+	Assert(false);
 }
 
 

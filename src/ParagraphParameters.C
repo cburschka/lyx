@@ -19,6 +19,8 @@
 
 #include <iostream>
 
+using namespace lyx::support;
+
 using std::ostream;
 
 // Initialize static member var.

@@ -37,6 +37,8 @@
 #include <algorithm>
 #include <cstdlib>
 
+using namespace lyx::support;
+
 using std::abs;
 using std::ostream;
 using std::istream;
@@ -149,7 +151,7 @@ LyXTabular & LyXTabular::operator=(LyXTabular const & lt)
 	// If this and lt is not of the same size we have a serious bug
 	// So then it is ok to throw an exception, or for now
 	// call abort()
-	lyx::Assert(rows_ == lt.rows_ && columns_ == lt.columns_);
+	Assert(rows_ == lt.rows_ && columns_ == lt.columns_);
 	cur_cell = -1;
 	cell_info = lt.cell_info;
 	row_info = lt.row_info;
@@ -426,7 +428,7 @@ int LyXTabular::numberOfCellsInRow(int cell) const
 }
 
 
-// returns 1 if there is a topline, returns 0 if not 
+// returns 1 if there is a topline, returns 0 if not
 bool LyXTabular::topLine(int cell, bool onlycolumn) const
 {
 	int const row = row_of_cell(cell);
@@ -1169,14 +1171,14 @@ void LyXTabular::read(Buffer const * buf, LyXLex & lex)
 	l_getline(is, line);
 	if (!prefixIs(line, "<lyxtabular ")
 		&& !prefixIs(line, "<LyXTabular ")) {
-		lyx::Assert(false);
+		Assert(false);
 		return;
 	}
 
 	int version;
 	if (!getTokenValue(line, "version", version))
 		return;
-	lyx::Assert(version >= 2);
+	Assert(version >= 2);
 
 	int rows_arg;
 	if (!getTokenValue(line, "rows", rows_arg))
@@ -1479,7 +1481,7 @@ int LyXTabular::getCellNumber(int row, int column) const
 	else if (row < 0)
 		row = 0;
 #else
-	lyx::Assert(column >= 0 || column < columns_ || row >= 0 || row < rows_);
+	Assert(column >= 0 || column < columns_ || row >= 0 || row < rows_);
 #endif
 	return cell_info[row][column].cellno;
 }

@@ -30,7 +30,9 @@
 #include "support/path.h"
 #include "support/systemcall.h"
 
-#include "debug.h" // for lyxerr
+#include "debug.h"
+
+using namespace lyx::support;
 
 using std::endl;
 
@@ -42,7 +44,7 @@ ControlPrint::ControlPrint(LyXView & lv, Dialogs & d)
 
 PrinterParams & ControlPrint::params() const
 {
-	lyx::Assert(params_);
+	Assert(params_);
 	return *params_;
 }
 

@@ -21,6 +21,7 @@
 #include "support/lstrings.h"
 #include <utility>
 
+using namespace lyx::support;
 
 using std::make_pair;
 using std::pair;

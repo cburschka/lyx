@@ -31,6 +31,8 @@
 #include <fstream>
 #include <sys/types.h> // needed for pid_t
 
+using namespace lyx::support;
+
 using std::endl;
 using std::ostream;
 
@@ -195,7 +197,7 @@ void Converter::Impl::startConversion()
 		return;
 	}
 
-	Forkedcall::SignalTypePtr 
+	Forkedcall::SignalTypePtr
 		ptr = ForkedCallQueue::get().add(script_command_);
 
 	ptr->connect(boost::bind(&Impl::converted, this, _1, _2));
@@ -210,10 +212,10 @@ void Converter::Impl::converted(pid_t /* pid */, int retval)
 
 	finished_ = true;
 	// Clean-up behind ourselves
-	lyx::unlink(script_file_);
+	unlink(script_file_);
 
 	if (retval > 0) {
-		lyx::unlink(to_file_);
+		unlink(to_file_);
 		to_file_.erase();
 		finishedConversion(false);
 	} else {
@@ -277,8 +279,8 @@ bool build_script(string const & from_file,
 	// Remember to remove the temp file because we only want the name...
 	static int counter = 0;
 	string const tmp = "gconvert" + tostr(counter++);
-	string const to_base = lyx::tempName(string(), tmp);
-	lyx::unlink(to_base);
+	string const to_base = tempName(string(), tmp);
+	unlink(to_base);
 
 	string outfile = from_file;
 

@@ -44,6 +44,8 @@
 #include <fcntl.h>
 #include <boost/bind.hpp>
 
+using namespace lyx::support;
+
 #ifndef CXX_GLOBAL_CSTD
 using std::exit;
 #endif
@@ -117,7 +119,7 @@ int LyX_XErrHandler(Display * display, XErrorEvent * xeev) {
 	XGetErrorText(display, xeev->error_code, etxt, 512);
 	lyxerr << etxt << " id: " << xeev->resourceid << endl;
 	// By doing an abort we get a nice backtrace. (hopefully)
-	lyx::abort();
+	lyx::support::abort();
 	return 0;
 }
 

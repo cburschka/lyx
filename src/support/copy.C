@@ -19,7 +19,7 @@ using std::ifstream;
 using std::ofstream;
 using std::ios;
 
-bool lyx::copy(string const & from, string const & to)
+bool lyx::support::copy(string const & from, string const & to)
 {
 	ifstream ifs(from.c_str());
 	if (!ifs)

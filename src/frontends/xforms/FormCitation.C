@@ -10,8 +10,6 @@
  */
 
 #include <config.h>
-#include <algorithm>
-
 
 #include "xformsBC.h"
 #include "ControlCitation.h"
@@ -26,6 +24,10 @@
 #include "gettext.h"
 #include "support/LAssert.h"
 #include "support/lstrings.h"
+
+#include <algorithm>
+
+using namespace lyx::support;
 
 using std::find;
 using std::max;

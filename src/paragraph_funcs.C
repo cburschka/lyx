@@ -36,6 +36,8 @@
 
 extern string bibitemWidest(Buffer const *);
 
+using namespace lyx::support;
+
 using lyx::pos_type;
 //using lyx::layout_type;
 using std::endl;
@@ -1007,7 +1009,7 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 		string const s = bformat(_("Unknown token: %1$s %2$s\n"),
 			token, lex.getString());
 
-		buf.parseError(ErrorItem(_("Unknown token"), s, 
+		buf.parseError(ErrorItem(_("Unknown token"), s,
 					 par.id(), 0, par.size()));
 		return 1;
 	}

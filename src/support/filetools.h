@@ -18,6 +18,9 @@
 #include "os.h"
 
 
+namespace lyx {
+namespace support {
+
 /// remove directory and all contents, returns 0 on success
 int destroyDir(string const & tmpdir);
 
@@ -219,5 +222,8 @@ string const copyFileToDir(string const & path, string const & file);
 typedef std::pair<int, string> cmd_ret;
 
 cmd_ret const RunCommand(string const & cmd);
+
+} // namespace support
+} // namespace lyx
 
 #endif

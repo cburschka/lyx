@@ -22,6 +22,7 @@
 #include "lyxtext.h"
 #include "support/lstrings.h"
 
+using namespace lyx::support;
 
 // some stuff for inset locking
 

@@ -27,6 +27,8 @@
 #endif
 #include <sys/time.h>
 
+using namespace lyx::support;
+
 #ifndef CXX_GLOBAL_CSTD
 using std::strcpy;
 using std::strlen;
@@ -39,14 +41,14 @@ using std::max;
 
 namespace {
 
-class LaunchIspell : public ForkedProcess {
+class LaunchIspell : public lyx::support::ForkedProcess {
 public:
 	///
 	LaunchIspell(BufferParams const & p, string const & l,
 		     int * in, int * out, int * err)
 		: params(p), lang(l), pipein(in), pipeout(out), pipeerr(err) {}
 	///
-	virtual ForkedProcess * clone() const {
+	virtual lyx::support::ForkedProcess * clone() const {
 		return new LaunchIspell(*this);
 	}
 	///

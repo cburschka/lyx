@@ -36,6 +36,8 @@
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
 
+using namespace lyx::support;
+
 using std::ostream;
 using std::endl;
 

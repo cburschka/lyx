@@ -24,6 +24,8 @@
 #include "lyx_forms.h"
 #include "support/tostr.h"
 
+using namespace lyx::support;
+
 using std::vector;
 using std::find;
 using std::find_if;

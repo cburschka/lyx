@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-
-#include <vector>
-#include <algorithm>
-
 #include "ControlTabular.h"
 #include "xformsBC.h"
 #include "ButtonController.h"
@@ -30,6 +26,11 @@
 #include "support/lstrings.h"
 
 #include "lyx_forms.h"
+
+#include <vector>
+#include <algorithm>
+
+using namespace lyx::support;
 
 using std::vector;
 using std::bind2nd;

@@ -16,6 +16,8 @@
 #include <algorithm> // std::max. Use FL_max in .c code...
 #include "lyx_forms.h"
 
+using namespace lyx::support;
+
 namespace {
 
 /* This is hacked straight out of the xforms source.
@@ -93,7 +95,7 @@ double get_scaling_factor(FL_FORM * form)
 
 double get_tabfolder_scale_to_fit(FL_OBJECT * folder)
 {
-	lyx::Assert(folder && folder->objclass == FL_TABFOLDER);
+	Assert(folder && folder->objclass == FL_TABFOLDER);
 
 	fl_freeze_form(folder->form);
 	int const saved_folder_id = fl_get_folder_number(folder);
@@ -115,7 +117,7 @@ double get_tabfolder_scale_to_fit(FL_OBJECT * folder)
 
 void scale_tabfolder_horizontally(FL_OBJECT * folder, double factor)
 {
-	lyx::Assert(folder && folder->objclass == FL_TABFOLDER);
+	Assert(folder && folder->objclass == FL_TABFOLDER);
 
 	fl_freeze_form(folder->form);
 	int const saved_folder_id = fl_get_folder_number(folder);
@@ -136,7 +138,7 @@ void scale_tabfolder_horizontally(FL_OBJECT * folder, double factor)
 
 double get_scale_to_fit(FL_FORM * form)
 {
-	lyx::Assert(form);
+	Assert(form);
 
 	double factor = get_scaling_factor(form);
 	for (FL_OBJECT * ob = form->first; ob; ob = ob->next) {
@@ -150,7 +152,7 @@ double get_scale_to_fit(FL_FORM * form)
 
 void scale_form_horizontally(FL_FORM * form, double factor)
 {
-	lyx::Assert(form);
+	Assert(form);
 
 	if (factor <= 1.0)
 		return;

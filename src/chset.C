@@ -9,6 +9,8 @@
 
 #include <fstream>
 
+using namespace lyx::support;
+
 using std::ifstream;
 using std::getline;
 using std::pair;
@@ -58,7 +60,7 @@ bool CharacterSet::loadFile(string const & fname)
 		cmatch sub;
 #endif
 		if (regex_match(STRCONV(line), sub, reg)) {
-			int const n = lyx::atoi(STRCONV(sub.str(1)));
+			int const n = atoi(STRCONV(sub.str(1)));
 			string const str = STRCONV(sub.str(2));
 			if (lyxerr.debugging(Debug::KBMAP))
 				lyxerr << "Chardef: " << n

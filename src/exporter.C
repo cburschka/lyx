@@ -24,6 +24,8 @@
 
 #include <algorithm>
 
+using namespace lyx::support;
+
 using std::vector;
 using std::find;
 
@@ -157,4 +159,3 @@ Exporter::GetExportableFormats(Buffer const * buffer, bool only_viewable)
 	}
 	return result;
 }
-

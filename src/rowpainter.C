@@ -11,8 +11,6 @@
 
 #include <config.h>
 
-#include <algorithm>
-
 #include "frontends/Painter.h"
 #include "frontends/screen.h"
 #include "frontends/font_metrics.h"
@@ -34,6 +32,10 @@
 #include "lyxrc.h"
 #include "lyxrow_funcs.h"
 #include "metricsinfo.h"
+
+#include <algorithm>
+
+using namespace lyx::support;
 
 using std::max;
 using lyx::pos_type;
@@ -102,7 +104,7 @@ void RowPainter::paintInset(pos_type const pos)
 {
 	Inset * inset = const_cast<Inset*>(pit_->getInset(pos));
 
-	lyx::Assert(inset);
+	Assert(inset);
 
 #warning inset->update FIXME
 	inset->update(perv(bv_), false);

@@ -27,6 +27,7 @@
 #include "support/filetools.h"
 #include "support/lyxalgo.h"
 
+using namespace lyx::support;
 
 using std::vector;
 using std::sort;

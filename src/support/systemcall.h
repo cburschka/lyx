@@ -17,6 +17,9 @@
 
 #include "LString.h"
 
+namespace lyx {
+namespace support {
+
 /**
  * An instance of Class Systemcall represents a single child process.
  *
@@ -41,5 +44,8 @@ public:
 	 */
 	int startscript(Starttype how, string const & what);
 };
+
+} // namespace support
+} // namespace lyx
 
 #endif // SYSTEMCALL_H

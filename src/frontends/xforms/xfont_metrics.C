@@ -21,6 +21,8 @@
 
 #include <boost/scoped_array.hpp>
 
+using namespace lyx::support;
+
 namespace {
 
 inline

@@ -18,6 +18,8 @@
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 
+using namespace lyx::support;
+
 using std::endl;
 using std::vector;
 
@@ -169,7 +171,7 @@ void Counters::reset()
 
 void Counters::reset(string const & match)
 {
-	lyx::Assert(!match.empty());
+	Assert(!match.empty());
 
 	CounterList::iterator it = counterList.begin();
 	CounterList::iterator end = counterList.end();

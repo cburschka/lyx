@@ -20,6 +20,9 @@
 #include <boost/utility.hpp>
 #include "LString.h"
 
+namespace lyx {
+namespace support {
+
 /** Use objects of this class to get information about files.
  *
  * Users must make sure to check fi.isOK() before any operations
@@ -134,5 +137,8 @@ private:
 	///
 	string fname_;
 };
+
+} // namespace support
+} // namespace lyx
 
 #endif

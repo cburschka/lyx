@@ -22,6 +22,8 @@
 
 #include <vector>
 
+using namespace lyx::support;
+
 using std::vector;
 using std::max;
 using std::endl;
@@ -251,7 +253,7 @@ void MathHullInset::drawT(TextPainter & pain, int x, int y) const
 string MathHullInset::label(row_type row) const
 {
 	row_type n = nrows();
-	lyx::Assert(row < n);
+	Assert(row < n);
 	return label_[row];
 }
 
@@ -660,8 +662,8 @@ void MathHullInset::infoize(std::ostream & os) const
 
 void MathHullInset::check() const
 {
-	lyx::Assert(nonum_.size() == nrows());
-	lyx::Assert(label_.size() == nrows());
+	Assert(nonum_.size() == nrows());
+	Assert(label_.size() == nrows());
 }
 
 

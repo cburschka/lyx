@@ -43,6 +43,8 @@
 #include <utility>
 #include <cerrno>
 
+using namespace lyx::support;
+
 using std::vector;
 using std::ifstream;
 using std::copy;
@@ -238,16 +240,16 @@ int AutoSaveBuffer::generateChild()
 		// anyway.
 		bool failed = false;
 
-		string const tmp_ret = lyx::tempName(string(), "lyxauto");
+		string const tmp_ret = tempName(string(), "lyxauto");
 		if (!tmp_ret.empty()) {
 			bv_.buffer()->writeFile(tmp_ret);
 			// assume successful write of tmp_ret
-			if (!lyx::rename(tmp_ret, fname_)) {
+			if (!rename(tmp_ret, fname_)) {
 				failed = true;
 				// most likely couldn't move between filesystems
 				// unless write of tmp_ret failed
 				// so remove tmp file (if it exists)
-				lyx::unlink(tmp_ret);
+				unlink(tmp_ret);
 			}
 		} else {
 			failed = true;

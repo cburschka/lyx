@@ -17,6 +17,7 @@
 #include "Lsstream.h"
 #include "debug.h"
 #include "BoostFormat.h"
+#include "lyxlib.h"
 
 #include <boost/regex.hpp>
 #include <boost/tokenizer.hpp>
@@ -38,6 +39,8 @@ using std::tolower;
 using std::toupper;
 #endif
 
+namespace lyx {
+namespace support {
 
 int compare_no_case(string const & s, string const & s2)
 {
@@ -156,7 +159,7 @@ int strToInt(string const & str)
 		// Remove leading and trailing white space chars.
 		string const tmpstr = trim(str);
 		// Do the conversion proper.
-		return lyx::atoi(tmpstr);
+		return atoi(tmpstr);
 	} else {
 		return 0;
 	}
@@ -169,7 +172,7 @@ unsigned int strToUnsignedInt(string const & str)
 		// Remove leading and trailing white space chars.
 		string const tmpstr = trim(str);
 		// Do the conversion proper.
-		return lyx::atoi(tmpstr);
+		return atoi(tmpstr);
 	} else {
 		return 0;
 	}
@@ -430,7 +433,7 @@ string const subst(string const & a,
 
 string const trim(string const & a, char const * p)
 {
-	lyx::Assert(p);
+	Assert(p);
 
 	if (a.empty() || !*p)
 		return a;
@@ -448,7 +451,7 @@ string const trim(string const & a, char const * p)
 
 string const rtrim(string const & a, char const * p)
 {
-	lyx::Assert(p);
+	Assert(p);
 
 	if (a.empty() || !*p)
 		return a;
@@ -465,7 +468,7 @@ string const rtrim(string const & a, char const * p)
 
 string const ltrim(string const & a, char const * p)
 {
-	lyx::Assert(p);
+	Assert(p);
 
 	if (a.empty() || !*p)
 		return a;
@@ -652,7 +655,7 @@ string bformat(string const & fmt, string const & arg1, string const & arg2,
 
 string bformat(string const & fmt, string const & arg1)
 {
-	lyx::Assert(contains(fmt, "%1$s"));
+	Assert(contains(fmt, "%1$s"));
 	string const str = subst(fmt, "%1$s", arg1);
 	return subst(str, "%%", "%");
 }
@@ -660,8 +663,8 @@ string bformat(string const & fmt, string const & arg1)
 
 string bformat(string const & fmt, string const & arg1, string const & arg2)
 {
-	lyx::Assert(contains(fmt, "%1$s"));
-	lyx::Assert(contains(fmt, "%2$s"));
+	Assert(contains(fmt, "%1$s"));
+	Assert(contains(fmt, "%2$s"));
 	string str = subst(fmt, "%1$s", arg1);
 	str = subst(str, "%2$s", arg2);
 	return subst(str, "%%", "%");
@@ -671,9 +674,9 @@ string bformat(string const & fmt, string const & arg1, string const & arg2)
 string bformat(string const & fmt, string const & arg1, string const & arg2,
 	string const & arg3)
 {
-	lyx::Assert(contains(fmt, "%1$s"));
-	lyx::Assert(contains(fmt, "%2$s"));
-	lyx::Assert(contains(fmt, "%3$s"));
+	Assert(contains(fmt, "%1$s"));
+	Assert(contains(fmt, "%2$s"));
+	Assert(contains(fmt, "%3$s"));
 	string str = subst(fmt, "%1$s", arg1);
 	str = subst(str, "%2$s", arg2);
 	str = subst(str, "%3$s", arg3);
@@ -684,10 +687,10 @@ string bformat(string const & fmt, string const & arg1, string const & arg2,
 string bformat(string const & fmt, string const & arg1, string const & arg2,
 	string const & arg3, string const & arg4)
 {
-	lyx::Assert(contains(fmt, "%1$s"));
-	lyx::Assert(contains(fmt, "%2$s"));
-	lyx::Assert(contains(fmt, "%3$s"));
-	lyx::Assert(contains(fmt, "%4$s"));
+	Assert(contains(fmt, "%1$s"));
+	Assert(contains(fmt, "%2$s"));
+	Assert(contains(fmt, "%3$s"));
+	Assert(contains(fmt, "%4$s"));
 	string str = subst(fmt, "%1$s", arg1);
 	str = subst(str, "%2$s", arg2);
 	str = subst(str, "%3$s", arg3);
@@ -713,3 +716,6 @@ string bformat(string const & fmt, string const & arg1, string const & arg2,
 }
 
 #endif
+
+} // namespace support
+} // namespace lyx

@@ -25,6 +25,7 @@
 #include "lyx_forms.h"
 #include "support/tostr.h"
 
+using namespace lyx::support;
 
 typedef FormController<ControlWrap, FormView<FD_wrap> > base_class;
 

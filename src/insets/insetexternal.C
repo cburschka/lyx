@@ -44,6 +44,8 @@
 #include <cstdio>
 #include <utility>
 
+using namespace lyx::support;
+
 using std::ostream;
 using std::endl;
 
@@ -68,8 +70,8 @@ InsetExternal::Params::Params()
 	: display(defaultDisplayType),
 	  lyxscale(defaultLyxScale)
 {
-	tempname = lyx::tempName(string(), "lyxext");
-	lyx::unlink(tempname);
+	tempname = tempName(string(), "lyxext");
+	unlink(tempname);
 	// must have an extension for the converter code to work correctly.
 	tempname += ".tmp";
 }
@@ -77,7 +79,7 @@ InsetExternal::Params::Params()
 
 InsetExternal::Params::~Params()
 {
-	lyx::unlink(tempname);
+	unlink(tempname);
 }
 
 
@@ -118,7 +120,7 @@ void InsetExternal::statusChanged()
 	if (bv)
 		bv->updateInset(this);
 }
-	
+
 
 InsetExternal::Params const & InsetExternal::params() const
 {
@@ -131,16 +133,16 @@ dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
 	switch (cmd.action) {
 
 	case LFUN_EXTERNAL_EDIT: {
-		lyx::Assert(cmd.view());
+		Assert(cmd.view());
 
 		InsetExternal::Params p;
 		InsetExternalMailer::string2params(cmd.argument, p);
 		editExternal(p, cmd.view()->buffer());
 		return DISPATCHED_NOUPDATE;
 	}
-	
+
 	case LFUN_INSET_MODIFY: {
-		lyx::Assert(cmd.view());
+		Assert(cmd.view());
 
 		InsetExternal::Params p;
 		InsetExternalMailer::string2params(cmd.argument, p);
@@ -184,7 +186,7 @@ grfx::Params get_grfx_params(InsetExternal::Params const & eparams,
 	grfx::Params gparams;
 
 	if (!eparams.filename.empty()) {
-		lyx::Assert(AbsolutePath(filepath));
+		Assert(AbsolutePath(filepath));
 		gparams.filename = MakeAbsPath(eparams.filename, filepath);
 	}
 

@@ -48,6 +48,8 @@
 #include <csignal>
 #include <iostream>
 
+using namespace lyx::support;
+
 using std::vector;
 using std::endl;
 
@@ -147,7 +149,7 @@ LyX::LyX(int & argc, char * argv[])
 		vector<string>::const_iterator end = files.end();
 
 		for (; it != end; ++it) {
-			// get absolute path of file and add ".lyx" to 
+			// get absolute path of file and add ".lyx" to
 			// the filename if necessary
 			string s = FileSearch(string(), *it, "lyx");
 			if (s.empty()) {
@@ -215,7 +217,7 @@ static void error_handler(int err_sig)
 	lyxerr << "Bye." << endl;
 	if (err_sig!= SIGHUP &&
 	   (!GetEnv("LYXDEBUG").empty() || err_sig == SIGSEGV))
-		lyx::abort();
+		lyx::support::abort();
 	exit(0);
 }
 
@@ -224,7 +226,7 @@ static void error_handler(int err_sig)
 
 void LyX::printError(ErrorItem const & ei)
 {
-	std::cerr << _("LyX: ") << ei.error 
+	std::cerr << _("LyX: ") << ei.error
 		  << ':' << ei.description << std::endl;
 
 }
@@ -454,7 +456,7 @@ void LyX::init(bool gui)
 	system_lcolor = lcolor;
 
 	string prefsfile = "preferences";
-	// back compatibility to lyxs < 1.1.6 
+	// back compatibility to lyxs < 1.1.6
 	if (LibFileSearch(string(), prefsfile).empty())
 		prefsfile = "lyxrc";
 	if (!LibFileSearch(string(), prefsfile).empty())

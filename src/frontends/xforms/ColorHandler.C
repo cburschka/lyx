@@ -22,6 +22,8 @@
 
 #include <cmath>
 
+using namespace lyx::support;
+
 #ifndef CXX_GLOBAL_CSTD
 using std::pow;
 #endif
@@ -158,7 +160,7 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 
 		lyxerr << bformat(
 				_("     Using closest allocated color with (r,g,b)=%1$s instead.\n"
-			  "Pixel [%2$s] is used."), 
+			  "Pixel [%2$s] is used."),
 			tostr(cmap[closest_pixel]), tostr(closest_pixel)) << endl;
 
 		val.foreground = cmap[closest_pixel].pixel;

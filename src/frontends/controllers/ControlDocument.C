@@ -34,6 +34,8 @@
 #include "support/lstrings.h"
 #include "support/filetools.h"
 
+using namespace lyx::support;
+
 using std::endl;
 
 
@@ -48,7 +50,7 @@ ControlDocument::~ControlDocument()
 
 BufferParams & ControlDocument::params()
 {
-	lyx::Assert(bp_.get());
+	Assert(bp_.get());
 	return *bp_;
 }
 

@@ -71,6 +71,8 @@ using std::vector;
 using std::pair;
 using std::for_each;
 
+using namespace lyx::support;
+
 using lyx::pos_type;
 using lyx::textclass_type;
 
@@ -100,7 +102,7 @@ void InsetText::restoreLyXTextState(LyXText * t) const
 		return;
 
 	t->selection.set(true);
-	// at this point just to avoid the DEPM when setting the cursor 
+	// at this point just to avoid the DEPM when setting the cursor
 	t->selection.mark(sstate.selection.mark());
 	if (sstate.selection.set()) {
 		t->setCursor(sstate.selection.start.par(),
@@ -2079,7 +2081,7 @@ LyXText * InsetText::getLyXText(BufferView const * lbv,
 		if (recursive && the_locking_inset)
 			return the_locking_inset->getLyXText(lbv, true);
 		LyXText * lt = cached_text.get();
-		lyx::Assert(lt && lt->rows().begin()->par() == const_cast<ParagraphList&>(paragraphs).begin());
+		Assert(lt && lt->rows().begin()->par() == const_cast<ParagraphList&>(paragraphs).begin());
 		return lt;
 	}
 	// Super UGLY! (Lgb)
@@ -2095,7 +2097,7 @@ LyXText * InsetText::getLyXText(BufferView const * lbv,
 			resizeLyXText(do_resize);
 		} else {
 			if (lt || !it->second.remove) {
-				lyx::Assert(it->second.text.get());
+				Assert(it->second.text.get());
 				cached_text = it->second.text;
 				if (recursive && the_locking_inset) {
 					return the_locking_inset->getLyXText(bv, true);
@@ -2147,7 +2149,7 @@ void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
 		return;
 	}
 
-	lyx::Assert(it->second.text.get());
+	Assert(it->second.text.get());
 
 	it->second.remove = true;
 	if (recursive) {
@@ -2187,7 +2189,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 		return;
 	}
 
-	lyx::Assert(it->second.text.get());
+	Assert(it->second.text.get());
 
 	LyXText * t = it->second.text.get();
 	saveLyXTextState(t);
@@ -2226,7 +2228,7 @@ void InsetText::reinitLyXText() const
 	do_reinit = false;
 	do_resize = 0;
 	for (Cache::iterator it = cache.begin(); it != cache.end(); ++it) {
-		lyx::Assert(it->second.text.get());
+		Assert(it->second.text.get());
 
 		LyXText * t = it->second.text.get();
 		BufferView * bv = it->first;

@@ -1,4 +1,3 @@
-
 #include <config.h>
 
 #include "math_exfuncinset.h"
@@ -25,7 +24,7 @@ InsetBase * MathExFuncInset::clone() const
 }
 
 
-void MathExFuncInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void MathExFuncInset::metrics(MetricsInfo & mi, Dimension & /*dim*/) const
 {
 	mathed_string_dim(mi.base.font, name_, dim_);
 }

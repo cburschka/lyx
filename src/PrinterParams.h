@@ -87,13 +87,13 @@ struct PrinterParams {
 #ifdef ENABLE_ASSERTIONS
 			switch (target) {
 			case PRINTER:
-				//Assert(!printer_name.empty());
+				//lyx::support::Assert(!printer_name.empty());
 				break;
 			case FILE:
-				lyx::Assert(!file_name.empty());
+				lyx::support::Assert(!file_name.empty());
 				break;
 			default:
-				lyx::Assert(false);
+				lyx::support::Assert(false);
 				break;
 			}
 #endif

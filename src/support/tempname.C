@@ -22,7 +22,6 @@
 
 using std::endl;
 
-
 namespace {
 
 inline
@@ -42,7 +41,7 @@ int make_tempfile(char * templ)
 } // namespace anon
 
 
-string const lyx::tempName(string const & dir, string const & mask)
+string const lyx::support::tempName(string const & dir, string const & mask)
 {
 	string const tmpdir(dir.empty() ? os::getTmpDir() : dir);
 	string tmpfl(AddName(tmpdir, mask));

@@ -24,6 +24,8 @@
 #include <algorithm>
 #include <iterator>
 
+using namespace lyx::support;
+
 using std::find_if;
 using std::endl;
 
@@ -32,7 +34,7 @@ void RadioButtonGroup::init(FL_OBJECT * ob, size_type value)
 {
 	// Object must be a ROUND3DBUTTON (let all radio buttons look the same)
 	// and of type RADIO_BUTTON (otherwise it ain't work).
-	lyx::Assert(ob && ob->objclass == FL_ROUND3DBUTTON
+	Assert(ob && ob->objclass == FL_ROUND3DBUTTON
 			&& ob->type == FL_RADIO_BUTTON);
 
 	map.push_back(ButtonValuePair(ob, value));

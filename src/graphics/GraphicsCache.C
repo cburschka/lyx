@@ -23,6 +23,8 @@
 
 #include <map>
 
+using namespace lyx::support;
+
 namespace grfx {
 
 /** The cache contains one item per file, so use a map to find the

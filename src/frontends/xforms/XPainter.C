@@ -3,14 +3,13 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author unknown
+ * \author Lars Gullik Bjønnes
  * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
 
 #include <config.h>
-
 
 #include "XPainter.h"
 #include "LString.h"
@@ -30,6 +29,8 @@
 #include <boost/scoped_array.hpp>
 
 #include <cmath>
+
+using namespace lyx::support;
 
 using std::endl;
 using std::max;

@@ -78,6 +78,8 @@
 #include <utility>
 #include <algorithm>
 
+using namespace lyx::support;
+
 using std::pair;
 using std::make_pair;
 using std::endl;
@@ -537,7 +539,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		disable = !mathcursor;
 		break;
 
- 	case LFUN_DIALOG_SHOW: {
+	case LFUN_DIALOG_SHOW: {
 		string const name = ev.getArg(0);
 		if (!buf) {
 			disable = !(name == "aboutlyx" ||
@@ -1937,6 +1939,6 @@ string const LyXFunc::view_status_message()
 
 BufferView * LyXFunc::view() const
 {
-	lyx::Assert(owner);
+	Assert(owner);
 	return owner->view().get();
 }

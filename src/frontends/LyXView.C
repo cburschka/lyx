@@ -11,7 +11,6 @@
 
 #include <config.h>
 
-
 #include "LyXView.h"
 #include "debug.h"
 #include "intl.h"
@@ -40,6 +39,7 @@
 #include <sys/time.h>
 #include <unistd.h>
 
+using namespace lyx::support;
 using std::endl;
 
 string current_layout;

@@ -19,11 +19,12 @@
 #include <sys/types.h>
 
 namespace lyx {
+namespace support {
 
 string const user_name()
 {
 	struct passwd * pw(getpwuid(geteuid()));
-	lyx::Assert(pw);
+	Assert(pw);
 
 	string name = pw->pw_gecos;
 	if (name.empty())
@@ -40,5 +41,5 @@ string const user_email()
 	return email;
 }
 
-
+} // namespace support
 } // namespace lyx

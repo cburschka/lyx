@@ -23,6 +23,8 @@
 
 #include <vector>
 
+using namespace lyx::support;
+
 using std::vector;
 using std::endl;
 

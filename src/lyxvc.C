@@ -16,6 +16,8 @@
 
 #include <unistd.h>
 
+using namespace lyx::support;
+
 using std::endl;
 using std::pair;
 
@@ -248,7 +250,7 @@ string const LyXVC::getLogFile() const
 	if (!vcs)
 		return string();
 
-	string tmpf = lyx::tempName(string(), "lyxvclog");
+	string tmpf = tempName(string(), "lyxvclog");
 	lyxerr[Debug::LYXVC] << "Generating logfile " << tmpf << endl;
 	vcs->getLog(tmpf);
 	return tmpf;

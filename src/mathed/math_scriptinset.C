@@ -1,4 +1,3 @@
-
 #include "math_scriptinset.h"
 #include "math_support.h"
 #include "math_symbolinset.h"
@@ -7,6 +6,7 @@
 #include "support/LAssert.h"
 #include "debug.h"
 
+using namespace lyx::support;
 
 using std::max;
 
@@ -144,14 +144,14 @@ int MathScriptInset::dy1() const
 
 int MathScriptInset::dx0() const
 {
-	lyx::Assert(hasDown());
+	Assert(hasDown());
 	return hasLimits() ? (dim_.wid - down().width()) / 2 : nwid();
 }
 
 
 int MathScriptInset::dx1() const
 {
-	lyx::Assert(hasUp());
+	Assert(hasUp());
 	return hasLimits() ? (dim_.wid - up().width()) / 2 : nwid();
 }
 

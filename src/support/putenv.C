@@ -14,7 +14,7 @@
 
 #include <cstdlib>
 
-int lyx::putenv(char const * str)
+int lyx::support::putenv(char const * str)
 {
 	return ::putenv(const_cast<char*>(str));
 }

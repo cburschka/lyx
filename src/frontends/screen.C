@@ -42,6 +42,8 @@
 #include <boost/bind.hpp>
 #include <boost/signals/trackable.hpp>
 
+using namespace lyx::support;
+
 using std::min;
 using std::max;
 using std::endl;
@@ -266,7 +268,7 @@ unsigned int LyXScreen::topCursorVisible(LyXText * text)
 				- row->baseline() - vheight;
 		} else {
 			// scroll down, the scroll region must be so big!!
-			newtop = cursor.y() - vheight / 2; 
+			newtop = cursor.y() - vheight / 2;
 		}
 
 	} else if (static_cast<int>((cursor.y()) - row->baseline()) <

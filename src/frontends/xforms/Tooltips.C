@@ -26,6 +26,8 @@
 
 #include <boost/bind.hpp>
 
+using namespace lyx::support;
+
 bool Tooltips::enabled_ = true;
 
 boost::signal0<void> Tooltips::toggled;
@@ -61,7 +63,7 @@ void Tooltips::set()
 
 void Tooltips::init(FL_OBJECT * ob, string const & tip)
 {
-	lyx::Assert(ob && ob->form);
+	Assert(ob && ob->form);
 
 	// Store the tooltip string
 	string const str = formatted(trim(tip), 400);

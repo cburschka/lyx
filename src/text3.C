@@ -43,6 +43,8 @@
 #include <ctime>
 #include <clocale>
 
+using namespace lyx::support;
+
 using std::endl;
 using std::find;
 using std::vector;
@@ -107,7 +109,7 @@ namespace {
 			return 0;
 
 		// get inset dimensions
-		lyx::Assert(par->getInset(pos));
+		Assert(par->getInset(pos));
 
 		LyXFont const & font = text.getFont(bv->buffer(), par, pos);
 
@@ -920,7 +922,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_INSET_SETTINGS:
-		lyx::Assert(bv->theLockingInset());
+		Assert(bv->theLockingInset());
 		bv->theLockingInset()->getLockingInset()->showInsetDialog(bv);
 		break;
 

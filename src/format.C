@@ -26,6 +26,8 @@
 #include "support/systemcall.h"
 #include "support/lyxfunctional.h"
 
+using namespace lyx::support;
+
 
 namespace {
 

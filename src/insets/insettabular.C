@@ -49,6 +49,8 @@
 //#include <signal.h>
 
 
+using namespace lyx::support;
+
 using std::vector;
 using std::ostream;
 using std::ifstream;
@@ -367,7 +369,7 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int y,
 void InsetTabular::drawCellSelection(Painter & pain, int x, int y,
 				     int row, int column, int cell) const
 {
-	lyx::Assert(hasSelection());
+	Assert(hasSelection());
 	int cs = tabular.column_of_cell(sel_cell_start);
 	int ce = tabular.column_of_cell(sel_cell_end);
 	if (cs > ce) {
@@ -2580,7 +2582,7 @@ InsetTabular::selectNextWordToSpellcheck(BufferView * bv, float & value) const
 WordLangTuple InsetTabular::selectNextWordInt(BufferView * bv, float & value) const
 {
 	// when entering this function the inset should be ALWAYS locked!
-	lyx::Assert(the_locking_inset);
+	Assert(the_locking_inset);
 
 	WordLangTuple word(the_locking_inset->selectNextWordToSpellcheck(bv, value));
 	if (!word.word().empty())

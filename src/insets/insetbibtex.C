@@ -27,6 +27,8 @@
 #include <fstream>
 #include <cstdlib>
 
+using namespace lyx::support;
+
 using std::ostream;
 using std::ifstream;
 using std::getline;
@@ -186,7 +188,7 @@ vector<string> const InsetBibtex::getFiles(Buffer const & buffer) const
 void InsetBibtex::fillWithBibKeys(Buffer const * buffer,
 				  std::vector<std::pair<string, string> > & keys) const
 {
-	lyx::Assert(buffer);
+	Assert(buffer);
 	vector<string> const files = getFiles(*buffer);
 	for (vector<string>::const_iterator it = files.begin();
 	     it != files.end(); ++ it) {

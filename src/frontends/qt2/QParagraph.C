@@ -35,6 +35,8 @@
 
 #include <functional>
 
+using namespace lyx::support;
+
 using std::vector;
 using std::bind2nd;
 using std::remove_if;

@@ -31,6 +31,9 @@
 
 #include <boost/bind.hpp>
 #include <boost/signals/connection.hpp>
+
+using namespace lyx::support;
+
 using std::abs;
 using std::endl;
 

@@ -24,6 +24,7 @@
 #include "support/LAssert.h"
 #include <vector>
 
+using namespace lyx::support;
 using std::vector;
 
 
@@ -55,21 +56,21 @@ void ControlExternal::dispatchParams()
 
 void ControlExternal::setParams(InsetExternal::Params const & p)
 {
-	lyx::Assert(params_.get());
+	Assert(params_.get());
 	*params_ = p;
 }
 
 
 InsetExternal::Params const & ControlExternal::params() const
 {
-	lyx::Assert(params_.get());
+	Assert(params_.get());
 	return *params_;
 }
 
 
 void ControlExternal::editExternal()
 {
-	lyx::Assert(params_.get());
+	Assert(params_.get());
 
 	dialog().view().apply();
 	string const lfun = InsetExternalMailer::params2string(params());
@@ -129,7 +130,7 @@ ExternalTemplate const * getTemplatePtr(InsetExternal::Params const & params)
 		return 0;
 	return &templ;
 }
- 
+
 } // namespace anon
 
 

@@ -30,6 +30,8 @@
 #include "support/lstrings.h"
 #include "lyx_forms.h"
 
+using namespace lyx::support;
+
 typedef FormController<ControlExternal, FormView<FD_external> > base_class;
 
 FormExternal::FormExternal(Dialog & parent)

@@ -36,6 +36,8 @@
 #include "lyxtext.h"
 #include "Lsstream.h"
 
+using namespace lyx::support;
+
 using std::ostream;
 
 extern MathCursor * mathcursor;

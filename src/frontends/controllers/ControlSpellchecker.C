@@ -33,6 +33,8 @@
 
 #include "frontends/Alert.h"
 
+using namespace lyx::support;
+
 using std::endl;
 
 
@@ -271,5 +273,3 @@ void ControlSpellchecker::ignoreAll()
 	speller_->accept(word_);
 	check();
 }
-
-

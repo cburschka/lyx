@@ -26,6 +26,8 @@
 #include <qcombobox.h>
 #include <qlineedit.h>
 
+using namespace lyx::support;
+
 typedef QController<ControlMinipage, QView<QMinipageDialog> > base_class;
 
 

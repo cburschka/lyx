@@ -13,6 +13,8 @@
 #include "forms_gettext.h"
 #include "support/lstrings.h"
 
+using namespace lyx::support;
+
 // Extract shortcut from "<identifier>|<shortcut>" string
 string const scex(string const & str)
 {

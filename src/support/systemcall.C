@@ -22,6 +22,9 @@
 using std::system;
 #endif
 
+namespace lyx {
+namespace support {
+
 // Reuse of instance
 int Systemcall::startscript(Starttype how, string const & what)
 {
@@ -37,3 +40,6 @@ int Systemcall::startscript(Starttype how, string const & what)
 
 	return ::system(command.c_str());
 }
+
+} // namespace support
+} // namespace lyx

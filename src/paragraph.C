@@ -46,6 +46,8 @@
 #include <csignal>
 #include <ctime>
 
+using namespace lyx::support;
+
 using std::ostream;
 using std::endl;
 using std::fstream;
@@ -373,14 +375,14 @@ bool Paragraph::insetAllowed(Inset::Code code)
 
 Inset * Paragraph::getInset(pos_type pos)
 {
-	lyx::Assert(pos < size());
+	Assert(pos < size());
 	return insetlist.get(pos);
 }
 
 
 Inset const * Paragraph::getInset(pos_type pos) const
 {
-	lyx::Assert(pos < size());
+	Assert(pos < size());
 	return insetlist.get(pos);
 }
 
@@ -389,7 +391,7 @@ Inset const * Paragraph::getInset(pos_type pos) const
 LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
 					 pos_type pos) const
 {
-	lyx::Assert(pos <= size());
+	Assert(pos <= size());
 
 	Pimpl::FontList::const_iterator cit = pimpl_->fontlist.begin();
 	Pimpl::FontList::const_iterator end = pimpl_->fontlist.end();
@@ -428,7 +430,7 @@ LyXFont const Paragraph::getFirstFontSettings() const
 LyXFont const Paragraph::getFont(BufferParams const & bparams, pos_type pos,
 				 LyXFont const & outerfont) const
 {
-	lyx::Assert(pos >= 0);
+	Assert(pos >= 0);
 
 	LyXLayout_ptr const & lout = layout();
 
@@ -553,7 +555,7 @@ Paragraph::getUChar(BufferParams const & bparams, pos_type pos) const
 
 void Paragraph::setFont(pos_type pos, LyXFont const & font)
 {
-	lyx::Assert(pos <= size());
+	Assert(pos <= size());
 
 	// First, reduce font against layout/label font
 	// Update: The SetCharFont() routine in text2.C already
@@ -1289,14 +1291,14 @@ void Paragraph::cleanChanges()
 
 Change::Type Paragraph::lookupChange(lyx::pos_type pos) const
 {
-	lyx::Assert(!size() || pos < size());
+	Assert(!size() || pos < size());
 	return pimpl_->lookupChange(pos);
 }
 
 
 Change const Paragraph::lookupChangeFull(lyx::pos_type pos) const
 {
-	lyx::Assert(!size() || pos < size());
+	Assert(!size() || pos < size());
 	return pimpl_->lookupChangeFull(pos);
 }
 

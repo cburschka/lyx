@@ -49,7 +49,7 @@ void MathFontInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathFontInset::metricsT(TextMetricsInfo const & mi, Dimension & dim) const
+void MathFontInset::metricsT(TextMetricsInfo const & mi, Dimension & /*dim*/) const
 {
 	cell(0).metricsT(mi, dim_);
 }

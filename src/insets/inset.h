@@ -229,7 +229,7 @@ public:
 	// inside them without cast!!!
 	///
 	virtual LyXText * getLyXText(BufferView const *,
-				     bool const recursive = false) const;
+				     bool recursive = false) const;
 	///
 	virtual void deleteLyXText(BufferView *, bool = true) const {}
 	///

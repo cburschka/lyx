@@ -22,6 +22,8 @@
 
 #include <fstream>
 
+using namespace lyx::support;
+
 using std::ostream;
 
 // needed for the browser

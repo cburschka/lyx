@@ -31,6 +31,8 @@
 
 #include <vector>
 
+using namespace lyx::support;
+
 typedef QController<ControlExternal, QView<QExternalDialog> > base_class;
 
 

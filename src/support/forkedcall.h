@@ -34,6 +34,9 @@
 
 #include <sys/types.h>
 
+namespace lyx {
+namespace support {
+
 class ForkedProcess {
 public:
 	///
@@ -163,5 +166,8 @@ private:
 	///
 	virtual int generateChild();
 };
+
+} // namespace support
+} // namespace lyx
 
 #endif // FORKEDCALL_H

@@ -20,6 +20,8 @@
 #include "gettext.h"
 #include "support/lstrings.h" // compare
 
+using namespace lyx::support;
+
 typedef FormController<ControlCommand, FormView<FD_bibitem> > base_class;
 
 FormBibitem::FormBibitem(Dialog & parent)

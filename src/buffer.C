@@ -86,6 +86,8 @@
 #include <locale>
 #endif
 
+using namespace lyx::support;
+
 #ifndef CXX_GLOBAL_CSTD
 using std::pow;
 #endif
@@ -543,7 +545,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename,
 			// This code is reached if lyx2lyx failed (for
 			// some reason) to change the file format of
 			// the file.
-			lyx::Assert(false);
+			Assert(false);
 			return false;
 		}
 	}
@@ -627,7 +629,7 @@ bool Buffer::save() const
 	} else {
 		// Saving failed, so backup is not backup
 		if (lyxrc.make_backup) {
-			lyx::rename(s, fileName());
+			rename(s, fileName());
 		}
 		return false;
 	}
@@ -1647,7 +1649,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			sgmlparam = style->latexparam();
 			c_params = split(sgmlparam, c_depth,'|');
 
-			cmd_depth = lyx::atoi(c_depth);
+			cmd_depth = atoi(c_depth);
 
 			if (command_flag) {
 				if (cmd_depth < command_base) {

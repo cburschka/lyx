@@ -23,6 +23,8 @@
 
 #include "lyx_forms.h"
 
+using namespace lyx::support;
+
 typedef FormController<ControlTexinfo, FormView<FD_texinfo> > base_class;
 
 FormTexinfo::FormTexinfo(Dialog & parent)

@@ -15,6 +15,7 @@
 #include "LString.h"
 
 namespace lyx {
+namespace support {
 
 /// return the current user's real name
 string const user_name();
@@ -22,6 +23,7 @@ string const user_name();
 /// return the current user's e-mail address
 string const user_email();
 
-}; // namespace lyx
+} // namespace support
+} // namespace lyx
 
 #endif // USERINFO_H

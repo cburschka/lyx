@@ -20,6 +20,7 @@
 #include <boost/bind.hpp>
 #include <boost/signals/trackable.hpp>
 
+using namespace lyx::support;
 
 namespace grfx {
 
@@ -112,7 +113,7 @@ PreviewImage::Impl::Impl(PreviewImage & p, PreviewLoader & l,
 
 PreviewImage::Impl::~Impl()
 {
-	lyx::unlink(iloader_.filename());
+	unlink(iloader_.filename());
 }
 
 
@@ -145,7 +146,7 @@ void PreviewImage::Impl::statusChanged()
 		break;
 
 	case Ready:
-		lyx::unlink(iloader_.filename());
+		unlink(iloader_.filename());
 		ploader_.emitSignal(parent_);
 		break;
 	}

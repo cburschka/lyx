@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "FormSendto.h"
 #include "forms/form_sendto.h"
 #include "ControlSendto.h"
@@ -21,6 +20,8 @@
 #include "gettext.h"
 #include "lyx_forms.h"
 #include "support/lstrings.h"
+
+using namespace lyx::support;
 
 using std::vector;
 

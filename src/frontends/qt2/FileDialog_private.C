@@ -24,6 +24,7 @@
 #include <qfiledialog.h>
 #include <qtoolbutton.h>
 
+using namespace lyx::support;
 
 namespace {
 

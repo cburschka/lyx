@@ -17,6 +17,8 @@
 #include "support/LIstream.h"
 #include "support/lstrings.h"
 
+using namespace lyx::support;
+
 #ifndef CXX_GLOBAL_CSTD
 using std::strlen;
 #endif
