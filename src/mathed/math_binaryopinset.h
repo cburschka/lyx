@@ -18,19 +18,19 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void draw(MathPainterInfo &, int x, int y) const;
+	void draw(PainterInfo &, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream &) const;
 	///
-	void metrics(MathMetricsInfo & st) const;
+	void metrics(MetricsInfo & st) const;
 private:
 	///
 	int opwidth() const;
 	///
 	char op_;
 	///
-	mutable MathMetricsInfo mi_;
+	mutable MetricsInfo mi_;
 };
 #endif

@@ -50,9 +50,9 @@ void MathNestInset::substitute(MathMacro const & m)
 }
 
 
-void MathNestInset::metrics(MathMetricsInfo const & mi) const
+void MathNestInset::metrics(MetricsInfo const & mi) const
 {
-	MathMetricsInfo m = mi;
+	MetricsInfo m = mi;
 	for (idx_type i = 0; i < nargs(); ++i)
 		cell(i).metrics(m);
 }
@@ -156,8 +156,8 @@ void MathNestInset::dump() const
 }
 
 
-//void MathNestInset::draw(MathPainterInfo & pi, int x, int y) const
-void MathNestInset::draw(MathPainterInfo &, int, int) const
+//void MathNestInset::draw(PainterInfo & pi, int x, int y) const
+void MathNestInset::draw(PainterInfo &, int, int) const
 {
 #if 0
 	if (lock_)
@@ -167,7 +167,7 @@ void MathNestInset::draw(MathPainterInfo &, int, int) const
 }
 
 
-void MathNestInset::drawSelection(MathPainterInfo & pi,
+void MathNestInset::drawSelection(PainterInfo & pi,
 		idx_type idx1, pos_type pos1, idx_type idx2, pos_type pos2) const
 {
 	if (idx1 == idx2) {
@@ -192,7 +192,7 @@ void MathNestInset::drawSelection(MathPainterInfo & pi,
 }
 
 
-void MathNestInset::drawMarkers(MathPainterInfo & pi, int x, int y) const
+void MathNestInset::drawMarkers(PainterInfo & pi, int x, int y) const
 {
 	if (!editing())
 		return;
@@ -205,7 +205,7 @@ void MathNestInset::drawMarkers(MathPainterInfo & pi, int x, int y) const
 }
 
 
-void MathNestInset::drawMarkers2(MathPainterInfo & pi, int x, int y) const
+void MathNestInset::drawMarkers2(PainterInfo & pi, int x, int y) const
 {
 	if (!editing())
 		return;

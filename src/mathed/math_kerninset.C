@@ -28,7 +28,7 @@ MathInset * MathKernInset::clone() const
 }
 
 
-void MathKernInset::metrics(MathMetricsInfo & mi) const
+void MathKernInset::metrics(MetricsInfo & mi) const
 {
 	dim_.w = wid_.inPixels(0, mathed_char_width(mi.base.font, 'M'));
 	dim_.a = 0;
@@ -36,7 +36,7 @@ void MathKernInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathKernInset::draw(MathPainterInfo &, int, int) const
+void MathKernInset::draw(PainterInfo &, int, int) const
 {}
 
 

@@ -17,7 +17,7 @@ MathInset * MathSqrtInset::clone() const
 }
 
 
-void MathSqrtInset::metrics(MathMetricsInfo & mi) const
+void MathSqrtInset::metrics(MetricsInfo & mi) const
 {
 	cell(0).metrics(mi);
 	dim_.a = cell(0).ascent()  + 4;
@@ -27,7 +27,7 @@ void MathSqrtInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathSqrtInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathSqrtInset::draw(PainterInfo & pi, int x, int y) const
 {
 	cell(0).draw(pi, x + 10, y);
 	int const a = ascent();

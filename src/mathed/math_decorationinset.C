@@ -72,7 +72,7 @@ bool MathDecorationInset::wide() const
 }
 
 
-void MathDecorationInset::metrics(MathMetricsInfo & mi) const
+void MathDecorationInset::metrics(MetricsInfo & mi) const
 {
 	cell(0).metrics(mi);
 	dim_ = cell(0).dim();
@@ -91,7 +91,7 @@ void MathDecorationInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathDecorationInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathDecorationInset::draw(PainterInfo & pi, int x, int y) const
 {
 	cell(0).draw(pi, x + 1, y);
 	if (wide())

@@ -166,19 +166,19 @@ bool MathInset::idxBetween(idx_type idx, idx_type from, idx_type to) const
 }
 
 
-void MathInset::metrics(MathMetricsInfo &) const
+void MathInset::metrics(MetricsInfo &) const
 {
 	lyxerr << "MathInset::metrics() called directly!\n";
 }
 
 
-void MathInset::draw(MathPainterInfo &, int, int) const
+void MathInset::draw(PainterInfo &, int, int) const
 {
 	lyxerr << "MathInset::draw() called directly!\n";
 }
 
 
-void MathInset::drawSelection(MathPainterInfo &,
+void MathInset::drawSelection(PainterInfo &,
 	idx_type, pos_type, idx_type, pos_type) const
 {
 	lyxerr << "MathInset::drawSelection() called directly!\n";

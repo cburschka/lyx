@@ -25,17 +25,17 @@ MathInset * MathFontOldInset::clone() const
 }
 
 
-void MathFontOldInset::metrics(MathMetricsInfo & mi) const
+void MathFontOldInset::metrics(MetricsInfo & mi) const
 {
-	MathFontSetChanger dummy(mi.base, key_->name.c_str());
+	FontSetChanger dummy(mi.base, key_->name.c_str());
 	dim_ = cell(0).metrics(mi);
 	metricsMarkers();
 }
 
 
-void MathFontOldInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathFontOldInset::draw(PainterInfo & pi, int x, int y) const
 {
-	MathFontSetChanger dummy(pi.base, key_->name.c_str());
+	FontSetChanger dummy(pi.base, key_->name.c_str());
 	cell(0).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
 }

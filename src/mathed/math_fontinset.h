@@ -28,9 +28,9 @@ public:
 	///
 	string name() const;
 	///
-	void metrics(MathMetricsInfo & mi) const;
+	void metrics(MetricsInfo & mi) const;
 	///
-	void draw(MathPainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void metricsT(TextMetricsInfo const & mi) const;
 	///

@@ -31,7 +31,7 @@ MathInset * MathRootInset::clone() const
 }
 
 
-void MathRootInset::metrics(MathMetricsInfo & mi) const
+void MathRootInset::metrics(MetricsInfo & mi) const
 {
 	MathNestInset::metrics(mi);
 	dim_.a = max(cell(0).ascent()  + 5, cell(1).ascent())  + 2;
@@ -41,7 +41,7 @@ void MathRootInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathRootInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathRootInset::draw(PainterInfo & pi, int x, int y) const
 {
 	int const w = cell(0).width();
 	// the "exponent"

@@ -55,17 +55,17 @@ MathInset * MathCharInset::clone() const
 }
 
 
-void MathCharInset::metrics(MathMetricsInfo & mi) const
+void MathCharInset::metrics(MetricsInfo & mi) const
 {
 #if 1
 	if (char_ == '=' && has_math_fonts) {
-		MathFontSetChanger dummy(mi.base, "cmr");
+		FontSetChanger dummy(mi.base, "cmr");
 		mathed_char_dim(mi.base.font, char_, dim_);
 	} else if ((char_ == '>' || char_ == '<') && has_math_fonts) {
-		MathFontSetChanger dummy(mi.base, "cmm");
+		FontSetChanger dummy(mi.base, "cmm");
 		mathed_char_dim(mi.base.font, char_, dim_);
 	} else if (slanted(char_) && mi.base.fontname == "mathnormal") {
-		MathShapeChanger dummy(mi.base.font, LyXFont::ITALIC_SHAPE);
+		ShapeChanger dummy(mi.base.font, LyXFont::ITALIC_SHAPE);
 		mathed_char_dim(mi.base.font, char_, dim_);
 	} else {
 		mathed_char_dim(mi.base.font, char_, dim_);
@@ -85,7 +85,7 @@ void MathCharInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathCharInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathCharInset::draw(PainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "drawing '" << char_ << "' font: " << pi.base.fontname << endl;
 	int const em = mathed_char_width(pi.base.font, 'M');
@@ -95,13 +95,13 @@ void MathCharInset::draw(MathPainterInfo & pi, int x, int y) const
 		x += static_cast<int>(0.0833*em+0.5);
 #if 1
 	if (char_ == '=' && has_math_fonts) {
-		MathFontSetChanger dummy(pi.base, "cmr");
+		FontSetChanger dummy(pi.base, "cmr");
 		pi.draw(x, y, char_);
 	} else if ((char_ == '>' || char_ == '<') && has_math_fonts) {
-		MathFontSetChanger dummy(pi.base, "cmm");
+		FontSetChanger dummy(pi.base, "cmm");
 		pi.draw(x, y, char_);
 	} else if (slanted(char_) && pi.base.fontname == "mathnormal") {
-		MathShapeChanger dummy(pi.base.font, LyXFont::ITALIC_SHAPE);
+		ShapeChanger dummy(pi.base.font, LyXFont::ITALIC_SHAPE);
 		pi.draw(x, y, char_);
 	} else {
 		pi.draw(x, y, char_);

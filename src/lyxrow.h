@@ -124,32 +124,4 @@ private:
 	Row * previous_;
 };
 
-
-inline
-Paragraph * Row::par()
-{
-	return par_;
-}
-
-
-inline
-Paragraph * Row::par() const
-{
-	return par_;
-}
-
-
-inline
-unsigned short Row::height() const
-{
-	return height_;
-}
-
-
-inline
-Row * Row::next() const
-{
-	return next_;
-}
-
 #endif

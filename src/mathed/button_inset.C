@@ -3,7 +3,7 @@
 
 #include "button_inset.h"
 #include "math_support.h"
-#include "math_metricsinfo.h"
+#include "metricsinfo.h"
 #include "frontends/Painter.h"
 
 #include <algorithm>
@@ -16,9 +16,9 @@ ButtonInset::ButtonInset()
 {}
 
 
-void ButtonInset::metrics(MathMetricsInfo & mi) const
+void ButtonInset::metrics(MetricsInfo & mi) const
 {
-	MathFontSetChanger dummy(mi.base, "textnormal");
+	FontSetChanger dummy(mi.base, "textnormal");
 	if (editing()) {
 		MathNestInset::metrics(mi);
 		dim_.w = cell(0).width() + cell(1).width() + 4;
@@ -31,9 +31,9 @@ void ButtonInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void ButtonInset::draw(MathPainterInfo & pi, int x, int y) const
+void ButtonInset::draw(PainterInfo & pi, int x, int y) const
 {
-	MathFontSetChanger dummy(pi.base, "textnormal");
+	FontSetChanger dummy(pi.base, "textnormal");
 	if (editing()) {
 		cell(0).draw(pi, x, y);
 		cell(1).draw(pi, x + cell(0).width() + 2, y);

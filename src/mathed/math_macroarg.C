@@ -34,7 +34,7 @@ void MathMacroArgument::write(WriteStream & os) const
 }
 
 
-void MathMacroArgument::metrics(MathMetricsInfo & mi) const
+void MathMacroArgument::metrics(MetricsInfo & mi) const
 {
 	if (expanded_)
 		dim_ = cell(0).metrics(mi);
@@ -43,7 +43,7 @@ void MathMacroArgument::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathMacroArgument::draw(MathPainterInfo & pi, int x, int y) const
+void MathMacroArgument::draw(PainterInfo & pi, int x, int y) const
 {
 	if (expanded_)
 		cell(0).draw(pi, x, y);

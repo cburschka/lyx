@@ -27,14 +27,14 @@ MathInset * MathCommentInset::clone() const
 }
 
 
-void MathCommentInset::metrics(MathMetricsInfo & mi) const
+void MathCommentInset::metrics(MetricsInfo & mi) const
 {
 	dim_ = cell(0).metrics(mi);
 	metricsMarkers();
 }
 
 
-void MathCommentInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathCommentInset::draw(PainterInfo & pi, int x, int y) const
 {
 	cell(0).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);

@@ -32,13 +32,13 @@ void MathDiffInset::normalize(NormalStream & os) const
 }
 
 
-void MathDiffInset::metrics(MathMetricsInfo &) const
+void MathDiffInset::metrics(MetricsInfo &) const
 {
 	lyxerr << "should not happen\n";
 }
 
 
-void MathDiffInset::draw(MathPainterInfo &, int, int) const
+void MathDiffInset::draw(PainterInfo &, int, int) const
 {
 	lyxerr << "should not happen\n";
 }

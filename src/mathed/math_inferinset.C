@@ -17,12 +17,12 @@ MathInset * MathInferInset::clone() const
 }
 
 
-void MathInferInset::metrics(MathMetricsInfo &) const
+void MathInferInset::metrics(MetricsInfo &) const
 {
 }
 
 
-void MathInferInset::draw(MathPainterInfo &, int, int) const
+void MathInferInset::draw(PainterInfo &, int, int) const
 {
 }
 

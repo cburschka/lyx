@@ -11,7 +11,7 @@
 using std::atoi;
 
 MathSizeInset::MathSizeInset(latexkeys const * l)
-	: MathNestInset(1), key_(l), style_(MathStyles(atoi(l->extra.c_str())))
+	: MathNestInset(1), key_(l), style_(Styles(atoi(l->extra.c_str())))
 {}
 
 
@@ -21,17 +21,17 @@ MathInset * MathSizeInset::clone() const
 }
 
 
-void MathSizeInset::metrics(MathMetricsInfo & mi) const
+void MathSizeInset::metrics(MetricsInfo & mi) const
 {
-	MathStyleChanger dummy(mi.base, style_);
+	StyleChanger dummy(mi.base, style_);
 	dim_ = cell(0).metrics(mi);
 	metricsMarkers2();
 }
 
 
-void MathSizeInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathSizeInset::draw(PainterInfo & pi, int x, int y) const
 {
-	MathStyleChanger dummy(pi.base, style_);
+	StyleChanger dummy(pi.base, style_);
 	cell(0).draw(pi, x + 1, y);
 	drawMarkers2(pi, x, y);
 }

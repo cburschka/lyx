@@ -19,7 +19,7 @@
 
 
 #include "math_nestinset.h"
-#include "math_metricsinfo.h"
+#include "metricsinfo.h"
 #include "math_macroarg.h"
 #include "LString.h"
 
@@ -39,9 +39,9 @@ public:
 	///
 	MathMacro(MathMacro const &);
 	///
-	void draw(MathPainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void metrics(MathMetricsInfo & mi) const;
+	void metrics(MetricsInfo & mi) const;
 	///
 	MathInset * clone() const;
 	///
@@ -89,7 +89,7 @@ private:
 	///
 	mutable MathArray expanded_;
 	///
-	mutable MathMetricsInfo mi_;
+	mutable MetricsInfo mi_;
 	///
 	mutable LyXFont font_;
 };

@@ -1,6 +1,6 @@
 
 #include "math_textinset.h"
-#include "math_metricsinfo.h"
+#include "metricsinfo.h"
 #include "debug.h"
 
 
@@ -55,7 +55,7 @@ bool MathTextInset::idxUpDown(idx_type &, pos_type & pos, bool up,
 }
 
 
-void MathTextInset::metrics(MathMetricsInfo & mi) const
+void MathTextInset::metrics(MetricsInfo & mi) const
 {
 	cell(0).metrics(mi);
 
@@ -151,13 +151,13 @@ void MathTextInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathTextInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathTextInset::draw(PainterInfo & pi, int x, int y) const
 {
 	cache_.draw(pi, x + 1, y);
 }
 
 
-void MathTextInset::drawSelection(MathPainterInfo & pi,
+void MathTextInset::drawSelection(PainterInfo & pi,
 		idx_type idx1, pos_type pos1, idx_type idx2, pos_type pos2) const
 {
 	cache_.drawSelection(pi, idx1, pos1, idx2, pos2);

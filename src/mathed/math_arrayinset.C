@@ -4,7 +4,7 @@
 #include "math_arrayinset.h"
 #include "math_parser.h"
 #include "math_mathmlstream.h"
-#include "math_metricsinfo.h"
+#include "metricsinfo.h"
 #include "math_streamstr.h"
 #include "Lsstream.h"
 
@@ -63,16 +63,16 @@ MathInset * MathArrayInset::clone() const
 }
 
 
-void MathArrayInset::metrics(MathMetricsInfo & mi) const
+void MathArrayInset::metrics(MetricsInfo & mi) const
 {
-	MathArrayChanger dummy(mi.base);
+	ArrayChanger dummy(mi.base);
 	MathGridInset::metrics(mi);
 }
 
 
-void MathArrayInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathArrayInset::draw(PainterInfo & pi, int x, int y) const
 {
-	MathArrayChanger dummy(pi.base);
+	ArrayChanger dummy(pi.base);
 	MathGridInset::draw(pi, x, y);
 }
 

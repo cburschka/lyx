@@ -6,7 +6,7 @@
 #include "math_cursor.h"
 #include "math_inset.h"
 #include "math_parser.h"
-#include "math_metricsinfo.h"
+#include "metricsinfo.h"
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"
 #include "frontends/lyx_gui.h"
@@ -395,7 +395,7 @@ int mathed_string_width(LyXFont const & font, string const & s)
 }
 
 
-void mathed_draw_deco(MathPainterInfo & pi, int x, int y, int w, int h,
+void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 	const string & name)
 {
 	if (name == ".") {
@@ -465,7 +465,7 @@ void mathed_draw_deco(MathPainterInfo & pi, int x, int y, int w, int h,
 }
 
 
-void mathed_draw_framebox(MathPainterInfo & pi, int x, int y, MathInset const * p)
+void mathed_draw_framebox(PainterInfo & pi, int x, int y, MathInset const * p)
 {
 	if (mathcursor && mathcursor->isInside(p))
 		pi.pain.rectangle(x, y - p->ascent(), p->width(), p->height(),
@@ -474,14 +474,14 @@ void mathed_draw_framebox(MathPainterInfo & pi, int x, int y, MathInset const * 
 
 
 // In the future maybe we use a better fonts renderer
-void drawStr(MathPainterInfo & pi, LyXFont const & font,
+void drawStr(PainterInfo & pi, LyXFont const & font,
 	int x, int y, string const & str)
 {
 	pi.pain.text(x, y, str, font);
 }
 
 
-void drawStrRed(MathPainterInfo & pi, int x, int y, string const & str)
+void drawStrRed(PainterInfo & pi, int x, int y, string const & str)
 {
 	LyXFont f = pi.base.font;
 	f.setColor(LColor::latex);
@@ -489,7 +489,7 @@ void drawStrRed(MathPainterInfo & pi, int x, int y, string const & str)
 }
 
 
-void drawStrBlack(MathPainterInfo & pi, int x, int y, string const & str)
+void drawStrBlack(PainterInfo & pi, int x, int y, string const & str)
 {
 	LyXFont f = pi.base.font;
 	f.setColor(LColor::black);
@@ -497,7 +497,7 @@ void drawStrBlack(MathPainterInfo & pi, int x, int y, string const & str)
 }
 
 
-void drawChar(MathPainterInfo & pi, LyXFont const & font, int x, int y, char c)
+void drawChar(PainterInfo & pi, LyXFont const & font, int x, int y, char c)
 {
 	pi.pain.text(x, y, c, font);
 }

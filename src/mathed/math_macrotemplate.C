@@ -62,7 +62,7 @@ string MathMacroTemplate::name() const
 }
 
 
-void MathMacroTemplate::metrics(MathMetricsInfo & mi) const
+void MathMacroTemplate::metrics(MetricsInfo & mi) const
 {
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
@@ -72,7 +72,7 @@ void MathMacroTemplate::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathMacroTemplate::draw(MathPainterInfo & pi, int x, int y) const
+void MathMacroTemplate::draw(PainterInfo & pi, int x, int y) const
 {
 	int const w0 = cell(0).width();
 	int const w1 = cell(1).width();

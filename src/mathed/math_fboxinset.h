@@ -3,7 +3,7 @@
 #define MATH_FBOXINSET_H
 
 #include "math_nestinset.h"
-#include "math_metricsinfo.h"
+#include "metricsinfo.h"
 
 
 /** Extra nesting
@@ -23,9 +23,9 @@ public:
 	///
 	mode_type currentMode() const;
 	///
-	void metrics(MathMetricsInfo & mi) const;
+	void metrics(MetricsInfo & mi) const;
 	///
-	void draw(MathPainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
 	/// write normalized content

@@ -4,7 +4,7 @@
 #include "math_tabularinset.h"
 #include "math_parser.h"
 #include "math_mathmlstream.h"
-#include "math_metricsinfo.h"
+#include "metricsinfo.h"
 #include "math_streamstr.h"
 #include "Lsstream.h"
 
@@ -39,16 +39,16 @@ MathInset * MathTabularInset::clone() const
 }
 
 
-void MathTabularInset::metrics(MathMetricsInfo & mi) const
+void MathTabularInset::metrics(MetricsInfo & mi) const
 {
-	MathFontSetChanger dummy(mi.base, "textnormal");
+	FontSetChanger dummy(mi.base, "textnormal");
 	MathGridInset::metrics(mi);
 }
 
 
-void MathTabularInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathTabularInset::draw(PainterInfo & pi, int x, int y) const
 {
-	MathFontSetChanger dummy(pi.base, "textnormal");
+	FontSetChanger dummy(pi.base, "textnormal");
 	MathGridInset::draw(pi, x, y);
 }
 

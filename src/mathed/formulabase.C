@@ -29,7 +29,7 @@
 #include "LaTeXFeatures.h"
 #include "debug.h"
 #include "math_support.h"
-#include "math_metricsinfo.h"
+#include "metricsinfo.h"
 #include "support/lstrings.h"
 #include "frontends/LyXView.h"
 #include "frontends/font_metrics.h"
@@ -91,7 +91,7 @@ InsetFormulaBase::InsetFormulaBase()
 	// This is needed as long the math parser is not re-entrant
 	initMath();
 	//lyxerr << "sizeof MathInset: " << sizeof(MathInset) << "\n";
-	//lyxerr << "sizeof MathMetricsInfo: " << sizeof(MathMetricsInfo) << "\n";
+	//lyxerr << "sizeof MetricsInfo: " << sizeof(MetricsInfo) << "\n";
 	//lyxerr << "sizeof MathCharInset: " << sizeof(MathCharInset) << "\n";
 	//lyxerr << "sizeof LyXFont: " << sizeof(LyXFont) << "\n";
 }
@@ -155,7 +155,7 @@ void InsetFormulaBase::metrics(BufferView * bv) const
 {
 	if (bv)
 		view_ = bv->owner()->view();
-	MathMetricsInfo mi;
+	MetricsInfo mi;
 	mi.base.style = LM_ST_TEXT;
 	mi.base.font  = font_;
 	mi.base.font.setColor(LColor::math);

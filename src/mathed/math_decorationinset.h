@@ -21,11 +21,11 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void draw(MathPainterInfo &, int x, int y) const;
+	void draw(PainterInfo &, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
 	///
-	void metrics(MathMetricsInfo & mi) const;
+	void metrics(MetricsInfo & mi) const;
 	///
 	void normalize(NormalStream & os) const;
 	///

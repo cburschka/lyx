@@ -41,7 +41,7 @@
 //#include "insets/insetref.h"
 #include "ref_inset.h"
 
-#include "math_metricsinfo.h"
+#include "metricsinfo.h"
 #include "debug.h"
 #include "math_support.h"
 #include "Lsstream.h"

@@ -19,13 +19,13 @@ MathInset * MathNumberInset::clone() const
 }
 
 
-void MathNumberInset::metrics(MathMetricsInfo & mi) const
+void MathNumberInset::metrics(MetricsInfo & mi) const
 {
 	mathed_string_dim(mi.base.font, str_, dim_);
 }
 
 
-void MathNumberInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathNumberInset::draw(PainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "drawing '" << str_ << "' code: " << code_ << endl;
 	drawStr(pi, pi.base.font, x, y, str_);

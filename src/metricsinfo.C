@@ -1,14 +1,14 @@
 
 #include <config.h>
 
-#include "math_metricsinfo.h"
-#include "math_support.h"
-#include "debug.h"
+#include "metricsinfo.h"
+#include "mathed/math_support.h"
 #include "frontends/Painter.h"
+#include "debug.h"
 
 
 
-MathMetricsBase::MathMetricsBase()
+MetricsBase::MetricsBase()
 	: font(), style(LM_ST_TEXT), fontname("mathnormal"),
 	  restrictwidth(false), textwidth(0)
 {}
@@ -16,25 +16,25 @@ MathMetricsBase::MathMetricsBase()
 
 
 
-MathMetricsInfo::MathMetricsInfo()
+MetricsInfo::MetricsInfo()
 	: fullredraw(false)
 {}
 
 
 
 
-MathPainterInfo::MathPainterInfo(Painter & p)
+PainterInfo::PainterInfo(Painter & p)
 	: pain(p)
 {}
 
 
-void MathPainterInfo::draw(int x, int y, char c)
+void PainterInfo::draw(int x, int y, char c)
 {
 	pain.text(x, y, c, base.font);
 }
 
 
-MathStyles smallerScriptStyle(MathStyles st)
+Styles smallerScriptStyle(Styles st)
 {
 	switch (st) {
 		case LM_ST_DISPLAY:
@@ -49,13 +49,13 @@ MathStyles smallerScriptStyle(MathStyles st)
 	return LM_ST_DISPLAY;
 }
 
-MathScriptChanger::MathScriptChanger(MathMetricsBase & mb)
-	: MathStyleChanger(mb, smallerScriptStyle(mb.style))
+ScriptChanger::ScriptChanger(MetricsBase & mb)
+	: StyleChanger(mb, smallerScriptStyle(mb.style))
 {}
 
 
 
-MathStyles smallerFracStyle(MathStyles st)
+Styles smallerFracStyle(Styles st)
 {
 	switch (st) {
 		case LM_ST_DISPLAY:
@@ -71,33 +71,33 @@ MathStyles smallerFracStyle(MathStyles st)
 	return LM_ST_DISPLAY;
 }
 
-MathFracChanger::MathFracChanger(MathMetricsBase & mb)
-	: MathStyleChanger(mb, smallerFracStyle(mb.style))
+FracChanger::FracChanger(MetricsBase & mb)
+	: StyleChanger(mb, smallerFracStyle(mb.style))
 {}
 
 
 
-MathArrayChanger::MathArrayChanger(MathMetricsBase & mb)
-	: MathStyleChanger(mb, mb.style == LM_ST_DISPLAY ? LM_ST_TEXT : mb.style)
+ArrayChanger::ArrayChanger(MetricsBase & mb)
+	: StyleChanger(mb, mb.style == LM_ST_DISPLAY ? LM_ST_TEXT : mb.style)
 {}
 
 
-MathShapeChanger::MathShapeChanger(LyXFont & font, LyXFont::FONT_SHAPE shape)
-	: MathChanger<LyXFont, LyXFont::FONT_SHAPE>(font)
+ShapeChanger::ShapeChanger(LyXFont & font, LyXFont::FONT_SHAPE shape)
+	: Changer<LyXFont, LyXFont::FONT_SHAPE>(font)
 {
 	save_ = orig_.shape();
 	orig_.setShape(shape);
 }
 
-MathShapeChanger::~MathShapeChanger()
+ShapeChanger::~ShapeChanger()
 {
 	orig_.setShape(save_);
 }
 
 
 
-MathStyleChanger::MathStyleChanger(MathMetricsBase & mb, MathStyles style)
-	:	MathChanger<MathMetricsBase>(mb)
+StyleChanger::StyleChanger(MetricsBase & mb, Styles style)
+	:	Changer<MetricsBase>(mb)
 {
 	static const int diff[4][4]  = { { 0, 0, -3, -5 },
 					 { 0, 0, -3, -5 },
@@ -114,29 +114,30 @@ MathStyleChanger::MathStyleChanger(MathMetricsBase & mb, MathStyles style)
 	mb.style = style;
 }
 
-MathStyleChanger::~MathStyleChanger()
+
+StyleChanger::~StyleChanger()
 {
 	orig_ = save_;
 }
 
 
 
-MathFontSetChanger::MathFontSetChanger(MathMetricsBase & mb, char const * name)
-	:	MathChanger<MathMetricsBase>(mb)
+FontSetChanger::FontSetChanger(MetricsBase & mb, char const * name)
+	:	Changer<MetricsBase>(mb)
 {
 	save_ = mb;
 	mb.fontname = name;
 	augmentFont(mb.font, name);
 }
 
-MathFontSetChanger::~MathFontSetChanger()
+FontSetChanger::~FontSetChanger()
 {
 	orig_ = save_;
 }
 
 
-MathWidthChanger::MathWidthChanger(MathMetricsBase & mb, int w)
-	:	MathChanger<MathMetricsBase>(mb)
+WidthChanger::WidthChanger(MetricsBase & mb, int w)
+	:	Changer<MetricsBase>(mb)
 {
 	save_ = mb;
 	mb.restrictwidth = true;
@@ -144,7 +145,7 @@ MathWidthChanger::MathWidthChanger(MathMetricsBase & mb, int w)
 }
 
 
-MathWidthChanger::~MathWidthChanger()
+WidthChanger::~WidthChanger()
 {
 	orig_ = save_;
 }

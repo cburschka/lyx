@@ -17,10 +17,10 @@ MathInset * MathStackrelInset::clone() const
 }
 
 
-void MathStackrelInset::metrics(MathMetricsInfo & mi) const
+void MathStackrelInset::metrics(MetricsInfo & mi) const
 {
 	cell(1).metrics(mi);
-	MathFracChanger dummy(mi.base);
+	FracChanger dummy(mi.base);
 	cell(0).metrics(mi);
 	dim_.w = max(cell(0).width(), cell(1).width()) + 4;
 	dim_.a = cell(1).ascent() + cell(0).height() + 4;
@@ -28,12 +28,12 @@ void MathStackrelInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathStackrelInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathStackrelInset::draw(PainterInfo & pi, int x, int y) const
 {
 	int m  = x + width() / 2;
 	int yo = y - cell(1).ascent() - cell(0).descent() - 1;
 	cell(1).draw(pi, m - cell(1).width() / 2, y);
-	MathFracChanger dummy(pi.base);
+	FracChanger dummy(pi.base);
 	cell(0).draw(pi, m - cell(0).width() / 2, yo);
 }
 

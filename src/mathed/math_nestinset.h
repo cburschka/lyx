@@ -18,19 +18,19 @@ public:
 	explicit MathNestInset(idx_type ncells);
 
 	/// the size is usuall some sort of convex hull of the cells
-	void metrics(MathMetricsInfo const & mi) const;
+	void metrics(MetricsInfo const & mi) const;
 	/// add space for markers
 	void metricsMarkers(int frame = 1) const;
 	/// add space for markers
 	void metricsMarkers2(int frame = 1) const;
 	/// draw background if locked
-	void draw(MathPainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const;
 	/// draw selection background
-	void drawSelection(MathPainterInfo & pi,
+	void drawSelection(PainterInfo & pi,
 		idx_type idx1, pos_type pos1, idx_type idx2, pos_type pos2) const;
-	void drawMarkers(MathPainterInfo & pi, int x, int y) const;
+	void drawMarkers(PainterInfo & pi, int x, int y) const;
 	/// draw four angular markers
-	void drawMarkers2(MathPainterInfo & pi, int x, int y) const;
+	void drawMarkers2(PainterInfo & pi, int x, int y) const;
 	/// appends itself with macro arguments substituted
 	void substitute(MathMacro const & macro);
 	/// identifies NestInsets

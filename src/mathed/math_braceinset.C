@@ -28,7 +28,7 @@ MathInset * MathBraceInset::clone() const
 }
 
 
-void MathBraceInset::metrics(MathMetricsInfo & mi) const
+void MathBraceInset::metrics(MetricsInfo & mi) const
 {
 	cell(0).metrics(mi);
 	Dimension t;
@@ -40,7 +40,7 @@ void MathBraceInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathBraceInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathBraceInset::draw(PainterInfo & pi, int x, int y) const
 {
 	LyXFont font = pi.base.font;
 	font.setColor(LColor::latex);

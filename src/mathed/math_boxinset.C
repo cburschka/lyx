@@ -33,18 +33,18 @@ void MathBoxInset::normalize(NormalStream & os) const
 }
 
 
-void MathBoxInset::metrics(MathMetricsInfo & mi) const
+void MathBoxInset::metrics(MetricsInfo & mi) const
 {
-	MathFontSetChanger dummy(mi.base, "textnormal");
+	FontSetChanger dummy(mi.base, "textnormal");
 	cell(0).metrics(mi);
 	dim_ = cell(0).dim();
 	metricsMarkers2();
 }
 
 
-void MathBoxInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathBoxInset::draw(PainterInfo & pi, int x, int y) const
 {
-	MathFontSetChanger dummy(pi.base, "textnormal");
+	FontSetChanger dummy(pi.base, "textnormal");
 	cell(0).draw(pi, x, y);
 	drawMarkers2(pi, x + 1, y);
 }

@@ -21,7 +21,7 @@
 #include "math_macro.h"
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
-#include "math_metricsinfo.h"
+#include "metricsinfo.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"
 #include "BufferView.h"
@@ -177,7 +177,7 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 	LyXFont font(f);
 	font.setColor(LColor::math);
 
-	MathPainterInfo pi = MathPainterInfo(bv->painter());
+	PainterInfo pi = PainterInfo(bv->painter());
 	pi.base.style = LM_ST_TEXT;
 	pi.base.font  = font;
 

@@ -14,6 +14,7 @@ using std::swap;
 using std::max;
 using std::min;
 using std::vector;
+using std::istream;
 
 
 class GridInsetMailer : public MailInset {
@@ -56,7 +57,16 @@ string verboseHLine(int n)
 	return res;
 }
 
+
+int extractInt(istream & is)
+{
+	int num = 1;
+	is >> num;
+	return (num == 0) ? 1 : num;
 }
+
+}
+
 
 //////////////////////////////////////////////////////////////
 
@@ -288,7 +298,7 @@ LyXLength MathGridInset::vcrskip(row_type row) const
 }
 
 
-void MathGridInset::metrics(MathMetricsInfo & mi) const
+void MathGridInset::metrics(MetricsInfo & mi) const
 {
 	// let the cells adjust themselves
 	MathNestInset::metrics(mi);
@@ -427,7 +437,7 @@ void MathGridInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathGridInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathGridInset::draw(PainterInfo & pi, int x, int y) const
 {
 	for (idx_type idx = 0; idx < nargs(); ++idx)
 		cell(idx).draw(pi, x + cellXOffset(idx), y + cellYOffset(idx));
@@ -1063,49 +1073,62 @@ dispatch_result MathGridInset::dispatch
 			return DISPATCHED_POP;
 		}
 
-		case LFUN_TABULAR_FEATURE:
+		case LFUN_TABULAR_FEATURE: {
 			//lyxerr << "handling tabular-feature " << cmd.argument << "\n";
-			if (cmd.argument == "valign-top")
+			istringstream is(cmd.argument);
+			string s;
+			is >> s;
+			if (s == "valign-top")
 				valign('t');
-			else if (cmd.argument == "valign-center")
+			else if (s == "valign-center")
 				valign('c');
-			else if (cmd.argument == "valign-bottom")
+			else if (s == "valign-bottom")
 				valign('b');
-			else if (cmd.argument == "align-left")
+			else if (s == "align-left")
 				halign('l', col(idx));
-			else if (cmd.argument == "align-right")
+			else if (s == "align-right")
 				halign('r', col(idx));
-			else if (cmd.argument == "align-center")
+			else if (s == "align-center")
 				halign('c', col(idx));
-			else if (cmd.argument == "append-row")
-				addRow(row(idx));
-			else if (cmd.argument == "delete-row") {
-				delRow(row(idx));
-				if (idx > nargs())
-					idx -= ncols();
-			} else if (cmd.argument == "copy-row")
-				copyRow(row(idx));
-			else if (cmd.argument == "swap-row")
+			else if (s == "append-row")
+				for (int i = 0, n = extractInt(is); i < n; ++i)
+					addRow(row(idx));
+			else if (s == "delete-row") 
+				for (int i = 0, n = extractInt(is); i < n; ++i) {
+					delRow(row(idx));
+					if (idx > nargs())
+						idx -= ncols();
+				}
+			else if (s == "copy-row") 
+				for (int i = 0, n = extractInt(is); i < n; ++i)
+					copyRow(row(idx));
+			else if (s == "swap-row")
 				swapRow(row(idx));
-			else if (cmd.argument == "append-column") {
-				row_type r = row(idx);
-				col_type c = col(idx);
-				addCol(c);
-				idx = index(r, c);
-			} else if (cmd.argument == "delete-column") {
-				row_type r = row(idx);
-				col_type c = col(idx);
-				delCol(col(idx));
-				idx = index(r, c);
-				if (idx > nargs())
-					idx -= ncols();
-			} else if (cmd.argument == "copy-column")
+			else if (s == "append-column") 
+				for (int i = 0, n = extractInt(is); i < n; ++i) {
+					row_type r = row(idx);
+					col_type c = col(idx);
+					addCol(c);
+					idx = index(r, c);
+				}
+			else if (s == "delete-column") 
+				for (int i = 0, n = extractInt(is); i < n; ++i) {
+					row_type r = row(idx);
+					col_type c = col(idx);
+					delCol(col(idx));
+					idx = index(r, c);
+					if (idx > nargs())
+						idx -= ncols();
+				}
+			else if (s == "copy-column")
 				copyCol(col(idx));
-			else if (cmd.argument == "swap-column")
+			else if (s == "swap-column")
 				swapCol(col(idx));
 			else
 				return UNDISPATCHED;
+			lyxerr << "returning DISPATCHED_POP\n";
 			return DISPATCHED_POP;
+		}
 
 		case LFUN_PASTE: {
 			//lyxerr << "pasting '" << cmd.argument << "'\n";

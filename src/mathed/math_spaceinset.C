@@ -38,7 +38,7 @@ MathInset * MathSpaceInset::clone() const
 }
 
 
-void MathSpaceInset::metrics(MathMetricsInfo &) const
+void MathSpaceInset::metrics(MetricsInfo &) const
 {
 	switch (space_) {
 		case 0: dim_.w = 6; break;
@@ -58,7 +58,7 @@ void MathSpaceInset::metrics(MathMetricsInfo &) const
 }
 
 
-void MathSpaceInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathSpaceInset::draw(PainterInfo & pi, int x, int y) const
 {
 
 // Sadly, HP-UX CC can't handle that kind of initialization.

@@ -43,13 +43,13 @@ void MathUnknownInset::normalize(NormalStream & os) const
 }
 
 
-void MathUnknownInset::metrics(MathMetricsInfo & mi) const
+void MathUnknownInset::metrics(MetricsInfo & mi) const
 {
 	mathed_string_dim(mi.base.font, name_, dim_);
 }
 
 
-void MathUnknownInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathUnknownInset::draw(PainterInfo & pi, int x, int y) const
 {
 	if (black_)
 		drawStrBlack(pi, x, y, name_);

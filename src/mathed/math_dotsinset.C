@@ -19,7 +19,7 @@ MathInset * MathDotsInset::clone() const
 }
 
 
-void MathDotsInset::metrics(MathMetricsInfo & mi) const
+void MathDotsInset::metrics(MetricsInfo & mi) const
 {
 	mathed_char_dim(mi.base.font, 'M', dim_);
 	dh_ = 0;
@@ -37,7 +37,7 @@ void MathDotsInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathDotsInset::draw(MathPainterInfo & pain, int x, int y) const
+void MathDotsInset::draw(PainterInfo & pain, int x, int y) const
 {
 	mathed_draw_deco(pain, x + 2, y - dh_, width() - 2, ascent(), key_->name);
 	if (key_->name == "vdots" || key_->name == "ddots")

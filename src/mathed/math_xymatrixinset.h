@@ -13,7 +13,7 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo & st) const;
+	void metrics(MetricsInfo & st) const;
 	///
 	MathXYMatrixInset const * asXYMatrixInset() const { return this; }
 	///

@@ -6,7 +6,7 @@
 
 #include "LString.h"
 
-class MathPainterInfo;
+class PainterInfo;
 class MathInset;
 class LyXFont;
 class Dimension;
@@ -16,19 +16,19 @@ int mathed_char_width(LyXFont const &, unsigned char c);
 int mathed_char_ascent(LyXFont const &, unsigned char c);
 int mathed_char_descent(LyXFont const &, unsigned char c);
 
-void mathed_draw_deco(MathPainterInfo & pi, int x, int y, int w, int h,
+void mathed_draw_deco(PainterInfo & pi, int x, int y, int w, int h,
 	string const & name);
 
-void mathed_draw_framebox(MathPainterInfo & pi, int x, int y, MathInset const *);
+void mathed_draw_framebox(PainterInfo & pi, int x, int y, MathInset const *);
 
 void mathed_string_dim(LyXFont const & font, string const & s, Dimension & dim);
 int mathed_string_width(LyXFont const &, string const & s);
 
-void drawStr(MathPainterInfo & pi,
+void drawStr(PainterInfo & pi,
 	LyXFont const &, int x, int y, string const & s);
-void drawStrRed(MathPainterInfo & pi, int x, int y, string const & s);
-void drawStrBlack(MathPainterInfo & pi, int x, int y, string const & s);
-void drawChar(MathPainterInfo & pi, LyXFont const & font, int x, int y, char c);
+void drawStrRed(PainterInfo & pi, int x, int y, string const & s);
+void drawStrBlack(PainterInfo & pi, int x, int y, string const & s);
+void drawChar(PainterInfo & pi, LyXFont const & font, int x, int y, char c);
 
 void math_font_max_dim(LyXFont const &, int & asc, int & desc);
 

@@ -12,16 +12,16 @@ MathParInset::MathParInset(MathArray const & ar)
 }
 
 
-void MathParInset::metrics(MathMetricsInfo & mi) const
+void MathParInset::metrics(MetricsInfo & mi) const
 {
-	MathFontSetChanger dummy1(mi.base, "textnormal");
+	FontSetChanger dummy1(mi.base, "textnormal");
 	MathGridInset::metrics(mi);
 }
 
 
-void MathParInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathParInset::draw(PainterInfo & pi, int x, int y) const
 {
-	MathFontSetChanger dummy1(pi.base, "textnormal");
+	FontSetChanger dummy1(pi.base, "textnormal");
 	MathGridInset::draw(pi, x, y);
 }
 

@@ -25,13 +25,13 @@ MathInset * MathExFuncInset::clone() const
 }
 
 
-void MathExFuncInset::metrics(MathMetricsInfo & mi) const
+void MathExFuncInset::metrics(MetricsInfo & mi) const
 {
 	mathed_string_dim(mi.base.font, name_, dim_);
 }
 
 
-void MathExFuncInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathExFuncInset::draw(PainterInfo & pi, int x, int y) const
 {
 	drawStrBlack(pi, x, y, name_);
 }

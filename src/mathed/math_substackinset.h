@@ -13,7 +13,7 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo & mi) const;
+	void metrics(MetricsInfo & mi) const;
 	///
 	MathSubstackInset const * asSubstackInset() const { return this; }
 

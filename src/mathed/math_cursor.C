@@ -608,7 +608,7 @@ void MathCursor::selClearOrDel()
 }
 
 
-void MathCursor::drawSelection(MathPainterInfo & pi) const
+void MathCursor::drawSelection(PainterInfo & pi) const
 {
 	if (!selection_)
 		return;

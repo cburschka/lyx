@@ -3,7 +3,7 @@
 
 #include "math_amsarrayinset.h"
 #include "math_mathmlstream.h"
-#include "math_metricsinfo.h"
+#include "metricsinfo.h"
 #include "math_support.h"
 #include "math_streamstr.h"
 #include "math_support.h"
@@ -58,9 +58,9 @@ char const * MathAMSArrayInset::name_right() const
 }
 
 
-void MathAMSArrayInset::metrics(MathMetricsInfo & mi) const
+void MathAMSArrayInset::metrics(MetricsInfo & mi) const
 {
-	MathMetricsInfo m = mi;
+	MetricsInfo m = mi;
 	if (m.base.style == LM_ST_DISPLAY)
 		m.base.style = LM_ST_TEXT;
 	MathGridInset::metrics(m);
@@ -68,7 +68,7 @@ void MathAMSArrayInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathAMSArrayInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathAMSArrayInset::draw(PainterInfo & pi, int x, int y) const
 {
 	MathGridInset::draw(pi, x + 6, y);
 	int const yy = y - ascent();

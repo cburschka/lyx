@@ -15,11 +15,11 @@ public:
 	/// get cursor position
 	void getPos(idx_type idx, pos_type pos, int & x, int & y) const;
 	/// this stores metrics information in cache_
-	void metrics(MathMetricsInfo & mi) const;
+	void metrics(MetricsInfo & mi) const;
 	/// draw according to cached metrics
-	void draw(MathPainterInfo &, int x, int y) const;
+	void draw(PainterInfo &, int x, int y) const;
 	/// draw selection background
-	void drawSelection(MathPainterInfo & pi,
+	void drawSelection(PainterInfo & pi,
 		idx_type idx1, pos_type pos1, idx_type idx2, pos_type pos2) const;
 	/// moves cursor up or down
 	bool idxUpDown(idx_type &, pos_type & pos, bool up, int targetx) const;

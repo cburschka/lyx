@@ -22,9 +22,9 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo & st) const;
+	void metrics(MetricsInfo & st) const;
 	///
-	void draw(MathPainterInfo & pain, int x, int y) const;
+	void draw(PainterInfo & pain, int x, int y) const;
 	///
 	MathAMSArrayInset * asAMSArrayInset() { return this; }
 	///

@@ -69,7 +69,7 @@ void MathMacro::expand() const
 }
 
 
-void MathMacro::metrics(MathMetricsInfo & mi) const
+void MathMacro::metrics(MetricsInfo & mi) const
 {
 	augmentFont(font_, "lyxtex");
 	mi_ = mi;
@@ -106,7 +106,7 @@ void MathMacro::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathMacro::draw(MathPainterInfo & pi, int x, int y) const
+void MathMacro::draw(PainterInfo & pi, int x, int y) const
 {
 	metrics(mi_);
 

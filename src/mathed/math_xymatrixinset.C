@@ -29,9 +29,9 @@ int MathXYMatrixInset::rowsep() const
 }
 
 
-void MathXYMatrixInset::metrics(MathMetricsInfo & st) const
+void MathXYMatrixInset::metrics(MetricsInfo & st) const
 {
-	MathMetricsInfo mi = st;
+	MetricsInfo mi = st;
 	if (mi.base.style == LM_ST_DISPLAY)
 		mi.base.style = LM_ST_TEXT;
 	MathGridInset::metrics(mi);

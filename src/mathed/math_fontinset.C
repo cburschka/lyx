@@ -33,17 +33,17 @@ MathInset::mode_type MathFontInset::currentMode() const
 }
 
 
-void MathFontInset::metrics(MathMetricsInfo & mi) const
+void MathFontInset::metrics(MetricsInfo & mi) const
 {
-	MathFontSetChanger dummy(mi.base, key_->name.c_str());
+	FontSetChanger dummy(mi.base, key_->name.c_str());
 	dim_ = cell(0).metrics(mi);
 	metricsMarkers();
 }
 
 
-void MathFontInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathFontInset::draw(PainterInfo & pi, int x, int y) const
 {
-	MathFontSetChanger dummy(pi.base, key_->name.c_str());
+	FontSetChanger dummy(pi.base, key_->name.c_str());
 	cell(0).draw(pi, x + 1, y);
 	drawMarkers(pi, x, y);
 }

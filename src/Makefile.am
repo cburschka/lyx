@@ -180,6 +180,8 @@ lyx_SOURCES = \
 	lyxvc.C \
 	lyxvc.h \
 	main.C \
+	metricsinfo.C \
+	metricsinfo.h \
 	paragraph.C \
 	paragraph.h \
 	paragraph_pimpl.C \

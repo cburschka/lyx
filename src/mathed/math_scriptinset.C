@@ -180,10 +180,10 @@ int MathScriptInset::ndes() const
 }
 
 
-void MathScriptInset::metrics(MathMetricsInfo & mi) const
+void MathScriptInset::metrics(MetricsInfo & mi) const
 {
 	cell(2).metrics(mi);
-	MathScriptChanger dummy(mi.base);
+	ScriptChanger dummy(mi.base);
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
 	dim_.w = 0;
@@ -206,7 +206,7 @@ void MathScriptInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathScriptInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathScriptInset::draw(PainterInfo & pi, int x, int y) const
 {
 	if (nuc().size())
 		nuc().draw(pi, x + dxx(), y);
@@ -215,7 +215,7 @@ void MathScriptInset::draw(MathPainterInfo & pi, int x, int y) const
 		if (editing())
 			drawStr(pi, pi.base.font, x + dxx(), y, ".");
 	}
-	MathScriptChanger dummy(pi.base);
+	ScriptChanger dummy(pi.base);
 	if (hasUp())
 		up().draw(pi, x + dx1(), y - dy1());
 	if (hasDown())

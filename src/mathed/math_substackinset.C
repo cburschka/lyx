@@ -17,10 +17,10 @@ MathInset * MathSubstackInset::clone() const
 }
 
 
-void MathSubstackInset::metrics(MathMetricsInfo & mi) const
+void MathSubstackInset::metrics(MetricsInfo & mi) const
 {
 	if (mi.base.style == LM_ST_DISPLAY) {
-		MathStyleChanger dummy(mi.base, LM_ST_TEXT);
+		StyleChanger dummy(mi.base, LM_ST_TEXT);
 		MathGridInset::metrics(mi);
 	} else {
 		MathGridInset::metrics(mi);

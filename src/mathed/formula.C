@@ -21,7 +21,7 @@
 #include "math_parser.h"
 #include "math_charinset.h"
 #include "math_arrayinset.h"
-#include "math_metricsinfo.h"
+#include "metricsinfo.h"
 #include "math_deliminset.h"
 #include "math_hullinset.h"
 #include "math_support.h"
@@ -207,7 +207,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 	int const a = ascent(bv, font);
 	int const h = a + d;
 
-	MathPainterInfo pi(bv->painter());
+	PainterInfo pi(bv->painter());
 
 	if (use_preview) {
 		pi.pain.image(x + 1, y - a, w, h,   // one pixel gap in front

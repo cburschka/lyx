@@ -32,9 +32,9 @@ int MathBinomInset::dw() const
 }
 
 
-void MathBinomInset::metrics(MathMetricsInfo & mi) const
+void MathBinomInset::metrics(MetricsInfo & mi) const
 {
-	MathScriptChanger dummy(mi.base);
+	ScriptChanger dummy(mi.base);
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
 	dim_.a = cell(0).height() + 4 + 5;
@@ -43,10 +43,10 @@ void MathBinomInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathBinomInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathBinomInset::draw(PainterInfo & pi, int x, int y) const
 {
 	int m = x + width() / 2;
-	MathScriptChanger dummy(pi.base);
+	ScriptChanger dummy(pi.base);
 	cell(0).draw(pi, m - cell(0).width() / 2, y - cell(0).descent() - 3 - 5);
 	cell(1).draw(pi, m - cell(1).width() / 2, y + cell(1).ascent()  + 3 - 5);
 	mathed_draw_deco(pi, x, y - ascent(), dw(), height(), "(");

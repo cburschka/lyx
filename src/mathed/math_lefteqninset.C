@@ -15,7 +15,7 @@ MathInset * MathLefteqnInset::clone() const
 }
 
 
-void MathLefteqnInset::metrics(MathMetricsInfo & mi) const
+void MathLefteqnInset::metrics(MetricsInfo & mi) const
 {
 	cell(0).metrics(mi);
 	dim_.a = cell(0).ascent() + 2;
@@ -25,7 +25,7 @@ void MathLefteqnInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathLefteqnInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathLefteqnInset::draw(PainterInfo & pi, int x, int y) const
 {
 	cell(0).draw(pi, x + 2, y);
 	drawMarkers2(pi, x, y);

@@ -12,7 +12,7 @@
 #include "math_replace.h"
 #include "debug.h"
 #include "support/LAssert.h"
-#include "math_metricsinfo.h"
+#include "metricsinfo.h"
 #include "frontends/Painter.h"
 #include "textpainter.h"
 
@@ -204,7 +204,7 @@ void MathArray::touch() const
 }
 
 
-Dimension const & MathArray::metrics(MathMetricsInfo & mi) const
+Dimension const & MathArray::metrics(MetricsInfo & mi) const
 {
 	//if (clean_)
 	//	return;
@@ -224,7 +224,7 @@ Dimension const & MathArray::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathArray::draw(MathPainterInfo & pi, int x, int y) const
+void MathArray::draw(PainterInfo & pi, int x, int y) const
 {
 	//if (drawn_ && x == xo_ && y == yo_)
 	//	return;

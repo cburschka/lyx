@@ -32,9 +32,9 @@ MathFracInset const * MathFracInset::asFracInset() const
 }
 
 
-void MathFracInset::metrics(MathMetricsInfo & mi) const
+void MathFracInset::metrics(MetricsInfo & mi) const
 {
-	MathFracChanger dummy(mi.base);
+	FracChanger dummy(mi.base);
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
 	dim_.w = max(cell(0).width(), cell(1).width()) + 2;
@@ -43,10 +43,10 @@ void MathFracInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathFracInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathFracInset::draw(PainterInfo & pi, int x, int y) const
 {
 	int m = x + width() / 2;
-	MathFracChanger dummy(pi.base);
+	FracChanger dummy(pi.base);
 	cell(0).draw(pi, m - cell(0).width() / 2, y - cell(0).descent() - 2 - 5);
 	cell(1).draw(pi, m - cell(1).width() / 2, y + cell(1).ascent()  + 2 - 5);
 	if (!atop_)

@@ -3,7 +3,7 @@
 #define MATHSIZEINSET_H
 
 #include "math_nestinset.h"
-#include "math_metricsinfo.h"
+#include "metricsinfo.h"
 
 
 /** An inset for \scriptsize etc
@@ -23,9 +23,9 @@ public:
 	/// we write extra braces in any case...
 	bool extraBraces() const { return true; }
 	///
-	void metrics(MathMetricsInfo & st) const;
+	void metrics(MetricsInfo & st) const;
 	///
-	void draw(MathPainterInfo &, int x, int y) const;
+	void draw(PainterInfo &, int x, int y) const;
 
 	///
 	void write(WriteStream & os) const;
@@ -38,7 +38,7 @@ private:
 	///
 	latexkeys const * key_;
 	///
-	MathStyles const style_;
+	Styles const style_;
 };
 
 #endif

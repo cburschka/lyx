@@ -19,9 +19,9 @@ MathInset * MathXArrowInset::clone() const
 }
 
 
-void MathXArrowInset::metrics(MathMetricsInfo & mi) const
+void MathXArrowInset::metrics(MetricsInfo & mi) const
 {
-	MathScriptChanger dummy(mi.base);
+	ScriptChanger dummy(mi.base);
 	cell(0).metrics(mi);
 	cell(1).metrics(mi);
 	dim_.w = std::max(cell(0).width(), cell(1).width()) + 10;
@@ -30,9 +30,9 @@ void MathXArrowInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathXArrowInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathXArrowInset::draw(PainterInfo & pi, int x, int y) const
 {
-	MathScriptChanger dummy(pi.base);
+	ScriptChanger dummy(pi.base);
 	cell(0).draw(pi, x + 5, y - 10);
 	cell(1).draw(pi, x + 5, y + cell(1).height());
 	mathed_draw_deco(pi, x + 1, y - 7, width() - 2, 5, name_);

@@ -12,18 +12,18 @@ MathInset * MathErtInset::clone() const
 }
 
 
-void MathErtInset::metrics(MathMetricsInfo & mi) const
+void MathErtInset::metrics(MetricsInfo & mi) const
 {
-	MathFontSetChanger dummy(mi.base, "lyxert");
+	FontSetChanger dummy(mi.base, "lyxert");
 	MathTextInset::metrics(mi);
 	cache_.colinfo_[0].align_ = 'l';
 	metricsMarkers2();
 }
 
 
-void MathErtInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathErtInset::draw(PainterInfo & pi, int x, int y) const
 {
-	MathFontSetChanger dummy(pi.base, "lyxert");
+	FontSetChanger dummy(pi.base, "lyxert");
 	MathTextInset::draw(pi, x + 1, y);
 	drawMarkers2(pi, x, y);
 }

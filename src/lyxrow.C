@@ -28,6 +28,30 @@ Row::Row()
 {}
 
 
+Paragraph * Row::par()
+{
+	return par_;
+}
+
+
+Paragraph * Row::par() const
+{
+	return par_;
+}
+
+
+unsigned short Row::height() const
+{
+	return height_;
+}
+
+
+Row * Row::next() const
+{
+	return next_;
+}
+
+
 void Row::par(Paragraph * p)
 {
 	par_ = p;

@@ -26,8 +26,8 @@
 class MathMacro;
 class LaTeXFeatures;
 class ReplaceData;
-class MathMetricsInfo;
-class MathPainterInfo;
+class MetricsInfo;
+class PainterInfo;
 class TextMetricsInfo;
 class TextPainter;
 
@@ -105,9 +105,9 @@ public:
 	/// checked read access
 	MathAtom const & operator[](pos_type) const;
 	/// rebuild cached metrics information
-	Dimension const & metrics(MathMetricsInfo & mi) const;
+	Dimension const & metrics(MetricsInfo & mi) const;
 	/// redraw cell using cache metrics information
-	void draw(MathPainterInfo & pi, int x, int y) const;
+	void draw(PainterInfo & pi, int x, int y) const;
 	/// rebuild cached metrics information
 	Dimension const & metricsT(TextMetricsInfo const & mi) const;
 	/// redraw cell using cache metrics information

@@ -37,7 +37,7 @@ double MathBigInset::increase() const
 }
 
 
-void MathBigInset::metrics(MathMetricsInfo & mi) const
+void MathBigInset::metrics(MetricsInfo & mi) const
 {
 	double const h = mathed_char_ascent(mi.base.font, 'I');
 	double const f = increase();
@@ -47,7 +47,7 @@ void MathBigInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathBigInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathBigInset::draw(PainterInfo & pi, int x, int y) const
 {
 	mathed_draw_deco(pi, x + 1, y - ascent(), 4, height(), delim_);
 }

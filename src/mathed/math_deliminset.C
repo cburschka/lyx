@@ -84,7 +84,7 @@ int MathDelimInset::dw() const
 }
 
 
-void MathDelimInset::metrics(MathMetricsInfo & mi) const
+void MathDelimInset::metrics(MetricsInfo & mi) const
 {
 	cell(0).metrics(mi);
 	Dimension t;
@@ -98,7 +98,7 @@ void MathDelimInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathDelimInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathDelimInset::draw(PainterInfo & pi, int x, int y) const
 {
 	int const w = dw();
 	int const b = y - ascent();

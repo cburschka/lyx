@@ -18,14 +18,14 @@ MathInset * MathEnvInset::clone() const
 }
 
 
-void MathEnvInset::metrics(MathMetricsInfo & mi) const
+void MathEnvInset::metrics(MetricsInfo & mi) const
 {
 	dim_ = cell(0).metrics(mi);
 	metricsMarkers2();
 }
 
 
-void MathEnvInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathEnvInset::draw(PainterInfo & pi, int x, int y) const
 {
 	cell(0).draw(pi, x + 1, y);
 	drawMarkers2(pi, x, y);

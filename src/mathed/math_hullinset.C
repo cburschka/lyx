@@ -166,10 +166,10 @@ char const * MathHullInset::standardFont() const
 }
 
 
-void MathHullInset::metrics(MathMetricsInfo & mi) const
+void MathHullInset::metrics(MetricsInfo & mi) const
 {
-	MathFontSetChanger dummy1(mi.base, standardFont());
-	MathStyleChanger dummy2(mi.base, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
+	FontSetChanger dummy1(mi.base, standardFont());
+	StyleChanger dummy2(mi.base, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
 
 	// let the cells adjust themselves
 	MathGridInset::metrics(mi);
@@ -180,7 +180,7 @@ void MathHullInset::metrics(MathMetricsInfo & mi) const
 	}
 
 	if (numberedType()) {
-		MathFontSetChanger dummy(mi.base, "mathbf");
+		FontSetChanger dummy(mi.base, "mathbf");
 		int l = 0;
 		for (row_type row = 0; row < nrows(); ++row)
 			l = max(l, mathed_string_width(mi.base.font, nicelabel(row)));
@@ -201,17 +201,17 @@ void MathHullInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathHullInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathHullInset::draw(PainterInfo & pi, int x, int y) const
 {
-	MathFontSetChanger dummy1(pi.base, standardFont());
-	MathStyleChanger dummy2(pi.base, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
+	FontSetChanger dummy1(pi.base, standardFont());
+	StyleChanger dummy2(pi.base, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
 	MathGridInset::draw(pi, x + 1, y);
 
 	if (numberedType()) {
 		int const xx = x + colinfo_.back().offset_ + colinfo_.back().width_ + 20;
 		for (row_type row = 0; row < nrows(); ++row) {
 			int const yy = y + rowinfo_[row].offset_;
-			MathFontSetChanger dummy(pi.base, "mathrm");
+			FontSetChanger dummy(pi.base, "mathrm");
 			drawStr(pi, pi.base.font, xx, yy, nicelabel(row));
 		}
 	}

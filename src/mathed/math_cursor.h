@@ -24,7 +24,7 @@
 
 class InsetFormulaBase;
 class BufferView;
-class MathPainterInfo;
+class PainterInfo;
 class MathUnknownInset;
 
 /**
@@ -160,7 +160,7 @@ public:
 	/// clears or deletes selection depending on lyxrc setting
 	void selClearOrDel();
 	/// draws light-blue selection background
-	void drawSelection(MathPainterInfo & pi) const;
+	void drawSelection(PainterInfo & pi) const;
 	///
 	void handleNest(MathAtom const & at);
 	/// remove this as soon as LyXFunc::getStatus is "localized"

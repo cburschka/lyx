@@ -22,13 +22,13 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void draw(MathPainterInfo &, int x, int y) const;
+	void draw(PainterInfo &, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
 	///
 	void normalize(NormalStream & ns) const;
 	///
-	void metrics(MathMetricsInfo & st) const;
+	void metrics(MetricsInfo & st) const;
 private:
 	/// width in em
 	LyXLength wid_;
