@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.2\n"
-"POT-Creation-Date: 2002-05-03 21:12+0200\n"
+"POT-Creation-Date: 2002-05-16 00:06+0200\n"
 "PO-Revision-Date: 2000-01-20 02:57+01:00\n"
 "Last-Translator: Ludek Brukner <ludek.brukner@regionet.cz>\n"
 "Language-Team: Czech <LL@li.org>\n"
@@ -13,16 +13,16 @@ msgstr ""
 "Content-Type: text/plain; charset=iso-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/buffer.C:376
+#: src/buffer.C:378
 msgid "Couldn't set the layout for "
 msgstr ""
 
-#: src/buffer.C:378
+#: src/buffer.C:380
 #, fuzzy
 msgid "one paragraph"
 msgstr "Pøesun o odstavec nahoru"
 
-#: src/buffer.C:381
+#: src/buffer.C:383
 #, fuzzy
 msgid " paragraphs"
 msgstr "Formát odstavce nastaven."
@@ -32,156 +32,156 @@ msgstr "Formát odstavce nastaven."
 #. or stop loading the file.
 #. I can substitute but I don't see how I can
 #. stop loading... ideas??  ARRae980418
-#: src/buffer.C:383 src/buffer.C:395 src/buffer.C:698
+#: src/buffer.C:385 src/buffer.C:397 src/buffer.C:769
 msgid "Textclass Loading Error!"
 msgstr "Chyba pøi nahrávání textové tøídy"
 
-#: src/buffer.C:384 src/buffer.C:396
+#: src/buffer.C:386 src/buffer.C:398
 #, fuzzy
 msgid "When reading "
 msgstr "Mapování klávesnice"
 
-#: src/buffer.C:388
+#: src/buffer.C:390
 #, fuzzy
 msgid "Encountered "
 msgstr "Na støed"
 
-#: src/buffer.C:390
+#: src/buffer.C:392
 #, fuzzy
 msgid "one unknown token"
 msgstr "Neznámá akce"
 
-#: src/buffer.C:393
+#: src/buffer.C:395
 #, fuzzy
 msgid " unknown tokens"
 msgstr "Neznámá akce"
 
-#: src/buffer.C:686
+#: src/buffer.C:757
 #, fuzzy
 msgid "Textclass error"
 msgstr "Chyba pøi nahrávání textové tøídy"
 
-#: src/buffer.C:687
+#: src/buffer.C:758
 msgid "The document uses an unknown textclass \""
 msgstr ""
 
-#: src/buffer.C:689
+#: src/buffer.C:760
 msgid "LyX will not be able to produce output correctly."
 msgstr ""
 
-#: src/buffer.C:699
+#: src/buffer.C:770
 msgid "Can't load textclass "
 msgstr "Nemohu naèíst textovou tøídu"
 
-#: src/buffer.C:701
+#: src/buffer.C:772
 msgid "-- substituting default"
 msgstr "-- nahrazuji implicitní hodnotou"
 
-#: src/buffer.C:1201
+#: src/buffer.C:1283
 #, fuzzy
 msgid "Unknown token: "
 msgstr "Neznámá akce"
 
 #. future format
-#: src/buffer.C:1600 src/buffer.C:1620 src/frontends/xforms/FormGraphics.C:547
+#: src/buffer.C:1687 src/buffer.C:1707 src/frontends/xforms/FormGraphics.C:547
 msgid "Warning!"
 msgstr "Varování!"
 
-#: src/buffer.C:1601
+#: src/buffer.C:1688
 msgid "LyX file format is newer that what"
 msgstr ""
 
-#: src/buffer.C:1602
+#: src/buffer.C:1689
 msgid "is supported in this LyX version. Expect some problems."
 msgstr ""
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1607 src/buffer.C:1626 src/buffer.C:1629
+#: src/buffer.C:1694 src/buffer.C:1713 src/buffer.C:1716
 msgid "ERROR!"
 msgstr "CHYBA!"
 
-#: src/buffer.C:1608
+#: src/buffer.C:1695
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr "Nalezen starý formát LyXu. Naètìte jej LyXem 0.10.x!"
 
-#: src/buffer.C:1621
+#: src/buffer.C:1708
 msgid "Reading of document is not complete"
 msgstr "Dokument nebyl pøeèten úplný"
 
-#: src/buffer.C:1622
+#: src/buffer.C:1709
 msgid "Maybe the document is truncated"
 msgstr "Je mo¾né, ¾e dokument byl zkrácen"
 
-#: src/buffer.C:1626
+#: src/buffer.C:1713
 msgid "Not a LyX file!"
 msgstr "Toto není soubor ve formátu LyXu!"
 
-#: src/buffer.C:1629
+#: src/buffer.C:1716
 msgid "Unable to read file!"
 msgstr "Nemohu èíst soubor!"
 
-#: src/buffer.C:1722 src/buffer.C:1725
+#: src/buffer.C:1809 src/buffer.C:1812
 msgid "Error! Document is read-only: "
 msgstr "Chyba! Dokument je pouze ke ètení: "
 
-#: src/buffer.C:1735 src/buffer.C:1738
+#: src/buffer.C:1822 src/buffer.C:1825
 msgid "Error! Cannot write file: "
 msgstr "Chyba! Nemohu zapsat soubor: "
 
-#: src/buffer.C:1746 src/buffer.C:1749
+#: src/buffer.C:1833 src/buffer.C:1836
 #, fuzzy
 msgid "Error! Cannot open file: "
 msgstr "Chyba! Nemohu zapsat soubor: "
 
-#: src/buffer.C:1911 src/ext_l10n.h:182
+#: src/buffer.C:1998 src/ext_l10n.h:182
 msgid "Abstract"
 msgstr ""
 
-#: src/buffer.C:1914
+#: src/buffer.C:2001
 msgid "Abstract: "
 msgstr ""
 
-#: src/buffer.C:1922 src/ext_l10n.h:378
+#: src/buffer.C:2009 src/ext_l10n.h:378
 #, fuzzy
 msgid "References"
 msgstr "Vlo¾ odkaz na znaèku"
 
-#: src/buffer.C:1925
+#: src/buffer.C:2012
 #, fuzzy
 msgid "References: "
 msgstr "Vlo¾ odkaz na znaèku"
 
-#: src/buffer.C:2039
+#: src/buffer.C:2126
 msgid "Error: Cannot write file:"
 msgstr "Chyba! Nemohu zapsat soubor: "
 
-#: src/buffer.C:2068
+#: src/buffer.C:2155
 #, fuzzy
 msgid "Error: Cannot open file: "
 msgstr "Chyba! Nemohu zapsat soubor: "
 
-#: src/buffer.C:2663 src/buffer.C:3114
+#: src/buffer.C:2753 src/buffer.C:3204
 msgid "LYX_ERROR:"
 msgstr "CHYBA LYXU:"
 
-#: src/buffer.C:2663 src/buffer.C:3114
+#: src/buffer.C:2753 src/buffer.C:3204
 msgid "Cannot write file"
 msgstr "Nemohu zapsat soubor"
 
-#: src/buffer.C:2752 src/buffer.C:3227
+#: src/buffer.C:2842 src/buffer.C:3317
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Chyba: Nesprávné zanoøení pøíkazù LaTeXu.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3526
+#: src/buffer.C:3616
 msgid "Running chktex..."
 msgstr "Pracuje chktex..."
 
-#: src/buffer.C:3539
+#: src/buffer.C:3629
 msgid "chktex did not work!"
 msgstr "chktex nefunguje!"
 
-#: src/buffer.C:3540
+#: src/buffer.C:3630
 msgid "Could not run with file:"
 msgstr "Nemohu pracovat se souborem:"
 
@@ -388,12 +388,12 @@ msgstr ""
 msgid "Moved to bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1608
+#: src/BufferView_pimpl.C:1611
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Vyberte dokument, který chcete vlo¾it"
 
-#: src/BufferView_pimpl.C:1610 src/frontends/controllers/ControlBibtex.C:68
+#: src/BufferView_pimpl.C:1613 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
 #: src/frontends/controllers/ControlGraphics.C:154
 #: src/frontends/controllers/ControlInclude.C:71 src/lyx_cb.C:113
@@ -402,91 +402,95 @@ msgstr "Vyberte dokument, který chcete vlo¾it"
 msgid "Documents|#o#O"
 msgstr "Dokumenty"
 
-#: src/BufferView_pimpl.C:1612 src/lyxfunc.C:1865 src/lyxfunc.C:1942
+#: src/BufferView_pimpl.C:1615 src/lyxfunc.C:1865 src/lyxfunc.C:1942
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Pøíklady"
 
-#: src/BufferView_pimpl.C:1617 src/frontends/controllers/ControlInclude.C:67
+#: src/BufferView_pimpl.C:1620 src/frontends/controllers/ControlInclude.C:67
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1626 src/lyxfunc.C:1749 src/lyxfunc.C:1776
+#: src/BufferView_pimpl.C:1629 src/lyxfunc.C:1749 src/lyxfunc.C:1776
 #: src/lyxfunc.C:1879 src/lyxfunc.C:1959 src/lyxfunc.C:1987
 msgid "Canceled."
 msgstr "Zru¹eno."
 
-#: src/BufferView_pimpl.C:1638
+#: src/BufferView_pimpl.C:1641
 msgid "Inserting document"
 msgstr "Vkládám dokument"
 
-#: src/BufferView_pimpl.C:1644 src/ext_l10n.h:637
+#: src/BufferView_pimpl.C:1647 src/ext_l10n.h:637
 #: src/frontends/xforms/FormDocument.C:327 src/lyxfunc.C:1797
 #: src/lyxfunc.C:1907
 msgid "Document"
 msgstr "Dokument"
 
-#: src/BufferView_pimpl.C:1645
+#: src/BufferView_pimpl.C:1648
 msgid "inserted."
 msgstr "vlo¾en."
 
-#: src/BufferView_pimpl.C:1649
+#: src/BufferView_pimpl.C:1652
 msgid "Could not insert document"
 msgstr "Nemohu vlo¾it dokument"
 
-#: src/BufferView_pimpl.C:1822 src/insets/insettext.C:1455
+#: src/BufferView_pimpl.C:1818
+msgid "LyX function 'layout' needs an argument."
+msgstr ""
+
+#: src/BufferView_pimpl.C:1836 src/insets/insettext.C:1458
 msgid "Layout "
 msgstr "Formát "
 
-#: src/BufferView_pimpl.C:1823 src/insets/insettext.C:1455
+#: src/BufferView_pimpl.C:1837 src/insets/insettext.C:1458
 msgid " not known"
 msgstr " není znám"
 
-#: src/BufferView_pimpl.C:2019 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:2033 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77 src/lyxfunc.C:1889
 msgid "Error"
 msgstr "Chyba"
 
-#: src/BufferView_pimpl.C:2020
+#: src/BufferView_pimpl.C:2034
 msgid "Couldn't find this label"
 msgstr "Nemohu tuto znaèku"
 
-#: src/BufferView_pimpl.C:2021
+#: src/BufferView_pimpl.C:2035
 msgid "in current document."
 msgstr "v aktuálním dokumentu nalézt."
 
-#: src/BufferView_pimpl.C:2518
+#: src/BufferView_pimpl.C:2532
 msgid "Mark removed"
 msgstr "Znaèka odstranìna"
 
-#: src/BufferView_pimpl.C:2525
+#: src/BufferView_pimpl.C:2539
 msgid "Mark set"
 msgstr "Znaèka nastavena"
 
-#: src/BufferView_pimpl.C:2656
+#: src/BufferView_pimpl.C:2670
 msgid "Mark off"
 msgstr "Znaèka vypnuta"
 
-#: src/BufferView_pimpl.C:2669
+#: src/BufferView_pimpl.C:2683
 msgid "Mark on"
 msgstr "Znaèka zapnuta"
 
-#: src/BufferView_pimpl.C:2843 src/insets/insettext.C:1508
+#: src/BufferView_pimpl.C:2857 src/insets/insettext.C:1511
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "Chybìjící parametr"
 
-#: src/BufferView_pimpl.C:3198
+#: src/BufferView_pimpl.C:3212
 msgid "Word `"
 msgstr ""
 
-#: src/BufferView_pimpl.C:3356
+#: src/BufferView_pimpl.C:3370
 #, fuzzy
 msgid "Unknown function!"
 msgstr "Neznámá akce"
 
-#: src/BufferView_pimpl.C:3619 src/BufferView_pimpl.C:3622
+#: src/BufferView_pimpl.C:3633 src/BufferView_pimpl.C:3636
 #, fuzzy
 msgid "No more insets"
 msgstr "®ádné dal¹í poznámky"
@@ -6155,7 +6159,7 @@ msgstr "Nastavení odstavce"
 
 #. FIXME: should be cleverer here
 #: src/frontends/qt2/QParagraphDialog.C:56
-#: src/frontends/xforms/FormParagraph.C:414 src/paragraph.C:1102
+#: src/frontends/xforms/FormParagraph.C:414 src/paragraph.C:1110
 msgid "Senseless with this layout!"
 msgstr "Toto je v tomto formátu nesmyslné!"
 
@@ -9306,7 +9310,7 @@ msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr ""
 
 #: src/insets/insetert.C:251 src/insets/insettabular.C:2051
-#: src/insets/insettext.C:1389
+#: src/insets/insettext.C:1392
 msgid "Sorry."
 msgstr "Lituji."
 
@@ -9324,7 +9328,7 @@ msgstr "Patièka"
 msgid "Opened Float Inset"
 msgstr "Otevøený objekt"
 
-#: src/insets/insetfloat.C:312
+#: src/insets/insetfloat.C:317
 #, fuzzy
 msgid "float:"
 msgstr "Patièka"
@@ -9338,12 +9342,12 @@ msgstr ""
 msgid "List of "
 msgstr "Seznam tabulek"
 
-#: src/insets/insetfoot.C:33 src/insets/insetfoot.C:41
+#: src/insets/insetfoot.C:39 src/insets/insetfoot.C:47
 #, fuzzy
 msgid "foot"
 msgstr "Patièka"
 
-#: src/insets/insetfoot.C:54
+#: src/insets/insetfoot.C:60
 #, fuzzy
 msgid "Opened Footnote Inset"
 msgstr "Otevøený objekt"
@@ -9392,12 +9396,12 @@ msgstr "(zmìneno)"
 msgid "Loaded but not displaying"
 msgstr ""
 
-#: src/insets/insetgraphics.C:645
+#: src/insets/insetgraphics.C:663
 #, fuzzy
 msgid "Cannot copy file"
 msgstr "Nemohu zapsat soubor"
 
-#: src/insets/insetgraphics.C:646
+#: src/insets/insetgraphics.C:664
 msgid "into tempdir"
 msgstr ""
 
@@ -9406,7 +9410,7 @@ msgstr ""
 #. 1. Convert file to ascii using gifscii
 #. 2. Read ascii output file and add it to the output stream.
 #. at least we send the filename
-#: src/insets/insetgraphics.C:777
+#: src/insets/insetgraphics.C:799
 #, fuzzy
 msgid "Graphic file:"
 msgstr "Souboru|#S"
@@ -9534,16 +9538,16 @@ msgstr "Vícesloupcové buòky mohou být pouze horizontálnì."
 msgid "Opened Text Inset"
 msgstr "Otevøený objekt"
 
-#: src/insets/insettext.C:1387
+#: src/insets/insettext.C:1390
 msgid "Impossible operation"
 msgstr "Nemo¾ná operace"
 
-#: src/insets/insettext.C:1388
+#: src/insets/insettext.C:1391
 #, fuzzy
 msgid "Cannot include more than one paragraph!"
 msgstr "Buòka tabulky nemù¾e obsahovat víc ne¾ jeden odstavec!"
 
-#: src/insets/insettext.C:1634
+#: src/insets/insettext.C:1637
 #, fuzzy
 msgid "Error : LatexType Command not allowed here.\n"
 msgstr "Chyba: Nesprávné zanoøení pøíkazù LaTeXu.\n"
@@ -10539,7 +10543,7 @@ msgstr "Neznámá akce"
 msgid "Saving document"
 msgstr "Ukládám dokument"
 
-#: src/lyxfunc.C:1268 src/mathed/formulabase.C:940
+#: src/lyxfunc.C:1268 src/mathed/formulabase.C:944
 msgid "Missing argument"
 msgstr "Chybìjící parametr"
 
@@ -11306,11 +11310,11 @@ msgstr "Stále to chcete udìlat?"
 msgid " (read only)"
 msgstr "(pouze ke ètení)"
 
-#: src/mathed/formulabase.C:151 src/mathed/formulabase.C:914
+#: src/mathed/formulabase.C:141 src/mathed/formulabase.C:918
 msgid "Math editor mode"
 msgstr "Re¾im matematického editoru"
 
-#: src/mathed/formulabase.C:657
+#: src/mathed/formulabase.C:661
 msgid "Invalid action in math mode!"
 msgstr "Tato akce je v matematickém re¾imu neplatná!"
 
@@ -11446,32 +11450,32 @@ msgstr "Nic na práci"
 msgid "Cannot index more than one paragraph!"
 msgstr "Buòka tabulky nemù¾e obsahovat víc ne¾ jeden odstavec!"
 
-#: src/text.C:1911
+#: src/text.C:1933
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
 msgstr "Nemù¾ete napsat mezeru na zaèátku odstavce. Pøeètìte si Prùvodce."
 
-#: src/text.C:1913
+#: src/text.C:1935
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr "Nemù¾ete takto napsat dvì mezery. Pøeètìte si Prùvodce."
 
-#: src/text.C:3346 src/text.C:3348
+#: src/text.C:3368 src/text.C:3370
 #, fuzzy
 msgid "Page Break (top)"
 msgstr "Zlom strany"
 
 #. draw the additional space if needed:
-#: src/text.C:3355
+#: src/text.C:3377
 #, fuzzy
 msgid "Space above"
 msgstr "Mezery"
 
-#: src/text.C:3525 src/text.C:3527
+#: src/text.C:3547 src/text.C:3549
 msgid "Page Break (bottom)"
 msgstr ""
 
-#: src/text.C:3536
+#: src/text.C:3558
 #, fuzzy
 msgid "Space below"
 msgstr "Mezery"

@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.0.0\n"
-"POT-Creation-Date: 2002-05-03 21:12+0200\n"
+"POT-Creation-Date: 2002-05-16 00:06+0200\n"
 "PO-Revision-Date: 2001-02-02 05:24GMT\n"
 "Last-Translator: Germán Poo Caamaño <gpoo@ubiobio.cl>\n"
 "Language-Team: es <es@li.org>\n"
@@ -16,16 +16,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 0.6\n"
 
-#: src/buffer.C:376
+#: src/buffer.C:378
 msgid "Couldn't set the layout for "
 msgstr ""
 
-#: src/buffer.C:378
+#: src/buffer.C:380
 #, fuzzy
 msgid "one paragraph"
 msgstr "Retroceder un párrafo"
 
-#: src/buffer.C:381
+#: src/buffer.C:383
 #, fuzzy
 msgid " paragraphs"
 msgstr "Como párrafos indentados|p"
@@ -35,156 +35,156 @@ msgstr "Como párrafos indentados|p"
 #. or stop loading the file.
 #. I can substitute but I don't see how I can
 #. stop loading... ideas??  ARRae980418
-#: src/buffer.C:383 src/buffer.C:395 src/buffer.C:698
+#: src/buffer.C:385 src/buffer.C:397 src/buffer.C:769
 msgid "Textclass Loading Error!"
 msgstr "¡Error cargando la clase de documento!"
 
-#: src/buffer.C:384 src/buffer.C:396
+#: src/buffer.C:386 src/buffer.C:398
 #, fuzzy
 msgid "When reading "
 msgstr "Manipulación de la GUI"
 
-#: src/buffer.C:388
+#: src/buffer.C:390
 #, fuzzy
 msgid "Encountered "
 msgstr "Centro"
 
-#: src/buffer.C:390
+#: src/buffer.C:392
 #, fuzzy
 msgid "one unknown token"
 msgstr "Acción desconocida"
 
-#: src/buffer.C:393
+#: src/buffer.C:395
 #, fuzzy
 msgid " unknown tokens"
 msgstr "Acción desconocida"
 
-#: src/buffer.C:686
+#: src/buffer.C:757
 #, fuzzy
 msgid "Textclass error"
 msgstr "¡Error cargando la clase de documento!"
 
-#: src/buffer.C:687
+#: src/buffer.C:758
 msgid "The document uses an unknown textclass \""
 msgstr ""
 
-#: src/buffer.C:689
+#: src/buffer.C:760
 msgid "LyX will not be able to produce output correctly."
 msgstr ""
 
-#: src/buffer.C:699
+#: src/buffer.C:770
 msgid "Can't load textclass "
 msgstr "No se puede cargar la clase "
 
-#: src/buffer.C:701
+#: src/buffer.C:772
 msgid "-- substituting default"
 msgstr "-- sustituyendo la clase por defecto"
 
-#: src/buffer.C:1201
+#: src/buffer.C:1283
 #, fuzzy
 msgid "Unknown token: "
 msgstr "Acción desconocida"
 
 #. future format
-#: src/buffer.C:1600 src/buffer.C:1620 src/frontends/xforms/FormGraphics.C:547
+#: src/buffer.C:1687 src/buffer.C:1707 src/frontends/xforms/FormGraphics.C:547
 msgid "Warning!"
 msgstr "¡Atención!"
 
-#: src/buffer.C:1601
+#: src/buffer.C:1688
 msgid "LyX file format is newer that what"
 msgstr ""
 
-#: src/buffer.C:1602
+#: src/buffer.C:1689
 msgid "is supported in this LyX version. Expect some problems."
 msgstr ""
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1607 src/buffer.C:1626 src/buffer.C:1629
+#: src/buffer.C:1694 src/buffer.C:1713 src/buffer.C:1716
 msgid "ERROR!"
 msgstr "¡ERROR!"
 
-#: src/buffer.C:1608
+#: src/buffer.C:1695
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr ""
 "Se encontró formato de archivos de LyX antiguo. ¡Use LyX 0.10.x para leer "
 "esto!"
 
-#: src/buffer.C:1621
+#: src/buffer.C:1708
 msgid "Reading of document is not complete"
 msgstr "No se completó la lectura del documento"
 
-#: src/buffer.C:1622
+#: src/buffer.C:1709
 msgid "Maybe the document is truncated"
 msgstr "Es posible que el documento esté truncado"
 
-#: src/buffer.C:1626
+#: src/buffer.C:1713
 msgid "Not a LyX file!"
 msgstr "¡No es un archivo de LyX!"
 
-#: src/buffer.C:1629
+#: src/buffer.C:1716
 msgid "Unable to read file!"
 msgstr "¡No se puede leer el archivo!"
 
-#: src/buffer.C:1722 src/buffer.C:1725
+#: src/buffer.C:1809 src/buffer.C:1812
 msgid "Error! Document is read-only: "
 msgstr "¡Error! El documento es de sólo lectura: "
 
-#: src/buffer.C:1735 src/buffer.C:1738
+#: src/buffer.C:1822 src/buffer.C:1825
 msgid "Error! Cannot write file: "
 msgstr "¡Error! No se puede escribir archivo: "
 
-#: src/buffer.C:1746 src/buffer.C:1749
+#: src/buffer.C:1833 src/buffer.C:1836
 msgid "Error! Cannot open file: "
 msgstr "¡Error! No se puede abrir el archivo: "
 
-#: src/buffer.C:1911 src/ext_l10n.h:182
+#: src/buffer.C:1998 src/ext_l10n.h:182
 msgid "Abstract"
 msgstr "Abstract"
 
-#: src/buffer.C:1914
+#: src/buffer.C:2001
 #, fuzzy
 msgid "Abstract: "
 msgstr "Abstract"
 
-#: src/buffer.C:1922 src/ext_l10n.h:378
+#: src/buffer.C:2009 src/ext_l10n.h:378
 msgid "References"
 msgstr ""
 
-#: src/buffer.C:1925
+#: src/buffer.C:2012
 #, fuzzy
 msgid "References: "
 msgstr " Referencia: "
 
-#: src/buffer.C:2039
+#: src/buffer.C:2126
 msgid "Error: Cannot write file:"
 msgstr "Error: No se puede escribir archivo:"
 
-#: src/buffer.C:2068
+#: src/buffer.C:2155
 msgid "Error: Cannot open file: "
 msgstr "Error: No se puede abrir archivo: "
 
-#: src/buffer.C:2663 src/buffer.C:3114
+#: src/buffer.C:2753 src/buffer.C:3204
 msgid "LYX_ERROR:"
 msgstr "LYX_ERROR:"
 
-#: src/buffer.C:2663 src/buffer.C:3114
+#: src/buffer.C:2753 src/buffer.C:3204
 msgid "Cannot write file"
 msgstr "No se puede escribir archivo"
 
-#: src/buffer.C:2752 src/buffer.C:3227
+#: src/buffer.C:2842 src/buffer.C:3317
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Error: profundidad incorrecta para el comando LaTeXType.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3526
+#: src/buffer.C:3616
 msgid "Running chktex..."
 msgstr "Ejecutando chktex..."
 
-#: src/buffer.C:3539
+#: src/buffer.C:3629
 msgid "chktex did not work!"
 msgstr "¡chktex no funcionó!"
 
-#: src/buffer.C:3540
+#: src/buffer.C:3630
 msgid "Could not run with file:"
 msgstr "No se pudo ejecutar con archivo:"
 
@@ -386,12 +386,12 @@ msgstr ""
 msgid "Moved to bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1608
+#: src/BufferView_pimpl.C:1611
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Selecione el documento a insertar"
 
-#: src/BufferView_pimpl.C:1610 src/frontends/controllers/ControlBibtex.C:68
+#: src/BufferView_pimpl.C:1613 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
 #: src/frontends/controllers/ControlGraphics.C:154
 #: src/frontends/controllers/ControlInclude.C:71 src/lyx_cb.C:113
@@ -400,90 +400,94 @@ msgstr "Selecione el documento a insertar"
 msgid "Documents|#o#O"
 msgstr "Documentos|D"
 
-#: src/BufferView_pimpl.C:1612 src/lyxfunc.C:1865 src/lyxfunc.C:1942
+#: src/BufferView_pimpl.C:1615 src/lyxfunc.C:1865 src/lyxfunc.C:1942
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Ejemplos"
 
-#: src/BufferView_pimpl.C:1617 src/frontends/controllers/ControlInclude.C:67
+#: src/BufferView_pimpl.C:1620 src/frontends/controllers/ControlInclude.C:67
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1626 src/lyxfunc.C:1749 src/lyxfunc.C:1776
+#: src/BufferView_pimpl.C:1629 src/lyxfunc.C:1749 src/lyxfunc.C:1776
 #: src/lyxfunc.C:1879 src/lyxfunc.C:1959 src/lyxfunc.C:1987
 msgid "Canceled."
 msgstr "Cancelado."
 
-#: src/BufferView_pimpl.C:1638
+#: src/BufferView_pimpl.C:1641
 msgid "Inserting document"
 msgstr "Insertando documento"
 
-#: src/BufferView_pimpl.C:1644 src/ext_l10n.h:637
+#: src/BufferView_pimpl.C:1647 src/ext_l10n.h:637
 #: src/frontends/xforms/FormDocument.C:327 src/lyxfunc.C:1797
 #: src/lyxfunc.C:1907
 msgid "Document"
 msgstr "Documento"
 
-#: src/BufferView_pimpl.C:1645
+#: src/BufferView_pimpl.C:1648
 msgid "inserted."
 msgstr "insertado."
 
-#: src/BufferView_pimpl.C:1649
+#: src/BufferView_pimpl.C:1652
 msgid "Could not insert document"
 msgstr "No se pudo insertar el documento"
 
-#: src/BufferView_pimpl.C:1822 src/insets/insettext.C:1455
+#: src/BufferView_pimpl.C:1818
+msgid "LyX function 'layout' needs an argument."
+msgstr ""
+
+#: src/BufferView_pimpl.C:1836 src/insets/insettext.C:1458
 msgid "Layout "
 msgstr "Formato "
 
-#: src/BufferView_pimpl.C:1823 src/insets/insettext.C:1455
+#: src/BufferView_pimpl.C:1837 src/insets/insettext.C:1458
 msgid " not known"
 msgstr " desconocido"
 
-#: src/BufferView_pimpl.C:2019 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:2033 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77 src/lyxfunc.C:1889
 msgid "Error"
 msgstr "Error"
 
-#: src/BufferView_pimpl.C:2020
+#: src/BufferView_pimpl.C:2034
 msgid "Couldn't find this label"
 msgstr "No se pudo encontrar esta etiqueta"
 
-#: src/BufferView_pimpl.C:2021
+#: src/BufferView_pimpl.C:2035
 msgid "in current document."
 msgstr "en el documento actual."
 
-#: src/BufferView_pimpl.C:2518
+#: src/BufferView_pimpl.C:2532
 msgid "Mark removed"
 msgstr "Marca borrada"
 
-#: src/BufferView_pimpl.C:2525
+#: src/BufferView_pimpl.C:2539
 msgid "Mark set"
 msgstr "Marca colocada"
 
-#: src/BufferView_pimpl.C:2656
+#: src/BufferView_pimpl.C:2670
 msgid "Mark off"
 msgstr "Marca desactivada"
 
-#: src/BufferView_pimpl.C:2669
+#: src/BufferView_pimpl.C:2683
 msgid "Mark on"
 msgstr "marca activada"
 
-#: src/BufferView_pimpl.C:2843 src/insets/insettext.C:1508
+#: src/BufferView_pimpl.C:2857 src/insets/insettext.C:1511
 msgid "Unknown spacing argument: "
 msgstr ""
 
-#: src/BufferView_pimpl.C:3198
+#: src/BufferView_pimpl.C:3212
 msgid "Word `"
 msgstr ""
 
-#: src/BufferView_pimpl.C:3356
+#: src/BufferView_pimpl.C:3370
 #, fuzzy
 msgid "Unknown function!"
 msgstr "Acción desconocida"
 
-#: src/BufferView_pimpl.C:3619 src/BufferView_pimpl.C:3622
+#: src/BufferView_pimpl.C:3633 src/BufferView_pimpl.C:3636
 #, fuzzy
 msgid "No more insets"
 msgstr "No hay más notas"
@@ -5903,7 +5907,7 @@ msgstr "LyX: Opciones de párrafo"
 
 #. FIXME: should be cleverer here
 #: src/frontends/qt2/QParagraphDialog.C:56
-#: src/frontends/xforms/FormParagraph.C:414 src/paragraph.C:1102
+#: src/frontends/xforms/FormParagraph.C:414 src/paragraph.C:1110
 msgid "Senseless with this layout!"
 msgstr "¡No tiene sentido en este formato!"
 
@@ -8949,7 +8953,7 @@ msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr "No se permiten cambios de tipos dentros de insets ERT."
 
 #: src/insets/insetert.C:251 src/insets/insettabular.C:2051
-#: src/insets/insettext.C:1389
+#: src/insets/insettext.C:1392
 msgid "Sorry."
 msgstr "Lo siento."
 
@@ -8966,7 +8970,7 @@ msgstr "flotante:"
 msgid "Opened Float Inset"
 msgstr "Inset flotante abierto"
 
-#: src/insets/insetfloat.C:312
+#: src/insets/insetfloat.C:317
 msgid "float:"
 msgstr "flotante:"
 
@@ -8979,11 +8983,11 @@ msgstr ""
 msgid "List of "
 msgstr "Lista de Tablas"
 
-#: src/insets/insetfoot.C:33 src/insets/insetfoot.C:41
+#: src/insets/insetfoot.C:39 src/insets/insetfoot.C:47
 msgid "foot"
 msgstr "pié"
 
-#: src/insets/insetfoot.C:54
+#: src/insets/insetfoot.C:60
 msgid "Opened Footnote Inset"
 msgstr "Nota al pié del inset abierto"
 
@@ -9033,12 +9037,12 @@ msgstr "(Sin cambios)"
 msgid "Loaded but not displaying"
 msgstr ""
 
-#: src/insets/insetgraphics.C:645
+#: src/insets/insetgraphics.C:663
 #, fuzzy
 msgid "Cannot copy file"
 msgstr "No se puede ver archivo"
 
-#: src/insets/insetgraphics.C:646
+#: src/insets/insetgraphics.C:664
 #, fuzzy
 msgid "into tempdir"
 msgstr "Dir. temp"
@@ -9048,7 +9052,7 @@ msgstr "Dir. temp"
 #. 1. Convert file to ascii using gifscii
 #. 2. Read ascii output file and add it to the output stream.
 #. at least we send the filename
-#: src/insets/insetgraphics.C:777
+#: src/insets/insetgraphics.C:799
 #, fuzzy
 msgid "Graphic file:"
 msgstr "Archivo gráfico|#F"
@@ -9164,15 +9168,15 @@ msgstr "Las multicolumnas sólo pueden ser horizontales."
 msgid "Opened Text Inset"
 msgstr "Inset de texto abierto"
 
-#: src/insets/insettext.C:1387
+#: src/insets/insettext.C:1390
 msgid "Impossible operation"
 msgstr "Operación no permitida"
 
-#: src/insets/insettext.C:1388
+#: src/insets/insettext.C:1391
 msgid "Cannot include more than one paragraph!"
 msgstr "No se puede incluir más de un párrafo."
 
-#: src/insets/insettext.C:1634
+#: src/insets/insettext.C:1637
 #, fuzzy
 msgid "Error : LatexType Command not allowed here.\n"
 msgstr "Error: profundidad incorrecta para el comando LaTeXType.\n"
@@ -10119,7 +10123,7 @@ msgstr "Acción desconocida"
 msgid "Saving document"
 msgstr "Guardando documento"
 
-#: src/lyxfunc.C:1268 src/mathed/formulabase.C:940
+#: src/lyxfunc.C:1268 src/mathed/formulabase.C:944
 msgid "Missing argument"
 msgstr "No se encuentra argumento"
 
@@ -10891,11 +10895,11 @@ msgstr "¿Aún quiere hacerlo?"
 msgid " (read only)"
 msgstr " (sólo lectura)"
 
-#: src/mathed/formulabase.C:151 src/mathed/formulabase.C:914
+#: src/mathed/formulabase.C:141 src/mathed/formulabase.C:918
 msgid "Math editor mode"
 msgstr "Modo de edición de fórmulas"
 
-#: src/mathed/formulabase.C:657
+#: src/mathed/formulabase.C:661
 msgid "Invalid action in math mode!"
 msgstr "¡Acción inválida en modo fórmulas!"
 
@@ -11027,7 +11031,7 @@ msgstr "Nada que hacer"
 msgid "Cannot index more than one paragraph!"
 msgstr "No se puede incluir más de un párrafo."
 
-#: src/text.C:1911
+#: src/text.C:1933
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
@@ -11035,26 +11039,26 @@ msgstr ""
 "No se puede insertar un espacio al principio de un párrafo. Por favor lea el "
 "Tutorial."
 
-#: src/text.C:1913
+#: src/text.C:1935
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr ""
 "No puede insertar dos espacios de esa forma. Por favor lea el Tutorial."
 
-#: src/text.C:3346 src/text.C:3348
+#: src/text.C:3368 src/text.C:3370
 msgid "Page Break (top)"
 msgstr "Saltos página (arriba)"
 
 #. draw the additional space if needed:
-#: src/text.C:3355
+#: src/text.C:3377
 #, fuzzy
 msgid "Space above"
 msgstr "&Espaciado anterior"
 
-#: src/text.C:3525 src/text.C:3527
+#: src/text.C:3547 src/text.C:3549
 msgid "Page Break (bottom)"
 msgstr "Saltos página (abajo)"
 
-#: src/text.C:3536
+#: src/text.C:3558
 #, fuzzy
 msgid "Space below"
 msgstr "&Espaciado posterior"
