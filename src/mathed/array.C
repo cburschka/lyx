@@ -21,7 +21,7 @@ void * my_memcpy(void * ps_in, void const * pt_in, size_t n)
 
 
 MathedArray::MathedArray()
-	: bf_(1, 0), last_(0)
+	: bf_(1, '\0'), last_(0)
 {}
 
 MathedArray::~MathedArray()
