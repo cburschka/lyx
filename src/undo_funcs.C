@@ -188,8 +188,10 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 			tmppar3->previous(before);
 		} else {
 			// Do we really enter here ??? (Jug)
-			if (!before)
+			if (!before && behind) {
 				bv->text->ownerParagraph(behind);
+				tmppar3 = behind;
+			}
 		}
 		if (tmppar4) {
 			tmppar4->next(behind);
@@ -211,35 +213,39 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 		// calculate the endpar for redoing the paragraphs.
 		if (behind)
 			endpar = behind->next();
-    
+
 		tmppar = bv->buffer()->getParFromID(undo->number_of_cursor_par);
-		UpdatableInset* it = static_cast<UpdatableInset*>(tmppar3->inInset());
-		if (it) {
-			it->getLyXText(bv)->redoParagraphs(bv, it->getLyXText(bv)->cursor,
-			                                   endpar);
-			LyXFont font;
-			it->update(bv, font, false);
-			// we now would have to rebreak the whole paragraph the undo-par
-			// was in. How we do it here is not really true. We would have to
-			// save this information in the undo-struct and then we could do
-			// the right rebreak. Here we only handle the case where this
-			// was in the actual paragraph, which not always is true.
-			bv->text->redoParagraphs(bv, bv->text->cursor,
-									 bv->text->cursor.par());
-			if (tmppar){
-				it = static_cast<UpdatableInset*>(tmppar->inInset());
-				LyXText * t;
-				if (it) {
-					it->edit(bv);
-					t = it->getLyXText(bv);
-				} else {
-					t = bv->text;
+		if (tmppar3) {
+			UpdatableInset* it = static_cast<UpdatableInset*>(tmppar3->inInset());
+			if (it) {
+				it->getLyXText(bv)->redoParagraphs(bv,
+				                                   it->getLyXText(bv)->cursor,
+				                                   endpar);
+				LyXFont font;
+				it->update(bv, font, false);
+				// we now would have to rebreak the whole paragraph the
+				// undo-par was in. How we do it here is not really true.
+				// We would have to save this information in the undo-struct
+				// and then we could do the right rebreak. Here we only
+				// handle the case where this was in the actual paragraph,
+				// which not always is true.
+				bv->text->redoParagraphs(bv, bv->text->cursor,
+			                             bv->text->cursor.par());
+				if (tmppar){
+					it = static_cast<UpdatableInset*>(tmppar->inInset());
+					LyXText * t;
+					if (it) {
+						it->edit(bv);
+						t = it->getLyXText(bv);
+					} else {
+						t = bv->text;
+					}
+					t->setCursorIntern(bv, tmppar, undo->cursor_pos);
+					t->updateCounters(bv, t->cursor.row());
 				}
-				t->setCursorIntern(bv, tmppar, undo->cursor_pos);
-				t->updateCounters(bv, t->cursor.row());
+				bv->text->setCursorIntern(bv, bv->text->cursor.par(),
+				                          bv->text->cursor.pos());
 			}
-			bv->text->setCursorIntern(bv, bv->text->cursor.par(),
-									  bv->text->cursor.pos());
 		} else {
 			bv->text->redoParagraphs(bv, bv->text->cursor, endpar);
 			if (tmppar) {

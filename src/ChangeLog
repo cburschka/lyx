@@ -1,3 +1,9 @@
+2001-12-21  Juergen Vigna  <jug@sad.it>
+
+	* undo_funcs.C (textHandleUndo): fixed a case where tmppar3 is
+	accessed and could be 0 (I couldn't generate this but it seems
+	Michael could!).
+
 2001-12-20  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* tabular_funcs.C: add LIstream.h, move write_attribute to..
