@@ -14,3 +14,7 @@ End
 Style LaTeX
 	ObsoletedBy   Standard
 End
+
+Style Comment
+	ObsoletedBy   Standard
+End

@@ -16,12 +16,6 @@ Style Code
 	PassThru              1
 End
 
-# Comment style definition
-Style Comment
-	LatexType             Paragraph
-	LatexName             remark
-End
-
 Style LyX-Code
 	ObsoletedBy           Code
 End

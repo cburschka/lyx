@@ -341,33 +341,6 @@ Style Invoice
 	LabelString           "Invoice no.:"
 End
 
-# Comment style definition
-Style Comment
-	Margin                Dynamic
-	LatexType             Environment
-	LatexName             comment
-	NextNoIndent          1
-	LeftMargin            MMM
-	RightMargin           MMM
-	Align                 Block
-	AlignPossible         Block, Left, Right, Center
-	LabelType             Static
-	LabelSep              :x
-	Labelstring           "Comment:"
+### Finally a few obsolete definitions for compatibility
+Input obsolete.inc
 
-	LabelFont
-	      Shape           Italic
-	      Series          Bold
-	      Color           black
-	EndFont
-
-	TextFont
-	      Color           magenta
-	      Shape           Italic
-	EndFont
-
-	Preamble
-	\usepackage{verbatim}
-	EndPreamble
-
-End

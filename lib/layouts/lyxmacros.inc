@@ -43,37 +43,6 @@ Style LyX-Code
 
 End
 
-# Comment style definition
-Style Comment
-	Margin                Dynamic
-	LatexType             Environment
-	LatexName             comment
-	NextNoIndent          1
-	LeftMargin            MMM
-	RightMargin           MMM
-	Align                 Block
-	AlignPossible         Block, Left, Right, Center
-	LabelType             Static
-	LabelSep              :x
-	Labelstring           "Comment:"
-
-	LabelFont
-	      Shape           Italic
-	      Series          Bold
-	      Color           black
-	EndFont
-
-	TextFont
-	      Color           magenta
-	      Shape           Italic
-	EndFont
-
-	Preamble
-	\usepackage{verbatim}
-	EndPreamble
-
-End
-
 # Address style definition
 Style Address
 	Margin                Static

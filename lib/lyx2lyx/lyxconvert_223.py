@@ -17,7 +17,7 @@
 
 import string
 import re
-from parser_tools import find_token
+from parser_tools import find_token, find_end_of
 
 def convert_external(lines):
     external_rexp = re.compile(r'\\begin_inset External ([^,]*),"([^"]*)",')
@@ -53,8 +53,74 @@ def convert_external(lines):
                 lines[i:i+1] = [top, template]
                 i = i + 1
 
+
+def convert_comment(lines):
+    i = 0
+    comment = "\\layout Comment"
+    while 1:
+        i = find_token(lines, comment, i)
+        if i == -1:
+            return
+
+        lines[i:i+1] = ["\\layout Standard","","",
+                        "\\begin_inset Comment",
+                        "collapsed true","",
+                        "\\layout Standard"]
+        i = i + 7
+
+        while 1:
+                old_i = i
+            	i = find_token(lines, "\\layout", i)
+                if i == -1:
+                    i = len(lines) - 1
+                    lines[i:i] = ["\\end_inset ","",""]
+                    return
+
+                j = find_token(lines, '\\begin_deeper', old_i, i)
+                if j == -1: j = i + 1
+                k = find_token(lines, '\\begin_inset', old_i, i)
+                if k == -1: k = i + 1
+
+                if j < i and j < k:
+                    i = j
+                    del lines[i]
+                    i = find_end_of( lines, i, "\\begin_deeper","\\end_deeper")
+                    if i == -1:
+                        #This case should not happen
+                        #but if this happens deal with it greacefully adding
+                        #the missing \end_deeper.
+                        i = len(lines) - 1
+                        lines[i:i] = ["\end_deeper","","","\\end_inset ","",""]
+                        return
+                    else:
+                        del lines[i]
+                        continue
+
+                if k < i:
+                    i = k
+                    i = find_end_of( lines, i, "\\begin_inset","\\end_inset")
+                    if i == -1:
+                        #This case should not happen
+                        #but if this happens deal with it greacefully adding
+                        #the missing \end_inset.
+                        i = len(lines) - 1
+                        lines[i:i] = ["\\end_inset ","","","\\end_inset ","",""]
+                        return
+                    else:
+                        i = i + 1
+                        continue
+
+                if string.find(lines[i], comment) == -1:
+                    lines[i:i] = ["\\end_inset"]
+                    i = i + 1
+                    break
+                lines[i:i+1] = ["\\layout Standard"]
+                i = i + 1
+
+
 def convert(header, body):
     convert_external(body)
+    convert_comment(body)
 
 if __name__ == "__main__":
     pass
