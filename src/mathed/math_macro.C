@@ -19,14 +19,15 @@
 #endif
 
 #include "math_macro.h"
-#include "support/lstrings.h"
-#include "support/LAssert.h"
-#include "debug.h"
 #include "math_support.h"
 #include "math_cursor.h"
+#include "math_extern.h"
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
 #include "math_mathmlstream.h"
+#include "support/lstrings.h"
+#include "support/LAssert.h"
+#include "debug.h"
 #include "Painter.h"
 #include "LaTeXFeatures.h"
 
@@ -161,25 +162,6 @@ void MathMacro::dump() const
 }
 
 
-void MathMacro::write(WriteStream & os) const
-{
-	os << '\\' << name();
-	for (idx_type i = 0; i < nargs(); ++i)
-		os << '{' << cell(i) << '}';
-	if (nargs() == 0) 
-		os << ' ';
-}
-
-
-void MathMacro::normalize(NormalStream & os) const
-{
-	os << "[macro " << name() << " ";
-	for (idx_type i = 0; i < nargs(); ++i) 
-		os << cell(i) << ' ';
-	os << ']';
-}
-
-
 bool MathMacro::idxUp(idx_type & idx, pos_type & pos) const
 {
 	return MathNestInset::idxLeft(idx, pos);
@@ -209,4 +191,31 @@ void MathMacro::validate(LaTeXFeatures & features) const
 	if (name() == "binom")
 		features.binom = true;
 	//MathInset::validate(features);
+}
+
+
+void MathMacro::maplize(MapleStream & os) const
+{
+	expanded_ = tmplate_->xcell(0);
+	expanded_.data_.substitute(*this);
+	::maplize(expanded_.data_, os);
+}
+
+
+void MathMacro::normalize(NormalStream & os) const
+{
+	os << "[macro " << name() << " ";
+	for (idx_type i = 0; i < nargs(); ++i) 
+		os << cell(i) << ' ';
+	os << ']';
+}
+
+
+void MathMacro::write(WriteStream & os) const
+{
+	os << '\\' << name();
+	for (idx_type i = 0; i < nargs(); ++i)
+		os << '{' << cell(i) << '}';
+	if (nargs() == 0) 
+		os << ' ';
 }

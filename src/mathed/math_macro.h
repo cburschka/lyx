@@ -48,10 +48,6 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void write(WriteStream & os) const;
-	///
-	void normalize(NormalStream &) const;
-	///
 	void dump() const;
 
 	///
@@ -67,6 +63,13 @@ public:
 	void validate(LaTeXFeatures &) const;
 	///
 	bool isMacro() const { return true; }
+
+	///
+	void normalize(NormalStream &) const;
+	///
+	void maplize(MapleStream &) const;
+	///
+	void write(WriteStream & os) const;
 
 private:
 	///

@@ -688,6 +688,8 @@ void extractDiff(MathArray & ar)
 	lyxerr << "\nDiffs to: " << ar << "\n";
 }
 
+
+
 //
 // combine searches
 //
