@@ -31,6 +31,7 @@
 #include "ControlNote.h"
 #include "ControlParagraph.h"
 #include "ControlRef.h"
+#include "ControlSearch.h"
 #include "ControlShowFile.h"
 #include "ControlTabular.h"
 #include "ControlTabularCreate.h"
@@ -64,6 +65,7 @@
 #include "FormRef.h"
 #include "FormTabular.h"
 #include "FormTexinfo.h"
+#include "FormSearch.h"
 #include "FormShowFile.h"
 #include "FormTabularCreate.h"
 #include "FormText.h"
@@ -110,13 +112,13 @@ FormMathsBitmap * createFormBitmap(Dialog & parent, string const & title,
 
 
 char const * const dialognames[] = {
-"aboutlyx", "bibitem", "bibtex", "branch", "box", "changes",
-"character", "citation", "error", "errorlist" , "ert", "external", "file",
+"aboutlyx", "bibitem", "bibtex", "branch", "box", "changes", "character",
+"citation", "error", "errorlist" , "ert", "external", "file", "findreplace",
 "float", "graphics", "include", "index", "label", "log", "mathpanel",
-"mathaccents", "matharrows", "mathoperators", "mathrelations", "mathgreek",
-"mathmisc", "mathdots", "mathbigoperators", "mathamsmisc",
-"mathamsarrows", "mathamsrelations", "mathamsnegatedrelations", "mathamsoperators",
-"mathdelimiter", "mathmatrix", "mathspace", "mathstyle",
+"mathaccents", "matharrows", "mathoperators", "mathrelations",
+"mathgreek", "mathmisc", "mathdots", "mathbigoperators", "mathamsmisc",
+"mathamsarrows", "mathamsrelations", "mathamsnegatedrelations",
+"mathamsoperators", "mathdelimiter", "mathmatrix", "mathspace", "mathstyle",
 "note", "paragraph", "ref", "tabular", "tabularcreate", "texinfo",
 
 #ifdef HAVE_LIBAIKSAURUS
@@ -203,6 +205,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlShowFile(*dialog));
 		dialog->setView(new FormShowFile(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
+	} else if (name == "findreplace") {
+		dialog->setController(new ControlSearch(*dialog));
+		dialog->setView(new FormSearch(*dialog));
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "float") {
 		dialog->setController(new ControlFloat(*dialog));
 		dialog->setView(new FormFloat(*dialog));

@@ -24,10 +24,10 @@
 using std::string;
 
 
-typedef FormCB<ControlSearch, FormDB<FD_search> > base_class;
+typedef FormController<ControlSearch, FormView<FD_search> > base_class;
 
-FormSearch::FormSearch()
-	: base_class(_("Find and Replace"))
+FormSearch::FormSearch(Dialog & parent)
+	: base_class(parent, _("Find and Replace"))
 {}
 
 

@@ -12,15 +12,19 @@
 #ifndef CONTROLSEARCH_H
 #define CONTROLSEARCH_H
 
+#include "Dialog.h"
 
-#include "ControlDialog_impl.h"
 
 /** A controller for Search dialogs.
  */
-class ControlSearch : public ControlDialogBD {
+class ControlSearch : public Dialog::Controller {
 public:
-	///
-	ControlSearch(LyXView &, Dialogs &);
+	ControlSearch(Dialog &);
+
+	virtual bool initialiseParams(std::string const &) { return true; }
+	virtual void clearParams() {}
+	virtual void dispatchParams() {}
+	virtual bool isBufferDependent() const { return true; }
 
 	/// Searches occurence of string
 	void find(std::string const & search,
@@ -30,9 +34,6 @@ public:
 	void replace(std::string const & search, std::string const & replace,
 		     bool casesensitive, bool matchword,
 		     bool forward, bool all);
-private:
-	/// not needed.
-	virtual void apply() {}
 };
 
 #endif // CONTROLSEARCH_H

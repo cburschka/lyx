@@ -52,12 +52,6 @@ void gui_ShowPrint(Dialogs & d)
 }
 
 
-void gui_ShowSearch(Dialogs & d)
-{
-	d.showSearch();
-}
-
-
 void gui_ShowSendto(Dialogs & d)
 {
 	d.showSendto();

@@ -23,11 +23,11 @@
 using std::string;
 
 
-typedef Qt2CB<ControlSearch, Qt2DB<QSearchDialog> > base_class;
+typedef QController<ControlSearch, QView<QSearchDialog> > base_class;
 
 
-QSearch::QSearch()
-	: base_class(_("LyX: Find and Replace"))
+QSearch::QSearch(Dialog & parent)
+	: base_class(parent, _("LyX: Find and Replace"))
 {
 }
 

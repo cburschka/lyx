@@ -1200,8 +1200,6 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			}
 			else if (name == "document")
 				owner->getDialogs().showDocument();
-			else if (name == "findreplace")
-				owner->getDialogs().showSearch();
 			else if (name == "forks")
 				owner->getDialogs().showForks();
 			else if (name == "preamble")

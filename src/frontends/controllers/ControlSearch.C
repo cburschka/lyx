@@ -15,34 +15,29 @@
 #include "funcrequest.h"
 #include "lyxfind.h"
 
-#include "frontends/LyXView.h"
-
 using std::string;
 
 
-/* The ControlSeach class is now in a fit state to derive from
-   Dialog::Controller
-*/
-ControlSearch::ControlSearch(LyXView & lv, Dialogs & d)
-	: ControlDialogBD(lv, d)
+ControlSearch::ControlSearch(Dialog & parent)
+	: Dialog::Controller(parent)
 {}
 
 
-void ControlSearch::find(string const & search,
-			 bool casesensitive, bool matchword, bool forward)
+void ControlSearch::find(string const & search, bool casesensitive,
+			 bool matchword, bool forward)
 {
-	string const data =
-		lyx::find::find2string(search,
-				       casesensitive, matchword, forward);
-	lv_.dispatch(FuncRequest(LFUN_WORD_FIND, data));
+	string const data = lyx::find::find2string(search, casesensitive,
+						   matchword, forward);
+	kernel().dispatch(FuncRequest(LFUN_WORD_FIND, data));
 }
 
 
 void ControlSearch::replace(string const & search, string const & replace,
-			    bool casesensitive, bool matchword, bool forward, bool all)
+			    bool casesensitive, bool matchword,
+			    bool forward, bool all)
 {
 	string const data =
-		lyx::find::replace2string(search, replace,
-					  casesensitive, matchword, all, forward);
-	lv_.dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
+		lyx::find::replace2string(search, replace, casesensitive,
+					  matchword, all, forward);
+	kernel().dispatch(FuncRequest(LFUN_WORD_REPLACE, data));
 }

@@ -1,3 +1,10 @@
+2004-01-25  Angus Leeming  <leeming@lyx.org>
+
+	* Dialog.C (build): add the "findreplace" dialog.
+	* Dialogs2.C (showSearch): removed.
+
+	* QSearch.[Ch]: derive from QDialogView rather than from Qt2Base.
+
 2004-01-15  Ronald Florence  <ron@18james.com>
 
 	* Menubar_pimpl.C: change Q_WS_MAC conditional define to

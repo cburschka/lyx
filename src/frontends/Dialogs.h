@@ -76,8 +76,6 @@ public:
 	///
 	void showPrint();
 	///
-	void showSearch();
-	///
 	void showSendto();
 	/// bring up the spellchecker
 	void showSpellchecker();

@@ -1,3 +1,8 @@
+2004-01-25  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.h (showSearch):
+	* guiapi.[Ch] (gui_ShowSearch): removed.
+
 2004-01-08  Angus Leeming  <leeming@lyx.org>
 
 	* FileDialog.h (open, save): the file filter mask is now passed

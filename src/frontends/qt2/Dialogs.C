@@ -30,6 +30,7 @@
 #include "ControlNote.h"
 #include "ControlParagraph.h"
 #include "ControlRef.h"
+#include "ControlSearch.h"
 #include "ControlShowFile.h"
 #include "ControlTabular.h"
 #include "ControlTabularCreate.h"
@@ -63,6 +64,7 @@
 #include "QNote.h"
 #include "QParagraph.h"
 #include "QRef.h"
+#include "QSearch.h"
 #include "QShowFile.h"
 #include "QTabular.h"
 #include "QTabularCreate.h"
@@ -84,10 +86,11 @@ using std::string;
 
 namespace {
 
-char const * const dialognames[] = { "aboutlyx", "bibitem", "bibtex", "box",
-"branch", "changes", "character", "citation", "error", "errorlist", "ert", "external",
-"file", "float", "graphics", "include", "index", "label", "log",
-"mathpanel", "mathdelimiter", "mathmatrix",
+char const * const dialognames[] = {
+"aboutlyx", "bibitem", "bibtex", "box", "branch", "changes", "character",
+"citation", "error", "errorlist", "ert", "external", "file", "findreplace",
+"float", "graphics", "include", "index", "label", "log", "mathpanel",
+"mathdelimiter", "mathmatrix",
 "note", "paragraph", "ref", "tabular", "tabularcreate", "texinfo",
 
 #ifdef HAVE_LIBAIKSAURUS
@@ -175,6 +178,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlShowFile(*dialog));
 		dialog->setView(new QShowFile(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
+	} else if (name == "findreplace") {
+		dialog->setController(new ControlSearch(*dialog));
+		dialog->setView(new QSearch(*dialog));
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "float") {
 		dialog->setController(new ControlFloat(*dialog));
 		dialog->setView(new QFloat(*dialog));

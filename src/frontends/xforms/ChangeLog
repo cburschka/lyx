@@ -1,3 +1,10 @@
+2004-01-25  Angus Leeming  <leeming@lyx.org>
+
+	* Dialog.C (build): add the "findreplace" dialog.
+	* Dialogs2.C (showSearch): removed.
+
+	* FormSearch.[Ch]: derive from FormDialogView rather than from FormBase.
+
 2004-01-08  Angus Leeming  <leeming@lyx.org>
 
 	* FileDialog.C (open, save):

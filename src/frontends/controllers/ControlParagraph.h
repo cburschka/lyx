@@ -25,7 +25,7 @@ public:
 	virtual bool initialiseParams(std::string const & data);
 	/// clean-up on hide.
 	virtual void clearParams();
-	/// clean-up on hide.
+	///
 	virtual void dispatchParams();
 	///
 	virtual bool isBufferDependent() const { return true; }

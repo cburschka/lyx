@@ -12,18 +12,18 @@
 #ifndef FORMSEARCH_H
 #define FORMSEARCH_H
 
-
-#include "FormBase.h"
+#include "FormDialogView.h"
 
 class ControlSearch;
 struct FD_search;
 
 /** This class provides an XForms implementation of the FormSearch Dialog.
  */
-class FormSearch : public FormCB<ControlSearch, FormDB<FD_search> > {
+class FormSearch
+	: public FormController<ControlSearch, FormView<FD_search> > {
 public:
 	///
-	FormSearch();
+	FormSearch(Dialog &);
 private:
 	/// not needed.
 	virtual void apply() {}

@@ -12,8 +12,7 @@
 #ifndef QSEARCH_H
 #define QSEARCH_H
 
-
-#include "Qt2Base.h"
+#include "QDialogView.h"
 
 class ControlSearch;
 class QSearchDialog;
@@ -21,13 +20,13 @@ class QSearchDialog;
 
 ///
 class QSearch
-	: public Qt2CB<ControlSearch, Qt2DB<QSearchDialog> >
+	: public QController<ControlSearch, QView<QSearchDialog> >
 {
 public:
 	///
 	friend class QSearchDialog;
 	///
-	QSearch();
+	QSearch(Dialog &);
 private:
 	/// Apply changes
 	virtual void apply() {}

@@ -25,7 +25,6 @@ void gui_ShowForks(Dialogs &);
 void gui_ShowPreamble(Dialogs &);
 void gui_ShowPreferences(Dialogs &);
 void gui_ShowPrint(Dialogs &);
-void gui_ShowSearch(Dialogs &);
 void gui_ShowSendto(Dialogs &);
 void gui_ShowSpellchecker(Dialogs &);
 

@@ -39,10 +39,6 @@
 #include "FormPrint.h"
 #include "forms/form_print.h"
 
-#include "ControlSearch.h"
-#include "FormSearch.h"
-#include "forms/form_search.h"
-
 #include "ControlSendto.h"
 #include "FormSendto.h"
 #include "forms/form_sendto.h"
@@ -66,9 +62,6 @@ PreferencesDialog;
 typedef GUI<ControlPrint, FormPrint, OkApplyCancelPolicy, xformsBC>
 PrintDialog;
 
-typedef GUI<ControlSearch, FormSearch, NoRepeatedApplyReadOnlyPolicy, xformsBC>
-SearchDialog;
-
 typedef GUI<ControlSendto, FormSendto, OkApplyCancelPolicy, xformsBC>
 SendtoDialog;
 
@@ -84,7 +77,6 @@ struct Dialogs::Impl {
 	PreambleDialog      preamble;
 	PreferencesDialog   preferences;
 	PrintDialog         print;
-	SearchDialog        search;
 	SendtoDialog        sendto;
 	SpellcheckerDialog  spellchecker;
 };
@@ -96,7 +88,6 @@ Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 	  preamble(lv, d),
 	  preferences(lv, d),
 	  print(lv, d),
-	  search(lv, d),
 	  sendto(lv, d),
 	  spellchecker(lv, d)
 {}
@@ -141,12 +132,6 @@ void Dialogs::showPreferences()
 void Dialogs::showPrint()
 {
 	pimpl_->print.controller().show();
-}
-
-
-void Dialogs::showSearch()
-{
-	pimpl_->search.controller().show();
 }
 
 
