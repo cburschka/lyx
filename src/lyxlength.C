@@ -80,15 +80,15 @@ string const LyXLength::asLatexString() const
 	case PW:
 	case PE:
 	    buffer << abs(static_cast<int>(val_/100)) << "."
-				<< abs(static_cast<int>(val_)%100) << "\\columnwidth";
+		   << abs(static_cast<int>(val_)%100) << "\\columnwidth";
 	    break;
 	case PP:
 	    buffer << abs(static_cast<int>(val_/100)) << "."
-				<< abs(static_cast<int>(val_)%100) << "\\pagewidth";
+		   << abs(static_cast<int>(val_)%100) << "\\pagewidth";
 	    break;
 	case PL:
 	    buffer << abs(static_cast<int>(val_/100)) << "."
-				<< abs(static_cast<int>(val_)%100) << "\\linewidth";
+		   << abs(static_cast<int>(val_)%100) << "\\linewidth";
 	    break;
 	default:
 	    buffer << val_ << unit_name[unit_]; // setw?

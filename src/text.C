@@ -410,212 +410,243 @@ bool LyXText::isBoundary(Buffer const * buf, Paragraph * par,
 	return rtl != rtl2;
 }
 
-
-void LyXText::draw(BufferView * bview, Row const * row,
-                   pos_type & vpos, int offset, float & x, bool cleared)
+void LyXText::drawNewline(DrawRowParams & p, pos_type const pos)
 {
-	Painter & pain = bview->painter();
-	
-	pos_type pos = vis2log(vpos);
-	char c = row->par()->getChar(pos);
-	float tmpx = x;
-
-	if (IsNewlineChar(c)) {
-		++vpos;
-		// Draw end-of-line marker
-		LyXFont const font = getFont(bview->buffer(), row->par(), pos);
-		int const wid = lyxfont::width('n', font);
-		int const asc = lyxfont::maxAscent(font);
-		int const y = offset + row->baseline();
-		int xp[3];
-		int yp[3];
+	// Draw end-of-line marker
+	LyXFont const font = getFont(p.bv->buffer(), p.row->par(), pos);
+	int const wid = lyxfont::width('n', font);
+	int const asc = lyxfont::maxAscent(font);
+	int const y = p.yo + p.row->baseline();
+	int xp[3];
+	int yp[3];
 		
-		if (bidi_level(pos) % 2 == 0) {
-			xp[0] = int(x + wid * 0.375);
-			yp[0] = int(y - 0.875 * asc * 0.75);
-			
-			xp[1] = int(x);
-			yp[1] = int(y - 0.500 * asc * 0.75);
-			
-			xp[2] = int(x + wid * 0.375);
-			yp[2] = int(y - 0.125 * asc * 0.75);
-			
-			pain.lines(xp, yp, 3, LColor::eolmarker);
-			
-			xp[0] = int(x);
-			yp[0] = int(y - 0.500 * asc * 0.75);
-			
-			xp[1] = int(x + wid);
-			yp[1] = int(y - 0.500 * asc * 0.75);
-			
-			xp[2] = int(x + wid);
-			yp[2] = int(y - asc * 0.75);
-			
-			pain.lines(xp, yp, 3, LColor::eolmarker);
-		} else {
-			xp[0] = int(x + wid * 0.625);
-			yp[0] = int(y - 0.875 * asc * 0.75);
-			
-			xp[1] = int(x + wid);
-			yp[1] = int(y - 0.500 * asc * 0.75);
-			
-			xp[2] = int(x + wid * 0.625);
-			yp[2] = int(y - 0.125 * asc * 0.75);
-			
-			pain.lines(xp, yp, 3, LColor::eolmarker);
-			
-			xp[0] = int(x + wid);
-			yp[0] = int(y - 0.500 * asc * 0.75);
-			
-			xp[1] = int(x);
-			yp[1] = int(y - 0.500 * asc * 0.75);
-			
-			xp[2] = int(x);
-			yp[2] = int(y - asc * 0.75);
-			
-			pain.lines(xp, yp, 3, LColor::eolmarker);
-		}
-		x += wid;
+	yp[0] = int(y - 0.875 * asc * 0.75);
+	yp[1] = int(y - 0.500 * asc * 0.75);
+	yp[2] = int(y - 0.125 * asc * 0.75);
+ 
+	if (bidi_level(pos) % 2 == 0) {
+		xp[0] = int(p.x + wid * 0.375);
+		xp[1] = int(p.x);
+		xp[2] = int(p.x + wid * 0.375);
+	} else { 
+		xp[0] = int(p.x + wid * 0.625);
+		xp[1] = int(p.x + wid);
+		xp[2] = int(p.x + wid * 0.625);
+	}
+ 
+	p.pain->lines(xp, yp, 3, LColor::eolmarker);
+ 
+	yp[0] = int(y - 0.500 * asc * 0.75);
+	yp[1] = int(y - 0.500 * asc * 0.75);
+	yp[2] = int(y - asc * 0.75);
+ 
+	if (bidi_level(pos) % 2 == 0) {
+		xp[0] = int(p.x);
+		xp[1] = int(p.x + wid);
+		xp[2] = int(p.x + wid);
+	} else {
+		xp[0] = int(p.x + wid);
+		xp[1] = int(p.x);
+		xp[2] = int(p.x);
+	}
+ 
+	p.pain->lines(xp, yp, 3, LColor::eolmarker);
+
+	p.x += wid;
+}
+
+ 
+void LyXText::drawInset(DrawRowParams & p, pos_type const pos)
+{
+	Inset * inset = p.row->par()->getInset(pos);
+
+	// FIXME: shouldn't happen
+	if (!inset) {
 		return;
 	}
+ 
+	LyXFont const & font = getFont(p.bv->buffer(), p.row->par(), pos);
+ 
+	inset->update(p.bv, font, false);
+	inset->draw(p.bv, font, p.yo + p.row->baseline(), p.x, p.cleared);
+ 
+	if (!need_break_row && !inset_owner 
+		&& p.bv->text->status() == CHANGED_IN_DRAW) {
+		Row * prev = p.row->previous();
+		if (prev && prev->par() == p.row->par()) {
+			breakAgainOneRow(p.bv, prev);
+		} 
+		setCursor(p.bv, cursor.par(), cursor.pos());
+		need_break_row = p.row;
+	}
+}
 
-	LyXFont font = getFont(bview->buffer(), row->par(), pos);
-	LyXFont font2 = font;
 
-	if (c == Paragraph::META_INSET) {
-		Inset * tmpinset = row->par()->getInset(pos);
-		if (tmpinset) {
-			tmpinset->update(bview, font, false);
-			tmpinset->draw(bview, font, offset+row->baseline(), x,
-			               cleared);
-			if (!need_break_row && !inset_owner &&
-			    bview->text->status() == CHANGED_IN_DRAW)
-			{
-				if (row->previous() && row->previous()->par() == row->par())
-					breakAgainOneRow(bview, row->previous());
-				setCursor(bview, cursor.par(), cursor.pos());
-				need_break_row = const_cast<Row *>(row);
+void LyXText::drawForeignMark(DrawRowParams & p, float const orig_x, LyXFont const & orig_font)
+{
+	if (!lyxrc.mark_foreign_language)
+		return; 
+	if (orig_font.language() == latex_language)
+		return;
+	if (orig_font.language() == p.bv->buffer()->params.language)
+		return;
+ 
+	int const y = p.yo + p.row->height() - 1;
+	p.pain->line(int(orig_x), y, int(p.x), y, LColor::language);
+}
+ 
+
+void LyXText::drawHebrewComposeChar(DrawRowParams & p, pos_type & vpos)
+{
+	pos_type pos = vis2log(vpos);
+ 
+	string str;
+
+	// first char 
+	char c = p.row->par()->getChar(pos);
+	str += c;
+	++vpos; 
+ 
+	LyXFont const & font = getFont(p.bv->buffer(), p.row->par(), pos);
+	int const width = lyxfont::width(c, font);
+	int dx = 0;
+ 
+	for (pos_type i = pos-1; i >= 0; --i) {
+		c = p.row->par()->getChar(i);
+		if (!Encodings::IsComposeChar_hebrew(c)) {
+			if (IsPrintableNonspace(c)) {
+				int const width2 = 
+					singleWidth(p.bv, p.row->par(), i, c);
+				// dalet / resh
+				dx = (c == 'ø' || c == 'ã')
+					? width2 - width 
+					: (width2 - width) / 2;
 			}
+			break;
 		}
+	}
+ 
+	// Draw nikud
+	p.pain->text(int(p.x) + dx, p.yo + p.row->baseline(), str, font);
+}
+
+ 
+void LyXText::drawArabicComposeChar(DrawRowParams & p, pos_type & vpos)
+{
+	pos_type pos = vis2log(vpos);
+	string str;
+ 
+	// first char 
+	char c = p.row->par()->getChar(pos);
+	c = transformChar(c, p.row->par(), pos);
+	str +=c;
+	++vpos;
+ 
+	LyXFont const & font = getFont(p.bv->buffer(), p.row->par(), pos);
+	int const width = lyxfont::width(c, font);
+	int dx = 0;
+ 
+	for (pos_type i = pos-1; i >= 0; --i) {
+		c = p.row->par()->getChar(i);
+		if (!Encodings::IsComposeChar_arabic(c)) {
+			if (IsPrintableNonspace(c)) {
+				int const width2 = 
+					singleWidth(p.bv, p.row->par(), i, c);
+				dx = (width2 - width) / 2;
+			}
+			break;
+		}
+	}
+	// Draw nikud
+	p.pain->text(int(p.x) + dx, p.yo + p.row->baseline(), str, font);
+}
+ 
+ 
+void LyXText::drawChars(DrawRowParams & p, pos_type & vpos,
+	bool hebrew, bool arabic)
+{
+	pos_type pos = vis2log(vpos);
+	pos_type const last = rowLastPrintable(p.row);
+	LyXFont const & orig_font = getFont(p.bv->buffer(), p.row->par(), pos);
+ 
+	// first character
+	string str;
+	str += p.row->par()->getChar(pos);
+	if (arabic) {
+		unsigned char c = str[0];
+		str[0] = transformChar(c, p.row->par(), pos);
+	}
+	++vpos;
+
+	// collect as much similar chars as we can
+	while (vpos <= last && (pos = vis2log(vpos)) >= 0) {
+		char c = p.row->par()->getChar(pos);
+ 
+		if (!IsPrintableNonspace(c))
+			break;
+ 
+		if (arabic && Encodings::IsComposeChar_arabic(c))
+			break;
+		if (hebrew && Encodings::IsComposeChar_hebrew(c))
+			break;
+ 
+		if (orig_font != getFont(p.bv->buffer(), p.row->par(), pos))
+			break;
+ 
+		str += c;
 		++vpos;
+	}
+ 
+	// Draw text and set the new x position
+	p.pain->text(int(p.x), p.yo + p.row->baseline(), str, orig_font);
+	p.x += lyxfont::width(str, orig_font);
+}
 
-		if (lyxrc.mark_foreign_language &&
-			font.language() != latex_language &&
-		    font.language() != bview->buffer()->params.language) {
-			int const y = offset + row->height() - 1;
-			pain.line(int(tmpx), y, int(x), y, LColor::language);
-		}
+ 
+void LyXText::draw(DrawRowParams & p, pos_type & vpos)
+{
+	pos_type const pos = vis2log(vpos);
+	Paragraph * par = p.row->par();
 
+	LyXFont const & orig_font = getFont(p.bv->buffer(), par, pos);
+
+	float const orig_x = p.x;
+	 
+	char const c = par->getChar(pos);
+ 
+	if (IsNewlineChar(c)) {
+		++vpos;
+		drawNewline(p, pos);
+		return;
+	} else if (IsInsetChar(c)) {
+		drawInset(p, pos);
+		++vpos;
+		drawForeignMark(p, orig_x, orig_font);
 		return;
 	}
 
 	// usual characters, no insets
 
-	// Collect character that we can draw in one command
+	// special case languages
+	bool const hebrew = (orig_font.language()->lang() == "hebrew");
+	bool const arabic = 
+		orig_font.language()->lang() == "arabic" &&
+		(lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 ||
+		lyxrc.font_norm_type == LyXRC::ISO_10646_1);
 
-	// This is dirty, but fast. Notice that it will never be too small.
-	// For the record, I'll note that Microsoft Word has a limit
-	// of 768 here. We have none :-) (Asger)
-	// Ok. I am the first to admit that the use of std::string will be
-	// a tiny bit slower than using a POD char array. However, I claim
-	// that this slowdown is so small that it is close to inperceptive.
-	// So IMHO we should go with the easier and clearer implementation.
-	// And even if 1024 is a large number here it might overflow, string
-	// will only overflow if the machine is out of memory...
-	static string textstring;
-	textstring = c;
-	++vpos;
-
-	pos_type const last = rowLastPrintable(row);
-
-	if (font.language()->lang() == "hebrew") {
-		if (Encodings::IsComposeChar_hebrew(c)) {
-			int const width = lyxfont::width(c, font2);
-			int dx = 0;
-			for (pos_type i = pos-1; i >= 0; --i) {
-				c = row->par()->getChar(i);
-				if (!Encodings::IsComposeChar_hebrew(c)) {
-					if (IsPrintableNonspace(c)) {
-						int const width2 =
-							singleWidth(bview,
-								    row->par(),
-								    i, c);
-						dx = (c == 'ø' || c == 'ã') // dalet / resh
-							? width2 - width : (width2 - width) / 2;
-					}
-					break;
-				}
-			}
-			// Draw nikud
-			pain.text(int(x) + dx, offset + row->baseline(),
-				  textstring, font);
-		} else {
-			while (vpos <= last &&
-			       (pos = vis2log(vpos)) >= 0
-			       && IsPrintableNonspace(c = row->par()->getChar(pos))
-			       && !Encodings::IsComposeChar_hebrew(c)
-			       && font2 == getFont(bview->buffer(), row->par(), pos)) {
-				textstring += c;
-				++vpos;
-			}
-			// Draw text and set the new x position
-			pain.text(int(x), offset + row->baseline(),
-				  textstring, font);
-			x += lyxfont::width(textstring, font);
-		}
-	} else if (font.language()->lang() == "arabic" &&
-		   (lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 ||
-		    lyxrc.font_norm_type == LyXRC::ISO_10646_1)) {
-		if (Encodings::IsComposeChar_arabic(c)) {
-			c = transformChar(c, row->par(), pos);
-			textstring = c;
-			int const width = lyxfont::width(c, font2);
-			int dx = 0;
-			for (pos_type i = pos-1; i >= 0; --i) {
-				c = row->par()->getChar(i);
-				if (!Encodings::IsComposeChar_arabic(c)) {
-					if (IsPrintableNonspace(c)) {
-						int const width2 =
-							singleWidth(bview,
-								    row->par(),
-								    i, c);
-						dx = (width2 - width) / 2;
-					}
-					break;
-				}
-			}
-			// Draw nikud
-			pain.text(int(x) + dx, offset + row->baseline(), 
-				  textstring, font);
-		} else {
-			textstring = transformChar(c, row->par(), pos);
-			while (vpos <= last &&
-			       (pos = vis2log(vpos)) >= 0
-			       && IsPrintableNonspace(c = row->par()->getChar(pos))
-			       && !Encodings::IsComposeChar_arabic(c)
-			       && font2 == getFont(bview->buffer(), row->par(), pos)) {
-				c = transformChar(c, row->par(), pos);
-				textstring += c;
-				++vpos;
-			}
-			// Draw text and set the new x position
-			pain.text(int(x), offset + row->baseline(),
-				  textstring, font);
-			x += lyxfont::width(textstring, font);
-		}
-	} else {
-		while (vpos <= last &&
-		       (pos = vis2log(vpos)) >= 0
-		       && IsPrintableNonspace(c = row->par()->getChar(pos))
-		       && font2 == getFont(bview->buffer(), row->par(), pos)) {
-			textstring += c;
-			++vpos;
-		}
-		// Draw text and set the new x position
-		pain.text(int(x), offset + row->baseline(), textstring, font);
-		x += lyxfont::width(textstring, font);
+	// draw as many chars as we can
+	if ((!hebrew && !arabic)
+		|| (hebrew && !Encodings::IsComposeChar_hebrew(c))
+		|| (arabic && !Encodings::IsComposeChar_arabic(c))) {
+		drawChars(p, vpos, true, false);
+	} else if (hebrew) {
+		drawHebrewComposeChar(p, vpos);
+	} else if (arabic) {
+		drawArabicComposeChar(p, vpos);
 	}
 
+	drawForeignMark(p, orig_x, orig_font);
+ 
 #ifdef INHERIT_LANGUAGE
 #ifdef WITH_WARNINGS
 	if ((font.language() == inherit_language) ||
@@ -623,17 +654,6 @@ void LyXText::draw(BufferView * bview, Row const * row,
 		lyxerr << "No this shouldn't happen!\n";
 #endif
 #endif
-	if (lyxrc.mark_foreign_language &&
-	    font.language() != latex_language &&
-	    font.language() != bview->buffer()->params.language) {
-		int const y = offset + row->height() - 1;
-		pain.line(int(tmpx), y, int(x), y,
-			  LColor::language);
-	}
-
-	// If we want ulem.sty support, drawing
-	// routines should go here. (Asger)
-	// Why shouldn't LyXFont::drawText handle it internally?
 }
 
 
@@ -1156,8 +1176,16 @@ bool LyXText::hfillExpansion(Buffer const * buf, Row const * row_ptr,
 		return false;
 	
 	// at the end of a row it does not count
-	if (pos >= rowLast(row_ptr))
-		return false;
+	// unless another hfill exists on the line
+	if (pos >= rowLast(row_ptr)) {
+		pos_type i = row_ptr->pos();
+		while (i < pos && !row_ptr->par()->isHfill(i)) {
+			++i;
+		}
+		if (i == pos) {
+			return false;
+		}
+	} 
 	
 	// at the beginning of a row it does not count, if it is not 
 	// the first row of a paragaph
@@ -1852,11 +1880,13 @@ void LyXText::insertChar(BufferView * bview, char c)
 	}
    
 	// the display inset stuff
-	if (cursor.row()->par()->isInset(cursor.row()->pos())
-	    && cursor.row()->par()->getInset(cursor.row()->pos())
-	    && (cursor.row()->par()->getInset(cursor.row()->pos())->display() ||
-		cursor.row()->par()->getInset(cursor.row()->pos())->needFullRow()))
-		cursor.row()->fill(-1); // to force a new break  
+	if (cursor.row()->par()->isInset(cursor.row()->pos())) {
+		Inset * inset = cursor.row()->par()->getInset(cursor.row()->pos());
+		if (inset && (inset->display() || inset->needFullRow())) { 
+			// force a new break
+			cursor.row()->fill(-1); // to force a new break  
+		}
+	}
 
 	// get the cursor row fist
 	Row * row = cursor.row();
@@ -3557,7 +3587,7 @@ void LyXText::paintRowText(DrawRowParams & p)
 				p.x += p.separator;
 			++vpos;
 		} else {
-			draw(p.bv, p.row, vpos, p.yo, p.x, p.cleared);
+			draw(p, vpos);
 		}
 	}
 }

@@ -156,7 +156,7 @@ lyx_SOURCES = \
 	lyxgluelength.C \
 	lyxgluelength.h \
 	lyxlength.C \
-	lexlength.h \
+	lyxlength.h \
 	lyxlex.C \
 	lyxlex.h \
 	lyxlex_pimpl.C \
