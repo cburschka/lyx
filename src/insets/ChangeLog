@@ -1,5 +1,8 @@
 2001-12-20  Juergen Vigna  <jug@sad.it>
 
+	* inset.C (cursor): return the owners cursor if available instead of
+	always only the bv->text->cursor.
+
 	* insettabular.C (checkLongtableSpecial): works now.
 
 2001-12-19  Juergen Vigna  <jug@sad.it>

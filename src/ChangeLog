@@ -1,3 +1,8 @@
+2001-12-20  Juergen Vigna  <jug@sad.it>
+
+	* undo_funcs.C (textHandleUndo): fixed crash when undo_cursor not
+	inside inset but undo_par was.
+
 2001-12-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* Thesaurus.C: always include <config.h> in sources.
@@ -35,7 +40,6 @@
 	* tabular_funcs.[hC]: added and moved here all not classfunctions
 	of LyXTabular.
 
->>>>>>> 1.472
 2001-12-19  Juergen Vigna  <jug@sad.it>
 
 	* tabular.[Ch]: better support for longtabular options (not finished

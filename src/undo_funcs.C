@@ -228,9 +228,15 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 									 bv->text->cursor.par());
 			if (tmppar){
 				it = static_cast<UpdatableInset*>(tmppar->inInset());
-				it->edit(bv);
-				it->getLyXText(bv)->setCursorIntern(bv, tmppar, undo->cursor_pos);
-				it->getLyXText(bv)->updateCounters(bv, it->getLyXText(bv)->cursor.row());
+				LyXText * t;
+				if (it) {
+					it->edit(bv);
+					t = it->getLyXText(bv);
+				} else {
+					t = bv->text;
+				}
+				t->setCursorIntern(bv, tmppar, undo->cursor_pos);
+				t->updateCounters(bv, t->cursor.row());
 			}
 			bv->text->setCursorIntern(bv, bv->text->cursor.par(),
 									  bv->text->cursor.pos());

@@ -347,6 +347,8 @@ int UpdatableInset::getMaxWidth(BufferView * bv, UpdatableInset const *) const
 
 LyXCursor const & Inset::cursor(BufferView * bv) const
 {
+	if (owner())
+		return owner()->getLyXText(bv, false)->cursor;
 	return bv->text->cursor;
 }
 
