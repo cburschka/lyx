@@ -27,6 +27,7 @@
 #include "gettext.h"
 #include "language.h"
 #include "latexrunparams.h"
+#include "lyxfont.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
 #include "texrow.h"
