@@ -49,7 +49,6 @@ struct FD_form_paragraph_extra {
 	FL_OBJECT *radio_pextra_top;
 	FL_OBJECT *radio_pextra_middle;
 	FL_OBJECT *radio_pextra_bottom;
-	FL_OBJECT *text_warning;
 	FL_OBJECT *radio_pextra_hfill;
 	FL_OBJECT *radio_pextra_startmp;
 	FL_OBJECT *group_extraopt;
@@ -66,6 +65,7 @@ struct FD_form_tabbed_paragraph {
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_restore;
+	FL_OBJECT *text_warning;
 };
 
 #endif /* FD_form_paragraph_general_h_ */

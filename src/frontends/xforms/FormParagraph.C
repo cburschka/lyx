@@ -120,13 +120,6 @@ void FormParagraph::build()
     bc_->addReadOnly (extra_->radio_pextra_indent);
     bc_->addReadOnly (extra_->radio_pextra_minipage);
     bc_->addReadOnly (extra_->radio_pextra_floatflt);
-    bc_->addReadOnly (extra_->input_pextra_width);
-    bc_->addReadOnly (extra_->input_pextra_widthp);
-    bc_->addReadOnly (extra_->radio_pextra_top);
-    bc_->addReadOnly (extra_->radio_pextra_middle);
-    bc_->addReadOnly (extra_->radio_pextra_bottom);
-    bc_->addReadOnly (extra_->radio_pextra_hfill);
-    bc_->addReadOnly (extra_->radio_pextra_startmp);
 
     // now make them fit together
     fl_set_form_atclose(dialog_->form, C_FormParagraphWMHideCB, 0);
@@ -514,41 +507,56 @@ void FormParagraph::extra_update()
 		  par->pextra_hfill);
     fl_set_button(extra_->radio_pextra_startmp,
 		  par->pextra_start_minipage);
-//    CheckInputWidth();
     if (par->pextra_type == LyXParagraph::PEXTRA_INDENT) {
 	fl_set_button(extra_->radio_pextra_indent, 1);
 	fl_set_button(extra_->radio_pextra_minipage, 0);
 	fl_set_button(extra_->radio_pextra_floatflt, 0);
 	fl_deactivate_object(extra_->radio_pextra_top);
+	fl_set_object_lcol(extra_->radio_pextra_top, FL_INACTIVE);
 	fl_deactivate_object(extra_->radio_pextra_middle);
+	fl_set_object_lcol(extra_->radio_pextra_middle, FL_INACTIVE);
 	fl_deactivate_object(extra_->radio_pextra_bottom);
+	fl_set_object_lcol(extra_->radio_pextra_bottom, FL_INACTIVE);
+	CheckParagraphInput(extra_->radio_pextra_indent, 0);
     } else if (par->pextra_type == LyXParagraph::PEXTRA_MINIPAGE) {
 	fl_set_button(extra_->radio_pextra_indent, 0);
 	fl_set_button(extra_->radio_pextra_minipage, 1);
 	fl_set_button(extra_->radio_pextra_floatflt, 0);
 	fl_activate_object(extra_->radio_pextra_top);
+	fl_set_object_lcol(extra_->radio_pextra_top, FL_BLACK);
 	fl_activate_object(extra_->radio_pextra_middle);
+	fl_set_object_lcol(extra_->radio_pextra_middle, FL_BLACK);
 	fl_activate_object(extra_->radio_pextra_bottom);
+	fl_set_object_lcol(extra_->radio_pextra_bottom, FL_BLACK);
+	CheckParagraphInput(extra_->radio_pextra_minipage, 0);
     } else if (par->pextra_type == LyXParagraph::PEXTRA_FLOATFLT) {
 	fl_set_button(extra_->radio_pextra_indent, 0);
 	fl_set_button(extra_->radio_pextra_minipage, 0);
 	fl_set_button(extra_->radio_pextra_floatflt, 1);
 	fl_deactivate_object(extra_->radio_pextra_top);
+	fl_set_object_lcol(extra_->radio_pextra_top, FL_INACTIVE);
 	fl_deactivate_object(extra_->radio_pextra_middle);
+	fl_set_object_lcol(extra_->radio_pextra_middle, FL_INACTIVE);
 	fl_deactivate_object(extra_->radio_pextra_bottom);
+	fl_set_object_lcol(extra_->radio_pextra_bottom, FL_INACTIVE);
+	CheckParagraphInput(extra_->radio_pextra_floatflt, 0);
     } else {
 	fl_set_button(extra_->radio_pextra_indent, 0);
 	fl_set_button(extra_->radio_pextra_minipage, 0);
+	fl_set_button(extra_->radio_pextra_floatflt, 0);
 	fl_deactivate_object(extra_->input_pextra_width);
+	fl_set_object_lcol(extra_->input_pextra_width, FL_INACTIVE);
 	fl_deactivate_object(extra_->input_pextra_widthp);
+	fl_set_object_lcol(extra_->input_pextra_widthp, FL_INACTIVE);
 	fl_deactivate_object(extra_->radio_pextra_top);
+	fl_set_object_lcol(extra_->radio_pextra_top, FL_INACTIVE);
 	fl_deactivate_object(extra_->radio_pextra_middle);
+	fl_set_object_lcol(extra_->radio_pextra_middle, FL_INACTIVE);
 	fl_deactivate_object(extra_->radio_pextra_bottom);
+	fl_set_object_lcol(extra_->radio_pextra_bottom, FL_INACTIVE);
+	CheckParagraphInput(0, 0);
     }
-//    if (par->pextra_type == LyXParagraph::PEXTRA_NONE)
-//	ActivateParagraphExtraButtons();
-    
-    fl_hide_object(extra_->text_warning);
+    fl_hide_object(dialog_->text_warning);
 }
 
 
@@ -636,10 +644,12 @@ bool FormParagraph::CheckParagraphInput(FL_OBJECT * ob, long)
 {
     bool ret = true;
 
-    fl_hide_object(extra_->text_warning);
+    fl_hide_object(dialog_->text_warning);
 
+    // First check the buttons which are exclusive and you have to
+    // check only the actuall de/activated button.
     //
-    // first the general form
+    // general form first
     //
     // "Synchronize" the choices and input fields, making it
     // impossible to commit senseless data.
@@ -650,7 +660,99 @@ bool FormParagraph::CheckParagraphInput(FL_OBJECT * ob, long)
 	if (fl_get_choice (general_->choice_space_below) != 7)
 	    fl_set_input (general_->input_space_below, "");
     }
+    //
+    // then the extra form
+    //
+    else if (ob == extra_->radio_pextra_indent) {
+	int n = fl_get_button(extra_->radio_pextra_indent);
+	if (n) {
+	    fl_set_button(extra_->radio_pextra_minipage, 0);
+	    fl_set_button(extra_->radio_pextra_floatflt, 0);
+	    fl_activate_object(extra_->input_pextra_width);
+	    fl_set_object_lcol(extra_->input_pextra_width, FL_BLACK);
+	    fl_activate_object(extra_->input_pextra_widthp);
+	    fl_set_object_lcol(extra_->input_pextra_widthp, FL_BLACK);
+	} else {
+	    fl_deactivate_object(extra_->input_pextra_width);
+	    fl_set_object_lcol(extra_->input_pextra_width, FL_INACTIVE);
+	    fl_deactivate_object(extra_->input_pextra_widthp);
+	    fl_set_object_lcol(extra_->input_pextra_widthp, FL_INACTIVE);
+	}
+	fl_deactivate_object(extra_->radio_pextra_top);
+	fl_set_object_lcol(extra_->radio_pextra_top, FL_INACTIVE);
+	fl_deactivate_object(extra_->radio_pextra_middle);
+	fl_set_object_lcol(extra_->radio_pextra_middle, FL_INACTIVE);
+	fl_deactivate_object(extra_->radio_pextra_bottom);
+	fl_set_object_lcol(extra_->radio_pextra_bottom, FL_INACTIVE);
+	fl_activate_object(extra_->radio_pextra_hfill);
+	fl_set_object_lcol(extra_->radio_pextra_hfill, FL_INACTIVE);
+	fl_activate_object(extra_->radio_pextra_startmp);
+	fl_set_object_lcol(extra_->radio_pextra_startmp, FL_INACTIVE);
+    } else if (ob == extra_->radio_pextra_minipage) {
+	int n = fl_get_button(extra_->radio_pextra_minipage);
+	if (n) {
+	    fl_set_button(extra_->radio_pextra_indent, 0);
+	    fl_set_button(extra_->radio_pextra_floatflt, 0);
+	    fl_activate_object(extra_->input_pextra_width);
+	    fl_set_object_lcol(extra_->input_pextra_width, FL_BLACK);
+	    fl_activate_object(extra_->input_pextra_widthp);
+	    fl_set_object_lcol(extra_->input_pextra_widthp, FL_BLACK);
+	    fl_activate_object(extra_->radio_pextra_top);
+	    fl_set_object_lcol(extra_->radio_pextra_top, FL_BLACK);
+	    fl_activate_object(extra_->radio_pextra_middle);
+	    fl_set_object_lcol(extra_->radio_pextra_middle, FL_BLACK);
+	    fl_activate_object(extra_->radio_pextra_bottom);
+	    fl_set_object_lcol(extra_->radio_pextra_bottom, FL_BLACK);
+	    fl_activate_object(extra_->radio_pextra_hfill);
+	    fl_set_object_lcol(extra_->radio_pextra_hfill, FL_BLACK);
+	    fl_activate_object(extra_->radio_pextra_startmp);
+	    fl_set_object_lcol(extra_->radio_pextra_startmp, FL_BLACK);
+	} else {
+	    fl_deactivate_object(extra_->input_pextra_width);
+	    fl_set_object_lcol(extra_->input_pextra_width, FL_INACTIVE);
+	    fl_deactivate_object(extra_->input_pextra_widthp);
+	    fl_set_object_lcol(extra_->input_pextra_widthp, FL_INACTIVE);
+	    fl_deactivate_object(extra_->radio_pextra_top);
+	    fl_set_object_lcol(extra_->radio_pextra_top, FL_INACTIVE);
+	    fl_deactivate_object(extra_->radio_pextra_middle);
+	    fl_set_object_lcol(extra_->radio_pextra_middle, FL_INACTIVE);
+	    fl_deactivate_object(extra_->radio_pextra_bottom);
+	    fl_set_object_lcol(extra_->radio_pextra_bottom, FL_INACTIVE);
+	    fl_activate_object(extra_->radio_pextra_hfill);
+	    fl_set_object_lcol(extra_->radio_pextra_hfill, FL_INACTIVE);
+	    fl_activate_object(extra_->radio_pextra_startmp);
+	    fl_set_object_lcol(extra_->radio_pextra_startmp, FL_INACTIVE);
+	}
+    } else if (ob == extra_->radio_pextra_floatflt) {
+	int n = fl_get_button(extra_->radio_pextra_floatflt);
+	if (n) {
+	    fl_set_button(extra_->radio_pextra_indent, 0);
+	    fl_set_button(extra_->radio_pextra_minipage, 0);
+	    fl_activate_object(extra_->input_pextra_width);
+	    fl_set_object_lcol(extra_->input_pextra_width, FL_BLACK);
+	    fl_activate_object(extra_->input_pextra_widthp);
+	    fl_set_object_lcol(extra_->input_pextra_widthp, FL_BLACK);
+	} else {
+	    fl_deactivate_object(extra_->input_pextra_width);
+	    fl_set_object_lcol(extra_->input_pextra_width, FL_INACTIVE);
+	    fl_deactivate_object(extra_->input_pextra_widthp);
+	    fl_set_object_lcol(extra_->input_pextra_widthp, FL_INACTIVE);
+	}
+	fl_deactivate_object(extra_->radio_pextra_top);
+	fl_set_object_lcol(extra_->radio_pextra_top, FL_INACTIVE);
+	fl_deactivate_object(extra_->radio_pextra_middle);
+	fl_set_object_lcol(extra_->radio_pextra_middle, FL_INACTIVE);
+	fl_deactivate_object(extra_->radio_pextra_bottom);
+	fl_set_object_lcol(extra_->radio_pextra_bottom, FL_INACTIVE);
+	fl_activate_object(extra_->radio_pextra_hfill);
+	fl_set_object_lcol(extra_->radio_pextra_hfill, FL_INACTIVE);
+	fl_activate_object(extra_->radio_pextra_startmp);
+	fl_set_object_lcol(extra_->radio_pextra_startmp, FL_INACTIVE);
+    }
     
+    //
+    // first the general form
+    //
     string input = fl_get_input (general_->input_space_above);
 	
     if (input.empty()) {
@@ -659,6 +761,9 @@ bool FormParagraph::CheckParagraphInput(FL_OBJECT * ob, long)
 	fl_set_choice (general_->choice_space_above, 7);
     } else {
 	fl_set_choice (general_->choice_space_above, 7);
+	fl_set_object_label(dialog_->text_warning,
+		    _("Warning: Invalid Length (valid example: 10mm)"));
+	fl_show_object(dialog_->text_warning);
 	ret = false;
     }
     
@@ -666,40 +771,57 @@ bool FormParagraph::CheckParagraphInput(FL_OBJECT * ob, long)
 	
     if (input.empty()) {
 	fl_set_choice (general_->choice_space_below, 1);
-    } else if (isValidGlueLength (input)) {
+    } else if (isValidGlueLength(input)) {
 	fl_set_choice (general_->choice_space_below, 7);
     } else {
 	fl_set_choice (general_->choice_space_below, 7);
+	fl_set_object_label(dialog_->text_warning,
+		    _("Warning: Invalid Length (valid example: 10mm)"));
+	fl_show_object(dialog_->text_warning);
 	ret = false;
     }
     //
     // then the extra form
     //
+    int n = fl_get_button(extra_->radio_pextra_indent) +
+	fl_get_button(extra_->radio_pextra_minipage) +
+	fl_get_button(extra_->radio_pextra_floatflt);
     string s1 = fl_get_input(extra_->input_pextra_width);
     string s2 = fl_get_input(extra_->input_pextra_widthp);
-    if (s1.empty() && s2.empty()) {
-	fl_activate_object(extra_->input_pextra_width);
-	fl_activate_object(extra_->input_pextra_widthp);
-	fl_hide_object(extra_->text_warning);
-	ret = false;
-    }
-    if (!s1.empty()) { // LyXLength parameter
-	fl_activate_object(extra_->input_pextra_width);
+    if (!n) { // no button pressed both should be deactivated now
+	fl_deactivate_object(extra_->input_pextra_width);
+	fl_set_object_lcol(extra_->input_pextra_width, FL_INACTIVE);
 	fl_deactivate_object(extra_->input_pextra_widthp);
+	fl_set_object_lcol(extra_->input_pextra_widthp, FL_INACTIVE);
+	fl_hide_object(dialog_->text_warning);
+    } else if (s1.empty() && s2.empty()) {
+	fl_activate_object(extra_->input_pextra_width);
+	fl_set_object_lcol(extra_->input_pextra_width, FL_BLACK);
+	fl_activate_object(extra_->input_pextra_widthp);
+	fl_set_object_lcol(extra_->input_pextra_widthp, FL_BLACK);
+	fl_hide_object(dialog_->text_warning);
+	ret = false;
+    } else if (!s1.empty()) { // LyXLength parameter
+	fl_activate_object(extra_->input_pextra_width);
+	fl_set_object_lcol(extra_->input_pextra_width, FL_BLACK);
+	fl_deactivate_object(extra_->input_pextra_widthp);
+	fl_set_object_lcol(extra_->input_pextra_widthp, FL_INACTIVE);
 	if (!isValidLength(s1)) {
-	    fl_set_object_label(extra_->text_warning,
-				_("Warning: Invalid Length (valid example: 10mm)"));
-	    fl_show_object(extra_->text_warning);
+	    fl_set_object_label(dialog_->text_warning,
+			_("Warning: Invalid Length (valid example: 10mm)"));
+	    fl_show_object(dialog_->text_warning);
 	    ret = false;
 	}
     } else { // !s2.empty() % parameter
 	fl_deactivate_object(extra_->input_pextra_width);
+	fl_set_object_lcol(extra_->input_pextra_width, FL_INACTIVE);
 	fl_activate_object(extra_->input_pextra_widthp);
+	fl_set_object_lcol(extra_->input_pextra_widthp, FL_BLACK);
 	if ((atoi(s2.c_str()) < 0 ) || (atoi(s2.c_str()) > 100)) {
 	    ret = false;
-	    fl_set_object_label(extra_->text_warning,
-				_("Warning: Invalid percent value (0-100)"));
-	    fl_show_object(extra_->text_warning);
+	    fl_set_object_label(dialog_->text_warning,
+			_("Warning: Invalid percent value (0-100)"));
+	    fl_show_object(dialog_->text_warning);
 	}
     }
     return ret;

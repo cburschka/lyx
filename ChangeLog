@@ -1,3 +1,10 @@
+2000-09-26  Juergen Vigna  <jug@sad.it>
+
+	* src/frontends/xforms/FormParagraph.C: fixed de/activation of fields,
+	better visibility and error-message on wrong VSpace input.
+
+	* src/language.C (initL): added english again.
+
 2000-09-25  Juergen Vigna  <jug@sad.it>
 
 	* src/frontends/kde/Dialogs.C (Dialogs): 

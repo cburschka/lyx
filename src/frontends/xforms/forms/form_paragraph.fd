@@ -9,14 +9,14 @@ Unit of measure: FL_COORD_PIXEL
 =============== FORM ===============
 Name: form_paragraph_general
 Width: 490
-Height: 260
+Height: 250
 Number of Objects: 29
 
 --------------------
 class: FL_BOX
-type: UP_BOX
-box: 0 0 490 260
-boxtype: FL_UP_BOX
+type: FLAT_BOX
+box: 0 0 490 250
+boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
@@ -136,7 +136,7 @@ resize: FL_RESIZE_X
 gravity: FL_West FL_East
 name: input_labelwidth
 callback: C_FormParagraphInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_TEXT
@@ -172,7 +172,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_lines_top
 callback: C_FormParagraphInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -190,7 +190,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_lines_bottom
 callback: C_FormParagraphInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -208,7 +208,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_pagebreaks_top
 callback: C_FormParagraphInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -226,7 +226,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_pagebreaks_bottom
 callback: C_FormParagraphInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -244,7 +244,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_noindent
 callback: C_FormParagraphInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_BEGIN_GROUP
@@ -280,7 +280,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_right
 callback: C_FormParagraphInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -298,7 +298,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_left
 callback: C_FormParagraphInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -316,7 +316,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_block
 callback: C_FormParagraphInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -334,7 +334,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_align_center
 callback: C_FormParagraphInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_END_GROUP
@@ -514,7 +514,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_space_above
 callback: C_FormParagraphInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -532,19 +532,19 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_space_below
 callback: C_FormParagraphInputCB
-argument: 
+argument: 0
 
 =============== FORM ===============
 Name: form_paragraph_extra
 Width: 490
-Height: 260
-Number of Objects: 22
+Height: 250
+Number of Objects: 21
 
 --------------------
 class: FL_BOX
-type: UP_BOX
-box: 0 0 490 260
-boxtype: FL_UP_BOX
+type: FLAT_BOX
+box: 0 0 490 250
+boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
@@ -793,24 +793,6 @@ callback:
 argument: 
 
 --------------------
-class: FL_TEXT
-type: NORMAL_TEXT
-box: 10 190 470 30
-boxtype: FL_FLAT_BOX
-colors: FL_COL1 FL_MCOL
-alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
-style: FL_BOLD_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: 
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: text_warning
-callback: 
-argument: 
-
---------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
 box: 10 130 300 30
@@ -826,7 +808,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_pextra_hfill
 callback: C_FormParagraphInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_CHECKBUTTON
@@ -844,7 +826,7 @@ resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: radio_pextra_startmp
 callback: C_FormParagraphInputCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_BEGIN_GROUP
@@ -939,13 +921,13 @@ argument:
 =============== FORM ===============
 Name: form_tabbed_paragraph
 Width: 510
-Height: 340
-Number of Objects: 6
+Height: 350
+Number of Objects: 7
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 510 340
+box: 0 0 510 350
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -963,7 +945,7 @@ argument:
 --------------------
 class: FL_TABFOLDER
 type: TOP_TABFOLDER
-box: 10 10 490 280
+box: 10 10 490 270
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -981,7 +963,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 400 300 100 30
+box: 400 310 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -999,7 +981,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 290 300 100 30
+box: 290 310 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1017,7 +999,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 180 300 100 30
+box: 180 310 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1035,7 +1017,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 10 300 100 30
+box: 10 310 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1049,6 +1031,24 @@ gravity: FL_NoGravity FL_NoGravity
 name: button_restore
 callback: C_FormParagraphRestoreCB
 argument: 0
+
+--------------------
+class: FL_TEXT
+type: NORMAL_TEXT
+box: 10 280 490 30
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
+style: FL_BOLD_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: text_warning
+callback: 
+argument: 
 
 ==============================
 create_the_forms

@@ -9,6 +9,7 @@ INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
 BUILTSOURCES =	formcopyrightdialog_moc.C \
 		formurldialog_moc.C \
 		formindexdialog_moc.C \
+		formindexdialogdata_moc.C \
 		formcitationdialog_moc.C \
 		formtocdialog_moc.C \
 		formrefdialog_moc.C

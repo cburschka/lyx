@@ -22,9 +22,9 @@ FD_form_paragraph_general * FormParagraph::build_paragraph_general()
   FL_OBJECT *obj;
   FD_form_paragraph_general *fdui = new FD_form_paragraph_general;
 
-  fdui->form = fl_bgn_form(FL_NO_BOX, 490, 260);
+  fdui->form = fl_bgn_form(FL_NO_BOX, 490, 250);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 490, 260, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 490, 250, "");
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 360, 110, 120, 50, "");
     fl_set_object_color(obj, FL_COL1, FL_COL1);
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 10, 110, 340, 90, "");
@@ -146,9 +146,9 @@ FD_form_paragraph_extra * FormParagraph::build_paragraph_extra()
   FL_OBJECT *obj;
   FD_form_paragraph_extra *fdui = new FD_form_paragraph_extra;
 
-  fdui->form = fl_bgn_form(FL_NO_BOX, 490, 260);
+  fdui->form = fl_bgn_form(FL_NO_BOX, 490, 250);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 490, 260, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 490, 250, "");
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 10, 20, 170, 100, "");
     fl_set_object_color(obj, FL_COL1, FL_COL1);
   obj = fl_add_frame(FL_ENGRAVED_FRAME, 350, 20, 100, 100, "");
@@ -191,10 +191,6 @@ FD_form_paragraph_extra * FormParagraph::build_paragraph_extra()
     fl_set_object_callback(obj, C_FormParagraphInputCB, 0);
   fl_end_group();
 
-  fdui->text_warning = obj = fl_add_text(FL_NORMAL_TEXT, 10, 190, 470, 30, "");
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-    fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   fdui->radio_pextra_hfill = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 10, 130, 300, 30, idex(_("HFill between Minipage paragraphs|#H")));
     fl_set_button_shortcut(obj, scex(_("HFill between Minipage paragraphs|#H")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -239,26 +235,30 @@ FD_form_tabbed_paragraph * FormParagraph::build_tabbed_paragraph()
   FL_OBJECT *obj;
   FD_form_tabbed_paragraph *fdui = new FD_form_tabbed_paragraph;
 
-  fdui->form = fl_bgn_form(FL_NO_BOX, 510, 340);
+  fdui->form = fl_bgn_form(FL_NO_BOX, 510, 350);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 510, 340, "");
-  fdui->tabbed_folder = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 10, 10, 490, 280, _("Tabbed folder"));
+  obj = fl_add_box(FL_UP_BOX, 0, 0, 510, 350, "");
+  fdui->tabbed_folder = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 10, 10, 490, 270, _("Tabbed folder"));
     fl_set_object_resize(obj, FL_RESIZE_ALL);
-  fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 400, 300, 100, 30, idex(_("Cancel|^[")));
+  fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 400, 310, 100, 30, idex(_("Cancel|^[")));
     fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormParagraphCancelCB, 0);
-  fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 290, 300, 100, 30, idex(_("Apply|#A")));
+  fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 290, 310, 100, 30, idex(_("Apply|#A")));
     fl_set_button_shortcut(obj, scex(_("Apply|#A")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormParagraphApplyCB, 0);
-  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 180, 300, 100, 30, _("OK"));
+  fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 180, 310, 100, 30, _("OK"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormParagraphOKCB, 0);
-  fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 300, 100, 30, idex(_("Restore|#R")));
+  fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 310, 100, 30, idex(_("Restore|#R")));
     fl_set_button_shortcut(obj, scex(_("Restore|#R")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormParagraphRestoreCB, 0);
+  fdui->text_warning = obj = fl_add_text(FL_NORMAL_TEXT, 10, 280, 490, 30, "");
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
+    fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   fl_end_form();
 
   fdui->form->fdui = fdui;

@@ -69,7 +69,7 @@ void LangInit::initL()
 	{ "danish", N_("Danish"), false, &iso8859_1, "da_DK" },
 	{ "default", N_("Document wide language"), false, &iso8859_1, "" },
 	{ "dutch", N_("Dutch"), false, &iso8859_1, "nl" },
-	// changed from en_EN (Garst)
+	{ "english", N_("English"), false, &iso8859_1, "en" },
 	{ "esperanto", N_("Esperanto"), false, &iso8859_3, "eo" },
 	// and what country code should esperanto have?? (Garst)
 	{ "estonian", N_("Estonian"), false, &iso8859_4, "et_EE" },
