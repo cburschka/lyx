@@ -335,7 +335,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 {
 	static int x_old = -1;
 	static int y_old = -1;
-	static long scrollbar_value_old = -1;
+	static double scrollbar_value_old = -1;
 
 	XEvent * ev = static_cast<XEvent*>(xev);
 	WorkArea * area = static_cast<WorkArea*>(ob->u_vdata);
@@ -378,6 +378,9 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		    ev->xmotion.y != y_old ||
 		    fl_get_scrollbar_value(area->scrollbar) != scrollbar_value_old
 			) {
+			x_old = ev->xmotion.x;
+			y_old = ev->xmotion.y;
+			scrollbar_value_old = fl_get_scrollbar_value(area->scrollbar);
 			lyxerr[Debug::WORKAREA] << "Workarea event: MOUSE" << endl;
 			area->workAreaMotionNotify(ev->xmotion.x - ob->x,
 					     ev->xmotion.y - ob->y,
