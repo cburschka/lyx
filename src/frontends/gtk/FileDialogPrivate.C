@@ -40,8 +40,8 @@ FileDialog::Private::open(string const & path,
 			  string const & suggested)
 {
 	fileChooser_.set_action(Gtk::FILE_CHOOSER_ACTION_OPEN);
-  fileChooser_.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
-  fileChooser_.add_button(Gtk::Stock::OPEN, Gtk::RESPONSE_OK);
+	fileChooser_.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
+	fileChooser_.add_button(Gtk::Stock::OPEN, Gtk::RESPONSE_OK);
 
 	return showChooser(path, filters, suggested);
 }
@@ -51,8 +51,8 @@ FileDialog::Result const FileDialog::Private::opendir(string const & path,
 						      string const & suggested)
 {
 	fileChooser_.set_action(Gtk::FILE_CHOOSER_ACTION_SELECT_FOLDER);
-  fileChooser_.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
-  fileChooser_.add_button(Gtk::Stock::OPEN, Gtk::RESPONSE_OK);
+	fileChooser_.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
+	fileChooser_.add_button(Gtk::Stock::OPEN, Gtk::RESPONSE_OK);
 
 	return showChooser(path, lyx::support::FileFilterList(), suggested);
 }
@@ -63,8 +63,8 @@ FileDialog::Result const FileDialog::Private::save(string const & path,
 						   string const & suggested)
 {
 	fileChooser_.set_action(Gtk::FILE_CHOOSER_ACTION_SAVE);
-  fileChooser_.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
-  fileChooser_.add_button(Gtk::Stock::SAVE, Gtk::RESPONSE_OK);
+	fileChooser_.add_button(Gtk::Stock::CANCEL, Gtk::RESPONSE_CANCEL);
+	fileChooser_.add_button(Gtk::Stock::SAVE, Gtk::RESPONSE_OK);
 
 	return showChooser(path, filters, suggested);
 }
