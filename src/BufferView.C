@@ -328,7 +328,6 @@ bool BufferView::insertLyXFile(string const & filen)
 #else
 		string text = _("Could not open the specified document\n");
 		text += file + ".";
-		text += error;
 #endif
 		Alert::error(_("Could not open file"), text);
 		return false;
