@@ -144,7 +144,8 @@ enum {
 	FLAG_EQUATION   = 1 << 9,  //  next \] leaves the loop
 	FLAG_SIMPLE2    = 1 << 10, //  next \) leaves the loop
 	FLAG_OPTION     = 1 << 11, //  read [...] style option
-	FLAG_BRACED     = 1 << 12  //  read {...} style argument
+	FLAG_BRACED     = 1 << 12, //  read {...} style argument
+	FLAG_SKIPSPACE  = 1 << 13  //  skip spaces
 };
 
 
@@ -584,9 +585,17 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		lyxerr << endl;
 #endif
 
+		if (flags & FLAG_SKIPSPACE) {
+			if (t.cat() == catSpace || t.cat() == catNewline) 
+				continue;
+			pop_back();
+			return;
+		}
+
+
 		if (flags & FLAG_ITEM) {
 
-		if (t.cat() == catBegin) {
+			if (t.cat() == catBegin) {
 				// skip the brace and collect everything to the next matching
 				// closing brace
 				parse1(grid, FLAG_BRACE_LAST, mode, numbered);
@@ -1203,8 +1212,10 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 				//	start = 1;
 				//	at.nucleus()->cell(0) = opt;
 				//}
-				for (MathInset::idx_type i = start; i < at->nargs(); ++i)
+				for (MathInset::idx_type i = start; i < at->nargs(); ++i) {
 					parse(at.nucleus()->cell(i), FLAG_ITEM, m);
+					parse1(grid, FLAG_SKIPSPACE, mode, numbered);
+				}
 				cell->push_back(at);
 			}
 		}

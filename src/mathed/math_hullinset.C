@@ -1013,8 +1013,20 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 		istringstream is(cmd.argument);
 		string s;
 		is >> s;
-		if ((s == "append-column" || s == "delete-column")
-        && (type_ == "eqnarray" || type_ == "simple"))
+		if ((type_ == "simple" || type_ == "equation")
+        && (s == "append-column"
+         || s == "delete-column"
+         || s == "swap-column"
+         || s == "copy-column"
+         || s == "delete-column"
+         || s == "append-row"
+         || s == "delete-row"
+         || s == "swap-row"
+         || s == "copy-row"))
+			return false;
+		if ((type_ == "eqnarray")
+        && (s == "appen-column"
+         || s == "delete-column"))
 			return false;
 		return MathGridInset::getStatus(cur, cmd, flag);
 	}
