@@ -30,7 +30,9 @@ What's new
 
 - new classes mwart, mwbk and mwrep (adaptation of the base classes to
   polish conventions); new class elsart (for journals published by
-  Elsevier); updated classes koma-script (in particular new class scrlttr2)
+  Elsevier); updated classes koma-script (in particular new class
+  scrlttr2); re-introduce class ijmpd (which was in 1.2.x) and unbreak
+  class kluwer.
 
 - new "polski" keymap, useful for entering Polish on a QWERTY keyboard
 

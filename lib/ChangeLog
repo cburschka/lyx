@@ -1,3 +1,11 @@
+2003-03-03  PAP  <papasot@pythagoras.physics.upatras.gr>
+
+	* layouts/kluwer.layout: update for 1.3.x compatibility
+
+	* layouts/ijmpd.layout: re-add, since it only made it to 1.2.x.
+
+	* doc/LaTeXConfig.lyx.in: add ijmpd
+
 2003-02-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* layouts/llncs.layout: do not forget to define floats too
