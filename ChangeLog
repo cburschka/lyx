@@ -1,3 +1,8 @@
+2002-07-01  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* configure.in (VERSION_INFO): use $host instead of $host_alias
+	for the host type.
+
 2002-06-17  Angus Leeming  <leeming@lyx.org>
 
 	* INSTALL: how to compile with Compaq cxx on Tru64 Unix.

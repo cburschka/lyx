@@ -297,7 +297,7 @@ real_bindir=`eval "echo \`eval \"echo ${bindir}\"\`"`
 real_datadir=`eval "echo \`eval \"echo ${datadir}/${PACKAGE}\"\`"`
 VERSION_INFO=`cat <<EOF
 Configuration\n\
-  Host type:                      ${host_alias}\n\
+  Host type:                      ${host}\n\
   Special build flags:           ${lyx_flags}\n\
   C   Compiler:                   ${CC}\n\
   C   Compiler flags:             ${CFLAGS}\n\
