@@ -35,10 +35,12 @@ and let the computer take care of the rest.
 
 %build
 unset LINGUAS || true
+ISTRING=--with-included-string
+if gcc -v 2>&1 | grep -e "version 3.\(1\|2\)"; then ISTRING=; fi
 CXXFLAGS="$RPM_OPT_FLAGS" CFLAGS="$RPM_OPT_FLAGS" \
 ./configure --prefix=%{_prefix} --mandir=%{_mandir} \
 	--bindir=%{_bindir} --datadir=%{_datadir} \
-	--without-warnings --with-included-string
+	--without-warnings $ISTRING
 make
 
 %install
