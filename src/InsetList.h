@@ -67,8 +67,6 @@ public:
 	void increasePosAfterPos(lyx::pos_type pos);
 	///
 	void decreasePosAfterPos(lyx::pos_type pos);
-	///
-	void insetsOpenCloseBranch(Buffer const & buf);
 
 private:
 	///

@@ -1,5 +1,27 @@
 2004-03-30  Angus Leeming  <leeming@lyx.org>
 
+	* lfuns.h:
+	* LyXAction.C (init): new lfuns, LFUN_KEYMAP_TOGGLE,
+	LFUN_NEXT_INSET_TOGGLE, LFUN_ALL_INSETS_TOGGLE.
+
+	* lyxfunc.C (dispatch): LFUN_ALL_INSETS_TOGGLE is used to toggle the
+	open/closed state of ollapsable insets. Usage:
+
+	all-inset-toggle <state> <name>, where
+	<state> == "open" || "closed" || "toggle" and
+	<name> is an identifier for a 'type' of inset. Eg "branch", "ert",...
+
+	* lyxtext.h, text2.C (toggleInset): removed.
+
+	* text3.C (dispatch): split the existing LFUN_INSET_TOGGLE in two,
+	LFUN_KEYMAP_TOGGLE and LFUN_NEXT_INSET_TOGGLE. LFUN_NEXT_INSET_TOGGLE
+	now passes LFUN_INSET_TOGGLE to the found inset.
+
+	* InsetList.[Ch] (insetsOpenCloseBranch): removed. Functionality
+	is now invoked as "all-insets-toggle toggle branch".
+
+2004-03-30  Angus Leeming  <leeming@lyx.org>
+
 	* dociterator.C:
 	* insetiterator.C:
 	* pariterator.[Ch]: added/corrected header blurb.

@@ -337,6 +337,9 @@ enum kb_action {
 	// 255
 	LFUN_EXPORT_CUSTOM,
 	LFUN_PRINT,
+	LFUN_KEYMAP_TOGGLE,
+	LFUN_NEXT_INSET_TOGGLE,
+	LFUN_ALL_INSETS_TOGGLE,
 
 	LFUN_LASTACTION                  // end of the table
 };

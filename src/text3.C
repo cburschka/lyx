@@ -787,12 +787,20 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			cur.inset().asUpdatableInset()->showInsetDialog(bv);
 		break;
 
-	case LFUN_INSET_TOGGLE:
+	case LFUN_NEXT_INSET_TOGGLE: {
+		InsetBase * inset = cur.nextInset();
+		if (inset) {
+			cur.clearSelection();
+			FuncRequest fr = cmd;
+			fr.action = LFUN_INSET_TOGGLE;
+			inset->dispatch(cur, fr);
+		}
+		break;
+	}
+
+	case LFUN_KEYMAP_TOGGLE:
 		cur.clearSelection();
-		if (!toggleInset(cur))
-			cur.undispatched();
-		else
-			bv->switchKeyMap();
+		bv->switchKeyMap();
 		break;
 
 	case LFUN_SPACE_INSERT:
@@ -1815,7 +1823,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_PARAGRAPH_SPACING:
 	case LFUN_INSET_APPLY:
 	case LFUN_INSET_INSERT:
-	case LFUN_INSET_TOGGLE:
+	case LFUN_NEXT_INSET_TOGGLE:
 	case LFUN_UPCASE_WORD:
 	case LFUN_LOWCASE_WORD:
 	case LFUN_CAPITALIZE_WORD:
@@ -1884,6 +1892,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_THESAURUS_ENTRY:
 	case LFUN_PARAGRAPH_APPLY:
 	case LFUN_ESCAPE:
+	case LFUN_KEYMAP_TOGGLE:
 		// these are handled in our dispatch()
 		enable = true;
 		break;

@@ -135,23 +135,3 @@ void InsetList::decreasePosAfterPos(pos_type pos)
 		--it->pos;
 	}
 }
-
-
-void InsetList::insetsOpenCloseBranch(Buffer const & buf)
-{
-	List::iterator it = list.begin();
-	List::iterator end = list.end();
-	for (; it != end; ++it) {
-		if (!it->inset)
-			continue;
-		if (it->inset->lyxCode() != InsetBase::BRANCH_CODE)
-			continue;
-
-		InsetBranch * inset = static_cast<InsetBranch *>(it->inset);
-		if (inset->isBranchSelected(buf.params().branchlist())) {
-			inset->open();
-		} else {
-			inset->close();
-		}
-	}
-}

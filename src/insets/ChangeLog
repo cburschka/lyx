@@ -1,3 +1,13 @@
+2004-03-30  Angus Leeming  <leeming@lyx.org>
+
+	* insetbase.[Ch] (translate): new static member function, returns
+	an InsetBase::Code corresponding to the input string.
+
+	* insetcollapsable.C (priv_dispatch): handle LFUN_INSET_TOGGLE.
+
+	* insetbranch.C(priv_dispatch): specialize LFUN_INSET_TOGGLE
+	so that it opens the inset if it refers to the currently active
+	branch.
 
 2004-03-30  Alfredo Braunstein  <abraunst@lyx.org>
 

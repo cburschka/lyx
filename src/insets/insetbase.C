@@ -25,6 +25,88 @@
 
 #include "frontends/Painter.h"
 
+#include <map>
+
+namespace {
+
+struct InsetName {
+	InsetName(std::string const & n, InsetBase::Code c)
+		: name(n), code(c) {}
+	std::string name;
+	InsetBase::Code code;
+};
+
+typedef std::map<std::string, InsetBase::Code> TranslatorMap;
+
+TranslatorMap const build_translator()
+{
+	InsetName const insetnames[] = {
+		InsetName("toc", InsetBase::TOC_CODE),
+		InsetName("quote", InsetBase::QUOTE_CODE),
+		InsetName("ref", InsetBase::REF_CODE),
+		InsetName("url", InsetBase::URL_CODE),
+		InsetName("htmlurl", InsetBase::HTMLURL_CODE),
+		InsetName("separator", InsetBase::SEPARATOR_CODE),
+		InsetName("ending", InsetBase::ENDING_CODE),
+		InsetName("label", InsetBase::LABEL_CODE),
+		InsetName("note", InsetBase::NOTE_CODE),
+		InsetName("accent", InsetBase::ACCENT_CODE),
+		InsetName("math", InsetBase::MATH_CODE),
+		InsetName("index", InsetBase::INDEX_CODE),
+		InsetName("include", InsetBase::INCLUDE_CODE),
+		InsetName("graphics", InsetBase::GRAPHICS_CODE),
+		InsetName("bibitem", InsetBase::BIBITEM_CODE),
+		InsetName("bibtex", InsetBase::BIBTEX_CODE),
+		InsetName("text", InsetBase::TEXT_CODE),
+		InsetName("ert", InsetBase::ERT_CODE),
+		InsetName("foot", InsetBase::FOOT_CODE),
+		InsetName("margin", InsetBase::MARGIN_CODE),
+		InsetName("float", InsetBase::FLOAT_CODE),
+		InsetName("wrap", InsetBase::WRAP_CODE),
+		InsetName("specialchar", InsetBase::SPECIALCHAR_CODE),
+		InsetName("tabular", InsetBase::TABULAR_CODE),
+		InsetName("external", InsetBase::EXTERNAL_CODE),
+		InsetName("caption", InsetBase::CAPTION_CODE),
+		InsetName("mathmacro", InsetBase::MATHMACRO_CODE),
+		InsetName("error", InsetBase::ERROR_CODE),
+		InsetName("cite", InsetBase::CITE_CODE),
+		InsetName("float_list", InsetBase::FLOAT_LIST_CODE),
+		InsetName("index_print", InsetBase::INDEX_PRINT_CODE),
+		InsetName("optarg", InsetBase::OPTARG_CODE),
+		InsetName("environment", InsetBase::ENVIRONMENT_CODE),
+		InsetName("hfill", InsetBase::HFILL_CODE),
+		InsetName("newline", InsetBase::NEWLINE_CODE),
+		InsetName("line", InsetBase::LINE_CODE),
+		InsetName("branch", InsetBase::BRANCH_CODE),
+		InsetName("box", InsetBase::BOX_CODE),
+		InsetName("charstyle", InsetBase::CHARSTYLE_CODE),
+		InsetName("vspace", InsetBase::VSPACE_CODE),
+		InsetName("mathgrid", InsetBase::MATHGRID_CODE),
+		InsetName("mathhull", InsetBase::MATHHULL_CODE)
+	};
+
+	std::size_t const insetnames_size =
+		sizeof(insetnames) / sizeof(insetnames[0]);
+
+	std::map<std::string, InsetBase::Code> data;
+	for (std::size_t i = 0; i != insetnames_size; ++i) {
+		InsetName const & var = insetnames[i];
+		data[var.name] = var.code;
+	}
+
+	return data;
+}
+
+} // namespace anon
+
+
+InsetBase::Code InsetBase::translate(std::string const & name)
+{
+	static TranslatorMap const translator = build_translator();
+
+	TranslatorMap::const_iterator it = translator.find(name);
+	return it == translator.end() ? NO_CODE : it->second;
+}
 
 
 void InsetBase::dispatch(LCursor & cur, FuncRequest & cmd)
@@ -229,5 +311,3 @@ bool isHighlyEditableInset(InsetBase const * inset)
 {
 	return inset && inset->editable() == InsetBase::HIGHLY_EDITABLE;
 }
-
-

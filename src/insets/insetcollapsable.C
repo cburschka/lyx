@@ -250,70 +250,73 @@ void InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	//lyxerr << "\nInsetCollapsable::priv_dispatch (begin): cmd: " << cmd
 	//	<< "  button y: " << button_dim.y2 << endl;
 	switch (cmd.action) {
-		case LFUN_MOUSE_PRESS:
-			if (status_ == Inlined)
-				InsetText::priv_dispatch(cur, cmd);
-			else if (status_ == Open && !hitButton(cmd))
-				InsetText::priv_dispatch(cur, cmd);
+	case LFUN_MOUSE_PRESS:
+		if (status_ == Inlined)
+			InsetText::priv_dispatch(cur, cmd);
+		else if (status_ == Open && !hitButton(cmd))
+			InsetText::priv_dispatch(cur, cmd);
+		break;
+
+	case LFUN_MOUSE_MOTION:
+		if (status_ == Inlined)
+			InsetText::priv_dispatch(cur, cmd);
+		else if (status_ == Open && !hitButton(cmd))
+			InsetText::priv_dispatch(cur, cmd);
+		break;
+
+	case LFUN_MOUSE_RELEASE:
+		if (cmd.button() == mouse_button::button3) {
+			showInsetDialog(&cur.bv());
+			break;
+		}
+
+		switch (status_) {
+
+		case Collapsed:
+			lyxerr << "InsetCollapsable::lfunMouseRelease 1" << endl;
+			setStatus(Open);
+			edit(cur, true);
 			break;
 
-		case LFUN_MOUSE_MOTION:
-			if (status_ == Inlined)
+		case Open: {
+			FuncRequest cmd1 = cmd;
+			if (hitButton(cmd1)) {
+				lyxerr << "InsetCollapsable::lfunMouseRelease 2" << endl;
+				setStatus(Collapsed);
+				cur.undispatched();
+				cmd = FuncRequest(LFUN_FINISHED_RIGHT);
+			} else {
+				lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
 				InsetText::priv_dispatch(cur, cmd);
-			else if (status_ == Open && !hitButton(cmd))
-				InsetText::priv_dispatch(cur, cmd);
-			break;
-
-		case LFUN_MOUSE_RELEASE:
-			if (cmd.button() == mouse_button::button3) {
-				showInsetDialog(&cur.bv());
-				break;
-			}
-
-			switch (status_) {
-
-			case Collapsed:
-				lyxerr << "InsetCollapsable::lfunMouseRelease 1" << endl;
-				setStatus(Open);
-				edit(cur, true);
-				break;
-
-			case Open: {
-				FuncRequest cmd1 = cmd;
-				if (hitButton(cmd1)) {
-					lyxerr << "InsetCollapsable::lfunMouseRelease 2" << endl;
-					setStatus(Collapsed);
-					cur.undispatched();
-					cmd = FuncRequest(LFUN_FINISHED_RIGHT);
-				} else {
-					lyxerr << "InsetCollapsable::lfunMouseRelease 3" << endl;
-					InsetText::priv_dispatch(cur, cmd);
-				}
-				break;
-			}
-
-			case Inlined:
-				lyxerr << "InsetCollapsable::lfunMouseRelease 4" << endl;
-				InsetText::priv_dispatch(cur, cmd);
-				break;
 			}
 			break;
+		}
 
-		case LFUN_INSET_TOGGLE:
-			if (InsetText::text_.toggleInset(cur))
-				break;
-			if (status_ == Open) {
-				setStatus(Inlined);
-				break;
-			}
-			setStatus(Collapsed);
-			cur.undispatched();
-			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
-			break;
-
-		default:
+		case Inlined:
+			lyxerr << "InsetCollapsable::lfunMouseRelease 4" << endl;
 			InsetText::priv_dispatch(cur, cmd);
 			break;
+		}
+		break;
+
+	case LFUN_INSET_TOGGLE:
+		if (cmd.argument == "open")
+			setStatus(Open);
+		else if (cmd.argument == "close")
+			setStatus(Collapsed);
+		else if (cmd.argument == "toggle"
+			 || cmd.argument.empty()) {
+			if (isOpen())
+				setStatus(Collapsed);
+			else
+				setStatus(Open);
+		}
+		cur.dispatched();
+		break;
+
+	default:
+		InsetText::priv_dispatch(cur, cmd);
+		break;
 	}
 }
 

@@ -231,7 +231,9 @@ void LyXAction::init()
 		{ LFUN_INSERT_NOTE, "note-insert", Noop },
 		{ LFUN_INSERT_BOX, "box-insert", Noop },
 		{ LFUN_GOTONOTE, "note-next", ReadOnly },
-		{ LFUN_INSET_TOGGLE, "inset-toggle", ReadOnly },
+		{ LFUN_INSET_TOGGLE, "", ReadOnly },
+		{ LFUN_NEXT_INSET_TOGGLE, "next-inset-toggle", ReadOnly },
+		{ LFUN_ALL_INSETS_TOGGLE, "all-insets-toggle", ReadOnly },
 		{ LFUN_DOWN_PARAGRAPH, "paragraph-down", ReadOnly },
 		{ LFUN_DOWN_PARAGRAPHSEL, "paragraph-down-select", ReadOnly },
 		{ LFUN_GOTO_PARAGRAPH, "paragraph-goto", ReadOnly },
@@ -326,6 +328,7 @@ void LyXAction::init()
 		{ LFUN_REPEAT, "repeat", NoBuffer },
 		{ LFUN_WORD_FIND, "word-find", Noop },
 		{ LFUN_WORD_REPLACE, "word-replace", Noop },
+		{ LFUN_KEYMAP_TOGGLE, "keymap-toggle", Noop },
 		{ LFUN_NOACTION, "", Noop }
 	};
 

@@ -36,6 +36,7 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "importer.h"
+#include "insetiterator.h"
 #include "intl.h"
 #include "kbmap.h"
 #include "LColor.h"
@@ -494,6 +495,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_FILE_INSERT:
 	case LFUN_FILE_INSERT_ASCII:
 	case LFUN_FILE_INSERT_ASCII_PARA:
+	case LFUN_ALL_INSETS_TOGGLE:
 		// these are handled in our dispatch()
 		break;
 
@@ -1242,6 +1244,31 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 
 		case LFUN_BREAKLINE: {
 #warning swallow 'Return' if the minibuffer is focused. But how?
+			break;
+		}
+
+		case LFUN_ALL_INSETS_TOGGLE: {
+			string action;
+			string const name = split(argument, action, ' ');
+			InsetBase::Code const inset_code =
+				InsetBase::translate(name);
+
+			LCursor & cur = view()->cursor();
+			FuncRequest fr(LFUN_INSET_TOGGLE, action);
+
+			InsetBase & inset = owner->buffer()->inset();
+			InsetIterator it  = inset_iterator_begin(inset);
+			InsetIterator const end = inset_iterator_end(inset);
+			for (; it != end; ++it) {
+				if (inset_code == InsetBase::NO_CODE
+				    || inset_code == it->lyxCode()) {
+					it->dispatch(cur, fr);
+					if (&cur.inset() == &*it
+					    && cur.disp_.dispatched())
+						cur.pop();
+				}
+			}
+			break;
 		}
 
 		default: {

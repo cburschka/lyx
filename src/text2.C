@@ -1413,26 +1413,6 @@ void LyXText::recUndo(par_type par) const
 }
 
 
-bool LyXText::toggleInset(LCursor & cur)
-{
-	InsetBase * inset = cur.nextInset();
-	// is there an editable inset at cursor position?
-	if (!isEditableInset(inset))
-		return false;
-	cur.message(inset->editMessage());
-
-	// do we want to keep this?? (JMarc)
-	if (!isHighlyEditableInset(inset))
-		recordUndo(cur);
-
-	if (inset->isOpen())
-		inset->close();
-	else
-		inset->open();
-	return true;
-}
-
-
 int defaultRowHeight()
 {
 	return int(font_metrics::maxHeight(LyXFont(LyXFont::ALL_SANE)) *  1.2);

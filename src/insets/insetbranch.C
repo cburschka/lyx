@@ -13,6 +13,7 @@
 #include "insetbranch.h"
 
 #include "buffer.h"
+#include "BufferView.h"
 #include "bufferparams.h"
 #include "BranchList.h"
 #include "cursor.h"
@@ -137,6 +138,35 @@ void InsetBranch::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			InsetBranchMailer(*this).showDialog(&cur.bv());
 		else
 			InsetCollapsable::priv_dispatch(cur, cmd);
+		break;
+
+
+	case LFUN_INSET_TOGGLE:
+		// We assume that this lfun is indeed going to be dispatched.
+		cur.dispatched();
+
+		if (cmd.argument == "open")
+			setStatus(Open);
+		else if (cmd.argument == "close")
+			setStatus(Collapsed);
+
+		// The branch inset specialises its behaviour on "toggle".
+		else if (cmd.argument == "toggle"
+			 || cmd.argument.empty()) {
+			BranchList const & branchlist =
+				cur.bv().buffer()->params().branchlist();
+			if (isBranchSelected(branchlist)) {
+				if (status() != Open)
+					setStatus(Open);
+				else
+					cur.undispatched();
+			} else {
+				if (status() != Collapsed)
+					setStatus(Collapsed);
+				else
+					cur.undispatched();
+			}
+		}
 		break;
 
 	default:

@@ -1,3 +1,9 @@
+2004-03-30  Angus Leeming  <leeming@lyx.org>
+
+	* ControlDocument.C (apply): replace the loop over paragraphs
+	invoking insetsOpenCloseBranch with
+	LFUN_ALL_INSETS_TOGGLE, "toggle branch".
+
 2004-03-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* ControlBibtex.[Ch]: add member usingBibtopic().

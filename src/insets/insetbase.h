@@ -298,6 +298,12 @@ public:
 		///
 		MATHHULL_CODE
 	};
+
+	/** returns the Code corresponding to the \c name.
+	 *  Eg, translate("branch") == BRANCH_CODE
+	 */
+	static Code translate(std::string const & name);
+
 	/// returns true the inset can hold an inset of given type
 	virtual bool insetAllowed(Code) const { return false; }
 	// if this inset has paragraphs should they be output all as default

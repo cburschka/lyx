@@ -231,8 +231,6 @@ public:
 	};
 	/// Change the case of the word at cursor position.
 	void changeCase(LCursor & cur, TextCase action);
-	/// returns success
-	bool toggleInset(LCursor & cur);
 
 	/** the DTP switches for paragraphs. LyX will store the top settings
 	 always in the first physical paragraph, the bottom settings in the
