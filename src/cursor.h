@@ -75,6 +75,8 @@ public:
 	LyXText * innerText() const;
 	/// returns x,y position
 	void getPos(int & x, int & y) const;
+	/// cache the absolute coordinate from the top inset
+	void updatePos();
 	///
 	friend std::ostream & operator<<(std::ostream &, LCursor const &);
 public:

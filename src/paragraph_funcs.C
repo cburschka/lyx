@@ -628,6 +628,6 @@ void getParsInRange(ParagraphList & pl,
 	for (--beg; beg != begpar && beg->y > ystart; --beg)
 		;
 
-	for (end = beg ; end != endpar && end->y < yend; ++end)
+	for (end = beg ; end != endpar && end->y <= yend; ++end)
 		;
 }

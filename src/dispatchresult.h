@@ -51,9 +51,9 @@ public:
 	DispatchResult(bool dis)
 		: dispatched_(dis), update_(false), val_(NONE) {}
 	DispatchResult(bool dis, bool update)
-		: dispatched_(dis), update_(true), val_(NONE) {}
+		: dispatched_(dis), update_(update), val_(NONE) {}
 	DispatchResult(bool dis, dispatch_result_t val)
-		: dispatched_(dis), update_(false), val_(val) {}
+		: dispatched_(dis), update_(true), val_(val) {}
 	dispatch_result_t val() const { return val_; }
 	void val(dispatch_result_t drt) {
 		val_ = drt;

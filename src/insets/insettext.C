@@ -290,7 +290,6 @@ void InsetText::updateLocal(BufferView * bv, bool /*mark_dirty*/)
 		text_.selection.cursor = text_.cursor;
 
 //	bv->fitCursor();
-	bv->update();
 	bv->owner()->view_state_changed();
 	bv->owner()->updateMenubar();
 	bv->owner()->updateToolbar();

@@ -616,8 +616,6 @@ void BufferView::Pimpl::update()
 
 	// check needed to survive LyX startup
 	if (bv_->getLyXText()) {
-		bv_->getLyXText()->redoCursor();
-
 		// update all 'visible' paragraphs
 		ParagraphList::iterator beg;
 		ParagraphList::iterator end;
@@ -625,7 +623,7 @@ void BufferView::Pimpl::update()
 			       top_y(), top_y() + workarea().workHeight(),
 			       beg, end);
 		bv_->text->redoParagraphs(beg, end);
-
+		bv_->getLyXText()->redoCursor();
 		updateScrollbar();
 	}
 	screen().redraw(*bv_);
@@ -962,8 +960,10 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 			cmd2.x -= inset->x();
 			cmd2.y -= inset->y();
 			res = inset->dispatch(cmd2);
-			if (res.update())
+			if (res.update()) {
 				bv_->update();
+				bv_->cursor().updatePos();
+			}
 			res.update(false);
 			switch (res.val()) {
 				case FINISHED:
@@ -973,6 +973,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 					theTempCursor.pop();
 					bv_->cursor() = theTempCursor;
 					bv_->cursor().innerText()->setCursorFromCoordinates(cmd.x, top_y() + cmd.y);
+					bv_->cursor().updatePos();
 					bv_->fitCursor();
 					return true;
 				default:
@@ -987,12 +988,12 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 			lyxerr << "dispatching " << cmd1
 			       << " to surrounding LyXText "
 			       << bv_->cursor().innerText() << endl;
-			cursor_ = theTempCursor;
+			bv_->cursor() = theTempCursor;
 			theTempCursor.dispatch(cmd1);
+			bv_->update();
+			bv_->cursor().updatePos();
 			//return DispatchResult(true, true);
 		}
-
-		bv_->update();
 		// see workAreaKeyPress
 		cursor_timeout.restart();
 		screen().showCursor(*bv_);

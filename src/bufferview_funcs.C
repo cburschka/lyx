@@ -19,6 +19,7 @@
 #include "buffer.h"
 #include "bufferparams.h"
 #include "BufferView.h"
+#include "cursor.h"
 #include "gettext.h"
 #include "language.h"
 #include "LColor.h"
@@ -263,6 +264,20 @@ void replaceSelection(LyXText * text)
 }
 
 
+/*
+if the fitCursor call refers to some point in never-explored-land, then we
+don't have y information in insets there, then we cannot even do an update
+to get it (because we need the y infomation for setting top_y first). So
+this is solved in put_selection_at with:
+
+- setting top_y to the y of the outerPar (that has good info)
+- calling update
+- calling cursor().updatePos()
+- then call fitCursor()
+
+Ab.
+*/
+
 void put_selection_at(BufferView * bv, PosIterator const & cur,
 		      int length, bool backwards)
 {
@@ -272,8 +287,12 @@ void put_selection_at(BufferView * bv, PosIterator const & cur,
 
 	LyXText * text = par.text(bv);
 	par.lockPath(bv);
-
+	//hack for the chicken and egg problem
+	if (par.inset())
+		bv->top_y(par.outerPar()->y);
+	bv->update();
 	text->setCursor(cur.pit(), cur.pos());
+	bv->cursor().updatePos();
 
 	if (length) {
 		text->setSelectionRange(length);
@@ -281,7 +300,7 @@ void put_selection_at(BufferView * bv, PosIterator const & cur,
 		if (backwards)
 			text->cursor = text->selection.start;
 	}
-	
+
 	bv->fitCursor();
 	bv->update();
 }

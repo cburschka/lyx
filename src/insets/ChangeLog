@@ -1,3 +1,8 @@
+2003-11-11  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* insettext.C: remove all update calls
+	* insetcollapsable.C: remove all update calls
+
 2003-11-11  Alfredo Braunstein  <abraunst@libero.it>
 
 	* insettext.C (updateLocal, insertInset, setFont): remove 

@@ -1,3 +1,9 @@
+2003-11-11  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* cursor.[Ch] (updatePos): new function for updating the y
+	position of the tip inset
+	* bufferview_funcs.C (put_selection_at): 
+	* BufferView_pimpl.C (workAreaDispatch): rationalise update calls
 
 2003-11-11  André Pönitz  <poenitz@gmx.net>
 

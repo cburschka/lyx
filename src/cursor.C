@@ -113,7 +113,7 @@ void LCursor::push(UpdatableInset * inset)
 {
 	lyxerr << "LCursor::push()  inset: " << inset << endl;
 	data_.push_back(CursorItem(inset));
-	cached_y_ = bv_->top_y() + inset->y();
+	cached_y_ = bv_->top_y() + innerInset()->y();
 }
 
 
@@ -154,6 +154,13 @@ LyXText * LCursor::innerText() const
 				return data_[i].text();
 	}
 	return bv_->text;
+}
+
+
+void LCursor::updatePos()
+{
+	if (!data_.empty())
+		cached_y_ = bv_->top_y() + innerInset()->y();
 }
 
 
