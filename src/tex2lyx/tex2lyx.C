@@ -19,6 +19,7 @@
 #include "lyxtextclass.h"
 #include "support/path_defines.h"
 #include "support/filetools.h"
+#include "support/lyxlib.h"
 #include "support/os.h"
 
 #include <boost/function.hpp>
@@ -278,7 +279,17 @@ void easyParse(int & argc, char * argv[])
 	}
 }
 
+
+// path of the parsed file
+string masterFilePath;
+
 } // anonymous namespace
+
+
+string getMasterFilePath()
+{
+	return masterFilePath;
+}
 
 
 void tex2lyx(std::istream &is, std::ostream &os)
@@ -353,6 +364,12 @@ int main(int argc, char * argv[])
 		     << "\" for reading." << endl;
 		return 2;
 	}
+
+	if (lyx::support::AbsolutePath(argv[1]))
+		masterFilePath = lyx::support::OnlyPath(argv[1]);
+	else
+		masterFilePath = lyx::support::getcwd();
+
 	ifstream is(argv[1]);
 	tex2lyx(is, cout);
 

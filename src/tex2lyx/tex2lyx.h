@@ -71,6 +71,11 @@ enum ArgumentType {
 /// Known TeX commands with arguments that get parsed into ERT.
 extern std::map<std::string, std::vector<ArgumentType> > known_commands;
 
+
+/// path of the master .tex file
+extern std::string getMasterFilePath();
+
+
 /*! Reads tex input from \a is and writes lyx output to \a os.
  *  Uses some common settings for the preamble, so this should only
  *  be used more than once for included documents.

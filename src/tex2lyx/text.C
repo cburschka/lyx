@@ -17,6 +17,7 @@
 #include "context.h"
 #include "FloatList.h"
 #include "lengthcommon.h"
+#include "support/FileInfo.h"
 #include "support/lstrings.h"
 #include "support/tostr.h"
 #include "support/filetools.h"
@@ -26,6 +27,8 @@
 #include <sstream>
 #include <vector>
 
+using lyx::support::FileInfo;
+using lyx::support::MakeAbsPath;
 using lyx::support::rtrim;
 using lyx::support::suffixIs;
 using lyx::support::contains;
@@ -125,6 +128,26 @@ char const * const known_font_shapes[] = { "itshape", "slshape", "scshape",
 /// the same as known_old_font_shapes and known_font_shapes with .lyx names
 char const * const known_coded_font_shapes[] = { "italic", "slanted",
 "smallcaps", "up", 0};
+
+/*!
+ * Graphics file extensions known by the dvips driver of the graphics package.
+ * These extensions are used to complete the filename of an included
+ * graphics file if it does not contain an extension.
+ * The order must be the same that latex uses to find a file, because we
+ * will use the first extension that matches.
+ * This is only an approximation for the common cases. If we would want to
+ * do it right in all cases, we would need to know which graphics driver is
+ * used and know the extensions of every driver of the graphics package.
+ */
+char const * const known_dvips_graphics_formats[] = {"eps", "ps", "eps.gz",
+"ps.gz", "eps.Z", "ps.Z", 0};
+
+/*!
+ * Graphics file extensions known by the pdftex driver of the graphics package.
+ * \see known_dvips_graphics_formats
+ */
+char const * const known_pdftex_graphics_formats[] = {"png", "pdf", "jpg",
+"mps", "tif", 0};
 
 
 /// splits "x=z, y=b" into a map
@@ -254,6 +277,24 @@ void translate_box_len(string const & length, string & value, string & unit, str
 		unit = length;
 		special = "none";
 	}
+}
+
+
+/*!
+ * Find a file with basename \p name in path \p path and an extension
+ * in \p extensions.
+ */
+string find_file(string const & name, string const & path,
+                 char const * const * extensions)
+{
+	for (char const * const * what = extensions; *what; ++what) {
+		// We don't use ChangeExtension() because it does the wrong
+		// thing if name contains a dot.
+		string const trial = name + '.' + (*what);
+		if (FileInfo(MakeAbsPath(trial, path)).exist())
+			return trial;
+	}
+	return string();
 }
 
 
@@ -599,6 +640,7 @@ void parse_environment(Parser & p, ostream & os, bool outer,
 			os << "placement " << p.getArg('[', ']') << '\n';
 		}
 		os << "wide " << tostr(is_starred)
+		   << "\nsideways false"
 		   << "\nstatus open\n\n";
 		parse_text_in_inset(p, os, FLAG_END, outer, parent_context);
 		end_inset(os);
@@ -1070,6 +1112,43 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 		else if (t.cs() == "includegraphics") {
 			map<string, string> opts = split_map(p.getArg('[', ']'));
 			string name = subst(p.verbatim_item(), "\\lyxdot ", ".");
+
+			string const path = getMasterFilePath();
+			// We want to preserve relative / absolute filenames,
+			// therefore path is only used for testing
+			if (!FileInfo(MakeAbsPath(name, path)).exist()) {
+				// The file extension is probably missing.
+				// Now try to find it out.
+				string const dvips_name =
+					find_file(name, path,
+					          known_dvips_graphics_formats);
+				string const pdftex_name =
+					find_file(name, path,
+					          known_pdftex_graphics_formats);
+				if (!dvips_name.empty()) {
+					if (!pdftex_name.empty()) {
+						cerr << "This file contains the "
+						        "latex snippet\n"
+						        "\"\\includegraphics{"
+						     << name << "}\".\n"
+						        "However, files\n\""
+						     << dvips_name << "\" and\n\""
+						     << pdftex_name << "\"\n"
+						        "both exist, so I had to make a "
+						        "choice and took the first one.\n"
+						        "Please move the unwanted one "
+						        "someplace else and try again\n"
+						        "if my choice was wrong."
+						     << endl;
+					}
+					name = dvips_name;
+				} else if (!pdftex_name.empty())
+					name = pdftex_name;
+
+				if (!FileInfo(MakeAbsPath(name, path)).exist())
+					cerr << "Warning: Could not find graphics file '"
+					     << name << "'." << endl;
+			}
 
 			context.check_layout(os);
 			begin_inset(os, "Graphics ");

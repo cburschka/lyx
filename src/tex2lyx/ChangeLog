@@ -1,3 +1,15 @@
+2004-07-29  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* preamble.C (end_preamble): change file format from 228 to 235
+	* preamble.C (end_preamble): add use_bibtopic flag
+	* preamble.C (end_preamble): replace use_natbib with cite_engine
+	* preamble.C: change the paperpackage default from "default" to
+	"none". The old setting only worked by accident.
+	* tex2lyx.[Ch] (getMasterFilePath): new, needed for included graphics
+	* text.C (parse_environment): add sideways flag for float insets
+	* text.C (parse_text): add graphics file extension if necessary
+	* text.C (find_file): new helper function
+
 2004-07-23  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math.C (parse_math): change tex "\\cr" line ending to "\\\\"

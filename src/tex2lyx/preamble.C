@@ -68,11 +68,11 @@ string h_paperfontsize           = "default";
 string h_spacing                 = "single";
 // Match the entry in ../src/tex-strings.C. Why not "default"?
 string h_papersize               = "Default";
-string h_paperpackage            = "default";
+string h_paperpackage            = "none";
 string h_use_geometry            = "0";
 string h_use_amsmath             = "0";
-string h_use_natbib              = "0";
-string h_use_numerical_citations = "0";
+string h_cite_engine             = "basic";
+string h_use_bibtopic            = "0";
 string h_paperorientation        = "portrait";
 string h_secnumdepth             = "3";
 string h_tocdepth                = "3";
@@ -143,7 +143,7 @@ void handle_package(string const & name, string const & options)
 void end_preamble(ostream & os, LyXTextClass const & /*textclass*/)
 {
 	os << "#LyX file created by  tex2lyx 0.1.2 \n"
-	   << "\\lyxformat 228\n"
+	   << "\\lyxformat 235\n"
 	   << "\\textclass " << h_textclass << "\n"
 	   << "\\begin_preamble\n" << h_preamble.str() << "\n\\end_preamble\n";
 	if (!h_options.empty())
@@ -158,8 +158,8 @@ void end_preamble(ostream & os, LyXTextClass const & /*textclass*/)
 	   << "\\paperpackage " << h_paperpackage << "\n"
 	   << "\\use_geometry " << h_use_geometry << "\n"
 	   << "\\use_amsmath " << h_use_amsmath << "\n"
-	   << "\\use_natbib " << h_use_natbib << "\n"
-	   << "\\use_numerical_citations " << h_use_numerical_citations << "\n"
+	   << "\\cite_engine " << h_cite_engine << "\n"
+	   << "\\use_bibtopic " << h_use_bibtopic << "\n"
 	   << "\\paperorientation " << h_paperorientation << "\n"
 	   << "\\secnumdepth " << h_secnumdepth << "\n"
 	   << "\\tocdepth " << h_tocdepth << "\n"
