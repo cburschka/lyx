@@ -59,6 +59,7 @@
 #include "ImportLaTeX.h"
 #include "ImportNoweb.h"
 #include "support/syscall.h"
+#include "support/lstrings.h"
 
 extern bool cursor_follows_scrollbar;
 
@@ -158,19 +159,6 @@ LyXFunc::~LyXFunc()
 }
 
 
-string LyXFunc::argAsString(char const * const argument)
-{
-	string tmp(argument);
-
-	if (tmp.empty()) {
-		// get the arg from somewhere else, a popup, or ask for
-		// it in the minibuffer.
-	}
-	lyxerr.debug() << "argAsString: <" << tmp << '>' << endl;
-	return tmp;
-}
-
-
 // I changed this func slightly. I commented out the ...FinishUndo(),
 // this means that all places that used to have a moveCursorUpdate, now
 // have a ...FinishUndo() as the preceeding statement. I have also added
@@ -201,7 +189,7 @@ int LyXFunc::processKeyEvent(XEvent *ev)
 	s_r[9] = '\0';
 	int num_bytes;
 	int action; 
-	char *argument = 0;
+	string argument;
 	XKeyEvent *keyevent = &ev->xkey;
 	KeySym keysym_return;
 
@@ -297,11 +285,10 @@ int LyXFunc::processKeyEvent(XEvent *ev)
 		if (!(keyevent->state&ControlMask) &&
 		    !(keyevent->state&Mod1Mask) &&
 		    (isochar && keysym_return < 0xF000)) {
-			argument = &s_r[0]; // shall this be here
-			argument[0] = isochar;
-			argument[1] = 0;
+			argument = s_r[0]; // shall this be here
+			argument += isochar;
 		}
-		if (!argument) {
+		if (argument.empty()) {
 			lyxerr.debug() << "Empty argument!" << endl;
 			// This can`t possibly be of any use
 			// so we`ll skip the dispatch.
@@ -309,13 +296,12 @@ int LyXFunc::processKeyEvent(XEvent *ev)
 		}
 	} else
 		if (action==LFUN_SELFINSERT) {
-			argument = &s_r[0];
-			argument[1] = 0;
+			argument = s_r[0];
 		}
     
         bool tmp_sc = show_sc;
 	show_sc = false;
-	Dispatch(action, argument);
+	Dispatch(action, argument.c_str());
 	show_sc = tmp_sc;
 	
 	// Need this for deadkeys (alkis)
@@ -338,7 +324,7 @@ string LyXFunc::Dispatch(string const &cmd, string const &arg)
 string LyXFunc::Dispatch(int ac,
 			  char const *do_not_use_this_arg)
 {
-	char const * argument = 0;
+	string argument;
 	kb_action action;
         
 
@@ -356,7 +342,8 @@ string LyXFunc::Dispatch(int ac,
 			argument = tmparg;
 	} else {
 		action = (kb_action)ac;
-		argument = do_not_use_this_arg; // except here
+		if (do_not_use_this_arg)
+			argument = do_not_use_this_arg; // except here
 	}
     
 	selection_possible = false;
@@ -409,19 +396,17 @@ string LyXFunc::Dispatch(int ac,
 			int pseudoaction = action;
 			bool argsadded = false;
 
-			string argu;
-			if (argument) {
-				argu = argument;
+			if (!argument.empty()) {
 				// If we have the command with argument, 
 				// this is better
 				pseudoaction = 
 					lyxaction.searchActionArg(action,
-							  	  argument);
+							  	  argument.c_str());
 
 				if (pseudoaction == -1) {
 					pseudoaction = action;
 				} else {
-					comname += " " + argu;
+					comname += " " + argument;
 					argsadded = true;
 				}
 			}
@@ -431,7 +416,7 @@ string LyXFunc::Dispatch(int ac,
 			if (!shortcuts.empty()) {
 				comname += ": " + shortcuts;
 			} else if (!argsadded) {
-				comname += " " + argu;
+				comname += " " + argument;
 			}
 
 			if (!comname.empty()) {
@@ -463,10 +448,8 @@ string LyXFunc::Dispatch(int ac,
 	if (owner->currentView()->available() &&
 	    owner->currentBuffer()->the_locking_inset) {
 		if (action>1 || (action==LFUN_UNKNOWN_ACTION && keyseq.length>=-1)) {
-		        char s[8]="";
-			if (action==LFUN_UNKNOWN_ACTION && !argument) {
-				sprintf(s, "%c", keyseq.getiso());
-				argument = &s[0];
+			if (action==LFUN_UNKNOWN_ACTION && argument.empty()) {
+				argument = keyseq.getiso();
 			}
 			// Undo/Redo pre 0.13 is a bit tricky for insets.		    
 		        if (action==LFUN_UNDO) {
@@ -492,7 +475,7 @@ string LyXFunc::Dispatch(int ac,
 						inset->Edit(slx, sly);
 					return string();
 				} else
-					if (owner->currentBuffer()->the_locking_inset->LocalDispatch(action, argument))
+					if (owner->currentBuffer()->the_locking_inset->LocalDispatch(action, argument.c_str()))
 						return string();
 					else {
 						setMessage(N_("Text mode"));
@@ -512,11 +495,9 @@ string LyXFunc::Dispatch(int ac,
 		static string last_search;
 		string searched_string;
 	    
-		string arg = argAsString(argument);
-			
-		if (!arg.empty()) {
-			last_search = arg;
-			searched_string = arg;
+		if (!argument.empty()) {
+			last_search = argument;
+			searched_string = argument;
 		} else {
 			searched_string = last_search;
 		}
@@ -686,7 +667,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_EXPORT:
 	{
 		//needs argument as string
-		string extyp=argAsString(argument);
+		string extyp=argument;
 		
 		// latex
 		if (extyp == "latex") {
@@ -762,7 +743,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_IMPORT:
 	{
 		//needs argument as string
-		string imtyp=argAsString(argument);
+		string imtyp=argument;
 		
 		// latex
 		if (imtyp == "latex") {
@@ -1042,9 +1023,7 @@ string LyXFunc::Dispatch(int ac,
 			
 	case LFUN_FILE_INSERT:
 	{
-		// needs argument as string
-		string fil = argAsString(argument);
-		MenuInsertLyXFile(fil);
+		MenuInsertLyXFile(argument);
 	}
 	break;
 	
@@ -1078,7 +1057,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_LAYOUTNO:
 	{
 		lyxerr.debug() << "LFUN_LAYOUTNO: (arg) " << argument << endl;
-		int sel = atoi(argument);
+		int sel = strToInt(argument);
 		lyxerr.debug() << "LFUN_LAYOUTNO: (sel) "<< sel << endl;
 		
 		// Should this give a setMessage instead?
@@ -1238,7 +1217,7 @@ string LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_INSERT_LABEL:
-		MenuInsertLabel(argument);
+		MenuInsertLabel(argument.c_str());
 		break;
 		
 	case LFUN_INSERT_REF:
@@ -1879,7 +1858,7 @@ string LyXFunc::Dispatch(int ac,
 	{
 		int  x;
 		long y;
-		sscanf(argument, " %d %ld", &x, &y);
+		sscanf(argument.c_str(), " %d %ld", &x, &y);
 		owner->currentBuffer()->text->SetCursorFromCoordinates(x, y);
 	}
 	break;
@@ -1932,7 +1911,7 @@ string LyXFunc::Dispatch(int ac,
 	{
 	        char file_name[100];
 		int  row;
-		sscanf(argument, " %s %d", file_name, &row);
+		sscanf(argument.c_str(), " %s %d", file_name, &row);
 
 		// Must replace extension of the file to be .lyx and get full path
 		string s = ChangeExtension(string(file_name), ".lyx", false);
@@ -1965,7 +1944,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_APROPOS:
 	case LFUN_GETTIP:
 	{
-		int qa = lyxaction.LookupFunc((const char*)argument);
+		int qa = lyxaction.LookupFunc(argument.c_str());
 		setMessage(lyxaction.helpText((kb_action)qa));
 	}
 	break;
@@ -2017,7 +1996,7 @@ string LyXFunc::Dispatch(int ac,
 	// --- toolbar ----------------------------------
 	case LFUN_PUSH_TOOLBAR:
 	{
-		int nth = atoi(argument);
+		int nth = strToInt(argument);
 		if (lyxerr.debugging(Debug::TOOLBAR)) {
 			lyxerr << "LFUN_PUSH_TOOLBAR: argument = `"
 			       << argument << "'\n"
@@ -2094,14 +2073,14 @@ string LyXFunc::Dispatch(int ac,
 			owner->currentBuffer()->
 				open_new_inset(new InsetFormula(false));
 			owner->currentBuffer()->
-				the_locking_inset->LocalDispatch(action, argument);
+				the_locking_inset->LocalDispatch(action, argument.c_str());
 		}
 	}	   
 	break;
 	       
 	case LFUN_INSERT_MATH:
 	{
-		math_insert_symbol(argument);
+		math_insert_symbol(argument.c_str());
 	}
 	break;
 	
@@ -2150,7 +2129,7 @@ string LyXFunc::Dispatch(int ac,
 		// ale970405
 		// The note, if any, must be after the key, delimited
 		// by a | so both key and remark can have spaces.
-		if (argument) {
+		if (!argument.empty()) {
 			string lsarg(argument);
 			if (contains(lsarg, "|")) {
 				new_inset->setContents(token(lsarg, '|', 0));
@@ -2221,7 +2200,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_INDEX_INSERT_LAST:
 	{
 		InsetIndex *new_inset = new InsetIndex();
-		if (argument) {
+		if (!argument.empty()) {
   			string lsarg(argument);
 			new_inset->setContents(lsarg);
 			owner->currentBuffer()->insertInset(new_inset);
@@ -2312,20 +2291,19 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_INSERTFOOTNOTE: 
 	{
 		LyXParagraph::footnote_kind kind;
-		string arg = argument;
-		if (arg == "footnote")
+		if (argument == "footnote")
 			{ kind = LyXParagraph::FOOTNOTE; }
-		else if (arg == "margin")
+		else if (argument == "margin")
 			{ kind = LyXParagraph::MARGIN; }
-		else if (arg == "figure")
+		else if (argument == "figure")
 			{ kind = LyXParagraph::FIG; }
-		else if (arg == "table")
+		else if (argument == "table")
 			{ kind = LyXParagraph::TAB; }
-		else if (arg == "wide-fig")
+		else if (argument == "wide-fig")
 			{ kind = LyXParagraph::WIDE_FIG; }
-		else if (arg == "wide-tab")
+		else if (argument == "wide-tab")
 			{ kind = LyXParagraph::WIDE_TAB; }
-		else if (arg == "algorithm")
+		else if (argument == "algorithm")
 			{ kind = LyXParagraph::ALGORITHM; }
 		else {
 			setErrorMessage(N_("Unknown kind of footnote"));
@@ -2362,9 +2340,8 @@ string LyXFunc::Dispatch(int ac,
 
 	case LFUN_SELFINSERT:
 	{
-		string const text = argument;
-		for (string::size_type i = 0; i < text.length(); ++i) {
-			owner->currentBuffer()->text->InsertChar(text[i]);
+		for (string::size_type i = 0; i < argument.length(); ++i) {
+			owner->currentBuffer()->text->InsertChar(argument[i]);
 			// This needs to be in the loop, or else we
 			// won't break lines correctly. (Asger)
 			SmallUpdate(1);
@@ -2384,7 +2361,7 @@ string LyXFunc::Dispatch(int ac,
 			break;
 		}
 			 
-		if (argument) {
+		if (!argument.empty()) {
 			
 			/* Automatically delete the currently selected
 			 * text and replace it with what is being
@@ -2400,12 +2377,12 @@ string LyXFunc::Dispatch(int ac,
 			}
 			
 			BeforeChange();
-			for(char const *p = argument; *p; p++) {
+			for (string::size_type i = 0; i < argument.length(); ++i) {
 				if (greek_kb_flag) {
-					if (!math_insert_greek(*p))
-						owner->getIntl()->getTrans()->TranslateAndInsert(*p, owner->currentBuffer()->text);
+					if (!math_insert_greek(argument[i]))
+						owner->getIntl()->getTrans()->TranslateAndInsert(argument[i], owner->currentBuffer()->text);
 				} else
-					owner->getIntl()->getTrans()->TranslateAndInsert(*p, owner->currentBuffer()->text);
+					owner->getIntl()->getTrans()->TranslateAndInsert(argument[i], owner->currentBuffer()->text);
 			}
 			
 			SmallUpdate(1);

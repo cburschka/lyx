@@ -74,8 +74,6 @@ public:
 
 private:
 	///
-	string argAsString(char const *const argument);
-	///
 	LyXView *owner;
 	///
 	static kb_func_table* lyx_func_table;

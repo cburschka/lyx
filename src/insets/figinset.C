@@ -973,11 +973,15 @@ static void UnregisterFigure(InsetFig *fi)
 
 	if (tmpfig->data) freefigdata(tmpfig->data);
 	if (tmpfig->inset->form) {
-		if (tmpfig->inset->form->Figure->visible)
+		if (tmpfig->inset->form->Figure->visible) {
+			fl_set_focus_object(tmpfig->inset->form->Figure,
+					    tmpfig->inset->form->OkBtn);
 			fl_hide_form(tmpfig->inset->form->Figure);
-		fl_free_form(tmpfig->inset->form->Figure);
-		free(tmpfig->inset->form);
-		tmpfig->inset->form = 0;
+		}
+#warning Reactivate this free_form calls
+//		fl_free_form(tmpfig->inset->form->Figure);
+//		free(tmpfig->inset->form);
+//		tmpfig->inset->form = 0;
 	}
 	i = FindFigIndex(tmpfig);
 	--figinsref;
@@ -1919,10 +1923,12 @@ void InsetFig::CallbackFig(long arg)
 			}
 			UpdateInset(this);
 			if (arg == 8) {
+				fl_set_focus_object(form->Figure, form->OkBtn);
 				fl_hide_form(form->Figure);
-				fl_free_form(form->Figure);
-				free(form);
-				form = 0;
+#warning Reactivate this free_form calls
+//				fl_free_form(form->Figure);
+//				free(form);
+//				form = 0;
 			}
 			break;
 		} //if not readonly
@@ -1931,10 +1937,12 @@ void InsetFig::CallbackFig(long arg)
 			break;
 		// fall through
 	case 9:				/* cancel = restore and close */
+		fl_set_focus_object(form->Figure, form->OkBtn);
 		fl_hide_form(form->Figure);
-		fl_free_form(form->Figure);
-		free(form);
-		form = 0;
+#warning Reactivate this free_form calls
+//		fl_free_form(form->Figure);
+//		free(form);
+//		form = 0;
 		break;
 	}
 

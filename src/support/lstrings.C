@@ -29,7 +29,7 @@ bool isStrInt(string const & str)
 }
 
 
-int  LStr2Int(string const & str)
+int  strToInt(string const & str)
 {
 	string tmpstr;
 

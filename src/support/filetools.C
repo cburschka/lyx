@@ -597,7 +597,8 @@ string AddName(string const & path, string const & fname)
 // Strips path from filename
 string OnlyFilename(string const & fname)
 {
-	Assert(!fname.empty()); // We don't allow empty filename. (Lgb)
+	if (fname.empty())
+		return fname;
 
 	string::size_type j = fname.rfind('/');
 	if (j == string::npos) // no '/' in fname

@@ -1,3 +1,16 @@
+1999-10-20  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/figinset.C: just commented some fl_free_form calls
+	and added warnings so that this calls should be activated later
+	again. This avoids for now a segfault, but we have a memory leak!
+
+	* src/lyxfunc.C (processKeyEvent) (Dispatch): changed
+ 	'const char * argument' to 'string argument', this should
+	fix some Asserts() in lyxstring.C.
+
+	* src/lyxfunc.h: Removed the function argAsString(const char *)
+	as it is not used anymore.
+
 1999-10-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/lyxstring.C (helper): changed to use
