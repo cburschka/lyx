@@ -92,6 +92,10 @@ public:
 	/// Updates the title of the window
 	void updateWindowTitle();
 
+
+	/// Show state (toolbar and font in minibuffer)
+	void showState();
+
 	/// Reset autosave timer
 	void resetAutosaveTimer();
 private:

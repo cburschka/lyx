@@ -36,6 +36,7 @@
 #include "menus.h"
 #include "frontends/Dialogs.h"
 #include "lyx_gui_misc.h"	// [update,Close]AllBufferRelatedDialogs
+#include "bufferview_funcs.h" // CurrentState()
 
 using std::endl;
 
@@ -62,6 +63,9 @@ LyXView::LyXView(int width, int height)
 	lyxerr[Debug::INIT] << "Initializing LyXFunc" << endl;
 	lyxfunc = new LyXFunc(this);
 	intl = new Intl;
+
+	// Make sure the buttons are disabled if needed.
+	toolbar->update();
 
 	dialogs_ = new Dialogs(this);
 	// temporary until all dialogs moved into Dialogs.
@@ -439,4 +443,11 @@ void LyXView::updateWindowTitle()
 		fl_set_form_title(form_, title.c_str());
 		last_title = title;
 	}
+}
+
+
+void LyXView::showState()
+{
+	getMiniBuffer()->Set(CurrentState(view()));
+	getToolbar()->update();
 }

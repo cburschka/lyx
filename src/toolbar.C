@@ -66,8 +66,11 @@ Toolbar::Toolbar(LyXView * o, int x, int y)
 void Toolbar::BubbleTimerCB(FL_OBJECT *, long data)
 {
 	FL_OBJECT * ob = reinterpret_cast<FL_OBJECT*>(data);
-	char * help = static_cast<char*>(ob->u_vdata);
-	fl_show_oneliner(help, ob->form->x + ob->x,
+	// The trick we use to get the help text is to read the
+	// argument of the callback that has been registered for
+	// ToolBarCB.  (JMarc)
+	string help = lyxaction.helpText(ob->argument);
+	fl_show_oneliner(help.c_str(), ob->form->x + ob->x,
 			 ob->form->y + ob->y + ob->h);
 }
 
@@ -83,10 +86,10 @@ int Toolbar::BubblePost(FL_OBJECT *ob, int event,
 			FL_Coord /*mx*/, FL_Coord /*my*/,
 			int /*key*/, void */*xev*/)
 {
-	string help = static_cast<char *>(ob->u_vdata);
-	Toolbar * t = reinterpret_cast<Toolbar*>(ob->u_ldata);
+	Toolbar * t = reinterpret_cast<Toolbar*>(ob->u_vdata);
 	
-	if(event == FL_ENTER && !help.empty()){
+	// We do not test for empty help here, since this can never happen
+	if(event == FL_ENTER){
 		fl_set_object_callback(t->bubble_timer,
 				       C_Toolbar_BubbleTimerCB,
 				       reinterpret_cast<long>(ob));
@@ -111,39 +114,58 @@ extern "C" int C_Toolbar_BubblePost(FL_OBJECT * ob, int event,
 
 void Toolbar::activate()
 {
-	toolbarItem * tmp= 0;
-	toolbarItem * item = toollist;
-	while(item){
-		tmp = item->next;
-		if (item->icon) {
-			fl_activate_object(item->icon);
+	ToolbarList::const_iterator p = toollist.begin();
+	for (; p != toollist.end(); ++p) {
+		if (p->icon) {
+			fl_activate_object(p->icon);
 		}
-		item = tmp;
 	}
 }
 
 
 void Toolbar::deactivate()
 {
-	toolbarItem * tmp= 0;
-	toolbarItem * item = toollist;
-	while(item){
-		tmp = item->next;
-		if (item->icon) {
-			fl_deactivate_object(item->icon);
+	ToolbarList::const_iterator p = toollist.begin();
+	for (; p != toollist.end(); ++p) {
+		if (p->icon) {
+			fl_deactivate_object(p->icon);
 		}
-		item = tmp;
+	}
+}
+
+void Toolbar::update()
+{
+	ToolbarList::const_iterator p = toollist.begin();
+	for (; p != toollist.end(); ++p) {
+		if (p->icon) {
+			int status = owner->getLyXFunc()->getStatus(p->action);
+			if (status & LyXFunc::ToggleOn) {
+				// I'd like to use a different color
+				// here, but then the problem is to
+				// know how to use transparency with
+				// Xpm library. It seems pretty
+				// complicated to me (JMarc)
+				fl_set_object_boxtype(p->icon, FL_DOWN_BOX);
+			} else {
+				fl_set_object_boxtype(p->icon, FL_UP_BOX);
+			}
+
+			if (status & LyXFunc::Disabled) {
+				// Is there a way here to specify a
+				// mask in order to show that the
+				// button is disabled? (JMarc)
+				fl_deactivate_object(p->icon);
+			}
+			else
+				fl_activate_object(p->icon);
+		}
 	}
 }
 
 
 void Toolbar::ToolbarCB(FL_OBJECT * ob, long ac)
 {
-#if FL_REVISION >= 89
 	Toolbar * t = static_cast<Toolbar*>(ob->u_vdata);
-#else
-	Toolbar * t = reinterpret_cast<Toolbar*>(ob->u_ldata);
-#endif
 	
 	string res = t->owner->getLyXFunc()->Dispatch(int(ac));
 	if(!res.empty())
@@ -223,7 +245,6 @@ void Toolbar::set(bool doingmain)
 	if (!cleaned) return;
 	
 	FL_OBJECT * obj;
-	toolbarItem * item = toollist;
 	
 	if (!doingmain) {
 		fl_freeze_form(owner->getForm());
@@ -237,11 +258,11 @@ void Toolbar::set(bool doingmain)
 					    xpos, ypos, 0, 0, "Timer");
 #endif
 	
-	while(item != 0) {
+	ToolbarList::iterator item = toollist.begin();
+	for (; item != toollist.end(); ++item) {
 		switch(item->action){
 		case TOOL_SEPARATOR:
 			xpos += sepspace;
-			item = item->next;
 			break;
 		case TOOL_LAYOUTS:
 			xpos += standardspacing;
@@ -251,7 +272,6 @@ void Toolbar::set(bool doingmain)
 			combox->setcallback(LayoutsCB);
 			combox->resize(FL_RESIZE_ALL);
 			combox->gravity(NorthWestGravity, NorthWestGravity);
-			item = item->next;
 			xpos += 135;
 			break;
 		default:
@@ -261,39 +281,28 @@ void Toolbar::set(bool doingmain)
 						    xpos, ypos,
 						    buttonwidth,
 						    height, "");
-			fl_set_object_boxtype(obj, FL_UP_BOX);
-			fl_set_object_color(obj, FL_MCOL, FL_BLUE);
 			fl_set_object_resize(obj, FL_RESIZE_ALL);
 			fl_set_object_gravity(obj,
 					      NorthWestGravity,
 					      NorthWestGravity);
 			fl_set_object_callback(obj, C_Toolbar_ToolbarCB,
 					       static_cast<long>(item->action));
+			fl_set_object_color(obj, FL_MCOL, FL_BLUE);
 			// Remove the blue feedback rectangle
 			fl_set_pixmapbutton_focus_outline(obj, 0);
 
-			// set the bubble-help (Matthias)
-#if FL_REVISION >= 89
 			// Set the tooltip
-			fl_set_object_helper(obj, item->help.c_str());
-			// The toolbar that this object belongs too.
-			obj->u_vdata = this;
-			
-			
+#if FL_REVISION >= 89
+			string help = lyxaction.helpText(action);
+			fl_set_object_helper(obj, help.c_str());	
 #else
-#ifdef WITH_WARNINGS
-#warning This is dangerous!
-#endif
-			obj->u_vdata = const_cast<char*>(item->help.c_str());
-			// we need to know what toolbar this item
-			// belongs too. (Lgb)
-			obj->u_ldata = reinterpret_cast<long>(this);
-			  
 			fl_set_object_posthandler(obj, C_Toolbar_BubblePost);
 #endif
 
+			// The toolbar that this object belongs too.
+			obj->u_vdata = this;
+
 			setPixmap(obj, item->action, buttonwidth, height);
-			item = item->next;
 			// we must remember to update the positions
 			xpos += buttonwidth;
 			// ypos is constant
@@ -311,7 +320,10 @@ void Toolbar::set(bool doingmain)
 		// Should be safe to do this here.
 		owner->updateLayoutChoice();
 	}
-	
+
+	// set the state of the icons
+	//update();
+
 	cleaned = false;
 }
 
@@ -325,21 +337,18 @@ void Toolbar::add(int action, bool doclean)
 	if (!doclean && owner) {
 		// first "hide" the toolbar buttons. This is not a real hide
 		// actually it deletes and frees the button altogether.
-		lyxerr << "Toolbar::add: \"hide\" the toolbar buttons." << endl;
-		toolbarItem * tmp= 0;
-		toolbarItem * item = toollist;
+		lyxerr << "Toolbar::add: \"hide\" the toolbar buttons." 
+		       << endl;
 
 		lightReset();
 		
 		fl_freeze_form(owner->getForm());
-		while(item){
-			tmp = item->next;
-			if (item->icon) {
-				fl_delete_object(item->icon);
-				fl_free_object(item->icon);
-			}
-			item = tmp;
+
+		ToolbarList::iterator p = toollist.begin();
+		for (; p != toollist.end(); ++p) {
+			p->clean();
 		}
+
 		if (combox) {
 			delete combox;
 			combox = 0;
@@ -351,44 +360,30 @@ void Toolbar::add(int action, bool doclean)
 	// there exist some special actions not part of
 	// kb_action: SEPARATOR, LAYOUTS
 
-	toolbarItem * newItem, * tmp;
-
-	// adds an item to the list
-	newItem = new toolbarItem;
-	newItem->action = action;
-	newItem->help = lyxaction.helpText(action);
-	// the new item is placed at the end of the list
-	tmp = toollist;
-	if (tmp != 0){
-		while(tmp->next != 0)
-			tmp = tmp->next;
-				// here is tmp->next == 0
-		tmp->next = newItem;
-		} else
-			toollist = newItem;
+	toolbarItem newItem;
+	newItem.action = action;
+	toollist.push_back(newItem);
 }
 
 
 void Toolbar::clean()
 {
-	toolbarItem * tmp = 0;
-	toolbarItem * item = toollist;
-
-	reset();
+	//reset(); // I do not understand what this reset() is, anyway
 
 	//now delete all the objects..
 	if (owner)
 		fl_freeze_form(owner->getForm());
-	while (item) {
-		tmp = item->next;
-		delete item;
-		item = tmp;
-	}
+
+	// G++ vector does not have clear defined
+	//toollist.clear();
+	toollist.erase(toollist.begin(), toollist.end());
+
 	lyxerr[Debug::TOOLBAR] << "Combox: " << combox << endl;
 	if (combox) {
 		delete combox;
 		combox = 0;
 	}
+
 	if (owner)
 		fl_unfreeze_form(owner->getForm());
 	lyxerr[Debug::TOOLBAR] << "toolbar cleaned" << endl;
@@ -401,20 +396,13 @@ void Toolbar::push(int nth)
 	lyxerr[Debug::TOOLBAR] << "Toolbar::push: trying to trigger no `"
 			       << nth << '\'' << endl;
 	
-	if (nth == 0) return;
-
-	int count = 0;
-	toolbarItem * tmp = toollist;
-	while (tmp) {
-		++count;
-		if (count == nth) {
-			fl_trigger_object(tmp->icon);
-			return;
-		}
-		tmp = tmp->next;
+	if (nth <= 0 || nth >= int(toollist.size())) {
+		// item nth not found...
+		LyXBell();
+		return;
 	}
-	// item nth not found...
-	LyXBell();
+
+	fl_trigger_object(toollist[nth - 1].icon);
 }
 
 
@@ -433,7 +421,7 @@ void Toolbar::add(string const & func, bool doclean)
 
 void Toolbar::reset() 
 {
-	toollist = 0;
+	//toollist = 0; // what is this supposed to do?
 	cleaned = false;
 	lightReset();
 }

@@ -179,7 +179,7 @@ void LyXFunc::moveCursorUpdate(bool selecting)
 	
 	/* ---> Everytime the cursor is moved, show the current font state. */
 	// should this too me moved out of this func?
-	//owner->getMiniBuffer()->Set(CurrentState());
+	//owner->showState();
 	owner->view()->setState();
 }
 
@@ -220,7 +220,7 @@ int LyXFunc::processKeyEvent(XEvent * ev)
 			owner->view()->unlockInset(tli);
 			owner->view()->text->CursorRight(owner->view());
 			moveCursorUpdate(false);
-			owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+			owner->showState();
 		} else {
 			tli->UnlockInsetInInset(owner->view(),
 						tli->GetLockingInset(),true);
@@ -593,29 +593,26 @@ string LyXFunc::Dispatch(int ac,
 				case LFUN_BREAKLINE:
 					owner->view()->text->CursorRight(owner->view());
 					owner->view()->setState();
-					owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+					owner->showState();
 					break;
 				case LFUN_RIGHT:
 					if (!owner->view()->text->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
 						owner->view()->text->CursorRight(owner->view());
 						moveCursorUpdate(false);
-						owner->getMiniBuffer()->
-							Set(CurrentState(owner->view()));
+						owner->showState();
 					}
 					return string();
 				case LFUN_LEFT: 
 					if (owner->view()->text->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
 						owner->view()->text->CursorRight(owner->view());
 						moveCursorUpdate(false);
-						owner->getMiniBuffer()->
-							Set(CurrentState(owner->view()));
+						owner->showState();
 					}
 					return string();
 				case LFUN_DOWN:
 					owner->view()->text->CursorDown(owner->view());
 					moveCursorUpdate(false);
-					owner->getMiniBuffer()->
-						Set(CurrentState(owner->view()));
+					owner->showState();
 					return string();
 				default:
 					break;
@@ -999,13 +996,13 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_FREE:
 		Free(owner->view());
 		owner->view()->setState();
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_TEX:
 		Tex(owner->view());
 		owner->view()->setState();
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 #ifndef NEW_INSETS		
 	case LFUN_MELT:
@@ -1228,52 +1225,52 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_LANGUAGE:
 		Lang(owner->view(), argument);
 		owner->view()->setState();
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 
 	case LFUN_EMPH:
 		Emph(owner->view());
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 
 	case LFUN_BOLD:
 		Bold(owner->view());
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_NOUN:
 		Noun(owner->view());
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_CODE:
 		Code(owner->view());
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_SANS:
 		Sans(owner->view());
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_ROMAN:
 		Roman(owner->view());
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_DEFAULT:
 		StyleReset(owner->view());
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_UNDERLINE:
 		Underline(owner->view());
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_FONT_SIZE:
 		FontSize(owner->view(), argument);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_FONT_STATE:
@@ -1381,7 +1378,7 @@ string LyXFunc::Dispatch(int ac,
 			tmptext->CursorRight(owner->view(), false);
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 	}
 	break;
 		
@@ -1417,7 +1414,7 @@ string LyXFunc::Dispatch(int ac,
 
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 	}
 	break;
 		
@@ -1427,7 +1424,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->CursorUp(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_DOWN:
@@ -1437,7 +1434,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->CursorDown(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 
 	case LFUN_UP_PARAGRAPH:
@@ -1447,7 +1444,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->CursorUpParagraph(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_DOWN_PARAGRAPH:
@@ -1457,7 +1454,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->CursorDownParagraph(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_PRIOR:
@@ -1467,7 +1464,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->cursorPrevious();
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_NEXT:
@@ -1477,7 +1474,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->cursorNext();
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_HOME:
@@ -1487,7 +1484,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->CursorHome(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_END:
@@ -1497,7 +1494,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->CursorEnd(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_SHIFT_TAB:
@@ -1508,7 +1505,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->CursorTab(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_WORDRIGHT:
@@ -1521,7 +1518,7 @@ string LyXFunc::Dispatch(int ac,
 			owner->view()->text->CursorRightOneWord(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_WORDLEFT:
@@ -1534,7 +1531,7 @@ string LyXFunc::Dispatch(int ac,
 			owner->view()->text->CursorLeftOneWord(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_BEGINNINGBUF:
@@ -1544,7 +1541,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->CursorTop(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_ENDBUF:
@@ -1554,7 +1551,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->CursorBottom(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 
       
@@ -1567,7 +1564,7 @@ string LyXFunc::Dispatch(int ac,
 			owner->view()->text->CursorRight(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(true);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_LEFTSEL:
@@ -1578,7 +1575,7 @@ string LyXFunc::Dispatch(int ac,
 			owner->view()->text->CursorLeft(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(true);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_UPSEL:
@@ -1586,7 +1583,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->CursorUp(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(true);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_DOWNSEL:
@@ -1594,7 +1591,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->CursorDown(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(true);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 
 	case LFUN_UP_PARAGRAPHSEL:
@@ -1602,7 +1599,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->CursorUpParagraph(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(true);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_DOWN_PARAGRAPHSEL:
@@ -1610,7 +1607,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->CursorDownParagraph(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(true);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_PRIORSEL:
@@ -1618,7 +1615,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->cursorPrevious();
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(true);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_NEXTSEL:
@@ -1626,7 +1623,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->cursorNext();
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(true);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_HOMESEL:
@@ -1634,7 +1631,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->CursorHome(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(true);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_ENDSEL:
@@ -1642,7 +1639,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->CursorEnd(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(true);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_WORDRIGHTSEL:
@@ -1653,7 +1650,7 @@ string LyXFunc::Dispatch(int ac,
 			owner->view()->text->CursorRightOneWord(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(true);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_WORDLEFTSEL:
@@ -1664,7 +1661,7 @@ string LyXFunc::Dispatch(int ac,
 			owner->view()->text->CursorLeftOneWord(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(true);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_BEGINNINGBUFSEL:
@@ -1672,7 +1669,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->CursorTop(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(true);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 	case LFUN_ENDBUFSEL:
@@ -1680,7 +1677,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->CursorBottom(owner->view());
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(true);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 
 		// --- text changing commands ------------------------
@@ -1735,7 +1732,7 @@ string LyXFunc::Dispatch(int ac,
 			owner->view()->cut();
 		}
 		moveCursorUpdate(false);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		owner->view()->setState();
 		break;
 
@@ -1789,7 +1786,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->DeleteWordForward(owner->view());
 		owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		moveCursorUpdate(false);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 
 		/* -------> Delete word backward. */
@@ -1798,7 +1795,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->DeleteWordBackward(owner->view());
 		owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		moveCursorUpdate(false);
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 		
 		/* -------> Kill to end of line. */
@@ -1843,7 +1840,7 @@ string LyXFunc::Dispatch(int ac,
 		} else {
 			owner->view()->cut();
 		}
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		owner->view()->setState();
 	}
 	break;
@@ -1887,7 +1884,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->sel_cursor = 
 			owner->view()->text->cursor;
 		owner->view()->setState();
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 	}
 
@@ -1899,7 +1896,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->text->sel_cursor = 
 			owner->view()->text->cursor;
 		owner->view()->setState();
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 		break;
 	}
 	
@@ -1934,7 +1931,7 @@ string LyXFunc::Dispatch(int ac,
 		owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		owner->view()->text->sel_cursor = cursor;
 		owner->view()->setState();
-		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
+		owner->showState();
 	}
 	break;
 

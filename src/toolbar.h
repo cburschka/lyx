@@ -18,6 +18,7 @@
 #pragma interface
 #endif
 
+#include <vector>
 #include FORMS_H_LOCATION
 #include "lyxfunc.h"
 #include "combox.h"
@@ -69,7 +70,8 @@ public:
         void activate();
 	/// deactivates the toolbar
         void deactivate();
-
+	/// update the state of the icons
+	void update();
 	///
 	static void ToolbarCB(FL_OBJECT *, long);
 
@@ -86,31 +88,40 @@ private:
 	struct toolbarItem
 	{
 		///
-		toolbarItem * next;
-		///
 		int action;
-		///
-		string help;
 		///
 		FL_OBJECT * icon;
 		///
 		toolbarItem() {
-			next = 0;
 			action = LFUN_NOACTION;
 			icon = 0;
 		}
 		///
-		~toolbarItem() {
+		void clean() {
 			if (icon) {
 				fl_delete_object(icon);
 				fl_free_object(icon);
+				icon = 0;
 			}
 		}
+		///
+		~toolbarItem() {
+			clean();
+		}
 			
+		toolbarItem & operator=(const toolbarItem & ti) {
+			// do we have to check icon and IsBitmap too?
+		        action = ti.action;
+			icon = 0; // locally we need to get the icon anew
+
+			return *this;
+		}
 	};
 
-	/// a list containing all the buttons
-	toolbarItem * toollist;
+	/// typedef to simplify things
+	typedef std::vector<toolbarItem> ToolbarList;
+	/// The list containing all the buttons
+	ToolbarList toollist;
 	///
 	LyXView * owner;
 #if FL_REVISION < 89

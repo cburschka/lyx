@@ -1,3 +1,24 @@
+2000-07-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyxfunc.C (Dispatch): use LyXView::ShowState instead of
+	setting explicitely the minibuffer.
+	* src/BufferView_pimpl.C (workAreaButtonRelease): ditto.
+
+	* src/LyXView.C (showState): new function. Shows font information
+	in minibuffer and update toolbar state.
+	(LyXView): call Toolbar::update after creating the
+	view. 
+
+	* src/toolbar.C: change toollist to be a vector instead of a
+	linked list.
+	(BubbleTimerCB): get help string directly from the callback
+	argument of the corresponding icon (which is the action) 
+	(set): remove unnecessary ugliness.
+	(update): new function. update the icons (depressed, disabled)
+	depending of the status of the corresponding action.
+	
+	* src/toolbar.h: remove help in toolbarItem
+
 2000-07-19  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/Painter.C (text): Added code for using symbol glyphs from

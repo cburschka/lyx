@@ -754,7 +754,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 	if (button >= 2) return;
 
 	bv_->setState();
-	owner_->getMiniBuffer()->Set(CurrentState(bv_));
+	owner_->showState();
 
 	// Did we hit an editable inset?
 	if (inset_hit != 0) {
