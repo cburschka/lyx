@@ -61,3 +61,9 @@ MathSpaceInset::Write(ostream & os, bool /* fragile */)
 	   os << '\\' << latex_mathspace[space] << ' ';
    }
 }
+
+
+int MathSpaceInset::GetSpace()
+{
+	return space;
+}

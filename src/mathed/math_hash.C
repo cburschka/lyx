@@ -7,13 +7,21 @@
 
 #include "math_defs.h"
 #include "math_parser.h"
-//struct latexkeys { char* name; short token; int id; };
 
+#if 0
 #define TOTAL_KEYWORDS 269
 #define MIN_WORD_LENGTH 2
 #define MAX_WORD_LENGTH 18
 #define MIN_HASH_VALUE 8
 #define MAX_HASH_VALUE 490
+#else
+int const TOTAL_KEYWORDS = 269;
+int const MIN_WORD_LENGTH = 2;
+int const MAX_WORD_LENGTH = 18;
+int const MIN_HASH_VALUE = 8;
+int const MAX_HASH_VALUE = 490;
+#endif
+
 /* maximum key range = 483, duplicates = 40 */
 
 static
@@ -179,7 +187,7 @@ latexkeys wordlist[] =
       {"cap",  LM_TK_SYM, LM_cap},
       {"cup",  LM_TK_SYM, LM_cup},
       {"prec",  LM_TK_SYM, LM_prec},
-      {"mathnormal",  LM_TK_FONT, LM_TC_NORMAL},
+      {"mathnormal",  LM_TK_FONT, LM_TC_VAR},
       {"wr",  LM_TK_SYM, LM_wr},
       {"inf",  LM_TK_FUNCLIM, 0},
       {"bigoplus",  LM_TK_BIGSYM, LM_oplus},

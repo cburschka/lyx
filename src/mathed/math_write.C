@@ -22,6 +22,7 @@
 #include "math_iter.h"
 #include "math_parser.h"
 #include "math_parinset.h"
+#include "mathed/support.h"
 #include "support/lstrings.h"
 #include "debug.h"
 
@@ -29,7 +30,6 @@ using std::ostream;
 using std::endl;
 
 extern char const * latex_mathenv[];
-extern char * latex_mathspace[];
 
 // quite a hack i know. Should be done with return values...
 int number_of_newlines = 0;

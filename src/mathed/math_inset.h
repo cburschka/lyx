@@ -27,8 +27,9 @@
 #endif
 
 #include "LString.h"
-#include "math_defs.h"
 #include "symbol_def.h"
+
+class Painter;
 
 /** Abstract base class for all math objects.
     A math insets is for use of the math editor only, it isn't a

@@ -10,6 +10,7 @@
 #include "math_parser.h"
 #include "math_rowst.h"
 #include "math_parinset.h"
+#include "debug.h"
 
 using std::endl;
 
@@ -391,4 +392,65 @@ void MathParInset::Write(ostream & os, bool fragile)
 
 	if (brace > 0)
 		os << string(brace, '}');
+}
+
+
+bool MathParInset::Inside(int x, int y) 
+{
+  return (x >= xo && x <= xo + width
+	  && y <= yo + descent && y >= yo - ascent);
+}
+
+
+void MathParInset::GetXY(int & x, int & y) const
+{
+   x = xo;
+   y = yo;
+}
+
+
+void MathParInset::UserSetSize(short sz)
+{
+   if (sz >= 0) {
+       size = sz;      
+       flag = flag & ~LMPF_FIXED_SIZE;
+   }
+}
+
+
+void MathParInset::SetStyle(short sz) 
+{
+    if (Permit(LMPF_FIXED_SIZE)) {
+	if (Permit(LMPF_SCRIPT)) 
+	  sz = (sz < LM_ST_SCRIPT) ? LM_ST_SCRIPT: LM_ST_SCRIPTSCRIPT;
+	if (Permit(LMPF_SMALLER) && sz < LM_ST_SCRIPTSCRIPT) {
+	    ++sz;
+	} 
+	MathedInset::SetStyle(sz);
+    }
+}
+
+
+void  MathParInset::setFlag(MathedParFlag f)
+{
+	flag |= f;
+}
+
+
+bool MathParInset::Permit(short f) const
+{
+	return bool(f & flag);
+}
+
+
+MathedArray * MathParInset::GetData()
+{
+	return array;
+}
+
+
+void MathParInset::setXY(int x, int y)
+{
+	xo = x;
+	yo = y;
 }

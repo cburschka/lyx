@@ -27,16 +27,6 @@
 #include <iosfwd>
 
 #include "LString.h"
-#include "debug.h"
-
-//#include "array.h"
-
-class MathedArray;
-class Painter;
-
-#ifndef byte
-#define byte unsigned char
-#endif
 
 ///
 enum math_align {
@@ -133,10 +123,7 @@ enum MathedTextCodes  {
 ///
 std::ostream & operator<<(std::ostream &, MathedTextCodes mtc);
 
-///
-#define LM_TC_NORMAL LM_TC_VAR
- 
-       
+
 /// Types of lyx-math insets 
 enum MathedInsetTypes  {
 	///
@@ -200,6 +187,7 @@ enum MathedInsetTypes  {
 	LM_OT_MAX
 };
 
+
 ///
 enum MathedBinaryTypes {
 	///
@@ -211,8 +199,6 @@ enum MathedBinaryTypes {
 	///
 	LMB_BOP = (LMB_RELATION | LMB_OPERATOR)
 };
-
-class MathParInset;
 
 
 /// Paragraph permissions
@@ -231,147 +217,5 @@ enum MathedParFlag {
 	/// Script size (subscript, stackrel)
 	LMPF_SCRIPT = 32
 };
-
-
-
-
-
-/*************************  Prototypes  **********************************/
-/// 
-MathedArray * mathed_parse(unsigned flags, MathedArray * data,
-			    MathParInset ** mt);
-///
-void mathed_write(MathParInset *, std::ostream &, int *, bool fragile,
-		  string const & label = string());
-
-///
-void mathed_parser_file(std::istream &, int);
-///
-int mathed_parser_lineno();
-///
-int MathedLookupBOP(short);
-
-/************************ Inline functions ********************************/
-
-///
-inline
-bool MathIsInset(short x)
-{
-	return LM_TC_INSET <= x && x <= LM_TC_ACTIVE_INSET;
-}
-
-///
-inline
-bool MathIsFont(short x)
-{
-	return LM_TC_CONST <= x && x <= LM_TC_BSYM;
-}
-
-///
-inline
-bool MathIsAlphaFont(short x)
-{
-	return LM_TC_VAR <= x && x <= LM_TC_TEXTRM;
-}
-
-///
-inline
-bool MathIsActive(short x)
-{
-	return LM_TC_INSET < x && x <= LM_TC_ACTIVE_INSET;
-}
-
-///
-inline
-bool MathIsUp(short x)
-{
-	return x == LM_TC_UP;
-}
-
-///
-inline
-bool MathIsDown(short x)
-{
-	return x == LM_TC_DOWN;
-}
-
-///
-inline
-bool MathIsScript(short x)
-{
-	return x == LM_TC_DOWN || x == LM_TC_UP;
-}
-
-///
-inline
-bool MathIsBOPS(short x)
-{
-	return MathedLookupBOP(x) > LMB_NONE;
-}
-
-///
-inline
-bool MathIsBinary(short x)
-{
-    return x == LM_TC_BOP || x == LM_TC_BOPS;
-}
-
-///
-inline
-bool MathIsSymbol(short x) {
-    return LM_TC_SYMB <= x && x <= LM_TC_BSYM;
-}
-     
-
-inline
-bool is_eqn_type(short int type)
-{
-	return type >= LM_OT_MIN && type < LM_OT_MATRIX;
-}
-
-
-inline
-bool is_matrix_type(short int type)
-{
-	return type == LM_OT_MATRIX;
-}
-
-inline
-bool is_multiline(short int type)
-{
-	return type >= LM_OT_MPAR && type < LM_OT_MATRIX;
-}
-
-
-inline bool is_ams(short int type)
-{
-	return type > LM_OT_MPARN && type < LM_OT_MATRIX;
-}
-
-inline
-bool is_singlely_numbered(short int type)
-{
-	return type == LM_OT_PARN || type == LM_OT_MULTLINEN;
-}
-
-inline
-bool is_multi_numbered(short int type)
-{
-	return type == LM_OT_MPARN || type == LM_OT_ALIGNN
-		|| type == LM_OT_ALIGNATN;
-}
-
-inline
-bool is_numbered(short int type)
-{
-	return is_singlely_numbered(type) || is_multi_numbered(type);
-}
-
-inline
-bool is_multicolumn(short int type)
-{
-	return type == LM_OT_ALIGN || type == LM_OT_ALIGNN
-		|| type == LM_OT_ALIGNAT || type == LM_OT_ALIGNATN;
-}
 
 #endif

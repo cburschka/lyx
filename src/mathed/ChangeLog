@@ -1,5 +1,47 @@
 2001-02-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* math_spaceinset.C (GetSpace): move here
+
+	* math_parinset.C: add debug.h, move several prev. inlined methods
+	here. 
+
+	* math_macrotable.C math_xiter.C support.C: add debug.h
+
+	* math_macro.h: remove debug.h, remove typedefs
+
+	* math_macro.C: remove FORMS_H_LOCATION, and LString.h, remove
+	extern decls.
+
+	* math_hash.C: change some defines to int const. change use of
+	LM_TC_NORMAL to LM_TC_VAR
+
+	* math_draw.C: delete file
+
+	* math_defs.h (MATH_DEFS): dont define byte here, remove unneded
+	forward decls. remove LM_TC_NORMAL, move inline methods to
+	support.C (and support.h)
+
+	* math_cursor.C: move several previous inlined methods here
+
+	* math_bigopinset.h math_dotsinset.h math_funcinset.h
+	math_parinset.h math_spaceinset.h: add math_defs.h
+
+	* math_accentinset.h: add support.h and math_defs.h
+
+	* formulamacro.C math_cursor.C math_iter.h math_write.C: add support.h
+
+	* formula.h: remove unused func decl: OpenMathInset
+
+	* formula.C math_inset.h: get rid of math_defs.h
+
+	* array.h: switch to support.h instead of math_defs.h
+
+	* array.C: remove one include
+
+	* Makefile.am (libmathed_la_SOURCES): remove math_draw.C
+
+	* math_panel.C (deco_cb): move the sizeof/sizeof to a const int.
+
 	* math_parser.C: include macrotable and macrotemplate
 
 	* math_macrotemplate.[Ch]: new files

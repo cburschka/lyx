@@ -9,6 +9,7 @@
 #include "math_deliminset.h"
 #include "math_fracinset.h"
 #include "math_parinset.h"
+#include "debug.h"
 
 
 MathMacroTable MathMacroTable::mathMTable;

@@ -9,6 +9,7 @@
 #include "Painter.h"
 #include "matriz.h"
 #include "symbol_def.h"
+#include "debug.h"
 
 using std::sort;
 using std::lower_bound;
@@ -456,3 +457,112 @@ math_deco_struct const * search_deco(int code)
 	return 0;
 }
 #endif
+
+
+bool MathIsInset(short x)
+{
+	return LM_TC_INSET <= x && x <= LM_TC_ACTIVE_INSET;
+}
+
+
+bool MathIsFont(short x)
+{
+	return LM_TC_CONST <= x && x <= LM_TC_BSYM;
+}
+
+
+bool MathIsAlphaFont(short x)
+{
+	return LM_TC_VAR <= x && x <= LM_TC_TEXTRM;
+}
+
+
+bool MathIsActive(short x)
+{
+	return LM_TC_INSET < x && x <= LM_TC_ACTIVE_INSET;
+}
+
+
+bool MathIsUp(short x)
+{
+	return x == LM_TC_UP;
+}
+
+
+bool MathIsDown(short x)
+{
+	return x == LM_TC_DOWN;
+}
+
+
+bool MathIsScript(short x)
+{
+	return x == LM_TC_DOWN || x == LM_TC_UP;
+}
+
+
+bool MathIsBOPS(short x)
+{
+	return MathedLookupBOP(x) > LMB_NONE;
+}
+
+
+bool MathIsBinary(short x)
+{
+    return x == LM_TC_BOP || x == LM_TC_BOPS;
+}
+
+
+bool MathIsSymbol(short x) {
+    return LM_TC_SYMB <= x && x <= LM_TC_BSYM;
+}
+     
+
+bool is_eqn_type(short int type)
+{
+	return type >= LM_OT_MIN && type < LM_OT_MATRIX;
+}
+
+
+bool is_matrix_type(short int type)
+{
+	return type == LM_OT_MATRIX;
+}
+
+
+bool is_multiline(short int type)
+{
+	return type >= LM_OT_MPAR && type < LM_OT_MATRIX;
+}
+
+
+bool is_ams(short int type)
+{
+	return type > LM_OT_MPARN && type < LM_OT_MATRIX;
+}
+
+
+bool is_singlely_numbered(short int type)
+{
+	return type == LM_OT_PARN || type == LM_OT_MULTLINEN;
+}
+
+
+bool is_multi_numbered(short int type)
+{
+	return type == LM_OT_MPARN || type == LM_OT_ALIGNN
+		|| type == LM_OT_ALIGNATN;
+}
+
+
+bool is_numbered(short int type)
+{
+	return is_singlely_numbered(type) || is_multi_numbered(type);
+}
+
+
+bool is_multicolumn(short int type)
+{
+	return type == LM_OT_ALIGN || type == LM_OT_ALIGNN
+		|| type == LM_OT_ALIGNAT || type == LM_OT_ALIGNATN;
+}

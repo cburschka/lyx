@@ -3,6 +3,7 @@
 #define MATH_BIGOPINSET_H
 
 #include "math_inset.h"
+#include "math_defs.h"
 
 /// big operators
 class MathBigopInset: public MathedInset {

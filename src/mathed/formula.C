@@ -39,14 +39,13 @@
 #include "font.h"
 #include "support/lyxlib.h"
 #include "lyxrc.h"
-#include "math_defs.h"
 #include "math_inset.h"
 #include "math_parinset.h"
 #include "math_matrixinset.h"
 #include "math_rowst.h"
 #include "math_spaceinset.h"
 #include "math_deliminset.h"
-#include "support.h"
+#include "mathed/support.h"
 
 using std::ostream;
 using std::istream;

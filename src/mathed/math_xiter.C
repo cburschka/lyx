@@ -5,6 +5,7 @@
 #include "math_rowst.h"
 #include "array.h"
 #include "mathed/support.h"
+#include "debug.h"
 
 using std::endl;
 

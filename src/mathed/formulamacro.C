@@ -33,6 +33,7 @@
 #include "Painter.h"
 #include "font.h"
 #include "support/lyxlib.h"
+#include "mathed/support.h"
 
 using std::ostream;
 using std::istream;

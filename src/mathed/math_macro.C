@@ -16,13 +16,11 @@
  */
 
 #include <config.h>
-#include FORMS_H_LOCATION
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include "LString.h"
 #include "math_macro.h"
 #include "array.h"
 #include "math_iter.h"
@@ -45,9 +43,6 @@ ostream & operator<<(ostream & o, MathedTextCodes mtc)
 	return o << int(mtc);
 }
 
-
-//extern int mathed_string_width(short type, int style, string const & s);
-//extern int mathed_string_height(short, int, string const &, int &, int &);
 
 MathMacro::MathMacro(MathMacroTemplate * t): 
 	MathParInset(LM_ST_TEXT, "", LM_OT_MACRO), tmplate(t)
@@ -80,6 +75,7 @@ MathMacro::MathMacro(MathMacro * m):
 	}
 }
 
+
 MathMacro::~MathMacro()
 {
 	for (idx = 0; idx < nargs; ++idx) {
@@ -110,7 +106,8 @@ void MathMacro::Metrics()
 
 void MathMacro::draw(Painter & pain, int x, int y)
 {
-	xo = x;  yo = y;
+	xo = x;
+	yo = y;
 	Metrics();
 	tmplate->update(this);
 	tmplate->SetStyle(size);
@@ -157,7 +154,8 @@ int MathMacro::GetColumns() const
 
 void MathMacro::GetXY(int & x, int & y) const
 {
-	x = args_[idx].x;  y = args_[idx].y;
+	x = args_[idx].x;
+	y = args_[idx].y;
 }
 
 

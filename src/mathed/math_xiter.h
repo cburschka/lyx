@@ -5,6 +5,7 @@
 #include "math_iter.h"
 
 struct MathedRowSt;
+class MathParInset;
 
 /**
    A graphic iterator (updates position.) Used for

@@ -241,11 +241,12 @@ void deco_cb(FL_OBJECT *, long data)
     case MM_APPLY:
     case MM_OK:
       { 
-	 int i = fl_get_bmtable(fd_deco->menu);
+	 int const i = fl_get_bmtable(fd_deco->menu);
+	 int const l = sizeof(deco_code)/sizeof(deco_code[0]);
 	 // ideally the callback should not be called if the index is
 	 // greater than the maxitem of the bmtable, but I do not know
 	 // how to enforce that (JMarc)
-	 if (i <= sizeof(deco_code)/sizeof(deco_code[0])) {
+	 if (i <= l) {
 	   lyxfunc->Dispatch(LFUN_INSERT_MATH, deco_code[i]);
 	   if (data == MM_APPLY) break;
 	 }

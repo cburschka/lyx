@@ -3,6 +3,8 @@
 #define MATH_ACCENTINSET_H
 
 #include "math_inset.h"
+#include "mathed/support.h"
+#include "math_defs.h"
 
 /// Accents
 class MathAccentInset: public MathedInset {

@@ -22,9 +22,7 @@
 #endif
 
 #include <vector>
-
 #include "math_parinset.h"
-#include "debug.h"
 
 class MathMacroTemplate;
 
@@ -71,14 +69,15 @@ public:
 	MathedTextCodes getTCode() const;
 	///
 	bool Permit(short) const;
-    
 private:
 	///
 	MathMacroTemplate * tmplate;
 	///
 	struct MacroArgumentBase {
 		/// Position of the macro
-		int x, y;
+		int x;
+		///
+		int y;
 		///
 		MathedRowSt * row;
 		///
@@ -96,10 +95,4 @@ private:
 	///
 	friend class MathMacroTemplate;
 };
-
-///
-//typedef MathMacro * MathMacroP;
-///
-//typedef MathMacroTemplate * MathMacroTemplateP;
-
 #endif

@@ -2,6 +2,7 @@
 #define MATH_SPACEINSET_H
 
 #include "math_inset.h"
+#include "math_defs.h"
 
 /// Smart spaces
 class MathSpaceInset: public MathedInset  {
@@ -19,7 +20,7 @@ public:
 	///
 	void SetSpace(int sp);
 	///
-	int GetSpace() { return space; }
+	int GetSpace();
 protected:
 	///
 	int space;

@@ -6,8 +6,6 @@
 #endif
 
 #include "array.h"
-#include "math_defs.h"
-
 
 // Is this still needed? (Lgb)
 static inline

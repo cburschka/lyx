@@ -1,7 +1,7 @@
 #include <config.h>
 
 #include "math_accentinset.h"
-#include "support.h"
+#include "mathed/support.h"
 #include "math_parser.h"
 
 

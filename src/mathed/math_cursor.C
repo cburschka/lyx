@@ -40,6 +40,7 @@
 #include "math_decorationinset.h"
 #include "math_dotsinset.h"
 #include "math_accentinset.h"
+#include "mathed/support.h"
 
 static MathedArray * selarray = 0;
 
@@ -376,6 +377,7 @@ MathMatrixInset * create_multiline(short int type, int cols)
 	mt->SetAlign(' ', align);
 	return mt;
 }
+
 
 void MathedCursor::Insert(byte c, MathedTextCodes t)
 {  
@@ -1099,4 +1101,70 @@ void MathedCursor::toggleLastCode(MathedTextCodes t)
 		lastcode = LM_TC_VAR;
 	else
 		lastcode = t;
+}
+
+
+void MathedCursor::GetPos(int & x, int & y)
+{
+	cursor->GetPos(x, y);
+}
+
+
+short MathedCursor::GetFCode()
+{
+	return cursor->FCode();
+}
+
+
+MathParInset * MathedCursor::GetPar()
+{
+	return par;
+}
+
+
+MathParInset * MathedCursor::getCurrentPar() const
+{
+	return cursor->p;
+}
+
+
+string const & MathedCursor::getLabel() const
+{
+	return cursor->getLabel();
+}
+
+
+bool MathedCursor::IsEnd() const
+{
+	return !cursor->OK();
+}
+
+
+bool MathedCursor::InMacroMode()
+{
+	return macro_mode;
+}
+
+
+bool MathedCursor::Selection()
+{
+	return selection;
+}
+
+
+void MathedCursor::clearLastCode()
+{
+	lastcode = LM_TC_MIN;
+}
+
+
+void MathedCursor::setLastCode(MathedTextCodes t)
+{
+	lastcode = t;
+}
+
+
+MathedTextCodes MathedCursor::getLastCode() const
+{
+	return lastcode;
 }

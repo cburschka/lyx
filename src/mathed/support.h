@@ -10,6 +10,8 @@
 #endif
 
 class Painter;
+class MathedArray;
+class MathParInset;
 
 struct math_deco_struct {
 	int code;
@@ -31,4 +33,78 @@ extern int mathed_string_height(short type, int size, string const & s,
 				int & asc, int & des);
 extern int mathed_string_width(short type, int size, string const & s);
 extern math_deco_struct const * search_deco(int code);
+
+/// math_parser.C
+extern
+MathedArray * mathed_parse(unsigned flags, MathedArray * data,
+			    MathParInset ** mt);
+/// math_write.C
+extern
+void mathed_write(MathParInset *, std::ostream &, int *, bool fragile,
+		  string const & label = string());
+
+/// math_parser.C
+extern
+void mathed_parser_file(std::istream &, int);
+/// math_parser.C
+extern
+int mathed_parser_lineno();
+/// math_utils.C
+extern
+int MathedLookupBOP(short);
+
+extern
+bool MathIsInset(short x);
+
+extern
+bool MathIsFont(short x);
+
+extern
+bool MathIsAlphaFont(short x);
+
+extern
+bool MathIsActive(short x);
+
+extern
+bool MathIsUp(short x);
+
+extern
+bool MathIsDown(short x);
+
+extern
+bool MathIsScript(short x);
+
+extern
+bool MathIsBOPS(short x);
+
+extern
+bool MathIsBinary(short x);
+
+extern
+bool MathIsSymbol(short x);
+
+extern
+bool is_eqn_type(short int type);
+
+extern
+bool is_matrix_type(short int type);
+
+extern
+bool is_multiline(short int type);
+
+extern
+bool is_ams(short int type);
+
+extern
+bool is_singlely_numbered(short int type);
+
+extern
+bool is_multi_numbered(short int type);
+
+extern
+bool is_numbered(short int type);
+
+extern
+bool is_multicolumn(short int type);
+
 #endif

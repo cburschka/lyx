@@ -3,8 +3,10 @@
 #define MATH_PARINSET_H
 
 #include "math_inset.h"
+#include "math_defs.h"
 
 struct MathedRowSt;
+class MathedArray;
 
 
 /** The math paragraph base class, base to all editable math objects */
@@ -31,11 +33,11 @@ class MathParInset: public MathedInset  {
     /// Data is stored in a LyXArray
     virtual void SetData(MathedArray *);
     ///
-    virtual MathedArray * GetData() { return array; }
+    virtual MathedArray * GetData();
     /// Paragraph position
     virtual void GetXY(int &, int &) const;
     ///
-    virtual void setXY(int x, int y) { xo = x;  yo = y; }
+    virtual void setXY(int x, int y);
     ///
     virtual void SetFocus(int, int) {}
     ///
@@ -65,7 +67,7 @@ class MathParInset: public MathedInset  {
     ///
     virtual void setRowSt(MathedRowSt *) {}
     ///
-    virtual bool Permit(short f) const { return bool(f & flag); }
+    virtual bool Permit(short f) const;
  protected:
     /// Paragraph data is stored here
     MathedArray * array;
@@ -77,7 +79,7 @@ class MathParInset: public MathedInset  {
     short flag;
  private:
     ///
-    virtual void setFlag(MathedParFlag f) { flag |= f; }
+    virtual void setFlag(MathedParFlag f);
     ///
     friend class InsetFormula;
     ///
@@ -91,40 +93,4 @@ class MathParInset: public MathedInset  {
 };
 
 
-inline
-bool MathParInset::Inside(int x, int y) 
-{
-  return (x >= xo && x <= xo + width && y <= yo + descent && y >= yo - ascent);
-}
-
-
-inline
-void MathParInset::GetXY(int & x, int & y) const
-{
-   x = xo; y = yo;
-}
-
-
-inline
-void MathParInset::UserSetSize(short sz)
-{
-   if (sz >= 0) {
-       size = sz;      
-       flag = flag & ~LMPF_FIXED_SIZE;
-   }
-}
-
-
-inline
-void MathParInset::SetStyle(short sz) 
-{
-    if (Permit(LMPF_FIXED_SIZE)) {
-	if (Permit(LMPF_SCRIPT)) 
-	  sz = (sz < LM_ST_SCRIPT) ? LM_ST_SCRIPT: LM_ST_SCRIPTSCRIPT;
-	if (Permit(LMPF_SMALLER) && sz < LM_ST_SCRIPTSCRIPT) {
-	    ++sz;
-	} 
-	MathedInset::SetStyle(sz);
-    }
-}
 #endif

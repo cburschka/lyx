@@ -23,11 +23,11 @@
 #pragma interface
 #endif
 
-#include "math_iter.h" 
-//#include "math_inset.h"
 #include "math_xiter.h"
 
 class MathFuncInset;
+class MathParInset;
+class Painter;
 
 
 /// This is the external interface of Mathed's subkernel
@@ -69,13 +69,13 @@ public:
 	///
 	void SetPos(int, int);
 	///
-	void GetPos(int & x, int & y) { cursor->GetPos(x, y); }
+	void GetPos(int & x, int & y);
 	///
-	short GetFCode() { return cursor->FCode(); }
+	short GetFCode();
 	///
-	MathParInset * GetPar() { return par; }
+	MathParInset * GetPar();
 	///
-	MathParInset * getCurrentPar() const { return cursor->p; }
+	MathParInset * getCurrentPar() const;
 	///
 	void SetPar(MathParInset *);
 	///
@@ -87,9 +87,7 @@ public:
 	///
 	void setLabel(string const &);
 	///
-	string const & getLabel() const {
-		return cursor->getLabel();
-	}
+	string const & getLabel() const;
 	///
 	bool Limits();
 	/// Set accent: if argument = 0 it's considered consumed 
@@ -97,18 +95,18 @@ public:
 	/// Returns last accent
 	int getAccent() const;
 	///
-	bool IsEnd() const { return !cursor->OK(); }
+	bool IsEnd() const;
 	// Macro mode methods
 	///
 	void MacroModeOpen();
 	///
 	void MacroModeClose();
 	///
-	bool InMacroMode() { return macro_mode; }
+	bool InMacroMode();
 	
 	// Local selection methods
 	///
-	bool Selection() { return selection; }
+	bool Selection();
 	///
 	void SelCopy();
 	///
@@ -126,13 +124,13 @@ public:
 	///
 	void SelGetArea(int ** xp, int ** yp, int & n);
 	///
-	void clearLastCode() { lastcode = LM_TC_MIN; }
+	void clearLastCode();
 	///
-	void setLastCode(MathedTextCodes t) { lastcode = t; }
+	void setLastCode(MathedTextCodes t);
 	///
 	void toggleLastCode(MathedTextCodes t);
 	///
-	MathedTextCodes getLastCode() const { return lastcode; }
+	MathedTextCodes getLastCode() const;
 	
 protected:
 	///

@@ -2,6 +2,7 @@
 #define MATH_DOTSINSET_H
 
 #include "math_inset.h"
+#include "math_defs.h"
 
 ///
 class MathDotsInset: public MathedInset {

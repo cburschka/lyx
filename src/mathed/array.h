@@ -18,7 +18,7 @@
 
 #include <vector>
 
-#include "math_defs.h"
+#include "mathed/support.h"
 
 class MathedInset;
 

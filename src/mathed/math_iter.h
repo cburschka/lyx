@@ -24,9 +24,12 @@
 #pragma interface
 #endif
 
+#include "mathed/support.h"
 #include "math_defs.h"
 
 class MathedInset;
+class MathedArray;
+class MathParInset;
 
 ///
 enum mathIterFlags {

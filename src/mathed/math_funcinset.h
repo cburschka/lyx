@@ -2,6 +2,7 @@
 #define MATH_FUNCINSET_H
 
 #include "math_inset.h"
+#include "math_defs.h"
 
 /**
  Functions or LaTeX names for objects that I don't know how to draw.

@@ -128,10 +128,4 @@ private:
 	///
 	string label;
 };
-
-
-// If a mathinset exist at cursor pos, just lock it.
-// Otherwise create a new one, and lock it.
-bool OpenMathInset(Buffer *);
-
 #endif
