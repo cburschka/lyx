@@ -412,7 +412,9 @@ bool saveParamsAsDefault(BufferParams const &params)
 	defaults.params = params;
 
 	// add an empty paragraph. Is this enough?
-	defaults.paragraphs.set(new Paragraph);
+	Paragraph * par = new Paragraph;
+	par->layout(params.getLyXTextClass().defaultLayout());
+	defaults.paragraphs.set(par);
 
 	return defaults.writeFile(defaults.fileName());
 }
