@@ -1,7 +1,27 @@
 2002-08-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* insettext.C: include <boost/bind.hpp>
+	add using std::for_each
+	(saveLyXTextState): use ParagraphsList::iterator
+	(init): use for_each on paragraphlist iterators
+	(InsetText): remove superflous setting cached_bview to 0
+	(latex): reformat a bit
+	(ascii): use paragraphlist iterators
+	(validate): use for_each + boost bind
+	(getLabelList): use paragraphlist iterators
+	(deleteLyXText): use for_each + boost::bind
+	(resizeLyXText): ditto
+	(reinitLyXText): ditto
+	(removeNewlines): use paragraphlist iterators
+	(getParFromID): ditto
+	(paragraph): use for_each + boost::bind
+	(getInsetFromID): use paragraphlist iterators
+
+2002-08-14  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* insettext.C (read): assign tmp to paragraphs after return from
 	call to parseSingleLyXformat2Token
+	
 
 2002-08-13  Angus Leeming  <leeming@lyx.org>
 

@@ -50,6 +50,8 @@
 #include "support/lstrings.h"
 #include "support/lyxalgo.h" // lyx::count
 
+#include <boost/bind.hpp>
+
 #include <fstream>
 #include <algorithm>
 #include <cstdlib>
@@ -63,6 +65,7 @@ using std::max;
 using std::make_pair;
 using std::vector;
 using std::pair;
+using std::for_each;
 
 using lyx::pos_type;
 using lyx::textclass_type;
@@ -77,14 +80,14 @@ extern int greek_kb_flag;
 void InsetText::saveLyXTextState(LyXText * t) const
 {
 	// check if my paragraphs are still valid
-	Paragraph * p = &*(paragraphs.begin());
-	while (p) {
-		if (p == t->cursor.par())
+	ParagraphList::iterator it = paragraphs.begin();
+	ParagraphList::iterator end = paragraphs.end();
+	for (; it != end; ++it) {
+		if (&*it == t->cursor.par())
 			break;
-		p = p->next();
 	}
 
-	if (p && t->cursor.pos() <= p->size()) {
+	if (it != end && t->cursor.pos() <= it->size()) {
 		sstate.lpar = t->cursor.par();
 		sstate.pos = t->cursor.pos();
 		sstate.boundary = t->cursor.boundary();
@@ -170,11 +173,9 @@ void InsetText::init(InsetText const * ins, bool same_id)
 		if (same_id)
 			id_ = ins->id_;
 	} else {
-		Paragraph * p = &*(paragraphs.begin());
-		while (p) {
-			p->setInsetOwner(this);
-			p = p->next();
-		}
+		for_each(paragraphs.begin(), paragraphs.end(),
+			 boost::bind(&Paragraph::setInsetOwner, _1, this));
+
 		the_locking_inset = 0;
 		drawFrame_ = NEVER;
 		frame_color = LColor::insetframe;
@@ -201,10 +202,6 @@ void InsetText::init(InsetText const * ins, bool same_id)
 
 InsetText::~InsetText()
 {
-	cached_bview = 0;
-
-	// NOTE
-
 	paragraphs.clear();
 }
 
@@ -1543,24 +1540,27 @@ InsetText::localDispatch(FuncRequest const & ev)
 }
 
 
-int InsetText::latex(Buffer const * buf, ostream & os, bool moving_arg, bool) const
+int InsetText::latex(Buffer const * buf, ostream & os,
+		     bool moving_arg, bool) const
 {
 	TexRow texrow;
-	buf->latexParagraphs(os, &*(paragraphs.begin()), 0, texrow, moving_arg);
+	buf->latexParagraphs(os, &*(paragraphs.begin()), 0,
+			     texrow, moving_arg);
 	return texrow.rows();
 }
 
 
 int InsetText::ascii(Buffer const * buf, ostream & os, int linelen) const
 {
-	Paragraph * p = &*(paragraphs.begin());
 	unsigned int lines = 0;
 
-	while (p) {
-		string const tmp = buf->asciiParagraph(p, linelen, p->previous()==0);
+	ParagraphList::iterator beg = paragraphs.begin();
+	ParagraphList::iterator end = paragraphs.end();
+	ParagraphList::iterator it = beg;
+	for (; it != end; ++it) {
+		string const tmp = buf->asciiParagraph(&*it, linelen, it == beg);
 		lines += lyx::count(tmp.begin(), tmp.end(), '\n');
 		os << tmp;
-		p = p->next();
 	}
 	return lines;
 }
@@ -1721,11 +1721,8 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 
 void InsetText::validate(LaTeXFeatures & features) const
 {
-	Paragraph * p = &*(paragraphs.begin());
-	while (p) {
-		p->validate(features);
-		p = p->next();
-	}
+	for_each(paragraphs.begin(), paragraphs.end(),
+		 boost::bind(&Paragraph::validate, _1, boost::ref(features)));
 }
 
 
@@ -1961,15 +1958,15 @@ vector<string> const InsetText::getLabelList() const
 {
 	vector<string> label_list;
 
-	Paragraph * tpar = &*(paragraphs.begin());
-	while (tpar) {
-		InsetList::iterator beg = tpar->insetlist.begin();
-		InsetList::iterator end = tpar->insetlist.end();
+	ParagraphList::iterator pit = paragraphs.begin();
+	ParagraphList::iterator pend = paragraphs.begin();
+	for (; pit != pend; ++pit) {
+		InsetList::iterator beg = pit->insetlist.begin();
+		InsetList::iterator end = pit->insetlist.end();
 		for (; beg != end; ++beg) {
 			vector<string> const l = beg.getInset()->getLabelList();
 			label_list.insert(label_list.end(), l.begin(), l.end());
 		}
-		tpar = tpar->next();
 	}
 	return label_list;
 }
@@ -2287,10 +2284,8 @@ void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
 	it->second.remove = true;
 	if (recursive) {
 		/// then remove all LyXText in text-insets
-		Paragraph * p = &*(paragraphs.begin());
-		for (; p; p = p->next()) {
-			p->deleteInsetsLyXText(bv);
-		}
+		for_each(paragraphs.begin(), paragraphs.end(),
+			 boost::bind(&Paragraph::deleteInsetsLyXText, _1, bv));
 	}
 }
 
@@ -2325,9 +2320,10 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 
 	LyXText * t = it->second.text.get();
 	saveLyXTextState(t);
-	for (Paragraph * p = &*(paragraphs.begin()); p; p = p->next()) {
-		p->resizeInsetsLyXText(bv);
-	}
+
+	for_each(paragraphs.begin(), paragraphs.end(),
+		 boost::bind(&Paragraph::resizeInsetsLyXText, _1, bv));
+
 	t->init(bv, true);
 	restoreLyXTextState(bv, t);
 	if (the_locking_inset) {
@@ -2357,17 +2353,17 @@ void InsetText::reinitLyXText() const
 	do_reinit = false;
 	do_resize = 0;
 //	lyxerr << "InsetText::reinitLyXText\n";
-	for(Cache::iterator it = cache.begin(); it != cache.end(); ++it) {
+	for (Cache::iterator it = cache.begin(); it != cache.end(); ++it) {
 		lyx::Assert(it->second.text.get());
 
 		LyXText * t = it->second.text.get();
 		BufferView * bv = it->first;
 
 		saveLyXTextState(t);
-		for (Paragraph * p = &*(paragraphs.begin());
-		     p; p = p->next()) {
-			p->resizeInsetsLyXText(bv);
-		}
+
+		for_each(paragraphs.begin(), paragraphs.end(),
+			 boost::bind(&Paragraph::resizeInsetsLyXText, _1, bv));
+
 		t->init(bv, true);
 		restoreLyXTextState(bv, t);
 		if (the_locking_inset) {
@@ -2390,11 +2386,13 @@ void InsetText::removeNewlines()
 {
 	bool changed = false;
 
-	for (Paragraph * p = &*(paragraphs.begin()); p; p = p->next()) {
-		for (int i = 0; i < p->size(); ++i) {
-			if (p->getChar(i) == Paragraph::META_NEWLINE) {
+	ParagraphList::iterator it = paragraphs.begin();
+	ParagraphList::iterator end = paragraphs.end();
+	for (; it != end; ++it) {
+		for (int i = 0; i < it->size(); ++i) {
+			if (it->getChar(i) == Paragraph::META_NEWLINE) {
 				changed = true;
-				p->erase(i);
+				it->erase(i);
 			}
 		}
 	}
@@ -2468,29 +2466,18 @@ void InsetText::clearInset(BufferView * bv, int baseline, bool & cleared) const
 
 Paragraph * InsetText::getParFromID(int id) const
 {
-#if 0
-	Paragraph * result = par;
-	Paragraph * ires = 0;
-	while (result && result->id() != id) {
-		if ((ires = result->getParFromID(id)))
-			return ires;
-		result = result->next();
-	}
-	return result;
-#else
-	Paragraph * tmp = &*(paragraphs.begin());
-	while (tmp) {
-		if (tmp->id() == id) {
-			return tmp;
+	ParagraphList::iterator it = paragraphs.begin();
+	ParagraphList::iterator end = paragraphs.end();
+	for (; it != end; ++it) {
+		if (it->id() == id) {
+			return &*(it);
 		}
-		Paragraph * tmp2 = tmp->getParFromID(id);
+		Paragraph * tmp2 = it->getParFromID(id);
 		if (tmp2 != 0) {
 			return tmp2;
 		}
-		tmp = tmp->next();
 	}
 	return 0;
-#endif
 }
 
 
@@ -2533,11 +2520,9 @@ void InsetText::paragraph(Paragraph * p)
 	// and are done!
 	paragraphs.set(p);
 	// set ourself as owner for all the paragraphs inserted!
-	Paragraph * np = &*(paragraphs.begin());
-	while (np) {
-		np->setInsetOwner(this);
-		np = np->next();
-	}
+	for_each(paragraphs.begin(), paragraphs.end(),
+		 boost::bind(&Paragraph::setInsetOwner, _1, this));
+
 	reinitLyXText();
 	// redraw myself when asked for
 	need_update = INIT;
@@ -2549,20 +2534,18 @@ Inset * InsetText::getInsetFromID(int id_arg) const
 	if (id_arg == id())
 		return const_cast<InsetText *>(this);
 
-	Paragraph * lp = &*(paragraphs.begin());
-
-	while (lp) {
-		for (InsetList::iterator it = lp->insetlist.begin(),
-			 en = lp->insetlist.end();
-			 it != en; ++it)
-		{
+	ParagraphList::iterator pit = paragraphs.begin();
+	ParagraphList::iterator pend = paragraphs.end();
+	for (; pit != pend; ++pit) {
+		InsetList::iterator it = pit->insetlist.begin();
+		InsetList::iterator end = pit->insetlist.end();
+		for (; it != end; ++it) {
 			if (it.getInset()->id() == id_arg)
 				return it.getInset();
 			Inset * in = it.getInset()->getInsetFromID(id_arg);
 			if (in)
 				return in;
 		}
-		lp = lp->next();
 	}
 	return 0;
 }
