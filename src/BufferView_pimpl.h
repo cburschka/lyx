@@ -15,8 +15,6 @@
 #include "frontends/key_state.h"
 #include "frontends/mouse_state.h"
 #include "frontends/LyXKeySym.h"
-#include "box.h"
-#include "insets/insetspecialchar.h"
 #include "support/types.h"
 
 #include <boost/scoped_ptr.hpp>
@@ -73,8 +71,7 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	/// wheel mouse scroll
 	int scroll(long time);
 	///
-	void workAreaKeyPress(LyXKeySymPtr key,
-			      key_modifier::state state);
+	void workAreaKeyPress(LyXKeySymPtr key, key_modifier::state state);
 	///
 	void workAreaMotionNotify(int x, int y, mouse_button::state state);
 	///
@@ -122,22 +119,8 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	bool dispatch(FuncRequest const & ev);
 private:
-	/**
-	 * Return the on-screen dimensions of the inset at the cursor.
-	 * Pre-condition: the cursor must be at an inset.
-	 */
-	Box insetDimensions(LyXText const & text, LyXCursor const & cursor) const;
-	/**
-	 * check if the given co-ordinates are inside an inset at the
-	 * given cursor, if one exists. If so, the inset is returned,
-	 * and the co-ordinates are made relative. Otherwise, 0 is returned.
-	 */
-	Inset * checkInset(LyXText const & text, LyXCursor const & cursor,
-			   int & x, int & y) const;
 	///
 	friend class BufferView;
-	///
-	void hfill();
 
 	///
 	BufferView * bv_;
