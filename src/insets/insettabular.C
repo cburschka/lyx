@@ -2223,10 +2223,11 @@ FuncStatus InsetTabular::getStatus(string const & what) const
 			break;
 		}
 	}
-	if (action == LyXTabular::LAST_ACTION)
+	if (action == LyXTabular::LAST_ACTION) {
 		status.clear();
 		return status.unknown(true);
-
+	}
+	
 	string const argument = frontStrip(what.substr(tabularFeature[i].feature.length()));
 
 	int sel_row_start;

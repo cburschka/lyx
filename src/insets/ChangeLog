@@ -1,3 +1,8 @@
+2002-01-11  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insettabular.C (getStatus): add forgotten brace around multiline
+	if statement.
+
 2002-01-09  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* insetfloat.C (validate): require "float" instead of "floats".
