@@ -346,7 +346,7 @@ void LyXAction::init()
 		{ LFUN_GETFONT, "server-get-font", "", ReadOnly },
 		{ LFUN_GETLAYOUT, "server-get-layout", "", ReadOnly },
 		{ LFUN_GETNAME, "server-get-name", "", ReadOnly },
-		{ LFUN_GETTIP, "server-get-tip", "", ReadOnly },
+		{ LFUN_GETTIP, "server-get-tip", "", NoBuffer },
 		{ LFUN_GETXY, "server-get-xy", "", ReadOnly },
 		{ LFUN_GOTOFILEROW, "server-goto-file-row", "", Noop },
 		{ LFUN_NOTIFY, "server-notify", "", ReadOnly },
@@ -564,7 +564,7 @@ string const LyXAction::helpText(int pseudoaction) const
 	}
 
 	if (help.empty()) {
-		help = _("No description available!");
+		help = N_("No description available!");
 	} else if (!ev.argument.empty()) {
 		help += ' ';
 		help += ev.argument;

@@ -31,6 +31,7 @@ What's new
   level operation like selection by double-click or index entry
   defaults.
 
+- update the aastex textclass to AASTeX 5.2
 
 ** Bug fixes
 
@@ -65,9 +66,11 @@ What's new
 
 - Fix math fonts display in LyX/Mac.
 
-- fix font metrics problems with Qt/Win 3.2.1
+- Fix font metrics problems with Qt/Win 3.2.1
 
 - Fix bindings for depth-increment/decrement for LyX/Mac.
+
+- Fix server function server-get-tip [Bug 1781]
 
 
 * Configuration/Installation:

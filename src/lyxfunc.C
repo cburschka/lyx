@@ -1349,7 +1349,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	case LFUN_GETTIP:
 	{
 		int const qa = lyxaction.LookupFunc(argument);
-		setMessage(lyxaction.helpText(static_cast<kb_action>(qa)));
+		setMessage(lyxaction.helpText(qa));
 	}
 	break;
 

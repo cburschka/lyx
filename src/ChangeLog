@@ -1,6 +1,13 @@
-2005-01-31  Michael Schmitt  <michael.schmitt-anKbl+W3y9xg9hUCZPvPmw@public.gmane.org>
+2005-02-08  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* lyxrc.C: text message fixed
+	* lyxfunc.C (dispatch): remove a bogus cast (bug 1781)
+
+	* LyXAction.C (helpText): do not translate error message (bug 1781).
+	(init): LFUN_GETTIP does not require a buffer (bug 1781).
+
+2005-01-31  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* lyxrc.C: text message fixed.
 
 2005-01-20  Angus Leeming  <leeming@lyx.org>
 
