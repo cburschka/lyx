@@ -116,6 +116,12 @@ void BufferView::updateScrollbar()
 }
 
 
+void BufferView::scrollCB(double value)
+{
+	pimpl_->scrollCB(value);
+}
+
+
 Inset * BufferView::checkInsetHit(LyXText * text, int & x, int & y,
 				  unsigned int button)
 {

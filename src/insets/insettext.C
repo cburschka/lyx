@@ -291,7 +291,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 
     // if top_x differs we have a rule down and we don't have to clear anything
     if (!cleared && (top_x == int(x)) &&
-	((need_update==FULL) || (top_baseline!=baseline)))
+	((need_update==INIT)||(need_update==FULL)||(top_baseline!=baseline)))
     {
 	int w =  insetWidth;
 	int h = insetAscent + insetDescent;

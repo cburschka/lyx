@@ -54,6 +54,15 @@ int LyXText::workWidth(BufferView * bview) const
 }
 
 
+int LyXText::GetRealCursorX(BufferView * bview) const
+{
+	int x = cursor.x();
+	if (the_locking_inset && (the_locking_inset->getLyXText(bview)!=this))
+		x = the_locking_inset->getLyXText(bview)->GetRealCursorX(bview);
+	return x;
+}
+
+
 unsigned char LyXText::TransformChar(unsigned char c, LyXParagraph * par,
 			LyXParagraph::size_type pos) const
 {

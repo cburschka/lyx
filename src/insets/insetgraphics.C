@@ -176,7 +176,7 @@ InsetGraphics::InsetGraphics()
 InsetGraphics::~InsetGraphics()
 {
 	// Emits the hide signal to the dialog connected (if any)
-	hide();
+	hideDialog();
 }
 
 char const *

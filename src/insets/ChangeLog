@@ -1,3 +1,28 @@
+2001-02-19  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* insetcommand.h:
+	* inseterror.h:
+	* insetgraphics.C: change name of "hide" signal to "hideDialog",
+	consistent with InsetTabular.
+	
+2001-02-19  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (LocalDispatch): implement PAGE up/down.
+
+	* insettext.C (draw): clear all of it on need_update==INIT too!
+
+	* insettabular.C (InsetUnlock): always clear the selection.
+
+	* inset.C (scroll): normally we only want to scroll the inset until
+	it is fully visible so if top_x + offset > 20 then just set scx to 0.
+
+2001-02-14  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (LocalDispatch): remove x_fix as it is not used.
+	(resetPos): fixed scroll behaviour.
+	(LocalDispatch): do an update if moving cursor inside a table cell
+	requests a scroll of the tabular.
+
 2001-02-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* insettext.C (textWidth): constify local var

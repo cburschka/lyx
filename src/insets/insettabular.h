@@ -178,8 +178,8 @@ public:
     // Public structures and variables
     ///
     LyXTabular * tabular;
-	///
-	Signal0<void> hideDialog;
+    ///
+    Signal0<void> hideDialog;
 
 private:
     ///
@@ -271,6 +271,8 @@ private:
     mutable int actcol;
     ///
     mutable int actrow;
+    ///
+    mutable int first_visible_cell;
     ///
     bool no_selection;
     ///

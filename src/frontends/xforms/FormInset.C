@@ -81,7 +81,7 @@ void FormCommand::showInset(InsetCommand * inset)
 
 	inset_    = inset;
 	params    = inset->params();
-	ih_ = inset->hide.connect(slot(this, &FormCommand::hide));
+	ih_ = inset->hideDialog.connect(slot(this, &FormCommand::hide));
 	show();
 }
 

@@ -118,11 +118,11 @@ void FormTabular::build()
 	fl_set_input_return(column_options_->input_column_width,
 			    FL_RETURN_END);
 	fl_set_input_return(column_options_->input_special_alignment,
-			    FL_RETURN_CHANGED);
+			    FL_RETURN_END);
 	fl_set_input_return(cell_options_->input_mcolumn_width,
-			    FL_RETURN_CHANGED);
+			    FL_RETURN_END);
 	fl_set_input_return(cell_options_->input_special_multialign,
-			    FL_RETURN_CHANGED);
+			    FL_RETURN_END);
 
 	fl_addto_tabfolder(dialog_->tabFolder, _("Tabular"),
 			   tabular_options_->form);

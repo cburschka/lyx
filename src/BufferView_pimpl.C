@@ -242,6 +242,8 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	LyXParagraph * par = 0;
 	LyXParagraph * selstartpar = 0;
 	LyXParagraph * selendpar = 0;
+	UpdatableInset * the_locking_inset;
+	
 	int pos = 0;
 	int selstartpos = 0;
 	int selendpos = 0;
@@ -261,6 +263,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		selendpos = bv_->text->sel_end_cursor.pos();
 		selection = bv_->text->selection;
 		mark_set = bv_->text->mark_set;
+		the_locking_inset = bv_->text->the_locking_inset;
 		delete bv_->text;
 		bv_->text = new LyXText(bv_);
 	} else {
@@ -298,6 +301,8 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 			bv_->text->sel_cursor = bv_->text->cursor;
 			bv_->text->selection = false;
 		}
+		// remake the inset locking
+		bv_->text->the_locking_inset = the_locking_inset;
 	}
 	bv_->text->first = screen_->TopCursorVisible(bv_->text);
 	buffer_->resizeInsets(bv_);

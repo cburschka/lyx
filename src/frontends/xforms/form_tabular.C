@@ -28,7 +28,7 @@ FD_form_tabular * FormTabular::build_tabular()
   fdui->tabFolder = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 0, 0, 505, 250, _("Tabbed folder"));
     fl_set_object_resize(obj, FL_RESIZE_ALL);
   {
-    char const * const dummy = N_("Close|^[^M");
+    char const * const dummy = N_("Close|^[");
     fdui->button_close = obj = fl_add_button(FL_NORMAL_BUTTON, 415, 260, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }

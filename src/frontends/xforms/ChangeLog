@@ -1,3 +1,17 @@
+2001-02-19  Juergen Vigna  <jug@sad.it>
+
+	* FormTabular.C (build): make all input field accepted only after
+	a "RETURN".
+
+	* forms/form_tabular.fd: removed default "Return" on Close-Button.
+
+2001-02-19  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormError.C:
+	* FormGraphics.C:
+	* FormInset.C (showInset): change associated with name change
+	inset::hide to inset::hideDialog.
+
 2001-02-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormCitation.C (build): altering "Text after" now activates the Ok,

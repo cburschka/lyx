@@ -35,7 +35,7 @@ public:
 	explicit
 	InsetError(string const &);
 	///
-	~InsetError() { hide(); }
+	~InsetError() { hideDialog(); }
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
@@ -73,7 +73,8 @@ public:
 	///
 	string const & getContents() const { return contents; }
 	///
-	Signal0<void> hide;
+	Signal0<void> hideDialog;
+
 private:
 	///
 	string contents;

@@ -191,7 +191,8 @@ void UpdatableInset::scroll(BufferView * bv, int offset) const
 	if (!scx && top_x >= 20)
 	    return;
 	if ((top_x + offset) > 20)
-	    scx += offset - (top_x - scx + offset - 20);
+	    scx = 0;
+//	    scx += offset - (top_x - scx + offset - 20);
 	else
 	    scx += offset;
     } else {

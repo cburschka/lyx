@@ -76,6 +76,8 @@ public:
 	UpdatableInset * the_locking_inset;
 
 	///
+	int GetRealCursorX(BufferView *) const;
+	///
 	LyXFont const GetFont(Buffer const *, LyXParagraph * par,
 			LyXParagraph::size_type pos) const;
 	///

@@ -527,7 +527,7 @@ void Buffer::markBakClean()
 
 
 inline
-void Buffer::setUnnamed(bool flag = true)
+void Buffer::setUnnamed(bool flag)
 {
 	unnamed = flag;
 }
@@ -578,7 +578,7 @@ BufferView * Buffer::getUser() const
 
 
 inline  
-void Buffer::Buffer::setParentName(string const & name)
+void Buffer::setParentName(string const & name)
 {
 	params.parentname = name;    
 }

@@ -100,7 +100,8 @@ public:
 	/** This signal is connected by our dialog and called when the inset
 	    is deleted.
 	*/
-	Signal0 <void> hide;
+	Signal0 <void> hideDialog;
+
 private:
 	/// Update the inset after parameter change.
 	void updateInset() const;

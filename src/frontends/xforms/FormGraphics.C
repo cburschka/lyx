@@ -178,7 +178,7 @@ void FormGraphics::showDialog(InsetGraphics * inset)
 
 	inset_ = inset;
 
-	ih_ = inset_->hide.connect(slot(this, &FormGraphics::hide));
+	ih_ = inset_->hideDialog.connect(slot(this, &FormGraphics::hide));
 	show();
 }
 
