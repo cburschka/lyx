@@ -28,9 +28,9 @@ public:
 	static MathMacro * cloneTemplate(string const &);
 	///
 	static void createTemplate(string const &, int, string const &);
-private:
 	///
 	static void builtinMacros();
+private:
 	///
 	typedef std::map<string, MathMacroTemplate *> table_type;
 	//

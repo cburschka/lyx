@@ -39,6 +39,7 @@
 #include "font.h"
 #include "math_arrayinset.h"
 #include "math_spaceinset.h"
+#include "math_macrotable.h"
 #include "support/lyxlib.h"
 #include "mathed/support.h"
 #include "undo_funcs.h"
@@ -125,7 +126,12 @@ MathArrayInset * matrixpar(int & idx)
 
 InsetFormulaBase::InsetFormulaBase(MathInset * par)
 	: par_(par)
-{}
+{
+#ifdef WITH_WARNINGS
+#warning This is needed as long the math parser is not re-entrant
+#endif
+	MathMacroTable::builtinMacros();
+}
 
 
 InsetFormulaBase::InsetFormulaBase(InsetFormulaBase const & f)

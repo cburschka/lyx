@@ -101,7 +101,7 @@ void MathMacroTable::builtinMacros()
 
 	built = true;
     
-	lyxerr[Debug::MATHED] << "Building macros" << endl;
+	//lyxerr[Debug::MATHED] << "Building macros" << endl;
    
 /* 
 	// This macro doesn't have arguments

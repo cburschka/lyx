@@ -323,7 +323,7 @@ int yylex()
 					yyis->putback(c);
 				//lyxerr[Debug::MATHED] << "reading: text '" << yytext << "'\n";
 				latexkeys const * l = in_word_set(yytext);
-				if (!l)
+				if (!l) 
 					return LM_TK_UNDEF;
 
 				if (l->token == LM_TK_BEGIN || l->token == LM_TK_END) { 
@@ -511,18 +511,19 @@ void handle_frac(MathArray & array, string const & name)
 
 void mathed_parse(MathArray & array, unsigned flags)
 {
-	int t = yylex();
-	bool panic = false;
 	static int plevel = -1;
-	yyvarcode = LM_TC_VAR;
-	
-	int brace  = 0;
-	int limits = 0;
 
 	++plevel;
+	yyvarcode = LM_TC_VAR;
+
+	int  t      = yylex();
+	bool panic  = false;
+	int  brace  = 0;
+	int  limits = 0;
+
 	while (t) {
-		//lyxerr << "t: " << t << " flags: " << flags << " i: " << yylval.i << "\n";
-		//	<< " plevel: " << plevel << " ";
+		//lyxerr << "t: " << t << " flags: " << flags << " i: " << yylval.i
+		//	<< " '" << yytext << "'\n";
 		//array.dump(lyxerr);
 		//lyxerr << "\n";
 
@@ -753,6 +754,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 		
 		case LM_TK_UNDEF: 
 			if (MathMacroTable::hasTemplate(yytext)) {
+				lyxerr << "@@@ Found macro!\n";
 				MathMacro * m = MathMacroTable::cloneTemplate(yytext);
 				for (int i = 0; i < m->nargs(); ++i) 
 					mathed_parse(m->cell(i), FLAG_ITEM);
