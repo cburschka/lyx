@@ -429,11 +429,9 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		par->params().startOfAppendix(start);
 
 		// we can set the refreshing parameters now
-		status(cmd.view(), LyXText::NEED_MORE_REFRESH);
 		updateCounters(cmd.view());
 		redoHeightOfParagraph(bv);
-		refresh_y = 0;
-		refresh_row = 0;
+		postPaint(*cmd.view(), 0);
 		setCursor(cmd.view(), cursor.par(), cursor.pos());
 		update(bv);
 		break;

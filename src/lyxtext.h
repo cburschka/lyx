@@ -211,6 +211,22 @@ public:
 	/// Set the status to make a paint pending.
 	void status(BufferView *, text_status) const;
 
+	/// clear any pending paints
+	void clearPaint();
+
+	/// post notice that we changed during a draw
+	void postChangedInDraw();
+
+	/**
+	 * Mark position y as the starting point for a repaint
+	 */
+	void postPaint(BufferView & bv, int start_y);
+
+	/**
+	 * Mark the given row at position y as needing a repaint.
+	 */
+	void postRowPaint(BufferView & bv, Row * row, int start_y);
+
 	///
 	Inset::RESULT dispatch(FuncRequest const & cmd);
 

@@ -79,12 +79,11 @@ void LyXText::init(BufferView * bview, bool reinit)
 		}
 
 		lastrow = 0;
-		refresh_row = 0;
 		need_break_row = 0;
 		width = height = 0;
 		copylayouttype.erase();
-		top_y(refresh_y = 0);
-		status_ = LyXText::UNCHANGED;
+		top_y(0);
+		clearPaint();
 	} else if (firstrow)
 		return;
 
@@ -2487,6 +2486,72 @@ void LyXText::status(BufferView * bview, LyXText::text_status new_status) const
 	// We are an inset's lyxtext. Tell the top-level lyxtext
 	// it needs to update the row we're in.
 	t->status(bview, NEED_VERY_LITTLE_REFRESH);
+	if (!t->refresh_row) {
+		t->refresh_row = t->cursor.row();
+		t->refresh_y = t->cursor.y() - t->cursor.row()->baseline();
+	}
+}
+
+
+void LyXText::clearPaint()
+{
+	status_ = UNCHANGED;
+	refresh_row = 0;
+	refresh_y = 0;
+}
+
+
+void LyXText::postChangedInDraw()
+{
+	status_ = CHANGED_IN_DRAW;
+}
+
+
+void LyXText::postPaint(BufferView & bv, int start_y)
+{
+	status_ = NEED_MORE_REFRESH;
+	refresh_y = start_y;
+	refresh_row = 0;
+
+	if (!inset_owner)
+		return;
+		
+	// We are an inset's lyxtext. Tell the top-level lyxtext
+	// it needs to update the row we're in.
+
+	LyXText * t = bv.text;
+
+	// FIXME: but what if this row is below ?
+	if (!t->refresh_row) {
+		t->refresh_row = t->cursor.row();
+		t->refresh_y = t->cursor.y() - t->cursor.row()->baseline();
+	}
+}
+
+
+// FIXME: we should probably remove this y parameter,
+// make refresh_y be 0, and use row->y etc.
+void LyXText::postRowPaint(BufferView & bv, Row * row, int start_y)
+{
+	// FIXME: shouldn't this check that we're not updating
+	// above the existing refresh_y ??
+	if (status_ == NEED_MORE_REFRESH)
+		return;
+
+	status_ = NEED_VERY_LITTLE_REFRESH;
+	refresh_y = start_y;
+	refresh_row = row;
+
+	if (!inset_owner)
+		return;
+		
+	// We are an inset's lyxtext. Tell the top-level lyxtext
+	// it needs to update the row we're in.
+
+	LyXText * t = bv.text;
+
+	// FIXME: but what if this new row is above ?
+	// Why the !t->refresh_row at all ?
 	if (!t->refresh_row) {
 		t->refresh_row = t->cursor.row();
 		t->refresh_y = t->cursor.y() - t->cursor.row()->baseline();

@@ -100,7 +100,6 @@ void InsetText::saveLyXTextState(LyXText * t) const
 		sstate.selendboundary = t->selection.end.boundary();
 		sstate.selection = t->selection.set();
 		sstate.mark_set = t->selection.mark();
-		sstate.refresh = t->refresh_row != 0;
 	} else {
 		sstate.lpar = 0;
 	}
@@ -109,26 +108,24 @@ void InsetText::saveLyXTextState(LyXText * t) const
 
 void InsetText::restoreLyXTextState(BufferView * bv, LyXText * t) const
 {
-	if (sstate.lpar) {
-		t->selection.set(true);
-		/* at this point just to avoid the Delete-Empty-Paragraph
-		 * Mechanism when setting the cursor */
-		t->selection.mark(sstate.mark_set);
-		if (sstate.selection) {
-			t->setCursor(bv, sstate.selstartpar, sstate.selstartpos,
-				     true, sstate.selstartboundary);
-			t->selection.cursor = t->cursor;
-			t->setCursor(bv, sstate.selendpar, sstate.selendpos,
-				     true, sstate.selendboundary);
-			t->setSelection(bv);
-			t->setCursor(bv, sstate.lpar, sstate.pos);
-		} else {
-			t->setCursor(bv, sstate.lpar, sstate.pos, true, sstate.boundary);
-			t->selection.cursor = t->cursor;
-			t->selection.set(false);
-		}
-		if (sstate.refresh) {
-		}
+	if (!sstate.lpar)
+		return;
+
+	t->selection.set(true);
+	/* at this point just to avoid the DEPM when setting the cursor */
+	t->selection.mark(sstate.mark_set);
+	if (sstate.selection) {
+		t->setCursor(bv, sstate.selstartpar, sstate.selstartpos,
+			     true, sstate.selstartboundary);
+		t->selection.cursor = t->cursor;
+		t->setCursor(bv, sstate.selendpar, sstate.selendpos,
+			     true, sstate.selendboundary);
+		t->setSelection(bv);
+		t->setCursor(bv, sstate.lpar, sstate.pos);
+	} else {
+		t->setCursor(bv, sstate.lpar, sstate.pos, true, sstate.boundary);
+		t->selection.cursor = t->cursor;
+		t->selection.set(false);
 	}
 }
 

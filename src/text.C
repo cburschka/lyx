@@ -1453,19 +1453,19 @@ void LyXText::breakParagraph(BufferView * bview,
 		cursorLeft(bview);
 	}
 
-	status(bview, LyXText::NEED_MORE_REFRESH);
-	refresh_row = cursor.row();
-	refresh_y = cursor.y() - cursor.row()->baseline();
+	int y = cursor.y() - cursor.row()->baseline();
 
 	// Do not forget the special right address boxes
 	if (layout->margintype == MARGIN_RIGHT_ADDRESS_BOX) {
-		while (refresh_row->previous() &&
-		       refresh_row->previous()->par() == refresh_row->par())
-		{
-			refresh_row = refresh_row->previous();
-			refresh_y -= refresh_row->height();
+		Row * r = cursor.row();
+		while (r->previous() && r->previous()->par() == r->par()) {
+			r = r->previous();
+			y -= r->height();
 		}
 	}
+
+	postPaint(*bview, y);
+
 	removeParagraph(cursor.row());
 
 	// set the dimensions of the cursor row
@@ -1660,9 +1660,8 @@ void LyXText::insertChar(BufferView * bview, char c)
 			setHeightOfRow(bview, row->previous());
 
 			y -= row->previous()->height();
-			refresh_y = y;
-			refresh_row = row->previous();
-			status(bview, LyXText::NEED_MORE_REFRESH);
+
+			postPaint(*bview, y);
 
 			breakAgainOneRow(bview, row);
 
@@ -1695,9 +1694,7 @@ void LyXText::insertChar(BufferView * bview, char c)
 	}
 
 	if (c == Paragraph::META_INSET || row->fill() < 0) {
-		refresh_y = y;
-		refresh_row = row;
-		status(bview, LyXText::NEED_MORE_REFRESH);
+		postPaint(*bview, y);
 		breakAgainOneRow(bview, row);
 		// will the cursor be in another row now?
 		if (row->lastPos() <= cursor.pos() + 1 && row->next()) {
@@ -1720,15 +1717,16 @@ void LyXText::insertChar(BufferView * bview, char c)
 		else
 			need_break_row = 0;
 	} else {
-		refresh_y = y;
-		refresh_row = row;
-
+		// FIXME: similar code is duplicated all over - make resetHeightOfRow
 		int const tmpheight = row->height();
+
 		setHeightOfRow(bview, row);
-		if (tmpheight == row->height())
-			status(bview, LyXText::NEED_VERY_LITTLE_REFRESH);
-		else
-			status(bview, LyXText::NEED_MORE_REFRESH);
+
+		if (tmpheight == row->height()) {
+			postRowPaint(*bview, row, y);
+		} else {
+			postPaint(*bview, y);
+		}
 
 		current_font = rawtmpfont;
 		real_current_font = realtmpfont;
@@ -2344,11 +2342,9 @@ void LyXText::changeCase(BufferView & bview, LyXText::TextCase action)
 
 		++pos;
 	}
-	if (to.row() != from.row()) {
-		refresh_y = from.y() - from.row()->baseline();
-		refresh_row = from.row();
-		status(&bview, LyXText::NEED_MORE_REFRESH);
-	}
+
+	if (to.row() != from.row())
+		postPaint(bview, from.y() - from.row()->baseline());
 }
 
 
@@ -2468,9 +2464,7 @@ void LyXText::backspace(BufferView * bview)
 				int const tmpheight = cursor.row()->height();
 				setHeightOfRow(bview, cursor.row());
 				if (cursor.row()->height() != tmpheight) {
-					refresh_y = cursor.y() - cursor.row()->baseline();
-					refresh_row = cursor.row();
-					status(bview, LyXText::NEED_MORE_REFRESH);
+					postPaint(*bview, cursor.y() - cursor.row()->baseline());
 				}
 				return;
 			}
@@ -2524,9 +2518,7 @@ void LyXText::backspace(BufferView * bview)
 				if (cursor.pos())
 					cursor.pos(cursor.pos() - 1);
 
-			status(bview, LyXText::NEED_MORE_REFRESH);
-			refresh_row = cursor.row();
-			refresh_y = cursor.y() - cursor.row()->baseline();
+			postPaint(*bview, cursor.y() - cursor.row()->baseline());
 
 			// remove the lost paragraph
 			// This one is not safe, since the paragraph that the tmprow and the
@@ -2655,9 +2647,8 @@ void LyXText::backspace(BufferView * bview)
 				tmprow->fill(fill(*bview, *tmprow, workWidth(*bview)));
 				setHeightOfRow(bview, tmprow);
 
-				refresh_y = y;
-				refresh_row = tmprow;
-				status(bview, LyXText::NEED_MORE_REFRESH);
+				postPaint(*bview, y);
+
 				setCursor(bview, cursor.par(), cursor.pos(),
 					  false, cursor.boundary());
 				//current_font = rawtmpfont;
@@ -2683,9 +2674,7 @@ void LyXText::backspace(BufferView * bview)
 			if (row->lastPos() == row->par()->size() - 1)
 				removeRow(row->next());
 
-			refresh_y = y;
-			refresh_row = row;
-			status(bview, LyXText::NEED_MORE_REFRESH);
+			postPaint(*bview, y);
 
 			breakAgainOneRow(bview, row);
 			// will the cursor be in another row now?
@@ -2706,12 +2695,11 @@ void LyXText::backspace(BufferView * bview)
 			row->fill(fill(*bview, *row, workWidth(*bview)));
 			int const tmpheight = row->height();
 			setHeightOfRow(bview, row);
-			if (tmpheight == row->height())
-				status(bview, LyXText::NEED_VERY_LITTLE_REFRESH);
-			else
-				status(bview, LyXText::NEED_MORE_REFRESH);
-			refresh_y = y;
-			refresh_row = row;
+			if (tmpheight == row->height()) {
+				postRowPaint(*bview, row, y);
+			} else {
+				postPaint(*bview, y);
+			}
 			setCursor(bview, cursor.par(), cursor.pos(), false, cursor.boundary());
 		}
 	}
