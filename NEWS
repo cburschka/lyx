@@ -1,3 +1,26 @@
+What's new in LyX version 1.1.4?
+--------------------------------
+
+More internals have been rethought. In particular, most of the file IO
+routines of LyX have been rewritten to use real C++ streams. Many
+changes have also been done to help compile LyX with Sun CC 5.0 and
+SGI STL 3.2. 
+
+In the user-visible department, we find:
+
+- new command line option -x (or --execute) and -e (or --export). Now
+  direct conversion from .lyx to .tex (.dvi, .ps, ...) is possible
+  ('lyx file.lyx --export latex') Unfortunately, X is still needed and
+  the GUI pops up during the process...
+
+- better placement of accents for characters that LyX draws by itself;
+
+- improved translations, in particular in finnish (overhauled UI
+  translation), dutch (tutorial and examples), german
+
+And of course, a lot of old bugs have been replaced by new ones ;)
+
+
 What's new in LyX version 1.1.3?
 --------------------------------
 

@@ -16,6 +16,9 @@
 #include <cstring>
 #include <cstdlib>
 
+#include <fstream>
+using std::ifstream;
+
 #include "LString.h"
 #include "support/lstrings.h"
 #include "lyx_main.h"

@@ -17,6 +17,12 @@
 #endif
 
 #include <config.h>
+
+#include <fstream>
+using std::ifstream;
+using std::ofstream;
+using std::ios;
+
 #include <sys/types.h>
 #include <utime.h>
 #include "bufferlist.h"

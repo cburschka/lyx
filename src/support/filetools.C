@@ -18,6 +18,9 @@
 
 #include <cctype>
 #include <fstream>
+using std::fstream;
+using std::ios;
+
 #include <utility>
 using std::make_pair;
 using std::pair;

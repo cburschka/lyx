@@ -17,6 +17,7 @@
 #else
 #include <strstream>
 #endif
+using std::istringstream;
 
 #include "support/LOstream.h"
 

@@ -12,6 +12,8 @@
 #endif
 
 #include <fstream>
+using std::filebuf;
+
 #include "LString.h"
 
 ///

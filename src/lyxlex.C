@@ -16,6 +16,8 @@
 #include "debug.h"
 #include "support/filetools.h"
 
+using std::ios;
+
 LyXLex::LyXLex(keyword_item * tab, int num)
 	: is(&fb__), table(tab), no_items(num)
 {

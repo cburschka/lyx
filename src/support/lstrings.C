@@ -1,6 +1,7 @@
 #include <config.h>
 
 #include <algorithm>
+
 #ifdef __GLIBCPP__
 #include <ctype.h>
 #else
@@ -13,6 +14,7 @@
 #else
 #include <strstream>
 #endif
+using std::ostringstream;
 
 #include "LString.h"
 #include "lstrings.h"

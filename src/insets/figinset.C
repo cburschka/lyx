@@ -41,6 +41,7 @@ extern long int background_pixels;
 #include <cmath>
 #include <fstream>
 using std::ofstream;
+using std::ifstream;
 
 #include "figinset.h"
 #include "lyx.h"

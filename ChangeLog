@@ -1,3 +1,21 @@
+2000-01-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+
+	* src/buffer.C (pop_tag): fix a dubious for() loop initialization.
+	Did I get that right?
+
+	* src/lyxlex.h: add a "using" directive or two.
+	* src/Spacing.h: ditto.
+	* src/insets/figinset.C: ditto.
+	* src/support/filetools.C: ditto.
+	* src/support/lstrings.C: ditto.
+	* src/BufferView.C: ditto.
+	* src/bufferlist.C: ditto.
+	* src/lyx_cb.C: ditto.
+	* src/lyxlex.C: ditto.
+
+	* NEWS: add some changes for 1.1.4.
+	
 2000-01-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/BufferView.C: first go at a TextCache to speed up switching
@@ -202,7 +220,7 @@
 	defined.
 
 	* src/bmtable.c: new file, a C'ified copy of bmtable.C, this is
-	compiled by a C compilator not C++. 
+	compiled by a C compiler not C++. 
 
 	* src/layout.h (LyXTextClass): added typedef for const_iterator
 	(LyXTextClassList): added typedef for const_iterator + member
@@ -310,8 +328,8 @@
 	ENABLE_ASSERTIONS 
 	* src/support/lyxstring.h: ditto
 
-	* src/Bullet.[Ch]: replace DEBUG_AS_DEFAULT by
-	ENABLE_ASSERTIONS. Use LAssert.h instead of plain assert(). 
+	* src/Bullet.[Ch]: replace DEBUG_AS_DEFAULT by ENABLE_ASSERTIONS.
+	Use LAssert.h instead of plain assert().
 
 	* src/support/lstrings.h: add LAssert.h, in case it is needed.
 

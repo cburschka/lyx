@@ -12,6 +12,8 @@
 #include <config.h>
 
 #include <algorithm>
+using std::for_each;
+
 #include <cstdlib>
 #include <csignal>
 
@@ -119,10 +121,11 @@ BufferView::~BufferView()
 // Among others this mean:
 //        - When a document is closed all trace of it must be removed from
 //          the TextCache.
-// Senarios:
-//    I belive there are only three possible senarios where the two first
+// Scenarios:
+//    I believe there are only three possible scenarios where the two first
 //    are also covered by the third.
-//        - The simplest senario is what we have now, a single BufferView only.
+//        - The simplest scenario is what we have now, a single
+//          BufferView only.  
 //          o Opening
 //            Nothing to do with the TextCache is done when opening a file.
 //          o Switching
@@ -130,12 +133,12 @@ BufferView::~BufferView()
 //            * A's text is cached in TextCache.
 //            * We make a search for a text in TextCache that fits B
 //              (same buffer and same width).
-//          o Horisontal resize
-//            If the BufferView's width (LyXView) is horisontaly changed all
-//            the entries in the TextCache is deleted. (This causes
+//          o Horizontal resize
+//            If the BufferView's width (LyXView) is horizontally changed all
+//            the entries in the TextCache are deleted. (This causes
 //            reformat of all loaded documents when next viewed)
 //          o Close
-//            When a buffer is closed we don't have to do anything, becuase
+//            When a buffer is closed we don't have to do anything, because
 //            to close a single buffer it is required to only exist in the
 //            BufferView and not in the TextCache. Upon LFUN_QUIT we
 //            don't really care since everything is deleted anyway.
@@ -150,7 +153,7 @@ BufferView::~BufferView()
 //            * If B is viewed in another BufferView we make a copy of its
 //              text and use that, else we search in TextCache for a match.
 //              (same buffer same width)
-//          o Horisontal resize
+//          o Horizontal resize
 //            If the BufferView's width (LyXView) is horisontaly changed all
 //            the entries in the TextCache is deleted. (This causes
 //            reformat of all loaded documents when next viewed)
@@ -163,7 +166,7 @@ BufferView::~BufferView()
 //            Nothing to do with the TextCache is done when opening a file.
 //          o Switching
 //            We switch from buffer A to buffer B.
-//          o Horisontal resize
+//          o Horisontal rezize
 //          o Close
 
 typedef vector<LyXText*> TextCache;
