@@ -30,6 +30,8 @@ struct FD_form_maths_panel {
 	FL_OBJECT *button_space;
 	FL_OBJECT *button_dots;
 	FL_OBJECT *button_varsize;
+	FL_OBJECT *button_sub;
+	FL_OBJECT *button_super;
 };
 
 #endif /* FD_form_maths_panel_h_ */

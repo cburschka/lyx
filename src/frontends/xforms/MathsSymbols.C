@@ -42,6 +42,8 @@ using std::strstr;
 #include "dots.xbm"
 #include "mathed/math_parser.h"
 #include "frac.xpm"
+#include "sub.xpm"
+#include "super.xpm"
 #include "sqrt.xpm"
 #include "delim.xbm"
 #include "delim.xpm"
@@ -146,6 +148,8 @@ static char const ** mathed_get_pixmap_from_icon(int d)
 	switch (d) {
 		case MM_FRAC: return frac;
 		case MM_SQRT: return sqrt_xpm;
+		case MM_SUPER: return super_xpm;
+		case MM_SUB: return sub_xpm;
 		case MM_DELIM: return delim;
 		case MM_MATRIX: return matrix;
 		case MM_EQU: return equation;

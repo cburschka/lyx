@@ -8,14 +8,14 @@ Unit of measure: FL_COORD_PIXEL
 
 =============== FORM ===============
 Name: form_maths_panel
-Width: 274
-Height: 226
-Number of Objects: 17
+Width: 260
+Height: 180
+Number of Objects: 19
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 274 226
+box: 0 0 260 180
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -33,7 +33,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 100 180 80 30
+box: 170 140 80 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -51,7 +51,7 @@ argument: 0
 --------------------
 class: FL_BROWSER
 type: SELECT_BROWSER
-box: 170 30 90 140
+box: 170 30 80 100
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP
@@ -160,7 +160,7 @@ argument: MM_MISC
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 130 50 30 30
+box: 130 40 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -178,7 +178,7 @@ argument: MM_EQU
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 10 20 30 30
+box: 10 10 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -196,7 +196,7 @@ argument: MM_SQRT
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 40 20 30 30
+box: 40 10 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -214,7 +214,7 @@ argument: MM_FRAC
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 70 20 30 30
+box: 70 10 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -232,7 +232,7 @@ argument: MM_DELIM
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 10 50 30 30
+box: 100 40 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -250,7 +250,7 @@ argument: MM_MATRIX
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 100 20 30 30
+box: 100 10 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -268,7 +268,7 @@ argument: MM_DECO
 --------------------
 class: FL_PIXMAPBUTTON
 type: NORMAL_BUTTON
-box: 130 20 30 30
+box: 130 10 30 30
 boxtype: FL_UP_BOX
 colors: FL_MCOL FL_BLUE
 alignment: FL_ALIGN_BOTTOM
@@ -318,6 +318,42 @@ gravity: FL_NoGravity FL_NoGravity
 name: button_varsize
 callback: C_FormBaseDeprecatedInputCB
 argument: MM_VARSIZE
+
+--------------------
+class: FL_PIXMAPBUTTON
+type: NORMAL_BUTTON
+box: 40 40 30 30
+boxtype: FL_UP_BOX
+colors: FL_MCOL FL_BLUE
+alignment: FL_ALIGN_BOTTOM
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_sub
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_SUB
+
+--------------------
+class: FL_PIXMAPBUTTON
+type: NORMAL_BUTTON
+box: 10 40 30 30
+boxtype: FL_UP_BOX
+colors: FL_MCOL FL_BLUE
+alignment: FL_ALIGN_BOTTOM
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_super
+callback: C_FormBaseDeprecatedInputCB
+argument: MM_SUPER
 
 ==============================
 create_the_forms

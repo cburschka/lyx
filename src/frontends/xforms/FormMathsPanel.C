@@ -41,6 +41,8 @@
 #include "matrix.xpm"
 #include "space.xpm"
 #include "sqrt.xpm"
+#include "sub.xpm"
+#include "super.xpm"
 
 #include "arrows.xbm"
 #include "bop.xbm"
@@ -137,6 +139,10 @@ void FormMathsPanel::build()
 			   const_cast<char**>(sqrt_xpm));
 	fl_set_pixmap_data(dialog_->button_frac,
 			   const_cast<char**>(frac));
+	fl_set_pixmap_data(dialog_->button_super,
+			   const_cast<char**>(super_xpm));
+	fl_set_pixmap_data(dialog_->button_sub,
+			   const_cast<char**>(sub_xpm));
 	fl_set_pixmap_data(dialog_->button_delim,
 			   const_cast<char**>(delim));
 	fl_set_pixmap_data(dialog_->button_deco,
@@ -222,6 +228,20 @@ bool FormMathsPanel::input(FL_OBJECT *, long data)
 
 	case MM_SQRT:
 		insertSymbol("sqrt");
+		break;
+
+	case MM_SUPER:
+		lv_->getLyXFunc()->dispatch(LFUN_SUPERSCRIPT);
+		break;
+
+	case MM_SUB:
+		lv_->getLyXFunc()->dispatch(LFUN_SUBSCRIPT);
+		break;
+
+	case MM_SUBSUPER:
+		lv_->getLyXFunc()->dispatch(LFUN_SUBSCRIPT);
+		lv_->getLyXFunc()->dispatch(LFUN_LEFT);
+		lv_->getLyXFunc()->dispatch(LFUN_SUPERSCRIPT);
 		break;
 
 	case MM_DELIM:
