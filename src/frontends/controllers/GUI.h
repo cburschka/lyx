@@ -28,6 +28,7 @@
 #include "ControlIndex.h"
 #include "ControlLog.h"
 #include "ControlMinipage.h"
+#include "ControlParagraph.h"
 #include "ControlPreamble.h"
 #include "ControlPrint.h"
 #include "ControlRef.h"
@@ -245,6 +246,18 @@ public:
 		: GUI<ControlFloat, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc>(lv, d) {}
 };
 
+/** Specialization for Paragraph dialog
+ */
+template <class GUIview, class GUIbc>
+class GUIParagraph : public GUI<ControlParagraph, GUIview,
+				OkApplyCancelReadOnlyPolicy, GUIbc>
+{
+public:
+	///
+	GUIParagraph(LyXView & lv, Dialogs & d)
+		: GUI<ControlParagraph, GUIview,
+		      OkApplyCancelReadOnlyPolicy, GUIbc>(lv, d) {}
+};
 
 /** Specialization for Preamble dialog
  */

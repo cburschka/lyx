@@ -34,6 +34,7 @@
 #include "form_include.h"
 #include "form_index.h"
 #include "form_minipage.h"
+#include "form_paragraph.h"
 #include "form_preamble.h"
 #include "form_print.h"
 #include "form_ref.h"
@@ -61,6 +62,7 @@
 #include "FormIndex.h"
 #include "FormLog.h"
 #include "FormMinipage.h"
+#include "FormParagraph.h"
 #include "FormPreamble.h"
 #include "FormPrint.h"
 #include "FormRef.h"
@@ -77,7 +79,6 @@
 
 #include "FormDocument.h"
 #include "FormMathsPanel.h"
-#include "FormParagraph.h"
 #include "FormPreferences.h"
 #include "FormTabular.h"
 
@@ -122,6 +123,8 @@ Dialogs::Dialogs(LyXView * lv)
 		    NoRepeatedApplyReadOnlyPolicy, xformsBC>(*lv, *this));
 	add(new GUI<ControlFloat, FormFloat,
 		    NoRepeatedApplyReadOnlyPolicy, xformsBC>(*lv, *this));
+	add(new GUI<ControlParagraph, FormParagraph,
+		    OkApplyCancelReadOnlyPolicy, xformsBC>(*lv, *this));
 	add(new GUI<ControlPreamble, FormPreamble,
 		    NoRepeatedApplyReadOnlyPolicy, xformsBC>(*lv, *this));
 	add(new GUI<ControlPrint, FormPrint,
@@ -153,7 +156,6 @@ Dialogs::Dialogs(LyXView * lv)
 
 	add(new FormDocument(lv, this));
 	add(new FormMathsPanel(lv, this));
-	add(new FormParagraph(lv, this));
 	add(new FormPreferences(lv, this));
 	add(new FormTabular(lv, this));
 

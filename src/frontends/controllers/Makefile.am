@@ -60,6 +60,8 @@ libcontrollers_la_SOURCES= \
 	ControlLog.h \
 	ControlMinipage.C \
 	ControlMinipage.h \
+	ControlParagraph.C \
+	ControlParagraph.h \
 	ControlPreamble.C \
 	ControlPreamble.h \
 	ControlPrint.C \

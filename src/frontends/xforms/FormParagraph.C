@@ -16,100 +16,29 @@
 
 #include "FormParagraph.h"
 #include "form_paragraph.h"
-#include "Dialogs.h"
-#include "Liason.h"
-#include "frontends/LyXView.h"
-#include "buffer.h"
-#include "lyxtext.h"
+#include "ControlParagraph.h"
 #include "xforms_helpers.h"
 #include "lyxrc.h" // to set the deafult length values
-#include "BufferView.h"
-#include "lyxtextclasslist.h"
-#include "Spacing.h"
-#include "ParagraphParameters.h"
 #include "input_validators.h"
 #include "helper_funcs.h"
+#include "gettext.h"
+#include "xformsBC.h"
+#include "layout.h" // LyXAlignment
 
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 
-#include <boost/bind.hpp>
-
 #include <functional>
 
-using Liason::setMinibuffer;
 using std::vector;
 using std::bind2nd;
 using std::remove_if;
 
-
-FormParagraph::FormParagraph(LyXView * lv, Dialogs * d)
-	: FormBaseBD(lv, d, _("Paragraph Layout")), par_(0)
-{
-	// let the dialog be shown
-	// This is a permanent connection so we won't bother
-	// storing a copy because we won't be disconnecting.
-	d->showParagraph = boost::bind(&FormParagraph::show, this);
-}
-
-
-void FormParagraph::connect()
-{
-	cp_ = d_->updateParagraph
-		.connect(boost::bind(&FormParagraph::changedParagraph, this));
-	FormBaseBD::connect();
-}
-
-
-void FormParagraph::disconnect()
-{
-	cp_.disconnect();
-	FormBaseBD::disconnect();
-}
-
-
-Paragraph const * FormParagraph::getCurrentParagraph() const
-{
-	return lv_->view()->getLyXText()->cursor.par();
-}
-
-
-void FormParagraph::changedParagraph()
-{
-	/// Record the paragraph
-	Paragraph const * const p = getCurrentParagraph();
-	if (p == 0) // this is wrong as we don't set par_ here! /* || p == par_) */
-		return;
-
-	// For now, don't bother checking if the params are different.
-
-	// Will the underlying paragraph accept our changes?
-	Inset * const inset = p->inInset();
-	bool const accept = !(inset && inset->forceDefaultParagraphs(inset));
-	bc().valid(accept);
-
-	if (!accept) {
-		postWarning(_("Cannot apply paragraph settings to this inset!"));
-	} else {
-		clearMessage();
-	}
-}
-
-
-void FormParagraph::redraw()
-{
-	if (form() && form()->visible)
-		fl_redraw_form(form());
-}
-
-
-FL_FORM * FormParagraph::form() const
-{
-	if (dialog_.get())
-		return dialog_->form;
-	return 0;
-}
-
+typedef FormCB<ControlParagraph, FormDB<FD_form_paragraph> > base_class;
+  
+FormParagraph::FormParagraph(ControlParagraph & c)
+	: base_class(c, _("Paragraph Layout"), false)
+{}
 
 void FormParagraph::build()
 {
@@ -163,31 +92,30 @@ void FormParagraph::build()
 	fl_addto_choice(dialog_->choice_value_space_below, units.c_str());
 
 	// Manage the ok, apply, restore and cancel/close buttons
-	bc_.setOK(dialog_->button_ok);
-	bc_.setApply(dialog_->button_apply);
-	bc_.setCancel(dialog_->button_close);
-	bc_.setRestore(dialog_->button_restore);
+	bc().setOK(dialog_->button_ok);
+	bc().setApply(dialog_->button_apply);
+	bc().setCancel(dialog_->button_close);
+	bc().setRestore(dialog_->button_restore);
 
-	bc_.addReadOnly(dialog_->radio_align_right);
-	bc_.addReadOnly(dialog_->radio_align_left);
-	bc_.addReadOnly(dialog_->radio_align_block);
-	bc_.addReadOnly(dialog_->radio_align_center);
-	bc_.addReadOnly(dialog_->check_lines_top);
-	bc_.addReadOnly(dialog_->check_lines_bottom);
-	bc_.addReadOnly(dialog_->check_pagebreaks_top);
-	bc_.addReadOnly(dialog_->check_pagebreaks_bottom);
-	bc_.addReadOnly(dialog_->choice_space_above);
-	bc_.addReadOnly(dialog_->input_space_above);
-	bc_.addReadOnly(dialog_->check_space_above);
-	bc_.addReadOnly(dialog_->choice_space_below);
-	bc_.addReadOnly(dialog_->input_space_below);
-	bc_.addReadOnly(dialog_->check_space_below);
-	bc_.addReadOnly(dialog_->choice_linespacing);
-	bc_.addReadOnly(dialog_->input_linespacing);
-	bc_.addReadOnly(dialog_->check_noindent);
-	bc_.addReadOnly(dialog_->input_labelwidth);
+	bc().addReadOnly(dialog_->radio_align_right);
+	bc().addReadOnly(dialog_->radio_align_left);
+	bc().addReadOnly(dialog_->radio_align_block);
+	bc().addReadOnly(dialog_->radio_align_center);
+	bc().addReadOnly(dialog_->check_lines_top);
+	bc().addReadOnly(dialog_->check_lines_bottom);
+	bc().addReadOnly(dialog_->check_pagebreaks_top);
+	bc().addReadOnly(dialog_->check_pagebreaks_bottom);
+	bc().addReadOnly(dialog_->choice_space_above);
+	bc().addReadOnly(dialog_->input_space_above);
+	bc().addReadOnly(dialog_->check_space_above);
+	bc().addReadOnly(dialog_->choice_space_below);
+	bc().addReadOnly(dialog_->input_space_below);
+	bc().addReadOnly(dialog_->check_space_below);
+	bc().addReadOnly(dialog_->choice_linespacing);
+	bc().addReadOnly(dialog_->input_linespacing);
+	bc().addReadOnly(dialog_->check_noindent);
+	bc().addReadOnly(dialog_->input_labelwidth);
 }
-
 
 namespace {
 
@@ -238,7 +166,6 @@ VSpace setVSpaceFromWidgets(FL_OBJECT * choice_type,
 	return space;
 }
 
-
 void validateVSpaceWidgets(FL_OBJECT * choice_type, FL_OBJECT * input_length)
 {
 	// Paranoia check!
@@ -257,36 +184,50 @@ void validateVSpaceWidgets(FL_OBJECT * choice_type, FL_OBJECT * input_length)
 
 } // namespace anon
 
-
 void FormParagraph::apply()
 {
-	if (!lv_->view()->available() || !dialog_.get())
-		return;
+	if (!form()) return;
 
+	/* spacing */
 	// If a vspace kind is "Length" but there's no text in
 	// the input field, reset the kind to "None".
 	validateVSpaceWidgets(dialog_->choice_space_above,
 			      dialog_->input_space_above);
-	validateVSpaceWidgets(dialog_->choice_space_below,
-			      dialog_->input_space_below);
-
-	bool const line_top = fl_get_button(dialog_->check_lines_top);
-	bool const line_bottom = fl_get_button(dialog_->check_lines_bottom);
-	bool const pagebreak_top = fl_get_button(dialog_->check_pagebreaks_top);
-	bool const pagebreak_bottom = fl_get_button(dialog_->check_pagebreaks_bottom);
-
+	
 	VSpace const space_top =
 		setVSpaceFromWidgets(dialog_->choice_space_above,
 				     dialog_->input_space_above,
 				     dialog_->choice_value_space_above,
 				     dialog_->check_space_above);
+	
+	controller().params().spaceTop(space_top);
+	
+	validateVSpaceWidgets(dialog_->choice_space_below,
+			      dialog_->input_space_below);
 
 	VSpace const space_bottom =
 		setVSpaceFromWidgets(dialog_->choice_space_below,
 				     dialog_->input_space_below,
 				     dialog_->choice_value_space_below,
 				     dialog_->check_space_below);
+	
+	controller().params().spaceBottom(space_bottom);
 
+	/* lines and pagebreaks */
+	bool const line_top = fl_get_button(dialog_->check_lines_top);
+	controller().params().lineTop(line_top);
+
+	bool const line_bottom = fl_get_button(dialog_->check_lines_bottom);
+	controller().params().lineBottom(line_bottom);
+
+	bool const pagebreak_top = fl_get_button(dialog_->check_pagebreaks_top);
+	controller().params().pagebreakTop(pagebreak_top);
+	
+	bool const pagebreak_bottom = fl_get_button(dialog_->check_pagebreaks_bottom);
+	controller().params().pagebreakBottom(pagebreak_bottom);
+	
+
+	/* alignment */
 	LyXAlignment align;
 	if (fl_get_button(dialog_->radio_align_left))
 		align = LYX_ALIGN_LEFT;
@@ -296,12 +237,18 @@ void FormParagraph::apply()
 		align = LYX_ALIGN_CENTER;
 	else
 		align = LYX_ALIGN_BLOCK;
-
+	controller().params().align(align);
+	
+	/* label width */
 	string const labelwidthstring =
 		getStringFromInput(dialog_->input_labelwidth);
+	controller().params().labelWidthString(labelwidthstring);
 
+	/* indendation */
 	bool const noindent = fl_get_button(dialog_->check_noindent);
+	controller().params().noindent(noindent);
 
+	/* get spacing */
 	Spacing::Space linespacing = Spacing::Default;
 	string other;
 	switch (fl_get_choice(dialog_->choice_linespacing)) {
@@ -324,19 +271,9 @@ void FormParagraph::apply()
 	}
 
 	Spacing const spacing(linespacing, other);
-
-	LyXText * text(lv_->view()->getLyXText());
-	text->setParagraph(lv_->view(), line_top, line_bottom, pagebreak_top,
-			   pagebreak_bottom, space_top, space_bottom, spacing,
-			   align, labelwidthstring, noindent);
-
-	// Actually apply these settings
-	lv_->view()->update(text,
-			    BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
-	lv_->buffer()->markDirty();
-	setMinibuffer(lv_, _("Paragraph layout set"));
+	controller().params().spacing(spacing);
+	
 }
-
 
 namespace {
 
@@ -397,34 +334,24 @@ void setWidgetsFromVSpace(VSpace const & space,
 
 } // namespace anon
 
-
 void FormParagraph::update()
 {
 	if (!dialog_.get())
 		return;
 
-	// Do this first; some objects may be de/activated subsequently.
-	bc_.readOnly(lv_->buffer()->isReadonly());
-
-	/// Record the paragraph
-	par_ = getCurrentParagraph();
-
-	fl_set_input(dialog_->input_labelwidth,
-		     par_->getLabelWidthString().c_str());
+	/* label width */
+	string labelwidth = controller().params().labelWidthString();
+	fl_set_input(dialog_->input_labelwidth, labelwidth.c_str());
 	setEnabled(dialog_->input_labelwidth,
-		   (par_->getLabelWidthString() != _("Senseless with this layout!")));
+		   labelwidth != _("Senseless with this layout!"));
 
+	/* alignment */
 	fl_set_button(dialog_->radio_align_right, 0);
 	fl_set_button(dialog_->radio_align_left, 0);
 	fl_set_button(dialog_->radio_align_center, 0);
 	fl_set_button(dialog_->radio_align_block, 0);
-
-	LyXTextClass const & tclass =
-		textclasslist[lv_->view()->buffer()->params.textclass];
-
-	int align = par_->getAlign();
-	if (align == LYX_ALIGN_LAYOUT)
-		align = tclass[par_->layout()].align;
+	
+	LyXAlignment align = controller().params().align();
 
 	switch (align) {
 	case LYX_ALIGN_RIGHT:
@@ -441,7 +368,7 @@ void FormParagraph::update()
 		break;
 	}
 
-	LyXAlignment alignpos = tclass[par_->layout()].alignpossible;
+	LyXAlignment alignpos = controller().alignPossible();
 
 	setEnabled(dialog_->radio_align_block,  bool(alignpos & LYX_ALIGN_BLOCK));
 	setEnabled(dialog_->radio_align_center, bool(alignpos & LYX_ALIGN_CENTER));
@@ -449,22 +376,25 @@ void FormParagraph::update()
 	setEnabled(dialog_->radio_align_right,  bool(alignpos & LYX_ALIGN_RIGHT));
 
 	// no inset-text-owned paragraph may have pagebreaks
-	setEnabled(dialog_->check_pagebreaks_top, !par_->inInset());
-	setEnabled(dialog_->check_pagebreaks_bottom, !par_->inInset());
+	bool ininset = controller().inInset();
+	setEnabled(dialog_->check_pagebreaks_top, !ininset);
+	setEnabled(dialog_->check_pagebreaks_bottom, !ininset);
 
+	/* lines, pagebreaks and indent */
 	fl_set_button(dialog_->check_lines_top,
-		      par_->params().lineTop());
+		      controller().params().lineTop());
 	fl_set_button(dialog_->check_lines_bottom,
-		      par_->params().lineBottom());
+		      controller().params().lineBottom());
 	fl_set_button(dialog_->check_pagebreaks_top,
-		      par_->params().pagebreakTop());
+		      controller().params().pagebreakTop());
 	fl_set_button(dialog_->check_pagebreaks_bottom,
-		      par_->params().pagebreakBottom());
+		      controller().params().pagebreakBottom());
 	fl_set_button(dialog_->check_noindent,
-		      par_->params().noindent());
+		      controller().params().noindent());
 
+	/* linespacing */
 	int linespacing;
-	Spacing const space = par_->params().spacing();
+	Spacing const space = controller().params().spacing();
 
 	switch (space.getSpace()) {
 	default: linespacing = 1; break;
@@ -484,29 +414,30 @@ void FormParagraph::update()
 		setEnabled(dialog_->input_linespacing, false);
 	}
 
-	setWidgetsFromVSpace(par_->params().spaceTop(),
+	/* vspace top */
+	setWidgetsFromVSpace(controller().params().spaceTop(),
 			     dialog_->choice_space_above,
 			     dialog_->input_space_above,
 			     dialog_->choice_value_space_above,
 			     dialog_->check_space_above);
 
-	setWidgetsFromVSpace(par_->params().spaceBottom(),
+	/* vspace bottom */
+	setWidgetsFromVSpace(controller().params().spaceBottom(),
 			     dialog_->choice_space_below,
 			     dialog_->input_space_below,
 			     dialog_->choice_value_space_below,
 			     dialog_->check_space_below);
 
+	/* no indent */
 	fl_set_button(dialog_->check_noindent,
-		      par_->params().noindent());
+		      controller().params().noindent());
 }
-
 
 namespace {
 
 void synchronizeSpaceWidgets(FL_OBJECT * choice_type,
 			     FL_OBJECT * input_length,
-			     FL_OBJECT * choice_length,
-			     bool readonly)
+			     FL_OBJECT * choice_length)
 {
 	// Paranoia check!
 	lyx::Assert(choice_type   && choice_type->objclass   == FL_CHOICE &&
@@ -519,8 +450,8 @@ void synchronizeSpaceWidgets(FL_OBJECT * choice_type,
 		setEnabled(choice_length, false);
 
 	} else {
-		setEnabled(input_length,  !readonly);
-		setEnabled(choice_length, !readonly);
+		setEnabled(input_length, true);
+		setEnabled(choice_length, true);
 
 		string const length = getStringFromInput(input_length);
 
@@ -550,8 +481,7 @@ bool validSpaceWidgets(FL_OBJECT * choice_type, FL_OBJECT * input_length)
 
 } // namespace anon
 
-
-bool FormParagraph::input(FL_OBJECT * ob, long)
+ButtonPolicy::SMInput FormParagraph::input(FL_OBJECT * ob, long)
 {
 	clearMessage();
 
@@ -560,19 +490,16 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
 	//
 	// "Synchronize" the choices and input fields, making it
 	// impossible to commit senseless data.
-
 	if (ob == dialog_->choice_space_above) {
 		synchronizeSpaceWidgets(dialog_->choice_space_above,
 					dialog_->input_space_above,
-					dialog_->choice_value_space_above,
-					lv_->buffer()->isReadonly());
+					dialog_->choice_value_space_above);
 	}
 
 	if (ob == dialog_->choice_space_below) {
 		synchronizeSpaceWidgets(dialog_->choice_space_below,
 					dialog_->input_space_below,
-					dialog_->choice_value_space_below,
-					lv_->buffer()->isReadonly());
+					dialog_->choice_value_space_below);
 	}
 
 	// Display a warning if the input is senseless
@@ -600,5 +527,7 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
 	if (choice_spacing == 5 && int(spacing) == 0)
 		valid = false;
 
-	return valid;
+	return ButtonPolicy::SMI_VALID;
 }
+
+

@@ -1,3 +1,10 @@
+2002-06-11  Edwin Leuven  <leuven@fee.uva.nl>
+ 
+ 	* FormParagraph.[Ch]: moved to mvc
+ 	* form_paragraph.[Ch]: idem
+ 	* forms/form_paragraph.fd: idem
+ 	* Dialogs.C: idem
+
 2002-06-06  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* GUIRunTime.C (initialiseGraphics): condition the choice of
@@ -11,7 +18,7 @@
 	* xformsGImage.h: use FLIMAGE_H_LOCATION to include flimage.h.
 
 2002-06-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
-
+ 
 	* FormMathsPanel.C: do not include ButtonController.tmpl
 	* FormPreferences.C: ditto
 	* xformsBC.C: ditto
