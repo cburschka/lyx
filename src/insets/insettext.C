@@ -485,8 +485,10 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 
 	lt->refresh_y = 0;
 	lt->status(bv, LyXText::UNCHANGED);
-	if ((need_update != CURSOR_PAR) &&
-	    ((drawFrame_ == ALWAYS) || ((drawFrame_ == LOCKED) && locked))) {
+	if ((drawFrame_ == ALWAYS) ||
+		((cleared || (need_update != CURSOR_PAR)) &&
+		 (drawFrame_ == LOCKED) && locked))
+	{
 		drawFrame(pain, cleared);
 	} else if (need_update & CLEAR_FRAME) {
 		clearFrame(pain, cleared);
