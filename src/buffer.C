@@ -2336,14 +2336,16 @@ bool Buffer::isSGML() const
 void Buffer::sgmlOpenTag(ostream & os, int depth,
 			 string const & latexname) const
 {
-	os << string(depth, ' ') << "<" << latexname << ">\n";
+	if (latexname != "!-- --")
+		os << string(depth, ' ') << "<" << latexname << ">\n";
 }
 
 
 void Buffer::sgmlCloseTag(ostream & os, int depth,
 			  string const & latexname) const
 {
-	os << string(depth, ' ') << "</" << latexname << ">\n";
+	if (latexname != "!-- --")
+		os << string(depth, ' ') << "</" << latexname << ">\n";
 }
 
 
@@ -2380,7 +2382,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 	texrow.reset();
 
 	if (!body_only) {
-		string sgml_includedfiles=features.getIncludedFiles();
+		string sgml_includedfiles=features.getIncludedFiles(fname);
 
 		if (params.preamble.empty() && sgml_includedfiles.empty()) {
 			ofs << "<!doctype linuxdoc system>\n\n";
@@ -3000,7 +3002,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 	texrow.reset();
 
 	if (!only_body) {
-		string sgml_includedfiles=features.getIncludedFiles();
+		string sgml_includedfiles=features.getIncludedFiles(fname);
 
 		ofs << "<!doctype " << top_element
 		    << " public \"-//OASIS//DTD DocBook V3.1//EN\"";
@@ -3010,15 +3012,15 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		else
 			ofs << "\n [ " << params.preamble 
 			    << sgml_includedfiles << " \n]>\n\n";
+	}
 
-		if (params.options.empty())
-			sgmlOpenTag(ofs, 0, top_element);
-		else {
-			string top = top_element;
-			top += " ";
-			top += params.options;
-			sgmlOpenTag(ofs, 0, top);
-		}
+	if (params.options.empty())
+		sgmlOpenTag(ofs, 0, top_element);
+	else {
+		string top = top_element;
+		top += " ";
+		top += params.options;
+		sgmlOpenTag(ofs, 0, top);
 	}
 
 	ofs << "<!-- DocBook file was created by " << LYX_DOCVERSION 
@@ -3069,9 +3071,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		// Write opening SGML tags.
 		switch (style.latextype) {
 		case LATEX_PARAGRAPH:
-			if (style.latexname() != "dummy")
-                               sgmlOpenTag(ofs, depth+command_depth,
-                                           style.latexname());
+			sgmlOpenTag(ofs, depth+command_depth, style.latexname());
 			break;
 
 		case LATEX_COMMAND:
@@ -3124,7 +3124,8 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 			sgmlOpenTag(ofs, depth + command_depth, command_name);
 			item_name = "title";
-			sgmlOpenTag(ofs, depth + 1 + command_depth, item_name);
+			if (command_name != "!-- --")
+				sgmlOpenTag(ofs, depth + 1 + command_depth, item_name);
 			break;
 
 		case LATEX_ENVIRONMENT:
@@ -3203,7 +3204,8 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		switch (style.latextype) {
 		case LATEX_COMMAND:
 			end_tag = "title";
-			sgmlCloseTag(ofs, depth + command_depth, end_tag);
+			if (command_name != "!-- --")
+				sgmlCloseTag(ofs, depth + command_depth, end_tag);
 			break;
 		case LATEX_ENVIRONMENT:
 			if (!style.latexparam().empty())
@@ -3216,13 +3218,10 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			sgmlCloseTag(ofs, depth + 1 + command_depth, end_tag);
 			break;
 		case LATEX_PARAGRAPH:
-			if (style.latexname() != "dummy")
-				sgmlCloseTag(ofs, depth + command_depth,
-					     style.latexname());
+			sgmlCloseTag(ofs, depth + command_depth, style.latexname());
 			break;
 		default:
-			sgmlCloseTag(ofs, depth + command_depth,
-				     style.latexname());
+			sgmlCloseTag(ofs, depth + command_depth, style.latexname());
 			break;
 		}
 	}
@@ -3248,10 +3247,8 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		if (!command_stack[j].empty())
 			sgmlCloseTag(ofs, j, command_stack[j]);
 
-	if (!only_body) {
-		ofs << "\n\n";
-		sgmlCloseTag(ofs, 0, top_element);
-	}
+	ofs << "\n\n";
+	sgmlCloseTag(ofs, 0, top_element);
 
 	ofs.close();
 	// How to check for successful close

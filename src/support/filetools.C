@@ -79,6 +79,12 @@ bool IsLyXFilename(string const & filename)
 }
 
 
+bool IsSGMLFilename(string const & filename)
+{
+	return contains(filename, ".sgml");
+}
+
+
 // Substitutes spaces with underscores in filename (and path)
 string const MakeLatexName(string const & file)
 {
@@ -730,6 +736,21 @@ string const OnlyFilename(string const & fname)
 
 	// Strip to basename
 	return fname.substr(j + 1);
+}
+
+
+// Strips filename from path
+string const BasePath(string const & fname)
+{
+	if (fname.empty())
+		return fname;
+
+	string::size_type j = fname.rfind('/');
+	if (j == string::npos) // no '/' in fname
+		return string();
+
+	// Strip to basename
+	return fname.substr(0,j + 1);
 }
 
 

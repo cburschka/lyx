@@ -22,7 +22,7 @@
 #include "LaTeXFeatures.h"
 #include "bufferparams.h"
 #include "layout.h"
-
+#include "support/filetools.h"
 using std::endl;
 
 LaTeXFeatures::LaTeXFeatures(BufferParams const & p, LyXTextClass::size_type n)
@@ -338,14 +338,17 @@ string const LaTeXFeatures::getTClassPreamble()
 }	
 
 
-string const LaTeXFeatures::getIncludedFiles()
+string const LaTeXFeatures::getIncludedFiles(string const fname) const
 {
 	string sgmlpreamble;
+	string basename = BasePath(fname);
+
 	FileMap::const_iterator end = IncludedFiles.end();
 	for (FileMap::const_iterator fi = IncludedFiles.begin();
 	     fi != end; ++fi)
-		sgmlpreamble += "\n<!entity " + fi->first
-			+ " system \"" + fi->second + "\">";
+	  sgmlpreamble += "\n<!ENTITY " + fi->first
+			+ (IsSGMLFilename(fi->second) ? " SYSTEM \"" : " \"" )
+			+ MakeRelPath(fi->second,basename) + "\">";
 
 	return sgmlpreamble;
 }

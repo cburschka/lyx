@@ -451,7 +451,9 @@ int InsetInclude::Linuxdoc(Buffer const * buffer, ostream & os) const
 	} 
 
 	if (isVerb()) {
-		os << "<!-- includefile verbatim=\"" << incfile << "\" -->";
+		os << "<inlinegraphic fileref=\"" << '&' << include_label << ';'
+		   << "\" format=\"linespecific\">"
+		   << "</inlinegraphic>";
 	} else 
 		os << '&' << include_label << ';';
 	
@@ -487,7 +489,9 @@ int InsetInclude::DocBook(Buffer const * buffer, ostream & os) const
 	} 
 
 	if (isVerb()) {
-		os << "<inlinegraphic fileref=\"" << incfile << "\" format=\"linespecific\">";
+		os << "<inlinegraphic fileref=\"" << '&' << include_label << ';'
+		   << "\" format=\"linespecific\">"
+		   << "</inlinegraphic>";
 	} else 
 		os << '&' << include_label << ';';
 	
@@ -499,14 +503,15 @@ void InsetInclude::Validate(LaTeXFeatures & features) const
 {
 
 	string incfile(getContents());
-	string writefile = ChangeExtension(getFileName(), ".sgml");
+	string writefile; // = ChangeExtension(getFileName(), ".sgml");
+
 	if (!master->tmppath.empty() && !master->niceFile) {
 		incfile = subst(incfile, '/','@');
 		writefile = AddName(master->tmppath, incfile);
 	} else
-		// writefile = getFileName();
+		writefile = getFileName();
 		// Use the relative path.
-		writefile = incfile;
+		//writefile = incfile;
 
 	if (IsLyXFilename(getFileName()))
 		writefile = ChangeExtension(writefile, ".sgml");

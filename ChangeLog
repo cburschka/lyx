@@ -1,3 +1,35 @@
+2000-11-13  José Abílio Matos <jamatos@fep.up.pt>
+	
+	* lib/layouts/docbook-book.layout
+	* lib/layouts/docbook.layout
+	* lib/layouts/linuxdoc.layout: No need for "dummy" paragraphs, now
+	those paragraphs are expresse as SGML comments <!-- -->.
+
+	* src/LaTeXFeatures.h
+	* src/LaTeXFeatures.C (getIncludedFiles): takes a filename as 
+	parameter, this allows to express all the include files as relative
+	paths to the master buffer. The verbatim insert works as the other
+	include file modes.
+
+	* src/buffer.C (sgmlOpenTag) (sgmlCloseTag): don't write if latexname
+	is a SGML comment.
+	(MakeLinuxdocFile) (MakeDocBookFile): included files are relative 
+	to master path.
+	(MakeDocBookFile): top_element is always written. Some clean up, as
+	sgmlOpenTag() and sgmlCloseTag() take care of the SGML comment case.
+
+	* src/insets/insetinclude.C (Linuxdoc): Added verbatim file fix.
+	(DocBook) added close tag to inlinegraphics trick for verbatim. Now
+	a reference is written instead of the name.
+	(Validate): use the relative path for the filename.
+
+	* src/insets/insetlabel.C (DocBook): write end tag, for XML
+	compatibility. 
+
+	* src/support/filetools.h
+	* src/support/filetools.C (IsSGMLFilename): added.
+	(BasePath): added.
+
 2000-11-13  Miyata Shigeru  <miyata@kusm.kyoto-u.ac.jp>
 
 	* development/OS2/quick_fix.patch: 

@@ -83,6 +83,9 @@ int IsFileWriteable (string const & path);
 ///
 bool IsLyXFilename(string const & filename);
 
+///
+bool IsSGMLFilename(string const & filename);
+
 /** Returns the path of a library data file.
   Search the file name.ext in the subdirectory dir of
   \begin{enumerate}
@@ -190,6 +193,9 @@ string const NormalizePath(string const & path);
 
 /// Strips path from filename
 string const OnlyFilename(string const & fname);
+
+/// Strips filename from path
+string const BasePath(string const & fname);
 
 /// Get the contents of a file as a huge string
 string const GetFileContents(string const & fname);

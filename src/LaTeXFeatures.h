@@ -42,7 +42,7 @@ struct LaTeXFeatures {
 	/// The definitions needed by the document's textclass
 	string const getTClassPreamble();
 	///
-	string const getIncludedFiles();
+	string const getIncludedFiles(string const fname) const;
 
 	///
 	void showStruct();
