@@ -545,7 +545,8 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 		if (token.empty())
 			continue;
 
-		if (prefixIs(token, "LaTeX Warning:")) {
+		if (prefixIs(token, "LaTeX Warning:") ||
+		    prefixIs(token, "! pdfTeX warning")) {
 			// Here shall we handle different
 			// types of warnings
 			retval |= LATEX_WARNING;
