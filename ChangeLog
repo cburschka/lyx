@@ -1,3 +1,11 @@
+1999-10-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyxfunc.C (Dispatch): Use _() instead of N_() fot minibuffer
+	messages. 
+
+	* src/support/lyxstring.h: declare struct Srep as friend of
+	lyxstring, since DEC cxx complains otherwise.
+
 1999-10-24  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/spellchecker.C (create_ispell_pipe): removed old #warning,

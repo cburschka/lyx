@@ -720,14 +720,14 @@ string LyXFunc::Dispatch(int ac,
 			int res = one.startscript(Systemcalls::System, tmp);
 			if (res == 0) {
 				setMessage(string(
-				  N_("Document exported as HTML to file: ")) + result);
+				  _("Document exported as HTML to file: ")) + result);
 			} else {
 				setErrorMessage(string(
-				  N_("An unexpected error occured while converting document to HTML in file:")) + result);
+				  _("An unexpected error occured while converting document to HTML in file:")) + result);
 			}
 		}
 		else {
-			setErrorMessage(string(N_("Unknown export type: "))
+			setErrorMessage(string(_("Unknown export type: "))
 					+ extyp);
 		}
 	}

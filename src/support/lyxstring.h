@@ -524,7 +524,7 @@ public:
 private:
 	// These three operators can be used to discover erronous use of
 	// ints and strings. However a conforming C++ compiler will flag
-	// a lot of char operations as abmbigous when they are compiled
+	// a lot of char operations as ambigous when they are compiled
 	// in. Use them for debugging only (or perhaps not even then.)
 	// Lgb.
 	//
@@ -536,6 +536,8 @@ private:
 	
 	/// Forward declaration of the string representation
 	struct Srep;
+	// DEC cxx requires this.
+	friend struct Srep;
 
 	/// A string is a pointer to it's representation
 	Srep * rep;
