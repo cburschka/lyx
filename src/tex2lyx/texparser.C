@@ -1,6 +1,7 @@
 
 #include "texparser.h"
 #include <iostream>
+#include <sstream>
 
 using std::cerr;
 using std::endl;
@@ -114,6 +115,13 @@ string Token::asInput() const
 Parser::Parser(istream & is)
 	: lineno_(0), pos_(0)
 {
+	tokenize(is);
+}
+
+Parser::Parser(string const & s)
+	: lineno_(0), pos_(0)
+{
+	istringstream is(s);
 	tokenize(is);
 }
 

@@ -30,6 +30,7 @@ using std::ifstream;
 using std::istream;
 using std::istringstream;
 using std::map;
+using std::swap;
 using std::ostream;
 using std::ostringstream;
 using std::stack;
@@ -39,15 +40,82 @@ using std::vector;
 
 namespace {
 
+struct ColInfo
+{
+	ColInfo() : rightline(false) {}
+	string align;      // column alignment
+	string width;      // column width
+	bool   rightline;  // a line on the right?
+};
+
+
+struct RowInfo
+{
+	RowInfo() : topline(false), bottomline(false) {} 
+	bool topline;     // horizontal line above
+	bool bottomline;  // horizontal line below
+};
+
+
+struct CellInfo
+{
+	CellInfo()
+		: multi(0), leftline(false), rightline(false),
+	   topline(false), bottomline(false)
+	{}
+
+	string content;    // cell content
+	int multi;         // multicolumn flag
+	string align;      // cell alignment
+	bool leftline;     // do we have a line on the left?
+	bool rightline;	   // do we have a line on the right?
+	bool topline;	     // do we have a line above?
+	bool bottomline;   // do we have a line below?
+};
+
+
 void parse_preamble(Parser & p, ostream & os);
 
 void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode,
 const bool outer);
 
+string parse(Parser & p, unsigned flags, const mode_type mode,
+const bool outer)
+{
+	ostringstream os;
+	parse(p, os, flags, mode, outer);
+	return os.str();
+}
+
+int string2int(string const & s, int deflt = 0)
+{
+	istringstream is(s);
+	int i = deflt;
+	is >> i;
+	return i;
+}
+
+string read_hlines(Parser & p)
+{
+	ostringstream os;
+	p.skipSpaces();
+	while (p.good()) {
+		if (p.nextToken().cs() == "hline") {
+			p.getToken();
+			os << "\\hline";
+		} else if (p.nextToken().cs() == "cline") {
+			p.getToken();
+			os << "\\cline{" << p.verbatimItem() << "}";
+		} else
+			break;
+		p.skipSpaces();
+	};
+	//cerr << "read_hlines(), read: '" << os.str() << "'\n";
+	//cerr << "read_hlines(), next token: " << p.nextToken() << "\n";
+	return os.str();
+}
 
 
-char const OPEN = '<';
-char const CLOSE = '>';
 
 /* rather brutish way to code table structure in a string:
 
@@ -60,13 +128,12 @@ char const CLOSE = '>';
  gets "translated" to:
 
   1 TAB 2 TAB 3 LINE
-  HLINE 2 MULT c MULT 4 TAB 5 LINE
+  \hline HLINE  TAB 5 LINE
   5 TAB 7 LINE
 */
 
 char const TAB   = '\001';
 char const LINE  = '\002';
-char const MULT  = '\003';
 char const HLINE = '\004';
 
 const char * known_languages[] = { "austrian", "babel", "bahasa", "basque",
@@ -91,7 +158,7 @@ char const * known_math_envs[] = { "equation", "equation*",
 "eqnarray", "eqnarray*", "align", "align*", 0};
 
 char const * known_latex_commands[] = { "ref", "cite", "label", "index",
-"printindex", 0 };
+"printindex", "pageref", 0 };
 
 // LaTeX names for quotes
 char const * known_quotes[] = { "glqq", "grqq", "quotedblbase",
@@ -162,10 +229,12 @@ string const trim(string const & a, char const * p = " \t\n\r")
 
 void split(string const & s, vector<string> & result, char delim = ',')
 {
+	//cerr << "split 1\n";
 	istringstream is(s);
 	string t;
 	while (getline(is, t, delim))
 		result.push_back(t);
+	//cerr << "split 2\n";
 }
 
 
@@ -319,22 +388,61 @@ void handle_package(string const & name, string const & options)
 }
 
 
-vector<string> extract_col_align(string const & s)
+bool handle_colalign(Parser & p, vector<ColInfo> & colinfo)
 {
-	vector<string> res;
-	string t;
-	for (size_t i = 0; i < s.size(); ++i) {
-		switch (s[i]) {
-			case 'c': res.push_back("center"); break;
-			case 'l': res.push_back("left");   break;
-			case 'r': res.push_back("right");  break;
-			case '|': cerr << "ignoring vertical separator\n";  break;
-			default : cerr << "ignoring special separator '" << s[i] << "'\n"; break;
-			//default: break;
-		}
+	if (p.getToken().cat() != catBegin)
+		cerr << "wrong syntax for table column alignment. '{' expected\n";
+
+	string nextalign = "block";
+	bool leftline = false;
+	for (Token t = p.getToken(); p.good() && t.cat() != catEnd; t = p.getToken()){
+#ifdef FILEDEBUG
+		cerr << "t: " << t << "  c: '" << t.character() << "'\n";
+#endif
+
+		switch (t.character()) {
+			case 'c':
+				colinfo.push_back(ColInfo());
+				colinfo.back().align = "center";
+				break;
+			case 'l':
+				colinfo.push_back(ColInfo());
+				colinfo.back().align = "left";
+				break;
+			case 'r':
+				colinfo.push_back(ColInfo());
+				colinfo.back().align = "right";
+				break;
+			case 'p':
+				colinfo.push_back(ColInfo());
+				colinfo.back().align = nextalign;
+				colinfo.back().width = p.verbatimItem();
+				nextalign = "block";
+				break;
+			case '|':
+				if (colinfo.empty())
+					leftline = true;
+				else
+					colinfo.back().rightline = true;
+				break;
+			case '>': {
+				string s = p.verbatimItem();
+				if (s == "\\raggedleft ")
+					nextalign = "left";
+				else if (s == "\\raggedright ")
+					nextalign = "right";
+				else
+					cerr << "unknown '>' column '" << s << "'\n";
+				break;
+			}
+			default:
+				cerr << "ignoring special separator '" << t << "'\n";
+				break;
+			}
 	}
-	return res;
+	return leftline;
 }
+
 
 
 void handle_tabular(Parser & p, ostream & os, mode_type mode)
@@ -343,74 +451,187 @@ void handle_tabular(Parser & p, ostream & os, mode_type mode)
 	string posopts = p.getOpt();
 	if (posopts.size())
 		cerr << "vertical tabular positioning '" << posopts << "' ignored\n";
-	string colopts = p.verbatimItem();
-	vector<string> colalign = extract_col_align(colopts);
-	ostringstream ss;
-	parse(p, ss, FLAG_END, mode, false);
+
+	vector<ColInfo>            colinfo;
+
+	// handle column formatting
+	bool leftline = handle_colalign(p, colinfo);
+
+	// handle initial hlines
+
+	// first scan of cells
+	// use table mode to keep it minimal-invasive
+	// not exactly what's TeX doing...
 	vector<string> lines;
+	ostringstream ss;
+	ss << read_hlines(p) << HLINE; // handle initial hlines
+	parse(p, ss, FLAG_END, TABLE_MODE, false);
 	split(ss.str(), lines, LINE);
-	const size_t cols = colalign.size();
-	const size_t rows = lines.size();
-	os << "<lyxtabular version=\"3\" rows=\"" << rows
-		 << "\" columns=\"" << cols << "\">\n"
-		 << "<features>\n";
-	for (size_t c = 0; c < cols; ++c)
-		os << "<column alignment=\"" << colalign[c] << "\""
-			 << " valignment=\"top\""
-			 << " width=\"0pt\""
-			 << ">\n";
-	for (size_t r = 0; r < rows; ++r) {
+
+	vector< vector<CellInfo> > cellinfo(lines.size());
+	vector<RowInfo> rowinfo(lines.size());
+	
+	// split into rows
+	for (size_t row = 0; row < rowinfo.size(); ++row) {
+
+		// init row
+		vector<CellInfo> & cellinfos = cellinfo[row];
+		cellinfos.resize(colinfo.size());
+
+		// split row	
 		vector<string> dummy;
-		// handle hlines
-		split(lines[r], dummy, HLINE);
-		int hlines = dummy.size() - 1;
-		lines[r] = join(dummy, "");
-		// handle almost empty line
-		if (lines[r].empty() && hlines && r > 0) {
-			cerr << "last hline lost\n";
-			continue;
+		//cerr << "\n########### LINE: " << lines[row] << "########\n";
+		split(lines[row], dummy, HLINE);
+
+		// handle horizontal line fragments
+		if (dummy.size() != 3) {
+			//cerr << "unexpected dummy size: " << dummy.size()
+			//	<< " content: " << lines[row] << "\n";
+			dummy.resize(3);
 		}
-		// handle cells
-		vector<string> cells;
-		split(lines[r], cells, TAB);
-		while (cells.size() < cols)
-			cells.push_back(string());
-		os << "<row";
-		if (hlines)
-			os << " topline=\"true\"";
-		os << ">\n";
-		for (size_t c = 0; c < cols; ++c) {
-			os << "<cell";
-			string alignment = "center";
-			vector<string> parts;
-			split(cells[c], parts, MULT);
-			if (parts.size() > 2) {
-				os << " multicolumn=\"" << parts[0] << "\"";
-				alignment = parts[1];
+		lines[row] = dummy[1];
+
+		//cerr << "line: " << row << " above 0: " << dummy[0] << "\n";
+		//cerr << "line: " << row << " below 2: " << dummy[2] <<  "\n";
+		//cerr << "line: " << row << " cells 1: " << dummy[1] <<  "\n";
+
+		for (int i = 0; i <= 2; i += 2) {	
+			//cerr << "   reading from line string '" << dummy[i] << "'\n";
+			Parser p1(dummy[i]);
+			while (p1.good()) {
+				Token t = p1.getToken();
+				//cerr << "read token: " << t << "\n";
+				if (t.cs() == "hline") {
+					if (i == 0) {
+						rowinfo[row].topline = true;
+						for (size_t c = 0; c < colinfo.size(); ++c)
+							cellinfos[c].topline = true;
+					} else {
+						rowinfo[row].bottomline = true;
+						for (size_t c = 0; c < colinfo.size(); ++c)
+							cellinfos[c].bottomline = true;
+					}
+				} else if (t.cs() == "cline") {
+					string arg = p1.verbatimItem();
+					//cerr << "read cline arg: '" << arg << "'\n";
+					vector<string> t;
+					split(arg, t, '-');
+					size_t from = string2int(t[0]);
+					size_t to = string2int(t[1]);
+					for (size_t col = from; col < to; ++col) {
+						if (i == 0) 
+							cellinfos[col].topline = true;
+						else	
+							cellinfos[col].bottomline = true;
+					}
+				} else {
+					cerr << "unexpected line token: " << t << endl;
+				}
 			}
-			os << " alignment=\"" << alignment << "\""
+		}
+
+		// split into cells
+		vector<string> cells;
+		split(lines[row], cells, TAB);
+		for (size_t col = 0, cell = 0; cell < cells.size(); ++col, ++cell) {
+			//cerr << "cell content: " << cells[col] << "\n";
+			Parser p(cells[cell]);
+			p.skipSpaces();	
+			//cerr << "handling cell: " << p.nextToken().cs() << " '" <<
+			//cells[cell] << "'\n";
+			if (p.nextToken().cs() == "multicolumn") {
+				// how many cells?
+				p.getToken();
+				size_t ncells = string2int(p.verbatimItem());
+
+				// special cell properties alignment	
+				vector<ColInfo> t;
+				bool leftline = handle_colalign(p, t);
+				CellInfo & ci = cellinfos[col];
+				ci.multi     = 1;
+				ci.align     = t.front().align;
+				ci.content   = parse(p, FLAG_ITEM, mode, false);
+				ci.leftline  = leftline;
+				ci.rightline = t.front().rightline;
+
+				// add dummy cells for multicol
+				for (size_t i = 0; i < ncells - 1; ++i) {
+					++col;
+					cellinfos[col].multi = 2;
+					cellinfos[col].align = "center";
+				}
+			} else {
+				cellinfos[col].content = parse(p, FLAG_ITEM, mode, false);
+			}
+		}
+
+		cellinfo.push_back(cellinfos);
+
+		// handle almost empty last row
+		if (row && lines[row].empty() && row + 1 == rowinfo.size()) {
+			//cerr << "remove empty last line\n";
+			if (rowinfo[row].topline);
+				rowinfo[row - 1].bottomline = true;
+			for (size_t c = 0; c < colinfo.size(); ++c)
+				if (cellinfo[row][c].topline)
+					cellinfo[row - 1][c].bottomline = true;
+			rowinfo.pop_back();
+		}
+
+	}
+
+	// output what we have
+	os << "<lyxtabular version=\"3\" rows=\"" << rowinfo.size()
+		 << "\" columns=\"" << colinfo.size() << "\">\n"
+		 << "<features>\n";
+
+	for (size_t col = 0; col < colinfo.size(); ++col) {
+		os << "<column alignment=\"" << colinfo[col].align << "\"";
+		if (colinfo[col].rightline)
+			os << " rightline=\"true\"";
+		if (col == 0 && leftline)
+			os << " leftline=\"true\"";
+		os << " valignment=\"top\"";
+		os << " width=\"" << colinfo[col].width << "\"";
+		os << ">\n";
+	}
+
+	for (size_t row = 0; row < rowinfo.size(); ++row) {
+		os << "<row";
+		if (rowinfo[row].topline)
+			os << " topline=\"true\"";
+		if (rowinfo[row].bottomline)
+			os << " bottomline=\"true\"";
+		os << ">\n";
+		for (size_t col = 0; col < colinfo.size(); ++col) {
+			CellInfo const & cell = cellinfo[row][col];
+			os << "<cell";
+			if (cell.multi)
+				os << " multicolumn=\"" << cell.multi << "\"";
+			if (cell.leftline)
+				os << " leftline=\"true\"";
+			if (cell.rightline)
+				os << " rightline=\"true\"";
+			if (cell.topline)
+				os << " topline=\"true\"";
+			if (cell.bottomline)
+				os << " bottomline=\"true\"";
+			os << " alignment=\"" << cell.align << "\""
 				 << " valignment=\"top\""
-				 << " topline=\"true\""
-				 << " leftline=\"true\""
 				 << " usebox=\"none\""
 				 << ">";
 			begin_inset(os, "Text");
 			os << "\n\n\\layout Standard\n\n";
-			if (parts.size())
-				os << parts.back();
+			os << cell.content;
 			end_inset(os);
 			os << "</cell>\n";
 		}
 		os << "</row>\n";
 	}
+			
+
 	os << "</lyxtabular>\n";
 	end_inset(os);
-}
-
-
-string wrap(string const & cmd, string const & str)
-{
-	return OPEN + cmd + ' ' + str + CLOSE;
 }
 
 
@@ -482,7 +703,7 @@ void parse_preamble(Parser & p, ostream & os)
 					break;
 				s += t.asString();
 			}
-			//os << wrap("comment", s);
+			//cerr << "comment\n";
 			p.skipSpaces();
 		}
 
@@ -501,6 +722,11 @@ void parse_preamble(Parser & p, ostream & os)
 
 		else if (t.cs() == "newcommand" || t.cs() == "renewcommand"
 			    || t.cs() == "providecommand") {
+			bool star = false;
+			if (p.nextToken().character() == '*') {
+				p.getToken();
+				star = true;
+			}
 			string const name = p.verbatimItem();
 			string const opts = p.getOpt();
 			string const body = p.verbatimItem();
@@ -514,8 +740,10 @@ void parse_preamble(Parser & p, ostream & os)
 				  && name != "\\boldsymbol "
 				  && name != "\\lyxarrow ") {
 				ostringstream ss;
-				ss << '\\' << t.cs() << '{' << name << '}'
-					<< opts << '{' << body << "}\n";
+				ss << '\\' << t.cs();
+				if (star)
+					ss << '*';
+				ss << '{' << name << '}' << opts << '{' << body << "}\n";
 				h_preamble << ss.str();
 /*
 				ostream & out = in_preamble ? h_preamble : os;
@@ -617,12 +845,13 @@ void parse_preamble(Parser & p, ostream & os)
 void parse(Parser & p, ostream & os, unsigned flags, const mode_type mode,
 bool outer)
 {
+	string hlines;
+
 	while (p.good()) {
 		Token const & t = p.getToken();
 
 #ifdef FILEDEBUG
 		cerr << "t: " << t << " flags: " << flags << "\n";
-		//cell->dump();
 #endif
 
 		if (flags & FLAG_ITEM) {
@@ -735,10 +964,13 @@ bool outer)
 		}
 
 		else if (t.cat() == catBegin) {
-			if (mode == TEXT_MODE)
+			if (mode == TEXT_MODE) {
 				handle_ert(os, "{");
-			else
+				parse(p, os, FLAG_BRACE_LAST, mode, outer);
+				handle_ert(os, "}");
+			} else {
 				os << '{';
+			}
 		}
 
 		else if (t.cat() == catEnd) {
@@ -751,17 +983,21 @@ bool outer)
 		}
 
 		else if (t.cat() == catAlign) {
-			if (mode == TEXT_MODE)
+			if (mode == TABLE_MODE)
 				os << TAB;
 			else
 				os << t.character();
 		}
 
 		else if (t.cs() == "tabularnewline") {
-			if (mode == TEXT_MODE)
-				os << LINE;
-			else
+			if (mode == TABLE_MODE) {
+				// stuff before the line break
+				// and look ahead for stuff after the line break
+				os << HLINE << hlines << HLINE << LINE << read_hlines(p) << HLINE;
+				hlines.clear();
+			} else {
 				os << t.asInput();
+			}
 		}
 
 		else if (t.cs() == "\\" && mode == MATH_MODE)
@@ -786,7 +1022,7 @@ bool outer)
 					break;
 				s += t.asString();
 			}
-			//os << wrap("comment", s);
+			//cerr << "comment\n";
 			p.skipSpaces();
 		}
 
@@ -1010,17 +1246,17 @@ bool outer)
 		else if (t.cs() == "tableofcontents")
 			p.verbatimItem(); // swallow this
 
-		else if (t.cs() == "multicolumn" && mode == TEXT_MODE) {
-			// brutish...
-			parse(p, os, FLAG_ITEM, mode, outer);
-			os << MULT;
-			parse(p, os, FLAG_ITEM, mode, outer);
-			os << MULT;
-			parse(p, os, FLAG_ITEM, mode, outer);
-		}
+		else if (t.cs() == "hline" && mode == TABLE_MODE)
+			hlines += "\\hline";
 
-		else if (t.cs() == "hline" && mode == TEXT_MODE)
-			os << HLINE;
+		else if (t.cs() == "cline" && mode == TABLE_MODE)
+			hlines += "\\cline{" + p.verbatimItem() + '}';
+
+		else if (t.cs() == "scriptsize" && mode == TEXT_MODE)
+			os << "\n\\size scriptsize\n";
+
+		else if (t.cs() == "Large" && mode == TEXT_MODE)
+			os << "\n\\size larger\n";
 
 		else if (t.cs() == "textrm") {
 			if (mode == TEXT_MODE) {
@@ -1184,10 +1420,7 @@ bool outer)
 
 		else {
 			//cerr << "#: " << t << " mode: " << mode << endl;
-			if (mode == MATH_MODE || mode == MATHTEXT_MODE) {
-				os << t.asInput();
-				//cerr << "#: writing: '" << t.asInput() << "'\n";
-			} else {
+			if (mode == TEXT_MODE) {
 				// heuristic: read up to next non-nested space
 				/*
 				string s = t.asInput();
@@ -1201,6 +1434,9 @@ bool outer)
 				handle_ert(os, s + ' ');
 				*/
 				handle_ert(os, t.asInput() + ' ');
+			} else {
+				os << t.asInput();
+				//cerr << "#: writing: '" << t.asInput() << "'\n";
 			}
 		}
 

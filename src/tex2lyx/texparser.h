@@ -5,7 +5,7 @@
 #include "LString.h"
 #include <vector>
 
-enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE, MATHTEXT_MODE};
+enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE, MATHTEXT_MODE, TABLE_MODE};
 
 mode_type asMode(mode_type oldmode, string const & str);
 
@@ -46,7 +46,8 @@ enum {
 	FLAG_EQUATION   = 1 << 9,  //  next \] leaves the loop
 	FLAG_SIMPLE2    = 1 << 10, //  next \) leaves the loop
 	FLAG_OPTION     = 1 << 11, //  read [...] style option
-	FLAG_BRACED     = 1 << 12  //  read {...} style argument
+	FLAG_BRACED     = 1 << 12, //  read {...} style argument
+	FLAG_CELL       = 1 << 13  //  read table cell
 };
 
 
@@ -96,6 +97,8 @@ class Parser {
 public:
 	///
 	Parser(std::istream & is);
+	///
+	Parser(string const & s);
 
 	///
 	int lineno() const { return lineno_; }
