@@ -11,7 +11,7 @@ public:
 	/// 
 	MathCursorPos();
 	/// 
-	explicit MathCursorPos(MathAtom &);
+	explicit MathCursorPos(MathInset *);
 
 	/// returns cell corresponding to this position
 	MathArray & cell() const;
@@ -28,7 +28,7 @@ public:
 
 public:
 	/// pointer to an inset
-	MathAtom * par_;
+	MathInset * par_;
 	/// cell index of a position in this inset
 	MathArray::idx_type idx_;
 	/// position in this cell

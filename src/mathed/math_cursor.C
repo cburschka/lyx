@@ -68,7 +68,7 @@ struct Selection
 			data_.push_back(MathArray(i1.cell(), i1.pos_, i2.pos_));
 		else {
 			std::vector<MathInset::idx_type> indices =
-				i1.par_->nucleus()->idxBetween(i1.idx_, i2.idx_);
+				i1.par_->idxBetween(i1.idx_, i2.idx_);
 			for (MathInset::idx_type i = 0; i < indices.size(); ++i)
 				data_.push_back(i1.cell(indices[i]));
 		}
@@ -83,7 +83,7 @@ struct Selection
 			i1.cell().erase(i1.pos_, i2.pos_);
 		else {
 			std::vector<MathInset::idx_type> indices =
-				i1.par_->nucleus()->idxBetween(i1.idx_, i2.idx_);
+				i1.par_->idxBetween(i1.idx_, i2.idx_);
 			for (unsigned i = 0; i < indices.size(); ++i)
 				i1.cell(indices[i]).erase();
 		}
@@ -130,11 +130,7 @@ MathCursor::MathCursor(InsetFormulaBase * formula, bool left)
 
 void MathCursor::push(MathAtom & t)
 {
-	MathCursorPos p;
-	p.par_ = &t;
-	p.idx_ = 0;
-	p.pos_ = 0;
-	Cursor_.push_back(p);
+	Cursor_.push_back(MathCursorPos(t.nucleus()));
 }
 
 
@@ -211,7 +207,7 @@ UpdatableInset * MathCursor::asHyperActiveInset() const
 bool MathCursor::isInside(MathInset const * p) const
 {
 	for (unsigned i = 0; i < Cursor_.size(); ++i) 
-		if (Cursor_[i].par_->nucleus() == p) 
+		if (Cursor_[i].par_ == p) 
 			return true;
 	return false;
 }
@@ -232,7 +228,7 @@ bool MathCursor::openable(MathAtom const & t, bool sel) const
 		// we can't move into anything new during selection
 		if (Cursor_.size() == Anchor_.size())
 			return false;
-		if (&t != Anchor_[Cursor_.size()].par_)
+		if (t.nucleus() != Anchor_[Cursor_.size()].par_)
 			return false;
 	}
 	return true;
@@ -327,8 +323,8 @@ void MathCursor::setPos(int x, int y)
 	cursor_type best_cursor;
 	double best_dist = 1e10;
 
-	MathIterator it = ibegin(formula()->par());
-	MathIterator et = iend(formula()->par());
+	MathIterator it = ibegin(formula()->par().nucleus());
+	MathIterator et = iend(formula()->par().nucleus());
 	for ( ; it != et; ++it) {
 		//lyxerr << "*it: " << *it << "  *et: " << *et << "\n";
 		if (selection_) {
@@ -337,7 +333,7 @@ void MathCursor::setPos(int x, int y)
 				continue;
 			// anchor might be deeper!
 			if (it.cursor().size() == Anchor_.size())
-				if (it.par().nucleus() != Anchor_.back().par_->nucleus())
+				if (it.par() != Anchor_.back().par_)
 					continue;
 			//if (it.par() != Anchor_[it.cursor().size()].par_)
 			//	continue;
@@ -742,7 +738,7 @@ void MathCursor::drawSelection(Painter & pain) const
 		pain.fillRectangle(x1, y1, x2 - x1, y2 - y1, LColor::selection);
 	} else {
 		std::vector<MathInset::idx_type> indices
-			= (*i1.par_)->idxBetween(i1.idx_, i2.idx_);
+			= i1.par_->idxBetween(i1.idx_, i2.idx_);
 		for (unsigned i = 0; i < indices.size(); ++i) {
 			MathXArray & c = i1.xcell(indices[i]);
 			int x1 = c.xo();
@@ -811,9 +807,9 @@ void MathCursor::getPos(int & x, int & y)
 }
 
 
-MathAtom & MathCursor::par() const
+MathInset * MathCursor::par() const
 {
-	return *cursor().par_;
+	return cursor().par_;
 }
 
 
@@ -862,7 +858,7 @@ bool MathCursor::selection() const
 MathGridInset * MathCursor::enclosingGrid(MathCursor::idx_type & idx) const
 {
 	for (int i = Cursor_.size() - 1; i >= 0; --i) {
-		MathGridInset * p = (*Cursor_[i].par_)->asGridInset();
+		MathGridInset * p = Cursor_[i].par_->asGridInset();
 		if (p) {
 			idx = Cursor_[i].idx_;
 			return p;
@@ -934,13 +930,13 @@ MathCursor::size_type MathCursor::size() const
 
 MathCursor::col_type MathCursor::hullCol() const
 {
-	return Cursor_[0].par_->nucleus()->asGridInset()->col(Cursor_[0].idx_);
+	return Cursor_[0].par_->asGridInset()->col(Cursor_[0].idx_);
 }
 
 
 MathCursor::row_type MathCursor::hullRow() const
 {
-	return Cursor_[0].par_->nucleus()->asGridInset()->row(Cursor_[0].idx_);
+	return Cursor_[0].par_->asGridInset()->row(Cursor_[0].idx_);
 }
 
 
@@ -1179,8 +1175,8 @@ bool MathCursor::bruteFind(int xlow, int xhigh, int ylow, int yhigh)
 	cursor_type best_cursor;
 	double best_dist = 1e10;
 
-	MathIterator it = ibegin(formula()->par());
-	MathIterator et = iend(formula()->par());
+	MathIterator it = ibegin(formula()->par().nucleus());
+	MathIterator et = iend(formula()->par().nucleus());
 	for ( ; it != et; ++it) {
 		int xo = it.position().xpos();
 		int yo = it.position().ypos();

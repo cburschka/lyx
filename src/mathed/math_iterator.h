@@ -10,10 +10,10 @@ class MathIterator {
 public:
 	/// default constructor, used for end of range
 	//MathIterator();
-	/// start with given formula
-	explicit MathIterator(MathAtom & t);
+	/// start with given inset
+	explicit MathIterator(MathInset * p);
 	/// start with given position
-	explicit MathIterator(MathCursor::cursor_type const & cursor);
+	//explicit MathIterator(MathCursor::cursor_type const & cursor);
 	///
 	MathCursorPos const & operator*() const;
 	///
@@ -27,9 +27,9 @@ public:
 	/// read access to full path
 	MathCursor::cursor_type const & cursor() const;
 	/// read access to top most inset
-	MathAtom const & par() const;
+	MathInset const * par() const;
 	/// read access to top most inset
-	MathAtom & par();
+	MathInset * par();
 	/// helper for iend
 	void goEnd();
 	
@@ -37,9 +37,9 @@ private:
 	/// write access to top most item
 	MathXArray const & xcell() const;
 	/// write access to top most item
-	MathAtom * nextInset() const;
+	MathInset * nextInset() const;
 	/// own level down
-	void push(MathAtom &);
+	void push(MathInset *);
 	/// own level up
 	void pop();
 
@@ -53,8 +53,8 @@ bool operator==(MathIterator const &, MathIterator const &);
 bool operator!=(MathIterator const &, MathIterator const &);
 
 ///
-MathIterator ibegin(MathAtom & p);
+MathIterator ibegin(MathInset * p);
 ///
-MathIterator iend(MathAtom & p);
+MathIterator iend(MathInset * p);
 
 #endif

@@ -102,8 +102,8 @@ public:
 	void setPos(int x, int y);
 	/// in pixels from top of screen
 	void getPos(int & x, int & y);
-	/// 
-	MathAtom & par() const;
+	/// current inset
+	MathInset * par() const;
 	/// return the next enclosing grid inset and the cursor's index in it
 	MathGridInset * enclosingGrid(idx_type &) const;
 	///

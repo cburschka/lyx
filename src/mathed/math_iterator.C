@@ -10,15 +10,15 @@
 //{}
 
 
-MathIterator::MathIterator(MathAtom & t)
+MathIterator::MathIterator(MathInset * p)
 {
-	push(t);
+	push(p);
 }
 
 
-MathIterator::MathIterator(MathCursor::cursor_type const & c)
-	: cursor_(c)
-{}
+//MathIterator::MathIterator(MathCursor::cursor_type const & c)
+//	: cursor_(c)
+//{}
 
 
 MathCursorPos const & MathIterator::position() const
@@ -41,15 +41,15 @@ MathCursor::cursor_type const & MathIterator::cursor() const
 }
 
 
-MathAtom const & MathIterator::par() const
+MathInset const * MathIterator::par() const
 {
-	return *(position().par_);
+	return position().par_;
 }
 
 
-MathAtom & MathIterator::par()
+MathInset * MathIterator::par()
 {
-	return *(position().par_);
+	return position().par_;
 }
 
 
@@ -59,18 +59,18 @@ MathXArray const & MathIterator::xcell() const
 }
 
 
-MathAtom * MathIterator::nextInset() const
+MathInset * MathIterator::nextInset() const
 {
 	if (position().pos_ == xcell().data_.size())
 		return 0;
-	return const_cast<MathAtom *>(&*(xcell().begin() + position().pos_));
+	return (xcell().begin() + position().pos_)->nucleus();
 }
 
 
-void MathIterator::push(MathAtom & t)
+void MathIterator::push(MathInset * p)
 {
 	//lyxerr << "push: " << p << endl;
-	cursor_.push_back(MathCursorPos(t));
+	cursor_.push_back(MathCursorPos(p));
 }
 
 
@@ -105,8 +105,8 @@ void MathIterator::operator++()
 {
 	// move into the current inset if possible
 	// it is impossible for pos() == size()!
-	if (nextInset() && nextInset()->nucleus()->isActive()) {
-		push(*nextInset());
+	if (nextInset() && nextInset()->isActive()) {
+		push(nextInset());
 		return;
 	}
 
@@ -152,15 +152,15 @@ bool operator!=(MathIterator const & it, MathIterator const & jt)
 
 
 
-MathIterator ibegin(MathAtom & t)
+MathIterator ibegin(MathInset * p)
 {
-	return MathIterator(t);
+	return MathIterator(p);
 }
 
 
-MathIterator iend(MathAtom & t)
+MathIterator iend(MathInset * p)
 {
-	MathIterator it(t);
+	MathIterator it(p);
 	it.goEnd();
 	return it;
 }

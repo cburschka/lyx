@@ -13,43 +13,38 @@ MathCursorPos::MathCursorPos()
 {}
 
 
-MathCursorPos::MathCursorPos(MathAtom & t)
-	: par_(&t), idx_(0), pos_(0)
+MathCursorPos::MathCursorPos(MathInset * p)
+	: par_(p), idx_(0), pos_(0)
 {
 	lyx::Assert(par_);
-	lyx::Assert(par_->nucleus());
 }
 
 
 MathArray & MathCursorPos::cell(MathArray::idx_type idx) const
 {
 	lyx::Assert(par_);
-	lyx::Assert(par_->nucleus());
-	return par_->nucleus()->cell(idx);
+	return par_->cell(idx);
 }
 
 
 MathArray & MathCursorPos::cell() const
 {
 	lyx::Assert(par_);
-	lyx::Assert(par_->nucleus());
-	return par_->nucleus()->cell(idx_);
+	return par_->cell(idx_);
 }
 
 
 MathXArray & MathCursorPos::xcell(MathArray::idx_type idx) const
 {
 	lyx::Assert(par_);
-	lyx::Assert(par_->nucleus());
-	return par_->nucleus()->xcell(idx);
+	return par_->xcell(idx);
 }
 
 
 MathXArray & MathCursorPos::xcell() const
 {
 	lyx::Assert(par_);
-	lyx::Assert(par_->nucleus());
-	return par_->nucleus()->xcell(idx_);
+	return par_->xcell(idx_);
 }
 
 
