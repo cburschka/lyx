@@ -726,10 +726,8 @@ void Paragraph::makeSameLayout(Paragraph const * par)
 
 int Paragraph::stripLeadingSpaces()
 {
-	if (layout()->free_spacing ||
-	    isFreeSpacing()) {
+	if (layout()->free_spacing || isFreeSpacing())
 		return 0;
-	}
 
 	int i = 0;
 	while (!empty() && (isNewline(0) || isLineSeparator(0))) {
@@ -786,14 +784,12 @@ Paragraph::depth_type Paragraph::getDepth() const
 
 Paragraph::depth_type Paragraph::getMaxDepthAfter() const
 {
-	bool const isenv = layout()->isEnvironment();
-
-	if (isenv)
+	if (layout()->isEnvironment())
 		return params().depth() + 1;
 	else
 		return params().depth();
-
 }
+
 
 char Paragraph::getAlign() const
 {

@@ -515,7 +515,7 @@ void LyXText::setLayout(BufferView * bview, string const & layout)
 
 // increment depth over selection and
 // make a total rebreak of those paragraphs
-void  LyXText::incDepth(BufferView * bview)
+void LyXText::incDepth(BufferView * bview)
 {
 	// If there is no selection, just use the current paragraph
 	if (!selection.set()) {
