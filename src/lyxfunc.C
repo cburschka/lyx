@@ -687,7 +687,6 @@ func_status::value_type LyXFunc::getStatus(int ac,
 	case LFUN_LDOTS:
 	case LFUN_END_OF_SENTENCE:
 	case LFUN_PROTECTEDSPACE:
-	case LFUN_BREAKLINE:
 		code = Inset::SPECIALCHAR_CODE;
 		break;
 	default:
