@@ -22,7 +22,6 @@ UIFILES = \
 	QCitationFindDialogBase.ui \
 	QDelimiterDialogBase.ui \
 	QDocumentDialogBase.ui \
-	QErrorDialogBase.ui \
 	QErrorListDialogBase.ui \
 	QERTDialogBase.ui \
 	QExternalDialogBase.ui \
@@ -87,7 +86,6 @@ MOCFILES = \
 	QContentPane.C QContentPane.h \
 	QDelimiterDialog.C QDelimiterDialog.h \
 	QDocumentDialog.C QDocumentDialog.h \
-	QErrorDialog.C QErrorDialog.h \
 	QErrorListDialog.C QErrorListDialog.h \
 	QERTDialog.C QERTDialog.h \
 	QExternalDialog.C QExternalDialog.h \

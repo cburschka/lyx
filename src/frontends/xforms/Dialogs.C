@@ -21,7 +21,6 @@
 #include "ControlCharacter.h"
 #include "ControlCitation.h"
 #include "ControlCommand.h"
-#include "ControlError.h"
 #include "ControlErrorList.h"
 #include "ControlERT.h"
 #include "ControlExternal.h"
@@ -47,7 +46,6 @@
 #include "FormChanges.h"
 #include "FormCharacter.h"
 #include "FormCitation.h"
-#include "FormError.h"
 #include "FormErrorList.h"
 #include "FormERT.h"
 #include "FormExternal.h"
@@ -179,10 +177,6 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlCitation(*dialog));
 		dialog->setView(new FormCitation(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
-	} else if (name == "error") {
-		dialog->setController(new ControlError(*dialog));
-		dialog->setView(new FormError(*dialog));
-		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "errorlist") {
 		dialog->setController(new ControlErrorList(*dialog));
 		dialog->setView(new FormErrorList(*dialog));

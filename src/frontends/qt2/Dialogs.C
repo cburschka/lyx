@@ -18,7 +18,6 @@
 #include "ControlChanges.h"
 #include "ControlCharacter.h"
 #include "ControlCitation.h"
-#include "ControlError.h"
 #include "ControlErrorList.h"
 #include "ControlERT.h"
 #include "ControlExternal.h"
@@ -44,7 +43,6 @@
 #include "QChanges.h"
 #include "QCharacter.h"
 #include "QCitation.h"
-#include "QError.h"
 #include "QErrorList.h"
 #include "QERT.h"
 #include "QExternal.h"
@@ -149,10 +147,6 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlCitation(*dialog));
 		dialog->setView(new QCitation(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
-	} else if (name == "error") {
-		dialog->setController(new ControlError(*dialog));
-		dialog->setView(new QError(*dialog));
-		dialog->bc().bp(new OkCancelPolicy);
 	} else if (name == "errorlist") {
 		dialog->setController(new ControlErrorList(*dialog));
 		dialog->setView(new QErrorList(*dialog));

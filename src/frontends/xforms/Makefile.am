@@ -79,8 +79,6 @@ libxforms_la_SOURCES = \
 	FormCitation.h \
 	FormDocument.C \
 	FormDocument.h \
-	FormError.C \
-	FormError.h \
 	FormErrorList.C \
 	FormErrorList.h \
 	FormERT.C \
