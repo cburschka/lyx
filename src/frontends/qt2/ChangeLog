@@ -1,5 +1,10 @@
 2004-04-05  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.C (build): set the preferences dialog button policy to
+	PreferencesPolicy.
+
+2004-04-05  Angus Leeming  <leeming@lyx.org>
+
 	* QGraphics.C (getUnitNo): const-correct.
 
 2004-04-05  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>

@@ -12,13 +12,96 @@
 
 #include "ButtonPolicies.h"
 #include "debug.h"
+#include <string>
 
 using std::endl;
+using std::string;
 
 namespace {
 
+string const printState(ButtonPolicy::State const & state) 
+{
+	string output;
+
+	switch(state) {
+	case ButtonPolicy::INITIAL:
+		output = "INITIAL";
+		break;
+	case ButtonPolicy::VALID:
+		output = "VALID";
+		break;
+	case ButtonPolicy::INVALID:
+		output = "INVALID";
+		break;
+	case ButtonPolicy::APPLIED:
+		output = "APPLIED";
+		break;
+	case ButtonPolicy::RO_INITIAL:
+		output = "RO_INITIAL";
+		break;
+	case ButtonPolicy::RO_VALID:
+		output = "RO_VALID";
+		break;
+	case ButtonPolicy::RO_INVALID:
+		output = "RO_INVALID";
+		break;
+	case ButtonPolicy::RO_APPLIED:
+		output = "RO_APPLIED";
+		break;
+	case ButtonPolicy::BOGUS:
+		output = "BOGUS";
+		break;
+	}
+
+	return output;
+}
+
+
+string const printInput(ButtonPolicy::SMInput const & input)
+{
+	string output;
+
+	switch (input) {
+	case ButtonPolicy::SMI_VALID:
+		output = "SMI_VALID";
+		break;
+	case ButtonPolicy::SMI_INVALID:
+		output = "SMI_INVALID";
+		break;
+	case ButtonPolicy::SMI_OKAY:
+		output = "SMI_OKAY";
+		break;
+	case ButtonPolicy::SMI_APPLY:
+		output = "SMI_APPLY";
+		break;
+	case ButtonPolicy::SMI_CANCEL:
+		output = "SMI_CANCEL";
+		break;
+	case ButtonPolicy::SMI_RESTORE:
+		output = "SMI_RESTORE";
+		break;
+	case ButtonPolicy::SMI_HIDE:
+		output = "SMI_HIDE";
+		break;
+	case ButtonPolicy::SMI_READ_ONLY:
+		output = "SMI_READ_ONLY";
+		break;
+	case ButtonPolicy::SMI_READ_WRITE:
+		output = "SMI_READ_WRITE";
+		break;
+	case ButtonPolicy::SMI_NOOP:
+		output = "SMI_NOOP";
+		break;
+	case ButtonPolicy::SMI_TOTAL:
+		output = "SMI_TOTAL";
+		break;
+	}
+
+	return output;
+}
+
+
 /// Helper function
-inline
 void nextState(ButtonPolicy::State & state,
 	       ButtonPolicy::SMInput in,
 	       ButtonPolicy::StateMachine const & s_m,
@@ -29,17 +112,18 @@ void nextState(ButtonPolicy::State & state,
 	ButtonPolicy::State tmp = s_m[state][in];
 
 	lyxerr[Debug::GUI] << "Transition from state "
-		<< state << " to state " << tmp << " after input "
-		<< in << std::endl;
+			   << printState(state) << " to state "
+			   << printState(tmp) << " after input "
+			   << printInput(in) << std::endl;
 
 	if (ButtonPolicy::BOGUS != tmp) {
 		state = tmp;
 	} else {
 		lyxerr << function_name
 		       << ": No transition for input "
-		       << in
+		       << printInput(in)
 		       << " from state "
-		       << state
+		       << printState(state)
 		       << endl;
 	}
 }
@@ -102,16 +186,12 @@ PreferencesPolicy::PreferencesPolicy()
 
 void PreferencesPolicy::input(SMInput input)
 {
-	//lyxerr << "PreferencesPolicy::input" << endl;
-	// CANCEL and HIDE always take us to INITIAL for all cases.
-	// Note that I didn't put that special case in the helper function
-	// because it doesn't belong there.  Some other
-	// This is probably optimising for the wrong case since it occurs as the
-	// dialog will be hidden.  It would have saved a little memory in the
-	// state machine if I could have gotten map working. ARRae 20000813
+	// The APPLIED state is persistent. Next time the dialog is opened,
+	// the user will be able to press 'Save'.
 	if (SMI_CANCEL == input
 	    || SMI_HIDE == input) {
-		state_ = INITIAL;
+		if (state_ != APPLIED)
+			state_ = INITIAL;
 	} else {
 		nextState(state_,
 			  input,

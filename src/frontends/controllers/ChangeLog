@@ -1,5 +1,14 @@
 2004-04-05  Angus Leeming  <leeming@lyx.org>
 
+	* ButtonPolicies.C (printState, printInput): human-readable output
+	of ButtonPolicy::State, ButtonPolicy::SMInput.
+	(PreferencesPolicy::input): change the behaviour of the Preferences
+	state machine on receipt of SMI_CANCEL/SMI_HIDE if the existing
+	state is APPLIED, then let this state persist. Next time that the
+	dialog is opened, the user will be able to press 'Save'.
+	
+2004-04-05  Angus Leeming  <leeming@lyx.org>
+
 	* ControlPrefs.C (dispatchParams): ignore system_lyxrc when writing
 	the contents of rc_ to the stringstream.
 

@@ -430,6 +430,13 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	}
 
+	case LFUN_DIALOG_UPDATE: {
+		string const name = cmd.getArg(0);
+		if (!buf)
+			enable = name == "prefs";
+		break;
+	}
+
 	case LFUN_MENUNEW:
 	case LFUN_MENUNEWTMPLT:
 	case LFUN_WORDFINDFORWARD:
@@ -459,7 +466,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_GOTO_PARAGRAPH:
 	case LFUN_DIALOG_SHOW_NEW_INSET:
 	case LFUN_DIALOG_SHOW_NEXT_INSET:
-	case LFUN_DIALOG_UPDATE:
 	case LFUN_DIALOG_HIDE:
 	case LFUN_DIALOG_DISCONNECT_INSET:
 	case LFUN_CHILDOPEN:
@@ -1115,6 +1121,8 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 				inset->dispatch(view()->cursor(), fr);
 			} else if (name == "paragraph") {
 				dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
+			} else if (name == "prefs") {
+				owner->getDialogs().update(name, string());
 			}
 			break;
 		}

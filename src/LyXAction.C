@@ -313,7 +313,7 @@ void LyXAction::init()
 		{ LFUN_DIALOG_SHOW, "dialog-show", NoBuffer },
 		{ LFUN_DIALOG_SHOW_NEW_INSET, "dialog-show-new-inset", Noop },
 		{ LFUN_DIALOG_SHOW_NEXT_INSET, "dialog-show-next-inset", Noop },
-		{ LFUN_DIALOG_UPDATE, "dialog-update", Noop },
+		{ LFUN_DIALOG_UPDATE, "dialog-update", NoBuffer },
 		{ LFUN_DIALOG_HIDE, "dialog-hide", Noop },
 		{ LFUN_DIALOG_DISCONNECT_INSET, "dialog-disconnect-inset", Noop },
 		{ LFUN_INSET_APPLY, "inset-apply", Noop },

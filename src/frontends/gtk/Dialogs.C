@@ -459,7 +459,7 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 	} else if (name == "prefs") {
 		dialog->setController(new ControlPrefs(*dialog));
 		dialog->setView(new FormPreferences(*dialog));
-		dialog->bc().bp(new OkApplyCancelPolicy);
+		dialog->bc().bp(new PreferencesPolicy);
 	} else if (name == "print") {
 		dialog->setController(new ControlPrint(*dialog));
 		dialog->setView(new FormPrint(*dialog));
