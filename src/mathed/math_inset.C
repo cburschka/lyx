@@ -78,6 +78,15 @@ MathArray const & MathInset::cell(idx_type) const
 }
 
 
+MathInset::idx_type MathInset::index(row_type row, col_type col) const
+{
+	if (row != 0)
+		lyxerr << "illegal row: " << row << "\n";
+	if (col != 0)
+		lyxerr << "illegal col: " << col << "\n";
+	return 0;
+}
+
 void MathInset::substitute(MathMacro const &)
 {}
 

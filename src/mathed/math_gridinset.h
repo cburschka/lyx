@@ -68,6 +68,8 @@ public:
 	///
 	MathGridInset(col_type m, row_type n, char valign, string const & halign);
 	///
+	MathInset * clone() const;
+	///
 	void metrics(MathMetricsInfo const & st) const;
 	///
 	void draw(Painter &, int x, int y) const;

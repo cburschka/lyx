@@ -167,6 +167,8 @@ public:
 	virtual col_type col(idx_type) const { return 0; }
 	/// to which row belongs a cell with a given index?
 	virtual row_type row(idx_type) const { return 0; }
+	/// cell idex corresponding to row and column;
+	virtual idx_type index(row_type row, col_type col) const;
 	/// any additional x-offset when drawing a cell?
 	virtual int cellXOffset(idx_type) const { return 0; }
 	/// any additional y-offset when drawing a cell?

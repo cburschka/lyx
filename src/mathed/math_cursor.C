@@ -58,19 +58,47 @@ namespace {
 
 struct Selection
 {
+	typedef MathInset::col_type col_type;
+	typedef MathInset::row_type row_type;
+	typedef MathInset::idx_type idx_type;
+
+	Selection()
+		: data_(1, 1)
+	{}
+
+	void region(MathCursorPos const & i1, MathCursorPos const & i2,
+		row_type & r1, row_type & r2, col_type & c1, col_type & c2)
+	{
+		MathInset * p = i1.par_;
+		c1 = p->col(i1.idx_);
+		c2 = p->col(i2.idx_);
+		if (c1 > c2)
+			std::swap(c1, c2);
+		r1 = p->row(i1.idx_);
+		r2 = p->row(i2.idx_);
+		if (r1 > r2)
+			std::swap(r1, r2);
+	}
+
 	void grab(MathCursor const & cursor)
 	{
-		data_.clear();
 		MathCursorPos i1;
 		MathCursorPos i2;
 		cursor.getSelection(i1, i2); 
-		if (i1.idx_ == i2.idx_)
-			data_.push_back(MathArray(i1.cell(), i1.pos_, i2.pos_));
-		else {
-			std::vector<MathInset::idx_type> indices =
-				i1.par_->idxBetween(i1.idx_, i2.idx_);
-			for (MathInset::idx_type i = 0; i < indices.size(); ++i)
-				data_.push_back(i1.cell(indices[i]));
+		// shouldn'tt we assert on i1.par_ == i2.par_?
+		if (i1.idx_ == i2.idx_) {
+			data_ = MathGridInset(1, 1);
+			data_.cell(0) = MathArray(i1.cell(), i1.pos_, i2.pos_);
+		} else {
+			row_type r1, r2;
+			col_type c1, c2;
+			region(i1, i2, r1, r2, c1, c2); 
+			data_ = MathGridInset(c2 - c1 + 1, r2 - r1 + 1);
+			for (row_type row = 0; row < data_.nrows(); ++row) 
+				for (col_type col = 0; col < data_.ncols(); ++col) {
+					idx_type i = i1.par_->index(row + r1, col + c1);
+					data_.cell(data_.index(row, col)) = i1.par_->cell(i);
+				}
 		}
 	}
 
@@ -82,35 +110,45 @@ struct Selection
 		if (i1.idx_ == i2.idx_)
 			i1.cell().erase(i1.pos_, i2.pos_);
 		else {
-			std::vector<MathInset::idx_type> indices =
-				i1.par_->idxBetween(i1.idx_, i2.idx_);
-			for (unsigned i = 0; i < indices.size(); ++i)
-				i1.cell(indices[i]).erase();
+			MathInset * p = i1.par_;
+			row_type r1, r2;
+			col_type c1, c2;
+			region(i1, i2, r1, r2, c1, c2); 
+			for (row_type row = r1; row <= r2; ++row) 
+				for (col_type col = c1; col <= c2; ++col)
+					p->cell(p->index(row, col)).erase();
 		}
 		cursor.cursor() = i1;
 	}
 
 	void paste(MathCursor & cursor) const
-	{
-		MathArray ar = glue();
-		cursor.paste(ar);
+	{	
+		idx_type idx;
+		MathGridInset * p = cursor.enclosingGrid(idx);
+		col_type const numcols = min(data_.ncols(), p->ncols() - p->col(idx));
+		row_type const numrows = min(data_.nrows(), p->nrows() - p->row(idx));
+		for (row_type row = 0; row < numrows; ++row) 
+			for (col_type col = 0; col < numcols; ++col) {
+				idx_type i = p->index(row + p->row(idx), col + p->col(idx));
+				p->cell(i).push_back(data_.cell(data_.index(row, col)));
+			}
 	}
 
 	// glues selection to one cell
 	MathArray glue() const
 	{
 		MathArray ar;
-		for (unsigned i = 0; i < data_.size(); ++i)
-			ar.push_back(data_[i]);
+		for (unsigned i = 0; i < data_.nargs(); ++i)
+			ar.push_back(data_.cell(i));
 		return ar;
 	}
 
 	void clear()
 	{
-		data_.clear();
+		data_ = MathGridInset(1, 1);
 	}
 
-	std::vector<MathArray> data_;
+	MathGridInset data_;
 };
 
 
@@ -1287,13 +1325,17 @@ bool MathCursor::interpret(char c)
 		return true;
 	}
 
-	if (selection_)
+	if (selection_) {
 		selClear();
+		if (c == ' ')
+			return true;
+		// fall through in the other cases
+	}
 
 	if (lastcode_ == LM_TC_TEXTRM) {
-		// suppress direct insertion of to spaces in a row
+		// suppress direct insertion of two spaces in a row
 		// the still allows typing  '<space>a<space>' and deleting the 'a', but
-		// it is better than nothing
+		// it is better than nothing...
 		if (c == ' ' && hasPrevAtom() && prevAtom()->getChar() == ' ')
 			return true;
 		insert(c, LM_TC_TEXTRM);
@@ -1305,10 +1347,8 @@ bool MathCursor::interpret(char c)
 			prevAtom()->asSpaceInset()->incSpace();
 			return true;
 		}
-	
 		if (mathcursor->popRight())
 			return true;
-
 		// if are at the very end, leave the formula
 		return pos() != size();
 	}

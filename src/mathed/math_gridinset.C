@@ -90,6 +90,12 @@ MathGridInset::MathGridInset(col_type m, row_type n, char v, string const & h)
 }
 
 
+MathInset * MathGridInset::clone() const
+{
+	return new MathGridInset(*this);
+}
+
+
 MathInset::idx_type MathGridInset::index(row_type row, col_type col) const
 {
 	return col + ncols() * row;
