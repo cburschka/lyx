@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>482</width>
+            <width>478</width>
             <height>442</height>
         </rect>
     </property>
@@ -79,6 +79,13 @@
                     <property>
                         <name>name</name>
                         <cstring>Spacer2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>sizePolicy</name>
+                        <sizepolicy>
+                            <hsizetype>7</hsizetype>
+                            <vsizetype>1</vsizetype>
+                        </sizepolicy>
                     </property>
                     <property stdset="1">
                         <name>orientation</name>
@@ -474,8 +481,8 @@
     <slot access="public">selectionChanged(const QString &amp;)</slot>
 </connections>
 <tabstops>
-    <tabstop>TabWidget2</tabstop>
     <tabstop>entryED</tabstop>
+    <tabstop>TabWidget2</tabstop>
     <tabstop>nounsLB</tabstop>
     <tabstop>verbsLB</tabstop>
     <tabstop>adjectivesLB</tabstop>

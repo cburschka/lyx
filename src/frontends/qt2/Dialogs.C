@@ -20,6 +20,7 @@
 #include "QErrorDialog.h"
 #include "QERTDialog.h"
 #include "QExternalDialog.h"
+#include "QGraphicsDialog.h"
 #include "QIncludeDialog.h" 
 #include "QIndexDialog.h"
 #include "QRefDialog.h"
@@ -34,6 +35,7 @@
 #include "QError.h"
 #include "QERT.h"
 #include "QExternal.h"
+#include "QGraphics.h"
 #include "QInclude.h"
 #include "QIndex.h"
 #include "QParagraph.h"
@@ -60,6 +62,7 @@
 #include "controllers/ControlError.h"
 #include "controllers/ControlERT.h"
 #include "controllers/ControlExternal.h"
+#include "controllers/ControlGraphics.h"
 #include "controllers/ControlInclude.h"
 #include "controllers/ControlIndex.h"
 #include "controllers/ControlRef.h"
@@ -70,7 +73,6 @@
 #include "controllers/ControlButtons.h"
 #include "controllers/ControlCitation.h"
 #include "controllers/ControlFloat.h"
-#include "controllers/ControlGraphics.h"
 #include "controllers/ControlLabel.h"
 #include "controllers/ControlLog.h"
 #include "controllers/ControlMinipage.h"
@@ -103,6 +105,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIError<QError, Qt2BC>(*lv, *this)); 
 	add(new GUIERT<QERT, Qt2BC>(*lv, *this)); 
 	add(new GUIExternal<QExternal, Qt2BC>(*lv, *this)); 
+	add(new GUIGraphics<QGraphics, Qt2BC>(*lv, *this));
 	add(new GUIInclude<QInclude, Qt2BC>(*lv, *this)); 
 	add(new GUIIndex<QIndex, Qt2BC>(*lv, *this));
 	add(new GUIRef<QRef, Qt2BC>(*lv, *this));

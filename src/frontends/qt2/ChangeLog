@@ -1,5 +1,17 @@
 2001-08-28  John Levon  <moz@compsoc.man.ac.uk>
 
+	* ui/QCharacterDialog.ui:
+	* ui/QThesaurusDialog.ui: fix tab order
+
+	* QGraphics.[Ch]:
+	* QGraphicsDialog.[Ch]:
+	* ui/QGraphicsDialog.ui:
+	* Makefile.am:
+	* Makefile.dialogs:
+	* Dialogs.C: add graphics dialog
+ 
+2001-08-28  John Levon  <moz@compsoc.man.ac.uk>
+
 	* QThesaurus.C: clear selection on update
 
 	* QInclude.[Ch]:
