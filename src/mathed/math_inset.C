@@ -185,18 +185,6 @@ bool MathInset::idxEnd(int &, int &) const
 }
 
 
-bool MathInset::idxFirstUp(int &, int &) const
-{
-	return false;
-}
-
-
-bool MathInset::idxFirstDown(int &, int &) const
-{
-	return false;
-}
-
-
 void MathInset::idxDelete(int &, bool & popit, bool & deleteit)
 {
 	popit    = false;
@@ -206,18 +194,6 @@ void MathInset::idxDelete(int &, bool & popit, bool & deleteit)
 
 void MathInset::idxDeleteRange(int, int)
 {}
-
-
-bool MathInset::idxLastUp(int &, int &) const
-{
-	return false;
-}
-
-
-bool MathInset::idxLastDown(int &, int &) const
-{
-	return false;
-}
 
 
 void MathInset::getXY(int & x, int & y) const

@@ -38,35 +38,3 @@ bool MathFracbaseInset::idxDown(int & idx, int &) const
 	idx = 1;
 	return true;
 }
-
-
-bool MathFracbaseInset::idxFirstUp(int & idx, int & pos) const
-{
-	idx = 0;
-	pos = 0;
-	return true;
-}
-
-
-bool MathFracbaseInset::idxFirstDown(int & idx, int & pos) const
-{
-	idx = 1;
-	pos = 0;
-	return true;
-}
-
-
-bool MathFracbaseInset::idxLastUp(int & idx, int & pos) const
-{
-	idx = 0;
-	pos = cell(idx).size();
-	return true;
-}
-
-
-bool MathFracbaseInset::idxLastDown(int & idx, int & pos) const
-{
-	idx = 1;
-	pos = cell(idx).size();
-	return true;
-}

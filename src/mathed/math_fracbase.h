@@ -20,14 +20,6 @@ public:
 	bool idxLeft(int &, int &) const;
 	///
 	bool idxRight(int &, int &) const;
-	///
-	bool idxFirstUp(int & idx, int & pos) const;
-	///
-	bool idxFirstDown(int & idx, int & pos) const;
-	///
-	bool idxLastUp(int & idx, int & pos) const;
-	///
-	bool idxLastDown(int & idx, int & pos) const;
 };
 
 #endif
