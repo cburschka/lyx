@@ -37,60 +37,48 @@ struct BoundingBox {
 
 	/// 0 0 0 0 is empty!
 	bool empty() const;
-	///
-	int xl;
-	int yb;
-	int xr;
-	int yt;
+
+	unsigned int xl;
+	unsigned int yb;
+	unsigned int xr;
+	unsigned int yt;
 };
 
-///
 bool operator==(BoundingBox const &, BoundingBox const &);
-///
 bool operator!=(BoundingBox const &, BoundingBox const &);
 
 struct GParams 
 {
-	/// 
 	GParams(InsetGraphicsParams const &);
 
 	/// How is the image to be displayed on the LyX screen?
 	enum DisplayType {
-		///
 		COLOR,
-		///
 		GRAYSCALE,
-		///
 		MONOCHROME,
 		/// We aren't going to display it at all!
 		NONE
 	};
 
-	///
 	DisplayType display;
 
 	/// The image filename.
 	string filename;
 
-	///
 	BoundingBox bb;
 
 	/** The size of the view inside lyx in pixels or the scaling of the
 	 *  image.
 	 */
 	unsigned int width;
-	///
 	unsigned int height;
-	/// 
 	unsigned int scale;
 
 	/// Rotation angle.
 	int angle;
 };
 
-///
 bool operator==(GParams const &, GParams const &);
-///
 bool operator!=(GParams const &, GParams const &);
 
 } // namespace grfx

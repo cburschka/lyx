@@ -73,8 +73,8 @@ GParams::GParams(InsetGraphicsParams const & iparams)
 		// inPixels returns a value scaled by lyxrc.zoom.
 		// We want, therefore, to undo this.
 		double const scaling_factor = 100.0 / double(lyxrc.zoom);
-		width  = int(scaling_factor * width);
-		height = int(scaling_factor * height);
+		width  = uint(scaling_factor * width);
+		height = uint(scaling_factor * height);
 	}
 }
 
@@ -133,10 +133,10 @@ BoundingBox::BoundingBox(string const & bb)
 	// want the bounding box in Postscript pixels.
 	// Note further that there are 72 Postscript pixels per inch.
 	double const scaling_factor = 7200.0 / (lyxrc.dpi * lyxrc.zoom);
-	xl = int(scaling_factor * length_xl.inPixels(1, 1));
-	yb = int(scaling_factor * length_yb.inPixels(1, 1));
-	xr = int(scaling_factor * length_xr.inPixels(1, 1));
-	yt = int(scaling_factor * length_yt.inPixels(1, 1));
+	xl = uint(scaling_factor * length_xl.inPixels(1, 1));
+	yb = uint(scaling_factor * length_yb.inPixels(1, 1));
+	xr = uint(scaling_factor * length_xr.inPixels(1, 1));
+	yt = uint(scaling_factor * length_yt.inPixels(1, 1));
 
 	if (xr <= xl || yt <= yb) {
 		xl = 0;

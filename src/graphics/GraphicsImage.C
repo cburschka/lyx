@@ -33,11 +33,12 @@ GImage::getScaledDimensions(GParams const & params) const
 		// No scaling
 		return std::make_pair(getWidth(), getHeight());
 
-	unsigned int width  = 0;
-	unsigned int height = 0;
+	typedef unsigned int dimension;
+	dimension width  = 0;
+	dimension height = 0;
 	if (params.scale != 0) {
-		width  = getWidth()  * params.scale / 100.0;
-		height = getHeight() * params.scale / 100.0;
+		width  = dimension(getWidth()  * params.scale / 100.0);
+		height = dimension(getHeight() * params.scale / 100.0);
 	} else {
 		width  = params.width;
 		height = params.height;
