@@ -62,7 +62,7 @@ bool CharacterSet::loadFile(string const & fname)
 }
 
 
-pair<bool, int> CharacterSet::encodeString(string & const str) const
+pair<bool, int> CharacterSet::encodeString(string const & str) const
 {
 	lyxerr[Debug::KBMAP] << "Checking if we know [" << str << "]" << endl;
 	bool ret = false;
