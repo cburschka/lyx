@@ -1,3 +1,8 @@
+2004-05-07  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetgraphics.C (validate): remove pre 233 file format stuff,
+	handle zipped files for "nice" export
+
 2004-05-05  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetgraphics.C (prepareFile): copy zipped file and corresponding

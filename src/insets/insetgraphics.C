@@ -686,8 +686,8 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 		Buffer const * m_buffer = features.buffer().getMasterBuffer();
 		string basename =
 			params().filename.outputFilename(m_buffer->filePath());
-		string const file_ = params().filename.absFilename();
-		if (!(IsFileReadable(file_ + ".eps") || IsFileReadable(file_ + ".ps")))
+		basename = RemoveExtension(basename);
+		if(params().filename.isZipped())
 			basename = RemoveExtension(basename);
 		if (contains(basename, "."))
 			features.require("lyxdot");
