@@ -67,7 +67,7 @@ void MathAMSArrayInset::write(WriteStream & os) const
 {
 	os << "\\begin{" << name_ << "}";
 	MathGridInset::write(os);
-	os << "\\end{" << name_ << "}\n";
+	os << "\\end{" << name_ << "}";
 }
 
 
