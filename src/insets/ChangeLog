@@ -1,3 +1,9 @@
+2002-04-18  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (draw): fixed the setting of LyXText::first_y it was
+	not really right before, but I only discovered this with the last
+	changes to Page up/down.
+
 2002-04-17  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (checkAndActivateInset): simplified as we now have the

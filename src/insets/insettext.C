@@ -451,15 +451,20 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		first += row->height();
 		row = row->next();
 	}
-	if (y_offset < 0)
-		y_offset = y;
-	lt->first_y = first;
+	if (y_offset < 0) {
+		lt->first_y = -y_offset;
+		first = y;
+		y_offset = 0;
+	} else {
+		lt->first_y = first;
+		first = 0;
+	}
 	if (cleared || (need_update&(INIT|FULL))) {
-		int yf = y_offset;
+		int yf = y_offset + first;
 		y = 0;
 		while ((row != 0) && (yf < ph)) {
-			lt->getVisibleRow(bv, y+y_offset, int(x), row,
-						y+first, cleared);
+			lt->getVisibleRow(bv, y+y_offset+first, int(x), row,
+						y+lt->first_y, cleared);
 			y += row->height();
 			yf += row->height();
 			row = row->next();

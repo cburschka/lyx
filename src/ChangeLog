@@ -1,3 +1,10 @@
+2002-04-18  Juergen Vigna  <jug@sad.it>
+
+	* BufferView_pimpl.C (cursorPrevious): 
+	(cursorNext): fixed to make it work with rows heigher than the work
+	area without moving the cursor only the draw of the row.
+	(workAreaMotionNotify): fix jumping over high rows.
+
 2002-04-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxtextclass.C (Read): fix bit adding, bug discovered by Mike

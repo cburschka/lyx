@@ -564,8 +564,27 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 		return;
 
 	screen_->hideCursor();
-
+#if 0
+	int y_before = bv_->text->cursor.y();
+#endif
+	Row * cursorrow = bv_->text->cursor.row();
 	bv_->text->setCursorFromCoordinates(bv_, x, y + bv_->text->first_y);
+#if 0
+	// sorry for this but I have a strange error that the y value jumps at
+	// a certain point. This seems like an error in my xforms library or
+	// in some other local environment, but I would like to leave this here
+	// for the moment until I can remove this (Jug 20020418)
+	if (y_before < bv_->text->cursor.y())
+		lyxerr << y_before << ":" << bv_->text->cursor.y() << endl;
+#endif
+	// This is to allow jumping over large insets
+	if (cursorrow == bv_->text->cursor.row()) {
+		if (y >= int(workarea_.height())) {
+			bv_->text->cursorDown(bv_, false);
+		} else if (y < 0) {
+			bv_->text->cursorUp(bv_, false);
+		}
+	}
 
 	if (!bv_->text->selection.set())
 		update(bv_->text, BufferView::UPDATE); // Maybe an empty line was deleted
@@ -1161,32 +1180,50 @@ void BufferView::Pimpl::cursorToggle()
 
 void BufferView::Pimpl::cursorPrevious(LyXText * text)
 {
-	if (!text->cursor.row()->previous())
+	if (!text->cursor.row()->previous()) {
+		if (text->first_y > 0) {
+			int new_y = bv_->text->first_y - workarea_.height();
+			screen_->draw(bv_->text, bv_, new_y < 0 ? 0 : new_y);
+			updateScrollbar();
+		}
 		return;
+	}
 
 	int y = text->first_y;
 	Row * cursorrow = text->cursor.row();
 
 	text->setCursorFromCoordinates(bv_, text->cursor.x_fix(), y);
 	finishUndo();
-	// This is to allow jumping over large insets
-	if ((cursorrow == text->cursor.row()))
-		text->cursorUp(bv_);
 
-	if (text->inset_owner) {
-		int new_y = bv_->text->cursor.iy()
-			+ bv_->theLockingInset()->insetInInsetY()
-			+ y
-			+ text->cursor.row()->height()
-			- workarea_.height() + 1;
-
-		screen_->draw(bv_->text, bv_, new_y < 0 ? 0 : new_y);
-	} else if (text->cursor.row()->height() < workarea_.height()) {
-		screen_->draw(text, bv_,
-			      text->cursor.y()
-			      - text->cursor.row()->baseline()
-			      + text->cursor.row()->height()
-			      - workarea_.height() + 1);
+	int new_y;
+	if (cursorrow == bv_->text->cursor.row()) {
+		// we have a row which is higher than the workarea so we leave the
+		// cursor on the start of the row and move only the draw up as soon
+		// as we move the cursor or do something while inside the row (it may
+		// span several workarea-heights) we'll move to the top again, but this
+		// is better than just jump down and only display part of the row.
+		new_y = bv_->text->first_y - workarea_.height();
+	} else {
+		if (text->inset_owner) {
+			new_y = bv_->text->cursor.iy()
+				+ bv_->theLockingInset()->insetInInsetY() + y
+				+ text->cursor.row()->height()
+				- workarea_.height() + 1;
+		} else {
+			new_y = text->cursor.y()
+				- text->cursor.row()->baseline()
+				+ text->cursor.row()->height()
+				- workarea_.height() + 1;
+		}
+	}
+	screen_->draw(bv_->text, bv_,  new_y < 0 ? 0 : new_y);
+	if (text->cursor.row()->previous()) {
+		LyXCursor cur;
+		text->setCursor(bv_, cur, text->cursor.row()->previous()->par(),
+						text->cursor.row()->previous()->pos(), false);
+		if (cur.y() > text->first_y) {
+			text->cursorUp(bv_, true);
+		}
 	}
 	updateScrollbar();
 }
@@ -1194,8 +1231,16 @@ void BufferView::Pimpl::cursorPrevious(LyXText * text)
 
 void BufferView::Pimpl::cursorNext(LyXText * text)
 {
-	if (!text->cursor.row()->next())
+	if (!text->cursor.row()->next()) {
+		int y = text->cursor.y() - text->cursor.row()->baseline() +
+			text->cursor.row()->height();
+		if (y > int(text->first_y + workarea_.height())) {
+			screen_->draw(bv_->text, bv_,
+						  bv_->text->first_y + workarea_.height());
+			updateScrollbar();
+		}
 		return;
+	}
 
 	int y = text->first_y + workarea_.height();
 	if (text->inset_owner && !text->first_y) {
@@ -1208,19 +1253,31 @@ void BufferView::Pimpl::cursorNext(LyXText * text)
 	Row * cursorrow = text->cursor.row();
 	text->setCursorFromCoordinates(bv_, text->cursor.x_fix(), y); // + workarea_->height());
 	finishUndo();
-	// This is to allow jumping over large insets
-	if ((cursorrow == bv_->text->cursor.row()))
-		text->cursorDown(bv_);
-
-	if (text->inset_owner) {
-		screen_->draw(bv_->text, bv_,
-			      bv_->text->cursor.iy()
-				  + bv_->theLockingInset()->insetInInsetY()
-				  + y - text->cursor.row()->baseline());
-	} else if (text->cursor.irow()->height() < workarea_.height()) {
-		screen_->draw(text, bv_, text->cursor.y() -
-			      text->cursor.row()->baseline());
-	} else {
+	int new_y;
+	if (cursorrow == bv_->text->cursor.row()) {
+		// we have a row which is higher than the workarea so we leave the
+		// cursor on the start of the row and move only the draw down as soon
+		// as we move the cursor or do something while inside the row (it may
+		// span several workarea-heights) we'll move to the top again, but this
+		// is better than just jump down and only display part of the row.
+		new_y = bv_->text->first_y + workarea_.height();
+	} else {		
+		if (text->inset_owner) {
+			new_y = bv_->text->cursor.iy()
+				+ bv_->theLockingInset()->insetInInsetY()
+				+ y - text->cursor.row()->baseline();
+		} else {
+			new_y =  text->cursor.y() - text->cursor.row()->baseline();
+		}
+	}
+	screen_->draw(bv_->text, bv_, new_y);
+	if (text->cursor.row()->next()) {
+		LyXCursor cur;
+		text->setCursor(bv_, cur, text->cursor.row()->next()->par(),
+						text->cursor.row()->next()->pos(), false);
+		if (cur.y() < int(text->first_y + workarea_.height())) {
+			text->cursorDown(bv_, true);
+		}
 	}
 	updateScrollbar();
 }
@@ -2046,7 +2103,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		update(lt, BufferView::UPDATE);
 		cursorPrevious(lt);
 		finishUndo();
-		moveCursorUpdate(false);
+		moveCursorUpdate(false, false);
 		owner_->showState();
 	}
 	break;
