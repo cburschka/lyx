@@ -129,27 +129,27 @@ bool operator==(InsetGraphicsParams const & left,
 		InsetGraphicsParams const & right)
 {
 	if (left.filename == right.filename &&
-		left.bb == right.bb &&
-		left.draft == right.draft &&
-		left.clip == right.clip &&
-		left.display == right.display &&
-		left.subcaption == right.subcaption &&
-		left.noUnzip == right.noUnzip &&
-		left.subcaptionText == right.subcaptionText &&
-		left.keepAspectRatio == right.keepAspectRatio &&
-		left.width == right.width &&
-		left.height == right.height &&
-		left.scale == right.scale &&
-		left.size_type == right.size_type &&
-		left.lyxsize_type == right.lyxsize_type &&
-		left.lyxwidth == right.lyxwidth &&
-		left.lyxheight == right.lyxheight &&
-		left.lyxscale == right.lyxscale &&
-		left.rotate == right.rotate &&
-		left.rotateOrigin == right.rotateOrigin &&
-		lyx::float_equal(left.rotateAngle, right.rotateAngle, 0.001 &&
-		left.special == right.special)
-	  )
+	    left.bb == right.bb &&
+	    left.draft == right.draft &&
+	    left.clip == right.clip &&
+	    left.display == right.display &&
+	    left.subcaption == right.subcaption &&
+	    left.noUnzip == right.noUnzip &&
+	    left.subcaptionText == right.subcaptionText &&
+	    left.keepAspectRatio == right.keepAspectRatio &&
+	    left.width == right.width &&
+	    left.height == right.height &&
+	    left.scale == right.scale &&
+	    left.size_type == right.size_type &&
+	    left.lyxsize_type == right.lyxsize_type &&
+	    left.lyxwidth == right.lyxwidth &&
+	    left.lyxheight == right.lyxheight &&
+	    left.lyxscale == right.lyxscale &&
+	    left.rotate == right.rotate &&
+	    left.rotateOrigin == right.rotateOrigin &&
+	    lyx::float_equal(left.rotateAngle, right.rotateAngle, 0.001 &&
+			     left.special == right.special)
+		)
 		return true;
 
 	return false;
@@ -178,22 +178,22 @@ void InsetGraphicsParams::Write(ostream & os) const
 	os << "\tdisplay " << displayTranslator.find(display) << '\n';
 	// Save the subcaption status
 	if (subcaption)
-	    os << "\tsubcaption\n";
+		os << "\tsubcaption\n";
 	if (!subcaptionText.empty())
-	    os << "\tsubcaptionText \"" << subcaptionText << '\"' << '\n';
+		os << "\tsubcaptionText \"" << subcaptionText << '\"' << '\n';
 	if (noUnzip)
-	    os << "\tnoUnzip\n";
-    // we always need the size type
-    // 0: no special
-    // 1: width/height combination
-    // 2: scale
+		os << "\tnoUnzip\n";
+	// we always need the size type
+	// 0: no special
+	// 1: width/height combination
+	// 2: scale
 	os << "\tsize_type " <<  size_type << '\n';
 	if (!width.zero())
-	    os << "\twidth " << width.asString() << '\n';
+		os << "\twidth " << width.asString() << '\n';
 	if (!height.zero())
-	    os << "\theight " << height.asString() << '\n';
+		os << "\theight " << height.asString() << '\n';
 	if (scale != 0)
-	    os << "\tscale " << scale << '\n';
+		os << "\tscale " << scale << '\n';
 	if (keepAspectRatio)
 		os << "\tkeepAspectRatio\n";
 	if (rotate)
@@ -207,11 +207,11 @@ void InsetGraphicsParams::Write(ostream & os) const
 	// the values for the view in lyx
 	os << "\tlyxsize_type " <<  lyxsize_type << '\n';
 	if (!lyxwidth.zero())		// the lyx-viewsize
-	    os << "\tlyxwidth " << lyxwidth.asString() << '\n';
+		os << "\tlyxwidth " << lyxwidth.asString() << '\n';
 	if (!lyxheight.zero())
-	    os << "\tlyxheight " << lyxheight.asString();
+		os << "\tlyxheight " << lyxheight.asString();
 	if (lyxscale != 0)
-	    os << "\tlyxscale " << lyxscale << '\n';
+		os << "\tlyxscale " << lyxscale << '\n';
 }
 
 
@@ -222,8 +222,8 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const& token)
 		filename = lex.getString();
 	} else if (token == "BoundingBox") {
 		for (int i=0; i<4 ;i++) {
-		    lex.next();
-		    bb += (lex.getString()+" ");
+			lex.next();
+			bb += (lex.getString()+" ");
 		}
 	} else if (token == "clip") {
 		clip = true;
@@ -243,11 +243,15 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const& token)
 	} else if (token == "size_type") {
 		lex.next();
 		switch (lex.getInteger()) {
-		    case 0 : size_type = DEFAULT_SIZE;
+		case 0:
+			size_type = DEFAULT_SIZE;
 			break;
-		    case 1 : size_type = WH;
+		case 1:
+			size_type = WH;
 			break;
-		    case 2 : size_type = SCALE;
+		case 2:
+			size_type = SCALE;
+			break;
 		}
 	} else if (token == "width") {
 		lex.next();
@@ -273,11 +277,15 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const& token)
 	} else if (token == "lyxsize_type") {
 		lex.next();
 		switch (lex.getInteger()) {
-		    case 0 : lyxsize_type = DEFAULT_SIZE;
+		case 0:
+			lyxsize_type = DEFAULT_SIZE;
 			break;
-		    case 1 : lyxsize_type = WH;
+		case 1:
+			lyxsize_type = WH;
 			break;
-		    case 2 : lyxsize_type = SCALE;
+		case 2:
+			lyxsize_type = SCALE;
+			break;
 		}
 	} else if (token == "lyxwidth") {
 		lex.next();

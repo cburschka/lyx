@@ -73,9 +73,9 @@ struct InsetGraphicsParams
 	string special;
 	/// How to display the image inside lyx
 	DisplayType display;
-	/// the size for the view inside lyx
 	/// Typ of the LyXView, same as for latex
 	sizeType lyxsize_type;
+	/// the size for the view inside lyx
 	LyXLength lyxwidth;
 	///
 	LyXLength lyxheight;
