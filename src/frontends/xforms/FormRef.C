@@ -17,6 +17,7 @@
 #include "ControlRef.h"
 #include "FormRef.h"
 #include "forms/form_ref.h"
+#include "Tooltips.h"
 #include "xforms_helpers.h"
 #include "insets/insetref.h"
 #include "helper_funcs.h" // getStringFromVector
@@ -62,6 +63,25 @@ void FormRef::build()
 	bc().addReadOnly(dialog_->button_update);
 	bc().addReadOnly(dialog_->input_name);
 	bc().addReadOnly(dialog_->input_ref);
+	
+	//set up the tooltip mechanism
+	string str = _("Show the labels of another opened document. Useful if you are working with multipart documents, where you might want to refer to another doc.");
+	tooltips().init(dialog_->choice_buffer, str);
+
+	str = _("Choose a label to refer to.");
+	tooltips().init(dialog_->browser_refs, str);
+
+	str = _("Type in a label name. We recommend that you use the browser instead.");
+	tooltips().init(dialog_->input_ref, str);
+
+	str = _("Choose the reference style.");
+	tooltips().init(dialog_->choice_type, str);
+
+	str = _("Sort labels in alphabetical order.");
+	tooltips().init(dialog_->check_sort, str);
+
+	str = _("Refresh the list of labels.");
+	tooltips().init(dialog_->button_update, str);
 }
 
 
