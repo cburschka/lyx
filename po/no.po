@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.3.0\n"
-"POT-Creation-Date: 2003-01-23 22:14+0100\n"
+"POT-Creation-Date: 2003-01-30 03:45+0100\n"
 "PO-Revision-Date: 2003-01-24 10:21+0100\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
@@ -62,11 +62,11 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_url.fd:116
 #: ../src/frontends/xforms/forms/form_wrap.fd:242
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:124
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:279
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:92
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:279
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:147
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
 #: src/frontends/qt2/QSpellchecker.C:135
 msgid "OK"
@@ -1890,15 +1890,18 @@ msgid "Replace|^R"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:80
-msgid "Entry:"
-msgstr ""
+#, fuzzy
+msgid "Keyword:"
+msgstr "Nøkkelord"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:98
-msgid "Selection:"
-msgstr ""
+#, fuzzy
+msgid "Selection:|#S"
+msgstr "Seksjon:"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:116
-msgid "Meanings|#M"
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:110
+msgid "Thesaurus entries:"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_url.fd:44
@@ -1925,12 +1928,12 @@ msgstr ""
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:22
 #: ../src/frontends/qt2/ui/PreambleModuleBase.ui:22
 #: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:29
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:22
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:29
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:22
 msgid "Form1"
 msgstr ""
 
@@ -2148,8 +2151,8 @@ msgstr "&Høyde:"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:130
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:365
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:75
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:365
 msgid "&Width:"
 msgstr "Bredde:"
 
@@ -2179,271 +2182,45 @@ msgstr ""
 msgid "&Cancel"
 msgstr "&Avbryt"
 
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
-msgid "Bibtex"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
-msgid "Databa&ses"
-msgstr "Databa&ser"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:57
-msgid "BibTeX database to use"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:75
-msgid "Available BibTeX databases"
-msgstr "kAvailable BibTeX databases"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
-msgid "&Add"
-msgstr "Legg til"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:90
-msgid "Add a BibTeX database file"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:101
-msgid "Add a BibTeX file manually"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:112
-#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:104
-msgid "Bro&wse..."
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:120
-msgid "Browse for a BibTeX database file"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:131
-msgid "&Delete"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:135
-msgid "Remove the selected database"
-msgstr "Fjern den valgte databasen"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:186
-msgid "St&yle"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:194
-msgid "The BibTeX style"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:205
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:119
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:90
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:461
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:290
-msgid "&Browse..."
-msgstr "&Se igjennom..."
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:213
-msgid "Choose a style file"
-msgstr "Velg en stilfil"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:224
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:88
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:67
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:171
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:88
-msgid "&Update"
-msgstr "&Oppdater"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:232
-msgid "Update style list"
-msgstr ""
-
-#. /
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:294
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:152
-#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:941
-msgid "Cancel"
-msgstr "Avbryt"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:307
-msgid "Add bibliography to &TOC"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:311
-msgid "Add bibliography to the table of contents"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:73
-#: src/frontends/qt2/QCharacter.C:39
-msgid "Character"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:95
-msgid "&Family:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:103
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:114
-msgid "Font family"
-msgstr "Fontfamilie"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:125
-msgid "&Series:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:133
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:204
-msgid "Font series"
-msgstr "Font serier"
-
-#. language settings
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:152
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:238
-#: src/frontends/qt2/QDocumentDialog.C:69 src/frontends/qt2/QPrefsDialog.C:120
-#: src/frontends/xforms/FormDocument.C:343
-#: src/frontends/xforms/FormPreferences.C:246
-msgid "Language"
-msgstr "Språk"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:163
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:193
-msgid "Font shape"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:174
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:227
-msgid "Font color"
-msgstr "Fontfarge"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:185
-msgid "S&hape:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:219
-msgid "&Color:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:249
-msgid "&Toggle all"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:253
-msgid "toggle font on all of the above"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:302
-msgid "Never Toggled"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:324
-msgid "Si&ze:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:332
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:343
-msgid "Font size"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:356
-msgid "Always Toggled"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:363
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:397
-msgid "Other font settings"
-msgstr "Andre font innstillinger"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:382
-msgid "&Misc:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:410
-msgid "Auto apply"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:414
-msgid "Apply each change automatically"
-msgstr "Bruk endringer automatisk"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:99
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:288
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:274
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:156
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:280
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:700
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
-msgid "&OK"
-msgstr "&OK"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:497
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:110
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:299
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1164
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:293
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:130
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:109
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:299
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:118
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:126
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:711
-msgid "&Apply"
-msgstr "&Bruk"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:508
-#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:162
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:310
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:371
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:107
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:733
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:312
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:149
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:308
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:306
-#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:141
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:240
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:203
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:171
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:107
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:318
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:252
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:213
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:133
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:204
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:141
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:722
-msgid "&Close"
-msgstr "&Lukk"
-
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:22
 #: src/frontends/qt2/QCitation.C:48 src/frontends/xforms/FormCitation.C:97
 msgid "Citation"
 msgstr "Sitering"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:60
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:67
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:256
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1098
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:234
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:240
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:67
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:240
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:67
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1098
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:668
 msgid "&Restore"
 msgstr ""
+
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:299
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:293
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:118
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:299
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:497
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:110
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:126
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1164
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:711
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:130
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:109
+msgid "&Apply"
+msgstr "&Bruk"
+
+#. /
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:294
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:152
+#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:941
+msgid "Cancel"
+msgstr "Avbryt"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:142
 msgid "Search the available citations"
@@ -2475,10 +2252,10 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:213
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:362
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:176
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:124
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:83
 #: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:94
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:176
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:124
 msgid "New Item"
 msgstr "Nytt element"
 
@@ -2592,67 +2369,33 @@ msgstr "Sett &inn"
 msgid "Insert the delimiters"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:170
-msgid "title here"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:266
-msgid "Use Class Defaults"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:270
-msgid "Reset default params of the current class"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:288
-msgid "Save as Document Defaults"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:292
-msgid "Save settings as LyX's default template"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:22
-msgid "ERT inset display"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:45
-msgid "Display"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:64
-msgid "&Inline"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:68
-msgid "Show ERT inline"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:79
-msgid "&Collapsed"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:83
-msgid "Show ERT button only"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
-msgid "&Open"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
-msgid "Show ERT contents"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:22
-#: src/frontends/qt2/QError.C:31 src/frontends/xforms/FormError.C:27
-msgid "LaTeX Error"
-msgstr "LaTeX Feil"
-
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:45
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:219
-msgid "LaTeX error messages"
-msgstr "LaTeX feilmeldinger"
+#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:310
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:733
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:312
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:133
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:306
+#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:92
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:240
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:171
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:318
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:204
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:213
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:508
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:92
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:162
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:141
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:371
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:107
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:722
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:149
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:308
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:141
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:252
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:203
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:107
+msgid "&Close"
+msgstr "&Lukk"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:45
 msgid "Use &default placement"
@@ -2722,272 +2465,22 @@ msgstr ""
 msgid "Span columns in multi-column documents"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:55
-msgid "&Graphics"
-msgstr "&Grafikk"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:89
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:60
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:45
-msgid "&File:"
-msgstr "&Fil"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:97
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:108
-msgid "File name of image"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:123
-msgid "Select an image file"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:136
-msgid "LyX Display"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:155
-msgid "&Show in LyX"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:159
-msgid "Display image in LyX"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:170
-msgid "Display:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:178
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:213
-msgid "Screen display"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:68
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:113
-#: src/frontends/controllers/ControlGraphics.C:156
-#: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocumentDialog.C:341
-#: src/lyxfont.C:554
-msgid "Default"
-msgstr "Standard"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:192
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:53
-msgid "Monochrome"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:198
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:59
-msgid "Grayscale"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:204
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:65
-msgid "Color"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:224
-msgid "Scale:"
-msgstr "Skalér:"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:232
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:273
-msgid "Percentage to scale by in LyX"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:339
-msgid "Height of image in output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:368
-msgid "Units of height value"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:385
-msgid "&Height"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:419
-msgid "Width of image in output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:443
-msgid "&Width"
-msgstr "&Bredde"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:464
-msgid "&Maintain aspect ratio"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:468
-msgid "Maintain aspect ratio with largest dimension"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:515
-msgid "A&ngle:"
-msgstr "Vi&nkel:"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:523
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:541
-msgid "Angle to rotate image by"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:552
-msgid "&Origin:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:560
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:571
-msgid "The origin of the rotation"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:588
-msgid "&Clipping"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:622
-msgid "Clip to &bounding box"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:626
-msgid "Clip to bounding box values"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:658
-msgid "&Get from file"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:662
-msgid "Get bounding box from the (EPS) file"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:709
-msgid "Right &top:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:724
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:781
-msgid "y"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:749
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:799
-msgid "x"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:828
-msgid "&Left bottom:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:868
-msgid "E&xtra options"
-msgstr "E&kstra opsjoner"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:887
-msgid "Su&bfigure"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:891
-msgid "Is this just one part of a figure float ?"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:902
-msgid "Don't un&zip on export"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:906
-msgid "Don't uncompress image before exporting to LaTeX"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:917
-msgid "LaTeX &options:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:925
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:936
-msgid "Additional LaTeX options"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:947
-msgid "&Draft mode"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:951
-msgid "Draft mode"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1025
-msgid "Ca&ption:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1033
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1048
-msgid "The caption for the sub-figure"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:358
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291 src/LyXAction.C:129
-#: src/frontends/controllers/ButtonController.h:73
-msgid "Close"
-msgstr "Lukk"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:22
-msgid "Include File"
-msgstr "Inkluder fil"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:79
-msgid "File name to include"
-msgstr "Velg dokument som skal settes inn"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:94
-msgid "Select a file"
-msgstr "Velg en fil"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:122
-msgid "&Include Type:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:134
-#: src/insets/insetinclude.C:225
-msgid "Input"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:140
-#: src/frontends/qt2/QInclude.C:35 src/insets/insetinclude.C:228
-msgid "Include"
-msgstr "Inkluder"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:146
-#: ../lib/layouts/linuxdoc.layout:249 ../lib/layouts/manpage.layout:126
-msgid "Verbatim"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:183
-msgid "&Load"
-msgstr "&Les inn"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:187
-msgid "Load the file"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:237
-msgid "&Mark spaces in output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:241
-msgid "Underline spaces in generated output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:259
-msgid "&Show preview"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:263
-msgid "Show LaTeX preview"
-msgstr ""
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:288
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:274
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:156
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:280
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:700
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
+msgid "&OK"
+msgstr "&OK"
 
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:22
@@ -2997,7 +2490,6 @@ msgid "Index"
 msgstr "Indeks"
 
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:60
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
 msgid "&Keyword"
 msgstr "Nø&kkelord"
 
@@ -3005,15 +2497,6 @@ msgstr "Nø&kkelord"
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:79
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:68
 msgid "Index entry"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:22 src/frontends/qt2/QLog.C:37
-msgid "Log"
-msgstr "Logg"
-
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:96
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:96
-msgid "Update the display"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:22
@@ -3135,8 +2618,8 @@ msgid "Minipage settings"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:87
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:377
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:311
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:377
 msgid "Top"
 msgstr "Topp"
 
@@ -3145,8 +2628,8 @@ msgid "Middle"
 msgstr "Midten"
 
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:99
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:389
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:323
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:389
 msgid "Bottom"
 msgstr "Bunn"
 
@@ -3175,733 +2658,15 @@ msgstr "Bredde"
 msgid "&Units:"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:22
-msgid "LaTeX pre-amble"
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
+#: src/frontends/xforms/FormPreferences.C:97
+msgid "Preferences"
+msgstr "Preferanser"
+
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:103
+msgid "&Save"
 msgstr ""
-
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:45
-msgid "The LaTeX pre-amble"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:71
-msgid "&Edit..."
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:79
-msgid "Edit the pre-amble in an external editor"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:22 src/LyXAction.C:140
-#: src/frontends/qt2/QPrint.C:39 src/frontends/xforms/FormPrint.C:36
-msgid "Print"
-msgstr "Skriv ut"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:101
-msgid "Page number to print from"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:112
-msgid "&to"
-msgstr "&til"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:131
-msgid "Page number to print to"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:144
-msgid "Fro&m"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:152
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:171
-msgid "Print all pages"
-msgstr "Skriv ut alle sidene"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:163
-msgid "&All"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:184
-msgid "Print &odd-numbered pages"
-msgstr "Skriv oddetallssider"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:199
-msgid "Print &even-numbered pages"
-msgstr "Skriv &liketallssider"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:214
-msgid "Re&verse order"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:218
-msgid "Print in reverse order"
-msgstr "Skriv ut i omvendt rekkefølge"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:258
-msgid "Number of copies"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:273
-msgid "&Collate"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:277
-msgid "Collate copies"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:347
-msgid "&Print"
-msgstr "&Skriv ut"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:375
-msgid "Print Destination"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:397
-msgid "P&rinter"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:405
-msgid "Send output to the printer"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:416
-msgid "Send output to the given printer"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:427
-msgid "&File"
-msgstr "&Fil"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:431
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:446
-msgid "Send output to a file"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
-#: ../lib/layouts/g-brief-en.layout:494 src/frontends/xforms/FormRef.C:37
-msgid "Reference"
-msgstr "Referanse"
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:71
-msgid "Update the reference list"
-msgstr "Oppdater referanselisten"
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:129
-msgid "&Goto"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:93
-msgid "Move the document cursor to reference"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:106
-msgid "Sort"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:110
-msgid "Sort references in alphabetical order"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:125
-msgid "<reference>"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:131
-msgid "<page>"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:137
-msgid "on page <page>"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:143
-msgid "<reference> on page <page>"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:149
-msgid "Formatted reference"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:165
-msgid "Reference as it appears in output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
-msgid "&Reference:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:198
-msgid "&Format:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:224
-msgid "&Name:"
-msgstr "&Navn:"
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:321
-msgid "Available references in selected document:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:343
-msgid "Available references"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:354
-msgid "&Document:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:22
-msgid "Search and replace"
-msgstr "Finn og Erstatt"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:51
-msgid "&Find:"
-msgstr "&Finn:"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:108
-msgid "Replace &with:"
-msgstr "Erstatt med:"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:161
-msgid "Case &sensitive"
-msgstr "Case &sensitive"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:172
-msgid "Match whole words onl&y"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:250
-msgid "Find &Next"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:269
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:60
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:187
-msgid "&Replace"
-msgstr "&Erstatt"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:284
-msgid "Replace &All"
-msgstr "Erstatt &Alle"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:295
-msgid "Search &backwards"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:22
-msgid "Custom Export"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:45
-msgid "&Command:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:60
-msgid "&Export formats:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:168
-msgid "Process the converted file with this command ($$FName = file name)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:192
-msgid "Available export converters"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:22
-msgid "File:"
-msgstr "Fil:"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:22
-#: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
-#: src/frontends/xforms/FormSpellchecker.C:33
-msgid "Spellchecker"
-msgstr "Stavekontroll"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:45
-msgid "Suggestions:"
-msgstr "Forslag:"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:64
-msgid "Replace word with current choice"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:79
-msgid "Add the word to your personal dictionary"
-msgstr "Legg til i personlig ordliste"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:90
-msgid "&Ignore"
-msgstr "Ignorer"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:94
-msgid "Ignore this word"
-msgstr "Ignorer dette ordet"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:105
-msgid "&Accept"
-msgstr "&Aksepter"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:109
-msgid "Accept word for this session"
-msgstr "Godta ordet i denne sesjonen"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:152
-msgid "How far spellchecking has got"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:163
-msgid "Suggestions"
-msgstr "Forslag"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:210
-msgid "Current word"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:263
-msgid "Replace with selected word"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:274
-msgid "&Start..."
-msgstr "&Start..."
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:278
-msgid "Start spellcheck"
-msgstr "Begynn stavekontroll"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:22
-msgid "Table Settings"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:63
-msgid "&Table Settings"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:82
-msgid "&Horizontal alignment:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:97
-msgid "&Multicolumn"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:101
-msgid "Merge cells"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:109
-#: src/frontends/qt2/QTabular.C:184 src/frontends/xforms/FormParagraph.C:295
-msgid "Block"
-msgstr "Blokk"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:115
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:93
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:77
-#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:309
-msgid "Left"
-msgstr "Venstre"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:121
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:383
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:317
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:89
-#: src/frontends/controllers/ControlGraphics.C:158
-#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:302
-msgid "Center"
-msgstr "Sentrert"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:127
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:99
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:83
-#: src/frontends/qt2/QTabular.C:182 src/frontends/xforms/FormParagraph.C:316
-msgid "Right"
-msgstr "Høyre"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:136
-msgid "Horizontal alignment in column"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:168
-msgid "Column"
-msgstr "Kolonne"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
-msgid "A&dd"
-msgstr "Leg&g til"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:195
-msgid "Append column (right)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:206
-msgid "De&lete"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:214
-msgid "Delete current column"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:227
-msgid "Row"
-msgstr "Rad"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:254
-msgid "Append row (below)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:265
-msgid "Dele&te"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:273
-msgid "Delete this row"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:286
-msgid "Column Width"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:305
-msgid "&Vertical alignment:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:335
-msgid "Width unit"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:354
-msgid "Fixed with of the column"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:398
-msgid "Vertical alignment for fixed width columns"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:411
-msgid "Rotate 90Â°"
-msgstr "Rotér 90°"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:434
-msgid "&Rotate Table"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:438
-msgid "Rotate the table by 90Â°"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:449
-msgid "Rotate &Cell"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:453
-msgid "Rotate this cell by 90Â°"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:466
-msgid "Custom column format (LaTeX)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:477
-msgid "LaTe&X argument:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:494
-msgid "&Borders"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:513
-msgid "Set Borders"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:804
-msgid "All Borders"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:823
-msgid "&Default"
-msgstr "&Standard"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:827
-msgid "Set all borders"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:838
-msgid "C&lear"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:842
-msgid "Unset all borders"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:899
-msgid "&Longtable"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:918
-msgid "&Use long table"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:922
-msgid "Select for tables that span multiple pages"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:937
-msgid "Settings"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:967
-msgid "Header:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:978
-msgid "Footer:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:989
-msgid "First header:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1000
-msgid "Last footer:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1022
-msgid "Border above"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1033
-msgid "Border below"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1044
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1055
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1066
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1077
-msgid "on"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1088
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1099
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1110
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1121
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1132
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1143
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1154
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1165
-msgid "double"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1176
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1187
-msgid "is empty"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1204
-msgid "Page &break on current row"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1208
-msgid "Set a page break on the current row"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1237
-msgid "Current cell:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1266
-msgid "Current row position"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1295
-msgid "Current column position"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:22
-#: ../lib/layouts/aapaper.inc:113 ../lib/layouts/aapaper.layout:77
-#: src/frontends/qt2/QThesaurus.C:31 src/frontends/xforms/FormThesaurus.C:39
-msgid "Thesaurus"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:79
-msgid "Entry"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:110
-msgid "Thesaurus entries"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:131
-msgid "Select a related word"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
-msgid "&Selection"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:165
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:176
-msgid "The selected entry"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:191
-msgid "Replace the entry with the selection"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:22
-msgid "Table Of Contents"
-msgstr "Innholdsfortegnelse"
-
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:60
-msgid "&Type"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:109
-msgid "Contents list"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:22
-msgid "Insert URL"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
-msgid "&URL"
-msgstr "&URL"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:94 ../lib/layouts/amsdefs.inc:223
-#: src/frontends/qt2/QURL.C:33
-msgid "URL"
-msgstr "URL"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
-msgid "&Name"
-msgstr "&Navn"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:72
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:83
-msgid "Name associated with the URL"
-msgstr "Navn some er assosiert med denne URL'en"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:120
-msgid "&Generate hyperlink"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:124
-msgid "Output as a hyperlink ?"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:22
-msgid "Version control log"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23 src/frontends/qt2/QWrap.C:36
-#: src/frontends/xforms/FormWrap.C:33
-msgid "Wrap Options"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:87
-msgid "Default (outer)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:105
-msgid "Outer"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:125
-msgid "&Placement:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:68
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:60
-msgid "&Rows:"
-msgstr "&Rader:"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:76
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:99
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:68
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:91
-msgid "Number of rows"
-msgstr "Antall rader"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:110
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:102
-msgid "&Columns:"
-msgstr "&Kolonner:"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:118
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:141
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:110
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:133
-msgid "Number of columns"
-msgstr "Antall kolonner"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:203
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:231
-msgid "Resize this to the correct table dimensions"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:351
-msgid "&Vertical:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:380
-msgid "Horizontal alignment per column (t,c,b)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:399
-msgid "&Horizontal:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:57
-msgid "LaTeX classes"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:63
-msgid "LaTeX styles"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:69
-msgid "BibTeX styles"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:78
-msgid "Selected classes or styles"
-msgstr "Valgte klasser eller stiler"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:110
-msgid "Show &path"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:114
-msgid "Toggles view of the file list"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:133
-msgid "Installed files"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:180
-msgid "&Rescan"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:184
-msgid "Built new file list"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
-msgid "&View"
-msgstr "&Vis"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
-msgid "Close this dialog"
-msgstr "Lukk dette vinduet"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:22
 msgid "ASCII settings"
@@ -3992,6 +2757,21 @@ msgstr ""
 msgid "Display insets"
 msgstr ""
 
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:53
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:192
+msgid "Monochrome"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:59
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:198
+msgid "Grayscale"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:65
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:204
+msgid "Color"
+msgstr ""
+
 #: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:71
 msgid "Do not display"
 msgstr ""
@@ -4036,6 +2816,12 @@ msgstr ""
 #: src/frontends/qt2/QPrefsDialog.C:137
 msgid "Keyboard"
 msgstr "Tastatur"
+
+#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:104
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:112
+msgid "Bro&wse..."
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:91
 msgid "S&econd:"
@@ -4102,6 +2888,15 @@ msgstr ""
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:22
 msgid "LaTeX settings"
 msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:68
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:113
+#: src/frontends/controllers/ControlGraphics.C:156
+#: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocumentDialog.C:341
+#: src/lyxfont.C:554
+msgid "Default"
+msgstr "Standard"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:74
 msgid "US Letter"
@@ -4401,6 +3196,204 @@ msgstr ""
 msgid "&Maximum last files:"
 msgstr ""
 
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:22
+msgid "Search and replace"
+msgstr "Finn og Erstatt"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:51
+msgid "&Find:"
+msgstr "&Finn:"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:108
+msgid "Replace &with:"
+msgstr "Erstatt med:"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:161
+msgid "Case &sensitive"
+msgstr "Case &sensitive"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:172
+msgid "Match whole words onl&y"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:250
+msgid "Find &Next"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:269
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:187
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:60
+msgid "&Replace"
+msgstr "&Erstatt"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:284
+msgid "Replace &All"
+msgstr "Erstatt &Alle"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:295
+msgid "Search &backwards"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:22
+msgid "File:"
+msgstr "Fil:"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
+#: src/frontends/qt2/QTabularCreate.C:31
+msgid "Insert table"
+msgstr "Sett inn tabell"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:68
+msgid "&Rows:"
+msgstr "&Rader:"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:91
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:76
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:99
+msgid "Number of rows"
+msgstr "Antall rader"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:102
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:110
+msgid "&Columns:"
+msgstr "&Kolonner:"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:110
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:133
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:118
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:141
+msgid "Number of columns"
+msgstr "Antall kolonner"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:231
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:203
+msgid "Resize this to the correct table dimensions"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:358
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334 src/LyXAction.C:129
+#: src/frontends/controllers/ButtonController.h:73
+msgid "Close"
+msgstr "Lukk"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:22
+#: ../lib/layouts/aapaper.inc:113 ../lib/layouts/aapaper.layout:77
+#: src/frontends/qt2/QThesaurus.C:31 src/frontends/xforms/FormThesaurus.C:39
+msgid "Thesaurus"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
+#, fuzzy
+msgid "&Keyword:"
+msgstr "Nø&kkelord"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:79
+msgid "Entry"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:131
+msgid "Select a related word"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
+#, fuzzy
+msgid "&Selection:"
+msgstr "Seksjon:"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:165
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:176
+msgid "The selected entry"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:191
+msgid "Replace the entry with the selection"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:22
+msgid "Insert URL"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
+msgid "&URL"
+msgstr "&URL"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:94 ../lib/layouts/amsdefs.inc:223
+#: src/frontends/qt2/QURL.C:33
+msgid "URL"
+msgstr "URL"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
+msgid "&Name"
+msgstr "&Navn"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:72
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:83
+msgid "Name associated with the URL"
+msgstr "Navn some er assosiert med denne URL'en"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:120
+msgid "&Generate hyperlink"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:124
+msgid "Output as a hyperlink ?"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23 src/frontends/qt2/QWrap.C:36
+#: src/frontends/xforms/FormWrap.C:33
+msgid "Wrap Options"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:87
+msgid "Default (outer)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:93
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:77
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:115
+#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:309
+msgid "Left"
+msgstr "Venstre"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:83
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:127
+#: src/frontends/qt2/QTabular.C:182 src/frontends/xforms/FormParagraph.C:316
+msgid "Right"
+msgstr "Høyre"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:105
+msgid "Outer"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:125
+msgid "&Placement:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
+msgid "&Key"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
+msgid "The citation key"
+msgstr "Siteringsnøkklen"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
+msgid "&Label"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
+msgid "The label as it appears in the document"
+msgstr ""
+
 #: ../src/frontends/qt2/ui/QAboutDialogBase.ui:22
 #: src/frontends/qt2/QAbout.C:39 src/frontends/xforms/FormAboutlyx.C:33
 msgid "About LyX"
@@ -4426,37 +3419,252 @@ msgstr "Kreditteringer"
 msgid "Copyright"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
-#: src/frontends/xforms/FormPreferences.C:97
-msgid "Preferences"
-msgstr "Preferanser"
-
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:103
-msgid "&Save"
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
+msgid "Bibtex"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
-msgid "&Key"
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
+msgid "Databa&ses"
+msgstr "Databa&ser"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:57
+msgid "BibTeX database to use"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
-msgid "The citation key"
-msgstr "Siteringsnøkklen"
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:75
+msgid "Available BibTeX databases"
+msgstr "kAvailable BibTeX databases"
 
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
-msgid "&Label"
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
+msgid "&Add"
+msgstr "Legg til"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:90
+msgid "Add a BibTeX database file"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
-msgid "The label as it appears in the document"
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:101
+msgid "Add a BibTeX file manually"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:120
+msgid "Browse for a BibTeX database file"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:131
+msgid "&Delete"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:135
+msgid "Remove the selected database"
+msgstr "Fjern den valgte databasen"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:186
+msgid "St&yle"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:194
+msgid "The BibTeX style"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:205
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:290
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:119
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:90
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:461
+msgid "&Browse..."
+msgstr "&Se igjennom..."
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:213
+msgid "Choose a style file"
+msgstr "Velg en stilfil"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:224
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:88
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:67
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:171
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:88
+msgid "&Update"
+msgstr "&Oppdater"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:232
+msgid "Update style list"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:307
+msgid "Add bibliography to &TOC"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:311
+msgid "Add bibliography to the table of contents"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:73
+#: src/frontends/qt2/QCharacter.C:39
+msgid "Character"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:95
+msgid "&Family:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:103
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:114
+msgid "Font family"
+msgstr "Fontfamilie"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:125
+msgid "&Series:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:133
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:204
+msgid "Font series"
+msgstr "Font serier"
+
+#. language settings
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:152
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:238
+#: src/frontends/qt2/QDocumentDialog.C:69 src/frontends/qt2/QPrefsDialog.C:120
+#: src/frontends/xforms/FormDocument.C:343
+#: src/frontends/xforms/FormPreferences.C:246
+msgid "Language"
+msgstr "Språk"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:163
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:193
+msgid "Font shape"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:174
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:227
+msgid "Font color"
+msgstr "Fontfarge"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:185
+msgid "S&hape:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:219
+msgid "&Color:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:249
+msgid "&Toggle all"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:253
+msgid "toggle font on all of the above"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:302
+msgid "Never Toggled"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:324
+msgid "Si&ze:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:332
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:343
+msgid "Font size"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:356
+msgid "Always Toggled"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:363
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:397
+msgid "Other font settings"
+msgstr "Andre font innstillinger"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:382
+msgid "&Misc:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:410
+msgid "Auto apply"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:414
+msgid "Apply each change automatically"
+msgstr "Bruk endringer automatisk"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:170
+msgid "title here"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:266
+msgid "Use Class Defaults"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:270
+msgid "Reset default params of the current class"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:288
+msgid "Save as Document Defaults"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:292
+msgid "Save settings as LyX's default template"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:22
+#: src/frontends/qt2/QError.C:31 src/frontends/xforms/FormError.C:27
+msgid "LaTeX Error"
+msgstr "LaTeX Feil"
+
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:45
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:219
+msgid "LaTeX error messages"
+msgstr "LaTeX feilmeldinger"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:22
+msgid "ERT inset display"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:45
+msgid "Display"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:64
+msgid "&Inline"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:68
+msgid "Show ERT inline"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:79
+msgid "&Collapsed"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:83
+msgid "Show ERT button only"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
+msgid "&Open"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
+msgid "Show ERT contents"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:22
 msgid "External Material"
 msgstr "Eksternt materiale"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:45
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:89
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:60
+msgid "&File:"
+msgstr "&Fil"
 
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:53
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:64
@@ -4503,6 +3711,264 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:305
 msgid "Edit the file externally"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:55
+msgid "&Graphics"
+msgstr "&Grafikk"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:97
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:108
+msgid "File name of image"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:123
+msgid "Select an image file"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:136
+msgid "LyX Display"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:155
+msgid "&Show in LyX"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:159
+msgid "Display image in LyX"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:170
+msgid "Display:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:178
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:213
+msgid "Screen display"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:224
+msgid "Scale:"
+msgstr "Skalér:"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:232
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:273
+msgid "Percentage to scale by in LyX"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:339
+msgid "Height of image in output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:368
+msgid "Units of height value"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:385
+msgid "&Height"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:419
+msgid "Width of image in output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:443
+msgid "&Width"
+msgstr "&Bredde"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:464
+msgid "&Maintain aspect ratio"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:468
+msgid "Maintain aspect ratio with largest dimension"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:515
+msgid "A&ngle:"
+msgstr "Vi&nkel:"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:523
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:541
+msgid "Angle to rotate image by"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:552
+msgid "&Origin:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:560
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:571
+msgid "The origin of the rotation"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:588
+msgid "&Clipping"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:622
+msgid "Clip to &bounding box"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:626
+msgid "Clip to bounding box values"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:658
+msgid "&Get from file"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:662
+msgid "Get bounding box from the (EPS) file"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:709
+msgid "Right &top:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:724
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:781
+msgid "y"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:749
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:799
+msgid "x"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:828
+msgid "&Left bottom:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:868
+msgid "E&xtra options"
+msgstr "E&kstra opsjoner"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:887
+msgid "Su&bfigure"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:891
+msgid "Is this just one part of a figure float ?"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:902
+msgid "Don't un&zip on export"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:906
+msgid "Don't uncompress image before exporting to LaTeX"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:917
+msgid "LaTeX &options:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:925
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:936
+msgid "Additional LaTeX options"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:947
+msgid "&Draft mode"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:951
+msgid "Draft mode"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1025
+msgid "Ca&ption:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1033
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1048
+msgid "The caption for the sub-figure"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:22
+msgid "Include File"
+msgstr "Inkluder fil"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:79
+msgid "File name to include"
+msgstr "Velg dokument som skal settes inn"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:94
+msgid "Select a file"
+msgstr "Velg en fil"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:122
+msgid "&Include Type:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:134
+#: src/insets/insetinclude.C:225
+msgid "Input"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:140
+#: src/frontends/qt2/QInclude.C:35 src/insets/insetinclude.C:228
+msgid "Include"
+msgstr "Inkluder"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:146
+#: ../lib/layouts/linuxdoc.layout:249 ../lib/layouts/manpage.layout:126
+msgid "Verbatim"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:183
+msgid "&Load"
+msgstr "&Les inn"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:187
+msgid "Load the file"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:237
+msgid "&Mark spaces in output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:241
+msgid "Underline spaces in generated output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:259
+msgid "&Show preview"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:263
+msgid "Show LaTeX preview"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:22 src/frontends/qt2/QLog.C:37
+msgid "Log"
+msgstr "Logg"
+
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:96
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:96
+msgid "Update the display"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:317
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:89
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:121
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:383
+#: src/frontends/controllers/ControlGraphics.C:158
+#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:302
+msgid "Center"
+msgstr "Sentrert"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:351
+msgid "&Vertical:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:380
+msgid "Horizontal alignment per column (t,c,b)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:399
+msgid "&Horizontal:"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:55
@@ -4639,10 +4105,548 @@ msgstr ""
 msgid "Belo&w"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
-#: src/frontends/qt2/QTabularCreate.C:31
-msgid "Insert table"
-msgstr "Sett inn tabell"
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:22
+msgid "LaTeX pre-amble"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:45
+msgid "The LaTeX pre-amble"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:71
+msgid "&Edit..."
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:79
+msgid "Edit the pre-amble in an external editor"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:22 src/LyXAction.C:140
+#: src/frontends/qt2/QPrint.C:39 src/frontends/xforms/FormPrint.C:36
+msgid "Print"
+msgstr "Skriv ut"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:101
+msgid "Page number to print from"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:112
+msgid "&to"
+msgstr "&til"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:131
+msgid "Page number to print to"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:144
+msgid "Fro&m"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:152
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:171
+msgid "Print all pages"
+msgstr "Skriv ut alle sidene"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:163
+msgid "&All"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:184
+msgid "Print &odd-numbered pages"
+msgstr "Skriv oddetallssider"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:199
+msgid "Print &even-numbered pages"
+msgstr "Skriv &liketallssider"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:214
+msgid "Re&verse order"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:218
+msgid "Print in reverse order"
+msgstr "Skriv ut i omvendt rekkefølge"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:258
+msgid "Number of copies"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:273
+msgid "&Collate"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:277
+msgid "Collate copies"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:347
+msgid "&Print"
+msgstr "&Skriv ut"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:375
+msgid "Print Destination"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:397
+msgid "P&rinter"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:405
+msgid "Send output to the printer"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:416
+msgid "Send output to the given printer"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:427
+msgid "&File"
+msgstr "&Fil"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:431
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:446
+msgid "Send output to a file"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
+#: ../lib/layouts/g-brief-en.layout:494 src/frontends/xforms/FormRef.C:37
+msgid "Reference"
+msgstr "Referanse"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:71
+msgid "Update the reference list"
+msgstr "Oppdater referanselisten"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:129
+msgid "&Goto"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:93
+msgid "Move the document cursor to reference"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:106
+msgid "Sort"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:110
+msgid "Sort references in alphabetical order"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:125
+msgid "<reference>"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:131
+msgid "<page>"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:137
+msgid "on page <page>"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:143
+msgid "<reference> on page <page>"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:149
+msgid "Formatted reference"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:165
+msgid "Reference as it appears in output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
+msgid "&Reference:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:198
+msgid "&Format:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:224
+msgid "&Name:"
+msgstr "&Navn:"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:321
+msgid "Available references in selected document:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:343
+msgid "Available references"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:354
+msgid "&Document:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:22
+msgid "Custom Export"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:45
+msgid "&Command:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:60
+msgid "&Export formats:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:168
+msgid "Process the converted file with this command ($$FName = file name)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:192
+msgid "Available export converters"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:22
+#: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
+#: src/frontends/xforms/FormSpellchecker.C:33
+msgid "Spellchecker"
+msgstr "Stavekontroll"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:45
+msgid "Suggestions:"
+msgstr "Forslag:"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:64
+msgid "Replace word with current choice"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:79
+msgid "Add the word to your personal dictionary"
+msgstr "Legg til i personlig ordliste"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:90
+msgid "&Ignore"
+msgstr "Ignorer"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:94
+msgid "Ignore this word"
+msgstr "Ignorer dette ordet"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:105
+msgid "&Accept"
+msgstr "&Aksepter"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:109
+msgid "Accept word for this session"
+msgstr "Godta ordet i denne sesjonen"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:152
+msgid "How far spellchecking has got"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:163
+msgid "Suggestions"
+msgstr "Forslag"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:210
+msgid "Current word"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:263
+msgid "Replace with selected word"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:274
+msgid "&Start..."
+msgstr "&Start..."
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:278
+msgid "Start spellcheck"
+msgstr "Begynn stavekontroll"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:22
+msgid "Table Settings"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:63
+msgid "&Table Settings"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:82
+msgid "&Horizontal alignment:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:97
+msgid "&Multicolumn"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:101
+msgid "Merge cells"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:109
+#: src/frontends/qt2/QTabular.C:184 src/frontends/xforms/FormParagraph.C:295
+msgid "Block"
+msgstr "Blokk"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:136
+msgid "Horizontal alignment in column"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:168
+msgid "Column"
+msgstr "Kolonne"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
+msgid "A&dd"
+msgstr "Leg&g til"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:195
+msgid "Append column (right)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:206
+msgid "De&lete"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:214
+msgid "Delete current column"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:227
+msgid "Row"
+msgstr "Rad"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:254
+msgid "Append row (below)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:265
+msgid "Dele&te"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:273
+msgid "Delete this row"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:286
+msgid "Column Width"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:305
+msgid "&Vertical alignment:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:335
+msgid "Width unit"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:354
+msgid "Fixed with of the column"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:398
+msgid "Vertical alignment for fixed width columns"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:411
+msgid "Rotate 90Â°"
+msgstr "Rotér 90°"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:434
+msgid "&Rotate Table"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:438
+msgid "Rotate the table by 90Â°"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:449
+msgid "Rotate &Cell"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:453
+msgid "Rotate this cell by 90Â°"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:466
+msgid "Custom column format (LaTeX)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:477
+msgid "LaTe&X argument:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:494
+msgid "&Borders"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:513
+msgid "Set Borders"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:804
+msgid "All Borders"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:823
+msgid "&Default"
+msgstr "&Standard"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:827
+msgid "Set all borders"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:838
+msgid "C&lear"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:842
+msgid "Unset all borders"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:899
+msgid "&Longtable"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:918
+msgid "&Use long table"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:922
+msgid "Select for tables that span multiple pages"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:937
+msgid "Settings"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:967
+msgid "Header:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:978
+msgid "Footer:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:989
+msgid "First header:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1000
+msgid "Last footer:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1022
+msgid "Border above"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1033
+msgid "Border below"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1044
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1055
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1066
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1077
+msgid "on"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1088
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1099
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1110
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1121
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1132
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1143
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1154
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1165
+msgid "double"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1176
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1187
+msgid "is empty"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1204
+msgid "Page &break on current row"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1208
+msgid "Set a page break on the current row"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1237
+msgid "Current cell:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1266
+msgid "Current row position"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1295
+msgid "Current column position"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:57
+msgid "LaTeX classes"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:63
+msgid "LaTeX styles"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:69
+msgid "BibTeX styles"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:78
+msgid "Selected classes or styles"
+msgstr "Valgte klasser eller stiler"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:110
+msgid "Show &path"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:114
+msgid "Toggles view of the file list"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:133
+msgid "Installed files"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:180
+msgid "&Rescan"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:184
+msgid "Built new file list"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
+msgid "&View"
+msgstr "&Vis"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
+msgid "Close this dialog"
+msgstr "Lukk dette vinduet"
+
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:22
+msgid "Table Of Contents"
+msgstr "Innholdsfortegnelse"
+
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:60
+msgid "&Type"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:109
+msgid "Contents list"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:22
+msgid "Version control log"
+msgstr ""
 
 #: ../lib/layouts/IEEEtran.layout:38 ../lib/layouts/aa.layout:30
 #: ../lib/layouts/aapaper.layout:33 ../lib/layouts/aastex.layout:54
@@ -6456,10 +6460,6 @@ msgstr "Tabell|T"
 msgid "Math|M"
 msgstr "Matte|M"
 
-#: ../lib/ui/default.ui:77
-msgid "Read Only"
-msgstr "Skrivebeskyttet"
-
 #: ../lib/ui/default.ui:78
 msgid "Spellchecker...|S"
 msgstr "Stavekontroll...|S"
@@ -6572,34 +6572,6 @@ msgstr "Kopier kolonne"
 msgid "Swap Columns"
 msgstr "Bytt om kolonner"
 
-#: ../lib/ui/default.ui:121
-msgid "Make eqnarray|e"
-msgstr ""
-
-#: ../lib/ui/default.ui:122
-msgid "Make multline|m"
-msgstr ""
-
-#: ../lib/ui/default.ui:123
-msgid "Make align 1 column|1"
-msgstr ""
-
-#: ../lib/ui/default.ui:124
-msgid "Make align 2 columns|2"
-msgstr ""
-
-#: ../lib/ui/default.ui:125
-msgid "Make align 3 columns|3"
-msgstr ""
-
-#: ../lib/ui/default.ui:126
-msgid "Make alignat 2 columns|2"
-msgstr ""
-
-#: ../lib/ui/default.ui:127
-msgid "Make alignat 3 columns|3"
-msgstr ""
-
 #: ../lib/ui/default.ui:129
 msgid "Toggle Numbering|N"
 msgstr "Numerering av/på|N"
@@ -6607,10 +6579,6 @@ msgstr "Numerering av/på|N"
 #: ../lib/ui/default.ui:130
 msgid "Toggle Numbering of Line|u"
 msgstr "Linjenumerering av/på|u"
-
-#: ../lib/ui/default.ui:131
-msgid "Toggle limits|l"
-msgstr "Grenser av/på|G"
 
 #: ../lib/ui/default.ui:132
 msgid "Change Limits Type|L"
@@ -6706,14 +6674,6 @@ msgstr ""
 
 #: ../lib/ui/default.ui:174
 msgid "Flalign Environment|f"
-msgstr ""
-
-#: ../lib/ui/default.ui:175
-msgid "XAlignAt Environment"
-msgstr ""
-
-#: ../lib/ui/default.ui:176
-msgid "XXAlignAt Environment"
 msgstr ""
 
 #: ../lib/ui/default.ui:177
@@ -6888,14 +6848,6 @@ msgstr ""
 msgid "AMS flalign Environment|f"
 msgstr ""
 
-#: ../lib/ui/default.ui:240
-msgid "AMS xalignat Environment|x"
-msgstr ""
-
-#: ../lib/ui/default.ui:241
-msgid "AMS xxalignat Environment"
-msgstr ""
-
 #: ../lib/ui/default.ui:242
 msgid "AMS gather Environment"
 msgstr ""
@@ -7040,10 +6992,6 @@ msgstr "Substantiv stil|S"
 msgid "Bold Style|B"
 msgstr "Fet stil|F"
 
-#: ../lib/ui/default.ui:307
-msgid "TeX Style|X"
-msgstr "TeX stil|X"
-
 #: ../lib/ui/default.ui:309
 msgid "Decrease Environment Depth|v"
 msgstr "Minsk omgivelsesdybde|M"
@@ -7144,10 +7092,6 @@ msgstr "Utvidede egenskaper|u"
 msgid "Customization|C"
 msgstr ""
 
-#: ../lib/ui/default.ui:375
-msgid "Reference Manual|R"
-msgstr "Referansemanual|R"
-
 #: ../lib/ui/default.ui:376
 msgid "FAQ|F"
 msgstr "FAQ|F"
@@ -7164,70 +7108,70 @@ msgstr "LaTeX Konfigurasjon|L"
 msgid "About LyX|X"
 msgstr "Om LyX|X"
 
-#: src/BufferView.C:299 src/bufferlist.C:373 src/bufferlist.C:485
+#: src/BufferView.C:293 src/bufferlist.C:373 src/bufferlist.C:485
 #: src/lyx_cb.C:215
 msgid "Error!"
 msgstr "Feil!"
 
-#: src/BufferView.C:300
+#: src/BufferView.C:294
 msgid "Specified file is unreadable: "
 msgstr "Den spesifiserte file er ulesbar: "
 
-#: src/BufferView.C:309 src/lyx_cb.C:447
+#: src/BufferView.C:303 src/lyx_cb.C:447
 msgid "Error! Cannot open specified file:"
 msgstr "Feil! Kan ikke åpne spesifisert fil:"
 
-#: src/BufferView.C:569 src/LyXAction.C:377
+#: src/BufferView.C:563 src/LyXAction.C:377
 msgid "Undo"
 msgstr "Angre"
 
-#: src/BufferView.C:574
+#: src/BufferView.C:568
 msgid "No further undo information"
 msgstr "Ikke mer \"Angre\" informasjon"
 
-#: src/BufferView.C:586 src/LyXAction.C:334
+#: src/BufferView.C:580 src/LyXAction.C:334
 msgid "Redo"
 msgstr "Gjør om"
 
-#: src/BufferView.C:591
+#: src/BufferView.C:585
 msgid "No further redo information"
 msgstr "Ikke mer \"Gjør om\" informasjon"
 
-#: src/BufferView.C:602
+#: src/BufferView.C:596
 msgid "Paragraph environment type copied"
 msgstr "Avsnittsomgivelse kopiert"
 
-#: src/BufferView.C:611
+#: src/BufferView.C:605
 msgid "Paragraph environment type set"
 msgstr "Avsnittsomgivelse satt"
 
-#: src/BufferView_pimpl.C:287
+#: src/BufferView_pimpl.C:270
 msgid "Formatting document..."
 msgstr "Formaterer dokument..."
 
-#: src/BufferView_pimpl.C:661
+#: src/BufferView_pimpl.C:644
 #, c-format
 msgid "Saved bookmark %1$d"
 msgstr "Lagret bokmerke %1$d"
 
-#: src/BufferView_pimpl.C:663
+#: src/BufferView_pimpl.C:646
 msgid "Saved bookmark "
 msgstr "Lagret bokmerke "
 
-#: src/BufferView_pimpl.C:697
+#: src/BufferView_pimpl.C:680
 #, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "Flyttet til bokmerke %1$d"
 
-#: src/BufferView_pimpl.C:699
+#: src/BufferView_pimpl.C:682
 msgid "Moved to bookmark "
 msgstr "Flyttet til bokmerke "
 
-#: src/BufferView_pimpl.C:878
+#: src/BufferView_pimpl.C:861
 msgid "Select LyX document to insert"
 msgstr "Velg LyX dokument som skal settes inn"
 
-#: src/BufferView_pimpl.C:880 src/frontends/controllers/ControlBibtex.C:63
+#: src/BufferView_pimpl.C:863 src/frontends/controllers/ControlBibtex.C:63
 #: src/frontends/controllers/ControlExternal.C:154
 #: src/frontends/controllers/ControlGraphics.C:93
 #: src/frontends/controllers/ControlInclude.C:70 src/lyx_cb.C:110
@@ -7235,70 +7179,70 @@ msgstr "Velg LyX dokument som skal settes inn"
 msgid "Documents|#o#O"
 msgstr "Dokumenter|#o#O"
 
-#: src/BufferView_pimpl.C:882 src/lyxfunc.C:1683 src/lyxfunc.C:1788
+#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1683 src/lyxfunc.C:1788
 msgid "Examples|#E#e"
 msgstr "Eksempler|#E#e"
 
-#: src/BufferView_pimpl.C:887 src/lyx_cb.C:120 src/lyxfunc.C:1649
+#: src/BufferView_pimpl.C:870 src/lyx_cb.C:120 src/lyxfunc.C:1649
 #: src/lyxfunc.C:1688
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX Dokumenter (*.lyx)"
 
-#: src/BufferView_pimpl.C:896 src/lyxfunc.C:1697 src/lyxfunc.C:1717
+#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1697 src/lyxfunc.C:1717
 #: src/lyxfunc.C:1805 src/lyxfunc.C:1832 src/lyxfunc.C:1842
 msgid "Canceled."
 msgstr "Avbrutt."
 
-#: src/BufferView_pimpl.C:909
+#: src/BufferView_pimpl.C:892
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Setter inn dokumentet %1$s..."
 
-#: src/BufferView_pimpl.C:911
+#: src/BufferView_pimpl.C:894
 msgid "Inserting document "
 msgstr "Setter inn dokumentet "
 
-#: src/BufferView_pimpl.C:911 src/importer.C:47 src/lyxfunc.C:986
+#: src/BufferView_pimpl.C:894 src/importer.C:47 src/lyxfunc.C:986
 #: src/lyxfunc.C:1149 src/lyxfunc.C:1730
 msgid "..."
 msgstr "..."
 
-#: src/BufferView_pimpl.C:918
+#: src/BufferView_pimpl.C:901
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Satt inn document %1$s."
 
-#: src/BufferView_pimpl.C:920 src/lyxfunc.C:1742
+#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1742
 msgid "Document "
 msgstr "Dokumentet "
 
-#: src/BufferView_pimpl.C:920
+#: src/BufferView_pimpl.C:903
 msgid " inserted."
 msgstr " satt inn."
 
-#: src/BufferView_pimpl.C:926
+#: src/BufferView_pimpl.C:909
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Kunne ikke sette inn dokumentet %1$s"
 
-#: src/BufferView_pimpl.C:928
+#: src/BufferView_pimpl.C:911
 msgid "Could not insert document "
 msgstr "Kunne ikke sette inn dokumentet "
 
-#: src/BufferView_pimpl.C:1103 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:1086 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77
 msgid "Error"
 msgstr "Feil"
 
-#: src/BufferView_pimpl.C:1104
+#: src/BufferView_pimpl.C:1087
 msgid "Couldn't find this label"
 msgstr "Klarte ikke å finne dette referansemerket"
 
-#: src/BufferView_pimpl.C:1105
+#: src/BufferView_pimpl.C:1088
 msgid "in current document."
 msgstr "i gjeldende dokument."
 
-#: src/BufferView_pimpl.C:1270
+#: src/BufferView_pimpl.C:1253
 msgid "Unknown function!"
 msgstr "Ukjent operasjon!"
 
@@ -11329,149 +11273,149 @@ msgstr "Du må restarte LyX for å kunne bruke de"
 msgid "updated document class specifications."
 msgstr "oppdaterte textklasse spesifikasjonene."
 
-#: src/lyx_main.C:110
+#: src/lyx_main.C:105
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Feil kommandolineargument `%1$s'. Avslutter."
 
-#: src/lyx_main.C:114
+#: src/lyx_main.C:109
 msgid "Wrong command line option `"
 msgstr "Feil kommandolineargument `"
 
-#: src/lyx_main.C:115
+#: src/lyx_main.C:110
 msgid "'. Exiting."
 msgstr "'. Avslutter."
 
-#: src/lyx_main.C:238
+#: src/lyx_main.C:233
 msgid "Warning: could not determine path of binary."
 msgstr "Advarsel: Fant ikke sti til binærfilen."
 
-#: src/lyx_main.C:240
+#: src/lyx_main.C:235
 msgid "If you have problems, try starting LyX with an absolute path."
 msgstr "Hvis du har problemer prøv å start LyX med absolutt filsti."
 
-#: src/lyx_main.C:347
+#: src/lyx_main.C:342
 msgid "LYX_DIR_13x environment variable no good."
 msgstr ""
 
-#: src/lyx_main.C:349
+#: src/lyx_main.C:344
 msgid "System directory set to: "
 msgstr "System folder satt til: "
 
-#: src/lyx_main.C:357
+#: src/lyx_main.C:352
 msgid "LyX Warning! Couldn't determine system directory. "
 msgstr ""
 
-#: src/lyx_main.C:358
+#: src/lyx_main.C:353
 msgid "Try the '-sysdir' command line parameter or "
 msgstr ""
 
-#: src/lyx_main.C:359
+#: src/lyx_main.C:354
 msgid "set the environment variable LYX_DIR_13x to the LyX system directory "
 msgstr ""
 
-#: src/lyx_main.C:361
+#: src/lyx_main.C:356
 msgid "containing the file `chkconfig.ltx'."
 msgstr "inneholder filen `chkconfig.ltx'."
 
-#: src/lyx_main.C:370
+#: src/lyx_main.C:365
 #, c-format
 msgid "Using built-in default %1$s but expect problems."
 msgstr "Bruker innebygd standard %1$s, men regn med problemer."
 
-#: src/lyx_main.C:375
+#: src/lyx_main.C:370
 msgid "Using built-in default "
 msgstr "Bruker innebygd standard "
 
-#: src/lyx_main.C:376
+#: src/lyx_main.C:371
 msgid " but expect problems."
 msgstr ", men regn med problemer."
 
-#: src/lyx_main.C:380
+#: src/lyx_main.C:375
 msgid "Expect problems."
 msgstr "Forvent problemer."
 
-#: src/lyx_main.C:598
+#: src/lyx_main.C:593
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: rekonfigurerer brukerfolder"
 
-#: src/lyx_main.C:602 src/lyx_main.C:650
+#: src/lyx_main.C:597 src/lyx_main.C:645
 msgid "Done!"
 msgstr "Ferdig!"
 
-#: src/lyx_main.C:612
+#: src/lyx_main.C:607
 msgid "You have specified an invalid LyX directory."
 msgstr "Du har spesifisert en ugyldig LyX folder."
 
-#: src/lyx_main.C:613
+#: src/lyx_main.C:608
 msgid "It is needed to keep your own configuration."
 msgstr "Den trengs for å ta vare på din egen konfigurasjon."
 
-#: src/lyx_main.C:614
+#: src/lyx_main.C:609
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Skal jeg prøve å sette den opp for deg (anbefalt)?"
 
-#: src/lyx_main.C:615
+#: src/lyx_main.C:610
 msgid "Running without personal LyX directory."
 msgstr "Kjører uten personlig LyX folder."
 
-#: src/lyx_main.C:622
+#: src/lyx_main.C:617
 #, c-format
 msgid "LyX: Creating directory %1$s and running configure..."
 msgstr "LyX: Lager folder %1$s og kjører 'configure'..."
 
-#: src/lyx_main.C:627
+#: src/lyx_main.C:622
 msgid "LyX: Creating directory "
 msgstr "LyX: Lager folder "
 
-#: src/lyx_main.C:628
+#: src/lyx_main.C:623
 msgid " and running configure..."
 msgstr "og kjører 'configure'..."
 
-#: src/lyx_main.C:636
+#: src/lyx_main.C:631
 #, c-format
 msgid "Failed. Will use %1$s instead."
 msgstr "Feilet. Bruker %1$s isteden."
 
-#: src/lyx_main.C:640
+#: src/lyx_main.C:635
 msgid "Failed. Will use "
 msgstr "Feilet. Bruker "
 
-#: src/lyx_main.C:641
+#: src/lyx_main.C:636
 msgid " instead."
 msgstr " isteden."
 
-#: src/lyx_main.C:664 src/lyx_main.C:668
+#: src/lyx_main.C:659 src/lyx_main.C:663
 msgid "LyX Warning!"
 msgstr "LyX Advarsel!"
 
-#: src/lyx_main.C:665
+#: src/lyx_main.C:660
 #, c-format
 msgid "Error while reading %1$s."
 msgstr "Feil under lesing av %1$s."
 
-#: src/lyx_main.C:666 src/lyx_main.C:670
+#: src/lyx_main.C:661 src/lyx_main.C:665
 msgid "Using built-in defaults."
 msgstr "Bruker innebygde standarer."
 
-#: src/lyx_main.C:669
+#: src/lyx_main.C:664
 msgid "Error while reading "
 msgstr "Feil under lesing av"
 
-#: src/lyx_main.C:779
+#: src/lyx_main.C:774
 msgid "List of supported debug flags:"
 msgstr "Liste over debug flagg some støttes:"
 
-#: src/lyx_main.C:784
+#: src/lyx_main.C:779
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Setter debug nivå til %1$s"
 
-#: src/lyx_main.C:788
+#: src/lyx_main.C:783
 msgid "Setting debug level to "
 msgstr "Setter debug nivå til "
 
-#: src/lyx_main.C:799
+#: src/lyx_main.C:794
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -11493,27 +11437,27 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/lyx_main.C:835
+#: src/lyx_main.C:830
 msgid "Missing directory for -sysdir switch"
 msgstr "Mangler folder for -sysdir parameter"
 
-#: src/lyx_main.C:845
+#: src/lyx_main.C:840
 msgid "Missing directory for -userdir switch"
 msgstr "Mangler folder for -userdir parameter"
 
-#: src/lyx_main.C:855
+#: src/lyx_main.C:850
 msgid "Missing command string after --execute switch"
 msgstr "Mangler kommandostreng etter --execute parameter"
 
-#: src/lyx_main.C:868
+#: src/lyx_main.C:863
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Mangler fil type [eks. latex, ps...] etter --export parameter"
 
-#: src/lyx_main.C:880
+#: src/lyx_main.C:875
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Mangler fil type [eks. latex, ps...] etter --import parameter"
 
-#: src/lyx_main.C:885
+#: src/lyx_main.C:880
 msgid "Missing filename for --import"
 msgstr "Mangler filnavn for --import"
 
@@ -12368,3 +12312,15 @@ msgstr "Merke satt"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
+
+#~ msgid "Read Only"
+#~ msgstr "Skrivebeskyttet"
+
+#~ msgid "Toggle limits|l"
+#~ msgstr "Grenser av/på|G"
+
+#~ msgid "TeX Style|X"
+#~ msgstr "TeX stil|X"
+
+#~ msgid "Reference Manual|R"
+#~ msgstr "Referansemanual|R"

@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX ??\n"
-"POT-Creation-Date: 2003-01-23 22:14+0100\n"
+"POT-Creation-Date: 2003-01-30 03:45+0100\n"
 "PO-Revision-Date: 2002-12-19 19:00+0100\n"
 "Last-Translator: anon <>\n"
 "Language-Team: he <he@li.org>\n"
@@ -68,11 +68,11 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_url.fd:116
 #: ../src/frontends/xforms/forms/form_wrap.fd:242
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:124
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:279
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:92
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:279
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:147
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
 #: src/frontends/qt2/QSpellchecker.C:135
 msgid "OK"
@@ -2153,18 +2153,19 @@ msgid "Replace|^R"
 msgstr "ףלחה"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:80
-#, fuzzy
-msgid "Entry:"
-msgstr "האיצי"
+msgid "Keyword:"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:98
 #, fuzzy
-msgid "Selection:"
+msgid "Selection:|#S"
 msgstr "ןוויכ"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:116
-msgid "Meanings|#M"
-msgstr ""
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:110
+#, fuzzy
+msgid "Thesaurus entries:"
+msgstr "ריינה הנבמ"
 
 #: ../src/frontends/xforms/forms/form_url.fd:44
 #, fuzzy
@@ -2193,12 +2194,12 @@ msgstr "לדחמ תרירב"
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:22
 #: ../src/frontends/qt2/ui/PreambleModuleBase.ui:22
 #: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:29
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:22
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:29
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:22
 msgid "Form1"
 msgstr ""
 
@@ -2451,8 +2452,8 @@ msgstr "הבוג"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:130
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:365
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:75
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:365
 #, fuzzy
 msgid "&Width:"
 msgstr "בחור"
@@ -2488,297 +2489,47 @@ msgstr ""
 msgid "&Cancel"
 msgstr "לוטיב"
 
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
-msgid "Bibtex"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
-msgid "Databa&ses"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:57
-msgid "BibTeX database to use"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:75
-msgid "Available BibTeX databases"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
-msgid "&Add"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:90
-msgid "Add a BibTeX database file"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:101
-msgid "Add a BibTeX file manually"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:112
-#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:104
-#, fuzzy
-msgid "Bro&wse..."
-msgstr "הריגס"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:120
-#, fuzzy
-msgid "Browse for a BibTeX database file"
-msgstr "TeX ןונגס בצמ יוניש"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:131
-#, fuzzy
-msgid "&Delete"
-msgstr "w הרוש תקיחמ"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:135
-msgid "Remove the selected database"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:186
-#, fuzzy
-msgid "St&yle"
-msgstr "p ףד הנבמ|#P"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:194
-#, fuzzy
-msgid "The BibTeX style"
-msgstr "TeX ןונגס בצמ יוניש"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:205
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:119
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:90
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:461
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:290
-#, fuzzy
-msgid "&Browse..."
-msgstr "הריגס"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:213
-#, fuzzy
-msgid "Choose a style file"
-msgstr "תינבת תריחב"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:224
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:88
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:67
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:171
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:88
-#, fuzzy
-msgid "&Update"
-msgstr "DVI ןוכדע"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:232
-#, fuzzy
-msgid "Update style list"
-msgstr "הגוצת"
-
-#. /
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:294
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:152
-#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:941
-msgid "Cancel"
-msgstr "לוטיב"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:307
-msgid "Add bibliography to &TOC"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:311
-#, fuzzy
-msgid "Add bibliography to the table of contents"
-msgstr "םיניינעה ןכותב הפצ"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:73
-#: src/frontends/qt2/QCharacter.C:39
-#, fuzzy
-msgid "Character"
-msgstr "ות ןונגס"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:95
-#, fuzzy
-msgid "&Family:"
-msgstr "f ץבוק"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:103
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:114
-msgid "Font family"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:125
-#, fuzzy
-msgid "&Series:"
-msgstr "i הפסוה"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:133
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:204
-#, fuzzy
-msgid "Font series"
-msgstr "o טנופ לדוג:|#O"
-
-#. language settings
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:152
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:238
-#: src/frontends/qt2/QDocumentDialog.C:69 src/frontends/qt2/QPrefsDialog.C:120
-#: src/frontends/xforms/FormDocument.C:343
-#: src/frontends/xforms/FormPreferences.C:246
-msgid "Language"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:163
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:193
-#, fuzzy
-msgid "Font shape"
-msgstr "o טנופ לדוג:|#O"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:174
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:227
-msgid "Font color"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:185
-msgid "S&hape:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:219
-#, fuzzy
-msgid "&Color:"
-msgstr "הריגס"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:249
-#, fuzzy
-msgid "&Toggle all"
-msgstr "(bold) הבע (toggle) יוניש"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:253
-msgid "toggle font on all of the above"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:302
-#, fuzzy
-msgid "Never Toggled"
-msgstr "רומשה קתועל הרזח"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:324
-#, fuzzy
-msgid "Si&ze:"
-msgstr "םידדצ"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:332
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:343
-#, fuzzy
-msgid "Font size"
-msgstr "o טנופ לדוג:|#O"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:356
-msgid "Always Toggled"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:363
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:397
-msgid "Other font settings"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:382
-#, fuzzy
-msgid "&Misc:"
-msgstr "תונוש"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:410
-#, fuzzy
-msgid "Auto apply"
-msgstr "a םושיי|#A"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:414
-msgid "Apply each change automatically"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:99
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:288
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:274
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:156
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:280
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:700
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
-#, fuzzy
-msgid "&OK"
-msgstr "רושיא "
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:497
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:110
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:299
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1164
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:293
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:130
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:109
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:299
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:118
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:126
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:711
-#, fuzzy
-msgid "&Apply"
-msgstr "a םושיי|#A"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:508
-#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:162
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:310
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:371
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:107
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:733
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:312
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:149
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:308
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:306
-#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:141
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:240
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:203
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:171
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:107
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:318
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:252
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:213
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:133
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:204
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:141
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:722
-#, fuzzy
-msgid "&Close"
-msgstr "הריגס"
-
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:22
 #: src/frontends/qt2/QCitation.C:48 src/frontends/xforms/FormCitation.C:97
 msgid "Citation"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:60
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:67
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:256
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1098
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:234
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:240
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:67
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:240
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:67
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1098
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:668
 #, fuzzy
 msgid "&Restore"
 msgstr "r ךופה רדס|#R"
+
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:299
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:293
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:118
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:299
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:497
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:110
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:126
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1164
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:711
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:130
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:109
+#, fuzzy
+msgid "&Apply"
+msgstr "a םושיי|#A"
+
+#. /
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:294
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:152
+#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:941
+msgid "Cancel"
+msgstr "לוטיב"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:142
 msgid "Search the available citations"
@@ -2811,10 +2562,10 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:213
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:362
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:176
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:124
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:83
 #: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:94
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:176
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:124
 msgid "New Item"
 msgstr ""
 
@@ -2944,74 +2695,34 @@ msgstr "i הפסוה"
 msgid "Insert the delimiters"
 msgstr "דירפמ"
 
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:170
-msgid "title here"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:266
-msgid "Use Class Defaults"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:270
-msgid "Reset default params of the current class"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:288
+#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:310
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:733
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:312
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:133
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:306
+#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:92
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:240
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:171
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:318
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:204
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:213
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:508
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:92
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:162
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:141
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:371
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:107
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:722
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:149
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:308
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:141
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:252
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:203
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:107
 #, fuzzy
-msgid "Save as Document Defaults"
-msgstr "ריינ הנבמ (set) תצובק"
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:292
-msgid "Save settings as LyX's default template"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:22
-#, fuzzy
-msgid "ERT inset display"
-msgstr "[ת/גצומ אל]"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:45
-#, fuzzy
-msgid "Display"
-msgstr "חפסנ תפסוה"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:64
-msgid "&Inline"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:68
-msgid "Show ERT inline"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:79
-#, fuzzy
-msgid "&Collapsed"
-msgstr "c הדוקפ|#C"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:83
-msgid "Show ERT button only"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
-#, fuzzy
-msgid "&Open"
-msgstr "החיתפ"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
-#, fuzzy
-msgid "Show ERT contents"
-msgstr "םיניינעה ןכותב הפצ"
-
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:22
-#: src/frontends/qt2/QError.C:31 src/frontends/xforms/FormError.C:27
-msgid "LaTeX Error"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:45
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:219
-#, fuzzy
-msgid "LaTeX error messages"
-msgstr "t LaTeX|#T"
+msgid "&Close"
+msgstr "הריגס"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:45
 #, fuzzy
@@ -3089,301 +2800,23 @@ msgstr "תודומע "
 msgid "Span columns in multi-column documents"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:55
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:288
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:274
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:156
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:280
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:700
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
 #, fuzzy
-msgid "&Graphics"
-msgstr "f ץבוק|#F"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:89
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:60
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:45
-#, fuzzy
-msgid "&File:"
-msgstr "f ץבוק"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:97
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:108
-#, fuzzy
-msgid "File name of image"
-msgstr "הפסוהל ךמסמ תריחב"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:123
-#, fuzzy
-msgid "Select an image file"
-msgstr "האבה הרושה תריחב"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:136
-#, fuzzy
-msgid "LyX Display"
-msgstr "[ת/גצומ אל]"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:155
-msgid "&Show in LyX"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:159
-msgid "Display image in LyX"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:170
-#, fuzzy
-msgid "Display:"
-msgstr "חפסנ תפסוה"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:178
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:213
-#, fuzzy
-msgid "Screen display"
-msgstr "[ת/גצומ אל]"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:68
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:113
-#: src/frontends/controllers/ControlGraphics.C:156
-#: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocumentDialog.C:341
-#: src/lyxfont.C:554
-msgid "Default"
-msgstr "לדחמ תרירב"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:192
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:53
-msgid "Monochrome"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:198
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:59
-msgid "Grayscale"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:204
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:65
-#, fuzzy
-msgid "Color"
-msgstr "הריגס"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:224
-#, fuzzy
-msgid "Scale:"
-msgstr "הרימש"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:232
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:273
-msgid "Percentage to scale by in LyX"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:339
-msgid "Height of image in output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:368
-msgid "Units of height value"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:385
-#, fuzzy
-msgid "&Height"
-msgstr "הבוג"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:419
-msgid "Width of image in output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:443
-#, fuzzy
-msgid "&Width"
-msgstr "בחור"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:464
-msgid "&Maintain aspect ratio"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:468
-msgid "Maintain aspect ratio with largest dimension"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:515
-#, fuzzy
-msgid "A&ngle:"
-msgstr "תיווז"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:523
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:541
-msgid "Angle to rotate image by"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:552
-msgid "&Origin:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:560
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:571
-msgid "The origin of the rotation"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:588
-#, fuzzy
-msgid "&Clipping"
-msgstr "הריגס"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:622
-msgid "Clip to &bounding box"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:626
-msgid "Clip to bounding box values"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:658
-#, fuzzy
-msgid "&Get from file"
-msgstr "[ץבוק ןיא]"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:662
-msgid "Get bounding box from the (EPS) file"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:709
-#, fuzzy
-msgid "Right &top:"
-msgstr "הבוג"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:724
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:781
-msgid "y"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:749
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:799
-msgid "x"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:828
-#, fuzzy
-msgid "&Left bottom:"
-msgstr "b תחתמ וק"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:868
-#, fuzzy
-msgid "E&xtra options"
-msgstr "x תופסונ תויורשפא:|#X"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:887
-#, fuzzy
-msgid "Su&bfigure"
-msgstr "רויא"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:891
-msgid "Is this just one part of a figure float ?"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:902
-msgid "Don't un&zip on export"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:906
-msgid "Don't uncompress image before exporting to LaTeX"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:917
-#, fuzzy
-msgid "LaTeX &options:"
-msgstr "x תופסונ תויורשפא:|#X"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:925
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:936
-#, fuzzy
-msgid "Additional LaTeX options"
-msgstr "x תופסונ תויורשפא:|#X"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:947
-msgid "&Draft mode"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:951
-#, fuzzy
-msgid "Draft mode"
-msgstr "TeX בצמ"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1025
-#, fuzzy
-msgid "Ca&ption:"
-msgstr "o תויורשפא"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1033
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1048
-msgid "The caption for the sub-figure"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:358
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291 src/LyXAction.C:129
-#: src/frontends/controllers/ButtonController.h:73
-msgid "Close"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:22
-#, fuzzy
-msgid "Include File"
-msgstr "םירויא תפסוה"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:79
-#, fuzzy
-msgid "File name to include"
-msgstr "הפסוהל ךמסמ תריחב"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:94
-#, fuzzy
-msgid "Select a file"
-msgstr "האבה הרושה תריחב"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:122
-#, fuzzy
-msgid "&Include Type:"
-msgstr "םירויא תפסוה"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:134
-#: src/insets/insetinclude.C:225
-msgid "Input"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:140
-#: src/frontends/qt2/QInclude.C:35 src/insets/insetinclude.C:228
-msgid "Include"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:146
-#: ../lib/layouts/linuxdoc.layout:249 ../lib/layouts/manpage.layout:126
-msgid "Verbatim"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:183
-msgid "&Load"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:187
-#, fuzzy
-msgid "Load the file"
-msgstr "[ץבוק ןיא]"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:237
-msgid "&Mark spaces in output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:241
-msgid "Underline spaces in generated output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:259
-#, fuzzy
-msgid "&Show preview"
-msgstr "f ץבוק"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:263
-#, fuzzy
-msgid "Show LaTeX preview"
-msgstr "LaTeX תמדקה"
+msgid "&OK"
+msgstr "רושיא "
 
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:22
@@ -3393,7 +2826,6 @@ msgid "Index"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:60
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
 msgid "&Keyword"
 msgstr ""
 
@@ -3403,16 +2835,6 @@ msgstr ""
 #, fuzzy
 msgid "Index entry"
 msgstr "i יקפוא גוליד|#I"
-
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:22 src/frontends/qt2/QLog.C:37
-msgid "Log"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:96
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:96
-#, fuzzy
-msgid "Update the display"
-msgstr "הגוצת"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:22
 #, fuzzy
@@ -3551,8 +2973,8 @@ msgid "Minipage settings"
 msgstr "o תויורשפא"
 
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:87
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:377
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:311
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:377
 #, fuzzy
 msgid "Top"
 msgstr "t םיינש|#T"
@@ -3563,8 +2985,8 @@ msgid "Middle"
 msgstr "הצירטמ"
 
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:99
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:389
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:323
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:389
 #, fuzzy
 msgid "Bottom"
 msgstr "b תחתמ וק"
@@ -3597,839 +3019,17 @@ msgstr "בחור"
 msgid "&Units:"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
+#: src/frontends/xforms/FormPreferences.C:97
 #, fuzzy
-msgid "LaTeX pre-amble"
-msgstr "LaTeX תמדקה"
-
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:45
-#, fuzzy
-msgid "The LaTeX pre-amble"
-msgstr "LaTeX תמדקה"
-
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:71
-msgid "&Edit..."
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:79
-msgid "Edit the pre-amble in an external editor"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:22 src/LyXAction.C:140
-#: src/frontends/qt2/QPrint.C:39 src/frontends/xforms/FormPrint.C:36
-msgid "Print"
-msgstr "הספדה"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:101
-msgid "Page number to print from"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:112
-#, fuzzy
-msgid "&to"
-msgstr " לש "
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:131
-msgid "Page number to print to"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:144
-#, fuzzy
-msgid "Fro&m"
-msgstr "f םיטנופ:|#F"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:152
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:171
-#, fuzzy
-msgid "Print all pages"
-msgstr "g םיפדה לכ|#G"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:163
-#, fuzzy
-msgid "&All"
-msgstr "a םושיי|#A"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:184
-#, fuzzy
-msgid "Print &odd-numbered pages"
-msgstr "הלבט תסנכה"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:199
-#, fuzzy
-msgid "Print &even-numbered pages"
-msgstr "הלבט תסנכה"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:214
-#, fuzzy
-msgid "Re&verse order"
-msgstr "r ךופה רדס|#R"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:218
-#, fuzzy
-msgid "Print in reverse order"
-msgstr "r ךופה רדס|#R"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:258
-msgid "Number of copies"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:273
-#, fuzzy
-msgid "&Collate"
-msgstr "c הדוקפ|#C"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:277
-#, fuzzy
-msgid "Collate copies"
-msgstr "םיקתוע"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:347
-#, fuzzy
-msgid "&Print"
-msgstr "הספדה"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:375
-#, fuzzy
-msgid "Print Destination"
-msgstr "לא הספדה"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:397
-#, fuzzy
-msgid "P&rinter"
-msgstr "הספדה"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:405
-msgid "Send output to the printer"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:416
-msgid "Send output to the given printer"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:427
-#, fuzzy
-msgid "&File"
-msgstr "f ץבוק"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:431
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:446
-#, fuzzy
-msgid "Send output to a file"
-msgstr "האבה הרושה תריחב"
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
-#: ../lib/layouts/g-brief-en.layout:494 src/frontends/xforms/FormRef.C:37
-#, fuzzy
-msgid "Reference"
+msgid "Preferences"
 msgstr "םירויא תפסוה"
 
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:71
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:103
 #, fuzzy
-msgid "Update the reference list"
-msgstr "םירויא תפסוה"
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:129
-msgid "&Goto"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:93
-#, fuzzy
-msgid "Move the document cursor to reference"
-msgstr "עוטק ךמסמהש ןכתיי"
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:106
-#, fuzzy
-msgid "Sort"
-msgstr "!רעטצמ"
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:110
-msgid "Sort references in alphabetical order"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:125
-#, fuzzy
-msgid "<reference>"
-msgstr "םירויא תפסוה"
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:131
-#, fuzzy
-msgid "<page>"
-msgstr "o תויורשפא"
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:137
-msgid "on page <page>"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:143
-msgid "<reference> on page <page>"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:149
-#, fuzzy
-msgid "Formatted reference"
-msgstr "םירויא תפסוה"
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:165
-msgid "Reference as it appears in output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
-#, fuzzy
-msgid "&Reference:"
-msgstr "םירויא תפסוה"
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:198
-#, fuzzy
-msgid "&Format:"
-msgstr "f םיטנופ:|#F"
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:224
-#, fuzzy
-msgid "&Name:"
-msgstr "ביטגנ|#H"
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:321
-#, fuzzy
-msgid "Available references in selected document:"
-msgstr "םירויא תפסוה"
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:343
-#, fuzzy
-msgid "Available references"
-msgstr "םירויא תפסוה"
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:354
-#, fuzzy
-msgid "&Document:"
-msgstr "ךמסמ"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:22
-#, fuzzy
-msgid "Search and replace"
-msgstr "הפלחהו שופיח"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:51
-msgid "&Find:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:108
-#, fuzzy
-msgid "Replace &with:"
-msgstr "ףלחה"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:161
-msgid "Case &sensitive"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:172
-msgid "Match whole words onl&y"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:250
-msgid "Find &Next"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:269
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:60
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:187
-#, fuzzy
-msgid "&Replace"
-msgstr "ףלחה"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:284
-#, fuzzy
-msgid "Replace &All"
-msgstr "ףלחה"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:295
-msgid "Search &backwards"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:22
-#, fuzzy
-msgid "Custom Export"
-msgstr "הריזג"
-
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:45
-#, fuzzy
-msgid "&Command:"
-msgstr "c הדוקפ|#C"
-
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:60
-#, fuzzy
-msgid "&Export formats:"
-msgstr "ל אוצי"
-
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:168
-msgid "Process the converted file with this command ($$FName = file name)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:192
-#, fuzzy
-msgid "Available export converters"
-msgstr "םירויא תפסוה"
-
-#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:22
-#, fuzzy
-msgid "File:"
-msgstr "ץבוק `"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:22
-#: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
-#: src/frontends/xforms/FormSpellchecker.C:33
-#, fuzzy
-msgid "Spellchecker"
-msgstr "תויא תקידב"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:45
-#, fuzzy
-msgid "Suggestions:"
-msgstr "ןוויכ"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:64
-msgid "Replace word with current choice"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:79
-#, fuzzy
-msgid "Add the word to your personal dictionary"
-msgstr "i ישיאה ןולימל ףסוה|#I"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:90
-msgid "&Ignore"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:94
-#, fuzzy
-msgid "Ignore this word"
-msgstr "g הלימהמ םלעתה|#g"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:105
-msgid "&Accept"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:109
-#, fuzzy
-msgid "Accept word for this session"
-msgstr "a יחכונהsessionל הלימה תא לבק|#A"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:152
-#, fuzzy
-msgid "How far spellchecking has got"
-msgstr "s תויא תקידב לחתה|#S"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:163
-#, fuzzy
-msgid "Suggestions"
-msgstr "ןוויכ"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:210
-#, fuzzy
-msgid "Current word"
-msgstr "רפסמ:"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:263
-msgid "Replace with selected word"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:274
-msgid "&Start..."
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:278
-#, fuzzy
-msgid "Start spellcheck"
-msgstr "s תויא תקידב לחתה|#S"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:22
-#, fuzzy
-msgid "Table Settings"
-msgstr "o תויורשפא"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:63
-#, fuzzy
-msgid "&Table Settings"
-msgstr "o תויורשפא"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:82
-#, fuzzy
-msgid "&Horizontal alignment:"
-msgstr "יקפוא רושי|#H"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:97
-#, fuzzy
-msgid "&Multicolumn"
-msgstr "m (Multicolumn)ירוט בר"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:101
-msgid "Merge cells"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:109
-#: src/frontends/qt2/QTabular.C:184 src/frontends/xforms/FormParagraph.C:295
-#, fuzzy
-msgid "Block"
-msgstr "ףלחה"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:115
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:93
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:77
-#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:309
-msgid "Left"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:121
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:383
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:317
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:89
-#: src/frontends/controllers/ControlGraphics.C:158
-#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:302
-#, fuzzy
-msgid "Center"
-msgstr "םיטוטיצ"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:127
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:99
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:83
-#: src/frontends/qt2/QTabular.C:182 src/frontends/xforms/FormParagraph.C:316
-#, fuzzy
-msgid "Right"
-msgstr "הבוג"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:136
-#, fuzzy
-msgid "Horizontal alignment in column"
-msgstr "יקפוא רושי|#H"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:168
-#, fuzzy
-msgid "Column"
-msgstr "תודומע "
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
-msgid "A&dd"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:195
-msgid "Append column (right)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:206
-#, fuzzy
-msgid "De&lete"
-msgstr "w הרוש תקיחמ"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:214
-#, fuzzy
-msgid "Delete current column"
-msgstr "n הדומע תקיחמ"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:227
-msgid "Row"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:254
-msgid "Append row (below)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:265
-#, fuzzy
-msgid "Dele&te"
-msgstr "w הרוש תקיחמ"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:273
-#, fuzzy
-msgid "Delete this row"
-msgstr "w הרוש תקיחמ"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:286
-#, fuzzy
-msgid "Column Width"
-msgstr "תודומע "
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:305
-#, fuzzy
-msgid "&Vertical alignment:"
-msgstr "יכנא רושי|#V"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:335
-#, fuzzy
-msgid "Width unit"
-msgstr "בחור"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:354
-msgid "Fixed with of the column"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:398
-msgid "Vertical alignment for fixed width columns"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:411
-msgid "Rotate 90Â°"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:434
-msgid "&Rotate Table"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:438
-msgid "Rotate the table by 90Â°"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:449
-msgid "Rotate &Cell"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:453
-msgid "Rotate this cell by 90Â°"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:466
-msgid "Custom column format (LaTeX)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:477
-#, fuzzy
-msgid "LaTe&X argument:"
-msgstr "c זוכרמ"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:494
-#, fuzzy
-msgid "&Borders"
-msgstr "רדס"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:513
-msgid "Set Borders"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:804
-msgid "All Borders"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:823
-#, fuzzy
-msgid "&Default"
-msgstr "לדחמ תרירב"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:827
-msgid "Set all borders"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:838
-msgid "C&lear"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:842
-msgid "Unset all borders"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:899
-#, fuzzy
-msgid "&Longtable"
-msgstr "הלבט%t"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:918
-msgid "&Use long table"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:922
-msgid "Select for tables that span multiple pages"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:937
-#, fuzzy
-msgid "Settings"
-msgstr "ןוויכ"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:967
-#, fuzzy
-msgid "Header:"
-msgstr "םיטוטיצ"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:978
-#, fuzzy
-msgid "Footer:"
-msgstr "םיטוטיצ"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:989
-#, fuzzy
-msgid "First header:"
-msgstr "הלבט תסנכה"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1000
-#, fuzzy
-msgid "Last footer:"
-msgstr "l הנבמ"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1022
-#, fuzzy
-msgid "Border above"
-msgstr "חוויר"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1033
-#, fuzzy
-msgid "Border below"
-msgstr "חוויר"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1044
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1055
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1066
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1077
-#, fuzzy
-msgid "on"
-msgstr "w םיינש|#w"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1088
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1099
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1110
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1121
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1132
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1143
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1154
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1165
-#, fuzzy
-msgid "double"
-msgstr "חוויר"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1176
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1187
-msgid "is empty"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1204
-msgid "Page &break on current row"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1208
-msgid "Set a page break on the current row"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1237
-#, fuzzy
-msgid "Current cell:"
-msgstr "רפסמ:"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1266
-#, fuzzy
-msgid "Current row position"
-msgstr "רפסמ:"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1295
-msgid "Current column position"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:22
-#: ../lib/layouts/aapaper.inc:113 ../lib/layouts/aapaper.layout:77
-#: src/frontends/qt2/QThesaurus.C:31 src/frontends/xforms/FormThesaurus.C:39
-msgid "Thesaurus"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:79
-#, fuzzy
-msgid "Entry"
-msgstr "האיצי"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:110
-#, fuzzy
-msgid "Thesaurus entries"
-msgstr "ריינה הנבמ"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:131
-#, fuzzy
-msgid "Select a related word"
-msgstr "האבה הרושה תריחב"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
-#, fuzzy
-msgid "&Selection"
-msgstr "ןוויכ"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:165
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:176
-#, fuzzy
-msgid "The selected entry"
-msgstr "האבה הרושה תריחב"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:191
-msgid "Replace the entry with the selection"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:22
-#, fuzzy
-msgid "Table Of Contents"
-msgstr "םיניינעה ןכותב רופסמ קמוע:"
-
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:60
-#, fuzzy
-msgid "&Type"
-msgstr "t LaTeX|#T"
-
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:109
-msgid "Contents list"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:22
-#, fuzzy
-msgid "Insert URL"
-msgstr "i הפסוה"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
-#, fuzzy
-msgid "&URL"
-msgstr "u URL"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:94 ../lib/layouts/amsdefs.inc:223
-#: src/frontends/qt2/QURL.C:33
-#, fuzzy
-msgid "URL"
-msgstr "u URL"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
-#, fuzzy
-msgid "&Name"
-msgstr "ביטגנ|#H"
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:72
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:83
-msgid "Name associated with the URL"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:120
-msgid "&Generate hyperlink"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:124
-msgid "Output as a hyperlink ?"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:22
-#, fuzzy
-msgid "Version control log"
-msgstr "תואסרג תרקב%t"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23 src/frontends/qt2/QWrap.C:36
-#: src/frontends/xforms/FormWrap.C:33
-#, fuzzy
-msgid "Wrap Options"
-msgstr "x תופסונ תויורשפא:|#X"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:87
-#, fuzzy
-msgid "Default (outer)"
-msgstr "לדחמ תרירב"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:105
-#, fuzzy
-msgid "Outer"
-msgstr "רדס"
-
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:125
-#, fuzzy
-msgid "&Placement:"
-msgstr "l םיפצ םוקימ:|#L"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:68
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:60
-msgid "&Rows:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:76
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:99
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:68
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:91
-#, fuzzy
-msgid "Number of rows"
-msgstr "רפסמ"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:110
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:102
-#, fuzzy
-msgid "&Columns:"
-msgstr "תודומע "
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:118
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:141
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:110
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:133
-#, fuzzy
-msgid "Number of columns"
-msgstr "תודומע "
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:203
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:231
-msgid "Resize this to the correct table dimensions"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:351
-#, fuzzy
-msgid "&Vertical:"
-msgstr "יכנא רושי|#V"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:380
-msgid "Horizontal alignment per column (t,c,b)"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:399
-#, fuzzy
-msgid "&Horizontal:"
-msgstr "יקפוא רושי|#H"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:57
-#, fuzzy
-msgid "LaTeX classes"
-msgstr "t LaTeX|#T"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:63
-#, fuzzy
-msgid "LaTeX styles"
-msgstr "t LaTeX|#T"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:69
-#, fuzzy
-msgid "BibTeX styles"
-msgstr "TeX ןונגס בצמ יוניש"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:78
-#, fuzzy
-msgid "Selected classes or styles"
-msgstr "האבה הרושה תריחב"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:110
-msgid "Show &path"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:114
-msgid "Toggles view of the file list"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:133
-#, fuzzy
-msgid "Installed files"
-msgstr "םירויא תפסוה"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:180
-msgid "&Rescan"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:184
-msgid "Built new file list"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
-#, fuzzy
-msgid "&View"
-msgstr "DVI-ב הייפצ"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
-msgid "Close this dialog"
-msgstr ""
+msgid "&Save"
+msgstr "הרימש"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:22
 msgid "ASCII settings"
@@ -4533,6 +3133,22 @@ msgstr ""
 msgid "Display insets"
 msgstr "חפסנ תפסוה"
 
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:53
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:192
+msgid "Monochrome"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:59
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:198
+msgid "Grayscale"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:65
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:204
+#, fuzzy
+msgid "Color"
+msgstr "הריגס"
+
 #: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:71
 #, fuzzy
 msgid "Do not display"
@@ -4586,6 +3202,13 @@ msgstr "x תופסונ תויורשפא:|#X"
 #: src/frontends/qt2/QPrefsDialog.C:137
 msgid "Keyboard"
 msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:104
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:112
+#, fuzzy
+msgid "Bro&wse..."
+msgstr "הריגס"
 
 #: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:91
 #, fuzzy
@@ -4663,6 +3286,15 @@ msgstr "קספומ ןומיס"
 #, fuzzy
 msgid "LaTeX settings"
 msgstr "x תופסונ תויורשפא:|#X"
+
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:68
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:113
+#: src/frontends/controllers/ControlGraphics.C:156
+#: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocumentDialog.C:341
+#: src/lyxfont.C:554
+msgid "Default"
+msgstr "לדחמ תרירב"
 
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:74
 #, fuzzy
@@ -5008,6 +3640,227 @@ msgstr "הספדה"
 msgid "&Maximum last files:"
 msgstr ""
 
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:22
+#, fuzzy
+msgid "Search and replace"
+msgstr "הפלחהו שופיח"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:51
+msgid "&Find:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:108
+#, fuzzy
+msgid "Replace &with:"
+msgstr "ףלחה"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:161
+msgid "Case &sensitive"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:172
+msgid "Match whole words onl&y"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:250
+msgid "Find &Next"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:269
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:187
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:60
+#, fuzzy
+msgid "&Replace"
+msgstr "ףלחה"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:284
+#, fuzzy
+msgid "Replace &All"
+msgstr "ףלחה"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:295
+msgid "Search &backwards"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:22
+#, fuzzy
+msgid "File:"
+msgstr "ץבוק `"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
+#: src/frontends/qt2/QTabularCreate.C:31
+#, fuzzy
+msgid "Insert table"
+msgstr "הלבט תסנכה"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:68
+msgid "&Rows:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:91
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:76
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:99
+#, fuzzy
+msgid "Number of rows"
+msgstr "רפסמ"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:102
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:110
+#, fuzzy
+msgid "&Columns:"
+msgstr "תודומע "
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:110
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:133
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:118
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:141
+#, fuzzy
+msgid "Number of columns"
+msgstr "תודומע "
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:231
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:203
+msgid "Resize this to the correct table dimensions"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:358
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334 src/LyXAction.C:129
+#: src/frontends/controllers/ButtonController.h:73
+msgid "Close"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:22
+#: ../lib/layouts/aapaper.inc:113 ../lib/layouts/aapaper.layout:77
+#: src/frontends/qt2/QThesaurus.C:31 src/frontends/xforms/FormThesaurus.C:39
+msgid "Thesaurus"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
+msgid "&Keyword:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:79
+#, fuzzy
+msgid "Entry"
+msgstr "האיצי"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:131
+#, fuzzy
+msgid "Select a related word"
+msgstr "האבה הרושה תריחב"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
+#, fuzzy
+msgid "&Selection:"
+msgstr "ןוויכ"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:165
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:176
+#, fuzzy
+msgid "The selected entry"
+msgstr "האבה הרושה תריחב"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:191
+msgid "Replace the entry with the selection"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:22
+#, fuzzy
+msgid "Insert URL"
+msgstr "i הפסוה"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
+#, fuzzy
+msgid "&URL"
+msgstr "u URL"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:94 ../lib/layouts/amsdefs.inc:223
+#: src/frontends/qt2/QURL.C:33
+#, fuzzy
+msgid "URL"
+msgstr "u URL"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
+#, fuzzy
+msgid "&Name"
+msgstr "ביטגנ|#H"
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:72
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:83
+msgid "Name associated with the URL"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:120
+msgid "&Generate hyperlink"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:124
+msgid "Output as a hyperlink ?"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23 src/frontends/qt2/QWrap.C:36
+#: src/frontends/xforms/FormWrap.C:33
+#, fuzzy
+msgid "Wrap Options"
+msgstr "x תופסונ תויורשפא:|#X"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:87
+#, fuzzy
+msgid "Default (outer)"
+msgstr "לדחמ תרירב"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:93
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:77
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:115
+#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:309
+msgid "Left"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:83
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:127
+#: src/frontends/qt2/QTabular.C:182 src/frontends/xforms/FormParagraph.C:316
+#, fuzzy
+msgid "Right"
+msgstr "הבוג"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:105
+#, fuzzy
+msgid "Outer"
+msgstr "רדס"
+
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:125
+#, fuzzy
+msgid "&Placement:"
+msgstr "l םיפצ םוקימ:|#L"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
+msgid "&Key"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
+#, fuzzy
+msgid "The citation key"
+msgstr "(citation) טוטיצ תפסוה"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
+#, fuzzy
+msgid "&Label"
+msgstr "לוטיב"
+
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
+#, fuzzy
+msgid "The label as it appears in the document"
+msgstr "?ךמסמה תא חותפל ךנוצרב םאה"
+
 #: ../src/frontends/qt2/ui/QAboutDialogBase.ui:22
 #: src/frontends/qt2/QAbout.C:39 src/frontends/xforms/FormAboutlyx.C:33
 msgid "About LyX"
@@ -5036,43 +3889,282 @@ msgstr ""
 msgid "Copyright"
 msgstr "הקתעה"
 
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
-#: src/frontends/xforms/FormPreferences.C:97
-#, fuzzy
-msgid "Preferences"
-msgstr "םירויא תפסוה"
-
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:103
-#, fuzzy
-msgid "&Save"
-msgstr "הרימש"
-
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
-msgid "&Key"
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
+msgid "Bibtex"
 msgstr ""
 
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
-#, fuzzy
-msgid "The citation key"
-msgstr "(citation) טוטיצ תפסוה"
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
+msgid "Databa&ses"
+msgstr ""
 
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
-#, fuzzy
-msgid "&Label"
-msgstr "לוטיב"
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:57
+msgid "BibTeX database to use"
+msgstr ""
 
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:75
+msgid "Available BibTeX databases"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
+msgid "&Add"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:90
+msgid "Add a BibTeX database file"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:101
+msgid "Add a BibTeX file manually"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:120
 #, fuzzy
-msgid "The label as it appears in the document"
-msgstr "?ךמסמה תא חותפל ךנוצרב םאה"
+msgid "Browse for a BibTeX database file"
+msgstr "TeX ןונגס בצמ יוניש"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:131
+#, fuzzy
+msgid "&Delete"
+msgstr "w הרוש תקיחמ"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:135
+msgid "Remove the selected database"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:186
+#, fuzzy
+msgid "St&yle"
+msgstr "p ףד הנבמ|#P"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:194
+#, fuzzy
+msgid "The BibTeX style"
+msgstr "TeX ןונגס בצמ יוניש"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:205
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:290
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:119
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:90
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:461
+#, fuzzy
+msgid "&Browse..."
+msgstr "הריגס"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:213
+#, fuzzy
+msgid "Choose a style file"
+msgstr "תינבת תריחב"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:224
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:88
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:67
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:171
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:88
+#, fuzzy
+msgid "&Update"
+msgstr "DVI ןוכדע"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:232
+#, fuzzy
+msgid "Update style list"
+msgstr "הגוצת"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:307
+msgid "Add bibliography to &TOC"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:311
+#, fuzzy
+msgid "Add bibliography to the table of contents"
+msgstr "םיניינעה ןכותב הפצ"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:73
+#: src/frontends/qt2/QCharacter.C:39
+#, fuzzy
+msgid "Character"
+msgstr "ות ןונגס"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:95
+#, fuzzy
+msgid "&Family:"
+msgstr "f ץבוק"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:103
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:114
+msgid "Font family"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:125
+#, fuzzy
+msgid "&Series:"
+msgstr "i הפסוה"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:133
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:204
+#, fuzzy
+msgid "Font series"
+msgstr "o טנופ לדוג:|#O"
+
+#. language settings
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:152
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:238
+#: src/frontends/qt2/QDocumentDialog.C:69 src/frontends/qt2/QPrefsDialog.C:120
+#: src/frontends/xforms/FormDocument.C:343
+#: src/frontends/xforms/FormPreferences.C:246
+msgid "Language"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:163
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:193
+#, fuzzy
+msgid "Font shape"
+msgstr "o טנופ לדוג:|#O"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:174
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:227
+msgid "Font color"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:185
+msgid "S&hape:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:219
+#, fuzzy
+msgid "&Color:"
+msgstr "הריגס"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:249
+#, fuzzy
+msgid "&Toggle all"
+msgstr "(bold) הבע (toggle) יוניש"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:253
+msgid "toggle font on all of the above"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:302
+#, fuzzy
+msgid "Never Toggled"
+msgstr "רומשה קתועל הרזח"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:324
+#, fuzzy
+msgid "Si&ze:"
+msgstr "םידדצ"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:332
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:343
+#, fuzzy
+msgid "Font size"
+msgstr "o טנופ לדוג:|#O"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:356
+msgid "Always Toggled"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:363
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:397
+msgid "Other font settings"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:382
+#, fuzzy
+msgid "&Misc:"
+msgstr "תונוש"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:410
+#, fuzzy
+msgid "Auto apply"
+msgstr "a םושיי|#A"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:414
+msgid "Apply each change automatically"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:170
+msgid "title here"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:266
+msgid "Use Class Defaults"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:270
+msgid "Reset default params of the current class"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:288
+#, fuzzy
+msgid "Save as Document Defaults"
+msgstr "ריינ הנבמ (set) תצובק"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:292
+msgid "Save settings as LyX's default template"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:22
+#: src/frontends/qt2/QError.C:31 src/frontends/xforms/FormError.C:27
+msgid "LaTeX Error"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:45
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:219
+#, fuzzy
+msgid "LaTeX error messages"
+msgstr "t LaTeX|#T"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:22
+#, fuzzy
+msgid "ERT inset display"
+msgstr "[ת/גצומ אל]"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:45
+#, fuzzy
+msgid "Display"
+msgstr "חפסנ תפסוה"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:64
+msgid "&Inline"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:68
+msgid "Show ERT inline"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:79
+#, fuzzy
+msgid "&Collapsed"
+msgstr "c הדוקפ|#C"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:83
+msgid "Show ERT button only"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
+#, fuzzy
+msgid "&Open"
+msgstr "החיתפ"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
+#, fuzzy
+msgid "Show ERT contents"
+msgstr "םיניינעה ןכותב הפצ"
 
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:22
 #, fuzzy
 msgid "External Material"
 msgstr "הלבט תסנכה"
+
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:45
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:89
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:60
+#, fuzzy
+msgid "&File:"
+msgstr "f ץבוק"
 
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:53
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:64
@@ -5130,6 +4222,295 @@ msgstr "[ץבוק ןיא]"
 #, fuzzy
 msgid "Edit the file externally"
 msgstr "הלבט תסנכה"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:55
+#, fuzzy
+msgid "&Graphics"
+msgstr "f ץבוק|#F"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:97
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:108
+#, fuzzy
+msgid "File name of image"
+msgstr "הפסוהל ךמסמ תריחב"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:123
+#, fuzzy
+msgid "Select an image file"
+msgstr "האבה הרושה תריחב"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:136
+#, fuzzy
+msgid "LyX Display"
+msgstr "[ת/גצומ אל]"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:155
+msgid "&Show in LyX"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:159
+msgid "Display image in LyX"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:170
+#, fuzzy
+msgid "Display:"
+msgstr "חפסנ תפסוה"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:178
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:213
+#, fuzzy
+msgid "Screen display"
+msgstr "[ת/גצומ אל]"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:224
+#, fuzzy
+msgid "Scale:"
+msgstr "הרימש"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:232
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:273
+msgid "Percentage to scale by in LyX"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:339
+msgid "Height of image in output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:368
+msgid "Units of height value"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:385
+#, fuzzy
+msgid "&Height"
+msgstr "הבוג"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:419
+msgid "Width of image in output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:443
+#, fuzzy
+msgid "&Width"
+msgstr "בחור"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:464
+msgid "&Maintain aspect ratio"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:468
+msgid "Maintain aspect ratio with largest dimension"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:515
+#, fuzzy
+msgid "A&ngle:"
+msgstr "תיווז"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:523
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:541
+msgid "Angle to rotate image by"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:552
+msgid "&Origin:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:560
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:571
+msgid "The origin of the rotation"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:588
+#, fuzzy
+msgid "&Clipping"
+msgstr "הריגס"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:622
+msgid "Clip to &bounding box"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:626
+msgid "Clip to bounding box values"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:658
+#, fuzzy
+msgid "&Get from file"
+msgstr "[ץבוק ןיא]"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:662
+msgid "Get bounding box from the (EPS) file"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:709
+#, fuzzy
+msgid "Right &top:"
+msgstr "הבוג"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:724
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:781
+msgid "y"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:749
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:799
+msgid "x"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:828
+#, fuzzy
+msgid "&Left bottom:"
+msgstr "b תחתמ וק"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:868
+#, fuzzy
+msgid "E&xtra options"
+msgstr "x תופסונ תויורשפא:|#X"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:887
+#, fuzzy
+msgid "Su&bfigure"
+msgstr "רויא"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:891
+msgid "Is this just one part of a figure float ?"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:902
+msgid "Don't un&zip on export"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:906
+msgid "Don't uncompress image before exporting to LaTeX"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:917
+#, fuzzy
+msgid "LaTeX &options:"
+msgstr "x תופסונ תויורשפא:|#X"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:925
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:936
+#, fuzzy
+msgid "Additional LaTeX options"
+msgstr "x תופסונ תויורשפא:|#X"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:947
+msgid "&Draft mode"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:951
+#, fuzzy
+msgid "Draft mode"
+msgstr "TeX בצמ"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1025
+#, fuzzy
+msgid "Ca&ption:"
+msgstr "o תויורשפא"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1033
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1048
+msgid "The caption for the sub-figure"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:22
+#, fuzzy
+msgid "Include File"
+msgstr "םירויא תפסוה"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:79
+#, fuzzy
+msgid "File name to include"
+msgstr "הפסוהל ךמסמ תריחב"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:94
+#, fuzzy
+msgid "Select a file"
+msgstr "האבה הרושה תריחב"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:122
+#, fuzzy
+msgid "&Include Type:"
+msgstr "םירויא תפסוה"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:134
+#: src/insets/insetinclude.C:225
+msgid "Input"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:140
+#: src/frontends/qt2/QInclude.C:35 src/insets/insetinclude.C:228
+msgid "Include"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:146
+#: ../lib/layouts/linuxdoc.layout:249 ../lib/layouts/manpage.layout:126
+msgid "Verbatim"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:183
+msgid "&Load"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:187
+#, fuzzy
+msgid "Load the file"
+msgstr "[ץבוק ןיא]"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:237
+msgid "&Mark spaces in output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:241
+msgid "Underline spaces in generated output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:259
+#, fuzzy
+msgid "&Show preview"
+msgstr "f ץבוק"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:263
+#, fuzzy
+msgid "Show LaTeX preview"
+msgstr "LaTeX תמדקה"
+
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:22 src/frontends/qt2/QLog.C:37
+msgid "Log"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:96
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:96
+#, fuzzy
+msgid "Update the display"
+msgstr "הגוצת"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:317
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:89
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:121
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:383
+#: src/frontends/controllers/ControlGraphics.C:158
+#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:302
+#, fuzzy
+msgid "Center"
+msgstr "םיטוטיצ"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:351
+#, fuzzy
+msgid "&Vertical:"
+msgstr "יכנא רושי|#V"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:380
+msgid "Horizontal alignment per column (t,c,b)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:399
+#, fuzzy
+msgid "&Horizontal:"
+msgstr "יקפוא רושי|#H"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:55
 msgid "&General"
@@ -5288,11 +4669,629 @@ msgstr ""
 msgid "Belo&w"
 msgstr "לוטיב"
 
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
-#: src/frontends/qt2/QTabularCreate.C:31
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:22
 #, fuzzy
-msgid "Insert table"
+msgid "LaTeX pre-amble"
+msgstr "LaTeX תמדקה"
+
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:45
+#, fuzzy
+msgid "The LaTeX pre-amble"
+msgstr "LaTeX תמדקה"
+
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:71
+msgid "&Edit..."
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:79
+msgid "Edit the pre-amble in an external editor"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:22 src/LyXAction.C:140
+#: src/frontends/qt2/QPrint.C:39 src/frontends/xforms/FormPrint.C:36
+msgid "Print"
+msgstr "הספדה"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:101
+msgid "Page number to print from"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:112
+#, fuzzy
+msgid "&to"
+msgstr " לש "
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:131
+msgid "Page number to print to"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:144
+#, fuzzy
+msgid "Fro&m"
+msgstr "f םיטנופ:|#F"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:152
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:171
+#, fuzzy
+msgid "Print all pages"
+msgstr "g םיפדה לכ|#G"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:163
+#, fuzzy
+msgid "&All"
+msgstr "a םושיי|#A"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:184
+#, fuzzy
+msgid "Print &odd-numbered pages"
 msgstr "הלבט תסנכה"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:199
+#, fuzzy
+msgid "Print &even-numbered pages"
+msgstr "הלבט תסנכה"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:214
+#, fuzzy
+msgid "Re&verse order"
+msgstr "r ךופה רדס|#R"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:218
+#, fuzzy
+msgid "Print in reverse order"
+msgstr "r ךופה רדס|#R"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:258
+msgid "Number of copies"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:273
+#, fuzzy
+msgid "&Collate"
+msgstr "c הדוקפ|#C"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:277
+#, fuzzy
+msgid "Collate copies"
+msgstr "םיקתוע"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:347
+#, fuzzy
+msgid "&Print"
+msgstr "הספדה"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:375
+#, fuzzy
+msgid "Print Destination"
+msgstr "לא הספדה"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:397
+#, fuzzy
+msgid "P&rinter"
+msgstr "הספדה"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:405
+msgid "Send output to the printer"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:416
+msgid "Send output to the given printer"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:427
+#, fuzzy
+msgid "&File"
+msgstr "f ץבוק"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:431
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:446
+#, fuzzy
+msgid "Send output to a file"
+msgstr "האבה הרושה תריחב"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
+#: ../lib/layouts/g-brief-en.layout:494 src/frontends/xforms/FormRef.C:37
+#, fuzzy
+msgid "Reference"
+msgstr "םירויא תפסוה"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:71
+#, fuzzy
+msgid "Update the reference list"
+msgstr "םירויא תפסוה"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:129
+msgid "&Goto"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:93
+#, fuzzy
+msgid "Move the document cursor to reference"
+msgstr "עוטק ךמסמהש ןכתיי"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:106
+#, fuzzy
+msgid "Sort"
+msgstr "!רעטצמ"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:110
+msgid "Sort references in alphabetical order"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:125
+#, fuzzy
+msgid "<reference>"
+msgstr "םירויא תפסוה"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:131
+#, fuzzy
+msgid "<page>"
+msgstr "o תויורשפא"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:137
+msgid "on page <page>"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:143
+msgid "<reference> on page <page>"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:149
+#, fuzzy
+msgid "Formatted reference"
+msgstr "םירויא תפסוה"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:165
+msgid "Reference as it appears in output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
+#, fuzzy
+msgid "&Reference:"
+msgstr "םירויא תפסוה"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:198
+#, fuzzy
+msgid "&Format:"
+msgstr "f םיטנופ:|#F"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:224
+#, fuzzy
+msgid "&Name:"
+msgstr "ביטגנ|#H"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:321
+#, fuzzy
+msgid "Available references in selected document:"
+msgstr "םירויא תפסוה"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:343
+#, fuzzy
+msgid "Available references"
+msgstr "םירויא תפסוה"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:354
+#, fuzzy
+msgid "&Document:"
+msgstr "ךמסמ"
+
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:22
+#, fuzzy
+msgid "Custom Export"
+msgstr "הריזג"
+
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:45
+#, fuzzy
+msgid "&Command:"
+msgstr "c הדוקפ|#C"
+
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:60
+#, fuzzy
+msgid "&Export formats:"
+msgstr "ל אוצי"
+
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:168
+msgid "Process the converted file with this command ($$FName = file name)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:192
+#, fuzzy
+msgid "Available export converters"
+msgstr "םירויא תפסוה"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:22
+#: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
+#: src/frontends/xforms/FormSpellchecker.C:33
+#, fuzzy
+msgid "Spellchecker"
+msgstr "תויא תקידב"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:45
+#, fuzzy
+msgid "Suggestions:"
+msgstr "ןוויכ"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:64
+msgid "Replace word with current choice"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:79
+#, fuzzy
+msgid "Add the word to your personal dictionary"
+msgstr "i ישיאה ןולימל ףסוה|#I"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:90
+msgid "&Ignore"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:94
+#, fuzzy
+msgid "Ignore this word"
+msgstr "g הלימהמ םלעתה|#g"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:105
+msgid "&Accept"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:109
+#, fuzzy
+msgid "Accept word for this session"
+msgstr "a יחכונהsessionל הלימה תא לבק|#A"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:152
+#, fuzzy
+msgid "How far spellchecking has got"
+msgstr "s תויא תקידב לחתה|#S"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:163
+#, fuzzy
+msgid "Suggestions"
+msgstr "ןוויכ"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:210
+#, fuzzy
+msgid "Current word"
+msgstr "רפסמ:"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:263
+msgid "Replace with selected word"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:274
+msgid "&Start..."
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:278
+#, fuzzy
+msgid "Start spellcheck"
+msgstr "s תויא תקידב לחתה|#S"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:22
+#, fuzzy
+msgid "Table Settings"
+msgstr "o תויורשפא"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:63
+#, fuzzy
+msgid "&Table Settings"
+msgstr "o תויורשפא"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:82
+#, fuzzy
+msgid "&Horizontal alignment:"
+msgstr "יקפוא רושי|#H"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:97
+#, fuzzy
+msgid "&Multicolumn"
+msgstr "m (Multicolumn)ירוט בר"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:101
+msgid "Merge cells"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:109
+#: src/frontends/qt2/QTabular.C:184 src/frontends/xforms/FormParagraph.C:295
+#, fuzzy
+msgid "Block"
+msgstr "ףלחה"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:136
+#, fuzzy
+msgid "Horizontal alignment in column"
+msgstr "יקפוא רושי|#H"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:168
+#, fuzzy
+msgid "Column"
+msgstr "תודומע "
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
+msgid "A&dd"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:195
+msgid "Append column (right)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:206
+#, fuzzy
+msgid "De&lete"
+msgstr "w הרוש תקיחמ"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:214
+#, fuzzy
+msgid "Delete current column"
+msgstr "n הדומע תקיחמ"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:227
+msgid "Row"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:254
+msgid "Append row (below)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:265
+#, fuzzy
+msgid "Dele&te"
+msgstr "w הרוש תקיחמ"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:273
+#, fuzzy
+msgid "Delete this row"
+msgstr "w הרוש תקיחמ"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:286
+#, fuzzy
+msgid "Column Width"
+msgstr "תודומע "
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:305
+#, fuzzy
+msgid "&Vertical alignment:"
+msgstr "יכנא רושי|#V"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:335
+#, fuzzy
+msgid "Width unit"
+msgstr "בחור"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:354
+msgid "Fixed with of the column"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:398
+msgid "Vertical alignment for fixed width columns"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:411
+msgid "Rotate 90Â°"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:434
+msgid "&Rotate Table"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:438
+msgid "Rotate the table by 90Â°"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:449
+msgid "Rotate &Cell"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:453
+msgid "Rotate this cell by 90Â°"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:466
+msgid "Custom column format (LaTeX)"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:477
+#, fuzzy
+msgid "LaTe&X argument:"
+msgstr "c זוכרמ"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:494
+#, fuzzy
+msgid "&Borders"
+msgstr "רדס"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:513
+msgid "Set Borders"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:804
+msgid "All Borders"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:823
+#, fuzzy
+msgid "&Default"
+msgstr "לדחמ תרירב"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:827
+msgid "Set all borders"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:838
+msgid "C&lear"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:842
+msgid "Unset all borders"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:899
+#, fuzzy
+msgid "&Longtable"
+msgstr "הלבט%t"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:918
+msgid "&Use long table"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:922
+msgid "Select for tables that span multiple pages"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:937
+#, fuzzy
+msgid "Settings"
+msgstr "ןוויכ"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:967
+#, fuzzy
+msgid "Header:"
+msgstr "םיטוטיצ"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:978
+#, fuzzy
+msgid "Footer:"
+msgstr "םיטוטיצ"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:989
+#, fuzzy
+msgid "First header:"
+msgstr "הלבט תסנכה"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1000
+#, fuzzy
+msgid "Last footer:"
+msgstr "l הנבמ"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1022
+#, fuzzy
+msgid "Border above"
+msgstr "חוויר"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1033
+#, fuzzy
+msgid "Border below"
+msgstr "חוויר"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1044
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1055
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1066
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1077
+#, fuzzy
+msgid "on"
+msgstr "w םיינש|#w"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1088
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1099
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1110
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1121
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1132
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1143
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1154
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1165
+#, fuzzy
+msgid "double"
+msgstr "חוויר"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1176
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1187
+msgid "is empty"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1204
+msgid "Page &break on current row"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1208
+msgid "Set a page break on the current row"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1237
+#, fuzzy
+msgid "Current cell:"
+msgstr "רפסמ:"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1266
+#, fuzzy
+msgid "Current row position"
+msgstr "רפסמ:"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1295
+msgid "Current column position"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:57
+#, fuzzy
+msgid "LaTeX classes"
+msgstr "t LaTeX|#T"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:63
+#, fuzzy
+msgid "LaTeX styles"
+msgstr "t LaTeX|#T"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:69
+#, fuzzy
+msgid "BibTeX styles"
+msgstr "TeX ןונגס בצמ יוניש"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:78
+#, fuzzy
+msgid "Selected classes or styles"
+msgstr "האבה הרושה תריחב"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:110
+msgid "Show &path"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:114
+msgid "Toggles view of the file list"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:133
+#, fuzzy
+msgid "Installed files"
+msgstr "םירויא תפסוה"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:180
+msgid "&Rescan"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:184
+msgid "Built new file list"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
+#, fuzzy
+msgid "&View"
+msgstr "DVI-ב הייפצ"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
+msgid "Close this dialog"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:22
+#, fuzzy
+msgid "Table Of Contents"
+msgstr "םיניינעה ןכותב רופסמ קמוע:"
+
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:60
+#, fuzzy
+msgid "&Type"
+msgstr "t LaTeX|#T"
+
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:109
+msgid "Contents list"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:22
+#, fuzzy
+msgid "Version control log"
+msgstr "תואסרג תרקב%t"
 
 #: ../lib/layouts/IEEEtran.layout:38 ../lib/layouts/aa.layout:30
 #: ../lib/layouts/aapaper.layout:33 ../lib/layouts/aastex.layout:54
@@ -7237,11 +7236,6 @@ msgstr "ריינה הנבמ"
 msgid "Math|M"
 msgstr "m תואחסונ"
 
-#: ../lib/ui/default.ui:77
-#, fuzzy
-msgid "Read Only"
-msgstr "(דבלב האירקל)"
-
 #: ../lib/ui/default.ui:78
 #, fuzzy
 msgid "Spellchecker...|S"
@@ -7378,34 +7372,6 @@ msgstr "u הדומע תפסוה"
 msgid "Swap Columns"
 msgstr "תודומע "
 
-#: ../lib/ui/default.ui:121
-msgid "Make eqnarray|e"
-msgstr ""
-
-#: ../lib/ui/default.ui:122
-msgid "Make multline|m"
-msgstr ""
-
-#: ../lib/ui/default.ui:123
-msgid "Make align 1 column|1"
-msgstr ""
-
-#: ../lib/ui/default.ui:124
-msgid "Make align 2 columns|2"
-msgstr ""
-
-#: ../lib/ui/default.ui:125
-msgid "Make align 3 columns|3"
-msgstr ""
-
-#: ../lib/ui/default.ui:126
-msgid "Make alignat 2 columns|2"
-msgstr ""
-
-#: ../lib/ui/default.ui:127
-msgid "Make alignat 3 columns|3"
-msgstr ""
-
 #: ../lib/ui/default.ui:129
 #, fuzzy
 msgid "Toggle Numbering|N"
@@ -7415,11 +7381,6 @@ msgstr "רפסמ ןיא"
 #, fuzzy
 msgid "Toggle Numbering of Line|u"
 msgstr "(noun) םש ןונגס(toggle) יוניש"
-
-#: ../lib/ui/default.ui:131
-#, fuzzy
-msgid "Toggle limits|l"
-msgstr "(bold) הבע (toggle) יוניש"
 
 #: ../lib/ui/default.ui:132
 msgid "Change Limits Type|L"
@@ -7530,16 +7491,6 @@ msgstr "c זוכרמ"
 #: ../lib/ui/default.ui:174
 #, fuzzy
 msgid "Flalign Environment|f"
-msgstr "c זוכרמ"
-
-#: ../lib/ui/default.ui:175
-#, fuzzy
-msgid "XAlignAt Environment"
-msgstr "c זוכרמ"
-
-#: ../lib/ui/default.ui:176
-#, fuzzy
-msgid "XXAlignAt Environment"
 msgstr "c זוכרמ"
 
 #: ../lib/ui/default.ui:177
@@ -7745,16 +7696,6 @@ msgstr "c זוכרמ"
 msgid "AMS flalign Environment|f"
 msgstr "c זוכרמ"
 
-#: ../lib/ui/default.ui:240
-#, fuzzy
-msgid "AMS xalignat Environment|x"
-msgstr "c זוכרמ"
-
-#: ../lib/ui/default.ui:241
-#, fuzzy
-msgid "AMS xxalignat Environment"
-msgstr "c זוכרמ"
-
 #: ../lib/ui/default.ui:242
 #, fuzzy
 msgid "AMS gather Environment"
@@ -7918,10 +7859,6 @@ msgstr ""
 msgid "Bold Style|B"
 msgstr ""
 
-#: ../lib/ui/default.ui:307
-msgid "TeX Style|X"
-msgstr ""
-
 #: ../lib/ui/default.ui:309
 #, fuzzy
 msgid "Decrease Environment Depth|v"
@@ -8032,10 +7969,6 @@ msgstr ""
 msgid "Customization|C"
 msgstr ""
 
-#: ../lib/ui/default.ui:375
-msgid "Reference Manual|R"
-msgstr ""
-
 #: ../lib/ui/default.ui:376
 msgid "FAQ|F"
 msgstr ""
@@ -8053,73 +7986,73 @@ msgstr ""
 msgid "About LyX|X"
 msgstr ""
 
-#: src/BufferView.C:299 src/bufferlist.C:373 src/bufferlist.C:485
+#: src/BufferView.C:293 src/bufferlist.C:373 src/bufferlist.C:485
 #: src/lyx_cb.C:215
 msgid "Error!"
 msgstr "!האיגש"
 
-#: src/BufferView.C:300
+#: src/BufferView.C:294
 msgid "Specified file is unreadable: "
 msgstr "אירק וניא ץבוקה - "
 
-#: src/BufferView.C:309 src/lyx_cb.C:447
+#: src/BufferView.C:303 src/lyx_cb.C:447
 #, fuzzy
 msgid "Error! Cannot open specified file:"
 msgstr "ץבוקה תא חותפל לוכי אל - "
 
-#: src/BufferView.C:569 src/LyXAction.C:377
+#: src/BufferView.C:563 src/LyXAction.C:377
 msgid "Undo"
 msgstr ""
 
-#: src/BufferView.C:574
+#: src/BufferView.C:568
 #, fuzzy
 msgid "No further undo information"
 msgstr "רוטיע"
 
-#: src/BufferView.C:586 src/LyXAction.C:334
+#: src/BufferView.C:580 src/LyXAction.C:334
 msgid "Redo"
 msgstr "לוטיב לוטיב"
 
-#: src/BufferView.C:591
+#: src/BufferView.C:585
 msgid "No further redo information"
 msgstr ""
 
-#: src/BufferView.C:602
+#: src/BufferView.C:596
 msgid "Paragraph environment type copied"
 msgstr ""
 
-#: src/BufferView.C:611
+#: src/BufferView.C:605
 msgid "Paragraph environment type set"
 msgstr ""
 
-#: src/BufferView_pimpl.C:287
+#: src/BufferView_pimpl.C:270
 msgid "Formatting document..."
 msgstr ""
 
-#: src/BufferView_pimpl.C:661
+#: src/BufferView_pimpl.C:644
 #, c-format
 msgid "Saved bookmark %1$d"
 msgstr ""
 
-#: src/BufferView_pimpl.C:663
+#: src/BufferView_pimpl.C:646
 msgid "Saved bookmark "
 msgstr ""
 
-#: src/BufferView_pimpl.C:697
+#: src/BufferView_pimpl.C:680
 #, c-format
 msgid "Moved to bookmark %1$d"
 msgstr ""
 
-#: src/BufferView_pimpl.C:699
+#: src/BufferView_pimpl.C:682
 msgid "Moved to bookmark "
 msgstr ""
 
-#: src/BufferView_pimpl.C:878
+#: src/BufferView_pimpl.C:861
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "הפסוהל ךמסמ תריחב"
 
-#: src/BufferView_pimpl.C:880 src/frontends/controllers/ControlBibtex.C:63
+#: src/BufferView_pimpl.C:863 src/frontends/controllers/ControlBibtex.C:63
 #: src/frontends/controllers/ControlExternal.C:154
 #: src/frontends/controllers/ControlGraphics.C:93
 #: src/frontends/controllers/ControlInclude.C:70 src/lyx_cb.C:110
@@ -8128,75 +8061,75 @@ msgstr "הפסוהל ךמסמ תריחב"
 msgid "Documents|#o#O"
 msgstr "ךמסמ"
 
-#: src/BufferView_pimpl.C:882 src/lyxfunc.C:1683 src/lyxfunc.C:1788
+#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1683 src/lyxfunc.C:1788
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "תואמגוד"
 
-#: src/BufferView_pimpl.C:887 src/lyx_cb.C:120 src/lyxfunc.C:1649
+#: src/BufferView_pimpl.C:870 src/lyx_cb.C:120 src/lyxfunc.C:1649
 #: src/lyxfunc.C:1688
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
-#: src/BufferView_pimpl.C:896 src/lyxfunc.C:1697 src/lyxfunc.C:1717
+#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1697 src/lyxfunc.C:1717
 #: src/lyxfunc.C:1805 src/lyxfunc.C:1832 src/lyxfunc.C:1842
 msgid "Canceled."
 msgstr ""
 
-#: src/BufferView_pimpl.C:909
+#: src/BufferView_pimpl.C:892
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "ךמסמ ףיסומ"
 
-#: src/BufferView_pimpl.C:911
+#: src/BufferView_pimpl.C:894
 #, fuzzy
 msgid "Inserting document "
 msgstr "ךמסמ ףיסומ"
 
-#: src/BufferView_pimpl.C:911 src/importer.C:47 src/lyxfunc.C:986
+#: src/BufferView_pimpl.C:894 src/importer.C:47 src/lyxfunc.C:986
 #: src/lyxfunc.C:1149 src/lyxfunc.C:1730
 msgid "..."
 msgstr ""
 
-#: src/BufferView_pimpl.C:918
+#: src/BufferView_pimpl.C:901
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "דבלב האירקל אוה ךמסמה"
 
-#: src/BufferView_pimpl.C:920 src/lyxfunc.C:1742
+#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1742
 #, fuzzy
 msgid "Document "
 msgstr "ךמסמ"
 
-#: src/BufferView_pimpl.C:920
+#: src/BufferView_pimpl.C:903
 #, fuzzy
 msgid " inserted."
 msgstr ".אבוימ"
 
-#: src/BufferView_pimpl.C:926
+#: src/BufferView_pimpl.C:909
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "ךמסמ ףיסוהל יתחלצה אל"
 
-#: src/BufferView_pimpl.C:928
+#: src/BufferView_pimpl.C:911
 #, fuzzy
 msgid "Could not insert document "
 msgstr "ךמסמ ףיסוהל יתחלצה אל"
 
-#: src/BufferView_pimpl.C:1103 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:1086 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77
 msgid "Error"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1104
+#: src/BufferView_pimpl.C:1087
 msgid "Couldn't find this label"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1105
+#: src/BufferView_pimpl.C:1088
 msgid "in current document."
 msgstr ""
 
-#: src/BufferView_pimpl.C:1270
+#: src/BufferView_pimpl.C:1253
 #, fuzzy
 msgid "Unknown function!"
 msgstr "רכומ אל ףצר:"
@@ -12487,155 +12420,155 @@ msgstr ""
 msgid "updated document class specifications."
 msgstr ""
 
-#: src/lyx_main.C:110
+#: src/lyx_main.C:105
 #, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:114
+#: src/lyx_main.C:109
 #, fuzzy
 msgid "Wrong command line option `"
 msgstr "הלבט תסנכה"
 
-#: src/lyx_main.C:115
+#: src/lyx_main.C:110
 msgid "'. Exiting."
 msgstr ""
 
-#: src/lyx_main.C:238
+#: src/lyx_main.C:233
 msgid "Warning: could not determine path of binary."
 msgstr ""
 
-#: src/lyx_main.C:240
+#: src/lyx_main.C:235
 msgid "If you have problems, try starting LyX with an absolute path."
 msgstr ""
 
-#: src/lyx_main.C:347
+#: src/lyx_main.C:342
 msgid "LYX_DIR_13x environment variable no good."
 msgstr ""
 
-#: src/lyx_main.C:349
+#: src/lyx_main.C:344
 msgid "System directory set to: "
 msgstr ""
 
-#: src/lyx_main.C:357
+#: src/lyx_main.C:352
 #, fuzzy
 msgid "LyX Warning! Couldn't determine system directory. "
 msgstr "ינמז רודמ קוחמל לוכי אל !האיגש - "
 
-#: src/lyx_main.C:358
+#: src/lyx_main.C:353
 msgid "Try the '-sysdir' command line parameter or "
 msgstr ""
 
-#: src/lyx_main.C:359
+#: src/lyx_main.C:354
 msgid "set the environment variable LYX_DIR_13x to the LyX system directory "
 msgstr ""
 
-#: src/lyx_main.C:361
+#: src/lyx_main.C:356
 msgid "containing the file `chkconfig.ltx'."
 msgstr ""
 
-#: src/lyx_main.C:370
+#: src/lyx_main.C:365
 #, c-format
 msgid "Using built-in default %1$s but expect problems."
 msgstr ""
 
-#: src/lyx_main.C:375
+#: src/lyx_main.C:370
 #, fuzzy
 msgid "Using built-in default "
 msgstr "-- לדחמה תרירב תא ףילחמ"
 
-#: src/lyx_main.C:376
+#: src/lyx_main.C:371
 msgid " but expect problems."
 msgstr ""
 
-#: src/lyx_main.C:380
+#: src/lyx_main.C:375
 msgid "Expect problems."
 msgstr ""
 
-#: src/lyx_main.C:598
+#: src/lyx_main.C:593
 #, fuzzy
 msgid "LyX: reconfiguring user directory"
 msgstr "ינמז רודמ קוחמל לוכי אל !האיגש - "
 
-#: src/lyx_main.C:602 src/lyx_main.C:650
+#: src/lyx_main.C:597 src/lyx_main.C:645
 msgid "Done!"
 msgstr ""
 
-#: src/lyx_main.C:612
+#: src/lyx_main.C:607
 msgid "You have specified an invalid LyX directory."
 msgstr ""
 
-#: src/lyx_main.C:613
+#: src/lyx_main.C:608
 msgid "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/lyx_main.C:614
+#: src/lyx_main.C:609
 msgid "Should I try to set it up for you (recommended)?"
 msgstr ""
 
-#: src/lyx_main.C:615
+#: src/lyx_main.C:610
 msgid "Running without personal LyX directory."
 msgstr ""
 
-#: src/lyx_main.C:622
+#: src/lyx_main.C:617
 #, c-format
 msgid "LyX: Creating directory %1$s and running configure..."
 msgstr ""
 
-#: src/lyx_main.C:627
+#: src/lyx_main.C:622
 #, fuzzy
 msgid "LyX: Creating directory "
 msgstr "ינמז רודמ קוחמל לוכי אל !האיגש - "
 
-#: src/lyx_main.C:628
+#: src/lyx_main.C:623
 msgid " and running configure..."
 msgstr ""
 
-#: src/lyx_main.C:636
+#: src/lyx_main.C:631
 #, c-format
 msgid "Failed. Will use %1$s instead."
 msgstr ""
 
-#: src/lyx_main.C:640
+#: src/lyx_main.C:635
 msgid "Failed. Will use "
 msgstr ""
 
-#: src/lyx_main.C:641
+#: src/lyx_main.C:636
 msgid " instead."
 msgstr ""
 
-#: src/lyx_main.C:664 src/lyx_main.C:668
+#: src/lyx_main.C:659 src/lyx_main.C:663
 msgid "LyX Warning!"
 msgstr ""
 
-#: src/lyx_main.C:665
+#: src/lyx_main.C:660
 #, c-format
 msgid "Error while reading %1$s."
 msgstr ""
 
-#: src/lyx_main.C:666 src/lyx_main.C:670
+#: src/lyx_main.C:661 src/lyx_main.C:665
 msgid "Using built-in defaults."
 msgstr ""
 
-#: src/lyx_main.C:669
+#: src/lyx_main.C:664
 #, fuzzy
 msgid "Error while reading "
 msgstr "ץבוקה תא קוחמל לוכי אל !האיגש - "
 
-#: src/lyx_main.C:779
+#: src/lyx_main.C:774
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/lyx_main.C:784
+#: src/lyx_main.C:779
 #, c-format
 msgid "Setting debug level to %1$s"
 msgstr ""
 
-#: src/lyx_main.C:788
+#: src/lyx_main.C:783
 msgid "Setting debug level to "
 msgstr ""
 
-#: src/lyx_main.C:799
+#: src/lyx_main.C:794
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -12657,27 +12590,27 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/lyx_main.C:835
+#: src/lyx_main.C:830
 msgid "Missing directory for -sysdir switch"
 msgstr ""
 
-#: src/lyx_main.C:845
+#: src/lyx_main.C:840
 msgid "Missing directory for -userdir switch"
 msgstr ""
 
-#: src/lyx_main.C:855
+#: src/lyx_main.C:850
 msgid "Missing command string after --execute switch"
 msgstr ""
 
-#: src/lyx_main.C:868
+#: src/lyx_main.C:863
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr ""
 
-#: src/lyx_main.C:880
+#: src/lyx_main.C:875
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr ""
 
-#: src/lyx_main.C:885
+#: src/lyx_main.C:880
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr "אובייל LaTeX ץבוק תריחב"
@@ -13559,6 +13492,38 @@ msgstr ""
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
+
+#, fuzzy
+#~ msgid "Entry:"
+#~ msgstr "האיצי"
+
+#, fuzzy
+#~ msgid "&Selection"
+#~ msgstr "ןוויכ"
+
+#, fuzzy
+#~ msgid "Read Only"
+#~ msgstr "(דבלב האירקל)"
+
+#, fuzzy
+#~ msgid "Toggle limits|l"
+#~ msgstr "(bold) הבע (toggle) יוניש"
+
+#, fuzzy
+#~ msgid "XAlignAt Environment"
+#~ msgstr "c זוכרמ"
+
+#, fuzzy
+#~ msgid "XXAlignAt Environment"
+#~ msgstr "c זוכרמ"
+
+#, fuzzy
+#~ msgid "AMS xalignat Environment|x"
+#~ msgstr "c זוכרמ"
+
+#, fuzzy
+#~ msgid "AMS xxalignat Environment"
+#~ msgstr "c זוכרמ"
 
 #, fuzzy
 #~ msgid "Size:|#Z"

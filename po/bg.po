@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
-"POT-Creation-Date: 2003-01-23 22:14+0100\n"
+"POT-Creation-Date: 2003-01-30 03:45+0100\n"
 "PO-Revision-Date: 2002-12-19 19:01+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -73,11 +73,11 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_url.fd:116
 #: ../src/frontends/xforms/forms/form_wrap.fd:242
 #: ../src/frontends/qt2/ui/QAskForTextDialog.ui:124
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:279
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:92
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:279
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:147
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1138
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:128
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:90
 #: src/frontends/qt2/QSpellchecker.C:135
 msgid "OK"
@@ -2612,24 +2612,25 @@ msgstr ""
 msgid "Replace|^R"
 msgstr "Замести"
 
-# src/frontends/xforms/FormDocument.C:279
-# src/frontends/xforms/FormParagraph.C:133
+# src/ext_l10n.h:262 src/frontends/gnome/FormIndex.C:89
+# src/frontends/xforms/form_index.C:28
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:80
 #, fuzzy
-msgid "Entry:"
-msgstr "Екстри"
+msgid "Keyword:"
+msgstr "Ключова дума"
 
 # src/LColor.C:64
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:98
 #, fuzzy
-msgid "Selection:"
+msgid "Selection:|#S"
 msgstr "избор"
 
-# src/buffer.C:329
+# src/LyXAction.C:390
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:116
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:110
 #, fuzzy
-msgid "Meanings|#M"
-msgstr "Грешка при ченете от "
+msgid "Thesaurus entries:"
+msgstr "Свойства на таблица"
 
 # src/ext_l10n.h:86
 #: ../src/frontends/xforms/forms/form_url.fd:44
@@ -2663,12 +2664,12 @@ msgstr "Стандартно"
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:22
 #: ../src/frontends/qt2/ui/PreambleModuleBase.ui:22
 #: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:29
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:22
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:29
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:22
 #, fuzzy
 msgid "Form1"
 msgstr "Формати"
@@ -2977,8 +2978,8 @@ msgstr "Височина"
 # src/frontends/xforms/form_paragraph.C:219
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:130
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:365
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:75
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:365
 #, fuzzy
 msgid "&Width:"
 msgstr "Ширина"
@@ -3025,345 +3026,6 @@ msgstr "Обобщение"
 msgid "&Cancel"
 msgstr "(&C)Отказ"
 
-# src/insets/insetbib.C:348
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
-#, fuzzy
-msgid "Bibtex"
-msgstr "BibTeX"
-
-# src/insets/insetbib.C:339
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
-#, fuzzy
-msgid "Databa&ses"
-msgstr "База данни:"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:57
-msgid "BibTeX database to use"
-msgstr ""
-
-# src/frontends/kde/citationdlg.C:35
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:75
-#, fuzzy
-msgid "Available BibTeX databases"
-msgstr "Достъпни клавиши"
-
-# src/frontends/kde/citationdlg.C:61
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
-msgid "&Add"
-msgstr "(&A)Добави"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:90
-msgid "Add a BibTeX database file"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:101
-msgid "Add a BibTeX file manually"
-msgstr ""
-
-# src/frontends/xforms/form_preferences.C:843
-# src/frontends/xforms/form_preferences.C:853
-# src/frontends/xforms/form_preferences.C:973
-# src/frontends/xforms/form_preferences.C:995
-# src/frontends/xforms/form_preferences.C:1007
-# src/frontends/xforms/form_preferences.C:1013
-# src/frontends/xforms/form_preferences.C:1028
-# src/frontends/xforms/form_preferences.C:1038
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:112
-#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
-#: ../src/frontends/qt2/ui/QPrefUIModule.ui:104
-#, fuzzy
-msgid "Bro&wse..."
-msgstr "Търси..."
-
-# src/LyXAction.C:393
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:120
-#, fuzzy
-msgid "Browse for a BibTeX database file"
-msgstr "Превключване на TeX стил"
-
-# src/frontends/xforms/form_preferences.C:600
-# src/frontends/xforms/form_preferences.C:687
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:131
-#, fuzzy
-msgid "&Delete"
-msgstr "Изтрий(D)|#D"
-
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:135
-msgid "Remove the selected database"
-msgstr ""
-
-# src/insets/insetbib.C:340
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:186
-#, fuzzy
-msgid "St&yle"
-msgstr "Стил: "
-
-# src/LyXAction.C:393
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:194
-#, fuzzy
-msgid "The BibTeX style"
-msgstr "Превключване на TeX стил"
-
-# src/frontends/xforms/form_preferences.C:843
-# src/frontends/xforms/form_preferences.C:853
-# src/frontends/xforms/form_preferences.C:973
-# src/frontends/xforms/form_preferences.C:995
-# src/frontends/xforms/form_preferences.C:1007
-# src/frontends/xforms/form_preferences.C:1013
-# src/frontends/xforms/form_preferences.C:1028
-# src/frontends/xforms/form_preferences.C:1038
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:205
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:119
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:90
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:461
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:290
-#, fuzzy
-msgid "&Browse..."
-msgstr "Търси..."
-
-# src/lyxfunc.C:3128
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:213
-#, fuzzy
-msgid "Choose a style file"
-msgstr "Изберете шаблон"
-
-# src/frontends/kde/refdlg.C:81 src/frontends/kde/tocdlg.C:43
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:224
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:88
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:67
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:171
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:88
-msgid "&Update"
-msgstr "(&U)Актуализирай"
-
-# src/LyXAction.C:348
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:232
-#, fuzzy
-msgid "Update style list"
-msgstr "Промяна на настройките"
-
-# src/LyXAction.C:157 src/frontends/kde/FormUrl.C:93
-# src/frontends/kde/paradlg.C:89 src/frontends/xforms/FormBase.h:138
-# src/frontends/xforms/FormBase.h:153 src/frontends/xforms/FormInset.h:31
-# src/frontends/xforms/FormInset.h:55 src/lyxfunc.C:744
-#. /
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:294
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
-#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:152
-#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:941
-msgid "Cancel"
-msgstr "Отказ"
-
-# src/insets/insetbib.C:219
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:307
-#, fuzzy
-msgid "Add bibliography to &TOC"
-msgstr "Библ. перо"
-
-# src/LyXAction.C:400
-#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:311
-#, fuzzy
-msgid "Add bibliography to the table of contents"
-msgstr "Покажи съдържанието"
-
-# src/ext_l10n.h:119
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:22
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:73
-#: src/frontends/qt2/QCharacter.C:39
-#, fuzzy
-msgid "Character"
-msgstr "Символ(C)...|C"
-
-# src/layout_forms.C:23
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:95
-#, fuzzy
-msgid "&Family:"
-msgstr "Семейство(F):|#F"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:103
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:114
-msgid "Font family"
-msgstr ""
-
-# src/layout_forms.C:28
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:125
-#, fuzzy
-msgid "&Series:"
-msgstr "Серия(S):|#S"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:133
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:204
-msgid "Font series"
-msgstr ""
-
-# src/form1.C:51 src/frontends/xforms/FormDocument.C:277
-# src/frontends/xforms/FormPreferences.C:280
-#. language settings
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:152
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:238
-#: src/frontends/qt2/QDocumentDialog.C:69 src/frontends/qt2/QPrefsDialog.C:120
-#: src/frontends/xforms/FormDocument.C:343
-#: src/frontends/xforms/FormPreferences.C:246
-msgid "Language"
-msgstr "Език"
-
-# src/bufferview_funcs.C:267
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:163
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:193
-#, fuzzy
-msgid "Font shape"
-msgstr "Шрифт:"
-
-# src/bufferview_funcs.C:267
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:174
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:227
-#, fuzzy
-msgid "Font color"
-msgstr "Шрифт:"
-
-# src/layout_forms.C:33
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:185
-#, fuzzy
-msgid "S&hape:"
-msgstr "Форма(H):|#H"
-
-# src/frontends/xforms/FormPreferences.C:244
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:219
-#, fuzzy
-msgid "&Color:"
-msgstr "Цветове"
-
-# src/LyXAction.C:208
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:249
-#, fuzzy
-msgid "&Toggle all"
-msgstr "Превключи удебеляване"
-
-# src/layout_forms.C:61
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:253
-#, fuzzy
-msgid "toggle font on all of the above"
-msgstr "Превключване между(T)|#T"
-
-# src/layout_forms.C:69
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:302
-#, fuzzy
-msgid "Never Toggled"
-msgstr "Без превключване"
-
-# src/layout_forms.C:38
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:324
-#, fuzzy
-msgid "Si&ze:"
-msgstr "Размер(Z):|#Z"
-
-# src/frontends/xforms/form_document.C:262
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:332
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:343
-#, fuzzy
-msgid "Font size"
-msgstr "Шрифт размер(O):|#O"
-
-# src/layout_forms.C:72
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:356
-#, fuzzy
-msgid "Always Toggled"
-msgstr "Винаги превключване"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:363
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:397
-msgid "Other font settings"
-msgstr ""
-
-# src/frontends/xforms/FormPreferences.C:247
-# src/frontends/xforms/FormPreferences.C:264
-# src/frontends/xforms/FormPreferences.C:272 src/mathed/math_forms.C:46
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:382
-#, fuzzy
-msgid "&Misc:"
-msgstr "Различни"
-
-# src/frontends/kde/dlg/paradlgdata.C:65
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:410
-#, fuzzy
-msgid "Auto apply"
-msgstr "(&A)Установи"
-
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:414
-msgid "Apply each change automatically"
-msgstr ""
-
-# src/frontends/kde/FormPrint.C:108 src/frontends/kde/citationdlg.C:81
-# src/frontends/kde/dlg/copyrightdlgdata.C:40
-# src/frontends/kde/dlg/indexdlgdata.C:68
-# src/frontends/kde/dlg/paradlgdata.C:39 src/frontends/kde/refdlg.C:86
-# src/frontends/kde/urldlg.C:52
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:99
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:288
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:274
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:156
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:280
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:700
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
-msgid "&OK"
-msgstr "&OK"
-
-# src/frontends/kde/dlg/paradlgdata.C:65
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:497
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:111
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:110
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:299
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1164
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:293
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:130
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:109
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:299
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:118
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:126
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:711
-msgid "&Apply"
-msgstr "(&A)Установи"
-
-# src/frontends/kde/FormCitation.C:160 src/frontends/kde/FormRef.C:201
-# src/frontends/kde/indexdlg.C:60 src/frontends/kde/tocdlg.C:48
-#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:508
-#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:162
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:310
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:371
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:107
-#: ../src/frontends/qt2/ui/QMathDialogBase.ui:733
-#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:312
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:149
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:308
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:306
-#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:92
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:141
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:240
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:203
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:171
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:107
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:318
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:252
-#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:213
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:133
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:204
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:141
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:722
-msgid "&Close"
-msgstr "(&C)Затвори"
-
 # src/frontends/xforms/FormCitation.C:37
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:22
 #: src/frontends/qt2/QCitation.C:48 src/frontends/xforms/FormCitation.C:97
@@ -3372,15 +3034,44 @@ msgstr "Цитат"
 
 # src/frontends/kde/dlg/paradlgdata.C:82
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:60
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:67
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:256
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1098
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:234
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:240
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:67
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:240
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:67
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1098
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:668
 msgid "&Restore"
 msgstr "(&R)Въстанови"
+
+# src/frontends/kde/dlg/paradlgdata.C:65
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:299
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:293
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:118
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:299
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:497
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:110
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:126
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1164
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:711
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:130
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:109
+msgid "&Apply"
+msgstr "(&A)Установи"
+
+# src/LyXAction.C:157 src/frontends/kde/FormUrl.C:93
+# src/frontends/kde/paradlg.C:89 src/frontends/xforms/FormBase.h:138
+# src/frontends/xforms/FormBase.h:153 src/frontends/xforms/FormInset.h:31
+# src/frontends/xforms/FormInset.h:55 src/lyxfunc.C:744
+#. /
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:122
+#: ../src/frontends/qt2/ui/QIndexDialogBase.ui:143
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:294
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:120 src/LyXAction.C:152
+#: src/frontends/controllers/ButtonController.h:72 src/lyxfunc.C:941
+msgid "Cancel"
+msgstr "Отказ"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:142
 msgid "Search the available citations"
@@ -3422,10 +3113,10 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:213
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:362
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:176
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:124
 #: ../src/frontends/qt2/ui/QPrefConvertersModule.ui:83
 #: ../src/frontends/qt2/ui/QPrefFileformatsModule.ui:94
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:176
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:124
 msgid "New Item"
 msgstr ""
 
@@ -3577,86 +3268,35 @@ msgstr "Вмъкни(I)|I"
 msgid "Insert the delimiters"
 msgstr "Вмъкни последно индеск перо"
 
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:170
-msgid "title here"
-msgstr ""
-
-# src/frontends/xforms/form_preferences.C:999
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:266
-#, fuzzy
-msgid "Use Class Defaults"
-msgstr "Провери старите файлове(C)|#C"
-
-# src/frontends/xforms/FormDocument.C:1101
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:270
-#, fuzzy
-msgid "Reset default params of the current class"
-msgstr "подразбиращи се за този документ клас?"
-
-# src/ext_l10n.h:130
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:288
-#, fuzzy
-msgid "Save as Document Defaults"
-msgstr "Запази оформлението като подразбиращо се(S)|S"
-
-#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:292
-msgid "Save settings as LyX's default template"
-msgstr ""
-
-# src/insets/figinset.C:1045
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:22
-#, fuzzy
-msgid "ERT inset display"
-msgstr "[не е показан]"
-
-# src/frontends/xforms/FormGraphics.C:36
-# src/frontends/xforms/FormGraphics.C:359
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:45
-#, fuzzy
-msgid "Display"
-msgstr "Графика"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:64
-msgid "&Inline"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:68
-msgid "Show ERT inline"
-msgstr ""
-
 # src/frontends/kde/FormCitation.C:160 src/frontends/kde/FormRef.C:201
 # src/frontends/kde/indexdlg.C:60 src/frontends/kde/tocdlg.C:48
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:79
-#, fuzzy
-msgid "&Collapsed"
+#: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:414
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:310
+#: ../src/frontends/qt2/ui/QMathDialogBase.ui:733
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:312
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:133
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:306
+#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:92
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:240
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:171
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:318
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:204
+#: ../src/frontends/qt2/ui/QAboutDialogBase.ui:213
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:508
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:92
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:162
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:141
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:371
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:107
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:722
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:149
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:308
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:141
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:252
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:203
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:107
+msgid "&Close"
 msgstr "(&C)Затвори"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:83
-msgid "Show ERT button only"
-msgstr ""
-
-# src/LyXAction.C:144
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
-#, fuzzy
-msgid "&Open"
-msgstr "Отвори"
-
-#: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
-msgid "Show ERT contents"
-msgstr ""
-
-# src/frontends/xforms/FormError.C:26
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:22
-#: src/frontends/qt2/QError.C:31 src/frontends/xforms/FormError.C:27
-msgid "LaTeX Error"
-msgstr "LaTeX Грешка"
-
-# src/frontends/xforms/FormError.C:26
-#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:45
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:219
-#, fuzzy
-msgid "LaTeX error messages"
-msgstr "LaTeX Грешка"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:45
 msgid "Use &default placement"
@@ -3740,357 +3380,27 @@ msgstr "Специална колона"
 msgid "Span columns in multi-column documents"
 msgstr ""
 
-# src/frontends/xforms/FormGraphics.C:36
-# src/frontends/xforms/FormGraphics.C:359
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:55
-#, fuzzy
-msgid "&Graphics"
-msgstr "Графика"
-
-# src/frontends/kde/dlg/printdlgdata.C:246
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:89
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:60
-#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:45
-#, fuzzy
-msgid "&File:"
-msgstr "(&F)Файл"
-
-# src/form1.C:245
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:97
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:108
-#, fuzzy
-msgid "File name of image"
-msgstr "Име на файл(F):|#F"
-
-# src/lyxfunc.C:3215
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:123
-#, fuzzy
-msgid "Select an image file"
-msgstr "Изберете "
-
-# src/frontends/xforms/form_graphics.C:106
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:136
-#, fuzzy
-msgid "LyX Display"
-msgstr "Не показвай(D)|#D"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:155
-msgid "&Show in LyX"
-msgstr ""
-
-# src/LyXAction.C:236
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:159
-#, fuzzy
-msgid "Display image in LyX"
-msgstr "Покажи Copyright информацията"
-
-# src/frontends/xforms/FormGraphics.C:36
-# src/frontends/xforms/FormGraphics.C:359
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:170
-#, fuzzy
-msgid "Display:"
-msgstr "Графика"
-
-# src/insets/figinset.C:1045
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:178
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:213
-#, fuzzy
-msgid "Screen display"
-msgstr "[не е показан]"
-
-# src/frontends/xforms/form_graphics.C:61
-# src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:411
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
-#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:68
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:113
-#: src/frontends/controllers/ControlGraphics.C:156
-#: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocumentDialog.C:341
-#: src/lyxfont.C:554
-msgid "Default"
-msgstr "Стандартно"
-
-# src/frontends/xforms/form_graphics.C:90
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:192
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:53
-#, fuzzy
-msgid "Monochrome"
-msgstr "Монохромно(M)|#M"
-
-# src/frontends/xforms/form_graphics.C:96
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:198
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:59
-#, fuzzy
-msgid "Grayscale"
-msgstr "в сиви тонове(G)|#G"
-
-# src/frontends/xforms/FormPreferences.C:244
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:204
-#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:65
-#, fuzzy
-msgid "Color"
-msgstr "Цветове"
-
-# src/frontends/xforms/form_tabular.C:453
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:224
-#, fuzzy
-msgid "Scale:"
-msgstr "Специален"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:232
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:273
-msgid "Percentage to scale by in LyX"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:339
-msgid "Height of image in output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:368
-msgid "Units of height value"
-msgstr ""
-
-# src/form1.C:157 src/frontends/xforms/form_graphics.C:46
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:385
-#, fuzzy
-msgid "&Height"
-msgstr "Височина"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:419
-msgid "Width of image in output"
-msgstr ""
-
-# src/form1.C:161 src/frontends/kde/dlg/paraextradlgdata.C:91
-# src/frontends/xforms/form_graphics.C:44
-# src/frontends/xforms/form_paragraph.C:219
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:443
-#, fuzzy
-msgid "&Width"
-msgstr "Ширина"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:464
-msgid "&Maintain aspect ratio"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:468
-msgid "Maintain aspect ratio with largest dimension"
-msgstr ""
-
-# src/form1.C:133
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:515
-#, fuzzy
-msgid "A&ngle:"
-msgstr "Ъгъл(L):|#L"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:523
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:541
-msgid "Angle to rotate image by"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:552
-msgid "&Origin:"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:560
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:571
-msgid "The origin of the rotation"
-msgstr ""
-
-# src/ext_l10n.h:200
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:588
-#, fuzzy
-msgid "&Clipping"
-msgstr "Затваряне"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:622
-msgid "Clip to &bounding box"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:626
-msgid "Clip to bounding box values"
-msgstr ""
-
-# src/frontends/xforms/form_preferences.C:923
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:658
-#, fuzzy
-msgid "&Get from file"
-msgstr "във файл"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:662
-msgid "Get bounding box from the (EPS) file"
-msgstr ""
-
-# src/frontends/kde/dlg/parageneraldlgdata.C:133
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:709
-#, fuzzy
-msgid "Right &top:"
-msgstr "Десен"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:724
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:781
-msgid "y"
-msgstr ""
-
-# src/LColor.C:63
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:749
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:799
-#, fuzzy
-msgid "x"
-msgstr "текст"
-
-# src/ext_l10n.h:63
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:828
-#, fuzzy
-msgid "&Left bottom:"
-msgstr "Ред отдолу(B)|B"
-
-# src/frontends/xforms/form_preferences.C:926
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:868
-#, fuzzy
-msgid "E&xtra options"
-msgstr "допълнителни опции"
-
-# src/ext_l10n.h:351
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:887
-#, fuzzy
-msgid "Su&bfigure"
-msgstr "Подпис"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:891
-msgid "Is this just one part of a figure float ?"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:902
-msgid "Don't un&zip on export"
-msgstr ""
-
-# src/exporter.C:48
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:906
-#, fuzzy
-msgid "Don't uncompress image before exporting to LaTeX"
-msgstr "Няма информация относно експортиране в "
-
-# src/frontends/xforms/form_preferences.C:926
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:917
-#, fuzzy
-msgid "LaTeX &options:"
-msgstr "допълнителни опции"
-
-# src/frontends/xforms/form_preferences.C:926
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:925
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:936
-#, fuzzy
-msgid "Additional LaTeX options"
-msgstr "допълнителни опции"
-
-# src/LyXAction.C:321
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:947
-#, fuzzy
-msgid "&Draft mode"
-msgstr "Матем. режим"
-
-# src/LyXAction.C:321
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:951
-#, fuzzy
-msgid "Draft mode"
-msgstr "Матем. режим"
-
-# src/ext_l10n.h:191
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1025
-#, fuzzy
-msgid "Ca&ption:"
-msgstr "Заглавие"
-
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1033
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1048
-msgid "The caption for the sub-figure"
-msgstr ""
-
-# src/LyXAction.C:123 src/frontends/kde/FormUrl.C:86
-# src/frontends/kde/paradlg.C:89 src/frontends/xforms/FormBase.h:137
-# src/frontends/xforms/FormBase.h:152 src/frontends/xforms/FormInset.h:30
-# src/frontends/xforms/FormInset.h:54 src/layout_forms.C:52 src/log_form.C:21
-# src/lyxvc.C:263 src/mathed/math_forms.C:177
-#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:358
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291 src/LyXAction.C:129
-#: src/frontends/controllers/ButtonController.h:73
-msgid "Close"
-msgstr "Затвори"
-
-# src/ext_l10n.h:92
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:22
-#, fuzzy
-msgid "Include File"
-msgstr "Включи файл(e)|e"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:79
-msgid "File name to include"
-msgstr ""
-
-# src/lyxfunc.C:3215
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:94
-#, fuzzy
-msgid "Select a file"
-msgstr "Изберете "
-
-# src/insets/insetinclude.C:277 src/insets/insetinclude.C:318
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:122
-#, fuzzy
-msgid "&Include Type:"
-msgstr "Включи"
-
-# src/insets/insetinclude.C:314
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:134
-#: src/insets/insetinclude.C:225
-msgid "Input"
-msgstr "Вход"
-
-# src/insets/insetinclude.C:277 src/insets/insetinclude.C:318
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:140
-#: src/frontends/qt2/QInclude.C:35 src/insets/insetinclude.C:228
-msgid "Include"
-msgstr "Включи"
-
-# src/ext_l10n.h:409
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:146
-#: ../lib/layouts/linuxdoc.layout:249 ../lib/layouts/manpage.layout:126
-msgid "Verbatim"
-msgstr ""
-
-# src/insets/insetinclude.C:59 src/insets/insetinclude.C:60
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:183
-#, fuzzy
-msgid "&Load"
-msgstr "Зареди(L)|#L"
-
-# src/frontends/xforms/FormPreferences.C:2248
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:187
-#, fuzzy
-msgid "Load the file"
-msgstr "Последни файлове"
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:237
-msgid "&Mark spaces in output"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:241
-msgid "Underline spaces in generated output"
-msgstr ""
-
-# src/frontends/kde/dlg/printdlgdata.C:246
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:259
-#, fuzzy
-msgid "&Show preview"
-msgstr "(&F)Файл"
-
-# src/lyx_cb.C:675
-#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:263
-#, fuzzy
-msgid "Show LaTeX preview"
-msgstr "LaTeX увод"
+# src/frontends/kde/FormPrint.C:108 src/frontends/kde/citationdlg.C:81
+# src/frontends/kde/dlg/copyrightdlgdata.C:40
+# src/frontends/kde/dlg/indexdlgdata.C:68
+# src/frontends/kde/dlg/paradlgdata.C:39 src/frontends/kde/refdlg.C:86
+# src/frontends/kde/urldlg.C:52
+#: ../src/frontends/qt2/ui/QFloatDialogBase.ui:288
+#: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:274
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:156
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:280
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:250
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:700
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
+msgid "&OK"
+msgstr "&OK"
 
 # src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:36
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
@@ -4103,7 +3413,6 @@ msgstr "Индекс"
 # src/ext_l10n.h:262 src/frontends/gnome/FormIndex.C:89
 # src/frontends/xforms/form_index.C:28
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:60
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
 #, fuzzy
 msgid "&Keyword"
 msgstr "Ключова дума"
@@ -4114,15 +3423,6 @@ msgstr "Ключова дума"
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:68
 msgid "Index entry"
 msgstr "Индекс запис"
-
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:22 src/frontends/qt2/QLog.C:37
-msgid "Log"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QLogDialogBase.ui:96
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:96
-msgid "Update the display"
-msgstr ""
 
 # src/mathed/math_panel.C:383
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:22
@@ -4290,8 +3590,8 @@ msgstr "ред на министраница"
 
 # src/frontends/kde/dlg/paraextradlgdata.C:142
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:87
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:377
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:311
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:377
 #, fuzzy
 msgid "Top"
 msgstr "(&T)Отгоре"
@@ -4304,8 +3604,8 @@ msgstr "(&M)В средата"
 
 # src/frontends/kde/dlg/paraextradlgdata.C:168
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:99
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:389
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:323
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:389
 #, fuzzy
 msgid "Bottom"
 msgstr "(&B)Отдолу"
@@ -4346,1015 +3646,18 @@ msgstr "Ширина"
 msgid "&Units:"
 msgstr ""
 
-# src/lyx_cb.C:675
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:22
-#, fuzzy
-msgid "LaTeX pre-amble"
-msgstr "LaTeX увод"
-
-# src/lyx_cb.C:675
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:45
-#, fuzzy
-msgid "The LaTeX pre-amble"
-msgstr "LaTeX увод"
-
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:71
-msgid "&Edit..."
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:79
-msgid "Edit the pre-amble in an external editor"
-msgstr ""
-
-# src/LyXAction.C:137 src/LyXAction.C:145 src/frontends/xforms/FormPrint.C:41
-# src/frontends/xforms/form_print.C:129
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:22 src/LyXAction.C:140
-#: src/frontends/qt2/QPrint.C:39 src/frontends/xforms/FormPrint.C:36
-msgid "Print"
-msgstr "Печат"
-
-# src/frontends/kde/refdlg.C:63
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:101
-#, fuzzy
-msgid "Page number to print from"
-msgstr "Номер на страница"
-
-# src/frontends/xforms/form_print.C:127
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:112
-#, fuzzy
-msgid "&to"
-msgstr "до"
-
-# src/frontends/kde/refdlg.C:63
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:131
-#, fuzzy
-msgid "Page number to print to"
-msgstr "Номер на страница"
-
-# src/frontends/xforms/form_preferences.C:621
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:144
-#, fuzzy
-msgid "Fro&m"
-msgstr "От(F)|#F"
-
-# src/frontends/kde/printdlg.C:25
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:152
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:171
-#, fuzzy
-msgid "Print all pages"
-msgstr "Печат на всяка страница"
-
-# src/frontends/kde/dlg/paradlgdata.C:65
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:163
-#, fuzzy
-msgid "&All"
-msgstr "(&A)Установи"
-
-# src/frontends/kde/printdlg.C:26
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:184
-#, fuzzy
-msgid "Print &odd-numbered pages"
-msgstr "Печат само на нечетни страници"
-
-# src/frontends/kde/printdlg.C:27
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:199
-#, fuzzy
-msgid "Print &even-numbered pages"
-msgstr "Печат само на четни страници"
-
-# src/frontends/kde/dlg/printdlgdata.C:272
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:214
-#, fuzzy
-msgid "Re&verse order"
-msgstr "(&R)Обърни реда"
-
-# src/frontends/kde/printdlg.C:30
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:218
-#, fuzzy
-msgid "Print in reverse order"
-msgstr "Печат в обратен ред (първо последната страница)"
-
-# src/frontends/kde/printdlg.C:31
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:258
-#, fuzzy
-msgid "Number of copies"
-msgstr "Брой копия за печат"
-
-# src/LColor.C:65
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:273
-#, fuzzy
-msgid "&Collate"
-msgstr "Latex"
-
-# src/frontends/kde/printdlg.C:32
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:277
-#, fuzzy
-msgid "Collate copies"
-msgstr "Подреждане на многото копия"
-
-# src/frontends/kde/dlg/printdlgdata.C:116
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:347
-msgid "&Print"
-msgstr "(&P)Печат"
-
-# src/frontends/xforms/form_document.C:113
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:375
-#, fuzzy
-msgid "Print Destination"
-msgstr "Ориентация"
-
-# src/frontends/xforms/FormPreferences.C:269
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:397
-#, fuzzy
-msgid "P&rinter"
-msgstr "Принтер"
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:405
-msgid "Send output to the printer"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:416
-msgid "Send output to the given printer"
-msgstr ""
-
-# src/frontends/kde/dlg/printdlgdata.C:246
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:427
-msgid "&File"
-msgstr "(&F)Файл"
-
-# src/frontends/kde/printdlg.C:35
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:431
-#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:446
-#, fuzzy
-msgid "Send output to a file"
-msgstr "Избор на файл"
-
-# src/ext_l10n.h:328 src/frontends/kde/refdlg.C:62
-# src/frontends/xforms/FormRef.C:36
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
-#: ../lib/layouts/g-brief-en.layout:494 src/frontends/xforms/FormRef.C:37
-msgid "Reference"
-msgstr "Препратка"
-
-# src/LyXAction.C:348
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:71
-#, fuzzy
-msgid "Update the reference list"
-msgstr "Промяна на настройките"
-
-# src/frontends/kde/dlg/paraextradlgdata.C:168
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:129
-#, fuzzy
-msgid "&Goto"
-msgstr "(&B)Отдолу"
-
-# src/buffer.C:1122 src/buffer.C:1169
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:93
-#, fuzzy
-msgid "Move the document cursor to reference"
-msgstr "Вероятно документът е изрязан"
-
-# src/frontends/kde/refdlg.C:57
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:106
-msgid "Sort"
-msgstr "Сортирай"
-
-# src/frontends/kde/refdlg.C:99
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:110
-#, fuzzy
-msgid "Sort references in alphabetical order"
-msgstr "Азбучна подредба на препратките ?"
-
 # src/frontends/xforms/FormPreferences.C:68
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:125
-#, fuzzy
-msgid "<reference>"
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
+#: src/frontends/xforms/FormPreferences.C:97
+msgid "Preferences"
 msgstr "Настройки"
 
-# src/frontends/kde/paraextradlg.C:27
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:131
-#, fuzzy
-msgid "<page>"
-msgstr "Министраница"
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:137
-msgid "on page <page>"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:143
-msgid "<reference> on page <page>"
-msgstr ""
-
-# src/frontends/kde/refdlg.C:66
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:149
-#, fuzzy
-msgid "Formatted reference"
-msgstr "\"Хубава\" препратка"
-
-# src/frontends/kde/refdlg.C:98
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:165
-msgid "Reference as it appears in output"
-msgstr "Препратка, както изглежда в текста"
-
-# src/frontends/kde/refdlg.C:51
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
-#, fuzzy
-msgid "&Reference:"
-msgstr "Препратка :"
-
-# src/frontends/xforms/FormPreferences.C:252
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:198
-#, fuzzy
-msgid "&Format:"
-msgstr "Формати"
-
-# src/frontends/gnome/FormRef.C:301
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:224
-#, fuzzy
-msgid "&Name:"
-msgstr "Име:"
-
-# src/frontends/kde/refdlg.C:30
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:321
-#, fuzzy
-msgid "Available references in selected document:"
-msgstr "Достъпни препратки"
-
-# src/frontends/kde/refdlg.C:30
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:343
-#, fuzzy
-msgid "Available references"
-msgstr "Достъпни препратки"
-
-# src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
-# src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
-# src/lyxfunc.C:3313
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:354
-#, fuzzy
-msgid "&Document:"
-msgstr "Документ"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:22
-msgid "Search and replace"
-msgstr ""
-
-# src/form1.C:286
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:51
-#, fuzzy
-msgid "&Find:"
-msgstr "Търси(n)|#n"
-
-# src/form1.C:290
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:108
-#, fuzzy
-msgid "Replace &with:"
-msgstr "Замести с(W)|#W"
-
-# src/form1.C:310
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:161
-#, fuzzy
-msgid "Case &sensitive"
-msgstr ""
-"Различаване на\n"
-" малки/големи|#s#S"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:172
-msgid "Match whole words onl&y"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:250
-msgid "Find &Next"
-msgstr ""
-
-# src/sp_form.C:86
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:269
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:60
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:187
-#, fuzzy
-msgid "&Replace"
-msgstr "Замести"
-
-# src/form1.C:314
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:284
-#, fuzzy
-msgid "Replace &All"
-msgstr "Замести всички|#A#a"
-
-#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:295
-msgid "Search &backwards"
-msgstr ""
-
-# src/ext_l10n.h:215
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:22
-#, fuzzy
-msgid "Custom Export"
-msgstr "Клиент"
-
-# src/frontends/xforms/form_preferences.C:887
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:45
-#, fuzzy
-msgid "&Command:"
-msgstr "команда"
-
-# src/frontends/xforms/form_preferences.C:761
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:60
-#, fuzzy
-msgid "&Export formats:"
-msgstr "Потвърждение при изход(E)|#E"
-
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:168
-msgid "Process the converted file with this command ($$FName = file name)"
-msgstr ""
-
-# src/frontends/kde/citationdlg.C:35
-#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:192
-#, fuzzy
-msgid "Available export converters"
-msgstr "Достъпни клавиши"
-
-# src/bufferlist.C:496
-#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:22
-#, fuzzy
-msgid "File:"
-msgstr "Файлът `"
-
-# src/spellchecker.C:717
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:22
-#: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
-#: src/frontends/xforms/FormSpellchecker.C:33
-msgid "Spellchecker"
-msgstr "Правопис"
-
-# src/ext_l10n.h:323
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:45
-#, fuzzy
-msgid "Suggestions:"
-msgstr "Въпрос"
-
-# src/lyx_cb.C:230
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:64
-#, fuzzy
-msgid "Replace word with current choice"
-msgstr "Да го заменя ли с текущия документ?"
-
-# src/sp_form.C:95
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:79
-#, fuzzy
-msgid "Add the word to your personal dictionary"
-msgstr "Вмъкни в личния речник(I)|#I"
-
-# src/lyxfont.C:43 src/lyxfont.C:47 src/lyxfont.C:52 src/lyxfont.C:58
-# src/lyxfont.C:62
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:90
-#, fuzzy
-msgid "&Ignore"
-msgstr "Игнорирай"
-
-# src/sp_form.C:97
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:94
-#, fuzzy
-msgid "Ignore this word"
-msgstr "Игнорирай(g)|#g"
-
-# src/LColor.C:75
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:105
-#, fuzzy
-msgid "&Accept"
-msgstr "акцент"
-
-# src/sp_form.C:99
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:109
-#, fuzzy
-msgid "Accept word for this session"
-msgstr "Приеми думата за тази сесия(A)|#A"
-
-# src/sp_form.C:93
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:152
-#, fuzzy
-msgid "How far spellchecking has got"
-msgstr "Стартирай правописна проверка(S)|#S"
-
-# src/ext_l10n.h:323
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:163
-#, fuzzy
-msgid "Suggestions"
-msgstr "Въпрос"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:210
-msgid "Current word"
-msgstr ""
-
-# src/lyx_cb.C:230
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:263
-#, fuzzy
-msgid "Replace with selected word"
-msgstr "Да го заменя ли с текущия документ?"
-
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:274
-msgid "&Start..."
-msgstr ""
-
-# src/sp_form.C:93
-#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:278
-#, fuzzy
-msgid "Start spellcheck"
-msgstr "Стартирай правописна проверка(S)|#S"
-
-# src/LColor.C:78
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:22
-#, fuzzy
-msgid "Table Settings"
-msgstr "ред на министраница"
-
-# src/LColor.C:78
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:63
-#, fuzzy
-msgid "&Table Settings"
-msgstr "ред на министраница"
-
-# src/mathed/math_forms.C:152
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:82
-#, fuzzy
-msgid "&Horizontal alignment:"
-msgstr "Хориз. Подравняване(H)|#H"
-
-# src/ext_l10n.h:61
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:97
-#, fuzzy
-msgid "&Multicolumn"
-msgstr "Многоколонно(M)|M"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:101
-msgid "Merge cells"
-msgstr ""
-
-# src/frontends/kde/dlg/parageneraldlgdata.C:94
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:109
-#: src/frontends/qt2/QTabular.C:184 src/frontends/xforms/FormParagraph.C:295
-#, fuzzy
-msgid "Block"
-msgstr "Блок"
-
-# src/frontends/kde/dlg/parageneraldlgdata.C:120
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:115
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:93
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:77
-#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:309
-msgid "Left"
-msgstr "Ляв"
-
-# src/frontends/kde/dlg/parageneraldlgdata.C:107
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:121
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:383
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:317
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:89
-#: src/frontends/controllers/ControlGraphics.C:158
-#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:302
-#, fuzzy
-msgid "Center"
-msgstr "Центринан"
-
-# src/frontends/kde/dlg/parageneraldlgdata.C:133
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:127
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:99
-#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:83
-#: src/frontends/qt2/QTabular.C:182 src/frontends/xforms/FormParagraph.C:316
-msgid "Right"
-msgstr "Десен"
-
-# src/mathed/math_forms.C:152
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:136
-#, fuzzy
-msgid "Horizontal alignment in column"
-msgstr "Хориз. Подравняване(H)|#H"
-
-# src/frontends/kde/dlg/tabcreatedlgdata.C:107
-# src/frontends/xforms/form_tabular_create.C:45
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:168
-#, fuzzy
-msgid "Column"
-msgstr "Колони"
-
-# src/frontends/xforms/FormPreferences.C:1016
-# src/frontends/xforms/FormPreferences.C:1288
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
-#, fuzzy
-msgid "A&dd"
-msgstr "Добави"
-
-# src/frontends/xforms/form_tabular.C:71
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:195
-#, fuzzy
-msgid "Append column (right)"
-msgstr "Добави колона(A)|#A"
-
-# src/frontends/xforms/form_preferences.C:600
-# src/frontends/xforms/form_preferences.C:687
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:206
-#, fuzzy
-msgid "De&lete"
-msgstr "Изтрий(D)|#D"
-
-# src/ext_l10n.h:75
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:214
-#, fuzzy
-msgid "Delete current column"
-msgstr "Изтрий колона(D)|D"
-
-# src/frontends/kde/dlg/tabcreatedlgdata.C:90
-# src/frontends/xforms/form_tabular_create.C:49 src/mathed/math_forms.C:133
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:227
-#, fuzzy
-msgid "Row"
-msgstr "Редове"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:254
-msgid "Append row (below)"
-msgstr ""
-
-# src/frontends/xforms/form_preferences.C:600
-# src/frontends/xforms/form_preferences.C:687
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:265
-#, fuzzy
-msgid "Dele&te"
-msgstr "Изтрий(D)|#D"
-
-# src/ext_l10n.h:74
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:273
-#, fuzzy
-msgid "Delete this row"
-msgstr "Изтрий ред(w)|w"
-
-# src/mathed/math_forms.C:140
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:286
-#, fuzzy
-msgid "Column Width"
-msgstr "Колони "
-
-# src/mathed/math_forms.C:147
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:305
-#, fuzzy
-msgid "&Vertical alignment:"
-msgstr "Верт. Подравняване(V)|#V"
-
-# src/form1.C:161 src/frontends/kde/dlg/paraextradlgdata.C:91
-# src/frontends/xforms/form_graphics.C:44
-# src/frontends/xforms/form_paragraph.C:219
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:335
-#, fuzzy
-msgid "Width unit"
-msgstr "Ширина"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:354
-msgid "Fixed with of the column"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:398
-msgid "Vertical alignment for fixed width columns"
-msgstr ""
-
-# src/frontends/xforms/form_tabular.C:119
-# src/frontends/xforms/form_tabular.C:383
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:411
-#, fuzzy
-msgid "Rotate 90В°"
-msgstr "Завъртане на 90°|#9"
-
-# src/ext_l10n.h:311
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:434
-#, fuzzy
-msgid "&Rotate Table"
-msgstr "Таблица"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:438
-msgid "Rotate the table by 90В°"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:449
-msgid "Rotate &Cell"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:453
-msgid "Rotate this cell by 90В°"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:466
-msgid "Custom column format (LaTeX)"
-msgstr ""
-
-# src/frontends/xforms/form_tabular.C:241
-# src/frontends/xforms/form_tabular.C:365
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:477
-#, fuzzy
-msgid "LaTe&X argument:"
-msgstr "Подравняване(A)|#A"
-
-# src/frontends/xforms/form_tabular.C:223
-# src/frontends/xforms/form_tabular.C:349
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:494
-#, fuzzy
-msgid "&Borders"
-msgstr "Рамки"
-
-# src/frontends/xforms/form_tabular.C:99
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:513
-#, fuzzy
-msgid "Set Borders"
-msgstr "Установи рамки(S)|#S"
-
-# src/frontends/xforms/form_tabular.C:223
-# src/frontends/xforms/form_tabular.C:349
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:804
-#, fuzzy
-msgid "All Borders"
-msgstr "Рамки"
-
-# src/frontends/xforms/form_graphics.C:61
-# src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:411
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:823
-#, fuzzy
-msgid "&Default"
-msgstr "Стандартно"
-
-# src/frontends/xforms/form_tabular.C:99
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:827
-#, fuzzy
-msgid "Set all borders"
-msgstr "Установи рамки(S)|#S"
-
-# src/lyx_gui_misc.C:430
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:838
-#, fuzzy
-msgid "C&lear"
-msgstr "Изтрий(e)|#e"
-
-# src/frontends/xforms/form_tabular.C:106
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:842
-#, fuzzy
-msgid "Unset all borders"
-msgstr "Премахни рамки(U)|#U"
-
-# src/frontends/xforms/FormTabular.C:133
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:899
-#, fuzzy
-msgid "&Longtable"
-msgstr "Дълга таблица"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:918
-msgid "&Use long table"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:922
-msgid "Select for tables that span multiple pages"
-msgstr ""
-
-# src/ext_l10n.h:344
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:937
-#, fuzzy
-msgid "Settings"
-msgstr "Раздел"
-
-# src/ext_l10n.h:252
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:967
-#, fuzzy
-msgid "Header:"
-msgstr "Заглавие"
-
-# src/ext_l10n.h:246
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:978
-#, fuzzy
-msgid "Footer:"
-msgstr "Бел. под линия"
-
-# src/ext_l10n.h:337
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:989
-#, fuzzy
-msgid "First header:"
-msgstr "Заглавие"
-
-# src/LyXAction.C:225 src/LyXAction.C:229
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1000
-#, fuzzy
-msgid "Last footer:"
-msgstr "Вмъкни бел. под линия"
-
-# src/frontends/xforms/form_tabular.C:223
-# src/frontends/xforms/form_tabular.C:349
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1022
-#, fuzzy
-msgid "Border above"
-msgstr "Рамки"
-
-# src/frontends/xforms/form_tabular.C:223
-# src/frontends/xforms/form_tabular.C:349
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1033
-#, fuzzy
-msgid "Border below"
-msgstr "Рамки"
-
-# src/ext_l10n.h:398
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1044
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1055
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1066
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1077
-#, fuzzy
-msgid "on"
-msgstr "Град"
-
-# src/bufferview_funcs.C:286
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1088
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1099
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1110
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1121
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1132
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1143
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1154
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1165
-#, fuzzy
-msgid "double"
-msgstr "Двойно"
-
-# src/frontends/kde/tocdlg.C:57
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1176
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1187
-#, fuzzy
-msgid "is empty"
-msgstr "Дълбочина"
-
-# src/frontends/kde/refdlg.C:63
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1204
-#, fuzzy
-msgid "Page &break on current row"
-msgstr "Номер на страница"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1208
-msgid "Set a page break on the current row"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1237
-msgid "Current cell:"
-msgstr ""
-
-# src/ext_l10n.h:320
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1266
-#, fuzzy
-msgid "Current row position"
-msgstr "Допускане"
-
-#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1295
-msgid "Current column position"
-msgstr ""
-
-# src/ext_l10n.h:390
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:22
-#: ../lib/layouts/aapaper.inc:113 ../lib/layouts/aapaper.layout:77
-#: src/frontends/qt2/QThesaurus.C:31 src/frontends/xforms/FormThesaurus.C:39
-msgid "Thesaurus"
-msgstr ""
-
-# src/frontends/xforms/FormDocument.C:279
-# src/frontends/xforms/FormParagraph.C:133
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:79
-#, fuzzy
-msgid "Entry"
-msgstr "Екстри"
-
-# src/LyXAction.C:390
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:110
-#, fuzzy
-msgid "Thesaurus entries"
-msgstr "Свойства на таблица"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:131
-msgid "Select a related word"
-msgstr ""
-
-# src/LColor.C:64
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
-#, fuzzy
-msgid "&Selection"
-msgstr "избор"
-
-# src/frontends/kde/citationdlg.C:42
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:165
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:176
-#, fuzzy
-msgid "The selected entry"
-msgstr "Елемент препратка"
-
-#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:191
-msgid "Replace the entry with the selection"
-msgstr ""
-
-# src/frontends/gnome/FormToc.C:100 src/frontends/gnome/FormToc.C:167
-# src/frontends/kde/FormToc.C:167 src/frontends/kde/FormToc.C:168
-# src/frontends/kde/tocdlg.C:28 src/frontends/xforms/FormToc.C:35
-# src/insets/insettoc.C:22
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:22
-#, fuzzy
-msgid "Table Of Contents"
-msgstr "Съдържание"
-
-# src/frontends/xforms/form_toc.C:40
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:60
-#, fuzzy
-msgid "&Type"
-msgstr "Тип(T):|#T"
-
-#: ../src/frontends/qt2/ui/QTocDialogBase.ui:109
-msgid "Contents list"
-msgstr ""
-
-# src/LyXAction.C:261
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:22
-#, fuzzy
-msgid "Insert URL"
-msgstr "Вмъкни етикет"
-
-# src/ext_l10n.h:406 src/frontends/gnome/FormUrl.C:117
-# src/frontends/kde/urldlg.C:62 src/frontends/kde/urldlg.C:63
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
-#, fuzzy
-msgid "&URL"
-msgstr "URL"
-
-# src/ext_l10n.h:406 src/frontends/gnome/FormUrl.C:117
-# src/frontends/kde/urldlg.C:62 src/frontends/kde/urldlg.C:63
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:94 ../lib/layouts/amsdefs.inc:223
-#: src/frontends/qt2/QURL.C:33
-msgid "URL"
-msgstr "URL"
-
-# src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
-#, fuzzy
-msgid "&Name"
-msgstr "Име"
-
-# src/frontends/kde/urldlg.C:64 src/frontends/kde/urldlg.C:65
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:72
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:83
-msgid "Name associated with the URL"
-msgstr "Име за URL-а"
-
-# src/frontends/kde/urldlg.C:45
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:120
-#, fuzzy
-msgid "&Generate hyperlink"
-msgstr "Генерирай hyperlink"
-
-# src/frontends/kde/urldlg.C:66
-#: ../src/frontends/qt2/ui/QURLDialogBase.ui:124
-msgid "Output as a hyperlink ?"
-msgstr "Представяне като hyperlink ?"
-
-# src/debug.C:44
-#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:22
-#, fuzzy
-msgid "Version control log"
-msgstr "Система за контрол на версиите"
-
-# src/frontends/xforms/form_paragraph.C:200
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23 src/frontends/qt2/QWrap.C:36
-#: src/frontends/xforms/FormWrap.C:33
-#, fuzzy
-msgid "Wrap Options"
-msgstr "Допълнителни опции"
-
-# src/frontends/xforms/FormPreferences.C:2231
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:87
-#, fuzzy
-msgid "Default (outer)"
-msgstr "Стандартен път"
-
-# src/bufferview_funcs.C:289
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:105
-#, fuzzy
-msgid "Outer"
-msgstr "Друго ("
-
-# src/LColor.C:75
-#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:125
-#, fuzzy
-msgid "&Placement:"
-msgstr "акцент"
-
-# src/frontends/kde/dlg/tabcreatedlgdata.C:90
-# src/frontends/xforms/form_tabular_create.C:49 src/mathed/math_forms.C:133
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:68
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:60
-#, fuzzy
-msgid "&Rows:"
-msgstr "Редове"
-
-# src/frontends/kde/printdlg.C:31
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:76
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:99
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:68
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:91
-#, fuzzy
-msgid "Number of rows"
-msgstr "Брой копия за печат"
-
-# src/frontends/kde/dlg/tabcreatedlgdata.C:107
-# src/frontends/xforms/form_tabular_create.C:45
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:110
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:102
-#, fuzzy
-msgid "&Columns:"
-msgstr "Колони"
-
-# src/frontends/kde/paraextradlg.C:41
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:118
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:141
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:110
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:133
-#, fuzzy
-msgid "Number of columns"
-msgstr "Процент от колона"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:203
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:231
-msgid "Resize this to the correct table dimensions"
-msgstr ""
-
-# src/frontends/xforms/form_paragraph.C:153
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:351
-#, fuzzy
-msgid "&Vertical:"
-msgstr "Вертикално разстояние"
-
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:380
-msgid "Horizontal alignment per column (t,c,b)"
-msgstr ""
-
-# src/mathed/math_forms.C:152
-#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:399
-#, fuzzy
-msgid "&Horizontal:"
-msgstr "Хориз. Подравняване(H)|#H"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:57
-msgid "LaTeX classes"
-msgstr ""
-
-# src/ext_l10n.h:126
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:63
-#, fuzzy
-msgid "LaTeX styles"
-msgstr "Стил TeX|X"
-
-# src/ext_l10n.h:126
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:69
-#, fuzzy
-msgid "BibTeX styles"
-msgstr "Стил TeX|X"
-
-# src/frontends/kde/citationdlg.C:28
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:78
-#, fuzzy
-msgid "Selected classes or styles"
-msgstr "Избрани клавиши"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:110
-msgid "Show &path"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:114
-msgid "Toggles view of the file list"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:133
-msgid "Installed files"
-msgstr ""
-
-# src/form1.C:249
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:180
-#, fuzzy
-msgid "&Rescan"
-msgstr "Нов прочит"
-
-# src/converter.C:798 src/converter.C:865
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:184
-#, fuzzy
-msgid "Built new file list"
-msgstr "Полученият файл е празен"
-
-# src/LyXAction.C:153
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
-#, fuzzy
-msgid "&View"
-msgstr "Изглед"
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
-msgstr ""
-
-#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
-msgid "Close this dialog"
-msgstr ""
+# src/LyXAction.C:154 src/frontends/xforms/form_preferences.C:44
+#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:103
+#, fuzzy
+msgid "&Save"
+msgstr "Запази"
 
 #: ../src/frontends/qt2/ui/QPrefAsciiModule.ui:22
 msgid "ASCII settings"
@@ -5493,6 +3796,27 @@ msgstr ""
 msgid "Display insets"
 msgstr "Графика"
 
+# src/frontends/xforms/form_graphics.C:90
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:53
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:192
+#, fuzzy
+msgid "Monochrome"
+msgstr "Монохромно(M)|#M"
+
+# src/frontends/xforms/form_graphics.C:96
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:59
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:198
+#, fuzzy
+msgid "Grayscale"
+msgstr "в сиви тонове(G)|#G"
+
+# src/frontends/xforms/FormPreferences.C:244
+#: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:65
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:204
+#, fuzzy
+msgid "Color"
+msgstr "Цветове"
+
 # src/frontends/xforms/form_graphics.C:106
 #: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:71
 #, fuzzy
@@ -5557,6 +3881,21 @@ msgstr "Разширение(E)|#E"
 #, fuzzy
 msgid "Keyboard"
 msgstr "Ключова дума"
+
+# src/frontends/xforms/form_preferences.C:843
+# src/frontends/xforms/form_preferences.C:853
+# src/frontends/xforms/form_preferences.C:973
+# src/frontends/xforms/form_preferences.C:995
+# src/frontends/xforms/form_preferences.C:1007
+# src/frontends/xforms/form_preferences.C:1013
+# src/frontends/xforms/form_preferences.C:1028
+# src/frontends/xforms/form_preferences.C:1038
+#: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
+#: ../src/frontends/qt2/ui/QPrefUIModule.ui:104
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:112
+#, fuzzy
+msgid "Bro&wse..."
+msgstr "Търси..."
 
 # src/ext_l10n.h:344
 #: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:91
@@ -5655,6 +3994,17 @@ msgstr ""
 #, fuzzy
 msgid "LaTeX settings"
 msgstr "допълнителни опции"
+
+# src/frontends/xforms/form_graphics.C:61
+# src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:411
+#: ../src/frontends/qt2/ui/QPrefLatexModule.ui:68
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:113
+#: src/frontends/controllers/ControlGraphics.C:156
+#: src/frontends/qt2/QDocument.C:103 src/frontends/qt2/QDocumentDialog.C:341
+#: src/lyxfont.C:554
+msgid "Default"
+msgstr "Стандартно"
 
 # src/ext_l10n.h:362
 #: ../src/frontends/qt2/ui/QPrefLatexModule.ui:74
@@ -6075,6 +4425,276 @@ msgstr "Редове"
 msgid "&Maximum last files:"
 msgstr ""
 
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:22
+msgid "Search and replace"
+msgstr ""
+
+# src/form1.C:286
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:51
+#, fuzzy
+msgid "&Find:"
+msgstr "Търси(n)|#n"
+
+# src/form1.C:290
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:108
+#, fuzzy
+msgid "Replace &with:"
+msgstr "Замести с(W)|#W"
+
+# src/form1.C:310
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:161
+#, fuzzy
+msgid "Case &sensitive"
+msgstr ""
+"Различаване на\n"
+" малки/големи|#s#S"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:172
+msgid "Match whole words onl&y"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:250
+msgid "Find &Next"
+msgstr ""
+
+# src/sp_form.C:86
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:269
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:187
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:60
+#, fuzzy
+msgid "&Replace"
+msgstr "Замести"
+
+# src/form1.C:314
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:284
+#, fuzzy
+msgid "Replace &All"
+msgstr "Замести всички|#A#a"
+
+#: ../src/frontends/qt2/ui/QSearchDialogBase.ui:295
+msgid "Search &backwards"
+msgstr ""
+
+# src/bufferlist.C:496
+#: ../src/frontends/qt2/ui/QShowFileDialogBase.ui:22
+#, fuzzy
+msgid "File:"
+msgstr "Файлът `"
+
+# src/LyXAction.C:388
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
+#: src/frontends/qt2/QTabularCreate.C:31
+#, fuzzy
+msgid "Insert table"
+msgstr "Вмъкни таблица"
+
+# src/frontends/kde/dlg/tabcreatedlgdata.C:90
+# src/frontends/xforms/form_tabular_create.C:49 src/mathed/math_forms.C:133
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:60
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:68
+#, fuzzy
+msgid "&Rows:"
+msgstr "Редове"
+
+# src/frontends/kde/printdlg.C:31
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:91
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:76
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:99
+#, fuzzy
+msgid "Number of rows"
+msgstr "Брой копия за печат"
+
+# src/frontends/kde/dlg/tabcreatedlgdata.C:107
+# src/frontends/xforms/form_tabular_create.C:45
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:102
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:110
+#, fuzzy
+msgid "&Columns:"
+msgstr "Колони"
+
+# src/frontends/kde/paraextradlg.C:41
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:110
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:133
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:118
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:141
+#, fuzzy
+msgid "Number of columns"
+msgstr "Процент от колона"
+
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:231
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:203
+msgid "Resize this to the correct table dimensions"
+msgstr ""
+
+# src/LyXAction.C:123 src/frontends/kde/FormUrl.C:86
+# src/frontends/kde/paradlg.C:89 src/frontends/xforms/FormBase.h:137
+# src/frontends/xforms/FormBase.h:152 src/frontends/xforms/FormInset.h:30
+# src/frontends/xforms/FormInset.h:54 src/layout_forms.C:52 src/log_form.C:21
+# src/lyxvc.C:263 src/mathed/math_forms.C:177
+#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:291
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:358
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1334 src/LyXAction.C:129
+#: src/frontends/controllers/ButtonController.h:73
+msgid "Close"
+msgstr "Затвори"
+
+# src/ext_l10n.h:390
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:22
+#: ../lib/layouts/aapaper.inc:113 ../lib/layouts/aapaper.layout:77
+#: src/frontends/qt2/QThesaurus.C:31 src/frontends/xforms/FormThesaurus.C:39
+msgid "Thesaurus"
+msgstr ""
+
+# src/ext_l10n.h:262 src/frontends/gnome/FormIndex.C:89
+# src/frontends/xforms/form_index.C:28
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:60
+#, fuzzy
+msgid "&Keyword:"
+msgstr "Ключова дума"
+
+# src/frontends/xforms/FormDocument.C:279
+# src/frontends/xforms/FormParagraph.C:133
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:79
+#, fuzzy
+msgid "Entry"
+msgstr "Екстри"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:131
+msgid "Select a related word"
+msgstr ""
+
+# src/LColor.C:64
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:157
+#, fuzzy
+msgid "&Selection:"
+msgstr "избор"
+
+# src/frontends/kde/citationdlg.C:42
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:165
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:176
+#, fuzzy
+msgid "The selected entry"
+msgstr "Елемент препратка"
+
+#: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:191
+msgid "Replace the entry with the selection"
+msgstr ""
+
+# src/LyXAction.C:261
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:22
+#, fuzzy
+msgid "Insert URL"
+msgstr "Вмъкни етикет"
+
+# src/ext_l10n.h:406 src/frontends/gnome/FormUrl.C:117
+# src/frontends/kde/urldlg.C:62 src/frontends/kde/urldlg.C:63
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
+#, fuzzy
+msgid "&URL"
+msgstr "URL"
+
+# src/ext_l10n.h:406 src/frontends/gnome/FormUrl.C:117
+# src/frontends/kde/urldlg.C:62 src/frontends/kde/urldlg.C:63
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:94 ../lib/layouts/amsdefs.inc:223
+#: src/frontends/qt2/QURL.C:33
+msgid "URL"
+msgstr "URL"
+
+# src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
+#, fuzzy
+msgid "&Name"
+msgstr "Име"
+
+# src/frontends/kde/urldlg.C:64 src/frontends/kde/urldlg.C:65
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:72
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:83
+msgid "Name associated with the URL"
+msgstr "Име за URL-а"
+
+# src/frontends/kde/urldlg.C:45
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:120
+#, fuzzy
+msgid "&Generate hyperlink"
+msgstr "Генерирай hyperlink"
+
+# src/frontends/kde/urldlg.C:66
+#: ../src/frontends/qt2/ui/QURLDialogBase.ui:124
+msgid "Output as a hyperlink ?"
+msgstr "Представяне като hyperlink ?"
+
+# src/frontends/xforms/form_paragraph.C:200
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:23 src/frontends/qt2/QWrap.C:36
+#: src/frontends/xforms/FormWrap.C:33
+#, fuzzy
+msgid "Wrap Options"
+msgstr "Допълнителни опции"
+
+# src/frontends/xforms/FormPreferences.C:2231
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:87
+#, fuzzy
+msgid "Default (outer)"
+msgstr "Стандартен път"
+
+# src/frontends/kde/dlg/parageneraldlgdata.C:120
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:93
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:77
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:115
+#: src/frontends/qt2/QTabular.C:180 src/frontends/xforms/FormParagraph.C:309
+msgid "Left"
+msgstr "Ляв"
+
+# src/frontends/kde/dlg/parageneraldlgdata.C:133
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:99
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:83
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:127
+#: src/frontends/qt2/QTabular.C:182 src/frontends/xforms/FormParagraph.C:316
+msgid "Right"
+msgstr "Десен"
+
+# src/bufferview_funcs.C:289
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:105
+#, fuzzy
+msgid "Outer"
+msgstr "Друго ("
+
+# src/LColor.C:75
+#: ../src/frontends/qt2/ui/QWrapDialogBase.ui:125
+#, fuzzy
+msgid "&Placement:"
+msgstr "акцент"
+
+# src/frontends/gnome/FormCitation.C:527
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
+#, fuzzy
+msgid "&Key"
+msgstr "Ключ"
+
+# src/LyXAction.C:164
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
+#, fuzzy
+msgid "The citation key"
+msgstr "Вмъкни цитат"
+
+# src/insets/insetbib.C:69 src/insets/insetbib.C:70 src/insets/insetbib.C:210
+# src/insets/insetbib.C:211
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
+#, fuzzy
+msgid "&Label"
+msgstr "Етикет(L):|#L"
+
+# src/frontends/xforms/FormPreferences.C:1278
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
+#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
+#, fuzzy
+msgid "The label as it appears in the document"
+msgstr "Името на формата, както ще се вижда в менютата."
+
 #: ../src/frontends/qt2/ui/QAboutDialogBase.ui:22
 #: src/frontends/qt2/QAbout.C:39 src/frontends/xforms/FormAboutlyx.C:33
 msgid "About LyX"
@@ -6106,51 +4726,343 @@ msgstr "Credits"
 msgid "Copyright"
 msgstr "Авторски права"
 
-# src/frontends/xforms/FormPreferences.C:68
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:29
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:178
-#: src/frontends/xforms/FormPreferences.C:97
-msgid "Preferences"
-msgstr "Настройки"
-
-# src/LyXAction.C:154 src/frontends/xforms/form_preferences.C:44
-#: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:103
+# src/insets/insetbib.C:348
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
 #, fuzzy
-msgid "&Save"
-msgstr "Запази"
+msgid "Bibtex"
+msgstr "BibTeX"
 
-# src/frontends/gnome/FormCitation.C:527
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
+# src/insets/insetbib.C:339
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:45
 #, fuzzy
-msgid "&Key"
-msgstr "Ключ"
+msgid "Databa&ses"
+msgstr "База данни:"
 
-# src/LyXAction.C:164
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
-#, fuzzy
-msgid "The citation key"
-msgstr "Вмъкни цитат"
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:57
+msgid "BibTeX database to use"
+msgstr ""
 
-# src/insets/insetbib.C:69 src/insets/insetbib.C:70 src/insets/insetbib.C:210
-# src/insets/insetbib.C:211
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
+# src/frontends/kde/citationdlg.C:35
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:75
 #, fuzzy
-msgid "&Label"
-msgstr "Етикет(L):|#L"
+msgid "Available BibTeX databases"
+msgstr "Достъпни клавиши"
 
-# src/frontends/xforms/FormPreferences.C:1278
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
-#: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
+# src/frontends/kde/citationdlg.C:61
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
+msgid "&Add"
+msgstr "(&A)Добави"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:90
+msgid "Add a BibTeX database file"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:101
+msgid "Add a BibTeX file manually"
+msgstr ""
+
+# src/LyXAction.C:393
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:120
 #, fuzzy
-msgid "The label as it appears in the document"
-msgstr "Името на формата, както ще се вижда в менютата."
+msgid "Browse for a BibTeX database file"
+msgstr "Превключване на TeX стил"
+
+# src/frontends/xforms/form_preferences.C:600
+# src/frontends/xforms/form_preferences.C:687
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:131
+#, fuzzy
+msgid "&Delete"
+msgstr "Изтрий(D)|#D"
+
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:135
+msgid "Remove the selected database"
+msgstr ""
+
+# src/insets/insetbib.C:340
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:186
+#, fuzzy
+msgid "St&yle"
+msgstr "Стил: "
+
+# src/LyXAction.C:393
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:194
+#, fuzzy
+msgid "The BibTeX style"
+msgstr "Превключване на TeX стил"
+
+# src/frontends/xforms/form_preferences.C:843
+# src/frontends/xforms/form_preferences.C:853
+# src/frontends/xforms/form_preferences.C:973
+# src/frontends/xforms/form_preferences.C:995
+# src/frontends/xforms/form_preferences.C:1007
+# src/frontends/xforms/form_preferences.C:1013
+# src/frontends/xforms/form_preferences.C:1028
+# src/frontends/xforms/form_preferences.C:1038
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:205
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:290
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:119
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:90
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:461
+#, fuzzy
+msgid "&Browse..."
+msgstr "Търси..."
+
+# src/lyxfunc.C:3128
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:213
+#, fuzzy
+msgid "Choose a style file"
+msgstr "Изберете шаблон"
+
+# src/frontends/kde/refdlg.C:81 src/frontends/kde/tocdlg.C:43
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:224
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:88
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:67
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:171
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:88
+msgid "&Update"
+msgstr "(&U)Актуализирай"
+
+# src/LyXAction.C:348
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:232
+#, fuzzy
+msgid "Update style list"
+msgstr "Промяна на настройките"
+
+# src/insets/insetbib.C:219
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:307
+#, fuzzy
+msgid "Add bibliography to &TOC"
+msgstr "Библ. перо"
+
+# src/LyXAction.C:400
+#: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:311
+#, fuzzy
+msgid "Add bibliography to the table of contents"
+msgstr "Покажи съдържанието"
+
+# src/ext_l10n.h:119
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:22
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:73
+#: src/frontends/qt2/QCharacter.C:39
+#, fuzzy
+msgid "Character"
+msgstr "Символ(C)...|C"
+
+# src/layout_forms.C:23
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:95
+#, fuzzy
+msgid "&Family:"
+msgstr "Семейство(F):|#F"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:103
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:114
+msgid "Font family"
+msgstr ""
+
+# src/layout_forms.C:28
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:125
+#, fuzzy
+msgid "&Series:"
+msgstr "Серия(S):|#S"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:133
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:204
+msgid "Font series"
+msgstr ""
+
+# src/form1.C:51 src/frontends/xforms/FormDocument.C:277
+# src/frontends/xforms/FormPreferences.C:280
+#. language settings
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:152
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:238
+#: src/frontends/qt2/QDocumentDialog.C:69 src/frontends/qt2/QPrefsDialog.C:120
+#: src/frontends/xforms/FormDocument.C:343
+#: src/frontends/xforms/FormPreferences.C:246
+msgid "Language"
+msgstr "Език"
+
+# src/bufferview_funcs.C:267
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:163
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:193
+#, fuzzy
+msgid "Font shape"
+msgstr "Шрифт:"
+
+# src/bufferview_funcs.C:267
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:174
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:227
+#, fuzzy
+msgid "Font color"
+msgstr "Шрифт:"
+
+# src/layout_forms.C:33
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:185
+#, fuzzy
+msgid "S&hape:"
+msgstr "Форма(H):|#H"
+
+# src/frontends/xforms/FormPreferences.C:244
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:219
+#, fuzzy
+msgid "&Color:"
+msgstr "Цветове"
+
+# src/LyXAction.C:208
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:249
+#, fuzzy
+msgid "&Toggle all"
+msgstr "Превключи удебеляване"
+
+# src/layout_forms.C:61
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:253
+#, fuzzy
+msgid "toggle font on all of the above"
+msgstr "Превключване между(T)|#T"
+
+# src/layout_forms.C:69
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:302
+#, fuzzy
+msgid "Never Toggled"
+msgstr "Без превключване"
+
+# src/layout_forms.C:38
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:324
+#, fuzzy
+msgid "Si&ze:"
+msgstr "Размер(Z):|#Z"
+
+# src/frontends/xforms/form_document.C:262
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:332
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:343
+#, fuzzy
+msgid "Font size"
+msgstr "Шрифт размер(O):|#O"
+
+# src/layout_forms.C:72
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:356
+#, fuzzy
+msgid "Always Toggled"
+msgstr "Винаги превключване"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:363
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:397
+msgid "Other font settings"
+msgstr ""
+
+# src/frontends/xforms/FormPreferences.C:247
+# src/frontends/xforms/FormPreferences.C:264
+# src/frontends/xforms/FormPreferences.C:272 src/mathed/math_forms.C:46
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:382
+#, fuzzy
+msgid "&Misc:"
+msgstr "Различни"
+
+# src/frontends/kde/dlg/paradlgdata.C:65
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:410
+#, fuzzy
+msgid "Auto apply"
+msgstr "(&A)Установи"
+
+#: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:414
+msgid "Apply each change automatically"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:170
+msgid "title here"
+msgstr ""
+
+# src/frontends/xforms/form_preferences.C:999
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:266
+#, fuzzy
+msgid "Use Class Defaults"
+msgstr "Провери старите файлове(C)|#C"
+
+# src/frontends/xforms/FormDocument.C:1101
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:270
+#, fuzzy
+msgid "Reset default params of the current class"
+msgstr "подразбиращи се за този документ клас?"
+
+# src/ext_l10n.h:130
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:288
+#, fuzzy
+msgid "Save as Document Defaults"
+msgstr "Запази оформлението като подразбиращо се(S)|S"
+
+#: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:292
+msgid "Save settings as LyX's default template"
+msgstr ""
+
+# src/frontends/xforms/FormError.C:26
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:22
+#: src/frontends/qt2/QError.C:31 src/frontends/xforms/FormError.C:27
+msgid "LaTeX Error"
+msgstr "LaTeX Грешка"
+
+# src/frontends/xforms/FormError.C:26
+#: ../src/frontends/qt2/ui/QErrorDialogBase.ui:45
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:219
+#, fuzzy
+msgid "LaTeX error messages"
+msgstr "LaTeX Грешка"
+
+# src/insets/figinset.C:1045
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:22
+#, fuzzy
+msgid "ERT inset display"
+msgstr "[не е показан]"
+
+# src/frontends/xforms/FormGraphics.C:36
+# src/frontends/xforms/FormGraphics.C:359
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:45
+#, fuzzy
+msgid "Display"
+msgstr "Графика"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:64
+msgid "&Inline"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:68
+msgid "Show ERT inline"
+msgstr ""
+
+# src/frontends/kde/FormCitation.C:160 src/frontends/kde/FormRef.C:201
+# src/frontends/kde/indexdlg.C:60 src/frontends/kde/tocdlg.C:48
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:79
+#, fuzzy
+msgid "&Collapsed"
+msgstr "(&C)Затвори"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:83
+msgid "Show ERT button only"
+msgstr ""
+
+# src/LyXAction.C:144
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
+#, fuzzy
+msgid "&Open"
+msgstr "Отвори"
+
+#: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
+msgid "Show ERT contents"
+msgstr ""
 
 # src/ext_l10n.h:94
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:22
 #, fuzzy
 msgid "External Material"
 msgstr "Външен материал(x)...|x"
+
+# src/frontends/kde/dlg/printdlgdata.C:246
+#: ../src/frontends/qt2/ui/QExternalDialogBase.ui:45
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:89
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:60
+#, fuzzy
+msgid "&File:"
+msgstr "(&F)Файл"
 
 # src/form1.C:245
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:53
@@ -6216,6 +5128,340 @@ msgstr "Редактирай файл(E)|#E"
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:305
 msgid "Edit the file externally"
 msgstr ""
+
+# src/frontends/xforms/FormGraphics.C:36
+# src/frontends/xforms/FormGraphics.C:359
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:55
+#, fuzzy
+msgid "&Graphics"
+msgstr "Графика"
+
+# src/form1.C:245
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:97
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:108
+#, fuzzy
+msgid "File name of image"
+msgstr "Име на файл(F):|#F"
+
+# src/lyxfunc.C:3215
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:123
+#, fuzzy
+msgid "Select an image file"
+msgstr "Изберете "
+
+# src/frontends/xforms/form_graphics.C:106
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:136
+#, fuzzy
+msgid "LyX Display"
+msgstr "Не показвай(D)|#D"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:155
+msgid "&Show in LyX"
+msgstr ""
+
+# src/LyXAction.C:236
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:159
+#, fuzzy
+msgid "Display image in LyX"
+msgstr "Покажи Copyright информацията"
+
+# src/frontends/xforms/FormGraphics.C:36
+# src/frontends/xforms/FormGraphics.C:359
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:170
+#, fuzzy
+msgid "Display:"
+msgstr "Графика"
+
+# src/insets/figinset.C:1045
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:178
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:213
+#, fuzzy
+msgid "Screen display"
+msgstr "[не е показан]"
+
+# src/frontends/xforms/form_tabular.C:453
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:224
+#, fuzzy
+msgid "Scale:"
+msgstr "Специален"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:232
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:273
+msgid "Percentage to scale by in LyX"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:339
+msgid "Height of image in output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:368
+msgid "Units of height value"
+msgstr ""
+
+# src/form1.C:157 src/frontends/xforms/form_graphics.C:46
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:385
+#, fuzzy
+msgid "&Height"
+msgstr "Височина"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:419
+msgid "Width of image in output"
+msgstr ""
+
+# src/form1.C:161 src/frontends/kde/dlg/paraextradlgdata.C:91
+# src/frontends/xforms/form_graphics.C:44
+# src/frontends/xforms/form_paragraph.C:219
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:443
+#, fuzzy
+msgid "&Width"
+msgstr "Ширина"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:464
+msgid "&Maintain aspect ratio"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:468
+msgid "Maintain aspect ratio with largest dimension"
+msgstr ""
+
+# src/form1.C:133
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:515
+#, fuzzy
+msgid "A&ngle:"
+msgstr "Ъгъл(L):|#L"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:523
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:541
+msgid "Angle to rotate image by"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:552
+msgid "&Origin:"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:560
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:571
+msgid "The origin of the rotation"
+msgstr ""
+
+# src/ext_l10n.h:200
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:588
+#, fuzzy
+msgid "&Clipping"
+msgstr "Затваряне"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:622
+msgid "Clip to &bounding box"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:626
+msgid "Clip to bounding box values"
+msgstr ""
+
+# src/frontends/xforms/form_preferences.C:923
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:658
+#, fuzzy
+msgid "&Get from file"
+msgstr "във файл"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:662
+msgid "Get bounding box from the (EPS) file"
+msgstr ""
+
+# src/frontends/kde/dlg/parageneraldlgdata.C:133
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:709
+#, fuzzy
+msgid "Right &top:"
+msgstr "Десен"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:724
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:781
+msgid "y"
+msgstr ""
+
+# src/LColor.C:63
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:749
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:799
+#, fuzzy
+msgid "x"
+msgstr "текст"
+
+# src/ext_l10n.h:63
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:828
+#, fuzzy
+msgid "&Left bottom:"
+msgstr "Ред отдолу(B)|B"
+
+# src/frontends/xforms/form_preferences.C:926
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:868
+#, fuzzy
+msgid "E&xtra options"
+msgstr "допълнителни опции"
+
+# src/ext_l10n.h:351
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:887
+#, fuzzy
+msgid "Su&bfigure"
+msgstr "Подпис"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:891
+msgid "Is this just one part of a figure float ?"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:902
+msgid "Don't un&zip on export"
+msgstr ""
+
+# src/exporter.C:48
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:906
+#, fuzzy
+msgid "Don't uncompress image before exporting to LaTeX"
+msgstr "Няма информация относно експортиране в "
+
+# src/frontends/xforms/form_preferences.C:926
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:917
+#, fuzzy
+msgid "LaTeX &options:"
+msgstr "допълнителни опции"
+
+# src/frontends/xforms/form_preferences.C:926
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:925
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:936
+#, fuzzy
+msgid "Additional LaTeX options"
+msgstr "допълнителни опции"
+
+# src/LyXAction.C:321
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:947
+#, fuzzy
+msgid "&Draft mode"
+msgstr "Матем. режим"
+
+# src/LyXAction.C:321
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:951
+#, fuzzy
+msgid "Draft mode"
+msgstr "Матем. режим"
+
+# src/ext_l10n.h:191
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1025
+#, fuzzy
+msgid "Ca&ption:"
+msgstr "Заглавие"
+
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1033
+#: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1048
+msgid "The caption for the sub-figure"
+msgstr ""
+
+# src/ext_l10n.h:92
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:22
+#, fuzzy
+msgid "Include File"
+msgstr "Включи файл(e)|e"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:79
+msgid "File name to include"
+msgstr ""
+
+# src/lyxfunc.C:3215
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:94
+#, fuzzy
+msgid "Select a file"
+msgstr "Изберете "
+
+# src/insets/insetinclude.C:277 src/insets/insetinclude.C:318
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:122
+#, fuzzy
+msgid "&Include Type:"
+msgstr "Включи"
+
+# src/insets/insetinclude.C:314
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:134
+#: src/insets/insetinclude.C:225
+msgid "Input"
+msgstr "Вход"
+
+# src/insets/insetinclude.C:277 src/insets/insetinclude.C:318
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:140
+#: src/frontends/qt2/QInclude.C:35 src/insets/insetinclude.C:228
+msgid "Include"
+msgstr "Включи"
+
+# src/ext_l10n.h:409
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:146
+#: ../lib/layouts/linuxdoc.layout:249 ../lib/layouts/manpage.layout:126
+msgid "Verbatim"
+msgstr ""
+
+# src/insets/insetinclude.C:59 src/insets/insetinclude.C:60
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:183
+#, fuzzy
+msgid "&Load"
+msgstr "Зареди(L)|#L"
+
+# src/frontends/xforms/FormPreferences.C:2248
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:187
+#, fuzzy
+msgid "Load the file"
+msgstr "Последни файлове"
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:237
+msgid "&Mark spaces in output"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:241
+msgid "Underline spaces in generated output"
+msgstr ""
+
+# src/frontends/kde/dlg/printdlgdata.C:246
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:259
+#, fuzzy
+msgid "&Show preview"
+msgstr "(&F)Файл"
+
+# src/lyx_cb.C:675
+#: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:263
+#, fuzzy
+msgid "Show LaTeX preview"
+msgstr "LaTeX увод"
+
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:22 src/frontends/qt2/QLog.C:37
+msgid "Log"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QLogDialogBase.ui:96
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:96
+msgid "Update the display"
+msgstr ""
+
+# src/frontends/kde/dlg/parageneraldlgdata.C:107
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:317
+#: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:89
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:121
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:383
+#: src/frontends/controllers/ControlGraphics.C:158
+#: src/frontends/qt2/QTabular.C:181 src/frontends/xforms/FormParagraph.C:302
+#, fuzzy
+msgid "Center"
+msgstr "Центринан"
+
+# src/frontends/xforms/form_paragraph.C:153
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:351
+#, fuzzy
+msgid "&Vertical:"
+msgstr "Вертикално разстояние"
+
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:380
+msgid "Horizontal alignment per column (t,c,b)"
+msgstr ""
+
+# src/mathed/math_forms.C:152
+#: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:399
+#, fuzzy
+msgid "&Horizontal:"
+msgstr "Хориз. Подравняване(H)|#H"
 
 # src/frontends/xforms/FormParagraph.C:132
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:55
@@ -6407,12 +5653,767 @@ msgstr "Отгоре(v):|#v"
 msgid "Belo&w"
 msgstr "Отдолу(w)|#w"
 
-# src/LyXAction.C:388
-#: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:26
-#: src/frontends/qt2/QTabularCreate.C:31
+# src/lyx_cb.C:675
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:22
 #, fuzzy
-msgid "Insert table"
-msgstr "Вмъкни таблица"
+msgid "LaTeX pre-amble"
+msgstr "LaTeX увод"
+
+# src/lyx_cb.C:675
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:45
+#, fuzzy
+msgid "The LaTeX pre-amble"
+msgstr "LaTeX увод"
+
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:71
+msgid "&Edit..."
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:79
+msgid "Edit the pre-amble in an external editor"
+msgstr ""
+
+# src/LyXAction.C:137 src/LyXAction.C:145 src/frontends/xforms/FormPrint.C:41
+# src/frontends/xforms/form_print.C:129
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:22 src/LyXAction.C:140
+#: src/frontends/qt2/QPrint.C:39 src/frontends/xforms/FormPrint.C:36
+msgid "Print"
+msgstr "Печат"
+
+# src/frontends/kde/refdlg.C:63
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:101
+#, fuzzy
+msgid "Page number to print from"
+msgstr "Номер на страница"
+
+# src/frontends/xforms/form_print.C:127
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:112
+#, fuzzy
+msgid "&to"
+msgstr "до"
+
+# src/frontends/kde/refdlg.C:63
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:131
+#, fuzzy
+msgid "Page number to print to"
+msgstr "Номер на страница"
+
+# src/frontends/xforms/form_preferences.C:621
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:144
+#, fuzzy
+msgid "Fro&m"
+msgstr "От(F)|#F"
+
+# src/frontends/kde/printdlg.C:25
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:152
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:171
+#, fuzzy
+msgid "Print all pages"
+msgstr "Печат на всяка страница"
+
+# src/frontends/kde/dlg/paradlgdata.C:65
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:163
+#, fuzzy
+msgid "&All"
+msgstr "(&A)Установи"
+
+# src/frontends/kde/printdlg.C:26
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:184
+#, fuzzy
+msgid "Print &odd-numbered pages"
+msgstr "Печат само на нечетни страници"
+
+# src/frontends/kde/printdlg.C:27
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:199
+#, fuzzy
+msgid "Print &even-numbered pages"
+msgstr "Печат само на четни страници"
+
+# src/frontends/kde/dlg/printdlgdata.C:272
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:214
+#, fuzzy
+msgid "Re&verse order"
+msgstr "(&R)Обърни реда"
+
+# src/frontends/kde/printdlg.C:30
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:218
+#, fuzzy
+msgid "Print in reverse order"
+msgstr "Печат в обратен ред (първо последната страница)"
+
+# src/frontends/kde/printdlg.C:31
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:258
+#, fuzzy
+msgid "Number of copies"
+msgstr "Брой копия за печат"
+
+# src/LColor.C:65
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:273
+#, fuzzy
+msgid "&Collate"
+msgstr "Latex"
+
+# src/frontends/kde/printdlg.C:32
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:277
+#, fuzzy
+msgid "Collate copies"
+msgstr "Подреждане на многото копия"
+
+# src/frontends/kde/dlg/printdlgdata.C:116
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:347
+msgid "&Print"
+msgstr "(&P)Печат"
+
+# src/frontends/xforms/form_document.C:113
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:375
+#, fuzzy
+msgid "Print Destination"
+msgstr "Ориентация"
+
+# src/frontends/xforms/FormPreferences.C:269
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:397
+#, fuzzy
+msgid "P&rinter"
+msgstr "Принтер"
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:405
+msgid "Send output to the printer"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:416
+msgid "Send output to the given printer"
+msgstr ""
+
+# src/frontends/kde/dlg/printdlgdata.C:246
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:427
+msgid "&File"
+msgstr "(&F)Файл"
+
+# src/frontends/kde/printdlg.C:35
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:431
+#: ../src/frontends/qt2/ui/QPrintDialogBase.ui:446
+#, fuzzy
+msgid "Send output to a file"
+msgstr "Избор на файл"
+
+# src/ext_l10n.h:328 src/frontends/kde/refdlg.C:62
+# src/frontends/xforms/FormRef.C:36
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
+#: ../lib/layouts/g-brief-en.layout:494 src/frontends/xforms/FormRef.C:37
+msgid "Reference"
+msgstr "Препратка"
+
+# src/LyXAction.C:348
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:71
+#, fuzzy
+msgid "Update the reference list"
+msgstr "Промяна на настройките"
+
+# src/frontends/kde/dlg/paraextradlgdata.C:168
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:129
+#, fuzzy
+msgid "&Goto"
+msgstr "(&B)Отдолу"
+
+# src/buffer.C:1122 src/buffer.C:1169
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:93
+#, fuzzy
+msgid "Move the document cursor to reference"
+msgstr "Вероятно документът е изрязан"
+
+# src/frontends/kde/refdlg.C:57
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:106
+msgid "Sort"
+msgstr "Сортирай"
+
+# src/frontends/kde/refdlg.C:99
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:110
+#, fuzzy
+msgid "Sort references in alphabetical order"
+msgstr "Азбучна подредба на препратките ?"
+
+# src/frontends/xforms/FormPreferences.C:68
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:125
+#, fuzzy
+msgid "<reference>"
+msgstr "Настройки"
+
+# src/frontends/kde/paraextradlg.C:27
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:131
+#, fuzzy
+msgid "<page>"
+msgstr "Министраница"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:137
+msgid "on page <page>"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:143
+msgid "<reference> on page <page>"
+msgstr ""
+
+# src/frontends/kde/refdlg.C:66
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:149
+#, fuzzy
+msgid "Formatted reference"
+msgstr "\"Хубава\" препратка"
+
+# src/frontends/kde/refdlg.C:98
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:165
+msgid "Reference as it appears in output"
+msgstr "Препратка, както изглежда в текста"
+
+# src/frontends/kde/refdlg.C:51
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
+#, fuzzy
+msgid "&Reference:"
+msgstr "Препратка :"
+
+# src/frontends/xforms/FormPreferences.C:252
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:198
+#, fuzzy
+msgid "&Format:"
+msgstr "Формати"
+
+# src/frontends/gnome/FormRef.C:301
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:224
+#, fuzzy
+msgid "&Name:"
+msgstr "Име:"
+
+# src/frontends/kde/refdlg.C:30
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:321
+#, fuzzy
+msgid "Available references in selected document:"
+msgstr "Достъпни препратки"
+
+# src/frontends/kde/refdlg.C:30
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:343
+#, fuzzy
+msgid "Available references"
+msgstr "Достъпни препратки"
+
+# src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
+# src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
+# src/lyxfunc.C:3313
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:354
+#, fuzzy
+msgid "&Document:"
+msgstr "Документ"
+
+# src/ext_l10n.h:215
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:22
+#, fuzzy
+msgid "Custom Export"
+msgstr "Клиент"
+
+# src/frontends/xforms/form_preferences.C:887
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:45
+#, fuzzy
+msgid "&Command:"
+msgstr "команда"
+
+# src/frontends/xforms/form_preferences.C:761
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:60
+#, fuzzy
+msgid "&Export formats:"
+msgstr "Потвърждение при изход(E)|#E"
+
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:168
+msgid "Process the converted file with this command ($$FName = file name)"
+msgstr ""
+
+# src/frontends/kde/citationdlg.C:35
+#: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:192
+#, fuzzy
+msgid "Available export converters"
+msgstr "Достъпни клавиши"
+
+# src/spellchecker.C:717
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:22
+#: src/frontends/qt2/QPrefsDialog.C:122 src/frontends/qt2/QSpellchecker.C:35
+#: src/frontends/xforms/FormSpellchecker.C:33
+msgid "Spellchecker"
+msgstr "Правопис"
+
+# src/ext_l10n.h:323
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:45
+#, fuzzy
+msgid "Suggestions:"
+msgstr "Въпрос"
+
+# src/lyx_cb.C:230
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:64
+#, fuzzy
+msgid "Replace word with current choice"
+msgstr "Да го заменя ли с текущия документ?"
+
+# src/sp_form.C:95
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:79
+#, fuzzy
+msgid "Add the word to your personal dictionary"
+msgstr "Вмъкни в личния речник(I)|#I"
+
+# src/lyxfont.C:43 src/lyxfont.C:47 src/lyxfont.C:52 src/lyxfont.C:58
+# src/lyxfont.C:62
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:90
+#, fuzzy
+msgid "&Ignore"
+msgstr "Игнорирай"
+
+# src/sp_form.C:97
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:94
+#, fuzzy
+msgid "Ignore this word"
+msgstr "Игнорирай(g)|#g"
+
+# src/LColor.C:75
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:105
+#, fuzzy
+msgid "&Accept"
+msgstr "акцент"
+
+# src/sp_form.C:99
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:109
+#, fuzzy
+msgid "Accept word for this session"
+msgstr "Приеми думата за тази сесия(A)|#A"
+
+# src/sp_form.C:93
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:152
+#, fuzzy
+msgid "How far spellchecking has got"
+msgstr "Стартирай правописна проверка(S)|#S"
+
+# src/ext_l10n.h:323
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:163
+#, fuzzy
+msgid "Suggestions"
+msgstr "Въпрос"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:210
+msgid "Current word"
+msgstr ""
+
+# src/lyx_cb.C:230
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:263
+#, fuzzy
+msgid "Replace with selected word"
+msgstr "Да го заменя ли с текущия документ?"
+
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:274
+msgid "&Start..."
+msgstr ""
+
+# src/sp_form.C:93
+#: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:278
+#, fuzzy
+msgid "Start spellcheck"
+msgstr "Стартирай правописна проверка(S)|#S"
+
+# src/LColor.C:78
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:22
+#, fuzzy
+msgid "Table Settings"
+msgstr "ред на министраница"
+
+# src/LColor.C:78
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:63
+#, fuzzy
+msgid "&Table Settings"
+msgstr "ред на министраница"
+
+# src/mathed/math_forms.C:152
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:82
+#, fuzzy
+msgid "&Horizontal alignment:"
+msgstr "Хориз. Подравняване(H)|#H"
+
+# src/ext_l10n.h:61
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:97
+#, fuzzy
+msgid "&Multicolumn"
+msgstr "Многоколонно(M)|M"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:101
+msgid "Merge cells"
+msgstr ""
+
+# src/frontends/kde/dlg/parageneraldlgdata.C:94
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:109
+#: src/frontends/qt2/QTabular.C:184 src/frontends/xforms/FormParagraph.C:295
+#, fuzzy
+msgid "Block"
+msgstr "Блок"
+
+# src/mathed/math_forms.C:152
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:136
+#, fuzzy
+msgid "Horizontal alignment in column"
+msgstr "Хориз. Подравняване(H)|#H"
+
+# src/frontends/kde/dlg/tabcreatedlgdata.C:107
+# src/frontends/xforms/form_tabular_create.C:45
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:168
+#, fuzzy
+msgid "Column"
+msgstr "Колони"
+
+# src/frontends/xforms/FormPreferences.C:1016
+# src/frontends/xforms/FormPreferences.C:1288
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
+#, fuzzy
+msgid "A&dd"
+msgstr "Добави"
+
+# src/frontends/xforms/form_tabular.C:71
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:195
+#, fuzzy
+msgid "Append column (right)"
+msgstr "Добави колона(A)|#A"
+
+# src/frontends/xforms/form_preferences.C:600
+# src/frontends/xforms/form_preferences.C:687
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:206
+#, fuzzy
+msgid "De&lete"
+msgstr "Изтрий(D)|#D"
+
+# src/ext_l10n.h:75
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:214
+#, fuzzy
+msgid "Delete current column"
+msgstr "Изтрий колона(D)|D"
+
+# src/frontends/kde/dlg/tabcreatedlgdata.C:90
+# src/frontends/xforms/form_tabular_create.C:49 src/mathed/math_forms.C:133
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:227
+#, fuzzy
+msgid "Row"
+msgstr "Редове"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:254
+msgid "Append row (below)"
+msgstr ""
+
+# src/frontends/xforms/form_preferences.C:600
+# src/frontends/xforms/form_preferences.C:687
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:265
+#, fuzzy
+msgid "Dele&te"
+msgstr "Изтрий(D)|#D"
+
+# src/ext_l10n.h:74
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:273
+#, fuzzy
+msgid "Delete this row"
+msgstr "Изтрий ред(w)|w"
+
+# src/mathed/math_forms.C:140
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:286
+#, fuzzy
+msgid "Column Width"
+msgstr "Колони "
+
+# src/mathed/math_forms.C:147
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:305
+#, fuzzy
+msgid "&Vertical alignment:"
+msgstr "Верт. Подравняване(V)|#V"
+
+# src/form1.C:161 src/frontends/kde/dlg/paraextradlgdata.C:91
+# src/frontends/xforms/form_graphics.C:44
+# src/frontends/xforms/form_paragraph.C:219
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:335
+#, fuzzy
+msgid "Width unit"
+msgstr "Ширина"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:354
+msgid "Fixed with of the column"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:398
+msgid "Vertical alignment for fixed width columns"
+msgstr ""
+
+# src/frontends/xforms/form_tabular.C:119
+# src/frontends/xforms/form_tabular.C:383
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:411
+#, fuzzy
+msgid "Rotate 90В°"
+msgstr "Завъртане на 90°|#9"
+
+# src/ext_l10n.h:311
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:434
+#, fuzzy
+msgid "&Rotate Table"
+msgstr "Таблица"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:438
+msgid "Rotate the table by 90В°"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:449
+msgid "Rotate &Cell"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:453
+msgid "Rotate this cell by 90В°"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:466
+msgid "Custom column format (LaTeX)"
+msgstr ""
+
+# src/frontends/xforms/form_tabular.C:241
+# src/frontends/xforms/form_tabular.C:365
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:477
+#, fuzzy
+msgid "LaTe&X argument:"
+msgstr "Подравняване(A)|#A"
+
+# src/frontends/xforms/form_tabular.C:223
+# src/frontends/xforms/form_tabular.C:349
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:494
+#, fuzzy
+msgid "&Borders"
+msgstr "Рамки"
+
+# src/frontends/xforms/form_tabular.C:99
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:513
+#, fuzzy
+msgid "Set Borders"
+msgstr "Установи рамки(S)|#S"
+
+# src/frontends/xforms/form_tabular.C:223
+# src/frontends/xforms/form_tabular.C:349
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:804
+#, fuzzy
+msgid "All Borders"
+msgstr "Рамки"
+
+# src/frontends/xforms/form_graphics.C:61
+# src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:411
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:823
+#, fuzzy
+msgid "&Default"
+msgstr "Стандартно"
+
+# src/frontends/xforms/form_tabular.C:99
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:827
+#, fuzzy
+msgid "Set all borders"
+msgstr "Установи рамки(S)|#S"
+
+# src/lyx_gui_misc.C:430
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:838
+#, fuzzy
+msgid "C&lear"
+msgstr "Изтрий(e)|#e"
+
+# src/frontends/xforms/form_tabular.C:106
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:842
+#, fuzzy
+msgid "Unset all borders"
+msgstr "Премахни рамки(U)|#U"
+
+# src/frontends/xforms/FormTabular.C:133
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:899
+#, fuzzy
+msgid "&Longtable"
+msgstr "Дълга таблица"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:918
+msgid "&Use long table"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:922
+msgid "Select for tables that span multiple pages"
+msgstr ""
+
+# src/ext_l10n.h:344
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:937
+#, fuzzy
+msgid "Settings"
+msgstr "Раздел"
+
+# src/ext_l10n.h:252
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:967
+#, fuzzy
+msgid "Header:"
+msgstr "Заглавие"
+
+# src/ext_l10n.h:246
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:978
+#, fuzzy
+msgid "Footer:"
+msgstr "Бел. под линия"
+
+# src/ext_l10n.h:337
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:989
+#, fuzzy
+msgid "First header:"
+msgstr "Заглавие"
+
+# src/LyXAction.C:225 src/LyXAction.C:229
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1000
+#, fuzzy
+msgid "Last footer:"
+msgstr "Вмъкни бел. под линия"
+
+# src/frontends/xforms/form_tabular.C:223
+# src/frontends/xforms/form_tabular.C:349
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1022
+#, fuzzy
+msgid "Border above"
+msgstr "Рамки"
+
+# src/frontends/xforms/form_tabular.C:223
+# src/frontends/xforms/form_tabular.C:349
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1033
+#, fuzzy
+msgid "Border below"
+msgstr "Рамки"
+
+# src/ext_l10n.h:398
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1044
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1055
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1066
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1077
+#, fuzzy
+msgid "on"
+msgstr "Град"
+
+# src/bufferview_funcs.C:286
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1088
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1099
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1110
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1121
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1132
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1143
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1154
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1165
+#, fuzzy
+msgid "double"
+msgstr "Двойно"
+
+# src/frontends/kde/tocdlg.C:57
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1176
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1187
+#, fuzzy
+msgid "is empty"
+msgstr "Дълбочина"
+
+# src/frontends/kde/refdlg.C:63
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1204
+#, fuzzy
+msgid "Page &break on current row"
+msgstr "Номер на страница"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1208
+msgid "Set a page break on the current row"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1237
+msgid "Current cell:"
+msgstr ""
+
+# src/ext_l10n.h:320
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1266
+#, fuzzy
+msgid "Current row position"
+msgstr "Допускане"
+
+#: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1295
+msgid "Current column position"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:57
+msgid "LaTeX classes"
+msgstr ""
+
+# src/ext_l10n.h:126
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:63
+#, fuzzy
+msgid "LaTeX styles"
+msgstr "Стил TeX|X"
+
+# src/ext_l10n.h:126
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:69
+#, fuzzy
+msgid "BibTeX styles"
+msgstr "Стил TeX|X"
+
+# src/frontends/kde/citationdlg.C:28
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:78
+#, fuzzy
+msgid "Selected classes or styles"
+msgstr "Избрани клавиши"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:110
+msgid "Show &path"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:114
+msgid "Toggles view of the file list"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:133
+msgid "Installed files"
+msgstr ""
+
+# src/form1.C:249
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:180
+#, fuzzy
+msgid "&Rescan"
+msgstr "Нов прочит"
+
+# src/converter.C:798 src/converter.C:865
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:184
+#, fuzzy
+msgid "Built new file list"
+msgstr "Полученият файл е празен"
+
+# src/LyXAction.C:153
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
+#, fuzzy
+msgid "&View"
+msgstr "Изглед"
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
+msgstr ""
+
+#: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
+msgid "Close this dialog"
+msgstr ""
+
+# src/frontends/gnome/FormToc.C:100 src/frontends/gnome/FormToc.C:167
+# src/frontends/kde/FormToc.C:167 src/frontends/kde/FormToc.C:168
+# src/frontends/kde/tocdlg.C:28 src/frontends/xforms/FormToc.C:35
+# src/insets/insettoc.C:22
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:22
+#, fuzzy
+msgid "Table Of Contents"
+msgstr "Съдържание"
+
+# src/frontends/xforms/form_toc.C:40
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:60
+#, fuzzy
+msgid "&Type"
+msgstr "Тип(T):|#T"
+
+#: ../src/frontends/qt2/ui/QTocDialogBase.ui:109
+msgid "Contents list"
+msgstr ""
+
+# src/debug.C:44
+#: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:22
+#, fuzzy
+msgid "Version control log"
+msgstr "Система за контрол на версиите"
 
 # src/ext_l10n.h:361
 #: ../lib/layouts/IEEEtran.layout:38 ../lib/layouts/aa.layout:30
@@ -8645,12 +8646,6 @@ msgstr "Табулатор(T)|T"
 msgid "Math|M"
 msgstr "Математика(M)|#M"
 
-# src/LyXView.C:372
-#: ../lib/ui/default.ui:77
-#, fuzzy
-msgid "Read Only"
-msgstr " (само за четене)"
-
 # src/spellchecker.C:717
 #: ../lib/ui/default.ui:78
 #, fuzzy
@@ -8803,34 +8798,6 @@ msgstr "Добави колона(u)|u"
 msgid "Swap Columns"
 msgstr "Колони"
 
-#: ../lib/ui/default.ui:121
-msgid "Make eqnarray|e"
-msgstr ""
-
-#: ../lib/ui/default.ui:122
-msgid "Make multline|m"
-msgstr ""
-
-#: ../lib/ui/default.ui:123
-msgid "Make align 1 column|1"
-msgstr ""
-
-#: ../lib/ui/default.ui:124
-msgid "Make align 2 columns|2"
-msgstr ""
-
-#: ../lib/ui/default.ui:125
-msgid "Make align 3 columns|3"
-msgstr ""
-
-#: ../lib/ui/default.ui:126
-msgid "Make alignat 2 columns|2"
-msgstr ""
-
-#: ../lib/ui/default.ui:127
-msgid "Make alignat 3 columns|3"
-msgstr ""
-
 # src/LyXAction.C:223
 #: ../lib/ui/default.ui:129
 #, fuzzy
@@ -8842,12 +8809,6 @@ msgstr "Превключи подчертаване"
 #, fuzzy
 msgid "Toggle Numbering of Line|u"
 msgstr "Превключи подчертаване"
-
-# src/LyXAction.C:208
-#: ../lib/ui/default.ui:131
-#, fuzzy
-msgid "Toggle limits|l"
-msgstr "Превключи удебеляване"
 
 #: ../lib/ui/default.ui:132
 msgid "Change Limits Type|L"
@@ -8980,20 +8941,6 @@ msgstr "Подравняване(A)|#A"
 #: ../lib/ui/default.ui:174
 #, fuzzy
 msgid "Flalign Environment|f"
-msgstr "Подравняване(A)|#A"
-
-# src/frontends/xforms/form_tabular.C:241
-# src/frontends/xforms/form_tabular.C:365
-#: ../lib/ui/default.ui:175
-#, fuzzy
-msgid "XAlignAt Environment"
-msgstr "Подравняване(A)|#A"
-
-# src/frontends/xforms/form_tabular.C:241
-# src/frontends/xforms/form_tabular.C:365
-#: ../lib/ui/default.ui:176
-#, fuzzy
-msgid "XXAlignAt Environment"
 msgstr "Подравняване(A)|#A"
 
 # src/ext_l10n.h:127
@@ -9239,20 +9186,6 @@ msgstr "Подравняване(A)|#A"
 
 # src/frontends/xforms/form_tabular.C:241
 # src/frontends/xforms/form_tabular.C:365
-#: ../lib/ui/default.ui:240
-#, fuzzy
-msgid "AMS xalignat Environment|x"
-msgstr "Подравняване(A)|#A"
-
-# src/frontends/xforms/form_tabular.C:241
-# src/frontends/xforms/form_tabular.C:365
-#: ../lib/ui/default.ui:241
-#, fuzzy
-msgid "AMS xxalignat Environment"
-msgstr "Подравняване(A)|#A"
-
-# src/frontends/xforms/form_tabular.C:241
-# src/frontends/xforms/form_tabular.C:365
 #: ../lib/ui/default.ui:242
 #, fuzzy
 msgid "AMS gather Environment"
@@ -9438,11 +9371,6 @@ msgstr "Стил съществително(N)|N"
 msgid "Bold Style|B"
 msgstr "Удебелен(B)|B"
 
-# src/ext_l10n.h:126
-#: ../lib/ui/default.ui:307
-msgid "TeX Style|X"
-msgstr "Стил TeX|X"
-
 # src/ext_l10n.h:127
 #: ../lib/ui/default.ui:309
 #, fuzzy
@@ -9565,11 +9493,6 @@ msgstr "Разширени свойства(E)|E"
 msgid "Customization|C"
 msgstr "Настройки(C)|C"
 
-# src/ext_l10n.h:142
-#: ../lib/ui/default.ui:375
-msgid "Reference Manual|R"
-msgstr "Наръкник за справки(R)|R"
-
 # src/ext_l10n.h:143
 #: ../lib/ui/default.ui:376
 msgid "FAQ|F"
@@ -9591,83 +9514,83 @@ msgstr ""
 
 # src/BufferView2.C:62 src/BufferView2.C:72 src/bufferlist.C:449
 # src/lyx_cb.C:298
-#: src/BufferView.C:299 src/bufferlist.C:373 src/bufferlist.C:485
+#: src/BufferView.C:293 src/bufferlist.C:373 src/bufferlist.C:485
 #: src/lyx_cb.C:215
 msgid "Error!"
 msgstr "Грешка!"
 
 # src/BufferView2.C:63
-#: src/BufferView.C:300
+#: src/BufferView.C:294
 msgid "Specified file is unreadable: "
 msgstr "Указаният файл е нечетим: "
 
 # src/lyx_cb.C:484
-#: src/BufferView.C:309 src/lyx_cb.C:447
+#: src/BufferView.C:303 src/lyx_cb.C:447
 #, fuzzy
 msgid "Error! Cannot open specified file:"
 msgstr "Грешка! Не мога да отворя указаният файл:"
 
 # src/BufferView2.C:435 src/LyXAction.C:406
-#: src/BufferView.C:569 src/LyXAction.C:377
+#: src/BufferView.C:563 src/LyXAction.C:377
 msgid "Undo"
 msgstr "Отмени"
 
 # src/BufferView2.C:440
-#: src/BufferView.C:574
+#: src/BufferView.C:568
 msgid "No further undo information"
 msgstr "Няма нищо повече за отменяне"
 
 # src/BufferView2.C:456 src/LyXAction.C:357
-#: src/BufferView.C:586 src/LyXAction.C:334
+#: src/BufferView.C:580 src/LyXAction.C:334
 msgid "Redo"
 msgstr "Повтори"
 
 # src/BufferView2.C:461
-#: src/BufferView.C:591
+#: src/BufferView.C:585
 msgid "No further redo information"
 msgstr "Няма нищо повече за повтаряне"
 
 # src/BufferView2.C:558
-#: src/BufferView.C:602
+#: src/BufferView.C:596
 msgid "Paragraph environment type copied"
 msgstr "Средата на абзаца е копирана"
 
 # src/BufferView2.C:567
-#: src/BufferView.C:611
+#: src/BufferView.C:605
 msgid "Paragraph environment type set"
 msgstr "Средата на абзаца е установена"
 
 # src/BufferView_pimpl.C:256
-#: src/BufferView_pimpl.C:287
+#: src/BufferView_pimpl.C:270
 msgid "Formatting document..."
 msgstr "Форматирам документа..."
 
-#: src/BufferView_pimpl.C:661
+#: src/BufferView_pimpl.C:644
 #, c-format
 msgid "Saved bookmark %1$d"
 msgstr ""
 
-#: src/BufferView_pimpl.C:663
+#: src/BufferView_pimpl.C:646
 msgid "Saved bookmark "
 msgstr ""
 
-#: src/BufferView_pimpl.C:697
+#: src/BufferView_pimpl.C:680
 #, c-format
 msgid "Moved to bookmark %1$d"
 msgstr ""
 
-#: src/BufferView_pimpl.C:699
+#: src/BufferView_pimpl.C:682
 msgid "Moved to bookmark "
 msgstr ""
 
 # src/lyxfunc.C:3291
-#: src/BufferView_pimpl.C:878
+#: src/BufferView_pimpl.C:861
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Изберете документ за вмъкване"
 
 # src/MenuBackend.C:446 src/ext_l10n.h:10
-#: src/BufferView_pimpl.C:880 src/frontends/controllers/ControlBibtex.C:63
+#: src/BufferView_pimpl.C:863 src/frontends/controllers/ControlBibtex.C:63
 #: src/frontends/controllers/ControlExternal.C:154
 #: src/frontends/controllers/ControlGraphics.C:93
 #: src/frontends/controllers/ControlInclude.C:70 src/lyx_cb.C:110
@@ -9677,42 +9600,42 @@ msgid "Documents|#o#O"
 msgstr "Документи(D)|D"
 
 # src/lyxfunc.C:3157 src/lyxfunc.C:3213 src/lyxfunc.C:3289
-#: src/BufferView_pimpl.C:882 src/lyxfunc.C:1683 src/lyxfunc.C:1788
+#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1683 src/lyxfunc.C:1788
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Примери"
 
-#: src/BufferView_pimpl.C:887 src/lyx_cb.C:120 src/lyxfunc.C:1649
+#: src/BufferView_pimpl.C:870 src/lyx_cb.C:120 src/lyxfunc.C:1649
 #: src/lyxfunc.C:1688
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
 # src/lyxfunc.C:3061 src/lyxfunc.C:3088 src/lyxfunc.C:3165 src/lyxfunc.C:3223
 # src/lyxfunc.C:3251 src/lyxfunc.C:3261 src/lyxfunc.C:3297
-#: src/BufferView_pimpl.C:896 src/lyxfunc.C:1697 src/lyxfunc.C:1717
+#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1697 src/lyxfunc.C:1717
 #: src/lyxfunc.C:1805 src/lyxfunc.C:1832 src/lyxfunc.C:1842
 msgid "Canceled."
 msgstr "Прекъснат."
 
 # src/lyxfunc.C:3309
-#: src/BufferView_pimpl.C:909
+#: src/BufferView_pimpl.C:892
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Вмъквам документ"
 
 # src/lyxfunc.C:3309
-#: src/BufferView_pimpl.C:911
+#: src/BufferView_pimpl.C:894
 #, fuzzy
 msgid "Inserting document "
 msgstr "Вмъквам документ"
 
-#: src/BufferView_pimpl.C:911 src/importer.C:47 src/lyxfunc.C:986
+#: src/BufferView_pimpl.C:894 src/importer.C:47 src/lyxfunc.C:986
 #: src/lyxfunc.C:1149 src/lyxfunc.C:1730
 msgid "..."
 msgstr ""
 
 # src/exporter.C:89
-#: src/BufferView_pimpl.C:918
+#: src/BufferView_pimpl.C:901
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Документът ще бъде експортиран във формат "
@@ -9720,49 +9643,49 @@ msgstr "Документът ще бъде експортиран във формат "
 # src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 # src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
 # src/lyxfunc.C:3313
-#: src/BufferView_pimpl.C:920 src/lyxfunc.C:1742
+#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1742
 #, fuzzy
 msgid "Document "
 msgstr "Документ"
 
 # src/importer.C:81
-#: src/BufferView_pimpl.C:920
+#: src/BufferView_pimpl.C:903
 #, fuzzy
 msgid " inserted."
 msgstr "импортиран."
 
 # src/lyxfunc.C:3317
 
-#: src/BufferView_pimpl.C:926
+#: src/BufferView_pimpl.C:909
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Неуспех при вмъкването"
 
 # src/lyxfunc.C:3317
 
-#: src/BufferView_pimpl.C:928
+#: src/BufferView_pimpl.C:911
 #, fuzzy
 msgid "Could not insert document "
 msgstr "Неуспех при вмъкването"
 
 # src/insets/inseterror.C:54 src/insets/inseterror.C:76 src/lyxfunc.C:1440
-#: src/BufferView_pimpl.C:1103 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:1086 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77
 msgid "Error"
 msgstr "Грешка"
 
 # src/lyxfunc.C:1441
-#: src/BufferView_pimpl.C:1104
+#: src/BufferView_pimpl.C:1087
 msgid "Couldn't find this label"
 msgstr "Този етикет не може да бъде намерен "
 
 # src/lyxfunc.C:1442
-#: src/BufferView_pimpl.C:1105
+#: src/BufferView_pimpl.C:1088
 msgid "in current document."
 msgstr "в текущия документ."
 
 # src/lyxfunc.C:328 src/lyxfunc.C:2996
-#: src/BufferView_pimpl.C:1270
+#: src/BufferView_pimpl.C:1253
 #, fuzzy
 msgid "Unknown function!"
 msgstr "Непознато действие"
@@ -14943,195 +14866,195 @@ msgid "updated document class specifications."
 msgstr "актуализираните клас спецификации."
 
 # src/lyx_main.C:95
-#: src/lyx_main.C:110
+#: src/lyx_main.C:105
 #, fuzzy, c-format
 msgid "Wrong command line option `%1$s'. Exiting."
 msgstr "Грешна опция от командния ред `"
 
 # src/lyx_main.C:95
-#: src/lyx_main.C:114
+#: src/lyx_main.C:109
 #, fuzzy
 msgid "Wrong command line option `"
 msgstr "Грешна опция от командния ред `"
 
-#: src/lyx_main.C:115
+#: src/lyx_main.C:110
 msgid "'. Exiting."
 msgstr ""
 
 # src/lyx_main.C:219
-#: src/lyx_main.C:238
+#: src/lyx_main.C:233
 msgid "Warning: could not determine path of binary."
 msgstr "Внимание: не мога да определя път към изпълним файл."
 
 # src/lyx_main.C:221
-#: src/lyx_main.C:240
+#: src/lyx_main.C:235
 msgid "If you have problems, try starting LyX with an absolute path."
 msgstr "Ако имате проблеми, опитайте да стартирате LyX с абсолютен път."
 
 # src/lyx_main.C:311
-#: src/lyx_main.C:347
+#: src/lyx_main.C:342
 #, fuzzy
 msgid "LYX_DIR_13x environment variable no good."
 msgstr "Променливата на средата LYX_DIR_11x не е добра."
 
 # src/lyx_main.C:313
-#: src/lyx_main.C:349
+#: src/lyx_main.C:344
 msgid "System directory set to: "
 msgstr "Системната директория е установена на: "
 
 # src/lyx_main.C:321
-#: src/lyx_main.C:357
+#: src/lyx_main.C:352
 msgid "LyX Warning! Couldn't determine system directory. "
 msgstr "Внимание! Не мога да определя системна директория."
 
 # src/lyx_main.C:322
-#: src/lyx_main.C:358
+#: src/lyx_main.C:353
 msgid "Try the '-sysdir' command line parameter or "
 msgstr "Опитайте с параметър `-sysdir' на командния ред или "
 
 # src/lyx_main.C:323
-#: src/lyx_main.C:359
+#: src/lyx_main.C:354
 #, fuzzy
 msgid "set the environment variable LYX_DIR_13x to the LyX system directory "
 msgstr "установете променливата на средата LYX_DIR_11x към системната"
 
 # src/lyx_main.C:325
-#: src/lyx_main.C:361
+#: src/lyx_main.C:356
 msgid "containing the file `chkconfig.ltx'."
 msgstr "директория, съдържаща `chkconfig.ltx'."
 
 # src/lyx_main.C:606
 
-#: src/lyx_main.C:370
+#: src/lyx_main.C:365
 #, fuzzy, c-format
 msgid "Using built-in default %1$s but expect problems."
 msgstr "Използвам вградените настройки."
 
 # src/lyx_main.C:606
 
-#: src/lyx_main.C:375
+#: src/lyx_main.C:370
 #, fuzzy
 msgid "Using built-in default "
 msgstr "Използвам вградените настройки."
 
 # src/lyx_main.C:331
-#: src/lyx_main.C:376
+#: src/lyx_main.C:371
 #, fuzzy
 msgid " but expect problems."
 msgstr "Очаквайте проблеми."
 
 # src/lyx_main.C:331
-#: src/lyx_main.C:380
+#: src/lyx_main.C:375
 msgid "Expect problems."
 msgstr "Очаквайте проблеми."
 
 # src/lyx_main.C:575
-#: src/lyx_main.C:598
+#: src/lyx_main.C:593
 #, fuzzy
 msgid "LyX: reconfiguring user directory"
 msgstr "LyX: Създавам директория "
 
 # src/lyx_main.C:590
-#: src/lyx_main.C:602 src/lyx_main.C:650
+#: src/lyx_main.C:597 src/lyx_main.C:645
 msgid "Done!"
 msgstr "Готов!"
 
 # src/lyx_main.C:563
-#: src/lyx_main.C:612
+#: src/lyx_main.C:607
 msgid "You have specified an invalid LyX directory."
 msgstr "Указали сте невалидна LyX директория."
 
 # src/lyx_main.C:566
-#: src/lyx_main.C:613
+#: src/lyx_main.C:608
 msgid "It is needed to keep your own configuration."
 msgstr "Тя е необходима, за да запазите своята конфигурация."
 
 # src/lyx_main.C:567
-#: src/lyx_main.C:614
+#: src/lyx_main.C:609
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Да опитам ли да я установя за Вас (препоръчително)?"
 
 # src/lyx_main.C:568
-#: src/lyx_main.C:615
+#: src/lyx_main.C:610
 msgid "Running without personal LyX directory."
 msgstr "Стартирам без лична LyX директория."
 
 # src/lyx_main.C:576
-#: src/lyx_main.C:622
+#: src/lyx_main.C:617
 #, fuzzy, c-format
 msgid "LyX: Creating directory %1$s and running configure..."
 msgstr " и конфигурирам..."
 
 # src/lyx_main.C:575
-#: src/lyx_main.C:627
+#: src/lyx_main.C:622
 #, fuzzy
 msgid "LyX: Creating directory "
 msgstr "LyX: Създавам директория "
 
 # src/lyx_cb.C:977
-#: src/lyx_main.C:628
+#: src/lyx_main.C:623
 #, fuzzy
 msgid " and running configure..."
 msgstr "Стартирам конфигуриране..."
 
 # src/lyx_main.C:582
-#: src/lyx_main.C:636
+#: src/lyx_main.C:631
 #, fuzzy, c-format
 msgid "Failed. Will use %1$s instead."
 msgstr "Неуспех. Ще използвам "
 
 # src/lyx_main.C:582
-#: src/lyx_main.C:640
+#: src/lyx_main.C:635
 #, fuzzy
 msgid "Failed. Will use "
 msgstr "Неуспех. Ще използвам "
 
-#: src/lyx_main.C:641
+#: src/lyx_main.C:636
 msgid " instead."
 msgstr ""
 
 # src/lyx_main.C:604
-#: src/lyx_main.C:664 src/lyx_main.C:668
+#: src/lyx_main.C:659 src/lyx_main.C:663
 msgid "LyX Warning!"
 msgstr "LyX Предупреждение!"
 
 # src/lyx_main.C:605
-#: src/lyx_main.C:665
+#: src/lyx_main.C:660
 #, fuzzy, c-format
 msgid "Error while reading %1$s."
 msgstr "Грешка при четене "
 
 # src/lyx_main.C:606
 
-#: src/lyx_main.C:666 src/lyx_main.C:670
+#: src/lyx_main.C:661 src/lyx_main.C:665
 msgid "Using built-in defaults."
 msgstr "Използвам вградените настройки."
 
 # src/lyx_main.C:605
-#: src/lyx_main.C:669
+#: src/lyx_main.C:664
 #, fuzzy
 msgid "Error while reading "
 msgstr "Грешка при четене "
 
 # src/lyx_main.C:749
-#: src/lyx_main.C:779
+#: src/lyx_main.C:774
 msgid "List of supported debug flags:"
 msgstr "Списък на поддържаните debug опции:"
 
 # src/lyx_main.C:704
-#: src/lyx_main.C:784
+#: src/lyx_main.C:779
 #, fuzzy, c-format
 msgid "Setting debug level to %1$s"
 msgstr "Установявам debug ниво на  "
 
 # src/lyx_main.C:704
-#: src/lyx_main.C:788
+#: src/lyx_main.C:783
 #, fuzzy
 msgid "Setting debug level to "
 msgstr "Установявам debug ниво на  "
 
 # src/lyx_main.C:716
-#: src/lyx_main.C:799
+#: src/lyx_main.C:794
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -15172,37 +15095,37 @@ msgstr ""
 "Вижте man страницата на LyX за повече информация."
 
 # src/lyx_main.C:761
-#: src/lyx_main.C:835
+#: src/lyx_main.C:830
 #, fuzzy
 msgid "Missing directory for -sysdir switch"
 msgstr "Липсваща директория за -sysdir опцията!"
 
 # src/lyx_main.C:772
-#: src/lyx_main.C:845
+#: src/lyx_main.C:840
 #, fuzzy
 msgid "Missing directory for -userdir switch"
 msgstr "Липсваща директория за -userdir опцията!"
 
 # src/lyx_main.C:795
-#: src/lyx_main.C:855
+#: src/lyx_main.C:850
 #, fuzzy
 msgid "Missing command string after --execute switch"
 msgstr "Липсваща команда след -x опцията!"
 
 # src/lyx_main.C:808
-#: src/lyx_main.C:868
+#: src/lyx_main.C:863
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --export switch"
 msgstr "Липсващ тип на файл [напр. latex, ps...] след "
 
 # src/lyx_main.C:808
-#: src/lyx_main.C:880
+#: src/lyx_main.C:875
 #, fuzzy
 msgid "Missing file type [eg latex, ps...] after --import switch"
 msgstr "Липсващ тип на файл [напр. latex, ps...] след "
 
 # src/lyxfunc.C:3216
-#: src/lyx_main.C:885
+#: src/lyx_main.C:880
 #, fuzzy
 msgid "Missing filename for --import"
 msgstr " Файл за импортиране"
@@ -16340,6 +16263,64 @@ msgstr "Маркиране установено"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
+
+# src/frontends/xforms/FormDocument.C:279
+# src/frontends/xforms/FormParagraph.C:133
+#, fuzzy
+#~ msgid "Entry:"
+#~ msgstr "Екстри"
+
+# src/buffer.C:329
+#, fuzzy
+#~ msgid "Meanings|#M"
+#~ msgstr "Грешка при ченете от "
+
+# src/LColor.C:64
+#, fuzzy
+#~ msgid "&Selection"
+#~ msgstr "избор"
+
+# src/LyXView.C:372
+#, fuzzy
+#~ msgid "Read Only"
+#~ msgstr " (само за четене)"
+
+# src/LyXAction.C:208
+#, fuzzy
+#~ msgid "Toggle limits|l"
+#~ msgstr "Превключи удебеляване"
+
+# src/frontends/xforms/form_tabular.C:241
+# src/frontends/xforms/form_tabular.C:365
+#, fuzzy
+#~ msgid "XAlignAt Environment"
+#~ msgstr "Подравняване(A)|#A"
+
+# src/frontends/xforms/form_tabular.C:241
+# src/frontends/xforms/form_tabular.C:365
+#, fuzzy
+#~ msgid "XXAlignAt Environment"
+#~ msgstr "Подравняване(A)|#A"
+
+# src/frontends/xforms/form_tabular.C:241
+# src/frontends/xforms/form_tabular.C:365
+#, fuzzy
+#~ msgid "AMS xalignat Environment|x"
+#~ msgstr "Подравняване(A)|#A"
+
+# src/frontends/xforms/form_tabular.C:241
+# src/frontends/xforms/form_tabular.C:365
+#, fuzzy
+#~ msgid "AMS xxalignat Environment"
+#~ msgstr "Подравняване(A)|#A"
+
+# src/ext_l10n.h:126
+#~ msgid "TeX Style|X"
+#~ msgstr "Стил TeX|X"
+
+# src/ext_l10n.h:142
+#~ msgid "Reference Manual|R"
+#~ msgstr "Наръкник за справки(R)|R"
 
 # src/layout_forms.C:38
 #, fuzzy
