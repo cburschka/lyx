@@ -7,6 +7,15 @@
 
 	* lyx_main.C: change ref to known bugs
  
+2001-10-30  Kayvan A. Sylvan  <kayvan@sylvan.com>
+
+	* LaTeXFeatures.C (getPackages): Use lyxskak.sty now instead
+	to work around older babel problems.
+
+2001-10-28  Kayvan A. Sylvan  <kayvan@sylvan.com>
+
+	* LaTeXFeatures.[hC]: Now uses skak.sty for chess material.
+
 2001-10-24  Juergen Vigna  <jug@sad.it>
 
 	* tabular-old.C (ReadOld): below variable changes reflected.

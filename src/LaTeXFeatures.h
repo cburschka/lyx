@@ -94,7 +94,7 @@ struct LaTeXFeatures {
 	///
 	bool prettyref; // prettyref.sty
 	///
-	bool chess;	// chess.sty
+	bool chess;	// skak.sty (new chess support)
 	///
 	bool natbib;    // natbib.sty
 	///

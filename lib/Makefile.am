@@ -19,7 +19,7 @@ KBD = kbd/*.kmap kbd/*.cdef
 LAYOUT = layouts/*.layout layouts/*.inc 
 LYXSCRIPTS = configure configure.cmd scripts/*
 TEMPL = templates/*.lyx
-TEXSUPPORT = tex/*.cls
+TEXSUPPORT = tex/*.cls tex/*.sty
 UI = ui/*.ui
 
 configure: configure.m4

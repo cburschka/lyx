@@ -1,11 +1,11 @@
 #!/usr/bin/python
 #
-# Copyright (C) 2000 The LyX Team.
+# Copyright (C) 2001 The LyX Team.
 #
 # This file is distributed under the GPL license.
 #
 # This script will convert a chess position in the FEN
-# format to a chunk of LaTeX to be used with the chess.sty
+# format to a chunk of LaTeX to be used with the skak.sty
 # style.
 
 import sys,string,os
@@ -19,33 +19,6 @@ line = sys.stdin.readline()
 if line[-1] == '\n':
     line = line[:-1]
 
-line=string.split(line,' ')[0]
-comp=string.split(line,'/')
-
-first = 1
-cont=1
-margin= " "*6
-
-for i in range(8):
-
-    cont = cont + 1
-    tmp=""
-    for j in comp[i]:
-	if j>='0' and j <= '9':
-	    for k in range(int(j)):
-		cont = cont + 1
-		x, mod = divmod(cont,2)
-		if mod : tmp = tmp + ' '
-		else : tmp = tmp + '*'
-	else :
-	    tmp = tmp + j
-	    cont = cont + 1
-
-    if first: 
-	first = 0
-	print "\\board{"+tmp+"}"
-    else : 
-	print margin+"{"+tmp+"}"
-
+print "\\fenboard{"+line+"}" 
 print "\\showboard%"
 

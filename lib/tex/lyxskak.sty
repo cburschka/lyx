@@ -1,0 +1,1575 @@
+% based on skak.sty
+% modified to work with older babel versions
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{lyxskak}
+
+\DeclareOption{tiny}{\AtEndOfClass{\tinyboard}}
+\DeclareOption{small}{\AtEndOfClass{\smallboard}}
+\DeclareOption{normal}{\AtEndOfClass{\normalboard}}
+\DeclareOption{large}{\AtEndOfClass{\largeboard}}
+\DeclareOption{notation}{\AtEndOfClass{\notationOn}}
+\DeclareOption{mover}{\AtEndOfClass{\showmoverOn}}
+\DeclareOption{moveroff}{\AtEndOfClass{\showmoverOff}}
+\DeclareOption{notationoff}{\AtEndOfClass{\notationOff}}
+\DeclareOption{ps}{\def\ps@on{\True}}
+\DeclareOption{psoff}{\def\ps@on{\False}}
+\DeclareOption{english}{\AtEndOfClass{\skaklanguage[english]}}
+\DeclareOption{styleA}{\AtEndOfClass{\styleA}}
+\DeclareOption{styleB}{\AtEndOfClass{\styleB}}
+\ExecuteOptions{notation,normal,psoff,english,moveroff,styleB}
+\ProcessOptions
+%\AtBeginDocument{\skaklanguage{english}}
+
+\RequirePackage{lambda,ifthen,calc}
+% Now, we rename the ifthenelse here as skak@ifthenelse and then use that
+% this is to co-exist with older babel.sty that redefine ifthenelse!
+\let\skak@ifthenelse\ifthenelse
+\ps@on{\RequirePackage{pstricks,pst-node}\SpecialCoor%
+  \newpsstyle{psskak}{arrowinset=0,nodesep=.25,armA=.75,arrowsize=.2 1,
+    linearc=.2,arrowlength=1.25,linewidth=0.04,
+    doubleline=true,doublesep=.06}}{}
+
+
+
+% list related functions
+\def\IsNil#1{#1{\False}{\True}}
+
+\def\Member#1#2#3% ('a -> 'a -> bool) -> 'a -> 'a list -> bool
+  {#3{\MemberA{#1}{#2}}{\False}}
+\def\MemberA#1#2#3#4%
+   {#1{#2}{#3}%
+     {\True}%
+     {\Member{#1}{#2}{#4}}} 
+
+% Explode: string -> char list
+\def\Explode#1{\EqStr{Z}{#1}{\Nil}{\ExplodeA#1Z}}
+\def\ExplodeA#1#2Z{\EqStr{Z}{#2}%
+  {\Singleton{#1}}%
+  {\Cons{#1}{\ExplodeA#2Z}}}
+
+\def\BoolToString#1{% bool -> string
+#1{True}{False}}
+
+% the basic manipulation of the board
+\def\Set#1#2{% square -> piece -> unit 
+\expandafter\xdef\csname#1\endcsname{#2}}
+\def\Get#1{% square -> piece
+\csname#1\endcsname}
+
+\def\StoreBool#1#2{%
+  \expandafter\def\csname#1\endcsname{#2}}
+\def\GetBool#1{%
+  \csname#1\endcsname}
+
+
+\def\PieceNames{\Listize[K,Q,R,B,N]}
+\def\FileNames{\Listize[a,b,c,d,e,f,g,h]}
+\def\RankNames{\Listize[1,2,3,4,5,6,7,8]}
+
+%% what pieces to show
+%\def\ShowOnlyList{\Listize[K,Q,R,B,N,P,k,q,r,b,n,p]}
+
+\def\showonly#1{\expandafter\def\csname ShowOnlyList\endcsname{\Listize[#1]}}
+\def\showall{\showonly{K,Q,R,B,N,P,k,q,r,b,n,p}}
+\showall
+
+\def\showonlywhite{\showonly{K,Q,R,B,N,P}}
+\def\showonlyblack{\showonly{k,q,r,b,n,p}}
+\def\showonlypawns{\showonly{p,P}}
+
+%%%
+\def\TeXifx#1#2#3%
+   {#1\def\next{#2}\else\def\next{#3}\fi
+    \next}
+\def\EqStr#1#2{% % has to be changed
+  \TeXif{\if#1#2}}
+\def\EqPiece#1#2{\TeXif{\if#1#2}}
+
+
+\def\RankOf(#1){\Second{#1}}
+\def\FileOf(#1){\First{#1}}
+
+\def\EqSquare#1#2{%
+  \skak@ifthenelse{\equal{#1}{#2}}{\True}{\False}}
+
+%% is this really necessary????
+\def\MySecond(#1#2){#2}
+\def\MyFirst(#1#2){#1}
+
+\def\MyEqual#1#2{% string -> string -> bool
+  \xdef\arga{#1}\xdef\argb{#2}%
+  \TeXif{\ifx\arga\argb }}
+%  \skak@ifthenelse{\equal{#1}{#2}}{\True}{\False}}
+
+\def\MyEqualB#1#2#3#4{%
+  \skak@ifthenelse{\equal{#1}{#2}}{#3}{#4}}
+
+\def\myrightfile#1#2{% filediscriminator -> square -> bool
+  \Member{\MyEqual}{#2}{\File{#1}}}
+
+\def\RightRank(#1){%square -> bool
+  \EqStr{\RankDiscriminator}{Z}%
+  {\True}%
+%  {\EqStr{\RankDiscriminator}{\Second{#1}}}}
+%  {\expandafter\EqStr{\RankDiscriminator}{\MySecond(#1)}}}
+  {\Member{\MyEqual}{#1}{\Rank{\RankDiscriminator}}}}
+\def\RightFile(#1){%square -> bool
+  \EqStr{\FileDiscriminator}{Z}%
+  {\True}%
+  {\Member{\MyEqual}{#1}{\File{\FileDiscriminator}}}}
+
+%  {\myrightfile{\FileDiscriminator}{#1}}}
+
+%  {\expandafter\EqStr{\FileDiscriminator}{\FileOf(#1)}}}
+%    {\edef\myhelper{\MyFirst(#1)}\Unlistize{\Explode{#1Z}}%
+%     (rf-test\myhelper)\EqStr{\FileDiscriminator}{\myhelper}}}
+%%  {(rf-test)\EqStr{\FileDiscriminator}{\MyFirst(#1)}}}
+
+
+\def\Glue#1#2% 'a -> 'b -> 'ab , eg. a -> 1 -> a1
+{#1#2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% adding ornaments to a board %%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% usefull when adding ps arrows:
+% set@fileangle: from -> to -> angle -> unit
+\def\set@fileangle#1#2#3{%
+  \expandafter\xdef\csname fileangle.#1.#2\endcsname{#3}}
+\def\get@fileangle#1#2{\ifx\csname fileangle.#1.#2\endcsname\relax
+  \errmessage{Files #1 and #2 does not belong to a valid knight move}%
+  \else \csname fileangle.#1.#2\endcsname\fi}
+\def\set@rankangle#1#2#3{%
+  \expandafter\xdef\csname rankangle.#1.#2\endcsname{#3}}
+\def\get@rankangle#1#2{\ifx\csname rankangle.#1.#2\endcsname\relax%
+  \errmessage{Ranks #1 and #2 does not belong to a valid knight move}%
+  \else \csname rankangle.#1.#2\endcsname\fi}
+
+\def\testfileangle{fileangles:\get@fileangle{a}{b},\get@fileangle{h}{f}}
+\def\testrankangle{rankangles:\get@rankangle{1}{3},\get@rankangle{4}{5}}
+
+% a file to ...
+\set@fileangle{a}{b}{0}\set@fileangle{a}{c}{0}
+% b file to ...
+\set@fileangle{b}{a}{0}\set@fileangle{b}{c}{0}\set@fileangle{b}{d}{0}
+% c file to ...
+\set@fileangle{c}{a}{180}\set@fileangle{c}{b}{0}
+\set@fileangle{c}{d}{0}\set@fileangle{c}{e}{0}
+% d file to ...
+\set@fileangle{d}{b}{180}\set@fileangle{d}{c}{0}
+\set@fileangle{d}{e}{0}\set@fileangle{d}{f}{0}
+% e file to ...
+\set@fileangle{e}{c}{180}\set@fileangle{e}{d}{0}
+\set@fileangle{e}{f}{0}\set@fileangle{e}{g}{0}
+% f file to ...
+\set@fileangle{f}{d}{180}\set@fileangle{f}{e}{0}
+\set@fileangle{f}{g}{0}\set@fileangle{f}{h}{0}
+% g file to ...
+\set@fileangle{g}{e}{180}\set@fileangle{g}{f}{0}\set@fileangle{g}{h}{0}
+% h file to ...
+\set@fileangle{h}{f}{180}\set@fileangle{h}{g}{0}
+
+% 1st rank to ...
+\set@rankangle{1}{2}{0}\set@rankangle{1}{3}{90}
+% 2nd rank to ...
+\set@rankangle{2}{1}{0}\set@rankangle{2}{3}{0}\set@rankangle{2}{4}{90}
+% 3rd rank to ...
+\set@rankangle{3}{1}{270}\set@rankangle{3}{2}{0}
+\set@rankangle{3}{4}{0}\set@rankangle{3}{5}{90}
+% 4th rank to ...
+\set@rankangle{4}{2}{270}\set@rankangle{4}{3}{0}
+\set@rankangle{4}{5}{0}\set@rankangle{4}{6}{90}
+% 5th rank to ...
+\set@rankangle{5}{3}{270}\set@rankangle{5}{4}{0}
+\set@rankangle{5}{6}{0}\set@rankangle{5}{7}{90}
+% 6th rank to ...
+\set@rankangle{6}{4}{270}\set@rankangle{6}{5}{0}
+\set@rankangle{6}{7}{0}\set@rankangle{6}{8}{90}
+% 7th rank to ...
+\set@rankangle{7}{5}{270}\set@rankangle{7}{6}{0}\set@rankangle{7}{8}{0}
+% 8th rank to ...
+\set@rankangle{8}{6}{270}\set@rankangle{8}{7}{0}
+
+% PSTricks addon that allows hollow arrowheads
+\ps@on{%
+\edef\pst@arrowtable{\pst@arrowtable,<|-|>}
+\def\tx@ArrowTriangleA{ArrowTriangleA }
+\def\tx@ArrowTriangleB{ArrowTriangleB }
+\@namedef{psas@|>}{% 
+  /ArrowTriangleA { CLW dup 3.5 div SLW mul add dup 2 div /w ED mul dup 
+    /h ED mul /a ED 
+    0 h a sub moveto w h L 0 0 L w neg h L 0 h a sub L 
+    gsave 1 setgray fill grestore gsave
+    stroke grestore } def 
+  \psk@arrowinset \psk@arrowlength \psk@arrowsize
+  \tx@ArrowTriangleA}
+\@namedef{psas@<|}{%
+  /ArrowTriangle { CLW dup 2 div SLW mul add dup 2 div 
+    /w ED mul dup /h ED mul /a ED 
+    { 0 h T 1 -1 scale } if w neg h moveto 0 0 L w h L w neg a neg
+    rlineto w neg a rlineto w 0 rmoveto gsave stroke grestore } def 
+  true \psk@arrowinset \psk@arrowlength \psk@arrowsize
+  \tx@ArrowTriangleB}
+% end of PSTricks addon
+}
+{}
+
+\newcounter{ps@knightangle} \newcounter{ps@inverse}
+\def\printknightmove#1#2{% 
+  \setcounter{ps@knightangle}{\get@fileangle{\First#1}{\First#2}+%
+    \get@rankangle{\Second#1}{\Second#2} + \value{ps@inverse}}%
+  \ncdiagg[style=psskak,angleA=\arabic{ps@knightangle}]{-|>}{#1}{#2}}
+ 
+\def\printarrow#1#2{\ncline[style=psskak]{-|>}{#1}{#2}}
+
+\def\ps@highlightsquare#1{%
+  \pscustom[linewidth=.06]{\translate(#1)\psframe(-.5,-.5)(.5,.5)}}
+
+\def\highlight#1{% comma separated list eg, \highlight{a1,b4,d4}
+  \Apply{\ps@highlightsquare}{\Listize[#1]}}
+%%%%% end of adding ornaments to a board %%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% support for other languages %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \uc@king queen rook bishop knight pawn holds the letters
+% representinng the pieces in the current language
+% \skak@currentPieceNames : char list, holds the current piece names
+% \def\skak@pieceToEnglish#1{% string -> string, (pgn(curr. lang) -> pgn(eng))
+%   \skak@piece@toEnglish(#1Z)}
+\def\skak@piece@toEnglish#1{%
+  \EqPiece{#1}{\uc@king}%
+  {K}%
+  {\EqPiece{#1}{\uc@queen}%
+    {Q}%
+    {\EqPiece{#1}{\uc@rook}%
+      {R}%
+      {\EqPiece{#1}{\uc@bishop}%
+        {B}%
+        {\EqPiece{#1}{\uc@knight}%
+          {N}%
+          {\errmessage{not a valid piece name in the current language:#1}}}}}}}
+%   \EqPiece{Z}{#2}%
+%   {}% done
+%   {\skak@pgn@toEnglish(#2)}}
+
+\def\skak@englishToEnglish#1{#1}
+
+\def\skak@definepieces#1#2#3#4#5#6{%
+  \edef\uc@king{#1}
+  \edef\uc@queen{#2}
+  \edef\uc@rook{#3}
+  \edef\uc@bishop{#4}
+  \edef\uc@knight{#5}
+  \edef\uc@pawn{#6}}
+
+\def\newskaklanguage#1#2{%
+  \expandafter\xdef\csname skaklanguage.#1\endcsname{#2}}
+
+\newcommand{\skaklanguage}[1][english]{%
+%\def\skaklanguage#1{%
+  \def\currentlanguage{#1}%
+  \skak@ifthenelse{\equal{#1}{english}}%
+    {\let\skak@pieceToEnglish=\skak@englishToEnglish%
+      \def\PieceNames{\Listize[K,Q,R,B,N]}}
+    {\edef\temp@lang{\csname skaklanguage.#1\endcsname}
+      \expandafter\skak@definepieces\temp@lang%
+      \let\skak@pieceToEnglish=\skak@piece@toEnglish%
+      \def\PieceNames{%
+        \Listize[\uc@king,\uc@queen,\uc@rook,\uc@bishop,\uc@knight]}}}
+
+  
+\def\showskaklanguage{%
+  (\uc@king)(\uc@queen)(\uc@rook)(\uc@bishop)(\uc@knight)(\uc@pawn)}
+
+%%%%% end of language support %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% parsing macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\IsPieceName#1{\Member{\EqPiece}{#1}\PieceNames}
+\def\IsFile#1% char -> bool
+{\Member{\EqStr}{#1}\FileNames}
+\def\IsRank#1% char -> bool
+{\Member{\EqStr}{#1}\RankNames}
+\def\IsCapture#1% char -> bool
+{\EqStr{#1}{x}}
+\def\IsPromotion#1% char -> bool
+{\EqStr{#1}{=}}
+\def\IsDash#1% char -> bool
+{\EqStr{#1}{-}}
+\def\IsO#1% char -> bool
+{\EqStr{#1}{O}}
+
+\def\File#1% file -> square list, eg. a -> [a1,a2,...,a8]
+{\Map{\Glue{#1}}{\RankNames}} 
+\def\Rank#1% rank -> square list, eg. 1 -> [a1,b1,...,h1]
+{\Map{\Twiddle\Glue{#1}}{\FileNames}}
+
+
+% Compose: ('b -> 'c) -> ('a -> 'b) -> ('a -> c')
+% Second:  'a -> 'b  -> 'b
+% f: 'a -> unit
+% Compose Second f: 'a -> ('a -> 'b -> unit)    
+% \def\Apply#1#2% ('a -> unit) -> ('a list -> unit)
+% {\Force{\Map{#1}{#2}}}
+% \def\Force#1{#1\ForceA{}}
+% \def\ForceA#1{#1\Foldr\DoIt{}}
+% \def\DoIt#1#2{#1#2}
+
+\def\Sideeffect#1#2#3{% ('a -> unit) -> ('a -> 'b -> unit)
+  #1{#2}#3}
+
+\def\Apply#1#2{% ('a -> unit)  -> 'a list -> unit
+  \Foldr{\Sideeffect{#1}}{\relax}{#2}}
+
+
+\def\EmptyBoard%
+{\Apply{\Twiddle\Set{E}}{\Rank{1}}
+\Apply{\Twiddle\Set{E}}{\Rank{2}}
+\Apply{\Twiddle\Set{E}}{\Rank{3}}
+\Apply{\Twiddle\Set{E}}{\Rank{4}}
+\Apply{\Twiddle\Set{E}}{\Rank{5}}
+\Apply{\Twiddle\Set{E}}{\Rank{6}}
+\Apply{\Twiddle\Set{E}}{\Rank{7}}
+\Apply{\Twiddle\Set{E}}{\Rank{8}}}
+
+
+\def\FenConvert#1{%
+  \EqStr{8}{#1}%
+  {EEEEEEEE}%
+  {\EqStr{7}{#1}%
+    {EEEEEEE}%
+    {\EqStr{6}{#1}%
+      {EEEEEE}%
+      {\EqStr{5}{#1}%
+        {EEEEE}%
+        {\EqStr{4}{#1}%
+          {EEEE}%
+          {\EqStr{3}{#1}%
+            {EEE}%
+            {\EqStr{2}{#1}%
+              {EE}%
+              {\EqStr{1}{#1}%
+                {E}%
+                {#1}}}}}}}}}
+       
+
+\def\ParseFenRank#1{\ParseFenRankA(#1Z)}
+\def\ParseFenRankA(#1#2){%
+  \EqStr{Z}{#1}%
+  {}%
+  {\FenConvert{#1}\ParseFenRankA(#2)}}
+
+\def\SetCheckKing#1#2{% square -> piece -> unit
+  \EqStr{K}{#2}%
+  {\edef\WhiteKingSquare{#1}}%
+  {\EqStr{k}{#2}%
+    {\edef\BlackKingSquare{#1}}%
+    {}}%
+  \Set{#1}{#2}}
+
+\def\InitRank#1#2#3#4#5#6#7#8#9{%
+  \SetCheckKing{a#9}{#1}%
+  \SetCheckKing{b#9}{#2}%
+  \SetCheckKing{c#9}{#3}%
+  \SetCheckKing{d#9}{#4}%
+  \SetCheckKing{e#9}{#5}%
+  \SetCheckKing{f#9}{#6}%
+  \SetCheckKing{g#9}{#7}%
+  \SetCheckKing{h#9}{#8}}
+
+\def\SetRank#1#2{% rank -> fenrank -> unit
+  \edef\pap{\ParseFenRank{#2}}%
+  \expandafter\InitRank\pap#1}
+ 
+
+\def\InitBoard(#1/#2/#3/#4/#5/#6/#7/#8){%
+  \SetRank{8}{#1}%
+  \SetRank{7}{#2}%
+  \SetRank{6}{#3}%
+  \SetRank{5}{#4}%
+  \SetRank{4}{#5}%
+  \SetRank{3}{#6}%
+  \SetRank{2}{#7}%
+  \SetRank{1}{#8}%
+  }
+
+\def\WhiteCastling{-}
+\def\BlackCastling{-}
+
+\def\ExtractWhiteCastling#1{\def\tempCastling{-}%
+\ExtractWhiteCastlingA(#1Z)%
+\edef\WhiteCastling{\tempCastling}}
+\def\ExtractWhiteCastlingA(#1#2){%
+  \EqStr{Z}{#1}%
+  {}%
+  {\Or{\EqPiece{K}{#1}}{\EqPiece{Q}{#1}}%
+    {\EqStr{-}{\tempCastling}%
+      {\edef\tempCastling{#1}\ExtractWhiteCastlingA(#2)}%
+      {\edef\tempCastling{\tempCastling#1}}}%
+    {\ExtractWhiteCastlingA(#2)}}}
+
+\def\ExtractBlackCastling#1{\def\tmpCastling{-}%
+\ExtractBlackCastlingA(#1Z)%
+\edef\BlackCastling{\tmpCastling}}
+\def\ExtractBlackCastlingA(#1#2){%
+  \EqStr{Z}{#1}%
+  {}%
+  {\Or{\EqPiece{k}{#1}}{\EqPiece{q}{#1}}%
+    {\EqStr{-}{\tmpCastling}%
+      {\edef\tmpCastling{#1}\ExtractBlackCastlingA(#2)}%
+      {\edef\tmpCastling{\tmpCastling#1}}}%
+    {\ExtractBlackCastlingA(#2)}}}
+
+\newcounter{halfmove}
+\newcounter{move}
+\def\fenboard#1{\FenBoard#1)}
+\def\FenBoard#1 #2 #3 #4 #5 #6){%
+  \InitBoard(#1)%
+  \def\WhiteToMove{\EqStr{w}{#2}}%
+    \ExtractWhiteCastling{#3}%}
+    \ExtractBlackCastling{#3}%}
+  \def\EnPassantSquare{#4}%
+  \setcounter{halfmove}{#5}%
+  \setcounter{move}{#6}}
+
+
+\newcounter{helpgobble}
+\def\PieceToFen#1{%
+  \EqPiece{E}{#1}%
+  {1}{#1}}
+
+\def\Fen@RawRank#1{\PieceToFen{\Get{a#1}}\PieceToFen{\Get{b#1}}%
+    \PieceToFen{\Get{c#1}}\PieceToFen{\Get{d#1}}%
+    \PieceToFen{\Get{e#1}}\PieceToFen{\Get{f#1}}%
+    \PieceToFen{\Get{g#1}}\PieceToFen{\Get{h#1}}}
+
+\def\PrintCastling{%
+  \EqStr{-}{\WhiteCastling}%
+  {\BlackCastling}%
+  {\WhiteCastling%
+    \EqStr{-}{\BlackCastling}%
+    {-}%
+    {\BlackCastling}}}
+
+
+\def\Fen@handlenumbers#1#2#3#4#5#6#7#8{\setcounter{helpgobble}{0}%
+  \Fen@handleA(#1#2#3#4#5#6#7#8Z)}
+\def\Fen@handleA(#1#2){%
+  \EqStr{Z}{#1}%
+  {\ifnum0=\thehelpgobble%
+    \else\edef\temp@rank{\temp@rank\arabic{helpgobble}}\fi}%
+  {\EqPiece{1}{#1}%
+    {\stepcounter{helpgobble}\Fen@handleA(#2)}%
+    {\ifnum0=\thehelpgobble\edef\temp@rank{\temp@rank#1}\Fen@handleA(#2)%
+      \else\edef\temp@rank{\temp@rank\arabic{helpgobble}#1}%
+      \setcounter{helpgobble}{0}\Fen@handleA(#2)\fi}}}
+
+
+\def\Fen@Rank#1{\edef\temp@rank{}\edef\temp@rankA{\Fen@RawRank{#1}}%
+  \expandafter\Fen@handlenumbers\temp@rankA}
+
+\def\Fen@calculate{%
+  \Fen@Rank{8}\edef\temp@board{\temp@rank/}%
+  \Fen@Rank{7}\edef\temp@board{\temp@board\temp@rank/}%
+  \Fen@Rank{6}\edef\temp@board{\temp@board\temp@rank/}%
+  \Fen@Rank{5}\edef\temp@board{\temp@board\temp@rank/}%
+  \Fen@Rank{4}\edef\temp@board{\temp@board\temp@rank/}%
+  \Fen@Rank{3}\edef\temp@board{\temp@board\temp@rank/}%
+  \Fen@Rank{2}\edef\temp@board{\temp@board\temp@rank/}%
+  \Fen@Rank{1}\edef\temp@board{\temp@board\temp@rank}%
+  \edef\temp@board{\temp@board\space\WhiteToMove{w}{b}}%
+  \edef\temp@board{\temp@board\space\PrintCastling\space\EnPassantSquare}%
+  \edef\temp@board{\temp@board\space\arabic{halfmove}\space\arabic{move}}}
+
+
+\def\boardasfen{\Fen@calculate\temp@board} % if someone wants fen in
+                                           % their document
+
+
+%%%%% manipulation of the board state
+% the special out-of-bounds square
+\Set{Offboard}{X} % note: no piece is named X
+
+\def\EnPassantSquare{-}% updated by ExecuteMove
+
+
+\def\WhiteToMove{\True}
+
+\def\WhiteKingSquare% unit -> square
+{e1}
+\def\BlackKingSquare% unit -> square
+{e8}
+\def\KingSquare#1{% bool -> square
+#1\WhiteKingSquare\BlackKingSquare}
+\def\SetKingSquare#1#2{% bool -> square -> unit
+  #1{\xdef\WhiteKingSquare{#2}}{\xdef\BlackKingSquare{#2}}}
+
+
+% neighbours of a square
+\def\SetNeighbour#1#2#3% direction -> square -> square -> unit, #2's
+                       % neighbour in direction #1 is #3
+{\expandafter\xdef\csname#1.#2\endcsname{#3}}
+\def\GetNeighbour#1#2% direction -> square -> square
+{\csname#1.#2\endcsname}
+% all the hard work:
+% first we deal with the board boarder ;-)
+\def\FF#1#2{\SetNeighbour{#1}{#2}{Offboard}}
+
+\def\ForwardDirection#1% bool -> direction; up for white, down for black
+{#1{up}{down}}
+\def\BackwardDirection#1% bool -> direction
+{#1{down}{up}}
+\def\LeftDirection#1% bool -> direction
+{#1{left}{right}}
+\def\RightDirection#1% bool -> direction
+{#1{right}{left}}
+
+
+\Apply{\FF{left}}{\File{a}}
+\Apply{\FF{upleft}}{\File{a}}
+\Apply{\FF{downleft}}{\File{a}}
+\Apply{\FF{right}}{\File{h}}
+\Apply{\FF{upright}}{\File{h}}
+\Apply{\FF{downright}}{\File{h}}
+\Apply{\FF{up}}{\Rank{8}}
+\Apply{\FF{upleft}}{\Rank{8}}
+\Apply{\FF{upright}}{\Rank{8}}
+\Apply{\FF{down}}{\Rank{1}}
+\Apply{\FF{downleft}}{\Rank{1}}
+\Apply{\FF{downright}}{\Rank{1}}
+
+
+\def\SetUpNeighbour#1#2#3% direction -> rank -> rank -> unit
+{\SetNeighbour{#1}{a#2}{a#3}%
+  \SetNeighbour{#1}{b#2}{b#3}%
+  \SetNeighbour{#1}{c#2}{c#3}%
+  \SetNeighbour{#1}{d#2}{d#3}%
+  \SetNeighbour{#1}{e#2}{e#3}%
+  \SetNeighbour{#1}{f#2}{f#3}%
+  \SetNeighbour{#1}{g#2}{g#3}%
+  \SetNeighbour{#1}{h#2}{h#3}}
+\let\SetDownNeighbour=\SetUpNeighbour%
+\SetUpNeighbour{up}{1}{2}
+\SetUpNeighbour{up}{2}{3}
+\SetUpNeighbour{up}{3}{4}
+\SetUpNeighbour{up}{4}{5}
+\SetUpNeighbour{up}{5}{6}
+\SetUpNeighbour{up}{6}{7}
+\SetUpNeighbour{up}{7}{8}
+\SetDownNeighbour{down}{2}{1}
+\SetDownNeighbour{down}{3}{2}
+\SetDownNeighbour{down}{4}{3}
+\SetDownNeighbour{down}{5}{4}
+\SetDownNeighbour{down}{6}{5}
+\SetDownNeighbour{down}{7}{6}
+\SetDownNeighbour{down}{8}{7}
+
+
+
+\def\SetUpRightNeighbour#1#2#3% direction -> rank -> rank -> unit
+{\SetNeighbour{#1}{a#2}{b#3}%
+  \SetNeighbour{#1}{b#2}{c#3}%
+  \SetNeighbour{#1}{c#2}{d#3}%
+  \SetNeighbour{#1}{d#2}{e#3}%
+  \SetNeighbour{#1}{e#2}{f#3}%
+  \SetNeighbour{#1}{f#2}{g#3}%
+  \SetNeighbour{#1}{g#2}{h#3}%
+  \SetNeighbour{#1}{h#2}{Offboard}}
+\let\SetDownRightNeighbour=\SetUpRightNeighbour
+\SetUpRightNeighbour{upright}{1}{2}
+\SetUpRightNeighbour{upright}{2}{3}
+\SetUpRightNeighbour{upright}{3}{4}
+\SetUpRightNeighbour{upright}{4}{5}
+\SetUpRightNeighbour{upright}{5}{6}
+\SetUpRightNeighbour{upright}{6}{7}
+\SetUpRightNeighbour{upright}{7}{8}
+\SetDownRightNeighbour{downright}{2}{1}
+\SetDownRightNeighbour{downright}{3}{2}
+\SetDownRightNeighbour{downright}{4}{3}
+\SetDownRightNeighbour{downright}{5}{4}
+\SetDownRightNeighbour{downright}{6}{5}
+\SetDownRightNeighbour{downright}{7}{6}
+\SetDownRightNeighbour{downright}{8}{7}
+
+
+
+\def\SetUpLeftNeighbour#1#2#3% direction -> rank -> rank -> unit
+{\SetNeighbour{#1}{a#2}{Offboard}%
+  \SetNeighbour{#1}{b#2}{a#3}%
+  \SetNeighbour{#1}{c#2}{b#3}%
+  \SetNeighbour{#1}{d#2}{c#3}%
+  \SetNeighbour{#1}{e#2}{d#3}%
+  \SetNeighbour{#1}{f#2}{e#3}%
+  \SetNeighbour{#1}{g#2}{f#3}%
+  \SetNeighbour{#1}{h#2}{g#3}}
+\let\SetDownLeftNeighbour=\SetUpLeftNeighbour
+\SetUpLeftNeighbour{upleft}{1}{2}
+\SetUpLeftNeighbour{upleft}{2}{3}
+\SetUpLeftNeighbour{upleft}{3}{4}
+\SetUpLeftNeighbour{upleft}{4}{5}
+\SetUpLeftNeighbour{upleft}{5}{6}
+\SetUpLeftNeighbour{upleft}{6}{7}
+\SetUpLeftNeighbour{upleft}{7}{8}
+\SetDownLeftNeighbour{downleft}{2}{1}
+\SetDownLeftNeighbour{downleft}{3}{2}
+\SetDownLeftNeighbour{downleft}{4}{3}
+\SetDownLeftNeighbour{downleft}{5}{4}
+\SetDownLeftNeighbour{downleft}{6}{5}
+\SetDownLeftNeighbour{downleft}{7}{6}
+\SetDownLeftNeighbour{downleft}{8}{7}
+
+
+\def\SetLeftNeighbour#1#2#3% direction -> file -> file -> unit
+{\SetNeighbour{#1}{#21}{#31}%
+  \SetNeighbour{#1}{#22}{#32}%
+  \SetNeighbour{#1}{#23}{#33}%
+  \SetNeighbour{#1}{#24}{#34}%
+  \SetNeighbour{#1}{#25}{#35}%
+  \SetNeighbour{#1}{#26}{#36}%
+  \SetNeighbour{#1}{#27}{#37}%
+  \SetNeighbour{#1}{#28}{#38}}
+\let\SetRightNeighbour=\SetLeftNeighbour
+\SetLeftNeighbour{left}{b}{a}
+\SetLeftNeighbour{left}{c}{b}
+\SetLeftNeighbour{left}{d}{c}
+\SetLeftNeighbour{left}{e}{d}
+\SetLeftNeighbour{left}{f}{e}
+\SetLeftNeighbour{left}{g}{f}
+\SetLeftNeighbour{left}{h}{g}
+\SetRightNeighbour{right}{a}{b}
+\SetRightNeighbour{right}{b}{c}
+\SetRightNeighbour{right}{c}{d}
+\SetRightNeighbour{right}{d}{e}
+\SetRightNeighbour{right}{e}{f}
+\SetRightNeighbour{right}{f}{g}
+\SetRightNeighbour{right}{g}{h}
+
+
+
+% the knight needs special attention
+\def\KnightSquares#1% square -> square list
+{\csname#1.knight\endcsname}
+
+\def\SetKnightSquares#1#2% square -> square list -> unit
+{\expandafter\def\csname#1.knight\endcsname{#2}}
+
+% a file
+\SetKnightSquares{a1}{\Listize[b3,c2]}
+\SetKnightSquares{a2}{\Listize[b4,c3,c1]}
+\SetKnightSquares{a3}{\Listize[b5,c4,c2,b1]}
+\SetKnightSquares{a4}{\Listize[b6,c5,c3,b2]}
+\SetKnightSquares{a5}{\Listize[b7,c6,c4,b3]}
+\SetKnightSquares{a6}{\Listize[b8,c7,c5,b4]}
+\SetKnightSquares{a7}{\Listize[c8,c6,b5]}
+\SetKnightSquares{a8}{\Listize[c7,b6]}
+% b file
+\SetKnightSquares{b1}{\Listize[a3,c3,d2]}
+\SetKnightSquares{b2}{\Listize[a4,c4,d3,d1]}
+\SetKnightSquares{b3}{\Listize[a5,c5,d4,d2,a1,c1]}
+\SetKnightSquares{b4}{\Listize[a6,c6,d5,d3,a2,c2]}
+\SetKnightSquares{b5}{\Listize[a7,c7,d6,d4,a3,c3]}
+\SetKnightSquares{b6}{\Listize[a8,c8,d7,d5,a5,c5]}
+\SetKnightSquares{b7}{\Listize[d8,d6,a5,c5]}
+\SetKnightSquares{b8}{\Listize[d7,a6,c6]}
+% c file
+\SetKnightSquares{c1}{\Listize[a2,b3,d3,e2]}
+\SetKnightSquares{c2}{\Listize[a1,a3,b4,d4,e3,e1]}
+\SetKnightSquares{c3}{\Listize[a2,a4,b1,b5,d1,d5,e2,e4]}
+\SetKnightSquares{c4}{\Listize[a3,a5,b2,b6,d2,d6,e3,e5]}
+\SetKnightSquares{c5}{\Listize[a4,a6,b3,b7,d3,d7,e4,e6]}
+\SetKnightSquares{c6}{\Listize[a5,a7,b4,b8,d4,d8,e5,e7]}
+\SetKnightSquares{c7}{\Listize[a6,a8,b5,d5,e6,e8]}
+\SetKnightSquares{c8}{\Listize[a7,b6,d6,e7]}
+% d file
+\SetKnightSquares{d1}{\Listize[b2,c3,e3,f2]}
+\SetKnightSquares{d2}{\Listize[b1,b3,c4,e4,f3,f1]}
+\SetKnightSquares{d3}{\Listize[b2,b4,c1,c5,e1,e5,f2,f4]}
+\SetKnightSquares{d4}{\Listize[b3,b5,c2,c6,e2,e6,f3,f5]}
+\SetKnightSquares{d5}{\Listize[b4,b6,c3,c7,e3,e7,f4,f6]}
+\SetKnightSquares{d6}{\Listize[b5,b7,c4,c8,e4,e8,f5,f7]}
+\SetKnightSquares{d7}{\Listize[b6,b8,c5,e5,f6,f8]}
+\SetKnightSquares{d8}{\Listize[b7,c6,e6,f7]}
+% e file
+\SetKnightSquares{e1}{\Listize[c2,d3,f3,g2]}
+\SetKnightSquares{e2}{\Listize[c1,c3,d4,f4,g3,g1]}
+\SetKnightSquares{e3}{\Listize[c2,c4,d1,d5,f1,f5,g2,g4]}
+\SetKnightSquares{e4}{\Listize[c3,c5,d2,d6,f2,f6,g3,g5]}
+\SetKnightSquares{e5}{\Listize[c4,c6,d3,d7,f3,f7,g4,g6]}
+\SetKnightSquares{e6}{\Listize[c5,c7,d4,d8,f4,f8,g5,g7]}
+\SetKnightSquares{e7}{\Listize[c6,c8,d5,f5,g6,g8]}
+\SetKnightSquares{e8}{\Listize[c7,d6,f6,g7]}
+% f file
+\SetKnightSquares{f1}{\Listize[d2,e3,g3,h2]}
+\SetKnightSquares{f2}{\Listize[d1,d3,e4,g4,h3,h1]}
+\SetKnightSquares{f3}{\Listize[d2,d4,e1,e5,g1,g5,h2,h4]}
+\SetKnightSquares{f4}{\Listize[d3,d5,e2,e6,g2,g6,h3,h5]}
+\SetKnightSquares{f5}{\Listize[d4,d6,e3,e7,g3,g7,h4,h6]}
+\SetKnightSquares{f6}{\Listize[d5,d7,e4,e8,g4,g8,h5,h7]}
+\SetKnightSquares{f7}{\Listize[d6,d8,e5,g5,h6,h8]}
+\SetKnightSquares{f8}{\Listize[d7,e6,g6,h7]}
+% g file
+\SetKnightSquares{g1}{\Listize[h3,f3,e2]}
+\SetKnightSquares{g2}{\Listize[h4,f4,e3,e1]}
+\SetKnightSquares{g3}{\Listize[h5,f5,e4,e2,h1,f1]}
+\SetKnightSquares{g4}{\Listize[h6,f6,e5,e3,h2,f2]}
+\SetKnightSquares{g5}{\Listize[h7,f7,e6,e4,h3,f3]}
+\SetKnightSquares{g6}{\Listize[h8,f8,e7,e5,h4,f4]}
+\SetKnightSquares{g7}{\Listize[e8,e6,h5,f5]}
+\SetKnightSquares{g8}{\Listize[h6,f6,e7]}
+% h file
+\SetKnightSquares{h1}{\Listize[g3,f2]}
+\SetKnightSquares{h2}{\Listize[g4,f3,f1]}
+\SetKnightSquares{h3}{\Listize[g5,f4,f2,g1]}
+\SetKnightSquares{h4}{\Listize[g6,f5,f3,g2]}
+\SetKnightSquares{h5}{\Listize[g7,f6,f4,g3]}
+\SetKnightSquares{h6}{\Listize[g8,f7,f5,g4]}
+\SetKnightSquares{h7}{\Listize[f8,f6,g5]}
+\SetKnightSquares{h8}{\Listize[f7,g6]}
+
+
+% % finding the neighbours of a square, used when the king moves...
+%  \def\Neighbours#1% square -> square list
+%  {\Map{\Twiddle\GetNeighbour{#1}}%
+%    {\Listize[left,upleft,up,upright,right,downright,down,downleft]}}
+
+% StringToTokens: string -> string list, cut at spaces
+\def\StringToTokens#1%
+{\skak@ifthenelse{\equal{#1}{}}{\Nil}{\StrToTokens(#1 )}}
+\def\StrToTokens (#1 #2){%
+  \EqStr{#1}{}% 
+    {\Nil}%
+    \Cons{#1}{\EqStr{#2}{} {\Nil} {\StrToTokens(#2)}}}
+
+\def\BlackPiece#1% char -> piece
+{\EqStr{#1}{K}%
+  {k}%
+  {\EqStr{#1}{Q}%
+    {q}%
+    {\EqStr{#1}{R}%
+      {r}%
+      {\EqStr{#1}{B}%
+        {b}%
+        {\EqStr{#1}{N}%
+          {n}%
+          {p}}}}}}
+
+\def\PieceNameToPiece#1#2% piecename -> bool -> piece
+{#2{#1}{\BlackPiece{#1}}}
+
+% setting up variables for ParseMove
+\def\ParseMoveInit{%
+ \gdef\MoveToRank{Z}\gdef\MoveToFile{Z}%
+ \gdef\RankDiscriminator{Z}\gdef\FileDiscriminator{Z}%
+ \gdef\PieceNameToMove{Z}%
+ \gdef\Capture{\False}%
+ \gdef\Promotion{\False}\gdef\PromotionPieceName{Z}%
+ \gdef\Castling{\False}\gdef\LongCastling{\False}}
+
+\def\ParseMove#1{% string -> unit
+  \ParseMoveA(#1)}
+
+\def\ParseMoveA(#1#2){% char -> string -> unit 
+  \IsPieceName{#1}%
+  {\gdef\PieceNameToMove{\skak@pieceToEnglish{#1}}%
+    \gdef\PieceToMove{\PieceNameToPiece{\PieceNameToMove}{\WhiteToMove}}%
+    \ParseCoordinates(#2Z)%
+    \gdef\MoveTo{\MoveToFile\MoveToRank}}%
+  {\IsO{#1}%
+    {\def\Castling{\True}%
+      \ParseCastling(#2Z)}%
+    {\ParseCoordinates(#1#2Z)%
+      \gdef\MoveTo{\MoveToFile\MoveToRank}}}}
+
+\def\FirstChar(#1#2){#1}
+
+\def\ParseCoordinates(#1#2){% char -> string -> unit
+  \EqStr{Z}{#1}%
+  {}% we are done!
+  {\IsFile{#1}%
+    {\EqStr{\MoveToFile}{Z}%
+      {}% first File name in move so nothing to do
+      {\xdef\FileDiscriminator{\MoveToFile}}%
+      \gdef\MoveToFile{#1}%
+      \ParseCoordinates(#2)}%
+  {\IsRank{#1}%
+    {\EqStr{\MoveToRank}{Z}%
+      {}%
+      {\gdef\RankDiscriminator{\MoveToRank}}%
+      \gdef\MoveToRank{#1}%
+      \ParseCoordinates(#2)}%
+    {\IsCapture{#1}%
+      {\gdef\Capture{\True}%
+        \ParseCoordinates(#2)}%
+      {\IsPromotion{#1}%
+        {\def\Promotion{\True}%
+          \gdef\PromotionPieceName{\skak@pieceToEnlish{\FirstChar(#2)}}}}%
+      {}% no more information is of interest   
+      }}}}
+
+% help for \ParseCastling
+\def\ParseCastlingA(#1#2#3){%
+  \MyEqualB{#1#2}{-O}%
+  {\gdef\LongCastling{\True}}%
+  {}}
+
+\def\ParseCastling(-O#1){% strip the first -O, at least Z is left
+  \ParseCastlingA(#1VW)}
+
+% \def\ParseCastling(-O#1#2){%
+%   \EqStr{#1}{Z}%
+%   {}%
+%   {\def\LongCastling{\True}}}
+
+
+% for testing purposes
+\def\ShowParseInfo%
+{ %MoveTo: \MoveTo
+  MoveToRank: \MoveToRank, MoveToFile: \MoveToFile, \\
+  RankDiscriminator: \RankDiscriminator, FileDiscriminator:
+  \FileDiscriminator, \\ Promotion: \BoolToString{\Promotion},
+  PromotionPieceName: \PromotionPieceName
+  Capture: \BoolToString{\Capture}, \\
+  PieceNameToMove: \PieceNameToMove, \\
+  Castling: \BoolToString{\Castling},
+  LongCastling: \BoolToString{\LongCastling}}
+
+% castling, with preparation for eg, FisheRandom
+%\def\WhiteShortRook{h1}
+%\def\WhiteLongRook{a1}
+%\def\BlackShortRook{h8}
+%\def\WhiteLong
+\def\FirstRank#1{% bool -> rank
+  #1{1}{8}}
+\def\CastleKingFile#1{% bool -> file, LongCastling is used as argument
+  #1{c}{g}}
+\def\CastleRookToFile#1{%
+  #1{d}{f}}
+\def\CastleRookFromFile#1{%
+  #1{a}{h}}
+
+\def\CastleDone#1{% bool -> unit
+  #1{\gdef\WhiteCastling{-}}{\gdef\BlackCastling{-}}}
+
+\def\ExecuteCastling{% relies on \ParseMove
+  \stepcounter{halfmove}%
+  \gdef\MoveTo{\CastleKingFile{\LongCastling}\FirstRank{\WhiteToMove}}%
+  \ExecuteKingMove%
+  \gdef\MoveTo{\CastleRookToFile{\LongCastling}\FirstRank{\WhiteToMove}}%
+  \DoTheMove{\CastleRookFromFile{\LongCastling}\FirstRank{\WhiteToMove}}%
+  \CastleDone{\WhiteToMove}}
+
+
+%%% after ParseMove has gathered info we find the piece to move
+% LookFor looks in one direction, stopping if a non-empty square is
+% found
+\def\LookFor#1#2#3{% (piece -> bool) -> square -> direction -> square list
+  \LookForA{#1}{\GetNeighbour{#3}{#2}}{#3}} % we have to skip the
+                                            % first square!!!
+\def\LookForA#1#2#3{% (piece -> bool) -> square -> direction -> square list
+  #1{\Get{#2}}%
+  {\Singleton{#2}}%
+  {\EqPiece{E}{\Get{#2}}% empty square => continue in the given direction
+    {\LookForA{#1}{\GetNeighbour{#3}{#2}}{#3}}%
+    {\Nil}}}
+
+
+% IsRightPiece is true if a piece matching #1 is on square#2
+\def\IsRightPiece#1#2{% piece -> square -> bool
+ \EqPiece{#1}{\Get{#2}}}
+
+\def\IsRookQueen#1#2{% bool -> piece -> bool
+  \Or{\EqPiece{#2}{\PieceNameToPiece{R}{#1}}}%
+  {\EqPiece{#2}{\PieceNameToPiece{Q}{#1}}}%
+  }
+\def\IsBishopQueen#1#2{% bool -> piece -> bool
+  \Or{\EqPiece{#2}{\PieceNameToPiece{B}{#1}}}%
+  {\EqPiece{#2}{\PieceNameToPiece{Q}{#1}}}%
+  }
+
+% (piece-> bool) -> square -> direction list -> square list
+\def\ScanDirections#1#2#3{\Foldr{\Compose\Cat{\LookFor{#1}{#2}}}\Nil{#3}}
+
+
+% relies on the info gathered by ParseMove
+\def\FindPieceSquares#1#2{% bool -> square -> square list 
+  \EqPiece{\PieceNameToMove}{R}%
+  {\ScanDirections%
+    {\EqPiece{\PieceToMove}}{#2}{\Listize[up,down,left,right]}}%
+  {\EqPiece{\PieceNameToMove}{B}%
+    {\ScanDirections%
+      {\EqPiece{\PieceToMove}}{#2}%
+      {\Listize[upright,downright,downleft,upleft]}}%
+    {\EqPiece{\PieceNameToMove}{Q}%
+      {\ScanDirections%
+        {\EqPiece{\PieceToMove}}{#2}%
+        {\Listize[up,down,left,right,upleft,upright,downleft,downright]}}%
+      {\Filter{\IsRightPiece{\PieceToMove}}{\KnightSquares{#2}}}}}}
+
+\def\UniqueMove% bool, if the descriminators <> Z
+{\And%
+  {\Not{\EqStr{\RankDiscriminator}{Z}}}%
+  {\Not{\EqStr{\FileDiscriminator}}{Z}}}
+
+\def\DoTheMove#1{% move the piece from #1 to \MoveToFile\MoveToRank
+  \edef\oldpiece{\Get{\MoveToFile\MoveToRank}}%
+  \Set{\MoveTo}{\Get{#1}}\Set{#1}{E}%
+  \gdef\MoveFrom{#1}}
+
+\def\DoTheMoveList#1{\DoTheMove{\Head{#1}}}
+
+% undoes the move to #1
+\def\UndoMove#1{% square -> unit, relies on \oldpiece and \MoveToFile/Rank
+\Set{#1}{\Get{\MoveToFile\MoveToRank}}\Set{\MoveToFile\MoveToRank}{\oldpiece}%
+\Or{\EqPiece{\PieceToMove}{K}}{\EqPiece{\PieceToMove}{k}}%
+  {\SetKingSquare{\WhiteToMove}{#1}}%
+  {}}
+
+\def\NoEnemiesFound{% bool
+\IsNil{\Cat{\ScanDirections{\IsRookQueen{\Not\WhiteToMove}}%
+    {\KingSquare{\WhiteToMove}}{\Listize[up,down,left,right]}}%
+  {\ScanDirections{\IsBishopQueen{\Not\WhiteToMove}}%
+    {\KingSquare{\WhiteToMove}}%
+    {\Listize[upleft,downright,downleft,upright]}}}}
+
+\newboolean{helplegal}
+
+\def\LegalMove#1{% square -> bool, is the move possible to do?
+  \DoTheMove{#1}%
+  \NoEnemiesFound%
+  {\UndoMove{#1}\True}%
+  {\UndoMove{#1}\False}}%
+%  \skak@ifthenelse{\boolean{helplegal}}{\True}{\False}}
+% \def\LegalMove#1{% square -> bool, is the move possible to do?
+% %  \edef\oldpiece{\Get{\MoveToFile\MoveToRank}}%
+%   \DoTheMove{#1}%
+% %  \setboolean{helplegal}{\NoEnemiesFound{true}{false}}%
+%   \gdef\HelpLegal{\NoEnemiesFound}
+%   \UndoMove{#1}%
+%   \HelpLegal}
+% %  \skak@ifthenelse{\boolean{helplegal}}{\True}{\False}}
+
+% relies on \ParseMove
+\def\TrimMoveList#1{% square -> bool
+\gdef\trimhelp{#1}%(
+\And{\RightRank(\trimhelp)}{\And{\RightFile(\trimhelp)}{\LegalMove{\trimhelp}}}}
+%\And{\RightRank(#1)}{\And{\RightFile(#1)}{\LegalMove{#1}}}}
+
+\def\ExecuteKingMove{% relies on ParseMove, WhiteToMove
+  \DoTheMove{\KingSquare{\WhiteToMove}}%
+  \SetKingSquare{\WhiteToMove}{\MoveTo}%
+  \WhiteToMove%
+  {\edef\WhiteCastling{-}}%
+  {\edef\BlackCastling{-}}}
+
+% % used by UpdateCastling
+% \def\RemoveLongCastling{% relies on \WhiteToMove
+%   \WhiteToMove%
+%   {\EqStr{KQ}{\WhiteCastling}%
+%     {\edef\WhiteCastling{K}}%
+%     {\EqStr{Q}{\WhiteCastling}%
+%       {\edef\WhiteCastling{-}}
+%       {}}}%
+%   {\EqStr{kq}{\BlackCastling}%
+%     {\edef\BlackCastling{k}}%
+%     {\EqStr{q}{\BlackCastling}%
+%       {\edef\BlackCastling{-}}%
+%       {}}}}
+
+% used by UpdateCastling
+\def\RemoveLongCastling{% relies on \WhiteToMove
+  \WhiteToMove%
+  {\skak@ifthenelse{\equal{KQ}{\WhiteCastling}}%
+    {\gdef\WhiteCastling{K}}%
+    {\skak@ifthenelse{\equal{Q}{\WhiteCastling}}%
+      {\gdef\WhiteCastling{-}}%
+      {}}}%
+  {\skak@ifthenelse{\equal{kq}{\BlackCastling}}%
+      {\gdef\BlackCastling{k}}%
+      {\skak@ifthenelse{\equal{q}{\BlackCastling}}%
+        {\edef\BlackCastling{-}}%
+        {}}}}%
+
+% % used by UpdateCastling
+% \def\RemoveShortCastling{% relies on \WhiteToMove
+%   \WhiteToMove%
+%   {\skak@ifthenelse{\equal{KQ}{\WhiteCastling}}%
+%     %\EqStr{KQ}{\WhiteCastling}%
+%     {\edef\WhiteCastling{Q}}%
+%     {\EqStr{K}{\WhiteCastling}%
+%       {\edef\WhiteCastling{-}}%
+%       {}}}%
+%   {\skak@ifthenelse{\equal{kq}{\BlackCastling}}%
+%     %\EqStr{kq}{\BlackCastling}%
+%     {\edef\BlackCastling{q}}%
+%     {\EqStr{k}{\BlackCastling}%
+%       {\edef\BlackCastling{-}}%
+%       {}}}}
+
+% used by UpdateCastling
+\def\RemoveShortCastling{% relies on \WhiteToMove
+  \WhiteToMove%
+  {\skak@ifthenelse{\equal{KQ}{\WhiteCastling}}%
+    %\EqStr{KQ}{\WhiteCastling}%
+    {\gdef\WhiteCastling{Q}}%
+    {\skak@ifthenelse{\equal{K}{\WhiteCastling}}
+      {\gdef\WhiteCastling{-}}%
+      {}}}%
+  {\skak@ifthenelse{\equal{kq}{\BlackCastling}}%
+    %\EqStr{kq}{\BlackCastling}%
+    {\gdef\BlackCastling{q}}%
+    {\EqStr{k}{\BlackCastling}%
+      {\gdef\BlackCastling{-}}%
+      {}}}}
+
+\def\UpdateCastling{% relies on \ParseMove
+  \EqPiece{R}{\PieceNameToMove}%
+  { \EqSquare{\MoveFrom}{\CastleRookFromFile{\True}\FirstRank{\WhiteToMove}}%
+    {\RemoveLongCastling}%
+    {\EqSquare{\MoveFrom}{\CastleRookFromFile{\False}\FirstRank{\WhiteToMove}}%
+      {\RemoveShortCastling}%
+      {}}}%
+  {}}% non rook moves will not change the castling possibilities
+
+\def\ExecutePieceMove{% relies on the info gathered by ParseMove
+  \Capture{\setcounter{halfmove}{0}}{\stepcounter{halfmove}}%
+  \UniqueMove%
+  {\DoTheMove{\FileDiscriminator\RankDiscriminator}}%
+  {\EqPiece{K}{\PieceNameToMove}%
+    {\ExecuteKingMove}%
+    {%
+%       (\Unlistize{\FindPieceSquares{\WhiteToMove}{\MoveTo}},%
+%       \Unlistize{\Filter{\TrimMoveList}%
+%         {\FindPieceSquares{\WhiteToMove}{\MoveTo}}})%
+      \Apply{\DoTheMove}{\Filter{\TrimMoveList}%
+        {\FindPieceSquares{\WhiteToMove}{\MoveTo}}}}%
+    }
+  \UpdateCastling}
+
+% % for pawn captures and moves
+% \newcounter{rankhelp}
+% % \def\FromRank{\setcounter{rankhelp}{\MoveToRank}%
+% %   \addtocounter{rankhelp}{\WhiteToMove{-1}{1}}
+% %   \arabic{rankhelp}}
+\def\FromRank{%
+  \EqStr{1}{\MoveToRank}%
+  {\WhiteToMove{0}{2}}%
+  {\EqStr{2}{\MoveToRank}%
+    {\WhiteToMove{1}{3}}%
+    {\EqStr{3}{\MoveToRank}%
+      {\WhiteToMove{2}{4}}%
+      {\EqStr{4}{\MoveToRank}%
+        {\WhiteToMove{3}{5}}%
+        {\EqStr{5}{\MoveToRank}%
+          {\WhiteToMove{4}{6}}%
+          {\EqStr{6}{\MoveToRank}%
+            {\WhiteToMove{5}{7}}%
+            {\EqStr{7}{\MoveToRank}%
+              {\WhiteToMove{6}{8}}%
+              {\EqStr{8}{\MoveToRank}%
+                {\WhiteToMove{7}{9}}%
+                {}}}}}}}}}
+\def\InitialRank{\WhiteToMove{2}{7}}
+
+\def\ExecutePawnMove{% relies on the info obtained by ParseMove
+  \setcounter{halfmove}{0}%
+  \Capture%
+  {\EqPiece{E}{\Get{\MoveTo}}%
+    {\Set{\MoveToFile\FromRank}{E}}%
+    {}%
+    \DoTheMove{\FileDiscriminator\FromRank}%
+    \def\EnPassantSquare{-}}%
+  {\EqPiece{E}{\Get{\MoveToFile\FromRank}}%
+    {\edef\EnPassantSquare{\MoveToFile\FromRank}% two square move
+      \DoTheMove{\MoveToFile\InitialRank}}%
+    {\DoTheMove{\MoveToFile\FromRank}% one square move
+      \def\EnPassantSquare{-}}}%
+  \Promotion%
+  {\Set{\MoveTo}{\PieceNameToPiece{\PromotionPieceName}{\WhiteToMove}}}%
+  {}}
+
+
+\def\MakeMove#1{% string -> unit
+%  (In MakeMove: WhiteToMove \BoolToString\WhiteToMove)
+  \ParseMoveInit%
+  \ParseMove{#1}%
+  \EqPiece{Z}{\PieceNameToMove}%
+  {\Castling%
+    {\gdef\EnPassantSquare{-}\ExecuteCastling}%
+    {\ExecutePawnMove}}%
+  {\gdef\EnPassantSquare{-}%
+    \ExecutePieceMove}%
+  \WhiteToMove%
+  {\gdef\WhiteToMove{\False}}%
+  {\gdef\WhiteToMove{\True}\addtocounter{move}{1}}%
+%(End MakeMove: WhiteToMove \BoolToString\WhiteToMove)
+  }
+
+% debugging aid
+%\def\MakeMove#1{#1}
+
+\def\mainline{\begingroup\catcode`\#=12 \@mainline}
+\def\@mainline#1{\endgroup\gdef\NumberNext{\True}%
+  \Mainline(#1 Z ){\mainlinestyle\typeset@A{#1}}}
+
+
+\def\hidemoves{\begingroup\catcode`\#=12 \@hidemoves}
+\def\@hidemoves#1{\endgroup\def\NumberNext{\True}%
+  \Mainline(#1 Z )}
+
+
+\newcounter{helpnumber}
+\newcounter{helpnumberMove}
+% \def\EatNumber#1{\setcounter{helpnumber}{0}\EatNumberA(#1Z)%
+%   \skak@ifthenelse{\value{move}=\value{helpnumber}}%
+%     {\def\NumberOK{\True}}%
+%     {\def\NumberOK{\False}}}%
+\def\EatNumber#1{%
+  \setcounter{helpnumberMove}{\arabic{move}}%
+  \setcounter{helpnumber}{0}\EatNumberA(#1WXYZ)%
+  \skak@ifthenelse{\value{helpnumberMove}=\value{helpnumber}}%
+    {\gdef\NumberOK{\True}}%
+    {\gdef\NumberOK{\False}}}%
+\def\EatNumberA(#1.#2){%
+  \setcounter{helpnumber}{#1}%
+  \LookForMove(.#2)% sets \ExpectedColur and \CurrentMove
+  }
+
+\def\LookForMove(#1#2#3#4){%
+  \EqStr{.}{#2}% ... after the move number
+  {\gdef\ExpectedColour{\False}%
+    \HandleMove(#4)}%
+  {\gdef\ExpectedColour{\True}%
+    \HandleMove(#2#3#4)}}%
+
+\def\HandleMove(#1XYZ){% executes a move if one is found
+  \EqStr{W}{#1}%
+  {}%
+  {\StripMove(#1)}}
+\def\StripMove(#1W){% the execution of a move like 1.e4
+  \MakeMoveMainline{#1}}
+
+\def\MakeMoveMainline#1{%
+    {\ExpectedColour%
+      {\WhiteToMove%
+        {\MakeMove{#1}%
+          \gdef\ExpectedColour{\False}}%
+        {\errmessage{mainline: black, not white, to move}}}%
+      {\WhiteToMove%
+        {\errmessage{mainline: white, not black, to move}}%
+        {\MakeMove{#1}\gdef\NumberNext{\True}}}}}
+  
+
+\def\Mainline(#1 #2){%
+  \EqStr{Z}{#1}%
+  {}%
+  {\NumberNext%
+    {\EatNumber{#1}% sets \NumberOK, \ExpectedColour
+                                % executes a move not separated from the 
+                                % number with a space, eg, 1.e4
+      \NumberOK%
+      {\gdef\NumberNext{\False}%
+        \Mainline(#2)}%
+      {\errmessage{mainline: not the correct move number}}}%
+    {\MakeMoveMainline{#1}%
+      \Mainline(#2)}}}
+
+
+%%%%% typesetting
+%%% figurine notation
+%\input{fig1\@ptsize.clo}
+\newcommand{\skakfamily}{\usefont{U}{skak}{m}{n}}
+\DeclareTextFontCommand{\textskak}{\skakfamily}
+
+\def\liftfig#1{\textskak{#1}}
+
+
+\def\styleA@opentypesetting{}
+\def\styleA@closetypesetting{}
+\def\styleA@whiteopen{.}
+\def\styleA@blackopen{. -}
+\def\styleA@beforenumber{}
+\def\styleA@beforewhite{ }
+\def\styleA@afterwhite{}
+\def\styleA@beforeblack{, }
+\def\styleA@afterblack{ }
+
+\def\styleA{%
+\let\opentypesetting=\styleA@opentypesetting
+\let\closetypesetting=\styleA@closetypesetting
+\let\whiteopen=\styleA@whiteopen
+\let\blackopen=\styleA@blackopen
+\let\beforenumber=\styleA@beforenumber
+\let\beforewhite=\styleA@beforewhite
+\let\afterwhite=\styleA@afterwhite
+\let\beforeblack=\styleA@beforeblack
+\let\afterblack=\styleA@afterblack
+}
+%%%% the default style
+\styleA
+
+\def\styleB@opentypesetting{}
+\def\styleB@closetypesetting{}
+\def\styleB@whiteopen{ }
+\def\styleB@blackopen{\ldots}
+\def\styleB@beforenumber{}
+\def\styleB@beforewhite{}
+\def\styleB@afterwhite{ }
+\def\styleB@beforeblack{}
+\def\styleB@afterblack{ }
+
+\def\styleB{%
+\let\opentypesetting=\styleB@opentypesetting
+\let\closetypesetting=\styleB@closetypesetting
+\let\whiteopen=\styleB@whiteopen
+\let\blackopen=\styleB@blackopen
+\let\beforenumber=\styleB@beforenumber
+\let\beforewhite=\styleB@beforewhite
+\let\afterwhite=\styleB@afterwhite
+\let\beforeblack=\styleB@beforeblack
+\let\afterblack=\styleB@afterblack
+}
+
+\def\styleC@opentypesetting{%
+  \begin{tabbing}%
+    \hspace{.2\linewidth}\=\hspace{.2\linewidth}\=%
+    \hspace{.2\linewidth}\= \kill}
+\def\styleC@closetypesetting{\end{tabbing}}
+\def\styleC@whiteopen{}
+\def\styleC@blackopen{\>\ldots}
+\def\styleC@beforenumber{\>}
+\def\styleC@beforewhite{\>}
+\def\styleC@afterwhite{}
+\def\styleC@beforeblack{\>}
+\def\styleC@afterblack{\\}
+
+\def\styleC{%
+\let\opentypesetting=\styleC@opentypesetting
+\let\closetypesetting=\styleC@closetypesetting
+\let\whiteopen=\styleC@whiteopen
+\let\blackopen=\styleC@blackopen
+\let\beforenumber=\styleC@beforenumber
+\let\beforewhite=\styleC@beforewhite
+\let\afterwhite=\styleC@afterwhite
+\let\beforeblack=\styleC@beforeblack
+\let\afterblack=\styleC@afterblack
+}
+
+
+
+\def\mainlinestyle{\bfseries}%\let\Fig=\Figb}% could also contain
+                                           % definitions of the 
+                                % various style options
+\def\variationstyle{}%\let\Fig=\Fign}   % as with mainlinestyle
+
+
+\def\typeset@number#1{\TypeSetAfterBlack{\afterblack}{}%
+  \gdef\TypeSetAfterBlack{\True}%
+  \beforenumber\typeset@numberA(#1WXYZ)}% 22: -> 22\?open
+\def\typeset@numberA(#1.#2){%
+  #1\typeset@numberHandlePeriods(.#2)}
+\def\typeset@numberHandlePeriods(#1#2#3#4){%
+  \EqStr{.}{#2}% ... after the number
+  {\blackopen\gdef\TypeSetColour{\False}\gdef\TypeSetAfterWhite{\False}%
+    \typeset@numberHandleMove(#4)}%
+  {\whiteopen\gdef\TypeSetColour{\True}\gdef\TypeSetAfterWhite{\True}%
+    \typeset@numberHandleMove(#2#3#4)}}
+\def\typeset@numberHandleMove(#1XYZ){%
+  \EqStr{W}{#1}%
+  {}%
+  {\typeset@numberStripMove(#1)}}
+\def\typeset@numberStripMove(#1W){%
+  \typeset@A@move{#1}}
+  
+\def\typeset@A@move#1{%
+  \TypeSetColour%
+  {\beforewhite\mbox{\typeset@A@moveA(#1Z)}\gdef\TypeSetColour{\False}}%
+  {\TypeSetAfterWhite{\afterwhite}{}%
+    \beforeblack\mbox{\typeset@A@moveA(#1Z)}%
+    \gdef\TypeSetColour{\True}\gdef\TypeSetNumberNext{\True}}}
+\def\typeset@A@moveA(#1#2){%
+  \EqStr{Z}{#1}%
+  {}%
+  {\IsPieceName{#1}%
+    {\xdef\temp@piece{\skak@pieceToEnglish{#1}}%
+      \expandafter\liftfig\temp@piece}%
+    {\EqStr{=}{#1}%
+      {}%
+      {\EqStr{x}{#1}%
+        {\ensuremath{\!\!\:\times\!\!\;}}%
+        {\EqStr{+}{#1}%
+          {\ensuremath{\dagger}}%
+          {#1}}}}%
+    \typeset@A@moveA(#2)}}
+
+
+\def\typeset@A#1{\gdef\TypeSetNumberNext{\True}%
+  \gdef\TypeSetAfterBlack{\False}\opentypesetting\typeset@AA(#1 Z )%
+  \closetypesetting}
+\def\typeset@AA(#1 #2){%
+  \EqStr{Z}{#1}%
+  {}%
+  {\TypeSetNumberNext%
+    {\typeset@number{#1}% sets \TypeSetColour
+      \gdef\TypeSetNumberNext{\False}%
+      \typeset@AA(#2)}%
+    {\typeset@A@move{#1}%
+      \typeset@AA(#2)}}}
+      
+
+\def\variation{\begingroup\catcode`\#=12 \@variation}
+\def\@variation#1{\endgroup{\variationstyle\typeset@A{#1}}}
+
+% typesetting moves with out move number
+\def\wmove{\begingroup\catcode`\#=12 \@wmove}
+\def\@wmove#1{\endgroup{\variationstyle\typeset@A@moveA(#1Z)}}
+\def\bmove{\begingroup\catcode`\#=12 \@bmove}
+\def\@bmove#1{\endgroup{\variationstyle\ldots\typeset@A@moveA(#1Z)}}
+
+%%%
+% printing of the board
+\newlength{\squarelength}
+\newlength{\showlength}
+\newlength{\ranklift}
+
+\def\setup@showboard#1{\font\Skak=skak#1%
+  \setlength{\squarelength}{#1pt}%
+  % ps setup
+  \ps@on{\psset{unit=\the\squarelength}
+    \edef\ps@squarecenter{(-.5,.5)}}
+  {}
+  \notationfont\setlength{\ranklift}{.5\squarelength-.8ex}\normalsize}
+
+
+
+\def\tinyboard{\font\notationfont=cmss6\setup@showboard{10}}
+\def\smallboard{\font\notationfont=cmss8\setup@showboard{15}}
+\def\normalboard{\font\notationfont=cmss10\setup@showboard{20}}
+\def\largeboard{\font\notationfont=cmss12\setup@showboard{30}}
+
+% the default
+\normalboard
+
+\def\ToggleWhiteSquare{%
+  \WhiteSquare{\def\WhiteSquare{\False}}{\def\WhiteSquare{\True}}}
+
+\def\WhiteSquarePiece#1{%
+  \EqPiece{E}{#1}{0}{#1}}
+
+\def\BlackSquarePiece#1{%
+  \EqPiece{E}{#1}{Z}%
+  {\EqPiece{P}{#1}{O}%
+    {\EqPiece{p}{#1}{o}%
+      {\EqPiece{R}{#1}{S}%
+        {\EqPiece{r}{#1}{s}%
+          {\EqPiece{N}{#1}{M}%
+            {\EqPiece{n}{#1}{m}%
+              {\EqPiece{B}{#1}{A}%
+                {\EqPiece{b}{#1}{a}%
+                  {\EqPiece{Q}{#1}{L}%
+                    {\EqPiece{q}{#1}{l}%
+                      {\EqPiece{K}{#1}{J}{j}}}}}}}}}}}}}
+                          
+\def\FilterShowOnly#1{% piece -> piece, shows only the pieces in
+                      % ShowOnlyList
+  \Member{\EqStr}{#1}{\ShowOnlyList}%
+  {#1}{E}}
+
+
+\def\Showchar#1{% square -> drawn square
+  \WhiteSquare%
+  {\WhiteSquarePiece{\Compose\FilterShowOnly\Get{#1}}}%
+  {\BlackSquarePiece{\Compose\FilterShowOnly\Get{#1}}}%
+  \ToggleWhiteSquare%
+  % ps stuff
+  \ps@on{\expandafter\pnode\ps@squarecenter{#1}}{}}
+  
+\def\Showrank#1{% rank -> drawn rank
+\Skak\Apply{\Showchar}{\Rank{#1}}}
+
+\def\ShowrankInverse#1{% rank -> drawn rank
+  \Skak\Apply{\Showchar}{\Reverse{\Rank{#1}}}}
+%  \Skak\Apply{\Showchar}{\Rank{#1}}}
+
+\def\ShowMoverWhiteNormal{\pscustom{\translate(h1)
+\psline{->}(1,0.25)(1,0.8)%
+\psframe(0.84,-0.16)(1.16,0.16)}}
+
+\def\ShowMoverBlackNormal{%
+  \pscustom[fillstyle=solid,fillcolor=gray]{\translate(h8)%
+  \psline{->}(1,-0.25)(1,-0.8)%
+  \psframe(0.84,-0.16)(1.16,0.16)}}
+
+\def\ShowMoverWhiteInverse{\pscustom{\translate(a1)
+\psline{->}(1,-0.25)(1,-0.8)%
+\psframe(0.84,-0.16)(1.16,0.16)}}
+
+\def\ShowMoverBlackInverse{%
+  \pscustom[fillstyle=solid,fillcolor=gray]{\translate(a8)%
+  \psline{->}(1,0.25)(1,0.8)%
+  \psframe(0.84,-0.16)(1.16,0.16)}}
+
+
+
+\def\show@board{%
+  \def\WhiteSquare{\True}
+  \vbox{\offinterlineskip
+   \hrule height1pt 
+   \hbox{\vrule width1pt
+         \vbox{\hbox{\Showrank{8}}\ToggleWhiteSquare
+               \hbox{\Showrank{7}}\ToggleWhiteSquare
+               \hbox{\Showrank{6}}\ToggleWhiteSquare
+               \hbox{\Showrank{5}}\ToggleWhiteSquare
+               \hbox{\Showrank{4}}\ToggleWhiteSquare
+               \hbox{\Showrank{3}}\ToggleWhiteSquare
+               \hbox{\Showrank{2}}\ToggleWhiteSquare
+               \hbox{\Showrank{1}}}%
+         \vrule width1pt}
+   \hrule height1pt}
+ \setcounter{ps@inverse}{0}
+ \ShowMover
+ {\WhiteToMove
+   {\ShowMoverWhiteNormal}
+   {\ShowMoverBlackNormal}}
+ {}
+}
+
+\def\show@board@inverse{%
+  \def\WhiteSquare{\True}
+  \vbox{\offinterlineskip
+   \hrule height1pt
+   \hbox{\vrule width1pt
+         \vbox{\hbox{\ShowrankInverse{1}}\ToggleWhiteSquare
+               \hbox{\ShowrankInverse{2}}\ToggleWhiteSquare
+               \hbox{\ShowrankInverse{3}}\ToggleWhiteSquare
+               \hbox{\ShowrankInverse{4}}\ToggleWhiteSquare
+               \hbox{\ShowrankInverse{5}}\ToggleWhiteSquare
+               \hbox{\ShowrankInverse{6}}\ToggleWhiteSquare
+               \hbox{\ShowrankInverse{7}}\ToggleWhiteSquare
+               \hbox{\ShowrankInverse{8}}}%
+         \vrule width1pt}
+   \hrule height1pt}
+ \setcounter{ps@inverse}{180}
+ \ShowMover
+ {\WhiteToMove
+   {\ShowMoverWhiteInverse}
+   {\ShowMoverBlackInverse}}
+ {}
+}
+
+\def\ShowrankNumber#1{%
+\makebox[0pt][r]{%
+  \raisebox{\ranklift}[0cm][0cm]{%
+    \makebox[\squarelength][r]{\notationfont#1\hspace*{.1\squarelength}}}}}
+
+\def\ShowrankWithNumber#1{\ShowrankNumber{#1}%
+\vrule width1pt \Showrank{#1}\vrule width1pt}
+
+\def\ShowrankInverseWithNumber#1{\ShowrankNumber{#1}%
+  \vrule width1pt\ShowrankInverse{#1}\vrule width1pt}
+
+
+\def\Showfile#1{\hbox to \squarelength{\hfil\notationfont#1\hfil}}
+\def\Showfiles{\hfil\Showfile{a}\Showfile{b}\Showfile{c}\Showfile{d}%
+  \Showfile{e}\Showfile{f}\Showfile{g}\Showfile{h}\hfil}
+\def\Showfiles@inverse{\hfil\Showfile{h}\Showfile{g}\Showfile{f}\Showfile{e}%
+  \Showfile{d}\Showfile{c}\Showfile{b}\Showfile{a}\hfil}
+
+\def\show@board@notation{%
+  \def\WhiteSquare{\True}%
+  \vbox{\offinterlineskip%
+    \hrule height1pt 
+    \hbox{\ShowrankWithNumber{8}}\ToggleWhiteSquare
+    \hbox{\ShowrankWithNumber{7}}\ToggleWhiteSquare
+    \hbox{\ShowrankWithNumber{6}}\ToggleWhiteSquare
+    \hbox{\ShowrankWithNumber{5}}\ToggleWhiteSquare
+    \hbox{\ShowrankWithNumber{4}}\ToggleWhiteSquare
+    \hbox{\ShowrankWithNumber{3}}\ToggleWhiteSquare
+    \hbox{\ShowrankWithNumber{2}}\ToggleWhiteSquare
+    \hbox{\ShowrankWithNumber{1}}\ToggleWhiteSquare
+    \hrule height1pt
+    \vspace*{.1\squarelength}
+    \hbox{\Showfiles}}
+   \setcounter{ps@inverse}{0}
+ \ShowMover
+ {\WhiteToMove
+   {\ShowMoverWhiteNormal}
+   {\ShowMoverBlackNormal}}
+ {}
+}
+
+\def\show@board@notation@inverse{%
+  \def\WhiteSquare{\True}%
+  \vbox{\offinterlineskip%
+    \hrule height1pt 
+    \hbox{\ShowrankInverseWithNumber{1}}\ToggleWhiteSquare
+    \hbox{\ShowrankInverseWithNumber{2}}\ToggleWhiteSquare
+    \hbox{\ShowrankInverseWithNumber{3}}\ToggleWhiteSquare
+    \hbox{\ShowrankInverseWithNumber{4}}\ToggleWhiteSquare
+    \hbox{\ShowrankInverseWithNumber{5}}\ToggleWhiteSquare
+    \hbox{\ShowrankInverseWithNumber{6}}\ToggleWhiteSquare
+    \hbox{\ShowrankInverseWithNumber{7}}\ToggleWhiteSquare
+    \hbox{\ShowrankInverseWithNumber{8}}\ToggleWhiteSquare
+    \hrule height1pt
+    \vspace*{.1\squarelength}
+    \hbox{\Showfiles@inverse}}
+   \setcounter{ps@inverse}{180}
+ \ShowMover
+ {\WhiteToMove
+   {\ShowMoverWhiteInverse}
+   {\ShowMoverBlackInverse}}
+ {}
+}
+
+% on the fly configuration
+\def\notationOn{\let\showboard=\show@board@notation%
+  \let\showinverseboard=\show@board@notation@inverse}
+\def\notationOff{\let\showboard=\show@board%
+  \let\showinverseboard=\show@board@inverse}
+
+\def\showmoverOn{\def\ShowMover{\True}}
+\def\showmoverOff{\def\ShowMover{\False}}
+
+
+\def\newgame{%
+\fenboard{rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1}}
+
+
+%%%% storing and loading of games
+\newtoks\store@toks
+\def\savegame#1{% writes the board as fen to #1.fen
+  \newwrite\skakstore%
+  \immediate\openout\skakstore=#1.fen%
+  \Fen@calculate%
+  \immediate\write\skakstore{\temp@board}%
+  \immediate\closeout\skakstore}
+
+% loading a board from a fen file is also possible
+% the file #1.fen should contain nothing but a fen of
+% a game
+\def\loadgame#1{%
+  \def\load@read{}%
+  \newread\load@in%
+  \openin\load@in=#1.fen\relax%
+  \read\load@in to \load@read%
+  \closein\load@in%
+  \expandafter\FenBoard\load@read)}
+
+%%% temporary storing of a game position, without resorting to files
+% \def\storegame#1{\Fen@calculate%
+%   \def#1{\temp@board}}
+% \def\restoregame#1{\expandafter\FenBoard#1)}
+\def\storegame#1{\Fen@calculate%
+  \expandafter\xdef\csname chessgame.#1\endcsname{\temp@board}}
+\def\restoregame#1{%
+  \edef\restore@temp{\csname chessgame.#1\endcsname}
+  \expandafter\FenBoard\restore@temp)}
+
+% end skak.sty
+
+
+

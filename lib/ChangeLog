@@ -1,3 +1,9 @@
+2001-10-30  Kayvan A. Sylvan  <kayvan@sylvan.com>
+
+	* external_templates: Fix up the help message for ChessDiagram
+	again (referring to the new lyxskak.sty). Reworked the LaTeX
+	output to use skak.sty \loadgame{file} feature.
+
 2001-10-30  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am: remove BUGS.lyx mention
@@ -6,6 +12,21 @@
 
 	* ui/default.ui: remove Known Bugs entry
  
+2001-10-28  Kayvan A. Sylvan  <kayvan@sylvan.com>
+
+	* scripts/fen2latex.py: Simplified greatly. Now uses skak.
+	
+	* scripts/fen2ascii.py: New file added. Makes a nice ascii
+	representation of the chess position.
+
+2001-10-28  Kayvan A. Sylvan  <kayvan@sylvan.com>
+
+	* external_templates: Changed comment to inform user to use skak
+	package instead of the very old chess.sty for external chess
+	material. Added the -mode EditPosition flag to the "xboard"
+	invocation. Fixed the invocation of fen2ascii (which did *not*
+	exist, even though it was referenced).
+
 2001-10-24  José Matos  <jamatos@fep.up.pt>
 
 	* layouts/db_lyxmacros.inc:

@@ -1,3 +1,13 @@
+2001-10-30  John Levon  <moz@compsoc.man.ac.uk>
+
+	* insetert.h:
+	* insetert.C: fix some problems
+ 
+2001-10-30  Kayvan A. Sylvan  <kayvan@sylvan.com>
+
+	* insetexternal.C (doSubstitution): Added $$FPath token
+	to list of usable substitutions in external inset templates.
+
 2001-10-24  Juergen Vigna  <jug@sad.it>
 
 	* insettabular.C: use new ltType struct for setting longtable

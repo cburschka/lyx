@@ -71,10 +71,10 @@ void gettext_init(string const & localedir)
 
 void locale_init()
 {
+	setlocale(LC_NUMERIC, "C");
 }
 
 void gettext_init(string const &)
 {
-	setlocale(LC_NUMERIC, "C");
 }
 #endif

@@ -99,21 +99,21 @@ Template ChessDiagram
 		remember to middle and right click to 
 		insert new material in the board.
 		In order for this to work, you have to
-		install the lyxchess.sty which is bundled
-		with LyX, and the chess.sty from CTAN.
+		put the bundled lyxskak.sty in a place
+		that TeX will find it, and you will need
+		to install the skak package from CTAN.
 	HelpTextEnd
 	FileFilter "*.fen"
 	ViewCommand "xboard -lpf $$FName"
-	EditCommand "xboard -lpf $$FName"
+	EditCommand "xboard -lpf $$FName -mode EditPosition"
 	AutomaticProduction true
 	Format LaTeX
-		Product "$$Contents(\"$$Basename.tex\")"
-		UpdateCommand "python $$Sysdir/scripts/fen2latex.py $$FName $$Basename.tex"
+		Product "\\loadgame{$$FPath/$$Basename}\\showboard"
 		Requirement "chess"
 	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$Basename.asc\")"
-		UpdateCommand "python $$Sysdir/scripts/fen2ascii.py $$FName $$Basename.tex"
+		UpdateCommand "python $$Sysdir/scripts/fen2ascii.py $$FName $$Basename.asc"
 	FormatEnd
 	Format DocBook
 		Product "[Chess: $$Basename]"

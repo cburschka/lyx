@@ -24,7 +24,10 @@
 /** A collapsable text inset for LaTeX insertions.
   
   To write full ert (including styles and other insets) in a given
-  space. 
+  space.
+
+  Note that collapsed_ encompasses both the inline and collapsed button
+  versions of this inset. 
 */
 class InsetERT : public InsetCollapsable {
 public:
@@ -93,14 +96,16 @@ public:
 	///
 	bool isOpen() const { return status_ == Open || status_ == Inlined; }
 	///
+	bool inlined() const { return status_ == Inlined; }
+	///
+	ERTStatus status() const { return status_; }
+	///
 	void open(BufferView *);
 	///
 	void close(BufferView *) const;
 	///
 	bool allowSpellcheck() { return false; }
 	string const selectNextWordToSpellcheck(BufferView *, float &) const;
-	///
-	bool inlined() const { return status_ == Inlined; }
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///
@@ -109,9 +114,7 @@ public:
 	int width(BufferView *, LyXFont const &) const;
 	///
 	void draw(BufferView *, const LyXFont &, int , float &, bool) const;
-	///
-	ERTStatus status() const { return status_; }
-	///
+	/// set the status of the inset
 	void status(BufferView *, ERTStatus const st) const;
 	///
 	bool showInsetDialog(BufferView *) const;
@@ -125,6 +128,8 @@ private:
 	void setButtonLabel() const;
 	///
 	void set_latex_font(BufferView *);
+	/// update status on button
+	void updateStatus(BufferView *, bool = false) const;
 
 	///
 	mutable ERTStatus status_;

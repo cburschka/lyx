@@ -235,9 +235,11 @@ string const InsetExternal::doSubstitution(Buffer const * buffer,
 {
 	string result;
 	string const basename = ChangeExtension(params_.filename, string());
+	string const filepath = OnlyPath(MakeAbsPath(params_.filename));
 	result = subst(s, "$$FName", params_.filename);
 	result = subst(result, "$$Basename", basename);
 	result = subst(result, "$$Parameters", params_.parameters);
+	result = subst(result, "$$FPath", filepath);
 	result = ReplaceEnvironmentPath(result);
 	result = subst(result, "$$Tempname", tempname_);
 	result = subst(result, "$$Sysdir", system_lyxdir);

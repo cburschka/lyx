@@ -238,16 +238,25 @@ void InsetERT::setFont(BufferView *, LyXFont const &, bool, bool selectall)
 }
 
 
-void InsetERT::edit(BufferView * bv, int x, int y, unsigned int button)
+void InsetERT::updateStatus(BufferView * bv, bool swap) const
 {
-	InsetCollapsable::edit(bv, x, y, button);
 	if (status_ != Inlined) {
 		if (collapsed_) {
-			status(0, Collapsed);
+			status(bv, swap ? Open : Collapsed);
 		} else {
-			status(0, Open);
+			status(bv, swap ? Collapsed : Open);
 		}
 	}
+}
+
+ 
+void InsetERT::edit(BufferView * bv, int x, int y, unsigned int button)
+{
+	if (button == 3)
+		return;
+ 
+	InsetCollapsable::edit(bv, x, y, button);
+	updateStatus(0);
 	set_latex_font(bv);
 }
 
@@ -263,13 +272,7 @@ Inset::EDITABLE InsetERT::editable() const
 void InsetERT::edit(BufferView * bv, bool front)
 {
 	InsetCollapsable::edit(bv, front);
-	if (status_ != Inlined) {
-		if (collapsed_) {
-			status(0, Collapsed);
-		} else {
-			status(0, Open);
-		}
-	}
+	updateStatus(0);
 	set_latex_font(bv);
 }
 
@@ -280,33 +283,22 @@ void InsetERT::insetButtonRelease(BufferView * bv, int x, int y, int button)
 		showInsetDialog(bv);
 		return;
 	}
-	if ((x >= 0)  && (x < button_length) &&
-	    (y >= button_top_y) &&  (y <= button_bottom_y))
-	{
-//		if (collapsed_) {
-//			setLabel(_("ERT"));
-//		} else {
-//			setLabel(get_new_label());
-//		}
-		if (collapsed_) {
-			status(bv, Open);
-//			collapsed_ = false;
-//			inset.insetButtonRelease(bv, 0, 0, button);
-//			inset.setUpdateStatus(bv, InsetText::FULL);
-//			bv->updateInset(this, true);
-		} else {
-			status(bv, Collapsed);
-//			collapsed_ = true;
-//			bv->unlockInset(this);
-//			bv->updateInset(this, true);
-		}
-	} else if (!collapsed_ && (y > button_bottom_y)) {
+ 
+	if (status_ != Inlined && (x >= 0)  && (x < button_length) &&
+	    (y >= button_top_y) &&  (y <= button_bottom_y)) {
+		updateStatus(bv, true);
+	} else {
 		LyXFont font(LyXFont::ALL_SANE);
-		int yy = ascent(bv, font) + y -
-		    (ascent_collapsed() +
-		     descent_collapsed() +
-		     inset.ascent(bv, font));
-		inset.insetButtonRelease(bv, x, yy, button);
+		int yy = ascent(bv, font) + y - inset.ascent(bv, font);
+ 
+		// inlined is special - the text appears above 
+		// button_bottom_y
+		if (status_ == Inlined) {
+			inset.insetButtonRelease(bv, x, yy, button);
+		} else if (!collapsed_ && (y > button_bottom_y)) {
+			yy -= (ascent_collapsed() + descent_collapsed());
+			inset.insetButtonRelease(bv, x, yy, button);
+		}
 	}
 }
 

@@ -189,9 +189,9 @@ string const LaTeXFeatures::getPackages() const
 	//	packages << "\\usepackage{algorithm}\n";
 	//}
 
-	// lyxchess.sty
+	// lyxskak.sty --- newer chess support based on skak.sty
 	if (chess) {
-		packages << "\\usepackage{lyxchess}\n";
+		packages << "\\usepackage[ps,mover]{lyxskak}\n";
 	}
 
 	// setspace.sty
