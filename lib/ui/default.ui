@@ -209,8 +209,8 @@ Menuset
     End
 
     Menu "insert_special"
-	Item "Superscript|S" "command-sequence math-insert ^;math-mode;"
-	Item "Subscript|u" "command-sequence math-insert _;math-mode;"
+	Item "Superscript|S" "command-sequence math-mode ; math-superscript ; font-free; "
+	Item "Subscript|u" "command-sequence math-mode ; math-subscript ; font-free; "
 	Item "HFill|H" "hfill-insert"
 	Item "Hyphenation Point|P" "hyphenation-point-insert"
 	Item "Ligature break|k" "ligature-break-insert"
@@ -233,8 +233,17 @@ Menuset
   Separator
 	Item "Array environment|y" "math-insert matrix 2 2"
 	Item "Cases environment|C" "math-insert cases 2"
+	Separator
+	Submenu "Symbols|S" "insert_math_symbol"
   Separator
 	Item "Math Panel|l" "math-panel"
+    End
+
+    Menu "insert_math_symbol"
+	Item "Black board bold N" "math-insert \mathbb{N}"
+	Item "Black board bold Q" "math-insert \mathbb{Q}"
+	Item "Black board bold R" "math-insert \mathbb{R}"
+	Item "Black board bold Z" "math-insert \mathbb{Z}"
     End
 
     Menu "insert_floats"
@@ -375,9 +384,9 @@ Toolbar
     Icon "font-noun"
     Icon "font-free"
     Separator
-#    Icon "tex-mode"
     Icon "ert-insert"
     Icon "math-mode"
+    #Icon "math-panel"
     Separator
     Icon "footnote-insert"
     Icon "marginalnote-insert"
