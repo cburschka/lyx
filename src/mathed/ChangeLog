@@ -1,3 +1,8 @@
+2004-03-26  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_gridinset.C (MathGridInset): add destructor, to fix link
+	error in LyX/Mac
+
 2004-02-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_parser.C: 

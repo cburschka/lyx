@@ -91,6 +91,8 @@ public:
 	///
 	MathGridInset(col_type m, row_type n, char valign, string const & halign);
 	///
+	~MathGridInset();
+	///
 	MathInset * clone() const;
 	///
 	void metrics(MathMetricsInfo & mi) const;

@@ -118,6 +118,11 @@ MathGridInset::MathGridInset(col_type m, row_type n, char v, string const & h)
 }
 
 
+MathGridInset::~MathGridInset()
+{
+}
+  	
+
 MathInset * MathGridInset::clone() const
 {
 	return new MathGridInset(*this);
