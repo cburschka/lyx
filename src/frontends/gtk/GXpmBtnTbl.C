@@ -14,7 +14,7 @@
 
 #include <gtkmm.h>
 
-#include <cassert>
+#include <boost/assert.hpp>
 
 
 void GXpmBtnTbl::GXpmBtn::setXpm(XpmData xpm)
@@ -65,10 +65,10 @@ GXpmBtnTbl::~GXpmBtnTbl()
 
 void GXpmBtnTbl::construct()
 {
-	assert(rows_);
-	assert(cols_);
+	BOOST_ASSERT(rows_);
+	BOOST_ASSERT(cols_);
 	btns_.reset(new GXpmBtn[rows_ * cols_]);
-	assert(btns_.get());
+	BOOST_ASSERT(btns_.get());
 
 	for (int row = 0; row < rows_; ++row)
 		for (int col = 0; col < cols_; ++col) {

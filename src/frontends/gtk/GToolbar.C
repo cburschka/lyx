@@ -269,7 +269,7 @@ void GToolbar::show(bool)
 
 void GToolbar::update()
 {
-	int items = toolbar_.get_n_items();
+	int const items = toolbar_.get_n_items();
 
 	for (int i = 0; i < items; ++i) {
 		Gtk::ToolItem * item = toolbar_.get_nth_item(i);
