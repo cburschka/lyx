@@ -421,7 +421,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		lyxerr[Debug::KEY] << "Workarea Diff: "
 				   << xke->time - last_time_pressed
 				   << endl;
-		if (xke->time - last_time_pressed < 35 // should perhaps be tunable
+		if (xke->time - last_time_pressed < 25 // should perhaps be tunable
 		    && ret_state == last_state_pressed
 		    && xke->keycode == last_key_pressed) {
 			lyxerr[Debug::KEY]

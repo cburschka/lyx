@@ -1,5 +1,7 @@
 2001-01-17  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* WorkArea.C (work_area_handler): Decrease keyboard purge thershold.
+
 	* lyxrc.C (setDefaults): Correct initialization value for
  	font_norm_type.
 
