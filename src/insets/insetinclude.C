@@ -188,6 +188,22 @@ extern "C" void include_cb(FL_OBJECT *, long arg)
 }
 
 
+static string unique_id() {
+	static unsigned int seed=1000;
+
+#ifdef HAVE_SSTREAM
+	std::ostringstream ost;
+	ost << "file" << ++seed;
+#else
+	char ctmp[16];
+	ostrstream ost(ctmp,16);
+	ost << "file" << ++seed << '\0';
+#endif
+
+	return ost.str();
+}
+
+
 InsetInclude::InsetInclude(string const & fname, Buffer * bf)
 	: InsetCommand("include") 
 {
@@ -195,6 +211,7 @@ InsetInclude::InsetInclude(string const & fname, Buffer * bf)
 	setContents(fname);
 	flag = InsetInclude::INCLUDE;
 	noload = false;
+	include_label = unique_id();
 }
 
 
@@ -477,26 +494,8 @@ int InsetInclude::DocBook(Buffer const *, ostream & os) const
 }
 
 
-static unsigned int unique_id() {
-	static unsigned int seed=1000;
-
-	return ++seed;
-}
-
-
 void InsetInclude::Validate(LaTeXFeatures & features) const
 {
-
-#ifdef HAVE_SSTREAM
-	std::ostringstream ost;
-	ost << "file" << unique_id();
-	include_label = ost.str();
-#else
-	char ctmp[16];
-	ostrstream ost(ctmp,16);
-	ost << "file" << unique_id() << '\0';
-	include_label = ost.str();
-#endif
 
 	string incfile(getContents());
 	string writefile = ChangeExtension(getFileName(), ".sgml");

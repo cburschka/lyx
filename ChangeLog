@@ -1,4 +1,11 @@
+2000-07-02 José Abílio Matos <jamatos@fep.up.pt>
+
+	*  src/insets/insetinclude.C (InsetInclude): fixed
+	initialization of include_label.
+	(unique_id): now returns a string.
+
 2000-07-01 José Abílio Matos <jamatos@fep.up.pt>
+
 	* src/LaTeXFeatures.h: new member IncludedFiles, for
 	a map of key, included file name.
 
