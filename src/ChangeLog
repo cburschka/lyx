@@ -1,3 +1,8 @@
+2003-03-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* ParagraphList.C (erase): handle the case where it == begin
+	correctly.
+
 2003-03-25  John Levon  <levon@movementarian.org>
 
 	* Makefile.am:
@@ -47,7 +52,7 @@
 2003-03-22  John Levon  <levon@movementarian.org>
 
 	* BufferView_pimpl.C:
-	* lyxtext.h:	
+	* lyxtext.h:
 	* rowpainter.C:
 	* rowpainter.h:
 	* text.C:

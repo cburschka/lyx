@@ -125,6 +125,9 @@ void ParagraphList::erase(ParagraphList::iterator it)
 
 	if (prev)
 		prev->next(next);
+	else
+		parlist = next;
+
 	if (next)
 		next->previous(prev);
 
