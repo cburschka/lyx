@@ -35,7 +35,7 @@ class BufferView;
 class Counters;
 class InsetBase;
 class InsetBibitem;
-class InsetOld_code;
+class InsetBase_code;
 class Language;
 class LaTeXFeatures;
 class OutputParams;
@@ -319,7 +319,7 @@ public:
 	void insertInset(lyx::pos_type pos, InsetBase * inset,
 		LyXFont const &, Change change = Change(Change::INSERTED));
 	///
-	bool insetAllowed(InsetOld_code code);
+	bool insetAllowed(InsetBase_code code);
 	///
 	InsetBase * getInset(lyx::pos_type pos);
 	///

@@ -59,7 +59,7 @@ public:
 	virtual int docbook(Buffer const &, std::ostream &,
 			    OutputParams const & runparams) const;
 	///
-	InsetOld::Code lyxCode() const { return InsetOld::NO_CODE; }
+	InsetBase::Code lyxCode() const { return InsetBase::NO_CODE; }
 
 	///
 	InsetCommandParams const & params() const { return p_; }

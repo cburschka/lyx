@@ -25,7 +25,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	InsetOld::Code lyxCode() const;
+	InsetBase::Code lyxCode() const;
 	///
 	bool display() const { return true; }
 	///

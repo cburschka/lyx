@@ -33,7 +33,7 @@ using lyx::support::strToInt;
 
 
 // An updatable inset is highly editable by definition
-InsetOld::EDITABLE UpdatableInset::editable() const
+InsetBase::EDITABLE UpdatableInset::editable() const
 {
 	return HIGHLY_EDITABLE;
 }
@@ -106,7 +106,7 @@ void UpdatableInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		InsetOld::dispatch(cur, cmd);
+		InsetBase::dispatch(cur, cmd);
 	}
 }
 

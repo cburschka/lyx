@@ -35,7 +35,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	InsetOld::Code lyxCode() const { return InsetOld::BIBITEM_CODE; }
+	InsetBase::Code lyxCode() const { return InsetBase::BIBITEM_CODE; }
 	/// keep .lyx format compatible
 	bool directWrite() const { return true; }
 	///

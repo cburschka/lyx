@@ -51,7 +51,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	InsetOld::Code lyxCode() const { return InsetOld::FLOAT_CODE; }
+	InsetBase::Code lyxCode() const { return InsetBase::FLOAT_CODE; }
 	///
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
@@ -64,7 +64,7 @@ public:
 	///
 	std::string const editMessage() const;
 	///
-	bool insetAllowed(InsetOld::Code) const;
+	bool insetAllowed(InsetBase::Code) const;
 	/** returns true if, when outputing LaTeX, font changes should
 	    be closed before generating this inset. This is needed for
 	    insets that may contain several paragraphs */

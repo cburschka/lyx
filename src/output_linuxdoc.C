@@ -45,7 +45,7 @@ void linuxdocParagraphs(Buffer const & buf,
 		// treat <toc> as a special case for compatibility with old code
 		if (!pit->empty() && pit->isInset(0)) {
 			InsetBase const * inset = pit->getInset(0);
-			if (inset->lyxCode() == InsetOld::TOC_CODE) {
+			if (inset->lyxCode() == InsetBase::TOC_CODE) {
 				string const temp = "toc";
 				sgml::openTag(os, temp);
 				continue;

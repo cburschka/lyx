@@ -23,7 +23,7 @@ public:
 	///
 	InsetFoot(BufferParams const &);
 	///
-	InsetOld::Code lyxCode() const { return InsetOld::FOOT_CODE; }
+	InsetBase::Code lyxCode() const { return InsetBase::FOOT_CODE; }
 	///
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;

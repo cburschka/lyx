@@ -25,7 +25,7 @@ public:
 	explicit
 	InsetUrl(InsetCommandParams const &);
 	///
-	InsetOld::Code lyxCode() const { return InsetOld::URL_CODE; }
+	InsetBase::Code lyxCode() const { return InsetBase::URL_CODE; }
 	///
 	void validate(LaTeXFeatures &) const;
 	///

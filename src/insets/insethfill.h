@@ -24,7 +24,7 @@ public:
 	///
 	std::string const getScreenLabel(Buffer const &) const;
 	///
-	InsetOld::Code lyxCode() const { return InsetOld::HFILL_CODE; }
+	InsetBase::Code lyxCode() const { return InsetBase::HFILL_CODE; }
 	///
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;

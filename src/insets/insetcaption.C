@@ -88,8 +88,8 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 	// See if we can find the name of the float this caption
 	// belongs to.
 #if 0
-	InsetOld * i1 = owner();
-	InsetOld * i2 = i1 ? i1->owner() : 0;
+	InsetBase * i1 = owner();
+	InsetBase * i2 = i1 ? i1->owner() : 0;
 	string type;
 	if (i2->lyxCode() == FLOAT_CODE)
 #ifdef WITH_WARNINGS

@@ -65,7 +65,7 @@ protected:
 
 private:
 	InsetOld & operator=(InsetOld const &) const;
-	
+
 	///
 	std::string name_;
 	/** We store the LColor::color value as an int to get LColor.h out
@@ -75,14 +75,14 @@ private:
 };
 
 
-/** \c InsetOld_code is a wrapper for InsetOld::Code.
+/** \c InsetBase_code is a wrapper for InsetBase::Code.
  *  It can be forward-declared and passed as a function argument without
  *  having to expose inset.h.
  */
-class InsetOld_code {
+class InsetBase_code {
 	InsetBase::Code val_;
 public:
-	InsetOld_code(InsetBase::Code val) : val_(val) {}
+	InsetBase_code(InsetBase::Code val) : val_(val) {}
 	operator InsetBase::Code() const { return val_; }
 };
 

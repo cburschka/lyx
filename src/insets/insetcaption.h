@@ -28,7 +28,7 @@ public:
 	///
 	virtual bool display() const;
 	///
-	virtual InsetOld::Code lyxCode() const;
+	virtual InsetBase::Code lyxCode() const;
 	///
 	virtual std::string const editMessage() const;
 	///
@@ -53,7 +53,7 @@ bool InsetCaption::display() const
 
 
 inline
-InsetOld::Code InsetCaption::lyxCode() const
+InsetBase::Code InsetCaption::lyxCode() const
 {
 	return CAPTION_CODE;
 }

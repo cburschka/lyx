@@ -1254,15 +1254,15 @@ void Buffer::fillWithBibKeys(std::vector<std::pair<string, string> > & keys)
 	}
 
 	for (InsetIterator it = inset_iterator_begin(inset()); it; ++it) {
-		if (it->lyxCode() == InsetOld::BIBTEX_CODE) {
+		if (it->lyxCode() == InsetBase::BIBTEX_CODE) {
 			InsetBibtex const & inset =
 				dynamic_cast<InsetBibtex const &>(*it);
 			inset.fillWithBibKeys(*this, keys);
-		} else if (it->lyxCode() == InsetOld::INCLUDE_CODE) {
+		} else if (it->lyxCode() == InsetBase::INCLUDE_CODE) {
 			InsetInclude const & inset =
 				dynamic_cast<InsetInclude const &>(*it);
 			inset.fillWithBibKeys(*this, keys);
-		} else if (it->lyxCode() == InsetOld::BIBITEM_CODE) {
+		} else if (it->lyxCode() == InsetBase::BIBITEM_CODE) {
 			InsetBibitem const & inset =
 				dynamic_cast<InsetBibitem const &>(*it);
 			string const key = inset.getContents();

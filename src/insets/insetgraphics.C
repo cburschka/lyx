@@ -210,7 +210,7 @@ void InsetGraphics::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		InsetOld::doDispatch(cur, cmd);
+		InsetBase::doDispatch(cur, cmd);
 		break;
 	}
 }
@@ -236,7 +236,7 @@ void InsetGraphics::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-InsetOld::EDITABLE InsetGraphics::editable() const
+InsetBase::EDITABLE InsetGraphics::editable() const
 {
 	return IS_EDITABLE;
 }

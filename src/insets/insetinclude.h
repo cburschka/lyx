@@ -41,7 +41,7 @@ public:
 	InsetCommandParams const & params(void) const;
 
 	///
-	InsetOld::Code lyxCode() const { return InsetOld::INCLUDE_CODE; }
+	InsetBase::Code lyxCode() const { return InsetBase::INCLUDE_CODE; }
 	/** Fills \c list
 	 *  \param buffer the Buffer containing this inset.
 	 *  \param list the list of labels in the child buffer.

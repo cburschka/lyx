@@ -25,7 +25,7 @@ public:
 	InsetOptArg(BufferParams const &);
 
 	/// code of the inset
-	InsetOld::Code lyxCode() const { return InsetOld::OPTARG_CODE; }
+	InsetBase::Code lyxCode() const { return InsetBase::OPTARG_CODE; }
 	/// return an message upon editing
 	std::string const editMessage() const;
 

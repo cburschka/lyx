@@ -129,7 +129,7 @@ void InsetCommand::doDispatch(LCursor & cur, FuncRequest & cmd)
 	}
 
 	default:
-		InsetOld::doDispatch(cur, cmd);
+		InsetBase::doDispatch(cur, cmd);
 		break;
 	}
 

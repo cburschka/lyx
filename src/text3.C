@@ -185,7 +185,7 @@ string const freefont2string()
 }
 
 bool LyXText::gotoNextInset(LCursor & cur,
-	vector<InsetOld_code> const & codes, string const & contents)
+	vector<InsetBase_code> const & codes, string const & contents)
 {
 	BOOST_ASSERT(this == cur.text());
 	pit_type end = paragraphs().size();
@@ -218,7 +218,7 @@ bool LyXText::gotoNextInset(LCursor & cur,
 
 
 void LyXText::gotoInset(LCursor & cur,
-	vector<InsetOld_code> const & codes, bool same_content)
+	vector<InsetBase_code> const & codes, bool same_content)
 {
 	cur.clearSelection();
 
@@ -249,9 +249,9 @@ void LyXText::gotoInset(LCursor & cur,
 }
 
 
-void LyXText::gotoInset(LCursor & cur, InsetOld_code code, bool same_content)
+void LyXText::gotoInset(LCursor & cur, InsetBase_code code, bool same_content)
 {
-	gotoInset(cur, vector<InsetOld_code>(1, code), same_content);
+	gotoInset(cur, vector<InsetBase_code>(1, code), same_content);
 }
 
 
@@ -981,7 +981,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_REFERENCE_GOTO: {
-		vector<InsetOld_code> tmp;
+		vector<InsetBase_code> tmp;
 		tmp.push_back(InsetBase::LABEL_CODE);
 		tmp.push_back(InsetBase::REF_CODE);
 		gotoInset(cur, tmp, true);
@@ -1594,7 +1594,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		break;
 
 	case LFUN_INSET_OPTARG:
-		enable = numberOfOptArgs(cur.paragraph()) 
+		enable = numberOfOptArgs(cur.paragraph())
 			< cur.paragraph().layout()->optionalargs;
 		break;
 
@@ -1604,117 +1604,117 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 
 #if 0
 	// the functions which insert insets
-	InsetOld::Code code = InsetOld::NO_CODE;
+	InsetBase::Code code = InsetBase::NO_CODE;
 	switch (cmd.action) {
 	case LFUN_DIALOG_SHOW_NEW_INSET:
 		if (cmd.argument == "bibitem")
-			code = InsetOld::BIBITEM_CODE;
+			code = InsetBase::BIBITEM_CODE;
 		else if (cmd.argument == "bibtex")
-			code = InsetOld::BIBTEX_CODE;
+			code = InsetBase::BIBTEX_CODE;
 		else if (cmd.argument == "box")
-			code = InsetOld::BOX_CODE;
+			code = InsetBase::BOX_CODE;
 		else if (cmd.argument == "branch")
-			code = InsetOld::BRANCH_CODE;
+			code = InsetBase::BRANCH_CODE;
 		else if (cmd.argument == "citation")
-			code = InsetOld::CITE_CODE;
+			code = InsetBase::CITE_CODE;
 		else if (cmd.argument == "ert")
-			code = InsetOld::ERT_CODE;
+			code = InsetBase::ERT_CODE;
 		else if (cmd.argument == "external")
-			code = InsetOld::EXTERNAL_CODE;
+			code = InsetBase::EXTERNAL_CODE;
 		else if (cmd.argument == "float")
-			code = InsetOld::FLOAT_CODE;
+			code = InsetBase::FLOAT_CODE;
 		else if (cmd.argument == "graphics")
-			code = InsetOld::GRAPHICS_CODE;
+			code = InsetBase::GRAPHICS_CODE;
 		else if (cmd.argument == "include")
-			code = InsetOld::INCLUDE_CODE;
+			code = InsetBase::INCLUDE_CODE;
 		else if (cmd.argument == "index")
-			code = InsetOld::INDEX_CODE;
+			code = InsetBase::INDEX_CODE;
 		else if (cmd.argument == "label")
-			code = InsetOld::LABEL_CODE;
+			code = InsetBase::LABEL_CODE;
 		else if (cmd.argument == "note")
-			code = InsetOld::NOTE_CODE;
+			code = InsetBase::NOTE_CODE;
 		else if (cmd.argument == "ref")
-			code = InsetOld::REF_CODE;
+			code = InsetBase::REF_CODE;
 		else if (cmd.argument == "toc")
-			code = InsetOld::TOC_CODE;
+			code = InsetBase::TOC_CODE;
 		else if (cmd.argument == "url")
-			code = InsetOld::URL_CODE;
+			code = InsetBase::URL_CODE;
 		else if (cmd.argument == "vspace")
-			code = InsetOld::VSPACE_CODE;
+			code = InsetBase::VSPACE_CODE;
 		else if (cmd.argument == "wrap")
-			code = InsetOld::WRAP_CODE;
+			code = InsetBase::WRAP_CODE;
 		break;
 
 	case LFUN_INSET_ERT:
-		code = InsetOld::ERT_CODE;
+		code = InsetBase::ERT_CODE;
 		break;
 	case LFUN_INSET_FOOTNOTE:
-		code = InsetOld::FOOT_CODE;
+		code = InsetBase::FOOT_CODE;
 		break;
 	case LFUN_TABULAR_INSERT:
-		code = InsetOld::TABULAR_CODE;
+		code = InsetBase::TABULAR_CODE;
 		break;
 	case LFUN_INSET_MARGINAL:
-		code = InsetOld::MARGIN_CODE;
+		code = InsetBase::MARGIN_CODE;
 		break;
 	case LFUN_INSET_FLOAT:
 	case LFUN_INSET_WIDE_FLOAT:
-		code = InsetOld::FLOAT_CODE;
+		code = InsetBase::FLOAT_CODE;
 		break;
 	case LFUN_INSET_WRAP:
-		code = InsetOld::WRAP_CODE;
+		code = InsetBase::WRAP_CODE;
 		break;
 	case LFUN_FLOAT_LIST:
-		code = InsetOld::FLOAT_LIST_CODE;
+		code = InsetBase::FLOAT_LIST_CODE;
 		break;
 #if 0
 	case LFUN_INSET_LIST:
-		code = InsetOld::LIST_CODE;
+		code = InsetBase::LIST_CODE;
 		break;
 	case LFUN_INSET_THEOREM:
-		code = InsetOld::THEOREM_CODE;
+		code = InsetBase::THEOREM_CODE;
 		break;
 #endif
 	case LFUN_INSET_CAPTION:
-		code = InsetOld::CAPTION_CODE;
+		code = InsetBase::CAPTION_CODE;
 		break;
 	case LFUN_INSERT_NOTE:
-		code = InsetOld::NOTE_CODE;
+		code = InsetBase::NOTE_CODE;
 		break;
 	case LFUN_INSERT_CHARSTYLE:
-		code = InsetOld::CHARSTYLE_CODE;
+		code = InsetBase::CHARSTYLE_CODE;
 		if (buf->params().getLyXTextClass().charstyles().empty())
 			enable = false;
 		break;
 	case LFUN_INSERT_BOX:
-		code = InsetOld::BOX_CODE;
+		code = InsetBase::BOX_CODE;
 		break;
 	case LFUN_INSERT_BRANCH:
-		code = InsetOld::BRANCH_CODE;
+		code = InsetBase::BRANCH_CODE;
 		if (buf->params().branchlist().empty())
 			enable = false;
 		break;
 	case LFUN_INSERT_LABEL:
-		code = InsetOld::LABEL_CODE;
+		code = InsetBase::LABEL_CODE;
 		break;
 	case LFUN_INSET_OPTARG:
-		code = InsetOld::OPTARG_CODE;
+		code = InsetBase::OPTARG_CODE;
 		break;
 	case LFUN_ENVIRONMENT_INSERT:
-		code = InsetOld::BOX_CODE;
+		code = InsetBase::BOX_CODE;
 		break;
 	case LFUN_INDEX_INSERT:
-		code = InsetOld::INDEX_CODE;
+		code = InsetBase::INDEX_CODE;
 		break;
 	case LFUN_INDEX_PRINT:
-		code = InsetOld::INDEX_PRINT_CODE;
+		code = InsetBase::INDEX_PRINT_CODE;
 		break;
 	case LFUN_TOC_INSERT:
-		code = InsetOld::TOC_CODE;
+		code = InsetBase::TOC_CODE;
 		break;
 	case LFUN_HTMLURL:
 	case LFUN_URL:
-		code = InsetOld::URL_CODE;
+		code = InsetBase::URL_CODE;
 		break;
 	case LFUN_QUOTE:
 		// always allow this, since we will inset a raw quote
@@ -1726,22 +1726,22 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 	case LFUN_MENU_SEPARATOR:
 	case LFUN_LDOTS:
 	case LFUN_END_OF_SENTENCE:
-		code = InsetOld::SPECIALCHAR_CODE;
+		code = InsetBase::SPECIALCHAR_CODE;
 		break;
 	case LFUN_SPACE_INSERT:
 		// slight hack: we know this is allowed in math mode
 		if (cur.inTexted())
-			code = InsetOld::SPACE_CODE;
+			code = InsetBase::SPACE_CODE;
 		break;
 	case LFUN_INSET_DIALOG_SHOW: {
 		InsetBase * inset = cur.nextInset();
 		enable = inset;
 		if (inset) {
 			code = inset->lyxCode();
-			if (!(code == InsetOld::INCLUDE_CODE
-				|| code == InsetOld::BIBTEX_CODE
-				|| code == InsetOld::FLOAT_LIST_CODE
-				|| code == InsetOld::TOC_CODE))
+			if (!(code == InsetBase::INCLUDE_CODE
+				|| code == InsetBase::BIBTEX_CODE
+				|| code == InsetBase::FLOAT_LIST_CODE
+				|| code == InsetBase::TOC_CODE))
 				enable = false;
 		}
 		break;
@@ -1750,7 +1750,7 @@ bool LyXText::getStatus(LCursor & cur, FuncRequest const & cmd,
 		break;
 	}
 
-	if (code != InsetOld::NO_CODE
+	if (code != InsetBase::NO_CODE
 			&& (cur.empty() || !cur.inset().insetAllowed(code)))
 		enable = false;
 

@@ -608,7 +608,7 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 	InsetIterator const end = inset_iterator_end(inset);
 
 	for (; it != end; ++it)
-		if (it->lyxCode() == InsetOld::MATHMACRO_CODE)
+		if (it->lyxCode() == InsetBase::MATHMACRO_CODE)
 			it->latex(buffer_, os, runparams);
 
 	// All equation lables appear as "(#)" + preview.sty's rendering of

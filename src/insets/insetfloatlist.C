@@ -57,9 +57,9 @@ string const InsetFloatList::getScreenLabel(Buffer const & buf) const
 }
 
 
-InsetOld::Code InsetFloatList::lyxCode() const
+InsetBase::Code InsetFloatList::lyxCode() const
 {
-	return InsetOld::FLOAT_LIST_CODE;
+	return InsetBase::FLOAT_LIST_CODE;
 }
 
 

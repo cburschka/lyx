@@ -204,7 +204,7 @@ int InsetWrap::docbook(Buffer const & buf, ostream & os,
 }
 
 
-bool InsetWrap::insetAllowed(InsetOld::Code code) const
+bool InsetWrap::insetAllowed(InsetBase::Code code) const
 {
 	switch(code) {
 	case FLOAT_CODE:

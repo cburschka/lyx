@@ -15,8 +15,6 @@
 #include <boost/scoped_ptr.hpp>
 #include <string>
 
-class InsetOld;
-
 namespace lyx {
 namespace graphics {
 

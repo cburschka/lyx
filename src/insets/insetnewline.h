@@ -20,7 +20,7 @@ public:
 
 	InsetNewline() {}
 
-	InsetOld::Code lyxCode() const { return InsetOld::NEWLINE_CODE; }
+	InsetBase::Code lyxCode() const { return InsetBase::NEWLINE_CODE; }
 
 	void metrics(MetricsInfo &, Dimension &) const;
 

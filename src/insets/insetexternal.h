@@ -107,7 +107,7 @@ public:
 	///
 	virtual ~InsetExternal();
 	///
-	virtual InsetOld::Code lyxCode() const { return EXTERNAL_CODE; }
+	virtual InsetBase::Code lyxCode() const { return EXTERNAL_CODE; }
 	///
 	virtual EDITABLE editable() const { return IS_EDITABLE; }
 

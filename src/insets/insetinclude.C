@@ -143,7 +143,7 @@ void InsetInclude::doDispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
-		InsetOld::doDispatch(cur, cmd);
+		InsetBase::doDispatch(cur, cmd);
 		break;
 	}
 }

@@ -86,10 +86,10 @@ TocList const getTocList(Buffer const & buf)
 		InsetList::const_iterator it = pit->insetlist.begin();
 		InsetList::const_iterator end = pit->insetlist.end();
 		for (; it != end; ++it) {
-			if (it->inset->lyxCode() == InsetOld::FLOAT_CODE) {
+			if (it->inset->lyxCode() == InsetBase::FLOAT_CODE) {
 				static_cast<InsetFloat*>(it->inset)
 					->addToToc(toclist, buf);
-			} else if (it->inset->lyxCode() == InsetOld::WRAP_CODE) {
+			} else if (it->inset->lyxCode() == InsetBase::WRAP_CODE) {
 				static_cast<InsetWrap*>(it->inset)
 					->addToToc(toclist, buf);
 			}

@@ -23,7 +23,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	InsetOld::Code lyxCode() const { return InsetOld::LABEL_CODE; }
+	InsetBase::Code lyxCode() const { return InsetBase::LABEL_CODE; }
 	/// Appends \c list with this label
 	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
 	///

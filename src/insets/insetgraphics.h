@@ -61,7 +61,7 @@ public:
 	void validate(LaTeXFeatures & features) const;
 
 	/// returns LyX code associated with the inset. Used for TOC, ...)
-	InsetOld::Code lyxCode() const { return InsetOld::GRAPHICS_CODE; }
+	InsetBase::Code lyxCode() const { return InsetBase::GRAPHICS_CODE; }
 
 	/** Set the inset parameters, used by the GUIndependent dialog.
 	    Return true of new params are different from what was so far.

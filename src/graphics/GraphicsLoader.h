@@ -29,8 +29,6 @@
 #include <boost/scoped_ptr.hpp>
 #include <boost/signal.hpp>
 
-class InsetOld;
-
 namespace lyx {
 namespace graphics {
 

@@ -263,9 +263,9 @@ void InsetERT::setButtonLabel()
 }
 
 
-bool InsetERT::insetAllowed(InsetOld::Code code) const
+bool InsetERT::insetAllowed(InsetBase::Code code) const
 {
-	return code == InsetOld::NEWLINE_CODE;
+	return code == InsetBase::NEWLINE_CODE;
 }
 
 

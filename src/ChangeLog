@@ -1,3 +1,7 @@
+2004-11-25  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* rename a lot of InsetOld to InsetBase
+
 2004-11-25  Angus Leeming  <leeming@lyx.org>
 
 	* BufferView_pimpl.C:
@@ -13,11 +17,11 @@
 	* FuncStatus.C (message): new methods. Used to provide an error
 	message indicating why a command is disabled.
 	(clear, |=, FuncStatus): update for message.
-	
+
 2004-11-23  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* lyxfunc.C (dispatch): always call sendDispatchMessage
-	
+
 2004-11-24  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* BufferView.C:
@@ -47,11 +51,11 @@
 	(rowstruct): use initialization
 	(columnstruct): use initialization
 	(ltType): use initialization
-	
 
-	* lyxlength.h (swap): new function 
 
-	* LColor.[Ch] (operator=): use the common semantics 
+	* lyxlength.h (swap): new function
+
+	* LColor.[Ch] (operator=): use the common semantics
 
 2004-11-22  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 

@@ -371,7 +371,7 @@ auto_ptr<InsetBase> InsetQuotes::doClone() const
 }
 
 
-InsetOld::Code InsetQuotes::lyxCode() const
+InsetBase::Code InsetQuotes::lyxCode() const
 {
-  return InsetOld::QUOTE_CODE;
+  return InsetBase::QUOTE_CODE;
 }

@@ -396,27 +396,27 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		if (!inset)
 			break;
 
-		InsetOld::Code code = inset->lyxCode();
+		InsetBase::Code code = inset->lyxCode();
 		switch (code) {
-			case InsetOld::TABULAR_CODE:
+			case InsetBase::TABULAR_CODE:
 				enable = cmd.argument == "tabular";
 				break;
-			case InsetOld::ERT_CODE:
+			case InsetBase::ERT_CODE:
 				enable = cmd.argument == "ert";
 				break;
-			case InsetOld::FLOAT_CODE:
+			case InsetBase::FLOAT_CODE:
 				enable = cmd.argument == "float";
 				break;
-			case InsetOld::WRAP_CODE:
+			case InsetBase::WRAP_CODE:
 				enable = cmd.argument == "wrap";
 				break;
-			case InsetOld::NOTE_CODE:
+			case InsetBase::NOTE_CODE:
 				enable = cmd.argument == "note";
 				break;
-			case InsetOld::BRANCH_CODE:
+			case InsetBase::BRANCH_CODE:
 				enable = cmd.argument == "branch";
 				break;
-			case InsetOld::BOX_CODE:
+			case InsetBase::BOX_CODE:
 				enable = cmd.argument == "box";
 				break;
 			default:
@@ -437,7 +437,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 			enable = Exporter::IsExportable(*buf, "dvi")
 				&& lyxrc.print_command != "none";
 		else if (name == "character")
-			enable = cur.inset().lyxCode() != InsetOld::ERT_CODE;
+			enable = cur.inset().lyxCode() != InsetBase::ERT_CODE;
 		else if (name == "vclog")
 			enable = buf->lyxvc().inUse();
 		else if (name == "latexlog")

@@ -30,7 +30,7 @@ class BufferView;
 class CursorSlice;
 class Dimension;
 class InsetBase;
-class InsetOld_code;
+class InsetBase_code;
 class FuncRequest;
 class FuncStatus;
 class LColor_color;
@@ -255,13 +255,13 @@ public:
 
 	/// Find next inset of some specified type.
 	bool gotoNextInset(LCursor & cur,
-		std::vector<InsetOld_code> const & codes,
+		std::vector<InsetBase_code> const & codes,
 		std::string const & contents = std::string());
 	///
 	void gotoInset(LCursor & cur,
-		std::vector<InsetOld_code> const & codes, bool same_content);
+		std::vector<InsetBase_code> const & codes, bool same_content);
 	///
-	void gotoInset(LCursor & cur, InsetOld_code code, bool same_content);
+	void gotoInset(LCursor & cur, InsetBase_code code, bool same_content);
 
 	/// current text width
 	int width() const;

@@ -61,7 +61,7 @@ public:
 	///
 	std::string const editMessage() const;
 	///
-	InsetOld::Code lyxCode() const { return InsetOld::BOX_CODE; }
+	InsetBase::Code lyxCode() const { return InsetBase::BOX_CODE; }
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///

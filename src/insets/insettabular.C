@@ -911,7 +911,7 @@ int InsetTabular::docbook(Buffer const & buf, ostream & os,
 			  OutputParams const & runparams) const
 {
 	int ret = 0;
-	InsetOld * master = 0;
+	InsetBase * master = 0;
 
 #ifdef WITH_WARNINGS
 #warning Why not pass a proper DocIterator here?
@@ -920,7 +920,7 @@ int InsetTabular::docbook(Buffer const & buf, ostream & os,
 	// if the table is inside a float it doesn't need the informaltable
 	// wrapper. Search for it.
 	for (master = owner(); master; master = master->owner())
-		if (master->lyxCode() == InsetOld::FLOAT_CODE)
+		if (master->lyxCode() == InsetBase::FLOAT_CODE)
 			break;
 #endif
 

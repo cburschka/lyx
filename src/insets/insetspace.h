@@ -73,7 +73,7 @@ public:
 	int docbook(Buffer const &, std::ostream &,
 		    OutputParams const &) const;
 	///
-	InsetOld::Code lyxCode() const { return InsetOld::SPACE_CODE; }
+	InsetBase::Code lyxCode() const { return InsetBase::SPACE_CODE; }
 	/// We don't need \begin_inset and \end_inset
 	bool directWrite() const { return true; }
 

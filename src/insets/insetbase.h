@@ -208,7 +208,7 @@ public:
 
 	/** This is not quite the correct place for this enum. I think
 	    the correct would be to let each subclass of Inset declare
-	    its own enum code. Actually the notion of an InsetOld::Code
+	    its own enum code. Actually the notion of an InsetBase::Code
 	    should be avoided, but I am not sure how this could be done
 	    in a cleaner way. */
 	enum Code {

@@ -37,13 +37,13 @@ public:
 	///
 	~InsetERT();
 	///
-	InsetOld::Code lyxCode() const { return InsetOld::ERT_CODE; }
+	InsetBase::Code lyxCode() const { return InsetBase::ERT_CODE; }
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
 	std::string const editMessage() const;
 	///
-	bool insetAllowed(InsetOld::Code code) const;
+	bool insetAllowed(InsetBase::Code code) const;
 	///
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;

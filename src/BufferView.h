@@ -27,7 +27,6 @@ class DocIterator;
 class ErrorList;
 class FuncRequest;
 class FuncStatus;
-class InsetOld;
 class Language;
 class LCursor;
 class LyXText;

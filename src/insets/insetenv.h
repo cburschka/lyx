@@ -25,14 +25,14 @@ public:
 	///
 	void read(Buffer const & buf, LyXLex & lex);
 	///
-	InsetOld::Code lyxCode() const { return InsetOld::ENVIRONMENT_CODE; }
+	InsetBase::Code lyxCode() const { return InsetBase::ENVIRONMENT_CODE; }
 	///
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
 	///
 	std::string const editMessage() const;
 	///
-	InsetOld::EDITABLE editable() const { return HIGHLY_EDITABLE; }
+	InsetBase::EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
 	bool isTextInset() const { return true; }
 	///

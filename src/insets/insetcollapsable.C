@@ -192,7 +192,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-InsetOld::EDITABLE InsetCollapsable::editable() const
+InsetBase::EDITABLE InsetCollapsable::editable() const
 {
 	return status_ != Collapsed ? HIGHLY_EDITABLE : IS_EDITABLE;
 }

@@ -640,9 +640,9 @@ bool InsetLatexAccent::directWrite() const
 }
 
 
-InsetOld::Code InsetLatexAccent::lyxCode() const
+InsetBase::Code InsetLatexAccent::lyxCode() const
 {
-	return InsetOld::ACCENT_CODE;
+	return InsetBase::ACCENT_CODE;
 }
 
 

@@ -42,7 +42,7 @@ public:
 	///
 	std::string const editMessage() const;
 	///
-	InsetOld::Code lyxCode() const { return InsetOld::BRANCH_CODE; }
+	InsetBase::Code lyxCode() const { return InsetBase::BRANCH_CODE; }
 	///
 	void write(Buffer const &, std::ostream &) const;
 	///

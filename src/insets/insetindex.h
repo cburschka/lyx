@@ -28,7 +28,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	InsetOld::Code lyxCode() const;
+	InsetBase::Code lyxCode() const;
 	///
 	int docbook(Buffer const &, std::ostream &,
 		    OutputParams const &) const;
@@ -48,7 +48,7 @@ public:
 	///
 	EDITABLE editable() const { return NOT_EDITABLE; }
 	///
-	InsetOld::Code lyxCode() const;
+	InsetBase::Code lyxCode() const;
 	///
 	bool display() const { return true; }
 	///

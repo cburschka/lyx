@@ -26,7 +26,7 @@ public:
 	///
 	void write(Buffer const & buf, std::ostream & os) const;
 	///
-	bool insetAllowed(InsetOld::Code) const;
+	bool insetAllowed(InsetBase::Code) const;
 	/** returns true if, when outputing LaTeX, font changes should
 	    be closed before generating this inset. This is needed for
 	    insets that may contain several paragraphs */

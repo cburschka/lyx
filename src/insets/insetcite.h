@@ -29,7 +29,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	InsetOld::Code lyxCode() const { return InsetOld::CITE_CODE; }
+	InsetBase::Code lyxCode() const { return InsetBase::CITE_CODE; }
 	///
 	int plaintext(Buffer const &, std::ostream &, OutputParams const &) const;
 	///

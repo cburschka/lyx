@@ -60,7 +60,7 @@ public:
 	///
 	bool directWrite() const;
 	///
-	InsetOld::Code lyxCode()const;
+	InsetBase::Code lyxCode()const;
 	///
 	inline bool canDisplay();
 	// should this inset be handled like a normal charater

@@ -47,7 +47,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	InsetOld::Code lyxCode() const { return InsetOld::WRAP_CODE; }
+	InsetBase::Code lyxCode() const { return InsetBase::WRAP_CODE; }
 	///
 	int latex(Buffer const &, std::ostream &,
 		  OutputParams const &) const;
@@ -57,7 +57,7 @@ public:
 	///
 	std::string const editMessage() const;
 	///
-	bool insetAllowed(InsetOld::Code) const;
+	bool insetAllowed(InsetBase::Code) const;
 	///
 	void addToToc(lyx::toc::TocList &, Buffer const &) const;
 	///

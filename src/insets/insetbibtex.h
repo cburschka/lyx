@@ -27,7 +27,7 @@ public:
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
 	///
-	InsetOld::Code lyxCode() const { return InsetOld::BIBTEX_CODE; }
+	InsetBase::Code lyxCode() const { return InsetBase::BIBTEX_CODE; }
 	///
 	bool display() const { return true; }
 	///
