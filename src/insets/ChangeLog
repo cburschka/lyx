@@ -1,3 +1,8 @@
+2003-01-27  Allan Rae  <rae@lyx.org>
+
+	* insetinclude.C (loadIfNeeded): included files might be under
+	VCS control so we need loadLyXFile() not readFile() for that.
+
 2003-02-25  John Levon  <levon@movementarian.org>
 
 	* insetgraphicsParams.h:
@@ -13,7 +18,8 @@
 	* insetert.C:
 	* insetgraphics.C:
 	* insettabular.C:
-	* insettext.C: Use error messages with identical spelling and punctuation
+	* insettext.C: Use error messages with identical spelling and
+	punctuation
 
 2003-01-12  Michael Schmitt <michael.schmitt@teststep.org>
 
@@ -26,8 +32,8 @@
 
 2003-01-06  Michael Schmitt <Michael.Schmitt@teststep.org>
 
-	* insettext.C: fix inconsistent usage of spaces, colons, capitalization,
-	and the like.
+	* insettext.C: fix inconsistent usage of spaces, colons,
+	capitalization, and the like.
 
 2002-12-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 

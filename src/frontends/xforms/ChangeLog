@@ -1,3 +1,9 @@
+2003-03-13  Angus Leeming  <leeming@lyx.org>
+
+	* forms/fdfix.sh: 
+	* forms/fdfixh.sed: fix #944 by making the temporary filenames unique
+	and so enable reentrant builds on SMP machines.
+
 2003-02-17  John Levon  <levon@movementarian.org>
 
 	* FormSpellchecker.h:

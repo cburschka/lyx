@@ -26,6 +26,7 @@
 #include "support/lstrings.h"
 
 #include <sys/select.h>
+#include <sys/time.h>
 
 #ifndef CXX_GLOBAL_CSTD
 using std::strcpy;

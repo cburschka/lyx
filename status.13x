@@ -38,3 +38,7 @@ What's new
 
 ** Bug fixes
 
+- fix loading of included files that are under revision control
+
+- fix building of xforms dialogs' source on SMP machines [Bug #944,
+  xforms only]
