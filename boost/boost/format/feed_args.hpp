@@ -70,7 +70,7 @@ namespace  {
   } // -do_pad(..) 
 
 
-#if BOOST_WORKAROUND( BOOST_MSVC, BOOST_TESTED_AT(1300))
+#if BOOST_WORKAROUND( BOOST_MSVC, <= 1300) 
 // MSVC needs to be tricked to disambiguate this simple overload..
 // the trick is in "boost/format/msvc_disambiguater.hpp"
   
@@ -155,7 +155,7 @@ void put( T x,
       put_last( oss_, x);
       res = oss_.str();
 
-      if (specs.truncate_ >= 0)
+      if (specs.truncate_ >= 0 && static_cast<unsigned int>(specs.truncate_) < res.size() )
         res.erase(specs.truncate_);
 
       // complex pads :

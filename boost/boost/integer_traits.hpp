@@ -10,7 +10,7 @@
  * software for any purpose. It is provided "as is" without express or
  * implied warranty.
  *
- * $Id: integer_traits.hpp,v 1.11 2003/08/07 12:09:23 larsbj Exp $
+ * $Id: integer_traits.hpp,v 1.22 2002/12/27 16:51:52 beman_dawes Exp $
  *
  * Idea by Beman Dawes, Ed Brey, Steve Cleary, and Nathan Myers
  */
@@ -214,5 +214,3 @@ class integer_traits<unsigned long long>
 } // namespace boost
 
 #endif /* BOOST_INTEGER_TRAITS_HPP */
-
-
