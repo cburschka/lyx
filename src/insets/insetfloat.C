@@ -390,7 +390,7 @@ void InsetFloat::wide(bool w, BufferParams const & bp)
 {
 	params_.wide = w;
 
-	string lab(_("float:"));
+	string lab(_("float: "));
 	lab += floatname(params_.type, bp);
 
 	if (params_.wide)
