@@ -976,7 +976,7 @@ string const
 FormPreferences::Converters::feedback(FL_OBJECT const * const ob) const
 {
 	if (ob == dialog_->browser_all)
-		return _("All the currently defined converters known to LyX.");
+		return _("All explicitly defined converters for LyX");
 
 	if (ob == dialog_->choice_from)
 		return _("Convert \"from\" this format");
