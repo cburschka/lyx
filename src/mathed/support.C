@@ -573,6 +573,12 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h,
 	int i = 0;
 	string name = l->name;
 	int code = (name.size() > 1) ? l->id : name[0];
+
+	if (name == ".") {
+		pain.line(x + w/2, y, x + w/2, y + h,
+			  LColor::mathcursor, Painter::line_onoffdash);
+		return;
+	}	
 	
 	deco_struct const * mds = search_deco(code);
 	if (!mds) {

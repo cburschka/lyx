@@ -76,20 +76,9 @@ void MathDelimInset::draw(Painter & pain, int x, int y) const
 	xo(x);
 	yo(y); 
 
-	int w = dw();
+	int const w = dw();
+	int const b = y - ascent_ - 2;
 	xcell(0).draw(pain, x + w + 2, y);
-	
-	if (latexName(left_) == ".") {
-		pain.line(x + 2, yo() - ascent_, x + 2, yo() + descent_,
-			  LColor::mathcursor, Painter::line_onoffdash);
-	} else
-		mathed_draw_deco(pain, x, y - ascent_ - 2, w, height() + 4, left_);
-
-	x += width();
-
-	if (latexName(right_) == ".") {
-		pain.line(x + 2, yo() - ascent_, x + 2, yo() + descent_,
-			  LColor::mathcursor, Painter::line_onoffdash);
-	} else
-		mathed_draw_deco(pain, x - dw(), y - ascent_ - 2, w, height() + 4, right_);
+	mathed_draw_deco(pain, x, b, w, height() + 4, left_);
+	mathed_draw_deco(pain, x + width() - w, b, w, height() + 4, right_);
 }
