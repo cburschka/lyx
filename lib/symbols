@@ -41,25 +41,25 @@ ldots             dots        none
 vdots             dots        none
 
 # font changes
-frak              font        none
-mathbb            font        none
-mathbf            font        none
-mathcal           font        none
-mathfrak          font        none
-mathit            font        none
-mathnormal        font        none
-mathrm            font        none
-mathsf            font        none
-mathtt            font        none
-text              font        forcetext
-textbf            font        forcetext
-textipa           font        forcetext
-textit            font        forcetext
-textmd            font        forcetext
-textrm            font        forcetext
-textsl            font        forcetext
-texttt            font        forcetext
-textup            font        forcetext
+frak              font        mathmode
+mathbb            font        mathmode
+mathbf            font        mathmode
+mathcal           font        mathmode
+mathfrak          font        mathmode
+mathit            font        mathmode
+mathnormal        font        mathmode
+mathrm            font        mathmode
+mathsf            font        mathmode
+mathtt            font        mathmode
+text              font        textmode
+textbf            font        textmode
+textipa           font        textmode
+textit            font        textmode
+textmd            font        textmode
+textrm            font        textmode
+textsl            font        textmode
+texttt            font        textmode
+textup            font        textmode
 
 # old-style font commands
 bf                oldfont     none
