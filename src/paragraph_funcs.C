@@ -1076,6 +1076,12 @@ Paragraph const & ownerPar(Buffer const & buf, InsetOld const * inset)
 	ParConstIterator pit = buf.par_iterator_begin();
 	ParConstIterator end = buf.par_iterator_end();
 	for ( ; pit != end; ++pit) {
+		ParagraphList * plist;
+		// the second '=' below is intentional
+		for (int i = 0; (plist = inset->getParagraphs(i)); ++i)
+			if (plist == &pit.plist())
+				return *pit.pit();
+
 		InsetList::const_iterator ii = pit->insetlist.begin();
 		InsetList::const_iterator iend = pit->insetlist.end();
 		for ( ; ii != iend; ++ii)

@@ -1935,7 +1935,7 @@ void LyXText::backspace()
 		// Pasting is not allowed, if the paragraphs have different
 		// layout. I think it is a real bug of all other
 		// word processors to allow it. It confuses the user.
-		//Correction: Pasting is always allowed with standard-layout
+		// Correction: Pasting is always allowed with standard-layout
 		LyXTextClass const & tclass =
 			bv()->buffer()->params.getLyXTextClass();
 

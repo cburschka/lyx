@@ -24,6 +24,7 @@
 
 #include "lyx_forms.h"
 #include "support/tostr.h"
+#include "support/lstrings.h"
 
 using namespace lyx::support;
 

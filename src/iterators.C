@@ -288,6 +288,12 @@ ParagraphList::const_iterator ParConstIterator::operator->() const
 }
 
 
+ParagraphList const & ParConstIterator::plist() const
+{
+	return *pimpl_->positions.back().plist;
+}
+
+
 size_t ParConstIterator::size() const
 {
 	return pimpl_->positions.size();

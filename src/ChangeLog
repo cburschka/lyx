@@ -1,3 +1,8 @@
+2003-08-27  André Pönitz  <poenitz@gmx.net>
+
+	* BufferView.[Ch]: remove getParentText, implement getParentLanguage
+	on top of ownerPar().
+
 2003-08-27  John Levon  <levon@movementarian.org>
 
 	* funcrequest.C: properly initialise POD members

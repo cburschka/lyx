@@ -205,9 +205,6 @@ private:
 	/// Set the current locking inset
 	void theLockingInset(UpdatableInset * inset);
 
-	/// return the lyxtext containing this inset
-	LyXText * getParentText(InsetOld * inset) const;
-
 	/**
 	 * Change all insets with the given code's contents to a new
 	 * string. May only be used with InsetCommand-derived insets

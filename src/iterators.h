@@ -71,6 +71,8 @@ public:
 	Paragraph const & operator*() const;
 	///
 	ParagraphList::const_iterator operator->() const;
+	///
+	ParagraphList const & plist() const;
 
 	/// depth of nesting
 	size_t size() const;

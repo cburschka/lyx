@@ -641,25 +641,11 @@ LyXText * BufferView::getLyXText() const
 }
 
 
-LyXText * BufferView::getParentText(InsetOld * inset) const
-{
-	if (inset->owner()) {
-		LyXText * txt = inset->getLyXText(this);
-		inset = inset->owner();
-		while (inset && inset->getLyXText(this) == txt)
-			inset = inset->owner();
-		if (inset)
-			return inset->getLyXText(this);
-	}
-	return text;
-}
-
-
 Language const * BufferView::getParentLanguage(InsetOld * inset) const
 {
-	LyXText * text = getParentText(inset);
-	return text->cursor.par()->getFontSettings(buffer()->params,
-						   text->cursor.pos()).language();
+	Paragraph const & par = ownerPar(*buffer(), inset);
+	return par.getFontSettings(buffer()->params,
+	                           par.getPositionOfInset(inset)).language();
 }
 
 
