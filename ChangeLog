@@ -1,5 +1,8 @@
 1999-11-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/text2.C (InsertStringB): use std::copy
+	(InsertStringA): use std::copy
+
 	* src/bufferlist.C: use a vector to store the buffers in. This is
 	an internal change and should not affect any other thing.
 	

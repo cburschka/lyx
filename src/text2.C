@@ -2505,11 +2505,7 @@ bool LyXText::SearchBackward(char const * string)
 void LyXText::InsertStringA(LyXParagraph::TextContainer const & text)
 {
 	char * str = new char[text.size() + 1];
-	// shoudl use std::copy or something
-	for (LyXParagraph::size_type i = 0; i < static_cast<int>(text.size());
-	     ++i) {
-		str[i] = text[i];
-	}
+	copy(text.begin(), text.end(), str);
 	str[text.size()] = '\0';
 	InsertStringA(str);
 	delete [] str;
@@ -2664,11 +2660,7 @@ void LyXText::InsertStringA(char const * str)
 void LyXText::InsertStringB(LyXParagraph::TextContainer const & text)
 {
 	char * str = new char[text.size() + 1];
-	// should use std::copy or something
-	for(LyXParagraph::size_type i = 0; i < static_cast<int>(text.size());
-	    ++i) {
-		str[i] = text[i];
-	}
+	copy(text.begin(), text.end(), str);
 	str[text.size()] = '\0';
 	InsertStringB(str);
 	delete [] str;
