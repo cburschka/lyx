@@ -27,7 +27,7 @@ class QGridLayout;
 class IconPalette : public QWidget {
 	Q_OBJECT
 public:
-	IconPalette(QWidget * parent, char const * name);
+	IconPalette(QWidget * parent, char const * name = 0);
 
 	/// add a button
 	void add(QPixmap const & pixmap, string name, string tooltip);

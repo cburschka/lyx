@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>374</width>
-            <height>324</height>
+            <width>339</width>
+            <height>356</height>
         </rect>
     </property>
     <property stdset="1">
@@ -313,6 +313,13 @@
                         </sizepolicy>
                     </property>
                     <property stdset="1">
+                        <name>minimumSize</name>
+                        <size>
+                            <width>0</width>
+                            <height>0</height>
+                        </size>
+                    </property>
+                    <property stdset="1">
                         <name>title</name>
                         <string>Symbols</string>
                     </property>
@@ -476,7 +483,7 @@
                                 <name>minimumSize</name>
                                 <size>
                                     <width>0</width>
-                                    <height>0</height>
+                                    <height>200</height>
                                 </size>
                             </property>
                             <property stdset="1">
@@ -499,21 +506,6 @@
                                     <name>spacing</name>
                                     <number>6</number>
                                 </property>
-                                <widget>
-                                    <class>QPushButton</class>
-                                    <property stdset="1">
-                                        <name>name</name>
-                                        <cstring>newPB</cstring>
-                                    </property>
-                                    <property stdset="1">
-                                        <name>text</name>
-                                        <string>&amp;New panel</string>
-                                    </property>
-                                    <property>
-                                        <name>toolTip</name>
-                                        <string>Create a new symbol panel</string>
-                                    </property>
-                                </widget>
                                 <widget>
                                     <class>QPushButton</class>
                                     <property stdset="1">

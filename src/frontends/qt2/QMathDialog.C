@@ -24,6 +24,43 @@
 #include <qscrollview.h>
 #include <qlayout.h>
  
+using std::min;
+using std::max;
+using std::endl;
+ 
+class QScrollViewSingle : public QScrollView {
+public:
+	QScrollViewSingle(QWidget * p)
+		: QScrollView(p) {
+		setResizePolicy(Manual);
+		setHScrollBarMode(AlwaysOff);
+		setVScrollBarMode(AlwaysOn);
+		setMinimumHeight(200);
+	}
+ 
+	void setChild(QWidget * w) {
+		w_ = w; 
+		setMinimumWidth(verticalScrollBar()->width() + w_->width() + 4);
+		addChild(w_);
+	}
+
+protected:
+	virtual void resizeEvent(QResizeEvent * e) {
+		QScrollView::resizeEvent(e);
+		if (!w_)
+			return;
+ 
+		int h = max(w_->sizeHint().height(), e->size().height());
+		w_->resize(viewport()->width(), h);
+		resizeContents(w_->width(), w_->height());
+		setMinimumHeight(200);
+	}
+
+private:
+	QWidget * w_; 
+};
+ 
+ 
 QMathDialog::QMathDialog(QMath * form)
 	: QMathDialogBase(0, 0, false, 0),
 	form_(form)
@@ -56,18 +93,16 @@ void QMathDialog::addPanel(string const & name, char const ** entries)
 {
 	static int id = 0;
  
-	QScrollView * view = new QScrollView(symbolsWS);
-	view->setHScrollBarMode(QScrollView::AlwaysOff);
-	view->setVScrollBarMode(QScrollView::AlwaysOn);
+	QScrollViewSingle * view = new QScrollViewSingle(symbolsWS);
+	IconPalette * p = new IconPalette(view->viewport());
  
-	IconPalette * p = new IconPalette(view->viewport(), name.c_str());
-	view->addChild(p);
 	for (int i = 0; *entries[i]; ++i) {
 		string xpm_name = LibFileSearch("images/math/", entries[i], "xpm");
 		p->add(QPixmap(xpm_name.c_str()), entries[i], string("\\") + entries[i]);
 	}
 	connect(p, SIGNAL(button_clicked(string)), this, SLOT(symbol_clicked(string)));
  
+	view->setChild(p);
 	symbolsWS->addWidget(view, id++);
 }
 
