@@ -183,7 +183,7 @@ void LyXScreen::showCursor(BufferView & bv)
 		// Ugly as you like.
 		int bx, by;
 		inset->getCursorPos(&bv, bx, by);
-		by += inset->insetInInsetY() + bv.text->cursor.iy();
+		by += inset->insetInInsetY() + bv.text->cursor.y();
 		if (by < top_y)
 			return;
 		if (by > top_y + workarea().workHeight())

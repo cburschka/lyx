@@ -243,7 +243,6 @@ void InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 		}
 		bv->updateInset(this);
 		bv->buffer()->markDirty();
-		lyxerr << "InsetCollapsable::lfunMouseRelease\n";
 	} else if (!collapsed_ && cmd.y > button_dim.y2) {
 		ret = inset.localDispatch(adjustCommand(cmd)) == DISPATCHED;
 	}

@@ -922,8 +922,8 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 				if (irow != view()->text->firstRow()) {
 #if 1
 					view()->text->setCursorFromCoordinates(
-						view()->text->cursor.ix() + inset_x,
-						view()->text->cursor.iy() -
+						view()->text->cursor.x() + inset_x,
+						view()->text->cursor.y() -
 						irow->baseline() - 1);
 					view()->text->cursor.x_fix(view()->text->cursor.x());
 #else
@@ -940,8 +940,8 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 				if (irow != view()->text->lastRow()) {
 #if 1
 					view()->text->setCursorFromCoordinates(
-						view()->text->cursor.ix() + inset_x,
-						view()->text->cursor.iy() -
+						view()->text->cursor.x() + inset_x,
+						view()->text->cursor.y() -
 						irow->baseline() +
 						irow->height() + 1);
 					view()->text->cursor.x_fix(view()->text->cursor.x());

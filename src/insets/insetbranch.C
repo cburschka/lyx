@@ -131,6 +131,7 @@ dispatch_result InsetBranch::localDispatch(FuncRequest const & cmd)
 	case LFUN_INSET_EDIT:
 		if (cmd.button() != mouse_button::button3)
 			return InsetCollapsable::localDispatch(cmd);
+		
 		return UNDISPATCHED;
 	case LFUN_INSET_DIALOG_UPDATE:
 		InsetBranchMailer("branch", *this).updateDialog(bv);

@@ -281,8 +281,8 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	top_y = y - dim_.asc;
 
 	if (the_locking_inset && cpar() == inset_par && cpos() == inset_pos) {
-		inset_x = cix() - x + drawTextXOffset;
-		inset_y = ciy() + drawTextYOffset;
+		inset_x = cx() - x + drawTextXOffset;
+		inset_y = cy() + drawTextYOffset;
 	}
 
 	x += TEXT_TO_INSET_OFFSET;
@@ -386,8 +386,8 @@ void InsetText::lockInset(BufferView * bv)
 void InsetText::lockInset(BufferView * /*bv*/, UpdatableInset * inset)
 {
 	the_locking_inset = inset;
-	inset_x = cix() - top_x + drawTextXOffset;
-	inset_y = ciy() + drawTextYOffset;
+	inset_x = cx() - top_x + drawTextXOffset;
+	inset_y = cy() + drawTextYOffset;
 	inset_pos = cpos();
 	inset_par = cpar();
 	inset_boundary = cboundary();
@@ -438,8 +438,8 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 	if (the_locking_inset && the_locking_inset == inset) {
 		if (cpar() == inset_par && cpos() == inset_pos) {
 			lyxerr[Debug::INSETS] << "OK" << endl;
-			inset_x = cix() - top_x + drawTextXOffset;
-			inset_y = ciy() + drawTextYOffset;
+			inset_x = cx() - top_x + drawTextXOffset;
+			inset_y = cy() + drawTextYOffset;
 		} else {
 			lyxerr[Debug::INSETS] << "cursor.pos != inset_pos" << endl;
 		}
@@ -581,8 +581,8 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 		if (isHighlyEditableInset(inset))
 			ret = inset->localDispatch(cmd1);
 		else {
-			inset_x = cix(bv) - top_x + drawTextXOffset;
-			inset_y = ciy() + drawTextYOffset;
+			inset_x = cx(bv) - top_x + drawTextXOffset;
+			inset_y = cy() + drawTextYOffset;
 			cmd1.x = cmd.x - inset_x;
 			cmd1.y = cmd.x - inset_y;
 			inset->edit(bv, cmd1.x, cmd1.y, cmd.button());
@@ -1433,8 +1433,8 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 		x = dim_.wid;
 	if (y < 0)
 		y = dim_.des;
-	inset_x = cix() - top_x + drawTextXOffset;
-	inset_y = ciy() + drawTextYOffset;
+	inset_x = cx() - top_x + drawTextXOffset;
+	inset_y = cy() + drawTextYOffset;
 	FuncRequest cmd(bv, LFUN_INSET_EDIT, x - inset_x, y - inset_y, button);
 	inset->localDispatch(cmd);
 	if (!the_locking_inset)
@@ -1501,27 +1501,9 @@ int InsetText::cx() const
 }
 
 
-int InsetText::cix() const
-{
-	int x = text_.cursor.ix() + top_x + TEXT_TO_INSET_OFFSET;
-	if (the_locking_inset) {
-		LyXFont font = text_.getFont(text_.cursor.par(), text_.cursor.pos());
-		if (font.isVisibleRightToLeft())
-			x -= the_locking_inset->width();
-	}
-	return x;
-}
-
-
 int InsetText::cy() const
 {
 	return text_.cursor.y() - dim_.asc + TEXT_TO_INSET_OFFSET;
-}
-
-
-int InsetText::ciy() const
-{
-	return text_.cursor.iy() - dim_.asc + TEXT_TO_INSET_OFFSET;
 }
 
 

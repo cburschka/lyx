@@ -116,13 +116,13 @@ namespace {
 
 		int const width = inset->width();
 		int const inset_x = font.isVisibleRightToLeft()
-			? (cur.ix() - width) : cur.ix();
+			? (cur.x() - width) : cur.x();
 
 		Box b(
 			inset_x + inset->scroll(),
 			inset_x + width,
-			cur.iy() - inset->ascent(),
-			cur.iy() + inset->descent()
+			cur.y() - inset->ascent(),
+			cur.y() + inset->descent()
 		);
 
 		if (!b.contained(x, y)) {
@@ -136,7 +136,7 @@ namespace {
 
 		x -= b.x1;
 		// The origin of an inset is on the baseline
-		y -= text.cursor.iy();
+		y -= text.cursor.y();
 
 		return inset;
 	}
@@ -266,7 +266,7 @@ void LyXText::cursorPrevious()
 		// tall rows, but it's not working right now.
 	} else {
 		if (inset_owner) {
-			new_y = bv()->text->cursor.iy()
+			new_y = bv()->text->cursor.y()
 				+ bv()->theLockingInset()->insetInInsetY() + y
 				+ rit->height()
 				- bv()->workHeight() + 1;
@@ -302,7 +302,7 @@ void LyXText::cursorNext()
 
 	int y = topy + bv_owner->workHeight();
 	if (inset_owner && !topy) {
-		y -= (bv_owner->text->cursor.iy()
+		y -= (bv_owner->text->cursor.y()
 			  - bv_owner->top_y()
 			  + bv_owner->theLockingInset()->insetInInsetY());
 	}
@@ -327,7 +327,7 @@ void LyXText::cursorNext()
 #endif
 	} else {
 		if (inset_owner) {
-			new_y = bv()->text->cursor.iy()
+			new_y = bv()->text->cursor.y()
 				+ bv()->theLockingInset()->insetInInsetY()
 				+ y - rit->baseline();
 		} else {
@@ -1214,11 +1214,11 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			LyXFont font = bv->text->getFont(cursor.par(), cursor.pos());
 			int width = tli->width();
 			int inset_x = font.isVisibleRightToLeft()
-				? cursor.ix() - width : cursor.ix();
+				? cursor.x() - width : cursor.x();
 			int start_x = inset_x + tli->scroll();
 			FuncRequest cmd1 = cmd;
 			cmd1.x = cmd.x - start_x;
-			cmd1.y = cmd.y - cursor.iy() + bv->top_y();
+			cmd1.y = cmd.y - cursor.y() + bv->top_y();
 			tli->localDispatch(cmd1);
 			break;
 		}

@@ -1,5 +1,13 @@
 2003-09-02  John Levon  <levon@movementarian.org>
 
+	* BufferView.C:
+	* lyxcursor.h:
+	* lyxcursor.C:
+	* lyxfunc.C:
+	* lyxfunc.h: remove cursor.i[x]y(), it no longer differs
+
+2003-09-02  John Levon  <levon@movementarian.org>
+
 	* text2.C: simplification of cursorEnd(), including partial
 	fix for bug 1376
 

@@ -1352,18 +1352,12 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 	RowList::iterator row = getRow(pit, pos);
 	int y = row->y();
 
-	RowList::iterator old_row = row;
-	// if we are before the first char of this row and are still in the
-	// same paragraph and there is a previous row then put the cursor on
-	// the end of the previous row
-	cur.iy(y + row->baseline());
-
 	// y is now the beginning of the cursor row
 	y += row->baseline();
 	// y is now the cursor baseline
 	cur.y(y);
 
-	pos_type last = lastPrintablePos(*pit, old_row);
+	pos_type last = lastPrintablePos(*pit, row);
 
 	// None of these should happen, but we're scaredy-cats
 	if (pos > pit->size()) {
@@ -1385,11 +1379,6 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 	float x = getCursorX(pit, row, pos, last, boundary);
 	cur.x(int(x));
 	cur.x_fix(cur.x());
-	if (old_row != row) {
-		x = getCursorX(pit, old_row, pos, last, boundary);
-		cur.ix(int(x));
-	} else
-		cur.ix(cur.x());
 }
 
 
@@ -1626,9 +1615,6 @@ void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 	cur.x(x);
 	cur.y(y + rit->baseline());
 
-	cur.iy(cur.y());
-	cur.ix(cur.x());
-
 	cur.boundary(bound);
 }
 
@@ -1675,7 +1661,7 @@ void LyXText::cursorUp(bool selecting)
 	setCursorFromCoordinates(x, y);
 	if (!selecting) {
 		int topy = bv_owner->top_y();
-		int y1 = cursor.iy() - topy;
+		int y1 = cursor.y() - topy;
 		int y2 = y1;
 		y -= topy;
 		InsetOld * inset_hit = checkInsetHit(x, y1);
@@ -1701,7 +1687,7 @@ void LyXText::cursorDown(bool selecting)
 	setCursorFromCoordinates(x, y);
 	if (!selecting && cursorRow() == cursorIRow()) {
 		int topy = bv_owner->top_y();
-		int y1 = cursor.iy() - topy;
+		int y1 = cursor.y() - topy;
 		int y2 = y1;
 		y -= topy;
 		InsetOld * inset_hit = checkInsetHit(x, y1);

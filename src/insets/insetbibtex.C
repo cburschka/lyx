@@ -54,6 +54,7 @@ std::auto_ptr<InsetBase> InsetBibtex::clone() const
 	return std::auto_ptr<InsetBase>(new InsetBibtex(*this));
 }
 
+
 void InsetBibtex::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	InsetCommand::metrics(mi, dim);

@@ -18,7 +18,7 @@
 
 LyXCursor::LyXCursor()
 	: par_(), pos_(0), boundary_(false),
-	  x_(0), ix_(0), x_fix_(0), y_(0), iy_(0)
+	  x_(0), x_fix_(0), y_(0)
 {}
 
 
@@ -69,17 +69,6 @@ int LyXCursor::x() const
 }
 
 
-void LyXCursor::ix(int n)
-{
-	ix_ = n;
-}
-
-int LyXCursor::ix() const
-{
-	return ix_;
-}
-
-
 void LyXCursor::x_fix(int i)
 {
 	x_fix_ = i;
@@ -101,18 +90,6 @@ void LyXCursor::y(int i)
 int LyXCursor::y() const
 {
 	return y_;
-}
-
-
-void LyXCursor::iy(int i)
-{
-	iy_ = i;
-}
-
-
-int LyXCursor::iy() const
-{
-	return iy_;
 }
 
 

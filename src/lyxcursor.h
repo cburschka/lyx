@@ -46,16 +46,6 @@ public:
 	void x(int i);
 	/// return the x position in pixels
 	int x() const;
-	/// set the stored next-line position when at the end of a row
-	void ix(int i);
-	/**
-	 * Return the x position of the start of the next row, when this
-	 * cursor is at the end of the previous row, for insets that take
-	 * a full row.
-	 *
-	 * FIXME: explain why we need this ?
-	 */
-	int ix() const;
 	/// set the cached x position
 	void x_fix(int i);
 	/**
@@ -75,16 +65,7 @@ public:
 	void y(int i);
 	/// return the y position in pixels
 	int y() const;
-	/// set the stored next-line y position when at the end of a row
-	void iy(int i);
-	/**
-	 * Return the y position of the start of the next row, when this
-	 * cursor is at the end of the previous row, for insets that take
-	 * a full row.
-	 *
-	 * FIXME: explain why we need this ? especially for y...
-	 */
-	int iy() const;
+
 private:
 	/// The paragraph the cursor is in.
 	ParagraphList::iterator par_;
@@ -108,14 +89,10 @@ private:
 	bool boundary_;
 	/// the pixel x position
 	int x_;
-	/// the stored next-row x position
-	int ix_;
 	/// the cached x position
 	int x_fix_;
 	/// the pixel y position
 	int y_;
-	/// the stored next-row y position
-	int iy_;
 };
 
 ///

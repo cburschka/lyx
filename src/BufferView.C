@@ -479,7 +479,7 @@ bool BufferView::lockInset(UpdatableInset * inset)
 bool BufferView::fitLockedInsetCursor(int x, int y, int asc, int desc)
 {
 	if (theLockingInset() && available()) {
-		y += text->cursor.iy() + theLockingInset()->insetInInsetY();
+		y += text->cursor.y() + theLockingInset()->insetInInsetY();
 		if (screen().fitManualCursor(this, text, x, y, asc, desc)) {
 			updateScrollbar();
 			return true;

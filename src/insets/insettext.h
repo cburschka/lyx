@@ -258,11 +258,7 @@ private:
 	///
 	int cx() const;
 	///
-	int cix() const;
-	///
 	int cy() const;
-	///
-	int ciy() const;
 	///
 	lyx::pos_type cpos() const;
 	///
