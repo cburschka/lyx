@@ -27,6 +27,7 @@ using std::strchr;
 using std::isalpha;
 #endif
 
+extern bool has_math_fonts;
 
 namespace {
 
@@ -60,14 +61,23 @@ MathInset * MathCharInset::clone() const
 void MathCharInset::metrics(MathMetricsInfo & mi) const
 {
 #if 1
-	if (slanted(char_) && mi.base.fontname == "mathnormal") {
+	if (char_ == '=' && has_math_fonts) {
+		MathFontSetChanger dummy(mi.base, "cmr");
+		mathed_char_dim(mi.base.font, char_, dim_);
+	} else if ((char_ == '>' || char_ == '<') && has_math_fonts) {
+		MathFontSetChanger dummy(mi.base, "cmm");
+		mathed_char_dim(mi.base.font, char_, dim_);
+	} else if (slanted(char_) && mi.base.fontname == "mathnormal") {
 		MathShapeChanger dummy(mi.base.font, LyXFont::ITALIC_SHAPE);
 		mathed_char_dim(mi.base.font, char_, dim_);
 	} else {
 		mathed_char_dim(mi.base.font, char_, dim_);
 	}
+	int const em = mathed_char_width(mi.base.font, 'M');
 	if (isBinaryOp(char_))
-		dim_.w += 2 * font_metrics::width(' ', mi.base.font);
+		dim_.w += static_cast<int>(0.5*em+0.5);
+	else if (char_ == '\'')
+		dim_.w += static_cast<int>(0.1667*em+0.5);
 #else
 	whichFont(font_, code_, mi);
 	mathed_char_dim(font_, char_, dim_);
@@ -81,10 +91,19 @@ void MathCharInset::metrics(MathMetricsInfo & mi) const
 void MathCharInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "drawing '" << char_ << "' font: " << pi.base.fontname << endl;
+	int const em = mathed_char_width(pi.base.font, 'M');
 	if (isBinaryOp(char_))
-		x += font_metrics::width(' ', pi.base.font);
+		x += static_cast<int>(0.25*em+0.5);
+	else if (char_ == '\'')
+		x += static_cast<int>(0.0833*em+0.5);
 #if 1
-	if (slanted(char_) && pi.base.fontname == "mathnormal") {
+	if (char_ == '=' && has_math_fonts) {
+		MathFontSetChanger dummy(pi.base, "cmr");
+		pi.draw(x, y, char_);
+	} else if ((char_ == '>' || char_ == '<') && has_math_fonts) {
+		MathFontSetChanger dummy(pi.base, "cmm");
+		pi.draw(x, y, char_);
+	} else if (slanted(char_) && pi.base.fontname == "mathnormal") {
 		MathShapeChanger dummy(pi.base.font, LyXFont::ITALIC_SHAPE);
 		pi.draw(x, y, char_);
 	} else {

@@ -54,6 +54,7 @@
 #include <map>
 #include <fstream>
 
+bool has_math_fonts;
 
 namespace {
 
@@ -101,7 +102,7 @@ void initSymbols()
 		if (line.size() > 0 && line[0] == '#')
 			continue;
 
-		// special case of \iffont / \fi
+		// special case of iffont/else/endif
 		if (line.size() >= 7 && line.substr(0, 6) == "iffont") {
 			istringstream is(line);
 			string tmp;
@@ -177,6 +178,9 @@ void initSymbols()
 					<<  "  extra: " << tmp.extra
 					<< "'\n";
 	}
+	string tmp = "cmm";
+	string tmp2 = "cmsy";
+	has_math_fonts = math_font_available(tmp) && math_font_available(tmp2);
 }
 
 

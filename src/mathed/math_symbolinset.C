@@ -48,6 +48,7 @@ void MathSymbolInset::metrics(MathMetricsInfo & mi) const
 	//	<< "' drawn as: '" << sym_->draw
 	//	<< "'\n";
 
+	int const em = mathed_char_width(mi.base.font, 'M');
 	MathFontSetChanger dummy(mi.base, sym_->inset.c_str());
 	mathed_string_dim(mi.base.font, sym_->draw, dim_);
 	// correct height for broken cmex and wasy font
@@ -57,11 +58,10 @@ void MathSymbolInset::metrics(MathMetricsInfo & mi) const
 		dim_.d -= h_;
 	}
 	// seperate things a bit
-	int const em = mathed_char_width(mi.base.font, 'M');
 	if (isRelOp())
 		dim_.w += static_cast<int>(0.5*em+0.5);
 	else
-		dim_.w += static_cast<int>(0.15*em+0.5);
+		dim_.w += static_cast<int>(0.1667*em+0.5);
 
 	scriptable_ = false;
 	if (mi.base.style == LM_ST_DISPLAY)
@@ -80,7 +80,7 @@ void MathSymbolInset::draw(MathPainterInfo & pi, int x, int y) const
 	if (isRelOp())
 		x += static_cast<int>(0.25*em+0.5);
 	else
-		x += static_cast<int>(0.075*em+0.5);
+		x += static_cast<int>(0.0833*em+0.5);
 
 	MathFontSetChanger dummy(pi.base, sym_->inset.c_str());
 	drawStr(pi, pi.base.font, x, y - h_, sym_->draw);

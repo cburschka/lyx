@@ -1,3 +1,8 @@
+2002-10-28  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* math_symbolinset.C (metrics): Compute em with the default font.
+
+	* math_charinset.C (draw): Use math symbol fonts for <,> & =
 
 2002-10-21  Dekel Tsur  <dekelts@tau.ac.il>
 
