@@ -1,3 +1,9 @@
+2005-02-15  Angus Leeming  <leeming@lyx.org>
+
+	* GraphicsLoader.C: s/struct/class/ in definition of
+	lyx::graphics::Loader::Impl to silence MSVC warning:
+	"type name first seen using 'class' now seen using 'struct'".
+
 2005-01-27  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* PreviewLoader.C (Impl): use convert<> instead of atoi,strToXXX

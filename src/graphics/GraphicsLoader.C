@@ -26,7 +26,7 @@ using std::string;
 namespace lyx {
 namespace graphics {
 
-struct Loader::Impl : boost::signals::trackable {
+class Loader::Impl : public boost::signals::trackable {
 public:
 	///
 	Impl();
