@@ -88,7 +88,7 @@ int width(char const * s, size_t ls, LyXFont const & f)
 		encoding = encodings.symbol_encoding();
 
 	QString str;
-#if QT_VERSION >= 0x030000
+#if QT_VERSION >= 300
 	str.setLength(ls);
 	for (size_t i = 0; i < ls; ++i)
 		str[i] = QChar(encoding->ucs(s[i]));

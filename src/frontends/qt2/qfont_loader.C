@@ -22,7 +22,7 @@
 #include "BufferView.h"
 
 #include <qglobal.h>
-#if QT_VERSION < 0x030000
+#if QT_VERSION < 300
 #include "support/lstrings.h"
 #endif
 
@@ -164,7 +164,7 @@ bool qfont_loader::available(LyXFont const & f)
 	if (!lyxrc.use_gui)
 		return false;
 
-#if QT_VERSION >= 0x030000
+#if QT_VERSION >= 300
 	return getfontinfo(f)->font.exactMatch();
 #else
 	string tmp;

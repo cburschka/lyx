@@ -256,7 +256,7 @@ Painter & QLPainter::text(int x, int y,
 		encoding = encodings.symbol_encoding();
 
 	QString str;
-#if QT_VERSION >= 0x030000
+#if QT_VERSION >= 300
 	str.setLength(ls);
 	for (size_t i = 0; i < ls; ++i)
 		str[i] = QChar(encoding->ucs(s[i]));
@@ -270,7 +270,7 @@ Painter & QLPainter::text(int x, int y,
 
 	if (f.realShape() != LyXFont::SMALLCAPS_SHAPE) {
 		qp_->setFont(fontloader.get(f));
-#if QT_VERSION >= 0x030000
+#if QT_VERSION >= 300
 		// We need to draw the text as LTR as we use our own bidi
 		// code.
 		qp_->drawText(x, y, str, -1, QPainter::LTR);
