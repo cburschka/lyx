@@ -41,12 +41,16 @@ void QCommandEdit::keyPressEvent(QKeyEvent * e)
 }
 
 
-void QCommandEdit::focusOutEvent(QFocusEvent * e)
+bool QCommandEdit::event(QEvent * e)
 {
-	if (e->reason() == QFocusEvent::Tab) {
-		emit tabPressed();
-		return;
-	}
+	if (e->type() != QEvent::KeyPress)
+		return QLineEdit::event(e);
 
-	QLineEdit::focusOutEvent(e);		
+	QKeyEvent * ev = (QKeyEvent *)e;
+
+	if (ev->key() != Key_Tab)
+		return QLineEdit::event(e);
+
+	emit tabPressed();
+	return true;
 }

@@ -28,6 +28,7 @@
 #include "LString.h"
 
 using std::vector;
+using std::endl;
 
 namespace {
 

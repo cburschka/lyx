@@ -32,9 +32,9 @@ signals:
 	void tabPressed();
 
 protected:
-	virtual void keyPressEvent(QKeyEvent * e);
+	virtual bool event(QEvent * e);
 
-	virtual void focusOutEvent(QFocusEvent * e);
+	virtual void keyPressEvent(QKeyEvent * e);
 };
 
 #endif // QCOMMANDEDIT_H
