@@ -1014,6 +1014,12 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 	Inset * inset = getLyXText(bv)->checkInsetHit(tmp_x, tmp_y);
 	bool ret = false;
 	if (inset) {
+// This code should probably be removed now. Simple insets
+// (!highlyEditable) can actually take the localDispatch,
+// and turn it into edit() if necessary. But we still
+// need to deal properly with the whole relative vs.
+// absolute mouse co-ords thing in a realiable, sensible way
+#if 0
 		if (isHighlyEditableInset(inset))
 			ret = inset->localDispatch(cmd1);
 		else {
@@ -1021,12 +1027,13 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 			inset_y = ciy(bv) + drawTextYOffset;
 			cmd1.x = cmd.x - inset_x;
 			cmd1.y = cmd.x - inset_y;
-// note that we should do ret = inset->localDispatch(cmd1)
-// and fix this instead (Alfredo);
-			ret = true;
 			inset->edit(bv, cmd1.x, cmd1.y, cmd.button());
+			ret = true;
 		}
+#endif
+		ret = inset->localDispatch(cmd1);
 		updateLocal(bv, CURSOR_PAR, false);
+
 	}
 	return ret;
 }

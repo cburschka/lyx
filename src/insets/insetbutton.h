@@ -31,6 +31,8 @@ public:
 	int width(BufferView *, LyXFont const &) const;
 	///
 	void draw(BufferView *, LyXFont const &, int, float &) const;
+	///
+	dispatch_result localDispatch(FuncRequest const & cmd);
 
 protected:
 	///

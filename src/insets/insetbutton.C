@@ -16,6 +16,7 @@
 #include "insetbutton.h"
 #include "debug.h"
 #include "BufferView.h"
+#include "funcrequest.h"
 #include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 #include "support/LAssert.h"
@@ -126,4 +127,12 @@ void InsetButton::cache(BufferView * bv) const
 BufferView * InsetButton::view() const
 {
 	return view_.lock().get();
+}
+
+
+dispatch_result InsetButton::localDispatch(FuncRequest const & cmd)
+{
+	FuncRequest cmd1(cmd);
+	edit(cmd1.view(), cmd1.x, cmd1.y, cmd1.button());
+	return DISPATCHED;
 }

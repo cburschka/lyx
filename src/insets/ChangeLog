@@ -1,3 +1,14 @@
+2003-04-01  John Levon  <levon@movementarian.org>
+
+	From Alfredo Braunstein
+
+	* insetbutton.h:	
+	* insetbutton.C: add localDispatch()
+
+	* insetcommand.C: return DISPATCHED when edit() called
+
+	* insettext.C: fix bug 967
+
 2003-04-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* insettext.C: adjust
