@@ -45,6 +45,8 @@ SRCS =  form_aboutlyx.fd \
 	form_url.fd \
 	form_wrap.fd
 
+MAINTAINERCLEANFILES += *.C *.h *.c
+
 libfdesign_la_SOURCES = $(SRCS:.fd=.C) $(SRCS:.fd=.h)
 
 # These are used to generate the .[Ch] files from the .fd ones.
@@ -57,12 +59,5 @@ $(libfdesign_la_SOURCES): $(srcdir)/fdfix.sh $(srcdir)/fdfix[ch].sed
 
 libfdesign.la: $(libfdesign_la_OBJECTS) $(libfdesign_la_DEPENDENCIES)
 
-.fd.C:
+%.C: %.fd
 	$(SHELL) $(SCRIPT) $<
-
-clean-local:
-	rm -f *.[Ch] *.[ch]pp *.orig \
-	rm -f $(srcdir)/*.[hc] $(srcdir)/*.bak
-
-distclean-local:
-	rm -f $(srcdir)/*.orig $(srcdir)/*.rej $(srcdir)/*~

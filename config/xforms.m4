@@ -67,7 +67,7 @@ AC_LANG_SAVE
 AC_LANG_C
 
 dnl The image headers were split out of forms.h in xforms version 1.0.
-AC_CHECK_HEADERS(flimage.h X11/flimage.h, break)
+AC_CHECK_HEADERS(flimage.h X11/flimage.h, break,,[#include $lyx_cv_forms_h_location])
 AC_SEARCH_LIBS(flimage_dup, flimage,
   [if test "$ac_cv_search_flimage_dup" != "none required" ; then
      XFORMS_IMAGE_LIB="-lflimage"

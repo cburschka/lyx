@@ -1,3 +1,8 @@
+2003-01-12  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Makefile.am (LIBS): delete var
+	(lyx_LDADD): add @LIBS@ here instead.
+
 2003-01-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxfunc.C (getStatus): fix disabling of cut/paste of cells in a
@@ -16,8 +21,8 @@
 
 2003-01-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* paragraph_pimpl.C (simpleTeXBlanks): 
-	(simpleTeXSpecialChars): 
+	* paragraph_pimpl.C (simpleTeXBlanks):
+	(simpleTeXSpecialChars):
 	* paragraph.C (simpleTeXOnePar): make `column' unsigned.
 
 	* tabular.C (latex): add some missing case statements. Reindent.
@@ -55,7 +60,7 @@
 
 2002-12-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* text.C (insertChar): 
+	* text.C (insertChar):
 	* lyxrc.C (getDescription): remove extra spaces
 
 2002-12-23  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
@@ -91,7 +96,7 @@
 	* lyxfunc.C: use LyXKeySym->isText() as last-ditch
 	  insert. Only remove shift modifier under strict
 	  circumstances.
- 
+
 2002-12-09  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* MenuBackend.C (expandToc): fix crash.

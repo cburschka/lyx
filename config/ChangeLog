@@ -1,3 +1,10 @@
+2003-01-12  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* xforms.m4 (LYX_CHECK_XFORMS_IMAGE_LOADER): include forms.h in
+	the prog that checks for flimage.h header. 
+
+	* common.am (AM_INSTALL_DATA_FLAGS): add
+
 2003-01-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxinclude.m4:

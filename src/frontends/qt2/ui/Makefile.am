@@ -1,5 +1,69 @@
 include $(top_srcdir)/config/common.am
 
+EXTRA_DIST = $(SRCS)
+
+SRCS = \
+	BiblioModuleBase.ui \
+	BulletsModuleBase.ui \
+	ClassModuleBase.ui \
+	LanguageModuleBase.ui \
+	MarginsModuleBase.ui \
+	NumberingModuleBase.ui \
+	PackagesModuleBase.ui \
+	PaperModuleBase.ui \
+	PreambleModuleBase.ui \
+	QAboutDialog.ui \
+	QAskForTextDialog.ui \
+	QBibitemDialog.ui \
+	QBibtexDialog.ui \
+	QCharacterDialog.ui \
+	QCitationDialog.ui \
+	QDelimiterDialog.ui \
+	QDocumentDialog.ui \
+	QErrorDialog.ui \
+	QERTDialog.ui \
+	QExternalDialog.ui \
+	QFloatDialog.ui \
+	QGraphicsDialog.ui \
+	QIncludeDialog.ui \
+	QIndexDialog.ui \
+	QLogDialog.ui \
+	QMathDialog.ui \
+	QMathMatrixDialog.ui \
+	QMinipageDialog.ui \
+	QParagraphDialog.ui \
+	QPreambleDialog.ui \
+	QPrefAsciiModule.ui \
+	QPrefColorsModule.ui \
+	QPrefConvertersModule.ui \
+	QPrefDateModule.ui \
+	QPrefDisplayModule.ui \
+	QPrefFileformatsModule.ui \
+	QPrefKeyboardModule.ui \
+	QPrefLanguageModule.ui \
+	QPrefLatexModule.ui \
+	QPrefPathsModule.ui \
+	QPrefPrinterModule.ui \
+	QPrefScreenFontsModule.ui \
+	QPrefsDialog.ui \
+	QPrefSpellcheckerModule.ui \
+	QPrefUIModule.ui \
+	QPrintDialog.ui \
+	QRefDialog.ui \
+	QSearchDialog.ui \
+	QSendtoDialog.ui \
+	QShowFileDialog.ui \
+	QSpellcheckerDialog.ui \
+	QTabularCreateDialog.ui \
+	QTabularDialog.ui \
+	QTexinfoDialog.ui \
+	QThesaurusDialog.ui \
+	QTocDialog.ui \
+	QURLDialog.ui \
+	QVCLogDialog.ui \
+	QWrapDialog.ui
+
+
 noinst_LTLIBRARIES = libqt2ui.la
 
 INCLUDES = -I$(top_srcdir)/src -I$(top_srcdir)/src/frontends \
@@ -22,6 +86,11 @@ libqt2ui.la: $(libqt2ui_la_OBJECTS) $(libqt2ui_la_DEPENDENCIES)
 
 # Use _() for localization instead of tr() or trUtf8()
 UICFLAGS=-tr qt_
+
+%.h: %.ui
+	$(UIC) $(UICFLAGS) $< -o $@
+%.C: %.h %.ui
+	$(UIC) $(UICFLAGS) -impl $^ -o $@
 
 QAskForTextDialog.h: QAskForTextDialog.ui
 	$(UIC) $(UICFLAGS) $< -o $@

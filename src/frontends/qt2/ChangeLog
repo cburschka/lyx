@@ -1,3 +1,8 @@
+2003-01-12  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* ui/Makefile.am (EXTRA_DIST): dist ui files
+	(SRCS): var with all ui files
+
 2003-01-06  Michael Schmitt <Michael.Schmitt@teststep.org>
 
 	* FileDialog.C:
@@ -17,9 +22,9 @@
 	* QtView.h:
 	* QtView.C:
 2003-01-04  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
- 
- 	* QURL.C: isValid(): fix validation. 
- 
+
+	* QURL.C: isValid(): fix validation.
+
 2002-12-21  John Levon  <levon@movementarian.org>
 
 	* FileDialog.C:
@@ -31,7 +36,7 @@
 
 2002-12-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* ui/QMathDialog.ui: 
+	* ui/QMathDialog.ui:
 	* QPrefsDialog.C (select_workingdir): fix typo
 
 2002-12-21  Dekel Tsur  <dekelts@tau.ac.il>
@@ -52,7 +57,7 @@
 2002-12-19  John Levon  <levon@movementarian.org>
 
 	* QLyXKeySym.C: do not attempt to compare Qt::Key_unknowns
- 
+
 2002-12-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyx_gui.C (getStatus): forks-show is not implemented by the qt
@@ -64,13 +69,13 @@
 	  StyleHint to get one close by
 
 2002-12-18  Alfredo Braunstein <abraunst@libero.it>
- 
- 	* QRef.C (redoRefs): small bug fix (wrong label was selected)
- 
+
+	* QRef.C (redoRefs): small bug fix (wrong label was selected)
+
 2002-12-18  Edwin Leuven  <e.leuven@uva.nl>
 
 	* QCitationDialog.C: update styles combo when necessary
-	
+
 2002-12-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* Alert_pimpl.C (askForText_pimpl): replace qt_() with _()
@@ -86,7 +91,7 @@
 2002-12-18  Edwin Leuven  <e.leuven@uva.nl>
 
 	* BulletsModule.C: fix crash on custom bullet cancel
-	
+
 2002-12-18  John Levon  <levon@movementarian.org>
 
 	* qfont_loader.C: symbol should not match "Standard Symbols 1"
@@ -122,64 +127,64 @@
 
 2002-12-16  Edwin Leuven  <e.leuven@uva.nl>
 
-	* BulletsModule.C: forgot to remove an include of 
+	* BulletsModule.C: forgot to remove an include of
 	bulletstrings.[Ch] removed in the previous commit
-	
+
 2002-12-16  Edwin Leuven  <e.leuven@uva.nl>
 
 	* BulletsModule.[Ch]: Fix bulletstuff
 	* QDocument.C:
 	* QDocumentDialog.C:
 	* ui/BulletsModuleBase.ui:
-	
+
 2002-12-12  John Levon  <levon@movementarian.org>
 
 	* QSpellcheckerDialog.h:
 	* QSpellcheckerDialog.C:
 	* QSpellchecker.C: place broken word in replace box
 	  for user fixing
- 
+
 2002-12-12  John Levon  <levon@movementarian.org>
 
 	* FileDialog_private.C: don't mess with windows z-ordering
 	  when opening a dialog (appear above focusWidget)
- 
+
 2002-12-12  John Levon  <levon@movementarian.org>
 
 	* QLyXKeySym.C: check for isNull(). It's needed by
 	  Kornel, dunno why
- 
+
 2002-12-12  John Levon  <levon@movementarian.org>
 
 	* ui/QSpellcheckerDialog.ui: make double click replace word
- 
+
 2002-12-12  John Levon  <levon@movementarian.org>
 
 	* QSearchDialog.C:
 	* ui/QSearchDialog.ui: fixes from Alfredo
- 
+
 2002-12-12  John Levon  <levon@movementarian.org>
 
 	* QLyxKeySym.h:
 	* QLyXKeySym.C:
 	* qlkey.h: implement isText() to allow us to insert
 	  unrecognised text
- 
+
 2002-12-11  John Levon  <levon@movementarian.org>
 
 	* qfont_loader.h:
 	* qfont_loader.C:
 	* qfont_metrics.C: cache per-char widths to avoid slowness
 	  of QFontMetrics::width
- 
+
 2002-12-10  John Levon  <levon@movementarian.org>
 
 	* ui/QURLDialog.ui: fix tab order
- 
+
 2002-12-10  John Levon  <levon@movementarian.org>
 
 	* QRef.C: patch from Alfredo
- 
+
 2002-12-09  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* QAbout.C (build_dialog): use old over-eager version for 1.3.0.

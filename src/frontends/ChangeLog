@@ -1,3 +1,8 @@
+2003-01-12  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Makefile.am (LIBS): delete
+	(libfrontends_la_LDFLAGS): add with same as LIBS
+
 2003-01-11  Angus Leeming  <leeming@lyx.org>
 
 	* screen.C (SplashScreen): load up banner.ppm rather than banner.xpm.
@@ -14,7 +19,7 @@
 2002-12-12  John Levon  <levon@movementarian.org>
 
 	* LyXKeySym.h: add isText()
- 
+
 2002-12-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* screen.C (fitCursor): remove usleep thingie

@@ -1,3 +1,11 @@
+2003-01-12  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* forms/Makefile.am (MAINTAINERCLEANFILES): add
+	(clean-local): delete
+	(distclean-local): delete
+	(.fd.C): delete
+	(%.C): add
+
 2003-01-12  Angus Leeming  <leeming@lyx.org>
 
 	* FormFiledialog.[Ch]: initialise and use new static member variables
@@ -45,14 +53,14 @@
 
 2002-12-23  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* FormSpellchecker.C (build): 
-	* forms/form_paragraph.fd: 
+	* FormSpellchecker.C (build):
+	* forms/form_paragraph.fd:
 	* forms/form_maths_matrix.fd: remove extra spaces
 
 2002-12-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* Menubar_pimpl.C (create_submenu): do not query the status of a
-	separator. 
+	separator.
 
 2002-12-18  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 

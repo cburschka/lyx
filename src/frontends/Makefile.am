@@ -6,10 +6,9 @@ DIST_SUBDIRS = controllers xforms qt2 gnome
 
 noinst_LTLIBRARIES = libfrontends.la
 
-LIBS += $(FRONTEND_LDFLAGS) $(FRONTEND_LIBS)
-
 INCLUDES = $(FRONTEND_INCLUDES) -I$(srcdir)/..  $(BOOST_INCLUDES)
 
+libfrontends_la_LDFLAGS = $(FRONTEND_LDFLAGS) $(FRONTEND_LIBS)
 libfrontends_la_LIBADD = $(FRONTEND_GUILIB) controllers/*.lo
 
 libfrontends_la_DEPENDENCIES = $(libfrontends_la_LIBADD)
