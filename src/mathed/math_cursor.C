@@ -1066,10 +1066,6 @@ void MathCursor::breakLine()
 		// split cell
 		splitCell();
 		p->cell(idx()).swap(p->cell(idx() + p->ncols() - 1));
-
-		// correct cursor position
-		--idx();
-		pos() = size();
 	}
 }
 
