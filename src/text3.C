@@ -242,7 +242,7 @@ void LyXText::cursorPrevious(BufferView * bv)
 {
 	if (!cursor.row()->previous()) {
 		if (top_y() > 0) {
-			int new_y = top_y() - bv->workHeight();
+			int new_y = bv->text->top_y() - bv->workHeight();
 			bv->screen().draw(bv->text, bv, new_y < 0 ? 0 : new_y);
 			bv->updateScrollbar();
 		}
@@ -298,7 +298,7 @@ void LyXText::cursorNext(BufferView * bv)
 		int y = cursor.y() - cursor.row()->baseline() +
 			cursor.row()->height();
 		if (y > top_y() + bv->workHeight()) {
-			bv->screen().draw(bv->text, bv, top_y() + bv->workHeight());
+			bv->screen().draw(bv->text, bv, bv->text->top_y() + bv->workHeight());
 			bv->updateScrollbar();
 		}
 		return;
