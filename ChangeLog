@@ -1,3 +1,7 @@
+2000-10-31  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/trans.C (AddDeadkey): workaround stupid compilers.
+
 2000-10-31  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/frontends/xforms/FormDocument.C (class_update): fix setting

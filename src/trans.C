@@ -172,8 +172,8 @@ void Trans::AddDeadkey(tex_accent accent, string const & keys,
 			// to change bindings, without unbinding first?"
 			// Lgb
 			lyxerr << "Hey... keymap_[xx] not empty." << endl;
-			temp.push_back(char(0));
-			temp.push_back(char(accent));
+			temp += char(0);
+			temp += char(accent);
 		}
 #endif
 	}
