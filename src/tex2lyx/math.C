@@ -216,6 +216,13 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 		else if (t.cs() == "ss")
 			os << "ß";
 
+		else if (t.cs() == "cr") {
+			// lyx can't handle \\cr
+			cerr << "Warning: Converting TeX '\\cr' to LaTeX '\\\\'."
+			     << endl;
+			os << "\\\\";
+		}
+
 		else
 			os << t.asInput();
 

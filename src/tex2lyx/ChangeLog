@@ -1,3 +1,8 @@
+2004-07-23  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math.C (parse_math): change tex "\\cr" line ending to "\\\\"
+	* table.C (parse_table): recognize tex "\\cr" line ending
+
 2004-06-28  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math.C, preamble.C, tex2lyx.[Ch], text.C: const fixes

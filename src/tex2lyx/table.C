@@ -220,7 +220,11 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 			p.skip_spaces();
 		}
 
-		else if (t.cs() == "tabularnewline" || t.cs() == "\\") {
+		else if (t.cs() == "tabularnewline" || t.cs() == "\\" ||
+		         t.cs() == "cr") {
+			if (t.cs() == "cr")
+				cerr << "Warning: Converting TeX '\\cr' to LaTeX '\\\\'."
+				     << endl;
 			// stuff before the line break
 			// and look ahead for stuff after the line break
 			os << HLINE << hlines << HLINE << LINE << read_hlines(p) << HLINE;
