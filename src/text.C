@@ -3802,10 +3802,12 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	bool clear_area = true;
 
 	if ((last == row_ptr->pos()) &&
-	    row_ptr->par()->GetInset(row_ptr->pos())) {
+	    (row_ptr->par()->GetChar(row_ptr->pos()) == LyXParagraph::META_INSET) &&
+	    (row_ptr->par()->GetInset(row_ptr->pos())))
+	{
 		clear_area = row_ptr->par()->GetInset(row_ptr->pos())->doClearArea();
 	}
-	if (bv_owner && clear_area)
+	if (clear_area)
 		pain.fillRectangle(x_offset, y_offset, ww, row_ptr->height());
 	
 	if (selection) {

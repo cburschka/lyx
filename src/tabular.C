@@ -1779,19 +1779,21 @@ bool LyXTabular::GetLTNewPage(int cell) const
 }
 
 
-void LyXTabular::SetAscentOfRow(int row, int height)
+bool LyXTabular::SetAscentOfRow(int row, int height)
 {
-    if (row >= rows_)
-        return;
+    if ((row >= rows_) || (row_info[row].ascent_of_row == height))
+        return false;
     row_info[row].ascent_of_row = height;
+    return true;
 }
 
 
-void LyXTabular::SetDescentOfRow(int row, int height)
+bool LyXTabular::SetDescentOfRow(int row, int height)
 {
-    if (row >= rows_)
-        return;
+    if ((row >= rows_) || (row_info[row].descent_of_row == height))
+        return false;
     row_info[row].descent_of_row = height;
+    return true;
 }
 
 

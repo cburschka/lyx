@@ -156,19 +156,21 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
     int i, j, cell=0;
     int nx;
     float cx;
-    bool reinit = false;
 
     UpdatableInset::draw(bv,font,baseline,x);
     if (init_inset || (top_x != int(x)) || (top_baseline != baseline)) {
-//	int ox = top_x;
 	init_inset = false;
 	top_x = int(x);
 	top_baseline = baseline;
-//	if (ox != top_x)
-//	    recomputeTextInsets(pain, font);
-//	calculate_width_of_cells(pain, font);
 	resetPos(pain);
-	reinit = true;
+	if (locked) { // repaint this way as the background was not cleared
+		if (the_locking_inset)
+			the_locking_inset->update(bv, font, true);
+		locked = false;
+		bv->updateInset(const_cast<InsetTabular*>(this), false);
+		locked = true;
+		return;
+	}
     }
     x += ADD_TO_TABULAR_WIDTH;
     for(i=0;i<tabular->rows();++i) {
@@ -193,9 +195,11 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 
 void InsetTabular::update(BufferView * bv, LyXFont const & font, bool dodraw)
 {
+    if (the_locking_inset)
+	the_locking_inset->update(bv, font, dodraw);
     if (init_inset) {
-	calculate_width_of_cells(bv, font, dodraw);
-//	recomputeTextInsets(bv, font);
+//	calculate_dimensions_of_cells(bv, font, dodraw);
+	init_inset = calculate_dimensions_of_cells(bv, font, dodraw) || init_inset;
     }
 }
 
@@ -290,7 +294,7 @@ void InsetTabular::Edit(BufferView * bv, int x, int y, unsigned int button)
     if (InsetHit(bv, x, y)) {
 	ActivateCellInset(bv, x, y, button);
     }
-    UpdateLocal(bv, true, false);
+    UpdateLocal(bv, false, false);
 //    bv->getOwner()->getPopups().updateFormTabular();
 }
 
@@ -315,8 +319,6 @@ void InsetTabular::InsetUnlock(BufferView * bv)
 
 void InsetTabular::UpdateLocal(BufferView * bv, bool what, bool mark_dirty)
 {
-//    if (what)
-//	calculate_width_of_cells(bv->painter(), LyXFont(LyXFont::ALL_SANE));
     init_inset = what;
     bv->updateInset(this, mark_dirty);
     if (what)
@@ -364,6 +366,7 @@ bool InsetTabular::UnlockInsetInInset(BufferView * bv, UpdatableInset * inset,
         the_locking_inset = 0;
         if (lr)
             moveRight(bv, false);
+	UpdateLocal(bv, true, false);
         return true;
     }
     if (the_locking_inset->UnlockInsetInInset(bv, inset, lr)) {
@@ -384,7 +387,7 @@ bool InsetTabular::UpdateInsetInInset(BufferView * bv, Inset * inset)
 	return false;
     if (the_locking_inset != inset)
 	return the_locking_inset->UpdateInsetInInset(bv, inset);
-    UpdateLocal(bv, true, false);
+    UpdateLocal(bv, false, false);
     return true;
 }
 
@@ -724,12 +727,14 @@ void InsetTabular::Validate(LaTeXFeatures & features) const
 }
 
 
-void InsetTabular::calculate_width_of_cells(BufferView * bv,
-					    LyXFont const & font, bool dodraw) const
+bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv,
+						 LyXFont const & font,
+						 bool dodraw) const
 {
     int cell = -1;
     int maxAsc, maxDesc;
     InsetText * inset;
+    bool changed = false;
     
     for(int i = 0; i < tabular->rows(); ++i) {
 	maxAsc = maxDesc = 0;
@@ -741,11 +746,12 @@ void InsetTabular::calculate_width_of_cells(BufferView * bv,
 	    inset->update(bv, font, dodraw);
 	    maxAsc = max(maxAsc, inset->ascent(bv->painter(), font));
 	    maxDesc = max(maxDesc, inset->descent(bv->painter(), font));
-	    tabular->SetWidthOfCell(cell, inset->width(bv->painter(), font));
+	    changed = tabular->SetWidthOfCell(cell, inset->width(bv->painter(), font)) || changed;
 	}
-	tabular->SetAscentOfRow(i, maxAsc + ADD_TO_HEIGHT);
-	tabular->SetDescentOfRow(i, maxDesc + ADD_TO_HEIGHT);
+	changed = tabular->SetAscentOfRow(i, maxAsc + ADD_TO_HEIGHT) || changed;
+	changed = tabular->SetDescentOfRow(i, maxDesc + ADD_TO_HEIGHT) || changed;
     }
+    return changed;
 }
 
 
@@ -992,8 +998,10 @@ bool InsetTabular::Delete()
 }
 
 
-void InsetTabular::SetFont(BufferView *, LyXFont const &, bool)
+void InsetTabular::SetFont(BufferView * bv, LyXFont const & font, bool tall)
 {
+    if (the_locking_inset)
+	the_locking_inset->SetFont(bv, font, tall);
 }
 
 

@@ -214,6 +214,20 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
     xpos = x;
     UpdatableInset::draw(bv, f, baseline, x);
  
+    if (locked && ((need_update==FULL) || (top_x!=int(x)) ||
+		   (top_baseline!=baseline))) {
+	need_update = NONE;
+	top_x = int(x);
+	top_baseline = baseline;
+	locked = false;
+	bv->updateInset(const_cast<InsetText *>(this), false);
+	locked = true;
+	if (drawLockedFrame)
+		pain.rectangle(top_x, baseline - ascent(pain, f),
+			       width(pain, f), ascent(pain,f)+descent(pain, f),
+			       frame_color);
+	return;
+    }
     top_baseline = baseline;
     top_x = int(x);
 
@@ -231,43 +245,33 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	    y += row->height();
 	    row = row->next();
 	}
-	if (drawLockedFrame && locked) {
+    } else if (need_update == SELECTION) {
+	bv->screen()->ToggleToggle(getLyXText(bv), y, x);
+    } else {
+	locked = false;
+	bv->screen()->Update(TEXT(bv), y, x);
+	locked = true;
+    }
+    if (drawLockedFrame && locked) {
 	    pain.rectangle(top_x, baseline - ascent(pain, f), width(pain, f),
 			   ascent(pain,f) + descent(pain, f), frame_color);
-	}
-    } else {
-	bv->screen()->Update(TEXT(bv));
     }
     x += width(pain, f) - TEXT_TO_INSET_OFFSET;
+    need_update = NONE;
 }
 
 
-void InsetText::update(BufferView * bv, LyXFont const &, bool dodraw)
+void InsetText::update(BufferView * bv, LyXFont const & font, bool dodraw)
 {
+    if (the_locking_inset)
+	the_locking_inset->update(bv, font, dodraw);
     if (need_update == INIT) {
 	deleteLyXText(bv);
 	need_update = FULL;
     }
+    if (dodraw)
+	    need_update = FULL;
 
-#if 0
-    switch(need_update) {
-    case NONE: // most common first
-	break;
-    case INIT:
-	need_update = NONE;
-	break;
-    case CURSOR_PAR:
-	need_update = NONE;
-	break;
-    case FULL:
-	TEXT(bv)->FullRebreak(bv);
-	need_update = NONE;
-	break;
-    default:
-	need_update = NONE;
-	break;
-    }
-#endif
     TEXT(bv)->FullRebreak(bv);
 
     long int y_temp = 0;
@@ -395,7 +399,7 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
     no_selection = false;
 //    setPos(bv->painter(), x, y);
 //    cursor.x_fix(-1);
-    TEXT(bv)->SetCursorFromCoordinates(bv, x, y+bv->screen()->first);
+    TEXT(bv)->SetCursorFromCoordinates(bv, x, y+TEXT(bv)->first);
     if (the_locking_inset) {
 	UpdatableInset * inset = 0;
 	if (cpar(bv)->GetChar(cpos(bv)) == LyXParagraph::META_INSET)
@@ -564,7 +568,7 @@ InsetText::LocalDispatch(BufferView * bv,
 	bv->text->FinishUndo();
 	moveRight(bv, false);
 	TEXT(bv)->SetSelection();
-	UpdateLocal(bv, CURSOR_PAR, false);
+	UpdateLocal(bv, SELECTION, false);
 	break;
     case LFUN_RIGHT:
 	bv->text->FinishUndo();
@@ -577,7 +581,7 @@ InsetText::LocalDispatch(BufferView * bv,
 	bv->text->FinishUndo();
 	moveLeft(bv, false);
 	TEXT(bv)->SetSelection();
-	UpdateLocal(bv, CURSOR_PAR, false);
+	UpdateLocal(bv, SELECTION, false);
 	break;
     case LFUN_LEFT:
 	bv->text->FinishUndo();
@@ -590,7 +594,7 @@ InsetText::LocalDispatch(BufferView * bv,
 	bv->text->FinishUndo();
 	moveDown(bv);
 	TEXT(bv)->SetSelection();
-	UpdateLocal(bv, CURSOR_PAR, false);
+	UpdateLocal(bv, SELECTION, false);
 	break;
     case LFUN_DOWN:
 	bv->text->FinishUndo();
@@ -603,7 +607,7 @@ InsetText::LocalDispatch(BufferView * bv,
 	bv->text->FinishUndo();
 	moveUp(bv);
 	TEXT(bv)->SetSelection();
-	UpdateLocal(bv, CURSOR_PAR, false);
+	UpdateLocal(bv, SELECTION, false);
 	break;
     case LFUN_UP:
 	bv->text->FinishUndo();

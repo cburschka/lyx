@@ -117,10 +117,10 @@ public:
     int GetDescentOfRow(int row) const;
     ///
     int GetHeightOfTabular() const;
-    ///
-    void SetAscentOfRow(int row, int height);
-    ///
-    void SetDescentOfRow(int row, int height);
+    /// Returns true if a complete update is necessary, otherwise false
+    bool SetAscentOfRow(int row, int height);
+    /// Returns true if a complete update is necessary, otherwise false
+    bool SetDescentOfRow(int row, int height);
     /// Returns true if a complete update is necessary, otherwise false
     bool SetWidthOfCell(int cell, int new_width);
     /// Returns true if a complete update is necessary, otherwise false

@@ -23,6 +23,7 @@
 #include "WorkArea.h"
 #include "buffer.h"
 #include "font.h"
+#include "insets/insettext.h"
 
 using std::max;
 using std::min;
@@ -48,8 +49,6 @@ GC createGC()
 LyXScreen::LyXScreen(WorkArea & o) //, LyXText * text_ptr)
 	: owner(o) //, text(text_ptr)
 {
-	first = 0;
-   
 	// the cursor isnt yet visible
 	cursor_visible = false;
 	cursor_pixmap = 0;
@@ -87,25 +86,25 @@ void LyXScreen::expose(int x, int y, int exp_width, int exp_height)
 }
 
 
-void LyXScreen::DrawFromTo(LyXText * text, int y1, int y2)
+void LyXScreen::DrawFromTo(LyXText * text, int y1, int y2, int y_offset, int x_offset)
 {
-	long y_text = first + y1;
+	long y_text = text->first + y1;
    
 	// get the first needed row 
 	Row * row = text->GetRowNearY(y_text);
 	// y_text is now the real beginning of the row
    
-	long y = y_text - first;
+	long y = y_text - text->first;
 	// y1 is now the real beginning of row on the screen
 	
 	while (row != 0 && y < y2) {
-		text->GetVisibleRow(owner.owner(), y, 0, row, y + first);
+		text->GetVisibleRow(owner.owner(), y+y_offset, x_offset, row, y + text->first);
 		y += row->height();
 		row = row->next();
 	}
    
 	// maybe we have to clear the screen at the bottom
-	if (y < y2) {
+	if ((y < y2) && text->bv_owner) {
 		owner.getPainter().fillRectangle(0, y,
 						 owner.workWidth(),
 						 y2 - y,
@@ -114,14 +113,15 @@ void LyXScreen::DrawFromTo(LyXText * text, int y1, int y2)
 }
 
 
-void LyXScreen::DrawOneRow(LyXText * text, Row * row, long y_text)
+void LyXScreen::DrawOneRow(LyXText * text, Row * row, long y_text,
+			   int y_offset, int x_offset)
 {
-	long y = y_text - first;
+	long y = y_text - text->first + y_offset;
       
 	if (y + row->height() > 0
 	    && y - row->height() <= long(owner.height())) {
 		// ok there is something visible
-		text->GetVisibleRow(owner.owner(), y, 0, row, y + first);
+		text->GetVisibleRow(owner.owner(), y, x_offset, row, y + text->first);
 	}
 }
 
@@ -132,14 +132,14 @@ void LyXScreen::Draw(LyXText * text, unsigned long y)
 {
 	if (cursor_visible) HideCursor();
 
-	unsigned long old_first = first;
-	first = y;
+	unsigned long old_first = text->first;
+	text->first = y;
 
 	// is any optimiziation possible?
 	if ((y - old_first) < owner.height()
 	    && (old_first - y) < owner.height()) {
-		if (first < old_first) {
-			DrawFromTo(text, 0, old_first - first);
+		if (text->first < old_first) {
+			DrawFromTo(text, 0, old_first - text->first);
 			XCopyArea (fl_display,
 				   owner.getWin(),
 				   owner.getWin(),
@@ -147,31 +147,31 @@ void LyXScreen::Draw(LyXText * text, unsigned long y)
 				   owner.xpos(),
 				   owner.ypos(),
 				   owner.workWidth(),
-				   owner.height() - old_first + first,
+				   owner.height() - old_first + text->first,
 				   owner.xpos(),
-				   owner.ypos() + old_first - first
+				   owner.ypos() + old_first - text->first
 				);
 			// expose the area drawn
 			expose(0, 0,
 			       owner.workWidth(),
-			       old_first - first);
+			       old_first - text->first);
 		} else  {
 			DrawFromTo(text,
-				   owner.height() + old_first - first,
+				   owner.height() + old_first - text->first,
 				   owner.height());
 			XCopyArea (fl_display,
 				   owner.getWin(),
 				   owner.getWin(),
 				   gc_copy,
 				   owner.xpos(),
-				   owner.ypos() + first - old_first,
+				   owner.ypos() + text->first - old_first,
 				   owner.workWidth(),
-				   owner.height() + old_first - first,
+				   owner.height() + old_first - text->first,
 				   owner.xpos(),
 				   owner.ypos());
 			// expose the area drawn
-			expose(0, owner.height() + old_first - first,
-			       owner.workWidth(), first - old_first);
+			expose(0, owner.height() + old_first - text->first,
+			       owner.workWidth(), text->first - old_first);
 		}
 	} else {
 		// make a dumb new-draw 
@@ -191,7 +191,7 @@ void LyXScreen::ShowCursor(LyXText const * text)
 		    != owner.owner()->buffer()->params.language_info->RightToLeft())
 			shape = (text->real_current_font.isVisibleRightToLeft())
 				? REVERSED_L_SHAPE : L_SHAPE;
-		ShowManualCursor(text->cursor.x(), text->cursor.y(),
+		ShowManualCursor(text, text->cursor.x(), text->cursor.y(),
 				 lyxfont::maxAscent(text->real_current_font),
 				 lyxfont::maxDescent(text->real_current_font),
 				 shape);
@@ -203,33 +203,33 @@ void LyXScreen::ShowCursor(LyXText const * text)
 bool LyXScreen::FitManualCursor(LyXText * text,
 				long /*x*/, long y, int asc, int desc)
 {
-	long newtop = first;
+	long newtop = text->first;
   
-	if (y + desc - first >= owner.height())
+	if (y + desc - text->first >= owner.height())
 		newtop = y - 3 * owner.height() / 4;  // the scroll region must be so big!!
-	else if (y - asc < long(first)
-		&& first > 0) {
+	else if (y - asc < long(text->first)
+		&& text->first > 0) {
 		newtop = y - owner.height() / 4;
 	}
 
 	newtop = max(newtop, 0L); // can newtop ever be < 0? (Lgb)
   
-	if (newtop != long(first)) {
+	if (newtop != long(text->first)) {
 		Draw(text, newtop);
-		first = newtop;
+		text->first = newtop;
 		return true;
 	}
 	return false;
 }
 
 
-void LyXScreen::ShowManualCursor(long x, long y, int asc, int desc,
-				  Cursor_Shape shape)
+void LyXScreen::ShowManualCursor(LyXText const * text, long x, long y,
+				 int asc, int desc, Cursor_Shape shape)
 {
-	unsigned long y1 = max(y - first - asc, 0UL);
+	unsigned long y1 = max(y - text->first - asc, 0UL);
 	typedef unsigned long ulong;
 	
-	unsigned long y2 = min(y - first + desc, ulong(owner.height()));
+	unsigned long y2 = min(y - text->first + desc, ulong(owner.height()));
 
 	// Secure against very strange situations
 	y2 = max(y2, y1);
@@ -330,12 +330,12 @@ void LyXScreen::CursorToggle(LyXText const * text)
 /* returns a new top so that the cursor is visible */ 
 unsigned long LyXScreen::TopCursorVisible(LyXText const * text)
 {
-	long newtop = first;
+	long newtop = text->first;
 
 	if (text->cursor.y()
 	    - text->cursor.row()->baseline()
 	    + text->cursor.row()->height()
-	    - first >= owner.height()) {
+	    - text->first >= owner.height()) {
 		if (text->cursor.row()->height() < owner.height()
 		    && text->cursor.row()->height() > owner.height() / 4)
 			newtop = text->cursor.y()
@@ -344,14 +344,14 @@ unsigned long LyXScreen::TopCursorVisible(LyXText const * text)
 		else
 			newtop = text->cursor.y()
 				- 3 * owner.height() / 4;   /* the scroll region must be so big!! */
-	} else if (text->cursor.y() - text->cursor.row()->baseline() < first
-		   && first > 0) {
+	} else if (text->cursor.y() - text->cursor.row()->baseline() < text->first
+		   && text->first > 0) {
 		if (text->cursor.row()->height() < owner.height()
 		    && text->cursor.row()->height() > owner.height() / 4)
 			newtop = text->cursor.y() - text->cursor.row()->baseline();
 		else {
 			newtop = text->cursor.y() - owner.height() / 4;
-			newtop = min(newtop, long(first));
+			newtop = min(newtop, long(text->first));
 		}
 	}
 
@@ -367,21 +367,28 @@ bool LyXScreen::FitCursor(LyXText * text)
 {
 	// Is a change necessary?
 	unsigned long newtop = TopCursorVisible(text);
-	bool result = (newtop != first);
+	bool result = (newtop != text->first);
 	if (result)
 		Draw(text, newtop);
 	return result;
 }
 
    
-void LyXScreen::Update(LyXText * text)
+void LyXScreen::Update(LyXText * text, int y_offset, int x_offset)
 {
 	switch(text->status) {
 	case LyXText::NEED_MORE_REFRESH:
 	{
-		long y = max(text->refresh_y - long(first), 0L);
-		
-		DrawFromTo(text, y, owner.height());
+		long y = max(text->refresh_y - long(text->first), 0L);
+		int height;
+		if (text->inset_owner)
+			height = text->inset_owner->ascent(owner.owner()->painter(),
+							    text->real_current_font)
+				+ text->inset_owner->descent(owner.owner()->painter(),
+							     text->real_current_font);
+		else
+			height = owner.height();
+		DrawFromTo(text, y, owner.height(), y_offset, x_offset);
 		text->refresh_y = 0;
 		text->status = LyXText::UNCHANGED;
 		expose(0, y,
@@ -391,9 +398,10 @@ void LyXScreen::Update(LyXText * text)
 	case LyXText::NEED_VERY_LITTLE_REFRESH:
 	{
 		// ok I will update the current cursor row
-		DrawOneRow(text, text->refresh_row, text->refresh_y);
+		DrawOneRow(text, text->refresh_row, text->refresh_y,
+			   y_offset, x_offset);
 		text->status = LyXText::UNCHANGED;
-		expose(0, text->refresh_y - first,
+		expose(0, text->refresh_y - text->first + y_offset,
 		       owner.workWidth(), text->refresh_row->height());
 	}
 	break;
@@ -411,22 +419,22 @@ void LyXScreen::ToggleSelection(LyXText * text, bool kill_selection)
 
 	long bottom = min(max(text->sel_end_cursor.y()
 			      - text->sel_end_cursor.row()->baseline()
-			      + text->sel_end_cursor.row()->height(), first),
-			  first + owner.height());
+			      + text->sel_end_cursor.row()->height(), text->first),
+			  text->first + owner.height());
 	long top = min(max(text->sel_start_cursor.y()
-			   - text->sel_start_cursor.row()->baseline(), first),
-		       first + owner.height());
+			   - text->sel_start_cursor.row()->baseline(), text->first),
+		       text->first + owner.height());
 
 	if (kill_selection)
 		text->selection = 0;
-	DrawFromTo(text, top - first, bottom - first);
-	expose(0, top - first,
+	DrawFromTo(text, top - text->first, bottom - text->first);
+	expose(0, top - text->first,
 	       owner.workWidth(),
-	       bottom - first - (top - first));
+	       bottom - text->first - (top - text->first));
 }
   
    
-void LyXScreen::ToggleToggle(LyXText * text)
+void LyXScreen::ToggleToggle(LyXText * text, int y_offset, int x_offset)
 {
 	if (text->toggle_cursor.par() == text->toggle_end_cursor.par()
 	    && text->toggle_cursor.pos() == text->toggle_end_cursor.pos())
@@ -440,10 +448,11 @@ void LyXScreen::ToggleToggle(LyXText * text)
 	
 	typedef unsigned long ulong;
 	
-	bottom = min(max(ulong(bottom), first), first + owner.height());
-	top = min(max(ulong(top), first), first + owner.height());
+	bottom = min(max(ulong(bottom), text->first), text->first + owner.height());
+	top = min(max(ulong(top), text->first), text->first + owner.height());
 	
-	DrawFromTo(text, top - first, bottom - first);
-	expose(0, top - first, owner.workWidth(),
-	       bottom - first - (top - first));
+	DrawFromTo(text, top - text->first, bottom - text->first, y_offset,
+		   x_offset);
+	expose(0, top - text->first, owner.workWidth(),
+	       bottom - text->first - (top - text->first));
 }

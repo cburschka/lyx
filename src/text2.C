@@ -70,6 +70,7 @@ void LyXText::init()
 	number_of_rows = 0;
 	refresh_y = 0;
 	height = width = 0;
+	first = 0;
 	status = LyXText::UNCHANGED;
 	// set cursor at the very top position
 	selection = true;	    /* these setting is necessary 

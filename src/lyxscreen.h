@@ -64,24 +64,21 @@ public:
 	///
 	void CursorToggle(LyXText const *);
 	///
-	void ShowManualCursor(long x, long y, int asc, int desc,
+	void ShowManualCursor(LyXText const *, long x, long y, int asc, int desc,
 			      Cursor_Shape shape);
 	/// returns 1 if first has changed, otherwise 0
 	bool FitManualCursor(LyXText *, long, long, int, int);
 	///
 	void ToggleSelection(LyXText *, bool = true);
 	///
-	void ToggleToggle(LyXText *);
+	void ToggleToggle(LyXText *, int y_offset = 0, int x_offset = 0);
 	
 	/** Updates part of the screen. If text->status is
 	    LyXText::NEED_MORE_REFRESH, we update from the
 	    point of change and to the end of the screen.
 	    If text->status is LyXText::NEED_VERY_LITTLE_REFRESH,
 	    we only update the current row. */
-	void Update(LyXText *);
-
-	/// first visible pixel-row
-	unsigned long first;
+	void Update(LyXText *, int y_offset=0, int x_offset=0);
 
 	///
 	bool cursor_visible;
@@ -90,17 +87,15 @@ private:
 	void expose(int x, int y, int exp_width, int exp_height); 
 
 	/// y1 and y2 are coordinates of the screen
-	void DrawFromTo(LyXText *, int y1, int y2);
+	void DrawFromTo(LyXText *, int y1, int y2, int y_offset=0, int x_offset=0);
 
 	/// y is a coordinate of the text
-	void DrawOneRow(LyXText *, Row * row, long y_text);
+	void DrawOneRow(LyXText *, Row * row, long y_text, int y_offset=0,
+			int x_offset=0);
 
 	///
 	WorkArea & owner;
 	
-	///
-	//LyXText * text;
-
 	///
 	Pixmap cursor_pixmap;
 	///

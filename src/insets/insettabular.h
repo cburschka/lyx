@@ -152,7 +152,7 @@ public:
     LyXTabular * tabular;
 
 private:
-    void calculate_width_of_cells(BufferView *, LyXFont const &, bool =false) const;
+    bool calculate_dimensions_of_cells(BufferView *, LyXFont const &, bool =false) const;
     ///
     void DrawCellLines(Painter &, int x, int baseline, int row, int cell)
 	    const;
@@ -214,10 +214,8 @@ private:
 	oldcell,
         actcol,
         actrow;
-    bool
-        locked,
-        no_selection;
-    mutable bool
-        init_inset;
+    bool no_selection;
+    mutable bool locked;
+    mutable bool init_inset;
 };
 #endif

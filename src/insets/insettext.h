@@ -44,7 +44,8 @@ public:
 	NONE = 0,
 	INIT,
 	FULL,
-	CURSOR_PAR
+	CURSOR_PAR,
+	SELECTION
     };
     ///
     explicit
@@ -194,7 +195,7 @@ private:
 	
     /* Private structures and variables */
     ///
-    bool locked;
+    mutable bool locked;
     ///
     int insetAscent;
     int insetDescent;

@@ -1,5 +1,8 @@
 2000-06-22  Juergen Vigna  <jug@sad.it>
 
+	* src/lyxscreen.h: added some y_offset/x_offset parameters for drawings
+	of insets and moved first to LyXText.
+
 	* src/mathed/formulamacro.[Ch]:
 	* src/mathed/formula.[Ch]: changed prototype of draw() and GetCursorPos
 

@@ -745,8 +745,8 @@ void BufferView::showLockedInsetCursor(long x, long y, int asc, int desc)
 			text->SetCursor(this, cursor,
 					cursor.par(), cursor.pos() - 1);
 		y += cursor.y() + the_locking_inset->InsetInInsetY();
-		pimpl_->screen_->ShowManualCursor(x, y, asc, desc,
-					 LyXScreen::BAR_SHAPE);
+		pimpl_->screen_->ShowManualCursor(text, x, y, asc, desc,
+						  LyXScreen::BAR_SHAPE);
 	}
 }
 

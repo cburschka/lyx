@@ -68,6 +68,12 @@ public:
 	mutable LyXFont current_font;
 	/// the current font
 	mutable LyXFont real_current_font;
+	/// first visible pixel-row is set from LyXScreen!!!
+	unsigned long first;
+	///
+	BufferView * bv_owner;
+	///
+	InsetText * inset_owner;
 
 	///
 	//	void owner(BufferView *);
@@ -538,10 +544,6 @@ public:
 private:
 	///
 	void init();
-	///
-	BufferView * bv_owner;
-	///
-	InsetText * inset_owner;
 	///
 	mutable Row * firstrow;
 	///
