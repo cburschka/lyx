@@ -945,7 +945,7 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 		lyx::time_type ct;
 		istr >> aid;
 		istr >> ct;
-		change = Change(Change::INSERTED, aid, ct);
+		change = Change(Change::INSERTED, bp.author_map[aid], ct);
 	} else if (token == "\\change_deleted") {
 		lex.nextToken();
 		istringstream istr(lex.getString());
@@ -953,7 +953,7 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 		lyx::time_type ct;
 		istr >> aid;
 		istr >> ct;
-		change = Change(Change::DELETED, aid, ct);
+		change = Change(Change::DELETED, bp.author_map[aid], ct);
 	} else {
 		lex.eatLine();
 #if USE_BOOST_FORMAT

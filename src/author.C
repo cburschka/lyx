@@ -12,19 +12,10 @@
 
 #include "author.h"
 
-#include "debug.h"
-
 #include "support/LAssert.h"
 #include "support/LOstream.h"
 #include "support/LIstream.h"
 #include "support/lstrings.h"
-
-using std::endl;
-
-namespace {
-	int cur_id;
-}
-
 
 bool operator==(Author const & l, Author const & r)
 {
@@ -44,8 +35,13 @@ std::istream & operator>>(std::istream & is, Author & a)
 	getline(is, s);
 	a.name_ = trim(token(s, '\"', 1));
 	a.email_ = trim(token(s, '\"', 2));
-	lyxerr << "Read name " << a.name_ << " email " << a.email_ << endl;
 	return is;
+}
+
+
+AuthorList::AuthorList()
+	: last_id_(0)
+{
 }
 
 
@@ -59,16 +55,14 @@ int AuthorList::record(Author const & a)
 			return it->first;
 	}
 
-	lyxerr[Debug::CHANGES] << "Adding author " << a << endl;
-
-	authors_[cur_id++] = a;
-	return cur_id - 1;
+	authors_[last_id_++] = a;
+	return last_id_ - 1;
 }
 
 
 void AuthorList::record(int id, Author const & a)
 {
-	lyx::Assert(id < authors_.size());
+	lyx::Assert(unsigned(id) < authors_.size());
 
 	authors_[id] = a;
 }

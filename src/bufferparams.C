@@ -189,7 +189,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		istringstream ss(lex.getString());
 		Author a;
 		ss >> a;
-		authorlist.record(a);
+		author_map.push_back(authorlist.record(a));
 	} else if (token == "\\paperorientation") {
 		int tmpret = lex.findToken(string_orientation);
 		if (tmpret == -1)

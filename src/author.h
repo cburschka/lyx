@@ -42,6 +42,8 @@ private:
 
 class AuthorList {
 public:
+	AuthorList();
+
 	int record(Author const & a);
 
 	void record(int id, Author const & a);
@@ -55,6 +57,8 @@ public:
 	Authors::const_iterator end() const;
 
 private:
+	int last_id_;
+
 	Authors authors_;
 };
 
