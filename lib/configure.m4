@@ -254,7 +254,7 @@ SEARCH_PROG([for a raster image viewer], RASTERIMAGE_VIEWER, xv kview gimp)
 
 SEARCH_PROG([for a raster image editor], RASTERIMAGE_EDITOR, gimp)
 
-SEARCH_PROG([for a text editor], TEXT_EDITOR, xemacs gvim kedit kwrite kate nedit gedit)
+SEARCH_PROG([for a text editor], TEXT_EDITOR, xemacs gvim kedit kwrite kate nedit gedit notepad)
 
 # Search for an installed reLyX or a ready-to-install one
 save_PATH=${PATH}
