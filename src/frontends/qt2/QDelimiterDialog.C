@@ -82,7 +82,7 @@ namespace {
 		if (str == "backslash")
 			return "\\";
 		if (str == "empty")
-			return "";
+			return ".";
 		return str;
 	}
 }
