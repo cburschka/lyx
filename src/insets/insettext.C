@@ -304,8 +304,7 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 
 	// update our idea of where we are. Clearly, we should
 	// not have to know this information.
-	if (top_x != x)
-		top_x = x;
+	top_x = x;
 
 	int const start_x = x;
 
@@ -335,7 +334,7 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 	}
 
 	if (the_locking_inset && cpar() == inset_par && cpos() == inset_pos) {
-		inset_x = cix(bv) - int(x) + drawTextXOffset;
+		inset_x = cix(bv) - x + drawTextXOffset;
 		inset_y = ciy() + drawTextYOffset;
 	}
 
@@ -348,7 +347,7 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 	int ph = pain.paperHeight();
 	int first = 0;
 	int y = y_offset;
-	while ((rowit != end) && ((y + rowit->height()) <= 0)) {
+	while (rowit != end && y + rowit->height() <= 0) {
 		y += rowit->height();
 		first += rowit->height();
 		++rowit;
@@ -377,7 +376,7 @@ void InsetText::draw(PainterInfo & pi, int x, int baseline) const
 
 	text_.clearPaint();
 
-	if ((drawFrame_ == ALWAYS) || (drawFrame_ == LOCKED && locked)) {
+	if (drawFrame_ == ALWAYS || (drawFrame_ == LOCKED && locked)) {
 		drawFrame(pain, int(start_x));
 	}
 
@@ -1511,8 +1510,7 @@ void InsetText::fitInsetCursor(BufferView * bv) const
 		the_locking_inset->fitInsetCursor(bv);
 		return;
 	}
-	LyXFont const font =
-		getLyXText(bv)->getFont(bv->buffer(), cpar(), cpos());
+	LyXFont const font = text_.getFont(bv->buffer(), cpar(), cpos());
 
 	int const asc = font_metrics::maxAscent(font);
 	int const desc = font_metrics::maxDescent(font);
@@ -1602,7 +1600,7 @@ bool InsetText::insertInset(BufferView * bv, Inset * inset)
 		return false;
 	}
 	inset->setOwner(this);
-	getLyXText(bv)->insertInset(inset);
+	text_.insertInset(inset);
 	bv->fitCursor();
 	updateLocal(bv, CURSOR_PAR|CURSOR, true);
 	return true;
@@ -1676,7 +1674,7 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 
 	if ((paragraphs.size() == 1 && paragraphs.begin()->empty())
 	    || cpar()->empty()) {
-		getLyXText(bv)->setFont(font, toggleall);
+		text_.setFont(font, toggleall);
 		return;
 	}
 
