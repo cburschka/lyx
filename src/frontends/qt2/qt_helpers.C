@@ -14,11 +14,13 @@
 #include "lengthcombo.h"
 #include "qt_helpers.h"
 
+#include "lengthcommon.h"
 #include "gettext.h"
 
 #include "support/lstrings.h"
 #include "support/tostr.h"
 
+#include <qcombobox.h>
 #include <qlineedit.h>
 #include <qtextcodec.h>
 
@@ -75,6 +77,22 @@ string widgetsToLength(QLineEdit const * input, LengthCombo const * combo)
 	LyXLength::UNIT unit = combo->currentLengthItem();
 
 	return LyXLength(length.toDouble(), unit).asString();
+}
+
+
+LyXLength widgetsToLength(QLineEdit const * input, QComboBox const * combo)
+{
+	QString length = input->text();
+	if (length.isEmpty())
+		return LyXLength();
+
+	// don't return unit-from-choice if the input(field) contains a unit
+	if (isValidGlueLength(fromqstr(length)))
+		return LyXLength(fromqstr(length));
+
+	LyXLength::UNIT unit = unitFromString(fromqstr(combo->currentText()));
+	
+	return LyXLength(length.toDouble(), unit);
 }
 
 

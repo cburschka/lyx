@@ -13,6 +13,7 @@
 #include "QBoxDialog.h"
 
 #include "lengthcombo.h"
+#include "lengthvalidator.h"
 #include "QBox.h"
 #include "qt_helpers.h"
 
@@ -22,6 +23,18 @@
 
 namespace lyx {
 namespace frontend {
+
+namespace {
+
+LengthValidator * unsignedLengthValidator(QLineEdit * ed)
+{
+	LengthValidator * v = new LengthValidator(ed);
+	v->setBottom(LyXLength());
+	return v;
+}
+
+} // namespace anon
+
 
 QBoxDialog::QBoxDialog(QBox * form)
 	: QBoxDialogBase(0, 0, false, 0),
@@ -35,6 +48,9 @@ QBoxDialog::QBoxDialog(QBox * form)
 		form, SLOT(slotApply()));
 	connect(closePB, SIGNAL(clicked()),
 		form, SLOT(slotClose()));
+		
+	heightED->setValidator(unsignedLengthValidator(heightED));
+	widthED->setValidator(unsignedLengthValidator(widthED));
 }
 
 

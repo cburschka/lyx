@@ -15,6 +15,7 @@
 #include "QGraphics.h"
 
 #include "lengthcombo.h"
+#include "lengthvalidator.h"
 #include "qt_helpers.h"
 
 #include "debug.h"
@@ -23,12 +24,26 @@
 
 #include <qpushbutton.h>
 #include <qlineedit.h>
+#include <qvalidator.h>
 
 
 using std::string;
 
 namespace lyx {
 namespace frontend {
+
+
+namespace {
+
+LengthValidator * unsignedLengthValidator(QLineEdit * ed)
+{
+	LengthValidator * v = new LengthValidator(ed);
+	v->setBottom(LyXLength());
+	return v;
+}
+
+} // namespace anon
+
 
 QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 	: QGraphicsDialogBase(0, 0, false, 0),
@@ -44,6 +59,18 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 		form, SLOT(slotRestore()));
 	connect(editPB, SIGNAL(clicked()),
 		this, SLOT(edit_clicked()));
+		
+	angle->setValidator(new QDoubleValidator(-360, 360, 2, angle));
+
+	lbX->setValidator(new QIntValidator(lbX));
+	lbY->setValidator(new QIntValidator(lbY));
+	rtX->setValidator(new QIntValidator(rtX));
+	rtY->setValidator(new QIntValidator(rtY));
+		
+	displayscale->setValidator(new QDoubleValidator(0, 1000, 2, 
+		displayscale));
+	height->setValidator(unsignedLengthValidator(height));
+	width->setValidator(unsignedLengthValidator(width));
 }
 
 

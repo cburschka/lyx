@@ -14,6 +14,7 @@
 
 #include "QBox.h"
 
+#include "checkedwidgets.h"
 #include "lengthcombo.h"
 #include "QBoxDialog.h"
 #include "qt_helpers.h"
@@ -82,6 +83,10 @@ void QBox::build_dialog()
 	bcview().setOK(dialog_->okPB);
 	bcview().setApply(dialog_->applyPB);
 	bcview().setCancel(dialog_->closePB);
+	
+	// initialize the length validator
+	addCheckedLineEdit(bcview(), dialog_->widthED, dialog_->widthLA);
+	addCheckedLineEdit(bcview(), dialog_->heightED, dialog_->heightLA);
 }
 
 
@@ -179,6 +184,7 @@ void QBox::apply()
 	int i = 0;
 	bool spec = false;
 	QString special = dialog_->widthUnitsLC->currentText();
+	QString value = dialog_->widthED->text();
 	if (special == qt_("Height")) {
 		i = 1;
 		spec = true;
@@ -191,12 +197,17 @@ void QBox::apply()
 	} else if (special == qt_("Width")) {
 		i = 4;
 		spec = true;
+	} 
+	// the user might insert a non-special value in the line edit
+	if (isValidLength(fromqstr(value))) {
+		i = 0;
+		spec = false;
 	}
 	controller().params().special = ids_spec_[i];
 
 	string width;
 	if (spec) {
-		width = fromqstr(dialog_->widthED->text());
+		width = fromqstr(value);
 		// beware: bogosity! the unit is simply ignored in this case
 		width += "in";
 	} else
@@ -207,6 +218,7 @@ void QBox::apply()
 	i = 0;
 	spec = false;
 	special = dialog_->heightUnitsLC->currentText();
+	value = dialog_->heightED->text();
 	if (special == qt_("Height")) {
 		i = 1;
 		spec = true;
@@ -220,11 +232,16 @@ void QBox::apply()
 		i = 4;
 		spec = true;
 	}
+	// the user might insert a non-special value in the line edit
+	if (isValidLength(fromqstr(value))) {
+		i = 0;
+		spec = false;
+	}
 	controller().params().height_special = ids_spec_[i];
 
 	string height;
-	if (spec) {
-		height = fromqstr(dialog_->heightED->text());
+	if (spec  && !isValidLength(fromqstr(dialog_->heightED->text()))) {
+		height = fromqstr(value);
 		// beware: bogosity! the unit is simply ignored in this case
 		height += "in";
 	} else

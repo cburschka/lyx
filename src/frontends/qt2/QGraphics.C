@@ -14,6 +14,7 @@
 
 #include "QGraphics.h"
 
+#include "checkedwidgets.h"
 #include "lengthcombo.h"
 #include "QGraphicsDialog.h"
 #include "Qt2BC.h"
@@ -105,6 +106,16 @@ void QGraphics::build_dialog()
 	bcview().addReadOnly(dialog_->origin);
 	bcview().addReadOnly(dialog_->latexoptions);
 	bcview().addReadOnly(dialog_->getPB);
+	
+	// initialize the length validator
+	addCheckedLineEdit(bcview(), dialog_->width, dialog_->sizewidthL_2);
+	addCheckedLineEdit(bcview(), dialog_->height, dialog_->sizeheightL_2);
+	addCheckedLineEdit(bcview(), dialog_->displayscale, dialog_->scaleLA);
+	addCheckedLineEdit(bcview(), dialog_->angle, dialog_->angleL_2);
+	addCheckedLineEdit(bcview(), dialog_->lbX, dialog_->xL);
+	addCheckedLineEdit(bcview(), dialog_->lbY, dialog_->yL);
+	addCheckedLineEdit(bcview(), dialog_->rtX, dialog_->xL_2);
+	addCheckedLineEdit(bcview(), dialog_->rtY, dialog_->yL_2);
 }
 
 
@@ -115,15 +126,6 @@ int getItemNo(vector<string> v, string const & s) {
 	vector<string>::const_iterator cit =
 		    find(v.begin(), v.end(), s);
 	return (cit != v.end()) ? int(cit - v.begin()) : 0;
-}
-
-// returns the number of the unit in the array unit_name,
-// which is defined in lengthcommon.C
-int getUnitNo(char const * const c[], string const & s) {
-	int i = 0;
-	while (i < num_units && s != c[i])
-		++i;
-	return (i < num_units) ? i : 0;
 }
 
 }
@@ -268,10 +270,8 @@ void QGraphics::update_contents()
 		dialog_->widthUnit->setCurrentItem(unit_ + 1);
 	}
 	// 2. the height (a lengthgcombo type)
-	dialog_->height->setText(toqstr(tostr(igp.height.value())));
-	LyXLength::UNIT unit_ = (igp.height.value() > 0.0) ?
-		igp.height.unit() : unitDefault;
-	dialog_->heightUnit->setCurrentItem(unit_);
+	lengthToWidgets(dialog_->height, dialog_->heightUnit, 
+		igp.height.asString(), unitDefault);
 
 	// enable height input in case of non "Scale%" as width-unit
 	bool use_height = (dialog_->widthUnit->currentItem() > 0);
@@ -360,11 +360,10 @@ void QGraphics::apply()
 		igp.display = lyx::graphics::NoDisplay;
 
 	string value = fromqstr(dialog_->width->text());
-	if (dialog_->widthUnit->currentItem() > 0) {
+	if (dialog_->widthUnit->currentItem() > 0 || isValidLength(value)) {
 		// width/height combination
-		QString const text = dialog_->widthUnit->currentText();
-		int const unitNo = getUnitNo(unit_name_gui, fromqstr(text));
-		igp.width = LyXLength(value + unit_name_ltx[unitNo]);
+		igp.width = 
+			widgetsToLength(dialog_->width, dialog_->widthUnit);
 		igp.scale = 0.0;
 	} else {
 		// scaling instead of a width
@@ -372,9 +371,8 @@ void QGraphics::apply()
 		igp.width = LyXLength();
 	}
 	value = fromqstr(dialog_->height->text());
-	QString text = dialog_->heightUnit->currentText();
-	int const unitNo = getUnitNo(unit_name_gui, fromqstr(text));
-	igp.height = LyXLength(value + unit_name_ltx[unitNo]);
+	igp.height = 
+		LyXLength(widgetsToLength(dialog_->height, dialog_->heightUnit));
 
 	igp.keepAspectRatio = dialog_->aspectratio->isChecked();
 

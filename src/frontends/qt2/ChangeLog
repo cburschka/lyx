@@ -1,5 +1,15 @@
 2004-11-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
+	* qt_helpers.[Ch]: new member function widgetsToLength
+	for ordinary QComboBoxes
+	* QGraphics.C:
+	* QGraphicsDialog.C: use new member function. Add length
+	validator
+	* QBox.C:
+	* QBoxDialog.C: Add length validator 
+
+2004-11-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
 	* ui/QTabularDialogBase.ui: Rename button ("Default" to "Set"),
 	which is more appropriate. Also modify some tooltips.
 

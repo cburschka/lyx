@@ -17,6 +17,7 @@
 #include "lyxlength.h"
 
 class LengthCombo;
+class QComboBox;
 class QLineEdit;
 class QString;
 
@@ -24,8 +25,10 @@ std::string makeFontName(std::string const & family, std::string const & foundry
 
 std::pair<std::string,std::string> parseFontName(std::string const & name);
 
-/// method to get a LyXLength from widgets
+/// method to get a LyXLength from widgets (LengthCombo)
 std::string widgetsToLength(QLineEdit const * input, LengthCombo const * combo);
+/// method to get a LyXLength from widgets (QComboBox)
+LyXLength widgetsToLength(QLineEdit const * input, QComboBox const * combo);
 
 /// method to set widgets from a LyXLength
 void lengthToWidgets(QLineEdit * input, LengthCombo * combo,
