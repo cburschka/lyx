@@ -97,7 +97,7 @@ void InsetBranch::setButtonLabel()
 	font.decSize();
 	font.decSize();
 
-	setLabel(params_.branch);
+	setLabel("Branch: " + params_.branch);
 	font.setColor(LColor::foreground);
 	string const color = params_.branchlist.getColor(params_.branch);
 	if (!color.empty()) {
@@ -146,7 +146,6 @@ dispatch_result InsetBranch::localDispatch(FuncRequest const & cmd)
 		return InsetCollapsable::localDispatch(cmd);
 	}
 }
-
 
 
 int InsetBranch::latex(Buffer const & buf, ostream & os,
