@@ -2161,6 +2161,12 @@ LyXFunc::func_status InsetTabular::getStatus(string const & what) const
 }
 
 
+std::vector<string> const InsetTabular::getLabelList() const
+{
+	return tabular->getLabelList();
+}
+
+
 bool InsetTabular::copySelection(BufferView * bv)
 {
 	if (!hasSelection())

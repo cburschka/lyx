@@ -2544,6 +2544,20 @@ void LyXTabular::Validate(LaTeXFeatures & features) const
 }
 
 
+std::vector<string> const LyXTabular::getLabelList() const
+{
+	std::vector<string> label_list;
+	for (int i = 0; i < rows_; ++i)
+		for (int j = 0; j < columns_; ++j) {
+			std::vector<string> const l =
+				GetCellInset(i, j)->getLabelList();
+			label_list.insert(label_list.end(),
+					  l.begin(), l.end());
+		}
+	return label_list;
+}
+
+			
 #ifndef NEW_INSETS
 LyXTabular::BoxType LyXTabular::UseParbox(int cell) const
 {

@@ -1,3 +1,20 @@
+2001-04-06  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* tabular.[Ch] (getLabelList): implement new method
+
+	* minibuffer.h: comment ouf setTiimer
+
+	* minibuffer.C (ExecutingCB): constify res
+	(peek_event): constify s
+	(Set): constify ntext
+	(Init): constify nicename
+
+	* BufferView2.C (updateInset): comment out Minibuffer::setTimer
+
+	* BufferView_pimpl.C (update): comment out Minibuffer::setTimer
+	(savePosition): use two params to Minibuffer::Set
+	(restorePosition): ditto
+
 2001-04-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyx_main.C: include language.h

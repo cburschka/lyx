@@ -62,7 +62,7 @@ void MiniBuffer::ExecutingCB(FL_OBJECT * ob, long)
 	obj->addHistory(obj->cur_cmd);
 	
 	// Dispatch only returns requested data for a few commands (ale)
-	string res = obj->owner->getLyXFunc()->Dispatch(obj->cur_cmd);
+	string const res = obj->owner->getLyXFunc()->Dispatch(obj->cur_cmd);
 	lyxerr.debug() << "Minibuffer Res: " << res << endl;
 	obj->shows_no_match = false;
 
@@ -70,7 +70,8 @@ void MiniBuffer::ExecutingCB(FL_OBJECT * ob, long)
 }
 
 
-extern "C" void C_MiniBuffer_ExecutingCB(FL_OBJECT * ob, long)
+extern "C"
+void C_MiniBuffer_ExecutingCB(FL_OBJECT * ob, long)
 {
 	MiniBuffer * obj = static_cast<MiniBuffer*>(ob->u_vdata);
 	obj->Init();
@@ -102,7 +103,7 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, FL_Coord, FL_Coord,
 		case XK_Tab:
 		{
 			// complete or increment the command
-			string s(lyxaction.getApproxFuncName(fl_get_input(ob)));
+			string const s(lyxaction.getApproxFuncName(fl_get_input(ob)));
 			if (!s.empty())
 				fl_set_input(ob, s.c_str());
 			return 1; 
@@ -139,9 +140,10 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, FL_Coord, FL_Coord,
 }
 
 
-extern "C" int C_MiniBuffer_peek_event(FL_OBJECT * ob, int event, 
-				       FL_Coord, FL_Coord,
-				       int key, void * xev)
+extern "C"
+int C_MiniBuffer_peek_event(FL_OBJECT * ob, int event, 
+			    FL_Coord, FL_Coord,
+			    int key, void * xev)
 {
 	return MiniBuffer::peek_event(ob, event, 0, 0, key, xev);
 }
@@ -189,7 +191,7 @@ void MiniBuffer::Set(string const& s1, string const& s2,
 	else
 		timer.stop();
 	
-	string ntext = strip(s1 + ' ' + s2 + ' ' + s3);
+	string const ntext = strip(s1 + ' ' + s2 + ' ' + s3);
 
 	if (!the_buffer->focus) {
 		fl_set_input(the_buffer, ntext.c_str());
@@ -218,25 +220,25 @@ void MiniBuffer::Init()
    
 	// Else, show the buffer state.
 	else if (owner->view()->available()) {
-			string nicename = 
-				MakeDisplayPath(owner->buffer()->
-						fileName());
-			// Should we do this instead? (kindo like emacs)
-			// leaves more room for other information
-			text = "LyX: ";
-			text += nicename;
-			if (owner->buffer()->lyxvc.inUse()) {
-				text += " [";
-				text += owner->buffer()->lyxvc.version();
-				text += ' ';
-				text += owner->buffer()->lyxvc.locker();
-				if (owner->buffer()->isReadonly())
-					text += " (RO)";
-				text += ']';
-			} else if (owner->buffer()->isReadonly())
-				text += " [RO]";
-			if (!owner->buffer()->isLyxClean())
-				text += _(" (Changed)");
+		string const nicename = 
+			MakeDisplayPath(owner->buffer()->
+					fileName());
+		// Should we do this instead? (kindo like emacs)
+		// leaves more room for other information
+		text = "LyX: ";
+		text += nicename;
+		if (owner->buffer()->lyxvc.inUse()) {
+			text += " [";
+			text += owner->buffer()->lyxvc.version();
+			text += ' ';
+			text += owner->buffer()->lyxvc.locker();
+			if (owner->buffer()->isReadonly())
+				text += " (RO)";
+			text += ']';
+		} else if (owner->buffer()->isReadonly())
+			text += " [RO]";
+		if (!owner->buffer()->isLyxClean())
+			text += _(" (Changed)");
 	} else {
 		if (text != _("Welcome to LyX!")) // this is a hack
 			text = _("* No document open *");

@@ -176,7 +176,8 @@ public:
 	bool ShowInsetDialog(BufferView *) const;
 	///
 	LyXFunc::func_status getStatus(string const & argument) const;
-
+	///
+	std::vector<string> const getLabelList() const;
 	//
 	// Public structures and variables
 	///
@@ -188,13 +189,13 @@ public:
 private:
 	///
 	bool calculate_dimensions_of_cells(BufferView *, LyXFont const &,
-									   bool = false) const;
+					   bool = false) const;
 	///
 	void DrawCellLines(Painter &, int x, int baseline,
-					   int row, int cell) const;
+			   int row, int cell) const;
 	///
 	void DrawCellSelection(Painter &, int x, int baseline,
-						   int row, int column, int cell) const;
+			       int row, int column, int cell) const;
 	///
 	void ShowInsetCursor(BufferView *, bool show=true);
 	///
@@ -223,17 +224,19 @@ private:
 	void RemoveTabularRow();
 	///
 	bool hasSelection() const {
-	return sel_cell_start != sel_cell_end;
+		return sel_cell_start != sel_cell_end;
 	}
 	///
 	void clearSelection() const {
 	sel_cell_start = sel_cell_end = 0;
 	}
 	///
-	bool ActivateCellInset(BufferView *, int x = 0, int y = 0, int button = 0,
-						   bool behind = false);
+	bool ActivateCellInset(BufferView *, int x = 0, int y = 0,
+			       int button = 0,
+			       bool behind = false);
 	///
-	bool ActivateCellInsetAbs(BufferView *, int x = 0, int y=0, int button=0);
+	bool ActivateCellInsetAbs(BufferView *, int x = 0, int y = 0,
+				  int button = 0);
 	///
 	bool InsetHit(BufferView * bv, int x, int y) const;
 	///

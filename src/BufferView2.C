@@ -864,9 +864,11 @@ void BufferView::updateInset(Inset * inset, bool mark_dirty)
 			if (text->UpdateInset(this, inset)) {
 				update();
 				if (mark_dirty) {
+#if 0
 					if (buffer()->isLyxClean())
 						owner()->getMiniBuffer()->
 							setTimer(4);
+#endif
 					buffer()->markDirty();
 				}
 				updateScrollbar();
@@ -876,9 +878,11 @@ void BufferView::updateInset(Inset * inset, bool mark_dirty)
 			if (text->UpdateInset(this, theLockingInset())) {
 				update();
 				if (mark_dirty){
+#if 0
 					if (buffer()->isLyxClean())
 						owner()->getMiniBuffer()->
 							setTimer(4);
+#endif
 					buffer()->markDirty();
 				}
 				updateScrollbar();

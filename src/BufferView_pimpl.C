@@ -1102,7 +1102,9 @@ void BufferView::Pimpl::update(LyXText * text, BufferView::UpdateCodes f)
 	if ((f & CHANGE)) {
 		if (buffer_->isLyxClean()) {
 			buffer_->markDirty();
+#if 0
 			owner_->getMiniBuffer()->setTimer(4);
+#endif
 		} else {
 			buffer_->markDirty();
 		}
@@ -1217,7 +1219,7 @@ void BufferView::Pimpl::savePosition(unsigned int i)
 				      bv_->text->cursor.par()->id(),
 				      bv_->text->cursor.pos());
 	if (i > 0)
-		owner_->getMiniBuffer()->Set(_("Saved bookmark ") + tostr(i));
+		owner_->getMiniBuffer()->Set(_("Saved bookmark"), tostr(i));
 }
 
 
@@ -1250,7 +1252,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 #endif
 	update(bv_->text, BufferView::SELECT|BufferView::FITCUR);
 	if (i > 0)
-		owner_->getMiniBuffer()->Set(_("Moved to bookmark ") + tostr(i));
+		owner_->getMiniBuffer()->Set(_("Moved to bookmark"), tostr(i));
 }
 
 

@@ -23,11 +23,13 @@ public:
 	///
 	bool shows_no_match;
 
+#if 0
 	///
 	void setTimer(unsigned int a) {
 		timer.setTimeout(a * 1000);
 	}
-
+#endif
+	
 	///
 	void Set(string const & = string(),
 		 string const & = string(),

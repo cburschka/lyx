@@ -1,3 +1,12 @@
+2001-04-06  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* insettext.C (InsetText): fix new
+	(InsetText): reindent some, simplify deletion of par list 
+	(clear): simplify deletion of par list, fix new
+	(SetParagraphData): simplify deletion of par list
+
+	* insettabular.[Ch] (getLabelList): implement new method
+
 2001-04-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxinset.h: do not include gettext.h...

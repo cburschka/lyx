@@ -206,17 +206,19 @@ public:
 	/// Returns true if a complete update is necessary, otherwise false
 	bool SetAllLines(int cell, bool line);
 	/// Returns true if a complete update is necessary, otherwise false
-	bool SetTopLine(int cell, bool line, bool onlycolumn=false);
+	bool SetTopLine(int cell, bool line, bool onlycolumn = false);
 	/// Returns true if a complete update is necessary, otherwise false
-	bool SetBottomLine(int cell, bool line, bool onlycolumn=false);
+	bool SetBottomLine(int cell, bool line, bool onlycolumn = false);
 	/// Returns true if a complete update is necessary, otherwise false
-	bool SetLeftLine(int cell, bool line, bool onlycolumn=false);
+	bool SetLeftLine(int cell, bool line, bool onlycolumn = false);
 	/// Returns true if a complete update is necessary, otherwise false
-	bool SetRightLine(int cell, bool line, bool onlycolumn=false);
+	bool SetRightLine(int cell, bool line, bool onlycolumn = false);
 	/// Returns true if a complete update is necessary, otherwise false
-	bool SetAlignment(int cell, LyXAlignment align, bool onlycolumn = false);
+	bool SetAlignment(int cell, LyXAlignment align,
+			  bool onlycolumn = false);
 	/// Returns true if a complete update is necessary, otherwise false
-	bool SetVAlignment(int cell, VAlignment align, bool onlycolumn = false);
+	bool SetVAlignment(int cell, VAlignment align,
+			   bool onlycolumn = false);
 	///
 	bool SetColumnPWidth(int cell, string const & width);
 	///
@@ -283,13 +285,14 @@ public:
 	// helper function for Latex returns number of newlines
 	///
 	int AsciiTopHLine(std::ostream &, int row,
-					  std::vector<unsigned int> const &) const;
+			  std::vector<unsigned int> const &) const;
 	///
 	int AsciiBottomHLine(std::ostream &, int row,
-						 std::vector<unsigned int> const &) const;
+			     std::vector<unsigned int> const &) const;
 	///
-	int AsciiPrintCell(Buffer const *, std::ostream &, int cell, int row,
-					   int column, std::vector<unsigned int> const &) const;
+	int AsciiPrintCell(Buffer const *, std::ostream &,
+			   int cell, int row, int column,
+			   std::vector<unsigned int> const &) const;
 	///
 	int Ascii(Buffer const *, std::ostream &) const;
 	///
@@ -366,8 +369,9 @@ public:
 	InsetTabular * owner() const { return owner_; }
 	///
 	void Validate(LaTeXFeatures &) const;
-
-private: //////////////////////////////////////////////////////////////////
+	///
+	std::vector<string> const getLabelList() const;
+private:
 	///
 	struct cellstruct {
 		///
