@@ -166,7 +166,7 @@ void GLayoutBox::selected()
 	for (; it != end; ++it) {
 		string const & name = (*it)->name();
 		if (name == layoutGuiName) {
-			FunctRequest const func(LFUN_LAYOUT, name, 
+			FuncRequest const func(LFUN_LAYOUT, name, 
 						FuncRequest::UI);
 			owner_.getLyXFunc().dispatch(func);
 			return;
