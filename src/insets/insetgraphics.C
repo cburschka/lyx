@@ -10,26 +10,7 @@
  * ====================================================== */
 
 /*
-Known BUGS:
-
-    * If the image is from the clipart, and the document is moved to another
-      directory, the user is screwed. Need a way to handle it.
-      This amounts to a problem of when to use relative or absolute file paths
-      We should probably use what the user asks to use... but when he chooses
-      by the file dialog we normally get an absolute path and this may not be
-      what the user meant.
-
-      Note that browseRelFile in helper_funcs.* provides a file name
-      which is relative if it is at reference path (here puffer path)
-      level or below, and an absolute path if the file name is not a
-      `natural' relative file name. In any case,
-	      MakeAbsPath(filename, buf->filePath())
-      is guaranteed to provide the correct absolute path. This is what is
-      done know for include insets. Feel free to ask me -- JMarc
-      14/01/2002
-
-TODO Before initial production release:
-
+TODO 
     * What advanced features the users want to do?
       Implement them in a non latex dependent way, but a logical way.
       LyX should translate it to latex or any other fitting format.
@@ -495,6 +476,8 @@ void InsetGraphics::readFigInset(LyXLex & lex)
 				    break;
 				case 3: params_.display = InsetGraphicsParams::COLOR;
 				    break;
+				case 8: params_.display = InsetGraphicsParams::NONE;
+				    break;
 				}
 		} else if (token == "subfigure") {
 			params_.subcaption = true;
@@ -612,23 +595,63 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	// LaTeX can cope if the graphics file doesn't exist, so just return the
 	// filename.
 	string const orig_file = params().filename;
-	string const orig_file_with_path =
+	string orig_file_with_path =
 		MakeAbsPath(orig_file, buf->filePath());
-	lyxerr[Debug::GRAPHICS] << "prepareFile: " << orig_file << endl
-		    << "  with path: " << orig_file_with_path << endl;
+	lyxerr[Debug::GRAPHICS] << "[InsetGraphics::prepareFile] orig_file = "
+		    << orig_file << "\n\twith path: "
+		    << orig_file_with_path << endl;
 
 	if (!IsFileReadable(orig_file_with_path))
 		return orig_file;
 
 	// If the file is compressed and we have specified that it should not be
 	// uncompressed, then just return its name and let LaTeX do the rest!
+
+	// maybe that other zip extensions also be useful, especially the
+	// ones that may be declared in texmf/tex/latex/config/graphics.cfg.
+	// for example:
+	/* -----------snip-------------
+	  {\DeclareGraphicsRule{.pz}{eps}{.bb}{}%
+	   \DeclareGraphicsRule{.eps.Z}{eps}{.eps.bb}{}%
+	   \DeclareGraphicsRule{.ps.Z}{eps}{.ps.bb}{}%
+	   \DeclareGraphicsRule{.ps.gz}{eps}{.ps.bb}{}%
+	   \DeclareGraphicsRule{.eps.gz}{eps}{.eps.bb}{}}}%
+	 -----------snip-------------*/
+
 	bool const zipped = zippedFile(orig_file_with_path);
 	if (zipped)
-		lyxerr[Debug::GRAPHICS] << "it's a zipped file\n";
-	if (zipped && params().noUnzip) {
-		lyxerr[Debug::GRAPHICS] << "pass file unzipped to LaTeX\n";
-		return orig_file;
+		lyxerr[Debug::GRAPHICS] << "\twe have a zipped file ("
+			<< getExtFromContents(orig_file_with_path) << ")\n";
+	if (params().noUnzip && zipped) {
+		lyxerr[Debug::GRAPHICS]
+			<< "\tpass file unzipped to LaTeX but with full path.\n";
+		// latex needs an absolue path, otherwise the coresponding
+		// *.eps.bb file isn't found
+		return orig_file_with_path;
 	}
+
+	string temp_file(orig_file);
+	// Uncompress the file if necessary. If it has been uncompressed in
+	// a previous call to prepareFile, do nothing.
+	if (zipped) {
+		temp_file = MakeAbsPath(OnlyFilename(temp_file), buf->tmppath);
+		lyxerr[Debug::GRAPHICS]
+			<< "\ttemp_file: " << temp_file << endl;
+		if (!IsFileReadable(temp_file)) {
+			bool const success = lyx::copy(orig_file_with_path, temp_file);
+			lyxerr[Debug::GRAPHICS]
+				<< "\tCopying zipped file from "
+				<< orig_file_with_path << " to " << temp_file
+				<< (success ? " succeeded\n" : " failed\n");
+		} else
+			lyxerr[Debug::GRAPHICS]
+				<< "\tzipped file " << temp_file
+				<< " exists! Maybe no tempdir ...\n";
+		orig_file_with_path = unzipFile(temp_file);
+		lyxerr[Debug::GRAPHICS]
+			<< "\tunzipped to " << orig_file_with_path << endl;
+	}
+	string const from = getExtFromContents(orig_file_with_path);
 
 	// "nice" means that the buffer is exported to LaTeX format but not
 	//        run through the LaTeX compiler.
@@ -644,85 +667,58 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 
 	// Perform all these manipulations on a temporary file if possible.
 	// If we are not using a temp dir, then temp_file contains the
-	// original file. 
+	// original file.
 	// to allow files with the same name in different dirs
-	// we manipulate the original file "any.dir/file.ext" 
-       // to "any_dir_file.ext"!
-       // changing the dot is important for the use of ChangeExtension
-	string temp_file(orig_file);
+	// we manipulate the original file "any.dir/file.ext"
+	// to "any_dir_file.ext"! changing the dots in the
+	// dirname is important for the use of ChangeExtension
+	lyxerr[Debug::GRAPHICS]
+		<< "\tthe orig file is: " << orig_file_with_path << endl;
+
 	if (lyxrc.use_tempdir) {
-		string const ext_tmp = GetExtension(orig_file);
+		string const ext_tmp = GetExtension(orig_file_with_path);
 		// without ext and /
-		temp_file = subst(		
-			ChangeExtension(temp_file, string()), "/", "_");
-		// without . and again with ext
-		temp_file = ChangeExtension(	
+		temp_file = subst(
+			ChangeExtension(orig_file_with_path, string()), "/", "_");
+		// without dots and again with ext
+		temp_file = ChangeExtension(
 			subst(temp_file, ".", "_"), ext_tmp);
 		// now we have any_dir_file.ext
 		temp_file = MakeAbsPath(temp_file, buf->tmppath);
-	}
-	lyxerr[Debug::GRAPHICS]
-		<< "InsetGraphics::prepareFile. The temp file is: "
-		<< temp_file << endl;
-
-	// If we are using a temp dir, then copy the file into it.
-	if (lyxrc.use_tempdir && !IsFileReadable(temp_file)) {
-		bool const success = lyx::copy(orig_file_with_path, temp_file);
 		lyxerr[Debug::GRAPHICS]
-			<< "InsetGraphics::prepareFile. Copying from " 
-			<< orig_file << " to " << temp_file
-			<< (success ? " succeeded\n" : " failed\n");
-		if (!success) {
-			Alert::alert(_("Cannot copy file"), orig_file,
-					_("into tempdir"));
-			return orig_file;
-		}
-	}
+			<< "\tchanged to: " << temp_file << endl;
 
-	// Uncompress the file if necessary. If it has been uncompressed in
-	// a previous call to prepareFile, do nothing.
-        if (zipped) {
-		// What we want to end up with:
-		string const temp_file_unzipped =
-			ChangeExtension(temp_file, string());
-
-		if (!IsFileReadable(temp_file_unzipped)) {
-			// unzipFile generates a random filename, so move this
-			// file where we want it to go.
-			string const tmp = unzipFile(temp_file);
-			lyx::copy(tmp, temp_file_unzipped);
-			lyx::unlink(tmp);
-
+		// if the file doen't exists, copy it into the tempdi
+		if (!IsFileReadable(temp_file)) {
+			bool const success = lyx::copy(orig_file_with_path, temp_file);
 			lyxerr[Debug::GRAPHICS]
-				<< "InsetGraphics::prepareFile. Unzipped to "
-				<< temp_file_unzipped << endl;
+				<< "\tcopying from " << orig_file_with_path << " to "
+				<< temp_file
+				<< (success ? " succeeded\n" : " failed\n");
+			if (!success) {
+				Alert::alert(_("Cannot copy file"), orig_file_with_path,
+					_("into tempdir"));
+				return RemoveExtension(orig_file);
+			}
 		}
-
-		// We have an uncompressed file where we expect it,
-		// so rename temp_file and continue.
-		temp_file = temp_file_unzipped;
 	}
 
-	// Ascertain the graphics format that LaTeX requires.
-	// Make again an absolute path, maybe that we have no
-	// tempdir. Than temp_file=orig_file
-	string const from = lyxrc.use_tempdir ?
-		getExtFromContents(temp_file) :
-		getExtFromContents(MakeAbsPath(temp_file, buf->filePath()));
-	string const to   = findTargetFormat(from);
-
-	// No conversion is needed. LaTeX can handle the graphics file as it is.
-	// This is true even if the orig_file is compressed.
+	string const to = findTargetFormat(from);
+	lyxerr[Debug::GRAPHICS]
+		<< "\t we have: from " << from << " to " << to << '\n';
 	if (from == to) {
-		return orig_file;
+		// No conversion is needed. LaTeX can handle the graphic file as is.
+		// This is true even if the orig_file is compressed. We have to return
+		// the orig_file_with_path, maybe it is a zipped one
+		if (lyxrc.use_tempdir)
+			return RemoveExtension(temp_file);
+		return RemoveExtension(orig_file_with_path);
 	}
 
 	string const outfile_base = RemoveExtension(temp_file);
-
 	lyxerr[Debug::GRAPHICS]
-		<< "InsetGraphics::prepareFile. The original file is "
-		<< orig_file << "\n"
-		<< "A copy has been made and convert is to be called with:\n"
+		<< "\tThe original file is " << orig_file << "\n"
+		<< "\tA copy has been made and convert is to be called with:\n"
 		<< "\tfile to convert = " << temp_file << '\n'
 		<< "\toutfile_base = " << outfile_base << '\n'
 		<< "\t from " << from << " to " << to << '\n';

@@ -51,6 +51,9 @@ What's new
 
 - fix latex output when the name of a graphics file contains several "."
 
+- always pass filenames without extension to latex, so includegraphics
+  can decide which extension is the right one 
+
 - fix rotation angle of images to be the same as in latex output
 
 - fix the graphics inset file browser to use the right list of
@@ -58,6 +61,12 @@ What's new
 
 - fix support for 1.1.6 graphics files scaled as percentage of width
   or height
+
+- fix handling of 'no display' option in 1.1.6 figure insets
+
+- handle correctly zipped eps files (others worked well)
+
+- fix the default rotation origin for graphics inset
 
 - fix the default tgif format entry to use .obj as file extension and
   not .tgif

@@ -96,7 +96,7 @@ void InsetGraphicsParams::init()
 	keepLyXAspectRatio = false;	// only for LyXview
 	keepAspectRatio = false;	// only for latex
 	rotate = false;			// Rotating
-	rotateOrigin = "center";	// Origin
+	rotateOrigin = "leftBaseline";	// Origin
 	rotateAngle = 0.0;		// in degrees
 	special = string();		// userdefined stuff
 }

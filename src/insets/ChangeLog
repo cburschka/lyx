@@ -1,3 +1,10 @@
+2002-07-03  Herbert Voss  <voss@lyx.org>
+
+	* insetgraphics.C (prepareFile): fix several bugs with returning
+	the right graphicsname with or without extension.
+
+	* insetgraphicsParams.C (init): fix the default rotation origin
+
 2002-05-01  Herbert Voss  <voss@lyx.org>
 
 	* insetgraphicsParams.[Ch]: define a new keepLyXAspectRatio parameter.
