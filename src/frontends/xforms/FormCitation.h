@@ -64,8 +64,6 @@ private:
 	/// 
 	void showInset( InsetCitation * );
 	/// 
-	void hideInset( InsetCitation * );
-	/// 
 	void show();
 	/// Hide the dialog.
 	void hide();
@@ -114,6 +112,8 @@ private:
 	Connection u_;
 	/// Hide connection.
 	Connection h_;
+	/// inset::hide connection.
+	Connection ih_;
 	///
 	InsetCitation * inset_;
 	///

@@ -1404,18 +1404,23 @@ bool UpdateLayoutParagraph()
 	}
 
 	Buffer * buf = current_view->buffer();
+	LyXText * text = 0;
+	if (current_view->the_locking_inset)
+	    text = current_view->the_locking_inset->getLyXText(current_view);
+	if (!text)
+	    text = current_view->text;
 
 	fl_set_input(fd_form_paragraph->input_labelwidth,
-		     current_view->text->cursor.par()->GetLabelWidthString().c_str());
+		     text->cursor.par()->GetLabelWidthString().c_str());
 	fl_set_button(fd_form_paragraph->radio_align_right, 0);
 	fl_set_button(fd_form_paragraph->radio_align_left, 0);
 	fl_set_button(fd_form_paragraph->radio_align_center, 0);
 	fl_set_button(fd_form_paragraph->radio_align_block, 0);
 
-	int align = current_view->text->cursor.par()->GetAlign();
+	int align = text->cursor.par()->GetAlign();
 	if (align == LYX_ALIGN_LAYOUT)
 		align = textclasslist.Style(buf->params.textclass,
-					    current_view->text->cursor.par()->GetLayout()).align;
+					    text->cursor.par()->GetLayout()).align;
 	 
 	switch (align) {
 	case LYX_ALIGN_RIGHT:
@@ -1433,18 +1438,18 @@ bool UpdateLayoutParagraph()
 	}
 	 
 	fl_set_button(fd_form_paragraph->check_lines_top,
-		      current_view->text->cursor.par()->FirstPhysicalPar()->line_top);
+		      text->cursor.par()->FirstPhysicalPar()->line_top);
 	fl_set_button(fd_form_paragraph->check_lines_bottom,
-		      current_view->text->cursor.par()->FirstPhysicalPar()->line_bottom);
+		      text->cursor.par()->FirstPhysicalPar()->line_bottom);
 	fl_set_button(fd_form_paragraph->check_pagebreaks_top,
-		      current_view->text->cursor.par()->FirstPhysicalPar()->pagebreak_top);
+		      text->cursor.par()->FirstPhysicalPar()->pagebreak_top);
 	fl_set_button(fd_form_paragraph->check_pagebreaks_bottom,
-		      current_view->text->cursor.par()->FirstPhysicalPar()->pagebreak_bottom);
+		      text->cursor.par()->FirstPhysicalPar()->pagebreak_bottom);
 	fl_set_button(fd_form_paragraph->check_noindent,
-		      current_view->text->cursor.par()->FirstPhysicalPar()->noindent);
+		      text->cursor.par()->FirstPhysicalPar()->noindent);
 	fl_set_input (fd_form_paragraph->input_space_above, "");
 	
-	switch (current_view->text->cursor.par()->FirstPhysicalPar()->added_space_top.kind()) {
+	switch (text->cursor.par()->FirstPhysicalPar()->added_space_top.kind()) {
 	case VSpace::NONE:
 		fl_set_choice (fd_form_paragraph->choice_space_above, 1);
 		break;
@@ -1466,13 +1471,13 @@ bool UpdateLayoutParagraph()
 	case VSpace::LENGTH:
 		fl_set_choice (fd_form_paragraph->choice_space_above, 7); 
 		fl_set_input  (fd_form_paragraph->input_space_above, 
-			       current_view->text->cursor.par()->FirstPhysicalPar()->added_space_top.length().asString().c_str());
+			       text->cursor.par()->FirstPhysicalPar()->added_space_top.length().asString().c_str());
 		break;
 	}
 	fl_set_button (fd_form_paragraph->check_space_above,
-		       current_view->text->cursor.par()->FirstPhysicalPar()->added_space_top.keep());
+		       text->cursor.par()->FirstPhysicalPar()->added_space_top.keep());
 	fl_set_input (fd_form_paragraph->input_space_below, "");
-	switch (current_view->text->cursor.par()->FirstPhysicalPar()->added_space_bottom.kind()) {
+	switch (text->cursor.par()->FirstPhysicalPar()->added_space_bottom.kind()) {
 	case VSpace::NONE:
 		fl_set_choice (fd_form_paragraph->choice_space_below,
 			       1);
@@ -1501,14 +1506,14 @@ bool UpdateLayoutParagraph()
 		fl_set_choice (fd_form_paragraph->choice_space_below,
 			       7); 
 		fl_set_input  (fd_form_paragraph->input_space_below, 
-			       current_view->text->cursor.par()->FirstPhysicalPar()->added_space_bottom.length().asString().c_str());
+			       text->cursor.par()->FirstPhysicalPar()->added_space_bottom.length().asString().c_str());
 		break;
 	}
 	fl_set_button (fd_form_paragraph->check_space_below,
-		       current_view->text->cursor.par()->FirstPhysicalPar()->added_space_bottom.keep());
+		       text->cursor.par()->FirstPhysicalPar()->added_space_bottom.keep());
 
 	fl_set_button(fd_form_paragraph->check_noindent,
-		      current_view->text->cursor.par()->FirstPhysicalPar()->noindent);
+		      text->cursor.par()->FirstPhysicalPar()->noindent);
 
 	if (current_view->buffer()->isReadonly()) {
 		DisableParagraphLayout();
@@ -2130,16 +2135,21 @@ extern "C" void ParagraphApplyCB(FL_OBJECT *, long)
 	labelwidthstring = fl_get_input(fd_form_paragraph->input_labelwidth);
 	noindent = fl_get_button(fd_form_paragraph->check_noindent);
 
-	current_view->text->SetParagraph(current_view,
-					 line_top,
-					 line_bottom,
-					 pagebreak_top,
-					 pagebreak_bottom,
-					 space_top,
-					 space_bottom,
-					 align, 
-					 labelwidthstring,
-					 noindent);
+	LyXText * text = 0;
+	if (current_view->the_locking_inset)
+	    text = current_view->the_locking_inset->getLyXText(current_view);
+	if (!text)
+	    text = current_view->text;
+	text->SetParagraph(current_view,
+			   line_top,
+			   line_bottom,
+			   pagebreak_top,
+			   pagebreak_bottom,
+			   space_top,
+			   space_bottom,
+			   align, 
+			   labelwidthstring,
+			   noindent);
 	current_view->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	current_view->owner()->getMiniBuffer()->Set(_("Paragraph layout set"));
 }

@@ -158,6 +158,7 @@ public:
     ///
     Buffer * BufferOwner() const { return buffer; }
     ///
+    LyXText * getLyXText(BufferView *) const;
     void resizeLyXText(BufferView *) const;
 
     ///

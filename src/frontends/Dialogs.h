@@ -113,8 +113,6 @@ public:
 	///
 	Signal1<void, string const &> createCitation;
 	///
-	Signal1<void, InsetCitation *> hideCitation;
-	///
 	Signal1<void, InsetBibtex *> showBibtex;
 	///
 	Signal1<void, InsetInfo *> showInfo;

@@ -48,7 +48,6 @@ FormCitation::FormCitation(LyXView * lv, Dialogs * d)
 	// storing a copy because we won't be disconnecting.
 	d->showCitation.connect(slot(this, &FormCitation::showInset));
 	d->createCitation.connect(slot(this, &FormCitation::createInset));
-	d->hideCitation.connect(slot(this, &FormCitation::hideInset));
 }
 
 
@@ -69,6 +68,7 @@ void FormCitation::showInset( InsetCitation * inset )
 	if( dialogIsOpen || inset == 0 ) return;
 
 	inset_ = inset;
+	ih_ = inset_->hide.connect(slot(this, &FormCitation::hide));
 
 	textAfter = inset->getOptions();
 	updateCitekeys(inset->getContents());
@@ -91,15 +91,6 @@ void FormCitation::createInset( string const & arg )
 
 	updateCitekeys(keys);
 	show();
-}
-
-
-void FormCitation::hideInset(InsetCitation * ti)
-{
-	if (inset_ == ti) {
-		inset_ = 0;
-		hide();
-	}
 }
 
 
@@ -277,13 +268,14 @@ void FormCitation::setSize( int brsrHeight, bool bibPresent ) const
 	ypos += 30;
 	fl_set_object_geometry( dialog_->citeBrsr, 10,  ypos, 180, brsrHeight );
 	fl_set_object_geometry( dialog_->bibBrsr,  240, ypos, 180, brsrHeight );
-	fl_set_object_geometry( dialog_->addBtn,   200, ypos,  30, 30 );
+
+	fl_set_object_position( dialog_->addBtn,  200, ypos );
 	ypos += 35;
-	fl_set_object_geometry( dialog_->delBtn,   200, ypos,  30, 30 );
+	fl_set_object_position( dialog_->delBtn,  200, ypos );
 	ypos += 35;
-	fl_set_object_geometry( dialog_->upBtn,    200, ypos,  30, 30 );
+	fl_set_object_position( dialog_->upBtn,   200, ypos );
 	ypos += 35;
-	fl_set_object_geometry( dialog_->downBtn,  200, ypos,  30, 30 );
+	fl_set_object_position( dialog_->downBtn, 200, ypos );
 
 	ypos = brsrHeight+30; // base of Citation/Bibliography browsers
 
@@ -292,7 +284,7 @@ void FormCitation::setSize( int brsrHeight, bool bibPresent ) const
 
 	if( bibPresent ) {
 		ypos += 30;
-		fl_set_object_geometry( dialog_->infoBrsr, 10, ypos, 410, infoHeight );
+		fl_set_object_position( dialog_->infoBrsr, 10, ypos );
 		fl_show_object( dialog_->infoBrsr );
 		ypos += infoHeight;
 	}
@@ -303,10 +295,9 @@ void FormCitation::setSize( int brsrHeight, bool bibPresent ) const
 	// awaiting natbib support
 	fl_hide_object( dialog_->textBefore );
 
-	fl_set_object_position(dialog_->textAftr, 100, ypos);
-//	fl_set_object_geometry( dialog_->textAftr, 100, ypos,   250, 30 );
-	fl_set_object_geometry( dialog_->ok,       230, ypos+50, 90, 30 );
-	fl_set_object_geometry( dialog_->cancel,   330, ypos+50, 90, 30 );
+	fl_set_object_position( dialog_->textAftr, 100, ypos );
+	fl_set_object_position( dialog_->ok,       230, ypos+50 );
+	fl_set_object_position( dialog_->cancel,   330, ypos+50 );
 }
 
 
@@ -490,6 +481,7 @@ void FormCitation::hide()
 
 	// free up the dialog for another inset
 	inset_ = 0;
+	ih_.disconnect();
 	dialogIsOpen = false;
 }
 

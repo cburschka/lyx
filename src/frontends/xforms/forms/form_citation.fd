@@ -15,7 +15,7 @@ Number of Objects: 13
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 450 780
+box: 0 0 430 780
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -33,7 +33,7 @@ argument:
 --------------------
 class: FL_BROWSER
 type: HOLD_BROWSER
-box: 20 40 170 370
+box: 10 30 180 370
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP_LEFT
@@ -51,7 +51,7 @@ argument: CITEBRSR
 --------------------
 class: FL_BROWSER
 type: HOLD_BROWSER
-box: 250 40 170 370
+box: 240 30 180 370
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP_LEFT
@@ -69,7 +69,7 @@ argument: BIBBRSR
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 200 40 40 40
+box: 200 30 30 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -87,7 +87,7 @@ argument: ADD
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 200 90 40 40
+box: 200 65 30 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -105,7 +105,7 @@ argument: DELETE
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 200 140 40 40
+box: 200 100 30 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -123,7 +123,7 @@ argument: UP
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 200 190 40 40
+box: 200 135 30 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -141,7 +141,7 @@ argument: DOWN
 --------------------
 class: FL_BROWSER
 type: NORMAL_BROWSER
-box: 20 440 400 110
+box: 10 440 430 110
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP_LEFT
@@ -213,7 +213,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 190 730 110 40
+box: 230 730 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -231,7 +231,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 310 730 110 40
+box: 330 730 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER

@@ -1425,3 +1425,10 @@ void InsetTabular::resizeLyXText(BufferView *) const
 {
     need_update = FULL;
 }
+
+LyXText * InsetTabular::getLyXText(BufferView * bv) const
+{
+    if (the_locking_inset)
+	return the_locking_inset->getLyXText(bv);
+    return Inset::getLyXText(bv);
+}

@@ -90,7 +90,7 @@ InsetFloat::InsetFloat(string const & type)
 	font.setColor(LColor::footnote);
 	setLabelFont(font);
 	setAutoCollapse(false);
-	setInsetName("Float");
+//	setInsetName("Float");
 	floatType = type;
 	setInsetName(type.c_str());
 	//floatPlacement = "H";
@@ -99,8 +99,8 @@ InsetFloat::InsetFloat(string const & type)
 
 void InsetFloat::Write(Buffer const * buf, ostream & os) const
 {
-	os << getInsetName()
-	   << " " << floatType << '\n';
+	os << "Float " // getInsetName()
+	   << floatType << '\n';
 
 	if (floatPlacement.empty()) {
 		os << "placement "

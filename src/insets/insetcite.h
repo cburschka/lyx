@@ -16,6 +16,8 @@
 #endif
 
 #include "insetcommand.h"
+#include <sigc++/signal_system.h>
+
 class Dialogs;
 
 /** Used to insert citations  
@@ -37,11 +39,8 @@ public:
 	EDITABLE Editable() const { return IS_EDITABLE; }
         ///
 	void Edit(BufferView *, int, int, unsigned int);
-private:
 	///
-	//InsetCitation() : InsetCommand("cite"), dialogs_(0) {}
-	///
-	Dialogs * dialogs_;
+	SigC::Signal0<void> hide;
 };
 
 #endif // INSET_CITE_H

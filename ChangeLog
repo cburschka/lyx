@@ -1,3 +1,27 @@
+2000-07-19  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insetfloat.C (Write): small fix because we use the
+	insetname for the type now!
+
+2000-07-18  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* src/frontends/xforms/forms/form_citation.fd: object sizes are
+	now set here
+
+	* src/frontends/Dialogs.h: removed hideCitation signal
+
+	* src/insets/insetcite.h: added hide signal
+
+	* src/insets/insetcite.C (~InsetCitation): emits new signal
+	(getScreenLabel): "intelligent" label should now fit on the screen!
+
+	* src/frontends/xforms/FormCitation.[Ch] (hideInset): removed
+
+	* src/frontends/xforms/FormCitation.C (showInset): connects
+	hide() to the inset's hide signal
+	(show): modified to use fl_set_object_position rather than
+	fl_set_object_geometry wherever possible
+	
 2000-07-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/insets/lyxinset.h: add caption code

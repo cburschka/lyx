@@ -18,34 +18,51 @@
 #include "LyXView.h"
 #include "BufferView.h"
 #include "frontends/Dialogs.h"
-
+#include "support/lstrings.h"
 
 InsetCitation::InsetCitation(string const & key, string const & note)
-		: InsetCommand("cite", key, note), dialogs_(0)
+		: InsetCommand("cite", key, note)
 {}
-
 
 InsetCitation::~InsetCitation()
 {
-	if( dialogs_ != 0 )
-		dialogs_->hideCitation( this );
+	hide();
 }
 
 string InsetCitation::getScreenLabel() const
 {
-	string temp("[");
-	temp += getContents();
+	string keys(getContents());
 
-	if( !getOptions().empty() ) {
-		temp += ", " + getOptions();
+	// If keys is "too long" then only print out the first few tokens
+	string label;
+	if( contains( keys, "," ) ) {
+		// Final comma allows while loop to cover all keys
+		keys = frontStrip( split( keys, label, ',' ) ) + ",";
+
+		const int maxSize( 40 );
+		while( contains( keys, "," ) ) {
+			string key;
+			keys = frontStrip( split( keys, key, ',' ) );
+
+			int size = label.size() + 2 + key.size();
+			if( size >= maxSize ) {
+				label += ", ...";
+				break;
+			}
+			label += ", " + key;
+		}
+	} else {
+		label = keys;
 	}
 
-	return temp + ']';
+	if( !getOptions().empty() )
+		label += ", " + getOptions();
+
+	return '[' + label + ']';
 }
 
 void InsetCitation::Edit(BufferView * bv, int, int, unsigned int)
 {
-	dialogs_ = bv->owner()->getDialogs();
-	dialogs_->showCitation( this );
+	bv->owner()->getDialogs()->showCitation( this );
 }
 
