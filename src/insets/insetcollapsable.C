@@ -36,7 +36,7 @@ InsetCollapsable::InsetCollapsable()
 {
 	//inset = new InsetText;
     inset->setOwner(this);
-    collapsed = true;
+    collapsed = false;
     label = "Label";
     autocollapse = true;
     inset->SetAutoBreakRows(true);

@@ -1,3 +1,12 @@
+2001-03-22  Juergen Vigna  <jug@sad.it>
+
+	* insetminipage.C (getMaxWidth): added function to set the drawing
+	width!
+	(Read): should work now!
+
+	* insetcollapsable.C (InsetCollapsable): default is now NOT collapsed
+	if we create a new inset.
+
 2001-03-20  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* figinset.C (fl_set_preemptive_callback): moved definition outside

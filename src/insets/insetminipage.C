@@ -69,7 +69,7 @@ InsetMinipage::InsetMinipage()
 	setLabelFont(font);
 	setAutoCollapse(false);
 	setInsetName("Minipage");
-	collapsed = false;
+	widthp_ = 100; // set default to 100% of column_width
 }
 
 
@@ -84,26 +84,86 @@ void InsetMinipage::Write(Buffer const * buf, ostream & os) const
 	os << getInsetName() << "\n"
 	   << "position " << pos_ << "\n"
 	   << "inner_position " << inner_pos_ << "\n"
-//	   << "height " << height_ << "\n"
-	   << "width " << widthp_ << "\n";
+	   << "height \"" << height_ << "\"\n"
+	   << "width \"" << width_ << "\"\n"
+	   << "widthp " << widthp_ << "\n";
 	InsetCollapsable::Write(buf, os);
 }
 
 
 void InsetMinipage::Read(Buffer const * buf, LyXLex & lex)
 {
-	#warning Read and set args correctly. (Lgb)
-	lex.next();
-	string token = lex.GetString();
-	lyxerr << "minipage token: " << token << endl;
-	lex.next(); lex.next();
-	lex.next();
-	lex.next();
+    string token;
+
+    if (lex.IsOK()) {
 	lex.next();
 	token = lex.GetString();
-	lyxerr << "minipage token: " << token << endl;
-	
-	InsetCollapsable::Read(buf, lex);
+	if (token == "position") {
+	    lex.next();
+	    pos_ = static_cast<Position>(lex.GetInteger());
+	    token = string();
+	} else {
+		lyxerr << "InsetMinipage::Read: Missing 'position'-tag!"
+		       << endl;
+	}
+    }
+    if (lex.IsOK()) {
+	if (token.empty()) {
+	    lex.next();
+	    token = lex.GetString();
+	}
+	if (token == "inner_position") {
+	    lex.next();
+	    inner_pos_ = static_cast<InnerPosition>(lex.GetInteger());
+	    token = string();
+	} else {
+		lyxerr << "InsetMinipage::Read: Missing 'inner_position'-tag!"
+		       << endl;
+	}
+    }
+    if (lex.IsOK()) {
+	if (token.empty()) {
+	    lex.next();
+	    token = lex.GetString();
+	}
+	if (token == "height") {
+	    lex.next();
+	    height_ = lex.GetString();
+	    token = string();
+	} else {
+		lyxerr << "InsetMinipage::Read: Missing 'height'-tag!"
+		       << endl;
+	}
+    }
+    if (lex.IsOK()) {
+	if (token.empty()) {
+	    lex.next();
+	    token = lex.GetString();
+	}
+	if (token == "width") {
+	    lex.next();
+	    width_ = lex.GetString();
+	    token = string();
+	} else {
+		lyxerr << "InsetMinipage::Read: Missing 'width'-tag!"
+		       << endl;
+	}
+    }
+    if (lex.IsOK()) {
+	if (token.empty()) {
+	    lex.next();
+	    token = lex.GetString();
+	}
+	if (token == "widthp") {
+	    lex.next();
+	    widthp_ = lex.GetInteger();
+	    token = string();
+	} else {
+		lyxerr << "InsetMinipage::Read: Missing 'widthp_'-tag!"
+		       << endl;
+	}
+    }
+    InsetCollapsable::Read(buf, lex);
 }
 
 
@@ -139,8 +199,13 @@ int InsetMinipage::Latex(Buffer const * buf,
 		break;
 	}
 	
-	os << "\\begin{minipage}[" << s_pos << "]{."
-	   << widthp_ << "\\columnwidth}%\n";
+	if (width_.empty()) {
+	    os << "\\begin{minipage}[" << s_pos << "]{."
+	       << widthp_ << "\\columnwidth}%\n";
+	} else {
+	    os << "\\begin{minipage}[" << s_pos << "]{"
+	       << width_ << "}%\n";
+	}
 	
 	int i = inset->Latex(buf, os, fragile, fp);
 	os << "\\end{minipage}%\n";
@@ -183,13 +248,13 @@ void InsetMinipage::innerPos(InsetMinipage::InnerPosition ip)
 }
 
 
-LyXLength const & InsetMinipage::height() const
+string const & InsetMinipage::height() const
 {
 	return height_;
 }
 
 
-void InsetMinipage::height(LyXLength const & ll)
+void InsetMinipage::height(string const & ll)
 {
 	height_ = ll;
 }
@@ -243,4 +308,12 @@ void InsetMinipage::InsetButtonRelease(BufferView * bv, int x, int y,
 	return;
     }
     InsetCollapsable::InsetButtonRelease(bv, x, y, button);
+}
+
+int InsetMinipage::getMaxWidth(Painter & pain, UpdatableInset const * inset)
+    const
+{
+    if (!width_.empty())
+	return VSpace(width_).inPixels(0, 0);
+    return InsetCollapsable::getMaxWidth(pain, inset) / 100 * widthp_;
 }

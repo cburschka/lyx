@@ -65,9 +65,9 @@ public:
 	///
 	void innerPos(InnerPosition);
 	///
-	LyXLength const & height() const;
+	string const & height() const;
 	///
-	void height(LyXLength const &);
+	void height(string const &);
 	///
 	string const & width() const;
 	///
@@ -82,6 +82,11 @@ public:
 	SigC::Signal0<void> hideDialog;
 	///
 	void InsetButtonRelease(BufferView * bv, int x, int y, int button);
+	///
+	int getMaxWidth(Painter &, UpdatableInset const *) const;
+	///
+	bool needFullRow() const { return false; }
+	
 
 private:
 	///
@@ -89,7 +94,7 @@ private:
 	///
 	InnerPosition inner_pos_;
 	///
-	LyXLength height_;
+	string height_;
 	///
 	string width_;
 	///
