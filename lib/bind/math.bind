@@ -39,10 +39,10 @@
 
 \bind "M-m u"			"math-insert \sum"
 \bind "M-m i"			"math-insert \int"
-\bind "M-m m"			"math-mode"
+\bind "M-m m"			"math-mode" # produces mathematical text
 \bind "M-m d"			"math-display"
 
-#\bind "M-m o"			"math-insert \oint"
+\bind "M-m y"			"math-insert \oint"
 \bind "M-m p"			"math-insert \partial"
 \bind "M-m r"			"math-insert \root"
 \bind "M-m l"			"math-limits"
@@ -97,9 +97,9 @@
 
 \bind "M-m ~S-quotedbl"		"math-insert \ddot"
 \bind "M-m h"				"math-insert \hat"
-\bind "M-m ~S-backslash"	"math-insert \grave"
+\bind "M-m ~C-~M-~S-backslash"	"math-insert \grave"
 \bind "M-m ~S-slash"		"math-insert \acute"
-\bind "M-m ~S-ampersand"	"math-insert \tilde"
+\bind "M-m ~C-~M-~S-ampersand"	"math-insert \tilde"
 \bind "M-m ~S-minus"		"math-insert \bar"
 \bind "M-m ~S-period"		"math-insert \dot"
 \bind "M-m S-V"				"math-insert \check"
@@ -113,11 +113,11 @@
 # These do pairs of: () {} [] <> ||
 
 \bind "M-m ~S-parenleft"	"math-delim ( )"
-\bind "M-m ~S-bracketleft"	"math-delim [ ]"
-\bind "M-m ~S-braceleft"	"math-delim { }"
-\bind "M-m ~S-less"		"math-delim langle rangle"
-\bind "M-m ~S-greater"		"math-delim rangle langle"
-\bind "M-m ~S-bar"		"math-delim | |"
+\bind "M-m ~C-~M-~S-bracketleft" "math-delim [ ]"
+\bind "M-m ~C-~M-~S-braceleft"	"math-delim { }"
+\bind "M-m ~S-less"		"math-delim langle rangle" # produces < >
+\bind "M-m ~S-greater"		"math-delim rangle langle" # produces > <
+\bind "M-m ~C-~M-~S-bar"	"math-delim | |"
 
 
 # Note: it's easy to insert binary relations like \pm, \mp, \neq, \geq,
