@@ -5,6 +5,7 @@
 // {[(
 
 #include "tex2lyx.h"
+#include "context.h"
 
 #include "debug.h"
 #include "lyx_main.h"
@@ -130,8 +131,9 @@ int main(int argc, char * argv[])
 	stringstream ss;
 	LyXTextClass textclass = parse_preamble(p, ss);
 	active_environments.push_back("document");
-	parse_text(p, ss, FLAG_END, true, textclass);
-	check_end_layout(ss);
+	Context context(true, textclass);
+	parse_text(p, ss, FLAG_END, true, context);
+	context.check_end_layout(ss);
 	ss << "\n\\end_document\n";
 
 	ss.seekg(0);

@@ -1,3 +1,26 @@
+2003-08-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text.C: update to use Context struct, and more notably:
+	(cap, check_layout, check_end_layout): remove
+	(parse_text_snippet): new thin wrapper around parse_text, used for
+	things like \textrm{...}
+	(parse_environment): remove existing depth handling code, which is
+	handled transparently by the Context struct; make unknown
+	environments work (again?) through ERT
+	 
+	* test-structure.tex: new test file, used to try out various
+	layouts combinations
+
+	* tex2lyx.C:
+	* tex2lyx.h:
+	* table.C: update to use Context struct
+	
+	* context.[Ch]: new helper struct which is passed to parse_*
+	functions and handles *_layout and *_deeper tags output
+
+	* Makefile.am (EXTRA_DIST): new file test-structure.tex
+	(tex2lyx_SOURCES): add context.[Ch]
+
 2003-07-30  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am: Hide the fact that we re-generate those symbolic links

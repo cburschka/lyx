@@ -26,8 +26,6 @@ using std::map;
 
 #include "mathed/math_gridinfo.h"
 
-extern bool need_layout;
-
 // filled in preamble.C
 std::map<char, int> special_columns;
 
@@ -284,7 +282,7 @@ void handle_hline_below(RowInfo & ri, vector<CellInfo> & ci)
 
 
 void handle_tabular(Parser & p, ostream & os,
-		    LyXTextClass const & textclass)
+		    Context & context)
 {
 	string posopts = p.getOpt();
 	if (posopts.size())
@@ -400,7 +398,7 @@ void handle_tabular(Parser & p, ostream & os,
 				cellinfo[row][col].multi     = 1;
 				cellinfo[row][col].align     = t.front().align;
 				ostringstream os;
-				parse_text_in_inset(p, os, FLAG_ITEM, false, textclass);
+				parse_text_in_inset(p, os, FLAG_ITEM, false, context);
 				cellinfo[row][col].content   = os.str();
 				cellinfo[row][col].leftline  |= t.front().leftline;
 				cellinfo[row][col].rightline |= t.front().rightline;
@@ -422,7 +420,7 @@ void handle_tabular(Parser & p, ostream & os,
 				cellinfo[row][col].rightline = colinfo[col].rightline;
 				cellinfo[row][col].align = colinfo[col].align;
 				ostringstream os;
-				parse_text_in_inset(p, os, FLAG_ITEM, false, textclass);
+				parse_text_in_inset(p, os, FLAG_CELL, false, context);
 				cellinfo[row][col].content   = os.str();
 			}
 		}

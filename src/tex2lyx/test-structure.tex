@@ -1,0 +1,87 @@
+\documentclass{article}
+
+\begin{document}
+
+This document contains all sorts of layouts we are supposed to
+support, along with weird nestings.
+
+
+A normal paragraph
+
+Another one 
+\begin{equation} 
+x = \sin y 
+\end{equation} 
+with maths inside
+
+\begin{quote}
+An environment...
+
+... with two paragraphs
+\end{quote}
+
+\begin{foo}
+an unknown environment
+\end{foo}
+
+
+\section{A section}
+
+\section[Hello!]{A section with optional argument}
+
+\begin{quote}
+An environment
+\end{quote}
+
+\section*{A starred section}
+
+\begin{figure}
+\caption{A figure}
+\end{figure}
+
+A paragraph\footnote{hello} with a footnote and another
+one\footnote{hello 
+
+there} with several paragraphs
+
+some ERT \vspace{1cm} aa
+
+and another paragraph
+
+\begin{center}
+Some centered stuff (does not work)
+\end{center}
+
+\begin{quotation}
+An environment
+
+\section*{with a command inside it}
+\end{quotation}
+
+\begin{quotation}
+An environment
+
+\begin{quotation}
+and the one inside it
+
+actually with several paragraphs
+\end{quotation}
+
+\end{quotation}
+
+We can also nest enumerations (does not work quite yet)
+
+\begin{enumerate}
+\item Item1
+\begin{enumerate}
+\item Item1.a
+\item Item1.b
+\end{enumerate}
+\begin{itemize}
+\item Item1.*
+\item Item1.*
+\end{itemize}
+\item Item2
+\end{enumerate}
+
+\end{document}

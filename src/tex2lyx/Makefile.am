@@ -1,6 +1,7 @@
 include $(top_srcdir)/config/common.am
 
 INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)
+EXTRA_DIST = test-structure.tex
 
 #noinst_LTLIBRARIES = libtexparser.la
 #
@@ -27,6 +28,8 @@ linked_files = \
 tex2lyx_SOURCES = \
 	$(linked_files) \
 	Spacing.h \
+	context.C \
+	context.h \
 	gettext.C \
 	gettext.h \
 	lyxfont.C \

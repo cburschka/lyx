@@ -1,3 +1,4 @@
+// -*- C++ -*-
 #ifndef TEX2LYX_H
 #define TEX2LYX_H
 
@@ -8,31 +9,32 @@
 #include <string>
 #include <vector>
 
-class LyXTextClass;
+class Context;
 
+/// in preamble.C
 LyXTextClass const parse_preamble(Parser & p, std::ostream & os);
 
+
+/// in text.C
 void parse_text(Parser & p, std::ostream & os, unsigned flags, bool outer,
-		LyXTextClass const & textclass,
-		LyXLayout_ptr layout_ptr = LyXLayout_ptr());
+		Context & context);
+
+//std::string parse_text(Parser & p, unsigned flags, const bool outer,
+//		       Context & context);
 
 void parse_text_in_inset(Parser & p, std::ostream & os, unsigned flags, 
-			 bool outer, LyXTextClass const & textclass, 
-			 LyXLayout_ptr layout = LyXLayout_ptr());
+			 bool outer, Context & context);
 
-void parse_table(Parser & p, std::ostream & os, unsigned flags);
 
+/// in math.C
 void parse_math(Parser & p, std::ostream & os, unsigned flags, mode_type mode);
 
-void handle_tabular(Parser & p, std::ostream & os,
-		    LyXTextClass const & textclass);
 
-// Helper
-std::string parse_text(Parser & p, unsigned flags, const bool outer,
-		       LyXTextClass const & textclass, 
-		       LyXLayout_ptr layout_ptr = LyXLayout_ptr());
+/// in table.C
+void handle_tabular(Parser & p, std::ostream & os, Context & context);
 
-void check_end_layout(std::ostream & os);
+
+/// in tex2lyx.C
 void handle_comment(Parser & p);
 std::string const trim(std::string const & a, char const * p = " \t\n\r");
 
