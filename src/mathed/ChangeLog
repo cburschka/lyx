@@ -1,3 +1,11 @@
+2001-02-14  André Pönitz  <poenitz@htwm.de>
+
+	* formula.C: reformatting 
+
+	* math_cursor.[Ch]:
+	  math_iter.[Ch]:
+	  math_xiter.[Ch]: remove unneeded members
+
 2001-02-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* math_parser.C: 
@@ -10,6 +18,8 @@
 2001-02-14  André Pönitz  <poenitz@htwm.de>
 	
 	* math_iter.[Ch]: remove 'insert', 'maxsize' and 'ARRAY_SIZE'
+
+	* math_cursor.C: reformatting 
 
 2001-02-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 

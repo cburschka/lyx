@@ -138,8 +138,6 @@ MathedCursor::MathedCursor(MathParInset * p) // : par(p)
 
 void MathedCursor::SetPar(MathParInset * p)
 {
-	win        = 0;
-	is_visible = False;
 	macro_mode = false;
 	selection  = false; // not SelClear() ?
 	mathstk.Reset();
@@ -191,7 +189,14 @@ void MathedCursor::Redraw(Painter & pain)
 bool MathedCursor::Left(bool sel)
 {
 	if (macro_mode) {
-		MacroModeBack();
+		// was MacroModeBack()
+		if (!imacro->GetName().empty()) {
+			imacro->SetName(imacro->GetName()
+					.substr(0, imacro->GetName()
+						.length() - 1));
+			imacro->Metrics();
+		} else
+			MacroModeClose();
 		return true;
 	}
 
@@ -211,8 +216,7 @@ bool MathedCursor::Left(bool sel)
 		result = true;
 		if (selection)
 			SelClear();
-	} else
-	if (result && cursor->IsActive()) {
+	} else if (result && cursor->IsActive()) {
 		if (cursor->IsScript()) {
 			cursor->Prev();
 			if (!cursor->IsScript())
@@ -480,7 +484,8 @@ void MathedCursor::Insert(byte c, MathedTextCodes t)
 	} else {
 		if (macro_mode) {
 			if (MathIsAlphaFont(t) || t == LM_TC_MIN) {
-				MacroModeInsert(c);
+				// was MacroModeInsert(c);
+				imacro->SetName(imacro->GetName() + static_cast<char>(c));
 				return;
 			}
 		}
@@ -891,30 +896,6 @@ void MathedCursor::MacroModeClose()
 		}
 		imacro = 0;
 	}
-}
-
-
-void MathedCursor::MacroModeBack()
-{
-	if (macro_mode) {
-		if (!imacro->GetName().empty()) {
-			imacro->SetName(
-					imacro->GetName().substr(0, imacro->GetName().length() - 1));
-			imacro->Metrics();
-		} else
-			MacroModeClose();
-	} else
-		lyxerr << "Mathed Warning: we are not in macro mode" << endl;
-}
-
-
-void MathedCursor::MacroModeInsert(char c)
-{
-	if (macro_mode) {
-		imacro->SetName(imacro->GetName() + c);
-		imacro->Metrics();
-	} else
-		lyxerr << "Mathed Warning: we are not in macro mode" << endl;
 }
 
 

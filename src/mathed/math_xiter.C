@@ -187,7 +187,6 @@ MathedXIter::MathedXIter(MathParInset * pp)
 	x = y = 0;
 	sx = sw = 0;   
 	limits = false;
-	s_type = 0;  
 	if (p) 
 		SetData(p);
 	else {
@@ -329,13 +328,14 @@ bool MathedXIter::Prev()
 }
 
 
-bool MathedXIter::goNextColumn()
+void MathedXIter::goNextColumn()
 {  
-	int rowp = row;
+	//int rowp = row;
 	int colp = col;
-	while (Next() && col == colp);
+	while (Next() && col == colp)
+		;
 	
-	return (col != colp + 1 || rowp != row);
+	//return (col != colp + 1 || rowp != row);
 }
 
 

@@ -55,8 +55,6 @@ public:
 	///
 	bool goNextCode(MathedTextCodes);
 	///
-	void goPosRel(int);
-	///
 	void goPosAbs(int);
 	///
 	int Empty() const;

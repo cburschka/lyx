@@ -178,19 +178,6 @@ void MathedIter::goPosAbs(int p)
 }
 
 
-void MathedIter::goPosRel(int dp)
-{
-	int const posx = pos + dp;
-
-	// is posx a valid position?
-	if (dp < 0)
-		Reset();
-
-	while (pos < posx && Next())
-		;
-}
-
-
 void MathedIter::Insert(byte c, MathedTextCodes t)
 {
 	if (c < ' ')

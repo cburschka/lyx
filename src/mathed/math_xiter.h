@@ -30,7 +30,7 @@ public:
 	///
 	bool Down();
 	///
-	bool goNextColumn();
+	void goNextColumn();
 	///
 	void GoLast();
 	///
@@ -95,8 +95,6 @@ private:
 	int sw;
 	/// true= center, false= left align (default)
 	bool limits;
-	/// Type of previous script
-	short s_type;  
 	///
 	void ipush();
 	///

@@ -135,10 +135,6 @@ public:
 protected:
 	///
 	bool macro_mode;
-	///
-	void MacroModeBack();
-	///
-	void MacroModeInsert(char);
 	
 	// Selection stuff
 	///
@@ -150,19 +146,9 @@ protected:
 	///
 	MathedXIter * anchor;
 	///
-//    MathedArray *selarray; 
-	///
-	bool is_visible;
-	///
-	long unsigned win;
-	///
 	MathParInset * par;
 	///
 	MathedXIter * cursor;
-	///
-	int xc;
-	///
-	int yc;
 	///
 	void doAccent(byte c, MathedTextCodes t);
 	///
