@@ -39,13 +39,13 @@ public:
 	///
 	void descent(int d);
 	///
-	int  getTab(int i) const;
+	int  getTab(unsigned int i) const;
 	/// 
 	void setLabel(string const & l);
 	///
 	void setNumbered(bool nf);
 	///
-	void setTab(int i, int t);
+	void setTab(unsigned int i, int t);
 	///
 	friend class MathedRowSt;
 protected:
@@ -71,6 +71,9 @@ public:
 	///
 	explicit MathedRowSt(int n)
 			: MathedRowStruct(n), next_(0)
+		{}
+	explicit MathedRowSt(MathedRowStruct const & t)
+			: MathedRowStruct(t), next_(0)
 		{}
 //private:
 	///
@@ -150,7 +153,7 @@ struct MathedRowContainer {
 	bool empty() const { return data_ == 0; }
 
 	/// insert 'item' before 'iterator'
-	void insert(iterator const & it, MathedRowSt const & item) {
+	void insert(iterator const & it, MathedRowStruct const & item) {
 		MathedRowSt * r = new MathedRowSt(item);
 		if (data_ == it.st_)
 			data_ = r;
@@ -163,7 +166,7 @@ struct MathedRowContainer {
 	}
 			
 	/// insert 'item' after 'iterator'
-	void insert_after(iterator & it, MathedRowSt const & item) {
+	void insert_after(iterator & it, MathedRowStruct const & item) {
 		MathedRowSt * r = new MathedRowSt(item);
 		if (it) {
 			r->next_ = it.st_->next_;
@@ -251,9 +254,9 @@ void MathedRowStruct::descent(int d)
 
 
 inline
-int MathedRowStruct::getTab(int i) const
+int MathedRowStruct::getTab(unsigned int i) const
 {
-	return widths_[i];
+	return i < widths_.size() ? widths_[i] : 0;
 }
 
 
@@ -272,8 +275,10 @@ void MathedRowStruct::setNumbered(bool nf)
 
 
 inline
-void MathedRowStruct::setTab(int i, int t)
+void MathedRowStruct::setTab(unsigned int i, int t)
 {
+	if (i >= widths_.size())
+		widths_.resize(i + 2);	
 	widths_[i] = t;
 }
 #endif
