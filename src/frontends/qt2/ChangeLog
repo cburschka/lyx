@@ -1,3 +1,7 @@
+2004-12-03  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Makefile.am, ui/Makefile.am (AM_CPPFLAGS): fix typo
+
 2004-12-02  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* QTabular.C: use size_t-like types for cell, row and column indices
@@ -5,13 +9,13 @@
 2004-12-03  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* lengthvalidator.C: revert to correct if clause.
-	
+
 	* QDocument.C:
 	* QDocumentDialog.C:
 	* QTabular.C:
 	* QTabularDialog.C:
 	* QPrefs.C: implement length validators
-	
+
 	* QExternalDialog.C:
 	* QGraphicsDialog.C: chose correct validators
 
@@ -23,7 +27,7 @@
 	* QGraphicsDialog.C: use new member function. Add length
 	validator
 	* QBox.C:
-	* QBoxDialog.C: Add length validator 
+	* QBoxDialog.C: Add length validator
 
 2004-11-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 

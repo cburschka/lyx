@@ -12,7 +12,7 @@ libqt2_la_LIBADD = $(QT_LIB) ui/*.lo moc/*.lo ui/moc/*.lo
 
 AM_CPPFLAGS = \
 	-DQT_CLEAN_NAMESPACE \
-	-DQT_GENUINE_STR
+	-DQT_GENUINE_STR \
 	-I$(top_srcdir)/src/ -I$(top_srcdir)/src/frontends/ \
 	-I$(top_srcdir)/images \
 	$(QT_INCLUDES) $(BOOST_INCLUDES) \

@@ -10,7 +10,7 @@ EXTRA_DIST = QPreambleDialogBase.ui $(UIFILES)
 AM_CPPFLAGS = \
 	-DQT_CLEAN_NAMESPACE \
 	-DQT_GENUINE_STR \
-	-DQT_NO_TRANSLATION
+	-DQT_NO_TRANSLATION \
 	-I$(top_srcdir)/src \
 	-I$(top_srcdir)/src/frontends \
 	-I$(top_srcdir)/src/frontends/qt2 \
