@@ -743,7 +743,7 @@ void MathHullInset::doExtern
 }
 
 
-MathInset::result_type MathHullInset::dispatch
+dispatch_result MathHullInset::dispatch
 	(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {

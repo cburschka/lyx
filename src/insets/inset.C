@@ -88,12 +88,6 @@ void Inset::edit(BufferView *, bool)
 {}
 
 
-Inset::RESULT Inset::localDispatch(FuncRequest const &)
-{
-	return UNDISPATCHED;
-}
-
-
 #if 0
 LyXFont const Inset::convertFont(LyXFont const & font) const
 {

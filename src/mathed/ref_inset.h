@@ -18,7 +18,7 @@ public:
 	///
 	void infoize(std::ostream & os) const;
 	///
-	result_type dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
+	dispatch_result dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 	///
 	string screenLabel() const;
 	///

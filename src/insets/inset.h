@@ -142,14 +142,12 @@ public:
 	};
 
 	///
-	typedef InsetBase::dispatch_result RESULT;
+	typedef dispatch_result RESULT;
 
 	///
 	Inset();
 	///
 	Inset(Inset const & in, bool same_id = false);
-	///
-	virtual ~Inset() {}
 	///
 	virtual int ascent(BufferView *, LyXFont const &) const = 0;
 	///
@@ -170,8 +168,6 @@ public:
 	virtual void edit(BufferView *, bool front = true);
 	///
 	virtual EDITABLE editable() const;
-	///
-	virtual RESULT localDispatch(FuncRequest const & cmd);
 	///
 	virtual bool isTextInset() const { return false; }
 	///

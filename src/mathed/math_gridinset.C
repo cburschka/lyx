@@ -967,7 +967,7 @@ void MathGridInset::splitCell(idx_type & idx, pos_type & pos)
 }
 
 
-MathInset::result_type MathGridInset::dispatch
+dispatch_result MathGridInset::dispatch
 	(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {

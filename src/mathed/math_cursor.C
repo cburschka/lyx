@@ -1409,21 +1409,20 @@ MathCursorPos MathCursor::normalAnchor() const
 }
 
 
-MathInset::result_type MathCursor::dispatch(FuncRequest const & cmd)
+dispatch_result MathCursor::dispatch(FuncRequest const & cmd)
 {
 	for (int i = Cursor_.size() - 1; i >= 0; --i) {
 		MathCursorPos & pos = Cursor_[i];
-		MathInset::result_type
-			res = pos.par_->dispatch(cmd, pos.idx_, pos.pos_);
-		if (res != MathInset::UNDISPATCHED) {
-			if (res == MathInset::DISPATCHED_POP) {
+		dispatch_result res = pos.par_->dispatch(cmd, pos.idx_, pos.pos_);
+		if (res != UNDISPATCHED) {
+			if (res == DISPATCHED_POP) {
 				Cursor_.shrink(i + 1);
 				selClear();
 			}
 			return res;
 		}
 	}
-	return MathInset::UNDISPATCHED;
+	return UNDISPATCHED;
 }
 
 

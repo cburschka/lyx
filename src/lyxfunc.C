@@ -789,21 +789,21 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			} else if (((result=inset->
 				     // Hand-over to inset's own dispatch:
 				     localDispatch(FuncRequest(view(), action, argument))) ==
-				    UpdatableInset::DISPATCHED) ||
-				   (result == UpdatableInset::DISPATCHED_NOUPDATE))
+				    DISPATCHED) ||
+				   (result == DISPATCHED_NOUPDATE))
 				goto exit_with_message;
 					// If UNDISPATCHED, just soldier on
-			else if (result == UpdatableInset::FINISHED) {
+			else if (result == FINISHED) {
 				goto exit_with_message;
 				// We do not need special RTL handling here:
 				// FINISHED means that the cursor should be
 				// one position after the inset.
-			} else if (result == UpdatableInset::FINISHED_RIGHT) {
+			} else if (result == FINISHED_RIGHT) {
 				TEXT()->cursorRight(view());
 				moveCursorUpdate(true, false);
 				owner->view_state_changed();
 				goto exit_with_message;
-			} else if (result == UpdatableInset::FINISHED_UP) {
+			} else if (result == FINISHED_UP) {
 				if (TEXT()->cursor.irow()->previous()) {
 #if 1
 					TEXT()->setCursorFromCoordinates(
@@ -820,7 +820,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 					view()->update(TEXT(), BufferView::SELECT|BufferView::FITCUR);
 				}
 				goto exit_with_message;
-			} else if (result == UpdatableInset::FINISHED_DOWN) {
+			} else if (result == FINISHED_DOWN) {
 				if (TEXT()->cursor.irow()->next()) {
 #if 1
 					TEXT()->setCursorFromCoordinates(

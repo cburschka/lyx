@@ -375,6 +375,7 @@ void specialChar(LyXText * lt, BufferView * bv, InsetSpecialChar::Kind kind)
 		bv->updateInset(new_inset, true);
 }
 
+
 void doInsertInset(LyXText * lt, FuncRequest const & cmd,
 		   bool edit, bool pastesel)
 {
@@ -396,7 +397,6 @@ void doInsertInset(LyXText * lt, FuncRequest const & cmd,
 		else
 			delete inset;
 	}
-
 }
 
 }
@@ -1055,7 +1055,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_BEGINNINGBUFSEL:
 		if (inset_owner)
-			return Inset::UNDISPATCHED;
+			return UNDISPATCHED;
 		update(bv, false);
 		cursorTop(bv);
 		finishChange(bv, true);
@@ -1063,7 +1063,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_ENDBUFSEL:
 		if (inset_owner)
-			return Inset::UNDISPATCHED;
+			return UNDISPATCHED;
 		update(bv, false);
 		cursorBottom(bv);
 		finishChange(bv, true);
@@ -1640,8 +1640,8 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	default:
-		return Inset::UNDISPATCHED;
+		return UNDISPATCHED;
 	}
 
-	return Inset::DISPATCHED;
+	return DISPATCHED;
 }

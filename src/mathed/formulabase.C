@@ -303,7 +303,7 @@ void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
 }
 
 
-Inset::RESULT InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
+dispatch_result InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 {
 	if (!mathcursor)
 		return UNDISPATCHED;
@@ -316,7 +316,7 @@ Inset::RESULT InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 
 	if (cmd.button() == mouse_button::button3) {
 		// try to dispatch to enclosed insets first
-		if (mathcursor->dispatch(cmd) == MathInset::UNDISPATCHED) {
+		if (mathcursor->dispatch(cmd) == UNDISPATCHED) {
 			// launch math panel for right mouse button
 			bv->owner()->getDialogs().showMathPanel();
 		}
@@ -347,7 +347,7 @@ Inset::RESULT InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 }
 
 
-Inset::RESULT InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
+dispatch_result InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
 {
 	BufferView * bv = cmd.view();
 	//lyxerr << "lfunMousePress: buttons: " << cmd.button() << endl;
@@ -379,12 +379,12 @@ Inset::RESULT InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
 }
 
 
-Inset::RESULT InsetFormulaBase::lfunMouseMotion(FuncRequest const & cmd)
+dispatch_result InsetFormulaBase::lfunMouseMotion(FuncRequest const & cmd)
 {
 	if (!mathcursor)
 		return DISPATCHED;
 
-	if (mathcursor->dispatch(FuncRequest(cmd)) != MathInset::UNDISPATCHED)
+	if (mathcursor->dispatch(FuncRequest(cmd)) != UNDISPATCHED)
 		return DISPATCHED;
 
 	// only select with button 1
@@ -409,7 +409,7 @@ Inset::RESULT InsetFormulaBase::lfunMouseMotion(FuncRequest const & cmd)
 }
 
 
-Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
+dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 {
 	//lyxerr << "InsetFormulaBase::localDispatch: act: " << cmd.action
 	//	<< " arg: '" << cmd.argument

@@ -76,7 +76,7 @@ public:
 	virtual void insetUnlock(BufferView *);
 
 	/// To allow transparent use of math editing functions
-	virtual RESULT localDispatch(FuncRequest const &);
+	virtual dispatch_result localDispatch(FuncRequest const &);
 	/// To allow transparent use of math editing functions
 	//virtual void status(FuncRequest const &);
 
@@ -116,11 +116,11 @@ private:
 	/// common base for handling accents
 	void handleAccent(BufferView * bv, string const & arg, string const & name);
 	/// lfun handler
-	RESULT lfunMousePress(FuncRequest const &);
+	dispatch_result lfunMousePress(FuncRequest const &);
 	///
-	RESULT lfunMouseRelease(FuncRequest const &);
+	dispatch_result lfunMouseRelease(FuncRequest const &);
 	///
-	RESULT lfunMouseMotion(FuncRequest const &);
+	dispatch_result lfunMouseMotion(FuncRequest const &);
 
 protected:
 	///

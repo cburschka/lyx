@@ -99,7 +99,8 @@ public:
 	void normalize(NormalStream & os) const;
 
 	/// local dispatcher
-	result_type dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
+	dispatch_result
+		dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 
 protected:
 	/// we store the cells in a vector

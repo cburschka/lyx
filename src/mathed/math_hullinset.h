@@ -46,7 +46,7 @@ public:
 	///
 	bool ams() const;
 	/// local dispatcher
-	result_type dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
+	dispatch_result dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 	///
 	void getLabelList(std::vector<string> &) const;
 	///

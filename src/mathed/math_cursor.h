@@ -218,7 +218,7 @@ public:
 	unsigned depth() const;
 
 	/// local dispatcher
-	MathInset::result_type dispatch(FuncRequest const & cmd);
+	dispatch_result dispatch(FuncRequest const & cmd);
 	/// describe the situation
 	string info() const;
 	/// dump selection information for debugging

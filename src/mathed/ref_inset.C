@@ -36,7 +36,7 @@ void RefInset::infoize(std::ostream & os) const
 }
 
 
-MathInset::result_type
+dispatch_result
 RefInset::dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {

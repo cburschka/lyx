@@ -27,7 +27,7 @@ MathInset * CommandInset::clone() const
 }
 
 
-MathInset::result_type
+dispatch_result
 CommandInset::dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
 	switch (cmd.action) {

@@ -493,7 +493,7 @@ void MathScriptInset::notifyCursorLeaves(idx_type idx)
 }
 
 
-MathInset::result_type MathScriptInset::dispatch
+dispatch_result MathScriptInset::dispatch
 	(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
 	if (cmd.action == LFUN_MATH_LIMITS) {

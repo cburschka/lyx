@@ -97,13 +97,9 @@ public:
 	typedef size_type                   row_type;
 	/// type for column numbers
 	typedef size_type                   col_type;
-	///
-	typedef InsetBase::dispatch_result  result_type;
 
 	/// our members behave nicely...
 	MathInset() {}
-	/// the virtual base destructor
-	virtual ~MathInset() {}
 
 	/// reproduce itself
 	virtual MathInset * clone() const = 0;
@@ -289,9 +285,6 @@ public:
 
 	/// dump content to stderr for debugging
 	virtual void dump() const;
-	/// local dispatcher
-	virtual result_type dispatch
-		(FuncRequest const & cmd, idx_type & idx, pos_type & pos);
 
 	/// LyXInset stuff
 	/// write labels into a list

@@ -260,13 +260,6 @@ int MathInset::docbook(std::ostream &, bool) const
 }
 
 
-MathInset::result_type
-	MathInset::dispatch(FuncRequest const &, idx_type &, pos_type &)
-{
-	return UNDISPATCHED;
-}
-
-
 string const & MathInset::getType() const
 {
 	static string t("none");

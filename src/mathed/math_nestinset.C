@@ -315,7 +315,7 @@ void MathNestInset::notifyCursorLeaves(idx_type idx)
 }
 
 
-MathInset::result_type MathNestInset::dispatch
+dispatch_result MathNestInset::dispatch
 	(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 {
 	BufferView * bv = cmd.view();
