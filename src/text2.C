@@ -282,7 +282,7 @@ void LyXText::toggleInset()
 	else
 		inset->open(bv());
 
-	bv()->updateInset();
+	bv()->updateInset(inset);
 }
 
 
@@ -848,7 +848,7 @@ void LyXText::setParagraph(bool line_top, bool line_bottom,
 	setSelection();
 	setCursor(tmpcursor.par(), tmpcursor.pos());
 	if (inset_owner)
-		bv()->updateInset();
+		bv()->updateInset(inset_owner);
 }
 
 

@@ -68,7 +68,7 @@ dispatch_result InsetLabel::localDispatch(FuncRequest const & cmd)
 		}
 
 		setParams(p);
-		cmd.view()->updateInset();
+		cmd.view()->updateInset(this);
 		return DISPATCHED;
 	}
 

@@ -543,9 +543,9 @@ int BufferView::unlockInset(UpdatableInset * inset)
 }
 
 
-void BufferView::updateInset()
+void BufferView::updateInset(InsetOld const * inset)
 {
-	pimpl_->updateInset();
+	pimpl_->updateInset(inset);
 }
 
 

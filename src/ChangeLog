@@ -1,4 +1,8 @@
+2003-08-27  Alfredo Braunstein  <abraunst@libero.it>
 
+	* BufferView.[Ch]:
+	* BufferView_pimpl.[Ch] (updateInset): add an InsetOld * argument
+	
 2003-08-26  André Pönitz  <poenitz@gmx.net>
 
 	* paragraph_func.[Ch] (outerPar): new function

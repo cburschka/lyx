@@ -455,7 +455,7 @@ InsetOld::RESULT InsetERT::localDispatch(FuncRequest const & cmd)
 		 * taken by the text).
 		 */
 		inset.getLyXText(cmd.view())->fullRebreak();
-		bv->updateInset();
+		bv->updateInset(this);
 		result = DISPATCHED;
 	}
 	break;
@@ -603,7 +603,7 @@ void InsetERT::status(BufferView * bv, ERTStatus const st) const
 			break;
 		}
 		if (bv) {
-			bv->updateInset();
+			bv->updateInset(this);
 			bv->buffer()->markDirty();
 		}
 	}

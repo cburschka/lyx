@@ -210,7 +210,7 @@ void InsetCollapsable::insetUnlock(BufferView * bv)
 	inset.insetUnlock(bv);
 	if (scroll())
 		scroll(bv, 0.0F);
-	bv->updateInset();
+	bv->updateInset(this);
 }
 
 
@@ -229,7 +229,7 @@ void InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 
 	if (collapsed_ && cmd.button() != mouse_button::button3) {
 		collapsed_ = false;
-		bv->updateInset();
+		bv->updateInset(this);
 		bv->buffer()->markDirty();
 		return;
 	}
@@ -241,7 +241,7 @@ void InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 			collapsed_ = true;
 			bv->unlockInset(this);
 		}
-		bv->updateInset();
+		bv->updateInset(this);
 		bv->buffer()->markDirty();
 		lyxerr << "InsetCollapsable::lfunMouseRelease\n";
 	} else if (!collapsed_ && cmd.y > button_dim.y2) {
@@ -296,7 +296,7 @@ InsetOld::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 					lyxerr << "branch collapsed_" << endl;
 					collapsed_ = false;
 					if (bv->lockInset(this)) {
-						bv->updateInset();
+						bv->updateInset(this);
 						bv->buffer()->markDirty();
 						inset.localDispatch(cmd);
 						first_after_edit = true;
@@ -324,7 +324,7 @@ InsetOld::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 				first_after_edit = true;
 				if (!bv->lockInset(this))
 					return DISPATCHED;
-				bv->updateInset();
+				bv->updateInset(this);
 				bv->buffer()->markDirty();
 				inset.localDispatch(cmd);
 			} else {
@@ -488,7 +488,7 @@ void InsetCollapsable::open(BufferView * bv)
 		return;
 
 	collapsed_ = false;
-	bv->updateInset();
+	bv->updateInset(this);
 }
 
 
@@ -498,7 +498,7 @@ void InsetCollapsable::close(BufferView * bv) const
 		return;
 
 	collapsed_ = true;
-	bv->updateInset();
+	bv->updateInset(this);
 }
 
 

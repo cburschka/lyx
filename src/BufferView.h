@@ -79,8 +79,11 @@ public:
 	bool fitCursor();
 	/// perform pending painting updates
 	void update();
-	/// update for a particular inset
-	void updateInset();
+	/** update for a particular inset. Gets a pointer and not a
+	 *  reference because we really need the pointer information
+	 *  to find it in the buffer.
+	 */
+	void updateInset(InsetOld const *);
 	/// reset the scrollbar to reflect current view position
 	void updateScrollbar();
 	/// FIXME

@@ -422,7 +422,7 @@ void InsetTabular::insetUnlock(BufferView * bv)
 
 void InsetTabular::updateLocal(BufferView * bv) const
 {
-	bv->updateInset();
+	bv->updateInset(this);
 	if (locked)
 		resetPos(bv);
 }

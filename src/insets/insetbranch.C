@@ -125,7 +125,7 @@ dispatch_result InsetBranch::localDispatch(FuncRequest const & cmd)
 		InsetBranchMailer::string2params(cmd.argument, params);
 		params_.branch = params.branch;
 		setButtonLabel();
-		bv->updateInset();
+		bv->updateInset(this);
 		return DISPATCHED;
 		}
 	case LFUN_INSET_EDIT:

@@ -40,6 +40,7 @@
 #include "lyxrc.h"
 #include "lastfiles.h"
 #include "paragraph.h"
+#include "paragraph_funcs.h"
 #include "ParagraphParameters.h"
 #include "TextCache.h"
 #include "undo_funcs.h"
@@ -1182,7 +1183,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	case LFUN_INSET_INSERT: {
 		InsetOld * inset = createInset(ev);
 		if (inset && insertInset(inset)) {
-			updateInset();
+			updateInset(inset);
 
 			string const name = ev.getArg(0);
 			if (name == "bibitem") {
@@ -1371,14 +1372,16 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 }
 
 
-void BufferView::Pimpl::updateInset()
+void BufferView::Pimpl::updateInset(InsetOld const * inset)
 {
 	if (!available())
 		return;
 
+	bv_->text->redoParagraph(outerPar(*bv_->buffer(), inset));
+
 	// this should not be needed, but it is...
-	bv_->text->redoParagraph(bv_->text->cursor.par());
-	//bv_->text->fullRebreak();
+	// bv_->text->redoParagraph(bv_->text->cursor.par());
+	// bv_->text->fullRebreak();
 
 	update();
 	updateScrollbar();

@@ -35,6 +35,7 @@
 #include "Lsstream.h"
 
 #include "insets/updatableinset.h"
+#include "insets/insettext.h"
 #include <boost/bind.hpp>
 #include <algorithm>
 
@@ -232,8 +233,7 @@ bool changeDepth(BufferView * bv, LyXText * text, DEPTH_CHANGE type, bool test_o
 
 	bool const changed = text->changeDepth(type, false);
 	if (text->inset_owner)
-		bv->updateInset();
-	bv->update();
+		bv->updateInset(text->inset_owner);
 	return changed;
 }
 

@@ -355,7 +355,7 @@ void specialChar(LyXText * lt, BufferView * bv, InsetSpecialChar::Kind kind)
 	if (!bv->insertInset(new_inset))
 		delete new_inset;
 	else
-		bv->updateInset();
+		bv->updateInset(new_inset);
 }
 
 

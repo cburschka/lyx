@@ -141,7 +141,7 @@ dispatch_result InsetNote::localDispatch(FuncRequest const & cmd)
 		InsetNoteMailer::string2params(cmd.argument, params);
 		params_.type = params.type;
 		setButtonLabel();
-		bv->updateInset();
+		bv->updateInset(this);
 		return DISPATCHED;
 	}
 

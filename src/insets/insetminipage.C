@@ -111,7 +111,7 @@ dispatch_result InsetMinipage::localDispatch(FuncRequest const & cmd)
 		/* FIXME: I refuse to believe we have to live
 		 * with ugliness like this ... */
 		inset.getLyXText(cmd.view())->fullRebreak();
-		cmd.view()->updateInset();
+		cmd.view()->updateInset(this);
 		return DISPATCHED;
 	}
 

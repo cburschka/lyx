@@ -66,7 +66,7 @@ dispatch_result InsetBibitem::localDispatch(FuncRequest const & cmd)
 		if (p.getCmdName().empty())
 			return DISPATCHED;
 		setParams(p);
-		cmd.view()->updateInset();
+		cmd.view()->updateInset(this);
 		cmd.view()->fitCursor();
 		return DISPATCHED;
 	}
