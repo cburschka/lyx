@@ -1,4 +1,8 @@
-2001-10-01  Angus Leeming  <a.leeming@ic.ac.uk>
+2001-10-03  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* WorkArea.C (c-tor): re-position version string slightly.
+
+2001-10-02  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* BufferView_pimpl.C (buffer): remove call to WorkArea::show() and
 	revert to previous code.

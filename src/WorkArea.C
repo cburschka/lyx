@@ -119,17 +119,17 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 		fl_set_pixmapbutton_focus_outline(obj, 3);
 		fl_set_object_boxtype(obj, FL_NO_BOX);
 
-		int const text_x = splash_x + 248;
-		int const text_y = splash_y + 265;
+		int const text_x = splash_x + 260;
+		int const text_y = splash_y + 255;
 		splash_text_ = obj =
-			fl_add_text(FL_NORMAL_TEXT, text_x, text_y, 170, 16,
+			fl_add_text(FL_NORMAL_TEXT, text_x, text_y, 160, 16,
 				    LYX_VERSION);
 		fl_set_object_lsize(obj, FL_NORMAL_SIZE);
 		fl_mapcolor(FL_FREE_COL2, 0x2b, 0x47, 0x82);
 		fl_mapcolor(FL_FREE_COL3, 0xe1, 0xd2, 0x9b);
 		fl_set_object_color(obj, FL_FREE_COL2, FL_FREE_COL2);
 		fl_set_object_lcol(obj, FL_FREE_COL3);
-		fl_set_object_lalign(obj, FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
+		fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
 		fl_set_object_lstyle(obj, FL_BOLD_STYLE);
 	}
 
