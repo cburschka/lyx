@@ -63,16 +63,16 @@ const char * known_math_envs[] = {"equation", "eqnarray", "eqnarray*",
 
 // some ugly stuff
 ostringstream h_preamble;
-string h_textclass               = "FIXME";
-string h_options                 = "FIXME";
-string h_language                = "FIXME";
-string h_inputencoding           = "FIXME";
-string h_fontscheme              = "FIXME";
+string h_textclass               = "article";
+string h_options                 = "";
+string h_language                = "english";
+string h_inputencoding           = "latin1";
+string h_fontscheme              = "default";
 string h_graphics                = "default";
-string h_paperfontsize           = "FIXME";
+string h_paperfontsize           = "default";
 string h_spacing                 = "single";
-string h_papersize               = "FIXME";
-string h_paperpackage            = "FIXME";
+string h_papersize               = "default";
+string h_paperpackage            = "default";
 string h_use_geometry            = "0";
 string h_use_amsmath             = "0";
 string h_use_natbib              = "0";
@@ -82,7 +82,7 @@ string h_secnumdepth             = "3";
 string h_tocdepth                = "3";
 string h_paragraph_separation    = "indent";
 string h_defskip                 = "medskip";
-string h_quotes_language         = "FIXME";
+string h_quotes_language         = "english";
 string h_quotes_times            = "1";
 string h_papercolumns            = "1";
 string h_papersides              = "1";
@@ -177,13 +177,9 @@ bool is_heading(string const & name)
 		name == "author" ||
 		name == "paragraph" ||
 		name == "chapter" ||
-		name == "chapter*" ||
 		name == "section" ||
-		name == "section*" ||
 		name == "subsection" ||
-		name == "subsection*" ||
-		name == "subsubsection" ||
-		name == "subsubsection*";
+		name == "subsubsection";
 }
 
 
@@ -737,7 +733,12 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			handle_par(os);
 
 		else if (is_heading(t.cs())) {
-			os << "\\layout " << cap(t.cs()) << "\n\n";
+			string name = t.cs();
+			if (p.nextToken().asInput() == "*") {
+				p.getToken();
+				name += "*";
+			}
+			os << "\\layout " << cap(name) << "\n\n";
 			parse(p, os, FLAG_ITEM, mode);
 		}
 
@@ -783,6 +784,9 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 
 		else if (t.cs() == "&" && mode == TEXT_MODE)
 			os << '&';
+
+		else if (t.cs() == "pagestyle" && in_preamble)
+			h_paperpagestyle == p.getArg('{','}');
 
 		else {
 			if (mode == MATH_MODE)
