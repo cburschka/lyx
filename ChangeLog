@@ -1,3 +1,9 @@
+1999-10-08  Jürgen Vigna <jug@sad.it>
+
+	* src/support/filetools.C (FileOpenSearch): Fixed a bug where
+	when in the PATH was something like /usr/bin;;/bin (note: the ;;)
+	it returned without continuing to search the path.
+	
 1999-10-07  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/insets/insetquotes.C (Draw): Simplified a gread deal. This

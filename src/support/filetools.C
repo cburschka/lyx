@@ -201,7 +201,9 @@ string FileOpenSearch (string const & path, string const & name,
 		real_file = FileSearch(path_element, name, ext);
 
 		if (real_file.empty()) {
-		  tmppath = split(tmppath, path_element, ';');
+		  do {
+		    tmppath = split(tmppath, path_element, ';');
+		  } while(!tmppath.empty() && path_element.empty());
 		} else {
 		  notfound = false;
 		}
