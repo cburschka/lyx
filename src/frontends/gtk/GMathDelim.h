@@ -13,8 +13,9 @@
 #define GMATH_DELIM_H
 
 #include "GViewBase.h"
-#include "support/lstrings.h"
 #include "GXpmBtnTbl.h"
+
+#include "support/lstrings.h"
 
 namespace lyx {
 namespace frontend {

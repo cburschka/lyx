@@ -9,11 +9,12 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
+
+#include "GWorkArea.h"
 
 #include "frontends/WorkAreaFactory.h"
 
-#include "GWorkArea.h"
+#include <gtkmm.h>
 
 
 namespace WorkAreaFactory {

@@ -9,8 +9,6 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
-#include <X11/Xft/Xft.h>
 
 #include "GWorkArea.h"
 #include "GView.h"

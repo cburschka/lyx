@@ -9,14 +9,16 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
-#include <libglademm.h>
 
-#include "support/lstrings.h"
-#include "ControlCommand.h"
 #include "GText.h"
+#include "ControlCommand.h"
 #include "ghelpers.h"
 #include "IdSc.h"
+
+#include "support/lstrings.h"
+
+#include <gtkmm.h>
+#include <libglademm.h>
 
 using std::string;
 

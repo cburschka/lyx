@@ -13,10 +13,11 @@
 #define GWORKAREA_H
 
 #include "GPainter.h"
-#include <gdk/gdkx.h>
-#include <gtk/gtk.h>
 
 #include "frontends/WorkArea.h"
+
+#include <gtkmm.h>
+#include <gtk/gtk.h>
 
 #include <X11/Xft/Xft.h>
 

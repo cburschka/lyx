@@ -14,6 +14,9 @@
 
 #include "frontends/Menubar.h"
 #include "MenuBackend.h"
+
+#include <gtkmm.h>
+
 #include <vector>
 
 class LyXView;

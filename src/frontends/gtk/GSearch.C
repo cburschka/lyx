@@ -9,11 +9,11 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
 
 #include "GSearch.h"
 #include "ControlSearch.h"
 #include "ghelpers.h"
+
 #include <libglademm.h>
 
 using std::string;

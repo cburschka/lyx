@@ -14,8 +14,9 @@
 
 #include "frontends/Painter.h"
 
-#include <X11/Xft/Xft.h>
 #include <gtkmm.h>
+
+#include <X11/Xft/Xft.h>
 
 #include <map>
 

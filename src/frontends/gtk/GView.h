@@ -15,6 +15,8 @@
 #include "frontends/LyXView.h"
 #include "bufferview_funcs.h"
 
+#include <gtkmm.h>
+
 #include <map>
 
 namespace lyx {

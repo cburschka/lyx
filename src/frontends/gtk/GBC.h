@@ -12,11 +12,11 @@
 #ifndef GBUTTONCONTROLLER_H
 #define GBUTTONCONTROLLER_H
 
-#include <gtkmm.h>
-
 #include "ButtonController.h"
 #include "BCView.h"
 #include "gettext.h"
+
+#include <gtkmm.h>
 
 namespace lyx {
 namespace frontend {

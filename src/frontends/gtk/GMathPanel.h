@@ -13,8 +13,10 @@
 #define GMATH_PANEL_H
 
 #include "GViewBase.h"
-#include "support/lstrings.h"
 #include "GXpmBtnTbl.h"
+
+#include "support/lstrings.h"
+
 
 namespace lyx {
 namespace frontend {

@@ -9,7 +9,6 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
 
 #include "GView.h"
 #include "GMenubar.h"

@@ -14,6 +14,7 @@
 
 #include "lyxfont.h"
 
+#include <gtkmm.h>
 #include <X11/Xft/Xft.h>
 
 class GWorkArea;

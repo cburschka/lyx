@@ -9,7 +9,6 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
 
 #include "FileDialogPrivate.h"
 
@@ -31,24 +30,27 @@ FileDialog::~FileDialog()
 }
 
 
-FileDialog::Result const FileDialog::open(string const & path,
-					  lyx::support::FileFilterList const & filters,
-					  string const & suggested)
+FileDialog::Result const
+FileDialog::open(string const & path,
+		 lyx::support::FileFilterList const & filters,
+		 string const & suggested)
 {
 	return private_->open(path, filters, suggested);
 }
 
 
-FileDialog::Result const FileDialog::opendir(string const & path,
-					     string const & suggested)
+FileDialog::Result const
+FileDialog::opendir(string const & path,
+		    string const & suggested)
 {
 	return private_->opendir(path, suggested);
 }
 
 
-FileDialog::Result const FileDialog::save(string const & path,
-					  lyx::support::FileFilterList const & filters,
-					  string const & suggested)
+FileDialog::Result const
+FileDialog::save(string const & path,
+		 lyx::support::FileFilterList const & filters,
+		 string const & suggested)
 {
 	return private_->save(path, filters, suggested);
 }

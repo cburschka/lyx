@@ -11,14 +11,8 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
 
 #include "lyx_gui.h"
-
-#include "support/lyxlib.h"
-#include "support/os.h"
-#include "support/filetools.h"
-#include "support/path_defines.h"
 
 #include "debug.h"
 #include "funcrequest.h"
@@ -47,6 +41,18 @@
 #include "xftFontLoader.h"
 #include "GWorkArea.h"
 
+//just for xforms
+#include "lyx_forms.h"
+#include "xformsImage.h"
+#include "xforms_helpers.h"
+
+#include "support/lyxlib.h"
+#include "support/os.h"
+#include "support/filetools.h"
+#include "support/path_defines.h"
+
+#include <gtkmm.h>
+
 #include <boost/bind.hpp>
 #include <boost/function.hpp>
 #include <boost/shared_ptr.hpp>
@@ -55,11 +61,6 @@
 
 #include <sstream>
 #include <iomanip>
-
-//just for xforms
-#include "lyx_forms.h"
-#include "xformsImage.h"
-#include "xforms_helpers.h"
 
 namespace os = lyx::support::os;
 

@@ -14,6 +14,8 @@
 
 #include "GViewBase.h"
 
+#include "ControlTabularCreate.h"
+
 namespace lyx {
 namespace frontend {
 

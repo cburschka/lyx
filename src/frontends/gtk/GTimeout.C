@@ -11,10 +11,11 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
 
 #include "GTimeout.h"
 #include "debug.h"
+
+#include <gtkmm.h>
 
 
 Timeout::Timeout(unsigned int msec, Type t)

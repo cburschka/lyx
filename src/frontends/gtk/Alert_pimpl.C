@@ -9,10 +9,11 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
 
 #include "frontends/Alert.h"
 #include "frontends/Alert_pimpl.h"
+
+#include <gtkmm.h>
 
 using std::string;
 

@@ -9,7 +9,6 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
 
 #include "GViewBase.h"
 #include "support/filetools.h"

@@ -9,15 +9,15 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
-
-#include <libglademm.h>
-#include <sstream>
 
 #include "ControlAboutlyx.h"
 #include "GAboutlyx.h"
 #include "ghelpers.h"
 #include "version.h"
+
+#include <libglademm.h>
+
+#include <sstream>
 
 using std::ostringstream;
 using std::string;

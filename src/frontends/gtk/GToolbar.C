@@ -9,7 +9,6 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
 
 #include "GToolbar.h"
 #include "GView.h"
@@ -79,7 +78,7 @@ GLayoutBox::GLayoutBox(LyXView & owner,
 	combo_.get_entry()->unset_flags(Gtk::CAN_FOCUS | Gtk::CAN_DEFAULT);
 	comboClear(combo_);
 
- 	combo_.get_entry()->signal_changed().connect(
+	combo_.get_entry()->signal_changed().connect(
 		sigc::mem_fun(*this,&GLayoutBox::selected));
 
 	combo_.show();
@@ -87,7 +86,7 @@ GLayoutBox::GLayoutBox(LyXView & owner,
 	combo_.set_data(
 		gToolData,
 		reinterpret_cast<void*>(&const_cast<FuncRequest &>(func)));
-		
+
 	Gtk::ToolItem * toolitem = Gtk::manage(new Gtk::ToolItem);
 	toolitem->add(combo_);
 	toolbar.insert(*toolitem,-1);
@@ -199,28 +198,28 @@ GToolbar::GToolbar(ToolbarBackend::Toolbar const & tbb, LyXView & owner)
 
 	owner_.getBox(position).children().push_back(
 		Gtk::Box_Helpers::Element(toolbar_, Gtk::PACK_SHRINK));
-		
+
 	tooltips_.enable();
 }
 
 void GToolbar::add(FuncRequest const & func, string const & tooltip)
 {
- 	switch (func.action) {
+	switch (func.action) {
 	case ToolbarBackend::SEPARATOR: {
 		Gtk::SeparatorToolItem * space =
 			Gtk::manage(new Gtk::SeparatorToolItem);
 		toolbar_.insert(*space,-1);
- 		break;
+		break;
 	}
 
- 	case ToolbarBackend::MINIBUFFER:
- 		// Not supported yet.
- 		break;
+	case ToolbarBackend::MINIBUFFER:
+		// Not supported yet.
+		break;
 
 	case ToolbarBackend::LAYOUTS: {
 		layout_.reset(new GLayoutBox(owner_, toolbar_, func));
- 		break;
- 	}
+		break;
+	}
 
 	default: {
 		Glib::ustring xpmName =
@@ -235,13 +234,13 @@ void GToolbar::add(FuncRequest const & func, string const & tooltip)
 			toolbutton = Gtk::manage(new Gtk::ToolButton(*image));
 		}
 		// This code is putting a function reference into the GObject data field
-		// named gToolData.  That's how we know how to update the status of the 
+		// named gToolData.  That's how we know how to update the status of the
 		// toolitem later.
 		toolbutton->set_data(gToolData,
 			reinterpret_cast<void*>(&const_cast<FuncRequest &>(func)));
 		tooltips_.set_tip(*toolbutton, tip, tip);
 		toolbutton->signal_clicked().connect(sigc::bind(sigc::mem_fun(*this,
-			&GToolbar::clicked), FuncRequest(func)));		
+			&GToolbar::clicked), FuncRequest(func)));
 		toolbar_.insert(*toolbutton,-1);
 		break;
 	}

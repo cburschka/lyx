@@ -9,14 +9,13 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
 
-#include <libglademm.h>
-
-#include "ControlTabularCreate.h"
 #include "GTableCreate.h"
 #include "ghelpers.h"
+
 #include "support/lstrings.h"
+
+#include <libglademm.h>
 
 using std::string;
 
@@ -49,8 +48,8 @@ void GTableCreate::doBuild()
 
 void GTableCreate::apply()
 {
-	int rows = rows_->get_value_as_int();
-	int columns = columns_->get_value_as_int();
+	int const rows = rows_->get_value_as_int();
+	int const columns = columns_->get_value_as_int();
 	controller().params() = std::make_pair(columns, rows);
 }
 

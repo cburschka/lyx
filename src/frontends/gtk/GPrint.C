@@ -9,16 +9,17 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
-#include <libglademm.h>
 
 #include "GPrint.h"
 #include "ControlPrint.h"
 #include "ghelpers.h"
 
 #include "PrinterParams.h"
+
 #include "support/lstrings.h"
 #include "support/tostr.h"
+
+#include <libglademm.h>
 
 using std::string;
 using namespace lyx::support;
@@ -147,7 +148,6 @@ void GPrint::doBuild()
 
 	Gtk::Button * ok;
 	Gtk::Button * cancel;
-	Gtk::Button * apply;
 	xml_->get_widget("PrintButton", ok);
 	xml_->get_widget("CancelButton", cancel);
 

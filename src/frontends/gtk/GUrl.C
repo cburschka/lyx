@@ -9,14 +9,15 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
-
-#include <libglademm.h>
 
 #include "ControlCommand.h"
 #include "GUrl.h"
 #include "ghelpers.h"
+
 #include "support/lstrings.h"
+
+#include <gtkmm.h>
+#include <libglademm.h>
 
 using std::string;
 

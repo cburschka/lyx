@@ -12,12 +12,14 @@
 #ifndef GVIEWBASE_H
 #define GVIEWBASE_H
 
-#include <gtkmm.h>
-#include <libglademm.h>
-#include <boost/scoped_ptr.hpp>
 #include "Dialog.h"
 #include "ButtonPolicies.h"
 #include "GBC.h"
+
+#include <gtkmm.h>
+#include <libglademm.h>
+
+#include <boost/scoped_ptr.hpp>
 
 namespace lyx {
 namespace frontend {
@@ -57,7 +59,7 @@ template <class Dialog>
 class GViewDB : public GViewBase {
 protected:
 	GViewDB(Dialog &, std::string const &, bool allowResize);
-	virtual const Gtk::Window * window() const;
+	virtual Gtk::Window const * window() const;
 	virtual Gtk::Window * window();
 	boost::scoped_ptr<Dialog> dialog_;
 };

@@ -9,12 +9,12 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
 
-#include <gdk/gdkkeysyms.h>
 #include "GLyXKeySym.h"
-
 #include "kbmap.h"
+
+#include <gtkmm.h>
+#include <gdk/gdkkeysyms.h>
 
 using std::string;
 

@@ -9,7 +9,6 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
 
 #include "FileDialogPrivate.h"
 
@@ -60,9 +59,10 @@ void FileDialog::Private::onButton2Clicked()
 }
 
 
-FileDialog::Result const FileDialog::Private::open(string const & path,
-						   lyx::support::FileFilterList const & /*filters*/,
-						   string const & /*suggested*/)
+FileDialog::Result const
+FileDialog::Private::open(string const & path,
+			  lyx::support::FileFilterList const & /*filters*/,
+			  string const & /*suggested*/)
 {
 	fileSelection_.set_filename(path);
 	fileSelection_.get_file_list()->get_parent()->show();

@@ -9,15 +9,14 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
-
-#include <libglademm.h>
 
 #include "ControlMath.h"
 #include "GMathPanel.h"
 #include "ghelpers.h"
 
 #include "support/lstrings.h"
+
+#include <libglademm.h>
 
 #include "deco.xpm"
 #include "delim.xpm"

@@ -15,9 +15,9 @@
 
 #include "frontends/Toolbars.h"
 
-#include <boost/scoped_ptr.hpp>
-
 #include <gtkmm.h>
+
+#include <boost/scoped_ptr.hpp>
 
 namespace lyx {
 namespace frontend {

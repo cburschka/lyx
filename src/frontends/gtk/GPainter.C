@@ -9,7 +9,6 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
 
 #include "GPainter.h"
 #include "debug.h"
@@ -25,9 +24,12 @@
 
 #include "support/lstrings.h"
 
-#include <boost/scoped_array.hpp>
+#include <gtkmm.h>
+#include <gdk/gdkx.h>
 
 #include <X11/Xft/Xft.h>
+
+#include <boost/scoped_array.hpp>
 
 #include <cmath>
 

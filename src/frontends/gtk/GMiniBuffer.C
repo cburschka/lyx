@@ -9,7 +9,6 @@
  */
 
 #include <config.h>
-#include <gtkmm.h>
 
 #include "GView.h"
 #include "GMiniBuffer.h"
@@ -227,7 +226,7 @@ bool GMiniBuffer::onKeyPress(GdkEventKey * event)
 						new_input_locale);
 		Glib::ustring new_input =
 			Glib::locale_to_utf8(new_input_locale);
-		
+
 		if (comp.empty() && new_input == input) {
 			showInfo("[no match]");
 			break;

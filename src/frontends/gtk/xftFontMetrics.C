@@ -11,13 +11,14 @@
 #include <config.h>
 
 #include "GtkmmX.h"
-#include "support/lstrings.h"
 #include "xftFontLoader.h"
 #include "font_metrics.h"
 #include "lyxrc.h"
 #include "encoding.h"
 #include "language.h"
 #include "codeConvert.h"
+
+#include "support/lstrings.h"
 
 #include <gtkmm.h>
 

@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "IdSc.h"
+
 #include "support/lstrings.h"
 
 using lyx::support::split;

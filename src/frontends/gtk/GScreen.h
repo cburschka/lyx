@@ -14,6 +14,8 @@
 
 #include "screen.h"
 
+#include <gtkmm.h>
+
 namespace lyx {
 namespace frontend {
 
