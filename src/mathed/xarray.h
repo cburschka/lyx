@@ -61,6 +61,6 @@ public:
 	MathStyles style_;
 };
 
-std::ostream & operator<<(std::ostream & os, MathArray const & ar);
+std::ostream & operator<<(std::ostream & os, MathXArray const & ar);
 
 #endif

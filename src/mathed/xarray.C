@@ -108,3 +108,9 @@ int MathXArray::width(int pos) const
 	else 
 		return mathed_char_width(data_.GetCode(pos), style_, data_.GetChar(pos));
 }
+
+std::ostream & operator<<(std::ostream & os, MathXArray const & ar)
+{
+	os << ar.data_;
+}
+
