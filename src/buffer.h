@@ -106,7 +106,7 @@ public:
 	///
 	void redraw() {
 		users->redraw(); 
-		users->fitCursor(); 
+		users->fitCursor(users->text); 
 		//users->updateScrollbar();
 	}
 

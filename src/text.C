@@ -3402,7 +3402,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 						  GetFont(bview->buffer(),
 							  row_ptr->par(), 0));
 			int w = (inset_owner ? inset_owner->width(bview, font) : ww);
-			int xp = (inset_owner ? x : 0);
+			int xp = static_cast<int>(inset_owner ? x : 0);
 			pain.line(xp, y_offset + y_top,
 				  w, y_offset + y_top,
 				  LColor::topline,
@@ -3583,7 +3583,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 			y_bottom -= lyxfont::ascent('x', GetFont(bview->buffer(),
 								 par, par->Last() - 1));
 			int w = (inset_owner ? inset_owner->width(bview, font) : ww);
-			int xp = (inset_owner ? x : 0);
+			int xp = static_cast<int>(inset_owner ? x : 0);
 			pain.line(xp, y_offset + y_bottom,
 				  w, y_offset + y_bottom,
 				  LColor::topline, Painter::line_solid,

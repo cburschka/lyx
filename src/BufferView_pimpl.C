@@ -208,12 +208,13 @@ void BufferView::Pimpl::redraw()
 }
 
 
-bool BufferView::Pimpl::fitCursor()
+bool BufferView::Pimpl::fitCursor(LyXText * text)
 {
 	Assert(screen_); // it is a programming error to call fitCursor
 	// without a valid screen.
-	bool ret = screen_->FitCursor(bv_->text);
-	if (ret) updateScrollbar();
+	bool ret = screen_->FitCursor(text);
+	if (ret)
+	    updateScrollbar();
 	return ret;
 }
 
@@ -541,7 +542,7 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
       
 		bv_->text->SetSelection();
 		screen_->ToggleToggle(bv_->text);
-		fitCursor();
+		fitCursor(bv_->text);
 		screen_->ShowCursor(bv_->text);
 	}
 	return;
@@ -634,7 +635,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	bv_->text->cursor.x_fix(bv_->text->cursor.x());
 	
 	owner_->updateLayoutChoice();
-	if (fitCursor()) {
+	if (fitCursor(bv_->text)) {
 		selection_possible = false;
 	}
 	
@@ -976,7 +977,7 @@ void BufferView::Pimpl::workAreaExpose()
 			// fitCursor() ensures we don't jump back
 			// to the start of the document on vertical
 			// resize
-			fitCursor();
+			fitCursor(bv_->text);
 
 			// The main window size has changed, repaint most stuff
 			redraw();
@@ -1052,7 +1053,7 @@ void BufferView::Pimpl::update(BufferView::UpdateCodes f)
 	update();
 
 	if ((f & FITCUR)) {
-		fitCursor();
+		fitCursor(bv_->text);
       	}
 
 	if ((f & CHANGE)) {

@@ -33,7 +33,7 @@ class Buffer;
 class LyXTabular  {
 public:
     ///
-    enum {
+    enum Feature {
 	///
 	APPEND_ROW = 0,
 	///
@@ -82,8 +82,6 @@ public:
 	M_VALIGN_BOTTOM,
 	///
 	M_VALIGN_CENTER,
-	///
-	DELETE_TABULAR,
 	///
 	MULTICOLUMN,
 	///
@@ -218,19 +216,19 @@ public:
     /// Returns true if a complete update is necessary, otherwise false
     bool SetRightLine(int cell, bool line, bool onlycolumn=false);
     /// Returns true if a complete update is necessary, otherwise false
-    bool SetAlignment(int cell, char align, bool onlycolumn = false);
+    bool SetAlignment(int cell, LyXAlignment align, bool onlycolumn = false);
     /// Returns true if a complete update is necessary, otherwise false
-    bool SetVAlignment(int cell, char align, bool onlycolumn = false);
+    bool SetVAlignment(int cell, VAlignment align, bool onlycolumn = false);
     ///
     bool SetColumnPWidth(int cell, string const & width);
     ///
     bool SetMColumnPWidth(int cell, string const & width);
     ///
-    bool SetAlignSpecial(int cell, string const & special, int what);
+    bool SetAlignSpecial(int cell, string const & special, Feature what);
     ///
-    char GetAlignment(int cell, bool onlycolumn = false) const;
+    LyXAlignment GetAlignment(int cell, bool onlycolumn = false) const;
     ///
-    char GetVAlignment(int cell, bool onlycolumn = false) const;
+    VAlignment GetVAlignment(int cell, bool onlycolumn = false) const;
     ///
     string const GetPWidth(int cell) const;
     ///
@@ -305,7 +303,7 @@ public:
     ///
     int right_column_of_cell(int cell) const;
     ///
-    void SetLongTabular(int what);
+    void SetLongTabular(bool);
     ///
     bool IsLongTabular() const;
     ///
@@ -333,7 +331,7 @@ public:
     ///
     void SetUsebox(int cell, BoxType);
     ///
-    int GetUsebox(int cell) const;
+    BoxType GetUsebox(int cell) const;
     //
     // Long Tabular Options
     ///
@@ -375,9 +373,9 @@ private: //////////////////////////////////////////////////////////////////
 	///
 	int multicolumn;
 	///
-	int alignment;
+	LyXAlignment alignment;
 	///
-	int valignment;
+	VAlignment valignment;
 	///
 	bool top_line;
 	///
@@ -387,7 +385,7 @@ private: //////////////////////////////////////////////////////////////////
 	///
 	bool right_line;
 	///
-	int usebox;
+	BoxType usebox;
 	///
 	bool rotate;
 	///
@@ -425,9 +423,9 @@ private: //////////////////////////////////////////////////////////////////
 	///
         columnstruct();
 	///
-	int alignment;
+	LyXAlignment alignment;
 	///
-	int valignment;
+	VAlignment valignment;
 	///
 	bool left_line;
 	///
@@ -482,7 +480,7 @@ private: //////////////////////////////////////////////////////////////////
     ///
     void Reinit();
     ///
-    void set_row_column_number_info();
+    void set_row_column_number_info(bool oldformat=false);
     /// Returns true if a complete update is necessary, otherwise false
     bool SetWidthOfMulticolCell(int cell, int new_width);
     ///
@@ -500,7 +498,7 @@ private: //////////////////////////////////////////////////////////////////
     ///
     int cells_in_multicolumn(int cell) const;
     ///
-    bool UseParbox(int cell) const;
+    BoxType UseParbox(int cell) const;
 };
 
 #endif

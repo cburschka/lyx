@@ -1081,8 +1081,7 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_REMOVEERRORS:
 		if (owner->view()->removeAutoInsets()) {
 			owner->view()->redraw();
-			owner->view()->fitCursor();
-			//owner->view()->updateScrollbar();
+			owner->view()->fitCursor(owner->view()->text);
 		}
 		break;
 		
@@ -1565,13 +1564,17 @@ string const LyXFunc::Dispatch(int ac,
 		bool is_rtl = txt->cursor.par()->isRightToLeftPar(owner->buffer()->params);
 		if(!txt->mark_set) owner->view()->beforeChange();
 		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		LyXCursor cur = txt->cursor;
 		if (!is_rtl)
 			txt->CursorLeft(owner->view(), false);
-		if (txt->cursor.pos() < txt->cursor.par()->Last()
-		    && txt->cursor.par()->GetChar(txt->cursor.pos())
-		    == LyXParagraph::META_INSET
-		    && txt->cursor.par()->GetInset(txt->cursor.pos())
-		    && txt->cursor.par()->GetInset(txt->cursor.pos())->Editable() == Inset::HIGHLY_EDITABLE) {
+		if ((cur != txt->cursor) && // only if really moved!
+		    txt->cursor.pos() < txt->cursor.par()->Last() &&
+		    (txt->cursor.par()->GetChar(txt->cursor.pos()) ==
+		     LyXParagraph::META_INSET) &&
+		    txt->cursor.par()->GetInset(txt->cursor.pos()) &&
+		    (txt->cursor.par()->GetInset(txt->cursor.pos())->Editable()
+		     == Inset::HIGHLY_EDITABLE))
+		{
 			Inset * tmpinset = txt->cursor.par()->GetInset(txt->cursor.pos());
 			setMessage(tmpinset->EditMessage());
 			LyXFont font = txt->GetFont(owner->view()->buffer(),

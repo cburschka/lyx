@@ -152,7 +152,7 @@ public:
     ///
     bool TabularFeatures(BufferView * bv, string const & what);
     ///
-    void TabularFeatures(BufferView * bv, int feature,
+    void TabularFeatures(BufferView * bv, LyXTabular::Feature feature,
 			 string const & val = string());
     ///
     int GetActCell() const { return actcell; }

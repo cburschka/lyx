@@ -36,7 +36,7 @@ struct BufferView::Pimpl : public Object {
 	///
 	void redraw();
 	/// Return true if the cursor was fitted.
-	bool fitCursor();
+	bool fitCursor(LyXText *);
 	///
 	void redoCurrentBuffer();
 	///

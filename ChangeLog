@@ -1,3 +1,21 @@
+2000-09-28  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.C (update): fixed cursor setting when
+	the_locking_inset changed.
+	(draw): made this a bit cleaner.
+
+	* various files: added LyXText Parameter to fitCursor call.
+	
+	* src/BufferView.C (fitCursor): added LyXText parameter.
+
+	* src/insets/insettabular.C (draw): small draw fix.
+
+	* src/tabular.C: right setting of left/right celllines.
+
+	* src/tabular.[Ch]: fixed various types in funcions and structures. 
+	* src/insets/insettabular.C: ditto
+	* src/frontends/xforms/FormTabular.C: ditto
+
 2000-09-28  Allan Rae  <rae@lyx.org>
 
 	* src/paragraph.C (TeXOnePar): fixed output of '\n'.  The problem was

@@ -1190,10 +1190,13 @@ bool InsetText::InsertInset(BufferView * bv, Inset * inset)
 	UpdatableInset * i = static_cast<UpdatableInset *>(inset);
 	i->setOwner(static_cast<UpdatableInset *>(this));
     }
+    HideInsetCursor(bv);
     TEXT(bv)->InsertInset(bv, inset);
     TEXT(bv)->selection = 0;
+    bv->fitCursor(TEXT(bv));
     UpdateLocal(bv, CURSOR_PAR, true);
     static_cast<UpdatableInset*>(inset)->Edit(bv, 0, 0, 0);
+    ShowInsetCursor(bv);
     return true;
 }
 

@@ -57,8 +57,7 @@ void InsetLabel::Edit(BufferView * bv, int, int, unsigned int)
 			bv->text->RedoParagraph(bv);
 			if (flag) {
 				bv->redraw();
-				bv->fitCursor();
-				//bv->updateScrollbar();
+				bv->fitCursor(getLyXText(bv));
 			} else
 				bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		}

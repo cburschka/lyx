@@ -3386,7 +3386,7 @@ int Buffer::runLiterate()
 	// error insets after we ran LaTeX this must be run:
         if (removedErrorInsets || (res & Literate::ERRORS)){
                 users->redraw();
-                users->fitCursor();
+                users->fitCursor(users->text);
                 //users->updateScrollbar();
         }
         AllowInput(users);
@@ -3457,7 +3457,7 @@ int Buffer::buildProgram()
 	// must be run:
 	if (removedErrorInsets || (res & Literate::ERRORS)){
 		users->redraw();
-		users->fitCursor();
+		users->fitCursor(users->text);
 		//users->updateScrollbar();
 	}
 	AllowInput(users);
@@ -3509,8 +3509,7 @@ int Buffer::runChktex()
 	// error insets after we ran chktex, this must be run:
 	if (removedErrorInsets || res){
 		users->redraw();
-		users->fitCursor();
-		//users->updateScrollbar();
+		users->fitCursor(users->text);
 	}
 	AllowInput(users);
 

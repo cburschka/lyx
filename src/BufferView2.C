@@ -203,9 +203,8 @@ bool BufferView::insertInset(Inset * inset, string const & lout,
 	// if we are in a locking inset we should try to insert the
 	// inset there otherwise this is a illegal function now
 	if (the_locking_inset) {
-		if (the_locking_inset->InsertInsetAllowed(inset) &&
-		    the_locking_inset->InsertInset(this, inset))
-			return true;
+		if (the_locking_inset->InsertInsetAllowed(inset))
+		    return the_locking_inset->InsertInset(this, inset);
 		return false;
 	}
 
@@ -252,19 +251,6 @@ bool BufferView::insertInset(Inset * inset, string const & lout,
 	}
 	
 	text->InsertInset(this, inset);
-#if 1
-	// if we enter a text-inset the cursor should be to the left side
-	// of it! This couldn't happen before as Undo was not handled inside
-	// inset now after the Undo LyX tries to call inset->Edit(...) again
-	// and cannot do this as the cursor is behind the inset and GetInset
-	// does not return the inset!
-	if (inset->IsTextInset()) {
-		if (text->cursor.par()->isRightToLeftPar(buffer()->params))
-			text->CursorRight(this);
-		else
-			text->CursorLeft(this);
-	}
-#endif
 	update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 
 	text->UnFreezeUndo();
@@ -394,8 +380,7 @@ void BufferView::allFloats(char flag, char figmar)
 
 	text->SetCursorIntern(this, cursor.par(), cursor.pos());
 	redraw();
-	fitCursor();
-	//updateScrollbar();
+	fitCursor(text);
 }
 #endif
 

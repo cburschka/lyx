@@ -490,8 +490,9 @@ void FormTabular::SetTabularOptions(FL_OBJECT * ob, long)
         * tabular = inset_->tabular;
     int
         cell,
-        s,
-        num = 0;
+        s;
+    LyXTabular::Feature
+        num = LyXTabular::LAST_ACTION;
     string
         special,
         str;

@@ -63,7 +63,7 @@ public:
 	///
 	void redraw();
 	///
-	void fitCursor();
+	void fitCursor(LyXText *);
 	///
 	void update();
 	//

@@ -462,8 +462,7 @@ bool Converter::runLaTeX(Buffer * buffer, string const & command)
 	// error insets after we ran LaTeX this must be run:
         if (a || (result & LaTeX::ERRORS)){
                 bv->redraw();
-                bv->fitCursor();
-                //bv->updateScrollbar();
+                bv->fitCursor(bv->text);
         }
 
 	// check return value from latex.run().
