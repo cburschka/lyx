@@ -870,11 +870,26 @@ bool InsetText::updateInsetInInset(BufferView * bv, Inset * inset)
 		clear = true;
 	}
 	if (inset->owner() != this) {
-		bool found = the_locking_inset->updateInsetInInset(bv, inset);
+		int ustat = CURSOR_PAR;
+		bool found = false;
+		UpdatableInset * tl_inset = the_locking_inset;
+		if (tl_inset)
+			found = tl_inset->updateInsetInInset(bv, inset);
+		if (!found) {
+			tl_inset = static_cast<UpdatableInset *>(inset);
+			while(tl_inset->owner() && tl_inset->owner() != this)
+				tl_inset = static_cast<UpdatableInset *>(tl_inset->owner());
+			if (!tl_inset->owner())
+				return false;
+			found = tl_inset->updateInsetInInset(bv, inset);
+			ustat = FULL;
+		}
+		if (found)
+			lt->updateInset(bv, tl_inset);
 		if (clear)
 			lt = 0;
 		if (found)
-			setUpdateStatus(bv, CURSOR_PAR);
+			setUpdateStatus(bv, ustat);
 		return found;
 	}
 	bool found = lt->updateInset(bv, inset);

@@ -1,3 +1,8 @@
+2002-03-11  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (updateInsetInInset): fixed for updates in insets inside
+	this inset text (don't know why I missed this earlier).
+
 2002-03-08  Juergen Vigna  <jug@sad.it>
 
 	* insettabular.C (updateLocal): do a FULL update if we're not locked
