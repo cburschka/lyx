@@ -19,8 +19,14 @@ class MathSplitInset : public MathGridInset {
 public:
 	///
 	explicit MathSplitInset(std::string const & name);
+
 	///
+	bool getStatus(LCursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const;
+
 	void write(WriteStream & os) const;
+	///
+	void infoize(std::ostream & os) const;
 	///
 	int defaultColSpace(col_type) { return 0; }
 	///

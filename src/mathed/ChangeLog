@@ -1,3 +1,18 @@
+2005-03-31  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* math_amsarrayinset.[Ch], math_tabularinset.[Ch],
+	math_splitinset.[Ch] (infoize): implement
+	* math_casesinset.C (getStatus, doDispatch): use cmd.argument directly
+	* math_gridinset.C (getStatus): ditto
+	* math_arrayinset.C (infoize): generalize
+
+2005-03-30  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* math_amsarrayinset.[Ch] (getStatus):
+	* math_splitinset.[Ch] (getStatus):
+	* math_substackinset.[Ch]: suppress output of vertical gridlines
+	where appropriate
+
 2005-04-03  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* math_fontinset.[Ch] (draw): add call to setPosCache, 

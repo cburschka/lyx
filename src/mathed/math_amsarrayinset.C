@@ -17,8 +17,17 @@
 #include "math_streamstr.h"
 #include "math_support.h"
 
+#include "funcrequest.h"
+#include "FuncStatus.h"
+#include "gettext.h"
+
+#include "support/lstrings.h"
+#include "support/std_ostream.h"
+
+
 using std::string;
 using std::auto_ptr;
+using lyx::support::bformat;
 
 
 MathAMSArrayInset::MathAMSArrayInset(string const & name, int m, int n)
@@ -90,11 +99,40 @@ void MathAMSArrayInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
+bool MathAMSArrayInset::getStatus(LCursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	switch (cmd.action) {
+	case LFUN_TABULAR_FEATURE: {
+		string const s = cmd.argument;
+		if (s == "add-vline-left" || s == "add-vline-right") {
+			flag.message(bformat(
+			N_("Can't add vertical grid lines in '%1$s'"),
+				name_));
+			flag.enabled(false);
+			return true;
+		}
+		return MathGridInset::getStatus(cur, cmd, flag);
+	}
+	default:
+		return MathGridInset::getStatus(cur, cmd, flag);
+        }
+}
+
+
 void MathAMSArrayInset::write(WriteStream & os) const
 {
 	os << "\\begin{" << name_ << '}';
 	MathGridInset::write(os);
 	os << "\\end{" << name_ << '}';
+}
+
+
+void MathAMSArrayInset::infoize(std::ostream & os) const
+{
+	string name = name_;
+	name[0] = lyx::support::uppercase(name[0]);
+	os << name << ' ';
 }
 
 

@@ -16,6 +16,15 @@
 #include "math_mathmlstream.h"
 #include "support/std_ostream.h"
 
+#include "funcrequest.h"
+#include "FuncStatus.h"
+#include "gettext.h"
+
+#include "support/lstrings.h"
+
+
+using lyx::support::bformat;
+using std::string;
 using std::auto_ptr;
 
 
@@ -45,6 +54,27 @@ void MathSubstackInset::metrics(MetricsInfo & mi, Dimension & dim) const
 void MathSubstackInset::draw(PainterInfo & pi, int x, int y) const
 {
 	MathGridInset::draw(pi, x + 1, y);
+}
+
+
+bool MathSubstackInset::getStatus(LCursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const
+{
+	switch (cmd.action) {
+	case LFUN_TABULAR_FEATURE: {
+		string const name("substack");
+		string const s = cmd.argument;
+		if (s == "add-vline-left" || s == "add-vline-right") {
+			flag.message(bformat(
+			N_("Can't add vertical grid lines in '%1$s'"), name));
+			flag.enabled(false);
+			return true;
+		}
+		return MathGridInset::getStatus(cur, cmd, flag);
+	}
+	default:
+		return MathGridInset::getStatus(cur, cmd, flag);
+	}
 }
 
 

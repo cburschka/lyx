@@ -29,7 +29,8 @@ public:
 	MathSubstackInset const * asSubstackInset() const { return this; }
 
 	///
-	void normalize();
+	bool getStatus(LCursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const;
 	///
 	void infoize(std::ostream & os) const;
 	///

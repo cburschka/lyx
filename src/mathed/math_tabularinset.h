@@ -37,6 +37,8 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
+	void infoize(std::ostream & os) const;
+	///
 	void normalize(NormalStream &) const;
 	///
 	void maple(MapleStream &) const;

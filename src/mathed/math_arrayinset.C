@@ -17,6 +17,8 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 
+#include "support/lstrings.h"
+
 #include <iterator>
 #include <sstream>
 
@@ -113,7 +115,9 @@ void MathArrayInset::write(WriteStream & os) const
 
 void MathArrayInset::infoize(std::ostream & os) const
 {
-	os << "Array";
+	string name = name_;
+	name[0] = lyx::support::uppercase(name[0]);
+	os << name << ' ';
 }
 
 

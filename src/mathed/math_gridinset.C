@@ -1237,9 +1237,7 @@ bool MathGridInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action) {
 	case LFUN_TABULAR_FEATURE: {
-		istringstream is(cmd.argument);
-		string s;
-		is >> s;
+		string const s = cmd.argument;
 		if (nrows() <= 1 && (s == "delete-row" || s == "swap-row")) {
 			flag.enabled(false);
 			flag.message(N_("Only one row"));

@@ -32,7 +32,12 @@ public:
 	MathAMSArrayInset const * asAMSArrayInset() const { return this; }
 
 	///
+	bool getStatus(LCursor & cur, FuncRequest const & cmd,
+		FuncStatus & flag) const;
+	///
 	void write(WriteStream & os) const;
+	///
+	void infoize(std::ostream & os) const;
 	///
 	void normalize(NormalStream &) const;
 	///

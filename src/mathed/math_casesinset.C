@@ -24,7 +24,6 @@
 
 #include "support/lstrings.h"
 
-#include <sstream>
 
 using lyx::support::bformat;
 
@@ -32,7 +31,6 @@ using std::endl;
 using std::max;
 using std::min;
 using std::swap;
-using std::istringstream;
 using std::string;
 
 using std::auto_ptr;
@@ -71,9 +69,7 @@ void MathCasesInset::doDispatch(LCursor & cur, FuncRequest & cmd)
 	switch (cmd.action) {
 	case LFUN_TABULAR_FEATURE: {
 		recordUndo(cur);
-		istringstream is(cmd.argument);
-		string s;
-		is >> s; 
+		string const s = cmd.argument;
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			cur.undispatched();
 			break;
@@ -90,9 +86,7 @@ bool MathCasesInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action) {
 	case LFUN_TABULAR_FEATURE: {
-		istringstream is(cmd.argument);
-		string s;
-		is >> s;
+		string const s = cmd.argument;
 		if (s == "add-vline-left" || s == "add-vline-right") {
 			flag.enabled(false);
 			flag.message(bformat(

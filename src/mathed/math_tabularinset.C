@@ -15,6 +15,9 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 
+#include "support/lstrings.h"
+#include "support/std_ostream.h"
+
 #include <iterator>
 
 
@@ -76,6 +79,14 @@ void MathTabularInset::write(WriteStream & os) const
 	os << "\\end{" << name_ << '}';
 	// adding a \n here is bad if the tabular is the last item
 	// in an \eqnarray...
+}
+
+
+void MathTabularInset::infoize(std::ostream & os) const
+{
+	string name = name_;
+	name[0] = lyx::support::uppercase(name[0]);
+	os << name << ' ';
 }
 
 
