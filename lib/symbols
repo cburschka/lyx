@@ -811,6 +811,9 @@ iffont msb
 \def\Join{\ltimes\kern-18.5mu\rtimes}
 endif
 \def\mathcircumflex{\mbox{\^{}}}{\^}
+# Fixme: latin-1 chars in text file
+\def\AA{\AA}{Å}
+\def\O{\O}{Ø}
 
 textdegree         lyxsymbol             176 0 mathord  x
 

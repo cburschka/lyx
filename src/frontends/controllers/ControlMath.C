@@ -177,7 +177,7 @@ char const * latex_misc[] = {
 	"angle", "top", "bot", "Vert", "neg",
 	"flat", "natural", "sharp", "surd", "triangle",
 	"diamondsuit", "heartsuit", "clubsuit", "spadesuit",
-	"textrm Å", "textrm Ø", "mathcircumflex", "_",
+	"textrm \\AA", "textrm \\O", "mathcircumflex", "_",
 	"mathrm T",
 	"mathbb N", "mathbb Z", "mathbb Q",
 	"mathbb R", "mathbb C", "mathbb H",
@@ -333,8 +333,8 @@ XPMmap sorted_xpm_map[] = {
 	{ "nRightarrow", "nrightarrow2" },
 	{ "nVDash", "nvdash3" },
 	{ "nvDash", "nvdash2" },
-	{ "textrm_Å", "textrm_A" },
-	{ "textrm_Ø", "textrm_0" },
+	{ "textrm \\AA", "textrm_AA"},
+	{ "textrm \\O", "textrm_Oe"},
 	{ "vDash", "vdash2" }
 };
 
