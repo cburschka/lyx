@@ -151,8 +151,10 @@ int IsFileWriteable (string const & path)
 //	 -1: error- couldn't find out
 int IsDirWriteable (string const & path)
 {
-        string const tmpfl(lyx::tempName(path)); //TmpFileName(path));
-
+        string const tmpfl(lyx::tempName(path, "lyxwritetest"));
+	// We must unlink the tmpfl.
+	lyx::unlink(tmpfl);
+	
 	if (tmpfl.empty()) {
 		WriteFSAlert(_("LyX Internal Error!"), 
 			     _("Could not test if directory is writeable"));

@@ -7,6 +7,9 @@
 
 char const * _(char const * str)
 {
+	// I'd rather have an Assert on str, we should not allow
+	// null pointers here. Lgb
+	// Assert(str);
 	if (str && str[0])
 		return gettext(str);
 	else

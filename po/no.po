@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.1.6\n"
 "POT-Creation-Date: 2000-12-29 22:25+0100\n"
-"PO-Revision-Date: 2000-11-30 17:27+01:00\n"
+"PO-Revision-Date: 2001-01-05 20:36+01:00\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -557,15 +557,15 @@ msgstr "Initialisering av programmet"
 
 #: src/debug.C:35
 msgid "Keyboard events handling"
-msgstr ""
+msgstr "Håntering av tastaturhendelser"
 
 #: src/debug.C:36
 msgid "GUI handling"
-msgstr ""
+msgstr "GUI håndtering"
 
 #: src/debug.C:37
 msgid "Lyxlex grammer parser"
-msgstr ""
+msgstr "Lyxlex gramatikk parser"
 
 #: src/debug.C:38
 msgid "Configuration files reading"
@@ -585,7 +585,7 @@ msgstr "Matte editor"
 
 #: src/debug.C:42
 msgid "Font handling"
-msgstr ""
+msgstr "Font håndtering"
 
 #: src/debug.C:43
 msgid "Textclass files reading"
@@ -801,9 +801,8 @@ msgid "Floats & Insets|I"
 msgstr "Floats & Insets|I"
 
 #: src/ext_l10n.h:47
-#, fuzzy
 msgid "Math Panel|l"
-msgstr "Mattepanel"
+msgstr "Mattepanel|l"
 
 #: src/ext_l10n.h:48
 msgid "Spellchecker...|S"
@@ -911,12 +910,11 @@ msgstr "Slett kolonne|S"
 
 #: src/ext_l10n.h:76
 msgid "Math Formula|h"
-msgstr ""
+msgstr "Matteformel|f"
 
 #: src/ext_l10n.h:77
-#, fuzzy
 msgid "Display Formula|D"
-msgstr "Vis ramme|#r"
+msgstr "Fremhevet formel|h"
 
 #: src/ext_l10n.h:78
 msgid "Special Character|S"
@@ -947,9 +945,8 @@ msgid "Index Entry...|I"
 msgstr "Indeks element...|I"
 
 #: src/ext_l10n.h:85
-#, fuzzy
 msgid "Index Entry of Preceeding Word|W"
-msgstr "Indeks element av siste ord|o"
+msgstr "Indeks element av forrige ord|o"
 
 #: src/ext_l10n.h:86
 msgid "URL...|U"
@@ -976,17 +973,14 @@ msgid "Floats|a"
 msgstr "Floats|a"
 
 #: src/ext_l10n.h:92
-#, fuzzy
 msgid "Include File|e"
-msgstr "Inkluder"
+msgstr "Inkluder fil|e"
 
 #: src/ext_l10n.h:93
-#, fuzzy
 msgid "Insert File|t"
-msgstr "Sett inn figur"
+msgstr "Sett inn fil|t"
 
 #: src/ext_l10n.h:94
-#, fuzzy
 msgid "External Material...|x"
 msgstr "Eksternt materiale...|E"
 
@@ -1128,7 +1122,7 @@ msgstr "LaTeX preamble...|L"
 
 #: src/ext_l10n.h:129
 msgid "Toggle Appendix|A"
-msgstr ""
+msgstr "Appendiks av/på|A"
 
 #: src/ext_l10n.h:130
 msgid "Save Layout as Default|S"
@@ -1172,7 +1166,7 @@ msgstr "Brukermanual|B"
 
 #: src/ext_l10n.h:140
 msgid "Extended Features|E"
-msgstr ""
+msgstr "Utvidede egenskaper|u"
 
 #: src/ext_l10n.h:141
 msgid "Customization|C"
@@ -2716,7 +2710,7 @@ msgstr "Tysk"
 
 #: src/ext_l10n.h:525
 msgid "German (new spelling)"
-msgstr ""
+msgstr "Tysk (ny stavemåte)"
 
 #: src/ext_l10n.h:526 src/mathed/math_forms.C:26
 msgid "Greek"
@@ -3155,6 +3149,8 @@ msgid ""
 "along with this program; if not, write to the Free Software Foundation, "
 "Inc.,  675 Mass Ave, Cambridge, MA 02139, USA."
 msgstr ""
+"This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.\n"
+"LyX is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc.,  675 Mass Ave, Cambridge, MA 02139, USA."
 
 #: src/frontends/gnome/FormError.C:89
 msgid " Error "
@@ -3220,7 +3216,7 @@ msgstr "Tekst side"
 
 #: src/frontends/gnome/FormRef.C:274
 msgid "PrettyRef"
-msgstr ""
+msgstr "PrettyRef"
 
 #: src/frontends/gnome/FormRef.C:300
 msgid "Type:"
@@ -3398,7 +3394,7 @@ msgstr "Ny side"
 
 #: src/frontends/kde/dlg/paraabovedlgdata.C:52
 msgid "Keep space when at top of page"
-msgstr ""
+msgstr "Behold avstand på toppen av siden"
 
 #: src/frontends/kde/dlg/paraabovedlgdata.C:70
 #: src/frontends/kde/dlg/parabelowdlgdata.C:70
@@ -3422,7 +3418,7 @@ msgstr "Minus"
 
 #: src/frontends/kde/dlg/parabelowdlgdata.C:52
 msgid "Keep space when at bottom of page"
-msgstr ""
+msgstr "Behold avstand på bunnen av siden"
 
 #: src/frontends/kde/dlg/paradlgdata.C:65
 msgid "&Apply"
@@ -3430,7 +3426,7 @@ msgstr "&Bruk"
 
 #: src/frontends/kde/dlg/paradlgdata.C:82
 msgid "&Restore"
-msgstr ""
+msgstr "&Sett tilbake"
 
 #: src/frontends/kde/dlg/paraextradlgdata.C:43
 #: src/frontends/kde/dlg/parageneraldlgdata.C:43
@@ -3493,7 +3489,7 @@ msgstr "Høyre"
 
 #: src/frontends/kde/dlg/parageneraldlgdata.C:151
 msgid "Label width"
-msgstr ""
+msgstr "Merke bredde"
 
 #: src/frontends/kde/dlg/printdlgdata.C:42
 msgid "Pages"
@@ -3558,9 +3554,8 @@ msgid "Count"
 msgstr "Antall"
 
 #: src/frontends/kde/dlg/tabcreatedlgdata.C:42
-#, fuzzy
 msgid "&Insert"
-msgstr "Sett inn|S"
+msgstr "&Sett inn"
 
 #: src/frontends/kde/dlg/tabcreatedlgdata.C:90
 #: src/frontends/xforms/form_tabular_create.C:49 src/mathed/math_forms.C:133
@@ -3587,7 +3582,7 @@ msgstr "Nøkkel ikke funnet i referanser."
 
 #: src/frontends/kde/FormCopyright.C:42
 msgid "LyX: Copyright and Warranty"
-msgstr ""
+msgstr "LyX: Copyright and Warranty"
 
 #: src/frontends/kde/FormIndex.C:96
 msgid "LyX: Index"
@@ -3637,9 +3632,8 @@ msgid "LyX: Cross Reference"
 msgstr "LyX: Kryssreferanse"
 
 #: src/frontends/kde/FormTabularCreate.C:53
-#, fuzzy
 msgid "LyX: Insert Table"
-msgstr "Sett inn tabell"
+msgstr "LyX: Sett inn tabell"
 
 #: src/frontends/kde/FormToc.C:246
 msgid "LyX: Table of Contents"
@@ -3750,14 +3744,12 @@ msgstr "Prosent av kolonne:"
 #. FIXME: free punctuation to whoever can make the value
 #. boxes not be overly large
 #: src/frontends/kde/parageneraldlg.C:31
-#, fuzzy
 msgid "&Spacing Above"
-msgstr "Avstand over"
+msgstr "&Avstand over"
 
 #: src/frontends/kde/parageneraldlg.C:32
-#, fuzzy
 msgid "Spacing &Below"
-msgstr "Anstand under"
+msgstr "Anstand &under"
 
 #: src/frontends/kde/parageneraldlg.C:37 src/frontends/kde/parageneraldlg.C:44
 msgid "None"
@@ -3829,7 +3821,7 @@ msgstr "Til filnavn"
 
 #: src/frontends/kde/printdlg.C:35
 msgid "Select output filename"
-msgstr ""
+msgstr "Vel navn på fil"
 
 #: src/frontends/kde/refdlg.C:30
 msgid "Available References"
@@ -3906,7 +3898,7 @@ msgstr "Sitering"
 
 #: src/frontends/xforms/form_citation.C:29
 msgid "Inset keys|#I"
-msgstr ""
+msgstr "Sett in nøkkler|i"
 
 #: src/frontends/xforms/form_citation.C:38
 msgid "Bibliography keys|#B"
@@ -3918,7 +3910,7 @@ msgstr "@4->"
 
 #: src/frontends/xforms/form_citation.C:47
 msgid "#&D"
-msgstr ""
+msgstr "#&D"
 
 #: src/frontends/xforms/form_citation.C:51
 msgid "@9+"
@@ -3926,7 +3918,7 @@ msgstr "@9+"
 
 #: src/frontends/xforms/form_citation.C:52
 msgid "#X"
-msgstr ""
+msgstr "#X"
 
 #: src/frontends/xforms/form_citation.C:56
 msgid "@8->"
@@ -3934,7 +3926,7 @@ msgstr "@8->"
 
 #: src/frontends/xforms/form_citation.C:57
 msgid "#&A"
-msgstr ""
+msgstr "#&A"
 
 #: src/frontends/xforms/form_citation.C:61
 msgid "@2->"
@@ -3942,7 +3934,7 @@ msgstr "@2->"
 
 #: src/frontends/xforms/form_citation.C:62
 msgid "#&B"
-msgstr ""
+msgstr "#&B"
 
 #: src/frontends/xforms/form_citation.C:66 src/lyxvc.C:112
 msgid "Info"
@@ -3983,7 +3975,7 @@ msgstr "Copyright and Warranty"
 
 #: src/frontends/xforms/FormCopyright.C:51
 msgid "LyX is Copyright (C) 1995 by Matthias Ettrich, 1995-2000 LyX Team"
-msgstr ""
+msgstr "LyX is Copyright (C) 1995 by Matthias Ettrich, 1995-2000 LyX Team"
 
 #: src/frontends/xforms/FormCopyright.C:56
 msgid ""
@@ -3991,7 +3983,7 @@ msgid ""
 "under the terms of the GNU General Public License as published by the Free "
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
-msgstr ""
+msgstr "This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version."
 
 #: src/frontends/xforms/FormCopyright.C:61
 msgid ""
@@ -4001,7 +3993,7 @@ msgid ""
 "details. You should have received a copy of the GNU General Public License "
 "along with this program; if not, write to the Free Software Foundation, "
 "Inc., 675 Mass Ave, Cambridge, MA 02139, USA."
-msgstr ""
+msgstr "LyX is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA."
 
 #: src/frontends/xforms/form_copyright.C:41
 #: src/frontends/xforms/form_error.C:31 src/frontends/xforms/form_toc.C:48
@@ -4440,7 +4432,7 @@ msgstr "Vinkel|#V"
 
 #: src/frontends/xforms/form_graphics.C:120
 msgid "Inline Figure|#I"
-msgstr ""
+msgstr "I linjen figur|#I"
 
 #: src/frontends/xforms/form_graphics.C:128
 msgid "Subcaption|#S"
@@ -4616,20 +4608,20 @@ msgstr "Avbryt|A#A^["
 
 #: src/frontends/xforms/FormPreferences.C:68
 msgid "Preferences"
-msgstr ""
+msgstr "Preferansere"
 
 #: src/frontends/xforms/FormPreferences.C:220
 msgid "Look & Feel"
-msgstr ""
+msgstr "Utseende og Følelse"
 
 #: src/frontends/xforms/FormPreferences.C:223
 msgid "Lang Opts"
-msgstr ""
+msgstr "Språk valg"
 
 #: src/frontends/xforms/FormPreferences.C:226
 #: src/frontends/xforms/FormPreferences.C:255
 msgid "Converters"
-msgstr ""
+msgstr "Konvertere"
 
 #: src/frontends/xforms/FormPreferences.C:229
 msgid "Inputs"
@@ -4649,17 +4641,17 @@ msgstr "Grensesnitt"
 
 #: src/frontends/xforms/FormPreferences.C:244
 msgid "Colors"
-msgstr ""
+msgstr "Farger"
 
 #: src/frontends/xforms/FormPreferences.C:247
 #: src/frontends/xforms/FormPreferences.C:264
 #: src/frontends/xforms/FormPreferences.C:272 src/mathed/math_forms.C:46
 msgid "Misc"
-msgstr ""
+msgstr "Diverse"
 
 #: src/frontends/xforms/FormPreferences.C:252
 msgid "Formats"
-msgstr ""
+msgstr "Formater"
 
 #: src/frontends/xforms/FormPreferences.C:261
 msgid "Paths"
@@ -4675,76 +4667,72 @@ msgstr "Stavekontroll"
 
 #: src/frontends/xforms/FormPreferences.C:533
 msgid "LyX objects that can be assigned a color."
-msgstr ""
+msgstr "LyX objekter som kan få satt en farge."
 
 #: src/frontends/xforms/FormPreferences.C:536
 msgid ""
 "Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
+msgstr "Endre LyX objektets farge. NB: du må så \"Bruk\"e endringen."
 
 #: src/frontends/xforms/FormPreferences.C:544
 msgid "Find a new color."
-msgstr ""
+msgstr "Finn en ny farge."
 
 #: src/frontends/xforms/FormPreferences.C:547
 msgid "Toggle between RGB and HSV color spaces."
-msgstr ""
+msgstr "Sett fargerom til RGB/HSV."
 
 #: src/frontends/xforms/FormPreferences.C:742
-#, fuzzy
 msgid "GUI background"
-msgstr "bakgrunn"
+msgstr "GUI bakgrunn"
 
 #: src/frontends/xforms/FormPreferences.C:748
-#, fuzzy
 msgid "GUI text"
-msgstr "tekst"
+msgstr "GUI tekst"
 
 #: src/frontends/xforms/FormPreferences.C:757
-#, fuzzy
 msgid "GUI selection"
-msgstr "merket"
+msgstr "GUI merking"
 
 #: src/frontends/xforms/FormPreferences.C:763
-#, fuzzy
 msgid "GUI pointer"
-msgstr "til skriver"
+msgstr "GUI peker"
 
 #: src/frontends/xforms/FormPreferences.C:896
 msgid "HSV"
-msgstr ""
+msgstr "HSV"
 
 #: src/frontends/xforms/FormPreferences.C:928
 msgid "RGB"
-msgstr ""
+msgstr "RGB"
 
 #: src/frontends/xforms/FormPreferences.C:1004
 msgid "All the currently defined converters known to LyX."
-msgstr ""
+msgstr "Alle definerte konvertere i LyX."
 
 #: src/frontends/xforms/FormPreferences.C:1006
 msgid "Convert \"from\" this format"
-msgstr ""
+msgstr "Konverter \"fra\" dette formatet"
 
 #: src/frontends/xforms/FormPreferences.C:1008
 msgid "Convert \"to\" this format"
-msgstr ""
+msgstr "Konverter \"til\" dette formatet"
 
 #: src/frontends/xforms/FormPreferences.C:1010
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file."
-msgstr ""
+msgstr "Konverterings kommandoen. $$i er navnet på inn filen, $$b er navnet på filen uten dennes ekstensjon og $$o er navnet på ut filen."
 
 #: src/frontends/xforms/FormPreferences.C:1012
 msgid "Flags that control the converter behavior"
-msgstr ""
+msgstr "Flag som kontrolerer konverterens oppførsel"
 
 #: src/frontends/xforms/FormPreferences.C:1014
 msgid ""
 "Remove the current converter from the list of available converters. Note: "
 "you must then \"Apply\" the change."
-msgstr ""
+msgstr "Fjern den merkede konverteren fra listen over tilgjengelige konvertere. NB: du må så \"Bruk\"e endringe."
 
 #: src/frontends/xforms/FormPreferences.C:1016
 #: src/frontends/xforms/FormPreferences.C:1288
@@ -4782,11 +4770,11 @@ msgstr "Endre|#E"
 #: src/frontends/xforms/form_preferences.C:607
 #: src/frontends/xforms/form_preferences.C:694
 msgid "Add|#A"
-msgstr ""
+msgstr "Legg til|#L"
 
 #: src/frontends/xforms/FormPreferences.C:1274
 msgid "All the currently defined formats known to LyX."
-msgstr ""
+msgstr "Alle formatene kjent av LyX."
 
 #: src/frontends/xforms/FormPreferences.C:1276
 msgid "The format identifier."
@@ -4802,7 +4790,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:1282
 msgid "Used to recognize the file. E.g., ps, pdf, tex."
-msgstr ""
+msgstr "Brukes for a kjenne igjen filen. Eks. ps, pdf, tex."
 
 #: src/frontends/xforms/FormPreferences.C:1284
 msgid "The command used to launch the viewer application."
@@ -4882,11 +4870,11 @@ msgstr "Temp dir"
 
 #: src/frontends/xforms/FormPreferences.C:2245
 msgid "User"
-msgstr ""
+msgstr "Bruker"
 
 #: src/frontends/xforms/FormPreferences.C:2248
 msgid "Lastfiles"
-msgstr ""
+msgstr "Siste filer"
 
 #: src/frontends/xforms/FormPreferences.C:2252
 msgid "Backup path"
@@ -4898,7 +4886,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:2701
 msgid "Fonts must be positive!"
-msgstr ""
+msgstr "Fonter må være positive!"
 
 #: src/frontends/xforms/FormPreferences.C:2724
 msgid ""
@@ -4912,11 +4900,11 @@ msgstr " ingen | ispell | aspell "
 
 #: src/frontends/xforms/FormPreferences.C:2952
 msgid "Personal dictionary"
-msgstr ""
+msgstr "Personlig ordliste"
 
 #: src/frontends/xforms/FormPreferences.C:3008
 msgid "WARNING!"
-msgstr ""
+msgstr "Advarsel!"
 
 #: src/LyXAction.C:154 src/frontends/xforms/form_preferences.C:44
 msgid "Save"
@@ -4937,7 +4925,7 @@ msgstr "Skrivemaskin"
 #: src/frontends/xforms/form_preferences.C:116
 #, no-c-format
 msgid "Zoom %|#Z"
-msgstr ""
+msgstr "Zoom %|#Z"
 
 #: src/frontends/xforms/form_preferences.C:127
 msgid "Use scalable fonts"
@@ -4973,7 +4961,7 @@ msgstr "normal"
 
 #: src/frontends/xforms/form_preferences.C:154
 msgid "Screen DPI|#D"
-msgstr ""
+msgstr "Skjerm DPI#D"
 
 #: src/frontends/xforms/form_preferences.C:165
 msgid "tiny"
@@ -4997,7 +4985,7 @@ msgstr "Ascii linje lengde|#A"
 
 #: src/frontends/xforms/form_preferences.C:214
 msgid "TeX encoding|#T"
-msgstr ""
+msgstr "TeX enkoding|#T"
 
 #: src/frontends/xforms/form_preferences.C:221
 msgid "Default paper size|#p"
@@ -5096,37 +5084,35 @@ msgstr "Se igjennom"
 
 #: src/frontends/xforms/form_preferences.C:496
 msgid "LyX objects|#L"
-msgstr ""
+msgstr "LyX objekter|#L"
 
 #: src/frontends/xforms/form_preferences.C:511
 msgid "S|#S"
-msgstr ""
+msgstr "S|#S"
 
 #: src/frontends/xforms/form_preferences.C:520
 msgid "V|#V"
-msgstr ""
+msgstr "V|#V"
 
 #: src/frontends/xforms/form_preferences.C:529
 msgid "H|#H"
-msgstr ""
+msgstr "H|#H"
 
 #: src/frontends/xforms/form_preferences.C:536
-#, fuzzy
 msgid "R|#R"
-msgstr "Høyre"
+msgstr "R|#R"
 
 #: src/frontends/xforms/form_preferences.C:545
-#, fuzzy
 msgid "B|#B"
-msgstr "Se igjennom|#S"
+msgstr "B|#B"
 
 #: src/frontends/xforms/form_preferences.C:554
 msgid "G|#G"
-msgstr ""
+msgstr "G|#G"
 
 #: src/frontends/xforms/form_preferences.C:592
 msgid "All converters|#A"
-msgstr ""
+msgstr "Alle konvertere|#A"
 
 #: src/frontends/xforms/form_preferences.C:600
 #: src/frontends/xforms/form_preferences.C:687
@@ -5634,9 +5620,8 @@ msgid "HTML type|#H"
 msgstr "HTML type|#H"
 
 #: src/frontends/xforms/input_validators.C:102
-#, fuzzy
 msgid "ERROR!  Unable to print!"
-msgstr "Kan ikke lese skrive ut!"
+msgstr "Feil! Kan ikke lese skrive ut!"
 
 #: src/frontends/xforms/input_validators.C:103
 msgid "Check 'range of pages'!"
@@ -5644,7 +5629,7 @@ msgstr ""
 
 #: src/frontends/xforms/Menubar_pimpl.C:257
 msgid "More"
-msgstr "More"
+msgstr "Mer"
 
 #: src/frontends/xforms/Menubar_pimpl.C:298
 #, no-c-format
@@ -6313,9 +6298,8 @@ msgid "footnote frame"
 msgstr "fotnote ramme"
 
 #: src/LColor.C:88
-#, fuzzy
 msgid "latex inset"
-msgstr "latex tekst"
+msgstr "latex inset"
 
 #: src/LColor.C:89
 msgid "inset"
@@ -7591,7 +7575,6 @@ msgid "Setting debug level to "
 msgstr "Setter debug nivå til "
 
 #: src/lyx_main.C:707
-#, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -7620,7 +7603,14 @@ msgstr ""
 "\t-dbg feature[,feature]...\n"
 "                  select the features to debug.\n"
 "                  Type `lyx -dbg' to see the list of features\n"
-"Check the LyX man page for more options."
+"\t-x [--execute] command\n"
+"                  where command is a lyx command.\n"
+"\t-e [--export] fmt\n"
+"                  where fmt is the export format of choice.\n"
+"\t-i [--import] fmt file.xxx\n"
+"                  where fmt is the import format of choice\n"
+"                  and file.xxx is the file to be imported.\n"
+"Check the LyX man page for more details."
 
 #: src/lyx_main.C:740
 msgid "List of supported debug flags:"
@@ -8489,27 +8479,3 @@ msgstr "Do kan ikke sette inn et marknotat i en minipage!"
 #: src/text.C:3978
 msgid "Float would include float!"
 msgstr "Float would include float!"
-
-#~ msgid "Insert|r"
-#~ msgstr "Sett inn|S"
-
-#~ msgid "File...|F"
-#~ msgstr "Fil...|F"
-
-#~ msgid "Math Text|T"
-#~ msgstr "Matte Text|T"
-
-#~ msgid "Math Display|D"
-#~ msgstr "Matte display|M"
-
-#~ msgid "Math Panel...|P"
-#~ msgstr "Matte panel|p"
-
-#~ msgid "Math units"
-#~ msgstr "Matte enheter"
-
-#~ msgid "Alphabet|#A"
-#~ msgstr "Alfabet|#A"
-
-#~ msgid "Color|#C"
-#~ msgstr "Farge:|#F"

@@ -306,7 +306,9 @@ int asnprintf  (char **ptr, size_t str_m, const char *fmt, /*args*/ ...);
 int vasnprintf (char **ptr, size_t str_m, const char *fmt, va_list ap);
 #endif
 
+#ifndef va_copy
 #define va_copy(ap2,ap) ap2 = ap
+#endif
 
 #if defined(HAVE_SNPRINTF)
 /* declare our portable snprintf  routine under name portable_snprintf  */

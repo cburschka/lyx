@@ -293,7 +293,7 @@ void LyXVC::viewLog(string const & fil)
 
 void LyXVC::showLog()
 {
-	string tmpf = lyx::tempName();
+	string tmpf = lyx::tempName(string(), "lyxvclog");
 	vcs->getLog(tmpf);
 	viewLog(tmpf);
 	lyx::unlink(tmpf);

@@ -1,3 +1,17 @@
+2001-01-08  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/snprintf.c (va_copy): only define va_copy if undefined
+
+2001-01-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyxvc.C (showLog): give the tempfile a mask
+
+	* src/lyx_cb.C (AutoSave): five tempfile a mask, enter the failed
+	branch on !rename
+
+	* src/support/filetools.C (IsDirWriteable): give the tempfile a
+	mask and unlink the tempfile after use.
+
 2001-01-04  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettabular.C (resetPos): an extra scroll, but we

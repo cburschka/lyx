@@ -41,7 +41,7 @@ using std::endl;
 InsetExternal::InsetExternal() 
 	: form_external(0)
 {
-	tempname = lyx::tempName(); //TmpFileName();
+	tempname = lyx::tempName(string(), "lyxext");
 	r_ = Dialogs::redrawGUI.connect(slot(this, &InsetExternal::redraw));
 }
 

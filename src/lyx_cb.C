@@ -385,11 +385,11 @@ void AutoSave(BufferView * bv)
 		// anyway.
 		bool failed = false;
 		
-		string const tmp_ret = lyx::tempName();
+		string const tmp_ret = lyx::tempName(string(), "lyxauto");
 		if (!tmp_ret.empty()) {
 			bv->buffer()->writeFile(tmp_ret, 1);
 			// assume successful write of tmp_ret
-			if (lyx::rename(tmp_ret, fname)) {
+			if (!lyx::rename(tmp_ret, fname)) {
 				failed = true;
 				// most likely couldn't move between filesystems
 				// unless write of tmp_ret failed
