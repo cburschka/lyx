@@ -1013,6 +1013,11 @@ Astrophysics and Space Science, Solar Physics
 \layout Subsection
 
 Koma-Script
+\begin_inset LatexCommand \label{sub:Koma-Script}
+
+\end_inset 
+
+
 \layout Description
 
 Found: scrartcl: @chk_scrartcl@, 
@@ -1047,6 +1052,39 @@ book
 .
  They have been changed to look somewhat better and be more adapted to european
  typesetting standards.
+\layout Subsection
+
+Koma-Script letter
+\layout Standard
+
+Found: scrlettr: @chk_scrlettr@, 
+\family sans 
+scr
+\family default 
+lttr2: @chk_scrlttr2@
+\layout Description
+
+CTAN: 
+\family typewriter 
+macros/latex/contrib/supported/koma-script/
+\layout Description
+
+Notes: These letter classes are bundled with the Koma-Script classes (see
+ 
+\begin_inset LatexCommand \ref{sub:Koma-Script}
+
+\end_inset 
+
+).
+ LyX provides layouts for both the old (now unsupported) 
+\family sans 
+scrlettr
+\family default 
+ class and the new, much more flexible 
+\family sans 
+scrlttr2
+\family default 
+ class, which was introduced with Koma-Script version 2.9 (released 2002-06-21).
 \layout Subsection
 
 latex8

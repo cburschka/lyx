@@ -1,0 +1,200 @@
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
+\textclass scrlettr2
+\begin_preamble
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Here you can modify the layout of your letter
+%% Have a look at the KOMA script documentation
+%% for details. Most commands are commented out
+%% here (i.e. we use default settings)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Load an *.lco style file (see KOMA documentation)
+\LoadLetterOption{DIN}%                          
+
+%% THE CLASS OPTIONS
+%% Remove preceeding '%' to uncomment an item
+\KOMAoptions{%
+%,headsepline=true%            separate the header with a line on page >1
+%,footsepline=true%             separate the footer with a line on page >1
+%pagenumber=botcenter%   position of the page number (see docu)
+%,parskip=false%          Use indent instead of skip (more options cf. docu)
+,fromalign=center%        alignment of the address
+,fromrule=aftername%    separate the address with a line?
+,fromphone=true%         print sender phone number
+%,fromfax=true%          print sender fax number
+,fromemail=true%           print sender e-mail address
+,fromurl=true%               print sender URL
+%,fromlogo=true%         print a logo (position depends on fromalign)
+%,addrfield=false%        print an address field?
+%,backaddress=false%  print the back address?
+%,subject=afteropening,titled% alternative subject layout and position
+%,locfield=narrow%      width of the (extra) location field
+%,foldmarks=false%      print foldmarks?
+%,numericaldate=true%  date layout
+%,refline=wide%             layout of the refline
+}
+
+%% Customize Separators
+%\setkomavar{placeseparator}{ -- }
+\setkomavar{backaddressseparator}{ $\cdot$ }
+%\setkomavar{emailseparator}{ --> }
+%\setkomavar{enclseparator}{ > }
+%\setkomavar{faxseparator}{ --> }
+%\setkomavar{phoneseparator}{ --> }
+%\setkomavar{subjectseparator}{ >>> }
+
+%% Customize fonts
+%% Use LaTeX's standard font commands
+%% Modify with \setkomafont or \addtokomafont
+%% (see KOMA documentation)
+\setkomafont{backaddress}{\rmfamily}
+%\setkomafont{descriptionlabel}{}
+\setkomafont{fromaddress}{\small}
+\setkomafont{fromname}{\scshape}
+%\setkomafont{pagefoot}{}
+%\setkomafont{pagehead}{}
+%\setkomafont{pagenumber}{}
+%\setkomafont{subject}{}
+%\setkomafont{title}{}
+\end_preamble
+\language english
+\inputencoding auto
+\fontscheme palatino
+\graphics default
+\paperfontsize 11
+\spacing other 1.15 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language danish
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Name
+
+The LyX Developers Team
+\layout SenderAddress
+
+140 Map Road
+\newline 
+CVS City
+\layout Telephone
+
+0011/222
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+,
+\end_inset 
+
+333
+\layout E-Mail
+
+lyx-users@lists.lyx.org
+\layout URL
+
+www.lyx.org
+\layout Backaddress
+
+The LyX Developers Team
+\newline 
+140 Map Road
+\newline 
+CVS City
+\layout Signature
+
+The LyX Team
+\layout Subject
+
+New KOMA letter layout 
+\layout Place
+
+The Internet
+\layout Date
+
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+today
+\end_inset 
+
+
+\layout Address
+
+Mr X.
+ Ample
+\newline 
+666 Sesame Street
+\newline 
+12345 Nowhere
+\layout Opening
+
+Dear Mr.
+ Ample,
+\layout Standard
+
+This template illustrates the use of the new scrlttr2 class (introduced
+ with KOMA-script v.
+ 2.9).
+ This letter class is very flexible.
+ Have a look at 
+\family sans 
+Layout\SpecialChar \menuseparator
+Document\SpecialChar \menuseparator
+Preamble
+\family default 
+ for the most common parameters.
+ Please consult the KOMA Script documentation
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+
+\begin_inset LatexCommand \url{http://www.ctan.org/tex-archive/macros/latex/contrib/supported/koma-script/scrguien.pdf}
+
+\end_inset 
+
+
+\end_inset 
+
+ for a detailed description.
+\layout Closing
+
+Have fun with it,
+\layout PS
+
+P.
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+
+\backslash 
+,
+\end_inset 
+
+S.: The blue colored items have to be before the address, the magenta colored
+ after it.
+\layout CC
+
+The LyX Users
+\the_end

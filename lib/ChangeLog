@@ -1,3 +1,14 @@
+2003-02-18  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* layouts/scrclass.inc:
+	* layouts/scrarticle.layout: KOMA update
+
+2003-02-17  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* templates/koma-letter2.lyx: 
+	* layouts/scrlttr2.layout: new KOMA letter class
+	* doc/LaTeXConfig.lyx.in: document this.
+
 2003-02-14  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* chkconfig.ltx: information is in LaTeXConfig.lyx, not
@@ -180,7 +191,6 @@
 	* layouts/broadway.layout:
 	* layouts/hollywood.layout: remove spurious spaces
 
->>>>>>> 1.351
 2002-12-20  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* mathed.lyx: Removed big delimiters table as they are not symbols.
