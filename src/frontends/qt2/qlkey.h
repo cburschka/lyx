@@ -53,6 +53,7 @@ int string_to_qkey(string const & str)
 
 	if (str == "Escape") return Qt::Key_Escape;
 	if (str == "Tab") return Qt::Key_Tab;
+	if (str == "ISO_Left_Tab") return Qt::Key_Tab;
 	if (str == "BackSpace") return Qt::Key_BackSpace;
 	if (str == "Return") return Qt::Key_Return;
 	if (str == "KP_Enter") return Qt::Key_Enter; // correct ?
@@ -131,6 +132,16 @@ int string_to_qkey(string const & str)
 	if (str == "7") return Qt::Key_7;
 	if (str == "8") return Qt::Key_8;
 	if (str == "9") return Qt::Key_9;
+	if (str == "KP_0") return Qt::Key_0;
+	if (str == "KP_1") return Qt::Key_1;
+	if (str == "KP_2") return Qt::Key_2;
+	if (str == "KP_3") return Qt::Key_3;
+	if (str == "KP_4") return Qt::Key_4;
+	if (str == "KP_5") return Qt::Key_5;
+	if (str == "KP_6") return Qt::Key_6;
+	if (str == "KP_7") return Qt::Key_7;
+	if (str == "KP_8") return Qt::Key_8;
+	if (str == "KP_9") return Qt::Key_9;
 	if (str == "colon") return Qt::Key_Colon;
 	if (str == "semicolon") return Qt::Key_Semicolon;
 	if (str == "less") return Qt::Key_Less;
@@ -193,11 +204,14 @@ int string_to_qkey(string const & str)
 	if (str == "bracketleft") return Qt::Key_BracketLeft;
 	if (str == "backslash") return Qt::Key_Backslash;
 	if (str == "bracketright") return Qt::Key_BracketRight;
+	if (str == "bar") return Qt::Key_Bar;
 	if (str == "underscore") return Qt::Key_Underscore;
 	if (str == "space") return Qt::Key_Space;
 	if (str == "parenleft") return Qt::Key_ParenLeft;
 	if (str == "parenright") return Qt::Key_ParenRight;
 	if (str == "quotedbl") return Qt::Key_QuoteDbl;
+	if (str == "quoteright") return Qt::Key_Apostrophe;
+	if (str == "quoteleft") return Qt::Key_QuoteLeft;
 	if (str == "exclam") return Qt::Key_Exclam;
 	if (str == "numbersign") return Qt::Key_NumberSign;
 	if (str == "asciicircum") return Qt::Key_AsciiCircum;
@@ -205,12 +219,17 @@ int string_to_qkey(string const & str)
 	if (str == "percent") return Qt::Key_Percent;
 	if (str == "ampersand") return Qt::Key_Ampersand;
 	if (str == "asterisk") return Qt::Key_Asterisk;
+	if (str == "KP_Multiply") return Qt::Key_Asterisk;
 	if (str == "apostrophe") return Qt::Key_Apostrophe;
 	if (str == "plus") return Qt::Key_Plus;
+	if (str == "KP_Add") return Qt::Key_Plus;
 	if (str == "minus") return Qt::Key_Minus;
+	if (str == "KP_Subtract") return Qt::Key_Minus;
 	if (str == "comma") return Qt::Key_Comma;
 	if (str == "period") return Qt::Key_Period;
+	if (str == "KP_Decimal") return Qt::Key_Period;
 	if (str == "slash") return Qt::Key_Slash;
+	if (str == "KP_Divide") return Qt::Key_Slash;
 	if (str == "asciitilde") return Qt::Key_AsciiTilde;
 	if (str == "braceleft") return Qt::Key_BraceLeft;
 	if (str == "braceright") return Qt::Key_BraceRight;
@@ -319,7 +338,6 @@ int string_to_qkey(string const & str)
 	if (str == "Hyper_L") return Qt::Key_Hyper_L;
 	if (str == "Hyper_R") return Qt::Key_Hyper_R;
 	if (str == "Help") return Qt::Key_Help;
-	if (str == "Bar") return Qt::Key_Bar;
 	if (str == "BackTab") return Qt::Key_Backtab;
 
 	return Qt::Key_unknown;
