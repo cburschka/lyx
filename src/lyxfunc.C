@@ -896,11 +896,8 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_MENUSEARCH:
-	{
 		owner->getDialogs()->showSearch();
 		break;
-	}
-	break;
 		
 	case LFUN_REMOVEERRORS:
 		if (owner->view()->removeAutoInsets()) {

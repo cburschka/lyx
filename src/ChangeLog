@@ -1,3 +1,7 @@
+2001-03-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* lyxfunc.C (Dispatch): removed redundant break statement.
+	
 2001-03-14  Juergen Vigna  <jug@sad.it>
 
 	* tabular.C (l_getline): pay attention on \r\n (from Windows-files)
