@@ -90,8 +90,8 @@ QDelimiterDialog::QDelimiterDialog(QMath * form)
 
 	leftIP->add(QPixmap(empty_xpm.c_str()), "empty", "empty");
 	rightIP->add(QPixmap(empty_xpm.c_str()), "empty", "empty");
-	connect(leftIP, SIGNAL(button_clicked(string const &)), this, SLOT(ldelim_clicked(string const &)));
-	connect(rightIP, SIGNAL(button_clicked(string const &)), this, SLOT(rdelim_clicked(string const &)));
+	connect(leftIP, SIGNAL(button_clicked(const string &)), this, SLOT(ldelim_clicked(const string &)));
+	connect(rightIP, SIGNAL(button_clicked(const string &)), this, SLOT(rdelim_clicked(const string &)));
 	ldelim_clicked("(");
 	rdelim_clicked(")");
 }

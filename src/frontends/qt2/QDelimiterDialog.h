@@ -28,8 +28,8 @@ class QDelimiterDialog : public QDelimiterDialogBase {
 public:
 	QDelimiterDialog(QMath * form);
 public slots:
-	void ldelim_clicked(string const & str);
-	void rdelim_clicked(string const & str);
+	void ldelim_clicked(const string & str);
+	void rdelim_clicked(const string & str);
 	void insertClicked();
 protected:
 	//needed ? virtual void closeEvent(QCloseEvent * e);

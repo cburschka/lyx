@@ -36,7 +36,7 @@ public:
 	/// add a button
 	void add(QPixmap const & pixmap, string name, string tooltip);
 signals:
-	void button_clicked(string const &);
+	void button_clicked(const string &);
 protected:
 	virtual void resizeEvent(QResizeEvent * e);
 protected slots:

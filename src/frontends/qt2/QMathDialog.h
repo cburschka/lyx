@@ -31,12 +31,12 @@ public slots:
 	virtual void delimiterClicked();
 	virtual void expandClicked();
 	virtual void fracClicked();
-	virtual void functionSelected(QString const &);
+	virtual void functionSelected(const QString &);
 	virtual void matrixClicked();
 	virtual void subscriptClicked();
 	virtual void superscriptClicked();
 	virtual void equationClicked();
-	void symbol_clicked(string const & str);
+	void symbol_clicked(const string &);
 	void insertSpace(int id);
 	void insertRoot(int id);
 	void insertStyle(int id);
