@@ -22,11 +22,15 @@
 #include "lyxlex.h"
 #include "Lsstream.h"
 #include "author.h"
+#include "gettext.h"
 
 #include "support/lyxalgo.h" // for lyx::count
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
 #include "support/types.h"
+#include "support/BoostFormat.h"
+
+#include "frontends/Alert.h"
 
 #include <cstdlib>
 #include <algorithm>
@@ -91,6 +95,16 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		} else {
 			textclass = 0;
 			return classname;
+		}
+		if (!getLyXTextClass().isTeXClassAvailable()) {
+			string msg =
+#if USE_BOOST_FORMAT
+				boost::io::str(boost::format(_("The document uses a missing TeX class \"%1$s\".\n")) % classname);
+#else
+				_("The document uses a missing TeX class ") + classname + ".\n";
+#endif
+			Alert::warning(_("Document class not available"),
+			               msg + _("LyX will not be able to produce output."));
 		}
 	} else if (token == "\\begin_preamble") {
 		readPreamble(lex);

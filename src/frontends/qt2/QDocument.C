@@ -26,6 +26,7 @@
 #include "tex-strings.h" // tex_graphics
 #include "support/lstrings.h" // tostr()
 #include "support/filetools.h" // LibFileSearch()
+#include "support/BoostFormat.h"
 #include "lyxtextclasslist.h"
 #include "vspace.h"
 #include "bufferparams.h"
@@ -122,7 +123,17 @@ void QDocument::build_dialog()
 	// layout
 	for (LyXTextClassList::const_iterator cit = textclasslist.begin();
 	     cit != textclasslist.end(); ++cit) {
-		dialog_->latexModule->classCO->insertItem(toqstr(cit->description()));
+		if (cit->isTeXClassAvailable()) {
+			dialog_->latexModule->classCO->insertItem(toqstr(cit->description()));
+                } else {
+			string item =
+#if USE_BOOST_FORMAT
+				boost::io::str(boost::format(_("Unavailable: %1$s")) % cit->description());
+#else
+				_("Unavailable: ") + cit->description();
+#endif
+			dialog_->latexModule->classCO->insertItem(toqstr(item));
+		}
 	}
 
 	for (int n = 0; tex_fonts[n][0]; ++n) {
@@ -499,13 +510,7 @@ void QDocument::update_contents()
 
 
 	// layout
-	for (int n = 0; n<dialog_->latexModule->classCO->count(); ++n) {
-		if (dialog_->latexModule->classCO->text(n) ==
-		    toqstr(controller().textClass().description())) {
-			dialog_->latexModule->classCO->setCurrentItem(n);
-			break;
-		}
-	}
+	dialog_->latexModule->classCO->setCurrentItem(params.textclass);
 
 	dialog_->updateFontsize(controller().textClass().opt_fontsize(),
 				params.fontsize);

@@ -1,3 +1,9 @@
+2003-05-02  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* QDocument.C:
+	* QDocumentDialog.C: Handle document classes with missing TeX class
+	(-> class name prefix: "Unavailable: ")
+
 2003-05-03  John Levon  <levon@movementarian.org>
 
 	* qscreen.h:

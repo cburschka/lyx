@@ -358,13 +358,7 @@ void QDocumentDialog::classChanged()
 					params.pagestyle);
 		}
 	} else {
-		for (int n = 0; n<latexModule->classCO->count(); ++n) {
-			if (latexModule->classCO->text(n) ==
-			    toqstr(cntrl.textClass().description())) {
-				latexModule->classCO->setCurrentItem(n);
-				break;
-			}
-		}
+		latexModule->classCO->setCurrentItem(params.textclass);
 	}
 }
 

@@ -35,6 +35,7 @@
 
 #include "support/lstrings.h" // contains_functor, getStringFromVector
 #include "support/filetools.h" // LibFileSearch
+#include "support/BoostFormat.h"
 
 #include XPM_H_LOCATION
 #include FORMS_H_LOCATION
@@ -135,7 +136,17 @@ void FormDocument::build()
 	LyXTextClassList::const_iterator tit  = textclasslist.begin();
 	LyXTextClassList::const_iterator tend = textclasslist.end();
 	for (; tit != tend; ++tit) {
-		fl_addto_combox(obj, tit->description().c_str());
+		if (tit->isTeXClassAvailable()) {
+			fl_addto_combox(obj, tit->description().c_str());
+		} else {
+			string item =
+#if USE_BOOST_FORMAT
+				boost::io::str(boost::format(_("Unavailable: %1$s")) % tit->description());
+#else
+				_("Unavailable: ") + tit->description();
+#endif
+			fl_addto_combox(obj, item.c_str());
+		}
 	}
 	fl_set_combox_browser_height(obj, 400);
 

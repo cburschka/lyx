@@ -1,3 +1,13 @@
+2003-05-02  Michael Schmitt  <michael.schmitt@teststep.org>
+
+	* bufferparams.C: Output warning if a document with missing
+	TeX document class is loaded
+	* exporter.C: Disable TeX exports if the document class is missing
+	* lyxtextclass.C:
+	* lyxtextclass.h:
+	* lyxtextclasslist.C: Handle new textclass.lst format; new method
+	isTeXClassAvailable()
+  
 2003-05-03  John Levon  <levon@movementarian.org>
 
 	* BufferView.h:

@@ -35,7 +35,11 @@ public:
 	explicit
 	LyXTextClass(string const & = string(),
 		     string const & = string(),
-		     string const & = string());
+		     string const & = string(),
+		     bool = false);
+
+	/// check whether the TeX class is available
+	bool isTeXClassAvailable() const;
 
 	/// paragraph styles begin iterator.
 	const_iterator begin() const { return layoutlist_.begin(); }
@@ -217,6 +221,9 @@ private:
 
 	/// Has this layout file been loaded yet?
 	mutable bool loaded;
+
+	/// Is the TeX class available?
+	bool texClassAvail_;
 };
 
 
