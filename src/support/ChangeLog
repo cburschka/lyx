@@ -1,3 +1,10 @@
+2003-09-15  Angus Leeming  <leeming@lyx.org>
+
+	* copied_ptr.h: re-jig to something that resembles Herb Sutter's HolderPtr ---
+	see http://www.gotw.ca/gotw/062.htm. Also known in his book as ValuePtr.
+	Use a memory_traits template parameter to create/destroy memory in a
+	flexible manner.
+
 2003-09-15  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* tostr.C:
