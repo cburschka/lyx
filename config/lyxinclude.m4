@@ -206,9 +206,9 @@ if test x$GXX = xyes; then
     CXXFLAGS="$ac_save_CXXFLAGS"
   else
     case $gxx_version in
-      2.95.1)  CXXFLAGS="$lyx_opt -fpermissive";;
-      2.95.*)  CXXFLAGS="$lyx_opt -Wno-non-template-friend";;
-      2.96*)  CXXFLAGS="$lyx_opt -fno-exceptions -Wno-non-template-friend";;
+      2.95.1)  CXXFLAGS="$lyx_opt -fpermissive -ftemplate-depth-30";;
+      2.95.*)  CXXFLAGS="$lyx_opt -Wno-non-template-friend -ftemplate-depth-30";;
+      2.96*)  CXXFLAGS="$lyx_opt -fno-exceptions -ftemplate-depth-30 -Wno-non-template-friend";;
       3.0*)    CXXFLAGS="$lyx_opt";;
       3.1*)    CXXFLAGS="$lyx_opt -finline-limit=500 -fno-exceptions";;
       3.2*)    CXXFLAGS="$lyx_opt -fno-exceptions";;
