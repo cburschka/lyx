@@ -93,7 +93,7 @@ for ac_prog in $2 ; do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
   set dummy $ac_prog ; ac_word=$[2]
   if test -z "[$]$1"; then
-    IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+    IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
     for ac_dir in $PATH; do
       test -z "$ac_dir" && ac_dir=.
       if test -f [$ac_dir/$ac_word]; then

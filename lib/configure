@@ -78,7 +78,7 @@ done
 #### Searching some useful programs
 # Search LaTeX2e
 echo $ac_n "checking for a LaTeX2e program""... $ac_c"
-echo "$ac_t"""
+echo "$ac_t""(latex latex2e)"
 LATEX=
 for ac_prog in latex latex2e
 do
@@ -86,7 +86,7 @@ do
 set dummy $ac_prog ; ac_word=$2
 if test -n "$ac_word"; then
   echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x $ac_dir/$ac_word; then
@@ -131,7 +131,7 @@ fi
 
 if test x$lyx_check_config != x ; then
 echo $ac_n "checking for the pdflatex program""... $ac_c"
-echo "$ac_t"""
+echo "$ac_t""(pdflatex)"
 PDFLATEX=
 for ac_prog in pdflatex
 do
@@ -139,7 +139,7 @@ do
 set dummy $ac_prog ; ac_word=$2
 if test -n "$ac_word"; then
   echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x $ac_dir/$ac_word; then
@@ -187,7 +187,7 @@ fi
 save_PATH=${PATH}
 PATH=${PATH}:./reLyX/
 echo $ac_n "checking for reLyX LaTeX-to-LyX translator""... $ac_c"
-echo "$ac_t"""
+echo "$ac_t""(reLyX)"
 RELYX=
 for ac_prog in reLyX
 do
@@ -195,7 +195,7 @@ do
 set dummy $ac_prog ; ac_word=$2
 if test -n "$ac_word"; then
   echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x $ac_dir/$ac_word; then
@@ -224,7 +224,7 @@ PATH=${save_PATH}
 
 # Search something to process a literate document
 echo $ac_n "checking for a Literate programming processor""... $ac_c"
-echo "$ac_t"""
+echo "$ac_t""("noweave -delay -index")"
 LITERATE=
 for ac_prog in "noweave -delay -index"
 do
@@ -232,7 +232,7 @@ do
 set dummy $ac_prog ; ac_word=$2
 if test -n "$ac_word"; then
   echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x $ac_dir/$ac_word; then
@@ -261,7 +261,7 @@ if test "$LITERATE" = "none"; then LITERATE_EXT="none"; else LITERATE_EXT=".nw";
 
 # Search for a Postscript interpreter
 echo $ac_n "checking for a Postscript interpreter""... $ac_c"
-echo "$ac_t"""
+echo "$ac_t""(gs)"
 GS=
 for ac_prog in gs
 do
@@ -269,7 +269,7 @@ do
 set dummy $ac_prog ; ac_word=$2
 if test -n "$ac_word"; then
   echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x $ac_dir/$ac_word; then
@@ -297,7 +297,7 @@ fi
 
 # Search something to preview postscript
 echo $ac_n "checking for a Postscript previewer""... $ac_c"
-echo "$ac_t"""
+echo "$ac_t""(gv ghostview)"
 GHOSTVIEW=
 for ac_prog in gv ghostview
 do
@@ -305,7 +305,7 @@ do
 set dummy $ac_prog ; ac_word=$2
 if test -n "$ac_word"; then
   echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x $ac_dir/$ac_word; then
@@ -333,7 +333,7 @@ fi
 
 # Search a *roff program (used to translate tables in ASCII export)
 echo $ac_n "checking for a *roff formatter""... $ac_c"
-echo "$ac_t"""
+echo "$ac_t""(groff nroff)"
 ROFF=
 for ac_prog in groff nroff
 do
@@ -341,7 +341,7 @@ do
 set dummy $ac_prog ; ac_word=$2
 if test -n "$ac_word"; then
   echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x $ac_dir/$ac_word; then
@@ -372,7 +372,7 @@ test $ROFF = "nroff" && ascii_roff_command="tbl \$\$FName | nroff"
 
 # Search the ChkTeX program
 echo $ac_n "checking for ChkTeX""... $ac_c"
-echo "$ac_t"""
+echo "$ac_t""(chktex)"
 CHKTEX=
 for ac_prog in chktex
 do
@@ -380,7 +380,7 @@ do
 set dummy $ac_prog ; ac_word=$2
 if test -n "$ac_word"; then
   echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x $ac_dir/$ac_word; then
@@ -410,7 +410,7 @@ test $CHKTEX = "chktex" && chktex_command="$CHKTEX -n1 -n3 -n6 -n9 -n22 -n25 -n3
 
 # Search for a spellchecker
 echo $ac_n "checking for a spell-checker""... $ac_c"
-echo "$ac_t"""
+echo "$ac_t""(ispell)"
 SPELL=
 for ac_prog in ispell
 do
@@ -418,7 +418,7 @@ do
 set dummy $ac_prog ; ac_word=$2
 if test -n "$ac_word"; then
   echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x $ac_dir/$ac_word; then
@@ -446,7 +446,7 @@ fi
 
 # Search a Fax handling program
 echo $ac_n "checking for a fax driver""... $ac_c"
-echo "$ac_t"""
+echo "$ac_t""(sendfax faxsend fax)"
 FAX=
 for ac_prog in sendfax faxsend fax
 do
@@ -454,7 +454,7 @@ do
 set dummy $ac_prog ; ac_word=$2
 if test -n "$ac_word"; then
   echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x $ac_dir/$ac_word; then
@@ -491,7 +491,7 @@ fi
 
 # Search for LinuxDoc support
 echo $ac_n "checking for SGML-tools 1.x (LinuxDoc)""... $ac_c"
-echo "$ac_t"""
+echo "$ac_t""(sgml2lyx)"
 LINUXDOC=
 for ac_prog in sgml2lyx
 do
@@ -499,7 +499,7 @@ do
 set dummy $ac_prog ; ac_word=$2
 if test -n "$ac_word"; then
   echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x $ac_dir/$ac_word; then
@@ -532,7 +532,7 @@ fi
 
 # Search for DocBook support
 echo $ac_n "checking for SGML-tools 2.x (DocBook)""... $ac_c"
-echo "$ac_t"""
+echo "$ac_t""(sgmltools)"
 DOCBOOK=
 for ac_prog in sgmltools
 do
@@ -540,7 +540,7 @@ do
 set dummy $ac_prog ; ac_word=$2
 if test -n "$ac_word"; then
   echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x $ac_dir/$ac_word; then
@@ -574,7 +574,7 @@ fi
 
 # Search for a spool command
 echo $ac_n "checking for a spool command""... $ac_c"
-echo "$ac_t"""
+echo "$ac_t""(lp lpr)"
 LPR=
 for ac_prog in lp lpr
 do
@@ -582,7 +582,7 @@ do
 set dummy $ac_prog ; ac_word=$2
 if test -n "$ac_word"; then
   echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x $ac_dir/$ac_word; then
@@ -617,7 +617,7 @@ esac
 
 # Search for a latex to html converter
 echo $ac_n "checking for an HTML converter""... $ac_c"
-echo "$ac_t"""
+echo "$ac_t""(tth latex2html hevea)"
 TOHTML=
 for ac_prog in tth latex2html hevea
 do
@@ -625,7 +625,7 @@ do
 set dummy $ac_prog ; ac_word=$2
 if test -n "$ac_word"; then
   echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x $ac_dir/$ac_word; then

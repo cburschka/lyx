@@ -47,6 +47,7 @@ for prog in $M4 gm4 gnum4 m4 ; do
     *traditional*) echo "Building lib/configure"
 		   rm -f lib/configure
 		   $prog lib/configure.m4 >lib/configure
+		   chmod a+x lib/configure
 		   ok=yes
 		   break ;;
     *) ;;

@@ -29,7 +29,7 @@ dnl
 define(SEARCH_PROG,[dnl
 changequote([,])dnl
 MSG_CHECKING($1)
-MSG_RESULT()
+MSG_RESULT(($3))
 $2=
 for ac_prog in $3
 do
@@ -37,7 +37,7 @@ do
 set dummy $ac_prog ; ac_word=$[2]
 if test -n "$ac_word"; then
   MSG_CHECKING([for \"$ac_word\"],[+])
-  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS="${IFS}:"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x [$ac_dir/$ac_word]; then

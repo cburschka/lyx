@@ -1,4 +1,15 @@
-1999-12-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+1999-12-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* acinclude.m4 (LYX_SEARCH_PROG): make it work when the PATH
+	elements contain spaces
+
+	* lib/configure: regenerated
+	
+	* lib/configure.m4 (SEARCH_PROG): make it work when the PATH
+	elements contain spaces; display the list of programs that are
+	tried.
+
+	* autogen.sh: make sure lib/configure is executable
 
 	* lib/examples/*: rename the tutorial examples to begin with the
 	two-letters language code.
