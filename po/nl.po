@@ -1,16 +1,24 @@
-# Nederlandse meldingen voor LyX / Dutch LyX-localization
+# Nederlandse vertaling van LyX
 # Copyright (C) 1997-2000 The LyX Team
-# Hacked by 
-# Martin.Vermeer@fgi.fi     first try
+#
+# Marting Vermeer <Martin.Vermeer@fgi.fi>
 # Bert Haverkamp (TU Delft)
 # Ivo Timmermans <itimmermans@bigfoot.com>
 # Tino Meinen <a.t.meinen@chello.nl>, 2003.
 #
+# ----------------------------------------
+# Conventies:
+#
+# Citation - Literatuurverwijzing
+# Multicolomn - Multikolom
+# Paragraph - Alinea
+# Reference - verwijzing
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.5pre1\n"
-"POT-Creation-Date: 2003-03-18 18:01+0100\n"
-"PO-Revision-Date: 2003-03-09 07:53+0100\n"
+"POT-Creation-Date: 2003-03-07 16:45+0100\n"
+"PO-Revision-Date: 2003-03-27 05:27+0100\n"
 "Last-Translator: Tino Meinen <a.t.meinen@chello.nl>\n"
 "Language-Team: Dutch <vertaling@nl.linux.org>\n"
 "MIME-Version: 1.0\n"
@@ -123,7 +131,7 @@ msgstr "Database:|#D"
 #: ../src/frontends/xforms/forms/form_bibtex.fd:116
 #: ../src/frontends/xforms/forms/form_citation.fd:296
 msgid "Style:|#S"
-msgstr "Stijle:|#S"
+msgstr "Stijl:|#S"
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:134
 #: ../src/frontends/xforms/forms/form_external.fd:97
@@ -201,18 +209,20 @@ msgstr "Bijwerken|#Bb"
 msgid "Family:|#F"
 msgstr "Familie:|#F"
 
+# Vrij vertaald, het gaat hier om de lettertype-optie, normaal medium of vet of resetten.
 #: ../src/frontends/xforms/forms/form_character.fd:80
 msgid "Series:|#S"
-msgstr "Serie:|#S"
+msgstr "Dikte:|#D"
 
 #: ../src/frontends/xforms/forms/form_character.fd:98
 msgid "Shape:|#H"
 msgstr "Vorm:|#V"
 
+# Papierformaat
 #: ../src/frontends/xforms/forms/form_character.fd:116
 #: ../src/frontends/xforms/forms/form_document.fd:1577
 msgid "Size:|#z"
-msgstr "Grootte:|#G"
+msgstr "Formaat:|#F"
 
 #: ../src/frontends/xforms/forms/form_character.fd:134
 msgid "Misc:|#M"
@@ -223,31 +233,31 @@ msgid "Color:|#C"
 msgstr "Kleur:|#K"
 
 #: ../src/frontends/xforms/forms/form_character.fd:206
-#, fuzzy
 msgid "Toggle on all these|#T"
-msgstr "T Altijd aan/uit|#T"
+msgstr "Allemaal aan/uitschakelen|#A"
 
 #: ../src/frontends/xforms/forms/form_character.fd:224
 #: ../src/frontends/xforms/forms/form_character.fd:278
 msgid "Language:"
 msgstr "Taal:"
 
+# Vrij vertaald om de functie beter uit te leggen.
 #: ../src/frontends/xforms/forms/form_character.fd:242
 msgid "These are never toggled"
-msgstr "Deze worden nooit aan/uit geschakeld"
+msgstr "Dit verandert niet bij inschakelen"
 
 #: ../src/frontends/xforms/forms/form_character.fd:260
 msgid "These are always toggled"
-msgstr "Deze worden altijd aan/uit geschakeld"
+msgstr "Dit verandert wel bij aan/uitzetten"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:44
-#, fuzzy
 msgid "Inset keys:|#I"
-msgstr "Invoegen"
+msgstr "Invoegsleutels:|#I"
 
+# Het label was te lang
 #: ../src/frontends/xforms/forms/form_citation.fd:62
 msgid "Bibliography keys:|#k"
-msgstr "Literatuurverwijzing-toetsen:|#t"
+msgstr "Literatuurverw.-sleutels:|#t"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:80
 msgid "Info:"
@@ -344,12 +354,12 @@ msgstr "Oriëntatie"
 # Staand
 #: ../src/frontends/xforms/forms/form_document.fd:356
 msgid "Portrait|#r"
-msgstr "Portret|#P"
+msgstr "Staand|#S"
 
 # Liggend
 #: ../src/frontends/xforms/forms/form_document.fd:374
 msgid "Landscape|#L"
-msgstr "Landschap|#L"
+msgstr "Liggend|#L"
 
 #: ../src/frontends/xforms/forms/form_document.fd:410
 #: src/frontends/qt2/QDocumentDialog.C:68
@@ -357,14 +367,15 @@ msgstr "Landschap|#L"
 msgid "Margins"
 msgstr "Marges"
 
+# Het gaat hier om de grootte van de marges
 #: ../src/frontends/xforms/forms/form_document.fd:428
 msgid "Custom sizes|#M"
-msgstr "Aangepaste papiergrootte|#A"
+msgstr "Aangepaste marges|#A"
 
 # Staand ipv portret?
 #: ../src/frontends/xforms/forms/form_document.fd:446
 msgid "Special (A4 portrait only):|#S"
-msgstr "Speciaal (Alleen A4 portret):|#S"
+msgstr "Speciaal (Alleen A4 staand):|#S"
 
 #: ../src/frontends/xforms/forms/form_document.fd:464
 msgid "Top:|#T"
@@ -383,30 +394,29 @@ msgid "Outer:|#u"
 msgstr "Buiten:|#u"
 
 #: ../src/frontends/xforms/forms/form_document.fd:608
-#, fuzzy
 msgid "Headheight:|#H"
-msgstr "i Paginakoppen:|#i"
+msgstr "Kophoogte:|#K"
 
 #: ../src/frontends/xforms/forms/form_document.fd:644
-#, fuzzy
 msgid "Headsep:|#d"
-msgstr "d Paginakopwit:|#d"
+msgstr "Kopafstand:|#a"
 
 #: ../src/frontends/xforms/forms/form_document.fd:680
-#, fuzzy
 msgid "Footskip:|#F"
-msgstr "f Voetnootwit:|#F"
+msgstr "Voetafstand:|#V"
 
+# Label titel; is het document een of twee-zijdig
 #: ../src/frontends/xforms/forms/form_document.fd:740
-#, fuzzy
 msgid "Sides"
-msgstr "-zijdig"
+msgstr "Afdrukken"
 
-# Afstand?
+# Dit moet eigenlijk gebugzilla'd worden.
+# Het is de labeltitel die info geeft wat er bij een nieuwe alinea
+# gebeurt: inspringen of scheiden (verschillende lengtes (skips))
 #: ../src/frontends/xforms/forms/form_document.fd:758
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:128
 msgid "Separation"
-msgstr "Scheiding"
+msgstr "Nieuwe alinea"
 
 #: ../src/frontends/xforms/forms/form_document.fd:776
 msgid "Columns"
@@ -431,7 +441,6 @@ msgid "Page style:|#P"
 msgstr "Paginastijl:|#P"
 
 #: ../src/frontends/xforms/forms/form_document.fd:866
-#, fuzzy
 msgid "Spacing:|#g"
 msgstr "Regelafstand|#g"
 
@@ -440,58 +449,58 @@ msgid "Extra Options:|#X"
 msgstr "Extra opties:|#X"
 
 #: ../src/frontends/xforms/forms/form_document.fd:920
-#, fuzzy
 msgid "Default Skip:|#u"
-msgstr "Standaard"
+msgstr "Standaard afstand:|#S"
 
 #: ../src/frontends/xforms/forms/form_document.fd:956
 msgid "One|#n"
-msgstr "Een|#n"
+msgstr "Eenzijdig|#n"
 
 #: ../src/frontends/xforms/forms/form_document.fd:974
 msgid "Two|#T"
-msgstr "Twee|#T"
+msgstr "Tweezijdig|#T"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1028
 msgid "One|#e"
-msgstr "Een|#E"
+msgstr "Eenkoloms|#E"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1046
 msgid "Two|#w"
-msgstr "Twee|#w"
+msgstr "Tweekoloms|#w"
 
+# De manier van het (onder)scheiden van alineas: inspringen of scheiden
 #: ../src/frontends/xforms/forms/form_document.fd:1100
 msgid "Indent|#I"
 msgstr "Inspringen|#I"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1118
-#, fuzzy
 msgid "Skip|#K"
-msgstr "k Vertikale afst.|#K"
+msgstr "Scheiden|#S"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1215
 #: ../src/frontends/qt2/ui/LanguageModuleBase.ui:41
-#, fuzzy
 msgid "Quote Style"
-msgstr "Type aanhalingstekens ingesteld"
+msgstr "Aanhalingstekens bij citaat"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1233
 #: ../src/frontends/xforms/forms/form_preferences.fd:326
 msgid "Encoding:|#E"
-msgstr "Codering:|#C"
+msgstr "Tekenset:|#S"
 
+# Vorm is hier beter, het gaat om de citaatvorm (vorm van aanhalen)
 #: ../src/frontends/xforms/forms/form_document.fd:1251
 #: ../src/frontends/xforms/forms/form_toc.fd:80
 msgid "Type:|#T"
-msgstr "Type:|#T"
+msgstr "Stijl:|#V"
 
+# Enkele aanhalingstekens of dubbele
 #: ../src/frontends/xforms/forms/form_document.fd:1287
 msgid "Single|#S"
-msgstr "Enkel|#E"
+msgstr "Enkele|#E"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1305
 msgid "Double|#D"
-msgstr "Dubbel|#D"
+msgstr "Dubbele|#D"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1341
 msgid "Language:|#L"
@@ -499,40 +508,33 @@ msgstr "Taal:|#T"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1383
 msgid "Float Placement:|#L"
-msgstr "Plaatsing zwevers:|#l"
+msgstr "Plaatsing zwevers:|#z"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1401
-#, fuzzy
 msgid "Section number depth:"
-msgstr "Nummeringsdiepte Sekties."
+msgstr "Nummeringsdiepte sekties:"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1423
-#, fuzzy
 msgid "Table of contents depth:"
-msgstr "Inhoudsopgave"
+msgstr "Diepte inhoudsopgave:"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1445
-#, fuzzy
 msgid "PS Driver:|#S"
-msgstr "Serie:|#s"
+msgstr "PS-stuurprogramma:|#P"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1463
-#, fuzzy
 msgid "Use AMS Math|#M"
-msgstr "m Gebr. AMS Math|#m"
+msgstr "AMS Math gebruiken|#M"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1481
-#, fuzzy
 msgid "Use Natbib|#N"
-msgstr "u Gebruik Include|#"
+msgstr "Natbib gebruiken|#N"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1499
-#, fuzzy
 msgid "Citation style:|#i"
-msgstr "Aanhaling"
+msgstr "Stijl van literatuurverwijzing:|#l"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1541
-#, fuzzy
 msgid "Bullet depth"
 msgstr "Lijstdiepte"
 
@@ -592,14 +594,12 @@ msgid "Open|#O"
 msgstr "Geopend|#O"
 
 #: ../src/frontends/xforms/forms/form_ert.fd:97
-#, fuzzy
 msgid "Collapsed|#C"
-msgstr "latex"
+msgstr "Ingeklapt|#k"
 
 #: ../src/frontends/xforms/forms/form_ert.fd:115
-#, fuzzy
 msgid "Inlined View|#I"
-msgstr "Invoegen"
+msgstr "Ingevoegde weergave|#I"
 
 #: ../src/frontends/xforms/forms/form_external.fd:43
 msgid "Template:|#t"
@@ -678,13 +678,12 @@ msgid "Here, if possible|#r"
 msgstr "Hier, indien mogelijk|#r"
 
 #: ../src/frontends/xforms/forms/form_float.fd:206
-#, fuzzy
 msgid "Span columns|#S"
-msgstr "Speciale cel"
+msgstr "Kolommmen omvatten|#K"
 
 #: ../src/frontends/xforms/forms/form_float.fd:224
 msgid "Ignore internal LaTeX rules|#I"
-msgstr ""
+msgstr "Interne LaTeX-regels negeren|#I"
 
 #: ../src/frontends/xforms/forms/form_float.fd:260
 msgid "Alternatives|#l"
@@ -692,7 +691,7 @@ msgstr "Alternatieven|#l"
 
 #: ../src/frontends/xforms/forms/form_float.fd:278
 msgid "Here, definitely!|#H"
-msgstr "Hier, zonder twijfel!#H"
+msgstr "Hier, zonder enige twijfel!#H"
 
 #: ../src/frontends/xforms/forms/form_float.fd:296
 msgid "Document default|#D"
@@ -735,29 +734,28 @@ msgstr "Niet uitpakken|#u"
 msgid "Scale:|#S"
 msgstr "Schalen:|#S"
 
+# Bewaren
 #: ../src/frontends/xforms/forms/form_graphics.fd:338
 msgid "Maintain aspect ratio|#M"
-msgstr ""
+msgstr "Verhoudingen respecteren|#V"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:374
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:251
 msgid "%"
 msgstr "%"
 
+# het gaat om de weergave van afbeeldingen (grijstinten/kleur/etc)
 #: ../src/frontends/xforms/forms/form_graphics.fd:392
-#, fuzzy
 msgid "Display:|#D"
-msgstr "[niet getoond]"
+msgstr "Weergave|:#W"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:434
-#, fuzzy
 msgid "Right top:|#R"
-msgstr "Rechts|#R"
+msgstr "Rechtsboven:|R"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:470
-#, fuzzy
 msgid "Left bottom:|#L"
-msgstr "Links|#f"
+msgstr "Linksonder:|L"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:506
 msgid "X"
@@ -775,20 +773,20 @@ msgstr "Eenheid|#E"
 msgid "Clip to bounding box|#C"
 msgstr ""
 
+# Het gaat om het bepalen van de waarden van de bounding box
 #: ../src/frontends/xforms/forms/form_graphics.fd:578
-#, fuzzy
 msgid "Get from file|#G"
-msgstr "[geen bestand]"
+msgstr "Uit bestand bepalen|#U"
 
+# Draaien
 #: ../src/frontends/xforms/forms/form_graphics.fd:620
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:481
 msgid "Rotation"
 msgstr "Roteren"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:638
-#, fuzzy
 msgid "LaTeX options:|#L"
-msgstr "Extra opties"
+msgstr "LaTeX opties:|#L"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:656
 msgid "deg"
@@ -799,9 +797,8 @@ msgid "Origin:|#O"
 msgstr "Oorsprong:|#O"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:692
-#, fuzzy
 msgid "Subfigure:|#S"
-msgstr "q Subfiguur|#q"
+msgstr "Subfiguur:|#s"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:710
 msgid "Angle:|#A"
@@ -946,13 +943,12 @@ msgid "Thick|#H"
 msgstr "Dik|#D"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:134
-#, fuzzy
 msgid "2Quadratin|#2"
-msgstr "Scheiding"
+msgstr "2Quadratin|#2"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:188
 msgid "Quadratin|#Q"
-msgstr ""
+msgstr "Quadratin|#Q"
 
 #: ../src/frontends/xforms/forms/form_maths_space.fd:206
 msgid "Thin|#I"
@@ -1014,14 +1010,12 @@ msgid "Above"
 msgstr "Boven"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:116
-#, fuzzy
 msgid "Line|#i"
-msgstr "Regels"
+msgstr "Regel|#R"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:134
-#, fuzzy
 msgid "Line|#n"
-msgstr "Regels"
+msgstr "Regel|#g"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:152
 #, fuzzy
@@ -1169,9 +1163,8 @@ msgid "Zoom %:|#Z"
 msgstr "Zoomen %:|#Z"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:385
-#, fuzzy
 msgid "Screen DPI:|#D"
-msgstr "Schermopties"
+msgstr "Scherm DPI:|#D"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:407
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:532
@@ -1240,23 +1233,20 @@ msgid "Bold Font:|#B"
 msgstr "Vet lettertype:|#V"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:683
-#, fuzzy
 msgid "Popup Encoding:|#P"
-msgstr "d Codering:|#D"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:701
 msgid "Layout & Bindings"
 msgstr "Opmaak & bindingen"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:719
-#, fuzzy
 msgid "User Interface file:|#U"
-msgstr "u Gebruik alternatieve taal|#U"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:755
-#, fuzzy
 msgid "Bind file:|#f"
-msgstr "EPS-bestand|#E"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:773
 #: ../src/frontends/xforms/forms/form_preferences.fd:1643
@@ -1317,22 +1307,21 @@ msgid "Auto region delete|#A"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1116
-#, fuzzy
 msgid "Cursor follows scrollbar|#C"
-msgstr "Cursor volgt wel/niet de rolbalk"
+msgstr "Cursor volgt schuifbalk|#C"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1135
 msgid "Dialogs iconify with main window|#D"
 msgstr ""
 
+# verspringing
 #: ../src/frontends/xforms/forms/form_preferences.fd:1154
 msgid "Wheel mouse jump:"
-msgstr ""
+msgstr "Wielmuis verspringen:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1176
-#, fuzzy
 msgid "Autosave interval:"
-msgstr "Auto-opslaan mislukte!"
+msgstr "Interval voor automatisch opslaan:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1198
 msgid "Instant Preview|#P"
@@ -1344,24 +1333,21 @@ msgid "Graphics display:|#G"
 msgstr "Plaatjes"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1259
-#, fuzzy
 msgid "Spell command:|#S"
-msgstr "Opdracht beschrijven"
+msgstr "Spellingsopdracht:|#S"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1277
-#, fuzzy
 msgid "Alternative language:|#a"
-msgstr "u Gebruik alternatieve taal|#U"
+msgstr "Alternatieve taal:|#A"
 
+# Kan dit?
 #: ../src/frontends/xforms/forms/form_preferences.fd:1313
-#, fuzzy
 msgid "Escape characters:|#e"
-msgstr "speciaal teken"
+msgstr "Ontsnappingstekens:#O"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1349
-#, fuzzy
 msgid "Personal dictionary:|#d"
-msgstr "i Aan eigen woordenlijst toevoegen|#I"
+msgstr "Eigen woordenlijst:|#w"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1403
 msgid "Accept compound words|#w"
@@ -1415,7 +1401,7 @@ msgstr "Bladeren...|#B"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1661
 msgid "RtL support|#R"
-msgstr ""
+msgstr "RtL-ondersteuning|#R"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1679
 msgid "Auto begin|#b"
@@ -1435,9 +1421,8 @@ msgid "Auto finish|#f"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1751
-#, fuzzy
 msgid "Global|#G"
-msgstr "Floatflt|#f"
+msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1769
 #, fuzzy
@@ -1450,35 +1435,31 @@ msgid "Command end:|#e"
 msgstr "Opdracht:|#C"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1883
-#, fuzzy
 msgid "All formats:|#l"
-msgstr "drijvende delen"
+msgstr "Alle formaten:|#l"
 
+# Grootte?
 #: ../src/frontends/xforms/forms/form_preferences.fd:1901
 #: ../src/frontends/xforms/forms/form_ref.fd:225
-#, fuzzy
 msgid "Format:|#F"
-msgstr "drijvende delen"
+msgstr "Formaat:|#F"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1919
-#, fuzzy
 msgid "GUI name:|#G"
-msgstr "Naam"
+msgstr "GUI-Naam:|#G"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1937
-#, fuzzy
 msgid "Shortcut:|#S"
-msgstr "Helaas."
+msgstr "Sneltoets:|#S"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1955
-#, fuzzy
 msgid "Extension:|#E"
-msgstr "Extra opties"
+msgstr "Extensie:|#E"
 
+# Weergever, Bekijker
 #: ../src/frontends/xforms/forms/form_preferences.fd:1973
-#, fuzzy
 msgid "Viewer:|#V"
-msgstr "Bekijken DVI"
+msgstr "Viewer:|#V"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:1991
 #: ../src/frontends/xforms/forms/form_preferences.fd:2141
@@ -1509,14 +1490,12 @@ msgid "Converter:|#C"
 msgstr "n Centreren|#n"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2123
-#, fuzzy
 msgid "Extra flags:|#E"
-msgstr "EPS-bestand|#E"
+msgstr "Extra opties:|#E"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2201
-#, fuzzy
 msgid "Default path:|#p"
-msgstr "Standaard"
+msgstr "Standaard locatie:|#l"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2219
 #: ../src/frontends/xforms/forms/form_preferences.fd:2255
@@ -1532,14 +1511,14 @@ msgstr "Standaard"
 msgid "Browse..."
 msgstr "Bladeren..."
 
+# Pad kan ook maar is onduidelijker
 #: ../src/frontends/xforms/forms/form_preferences.fd:2237
-#, fuzzy
 msgid "Template path:|#T"
-msgstr "Sjablonen"
+msgstr "Sjabloon-locatie:|#j"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2273
 msgid "Temp dir:|#d"
-msgstr ""
+msgstr "Tijdelijke map:|#m"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2328
 #, fuzzy
@@ -1547,23 +1526,21 @@ msgid "Check last files:|#C"
 msgstr "Kies sjabloon"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2383
-#, fuzzy
 msgid "Last file count:|#L"
-msgstr "Lijst van Tabellen"
+msgstr "Aantal recente bestanden:|#r"
 
+# Pad kan ook maar is onduidelijker
 #: ../src/frontends/xforms/forms/form_preferences.fd:2405
 msgid "Backup path:|#B"
-msgstr ""
+msgstr "Backup-locatie|:#B"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2460
-#, fuzzy
 msgid "LyXServer pipe:|#S"
-msgstr "Serie:|#s"
+msgstr "LyX-serverpijp:|#s"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2520
-#, fuzzy
 msgid "Date format:|#f"
-msgstr "u Bijwerken|#U"
+msgstr "Datumformaat|#d"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2562
 msgid "Name:"
@@ -1571,7 +1548,7 @@ msgstr "Naam:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2580
 msgid "Adapt output"
-msgstr ""
+msgstr "Uitvoer aanpassen"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2598
 msgid "Printer Command and Flags"
@@ -1598,19 +1575,16 @@ msgid "To printer:"
 msgstr "Naar printer:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2706
-#, fuzzy
 msgid "File extension:"
-msgstr "Extra opties"
+msgstr "Bestandsextentie:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2724
-#, fuzzy
 msgid "Spool command:"
-msgstr "Opdracht beschrijven"
+msgstr "Spool-opdracht:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2742
-#, fuzzy
 msgid "Paper type:"
-msgstr "Papier:|#P"
+msgstr "Papiertype:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2760
 msgid "Even pages:"
@@ -1620,15 +1594,15 @@ msgstr "Even pagina's:"
 msgid "Odd pages:"
 msgstr "Oneven pagina's:"
 
+# is dit goed?
 #: ../src/frontends/xforms/forms/form_preferences.fd:2796
-#, fuzzy
 msgid "Collated:"
-msgstr "latex"
+msgstr "Ingevoegd:"
 
-# Liggend
+# Landschap
 #: ../src/frontends/xforms/forms/form_preferences.fd:2814
 msgid "Landscape:"
-msgstr "Landschap:"
+msgstr "Liggend:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2832
 msgid "To file:"
@@ -1639,9 +1613,8 @@ msgid "Extra options:"
 msgstr "Extra opties:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2868
-#, fuzzy
 msgid "Spool printer prefix:"
-msgstr "Kan niet printen"
+msgstr "Spool printer prefix:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2886
 msgid "Paper size:"
@@ -1649,12 +1622,11 @@ msgstr "Papierformaat:"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2964
 msgid "ASCII line length:|#A"
-msgstr ""
+msgstr "ASCII lijn lengte:|#A"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2986
-#, fuzzy
 msgid "TeX encoding:|#T"
-msgstr "d Codering:|#D"
+msgstr "TeX-codering:|#T"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3004
 msgid "Default paper size:|#p"
@@ -1666,17 +1638,15 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3040
 msgid "ASCII roff:|#r"
-msgstr ""
+msgstr "ASCII roff:|#r"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3058
-#, fuzzy
 msgid "Checktex:|#c"
-msgstr "n Centreren|#n"
+msgstr "Checktex:|#c"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3076
-#, fuzzy
 msgid "DVI paper option:|#D"
-msgstr "Extra opties"
+msgstr "DVI papier-optie:|#D"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3094
 msgid "Autoreset Class Options on change|#u"
@@ -1720,23 +1690,22 @@ msgstr "Volgende zoeken"
 msgid "Replace|#R"
 msgstr "Vervangen|#V"
 
+# Woord overeenkomst 
 #: ../src/frontends/xforms/forms/form_search.fd:152
 msgid "Match word|#M"
-msgstr ""
+msgstr "Hele woorden|#W"
 
 #: ../src/frontends/xforms/forms/form_search.fd:170
-#, fuzzy
 msgid "Replace all|#a"
-msgstr "Alles Vervangen|#A#a"
+msgstr "Alles vervangen|#A"
 
 #: ../src/frontends/xforms/forms/form_search.fd:188
 msgid "Search backwards|#S"
 msgstr "Achterwaards zoeken|#A"
 
 #: ../src/frontends/xforms/forms/form_sendto.fd:43
-#, fuzzy
 msgid "Export format:|#E"
-msgstr "u Bijwerken|#U"
+msgstr "Exportformaat:|#E"
 
 #: ../src/frontends/xforms/forms/form_sendto.fd:61
 msgid "Command:|#C"
@@ -1753,83 +1722,72 @@ msgstr "Onbekend:"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:98
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:195
-#, fuzzy
 msgid "Replacement:"
-msgstr "l Placering zwevers:|#L"
+msgstr "Vervanging:"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:116
 msgid "Suggestions:|#g"
 msgstr "Suggesties:|#g"
 
+# Starten
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:134
 #: src/frontends/xforms/FormSpellchecker.C:140
-#, fuzzy
 msgid "Start|#S"
-msgstr "s Opslaan"
+msgstr "Beginnen|#B"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:152
-#, fuzzy
 msgid "Add|#d"
 msgstr "Toevoegen|#t"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:170
-#, fuzzy
 msgid "Ignore|#I"
-msgstr "Negeren"
+msgstr "Negeren|#N"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:188
-#, fuzzy
 msgid "Accept|#A"
-msgstr "accent"
+msgstr "Accepteren|#A"
 
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:242
 msgid "0 %"
 msgstr "0 %"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:158
-#, fuzzy
 msgid "Append Column|#A"
-msgstr "a Kolom toevoegen|#A"
+msgstr "Kolom toevoegen|#K"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:176
-#, fuzzy
 msgid "Delete Column|#O"
-msgstr "o Kolom verwijderen|#O"
+msgstr "Kolom verwijderen|#v"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:194
-#, fuzzy
 msgid "Append Row|#p"
-msgstr "p Rij toevoegen|#p"
+msgstr "Rij toevoegen|#R"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:212
-#, fuzzy
 msgid "Delete Row|#w"
-msgstr "w Rij verwijderen|#w"
+msgstr "Rij verwijderen|#w"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:230
-#, fuzzy
 msgid "Set Borders|#S"
-msgstr "Randen aan|#S"
+msgstr "Met randen aan|#r"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:248
-#, fuzzy
 msgid "Unset Borders|#U"
-msgstr "Randen aan|#S"
+msgstr "Zonder randen aan|#Z"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:266
-#, fuzzy
 msgid "Longtable|#L"
-msgstr "Lange tabel"
+msgstr "Lange tabel|#L"
 
+# Draaien
 #: ../src/frontends/xforms/forms/form_tabular.fd:284
 #: ../src/frontends/xforms/forms/form_tabular.fd:1200
 msgid "Rotate 90°|#9"
-msgstr "Roteren 90° roteren|#9"
+msgstr "90° roteren|#9"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:302
-#, fuzzy
 msgid "Spec. Table"
-msgstr "Wit"
+msgstr "Spec. tabel"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:344
 #: ../src/frontends/xforms/forms/form_tabular.fd:820
@@ -1857,9 +1815,8 @@ msgstr " |#W"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:434
 #: ../src/frontends/xforms/forms/form_tabular.fd:874
-#, fuzzy
 msgid "Top|#t"
-msgstr "t Boven|#T"
+msgstr "Boven|#B"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:488
 #: ../src/frontends/xforms/forms/form_tabular.fd:928
@@ -1877,35 +1834,32 @@ msgstr "Links|#L"
 msgid "Right|#i"
 msgstr "Rechts|#e"
 
+# Midden
 #: ../src/frontends/xforms/forms/form_tabular.fd:561
 #: ../src/frontends/xforms/forms/form_tabular.fd:1001
-#, fuzzy
 msgid "Center|#c"
-msgstr "n Centreren|#n"
+msgstr "Centreren|#n"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:615
 #: ../src/frontends/xforms/forms/form_tabular.fd:1055
-#, fuzzy
 msgid "Top|#p"
-msgstr "t Boven|#T"
+msgstr "Boven|#o"
 
+# Midden
 #: ../src/frontends/xforms/forms/form_tabular.fd:634
 #: ../src/frontends/xforms/forms/form_tabular.fd:1074
-#, fuzzy
 msgid "Center|#n"
-msgstr "n Centreren|#n"
+msgstr "Centreren|#n"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:652
 #: ../src/frontends/xforms/forms/form_tabular.fd:1092
-#, fuzzy
 msgid "Bottom|#o"
-msgstr "b Onder|#B"
+msgstr "Onder|#O"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:688
 #: ../src/frontends/xforms/forms/form_tabular.fd:1146
-#, fuzzy
 msgid "LaTeX Argument:|#A"
-msgstr "Uitlijning"
+msgstr "LaTeX argument:|#a"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:706
 #: ../src/frontends/xforms/forms/form_tabular.fd:1218
@@ -1914,9 +1868,8 @@ msgstr " |#L"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:724
 #: ../src/frontends/xforms/forms/form_tabular.fd:1236
-#, fuzzy
 msgid "V. Alignment"
-msgstr "Uitlijning"
+msgstr "V. uitlijning"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:742
 msgid "Block|#k"
@@ -1927,19 +1880,16 @@ msgid "Special Cell"
 msgstr "Speciale cel"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:802
-#, fuzzy
 msgid "Special Multicolumn"
-msgstr "Meerkolom|#M"
+msgstr "Meerkolom speciaal"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:1164
-#, fuzzy
 msgid "Multicolumn|#M"
 msgstr "Meerkolom|#M"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:1182
-#, fuzzy
 msgid "Use Minipage|#s"
-msgstr "Minipagina|#m"
+msgstr "Minipagina gebruiken|#p"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:1368
 #: ../src/frontends/xforms/forms/form_tabular.fd:1386
@@ -1949,9 +1899,8 @@ msgid "On"
 msgstr "Aan"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:1440
-#, fuzzy
 msgid "Page break on the current row|#B"
-msgstr "Kan niet printen"
+msgstr "Nieuwe pagina op de huidige rij|#p"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:1458
 #: ../src/frontends/xforms/forms/form_tabular.fd:1476
@@ -2002,31 +1951,29 @@ msgstr "Inhoud"
 
 #: ../src/frontends/xforms/forms/form_texinfo.fd:80
 msgid "Show Path|#P"
-msgstr ""
+msgstr "Pad tonen|#P"
 
 #: ../src/frontends/xforms/forms/form_texinfo.fd:134
 msgid "Run TeXhash|#T"
-msgstr ""
+msgstr "TeXhash uitvoeren|#T"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:44
-#, fuzzy
 msgid "Replace|^R"
-msgstr "Vervangen"
+msgstr "Vervangen|^V"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:80
 msgid "Keyword:"
-msgstr "Sleutelwoord:|#w"
+msgstr "Sleutelwoord:"
 
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:98
-#, fuzzy
 msgid "Selection:|#S"
-msgstr "selectie"
+msgstr "Selectie:|#S"
 
+# Thesausrus kan ook
 #: ../src/frontends/xforms/forms/form_thesaurus.fd:116
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:110
-#, fuzzy
 msgid "Thesaurus entries:"
-msgstr "Tabelformaat"
+msgstr "Lexicon-items:"
 
 #: ../src/frontends/xforms/forms/form_url.fd:44
 msgid "URL:|#U"
@@ -2034,17 +1981,15 @@ msgstr "URL:|#U"
 
 #: ../src/frontends/xforms/forms/form_url.fd:80
 msgid "HTML type|#H"
-msgstr ""
+msgstr "HTML-type|#H"
 
 #: ../src/frontends/xforms/forms/form_wrap.fd:152
-#, fuzzy
 msgid "Outer|#O"
-msgstr "Overig ("
+msgstr "Buiten|#B"
 
 #: ../src/frontends/xforms/forms/form_wrap.fd:170
-#, fuzzy
 msgid "Default|#D"
-msgstr "Standaard"
+msgstr "Standaard|#S"
 
 #: ../src/frontends/qt2/ui/BiblioModuleBase.ui:22
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:22
@@ -2060,30 +2005,27 @@ msgstr "Standaard"
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:22
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:22
-#, fuzzy
 msgid "Form1"
-msgstr "drijvende delen"
+msgstr "Form1"
 
 #: ../src/frontends/qt2/ui/BiblioModuleBase.ui:48
 msgid "Style"
 msgstr "Stijl"
 
 #: ../src/frontends/qt2/ui/BiblioModuleBase.ui:67
-#, fuzzy
 msgid "Use &NatBib"
-msgstr "u Gebruik Include|#"
+msgstr "&Natbib gebruiken"
 
+# Is dit hetzelfde als de xforms optie (daar vertaald met Vorm:)
 #: ../src/frontends/qt2/ui/BiblioModuleBase.ui:82
-#, fuzzy
 msgid "Cite &Style:"
-msgstr "Type aanhalingstekens ingesteld"
+msgstr "Citaat-&stijl:"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:38
 #: src/frontends/qt2/QDocumentDialog.C:70
 #: src/frontends/xforms/FormDocument.C:347
-#, fuzzy
 msgid "Bullets"
-msgstr "Lijstdiepte"
+msgstr "Lijsten"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:70
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:87
@@ -2091,19 +2033,17 @@ msgstr "Lijstdiepte"
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:121
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:251
 #: src/frontends/qt2/QDocument.C:126 src/frontends/qt2/QDocument.C:136
-#, fuzzy
 msgid "default"
-msgstr "Standaard"
+msgstr "standaard"
 
+# verbeteren?
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:203
-#, fuzzy
 msgid "Set &Bullet"
-msgstr "Lijstdiepte"
+msgstr "Opsommingsteken"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:239
-#, fuzzy
 msgid "&Size:"
-msgstr "z Grootte:|#Z"
+msgstr "&Grootte:"
 
 #: ../src/frontends/qt2/ui/BulletsModuleBase.ui:257
 #: src/frontends/controllers/character.C:125 src/lyxfont.C:57
@@ -2157,39 +2097,32 @@ msgstr "Gigantisch"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:22
 #: ../src/frontends/qt2/ui/NumberingModuleBase.ui:22
-#, fuzzy
 msgid "Form2"
-msgstr "drijvende delen"
+msgstr "Form2"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:41
-#, fuzzy
 msgid "Document &class:"
-msgstr "Document is als HTML weggeschreven naar bestand `"
+msgstr "Documentklasse:"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:77
-#, fuzzy
 msgid "Op&tions:"
-msgstr "Opties"
+msgstr "Op&ties:"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:106
-#, fuzzy
 msgid "Page &style:"
-msgstr "p Paginastijl:|#P"
+msgstr "&Paginastijl:"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:176
-#, fuzzy
 msgid "&Indent"
-msgstr "Inspringen"
+msgstr "&Inspringen"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:187
-#, fuzzy
 msgid "S&kip"
-msgstr "k Vertikale afst.|#K"
+msgstr "&Scheiden"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:215
-#, fuzzy
 msgid "Float &placement:"
-msgstr "l Placering zwevers:|#L"
+msgstr "Plaatsing &zwevers:"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:255
 #, fuzzy
@@ -2197,101 +2130,82 @@ msgid "&Font && size:"
 msgstr "o Lettergrootte:|#O"
 
 #: ../src/frontends/qt2/ui/ClassModuleBase.ui:270
-#, fuzzy
 msgid "&Line spacing:"
-msgstr "Wit"
+msgstr "&Regelafstand:"
 
 #: ../src/frontends/qt2/ui/LanguageModuleBase.ui:64
-#, fuzzy
 msgid "&Single"
-msgstr "Enkel"
+msgstr "&Enkele"
 
 #: ../src/frontends/qt2/ui/LanguageModuleBase.ui:75
-#, fuzzy
 msgid "&Double"
-msgstr "Dubbel"
+msgstr "&Dubbele"
 
 #: ../src/frontends/qt2/ui/LanguageModuleBase.ui:100
-#, fuzzy
 msgid "&Type:"
-msgstr "Type"
+msgstr "T&ype:"
 
 #: ../src/frontends/qt2/ui/LanguageModuleBase.ui:152
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:144
-#, fuzzy
 msgid "&Language:"
-msgstr "Taal"
+msgstr "&Taal:"
 
 #: ../src/frontends/qt2/ui/LanguageModuleBase.ui:167
-#, fuzzy
 msgid "&Encoding:"
-msgstr "d Codering:|#D"
+msgstr "Teken&set:"
 
 #: ../src/frontends/qt2/ui/MarginsModuleBase.ui:45
-#, fuzzy
 msgid "&Top:"
-msgstr "t Boven|#T"
+msgstr "&Boven:"
 
 #: ../src/frontends/qt2/ui/MarginsModuleBase.ui:64
-#, fuzzy
 msgid "&Bottom:"
-msgstr "b Onder|#B"
+msgstr "&Onder:"
 
 #: ../src/frontends/qt2/ui/MarginsModuleBase.ui:83
-#, fuzzy
 msgid "&Inner:"
-msgstr "Invoegen"
+msgstr "B&innen:"
 
 #: ../src/frontends/qt2/ui/MarginsModuleBase.ui:102
-#, fuzzy
 msgid "O&uter:"
-msgstr "t Andere...|#T"
+msgstr "B&uiten:"
 
 #: ../src/frontends/qt2/ui/MarginsModuleBase.ui:117
-#, fuzzy
 msgid "&Margins:"
-msgstr "Marges"
+msgstr "&Marges:"
 
 #: ../src/frontends/qt2/ui/MarginsModuleBase.ui:173
-#, fuzzy
 msgid "&Foot skip:"
-msgstr "f Voetnootwit:|#F"
+msgstr "&Voetafstand:"
 
 #: ../src/frontends/qt2/ui/MarginsModuleBase.ui:192
-#, fuzzy
 msgid "Head &sep:"
-msgstr "d Paginakopwit:|#d"
+msgstr "Kop&afstand:"
 
 #: ../src/frontends/qt2/ui/MarginsModuleBase.ui:233
-#, fuzzy
 msgid "Head &height:"
-msgstr "i Paginakoppen:|#i"
+msgstr "&Kophoogte:"
 
 #: ../src/frontends/qt2/ui/NumberingModuleBase.ui:45
-#, fuzzy
 msgid "Numbering Depth"
-msgstr "Nummeringsdiepte Sekties."
+msgstr "Nummeringsdiepte secties"
 
 #: ../src/frontends/qt2/ui/NumberingModuleBase.ui:64
-#, fuzzy
 msgid "&Section:"
-msgstr "selectie"
+msgstr "&Sectie:"
 
 #: ../src/frontends/qt2/ui/NumberingModuleBase.ui:79
-#, fuzzy
 msgid "&Table of contents:"
-msgstr "Inhoudsopgave"
+msgstr "&Inhoudsopgave:"
 
 #: ../src/frontends/qt2/ui/PackagesModuleBase.ui:41
 #: src/frontends/qt2/QDocumentDialog.C:73
-#, fuzzy
 msgid "Packages"
-msgstr "p % van blz.|#P"
+msgstr "Pakketten"
 
 #: ../src/frontends/qt2/ui/PackagesModuleBase.ui:60
-#, fuzzy
 msgid "Use AMS &math"
-msgstr "m Gebr. AMS Math|#m"
+msgstr "AMS Math gebruiken"
 
 #: ../src/frontends/qt2/ui/PackagesModuleBase.ui:73
 msgid "Options"
@@ -2299,50 +2213,44 @@ msgstr "Opties"
 
 #: ../src/frontends/qt2/ui/PackagesModuleBase.ui:92
 msgid "Postscript &driver:"
-msgstr ""
+msgstr "&Postscript stuurprogramma:"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:62
-#, fuzzy
 msgid "Two-&column document"
-msgstr "Document opslaan?"
+msgstr "Twee&koloms document"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:73
-#, fuzzy
 msgid "&Two-sided document"
-msgstr "Nieuw document"
+msgstr "&Tweezijdig document"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:84
-#, fuzzy
 msgid "Paper Size"
-msgstr "Papier:|#P"
+msgstr "Papierformaat"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:111
-#, fuzzy
 msgid "&Height:"
-msgstr "Hoogte"
+msgstr "&Hoogte:"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:130
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:75
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:365
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:75
-#, fuzzy
 msgid "&Width:"
-msgstr "Breedte"
+msgstr "&Breedte:"
 
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:145
-#, fuzzy
 msgid "Paper &size:"
-msgstr "Papier:|#P"
+msgstr "&Papierformaat:"
 
+# Staand
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:253
-#, fuzzy
 msgid "&Portrait"
-msgstr "o Portret|#o"
+msgstr "&Staand"
 
+# Liggend
 #: ../src/frontends/qt2/ui/PaperModuleBase.ui:268
-#, fuzzy
 msgid "&Landscape"
-msgstr "Landschap|#L"
+msgstr "&Liggend"
 
 #: ../src/frontends/qt2/ui/QAboutDialogBase.ui:22
 #: src/frontends/qt2/QAbout.C:39 src/frontends/xforms/FormAboutlyx.C:33
@@ -2411,6 +2319,7 @@ msgstr "&Dummy"
 msgid "&Cancel"
 msgstr "&Annuleren"
 
+# Index
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:22
 #: src/frontends/qt2/QIndex.C:30 src/frontends/xforms/FormIndex.C:29
@@ -2419,9 +2328,8 @@ msgid "Index"
 msgstr "Trefwoord"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:60
-#, fuzzy
 msgid "&Key"
-msgstr "Sleutel:"
+msgstr "&Sleutel"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:68
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:86
@@ -2430,15 +2338,13 @@ msgid "The citation key"
 msgstr "Literatuurverwijzing invoegen"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
-#, fuzzy
 msgid "&Label"
-msgstr "tabel lijn"
+msgstr "&Label"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
-#, fuzzy
 msgid "The label as it appears in the document"
-msgstr "Wilt u het document openen?"
+msgstr "De label zoals het wordt weergegeven in het document."
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
@@ -2454,9 +2360,8 @@ msgstr "Wilt u het document openen?"
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:280
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:156
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:280
-#, fuzzy
 msgid "&OK"
-msgstr "OK"
+msgstr "&OK"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:22
 msgid "Bibtex"
@@ -2467,14 +2372,12 @@ msgid "Databa&ses"
 msgstr "Databa&ses"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:57
-#, fuzzy
 msgid "BibTeX database to use"
-msgstr "Database:"
+msgstr "Te gebruiken BibTeX-database"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:75
-#, fuzzy
 msgid "Available BibTeX databases"
-msgstr "Database:"
+msgstr "Beschikbare BibTeX-databases"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:86
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:246
@@ -2482,59 +2385,50 @@ msgid "&Add"
 msgstr "&Toevoegen"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:90
-#, fuzzy
 msgid "Add a BibTeX database file"
-msgstr "Database:"
+msgstr "Een BibTeX-database toevoegen"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:101
-#, fuzzy
 msgid "Add a BibTeX file manually"
-msgstr "Database:"
+msgstr "Handmatig een BibTeX-bestand toevoegen"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:112
 #: ../src/frontends/qt2/ui/QPrefKeyboardModule.ui:76
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:104
-#, fuzzy
 msgid "Bro&wse..."
-msgstr "Bladeren...|#B"
+msgstr "&Bladeren..."
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:120
-#, fuzzy
 msgid "Browse for a BibTeX database file"
-msgstr "Database:"
+msgstr "Bladeren naar een BibTeX-database bestand"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:131
-#, fuzzy
 msgid "&Delete"
-msgstr "d Verwijderen van|#D"
+msgstr "Verwij&deren van|#d"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:135
 msgid "Remove the selected database"
-msgstr ""
+msgstr "De geselecteerde database verwijderen"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:186
-#, fuzzy
 msgid "St&yle"
-msgstr "Stijl:  "
+msgstr "&Stijl"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:194
-#, fuzzy
 msgid "The BibTeX style"
-msgstr "TeX-stijl aan/uit"
+msgstr "De BibTeX-stijl"
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:205
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:294
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:119
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:90
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:461
-#, fuzzy
 msgid "&Browse..."
-msgstr "Bladeren...|#B"
+msgstr "&Bladeren..."
 
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:213
-#, fuzzy
 msgid "Choose a style file"
-msgstr "Kies sjabloon"
+msgstr "Kies een stijlbestand"
 
 #. /
 #: ../src/frontends/qt2/ui/QBibtexDialogBase.ui:279
@@ -2558,31 +2452,27 @@ msgstr "Inhoudsopgave bekijken"
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:22
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:73
 #: src/frontends/qt2/QCharacter.C:39
-#, fuzzy
 msgid "Character"
-msgstr "h Tekencodering:|#H"
+msgstr "Teken"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:95
-#, fuzzy
 msgid "&Family:"
-msgstr "Familie:|F"
+msgstr "&Familie:"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:103
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:114
-#, fuzzy
 msgid "Font family"
-msgstr "Familie:|F"
+msgstr "Lettertypefamilie"
 
+# idem als voor xforms versie, het gaat om de dikte van het lettertype
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:125
-#, fuzzy
 msgid "&Series:"
-msgstr "Serie:|#s"
+msgstr "&Dikte:"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:133
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:204
-#, fuzzy
 msgid "Font series"
-msgstr "o Lettergrootte:|#O"
+msgstr "Dikte van lettertype"
 
 #. language settings
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:152
@@ -2595,59 +2485,52 @@ msgstr "Taal"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:163
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:193
-#, fuzzy
 msgid "Font shape"
-msgstr "o Lettergrootte:|#O"
+msgstr "Vorm van lettertype"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:174
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:227
 msgid "Font color"
-msgstr "Letterkleur"
+msgstr "Kleur van Lettertype"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:185
-#, fuzzy
 msgid "S&hape:"
-msgstr "h Vorm:|#h"
+msgstr "&Vorm:"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:219
 msgid "&Color:"
 msgstr "&Kleur:"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:249
-#, fuzzy
 msgid "&Toggle all"
-msgstr "Vet aan/uit"
+msgstr "Allemaal aan/uitschakelen"
 
+# De UI is zo onhandig dat het altijd onduidelijk blijft
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:253
-#, fuzzy
 msgid "toggle font on all of the above"
-msgstr "T Altijd aan/uit|#T"
+msgstr "Alle bovenstaande opties gebruiken bij inschakelen"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:302
-#, fuzzy
 msgid "Never Toggled"
-msgstr "Worden nooit aan/uit geschakeld"
+msgstr "Dit verandert niet bij inschakelen"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:324
-#, fuzzy
 msgid "Si&ze:"
-msgstr "z Grootte:|#Z"
+msgstr "&Grootte:"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:332
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:343
-#, fuzzy
 msgid "Font size"
-msgstr "o Lettergrootte:|#O"
+msgstr "Lettergrootte"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:356
-#, fuzzy
 msgid "Always Toggled"
-msgstr "Deze worden altijd aan/uit geschakeld"
+msgstr "Dit verandert wel bij aan/uitzetten"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:363
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:397
 msgid "Other font settings"
-msgstr ""
+msgstr "Overige lettertype-instellingen"
 
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:382
 msgid "&Misc:"
@@ -2674,12 +2557,12 @@ msgstr "Elke aanpassing automatisch toepassen"
 #: ../src/frontends/qt2/ui/QSendtoDialogBase.ui:109
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:299
 msgid "&Apply"
-msgstr "Toepassen|#a"
+msgstr "&Toepassen"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:22
 #: src/frontends/qt2/QCitation.C:48 src/frontends/xforms/FormCitation.C:97
 msgid "Citation"
-msgstr "Aanhaling"
+msgstr "Literatuurverwijzing"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:60
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:67
@@ -2689,13 +2572,12 @@ msgstr "Aanhaling"
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:668
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:67
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:240
-#, fuzzy
 msgid "&Restore"
-msgstr "r Omgekeerde vlg.|#R"
+msgstr "&Herstellen"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:146
 msgid "Search the available citations"
-msgstr ""
+msgstr "De beschikbare literatuurverwijzingen doorzoeken"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:157
 msgid "Regular E&xpression"
@@ -2703,16 +2585,15 @@ msgstr "Reguliere E&xpressie"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:161
 msgid "Interpret search entry as a regular expression"
-msgstr ""
+msgstr "Zoekopdracht interpreteren als een reguliere expressie"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:172
-#, fuzzy
 msgid "&Case sensitive"
-msgstr "s Hoofdlettergevoelig|#s#S"
+msgstr "&Hoofdlettergevoelig"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:176
 msgid "Make the search case-sensitive"
-msgstr ""
+msgstr "Het zoeken hoofdlettergevoelig maken"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:187
 msgid "&Next"
@@ -2732,55 +2613,48 @@ msgid "New Item"
 msgstr "Nieuw item"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:226
-#, fuzzy
 msgid "Available citation keys"
-msgstr "Verwijzing invoegen"
+msgstr "Beschikbare literatuurverwijzing-sleutels"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:267
-#, fuzzy
 msgid "Add the selected citation"
-msgstr "Literatuurverwijzing invoegen"
+msgstr "De geselecteerde literatuurverwijzing invoegen"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:293
 msgid "Remove the selected citation"
-msgstr ""
+msgstr "De geselecteerde literatuurverwijzing verwijderen"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:319
-#, fuzzy
 msgid "Move the selected citation up"
-msgstr "Literatuurverwijzing invoegen"
+msgstr "De geselecteerde literatuurverwijzing naar boven verplaatsen"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:345
 msgid "Move the selected citation down"
-msgstr ""
+msgstr "De geselcteerde literatuurverwijzing naar beneden verplaatsen"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:358
 msgid "Available"
 msgstr "Beschikbaar"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:379
-#, fuzzy
 msgid "Citations currently selected"
-msgstr "Aanhaling"
+msgstr "Huidige geselecteerde literatuurverwijzingen"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:390
-#, fuzzy
 msgid "Selected"
-msgstr "s Uitkiezen|#S"
+msgstr "Geselecteerd"
 
-#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:422 src/lyxvc.C:135
+#: ../src/frontends/qt2/ui/QCitationDialogBase.ui:422 src/lyxvc.C:131
 msgid "Info"
 msgstr "Informatie"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:445
-#, fuzzy
 msgid "Citation entry"
-msgstr "Aanhaling"
+msgstr "Literatuurverwijzing"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:492
-#, fuzzy
 msgid "&Full author list"
-msgstr "Floatflt|#f"
+msgstr "Volledige auteurslijst"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:496
 msgid "List all authors"
@@ -2792,11 +2666,11 @@ msgstr "&Hoofdletters forceren"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:511
 msgid "Force upper case in citation"
-msgstr ""
+msgstr "Hoofdletters in literatuurverwijzing forceren"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:531
 msgid "Text to place after citation"
-msgstr ""
+msgstr "Tekst te plaatsen na literatuurverwijzing"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:542
 msgid "Text after:"
@@ -2810,16 +2684,15 @@ msgstr "Nog niet ondersteund"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:568
 msgid "Text to place before citation"
-msgstr ""
+msgstr "Tekst te plaatsen voor literatuurverwijzing"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:583
 msgid "Text before:"
 msgstr "Tekst voor:"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:601
-#, fuzzy
 msgid "Natbib citation style to use"
-msgstr "Aanhaling"
+msgstr "Te gebruiken Natbib-literatuurverwijzing"
 
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:612
 msgid "Citation style:"
@@ -2847,17 +2720,16 @@ msgid "&Insert"
 msgstr "&Invoegen"
 
 #: ../src/frontends/qt2/ui/QDelimiterDialogBase.ui:382
-#, fuzzy
 msgid "Insert the delimiters"
-msgstr "Laatste index item invoegen"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:178
 msgid "title here"
-msgstr "Hier de titel"
+msgstr "hier de titel"
 
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:274
 msgid "Use Class Defaults"
-msgstr ""
+msgstr "Klasse-standaard gebruiken"
 
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:278
 #, fuzzy
@@ -2865,50 +2737,46 @@ msgid "Reset default params of the current class"
 msgstr "de defaultwaarden voor deze documentklasse?"
 
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:296
-#, fuzzy
 msgid "Save as Document Defaults"
-msgstr "Papierformaat ingesteld"
+msgstr "Als documentstandaard opslaan"
 
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:300
 msgid "Save settings as LyX's default template"
-msgstr ""
+msgstr "Instellingen opslaan als LyX standaard-sjabloon"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:22
 #, fuzzy
 msgid "ERT inset display"
 msgstr "[niet getoond]"
 
+# Weergave van de afbeelding (grijstint/kleur/etc) ?
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:45
-#, fuzzy
 msgid "Display"
-msgstr "Plaatjes"
+msgstr "Weergave"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:64
 msgid "&Inline"
-msgstr ""
+msgstr "&Ingevoegd"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:68
 msgid "Show ERT inline"
-msgstr ""
+msgstr "ERT ingevoegd tonen"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:79
-#, fuzzy
 msgid "&Collapsed"
-msgstr "latex"
+msgstr "Inge&klapt"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:83
 msgid "Show ERT button only"
-msgstr ""
+msgstr "Alleen ERT-knop tonen"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:94
-#, fuzzy
 msgid "&Open"
-msgstr "Openen"
+msgstr "Ge&opend"
 
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:98
-#, fuzzy
 msgid "Show ERT contents"
-msgstr "Inhoudsopgave"
+msgstr "ERT-inhoud tonen"
 
 #: ../src/frontends/qt2/ui/QErrorDialogBase.ui:22
 #: src/frontends/qt2/QError.C:31 src/frontends/xforms/FormError.C:27
@@ -2917,52 +2785,44 @@ msgstr "LaTeX-fout"
 
 #: ../src/frontends/qt2/ui/QErrorDialogBase.ui:45
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:223
-#, fuzzy
 msgid "LaTeX error messages"
-msgstr "LaTeX-fout"
+msgstr "LaTeX-foutmeldingen"
 
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:22
-#, fuzzy
 msgid "External Material"
-msgstr "x Extra|#X"
+msgstr "Extern materiaal"
 
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:45
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:89
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:60
-#, fuzzy
 msgid "&File:"
-msgstr "f Bestand"
+msgstr "&Bestand:"
 
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:53
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:64
-#, fuzzy
 msgid "Filename"
-msgstr "f Bestandsnaam:|#F"
+msgstr "Bestandsnaam"
 
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:184
-#, fuzzy
 msgid "&View Result"
-msgstr "nieuw"
+msgstr "&Resultaat tonen"
 
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:188
-#, fuzzy
 msgid "View the file"
-msgstr "Lijst van tabellen invoegen"
+msgstr "Het bestand bekijken"
 
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:206
-#, fuzzy
 msgid "&Update Result"
-msgstr "u Bijwerken|#U"
+msgstr "Het resultaat bij&werken"
 
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:210
 msgid "Update the material"
-msgstr ""
+msgstr "Het materiaal bijwerken"
 
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:234
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:253
-#, fuzzy
 msgid "Available templates"
-msgstr "Verwijzing invoegen"
+msgstr "Beschikbare sjablonen"
 
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:245
 msgid "&Template:"
@@ -2982,126 +2842,113 @@ msgid "&Edit file"
 msgstr "Bestand be&werken"
 
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:309
-#, fuzzy
 msgid "Edit the file externally"
-msgstr "Index lijst invoegen"
+msgstr "Bestand extern bewerken"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:45
-#, fuzzy
 msgid "Use &default placement"
-msgstr "l Placering zwevers:|#L"
+msgstr "&Standaard plaatsing gebruiken"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:49
 msgid "Use LaTeX default settings"
-msgstr ""
+msgstr "Standaard LaTeX instellinge gebruiken"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:60
-#, fuzzy
 msgid "Advanced Placement Options"
-msgstr "Tekenstijl"
+msgstr "Geavanceerde plaatsingsopties"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:94
-#, fuzzy
 msgid "&Top of page"
-msgstr "g % van blz.|#g"
+msgstr "&Bovenkant van pagina"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:98
-#, fuzzy
 msgid "Prefer top of page"
-msgstr "g % van blz.|#g"
+msgstr "Voorkeur voor de bovenkant van de pagina"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:109
-#, fuzzy
 msgid "&Bottom of page"
-msgstr "onderkant"
+msgstr "&Onderkant van Pagina"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:113
-#, fuzzy
 msgid "Prefer bottom of page"
-msgstr "onderkant"
+msgstr "Voorkeur voor de onderkant van de pagina"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:124
-#, fuzzy
 msgid "&Page of floats"
-msgstr "Pagina's:"
+msgstr "&Pagina met zwevers"
 
+# Meervoudig, voor alle/de zwevers
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:128
 msgid "Separate page for multiple floats"
-msgstr ""
+msgstr "Afzonderlijke pagina voor meerdere zwevers"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:139
 msgid "&Here if possible"
-msgstr ""
+msgstr "&Hier indien mogelijk"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:143
 msgid "Place float at current position if possible"
-msgstr ""
+msgstr "De zwever indien mogelijk op de huidige positie plaatsen"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:154
 msgid "&Ignore LaTeX rules"
-msgstr ""
+msgstr "LaTeX-regels _negeren"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:158
 msgid "Ignore the internal LaTeX placement rules"
-msgstr ""
+msgstr "De interne LaTeX-regels voor plaatsing negeren"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:186
 msgid "Here definitely"
-msgstr ""
+msgstr "Hier, zonder enige twijfel"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:190
-#, fuzzy
 msgid "Place float at current position"
-msgstr "Vervangen door huidig document?"
+msgstr "Zwever op huidige positie plaaten"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:226
-#, fuzzy
 msgid "&Span columns"
-msgstr "Speciale cel"
+msgstr "Kolommen &omvatten"
 
 #: ../src/frontends/qt2/ui/QFloatDialogBase.ui:230
 msgid "Span columns in multi-column documents"
-msgstr ""
+msgstr "Kolommen omvatten bij multi-kolom documenten"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:55
-#, fuzzy
 msgid "&Graphics"
-msgstr "Plaatjes"
+msgstr "&Afbeeldingen"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:97
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:108
-#, fuzzy
 msgid "File name of image"
-msgstr "Kies document ter invoeging"
+msgstr "Bestandsnaam van afbeelding"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:123
-#, fuzzy
 msgid "Select an image file"
-msgstr "Volgende regel selecteren"
+msgstr "Selecteer een afbeelding"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:136
-#, fuzzy
 msgid "LyX Display"
-msgstr "[niet getoond]"
+msgstr "LyX-weergave"
 
+# Weergeven
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:155
 msgid "&Show in LyX"
-msgstr ""
+msgstr "In LyX tonen"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:159
 msgid "Display image in LyX"
-msgstr ""
+msgstr "Afbeelding in LyX weergeven"
 
+# Is dit goed?
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:170
-#, fuzzy
 msgid "Display:"
-msgstr "Plaatjes"
+msgstr "Weergave:"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:178
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:213
-#, fuzzy
 msgid "Screen display"
-msgstr "[niet getoond]"
+msgstr "Schermweergave"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:186
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:113
@@ -3114,15 +2961,14 @@ msgstr "Standaard"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:192
 #: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:53
-#, fuzzy
 msgid "Monochrome"
-msgstr "s Toon in zwartwit|#s"
+msgstr "Monochroom"
 
+# Zwart-wit beter?
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:198
 #: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:59
-#, fuzzy
 msgid "Grayscale"
-msgstr "i Toon in grijstinten|#i"
+msgstr "Grijstinten"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:204
 #: ../src/frontends/qt2/ui/QPrefDisplayModule.ui:65
@@ -3130,22 +2976,21 @@ msgid "Color"
 msgstr "Kleur"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:224
-#, fuzzy
 msgid "Scale:"
-msgstr "Kleiner"
+msgstr "Schaal:"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:232
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:273
 msgid "Percentage to scale by in LyX"
-msgstr ""
+msgstr "Schalingspercentage voor LyX"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:339
 msgid "Height of image in output"
-msgstr ""
+msgstr "Hoogte van afbeeling in uitvoer"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:368
 msgid "Units of height value"
-msgstr ""
+msgstr "Eenheid van hoogte"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:385
 msgid "&Height"
@@ -3153,38 +2998,38 @@ msgstr "&Hoogte"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:419
 msgid "Width of image in output"
-msgstr ""
+msgstr "Breedte van afbeelding in uitvoer"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:443
 msgid "&Width"
 msgstr "&Breedte"
 
+# Verhoudingen respecteren
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:464
 msgid "&Maintain aspect ratio"
-msgstr ""
+msgstr "&Verhouding intact laten"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:468
 msgid "Maintain aspect ratio with largest dimension"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:515
-#, fuzzy
 msgid "A&ngle:"
-msgstr "l Hoek:|#L"
+msgstr "&Hoek:"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:523
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:541
 msgid "Angle to rotate image by"
-msgstr ""
+msgstr "Hoek waaronder de afbeelding wordt gedraaid"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:552
 msgid "&Origin:"
-msgstr ""
+msgstr "&Oorsprong:"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:560
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:571
 msgid "The origin of the rotation"
-msgstr ""
+msgstr "De oorsprong van de rotatie"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:588
 #, fuzzy
@@ -3209,78 +3054,70 @@ msgid "Get bounding box from the (EPS) file"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:709
-#, fuzzy
 msgid "Right &top:"
-msgstr "Rechts|#R"
+msgstr "Rechts&boven:"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:724
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:781
 msgid "y"
-msgstr ""
+msgstr "y"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:749
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:799
-#, fuzzy
 msgid "x"
-msgstr "latex"
+msgstr "x"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:828
-#, fuzzy
 msgid "&Left bottom:"
-msgstr "Links|#f"
+msgstr "&Linksonder:"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:868
-#, fuzzy
 msgid "E&xtra options"
-msgstr "Extra opties"
+msgstr "E&xtra opties"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:887
-#, fuzzy
 msgid "Su&bfigure"
-msgstr "q Subfiguur|#q"
+msgstr "S&ubfiguur"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:891
 msgid "Is this just one part of a figure float ?"
-msgstr ""
+msgstr "Is dit slechts een deel van een zwevend figuur ?"
 
+# decomprimeren?
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:902
 msgid "Don't un&zip on export"
-msgstr ""
+msgstr "Niet &uitpakken bij export"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:906
 msgid "Don't uncompress image before exporting to LaTeX"
-msgstr ""
+msgstr "Afbeelding niet uitpakken voor de export naar LaTeX"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:917
-#, fuzzy
 msgid "LaTeX &options:"
-msgstr "Extra opties"
+msgstr "LaTeX &opties:"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:925
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:936
-#, fuzzy
 msgid "Additional LaTeX options"
-msgstr "Extra opties"
+msgstr "Extra LaTeX-opties"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:947
-#, fuzzy
 msgid "&Draft mode"
-msgstr "Wiskundemodus"
+msgstr "&Kladmodus"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:951
-#, fuzzy
 msgid "Draft mode"
-msgstr "Wiskundemodus"
+msgstr "Kladmodus"
 
+# was eerst bijschrift
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1025
-#, fuzzy
 msgid "Ca&ption:"
-msgstr "k Bijschrift|#k"
+msgstr "O&nderschrift:"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1033
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1048
 msgid "The caption for the sub-figure"
-msgstr ""
+msgstr "Het onderschrift voor het subfiguur"
 
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:1190
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:261
@@ -3292,103 +3129,91 @@ msgid "Close"
 msgstr "Sluiten"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:22
-#, fuzzy
 msgid "Include File"
-msgstr "Include"
+msgstr "Bestand invoegen"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:79
-#, fuzzy
 msgid "File name to include"
-msgstr "Kies document ter invoeging"
+msgstr "Bestandsnaam voor invoeging"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:94
-#, fuzzy
 msgid "Select a file"
-msgstr "Volgende regel selecteren"
+msgstr "Selecteer een bestand"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:122
 #, fuzzy
 msgid "&Include Type:"
-msgstr "Include"
+msgstr "&Invoegtype:"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:134
 #: src/insets/insetinclude.C:225
 msgid "Input"
-msgstr "Input"
+msgstr "Invoer"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:140
 #: src/frontends/qt2/QInclude.C:35 src/insets/insetinclude.C:228
 msgid "Include"
-msgstr "Include"
+msgstr "Invoegen"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:146
 #: ../lib/layouts/linuxdoc.layout:251 ../lib/layouts/manpage.layout:128
-#, fuzzy
 msgid "Verbatim"
-msgstr "Letterlijk|#V"
+msgstr "Letterlijk"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:183
-#, fuzzy
 msgid "&Load"
-msgstr "l Openen|#L"
+msgstr "&Laden"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:187
-#, fuzzy
 msgid "Load the file"
-msgstr "Lijst van Tabellen"
+msgstr "Het bestand laden"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:237
 msgid "&Mark spaces in output"
-msgstr ""
+msgstr "Spaties in uitvoer &markeren"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:241
 msgid "Underline spaces in generated output"
-msgstr ""
+msgstr "Spaties in gegenereerde uitvoer onderstrepen"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:259
-#, fuzzy
 msgid "&Show preview"
-msgstr "f Bestand"
+msgstr "&Voorbeeld tonen"
 
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:263
-#, fuzzy
 msgid "Show LaTeX preview"
-msgstr "LaTeX preamble"
+msgstr "LaTeX voorbeeld tonen"
 
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:60
-#, fuzzy
 msgid "&Keyword"
-msgstr "k Sleutel:|#K"
+msgstr "&Sleutelwoord"
 
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:68
 #: ../src/frontends/qt2/ui/QIndexDialogBase.ui:79
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:68
-#, fuzzy
 msgid "Index entry"
-msgstr "Inspringen"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QLogDialogBase.ui:22 src/frontends/qt2/QLog.C:37
 msgid "Log"
-msgstr ""
+msgstr "Logboek"
 
 #: ../src/frontends/qt2/ui/QLogDialogBase.ui:88
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:67
 #: ../src/frontends/qt2/ui/QTocDialogBase.ui:171
 #: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:88
-#, fuzzy
 msgid "&Update"
-msgstr "u Bijwerken|#U"
+msgstr "Bij&werken"
 
 #: ../src/frontends/qt2/ui/QLogDialogBase.ui:96
 #: ../src/frontends/qt2/ui/QVCLogDialogBase.ui:96
 #, fuzzy
 msgid "Update the display"
-msgstr "Tonen"
+msgstr "De weergave verversen"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:22
-#, fuzzy
 msgid "LyX: Math Panel"
-msgstr "Wiskundepaneel"
+msgstr "LyX: Wiskundepaneel"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:98
 #, fuzzy
@@ -3398,7 +3223,7 @@ msgstr "Aanhalingsteken invoegen"
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:117
 #, fuzzy
 msgid "Insert spacing"
-msgstr "Wit"
+msgstr "Spatiering invoegen"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:136
 msgid "Set limits style"
@@ -3420,28 +3245,26 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:258
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:22
-#, fuzzy
 msgid "Insert matrix"
-msgstr "Bijlage invoegen"
+msgstr "Matrix invoegen"
 
+# Subscript
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:277
-#, fuzzy
 msgid "Subscript"
-msgstr "Postscript|#P"
+msgstr "Onderschrift"
 
+# Superscript
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:296
-#, fuzzy
 msgid "Superscript"
-msgstr "Postscript|#P"
+msgstr "Bovenschrift"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:315
 msgid "Show delimiter and bracket dialog"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:381
-#, fuzzy
 msgid "&Functions"
-msgstr "Functies"
+msgstr "&Functies"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:410
 #, fuzzy
@@ -3449,23 +3272,20 @@ msgid "Select a function or operator to insert"
 msgstr "Kies document ter invoeging"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:462
-#, fuzzy
 msgid "Symbols"
-msgstr "Symbool"
+msgstr "Symbolen"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:493
-#, fuzzy
 msgid "Operators"
-msgstr "Esperanto"
+msgstr "Operanden"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:499
 msgid "Big operators"
-msgstr ""
+msgstr "Grote operanden"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:505
-#, fuzzy
 msgid "Relations"
-msgstr "Scheiding"
+msgstr "Relaties"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:517
 #: src/frontends/xforms/FormMathsPanel.C:137
@@ -3482,42 +3302,38 @@ msgid "Miscellaneous"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:541
-#, fuzzy
 msgid "AMS operators"
-msgstr "Scheiding"
+msgstr "AMS operanden"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:547
-#, fuzzy
 msgid "AMS relations"
-msgstr "Scheiding"
+msgstr "AMS relaties"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:553
-#, fuzzy
 msgid "AMS negated relations"
-msgstr "Scheiding"
+msgstr "AMS negaties"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:559
-#, fuzzy
 msgid "AMS arrows"
-msgstr "Bladeren|#B"
+msgstr "AMS pijlen"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:565
-#, fuzzy
 msgid "AMS Miscellaneous"
-msgstr "Div."
+msgstr "AMS overig"
 
+# Selecteren
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:581
-#, fuzzy
 msgid "Select a page of symbols"
-msgstr "Volgende regel selecteren"
+msgstr "Een pagina met symbolen kiezen"
 
+# Vrijmaken
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:655
 msgid "&Detach panel"
-msgstr ""
+msgstr "Paneel &losmaken"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:659
 msgid "Open this panel as a separate window"
-msgstr ""
+msgstr "Dit paneel als een afzonderlijk venster openen"
 
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:68
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:60
@@ -3546,7 +3362,7 @@ msgstr "Aantal kolommen"
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:203
 #: ../src/frontends/qt2/ui/QTabularCreateDialogBase.ui:231
 msgid "Resize this to the correct table dimensions"
-msgstr ""
+msgstr "Naar de juiste tabel-afmetingen schalen"
 
 #: ../src/frontends/qt2/ui/QMathMatrixDialogBase.ui:311
 #: ../src/frontends/qt2/ui/QMinipageDialogBase.ui:87
@@ -3624,10 +3440,11 @@ msgstr "&Eenheid:"
 msgid "&General"
 msgstr "&Algemeen"
 
+# Uitgevuld
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:71
 #, fuzzy
 msgid "Justified"
-msgstr "Aanhaling"
+msgstr "Uitgelijnd"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:77
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:115
@@ -4165,9 +3982,8 @@ msgid "Use printer name explicitely"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:159
-#, fuzzy
 msgid "Command Options"
-msgstr "commando-inzet"
+msgstr "Opdracht-opties"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:178
 #, fuzzy
@@ -4175,29 +3991,26 @@ msgid "Re&verse:"
 msgstr "r Omgekeerde vlg.|#R"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:207
-#, fuzzy
 msgid "To p&rinter:"
-msgstr "Kan niet printen"
+msgstr "Naar p&rinter:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:222
-#, fuzzy
 msgid "Paper si&ze:"
-msgstr "Papier:|#P"
+msgstr "Papier&formaat:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:251
-#, fuzzy
 msgid "To &file:"
-msgstr "[geen bestand]"
+msgstr "Naar &bestand:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:287
-#, fuzzy
 msgid "Spool &command:"
-msgstr "Opdracht beschrijven"
+msgstr "Spool &opdracht:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:316
 msgid "&Odd pages:"
-msgstr "&Oneven pagina'a:"
+msgstr "&Oneven pagina's:"
 
+# soort
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:338
 msgid "Paper t&ype:"
 msgstr "Papiert&ype:"
@@ -4208,7 +4021,7 @@ msgstr "E&xtra opties:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:375
 msgid "Spool pref&ix:"
-msgstr ""
+msgstr "Spool pref&ix:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:397
 #, fuzzy
@@ -4221,21 +4034,20 @@ msgstr "&Even pagina's:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:434
 msgid "File ex&tension:"
-msgstr ""
+msgstr "Bestandsex&tentie:"
 
-# Liggend
+# Landschap
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:456
 msgid "Lan&dscape:"
-msgstr "&Landschap:"
+msgstr "&Liggend:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:478
 msgid "Co&pies:"
 msgstr "Ko&piën:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:493
-#, fuzzy
 msgid "Pa&ge range:"
-msgstr "paginascheiding"
+msgstr "Pa&ginabereik:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:508
 msgid "Specify the command option names for your printer command"
@@ -4243,14 +4055,15 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:22
 #: src/frontends/xforms/FormPreferences.C:204
-#, fuzzy
 msgid "Screen Fonts"
-msgstr "Schermopties"
+msgstr "Schermlettertypen"
 
+# onvertaald laten?
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:110
 msgid "Sa&ns Serif:"
 msgstr "Zonder &schreef:"
 
+# Schrijfmachine
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:157
 msgid "T&ypewriter:"
 msgstr "T&ypemachine:"
@@ -4259,10 +4072,10 @@ msgstr "T&ypemachine:"
 msgid "&Roman:"
 msgstr "&Romeins:"
 
+# DPI
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:246
-#, fuzzy
 msgid "Screen &DPI:"
-msgstr "Schermopties"
+msgstr "Scherm&resolutie:"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:272
 msgid "&Zoom %:"
@@ -4273,35 +4086,31 @@ msgid "Font Sizes"
 msgstr "Lettergrootte"
 
 #: ../src/frontends/qt2/ui/QPrefScreenFontsModule.ui:457
-#, fuzzy
 msgid "Hugest:"
-msgstr "Enorm"
+msgstr "Gigantisch:"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:22
 #: src/frontends/xforms/FormPreferences.C:243
-#, fuzzy
 msgid "Spell checker"
 msgstr "Spellingscontrole"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:56
-#, fuzzy
 msgid "Spell chec&ker program:"
-msgstr "Spellingscontrole"
+msgstr "Spellings&controleprogramma:"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:106
-#, fuzzy
 msgid "Al&ternative language:"
-msgstr "u Gebruik alternatieve taal|#U"
+msgstr "&Alternatieve taal:"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:132
 #, fuzzy
 msgid "Escape cha&racters:"
 msgstr "speciaal teken"
 
+# Persoonlijke
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:175
-#, fuzzy
 msgid "Personal &dictionary:"
-msgstr "i Aan eigen woordenlijst toevoegen|#I"
+msgstr "Eigen &woordenlijst:"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:187
 msgid "ispell"
@@ -4313,7 +4122,7 @@ msgstr "aspell"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:232
 msgid "Accept compound &words"
-msgstr ""
+msgstr "&Samengestelde woorden accepteren"
 
 #: ../src/frontends/qt2/ui/QPrefSpellcheckerModule.ui:243
 #, fuzzy
@@ -4325,9 +4134,8 @@ msgid "UI"
 msgstr "UI"
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:56
-#, fuzzy
 msgid "B&rowse..."
-msgstr "Bladeren...|#B"
+msgstr "B&laderen..."
 
 #: ../src/frontends/qt2/ui/QPrefUIModule.ui:67
 #, fuzzy
@@ -4490,9 +4298,8 @@ msgid "Update the reference list"
 msgstr "Verwijzing invoegen"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:129
-#, fuzzy
 msgid "&Goto"
-msgstr "b Onder|#B"
+msgstr "&Ga naar"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:93
 #, fuzzy
@@ -4532,14 +4339,12 @@ msgid "Reference as it appears in output"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
-#, fuzzy
 msgid "&Reference:"
-msgstr "Verwijzing invoegen"
+msgstr "Ver&wijzing:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:198
-#, fuzzy
 msgid "&Format:"
-msgstr "drijvende delen"
+msgstr "&Formaat:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:224
 msgid "&Name:"
@@ -4635,9 +4440,8 @@ msgid "Suggestions:"
 msgstr "Suggesties:"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:64
-#, fuzzy
 msgid "Replace word with current choice"
-msgstr "Vervangen door huidig document?"
+msgstr "Woord vervangen door huidige keuze"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:75
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:187
@@ -4662,14 +4466,12 @@ msgid "&Accept"
 msgstr "&Accepteren"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:109
-#, fuzzy
 msgid "Accept word for this session"
-msgstr "a Woord aanvaarden in deze sessie|#A"
+msgstr "Woord aanvaarden in deze sessie"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:152
-#, fuzzy
 msgid "How far spellchecking has got"
-msgstr "Spellingscontrole starten|#S"
+msgstr "Hoe ver de spellingscontrole is gevorderd"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:163
 msgid "Suggestions"
@@ -4680,9 +4482,8 @@ msgid "Current word"
 msgstr "Huidige woord"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:263
-#, fuzzy
 msgid "Replace with selected word"
-msgstr "Vervangen door huidig document?"
+msgstr "Vervangen door geselecteerde woord"
 
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:274
 msgid "&Start..."
@@ -4702,9 +4503,8 @@ msgid "Table Settings"
 msgstr "Tabelinstellingen"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:63
-#, fuzzy
 msgid "&Table Settings"
-msgstr "streep minipagina"
+msgstr "&Tabel-instellingen"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:82
 #, fuzzy
@@ -4712,19 +4512,17 @@ msgid "&Horizontal alignment:"
 msgstr "Hor. uitlijnen|#H"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:97
-#, fuzzy
 msgid "&Multicolumn"
-msgstr "Meerkolom|#M"
+msgstr "&Multikolom"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:101
 msgid "Merge cells"
-msgstr ""
+msgstr "Cellen samenvoegen"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:109
 #: src/frontends/qt2/QTabular.C:184 src/frontends/xforms/FormParagraph.C:295
-#, fuzzy
 msgid "Block"
-msgstr "c Blok|#c"
+msgstr "Blok"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:136
 #, fuzzy
@@ -4736,19 +4534,16 @@ msgid "Column"
 msgstr "Kolom"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:195
-#, fuzzy
 msgid "Append column (right)"
-msgstr "a Kolom toevoegen|#A"
+msgstr "Kolom toevoegen (rechts)"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:206
-#, fuzzy
 msgid "De&lete"
-msgstr "d Verwijderen van|#D"
+msgstr "Ver&wijderen"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:214
-#, fuzzy
 msgid "Delete current column"
-msgstr "o Kolom verwijderen|#O"
+msgstr "Huidige kolom verwijderen"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:227
 msgid "Row"
@@ -4756,17 +4551,15 @@ msgstr "Rij"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:254
 msgid "Append row (below)"
-msgstr ""
+msgstr "Rij toevoegen (onder)"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:265
-#, fuzzy
 msgid "Dele&te"
-msgstr "d Verwijderen van|#D"
+msgstr "Verwij&deren"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:273
-#, fuzzy
 msgid "Delete this row"
-msgstr "w Rij verwijderen|#w"
+msgstr "Deze rij verwijderen"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:286
 msgid "Column Width"
@@ -4791,64 +4584,57 @@ msgid "Vertical alignment for fixed width columns"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:411
-#, fuzzy
 msgid "Rotate 90Â°"
 msgstr "90° roteren"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:434
 msgid "&Rotate Table"
-msgstr ""
+msgstr "Tabel &Roteren"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:438
 msgid "Rotate the table by 90Â°"
-msgstr ""
+msgstr "De tabel met 90° roteren"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:449
 msgid "Rotate &Cell"
-msgstr ""
+msgstr "&Cel roteren"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:453
 msgid "Rotate this cell by 90Â°"
-msgstr ""
+msgstr "Deze cel met 90° roteren"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:466
 msgid "Custom column format (LaTeX)"
-msgstr ""
+msgstr "Aangepast kolomformaat (LaTeX)"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:477
-#, fuzzy
 msgid "LaTe&X argument:"
-msgstr "Uitlijning"
+msgstr "LaTe&X argument:"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:494
-#, fuzzy
 msgid "&Borders"
-msgstr "Randen"
+msgstr "&Randen"
 
+# aanzetten
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:513
-#, fuzzy
 msgid "Set Borders"
-msgstr "Randen aan|#S"
+msgstr "Randen instellen"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:804
-#, fuzzy
 msgid "All Borders"
-msgstr "Randen"
+msgstr "Alle randen"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:823
-#, fuzzy
 msgid "&Default"
-msgstr "Standaard"
+msgstr "&Standaard"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:827
-#, fuzzy
 msgid "Set all borders"
-msgstr "Randen aan|#S"
+msgstr "Alle randen aanzetten"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:838
-#, fuzzy
 msgid "C&lear"
-msgstr "Clear|#e"
+msgstr "&Wissen"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:842
 #, fuzzy
@@ -4856,9 +4642,8 @@ msgid "Unset all borders"
 msgstr "u Randen uit|#U"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:899
-#, fuzzy
 msgid "&Longtable"
-msgstr "Lange tabel"
+msgstr "&Lange tabel"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:918
 msgid "&Use long table"
@@ -4869,29 +4654,24 @@ msgid "Select for tables that span multiple pages"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:937
-#, fuzzy
 msgid "Settings"
-msgstr "selectie"
+msgstr "Instellingen"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:967
-#, fuzzy
 msgid "Header:"
-msgstr "Koptekst"
+msgstr "Koptekst:"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:978
-#, fuzzy
 msgid "Footer:"
-msgstr "Voettekst"
+msgstr "Voettekst:"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:989
-#, fuzzy
 msgid "First header:"
-msgstr "Koptekst"
+msgstr "Eerste koptekst:"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1000
-#, fuzzy
 msgid "Last footer:"
-msgstr "Laatste voettekst"
+msgstr "Laatste voettekst:"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1022
 #, fuzzy
@@ -4899,18 +4679,17 @@ msgid "Border above"
 msgstr "Randen"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1033
-#, fuzzy
 msgid "Border below"
-msgstr "Randen"
+msgstr ""
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1044
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1055
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1066
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1077
-#, fuzzy
 msgid "on"
-msgstr "Twee|#w"
+msgstr "aan"
 
+# dubbel
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1088
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1099
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1110
@@ -4919,9 +4698,8 @@ msgstr "Twee|#w"
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1143
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1154
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1165
-#, fuzzy
 msgid "double"
-msgstr "Dubbel"
+msgstr "dubbele"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1176
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1187
@@ -4943,14 +4721,13 @@ msgstr "Huidige cel:"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1266
 msgid "Current row position"
-msgstr "Huidige positie rij"
+msgstr "Huidige rij-positie"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:1295
 msgid "Current column position"
-msgstr "Huidige positie kolom"
+msgstr "Huidige kolom-positie"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:57
-#, fuzzy
 msgid "LaTeX classes"
 msgstr "LaTeX-klassen"
 
@@ -4990,9 +4767,8 @@ msgid "Built new file list"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:199
-#, fuzzy
 msgid "&View"
-msgstr "Bekijken DVI"
+msgstr "&Beeld"
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
 msgid ""
@@ -5001,7 +4777,7 @@ msgstr ""
 
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:256
 msgid "Close this dialog"
-msgstr ""
+msgstr "Dit dialoogvenster sluiten"
 
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:22
 #: ../lib/layouts/aapaper.inc:113 ../lib/layouts/aapaper.layout:77
@@ -5040,7 +4816,6 @@ msgid "Replace the entry with the selection"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QTocDialogBase.ui:22
-#, fuzzy
 msgid "Table Of Contents"
 msgstr "Inhoudsopgave"
 
@@ -5060,21 +4835,18 @@ msgid "Insert URL"
 msgstr "Label invoegen"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:45
-#, fuzzy
 msgid "&URL"
-msgstr "URL..."
+msgstr "&URL"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:53
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:94 ../lib/layouts/amsdefs.inc:223
 #: ../lib/layouts/scrlttr2.layout:217 src/frontends/qt2/QURL.C:33
-#, fuzzy
 msgid "URL"
-msgstr "URL..."
+msgstr "URL"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:64
-#, fuzzy
 msgid "&Name"
-msgstr "Naam"
+msgstr "&Naam"
 
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:72
 #: ../src/frontends/qt2/ui/QURLDialogBase.ui:83
@@ -5111,9 +4883,8 @@ msgid "Outer"
 msgstr "Overig ("
 
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:125
-#, fuzzy
 msgid "&Placement:"
-msgstr "l Placering zwevers:|#L"
+msgstr "&Plaatsing:"
 
 #: ../lib/layouts/mwart.layout:25 ../lib/layouts/article.layout:20
 #: ../lib/layouts/db_stdsections.inc:11 ../lib/layouts/paper.layout:33
@@ -5148,9 +4919,8 @@ msgstr "Hoofddocument:"
 #: ../lib/layouts/svjour.inc:26 ../lib/layouts/scrlttr2.layout:7
 #: ../lib/layouts/elsart.layout:44 src/insets/insetref.C:118
 #: src/mathed/ref_inset.C:127
-#, fuzzy
 msgid "Standard"
-msgstr "Standaard|#S"
+msgstr "Standaard"
 
 #: ../lib/layouts/IEEEtran.layout:65
 #, fuzzy
@@ -5179,7 +4949,7 @@ msgstr ""
 #: ../lib/layouts/llncs.layout:386 ../lib/layouts/siamltex.layout:203
 #: ../lib/layouts/svjour.inc:452 ../lib/layouts/elsart.layout:290
 msgid "Lemma"
-msgstr ""
+msgstr "Lemma"
 
 #: ../lib/layouts/IEEEtran.layout:112 ../lib/layouts/amsmaths-plain.inc:43
 #: ../lib/layouts/amsmaths-seq.inc:40 ../lib/layouts/amsmaths.inc:105
@@ -5213,37 +4983,34 @@ msgstr "Aanhaling"
 
 #: ../lib/layouts/IEEEtran.layout:156 ../lib/layouts/amsmaths-plain.inc:109
 #: ../lib/layouts/amsmaths-seq.inc:88 ../lib/layouts/amsmaths.inc:224
-#, fuzzy
 msgid "Fact"
-msgstr "accent"
+msgstr "Feit"
 
 #: ../lib/layouts/IEEEtran.layout:167 ../lib/layouts/amsmaths-plain.inc:120
 #: ../lib/layouts/amsmaths-seq.inc:96 ../lib/layouts/amsmaths.inc:248
 msgid "Axiom"
-msgstr ""
+msgstr "Axioma"
 
 #: ../lib/layouts/IEEEtran.layout:178 ../lib/layouts/amsmaths-plain.inc:131
 #: ../lib/layouts/amsmaths-seq.inc:104 ../lib/layouts/amsmaths.inc:260
 #: ../lib/layouts/foils.layout:283 ../lib/layouts/heb-article.layout:79
 #: ../lib/layouts/llncs.layout:368 ../lib/layouts/siamltex.layout:221
 #: ../lib/layouts/svjour.inc:426 ../lib/layouts/elsart.layout:350
-#, fuzzy
 msgid "Definition"
-msgstr "Ontvanger:"
+msgstr "Definitie"
 
 #: ../lib/layouts/IEEEtran.layout:189 ../lib/layouts/amsmaths-plain.inc:142
 #: ../lib/layouts/amsmaths-seq.inc:112 ../lib/layouts/amsmaths.inc:294
 #: ../lib/layouts/llncs.layout:374 ../lib/layouts/svjour.inc:432
 #: ../lib/layouts/elsart.layout:385
-#, fuzzy
 msgid "Example"
-msgstr "Voorbeelden"
+msgstr "Voorbeeld"
 
 #: ../lib/layouts/IEEEtran.layout:200 ../lib/layouts/amsmaths-plain.inc:153
 #: ../lib/layouts/amsmaths-seq.inc:120 ../lib/layouts/amsmaths.inc:318
 #, fuzzy
 msgid "Condition"
-msgstr "Aanhaling"
+msgstr "Voorwaarde"
 
 #: ../lib/layouts/IEEEtran.layout:211 ../lib/layouts/amsmaths-plain.inc:164
 #: ../lib/layouts/amsmaths-seq.inc:128 ../lib/layouts/amsmaths.inc:330
@@ -5257,15 +5024,14 @@ msgstr "Dubbel"
 #: ../lib/layouts/amsmaths-seq.inc:136 ../lib/layouts/amsmaths.inc:342
 #: ../lib/layouts/llncs.layout:380 ../lib/layouts/svjour.inc:438
 msgid "Exercise"
-msgstr ""
+msgstr "Oefening"
 
 #: ../lib/layouts/IEEEtran.layout:233 ../lib/layouts/amsmaths-plain.inc:186
 #: ../lib/layouts/amsmaths-seq.inc:144 ../lib/layouts/amsmaths.inc:354
 #: ../lib/layouts/llncs.layout:428 ../lib/layouts/svjour.inc:494
 #: ../lib/layouts/elsart.layout:409
-#, fuzzy
 msgid "Remark"
-msgstr "r Opmerking:|#R"
+msgstr "Opmerking"
 
 #: ../lib/layouts/IEEEtran.layout:244 ../lib/layouts/amsmaths-plain.inc:197
 #: ../lib/layouts/amsmaths-seq.inc:152 ../lib/layouts/amsmaths.inc:389
@@ -5288,13 +5054,11 @@ msgstr "Notitie"
 msgid "Notation"
 msgstr "Roteren"
 
-# invoegen?
 #: ../lib/layouts/IEEEtran.layout:277 ../lib/layouts/amsmaths-plain.inc:255
 #: ../lib/layouts/amsmaths-seq.inc:192 ../lib/layouts/amsmaths.inc:485
 #: ../lib/layouts/llncs.layout:315 ../lib/layouts/elsart.layout:441
-#, fuzzy
 msgid "Case"
-msgstr "Plakken"
+msgstr "Casus"
 
 #: ../lib/layouts/IEEEtran.layout:302 ../lib/layouts/aa.layout:44
 #: ../lib/layouts/aa.layout:239 ../lib/layouts/aapaper.layout:59
@@ -5310,9 +5074,8 @@ msgstr "Plakken"
 #: ../lib/layouts/scrclass.inc:70 ../lib/layouts/siamltex.layout:38
 #: ../lib/layouts/spie.layout:23 ../lib/layouts/stdsections.inc:63
 #: ../lib/layouts/svjour.inc:41 ../lib/layouts/ijmpd.layout:86
-#, fuzzy
 msgid "Section"
-msgstr "selectie"
+msgstr "Sectie"
 
 #: ../lib/layouts/IEEEtran.layout:313 ../lib/layouts/aa.layout:46
 #: ../lib/layouts/aa.layout:249 ../lib/layouts/aapaper.layout:61
@@ -5327,9 +5090,8 @@ msgstr "selectie"
 #: ../lib/layouts/revtex4.layout:58 ../lib/layouts/scrclass.inc:77
 #: ../lib/layouts/siamltex.layout:56 ../lib/layouts/stdsections.inc:88
 #: ../lib/layouts/svjour.inc:51 ../lib/layouts/ijmpd.layout:104
-#, fuzzy
 msgid "Subsection"
-msgstr "selectie"
+msgstr "Subsectie"
 
 #: ../lib/layouts/IEEEtran.layout:320 ../lib/layouts/aa.layout:48
 #: ../lib/layouts/aa.layout:261 ../lib/layouts/aapaper.layout:63
@@ -5342,30 +5104,26 @@ msgstr "selectie"
 #: ../lib/layouts/revtex4.layout:67 ../lib/layouts/scrclass.inc:84
 #: ../lib/layouts/siamltex.layout:62 ../lib/layouts/stdsections.inc:113
 #: ../lib/layouts/svjour.inc:60 ../lib/layouts/ijmpd.layout:114
-#, fuzzy
 msgid "Subsubsection"
-msgstr "selectie"
+msgstr "Subsubsectie"
 
 #: ../lib/layouts/IEEEtran.layout:327 ../lib/layouts/aguplus.inc:29
 #: ../lib/layouts/egs.layout:686 ../lib/layouts/siamltex.layout:78
 #: ../lib/layouts/spie.layout:33 ../lib/layouts/stdstarsections.inc:29
 #: ../lib/layouts/ijmpd.layout:95
-#, fuzzy
 msgid "Section*"
-msgstr "selectie"
+msgstr "Sectie*"
 
 #: ../lib/layouts/IEEEtran.layout:338 ../lib/layouts/aguplus.inc:41
 #: ../lib/layouts/egs.layout:709 ../lib/layouts/siamltex.layout:84
 #: ../lib/layouts/stdstarsections.inc:38
-#, fuzzy
 msgid "Subsection*"
-msgstr "selectie"
+msgstr "Subsectie*"
 
 #: ../lib/layouts/IEEEtran.layout:345 ../lib/layouts/siamltex.layout:90
 #: ../lib/layouts/stdstarsections.inc:47
-#, fuzzy
 msgid "Subsubsection*"
-msgstr "selectie"
+msgstr "Subsubsectie*"
 
 #: ../lib/layouts/IEEEtran.layout:358 ../lib/layouts/apa.layout:74
 #: ../lib/layouts/cl2emult.layout:82 ../lib/layouts/db_stdstruct.inc:11
@@ -5374,9 +5132,8 @@ msgstr "selectie"
 #: ../lib/layouts/scrclass.inc:230 ../lib/layouts/siamltex.layout:134
 #: ../lib/layouts/spie.layout:74 ../lib/layouts/ijmpd.layout:75
 #: src/buffer.C:1504
-#, fuzzy
 msgid "Abstract"
-msgstr "Oostenrijks"
+msgstr ""
 
 #: ../lib/layouts/IEEEtran.layout:382 ../lib/layouts/aastex.layout:98
 #: ../lib/layouts/aastex.layout:256 ../lib/layouts/amsdefs.inc:241
@@ -5387,6 +5144,7 @@ msgstr "Oostenrijks"
 msgid "Keywords"
 msgstr "k Sleutel:|#K"
 
+# Literatuurlijst?
 #: ../lib/layouts/IEEEtran.layout:406 ../lib/layouts/aa.layout:78
 #: ../lib/layouts/aa.layout:338 ../lib/layouts/aapaper.layout:85
 #: ../lib/layouts/aapaper.layout:195 ../lib/layouts/aguplus.inc:157
@@ -5400,35 +5158,31 @@ msgstr "k Sleutel:|#K"
 #: ../lib/layouts/svjour.inc:353 ../lib/layouts/mwbk.layout:23
 #: ../lib/layouts/mwrep.layout:12 ../lib/layouts/ijmpd.layout:157
 #: src/frontends/qt2/QDocumentDialog.C:72
-#, fuzzy
 msgid "Bibliography"
-msgstr "Literatuurverwijzing"
+msgstr "Bibliografie"
 
+# Bijlage
 #: ../lib/layouts/IEEEtran.layout:415 ../lib/layouts/aastex.layout:102
 #: ../lib/layouts/aastex.layout:382 ../lib/layouts/kluwer.layout:324
 #: ../lib/layouts/ijmpd.layout:166
-#, fuzzy
 msgid "Appendix"
-msgstr "bijlage lijn"
+msgstr "Appendix"
 
 #: ../lib/layouts/IEEEtran.layout:438
-#, fuzzy
 msgid "Appendices"
-msgstr "bijlage lijn"
+msgstr "Appendices"
 
 #: ../lib/layouts/IEEEtran.layout:461
-#, fuzzy
 msgid "Biography"
-msgstr "Literatuurverwijzing"
+msgstr "Biografie"
 
 #: ../lib/layouts/IEEEtran.layout:476 ../lib/layouts/aa.layout:58
 #: ../lib/layouts/aa.layout:218 ../lib/layouts/aapaper.layout:55
 #: ../lib/layouts/aastex.layout:114 ../lib/layouts/aastex.layout:499
 #: ../lib/layouts/db_stdlayouts.inc:45 ../lib/layouts/egs.layout:667
 #: ../lib/layouts/latex8.layout:115 ../lib/layouts/stdlayouts.inc:84
-#, fuzzy
 msgid "Caption"
-msgstr "k Bijschrift|#k"
+msgstr "Onderschrift"
 
 #: ../lib/layouts/IEEEtran.layout:482
 #, fuzzy
@@ -5463,16 +5217,14 @@ msgstr ""
 #: ../lib/layouts/paper.layout:102 ../lib/layouts/scrclass.inc:25
 #: ../lib/layouts/scrlettr.layout:16 ../lib/layouts/stdlists.inc:45
 #: ../lib/layouts/scrlttr2.layout:16
-#, fuzzy
 msgid "Description"
-msgstr "Dekoratie"
+msgstr "Beschrijving"
 
 #: ../lib/layouts/aa.layout:56 ../lib/layouts/aapaper.layout:53
 #: ../lib/layouts/aastex.layout:82 ../lib/layouts/egs.layout:165
 #: ../lib/layouts/scrmacros.inc:6 ../lib/layouts/stdlists.inc:69
-#, fuzzy
 msgid "List"
-msgstr "Regels"
+msgstr "Lijst"
 
 #: ../lib/layouts/aa.layout:60 ../lib/layouts/aa.layout:271
 #: ../lib/layouts/aapaper.layout:65 ../lib/layouts/aapaper.layout:145
@@ -5493,16 +5245,15 @@ msgstr "Regels"
 #: ../lib/layouts/stdtitle.inc:11 ../lib/layouts/svjour.inc:138
 #: ../lib/layouts/svprobth.layout:37 ../lib/layouts/scrlttr2.layout:281
 #: ../lib/layouts/elsart.layout:90 ../lib/layouts/ijmpd.layout:39
-#, fuzzy
 msgid "Title"
-msgstr "f Bestand"
+msgstr "Titel"
 
 #: ../lib/layouts/aa.layout:62 ../lib/layouts/aa.layout:101
 #: ../lib/layouts/aapaper.inc:8 ../lib/layouts/aapaper.layout:67
 #: ../lib/layouts/kluwer.layout:123 ../lib/layouts/llncs.layout:132
 #: ../lib/layouts/svjour.inc:164 ../lib/layouts/svprobth.layout:47
 msgid "Subtitle"
-msgstr ""
+msgstr "Subtitel"
 
 #: ../lib/layouts/aa.layout:64 ../lib/layouts/aa.layout:283
 #: ../lib/layouts/aapaper.layout:69 ../lib/layouts/aapaper.layout:156
@@ -5544,7 +5295,6 @@ msgstr "Afdrukken"
 msgid "Mail"
 msgstr "Mail"
 
-# invoegen?
 #: ../lib/layouts/aa.layout:72 ../lib/layouts/aa.layout:295
 #: ../lib/layouts/aapaper.layout:79 ../lib/layouts/aapaper.layout:167
 #: ../lib/layouts/aastex.layout:94 ../lib/layouts/aastex.layout:207
@@ -5569,9 +5319,8 @@ msgstr "Datum"
 #: ../lib/layouts/revtex4.layout:205 ../lib/layouts/stdstruct.inc:12
 #: ../lib/layouts/svjog.layout:32 ../lib/layouts/svjour.inc:272
 #: ../lib/layouts/elsart.layout:198
-#, fuzzy
 msgid "Abstract "
-msgstr "Oostenrijks"
+msgstr ""
 
 # Acknowledgement kan ook 'met dank aan' betekenen
 #: ../lib/layouts/aa.layout:76 ../lib/layouts/aa.layout:191
@@ -5581,7 +5330,7 @@ msgstr "Oostenrijks"
 #: ../lib/layouts/svjour.inc:345 ../lib/layouts/elsart.layout:461
 #, fuzzy
 msgid "Acknowledgement"
-msgstr "Bevestiging"
+msgstr ""
 
 #: ../lib/layouts/aapaper.inc:49 ../lib/layouts/aapaper.layout:73
 #: ../lib/layouts/aastex.layout:90 ../lib/layouts/aastex.layout:282
@@ -5786,7 +5535,7 @@ msgstr ""
 #: ../lib/layouts/amsmaths.inc:140 ../lib/layouts/foils.layout:327
 #: ../lib/layouts/siamltex.layout:255
 msgid "Lemma*"
-msgstr ""
+msgstr "Lemma*"
 
 #: ../lib/layouts/amsmaths.inc:164 ../lib/layouts/foils.layout:341
 #: ../lib/layouts/siamltex.layout:267
@@ -5799,23 +5548,20 @@ msgstr ""
 
 #: ../lib/layouts/amsmaths.inc:236
 msgid "Fact*"
-msgstr ""
+msgstr "Feit*"
 
 #: ../lib/layouts/amsmaths.inc:282 ../lib/layouts/foils.layout:348
 #: ../lib/layouts/siamltex.layout:273
-#, fuzzy
 msgid "Definition*"
-msgstr "Ontvanger:"
+msgstr "Definitie*"
 
 #: ../lib/layouts/amsmaths.inc:306
-#, fuzzy
 msgid "Example*"
-msgstr "Voorbeelden"
+msgstr "Voorbeeld*"
 
 #: ../lib/layouts/amsmaths.inc:377
-#, fuzzy
 msgid "Remark*"
-msgstr "r Opmerking:|#R"
+msgstr "Opmerking*"
 
 #: ../lib/layouts/amsmaths.inc:401
 msgid "Claim*"
@@ -5832,7 +5578,7 @@ msgstr ""
 
 #: ../lib/layouts/amsmaths.inc:509
 msgid "Conclusion*"
-msgstr ""
+msgstr "Conclusie*"
 
 #: ../lib/layouts/apa.layout:55
 msgid "RightHeader"
@@ -5867,9 +5613,8 @@ msgid "FourAffiliations"
 msgstr ""
 
 #: ../lib/layouts/apa.layout:186 ../lib/layouts/egs.layout:388
-#, fuzzy
 msgid "Journal"
-msgstr "Normaal"
+msgstr "Journaal"
 
 #: ../lib/layouts/apa.layout:198
 #, fuzzy
@@ -5909,21 +5654,20 @@ msgid "Dialogue"
 msgstr ""
 
 #: ../lib/layouts/broadway.layout:40 ../lib/layouts/hollywood.layout:214
-#, fuzzy
 msgid "Narrative"
-msgstr "Negatief|#N"
+msgstr ""
 
 #: ../lib/layouts/broadway.layout:59
 msgid "ACT"
-msgstr ""
+msgstr "AKT"
 
 #: ../lib/layouts/broadway.layout:74
 msgid "SCENE"
-msgstr ""
+msgstr "SCÈNE"
 
 #: ../lib/layouts/broadway.layout:88
 msgid "SCENE*"
-msgstr ""
+msgstr "SCÈNE*"
 
 #: ../lib/layouts/broadway.layout:102
 msgid "AT_RISE:"
@@ -5989,7 +5733,7 @@ msgstr ""
 
 #: ../lib/layouts/chess.layout:128
 msgid "ChessBoard"
-msgstr ""
+msgstr "Schaakbord"
 
 #: ../lib/layouts/chess.layout:141
 #, fuzzy
@@ -6002,9 +5746,8 @@ msgid "HighLight"
 msgstr "Hoogte"
 
 #: ../lib/layouts/chess.layout:176
-#, fuzzy
 msgid "Arrow"
-msgstr "fout"
+msgstr "Pijl"
 
 #: ../lib/layouts/chess.layout:187
 msgid "KnightMove"
@@ -6033,7 +5776,7 @@ msgid "Code"
 msgstr "Sluiten"
 
 #: ../lib/layouts/db_lyxmacros.inc:20 ../lib/layouts/heb-article.layout:16
-#: ../lib/layouts/lyxmacros.inc:47 ../lib/layouts/scrlttr2.layout:345
+#: ../lib/layouts/lyxmacros.inc:47
 #, fuzzy
 msgid "Comment"
 msgstr "Commentaar:"
@@ -6061,7 +5804,7 @@ msgstr "Roteren"
 #: ../lib/layouts/db_stdsections.inc:18 ../lib/layouts/llncs.layout:38
 #: ../lib/layouts/scrclass.inc:61 ../lib/layouts/stdsections.inc:37
 msgid "Chapter"
-msgstr ""
+msgstr "Hoofdstuk"
 
 #: ../lib/layouts/db_stdsections.inc:53 ../lib/layouts/egs.layout:103
 #: ../lib/layouts/kluwer.layout:91 ../lib/layouts/linuxdoc.layout:170
@@ -6074,7 +5817,7 @@ msgstr "Selecteer de volgende alinea"
 
 #: ../lib/layouts/db_stdtitle.inc:25
 msgid "Authorgroup"
-msgstr ""
+msgstr "Auteursgroep"
 
 #: ../lib/layouts/db_stdtitle.inc:33
 #, fuzzy
@@ -6083,16 +5826,15 @@ msgstr "Eerste koptekst"
 
 #: ../lib/layouts/db_stdtitle.inc:45
 msgid "Surname"
-msgstr ""
+msgstr "Achternaam"
 
 #: ../lib/layouts/db_stdtitle.inc:65
 msgid "RevisionHistory"
 msgstr ""
 
 #: ../lib/layouts/db_stdtitle.inc:86
-#, fuzzy
 msgid "Revision"
-msgstr "Oostenrijks"
+msgstr "Revisie"
 
 #: ../lib/layouts/db_stdtitle.inc:102
 #, fuzzy
@@ -6112,9 +5854,8 @@ msgstr ""
 #: ../lib/layouts/dinbrief.layout:48 ../lib/layouts/g-brief-en.layout:517
 #: ../lib/layouts/heb-letter.layout:16 ../lib/layouts/scrlettr.layout:70
 #: ../lib/layouts/stdletter.inc:59 ../lib/layouts/scrlttr2.layout:100
-#, fuzzy
 msgid "Opening"
-msgstr "Openen"
+msgstr "Opening"
 
 #: ../lib/layouts/dinbrief.layout:61 ../lib/layouts/g-brief-en.layout:73
 #: ../lib/layouts/heb-letter.layout:24 ../lib/layouts/scrlettr.layout:148
@@ -6689,24 +6430,20 @@ msgid "Invoice"
 msgstr "Negeren"
 
 #: ../lib/layouts/seminar.layout:49
-#, fuzzy
 msgid "LandscapeSlide"
-msgstr "Landschap|#L"
+msgstr ""
 
 #: ../lib/layouts/seminar.layout:59
-#, fuzzy
 msgid "PortraitSlide"
-msgstr "o Portret|#o"
+msgstr ""
 
 #: ../lib/layouts/seminar.layout:68 ../lib/layouts/slides.layout:92
-#, fuzzy
 msgid "Slide"
-msgstr "-zijdig"
+msgstr ""
 
 #: ../lib/layouts/seminar.layout:72
-#, fuzzy
 msgid "Slide*"
-msgstr "-zijdig"
+msgstr ""
 
 #: ../lib/layouts/seminar.layout:76
 msgid "SlideHeading"
@@ -6857,9 +6594,8 @@ msgid "Bulgarian"
 msgstr "Bulgaars"
 
 #: ../lib/languages:13
-#, fuzzy
 msgid "Canadian"
-msgstr "Catalaans"
+msgstr "Canadees"
 
 #: ../lib/languages:14 ../lib/languages:25 ../lib/languages:26
 msgid "French"
@@ -6923,11 +6659,12 @@ msgstr "Italiaans"
 
 #: ../lib/languages:37
 msgid "Kazakh"
-msgstr ""
+msgstr "Kazachs"
 
+# Nooit van gehoord
 #: ../lib/languages:38
 msgid "Lsorbian"
-msgstr ""
+msgstr "Lsorbisch"
 
 #: ../lib/languages:40
 msgid "Magyar"
@@ -6962,9 +6699,8 @@ msgid "Serbian"
 msgstr "Servisch"
 
 #: ../lib/languages:48
-#, fuzzy
 msgid "Serbo-Croatian"
-msgstr "Kroatisch"
+msgstr "Servo-kroatisch"
 
 #: ../lib/languages:49
 msgid "Spanish"
@@ -6992,7 +6728,6 @@ msgstr "Turks"
 
 # ??
 #: ../lib/languages:55
-#, fuzzy
 msgid "Ukrainian"
 msgstr "Oekrains"
 
@@ -7006,7 +6741,7 @@ msgstr "Welsh"
 
 #: ../lib/ui/default.ui:7 src/MenuBackend.C:684
 msgid "File|F"
-msgstr "Bestand|#B"
+msgstr "Bestand|B"
 
 #: ../lib/ui/default.ui:8 src/MenuBackend.C:685
 msgid "Edit|E"
@@ -7085,11 +6820,9 @@ msgstr "Afdrukken...|P"
 msgid "Fax...|F"
 msgstr "Faxen...|F"
 
-# de sneltoets a wordt gebruikt voor opslaan _als
-# a zit naast de s die wordt gebruikt voor op_slaan
 #: ../lib/ui/default.ui:37
 msgid "Exit|x"
-msgstr "Afsluiten|u"
+msgstr "Afsluiten|f"
 
 #: ../lib/ui/default.ui:43
 msgid "Register...|R"
@@ -7197,19 +6930,16 @@ msgid "Open/Close float|l"
 msgstr "Zwever gesloten"
 
 #: ../lib/ui/default.ui:84
-#, fuzzy
 msgid "Preferences...|P"
-msgstr "Verwijzing invoegen"
+msgstr "Voorkeuren...|V"
 
 #: ../lib/ui/default.ui:85
-#, fuzzy
 msgid "Reconfigure|R"
-msgstr "Herconfigureren"
+msgstr "Herconfigureren|r"
 
 #: ../lib/ui/default.ui:89
-#, fuzzy
 msgid "as Lines|L"
-msgstr "Regels"
+msgstr "Als regels|g"
 
 #: ../lib/ui/default.ui:90
 #, fuzzy
@@ -7217,34 +6947,29 @@ msgid "as Paragraphs|P"
 msgstr "Inspringende alinea|#I"
 
 #: ../lib/ui/default.ui:94
-#, fuzzy
 msgid "Multicolumn|M"
-msgstr "Meerkolom|#M"
+msgstr "Meerkolom|M"
 
 #: ../lib/ui/default.ui:96
-#, fuzzy
 msgid "Line Top|T"
-msgstr "t Lijn boven"
+msgstr "Bovenlijn|B"
 
 #: ../lib/ui/default.ui:97
-#, fuzzy
 msgid "Line Bottom|B"
-msgstr "b Lijn onder"
+msgstr "Onderlijn|O"
 
 #: ../lib/ui/default.ui:98
-#, fuzzy
 msgid "Line Left|L"
-msgstr "Links|#L"
+msgstr "Linkerlijn|L"
 
 #: ../lib/ui/default.ui:99
-#, fuzzy
 msgid "Line Right|R"
-msgstr "Rechts|#R"
+msgstr "Rechterlijn|R"
 
 #: ../lib/ui/default.ui:101
 #, fuzzy
 msgid "Align Left|e"
-msgstr "e Links uitlijnen"
+msgstr "Links uitlijnen"
 
 #: ../lib/ui/default.ui:102 ../lib/ui/default.ui:183
 #, fuzzy
@@ -7271,24 +6996,20 @@ msgid "V.Align Bottom|V"
 msgstr "b Lijn onder"
 
 #: ../lib/ui/default.ui:109
-#, fuzzy
 msgid "Add Row|A"
-msgstr "p Rij toevoegen|#p"
+msgstr "Rij toevoegen|R"
 
 #: ../lib/ui/default.ui:110
-#, fuzzy
 msgid "Delete Row|w"
-msgstr "w Rij verwijderen|#w"
+msgstr "Rij verwijderen|w"
 
 #: ../lib/ui/default.ui:111 ../lib/ui/default.ui:142
-#, fuzzy
 msgid "Copy Row"
-msgstr "Kopiëren"
+msgstr "Rij kopiëren"
 
 #: ../lib/ui/default.ui:112 ../lib/ui/default.ui:143
-#, fuzzy
 msgid "Swap Rows"
-msgstr "Rijen"
+msgstr "Rijen verwisselen"
 
 #: ../lib/ui/default.ui:114
 #, fuzzy
@@ -7919,41 +7640,41 @@ msgstr "LaTeX Configuratie|L"
 msgid "About LyX|X"
 msgstr "Over LyX|X"
 
-#: src/BufferView.C:301 src/bufferlist.C:373 src/bufferlist.C:485
+#: src/BufferView.C:293 src/bufferlist.C:373 src/bufferlist.C:485
 #: src/lyx_cb.C:215
 msgid "Error!"
 msgstr "Fout!"
 
-#: src/BufferView.C:302
+#: src/BufferView.C:294
 msgid "Specified file is unreadable: "
 msgstr "Opgegeven bestand is onleesbaar: "
 
-#: src/BufferView.C:311 src/lyx_cb.C:447
+#: src/BufferView.C:303 src/lyx_cb.C:447
 msgid "Error! Cannot open specified file:"
 msgstr "Fout! Kan gegeven bestand niet openen:"
 
-#: src/BufferView.C:571 src/LyXAction.C:377
+#: src/BufferView.C:563 src/LyXAction.C:377
 msgid "Undo"
 msgstr "Herstellen"
 
-#: src/BufferView.C:576
+#: src/BufferView.C:568
 #, fuzzy
 msgid "No further undo information"
 msgstr "Niets meer ongedaan te maken"
 
-#: src/BufferView.C:588 src/LyXAction.C:334
+#: src/BufferView.C:580 src/LyXAction.C:334
 msgid "Redo"
 msgstr "Opnieuw"
 
-#: src/BufferView.C:593
+#: src/BufferView.C:585
 msgid "No further redo information"
 msgstr "Geen verdere Herhaal mogelijk"
 
-#: src/BufferView.C:604
+#: src/BufferView.C:596
 msgid "Paragraph environment type copied"
 msgstr "Alineaomgeving gekopieerd"
 
-#: src/BufferView.C:613
+#: src/BufferView.C:605
 msgid "Paragraph environment type set"
 msgstr "Alineaomgeving ingesteld"
 
@@ -8089,9 +7810,7 @@ msgstr " naar "
 msgid ""
 "\n"
 "because of class conversion from\n"
-msgstr ""
-"\n"
-"vanwege een klasse-conversie van\n"
+msgstr "\nvanwege een klasse-conversie van\n"
 
 #: src/LColor.C:49
 msgid "none"
@@ -8305,20 +8024,20 @@ msgstr "erven"
 msgid "ignore"
 msgstr "negeren"
 
-#: src/LaTeX.C:210 src/LaTeX.C:299 src/LaTeX.C:360
+#: src/LaTeX.C:207 src/LaTeX.C:296 src/LaTeX.C:357
 #, fuzzy, c-format
 msgid "LaTeX run number %1$d"
 msgstr "LaTeX sessienummer"
 
-#: src/LaTeX.C:212 src/LaTeX.C:301 src/LaTeX.C:362
+#: src/LaTeX.C:209 src/LaTeX.C:298 src/LaTeX.C:359
 msgid "LaTeX run number "
 msgstr "LaTeX sessienummer "
 
-#: src/LaTeX.C:250 src/LaTeX.C:334
+#: src/LaTeX.C:247 src/LaTeX.C:331
 msgid "Running MakeIndex."
 msgstr "MakeIndex is bezig."
 
-#: src/LaTeX.C:265
+#: src/LaTeX.C:262
 msgid "Running BibTeX."
 msgstr "BibTeX is bezig."
 
@@ -8724,7 +8443,6 @@ msgstr "Een alinea omhoog"
 msgid "Select previous paragraph"
 msgstr "Selecteer de vorige alinea"
 
-# invoegen?
 #: src/LyXAction.C:323 src/MenuBackend.C:676 src/text3.C:1030
 msgid "Paste"
 msgstr "Plakken"
@@ -8848,12 +8566,11 @@ msgstr "LaTeX...|L"
 
 #: src/MenuBackend.C:669
 msgid "LinuxDoc...|L"
-msgstr ""
+msgstr "LinuxDoc...|L"
 
 #: src/MenuBackend.C:677
-#, fuzzy
 msgid "Emphasize"
-msgstr "Nadruk "
+msgstr "Nadruk"
 
 #: src/buffer.C:356
 msgid "Couldn't set the layout for "
@@ -9014,6 +8731,7 @@ msgstr "Fout : Verkeerde diepte voor LatexType commando.\n"
 
 #. path to LaTeX file
 #: src/buffer.C:3101
+#, fuzzy
 msgid "Running chktex..."
 msgstr "chktex draait..."
 
@@ -9022,11 +8740,12 @@ msgid "chktex did not work!"
 msgstr "chktex werkte niet!"
 
 #: src/buffer.C:3115
+#, fuzzy
 msgid "Could not run with file:"
 msgstr "Kon niet draaien met bestand:"
 
-#: src/bufferlist.C:112 src/bufferlist.C:197 src/lyxvc.C:116 src/lyxvc.C:148
-#: src/lyxvc.C:177
+#: src/bufferlist.C:112 src/bufferlist.C:197 src/lyxvc.C:112 src/lyxvc.C:144
+#: src/lyxvc.C:173
 msgid "Changes in document:"
 msgstr "Veranderingen in document:"
 
@@ -9113,9 +8832,8 @@ msgid "Font: %1$s"
 msgstr "Lettertype:"
 
 #: src/bufferview_funcs.C:165
-#, fuzzy
 msgid "Font: "
-msgstr "Lettertype:"
+msgstr "Lettertype: "
 
 #: src/bufferview_funcs.C:172
 #, fuzzy, c-format
@@ -9125,7 +8843,7 @@ msgstr ", Diepte:"
 #: src/bufferview_funcs.C:174
 #, fuzzy
 msgid ", Depth: "
-msgstr ", Diepte:"
+msgstr ", Diepte: "
 
 #: src/bufferview_funcs.C:184
 msgid ", Spacing: "
@@ -9192,9 +8910,8 @@ msgid "to %1$s"
 msgstr ""
 
 #: src/converter.C:738 src/converter.C:780
-#, fuzzy
 msgid "to "
-msgstr " van "
+msgstr "van "
 
 #: src/converter.C:776 src/converter.C:779
 #, fuzzy
@@ -9324,7 +9041,7 @@ msgstr "commando-inzet"
 
 #: src/debug.C:54
 msgid "The LyX Lexxer"
-msgstr "De LyX lexxer"
+msgstr "De LyX-lexxer"
 
 #: src/debug.C:55
 #, fuzzy
@@ -9951,29 +9668,31 @@ msgstr "Auteur-jaar"
 msgid "Numerical"
 msgstr "Numeriek"
 
+# Het gaat hier niet om gewonen tekst maar om citaatvorm voorbeelden
+# Moet misschien in bugzilla
 #: src/frontends/qt2/QDocument.C:88
 msgid "``text''"
-msgstr "``tekst''"
+msgstr "``citaat''"
 
 #: src/frontends/qt2/QDocument.C:89
 msgid "''text''"
-msgstr "''tekst''"
+msgstr "''citaat''"
 
 #: src/frontends/qt2/QDocument.C:90
 msgid ",,text``"
-msgstr ",,tekst``"
+msgstr ",,citaat``"
 
 #: src/frontends/qt2/QDocument.C:91
 msgid ",,text''"
-msgstr ",,tekst''"
+msgstr ",,citaat''"
 
 #: src/frontends/qt2/QDocument.C:92
 msgid "«text»"
-msgstr "«tekst»"
+msgstr "«citaat»"
 
 #: src/frontends/qt2/QDocument.C:93
 msgid "»text«"
-msgstr "»tekst«"
+msgstr "»citaat«"
 
 #: src/frontends/qt2/QDocument.C:105
 msgid "US letter"
@@ -10106,11 +9825,11 @@ msgstr "LaTeX|#L"
 msgid "External"
 msgstr "x Extra|#X"
 
-#: src/frontends/qt2/QExternalDialog.C:89
+#: src/frontends/qt2/QExternalDialog.C:87
 msgid "External material (*)"
 msgstr ""
 
-#: src/frontends/qt2/QExternalDialog.C:91
+#: src/frontends/qt2/QExternalDialog.C:89
 #, fuzzy
 msgid "Select external material"
 msgstr "Volgende regel selecteren"
@@ -10619,10 +10338,12 @@ msgstr "BibTeX-Stijl selecteren"
 msgid "*.bst| BibTeX Styles (*.bst)"
 msgstr "*.bst| BibTeX Stijlen (*.bst)"
 
+# Vrij vertaald. In dit dialoog (dit is de titel) kun je zelf een 
+# lettertekenstijl definieren die aan/uitgeschakeld wordt met de
+# Font-knop op de werkbalk.
 #: src/frontends/xforms/FormCharacter.C:42
-#, fuzzy
 msgid "Character Layout"
-msgstr "Tekenstijl"
+msgstr "Tekenstijl definieren"
 
 #. set up the tooltip mechanism
 #: src/frontends/xforms/FormCitation.C:166
@@ -10726,19 +10447,16 @@ msgstr ""
 "B3 | "
 
 #: src/frontends/xforms/FormDocument.C:228
-#, fuzzy
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
-msgstr ""
-" Geen | A4 smalle  marges (alleen portret) | A4 zeer smalle marges (alleen "
-"portret) | A4 zeer brede marges (alleen portret) "
+msgstr " Geen | Smalle marges | Zeer smalle marges | Zeer brede marges "
 
 #: src/frontends/xforms/FormDocument.C:278
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
-msgstr " ``tekst'' | ''tekst'' | ,,tekst`` | ,,tekst'' | «tekst» | »tekst« "
+msgstr " ``citaat'' | ''citaat'' | ,,citaat`` | ,,citaat'' | «citaat» | »citaat« "
 
 #: src/frontends/xforms/FormDocument.C:303
 msgid " Author-year | Numerical "
-msgstr ""
+msgstr " Auteur-jaar | Numeriek "
 
 #: src/frontends/xforms/FormDocument.C:329
 #, fuzzy
@@ -10755,9 +10473,8 @@ msgstr "Document"
 
 #: src/frontends/xforms/FormDocument.C:345
 #: src/frontends/xforms/FormGraphics.C:266
-#, fuzzy
 msgid "Extra"
-msgstr "x Extra|#X"
+msgstr "Extra"
 
 #: src/frontends/xforms/FormDocument.C:354
 msgid ""
@@ -10770,14 +10487,12 @@ msgid "Document is read-only. No changes to layout permitted."
 msgstr "Document tegen schrijven beveiligd. Stijl mag niet veranderd worden."
 
 #: src/frontends/xforms/FormERT.C:29
-#, fuzzy
 msgid "ERT Options"
-msgstr "Opties"
+msgstr "ERT-opties"
 
 #: src/frontends/xforms/FormExternal.C:33
-#, fuzzy
 msgid "Edit external file"
-msgstr "Index lijst invoegen"
+msgstr "Extern bestand bewerken"
 
 #: src/frontends/xforms/FormFiledialog.C:194
 #: src/frontends/xforms/FormFiledialog.C:363
@@ -10785,9 +10500,8 @@ msgid "Warning! Couldn't open directory."
 msgstr "Waarschuwing! Kon map niet openen."
 
 #: src/frontends/xforms/FormFloat.C:42
-#, fuzzy
 msgid "Float Options"
-msgstr "Opties"
+msgstr "Zwever-opties"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormFloat.C:72
@@ -10804,14 +10518,12 @@ msgid "Alternative suggestions for placement of float."
 msgstr ""
 
 #: src/frontends/xforms/FormFloat.C:78
-#, fuzzy
 msgid "Try top of page."
-msgstr "g % van blz.|#g"
+msgstr "Bovenkant van pagina proberen"
 
 #: src/frontends/xforms/FormFloat.C:80
-#, fuzzy
 msgid "Try bottom of page."
-msgstr "onderkant"
+msgstr "Onderkant van pagina proberen"
 
 #: src/frontends/xforms/FormFloat.C:82
 msgid "Put float on a separate page of floats."
@@ -10831,12 +10543,12 @@ msgstr ""
 
 #: src/frontends/xforms/FormForks.C:36
 msgid "Child processes"
-msgstr ""
+msgstr "Dochterproces"
 
 #. Set up the tooltip mechanism
 #: src/frontends/xforms/FormForks.C:57
 msgid "All currently running child processes forked by LyX."
-msgstr ""
+msgstr "Alle huidige lopende dochterprocessen die van LyX zijn gevorkt."
 
 #: src/frontends/xforms/FormForks.C:62
 msgid "A list of all child processes to kill."
@@ -10920,7 +10632,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormGraphics.C:165
 msgid "Show image only as a rectangle of the original size."
-msgstr ""
+msgstr "Afbeelding weergeven als rechthoek op originele grootte."
 
 #. set up the tooltips for the bounding-box-section
 #: src/frontends/xforms/FormGraphics.C:198
@@ -10997,12 +10709,11 @@ msgstr "Include"
 
 #: src/frontends/xforms/FormLog.C:25
 msgid "LaTeX Log"
-msgstr "LaTeX-Log"
+msgstr "LaTeX-logboek"
 
 #: src/frontends/xforms/FormLog.C:34
-#, fuzzy
 msgid "LyX: LaTeX Log"
-msgstr "LaTeX-Log"
+msgstr "LyX: LaTeX-logboek"
 
 #: src/frontends/xforms/FormLog.C:35
 msgid "LyX: Literate Programming Build Log"
@@ -11028,48 +10739,44 @@ msgid "Top | Center | Bottom"
 msgstr " Boven | Midden | Onder"
 
 #: src/frontends/xforms/FormMathsPanel.C:68
-#, fuzzy
 msgid "Maths Panel"
 msgstr "Wiskundepaneel"
 
 #: src/frontends/xforms/FormMathsPanel.C:132
-#, fuzzy
 msgid "Maths Decorations & Accents"
-msgstr "Dekoratie"
+msgstr "Wiskunde dekoraties en accenten"
 
 #: src/frontends/xforms/FormMathsPanel.C:144
 msgid "Binary Ops"
-msgstr ""
+msgstr "Binaire operanden"
 
 #: src/frontends/xforms/FormMathsPanel.C:148
 msgid "Bin Relations"
-msgstr ""
+msgstr "Binaire relaties"
 
 #: src/frontends/xforms/FormMathsPanel.C:169
 msgid "Big Operators"
-msgstr ""
+msgstr "Grote operanden"
 
 #: src/frontends/xforms/FormMathsPanel.C:173
-#, fuzzy
 msgid "AMS Misc"
-msgstr "Div."
+msgstr "AMS overig"
 
 #: src/frontends/xforms/FormMathsPanel.C:178
 msgid "AMS Arrows"
-msgstr ""
+msgstr "AMS pijlen"
 
 #: src/frontends/xforms/FormMathsPanel.C:183
-#, fuzzy
 msgid "AMS Relations"
-msgstr "Scheiding"
+msgstr "AMS relaties"
 
 #: src/frontends/xforms/FormMathsPanel.C:188
 msgid "AMS Negated Rel"
-msgstr ""
+msgstr "AMS negaties"
 
 #: src/frontends/xforms/FormMathsPanel.C:193
 msgid "AMS Operators"
-msgstr ""
+msgstr "AMS operanden"
 
 #: src/frontends/xforms/FormMathsSpace.C:32
 #, fuzzy
@@ -11078,7 +10785,7 @@ msgstr "Wit"
 
 #: src/frontends/xforms/FormMathsStyle.C:46
 msgid "Maths Styles & Fonts"
-msgstr ""
+msgstr "Wiskunde stijlen en lettertypen"
 
 #: src/frontends/xforms/FormMinipage.C:30
 #, fuzzy
@@ -11087,7 +10794,7 @@ msgstr "streep minipagina"
 
 #: src/frontends/xforms/FormMinipage.C:114
 msgid "Invalid Length!"
-msgstr ""
+msgstr "Ongeldige lengte!"
 
 #: src/frontends/xforms/FormParagraph.C:132
 #, fuzzy
@@ -11095,23 +10802,23 @@ msgid "None|DefSkip|SmallSkip|MedSkip|BigSkip|VFill|Length"
 msgstr ""
 " Geen | Standaard | Klein | Middel | Groot | Vertikale vulling | Lengte "
 
+# Regelafstand
 #: src/frontends/xforms/FormParagraph.C:136
-#, fuzzy
 msgid "Default|Single|OneHalf|Double|Custom"
-msgstr " Enkel | Anderhalf | Dubbel | Ander "
+msgstr "Standaard|Enkel|Anderhalf|Dubbel|Zelf instellen"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormParagraph.C:151
 msgid "Add a separator line above this paragraph."
-msgstr ""
+msgstr "Boven deze alinea een scheidingslijn toevoegen."
 
 #: src/frontends/xforms/FormParagraph.C:153
 msgid "Enforce a page break above this paragraph."
-msgstr ""
+msgstr "Boven deze alinea een paginascheiding forceren."
 
 #: src/frontends/xforms/FormParagraph.C:155
 msgid "Add additional space above this paragraph."
-msgstr ""
+msgstr "Boven deze alinea extra ruimte toevoegen."
 
 #: src/frontends/xforms/FormParagraph.C:157
 #, fuzzy
@@ -11120,7 +10827,7 @@ msgstr "onderkant"
 
 #: src/frontends/xforms/FormParagraph.C:160
 msgid "Add a separator line below this paragraph."
-msgstr ""
+msgstr "Onder deze alinea een scheidingslijn toevoegen."
 
 #: src/frontends/xforms/FormParagraph.C:162
 msgid "Enforce a page break below this paragraph."
@@ -11142,7 +10849,6 @@ msgid " (default)"
 msgstr " (standaard)"
 
 #: src/frontends/xforms/FormPreamble.C:28
-#, fuzzy
 msgid "LaTeX preamble"
 msgstr "LaTeX preamble"
 
@@ -11155,9 +10861,8 @@ msgid "Lang Opts"
 msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:192
-#, fuzzy
 msgid "Conversion"
-msgstr "Omvormingsfouten!"
+msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:195
 #, fuzzy
@@ -11171,7 +10876,7 @@ msgstr "drijvende delen"
 
 #: src/frontends/xforms/FormPreferences.C:513
 msgid "LyX objects that can be assigned a color."
-msgstr ""
+msgstr "LyX objecten die een kleur toegewezen kunnen krijgen."
 
 #: src/frontends/xforms/FormPreferences.C:516
 msgid ""
@@ -11187,23 +10892,20 @@ msgid "Toggle between RGB and HSV color spaces."
 msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:710
-#, fuzzy
 msgid "GUI background"
-msgstr "achtergrond"
+msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:716
 msgid "GUI text"
 msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:722
-#, fuzzy
 msgid "GUI selection"
-msgstr "selectie"
+msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:728
-#, fuzzy
 msgid "GUI pointer"
-msgstr "Kan niet printen"
+msgstr ""
 
 #: src/frontends/xforms/FormPreferences.C:963
 msgid "All the currently defined converters known to LyX."
@@ -11340,9 +11042,7 @@ msgstr "Lettertypes moeten positief zijn!"
 msgid ""
 "Fonts must be input in the order Tiny > Smallest > Smaller > Small > Normal "
 "> Large > Larger > Largest > Huge > Huger."
-msgstr ""
-"Lettertypes moeten ingevoerd worden in de volgorde  Minuscuul > Kleinst > "
-"Kleiner > Klein > Normaal > Groot > Groter > Grootst > Enorm > Gigantisch."
+msgstr "Lettertypes moeten ingevoerd worden in de volgorde  Minuscuul > Kleinst > Kleiner > Klein > Normaal > Groot > Groter > Grootst > Enorm > Gigantisch."
 
 #: src/frontends/xforms/FormPreferences.C:2826
 msgid " ispell | aspell "
@@ -11389,20 +11089,18 @@ msgid "Last page."
 msgstr "Laatste pagina."
 
 #: src/frontends/xforms/FormPrint.C:97
-#, fuzzy
 msgid "Print the odd numbered pages."
-msgstr "Paginanummer invoegen|#P"
+msgstr "De oneven pagina's afdrukken."
 
 #: src/frontends/xforms/FormPrint.C:99
-#, fuzzy
 msgid "Print the even numbered pages."
-msgstr "Paginanummer invoegen|#P"
+msgstr "De even pagina's afdrukken."
 
 #. set up the tooltips for Copies
 #: src/frontends/xforms/FormPrint.C:103
 #, fuzzy
 msgid "Number of copies to be printed."
-msgstr "Controleer 'aantal kopieen'\""
+msgstr "Aantal kopieen"
 
 #: src/frontends/xforms/FormPrint.C:105
 msgid "Sort the copies."
@@ -11414,23 +11112,20 @@ msgstr "De volgorde van de afgedrukte pagina's omkeren."
 
 #. set up the tooltips
 #: src/frontends/xforms/FormRef.C:70
-#, fuzzy
 msgid "Select a document for references."
-msgstr "Kies document ter opening"
+msgstr ""
 
 #: src/frontends/xforms/FormRef.C:72
 msgid "Sort the references alphabetically."
-msgstr ""
+msgstr "De verwijzingen alfabetisch sorteren."
 
 #: src/frontends/xforms/FormRef.C:74 src/frontends/xforms/FormRef.C:281
-#, fuzzy
 msgid "Go to selected reference."
-msgstr "g Naar verwijzing|#G"
+msgstr ""
 
 #: src/frontends/xforms/FormRef.C:76
-#, fuzzy
 msgid "Update the list of references."
-msgstr "Verwijzing invoegen"
+msgstr ""
 
 #: src/frontends/xforms/FormRef.C:78
 msgid "Select format style of the reference."
@@ -11474,9 +11169,8 @@ msgid "Replace all by replacement string."
 msgstr ""
 
 #: src/frontends/xforms/FormSearch.C:56
-#, fuzzy
 msgid "Do case sensitive search."
-msgstr "s Hoofdlettergevoelig|#s#S"
+msgstr "Hoofdlettergevoelig zoekopdracht uitvoeren."
 
 #: src/frontends/xforms/FormSearch.C:58
 msgid "Search only matching words."
@@ -11498,10 +11192,10 @@ msgid ""
 "be replaced by the name of this file."
 msgstr ""
 
+# Tonen
 #: src/frontends/xforms/FormShowFile.C:26
-#, fuzzy
 msgid "Show File"
-msgstr "f Bestand"
+msgstr "Bestand weergeven"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormSpellchecker.C:60
@@ -11514,9 +11208,8 @@ msgstr ""
 
 #: src/frontends/xforms/FormSpellchecker.C:67
 #: src/frontends/xforms/FormSpellchecker.C:148
-#, fuzzy
 msgid "Start the spellingchecker."
-msgstr "Spellingscontrole starten|#S"
+msgstr "Spellingscontrole starten."
 
 #: src/frontends/xforms/FormSpellchecker.C:69
 #, fuzzy
@@ -11543,14 +11236,13 @@ msgid "Shows word count and progress on spell check."
 msgstr ""
 
 #: src/frontends/xforms/FormSpellchecker.C:140
-#, fuzzy
 msgid "Stop|#S"
-msgstr " van "
+msgstr "Stoppen|#S"
 
 #: src/frontends/xforms/FormSpellchecker.C:147
 #, fuzzy
 msgid "Stop the spellingchecker."
-msgstr "Spellingscontrole starten|#S"
+msgstr "Spellingscontrole beeindigen"
 
 #: src/frontends/xforms/FormTabular.C:43
 #, fuzzy
@@ -12806,7 +12498,7 @@ msgstr "Een document onder de naam"
 msgid "already exists. Overwrite?"
 msgstr "bestaat al. Overschrijven?"
 
-#: src/lyxfunc.C:1909
+#: src/lyxfunc.C:1917
 msgid "Welcome to LyX!"
 msgstr "Welkom in LyX!"
 
@@ -13154,11 +12846,11 @@ msgstr ""
 
 #: src/lyxrc.C:2110
 msgid "The LaTeX command for changing back to the language of the document."
-msgstr ""
+msgstr "De LaTeX-opdracht om weer terug te keren naar de taal van het document."
 
 #: src/lyxrc.C:2114
 msgid "The LaTeX command for local changing of the language."
-msgstr ""
+msgstr "De LaTeX-opdracht om tijdelijk van taal te veranderen."
 
 #: src/lyxrc.C:2119
 #, no-c-format
@@ -13221,59 +12913,59 @@ msgstr "Controleer de inhoud van bestand \"textclass.lst\""
 msgid "Sorry, has to exit :-("
 msgstr "Helaas, moet ophouden :-("
 
-#: src/lyxvc.C:86
+#: src/lyxvc.C:82
 msgid "File not saved"
 msgstr "Bestand niet opgeslagen"
 
-#: src/lyxvc.C:87
+#: src/lyxvc.C:83
 msgid "You must save the file"
 msgstr "U moet het bestand opslaan"
 
-#: src/lyxvc.C:88
+#: src/lyxvc.C:84
 msgid "before it can be registered."
 msgstr "voordat het kan worden geregistreerd"
 
 # voortzetten -> doorgaan?
-#: src/lyxvc.C:118 src/lyxvc.C:150
+#: src/lyxvc.C:114 src/lyxvc.C:146
 msgid "Save document and proceed?"
 msgstr "Document opslaan en voortzetten?"
 
-#: src/lyxvc.C:130
+#: src/lyxvc.C:126
 msgid "LyX VC: Initial description"
 msgstr "LyX VC: Oorspronkelijke beschrijving"
 
-#: src/lyxvc.C:131
+#: src/lyxvc.C:127
 msgid "(no initial description)"
 msgstr "(geen oorspronkelijke omschrijving)"
 
-#: src/lyxvc.C:136
+#: src/lyxvc.C:132
 msgid "This document has NOT been registered."
 msgstr "Dit document is NIET geregistreerd."
 
-#: src/lyxvc.C:161
+#: src/lyxvc.C:157
 msgid "LyX VC: Log Message"
 msgstr "LyX VC: Logmededeling"
 
-#: src/lyxvc.C:164
+#: src/lyxvc.C:160
 msgid "(no log message)"
 msgstr "(geen logbericht)"
 
-#: src/lyxvc.C:179
+#: src/lyxvc.C:175
 msgid "Ignore changes and proceed with check out?"
 msgstr "Veranderingen negeren en voortzetten met checkout?"
 
 #. Here we should check if the buffer is dirty. And if it is
 #. we should warn the user that reverting will discard all
 #. changes made since the last check in.
-#: src/lyxvc.C:193
+#: src/lyxvc.C:190
 msgid "When you revert, you will loose all changes made"
 msgstr "Als u terugkeert naar vorige versie, verliest u alle veranderingen"
 
-#: src/lyxvc.C:194
+#: src/lyxvc.C:191
 msgid "to the document since the last check in."
 msgstr "aan het document sinds laatste inboeking."
 
-#: src/lyxvc.C:195
+#: src/lyxvc.C:192
 msgid "Do you still want to do it?"
 msgstr "Wilt u dit alsnog doen?"
 
@@ -13425,232 +13117,3 @@ msgstr "Merkteken geplaatst"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr "LyX-functie 'layout' heeft een argument nodig."
-
-#, fuzzy
-#~ msgid "tiny"
-#~ msgstr "Minuscuul"
-
-#, fuzzy
-#~ msgid "script"
-#~ msgstr "Postscript|#P"
-
-#~ msgid "footnote"
-#~ msgstr "voetnoot"
-
-#, fuzzy
-#~ msgid "small"
-#~ msgstr "Klein"
-
-#, fuzzy
-#~ msgid "normal"
-#~ msgstr "Normaal"
-
-#, fuzzy
-#~ msgid "large"
-#~ msgstr "Groot"
-
-#, fuzzy
-#~ msgid "huge"
-#~ msgstr "Enorm"
-
-#, fuzzy
-#~ msgid "Update style list"
-#~ msgstr "Tonen"
-
-#, fuzzy
-#~ msgid "Entry:"
-#~ msgstr "Label invoegen"
-
-#, fuzzy
-#~ msgid "Meanings|#M"
-#~ msgstr "Toetsenkaarten"
-
-#, fuzzy
-#~ msgid "&Selection"
-#~ msgstr "selectie"
-
-#, fuzzy
-#~ msgid "Read Only"
-#~ msgstr " (tegen schrijven beveiligd)"
-
-#, fuzzy
-#~ msgid "Toggle limits|l"
-#~ msgstr "Vet aan/uit"
-
-#, fuzzy
-#~ msgid "XAlignAt Environment"
-#~ msgstr "Uitlijning"
-
-#, fuzzy
-#~ msgid "XXAlignAt Environment"
-#~ msgstr "Uitlijning"
-
-#, fuzzy
-#~ msgid "AMS xalignat Environment|x"
-#~ msgstr "Uitlijning"
-
-#, fuzzy
-#~ msgid "AMS xxalignat Environment"
-#~ msgstr "Uitlijning"
-
-#, fuzzy
-#~ msgid "Size:|#Z"
-#~ msgstr "z Grootte:|#Z"
-
-#, fuzzy
-#~ msgid "Cancel|#N^["
-#~ msgstr "Annuleren|^["
-
-#, fuzzy
-#~ msgid "Cancel|#C^["
-#~ msgstr "Annuleren|^["
-
-#, fuzzy
-#~ msgid "Width|#W"
-#~ msgstr "Breedte"
-
-#, fuzzy
-#~ msgid "Height|#H"
-#~ msgstr "Hoogte"
-
-#, fuzzy
-#~ msgid "Rows"
-#~ msgstr "Rijen"
-
-#, fuzzy
-#~ msgid "Columns "
-#~ msgstr "Kolommen"
-
-#, fuzzy
-#~ msgid "Encoding|#E"
-#~ msgstr "d Codering:|#D"
-
-#, fuzzy
-#~ msgid "smallest"
-#~ msgstr "Kleinst"
-
-#, fuzzy
-#~ msgid "smaller"
-#~ msgstr "Kleiner"
-
-#, fuzzy
-#~ msgid "larger"
-#~ msgstr "Groot"
-
-#, fuzzy
-#~ msgid "largest"
-#~ msgstr "Grootst"
-
-#, fuzzy
-#~ msgid "huger"
-#~ msgstr "Enorm"
-
-#, fuzzy
-#~ msgid "Use alternative language|#a"
-#~ msgstr "u Gebruik alternatieve taal|#U"
-
-#, fuzzy
-#~ msgid "Use escape characters|#e"
-#~ msgstr "speciaal teken"
-
-#, fuzzy
-#~ msgid "Use personal dictionary|#d"
-#~ msgstr "i Aan eigen woordenlijst toevoegen|#I"
-
-#, fuzzy
-#~ msgid "name"
-#~ msgstr "Naam"
-
-#, fuzzy
-#~ msgid "command"
-#~ msgstr "commando-inzet"
-
-#, fuzzy
-#~ msgid "page range"
-#~ msgstr "paginascheiding"
-
-#, fuzzy
-#~ msgid "copies"
-#~ msgstr "Kopiën"
-
-#, fuzzy
-#~ msgid "reverse"
-#~ msgstr "r Omgekeerde vlg.|#R"
-
-#, fuzzy
-#~ msgid "to printer"
-#~ msgstr "Kan niet printen"
-
-#, fuzzy
-#~ msgid "spool command"
-#~ msgstr "Opdracht beschrijven"
-
-#, fuzzy
-#~ msgid "paper type"
-#~ msgstr "Papier:|#P"
-
-#, fuzzy
-#~ msgid "even pages"
-#~ msgstr "Taal"
-
-#, fuzzy
-#~ msgid "odd pages"
-#~ msgstr "Taal"
-
-#, fuzzy
-#~ msgid "collated"
-#~ msgstr "latex"
-
-#, fuzzy
-#~ msgid "landscape"
-#~ msgstr "Landschap|#L"
-
-#, fuzzy
-#~ msgid "to file"
-#~ msgstr "[geen bestand]"
-
-#, fuzzy
-#~ msgid "extra options"
-#~ msgstr "Extra opties"
-
-#, fuzzy
-#~ msgid "paper size"
-#~ msgstr "Papier:|#P"
-
-#, fuzzy
-#~ msgid "to|#t"
-#~ msgstr " van "
-
-#, fuzzy
-#~ msgid "Close|#C^["
-#~ msgstr "Sluiten|^["
-
-#, fuzzy
-#~ msgid "Entry : "
-#~ msgstr "Label invoegen"
-
-#, fuzzy
-#~ msgid "Name|#N"
-#~ msgstr "Naam"
-
-#, fuzzy
-#~ msgid "Quote style"
-#~ msgstr "Type aanhalingstekens ingesteld"
-
-#, fuzzy
-#~ msgid "&Browse ..."
-#~ msgstr "Bladeren...|#B"
-
-#~ msgid "Cannot open specified file: "
-#~ msgstr "Kan dit bestand niet openen: "
-
-#~ msgid "Onehalf"
-#~ msgstr "Een-half"
-
-#, fuzzy
-#~ msgid "No LaTeX log file found"
-#~ msgstr "Geen waarschuwingen."
-
-#, fuzzy
-#~ msgid "Smallskip"
-#~ msgstr "Kleinst"
