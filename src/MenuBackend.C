@@ -493,7 +493,7 @@ void expandFloatListInsert(Menu & tomenu, LyXView const * view)
 	}
 
 	FloatList const & floats =
-		view->buffer()->params.getLyXTextClass().floats();
+		view->buffer()->params().getLyXTextClass().floats();
 	FloatList::const_iterator cit = floats.begin();
 	FloatList::const_iterator end = floats.end();
 	for (; cit != end; ++cit) {
@@ -516,7 +516,7 @@ void expandFloatInsert(Menu & tomenu, LyXView const * view)
 	}
 
 	FloatList const & floats =
-		view->buffer()->params.getLyXTextClass().floats();
+		view->buffer()->params().getLyXTextClass().floats();
 	FloatList::const_iterator cit = floats.begin();
 	FloatList::const_iterator end = floats.end();
 	for (; cit != end; ++cit) {
@@ -655,7 +655,7 @@ void expandBranches(Menu & tomenu, LyXView const * view)
 	if (!view || !view->buffer())
 		return;
 
-	BufferParams const & params = view->buffer()->params;
+	BufferParams const & params = view->buffer()->params();
 
 	std::list<Branch>::const_iterator cit = params.branchlist.begin();
 	std::list<Branch>::const_iterator end = params.branchlist.end();

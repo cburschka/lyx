@@ -140,8 +140,8 @@ void LyXView::updateLayoutChoice()
 	}
 
 	// update the layout display
-	if (toolbar_->updateLayoutList(buffer()->params.textclass)) {
-		current_layout = buffer()->params.getLyXTextClass().defaultLayoutName();
+	if (toolbar_->updateLayoutList(buffer()->params().textclass)) {
+		current_layout = buffer()->params().getLyXTextClass().defaultLayoutName();
 	}
 
 	string const & layout =

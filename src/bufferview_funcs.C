@@ -299,7 +299,7 @@ string const currentState(BufferView * bv)
 	Buffer * buffer = bv->buffer();
 	LyXCursor const & c(text->cursor);
 
-	bool const show_change = buffer->params.tracking_changes
+	bool const show_change = buffer->params().tracking_changes
 		&& c.pos() != c.par()->size()
 		&& c.par()->lookupChange(c.pos()) != Change::UNCHANGED;
 
@@ -319,11 +319,11 @@ string const currentState(BufferView * bv)
 	// font. (Asger)
 	LyXFont font = text->real_current_font;
 	LyXFont const & defaultfont =
-		buffer->params.getLyXTextClass().defaultfont();
+		buffer->params().getLyXTextClass().defaultfont();
 	font.reduce(defaultfont);
 
 	// avoid _(...) re-entrance problem
-	string const s = font.stateText(&buffer->params);
+	string const s = font.stateText(&buffer->params());
 	state << bformat(_("Font: %1$s"), s);
 
 	// state << bformat(_("Font: %1$s"), font.stateText(&buffer->params));

@@ -33,7 +33,7 @@ void ControlPreamble::apply()
 
 	view().apply();
 
-	buffer()->params.preamble = params();
+	buffer()->params().preamble = params();
 	buffer()->markDirty();
 	lv_.message(_("LaTeX preamble set"));
 }
@@ -53,7 +53,7 @@ void ControlPreamble::params(string const & newparams)
 
 void ControlPreamble::setParams()
 {
-	params_ = buffer()->params.preamble;
+	params_ = buffer()->params().preamble;
 }
 
 

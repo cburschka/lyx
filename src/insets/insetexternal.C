@@ -406,7 +406,7 @@ int InsetExternal::latex(Buffer const & buf, ostream & os,
 	// If we're running through the LaTeX compiler, we should write the
 	// generated files in the bufer's temporary directory.
 	bool const external_in_tmpdir =
-		lyxrc.use_tempdir && !buf.tmppath.empty() && !runparams.nice;
+		lyxrc.use_tempdir && !buf.temppath().empty() && !runparams.nice;
 
 	// If the template has specified a PDFLaTeX output, then we try and
 	// use that.
@@ -518,7 +518,7 @@ void InsetExternal::updateExternal(string const & format,
 		// We are running stuff through LaTeX
 		string const temp_file =
 			support::MakeAbsPath(params_.filename.mangledFilename(),
-					     buf.tmppath);
+					     buf.temppath());
 		unsigned long const from_checksum = support::sum(from_file);
 		unsigned long const temp_checksum = support::sum(temp_file);
 
@@ -573,7 +573,7 @@ string const doSubstitution(InsetExternal::Params const & params,
 		string contents;
 
 		string const filepath = support::IsFileReadable(file) ?
-			buffer.filePath() : buffer.tmppath;
+			buffer.filePath() : buffer.temppath();
 		support::Path p(filepath);
 
 		if (support::IsFileReadable(file))

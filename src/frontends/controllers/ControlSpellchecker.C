@@ -97,7 +97,7 @@ void ControlSpellchecker::startSession()
 		return;
 	}
 
-	speller_.reset(getSpeller(buffer()->params));
+	speller_.reset(getSpeller(buffer()->params()));
 
 	// reset values to initial
 	newval_ = 0.0;

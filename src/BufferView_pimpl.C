@@ -426,7 +426,7 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 				textcache.show(lyxerr, "resizeCurrentBuffer");
 		} else {
 			lyxerr << "no text in cache!" << endl;
-			bv_->text = new LyXText(bv_, 0, false, bv_->buffer()->paragraphs);
+			bv_->text = new LyXText(bv_, 0, false, bv_->buffer()->paragraphs());
 			bv_->text->init(bv_);
 		}
 
@@ -669,7 +669,7 @@ bool BufferView::Pimpl::available() const
 
 Change const BufferView::Pimpl::getCurrentChange()
 {
-	if (!bv_->buffer()->params.tracking_changes)
+	if (!bv_->buffer()->params().tracking_changes)
 		return Change(Change::UNCHANGED);
 
 	LyXText * text = bv_->getLyXText();
@@ -914,19 +914,19 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 void BufferView::Pimpl::trackChanges()
 {
 	Buffer * buf(bv_->buffer());
-	bool const tracking(buf->params.tracking_changes);
+	bool const tracking(buf->params().tracking_changes);
 
 	if (!tracking) {
 		ParIterator const end = buf->par_iterator_end();
 		for (ParIterator it = buf->par_iterator_begin(); it != end; ++it)
 			it->trackChanges();
-		buf->params.tracking_changes = true;
+		buf->params().tracking_changes = true;
 
 		// we cannot allow undos beyond the freeze point
-		buf->undostack.clear();
+		buf->undostack().clear();
 	} else {
 		update();
-		bv_->text->setCursor(buf->paragraphs.begin(), 0);
+		bv_->text->setCursor(buf->paragraphs().begin(), 0);
 #warning changes FIXME
 		//moveCursorUpdate(false);
 
@@ -939,10 +939,10 @@ void BufferView::Pimpl::trackChanges()
 		ParIterator const end = buf->par_iterator_end();
 		for (ParIterator it = buf->par_iterator_begin(); it != end; ++it)
 			it->untrackChanges();
-		buf->params.tracking_changes = false;
+		buf->params().tracking_changes = false;
 	}
 
-	buf->redostack.clear();
+	buf->redostack().clear();
 }
 
 
@@ -1006,7 +1006,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		<< " button[" << ev.button() << ']'
 		<< endl;
 
-	LyXTextClass const & tclass = buffer_->params.getLyXTextClass();
+	LyXTextClass const & tclass = buffer_->params().getLyXTextClass();
 
 	switch (ev.action) {
 
@@ -1264,7 +1264,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		break;
 
 	case LFUN_ACCEPT_ALL_CHANGES: {
-		bv_->text->setCursor(bv_->buffer()->paragraphs.begin(), 0);
+		bv_->text->setCursor(bv_->buffer()->paragraphs().begin(), 0);
 #warning FIXME changes
 		//moveCursorUpdate(false);
 
@@ -1276,7 +1276,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	}
 
 	case LFUN_REJECT_ALL_CHANGES: {
-		bv_->text->setCursor(bv_->buffer()->paragraphs.begin(), 0);
+		bv_->text->setCursor(bv_->buffer()->paragraphs().begin(), 0);
 #warning FIXME changes
 		//moveCursorUpdate(false);
 
@@ -1327,15 +1327,15 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 
 	beforeChange(bv_->text);
 	if (!lout.empty()) {
-		bv_->text->breakParagraph(bv_->buffer()->paragraphs);
+		bv_->text->breakParagraph(bv_->buffer()->paragraphs());
 
 		if (!bv_->text->cursor.par()->empty()) {
 			bv_->text->cursorLeft(bv_);
-			bv_->text->breakParagraph(bv_->buffer()->paragraphs);
+			bv_->text->breakParagraph(bv_->buffer()->paragraphs());
 		}
 
 		string lres = lout;
-		LyXTextClass const & tclass = buffer_->params.getLyXTextClass();
+		LyXTextClass const & tclass = buffer_->params().getLyXTextClass();
 		bool hasLayout = tclass.hasLayout(lres);
 		string lay = tclass.defaultLayoutName();
 

@@ -192,7 +192,7 @@ void InsetList::deleteInsetsLyXText(BufferView * bv)
 
 void InsetList::insetsOpenCloseBranch(BufferView * bv)
 {
-	BufferParams bp = bv->buffer()->params;
+	BufferParams bp = bv->buffer()->params();
 	List::iterator it = list.begin();
 	List::iterator end = list.end();
 	for (; it != end; ++it) {

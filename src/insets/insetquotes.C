@@ -265,7 +265,7 @@ int InsetQuotes::latex(Buffer const & buf, ostream & os,
 		parOwner()->getFont(buf->params, curr_pos).language()->babel();
 #else
 	// And this is not the way... (Lgb)
-	string const curr_lang = buf.params.language->lang();
+	string const curr_lang = buf.params().language->lang();
 #endif
 	const int quoteind = quote_index[side_][language_];
 	string qstr;

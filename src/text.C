@@ -299,9 +299,10 @@ void LyXText::computeBidiTables(ParagraphList::iterator pit,
 	vis2log_list[bidi_end + 1 - bidi_start] = -1;
 	log2vis_list[bidi_end + 1 - bidi_start] = -1;
 
+	BufferParams const & bufparams = buf.params();
 	pos_type stack[2];
 	bool const rtl_par =
-		pit->isRightToLeftPar(buf.params);
+		pit->isRightToLeftPar(bufparams);
 	int level = 0;
 	bool rtl = false;
 	bool rtl0 = false;
@@ -314,12 +315,12 @@ void LyXText::computeBidiTables(ParagraphList::iterator pit,
 			 !pit->isLineSeparator(lpos + 1) &&
 			 !pit->isNewline(lpos + 1))
 			? lpos + 1 : lpos;
-		LyXFont font = pit->getFontSettings(buf.params, pos);
+		LyXFont font = pit->getFontSettings(bufparams, pos);
 		if (pos != lpos && 0 < lpos && rtl0 && font.isRightToLeft() &&
 		    font.number() == LyXFont::ON &&
-		    pit->getFontSettings(buf.params, lpos - 1).number()
+		    pit->getFontSettings(bufparams, lpos - 1).number()
 		    == LyXFont::ON) {
-			font = pit->getFontSettings(buf.params, lpos);
+			font = pit->getFontSettings(bufparams, lpos);
 			is_space = false;
 		}
 
@@ -405,7 +406,7 @@ bool LyXText::isBoundary(Buffer const & buf, Paragraph const & par,
 	bool const rtl = bidi_level(pos - 1) % 2;
 	bool const rtl2 = bidi_InRange(pos)
 		? bidi_level(pos) % 2
-		: par.isRightToLeftPar(buf.params);
+		: par.isRightToLeftPar(buf.params());
 	return rtl != rtl2;
 }
 
@@ -419,7 +420,7 @@ bool LyXText::isBoundary(Buffer const & buf, Paragraph const & par,
 	bool const rtl = font.isVisibleRightToLeft();
 	bool const rtl2 = bidi_InRange(pos)
 		? bidi_level(pos) % 2
-		: par.isRightToLeftPar(buf.params);
+		: par.isRightToLeftPar(buf.params());
 	return rtl != rtl2;
 }
 
@@ -427,7 +428,7 @@ bool LyXText::isBoundary(Buffer const & buf, Paragraph const & par,
 int LyXText::leftMargin(ParagraphList::iterator pit, Row const & row) const
 {
 	LyXTextClass const & tclass =
-		bv()->buffer()->params.getLyXTextClass();
+		bv()->buffer()->params().getLyXTextClass();
 	LyXLayout_ptr const & layout = pit->layout();
 
 	string parindent = layout->parindent;
@@ -585,7 +586,7 @@ int LyXText::leftMargin(ParagraphList::iterator pit, Row const & row) const
 				(pit->inInset()->owner()->lyxCode() != InsetOld::TABULAR_CODE &&
 				 pit->inInset()->owner()->lyxCode() != InsetOld::ERT_CODE))
 		    && (pit->layout() != tclass.defaultLayout() ||
-			bv()->buffer()->params.paragraph_separation ==
+			bv()->buffer()->params().paragraph_separation ==
 			BufferParams::PARSEP_INDENT)) {
 			x += font_metrics::signedWidth(parindent,
 						  tclass.defaultfont());
@@ -602,7 +603,7 @@ int LyXText::leftMargin(ParagraphList::iterator pit, Row const & row) const
 int LyXText::rightMargin(ParagraphList::iterator pit,
 	Buffer const & buf, Row const &) const
 {
-	LyXTextClass const & tclass = buf.params.getLyXTextClass();
+	LyXTextClass const & tclass = buf.params().getLyXTextClass();
 	LyXLayout_ptr const & layout = pit->layout();
 
 	return PAPER_MARGIN
@@ -907,7 +908,7 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, RowList::iterator rit)
 	if (!pit->params().spacing().isDefault())
 		spacing_val = pit->params().spacing().getValue();
 	else
-		spacing_val = bv()->buffer()->params.spacing.getValue();
+		spacing_val = bv()->buffer()->params().spacing.getValue();
 	//lyxerr << "spacing_val = " << spacing_val << endl;
 
 	int maxasc  = int(font_metrics::maxAscent(font) *
@@ -985,22 +986,22 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, RowList::iterator rit)
 
 	// is it a top line?
 	if (!rit->pos()) {
-
+		BufferParams const & bufparams = bv()->buffer()->params();
 		// some parksips VERY EASY IMPLEMENTATION
-		if (bv()->buffer()->params.paragraph_separation ==
+		if (bv()->buffer()->params().paragraph_separation ==
 			BufferParams::PARSEP_SKIP)
 		{
 			if (layout->isParagraph()
 				&& pit->getDepth() == 0
 				&& pit != ownerParagraphs().begin())
 			{
-				maxasc += bv()->buffer()->params.getDefSkip().inPixels(*bv());
+				maxasc += bufparams.getDefSkip().inPixels(*bv());
 			} else if (pit != ownerParagraphs().begin() &&
 				   boost::prior(pit)->layout()->isParagraph() &&
 				   boost::prior(pit)->getDepth() == 0)
 			{
 				// is it right to use defskip here too? (AS)
-				maxasc += bv()->buffer()->params.getDefSkip().inPixels(*bv());
+				maxasc += bufparams.getDefSkip().inPixels(*bv());
 			}
 		}
 
@@ -1026,13 +1027,13 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, RowList::iterator rit)
 		// This is special code for the chapter, since the label of this
 		// layout is printed in an extra row
 		if (layout->labeltype == LABEL_COUNTER_CHAPTER
-			&& bv()->buffer()->params.secnumdepth >= 0)
+			&& bufparams.secnumdepth >= 0)
 		{
 			float spacing_val = 1.0;
 			if (!pit->params().spacing().isDefault()) {
 				spacing_val = pit->params().spacing().getValue();
 			} else {
-				spacing_val = bv()->buffer()->params.spacing.getValue();
+				spacing_val = bufparams.spacing.getValue();
 			}
 
 			labeladdon = int(font_metrics::maxDescent(labelfont) *
@@ -1054,7 +1055,7 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, RowList::iterator rit)
 			if (!pit->params().spacing().isDefault()) {
 				spacing_val = pit->params().spacing().getValue();
 			} else {
-				spacing_val = bv()->buffer()->params.spacing.getValue();
+				spacing_val = bufparams.spacing.getValue();
 			}
 
 			labeladdon = int(
@@ -1191,7 +1192,7 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 		return;
 
 	LyXTextClass const & tclass =
-		bv()->buffer()->params.getLyXTextClass();
+		bv()->buffer()->params().getLyXTextClass();
 	LyXLayout_ptr const & layout = cursor.par()->layout();
 
 	// this is only allowed, if the current paragraph is not empty or caption
@@ -1220,7 +1221,7 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	// paragraph before or behind and we should react on that one
 	// but we can fix this in 1.3.0 (Jug 20020509)
 	bool const isempty = (cursor.par()->allowEmpty() && cursor.par()->empty());
-	::breakParagraph(bv()->buffer()->params, paragraphs, cursor.par(),
+	::breakParagraph(bv()->buffer()->params(), paragraphs, cursor.par(),
 			 cursor.pos(), keep_layout);
 
 #warning Trouble Point! (Lgb)
@@ -1404,7 +1405,7 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 	double x = 0;
 
 	bool const is_rtl =
-		pit->isRightToLeftPar(bv()->buffer()->params);
+		pit->isRightToLeftPar(bv()->buffer()->params());
 	if (is_rtl)
 		x = workWidth() > 0 ? rightMargin(pit, *bv()->buffer(), *rit) : 0;
 	else
@@ -1929,15 +1930,16 @@ void LyXText::backspace()
 		// layout. I think it is a real bug of all other
 		// word processors to allow it. It confuses the user.
 		// Correction: Pasting is always allowed with standard-layout
-		LyXTextClass const & tclass =
-			bv()->buffer()->params.getLyXTextClass();
+		Buffer & buf = *bv()->buffer();
+		BufferParams const & bufparams = buf.params();
+		LyXTextClass const & tclass = bufparams.getLyXTextClass();
 
 		if (cursor.par() != tmppit
 		    && (cursor.par()->layout() == tmppit->layout()
 			|| tmppit->layout() == tclass.defaultLayout())
 		    && cursor.par()->getAlign() == tmppit->getAlign()) {
-			mergeParagraph(bv()->buffer()->params,
-				bv()->buffer()->paragraphs, cursor.par());
+			mergeParagraph(bufparams,
+				       buf.paragraphs(), cursor.par());
 
 			if (cursor.pos() && cursor.par()->isSeparator(cursor.pos() - 1))
 				cursor.pos(cursor.pos() - 1);

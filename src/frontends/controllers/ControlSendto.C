@@ -120,8 +120,8 @@ void ControlSendto::apply()
 	if (format_->name() == "lyx") {
 		filename = ChangeExtension(buffer()->getLatexName(false),
 					   format_->extension());
-		if (!buffer()->tmppath.empty())
-			filename = AddName(buffer()->tmppath, filename);
+		if (!buffer()->temppath().empty())
+			filename = AddName(buffer()->temppath(), filename);
 
 		buffer()->writeFile(filename);
 

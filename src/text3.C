@@ -447,7 +447,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_WORDRIGHT:
 		if (!selection.mark())
 			bv->beforeChange(this);
-		if (cursor.par()->isRightToLeftPar(bv->buffer()->params))
+		if (cursor.par()->isRightToLeftPar(bv->buffer()->params()))
 			cursorLeftOneWord();
 		else
 			cursorRightOneWord();
@@ -457,7 +457,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_WORDLEFT:
 		if (!selection.mark())
 			bv->beforeChange(this);
-		if (cursor.par()->isRightToLeftPar(bv->buffer()->params))
+		if (cursor.par()->isRightToLeftPar(bv->buffer()->params()))
 			cursorRightOneWord();
 		else
 			cursorLeftOneWord();
@@ -481,7 +481,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_RIGHTSEL:
 		if (!selection.set())
 			selection.cursor = cursor;
-		if (cursor.par()->isRightToLeftPar(bv->buffer()->params))
+		if (cursor.par()->isRightToLeftPar(bv->buffer()->params()))
 			cursorLeft(bv);
 		else
 			cursorRight(bv);
@@ -491,7 +491,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_LEFTSEL:
 		if (!selection.set())
 			selection.cursor = cursor;
-		if (cursor.par()->isRightToLeftPar(bv->buffer()->params))
+		if (cursor.par()->isRightToLeftPar(bv->buffer()->params()))
 			cursorRight(bv);
 		else
 			cursorLeft(bv);
@@ -555,7 +555,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_WORDRIGHTSEL:
-		if (cursor.par()->isRightToLeftPar(bv->buffer()->params))
+		if (cursor.par()->isRightToLeftPar(bv->buffer()->params()))
 			cursorLeftOneWord();
 		else
 			cursorRightOneWord();
@@ -563,7 +563,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_WORDLEFTSEL:
-		if (cursor.par()->isRightToLeftPar(bv->buffer()->params))
+		if (cursor.par()->isRightToLeftPar(bv->buffer()->params()))
 			cursorRightOneWord();
 		else
 			cursorLeftOneWord();
@@ -582,7 +582,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	}
 
 	case LFUN_RIGHT: {
-		bool is_rtl = cursor.par()->isRightToLeftPar(bv->buffer()->params);
+		bool is_rtl = cursor.par()->isRightToLeftPar(bv->buffer()->params());
 		if (!selection.mark())
 			bv->beforeChange(this);
 		if (is_rtl)
@@ -605,7 +605,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_LEFT: {
 		// This is soooo ugly. Isn`t it possible to make
 		// it simpler? (Lgb)
-		bool const is_rtl = cursor.par()->isRightToLeftPar(bv->buffer()->params);
+		bool const is_rtl = cursor.par()->isRightToLeftPar(bv->buffer()->params());
 		if (!selection.mark())
 			bv->beforeChange(this);
 		LyXCursor const cur = cursor;
@@ -791,7 +791,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_BREAKPARAGRAPH:
 		replaceSelection(bv->getLyXText());
-		breakParagraph(bv->buffer()->paragraphs, 0);
+		breakParagraph(bv->buffer()->paragraphs(), 0);
 		bv->update();
 		selection.cursor = cursor;
 		bv->switchKeyMap();
@@ -800,7 +800,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
 		replaceSelection(bv->getLyXText());
-		breakParagraph(bv->buffer()->paragraphs, 1);
+		breakParagraph(bv->buffer()->paragraphs(), 1);
 		bv->update();
 		selection.cursor = cursor;
 		bv->switchKeyMap();
@@ -827,7 +827,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			}
 		}
 		else {
-			breakParagraph(bv->buffer()->paragraphs, 0);
+			breakParagraph(bv->buffer()->paragraphs(), 0);
 		}
 		bv->update();
 		selection.cursor = cur;
@@ -1054,7 +1054,7 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number)
-		LyXTextClass const & tclass = bv->buffer()->params.getLyXTextClass();
+		LyXTextClass const & tclass = bv->buffer()->params().getLyXTextClass();
 		bool hasLayout = tclass.hasLayout(cmd.argument);
 		string layout = cmd.argument;
 
@@ -1144,10 +1144,10 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 		LyXLayout_ptr const & style = pit->layout();
 
+		BufferParams const & bufparams = bv->buffer()->params();
 		if (style->pass_thru ||
-				pit->getFontSettings(bv->buffer()->params,
-					 pos).language()->lang() == "hebrew" ||
-			(!bv->insertInset(new InsetQuotes(c, bv->buffer()->params))))
+		    pit->getFontSettings(bufparams,pos).language()->lang() == "hebrew" ||
+		    !bv->insertInset(new InsetQuotes(c, bufparams)))
 			bv->owner()->dispatch(FuncRequest(LFUN_SELFINSERT, "\""));
 		break;
 	}

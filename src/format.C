@@ -171,11 +171,11 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 	if (format_name == "dvi" &&
 	    !lyxrc.view_dvi_paper_option.empty()) {
 		command += ' ' + lyxrc.view_dvi_paper_option;
-		string paper_size = buffer.params.paperSizeName();
+		string paper_size = buffer.params().paperSizeName();
 		if (paper_size == "letter")
 			paper_size = "us";
 		command += ' ' + paper_size;
-		if (buffer.params.orientation == ORIENTATION_LANDSCAPE)
+		if (buffer.params().orientation == ORIENTATION_LANDSCAPE)
 			command += 'r';
 	}
 

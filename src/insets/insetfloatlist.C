@@ -52,7 +52,7 @@ InsetFloatList::~InsetFloatList()
 
 string const InsetFloatList::getScreenLabel(Buffer const & buf) const
 {
-	FloatList const & floats = buf.params.getLyXTextClass().floats();
+	FloatList const & floats = buf.params().getLyXTextClass().floats();
 	FloatList::const_iterator it = floats[getCmdName()];
 	if (it != floats.end())
 		return _(it->second.listName());
@@ -75,7 +75,7 @@ void InsetFloatList::write(Buffer const &, ostream & os) const
 
 void InsetFloatList::read(Buffer const & buf, LyXLex & lex)
 {
-	FloatList const & floats = buf.params.getLyXTextClass().floats();
+	FloatList const & floats = buf.params().getLyXTextClass().floats();
 	string token;
 
 	if (lex.eatLine()) {
@@ -137,7 +137,7 @@ dispatch_result InsetFloatList::localDispatch(FuncRequest const & cmd)
 int InsetFloatList::latex(Buffer const & buf, ostream & os,
 			  LatexRunParams const &) const
 {
-	FloatList const & floats = buf.params.getLyXTextClass().floats();
+	FloatList const & floats = buf.params().getLyXTextClass().floats();
 	FloatList::const_iterator cit = floats[getCmdName()];
 
 	if (cit != floats.end()) {

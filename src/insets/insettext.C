@@ -154,7 +154,7 @@ void InsetText::writeParagraphData(Buffer const & buf, ostream & os) const
 	ParagraphList::const_iterator end = paragraphs.end();
 	Paragraph::depth_type dth = 0;
 	for (; it != end; ++it) {
-		it->write(buf, os, buf.params, dth);
+		it->write(buf, os, buf.params(), dth);
 	}
 }
 
@@ -166,7 +166,7 @@ void InsetText::read(Buffer const & buf, LyXLex & lex)
 
 	clear(false);
 
-	if (buf.params.tracking_changes)
+	if (buf.params().tracking_changes)
 		paragraphs.begin()->trackChanges();
 
 	// delete the initial paragraph
@@ -883,7 +883,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			// Derive layout number from given argument (string)
 			// and current buffer's textclass (number).
 			LyXTextClass const & tclass =
-				bv->buffer()->params.getLyXTextClass();
+				bv->buffer()->params().getLyXTextClass();
 			string layout = cmd.argument;
 			bool hasLayout = tclass.hasLayout(layout);
 
@@ -1195,7 +1195,7 @@ void InsetText::fitInsetCursor(BufferView * bv) const
 
 InsetOld::RESULT InsetText::moveRight(BufferView * bv)
 {
-	if (text_.cursor.par()->isRightToLeftPar(bv->buffer()->params))
+	if (text_.cursor.par()->isRightToLeftPar(bv->buffer()->params()))
 		return moveLeftIntern(bv, false, true, false);
 	else
 		return moveRightIntern(bv, true, true, false);
@@ -1204,7 +1204,7 @@ InsetOld::RESULT InsetText::moveRight(BufferView * bv)
 
 InsetOld::RESULT InsetText::moveLeft(BufferView * bv)
 {
-	if (text_.cursor.par()->isRightToLeftPar(bv->buffer()->params))
+	if (text_.cursor.par()->isRightToLeftPar(bv->buffer()->params()))
 		return moveRightIntern(bv, true, true, false);
 	else
 		return moveLeftIntern(bv, false, true, false);
@@ -1760,7 +1760,7 @@ void InsetText::collapseParagraphs(BufferView * bv)
 			}
 		}
 
-		mergeParagraph(bv->buffer()->params, paragraphs, first_par);
+		mergeParagraph(bv->buffer()->params(), paragraphs, first_par);
 	}
 }
 
@@ -1781,7 +1781,7 @@ void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 	ParagraphList::iterator pit = plist.begin();
 	ParagraphList::iterator ins = paragraphs.insert(paragraphs.end(), *pit);
 	++pit;
-	mergeParagraph(buffer->params, paragraphs, boost::prior(ins));
+	mergeParagraph(buffer->params(), paragraphs, boost::prior(ins));
 
 	ParagraphList::iterator pend = plist.end();
 	for (; pit != pend; ++pit)

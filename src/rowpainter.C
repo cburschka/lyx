@@ -317,7 +317,7 @@ void RowPainter::paintForeignMark(double orig_x, LyXFont const & orig_font)
 		return;
 	if (orig_font.language() == latex_language)
 		return;
-	if (orig_font.language() == bv_.buffer()->params.language)
+	if (orig_font.language() == bv_.buffer()->params().language)
 		return;
 
 	int const y = yo_ + row_->baseline() + 1;
@@ -379,7 +379,7 @@ void RowPainter::paintBackground()
 
 void RowPainter::paintSelection()
 {
-	bool const is_rtl = pit_->isRightToLeftPar(bv_.buffer()->params);
+	bool const is_rtl = pit_->isRightToLeftPar(bv_.buffer()->params());
 
 	// the current selection
 	int const startx = text_.selection.start.x();
@@ -692,18 +692,18 @@ void RowPainter::paintFirst()
 
 	LyXLayout_ptr const & layout = pit_->layout();
 
-	if (buffer.params.paragraph_separation == BufferParams::PARSEP_SKIP) {
+	if (buffer.params().paragraph_separation == BufferParams::PARSEP_SKIP) {
 		if (pit_ != text_.ownerParagraphs().begin()) {
 			if (layout->latextype == LATEX_PARAGRAPH
 				&& !pit_->getDepth()) {
-				y_top += buffer.params.getDefSkip().inPixels(bv_);
+				y_top += buffer.params().getDefSkip().inPixels(bv_);
 			} else {
 				LyXLayout_ptr const & playout =
 					boost::prior(pit_)->layout();
 				if (playout->latextype == LATEX_PARAGRAPH
 					&& !boost::prior(pit_)->getDepth()) {
 					// is it right to use defskip here, too? (AS)
-					y_top += buffer.params.getDefSkip().inPixels(bv_);
+					y_top += buffer.params().getDefSkip().inPixels(bv_);
 				}
 			}
 		}
@@ -726,7 +726,7 @@ void RowPainter::paintFirst()
 		y_top += asc;
 	}
 
-	bool const is_rtl = pit_->isRightToLeftPar(bv_.buffer()->params);
+	bool const is_rtl = pit_->isRightToLeftPar(bv_.buffer()->params());
 
 	// should we print a label?
 	if (layout->labeltype >= LABEL_STATIC
@@ -743,12 +743,12 @@ void RowPainter::paintFirst()
 			// printed in an extra row and has a pagebreak at
 			// the top.
 			if (layout->labeltype == LABEL_COUNTER_CHAPTER) {
-				if (buffer.params.secnumdepth >= 0) {
+				if (buffer.params().secnumdepth >= 0) {
 					float spacing_val = 1.0;
 					if (!parparams.spacing().isDefault()) {
 						spacing_val = parparams.spacing().getValue();
 					} else {
-						spacing_val = buffer.params.spacing.getValue();
+						spacing_val = buffer.params().spacing.getValue();
 					}
 
 					int const maxdesc =
@@ -791,7 +791,7 @@ void RowPainter::paintFirst()
 			if (!parparams.spacing().isDefault()) {
 				spacing_val = parparams.spacing().getValue();
 			} else {
-				spacing_val = buffer.params.spacing.getValue();
+				spacing_val = buffer.params().spacing.getValue();
 			}
 
 			int maxdesc =
@@ -853,7 +853,7 @@ void RowPainter::paintLast()
 		y_bottom -= asc;
 	}
 
-	bool const is_rtl = pit_->isRightToLeftPar(bv_.buffer()->params);
+	bool const is_rtl = pit_->isRightToLeftPar(bv_.buffer()->params());
 	int const endlabel = getEndLabel(pit_, text_.ownerParagraphs());
 
 	// draw an endlabel

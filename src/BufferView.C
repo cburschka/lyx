@@ -264,7 +264,7 @@ bool BufferView::insertLyXFile(string const & filen)
 
 	beforeChange(text);
 
-	text->breakParagraph(buffer()->paragraphs);
+	text->breakParagraph(buffer()->paragraphs());
 
 	bool res = buffer()->readFile(fname, text->cursor.par());
 
@@ -295,7 +295,7 @@ void BufferView::setCursorFromRow(int row)
 	int tmpid = -1;
 	int tmppos = -1;
 
-	buffer()->texrow.getIdFromRow(row, tmpid, tmppos);
+	buffer()->texrow().getIdFromRow(row, tmpid, tmppos);
 
 	ParagraphList::iterator texrowpar;
 
@@ -437,8 +437,8 @@ bool BufferView::lockInset(UpdatableInset * inset)
 		}
 		// Then do a deep look of the inset and lock the right one
 		int const id = inset->id();
-		ParagraphList::iterator pit = buffer()->paragraphs.begin();
-		ParagraphList::iterator pend = buffer()->paragraphs.end();
+		ParagraphList::iterator pit = buffer()->paragraphs().begin();
+		ParagraphList::iterator pend = buffer()->paragraphs().end();
 		for (; pit != pend; ++pit) {
 			InsetList::iterator it = pit->insetlist.begin();
 			InsetList::iterator end = pit->insetlist.end();
@@ -554,7 +554,7 @@ LyXText * BufferView::getLyXText() const
 Language const * BufferView::getParentLanguage(InsetOld * inset) const
 {
 	Paragraph const & par = ownerPar(*buffer(), inset);
-	return par.getFontSettings(buffer()->params,
+	return par.getFontSettings(buffer()->params(),
 	                           par.getPositionOfInset(inset)).language();
 }
 
@@ -566,7 +566,7 @@ Encoding const * BufferView::getEncoding() const
 		return 0;
 
 	LyXCursor const & c = t->cursor;
-	LyXFont const font = c.par()->getFont(buffer()->params, c.pos(),
+	LyXFont const font = c.par()->getFont(buffer()->params(), c.pos(),
 					      outerFont(c.par(), t->ownerParagraphs()));
 	return font.language()->encoding();
 }

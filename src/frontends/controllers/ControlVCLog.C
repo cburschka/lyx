@@ -36,7 +36,7 @@ string const ControlVCLog::getBufferFileName() const
 
 void ControlVCLog::getVCLogFile(ostream & ss) const
 {
-	string const name = kernel().buffer().lyxvc.getLogFile();
+	string const name = kernel().buffer().lyxvc().getLogFile();
 
 	std::ifstream in(name.c_str());
 

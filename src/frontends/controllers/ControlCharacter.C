@@ -217,7 +217,7 @@ void ControlCharacter::setLanguage(string const & val)
 		font_->setLanguage(ignore_language);
 
 	else if (val == "reset")
-		font_->setLanguage(kernel().buffer().params.language);
+		font_->setLanguage(kernel().buffer().params().language);
 
 	else
 		font_->setLanguage(languages.getLanguage(val));

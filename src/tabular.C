@@ -1312,7 +1312,7 @@ void LyXTabular::read(Buffer const & buf, LyXLex & lex)
 	int columns_arg;
 	if (!getTokenValue(line, "columns", columns_arg))
 		return;
-	init(buf.params, rows_arg, columns_arg);
+	init(buf.params(), rows_arg, columns_arg);
 	l_getline(is, line);
 	if (!prefixIs(line, "<features")) {
 		lyxerr << "Wrong tabular format (expected <features ...> got"
@@ -2060,6 +2060,7 @@ int LyXTabular::TeXRow(ostream & os, int const i, Buffer const & buf,
 {
 	int ret = 0;
 	int cell = getCellNumber(i, 0);
+	BufferParams const & bufferparams = buf.params();
 
 	ret += TeXTopHLine(os, i);
 	for (int j = 0; j < columns_; ++j) {
@@ -2068,7 +2069,7 @@ int LyXTabular::TeXRow(ostream & os, int const i, Buffer const & buf,
 		ret += TeXCellPreamble(os, cell);
 		InsetText & inset = getCellInset(cell);
 
-		bool rtl = inset.paragraphs.begin()->isRightToLeftPar(buf.params) &&
+		bool rtl = inset.paragraphs.begin()->isRightToLeftPar(bufferparams) &&
 			!inset.paragraphs.begin()->empty() && getPWidth(cell).zero();
 
 		if (rtl)

@@ -350,7 +350,7 @@ TeXEnvironment(Buffer const & buf,
 {
 	lyxerr[Debug::LATEX] << "TeXEnvironment...     " << &*pit << endl;
 
-	BufferParams const & bparams = buf.params;
+	BufferParams const & bparams = buf.params();
 
 	LyXLayout_ptr const & style = pit->layout();
 
@@ -476,7 +476,7 @@ TeXOnePar(Buffer const & buf,
 {
 	lyxerr[Debug::LATEX] << "TeXOnePar...     " << &*pit << " '"
 		<< everypar << "'" << endl;
-	BufferParams const & bparams = buf.params;
+	BufferParams const & bparams = buf.params();
 
 	InsetOld const * in = pit->inInset();
 	bool further_blank_line = false;
@@ -731,7 +731,7 @@ void latexParagraphs(Buffer const & buf,
 {
 	bool was_title = false;
 	bool already_title = false;
-	LyXTextClass const & tclass = buf.params.getLyXTextClass();
+	LyXTextClass const & tclass = buf.params().getLyXTextClass();
 	ParagraphList::iterator par = const_cast<ParagraphList&>(paragraphs).begin();
 	ParagraphList::iterator endpar = const_cast<ParagraphList&>(paragraphs).end();
 
@@ -812,7 +812,7 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 	static LyXFont font;
 	static Change change;
 
-	BufferParams const & bp = buf.params;
+	BufferParams const & bp = buf.params();
 
 	if (token[0] != '\\') {
 		string::const_iterator cit = token.begin();
@@ -1069,7 +1069,7 @@ ParagraphList::iterator outerPar(Buffer const & buf, InsetOld const * inset)
 	}
 	lyxerr << "outerPar: should not happen" << endl;
 	Assert(false);
-	return const_cast<Buffer &>(buf).paragraphs.end(); // shut up compiler
+	return const_cast<Buffer &>(buf).paragraphs().end(); // shut up compiler
 }
 
 
@@ -1092,5 +1092,5 @@ Paragraph const & ownerPar(Buffer const & buf, InsetOld const * inset)
 	}
 	lyxerr << "ownerPar: should not happen" << endl;
 	Assert(false);
-	return buf.paragraphs.front(); // shut up compiler
+	return buf.paragraphs().front(); // shut up compiler
 }

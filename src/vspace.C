@@ -477,7 +477,7 @@ int VSpace::inPixels(BufferView const & bv) const
 		break;
 
 	case DEFSKIP:
-		retval = bv.buffer()->params.getDefSkip().inPixels(bv);
+		retval = bv.buffer()->params().getDefSkip().inPixels(bv);
 		break;
 
 	// This is how the skips are normally defined by LateX.

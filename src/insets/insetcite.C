@@ -246,7 +246,7 @@ string const InsetCitation::generateLabel(Buffer const & buffer) const
 	string const after  = getOptions();
 
 	string label;
-	if (buffer.params.use_natbib) {
+	if (buffer.params().use_natbib) {
 		string cmd = getCmdName();
 		if (cmd == "cite") {
 			// We may be "upgrading" from an older LyX version.
@@ -254,14 +254,14 @@ string const InsetCitation::generateLabel(Buffer const & buffer) const
 			// author/year info is not present in the biblio
 			// database, then getNatbibLabel will exit gracefully
 			// and we'll call getBasicLabel.
-			if (buffer.params.use_numerical_citations)
+			if (buffer.params().use_numerical_citations)
 				cmd = "citep";
 			else
 				cmd = "citet";
 		}
 		label = getNatbibLabel(buffer, cmd, getContents(),
 				       before, after,
-				       buffer.params.use_numerical_citations);
+				       buffer.params().use_numerical_citations);
 	}
 
 	// Fallback to fail-safe
@@ -277,8 +277,8 @@ InsetCitation::Cache::Style InsetCitation::getStyle(Buffer const & buffer) const
 {
 	Cache::Style style = Cache::BASIC;
 
-	if (buffer.params.use_natbib) {
-		if (buffer.params.use_numerical_citations) {
+	if (buffer.params().use_natbib) {
+		if (buffer.params().use_numerical_citations) {
 			style = Cache::NATBIB_NUM;
 		} else {
 			style = Cache::NATBIB_AY;
@@ -359,7 +359,7 @@ int InsetCitation::latex(Buffer const & buffer, ostream & os,
 			 LatexRunParams const &) const
 {
 	os << "\\";
-	if (buffer.params.use_natbib)
+	if (buffer.params().use_natbib)
 		os << getCmdName();
 	else
 		os << "cite";
@@ -373,7 +373,7 @@ int InsetCitation::latex(Buffer const & buffer, ostream & os,
 
 	string const before = string();
 	string const after  = getOptions();
-	if (!before.empty() && buffer.params.use_natbib)
+	if (!before.empty() && buffer.params().use_natbib)
 		os << '[' << before << "][" << after << ']';
 	else if (!after.empty())
 		os << '[' << after << ']';

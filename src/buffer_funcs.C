@@ -120,7 +120,7 @@ bool loadLyXFile(Buffer * b, string const & s)
 		// Fall through
 	case 1:
 		if (readFile(b, s)) {
-			b->lyxvc.file_found_hook(s);
+			b->lyxvc().file_found_hook(s);
 			return true;
 		}
 		break;
@@ -166,12 +166,12 @@ Buffer * newFile(string const & filename, string const & templatename,
 			string const text  = bformat(_("The specified document template\n%1$s\ncould not be read."), file);
 			Alert::error(_("Could not read template"), text);
 			// no template, start with empty buffer
-			b->paragraphs.push_back(Paragraph());
-			b->paragraphs.begin()->layout(b->params.getLyXTextClass().defaultLayout());
+			b->paragraphs().push_back(Paragraph());
+			b->paragraphs().begin()->layout(b->params().getLyXTextClass().defaultLayout());
 		}
 	} else {  // start with empty buffer
-		b->paragraphs.push_back(Paragraph());
-		b->paragraphs.begin()->layout(b->params.getLyXTextClass().defaultLayout());
+		b->paragraphs().push_back(Paragraph());
+		b->paragraphs().begin()->layout(b->params().getLyXTextClass().defaultLayout());
 	}
 
 	if (!isNamed) {
@@ -180,7 +180,7 @@ Buffer * newFile(string const & filename, string const & templatename,
 	}
 
 	b->setReadonly(false);
-	b->updateDocLang(b->params.language);
+	b->updateDocLang(b->params().language);
 
 	return b;
 }
@@ -195,9 +195,9 @@ void bufferErrors(Buffer const & buf, TeXErrors const & terr)
 		int par_id = -1;
 		int posstart = -1;
 		int const errorrow = cit->error_in_line;
-		buf.texrow.getIdFromRow(errorrow, par_id, posstart);
+		buf.texrow().getIdFromRow(errorrow, par_id, posstart);
 		int posend = -1;
-		buf.texrow.getIdFromRow(errorrow + 1, par_id, posend);
+		buf.texrow().getIdFromRow(errorrow + 1, par_id, posend);
 		buf.error(ErrorItem(cit->error_desc,
 					 cit->error_text,
 					 par_id, posstart, posend));

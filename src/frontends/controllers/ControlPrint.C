@@ -153,7 +153,7 @@ void ControlPrint::apply()
 		command += lyxrc.print_extra_options + ' ';
 	}
 
-	command += buffer()->params.dvips_options() + ' ';
+	command += buffer()->params().dvips_options() + ' ';
 
 	if (!Exporter::Export(buffer(), "dvi", true)) {
 		showPrintError(buffer()->fileName());
@@ -163,7 +163,7 @@ void ControlPrint::apply()
 	// Push directory path.
 	string path = buffer()->filePath();
 	if (lyxrc.use_tempdir || !IsDirWriteable(path)) {
-		path = buffer()->tmppath;
+		path = buffer()->temppath();
 	}
 	Path p(path);
 

@@ -69,7 +69,7 @@ void ControlDocument::apply()
 
 	classApply();
 
-	buffer()->params = *bp_;
+	buffer()->params() = *bp_;
 
 	lv_.view()->redoCurrentBuffer();
 
@@ -93,13 +93,13 @@ void ControlDocument::setParams()
 		bp_.reset(new BufferParams());
 
 	/// Set the buffer parameters
-	*bp_ = buffer()->params;
+	*bp_ = buffer()->params();
 }
 
 
 void ControlDocument::setLanguage()
 {
-	Language const * oldL = buffer()->params.language;
+	Language const * oldL = buffer()->params().language;
 	Language const * newL = bp_->language;
 
 	if (oldL != newL) {
@@ -115,7 +115,7 @@ void ControlDocument::setLanguage()
 
 void ControlDocument::classApply()
 {
-	BufferParams & params = buffer()->params;
+	BufferParams & params = buffer()->params();
 	lyx::textclass_type const old_class = params.textclass;
 	lyx::textclass_type const new_class = bp_->textclass;
 
@@ -124,13 +124,13 @@ void ControlDocument::classApply()
 		return;
 
 	// successfully loaded
-	buffer()->params = *bp_;
+	buffer()->params() = *bp_;
 
 	lv_.message(_("Converting document to new document class..."));
 
 	ErrorList el;
 	CutAndPaste::SwitchLayoutsBetweenClasses(old_class, new_class,
-						 lv_.buffer()->paragraphs,
+						 lv_.buffer()->paragraphs(),
 						 el);
 	bufferErrors(*buffer(), el);
 	bufferview()->showErrorList(_("Class switch"));
@@ -162,17 +162,17 @@ void ControlDocument::saveAsDefault()
 		return;
 #endif
 
-	lv_.buffer()->params.preamble = bp_->preamble;
+	lv_.buffer()->params().preamble = bp_->preamble;
 
 	string const fname = AddName(AddPath(user_lyxdir(), "templates/"),
 				     "defaults.lyx");
 	Buffer defaults(fname);
-	defaults.params = params();
+	defaults.params() = params();
 
 	// add an empty paragraph. Is this enough?
 	Paragraph par;
 	par.layout(params().getLyXTextClass().defaultLayout());
-	defaults.paragraphs.push_back(par);
+	defaults.paragraphs().push_back(par);
 
 	defaults.writeFile(defaults.fileName());
 

@@ -110,7 +110,7 @@ LyXFont LyXText::getFont(ParagraphList::iterator pit, pos_type pos) const
 
 	LyXLayout_ptr const & layout = pit->layout();
 #warning broken?
-	BufferParams const & params = bv()->buffer()->params;
+	BufferParams const & params = bv()->buffer()->params();
 
 	// We specialize the 95% common case:
 	if (!pit->getDepth()) {
@@ -191,7 +191,7 @@ void LyXText::setCharFont(ParagraphList::iterator pit,
 			  pos_type pos, LyXFont const & fnt,
 			  bool toggleall)
 {
-	BufferParams const & params = bv()->buffer()->params;
+	BufferParams const & params = bv()->buffer()->params();
 	LyXFont font = getFont(pit, pos);
 	font.update(fnt, params.language, toggleall);
 	// Let the insets convert their font
@@ -333,12 +333,13 @@ LyXText::setLayout(LyXCursor & cur, LyXCursor & sstart_cur,
 	ParagraphList::iterator pit = sstart_cur.par();
 	ParagraphList::iterator epit = boost::next(send_cur.par());
 
+	BufferParams const & bufparams = bv()->buffer()->params();
 	LyXLayout_ptr const & lyxlayout =
-		bv()->buffer()->params.getLyXTextClass()[layout];
+		bufparams.getLyXTextClass()[layout];
 
 	do {
 		pit->applyLayout(lyxlayout);
-		makeFontEntriesLayoutSpecific(bv()->buffer()->params, *pit);
+		makeFontEntriesLayoutSpecific(bufparams, *pit);
 		pit->params().spaceTop(lyxlayout->fill_top ?
 					 VSpace(VSpace::VFILL)
 					 : VSpace(VSpace::NONE));
@@ -368,7 +369,7 @@ void LyXText::setLayout(string const & layout)
 	}
 
 	// special handling of new environment insets
-	BufferParams const & params = bv()->buffer()->params;
+	BufferParams const & params = bv()->buffer()->params();
 	LyXLayout_ptr const & lyxlayout = params.getLyXTextClass()[layout];
 	if (lyxlayout->is_environment) {
 		// move everything in a new environment inset
@@ -493,7 +494,7 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 		}
 		// Update current font
 		real_current_font.update(font,
-					 bv()->buffer()->params.language,
+					 bv()->buffer()->params().language,
 					 toggleall);
 
 		// Reduce to implicit settings
@@ -835,7 +836,8 @@ void LyXText::setParagraph(bool line_top, bool line_bottom,
 // set the counter of a paragraph. This includes the labels
 void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 {
-	LyXTextClass const & textclass = buf.params.getLyXTextClass();
+	BufferParams const & bufparams = buf.params();
+	LyXTextClass const & textclass = bufparams.getLyXTextClass();
 	LyXLayout_ptr const & layout = pit->layout();
 
 	if (pit != ownerParagraphs().begin()) {
@@ -893,7 +895,7 @@ void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 
 		ostringstream s;
 
-		if (i >= 0 && i <= buf.params.secnumdepth) {
+		if (i >= 0 && i <= bufparams.secnumdepth) {
 			string numbertype;
 			string langtype;
 
@@ -912,7 +914,7 @@ void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 				numbertype = "sectioning";
 			} else {
 				numbertype = "appendix";
-				if (pit->isRightToLeftPar(buf.params))
+				if (pit->isRightToLeftPar(bufparams))
 					langtype = "hebrew";
 				else
 					langtype = "latin";
@@ -1037,7 +1039,7 @@ void LyXText::setCounter(Buffer const & buf, ParagraphList::iterator pit)
 void LyXText::updateCounters()
 {
 	// start over
-	bv()->buffer()->params.getLyXTextClass().counters().reset();
+	bv()->buffer()->params().getLyXTextClass().counters().reset();
 
 	ParagraphList::iterator beg = ownerParagraphs().begin();
 	ParagraphList::iterator end = ownerParagraphs().end();
@@ -1122,14 +1124,15 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	endpit = selection.end.par();
 	int endpos = selection.end.pos();
 
+	BufferParams const & bufparams = bv()->buffer()->params();
 	boost::tie(endpit, endpos) = realcut ?
-		CutAndPaste::cutSelection(bv()->buffer()->params,
+		CutAndPaste::cutSelection(bufparams,
 					  ownerParagraphs(),
 					  selection.start.par(), endpit,
 					  selection.start.pos(), endpos,
-					  bv()->buffer()->params.textclass,
+					  bufparams.textclass,
 					  doclear)
-		: CutAndPaste::eraseSelection(bv()->buffer()->params,
+		: CutAndPaste::eraseSelection(bufparams,
 					      ownerParagraphs(),
 					      selection.start.par(), endpit,
 					      selection.start.pos(), endpos,
@@ -1176,7 +1179,7 @@ void LyXText::copySelection()
 	CutAndPaste::copySelection(selection.start.par(),
 				   selection.end.par(),
 				   selection.start.pos(), selection.end.pos(),
-				   bv()->buffer()->params.textclass);
+				   bv()->buffer()->params().textclass);
 }
 
 
@@ -1197,7 +1200,7 @@ void LyXText::pasteSelection(size_t sel_index)
 		CutAndPaste::pasteSelection(*bv()->buffer(),
 					    ownerParagraphs(),
 					    cursor.par(), cursor.pos(),
-					    bv()->buffer()->params.textclass,
+					    bv()->buffer()->params().textclass,
 					    sel_index, el);
 	bufferErrors(*bv()->buffer(), el);
 	bv()->showErrorList(_("Paste"));
@@ -1240,7 +1243,7 @@ void LyXText::replaceSelectionWithString(string const & str)
 	// Get font setting before we cut
 	pos_type pos = selection.end.pos();
 	LyXFont const font = selection.start.par()
-		->getFontSettings(bv()->buffer()->params,
+		->getFontSettings(bv()->buffer()->params(),
 				  selection.start.pos());
 
 	// Insert the new string
@@ -1384,7 +1387,7 @@ float LyXText::getCursorX(ParagraphList::iterator pit, RowList::iterator rit,
 	if (last < rit_pos)
 		cursor_vpos = rit_pos;
 	else if (pos > last && !boundary)
-		cursor_vpos = (pit->isRightToLeftPar(bv()->buffer()->params))
+		cursor_vpos = (pit->isRightToLeftPar(bv()->buffer()->params()))
 			? rit_pos : last + 1;
 	else if (pos > rit_pos && (pos > last || boundary))
 		// Place cursor after char at (logical) position pos - 1
@@ -1458,14 +1461,15 @@ void LyXText::setCurrentFont()
 			}
 	}
 
-	current_font = pit->getFontSettings(bv()->buffer()->params, pos);
+	BufferParams const & bufparams = bv()->buffer()->params();
+	current_font = pit->getFontSettings(bufparams, pos);
 	real_current_font = getFont(pit, pos);
 
 	if (cursor.pos() == pit->size() &&
 	    isBoundary(*bv()->buffer(), *pit, cursor.pos()) &&
 	    !cursor.boundary()) {
 		Language const * lang =
-			pit->getParLanguage(bv()->buffer()->params);
+			pit->getParLanguage(bufparams);
 		current_font.setLanguage(lang);
 		current_font.setNumber(LyXFont::OFF);
 		real_current_font.setLanguage(lang);
@@ -1548,7 +1552,7 @@ pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 	// If lastrow is false, we don't need to compute
 	// the value of rtl.
 	bool const rtl = (lastrow)
-		? pit->isRightToLeftPar(bv()->buffer()->params)
+		? pit->isRightToLeftPar(bv()->buffer()->params())
 		: false;
 	if (lastrow &&
 		 ((rtl  &&  left_side && vc == rit->pos() && x < tmpx - 5) ||

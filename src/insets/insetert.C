@@ -197,7 +197,7 @@ void InsetERT::write(Buffer const & buf, ostream & os) const
 	   << "status "<< st << "\n";
 
 	//inset.writeParagraphData(buf, os);
-	string const layout(buf.params.getLyXTextClass().defaultLayoutName());
+	string const layout(buf.params().getLyXTextClass().defaultLayoutName());
 	ParagraphList::iterator par = inset.paragraphs.begin();
 	ParagraphList::iterator end = inset.paragraphs.end();
 	for (; par != end; ++par) {

@@ -168,7 +168,7 @@ void XFormsToolbar::layoutSelected()
 
 	string const & layoutguiname = getString(combox_);
 	LyXTextClass const & tc =
-		owner_->buffer()->params.getLyXTextClass();
+		owner_->buffer()->params().getLyXTextClass();
 
 	LyXTextClass::const_iterator end = tc.end();
 	for (LyXTextClass::const_iterator cit = tc.begin();
@@ -188,7 +188,7 @@ void XFormsToolbar::setLayout(string const & layout)
 	if (!combox_)
 		return;
 
-	LyXTextClass const & tc = owner_->buffer()->params.getLyXTextClass();
+	LyXTextClass const & tc = owner_->buffer()->params().getLyXTextClass();
 	string const layoutname = _(tc[layout]->name());
 
 	int const nnames = fl_get_combox_maxitems(combox_);
@@ -208,7 +208,7 @@ void XFormsToolbar::updateLayoutList()
 		return;
 
 	fl_clear_combox(combox_);
-	LyXTextClass const & tc = owner_->buffer()->params.getLyXTextClass();
+	LyXTextClass const & tc = owner_->buffer()->params().getLyXTextClass();
 	LyXTextClass::const_iterator end = tc.end();
 	for (LyXTextClass::const_iterator cit = tc.begin();
 	     cit != end; ++cit) {

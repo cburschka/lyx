@@ -109,17 +109,17 @@ bool openFileWrite(ofstream & ofs, string const & fname)
 } // namespace anon
 
 Buffer::Buffer(string const & file, bool ronly)
-	: niceFile(true), lyx_clean(true), bak_clean(true),
+	: nicefile_(true), lyx_clean(true), bak_clean(true),
 	  unnamed(false), read_only(ronly),
 	  filename_(file)
 {
 	lyxerr[Debug::INFO] << "Buffer::Buffer()" << endl;
 	filepath_ = OnlyPath(file);
-	lyxvc.buffer(this);
+	lyxvc().buffer(this);
 	if (read_only || lyxrc.use_tempdir) {
-		tmppath = CreateBufferTmpDir();
+		temppath_ = CreateBufferTmpDir();
 	} else {
-		tmppath.erase();
+		temppath_.erase();
 	}
 
 	// set initial author
@@ -135,15 +135,105 @@ Buffer::~Buffer()
 
 	closing();
 
-	if (!tmppath.empty() && destroyDir(tmppath) != 0) {
+	if (!temppath().empty() && destroyDir(temppath()) != 0) {
 		Alert::warning(_("Could not remove temporary directory"),
-			bformat(_("Could not remove the temporary directory %1$s"), tmppath));
+			bformat(_("Could not remove the temporary directory %1$s"), temppath()));
 	}
 
-	paragraphs.clear();
+	paragraphs().clear();
 
 	// Remove any previewed LaTeX snippets associated with this buffer.
 	lyx::graphics::Previews::get().removeLoader(*this);
+}
+
+
+limited_stack<Undo> & Buffer::undostack()
+{
+	return undostack_;
+}
+
+
+limited_stack<Undo> const & Buffer::undostack() const
+{
+	return undostack_;
+}
+
+
+limited_stack<Undo> & Buffer::redostack()
+{
+	return redostack_;
+}
+
+
+limited_stack<Undo> const & Buffer::redostack() const
+{
+	return redostack_;
+}
+
+
+BufferParams & Buffer::params()
+{
+	return params_;
+}
+
+
+BufferParams const & Buffer::params() const
+{
+	return params_;
+}
+
+
+ParagraphList & Buffer::paragraphs()
+{
+	return paragraphs_;
+}
+
+
+ParagraphList const & Buffer::paragraphs() const
+{
+	return paragraphs_;
+}
+
+
+LyXVC & Buffer::lyxvc()
+{
+	return lyxvc_;
+}
+
+
+LyXVC const & Buffer::lyxvc() const
+{
+	return lyxvc_;
+}
+
+
+string const & Buffer::temppath() const
+{
+	return temppath_;
+}
+
+
+bool & Buffer::niceFile()
+{
+	return nicefile_;
+}
+
+
+bool Buffer::niceFile() const
+{
+	return nicefile_;
+}
+
+
+TexRow & Buffer::texrow()
+{
+	return texrow_;
+}
+
+
+TexRow const & Buffer::texrow() const
+{
+	return texrow_;
 }
 
 
@@ -164,7 +254,7 @@ pair<Buffer::LogType, string> const Buffer::getLogName() const
 	string path = OnlyPath(filename);
 
 	if (lyxrc.use_tempdir || !IsDirWriteable(path))
-		path = tmppath;
+		path = temppath();
 
 	string const fname = AddName(path,
 				     OnlyFilename(ChangeExtension(filename,
@@ -200,7 +290,7 @@ void Buffer::setReadonly(bool flag)
 
 AuthorList & Buffer::authors()
 {
-	return params.authorlist;
+	return params().authorlist;
 }
 
 
@@ -243,7 +333,7 @@ int Buffer::readHeader(LyXLex & lex)
 				      << token << '\'' << endl;
 
 
-		string unknown = params.readToken(lex, token);
+		string unknown = params().readToken(lex, token);
 		if (!unknown.empty()) {
 			if (unknown[0] != '\\') {
 				unknownClass(unknown);
@@ -275,14 +365,14 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 	Paragraph::depth_type depth = 0;
 	bool the_end_read = false;
 
-	if (paragraphs.empty()) {
+	if (paragraphs().empty()) {
 		readHeader(lex);
-		if (!params.getLyXTextClass().load()) {
-			string theclass = params.getLyXTextClass().name();
+		if (!params().getLyXTextClass().load()) {
+			string theclass = params().getLyXTextClass().name();
 			Alert::error(_("Can't load document class"), bformat(
 					"Using the default document class, because the "
 					" class %1$s could not be loaded.", theclass));
-			params.textclass = 0;
+			params().textclass = 0;
 		}
 	} else {
 		// We don't want to adopt the parameters from the
@@ -308,7 +398,7 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 			continue;
 		}
 
-		readParagraph(lex, token, paragraphs, pit, depth);
+		readParagraph(lex, token, paragraphs(), pit, depth);
 	}
 
 	return the_end_read;
@@ -327,9 +417,9 @@ int Buffer::readParagraph(LyXLex & lex, string const & token,
 
 		Paragraph par;
 		par.params().depth(depth);
-		if (params.tracking_changes)
+		if (params().tracking_changes)
 			par.trackChanges();
-		LyXFont f(LyXFont::ALL_INHERIT, params.language);
+		LyXFont f(LyXFont::ALL_INHERIT, params().language);
 		par.setFont(0, f);
 
 		// insert after
@@ -374,7 +464,7 @@ void Buffer::insertStringAsLines(ParagraphList::iterator & par, pos_type & pos,
 	    cit != str.end(); ++cit) {
 		if (*cit == '\n') {
 			if (autobreakrows && (!par->empty() || par->allowEmpty())) {
-				breakParagraph(params, paragraphs, par, pos,
+				breakParagraph(params(), paragraphs(), par, pos,
 					       layout->isEnvironment());
 				++par;
 				pos = 0;
@@ -419,15 +509,15 @@ bool Buffer::readFile(string const & filename)
 	// Check if the file is compressed.
 	string const format = getExtFromContents(filename);
 	if (format == "gzip" || format == "zip" || format == "compress") {
-		params.compressed = true;
+		params().compressed = true;
 	}
 
-	bool ret = readFile(filename, paragraphs.begin());
+	bool ret = readFile(filename, paragraphs().begin());
 
 	// After we have read a file, we must ensure that the buffer
 	// language is set and used in the gui.
 	// If you know of a better place to put this, please tell me. (Lgb)
-	updateDocLang(params.language);
+	updateDocLang(params().language);
 
 	return ret;
 }
@@ -525,7 +615,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename,
 	}
 
 	bool the_end = readBody(lex, pit);
-	params.setPaperStuff();
+	params().setPaperStuff();
 
 	if (!the_end) {
 		Alert::error(_("Document format failure"),
@@ -626,7 +716,7 @@ bool Buffer::writeFile(string const & fname) const
 
 	bool retval;
 
-	if (params.compressed) {
+	if (params().compressed) {
 		gz::ogzstream ofs(fname.c_str());
 
 		if (!ofs)
@@ -654,7 +744,7 @@ bool Buffer::do_writeFile(ostream & ofs) const
 	ofs.imbue(std::locale::classic());
 #endif
 
-	// The top of the file should not be written by params.
+	// The top of the file should not be written by params().
 
 	// write out a comment in the top of the file
 	ofs << "#LyX " << lyx_version
@@ -662,7 +752,7 @@ bool Buffer::do_writeFile(ostream & ofs) const
 	    << "\\lyxformat " << LYX_FORMAT << "\n";
 
 	// now write out the buffer paramters.
-	params.writeFile(ofs);
+	params().writeFile(ofs);
 
 	ofs << "\\end_header\n";
 
@@ -670,10 +760,10 @@ bool Buffer::do_writeFile(ostream & ofs) const
 
 	// this will write out all the paragraphs
 	// using recursive descent.
-	ParagraphList::const_iterator pit = paragraphs.begin();
-	ParagraphList::const_iterator pend = paragraphs.end();
+	ParagraphList::const_iterator pit = paragraphs().begin();
+	ParagraphList::const_iterator pend = paragraphs().end();
 	for (; pit != pend; ++pit)
-		pit->write(*this, ofs, params, depth);
+		pit->write(*this, ofs, params(), depth);
 
 	// Write marker that shows file is complete
 	ofs << "\n\\end_document" << endl;
@@ -838,7 +928,7 @@ string const Buffer::asciiParagraph(Paragraph const & par,
 	string word;
 
 	for (pos_type i = 0; i < par.size(); ++i) {
-		char c = par.getUChar(params, i);
+		char c = par.getUChar(params(), i);
 		switch (c) {
 		case Paragraph::META_INSET:
 		{
@@ -908,8 +998,8 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 
 void Buffer::writeFileAscii(ostream & os, int linelen)
 {
-	ParagraphList::iterator beg = paragraphs.begin();
-	ParagraphList::iterator end = paragraphs.end();
+	ParagraphList::iterator beg = paragraphs().begin();
+	ParagraphList::iterator end = paragraphs().end();
 	ParagraphList::iterator it = beg;
 	for (; it != end; ++it) {
 		os << asciiParagraph(*it, linelen, it == beg);
@@ -945,26 +1035,26 @@ void Buffer::makeLaTeXFile(ostream & os,
 			   bool output_preamble, bool output_body)
 {
 	LatexRunParams runparams = runparams_in;
-	niceFile = runparams.nice; // this will be used by Insetincludes.
+	niceFile() = runparams.nice; // this will be used by Insetincludes.
 
 	// validate the buffer.
 	lyxerr[Debug::LATEX] << "  Validating buffer..." << endl;
-	LaTeXFeatures features(params);
+	LaTeXFeatures features(params());
 	validate(features);
 	lyxerr[Debug::LATEX] << "  Buffer validation done." << endl;
 
-	texrow.reset();
+	texrow().reset();
 	// The starting paragraph of the coming rows is the
 	// first paragraph of the document. (Asger)
-	texrow.start(paragraphs.begin()->id(), 0);
+	texrow().start(paragraphs().begin()->id(), 0);
 
 	if (output_preamble && runparams.nice) {
 		os << "%% LyX " << lyx_version << " created this file.  "
 			"For more info, see http://www.lyx.org/.\n"
 			"%% Do not edit unless you really know what "
 			"you are doing.\n";
-		texrow.newline();
-		texrow.newline();
+		texrow().newline();
+		texrow().newline();
 	}
 	lyxerr[Debug::INFO] << "lyx header finished" << endl;
 	// There are a few differences between nice LaTeX and usual files:
@@ -979,7 +1069,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 			// code for usual, NOT nice-latex-file
 			os << "\\batchmode\n"; // changed
 			// from \nonstopmode
-			texrow.newline();
+			texrow().newline();
 		}
 		if (!original_path.empty()) {
 			string inputpath = os::external_path(original_path);
@@ -988,46 +1078,46 @@ void Buffer::makeLaTeXFile(ostream & os,
 			    << "\\def\\input@path{{"
 			    << inputpath << "/}}\n"
 			    << "\\makeatother\n";
-			texrow.newline();
-			texrow.newline();
-			texrow.newline();
+			texrow().newline();
+			texrow().newline();
+			texrow().newline();
 		}
 
 		// Write the preamble
-		runparams.use_babel = params.writeLaTeX(os, features, texrow);
+		runparams.use_babel = params().writeLaTeX(os, features, texrow());
 
 		if (!output_body)
 			return;
 
 		// make the body.
 		os << "\\begin{document}\n";
-		texrow.newline();
+		texrow().newline();
 	} // output_preamble
 	lyxerr[Debug::INFO] << "preamble finished, now the body." << endl;
 
 	if (!lyxrc.language_auto_begin) {
 		os << subst(lyxrc.language_command_begin, "$$lang",
-			     params.language->babel())
+			     params().language->babel())
 		    << endl;
-		texrow.newline();
+		texrow().newline();
 	}
 
-	latexParagraphs(*this, paragraphs, os, texrow, runparams);
+	latexParagraphs(*this, paragraphs(), os, texrow(), runparams);
 
 	// add this just in case after all the paragraphs
 	os << endl;
-	texrow.newline();
+	texrow().newline();
 
 	if (!lyxrc.language_auto_end) {
 		os << subst(lyxrc.language_command_end, "$$lang",
-			     params.language->babel())
+			     params().language->babel())
 		    << endl;
-		texrow.newline();
+		texrow().newline();
 	}
 
 	if (output_preamble) {
 		os << "\\end{document}\n";
-		texrow.newline();
+		texrow().newline();
 
 		lyxerr[Debug::LATEX] << "makeLaTeXFile...done" << endl;
 	} else {
@@ -1036,44 +1126,44 @@ void Buffer::makeLaTeXFile(ostream & os,
 	}
 
 	// Just to be sure. (Asger)
-	texrow.newline();
+	texrow().newline();
 
 	lyxerr[Debug::INFO] << "Finished making LaTeX file." << endl;
-	lyxerr[Debug::INFO] << "Row count was " << texrow.rows() - 1
+	lyxerr[Debug::INFO] << "Row count was " << texrow().rows() - 1
 			    << '.' << endl;
 
 	// we want this to be true outside previews (for insetexternal)
-	niceFile = true;
+	niceFile() = true;
 }
 
 
 bool Buffer::isLatex() const
 {
-	return params.getLyXTextClass().outputType() == LATEX;
+	return params().getLyXTextClass().outputType() == LATEX;
 }
 
 
 bool Buffer::isLinuxDoc() const
 {
-	return params.getLyXTextClass().outputType() == LINUXDOC;
+	return params().getLyXTextClass().outputType() == LINUXDOC;
 }
 
 
 bool Buffer::isLiterate() const
 {
-	return params.getLyXTextClass().outputType() == LITERATE;
+	return params().getLyXTextClass().outputType() == LITERATE;
 }
 
 
 bool Buffer::isDocBook() const
 {
-	return params.getLyXTextClass().outputType() == DOCBOOK;
+	return params().getLyXTextClass().outputType() == DOCBOOK;
 }
 
 
 bool Buffer::isSGML() const
 {
-	LyXTextClass const & tclass = params.getLyXTextClass();
+	LyXTextClass const & tclass = params().getLyXTextClass();
 
 	return tclass.outputType() == LINUXDOC ||
 	       tclass.outputType() == DOCBOOK;
@@ -1086,22 +1176,22 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 	if (!::openFileWrite(ofs, fname))
 		return;
 
-	niceFile = nice; // this will be used by included files.
+	niceFile() = nice; // this will be used by included files.
 
-	LaTeXFeatures features(params);
+	LaTeXFeatures features(params());
 
 	validate(features);
 
-	texrow.reset();
+	texrow().reset();
 
-	LyXTextClass const & tclass = params.getLyXTextClass();
+	LyXTextClass const & tclass = params().getLyXTextClass();
 
 	string top_element = tclass.latexname();
 
 	if (!body_only) {
 		ofs << "<!doctype linuxdoc system";
 
-		string preamble = params.preamble;
+		string preamble = params().preamble;
 		string const name = nice ? ChangeExtension(filename_, ".sgml")
 			 : fname;
 		preamble += features.getIncludedFiles(name);
@@ -1112,12 +1202,12 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 		}
 		ofs << ">\n\n";
 
-		if (params.options.empty())
+		if (params().options.empty())
 			sgml::openTag(ofs, 0, false, top_element);
 		else {
 			string top = top_element;
 			top += ' ';
-			top += params.options;
+			top += params().options;
 			sgml::openTag(ofs, 0, false, top);
 		}
 	}
@@ -1130,8 +1220,8 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 	string item_name;
 	vector<string> environment_stack(5);
 
-	ParagraphList::iterator pit = paragraphs.begin();
-	ParagraphList::iterator pend = paragraphs.end();
+	ParagraphList::iterator pit = paragraphs().begin();
+	ParagraphList::iterator pend = paragraphs().end();
 	for (; pit != pend; ++pit) {
 		LyXLayout_ptr const & style = pit->layout();
 		// treat <toc> as a special case for compatibility with old code
@@ -1257,7 +1347,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 	// How to check for successful close
 
 	// we want this to be true outside previews (for insetexternal)
-	niceFile = true;
+	niceFile() = true;
 }
 
 
@@ -1348,7 +1438,7 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 		PAR_TAG tag_close = NONE;
 		list < PAR_TAG > tag_open;
 
-		LyXFont const font = par->getFont(params, i, outerFont(par, paragraphs));
+		LyXFont const font = par->getFont(params(), i, outerFont(par, paragraphs()));
 
 		if (font_old.family() != font.family()) {
 			switch (family_type) {
@@ -1516,21 +1606,21 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 	if (!::openFileWrite(ofs, fname))
 		return;
 
-	niceFile = nice; // this will be used by Insetincludes.
+	niceFile() = nice; // this will be used by Insetincludes.
 
-	LaTeXFeatures features(params);
+	LaTeXFeatures features(params());
 	validate(features);
 
-	texrow.reset();
+	texrow().reset();
 
-	LyXTextClass const & tclass = params.getLyXTextClass();
+	LyXTextClass const & tclass = params().getLyXTextClass();
 	string top_element = tclass.latexname();
 
 	if (!only_body) {
 		ofs << "<!DOCTYPE " << top_element
 		    << "  PUBLIC \"-//OASIS//DTD DocBook V4.1//EN\"";
 
-		string preamble = params.preamble;
+		string preamble = params().preamble;
 		string const name = nice ? ChangeExtension(filename_, ".sgml")
 			 : fname;
 		preamble += features.getIncludedFiles(name);
@@ -1544,12 +1634,12 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 
 	string top = top_element;
 	top += " lang=\"";
-	top += params.language->code();
+	top += params().language->code();
 	top += '"';
 
-	if (!params.options.empty()) {
+	if (!params().options.empty()) {
 		top += ' ';
-		top += params.options;
+		top += params().options;
 	}
 	sgml::openTag(ofs, 0, false, top);
 
@@ -1569,8 +1659,8 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 	string item_name;
 	string command_name;
 
-	ParagraphList::iterator par = paragraphs.begin();
-	ParagraphList::iterator pend = paragraphs.end();
+	ParagraphList::iterator par = paragraphs().begin();
+	ParagraphList::iterator pend = paragraphs().end();
 
 	for (; par != pend; ++par) {
 		string sgmlparam;
@@ -1783,7 +1873,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 	// How to check for successful close
 
 	// we want this to be true outside previews (for insetexternal)
-	niceFile = true;
+	niceFile() = true;
 }
 
 
@@ -1803,7 +1893,7 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 
 	// parsing main loop
 	for (pos_type i = 0; i < par->size(); ++i) {
-		LyXFont font = par->getFont(params, i, outerFont(par, paragraphs));
+		LyXFont font = par->getFont(params(), i, outerFont(par, paragraphs()));
 
 		// handle <emphasis> tag
 		if (font_old.emph() != font.emph()) {
@@ -1886,7 +1976,7 @@ int Buffer::runChktex()
 
 	string const org_path = path;
 	if (lyxrc.use_tempdir || !IsDirWriteable(path)) {
-		path = tmppath;
+		path = temppath();
 	}
 
 	Path p(path); // path to LaTeX file
@@ -1918,28 +2008,28 @@ int Buffer::runChktex()
 
 void Buffer::validate(LaTeXFeatures & features) const
 {
-	LyXTextClass const & tclass = params.getLyXTextClass();
+	LyXTextClass const & tclass = params().getLyXTextClass();
 
-	if (params.tracking_changes) {
+	if (params().tracking_changes) {
 		features.require("dvipost");
 		features.require("color");
 	}
 
 	// AMS Style is at document level
-	if (params.use_amsmath == BufferParams::AMS_ON
+	if (params().use_amsmath == BufferParams::AMS_ON
 	    || tclass.provides(LyXTextClass::amsmath))
 		features.require("amsmath");
 
-	for_each(paragraphs.begin(), paragraphs.end(),
+	for_each(paragraphs().begin(), paragraphs().end(),
 		 boost::bind(&Paragraph::validate, _1, boost::ref(features)));
 
 	// the bullet shapes are buffer level not paragraph level
 	// so they are tested here
 	for (int i = 0; i < 4; ++i) {
-		if (params.user_defined_bullets[i] != ITEMIZE_DEFAULTS[i]) {
-			int const font = params.user_defined_bullets[i].getFont();
+		if (params().user_defined_bullets[i] != ITEMIZE_DEFAULTS[i]) {
+			int const font = params().user_defined_bullets[i].getFont();
 			if (font == 0) {
-				int const c = params
+				int const c = params()
 					.user_defined_bullets[i]
 					.getCharacter();
 				if (c == 16
@@ -1967,9 +2057,9 @@ void Buffer::getLabelList(std::vector<string> & list) const
 {
 	/// if this is a child document and the parent is already loaded
 	/// Use the parent's list instead  [ale990407]
-	if (!params.parentname.empty()
-	    && bufferlist.exists(params.parentname)) {
-		Buffer const * tmp = bufferlist.getBuffer(params.parentname);
+	if (!params().parentname.empty()
+	    && bufferlist.exists(params().parentname)) {
+		Buffer const * tmp = bufferlist.getBuffer(params().parentname);
 		if (tmp) {
 			tmp->getLabelList(list);
 			return;
@@ -1988,8 +2078,9 @@ void Buffer::fillWithBibKeys(std::vector<std::pair<string, string> > & keys) con
 {
 	/// if this is a child document and the parent is already loaded
 	/// use the parent's list instead  [ale990412]
-	if (!params.parentname.empty() && bufferlist.exists(params.parentname)) {
-		Buffer const * tmp = bufferlist.getBuffer(params.parentname);
+	if (!params().parentname.empty() &&
+	    bufferlist.exists(params().parentname)) {
+		Buffer const * tmp = bufferlist.getBuffer(params().parentname);
 		if (tmp) {
 			tmp->fillWithBibKeys(keys);
 			return;
@@ -2068,7 +2159,7 @@ void Buffer::changeLanguage(Language const * from, Language const * to)
 
 	ParIterator end = par_iterator_end();
 	for (ParIterator it = par_iterator_begin(); it != end; ++it)
-		it->changeLanguage(params, from, to);
+		it->changeLanguage(params(), from, to);
 }
 
 
@@ -2082,7 +2173,7 @@ bool Buffer::isMultiLingual()
 {
 	ParIterator end = par_iterator_end();
 	for (ParIterator it = par_iterator_begin(); it != end; ++it)
-		if (it->isMultiLingual(params))
+		if (it->isMultiLingual(params()))
 			return true;
 
 	return false;
@@ -2157,31 +2248,33 @@ bool Buffer::hasParWithID(int id) const
 
 ParIterator Buffer::par_iterator_begin()
 {
-	return ParIterator(paragraphs.begin(), paragraphs);
+	return ParIterator(paragraphs().begin(), paragraphs());
 }
 
 
 ParIterator Buffer::par_iterator_end()
 {
-	return ParIterator(paragraphs.end(), paragraphs);
+	return ParIterator(paragraphs().end(), paragraphs());
 }
 
 
 ParConstIterator Buffer::par_iterator_begin() const
 {
-	return ParConstIterator(const_cast<ParagraphList&>(paragraphs).begin(), paragraphs);
+	ParagraphList const & pars = paragraphs();
+	return ParConstIterator(const_cast<ParagraphList&>(pars).begin(), pars);
 }
 
 
 ParConstIterator Buffer::par_iterator_end() const
 {
-	return ParConstIterator(const_cast<ParagraphList&>(paragraphs).end(), paragraphs);
+	ParagraphList const & pars = paragraphs();
+	return ParConstIterator(const_cast<ParagraphList&>(pars).end(), pars);
 }
 
 
 Language const * Buffer::getLanguage() const
 {
-	return params.language;
+	return params().language;
 }
 
 
@@ -2274,7 +2367,7 @@ bool Buffer::isReadonly() const
 
 void Buffer::setParentName(string const & name)
 {
-	params.parentname = name;
+	params().parentname = name;
 }
 
 
@@ -2292,27 +2385,27 @@ Buffer::inset_iterator::inset_iterator(base_type p, base_type e)
 
 Buffer::inset_iterator Buffer::inset_iterator_begin()
 {
-	return inset_iterator(paragraphs.begin(), paragraphs.end());
+	return inset_iterator(paragraphs().begin(), paragraphs().end());
 }
 
 
 Buffer::inset_iterator Buffer::inset_iterator_end()
 {
-	return inset_iterator(paragraphs.end(), paragraphs.end());
+	return inset_iterator(paragraphs().end(), paragraphs().end());
 }
 
 
 Buffer::inset_iterator Buffer::inset_const_iterator_begin() const
 {
-	return inset_iterator(const_cast<ParagraphList&>(paragraphs).begin(),
-	                      const_cast<ParagraphList&>(paragraphs).end());
+	ParagraphList & pars = const_cast<ParagraphList&>(paragraphs());
+	return inset_iterator(pars.begin(), pars.end());
 }
 
 
 Buffer::inset_iterator Buffer::inset_const_iterator_end() const
 {
-	return inset_iterator(const_cast<ParagraphList&>(paragraphs).end(),
-	                      const_cast<ParagraphList&>(paragraphs).end());
+	ParagraphList & pars = const_cast<ParagraphList&>(paragraphs());
+	return inset_iterator(pars.end(), pars.end());
 }
 
 

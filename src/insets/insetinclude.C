@@ -323,13 +323,13 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 		Buffer * tmp = bufferlist.getBuffer(getFileName());
 
 		// FIXME: this should be a GUI warning
-		if (tmp->params.textclass != buffer.params.textclass) {
+		if (tmp->params().textclass != buffer.params().textclass) {
 			lyxerr << "WARNING: Included file `"
 			       << MakeDisplayPath(getFileName())
 			       << "' has textclass `"
-			       << tmp->params.getLyXTextClass().name()
+			       << tmp->params().getLyXTextClass().name()
 			       << "' while parent file has textclass `"
-			       << buffer.params.getLyXTextClass().name()
+			       << buffer.params().getLyXTextClass().name()
 			       << "'." << endl;
 			//return 0;
 		}
@@ -337,19 +337,19 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 		// write it to a file (so far the complete file)
 		string writefile = ChangeExtension(getFileName(), ".tex");
 
-		if (!buffer.tmppath.empty() && !runparams.nice) {
+		if (!buffer.temppath().empty() && !runparams.nice) {
 			incfile = subst(incfile, '/','@');
 #ifdef __EMX__
 			incfile = subst(incfile, ':', '$');
 #endif
-			writefile = AddName(buffer.tmppath, incfile);
+			writefile = AddName(buffer.temppath(), incfile);
 		} else
 			writefile = getFileName();
 		writefile = ChangeExtension(writefile, ".tex");
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
-		tmp->markDepClean(buffer.tmppath);
+		tmp->markDepClean(buffer.temppath());
 
 		tmp->makeLaTeXFile(writefile, OnlyPath(getMasterFilename()),
 				   runparams, false);
@@ -399,9 +399,9 @@ int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os) const
 
 		// write it to a file (so far the complete file)
 		string writefile = ChangeExtension(getFileName(), ".sgml");
-		if (!buffer.tmppath.empty() && !buffer.niceFile) {
+		if (!buffer.temppath().empty() && !buffer.niceFile()) {
 			incfile = subst(incfile, '/','@');
-			writefile = AddName(buffer.tmppath, incfile);
+			writefile = AddName(buffer.temppath(), incfile);
 		} else
 			writefile = getFileName();
 
@@ -411,7 +411,7 @@ int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os) const
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
-		tmp->makeLinuxDocFile(writefile, buffer.niceFile, true);
+		tmp->makeLinuxDocFile(writefile, buffer.niceFile(), true);
 	}
 
 	if (isVerbatim()) {
@@ -439,9 +439,9 @@ int InsetInclude::docbook(Buffer const & buffer, ostream & os,
 
 		// write it to a file (so far the complete file)
 		string writefile = ChangeExtension(getFileName(), ".sgml");
-		if (!buffer.tmppath.empty() && !buffer.niceFile) {
+		if (!buffer.temppath().empty() && !buffer.niceFile()) {
 			incfile = subst(incfile, '/','@');
-			writefile = AddName(buffer.tmppath, incfile);
+			writefile = AddName(buffer.temppath(), incfile);
 		} else
 			writefile = getFileName();
 		if (IsLyXFilename(getFileName()))
@@ -450,7 +450,7 @@ int InsetInclude::docbook(Buffer const & buffer, ostream & os,
 		lyxerr[Debug::LATEX] << "incfile:" << incfile << endl;
 		lyxerr[Debug::LATEX] << "writefile:" << writefile << endl;
 
-		tmp->makeDocBookFile(writefile, buffer.niceFile, true);
+		tmp->makeDocBookFile(writefile, buffer.niceFile(), true);
 	}
 
 	if (isVerbatim()) {
@@ -472,9 +472,9 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 
 	Buffer const & b = *bufferlist.getBuffer(getMasterFilename());
 
-	if (!b.tmppath.empty() && !b.niceFile && !isVerbatim()) {
+	if (!b.temppath().empty() && !b.niceFile() && !isVerbatim()) {
 		incfile = subst(incfile, '/','@');
-		writefile = AddName(b.tmppath, incfile);
+		writefile = AddName(b.temppath(), incfile);
 	} else
 		writefile = getFileName();
 
@@ -493,7 +493,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 		// a file got loaded
 		Buffer * const tmp = bufferlist.getBuffer(getFileName());
 		if (tmp) {
-			tmp->niceFile = b.niceFile;
+			tmp->niceFile() = b.niceFile();
 			tmp->validate(features);
 		}
 	}

@@ -79,15 +79,6 @@ public:
 	/// Load the autosaved file.
 	void loadAutoSaveFile();
 
-private:
-	/** Inserts a file into a document
-	    \param par if != 0 insert the file.
-	    \return \c false if method fails.
-	*/
-	bool readFile(LyXLex &, string const & filename,
-		      ParagraphList::iterator pit);
-
-public:
 	/// load a new file
 	bool readFile(string const & filename);
 
@@ -116,7 +107,6 @@ public:
 	/// do we have a paragraph with this id?
 	bool hasParWithID(int id) const;
 
-public:
 	/// This signal is emitted when a parsing error shows up.
 	boost::signal1<void, ErrorItem> error;
 	/// This signal is emitted when some message shows up.
@@ -273,39 +263,62 @@ public:
 	bool isMultiLingual();
 
 	/// Does this mean that this is buffer local?
-	limited_stack<Undo> undostack;
+	limited_stack<Undo> & undostack();
+	limited_stack<Undo> const & undostack() const;
 
 	/// Does this mean that this is buffer local?
-	limited_stack<Undo> redostack;
+	limited_stack<Undo> & redostack();
+	limited_stack<Undo> const & redostack() const;
 
 	///
-	BufferParams params;
+	BufferParams & params();
+	BufferParams const & params() const;
 
 	/** The list of paragraphs.
 	    This is a linked list of paragraph, this list holds the
 	    whole contents of the document.
 	 */
-	ParagraphList paragraphs;
+	ParagraphList & paragraphs();
+	ParagraphList const & paragraphs() const;
 
 	/// LyX version control object.
-	LyXVC lyxvc;
+	LyXVC & lyxvc();
+	LyXVC const & lyxvc() const;
 
 	/// Where to put temporary files.
-	string tmppath;
+	string const & temppath() const;
 
 	/** If we are writing a nice LaTeX file or not.
 	    While writing as LaTeX, tells whether we are
 	    doing a 'nice' LaTeX file */
-	bool niceFile;
+	bool & niceFile();
+	bool niceFile() const;
 
 	/// Used when typesetting to place errorboxes.
-	TexRow texrow;
+	TexRow & texrow();
+	TexRow const & texrow() const;
 
 	/// the author list for the document
 	AuthorList & authors();
 
 private:
+	/** Inserts a file into a document
+	    \param par if != 0 insert the file.
+	    \return \c false if method fails.
+	*/
+	bool readFile(LyXLex &, string const & filename,
+		      ParagraphList::iterator pit);
+
 	bool do_writeFile(std::ostream & ofs) const;
+
+	limited_stack<Undo> undostack_;
+	limited_stack<Undo> redostack_;
+	BufferParams params_;
+	ParagraphList paragraphs_;
+	LyXVC lyxvc_;
+	string temppath_;
+	bool nicefile_;
+	TexRow texrow_;
 
 	typedef std::map<string, bool> DepClean;
 
@@ -408,4 +421,5 @@ bool operator==(Buffer::inset_iterator const & iter1,
 
 bool operator!=(Buffer::inset_iterator const & iter1,
 		Buffer::inset_iterator const & iter2);
+
 #endif

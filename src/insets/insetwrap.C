@@ -239,7 +239,7 @@ void InsetWrap::addToToc(lyx::toc::TocList & toclist, Buffer const & buf) const
 
 	for (; tmp != end; ++tmp) {
 		if (tmp->layout()->name() == caplayout) {
-			string const name = floatname(params_.type, buf.params);
+			string const name = floatname(params_.type, buf.params());
 			string const str =
 				tostr(toclist[name].size() + 1)
 				+ ". " + tmp->asString(buf, false);

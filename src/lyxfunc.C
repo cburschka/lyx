@@ -304,10 +304,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			&& !Exporter::IsExportable(*buf, ev.argument);
 		break;
 	case LFUN_UNDO:
-		disable = buf->undostack.empty();
+		disable = buf->undostack().empty();
 		break;
 	case LFUN_REDO:
-		disable = buf->redostack.empty();
+		disable = buf->redostack().empty();
 		break;
 	case LFUN_CUT:
 	case LFUN_COPY:
@@ -426,17 +426,17 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 
 	case LFUN_VC_REGISTER:
-		disable = buf->lyxvc.inUse();
+		disable = buf->lyxvc().inUse();
 		break;
 	case LFUN_VC_CHECKIN:
-		disable = !buf->lyxvc.inUse() || buf->isReadonly();
+		disable = !buf->lyxvc().inUse() || buf->isReadonly();
 		break;
 	case LFUN_VC_CHECKOUT:
-		disable = !buf->lyxvc.inUse() || !buf->isReadonly();
+		disable = !buf->lyxvc().inUse() || !buf->isReadonly();
 		break;
 	case LFUN_VC_REVERT:
 	case LFUN_VC_UNDO:
-		disable = !buf->lyxvc.inUse();
+		disable = !buf->lyxvc().inUse();
 		break;
 	case LFUN_MENURELOAD:
 		disable = buf->isUnnamed() || buf->isClean();
@@ -450,7 +450,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_REJECT_CHANGE:
 	case LFUN_ACCEPT_ALL_CHANGES:
 	case LFUN_REJECT_ALL_CHANGES:
-		disable = !buf->params.tracking_changes;
+		disable = !buf->params().tracking_changes;
 		break;
 	case LFUN_INSET_TOGGLE: {
 		LyXText * lt = view()->getLyXText();
@@ -541,7 +541,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			UpdatableInset * tli = view()->theLockingInset();
 			disable = tli && tli->lyxCode() == InsetOld::ERT_CODE;
 		} else if (name == "vclog") {
-			disable = !buf->lyxvc.inUse();
+			disable = !buf->lyxvc().inUse();
 		} else if (name == "latexlog") {
 			disable = !IsFileReadable(buf->getLogName().second);
 		}
@@ -629,7 +629,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 	case LFUN_INSERT_BRANCH:
 		code = InsetOld::BRANCH_CODE;
-		if (buf->params.branchlist.empty())
+		if (buf->params().branchlist.empty())
 			disable = true;
 		break;
 	case LFUN_INSERT_LABEL:
@@ -713,7 +713,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			flag.setOnOff(true);
 		break;
 	case LFUN_TRACK_CHANGES:
-		flag.setOnOff(buf->params.tracking_changes);
+		flag.setOnOff(buf->params().tracking_changes);
 		break;
 	default:
 		break;
@@ -963,14 +963,14 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 					owner->view_state_changed();
 					break;
 				case LFUN_RIGHT:
-					if (!view()->text->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
+					if (!view()->text->cursor.par()->isRightToLeftPar(owner->buffer()->params())) {
 						view()->text->cursorRight(view());
 						moveCursorUpdate();
 						owner->view_state_changed();
 					}
 					goto exit_with_message;
 				case LFUN_LEFT:
-					if (view()->text->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
+					if (view()->text->cursor.par()->isRightToLeftPar(owner->buffer()->params())) {
 						view()->text->cursorRight(view());
 						moveCursorUpdate();
 						owner->view_state_changed();
@@ -1059,8 +1059,8 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_READ_ONLY_TOGGLE:
-		if (owner->buffer()->lyxvc.inUse())
-			owner->buffer()->lyxvc.toggleReadOnly();
+		if (owner->buffer()->lyxvc().inUse())
+			owner->buffer()->lyxvc().toggleReadOnly();
 		else
 			owner->buffer()->setReadonly(
 				!owner->buffer()->isReadonly());
@@ -1229,8 +1229,8 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	{
 		if (!ensureBufferClean(view()))
 			break;
-		if (!owner->buffer()->lyxvc.inUse()) {
-			owner->buffer()->lyxvc.registrer();
+		if (!owner->buffer()->lyxvc().inUse()) {
+			owner->buffer()->lyxvc().registrer();
 			view()->reload();
 		}
 	}
@@ -1240,9 +1240,9 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	{
 		if (!ensureBufferClean(view()))
 			break;
-		if (owner->buffer()->lyxvc.inUse()
+		if (owner->buffer()->lyxvc().inUse()
 		    && !owner->buffer()->isReadonly()) {
-			owner->buffer()->lyxvc.checkIn();
+			owner->buffer()->lyxvc().checkIn();
 			view()->reload();
 		}
 	}
@@ -1252,9 +1252,9 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	{
 		if (!ensureBufferClean(view()))
 			break;
-		if (owner->buffer()->lyxvc.inUse()
+		if (owner->buffer()->lyxvc().inUse()
 		    && owner->buffer()->isReadonly()) {
-			owner->buffer()->lyxvc.checkOut();
+			owner->buffer()->lyxvc().checkOut();
 			view()->reload();
 		}
 	}
@@ -1262,14 +1262,14 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	case LFUN_VC_REVERT:
 	{
-		owner->buffer()->lyxvc.revert();
+		owner->buffer()->lyxvc().revert();
 		view()->reload();
 	}
 	break;
 
 	case LFUN_VC_UNDO:
 	{
-		owner->buffer()->lyxvc.undoLast();
+		owner->buffer()->lyxvc().undoLast();
 		view()->reload();
 	}
 	break;

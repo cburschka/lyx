@@ -296,7 +296,7 @@ bool Converters::convert(Buffer const * buffer,
 		string real_outfile;
 		if (outfile == infile) {
 			real_outfile = infile;
-			outfile = AddName(buffer->tmppath, "tmpfile.out");
+			outfile = AddName(buffer->temppath(), "tmpfile.out");
 		}
 
 		if (conv.latex) {
@@ -330,10 +330,10 @@ bool Converters::convert(Buffer const * buffer,
 
 			if (conv.from == "dvi" && conv.to == "ps")
 				command = add_options(command,
-						      buffer->params.dvips_options());
+						      buffer->params().dvips_options());
 			else if (conv.from == "dvi" && prefixIs(conv.to, "pdf"))
 				command = add_options(command,
-						      dvipdfm_options(buffer->params));
+						      dvipdfm_options(buffer->params()));
 
 			lyxerr[Debug::FILES] << "Calling " << command << endl;
 			buffer->message(_("Executing command: ") + command);

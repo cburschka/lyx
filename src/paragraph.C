@@ -1151,7 +1151,7 @@ string const Paragraph::asString(Buffer const & buffer,
 		os << params().labelString() << ' ';
 
 	for (pos_type i = beg; i < end; ++i) {
-		value_type const c = getUChar(buffer.params, i);
+		value_type const c = getUChar(buffer.params(), i);
 		if (IsPrintable(c))
 			os << c;
 		else if (c == META_INSET)

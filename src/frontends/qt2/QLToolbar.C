@@ -98,7 +98,7 @@ void QLToolbar::changed_layout(string const & sel)
 	owner_->centralWidget()->setFocus();
 
 	LyXTextClass const & tc =
-		owner_->buffer()->params.getLyXTextClass();
+		owner_->buffer()->params().getLyXTextClass();
 
 	LyXTextClass::const_iterator end = tc.end();
 	for (LyXTextClass::const_iterator cit = tc.begin();
@@ -120,7 +120,7 @@ void QLToolbar::setLayout(string const & layout)
 		return;
 
 	LyXTextClass const & tc =
-		owner_->buffer()->params.getLyXTextClass();
+		owner_->buffer()->params().getLyXTextClass();
 
 	QString const & name = qt_(tc[layout]->name());
 
@@ -146,7 +146,7 @@ void QLToolbar::updateLayoutList()
 		return;
 
 	LyXTextClass const & tc =
-		owner_->buffer()->params.getLyXTextClass();
+		owner_->buffer()->params().getLyXTextClass();
 
 	combo_->setUpdatesEnabled(false);
 

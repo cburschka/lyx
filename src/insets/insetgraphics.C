@@ -427,7 +427,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	if (zipped) {
 		CopyStatus status;
 		boost::tie(status, temp_file) =
-			copyToDirIfNeeded(orig_file, buf.tmppath);
+			copyToDirIfNeeded(orig_file, buf.temppath());
 
 		if (status == FAILURE)
 			return orig_file;
@@ -459,7 +459,7 @@ string const InsetGraphics::prepareFile(Buffer const & buf,
 	if (lyxrc.use_tempdir) {
 		CopyStatus status;
 		boost::tie(status, temp_file) =
-			copyToDirIfNeeded(orig_file, buf.tmppath);
+			copyToDirIfNeeded(orig_file, buf.temppath());
 
 		if (status == FAILURE)
 			return orig_file;
@@ -608,7 +608,7 @@ int InsetGraphics::ascii(Buffer const &, ostream & os, int) const
 
 int InsetGraphics::linuxdoc(Buffer const & buf, ostream & os) const
 {
-	string const file_name = buf.niceFile ?
+	string const file_name = buf.niceFile() ?
 				params().filename.relFilename(buf.filePath()):
 				params().filename.absFilename();
 

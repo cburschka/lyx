@@ -47,7 +47,7 @@ void recordUndo(BufferView * bv, Undo::undo_kind kind,
 	int const inset_id = inset ? inset->id() : -1;
 
 	// We simply record the entire outer paragraphs
-	ParagraphList * plist = &buf->paragraphs;
+	ParagraphList & plist = buf->paragraphs();
 	ParIterator null = buf->par_iterator_end();
 
 	// First, identify the outer paragraphs
@@ -59,8 +59,8 @@ void recordUndo(BufferView * bv, Undo::undo_kind kind,
 	}
 
 	// And calculate a stable reference to them
-	int const first_offset = std::distance(plist->begin(), first);
-	int const last_offset = std::distance(last, plist->end());
+	int const first_offset = std::distance(plist.begin(), first);
+	int const last_offset = std::distance(last, plist.end());
 
 	// Undo::ATOMIC are always recorded (no overlapping there).
 
@@ -68,10 +68,10 @@ void recordUndo(BufferView * bv, Undo::undo_kind kind,
 	// Nobody wants all removed character appear one by one when undoing.
 	if (! undo_finished && kind != Undo::ATOMIC) {
 		// Check whether storing is needed.
-		if (! buf->undostack.empty() 
-		    && buf->undostack.top().kind == kind 
-		    && buf->undostack.top().first_par_offset == first_offset
-		    && buf->undostack.top().last_par_offset == last_offset) {
+		if (! buf->undostack().empty() 
+		    && buf->undostack().top().kind == kind 
+		    && buf->undostack().top().first_par_offset == first_offset
+		    && buf->undostack().top().last_par_offset == last_offset) {
 			// No additonal undo recording needed -
 			// effectively, we combine undo recordings to one.
 			return;
@@ -107,25 +107,25 @@ void recordUndo(BufferView * bv, Undo::undo_kind kind,
 bool performUndoOrRedo(BufferView * bv, Undo & undo)
 {
 	Buffer * buf = bv->buffer();
-	ParagraphList * plist = &buf->paragraphs;
+	ParagraphList & plist = buf->paragraphs();
 
 	// Remove new stuff between first and last
 	{
-		ParagraphList::iterator first = plist->begin();
+		ParagraphList::iterator first = plist.begin();
 		advance(first, undo.first_par_offset);
-		ParagraphList::iterator last = plist->begin();
-		advance(last, plist->size() - undo.last_par_offset);
-		plist->erase(first, ++last);
+		ParagraphList::iterator last = plist.begin();
+		advance(last, plist.size() - undo.last_par_offset);
+		plist.erase(first, ++last);
 	}
 		
 	// Re-insert old stuff instead
 	{
-		if (plist->empty()) {
-			plist->assign(undo.pars.begin(), undo.pars.end());
+		if (plist.empty()) {
+			plist.assign(undo.pars.begin(), undo.pars.end());
 		} else {
-			ParagraphList::iterator first = plist->begin();
+			ParagraphList::iterator first = plist.begin();
 			advance(first, undo.first_par_offset);
-			plist->insert(first, undo.pars.begin(), undo.pars.end());
+			plist.insert(first, undo.pars.begin(), undo.pars.end());
 		}
 	}
 
@@ -190,7 +190,7 @@ bool textUndoOrRedo(BufferView * bv,
 		otherstack.push(undo);
 		otherstack.top().pars.clear();
 		Buffer * buf = bv->buffer();
-		ParagraphList & plist = buf->paragraphs;
+		ParagraphList & plist = buf->paragraphs();
 		if (undo.first_par_offset + undo.last_par_offset <= int(plist.size())) {
 			ParagraphList::iterator first = plist.begin();
 			advance(first, undo.first_par_offset);
@@ -237,15 +237,15 @@ void finishUndo()
 
 bool textUndo(BufferView * bv)
 {
-	return textUndoOrRedo(bv, bv->buffer()->undostack,
-			      bv->buffer()->redostack);
+	return textUndoOrRedo(bv, bv->buffer()->undostack(),
+			      bv->buffer()->redostack());
 }
 
 
 bool textRedo(BufferView * bv)
 {
-	return textUndoOrRedo(bv, bv->buffer()->redostack,
-			      bv->buffer()->undostack);
+	return textUndoOrRedo(bv, bv->buffer()->redostack(),
+			      bv->buffer()->undostack());
 }
 
 
@@ -253,8 +253,8 @@ void recordUndo(BufferView * bv, Undo::undo_kind kind,
 	     ParagraphList::iterator first, ParagraphList::iterator last)
 {
 	if (!undo_frozen) {
-		recordUndo(bv, kind, first, last, bv->buffer()->undostack);
-		bv->buffer()->redostack.clear();
+		recordUndo(bv, kind, first, last, bv->buffer()->undostack());
+		bv->buffer()->redostack().clear();
 	}
 }
 

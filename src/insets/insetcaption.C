@@ -95,7 +95,7 @@ void InsetCaption::draw(PainterInfo & pi, int x, int y) const
 		Assert(0);
 
 	FloatList const & floats =
-		pi.base.bv->buffer()->params.getLyXTextClass().floats();
+		pi.base.bv->buffer()->params().getLyXTextClass().floats();
 	string const fl = i2 ? floats.getType(type).name() : N_("Float");
 
 	// Discover the number...

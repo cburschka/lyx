@@ -67,7 +67,8 @@ TocList const getTocList(Buffer const & buf)
 {
 	TocList toclist;
 
-	LyXTextClass const & textclass = buf.params.getLyXTextClass();
+	BufferParams const & bufparams = buf.params();
+	LyXTextClass const & textclass = bufparams.getLyXTextClass();
 
 	ParConstIterator pit = buf.par_iterator_begin();
 	ParConstIterator end = buf.par_iterator_end();
@@ -78,7 +79,7 @@ TocList const getTocList(Buffer const & buf)
 		char const labeltype = pit->layout()->labeltype;
 
 		if (labeltype >= LABEL_COUNTER_CHAPTER
-		    && labeltype <= LABEL_COUNTER_CHAPTER + buf.params.tocdepth) {
+		    && labeltype <= LABEL_COUNTER_CHAPTER + bufparams.tocdepth) {
 				// insert this into the table of contents
 			const int depth = max(0, labeltype - textclass.maxcounter());
 			TocItem const item(pit->id(), depth,

@@ -42,7 +42,7 @@ namespace {
 vector<string> const Backends(Buffer const & buffer)
 {
 	vector<string> v;
-	if (buffer.params.getLyXTextClass().isTeXClassAvailable())
+	if (buffer.params().getLyXTextClass().isTeXClassAvailable())
 		v.push_back(BufferFormat(buffer));
 	v.push_back("text");
 	return v;
@@ -80,8 +80,8 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		backend_format = format;
 
 	string filename = buffer->getLatexName(false);
-	if (!buffer->tmppath.empty())
-		filename = AddName(buffer->tmppath, filename);
+	if (!buffer->temppath().empty())
+		filename = AddName(buffer->temppath(), filename);
 	filename = ChangeExtension(filename,
 				   formats.extension(backend_format));
 

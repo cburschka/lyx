@@ -125,7 +125,7 @@ void BufferList::release(Buffer * buf)
 Buffer * BufferList::newBuffer(string const & s, bool ronly)
 {
 	Buffer * tmpbuf = new Buffer(s, ronly);
-	tmpbuf->params.useClassDefaults();
+	tmpbuf->params().useClassDefaults();
 	lyxerr[Debug::INFO] << "Assigning to buffer "
 			    << bstore.size() << endl;
 	bstore.push_back(tmpbuf);
@@ -150,7 +150,7 @@ bool BufferList::close(Buffer * buf, bool ask)
 	Assert(buf);
 
 	// FIXME: is the quitting check still necessary ?
-	if (!ask || buf->isClean() || quitting || buf->paragraphs.empty()) {
+	if (!ask || buf->isClean() || quitting || buf->paragraphs().empty()) {
 		release(buf);
 		return true;
 	}

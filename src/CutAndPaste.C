@@ -269,7 +269,7 @@ CutAndPaste::pasteSelection(Buffer const & buffer,
 					tmpbuf->erase(i--);
 				}
 			} else {
-				LyXFont f1 = tmpbuf->getFont(buffer.params, i, outerFont(pit, pars));
+				LyXFont f1 = tmpbuf->getFont(buffer.params(), i, outerFont(pit, pars));
 				LyXFont f2 = f1;
 				if (!pit->checkInsertChar(f1)) {
 					tmpbuf->erase(i--);
@@ -321,7 +321,7 @@ CutAndPaste::pasteSelection(Buffer const & buffer,
 	// Open the paragraph for inserting the buf
 	// if necessary.
 	if (pit->size() > pos || boost::next(pit) == pars.end()) {
-		breakParagraphConservative(buffer.params,
+		breakParagraphConservative(buffer.params(),
 					   pars, pit, pos);
 		paste_the_end = true;
 	}
@@ -339,7 +339,7 @@ CutAndPaste::pasteSelection(Buffer const & buffer,
 	if (boost::next(pit) == last_paste)
 		last_paste = pit;
 
-	mergeParagraph(buffer.params, pars, pit);
+	mergeParagraph(buffer.params(), pars, pit);
 
 	// Store the new cursor position.
 	pit = last_paste;
@@ -350,15 +350,15 @@ CutAndPaste::pasteSelection(Buffer const & buffer,
 	if (boost::next(last_paste) != pars.end() &&
 	    paste_the_end) {
 		if (boost::next(last_paste)->hasSameLayout(*last_paste)) {
-			mergeParagraph(buffer.params, pars,
+			mergeParagraph(buffer.params(), pars,
 				       last_paste);
 		} else if (boost::next(last_paste)->empty()) {
 			boost::next(last_paste)->makeSameLayout(*last_paste);
-			mergeParagraph(buffer.params, pars,
+			mergeParagraph(buffer.params(), pars,
 				       last_paste);
 		} else if (last_paste->empty()) {
 			last_paste->makeSameLayout(*boost::next(last_paste));
-			mergeParagraph(buffer.params, pars,
+			mergeParagraph(buffer.params(), pars,
 				       last_paste);
 		} else
 			boost::next(last_paste)->stripLeadingSpaces();

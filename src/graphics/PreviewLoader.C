@@ -449,7 +449,7 @@ void PreviewLoader::Impl::startLoading()
 	lyxerr[Debug::GRAPHICS] << "PreviewLoader::startLoading()" << endl;
 
 	// As used by the LaTeX file and by the resulting image files
-	string directory = buffer_.tmppath;
+	string directory = buffer_.temppath();
 	if (directory.empty())
 		directory = buffer_.filePath();
 

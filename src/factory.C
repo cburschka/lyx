@@ -60,7 +60,7 @@ using std::endl;
 InsetOld * createInset(FuncRequest const & cmd)
 {
 	BufferView * bv = cmd.view();
-	BufferParams const & params = bv->buffer()->params;
+	BufferParams const & params = bv->buffer()->params();
 
 	switch (cmd.action) {
 	case LFUN_HFILL:
@@ -365,39 +365,39 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 			inset = new InsetGraphics;
 		} else if (tmptok == "Note"	|| tmptok == "Comment"
 				|| tmptok == "Greyedout") {
-			inset = new InsetNote(buf.params, tmptok);
+			inset = new InsetNote(buf.params(), tmptok);
 		} else if (tmptok == "Branch") {
-			inset = new InsetBranch(buf.params, tmptok);
+			inset = new InsetBranch(buf.params(), tmptok);
 		} else if (tmptok == "Include") {
 			InsetCommandParams p("Include");
 			inset = new InsetInclude(p, buf);
 		} else if (tmptok == "Environment") {
 			lex.next();
-			inset = new InsetEnvironment(buf.params, lex.getString());
+			inset = new InsetEnvironment(buf.params(), lex.getString());
 		} else if (tmptok == "ERT") {
-			inset = new InsetERT(buf.params);
+			inset = new InsetERT(buf.params());
 		} else if (tmptok == "InsetSpace") {
 			inset = new InsetSpace;
 		} else if (tmptok == "Tabular") {
 			inset = new InsetTabular(buf);
 		} else if (tmptok == "Text") {
-			inset = new InsetText(buf.params);
+			inset = new InsetText(buf.params());
 		} else if (tmptok == "Foot") {
-			inset = new InsetFoot(buf.params);
+			inset = new InsetFoot(buf.params());
 		} else if (tmptok == "Marginal") {
-			inset = new InsetMarginal(buf.params);
+			inset = new InsetMarginal(buf.params());
 		} else if (tmptok == "OptArg") {
-			inset = new InsetOptArg(buf.params);
+			inset = new InsetOptArg(buf.params());
 		} else if (tmptok == "Minipage") {
-			inset = new InsetMinipage(buf.params);
+			inset = new InsetMinipage(buf.params());
 		} else if (tmptok == "Float") {
 			lex.next();
 			string tmptok = lex.getString();
-			inset = new InsetFloat(buf.params, tmptok);
+			inset = new InsetFloat(buf.params(), tmptok);
 		} else if (tmptok == "Wrap") {
 			lex.next();
 			string tmptok = lex.getString();
-			inset = new InsetWrap(buf.params, tmptok);
+			inset = new InsetWrap(buf.params(), tmptok);
 #if 0
 		} else if (tmptok == "List") {
 			inset = new InsetList;
@@ -405,7 +405,7 @@ InsetOld * readInset(LyXLex & lex, Buffer const & buf)
 			inset = new InsetList;
 #endif
 		} else if (tmptok == "Caption") {
-			inset = new InsetCaption(buf.params);
+			inset = new InsetCaption(buf.params());
 		} else if (tmptok == "FloatList") {
 			inset = new InsetFloatList;
 		}

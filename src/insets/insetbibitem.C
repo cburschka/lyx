@@ -133,8 +133,8 @@ int bibitemMaxWidth(BufferView * bv, LyXFont const &)
 	int w = 0;
 	// Ha, now we are mainly at 1.2.0 and it is still here (Jug)
 	// Does look like a hack? It is! (but will change at 0.13)
-	ParagraphList::iterator it = bv->buffer()->paragraphs.begin();
-	ParagraphList::iterator end = bv->buffer()->paragraphs.end();
+	ParagraphList::iterator it = bv->buffer()->paragraphs().begin();
+	ParagraphList::iterator end = bv->buffer()->paragraphs().end();
 	for (; it != end; ++it) {
 		if (it->bibitem()) {
 #warning metrics broken!
@@ -156,8 +156,8 @@ string const bibitemWidest(Buffer const & buffer)
 	InsetBibitem const * bitem = 0;
 	LyXFont font;
 
-	ParagraphList::const_iterator it = buffer.paragraphs.begin();
-	ParagraphList::const_iterator end = buffer.paragraphs.end();
+	ParagraphList::const_iterator it = buffer.paragraphs().begin();
+	ParagraphList::const_iterator end = buffer.paragraphs().end();
 
 	for (; it != end; ++it) {
 		if (it->bibitem()) {

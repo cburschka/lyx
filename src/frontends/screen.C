@@ -147,7 +147,7 @@ void LyXScreen::showCursor(BufferView & bv)
 
 	LyXText const & text = *bv.getLyXText();
 	LyXFont const & realfont = text.real_current_font;
-	BufferParams const & bp = bv.buffer()->params;
+	BufferParams const & bp = bv.buffer()->params();
 	bool const samelang = realfont.language() == bp.language;
 	bool const isrtl = realfont.isVisibleRightToLeft();
 
