@@ -68,8 +68,8 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 	for ( ; pit != end; ++pit)
 		pit->setInsetOwner(inset);
 
-	lyxerr << "\nhandle: inset_id: " << undo.inset_id << "\n";
-	lyxerr << "handle: inset: " << inset << "\n";
+	//lyxerr << "\nhandle: inset_id: " << undo.inset_id << "\n";
+	//lyxerr << "handle: inset: " << inset << "\n";
 	//lyxerr << "handle: plist_id: " << undo.plist_id << "\n";
 	lyxerr << "handle: undo.pars.size(): " << undo.pars.size() << "\n";
 	lyxerr << "handle: first_offset:  " << undo.first_par_offset  << "\n";
@@ -192,17 +192,16 @@ void createUndo(BufferView * bv, Undo::undo_kind kind,
 	plist = &buf->paragraphs;
 	// this is what we'd like to have in the end for small grained undo
 	for (ParIterator it = buf->par_iterator_begin(); it != null; ++it) {
-		if (it->id() == first->id()) {
+		if (it->id() == first->id()) 
 			first = it.outerPar(); 
+		if (it->id() == last->id())
 			last = it.outerPar(); 
-			break;
-		}
 	}
 
 #endif
 
-	int const first_offset  = std::distance(plist->begin(), first);
-	int const last_offset   = std::distance(last, plist->end());
+	int const first_offset = std::distance(plist->begin(), first);
+	int const last_offset  = std::distance(last, plist->end());
 
 	if (last == plist->end()) {
 		lyxerr << "*** createUndo: last == end  should not happen\n";
@@ -232,7 +231,7 @@ void createUndo(BufferView * bv, Undo::undo_kind kind,
 		(text->ownerParagraphs().begin(), text->cursor.par());
 
 	//lyxerr << "create: plist_id:      " << plist->id()  << "\n";
-	lyxerr << "create: inset_id:      " << inset_id  << "\n";
+	//lyxerr << "create: inset_id:      " << inset_id  << "\n";
 	lyxerr << "create: first_id:      " << first->id()  << "\n";
 	lyxerr << "create: last_id:       " << last->id()   << "\n";
 	lyxerr << "create: first_offset:  " << first_offset  << "\n";
@@ -244,8 +243,6 @@ void createUndo(BufferView * bv, Undo::undo_kind kind,
 		first_offset, last_offset,
 		cursor_offset, text->cursor.pos(),
 		ParagraphList()));
-	//stack.push(Undo(kind, inset_id, 0,
-	//	first_offset, last_offset, first_offset, 0, ParagraphList()));
 
 	ParagraphList & undo_pars = stack.top().pars;
 
