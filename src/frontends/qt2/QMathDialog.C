@@ -28,7 +28,6 @@
 
 using std::min;
 using std::max;
-using std::endl;
 
 
 class QScrollViewSingle : public QScrollView {
