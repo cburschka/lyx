@@ -284,14 +284,14 @@ int LyXText::singleWidth(ParagraphList::iterator pit,
 	if (pos >= pit->size())
 		return 0;
 
-	LyXFont const font = getFont(bv()->buffer(), pit, pos);
+	LyXFont const & font = getFont(bv()->buffer(), pit, pos);
 
 	// The most common case is handled first (Asger)
 	if (IsPrintable(c)) {
 		if (font.language()->RightToLeft()) {
-			if (font.language()->lang() == "arabic" &&
-			    (lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 ||
-			     lyxrc.font_norm_type == LyXRC::ISO_10646_1)) {
+			if ((lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 ||
+			     lyxrc.font_norm_type == LyXRC::ISO_10646_1)
+			    && font.language()->lang() == "arabic") {
 				if (Encodings::IsComposeChar_arabic(c))
 					return 0;
 				else
@@ -301,7 +301,6 @@ int LyXText::singleWidth(ParagraphList::iterator pit,
 				return 0;
 		}
 		return font_metrics::width(c, font);
-
 	}
 
 	if (c == Paragraph::META_INSET) {
@@ -935,17 +934,19 @@ int LyXText::fill(RowList::iterator row, int paper_width) const
 	pos_type const body_pos = pit->beginningOfBody();
 	pos_type i = row->pos();
 
-	while (i <= last) {
-		if (body_pos > 0 && i == body_pos) {
-			w += font_metrics::width(layout->labelsep, getLabelFont(bv()->buffer(), pit));
-			if (pit->isLineSeparator(i - 1))
-				w -= singleWidth(pit, i - 1);
-			int left_margin = labelEnd(*row);
-			if (w < left_margin)
-				w = left_margin;
+	if (! pit->empty()) {
+		while (i <= last) {
+			if (body_pos > 0 && i == body_pos) {
+				w += font_metrics::width(layout->labelsep, getLabelFont(bv()->buffer(), pit));
+				if (pit->isLineSeparator(i - 1))
+					w -= singleWidth(pit, i - 1);
+				int left_margin = labelEnd(*row);
+				if (w < left_margin)
+					w = left_margin;
+			}
+			w += singleWidth(pit, i);
+			++i;
 		}
-		w += singleWidth(pit, i);
-		++i;
 	}
 	if (body_pos > 0 && body_pos > last) {
 		w += font_metrics::width(layout->labelsep, getLabelFont(bv()->buffer(), pit));

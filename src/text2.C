@@ -711,13 +711,12 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 	ParagraphList::iterator end = ownerParagraphs().end();
 
 	for (; pit != end; ++pit) {
-		// compute inset metrics
-		for (int pos = 0; pos != pit->size(); ++pos) {
-			if (pit->isInset(pos)) {
-				Dimension dim;
-				MetricsInfo m = mi;
-				pit->getInset(pos)->metrics(m, dim);
-			}
+		InsetList::iterator ii = pit->insetlist.begin();
+		InsetList::iterator iend = pit->insetlist.end();
+		for (; ii != iend; ++ii) {
+			Dimension dim;
+			MetricsInfo m = mi;
+			ii->inset->metrics(m, dim);
 		}
 
 		// insert a new row, starting at position 0

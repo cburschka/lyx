@@ -1076,7 +1076,6 @@ void paintRows(BufferView const & bv, LyXText const & text,
 	// calling metrics() directly is (a) slow and (b) crashs
 	if (&text == bv.text) {
 #if 1
-		lyxerr << "paintRows, global...\n";
 		// make sure all insets are updated
 		ParagraphList::iterator pit = text.ownerParagraphs().begin();
 		ParagraphList::iterator end = text.ownerParagraphs().end();

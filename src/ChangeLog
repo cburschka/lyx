@@ -1,3 +1,12 @@
+2003-07-26  Asger Alstrup  <alstrup@local>
+
+	* text2.C (metrics): change a brain-dead algorithm to a smarter one.
+
+	* text.C (singleWidth): Spurious font copying in hot-spot
+	singleWidth avoided. Reorder tests for arabic for efficiency.
+
+	* text.C (fill): handle empty paragraphs better.
+
 2003-07-27  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* ispell.C: 

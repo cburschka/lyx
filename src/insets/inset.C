@@ -48,7 +48,6 @@ InsetOld::InsetOld(InsetOld const & in)
 	top_x(0), top_baseline(0), scx(0), id_(in.id_), owner_(0),
 	name_(in.name_), background_color_(in.background_color_)
 {
-	lyxerr << "inset id: " << id_ << std::endl;
 }
 
 
