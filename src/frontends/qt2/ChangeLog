@@ -1,3 +1,16 @@
+2001-08-28  John Levon  <moz@compsoc.man.ac.uk>
+
+	* QThesaurus.C: clear selection on update
+
+	* QInclude.[Ch]:
+	* QincludeDialog.[Ch]:
+	* ui/QincludeDialog.ui:
+	* Makefile.am:
+	* Makefile.dialogs:
+	* Dialogs.C: add Include dialog
+ 
+	* README: add note about crashes
+ 
 2001-08-27  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QThesaurusDialog.C: whoops, forgot to clear before update
