@@ -388,20 +388,35 @@ void LyX::init(bool gui)
 				    << system_lyxdir << '\'' << endl;
 
 	//
-	// Set PATH for LyX/Mac 
+	// Set PATH and localedir for LyX/Mac 
+	//
 	// LyX/Mac is a relocatable application bundle; here we add to
 	// the PATH so it can find binaries like reLyX inside its own
 	// application bundle, and also append PATH elements that it
-	// needs to run latex, previewers, etc.
+	// needs to run latex, previewers, etc. We also set the 
+	// localedir inside the application bundle.
 	//
 
 	if (system_lyxdir == NormalizePath(AddPath(binpath, "../Resources/") +
                                    OnlyFilename(binname))) {
-	  string oldpath = GetEnv("PATH");
-	  string newpath = "PATH=" + oldpath + ":" + binpath + ":";
-	  newpath += "/sw/bin:/usr/local/bin:/usr/local/teTeX/bin/powerpc-apple-darwin-current";
-	  PutEnv(newpath);
-	  lyxerr[Debug::INIT] << "Running from LyX/Mac bundle. Setting PATH to: " << GetEnv("PATH") << endl;
+		string oldpath = GetEnv("PATH");
+		string newpath = "PATH=" + oldpath + ":" + binpath + ":";
+		newpath += "/sw/bin:/usr/local/bin:/usr/local/teTeX/bin/powerpc-apple-darwin-current";
+		PutEnv(newpath);
+		lyxerr[Debug::INIT] << "Running from LyX/Mac bundle. " 
+			"Setting PATH to: " << GetEnv("PATH") << endl;
+		if (GetEnvPath("LYX_LOCALEDIR").empty()) {
+			string const maybe_localedir = 
+				NormalizePath(AddPath(system_lyxdir, 
+						      "../locale")); 
+			FileInfo fi(maybe_localedir);
+			if (fi.isOK() && fi.isDir()) {
+				lyxerr[Debug::INIT] 
+					<< "Setting locale directory to "
+					<< maybe_localedir << endl;
+				gettext_init(maybe_localedir);
+			}
+		}
 	}
 
 	//

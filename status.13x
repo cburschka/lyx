@@ -35,20 +35,22 @@ What's new
 - add support for intelligent scrolling with the mouse cursor [Qt only]
 
 - improvements in LyX/Mac: support for opening files with LyX in
-  finder, the LyX.app bundle can now be moved around and contains its
+  finder; the LyX.app bundle can now be moved around and contains its
   own fonts (for math equations)
 
 - add support for \boldsymbol in math editor
 
 - enable lyx to read documents from versions 0.10 and 0.12
 
-- add support for agums (generic style for first-time submissions to
-  AGU editors) and g-brief2 (a nice letter class) textclasses
+- improve support for LaTeX documentclasses: new agums (generic style
+  for first-time submissions to AGU editors) and g-brief2 (a nice
+  letter class) textclasses; allow optional arguments in Author,
+  AuthorAdress and Thanks styles for the elsart layout; add
+  Affiliation layout to jgrga textclass
 
-- allow optional arguments in Author, AuthorAdress and Thanks styles
-  for the elsart layout; add Affiliation layout to jgrga textclass
-
-- update the german translation of the User Guide
+- improve documentation for some languages: basque (new Extended
+  Manual and User Guide; updated Intro and Tutorial), german
+  (updated User Guide) and norwegian (new Intro)
 
 - update basque, danish, finnish, french, german, italian, nynorsk,
   romanian, spanish and slovenian interface localizations
@@ -56,10 +58,6 @@ What's new
 - remove localization for the following languages, since they were too
   incomplete to be useful: bulgarian, catalan, czech, hebrew,
   hungarian, portuguese, swedish, turkish, walloon
-
-- enable lyx to compile on Itanium machines.
-
-- add autoconf 2.59 as an supported version.
 
 
 ** Bug fixes
@@ -111,4 +109,8 @@ What's new
 - compilation fixes for MacOSX
 
 - fix problems with non-GNU make program
+
+- enable lyx to compile on Itanium machines
+
+- add autoconf 2.59 as a supported version
 

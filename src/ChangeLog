@@ -1,3 +1,8 @@
+2004-02-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyx_main.C (init): if running from a Mac OS X bundle, make sure
+	to fixup the locale directory
+
 2003-12-28  Angus Leeming  <leeming@lyx.org>
 
 	* text3.C (dispatch): output useful info on receipt of LFUN_GETLAYOUT.
