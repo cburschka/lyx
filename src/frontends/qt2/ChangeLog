@@ -1,3 +1,8 @@
+2003-06-11  Angus Leeming  <leeming@lyx.org>
+
+	* QExternal.C: changes due to InsetExternal::Params no longer
+	storing the ExternalTemplate but its name.
+
 2003-06-10  Angus Leeming  <leeming@lyx.org>
 
 	* QDocument.C (apply): compilation fix after Lars' changes ;-)

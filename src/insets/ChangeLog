@@ -1,3 +1,14 @@
+2003-06-11  Angus Leeming  <leeming@lyx.org>
+
+	* insetexternal.[Ch]: InsetExternal::Params no longer stores the
+	ExternalTemplate but its name, templatename. This means that a file
+	containing a reference to an External Template not installed on the
+	current machine will be saved retaining this info rather than inserting
+	the first "valid" template from the list of templates.
+
+	As a by product, the visual statement that the Template is missing is
+	now very clear!
+
 2003-06-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* insettext.C (appendParagraphs): remove some commented code.

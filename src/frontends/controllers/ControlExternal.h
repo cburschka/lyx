@@ -20,6 +20,9 @@
 #include <boost/scoped_ptr.hpp>
 
 
+class ExternalTemplate;
+
+
 class ControlExternal : public Dialog::Controller {
 public:
 	///

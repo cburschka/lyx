@@ -13,7 +13,6 @@
 #define INSET_EXTERNAL_H
 
 #include "inset.h"
-#include "ExternalTemplate.h"
 #include "graphics/GraphicsTypes.h"
 #include "LString.h"
 
@@ -32,10 +31,10 @@ public:
 		~Params();
 		/// the filename
 		string filename;
+		/// the current template used
+		string templatename;
 		/// The name of the tempfile used for manipulations.
 		string tempname;
-		/// the current template used
-		ExternalTemplate templ;
 		/// how the inset is displayed by LyX
 		grfx::DisplayType display;
 		/// The scale of the displayed graphic (If shown).

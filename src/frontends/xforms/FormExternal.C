@@ -24,6 +24,8 @@
 
 #include "gettext.h"
 
+#include "insets/ExternalTemplate.h"
+
 #include "support/tostr.h"
 #include "support/lstrings.h"
 #include "lyx_forms.h"
@@ -42,7 +44,7 @@ void FormExternal::apply()
 	params.filename = fl_get_input(dialog_->input_filename);
 
 	int const choice = fl_get_choice(dialog_->choice_template) - 1;
-	params.templ = controller().getTemplate(choice);
+	params.templatename = controller().getTemplate(choice).lyxName;
 
 	params.lyxscale = strToInt(getString(dialog_->input_lyxscale));
 	if (params.lyxscale == 0)
@@ -120,7 +122,7 @@ void FormExternal::update()
 
 	fl_set_input(dialog_->input_filename, params.filename.c_str());
 
-	int ID = controller().getTemplateNumber(params.templ.lyxName);
+	int ID = controller().getTemplateNumber(params.templatename);
 	if (ID < 0) ID = 0;
 	fl_set_choice(dialog_->choice_template, ID+1);
 

@@ -13,6 +13,9 @@
 
 #include "ControlExternal.h"
 #include "qt_helpers.h"
+
+#include "insets/ExternalTemplate.h"
+
 #include "support/lstrings.h"
 #include "support/tostr.h"
 
@@ -63,7 +66,7 @@ void QExternal::update_contents()
 
 	dialog_->fileED->setText(toqstr(params.filename));
 
-	dialog_->externalCO->setCurrentItem(controller().getTemplateNumber(params.templ.lyxName));
+	dialog_->externalCO->setCurrentItem(controller().getTemplateNumber(params.templatename));
 	dialog_->externalTV->setText(toqstr(helpText()));
 
 	int item = 0;
@@ -100,7 +103,8 @@ void QExternal::apply()
 
 	params.filename = fromqstr(dialog_->fileED->text());
 
-	params.templ = controller().getTemplate(dialog_->externalCO->currentItem());
+	params.templatename =
+		controller().getTemplate(dialog_->externalCO->currentItem()).lyxName;
 
 	switch (dialog_->showCB->currentItem()) {
 		case 0: params.display = grfx::DefaultDisplay; break;

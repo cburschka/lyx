@@ -85,7 +85,6 @@ InsetExternal::InsetExternal()
 	: renderer_(new GraphicInset)
 {
 	renderer_->connect(boost::bind(&InsetExternal::statusChanged, this));
-	params_.templ = ExternalTemplateManager::get().getTemplates().begin()->second;
 }
 
 
@@ -201,34 +200,60 @@ grfx::Params get_grfx_params(InsetExternal::Params const & eparams,
 	return gparams;
 }
 
+
+ExternalTemplate const * getTemplatePtr(InsetExternal::Params const & params)
+{
+	ExternalTemplateManager & etm = ExternalTemplateManager::get();
+	ExternalTemplate const & templ = etm.getTemplateByName(params.templatename);
+	if (templ.lyxName.empty())
+		return 0;
+	return &templ;
+}
+
+
+string const getScreenLabel(InsetExternal::Params const & params)
+{
+	ExternalTemplate const * const ptr = getTemplatePtr(params);
+	if (!ptr)
+		return bformat(_("External template %1$s is not installed"),
+			       params.templatename);
+	return doSubstitution(params, 0, ptr->guiName);
+}
+
 } // namespace anon
 
 
 void InsetExternal::setParams(Params const & p, string const & filepath)
 {
+	// The stored params; what we would like to happen in an ideal world.
 	params_.filename = p.filename;
-	params_.templ = p.templ;
+	params_.templatename = p.templatename;
 	params_.display = p.display;
 	params_.lyxscale = p.lyxscale;
 
+	// A temporary set of params; whether the thing can be displayed
+	// within LyX depends on the availability of this template.
+	Params tmp = params_;
+	if (!getTemplatePtr(params_))
+		tmp.display = grfx::NoDisplay;
+	
 	// Update the display using the new parameters.
 	if (params_.filename.empty() || !filepath.empty())
-		renderer_->update(get_grfx_params(params_, filepath));	
-	string const msg = doSubstitution(params_, 0, params_.templ.guiName);
-	renderer_->setNoDisplayMessage(msg);
+		renderer_->update(get_grfx_params(tmp, filepath));	
+	renderer_->setNoDisplayMessage(getScreenLabel(params_));
 }
 
 
 string const InsetExternal::editMessage() const
 {
-	return doSubstitution(params_, 0, params_.templ.guiName);
+	return getScreenLabel(params_);
 }
 
 
 void InsetExternal::write(Buffer const *, ostream & os) const
 {
 	os << "External\n"
-	   << "\ttemplate " << params_.templ.lyxName << '\n';
+	   << "\ttemplate " << params_.templatename << '\n';
 
 	if (!params_.filename.empty())
 		os << "\tfilename " << params_.filename << '\n';
@@ -270,10 +295,7 @@ void InsetExternal::read(Buffer const * buffer, LyXLex & lex)
 		switch (lex.lex()) {
 		case EX_TEMPLATE: {
 			lex.next();
-			string const name = lex.getString();
-			ExternalTemplateManager & etm =
-				ExternalTemplateManager::get();
-			params.templ = etm.getTemplateByName(name);
+			params.templatename = lex.getString();
 			break;
 		}
 
@@ -320,20 +342,15 @@ void InsetExternal::read(Buffer const * buffer, LyXLex & lex)
 	lex.popTable();
 
 	// Replace the inset's store
-	params_ = params;
+	string const path = buffer ? buffer->filePath() : string();
+	setParams(params, path);
 
 	lyxerr[Debug::INFO] << "InsetExternal::Read: "
-	       << "template: '" << params_.templ.lyxName
+	       << "template: '" << params_.templatename
 	       << "' filename: '" << params_.filename
 	       << "' display: '" << params_.display
 	       << "' scale: '" << params_.lyxscale
 	       << '\'' << endl;
-
-	// Update the display using the new parameters.
-	if (buffer)
-		renderer_->update(get_grfx_params(params_, buffer->filePath()));
-	string const msg = doSubstitution(params_, 0, params_.templ.guiName);
-	renderer_->setNoDisplayMessage(msg);
 }
 
 
@@ -341,13 +358,17 @@ int InsetExternal::write(string const & format,
 			 Buffer const * buf, ostream & os,
 			 bool external_in_tmpdir) const
 {
-	ExternalTemplate const & et = params_.templ;
+	ExternalTemplate const * const et_ptr = getTemplatePtr(params_);
+	if (!et_ptr)
+		return 0;
+	ExternalTemplate const & et = *et_ptr;
+
 	ExternalTemplate::Formats::const_iterator cit =
 		et.formats.find(format);
 	if (cit == et.formats.end()) {
 		lyxerr << "External template format '" << format
 		       << "' not specified in template "
-		       << params_.templ.lyxName << endl;
+		       << params_.templatename << endl;
 		return 0;
 	}
 
@@ -371,7 +392,11 @@ int InsetExternal::latex(Buffer const * buf, ostream & os,
 	// If the template has specified a PDFLaTeX output, then we try and
 	// use that.
 	if (runparams.flavor == LatexRunParams::PDFLATEX) {
-		ExternalTemplate const & et = params_.templ;
+		ExternalTemplate const * const et_ptr = getTemplatePtr(params_);
+		if (!et_ptr)
+			return 0;
+		ExternalTemplate const & et = *et_ptr;
+
 		ExternalTemplate::Formats::const_iterator cit =
 			et.formats.find("PDFLaTeX");
 		if (cit != et.formats.end())
@@ -402,7 +427,11 @@ int InsetExternal::docbook(Buffer const * buf, ostream & os, bool) const
 
 void InsetExternal::validate(LaTeXFeatures & features) const
 {
-	ExternalTemplate const & et = params_.templ;
+	ExternalTemplate const * const et_ptr = getTemplatePtr(params_);
+	if (!et_ptr)
+		return;
+	ExternalTemplate const & et = *et_ptr;
+
 	ExternalTemplate::Formats::const_iterator cit =
 		et.formats.find("LaTeX");
 
@@ -422,7 +451,11 @@ void InsetExternal::updateExternal(string const & format,
 				   Buffer const * buf,
 				   bool external_in_tmpdir) const
 {
-	ExternalTemplate const & et = params_.templ;
+	ExternalTemplate const * const et_ptr = getTemplatePtr(params_);
+	if (!et_ptr)
+		return;
+	ExternalTemplate const & et = *et_ptr;
+
 	if (!et.automaticProduction)
 		return;
 
@@ -535,7 +568,11 @@ void editExternal(InsetExternal::Params const & params, Buffer const * buffer)
 	if (!buffer)
 		return;
 
-	ExternalTemplate const & et = params.templ;
+	ExternalTemplate const * const et_ptr = getTemplatePtr(params);
+	if (!et_ptr)
+		return;
+	ExternalTemplate const & et = *et_ptr;
+
 	if (et.editCommand.empty())
 		return;
 

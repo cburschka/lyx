@@ -19,6 +19,8 @@
 #include "helper_funcs.h"
 #include "lyxrc.h"
 
+#include "insets/ExternalTemplate.h"
+
 #include "support/LAssert.h"
 #include <vector>
 
@@ -111,10 +113,24 @@ ExternalTemplate ControlExternal::getTemplate(int i) const
 	ExternalTemplateManager::Templates::const_iterator i1
 		= ExternalTemplateManager::get().getTemplates().begin();
 
-	std::advance(i1,  i);
+	std::advance(i1, i);
 
 	return i1->second;
 }
+
+
+namespace {
+
+ExternalTemplate const * getTemplatePtr(InsetExternal::Params const & params)
+{
+	ExternalTemplateManager & etm = ExternalTemplateManager::get();
+	ExternalTemplate const & templ = etm.getTemplateByName(params.templatename);
+	if (templ.lyxName.empty())
+		return 0;
+	return &templ;
+}
+ 
+} // namespace anon
 
 
 string const ControlExternal::Browse(string const & input) const
@@ -124,10 +140,10 @@ string const ControlExternal::Browse(string const & input) const
 	string const bufpath = kernel().buffer()->filePath();
 
 	/// Determine the template file extension
-	ExternalTemplate const & et = params().templ;
-	string pattern = et.fileRegExp;
-	if (pattern.empty())
-		pattern = "*";
+	string pattern = "*";
+	ExternalTemplate const * const et_ptr = getTemplatePtr(params());
+	if (et_ptr)
+		pattern = et_ptr->fileRegExp;
 
 	// FIXME: a temporary hack until the FileDialog interface is updated
 	pattern += '|';

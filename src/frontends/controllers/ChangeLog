@@ -1,7 +1,12 @@
+2003-06-11  Angus Leeming  <leeming@lyx.org>
+
+	* ControlExternal.[Ch]: changes due to InsetExternal::Params no longer
+	storing the ExternalTemplate but its name.
+
 2003-06-10  Angus Leeming  <leeming@lyx.org>
 
-	* ControlExternal.C (editExternal): invokes new LFUN_EXTERNAL_EDIT rather
-	than generate a new inset itself.
+	* ControlExternal.C (editExternal): invokes new LFUN_EXTERNAL_EDIT
+	rather than generate a new inset itself.
 
 2003-06-06  John Levon  <levon@movementarian.org>
 
