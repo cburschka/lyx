@@ -130,6 +130,109 @@ void InsetExternal::Params::settemplate(string const & name)
 }
 
 
+void InsetExternal::Params::write(Buffer const & buffer, ostream & os) const
+{
+	os << "External\n"
+	   << "\ttemplate " << templatename() << '\n';
+
+	if (!filename.empty())
+		os << "\tfilename "
+		   << filename.outputFilename(buffer.filePath())
+		   << '\n';
+
+	if (display != defaultDisplayType)
+		os << "\tdisplay " << lyx::graphics::displayTranslator.find(display)
+		   << '\n';
+
+	if (lyxscale != defaultLyxScale)
+		os << "\tlyxscale " << tostr(lyxscale) << '\n';
+}
+
+
+bool InsetExternal::Params::read(Buffer const & buffer, LyXLex & lex)
+{
+	enum ExternalTags {
+		EX_TEMPLATE = 1,
+		EX_FILENAME,
+		EX_DISPLAY,
+		EX_LYXSCALE,
+		EX_END
+	};
+
+	keyword_item external_tags[] = {
+		{ "\\end_inset",     EX_END },
+		{ "display",         EX_DISPLAY},
+		{ "filename",        EX_FILENAME},
+		{ "lyxscale",        EX_LYXSCALE},
+		{ "template",        EX_TEMPLATE }
+	};
+
+	pushpophelper pph(lex, external_tags, EX_END);
+
+	bool found_end  = false;
+	bool read_error = false;
+
+	while (lex.isOK()) {
+		switch (lex.lex()) {
+		case EX_TEMPLATE:
+			lex.next();
+			templatename_ = lex.getString();
+			break;
+
+		case EX_FILENAME: {
+			lex.next();
+			string const name = lex.getString();
+			filename.set(name, buffer.filePath());
+			break;
+		}
+
+		case EX_DISPLAY: {
+			lex.next();
+			string const name = lex.getString();
+			display = lyx::graphics::displayTranslator.find(name);
+			break;
+		}
+
+		case EX_LYXSCALE:
+			lex.next();
+			lyxscale = lex.getInteger();
+			break;
+
+		case EX_END:
+			found_end = true;
+			break;
+
+		default:
+			lex.printError("ExternalInset::read: "
+				       "Wrong tag: $$Token");
+			read_error = true;
+			break;
+		}
+
+		if (found_end || read_error)
+			break;
+	}
+
+	if (!found_end) {
+		lex.printError("ExternalInset::read: "
+			       "Missing \\end_inset.");
+	}
+
+	// This is a trick to make sure that the data are self-consistent.
+	settemplate(templatename_);
+
+	lyxerr[Debug::EXTERNAL]
+		<< "InsetExternal::Params::read: "
+		<< "template: '"   << templatename()
+		<< "' filename: '" << filename.absFilename()
+		<< "' display: '"  << display
+		<< "' scale: '"    << lyxscale
+		<< '\'' << endl;
+
+	return !read_error;
+}
+ 
+ 
 InsetExternal::InsetExternal()
 	: renderer_(new ButtonRenderer)
 {}
@@ -298,105 +401,15 @@ void InsetExternal::setParams(Params const & p, Buffer const & buffer)
 
 void InsetExternal::write(Buffer const & buffer, ostream & os) const
 {
-	os << "External\n"
-	   << "\ttemplate " << params_.templatename() << '\n';
-
-	if (!params_.filename.empty())
-		os << "\tfilename "
-		   << params_.filename.outputFilename(buffer.filePath())
-		   << '\n';
-
-	if (params_.display != defaultDisplayType)
-		os << "\tdisplay " << lyx::graphics::displayTranslator.find(params_.display)
-		   << '\n';
-
-	if (params_.lyxscale != defaultLyxScale)
-		os << "\tlyxscale " << tostr(params_.lyxscale) << '\n';
+	params_.write(buffer, os);
 }
 
 
 void InsetExternal::read(Buffer const & buffer, LyXLex & lex)
 {
-	enum ExternalTags {
-		EX_TEMPLATE = 1,
-		EX_FILENAME,
-		EX_DISPLAY,
-		EX_LYXSCALE,
-		EX_END
-	};
-
-	keyword_item external_tags[] = {
-		{ "\\end_inset", EX_END },
-		{ "display", EX_DISPLAY},
-		{ "filename", EX_FILENAME},
-		{ "lyxscale", EX_LYXSCALE},
-		{ "template", EX_TEMPLATE }
-	};
-
-	pushpophelper pph(lex, external_tags, EX_END);
-
-	bool found_end  = false;
-	bool read_error = false;
-
-	InsetExternal::Params params;
-	while (lex.isOK()) {
-		switch (lex.lex()) {
-		case EX_TEMPLATE: {
-			lex.next();
-			params.settemplate(lex.getString());
-			break;
-		}
-
-		case EX_FILENAME: {
-			lex.next();
-			string const name = lex.getString();
-			params.filename.set(name, buffer.filePath());
-			break;
-		}
-
-		case EX_DISPLAY: {
-			lex.next();
-			string const name = lex.getString();
-			params.display = lyx::graphics::displayTranslator.find(name);
-			break;
-		}
-
-		case EX_LYXSCALE: {
-			lex.next();
-			params.lyxscale = lex.getInteger();
-			break;
-		}
-
-		case EX_END:
-			found_end = true;
-			break;
-
-		default:
-			lex.printError("ExternalInset::read: "
-				       "Wrong tag: $$Token");
-			read_error = true;
-			break;
-		}
-
-		if (found_end || read_error)
-			break;
-	}
-
-	if (!found_end) {
-		lex.printError("ExternalInset::read: "
-			       "Missing \\end_inset.");
-	}
-
-	// Replace the inset's store
-	setParams(params, buffer);
-
-	lyxerr[Debug::EXTERNAL]
-		<< "InsetExternal::Read: "
-		<< "template: '" << params_.templatename()
-		<< "' filename: '" << params_.filename.absFilename()
-		<< "' display: '" << params_.display
-		<< "' scale: '" << params_.lyxscale
-		<< '\'' << endl;
+	Params params;
+	if (params.read(buffer, lex))
+		setParams(params, buffer);
 }
 
 
@@ -687,9 +700,7 @@ void InsetExternalMailer::string2params(string const & in,
 	}
 
 	if (lex.isOK()) {
-		InsetExternal inset;
-		inset.read(buffer, lex);
-		params = inset.params();
+		params.read(buffer, lex);
 	}
 }
 
@@ -698,11 +709,9 @@ string const
 InsetExternalMailer::params2string(InsetExternal::Params const & params,
 				   Buffer const & buffer)
 {
-	InsetExternal inset;
-	inset.setParams(params, buffer);
 	ostringstream data;
 	data << name_ << ' ';
-	inset.write(buffer, data);
+	params.write(buffer, data);
 	data << "\\end_inset\n";
 	return data.str();
 }

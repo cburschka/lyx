@@ -13,7 +13,9 @@
 #define INSET_EXTERNAL_H
 
 #include "inset.h"
+
 #include "graphics/GraphicsTypes.h"
+
 #include "support/filename.h"
 
 #include <boost/scoped_ptr.hpp>
@@ -46,6 +48,9 @@ public:
 	/// hold parameters settable from the GUI
 	struct Params {
 		Params();
+
+		void write(Buffer const &, std::ostream &) const;
+		bool read(Buffer const &, LyXLex &);
 
 		/// The name of the tempfile used for manipulations.
 		string const & tempname() const { return tempname_(); }
