@@ -162,7 +162,8 @@ void GToc::onTocViewSelected()
 
 void GToc::onTypeComboChanged()
 {
-	updateContents();
+	if(!changing_views_)
+		updateContents();
 }
 
 
