@@ -1,3 +1,15 @@
+2001-05-23  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyx_main.C (defaultKeyBindings): set KP_enter to point at
+	LFUN_BREAKPARAGRAPH.
+
+	* LyXAction.C (init): remove external name for LFUN_LAYOUTNO, set
+	help test to "internal only", similar for LFUN_INSERT_URL
+
+	* BufferView_pimpl.C (Dispatch::LFUN_QUOTE): change it to to the insertcorrectQuote.
+	(Dispatch::LFUN_SELFINSERT): fix to handle math greek,
+	auto_region_delete and deadkeys. 
+
 2001-05-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* LColor.h:

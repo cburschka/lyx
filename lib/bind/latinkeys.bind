@@ -3,7 +3,7 @@
 
 \bind "space"			"self-insert"
 \bind "exclam"			"self-insert"
-\bind "quotedbl"		"self-insert"
+\bind "quotedbl"		"quote-insert"
 \bind "numbersign"		"self-insert"
 \bind "dollar"			"self-insert"
 \bind "percent"			"self-insert"
@@ -99,7 +99,7 @@
 \bind "braceright"		"self-insert"
 \bind "asciitilde"		"self-insert"
 
-\bind "nobreakspace"		"self-insert"
+\bind "nobreakspace"		"protected-space-insert"
 \bind "exclamdown"		"self-insert"
 \bind "cent"			"self-insert"
 \bind "sterling"		"self-insert"

@@ -33,7 +33,7 @@
 # help in emacs
 \bind "C-h"                    "hyphenation-point-insert" 
 \bind "C-i"                    "hfill-insert"
-#bind "C-j"                    "------"
+\bind "C-j"                    "break-paragraph"
 \bind "C-k"                    "line-delete-forward"
 \bind "C-l"                    "screen-recenter"
 \bind "C-m"                    "mark-toggle"
@@ -47,8 +47,7 @@
 \bind "C-s"                    "find-replace"
 \bind "M-~S-percent"		"find-replace"
 
-# should be "chars-transpose" (swaps two chars)
-#bind "C-t"                    "------"
+\bind "C-t"                    "chars-transpose"
 
 # universal argument in emacs
 \bind "C-u"                    "font-underline"

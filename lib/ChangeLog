@@ -1,3 +1,11 @@
+2001-05-23  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* bind/latinkeys.bind: set quotedbl to quote-insert, set
+	nobreakspace to protected-space-insert
+
+	* bind/emacs.bind: set C-j to break-paragraph, set C-t to
+	chars-transpose.
+
 2001-05-22  Adrien Rebollo <rebollo@iaf.cnrs-gif.fr>
 
 	* lib/kbd/european.kmap:

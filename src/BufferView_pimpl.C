@@ -2410,10 +2410,14 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	break;
 	
 	case LFUN_QUOTE:
+#if 0
 		beforeChange(TEXT(bv_));
 		TEXT(bv_)->InsertChar(bv_, '\"');  // This " matches the single quote in the code
 		update(TEXT(bv_), BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
                 moveCursorUpdate(false);
+#else
+		bv_->insertCorrectQuote();
+#endif
 		break;
 
 	case LFUN_HTMLURL:
@@ -2427,7 +2431,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		owner_->getDialogs()->createUrl( p.getAsString() );
 	}
 	break;
-		    
+	
 	case LFUN_INSERT_URL:
 	{
 		InsetCommandParams p;
@@ -2440,7 +2444,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			bv_->updateInset( inset, true );
 	}
 	break;
-		    
+	
 	case LFUN_INSET_TEXT:
 	{
 		InsetText * new_inset = new InsetText;
@@ -2887,30 +2891,82 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 
 	case LFUN_SELFINSERT:
 	{
-		LyXFont const old_font(TEXT(bv_)->real_current_font);
-		for (string::size_type i = 0; i < argument.length(); ++i) {
-			TEXT(bv_)->InsertChar(bv_, argument[i]);
+#if 0
+		LyXText * lt = TEXT(bv_);
+		
+		LyXFont const old_font(lt->real_current_font);
+
+		string::const_iterator cit = argument.begin();
+		string::const_iterator end = argument.end();
+		for (; cit != end; ++cit) {
+			lt->InsertChar(bv_, *cit);
 			// This needs to be in the loop, or else we
 			// won't break lines correctly. (Asger)
-			update(TEXT(bv_),
+			update(lt,
 			       BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		}
-		TEXT(bv_)->sel_cursor = TEXT(bv_)->cursor;
+		lt->sel_cursor = lt->cursor;
 		moveCursorUpdate(false);
 
 		// real_current_font.number can change so we need to 
 		// update the minibuffer
-		if (old_font != TEXT(bv_)->real_current_font)
+		if (old_font != lt->real_current_font)
 			owner_->showState();
+#else
+		if (argument.empty()) break;
+		
+		/* Automatically delete the currently selected
+		 * text and replace it with what is being
+		 * typed in now. Depends on lyxrc settings
+		 * "auto_region_delete", which defaults to
+		 * true (on). */
+
+		LyXText * lt = TEXT(bv_);
+		
+		if (lyxrc.auto_region_delete) {
+			if (lt->selection){
+				lt->CutSelection(bv_, false);
+				bv_->update(lt,
+					    BufferView::SELECT
+					    | BufferView::FITCUR
+					    | BufferView::CHANGE);
+			}
+		}
+		
+		bv_->beforeChange(lt);
+		LyXFont const old_font(lt->real_current_font);
+		
+		string::const_iterator cit = argument.begin();
+		string::const_iterator end = argument.end();
+		for (; cit != end; ++cit) {
+			if (greek_kb_flag) {
+				if (!math_insert_greek(bv_, *cit))
+					owner_->getIntl()->getTrans().TranslateAndInsert(*cit, lt);
+			} else
+				owner_->getIntl()->getTrans().TranslateAndInsert(*cit, lt);
+		}
+		
+		bv_->update(lt,
+			    BufferView::SELECT
+			    | BufferView::FITCUR
+			    | BufferView::CHANGE);
+		
+		lt->sel_cursor = lt->cursor;
+		moveCursorUpdate(false);
+		
+		// real_current_font.number can change so we need to
+		// update the minibuffer
+		if (old_font != lt->real_current_font)
+			owner_->showState();
+		//return string();
+#endif
 	}
 	break;
 
 	case LFUN_DATE_INSERT:  // jdblair: date-insert cmd
 	{
-		struct tm * now_tm;
-		
 		time_t now_time_t = time(NULL);
-		now_tm = localtime(&now_time_t);
+		struct tm * now_tm = localtime(&now_time_t);
 		setlocale(LC_TIME, "");
 		string arg;
 		if (!argument.empty())

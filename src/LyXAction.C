@@ -254,7 +254,7 @@ void LyXAction::init()
 		{ LFUN_LAYOUT_COPY, "layout-copy",
 		  N_("Copy paragraph environment type"), Noop },
 		{ LFUN_LAYOUT_DOCUMENT, "layout-document", "", ReadOnly },
-		{ LFUN_LAYOUTNO, "layout-number", "", Noop }, // internal only
+		{ LFUN_LAYOUTNO, "", "internal only", Noop },
 		{ LFUN_LAYOUT_PARAGRAPH, "layout-paragraph", "", ReadOnly },
 		{ LFUN_LAYOUT_PASTE, "layout-paste",
 		  N_("Paste paragraph environment type"), Noop },
@@ -377,7 +377,7 @@ void LyXAction::init()
 		{ LFUN_UP, "up", "", ReadOnly },
 		{ LFUN_UPSEL, "up-select", "", ReadOnly },
 		{ LFUN_URL, "url-insert", "", Noop },
-		{ LFUN_INSERT_URL, "", "", Noop },
+		{ LFUN_INSERT_URL, "", "internal only", Noop },
 		{ LFUN_VC_CHECKIN, "vc-check-in", "", ReadOnly },
 		{ LFUN_VC_CHECKOUT, "vc-check-out", "", ReadOnly },
 		{ LFUN_VC_HISTORY, "vc-history", "", ReadOnly },
