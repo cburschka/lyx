@@ -114,8 +114,10 @@ InsetText::~InsetText()
 {
     // delete all instances of LyXText before deleting the paragraps used
     // by it.
-    for (Cache::const_iterator cit = cache.begin(); cit != cache.end(); ++cit)
+    for (Cache::iterator cit = cache.begin(); cit != cache.end(); ++cit){
 	delete (*cit).second;
+	(*cit).second = 0;
+    }
     LyXParagraph * p = par->next;
     delete par;
     while(p) {
@@ -130,8 +132,10 @@ void InsetText::clear()
 {
     // delete all instances of LyXText before deleting the paragraps used
     // by it.
-    for (Cache::const_iterator cit = cache.begin(); cit != cache.end(); ++cit)
+    for (Cache::iterator cit = cache.begin(); cit != cache.end(); ++cit){
 	delete (*cit).second;
+	(*cit).second = 0;
+    }
     LyXParagraph * p = par->next;
     delete par;
     while(p) {
@@ -177,8 +181,10 @@ void InsetText::Read(Buffer const * buf, LyXLex & lex)
 
     // delete all instances of LyXText before deleting the paragraps used
     // by it.
-    for (Cache::const_iterator cit = cache.begin(); cit != cache.end(); ++cit)
+    for (Cache::iterator cit = cache.begin(); cit != cache.end(); ++cit){
 	delete (*cit).second;
+	(*cit).second = 0;
+    }
 
     LyXParagraph * p = par->next;
     delete par;
@@ -1390,8 +1396,10 @@ void InsetText::SetParagraphData(LyXParagraph *p)
 {
     // delete all instances of LyXText before deleting the paragraps used
     // by it.
-    for (Cache::const_iterator cit = cache.begin(); cit != cache.end(); ++cit)
+    for (Cache::iterator cit = cache.begin(); cit != cache.end(); ++cit){
 	delete (*cit).second;
+	(*cit).second = 0;
+    }
 
     LyXParagraph * np;
     if (par) {
@@ -1488,7 +1496,7 @@ Row * InsetText::crow(BufferView * bv) const
 
 LyXText * InsetText::getLyXText(BufferView * bv) const
 {
-    if (cache.find(bv) != cache.end())
+    if ((cache.find(bv) != cache.end()) && cache[bv])
 	return cache[bv];
     LyXText * lt = new LyXText(const_cast<InsetText *>(this));
     lt->init(bv);

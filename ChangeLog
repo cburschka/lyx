@@ -1,3 +1,11 @@
+2000-11-09  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettext.C (~InsetText): 
+	(clear): 
+	(Read): 
+	(SetParagraphData): set cache.second to 0 after deleting it!
+	(getLyXText): check if cache.second is not 0 if finding it.
+
 2000-11-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/frontends/xforms/FormPreferences.C (ColoursLoadBrowser): use
