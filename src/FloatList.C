@@ -5,6 +5,7 @@
 #endif
 
 #include "FloatList.h"
+#include "gettext.h"
 
 // This class is now mostly finished, except one thing, it is a global
 // object. This will not do. The user (and layout files) are free to
@@ -29,18 +30,19 @@ FloatList::FloatList()
 	// (these will later be read from a layout file)
 
 	// table
-	Floating table("table", "htbp", "lot", "", "plain", "Table", true);
+	Floating table("table", "htbp", "lot", "", "plain", N_("Table"), true);
 	newFloat(table);
 
 	// figure
-	Floating figure("figure", "htbp", "lof", "", "plain", "Figure", true);
+	Floating figure("figure", "htbp", "lof",
+			"", "plain", N_("Figure"), true);
 	newFloat(figure);
 
 	// And we add algorithm too since LyX has
 	// supported that for a long time,
 	// but support for this should probably be moved to a layout file.
 	Floating algorithm("algorithm", "htbp", "loa",
-			   "", "ruled", "Algorithm");
+			   "", "ruled", N_("Algorithm"));
 	newFloat(algorithm);
 }
 

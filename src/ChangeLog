@@ -1,3 +1,16 @@
+2002-03-27  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* MenuBackend.C (expand): translate the name of floats
+
+	* FloatList.C (FloatList): mark the float names for translation
+
+	* converter.C (convert): use LibScriptSearch
+
+2002-03-26  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* MenuBackend.C (defaults): fix default menu (we might as well get
+	rid of it...)
+
 2002-03-26  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxvc.C (registrer): register the file with CVS if it's in a CVS

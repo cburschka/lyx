@@ -385,7 +385,7 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 				int const action = lyxaction
 					.getPseudoAction(LFUN_INSET_FLOAT,
 							 cit->second.type());
-				string const label = cit->second.name();
+				string const label = _(cit->second.name());
 				tomenu.add(MenuItem(MenuItem::Command,
 						    label, action));
 
@@ -492,7 +492,7 @@ void MenuBackend::defaults()
 	Menu file("file");
 	file
 		.add(MenuItem(MenuItem::Command, _("New...|N"), "buffer-new"))
-		.add(MenuItem(MenuItem::Command, _("Open...|O"), "buffer-open"))
+		.add(MenuItem(MenuItem::Command, _("Open...|O"), "file-open"))
 		.add(MenuItem(MenuItem::Submenu, _("Import|I"), "import"))
 		.add(MenuItem(MenuItem::Command, _("Quit|Q"), "lyx-quit"))
 		.add(MenuItem(MenuItem::Separator))

@@ -657,11 +657,7 @@ bool Converters::convert(Buffer const * buffer,
 
 			if (!conv.parselog.empty()) {
 				string const logfile =  infile2 + ".log";
-				string script =
-					LibFileSearch("scripts",
-						      conv.parselog);
-				if (script.empty())
-					script = conv.parselog;
+				string const script = LibScriptSearch(conv.parselog);
 				string const command2 = script +
 					" < " + QuoteName(infile2 + ".out") +
 					" > " + QuoteName(logfile);

@@ -1,3 +1,8 @@
+2002-03-27  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insetspecialchar.C (isLineSeparator): disable the nice code to
+	allow linebreaks after hyphenation and menu separators.
+
 2002-03-26  Herbert Voss  <voss@lyx.org>
 
 	* insetgraphics.C (figinsetRead): set the right lyxview

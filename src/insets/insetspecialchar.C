@@ -344,5 +344,13 @@ bool InsetSpecialChar::isSpace() const
 
 bool InsetSpecialChar::isLineSeparator() const
 {
+#if 0
+	// this would be nice, but it does not work, since
+	// Paragraph::stripLeadingSpaces nukes the characters which
+	// have this property. I leave the code here, since it should
+	// eventually be made to work. (JMarc 20020327)
 	return kind_ == HYPHENATION || kind_ == MENU_SEPARATOR;
+#else
+	return false;
+#endif
 }

@@ -329,6 +329,21 @@ i18nLibFileSearch(string const & dir, string const & name,
 }
 
 
+string const LibScriptSearch(string const & command)
+{
+	string script = command;
+	string args;
+	split(script, args, ' ');
+	script = LibFileSearch("scripts", script);
+	if (script.empty())
+		return command;
+	else if (args.empty())
+		return script;
+	else
+		return script + ' ' + args;
+}
+
+
 string const GetEnv(string const & envname)
 {
 	// f.ex. what about error checking?

@@ -98,6 +98,12 @@ string const
 i18nLibFileSearch(string const & dir, string const & name,
 		  string const & ext = string());
 
+/** Takes a command with arguments as input and tries to see whether
+  the command itself can be found in one of the scripts/ directories.
+  If it is found, return the command with fully qualified script name,
+  either return it unchanged */
+string const LibScriptSearch(string const & command);
+
 ///
 string const GetEnv(string const & envname);
 
