@@ -77,6 +77,7 @@
 
 \bind "M-p p"			"layout Standard"	# Perusteksti
 
+\bind "M-p 0"			"layout Part"		# Osa
 \bind "M-p 1"			"layout Chapter" 	# Luku
 \bind "M-p 2"			"layout Section" 	# Kappale
 \bind "M-p 3"			"layout Subsection"  	# Alikappale
@@ -87,21 +88,21 @@
 \bind "M-p t"			"layout Author"		# Tekijä
 \bind "M-p S-T"			"layout Title"		# Teoksen nimi
 \bind "M-p o"			"layout Address"	# Osoite
-\bind "M-p S-o"			"layout RightAddress"	# Oikea osoite
-\bind "M-p p"			"layout Date"		# Päiväys
+\bind "M-p S-O"			"layout RightAddress"	# Oikea osoite
+\bind "M-p v"			"layout Date"		# Päiväys
 \bind "M-p M-c"			"layout Abstract"	# Tiivistelmä
-\bind "M-p B"			"layout Bibliography"	# Lähdeviitteet
+\bind "M-p b"			"layout Bibliography"	# Lähdeviitteet
 
 \bind "M-p l"			"layout Itemize"	# Luettelo
-\bind "M-p S-l"			"layout Enumerate"	# Numeroitu luettelo
-\bind "M-p M-l"			"layout List"		# Lista
+\bind "M-p S-L"			"layout Enumerate"	# Numeroitu luettelo
+\bind "M-p C-l"			"layout List"		# Lista
 
 \bind "M-p k"			"layout LyX-Code"	# LyX-koodi
-\bind "M-p S-k"			"layout Comment"	# Kommentti
+\bind "M-p S-K"			"layout Comment"	# Kommentti
 \bind "M-p M-k"			"layout Caption"	# Kuvateksti
 \bind "M-p C-k"			"layout Description"	# Kuvaus
-\bind "M-p s"			"layout Quote"		# Sitaatti
-\bind "M-p C-l"			"layout Quotation"	# Lainaus
+\bind "M-p a"			"layout Quote"		# Lainaus
+\bind "M-p s"			"layout Quotation"	# Sitaatti
 \bind "M-p S-S"			"layout Verse"		# Säe
 \bind "M-p x"			"layout LaTeX"		# LaTeX
 
@@ -110,9 +111,13 @@
 \bind "M-p r"			"layout ShortRotatefoilhead"	# Foils!!
 \bind "M-p S-R"			"layout Rotatefoilhead"	# Foils!!
 
-\bind "M-p S-at"		"layout Section*"	# M-p S-2
-\bind "M-p S-dollar"		"layout Subsubsection*"	# M-p S-4
+\bind "M-p S-equal"		"layout Part*"		# M-p S-0
+\bind "M-p S-exclam"		"layout Chapter*"	# M-p S-1
+\bind "M-p S-quotedbl"		"layout Section*"	# M-p S-2
 \bind "M-p S-numbersign"	"layout Subsection*"	# M-p S-3
+\bind "M-p S-currency"		"layout Subsubsection*"	# M-p S-4
+\bind "M-p S-percent"		"layout Paragraph*"	# M-p S-5
+\bind "M-p S-ampersand"		"layout Subparagraph*"	# M-p S-6
 
 \bind "M-p space"		"drop-layouts-choice"
 \bind "M-p Left"		"depth-decrement"
