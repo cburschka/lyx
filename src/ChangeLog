@@ -1,5 +1,9 @@
 2003-06-17  Angus Leeming  <leeming@lyx.org>
 
+	* lyxfunc.C (dispatch): s/showMathPanel/show("mathpanel")/
+
+2003-06-17  Angus Leeming  <leeming@lyx.org>
+
 	* lfuns.h:
 	* LyXAction.C (init): new LFUN_DIALOG_SHOW.
 

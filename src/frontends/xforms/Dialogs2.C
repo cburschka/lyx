@@ -13,7 +13,6 @@
 #include <config.h>
 
 #include "Dialogs.h"
-#include "Dialog.h"
 #include "controllers/GUI.h"
 #include "ButtonController.h"
 
@@ -132,13 +131,6 @@ void Dialogs::showDocument()
 void Dialogs::showForks()
 {
 	pimpl_->forks.controller().show();
-}
-
-
-void Dialogs::showMathPanel()
-{
-	static DialogPtr mathdialog(build("math"));
-	mathdialog->show(string());
 }
 
 

@@ -110,7 +110,7 @@ FormMathsBitmap * createFormBitmap(Dialog & parent, string const & title,
 
 char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes",
 "character", "citation", "error", "errorlist" , "ert", "external", "file",
-"float", "graphics", "include", "index", "label", "log", "math",
+"float", "graphics", "include", "index", "label", "log", "mathpanel",
 "mathaccents", "matharrows", "mathoperators", "mathrelations", "mathgreek",
 "mathmisc", "mathdots", "mathbigoperators", "mathamsmisc",
 "mathamsarrows", "mathamsrelations", "mathamsnegatedrelations", "mathamsoperators",
@@ -224,7 +224,7 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setView(new FormLog(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
 
-	} else if (name == "math") {
+	} else if (name == "mathpanel") {
 		dialog->setController(new ControlMath(*dialog));
 		dialog->setView(new FormMathsPanel(*dialog));
 		dialog->bc().bp(new IgnorantPolicy);

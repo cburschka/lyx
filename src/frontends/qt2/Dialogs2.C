@@ -118,13 +118,6 @@ void Dialogs::showForks()
 {}
 
 
-void Dialogs::showMathPanel()
-{
-	static DialogPtr mathdialog(build("math"));
-	mathdialog->show(string());
-}
-
-
 void Dialogs::showPreamble()
 {
 	pimpl_->document.controller().show();

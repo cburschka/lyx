@@ -74,8 +74,6 @@ public:
 	void showDocument();
 	/// show all forked child processes
 	void showForks();
-	/// display the top-level maths panel
-	void showMathPanel();
 	///
 	void showPreamble();
 	///

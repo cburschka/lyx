@@ -33,12 +33,6 @@ void gui_ShowForks(Dialogs & d)
 }
 
 
-void gui_ShowMathPanel(Dialogs & d)
-{
-	d.showMathPanel();
-}
-
-
 void gui_ShowPreamble(Dialogs & d)
 {
 	d.showPreamble();

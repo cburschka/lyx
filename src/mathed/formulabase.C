@@ -227,7 +227,7 @@ dispatch_result InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 		if (mathcursor->dispatch(cmd) == UNDISPATCHED) {
 			// launch math panel for right mouse button
 			lyxerr << "lfunMouseRelease: undispatched: " << cmd.button() << endl;
-			bv->owner()->getDialogs().showMathPanel();
+			bv->owner()->getDialogs().show("mathpanel");
 		}
 		return DISPATCHED;
 	}

@@ -1405,7 +1405,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_MATH_PANEL:
-		owner->getDialogs().showMathPanel();
+		owner->getDialogs().show("mathpanel");
 		break;
 
 	case LFUN_DIALOG_SHOW:
