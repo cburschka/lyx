@@ -10,6 +10,7 @@
 #include "frontends/Dialogs.h"
 #include "LaTeXFeatures.h"
 #include "gettext.h"
+#include "support/LOstream.h"
 
 using std::ostream;
 
