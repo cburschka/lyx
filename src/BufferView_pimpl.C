@@ -882,13 +882,17 @@ namespace {
 	{
 		LyXText * text = bv->text;
 		InsetOld * inset = 0;
-		InsetOld * inset_hit = 0;
 		theTempCursor = LCursor(bv);
-		while ((inset_hit = text->checkInsetHit(x, y))) {
+		while (true) {
+			InsetOld * inset_hit = text->checkInsetHit(x, y);
+			if (!inset_hit)
+				break;
 			inset = inset_hit;
+			if (!inset_hit->descendable())
+				break;
 			text = inset_hit->getText(0);
 			lyxerr << "Hit inset: " << inset << " at x: " << x
-				<< " y: " << y << endl;
+				<< " text: " << text << " y: " << y << endl;
 			theTempCursor.push(static_cast<UpdatableInset*>(inset));
 		}
 		return inset;

@@ -146,6 +146,9 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y, bool inlined) const
 	button_dim.y1 = -aa;
 	button_dim.y2 = -aa + dim_collapsed.height();
 
+	top_x = x;
+	top_baseline = y;
+
 	if (!isOpen()) {
 		draw_collapsed(pi, x, y);
 		return;
@@ -155,9 +158,6 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y, bool inlined) const
 
 	if (!owner())
 		x += scroll();
-
-	top_x = x;
-	top_baseline = y;
 
 	if (inlined) {
 		inset.draw(pi, x, y);
@@ -203,8 +203,10 @@ DispatchResult InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 		if (collapsed_) {
 			lyxerr << "InsetCollapsable::lfunMouseRelease 1" << endl;
 			collapsed_ = false;
-			bv->updateInset(this);
+			edit(bv, true);
 			bv->buffer()->markDirty();
+			bv->updateInset(this);
+			bv->update();
 			return result;
 		}
 

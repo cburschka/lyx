@@ -52,6 +52,8 @@ public:
 	bool hitButton(FuncRequest const &) const;
 	///
 	EDITABLE editable() const;
+	/// can we go further down on mouse click?
+	bool descendable() const { return isOpen(); }
 	///
 	bool insertInset(BufferView *, InsetOld * inset);
 	///

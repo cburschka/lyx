@@ -239,55 +239,6 @@ namespace {
 		bv->owner()->view_state_changed();
 	}
 
-	// check if the given co-ordinates are inside an inset at the
-	// given cursor, if one exists. If so, the inset is returned,
-	// and the co-ordinates are made relative. Otherwise, 0 is returned.
-	InsetOld * checkInset(LyXText & text,
-		LyXCursor const & cur, int & x, int & y)
-	{
-		lyx::pos_type const pos = cur.pos();
-		ParagraphList::iterator par = text.getPar(cur);
-
-		if (pos >= par->size() || !par->isInset(pos))
-			return 0;
-
-		InsetOld /*const*/ * inset = par->getInset(pos);
-
-		if (!isEditableInset(inset))
-			return 0;
-
-		// get inset dimensions
-		BOOST_ASSERT(par->getInset(pos));
-
-		LyXFont const & font = text.getFont(par, pos);
-
-		int const width = inset->width();
-		int const inset_x = font.isVisibleRightToLeft()
-			? (cur.x() - width) : cur.x();
-
-		Box b(
-			inset_x + inset->scroll(),
-			inset_x + width,
-			cur.y() - inset->ascent(),
-			cur.y() + inset->descent()
-		);
-
-		if (!b.contains(x, y)) {
-			lyxerr[Debug::GUI] << "Missed inset at x,y "
-					   << x << ',' << y
-					   << " box " << b << endl;
-			return 0;
-		}
-
-		text.setCursor(cur.par(), pos, true);
-
-		x -= b.x1;
-		// The origin of an inset is on the baseline
-		y -= text.cursor.y();
-
-		return inset;
-	}
-
 } // anon namespace
 
 
@@ -307,28 +258,34 @@ string const freefont2string()
 
 InsetOld * LyXText::checkInsetHit(int & x, int & y)
 {
-	int y_tmp = y + bv_owner->top_y();
+	ParagraphList::iterator pit = ownerParagraphs().begin();
+	ParagraphList::iterator end = ownerParagraphs().end();
 
-	LyXCursor cur;
-	setCursorFromCoordinates(cur, x, y_tmp);
-
-	InsetOld * inset = checkInset(*this, cur, x, y_tmp);
-	if (inset) {
-		y = y_tmp;
-		return inset;
+	lyxerr << "checkInsetHit: x: " << x << " y: " << y << endl;
+	for ( ; pit != end; ++pit) {
+		InsetList::iterator iit = pit->insetlist.begin();
+		InsetList::iterator iend = pit->insetlist.end();
+		for ( ; iit != iend; ++iit) {
+			InsetOld * inset = iit->inset;
+			lyxerr << "examining inset " << inset
+				<< " xy: " << inset->x() << "/" << inset->y()
+				<< " x: " << inset->x() << "..." << inset->x() + inset->width()
+				<< " y: " << inset->y() - inset->ascent() << "..."
+				<< inset->y() + inset->descent()
+				<< endl;
+			if (x >= inset->x()
+			    && x <= inset->x() + inset->width()
+			    && y >= inset->y() - inset->ascent()
+			    && y <= inset->y() + inset->descent())
+			{
+				lyxerr << "Hit inset: " << inset << endl;
+				y += bv()->top_y();
+				return inset;
+			}
+		}
 	}
-
-	// look at previous position
-	if (cur.pos() == 0)
-		return 0;
-
-	// move back one
-	setCursor(cur, cur.par(), cur.pos() - 1, true);
-
-	inset = checkInset(*this, cur, x, y_tmp);
-	if (inset)
-		y = y_tmp;
-	return inset;
+	lyxerr << "No inset hit. " << endl;
+	return 0;
 }
 
 
@@ -498,7 +455,7 @@ void LyXText::cursorNext()
 	nextRow(cpit, crit);
 	LyXCursor cur;
 	setCursor(cur, parOffset(cpit), crit->pos(), false);
-	if (cur.y() < bv_owner->top_y() + bv()->workHeight())
+	if (cur.y() < bv()->top_y() + bv()->workHeight())
 		cursorDown(true);
 	bv()->updateScrollbar();
 }

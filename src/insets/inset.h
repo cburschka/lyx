@@ -167,6 +167,8 @@ public:
 	virtual std::string const editMessage() const;
 	///
 	virtual EDITABLE editable() const;
+	/// can we go further down on mouse click?
+	virtual bool descendable() const { return false; }
 	///
 	virtual bool isTextInset() const { return false; }
 	/// return true if the inset should be removed automatically
