@@ -1,5 +1,9 @@
 2003-10-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* vc-backend.C (scanMaster): make the regex static
+
+	* LaTeX.C (scanAuxFile): make the regexs static
+
 	* text3.C (doInsertInset, dispatch, dispatch):
 	* text2.C (cursorUp, cursorDown):
 	* text.C (selectNextWordToSpellcheck):
