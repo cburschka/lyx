@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6\n"
-"POT-Creation-Date: 2003-11-24 15:57+0100\n"
+"POT-Creation-Date: 2003-12-16 14:01+0100\n"
 "PO-Revision-Date: 2002-12-19 19:01+0100\n"
 "Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
 "Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
@@ -5603,7 +5603,8 @@ msgstr "Избор на файл"
 # src/ext_l10n.h:328 src/frontends/kde/refdlg.C:62
 # src/frontends/xforms/FormRef.C:36
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
-#: ../lib/layouts/g-brief-en.layout:494 src/frontends/xforms/FormRef.C:37
+#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2-en.layout:841
+#: src/frontends/xforms/FormRef.C:37
 msgid "Reference"
 msgstr "Препратка"
 
@@ -6802,11 +6803,11 @@ msgstr "Автор"
 #: ../lib/layouts/aa.layout:66 ../lib/layouts/aa.layout:124
 #: ../lib/layouts/aapaper.layout:71 ../lib/layouts/egs.layout:273
 #: ../lib/layouts/entcs.layout:31 ../lib/layouts/g-brief-en.layout:452
-#: ../lib/layouts/ijmpd.layout:58 ../lib/layouts/kluwer.layout:179
-#: ../lib/layouts/revtex.layout:135 ../lib/layouts/revtex4.layout:170
-#: ../lib/layouts/scrlettr.layout:155 ../lib/layouts/scrlttr2.layout:48
-#: ../lib/layouts/aapaper.inc:31 ../lib/layouts/amsdefs.inc:167
-#: ../lib/layouts/lyxmacros.inc:78
+#: ../lib/layouts/g-brief2-en.layout:799 ../lib/layouts/ijmpd.layout:58
+#: ../lib/layouts/kluwer.layout:179 ../lib/layouts/revtex.layout:135
+#: ../lib/layouts/revtex4.layout:170 ../lib/layouts/scrlettr.layout:155
+#: ../lib/layouts/scrlttr2.layout:48 ../lib/layouts/aapaper.inc:31
+#: ../lib/layouts/amsdefs.inc:167 ../lib/layouts/lyxmacros.inc:78
 msgid "Address"
 msgstr "Адреси"
 
@@ -6827,13 +6828,13 @@ msgstr ""
 #: ../lib/layouts/aapaper.layout:79 ../lib/layouts/aapaper.layout:167
 #: ../lib/layouts/aastex.layout:94 ../lib/layouts/aastex.layout:207
 #: ../lib/layouts/egs.layout:548 ../lib/layouts/foils.layout:153
-#: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/kluwer.layout:144
-#: ../lib/layouts/linuxdoc.layout:321 ../lib/layouts/revtex.layout:123
-#: ../lib/layouts/revtex4.layout:139 ../lib/layouts/scrlettr.layout:176
-#: ../lib/layouts/scrlttr2.layout:249 ../lib/layouts/siamltex.layout:129
-#: ../lib/layouts/amsdefs.inc:111 ../lib/layouts/db_stdtitle.inc:57
-#: ../lib/layouts/scrclass.inc:173 ../lib/layouts/stdtitle.inc:55
-#: ../lib/layouts/svjour.inc:250
+#: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/g-brief2-en.layout:821
+#: ../lib/layouts/kluwer.layout:144 ../lib/layouts/linuxdoc.layout:321
+#: ../lib/layouts/revtex.layout:123 ../lib/layouts/revtex4.layout:139
+#: ../lib/layouts/scrlettr.layout:176 ../lib/layouts/scrlttr2.layout:249
+#: ../lib/layouts/siamltex.layout:129 ../lib/layouts/amsdefs.inc:111
+#: ../lib/layouts/db_stdtitle.inc:57 ../lib/layouts/scrclass.inc:173
+#: ../lib/layouts/stdtitle.inc:55 ../lib/layouts/svjour.inc:250
 msgid "Date"
 msgstr "Дата"
 
@@ -7212,22 +7213,25 @@ msgstr ""
 
 # src/ext_l10n.h:298
 #: ../lib/layouts/dinbrief.layout:48 ../lib/layouts/g-brief-en.layout:517
-#: ../lib/layouts/heb-letter.layout:16 ../lib/layouts/scrlettr.layout:70
-#: ../lib/layouts/scrlttr2.layout:100 ../lib/layouts/stdletter.inc:59
+#: ../lib/layouts/g-brief2-en.layout:864 ../lib/layouts/heb-letter.layout:16
+#: ../lib/layouts/scrlettr.layout:70 ../lib/layouts/scrlttr2.layout:100
+#: ../lib/layouts/stdletter.inc:59
 msgid "Opening"
 msgstr "Отваряне"
 
 # src/ext_l10n.h:351
 #: ../lib/layouts/dinbrief.layout:61 ../lib/layouts/g-brief-en.layout:73
-#: ../lib/layouts/heb-letter.layout:24 ../lib/layouts/scrlettr.layout:148
-#: ../lib/layouts/scrlttr2.layout:176 ../lib/layouts/stdletter.inc:83
+#: ../lib/layouts/g-brief2-en.layout:211 ../lib/layouts/heb-letter.layout:24
+#: ../lib/layouts/scrlettr.layout:148 ../lib/layouts/scrlttr2.layout:176
+#: ../lib/layouts/stdletter.inc:83
 msgid "Signature"
 msgstr "Подпис"
 
 # src/ext_l10n.h:200
 #: ../lib/layouts/dinbrief.layout:74 ../lib/layouts/g-brief-en.layout:591
-#: ../lib/layouts/heb-letter.layout:20 ../lib/layouts/scrlettr.layout:81
-#: ../lib/layouts/scrlttr2.layout:122 ../lib/layouts/stdletter.inc:106
+#: ../lib/layouts/g-brief2-en.layout:937 ../lib/layouts/heb-letter.layout:20
+#: ../lib/layouts/scrlettr.layout:81 ../lib/layouts/scrlttr2.layout:122
+#: ../lib/layouts/stdletter.inc:106
 msgid "Closing"
 msgstr "Затваряне"
 
@@ -7243,12 +7247,14 @@ msgstr ""
 
 # src/ext_l10n.h:418
 #: ../lib/layouts/dinbrief.layout:122 ../lib/layouts/g-brief-en.layout:566
-#: ../lib/layouts/stdletter.inc:129 src/lengthcommon.C:35
+#: ../lib/layouts/g-brief2-en.layout:912 ../lib/layouts/stdletter.inc:129
+#: src/lengthcommon.C:35
 msgid "cc"
 msgstr ""
 
 # src/ext_l10n.h:185
 #: ../lib/layouts/dinbrief.layout:135 ../lib/layouts/g-brief-de.layout:487
+#: ../lib/layouts/g-brief2-de.layout:836
 msgid "Betreff"
 msgstr ""
 
@@ -7259,6 +7265,7 @@ msgstr ""
 
 # src/ext_l10n.h:218
 #: ../lib/layouts/dinbrief.layout:180 ../lib/layouts/g-brief-de.layout:467
+#: ../lib/layouts/g-brief2-de.layout:816
 msgid "Datum"
 msgstr ""
 
@@ -7452,18 +7459,19 @@ msgid "Definition*"
 msgstr "Дефиниция*"
 
 # src/ext_l10n.h:188
-#: ../lib/layouts/g-brief-de.layout:31
+#: ../lib/layouts/g-brief-de.layout:31 ../lib/layouts/g-brief2-de.layout:33
 msgid "Brieftext"
 msgstr ""
 
 # src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
 #: ../lib/layouts/g-brief-de.layout:53 ../lib/layouts/g-brief-en.layout:53
+#: ../lib/layouts/g-brief2-de.layout:55 ../lib/layouts/g-brief2-en.layout:55
 #: ../lib/layouts/scrlettr.layout:126 ../lib/layouts/scrlttr2.layout:153
 msgid "Name"
 msgstr "Име"
 
 # src/ext_l10n.h:407
-#: ../lib/layouts/g-brief-de.layout:73
+#: ../lib/layouts/g-brief-de.layout:73 ../lib/layouts/g-brief2-de.layout:211
 msgid "Unterschrift"
 msgstr ""
 
@@ -7488,22 +7496,22 @@ msgid "Land"
 msgstr ""
 
 # src/ext_l10n.h:333
-#: ../lib/layouts/g-brief-de.layout:173
+#: ../lib/layouts/g-brief-de.layout:173 ../lib/layouts/g-brief2-de.layout:689
 msgid "RetourAdresse"
 msgstr ""
 
 # src/ext_l10n.h:283
-#: ../lib/layouts/g-brief-de.layout:194
+#: ../lib/layouts/g-brief-de.layout:194 ../lib/layouts/g-brief2-de.layout:710
 msgid "MeinZeichen"
 msgstr ""
 
 # src/ext_l10n.h:255
-#: ../lib/layouts/g-brief-de.layout:214
+#: ../lib/layouts/g-brief-de.layout:214 ../lib/layouts/g-brief2-de.layout:730
 msgid "IhrZeichen"
 msgstr ""
 
 # src/ext_l10n.h:254
-#: ../lib/layouts/g-brief-de.layout:236
+#: ../lib/layouts/g-brief-de.layout:236 ../lib/layouts/g-brief2-de.layout:752
 msgid "IhrSchreiben"
 msgstr ""
 
@@ -7549,37 +7557,38 @@ msgid "Konto"
 msgstr ""
 
 # src/ext_l10n.h:314
-#: ../lib/layouts/g-brief-de.layout:424
+#: ../lib/layouts/g-brief-de.layout:424 ../lib/layouts/g-brief2-de.layout:773
 msgid "Postvermerk"
 msgstr ""
 
 # src/ext_l10n.h:166
-#: ../lib/layouts/g-brief-de.layout:445
+#: ../lib/layouts/g-brief-de.layout:445 ../lib/layouts/g-brief2-de.layout:794
 msgid "Adresse"
 msgstr "Адрес"
 
 # src/ext_l10n.h:172
-#: ../lib/layouts/g-brief-de.layout:510
+#: ../lib/layouts/g-brief-de.layout:510 ../lib/layouts/g-brief2-de.layout:859
 msgid "Anrede"
 msgstr ""
 
 # src/ext_l10n.h:171
-#: ../lib/layouts/g-brief-de.layout:536
+#: ../lib/layouts/g-brief-de.layout:536 ../lib/layouts/g-brief2-de.layout:884
 msgid "Anlagen"
 msgstr "Подравняване"
 
 # src/ext_l10n.h:411
-#: ../lib/layouts/g-brief-de.layout:559
+#: ../lib/layouts/g-brief-de.layout:559 ../lib/layouts/g-brief2-de.layout:907
 msgid "Verteiler"
 msgstr ""
 
 # src/ext_l10n.h:250
-#: ../lib/layouts/g-brief-de.layout:584
+#: ../lib/layouts/g-brief-de.layout:584 ../lib/layouts/g-brief2-de.layout:932
 msgid "Gruss"
 msgstr ""
 
 # src/ext_l10n.h:273
-#: ../lib/layouts/g-brief-en.layout:31 ../lib/layouts/scrlettr.layout:48
+#: ../lib/layouts/g-brief-en.layout:31 ../lib/layouts/g-brief2-en.layout:33
+#: ../lib/layouts/scrlettr.layout:48
 msgid "Letter"
 msgstr ""
 
@@ -7604,22 +7613,22 @@ msgid "State"
 msgstr "Държава"
 
 # src/ext_l10n.h:334
-#: ../lib/layouts/g-brief-en.layout:173
+#: ../lib/layouts/g-brief-en.layout:173 ../lib/layouts/g-brief2-en.layout:689
 msgid "ReturnAddress"
 msgstr ""
 
 # src/ext_l10n.h:285
-#: ../lib/layouts/g-brief-en.layout:194
+#: ../lib/layouts/g-brief-en.layout:194 ../lib/layouts/g-brief2-en.layout:710
 msgid "MyRef"
 msgstr "Препратка"
 
 # src/ext_l10n.h:414
-#: ../lib/layouts/g-brief-en.layout:214
+#: ../lib/layouts/g-brief-en.layout:214 ../lib/layouts/g-brief2-en.layout:730
 msgid "YourRef"
 msgstr ""
 
 # src/ext_l10n.h:413
-#: ../lib/layouts/g-brief-en.layout:236
+#: ../lib/layouts/g-brief-en.layout:236 ../lib/layouts/g-brief2-en.layout:752
 msgid "YourMail"
 msgstr ""
 
@@ -7639,19 +7648,329 @@ msgid "BankAccount"
 msgstr ""
 
 # src/ext_l10n.h:202
-#: ../lib/layouts/g-brief-en.layout:424
+#: ../lib/layouts/g-brief-en.layout:424 ../lib/layouts/g-brief2-en.layout:773
 #, fuzzy
 msgid "PostalComment"
 msgstr "Коментар"
 
 # src/ext_l10n.h:313
-#: ../lib/layouts/g-brief-en.layout:446
+#: ../lib/layouts/g-brief-en.layout:446 ../lib/layouts/g-brief2-en.layout:794
 msgid "PostalCommend"
 msgstr ""
 
 # src/ext_l10n.h:229
-#: ../lib/layouts/g-brief-en.layout:543
+#: ../lib/layouts/g-brief-en.layout:543 ../lib/layouts/g-brief2-en.layout:889
 msgid "Encl."
+msgstr ""
+
+#: ../lib/layouts/g-brief2-de.layout:75
+msgid "NameZeileA"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-de.layout:95
+msgid "NameZeileB"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-de.layout:114
+msgid "NameZeileC"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-de.layout:133
+msgid "NameZeileD"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-de.layout:152
+msgid "NameZeileE"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-de.layout:171
+msgid "NameZeileF"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-de.layout:190
+msgid "NameZeileG"
+msgstr ""
+
+# src/ext_l10n.h:166
+#: ../lib/layouts/g-brief2-de.layout:230
+#, fuzzy
+msgid "AdressZeileA"
+msgstr "Адрес"
+
+# src/ext_l10n.h:166
+#: ../lib/layouts/g-brief2-de.layout:250
+#, fuzzy
+msgid "AdressZeileB"
+msgstr "Адрес"
+
+# src/ext_l10n.h:166
+#: ../lib/layouts/g-brief2-de.layout:269
+#, fuzzy
+msgid "AdressZeileC"
+msgstr "Адрес"
+
+# src/ext_l10n.h:166
+#: ../lib/layouts/g-brief2-de.layout:288
+#, fuzzy
+msgid "AdressZeileD"
+msgstr "Адрес"
+
+# src/ext_l10n.h:166
+#: ../lib/layouts/g-brief2-de.layout:307
+#, fuzzy
+msgid "AdressZeileE"
+msgstr "Адрес"
+
+# src/ext_l10n.h:166
+#: ../lib/layouts/g-brief2-de.layout:326
+#, fuzzy
+msgid "AdressZeileF"
+msgstr "Адрес"
+
+# src/ext_l10n.h:384
+#: ../lib/layouts/g-brief2-de.layout:345
+#, fuzzy
+msgid "TelefonZeileA"
+msgstr "Телефон"
+
+# src/ext_l10n.h:384
+#: ../lib/layouts/g-brief2-de.layout:365
+#, fuzzy
+msgid "TelefonZeileB"
+msgstr "Телефон"
+
+# src/ext_l10n.h:384
+#: ../lib/layouts/g-brief2-de.layout:384
+#, fuzzy
+msgid "TelefonZeileC"
+msgstr "Телефон"
+
+# src/ext_l10n.h:384
+#: ../lib/layouts/g-brief2-de.layout:403
+#, fuzzy
+msgid "TelefonZeileD"
+msgstr "Телефон"
+
+# src/ext_l10n.h:384
+#: ../lib/layouts/g-brief2-de.layout:422
+#, fuzzy
+msgid "TelefonZeileE"
+msgstr "Телефон"
+
+# src/ext_l10n.h:384
+#: ../lib/layouts/g-brief2-de.layout:441
+#, fuzzy
+msgid "TelefonZeileF"
+msgstr "Телефон"
+
+#: ../lib/layouts/g-brief2-de.layout:460
+msgid "InternetZeileA"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-de.layout:480
+msgid "InternetZeileB"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-de.layout:498
+msgid "InternetZeileC"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-de.layout:516
+msgid "InternetZeileD"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-de.layout:534
+msgid "InternetZeileE"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-de.layout:552
+msgid "InternetZeileF"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-de.layout:571
+msgid "BankZeileA"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-de.layout:591
+msgid "BankZeileB"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-de.layout:610
+msgid "BankZeileC"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-de.layout:629
+msgid "BankZeileD"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-de.layout:648
+msgid "BankZeileE"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-de.layout:667
+msgid "BankZeileF"
+msgstr ""
+
+# src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
+#: ../lib/layouts/g-brief2-en.layout:75
+#, fuzzy
+msgid "NameRowA"
+msgstr "Име"
+
+# src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
+#: ../lib/layouts/g-brief2-en.layout:95
+#, fuzzy
+msgid "NameRowB"
+msgstr "Име"
+
+# src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
+#: ../lib/layouts/g-brief2-en.layout:114
+#, fuzzy
+msgid "NameRowC"
+msgstr "Име"
+
+# src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
+#: ../lib/layouts/g-brief2-en.layout:133
+#, fuzzy
+msgid "NameRowD"
+msgstr "Име"
+
+# src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
+#: ../lib/layouts/g-brief2-en.layout:152
+#, fuzzy
+msgid "NameRowE"
+msgstr "Име"
+
+# src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
+#: ../lib/layouts/g-brief2-en.layout:171
+#, fuzzy
+msgid "NameRowF"
+msgstr "Име"
+
+# src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
+#: ../lib/layouts/g-brief2-en.layout:190
+#, fuzzy
+msgid "NameRowG"
+msgstr "Име"
+
+# src/ext_l10n.h:163
+#: ../lib/layouts/g-brief2-en.layout:230
+#, fuzzy
+msgid "AdressRowA"
+msgstr "Адреси"
+
+# src/ext_l10n.h:163
+#: ../lib/layouts/g-brief2-en.layout:250
+#, fuzzy
+msgid "AdressRowB"
+msgstr "Адреси"
+
+# src/ext_l10n.h:163
+#: ../lib/layouts/g-brief2-en.layout:269
+#, fuzzy
+msgid "AdressRowC"
+msgstr "Адреси"
+
+# src/ext_l10n.h:163
+#: ../lib/layouts/g-brief2-en.layout:288
+#, fuzzy
+msgid "AdressRowD"
+msgstr "Адреси"
+
+# src/ext_l10n.h:163
+#: ../lib/layouts/g-brief2-en.layout:307
+#, fuzzy
+msgid "AdressRowE"
+msgstr "Адреси"
+
+# src/ext_l10n.h:163
+#: ../lib/layouts/g-brief2-en.layout:326
+#, fuzzy
+msgid "AdressRowF"
+msgstr "Адреси"
+
+# src/ext_l10n.h:384
+#: ../lib/layouts/g-brief2-en.layout:345
+#, fuzzy
+msgid "TelefonRowA"
+msgstr "Телефон"
+
+# src/ext_l10n.h:384
+#: ../lib/layouts/g-brief2-en.layout:365
+#, fuzzy
+msgid "TelefonRowB"
+msgstr "Телефон"
+
+# src/ext_l10n.h:384
+#: ../lib/layouts/g-brief2-en.layout:384
+#, fuzzy
+msgid "TelefonRowC"
+msgstr "Телефон"
+
+# src/ext_l10n.h:74
+#: ../lib/layouts/g-brief2-en.layout:403
+#, fuzzy
+msgid "TelefonRowD"
+msgstr "Изтрий ред(w)|w"
+
+# src/ext_l10n.h:384
+#: ../lib/layouts/g-brief2-en.layout:422
+#, fuzzy
+msgid "TelefonRowE"
+msgstr "Телефон"
+
+# src/ext_l10n.h:384
+#: ../lib/layouts/g-brief2-en.layout:441
+#, fuzzy
+msgid "TelefonRowF"
+msgstr "Телефон"
+
+#: ../lib/layouts/g-brief2-en.layout:460
+msgid "InternetRowA"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-en.layout:480
+msgid "InternetRowB"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-en.layout:498
+msgid "InternetRowC"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-en.layout:516
+msgid "InternetRowD"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-en.layout:534
+msgid "InternetRowE"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-en.layout:552
+msgid "InternetRowF"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-en.layout:571
+msgid "BankRowA"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-en.layout:591
+msgid "BankRowB"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-en.layout:610
+msgid "BankRowC"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-en.layout:629
+msgid "BankRowD"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-en.layout:648
+msgid "BankRowE"
+msgstr ""
+
+#: ../lib/layouts/g-brief2-en.layout:667
+msgid "BankRowF"
 msgstr ""
 
 # src/ext_l10n.h:202
@@ -9644,36 +9963,36 @@ msgid "Paragraph environment type set"
 msgstr "Средата на абзаца е установена"
 
 # src/BufferView_pimpl.C:256
-#: src/BufferView_pimpl.C:270
+#: src/BufferView_pimpl.C:273
 msgid "Formatting document..."
 msgstr "Форматирам документа..."
 
-#: src/BufferView_pimpl.C:644
+#: src/BufferView_pimpl.C:647
 #, c-format
 msgid "Saved bookmark %1$d"
 msgstr ""
 
-#: src/BufferView_pimpl.C:646
+#: src/BufferView_pimpl.C:649
 msgid "Saved bookmark "
 msgstr ""
 
-#: src/BufferView_pimpl.C:680
+#: src/BufferView_pimpl.C:683
 #, c-format
 msgid "Moved to bookmark %1$d"
 msgstr ""
 
-#: src/BufferView_pimpl.C:682
+#: src/BufferView_pimpl.C:685
 msgid "Moved to bookmark "
 msgstr ""
 
 # src/lyxfunc.C:3291
-#: src/BufferView_pimpl.C:861
+#: src/BufferView_pimpl.C:864
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Изберете документ за вмъкване"
 
 # src/MenuBackend.C:446 src/ext_l10n.h:10
-#: src/BufferView_pimpl.C:863 src/frontends/controllers/ControlBibtex.C:63
+#: src/BufferView_pimpl.C:866 src/frontends/controllers/ControlBibtex.C:63
 #: src/frontends/controllers/ControlExternal.C:154
 #: src/frontends/controllers/ControlGraphics.C:93
 #: src/frontends/controllers/ControlInclude.C:70 src/lyx_cb.C:110
@@ -9683,42 +10002,42 @@ msgid "Documents|#o#O"
 msgstr "Документи(D)|D"
 
 # src/lyxfunc.C:3157 src/lyxfunc.C:3213 src/lyxfunc.C:3289
-#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1687 src/lyxfunc.C:1792
+#: src/BufferView_pimpl.C:868 src/lyxfunc.C:1687 src/lyxfunc.C:1792
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Примери"
 
-#: src/BufferView_pimpl.C:870 src/lyx_cb.C:120 src/lyxfunc.C:1653
+#: src/BufferView_pimpl.C:873 src/lyx_cb.C:120 src/lyxfunc.C:1653
 #: src/lyxfunc.C:1692
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
 # src/lyxfunc.C:3061 src/lyxfunc.C:3088 src/lyxfunc.C:3165 src/lyxfunc.C:3223
 # src/lyxfunc.C:3251 src/lyxfunc.C:3261 src/lyxfunc.C:3297
-#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1701 src/lyxfunc.C:1721
+#: src/BufferView_pimpl.C:882 src/lyxfunc.C:1701 src/lyxfunc.C:1721
 #: src/lyxfunc.C:1809 src/lyxfunc.C:1836 src/lyxfunc.C:1846
 msgid "Canceled."
 msgstr "Прекъснат."
 
 # src/lyxfunc.C:3309
-#: src/BufferView_pimpl.C:892
+#: src/BufferView_pimpl.C:895
 #, fuzzy, c-format
 msgid "Inserting document %1$s..."
 msgstr "Вмъквам документ"
 
 # src/lyxfunc.C:3309
-#: src/BufferView_pimpl.C:894
+#: src/BufferView_pimpl.C:897
 #, fuzzy
 msgid "Inserting document "
 msgstr "Вмъквам документ"
 
-#: src/BufferView_pimpl.C:894 src/importer.C:47 src/lyxfunc.C:990
+#: src/BufferView_pimpl.C:897 src/importer.C:47 src/lyxfunc.C:990
 #: src/lyxfunc.C:1153 src/lyxfunc.C:1734
 msgid "..."
 msgstr ""
 
 # src/exporter.C:89
-#: src/BufferView_pimpl.C:901
+#: src/BufferView_pimpl.C:904
 #, fuzzy, c-format
 msgid "Document %1$s inserted."
 msgstr "Документът ще бъде експортиран във формат "
@@ -9726,49 +10045,49 @@ msgstr "Документът ще бъде експортиран във формат "
 # src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
 # src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
 # src/lyxfunc.C:3313
-#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1746
+#: src/BufferView_pimpl.C:906 src/lyxfunc.C:1746
 #, fuzzy
 msgid "Document "
 msgstr "Документ"
 
 # src/importer.C:81
-#: src/BufferView_pimpl.C:903
+#: src/BufferView_pimpl.C:906
 #, fuzzy
 msgid " inserted."
 msgstr "импортиран."
 
 # src/lyxfunc.C:3317
 
-#: src/BufferView_pimpl.C:909
+#: src/BufferView_pimpl.C:912
 #, fuzzy, c-format
 msgid "Could not insert document %1$s"
 msgstr "Неуспех при вмъкването"
 
 # src/lyxfunc.C:3317
 
-#: src/BufferView_pimpl.C:911
+#: src/BufferView_pimpl.C:914
 #, fuzzy
 msgid "Could not insert document "
 msgstr "Неуспех при вмъкването"
 
 # src/insets/inseterror.C:54 src/insets/inseterror.C:76 src/lyxfunc.C:1440
-#: src/BufferView_pimpl.C:1086 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:1096 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77
 msgid "Error"
 msgstr "Грешка"
 
 # src/lyxfunc.C:1441
-#: src/BufferView_pimpl.C:1087
+#: src/BufferView_pimpl.C:1097
 msgid "Couldn't find this label"
 msgstr "Този етикет не може да бъде намерен "
 
 # src/lyxfunc.C:1442
-#: src/BufferView_pimpl.C:1088
+#: src/BufferView_pimpl.C:1098
 msgid "in current document."
 msgstr "в текущия документ."
 
 # src/lyxfunc.C:328 src/lyxfunc.C:2996
-#: src/BufferView_pimpl.C:1253
+#: src/BufferView_pimpl.C:1263
 #, fuzzy
 msgid "Unknown function!"
 msgstr "Непознато действие"

@@ -61,13 +61,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx\n"
-"POT-Creation-Date: 2003-11-24 15:57+0100\n"
-"PO-Revision-Date: 2003-04-05 19:28+0300\n"
+"POT-Creation-Date: 2003-12-16 14:01+0100\n"
+"PO-Revision-Date: 2003-12-12 23:36+0200\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@hut.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-15\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Report-Msgid-Bugs-To: \n"
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
 #: ../src/frontends/xforms/forms/form_error.fd:61
@@ -1597,7 +1598,7 @@ msgstr "K‰‰nteinen j‰rjestys|#j"
 
 #: ../src/frontends/xforms/forms/form_print.fd:242
 msgid "Number:|#N"
-msgstr "Numero:|#N"
+msgstr "M‰‰r‰:|#M"
 
 #: ../src/frontends/xforms/forms/form_print.fd:301
 msgid "Odd numbered pages|#O"
@@ -1740,7 +1741,6 @@ msgstr "Pitk‰ taulukko|#i"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:284
 #: ../src/frontends/xforms/forms/form_tabular.fd:1200
-#, fuzzy
 msgid "Rotate 90 deg|#9"
 msgstr "Kierr‰ 90∞|#9"
 
@@ -3163,9 +3163,8 @@ msgid "Set math font"
 msgstr "Aseta matematiikkakirjasin"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:213
-#, fuzzy
 msgid "Insert fraction"
-msgstr "Lis‰‰ osam‰‰r‰ (\\frac)"
+msgstr "Lis‰‰ osam‰‰r‰"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:239
 msgid "Toggle between display mode"
@@ -4121,7 +4120,8 @@ msgid "Send output to a file"
 msgstr "Syˆt‰ tuloste tiedostoon"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
-#: ../lib/layouts/g-brief-en.layout:494 src/frontends/xforms/FormRef.C:37
+#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2-en.layout:841
+#: src/frontends/xforms/FormRef.C:37
 msgid "Reference"
 msgstr "Viite"
 
@@ -4393,7 +4393,6 @@ msgid "Width unit"
 msgstr "Leveysyksikkˆ"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:354
-#, fuzzy
 msgid "Fixed width of the column"
 msgstr "Sarakkeen vakioleveys"
 
@@ -4402,7 +4401,6 @@ msgid "Vertical alignment for fixed width columns"
 msgstr "Vakiolevyisten sarakkeiden pystytasaus"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:411
-#, fuzzy
 msgid "Rotate 90 deg"
 msgstr "Kierr‰ 90∞"
 
@@ -4411,7 +4409,6 @@ msgid "&Rotate Table"
 msgstr "Kie&rr‰ taulukkoa"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:438
-#, fuzzy
 msgid "Rotate the table by 90 deg"
 msgstr "Kierr‰ taulukkoa 90∞"
 
@@ -4420,7 +4417,6 @@ msgid "Rotate &Cell"
 msgstr "Kierr‰ &solua"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:453
-#, fuzzy
 msgid "Rotate this cell by 90 deg"
 msgstr "Kierr‰ t‰t‰ solua 90∞"
 
@@ -5056,11 +5052,11 @@ msgstr "Tekij‰"
 #: ../lib/layouts/aa.layout:66 ../lib/layouts/aa.layout:124
 #: ../lib/layouts/aapaper.layout:71 ../lib/layouts/egs.layout:273
 #: ../lib/layouts/entcs.layout:31 ../lib/layouts/g-brief-en.layout:452
-#: ../lib/layouts/ijmpd.layout:58 ../lib/layouts/kluwer.layout:179
-#: ../lib/layouts/revtex.layout:135 ../lib/layouts/revtex4.layout:170
-#: ../lib/layouts/scrlettr.layout:155 ../lib/layouts/scrlttr2.layout:48
-#: ../lib/layouts/aapaper.inc:31 ../lib/layouts/amsdefs.inc:167
-#: ../lib/layouts/lyxmacros.inc:78
+#: ../lib/layouts/g-brief2-en.layout:799 ../lib/layouts/ijmpd.layout:58
+#: ../lib/layouts/kluwer.layout:179 ../lib/layouts/revtex.layout:135
+#: ../lib/layouts/revtex4.layout:170 ../lib/layouts/scrlettr.layout:155
+#: ../lib/layouts/scrlttr2.layout:48 ../lib/layouts/aapaper.inc:31
+#: ../lib/layouts/amsdefs.inc:167 ../lib/layouts/lyxmacros.inc:78
 msgid "Address"
 msgstr "Osoite"
 
@@ -5078,13 +5074,13 @@ msgstr "Posti"
 #: ../lib/layouts/aapaper.layout:79 ../lib/layouts/aapaper.layout:167
 #: ../lib/layouts/aastex.layout:94 ../lib/layouts/aastex.layout:207
 #: ../lib/layouts/egs.layout:548 ../lib/layouts/foils.layout:153
-#: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/kluwer.layout:144
-#: ../lib/layouts/linuxdoc.layout:321 ../lib/layouts/revtex.layout:123
-#: ../lib/layouts/revtex4.layout:139 ../lib/layouts/scrlettr.layout:176
-#: ../lib/layouts/scrlttr2.layout:249 ../lib/layouts/siamltex.layout:129
-#: ../lib/layouts/amsdefs.inc:111 ../lib/layouts/db_stdtitle.inc:57
-#: ../lib/layouts/scrclass.inc:173 ../lib/layouts/stdtitle.inc:55
-#: ../lib/layouts/svjour.inc:250
+#: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/g-brief2-en.layout:821
+#: ../lib/layouts/kluwer.layout:144 ../lib/layouts/linuxdoc.layout:321
+#: ../lib/layouts/revtex.layout:123 ../lib/layouts/revtex4.layout:139
+#: ../lib/layouts/scrlettr.layout:176 ../lib/layouts/scrlttr2.layout:249
+#: ../lib/layouts/siamltex.layout:129 ../lib/layouts/amsdefs.inc:111
+#: ../lib/layouts/db_stdtitle.inc:57 ../lib/layouts/scrclass.inc:173
+#: ../lib/layouts/stdtitle.inc:55 ../lib/layouts/svjour.inc:250
 msgid "Date"
 msgstr "P‰iv‰ys"
 
@@ -5306,7 +5302,7 @@ msgstr "Oikea osoite"
 
 #: ../lib/layouts/chess.layout:38
 msgid "Mainline"
-msgstr ""
+msgstr "Pelin kulku"
 
 #: ../lib/layouts/chess.layout:64
 msgid "Variation"
@@ -5334,7 +5330,7 @@ msgstr "Alimuunnelma 5"
 
 #: ../lib/layouts/chess.layout:120
 msgid "HideMoves"
-msgstr ""
+msgstr "Piilosiirrot"
 
 #: ../lib/layouts/chess.layout:128
 msgid "ChessBoard"
@@ -5342,7 +5338,7 @@ msgstr "Shakkilauta"
 
 #: ../lib/layouts/chess.layout:141
 msgid "BoardCentered"
-msgstr "LautaKeskell‰"
+msgstr "Lauta keskell‰"
 
 #: ../lib/layouts/chess.layout:156
 msgid "HighLight"
@@ -5390,20 +5386,23 @@ msgid "Send_To_Address"
 msgstr "L‰hetysosoite"
 
 #: ../lib/layouts/dinbrief.layout:48 ../lib/layouts/g-brief-en.layout:517
-#: ../lib/layouts/heb-letter.layout:16 ../lib/layouts/scrlettr.layout:70
-#: ../lib/layouts/scrlttr2.layout:100 ../lib/layouts/stdletter.inc:59
+#: ../lib/layouts/g-brief2-en.layout:864 ../lib/layouts/heb-letter.layout:16
+#: ../lib/layouts/scrlettr.layout:70 ../lib/layouts/scrlttr2.layout:100
+#: ../lib/layouts/stdletter.inc:59
 msgid "Opening"
 msgstr "Aloitus"
 
 #: ../lib/layouts/dinbrief.layout:61 ../lib/layouts/g-brief-en.layout:73
-#: ../lib/layouts/heb-letter.layout:24 ../lib/layouts/scrlettr.layout:148
-#: ../lib/layouts/scrlttr2.layout:176 ../lib/layouts/stdletter.inc:83
+#: ../lib/layouts/g-brief2-en.layout:211 ../lib/layouts/heb-letter.layout:24
+#: ../lib/layouts/scrlettr.layout:148 ../lib/layouts/scrlttr2.layout:176
+#: ../lib/layouts/stdletter.inc:83
 msgid "Signature"
 msgstr "Allekirjoitus"
 
 #: ../lib/layouts/dinbrief.layout:74 ../lib/layouts/g-brief-en.layout:591
-#: ../lib/layouts/heb-letter.layout:20 ../lib/layouts/scrlettr.layout:81
-#: ../lib/layouts/scrlttr2.layout:122 ../lib/layouts/stdletter.inc:106
+#: ../lib/layouts/g-brief2-en.layout:937 ../lib/layouts/heb-letter.layout:20
+#: ../lib/layouts/scrlettr.layout:81 ../lib/layouts/scrlttr2.layout:122
+#: ../lib/layouts/stdletter.inc:106
 msgid "Closing"
 msgstr "Lopuksi"
 
@@ -5416,11 +5415,13 @@ msgid "ps"
 msgstr "ps"
 
 #: ../lib/layouts/dinbrief.layout:122 ../lib/layouts/g-brief-en.layout:566
-#: ../lib/layouts/stdletter.inc:129 src/lengthcommon.C:35
+#: ../lib/layouts/g-brief2-en.layout:912 ../lib/layouts/stdletter.inc:129
+#: src/lengthcommon.C:35
 msgid "cc"
 msgstr "jakelu"
 
 #: ../lib/layouts/dinbrief.layout:135 ../lib/layouts/g-brief-de.layout:487
+#: ../lib/layouts/g-brief2-de.layout:836
 msgid "Betreff"
 msgstr "Aihe"
 
@@ -5429,6 +5430,7 @@ msgid "Stadt"
 msgstr "Kaupunki"
 
 #: ../lib/layouts/dinbrief.layout:180 ../lib/layouts/g-brief-de.layout:467
+#: ../lib/layouts/g-brief2-de.layout:816
 msgid "Datum"
 msgstr "P‰iv‰ys"
 
@@ -5585,16 +5587,17 @@ msgstr "V‰itt‰m‰*"
 msgid "Definition*"
 msgstr "M‰‰ritelm‰*"
 
-#: ../lib/layouts/g-brief-de.layout:31
+#: ../lib/layouts/g-brief-de.layout:31 ../lib/layouts/g-brief2-de.layout:33
 msgid "Brieftext"
 msgstr "Kirjeteksti"
 
 #: ../lib/layouts/g-brief-de.layout:53 ../lib/layouts/g-brief-en.layout:53
+#: ../lib/layouts/g-brief2-de.layout:55 ../lib/layouts/g-brief2-en.layout:55
 #: ../lib/layouts/scrlettr.layout:126 ../lib/layouts/scrlttr2.layout:153
 msgid "Name"
 msgstr "Nimi"
 
-#: ../lib/layouts/g-brief-de.layout:73
+#: ../lib/layouts/g-brief-de.layout:73 ../lib/layouts/g-brief2-de.layout:211
 msgid "Unterschrift"
 msgstr "Allekirjoitus"
 
@@ -5614,19 +5617,19 @@ msgstr "Postitoimipaikka"
 msgid "Land"
 msgstr "Maa"
 
-#: ../lib/layouts/g-brief-de.layout:173
+#: ../lib/layouts/g-brief-de.layout:173 ../lib/layouts/g-brief2-de.layout:689
 msgid "RetourAdresse"
 msgstr "Palautusosoite"
 
-#: ../lib/layouts/g-brief-de.layout:194
+#: ../lib/layouts/g-brief-de.layout:194 ../lib/layouts/g-brief2-de.layout:710
 msgid "MeinZeichen"
 msgstr "MeinZeichen"
 
-#: ../lib/layouts/g-brief-de.layout:214
+#: ../lib/layouts/g-brief-de.layout:214 ../lib/layouts/g-brief2-de.layout:730
 msgid "IhrZeichen"
 msgstr "IhrZeichen"
 
-#: ../lib/layouts/g-brief-de.layout:236
+#: ../lib/layouts/g-brief-de.layout:236 ../lib/layouts/g-brief2-de.layout:752
 msgid "IhrSchreiben"
 msgstr "IhrSchreiben"
 
@@ -5663,31 +5666,32 @@ msgstr "BLZ"
 msgid "Konto"
 msgstr "Tili"
 
-#: ../lib/layouts/g-brief-de.layout:424
+#: ../lib/layouts/g-brief-de.layout:424 ../lib/layouts/g-brief2-de.layout:773
 msgid "Postvermerk"
 msgstr "Postimerkint‰"
 
-#: ../lib/layouts/g-brief-de.layout:445
+#: ../lib/layouts/g-brief-de.layout:445 ../lib/layouts/g-brief2-de.layout:794
 msgid "Adresse"
 msgstr "Osoite"
 
-#: ../lib/layouts/g-brief-de.layout:510
+#: ../lib/layouts/g-brief-de.layout:510 ../lib/layouts/g-brief2-de.layout:859
 msgid "Anrede"
 msgstr "Puhuttelu"
 
-#: ../lib/layouts/g-brief-de.layout:536
+#: ../lib/layouts/g-brief-de.layout:536 ../lib/layouts/g-brief2-de.layout:884
 msgid "Anlagen"
 msgstr "Laitos"
 
-#: ../lib/layouts/g-brief-de.layout:559
+#: ../lib/layouts/g-brief-de.layout:559 ../lib/layouts/g-brief2-de.layout:907
 msgid "Verteiler"
 msgstr "Jakelija"
 
-#: ../lib/layouts/g-brief-de.layout:584
+#: ../lib/layouts/g-brief-de.layout:584 ../lib/layouts/g-brief2-de.layout:932
 msgid "Gruss"
 msgstr "Lopuksi"
 
-#: ../lib/layouts/g-brief-en.layout:31 ../lib/layouts/scrlettr.layout:48
+#: ../lib/layouts/g-brief-en.layout:31 ../lib/layouts/g-brief2-en.layout:33
+#: ../lib/layouts/scrlettr.layout:48
 msgid "Letter"
 msgstr "Kirje"
 
@@ -5707,19 +5711,19 @@ msgstr "Kaupunki"
 msgid "State"
 msgstr "Maa"
 
-#: ../lib/layouts/g-brief-en.layout:173
+#: ../lib/layouts/g-brief-en.layout:173 ../lib/layouts/g-brief2-en.layout:689
 msgid "ReturnAddress"
 msgstr "Palautusosoite"
 
-#: ../lib/layouts/g-brief-en.layout:194
+#: ../lib/layouts/g-brief-en.layout:194 ../lib/layouts/g-brief2-en.layout:710
 msgid "MyRef"
 msgstr "Viitteeni"
 
-#: ../lib/layouts/g-brief-en.layout:214
+#: ../lib/layouts/g-brief-en.layout:214 ../lib/layouts/g-brief2-en.layout:730
 msgid "YourRef"
 msgstr "Viitteesi"
 
-#: ../lib/layouts/g-brief-en.layout:236
+#: ../lib/layouts/g-brief-en.layout:236 ../lib/layouts/g-brief2-en.layout:752
 msgid "YourMail"
 msgstr "Vastaanottajan osoite"
 
@@ -5735,17 +5739,265 @@ msgstr "Pankkikoodi"
 msgid "BankAccount"
 msgstr "Pankkitili"
 
-#: ../lib/layouts/g-brief-en.layout:424
+#: ../lib/layouts/g-brief-en.layout:424 ../lib/layouts/g-brief2-en.layout:773
 msgid "PostalComment"
 msgstr "Postihuomautus"
 
-#: ../lib/layouts/g-brief-en.layout:446
+#: ../lib/layouts/g-brief-en.layout:446 ../lib/layouts/g-brief2-en.layout:794
 msgid "PostalCommend"
 msgstr "Postimerkint‰"
 
-#: ../lib/layouts/g-brief-en.layout:543
+#: ../lib/layouts/g-brief-en.layout:543 ../lib/layouts/g-brief2-en.layout:889
 msgid "Encl."
 msgstr "Liitteet"
+
+#: ../lib/layouts/g-brief2-de.layout:75
+msgid "NameZeileA"
+msgstr "Nimirivi A"
+
+#: ../lib/layouts/g-brief2-de.layout:95
+msgid "NameZeileB"
+msgstr "Nimirivi B"
+
+#: ../lib/layouts/g-brief2-de.layout:114
+msgid "NameZeileC"
+msgstr "Nimirivi C"
+
+#: ../lib/layouts/g-brief2-de.layout:133
+msgid "NameZeileD"
+msgstr "Nimirivi D"
+
+#: ../lib/layouts/g-brief2-de.layout:152
+msgid "NameZeileE"
+msgstr "Nimirivi E"
+
+#: ../lib/layouts/g-brief2-de.layout:171
+msgid "NameZeileF"
+msgstr "Nimirivi F"
+
+#: ../lib/layouts/g-brief2-de.layout:190
+msgid "NameZeileG"
+msgstr "Nimirivi G"
+
+#: ../lib/layouts/g-brief2-de.layout:230
+msgid "AdressZeileA"
+msgstr "Osoiterivi A"
+
+#: ../lib/layouts/g-brief2-de.layout:250
+msgid "AdressZeileB"
+msgstr "Osoiterivi B"
+
+#: ../lib/layouts/g-brief2-de.layout:269
+msgid "AdressZeileC"
+msgstr "Osoiterivi C"
+
+#: ../lib/layouts/g-brief2-de.layout:288
+msgid "AdressZeileD"
+msgstr "Osoiterivi D"
+
+#: ../lib/layouts/g-brief2-de.layout:307
+msgid "AdressZeileE"
+msgstr "Osoiterivi E"
+
+#: ../lib/layouts/g-brief2-de.layout:326
+msgid "AdressZeileF"
+msgstr "Osoiterivi F"
+
+#: ../lib/layouts/g-brief2-de.layout:345
+msgid "TelefonZeileA"
+msgstr "Puhelinrivi A"
+
+#: ../lib/layouts/g-brief2-de.layout:365
+msgid "TelefonZeileB"
+msgstr "Puhelinrivi B"
+
+#: ../lib/layouts/g-brief2-de.layout:384
+msgid "TelefonZeileC"
+msgstr "Puhelinrivi C"
+
+#: ../lib/layouts/g-brief2-de.layout:403
+msgid "TelefonZeileD"
+msgstr "Puhelinrivi D"
+
+#: ../lib/layouts/g-brief2-de.layout:422
+msgid "TelefonZeileE"
+msgstr "Puhelinrivi E"
+
+#: ../lib/layouts/g-brief2-de.layout:441
+msgid "TelefonZeileF"
+msgstr "Puhelinrivi F"
+
+#: ../lib/layouts/g-brief2-de.layout:460
+msgid "InternetZeileA"
+msgstr "Internetrivi A"
+
+#: ../lib/layouts/g-brief2-de.layout:480
+msgid "InternetZeileB"
+msgstr "Internetrivi B"
+
+#: ../lib/layouts/g-brief2-de.layout:498
+msgid "InternetZeileC"
+msgstr "Internetrivi C"
+
+#: ../lib/layouts/g-brief2-de.layout:516
+msgid "InternetZeileD"
+msgstr "Internetrivi D"
+
+#: ../lib/layouts/g-brief2-de.layout:534
+msgid "InternetZeileE"
+msgstr "Internetrivi E"
+
+#: ../lib/layouts/g-brief2-de.layout:552
+msgid "InternetZeileF"
+msgstr "Internetrivi F"
+
+#: ../lib/layouts/g-brief2-de.layout:571
+msgid "BankZeileA"
+msgstr "Pankkirivi A"
+
+#: ../lib/layouts/g-brief2-de.layout:591
+msgid "BankZeileB"
+msgstr "Pankkirivi B"
+
+#: ../lib/layouts/g-brief2-de.layout:610
+msgid "BankZeileC"
+msgstr "Pankkirivi C"
+
+#: ../lib/layouts/g-brief2-de.layout:629
+msgid "BankZeileD"
+msgstr "Pankkirivi D"
+
+#: ../lib/layouts/g-brief2-de.layout:648
+msgid "BankZeileE"
+msgstr "Pankkirivi E"
+
+#: ../lib/layouts/g-brief2-de.layout:667
+msgid "BankZeileF"
+msgstr "Pankkirivi F"
+
+#: ../lib/layouts/g-brief2-en.layout:75
+msgid "NameRowA"
+msgstr "Nimirivi A"
+
+#: ../lib/layouts/g-brief2-en.layout:95
+msgid "NameRowB"
+msgstr "Nimirivi B"
+
+#: ../lib/layouts/g-brief2-en.layout:114
+msgid "NameRowC"
+msgstr "Nimirivi C"
+
+#: ../lib/layouts/g-brief2-en.layout:133
+msgid "NameRowD"
+msgstr "Nimirivi D"
+
+#: ../lib/layouts/g-brief2-en.layout:152
+msgid "NameRowE"
+msgstr "Nimirivi E"
+
+#: ../lib/layouts/g-brief2-en.layout:171
+msgid "NameRowF"
+msgstr "Nimirivi F"
+
+#: ../lib/layouts/g-brief2-en.layout:190
+msgid "NameRowG"
+msgstr "Nimirivi G"
+
+#: ../lib/layouts/g-brief2-en.layout:230
+msgid "AdressRowA"
+msgstr "Osoiterivi A"
+
+#: ../lib/layouts/g-brief2-en.layout:250
+msgid "AdressRowB"
+msgstr "Osoiterivi B"
+
+#: ../lib/layouts/g-brief2-en.layout:269
+msgid "AdressRowC"
+msgstr "Osoiterivi C"
+
+#: ../lib/layouts/g-brief2-en.layout:288
+msgid "AdressRowD"
+msgstr "Osoiterivi D"
+
+#: ../lib/layouts/g-brief2-en.layout:307
+msgid "AdressRowE"
+msgstr "Osoiterivi E"
+
+#: ../lib/layouts/g-brief2-en.layout:326
+msgid "AdressRowF"
+msgstr "Osoiterivi F"
+
+#: ../lib/layouts/g-brief2-en.layout:345
+msgid "TelefonRowA"
+msgstr "Puhelinrivi A"
+
+#: ../lib/layouts/g-brief2-en.layout:365
+msgid "TelefonRowB"
+msgstr "Puhelinrivi B"
+
+#: ../lib/layouts/g-brief2-en.layout:384
+msgid "TelefonRowC"
+msgstr "Puhelinrivi C"
+
+#: ../lib/layouts/g-brief2-en.layout:403
+msgid "TelefonRowD"
+msgstr "Puhelinrivi D"
+
+#: ../lib/layouts/g-brief2-en.layout:422
+msgid "TelefonRowE"
+msgstr "Puhelinrivi E"
+
+#: ../lib/layouts/g-brief2-en.layout:441
+msgid "TelefonRowF"
+msgstr "Puhelinrivi F"
+
+#: ../lib/layouts/g-brief2-en.layout:460
+msgid "InternetRowA"
+msgstr "Internetrivi A"
+
+#: ../lib/layouts/g-brief2-en.layout:480
+msgid "InternetRowB"
+msgstr "Internetrivi B"
+
+#: ../lib/layouts/g-brief2-en.layout:498
+msgid "InternetRowC"
+msgstr "Internetrivi C"
+
+#: ../lib/layouts/g-brief2-en.layout:516
+msgid "InternetRowD"
+msgstr "Internetrivi D"
+
+#: ../lib/layouts/g-brief2-en.layout:534
+msgid "InternetRowE"
+msgstr "Internetrivi E"
+
+#: ../lib/layouts/g-brief2-en.layout:552
+msgid "InternetRowF"
+msgstr "Internetrivi F"
+
+#: ../lib/layouts/g-brief2-en.layout:571
+msgid "BankRowA"
+msgstr "Pankkirivi A"
+
+#: ../lib/layouts/g-brief2-en.layout:591
+msgid "BankRowB"
+msgstr "Pankkirivi B"
+
+#: ../lib/layouts/g-brief2-en.layout:610
+msgid "BankRowC"
+msgstr "Pankkirivi C"
+
+#: ../lib/layouts/g-brief2-en.layout:629
+msgid "BankRowD"
+msgstr "Pankkirivi D"
+
+#: ../lib/layouts/g-brief2-en.layout:648
+msgid "BankRowE"
+msgstr "Pankkirivi E"
+
+#: ../lib/layouts/g-brief2-en.layout:667
+msgid "BankRowF"
+msgstr "Pankkirivi F"
 
 #: ../lib/layouts/heb-article.layout:16 ../lib/layouts/scrlttr2.layout:345
 #: ../lib/layouts/db_lyxmacros.inc:20 ../lib/layouts/lyxmacros.inc:47
@@ -5786,7 +6038,7 @@ msgstr "OTSIKKO_YLLƒ:"
 
 #: ../lib/layouts/hollywood.layout:257
 msgid "INTERCUT"
-msgstr ""
+msgstr "LEIKKAUS"
 
 #: ../lib/layouts/hollywood.layout:271
 msgid "FADE_OUT"
@@ -5860,24 +6112,20 @@ msgid "Solution"
 msgstr "Ratkaisu"
 
 #: ../lib/layouts/memoir.layout:31
-#, fuzzy
 msgid "Chapterprecis"
-msgstr "Harjoitusluku"
+msgstr "Selostekappale"
 
 #: ../lib/layouts/memoir.layout:52
-#, fuzzy
 msgid "Epigraph"
-msgstr "El‰m‰kerta"
+msgstr "Alkulainaus"
 
 #: ../lib/layouts/memoir.layout:64
-#, fuzzy
 msgid "Poemtitle"
-msgstr "Pystykalvo"
+msgstr "Runon otsikko"
 
 #: ../lib/layouts/memoir.layout:82
-#, fuzzy
 msgid "Poemtitle*"
-msgstr "Pystykalvo"
+msgstr "Runon otsikko*"
 
 #: ../lib/layouts/paper.layout:143
 msgid "SubTitle"
@@ -6054,7 +6302,7 @@ msgstr "Tarkastettu"
 
 #: ../lib/layouts/aguplus.inc:121
 msgid "CCC"
-msgstr ""
+msgstr "CCC"
 
 #: ../lib/layouts/aguplus.inc:134
 msgid "PaperId"
@@ -7278,33 +7526,33 @@ msgstr "Kappaletyyli kopioitu"
 msgid "Paragraph environment type set"
 msgstr "Kappaletyyli asetettu"
 
-#: src/BufferView_pimpl.C:270
+#: src/BufferView_pimpl.C:273
 msgid "Formatting document..."
 msgstr "Asiakirja muotoutuu..."
 
-#: src/BufferView_pimpl.C:644
+#: src/BufferView_pimpl.C:647
 #, c-format
 msgid "Saved bookmark %1$d"
 msgstr "Tallensi kirjanmerkin %1$d"
 
-#: src/BufferView_pimpl.C:646
+#: src/BufferView_pimpl.C:649
 msgid "Saved bookmark "
 msgstr "Tallensi kirjanmerkin "
 
-#: src/BufferView_pimpl.C:680
+#: src/BufferView_pimpl.C:683
 #, c-format
 msgid "Moved to bookmark %1$d"
 msgstr "Siirtyi kirjanmerkille %1$d"
 
-#: src/BufferView_pimpl.C:682
+#: src/BufferView_pimpl.C:685
 msgid "Moved to bookmark "
 msgstr "Siirtyi kirjanmerkille "
 
-#: src/BufferView_pimpl.C:861
+#: src/BufferView_pimpl.C:864
 msgid "Select LyX document to insert"
 msgstr "Valitse lis‰tt‰v‰ LyX-asiakirja"
 
-#: src/BufferView_pimpl.C:863 src/frontends/controllers/ControlBibtex.C:63
+#: src/BufferView_pimpl.C:866 src/frontends/controllers/ControlBibtex.C:63
 #: src/frontends/controllers/ControlExternal.C:154
 #: src/frontends/controllers/ControlGraphics.C:93
 #: src/frontends/controllers/ControlInclude.C:70 src/lyx_cb.C:110
@@ -7312,70 +7560,70 @@ msgstr "Valitse lis‰tt‰v‰ LyX-asiakirja"
 msgid "Documents|#o#O"
 msgstr "Asiakirjat|#A#a"
 
-#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1687 src/lyxfunc.C:1792
+#: src/BufferView_pimpl.C:868 src/lyxfunc.C:1687 src/lyxfunc.C:1792
 msgid "Examples|#E#e"
 msgstr "Esimerkit|#E#e"
 
-#: src/BufferView_pimpl.C:870 src/lyx_cb.C:120 src/lyxfunc.C:1653
+#: src/BufferView_pimpl.C:873 src/lyx_cb.C:120 src/lyxfunc.C:1653
 #: src/lyxfunc.C:1692
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX-asiakirjat (*.lyx)"
 
-#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1701 src/lyxfunc.C:1721
+#: src/BufferView_pimpl.C:882 src/lyxfunc.C:1701 src/lyxfunc.C:1721
 #: src/lyxfunc.C:1809 src/lyxfunc.C:1836 src/lyxfunc.C:1846
 msgid "Canceled."
 msgstr "Peruttu."
 
-#: src/BufferView_pimpl.C:892
+#: src/BufferView_pimpl.C:895
 #, c-format
 msgid "Inserting document %1$s..."
 msgstr "Lis‰t‰‰n asiakirja %1$s..."
 
-#: src/BufferView_pimpl.C:894
+#: src/BufferView_pimpl.C:897
 msgid "Inserting document "
 msgstr "Lis‰t‰‰n asiakirja "
 
-#: src/BufferView_pimpl.C:894 src/importer.C:47 src/lyxfunc.C:990
+#: src/BufferView_pimpl.C:897 src/importer.C:47 src/lyxfunc.C:990
 #: src/lyxfunc.C:1153 src/lyxfunc.C:1734
 msgid "..."
 msgstr "..."
 
-#: src/BufferView_pimpl.C:901
+#: src/BufferView_pimpl.C:904
 #, c-format
 msgid "Document %1$s inserted."
 msgstr "Asiakirja %1$s lis‰tty."
 
-#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1746
+#: src/BufferView_pimpl.C:906 src/lyxfunc.C:1746
 msgid "Document "
 msgstr "Asiakirja "
 
-#: src/BufferView_pimpl.C:903
+#: src/BufferView_pimpl.C:906
 msgid " inserted."
 msgstr " lis‰tty."
 
-#: src/BufferView_pimpl.C:909
+#: src/BufferView_pimpl.C:912
 #, c-format
 msgid "Could not insert document %1$s"
 msgstr "Asiakirjaa %1$s ei voi lis‰t‰"
 
-#: src/BufferView_pimpl.C:911
+#: src/BufferView_pimpl.C:914
 msgid "Could not insert document "
 msgstr "Ei voi lis‰t‰ asiakirjaa "
 
-#: src/BufferView_pimpl.C:1086 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:1096 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77
 msgid "Error"
 msgstr "Virhe"
 
-#: src/BufferView_pimpl.C:1087
+#: src/BufferView_pimpl.C:1097
 msgid "Couldn't find this label"
 msgstr "Nimikett‰ ei lˆytynyt"
 
-#: src/BufferView_pimpl.C:1088
+#: src/BufferView_pimpl.C:1098
 msgid "in current document."
 msgstr "t‰ss‰ asiakirjassa"
 
-#: src/BufferView_pimpl.C:1253
+#: src/BufferView_pimpl.C:1263
 msgid "Unknown function!"
 msgstr "Tuntematon toiminto!"
 
@@ -8205,18 +8453,17 @@ msgid "Can't load textclass "
 msgstr "Tekstiluokkaa ei voi ladata "
 
 #: src/buffer.C:656
-#, fuzzy, c-format
+#, c-format
 msgid "The document uses a missing TeX class \"%1$s\"."
-msgstr "Asiakirja k‰ytt‰‰ tuntematonta tekstiluokkaa \"%1$s\"."
+msgstr "Asiakirja k‰ytt‰‰ puuttuvaa TeX-luokkaa \"%1$s\"."
 
 #: src/buffer.C:657 src/buffer.C:663
 msgid "LyX will not be able to produce output."
-msgstr ""
+msgstr "LyX ei voi tuottaa tulostetta."
 
 #: src/buffer.C:661
-#, fuzzy
 msgid "The document uses a missing TeX class "
-msgstr "Asiakirja k‰ytt‰‰ tuntematonta tekstiluokkaa "
+msgstr "Asiakirja k‰ytt‰‰ puuttuvaa TeX-luokkaa "
 
 #: src/buffer.C:968
 #, c-format
@@ -9217,14 +9464,12 @@ msgid ",,text''"
 msgstr ",,teksti''"
 
 #: src/frontends/qt2/QDocument.C:92
-#, fuzzy
 msgid "<<text>>"
-msgstr "teksti"
+msgstr "´tekstiª"
 
 #: src/frontends/qt2/QDocument.C:93
-#, fuzzy
 msgid ">>text<<"
-msgstr "teksti"
+msgstr "ªteksti´"
 
 #: src/frontends/qt2/QDocument.C:105
 msgid "US letter"
@@ -9949,7 +10194,6 @@ msgstr ""
 "reunukset"
 
 #: src/frontends/xforms/FormDocument.C:293
-#, fuzzy
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
 msgstr ""
 " ``teksti'' | ''teksti'' | ,,teksti`` | ,,teksti'' | ´tekstiª | ªteksti´ "
@@ -11282,7 +11526,6 @@ msgid "Can't open pipe for spellchecker."
 msgstr "Oikolukuohjelmaan ei voi avata putkea."
 
 #: src/ispell.C:241
-#, fuzzy
 msgid ""
 "Could not create an ispell process.\n"
 "You may not have the right languages installed."
@@ -11300,9 +11543,8 @@ msgstr ""
 "Ehk‰p‰ sen asetuksissa on vikaa?"
 
 #: src/ispell.C:372
-#, fuzzy
 msgid "Could not communicate with the spell-checker program."
-msgstr "Viestint‰ oikolukuohjelman kanssa ep‰onnistui"
+msgstr "Viestint‰ oikolukuohjelman kanssa ep‰onnistui."
 
 #: src/kbsequence.C:157
 msgid "   options: "
