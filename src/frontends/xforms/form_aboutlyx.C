@@ -56,7 +56,7 @@ FD_form_tab_version * FormAboutlyx::build_tab_version()
 
   fdui->form = fl_bgn_form(FL_NO_BOX, 430, 310);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 430, 310, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 430, 310, "");
   fdui->text_copyright = obj = fl_add_text(FL_NORMAL_TEXT, 10, 10, 410, 110, _("Text"));
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lalign(obj, FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
@@ -86,7 +86,7 @@ FD_form_tab_credits * FormAboutlyx::build_tab_credits()
 
   fdui->form = fl_bgn_form(FL_NO_BOX, 430, 310);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 430, 310, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 430, 310, "");
   fdui->browser_credits = obj = fl_add_browser(FL_NORMAL_BROWSER, 10, 10, 410, 290, "");
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
@@ -112,7 +112,7 @@ FD_form_tab_license * FormAboutlyx::build_tab_license()
 
   fdui->form = fl_bgn_form(FL_NO_BOX, 430, 310);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 430, 310, "");
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 430, 310, "");
   fdui->text_license = obj = fl_add_text(FL_NORMAL_TEXT, 10, 10, 410, 100, _("Text"));
     fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_lalign(obj, FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
