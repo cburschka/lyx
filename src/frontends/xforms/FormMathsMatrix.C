@@ -15,6 +15,8 @@
 #pragma implementation
 #endif
 
+#include <algorithm>
+
 #include "FormMathsMatrix.h"
 #include "form_maths_matrix.h"
 #include "Dialogs.h"
@@ -116,12 +118,13 @@ bool FormMathsMatrix::input(FL_OBJECT * ob, long)
 
 int FormMathsMatrix::AlignFilter(char const * cur, int c)
 {
+	size_t len = strlen(cur);
 	int const n = int(fl_get_slider_value(dialog_->slider_columns) + 0.5) -
-		int(strlen(cur));
+		int(len) + std::count(cur, cur+len, '|');
 	if (n < 0)
 		return FL_INVALID;
 
-	if (c == 'c' || c == 'l' || c == 'r') 
+	if (c == 'c' || c == 'l' || c == 'r' || c == '|')
 		return FL_VALID;
  
 	return FL_INVALID;
