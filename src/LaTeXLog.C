@@ -12,6 +12,7 @@
 #include "lyxrc.h"
 #include "BufferView.h"
 #include "gettext.h"
+#include "converter.h"
 
 extern FD_LaTeXLog *fd_latex_log;
 extern BufferView *current_view;
@@ -26,7 +27,7 @@ void ShowLatexLog()
 	if (!filename.empty()) {
 		fname = OnlyFilename(ChangeExtension(filename, ".log"));
 		bname = OnlyFilename(ChangeExtension(filename,
-					lyxrc.literate_extension + ".out"));
+				     Formats::Extension("literate") + ".out"));
 		path = OnlyPath(filename);
 		if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 			path = current_view->buffer()->tmppath;

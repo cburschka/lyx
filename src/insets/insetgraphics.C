@@ -183,7 +183,8 @@ TODO Extended features:
 #include "lyxtext.h"
 #include "font.h" // For the lyxfont class.
 #include <algorithm> // For the std::max
- 
+#include "lyxrc.h"
+
 #include "debug.h"
 
 
@@ -655,12 +656,15 @@ int InsetGraphics::Latex(Buffer const *buf, ostream & os,
 	}
 
 	// How do we decide to what format should we export?
-	const string empty_string = string();
-	const string eps_outfile = ChangeExtension(params.filename, "eps");
-	const string png_outfile = ChangeExtension(params.filename, "png");
-
-	Converter::Convert(buf, params.filename, eps_outfile, empty_string);
-	Converter::Convert(buf, params.filename, png_outfile, empty_string);
+	string extension = GetExtension(params.filename);
+	//if (pdf) {
+		if (extension != "jpg")
+			Converter::Convert(buf,
+					   params.filename, params.filename,
+					   extension, "png");
+	//} else
+		Converter::Convert(buf, params.filename, params.filename,
+				   extension, "eps");
 
 	return 1;
 }

@@ -23,17 +23,40 @@
 class Buffer;
 
 ///
+class Format {
+public:
+	///
+	Format() {}
+	///
+	Format(string const & n, string const & e, string const & p,
+	       string const & s) :
+		name(n), extension(e), prettyname(p), shortcut(s) {};
+	///
+	string name;
+	///
+	string extension;
+	///
+	string prettyname;
+	///
+	string shortcut;
+	///
+	string viewer;
+};
+
+///
 struct Command {
 	///
-	Command(string const & f, string const & t, string const & c)
+	Command(Format const * f, Format const * t, string const & c)
 		: from(f), to(t), command(c),
-		  original_dir(false), need_aux(false) {}
+		  latex(false), original_dir(false), need_aux(false) {}
 	///
-	string from;
+	Format const * from;
 	///
-	string to;
+	Format const * to;
 	///
 	string command;
+	/// The converter is latex or its derivatives
+	bool latex;
 	/// Do we need to run the converter in the original directory?
 	bool original_dir;
 	/// This converter needs the .aux files
@@ -46,6 +69,8 @@ struct Command {
 	string result_file;
 	/// Command to convert the program output to a LaTeX log file format
 	string parselog;
+	/// Backends in which the converter is not used
+	std::vector<string> disable;
 
 	/// Used by the BFS algorithm
 	bool visited;
@@ -53,31 +78,16 @@ struct Command {
 	std::vector<Command>::iterator previous;
 };
 
-///
-class Format {
-public:
-	///
-	Format() {}
-	///
-	Format(string const & n);
-	///
-	string name;
-	///
-	string prettyname;
-	///
-	string viewer;
-};
-
 class FormatPair {
 public:
 	///
-	Format * format;
+	Format const * format;
 	///
-	Format * from;
+	Format const * from;
 	///
 	string command;
 	///
-	FormatPair(Format * f1, Format * f2, string c)
+	FormatPair(Format const * f1, Format const * f2, string c)
 		: format(f1), from(f2), command(c) {}
 };
 
@@ -89,16 +99,24 @@ public:
 	void Add(string const & name);
 	///
 	static
+	void Add(string const & name, string const & extension, 
+		 string const & prettyname, string const & shortcut);
+	///
+	static
 	void SetViewer(string const & name, string const & command);
 	///
 	static
-	bool View(Buffer const * buffer, string const & filename);
+	bool View(Buffer const * buffer, string const & filename,
+		  string const & format_name);
 	///
 	static
 	Format * GetFormat(string const & name);
 	///
 	static
 	string const PrettyName(string const & name);
+	///
+	static
+	string const Extension(string const & name);
 private:
 	///
 	static
@@ -117,16 +135,23 @@ public:
 	///
 	static
 	std::vector<FormatPair> const
-	GetReachable(string const & from,
-		     bool only_viewable = false);
+	GetReachable(string const & from, string const & stop_format,
+		     bool only_viewable);
 	///
 	static
-	bool IsReachable(string const & from, string const & target_format);
+	bool IsReachable(string const & from, string const & to);
 	///
 	static
-	bool Convert(Buffer const * buffer, string const & from_file,
-		     string const & to_file, string const & using_format,
-		     string * view_file = 0);
+	bool Convert(Buffer const * buffer,
+		     string const & from_file, string const & to_file_base,
+		     string const & from_format, string const & to_format,
+		     string const & using_format, string & to_file);
+	///
+	static
+	bool Convert(Buffer const * buffer,
+		     string const & from_file, string const & to_file_base,
+		     string const & from_format, string const & to_format,
+		     string const & using_format = string());
 	///
 	static
 	string const SplitFormat(string const & str, string & format);

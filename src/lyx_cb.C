@@ -159,13 +159,11 @@ void ShowMessage(Buffer const * buf,
 		 string const & msg2,
 		 string const & msg3, int delay)
 {
-	if (lyxrc.use_gui) {
+	if (lyxrc.use_gui)
 		buf->getUser()->owner()->getMiniBuffer()->Set(msg1, msg2,
 							      msg3, delay);
-	} else {
-		// can somebody think of something more clever? cerr?
-		cout << msg1 << msg2 << msg3 << endl;
-	}
+	else
+		lyxerr << msg1 << msg2 << msg3 << endl;
 }
 
 

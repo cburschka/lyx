@@ -149,18 +149,6 @@
 # '.in' and '.out'. Only for advanced users.
 # \serverpipe "/home/chb/.lyxpipe"
 
-# Which command to use to invoke the reLyX script to convert
-# LaTeX files to LyX files.  This setting is automatically
-# disabled if you do not have the appropriate Perl version
-# installed.  In that case, the File->Import LaTeX command
-# will be disabled.  If the reLyX command does work for you,
-# you can override that here by uncommenting this line:
-#\relyx_command "reLyX"
-#
-# If it doesn't work, you can disable the command by uncommenting
-# this line:
-#\relyx_command "none"
-
 # Default format string for the date-insert command
 #
 # This accepts the normal strftime formats; see man strftime for full
@@ -356,6 +344,8 @@
 # and $$OutName is replaced with the name of the target file.
 # The flags argument is a list of comma separated flags.
 # Known flags are
+# - * : copy the previously defined flags
+# - latex : The converter is latex or its derivatives (pdflatex).
 # - originaldir : The converter must be invoked in the directory of the lyx
 #   file and not in the temporary directory. This is needed for tex->html
 #   converters in order to be able to read the eps files.
@@ -372,18 +362,24 @@
 # - parselog=filtername : filtername is a name of a filter command that takes
 #   the converter error log (from stderr), and converts it to a fake latex .log
 #   file.
+#  - disable=backends : A list of & seperated backend in which the converter
+#   should not be used.
 # For example:
-# \converter tex html "latex2html -split 0 $$FName"
-#            "originaldir,needaux,resultdir"
+#\converter latex html "latex2html -split 0 $$FName"
+#           "originaldir,needaux,resultdir,disable=linuxdoc&docbook"
 #
 # For literate programming, use something like
-# \converter nw tex "noweave -delay -index $$FName >$$OutName"
-#                  "parselog=listerrors g"
-# \converter nw Program "build-script $$FName"
-#                  "originaldir,parselog=listerrors g"
+#\converter literate latex "noweave -delay -index $$FName >$$OutName"
+#                          "parselog=listerrors g"
+#\converter literate program "build-script $$FName"
+#                            "originaldir,parselog=listerrors g"
 
+# The format command is used to define file formats. It has 4 arguments:
+# the format name, the extension, and "pretty name" and menu shortcut.
+# For example
+#\Format latex tex LaTeX L
 
-# The \viewer command is used to define viewers for new file-formats,
+# The \viewer command is used to define viewers for new formats,
 # or to change the already defined viewers.
 # For example, to use xdvi as the viewer to dvi files use
 #\viewer dvi "xdvi"
@@ -400,13 +396,6 @@
 #\font_encoding T1
 # Choose "default" if T1 doesn't work for you for some reason:
 #\font_encoding default
-
-#
-# LINUXDOC SECTION #######################################################
-#
-
-# The LinuxDoc to LyX converter
-#\linuxdoc_to_lyx_command "sgml2lyx"
 
 #
 # FILE SECTION  ##########################################################

@@ -45,10 +45,6 @@ lyx_SOURCES = \
 	FontInfo.h \
 	FontLoader.C \
 	FontLoader.h \
-	ImportLaTeX.C \
-	ImportLaTeX.h \
-	ImportNoweb.C \
-	ImportNoweb.h \
 	LColor.C \
 	LColor.h \
 	LString.h \
@@ -129,6 +125,8 @@ lyx_SOURCES = \
 	form1.h \
 	gettext.C \
 	gettext.h \
+	importer.C \
+	importer.h \
 	include_form.h \
 	intl.C \
 	intl.h \

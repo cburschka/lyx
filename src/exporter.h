@@ -27,7 +27,11 @@ public:
 	///
 	static
 	bool Export(Buffer * buffer, string const & format,
-		    bool put_in_tempdir, string * view_file = 0);
+		    bool put_in_tempdir, string & result_file);
+	///
+	static
+	bool Export(Buffer * buffer, string const & format,
+		    bool put_in_tempdir);
 	///
 	static
 	bool Preview(Buffer * buffer, string const & format);
@@ -44,6 +48,6 @@ public:
 	GetViewableFormats(Buffer const * buffer);
 	///
 	static
-	string const BufferExtension(Buffer const * buffer);
+	string const BufferFormat(Buffer const * buffer);
 };
 #endif

@@ -187,9 +187,9 @@ fi
 # Search for an installed reLyX or a ready-to-install one
 save_PATH=${PATH}
 PATH=${PATH}:./reLyX/
-echo $ac_n "checking for reLyX LaTeX-to-LyX translator""... $ac_c"
+echo $ac_n "checking for a LaTeX -> LyX converter""... $ac_c"
 echo "$ac_t""(reLyX)"
-RELYX=
+tex_to_lyx_command=
 for ac_prog in reLyX
 do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
@@ -200,33 +200,70 @@ if test -n "$ac_word"; then
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x $ac_dir/$ac_word; then
-      RELYX="$ac_prog"
+      tex_to_lyx_command="$ac_prog"
       break
     fi
   done
   IFS="$ac_save_ifs"
 
-  if test -n "$RELYX"; then
+  if test -n "$tex_to_lyx_command"; then
     ac_result=yes
   else
     ac_result=no
   fi
   
   echo "$ac_t""$ac_result"
-  test -n "$RELYX" && break
+  test -n "$tex_to_lyx_command" && break
 fi
 done
 
-if test -z "$RELYX" ; then
-  RELYX=none
+if test -z "$tex_to_lyx_command" ; then
+  tex_to_lyx_command=none
 fi
 
 PATH=${save_PATH}
+test $tex_to_lyx_command = "reLyX" && tex_to_lyx_command="reLyX -f \$\$FName"
+
+echo $ac_n "checking for a Noweb -> LyX converter""... $ac_c"
+echo "$ac_t""(noweb2lyx)"
+literate_to_lyx_command=
+for ac_prog in noweb2lyx
+do
+# Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog ; ac_word=$2
+if test -n "$ac_word"; then
+  echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
+  for ac_dir in $PATH; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -x $ac_dir/$ac_word; then
+      literate_to_lyx_command="$ac_prog"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+
+  if test -n "$literate_to_lyx_command"; then
+    ac_result=yes
+  else
+    ac_result=no
+  fi
+  
+  echo "$ac_t""$ac_result"
+  test -n "$literate_to_lyx_command" && break
+fi
+done
+
+if test -z "$literate_to_lyx_command" ; then
+  literate_to_lyx_command=none
+fi
+
+test $literate_to_lyx_command = "noweb2lyx" && literate_to_lyx_command="noweb2lyx \$\$FName \$\$OutName"
 
 # Search something to process a literate document
-echo $ac_n "checking for a Literate programming processor""... $ac_c"
+echo $ac_n "checking for a Noweb -> LaTeX converter""... $ac_c"
 echo "$ac_t""(noweave)"
-LITERATE=
+literate_to_tex_command=
 for ac_prog in noweave
 do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
@@ -237,29 +274,100 @@ if test -n "$ac_word"; then
   for ac_dir in $PATH; do
     test -z "$ac_dir" && ac_dir=.
     if test -x $ac_dir/$ac_word; then
-      LITERATE="$ac_prog"
+      literate_to_tex_command="$ac_prog"
       break
     fi
   done
   IFS="$ac_save_ifs"
 
-  if test -n "$LITERATE"; then
+  if test -n "$literate_to_tex_command"; then
     ac_result=yes
   else
     ac_result=no
   fi
   
   echo "$ac_t""$ac_result"
-  test -n "$LITERATE" && break
+  test -n "$literate_to_tex_command" && break
 fi
 done
 
-if test -z "$LITERATE" ; then
-  LITERATE=none
+if test -z "$literate_to_tex_command" ; then
+  literate_to_tex_command=none
 fi
 
-test $LITERATE = "noweave" && LITERATE="noweave -delay -index \$\$FName > \$\$OutName"
-LITERATE_EXT="nw"
+test $literate_to_tex_command = "noweave" && literate_to_tex_command="noweave -delay -index \$\$FName > \$\$OutName"
+
+echo $ac_n "checking for a HTML -> Latex converter""... $ac_c"
+echo "$ac_t""(html2latex)"
+html_to_latex_command=
+for ac_prog in html2latex
+do
+# Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog ; ac_word=$2
+if test -n "$ac_word"; then
+  echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
+  for ac_dir in $PATH; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -x $ac_dir/$ac_word; then
+      html_to_latex_command="$ac_prog"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+
+  if test -n "$html_to_latex_command"; then
+    ac_result=yes
+  else
+    ac_result=no
+  fi
+  
+  echo "$ac_t""$ac_result"
+  test -n "$html_to_latex_command" && break
+fi
+done
+
+if test -z "$html_to_latex_command" ; then
+  html_to_latex_command=none
+fi
+
+test $html_to_latex_command = "html2latex" && html_to_latex_command="html2latex \$\$FName"
+
+echo $ac_n "checking for Image converter""... $ac_c"
+echo "$ac_t""(convert)"
+image_command=
+for ac_prog in convert
+do
+# Extract the first word of "$ac_prog", so it can be a program name with args.
+set dummy $ac_prog ; ac_word=$2
+if test -n "$ac_word"; then
+  echo $ac_n "+checking for \"$ac_word\"""... $ac_c"
+  IFS="${IFS= 	}"; ac_save_ifs="$IFS"; IFS=":"
+  for ac_dir in $PATH; do
+    test -z "$ac_dir" && ac_dir=.
+    if test -x $ac_dir/$ac_word; then
+      image_command="$ac_prog"
+      break
+    fi
+  done
+  IFS="$ac_save_ifs"
+
+  if test -n "$image_command"; then
+    ac_result=yes
+  else
+    ac_result=no
+  fi
+  
+  echo "$ac_t""$ac_result"
+  test -n "$image_command" && break
+fi
+done
+
+if test -z "$image_command" ; then
+  image_command=none
+fi
+
+test $image_command = "convert" && image_command="convert \$\$FName \$\$OutName"
 
 # Search for a Postscript interpreter
 echo $ac_n "checking for a Postscript interpreter""... $ac_c"
@@ -335,9 +443,9 @@ fi
 
 # Search for a program to preview pdf
 echo $ac_n "checking for a PDF preview""... $ac_c"
-echo "$ac_t""(xpdf acroread gv ghostview)"
+echo "$ac_t""(acroread gv ghostview xpdf)"
 PDF_VIEWER=
-for ac_prog in xpdf acroread gv ghostview
+for ac_prog in acroread gv ghostview xpdf
 do
 # Extract the first word of "$ac_prog", so it can be a program name with args.
 set dummy $ac_prog ; ac_word=$2
@@ -719,7 +827,7 @@ case $LINUXDOC in
     linuxdoc_to_latex_command="sgml2latex \$\$FName"
     linuxdoc_to_dvi_command="sgml2latex -o dvi \$\$FName"
     linuxdoc_to_html_command="sgml2html \$\$FName"
-    linuxdoc_to_lyx_command="sgml2lyx";;
+    linuxdoc_to_lyx_command="sgml2lyx \$\$FName";;
   none)
     linuxdoc_to_latex_command="none"
     linuxdoc_to_dvi_command="none"
@@ -823,8 +931,7 @@ case $LPR in
    *) :;; # leave to empty values
 esac
 
-# Search for a latex to html converter
-echo $ac_n "checking for an HTML converter""... $ac_c"
+echo $ac_n "checking for a LaTeX -> HTML converter""... $ac_c"
 echo "$ac_t""(tth latex2html hevea)"
 TOHTML=
 for ac_prog in tth latex2html hevea
@@ -948,18 +1055,39 @@ cat >lyxrc.defaults <<EOF
 # want to customize LyX, make a copy of the file LYXDIR/lyxrc as
 # ~/.lyx/lyxrc and edit this file instead. Any setting in lyxrc will
 # override the values given here.
-\\converter tex dvi "$LATEX" ""
-\\converter tex pdf "$PDFLATEX" ""
+\\Format latex	tex	LaTeX		L
+\\Format dvi	dvi	DVI		D
+\\Format ps	ps	Postscript	t
+\\Format pdf	pdf	PDF		P
+\\Format html	html	HTML		H
+\\Format text	txt	ASCII		A
+\\Format literate nw	NoWeb		W
+\\Format linuxdoc sgml	LinuxDoc	x
+\\Format docbook  sgml	DocBook		B
+\\Format program  run	Program		r
+
+\\converter latex lyx "$tex_to_lyx_command" ""
+\\converter latex dvi "$LATEX" "latex,disable=linuxdoc&docbook"
+\\converter latex pdf "$PDFLATEX" "latex,disable=linuxdoc&docbook"
+\\converter latex html "$latex_to_html_command"
+	"originaldir,needaux,disable=linuxdoc&docbook"
+\\converter literate lyx "$literate_to_lyx_command" ""
+\\converter literate latex "$literate_to_tex_command" ""
 \\converter dvi ps "$dvi_to_ps_command" ""
 \\converter ps pdf "$ps_to_pdf_command" ""
-\\converter sgml tex "$linuxdoc_to_latex_command" ""
-\\converter sgml dvi "$linuxdoc_to_dvi_command" ""
-\\converter sgml html "$linuxdoc_to_html_command" ""
+\\converter linuxdoc lyx "$linuxdoc_to_lyx_command" ""
+\\converter linuxdoc latex "$linuxdoc_to_latex_command" ""
+\\converter linuxdoc dvi "$linuxdoc_to_dvi_command" ""
+\\converter linuxdoc html "$linuxdoc_to_html_command" ""
 \\converter docbook dvi "$docbook_to_dvi_command" ""
 \\converter docbook html "$docbook_to_html_command" ""
-\\converter tex html "$latex_to_html_command"
-	"originaldir,needaux"
-\\converter $LITERATE_EXT tex "$LITERATE" ""
+\\converter html latex "$html_to_latex_command"
+                       "disable=latex&literate&linuxdoc&docbook"
+
+\converter gif eps "$image_command" ""
+\converter png eps "$image_command" ""
+\converter jpg eps "$image_command" ""
+\converter gif png "$image_command" ""
 
 \\viewer dvi "$DVI_VIEWER"
 \\viewer html "$HTML_VIEWER"
@@ -967,9 +1095,6 @@ cat >lyxrc.defaults <<EOF
 \\viewer ps "$GHOSTVIEW -swap"
 \\viewer eps "$GHOSTVIEW"
 
-\\relyx_command "$RELYX"
-\\linuxdoc_to_lyx_command "$linuxdoc_to_lyx_command"
-\\literate_extension "$LITERATE_EXT"
 \\ps_command "$GS"
 \\ascii_roff_command "$ascii_roff_command"
 \\chktex_command "$chktex_command"

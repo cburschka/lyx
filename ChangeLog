@@ -1,3 +1,21 @@
+2000-10-23  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/converter.h: add a std:: qualifier
+
+2000-10-21  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/importer.[Ch]: New files. Used for importing files into LyX.
+
+	* src/lyxfunc.C (doImport): Use the new Importer class.
+
+	* src/converter.h: Add shortcut member to the Format class.
+	Used for holding the menu shortcut.
+
+	* src/converter.C and other files: Made a distinction between
+	format name and format extension. New formats can be defined using
+	the \format lyxrc tag.
+	Added two new converter flags: latex and disable.
+
 2000-10-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/support/lyxlib.h: unify namespace/struct implementation.

@@ -182,13 +182,22 @@ fi
 # Search for an installed reLyX or a ready-to-install one
 save_PATH=${PATH}
 PATH=${PATH}:./reLyX/
-SEARCH_PROG([for reLyX LaTeX-to-LyX translator],RELYX,reLyX)
+SEARCH_PROG([for a LaTeX -> LyX converter],tex_to_lyx_command,reLyX)
 PATH=${save_PATH}
+test $tex_to_lyx_command = "reLyX" && tex_to_lyx_command="reLyX -f \$\$FName"
+
+SEARCH_PROG([for a Noweb -> LyX converter],literate_to_lyx_command,noweb2lyx)
+test $literate_to_lyx_command = "noweb2lyx" && literate_to_lyx_command="noweb2lyx \$\$FName \$\$OutName"
 
 # Search something to process a literate document
-SEARCH_PROG([for a Literate programming processor],LITERATE,noweave)
-test $LITERATE = "noweave" && LITERATE="noweave -delay -index \$\$FName > \$\$OutName"
-LITERATE_EXT="nw"
+SEARCH_PROG([for a Noweb -> LaTeX converter],literate_to_tex_command,noweave)
+test $literate_to_tex_command = "noweave" && literate_to_tex_command="noweave -delay -index \$\$FName > \$\$OutName"
+
+SEARCH_PROG([for a HTML -> Latex converter],html_to_latex_command,html2latex)
+test $html_to_latex_command = "html2latex" && html_to_latex_command="html2latex \$\$FName"
+
+SEARCH_PROG([for Image converter],image_command,convert)
+test $image_command = "convert" && image_command="convert \$\$FName \$\$OutName"
 
 # Search for a Postscript interpreter
 SEARCH_PROG([for a Postscript interpreter],GS, gs)
@@ -197,7 +206,7 @@ SEARCH_PROG([for a Postscript interpreter],GS, gs)
 SEARCH_PROG([for a Postscript previewer],GHOSTVIEW,gv ghostview)
 
 # Search for a program to preview pdf
-SEARCH_PROG([for a PDF preview],PDF_VIEWER,xpdf acroread gv ghostview)
+SEARCH_PROG([for a PDF preview],PDF_VIEWER,acroread gv ghostview xpdf)
 
 # Search something to preview dvi
 SEARCH_PROG([for a DVI previewer],DVI_VIEWER, xdvi)
@@ -252,7 +261,7 @@ case $LINUXDOC in
     linuxdoc_to_latex_command="sgml2latex \$\$FName"
     linuxdoc_to_dvi_command="sgml2latex -o dvi \$\$FName"
     linuxdoc_to_html_command="sgml2html \$\$FName"
-    linuxdoc_to_lyx_command="sgml2lyx";;
+    linuxdoc_to_lyx_command="sgml2lyx \$\$FName";;
   none)
     linuxdoc_to_latex_command="none"
     linuxdoc_to_dvi_command="none"
@@ -290,8 +299,7 @@ case $LPR in
    *) :;; # leave to empty values
 esac
 
-# Search for a latex to html converter
-SEARCH_PROG([for an HTML converter], TOHTML, tth latex2html hevea)
+SEARCH_PROG([for a LaTeX -> HTML converter], TOHTML, tth latex2html hevea)
 latex_to_html_command = $TOHTML
 case $TOHTML in
 	tth) latex_to_html_command="tth -t -e2 -L\$\$BaseName < \$\$FName > \$\$OutName";;
@@ -370,18 +378,39 @@ cat >lyxrc.defaults <<EOF
 # want to customize LyX, make a copy of the file LYXDIR/lyxrc as
 # ~/.lyx/lyxrc and edit this file instead. Any setting in lyxrc will
 # override the values given here.
-\\converter tex dvi "$LATEX" ""
-\\converter tex pdf "$PDFLATEX" ""
+\\Format latex	tex	LaTeX		L
+\\Format dvi	dvi	DVI		D
+\\Format ps	ps	Postscript	t
+\\Format pdf	pdf	PDF		P
+\\Format html	html	HTML		H
+\\Format text	txt	ASCII		A
+\\Format literate nw	NoWeb		W
+\\Format linuxdoc sgml	LinuxDoc	x
+\\Format docbook  sgml	DocBook		B
+\\Format program  run	Program		r
+
+\\converter latex lyx "$tex_to_lyx_command" ""
+\\converter latex dvi "$LATEX" "latex,disable=linuxdoc&docbook"
+\\converter latex pdf "$PDFLATEX" "latex,disable=linuxdoc&docbook"
+\\converter latex html "$latex_to_html_command"
+	"originaldir,needaux,disable=linuxdoc&docbook"
+\\converter literate lyx "$literate_to_lyx_command" ""
+\\converter literate latex "$literate_to_tex_command" ""
 \\converter dvi ps "$dvi_to_ps_command" ""
 \\converter ps pdf "$ps_to_pdf_command" ""
-\\converter sgml tex "$linuxdoc_to_latex_command" ""
-\\converter sgml dvi "$linuxdoc_to_dvi_command" ""
-\\converter sgml html "$linuxdoc_to_html_command" ""
+\\converter linuxdoc lyx "$linuxdoc_to_lyx_command" ""
+\\converter linuxdoc latex "$linuxdoc_to_latex_command" ""
+\\converter linuxdoc dvi "$linuxdoc_to_dvi_command" ""
+\\converter linuxdoc html "$linuxdoc_to_html_command" ""
 \\converter docbook dvi "$docbook_to_dvi_command" ""
 \\converter docbook html "$docbook_to_html_command" ""
-\\converter tex html "$latex_to_html_command"
-	"originaldir,needaux"
-\\converter $LITERATE_EXT tex "$LITERATE" ""
+\\converter html latex "$html_to_latex_command"
+                       "disable=latex&literate&linuxdoc&docbook"
+
+\converter gif eps "$image_command" ""
+\converter png eps "$image_command" ""
+\converter jpg eps "$image_command" ""
+\converter gif png "$image_command" ""
 
 \\viewer dvi "$DVI_VIEWER"
 \\viewer html "$HTML_VIEWER"
@@ -389,9 +418,6 @@ cat >lyxrc.defaults <<EOF
 \\viewer ps "$GHOSTVIEW -swap"
 \\viewer eps "$GHOSTVIEW"
 
-\\relyx_command "$RELYX"
-\\linuxdoc_to_lyx_command "$linuxdoc_to_lyx_command"
-\\literate_extension "$LITERATE_EXT"
 \\ps_command "$GS"
 \\ascii_roff_command "$ascii_roff_command"
 \\chktex_command "$chktex_command"

@@ -74,8 +74,6 @@
 #include "lyxtext.h"
 #include "gettext.h"
 #include "trans_mgr.h"
-#include "ImportLaTeX.h"
-#include "ImportNoweb.h"
 #include "layout.h"
 #include "WorkArea.h"
 #include "lyxfr1.h"
@@ -84,7 +82,9 @@
 #include "frontends/Toolbar.h"
 #include "frontends/Menubar.h"
 #include "FloatList.h"
+#include "converter.h"
 #include "exporter.h"
+#include "importer.h"
 #include "FontLoader.h"
 #include "TextCache.h"
 
@@ -479,10 +479,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 			|| lyxrc.fax_command == "none";
 		break;
 	case LFUN_IMPORT:
-		if (argument == "latex" || argument == "noweb")
-			disable = lyxrc.relyx_command == "none";
-		else if (argument == "linuxdoc")
-			disable = lyxrc.linuxdoc_to_lyx_command == "none";
+		disable = !Importer::IsImportable(argument);
 		break;
 	case LFUN_UNDO:
 		disable = buf->undostack.empty();
@@ -497,7 +494,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 		disable = lyxrc.chktex_command == "none";
 		break;
 	case LFUN_BUILDPROG:
-		disable = !Exporter::IsExportable(buf, "Program");
+		disable = !Exporter::IsExportable(buf, "program");
 		break;
 
 	case LFUN_LAYOUT_TABULAR:
@@ -932,7 +929,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
         case LFUN_BUILDPROG:
-		Exporter::Export(owner->buffer(), "Program", true);
+		Exporter::Export(owner->buffer(), "program", true);
                 break;
                 
  	case LFUN_RUNCHKTEX:
@@ -3242,18 +3239,13 @@ void LyXFunc::MenuOpen()
 	}
 }
 
-// returns filename if file must be imported,
-// empty string if either file not found or already loaded
 // checks for running without gui are missing.
-
-void LyXFunc::doImportHelper(
-	string const & file,          // filename (possibly empty)
-	string const & text,          // info when asking for filename
-	string const & pattern,       // filetype
-	bool func(BufferView *, string const &)     // the real import function
-)
+void LyXFunc::doImport(string const & argument)
 {
-	string filename = file;
+	string format;
+	string filename = split(argument, format, ' ');
+	lyxerr.debug() << "LyXFunc::doImport: " << format 
+		       << " file: " << filename << endl;
 
 	if (filename.empty()) { // need user interaction
 		string initpath = lyxrc.document_path;
@@ -3271,7 +3263,11 @@ void LyXFunc::doImportHelper(
 		fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
 		fileDlg.SetButton(1, _("Examples"), 
 					AddPath(system_lyxdir, "examples"));
-		filename = fileDlg.Select(text, initpath, pattern);
+		string text = _("Select ") + Formats::PrettyName(format)
+			+ _(" file to import");
+		string format2 = (format == "textparagraph") ? "text" : format;
+		string extension = "*." + Formats::Extension(format2);
+		filename = fileDlg.Select(text, initpath, extension);
 		AllowInput(owner->view());
  
 		// check selected filename
@@ -3319,78 +3315,7 @@ void LyXFunc::doImportHelper(
 	}
 	// filename should be valid now
 
-	// notify user of import ahead
-	string displaypath = MakeDisplayPath(filename);
-	owner->getMiniBuffer()->Set(_("Importing"), displaypath, "...");
-
-	// call real importer
-	bool result = func(owner->view(), filename);
-
-	// we are done
-	if (result)
-		owner->getMiniBuffer()->Set(displaypath, _("imported."));
-	else
-		owner->getMiniBuffer()->Set(displaypath, _(": import failed."));
-}
-
-static
-bool doImportASCIIasLines(BufferView * view, string const & filename)
-{
-	view->buffer(bufferlist.newFile(filename, string()));
-	InsertAsciiFile(view, filename, false);
-	return true;
-}
-
-static
-bool doImportASCIIasParagraphs(BufferView * view, string const & filename)
-{
-	view->buffer(bufferlist.newFile(filename, string()));
-	InsertAsciiFile(view, filename, true);
-	return true;
-}
-
-static
-bool doImportLaTeX(BufferView * view, string const & filename)
-{
-	ImportLaTeX myImport(filename);
-	Buffer * openbuf = myImport.run();
-	if (openbuf) { 
-		view->buffer(openbuf);
-		return true;
-	}
-	else
-		return false;
-}
-
-static
-bool doImportNoweb(BufferView * view, string const & filename)
-{
-	ImportNoweb myImport(filename);
-	Buffer * openbuf = myImport.run();
-	if (openbuf) { 
-		view->buffer(openbuf);
-		return true;
-	}
-	else
-		return false;
-}
-
-static
-bool doImportLinuxDoc(BufferView *, string const & filename)
-{
-	// run sgml2lyx
-	string tmp = lyxrc.linuxdoc_to_lyx_command + filename;
-	Systemcalls one;
-	Buffer * buf = 0;
-
-	int result = one.startscript(Systemcalls::System, tmp);
-	if (result == 0) {
-		string filename = ChangeExtension(filename, ".lyx");
-		// File was generated without problems. Load it.
-		buf = bufferlist.loadLyXFile(filename);
-	}
-
-	return result == 0;
+	Importer::Import(owner, filename, format);
 }
 
 
@@ -3446,36 +3371,6 @@ void LyXFunc::MenuInsertLyXFile(string const & filen)
 	}
 }
 
-void LyXFunc::doImport(string const & argument)
-{
-	string type;
-	string filename = split(argument, type, ' ');
-	lyxerr.debug() << "LyXFunc::doImport: " << type 
-		       << " file: " << filename << endl;
-
-	if (type == "latex") 
-		doImportHelper(filename,
-			       _("Select LaTeX file to import"), "*.tex", 
-			       doImportLaTeX);
-	else if (type == "ascii") 
-		doImportHelper(filename,
-			       _("Select ASCII file to import"), "*.txt", 
-			       doImportASCIIasLines);
-	else if (type == "asciiparagraph") 
-		doImportHelper(filename,
-			       _("Select ASCII file to import"), "*.txt", 
-			       doImportASCIIasParagraphs);
-	else if (type == "noweb") 
-		doImportHelper(filename,
-			       _("Select NoWeb file to import"), "*.nw", 
-			       doImportNoweb);
-	else if (type == "linuxdoc") 
-		doImportHelper(filename,
-			       _("Select LinuxDoc file to import"), "*.doc", 
-			       doImportLinuxDoc);
-	else 
-		setErrorMessage(string(N_("Unknown import type: ")) + type);
-}
 
 void LyXFunc::reloadBuffer()
 {

@@ -68,7 +68,6 @@ enum LyXRCTags {
 	RC_PRINTPAPERDIMENSIONFLAG,
 	RC_CUSTOM_EXPORT_COMMAND,
 	RC_CUSTOM_EXPORT_FORMAT,
-        RC_LITERATE_EXTENSION,
 	RC_SCREEN_DPI,
 	RC_SCREEN_ZOOM,
 	RC_SCREEN_FONT_SIZES,
@@ -120,7 +119,6 @@ enum LyXRCTags {
 	RC_CURSOR_FOLLOWS_SCROLLBAR,
 	RC_EXIT_CONFIRMATION,
 	RC_DISPLAY_SHORTCUTS,
-	RC_RELYX_COMMAND,
 	RC_MAKE_BACKUP,
 	RC_BACKUPDIR_PATH,
 	RC_RTL_SUPPORT,
@@ -133,10 +131,10 @@ enum LyXRCTags {
 	RC_LANGUAGE_COMMAND_END,
 	RC_DATE_INSERT_FORMAT,
 	RC_SHOW_BANNER,
-	RC_LINUXDOC_TO_LYX_COMMAND,
 	RC_WHEEL_JUMP,
 	RC_CONVERTER,
 	RC_VIEWER,
+	RC_FORMAT,
 	RC_NEW_ASK_FILENAME,
 	RC_DEFAULT_LANGUAGE,
 	RC_LAST
@@ -171,6 +169,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\fax_command", RC_FAX_COMMAND },
 	{ "\\fax_program", RC_FAXPROGRAM },
 	{ "\\font_encoding", RC_FONT_ENCODING },
+	{ "\\format", RC_FORMAT },
 	{ "\\input", RC_INPUT },
 	{ "\\kbmap", RC_KBMAP },
 	{ "\\kbmap_primary", RC_KBMAP_PRIMARY },
@@ -181,8 +180,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\language_command_end", RC_LANGUAGE_COMMAND_END },
 	{ "\\language_package", RC_LANGUAGE_PACKAGE },
 	{ "\\lastfiles", RC_LASTFILES },
-	{ "\\linuxdoc_to_lyx_command", RC_LINUXDOC_TO_LYX_COMMAND },
-        { "\\literate_extension", RC_LITERATE_EXTENSION },
 	{ "\\make_backup", RC_MAKE_BACKUP },
 	{ "\\mark_foreign_language", RC_MARK_FOREIGN_LANGUAGE },
 	{ "\\new_ask_filename", RC_NEW_ASK_FILENAME },
@@ -209,7 +206,6 @@ keyword_item lyxrcTags[] = {
 	{ "\\print_to_printer", RC_PRINTTOPRINTER },
 	{ "\\printer", RC_PRINTER },
 	{ "\\ps_command", RC_PS_COMMAND },
-	{ "\\relyx_command", RC_RELYX_COMMAND },
 	{ "\\rtl", RC_RTL_SUPPORT },
 	{ "\\screen_dpi", RC_SCREEN_DPI },
 	{ "\\screen_font_encoding", RC_SCREEN_FONT_ENCODING },
@@ -271,8 +267,6 @@ void LyXRC::setDefaults() {
 	document_path = GetEnvPath("HOME");
 	tempdir_path = "/tmp";
 	use_tempdir = true;
-        literate_extension = "none";
-	relyx_command = "reLyX";
 	ps_command = "gs";
 	view_dvi_paper_option = "-paper";
 	default_papersize = BufferParams::PAPER_USLETTER;
@@ -338,8 +332,6 @@ void LyXRC::setDefaults() {
 	date_insert_format = "%A, %e %B %Y";
 	show_banner = true;
 	cursor_follows_scrollbar = false;
-	//
-	linuxdoc_to_lyx_command="none";
 
 	/// These variables are not stored on disk (perhaps they
 	// should be moved from the LyXRC class).
@@ -568,16 +560,6 @@ int LyXRC::read(string const & filename)
 				custom_export_format = lexrc.GetString();
 			break;
 
-                case RC_LITERATE_EXTENSION:
-                        if (lexrc.next())
-                                literate_extension = lexrc.GetString();
-                        break;
-			
-		case RC_RELYX_COMMAND:
-			if (lexrc.next())
-				relyx_command = lexrc.GetString();
-			break;
-			
 		case RC_DEFAULT_PAPERSIZE:
                         if (lexrc.next()) {
 			        string size = lowercase(lexrc.GetString());
@@ -954,17 +936,12 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				show_banner = lexrc.GetBool();
 			break;
-		case RC_LINUXDOC_TO_LYX_COMMAND:
-			if ( lexrc.next())
-				linuxdoc_to_lyx_command = lexrc.GetString();
-			break;
 			
 		case RC_NEW_ASK_FILENAME:
 			if ( lexrc.next())
 				new_ask_filename = lexrc.GetBool();
 			break;
-		case RC_CONVERTER:
-		{
+		case RC_CONVERTER: {
 			string from, to, command, flags;
 			if (lexrc.next())
 				from = lexrc.GetString();
@@ -977,14 +954,26 @@ int LyXRC::read(string const & filename)
 			Converter::Add(from, to, command, flags);
 			break;
 		}
-		case RC_VIEWER:
-		{
+		case RC_VIEWER: {
 			string format, command;
 			if (lexrc.next())
 				format = lexrc.GetString();
 			if (lexrc.next())
 				command = lexrc.GetString();
 			Formats::SetViewer(format, command);
+			break;
+		}
+		case RC_FORMAT: {
+			string format, extension, prettyname, shortcut;
+			if (lexrc.next())
+				format = lexrc.GetString();
+			if (lexrc.next())
+				extension = lexrc.GetString();
+			if (lexrc.next())
+				prettyname = lexrc.GetString();
+			if (lexrc.next())
+				shortcut = lexrc.GetString();
+			Formats::Add(format, extension, prettyname, shortcut);
 			break;
 		}
 		case RC_DEFAULT_LANGUAGE:
@@ -1147,10 +1136,6 @@ void LyXRC::output(ostream & os) const
 	case RC_SERVERPIPE:
 		if (lyxpipes != system_lyxrc.lyxpipes) {
 			os << "\\serverpipe \"" << lyxpipes << "\"\n";
-		}
-	case RC_RELYX_COMMAND:
-		if (relyx_command != system_lyxrc.relyx_command) {
-			os << "\\relyx_command \"" << relyx_command << "\"\n";
 		}
 	case RC_DATE_INSERT_FORMAT:
 		if (date_insert_format != system_lyxrc.date_insert_format) {
@@ -1383,18 +1368,6 @@ void LyXRC::output(ostream & os) const
 		}
 
 		os << "\n#\n"
-		   << "# LINUXDOC SECTION ##################################\n"
-		   << "#\n\n";
-
-	case RC_LINUXDOC_TO_LYX_COMMAND:
-		if (linuxdoc_to_lyx_command
-		    != system_lyxrc.linuxdoc_to_lyx_command) {
-			os << "\\linuxdoc_to_lyx_command \""
-			   << linuxdoc_to_lyx_command
-			   << "\"\n";
-		}
-		
-		os << "\n#\n"
 		   << "# FILE SECTION ######################################\n"
 		   << "#\n\n";
 
@@ -1565,11 +1538,6 @@ void LyXRC::output(ostream & os) const
 		   << "# 2nd MISC SUPPORT SECTION ##########################\n"
 		   << "#\n\n";
 
-	case RC_LITERATE_EXTENSION:
-		if (literate_extension != system_lyxrc.literate_extension) {
-			os << "\\literate_extension \"" << literate_extension
-			   << "\"\n";
-		}
 	case RC_OVERRIDE_X_DEADKEYS:
 		if (override_x_deadkeys != system_lyxrc.override_x_deadkeys) {
 			os << "\\override_x_deadkeys "

@@ -262,16 +262,23 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 			     fit != names.end() ; ++fit) {
 				string fmt = (*fit).format->name;
 				string label = (*fit).format->prettyname;
+				bool same_before = 
+					fit != names.begin() &&
+					(*fit).format == (*(fit-1)).format;
+				bool same_after = 
+					fit+1 != names.end() &&
+					(*fit).format == (*(fit+1)).format;
 				if ((*fit).from &&
-				    ( (fit != names.begin() &&
-				       (*fit).format == (*(fit-1)).format) ||
-				      (fit+1 != names.end() &&
-				       (*fit).format == (*(fit+1)).format) )) {
+				    (same_before || same_after)) {
 					fmt += ":" + (*fit).from->name;
 					string head;
 					split((*fit).command, head, ' ');
 					label += _(" (using ") + head + ")";
-				}
+					if (!(*fit).format->shortcut.empty() &&
+					    !same_before)
+						label += "|" + (*fit).format->shortcut;
+				} else if (!(*fit).format->shortcut.empty())
+					label += "|" + (*fit).format->shortcut;
 				int action2 = lyxaction.getPseudoAction(action, fmt);
 				tomenu.add(MenuItem(MenuItem::Command,
 						    label, action2));

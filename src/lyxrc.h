@@ -87,10 +87,6 @@ public:
 	string custom_export_format;
 	///
 	bool pdf_mode;
-	///
-        string literate_extension;
-	/// program for running relyx
-	string relyx_command;
 	/// postscript interpreter (in general "gs", if it is installed)
 	string ps_command;
 	/// option for telling the dvi viewer about the paper size
@@ -224,8 +220,6 @@ public:
 	bool show_banner;
 	/// Do we have to use a GUI?
 	bool use_gui;
-	///
-	string linuxdoc_to_lyx_command;
 	///
 	bool new_ask_filename;
 	///

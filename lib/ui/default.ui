@@ -36,10 +36,10 @@ Menuset
 	Separator
 	Item "View dvi|d" "buffer-view dvi"
 	Item "View Postscript|w" "buffer-view ps"
-	Submenu "View" "view"
-	Item "Update dvi|v" "buffer-update dvi"
-	Item "Update Postscript|U" "buffer-update ps"
-	Submenu "Update" "update"
+	Submenu "View|V" "view"
+	Item "Update dvi" "buffer-update dvi"
+	Item "Update Postscript" "buffer-update ps"
+	Submenu "Update|U" "update"
 	OptItem "Build program|B" "build-program"
 	Separator
 	Item "Print...|P" "buffer-print"
@@ -74,9 +74,11 @@ Menuset
 
     Menu "import"
 	Item "LaTeX|L" "buffer-import latex"
-	Item "Ascii text as lines|A" "buffer-import ascii"
-	Item "Ascii text as paragraphs|p" "buffer-import ascii"
-	Item "Noweb|N" "buffer-import noweb"
+	Item "Ascii text as lines|A" "buffer-import text"
+	Item "Ascii text as paragraphs|p" "buffer-import textparagraph"
+	Item "HTML|H" "buffer-import html"
+	Item "Noweb|N" "buffer-import literate"
+	Item "LinuxDoc|D" "buffer-import linuxdoc"
     End
 
     Menu "export"
