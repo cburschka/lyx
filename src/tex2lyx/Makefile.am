@@ -47,7 +47,7 @@ tex2lyx_LDADD = \
 FloatList.C: link_files
 
 link_files:
-	for i in $(linked_files); do \
+	@for i in $(linked_files); do \
 		rm -f $$i; \
 		ln -s "$(top_srcdir)/src/$$i" . ; \
 	done

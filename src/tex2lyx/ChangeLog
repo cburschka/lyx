@@ -1,3 +1,8 @@
+2003-07-27  Angus Leeming  <leeming@lyx.org>
+
+	* Makefile.am: Hide the fact that we re-generate those symbolic links
+	brainlessly.
+
 2003-07-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* text.C (check_layout): \layout -> \begin_layout
