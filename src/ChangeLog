@@ -3,7 +3,7 @@
 	* buffer.[Ch] : The following are only changes to the ert
 	compatibility read reading old LaTeX layout and font stuff and
 	convert it to ERTInsets.
-	
+
 	* buffer.h: added isErtInset().
 
 	* buffer.C (struct ErtComp): add a fromlayout bool to check
