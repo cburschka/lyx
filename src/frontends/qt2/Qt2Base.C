@@ -38,12 +38,14 @@ void Qt2Base::show()
 		build();
 	}
 
+	form()->setMinimumSize(form()->sizeHint());
+
 	update();  // make sure its up-to-date
 
 	if (form()->isVisible()) {
 		form()->raise();
 	} else {
-		form()->setCaption( title_ );
+		form()->setCaption(title_);
 		form()->show();
 	}
 }
@@ -51,23 +53,15 @@ void Qt2Base::show()
 
 void Qt2Base::hide()
 {
-	if (form() && form()->isVisible() )
+	if (form() && form()->isVisible())
 		form()->hide();
 }
 
 
-// PENDING(kalle) Handle this with QValidator?
-// void Qt2Base::InputCB(FL_OBJECT * ob, long data)
-// {
-// 	bc().input(input(ob, data));
-// }
-
-
-ButtonPolicy::SMInput Qt2Base::input(QWidget*, long)
+void Qt2Base::changed()
 {
-	return ButtonPolicy::SMI_VALID;
+	bc().valid(); 
 }
-
 
 
 void Qt2Base::slotWMHide()

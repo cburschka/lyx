@@ -14,9 +14,6 @@ include ../Makefile.dialogs
  
 DISTCLEANFILES = $(UIDIALOGS) *.orig *.rej *~ *.bak core
  
-libqt2ui_la_DEPENDENCIES = moc/libqt2uimoc.la
-libqt2ui_la_OBJADD = moc/libqt2uimoc.la
- 
 libqt2ui_la_SOURCES = $(UIDIALOGS)
 
 %Base.h: %.ui

@@ -10,8 +10,8 @@
 #include "Dialogs.h"
 #include "QIndex.h"
 
-QIndexDialog::QIndexDialog(QIndex * form, QWidget * parent, const char * name, bool modal, WFlags fl)
-	: QIndexDialogBase(parent, name, modal, fl),
+QIndexDialog::QIndexDialog(QIndex * form)
+	: QIndexDialogBase(0, 0, false, 0),
 	form_(form)
 {
 }
@@ -22,23 +22,22 @@ QIndexDialog::~QIndexDialog()
 }
 
 
-void QIndexDialog::apply_adaptor()
+void QIndexDialog::ok_adaptor()
 {
-	form_->apply();
-	form_->close();
+	form_->slotOK();
 	hide();
 }
 
 
 void QIndexDialog::close_adaptor()
 {
-	form_->close();
+	form_->slotCancel();
 	hide();
 }
 
 
 void QIndexDialog::closeEvent(QCloseEvent *e)
 {
-	form_->close();
+	form_->slotWMHide();
 	e->accept();
 }

@@ -13,11 +13,12 @@ DISTCLEANFILES = $(BUILTSOURCES) *.orig *.rej *~ *.bak core
 
 include Makefile.dialogs
 
-libqt2_la_DEPENDENCIES = ui/libqt2ui.la moc/libqt2moc.la
+libqt2_la_DEPENDENCIES = ui/libqt2ui.la moc/libqt2moc.la ui/moc/libqt2uimoc.la
  
 libqt2_la_OBJADD = \
 	ui/libqt2ui.la \
 	moc/libqt2moc.la \
+	ui/moc/libqt2uimoc.la \
 	../controllers/ButtonControllerBase.lo \
 	../xforms/combox.lo \
 	../xforms/Color.lo \

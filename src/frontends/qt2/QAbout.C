@@ -8,11 +8,15 @@
 
 #include <config.h>
 
+#include "support/lstrings.h"
+#include "Lsstream.h"
+#include "debug.h"
 #include "gettext.h"
 #include "QAboutDialog.h"
  
 #include <qlabel.h>
 #include <qpushbutton.h>
+#include <qtextview.h>
 #include "QtLyXView.h"
  
 #include "ButtonControllerBase.h"
@@ -37,7 +41,28 @@ void QAbout::build()
 	dialog_->copyrightLA->setText(controller().getCopyright().c_str());
 	dialog_->licenseLA->setText(controller().getLicense().c_str());
 	dialog_->disclaimerLA->setText(controller().getDisclaimer().c_str());
+	dialog_->versionLA->setText(controller().getVersion().c_str()); 
+ 
+	stringstream in;
+	controller().getCredits(in);
 
+	istringstream ss(in.str().c_str());
+ 
+	string s;
+	string out;
+ 
+	while (getline(ss, s)) {
+		if (prefixIs(s, "@b"))
+			out += "<b>" + s.substr(2) + "</b>";
+		else if (prefixIs(s, "@i"))
+			out += "<i>" + s.substr(2) + "</i>";
+		else
+			out += s;
+		out += "<br>";
+	}
+ 
+	dialog_->creditsTV->setText(out.c_str());
+ 
 	// Manage the cancel/close button
 	bc().setCancel(dialog_->closePB);
 	bc().refresh();

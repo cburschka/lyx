@@ -1,3 +1,22 @@
+2001-08-21  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C: add QIndex
+
+	* ui/Makefile.am:
+	* Makefile.am: fix build
+ 
+	* ui/QAboutDialog.ui:
+	* QAbout.C: finish dialog
+
+	* ui/QCitationDialog.ui:
+	* QCitationDialog.C: BC fixes
+ 
+	* ui/QIndexDialog.ui: 
+	* QIndex.h:
+	* QIndex.C: 
+	* QIndexDialog.h:
+	* QIndexDialog.C: got index dialog working
+
 2001-08-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* all files: enormous naming re-jig and tidy

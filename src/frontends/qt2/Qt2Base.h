@@ -21,8 +21,6 @@ class QDialog;
 #include <qfont.h>
 #include <qobject.h>
 
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
@@ -31,6 +29,8 @@ class QDialog;
 #include "LString.h"
 #include "ButtonPolicies.h"
 #include "ControlButtons.h"
+
+#include <boost/smart_ptr.hpp>
 
 class qt2BC;
 
@@ -53,6 +53,9 @@ protected:
 	/// Create the dialog if necessary, update it and display it.
 	void show();
 
+	/// the dialog has changed contents
+	virtual void changed(); 
+
 protected slots:
 	// dialog closed from WM
 	void slotWMHide();
@@ -72,9 +75,6 @@ protected slots:
 private:
 	/// Pointer to the actual instantiation of xform's form
 	virtual QDialog* form() const = 0;
- 	/** Filter the inputs on callback from xforms
- 		Return true if inputs are valid. */
- 	virtual ButtonPolicy::SMInput input(QWidget*, long);
 
 private:
 	/// dialog title, displayed by WM.

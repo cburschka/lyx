@@ -11,7 +11,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>487</width>
+            <width>483</width>
             <height>585</height>
         </rect>
     </property>
@@ -251,6 +251,14 @@
             <property stdset="1">
                 <name>wordWrap</name>
                 <enum>WidgetWidth</enum>
+            </property>
+            <property stdset="1">
+                <name>readOnly</name>
+                <bool>true</bool>
+            </property>
+            <property stdset="1">
+                <name>focusPolicy</name>
+                <enum>NoFocus</enum>
             </property>
             <property>
                 <name>toolTip</name>

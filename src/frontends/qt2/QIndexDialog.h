@@ -19,11 +19,11 @@ class QIndexDialog : public QIndexDialogBase
 { Q_OBJECT
 
 public:
-	QIndexDialog(QIndex * form, QWidget * parent = 0, const char * name = 0, bool modal = FALSE, WFlags fl = 0);
+	QIndexDialog(QIndex * form);
 	~QIndexDialog();
 
 public slots:
-	void apply_adaptor();
+	void ok_adaptor();
 	void close_adaptor();
 
 protected:

@@ -146,7 +146,7 @@
         <sender>okPB</sender>
         <signal>clicked()</signal>
         <receiver>QIndexDialogBase</receiver>
-        <slot>apply_adaptor()</slot>
+        <slot>ok_adaptor()</slot>
     </connection>
     <connection>
         <sender>cancelPB</sender>
@@ -154,7 +154,7 @@
         <receiver>QIndexDialogBase</receiver>
         <slot>close_adaptor()</slot>
     </connection>
-    <slot access="public">apply_adaptor()</slot>
+    <slot access="public">ok_adaptor()</slot>
     <slot access="public">close_adaptor()</slot>
 </connections>
 </UI>

@@ -19,6 +19,7 @@
 #include "QAbout.h"
 #include "QCharacter.h"
 #include "QCitation.h"
+#include "QIndex.h"
 #include "QParagraph.h"
 #include "QPrint.h"
 #include "QSearch.h"
@@ -38,8 +39,9 @@
 #include "../xforms/FormTabular.h"
 
 // the controllers
-#include "controllers/ControlCitation.h"
 #include "controllers/ControlAboutlyx.h"
+#include "controllers/ControlCitation.h"
+#include "controllers/ControlIndex.h"
 #include "controllers/ControlSplash.h"
 #if 0
 #include "controllers/ControlCopyright.h"
@@ -56,7 +58,6 @@
 #include "controllers/ControlFloat.h"
 #include "controllers/ControlGraphics.h"
 #include "controllers/ControlInclude.h"
-#include "controllers/ControlIndex.h"
 #include "controllers/ControlLabel.h"
 #include "controllers/ControlLog.h"
 #include "controllers/ControlMinipage.h"
@@ -85,6 +86,7 @@ Dialogs::Dialogs(LyXView * lv)
 	// dialogs that have been converted to new scheme
 	add(new GUICitation<QCitation, qt2BC>(*lv, *this));
 	add(new GUIAboutlyx<QAbout, qt2BC>(*lv, *this));
+	add(new GUIIndex<QIndex, qt2BC>(*lv, *this));
 
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.
