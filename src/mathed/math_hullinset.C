@@ -199,7 +199,7 @@ void MathHullInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathHullInset::metrics(TextMetricsInfo const & mi) const
+void MathHullInset::metrics(TextMetricsInfo const &) const
 {
 	ascent_  = 1;
 	descent_ = 0;

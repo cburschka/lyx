@@ -22,7 +22,7 @@ MathInset * MathBigInset::clone() const
 }
 
 
-int MathBigInset::size() const
+MathBigInset::size_type MathBigInset::size() const
 {
 	return name_.size() - 4;
 }

@@ -1,3 +1,10 @@
+2002-03-18  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* math_biginset.[Ch] (size): return size_type, not int.
+
+	* math_inset.C (metrics): parameter "mi" is never referenced. Removed.
+	* math_hullinset.C (metrics): ditto.
+	
 
 2002-03-12  André Pönitz <poenitz@gmx.net>
 

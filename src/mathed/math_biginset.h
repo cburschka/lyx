@@ -30,7 +30,7 @@ public:
 
 private:
 	///
-	int size() const;
+	size_type size() const;
 	///
 	double increase() const;
 	
