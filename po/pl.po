@@ -12,13 +12,13 @@ msgstr ""
 "Project-Id-Version: pl\n"
 "Report-Msgid-Bugs-To: lyx-devel@lists.lyx.org\n"
 "POT-Creation-Date: 2005-02-18 10:01+0100\n"
-"PO-Revision-Date: 2005-03-27 01:48+0100\n"
+"PO-Revision-Date: 2005-03-31 00:28+0200\n"
 "Last-Translator: Tomasz £uczak <tlu@technodat.com.pl>\n"
 "Language-Team: Polish <pl@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.9.1\n"
+"X-Generator: KBabel 1.10\n"
 
 #: src/frontends/xforms/forms/form_aboutlyx.fd:44
 #: src/frontends/xforms/forms/form_changes.fd:98
@@ -274,7 +274,7 @@ msgstr "Ministrona"
 
 #: src/frontends/xforms/forms/form_branch.fd:44
 msgid "Branch:|#B"
-msgstr ""
+msgstr "Ga³±¼:|#G"
 
 #: src/frontends/xforms/forms/form_browser.fd:62
 #: src/frontends/xforms/forms/form_errorlist.fd:62
@@ -543,7 +543,7 @@ msgstr "Separacja"
 
 #: src/frontends/xforms/forms/form_document.fd:776
 msgid "Columns"
-msgstr "Kolumn"
+msgstr "Kolumny"
 
 #: src/frontends/xforms/forms/form_document.fd:794
 msgid "Fonts:|#F"
@@ -684,7 +684,7 @@ msgstr "Ding 4|#g"
 
 #: src/frontends/xforms/forms/form_document.fd:1801
 msgid "New Branch:|#N"
-msgstr ""
+msgstr "Nowa ga³±¼:|#N"
 
 #: src/frontends/xforms/forms/form_document.fd:1819
 #: src/frontends/xforms/forms/form_spellchecker.fd:134
@@ -697,11 +697,11 @@ msgstr "Usuñ|#u"
 
 #: src/frontends/xforms/forms/form_document.fd:1855
 msgid "Available Branches:"
-msgstr ""
+msgstr "Dostêpne ga³êzie:"
 
 #: src/frontends/xforms/forms/form_document.fd:1873
 msgid "Activated Branches:"
-msgstr ""
+msgstr "Aktywne ga³êzie:"
 
 #: src/frontends/xforms/forms/form_document.fd:1891
 msgid "@5->"
@@ -1740,9 +1740,8 @@ msgid "Name:|#N"
 msgstr "Nazwa:|#N"
 
 #: src/frontends/xforms/forms/form_ref.fd:207
-#, fuzzy
 msgid "Reference:|#e"
-msgstr "Odno¶nik"
+msgstr "Odno¶nik:|#e"
 
 #: src/frontends/xforms/forms/form_ref.fd:243
 msgid "Go to|#G"
@@ -2145,7 +2144,7 @@ msgstr ""
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:56
 msgid "A&vailable Branches:"
-msgstr ""
+msgstr "&Dostêpne ga³êzie:"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:68
 #: lib/layouts/g-brief-de.layout:33 lib/layouts/g-brief-en.layout:33
@@ -2167,7 +2166,7 @@ msgstr "W kolorze"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:141
 msgid "The available branches"
-msgstr ""
+msgstr "Dostêpne ga³êzie"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:154
 msgid "(&De)activate"
@@ -2175,7 +2174,7 @@ msgstr "(&De)aktywacja"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:158
 msgid "Toggle the selected branch"
-msgstr ""
+msgstr "Prze³±cz wybran± ga³±¼"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:169
 msgid "Alter Co&lor..."
@@ -2194,7 +2193,7 @@ msgstr "&Usuñ"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:188
 msgid "Remove the selected branch"
-msgstr ""
+msgstr "Usuñ wybran± ga³±¼"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:235
 msgid "&New:"
@@ -2208,7 +2207,7 @@ msgstr "&Dodaj"
 
 #: src/frontends/qt2/ui/BranchesModuleBase.ui:261
 msgid "Add a new branch to the list"
-msgstr ""
+msgstr "Dodaj now± ga³±¼ do listy"
 
 #: src/frontends/qt2/ui/BulletsModuleBase.ui:118
 msgid "&First level"
@@ -2788,11 +2787,11 @@ msgstr "Wybierz plik stylu"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:302
 msgid "all cited references"
-msgstr ""
+msgstr "wszystkie cytowane odno¶niki"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:308
 msgid "all uncited references"
-msgstr ""
+msgstr "wszystkie niecytowane odno¶niki"
 
 #: src/frontends/qt2/ui/QBibtexDialogBase.ui:314
 msgid "all references"
@@ -2965,8 +2964,7 @@ msgstr "Brak"
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:671
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:690
 msgid "Inner box -- needed for fixed width & line breaks"
-msgstr ""
-"Wnêtrze pudelka -- potrzebne dla ustalenia szeroko¶ci i ³amania wierszy"
+msgstr "Wnêtrze pudelka -- potrzebne dla ustalenia szeroko¶ci i ³amania wierszy"
 
 #: src/frontends/qt2/ui/QBoxDialogBase.ui:682
 msgid "&Inner Box:"
@@ -2978,15 +2976,15 @@ msgstr "&Typ:"
 
 #: src/frontends/qt2/ui/QBranchDialogBase.ui:22
 msgid "Branch Settings"
-msgstr ""
+msgstr "Ustawienia ga³êzi"
 
 #: src/frontends/qt2/ui/QBranchDialogBase.ui:90
 msgid "&Available branches:"
-msgstr ""
+msgstr "&Dostêpne ga³êzie:"
 
 #: src/frontends/qt2/ui/QBranchDialogBase.ui:105
 msgid "Select your branch"
-msgstr ""
+msgstr "Wybierz swoj± ga³±¼"
 
 #: src/frontends/qt2/ui/QChangesDialogBase.ui:22
 msgid "Changes"
@@ -4674,9 +4672,8 @@ msgid "Reference as it appears in output"
 msgstr "Odno¶nik jaki pojawi siê na wydruku"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:182
-#, fuzzy
 msgid "&Reference:"
-msgstr "Odno¶nik"
+msgstr "&Odno¶nik:"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:353
 #, fuzzy
@@ -4684,9 +4681,8 @@ msgid "Available references"
 msgstr "wszystkie odno¶niki"
 
 #: src/frontends/qt2/ui/QRefDialogBase.ui:364
-#, fuzzy
 msgid "R&eferences in:"
-msgstr "Odno¶niki: "
+msgstr "&Odno¶niki:"
 
 #: src/frontends/qt2/ui/QSearchDialogBase.ui:22
 msgid "Search and replace"
@@ -5032,8 +5028,7 @@ msgid "&View"
 msgstr "&Podgl±d"
 
 #: src/frontends/qt2/ui/QTexinfoDialogBase.ui:203
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
+msgid "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 "Wy¶wietla zawarto¶æ wybranego pliku. Mo¿liwe tylko gdy pliki s± wy¶wietlone "
 "ze ¶cie¿k±"
@@ -5900,14 +5895,14 @@ msgstr "Mój_Adres"
 #: lib/layouts/dinbrief.layout:28 lib/layouts/heb-letter.layout:14
 #: lib/layouts/stdletter.inc:35
 msgid "Send_To_Address"
-msgstr ""
+msgstr "Wy¶lij_Na_Adres"
 
 #: lib/layouts/dinbrief.layout:45 lib/layouts/g-brief-en.layout:203
 #: lib/layouts/g-brief2.layout:863 lib/layouts/heb-letter.layout:19
 #: lib/layouts/scrlettr.layout:68 lib/layouts/scrlttr2.layout:96
 #: lib/layouts/stdletter.inc:49
 msgid "Opening"
-msgstr ""
+msgstr "Rozpoczêcie"
 
 #: lib/layouts/dinbrief.layout:58 lib/layouts/g-brief-en.layout:52
 #: lib/layouts/g-brief2.layout:211 lib/layouts/heb-letter.layout:29
@@ -5921,11 +5916,11 @@ msgstr "Podpis"
 #: lib/layouts/scrlettr.layout:78 lib/layouts/scrlttr2.layout:118
 #: lib/layouts/stdletter.inc:92
 msgid "Closing"
-msgstr ""
+msgstr "Zakoñczenie"
 
 #: lib/layouts/dinbrief.layout:84 lib/layouts/stdletter.inc:116
 msgid "encl"
-msgstr ""
+msgstr "za³±czniki"
 
 #: lib/layouts/dinbrief.layout:97
 msgid "ps"
@@ -5939,7 +5934,7 @@ msgstr ""
 
 #: lib/layouts/dinbrief.layout:132 lib/layouts/g-brief-de.layout:194
 msgid "Betreff"
-msgstr ""
+msgstr "Odpowied¼"
 
 #: lib/layouts/dinbrief.layout:157
 msgid "Stadt"
@@ -5947,7 +5942,7 @@ msgstr "Miasto"
 
 #: lib/layouts/dinbrief.layout:177 lib/layouts/g-brief-de.layout:187
 msgid "Datum"
-msgstr ""
+msgstr "Data"
 
 #: lib/layouts/egs.layout:92 lib/layouts/db_stdlayouts.inc:17
 #: lib/layouts/stdlayouts.inc:10
@@ -6013,7 +6008,7 @@ msgstr "URL_Autora"
 #: lib/layouts/elsart.layout:190 lib/layouts/revtex4.layout:159
 #: lib/layouts/amsdefs.inc:197
 msgid "Thanks"
-msgstr ""
+msgstr "Podziêkowania"
 
 #: lib/layouts/entcs.layout:71
 msgid "FrontMatter"
@@ -6021,7 +6016,7 @@ msgstr ""
 
 #: lib/layouts/entcs.layout:97
 msgid "Keyword"
-msgstr ""
+msgstr "S³owoKluczowe"
 
 #: lib/layouts/foils.layout:41
 msgid "Foilhead"
@@ -6049,7 +6044,7 @@ msgstr ""
 
 #: lib/layouts/foils.layout:163
 msgid "My_Logo"
-msgstr ""
+msgstr "Moje_Logo"
 
 #: lib/layouts/foils.layout:181
 msgid "Restriction"
@@ -6057,7 +6052,7 @@ msgstr ""
 
 #: lib/layouts/foils.layout:205
 msgid "Right_Footer"
-msgstr ""
+msgstr "Prawa_Stopka"
 
 #: lib/layouts/foils.layout:296 lib/layouts/siamltex.layout:266
 #: lib/layouts/amsmaths.inc:90
@@ -6179,7 +6174,7 @@ msgstr ""
 
 #: lib/layouts/g-brief-de.layout:229
 msgid "Gruss"
-msgstr ""
+msgstr "Pozdrowienia"
 
 #: lib/layouts/g-brief-en.layout:15 lib/layouts/g-brief2.layout:33
 #: lib/layouts/scrlettr.layout:47
@@ -6368,7 +6363,7 @@ msgstr ""
 
 #: lib/layouts/hollywood.layout:55 src/frontends/xforms/XFormsMenubar.C:256
 msgid "More"
-msgstr ""
+msgstr "Wiêcej"
 
 #: lib/layouts/hollywood.layout:80
 msgid "FADE_IN:"
@@ -6887,7 +6882,7 @@ msgstr ""
 
 #: lib/layouts/scrclass.inc:181
 msgid "Publishers"
-msgstr ""
+msgstr "Wydawcy"
 
 #: lib/layouts/scrclass.inc:187 lib/layouts/svjour.inc:121
 msgid "Dedication"
@@ -7649,7 +7644,7 @@ msgstr "Twarda spacja|T"
 
 #: lib/ui/classic.ui:243 lib/ui/stdmenus.ui:273
 msgid "Inter-word Space|w"
-msgstr ""
+msgstr "Spacja wewn±trz slowa|w"
 
 #: lib/ui/classic.ui:244 lib/ui/stdmenus.ui:274
 msgid "Thin Space|T"
@@ -8080,11 +8075,11 @@ msgstr "Ustawienia oblewania tekstem...|W"
 
 #: lib/ui/stdmenus.ui:105
 msgid "Note Settings...|N"
-msgstr ""
+msgstr "Ustawienia notki...|N"
 
 #: lib/ui/stdmenus.ui:106
 msgid "Branch Settings...|B"
-msgstr ""
+msgstr "Ustawienia ga³êzi...|G"
 
 #: lib/ui/stdmenus.ui:107
 msgid "Box Settings...|x"
@@ -8172,7 +8167,7 @@ msgstr "Wstawka|W"
 
 #: lib/ui/stdmenus.ui:240
 msgid "Branch|B"
-msgstr ""
+msgstr "Ga³±¼|G"
 
 #: lib/ui/stdmenus.ui:241
 msgid "Character Style|y"
@@ -8246,7 +8241,7 @@ msgstr "Komentarz|K"
 
 #: lib/ui/stdmenus.ui:352
 msgid "Greyed Out|G"
-msgstr ""
+msgstr "Wyszarzenie|W"
 
 #: lib/ui/stdmenus.ui:368
 msgid "Change Tracking|C"
@@ -8560,6 +8555,9 @@ msgid ""
 "\n"
 "Do you want to revert to the saved version?"
 msgstr ""
+"Dokument %1$s jest ju¿ wczytany.\n"
+"\n"
+"Czy chcesz powróciæ do zapisanej wersji?"
 
 #: src/BufferView_pimpl.C:256 src/lyxfunc.C:769
 msgid "Revert to saved document?"
@@ -8798,11 +8796,11 @@ msgstr "t³o komentarza"
 
 #: src/LColor.C:108
 msgid "greyedout inset"
-msgstr ""
+msgstr "wyszarzona wstawka"
 
 #: src/LColor.C:109
 msgid "greyedout inset background"
-msgstr ""
+msgstr "t³o wyszarzonej wstawki"
 
 #: src/LColor.C:110
 msgid "depth bar"
@@ -8999,15 +8997,15 @@ msgstr "Nieznany token %1$s %2$s\n"
 
 #: src/buffer.C:427 src/buffer.C:434 src/buffer.C:449
 msgid "Header error"
-msgstr ""
+msgstr "B³±d nag³ówka"
 
 #: src/buffer.C:433
 msgid "\\begin_header is missing"
-msgstr ""
+msgstr "Brakuje \\begin_header"
 
 #: src/buffer.C:448
 msgid "\\begin_document is missing"
-msgstr ""
+msgstr "Brakuje \\begin_document"
 
 #: src/buffer.C:456
 msgid "Can't load document class"
@@ -9145,7 +9143,7 @@ msgstr "Czy chcesz przywróciæ dokument %1$s z kontroli wersji?"
 
 #: src/buffer_funcs.C:145
 msgid "Retrieve from version control?"
-msgstr ""
+msgstr "Przywróciæ z kontroli wersji?"
 
 #: src/buffer_funcs.C:146
 msgid "&Retrieve"
@@ -9360,7 +9358,7 @@ msgstr "Polecenia u¿ytkownika"
 
 #: src/debug.C:57
 msgid "The LyX Lexxer"
-msgstr ""
+msgstr "LyX Lexxer"
 
 #: src/debug.C:58
 msgid "Dependency information"
@@ -9401,6 +9399,9 @@ msgid ""
 "\n"
 "Do you want to over-write that file?"
 msgstr ""
+"Plik %1$s ju¿ istnieje.\n"
+"\n"
+"Czy chcesz zast±piæ ten plik?"
 
 #: src/exporter.C:75
 msgid "Over-write file?"
@@ -9562,7 +9563,7 @@ msgstr "Wybierz styl BibTeXa"
 
 #: src/frontends/controllers/ControlBox.C:62
 msgid "No frame drawn"
-msgstr ""
+msgstr "Bez obramowania"
 
 #: src/frontends/controllers/ControlBox.C:63
 msgid "Rectangular box"
@@ -10143,7 +10144,7 @@ msgstr "LyX: Ustawienia pude³ka"
 
 #: src/frontends/qt2/QBranch.C:36
 msgid "LyX: Branch Settings"
-msgstr ""
+msgstr "LyX: Ustawienia ga³êzi"
 
 #: src/frontends/qt2/QChanges.C:33
 msgid "LyX: Merge Changes"
@@ -10298,7 +10299,7 @@ msgstr "Umieszczanie wstawek"
 #: src/frontends/qt2/QDocumentDialog.C:98
 #: src/frontends/xforms/FormDocument.C:442
 msgid "Branches"
-msgstr ""
+msgstr "Ga³êzie"
 
 #: src/frontends/qt2/QDocumentDialog.C:99
 #: src/frontends/qt2/QDocumentDialog.C:224
@@ -10636,7 +10637,7 @@ msgstr "LyX:  Adres Url"
 
 #: src/frontends/qt2/QVSpace.C:133
 msgid "LyX: Vertical Space Settings"
-msgstr ""
+msgstr "LyX: Ustawienia odstêpóp pionowych"
 
 #: src/frontends/qt2/QWrap.C:39
 msgid "LyX: Text Wrap Settings"
@@ -10816,7 +10817,7 @@ msgstr "Niepoprawna d³ugo¶æ!"
 
 #: src/frontends/xforms/FormBranch.C:35
 msgid "Branch"
-msgstr ""
+msgstr "Ga³±¼"
 
 #: src/frontends/xforms/FormCitation.C:175
 msgid "Add the selected entry to the current citation reference."
@@ -10871,14 +10872,12 @@ msgid ""
 msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:217
-msgid ""
-"Optional text which appears before the citation reference, e.g. \"see <Ref>\""
-msgstr ""
+msgid "Optional text which appears before the citation reference, e.g. \"see <Ref>\""
+msgstr "Opcjonalny tekst, który pojawi siê przed odno¶nikiem, np. \"patrz <Ref>\""
 
 #: src/frontends/xforms/FormCitation.C:220
-msgid ""
-"Optional text which appears after the citation reference, e.g. \"pp. 12\""
-msgstr ""
+msgid "Optional text which appears after the citation reference, e.g. \"pp. 12\""
+msgstr "Opcjonalny tekst, który pojawi siê za odno¶nikiem, np. \"12 strona\""
 
 #: src/frontends/xforms/FormCitation.C:223
 msgid "Search your database (all fields will be searched)."
@@ -10900,11 +10899,11 @@ msgstr "Wybierz kolor"
 
 #: src/frontends/xforms/FormColorpicker.C:190
 msgid "RGB"
-msgstr ""
+msgstr "RGB"
 
 #: src/frontends/xforms/FormColorpicker.C:191
 msgid "HSV"
-msgstr ""
+msgstr "HSV"
 
 #: src/frontends/xforms/FormDialogView.C:328
 #, c-format
@@ -10933,27 +10932,27 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:264
 msgid " None | Small Margins | Very small Margins | Very wide Margins "
-msgstr ""
-" Brak | Ma³e marginesy | Bardzo ma³e marginesy | Bardzo szerokie marginesy "
+msgstr " Brak | Ma³e marginesy | Bardzo ma³e marginesy | Bardzo szerokie marginesy "
 
 #: src/frontends/xforms/FormDocument.C:304
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
-msgstr ""
-" ``tekst'' | ''tekst'' | ,,tekst`` | ,,tekst'' | <<tekst>> | >>tekst<< "
+msgstr " ``tekst'' | ''tekst'' | ,,tekst`` | ,,tekst'' | <<tekst>> | >>tekst<< "
 
 #: src/frontends/xforms/FormDocument.C:320
 msgid " Basic | Natbib author-year | Natbib numerical | Jurabib "
-msgstr ""
+msgstr " Podstawowy | Natbib autor-rok | Natbib numerycznie | Jurabib "
 
 #: src/frontends/xforms/FormDocument.C:324
 msgid ""
 "Natbib is used often for natural sciences and arts\n"
 "Jurabib is more common in law and humanities"
 msgstr ""
+"natbib jest czêsto u¿ywany w naukach przyrodniczych i sztuce.\n"
+"Jurabib jest powszechnie stosowany przezprawników i humanistów"
 
 #: src/frontends/xforms/FormDocument.C:336
 msgid " Never | Automatically | Yes "
-msgstr ""
+msgstr " Nigdy | Automatycznie | Tak "
 
 #: src/frontends/xforms/FormDocument.C:367
 msgid ""
@@ -10965,39 +10964,39 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:395
 msgid "Enter the name of a new branch."
-msgstr ""
+msgstr "Podaj nazwê nowej ga³êzi."
 
 #: src/frontends/xforms/FormDocument.C:397
 msgid "Add a new branch to the document."
-msgstr ""
+msgstr "Dodaj now± ga³±¼ do dokumentu."
 
 #: src/frontends/xforms/FormDocument.C:399
 msgid "Remove the selected branch from the document."
-msgstr ""
+msgstr "Usuñ wybran± ga³±¼ z dokumentu."
 
 #: src/frontends/xforms/FormDocument.C:401
 msgid "Activate the selected branch for output."
-msgstr ""
+msgstr "Aktywacja wybranej ga³êzi dla wyj¶cia."
 
 #: src/frontends/xforms/FormDocument.C:403
 msgid "Deactivate the selected activated branch."
-msgstr ""
+msgstr "Deaktywacja wybranej aktywnej ga³êzi."
 
 #: src/frontends/xforms/FormDocument.C:405
 msgid "Available branches for this document."
-msgstr ""
+msgstr "Dostêpne ga³êzie dla dokumentu."
 
 #: src/frontends/xforms/FormDocument.C:407
 msgid "Activated branches. Content will occur in the document's output"
-msgstr ""
+msgstr "Aktywne ga³êzie. Zawarto¶æ pojawi siê w dokumencie wyj¶ciowym"
 
 #: src/frontends/xforms/FormDocument.C:409
 msgid "Modify background color of branch inset"
-msgstr ""
+msgstr "Zmiana koloru t³a wstawki ga³êzi"
 
 #: src/frontends/xforms/FormDocument.C:411
 msgid "Background color of branch inset"
-msgstr ""
+msgstr "Kolor t³a wstawki ga³êzi"
 
 #: src/frontends/xforms/FormDocument.C:423
 msgid "Document"
@@ -11022,8 +11021,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormDocument.C:1391
 msgid "Document is read-only. No changes to layout permitted."
-msgstr ""
-"Dokument otwarto tylko do odczytu. Zmiany w ustawieniach s± niedozwolone."
+msgstr "Dokument otwarto tylko do odczytu. Zmiany w ustawieniach s± niedozwolone."
 
 #: src/frontends/xforms/FormExternal.C:415
 msgid "Default|Monochrome|Grayscale|Color|Preview"
@@ -11090,7 +11088,7 @@ msgstr "Spróbuj umie¶ciæ wstawkê tutaj"
 
 #: src/frontends/xforms/FormFloat.C:96
 msgid "Ignore internal settings. This is the \"!\" in LaTeX."
-msgstr ""
+msgstr "Ignoruje ustawienia wewnêtrzne. Odpowiada \"!\" w LaTeX-u."
 
 #: src/frontends/xforms/FormFloat.C:98
 msgid "Span float over the columns."
@@ -11111,7 +11109,7 @@ msgstr "Okre¶l wysoko¶æ obrazu do wstawionej warto¶ci."
 #: src/frontends/xforms/FormGraphics.C:160
 #, no-c-format
 msgid "Select unit for width; Scale% for scaling whole image."
-msgstr ""
+msgstr "Wybierz jednostkê szeroko¶ci. Skala% dla skalowania ca³ego obrazka"
 
 #: src/frontends/xforms/FormGraphics.C:162
 msgid "Set the image height to the inserted value."
@@ -11279,10 +11277,8 @@ msgid "LyX objects that can be assigned a color."
 msgstr "Obiekty, którym mo¿na przypisaæ kolory."
 
 #: src/frontends/xforms/FormPreferences.C:509
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"Zmieñ kolor obiektu programu LyX. Uwaga: nale¿y potem ,,Zastosowaæ'' zmianê."
+msgid "Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr "Zmieñ kolor obiektu programu LyX. Uwaga: nale¿y potem ,,Zastosowaæ'' zmianê."
 
 #: src/frontends/xforms/FormPreferences.C:580
 msgid "GUI background"
@@ -11648,8 +11644,7 @@ msgid "Search backwards."
 msgstr "Wyszukaj wstecz."
 
 #: src/frontends/xforms/FormSendto.C:56
-msgid ""
-"Export the buffer to this format before running the command below on it."
+msgid "Export the buffer to this format before running the command below on it."
 msgstr ""
 
 #: src/frontends/xforms/FormSendto.C:59
@@ -11914,7 +11909,7 @@ msgstr "Otwarta wstawka pude³ka"
 
 #: src/insets/insetbranch.C:71
 msgid "Opened Branch Inset"
-msgstr ""
+msgstr "Otwarta wstawka ga³êzi"
 
 #: src/insets/insetcaption.C:76
 msgid "Opened Caption Inset"
@@ -12030,7 +12025,7 @@ msgstr "Otwarta notka marginesowa"
 
 #: src/insets/insetnote.C:56
 msgid "Greyed out"
-msgstr ""
+msgstr "Wyszarzenie"
 
 #: src/insets/insetnote.C:134
 msgid "Opened Note Inset"
@@ -12264,27 +12259,27 @@ msgstr "mu"
 
 #: src/lengthcommon.C:49
 msgid "text%"
-msgstr "% tekst"
+msgstr "Tekst%"
 
 #: src/lengthcommon.C:49
 msgid "col%"
-msgstr "% kol"
+msgstr "Kolumna%"
 
 #: src/lengthcommon.C:49
 msgid "page%"
-msgstr "%strony"
+msgstr "Strona%"
 
 #: src/lengthcommon.C:49
 msgid "line%"
-msgstr "%wiersza"
+msgstr "Wiersz%"
 
 #: src/lengthcommon.C:50
 msgid "theight%"
-msgstr "%tWysoko¶ci"
+msgstr "WysTekstu%"
 
 #: src/lengthcommon.C:50
 msgid "pheight%"
-msgstr "%pWysoko¶ci"
+msgstr "WysAkapitu%"
 
 #: src/lyx_cb.C:108
 #, c-format
@@ -12818,8 +12813,7 @@ msgstr ""
 "zastêpowany wpisywanym."
 
 #: src/lyxrc.C:2061
-msgid ""
-"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgid "The time interval between auto-saves (in seconds). 0 means no auto-save."
 msgstr ""
 "Interwa³ czasu pomiêdzy automatycznym zapisem w sekundach. 0 wy³±cza "
 "automatycznyzapis."
@@ -12940,8 +12934,7 @@ msgid ""
 msgstr "W³±cz gdy polecenie zmiany jêzyka jest wymagane na pocz±tku dokumentu."
 
 #: src/lyxrc.C:2165
-msgid ""
-"Select if a language switching command is needed at the end of the document."
+msgid "Select if a language switching command is needed at the end of the document."
 msgstr "W³±cz gdy polecenie zmiany jêzyka jest wymagane na koñcu dokumentu."
 
 #: src/lyxrc.C:2169
@@ -12965,8 +12958,7 @@ msgstr "Polecenie LaTeX-a zmieniaj±ce lokalnie jêzyk dokumentu."
 msgid ""
 "De-select if you don't want the language(s) used as an argument to "
 "\\documentclass."
-msgstr ""
-"Wy³±cz je¶li nie chcesz u¿ywa¼ nazwy jêzyka jako argumentu \\documentclass."
+msgstr "Wy³±cz je¶li nie chcesz u¿ywa¼ nazwy jêzyka jako argumentu \\documentclass."
 
 #: src/lyxrc.C:2185
 msgid ""
@@ -13012,8 +13004,7 @@ msgid ""
 msgstr ""
 
 #: src/lyxrc.C:2216
-msgid ""
-"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgid "Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
 msgstr "Podaj inny plik s³ownika osobistego. Na przyk³ad \".ispell_polish\"."
 
 #: src/lyxrc.C:2220
@@ -13064,8 +13055,7 @@ msgstr "Opcja pozwalaj±ca wydrukowaæ tylko strony parzyste."
 msgid ""
 "Extra options to pass to printing program after everything else, but before "
 "the filename of the DVI file to be printed."
-msgstr ""
-"Ostatnia opcja dla programu drukuj±cego przed nazw± drukowanego pliku DVI."
+msgstr "Ostatnia opcja dla programu drukuj±cego przed nazw± drukowanego pliku DVI."
 
 #: src/lyxrc.C:2264
 msgid "Extension of printer program output file. Usually \".ps\"."
@@ -13131,10 +13121,8 @@ msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
 msgstr "Sterownik drukowania, na przyk³ad \"dvips\", \"dvilj4\"."
 
 #: src/lyxrc.C:2316
-msgid ""
-"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
-msgstr ""
-"Wybierz by mieæ mo¿liwo¶æ pisania od prawej do lewej (hebrajski, arabski)."
+msgid "Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgstr "Wybierz by mieæ mo¿liwo¶æ pisania od prawej do lewej (hebrajski, arabski)."
 
 #: src/lyxrc.C:2320
 msgid ""
@@ -13289,11 +13277,11 @@ msgstr "Tylko jedna kolumna"
 
 #: src/mathed/math_gridinset.C:1259
 msgid "No hline to delete"
-msgstr ""
+msgstr "Brak pionowej linii do usuniêcia"
 
 #: src/mathed/math_gridinset.C:1268
 msgid "No vline to delete"
-msgstr ""
+msgstr "Brak poziomej linii do usuniêcia"
 
 #: src/mathed/math_gridinset.C:1286
 #, c-format
@@ -13367,8 +13355,7 @@ msgstr "Wszystkie pliki (*)"
 
 #: src/support/package.C.in:436
 #, c-format
-msgid ""
-"Unable to determine the path to the LyX binary from the command line %1$s"
+msgid "Unable to determine the path to the LyX binary from the command line %1$s"
 msgstr ""
 
 #: src/support/package.C.in:557
@@ -13424,13 +13411,11 @@ msgstr "Nieznany token"
 msgid ""
 "You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
-msgstr ""
-"Nie mo¿na wstawiæ spacji na pocz±tku akapitu. Przeczytaj, proszê, Samouczek."
+msgstr "Nie mo¿na wstawiæ spacji na pocz±tku akapitu. Przeczytaj, proszê, Samouczek."
 
 #: src/text.C:1172
 msgid "You cannot type two spaces this way. Please read the Tutorial."
-msgstr ""
-"Nie mo¿na wstawiæ dwu spacji w ten sposób. Przeczytaj, proszê, Samouczek."
+msgstr "Nie mo¿na wstawiæ dwu spacji w ten sposób. Przeczytaj, proszê, Samouczek."
 
 #: src/text.C:2100
 msgid "Change: "
@@ -13497,7 +13482,7 @@ msgstr "%1$s #:"
 
 #: src/text2.C:844
 msgid "Senseless: "
-msgstr ""
+msgstr "Bez sensu: "
 
 #: src/text3.C:703
 msgid "Unknown spacing argument: "
@@ -13523,29 +13508,3 @@ msgstr "Kodowanie"
 msgid "Paragraph layout set"
 msgstr "Styl akapitu ustawiony"
 
-#~ msgid "Label:|#e"
-#~ msgstr "Etykieta:|#E"
-
-#~ msgid "&Go to Label"
-#~ msgstr "&Id¼ do etykiety"
-
-#~ msgid "Jump to the label"
-#~ msgstr "Skocz do etykiety"
-
-#~ msgid "&Label:"
-#~ msgstr "&Etykieta:"
-
-#~ msgid "Available labels"
-#~ msgstr "Dostêpne etykiety"
-
-#~ msgid "L&abels in:"
-#~ msgstr "E&tykiety w:"
-
-#~ msgid "Small Skip"
-#~ msgstr "Ma³y odstêp"
-
-#~ msgid "Medium Skip"
-#~ msgstr "¦redni odstêp"
-
-#~ msgid "Big Skip"
-#~ msgstr "Du¿y odstêp"
