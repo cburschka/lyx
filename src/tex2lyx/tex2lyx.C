@@ -10,11 +10,11 @@
 #include <cctype>
 #include <fstream>
 #include <iostream>
+#include <sstream>
 #include <stack>
 #include <string>
 #include <vector>
 
-#include "Lsstream.h"
 #include "texparser.h"
 
 using std::cout;
