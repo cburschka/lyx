@@ -1145,7 +1145,7 @@ bool InsetFormula::LocalDispatch(int action, char const * arg)
 	   if (('0'<= c && c<= '9') || strchr(";:!|[]().,?", c)) 
 	      mathcursor->Insert(c, LM_TC_CONST);
 	 else
-	   if (strchr("+/-*<>= ", c))
+	   if (strchr("+/-*<>=", c))
 	      mathcursor->Insert(c, LM_TC_BOP);
 	 else
 	   if (strchr(latex_special_chars, c) && c!= '_')

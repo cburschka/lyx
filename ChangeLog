@@ -1,3 +1,8 @@
+1999-12-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/mathed/formula.C (LocalDispatch): fix small whitspace bug
+	introduced by faulty regex.
+
 1999-11-30  Kayvan A. Sylvan  <kayvan@satyr.sylvan.com>
 
 	* src/ImportNoweb.C (documentclass): fixed bounds for substr
