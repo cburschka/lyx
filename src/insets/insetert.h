@@ -29,6 +29,9 @@
   Note that collapsed_ encompasses both the inline and collapsed button
   versions of this inset. 
 */
+
+class Language;
+
 class InsetERT : public InsetCollapsable {
 public:
 	///
@@ -44,7 +47,7 @@ public:
 	///
 	Inset * clone(Buffer const &, bool same_id = false) const;
 	///
-	InsetERT(string const & contents, bool collapsed);
+	InsetERT(Language const *, string const & contents, bool collapsed);
 	///
 	~InsetERT();
 	///
@@ -122,6 +125,8 @@ public:
 	void status(BufferView *, ERTStatus const st) const;
 	///
 	bool showInsetDialog(BufferView *) const;
+	///
+	void getDrawFont(LyXFont &) const;
 	///
 	bool forceDefaultParagraphs(Inset const *) const {
 		return true;

@@ -172,9 +172,10 @@ LyXFont const LyXText::getFont(Buffer const * buf, Paragraph * par,
 	if (!par_depth) {
 		if (layout.labeltype == LABEL_MANUAL
 		    && pos < beginningOfMainBody(buf, par)) {
-				// 1% goes here
-			LyXFont f = par->getFontSettings(buf->params,
-							 pos);
+			// 1% goes here
+			LyXFont f = par->getFontSettings(buf->params, pos);
+			if (par->inInset())
+				par->inInset()->getDrawFont(f);
 #ifndef INHERIT_LANGUAGE
 			return f.realize(layout.reslabelfont);
 #else
@@ -182,6 +183,8 @@ LyXFont const LyXText::getFont(Buffer const * buf, Paragraph * par,
 #endif
 		} else {
 			LyXFont f = par->getFontSettings(buf->params, pos);
+			if (par->inInset())
+				par->inInset()->getDrawFont(f);
 #ifndef INHERIT_LANGUAGE
 			return f.realize(layout.resfont);
 #else
@@ -208,6 +211,8 @@ LyXFont const LyXText::getFont(Buffer const * buf, Paragraph * par,
 #else
 	tmpfont.realize(layoutfont, buf->params.language);
 #endif
+	if (par->inInset())
+		par->inInset()->getDrawFont(tmpfont);
 	
 	return realizeFont(tmpfont, buf, par);
 }

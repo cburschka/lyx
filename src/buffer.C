@@ -406,7 +406,7 @@ void Buffer::insertErtContents(Paragraph * par, int & pos, bool set_inactive)
 	if (!ert_comp.contents.empty()) {
 		lyxerr[Debug::INSETS] << "ERT contents:\n'"
 				      << ert_comp.contents << "'" << endl;
-		Inset * inset = new InsetERT(ert_comp.contents, true);
+		Inset * inset = new InsetERT(params.language, ert_comp.contents, true);
 		par->insertInset(pos++, inset, ert_comp.font);
 		ert_comp.contents.erase();
 	}

@@ -219,11 +219,11 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 	if (pos > (*par)->size())
 		pos = (*par)->size();
 	
+#if 0
 	// Paragraph * tmpbuf;
 	Paragraph * tmppar = *par;
 	int tmppos = pos;
 
-#if 0
 	// There are two cases: cutbuffer only one paragraph or many
 	if (!buf->next()) {
 		// only within a paragraph

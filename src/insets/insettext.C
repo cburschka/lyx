@@ -2627,3 +2627,11 @@ void InsetText::collapseParagraphs(BufferParams const & bparams) const
 	}
 	reinitLyXText();
 }
+
+
+void InsetText::getDrawFont(LyXFont & font) const
+{
+	if (!owner())
+		return;
+	owner()->getDrawFont(font);
+}

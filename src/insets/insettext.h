@@ -246,6 +246,8 @@ public:
 	///
 	bool checkInsertChar(LyXFont &);
 	///
+	void getDrawFont(LyXFont &) const;
+	///
 	//
 	// Public structures and variables
 	///

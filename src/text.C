@@ -581,7 +581,7 @@ void LyXText::drawArabicComposeChar(DrawRowParams & p, pos_type & vpos)
  
  
 void LyXText::drawChars(DrawRowParams & p, pos_type & vpos,
-	bool hebrew, bool arabic)
+                        bool hebrew, bool arabic)
 {
 	pos_type pos = vis2log(vpos);
 	pos_type const last = rowLastPrintable(p.row);

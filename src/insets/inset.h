@@ -317,10 +317,12 @@ public:
 	// if this inset has paragraphs should they be output all as default
 	// paragraphs with "Standard" layout?
 	virtual bool forceDefaultParagraphs(Inset const *) const;
-	// needed for widths which are % of something
-	/* returns the value of \textwidth in this inset. Most of the
-           time this is the width of the workarea, but if there is a
-           minipage somewhere, it will be the width of this minipage */
+	//
+	virtual void getDrawFont(LyXFont &) const {}
+	/* needed for widths which are % of something
+	   returns the value of \textwidth in this inset. Most of the
+	   time this is the width of the workarea, but if there is a
+	   minipage somewhere, it will be the width of this minipage */
 	virtual int latexTextWidth(BufferView *) const;
 
 protected:
@@ -529,7 +531,7 @@ public:
 	///
 	virtual bool searchBackward(BufferView *, string const &,
 	                            bool = true, bool = false);
-
+	
 protected:
 	///
 	void toggleCursorVisible() const {

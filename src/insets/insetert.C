@@ -75,20 +75,20 @@ Inset * InsetERT::clone(Buffer const &, bool same_id) const
 }
 
 
-InsetERT::InsetERT(string const & contents, bool collapsed)
+InsetERT::InsetERT(Language const * l, string const & contents, bool collapsed)
 	: InsetCollapsable(collapsed)
 {
 	if (collapsed)
 		status_ = Collapsed;
 	else
 		status_ = Open;
-#ifndef INHERIT_LANG
-	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
-#else 
-	LyXFont font(LyXFont::ALL_INHERIT);
-#endif
+
+	LyXFont font(LyXFont::ALL_INHERIT, l);
+#ifdef SET_HARD_FONT
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);
+#endif
+	
 	string::const_iterator cit = contents.begin();
 	string::const_iterator end = contents.end();
 	pos_type pos = 0;
@@ -151,12 +151,12 @@ void InsetERT::read(Buffer const * buf, LyXLex & lex)
 #endif
 	inset.read(buf, lex);
 
+#ifdef SET_HARD_FONT
 #ifndef INHERIT_LANG
 	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
 #else 
 	LyXFont font(LyXFont::ALL_INHERIT);
 #endif
-
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);
 	Paragraph * par = inset.paragraph();
@@ -167,7 +167,8 @@ void InsetERT::read(Buffer const * buf, LyXLex & lex)
 		}
 		par = par->next();
 	}
-
+#endif
+	
 	if (!token_found) {
 		if (collapsed_) {
 			status(0, Collapsed);
@@ -511,8 +512,9 @@ void InsetERT::setButtonLabel() const
 }
 
 
-bool InsetERT::checkInsertChar(LyXFont & font)
+bool InsetERT::checkInsertChar(LyXFont & /* font */)
 {
+#ifdef SET_HARD_FONT
 #ifndef INHERIT_LANG
 	LyXFont f(LyXFont::ALL_INHERIT, latex_language);
 #else 
@@ -521,6 +523,7 @@ bool InsetERT::checkInsertChar(LyXFont & font)
 	font = f;
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);
+#endif
 	return true;
 }
 
@@ -603,8 +606,9 @@ void InsetERT::draw(BufferView * bv, LyXFont const & f,
 }
 
 
-void InsetERT::set_latex_font(BufferView * bv)
+void InsetERT::set_latex_font(BufferView * /* bv */)
 {
+#ifdef SET_HARD_FONT
 #ifndef INHERIT_LANG
 	LyXFont font(LyXFont::ALL_INHERIT, latex_language);
 #else 
@@ -613,7 +617,9 @@ void InsetERT::set_latex_font(BufferView * bv)
 
 	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
 	font.setColor(LColor::latex);
+
 	inset.getLyXText(bv)->setFont(bv, font, false);
+#endif
 }
 
 
@@ -671,6 +677,18 @@ void InsetERT::close(BufferView * bv) const
 
 string const InsetERT::selectNextWordToSpellcheck(BufferView * bv,float &) const
 {
-        bv->unlockInset(const_cast<InsetERT *>(this));
+	bv->unlockInset(const_cast<InsetERT *>(this));
 	return string();
+}
+
+void InsetERT::getDrawFont(LyXFont & font) const
+{
+#ifndef INHERIT_LANG
+	LyXFont f(LyXFont::ALL_INHERIT, latex_language);
+#else 
+	LyXFont f(LyXFont::ALL_INHERIT);
+#endif
+	font = f;
+	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
+	font.setColor(LColor::latex);
 }
