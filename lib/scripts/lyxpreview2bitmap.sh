@@ -64,6 +64,7 @@ BAIL_OUT () {
 	# Remove everything except the original .tex file.
 	FILES=`ls ${BASE}* | sed -e "/${BASE}.tex/d"`
 	rm -f ${FILES} texput.log
+	echo "Leaving ${BASE}.tex in ${DIR}"
 	exit 1
 }
 
