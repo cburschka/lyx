@@ -444,7 +444,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		if (!buf)
 			enable = name == "aboutlyx"
 				|| name == "file"
-				|| name == "forks"
 				|| name == "preferences"
 				|| name == "texinfo";
 		else if (name == "print")
@@ -503,7 +502,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_SCREEN_FONT_UPDATE:
 	case LFUN_SET_COLOR:
 	case LFUN_MESSAGE:
-	case LFUN_FORKS_KILL:
 	case LFUN_EXTERNAL_EDIT:
 		// these are handled in our dispatch()
 		break;
