@@ -1,3 +1,23 @@
+2000-12-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/bind/??_menus.bind: comment out the entries corresponding to
+	real menus. They should be eventually removed, but I'll let the
+	language maintainers do that.
+
+2000-12-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* src/frontends/kde/parageneraldlg.C:
+	* src/frontends/kde/parageneraldlg.h: don't use
+	a derived class for SpaceAbove/Below
+
+	* src/frontends/kde/dlg/README: add some info
+
+	* src/frontends/kde/dlg/*: update data files, update
+	dialog files.
+
+	* src/frontends/kde/dlg/moc/Makefile.am: add
+	${FRONTEND_INCLUDES}
+
 2000-12-04  John Levon  <moz@compsoc.man.ac.uk>
 
 	* configure.in: add new KDE Makefiles

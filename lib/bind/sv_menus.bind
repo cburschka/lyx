@@ -24,39 +24,39 @@
 # 
 #
 
-\bind "F10 f"			"menu-open Fil"
-\bind "F10 r"			"menu-open Redigera"
-\bind "F10 s"			"menu-open Stil"
-\bind "F10 l"			"menu-open Lägg in"
-\bind "F10 m"			"menu-open Matematik"
-\bind "F10 i"			"menu-open Inställningar"
-\bind "F10 d"			"menu-open Dokument"
-\bind "F10 h"			"menu-open Hjälp"
+#\bind "F10 f"			"menu-open Fil"
+#\bind "F10 r"			"menu-open Redigera"
+#\bind "F10 s"			"menu-open Stil"
+#\bind "F10 l"			"menu-open Lägg in"
+#\bind "F10 m"			"menu-open Matematik"
+#\bind "F10 i"			"menu-open Inställningar"
+#\bind "F10 d"			"menu-open Dokument"
+#\bind "F10 h"			"menu-open Hjälp"
 
 #
 # Fil
 #
 
-\bind "M-f n"			"buffer-new"
-\bind "M-f m"			"buffer-new-template"
-\bind "M-f p"			"buffer-open"
-\bind "M-f g"			"buffer-close"
-\bind "M-f s"			"buffer-write"
-\bind "M-f o"			"buffer-write-as"
-\bind "M-f t"			"buffer-reload"
-\bind "M-f v"			"buffer-view dvi"
-\bind "M-f i"			"buffer-view ps"
-\bind "M-f u"			"buffer-update dvi"
-\bind "M-f d"			"buffer-update ps"
-\bind "M-f k"			"buffer-print" 
-\bind "M-f f"			"buffer-fax"
-\bind "M-f l"			"buffer-export latex"
-\bind "M-f x"			"buffer-export linuxdoc"
-\bind "M-f S-T"		"buffer-export ascii"
-\bind "M-f h"			"buffer-export html"
-\bind "M-f S-A"		"buffer-export custom"
-\bind "M-f a"			"lyx-quit"
-\bind "M-f space"		"menu-open Fil" 
+#\bind "M-f n"			"buffer-new"
+#\bind "M-f m"			"buffer-new-template"
+#\bind "M-f p"			"buffer-open"
+#\bind "M-f g"			"buffer-close"
+#\bind "M-f s"			"buffer-write"
+#\bind "M-f o"			"buffer-write-as"
+#\bind "M-f t"			"buffer-reload"
+#\bind "M-f v"			"buffer-view dvi"
+#\bind "M-f i"			"buffer-view ps"
+#\bind "M-f u"			"buffer-update dvi"
+#\bind "M-f d"			"buffer-update ps"
+#\bind "M-f k"			"buffer-print" 
+#\bind "M-f f"			"buffer-fax"
+#\bind "M-f l"			"buffer-export latex"
+#\bind "M-f x"			"buffer-export linuxdoc"
+#\bind "M-f S-T"		"buffer-export ascii"
+#\bind "M-f h"			"buffer-export html"
+#\bind "M-f S-A"		"buffer-export custom"
+#\bind "M-f a"			"lyx-quit"
+#\bind "M-f space"		"menu-open Fil" 
 #bind "M-f l"			"file-last"		# Not yet implemented.
 
 
@@ -64,83 +64,83 @@
 # Edit menu
 #
 
-\bind "M-r a"			"table"
-\bind "M-r k"			"cut"
-\bind "M-r f"			"error-next"
-\bind "M-r s"			"find-replace"
-\bind "M-r k"			"line-delete-forward"
-\bind "M-r m"			"mark-on"
-\bind "M-r S-M"		"mark-off"
-\bind "M-r t"			"note-next"
-\bind "M-r o"			"copy"
-\bind "M-r i"			"paste"
-\bind "M-r g"			"redo"
-\bind "M-r r"			"spellchecker"
-\bind "M-r e"			"buffer-chktex"
-\bind "M-r h"			"toc-view"
-\bind "M-r n"			"undo"
-\bind "M-r x"			"latex-view-log"
-\bind "M-r space"		"menu-open Redigera" 
+#\bind "M-r a"			"table"
+#\bind "M-r k"			"cut"
+#\bind "M-r f"			"error-next"
+#\bind "M-r s"			"find-replace"
+#\bind "M-r k"			"line-delete-forward"
+#\bind "M-r m"			"mark-on"
+#\bind "M-r S-M"		"mark-off"
+#\bind "M-r t"			"note-next"
+#\bind "M-r o"			"copy"
+#\bind "M-r i"			"paste"
+#\bind "M-r g"			"redo"
+#\bind "M-r r"			"spellchecker"
+#\bind "M-r e"			"buffer-chktex"
+#\bind "M-r h"			"toc-view"
+#\bind "M-r n"			"undo"
+#\bind "M-r x"			"latex-view-log"
+#\bind "M-r space"		"menu-open Redigera" 
 
 
 #
 # Layout menu
 #
 
-\bind "M-s c"			"layout-character"
-\bind "M-s p"			"layout-paragraph"
-\bind "M-s d"			"layout-document"
-\bind "M-s a"			"layout-paper"
-\bind "M-s q"			"layout-quotes" 
-\bind "M-s l"			"layout-preamble" 
-\bind "M-s e"			"font-emph" 
-\bind "M-s n"			"font-noun" 
-\bind "M-s b"			"font-bold" 
-\bind "M-s t"			"tex-mode" 
-\bind "M-s v"			"depth-next"
-\bind "M-s space"		"menu-open Stil"  
-\bind "M-s i"			"buffer-itemize-bullets-select"
+#\bind "M-s c"			"layout-character"
+#\bind "M-s p"			"layout-paragraph"
+#\bind "M-s d"			"layout-document"
+#\bind "M-s a"			"layout-paper"
+#\bind "M-s q"			"layout-quotes" 
+#\bind "M-s l"			"layout-preamble" 
+#\bind "M-s e"			"font-emph" 
+#\bind "M-s n"			"font-noun" 
+#\bind "M-s b"			"font-bold" 
+#\bind "M-s t"			"tex-mode" 
+#\bind "M-s v"			"depth-next"
+#\bind "M-s space"		"menu-open Stil"  
+#\bind "M-s i"			"buffer-itemize-bullets-select"
 
 
 #
 # Insert menu
 #
 
-\bind "M-i g"			"figure-insert"
-\bind "M-i b"			"table-insert"
-\bind "M-i c"			"buffer-child-insert"
-\bind "M-i f"			"footnote-insert"
-\bind "M-i m"			"marginpar-insert"
+#\bind "M-i g"			"figure-insert"
+#\bind "M-i b"			"table-insert"
+#\bind "M-i c"			"buffer-child-insert"
+#\bind "M-i f"			"footnote-insert"
+#\bind "M-i m"			"marginpar-insert"
 
-\bind "M-i minus"		"hyphenation-point-insert"
-\bind "M-i p"			"dots-insert"
-\bind "M-i e"			"end-of-sentence-period-insert"
-\bind "M-i q"			"quote-insert"
-\bind "M-i apostrophe"		"quote-insert"
-\bind "M-i S-quotedbl"		"quote-insert"
-\bind "M-i s h"			"hfill-insert"
-\bind "M-i s minus"		"hyphenation-point-insert"
-\bind "M-i s b"			"protected-space-insert"
-\bind "M-i s l"			"break-line"
-\bind "M-i s p"			"dots-insert"
-\bind "M-i s e"			"end-of-sentence-period-insert"
-\bind "M-i s q"			"quote-insert"
+#\bind "M-i minus"		"hyphenation-point-insert"
+#\bind "M-i p"			"dots-insert"
+#\bind "M-i e"			"end-of-sentence-period-insert"
+#\bind "M-i q"			"quote-insert"
+#\bind "M-i apostrophe"		"quote-insert"
+#\bind "M-i S-quotedbl"		"quote-insert"
+#\bind "M-i s h"			"hfill-insert"
+#\bind "M-i s minus"		"hyphenation-point-insert"
+#\bind "M-i s b"			"protected-space-insert"
+#\bind "M-i s l"			"break-line"
+#\bind "M-i s p"			"dots-insert"
+#\bind "M-i s e"			"end-of-sentence-period-insert"
+#\bind "M-i s q"			"quote-insert"
 
-\bind "M-i a"			"loa-insert"
-\bind "M-i t c"			"toc-insert"
-\bind "M-i t f"			"lof-insert"
-\bind "M-i t t"			"lot-insert"
-\bind "M-i t i"			"index-print"
-\bind "M-i t b"			"bibtex-insert"
-\bind "M-i t a"			"loa-insert"
+#\bind "M-i a"			"loa-insert"
+#\bind "M-i t c"			"toc-insert"
+#\bind "M-i t f"			"lof-insert"
+#\bind "M-i t t"			"lot-insert"
+#\bind "M-i t i"			"index-print"
+#\bind "M-i t b"			"bibtex-insert"
+#\bind "M-i t a"			"loa-insert"
 
-\bind "M-i n"			"note-insert"
-\bind "M-i l"			"label-insert"
-\bind "M-i r"			"reference-insert"
-\bind "M-i i"			"citation-insert"
-\bind "M-i d"			"index-insert"
+#\bind "M-i n"			"note-insert"
+#\bind "M-i l"			"label-insert"
+#\bind "M-i r"			"reference-insert"
+#\bind "M-i i"			"citation-insert"
+#\bind "M-i d"			"index-insert"
 
-\bind "M-l space"		"menu-open Lägg in"  
+#\bind "M-l space"		"menu-open Lägg in"  
 
 
 
@@ -148,7 +148,7 @@
 # Math menu
 #
 
-\bind "M-m space"		"menu-open Matematik" 
+#\bind "M-m space"		"menu-open Matematik" 
 
 #
 # Options menu
@@ -158,7 +158,7 @@
 #bind "M-o r"			"spellcheck-options"	# Not yet implemented!
 #bind "M-o t"			"keyboard-options"	# Not yet implemented!
 #bind "M-o l"			"latex-options"		# Not yet implemented!
-\bind "M-i space"		"menu-open Inställningar"  
+#\bind "M-i space"		"menu-open Inställningar"  
 
 
 #
@@ -186,7 +186,7 @@
 #bind "M-h o"			"help-copyright"	# Not yet implemented!
 #bind "M-h e"			"help-credits"		# Not yet implemented!
 #bind "M-h v"			"help-version"		# Not yet implemented!
-\bind "M-h space"		"menu-open Hjälp" 
+#\bind "M-h space"		"menu-open Hjälp" 
 
 
 #

@@ -22,8 +22,8 @@ ParaGeneralDialog::ParaGeneralDialog
 	Inherited( parent, name )
 {
 
-	abovepage = new ParaAboveDialog(this, "abovepage");
-	belowpage = new ParaBelowDialog(this, "belowpage");
+	abovepage = new ParaAboveDialogData(this, "abovepage");
+	belowpage = new ParaBelowDialogData(this, "belowpage");
 
 	// FIXME: free punctuation to whoever can make the value
 	// boxes not be overly large

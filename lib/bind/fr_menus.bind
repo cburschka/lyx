@@ -13,100 +13,100 @@
 # Visible Menu access menu
 #
 
-\bind "F10 f"			"menu-open File"
-\bind "F10 e"			"menu-open Edit"
-\bind "F10 r"			"menu-open Layout"
-\bind "F10 i"			"menu-open Insert"
-\bind "F10 m"			"menu-open Math"
-\bind "F10 o"			"menu-open Options"
-\bind "F10 d"			"menu-open Documents"
-\bind "F10 a"			"menu-open Help"
+#\bind "F10 f"			"menu-open File"
+#\bind "F10 e"			"menu-open Edit"
+#\bind "F10 r"			"menu-open Layout"
+#\bind "F10 i"			"menu-open Insert"
+#\bind "F10 m"			"menu-open Math"
+#\bind "F10 o"			"menu-open Options"
+#\bind "F10 d"			"menu-open Documents"
+#\bind "F10 a"			"menu-open Help"
 
 
 #
 # File menu
 #
 
-\bind "M-f n"			"buffer-new"		#Nouveau
-\bind "M-f m"			"buffer-new-template"	#... Modèle
-\bind "M-f o"			"buffer-open"		#Ouvrir
-\bind "M-f f"			"buffer-close"		#Fermer
-\bind "M-f e"			"buffer-write"		#Enregistrer
-\bind "M-f s"			"buffer-write-as"	#Enregistrer Sous
-\bind "M-f r"			"buffer-reload"		#Recharger
-\bind "M-f S-D"			"buffer-view dvi"	#Visualiser DVI
-\bind "M-f S-P"			"buffer-view ps"	#Visualiser Postscript
-\bind "M-f d"			"buffer-update dvi"	#Mise à jour dvi
-\bind "M-f p"			"buffer-update ps"	#Mise à jour Postscript
-\bind "M-f c"			"build-program"		#Compiler programme
-\bind "M-f i"			"buffer-print" 		#Imprimer
-\bind "M-f v"			"buffer-fax"		#Fax
-\bind "M-f t l"			"buffer-import latex"
-\bind "M-f t a"			"buffer-import ascii"
-\bind "M-f t p"			"buffer-import asciiparagraph"
-\bind "M-f x l"			"buffer-export latex"
-\bind "M-f x c"			"buffer-export linuxdoc"
-\bind "M-f x d"			"buffer-export dvi"
-\bind "M-f x p"			"buffer-export postscript"
-\bind "M-f x a"			"buffer-export ascii"
-\bind "M-f x h"			"buffer-export html"
-\bind "M-f x s"			"buffer-export custom"
-\bind "M-f q"			"lyx-quit"
-\bind "M-f space"		"menu-open Fichier" 
+#\bind "M-f n"			"buffer-new"		#Nouveau
+#\bind "M-f m"			"buffer-new-template"	#... Modèle
+#\bind "M-f o"			"buffer-open"		#Ouvrir
+#\bind "M-f f"			"buffer-close"		#Fermer
+#\bind "M-f e"			"buffer-write"		#Enregistrer
+#\bind "M-f s"			"buffer-write-as"	#Enregistrer Sous
+#\bind "M-f r"			"buffer-reload"		#Recharger
+#\bind "M-f S-D"			"buffer-view dvi"	#Visualiser DVI
+#\bind "M-f S-P"			"buffer-view ps"	#Visualiser Postscript
+#\bind "M-f d"			"buffer-update dvi"	#Mise à jour dvi
+#\bind "M-f p"			"buffer-update ps"	#Mise à jour Postscript
+#\bind "M-f c"			"build-program"		#Compiler programme
+#\bind "M-f i"			"buffer-print" 		#Imprimer
+#\bind "M-f v"			"buffer-fax"		#Fax
+#\bind "M-f t l"			"buffer-import latex"
+#\bind "M-f t a"			"buffer-import ascii"
+#\bind "M-f t p"			"buffer-import asciiparagraph"
+#\bind "M-f x l"			"buffer-export latex"
+#\bind "M-f x c"			"buffer-export linuxdoc"
+#\bind "M-f x d"			"buffer-export dvi"
+#\bind "M-f x p"			"buffer-export postscript"
+#\bind "M-f x a"			"buffer-export ascii"
+#\bind "M-f x h"			"buffer-export html"
+#\bind "M-f x s"			"buffer-export custom"
+#\bind "M-f q"			"lyx-quit"
+#\bind "M-f space"		"menu-open Fichier" 
 #bind "M-f d"			"file-last"		# Not yet implemented.
 
 
 #
 # Edit menu
 #
-\bind "M-e a"			"undo"			# A nnuler
-\bind "M-e r"                   "redo"			# R efaire
-\bind "M-e u"			"cut"			# Co u per
-\bind "M-e p"                   "copy" 			# Co p ier
-\bind "M-e l"                   "paste"			# Co l ler
-\bind "M-e r"			"find-replace"		# R echercher & ...
-\bind "M-e e"			"error-next"		# Atteindre E rreur
-\bind "M-e n"			"note-next"		# Atteindre N ote
+#\bind "M-e a"			"undo"			# A nnuler
+#\bind "M-e r"                   "redo"			# R efaire
+#\bind "M-e u"			"cut"			# Co u per
+#\bind "M-e p"                   "copy" 			# Co p ier
+#\bind "M-e l"                   "paste"			# Co l ler
+#\bind "M-e r"			"find-replace"		# R echercher & ...
+#\bind "M-e e"			"error-next"		# Atteindre E rreur
+#\bind "M-e n"			"note-next"		# Atteindre N ote
 #
 # manque menu flottant & inserts 
 #bind "M-e t"			"table"			# Not yet implemented!
-\bind "M-e k"			"line-delete-forward"	# 
-\bind "M-e m"			"mark-on"
-\bind "M-e S-M"			"mark-off"
-\bind "M-e o"			"spellchecker"		# Correction O rthographique
-\bind "M-e x"			"buffer-chktex"		# ... Syntaxe Te X
-\bind "M-e a"			"toc-view"		# T a ble des Matières
+#\bind "M-e k"			"line-delete-forward"	# 
+#\bind "M-e m"			"mark-on"
+#\bind "M-e S-M"			"mark-off"
+#\bind "M-e o"			"spellchecker"		# Correction O rthographique
+#\bind "M-e x"			"buffer-chktex"		# ... Syntaxe Te X
+#\bind "M-e a"			"toc-view"		# T a ble des Matières
 #
 # menu Controle de version
-\bind "M-e v i"			"vc-register"		# VC I nitialiser
-\bind "M-e v f"			"vc-check-in"		# VC F iger ...
-\bind "M-e v n"			"vc-check-out"		# VC N ouvelle ...
-\bind "M-e v r"			"vc-revert"		# VC R charger ...
-\bind "M-e v a"			"vc-undo-last"		# VC A nnuler
-\bind "M-e v h"			"vc-history"		# VC H istorique
-\bind "M-e j"			"latex-view-log"	# J ournal LaTeX
-\bind "M-e S-L"			"primary-selection-paste line"
-\bind "M-e g"			"primary-selection-paste paragraph"
-\bind "M-e space"		"menu-open Éditer" 
+#\bind "M-e v i"			"vc-register"		# VC I nitialiser
+#\bind "M-e v f"			"vc-check-in"		# VC F iger ...
+#\bind "M-e v n"			"vc-check-out"		# VC N ouvelle ...
+#\bind "M-e v r"			"vc-revert"		# VC R charger ...
+#\bind "M-e v a"			"vc-undo-last"		# VC A nnuler
+#\bind "M-e v h"			"vc-history"		# VC H istorique
+#\bind "M-e j"			"latex-view-log"	# J ournal LaTeX
+#\bind "M-e S-L"			"primary-selection-paste line"
+#\bind "M-e g"			"primary-selection-paste paragraph"
+#\bind "M-e space"		"menu-open Éditer" 
 
 #
 # Layout menu
 #
 
-\bind "M-r c"			"layout-character"	# C aractère
-\bind "M-r p"			"layout-paragraph"	# P aragraphe
-\bind "M-r d"			"layout-document"	# D ocument
-\bind "M-r a"			"layout-paper"		# pApier
-\bind "M-r t"			"layout-table"		# Tableau
-\bind "M-r S-G"			"layout-quotes" 	# gUillemets
-\bind "M-r e"			"font-emph" 		# Evidence
-\bind "M-r m"			"font-noun" 		# Majuscule
-\bind "M-r g"			"font-bold" 		# Gras
-\bind "M-r t"			"tex-mode" 		# TeX
-\bind "M-r f"			"depth-next"		# proFondeur
-\bind "M-r l"			"layout-preamble"	# préambule Latex
-\bind "M-r S-D"			"layout-save-default"	# ... Défaut
-\bind "M-r space"		"menu-open Format"  
+#\bind "M-r c"			"layout-character"	# C aractère
+#\bind "M-r p"			"layout-paragraph"	# P aragraphe
+#\bind "M-r d"			"layout-document"	# D ocument
+#\bind "M-r a"			"layout-paper"		# pApier
+#\bind "M-r t"			"layout-table"		# Tableau
+#\bind "M-r S-G"			"layout-quotes" 	# gUillemets
+#\bind "M-r e"			"font-emph" 		# Evidence
+#\bind "M-r m"			"font-noun" 		# Majuscule
+#\bind "M-r g"			"font-bold" 		# Gras
+#\bind "M-r t"			"tex-mode" 		# TeX
+#\bind "M-r f"			"depth-next"		# proFondeur
+#\bind "M-r l"			"layout-preamble"	# préambule Latex
+#\bind "M-r S-D"			"layout-save-default"	# ... Défaut
+#\bind "M-r space"		"menu-open Format"  
 # sait pas ce que ca fait ici ?
 #\bind "M-r i"			"buffer-itemize-bullets-select"
 
@@ -115,50 +115,50 @@
 # Insert menu
 #
 
-\bind "M-i f"			"figure-insert"			#inserer Figure
-\bind "M-i t"			"table-insert"			#inserer Tableau
-\bind "M-i b"			"footnote-insert"		#note de bas de Page 
-\bind "M-i m"			"marginpar-insert"		#note en Marge
+#\bind "M-i f"			"figure-insert"			#inserer Figure
+#\bind "M-i t"			"table-insert"			#inserer Tableau
+#\bind "M-i b"			"footnote-insert"		#note de bas de Page 
+#\bind "M-i m"			"marginpar-insert"		#note en Marge
 
 #\bind "M-i q"			"quote-insert"
-\bind "M-i apostrophe"		"quote-insert"
-\bind "M-i S-quotedbl"		"quote-insert"
+#\bind "M-i apostrophe"		"quote-insert"
+#\bind "M-i S-quotedbl"		"quote-insert"
 
 # menu Flottants
-\bind "M-i o f"			"buffer-float-insert figure" 
-\bind "M-i o t"			"buffer-float-insert table"
-\bind "M-i o S-F"		"buffer-float-insert wide-fig"
-\bind "M-i o S-T"		"buffer-float-insert wide-tab"
-\bind "M-i o a"			"buffer-float-insert algorithm"
+#\bind "M-i o f"			"buffer-float-insert figure" 
+#\bind "M-i o t"			"buffer-float-insert table"
+#\bind "M-i o S-F"		"buffer-float-insert wide-fig"
+#\bind "M-i o S-T"		"buffer-float-insert wide-tab"
+#\bind "M-i o a"			"buffer-float-insert algorithm"
 
 # menu Caractère Spécial
-\bind "M-i s h"			"hfill-insert"			#Horizontal
-\bind "M-i s c"			"hyphenation-point-insert"	#Point de Césure
-\bind "M-i s b"			"protected-space-insert"	#Blanc
-\bind "M-i s l"			"break-line"			#Passage a la ligne
-\bind "M-i s p"			"end-of-sentence-period-insert"	#point final
-\bind "M-i s s"			"dots-insert"			#Suspension
-\bind "M-i s g"			"quote-insert"			#Guillemets
-\bind "M-i s m"			"menu-separator-insert"		#Séparateur de menu
-\bind "M-i minus"		"hyphenation-point-insert"	#Point de Césure
+#\bind "M-i s h"			"hfill-insert"			#Horizontal
+#\bind "M-i s c"			"hyphenation-point-insert"	#Point de Césure
+#\bind "M-i s b"			"protected-space-insert"	#Blanc
+#\bind "M-i s l"			"break-line"			#Passage a la ligne
+#\bind "M-i s p"			"end-of-sentence-period-insert"	#point final
+#\bind "M-i s s"			"dots-insert"			#Suspension
+#\bind "M-i s g"			"quote-insert"			#Guillemets
+#\bind "M-i s m"			"menu-separator-insert"		#Séparateur de menu
+#\bind "M-i minus"		"hyphenation-point-insert"	#Point de Césure
 
 # menu Listes&Tables
-\bind "M-i l m"			"toc-insert"			#
-\bind "M-i l f"			"lof-insert"
-\bind "M-i l t"			"lot-insert"
-\bind "M-i l a"			"loa-insert"			#
-\bind "M-i l i"			"index-print"
-\bind "M-i l b"			"bibtex-insert"
+#\bind "M-i l m"			"toc-insert"			#
+#\bind "M-i l f"			"lof-insert"
+#\bind "M-i l t"			"lot-insert"
+#\bind "M-i l a"			"loa-insert"			#
+#\bind "M-i l i"			"index-print"
+#\bind "M-i l b"			"bibtex-insert"
 
 
-\bind "M-i n"			"note-insert"
-\bind "M-i eacute"		"label-insert"
-\bind "M-i r"			"reference-insert"
-\bind "M-i c"			"citation-insert"
-\bind "M-i x"			"index-insert"
-\bind "M-i d"			"index-insert-last"
+#\bind "M-i n"			"note-insert"
+#\bind "M-i eacute"		"label-insert"
+#\bind "M-i r"			"reference-insert"
+#\bind "M-i c"			"citation-insert"
+#\bind "M-i x"			"index-insert"
+#\bind "M-i d"			"index-insert-last"
 
-\bind "M-i space"		"menu-open Insérer"  
+#\bind "M-i space"		"menu-open Insérer"  
 
 
 
@@ -166,7 +166,7 @@
 # Math menu
 #
 
-\bind "M-m space"		"menu-open Maths" 
+#\bind "M-m space"		"menu-open Maths" 
 
 #
 # Options menu
@@ -176,7 +176,7 @@
 #bind "M-o o"			"spellcheck-options"	# Not yet implemented!
 #bind "M-o c"			"keyboard-options"	# Not yet implemented!
 #bind "M-o l"			"latex-options"		# Not yet implemented!
-\bind "M-o space"		"menu-open Options"  
+#\bind "M-o space"		"menu-open Options"  
 
 
 #
@@ -204,7 +204,7 @@
 #bind "M-a c"			"help-copyright"	# Not yet implemented!
 #bind "M-a r"			"help-credits"		# Not yet implemented!
 #bind "M-a v"			"help-version"		# Not yet implemented!
-\bind "M-a space"		"menu-open Help" 
+#\bind "M-a space"		"menu-open Help" 
 
 
 # a partir de la je n' ai plus traduit...

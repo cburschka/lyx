@@ -17,131 +17,131 @@
 # Visible Menu access menu
 #
 
-\bind "F10 t"			"menu-open Tiedosto"
-\bind "F10 m"			"menu-open Muokkaa"
-\bind "F10 u"			"menu-open Muotoile"
-\bind "F10 l"			"menu-open Lis‰‰"
-\bind "F10 e"			"menu-open Matematiikka"
-\bind "F10 a"			"menu-open Asetukset"
-\bind "F10 k"			"menu-open Asiakirjat"
-\bind "F10 o"			"menu-open Ohje"
+#\bind "F10 t"			"menu-open Tiedosto"
+#\bind "F10 m"			"menu-open Muokkaa"
+#\bind "F10 u"			"menu-open Muotoile"
+#\bind "F10 l"			"menu-open Lis‰‰"
+#\bind "F10 e"			"menu-open Matematiikka"
+#\bind "F10 a"			"menu-open Asetukset"
+#\bind "F10 k"			"menu-open Asiakirjat"
+#\bind "F10 o"			"menu-open Ohje"
 
 
 #
 # File menu (Tiedosto)
 #
 
-\bind "M-t u"			"buffer-new"
-\bind "M-t m"			"buffer-new-template"
-\bind "M-t a"			"buffer-open"
-\bind "M-t s"			"buffer-close"
-\bind "M-t t"			"buffer-write"
-\bind "M-t n"			"buffer-write-as"
-\bind "M-t h"			"buffer-reload"
-\bind "M-t d"			"buffer-view dvi"
-\bind "M-t c"			"buffer-view ps"
-\bind "M-t v"			"buffer-update dvi"
-\bind "M-t i"			"buffer-update ps"
-\bind "M-t l"		        "buffer-print" 
-\bind "M-t f"			"buffer-fax"
-\bind "M-t o l"                 "buffer-import latex"
-\bind "M-t o a"                 "buffer-import ascii"
-\bind "M-t o k"                 "buffer-import asciiparagraph"
-\bind "M-t o n"                 "buffer-import noweb"
-\bind "M-t e l"                 "buffer-export latex"
-\bind "M-t e p"                 "buffer-export postscript"
-\bind "M-t e d"                 "buffer-export dvi"
-\bind "M-t e t"                 "buffer-export ascii"
-\bind "M-t e h"			"buffer-export html"
-\bind "M-t e o"                 "buffer-export custom"
-\bind "M-t p"			"lyx-quit"
-\bind "M-t space"		"menu-open File" 
+#\bind "M-t u"			"buffer-new"
+#\bind "M-t m"			"buffer-new-template"
+#\bind "M-t a"			"buffer-open"
+#\bind "M-t s"			"buffer-close"
+#\bind "M-t t"			"buffer-write"
+#\bind "M-t n"			"buffer-write-as"
+#\bind "M-t h"			"buffer-reload"
+#\bind "M-t d"			"buffer-view dvi"
+#\bind "M-t c"			"buffer-view ps"
+#\bind "M-t v"			"buffer-update dvi"
+#\bind "M-t i"			"buffer-update ps"
+#\bind "M-t l"		        "buffer-print" 
+#\bind "M-t f"			"buffer-fax"
+#\bind "M-t o l"                 "buffer-import latex"
+#\bind "M-t o a"                 "buffer-import ascii"
+#\bind "M-t o k"                 "buffer-import asciiparagraph"
+#\bind "M-t o n"                 "buffer-import noweb"
+#\bind "M-t e l"                 "buffer-export latex"
+#\bind "M-t e p"                 "buffer-export postscript"
+#\bind "M-t e d"                 "buffer-export dvi"
+#\bind "M-t e t"                 "buffer-export ascii"
+#\bind "M-t e h"			"buffer-export html"
+#\bind "M-t e o"                 "buffer-export custom"
+#\bind "M-t p"			"lyx-quit"
+#\bind "M-t space"		"menu-open File" 
 
 #
 # Edit menu
 #
 
 #bind "M-m t"			"table"			# Not yet implemented!
-\bind "M-m u"			"undo"
-\bind "M-m d"			"redo"
-\bind "M-m l"			"cut"
-\bind "M-m k"			"copy"
-\bind "M-m i"			"paste"
-\bind "M-m e"			"find-replace"
-\bind "M-m v"			"error-next"
-\bind "M-m m"			"note-next"
+#\bind "M-m u"			"undo"
+#\bind "M-m d"			"redo"
+#\bind "M-m l"			"cut"
+#\bind "M-m k"			"copy"
+#\bind "M-m i"			"paste"
+#\bind "M-m e"			"find-replace"
+#\bind "M-m v"			"error-next"
+#\bind "M-m m"			"note-next"
+#
+#\bind "M-m o"			"spellchecker"
+#\bind "M-m x"			"buffer-chktex"
+#\bind "M-m s"			"toc-view"
 
-\bind "M-m o"			"spellchecker"
-\bind "M-m x"			"buffer-chktex"
-\bind "M-m s"			"toc-view"
+#\bind "M-m n"			"latex-view-log"
 
-\bind "M-m n"			"latex-view-log"
-
-\bind "M-m space"		"menu-open Edit" 
+#\bind "M-m space"		"menu-open Edit" 
 
 #
 # Layout menu
 #
 
-\bind "M-u m"			"layout-character"
-\bind "M-u k"			"layout-paragraph"
-\bind "M-u a"			"layout-document"
-\bind "M-u s"			"layout-paper"
-\bind "M-u t"			"layout-table"
-\bind "M-u l"			"layout-quotes" 
-\bind "M-u o"			"font-emph" 
-\bind "M-u n"			"font-noun" 
-\bind "M-u v"			"font-bold" 
-\bind "M-u x"			"tex-mode" 
-\bind "M-u y"			"depth-next"
-\bind "M-u e"			"layout-preamble"
-\bind "M-u u"			"layout-save-default"
-\bind "M-u space"		"menu-open Layout"  
+#\bind "M-u m"			"layout-character"
+#\bind "M-u k"			"layout-paragraph"
+#\bind "M-u a"			"layout-document"
+#\bind "M-u s"			"layout-paper"
+#\bind "M-u t"			"layout-table"
+#\bind "M-u l"			"layout-quotes" 
+#\bind "M-u o"			"font-emph" 
+#\bind "M-u n"			"font-noun" 
+#\bind "M-u v"			"font-bold" 
+#\bind "M-u x"			"tex-mode" 
+#\bind "M-u y"			"depth-next"
+#\bind "M-u e"			"layout-preamble"
+#\bind "M-u u"			"layout-save-default"
+#\bind "M-u space"		"menu-open Layout"  
 
 
 #
 # Insert menu
 #
 
-\bind "M-l k"			"figure-insert"
-\bind "M-l t"			"table-insert"
-\bind "M-l s"			"buffer-child-insert"
-\bind "M-l c r"			"file-insert-ascii line"         
-\bind "M-l c k"			"file-insert-ascii paragraph"
-\bind "M-l x"			"file-insert"
-\bind "M-l a"			"footnote-insert"
-\bind "M-l r"			"marginpar-insert"
+#\bind "M-l k"			"figure-insert"
+#\bind "M-l t"			"table-insert"
+#\bind "M-l s"			"buffer-child-insert"
+#\bind "M-l c r"			"file-insert-ascii line"         
+#\bind "M-l c k"			"file-insert-ascii paragraph"
+#\bind "M-l x"			"file-insert"
+#\bind "M-l a"			"footnote-insert"
+#\bind "M-l r"			"marginpar-insert"
 
-\bind "M-l o k"			"buffer-float-insert figure" 
-\bind "M-l o t"			"buffer-float-insert table"
-\bind "M-l o l"			"buffer-float-insert wide-fig"
-\bind "M-l o e"			"buffer-float-insert wide-tab"
-\bind "M-l o a"			"buffer-float-insert algorithm"
+#\bind "M-l o k"			"buffer-float-insert figure" 
+#\bind "M-l o t"			"buffer-float-insert table"
+#\bind "M-l o l"			"buffer-float-insert wide-fig"
+#\bind "M-l o e"			"buffer-float-insert wide-tab"
+#\bind "M-l o a"			"buffer-float-insert algorithm"
 
-\bind "M-l t s"			"toc-insert"
-\bind "M-l t k"			"lof-insert"
-\bind "M-l t t"			"lot-insert"
-\bind "M-l t a"			"loa-insert"
-\bind "M-l t h"			"index-print"
-\bind "M-l t b"			"bibtex-insert"
+#\bind "M-l t s"			"toc-insert"
+#\bind "M-l t k"			"lof-insert"
+#\bind "M-l t t"			"lot-insert"
+#\bind "M-l t a"			"loa-insert"
+#\bind "M-l t h"			"index-print"
+#\bind "M-l t b"			"bibtex-insert"
 
-\bind "M-l s v"			"hfill-insert"
-\bind "M-l e t"	        	"hyphenation-point-insert"
-\bind "M-l e k"			"protected-space-insert"
-\bind "M-l e r"			"break-line"
-\bind "M-l e e"			"dots-insert"
-\bind "M-l e v"			"end-of-sentence-period-insert"
-\bind "M-l e l"			"quote-insert"
-\bind "M-l e m"			"menu-separator-insert"
+#\bind "M-l s v"			"hfill-insert"
+#\bind "M-l e t"	        	"hyphenation-point-insert"
+#\bind "M-l e k"			"protected-space-insert"
+#\bind "M-l e r"			"break-line"
+#\bind "M-l e e"			"dots-insert"
+#\bind "M-l e v"			"end-of-sentence-period-insert"
+#\bind "M-l e l"			"quote-insert"
+#\bind "M-l e m"			"menu-separator-insert"
 
-\bind "M-l h"			"note-insert"
-\bind "M-l n"			"label-insert"
-\bind "M-l v"			"reference-insert"
-\bind "M-l i"			"citation-insert"
-\bind "M-l k"			"index-insert"
-\bind "M-l e"			"index-insert-last"
-\bind "M-l u"			"url-insert"
-\bind "M-l space"		"menu-open Insert"  
+#\bind "M-l h"			"note-insert"
+#\bind "M-l n"			"label-insert"
+#\bind "M-l v"			"reference-insert"
+#\bind "M-l i"			"citation-insert"
+#\bind "M-l k"			"index-insert"
+#\bind "M-l e"			"index-insert-last"
+#\bind "M-l u"			"url-insert"
+#\bind "M-l space"		"menu-open Insert"  
 
 
 
@@ -168,8 +168,8 @@
 #bind "M-a o"			"spellcheck-options"	# Not yet implemented!
 #bind "M-a n"			"keyboard-options"	# Not yet implemented!
 #bind "M-a l"			"latex-options"		# Not yet implemented!
-\bind "M-a u"                   "reconfigure"
-\bind "M-a space"		"menu-open Options"  
+#\bind "M-a u"                   "reconfigure"
+#\bind "M-a space"		"menu-open Options"  
 
 
 #
@@ -197,7 +197,7 @@
 #bind "M-o t"			"help-copyright"	# Not yet implemented!
 #bind "M-o k"			"help-credits"		# Not yet implemented!
 #bind "M-o v"			"help-version"		# Not yet implemented!
-\bind "M-o space"		"menu-open Help" 
+#\bind "M-o space"		"menu-open Help" 
 
 
 #

@@ -2,7 +2,8 @@ AUTOMAKE_OPTIONS = foreign 1.4
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libkdedlgmoc.la
 BOOST_INCLUDES = -I$(top_srcdir)/boost
-INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/
+INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
+	${FRONTEND_INCLUDES} ${BOOST_INCLUDES}
 
 libkdedlgmoc_la_SOURCES = copyrightdlgdata_moc.C \
 		indexdlgdata_moc.C \

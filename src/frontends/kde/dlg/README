@@ -24,6 +24,15 @@ randomdlgdata.[Ch] - qtarch-generated files, not to be touched by human hands
 
 The class names are FormRandom, RandomDialog, and RandomDialogData
 
+Note that the .dlg files have no entries for the derived class header and source 
+filenames. This is because these files have to be edited by hand and should only
+be generated once (and they belong in the parent directory, not dlg/). The
+className field, though, has a special meaning. If it is blank, then qtarch
+will assume there is no derived class defined at all. Currently this has the effect
+of making mapped variables public access. If there is a name, then it assumes that
+a derived class exists, and leaves mapped variables protected. It's done like
+this to avoid the rat's nest of friend declarations and un-necessary derived classes.
+
 Some tips and guidelines for qtarch and the KDE frontend :
 
 o the default button should be the one that causes least harm, unless
