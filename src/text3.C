@@ -269,24 +269,27 @@ void LyXText::cursorPrevious()
 		return;
 		// This is what we used to do, so we wouldn't skip right past
 		// tall rows, but it's not working right now.
+	}
+
+	if (inset_owner) {
+		new_y = bv()->text->cursor.y()
+			+ bv()->theLockingInset()->insetInInsetY() + y
+			+ rit->height()
+			- bv()->workHeight() + 1;
 	} else {
-		if (inset_owner) {
-			new_y = bv()->text->cursor.y()
-				+ bv()->theLockingInset()->insetInInsetY() + y
-				+ rit->height()
-				- bv()->workHeight() + 1;
-		} else {
-			new_y = cursor.y()
-				- rit->baseline()
-				+ rit->height()
-				- bv()->workHeight() + 1;
-		}
+		new_y = cursor.y()
+			- rit->baseline()
+			+ rit->height()
+			- bv()->workHeight() + 1;
 	}
 
 	LyXCursor cur;
 	rit = cursorRow();
 	ParagraphList::iterator pit = cursorPar();
 	rit = cursorRow();
+	if (isFirstRow(pit, *rit))
+		return;
+
 	previousRow(pit, rit);
 	setCursor(cur, parOffset(pit), rit->pos(), false);
 	if (cur.y() > bv_owner->top_y())
