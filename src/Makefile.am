@@ -106,7 +106,7 @@ lyx_SOURCES = \
 	changes.h \
 	chset.C \
 	chset.h \
-	commandtags.h \
+	lfuns.h \
 	config.h.in \
 	converter.C \
 	converter.h \
