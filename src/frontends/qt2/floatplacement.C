@@ -61,12 +61,7 @@ FloatPlacement::FloatPlacement(QWidget * parent, char * name)
 	toplayout->addLayout(layout);
 
 	connect(defaultsCB, SIGNAL(toggled(bool)), options, SLOT(setDisabled(bool)));
-	connect(defaultsCB, SIGNAL(toggled(bool)), ignoreCB, SLOT(setDisabled(bool)));
-	connect(defaultsCB, SIGNAL(toggled(bool)), pageCB, SLOT(setDisabled(bool)));
-	connect(defaultsCB, SIGNAL(toggled(bool)), heredefinitelyCB, SLOT(setDisabled(bool)));
-	connect(defaultsCB, SIGNAL(toggled(bool)), herepossiblyCB, SLOT(setDisabled(bool)));
-	connect(defaultsCB, SIGNAL(toggled(bool)), bottomCB, SLOT(setDisabled(bool)));
-	connect(defaultsCB, SIGNAL(toggled(bool)), topCB, SLOT(setDisabled(bool)));
+	connect(defaultsCB, SIGNAL(toggled(bool)), this, SLOT(defClicked()));
 
 	connect(heredefinitelyCB, SIGNAL(clicked()), this, SLOT(heredefinitelyClicked()));
 	connect(topCB, SIGNAL(clicked()), this, SLOT(tbhpClicked()));
@@ -210,6 +205,12 @@ string const FloatPlacement::get() const
 }
 
 
+void FloatPlacement::defClicked()
+{
+	checkAllowed();
+}
+
+
 void FloatPlacement::tbhpClicked()
 {
 	heredefinitelyCB->setChecked(false);
@@ -236,15 +237,9 @@ void FloatPlacement::heredefinitelyClicked()
 
 void FloatPlacement::spanClicked()
 {
-	bool const span(spanCB->isChecked());
+	checkAllowed();
 
-	if (!defaultsCB->isChecked()) {
-		herepossiblyCB->setEnabled(!span);
-		heredefinitelyCB->setEnabled(!span);
-		bottomCB->setEnabled(!span);
-	}
-
-	if (!span)
+	if (!spanCB->isChecked())
 		return;
 
 	herepossiblyCB->setChecked(false);
@@ -255,24 +250,25 @@ void FloatPlacement::spanClicked()
 
 void FloatPlacement::sidewaysClicked()
 {
-	bool const sideways(sidewaysCB->isChecked());
-	bool const span(spanCB->isChecked());
+	checkAllowed();
+}
+
+
+void FloatPlacement::checkAllowed()
+{
 	bool const defaults(defaultsCB->isChecked());
 	bool ignore(topCB->isChecked());
 	ignore |= bottomCB->isChecked();
 	ignore |= pageCB->isChecked();
 	ignore |= herepossiblyCB->isChecked();
+	bool const span(spanCB->isChecked());
+	bool const sideways(sidewaysCB->isChecked());
 
 	defaultsCB->setEnabled(!sideways);
 	topCB->setEnabled(!sideways && !defaults);
-	bottomCB->setEnabled(!sideways && !defaults);
+	bottomCB->setEnabled(!sideways && !defaults && !span);
 	pageCB->setEnabled(!sideways && !defaults);
-	spanCB->setEnabled(!sideways);
 	ignoreCB->setEnabled(!sideways && !defaults && ignore);
-	herepossiblyCB->setEnabled(!sideways && !defaults);
-	heredefinitelyCB->setEnabled(!sideways && !defaults);
-	if (!sideways && !defaults) {
-		herepossiblyCB->setEnabled(!span);
-		heredefinitelyCB->setEnabled(!span);
-	}
+	herepossiblyCB->setEnabled(!sideways && !defaults && !span);
+	heredefinitelyCB->setEnabled(!sideways && !defaults && !span);
 }

@@ -28,11 +28,13 @@ public:
 
 	void set(InsetFloatParams const & params);
 	void set(std::string const & placement);
+	void checkAllowed();
 
 	std::string const get(bool & wide, bool & sideways) const;
 	std::string const get() const;
 
 public slots:
+	void defClicked();
 	void tbhpClicked();
 	void heredefinitelyClicked();
 	void spanClicked();
