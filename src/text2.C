@@ -1819,8 +1819,12 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 		recUndo(parOffset(old_pit), parOffset(endpit) - 1);
 		cursor = tmpcursor;
 
+		// cache cursor pit
+		ParagraphList::iterator tmppit = cursorPar();
 		// delete old par
 		ownerParagraphs().erase(old_pit);
+		// update cursor par offset
+		cursor.par(parOffset(tmppit));
 		redoParagraph();
 
 		// correct cursor y
