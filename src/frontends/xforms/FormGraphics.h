@@ -11,14 +11,15 @@
 #ifndef FORMGRAPHICS_H
 #define FORMGRAPHICS_H
 
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include "FormBase.h"
 #include "RadioButtonGroup.h"
+
+#include <boost/scoped_ptr.hpp>
+
 #include <vector>
 
 class ControlGraphics;
@@ -48,7 +49,7 @@ private:
 	/// Update dialog before/whilst showing it.
 	virtual void update();
 	/// Update the BoundingBox info.
-	void updateBB(string const & filename, string const & bb_inset); 
+	void updateBB(string const & filename, string const & bb_inset);
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 

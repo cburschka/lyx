@@ -30,7 +30,7 @@
 #include "support/LAssert.h"
 #include "support/lstrings.h"
 
-#include <boost/smart_ptr.hpp>
+#include <boost/scoped_array.hpp>
 
 #include <cmath>
 

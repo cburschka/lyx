@@ -1,5 +1,17 @@
 2002-05-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* ColorHandler.C: include scoped_array.hpp
+
+	* font.C: Use more specific smart_ptr header.
+	* Painter.C: ditto
+	* gettext.C: ditto
+	* ShareContainer.h: ditto
+	* lyx_main.h: ditto
+	* kbmap.h: ditto
+	* FontInfo.h: ditto
+	* BufferView_pimpl.h: ditto
+	* ColorHandler.h: ditto
+
 	* kbmap.C (defkey): change call to shared_ptr::reset
 
 2002-05-21  Juergen Vigna  <jug@sad.it>

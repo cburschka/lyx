@@ -11,7 +11,7 @@
 #ifndef FORMTABULAR_H
 #define FORMTABULAR_H
 
-#include <boost/smart_ptr.hpp>
+#include <boost/scoped_ptr.hpp>
 
 #ifdef __GNUG__
 #pragma interface

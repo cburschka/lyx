@@ -13,9 +13,6 @@
 #ifndef FORMBASE_H
 #define FORMBASE_H
 
-#include <boost/smart_ptr.hpp>
-#include FORMS_H_LOCATION // Can't forward-declare FL_FORM
-
 #ifdef __GNUG__
 #pragma interface
 #endif
@@ -24,6 +21,10 @@
 #include "LString.h"
 #include "ButtonPolicies.h"
 #include "FeedbackController.h"
+
+#include <boost/scoped_ptr.hpp>
+
+#include FORMS_H_LOCATION // Can't forward-declare FL_FORM
 
 class xformsBC;
 class Tooltips;

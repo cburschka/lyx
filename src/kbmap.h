@@ -15,10 +15,11 @@
 #pragma interface
 #endif
 
-#include <list>
-#include <boost/smart_ptr.hpp>
-
 #include "LString.h"
+
+#include <boost/shared_ptr.hpp>
+
+#include <list>
 
 class kb_sequence;
 

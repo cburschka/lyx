@@ -16,11 +16,6 @@
 
 #include <config.h>
 
-#include <qfont.h>
-#include <qdialog.h>
-#include <qobject.h>
-#include <qapplication.h>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
@@ -31,7 +26,12 @@
 #include "ButtonPolicies.h"
 #include "ControlButtons.h"
 
-#include <boost/smart_ptr.hpp>
+#include <boost/scoped_ptr.hpp>
+
+#include <qfont.h>
+#include <qdialog.h>
+#include <qobject.h>
+#include <qapplication.h>
 
 class Qt2BC;
 

@@ -19,12 +19,12 @@
 #pragma interface
 #endif
 
-#include <csignal>
-
 #include "LString.h"
 
-#include <boost/smart_ptr.hpp>
+#include <boost/scoped_ptr.hpp>
 #include <boost/utility.hpp>
+
+#include <csignal>
 
 class LyXGUI;
 class LyXRC;

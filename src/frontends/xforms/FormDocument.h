@@ -10,14 +10,15 @@
 #ifndef FORM_DOCUMENT_H
 #define FORM_DOCUMENT_H
 
-#include <vector>
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include "FormBaseDeprecated.h"
+
+#include <boost/scoped_ptr.hpp>
+
+#include <vector>
 
 class Combox;
 class BufferParams;

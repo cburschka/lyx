@@ -8,8 +8,6 @@
 
 #include <config.h>
 
-#include <algorithm>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -27,6 +25,10 @@
 #include "support/LAssert.h"
 #include "gettext.h"
 #include "debug.h"
+
+#include <boost/scoped_ptr.hpp>
+
+#include <algorithm>
 
 using std::endl;
 using std::vector;

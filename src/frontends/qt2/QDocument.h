@@ -11,12 +11,13 @@
 #ifndef QDOCUMENT_H
 #define QDOCUMENT_H
 
-#include <vector>
-#include <boost/smart_ptr.hpp>
-
 #include "Qt2Base.h"
 #include "Qt2BC.h"
 #include "QtLyXView.h"
+
+#include <boost/scoped_ptr.hpp>
+
+#include <vector>
 
 #ifdef __GNUG__
 #pragma interface

@@ -12,13 +12,13 @@
 #ifndef FORM_MATHSSTYLE_H
 #define FORM_MATHSSTYLE_H
 
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include "FormMathsPanel.h"
+
+#include <boost/scoped_ptr.hpp>
 
 struct FD_form_maths_style;
 

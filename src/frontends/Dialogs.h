@@ -18,12 +18,14 @@
 #ifndef DIALOGS_H
 #define DIALOGS_H
 
-#include <vector>
+#include "LString.h"
+
+#include <boost/utility.hpp>
+#include <boost/shared_ptr.hpp>
+
 #include <sigc++/signal_system.h>
 
-#include "LString.h"
-#include <boost/utility.hpp>
-#include <boost/smart_ptr.hpp>
+#include <vector>
 
 #ifdef __GNUG__
 #pragma interface

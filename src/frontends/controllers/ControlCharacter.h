@@ -10,14 +10,14 @@
 #ifndef CONTROLCHARACTER_H
 #define CONTROLCHARACTER_H
 
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include "ControlDialog_impl.h"
 #include "character.h"
+
+#include <boost/scoped_ptr.hpp>
 
 /** A controller for Character dialogs.
  */

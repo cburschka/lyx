@@ -12,11 +12,6 @@
 #ifndef MENUBAR_PIMPL_H
 #define MENUBAR_PIMPL_H
 
-#include <vector>
-#include <map>
-#include <boost/smart_ptr.hpp>
-#include FORMS_H_LOCATION
-
 #ifdef __GNUG__
 #pragma interface
 #endif
@@ -25,6 +20,13 @@
 #include "frontends/Menubar.h"
 #include "commandtags.h"
 #include "MenuBackend.h"
+
+#include <boost/shared_ptr.hpp>
+
+#include FORMS_H_LOCATION
+
+#include <vector>
+#include <map>
 
 class LyXView;
 

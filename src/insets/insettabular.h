@@ -45,9 +45,6 @@
 #ifndef INSETTABULAR_H
 #define INSETTABULAR_H
 
-#include <sigc++/signal_system.h>
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
@@ -57,6 +54,10 @@
 #include "LString.h"
 #include "lyxcursor.h"
 #include "FuncStatus.h"
+
+#include <boost/scoped_ptr.hpp>
+
+#include <sigc++/signal_system.h>
 
 class LyXLex;
 class Painter;

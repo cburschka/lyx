@@ -21,10 +21,14 @@
 
 #include "LString.h"
 #include "Lsstream.h"
-#include <boost/smart_ptr.hpp>
+
+#include <boost/shared_ptr.hpp>
 #include <boost/utility.hpp>
+
 #include <sigc++/signal_system.h>
+
 #include <list>
+
 #include <sys/types.h> // needed for pid_t
 
 #ifdef __GNUG__

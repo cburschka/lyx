@@ -15,9 +15,6 @@
 
 #include <config.h>
 
-#include <utility>
-#include <vector>
-
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -37,6 +34,11 @@
 #include "lyxrc.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
+
+#include <boost/scoped_ptr.hpp>
+
+#include <utility>
+#include <vector>
 
 using std::make_pair;
 using std::vector;

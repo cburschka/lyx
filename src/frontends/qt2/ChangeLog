@@ -1,18 +1,23 @@
+2002-05-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* QDocument.h: use more specific smart_ptr header.
+	* Qt2Base.h: ditto
+
 2002-04-30  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QCharacter.h:
 	* QCharacter.C: update for language i18n change
- 
+
 2002-04-16  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C: add tooltipsEnabled()
 
 	* QTeXInfo.C: include right header
- 
+
 	* moc/Makefile.am: add back missing moc files
 
 	* xforms/Makefile.am: add missing FeedbackController
- 
+
 2002-04-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* xforms/Makefile.am (link_files): use correct _SOURCES variable.

@@ -34,11 +34,14 @@
 #endif
 
 #include "GraphicsTypes.h"
-#include <list>
 #include "LString.h"
+
 #include <boost/utility.hpp>
-#include <boost/smart_ptr.hpp>
+#include <boost/shared_ptr.hpp>
+
 #include <sigc++/signal_system.h>
+
+#include <list>
 
 class InsetGraphics;
 
@@ -93,7 +96,7 @@ public:
 	unsigned int raw_width() const;
 	///
 	unsigned int raw_height() const;
-	
+
 private:
 	/** Start the image conversion process, checking first that it is
 	 *  necessary. If it is necessary, then a conversion task is started.

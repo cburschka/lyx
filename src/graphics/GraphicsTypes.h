@@ -14,7 +14,7 @@
 #ifndef GRAPHICSTYPES_H
 #define GRAPHICSTYPES_H
 
-#include <boost/smart_ptr.hpp>
+#include <boost/shared_ptr.hpp>
 
 #ifdef __GNUG__
 #pragma interface

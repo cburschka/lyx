@@ -15,12 +15,12 @@
 #pragma interface
 #endif
 
-#include <boost/smart_ptr.hpp>
+#include "PainterBase.h"
+
+#include <boost/scoped_ptr.hpp>
 
 // This is only included to provide stuff for the non-public sections
 #include <X11/Xlib.h>
-
-#include "PainterBase.h"
 
 class LyXFont;
 

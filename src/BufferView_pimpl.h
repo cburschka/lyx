@@ -3,8 +3,6 @@
 #ifndef BUFFERVIEW_PIMPL_H
 #define BUFFERVIEW_PIMPL_H
 
-#include <boost/smart_ptr.hpp>
-
 #include "BufferView.h"
 #include "commandtags.h"
 #include "frontends/Timeout.h"
@@ -12,6 +10,8 @@
 #include "box.h"
 #include "insets/insetspecialchar.h"
 #include "support/types.h"
+
+#include <boost/scoped_ptr.hpp>
 
 #ifdef __GNUG__
 #pragma interface

@@ -25,7 +25,7 @@
 #include "paragraph.h"
 #include "lyxcursor.h"
 
-#include <boost/smart_ptr.hpp>
+#include <boost/shared_ptr.hpp>
 
 class Painter;
 class BufferView;

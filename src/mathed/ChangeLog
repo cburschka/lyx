@@ -1,3 +1,7 @@
+2002-05-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* math_exintinset.C: use more specific smart_ptr header.
+
 2002-05-15  John Levon  <moz@compsoc.man.ac.uk>
 
 	* math_cursor.C: clear selection on paste (bug 393)

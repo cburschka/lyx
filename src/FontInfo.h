@@ -18,7 +18,7 @@
 
 #include "LString.h"
 
-#include <boost/smart_ptr.hpp>
+#include <boost/scoped_array.hpp>
 
 /** This class manages a font.
     The idea is to create a FontInfo object with a font name pattern with a

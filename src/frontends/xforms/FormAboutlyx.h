@@ -11,15 +11,15 @@
 #ifndef FORMABOUTLYX_H
 #define FORMABOUTLYX_H
 
-#include <vector>
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-
 #include "FormBase.h"
+
+#include <vector>
+
+#include <boost/scoped_ptr.hpp>
 
 class ControlAboutlyx;
 struct FD_form_aboutlyx;

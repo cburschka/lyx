@@ -1,5 +1,8 @@
 2002-05-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* insettabular.h: use more specific smart_ptr header.
+	* insettext.h: ditto
+
 	* insetgraphics.C (InsetGraphics): change call of shared_ptr::reset
 	(draw): ditto
 

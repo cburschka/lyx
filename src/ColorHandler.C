@@ -20,6 +20,8 @@
 
 #include "frontends/GUIRunTime.h"
 
+#include <boost/scoped_array.hpp>
+
 #include <cmath>
 
 using std::endl;

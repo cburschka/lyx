@@ -1,3 +1,9 @@
+2002-05-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* ControlExternal.C: add scoped_ptr.hpp
+
+	* ControlCharacter.h: use more specific smart_ptr header.
+
 2002-05-21  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* frnt_lang.C (getLanguageData): change a couple of N_() to _().
@@ -6,7 +12,7 @@
 
 	* biblio.C (getAbbreviatedAuthor): fix bug with "and" for Authors
 	like "Odland, G. and ... "
-	(parseBibTeX): fix bug with title and booktitle 
+	(parseBibTeX): fix bug with title and booktitle
 	and replace a \n with a space when one entry has more than
 	one line
 
@@ -31,7 +37,7 @@
 2002-04-30  John Levon  <moz@compsoc.man.ac.uk>
 
 	* frnt_lang.C: fix build
- 
+
 2002-04-30  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* frnt_lang.[Ch] (getLanguageData): passed a bool character_dlg.
@@ -109,7 +115,7 @@
 	* ControlGraphics.C:
 	* ControlPrint.C:
 	* ControlBibtex.C: make N_() be _()
- 
+
 2002-04-07  Herbert Voss  <voss@perce.de>
 
 	* ControlGraphics.[C]: move readBB as readBB_from_PSFile into filetools

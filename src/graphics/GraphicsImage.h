@@ -24,11 +24,15 @@
 
 #include "GraphicsTypes.h"
 #include "LString.h"
-#include <boost/smart_ptr.hpp>
+
+#include <boost/shared_ptr.hpp>
+
 #include <sigc++/signal_system.h>
+
+#include <X11/X.h>
+
 #include <vector>
 #include <utility>
-#include <X11/X.h>
 
 #ifdef __GNUG__
 #pragma interface

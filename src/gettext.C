@@ -16,7 +16,7 @@
 
 #include "LString.h"
 
-#include <boost/smart_ptr.hpp>
+#include <boost/scoped_array.hpp>
 
 #ifdef ENABLE_NLS
 

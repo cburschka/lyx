@@ -12,9 +12,6 @@
 #ifndef FORMPREFERENCES_H
 #define FORMPREFERENCES_H
 
-#include <utility> // pair
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
@@ -22,6 +19,10 @@
 #include "FormBaseDeprecated.h"
 #include "Color.h" // NamedColor
 #include "xforms_helpers.h" // XformColor
+
+#include <boost/scoped_ptr.hpp>
+
+#include <utility> // pair
 
 class Combox;
 class Dialogs;

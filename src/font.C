@@ -21,8 +21,7 @@
 #include "encoding.h"
 #include "language.h"
 
-#include <boost/smart_ptr.hpp>
-
+#include <boost/scoped_array.hpp>
 
 namespace {
 

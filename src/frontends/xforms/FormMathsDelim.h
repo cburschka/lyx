@@ -12,13 +12,13 @@
 #ifndef FORM_MATHSDELIM_H
 #define FORM_MATHSDELIM_H
 
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include "FormMathsPanel.h"
+
+#include <boost/scoped_ptr.hpp>
 
 struct FD_form_maths_delim;
 

@@ -11,8 +11,6 @@
 #ifndef FORM_CHARACTER_H
 #define FORM_CHARACTER_H
 
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
@@ -22,6 +20,8 @@
 #include "ControlCharacter.h" // for ControlCharacter enum
 #include "LColor.h"           // for LColor enum
 #include "character.h"        // for FONT_STATE enum
+
+#include <boost/scoped_ptr.hpp>
 
 class Combox;
 struct FD_form_character;

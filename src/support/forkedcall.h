@@ -29,10 +29,12 @@
 #endif
 
 #include "LString.h"
-#include <sys/types.h>
-#include <boost/smart_ptr.hpp>
+
+#include <boost/shared_ptr.hpp>
+
 #include <sigc++/signal_system.h>
 
+#include <sys/types.h>
 
 class Forkedcall {
 public:

@@ -13,7 +13,6 @@
 #define FORM_MATHSPANEL_H
 
 #include "commandtags.h"
-#include <boost/smart_ptr.hpp>
 
 #ifdef __GNUG__
 #pragma interface
@@ -21,6 +20,8 @@
 
 #include "FormBaseDeprecated.h"
 #include "MathsSymbols.h"
+
+#include <boost/scoped_ptr.hpp>
 
 class FormMathsBitmap;
 class FormMathsDeco;

@@ -12,7 +12,6 @@
 #ifndef FORMPRINT_H
 #define FORMPRINT_H
 
-#include <boost/smart_ptr.hpp>
 
 #ifdef __GNUG__
 #pragma interface

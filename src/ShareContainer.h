@@ -3,11 +3,12 @@
 #ifndef SHARECONTAINER_H
 #define SHARECONTAINER_H
 
+#include <boost/utility.hpp>
+#include <boost/shared_ptr.hpp>
+
 #include <vector>
 #include <algorithm>
 #include <functional>
-#include <boost/utility.hpp>
-#include <boost/smart_ptr.hpp>
 
 /// Share objects between several users.
 /**

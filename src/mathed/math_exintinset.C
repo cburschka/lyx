@@ -7,7 +7,7 @@
 #include "math_symbolinset.h"
 #include "debug.h"
 
-#include <boost/smart_ptr.hpp>
+#include <boost/scoped_ptr.hpp>
 
 using std::endl;
 

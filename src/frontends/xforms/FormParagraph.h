@@ -10,13 +10,13 @@
 #ifndef FORM_PARAGRAPH_H
 #define FORM_PARAGRAPH_H
 
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include "FormBaseDeprecated.h"
+
+#include <boost/scoped_ptr.hpp>
 
 class Paragraph;
 struct FD_form_paragraph;
