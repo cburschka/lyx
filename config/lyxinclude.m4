@@ -199,7 +199,7 @@ esac
 # set the debug flags correctly.
 if test x$GXX = xyes; then
   dnl Useful for global version info
-  gxx_version=`${CXX} --version`
+  gxx_version=`${CXX} -dumpversion`
   CXX_VERSION="($gxx_version)"
   
   if test "$ac_test_CXXFLAGS" = set; then
