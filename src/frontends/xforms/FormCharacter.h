@@ -16,7 +16,7 @@
 #include "FormDialogView.h"
 #include "ControlCharacter.h" // for ControlCharacter enum
 
-struct LColor_color;
+#include "LColor.h"
 
 namespace lyx {
 namespace frontend {

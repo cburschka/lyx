@@ -12,6 +12,8 @@
 #ifndef LYXTEXTCLASSLIST_H
 #define LYXTEXTCLASSLIST_H
 
+#include "lyxtextclass.h"
+
 #include "support/types.h"
 
 #include <boost/utility.hpp>
@@ -19,7 +21,6 @@
 #include <string>
 #include <vector>
 
-class LyXTextClass;
 class LyXLayout;
 
 /// Reads the style files

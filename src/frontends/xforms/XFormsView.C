@@ -27,6 +27,8 @@
 
 #include <boost/bind.hpp>
 
+using boost::shared_ptr;
+
 using std::abs;
 using std::endl;
 using std::string;
@@ -69,22 +71,22 @@ XFormsView::XFormsView(int width, int height)
 	int const air = 2;
 
 	// Logical layout of the boxes making up the LyX window.
-	Box & top    = window_.children().push_back(Box(0,0));
-	Box & middle = window_.children().push_back(Box(0,0));
-	middle.set(Box::Horizontal);
-	Box & bottom = window_.children().push_back(Box(0,0));
+	shared_ptr<Box> top = window_.children().push_back(Box(0,0));
+	shared_ptr<Box> middle = window_.children().push_back(Box(0,0));
+	middle->set(Box::Horizontal);
+	shared_ptr<Box> bottom = window_.children().push_back(Box(0,0));
 
-	Box & left   = middle.children().push_back(Box(air,0));
-	Box & center = middle.children().push_back(Box(0,0));
-	center.set(Box::Expand);
-	Box & right  = middle.children().push_back(Box(air,0));
+	shared_ptr<Box> left = middle->children().push_back(Box(air,0));
+	shared_ptr<Box> center = middle->children().push_back(Box(0,0));
+	center->set(Box::Expand);
+	shared_ptr<Box> right = middle->children().push_back(Box(air,0));
 
 	// Define accessors to the various boxes.
-	box_map_[Top]    = &top;
-	box_map_[Bottom] = &bottom;
-	box_map_[Left]   = &left;
-	box_map_[Center] = &center;
-	box_map_[Right]  = &right;
+	box_map_[Top]    = top;
+	box_map_[Bottom] = bottom;
+	box_map_[Left]   = left;
+	box_map_[Center] = center;
+	box_map_[Right]  = right;
 
 	// Define the XForms components making up the window.
 	// Each uses the layout engine defined above to control its
@@ -145,11 +147,11 @@ XFormsView::~XFormsView()
 }
 
 
-Box & XFormsView::getBox(Position pos) const
+shared_ptr<Box> XFormsView::getBox(Position pos) const
 {
-	std::map<Position, Box *>::const_iterator it = box_map_.find(pos);
+	BoxMap::const_iterator it = box_map_.find(pos);
 	BOOST_ASSERT(it != box_map_.end());
-	return *it->second;
+	return it->second;
 }
 
 

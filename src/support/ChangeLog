@@ -1,3 +1,10 @@
+2004-11-16  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* forkedcontr.C (find_pid): simplify and also make pass concept
+	checks. 
+	(handleCompletedProcesses): make sure that we do not slice the
+	object and satisfy concept checks.
+
 2004-11-09  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* filetools.[Ch] (getFormatFromContents): don't guess format from
@@ -6,7 +13,7 @@
 
 2004-11-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
-	* Make it clearer where include files are comming from. 
+	* Make it clearer where include files are comming from.
 
 2004-11-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
 

@@ -220,7 +220,11 @@ if test x$GXX = xyes; then
     esac
     if test x$enable_debug = xyes ; then
 	case $gxx_version in
+	    3.3*) CXXFLAGS="-g $CXXFLAGS"
+		AC_DEFINE(_GLIBCPP_CONCEPT_CHECKS, 1, [libstdc++ concept checking])
+		;;
 	    3.4*|3.5*) CXXFLAGS="-g $CXXFLAGS"
+		AC_DEFINE(_GLIBCXX_CONCEPT_CHECKS, 1, [libstdc++ concept checking])
 		AC_DEFINE(_GLIBCXX_DEBUG, 1, [libstdc++ debug mode])
 		AC_DEFINE(_GLIBCXX_DEBUG_PEDANTIC, 1, [libstdc++ pedantic debug mode])
 		;;

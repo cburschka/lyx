@@ -31,6 +31,17 @@ class ParIterator : public std::iterator<std::forward_iterator_tag, Paragraph>,
 		    public DocIterator
 {
 public:
+	typedef std::iterator<std::forward_iterator_tag, Paragraph> StdIt;
+
+	typedef StdIt::value_type value_type;
+	typedef StdIt::difference_type difference_type;
+	typedef StdIt::pointer pointer;
+	typedef StdIt::reference reference;
+
+	///
+	ParIterator() : DocIterator() {}
+
+
 	///
 	ParIterator(InsetBase &, lyx::par_type pit);
 	///
@@ -43,7 +54,9 @@ public:
 	///
 	ParIterator & operator++();
 	///
-	ParIterator & operator--();
+	ParIterator operator++(int);
+	/// See comment in pariterator.C
+	//ParIterator & operator--();
 	///
 	Paragraph & operator*() const;
 	///

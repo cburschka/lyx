@@ -15,6 +15,9 @@
 #define LAYOUT_ENGINE_H
 
 #include "forms_fwd.h"
+
+#include <boost/shared_ptr.hpp>
+
 #include <list>
 #include <map>
 
@@ -25,7 +28,7 @@ class Box;
 
 class BoxList {
 public:
-	typedef std::list<Box> Container;
+	typedef std::list<boost::shared_ptr<Box> > Container;
 	typedef Container::size_type size_type;
 	typedef Container::iterator iterator;
 	typedef Container::const_iterator const_iterator;
@@ -34,7 +37,7 @@ public:
 	size_type size() const;
 
 	void clear();
-	Box & push_back(Box const &);
+	boost::shared_ptr<Box> push_back(Box const &);
 
 	iterator begin();
 	iterator end();
@@ -167,12 +170,13 @@ public:
 	typedef Box::dimension_t dimension_t;
 
 	/// \returns the just-added Box.
-	Box & add(FL_OBJECT * widget, BoxList & container,
-		  dimension_t min_w, dimension_t min_h);
+	boost::shared_ptr<Box>
+	add(FL_OBJECT * widget, BoxList & container,
+	    dimension_t min_w, dimension_t min_h);
 	void updateMetrics() const;
 
 private:
-	typedef std::map<FL_OBJECT *, Box *> DataMap;
+	typedef std::map<FL_OBJECT *, boost::shared_ptr<Box> > DataMap;
 	DataMap widgets_;
 };
 
@@ -181,7 +185,8 @@ private:
  *  Thereafter, hand control of its metrics to \c widgets.
  *  \returns the Box containing \c ob.
  */
-Box & embed(FL_OBJECT * ob, BoxList & container, WidgetMap & widgets, int bw);
+boost::shared_ptr<Box>
+embed(FL_OBJECT * ob, BoxList & container, WidgetMap & widgets, int bw);
 
 } // namespace frontend
 } // namespace lyx

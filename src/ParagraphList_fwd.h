@@ -12,21 +12,21 @@
 #ifndef PARAGRAPH_LIST_FWD_H
 #define PARAGRAPH_LIST_FWD_H
 
-#include <vector>
+#include "paragraph.h"
 
-class Paragraph;
+#include <vector>
 
 class ParagraphList : public std::vector<Paragraph>
 {
 public:
 	///
-	typedef std::vector<Paragraph> base_type;
+	typedef std::vector<Paragraph> BaseType;
 	///
 	ParagraphList();
 	///
 	template <class Iter>
 	ParagraphList(Iter beg, Iter end)
-		: base_type(beg, end)
+		: BaseType(beg, end)
 	{}
 };
 

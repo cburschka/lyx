@@ -13,6 +13,8 @@
 #ifndef MATH_INSET_H
 #define MATH_INSET_H
 
+#include "math_data.h"
+
 #include "insets/insetbase.h"
 
 #include <string>
@@ -51,9 +53,6 @@ class MathSymbolInset;
 class MathUnknownInset;
 
 class RefInset;
-
-class MathArray;
-class MathAtom;
 
 class NormalStream;
 class OctaveStream;

@@ -16,6 +16,7 @@
 #include "FormDialogView.h"
 
 #include "lyx_forms.h"
+#include "xforms_helpers.h"
 
 #include <boost/scoped_ptr.hpp>
 
@@ -49,9 +50,7 @@ struct FD_preferences_screen_fonts;
 struct FD_preferences_spelloptions;
 
 class FormColorpicker;
-class NamedColor;
 class RGBColor;
-class XformsColor;
 
 /** This class provides an XForms implementation of the FormPreferences Dialog.
  *  The preferences dialog allows users to set/save their preferences.

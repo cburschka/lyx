@@ -12,9 +12,9 @@
 #ifndef ROW_LIST_FWD_H
 #define ROW_LIST_FWD_H
 
-#include <vector>
+#include "lyxrow.h"
 
-class Row;
+#include <vector>
 
 typedef std::vector<Row> RowList;
 

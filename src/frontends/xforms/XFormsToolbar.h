@@ -97,7 +97,7 @@ public:
 	///
 	XFormsView::Position position_;
 	///
-	Box * toolbar_;
+	boost::shared_ptr<Box> toolbar_;
 	///
 	BoxList * toolbar_buttons_;
 	///

@@ -24,8 +24,14 @@
 
 #include "LayoutEngine.h"
 #include "lyx_forms.h"
-#include <boost/assert.hpp>
 
+#include <boost/assert.hpp>
+#include <boost/bind.hpp>
+
+using boost::bind;
+using boost::shared_ptr;
+
+using std::for_each;
 
 namespace lyx {
 namespace frontend {
@@ -49,9 +55,9 @@ void BoxList::clear()
 }
 
 
-Box & BoxList::push_back(Box const & box)
+shared_ptr<Box> BoxList::push_back(Box const & box)
 {
-	data_.push_back(box);
+	data_.push_back(shared_ptr<Box>(new Box(box)));
 	return data_.back();
 }
 
@@ -176,7 +182,7 @@ bool Box::expandable() const
 	BoxList::const_iterator it = children_.begin();
 	BoxList::const_iterator const end = children_.end();
 	for (; it != end; ++it) {
-		if (it->visible() && it->packing() == Expand)
+		if ((*it)->visible() && (*it)->packing() == Expand)
 			return true;
 	}
 
@@ -211,10 +217,8 @@ void Box::show()
 
 	visible_ = true;
 
-	BoxList::iterator it = children_.begin();
-	BoxList::iterator const end = children_.end();
-	for (; it != end; ++it)
-		it->show();
+	for_each(children_.begin(), children_.end(),
+		bind(&Box::show, _1));
 }
 
 
@@ -222,10 +226,8 @@ void Box::hide()
 {
 	visible_ = false;
 
-	BoxList::iterator it = children_.begin();
-	BoxList::iterator const end = children_.end();
-	for (; it != end; ++it)
-		it->hide();
+	for_each(children_.begin(), children_.end(),
+		 bind(&Box::hide, _1));
 }
 
 
@@ -280,12 +282,12 @@ void Box::shrinkMetrics()
 	BoxList::iterator it = children_.begin();
 	BoxList::iterator const end = children_.end();
 	for (; it != end; ++it) {
-		if (!it->visible())
+		if (!(*it)->visible())
 			continue;
 
-		it->shrinkMetrics();
-		dimension_t child_width = it->width();
-		dimension_t child_height = it->height();
+		(*it)->shrinkMetrics();
+		dimension_t child_width = (*it)->width();
+		dimension_t child_height = (*it)->height();
 
 		if (orientation_ == Horizontal) {
 			width += child_width;
@@ -326,12 +328,12 @@ void Box::expandHbox(dimension_t x_in, dimension_t y_in,
 	BoxList::const_iterator cit = children_.begin();
 	BoxList::const_iterator const cend = children_.end();
 	for (; cit != cend; ++cit) {
-		if (cit->visible()) {
+		if ((*cit)->visible()) {
 			nvisible_children += 1;
-			if (cit->expandable())
+			if ((*cit)->expandable())
 				nexpanded_children += 1;
 			else
-				w_fixed += cit->width();
+				w_fixed += (*cit)->width();
 		}
 	}
 
@@ -352,11 +354,11 @@ void Box::expandHbox(dimension_t x_in, dimension_t y_in,
 	BoxList::iterator it = children_.begin();
 	BoxList::iterator const end = children_.end();
 	for (; it != end; ++it) {
-		if (!it->visible())
+		if (!(*it)->visible())
 			continue;
 
-		dimension_t w_child = it->width();
-		if (it->expandable()) {
+		dimension_t w_child = (*it)->width();
+		if ((*it)->expandable()) {
 			if (nexpanded_children == 1)
 				w_child = std::max(w_child, width);
 			else
@@ -366,7 +368,7 @@ void Box::expandHbox(dimension_t x_in, dimension_t y_in,
 			width -= w_child;
 		}
 
-		it->expandMetrics(x_child, y_child, w_child, h_child);
+		(*it)->expandMetrics(x_child, y_child, w_child, h_child);
 		x_child += w_child;
 	}
 }
@@ -382,12 +384,12 @@ void Box::expandVbox(dimension_t x_in, dimension_t y_in,
 	BoxList::const_iterator cit = children_.begin();
 	BoxList::const_iterator const cend = children_.end();
 	for (; cit != cend; ++cit) {
-		if (cit->visible()) {
+		if ((*cit)->visible()) {
 			nvisible_children += 1;
-			if (cit->expandable())
+			if ((*cit)->expandable())
 				nexpanded_children += 1;
 			else
-				h_fixed += cit->height();
+				h_fixed += (*cit)->height();
 		}
 	}
 
@@ -408,11 +410,11 @@ void Box::expandVbox(dimension_t x_in, dimension_t y_in,
 	BoxList::iterator it = children_.begin();
 	BoxList::iterator const end = children_.end();
 	for (; it != end; ++it) {
-		if (!it->visible())
+		if (!(*it)->visible())
 			continue;
 
-		dimension_t h_child = it->height();
-		if (it->expandable()) {
+		dimension_t h_child = (*it)->height();
+		if ((*it)->expandable()) {
 			if (nexpanded_children == 1)
 				h_child = std::max(h_child, height);
 			else
@@ -421,17 +423,17 @@ void Box::expandVbox(dimension_t x_in, dimension_t y_in,
 			height -= h_child;
 		}
 
-		it->expandMetrics(x_child, y_child, w_child, h_child);
+		(*it)->expandMetrics(x_child, y_child, w_child, h_child);
 		y_child += h_child;
 	}
 }
 
 
-Box & WidgetMap::add(FL_OBJECT * ob, BoxList & container,
+shared_ptr<Box> WidgetMap::add(FL_OBJECT * ob, BoxList & container,
 		     dimension_t min_w, dimension_t min_h)
 {
-	Box & box = container.push_back(Box(min_w, min_h));
-	widgets_[ob] = &box;
+	shared_ptr<Box> box = container.push_back(Box(min_w, min_h));
+	widgets_[ob] = box;
 	return box;
 }
 
@@ -458,16 +460,17 @@ void WidgetMap::updateMetrics() const
 }
 
 
-Box & embed(FL_OBJECT * ob, BoxList & container, WidgetMap & widgets, int bw)
+shared_ptr<Box>
+embed(FL_OBJECT * ob, BoxList & container, WidgetMap & widgets, int bw)
 {
 	container.push_back(Box(0, bw));
-	Box & middle = container.push_back(Box(0, 0));
-	middle.set(Box::Horizontal);
+	shared_ptr<Box> middle = container.push_back(Box(0, 0));
+	middle->set(Box::Horizontal);
 	container.push_back(Box(0, bw));
 
-	middle.children().push_back(Box(bw, 0));
-	Box & center = widgets.add(ob, middle.children(), 0, 0);
-	middle.children().push_back(Box(bw, 0));
+	middle->children().push_back(Box(bw, 0));
+	shared_ptr<Box> center = widgets.add(ob, middle->children(), 0, 0);
+	middle->children().push_back(Box(bw, 0));
 
 	return center;
 }

@@ -109,7 +109,7 @@ private:
 	/// are we showing an informational temporary message ?
 	bool info_shown_;
 	///
-	Box * minibuffer_;
+	boost::shared_ptr<Box> minibuffer_;
 	///
 	WidgetMap widgets_;
 };

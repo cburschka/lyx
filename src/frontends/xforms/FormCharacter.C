@@ -20,8 +20,6 @@
 #include "controllers/frnt_lang.h"
 #include "controllers/helper_funcs.h"
 
-#include "LColor.h"
-
 #include "support/lstrings.h"
 
 #include "lyx_forms.h"

@@ -25,6 +25,8 @@
 
 #include <boost/bind.hpp>
 
+using boost::shared_ptr;
+
 using std::vector;
 using std::string;
 
@@ -53,11 +55,11 @@ XMiniBuffer::XMiniBuffer(XFormsView & owner,
 	// 2 pixel deep frame.
 	int const air = 2;
 
-	BoxList & boxlist = owner.getBox(XFormsView::Bottom).children();
-	minibuffer_ = &boxlist.push_back(Box(0,0));
-	Box & center = embed(input_, minibuffer_->children(), widgets_, air);
-	center.set(Box::Expand);
-	center.setMinimumDimensions(0, 25);
+	BoxList & boxlist = owner.getBox(XFormsView::Bottom)->children();
+	minibuffer_ = boxlist.push_back(Box(0,0));
+	shared_ptr<Box> center = embed(input_, minibuffer_->children(), widgets_, air);
+	center->set(Box::Expand);
+	center->setMinimumDimensions(0, 25);
 
 	owner.metricsUpdated.connect(boost::bind(&WidgetMap::updateMetrics,
 						 &widgets_));

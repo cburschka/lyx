@@ -24,6 +24,8 @@
 
 #include <boost/bind.hpp>
 
+using boost::shared_ptr;
+
 using std::abs;
 using std::dec;
 using std::endl;
@@ -147,17 +149,17 @@ XWorkArea::XWorkArea(LyXView & owner, int w, int h)
 	// Hand control of the layout of these widgets to the
 	// Layout Engine.
 	XFormsView & xview = dynamic_cast<XFormsView &>(owner);
-	BoxList & boxlist = xview.getBox(XFormsView::Center).children();
+	BoxList & boxlist = xview.getBox(XFormsView::Center)->children();
 
-	wa_box_ = &boxlist.push_back(Box(0,0));
+	wa_box_ = boxlist.push_back(Box(0,0));
 	wa_box_->set(Box::Horizontal);
 
-	Box & frame_box = widgets_.add(frame, wa_box_->children(), 0, 0);
-	frame_box.set(Box::Expand);
+	shared_ptr<Box> frame_box = widgets_.add(frame, wa_box_->children(), 0, 0);
+	frame_box->set(Box::Expand);
 
 	int const bw = int(abs(fl_get_border_width()));
-	Box & wa_box = embed(work_area, frame_box.children(), widgets_, bw);
-	wa_box.set(Box::Expand);
+	shared_ptr<Box> wa_box = embed(work_area, frame_box->children(), widgets_, bw);
+	wa_box->set(Box::Expand);
 
 	widgets_.add(scrollbar, wa_box_->children(), 17, 0);
 

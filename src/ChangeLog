@@ -1,3 +1,23 @@
+2004-11-16  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* pariterator.h: add typdefs for value_type, difference_type,
+	pointer and reference to satisfy concept checks. Also add default
+	constructor for same reason.
+
+	* pariterator.C (operator++): add post-increment operator to
+	satisfy concept checks.
+
+	* lyxtextclasslist.h: include lyxtextclass.h to satisfy concept
+	checks.
+
+	* RowList_fwd.h: include lyxrow.h to satisfy concept checks.
+
+	* ParagraphList_fwd.h: include paragraph.h to satisfy concept
+	checks. Also rename base_type to BaseType to follow naming
+	standard better.
+
+	* FloatList.h: include Floating.h to satisfy concept checks.
+
 2004-11-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lyxfunc.C (getStatus): when the origin of the request is menu or
@@ -45,7 +65,7 @@
 
 	* kbmap.C (defkey): set the origin of func to KEYBOARD
 
-	* MenuBackend.C (MenuItem): 
+	* MenuBackend.C (MenuItem):
 	* ToolbarBackend.C (add): set the origin of func to UI
 
 	* funcrequest.[Ch]: add origin member, which indicates which part

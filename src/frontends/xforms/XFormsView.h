@@ -48,7 +48,7 @@ public:
 	~XFormsView();
 
 	/// Accessor to the appropriate layout Box.
-	Box & getBox(Position pos) const;
+	boost::shared_ptr<Box> getBox(Position pos) const;
 
 	/**
 	 * show - display the top-level window
@@ -96,8 +96,10 @@ private:
 	/// The top-most box of the layout engine containing all other boxes.
 	Box window_;
 
+	typedef std::map<Position, boost::shared_ptr<Box> > BoxMap;
+
 	// Accessors to the various Boxes.
-	std::map<Position, Box *> box_map_;
+	BoxMap box_map_;
 
 	/// the minibuffer
 	boost::scoped_ptr<XMiniBuffer> minibuffer_;

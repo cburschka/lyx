@@ -225,17 +225,13 @@ void ForkedcallsController::addCall(ForkedProcess const & newcall)
 }
 
 
-ForkedcallsController::iterator ForkedcallsController::find_pid(pid_t pid)
+ForkedcallsController::iterator
+ ForkedcallsController::find_pid(pid_t pid)
 {
-	typedef boost::indirect_iterator<ListType::iterator> iterator;
-
-	iterator begin = boost::make_indirect_iterator(forkedCalls.begin());
-	iterator end   = boost::make_indirect_iterator(forkedCalls.end());
-	iterator it = find_if(begin, end,
-			      bind(equal_to<pid_t>(),
-				   bind(&Forkedcall::pid, _1),
-				   pid));
-	return it.base();
+	return find_if(forkedCalls.begin(), forkedCalls.end(),
+		       bind(equal_to<pid_t>(),
+			    bind(&Forkedcall::pid, _1),
+			    pid));
 }
 
 
@@ -261,7 +257,7 @@ void ForkedcallsController::handleCompletedProcesses()
 	// Block the SIGCHLD signal.
 	sigprocmask(SIG_BLOCK, &newMask, &oldMask);
 
-	for (int i = 0; i != 1+current_child; ++i) {
+	for (int i = 0; i != 1 + current_child; ++i) {
 		Data & store = reaped_children[i];
 
 		if (store.pid == -1) {
@@ -278,17 +274,17 @@ void ForkedcallsController::handleCompletedProcesses()
 			// Eg, child was run in blocking mode
 			continue;
 
-		ForkedProcess & child = *it->get();
+		ListType::value_type child = (*it);
 		bool remove_it = false;
 
 		if (WIFEXITED(store.status)) {
 			// Ok, the return value goes into retval.
-			child.setRetValue(WEXITSTATUS(store.status));
+			child->setRetValue(WEXITSTATUS(store.status));
 			remove_it = true;
 
 		} else if (WIFSIGNALED(store.status)) {
 			// Child died, so pretend it returned 1
-			child.setRetValue(1);
+			child->setRetValue(1);
 			remove_it = true;
 
 		} else if (WIFSTOPPED(store.status)) {
@@ -299,15 +295,15 @@ void ForkedcallsController::handleCompletedProcesses()
 
 		} else {
 			lyxerr << "LyX: Something rotten happened while "
-				"waiting for child " << store.pid << endl;
+			       << "waiting for child " << store.pid << endl;
 
 			// Child died, so pretend it returned 1
-			child.setRetValue(1);
+			child->setRetValue(1);
 			remove_it = true;
 		}
 
 		if (remove_it) {
-			child.emitSignal();
+			child->emitSignal();
 			forkedCalls.erase(it);
 		}
 	}

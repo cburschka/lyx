@@ -53,6 +53,18 @@ ParIterator & ParIterator::operator++()
 }
 
 
+ParIterator ParIterator::operator++(int)
+{
+	ParIterator tmp(*this);
+	forwardPar();
+	return tmp;
+}
+
+
+#if 0
+// Unused member functions. Also having this makes ParIterator not be
+// an forward iterator anymore. So unless we change that, this function
+// should not be compiled/used. (Lgb)
 ParIterator & ParIterator::operator--()
 {
 #ifdef WITH_WARNINGS
@@ -61,6 +73,7 @@ ParIterator & ParIterator::operator--()
 //	DocIterator::backwardPar();
 	return *this;
 }
+#endif
 
 
 Paragraph & ParIterator::operator*() const

@@ -12,11 +12,11 @@
 #ifndef FLOATLIST_H
 #define FLOATLIST_H
 
+#include "Floating.h"
+
 #include <map>
 #include <string>
 
-
-class Floating;
 
 ///
 class FloatList {

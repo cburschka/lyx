@@ -88,7 +88,7 @@ private:
 	/// the current document's height (for scrollbar)
 	int doc_height_;
 	///
-	Box * wa_box_;
+	boost::shared_ptr<Box> wa_box_;
 	///
 	WidgetMap widgets_;
 };

@@ -1,3 +1,23 @@
+2004-11-16  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* Layoutengine.[Ch]: Break up circular dependency between Box and
+	BoxList with the use of boost::shared_ptr. Modify to fit
+	* XFormsMenubar.[Ch]: modify to fit
+	* XFormsToolbar.[Ch]: modify to fit
+	* XFormsView.[Ch]: modify to fit
+	* XMiniBuffer.[Ch]: modify to fit
+	* XWorkArea.[Ch]: modify to fit
+	
+	* LayoutEngine.C (show): use std::for_each
+	(hide): ditto
+
+	* FormPreferences.h: include xforms_helpers.h to satisfy concept
+	checks.
+
+	* FormCharacter.h: include LColor.h to satisfy concept checks.
+
+	* FormCharacter.C: do no include LColor.h
+
 2004-11-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* XFormsView.C (hasFocus): new method, always returns true for now
@@ -11,14 +31,14 @@
 
 2004-11-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* XFormsToolbar.C (C_ToolbarCB, selected): 
+	* XFormsToolbar.C (C_ToolbarCB, selected):
 	* XFormsMenubar.C (MenuCallback): do not use the verbose argument
 	to dispatch
 
 2004-11-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* RadioButtonGroup.C (set): use bind, equal_to instead of
-	equal_2nd_in_pair 
+	equal_2nd_in_pair
 
 	* xformsImage.C (loadableFormats): use bind, equal_to instead of
 	compare_memfun

@@ -1,3 +1,7 @@
+2004-11-16  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* math_inset.h: include math_data.h to satisfy concept checks.
+
 2004-11-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* math_hullinset.C (getStatus): typo in lfun argument

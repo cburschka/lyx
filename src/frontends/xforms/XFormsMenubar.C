@@ -27,6 +27,8 @@
 
 #include "lyx_forms.h"
 
+using boost::shared_ptr;
+
 using std::distance;
 using std::endl;
 using std::for_each;
@@ -88,8 +90,7 @@ extern "C" {
 
 XFormsMenubar::XFormsMenubar(LyXView * view, MenuBackend const & mb)
 	: owner_(static_cast<XFormsView*>(view)),
-	  menubackend_(&mb),
-	  menubar_(0)
+	  menubackend_(&mb)
 {
 	owner_->metricsUpdated.connect(boost::bind(&WidgetMap::updateMetrics,
 						   &widgets_));
@@ -105,24 +106,24 @@ XFormsMenubar::~XFormsMenubar()
 void XFormsMenubar::makeMenubar(Menu const & menu)
 {
 	// Draw a frame around the whole.
-	BoxList & boxlist = owner_->getBox(XFormsView::Top).children();
+	BoxList & boxlist = owner_->getBox(XFormsView::Top)->children();
 
 	FL_OBJECT * frame = fl_add_frame(FL_UP_FRAME, 0, 0, 0, 0, "");
 	fl_set_object_resize(frame, FL_RESIZE_ALL);
 	fl_set_object_gravity(frame, NorthWestGravity, NorthEastGravity);
 
-	menubar_ = &widgets_.add(frame, boxlist, 0, mheight);
+	menubar_ = widgets_.add(frame, boxlist, 0, mheight);
 
 	// The menubar contains three vertically-aligned Boxes,
 	// the center one of which is to contain the buttons,
 	// aligned horizontally.
 	// The other two provide some visual padding.
 	menubar_->children().push_back(Box(0, yloc));
-	Box & menubar_center = menubar_->children().push_back(Box(0,0));
-	menubar_center.set(Box::Horizontal);
+	shared_ptr<Box> menubar_center = menubar_->children().push_back(Box(0,0));
+	menubar_center->set(Box::Horizontal);
 	menubar_->children().push_back(Box(0, yloc));
 
-	BoxList & menubar_buttons = menubar_center.children();
+	BoxList & menubar_buttons = menubar_center->children();
 
 	// Add the buttons.
 	Menu::const_iterator i = menu.begin();

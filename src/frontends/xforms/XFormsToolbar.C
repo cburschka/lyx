@@ -38,6 +38,8 @@
 #include <sstream>
 #include <vector>
 
+using boost::shared_ptr;
+
 using std::distance;
 using std::endl;
 using std::string;
@@ -200,14 +202,13 @@ namespace frontend {
 
 XFormsToolbar::XFormsToolbar(ToolbarBackend::Toolbar const & tbb,
 			     LyXView & o)
-	: toolbar_(0),
-	  toolbar_buttons_(0),
+	: toolbar_buttons_(0),
 	  owner_(static_cast<XFormsView &>(o)),
 	  tooltip_(new Tooltips)
 {
 	position_ = getPosition(tbb.flags);
-	BoxList & boxlist = owner_.getBox(position_).children();
-	toolbar_ = &boxlist.push_back(Box(0,0));
+	BoxList & boxlist = owner_.getBox(position_)->children();
+	toolbar_ = boxlist.push_back(Box(0,0));
 
 	// If the toolbar is horizontal, then it contains three
 	// vertically-aligned Boxes,the center one of which is to
@@ -235,9 +236,9 @@ XFormsToolbar::XFormsToolbar(ToolbarBackend::Toolbar const & tbb,
 
 	toolbar_->children().push_back(Box(padding, padding));
 
-	Box & toolbar_center = toolbar_->children().push_back(Box(0,0));
-	toolbar_center.set(toolbar_orientation);
-	toolbar_buttons_ = &toolbar_center.children();
+	shared_ptr<Box> toolbar_center = toolbar_->children().push_back(Box(0,0));
+	toolbar_center->set(toolbar_orientation);
+	toolbar_buttons_ = &toolbar_center->children();
 
 	toolbar_->children().push_back(Box(padding, padding));
 
@@ -249,7 +250,6 @@ XFormsToolbar::XFormsToolbar(ToolbarBackend::Toolbar const & tbb,
 	ToolbarBackend::item_iterator end = tbb.items.end();
 	for (; it != end; ++it)
 		add(it->first, it->second);
-
 }
 
 

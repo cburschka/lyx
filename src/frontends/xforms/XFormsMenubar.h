@@ -72,7 +72,7 @@ private:
 	///
 	MenuBackend const * menubackend_;
 	///
-	Box * menubar_;
+	boost::shared_ptr<Box> menubar_;
 	///
 	WidgetMap widgets_;
 	///
