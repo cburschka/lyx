@@ -1,9 +1,22 @@
+2004-06-09  Angus Leeming  <leeming@lyx.org>
+
+	* scripts/lyxpreview2bitmap.sh: removed.
+	* scripts/lyxpreview2ppm.py: added. lyxpreview2ppm.py is meant to
+	be a straight swap for lyxpreview2bitmap.sh, the idea being that
+	the python script has some hope of working on Win32 machines.
+
+	* configure.m4: adjust lyxpreview_to_bitmap_command.
+
+2004-05-05  Angus Leeming  <leeming@lyx.org>
+
+	* scripts/lyxpreview2bitmap.sh: enable the script to work on
+
 2004-05-19  Uwe Stöhr  <uwestoehr@web.de>
 
 	* lib/math.bind: fix some bindings to work with german keyboard;
 	new binding "M-m y" that inserts \oint
 
-2003-05-05  Angus Leeming  <leeming@lyx.org>
+2004-05-05  Angus Leeming  <leeming@lyx.org>
 
 	* scripts/lyxpreview2bitmap.sh: enable the script to work on
 	solaris machines by changing 'grep -E' to 'grep'.

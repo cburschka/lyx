@@ -1,3 +1,8 @@
+2004-06-09  Angus Leeming  <leeming@lyx.org>
+
+	* PreviewLoader.C (startLoading): remove the "sh " prefix from the
+	preview -> bitmap command. Doesn't work with python scripts...
+
 2003-10-22  Angus Leeming  <leeming@lyx.org>
 
 	* GraphicsConverter.C (Impl c-tor): add a warning message if the file

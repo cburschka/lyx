@@ -482,7 +482,7 @@ void PreviewLoader::Impl::startLoading()
 	cs << pconverter_->command << ' ' << latexfile << ' '
 	   << int(font_scaling_factor_) << ' ' << pconverter_->to;
 
-	string const command = "sh " + LibScriptSearch(STRCONV(cs.str()));
+	string const command = LibScriptSearch(STRCONV(cs.str()));
 
 	// Initiate the conversion from LaTeX to bitmap images files.
 	Forkedcall::SignalTypePtr convert_ptr(new Forkedcall::SignalType);
