@@ -126,7 +126,9 @@ void LyXAction::init()
 		{ LFUN_ENDBUFSEL, "buffer-end-select",
 		  N_("Select to end of document"), ReadOnly },
 		{ LFUN_EXPORT, "buffer-export", N_("Export to"), ReadOnly },
+#if 0
 		{ LFUN_FAX, "buffer-fax", N_("Fax"), ReadOnly },
+#endif
 #ifndef NEW_INSETS
 		{ LFUN_INSERTFOOTNOTE, "buffer-float-insert", "", Noop },
 #endif

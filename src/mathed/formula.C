@@ -46,6 +46,14 @@ using std::endl;
 using std::vector;
 using std::max;
 
+#if 0
+using std::strncmp;
+using std::strcmp;
+using std::abs;
+using std::isdigit;
+using std::isalpha;
+#endif
+
 //extern char * mathed_label;
 extern string mathed_label;
 

@@ -3619,9 +3619,6 @@ LyXParagraph * LyXParagraph::TeXFootnote(Buffer const * buf,
 				"Footnote in a Footnote -- not supported"
 			       << endl;
 		}
-//#ifndef HAVE_OSTREAM
-//		delete [] dummy.str();
-//#endif
 	}
 
 	switch (footnotekind) {

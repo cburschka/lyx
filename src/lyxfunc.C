@@ -24,7 +24,9 @@
 #endif
 
 #include "version.h"
+#if 0
 #include "lyxlookup.h"
+#endif
 #include "kbmap.h"
 #include "lyxfunc.h"
 #include "bufferlist.h"
@@ -110,7 +112,9 @@ extern int  MenuRunChktex(Buffer *);
 extern void MenuPrint(Buffer *);
 extern void MenuSendto();
 extern void QuitLyX();
+#if 0
 extern void MenuFax(Buffer *);
+#endif
 extern void show_symbols_form(LyXFunc *);
 
 extern LyXAction lyxaction;
@@ -474,10 +478,12 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 		disable = !Exporter::IsExportable(buf, "dvi")
 			|| lyxrc.print_command == "none";
 		break;
+#if 0
 	case LFUN_FAX:
 		disable = !Exporter::IsExportable(buf, "ps")
 			|| lyxrc.fax_command == "none";
 		break;
+#endif
 	case LFUN_IMPORT:
 		disable = !Importer::IsImportable(argument);
 		break;
@@ -940,10 +946,12 @@ string const LyXFunc::Dispatch(int ac,
 		owner->getDialogs()->showPrint();
 		break;
 
+#if 0
 	case LFUN_FAX:
 		MenuFax(owner->buffer());
 		break;
-			
+#endif
+		
 	case LFUN_EXPORT:
 		Exporter::Export(owner->buffer(), argument, false);
 		break;

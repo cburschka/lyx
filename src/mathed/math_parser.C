@@ -34,6 +34,12 @@
 using std::istream;
 using std::endl;
 
+#if 0
+using std::isalpha;
+using std::isdigit;
+using std::isspace;
+#endif
+
 enum {
 	FLAG_BRACE      = 1,	//  A { needed
 	FLAG_BRACE_ARG  = 2,	//  Next { is argument

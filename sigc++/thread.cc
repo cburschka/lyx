@@ -53,7 +53,7 @@ Condition::~Condition()
 int Condition::signal()       {return pthread_cond_signal(&cond_);}
 int Condition::broadcast()    {return pthread_cond_broadcast(&cond_);}
 int Condition::wait(Mutex &m) {return pthread_cond_wait(&cond_,m);}
-int Condition::wait(Mutex &m,struct timespec* spec)
+int Condition::wait(Mutex &m, struct timespec* spec)
   {return pthread_cond_timedwait(&cond_,m,spec);}
 int Condition::destroy()      {return pthread_cond_destroy(&cond_);}
 

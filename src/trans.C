@@ -164,17 +164,14 @@ void Trans::AddDeadkey(tex_accent accent, string const & keys,
 #else
 		string & temp =
 			keymap_[static_cast<unsigned char>(keys[i])];
-		if (!temp.empty()) {
-			temp[0] = 0;
-			temp[1] = accent;
-		} else {
-			// But the question remains: "Should we be allowed
-			// to change bindings, without unbinding first?"
-			// Lgb
-			lyxerr << "Hey... keymap_[xx] not empty." << endl;
-			temp += char(0);
-			temp += char(accent);
-		}
+		if (!temp.empty())
+			temp.erase();
+
+		// But the question remains: "Should we be allowed
+		// to change bindings, without unbinding first?"
+		// Lgb
+		temp += char(0);
+		temp += char(accent);
 #endif
 	}
 	kmod_list_[accent]->exception_list = 0;

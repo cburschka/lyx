@@ -71,8 +71,10 @@ keyword_item lyxrcTags[] = {
 	{ "\\document_path", LyXRC::RC_DOCUMENTPATH },
 	{ "\\escape_chars", LyXRC::RC_ESC_CHARS },
 	{ "\\exit_confirmation", LyXRC::RC_EXIT_CONFIRMATION },
+#if 0
 	{ "\\fax_command", LyXRC::RC_FAX_COMMAND },
 	{ "\\fax_program", LyXRC::RC_FAXPROGRAM },
+#endif
 	{ "\\font_encoding", LyXRC::RC_FONT_ENCODING },
 	{ "\\format", LyXRC::RC_FORMAT },
 	{ "\\input", LyXRC::RC_INPUT },
@@ -91,7 +93,9 @@ keyword_item lyxrcTags[] = {
 	{ "\\num_lastfiles", LyXRC::RC_NUMLASTFILES },
 	{ "\\override_x_deadkeys", LyXRC::RC_OVERRIDE_X_DEADKEYS },
 	{ "\\personal_dictionary", LyXRC::RC_PERS_DICT },
+#if 0
 	{ "\\phone_book", LyXRC::RC_PHONEBOOK },
+#endif
 	{ "\\print_adapt_output", LyXRC::RC_PRINT_ADAPTOUTPUT },
 	{ "\\print_collcopies_flag", LyXRC::RC_PRINTCOLLCOPIESFLAG },
 	{ "\\print_command", LyXRC::RC_PRINT_COMMAND },
@@ -731,6 +735,7 @@ int LyXRC::read(string const & filename)
 				cursor_follows_scrollbar = lexrc.GetBool();
 			break;
 
+#if 0
 		case RC_FAX_COMMAND:
  			if (lexrc.next())
  				fax_command = lexrc.GetString();
@@ -748,6 +753,7 @@ int LyXRC::read(string const & filename)
                                 	phone_book = user_lyxdir + s;
 			}
  			break;
+#endif
 		case RC_ASCIIROFF_COMMAND:
  			if (lexrc.next())
 				ascii_roff_command = lexrc.GetString();
@@ -1318,6 +1324,7 @@ void LyXRC::output(ostream & os) const
 			os << "\\backupdir_path \"" << backupdir_path << "\"\n";
 		}
 
+#if 0
 		os << "\n#\n"
 		   << "# FAX SECTION #######################################\n"
 		   << "#\n\n";
@@ -1334,7 +1341,7 @@ void LyXRC::output(ostream & os) const
 		if (fax_program != system_lyxrc.fax_program) {
 			os << "\\fax_program \"" << fax_program << "\"\n";
 		}
-
+#endif
 		os << "\n#\n"
 		   << "# ASCII EXPORT SECTION ##############################\n"
 		   << "#\n\n";
@@ -1628,7 +1635,8 @@ string LyXRC::getFeedback(LyXRCTags tag)
 	case RC_KBMAP_SECONDARY:
 		str = N_("Use this to set the correct mapping file for your keyboard.\nYou'll need this if you for instance want to type German documents\non an American keyboard.");
 		break;
-		
+
+#if 0
 	case RC_FAX_COMMAND:
 		break;
 		
@@ -1637,7 +1645,7 @@ string LyXRC::getFeedback(LyXRCTags tag)
 		
 	case RC_FAXPROGRAM:
 		break;
-		
+#endif	
 	case RC_ASCIIROFF_COMMAND:
 		str = N_("Use to define an external program to render tables in the ASCII output.\nE.g. \"groff -t -Tlatin1 $$FName\"  where $$FName is the input file.\nIf \"none\" is specified, an internal routine is used.");
 		break;

@@ -1,4 +1,42 @@
+2000-11-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyxlookup.C: include FORMS_H_LOCATION to get at FL_REVISION,
+	conditionalize build on xforms < 0.89
+
+	* src/lyx_gui.C (LyXGUI): only close lyxlookup if not xforms 0.89
+
+	* src/lyxfunc.C (getStatus): commenout LFUN_FAX
+
+	* src/LyXAction.C (init): comment out fax
+
+	* src/lyxrc.h: comment out the fax enums
+	comment out the fax variables
+
+	* src/commandtags.h: comment out LFUN_FAX
+
+	* src/lyxrc.C: disable fax variables.
+	(read): disable parsing of fax variables
+	(output): disable writing of fax variables
+	(getFeedback): now description for fax variables
+
+	* src/lyxfunc.C: comment out MenuFax
+	(Dispatch): disable LFUN_FAX
+
+	* src/lyx_cb.C (MenuFax): comment out
+
+	* src/WorkArea.C: add <cctype>
+	(work_area_handler): better key handling, should be ok now.
+	for accented chars + etc
+
+	* src/Makefile.am (lyx_SOURCES): remove lyx_sendfax.C
+	lyx_sendfax.h and lyx_sendfax_man.C
+
+	* src/LyXView.C: don't include lyxlookup.h when using xforms 0.89
+	(show): don't call InitLyXLookup when using xforms 0.89
+
 2000-11-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/trans.C (AddDeadkey): better fix, the other one could crash...
 
 	* src/support/filetools.C (GetFileContents): close to dummy change
 

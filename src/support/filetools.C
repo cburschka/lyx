@@ -58,6 +58,13 @@ using std::pair;
 using std::endl;
 using std::ifstream;
 
+#if 0
+using std::getenv;
+using std::isalpha;
+using std::isalnum;
+using std::popen;
+#endif
+
 extern string system_lyxdir;
 extern string build_lyxdir;
 extern string user_lyxdir;
@@ -290,7 +297,7 @@ i18nLibFileSearch(string const & dir, string const & name,
 string const GetEnv(string const & envname)
 {
         // f.ex. what about error checking?
-        char const * const ch = ::getenv(envname.c_str());
+        char const * const ch = getenv(envname.c_str());
         string const envstr = !ch ? "" : ch;
         return envstr;
 }

@@ -68,7 +68,10 @@ extern BufferView * current_view; // called too many times in this file...
 
 extern void DeleteSimpleCutBuffer(); /* for the cleanup when exiting */
 
+#if 0
 extern bool send_fax(string const & fname, string const & sendcmd);
+#endif
+
 extern void MenuSendto();
 
 extern LyXServer * lyxserver;
@@ -320,7 +323,7 @@ int MenuRunChktex(Buffer * buffer)
 	return ret;
 }
 
-
+#if 0
 void MenuFax(Buffer * buffer)
 {
 	// Generate postscript file
@@ -343,6 +346,7 @@ void MenuFax(Buffer * buffer)
 	} else
 		send_fax(ps, lyxrc.fax_command);
 }
+#endif
 
 
 void QuitLyX()

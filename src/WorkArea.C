@@ -10,7 +10,7 @@
 
 #include <config.h>
 #include <cmath>
-
+#include <cctype>
 #ifdef __GNUG__
 #pragma implementation
 #endif
@@ -377,7 +377,13 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 			else
 				break;
 		} else {
-			ret_key = (keysym ? keysym : key);
+			// It seems that this was a bit optimistic...
+			// With this hacking things seems to be better (Lgb)
+			if (static_cast<unsigned char>(key) == key
+				&& !iscntrl(key))
+				ret_key = key;
+			else
+				ret_key = (keysym ? keysym : key);
 		}
 		
 #endif	

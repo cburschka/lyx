@@ -154,9 +154,6 @@ lyx_SOURCES = \
 	lyx_gui_misc.h \
 	lyx_main.C \
 	lyx_main.h \
-	lyx_sendfax.C \
-	lyx_sendfax.h \
-	lyx_sendfax_main.C \
 	lyx_sty.C \
 	lyx_sty.h \
 	lyxcursor.C \

@@ -13,7 +13,10 @@
    different input methods for different frames, but for now we can
    keep it as it is. */
 
-#include <X11/Xlib.h>
+#include <config.h>
+#include FORMS_H_LOCATION
+#if FL_REVISION < 89
+//#include <X11/Xlib.h>
 
 /// Initialize the compose key handling
 extern void InitLyXLookup(Display *, Window ) ;
@@ -25,3 +28,4 @@ extern int LyXLookupString(XEvent * event,
 
 /// Call this when you destroy your window
 extern void CloseLyXLookup();
+#endif
