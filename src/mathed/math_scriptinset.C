@@ -359,7 +359,7 @@ void MathScriptInset::write2(MathInset const * nuc, WriteStream & os) const
 		}
 	} else
 			if (os.firstitem())
-				lyxerr << "suppressing {} \n";
+				lyxerr[Debug::MATHED] << "suppressing {} when writing\n";
 			else
 				os << "{}";
 

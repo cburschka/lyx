@@ -96,6 +96,12 @@ void MathFracInset::maplize(MapleStream & os) const
 }
 
 
+void MathFracInset::octavize(OctaveStream & os) const
+{
+	os << '(' << cell(0) << ")/(" << cell(1) << ')';
+}
+
+
 void MathFracInset::mathmlize(MathMLStream & os) const
 {
 	os << MTag("mfrac") << cell(0) << cell(1) << ETag("mfrac");
