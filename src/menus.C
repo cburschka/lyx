@@ -725,13 +725,7 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 		break;
 	case 43: tmpfunc->Dispatch(LFUN_EXPORT, "ascii");
 		break;
-	case 44:
-		if (!LinuxDoc && !DocBook)
-			tmpfunc->Dispatch(LFUN_EXPORT, "html");
-		else if(LinuxDoc)
-			tmpfunc->Dispatch(LFUN_EXPORT, "html-linuxdoc");
-		else
-			tmpfunc->Dispatch(LFUN_EXPORT, "html-docbook");
+	case 44: tmpfunc->Dispatch(LFUN_EXPORT, "html");
 		break;
 	case 45: tmpfunc->Dispatch(LFUN_EXPORT, "custom"); 
 		break;

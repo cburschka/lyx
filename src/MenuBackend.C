@@ -64,7 +64,7 @@ Menu & Menu::add(MenuItem const & i)
 }
 
 
-void Menu::read(LyXLex & lex)
+Menu & Menu::read(LyXLex & lex)
 {
 	enum Menutags {
 		md_item = 1,
@@ -140,6 +140,7 @@ void Menu::read(LyXLex & lex)
 		}
 	}
 	lex.popTable();
+	return *this;
 }
 
 
@@ -168,23 +169,29 @@ void MenuBackend::read(LyXLex & lex)
 		lex.printTable(lyxerr);
 
 	bool quit = false;
+	bool menubar = false;
 
 	while (lex.IsOK() && !quit) {
 		switch(lex.lex()) {
+		case md_menubar: 
+			menubar = true;
+			// fallback to md_menu
 		case md_menu: {
 			lex.next();
 			string name = lex.GetString();
-			Menu menu(name, false);
-			menu.read(lex);
-			add(menu);
-			break;
-		}
-		case md_menubar: {
-			lex.next();
-			string name = lex.GetString();
-			Menu menubar(name, true);
-			menubar.read(lex);
-			add(menubar);
+			if (hasMenu(name)) {
+				if (getMenu(name).menubar() == menubar) {
+					getMenu(name).read(lex);
+				} else {
+					lex.printError("Cannot append to menu `$$Token' unless it is of the same type");
+					return;
+				}
+			} else {				
+				Menu menu(name, menubar);
+				menu.read(lex);
+				add(menu);
+			}
+			menubar = false;
 			break;
 		}
 		case md_endmenuset:
@@ -284,3 +291,16 @@ Menu const & MenuBackend::getMenu(string const & name) const
 	Assert(false); // we actually require the name to exist.
 	return menulist_.front();
 }
+
+
+Menu & MenuBackend::getMenu(string const & name)
+{
+	for (MenuList::iterator cit = menulist_.begin(); 
+	     cit != menulist_.end(); ++cit) {
+		if ((*cit).name() == name)
+			return (*cit);
+	}
+	Assert(false); // we actually require the name to exist.
+	return menulist_.front();
+}
+

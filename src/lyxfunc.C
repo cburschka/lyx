@@ -349,13 +349,13 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 				// no
 				setErrorMessage(N_("Document is read-only"));
 				flag |= LyXFunc::Disabled;
-				return flag;
 			}
 		} else {
 			// no
 			setErrorMessage(N_("Command not allowed with"
 					   "out any document open"));
 			flag |= LyXFunc::Disabled;
+			return flag;
 		}
 	}
 
@@ -396,14 +396,12 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 		else if (argument == "dvi" || argument == "postscript")
 			disable = noLaTeX;
 		else if (argument == "html")
-			disable = (! buf->isLatex() 
-				   || lyxrc.html_command == "none");
-		else if (argument == "html-linuxdoc")
-			disable = (! buf->isLinuxDoc() 
-				   || lyxrc.linuxdoc_to_html_command == "none");
-		else if (argument == "html-docbook")
-			disable = (! buf->isDocBook() 
-				   || lyxrc.docbook_to_html_command == "none");
+			disable = (buf->isLinuxDoc() 
+				   && lyxrc.linuxdoc_to_html_command == "none")
+				|| (buf->isDocBook() 
+				    && lyxrc.docbook_to_html_command == "none")
+				|| (! buf->isLinuxDoc() && ! buf->isDocBook() 
+				    && lyxrc.html_command == "none");
 		else if (argument == "custom")
 			disable = ! buf->isLatex();
 		break;

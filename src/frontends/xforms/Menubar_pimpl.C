@@ -158,7 +158,7 @@ void Menubar::Pimpl::set(string const & menu_name)
 			break;
 		}
 		string label = i->label();
-		string shortcut = i->shortcut();
+		string shortcut = '#' + i->shortcut();
 		int width = string_width(label);
 		obj = fl_add_button(FL_TOUCH_BUTTON,
 				    air + moffset, yloc,
@@ -175,6 +175,7 @@ void Menubar::Pimpl::set(string const & menu_name)
 		moffset += obj->w + air;
 		fl_set_object_shortcut(obj, shortcut.c_str(), 1);
 		fl_set_object_callback(obj, C_Menubar_Pimpl_MenuCallback, 1);
+
 		ItemInfo * iteminfo = new ItemInfo(this, 
 						   new MenuItem(*i), obj);
 		buttonlist_.push_back(iteminfo);
@@ -190,6 +191,15 @@ void Menubar::Pimpl::set(string const & menu_name)
 	}
 	if (!form_was_open) 
 		fl_end_form();
+
+	// Force the redraw of the buttons (probably not the best
+	// method, but...) 
+	for(ButtonList::const_iterator cit = buttonlist_.begin();
+	    cit != buttonlist_.end(); ++cit) {
+		if ((*cit)->obj_) {
+			fl_redraw_object((*cit)->obj_);
+		}
+	}
 
 	lyxerr[Debug::GUI] << "Menubar set." << endl;
 } 

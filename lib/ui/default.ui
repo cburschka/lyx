@@ -16,6 +16,10 @@ Menuset
 	Submenu "Help|H" "help"
     End
 
+MenuBar "main"
+	Submenu "File|F" "file"
+End
+
     Menubar "main_nobuffer"
 	Submenu "File|F" "file_nobuffer"
 	Submenu "Options|O" "options"
@@ -74,9 +78,7 @@ Menuset
 	Item "as DVI|D" "buffer-export dvi"
 	Item "as Postscript|P" "buffer-export postscript"
 	Item "as Ascii|A" "buffer-export ascii"
-	OptItem "as HTML|H" "buffer-export html"
-	OptItem "as HTML|H" "buffer-export html-linuxdoc"
-	OptItem "as HTML|H" "buffer-export html-docbook"
+	Item "as HTML|H" "buffer-export html"
 	OptItem "Custom...|C" "buffer-export custom"
     End
 

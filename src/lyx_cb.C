@@ -934,15 +934,12 @@ void MenuExport(Buffer * buffer, string const & extyp)
 	}
 	// HTML
 	else if (extyp == "html") {
-		MenuMakeHTML(buffer);
-	}
-	// HTML from linuxdoc
-	else if (extyp == "html-linuxdoc") {
-		MenuMakeHTML_LinuxDoc(buffer);
-	}
-	// HTML from docbook
-	else if (extyp == "html-docbook") {
-		MenuMakeHTML_DocBook(buffer);
+		if (buffer->isLinuxDoc())
+			MenuMakeHTML_LinuxDoc(buffer);
+		else if (buffer->isDocBook())
+			MenuMakeHTML_DocBook(buffer);
+		else
+			MenuMakeHTML(buffer);
 	}
 	else {
 		ShowMessage(buffer, _("Unknown export type: ") + extyp);

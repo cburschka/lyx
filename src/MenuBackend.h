@@ -86,7 +86,7 @@ public:
 	///
 	Menu & add(MenuItem const &);
 	///
-	void read(LyXLex &);
+	Menu & read(LyXLex &);
 	/// 
 	bool menubar() const { return menubar_; }
 	/// 
@@ -127,6 +127,8 @@ public:
 	void add(Menu const &);
 	///
 	bool hasMenu (string const &) const;
+	///
+	Menu & getMenu (string const &);
 	///
 	Menu const & getMenu (string const &) const;
 	//

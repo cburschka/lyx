@@ -1,3 +1,24 @@
+2000-07-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/frontends/xforms/Menubar_pimpl.C (set): fix the disappearing
+	shortcuts syndrom by redrawing them explicitely (a better solution
+	would be appreciated).
+
+	* src/lyxfunc.C (getStatus): fix crash when functions are disabled.
+
+	* src/frontends/xforms/Menubar_pimpl.C (set): fix the shortcut of
+	the button.
+
+	* src/lyx_cb.C (MenuExport): change html export to do the right
+	thing depending of the document type (instead of having
+	html-linuxdoc and html-docbook).
+	* src/lyxfunc.C (getStatus): update for html
+	* lib/ui/default.ui: simplify due to the above change.
+	* src/menus.C (ShowFileMenu): update too (in case we need it).
+
+	* src/MenuBackend.C (read): if a menu is defined twice, add the
+	new entries to the exiting one.
+
 2000-07-26  Juergen Vigna  <jug@sad.it>
 
 	* src/buffer.h: added functions setUnnamed(bool) and isUnnamed().
