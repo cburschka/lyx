@@ -34,8 +34,8 @@ char const * string_papersize[12] = {
 };
 
 
-char const * string_paperpackages[5] = {
-	"none", "a4", "a4wide", "widemarginsa4", ""
+char const * string_paperpackages[4] = {
+	"a4", "a4wide", "widemarginsa4", ""
 };
 
 

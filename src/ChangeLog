@@ -1,3 +1,8 @@
+2004-07-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* tex-strings.C: revert paperpackage fix from 2004-06-27 as it
+	loads the wrong packages for old documents.
+
 2004-06-27  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* tex-strings.C: add "none" to string_paperpackages[], fixes
