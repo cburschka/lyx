@@ -81,8 +81,7 @@ class UserCache {
 public:
 	/// seeks user name from group ID
 	string const & find(uid_t ID) const {
-		// We really want to use const_iterator. (Lgb)
-		Users::iterator cit = users.find(ID);
+		Users::const_iterator cit = users.find(ID);
 		if (cit == users.end()) {
 			add(ID);
 			return users[ID];
@@ -133,8 +132,7 @@ private:
 
 string const & GroupCache::find(gid_t ID) const 
 {
-	// We really want to use const_iterator. (Lgb)
-	Groups::iterator cit = groups.find(ID);
+	Groups::const_iterator cit = groups.find(ID);
 	if (cit == groups.end()) {
 		add(ID);
 		return groups[ID];
