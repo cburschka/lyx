@@ -1800,6 +1800,10 @@ bool InsetText::insertInset(BufferView * bv, Inset * inset)
 
 bool InsetText::insetAllowed(Inset::Code code) const
 {
+	// in_insetAllowed is a really gross hack,
+	// to allow us to call the owner's insetAllowed
+	// without stack overflow, which can happen
+	// when the owner uses InsetCollapsable::insetAllowed()
 	bool ret = true;
 	if (in_insetAllowed)
 		return ret;
