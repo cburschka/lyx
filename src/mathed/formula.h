@@ -86,7 +86,7 @@ public:
 	///
 	void ToggleInsetCursor(BufferView *);
 	///
-	void ShowInsetCursor(BufferView *);
+	void ShowInsetCursor(BufferView *, bool show=true);
 	///
 	void HideInsetCursor(BufferView *);
 	///

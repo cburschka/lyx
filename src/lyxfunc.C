@@ -192,7 +192,7 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	}
 	
 	// this function should be used always [asierra060396]
-	UpdatableInset * tli = owner->view()->the_locking_inset;
+	UpdatableInset * tli = owner->view()->theLockingInset();
 	if (owner->view()->available() && tli && (keysym == XK_Escape)) {
 		if (tli == tli->GetLockingInset()) {
 			owner->view()->unlockInset(tli);
@@ -321,7 +321,7 @@ int LyXFunc::processKeyEvent(XEvent * ev)
 	}
 	
 	// this function should be used always [asierra060396]
-	UpdatableInset * tli = owner->view()->the_locking_inset;
+	UpdatableInset * tli = owner->view()->theLockingInset();
 	if (owner->view()->available() && tli && (keysym_return==XK_Escape)) {
 		if (tli == tli->GetLockingInset()) {
 			owner->view()->unlockInset(tli);
@@ -500,23 +500,23 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 
 	case LFUN_LAYOUT_TABULAR:
 		disable = true;
-		if (owner->view()->the_locking_inset) {
-			disable = (owner->view()->the_locking_inset->LyxCode() != Inset::TABULAR_CODE) &&
-				!owner->view()->the_locking_inset->GetFirstLockingInsetOfType(Inset::TABULAR_CODE);
+		if (owner->view()->theLockingInset()) {
+			disable = (owner->view()->theLockingInset()->LyxCode() != Inset::TABULAR_CODE) &&
+				!owner->view()->theLockingInset()->GetFirstLockingInsetOfType(Inset::TABULAR_CODE);
 		}
 		break;
 
 	case LFUN_TABULAR_FEATURE:
 		disable = true;
-		if (owner->view()->the_locking_inset) {
+		if (owner->view()->theLockingInset()) {
 			func_status ret = LyXFunc::Disabled;
-			if (owner->view()->the_locking_inset->LyxCode() == Inset::TABULAR_CODE) {
+			if (owner->view()->theLockingInset()->LyxCode() == Inset::TABULAR_CODE) {
 				ret = static_cast<InsetTabular *>
-					(owner->view()->the_locking_inset)->
+					(owner->view()->theLockingInset())->
 					getStatus(argument);
-			} else if (owner->view()->the_locking_inset->GetFirstLockingInsetOfType(Inset::TABULAR_CODE)) {
+			} else if (owner->view()->theLockingInset()->GetFirstLockingInsetOfType(Inset::TABULAR_CODE)) {
 				ret = static_cast<InsetTabular *>
-					(owner->view()->the_locking_inset->
+					(owner->view()->theLockingInset()->
 					GetFirstLockingInsetOfType(Inset::TABULAR_CODE))->
 					getStatus(argument);
 			}
@@ -560,9 +560,9 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 	if (buf) {
 		func_status box = LyXFunc::ToggleOff;
 		LyXFont font;
-		if (owner->view()->the_locking_inset &&
-		    owner->view()->the_locking_inset->getLyXText(owner->view()))
-		    font = owner->view()->the_locking_inset->
+		if (owner->view()->theLockingInset() &&
+		    owner->view()->theLockingInset()->getLyXText(owner->view()))
+		    font = owner->view()->theLockingInset()->
 			getLyXText(owner->view())->real_current_font;
 		else
 		    font = owner->view()->text->real_current_font;
@@ -686,8 +686,8 @@ string const LyXFunc::Dispatch(int ac,
 		}
         }
 
-	if (owner->view()->available() && owner->view()->the_locking_inset) {
-		text = owner->view()->the_locking_inset->getLyXText(owner->view());
+	if (owner->view()->available() && owner->view()->theLockingInset()) {
+		text = owner->view()->theLockingInset()->getLyXText(owner->view());
 		UpdatableInset::RESULT result;
 		if ((action > 1) || ((action == LFUN_UNKNOWN_ACTION) &&
 				     (keyseq.length >= -1)))
@@ -700,7 +700,7 @@ string const LyXFunc::Dispatch(int ac,
 				int slx;
 				int sly;
 				UpdatableInset * inset = 
-					owner->view()->the_locking_inset;
+					owner->view()->theLockingInset();
 				inset->GetCursorPos(owner->view(), slx, sly);
 				owner->view()->unlockInset(inset);
 				owner->view()->menuUndo();
@@ -720,7 +720,7 @@ string const LyXFunc::Dispatch(int ac,
 				int slx;
 				int sly;
 				UpdatableInset * inset = owner->view()->
-					the_locking_inset;
+					theLockingInset();
 				inset->GetCursorPos(owner->view(), slx, sly);
 				owner->view()->unlockInset(inset);
 				owner->view()->menuRedo();
@@ -731,7 +731,7 @@ string const LyXFunc::Dispatch(int ac,
 				if (inset)
 					inset->Edit(owner->view(),slx,sly,0); 
 				return string();
-			} else if (((result=owner->view()->the_locking_inset->
+			} else if (((result=owner->view()->theLockingInset()->
 				   LocalDispatch(owner->view(), action,
 						 argument)) ==
 				   UpdatableInset::DISPATCHED) ||
@@ -1375,15 +1375,15 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 
 	case LFUN_LAYOUT_TABULAR:
-	    if (owner->view()->the_locking_inset) {
-		if (owner->view()->the_locking_inset->LyxCode()==Inset::TABULAR_CODE) {
+	    if (owner->view()->theLockingInset()) {
+		if (owner->view()->theLockingInset()->LyxCode()==Inset::TABULAR_CODE) {
 		    InsetTabular * inset = static_cast<InsetTabular *>
-			(owner->view()->the_locking_inset);
+			(owner->view()->theLockingInset());
 		    inset->OpenLayoutDialog(owner->view());
-		} else if (owner->view()->the_locking_inset->
+		} else if (owner->view()->theLockingInset()->
 			   GetFirstLockingInsetOfType(Inset::TABULAR_CODE)!=0) {
 		    InsetTabular * inset = static_cast<InsetTabular *>(
-			owner->view()->the_locking_inset->GetFirstLockingInsetOfType(Inset::TABULAR_CODE));
+			owner->view()->theLockingInset()->GetFirstLockingInsetOfType(Inset::TABULAR_CODE));
 		    inset->OpenLayoutDialog(owner->view());
 		}
 	    }
@@ -2311,11 +2311,11 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_INSET_CAPTION:
 	{
 		// Do we have a locking inset...
-		if (owner->view()->the_locking_inset) {
+		if (owner->view()->theLockingInset()) {
 			lyxerr << "Locking inset code: "
-			       << static_cast<int>(owner->view()->the_locking_inset->LyxCode());
+			       << static_cast<int>(owner->view()->theLockingInset()->LyxCode());
 			InsetCaption * new_inset = new InsetCaption;
-			new_inset->setOwner(owner->view()->the_locking_inset);
+			new_inset->setOwner(owner->view()->theLockingInset());
 			new_inset->SetAutoBreakRows(true);
 			new_inset->SetDrawFrame(0, InsetText::LOCKED);
 			new_inset->SetFrameColor(0, LColor::footnoteframe);
@@ -2572,7 +2572,7 @@ string const LyXFunc::Dispatch(int ac,
 			owner->view()->
 				open_new_inset(new InsetFormula(false));
 			owner->view()
-				->the_locking_inset
+				->theLockingInset()
 				->LocalDispatch(owner->view(),
 						action,
 						argument);

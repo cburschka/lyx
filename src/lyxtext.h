@@ -71,6 +71,8 @@ public:
 	BufferView * bv_owner;
 	///
 	InsetText * inset_owner;
+	///
+	UpdatableInset * the_locking_inset;
 
 	///
 	LyXFont const GetFont(Buffer const *, LyXParagraph * par,

@@ -338,7 +338,7 @@ bool math_insert_greek(char c)
 	('a'<= c && c<= 'z')))   {
       string tmp;
       tmp = c;
-      if (!current_view->the_locking_inset) {
+      if (!current_view->theLockingInset()) {
 	 int greek_kb_flag_save = greek_kb_flag;
 	 InsetFormula * new_inset = new InsetFormula();
 	 current_view->beforeChange();
@@ -347,10 +347,10 @@ bool math_insert_greek(char c)
 	 new_inset->Edit(current_view, 0, 0, 0);
 	 new_inset->LocalDispatch(current_view, LFUN_SELFINSERT, tmp);
 	 if (greek_kb_flag_save < 2)
-		 current_view->unlockInset(current_view->the_locking_inset);
+		 current_view->unlockInset(current_view->theLockingInset());
       } else
-	 if (current_view->the_locking_inset->LyxCode() == Inset::MATH_CODE)
-		static_cast<InsetFormula*>(current_view->the_locking_inset)->LocalDispatch(current_view, LFUN_SELFINSERT, tmp);
+	 if (current_view->theLockingInset()->LyxCode() == Inset::MATH_CODE)
+		static_cast<InsetFormula*>(current_view->theLockingInset())->LocalDispatch(current_view, LFUN_SELFINSERT, tmp);
 	 else
 		lyxerr << "Math error: attempt to write on a wrong "
 			"class of inset." << endl;
@@ -363,7 +363,7 @@ bool math_insert_greek(char c)
 void math_insert_symbol(string const & s)
 {
    if (current_view->available())   {
-      if (!current_view->the_locking_inset) {
+      if (!current_view->theLockingInset()) {
 	 InsetFormula * new_inset = new InsetFormula();
 	 current_view->beforeChange();
 	 current_view->insertInset(new_inset);
@@ -371,8 +371,8 @@ void math_insert_symbol(string const & s)
 	 new_inset->Edit(current_view, 0, 0, 0);
 	 new_inset->InsertSymbol(current_view, s);
       } else
-	if (current_view->the_locking_inset->LyxCode() == Inset::MATH_CODE)
-		static_cast<InsetFormula*>(current_view->the_locking_inset)->InsertSymbol(current_view, s);
+	if (current_view->theLockingInset()->LyxCode() == Inset::MATH_CODE)
+		static_cast<InsetFormula*>(current_view->theLockingInset())->InsertSymbol(current_view, s);
         else 
 		lyxerr << "Math error: attempt to write on a wrong "
 			"class of inset." << endl;

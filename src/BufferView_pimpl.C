@@ -430,12 +430,13 @@ void BufferView::Pimpl::scrollCB(double value)
 		LyXText * vbt = bv_->text;
 		unsigned int height = vbt->DefaultHeight();
 		
-		if (vbt->cursor.y() < bv_->text->first + height) {
+		if (vbt->cursor.y() < (int)(bv_->text->first + height)) {
 			vbt->SetCursorFromCoordinates(bv_, 0,
 						      bv_->text->first +
 						      height);
 		} else if (vbt->cursor.y() >
-			   bv_->text->first + workarea_->height() - height) {
+			   (int)(bv_->text->first+workarea_->height()-height))
+		{
 			vbt->SetCursorFromCoordinates(bv_, 0,
 						      bv_->text->first +
 						      workarea_->height()  -
@@ -519,12 +520,12 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 	if (buffer_ == 0 || !screen_) return;
 
 	// Check for inset locking
-	if (bv_->the_locking_inset) {
+	if (bv_->theLockingInset()) {
 		LyXCursor cursor = bv_->text->cursor;
-		bv_->the_locking_inset->
+		bv_->theLockingInset()->
 			InsetMotionNotify(bv_,
 					  x - cursor.x() -
-					  bv_->the_locking_inset->scroll(),
+					  bv_->theLockingInset()->scroll(),
 					  y - cursor.y() + bv_->text->first,
 					  state);
 		return;
@@ -572,19 +573,19 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		}
 	}
 	
-	if (bv_->the_locking_inset) {
+	if (bv_->theLockingInset()) {
 		// We are in inset locking mode
 		
 		/* Check whether the inset was hit. If not reset mode,
 		   otherwise give the event to the inset */
-		if (inset_hit == bv_->the_locking_inset) {
-			bv_->the_locking_inset->
+		if (inset_hit == bv_->theLockingInset()) {
+			bv_->theLockingInset()->
 				InsetButtonPress(bv_,
 						 xpos, ypos,
 						 button);
 			return;
 		} else {
-			bv_->unlockInset(bv_->the_locking_inset);
+			bv_->unlockInset(bv_->theLockingInset());
 		}
 	}
 	
@@ -657,7 +658,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, unsigned int button) 
 {
 	// select a word
-	if (buffer_ && !bv_->the_locking_inset) {
+	if (buffer_ && !bv_->theLockingInset()) {
 		if (screen_ && button == 1) {
 			screen_->HideCursor();
 			screen_->ToggleSelection(bv_->text);
@@ -674,7 +675,7 @@ void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, unsigned int button)
 void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, unsigned int button)
 {
 	// select a line
-	if (buffer_ && screen_ && !bv_->the_locking_inset && (button == 1)) {
+	if (buffer_ && screen_ && !bv_->theLockingInset() && (button == 1)) {
 		screen_->HideCursor();
 		screen_->ToggleSelection(bv_->text);
 		bv_->text->CursorHome(bv_);
@@ -717,13 +718,13 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 	// inset, inset_hit is 0, and inset_x == x, inset_y == y.
 	Inset * inset_hit = checkInsetHit(bv_->text, x, y, button);
 
-	if (bv_->the_locking_inset) {
+	if (bv_->theLockingInset()) {
 		// We are in inset locking mode.
 
 		/* LyX does a kind of work-area grabbing for insets.
 		   Only a ButtonPress Event outside the inset will 
 		   force a InsetUnlock. */
-		bv_->the_locking_inset->
+		bv_->theLockingInset()->
 			InsetButtonRelease(bv_, x, y, button);
 		return;
 	}
@@ -868,7 +869,7 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 	if (!screen_)
 		return 0;
   
-	unsigned int y_tmp = y + text->first;
+	int y_tmp = y + text->first;
   
 	LyXCursor cursor;
 	text->SetCursorFromCoordinates(bv_, cursor, x, y_tmp);
@@ -927,7 +928,7 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 		    && y_tmp > cursor.y() - tmpinset->ascent(bv_, font)
 		    && y_tmp < cursor.y() + tmpinset->descent(bv_, font)) {
 #if 0
-			if (move_cursor && (tmpinset != bv_->the_locking_inset))
+			if (move_cursor && (tmpinset != bv_->theLockingInset()))
 #endif
 				text->SetCursor(bv_, cursor.par(),cursor.pos()-1,true);
 			x = x - start_x;
@@ -1119,11 +1120,10 @@ void BufferView::Pimpl::cursorToggle()
 		goto set_timer_and_return;
 	}
 
-	if (!bv_->the_locking_inset) {
+	if (!bv_->theLockingInset()) {
 		screen_->CursorToggle(bv_->text);
 	} else {
-		bv_->the_locking_inset->
-			ToggleInsetCursor(bv_);
+		bv_->theLockingInset()->ToggleInsetCursor(bv_);
 	}
 	
   set_timer_and_return:
@@ -1245,9 +1245,9 @@ void BufferView::Pimpl::setState()
 
 void BufferView::Pimpl::insetSleep()
 {
-	if (bv_->the_locking_inset && !bv_->inset_slept) {
-		bv_->the_locking_inset->GetCursorPos(bv_, bv_->slx, bv_->sly);
-		bv_->the_locking_inset->InsetUnlock(bv_);
+	if (bv_->theLockingInset() && !bv_->inset_slept) {
+		bv_->theLockingInset()->GetCursorPos(bv_, bv_->slx, bv_->sly);
+		bv_->theLockingInset()->InsetUnlock(bv_);
 		bv_->inset_slept = true;
 	}
 }
@@ -1255,8 +1255,8 @@ void BufferView::Pimpl::insetSleep()
 
 void BufferView::Pimpl::insetWakeup()
 {
-	if (bv_->the_locking_inset && bv_->inset_slept) {
-		bv_->the_locking_inset->Edit(bv_, bv_->slx, bv_->sly, 0);
+	if (bv_->theLockingInset() && bv_->inset_slept) {
+		bv_->theLockingInset()->Edit(bv_, bv_->slx, bv_->sly, 0);
 		bv_->inset_slept = false;
 	}
 }
@@ -1264,9 +1264,10 @@ void BufferView::Pimpl::insetWakeup()
 
 void BufferView::Pimpl::insetUnlock()
 {
-	if (bv_->the_locking_inset) {
-		if (!bv_->inset_slept) bv_->the_locking_inset->InsetUnlock(bv_);
-		bv_->the_locking_inset = 0;
+	if (bv_->theLockingInset()) {
+		if (!bv_->inset_slept)
+			bv_->theLockingInset()->InsetUnlock(bv_);
+		bv_->theLockingInset(0);
 		bv_->text->FinishUndo();
 		bv_->inset_slept = false;
 	}
@@ -1328,7 +1329,7 @@ void BufferView::Pimpl::toggleToggle()
 void BufferView::Pimpl::center() 
 {
 	beforeChange();
-	if (bv_->text->cursor.y() > workarea_->height() / 2) {
+	if (bv_->text->cursor.y() > (int)(workarea_->height() / 2)) {
 		screen_->Draw(bv_->text, bv_->text->cursor.y() - workarea_->height() / 2);
 	} else {
 		screen_->Draw(bv_->text, 0);

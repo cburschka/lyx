@@ -592,7 +592,7 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	the_locking_inset->InsetUnlock(bv);
 	the_locking_inset = 0;
     }
-    if (bv->the_locking_inset) {
+    if (bv->theLockingInset()) {
 	if (inset && inset->Editable() == Inset::HIGHLY_EDITABLE) {
 	    UpdatableInset * uinset = static_cast<UpdatableInset*>(inset);
 	    inset_x = cx(bv) - top_x + drawTextXOffset;
@@ -1109,7 +1109,7 @@ void InsetText::ToggleInsetCursor(BufferView * bv)
 }
 
 
-void InsetText::ShowInsetCursor(BufferView * bv)
+void InsetText::ShowInsetCursor(BufferView * bv, bool show)
 {
     if (the_locking_inset) {
 	the_locking_inset->ShowInsetCursor(bv);
@@ -1122,7 +1122,8 @@ void InsetText::ShowInsetCursor(BufferView * bv)
 	int desc = lyxfont::maxDescent(font);
 
 	bv->fitLockedInsetCursor(cx(bv), cy(bv), asc, desc);
-	bv->showLockedInsetCursor(cx(bv), cy(bv), asc, desc);
+	if (show)
+	    bv->showLockedInsetCursor(cx(bv), cy(bv), asc, desc);
 	cursor_visible = true;
     }
 }

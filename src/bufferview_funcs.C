@@ -249,8 +249,8 @@ string const CurrentState(BufferView * bv)
 		// font. (Asger)
 		LyXText *text = 0;
 
-		if (bv->the_locking_inset)
-		    text = bv->the_locking_inset->getLyXText(bv);
+		if (bv->theLockingInset())
+		    text = bv->theLockingInset()->getLyXText(bv);
 		if (!text)
 		    text = bv->text;
 
@@ -305,8 +305,8 @@ void ToggleAndShow(BufferView * bv, LyXFont const & font)
 	if (bv->available()) { 
 		bv->hideCursor();
 		bv->update(BufferView::SELECT|BufferView::FITCUR);
-		if (bv->the_locking_inset)
-			bv->the_locking_inset->SetFont(bv, font, toggleall);
+		if (bv->theLockingInset())
+			bv->theLockingInset()->SetFont(bv, font, toggleall);
 		else
 			bv->text->ToggleFree(bv, font, toggleall);
 		bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);

@@ -251,7 +251,7 @@ int BufferList::unlockInset(UpdatableInset * inset)
 	for(BufferStorage::iterator it = bstore.begin();
 	    it != bstore.end(); ++it) {
 		if ((*it)->getUser()
-		    && (*it)->getUser()->the_locking_inset == inset) {
+		    && (*it)->getUser()->theLockingInset() == inset) {
 			(*it)->getUser()->insetUnlock();
 			return 0;
 		}

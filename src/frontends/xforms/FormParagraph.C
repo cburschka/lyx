@@ -261,8 +261,8 @@ void FormParagraph::general_apply()
     noindent = fl_get_button(general_->check_noindent);
 
     LyXText * text = 0;
-    if (lv_->view()->the_locking_inset)
-	text = lv_->view()->the_locking_inset->getLyXText(lv_->view());
+    if (lv_->view()->theLockingInset())
+	text = lv_->view()->theLockingInset()->getLyXText(lv_->view());
     if (!text)
 	text = lv_->view()->text;
     text->SetParagraph(lv_->view(), line_top, line_bottom, pagebreak_top,
@@ -326,8 +326,8 @@ void FormParagraph::general_update()
     Buffer * buf = lv_->view()->buffer();
     LyXText * text = 0;
 
-    if (lv_->view()->the_locking_inset)
-	text = lv_->view()->the_locking_inset->getLyXText(lv_->view());
+    if (lv_->view()->theLockingInset())
+	text = lv_->view()->theLockingInset()->getLyXText(lv_->view());
     if (!text)
 	text = lv_->view()->text;
 

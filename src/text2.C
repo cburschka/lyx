@@ -67,6 +67,7 @@ LyXText::LyXText(InsetText * inset)
 
 void LyXText::init()
 {
+	the_locking_inset = 0;
 	firstrow = 0;
 	lastrow = 0;
 	number_of_rows = 0;
@@ -2380,16 +2381,17 @@ bool LyXText::IsStringInText(LyXParagraph * par,
 			     LyXParagraph::size_type pos,
 			     string const & str) const
 {
-	if (par) {
-		LyXParagraph::size_type i = 0;
-		while (pos + i < par->Last()
-		       && string::size_type(i) < str.length()
-		       && str[i] == par->GetChar(pos + i)) {
-			++i;
-		}
-		if (str.length() == string::size_type(i))
-			return true;
+	if (!par)
+		return false;
+
+	LyXParagraph::size_type i = 0;
+	while (pos + i < par->Last()
+	       && string::size_type(i) < str.length()
+	       && str[i] == par->GetChar(pos + i)) {
+		++i;
 	}
+	if (str.length() == string::size_type(i))
+		return true;
 	return false;
 }
 

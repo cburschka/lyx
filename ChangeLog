@@ -1,3 +1,18 @@
+2000-10-03  Juergen Vigna  <jug@sad.it>
+
+	* various files: changed use of BufferView::the_locking_inset.
+	
+	* src/BufferView2.C (theLockingInset): 
+	(theLockingInset): new functions.
+
+	* src/BufferView.h: removed the_locking_inset.
+
+	* src/lyxtext.h: added the_locking_inset
+
+	* src/BufferView_pimpl.C (checkInsetHit): y_tmp form uint to int.
+
+	* src/insets/lyxinset.h: added bool to ShowInsetCursor definition.
+
 2000-10-02  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* src/mathed/formula.C (IsMacro): declared but not referenced; removed.

@@ -304,7 +304,7 @@ public:
 	/// may call ToggleLockedInsetCursor
 	virtual void ToggleInsetCursor(BufferView *);
 	///
-	virtual void ShowInsetCursor(BufferView *);
+	virtual void ShowInsetCursor(BufferView *, bool show=true);
 	///
 	virtual void HideInsetCursor(BufferView *);
 	///

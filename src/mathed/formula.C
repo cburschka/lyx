@@ -548,7 +548,7 @@ void InsetFormula::ToggleInsetCursor(BufferView * bv)
 }
 
 
-void InsetFormula::ShowInsetCursor(BufferView * bv)
+void InsetFormula::ShowInsetCursor(BufferView * bv, bool)
 {
   if (!cursor_visible) {
     if (mathcursor) {

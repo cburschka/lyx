@@ -132,7 +132,7 @@ void UpdatableInset::ToggleInsetCursor(BufferView *)
 }
 
 
-void UpdatableInset::ShowInsetCursor(BufferView *)
+void UpdatableInset::ShowInsetCursor(BufferView *, bool)
 {
 }
 

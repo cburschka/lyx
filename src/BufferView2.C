@@ -202,9 +202,9 @@ bool BufferView::insertInset(Inset * inset, string const & lout,
 {
 	// if we are in a locking inset we should try to insert the
 	// inset there otherwise this is a illegal function now
-	if (the_locking_inset) {
-		if (the_locking_inset->InsertInsetAllowed(inset))
-		    return the_locking_inset->InsertInset(this, inset);
+	if (theLockingInset()) {
+		if (theLockingInset()->InsertInsetAllowed(inset))
+		    return theLockingInset()->InsertInset(this, inset);
 		return false;
 	}
 
@@ -440,7 +440,7 @@ void BufferView::menuUndo()
 
 void BufferView::menuRedo()
 {
-	if (the_locking_inset) {
+	if (theLockingInset()) {
 		owner()->getMiniBuffer()->Set(_("Redo not yet supported in math mode"));
 		return;
 	}    
@@ -716,11 +716,11 @@ void BufferView::replaceWord(string const & replacestring)
 
 bool BufferView::lockInset(UpdatableInset * inset)
 {
-	if (!the_locking_inset && inset) {
-		the_locking_inset = inset;
+	if (!theLockingInset() && inset) {
+		theLockingInset(inset);
 		return true;
 	} else if (inset) {
-	    return the_locking_inset->LockInsetInInset(this, inset);
+	    return theLockingInset()->LockInsetInInset(this, inset);
 	}
 	return false;
 }
@@ -728,16 +728,16 @@ bool BufferView::lockInset(UpdatableInset * inset)
 
 void BufferView::showLockedInsetCursor(int x, int y, int asc, int desc)
 {
-	if (the_locking_inset && available()) {
+	if (theLockingInset() && available()) {
 		LyXCursor cursor = text->cursor;
 		if ((cursor.pos() - 1 >= 0) &&
 		    (cursor.par()->GetChar(cursor.pos() - 1) ==
 		     LyXParagraph::META_INSET) &&
 		    (cursor.par()->GetInset(cursor.pos() - 1) ==
-		     the_locking_inset->GetLockingInset()))
+		     theLockingInset()->GetLockingInset()))
 			text->SetCursor(this, cursor,
 					cursor.par(), cursor.pos() - 1);
-		y += cursor.y() + the_locking_inset->InsetInInsetY();
+		y += cursor.y() + theLockingInset()->InsetInInsetY();
 		pimpl_->screen_->ShowManualCursor(text, x, y, asc, desc,
 						  LyXScreen::BAR_SHAPE);
 	}
@@ -746,7 +746,7 @@ void BufferView::showLockedInsetCursor(int x, int y, int asc, int desc)
 
 void BufferView::hideLockedInsetCursor()
 {
-	if (the_locking_inset && available()) {
+	if (theLockingInset() && available()) {
 		pimpl_->screen_->HideCursor();
 	}
 }
@@ -754,8 +754,8 @@ void BufferView::hideLockedInsetCursor()
 
 void BufferView::fitLockedInsetCursor(int x, int y, int asc, int desc)
 {
-	if (the_locking_inset && available()){
-		y += text->cursor.y() + the_locking_inset->InsetInInsetY();
+	if (theLockingInset() && available()){
+		y += text->cursor.y() + theLockingInset()->InsetInInsetY();
 		if (pimpl_->screen_->FitManualCursor(text, x, y, asc, desc))
 			updateScrollbar();
 	}
@@ -764,13 +764,13 @@ void BufferView::fitLockedInsetCursor(int x, int y, int asc, int desc)
 
 int BufferView::unlockInset(UpdatableInset * inset)
 {
-	if (inset && the_locking_inset == inset) {
+	if (inset && theLockingInset() == inset) {
 		inset->InsetUnlock(this);
-		the_locking_inset = 0;
+		theLockingInset(0);
 		text->FinishUndo();
 		return 0;
-	} else if (inset && the_locking_inset &&
-		   the_locking_inset->UnlockInsetInInset(this, inset)) {
+	} else if (inset && theLockingInset() &&
+		   theLockingInset()->UnlockInsetInInset(this, inset)) {
 		text->FinishUndo();
 		return 0;
 	}
@@ -780,7 +780,7 @@ int BufferView::unlockInset(UpdatableInset * inset)
 
 void BufferView::lockedInsetStoreUndo(Undo::undo_kind kind)
 {
-	if (!the_locking_inset)
+	if (!theLockingInset())
 		return; // shouldn't happen
 	if (kind == Undo::EDIT) // in this case insets would not be stored!
 		kind = Undo::FINISH;
@@ -804,8 +804,8 @@ void BufferView::updateInset(Inset * inset, bool mark_dirty)
 		return;
 
 	// first check for locking insets
-	if (the_locking_inset) {
-		if (the_locking_inset == inset) {
+	if (theLockingInset()) {
+		if (theLockingInset() == inset) {
 			if (text->UpdateInset(this, inset)){
 				update();
 				if (mark_dirty){
@@ -817,8 +817,8 @@ void BufferView::updateInset(Inset * inset, bool mark_dirty)
 				updateScrollbar();
 				return;
 			}
-		} else if (the_locking_inset->UpdateInsetInInset(this,inset)) {
-			if (text->UpdateInset(this, the_locking_inset)) {
+		} else if (theLockingInset()->UpdateInsetInInset(this,inset)) {
+			if (text->UpdateInset(this, theLockingInset())) {
 				update();
 				if (mark_dirty){
 					if (buffer()->isLyxClean())
@@ -891,4 +891,16 @@ bool BufferView::ChangeRefs(string const & from, string const & to)
 	}
 	text->SetCursorIntern(this, cursor.par(), cursor.pos());
 	return flag;
+}
+
+
+UpdatableInset * BufferView::theLockingInset() const
+{
+    return text->the_locking_inset;
+}
+
+
+void BufferView::theLockingInset(UpdatableInset const * inset)
+{
+    text->the_locking_inset = inset;
 }

@@ -618,7 +618,7 @@ void InsetTabular::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	the_locking_inset->InsetUnlock(bv);
     }
     the_locking_inset = 0;
-    if (inset_hit && bv->the_locking_inset) {
+    if (inset_hit && bv->theLockingInset()) {
 	if (ActivateCellInset(bv, x, y, button))
 	    the_locking_inset->InsetButtonPress(bv, x - inset_x,
 						y - inset_y, button);
