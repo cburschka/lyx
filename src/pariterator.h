@@ -1,5 +1,5 @@
 // -*- C++ -*-
-/* \file iterators.h
+/* \file pariterator.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,8 +9,8 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef ITERATORS_H
-#define ITERATORS_H
+#ifndef PARITERATOR_H
+#define PARITERATOR_H
 
 #include "dociterator.h"
 
