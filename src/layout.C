@@ -77,6 +77,7 @@ enum LayoutTags {
 	LT_LABELSTRING, 
 	LT_LABELSTRING_APPENDIX, 
 	LT_LABELTYPE,
+	LT_ENDLABELSTRING,
 	LT_ENDLABELTYPE,
 	LT_LATEXNAME, 
 	LT_LATEXPARAM, 
@@ -141,6 +142,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 		{ "bottomsep",			LT_BOTTOMSEP },
 		{ "copystyle",                  LT_COPYSTYLE },
 		{ "end",			LT_END },
+		{ "endlabelstring",            	LT_ENDLABELSTRING },
 		{ "endlabeltype",             	LT_ENDLABELTYPE },
 		{ "fill_bottom",		LT_FILL_BOTTOM },
 		{ "fill_top",			LT_FILL_TOP },
@@ -369,6 +371,11 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 		case LT_LABELSTRING:	// label string definition
 			if (lexrc.next())
 				labelstring_ = lexrc.GetString();
+			break;
+
+		case LT_ENDLABELSTRING:	// endlabel string definition
+			if (lexrc.next())
+				endlabelstring_ = lexrc.GetString();
 			break;
 
 		case LT_LABELSTRING_APPENDIX: // label string appendix definition
@@ -613,7 +620,8 @@ void LyXLayout::readLabelType(LyXLex & lexrc)
 static keyword_item endlabelTypeTags[] = {
 	{ "box",	END_LABEL_BOX },
 	{ "filled_box",	END_LABEL_FILLED_BOX },
-	{ "no_label",	END_LABEL_NO_LABEL }
+	{ "no_label",	END_LABEL_NO_LABEL },
+	{ "static",     END_LABEL_STATIC }
 };
 
 void LyXLayout::readEndLabelType(LyXLex & lexrc)
@@ -625,6 +633,7 @@ void LyXLayout::readEndLabelType(LyXLex & lexrc)
 	case LyXLex::LEX_UNDEF:
 		lexrc.printError("Unknown labeltype tag `$$Token'");
 		break;
+	case END_LABEL_STATIC:
 	case END_LABEL_BOX:
 	case END_LABEL_FILLED_BOX:
 	case END_LABEL_NO_LABEL:

@@ -1739,6 +1739,8 @@ void Buffer::makeLaTeXFile(string const & fname,
 		
 		// language should be a parameter to \documentclass
 		bool use_babel = false;
+		if (params.language_info->RightToLeft) // This seems necessary
+			features.UsedLanguages.insert(default_language);
 		if (params.language != "default" ||
 		    !features.UsedLanguages.empty() ) {
 			use_babel = true;

@@ -2,18 +2,98 @@
 #  \DeclareLaTeXClass[article]{article (Hebrew)}
 # Hebrew article textclass definition file.
 # Author: Dekel Tsur <dekel@math.tau.ac.il>
+# Few changes by Baruch Even <baruch.even@writeme.com>
 
 Input article
 
 Preamble
-\newtheorem{theorem}{\R{\mem\shin\pe\tet}}[section]
-\newtheorem{lemma}[theorem]{\R{\lamed\mem\he}}
-\newtheorem{claim}[theorem]{\R{\tet\ayin\nun\he}}
-\newtheorem{corollary}[theorem]{\R{\mem\samekh\qof\nun\he}}
-\newenvironment{proof}{\R{\em \he\vav\kaf\het\he:}}{\hfill\rule{2mm}{2mm}\par\vspace{2mm}}
+\usepackage{theorem}
+\theorembodyfont{\upshape}
+\newtheorem{theorem}{\R{משפט}}[section]
+\make@lr\thetheorem
 EndPreamble
 
-# Proof style declaration
+Style Comment
+  LabelString           ":הרעה"
+End
+
+Style Abstract
+  LabelString           "ריצקת"
+End
+
+Style Theorem
+  Margin                First_Dynamic
+  LatexType             Environment
+  LatexName             theorem
+  NextNoIndent          1
+  LabelSep              xx
+  ParIndent             MMM
+  ParSkip               0.4
+  ItemSep               0.2
+  TopSep                0.7
+  BottomSep             0.7
+  ParSep                0.3
+  Align                 Block
+  AlignPossible         Block, Left
+  LabelType             Static
+  LabelString           ".# טפשמ"
+  # standard font definition
+  Font
+    Shape               Up
+    Size                Normal
+  EndFont
+  # label font definition
+  LabelFont
+    Shape               Up
+    Series              Bold
+  EndFont
+End
+
+Style Lemma
+  CopyStyle             Theorem
+  LatexName             lemma
+  LabelString           ".# המל"
+  Preamble
+\newtheorem{lemma}[theorem]{\R{למה}}
+  EndPreamble
+End
+
+Style Corollary
+  CopyStyle             Theorem
+  LatexName             corollary
+  LabelString           ".# הנקסמ"
+  Preamble
+\newtheorem{corollary}[theorem]{\R{מסקנה}}
+  EndPreamble
+End
+
+Style Claim
+  CopyStyle             Theorem
+  LatexName             claim
+  LabelString           ".# הנעט"
+  Preamble
+\newtheorem{claim}[theorem]{\R{טענה}}
+  EndPreamble
+End
+
+Style Definition
+  CopyStyle             Theorem
+  LatexName             definition
+  LabelString           ".# הרדגה"
+  Preamble
+\newtheorem{definition}[theorem]{\R{הגדרה}}
+  EndPreamble
+End
+
+Style Remarks
+  CopyStyle             Theorem
+  LatexName             remark
+  LabelString           ".# הרעה"
+  Preamble
+\newtheorem{remark}[theorem]{\R{הערה}}
+  EndPreamble
+End
+
 Style Proof
   Margin                First_Dynamic
   LatexType             Environment
@@ -38,60 +118,10 @@ Style Proof
   EndFont
   # label font definition
   LabelFont
-    Shape               Italic
-  EndFont
-End
-
-Style Theorem
-  Margin                First_Dynamic
-  LatexType             Environment
-  LatexName             theorem
-  NextNoIndent          1
-  LabelSep              xx
-  ParIndent             MMM
-  ParSkip               0.4
-  ItemSep               0.2
-  TopSep                0.7
-  BottomSep             0.7
-  ParSep                0.3
-  Align                 Block
-  AlignPossible         Block, Left
-  LabelType             Static
-  LabelString           ".# טפשמ"
-  # standard font definition
-  Font
-    Shape               Italic
-    Size                Normal
-  EndFont
-  # label font definition
-  LabelFont
-    Shape               Up
+    Shape               Normal
     Series              Bold
   EndFont
-End
-
-Style Corollary
-  CopyStyle             Theorem
-  LatexName             corollary
-  LabelString           ".# הנקסמ"
-End
-
-Style Lemma
-  CopyStyle             Theorem
-  LatexName             lemma
-  LabelString           ".# המל"
-End
-
-Style Claim
-  CopyStyle             Theorem
-  LatexName             claim
-  LabelString           ".# הנעט"
-End
-
-Style Comment
-  LabelString           ": הרעה"
-End
-
-Style Abstract
-  LabelString           "ריצקת"
+  Preamble
+\newenvironment{proof}{\R{\textbf{הוכחה:}}}{\hfill\rule{2mm}{2mm}\par\vspace{2mm}}
+  EndPreamble
 End

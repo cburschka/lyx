@@ -4210,8 +4210,10 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 
 		// draw an endlabel
 		int endlabel = row_ptr->par->GetEndLabel();
-		if (endlabel == END_LABEL_BOX ||
-		    endlabel == END_LABEL_FILLED_BOX) {
+		switch (endlabel) {
+		case END_LABEL_BOX:
+		case END_LABEL_FILLED_BOX:
+		{
 			LyXFont font = GetFont(row_ptr->par, last);
 			int size = int(0.75 * lyxfont::maxAscent(font));
 			int y = (offset + row_ptr->baseline) - size;
@@ -4238,6 +4240,21 @@ void LyXText::GetVisibleRow(int offset, Row * row_ptr, long y)
 			} else
 				pain.fillRectangle(x, y, size, size,
 						   LColor::eolmarker);
+			break;
+		}
+		case END_LABEL_STATIC:
+		{
+			LyXTextClass::LayoutList::size_type layout = row_ptr->par->GetLayout();
+			string tmpstring = textclasslist.Style(buffer->params.textclass,
+							 layout).endlabelstring();
+			font = GetFont(row_ptr->par, -2);
+			int tmpx = is_rtl ? int(x) - lyxfont::width(tmpstring, font)
+				: paperwidth - RightMargin(row_ptr) - row_ptr->fill;
+			pain.text( tmpx, offset + row_ptr->baseline, tmpstring, font);
+			break;
+		}
+		case END_LABEL_NO_LABEL:
+			break;
 		}
 	}
 	

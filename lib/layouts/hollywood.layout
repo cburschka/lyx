@@ -164,8 +164,7 @@ Style Speaker
 End
 
 # Parenthetical instruction to speaker (in parenthises, l.c.)
-# The ( will automatically appear on screen, both () will be
-# in print, so don't type any.
+# The ( and ) will automatically appear on screen, so don't type any.
 Style Parenthetical  
   Margin                Static
   LatexType             Environment
@@ -178,6 +177,9 @@ Style Parenthetical
   AlignPossible         Left
   LabelType		Static
   LabelString		(
+  EndLabelType		Static
+  EndLabelString	)
+
 Font
   Family                Typewriter
   Series                Medium

@@ -1,3 +1,19 @@
+20000-05-11  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/layout.C: Add new keyword "endlabelstring" to layout file
+
+	* src/text.C (GetVisibleRow): Draw endlabel string.
+
+	* lib/layouts/broadway.layout
+	* lib/layouts/hollywood.layout: Added endlabel for the
+	Parenthetical layout.
+
+	* lib/layouts/heb-article.layout: Do not use slanted font shape
+	for Theorem like environments.
+
+	* src/buffer.C (makeLaTeXFile): Always add "american" to 
+	the UsedLanguages list if document language is RTL. 
+
 2000-05-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* add addendum to README.OS2 and small patch (from SMiyata)

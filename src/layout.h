@@ -153,9 +153,11 @@ enum LYX_END_LABEL_TYPES {
 	///
 	END_LABEL_FILLED_BOX,
 	///
+	END_LABEL_STATIC,
+	///
 	END_LABEL_ENUM_FIRST = END_LABEL_NO_LABEL,
 	///
-	END_LABEL_ENUM_LAST = END_LABEL_FILLED_BOX
+	END_LABEL_ENUM_LAST = END_LABEL_STATIC
 };
 		
 /* Fix labels are printed flushright, manual labels flushleft. 
@@ -201,6 +203,7 @@ public:
 	string const & obsoleted_by() const { return obsoleted_by_; }
 	string const & latexname() const { return latexname_; }
 	string const & labelstring() const { return labelstring_; }
+	string const & endlabelstring() const { return endlabelstring_; }
 	string const & preamble() const { return preamble_; }
 	string const & latexparam() const { return latexparam_; }
 	string const & labelstring_appendix() const {
@@ -338,6 +341,9 @@ private:
 
 	/// Label string. "Abstract", "Reference", "Caption"...
 	string labelstring_;
+
+	///
+	string endlabelstring_;
 
 	/// Label string inside appendix. "Appendix", ...
 	string labelstring_appendix_;

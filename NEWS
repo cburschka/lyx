@@ -37,8 +37,9 @@ User-visible changes:
   (The color ones, and -mono -fastselection, -reverse)
 
 - new lyxrc variables: \show_banner [true|false] to remove the banner
-  screen, and \backupdir_path to tell where the backup files created
-  by lyx should be stored. 
+  screen, \backupdir_path to tell where the backup files created
+  by lyx should be stored, and \override_x_deadkeys to tell whether 
+  lyx should provide its own accent keys handling (default is true). 
 
 
 
