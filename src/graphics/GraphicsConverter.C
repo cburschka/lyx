@@ -136,8 +136,10 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 		<< "\n\tfrom_format:  " << from_format
 		<< "\n\tto_format:    " << to_format << endl;
 
-	// The converted image is to be stored in this file
-	to_file_ = ChangeExtension(to_file_base, formats.extension(to_format));
+	// The converted image is to be stored in this file (we do not
+	// use ChangeExtension because this is a basename which may
+	// nevertheless contain a '.')
+	to_file_ = to_file_base + '.' +  formats.extension(to_format);
 
 	// The conversion commands are stored in a stringstream
 	ostringstream script;
@@ -263,8 +265,10 @@ bool build_script(string const & from_file,
 	lyxerr[Debug::GRAPHICS] << "build_script ... ";
 	typedef Converters::EdgePath EdgePath;
 
-	string const to_file = ChangeExtension(to_file_base,
-					       formats.extension(to_format));
+	// we do not use ChangeExtension because this is a basename
+	// which may nevertheless contain a '.'
+	string const to_file = to_file_base + '.'
+		+ formats.extension(to_format);
 
 	if (from_format == to_format) {
 		script << move_file(QuoteName(from_file), QuoteName(to_file));
