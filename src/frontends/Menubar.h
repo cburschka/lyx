@@ -13,6 +13,8 @@
 #ifndef MENUBAR_H
 #define MENUBAR_H
 
+#include <string>
+
 /**
  * The LyX GUI independent menubar class
  * The GUI interface is implemented in the frontends

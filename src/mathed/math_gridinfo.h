@@ -12,13 +12,15 @@
 #ifndef MATH_GRIDINFO_H
 #define MATH_GRIDINFO_H
 
+#include <string>
+
 
 struct ColInfo
 {
 	ColInfo() : align('c'), rightline(0), leftline(false) {}
 	char   align;      // column alignment
-	string width;      // column width
-	string special;    // special column alignment
+	std::string width;      // column width
+	std::string special;    // special column alignment
 	int    rightline;  // a line on the right?
 	bool   leftline;
 };
@@ -39,7 +41,7 @@ struct CellInfo
 	   topline(false), bottomline(false)
 	{}
 
-	string content;    // cell content
+	std::string content;    // cell content
 	int multi;         // multicolumn flag
 	char align;        // cell alignment
 	bool leftline;     // do we have a line on the left?

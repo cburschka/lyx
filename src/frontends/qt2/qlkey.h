@@ -13,6 +13,7 @@
 #define QLKEY_H
 
 #include <qnamespace.h>
+#include <string>
 
 
 /**

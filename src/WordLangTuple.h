@@ -12,6 +12,9 @@
 #ifndef WORD_LANG_TUPLE_H
 #define WORD_LANG_TUPLE_H
 
+#include <string>
+
+
 /**
  * A word and its given language code ("en_US").
  * This is used for spellchecking.

@@ -18,6 +18,8 @@
 #include "Qt2BC.h"
 
 #include <boost/scoped_ptr.hpp>
+#include <string>
+
 
 class ControlDocument;
 class QDocumentDialog;
