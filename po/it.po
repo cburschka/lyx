@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.1\n"
-"POT-Creation-Date: 2002-05-16 00:06+0200\n"
+"POT-Creation-Date: 2002-05-16 01:51+0200\n"
 "PO-Revision-Date: 2000-01-20 02:56+01:00\n"
 "Last-Translator: Fulvio Boggia <muci@freenet.hut.fi>\n"
 "Language-Team: Italiano <it@li.org>\n"
@@ -347,8 +347,8 @@ msgstr ", Profondità: "
 msgid ", Spacing: "
 msgstr "Spaziatura"
 
-#: src/bufferview_funcs.C:182 src/ext_l10n.h:654
-#: src/frontends/qt2/QDocument.C:111
+#: src/bufferview_funcs.C:182 src/frontends/qt2/QDocument.C:111
+#: src/ext_l10n.h:654
 #, fuzzy
 msgid "Single"
 msgstr "Singole|#S"
@@ -357,15 +357,15 @@ msgstr "Singole|#S"
 msgid "Onehalf"
 msgstr ""
 
-#: src/bufferview_funcs.C:189 src/ext_l10n.h:656
-#: src/frontends/qt2/QDocument.C:113 src/frontends/xforms/form_tabular.C:492
+#: src/bufferview_funcs.C:189 src/frontends/qt2/QDocument.C:113
+#: src/frontends/xforms/form_tabular.C:492
 #: src/frontends/xforms/form_tabular.C:494
 #: src/frontends/xforms/form_tabular.C:508
 #: src/frontends/xforms/form_tabular.C:510
 #: src/frontends/xforms/form_tabular.C:512
 #: src/frontends/xforms/form_tabular.C:514
 #: src/frontends/xforms/form_tabular.C:516
-#: src/frontends/xforms/form_tabular.C:518
+#: src/frontends/xforms/form_tabular.C:518 src/ext_l10n.h:656
 #, fuzzy
 msgid "Double"
 msgstr "Doppie|#D"
@@ -391,12 +391,12 @@ msgstr ""
 msgid "Moved to bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1611
+#: src/BufferView_pimpl.C:1612
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Scegli il documento da inserire"
 
-#: src/BufferView_pimpl.C:1613 src/frontends/controllers/ControlBibtex.C:68
+#: src/BufferView_pimpl.C:1614 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
 #: src/frontends/controllers/ControlGraphics.C:154
 #: src/frontends/controllers/ControlInclude.C:71 src/lyx_cb.C:113
@@ -405,95 +405,94 @@ msgstr "Scegli il documento da inserire"
 msgid "Documents|#o#O"
 msgstr "Documenti"
 
-#: src/BufferView_pimpl.C:1615 src/lyxfunc.C:1865 src/lyxfunc.C:1942
+#: src/BufferView_pimpl.C:1616 src/lyxfunc.C:1865 src/lyxfunc.C:1942
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Esempi"
 
-#: src/BufferView_pimpl.C:1620 src/frontends/controllers/ControlInclude.C:67
+#: src/BufferView_pimpl.C:1621 src/frontends/controllers/ControlInclude.C:67
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1629 src/lyxfunc.C:1749 src/lyxfunc.C:1776
+#: src/BufferView_pimpl.C:1630 src/lyxfunc.C:1749 src/lyxfunc.C:1776
 #: src/lyxfunc.C:1879 src/lyxfunc.C:1959 src/lyxfunc.C:1987
 msgid "Canceled."
 msgstr "Annullato."
 
-#: src/BufferView_pimpl.C:1641
+#: src/BufferView_pimpl.C:1642
 msgid "Inserting document"
 msgstr "Sto inserendo il documento"
 
-#: src/BufferView_pimpl.C:1647 src/ext_l10n.h:637
-#: src/frontends/xforms/FormDocument.C:327 src/lyxfunc.C:1797
-#: src/lyxfunc.C:1907
+#: src/BufferView_pimpl.C:1648 src/frontends/xforms/FormDocument.C:327
+#: src/lyxfunc.C:1797 src/lyxfunc.C:1907 src/ext_l10n.h:637
 msgid "Document"
 msgstr "Documento"
 
-#: src/BufferView_pimpl.C:1648
+#: src/BufferView_pimpl.C:1649
 msgid "inserted."
 msgstr "inserito."
 
-#: src/BufferView_pimpl.C:1652
+#: src/BufferView_pimpl.C:1653
 msgid "Could not insert document"
 msgstr "Non risco ad inserire il documento"
 
-#: src/BufferView_pimpl.C:1818
+#: src/BufferView_pimpl.C:1819
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
 
-#: src/BufferView_pimpl.C:1836 src/insets/insettext.C:1458
+#: src/BufferView_pimpl.C:1837 src/insets/insettext.C:1463
 msgid "Layout "
 msgstr "Struttura "
 
-#: src/BufferView_pimpl.C:1837 src/insets/insettext.C:1458
+#: src/BufferView_pimpl.C:1838 src/insets/insettext.C:1463
 msgid " not known"
 msgstr " sconosciuta"
 
-#: src/BufferView_pimpl.C:2033 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:2034 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77 src/lyxfunc.C:1889
 msgid "Error"
 msgstr "Errore"
 
-#: src/BufferView_pimpl.C:2034
+#: src/BufferView_pimpl.C:2035
 msgid "Couldn't find this label"
 msgstr "Non riesco a trovare questa etichetta"
 
-#: src/BufferView_pimpl.C:2035
+#: src/BufferView_pimpl.C:2036
 msgid "in current document."
 msgstr "nell'attuale documento."
 
-#: src/BufferView_pimpl.C:2532
+#: src/BufferView_pimpl.C:2533
 msgid "Mark removed"
 msgstr "Marchio rimosso"
 
-#: src/BufferView_pimpl.C:2539
+#: src/BufferView_pimpl.C:2540
 msgid "Mark set"
 msgstr "Marchio impostato"
 
-#: src/BufferView_pimpl.C:2670
+#: src/BufferView_pimpl.C:2671
 msgid "Mark off"
 msgstr "Marchi disattivati"
 
-#: src/BufferView_pimpl.C:2683
+#: src/BufferView_pimpl.C:2684
 msgid "Mark on"
 msgstr "Marchi attivati"
 
-#: src/BufferView_pimpl.C:2857 src/insets/insettext.C:1511
+#: src/BufferView_pimpl.C:2858 src/insets/insettext.C:1516
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "Mancano gli argomenti"
 
-#: src/BufferView_pimpl.C:3212
+#: src/BufferView_pimpl.C:3213
 msgid "Word `"
 msgstr ""
 
-#: src/BufferView_pimpl.C:3370
+#: src/BufferView_pimpl.C:3371
 #, fuzzy
 msgid "Unknown function!"
 msgstr "Azione sconosciuta"
 
-#: src/BufferView_pimpl.C:3633 src/BufferView_pimpl.C:3636
+#: src/BufferView_pimpl.C:3634 src/BufferView_pimpl.C:3637
 #, fuzzy
 msgid "No more insets"
 msgstr "Non ci sono più note"
@@ -806,4651 +805,6 @@ msgstr "Documento esportato in HTML sul file `"
 msgid " to file `"
 msgstr "[nessun file]"
 
-#: src/ext_l10n.h:1 src/ext_l10n.h:4 src/MenuBackend.C:541
-#: src/MenuBackend.C:548
-#, fuzzy
-msgid "File|F"
-msgstr "File"
-
-#: src/ext_l10n.h:2 src/ext_l10n.h:5 src/MenuBackend.C:542
-#, fuzzy
-msgid "Edit|E"
-msgstr "Modifica"
-
-#: src/ext_l10n.h:3 src/ext_l10n.h:11
-#, fuzzy
-msgid "Help|H"
-msgstr "Aiuto"
-
-#: src/ext_l10n.h:6
-#, fuzzy
-msgid "Insert|I"
-msgstr "Inserisci"
-
-#: src/ext_l10n.h:7
-#, fuzzy
-msgid "Layout|L"
-msgstr "Struttura"
-
-#: src/ext_l10n.h:8
-#, fuzzy
-msgid "View|V"
-msgstr "Visualizza il file DVI"
-
-#: src/ext_l10n.h:9
-#, fuzzy
-msgid "Navigate|N"
-msgstr "Negativo|#N"
-
-#: src/ext_l10n.h:10 src/MenuBackend.C:544
-#, fuzzy
-msgid "Documents|D"
-msgstr "Documenti"
-
-#: src/ext_l10n.h:12 src/ext_l10n.h:17 src/MenuBackend.C:511
-msgid "New...|N"
-msgstr ""
-
-#: src/ext_l10n.h:13 src/ext_l10n.h:18
-#, fuzzy
-msgid "New from Template...|T"
-msgstr "Nuovo documento basato su un modello"
-
-#: src/ext_l10n.h:14 src/ext_l10n.h:19 src/MenuBackend.C:512
-#, fuzzy
-msgid "Open...|O"
-msgstr "Altro...|#l"
-
-#: src/ext_l10n.h:15 src/ext_l10n.h:25 src/MenuBackend.C:513
-#, fuzzy
-msgid "Import|I"
-msgstr "Importa%m"
-
-#: src/ext_l10n.h:16 src/ext_l10n.h:29
-#, fuzzy
-msgid "Exit|x"
-msgstr "Esci"
-
-#: src/ext_l10n.h:20
-#, fuzzy
-msgid "Close|C"
-msgstr "Chiudi"
-
-#: src/ext_l10n.h:21
-#, fuzzy
-msgid "Save|S"
-msgstr "Salva"
-
-#: src/ext_l10n.h:22
-#, fuzzy
-msgid "Save As...|A"
-msgstr "Salva come"
-
-#: src/ext_l10n.h:23
-#, fuzzy
-msgid "Revert to Saved|R"
-msgstr "Ritorna all'ultima versione salvata"
-
-#: src/ext_l10n.h:24
-#, fuzzy
-msgid "Version Control|V"
-msgstr "Contollo della versione%t"
-
-#: src/ext_l10n.h:26
-#, fuzzy
-msgid "Export|E"
-msgstr "Esporta%m%l"
-
-#: src/ext_l10n.h:27
-#, fuzzy
-msgid "Print...|P"
-msgstr "Stampante|#m"
-
-#: src/ext_l10n.h:28
-#, fuzzy
-msgid "Fax...|F"
-msgstr "Fax n.:|#F"
-
-#: src/ext_l10n.h:30
-#, fuzzy
-msgid "Register|R"
-msgstr "Registro"
-
-#: src/ext_l10n.h:31
-#, fuzzy
-msgid "Check In Changes|I"
-msgstr "Controlla i cambiamenti"
-
-#: src/ext_l10n.h:32
-#, fuzzy
-msgid "Check Out for Edit|O"
-msgstr "Controlla le modifiche"
-
-#: src/ext_l10n.h:33
-#, fuzzy
-msgid "Revert to Last Version|L"
-msgstr "Ritorna all'ultima versione"
-
-#: src/ext_l10n.h:34
-#, fuzzy
-msgid "Undo Last Check In|U"
-msgstr "Annulla l'ultimo controllo"
-
-#: src/ext_l10n.h:35
-#, fuzzy
-msgid "Show History|H"
-msgstr "Mostra la cronologia"
-
-#: src/ext_l10n.h:36
-#, fuzzy
-msgid "Custom...|C"
-msgstr "Dimensioni alternative"
-
-#: src/ext_l10n.h:37 src/ext_l10n.h:54
-msgid "Preferences...|P"
-msgstr ""
-
-#: src/ext_l10n.h:38 src/ext_l10n.h:55
-#, fuzzy
-msgid "Reconfigure|R"
-msgstr "Riconfigura"
-
-#: src/ext_l10n.h:39
-#, fuzzy
-msgid "Undo|U"
-msgstr "Annulla l'ultima operazione"
-
-#: src/ext_l10n.h:40
-#, fuzzy
-msgid "Redo|d"
-msgstr "Ripristina l'ultima operazione annullata"
-
-#: src/ext_l10n.h:41
-#, fuzzy
-msgid "Cut|C"
-msgstr "Taglia"
-
-#: src/ext_l10n.h:42
-#, fuzzy
-msgid "Copy|o"
-msgstr "Copia"
-
-#: src/ext_l10n.h:43
-#, fuzzy
-msgid "Paste|a"
-msgstr "Incolla"
-
-#: src/ext_l10n.h:44
-msgid "Paste External Selection|x"
-msgstr ""
-
-#: src/ext_l10n.h:45
-#, fuzzy
-msgid "Find & Replace...|F"
-msgstr "Cerca & Sostituisci"
-
-#: src/ext_l10n.h:46
-#, fuzzy
-msgid "Tabular|T"
-msgstr "Struttura della tabella"
-
-#: src/ext_l10n.h:47
-#, fuzzy
-msgid "Math|M"
-msgstr "Matematici|#M"
-
-#: src/ext_l10n.h:48
-#, fuzzy
-msgid "Read Only"
-msgstr " (sola lettura)"
-
-#: src/ext_l10n.h:49
-#, fuzzy
-msgid "Spellchecker...|S"
-msgstr "Correttore"
-
-#: src/ext_l10n.h:50
-#, fuzzy
-msgid "Thesaurus..."
-msgstr "Inserto aperto"
-
-#: src/ext_l10n.h:51
-#, fuzzy
-msgid "Check TeX|h"
-msgstr "Controlla TeX"
-
-#: src/ext_l10n.h:52
-#, fuzzy
-msgid "Remove All Error Boxes|E"
-msgstr "Rimuovi tutte le note d'errore"
-
-#: src/ext_l10n.h:53
-#, fuzzy
-msgid "Open/Close float|l"
-msgstr "Oggetto flottante chiuso"
-
-#: src/ext_l10n.h:56
-#, fuzzy
-msgid "as Lines|L"
-msgstr "Linee"
-
-#: src/ext_l10n.h:57
-#, fuzzy
-msgid "as Paragraphs|P"
-msgstr "Paragrafo indentato"
-
-#: src/ext_l10n.h:58
-#, fuzzy
-msgid "Multicolumn|M"
-msgstr "Multi colonna|#u"
-
-#: src/ext_l10n.h:59
-#, fuzzy
-msgid "Line Top|T"
-msgstr "Linea in alto"
-
-#: src/ext_l10n.h:60
-#, fuzzy
-msgid "Line Bottom|B"
-msgstr "Linea in basso"
-
-#: src/ext_l10n.h:61
-#, fuzzy
-msgid "Line Left|L"
-msgstr "Sin.|#S"
-
-#: src/ext_l10n.h:62
-#, fuzzy
-msgid "Line Right|R"
-msgstr "Destra|#D"
-
-#: src/ext_l10n.h:63
-#, fuzzy
-msgid "Align Left|e"
-msgstr "Allinea a sinistra"
-
-#: src/ext_l10n.h:64 src/ext_l10n.h:88
-#, fuzzy
-msgid "Align Center|C"
-msgstr "Allineamento"
-
-#: src/ext_l10n.h:65
-#, fuzzy
-msgid "Align Right|i"
-msgstr "Allinea a destra"
-
-#: src/ext_l10n.h:66
-msgid "V.Align Top|o"
-msgstr ""
-
-#: src/ext_l10n.h:67
-#, fuzzy
-msgid "V.Align Center|n"
-msgstr "Allinea al centro"
-
-#: src/ext_l10n.h:68
-#, fuzzy
-msgid "V.Align Bottom|V"
-msgstr "Linea in basso"
-
-#: src/ext_l10n.h:69
-#, fuzzy
-msgid "Add Row|A"
-msgstr "Aggiungi riga|#r"
-
-#: src/ext_l10n.h:70
-#, fuzzy
-msgid "Delete Row|w"
-msgstr "Cancella riga|#n"
-
-#: src/ext_l10n.h:71
-#, fuzzy
-msgid "Add Column|u"
-msgstr "Aggiungi colonna|#g"
-
-#: src/ext_l10n.h:72
-#, fuzzy
-msgid "Delete Column|D"
-msgstr "Cancella colonna|#l"
-
-#: src/ext_l10n.h:73
-msgid "Make eqnarray|e"
-msgstr ""
-
-#: src/ext_l10n.h:74
-msgid "Make multline|m"
-msgstr ""
-
-#: src/ext_l10n.h:75
-msgid "Make align 1 column|1"
-msgstr ""
-
-#: src/ext_l10n.h:76
-msgid "Make align 2 columns|2"
-msgstr ""
-
-#: src/ext_l10n.h:77
-msgid "Make align 3 columns|3"
-msgstr ""
-
-#: src/ext_l10n.h:78
-msgid "Make alignat 2 columns|2"
-msgstr ""
-
-#: src/ext_l10n.h:79
-msgid "Make alignat 3 columns|3"
-msgstr ""
-
-#: src/ext_l10n.h:80
-#, fuzzy
-msgid "Toggle numbering|n"
-msgstr "(Dis)attiva lo stile del font sottolineato"
-
-#: src/ext_l10n.h:81
-#, fuzzy
-msgid "Toggle numbering of line|u"
-msgstr "(Dis)attiva lo stile del font sottolineato"
-
-#: src/ext_l10n.h:82
-#, fuzzy
-msgid "Toggle limits|l"
-msgstr "(Dis)attiva lo stile grassetto"
-
-#: src/ext_l10n.h:83
-#, fuzzy
-msgid "Inline formula|I"
-msgstr "Inserisci una figura"
-
-#: src/ext_l10n.h:84
-#, fuzzy
-msgid "Displayed formula|D"
-msgstr "Mostra immagine|#n"
-
-#: src/ext_l10n.h:85
-#, fuzzy
-msgid "Eqnarray environment|q"
-msgstr "Ho impostato il tipo d'ambiente del paragrafo"
-
-#: src/ext_l10n.h:86
-#, fuzzy
-msgid "Align environment|A"
-msgstr "Allineamento"
-
-#: src/ext_l10n.h:87
-#, fuzzy
-msgid "Align Left|f"
-msgstr "Allinea a sinistra"
-
-#: src/ext_l10n.h:89
-#, fuzzy
-msgid "Align Right|R"
-msgstr "Allinea a destra"
-
-#: src/ext_l10n.h:90
-#, fuzzy
-msgid "V.Align Top|T"
-msgstr "Linea in alto"
-
-#: src/ext_l10n.h:91
-#, fuzzy
-msgid "V.Align Center|e"
-msgstr "Allinea al centro"
-
-#: src/ext_l10n.h:92
-#, fuzzy
-msgid "V.Align Bottom|B"
-msgstr "Linea in basso"
-
-#: src/ext_l10n.h:93
-#, fuzzy
-msgid "Add Row"
-msgstr "Aggiungi riga|#r"
-
-#: src/ext_l10n.h:94
-#, fuzzy
-msgid "Delete Row"
-msgstr "Cancella riga|#n"
-
-#: src/ext_l10n.h:95
-#, fuzzy
-msgid "Add Column"
-msgstr "Aggiungi colonna|#g"
-
-#: src/ext_l10n.h:96
-#, fuzzy
-msgid "Delete Column"
-msgstr "Cancella colonna|#l"
-
-#: src/ext_l10n.h:97
-#, fuzzy
-msgid "Math|h"
-msgstr "Matematici|#M"
-
-#: src/ext_l10n.h:98
-#, fuzzy
-msgid "Special Character|S"
-msgstr "Speciale:|#p"
-
-#: src/ext_l10n.h:99
-#, fuzzy
-msgid "Citation Reference...|C"
-msgstr "Vai al riferimento|#V"
-
-#: src/ext_l10n.h:100
-#, fuzzy
-msgid "Cross Reference...|R"
-msgstr "Inserisci un riferimento incrociato"
-
-#: src/ext_l10n.h:101
-#, fuzzy
-msgid "Label...|L"
-msgstr "Etichetta:|#E"
-
-#: src/ext_l10n.h:102
-#, fuzzy
-msgid "Footnote|F"
-msgstr "Inserisci una nota a piè di pagina"
-
-#: src/ext_l10n.h:103
-#, fuzzy
-msgid "Marginal Note|M"
-msgstr "Inserisci nota a margine"
-
-#: src/ext_l10n.h:104
-#, fuzzy
-msgid "Index Entry...|I"
-msgstr "Capov."
-
-#: src/ext_l10n.h:105
-msgid "Index Entry of Preceding Word|W"
-msgstr ""
-
-#: src/ext_l10n.h:106
-msgid "URL...|U"
-msgstr ""
-
-#: src/ext_l10n.h:107 src/ext_l10n.h:162
-#, fuzzy
-msgid "Note|N"
-msgstr "altro"
-
-#: src/ext_l10n.h:108
-msgid "Lists & TOC|O"
-msgstr ""
-
-#: src/ext_l10n.h:109
-#, fuzzy
-msgid "TeX|T"
-msgstr "Struttura della tabella"
-
-#: src/ext_l10n.h:110
-#, fuzzy
-msgid "Minipage|p"
-msgstr "Minipagina"
-
-#: src/ext_l10n.h:111
-msgid "Graphics...|G"
-msgstr ""
-
-#: src/ext_l10n.h:112
-#, fuzzy
-msgid "Tabular Material...|b"
-msgstr "Struttura della tabella"
-
-#: src/ext_l10n.h:113
-#, fuzzy
-msgid "Floats|a"
-msgstr "Riquadro"
-
-#: src/ext_l10n.h:114
-#, fuzzy
-msgid "Include File...|d"
-msgstr "Includi"
-
-#: src/ext_l10n.h:115
-#, fuzzy
-msgid "Insert File|e"
-msgstr "Inserisci una figura"
-
-#: src/ext_l10n.h:116
-msgid "External Material...|x"
-msgstr ""
-
-#: src/ext_l10n.h:117
-msgid "Superscript|S"
-msgstr ""
-
-#: src/ext_l10n.h:118
-msgid "Subscript|u"
-msgstr ""
-
-#: src/ext_l10n.h:119
-msgid "HFill|H"
-msgstr ""
-
-#: src/ext_l10n.h:120
-#, fuzzy
-msgid "Hyphenation Point|P"
-msgstr "Inserisci un separatore di sillabe"
-
-#: src/ext_l10n.h:121
-#, fuzzy
-msgid "Ligature break|k"
-msgstr "Inter. linea"
-
-#: src/ext_l10n.h:122
-msgid "Protected Blank|B"
-msgstr ""
-
-#: src/ext_l10n.h:123
-#, fuzzy
-msgid "Linebreak|L"
-msgstr "Inter. linea"
-
-#: src/ext_l10n.h:124
-msgid "Ellipsis|i"
-msgstr ""
-
-#: src/ext_l10n.h:125
-#, fuzzy
-msgid "End of Sentence|E"
-msgstr "Inserisci il punto di fine periodo"
-
-#: src/ext_l10n.h:126
-msgid "Ordinary Quote|Q"
-msgstr ""
-
-#: src/ext_l10n.h:127
-#, fuzzy
-msgid "Menu Separator|M"
-msgstr "Separazione"
-
-#: src/ext_l10n.h:128
-#, fuzzy
-msgid "Inline Formula|I"
-msgstr "Inserisci una figura"
-
-#: src/ext_l10n.h:129
-#, fuzzy
-msgid "Display Formula|D"
-msgstr "Mostra immagine|#n"
-
-#: src/ext_l10n.h:130
-#, fuzzy
-msgid "Eqnarray environment|E"
-msgstr "Ho impostato il tipo d'ambiente del paragrafo"
-
-#: src/ext_l10n.h:131
-#, fuzzy
-msgid "AMS align environment|A"
-msgstr "Allineamento"
-
-#: src/ext_l10n.h:132
-#, fuzzy
-msgid "AMS alignat environment|t"
-msgstr "Allineamento"
-
-#: src/ext_l10n.h:133
-#, fuzzy
-msgid "AMS xalignat environment|x"
-msgstr "Allineamento"
-
-#: src/ext_l10n.h:134
-#, fuzzy
-msgid "AMS xxalignat environment"
-msgstr "Allineamento"
-
-#: src/ext_l10n.h:135
-#, fuzzy
-msgid "Array environment|y"
-msgstr "Ho impostato il tipo d'ambiente del paragrafo"
-
-#: src/ext_l10n.h:136
-#, fuzzy
-msgid "Cases environment|C"
-msgstr "Cambia la profondità del paragrafo"
-
-#: src/ext_l10n.h:137
-#, fuzzy
-msgid "Math Panel...|l"
-msgstr "Pannello matematico"
-
-#: src/ext_l10n.h:138
-#, fuzzy
-msgid "Table of Contents|C"
-msgstr "Sommario"
-
-#: src/ext_l10n.h:139
-#, fuzzy
-msgid "Index List|I"
-msgstr "Capoverso|#v"
-
-#: src/ext_l10n.h:140
-#, fuzzy
-msgid "BibTeX Reference...|B"
-msgstr "Riferimenti generati da BibTeX"
-
-#: src/ext_l10n.h:141
-#, fuzzy
-msgid "LyX Document...|X"
-msgstr "Documento"
-
-#: src/ext_l10n.h:142
-#, fuzzy
-msgid "Ascii as Lines...|L"
-msgstr "Linee"
-
-#: src/ext_l10n.h:143
-#, fuzzy
-msgid "Ascii as Paragraphs...|P"
-msgstr "Seleziona il paragrafo successivo"
-
-#: src/ext_l10n.h:144
-#, fuzzy
-msgid "Character...|C"
-msgstr "Insieme dei caratteri:|#I"
-
-#: src/ext_l10n.h:145
-msgid "Paragraph...|P"
-msgstr ""
-
-#: src/ext_l10n.h:146
-#, fuzzy
-msgid "Document...|D"
-msgstr "Documento"
-
-#: src/ext_l10n.h:147
-msgid "Tabular...|T"
-msgstr ""
-
-#: src/ext_l10n.h:148
-#, fuzzy
-msgid "Emphasize Style|E"
-msgstr "Enfatizzato "
-
-#: src/ext_l10n.h:149
-msgid "Noun Style|N"
-msgstr ""
-
-#: src/ext_l10n.h:150
-msgid "Bold Style|B"
-msgstr ""
-
-#: src/ext_l10n.h:151
-msgid "TeX Style|X"
-msgstr ""
-
-#: src/ext_l10n.h:152
-#, fuzzy
-msgid "Change Environment Depth|v"
-msgstr "Cambia la profondità del paragrafo"
-
-#: src/ext_l10n.h:153
-#, fuzzy
-msgid "Preamble...|r"
-msgstr "Preambolo di LaTeX"
-
-#: src/ext_l10n.h:154
-msgid "Start Appendix here|A"
-msgstr ""
-
-#: src/ext_l10n.h:155
-#, fuzzy
-msgid "Build Program|B"
-msgstr "Costruisci il programma"
-
-#: src/ext_l10n.h:156
-#, fuzzy
-msgid "Update|U"
-msgstr "Aggiorna|#g"
-
-#: src/ext_l10n.h:157
-#, fuzzy
-msgid "LaTeX Logfile|L"
-msgstr "Log di LaTeX"
-
-#: src/ext_l10n.h:158
-#, fuzzy
-msgid "Table of Contents|T"
-msgstr "Sommario"
-
-#: src/ext_l10n.h:159
-msgid "Child processes|C"
-msgstr ""
-
-#: src/ext_l10n.h:160
-#, fuzzy
-msgid "TeX Information|X"
-msgstr "Nessun altra operazione da annullare"
-
-#: src/ext_l10n.h:161
-#, fuzzy
-msgid "Error|E"
-msgstr "Errore"
-
-#: src/ext_l10n.h:163
-#, fuzzy
-msgid "Refs|R"
-msgstr "Rif: "
-
-#: src/ext_l10n.h:164
-#, fuzzy
-msgid "Bookmarks|B"
-msgstr "Inferiore|#f"
-
-#: src/ext_l10n.h:165
-msgid "Save Bookmark 1|S"
-msgstr ""
-
-#: src/ext_l10n.h:166
-msgid "Save Bookmark 2"
-msgstr ""
-
-#: src/ext_l10n.h:167
-msgid "Save Bookmark 3"
-msgstr ""
-
-#: src/ext_l10n.h:168
-msgid "Goto Bookmark 1|1"
-msgstr ""
-
-#: src/ext_l10n.h:169
-msgid "Goto Bookmark 2|2"
-msgstr ""
-
-#: src/ext_l10n.h:170
-msgid "Goto Bookmark 3|3"
-msgstr ""
-
-#: src/ext_l10n.h:171
-msgid "Tooltips|o"
-msgstr ""
-
-#: src/ext_l10n.h:172
-msgid "Introduction|I"
-msgstr ""
-
-#: src/ext_l10n.h:173
-msgid "Tutorial|T"
-msgstr ""
-
-#: src/ext_l10n.h:174
-#, fuzzy
-msgid "User's Guide|U"
-msgstr "Usa include|#U"
-
-#: src/ext_l10n.h:175
-msgid "Extended Features|E"
-msgstr ""
-
-#: src/ext_l10n.h:176
-#, fuzzy
-msgid "Customization|C"
-msgstr "Citazione"
-
-#: src/ext_l10n.h:177
-msgid "Reference Manual|R"
-msgstr ""
-
-#: src/ext_l10n.h:178
-msgid "FAQ|F"
-msgstr ""
-
-#: src/ext_l10n.h:179
-#, fuzzy
-msgid "Table of Contents|a"
-msgstr "Sommario"
-
-#: src/ext_l10n.h:180
-msgid "LaTeX Configuration|L"
-msgstr ""
-
-#: src/ext_l10n.h:181
-msgid "About LyX|X"
-msgstr ""
-
-#: src/ext_l10n.h:183
-msgid "Accepted"
-msgstr ""
-
-#: src/ext_l10n.h:184
-msgid "Acknowledgement"
-msgstr ""
-
-#: src/ext_l10n.h:185
-msgid "Acknowledgement*"
-msgstr ""
-
-#: src/ext_l10n.h:186
-msgid "Acknowledgements"
-msgstr ""
-
-#: src/ext_l10n.h:187
-msgid "Acknowledgments"
-msgstr ""
-
-#: src/ext_l10n.h:188
-msgid "ACT"
-msgstr ""
-
-#: src/ext_l10n.h:189
-msgid "Addchap"
-msgstr ""
-
-#: src/ext_l10n.h:190
-msgid "Addchap*"
-msgstr ""
-
-#: src/ext_l10n.h:191
-#, fuzzy
-msgid "Addition"
-msgstr "Citazione"
-
-#: src/ext_l10n.h:192
-msgid "Address"
-msgstr ""
-
-#: src/ext_l10n.h:193
-#, fuzzy
-msgid "AddressForOffprints"
-msgstr "Opzioni"
-
-#: src/ext_l10n.h:194
-msgid "Addsec"
-msgstr ""
-
-#: src/ext_l10n.h:195
-msgid "Addsec*"
-msgstr ""
-
-#: src/ext_l10n.h:196
-msgid "Adresse"
-msgstr ""
-
-#: src/ext_l10n.h:197
-msgid "Affil"
-msgstr ""
-
-#: src/ext_l10n.h:198
-#, fuzzy
-msgid "Affiliation"
-msgstr "Citazione"
-
-#: src/ext_l10n.h:199 src/FloatList.C:47
-#, fuzzy
-msgid "Algorithm"
-msgstr "Lista delle formule"
-
-#: src/ext_l10n.h:200
-msgid "AMS"
-msgstr ""
-
-#: src/ext_l10n.h:201
-msgid "And"
-msgstr ""
-
-#: src/ext_l10n.h:202
-#, fuzzy
-msgid "Anlagen"
-msgstr "Allineamento"
-
-#: src/ext_l10n.h:203
-#, fuzzy
-msgid "Anrede"
-msgstr "Rosso"
-
-#: src/ext_l10n.h:204
-#, fuzzy
-msgid "Appendices"
-msgstr "Inserto aperto"
-
-#: src/ext_l10n.h:205
-#, fuzzy
-msgid "Appendix"
-msgstr "Inserto aperto"
-
-#: src/ext_l10n.h:206
-#, fuzzy
-msgid "Arrow"
-msgstr "Errore"
-
-#: src/ext_l10n.h:207
-msgid "AT_RISE:"
-msgstr ""
-
-#: src/ext_l10n.h:208
-msgid "Author"
-msgstr ""
-
-#: src/ext_l10n.h:209
-msgid "Author_Email"
-msgstr ""
-
-#: src/ext_l10n.h:210
-msgid "Authorgroup"
-msgstr ""
-
-#: src/ext_l10n.h:211
-msgid "Authorinfo"
-msgstr ""
-
-#: src/ext_l10n.h:212
-msgid "Author_Running"
-msgstr ""
-
-#: src/ext_l10n.h:213
-msgid "Author_URL"
-msgstr ""
-
-#: src/ext_l10n.h:214
-msgid "Axiom"
-msgstr ""
-
-#: src/ext_l10n.h:215
-msgid "Backaddress"
-msgstr ""
-
-#: src/ext_l10n.h:216
-msgid "Bank"
-msgstr ""
-
-#: src/ext_l10n.h:217
-msgid "BankAccount"
-msgstr ""
-
-#: src/ext_l10n.h:218
-msgid "BankCode"
-msgstr ""
-
-#: src/ext_l10n.h:219
-msgid "Betreff"
-msgstr ""
-
-#: src/ext_l10n.h:220
-#, fuzzy
-msgid "Bibliography"
-msgstr "Oggetto bibliografico"
-
-#: src/ext_l10n.h:221
-#, fuzzy
-msgid "Biography"
-msgstr "Oggetto bibliografico"
-
-#: src/ext_l10n.h:222
-msgid "BLZ"
-msgstr ""
-
-#: src/ext_l10n.h:223
-#, fuzzy
-msgid "BoardCentered"
-msgstr "Centrato|#t"
-
-#: src/ext_l10n.h:224
-msgid "Brieftext"
-msgstr ""
-
-#: src/ext_l10n.h:225
-#, fuzzy
-msgid "Caption"
-msgstr "Titolo|#t"
-
-#: src/ext_l10n.h:226
-#, fuzzy
-msgid "Case"
-msgstr "Incolla"
-
-#: src/ext_l10n.h:227 src/frontends/qt2/lengthcombo.C:29
-msgid "cc"
-msgstr ""
-
-#: src/ext_l10n.h:228
-msgid "CC"
-msgstr ""
-
-#: src/ext_l10n.h:229
-#, fuzzy
-msgid "CenteredCaption"
-msgstr "Orientamento"
-
-#: src/ext_l10n.h:230
-msgid "Chapter"
-msgstr ""
-
-#: src/ext_l10n.h:231
-msgid "Chapter*"
-msgstr ""
-
-#: src/ext_l10n.h:232
-msgid "Chapter_Exercises"
-msgstr ""
-
-#: src/ext_l10n.h:233
-msgid "ChessBoard"
-msgstr ""
-
-#: src/ext_l10n.h:234
-#, fuzzy
-msgid "Citta"
-msgstr "Citazione"
-
-#: src/ext_l10n.h:235
-msgid "Claim"
-msgstr ""
-
-#: src/ext_l10n.h:236
-msgid "Claim*"
-msgstr ""
-
-#: src/ext_l10n.h:237
-#, fuzzy
-msgid "Closing"
-msgstr "Chiudi"
-
-#: src/ext_l10n.h:238
-#, fuzzy
-msgid "Code"
-msgstr "Chiudi"
-
-#: src/ext_l10n.h:239
-#, fuzzy
-msgid "Comment"
-msgstr "Commento:"
-
-#: src/ext_l10n.h:240
-#, fuzzy
-msgid "Conclusion"
-msgstr "Colonna"
-
-#: src/ext_l10n.h:241
-msgid "Conclusion*"
-msgstr ""
-
-#: src/ext_l10n.h:242
-#, fuzzy
-msgid "Condition"
-msgstr "Citazione"
-
-#: src/ext_l10n.h:243
-msgid "Conjecture"
-msgstr ""
-
-#: src/ext_l10n.h:244
-msgid "Conjecture*"
-msgstr ""
-
-#: src/ext_l10n.h:245
-#, fuzzy
-msgid "CopNum"
-msgstr "Colonna"
-
-#: src/ext_l10n.h:246 src/ext_l10n.h:534
-#, fuzzy
-msgid "Copyright"
-msgstr "Normale"
-
-#: src/ext_l10n.h:247
-msgid "Corollary"
-msgstr ""
-
-#: src/ext_l10n.h:248
-msgid "Corollary*"
-msgstr ""
-
-#: src/ext_l10n.h:249
-#, fuzzy
-msgid "Criterion"
-msgstr "Citazione"
-
-#: src/ext_l10n.h:250
-msgid "CrossList"
-msgstr ""
-
-#: src/ext_l10n.h:251
-msgid "Current_Address"
-msgstr ""
-
-#: src/ext_l10n.h:252
-msgid "CURTAIN"
-msgstr ""
-
-#: src/ext_l10n.h:253
-#, fuzzy
-msgid "Customer"
-msgstr "Dimensioni alternative"
-
-#: src/ext_l10n.h:254
-#, fuzzy
-msgid "Data"
-msgstr "Database:"
-
-#: src/ext_l10n.h:255
-#, fuzzy
-msgid "Date"
-msgstr "Incolla"
-
-#: src/ext_l10n.h:256
-msgid "Datum"
-msgstr ""
-
-#: src/ext_l10n.h:257
-#, fuzzy
-msgid "Dedication"
-msgstr "Decorazione"
-
-#: src/ext_l10n.h:258
-#, fuzzy
-msgid "Dedicatory"
-msgstr "Dizionario"
-
-#: src/ext_l10n.h:259
-#, fuzzy
-msgid "Definition"
-msgstr "Destinazione:"
-
-#: src/ext_l10n.h:260
-#, fuzzy
-msgid "Definition*"
-msgstr "Destinazione:"
-
-#: src/ext_l10n.h:261
-#, fuzzy
-msgid "Description"
-msgstr "Decorazione"
-
-#: src/ext_l10n.h:262
-msgid "Dialogue"
-msgstr ""
-
-#: src/ext_l10n.h:263
-#, fuzzy
-msgid "Email"
-msgstr "Piccolo"
-
-#: src/ext_l10n.h:264
-msgid "EMail"
-msgstr ""
-
-#: src/ext_l10n.h:265
-#, fuzzy
-msgid "encl"
-msgstr "Annulla"
-
-#: src/ext_l10n.h:266
-msgid "Encl."
-msgstr ""
-
-#: src/ext_l10n.h:267
-#, fuzzy
-msgid "Encl"
-msgstr "Annulla"
-
-#: src/ext_l10n.h:268
-msgid "End_All_Slides"
-msgstr ""
-
-#: src/ext_l10n.h:269
-msgid "Enumerate"
-msgstr ""
-
-#: src/ext_l10n.h:270
-#, fuzzy
-msgid "Example"
-msgstr "Esempi"
-
-#: src/ext_l10n.h:271
-#, fuzzy
-msgid "Example*"
-msgstr "Esempi"
-
-#: src/ext_l10n.h:272
-msgid "Exercise"
-msgstr ""
-
-#: src/ext_l10n.h:273
-msgid "EXT."
-msgstr ""
-
-#: src/ext_l10n.h:274
-#, fuzzy
-msgid "Extratitle"
-msgstr "Altro"
-
-#: src/ext_l10n.h:275
-#, fuzzy
-msgid "Fact"
-msgstr "Genitore:"
-
-#: src/ext_l10n.h:276
-msgid "Fact*"
-msgstr ""
-
-#: src/ext_l10n.h:277
-msgid "FADE_IN:"
-msgstr ""
-
-#: src/ext_l10n.h:278
-msgid "FADE_OUT:"
-msgstr ""
-
-#: src/ext_l10n.h:279
-msgid "FADE_OUT"
-msgstr ""
-
-#: src/ext_l10n.h:280
-#, fuzzy
-msgid "FigCaption"
-msgstr "Titolo|#t"
-
-#: src/ext_l10n.h:281
-msgid "FirstAuthor"
-msgstr ""
-
-#: src/ext_l10n.h:282
-#, fuzzy
-msgid "FirstName"
-msgstr "Primo testa"
-
-#: src/ext_l10n.h:283
-msgid "FitBitmap"
-msgstr ""
-
-#: src/ext_l10n.h:284
-#, fuzzy
-msgid "FitFigure"
-msgstr "Figura"
-
-#: src/ext_l10n.h:285
-#, fuzzy
-msgid "Foilhead"
-msgstr "File"
-
-#: src/ext_l10n.h:286
-#, fuzzy
-msgid "Footernote"
-msgstr "Inserisci una nota a piè di pagina"
-
-#: src/ext_l10n.h:287
-msgid "FourAffiliations"
-msgstr ""
-
-#: src/ext_l10n.h:288
-msgid "FourAuthors"
-msgstr ""
-
-#: src/ext_l10n.h:289
-msgid "FrontMatter"
-msgstr ""
-
-#: src/ext_l10n.h:290
-msgid "General"
-msgstr ""
-
-#: src/ext_l10n.h:291
-msgid "Gruss"
-msgstr ""
-
-#: src/ext_l10n.h:292
-#, fuzzy
-msgid "Headnote"
-msgstr "Testa"
-
-#: src/ext_l10n.h:293
-msgid "HideMoves"
-msgstr ""
-
-#: src/ext_l10n.h:294
-#, fuzzy
-msgid "HighLight"
-msgstr "Altezza"
-
-#: src/ext_l10n.h:295
-msgid "HTTP"
-msgstr ""
-
-#: src/ext_l10n.h:296
-msgid "IhrSchreiben"
-msgstr ""
-
-#: src/ext_l10n.h:297
-msgid "IhrZeichen"
-msgstr ""
-
-#: src/ext_l10n.h:298
-#, fuzzy
-msgid "Institute"
-msgstr "Inserisci le virgolette standard"
-
-#: src/ext_l10n.h:299
-#, fuzzy
-msgid "Institution"
-msgstr "Inserisci una citazione"
-
-#: src/ext_l10n.h:300
-msgid "INT."
-msgstr ""
-
-#: src/ext_l10n.h:301
-msgid "INTERCUT"
-msgstr ""
-
-#: src/ext_l10n.h:302
-msgid "InvisibleText"
-msgstr ""
-
-#: src/ext_l10n.h:303
-#, fuzzy
-msgid "Invoice"
-msgstr "Ignora"
-
-#: src/ext_l10n.h:304
-msgid "Itemize"
-msgstr ""
-
-#: src/ext_l10n.h:305
-#, fuzzy
-msgid "Journal"
-msgstr "Normale"
-
-#: src/ext_l10n.h:306
-#, fuzzy
-msgid "Keyword"
-msgstr "Parola chiave:|#P"
-
-#: src/ext_l10n.h:307
-#, fuzzy
-msgid "Keywords"
-msgstr "Parola chiave:|#P"
-
-#: src/ext_l10n.h:308
-msgid "KnightMove"
-msgstr ""
-
-#: src/ext_l10n.h:309
-msgid "Konto"
-msgstr ""
-
-#: src/ext_l10n.h:310
-#, fuzzy
-msgid "Labeling"
-msgstr "Ho inserito la tabella"
-
-#: src/ext_l10n.h:311
-msgid "Land"
-msgstr ""
-
-#: src/ext_l10n.h:312
-#, fuzzy
-msgid "LandscapeSlide"
-msgstr "Orizzontale (Landscape)|#z"
-
-#: src/ext_l10n.h:313
-#, fuzzy
-msgid "LaTeX"
-msgstr "LaTeX|#L"
-
-#: src/ext_l10n.h:314
-msgid "LaTeX_Title"
-msgstr ""
-
-#: src/ext_l10n.h:315
-#, fuzzy
-msgid "Left_Header"
-msgstr "Testa"
-
-#: src/ext_l10n.h:316
-msgid "Lemma"
-msgstr ""
-
-#: src/ext_l10n.h:317
-msgid "Lemma*"
-msgstr ""
-
-#: src/ext_l10n.h:318
-#, fuzzy
-msgid "Letter"
-msgstr "Sinistra"
-
-#: src/ext_l10n.h:319
-#, fuzzy
-msgid "List"
-msgstr "Linee"
-
-#: src/ext_l10n.h:320
-#, fuzzy
-msgid "ListOfSlides"
-msgstr "Lista delle tabelle"
-
-#: src/ext_l10n.h:321
-msgid "Literal"
-msgstr ""
-
-#: src/ext_l10n.h:322
-#, fuzzy
-msgid "Location"
-msgstr "Rotazione"
-
-#: src/ext_l10n.h:323
-msgid "Lowertitleback"
-msgstr ""
-
-#: src/ext_l10n.h:324
-msgid "LyX-Code"
-msgstr ""
-
-#: src/ext_l10n.h:325
-#, fuzzy
-msgid "Mail"
-msgstr "Matrice"
-
-#: src/ext_l10n.h:326
-#, fuzzy
-msgid "Mainline"
-msgstr "Altro"
-
-#: src/ext_l10n.h:327
-#, fuzzy
-msgid "MarkBoth"
-msgstr "Marchi attivati"
-
-#: src/ext_l10n.h:328
-msgid "MathLetters"
-msgstr ""
-
-#: src/ext_l10n.h:329
-#, fuzzy
-msgid "MeinZeichen"
-msgstr "pollici"
-
-#: src/ext_l10n.h:330
-#, fuzzy
-msgid "Minisec"
-msgstr "Altro"
-
-#: src/ext_l10n.h:331 src/frontends/xforms/Menubar_pimpl.C:279
-#: src/frontends/xforms/Menubar_pimpl.C:352
-#, fuzzy
-msgid "More"
-msgstr "ignora"
-
-#: src/ext_l10n.h:332
-#, fuzzy
-msgid "msnumber"
-msgstr "Numero"
-
-#: src/ext_l10n.h:333
-msgid "My_Address"
-msgstr ""
-
-#: src/ext_l10n.h:334
-msgid "Myref"
-msgstr ""
-
-#: src/ext_l10n.h:335
-#, fuzzy
-msgid "MyRef"
-msgstr "Rif: "
-
-#: src/ext_l10n.h:336
-#, fuzzy
-msgid "Name"
-msgstr "Nome|#N"
-
-#: src/ext_l10n.h:337
-#, fuzzy
-msgid "Narrative"
-msgstr "Negativo|#N"
-
-#: src/ext_l10n.h:338
-#, fuzzy
-msgid "Notation"
-msgstr "Rotazione"
-
-#: src/ext_l10n.h:339
-msgid "Note"
-msgstr "Nota"
-
-#: src/ext_l10n.h:340
-#, fuzzy
-msgid "Note*"
-msgstr "Nota"
-
-#: src/ext_l10n.h:341
-msgid "NoteToEditor"
-msgstr ""
-
-#: src/ext_l10n.h:342
-#, fuzzy
-msgid "Offprint"
-msgstr "Stampa"
-
-#: src/ext_l10n.h:343
-#, fuzzy
-msgid "Offprints"
-msgstr "Opzioni"
-
-#: src/ext_l10n.h:344
-#, fuzzy
-msgid "Offsets"
-msgstr "Non attivo"
-
-#: src/ext_l10n.h:345
-msgid "Oggetto"
-msgstr ""
-
-#: src/ext_l10n.h:346
-#, fuzzy
-msgid "Opening"
-msgstr "Apri"
-
-#: src/ext_l10n.h:347
-#, fuzzy
-msgid "Ort"
-msgstr "Inserisci"
-
-#: src/ext_l10n.h:348
-msgid "Overlay"
-msgstr ""
-
-#: src/ext_l10n.h:349
-msgid "PACS"
-msgstr ""
-
-#: src/ext_l10n.h:350 src/ext_l10n.h:920
-#, fuzzy
-msgid "Paragraph"
-msgstr "Ho impostato la struttura del paragrafo"
-
-#: src/ext_l10n.h:351
-#, fuzzy
-msgid "Paragraph*"
-msgstr "Ho impostato la struttura del paragrafo"
-
-#: src/ext_l10n.h:352
-#, fuzzy
-msgid "Part"
-msgstr "Genitore:"
-
-#: src/ext_l10n.h:353
-#, fuzzy
-msgid "Part*"
-msgstr "Genitore:"
-
-#: src/ext_l10n.h:354
-#, fuzzy
-msgid "Petit"
-msgstr "Stampa"
-
-#: src/ext_l10n.h:355
-#, fuzzy
-msgid "Phone"
-msgstr "Agenda telefonica"
-
-#: src/ext_l10n.h:356
-#, fuzzy
-msgid "Place"
-msgstr "Cambia"
-
-#: src/ext_l10n.h:357
-#, fuzzy
-msgid "PlaceFigure"
-msgstr "Figura"
-
-#: src/ext_l10n.h:358
-msgid "PlaceTable"
-msgstr ""
-
-#: src/ext_l10n.h:359
-#, fuzzy
-msgid "PortraitSlide"
-msgstr "Verticale (Portrait)|#V"
-
-#: src/ext_l10n.h:360
-msgid "PostalCommend"
-msgstr ""
-
-#: src/ext_l10n.h:361
-#, fuzzy
-msgid "PostalComment"
-msgstr "Commento:"
-
-#: src/ext_l10n.h:362
-msgid "Postvermerk"
-msgstr ""
-
-#: src/ext_l10n.h:363
-#, fuzzy
-msgid "Preprint"
-msgstr "Stampa"
-
-#: src/ext_l10n.h:364
-#, fuzzy
-msgid "Problem"
-msgstr "Doppie|#D"
-
-#: src/ext_l10n.h:365
-msgid "ProgressContents"
-msgstr ""
-
-#: src/ext_l10n.h:366
-msgid "Proof"
-msgstr ""
-
-#: src/ext_l10n.h:367
-msgid "Property"
-msgstr ""
-
-#: src/ext_l10n.h:368
-msgid "Proposition"
-msgstr ""
-
-#: src/ext_l10n.h:369
-msgid "Proposition*"
-msgstr ""
-
-#: src/ext_l10n.h:370
-msgid "ps"
-msgstr ""
-
-#: src/ext_l10n.h:371
-msgid "PS"
-msgstr ""
-
-#: src/ext_l10n.h:372
-msgid "Publishers"
-msgstr ""
-
-#: src/ext_l10n.h:373
-#, fuzzy
-msgid "Question"
-msgstr "Destinazione:"
-
-#: src/ext_l10n.h:374
-#, fuzzy
-msgid "Quotation"
-msgstr "Rotazione"
-
-#: src/ext_l10n.h:375
-#, fuzzy
-msgid "Quote"
-msgstr "Virgolette"
-
-#: src/ext_l10n.h:376
-msgid "Received"
-msgstr ""
-
-#: src/ext_l10n.h:377 src/ext_l10n.h:1101 src/ext_l10n.h:1109
-#: src/frontends/xforms/FormRef.C:33
-#, fuzzy
-msgid "Reference"
-msgstr "Inserisci un riferimento"
-
-#: src/ext_l10n.h:379
-#, fuzzy
-msgid "Remark"
-msgstr "Osservazione:|#O"
-
-#: src/ext_l10n.h:380
-#, fuzzy
-msgid "Remark*"
-msgstr "Osservazione:|#O"
-
-#: src/ext_l10n.h:381
-#, fuzzy
-msgid "Remarks"
-msgstr "Osservazione:|#O"
-
-#: src/ext_l10n.h:382
-msgid "RetourAdresse"
-msgstr ""
-
-#: src/ext_l10n.h:383
-msgid "ReturnAddress"
-msgstr ""
-
-#: src/ext_l10n.h:384
-#, fuzzy
-msgid "Revision"
-msgstr "Destinazione:"
-
-#: src/ext_l10n.h:385
-msgid "RevisionHistory"
-msgstr ""
-
-#: src/ext_l10n.h:386
-#, fuzzy
-msgid "RevisionRemark"
-msgstr "Osservazione:|#O"
-
-#: src/ext_l10n.h:387
-msgid "REVTEX_Title"
-msgstr ""
-
-#: src/ext_l10n.h:388
-msgid "Right_Address"
-msgstr ""
-
-#: src/ext_l10n.h:389
-#, fuzzy
-msgid "Right_Header"
-msgstr "Testa"
-
-#: src/ext_l10n.h:390
-msgid "RightHeader"
-msgstr ""
-
-#: src/ext_l10n.h:391
-msgid "Rotatefoilhead"
-msgstr ""
-
-#: src/ext_l10n.h:392
-msgid "RunningAuthor"
-msgstr ""
-
-#: src/ext_l10n.h:393
-#, fuzzy
-msgid "Running_LaTeX_Title"
-msgstr "Esecuzione di LaTeX..."
-
-#: src/ext_l10n.h:394
-#, fuzzy
-msgid "RunningTitle"
-msgstr "Esecuzione di LaTeX..."
-
-#: src/ext_l10n.h:395
-#, fuzzy
-msgid "Scene"
-msgstr "Secondaria"
-
-#: src/ext_l10n.h:396
-msgid "SCENE"
-msgstr ""
-
-#: src/ext_l10n.h:397
-msgid "SCENE*"
-msgstr ""
-
-#: src/ext_l10n.h:398
-msgid "Scrap"
-msgstr ""
-
-#: src/ext_l10n.h:399
-#, fuzzy
-msgid "Section"
-msgstr "Decorazione"
-
-#: src/ext_l10n.h:400
-#, fuzzy
-msgid "Section*"
-msgstr "Decorazione"
-
-#: src/ext_l10n.h:401
-msgid "Send_To_Address"
-msgstr ""
-
-#: src/ext_l10n.h:402
-#, fuzzy
-msgid "Seriate"
-msgstr "Inserisci"
-
-#: src/ext_l10n.h:403
-msgid "SGML"
-msgstr ""
-
-#: src/ext_l10n.h:404
-msgid "ShortFoilhead"
-msgstr ""
-
-#: src/ext_l10n.h:405
-msgid "ShortRotatefoilhead"
-msgstr ""
-
-#: src/ext_l10n.h:406
-msgid "ShortTitle"
-msgstr ""
-
-#: src/ext_l10n.h:407
-#, fuzzy
-msgid "Signature"
-msgstr "Figura"
-
-#: src/ext_l10n.h:408
-#, fuzzy
-msgid "Slide"
-msgstr "Lati"
-
-#: src/ext_l10n.h:409
-#, fuzzy
-msgid "Slide*"
-msgstr "Lati"
-
-#: src/ext_l10n.h:410
-#, fuzzy
-msgid "SlideContents"
-msgstr "Sommario"
-
-#: src/ext_l10n.h:411
-msgid "SlideHeading"
-msgstr ""
-
-#: src/ext_l10n.h:412
-msgid "SlideSubHeading"
-msgstr ""
-
-#: src/ext_l10n.h:413
-#, fuzzy
-msgid "Solution"
-msgstr "Rotazione"
-
-#: src/ext_l10n.h:414
-#, fuzzy
-msgid "Speaker"
-msgstr "Correttore"
-
-#: src/ext_l10n.h:415
-#, fuzzy
-msgid "Specialmail"
-msgstr "Cella speciale"
-
-#: src/ext_l10n.h:416
-msgid "Stadt"
-msgstr ""
-
-#: src/ext_l10n.h:417 src/insets/insetref.C:110
-#, fuzzy
-msgid "Standard"
-msgstr "Standard|#S"
-
-#: src/ext_l10n.h:418
-#, fuzzy
-msgid "State"
-msgstr "Salva"
-
-#: src/ext_l10n.h:419
-msgid "Strasse"
-msgstr ""
-
-#: src/ext_l10n.h:420
-msgid "Street"
-msgstr ""
-
-#: src/ext_l10n.h:421
-msgid "Subject"
-msgstr ""
-
-#: src/ext_l10n.h:422
-msgid "Subjectclass"
-msgstr ""
-
-#: src/ext_l10n.h:423
-#, fuzzy
-msgid "Subparagraph"
-msgstr "Seleziona il paragrafo successivo"
-
-#: src/ext_l10n.h:424
-msgid "Subparagraph*"
-msgstr ""
-
-#: src/ext_l10n.h:425
-#, fuzzy
-msgid "Subsection"
-msgstr "Decorazione"
-
-#: src/ext_l10n.h:426
-#, fuzzy
-msgid "Subsection*"
-msgstr "Decorazione"
-
-#: src/ext_l10n.h:427
-#, fuzzy
-msgid "SubSection"
-msgstr "Decorazione"
-
-#: src/ext_l10n.h:428
-#, fuzzy
-msgid "Subsubsection"
-msgstr "Decorazione"
-
-#: src/ext_l10n.h:429
-#, fuzzy
-msgid "Subsubsection*"
-msgstr "Decorazione"
-
-#: src/ext_l10n.h:430
-msgid "Subtitle"
-msgstr ""
-
-#: src/ext_l10n.h:431
-msgid "SubTitle"
-msgstr ""
-
-#: src/ext_l10n.h:432
-#, fuzzy
-msgid "SubVariation"
-msgstr "Separazione"
-
-#: src/ext_l10n.h:433
-#, fuzzy
-msgid "SubVariation2"
-msgstr "Separazione"
-
-#: src/ext_l10n.h:434
-#, fuzzy
-msgid "SubVariation3"
-msgstr "Separazione"
-
-#: src/ext_l10n.h:435
-#, fuzzy
-msgid "SubVariation4"
-msgstr "Separazione"
-
-#: src/ext_l10n.h:436
-#, fuzzy
-msgid "SubVariation5"
-msgstr "Separazione"
-
-#: src/ext_l10n.h:437
-msgid "Summary"
-msgstr ""
-
-#: src/ext_l10n.h:438
-msgid "Surname"
-msgstr ""
-
-#: src/ext_l10n.h:439
-#, fuzzy
-msgid "TableComments"
-msgstr "Sommario"
-
-#: src/ext_l10n.h:440
-#, fuzzy
-msgid "TableRefs"
-msgstr "Tabella%t"
-
-#: src/ext_l10n.h:441
-msgid "Telefax"
-msgstr ""
-
-#: src/ext_l10n.h:442
-#, fuzzy
-msgid "Telefon"
-msgstr "Decorazione"
-
-#: src/ext_l10n.h:443
-msgid "Telephone"
-msgstr ""
-
-#: src/ext_l10n.h:444
-#, fuzzy
-msgid "Telex"
-msgstr "Testo"
-
-#: src/ext_l10n.h:445
-msgid "Thanks"
-msgstr ""
-
-#: src/ext_l10n.h:446
-msgid "Theorem"
-msgstr ""
-
-#: src/ext_l10n.h:447
-msgid "Theorem*"
-msgstr ""
-
-#: src/ext_l10n.h:448
-#, fuzzy
-msgid "TheoremTemplate"
-msgstr "Modelli"
-
-#: src/ext_l10n.h:449 src/ext_l10n.h:1175 src/frontends/qt2/QThesaurus.C:28
-msgid "Thesaurus"
-msgstr ""
-
-#: src/ext_l10n.h:450
-msgid "ThickLine"
-msgstr ""
-
-#: src/ext_l10n.h:451
-msgid "ThreeAffiliations"
-msgstr ""
-
-#: src/ext_l10n.h:452
-msgid "ThreeAuthors"
-msgstr ""
-
-#: src/ext_l10n.h:453
-msgid "TickList"
-msgstr ""
-
-#: src/ext_l10n.h:454
-#, fuzzy
-msgid "Title"
-msgstr "File"
-
-#: src/ext_l10n.h:455
-msgid "Titlehead"
-msgstr ""
-
-#: src/ext_l10n.h:456
-msgid "TITLE_OVER:"
-msgstr ""
-
-#: src/ext_l10n.h:457
-msgid "TOC_Author"
-msgstr ""
-
-#: src/ext_l10n.h:458
-msgid "TOC_Title"
-msgstr ""
-
-#: src/ext_l10n.h:459
-#, fuzzy
-msgid "Topic"
-msgstr "Superiore|#p"
-
-#: src/ext_l10n.h:460
-#, fuzzy
-msgid "Town"
-msgstr "Due"
-
-#: src/ext_l10n.h:461
-#, fuzzy
-msgid "Transition"
-msgstr "Fai traduzioni|#d"
-
-#: src/ext_l10n.h:462
-msgid "Trans_Keywords"
-msgstr ""
-
-#: src/ext_l10n.h:463
-msgid "TranslatedAbstract"
-msgstr ""
-
-#: src/ext_l10n.h:464
-msgid "Translated_Title"
-msgstr ""
-
-#: src/ext_l10n.h:465
-#, fuzzy
-msgid "Translator"
-msgstr "Fai traduzioni|#d"
-
-#: src/ext_l10n.h:466
-msgid "TwoAffiliations"
-msgstr ""
-
-#: src/ext_l10n.h:467
-msgid "TwoAuthors"
-msgstr ""
-
-#: src/ext_l10n.h:468
-msgid "Unterschrift"
-msgstr ""
-
-#: src/ext_l10n.h:469
-msgid "Uppertitleback"
-msgstr ""
-
-#: src/ext_l10n.h:470 src/ext_l10n.h:1193 src/ext_l10n.h:1196
-#: src/frontends/qt2/QURL.C:25
-msgid "URL"
-msgstr ""
-
-#: src/ext_l10n.h:471
-#, fuzzy
-msgid "Variation"
-msgstr "Separazione"
-
-#: src/ext_l10n.h:472
-#, fuzzy
-msgid "Verbatim"
-msgstr "Includi verbatim"
-
-#: src/ext_l10n.h:473
-#, fuzzy
-msgid "Verse"
-msgstr "Diminuisci"
-
-#: src/ext_l10n.h:474
-msgid "Verteiler"
-msgstr ""
-
-#: src/ext_l10n.h:475
-msgid "VisibleText"
-msgstr ""
-
-#: src/ext_l10n.h:476
-#, fuzzy
-msgid "Yourmail"
-msgstr "Normale"
-
-#: src/ext_l10n.h:477
-msgid "YourMail"
-msgstr ""
-
-#: src/ext_l10n.h:478
-msgid "Yourref"
-msgstr ""
-
-#: src/ext_l10n.h:479
-msgid "YourRef"
-msgstr ""
-
-#: src/ext_l10n.h:480
-msgid "Zusatz"
-msgstr ""
-
-#: src/ext_l10n.h:481
-msgid "Afrikaans"
-msgstr ""
-
-#: src/ext_l10n.h:482
-msgid "American"
-msgstr ""
-
-#: src/ext_l10n.h:483
-msgid "Arabic"
-msgstr ""
-
-#: src/ext_l10n.h:484
-msgid "Austrian"
-msgstr ""
-
-#: src/ext_l10n.h:485
-msgid "Bahasa"
-msgstr ""
-
-#: src/ext_l10n.h:486
-#, fuzzy
-msgid "Basque"
-msgstr "Blu"
-
-#: src/ext_l10n.h:487
-msgid "Portuguese (Brazil)"
-msgstr ""
-
-#: src/ext_l10n.h:488
-#, fuzzy
-msgid "Breton"
-msgstr "Decorazione"
-
-#: src/ext_l10n.h:489
-msgid "British"
-msgstr ""
-
-#: src/ext_l10n.h:490
-msgid "Bulgarian"
-msgstr ""
-
-#: src/ext_l10n.h:491
-#, fuzzy
-msgid "Canadian"
-msgstr "Rotazione"
-
-#: src/ext_l10n.h:492
-msgid "French Canadian"
-msgstr ""
-
-#: src/ext_l10n.h:493
-msgid "Catalan"
-msgstr ""
-
-#: src/ext_l10n.h:494
-#, fuzzy
-msgid "Croatian"
-msgstr "Rotazione"
-
-#: src/ext_l10n.h:495
-msgid "Czech"
-msgstr ""
-
-#: src/ext_l10n.h:496
-msgid "Danish"
-msgstr ""
-
-#: src/ext_l10n.h:497
-msgid "Dutch"
-msgstr ""
-
-#: src/ext_l10n.h:498 src/language.C:40
-msgid "English"
-msgstr ""
-
-#: src/ext_l10n.h:499
-msgid "Esperanto"
-msgstr ""
-
-#: src/ext_l10n.h:500
-msgid "Estonian"
-msgstr ""
-
-#: src/ext_l10n.h:501
-msgid "Finnish"
-msgstr ""
-
-#: src/ext_l10n.h:502
-msgid "French"
-msgstr ""
-
-#: src/ext_l10n.h:503
-msgid "French (GUTenberg)"
-msgstr ""
-
-#: src/ext_l10n.h:504
-msgid "Galician"
-msgstr ""
-
-#: src/ext_l10n.h:505
-msgid "German"
-msgstr ""
-
-#: src/ext_l10n.h:506
-msgid "German (new spelling)"
-msgstr ""
-
-#: src/ext_l10n.h:507 src/frontends/xforms/form_maths_panel.C:35
-#: src/frontends/xforms/FormMathsPanel.C:103
-msgid "Greek"
-msgstr "Greco"
-
-#: src/ext_l10n.h:508
-msgid "Hebrew"
-msgstr ""
-
-#: src/ext_l10n.h:509
-msgid "Irish"
-msgstr ""
-
-#: src/ext_l10n.h:510
-#, fuzzy
-msgid "Italian"
-msgstr "Italico"
-
-#: src/ext_l10n.h:511
-msgid "Lsorbian"
-msgstr ""
-
-#: src/ext_l10n.h:512
-#, fuzzy
-msgid "Magyar"
-msgstr "Magenta"
-
-#: src/ext_l10n.h:513
-msgid "Norsk"
-msgstr ""
-
-#: src/ext_l10n.h:514
-msgid "Polish"
-msgstr ""
-
-#: src/ext_l10n.h:515
-msgid "Portugese"
-msgstr ""
-
-#: src/ext_l10n.h:516
-#, fuzzy
-msgid "Romanian"
-msgstr "Rotazione"
-
-#: src/ext_l10n.h:517
-msgid "Russian"
-msgstr ""
-
-#: src/ext_l10n.h:518
-msgid "Scottish"
-msgstr ""
-
-#: src/ext_l10n.h:519
-#, fuzzy
-msgid "Serbian"
-msgstr "Inserisci"
-
-#: src/ext_l10n.h:520
-#, fuzzy
-msgid "Serbo-Croatian"
-msgstr "Rotazione"
-
-#: src/ext_l10n.h:521
-msgid "Spanish"
-msgstr ""
-
-#: src/ext_l10n.h:522
-msgid "Slovak"
-msgstr ""
-
-#: src/ext_l10n.h:523
-msgid "Slovene"
-msgstr ""
-
-#: src/ext_l10n.h:524
-msgid "Swedish"
-msgstr ""
-
-#: src/ext_l10n.h:525
-msgid "Thai"
-msgstr ""
-
-#: src/ext_l10n.h:526
-msgid "Turkish"
-msgstr ""
-
-#: src/ext_l10n.h:527
-#, fuzzy
-msgid "Ukrainian"
-msgstr "Fai traduzioni|#d"
-
-#: src/ext_l10n.h:528
-msgid "Usorbian"
-msgstr ""
-
-#: src/ext_l10n.h:529
-msgid "Welsh"
-msgstr ""
-
-#: src/ext_l10n.h:530 src/frontends/qt2/QAbout.C:32
-#: src/frontends/xforms/FormAboutlyx.C:28
-msgid "About LyX"
-msgstr ""
-
-#: src/ext_l10n.h:531
-#, fuzzy
-msgid "Version"
-msgstr "Versione di LyX "
-
-#: src/ext_l10n.h:532
-#, fuzzy
-msgid "Version goes here"
-msgstr "Contollo della versione%t"
-
-#: src/ext_l10n.h:533 src/frontends/xforms/FormAboutlyx.C:65
-msgid "Credits"
-msgstr "Ringraziamenti"
-
-#: src/ext_l10n.h:535 src/ext_l10n.h:546 src/ext_l10n.h:600 src/ext_l10n.h:767
-#: src/ext_l10n.h:776 src/ext_l10n.h:794 src/ext_l10n.h:799 src/ext_l10n.h:875
-#: src/ext_l10n.h:894 src/ext_l10n.h:905 src/ext_l10n.h:919
-#: src/ext_l10n.h:1070 src/ext_l10n.h:1119 src/ext_l10n.h:1129
-#: src/ext_l10n.h:1131 src/ext_l10n.h:1143 src/ext_l10n.h:1173
-#: src/ext_l10n.h:1185 src/ext_l10n.h:1190 src/ext_l10n.h:1200
-#: src/ext_l10n.h:1204 src/frontends/qt2/QParagraphDialog.C:49
-#, fuzzy
-msgid "&Close"
-msgstr "Chiudi"
-
-#: src/ext_l10n.h:536
-#, fuzzy
-msgid "LyX: Enter text"
-msgstr "Indice"
-
-#: src/ext_l10n.h:537
-msgid "&Dummy"
-msgstr ""
-
-#: src/ext_l10n.h:538 src/ext_l10n.h:570 src/ext_l10n.h:603 src/ext_l10n.h:762
-#: src/ext_l10n.h:775 src/ext_l10n.h:900 src/frontends/qt2/QSpellchecker.C:114
-#: src/frontends/xforms/form_bibitem.C:35
-#: src/frontends/xforms/form_bibtex.C:35
-#: src/frontends/xforms/form_citation.C:173
-#: src/frontends/xforms/form_document.C:47 src/frontends/xforms/form_ert.C:72
-#: src/frontends/xforms/form_external.C:89
-#: src/frontends/xforms/form_filedialog.C:89
-#: src/frontends/xforms/form_float.C:74 src/frontends/xforms/form_forks.C:53
-#: src/frontends/xforms/form_include.C:42 src/frontends/xforms/form_index.C:44
-#: src/frontends/xforms/form_maths_delim.C:49
-#: src/frontends/xforms/form_minipage.C:81
-#: src/frontends/xforms/form_paragraph.C:181
-#: src/frontends/xforms/form_print.C:53 src/frontends/xforms/form_ref.C:86
-#: src/frontends/xforms/form_sendto.C:46
-#: src/frontends/xforms/form_tabular_create.C:28
-#: src/frontends/xforms/form_url.C:64
-msgid "OK"
-msgstr "OK"
-
-#: src/ext_l10n.h:539 src/ext_l10n.h:1063 src/frontends/qt2/Alert_pimpl.C:45
-#: src/frontends/qt2/QParagraphDialog.C:49
-#, fuzzy
-msgid "&Cancel"
-msgstr "Annulla"
-
-#: src/ext_l10n.h:540 src/ext_l10n.h:897 src/frontends/qt2/QIndex.C:23
-#: src/frontends/xforms/FormIndex.C:24 src/insets/insetindex.C:61
-msgid "Index"
-msgstr "Indice"
-
-#: src/ext_l10n.h:541
-#, fuzzy
-msgid "&Key"
-msgstr "Chiave:|#h"
-
-#: src/ext_l10n.h:542
-#, fuzzy
-msgid "The citation key"
-msgstr "Inserisci una citazione"
-
-#: src/ext_l10n.h:543
-#, fuzzy
-msgid "&Label"
-msgstr "Ho inserito la tabella"
-
-#: src/ext_l10n.h:544
-#, fuzzy
-msgid "The label as it appears in the document"
-msgstr "Vuoi aprire il documento?"
-
-#: src/ext_l10n.h:545 src/ext_l10n.h:598 src/ext_l10n.h:792 src/ext_l10n.h:797
-#: src/ext_l10n.h:873 src/ext_l10n.h:893 src/ext_l10n.h:917
-#: src/ext_l10n.h:1062 src/ext_l10n.h:1068 src/ext_l10n.h:1118
-#: src/ext_l10n.h:1158 src/ext_l10n.h:1199
-#, fuzzy
-msgid "&OK"
-msgstr "OK"
-
-#: src/ext_l10n.h:547
-#, fuzzy
-msgid "Bibtex"
-msgstr "BibTeX"
-
-#: src/ext_l10n.h:548
-#, fuzzy
-msgid "Databases"
-msgstr "Database:"
-
-#: src/ext_l10n.h:549
-#, fuzzy
-msgid "BibTeX database to use"
-msgstr "Database:"
-
-#: src/ext_l10n.h:550 src/ext_l10n.h:626 src/ext_l10n.h:628
-#: src/ext_l10n.h:1167
-msgid "New Item"
-msgstr ""
-
-#: src/ext_l10n.h:551
-#, fuzzy
-msgid "Available BibTeX databases"
-msgstr "Database:"
-
-#: src/ext_l10n.h:552
-msgid "&Add ..."
-msgstr ""
-
-#: src/ext_l10n.h:553
-#, fuzzy
-msgid "Add a BibTeX database file"
-msgstr "Database:"
-
-#: src/ext_l10n.h:554
-#, fuzzy
-msgid "&Delete"
-msgstr "Cancella da|#l"
-
-#: src/ext_l10n.h:555
-msgid "Remove the selected database"
-msgstr ""
-
-#: src/ext_l10n.h:556
-#, fuzzy
-msgid "&Style"
-msgstr "Stile:  "
-
-#: src/ext_l10n.h:557 src/ext_l10n.h:563
-#, fuzzy
-msgid "The BibTeX style"
-msgstr "(Dis)attiva l'ambiente di comandi TeX"
-
-#: src/ext_l10n.h:558 src/ext_l10n.h:644 src/frontends/qt2/QDocument.C:126
-#, fuzzy
-msgid "plain"
-msgstr "Spaziatura"
-
-#: src/ext_l10n.h:559
-#, fuzzy
-msgid "unsrt"
-msgstr "Inserisci"
-
-#: src/ext_l10n.h:560
-msgid "alpha"
-msgstr ""
-
-#: src/ext_l10n.h:561
-msgid "abbrv"
-msgstr ""
-
-#: src/ext_l10n.h:562 src/frontends/qt2/QBibtex.C:114
-#: src/frontends/qt2/QBibtexDialog.C:77
-#, fuzzy
-msgid "Other ..."
-msgstr "altro..."
-
-#: src/ext_l10n.h:564
-msgid "FIXME !"
-msgstr ""
-
-#: src/ext_l10n.h:565
-msgid "The name of the style to use"
-msgstr ""
-
-#: src/ext_l10n.h:566
-#, fuzzy
-msgid "&Browse"
-msgstr "Cerca|#e"
-
-#: src/ext_l10n.h:567
-#, fuzzy
-msgid "Choose a style file"
-msgstr "Scegli il modello"
-
-#: src/ext_l10n.h:568
-#, fuzzy
-msgid "Add bibliography to &TOC"
-msgstr "Oggetto bibliografico"
-
-#: src/ext_l10n.h:569
-#, fuzzy
-msgid "Add bibliography to the table of contents"
-msgstr "Sommario"
-
-#. /
-#: src/ext_l10n.h:571 src/ext_l10n.h:605 src/ext_l10n.h:764 src/ext_l10n.h:901
-#: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:157
-#: src/lyxfunc.C:1082
-msgid "Cancel"
-msgstr "Annulla"
-
-#: src/ext_l10n.h:572 src/frontends/qt2/QCharacter.C:31
-#, fuzzy
-msgid "Character"
-msgstr "Insieme dei caratteri:|#I"
-
-#: src/ext_l10n.h:573
-#, fuzzy
-msgid "&Family:"
-msgstr "Famiglia:|#F"
-
-#: src/ext_l10n.h:574
-#, fuzzy
-msgid "Font family"
-msgstr "Famiglia:|#F"
-
-#: src/ext_l10n.h:575
-#, fuzzy
-msgid "&Series:"
-msgstr "Serie:|#S"
-
-#: src/ext_l10n.h:576 src/ext_l10n.h:583
-#, fuzzy
-msgid "Font series"
-msgstr "Dimensione:|#D"
-
-#: src/ext_l10n.h:577 src/ext_l10n.h:705
-#, fuzzy
-msgid "&Language:"
-msgstr "Lingua"
-
-#: src/ext_l10n.h:578 src/ext_l10n.h:586 src/ext_l10n.h:704
-#: src/frontends/xforms/FormDocument.C:331
-#: src/frontends/xforms/FormPreferences.C:258
-msgid "Language"
-msgstr "Lingua"
-
-#: src/ext_l10n.h:579 src/ext_l10n.h:582
-#, fuzzy
-msgid "Font shape"
-msgstr "Dimensione:|#D"
-
-#: src/ext_l10n.h:580 src/ext_l10n.h:585
-msgid "Font color"
-msgstr ""
-
-#: src/ext_l10n.h:581
-#, fuzzy
-msgid "S&hape:"
-msgstr "Forma|#m"
-
-#: src/ext_l10n.h:584
-#, fuzzy
-msgid "&Color:"
-msgstr "Chiudi"
-
-#: src/ext_l10n.h:587
-#, fuzzy
-msgid "&Toggle all"
-msgstr "(Dis)attiva lo stile grassetto"
-
-#: src/ext_l10n.h:588
-#, fuzzy
-msgid "toggle font on all of the above"
-msgstr "Abilita tutti|#b"
-
-#: src/ext_l10n.h:589
-#, fuzzy
-msgid "Never toggled"
-msgstr "Questi non sono mai abilitati"
-
-#: src/ext_l10n.h:590 src/ext_l10n.h:818
-#, fuzzy
-msgid "Si&ze:"
-msgstr "Dimensione|#D"
-
-#: src/ext_l10n.h:591
-#, fuzzy
-msgid "Font size"
-msgstr "Dimensione:|#D"
-
-#: src/ext_l10n.h:592
-#, fuzzy
-msgid "Always toggled"
-msgstr "Questi sono sempre abilitati"
-
-#: src/ext_l10n.h:593 src/ext_l10n.h:595
-msgid "Other font settings"
-msgstr ""
-
-#: src/ext_l10n.h:594
-#, fuzzy
-msgid "&Misc:"
-msgstr "Altro"
-
-#: src/ext_l10n.h:596
-#, fuzzy
-msgid "Auto apply"
-msgstr "Applica|#A"
-
-#: src/ext_l10n.h:597
-msgid "Apply each change automatically"
-msgstr ""
-
-#: src/ext_l10n.h:599 src/ext_l10n.h:604 src/ext_l10n.h:763 src/ext_l10n.h:793
-#: src/ext_l10n.h:798 src/ext_l10n.h:874 src/ext_l10n.h:918
-#: src/ext_l10n.h:1061 src/ext_l10n.h:1069
-#, fuzzy
-msgid "&Apply"
-msgstr "Applica|#A"
-
-#: src/ext_l10n.h:601 src/frontends/qt2/QCitation.C:45
-#: src/frontends/xforms/FormCitation.C:117
-msgid "Citation"
-msgstr "Citazione"
-
-#: src/ext_l10n.h:602 src/ext_l10n.h:761 src/ext_l10n.h:796 src/ext_l10n.h:872
-#: src/ext_l10n.h:916 src/ext_l10n.h:1060
-#, fuzzy
-msgid "&Restore"
-msgstr "Ordine inverso|#v"
-
-#: src/ext_l10n.h:606
-#, fuzzy
-msgid "Text after"
-msgstr "' dopo "
-
-#: src/ext_l10n.h:607 src/frontends/xforms/form_citation.C:116
-#, fuzzy
-msgid "Citation style"
-msgstr "Citazione"
-
-#: src/ext_l10n.h:608
-#, fuzzy
-msgid "Natbib citation style to use"
-msgstr "Citazione"
-
-#: src/ext_l10n.h:609
-#, fuzzy
-msgid "Text before"
-msgstr "Modalità testo"
-
-#: src/ext_l10n.h:610 src/frontends/xforms/form_citation.C:73 src/lyxvc.C:122
-msgid "Info"
-msgstr "Informazioni"
-
-#: src/ext_l10n.h:611
-#, fuzzy
-msgid "Citation entry"
-msgstr "Citazione"
-
-#: src/ext_l10n.h:612 src/frontends/qt2/QSearch.C:31
-#: src/frontends/xforms/form_citation.C:78
-msgid "Search"
-msgstr ""
-
-#: src/ext_l10n.h:613
-msgid "Search the available citations"
-msgstr ""
-
-#: src/ext_l10n.h:614
-msgid "Regular E&xpression"
-msgstr ""
-
-#: src/ext_l10n.h:615
-msgid "Interpret search entry as a regular expression"
-msgstr ""
-
-#: src/ext_l10n.h:616
-msgid "&Previous"
-msgstr ""
-
-#: src/ext_l10n.h:617
-#, fuzzy
-msgid "&Case sensitive"
-msgstr "Maius/minus|#s"
-
-#: src/ext_l10n.h:618
-msgid "Make the search case-sensitive"
-msgstr ""
-
-#: src/ext_l10n.h:619
-#, fuzzy
-msgid "&Next"
-msgstr "LaTeX "
-
-#: src/ext_l10n.h:620
-#, fuzzy
-msgid "Add the selected citation"
-msgstr "Inserisci una citazione"
-
-#: src/ext_l10n.h:621
-msgid "Remove the selected citation"
-msgstr ""
-
-#: src/ext_l10n.h:622
-#, fuzzy
-msgid "Move the selected citation up"
-msgstr "Inserisci una citazione"
-
-#: src/ext_l10n.h:623
-msgid "Move the selected citation down"
-msgstr ""
-
-#: src/ext_l10n.h:624
-#, fuzzy
-msgid "Available"
-msgstr "Inserisci un riferimento"
-
-#: src/ext_l10n.h:625
-#, fuzzy
-msgid "Selected"
-msgstr "Seleziona fra|#S"
-
-#: src/ext_l10n.h:627
-#, fuzzy
-msgid "Available citation keys"
-msgstr "Inserisci un riferimento"
-
-#: src/ext_l10n.h:629
-#, fuzzy
-msgid "Citations currently selected"
-msgstr "Citazione"
-
-#: src/ext_l10n.h:630
-msgid "Text to place after citation"
-msgstr ""
-
-#: src/ext_l10n.h:631
-#, fuzzy
-msgid "&Full author list"
-msgstr "Riquadro"
-
-#: src/ext_l10n.h:632
-msgid "List all authors"
-msgstr ""
-
-#: src/ext_l10n.h:633
-msgid "Force &upper case"
-msgstr ""
-
-#: src/ext_l10n.h:634
-msgid "Force upper case in citation"
-msgstr ""
-
-#: src/ext_l10n.h:635
-msgid "Text to place before citation"
-msgstr ""
-
-#: src/ext_l10n.h:636 src/frontends/xforms/FormDocument.C:58
-msgid "Document Layout"
-msgstr "Struttura del documento"
-
-#: src/ext_l10n.h:638
-#, fuzzy
-msgid "&Fonts:"
-msgstr "Font: "
-
-#: src/ext_l10n.h:639
-#, fuzzy
-msgid "&Pagestyle:"
-msgstr "Stile della pagina:|#p"
-
-#: src/ext_l10n.h:640
-#, fuzzy
-msgid "Defa&ult Skip:"
-msgstr "Salto predefinito:|#t"
-
-#: src/ext_l10n.h:641
-#, fuzzy
-msgid "F&ont Size:"
-msgstr "Dimensione:|#D"
-
-#. the document language page
-#: src/ext_l10n.h:642 src/ext_l10n.h:658 src/ext_l10n.h:707 src/ext_l10n.h:738
-#: src/ext_l10n.h:857 src/frontends/qt2/QDocument.C:116
-#: src/frontends/qt2/QDocument.C:124 src/frontends/qt2/QDocument.C:152
-#: src/frontends/qt2/QDocument.C:196 src/frontends/qt2/QDocument.C:575
-#: src/frontends/qt2/QDocument.C:579
-#, fuzzy
-msgid "default"
-msgstr "Predefinito"
-
-#: src/ext_l10n.h:643 src/frontends/qt2/QDocument.C:125
-#, fuzzy
-msgid "empty"
-msgstr ", Profondità: "
-
-#: src/ext_l10n.h:645 src/frontends/qt2/QDocument.C:127
-#, fuzzy
-msgid "headings"
-msgstr "Mappa dei tasti"
-
-#: src/ext_l10n.h:646 src/frontends/qt2/QDocument.C:128
-msgid "fancy"
-msgstr ""
-
-#: src/ext_l10n.h:647
-#, fuzzy
-msgid "Spacin&g:"
-msgstr "Spaziatura"
-
-#: src/ext_l10n.h:648
-#, fuzzy
-msgid "E&xtra Options:"
-msgstr "Altro"
-
-#: src/ext_l10n.h:649
-#, fuzzy
-msgid "&Class:"
-msgstr "Classe:|#l"
-
-#: src/ext_l10n.h:650
-#, fuzzy
-msgid "smallskip"
-msgstr "Piccolissimo"
-
-#: src/ext_l10n.h:651
-#, fuzzy
-msgid "medskip"
-msgstr "Medio"
-
-#: src/ext_l10n.h:652
-msgid "bigskip"
-msgstr ""
-
-#: src/ext_l10n.h:653
-#, fuzzy
-msgid "length"
-msgstr "Lungh.|#h"
-
-#: src/ext_l10n.h:655 src/frontends/qt2/QDocument.C:112
-msgid "OneHalf"
-msgstr ""
-
-#: src/ext_l10n.h:657 src/frontends/qt2/QDocument.C:114
-#, fuzzy
-msgid "Other"
-msgstr "Altro...|#l"
-
-#: src/ext_l10n.h:659 src/frontends/qt2/QDocument.C:117
-msgid "10"
-msgstr ""
-
-#: src/ext_l10n.h:660 src/frontends/qt2/QDocument.C:118
-#, fuzzy
-msgid "11"
-msgstr "1|#1"
-
-#: src/ext_l10n.h:661 src/frontends/qt2/QDocument.C:119
-msgid "12"
-msgstr ""
-
-#: src/ext_l10n.h:662 src/frontends/xforms/form_document.C:256
-msgid "Sides"
-msgstr "Lati"
-
-#: src/ext_l10n.h:663
-#, fuzzy
-msgid "O&ne"
-msgstr "Attivo"
-
-#: src/ext_l10n.h:664
-#, fuzzy
-msgid "&Two"
-msgstr "Superiore|#p"
-
-#: src/ext_l10n.h:665 src/frontends/xforms/form_tabular_create.C:45
-msgid "Columns"
-msgstr "Colonne"
-
-#: src/ext_l10n.h:666
-#, fuzzy
-msgid "On&e"
-msgstr "Attivo"
-
-#: src/ext_l10n.h:667
-#, fuzzy
-msgid "T&wo"
-msgstr "Due"
-
-#: src/ext_l10n.h:668 src/frontends/xforms/form_document.C:254
-msgid "Separation"
-msgstr "Separazione"
-
-#: src/ext_l10n.h:669
-#, fuzzy
-msgid "&Indent"
-msgstr "Capov."
-
-#: src/ext_l10n.h:670
-#, fuzzy
-msgid "S&kip"
-msgstr "Salto|#S"
-
-#: src/ext_l10n.h:671 src/frontends/xforms/FormDocument.C:329
-#, fuzzy
-msgid "Paper"
-msgstr "Incolla"
-
-#: src/ext_l10n.h:672
-#, fuzzy
-msgid "&Papersize:"
-msgstr "Formato:|#F"
-
-#: src/ext_l10n.h:673 src/frontends/qt2/QDocument.C:72 src/lyxfont.C:573
-msgid "Default"
-msgstr "Predefinito"
-
-#: src/ext_l10n.h:674 src/ext_l10n.h:1011 src/ext_l10n.h:1020
-#: src/frontends/qt2/QDocument.C:73
-#, fuzzy
-msgid "Custom"
-msgstr "Dimensioni alternative"
-
-#: src/ext_l10n.h:675 src/frontends/qt2/QDocument.C:74
-#, fuzzy
-msgid "USletter"
-msgstr "Sinistra"
-
-#: src/ext_l10n.h:676 src/frontends/qt2/QDocument.C:75
-msgid "USlegal"
-msgstr ""
-
-#: src/ext_l10n.h:677 src/frontends/qt2/QDocument.C:76
-msgid "USexecutive"
-msgstr ""
-
-#: src/ext_l10n.h:678 src/frontends/qt2/QDocument.C:77
-msgid "A3"
-msgstr ""
-
-#: src/ext_l10n.h:679 src/frontends/qt2/QDocument.C:79
-msgid "A5"
-msgstr ""
-
-#: src/ext_l10n.h:680 src/frontends/qt2/QDocument.C:80
-msgid "B3"
-msgstr ""
-
-#: src/ext_l10n.h:681 src/frontends/qt2/QDocument.C:81
-msgid "B4"
-msgstr ""
-
-#: src/ext_l10n.h:682 src/frontends/qt2/QDocument.C:82
-msgid "B5"
-msgstr ""
-
-#: src/ext_l10n.h:683
-#, fuzzy
-msgid "&Special:"
-msgstr "Speciale:|#p"
-
-#: src/ext_l10n.h:684 src/ext_l10n.h:1005 src/ext_l10n.h:1014
-#: src/ext_l10n.h:1048 src/frontends/qt2/QDocument.C:84
-#, fuzzy
-msgid "None"
-msgstr "Fatto"
-
-#: src/ext_l10n.h:685 src/frontends/qt2/QDocument.C:85
-msgid "A4 small Margins (only portrait)"
-msgstr ""
-
-#: src/ext_l10n.h:686 src/frontends/qt2/QDocument.C:86
-msgid "A4 very small Margins (only portrait)"
-msgstr ""
-
-#: src/ext_l10n.h:687 src/frontends/qt2/QDocument.C:87
-msgid "A4 very wide margins (only portrait)"
-msgstr ""
-
-#: src/ext_l10n.h:688
-#, fuzzy
-msgid "&Use Geometry Package"
-msgstr "Usa il pacchetto Geometry|#y"
-
-#: src/ext_l10n.h:689 src/frontends/xforms/form_document.C:123
-msgid "Orientation"
-msgstr "Orientamento"
-
-#: src/ext_l10n.h:690
-#, fuzzy
-msgid "P&ortrait"
-msgstr "Verticale (Portrait)|#V"
-
-#: src/ext_l10n.h:691
-#, fuzzy
-msgid "&Landscape"
-msgstr "Orizzontale (Landscape)|#z"
-
-#: src/ext_l10n.h:692 src/frontends/xforms/form_document.C:143
-msgid "Margins"
-msgstr "Margini"
-
-#: src/ext_l10n.h:693
-#, fuzzy
-msgid "&Right:"
-msgstr "Destra|#D"
-
-#: src/ext_l10n.h:694
-#, fuzzy
-msgid "&Bottom:"
-msgstr "Inferiore|#f"
-
-#: src/ext_l10n.h:695
-#, fuzzy
-msgid "L&eft:"
-msgstr "Sinistra|#n"
-
-#: src/ext_l10n.h:696
-#, fuzzy
-msgid "&Top:"
-msgstr "Superiore|#p"
-
-#: src/ext_l10n.h:697
-msgid "Custom Papersize"
-msgstr "Dimensioni alternative"
-
-#: src/ext_l10n.h:698 src/ext_l10n.h:907
-#, fuzzy
-msgid "&Width:"
-msgstr "Largh."
-
-#: src/ext_l10n.h:699
-#, fuzzy
-msgid "&Height:"
-msgstr "Altezza"
-
-#: src/ext_l10n.h:700
-msgid "Foot/Head Margins"
-msgstr "Intestazione/piè di pagina"
-
-#: src/ext_l10n.h:701
-#, fuzzy
-msgid "&Footskip:"
-msgstr "Salto piè pagina|#g"
-
-#: src/ext_l10n.h:702
-#, fuzzy
-msgid "Hea&dsep:"
-msgstr "Separazione int.|#S"
-
-#: src/ext_l10n.h:703
-#, fuzzy
-msgid "Headhe&ight:"
-msgstr "Altezza int.|#t"
-
-#: src/ext_l10n.h:706
-#, fuzzy
-msgid "Enco&ding:"
-msgstr "Codifica:|#f"
-
-#: src/ext_l10n.h:708 src/frontends/qt2/QDocument.C:153
-#, fuzzy
-msgid "auto"
-msgstr " di "
-
-#: src/ext_l10n.h:709 src/frontends/qt2/QDocument.C:154
-#, fuzzy
-msgid "latin1"
-msgstr "Titolo|#t"
-
-#: src/ext_l10n.h:710 src/frontends/qt2/QDocument.C:155
-#, fuzzy
-msgid "latin2"
-msgstr "Titolo|#t"
-
-#: src/ext_l10n.h:711 src/frontends/qt2/QDocument.C:156
-#, fuzzy
-msgid "latin3"
-msgstr "Titolo|#t"
-
-#: src/ext_l10n.h:712 src/frontends/qt2/QDocument.C:157
-#, fuzzy
-msgid "latin4"
-msgstr "Titolo|#t"
-
-#: src/ext_l10n.h:713 src/frontends/qt2/QDocument.C:158
-#, fuzzy
-msgid "latin5"
-msgstr "Titolo|#t"
-
-#: src/ext_l10n.h:714 src/frontends/qt2/QDocument.C:159
-#, fuzzy
-msgid "latin9"
-msgstr "Titolo|#t"
-
-#: src/ext_l10n.h:715 src/frontends/qt2/QDocument.C:160
-msgid "koi8-r"
-msgstr ""
-
-#: src/ext_l10n.h:716 src/frontends/qt2/QDocument.C:161
-msgid "koi8-u"
-msgstr ""
-
-#: src/ext_l10n.h:717 src/frontends/qt2/QDocument.C:162
-msgid "cp866"
-msgstr ""
-
-#: src/ext_l10n.h:718 src/frontends/qt2/QDocument.C:163
-msgid "cp1251"
-msgstr ""
-
-#: src/ext_l10n.h:719 src/frontends/qt2/QDocument.C:164
-msgid "iso88595"
-msgstr ""
-
-#: src/ext_l10n.h:720
-#, fuzzy
-msgid "Quote Style"
-msgstr "Ho impostato il tipo di virgolette"
-
-#: src/ext_l10n.h:721
-#, fuzzy
-msgid "&Type:"
-msgstr "Tipo"
-
-#: src/ext_l10n.h:722 src/frontends/qt2/QDocument.C:171
-#, fuzzy
-msgid "``text''"
-msgstr "LaTeX "
-
-#: src/ext_l10n.h:723 src/frontends/qt2/QDocument.C:172
-#, fuzzy
-msgid "''text''"
-msgstr "LaTeX "
-
-#: src/ext_l10n.h:724 src/frontends/qt2/QDocument.C:173
-#, fuzzy
-msgid ",,text``"
-msgstr "LaTeX "
-
-#: src/ext_l10n.h:725 src/frontends/qt2/QDocument.C:174
-#, fuzzy
-msgid ",,text''"
-msgstr "LaTeX "
-
-#: src/ext_l10n.h:726
-#, fuzzy
-msgid "Â«textÂ»"
-msgstr "LaTeX "
-
-#: src/ext_l10n.h:727
-#, fuzzy
-msgid "Â»textÂ«"
-msgstr "LaTeX "
-
-#: src/ext_l10n.h:728
-#, fuzzy
-msgid "&Single"
-msgstr "Singole|#S"
-
-#: src/ext_l10n.h:729
-#, fuzzy
-msgid "&Double"
-msgstr "Doppie|#D"
-
-#: src/ext_l10n.h:730 src/ext_l10n.h:853
-#: src/frontends/xforms/FormDocument.C:333
-#, fuzzy
-msgid "Extra"
-msgstr "Altro"
-
-#: src/ext_l10n.h:731
-#, fuzzy
-msgid "F&loat Placement:"
-msgstr "Posiz. ogg. flottanti:|#z"
-
-#: src/ext_l10n.h:732
-#, fuzzy
-msgid "S&ection number depth:"
-msgstr "Massimo numero di sezioni"
-
-#: src/ext_l10n.h:733
-#, fuzzy
-msgid "&Table of contents depth:"
-msgstr "Profondità del sommario"
-
-#: src/ext_l10n.h:734
-#, fuzzy
-msgid "P&S Driver:"
-msgstr "Traduttore PS|#T"
-
-#: src/ext_l10n.h:735
-#, fuzzy
-msgid "Use A&MS Math"
-msgstr "Usa matem. AMS|#M"
-
-#: src/ext_l10n.h:736 src/frontends/xforms/FormDocument.C:335
-#, fuzzy
-msgid "Bullets"
-msgstr "Profondità"
-
-#: src/ext_l10n.h:737
-#, fuzzy
-msgid "Si&ze"
-msgstr "Dimensione|#D"
-
-#: src/ext_l10n.h:739 src/frontends/qt2/QDocument.C:197
-#: src/frontends/xforms/form_preferences.C:171
-#, fuzzy
-msgid "tiny"
-msgstr "Minuscolo"
-
-#: src/ext_l10n.h:740 src/frontends/qt2/QDocument.C:198
-msgid "script"
-msgstr ""
-
-#: src/ext_l10n.h:741 src/frontends/qt2/QDocument.C:199
-#, fuzzy
-msgid "footnote"
-msgstr "Inserisci una nota a piè di pagina"
-
-#: src/ext_l10n.h:742 src/frontends/qt2/QDocument.C:200
-#: src/frontends/xforms/form_preferences.C:180
-#, fuzzy
-msgid "small"
-msgstr "Piccolo"
-
-#: src/ext_l10n.h:743 src/frontends/qt2/QDocument.C:201
-#: src/frontends/xforms/form_preferences.C:183
-#, fuzzy
-msgid "normal"
-msgstr "Normale"
-
-#: src/ext_l10n.h:744 src/frontends/qt2/QDocument.C:202
-#: src/frontends/xforms/form_preferences.C:186
-#, fuzzy
-msgid "large"
-msgstr "Grande"
-
-#: src/ext_l10n.h:745 src/frontends/controllers/character.C:105
-#: src/frontends/qt2/QDocument.C:203 src/lyxfont.C:56
-msgid "Large"
-msgstr "Grande"
-
-#: src/ext_l10n.h:746 src/frontends/qt2/QDocument.C:204
-msgid "LARGE"
-msgstr ""
-
-#: src/ext_l10n.h:747 src/frontends/qt2/QDocument.C:205
-#: src/frontends/xforms/form_preferences.C:195
-#, fuzzy
-msgid "huge"
-msgstr "Enorme"
-
-#: src/ext_l10n.h:748 src/frontends/controllers/character.C:111
-#: src/frontends/qt2/QDocument.C:206 src/lyxfont.C:57
-msgid "Huge"
-msgstr "Enorme"
-
-#: src/ext_l10n.h:749 src/frontends/xforms/form_document.C:608
-msgid "Bullet Depth"
-msgstr "Profondità"
-
-#: src/ext_l10n.h:750
-msgid "&1"
-msgstr ""
-
-#: src/ext_l10n.h:751
-msgid "&2"
-msgstr ""
-
-#: src/ext_l10n.h:752
-msgid "&3"
-msgstr ""
-
-#: src/ext_l10n.h:753
-msgid "&4"
-msgstr ""
-
-#: src/ext_l10n.h:754
-#, fuzzy
-msgid "&Standard"
-msgstr "Standard|#S"
-
-#: src/ext_l10n.h:755
-#, fuzzy
-msgid "&Maths"
-msgstr "Matematica"
-
-#: src/ext_l10n.h:756
-#, fuzzy
-msgid "&Ding 1"
-msgstr "Simboli 1|#i"
-
-#: src/ext_l10n.h:757
-#, fuzzy
-msgid "D&ing 2"
-msgstr "Simboli 2|#b"
-
-#: src/ext_l10n.h:758
-#, fuzzy
-msgid "Di&ng 3"
-msgstr "Simboli 3|#o"
-
-#: src/ext_l10n.h:759
-#, fuzzy
-msgid "Din&g 4"
-msgstr "Simboli 4|#l"
-
-#: src/ext_l10n.h:760
-#, fuzzy
-msgid "&LaTeX"
-msgstr "LaTeX|#L"
-
-#: src/ext_l10n.h:765 src/frontends/qt2/QError.C:23
-#: src/frontends/xforms/FormError.C:24
-msgid "LaTeX Error"
-msgstr "Errore di LaTeX"
-
-#: src/ext_l10n.h:766 src/ext_l10n.h:780
-#, fuzzy
-msgid "LaTeX error messages"
-msgstr "Errore di LaTeX"
-
-#: src/ext_l10n.h:768
-#, fuzzy
-msgid "ERT inset display"
-msgstr "[non mostrato]"
-
-#: src/ext_l10n.h:769
-msgid "&Inline"
-msgstr ""
-
-#: src/ext_l10n.h:770
-msgid "Show ERT inline"
-msgstr ""
-
-#: src/ext_l10n.h:771
-#, fuzzy
-msgid "&Collapsed"
-msgstr "LaTeX "
-
-#: src/ext_l10n.h:772
-msgid "Show ERT button only"
-msgstr ""
-
-#: src/ext_l10n.h:773
-#, fuzzy
-msgid "&Open"
-msgstr "Apri"
-
-#: src/ext_l10n.h:774
-#, fuzzy
-msgid "Show ERT contents"
-msgstr "Sommario"
-
-#: src/ext_l10n.h:777
-#, fuzzy
-msgid "External Material"
-msgstr "Altro"
-
-#: src/ext_l10n.h:778
-#, fuzzy
-msgid "&Template"
-msgstr "Modelli"
-
-#: src/ext_l10n.h:779
-#, fuzzy
-msgid "Available templates"
-msgstr "Inserisci un riferimento"
-
-#: src/ext_l10n.h:781
-#, fuzzy
-msgid "&Edit file"
-msgstr "File EPS|#E"
-
-#: src/ext_l10n.h:782
-#, fuzzy
-msgid "Edit the file externally"
-msgstr "Inserisci bibtex"
-
-#: src/ext_l10n.h:783
-#, fuzzy
-msgid "&View file"
-msgstr "filenuovo"
-
-#: src/ext_l10n.h:784
-#, fuzzy
-msgid "View the file"
-msgstr "Lista delle tabelle"
-
-#: src/ext_l10n.h:785 src/ext_l10n.h:903 src/ext_l10n.h:1103
-#: src/ext_l10n.h:1189 src/ext_l10n.h:1202
-#, fuzzy
-msgid "&Update"
-msgstr "Aggiorna|#g"
-
-#: src/ext_l10n.h:786
-msgid "Update the material"
-msgstr ""
-
-#: src/ext_l10n.h:787 src/ext_l10n.h:1075
-#, fuzzy
-msgid "&File"
-msgstr "File"
-
-#: src/ext_l10n.h:788
-#, fuzzy
-msgid "Filename"
-msgstr "Nome del file:|#f"
-
-#: src/ext_l10n.h:789 src/ext_l10n.h:810 src/ext_l10n.h:891
-#: src/ext_l10n.h:1079
-#, fuzzy
-msgid "&Browse ..."
-msgstr "Cerca...|#C"
-
-#: src/ext_l10n.h:790
-#, fuzzy
-msgid "&Parameters"
-msgstr "Stampante|#m"
-
-#: src/ext_l10n.h:791
-#, fuzzy
-msgid "Parameters"
-msgstr "Stampante|#m"
-
-#: src/ext_l10n.h:795 src/ext_l10n.h:806 src/ext_l10n.h:1160
-#, fuzzy
-msgid "Form1"
-msgstr "Riquadro"
-
-#: src/ext_l10n.h:800 src/frontends/xforms/form_float.C:29
-#, fuzzy
-msgid "Placement"
-msgstr "Posiz. ogg. flottanti:|#z"
-
-#: src/ext_l10n.h:801
-#, fuzzy
-msgid "Bottom of the page"
-msgstr "% pagina"
-
-#: src/ext_l10n.h:802
-#, fuzzy
-msgid "Top of the page"
-msgstr "% pagina"
-
-#: src/ext_l10n.h:803
-#, fuzzy
-msgid "Page of floats"
-msgstr "Pagine:"
-
-#: src/ext_l10n.h:804
-msgid "Here, if possible"
-msgstr ""
-
-#: src/ext_l10n.h:805
-msgid "Here, definitely"
-msgstr ""
-
-#. add the different tabfolders
-#: src/ext_l10n.h:807 src/frontends/xforms/FormGraphics.C:189
-#, fuzzy
-msgid "File"
-msgstr "File"
-
-#: src/ext_l10n.h:808
-#, fuzzy
-msgid "&File:"
-msgstr "File"
-
-#: src/ext_l10n.h:809 src/ext_l10n.h:890
-#, fuzzy
-msgid "File name to include"
-msgstr "Scegli il documento da inserire"
-
-#: src/ext_l10n.h:811 src/ext_l10n.h:892
-#, fuzzy
-msgid "Select a file"
-msgstr "Seleziona la linea successiva"
-
-#: src/ext_l10n.h:812
-#, fuzzy
-msgid "Screen Options"
-msgstr "Opzioni dello schermo"
-
-#: src/ext_l10n.h:813 src/ext_l10n.h:829
-#: src/frontends/xforms/form_minipage.C:28
-msgid "Width"
-msgstr "Largh."
-
-#: src/ext_l10n.h:814
-#, fuzzy
-msgid "Monochrome"
-msgstr "Mostra in bianco e nero|#b"
-
-#: src/ext_l10n.h:815
-#, fuzzy
-msgid "Grayscale"
-msgstr "Mostra in scala di grigi|#g"
-
-#: src/ext_l10n.h:816
-#, fuzzy
-msgid "Color"
-msgstr "Chiudi"
-
-#: src/ext_l10n.h:817
-#, fuzzy
-msgid "Do not display"
-msgstr "[non mostrato]"
-
-#: src/ext_l10n.h:819
-msgid "S&how:"
-msgstr ""
-
-#: src/ext_l10n.h:820 src/ext_l10n.h:830
-msgid "Height"
-msgstr "Altezza"
-
-#: src/ext_l10n.h:821
-#, fuzzy
-msgid "&Draft mode"
-msgstr "Modalità matematica"
-
-#: src/ext_l10n.h:822
-#, fuzzy
-msgid "draft mode"
-msgstr "Modalità matematica"
-
-#: src/ext_l10n.h:823 src/frontends/xforms/form_preferences.C:201
-#, fuzzy
-msgid "Size"
-msgstr "Dimensione|#D"
-
-#: src/ext_l10n.h:824
-#, fuzzy
-msgid "&Scale"
-msgstr "Molto piccolo"
-
-#: src/ext_l10n.h:825
-#, fuzzy
-msgid "&Default"
-msgstr "Predefinito"
-
-#: src/ext_l10n.h:826
-#, fuzzy
-msgid "&Custom"
-msgstr "Dimensioni alternative"
-
-#: src/ext_l10n.h:827 src/frontends/xforms/form_graphics.C:227
-#: src/frontends/xforms/form_graphics.C:444
-#, no-c-format
-msgid "%"
-msgstr ""
-
-#: src/ext_l10n.h:828
-msgid "Keep aspect&ratio"
-msgstr ""
-
-#: src/ext_l10n.h:831
-#, fuzzy
-msgid "EPS Options"
-msgstr "Opzioni"
-
-#: src/ext_l10n.h:832
-msgid "Bounding box"
-msgstr ""
-
-#: src/ext_l10n.h:833
-#, fuzzy
-msgid "Left &bottom:"
-msgstr "Sinistra|#n"
-
-#: src/ext_l10n.h:834
-#, fuzzy
-msgid "Right &top:"
-msgstr "Destra|#D"
-
-#: src/ext_l10n.h:835
-msgid "Y"
-msgstr ""
-
-#: src/ext_l10n.h:836
-msgid "X"
-msgstr ""
-
-#: src/ext_l10n.h:837 src/ext_l10n.h:840 src/ext_l10n.h:843 src/ext_l10n.h:846
-#: src/frontends/qt2/lengthcombo.C:21
-msgid "pt"
-msgstr ""
-
-#: src/ext_l10n.h:838 src/ext_l10n.h:841 src/ext_l10n.h:844 src/ext_l10n.h:847
-#: src/frontends/qt2/lengthcombo.C:19
-msgid "cm"
-msgstr ""
-
-#: src/ext_l10n.h:839 src/ext_l10n.h:842 src/ext_l10n.h:845 src/ext_l10n.h:848
-#: src/frontends/qt2/lengthcombo.C:20
-#, fuzzy
-msgid "in"
-msgstr "Minuscolo"
-
-#: src/ext_l10n.h:849
-msgid "&Get"
-msgstr ""
-
-#: src/ext_l10n.h:850
-msgid "Get bounding box from file"
-msgstr ""
-
-#: src/ext_l10n.h:851
-msgid "&Clip to bounding box"
-msgstr ""
-
-#: src/ext_l10n.h:852
-msgid "clip to bounding box"
-msgstr ""
-
-#: src/ext_l10n.h:854
-msgid "Rotation"
-msgstr "Rotazione"
-
-#: src/ext_l10n.h:855
-#, fuzzy
-msgid "&Angle:"
-msgstr "Angolo:|#l"
-
-#: src/ext_l10n.h:856
-msgid "&Origin:"
-msgstr ""
-
-#: src/ext_l10n.h:858
-msgid "leftTop"
-msgstr ""
-
-#: src/ext_l10n.h:859
-#, fuzzy
-msgid "leftBottom"
-msgstr "Inferiore|#f"
-
-#: src/ext_l10n.h:860
-#, fuzzy
-msgid "leftBaseline"
-msgstr "Ho inserito la tabella"
-
-#: src/ext_l10n.h:861 src/frontends/controllers/ControlGraphics.C:202
-#, fuzzy
-msgid "center"
-msgstr "Centrato|#t"
-
-#: src/ext_l10n.h:862
-msgid "centerTop"
-msgstr ""
-
-#: src/ext_l10n.h:863
-#, fuzzy
-msgid "centerBottom"
-msgstr "In alto | Al centro | In basso"
-
-#: src/ext_l10n.h:864
-msgid "centerBaseline"
-msgstr ""
-
-#: src/ext_l10n.h:865
-#, fuzzy
-msgid "rightTop"
-msgstr "Normale"
-
-#: src/ext_l10n.h:866
-#, fuzzy
-msgid "rightBottom"
-msgstr "Inferiore|#f"
-
-#: src/ext_l10n.h:867
-#, fuzzy
-msgid "rightBaseline"
-msgstr "Ho inserito la tabella"
-
-#: src/ext_l10n.h:868
-#, fuzzy
-msgid "referencePoint"
-msgstr "Inserisci un riferimento"
-
-#: src/ext_l10n.h:869
-#, fuzzy
-msgid "LaTeX options"
-msgstr "Altro"
-
-#: src/ext_l10n.h:870
-#, fuzzy
-msgid "Su&bfigure"
-msgstr "Sottofigura|#r"
-
-#: src/ext_l10n.h:871
-msgid "The sub-caption for the figure"
-msgstr ""
-
-#: src/ext_l10n.h:876
-#, fuzzy
-msgid "Include File"
-msgstr "Includi"
-
-#: src/ext_l10n.h:877
-#, fuzzy
-msgid "Include type"
-msgstr "Includi"
-
-#: src/ext_l10n.h:878
-#, fuzzy
-msgid "&Include"
-msgstr "Includi"
-
-#: src/ext_l10n.h:879 src/ext_l10n.h:881 src/ext_l10n.h:883 src/ext_l10n.h:886
-#: src/ext_l10n.h:888
-msgid "FIXME"
-msgstr ""
-
-#: src/ext_l10n.h:880
-#, fuzzy
-msgid "I&nput"
-msgstr "Includi"
-
-#: src/ext_l10n.h:882
-#, fuzzy
-msgid "&Verbatim"
-msgstr "Includi verbatim"
-
-#: src/ext_l10n.h:884
-msgid "Options"
-msgstr "Opzioni"
-
-#: src/ext_l10n.h:885
-#, fuzzy
-msgid "&Don't typeset"
-msgstr "Non componi|#N"
-
-#: src/ext_l10n.h:887
-#, fuzzy
-msgid "Visible &Space"
-msgstr "Spazio visibile|#s"
-
-#: src/ext_l10n.h:889
-#, fuzzy
-msgid "&Filename:"
-msgstr "Nome del file:|#f"
-
-#: src/ext_l10n.h:895
-#, fuzzy
-msgid "&Load"
-msgstr "Carica|#C"
-
-#: src/ext_l10n.h:896
-#, fuzzy
-msgid "Load the file"
-msgstr "Lista delle tabelle"
-
-#: src/ext_l10n.h:898 src/ext_l10n.h:1176
-#, fuzzy
-msgid "&Keyword"
-msgstr "Parola chiave:|#P"
-
-#: src/ext_l10n.h:899 src/ext_l10n.h:1031 src/ext_l10n.h:1177
-#, fuzzy
-msgid "Index entry"
-msgstr "Capov."
-
-#: src/ext_l10n.h:902 src/frontends/qt2/QLog.C:33
-msgid "Log"
-msgstr ""
-
-#: src/ext_l10n.h:904 src/ext_l10n.h:1203
-#, fuzzy
-msgid "Update the display"
-msgstr "Mostra"
-
-#: src/ext_l10n.h:906
-#, fuzzy
-msgid "Minipage settings"
-msgstr "Minipagina"
-
-#: src/ext_l10n.h:908 src/ext_l10n.h:1057
-#, fuzzy
-msgid "Top"
-msgstr "Superiore|#p"
-
-#: src/ext_l10n.h:909 src/ext_l10n.h:1058
-#, fuzzy
-msgid "Middle"
-msgstr "Centrale"
-
-#: src/ext_l10n.h:910 src/ext_l10n.h:1059
-#, fuzzy
-msgid "Bottom"
-msgstr "Inferiore|#f"
-
-#: src/ext_l10n.h:911
-#, fuzzy
-msgid "Vertical alignment"
-msgstr "Allin. vert.|#v"
-
-#: src/ext_l10n.h:912
-#, fuzzy
-msgid "A&lignment:"
-msgstr "Allineamento"
-
-#: src/ext_l10n.h:913
-msgid "Units of width value"
-msgstr ""
-
-#: src/ext_l10n.h:914
-#, fuzzy
-msgid "Width value"
-msgstr "Largh."
-
-#: src/ext_l10n.h:915
-msgid "&Units:"
-msgstr ""
-
-#: src/ext_l10n.h:921
-msgid "&Alignment and Spacing"
-msgstr ""
-
-#: src/ext_l10n.h:922
-#, fuzzy
-msgid "Alignment:"
-msgstr "Allineamento"
-
-#: src/ext_l10n.h:923
-#, fuzzy
-msgid "Justified"
-msgstr "Citazione"
-
-#: src/ext_l10n.h:924
-#, fuzzy
-msgid "Left"
-msgstr "Sinistra|#n"
-
-#: src/ext_l10n.h:925
-#, fuzzy
-msgid "Right"
-msgstr "Destra|#D"
-
-#: src/ext_l10n.h:926
-#, fuzzy
-msgid "Centered"
-msgstr "Centrato|#t"
-
-#: src/ext_l10n.h:927
-#, fuzzy
-msgid "No indentation"
-msgstr "Rotazione"
-
-#: src/ext_l10n.h:928
-#, fuzzy
-msgid "Spacing"
-msgstr "Interlinea|#e"
-
-#: src/ext_l10n.h:929 src/ext_l10n.h:940 src/ext_l10n.h:951 src/ext_l10n.h:962
-#: src/ext_l10n.h:973 src/ext_l10n.h:984 src/ext_l10n.h:1037
-#, fuzzy
-msgid "Centimetres"
-msgstr "Centrato|#t"
-
-#: src/ext_l10n.h:930 src/ext_l10n.h:941 src/ext_l10n.h:952 src/ext_l10n.h:963
-#: src/ext_l10n.h:974 src/ext_l10n.h:985 src/ext_l10n.h:1038
-#, fuzzy
-msgid "Inches"
-msgstr "Aumenta"
-
-#: src/ext_l10n.h:931 src/ext_l10n.h:942 src/ext_l10n.h:953 src/ext_l10n.h:964
-#: src/ext_l10n.h:975 src/ext_l10n.h:986 src/ext_l10n.h:1039
-#, fuzzy
-msgid "Points"
-msgstr "Stampa"
-
-#: src/ext_l10n.h:932 src/ext_l10n.h:943 src/ext_l10n.h:954 src/ext_l10n.h:965
-#: src/ext_l10n.h:976 src/ext_l10n.h:987 src/ext_l10n.h:1040
-#, fuzzy
-msgid "Millimetres"
-msgstr "Centrato|#t"
-
-#: src/ext_l10n.h:933 src/ext_l10n.h:944 src/ext_l10n.h:955 src/ext_l10n.h:966
-#: src/ext_l10n.h:977 src/ext_l10n.h:988 src/ext_l10n.h:1041
-#, fuzzy
-msgid "Picas"
-msgstr "Incolla"
-
-#: src/ext_l10n.h:934 src/ext_l10n.h:945 src/ext_l10n.h:956 src/ext_l10n.h:967
-#: src/ext_l10n.h:978 src/ext_l10n.h:989 src/ext_l10n.h:1042
-msgid "ex Units"
-msgstr ""
-
-#: src/ext_l10n.h:935 src/ext_l10n.h:946 src/ext_l10n.h:957 src/ext_l10n.h:968
-#: src/ext_l10n.h:979 src/ext_l10n.h:990 src/ext_l10n.h:1043
-msgid "em Units"
-msgstr ""
-
-#: src/ext_l10n.h:936 src/ext_l10n.h:947 src/ext_l10n.h:958 src/ext_l10n.h:969
-#: src/ext_l10n.h:980 src/ext_l10n.h:991 src/ext_l10n.h:1044
-#, fuzzy
-msgid "Scaled Points"
-msgstr "Opzioni dello schermo"
-
-#: src/ext_l10n.h:937 src/ext_l10n.h:948 src/ext_l10n.h:959 src/ext_l10n.h:970
-#: src/ext_l10n.h:981 src/ext_l10n.h:992 src/ext_l10n.h:1045
-#, fuzzy
-msgid "Big/PS Points"
-msgstr "Stampa"
-
-#: src/ext_l10n.h:938 src/ext_l10n.h:949 src/ext_l10n.h:960 src/ext_l10n.h:971
-#: src/ext_l10n.h:982 src/ext_l10n.h:993 src/ext_l10n.h:1046
-#, fuzzy
-msgid "Didot Points"
-msgstr "Stampa"
-
-#: src/ext_l10n.h:939 src/ext_l10n.h:950 src/ext_l10n.h:961 src/ext_l10n.h:972
-#: src/ext_l10n.h:983 src/ext_l10n.h:994 src/ext_l10n.h:1047
-#, fuzzy
-msgid "Cicero Points"
-msgstr "Stampa"
-
-#: src/ext_l10n.h:995 src/ext_l10n.h:997
-msgid "Units:"
-msgstr ""
-
-#: src/ext_l10n.h:996 src/ext_l10n.h:998
-msgid "Unit of Size, Stretch and Slink"
-msgstr ""
-
-#: src/ext_l10n.h:999
-#, fuzzy
-msgid "Value:"
-msgstr "Blu"
-
-#: src/ext_l10n.h:1000
-#, fuzzy
-msgid "Amount of spacing"
-msgstr "Spaziatura"
-
-#: src/ext_l10n.h:1001
-msgid "Stretch:"
-msgstr ""
-
-#: src/ext_l10n.h:1002
-msgid "Margin by which paragraph is allowed to increase"
-msgstr ""
-
-#: src/ext_l10n.h:1003
-msgid "Shrink:"
-msgstr ""
-
-#: src/ext_l10n.h:1004
-msgid "Margin by which paragraph is allowed to decrease"
-msgstr ""
-
-#: src/ext_l10n.h:1006 src/ext_l10n.h:1015
-#, fuzzy
-msgid "DefSkip"
-msgstr "Salto predefinito:|#t"
-
-#: src/ext_l10n.h:1007 src/ext_l10n.h:1016
-#, fuzzy
-msgid "SmallSkip"
-msgstr "Piccolissimo"
-
-#: src/ext_l10n.h:1008 src/ext_l10n.h:1017
-#, fuzzy
-msgid "MedSkip"
-msgstr "Medio"
-
-#: src/ext_l10n.h:1009 src/ext_l10n.h:1018
-msgid "BigSkip"
-msgstr ""
-
-#: src/ext_l10n.h:1010 src/ext_l10n.h:1019
-#, fuzzy
-msgid "VFill"
-msgstr "File"
-
-#: src/ext_l10n.h:1012
-#, fuzzy
-msgid "Above:"
-msgstr "Sopra"
-
-#: src/ext_l10n.h:1013
-#, fuzzy
-msgid "Below:"
-msgstr "Sotto:"
-
-#: src/ext_l10n.h:1021
-msgid "Keep space at the top of the page"
-msgstr ""
-
-#: src/ext_l10n.h:1022
-#, fuzzy
-msgid "Keep space at top of the page"
-msgstr "% pagina"
-
-#: src/ext_l10n.h:1023
-msgid "Keep space at the bottom of the page"
-msgstr ""
-
-#: src/ext_l10n.h:1024
-#, fuzzy
-msgid "List environment"
-msgstr "Allineamento"
-
-#: src/ext_l10n.h:1025
-#, fuzzy
-msgid "Label width:"
-msgstr "Largh. etichetta:|#h"
-
-#: src/ext_l10n.h:1026
-#, fuzzy
-msgid "Label width in list environment"
-msgstr "Cambia la profondità del paragrafo"
-
-#: src/ext_l10n.h:1027
-#, fuzzy
-msgid "&Lines and Page breaks"
-msgstr "Inter. pagina"
-
-#: src/ext_l10n.h:1028
-#, fuzzy
-msgid "Page break"
-msgstr "Inter. pagina"
-
-#: src/ext_l10n.h:1029 src/ext_l10n.h:1033
-#, fuzzy
-msgid "above paragraph"
-msgstr "Vai un paragrafo in alto"
-
-#: src/ext_l10n.h:1030 src/ext_l10n.h:1034
-#, fuzzy
-msgid "below paragraph"
-msgstr "Vai un paragrafo in alto"
-
-#: src/ext_l10n.h:1032
-#, fuzzy
-msgid "Line"
-msgstr "Linee"
-
-#: src/ext_l10n.h:1035
-#, fuzzy
-msgid "&Extra options"
-msgstr "Altro"
-
-#: src/ext_l10n.h:1036
-#, fuzzy
-msgid "Unit:"
-msgstr "Font: "
-
-#: src/ext_l10n.h:1049 src/frontends/qt2/QMinipage.C:33
-#, fuzzy
-msgid "Minipage"
-msgstr "Minipagina"
-
-#: src/ext_l10n.h:1050
-msgid "Wrap text around floats"
-msgstr ""
-
-#: src/ext_l10n.h:1051
-#, fuzzy
-msgid "Indent whole paragraph"
-msgstr "Paragrafo indentato"
-
-#: src/ext_l10n.h:1052
-#, fuzzy
-msgid "Width:"
-msgstr "Largh."
-
-#: src/ext_l10n.h:1053
-#, fuzzy
-msgid "Minipage options"
-msgstr "Minipagina"
-
-#: src/ext_l10n.h:1054
-#, fuzzy
-msgid "Start new minipage"
-msgstr "Inizia una nuova Minipage"
-
-#: src/ext_l10n.h:1055
-#, fuzzy
-msgid "HFill between minipage paragraphs"
-msgstr "Riemp. orizz. tra paragrafi Minipage"
-
-#: src/ext_l10n.h:1056
-#, fuzzy
-msgid "Vertical Alignment:"
-msgstr "Allin. vert.|#v"
-
-#: src/ext_l10n.h:1064
-#, fuzzy
-msgid "LaTeX pre-amble"
-msgstr "Preambolo di LaTeX"
-
-#: src/ext_l10n.h:1065
-#, fuzzy
-msgid "The LaTeX pre-amble"
-msgstr "Preambolo di LaTeX"
-
-#: src/ext_l10n.h:1066
-msgid "&Edit ..."
-msgstr ""
-
-#: src/ext_l10n.h:1067
-msgid "Edit the pre-amble in an external editor"
-msgstr ""
-
-#: src/ext_l10n.h:1071 src/frontends/qt2/QPrint.C:35
-#: src/frontends/xforms/form_print.C:133 src/frontends/xforms/FormPrint.C:35
-#: src/LyXAction.C:138 src/LyXAction.C:145
-msgid "Print"
-msgstr "Stampa"
-
-#: src/ext_l10n.h:1072
-#, fuzzy
-msgid "Print Destination"
-msgstr "Destinazione:"
-
-#: src/ext_l10n.h:1073
-#, fuzzy
-msgid "P&rinter"
-msgstr "Stampa"
-
-#: src/ext_l10n.h:1074
-msgid "Send output to the printer"
-msgstr ""
-
-#: src/ext_l10n.h:1076 src/ext_l10n.h:1078
-#, fuzzy
-msgid "Send output to a file"
-msgstr "Seleziona la linea successiva"
-
-#: src/ext_l10n.h:1077
-msgid "Send output to the given printer"
-msgstr ""
-
-#: src/ext_l10n.h:1080
-#, fuzzy
-msgid "Pages"
-msgstr "Pagine:"
-
-#: src/ext_l10n.h:1081
-#, fuzzy
-msgid "&All"
-msgstr "Applica|#A"
-
-#: src/ext_l10n.h:1082
-#, fuzzy
-msgid "Print all pages"
-msgstr "Tutte le pagine|#g"
-
-#: src/ext_l10n.h:1083
-msgid "&Odd"
-msgstr ""
-
-#: src/ext_l10n.h:1084
-#, fuzzy
-msgid "Print odd pages only"
-msgstr "Inserisci il numero di pagina|#p"
-
-#: src/ext_l10n.h:1085
-#, fuzzy
-msgid "&Even"
-msgstr "Solo le pagine pari|#p"
-
-#: src/ext_l10n.h:1086
-#, fuzzy
-msgid "Print even pages only"
-msgstr "Inserisci il numero di pagina|#p"
-
-#: src/ext_l10n.h:1087
-#, fuzzy
-msgid "&Last page:"
-msgstr "Lingua"
-
-#: src/ext_l10n.h:1088
-#, fuzzy
-msgid "Page number to print to"
-msgstr "Non riesco a stampare"
-
-#: src/ext_l10n.h:1089
-#, fuzzy
-msgid "Re&verse order"
-msgstr "Ordine inverso|#v"
-
-#: src/ext_l10n.h:1090
-#, fuzzy
-msgid "Print in reverse order"
-msgstr "Ordine inverso|#v"
-
-#: src/ext_l10n.h:1091
-#, fuzzy
-msgid "Page number to print from"
-msgstr "Non riesco a stampare"
-
-#: src/ext_l10n.h:1092
-#, fuzzy
-msgid "Ran&ge"
-msgstr "Pagina: "
-
-#: src/ext_l10n.h:1093
-#, fuzzy
-msgid "Set a range of pages to print"
-msgstr "Controlla il 'numero delle copie'!"
-
-#: src/ext_l10n.h:1094
-#, fuzzy
-msgid "&Starting range:"
-msgstr "Inizia una nuova Minipage"
-
-#: src/ext_l10n.h:1095 src/frontends/xforms/form_print.C:139
-msgid "Copies"
-msgstr "Copie"
-
-#: src/ext_l10n.h:1096
-#, fuzzy
-msgid "Number of copies"
-msgstr "Controlla il 'numero delle copie'!"
-
-#: src/ext_l10n.h:1097
-#, fuzzy
-msgid "&Collate"
-msgstr "LaTeX "
-
-#: src/ext_l10n.h:1098
-#, fuzzy
-msgid "Collate copies"
-msgstr "LaTeX "
-
-#: src/ext_l10n.h:1099
-#, fuzzy
-msgid "&Print"
-msgstr "Stampa"
-
-#: src/ext_l10n.h:1100 src/ext_l10n.h:1159
-#: src/frontends/controllers/ButtonController.h:74
-#: src/frontends/xforms/form_maths_deco.C:32
-#: src/frontends/xforms/FormMathsPanel.C:71
-#: src/frontends/xforms/FormMathsPanel.C:407
-#: src/frontends/xforms/form_maths_space.C:73
-#: src/frontends/xforms/form_maths_style.C:35 src/LyXAction.C:130
-msgid "Close"
-msgstr "Chiudi"
-
-#: src/ext_l10n.h:1102 src/ext_l10n.h:1187
-#, fuzzy
-msgid "&Type"
-msgstr "Tipo"
-
-#: src/ext_l10n.h:1104
-#, fuzzy
-msgid "Update the reference list"
-msgstr "Inserisci un riferimento"
-
-#: src/ext_l10n.h:1105
-#, fuzzy
-msgid "Sort"
-msgstr "Spiacente."
-
-#: src/ext_l10n.h:1106
-msgid "Sort references in alphabetical order"
-msgstr ""
-
-#: src/ext_l10n.h:1107 src/frontends/qt2/QRef.C:103
-#, fuzzy
-msgid "&Goto"
-msgstr "Inferiore|#f"
-
-#: src/ext_l10n.h:1108
-#, fuzzy
-msgid "Move the document cursor to reference"
-msgstr "Può darsi che il documento sia troncato"
-
-#: src/ext_l10n.h:1110
-#, fuzzy
-msgid "Page number"
-msgstr "Nessun numero"
-
-#: src/ext_l10n.h:1111
-msgid "Ref on page xxx"
-msgstr ""
-
-#: src/ext_l10n.h:1112
-msgid "On page xxx"
-msgstr ""
-
-#: src/ext_l10n.h:1113
-#, fuzzy
-msgid "Pretty reference"
-msgstr "Inserisci un riferimento"
-
-#: src/ext_l10n.h:1114
-msgid "Reference as it appears in output"
-msgstr ""
-
-#: src/ext_l10n.h:1115
-#, fuzzy
-msgid "&Reference:"
-msgstr "Inserisci un riferimento"
-
-#: src/ext_l10n.h:1116
-#, fuzzy
-msgid "&Name:"
-msgstr "Nome|#N"
-
-#: src/ext_l10n.h:1117
-#, fuzzy
-msgid "Available references"
-msgstr "Inserisci un riferimento"
-
-#: src/ext_l10n.h:1120
-#, fuzzy
-msgid "Search and replace"
-msgstr "Cerca & Sostituisci"
-
-#: src/ext_l10n.h:1121
-#, fuzzy
-msgid "&Find:"
-msgstr "Cerca|#e"
-
-#: src/ext_l10n.h:1122
-#, fuzzy
-msgid "Replace &with:"
-msgstr "Cambia con|#m"
-
-#: src/ext_l10n.h:1123
-#, fuzzy
-msgid "Case &sensitive"
-msgstr "Maius/minus|#s"
-
-#: src/ext_l10n.h:1124
-msgid "Match whole words onl&y"
-msgstr ""
-
-#: src/ext_l10n.h:1125
-msgid "Find &Next"
-msgstr ""
-
-#: src/ext_l10n.h:1126 src/ext_l10n.h:1134 src/ext_l10n.h:1183
-#, fuzzy
-msgid "&Replace"
-msgstr "Cambia"
-
-#: src/ext_l10n.h:1127
-#, fuzzy
-msgid "Replace &All "
-msgstr "Cambia tutto|#t"
-
-#: src/ext_l10n.h:1128
-msgid "Search &backwards"
-msgstr ""
-
-#: src/ext_l10n.h:1130
-#, fuzzy
-msgid "File: "
-msgstr "Il file `"
-
-#: src/ext_l10n.h:1132 src/frontends/qt2/QSpellchecker.C:27
-#, fuzzy
-msgid "Spellchecker"
-msgstr "Correttore"
-
-#: src/ext_l10n.h:1133
-#, fuzzy
-msgid "Suggestions:"
-msgstr "Destinazione:"
-
-#: src/ext_l10n.h:1135
-#, fuzzy
-msgid "Replace word with current choice"
-msgstr "Vuoi sostituirlo con il documento attuale?"
-
-#: src/ext_l10n.h:1136
-#, fuzzy
-msgid "&Add"
-msgstr "Aggiungi a|#g"
-
-#: src/ext_l10n.h:1137
-#, fuzzy
-msgid "Add the word to your personal dictionary"
-msgstr "Inserisci nel dizionario personale|#I"
-
-#: src/ext_l10n.h:1138
-#, fuzzy
-msgid "&Ignore"
-msgstr "Ignora"
-
-#: src/ext_l10n.h:1139
-#, fuzzy
-msgid "Ignore this word"
-msgstr "Ignora la parola|#g"
-
-#: src/ext_l10n.h:1140
-#, fuzzy
-msgid "&Accept"
-msgstr "Genitore:"
-
-#: src/ext_l10n.h:1141
-#, fuzzy
-msgid "Accept word for this session"
-msgstr "Accetta la parola in questa sessione|#A"
-
-#: src/ext_l10n.h:1142
-#, fuzzy
-msgid "&Options..."
-msgstr "Opzioni"
-
-#: src/ext_l10n.h:1144
-#, fuzzy
-msgid "How far spellchecking has got"
-msgstr "Lancia il correttore|#L"
-
-#: src/ext_l10n.h:1145 src/frontends/xforms/form_spellchecker.C:37
-#, fuzzy
-msgid "Suggestions"
-msgstr "Destinazione:"
-
-#: src/ext_l10n.h:1146
-#, fuzzy
-msgid "Replacement:"
-msgstr "Posiz. ogg. flottanti:|#z"
-
-#: src/ext_l10n.h:1147
-#, fuzzy
-msgid "Current word"
-msgstr "Numero:"
-
-#: src/ext_l10n.h:1148
-#, fuzzy
-msgid "Unknown:"
-msgstr "sconosciuto"
-
-#: src/ext_l10n.h:1149
-#, fuzzy
-msgid "Replace with selected word"
-msgstr "Vuoi sostituirlo con il documento attuale?"
-
-#: src/ext_l10n.h:1150
-msgid "&Start..."
-msgstr ""
-
-#: src/ext_l10n.h:1151
-#, fuzzy
-msgid "Start spellcheck"
-msgstr "Lancia il correttore|#L"
-
-#: src/ext_l10n.h:1152 src/frontends/qt2/QTabularCreate.C:28
-#, fuzzy
-msgid "Insert table"
-msgstr "Inserisci una tabella"
-
-#: src/ext_l10n.h:1153
-#, fuzzy
-msgid "&Rows:"
-msgstr "Righe"
-
-#: src/ext_l10n.h:1154
-#, fuzzy
-msgid "Number of rows"
-msgstr "Controlla il 'numero delle copie'!"
-
-#: src/ext_l10n.h:1155
-#, fuzzy
-msgid "&Columns:"
-msgstr "Colonne"
-
-#: src/ext_l10n.h:1156
-#, fuzzy
-msgid "Number of columns"
-msgstr "% colonna"
-
-#: src/ext_l10n.h:1157
-msgid "Resize this to the correct table dimensions"
-msgstr ""
-
-#: src/ext_l10n.h:1161
-#, fuzzy
-msgid "LaTeX classes"
-msgstr "Log di LaTeX"
-
-#: src/ext_l10n.h:1162
-#, fuzzy
-msgid "LaTeX styles"
-msgstr "Log di LaTeX"
-
-#: src/ext_l10n.h:1163
-#, fuzzy
-msgid "BibTeX styles"
-msgstr "Database:"
-
-#: src/ext_l10n.h:1164
-#, fuzzy
-msgid "Selected classes or styles"
-msgstr "Seleziona la linea successiva"
-
-#: src/ext_l10n.h:1165
-msgid "Show &path"
-msgstr ""
-
-#: src/ext_l10n.h:1166
-msgid "Toggles view of the file list"
-msgstr ""
-
-#: src/ext_l10n.h:1168
-#, fuzzy
-msgid "Installed files"
-msgstr "Includi"
-
-#: src/ext_l10n.h:1169
-#, fuzzy
-msgid "&Rescan"
-msgstr "Aggiorna|#r"
-
-#: src/ext_l10n.h:1170
-msgid "Built new file list"
-msgstr ""
-
-#: src/ext_l10n.h:1171
-#, fuzzy
-msgid "&View"
-msgstr "Visualizza il file DVI"
-
-#: src/ext_l10n.h:1172
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
-msgstr ""
-
-#: src/ext_l10n.h:1174
-msgid "Close this dialog"
-msgstr ""
-
-#: src/ext_l10n.h:1178
-#, fuzzy
-msgid "Entry"
-msgstr "Inserisci un'etichetta"
-
-#: src/ext_l10n.h:1179
-#, fuzzy
-msgid "Thesaurus entries"
-msgstr "Struttura della tabella"
-
-#: src/ext_l10n.h:1180
-#, fuzzy
-msgid "Select a related word"
-msgstr "Seleziona la linea successiva"
-
-#: src/ext_l10n.h:1181
-#, fuzzy
-msgid "&Selection"
-msgstr "Decorazione"
-
-#: src/ext_l10n.h:1182
-#, fuzzy
-msgid "The selected entry"
-msgstr "Seleziona la linea successiva"
-
-#: src/ext_l10n.h:1184
-msgid "Replace the entry with the selection"
-msgstr ""
-
-#: src/ext_l10n.h:1186
-#, fuzzy
-msgid "Table Of Contents"
-msgstr "Sommario"
-
-#: src/ext_l10n.h:1188
-#, fuzzy
-msgid "Contents list"
-msgstr "Sommario"
-
-#: src/ext_l10n.h:1191
-#, fuzzy
-msgid "Insert URL"
-msgstr "Inserisci un'etichetta"
-
-#: src/ext_l10n.h:1192
-#, fuzzy
-msgid "&URL"
-msgstr "URL|#U"
-
-#: src/ext_l10n.h:1194
-#, fuzzy
-msgid "&Name"
-msgstr "Nome|#N"
-
-#: src/ext_l10n.h:1195
-msgid "Name associated with the URL"
-msgstr ""
-
-#: src/ext_l10n.h:1197
-msgid "&Generate hyperlink"
-msgstr ""
-
-#: src/ext_l10n.h:1198
-msgid "Output as a hyperlink ?"
-msgstr ""
-
-#: src/ext_l10n.h:1201
-#, fuzzy
-msgid "Version control log"
-msgstr "Contollo della versione%t"
-
 #. Insert the latex builtin float-types
 #. (these will later be read from a layout file)
 #. table
@@ -5472,6 +826,11 @@ msgstr "Figura"
 #, fuzzy
 msgid "List of Figures"
 msgstr "Lista delle tabelle"
+
+#: src/FloatList.C:47 src/ext_l10n.h:199
+#, fuzzy
+msgid "Algorithm"
+msgstr "Lista delle formule"
 
 #: src/FloatList.C:48
 #, fuzzy
@@ -5495,6 +854,23 @@ msgstr ""
 #, fuzzy
 msgid "No year"
 msgstr "Nessun numero"
+
+#. /
+#: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:157
+#: src/lyxfunc.C:1082 src/ext_l10n.h:571 src/ext_l10n.h:605 src/ext_l10n.h:764
+#: src/ext_l10n.h:901
+msgid "Cancel"
+msgstr "Annulla"
+
+#: src/frontends/controllers/ButtonController.h:74
+#: src/frontends/xforms/form_maths_deco.C:32
+#: src/frontends/xforms/FormMathsPanel.C:71
+#: src/frontends/xforms/FormMathsPanel.C:407
+#: src/frontends/xforms/form_maths_space.C:73
+#: src/frontends/xforms/form_maths_style.C:35 src/LyXAction.C:130
+#: src/ext_l10n.h:1100 src/ext_l10n.h:1159
+msgid "Close"
+msgstr "Chiudi"
 
 #: src/frontends/controllers/character.C:33
 #: src/frontends/controllers/character.C:53
@@ -5578,6 +954,11 @@ msgstr "Piccolo"
 msgid "Normal"
 msgstr "Normale"
 
+#: src/frontends/controllers/character.C:105 src/frontends/qt2/QDocument.C:203
+#: src/lyxfont.C:56 src/ext_l10n.h:745
+msgid "Large"
+msgstr "Grande"
+
 #: src/frontends/controllers/character.C:107 src/lyxfont.C:57
 msgid "Larger"
 msgstr "Molto grande"
@@ -5585,6 +966,11 @@ msgstr "Molto grande"
 #: src/frontends/controllers/character.C:109 src/lyxfont.C:57
 msgid "Largest"
 msgstr "Grandissimo"
+
+#: src/frontends/controllers/character.C:111 src/frontends/qt2/QDocument.C:206
+#: src/lyxfont.C:57 src/ext_l10n.h:748
+msgid "Huge"
+msgstr "Enorme"
 
 #: src/frontends/controllers/character.C:113 src/lyxfont.C:57
 msgid "Huger"
@@ -5752,6 +1138,11 @@ msgstr "Seleziona la linea successiva"
 msgid "Clipart|#C#c"
 msgstr "Galleria"
 
+#: src/frontends/controllers/ControlGraphics.C:202 src/ext_l10n.h:861
+#, fuzzy
+msgid "center"
+msgstr "Centrato|#t"
+
 #: src/frontends/controllers/ControlGraphics.C:203
 #, fuzzy
 msgid "left top"
@@ -5901,6 +1292,12 @@ msgstr ""
 msgid "&No"
 msgstr ""
 
+#: src/frontends/qt2/Alert_pimpl.C:45 src/frontends/qt2/QParagraphDialog.C:49
+#: src/ext_l10n.h:539 src/ext_l10n.h:1063
+#, fuzzy
+msgid "&Cancel"
+msgstr "Annulla"
+
 #: src/frontends/qt2/Alert_pimpl.C:51
 #, fuzzy
 msgid "LyX: "
@@ -5908,6 +1305,22 @@ msgstr "Stampa"
 
 #: src/frontends/qt2/FileDialog.C:43
 msgid "*|All files"
+msgstr ""
+
+#: src/frontends/qt2/lengthcombo.C:19 src/ext_l10n.h:838 src/ext_l10n.h:841
+#: src/ext_l10n.h:844 src/ext_l10n.h:847
+msgid "cm"
+msgstr ""
+
+#: src/frontends/qt2/lengthcombo.C:20 src/ext_l10n.h:839 src/ext_l10n.h:842
+#: src/ext_l10n.h:845 src/ext_l10n.h:848
+#, fuzzy
+msgid "in"
+msgstr "Minuscolo"
+
+#: src/frontends/qt2/lengthcombo.C:21 src/ext_l10n.h:837 src/ext_l10n.h:840
+#: src/ext_l10n.h:843 src/ext_l10n.h:846
+msgid "pt"
 msgstr ""
 
 #: src/frontends/qt2/lengthcombo.C:22
@@ -5940,6 +1353,10 @@ msgstr ""
 msgid "dd"
 msgstr "Aggiungi a|#g"
 
+#: src/frontends/qt2/lengthcombo.C:29 src/ext_l10n.h:227
+msgid "cc"
+msgstr ""
+
 #: src/frontends/qt2/lengthcombo.C:30
 msgid "mu"
 msgstr ""
@@ -5962,6 +1379,11 @@ msgstr ""
 msgid "FIXME - describe the units."
 msgstr ""
 
+#: src/frontends/qt2/QAbout.C:32 src/frontends/xforms/FormAboutlyx.C:28
+#: src/ext_l10n.h:530
+msgid "About LyX"
+msgstr ""
+
 #: src/frontends/qt2/QBibitem.C:26
 #, fuzzy
 msgid "Bibliography Item"
@@ -5970,6 +1392,12 @@ msgstr "Oggetto bibliografico"
 #: src/frontends/qt2/QBibtex.C:29
 msgid "BibTeX"
 msgstr "BibTeX"
+
+#: src/frontends/qt2/QBibtex.C:114 src/frontends/qt2/QBibtexDialog.C:77
+#: src/ext_l10n.h:562
+#, fuzzy
+msgid "Other ..."
+msgstr "altro..."
 
 #: src/frontends/qt2/QBibtexDialog.C:46
 msgid "BibTeX style files (*.bst)"
@@ -5990,6 +1418,16 @@ msgstr "Database:"
 msgid "Select a BibTeX database to add"
 msgstr "Database:"
 
+#: src/frontends/qt2/QCharacter.C:31 src/ext_l10n.h:572
+#, fuzzy
+msgid "Character"
+msgstr "Insieme dei caratteri:|#I"
+
+#: src/frontends/qt2/QCitation.C:45 src/frontends/xforms/FormCitation.C:117
+#: src/ext_l10n.h:601
+msgid "Citation"
+msgstr "Citazione"
+
 #: src/frontends/qt2/QCitationDialog.C:48
 #: src/frontends/xforms/FormCitation.C:476
 #, fuzzy
@@ -6001,8 +1439,120 @@ msgstr "Il ripristino non è stato ancora implementato in modo matematico"
 msgid "Document Settings"
 msgstr "Documenti"
 
+#: src/frontends/qt2/QDocument.C:72 src/lyxfont.C:573 src/ext_l10n.h:673
+msgid "Default"
+msgstr "Predefinito"
+
+#: src/frontends/qt2/QDocument.C:73 src/ext_l10n.h:674 src/ext_l10n.h:1011
+#: src/ext_l10n.h:1020
+#, fuzzy
+msgid "Custom"
+msgstr "Dimensioni alternative"
+
+#: src/frontends/qt2/QDocument.C:74 src/ext_l10n.h:675
+#, fuzzy
+msgid "USletter"
+msgstr "Sinistra"
+
+#: src/frontends/qt2/QDocument.C:75 src/ext_l10n.h:676
+msgid "USlegal"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:76 src/ext_l10n.h:677
+msgid "USexecutive"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:77 src/ext_l10n.h:678
+msgid "A3"
+msgstr ""
+
 #: src/frontends/qt2/QDocument.C:78
 msgid "A4"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:79 src/ext_l10n.h:679
+msgid "A5"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:80 src/ext_l10n.h:680
+msgid "B3"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:81 src/ext_l10n.h:681
+msgid "B4"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:82 src/ext_l10n.h:682
+msgid "B5"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:84 src/ext_l10n.h:684 src/ext_l10n.h:1005
+#: src/ext_l10n.h:1014 src/ext_l10n.h:1048
+#, fuzzy
+msgid "None"
+msgstr "Fatto"
+
+#: src/frontends/qt2/QDocument.C:85 src/ext_l10n.h:685
+msgid "A4 small Margins (only portrait)"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:86 src/ext_l10n.h:686
+msgid "A4 very small Margins (only portrait)"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:87 src/ext_l10n.h:687
+msgid "A4 very wide margins (only portrait)"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:112 src/ext_l10n.h:655
+msgid "OneHalf"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:114 src/ext_l10n.h:657
+#, fuzzy
+msgid "Other"
+msgstr "Altro...|#l"
+
+#. the document language page
+#: src/frontends/qt2/QDocument.C:116 src/frontends/qt2/QDocument.C:124
+#: src/frontends/qt2/QDocument.C:152 src/frontends/qt2/QDocument.C:196
+#: src/frontends/qt2/QDocument.C:575 src/frontends/qt2/QDocument.C:579
+#: src/ext_l10n.h:642 src/ext_l10n.h:658 src/ext_l10n.h:707 src/ext_l10n.h:738
+#: src/ext_l10n.h:857
+#, fuzzy
+msgid "default"
+msgstr "Predefinito"
+
+#: src/frontends/qt2/QDocument.C:117 src/ext_l10n.h:659
+msgid "10"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:118 src/ext_l10n.h:660
+#, fuzzy
+msgid "11"
+msgstr "1|#1"
+
+#: src/frontends/qt2/QDocument.C:119 src/ext_l10n.h:661
+msgid "12"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:125 src/ext_l10n.h:643
+#, fuzzy
+msgid "empty"
+msgstr ", Profondità: "
+
+#: src/frontends/qt2/QDocument.C:126 src/ext_l10n.h:558 src/ext_l10n.h:644
+#, fuzzy
+msgid "plain"
+msgstr "Spaziatura"
+
+#: src/frontends/qt2/QDocument.C:127 src/ext_l10n.h:645
+#, fuzzy
+msgid "headings"
+msgstr "Mappa dei tasti"
+
+#: src/frontends/qt2/QDocument.C:128 src/ext_l10n.h:646
+msgid "fancy"
 msgstr ""
 
 #: src/frontends/qt2/QDocument.C:130
@@ -6024,6 +1574,81 @@ msgstr ""
 msgid "Length"
 msgstr "Lungh.|#h"
 
+#: src/frontends/qt2/QDocument.C:153 src/ext_l10n.h:708
+#, fuzzy
+msgid "auto"
+msgstr " di "
+
+#: src/frontends/qt2/QDocument.C:154 src/ext_l10n.h:709
+#, fuzzy
+msgid "latin1"
+msgstr "Titolo|#t"
+
+#: src/frontends/qt2/QDocument.C:155 src/ext_l10n.h:710
+#, fuzzy
+msgid "latin2"
+msgstr "Titolo|#t"
+
+#: src/frontends/qt2/QDocument.C:156 src/ext_l10n.h:711
+#, fuzzy
+msgid "latin3"
+msgstr "Titolo|#t"
+
+#: src/frontends/qt2/QDocument.C:157 src/ext_l10n.h:712
+#, fuzzy
+msgid "latin4"
+msgstr "Titolo|#t"
+
+#: src/frontends/qt2/QDocument.C:158 src/ext_l10n.h:713
+#, fuzzy
+msgid "latin5"
+msgstr "Titolo|#t"
+
+#: src/frontends/qt2/QDocument.C:159 src/ext_l10n.h:714
+#, fuzzy
+msgid "latin9"
+msgstr "Titolo|#t"
+
+#: src/frontends/qt2/QDocument.C:160 src/ext_l10n.h:715
+msgid "koi8-r"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:161 src/ext_l10n.h:716
+msgid "koi8-u"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:162 src/ext_l10n.h:717
+msgid "cp866"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:163 src/ext_l10n.h:718
+msgid "cp1251"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:164 src/ext_l10n.h:719
+msgid "iso88595"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:171 src/ext_l10n.h:722
+#, fuzzy
+msgid "``text''"
+msgstr "LaTeX "
+
+#: src/frontends/qt2/QDocument.C:172 src/ext_l10n.h:723
+#, fuzzy
+msgid "''text''"
+msgstr "LaTeX "
+
+#: src/frontends/qt2/QDocument.C:173 src/ext_l10n.h:724
+#, fuzzy
+msgid ",,text``"
+msgstr "LaTeX "
+
+#: src/frontends/qt2/QDocument.C:174 src/ext_l10n.h:725
+#, fuzzy
+msgid ",,text''"
+msgstr "LaTeX "
+
 #: src/frontends/qt2/QDocument.C:175
 #, fuzzy
 msgid "«text»"
@@ -6033,6 +1658,49 @@ msgstr "LaTeX "
 #, fuzzy
 msgid "»text«"
 msgstr "LaTeX "
+
+#: src/frontends/qt2/QDocument.C:197
+#: src/frontends/xforms/form_preferences.C:171 src/ext_l10n.h:739
+#, fuzzy
+msgid "tiny"
+msgstr "Minuscolo"
+
+#: src/frontends/qt2/QDocument.C:198 src/ext_l10n.h:740
+msgid "script"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:199 src/ext_l10n.h:741
+#, fuzzy
+msgid "footnote"
+msgstr "Inserisci una nota a piè di pagina"
+
+#: src/frontends/qt2/QDocument.C:200
+#: src/frontends/xforms/form_preferences.C:180 src/ext_l10n.h:742
+#, fuzzy
+msgid "small"
+msgstr "Piccolo"
+
+#: src/frontends/qt2/QDocument.C:201
+#: src/frontends/xforms/form_preferences.C:183 src/ext_l10n.h:743
+#, fuzzy
+msgid "normal"
+msgstr "Normale"
+
+#: src/frontends/qt2/QDocument.C:202
+#: src/frontends/xforms/form_preferences.C:186 src/ext_l10n.h:744
+#, fuzzy
+msgid "large"
+msgstr "Grande"
+
+#: src/frontends/qt2/QDocument.C:204 src/ext_l10n.h:746
+msgid "LARGE"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:205
+#: src/frontends/xforms/form_preferences.C:195 src/ext_l10n.h:747
+#, fuzzy
+msgid "huge"
+msgstr "Enorme"
 
 #: src/frontends/qt2/QDocument.C:234 src/frontends/xforms/FormDocument.C:362
 msgid "Document layout set"
@@ -6092,6 +1760,11 @@ msgstr "predefiniti di questa classe di documenti?"
 msgid "Unable to switch to new document class."
 msgstr "Non sono in grado di passare alla nuova classe del documento."
 
+#: src/frontends/qt2/QError.C:23 src/frontends/xforms/FormError.C:24
+#: src/ext_l10n.h:765
+msgid "LaTeX Error"
+msgstr "Errore di LaTeX"
+
 #: src/frontends/qt2/QERT.C:23
 #, fuzzy
 msgid "LaTeX ERT"
@@ -6125,6 +1798,15 @@ msgstr ""
 msgid "Include"
 msgstr "Includi"
 
+#: src/frontends/qt2/QIndex.C:23 src/frontends/xforms/FormIndex.C:24
+#: src/insets/insetindex.C:61 src/ext_l10n.h:540 src/ext_l10n.h:897
+msgid "Index"
+msgstr "Indice"
+
+#: src/frontends/qt2/QLog.C:33 src/ext_l10n.h:902
+msgid "Log"
+msgstr ""
+
 #: src/frontends/qt2/QLog.C:51 src/frontends/xforms/FormLog.C:31
 #, fuzzy
 msgid "Build log"
@@ -6145,6 +1827,11 @@ msgstr "Non ho trovato avvisi."
 msgid "No LaTeX log file found"
 msgstr "Non ho trovato avvisi."
 
+#: src/frontends/qt2/QMinipage.C:33 src/ext_l10n.h:1049
+#, fuzzy
+msgid "Minipage"
+msgstr "Minipagina"
+
 #: src/frontends/qt2/QParagraph.C:166 src/frontends/xforms/FormParagraph.C:336
 msgid "Paragraph layout set"
 msgstr "Ho impostato la struttura del paragrafo"
@@ -6153,6 +1840,17 @@ msgstr "Ho impostato la struttura del paragrafo"
 #, fuzzy
 msgid "LyX: Paragraph Settings"
 msgstr "Ambiente del paragrafo"
+
+#: src/frontends/qt2/QParagraphDialog.C:49 src/ext_l10n.h:535
+#: src/ext_l10n.h:546 src/ext_l10n.h:600 src/ext_l10n.h:767 src/ext_l10n.h:776
+#: src/ext_l10n.h:794 src/ext_l10n.h:799 src/ext_l10n.h:875 src/ext_l10n.h:894
+#: src/ext_l10n.h:905 src/ext_l10n.h:919 src/ext_l10n.h:1070
+#: src/ext_l10n.h:1119 src/ext_l10n.h:1129 src/ext_l10n.h:1131
+#: src/ext_l10n.h:1143 src/ext_l10n.h:1173 src/ext_l10n.h:1185
+#: src/ext_l10n.h:1190 src/ext_l10n.h:1200 src/ext_l10n.h:1204
+#, fuzzy
+msgid "&Close"
+msgstr "Chiudi"
 
 #. FIXME: should be cleverer here
 #: src/frontends/qt2/QParagraphDialog.C:56
@@ -6173,6 +1871,12 @@ msgstr ""
 #, fuzzy
 msgid "Editor"
 msgstr "Modifica"
+
+#: src/frontends/qt2/QPrint.C:35 src/frontends/xforms/form_print.C:133
+#: src/frontends/xforms/FormPrint.C:35 src/LyXAction.C:138 src/LyXAction.C:145
+#: src/ext_l10n.h:1071
+msgid "Print"
+msgstr "Stampa"
 
 #: src/frontends/qt2/QPrintDialog.C:48
 msgid "PostScript files (*.ps)"
@@ -6198,26 +1902,75 @@ msgstr "Nero"
 msgid "Go back"
 msgstr "Nero"
 
+#: src/frontends/qt2/QRef.C:103 src/ext_l10n.h:1107
+#, fuzzy
+msgid "&Goto"
+msgstr "Inferiore|#f"
+
 #: src/frontends/qt2/QRef.C:105 src/frontends/xforms/FormRef.C:77
 #: src/frontends/xforms/FormRef.C:194 src/frontends/xforms/FormRef.C:211
 #, fuzzy
 msgid "Go to reference"
 msgstr "Vai al riferimento|#V"
 
+#: src/frontends/qt2/QSearch.C:31 src/frontends/xforms/form_citation.C:78
+#: src/ext_l10n.h:612
+msgid "Search"
+msgstr ""
+
 #: src/frontends/qt2/QShowFile.C:23
 #, fuzzy
 msgid "ShowFile"
 msgstr "File"
+
+#: src/frontends/qt2/QSpellchecker.C:27 src/ext_l10n.h:1132
+#, fuzzy
+msgid "Spellchecker"
+msgstr "Correttore"
 
 #: src/frontends/qt2/QSpellchecker.C:114
 #, fuzzy
 msgid "Spellcheck complete"
 msgstr "Il correttore ha finito!"
 
+#: src/frontends/qt2/QSpellchecker.C:114
+#: src/frontends/xforms/form_bibitem.C:35
+#: src/frontends/xforms/form_bibtex.C:35
+#: src/frontends/xforms/form_citation.C:173
+#: src/frontends/xforms/form_document.C:47 src/frontends/xforms/form_ert.C:72
+#: src/frontends/xforms/form_external.C:89
+#: src/frontends/xforms/form_filedialog.C:89
+#: src/frontends/xforms/form_float.C:74 src/frontends/xforms/form_forks.C:53
+#: src/frontends/xforms/form_include.C:42 src/frontends/xforms/form_index.C:44
+#: src/frontends/xforms/form_maths_delim.C:49
+#: src/frontends/xforms/form_minipage.C:81
+#: src/frontends/xforms/form_paragraph.C:181
+#: src/frontends/xforms/form_print.C:53 src/frontends/xforms/form_ref.C:86
+#: src/frontends/xforms/form_sendto.C:46
+#: src/frontends/xforms/form_tabular_create.C:28
+#: src/frontends/xforms/form_url.C:64 src/ext_l10n.h:538 src/ext_l10n.h:570
+#: src/ext_l10n.h:603 src/ext_l10n.h:762 src/ext_l10n.h:775 src/ext_l10n.h:900
+msgid "OK"
+msgstr "OK"
+
+#: src/frontends/qt2/QTabularCreate.C:28 src/ext_l10n.h:1152
+#, fuzzy
+msgid "Insert table"
+msgstr "Inserisci una tabella"
+
+#: src/frontends/qt2/QThesaurus.C:28 src/ext_l10n.h:449 src/ext_l10n.h:1175
+msgid "Thesaurus"
+msgstr ""
+
 #: src/frontends/qt2/QToc.C:39
 #, fuzzy
 msgid "Table of contents"
 msgstr "Sommario"
+
+#: src/frontends/qt2/QURL.C:25 src/ext_l10n.h:470 src/ext_l10n.h:1193
+#: src/ext_l10n.h:1196
+msgid "URL"
+msgstr ""
 
 #: src/frontends/qt2/QVCLog.C:30
 msgid "VCLog"
@@ -6312,6 +2065,10 @@ msgstr "Diritti di Copia e Garanzia"
 #, fuzzy
 msgid "License and Warranty"
 msgstr "Diritti di Copia e Garanzia"
+
+#: src/frontends/xforms/FormAboutlyx.C:65 src/ext_l10n.h:533
+msgid "Credits"
+msgstr "Ringraziamenti"
 
 #: src/frontends/xforms/form_bibitem.C:29
 msgid "Key:|#K"
@@ -6531,6 +2288,10 @@ msgstr ""
 msgid "#&B"
 msgstr ""
 
+#: src/frontends/xforms/form_citation.C:73 src/lyxvc.C:122 src/ext_l10n.h:610
+msgid "Info"
+msgstr "Informazioni"
+
 #: src/frontends/xforms/form_citation.C:87
 msgid "Regular Expression|#R"
 msgstr ""
@@ -6548,6 +2309,11 @@ msgstr ""
 #, fuzzy
 msgid "Next|#N"
 msgstr "Nome|#N"
+
+#: src/frontends/xforms/form_citation.C:116 src/ext_l10n.h:607
+#, fuzzy
+msgid "Citation style"
+msgstr "Citazione"
 
 #: src/frontends/xforms/form_citation.C:130
 #, fuzzy
@@ -6698,6 +2464,10 @@ msgstr "Larghezza:|#h"
 msgid "Height:|#H"
 msgstr "Altezza:|#l"
 
+#: src/frontends/xforms/form_document.C:123 src/ext_l10n.h:689
+msgid "Orientation"
+msgstr "Orientamento"
+
 #: src/frontends/xforms/form_document.C:126
 #, fuzzy
 msgid "Portrait|#r"
@@ -6706,6 +2476,10 @@ msgstr "Verticale (Portrait)|#V"
 #: src/frontends/xforms/form_document.C:134
 msgid "Landscape|#L"
 msgstr "Orizzontale (Landscape)|#z"
+
+#: src/frontends/xforms/form_document.C:143 src/ext_l10n.h:692
+msgid "Margins"
+msgstr "Margini"
 
 #: src/frontends/xforms/form_document.C:145
 #, fuzzy
@@ -6747,10 +2521,18 @@ msgstr "Separazione int.|#S"
 msgid "Footskip:|#F"
 msgstr "Salto piè pagina|#g"
 
+#: src/frontends/xforms/form_document.C:254 src/ext_l10n.h:668
+msgid "Separation"
+msgstr "Separazione"
+
 #: src/frontends/xforms/form_document.C:255
 #, fuzzy
 msgid "Page cols"
 msgstr "Pagine:"
+
+#: src/frontends/xforms/form_document.C:256 src/ext_l10n.h:662
+msgid "Sides"
+msgstr "Lati"
 
 #: src/frontends/xforms/form_document.C:258
 msgid "Fonts:|#F"
@@ -6887,6 +2669,10 @@ msgstr "3|#3"
 msgid "4|#4"
 msgstr "4|#4"
 
+#: src/frontends/xforms/form_document.C:608 src/ext_l10n.h:749
+msgid "Bullet Depth"
+msgstr "Profondità"
+
 #: src/frontends/xforms/form_document.C:613
 msgid "Standard|#S"
 msgstr "Standard|#S"
@@ -6910,6 +2696,10 @@ msgstr "Simboli 3|#o"
 #: src/frontends/xforms/form_document.C:664
 msgid "Ding 4|#g"
 msgstr "Simboli 4|#l"
+
+#: src/frontends/xforms/FormDocument.C:58 src/ext_l10n.h:636
+msgid "Document Layout"
+msgstr "Struttura del documento"
 
 #: src/frontends/xforms/FormDocument.C:110
 #, fuzzy
@@ -6951,6 +2741,28 @@ msgid ""
 msgstr ""
 " predefinita | minuscola | script | piè pagina | piccola | normale | larga | "
 "molto larga | larghissima | enorme | gigante"
+
+#: src/frontends/xforms/FormDocument.C:329 src/ext_l10n.h:671
+#, fuzzy
+msgid "Paper"
+msgstr "Incolla"
+
+#: src/frontends/xforms/FormDocument.C:331
+#: src/frontends/xforms/FormPreferences.C:258 src/ext_l10n.h:578
+#: src/ext_l10n.h:586 src/ext_l10n.h:704
+msgid "Language"
+msgstr "Lingua"
+
+#: src/frontends/xforms/FormDocument.C:333 src/ext_l10n.h:730
+#: src/ext_l10n.h:853
+#, fuzzy
+msgid "Extra"
+msgstr "Altro"
+
+#: src/frontends/xforms/FormDocument.C:335 src/ext_l10n.h:736
+#, fuzzy
+msgid "Bullets"
+msgstr "Profondità"
 
 #: src/frontends/xforms/FormDocument.C:338
 msgid ""
@@ -7077,6 +2889,11 @@ msgstr "Utente2|#2"
 #: src/frontends/xforms/FormFiledialog.C:398
 msgid "Warning! Couldn't open directory."
 msgstr "Attenzione! Non riesco ad aprire la directory."
+
+#: src/frontends/xforms/form_float.C:29 src/ext_l10n.h:800
+#, fuzzy
+msgid "Placement"
+msgstr "Posiz. ogg. flottanti:|#z"
 
 #: src/frontends/xforms/form_float.C:33
 #, fuzzy
@@ -7215,6 +3032,12 @@ msgstr "Dimensioni alternative"
 msgid "Value|#V"
 msgstr "Blu"
 
+#: src/frontends/xforms/form_graphics.C:227
+#: src/frontends/xforms/form_graphics.C:444 src/ext_l10n.h:827
+#, no-c-format
+msgid "%"
+msgstr ""
+
 #: src/frontends/xforms/form_graphics.C:231
 #: src/frontends/xforms/form_graphics.C:491
 #, fuzzy
@@ -7319,6 +3142,12 @@ msgstr "[non mostrato]"
 #, fuzzy
 msgid "Get LaTeX size|#L"
 msgstr "LaTeX|#L"
+
+#. add the different tabfolders
+#: src/frontends/xforms/FormGraphics.C:189 src/ext_l10n.h:807
+#, fuzzy
+msgid "File"
+msgstr "File"
 
 #: src/frontends/xforms/FormGraphics.C:190
 #, fuzzy
@@ -7463,6 +3292,11 @@ msgstr "Chiudi "
 msgid "Functions"
 msgstr "Funzioni"
 
+#: src/frontends/xforms/form_maths_panel.C:35
+#: src/frontends/xforms/FormMathsPanel.C:103 src/ext_l10n.h:507
+msgid "Greek"
+msgstr "Greco"
+
 #: src/frontends/xforms/form_maths_panel.C:39
 #: src/frontends/xforms/form_maths_panel.C:94
 msgid "­ Û"
@@ -7582,6 +3416,11 @@ msgstr "LaTeX "
 #: src/frontends/xforms/FormMathsStyle.C:41
 msgid "Maths Styles & Fonts"
 msgstr ""
+
+#: src/frontends/xforms/form_minipage.C:28 src/ext_l10n.h:813
+#: src/ext_l10n.h:829
+msgid "Width"
+msgstr "Largh."
 
 #: src/frontends/xforms/form_minipage.C:31
 #: src/frontends/xforms/form_paragraph.C:28
@@ -7794,6 +3633,11 @@ msgstr "Grandissimo"
 #, fuzzy
 msgid "huger"
 msgstr "Gigante"
+
+#: src/frontends/xforms/form_preferences.C:201 src/ext_l10n.h:823
+#, fuzzy
+msgid "Size"
+msgstr "Dimensione|#D"
 
 #: src/frontends/xforms/form_preferences.C:225
 #, fuzzy
@@ -8643,6 +4487,10 @@ msgstr " di "
 msgid "Order"
 msgstr "Ordine"
 
+#: src/frontends/xforms/form_print.C:139 src/ext_l10n.h:1095
+msgid "Copies"
+msgstr "Copie"
+
 #: src/frontends/xforms/form_print.C:142
 msgid "Print to"
 msgstr "Stampa su"
@@ -8681,6 +4529,12 @@ msgstr "Vai al riferimento|#V"
 #, fuzzy
 msgid "Goto reference|#G"
 msgstr "Vai al riferimento|#V"
+
+#: src/frontends/xforms/FormRef.C:33 src/ext_l10n.h:377 src/ext_l10n.h:1101
+#: src/ext_l10n.h:1109
+#, fuzzy
+msgid "Reference"
+msgstr "Inserisci un riferimento"
 
 #: src/frontends/xforms/FormRef.C:139
 msgid "*** No labels found in document ***"
@@ -8754,6 +4608,11 @@ msgstr ""
 #: src/frontends/xforms/form_spellchecker.C:34
 msgid "Replace"
 msgstr "Cambia"
+
+#: src/frontends/xforms/form_spellchecker.C:37 src/ext_l10n.h:1145
+#, fuzzy
+msgid "Suggestions"
+msgstr "Destinazione:"
 
 #: src/frontends/xforms/form_spellchecker.C:42
 msgid "Spellchecker Options...|#O"
@@ -9036,6 +4895,10 @@ msgstr "Tabella lunga"
 msgid "Wrong Cursor position, updated window"
 msgstr "Attenzione: la posizione del cursore è sbagliata!"
 
+#: src/frontends/xforms/form_tabular_create.C:45 src/ext_l10n.h:665
+msgid "Columns"
+msgstr "Colonne"
+
 #: src/frontends/xforms/FormTabularCreate.C:29
 #, fuzzy
 msgid "Insert Tabular"
@@ -9189,6 +5052,12 @@ msgstr "Non riesco a stampare"
 msgid "Check 'range of pages'!"
 msgstr ""
 
+#: src/frontends/xforms/Menubar_pimpl.C:279
+#: src/frontends/xforms/Menubar_pimpl.C:352 src/ext_l10n.h:331
+#, fuzzy
+msgid "More"
+msgstr "ignora"
+
 #: src/frontends/xforms/Menubar_pimpl.C:375
 #, fuzzy, c-format
 msgid "No Table of contents%i"
@@ -9305,7 +5174,7 @@ msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr ""
 
 #: src/insets/insetert.C:251 src/insets/insettabular.C:2051
-#: src/insets/insettext.C:1392
+#: src/insets/insettext.C:1395
 msgid "Sorry."
 msgstr "Spiacente."
 
@@ -9475,6 +5344,11 @@ msgstr "Inserto aperto"
 msgid "Parent:"
 msgstr "Genitore:"
 
+#: src/insets/insetref.C:110 src/ext_l10n.h:417
+#, fuzzy
+msgid "Standard"
+msgstr "Standard|#S"
+
 #: src/insets/insetref.C:110
 #, fuzzy
 msgid "Ref: "
@@ -9532,16 +5406,16 @@ msgstr "Le multicolonne possono essere solo orizzontali."
 msgid "Opened Text Inset"
 msgstr "Inserto aperto"
 
-#: src/insets/insettext.C:1390
+#: src/insets/insettext.C:1393
 msgid "Impossible operation"
 msgstr "Operazione impossibile"
 
-#: src/insets/insettext.C:1391
+#: src/insets/insettext.C:1394
 #, fuzzy
 msgid "Cannot include more than one paragraph!"
 msgstr "La cella di una tabella non può includere più di un paragrafo!"
 
-#: src/insets/insettext.C:1637
+#: src/insets/insettext.C:1642
 #, fuzzy
 msgid "Error : LatexType Command not allowed here.\n"
 msgstr "Errore: profondità sbagliata per il comando LatexType.\n"
@@ -9571,6 +5445,10 @@ msgstr "HTML URL:"
 #: src/kbsequence.C:166
 msgid "   options: "
 msgstr "   opzioni: "
+
+#: src/language.C:40 src/ext_l10n.h:498
+msgid "English"
+msgstr ""
 
 #: src/LaTeX.C:191 src/LaTeX.C:276 src/LaTeX.C:332
 #, fuzzy
@@ -11360,6 +7238,20 @@ msgstr "Seleziona il paragrafo successivo"
 msgid " (wide)"
 msgstr ""
 
+#: src/MenuBackend.C:511 src/ext_l10n.h:12 src/ext_l10n.h:17
+msgid "New...|N"
+msgstr ""
+
+#: src/MenuBackend.C:512 src/ext_l10n.h:14 src/ext_l10n.h:19
+#, fuzzy
+msgid "Open...|O"
+msgstr "Altro...|#l"
+
+#: src/MenuBackend.C:513 src/ext_l10n.h:15 src/ext_l10n.h:25
+#, fuzzy
+msgid "Import|I"
+msgstr "Importa%m"
+
 #: src/MenuBackend.C:514
 msgid "Quit|Q"
 msgstr ""
@@ -11377,6 +7269,22 @@ msgstr ""
 #, fuzzy
 msgid "Emphasize"
 msgstr "Enfatizzato "
+
+#: src/MenuBackend.C:541 src/MenuBackend.C:548 src/ext_l10n.h:1
+#: src/ext_l10n.h:4
+#, fuzzy
+msgid "File|F"
+msgstr "File"
+
+#: src/MenuBackend.C:542 src/ext_l10n.h:2 src/ext_l10n.h:5
+#, fuzzy
+msgid "Edit|E"
+msgstr "Modifica"
+
+#: src/MenuBackend.C:544 src/ext_l10n.h:10
+#, fuzzy
+msgid "Documents|D"
+msgstr "Documenti"
 
 #: src/minibuffer.C:134
 msgid "[End of history]"
@@ -11495,6 +7403,4097 @@ msgstr ""
 #, fuzzy
 msgid "Space below"
 msgstr "Spaziatura"
+
+#: src/ext_l10n.h:3 src/ext_l10n.h:11
+#, fuzzy
+msgid "Help|H"
+msgstr "Aiuto"
+
+#: src/ext_l10n.h:6
+#, fuzzy
+msgid "Insert|I"
+msgstr "Inserisci"
+
+#: src/ext_l10n.h:7
+#, fuzzy
+msgid "Layout|L"
+msgstr "Struttura"
+
+#: src/ext_l10n.h:8
+#, fuzzy
+msgid "View|V"
+msgstr "Visualizza il file DVI"
+
+#: src/ext_l10n.h:9
+#, fuzzy
+msgid "Navigate|N"
+msgstr "Negativo|#N"
+
+#: src/ext_l10n.h:13 src/ext_l10n.h:18
+#, fuzzy
+msgid "New from Template...|T"
+msgstr "Nuovo documento basato su un modello"
+
+#: src/ext_l10n.h:16 src/ext_l10n.h:29
+#, fuzzy
+msgid "Exit|x"
+msgstr "Esci"
+
+#: src/ext_l10n.h:20
+#, fuzzy
+msgid "Close|C"
+msgstr "Chiudi"
+
+#: src/ext_l10n.h:21
+#, fuzzy
+msgid "Save|S"
+msgstr "Salva"
+
+#: src/ext_l10n.h:22
+#, fuzzy
+msgid "Save As...|A"
+msgstr "Salva come"
+
+#: src/ext_l10n.h:23
+#, fuzzy
+msgid "Revert to Saved|R"
+msgstr "Ritorna all'ultima versione salvata"
+
+#: src/ext_l10n.h:24
+#, fuzzy
+msgid "Version Control|V"
+msgstr "Contollo della versione%t"
+
+#: src/ext_l10n.h:26
+#, fuzzy
+msgid "Export|E"
+msgstr "Esporta%m%l"
+
+#: src/ext_l10n.h:27
+#, fuzzy
+msgid "Print...|P"
+msgstr "Stampante|#m"
+
+#: src/ext_l10n.h:28
+#, fuzzy
+msgid "Fax...|F"
+msgstr "Fax n.:|#F"
+
+#: src/ext_l10n.h:30
+#, fuzzy
+msgid "Register|R"
+msgstr "Registro"
+
+#: src/ext_l10n.h:31
+#, fuzzy
+msgid "Check In Changes|I"
+msgstr "Controlla i cambiamenti"
+
+#: src/ext_l10n.h:32
+#, fuzzy
+msgid "Check Out for Edit|O"
+msgstr "Controlla le modifiche"
+
+#: src/ext_l10n.h:33
+#, fuzzy
+msgid "Revert to Last Version|L"
+msgstr "Ritorna all'ultima versione"
+
+#: src/ext_l10n.h:34
+#, fuzzy
+msgid "Undo Last Check In|U"
+msgstr "Annulla l'ultimo controllo"
+
+#: src/ext_l10n.h:35
+#, fuzzy
+msgid "Show History|H"
+msgstr "Mostra la cronologia"
+
+#: src/ext_l10n.h:36
+#, fuzzy
+msgid "Custom...|C"
+msgstr "Dimensioni alternative"
+
+#: src/ext_l10n.h:37 src/ext_l10n.h:54
+msgid "Preferences...|P"
+msgstr ""
+
+#: src/ext_l10n.h:38 src/ext_l10n.h:55
+#, fuzzy
+msgid "Reconfigure|R"
+msgstr "Riconfigura"
+
+#: src/ext_l10n.h:39
+#, fuzzy
+msgid "Undo|U"
+msgstr "Annulla l'ultima operazione"
+
+#: src/ext_l10n.h:40
+#, fuzzy
+msgid "Redo|d"
+msgstr "Ripristina l'ultima operazione annullata"
+
+#: src/ext_l10n.h:41
+#, fuzzy
+msgid "Cut|C"
+msgstr "Taglia"
+
+#: src/ext_l10n.h:42
+#, fuzzy
+msgid "Copy|o"
+msgstr "Copia"
+
+#: src/ext_l10n.h:43
+#, fuzzy
+msgid "Paste|a"
+msgstr "Incolla"
+
+#: src/ext_l10n.h:44
+msgid "Paste External Selection|x"
+msgstr ""
+
+#: src/ext_l10n.h:45
+#, fuzzy
+msgid "Find & Replace...|F"
+msgstr "Cerca & Sostituisci"
+
+#: src/ext_l10n.h:46
+#, fuzzy
+msgid "Tabular|T"
+msgstr "Struttura della tabella"
+
+#: src/ext_l10n.h:47
+#, fuzzy
+msgid "Math|M"
+msgstr "Matematici|#M"
+
+#: src/ext_l10n.h:48
+#, fuzzy
+msgid "Read Only"
+msgstr " (sola lettura)"
+
+#: src/ext_l10n.h:49
+#, fuzzy
+msgid "Spellchecker...|S"
+msgstr "Correttore"
+
+#: src/ext_l10n.h:50
+#, fuzzy
+msgid "Thesaurus..."
+msgstr "Inserto aperto"
+
+#: src/ext_l10n.h:51
+#, fuzzy
+msgid "Check TeX|h"
+msgstr "Controlla TeX"
+
+#: src/ext_l10n.h:52
+#, fuzzy
+msgid "Remove All Error Boxes|E"
+msgstr "Rimuovi tutte le note d'errore"
+
+#: src/ext_l10n.h:53
+#, fuzzy
+msgid "Open/Close float|l"
+msgstr "Oggetto flottante chiuso"
+
+#: src/ext_l10n.h:56
+#, fuzzy
+msgid "as Lines|L"
+msgstr "Linee"
+
+#: src/ext_l10n.h:57
+#, fuzzy
+msgid "as Paragraphs|P"
+msgstr "Paragrafo indentato"
+
+#: src/ext_l10n.h:58
+#, fuzzy
+msgid "Multicolumn|M"
+msgstr "Multi colonna|#u"
+
+#: src/ext_l10n.h:59
+#, fuzzy
+msgid "Line Top|T"
+msgstr "Linea in alto"
+
+#: src/ext_l10n.h:60
+#, fuzzy
+msgid "Line Bottom|B"
+msgstr "Linea in basso"
+
+#: src/ext_l10n.h:61
+#, fuzzy
+msgid "Line Left|L"
+msgstr "Sin.|#S"
+
+#: src/ext_l10n.h:62
+#, fuzzy
+msgid "Line Right|R"
+msgstr "Destra|#D"
+
+#: src/ext_l10n.h:63
+#, fuzzy
+msgid "Align Left|e"
+msgstr "Allinea a sinistra"
+
+#: src/ext_l10n.h:64 src/ext_l10n.h:88
+#, fuzzy
+msgid "Align Center|C"
+msgstr "Allineamento"
+
+#: src/ext_l10n.h:65
+#, fuzzy
+msgid "Align Right|i"
+msgstr "Allinea a destra"
+
+#: src/ext_l10n.h:66
+msgid "V.Align Top|o"
+msgstr ""
+
+#: src/ext_l10n.h:67
+#, fuzzy
+msgid "V.Align Center|n"
+msgstr "Allinea al centro"
+
+#: src/ext_l10n.h:68
+#, fuzzy
+msgid "V.Align Bottom|V"
+msgstr "Linea in basso"
+
+#: src/ext_l10n.h:69
+#, fuzzy
+msgid "Add Row|A"
+msgstr "Aggiungi riga|#r"
+
+#: src/ext_l10n.h:70
+#, fuzzy
+msgid "Delete Row|w"
+msgstr "Cancella riga|#n"
+
+#: src/ext_l10n.h:71
+#, fuzzy
+msgid "Add Column|u"
+msgstr "Aggiungi colonna|#g"
+
+#: src/ext_l10n.h:72
+#, fuzzy
+msgid "Delete Column|D"
+msgstr "Cancella colonna|#l"
+
+#: src/ext_l10n.h:73
+msgid "Make eqnarray|e"
+msgstr ""
+
+#: src/ext_l10n.h:74
+msgid "Make multline|m"
+msgstr ""
+
+#: src/ext_l10n.h:75
+msgid "Make align 1 column|1"
+msgstr ""
+
+#: src/ext_l10n.h:76
+msgid "Make align 2 columns|2"
+msgstr ""
+
+#: src/ext_l10n.h:77
+msgid "Make align 3 columns|3"
+msgstr ""
+
+#: src/ext_l10n.h:78
+msgid "Make alignat 2 columns|2"
+msgstr ""
+
+#: src/ext_l10n.h:79
+msgid "Make alignat 3 columns|3"
+msgstr ""
+
+#: src/ext_l10n.h:80
+#, fuzzy
+msgid "Toggle numbering|n"
+msgstr "(Dis)attiva lo stile del font sottolineato"
+
+#: src/ext_l10n.h:81
+#, fuzzy
+msgid "Toggle numbering of line|u"
+msgstr "(Dis)attiva lo stile del font sottolineato"
+
+#: src/ext_l10n.h:82
+#, fuzzy
+msgid "Toggle limits|l"
+msgstr "(Dis)attiva lo stile grassetto"
+
+#: src/ext_l10n.h:83
+#, fuzzy
+msgid "Inline formula|I"
+msgstr "Inserisci una figura"
+
+#: src/ext_l10n.h:84
+#, fuzzy
+msgid "Displayed formula|D"
+msgstr "Mostra immagine|#n"
+
+#: src/ext_l10n.h:85
+#, fuzzy
+msgid "Eqnarray environment|q"
+msgstr "Ho impostato il tipo d'ambiente del paragrafo"
+
+#: src/ext_l10n.h:86
+#, fuzzy
+msgid "Align environment|A"
+msgstr "Allineamento"
+
+#: src/ext_l10n.h:87
+#, fuzzy
+msgid "Align Left|f"
+msgstr "Allinea a sinistra"
+
+#: src/ext_l10n.h:89
+#, fuzzy
+msgid "Align Right|R"
+msgstr "Allinea a destra"
+
+#: src/ext_l10n.h:90
+#, fuzzy
+msgid "V.Align Top|T"
+msgstr "Linea in alto"
+
+#: src/ext_l10n.h:91
+#, fuzzy
+msgid "V.Align Center|e"
+msgstr "Allinea al centro"
+
+#: src/ext_l10n.h:92
+#, fuzzy
+msgid "V.Align Bottom|B"
+msgstr "Linea in basso"
+
+#: src/ext_l10n.h:93
+#, fuzzy
+msgid "Add Row"
+msgstr "Aggiungi riga|#r"
+
+#: src/ext_l10n.h:94
+#, fuzzy
+msgid "Delete Row"
+msgstr "Cancella riga|#n"
+
+#: src/ext_l10n.h:95
+#, fuzzy
+msgid "Add Column"
+msgstr "Aggiungi colonna|#g"
+
+#: src/ext_l10n.h:96
+#, fuzzy
+msgid "Delete Column"
+msgstr "Cancella colonna|#l"
+
+#: src/ext_l10n.h:97
+#, fuzzy
+msgid "Math|h"
+msgstr "Matematici|#M"
+
+#: src/ext_l10n.h:98
+#, fuzzy
+msgid "Special Character|S"
+msgstr "Speciale:|#p"
+
+#: src/ext_l10n.h:99
+#, fuzzy
+msgid "Citation Reference...|C"
+msgstr "Vai al riferimento|#V"
+
+#: src/ext_l10n.h:100
+#, fuzzy
+msgid "Cross Reference...|R"
+msgstr "Inserisci un riferimento incrociato"
+
+#: src/ext_l10n.h:101
+#, fuzzy
+msgid "Label...|L"
+msgstr "Etichetta:|#E"
+
+#: src/ext_l10n.h:102
+#, fuzzy
+msgid "Footnote|F"
+msgstr "Inserisci una nota a piè di pagina"
+
+#: src/ext_l10n.h:103
+#, fuzzy
+msgid "Marginal Note|M"
+msgstr "Inserisci nota a margine"
+
+#: src/ext_l10n.h:104
+#, fuzzy
+msgid "Index Entry...|I"
+msgstr "Capov."
+
+#: src/ext_l10n.h:105
+msgid "Index Entry of Preceding Word|W"
+msgstr ""
+
+#: src/ext_l10n.h:106
+msgid "URL...|U"
+msgstr ""
+
+#: src/ext_l10n.h:107 src/ext_l10n.h:162
+#, fuzzy
+msgid "Note|N"
+msgstr "altro"
+
+#: src/ext_l10n.h:108
+msgid "Lists & TOC|O"
+msgstr ""
+
+#: src/ext_l10n.h:109
+#, fuzzy
+msgid "TeX|T"
+msgstr "Struttura della tabella"
+
+#: src/ext_l10n.h:110
+#, fuzzy
+msgid "Minipage|p"
+msgstr "Minipagina"
+
+#: src/ext_l10n.h:111
+msgid "Graphics...|G"
+msgstr ""
+
+#: src/ext_l10n.h:112
+#, fuzzy
+msgid "Tabular Material...|b"
+msgstr "Struttura della tabella"
+
+#: src/ext_l10n.h:113
+#, fuzzy
+msgid "Floats|a"
+msgstr "Riquadro"
+
+#: src/ext_l10n.h:114
+#, fuzzy
+msgid "Include File...|d"
+msgstr "Includi"
+
+#: src/ext_l10n.h:115
+#, fuzzy
+msgid "Insert File|e"
+msgstr "Inserisci una figura"
+
+#: src/ext_l10n.h:116
+msgid "External Material...|x"
+msgstr ""
+
+#: src/ext_l10n.h:117
+msgid "Superscript|S"
+msgstr ""
+
+#: src/ext_l10n.h:118
+msgid "Subscript|u"
+msgstr ""
+
+#: src/ext_l10n.h:119
+msgid "HFill|H"
+msgstr ""
+
+#: src/ext_l10n.h:120
+#, fuzzy
+msgid "Hyphenation Point|P"
+msgstr "Inserisci un separatore di sillabe"
+
+#: src/ext_l10n.h:121
+#, fuzzy
+msgid "Ligature break|k"
+msgstr "Inter. linea"
+
+#: src/ext_l10n.h:122
+msgid "Protected Blank|B"
+msgstr ""
+
+#: src/ext_l10n.h:123
+#, fuzzy
+msgid "Linebreak|L"
+msgstr "Inter. linea"
+
+#: src/ext_l10n.h:124
+msgid "Ellipsis|i"
+msgstr ""
+
+#: src/ext_l10n.h:125
+#, fuzzy
+msgid "End of Sentence|E"
+msgstr "Inserisci il punto di fine periodo"
+
+#: src/ext_l10n.h:126
+msgid "Ordinary Quote|Q"
+msgstr ""
+
+#: src/ext_l10n.h:127
+#, fuzzy
+msgid "Menu Separator|M"
+msgstr "Separazione"
+
+#: src/ext_l10n.h:128
+#, fuzzy
+msgid "Inline Formula|I"
+msgstr "Inserisci una figura"
+
+#: src/ext_l10n.h:129
+#, fuzzy
+msgid "Display Formula|D"
+msgstr "Mostra immagine|#n"
+
+#: src/ext_l10n.h:130
+#, fuzzy
+msgid "Eqnarray environment|E"
+msgstr "Ho impostato il tipo d'ambiente del paragrafo"
+
+#: src/ext_l10n.h:131
+#, fuzzy
+msgid "AMS align environment|A"
+msgstr "Allineamento"
+
+#: src/ext_l10n.h:132
+#, fuzzy
+msgid "AMS alignat environment|t"
+msgstr "Allineamento"
+
+#: src/ext_l10n.h:133
+#, fuzzy
+msgid "AMS xalignat environment|x"
+msgstr "Allineamento"
+
+#: src/ext_l10n.h:134
+#, fuzzy
+msgid "AMS xxalignat environment"
+msgstr "Allineamento"
+
+#: src/ext_l10n.h:135
+#, fuzzy
+msgid "Array environment|y"
+msgstr "Ho impostato il tipo d'ambiente del paragrafo"
+
+#: src/ext_l10n.h:136
+#, fuzzy
+msgid "Cases environment|C"
+msgstr "Cambia la profondità del paragrafo"
+
+#: src/ext_l10n.h:137
+#, fuzzy
+msgid "Math Panel...|l"
+msgstr "Pannello matematico"
+
+#: src/ext_l10n.h:138
+#, fuzzy
+msgid "Table of Contents|C"
+msgstr "Sommario"
+
+#: src/ext_l10n.h:139
+#, fuzzy
+msgid "Index List|I"
+msgstr "Capoverso|#v"
+
+#: src/ext_l10n.h:140
+#, fuzzy
+msgid "BibTeX Reference...|B"
+msgstr "Riferimenti generati da BibTeX"
+
+#: src/ext_l10n.h:141
+#, fuzzy
+msgid "LyX Document...|X"
+msgstr "Documento"
+
+#: src/ext_l10n.h:142
+#, fuzzy
+msgid "Ascii as Lines...|L"
+msgstr "Linee"
+
+#: src/ext_l10n.h:143
+#, fuzzy
+msgid "Ascii as Paragraphs...|P"
+msgstr "Seleziona il paragrafo successivo"
+
+#: src/ext_l10n.h:144
+#, fuzzy
+msgid "Character...|C"
+msgstr "Insieme dei caratteri:|#I"
+
+#: src/ext_l10n.h:145
+msgid "Paragraph...|P"
+msgstr ""
+
+#: src/ext_l10n.h:146
+#, fuzzy
+msgid "Document...|D"
+msgstr "Documento"
+
+#: src/ext_l10n.h:147
+msgid "Tabular...|T"
+msgstr ""
+
+#: src/ext_l10n.h:148
+#, fuzzy
+msgid "Emphasize Style|E"
+msgstr "Enfatizzato "
+
+#: src/ext_l10n.h:149
+msgid "Noun Style|N"
+msgstr ""
+
+#: src/ext_l10n.h:150
+msgid "Bold Style|B"
+msgstr ""
+
+#: src/ext_l10n.h:151
+msgid "TeX Style|X"
+msgstr ""
+
+#: src/ext_l10n.h:152
+#, fuzzy
+msgid "Change Environment Depth|v"
+msgstr "Cambia la profondità del paragrafo"
+
+#: src/ext_l10n.h:153
+#, fuzzy
+msgid "Preamble...|r"
+msgstr "Preambolo di LaTeX"
+
+#: src/ext_l10n.h:154
+msgid "Start Appendix here|A"
+msgstr ""
+
+#: src/ext_l10n.h:155
+#, fuzzy
+msgid "Build Program|B"
+msgstr "Costruisci il programma"
+
+#: src/ext_l10n.h:156
+#, fuzzy
+msgid "Update|U"
+msgstr "Aggiorna|#g"
+
+#: src/ext_l10n.h:157
+#, fuzzy
+msgid "LaTeX Logfile|L"
+msgstr "Log di LaTeX"
+
+#: src/ext_l10n.h:158
+#, fuzzy
+msgid "Table of Contents|T"
+msgstr "Sommario"
+
+#: src/ext_l10n.h:159
+msgid "Child processes|C"
+msgstr ""
+
+#: src/ext_l10n.h:160
+#, fuzzy
+msgid "TeX Information|X"
+msgstr "Nessun altra operazione da annullare"
+
+#: src/ext_l10n.h:161
+#, fuzzy
+msgid "Error|E"
+msgstr "Errore"
+
+#: src/ext_l10n.h:163
+#, fuzzy
+msgid "Refs|R"
+msgstr "Rif: "
+
+#: src/ext_l10n.h:164
+#, fuzzy
+msgid "Bookmarks|B"
+msgstr "Inferiore|#f"
+
+#: src/ext_l10n.h:165
+msgid "Save Bookmark 1|S"
+msgstr ""
+
+#: src/ext_l10n.h:166
+msgid "Save Bookmark 2"
+msgstr ""
+
+#: src/ext_l10n.h:167
+msgid "Save Bookmark 3"
+msgstr ""
+
+#: src/ext_l10n.h:168
+msgid "Goto Bookmark 1|1"
+msgstr ""
+
+#: src/ext_l10n.h:169
+msgid "Goto Bookmark 2|2"
+msgstr ""
+
+#: src/ext_l10n.h:170
+msgid "Goto Bookmark 3|3"
+msgstr ""
+
+#: src/ext_l10n.h:171
+msgid "Tooltips|o"
+msgstr ""
+
+#: src/ext_l10n.h:172
+msgid "Introduction|I"
+msgstr ""
+
+#: src/ext_l10n.h:173
+msgid "Tutorial|T"
+msgstr ""
+
+#: src/ext_l10n.h:174
+#, fuzzy
+msgid "User's Guide|U"
+msgstr "Usa include|#U"
+
+#: src/ext_l10n.h:175
+msgid "Extended Features|E"
+msgstr ""
+
+#: src/ext_l10n.h:176
+#, fuzzy
+msgid "Customization|C"
+msgstr "Citazione"
+
+#: src/ext_l10n.h:177
+msgid "Reference Manual|R"
+msgstr ""
+
+#: src/ext_l10n.h:178
+msgid "FAQ|F"
+msgstr ""
+
+#: src/ext_l10n.h:179
+#, fuzzy
+msgid "Table of Contents|a"
+msgstr "Sommario"
+
+#: src/ext_l10n.h:180
+msgid "LaTeX Configuration|L"
+msgstr ""
+
+#: src/ext_l10n.h:181
+msgid "About LyX|X"
+msgstr ""
+
+#: src/ext_l10n.h:183
+msgid "Accepted"
+msgstr ""
+
+#: src/ext_l10n.h:184
+msgid "Acknowledgement"
+msgstr ""
+
+#: src/ext_l10n.h:185
+msgid "Acknowledgement*"
+msgstr ""
+
+#: src/ext_l10n.h:186
+msgid "Acknowledgements"
+msgstr ""
+
+#: src/ext_l10n.h:187
+msgid "Acknowledgments"
+msgstr ""
+
+#: src/ext_l10n.h:188
+msgid "ACT"
+msgstr ""
+
+#: src/ext_l10n.h:189
+msgid "Addchap"
+msgstr ""
+
+#: src/ext_l10n.h:190
+msgid "Addchap*"
+msgstr ""
+
+#: src/ext_l10n.h:191
+#, fuzzy
+msgid "Addition"
+msgstr "Citazione"
+
+#: src/ext_l10n.h:192
+msgid "Address"
+msgstr ""
+
+#: src/ext_l10n.h:193
+#, fuzzy
+msgid "AddressForOffprints"
+msgstr "Opzioni"
+
+#: src/ext_l10n.h:194
+msgid "Addsec"
+msgstr ""
+
+#: src/ext_l10n.h:195
+msgid "Addsec*"
+msgstr ""
+
+#: src/ext_l10n.h:196
+msgid "Adresse"
+msgstr ""
+
+#: src/ext_l10n.h:197
+msgid "Affil"
+msgstr ""
+
+#: src/ext_l10n.h:198
+#, fuzzy
+msgid "Affiliation"
+msgstr "Citazione"
+
+#: src/ext_l10n.h:200
+msgid "AMS"
+msgstr ""
+
+#: src/ext_l10n.h:201
+msgid "And"
+msgstr ""
+
+#: src/ext_l10n.h:202
+#, fuzzy
+msgid "Anlagen"
+msgstr "Allineamento"
+
+#: src/ext_l10n.h:203
+#, fuzzy
+msgid "Anrede"
+msgstr "Rosso"
+
+#: src/ext_l10n.h:204
+#, fuzzy
+msgid "Appendices"
+msgstr "Inserto aperto"
+
+#: src/ext_l10n.h:205
+#, fuzzy
+msgid "Appendix"
+msgstr "Inserto aperto"
+
+#: src/ext_l10n.h:206
+#, fuzzy
+msgid "Arrow"
+msgstr "Errore"
+
+#: src/ext_l10n.h:207
+msgid "AT_RISE:"
+msgstr ""
+
+#: src/ext_l10n.h:208
+msgid "Author"
+msgstr ""
+
+#: src/ext_l10n.h:209
+msgid "Author_Email"
+msgstr ""
+
+#: src/ext_l10n.h:210
+msgid "Authorgroup"
+msgstr ""
+
+#: src/ext_l10n.h:211
+msgid "Authorinfo"
+msgstr ""
+
+#: src/ext_l10n.h:212
+msgid "Author_Running"
+msgstr ""
+
+#: src/ext_l10n.h:213
+msgid "Author_URL"
+msgstr ""
+
+#: src/ext_l10n.h:214
+msgid "Axiom"
+msgstr ""
+
+#: src/ext_l10n.h:215
+msgid "Backaddress"
+msgstr ""
+
+#: src/ext_l10n.h:216
+msgid "Bank"
+msgstr ""
+
+#: src/ext_l10n.h:217
+msgid "BankAccount"
+msgstr ""
+
+#: src/ext_l10n.h:218
+msgid "BankCode"
+msgstr ""
+
+#: src/ext_l10n.h:219
+msgid "Betreff"
+msgstr ""
+
+#: src/ext_l10n.h:220
+#, fuzzy
+msgid "Bibliography"
+msgstr "Oggetto bibliografico"
+
+#: src/ext_l10n.h:221
+#, fuzzy
+msgid "Biography"
+msgstr "Oggetto bibliografico"
+
+#: src/ext_l10n.h:222
+msgid "BLZ"
+msgstr ""
+
+#: src/ext_l10n.h:223
+#, fuzzy
+msgid "BoardCentered"
+msgstr "Centrato|#t"
+
+#: src/ext_l10n.h:224
+msgid "Brieftext"
+msgstr ""
+
+#: src/ext_l10n.h:225
+#, fuzzy
+msgid "Caption"
+msgstr "Titolo|#t"
+
+#: src/ext_l10n.h:226
+#, fuzzy
+msgid "Case"
+msgstr "Incolla"
+
+#: src/ext_l10n.h:228
+msgid "CC"
+msgstr ""
+
+#: src/ext_l10n.h:229
+#, fuzzy
+msgid "CenteredCaption"
+msgstr "Orientamento"
+
+#: src/ext_l10n.h:230
+msgid "Chapter"
+msgstr ""
+
+#: src/ext_l10n.h:231
+msgid "Chapter*"
+msgstr ""
+
+#: src/ext_l10n.h:232
+msgid "Chapter_Exercises"
+msgstr ""
+
+#: src/ext_l10n.h:233
+msgid "ChessBoard"
+msgstr ""
+
+#: src/ext_l10n.h:234
+#, fuzzy
+msgid "Citta"
+msgstr "Citazione"
+
+#: src/ext_l10n.h:235
+msgid "Claim"
+msgstr ""
+
+#: src/ext_l10n.h:236
+msgid "Claim*"
+msgstr ""
+
+#: src/ext_l10n.h:237
+#, fuzzy
+msgid "Closing"
+msgstr "Chiudi"
+
+#: src/ext_l10n.h:238
+#, fuzzy
+msgid "Code"
+msgstr "Chiudi"
+
+#: src/ext_l10n.h:239
+#, fuzzy
+msgid "Comment"
+msgstr "Commento:"
+
+#: src/ext_l10n.h:240
+#, fuzzy
+msgid "Conclusion"
+msgstr "Colonna"
+
+#: src/ext_l10n.h:241
+msgid "Conclusion*"
+msgstr ""
+
+#: src/ext_l10n.h:242
+#, fuzzy
+msgid "Condition"
+msgstr "Citazione"
+
+#: src/ext_l10n.h:243
+msgid "Conjecture"
+msgstr ""
+
+#: src/ext_l10n.h:244
+msgid "Conjecture*"
+msgstr ""
+
+#: src/ext_l10n.h:245
+#, fuzzy
+msgid "CopNum"
+msgstr "Colonna"
+
+#: src/ext_l10n.h:246 src/ext_l10n.h:534
+#, fuzzy
+msgid "Copyright"
+msgstr "Normale"
+
+#: src/ext_l10n.h:247
+msgid "Corollary"
+msgstr ""
+
+#: src/ext_l10n.h:248
+msgid "Corollary*"
+msgstr ""
+
+#: src/ext_l10n.h:249
+#, fuzzy
+msgid "Criterion"
+msgstr "Citazione"
+
+#: src/ext_l10n.h:250
+msgid "CrossList"
+msgstr ""
+
+#: src/ext_l10n.h:251
+msgid "Current_Address"
+msgstr ""
+
+#: src/ext_l10n.h:252
+msgid "CURTAIN"
+msgstr ""
+
+#: src/ext_l10n.h:253
+#, fuzzy
+msgid "Customer"
+msgstr "Dimensioni alternative"
+
+#: src/ext_l10n.h:254
+#, fuzzy
+msgid "Data"
+msgstr "Database:"
+
+#: src/ext_l10n.h:255
+#, fuzzy
+msgid "Date"
+msgstr "Incolla"
+
+#: src/ext_l10n.h:256
+msgid "Datum"
+msgstr ""
+
+#: src/ext_l10n.h:257
+#, fuzzy
+msgid "Dedication"
+msgstr "Decorazione"
+
+#: src/ext_l10n.h:258
+#, fuzzy
+msgid "Dedicatory"
+msgstr "Dizionario"
+
+#: src/ext_l10n.h:259
+#, fuzzy
+msgid "Definition"
+msgstr "Destinazione:"
+
+#: src/ext_l10n.h:260
+#, fuzzy
+msgid "Definition*"
+msgstr "Destinazione:"
+
+#: src/ext_l10n.h:261
+#, fuzzy
+msgid "Description"
+msgstr "Decorazione"
+
+#: src/ext_l10n.h:262
+msgid "Dialogue"
+msgstr ""
+
+#: src/ext_l10n.h:263
+#, fuzzy
+msgid "Email"
+msgstr "Piccolo"
+
+#: src/ext_l10n.h:264
+msgid "EMail"
+msgstr ""
+
+#: src/ext_l10n.h:265
+#, fuzzy
+msgid "encl"
+msgstr "Annulla"
+
+#: src/ext_l10n.h:266
+msgid "Encl."
+msgstr ""
+
+#: src/ext_l10n.h:267
+#, fuzzy
+msgid "Encl"
+msgstr "Annulla"
+
+#: src/ext_l10n.h:268
+msgid "End_All_Slides"
+msgstr ""
+
+#: src/ext_l10n.h:269
+msgid "Enumerate"
+msgstr ""
+
+#: src/ext_l10n.h:270
+#, fuzzy
+msgid "Example"
+msgstr "Esempi"
+
+#: src/ext_l10n.h:271
+#, fuzzy
+msgid "Example*"
+msgstr "Esempi"
+
+#: src/ext_l10n.h:272
+msgid "Exercise"
+msgstr ""
+
+#: src/ext_l10n.h:273
+msgid "EXT."
+msgstr ""
+
+#: src/ext_l10n.h:274
+#, fuzzy
+msgid "Extratitle"
+msgstr "Altro"
+
+#: src/ext_l10n.h:275
+#, fuzzy
+msgid "Fact"
+msgstr "Genitore:"
+
+#: src/ext_l10n.h:276
+msgid "Fact*"
+msgstr ""
+
+#: src/ext_l10n.h:277
+msgid "FADE_IN:"
+msgstr ""
+
+#: src/ext_l10n.h:278
+msgid "FADE_OUT:"
+msgstr ""
+
+#: src/ext_l10n.h:279
+msgid "FADE_OUT"
+msgstr ""
+
+#: src/ext_l10n.h:280
+#, fuzzy
+msgid "FigCaption"
+msgstr "Titolo|#t"
+
+#: src/ext_l10n.h:281
+msgid "FirstAuthor"
+msgstr ""
+
+#: src/ext_l10n.h:282
+#, fuzzy
+msgid "FirstName"
+msgstr "Primo testa"
+
+#: src/ext_l10n.h:283
+msgid "FitBitmap"
+msgstr ""
+
+#: src/ext_l10n.h:284
+#, fuzzy
+msgid "FitFigure"
+msgstr "Figura"
+
+#: src/ext_l10n.h:285
+#, fuzzy
+msgid "Foilhead"
+msgstr "File"
+
+#: src/ext_l10n.h:286
+#, fuzzy
+msgid "Footernote"
+msgstr "Inserisci una nota a piè di pagina"
+
+#: src/ext_l10n.h:287
+msgid "FourAffiliations"
+msgstr ""
+
+#: src/ext_l10n.h:288
+msgid "FourAuthors"
+msgstr ""
+
+#: src/ext_l10n.h:289
+msgid "FrontMatter"
+msgstr ""
+
+#: src/ext_l10n.h:290
+msgid "General"
+msgstr ""
+
+#: src/ext_l10n.h:291
+msgid "Gruss"
+msgstr ""
+
+#: src/ext_l10n.h:292
+#, fuzzy
+msgid "Headnote"
+msgstr "Testa"
+
+#: src/ext_l10n.h:293
+msgid "HideMoves"
+msgstr ""
+
+#: src/ext_l10n.h:294
+#, fuzzy
+msgid "HighLight"
+msgstr "Altezza"
+
+#: src/ext_l10n.h:295
+msgid "HTTP"
+msgstr ""
+
+#: src/ext_l10n.h:296
+msgid "IhrSchreiben"
+msgstr ""
+
+#: src/ext_l10n.h:297
+msgid "IhrZeichen"
+msgstr ""
+
+#: src/ext_l10n.h:298
+#, fuzzy
+msgid "Institute"
+msgstr "Inserisci le virgolette standard"
+
+#: src/ext_l10n.h:299
+#, fuzzy
+msgid "Institution"
+msgstr "Inserisci una citazione"
+
+#: src/ext_l10n.h:300
+msgid "INT."
+msgstr ""
+
+#: src/ext_l10n.h:301
+msgid "INTERCUT"
+msgstr ""
+
+#: src/ext_l10n.h:302
+msgid "InvisibleText"
+msgstr ""
+
+#: src/ext_l10n.h:303
+#, fuzzy
+msgid "Invoice"
+msgstr "Ignora"
+
+#: src/ext_l10n.h:304
+msgid "Itemize"
+msgstr ""
+
+#: src/ext_l10n.h:305
+#, fuzzy
+msgid "Journal"
+msgstr "Normale"
+
+#: src/ext_l10n.h:306
+#, fuzzy
+msgid "Keyword"
+msgstr "Parola chiave:|#P"
+
+#: src/ext_l10n.h:307
+#, fuzzy
+msgid "Keywords"
+msgstr "Parola chiave:|#P"
+
+#: src/ext_l10n.h:308
+msgid "KnightMove"
+msgstr ""
+
+#: src/ext_l10n.h:309
+msgid "Konto"
+msgstr ""
+
+#: src/ext_l10n.h:310
+#, fuzzy
+msgid "Labeling"
+msgstr "Ho inserito la tabella"
+
+#: src/ext_l10n.h:311
+msgid "Land"
+msgstr ""
+
+#: src/ext_l10n.h:312
+#, fuzzy
+msgid "LandscapeSlide"
+msgstr "Orizzontale (Landscape)|#z"
+
+#: src/ext_l10n.h:313
+#, fuzzy
+msgid "LaTeX"
+msgstr "LaTeX|#L"
+
+#: src/ext_l10n.h:314
+msgid "LaTeX_Title"
+msgstr ""
+
+#: src/ext_l10n.h:315
+#, fuzzy
+msgid "Left_Header"
+msgstr "Testa"
+
+#: src/ext_l10n.h:316
+msgid "Lemma"
+msgstr ""
+
+#: src/ext_l10n.h:317
+msgid "Lemma*"
+msgstr ""
+
+#: src/ext_l10n.h:318
+#, fuzzy
+msgid "Letter"
+msgstr "Sinistra"
+
+#: src/ext_l10n.h:319
+#, fuzzy
+msgid "List"
+msgstr "Linee"
+
+#: src/ext_l10n.h:320
+#, fuzzy
+msgid "ListOfSlides"
+msgstr "Lista delle tabelle"
+
+#: src/ext_l10n.h:321
+msgid "Literal"
+msgstr ""
+
+#: src/ext_l10n.h:322
+#, fuzzy
+msgid "Location"
+msgstr "Rotazione"
+
+#: src/ext_l10n.h:323
+msgid "Lowertitleback"
+msgstr ""
+
+#: src/ext_l10n.h:324
+msgid "LyX-Code"
+msgstr ""
+
+#: src/ext_l10n.h:325
+#, fuzzy
+msgid "Mail"
+msgstr "Matrice"
+
+#: src/ext_l10n.h:326
+#, fuzzy
+msgid "Mainline"
+msgstr "Altro"
+
+#: src/ext_l10n.h:327
+#, fuzzy
+msgid "MarkBoth"
+msgstr "Marchi attivati"
+
+#: src/ext_l10n.h:328
+msgid "MathLetters"
+msgstr ""
+
+#: src/ext_l10n.h:329
+#, fuzzy
+msgid "MeinZeichen"
+msgstr "pollici"
+
+#: src/ext_l10n.h:330
+#, fuzzy
+msgid "Minisec"
+msgstr "Altro"
+
+#: src/ext_l10n.h:332
+#, fuzzy
+msgid "msnumber"
+msgstr "Numero"
+
+#: src/ext_l10n.h:333
+msgid "My_Address"
+msgstr ""
+
+#: src/ext_l10n.h:334
+msgid "Myref"
+msgstr ""
+
+#: src/ext_l10n.h:335
+#, fuzzy
+msgid "MyRef"
+msgstr "Rif: "
+
+#: src/ext_l10n.h:336
+#, fuzzy
+msgid "Name"
+msgstr "Nome|#N"
+
+#: src/ext_l10n.h:337
+#, fuzzy
+msgid "Narrative"
+msgstr "Negativo|#N"
+
+#: src/ext_l10n.h:338
+#, fuzzy
+msgid "Notation"
+msgstr "Rotazione"
+
+#: src/ext_l10n.h:339
+msgid "Note"
+msgstr "Nota"
+
+#: src/ext_l10n.h:340
+#, fuzzy
+msgid "Note*"
+msgstr "Nota"
+
+#: src/ext_l10n.h:341
+msgid "NoteToEditor"
+msgstr ""
+
+#: src/ext_l10n.h:342
+#, fuzzy
+msgid "Offprint"
+msgstr "Stampa"
+
+#: src/ext_l10n.h:343
+#, fuzzy
+msgid "Offprints"
+msgstr "Opzioni"
+
+#: src/ext_l10n.h:344
+#, fuzzy
+msgid "Offsets"
+msgstr "Non attivo"
+
+#: src/ext_l10n.h:345
+msgid "Oggetto"
+msgstr ""
+
+#: src/ext_l10n.h:346
+#, fuzzy
+msgid "Opening"
+msgstr "Apri"
+
+#: src/ext_l10n.h:347
+#, fuzzy
+msgid "Ort"
+msgstr "Inserisci"
+
+#: src/ext_l10n.h:348
+msgid "Overlay"
+msgstr ""
+
+#: src/ext_l10n.h:349
+msgid "PACS"
+msgstr ""
+
+#: src/ext_l10n.h:350 src/ext_l10n.h:920
+#, fuzzy
+msgid "Paragraph"
+msgstr "Ho impostato la struttura del paragrafo"
+
+#: src/ext_l10n.h:351
+#, fuzzy
+msgid "Paragraph*"
+msgstr "Ho impostato la struttura del paragrafo"
+
+#: src/ext_l10n.h:352
+#, fuzzy
+msgid "Part"
+msgstr "Genitore:"
+
+#: src/ext_l10n.h:353
+#, fuzzy
+msgid "Part*"
+msgstr "Genitore:"
+
+#: src/ext_l10n.h:354
+#, fuzzy
+msgid "Petit"
+msgstr "Stampa"
+
+#: src/ext_l10n.h:355
+#, fuzzy
+msgid "Phone"
+msgstr "Agenda telefonica"
+
+#: src/ext_l10n.h:356
+#, fuzzy
+msgid "Place"
+msgstr "Cambia"
+
+#: src/ext_l10n.h:357
+#, fuzzy
+msgid "PlaceFigure"
+msgstr "Figura"
+
+#: src/ext_l10n.h:358
+msgid "PlaceTable"
+msgstr ""
+
+#: src/ext_l10n.h:359
+#, fuzzy
+msgid "PortraitSlide"
+msgstr "Verticale (Portrait)|#V"
+
+#: src/ext_l10n.h:360
+msgid "PostalCommend"
+msgstr ""
+
+#: src/ext_l10n.h:361
+#, fuzzy
+msgid "PostalComment"
+msgstr "Commento:"
+
+#: src/ext_l10n.h:362
+msgid "Postvermerk"
+msgstr ""
+
+#: src/ext_l10n.h:363
+#, fuzzy
+msgid "Preprint"
+msgstr "Stampa"
+
+#: src/ext_l10n.h:364
+#, fuzzy
+msgid "Problem"
+msgstr "Doppie|#D"
+
+#: src/ext_l10n.h:365
+msgid "ProgressContents"
+msgstr ""
+
+#: src/ext_l10n.h:366
+msgid "Proof"
+msgstr ""
+
+#: src/ext_l10n.h:367
+msgid "Property"
+msgstr ""
+
+#: src/ext_l10n.h:368
+msgid "Proposition"
+msgstr ""
+
+#: src/ext_l10n.h:369
+msgid "Proposition*"
+msgstr ""
+
+#: src/ext_l10n.h:370
+msgid "ps"
+msgstr ""
+
+#: src/ext_l10n.h:371
+msgid "PS"
+msgstr ""
+
+#: src/ext_l10n.h:372
+msgid "Publishers"
+msgstr ""
+
+#: src/ext_l10n.h:373
+#, fuzzy
+msgid "Question"
+msgstr "Destinazione:"
+
+#: src/ext_l10n.h:374
+#, fuzzy
+msgid "Quotation"
+msgstr "Rotazione"
+
+#: src/ext_l10n.h:375
+#, fuzzy
+msgid "Quote"
+msgstr "Virgolette"
+
+#: src/ext_l10n.h:376
+msgid "Received"
+msgstr ""
+
+#: src/ext_l10n.h:379
+#, fuzzy
+msgid "Remark"
+msgstr "Osservazione:|#O"
+
+#: src/ext_l10n.h:380
+#, fuzzy
+msgid "Remark*"
+msgstr "Osservazione:|#O"
+
+#: src/ext_l10n.h:381
+#, fuzzy
+msgid "Remarks"
+msgstr "Osservazione:|#O"
+
+#: src/ext_l10n.h:382
+msgid "RetourAdresse"
+msgstr ""
+
+#: src/ext_l10n.h:383
+msgid "ReturnAddress"
+msgstr ""
+
+#: src/ext_l10n.h:384
+#, fuzzy
+msgid "Revision"
+msgstr "Destinazione:"
+
+#: src/ext_l10n.h:385
+msgid "RevisionHistory"
+msgstr ""
+
+#: src/ext_l10n.h:386
+#, fuzzy
+msgid "RevisionRemark"
+msgstr "Osservazione:|#O"
+
+#: src/ext_l10n.h:387
+msgid "REVTEX_Title"
+msgstr ""
+
+#: src/ext_l10n.h:388
+msgid "Right_Address"
+msgstr ""
+
+#: src/ext_l10n.h:389
+#, fuzzy
+msgid "Right_Header"
+msgstr "Testa"
+
+#: src/ext_l10n.h:390
+msgid "RightHeader"
+msgstr ""
+
+#: src/ext_l10n.h:391
+msgid "Rotatefoilhead"
+msgstr ""
+
+#: src/ext_l10n.h:392
+msgid "RunningAuthor"
+msgstr ""
+
+#: src/ext_l10n.h:393
+#, fuzzy
+msgid "Running_LaTeX_Title"
+msgstr "Esecuzione di LaTeX..."
+
+#: src/ext_l10n.h:394
+#, fuzzy
+msgid "RunningTitle"
+msgstr "Esecuzione di LaTeX..."
+
+#: src/ext_l10n.h:395
+#, fuzzy
+msgid "Scene"
+msgstr "Secondaria"
+
+#: src/ext_l10n.h:396
+msgid "SCENE"
+msgstr ""
+
+#: src/ext_l10n.h:397
+msgid "SCENE*"
+msgstr ""
+
+#: src/ext_l10n.h:398
+msgid "Scrap"
+msgstr ""
+
+#: src/ext_l10n.h:399
+#, fuzzy
+msgid "Section"
+msgstr "Decorazione"
+
+#: src/ext_l10n.h:400
+#, fuzzy
+msgid "Section*"
+msgstr "Decorazione"
+
+#: src/ext_l10n.h:401
+msgid "Send_To_Address"
+msgstr ""
+
+#: src/ext_l10n.h:402
+#, fuzzy
+msgid "Seriate"
+msgstr "Inserisci"
+
+#: src/ext_l10n.h:403
+msgid "SGML"
+msgstr ""
+
+#: src/ext_l10n.h:404
+msgid "ShortFoilhead"
+msgstr ""
+
+#: src/ext_l10n.h:405
+msgid "ShortRotatefoilhead"
+msgstr ""
+
+#: src/ext_l10n.h:406
+msgid "ShortTitle"
+msgstr ""
+
+#: src/ext_l10n.h:407
+#, fuzzy
+msgid "Signature"
+msgstr "Figura"
+
+#: src/ext_l10n.h:408
+#, fuzzy
+msgid "Slide"
+msgstr "Lati"
+
+#: src/ext_l10n.h:409
+#, fuzzy
+msgid "Slide*"
+msgstr "Lati"
+
+#: src/ext_l10n.h:410
+#, fuzzy
+msgid "SlideContents"
+msgstr "Sommario"
+
+#: src/ext_l10n.h:411
+msgid "SlideHeading"
+msgstr ""
+
+#: src/ext_l10n.h:412
+msgid "SlideSubHeading"
+msgstr ""
+
+#: src/ext_l10n.h:413
+#, fuzzy
+msgid "Solution"
+msgstr "Rotazione"
+
+#: src/ext_l10n.h:414
+#, fuzzy
+msgid "Speaker"
+msgstr "Correttore"
+
+#: src/ext_l10n.h:415
+#, fuzzy
+msgid "Specialmail"
+msgstr "Cella speciale"
+
+#: src/ext_l10n.h:416
+msgid "Stadt"
+msgstr ""
+
+#: src/ext_l10n.h:418
+#, fuzzy
+msgid "State"
+msgstr "Salva"
+
+#: src/ext_l10n.h:419
+msgid "Strasse"
+msgstr ""
+
+#: src/ext_l10n.h:420
+msgid "Street"
+msgstr ""
+
+#: src/ext_l10n.h:421
+msgid "Subject"
+msgstr ""
+
+#: src/ext_l10n.h:422
+msgid "Subjectclass"
+msgstr ""
+
+#: src/ext_l10n.h:423
+#, fuzzy
+msgid "Subparagraph"
+msgstr "Seleziona il paragrafo successivo"
+
+#: src/ext_l10n.h:424
+msgid "Subparagraph*"
+msgstr ""
+
+#: src/ext_l10n.h:425
+#, fuzzy
+msgid "Subsection"
+msgstr "Decorazione"
+
+#: src/ext_l10n.h:426
+#, fuzzy
+msgid "Subsection*"
+msgstr "Decorazione"
+
+#: src/ext_l10n.h:427
+#, fuzzy
+msgid "SubSection"
+msgstr "Decorazione"
+
+#: src/ext_l10n.h:428
+#, fuzzy
+msgid "Subsubsection"
+msgstr "Decorazione"
+
+#: src/ext_l10n.h:429
+#, fuzzy
+msgid "Subsubsection*"
+msgstr "Decorazione"
+
+#: src/ext_l10n.h:430
+msgid "Subtitle"
+msgstr ""
+
+#: src/ext_l10n.h:431
+msgid "SubTitle"
+msgstr ""
+
+#: src/ext_l10n.h:432
+#, fuzzy
+msgid "SubVariation"
+msgstr "Separazione"
+
+#: src/ext_l10n.h:433
+#, fuzzy
+msgid "SubVariation2"
+msgstr "Separazione"
+
+#: src/ext_l10n.h:434
+#, fuzzy
+msgid "SubVariation3"
+msgstr "Separazione"
+
+#: src/ext_l10n.h:435
+#, fuzzy
+msgid "SubVariation4"
+msgstr "Separazione"
+
+#: src/ext_l10n.h:436
+#, fuzzy
+msgid "SubVariation5"
+msgstr "Separazione"
+
+#: src/ext_l10n.h:437
+msgid "Summary"
+msgstr ""
+
+#: src/ext_l10n.h:438
+msgid "Surname"
+msgstr ""
+
+#: src/ext_l10n.h:439
+#, fuzzy
+msgid "TableComments"
+msgstr "Sommario"
+
+#: src/ext_l10n.h:440
+#, fuzzy
+msgid "TableRefs"
+msgstr "Tabella%t"
+
+#: src/ext_l10n.h:441
+msgid "Telefax"
+msgstr ""
+
+#: src/ext_l10n.h:442
+#, fuzzy
+msgid "Telefon"
+msgstr "Decorazione"
+
+#: src/ext_l10n.h:443
+msgid "Telephone"
+msgstr ""
+
+#: src/ext_l10n.h:444
+#, fuzzy
+msgid "Telex"
+msgstr "Testo"
+
+#: src/ext_l10n.h:445
+msgid "Thanks"
+msgstr ""
+
+#: src/ext_l10n.h:446
+msgid "Theorem"
+msgstr ""
+
+#: src/ext_l10n.h:447
+msgid "Theorem*"
+msgstr ""
+
+#: src/ext_l10n.h:448
+#, fuzzy
+msgid "TheoremTemplate"
+msgstr "Modelli"
+
+#: src/ext_l10n.h:450
+msgid "ThickLine"
+msgstr ""
+
+#: src/ext_l10n.h:451
+msgid "ThreeAffiliations"
+msgstr ""
+
+#: src/ext_l10n.h:452
+msgid "ThreeAuthors"
+msgstr ""
+
+#: src/ext_l10n.h:453
+msgid "TickList"
+msgstr ""
+
+#: src/ext_l10n.h:454
+#, fuzzy
+msgid "Title"
+msgstr "File"
+
+#: src/ext_l10n.h:455
+msgid "Titlehead"
+msgstr ""
+
+#: src/ext_l10n.h:456
+msgid "TITLE_OVER:"
+msgstr ""
+
+#: src/ext_l10n.h:457
+msgid "TOC_Author"
+msgstr ""
+
+#: src/ext_l10n.h:458
+msgid "TOC_Title"
+msgstr ""
+
+#: src/ext_l10n.h:459
+#, fuzzy
+msgid "Topic"
+msgstr "Superiore|#p"
+
+#: src/ext_l10n.h:460
+#, fuzzy
+msgid "Town"
+msgstr "Due"
+
+#: src/ext_l10n.h:461
+#, fuzzy
+msgid "Transition"
+msgstr "Fai traduzioni|#d"
+
+#: src/ext_l10n.h:462
+msgid "Trans_Keywords"
+msgstr ""
+
+#: src/ext_l10n.h:463
+msgid "TranslatedAbstract"
+msgstr ""
+
+#: src/ext_l10n.h:464
+msgid "Translated_Title"
+msgstr ""
+
+#: src/ext_l10n.h:465
+#, fuzzy
+msgid "Translator"
+msgstr "Fai traduzioni|#d"
+
+#: src/ext_l10n.h:466
+msgid "TwoAffiliations"
+msgstr ""
+
+#: src/ext_l10n.h:467
+msgid "TwoAuthors"
+msgstr ""
+
+#: src/ext_l10n.h:468
+msgid "Unterschrift"
+msgstr ""
+
+#: src/ext_l10n.h:469
+msgid "Uppertitleback"
+msgstr ""
+
+#: src/ext_l10n.h:471
+#, fuzzy
+msgid "Variation"
+msgstr "Separazione"
+
+#: src/ext_l10n.h:472
+#, fuzzy
+msgid "Verbatim"
+msgstr "Includi verbatim"
+
+#: src/ext_l10n.h:473
+#, fuzzy
+msgid "Verse"
+msgstr "Diminuisci"
+
+#: src/ext_l10n.h:474
+msgid "Verteiler"
+msgstr ""
+
+#: src/ext_l10n.h:475
+msgid "VisibleText"
+msgstr ""
+
+#: src/ext_l10n.h:476
+#, fuzzy
+msgid "Yourmail"
+msgstr "Normale"
+
+#: src/ext_l10n.h:477
+msgid "YourMail"
+msgstr ""
+
+#: src/ext_l10n.h:478
+msgid "Yourref"
+msgstr ""
+
+#: src/ext_l10n.h:479
+msgid "YourRef"
+msgstr ""
+
+#: src/ext_l10n.h:480
+msgid "Zusatz"
+msgstr ""
+
+#: src/ext_l10n.h:481
+msgid "Afrikaans"
+msgstr ""
+
+#: src/ext_l10n.h:482
+msgid "American"
+msgstr ""
+
+#: src/ext_l10n.h:483
+msgid "Arabic"
+msgstr ""
+
+#: src/ext_l10n.h:484
+msgid "Austrian"
+msgstr ""
+
+#: src/ext_l10n.h:485
+msgid "Bahasa"
+msgstr ""
+
+#: src/ext_l10n.h:486
+#, fuzzy
+msgid "Basque"
+msgstr "Blu"
+
+#: src/ext_l10n.h:487
+msgid "Portuguese (Brazil)"
+msgstr ""
+
+#: src/ext_l10n.h:488
+#, fuzzy
+msgid "Breton"
+msgstr "Decorazione"
+
+#: src/ext_l10n.h:489
+msgid "British"
+msgstr ""
+
+#: src/ext_l10n.h:490
+msgid "Bulgarian"
+msgstr ""
+
+#: src/ext_l10n.h:491
+#, fuzzy
+msgid "Canadian"
+msgstr "Rotazione"
+
+#: src/ext_l10n.h:492
+msgid "French Canadian"
+msgstr ""
+
+#: src/ext_l10n.h:493
+msgid "Catalan"
+msgstr ""
+
+#: src/ext_l10n.h:494
+#, fuzzy
+msgid "Croatian"
+msgstr "Rotazione"
+
+#: src/ext_l10n.h:495
+msgid "Czech"
+msgstr ""
+
+#: src/ext_l10n.h:496
+msgid "Danish"
+msgstr ""
+
+#: src/ext_l10n.h:497
+msgid "Dutch"
+msgstr ""
+
+#: src/ext_l10n.h:499
+msgid "Esperanto"
+msgstr ""
+
+#: src/ext_l10n.h:500
+msgid "Estonian"
+msgstr ""
+
+#: src/ext_l10n.h:501
+msgid "Finnish"
+msgstr ""
+
+#: src/ext_l10n.h:502
+msgid "French"
+msgstr ""
+
+#: src/ext_l10n.h:503
+msgid "French (GUTenberg)"
+msgstr ""
+
+#: src/ext_l10n.h:504
+msgid "Galician"
+msgstr ""
+
+#: src/ext_l10n.h:505
+msgid "German"
+msgstr ""
+
+#: src/ext_l10n.h:506
+msgid "German (new spelling)"
+msgstr ""
+
+#: src/ext_l10n.h:508
+msgid "Hebrew"
+msgstr ""
+
+#: src/ext_l10n.h:509
+msgid "Irish"
+msgstr ""
+
+#: src/ext_l10n.h:510
+#, fuzzy
+msgid "Italian"
+msgstr "Italico"
+
+#: src/ext_l10n.h:511
+msgid "Lsorbian"
+msgstr ""
+
+#: src/ext_l10n.h:512
+#, fuzzy
+msgid "Magyar"
+msgstr "Magenta"
+
+#: src/ext_l10n.h:513
+msgid "Norsk"
+msgstr ""
+
+#: src/ext_l10n.h:514
+msgid "Polish"
+msgstr ""
+
+#: src/ext_l10n.h:515
+msgid "Portugese"
+msgstr ""
+
+#: src/ext_l10n.h:516
+#, fuzzy
+msgid "Romanian"
+msgstr "Rotazione"
+
+#: src/ext_l10n.h:517
+msgid "Russian"
+msgstr ""
+
+#: src/ext_l10n.h:518
+msgid "Scottish"
+msgstr ""
+
+#: src/ext_l10n.h:519
+#, fuzzy
+msgid "Serbian"
+msgstr "Inserisci"
+
+#: src/ext_l10n.h:520
+#, fuzzy
+msgid "Serbo-Croatian"
+msgstr "Rotazione"
+
+#: src/ext_l10n.h:521
+msgid "Spanish"
+msgstr ""
+
+#: src/ext_l10n.h:522
+msgid "Slovak"
+msgstr ""
+
+#: src/ext_l10n.h:523
+msgid "Slovene"
+msgstr ""
+
+#: src/ext_l10n.h:524
+msgid "Swedish"
+msgstr ""
+
+#: src/ext_l10n.h:525
+msgid "Thai"
+msgstr ""
+
+#: src/ext_l10n.h:526
+msgid "Turkish"
+msgstr ""
+
+#: src/ext_l10n.h:527
+#, fuzzy
+msgid "Ukrainian"
+msgstr "Fai traduzioni|#d"
+
+#: src/ext_l10n.h:528
+msgid "Usorbian"
+msgstr ""
+
+#: src/ext_l10n.h:529
+msgid "Welsh"
+msgstr ""
+
+#: src/ext_l10n.h:531
+#, fuzzy
+msgid "Version"
+msgstr "Versione di LyX "
+
+#: src/ext_l10n.h:532
+#, fuzzy
+msgid "Version goes here"
+msgstr "Contollo della versione%t"
+
+#: src/ext_l10n.h:536
+#, fuzzy
+msgid "LyX: Enter text"
+msgstr "Indice"
+
+#: src/ext_l10n.h:537
+msgid "&Dummy"
+msgstr ""
+
+#: src/ext_l10n.h:541
+#, fuzzy
+msgid "&Key"
+msgstr "Chiave:|#h"
+
+#: src/ext_l10n.h:542
+#, fuzzy
+msgid "The citation key"
+msgstr "Inserisci una citazione"
+
+#: src/ext_l10n.h:543
+#, fuzzy
+msgid "&Label"
+msgstr "Ho inserito la tabella"
+
+#: src/ext_l10n.h:544
+#, fuzzy
+msgid "The label as it appears in the document"
+msgstr "Vuoi aprire il documento?"
+
+#: src/ext_l10n.h:545 src/ext_l10n.h:598 src/ext_l10n.h:792 src/ext_l10n.h:797
+#: src/ext_l10n.h:873 src/ext_l10n.h:893 src/ext_l10n.h:917
+#: src/ext_l10n.h:1062 src/ext_l10n.h:1068 src/ext_l10n.h:1118
+#: src/ext_l10n.h:1158 src/ext_l10n.h:1199
+#, fuzzy
+msgid "&OK"
+msgstr "OK"
+
+#: src/ext_l10n.h:547
+#, fuzzy
+msgid "Bibtex"
+msgstr "BibTeX"
+
+#: src/ext_l10n.h:548
+#, fuzzy
+msgid "Databases"
+msgstr "Database:"
+
+#: src/ext_l10n.h:549
+#, fuzzy
+msgid "BibTeX database to use"
+msgstr "Database:"
+
+#: src/ext_l10n.h:550 src/ext_l10n.h:626 src/ext_l10n.h:628
+#: src/ext_l10n.h:1167
+msgid "New Item"
+msgstr ""
+
+#: src/ext_l10n.h:551
+#, fuzzy
+msgid "Available BibTeX databases"
+msgstr "Database:"
+
+#: src/ext_l10n.h:552
+msgid "&Add ..."
+msgstr ""
+
+#: src/ext_l10n.h:553
+#, fuzzy
+msgid "Add a BibTeX database file"
+msgstr "Database:"
+
+#: src/ext_l10n.h:554
+#, fuzzy
+msgid "&Delete"
+msgstr "Cancella da|#l"
+
+#: src/ext_l10n.h:555
+msgid "Remove the selected database"
+msgstr ""
+
+#: src/ext_l10n.h:556
+#, fuzzy
+msgid "&Style"
+msgstr "Stile:  "
+
+#: src/ext_l10n.h:557 src/ext_l10n.h:563
+#, fuzzy
+msgid "The BibTeX style"
+msgstr "(Dis)attiva l'ambiente di comandi TeX"
+
+#: src/ext_l10n.h:559
+#, fuzzy
+msgid "unsrt"
+msgstr "Inserisci"
+
+#: src/ext_l10n.h:560
+msgid "alpha"
+msgstr ""
+
+#: src/ext_l10n.h:561
+msgid "abbrv"
+msgstr ""
+
+#: src/ext_l10n.h:564
+msgid "FIXME !"
+msgstr ""
+
+#: src/ext_l10n.h:565
+msgid "The name of the style to use"
+msgstr ""
+
+#: src/ext_l10n.h:566
+#, fuzzy
+msgid "&Browse"
+msgstr "Cerca|#e"
+
+#: src/ext_l10n.h:567
+#, fuzzy
+msgid "Choose a style file"
+msgstr "Scegli il modello"
+
+#: src/ext_l10n.h:568
+#, fuzzy
+msgid "Add bibliography to &TOC"
+msgstr "Oggetto bibliografico"
+
+#: src/ext_l10n.h:569
+#, fuzzy
+msgid "Add bibliography to the table of contents"
+msgstr "Sommario"
+
+#: src/ext_l10n.h:573
+#, fuzzy
+msgid "&Family:"
+msgstr "Famiglia:|#F"
+
+#: src/ext_l10n.h:574
+#, fuzzy
+msgid "Font family"
+msgstr "Famiglia:|#F"
+
+#: src/ext_l10n.h:575
+#, fuzzy
+msgid "&Series:"
+msgstr "Serie:|#S"
+
+#: src/ext_l10n.h:576 src/ext_l10n.h:583
+#, fuzzy
+msgid "Font series"
+msgstr "Dimensione:|#D"
+
+#: src/ext_l10n.h:577 src/ext_l10n.h:705
+#, fuzzy
+msgid "&Language:"
+msgstr "Lingua"
+
+#: src/ext_l10n.h:579 src/ext_l10n.h:582
+#, fuzzy
+msgid "Font shape"
+msgstr "Dimensione:|#D"
+
+#: src/ext_l10n.h:580 src/ext_l10n.h:585
+msgid "Font color"
+msgstr ""
+
+#: src/ext_l10n.h:581
+#, fuzzy
+msgid "S&hape:"
+msgstr "Forma|#m"
+
+#: src/ext_l10n.h:584
+#, fuzzy
+msgid "&Color:"
+msgstr "Chiudi"
+
+#: src/ext_l10n.h:587
+#, fuzzy
+msgid "&Toggle all"
+msgstr "(Dis)attiva lo stile grassetto"
+
+#: src/ext_l10n.h:588
+#, fuzzy
+msgid "toggle font on all of the above"
+msgstr "Abilita tutti|#b"
+
+#: src/ext_l10n.h:589
+#, fuzzy
+msgid "Never toggled"
+msgstr "Questi non sono mai abilitati"
+
+#: src/ext_l10n.h:590 src/ext_l10n.h:818
+#, fuzzy
+msgid "Si&ze:"
+msgstr "Dimensione|#D"
+
+#: src/ext_l10n.h:591
+#, fuzzy
+msgid "Font size"
+msgstr "Dimensione:|#D"
+
+#: src/ext_l10n.h:592
+#, fuzzy
+msgid "Always toggled"
+msgstr "Questi sono sempre abilitati"
+
+#: src/ext_l10n.h:593 src/ext_l10n.h:595
+msgid "Other font settings"
+msgstr ""
+
+#: src/ext_l10n.h:594
+#, fuzzy
+msgid "&Misc:"
+msgstr "Altro"
+
+#: src/ext_l10n.h:596
+#, fuzzy
+msgid "Auto apply"
+msgstr "Applica|#A"
+
+#: src/ext_l10n.h:597
+msgid "Apply each change automatically"
+msgstr ""
+
+#: src/ext_l10n.h:599 src/ext_l10n.h:604 src/ext_l10n.h:763 src/ext_l10n.h:793
+#: src/ext_l10n.h:798 src/ext_l10n.h:874 src/ext_l10n.h:918
+#: src/ext_l10n.h:1061 src/ext_l10n.h:1069
+#, fuzzy
+msgid "&Apply"
+msgstr "Applica|#A"
+
+#: src/ext_l10n.h:602 src/ext_l10n.h:761 src/ext_l10n.h:796 src/ext_l10n.h:872
+#: src/ext_l10n.h:916 src/ext_l10n.h:1060
+#, fuzzy
+msgid "&Restore"
+msgstr "Ordine inverso|#v"
+
+#: src/ext_l10n.h:606
+#, fuzzy
+msgid "Text after"
+msgstr "' dopo "
+
+#: src/ext_l10n.h:608
+#, fuzzy
+msgid "Natbib citation style to use"
+msgstr "Citazione"
+
+#: src/ext_l10n.h:609
+#, fuzzy
+msgid "Text before"
+msgstr "Modalità testo"
+
+#: src/ext_l10n.h:611
+#, fuzzy
+msgid "Citation entry"
+msgstr "Citazione"
+
+#: src/ext_l10n.h:613
+msgid "Search the available citations"
+msgstr ""
+
+#: src/ext_l10n.h:614
+msgid "Regular E&xpression"
+msgstr ""
+
+#: src/ext_l10n.h:615
+msgid "Interpret search entry as a regular expression"
+msgstr ""
+
+#: src/ext_l10n.h:616
+msgid "&Previous"
+msgstr ""
+
+#: src/ext_l10n.h:617
+#, fuzzy
+msgid "&Case sensitive"
+msgstr "Maius/minus|#s"
+
+#: src/ext_l10n.h:618
+msgid "Make the search case-sensitive"
+msgstr ""
+
+#: src/ext_l10n.h:619
+#, fuzzy
+msgid "&Next"
+msgstr "LaTeX "
+
+#: src/ext_l10n.h:620
+#, fuzzy
+msgid "Add the selected citation"
+msgstr "Inserisci una citazione"
+
+#: src/ext_l10n.h:621
+msgid "Remove the selected citation"
+msgstr ""
+
+#: src/ext_l10n.h:622
+#, fuzzy
+msgid "Move the selected citation up"
+msgstr "Inserisci una citazione"
+
+#: src/ext_l10n.h:623
+msgid "Move the selected citation down"
+msgstr ""
+
+#: src/ext_l10n.h:624
+#, fuzzy
+msgid "Available"
+msgstr "Inserisci un riferimento"
+
+#: src/ext_l10n.h:625
+#, fuzzy
+msgid "Selected"
+msgstr "Seleziona fra|#S"
+
+#: src/ext_l10n.h:627
+#, fuzzy
+msgid "Available citation keys"
+msgstr "Inserisci un riferimento"
+
+#: src/ext_l10n.h:629
+#, fuzzy
+msgid "Citations currently selected"
+msgstr "Citazione"
+
+#: src/ext_l10n.h:630
+msgid "Text to place after citation"
+msgstr ""
+
+#: src/ext_l10n.h:631
+#, fuzzy
+msgid "&Full author list"
+msgstr "Riquadro"
+
+#: src/ext_l10n.h:632
+msgid "List all authors"
+msgstr ""
+
+#: src/ext_l10n.h:633
+msgid "Force &upper case"
+msgstr ""
+
+#: src/ext_l10n.h:634
+msgid "Force upper case in citation"
+msgstr ""
+
+#: src/ext_l10n.h:635
+msgid "Text to place before citation"
+msgstr ""
+
+#: src/ext_l10n.h:638
+#, fuzzy
+msgid "&Fonts:"
+msgstr "Font: "
+
+#: src/ext_l10n.h:639
+#, fuzzy
+msgid "&Pagestyle:"
+msgstr "Stile della pagina:|#p"
+
+#: src/ext_l10n.h:640
+#, fuzzy
+msgid "Defa&ult Skip:"
+msgstr "Salto predefinito:|#t"
+
+#: src/ext_l10n.h:641
+#, fuzzy
+msgid "F&ont Size:"
+msgstr "Dimensione:|#D"
+
+#: src/ext_l10n.h:647
+#, fuzzy
+msgid "Spacin&g:"
+msgstr "Spaziatura"
+
+#: src/ext_l10n.h:648
+#, fuzzy
+msgid "E&xtra Options:"
+msgstr "Altro"
+
+#: src/ext_l10n.h:649
+#, fuzzy
+msgid "&Class:"
+msgstr "Classe:|#l"
+
+#: src/ext_l10n.h:650
+#, fuzzy
+msgid "smallskip"
+msgstr "Piccolissimo"
+
+#: src/ext_l10n.h:651
+#, fuzzy
+msgid "medskip"
+msgstr "Medio"
+
+#: src/ext_l10n.h:652
+msgid "bigskip"
+msgstr ""
+
+#: src/ext_l10n.h:653
+#, fuzzy
+msgid "length"
+msgstr "Lungh.|#h"
+
+#: src/ext_l10n.h:663
+#, fuzzy
+msgid "O&ne"
+msgstr "Attivo"
+
+#: src/ext_l10n.h:664
+#, fuzzy
+msgid "&Two"
+msgstr "Superiore|#p"
+
+#: src/ext_l10n.h:666
+#, fuzzy
+msgid "On&e"
+msgstr "Attivo"
+
+#: src/ext_l10n.h:667
+#, fuzzy
+msgid "T&wo"
+msgstr "Due"
+
+#: src/ext_l10n.h:669
+#, fuzzy
+msgid "&Indent"
+msgstr "Capov."
+
+#: src/ext_l10n.h:670
+#, fuzzy
+msgid "S&kip"
+msgstr "Salto|#S"
+
+#: src/ext_l10n.h:672
+#, fuzzy
+msgid "&Papersize:"
+msgstr "Formato:|#F"
+
+#: src/ext_l10n.h:683
+#, fuzzy
+msgid "&Special:"
+msgstr "Speciale:|#p"
+
+#: src/ext_l10n.h:688
+#, fuzzy
+msgid "&Use Geometry Package"
+msgstr "Usa il pacchetto Geometry|#y"
+
+#: src/ext_l10n.h:690
+#, fuzzy
+msgid "P&ortrait"
+msgstr "Verticale (Portrait)|#V"
+
+#: src/ext_l10n.h:691
+#, fuzzy
+msgid "&Landscape"
+msgstr "Orizzontale (Landscape)|#z"
+
+#: src/ext_l10n.h:693
+#, fuzzy
+msgid "&Right:"
+msgstr "Destra|#D"
+
+#: src/ext_l10n.h:694
+#, fuzzy
+msgid "&Bottom:"
+msgstr "Inferiore|#f"
+
+#: src/ext_l10n.h:695
+#, fuzzy
+msgid "L&eft:"
+msgstr "Sinistra|#n"
+
+#: src/ext_l10n.h:696
+#, fuzzy
+msgid "&Top:"
+msgstr "Superiore|#p"
+
+#: src/ext_l10n.h:697
+msgid "Custom Papersize"
+msgstr "Dimensioni alternative"
+
+#: src/ext_l10n.h:698 src/ext_l10n.h:907
+#, fuzzy
+msgid "&Width:"
+msgstr "Largh."
+
+#: src/ext_l10n.h:699
+#, fuzzy
+msgid "&Height:"
+msgstr "Altezza"
+
+#: src/ext_l10n.h:700
+msgid "Foot/Head Margins"
+msgstr "Intestazione/piè di pagina"
+
+#: src/ext_l10n.h:701
+#, fuzzy
+msgid "&Footskip:"
+msgstr "Salto piè pagina|#g"
+
+#: src/ext_l10n.h:702
+#, fuzzy
+msgid "Hea&dsep:"
+msgstr "Separazione int.|#S"
+
+#: src/ext_l10n.h:703
+#, fuzzy
+msgid "Headhe&ight:"
+msgstr "Altezza int.|#t"
+
+#: src/ext_l10n.h:706
+#, fuzzy
+msgid "Enco&ding:"
+msgstr "Codifica:|#f"
+
+#: src/ext_l10n.h:720
+#, fuzzy
+msgid "Quote Style"
+msgstr "Ho impostato il tipo di virgolette"
+
+#: src/ext_l10n.h:721
+#, fuzzy
+msgid "&Type:"
+msgstr "Tipo"
+
+#: src/ext_l10n.h:726
+#, fuzzy
+msgid "Â«textÂ»"
+msgstr "LaTeX "
+
+#: src/ext_l10n.h:727
+#, fuzzy
+msgid "Â»textÂ«"
+msgstr "LaTeX "
+
+#: src/ext_l10n.h:728
+#, fuzzy
+msgid "&Single"
+msgstr "Singole|#S"
+
+#: src/ext_l10n.h:729
+#, fuzzy
+msgid "&Double"
+msgstr "Doppie|#D"
+
+#: src/ext_l10n.h:731
+#, fuzzy
+msgid "F&loat Placement:"
+msgstr "Posiz. ogg. flottanti:|#z"
+
+#: src/ext_l10n.h:732
+#, fuzzy
+msgid "S&ection number depth:"
+msgstr "Massimo numero di sezioni"
+
+#: src/ext_l10n.h:733
+#, fuzzy
+msgid "&Table of contents depth:"
+msgstr "Profondità del sommario"
+
+#: src/ext_l10n.h:734
+#, fuzzy
+msgid "P&S Driver:"
+msgstr "Traduttore PS|#T"
+
+#: src/ext_l10n.h:735
+#, fuzzy
+msgid "Use A&MS Math"
+msgstr "Usa matem. AMS|#M"
+
+#: src/ext_l10n.h:737
+#, fuzzy
+msgid "Si&ze"
+msgstr "Dimensione|#D"
+
+#: src/ext_l10n.h:750
+msgid "&1"
+msgstr ""
+
+#: src/ext_l10n.h:751
+msgid "&2"
+msgstr ""
+
+#: src/ext_l10n.h:752
+msgid "&3"
+msgstr ""
+
+#: src/ext_l10n.h:753
+msgid "&4"
+msgstr ""
+
+#: src/ext_l10n.h:754
+#, fuzzy
+msgid "&Standard"
+msgstr "Standard|#S"
+
+#: src/ext_l10n.h:755
+#, fuzzy
+msgid "&Maths"
+msgstr "Matematica"
+
+#: src/ext_l10n.h:756
+#, fuzzy
+msgid "&Ding 1"
+msgstr "Simboli 1|#i"
+
+#: src/ext_l10n.h:757
+#, fuzzy
+msgid "D&ing 2"
+msgstr "Simboli 2|#b"
+
+#: src/ext_l10n.h:758
+#, fuzzy
+msgid "Di&ng 3"
+msgstr "Simboli 3|#o"
+
+#: src/ext_l10n.h:759
+#, fuzzy
+msgid "Din&g 4"
+msgstr "Simboli 4|#l"
+
+#: src/ext_l10n.h:760
+#, fuzzy
+msgid "&LaTeX"
+msgstr "LaTeX|#L"
+
+#: src/ext_l10n.h:766 src/ext_l10n.h:780
+#, fuzzy
+msgid "LaTeX error messages"
+msgstr "Errore di LaTeX"
+
+#: src/ext_l10n.h:768
+#, fuzzy
+msgid "ERT inset display"
+msgstr "[non mostrato]"
+
+#: src/ext_l10n.h:769
+msgid "&Inline"
+msgstr ""
+
+#: src/ext_l10n.h:770
+msgid "Show ERT inline"
+msgstr ""
+
+#: src/ext_l10n.h:771
+#, fuzzy
+msgid "&Collapsed"
+msgstr "LaTeX "
+
+#: src/ext_l10n.h:772
+msgid "Show ERT button only"
+msgstr ""
+
+#: src/ext_l10n.h:773
+#, fuzzy
+msgid "&Open"
+msgstr "Apri"
+
+#: src/ext_l10n.h:774
+#, fuzzy
+msgid "Show ERT contents"
+msgstr "Sommario"
+
+#: src/ext_l10n.h:777
+#, fuzzy
+msgid "External Material"
+msgstr "Altro"
+
+#: src/ext_l10n.h:778
+#, fuzzy
+msgid "&Template"
+msgstr "Modelli"
+
+#: src/ext_l10n.h:779
+#, fuzzy
+msgid "Available templates"
+msgstr "Inserisci un riferimento"
+
+#: src/ext_l10n.h:781
+#, fuzzy
+msgid "&Edit file"
+msgstr "File EPS|#E"
+
+#: src/ext_l10n.h:782
+#, fuzzy
+msgid "Edit the file externally"
+msgstr "Inserisci bibtex"
+
+#: src/ext_l10n.h:783
+#, fuzzy
+msgid "&View file"
+msgstr "filenuovo"
+
+#: src/ext_l10n.h:784
+#, fuzzy
+msgid "View the file"
+msgstr "Lista delle tabelle"
+
+#: src/ext_l10n.h:785 src/ext_l10n.h:903 src/ext_l10n.h:1103
+#: src/ext_l10n.h:1189 src/ext_l10n.h:1202
+#, fuzzy
+msgid "&Update"
+msgstr "Aggiorna|#g"
+
+#: src/ext_l10n.h:786
+msgid "Update the material"
+msgstr ""
+
+#: src/ext_l10n.h:787 src/ext_l10n.h:1075
+#, fuzzy
+msgid "&File"
+msgstr "File"
+
+#: src/ext_l10n.h:788
+#, fuzzy
+msgid "Filename"
+msgstr "Nome del file:|#f"
+
+#: src/ext_l10n.h:789 src/ext_l10n.h:810 src/ext_l10n.h:891
+#: src/ext_l10n.h:1079
+#, fuzzy
+msgid "&Browse ..."
+msgstr "Cerca...|#C"
+
+#: src/ext_l10n.h:790
+#, fuzzy
+msgid "&Parameters"
+msgstr "Stampante|#m"
+
+#: src/ext_l10n.h:791
+#, fuzzy
+msgid "Parameters"
+msgstr "Stampante|#m"
+
+#: src/ext_l10n.h:795 src/ext_l10n.h:806 src/ext_l10n.h:1160
+#, fuzzy
+msgid "Form1"
+msgstr "Riquadro"
+
+#: src/ext_l10n.h:801
+#, fuzzy
+msgid "Bottom of the page"
+msgstr "% pagina"
+
+#: src/ext_l10n.h:802
+#, fuzzy
+msgid "Top of the page"
+msgstr "% pagina"
+
+#: src/ext_l10n.h:803
+#, fuzzy
+msgid "Page of floats"
+msgstr "Pagine:"
+
+#: src/ext_l10n.h:804
+msgid "Here, if possible"
+msgstr ""
+
+#: src/ext_l10n.h:805
+msgid "Here, definitely"
+msgstr ""
+
+#: src/ext_l10n.h:808
+#, fuzzy
+msgid "&File:"
+msgstr "File"
+
+#: src/ext_l10n.h:809 src/ext_l10n.h:890
+#, fuzzy
+msgid "File name to include"
+msgstr "Scegli il documento da inserire"
+
+#: src/ext_l10n.h:811 src/ext_l10n.h:892
+#, fuzzy
+msgid "Select a file"
+msgstr "Seleziona la linea successiva"
+
+#: src/ext_l10n.h:812
+#, fuzzy
+msgid "Screen Options"
+msgstr "Opzioni dello schermo"
+
+#: src/ext_l10n.h:814
+#, fuzzy
+msgid "Monochrome"
+msgstr "Mostra in bianco e nero|#b"
+
+#: src/ext_l10n.h:815
+#, fuzzy
+msgid "Grayscale"
+msgstr "Mostra in scala di grigi|#g"
+
+#: src/ext_l10n.h:816
+#, fuzzy
+msgid "Color"
+msgstr "Chiudi"
+
+#: src/ext_l10n.h:817
+#, fuzzy
+msgid "Do not display"
+msgstr "[non mostrato]"
+
+#: src/ext_l10n.h:819
+msgid "S&how:"
+msgstr ""
+
+#: src/ext_l10n.h:820 src/ext_l10n.h:830
+msgid "Height"
+msgstr "Altezza"
+
+#: src/ext_l10n.h:821
+#, fuzzy
+msgid "&Draft mode"
+msgstr "Modalità matematica"
+
+#: src/ext_l10n.h:822
+#, fuzzy
+msgid "draft mode"
+msgstr "Modalità matematica"
+
+#: src/ext_l10n.h:824
+#, fuzzy
+msgid "&Scale"
+msgstr "Molto piccolo"
+
+#: src/ext_l10n.h:825
+#, fuzzy
+msgid "&Default"
+msgstr "Predefinito"
+
+#: src/ext_l10n.h:826
+#, fuzzy
+msgid "&Custom"
+msgstr "Dimensioni alternative"
+
+#: src/ext_l10n.h:828
+msgid "Keep aspect&ratio"
+msgstr ""
+
+#: src/ext_l10n.h:831
+#, fuzzy
+msgid "EPS Options"
+msgstr "Opzioni"
+
+#: src/ext_l10n.h:832
+msgid "Bounding box"
+msgstr ""
+
+#: src/ext_l10n.h:833
+#, fuzzy
+msgid "Left &bottom:"
+msgstr "Sinistra|#n"
+
+#: src/ext_l10n.h:834
+#, fuzzy
+msgid "Right &top:"
+msgstr "Destra|#D"
+
+#: src/ext_l10n.h:835
+msgid "Y"
+msgstr ""
+
+#: src/ext_l10n.h:836
+msgid "X"
+msgstr ""
+
+#: src/ext_l10n.h:849
+msgid "&Get"
+msgstr ""
+
+#: src/ext_l10n.h:850
+msgid "Get bounding box from file"
+msgstr ""
+
+#: src/ext_l10n.h:851
+msgid "&Clip to bounding box"
+msgstr ""
+
+#: src/ext_l10n.h:852
+msgid "clip to bounding box"
+msgstr ""
+
+#: src/ext_l10n.h:854
+msgid "Rotation"
+msgstr "Rotazione"
+
+#: src/ext_l10n.h:855
+#, fuzzy
+msgid "&Angle:"
+msgstr "Angolo:|#l"
+
+#: src/ext_l10n.h:856
+msgid "&Origin:"
+msgstr ""
+
+#: src/ext_l10n.h:858
+msgid "leftTop"
+msgstr ""
+
+#: src/ext_l10n.h:859
+#, fuzzy
+msgid "leftBottom"
+msgstr "Inferiore|#f"
+
+#: src/ext_l10n.h:860
+#, fuzzy
+msgid "leftBaseline"
+msgstr "Ho inserito la tabella"
+
+#: src/ext_l10n.h:862
+msgid "centerTop"
+msgstr ""
+
+#: src/ext_l10n.h:863
+#, fuzzy
+msgid "centerBottom"
+msgstr "In alto | Al centro | In basso"
+
+#: src/ext_l10n.h:864
+msgid "centerBaseline"
+msgstr ""
+
+#: src/ext_l10n.h:865
+#, fuzzy
+msgid "rightTop"
+msgstr "Normale"
+
+#: src/ext_l10n.h:866
+#, fuzzy
+msgid "rightBottom"
+msgstr "Inferiore|#f"
+
+#: src/ext_l10n.h:867
+#, fuzzy
+msgid "rightBaseline"
+msgstr "Ho inserito la tabella"
+
+#: src/ext_l10n.h:868
+#, fuzzy
+msgid "referencePoint"
+msgstr "Inserisci un riferimento"
+
+#: src/ext_l10n.h:869
+#, fuzzy
+msgid "LaTeX options"
+msgstr "Altro"
+
+#: src/ext_l10n.h:870
+#, fuzzy
+msgid "Su&bfigure"
+msgstr "Sottofigura|#r"
+
+#: src/ext_l10n.h:871
+msgid "The sub-caption for the figure"
+msgstr ""
+
+#: src/ext_l10n.h:876
+#, fuzzy
+msgid "Include File"
+msgstr "Includi"
+
+#: src/ext_l10n.h:877
+#, fuzzy
+msgid "Include type"
+msgstr "Includi"
+
+#: src/ext_l10n.h:878
+#, fuzzy
+msgid "&Include"
+msgstr "Includi"
+
+#: src/ext_l10n.h:879 src/ext_l10n.h:881 src/ext_l10n.h:883 src/ext_l10n.h:886
+#: src/ext_l10n.h:888
+msgid "FIXME"
+msgstr ""
+
+#: src/ext_l10n.h:880
+#, fuzzy
+msgid "I&nput"
+msgstr "Includi"
+
+#: src/ext_l10n.h:882
+#, fuzzy
+msgid "&Verbatim"
+msgstr "Includi verbatim"
+
+#: src/ext_l10n.h:884
+msgid "Options"
+msgstr "Opzioni"
+
+#: src/ext_l10n.h:885
+#, fuzzy
+msgid "&Don't typeset"
+msgstr "Non componi|#N"
+
+#: src/ext_l10n.h:887
+#, fuzzy
+msgid "Visible &Space"
+msgstr "Spazio visibile|#s"
+
+#: src/ext_l10n.h:889
+#, fuzzy
+msgid "&Filename:"
+msgstr "Nome del file:|#f"
+
+#: src/ext_l10n.h:895
+#, fuzzy
+msgid "&Load"
+msgstr "Carica|#C"
+
+#: src/ext_l10n.h:896
+#, fuzzy
+msgid "Load the file"
+msgstr "Lista delle tabelle"
+
+#: src/ext_l10n.h:898 src/ext_l10n.h:1176
+#, fuzzy
+msgid "&Keyword"
+msgstr "Parola chiave:|#P"
+
+#: src/ext_l10n.h:899 src/ext_l10n.h:1031 src/ext_l10n.h:1177
+#, fuzzy
+msgid "Index entry"
+msgstr "Capov."
+
+#: src/ext_l10n.h:904 src/ext_l10n.h:1203
+#, fuzzy
+msgid "Update the display"
+msgstr "Mostra"
+
+#: src/ext_l10n.h:906
+#, fuzzy
+msgid "Minipage settings"
+msgstr "Minipagina"
+
+#: src/ext_l10n.h:908 src/ext_l10n.h:1057
+#, fuzzy
+msgid "Top"
+msgstr "Superiore|#p"
+
+#: src/ext_l10n.h:909 src/ext_l10n.h:1058
+#, fuzzy
+msgid "Middle"
+msgstr "Centrale"
+
+#: src/ext_l10n.h:910 src/ext_l10n.h:1059
+#, fuzzy
+msgid "Bottom"
+msgstr "Inferiore|#f"
+
+#: src/ext_l10n.h:911
+#, fuzzy
+msgid "Vertical alignment"
+msgstr "Allin. vert.|#v"
+
+#: src/ext_l10n.h:912
+#, fuzzy
+msgid "A&lignment:"
+msgstr "Allineamento"
+
+#: src/ext_l10n.h:913
+msgid "Units of width value"
+msgstr ""
+
+#: src/ext_l10n.h:914
+#, fuzzy
+msgid "Width value"
+msgstr "Largh."
+
+#: src/ext_l10n.h:915
+msgid "&Units:"
+msgstr ""
+
+#: src/ext_l10n.h:921
+msgid "&Alignment and Spacing"
+msgstr ""
+
+#: src/ext_l10n.h:922
+#, fuzzy
+msgid "Alignment:"
+msgstr "Allineamento"
+
+#: src/ext_l10n.h:923
+#, fuzzy
+msgid "Justified"
+msgstr "Citazione"
+
+#: src/ext_l10n.h:924
+#, fuzzy
+msgid "Left"
+msgstr "Sinistra|#n"
+
+#: src/ext_l10n.h:925
+#, fuzzy
+msgid "Right"
+msgstr "Destra|#D"
+
+#: src/ext_l10n.h:926
+#, fuzzy
+msgid "Centered"
+msgstr "Centrato|#t"
+
+#: src/ext_l10n.h:927
+#, fuzzy
+msgid "No indentation"
+msgstr "Rotazione"
+
+#: src/ext_l10n.h:928
+#, fuzzy
+msgid "Spacing"
+msgstr "Interlinea|#e"
+
+#: src/ext_l10n.h:929 src/ext_l10n.h:940 src/ext_l10n.h:951 src/ext_l10n.h:962
+#: src/ext_l10n.h:973 src/ext_l10n.h:984 src/ext_l10n.h:1037
+#, fuzzy
+msgid "Centimetres"
+msgstr "Centrato|#t"
+
+#: src/ext_l10n.h:930 src/ext_l10n.h:941 src/ext_l10n.h:952 src/ext_l10n.h:963
+#: src/ext_l10n.h:974 src/ext_l10n.h:985 src/ext_l10n.h:1038
+#, fuzzy
+msgid "Inches"
+msgstr "Aumenta"
+
+#: src/ext_l10n.h:931 src/ext_l10n.h:942 src/ext_l10n.h:953 src/ext_l10n.h:964
+#: src/ext_l10n.h:975 src/ext_l10n.h:986 src/ext_l10n.h:1039
+#, fuzzy
+msgid "Points"
+msgstr "Stampa"
+
+#: src/ext_l10n.h:932 src/ext_l10n.h:943 src/ext_l10n.h:954 src/ext_l10n.h:965
+#: src/ext_l10n.h:976 src/ext_l10n.h:987 src/ext_l10n.h:1040
+#, fuzzy
+msgid "Millimetres"
+msgstr "Centrato|#t"
+
+#: src/ext_l10n.h:933 src/ext_l10n.h:944 src/ext_l10n.h:955 src/ext_l10n.h:966
+#: src/ext_l10n.h:977 src/ext_l10n.h:988 src/ext_l10n.h:1041
+#, fuzzy
+msgid "Picas"
+msgstr "Incolla"
+
+#: src/ext_l10n.h:934 src/ext_l10n.h:945 src/ext_l10n.h:956 src/ext_l10n.h:967
+#: src/ext_l10n.h:978 src/ext_l10n.h:989 src/ext_l10n.h:1042
+msgid "ex Units"
+msgstr ""
+
+#: src/ext_l10n.h:935 src/ext_l10n.h:946 src/ext_l10n.h:957 src/ext_l10n.h:968
+#: src/ext_l10n.h:979 src/ext_l10n.h:990 src/ext_l10n.h:1043
+msgid "em Units"
+msgstr ""
+
+#: src/ext_l10n.h:936 src/ext_l10n.h:947 src/ext_l10n.h:958 src/ext_l10n.h:969
+#: src/ext_l10n.h:980 src/ext_l10n.h:991 src/ext_l10n.h:1044
+#, fuzzy
+msgid "Scaled Points"
+msgstr "Opzioni dello schermo"
+
+#: src/ext_l10n.h:937 src/ext_l10n.h:948 src/ext_l10n.h:959 src/ext_l10n.h:970
+#: src/ext_l10n.h:981 src/ext_l10n.h:992 src/ext_l10n.h:1045
+#, fuzzy
+msgid "Big/PS Points"
+msgstr "Stampa"
+
+#: src/ext_l10n.h:938 src/ext_l10n.h:949 src/ext_l10n.h:960 src/ext_l10n.h:971
+#: src/ext_l10n.h:982 src/ext_l10n.h:993 src/ext_l10n.h:1046
+#, fuzzy
+msgid "Didot Points"
+msgstr "Stampa"
+
+#: src/ext_l10n.h:939 src/ext_l10n.h:950 src/ext_l10n.h:961 src/ext_l10n.h:972
+#: src/ext_l10n.h:983 src/ext_l10n.h:994 src/ext_l10n.h:1047
+#, fuzzy
+msgid "Cicero Points"
+msgstr "Stampa"
+
+#: src/ext_l10n.h:995 src/ext_l10n.h:997
+msgid "Units:"
+msgstr ""
+
+#: src/ext_l10n.h:996 src/ext_l10n.h:998
+msgid "Unit of Size, Stretch and Slink"
+msgstr ""
+
+#: src/ext_l10n.h:999
+#, fuzzy
+msgid "Value:"
+msgstr "Blu"
+
+#: src/ext_l10n.h:1000
+#, fuzzy
+msgid "Amount of spacing"
+msgstr "Spaziatura"
+
+#: src/ext_l10n.h:1001
+msgid "Stretch:"
+msgstr ""
+
+#: src/ext_l10n.h:1002
+msgid "Margin by which paragraph is allowed to increase"
+msgstr ""
+
+#: src/ext_l10n.h:1003
+msgid "Shrink:"
+msgstr ""
+
+#: src/ext_l10n.h:1004
+msgid "Margin by which paragraph is allowed to decrease"
+msgstr ""
+
+#: src/ext_l10n.h:1006 src/ext_l10n.h:1015
+#, fuzzy
+msgid "DefSkip"
+msgstr "Salto predefinito:|#t"
+
+#: src/ext_l10n.h:1007 src/ext_l10n.h:1016
+#, fuzzy
+msgid "SmallSkip"
+msgstr "Piccolissimo"
+
+#: src/ext_l10n.h:1008 src/ext_l10n.h:1017
+#, fuzzy
+msgid "MedSkip"
+msgstr "Medio"
+
+#: src/ext_l10n.h:1009 src/ext_l10n.h:1018
+msgid "BigSkip"
+msgstr ""
+
+#: src/ext_l10n.h:1010 src/ext_l10n.h:1019
+#, fuzzy
+msgid "VFill"
+msgstr "File"
+
+#: src/ext_l10n.h:1012
+#, fuzzy
+msgid "Above:"
+msgstr "Sopra"
+
+#: src/ext_l10n.h:1013
+#, fuzzy
+msgid "Below:"
+msgstr "Sotto:"
+
+#: src/ext_l10n.h:1021
+msgid "Keep space at the top of the page"
+msgstr ""
+
+#: src/ext_l10n.h:1022
+#, fuzzy
+msgid "Keep space at top of the page"
+msgstr "% pagina"
+
+#: src/ext_l10n.h:1023
+msgid "Keep space at the bottom of the page"
+msgstr ""
+
+#: src/ext_l10n.h:1024
+#, fuzzy
+msgid "List environment"
+msgstr "Allineamento"
+
+#: src/ext_l10n.h:1025
+#, fuzzy
+msgid "Label width:"
+msgstr "Largh. etichetta:|#h"
+
+#: src/ext_l10n.h:1026
+#, fuzzy
+msgid "Label width in list environment"
+msgstr "Cambia la profondità del paragrafo"
+
+#: src/ext_l10n.h:1027
+#, fuzzy
+msgid "&Lines and Page breaks"
+msgstr "Inter. pagina"
+
+#: src/ext_l10n.h:1028
+#, fuzzy
+msgid "Page break"
+msgstr "Inter. pagina"
+
+#: src/ext_l10n.h:1029 src/ext_l10n.h:1033
+#, fuzzy
+msgid "above paragraph"
+msgstr "Vai un paragrafo in alto"
+
+#: src/ext_l10n.h:1030 src/ext_l10n.h:1034
+#, fuzzy
+msgid "below paragraph"
+msgstr "Vai un paragrafo in alto"
+
+#: src/ext_l10n.h:1032
+#, fuzzy
+msgid "Line"
+msgstr "Linee"
+
+#: src/ext_l10n.h:1035
+#, fuzzy
+msgid "&Extra options"
+msgstr "Altro"
+
+#: src/ext_l10n.h:1036
+#, fuzzy
+msgid "Unit:"
+msgstr "Font: "
+
+#: src/ext_l10n.h:1050
+msgid "Wrap text around floats"
+msgstr ""
+
+#: src/ext_l10n.h:1051
+#, fuzzy
+msgid "Indent whole paragraph"
+msgstr "Paragrafo indentato"
+
+#: src/ext_l10n.h:1052
+#, fuzzy
+msgid "Width:"
+msgstr "Largh."
+
+#: src/ext_l10n.h:1053
+#, fuzzy
+msgid "Minipage options"
+msgstr "Minipagina"
+
+#: src/ext_l10n.h:1054
+#, fuzzy
+msgid "Start new minipage"
+msgstr "Inizia una nuova Minipage"
+
+#: src/ext_l10n.h:1055
+#, fuzzy
+msgid "HFill between minipage paragraphs"
+msgstr "Riemp. orizz. tra paragrafi Minipage"
+
+#: src/ext_l10n.h:1056
+#, fuzzy
+msgid "Vertical Alignment:"
+msgstr "Allin. vert.|#v"
+
+#: src/ext_l10n.h:1064
+#, fuzzy
+msgid "LaTeX pre-amble"
+msgstr "Preambolo di LaTeX"
+
+#: src/ext_l10n.h:1065
+#, fuzzy
+msgid "The LaTeX pre-amble"
+msgstr "Preambolo di LaTeX"
+
+#: src/ext_l10n.h:1066
+msgid "&Edit ..."
+msgstr ""
+
+#: src/ext_l10n.h:1067
+msgid "Edit the pre-amble in an external editor"
+msgstr ""
+
+#: src/ext_l10n.h:1072
+#, fuzzy
+msgid "Print Destination"
+msgstr "Destinazione:"
+
+#: src/ext_l10n.h:1073
+#, fuzzy
+msgid "P&rinter"
+msgstr "Stampa"
+
+#: src/ext_l10n.h:1074
+msgid "Send output to the printer"
+msgstr ""
+
+#: src/ext_l10n.h:1076 src/ext_l10n.h:1078
+#, fuzzy
+msgid "Send output to a file"
+msgstr "Seleziona la linea successiva"
+
+#: src/ext_l10n.h:1077
+msgid "Send output to the given printer"
+msgstr ""
+
+#: src/ext_l10n.h:1080
+#, fuzzy
+msgid "Pages"
+msgstr "Pagine:"
+
+#: src/ext_l10n.h:1081
+#, fuzzy
+msgid "&All"
+msgstr "Applica|#A"
+
+#: src/ext_l10n.h:1082
+#, fuzzy
+msgid "Print all pages"
+msgstr "Tutte le pagine|#g"
+
+#: src/ext_l10n.h:1083
+msgid "&Odd"
+msgstr ""
+
+#: src/ext_l10n.h:1084
+#, fuzzy
+msgid "Print odd pages only"
+msgstr "Inserisci il numero di pagina|#p"
+
+#: src/ext_l10n.h:1085
+#, fuzzy
+msgid "&Even"
+msgstr "Solo le pagine pari|#p"
+
+#: src/ext_l10n.h:1086
+#, fuzzy
+msgid "Print even pages only"
+msgstr "Inserisci il numero di pagina|#p"
+
+#: src/ext_l10n.h:1087
+#, fuzzy
+msgid "&Last page:"
+msgstr "Lingua"
+
+#: src/ext_l10n.h:1088
+#, fuzzy
+msgid "Page number to print to"
+msgstr "Non riesco a stampare"
+
+#: src/ext_l10n.h:1089
+#, fuzzy
+msgid "Re&verse order"
+msgstr "Ordine inverso|#v"
+
+#: src/ext_l10n.h:1090
+#, fuzzy
+msgid "Print in reverse order"
+msgstr "Ordine inverso|#v"
+
+#: src/ext_l10n.h:1091
+#, fuzzy
+msgid "Page number to print from"
+msgstr "Non riesco a stampare"
+
+#: src/ext_l10n.h:1092
+#, fuzzy
+msgid "Ran&ge"
+msgstr "Pagina: "
+
+#: src/ext_l10n.h:1093
+#, fuzzy
+msgid "Set a range of pages to print"
+msgstr "Controlla il 'numero delle copie'!"
+
+#: src/ext_l10n.h:1094
+#, fuzzy
+msgid "&Starting range:"
+msgstr "Inizia una nuova Minipage"
+
+#: src/ext_l10n.h:1096
+#, fuzzy
+msgid "Number of copies"
+msgstr "Controlla il 'numero delle copie'!"
+
+#: src/ext_l10n.h:1097
+#, fuzzy
+msgid "&Collate"
+msgstr "LaTeX "
+
+#: src/ext_l10n.h:1098
+#, fuzzy
+msgid "Collate copies"
+msgstr "LaTeX "
+
+#: src/ext_l10n.h:1099
+#, fuzzy
+msgid "&Print"
+msgstr "Stampa"
+
+#: src/ext_l10n.h:1102 src/ext_l10n.h:1187
+#, fuzzy
+msgid "&Type"
+msgstr "Tipo"
+
+#: src/ext_l10n.h:1104
+#, fuzzy
+msgid "Update the reference list"
+msgstr "Inserisci un riferimento"
+
+#: src/ext_l10n.h:1105
+#, fuzzy
+msgid "Sort"
+msgstr "Spiacente."
+
+#: src/ext_l10n.h:1106
+msgid "Sort references in alphabetical order"
+msgstr ""
+
+#: src/ext_l10n.h:1108
+#, fuzzy
+msgid "Move the document cursor to reference"
+msgstr "Può darsi che il documento sia troncato"
+
+#: src/ext_l10n.h:1110
+#, fuzzy
+msgid "Page number"
+msgstr "Nessun numero"
+
+#: src/ext_l10n.h:1111
+msgid "Ref on page xxx"
+msgstr ""
+
+#: src/ext_l10n.h:1112
+msgid "On page xxx"
+msgstr ""
+
+#: src/ext_l10n.h:1113
+#, fuzzy
+msgid "Pretty reference"
+msgstr "Inserisci un riferimento"
+
+#: src/ext_l10n.h:1114
+msgid "Reference as it appears in output"
+msgstr ""
+
+#: src/ext_l10n.h:1115
+#, fuzzy
+msgid "&Reference:"
+msgstr "Inserisci un riferimento"
+
+#: src/ext_l10n.h:1116
+#, fuzzy
+msgid "&Name:"
+msgstr "Nome|#N"
+
+#: src/ext_l10n.h:1117
+#, fuzzy
+msgid "Available references"
+msgstr "Inserisci un riferimento"
+
+#: src/ext_l10n.h:1120
+#, fuzzy
+msgid "Search and replace"
+msgstr "Cerca & Sostituisci"
+
+#: src/ext_l10n.h:1121
+#, fuzzy
+msgid "&Find:"
+msgstr "Cerca|#e"
+
+#: src/ext_l10n.h:1122
+#, fuzzy
+msgid "Replace &with:"
+msgstr "Cambia con|#m"
+
+#: src/ext_l10n.h:1123
+#, fuzzy
+msgid "Case &sensitive"
+msgstr "Maius/minus|#s"
+
+#: src/ext_l10n.h:1124
+msgid "Match whole words onl&y"
+msgstr ""
+
+#: src/ext_l10n.h:1125
+msgid "Find &Next"
+msgstr ""
+
+#: src/ext_l10n.h:1126 src/ext_l10n.h:1134 src/ext_l10n.h:1183
+#, fuzzy
+msgid "&Replace"
+msgstr "Cambia"
+
+#: src/ext_l10n.h:1127
+#, fuzzy
+msgid "Replace &All "
+msgstr "Cambia tutto|#t"
+
+#: src/ext_l10n.h:1128
+msgid "Search &backwards"
+msgstr ""
+
+#: src/ext_l10n.h:1130
+#, fuzzy
+msgid "File: "
+msgstr "Il file `"
+
+#: src/ext_l10n.h:1133
+#, fuzzy
+msgid "Suggestions:"
+msgstr "Destinazione:"
+
+#: src/ext_l10n.h:1135
+#, fuzzy
+msgid "Replace word with current choice"
+msgstr "Vuoi sostituirlo con il documento attuale?"
+
+#: src/ext_l10n.h:1136
+#, fuzzy
+msgid "&Add"
+msgstr "Aggiungi a|#g"
+
+#: src/ext_l10n.h:1137
+#, fuzzy
+msgid "Add the word to your personal dictionary"
+msgstr "Inserisci nel dizionario personale|#I"
+
+#: src/ext_l10n.h:1138
+#, fuzzy
+msgid "&Ignore"
+msgstr "Ignora"
+
+#: src/ext_l10n.h:1139
+#, fuzzy
+msgid "Ignore this word"
+msgstr "Ignora la parola|#g"
+
+#: src/ext_l10n.h:1140
+#, fuzzy
+msgid "&Accept"
+msgstr "Genitore:"
+
+#: src/ext_l10n.h:1141
+#, fuzzy
+msgid "Accept word for this session"
+msgstr "Accetta la parola in questa sessione|#A"
+
+#: src/ext_l10n.h:1142
+#, fuzzy
+msgid "&Options..."
+msgstr "Opzioni"
+
+#: src/ext_l10n.h:1144
+#, fuzzy
+msgid "How far spellchecking has got"
+msgstr "Lancia il correttore|#L"
+
+#: src/ext_l10n.h:1146
+#, fuzzy
+msgid "Replacement:"
+msgstr "Posiz. ogg. flottanti:|#z"
+
+#: src/ext_l10n.h:1147
+#, fuzzy
+msgid "Current word"
+msgstr "Numero:"
+
+#: src/ext_l10n.h:1148
+#, fuzzy
+msgid "Unknown:"
+msgstr "sconosciuto"
+
+#: src/ext_l10n.h:1149
+#, fuzzy
+msgid "Replace with selected word"
+msgstr "Vuoi sostituirlo con il documento attuale?"
+
+#: src/ext_l10n.h:1150
+msgid "&Start..."
+msgstr ""
+
+#: src/ext_l10n.h:1151
+#, fuzzy
+msgid "Start spellcheck"
+msgstr "Lancia il correttore|#L"
+
+#: src/ext_l10n.h:1153
+#, fuzzy
+msgid "&Rows:"
+msgstr "Righe"
+
+#: src/ext_l10n.h:1154
+#, fuzzy
+msgid "Number of rows"
+msgstr "Controlla il 'numero delle copie'!"
+
+#: src/ext_l10n.h:1155
+#, fuzzy
+msgid "&Columns:"
+msgstr "Colonne"
+
+#: src/ext_l10n.h:1156
+#, fuzzy
+msgid "Number of columns"
+msgstr "% colonna"
+
+#: src/ext_l10n.h:1157
+msgid "Resize this to the correct table dimensions"
+msgstr ""
+
+#: src/ext_l10n.h:1161
+#, fuzzy
+msgid "LaTeX classes"
+msgstr "Log di LaTeX"
+
+#: src/ext_l10n.h:1162
+#, fuzzy
+msgid "LaTeX styles"
+msgstr "Log di LaTeX"
+
+#: src/ext_l10n.h:1163
+#, fuzzy
+msgid "BibTeX styles"
+msgstr "Database:"
+
+#: src/ext_l10n.h:1164
+#, fuzzy
+msgid "Selected classes or styles"
+msgstr "Seleziona la linea successiva"
+
+#: src/ext_l10n.h:1165
+msgid "Show &path"
+msgstr ""
+
+#: src/ext_l10n.h:1166
+msgid "Toggles view of the file list"
+msgstr ""
+
+#: src/ext_l10n.h:1168
+#, fuzzy
+msgid "Installed files"
+msgstr "Includi"
+
+#: src/ext_l10n.h:1169
+#, fuzzy
+msgid "&Rescan"
+msgstr "Aggiorna|#r"
+
+#: src/ext_l10n.h:1170
+msgid "Built new file list"
+msgstr ""
+
+#: src/ext_l10n.h:1171
+#, fuzzy
+msgid "&View"
+msgstr "Visualizza il file DVI"
+
+#: src/ext_l10n.h:1172
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
+msgstr ""
+
+#: src/ext_l10n.h:1174
+msgid "Close this dialog"
+msgstr ""
+
+#: src/ext_l10n.h:1178
+#, fuzzy
+msgid "Entry"
+msgstr "Inserisci un'etichetta"
+
+#: src/ext_l10n.h:1179
+#, fuzzy
+msgid "Thesaurus entries"
+msgstr "Struttura della tabella"
+
+#: src/ext_l10n.h:1180
+#, fuzzy
+msgid "Select a related word"
+msgstr "Seleziona la linea successiva"
+
+#: src/ext_l10n.h:1181
+#, fuzzy
+msgid "&Selection"
+msgstr "Decorazione"
+
+#: src/ext_l10n.h:1182
+#, fuzzy
+msgid "The selected entry"
+msgstr "Seleziona la linea successiva"
+
+#: src/ext_l10n.h:1184
+msgid "Replace the entry with the selection"
+msgstr ""
+
+#: src/ext_l10n.h:1186
+#, fuzzy
+msgid "Table Of Contents"
+msgstr "Sommario"
+
+#: src/ext_l10n.h:1188
+#, fuzzy
+msgid "Contents list"
+msgstr "Sommario"
+
+#: src/ext_l10n.h:1191
+#, fuzzy
+msgid "Insert URL"
+msgstr "Inserisci un'etichetta"
+
+#: src/ext_l10n.h:1192
+#, fuzzy
+msgid "&URL"
+msgstr "URL|#U"
+
+#: src/ext_l10n.h:1194
+#, fuzzy
+msgid "&Name"
+msgstr "Nome|#N"
+
+#: src/ext_l10n.h:1195
+msgid "Name associated with the URL"
+msgstr ""
+
+#: src/ext_l10n.h:1197
+msgid "&Generate hyperlink"
+msgstr ""
+
+#: src/ext_l10n.h:1198
+msgid "Output as a hyperlink ?"
+msgstr ""
+
+#: src/ext_l10n.h:1201
+#, fuzzy
+msgid "Version control log"
+msgstr "Contollo della versione%t"
 
 #, fuzzy
 #~ msgid "Encoding"

@@ -167,7 +167,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.2.0cvs\n"
-"POT-Creation-Date: 2002-05-16 00:06+0200\n"
+"POT-Creation-Date: 2002-05-16 01:51+0200\n"
 "PO-Revision-Date: 2001-06-23 02:56+01:00\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@wanadoo.fr>\n"
 "Language-Team: lyxfr <http://perso.wanadoo.fr/adrien.rebollo/lyxfr/lyxfr."
@@ -490,8 +490,8 @@ msgstr ", Profondeur : "
 msgid ", Spacing: "
 msgstr ", Espacement : "
 
-#: src/bufferview_funcs.C:182 src/ext_l10n.h:654
-#: src/frontends/qt2/QDocument.C:111
+#: src/bufferview_funcs.C:182 src/frontends/qt2/QDocument.C:111
+#: src/ext_l10n.h:654
 msgid "Single"
 msgstr "Simple"
 
@@ -499,15 +499,15 @@ msgstr "Simple"
 msgid "Onehalf"
 msgstr "Un et demi"
 
-#: src/bufferview_funcs.C:189 src/ext_l10n.h:656
-#: src/frontends/qt2/QDocument.C:113 src/frontends/xforms/form_tabular.C:492
+#: src/bufferview_funcs.C:189 src/frontends/qt2/QDocument.C:113
+#: src/frontends/xforms/form_tabular.C:492
 #: src/frontends/xforms/form_tabular.C:494
 #: src/frontends/xforms/form_tabular.C:508
 #: src/frontends/xforms/form_tabular.C:510
 #: src/frontends/xforms/form_tabular.C:512
 #: src/frontends/xforms/form_tabular.C:514
 #: src/frontends/xforms/form_tabular.C:516
-#: src/frontends/xforms/form_tabular.C:518
+#: src/frontends/xforms/form_tabular.C:518 src/ext_l10n.h:656
 msgid "Double"
 msgstr "Double"
 
@@ -531,11 +531,11 @@ msgstr "Signet enregistré"
 msgid "Moved to bookmark"
 msgstr "Déplacé au signet"
 
-#: src/BufferView_pimpl.C:1611
+#: src/BufferView_pimpl.C:1612
 msgid "Select LyX document to insert"
 msgstr "Choisir le document à insérer"
 
-#: src/BufferView_pimpl.C:1613 src/frontends/controllers/ControlBibtex.C:68
+#: src/BufferView_pimpl.C:1614 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
 #: src/frontends/controllers/ControlGraphics.C:154
 #: src/frontends/controllers/ControlInclude.C:71 src/lyx_cb.C:113
@@ -543,93 +543,92 @@ msgstr "Choisir le document à insérer"
 msgid "Documents|#o#O"
 msgstr "Documents|#D#d"
 
-#: src/BufferView_pimpl.C:1615 src/lyxfunc.C:1865 src/lyxfunc.C:1942
+#: src/BufferView_pimpl.C:1616 src/lyxfunc.C:1865 src/lyxfunc.C:1942
 msgid "Examples|#E#e"
 msgstr "Exemples|#E#e"
 
-#: src/BufferView_pimpl.C:1620 src/frontends/controllers/ControlInclude.C:67
+#: src/BufferView_pimpl.C:1621 src/frontends/controllers/ControlInclude.C:67
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| Documents LyX (*.lyx)"
 
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1629 src/lyxfunc.C:1749 src/lyxfunc.C:1776
+#: src/BufferView_pimpl.C:1630 src/lyxfunc.C:1749 src/lyxfunc.C:1776
 #: src/lyxfunc.C:1879 src/lyxfunc.C:1959 src/lyxfunc.C:1987
 msgid "Canceled."
 msgstr "Annulé."
 
-#: src/BufferView_pimpl.C:1641
+#: src/BufferView_pimpl.C:1642
 msgid "Inserting document"
 msgstr "Insertion du document en cours..."
 
-#: src/BufferView_pimpl.C:1647 src/ext_l10n.h:637
-#: src/frontends/xforms/FormDocument.C:327 src/lyxfunc.C:1797
-#: src/lyxfunc.C:1907
+#: src/BufferView_pimpl.C:1648 src/frontends/xforms/FormDocument.C:327
+#: src/lyxfunc.C:1797 src/lyxfunc.C:1907 src/ext_l10n.h:637
 msgid "Document"
 msgstr "Document"
 
-#: src/BufferView_pimpl.C:1648
+#: src/BufferView_pimpl.C:1649
 msgid "inserted."
 msgstr "inséré."
 
-#: src/BufferView_pimpl.C:1652
+#: src/BufferView_pimpl.C:1653
 msgid "Could not insert document"
 msgstr "Impossible d'insérer le document"
 
-#: src/BufferView_pimpl.C:1818
+#: src/BufferView_pimpl.C:1819
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
 
 # revu
-#: src/BufferView_pimpl.C:1836 src/insets/insettext.C:1458
+#: src/BufferView_pimpl.C:1837 src/insets/insettext.C:1463
 msgid "Layout "
 msgstr "Format "
 
-#: src/BufferView_pimpl.C:1837 src/insets/insettext.C:1458
+#: src/BufferView_pimpl.C:1838 src/insets/insettext.C:1463
 msgid " not known"
 msgstr " inconnu"
 
-#: src/BufferView_pimpl.C:2033 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:2034 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77 src/lyxfunc.C:1889
 msgid "Error"
 msgstr "Erreur"
 
-#: src/BufferView_pimpl.C:2034
+#: src/BufferView_pimpl.C:2035
 msgid "Couldn't find this label"
 msgstr "Impossible de trouver cette étiquette"
 
-#: src/BufferView_pimpl.C:2035
+#: src/BufferView_pimpl.C:2036
 msgid "in current document."
 msgstr "dans le document courant."
 
-#: src/BufferView_pimpl.C:2532
+#: src/BufferView_pimpl.C:2533
 msgid "Mark removed"
 msgstr "Marque enlevée"
 
-#: src/BufferView_pimpl.C:2539
+#: src/BufferView_pimpl.C:2540
 msgid "Mark set"
 msgstr "Marque posée"
 
-#: src/BufferView_pimpl.C:2670
+#: src/BufferView_pimpl.C:2671
 msgid "Mark off"
 msgstr "Marque désactivée"
 
-#: src/BufferView_pimpl.C:2683
+#: src/BufferView_pimpl.C:2684
 msgid "Mark on"
 msgstr "Marque activée"
 
-#: src/BufferView_pimpl.C:2857 src/insets/insettext.C:1511
+#: src/BufferView_pimpl.C:2858 src/insets/insettext.C:1516
 msgid "Unknown spacing argument: "
 msgstr "Paramètre d'espacement inconnu : "
 
-#: src/BufferView_pimpl.C:3212
+#: src/BufferView_pimpl.C:3213
 msgid "Word `"
 msgstr "Mot « "
 
-#: src/BufferView_pimpl.C:3370
+#: src/BufferView_pimpl.C:3371
 msgid "Unknown function!"
 msgstr "Fonction inconnue !"
 
-#: src/BufferView_pimpl.C:3633 src/BufferView_pimpl.C:3636
+#: src/BufferView_pimpl.C:3634 src/BufferView_pimpl.C:3637
 msgid "No more insets"
 msgstr "Pas d'autre insert"
 
@@ -918,4089 +917,6 @@ msgstr "Document exporté comme "
 msgid " to file `"
 msgstr " dans le fichier `"
 
-#: src/ext_l10n.h:1 src/ext_l10n.h:4 src/MenuBackend.C:541
-#: src/MenuBackend.C:548
-msgid "File|F"
-msgstr "Fichier|F"
-
-#: src/ext_l10n.h:2 src/ext_l10n.h:5 src/MenuBackend.C:542
-msgid "Edit|E"
-msgstr "Éditer|e"
-
-#: src/ext_l10n.h:3 src/ext_l10n.h:11
-msgid "Help|H"
-msgstr "Aide|A"
-
-#: src/ext_l10n.h:6
-msgid "Insert|I"
-msgstr "Insérer|I"
-
-#: src/ext_l10n.h:7
-msgid "Layout|L"
-msgstr "Format|t"
-
-#: src/ext_l10n.h:8
-msgid "View|V"
-msgstr "Visualiser|V"
-
-#: src/ext_l10n.h:9
-msgid "Navigate|N"
-msgstr "Naviguer|N"
-
-#: src/ext_l10n.h:10 src/MenuBackend.C:544
-msgid "Documents|D"
-msgstr "Documents|D"
-
-#: src/ext_l10n.h:12 src/ext_l10n.h:17 src/MenuBackend.C:511
-msgid "New...|N"
-msgstr "Nouveau|N"
-
-#: src/ext_l10n.h:13 src/ext_l10n.h:18
-msgid "New from Template...|T"
-msgstr "Nouveau avec Modèle...|M"
-
-#: src/ext_l10n.h:14 src/ext_l10n.h:19 src/MenuBackend.C:512
-msgid "Open...|O"
-msgstr "Ouvrir...|O"
-
-#: src/ext_l10n.h:15 src/ext_l10n.h:25 src/MenuBackend.C:513
-msgid "Import|I"
-msgstr "Importer|I"
-
-#: src/ext_l10n.h:16 src/ext_l10n.h:29
-msgid "Exit|x"
-msgstr "Quitter|Q"
-
-#: src/ext_l10n.h:20
-msgid "Close|C"
-msgstr "Fermer|F"
-
-#: src/ext_l10n.h:21
-msgid "Save|S"
-msgstr "Enregistrer|E"
-
-#: src/ext_l10n.h:22
-msgid "Save As...|A"
-msgstr "Enregistrer Sous...|S"
-
-#: src/ext_l10n.h:23
-msgid "Revert to Saved|R"
-msgstr "Revenir à la Sauvegarde|R"
-
-#: src/ext_l10n.h:24
-msgid "Version Control|V"
-msgstr "Contrôle de Version|V"
-
-#: src/ext_l10n.h:26
-msgid "Export|E"
-msgstr "Exporter|x"
-
-# contrainte de longueur
-#: src/ext_l10n.h:27
-msgid "Print...|P"
-msgstr "Imprimer...|p"
-
-#: src/ext_l10n.h:28
-msgid "Fax...|F"
-msgstr "Fax...|T"
-
-#: src/ext_l10n.h:30
-msgid "Register|R"
-msgstr "Initialiser le Contrôle|I"
-
-#: src/ext_l10n.h:31
-msgid "Check In Changes|I"
-msgstr "Figer cette Version|F"
-
-#: src/ext_l10n.h:32
-msgid "Check Out for Edit|O"
-msgstr "Nouvelle Version Éditable|N"
-
-#: src/ext_l10n.h:33
-msgid "Revert to Last Version|L"
-msgstr "Recharger la Version Précédente|R"
-
-#: src/ext_l10n.h:34
-msgid "Undo Last Check In|U"
-msgstr "Annuler Figer|A"
-
-#: src/ext_l10n.h:35
-msgid "Show History|H"
-msgstr "Visualiser l'Historique|H"
-
-#: src/ext_l10n.h:36
-msgid "Custom...|C"
-msgstr "Personnalisé...|e"
-
-#: src/ext_l10n.h:37 src/ext_l10n.h:54
-msgid "Preferences...|P"
-msgstr "Préférences...|P"
-
-#: src/ext_l10n.h:38 src/ext_l10n.h:55
-msgid "Reconfigure|R"
-msgstr "Reconfigurer|g"
-
-#: src/ext_l10n.h:39
-msgid "Undo|U"
-msgstr "Annuler|A"
-
-#: src/ext_l10n.h:40
-msgid "Redo|d"
-msgstr "Refaire|R"
-
-#: src/ext_l10n.h:41
-msgid "Cut|C"
-msgstr "Couper|o"
-
-#: src/ext_l10n.h:42
-msgid "Copy|o"
-msgstr "Copier|C"
-
-#: src/ext_l10n.h:43
-msgid "Paste|a"
-msgstr "Coller|l"
-
-#: src/ext_l10n.h:44
-msgid "Paste External Selection|x"
-msgstr "Copier Sélection Externe|S"
-
-#: src/ext_l10n.h:45
-msgid "Find & Replace...|F"
-msgstr "Rechercher et Remplacer...|h"
-
-#: src/ext_l10n.h:46
-msgid "Tabular|T"
-msgstr "Tableau|T"
-
-#: src/ext_l10n.h:47
-msgid "Math|M"
-msgstr "Math|M"
-
-#: src/ext_l10n.h:48
-msgid "Read Only"
-msgstr "Lecture Seule"
-
-#: src/ext_l10n.h:49
-msgid "Spellchecker...|S"
-msgstr "Correcteur Orthographique...|q"
-
-#: src/ext_l10n.h:50
-msgid "Thesaurus..."
-msgstr "Dictionnaire de Synonymes...|y"
-
-#: src/ext_l10n.h:51
-msgid "Check TeX|h"
-msgstr "Correcteur TeX|X"
-
-#: src/ext_l10n.h:52
-msgid "Remove All Error Boxes|E"
-msgstr "Enlever Toutes les Marques d'Erreur|E"
-
-#: src/ext_l10n.h:53
-msgid "Open/Close float|l"
-msgstr "Ouvrir/Fermer le Flottant|F"
-
-#: src/ext_l10n.h:56
-msgid "as Lines|L"
-msgstr "en Lignes|L"
-
-#: src/ext_l10n.h:57
-msgid "as Paragraphs|P"
-msgstr "en Paragraphes|P"
-
-#: src/ext_l10n.h:58
-msgid "Multicolumn|M"
-msgstr "Multi-Colonnes|M"
-
-#: src/ext_l10n.h:59
-msgid "Line Top|T"
-msgstr "Ligne en Haut|H"
-
-#: src/ext_l10n.h:60
-msgid "Line Bottom|B"
-msgstr "Ligne en Bas|B"
-
-#: src/ext_l10n.h:61
-msgid "Line Left|L"
-msgstr "Ligne à Gauche|G"
-
-#: src/ext_l10n.h:62
-msgid "Line Right|R"
-msgstr "Ligne à Droite|D"
-
-#: src/ext_l10n.h:63
-msgid "Align Left|e"
-msgstr "Aligner à Gauche|a"
-
-#: src/ext_l10n.h:64 src/ext_l10n.h:88
-msgid "Align Center|C"
-msgstr "Centrer|C"
-
-#: src/ext_l10n.h:65
-msgid "Align Right|i"
-msgstr "Aligner à Droite|r"
-
-#: src/ext_l10n.h:66
-msgid "V.Align Top|o"
-msgstr "Aligner en Haut|t"
-
-#: src/ext_l10n.h:67
-msgid "V.Align Center|n"
-msgstr "Centrer Verticalement|V"
-
-#: src/ext_l10n.h:68
-msgid "V.Align Bottom|V"
-msgstr "Aligner en Bas|s"
-
-#: src/ext_l10n.h:69
-msgid "Add Row|A"
-msgstr "Ajouter Rangée|j"
-
-#: src/ext_l10n.h:70
-msgid "Delete Row|w"
-msgstr "Supprimer Rangée|u"
-
-#: src/ext_l10n.h:71
-msgid "Add Column|u"
-msgstr "Ajouter Colonne|o"
-
-# contrainte de longueur
-#: src/ext_l10n.h:72
-msgid "Delete Column|D"
-msgstr "Supprimer Colonne|p"
-
-#: src/ext_l10n.h:73
-msgid "Make eqnarray|e"
-msgstr ""
-
-#: src/ext_l10n.h:74
-msgid "Make multline|m"
-msgstr ""
-
-#: src/ext_l10n.h:75
-msgid "Make align 1 column|1"
-msgstr ""
-
-#: src/ext_l10n.h:76
-msgid "Make align 2 columns|2"
-msgstr ""
-
-#: src/ext_l10n.h:77
-msgid "Make align 3 columns|3"
-msgstr ""
-
-#: src/ext_l10n.h:78
-msgid "Make alignat 2 columns|2"
-msgstr ""
-
-#: src/ext_l10n.h:79
-msgid "Make alignat 3 columns|3"
-msgstr ""
-
-#: src/ext_l10n.h:80
-msgid "Toggle numbering|n"
-msgstr "(Dés)Activer Numérotation|N"
-
-#: src/ext_l10n.h:81
-msgid "Toggle numbering of line|u"
-msgstr "(Dés)Activer Numérotation de la Ligne|m"
-
-#: src/ext_l10n.h:82
-msgid "Toggle limits|l"
-msgstr "(Dés)Activer Limites|i"
-
-#: src/ext_l10n.h:83
-msgid "Inline formula|I"
-msgstr "Formule En Ligne|L"
-
-#: src/ext_l10n.h:84
-msgid "Displayed formula|D"
-msgstr "Formule Hors Ligne|H"
-
-#: src/ext_l10n.h:85
-msgid "Eqnarray environment|q"
-msgstr "Environnement Tableau d'Équations|q"
-
-#: src/ext_l10n.h:86
-msgid "Align environment|A"
-msgstr "Environnement Aligné|A"
-
-#: src/ext_l10n.h:87
-msgid "Align Left|f"
-msgstr "Aligner à Gauche|G"
-
-#: src/ext_l10n.h:89
-msgid "Align Right|R"
-msgstr "Aligner à Droite|D"
-
-#: src/ext_l10n.h:90
-msgid "V.Align Top|T"
-msgstr "Aligner en Haut|t"
-
-#: src/ext_l10n.h:91
-msgid "V.Align Center|e"
-msgstr "Centrer Verticalement|V"
-
-#: src/ext_l10n.h:92
-msgid "V.Align Bottom|B"
-msgstr "Aligner en Bas|s"
-
-#: src/ext_l10n.h:93
-msgid "Add Row"
-msgstr "Ajouter Rangée|j"
-
-#: src/ext_l10n.h:94
-msgid "Delete Row"
-msgstr "Supprimer Rangée|u"
-
-#: src/ext_l10n.h:95
-msgid "Add Column"
-msgstr "Ajouter Colonne|o"
-
-#: src/ext_l10n.h:96
-msgid "Delete Column"
-msgstr "Supprimer Colonne|p"
-
-#: src/ext_l10n.h:97
-msgid "Math|h"
-msgstr "Math|M"
-
-#: src/ext_l10n.h:98
-msgid "Special Character|S"
-msgstr "Caractère Spécial|S"
-
-#: src/ext_l10n.h:99
-msgid "Citation Reference...|C"
-msgstr "Citation...|C"
-
-#: src/ext_l10n.h:100
-msgid "Cross Reference...|R"
-msgstr "Référence Croisée...|R"
-
-#: src/ext_l10n.h:101
-msgid "Label...|L"
-msgstr "Étiquette...|q"
-
-#: src/ext_l10n.h:102
-msgid "Footnote|F"
-msgstr "Note en Bas de Page|B"
-
-#: src/ext_l10n.h:103
-msgid "Marginal Note|M"
-msgstr "Note en Marge|M"
-
-# contrainte de longueur
-#: src/ext_l10n.h:104
-msgid "Index Entry...|I"
-msgstr "Entrée d'Index...|d"
-
-#: src/ext_l10n.h:105
-msgid "Index Entry of Preceding Word|W"
-msgstr "Indexer le Mot|x"
-
-#: src/ext_l10n.h:106
-msgid "URL...|U"
-msgstr "URL...|U"
-
-#: src/ext_l10n.h:107 src/ext_l10n.h:162
-msgid "Note|N"
-msgstr "Note|N"
-
-#: src/ext_l10n.h:108
-msgid "Lists & TOC|O"
-msgstr "Listes & TdM|L"
-
-#: src/ext_l10n.h:109
-msgid "TeX|T"
-msgstr "TeX|T"
-
-#: src/ext_l10n.h:110
-msgid "Minipage|p"
-msgstr "Minipage|p"
-
-#: src/ext_l10n.h:111
-msgid "Graphics...|G"
-msgstr "Graphique...|G"
-
-#: src/ext_l10n.h:112
-msgid "Tabular Material...|b"
-msgstr "Tableau...|b"
-
-#: src/ext_l10n.h:113
-msgid "Floats|a"
-msgstr "Flottants|o"
-
-#: src/ext_l10n.h:114
-msgid "Include File...|d"
-msgstr "Inclure Fichier...|u"
-
-#: src/ext_l10n.h:115
-msgid "Insert File|e"
-msgstr "Insérer Fichier|I"
-
-#: src/ext_l10n.h:116
-msgid "External Material...|x"
-msgstr "Objet Externe...|E"
-
-#: src/ext_l10n.h:117
-msgid "Superscript|S"
-msgstr "Exposant|x"
-
-#: src/ext_l10n.h:118
-msgid "Subscript|u"
-msgstr "Indice|I"
-
-#: src/ext_l10n.h:119
-msgid "HFill|H"
-msgstr "Ressort Horizontal|H"
-
-#: src/ext_l10n.h:120
-msgid "Hyphenation Point|P"
-msgstr "Point de Césure|C"
-
-#: src/ext_l10n.h:121
-msgid "Ligature break|k"
-msgstr "Séparation de Ligature|a"
-
-#: src/ext_l10n.h:122
-msgid "Protected Blank|B"
-msgstr "Espace Insécable|E"
-
-#: src/ext_l10n.h:123
-msgid "Linebreak|L"
-msgstr "Passage à la Ligne|L"
-
-#: src/ext_l10n.h:124
-msgid "Ellipsis|i"
-msgstr "Points de Suspension|S"
-
-#: src/ext_l10n.h:125
-msgid "End of Sentence|E"
-msgstr "Point Final|F"
-
-#: src/ext_l10n.h:126
-msgid "Ordinary Quote|Q"
-msgstr "Guillemet Droit|G"
-
-#: src/ext_l10n.h:127
-msgid "Menu Separator|M"
-msgstr "Séparateur de Menu|M"
-
-#: src/ext_l10n.h:128
-msgid "Inline Formula|I"
-msgstr "Formule En Ligne|L"
-
-#: src/ext_l10n.h:129
-msgid "Display Formula|D"
-msgstr "Formule Hors Ligne|H"
-
-#: src/ext_l10n.h:130
-msgid "Eqnarray environment|E"
-msgstr "Environnement Tableau d'Équations|E"
-
-#: src/ext_l10n.h:131
-msgid "AMS align environment|A"
-msgstr "Environnement AMS align|A"
-
-#: src/ext_l10n.h:132
-msgid "AMS alignat environment|t"
-msgstr "Environnement AMS alignat|M"
-
-#: src/ext_l10n.h:133
-msgid "AMS xalignat environment|x"
-msgstr "Environnement AMS xalignat|S"
-
-#: src/ext_l10n.h:134
-msgid "AMS xxalignat environment"
-msgstr "Environnement AMS xxalignat|x"
-
-#: src/ext_l10n.h:135
-msgid "Array environment|y"
-msgstr "Environnement Tableau|b"
-
-#: src/ext_l10n.h:136
-msgid "Cases environment|C"
-msgstr "Environnement Cas|C"
-
-#: src/ext_l10n.h:137
-msgid "Math Panel...|l"
-msgstr "Palette Mathématique...|P"
-
-#: src/ext_l10n.h:138
-msgid "Table of Contents|C"
-msgstr "Table des Matières|M"
-
-#: src/ext_l10n.h:139
-msgid "Index List|I"
-msgstr "Index|I"
-
-#: src/ext_l10n.h:140
-msgid "BibTeX Reference...|B"
-msgstr "Références BibTeX...|B"
-
-#: src/ext_l10n.h:141
-msgid "LyX Document...|X"
-msgstr "Document LyX...|X"
-
-#: src/ext_l10n.h:142
-msgid "Ascii as Lines...|L"
-msgstr "Ascii en Lignes...|L"
-
-#: src/ext_l10n.h:143
-msgid "Ascii as Paragraphs...|P"
-msgstr "Ascii en Paragraphes...|P"
-
-#: src/ext_l10n.h:144
-msgid "Character...|C"
-msgstr "Caractère...|C"
-
-#: src/ext_l10n.h:145
-msgid "Paragraph...|P"
-msgstr "Paragraphe...|P"
-
-#: src/ext_l10n.h:146
-msgid "Document...|D"
-msgstr "Document...|D"
-
-#: src/ext_l10n.h:147
-msgid "Tabular...|T"
-msgstr "Tableau...|T"
-
-#: src/ext_l10n.h:148
-msgid "Emphasize Style|E"
-msgstr "En Évidence|E"
-
-#: src/ext_l10n.h:149
-msgid "Noun Style|N"
-msgstr "Nom Propre|N"
-
-#: src/ext_l10n.h:150
-msgid "Bold Style|B"
-msgstr "Gras|G"
-
-#: src/ext_l10n.h:151
-msgid "TeX Style|X"
-msgstr "TeX|X"
-
-#: src/ext_l10n.h:152
-msgid "Change Environment Depth|v"
-msgstr "Changer la Profondeur d'Environnement|f"
-
-#: src/ext_l10n.h:153
-msgid "Preamble...|r"
-msgstr "Préambule...|m"
-
-#: src/ext_l10n.h:154
-msgid "Start Appendix here|A"
-msgstr "Appendice|A"
-
-#: src/ext_l10n.h:155
-msgid "Build Program|B"
-msgstr "Compiler|C"
-
-#: src/ext_l10n.h:156
-msgid "Update|U"
-msgstr "Mise à Jour|J"
-
-#: src/ext_l10n.h:157
-msgid "LaTeX Logfile|L"
-msgstr "Fichier log LaTeX|L"
-
-#: src/ext_l10n.h:158
-msgid "Table of Contents|T"
-msgstr "Table des Matières|M"
-
-#: src/ext_l10n.h:159
-msgid "Child processes|C"
-msgstr "Processus Enfantés|c"
-
-#: src/ext_l10n.h:160
-msgid "TeX Information|X"
-msgstr "Informations TeX|X"
-
-#: src/ext_l10n.h:161
-msgid "Error|E"
-msgstr "Erreur|E"
-
-#: src/ext_l10n.h:163
-msgid "Refs|R"
-msgstr "Référence|R"
-
-#: src/ext_l10n.h:164
-msgid "Bookmarks|B"
-msgstr "Signets|S"
-
-#: src/ext_l10n.h:165
-msgid "Save Bookmark 1|S"
-msgstr "Enregistrer signet 1|E"
-
-#: src/ext_l10n.h:166
-msgid "Save Bookmark 2"
-msgstr "Enregistrer signet 2|n"
-
-#: src/ext_l10n.h:167
-msgid "Save Bookmark 3"
-msgstr "Enregistrer signet 3|r"
-
-#: src/ext_l10n.h:168
-msgid "Goto Bookmark 1|1"
-msgstr "Aller au signet 1|1"
-
-#: src/ext_l10n.h:169
-msgid "Goto Bookmark 2|2"
-msgstr "Aller au signet 2|2"
-
-#: src/ext_l10n.h:170
-msgid "Goto Bookmark 3|3"
-msgstr "Aller au signet 3|3"
-
-#: src/ext_l10n.h:171
-msgid "Tooltips|o"
-msgstr "InfoBulles|B"
-
-#: src/ext_l10n.h:172
-msgid "Introduction|I"
-msgstr "Introduction|I"
-
-#: src/ext_l10n.h:173
-msgid "Tutorial|T"
-msgstr "Manuel d'Apprentissage|A"
-
-#: src/ext_l10n.h:174
-msgid "User's Guide|U"
-msgstr "Guide de l'Utilisateur|U"
-
-#: src/ext_l10n.h:175
-msgid "Extended Features|E"
-msgstr "Options Avancées|O"
-
-#: src/ext_l10n.h:176
-msgid "Customization|C"
-msgstr "Personnalisation|P"
-
-#: src/ext_l10n.h:177
-msgid "Reference Manual|R"
-msgstr "Manuel de Référence|R"
-
-#: src/ext_l10n.h:178
-msgid "FAQ|F"
-msgstr "FAQ|F"
-
-#: src/ext_l10n.h:179
-msgid "Table of Contents|a"
-msgstr "Table des Matières|M"
-
-#: src/ext_l10n.h:180
-msgid "LaTeX Configuration|L"
-msgstr "Configuration LaTeX|X"
-
-#: src/ext_l10n.h:181
-msgid "About LyX|X"
-msgstr "À Propos de LyX...|L"
-
-#: src/ext_l10n.h:183
-msgid "Accepted"
-msgstr "Accepté"
-
-#: src/ext_l10n.h:184
-msgid "Acknowledgement"
-msgstr "Remerciement"
-
-#: src/ext_l10n.h:185
-msgid "Acknowledgement*"
-msgstr "Remerciement*"
-
-#: src/ext_l10n.h:186
-msgid "Acknowledgements"
-msgstr "Remerciements"
-
-#: src/ext_l10n.h:187
-msgid "Acknowledgments"
-msgstr "Remerciements"
-
-#: src/ext_l10n.h:188
-msgid "ACT"
-msgstr "ACTE"
-
-#: src/ext_l10n.h:189
-msgid "Addchap"
-msgstr "AjoutChap"
-
-#: src/ext_l10n.h:190
-msgid "Addchap*"
-msgstr "AjoutChap*"
-
-#: src/ext_l10n.h:191
-msgid "Addition"
-msgstr "Addition"
-
-#: src/ext_l10n.h:192
-msgid "Address"
-msgstr "Adresse"
-
-#: src/ext_l10n.h:193
-msgid "AddressForOffprints"
-msgstr "AdressePourOffprints"
-
-#: src/ext_l10n.h:194
-msgid "Addsec"
-msgstr "AjoutSec"
-
-#: src/ext_l10n.h:195
-msgid "Addsec*"
-msgstr "AjoutSec*"
-
-#: src/ext_l10n.h:196
-msgid "Adresse"
-msgstr "Adresse"
-
-#: src/ext_l10n.h:197
-msgid "Affil"
-msgstr "Appart."
-
-#: src/ext_l10n.h:198
-msgid "Affiliation"
-msgstr "Affiliation"
-
-#: src/ext_l10n.h:199 src/FloatList.C:47
-msgid "Algorithm"
-msgstr "Algorithme"
-
-#: src/ext_l10n.h:200
-msgid "AMS"
-msgstr "AMS"
-
-#: src/ext_l10n.h:201
-msgid "And"
-msgstr "Et"
-
-#: src/ext_l10n.h:202
-msgid "Anlagen"
-msgstr "Anlagen"
-
-#: src/ext_l10n.h:203
-msgid "Anrede"
-msgstr "Anrede"
-
-#: src/ext_l10n.h:204
-msgid "Appendices"
-msgstr "Appendices"
-
-#: src/ext_l10n.h:205
-msgid "Appendix"
-msgstr "Appendice"
-
-#: src/ext_l10n.h:206
-msgid "Arrow"
-msgstr "Flèche"
-
-#: src/ext_l10n.h:207
-msgid "AT_RISE:"
-msgstr "LEVER_RIDEAU:"
-
-#: src/ext_l10n.h:208
-msgid "Author"
-msgstr "Auteur"
-
-#: src/ext_l10n.h:209
-msgid "Author_Email"
-msgstr "EMail_Auteur"
-
-#: src/ext_l10n.h:210
-msgid "Authorgroup"
-msgstr "GroupeAuteur"
-
-#: src/ext_l10n.h:211
-msgid "Authorinfo"
-msgstr "InfoAuteur"
-
-#: src/ext_l10n.h:212
-msgid "Author_Running"
-msgstr "Auteur_Courant"
-
-#: src/ext_l10n.h:213
-msgid "Author_URL"
-msgstr "URL_Auteur"
-
-#: src/ext_l10n.h:214
-msgid "Axiom"
-msgstr "Axiome"
-
-#: src/ext_l10n.h:215
-msgid "Backaddress"
-msgstr "Adresse_Retour"
-
-#: src/ext_l10n.h:216
-msgid "Bank"
-msgstr "Banque"
-
-#: src/ext_l10n.h:217
-msgid "BankAccount"
-msgstr "CompteBancaire"
-
-#: src/ext_l10n.h:218
-msgid "BankCode"
-msgstr "CodeBanque"
-
-#: src/ext_l10n.h:219
-msgid "Betreff"
-msgstr "Betreff"
-
-#: src/ext_l10n.h:220
-msgid "Bibliography"
-msgstr "Bibliographie"
-
-#: src/ext_l10n.h:221
-msgid "Biography"
-msgstr "Biographie"
-
-#: src/ext_l10n.h:222
-msgid "BLZ"
-msgstr "BLZ"
-
-#: src/ext_l10n.h:223
-msgid "BoardCentered"
-msgstr ""
-
-#: src/ext_l10n.h:224
-msgid "Brieftext"
-msgstr "Brieftext"
-
-#: src/ext_l10n.h:225
-msgid "Caption"
-msgstr "Légende"
-
-#: src/ext_l10n.h:226
-msgid "Case"
-msgstr "Cas"
-
-#: src/ext_l10n.h:227 src/frontends/qt2/lengthcombo.C:29
-msgid "cc"
-msgstr "cc"
-
-#: src/ext_l10n.h:228
-msgid "CC"
-msgstr "CC"
-
-#: src/ext_l10n.h:229
-msgid "CenteredCaption"
-msgstr "LégendeCentrée"
-
-#: src/ext_l10n.h:230
-msgid "Chapter"
-msgstr "Chapitre"
-
-#: src/ext_l10n.h:231
-msgid "Chapter*"
-msgstr "Chapitre*"
-
-#: src/ext_l10n.h:232
-msgid "Chapter_Exercises"
-msgstr "Exercices_Chapitre"
-
-#: src/ext_l10n.h:233
-msgid "ChessBoard"
-msgstr "Échiquier"
-
-#: src/ext_l10n.h:234
-msgid "Citta"
-msgstr "Citta"
-
-#: src/ext_l10n.h:235
-msgid "Claim"
-msgstr "Affirmation"
-
-#: src/ext_l10n.h:236
-msgid "Claim*"
-msgstr "Affirmation*"
-
-#: src/ext_l10n.h:237
-msgid "Closing"
-msgstr "Fermeture"
-
-#: src/ext_l10n.h:238
-msgid "Code"
-msgstr "Code"
-
-#: src/ext_l10n.h:239
-msgid "Comment"
-msgstr "Commentaire"
-
-#: src/ext_l10n.h:240
-msgid "Conclusion"
-msgstr "Conclusion"
-
-#: src/ext_l10n.h:241
-msgid "Conclusion*"
-msgstr "Conclusion*"
-
-#: src/ext_l10n.h:242
-msgid "Condition"
-msgstr "Condition"
-
-#: src/ext_l10n.h:243
-msgid "Conjecture"
-msgstr "Conjecture"
-
-#: src/ext_l10n.h:244
-msgid "Conjecture*"
-msgstr "Conjecture*"
-
-#: src/ext_l10n.h:245
-msgid "CopNum"
-msgstr "NumCopie"
-
-#: src/ext_l10n.h:246 src/ext_l10n.h:534
-msgid "Copyright"
-msgstr "Copyright"
-
-#: src/ext_l10n.h:247
-msgid "Corollary"
-msgstr "Corollaire"
-
-#: src/ext_l10n.h:248
-msgid "Corollary*"
-msgstr "Corollaire*"
-
-#: src/ext_l10n.h:249
-msgid "Criterion"
-msgstr "Critère"
-
-#: src/ext_l10n.h:250
-msgid "CrossList"
-msgstr "ListeCroisée"
-
-#: src/ext_l10n.h:251
-msgid "Current_Address"
-msgstr "Adresse_Actuelle"
-
-#: src/ext_l10n.h:252
-msgid "CURTAIN"
-msgstr "RIDEAU"
-
-#: src/ext_l10n.h:253
-msgid "Customer"
-msgstr "Client"
-
-# contrainte de longueur
-#: src/ext_l10n.h:254
-msgid "Data"
-msgstr "Données"
-
-#: src/ext_l10n.h:255
-msgid "Date"
-msgstr "Date"
-
-#: src/ext_l10n.h:256
-msgid "Datum"
-msgstr "Datum"
-
-#: src/ext_l10n.h:257
-msgid "Dedication"
-msgstr "Dédicace"
-
-#: src/ext_l10n.h:258
-msgid "Dedicatory"
-msgstr "Dédicace"
-
-#: src/ext_l10n.h:259
-msgid "Definition"
-msgstr "Définition"
-
-#: src/ext_l10n.h:260
-msgid "Definition*"
-msgstr "Définition*"
-
-#: src/ext_l10n.h:261
-msgid "Description"
-msgstr "Description"
-
-#: src/ext_l10n.h:262
-msgid "Dialogue"
-msgstr "Dialogue"
-
-#: src/ext_l10n.h:263
-msgid "Email"
-msgstr "Email"
-
-#: src/ext_l10n.h:264
-msgid "EMail"
-msgstr "EMail"
-
-#: src/ext_l10n.h:265
-msgid "encl"
-msgstr "PJ"
-
-#: src/ext_l10n.h:266
-msgid "Encl."
-msgstr "P.J."
-
-#: src/ext_l10n.h:267
-msgid "Encl"
-msgstr "P.J."
-
-#: src/ext_l10n.h:268
-msgid "End_All_Slides"
-msgstr "Fin_Diapos"
-
-#: src/ext_l10n.h:269
-msgid "Enumerate"
-msgstr "Énumération"
-
-#: src/ext_l10n.h:270
-msgid "Example"
-msgstr "Exemple"
-
-#: src/ext_l10n.h:271
-msgid "Example*"
-msgstr "Exemple*"
-
-#: src/ext_l10n.h:272
-msgid "Exercise"
-msgstr "Exercice"
-
-#: src/ext_l10n.h:273
-msgid "EXT."
-msgstr "EXT."
-
-# contrainte de longueur
-#: src/ext_l10n.h:274
-msgid "Extratitle"
-msgstr "TitreSuppl."
-
-#: src/ext_l10n.h:275
-msgid "Fact"
-msgstr "Fait"
-
-#: src/ext_l10n.h:276
-msgid "Fact*"
-msgstr "Fait*"
-
-#: src/ext_l10n.h:277
-msgid "FADE_IN:"
-msgstr ""
-
-#: src/ext_l10n.h:278
-msgid "FADE_OUT:"
-msgstr ""
-
-#: src/ext_l10n.h:279
-msgid "FADE_OUT"
-msgstr ""
-
-#: src/ext_l10n.h:280
-msgid "FigCaption"
-msgstr "LégendeFig"
-
-#: src/ext_l10n.h:281
-msgid "FirstAuthor"
-msgstr "PremierAuteur"
-
-# contrainte de longueur
-#: src/ext_l10n.h:282
-msgid "FirstName"
-msgstr "Prénom"
-
-#: src/ext_l10n.h:283
-msgid "FitBitmap"
-msgstr "AjusteBitmap"
-
-#: src/ext_l10n.h:284
-msgid "FitFigure"
-msgstr "AjusteFigure"
-
-#: src/ext_l10n.h:285
-msgid "Foilhead"
-msgstr ""
-
-#: src/ext_l10n.h:286
-msgid "Footernote"
-msgstr "NoteBasPage"
-
-#: src/ext_l10n.h:287
-msgid "FourAffiliations"
-msgstr "QuatreAffiliations"
-
-#: src/ext_l10n.h:288
-msgid "FourAuthors"
-msgstr "QuatreAuteurs"
-
-#: src/ext_l10n.h:289
-msgid "FrontMatter"
-msgstr ""
-
-#: src/ext_l10n.h:290
-msgid "General"
-msgstr "Général"
-
-#: src/ext_l10n.h:291
-msgid "Gruss"
-msgstr "Gruss"
-
-#: src/ext_l10n.h:292
-msgid "Headnote"
-msgstr "En-tête"
-
-#: src/ext_l10n.h:293
-msgid "HideMoves"
-msgstr ""
-
-#: src/ext_l10n.h:294
-msgid "HighLight"
-msgstr ""
-
-#: src/ext_l10n.h:295
-msgid "HTTP"
-msgstr "HTTP"
-
-#: src/ext_l10n.h:296
-msgid "IhrSchreiben"
-msgstr "IhrSchreiben"
-
-#: src/ext_l10n.h:297
-msgid "IhrZeichen"
-msgstr "IhrZeichen"
-
-#: src/ext_l10n.h:298
-msgid "Institute"
-msgstr "Institut"
-
-#: src/ext_l10n.h:299
-msgid "Institution"
-msgstr "Institution"
-
-#: src/ext_l10n.h:300
-msgid "INT."
-msgstr "INT."
-
-#: src/ext_l10n.h:301
-msgid "INTERCUT"
-msgstr ""
-
-#: src/ext_l10n.h:302
-msgid "InvisibleText"
-msgstr "TexteInvisible"
-
-#: src/ext_l10n.h:303
-msgid "Invoice"
-msgstr "Facture"
-
-#: src/ext_l10n.h:304
-msgid "Itemize"
-msgstr "ListePuces"
-
-#: src/ext_l10n.h:305
-msgid "Journal"
-msgstr "Journal"
-
-#: src/ext_l10n.h:306
-msgid "Keyword"
-msgstr "Mot-Clé"
-
-#: src/ext_l10n.h:307
-msgid "Keywords"
-msgstr "Mots-Clés"
-
-#: src/ext_l10n.h:308
-msgid "KnightMove"
-msgstr ""
-
-#: src/ext_l10n.h:309
-msgid "Konto"
-msgstr "Konto"
-
-#: src/ext_l10n.h:310
-msgid "Labeling"
-msgstr "Étiquetage"
-
-#: src/ext_l10n.h:311
-msgid "Land"
-msgstr "Pays"
-
-#: src/ext_l10n.h:312
-msgid "LandscapeSlide"
-msgstr "DiapoPaysage"
-
-#: src/ext_l10n.h:313
-msgid "LaTeX"
-msgstr "LaTeX"
-
-#: src/ext_l10n.h:314
-msgid "LaTeX_Title"
-msgstr "Titre_LaTeX"
-
-#: src/ext_l10n.h:315
-msgid "Left_Header"
-msgstr "En-tête_Gauche"
-
-#: src/ext_l10n.h:316
-msgid "Lemma"
-msgstr "Lemme"
-
-#: src/ext_l10n.h:317
-msgid "Lemma*"
-msgstr "Lemme*"
-
-#: src/ext_l10n.h:318
-msgid "Letter"
-msgstr "Lettre"
-
-#: src/ext_l10n.h:319
-msgid "List"
-msgstr "Liste"
-
-#: src/ext_l10n.h:320
-msgid "ListOfSlides"
-msgstr "ListeDiapos"
-
-#: src/ext_l10n.h:321
-msgid "Literal"
-msgstr "Littéral"
-
-#: src/ext_l10n.h:322
-msgid "Location"
-msgstr "Adresse"
-
-#: src/ext_l10n.h:323
-msgid "Lowertitleback"
-msgstr "VersoTitreBas"
-
-#: src/ext_l10n.h:324
-msgid "LyX-Code"
-msgstr "LyX-Code"
-
-#: src/ext_l10n.h:325
-msgid "Mail"
-msgstr "Courrier"
-
-#: src/ext_l10n.h:326
-msgid "Mainline"
-msgstr ""
-
-#: src/ext_l10n.h:327
-msgid "MarkBoth"
-msgstr "DoubleMarque"
-
-#: src/ext_l10n.h:328
-msgid "MathLetters"
-msgstr "LettresMathématiques"
-
-#: src/ext_l10n.h:329
-msgid "MeinZeichen"
-msgstr "MeinZeichen"
-
-#: src/ext_l10n.h:330
-msgid "Minisec"
-msgstr "Minisec"
-
-#: src/ext_l10n.h:331 src/frontends/xforms/Menubar_pimpl.C:279
-#: src/frontends/xforms/Menubar_pimpl.C:352
-msgid "More"
-msgstr "Poursuivre"
-
-#: src/ext_l10n.h:332
-msgid "msnumber"
-msgstr ""
-
-#: src/ext_l10n.h:333
-msgid "My_Address"
-msgstr "Mon_Adresse"
-
-#: src/ext_l10n.h:334
-msgid "Myref"
-msgstr "Ma_Réf"
-
-#: src/ext_l10n.h:335
-msgid "MyRef"
-msgstr "MesRéfs"
-
-# Nom tout simplement ?
-#: src/ext_l10n.h:336
-msgid "Name"
-msgstr "Destinataire"
-
-#: src/ext_l10n.h:337
-msgid "Narrative"
-msgstr "Narratif"
-
-#: src/ext_l10n.h:338
-msgid "Notation"
-msgstr "Notation"
-
-#: src/ext_l10n.h:339
-msgid "Note"
-msgstr "Note"
-
-#: src/ext_l10n.h:340
-msgid "Note*"
-msgstr "Note*"
-
-#: src/ext_l10n.h:341
-msgid "NoteToEditor"
-msgstr "Note_À_l'Éditeur"
-
-#: src/ext_l10n.h:342
-msgid "Offprint"
-msgstr "Offprint"
-
-#: src/ext_l10n.h:343
-msgid "Offprints"
-msgstr "Offprints"
-
-#: src/ext_l10n.h:344
-msgid "Offsets"
-msgstr "Offsets"
-
-#: src/ext_l10n.h:345
-msgid "Oggetto"
-msgstr "Oggetto"
-
-#: src/ext_l10n.h:346
-msgid "Opening"
-msgstr "Ouverture"
-
-#: src/ext_l10n.h:347
-msgid "Ort"
-msgstr "Ort"
-
-#: src/ext_l10n.h:348
-msgid "Overlay"
-msgstr "SurCouche"
-
-#: src/ext_l10n.h:349
-msgid "PACS"
-msgstr ""
-
-#: src/ext_l10n.h:350 src/ext_l10n.h:920
-msgid "Paragraph"
-msgstr "Paragraphe"
-
-#: src/ext_l10n.h:351
-msgid "Paragraph*"
-msgstr "Paragraphe*"
-
-#: src/ext_l10n.h:352
-msgid "Part"
-msgstr "Partie"
-
-#: src/ext_l10n.h:353
-msgid "Part*"
-msgstr "Partie*"
-
-#: src/ext_l10n.h:354
-msgid "Petit"
-msgstr "Petit"
-
-#: src/ext_l10n.h:355
-msgid "Phone"
-msgstr "Téléphone"
-
-# Placement ou endroit ?
-#: src/ext_l10n.h:356
-msgid "Place"
-msgstr ""
-
-#: src/ext_l10n.h:357
-msgid "PlaceFigure"
-msgstr "PlacementFigure"
-
-#: src/ext_l10n.h:358
-msgid "PlaceTable"
-msgstr "PlacementTableau"
-
-#: src/ext_l10n.h:359
-msgid "PortraitSlide"
-msgstr "DiapoPortrait"
-
-#: src/ext_l10n.h:360
-msgid "PostalCommend"
-msgstr ""
-
-#: src/ext_l10n.h:361
-msgid "PostalComment"
-msgstr ""
-
-#: src/ext_l10n.h:362
-msgid "Postvermerk"
-msgstr "Postvermerk"
-
-#: src/ext_l10n.h:363
-msgid "Preprint"
-msgstr "Preprint"
-
-#: src/ext_l10n.h:364
-msgid "Problem"
-msgstr "Problème"
-
-#: src/ext_l10n.h:365
-msgid "ProgressContents"
-msgstr ""
-
-#: src/ext_l10n.h:366
-msgid "Proof"
-msgstr "Preuve"
-
-#: src/ext_l10n.h:367
-msgid "Property"
-msgstr "Propriété"
-
-#: src/ext_l10n.h:368
-msgid "Proposition"
-msgstr "Proposition"
-
-#: src/ext_l10n.h:369
-msgid "Proposition*"
-msgstr "Proposition*"
-
-#: src/ext_l10n.h:370
-msgid "ps"
-msgstr "ps"
-
-#: src/ext_l10n.h:371
-msgid "PS"
-msgstr "PS"
-
-#: src/ext_l10n.h:372
-msgid "Publishers"
-msgstr "Éditeurs"
-
-#: src/ext_l10n.h:373
-msgid "Question"
-msgstr "Question"
-
-#: src/ext_l10n.h:374
-msgid "Quotation"
-msgstr "Citation"
-
-#: src/ext_l10n.h:375
-msgid "Quote"
-msgstr "Cite"
-
-#: src/ext_l10n.h:376
-msgid "Received"
-msgstr "Reçu"
-
-#: src/ext_l10n.h:377 src/ext_l10n.h:1101 src/ext_l10n.h:1109
-#: src/frontends/xforms/FormRef.C:33
-msgid "Reference"
-msgstr "Référence"
-
-#: src/ext_l10n.h:379
-msgid "Remark"
-msgstr "Remarque"
-
-#: src/ext_l10n.h:380
-msgid "Remark*"
-msgstr "Remarque*"
-
-#: src/ext_l10n.h:381
-msgid "Remarks"
-msgstr "Remarques"
-
-#: src/ext_l10n.h:382
-msgid "RetourAdresse"
-msgstr "AdresseRetour"
-
-#: src/ext_l10n.h:383
-msgid "ReturnAddress"
-msgstr "AdresseRetour"
-
-#: src/ext_l10n.h:384
-msgid "Revision"
-msgstr "Révision"
-
-#: src/ext_l10n.h:385
-msgid "RevisionHistory"
-msgstr "HistoriqueRévisions"
-
-#: src/ext_l10n.h:386
-msgid "RevisionRemark"
-msgstr "RemarqueRévision"
-
-#: src/ext_l10n.h:387
-msgid "REVTEX_Title"
-msgstr "Titre_REVTEX"
-
-#: src/ext_l10n.h:388
-msgid "Right_Address"
-msgstr "Adresse_À_Droite"
-
-#: src/ext_l10n.h:389
-msgid "Right_Header"
-msgstr "En-tête_Droite"
-
-#: src/ext_l10n.h:390
-msgid "RightHeader"
-msgstr "En-têteDroite"
-
-#: src/ext_l10n.h:391
-msgid "Rotatefoilhead"
-msgstr ""
-
-#: src/ext_l10n.h:392
-msgid "RunningAuthor"
-msgstr "AuteurCourant"
-
-#: src/ext_l10n.h:393
-msgid "Running_LaTeX_Title"
-msgstr "Titre_LaTeX_Courant"
-
-#: src/ext_l10n.h:394
-msgid "RunningTitle"
-msgstr "TitreCourant"
-
-#: src/ext_l10n.h:395
-msgid "Scene"
-msgstr "Scène"
-
-#: src/ext_l10n.h:396
-msgid "SCENE"
-msgstr "SCÈNE"
-
-#: src/ext_l10n.h:397
-msgid "SCENE*"
-msgstr "SCÈNE*"
-
-#: src/ext_l10n.h:398
-msgid "Scrap"
-msgstr "Scrap"
-
-#: src/ext_l10n.h:399
-msgid "Section"
-msgstr "Section"
-
-#: src/ext_l10n.h:400
-msgid "Section*"
-msgstr "Section*"
-
-#: src/ext_l10n.h:401
-msgid "Send_To_Address"
-msgstr "Envoi_À_Adresse"
-
-#: src/ext_l10n.h:402
-msgid "Seriate"
-msgstr ""
-
-#: src/ext_l10n.h:403
-msgid "SGML"
-msgstr "SGML"
-
-#: src/ext_l10n.h:404
-msgid "ShortFoilhead"
-msgstr ""
-
-#: src/ext_l10n.h:405
-msgid "ShortRotatefoilhead"
-msgstr ""
-
-#: src/ext_l10n.h:406
-msgid "ShortTitle"
-msgstr "TitreCourt"
-
-#: src/ext_l10n.h:407
-msgid "Signature"
-msgstr "Signature"
-
-# contrainte de longueur
-#: src/ext_l10n.h:408
-msgid "Slide"
-msgstr "Diapo"
-
-# contrainte de longueur
-#: src/ext_l10n.h:409
-msgid "Slide*"
-msgstr "Diapo*"
-
-#: src/ext_l10n.h:410
-msgid "SlideContents"
-msgstr "ContenuDiapo"
-
-#: src/ext_l10n.h:411
-msgid "SlideHeading"
-msgstr "TitreDiapo"
-
-#: src/ext_l10n.h:412
-msgid "SlideSubHeading"
-msgstr "SousTitreDiapo"
-
-#: src/ext_l10n.h:413
-msgid "Solution"
-msgstr "Solution"
-
-# ou "Acteur" ou "Intervenant" (Hollywood/Broadway)
-#: src/ext_l10n.h:414
-msgid "Speaker"
-msgstr "Personnage"
-
-# contrainte de longueur
-#: src/ext_l10n.h:415
-msgid "Specialmail"
-msgstr "CourrierSpécial"
-
-#: src/ext_l10n.h:416
-msgid "Stadt"
-msgstr "Stadt"
-
-#: src/ext_l10n.h:417 src/insets/insetref.C:110
-msgid "Standard"
-msgstr "Standard"
-
-#: src/ext_l10n.h:418
-msgid "State"
-msgstr "État"
-
-#: src/ext_l10n.h:419
-msgid "Strasse"
-msgstr "Strasse"
-
-#: src/ext_l10n.h:420
-msgid "Street"
-msgstr "Rue"
-
-#: src/ext_l10n.h:421
-msgid "Subject"
-msgstr "Sujet"
-
-#: src/ext_l10n.h:422
-msgid "Subjectclass"
-msgstr ""
-
-#: src/ext_l10n.h:423
-msgid "Subparagraph"
-msgstr "SousParagraphe"
-
-#: src/ext_l10n.h:424
-msgid "Subparagraph*"
-msgstr "SousParagraphe*"
-
-#: src/ext_l10n.h:425
-msgid "Subsection"
-msgstr "SousSection"
-
-#: src/ext_l10n.h:426
-msgid "Subsection*"
-msgstr "SousSection*"
-
-#: src/ext_l10n.h:427
-msgid "SubSection"
-msgstr "SousSection"
-
-#: src/ext_l10n.h:428
-msgid "Subsubsection"
-msgstr "SousSousSection"
-
-#: src/ext_l10n.h:429
-msgid "Subsubsection*"
-msgstr "SousSousSection*"
-
-#: src/ext_l10n.h:430
-msgid "Subtitle"
-msgstr "SousTitre"
-
-#: src/ext_l10n.h:431
-msgid "SubTitle"
-msgstr "SousTitre"
-
-#: src/ext_l10n.h:432
-msgid "SubVariation"
-msgstr "SousVariation"
-
-#: src/ext_l10n.h:433
-msgid "SubVariation2"
-msgstr "SousVariation2"
-
-#: src/ext_l10n.h:434
-msgid "SubVariation3"
-msgstr "SousVariation3"
-
-#: src/ext_l10n.h:435
-msgid "SubVariation4"
-msgstr "SousVariation4"
-
-#: src/ext_l10n.h:436
-msgid "SubVariation5"
-msgstr "SousVariation5"
-
-#: src/ext_l10n.h:437
-msgid "Summary"
-msgstr "Résumé"
-
-#: src/ext_l10n.h:438
-msgid "Surname"
-msgstr "Surnom"
-
-#: src/ext_l10n.h:439
-msgid "TableComments"
-msgstr "RemarquesTableau"
-
-#: src/ext_l10n.h:440
-msgid "TableRefs"
-msgstr "RéfsTableau"
-
-#: src/ext_l10n.h:441
-msgid "Telefax"
-msgstr "Telefax"
-
-#: src/ext_l10n.h:442
-msgid "Telefon"
-msgstr "Telefon"
-
-#: src/ext_l10n.h:443
-msgid "Telephone"
-msgstr "Téléphone"
-
-#: src/ext_l10n.h:444
-msgid "Telex"
-msgstr "Telex"
-
-#: src/ext_l10n.h:445
-msgid "Thanks"
-msgstr "Remerciements"
-
-#: src/ext_l10n.h:446
-msgid "Theorem"
-msgstr "Théorème"
-
-#: src/ext_l10n.h:447
-msgid "Theorem*"
-msgstr "Théorème*"
-
-#: src/ext_l10n.h:448
-msgid "TheoremTemplate"
-msgstr "ModèleThéorème"
-
-#: src/ext_l10n.h:449 src/ext_l10n.h:1175 src/frontends/qt2/QThesaurus.C:28
-msgid "Thesaurus"
-msgstr "Dictionnaire de Synonymes"
-
-#: src/ext_l10n.h:450
-msgid "ThickLine"
-msgstr "LigneÉpaisse"
-
-#: src/ext_l10n.h:451
-msgid "ThreeAffiliations"
-msgstr "TroisAffiliations"
-
-#: src/ext_l10n.h:452
-msgid "ThreeAuthors"
-msgstr "TroisAuteurs"
-
-#: src/ext_l10n.h:453
-msgid "TickList"
-msgstr ""
-
-#: src/ext_l10n.h:454
-msgid "Title"
-msgstr "Titre"
-
-#: src/ext_l10n.h:455
-msgid "Titlehead"
-msgstr "En-têteTitre"
-
-#: src/ext_l10n.h:456
-msgid "TITLE_OVER:"
-msgstr ""
-
-#: src/ext_l10n.h:457
-msgid "TOC_Author"
-msgstr "Auteur_TdM"
-
-#: src/ext_l10n.h:458
-msgid "TOC_Title"
-msgstr "Titre_TdM"
-
-#: src/ext_l10n.h:459
-msgid "Topic"
-msgstr ""
-
-#: src/ext_l10n.h:460
-msgid "Town"
-msgstr "Ville"
-
-#: src/ext_l10n.h:461
-msgid "Transition"
-msgstr "Transition"
-
-#: src/ext_l10n.h:462
-msgid "Trans_Keywords"
-msgstr ""
-
-#: src/ext_l10n.h:463
-msgid "TranslatedAbstract"
-msgstr "AbstractTraduit"
-
-#: src/ext_l10n.h:464
-msgid "Translated_Title"
-msgstr "Titre_Traduit"
-
-#: src/ext_l10n.h:465
-msgid "Translator"
-msgstr "Traducteur"
-
-#: src/ext_l10n.h:466
-msgid "TwoAffiliations"
-msgstr "DeuxAffiliations"
-
-#: src/ext_l10n.h:467
-msgid "TwoAuthors"
-msgstr "DeuxAuteurs"
-
-#: src/ext_l10n.h:468
-msgid "Unterschrift"
-msgstr "Unterschrift"
-
-#: src/ext_l10n.h:469
-msgid "Uppertitleback"
-msgstr "VersoTitreHaut"
-
-#: src/ext_l10n.h:470 src/ext_l10n.h:1193 src/ext_l10n.h:1196
-#: src/frontends/qt2/QURL.C:25
-msgid "URL"
-msgstr "URL"
-
-#: src/ext_l10n.h:471
-msgid "Variation"
-msgstr "Variation"
-
-# Texto mieux que "Mot à mot" ? - AR
-# Retour à verbatim (cf intro) - JPC
-#: src/ext_l10n.h:472
-msgid "Verbatim"
-msgstr "Verbatim"
-
-#: src/ext_l10n.h:473
-msgid "Verse"
-msgstr "Vers"
-
-#: src/ext_l10n.h:474
-msgid "Verteiler"
-msgstr "Verteiler"
-
-#: src/ext_l10n.h:475
-msgid "VisibleText"
-msgstr "TexteVisible"
-
-#: src/ext_l10n.h:476
-msgid "Yourmail"
-msgstr "Votremail"
-
-#: src/ext_l10n.h:477
-msgid "YourMail"
-msgstr "VotreMail"
-
-#: src/ext_l10n.h:478
-msgid "Yourref"
-msgstr "Votreréf"
-
-#: src/ext_l10n.h:479
-msgid "YourRef"
-msgstr "VotreRéf"
-
-#: src/ext_l10n.h:480
-msgid "Zusatz"
-msgstr "Zusatz"
-
-#: src/ext_l10n.h:481
-msgid "Afrikaans"
-msgstr "Afrikaans"
-
-#: src/ext_l10n.h:482
-msgid "American"
-msgstr "Américain"
-
-#: src/ext_l10n.h:483
-msgid "Arabic"
-msgstr "Arabe"
-
-#: src/ext_l10n.h:484
-msgid "Austrian"
-msgstr "Autrichien"
-
-#: src/ext_l10n.h:485
-msgid "Bahasa"
-msgstr "Bahasa"
-
-#: src/ext_l10n.h:486
-msgid "Basque"
-msgstr "Basque"
-
-#: src/ext_l10n.h:487
-msgid "Portuguese (Brazil)"
-msgstr "Portugais (Brésil)"
-
-#: src/ext_l10n.h:488
-msgid "Breton"
-msgstr "Breton"
-
-#: src/ext_l10n.h:489
-msgid "British"
-msgstr "Anglais Britannique"
-
-#: src/ext_l10n.h:490
-msgid "Bulgarian"
-msgstr "Bulgare"
-
-#: src/ext_l10n.h:491
-msgid "Canadian"
-msgstr "Canadien"
-
-#: src/ext_l10n.h:492
-msgid "French Canadian"
-msgstr "Français Canadien"
-
-#: src/ext_l10n.h:493
-msgid "Catalan"
-msgstr "Catalan"
-
-#: src/ext_l10n.h:494
-msgid "Croatian"
-msgstr "Croate"
-
-#: src/ext_l10n.h:495
-msgid "Czech"
-msgstr "Tchèque"
-
-#: src/ext_l10n.h:496
-msgid "Danish"
-msgstr "Danois"
-
-#: src/ext_l10n.h:497
-msgid "Dutch"
-msgstr "Néerlandais"
-
-#: src/ext_l10n.h:498 src/language.C:40
-msgid "English"
-msgstr "Anglais"
-
-#: src/ext_l10n.h:499
-msgid "Esperanto"
-msgstr "Espéranto"
-
-#: src/ext_l10n.h:500
-msgid "Estonian"
-msgstr "Estonien"
-
-#: src/ext_l10n.h:501
-msgid "Finnish"
-msgstr "Finnois"
-
-#: src/ext_l10n.h:502
-msgid "French"
-msgstr "Français"
-
-#: src/ext_l10n.h:503
-msgid "French (GUTenberg)"
-msgstr "Français (GUTenberg)"
-
-#: src/ext_l10n.h:504
-msgid "Galician"
-msgstr "Galicien"
-
-#: src/ext_l10n.h:505
-msgid "German"
-msgstr "Allemand"
-
-#: src/ext_l10n.h:506
-msgid "German (new spelling)"
-msgstr "Allemand (nouvelle orthographe)"
-
-#: src/ext_l10n.h:507 src/frontends/xforms/form_maths_panel.C:35
-#: src/frontends/xforms/FormMathsPanel.C:103
-msgid "Greek"
-msgstr "Grec"
-
-#: src/ext_l10n.h:508
-msgid "Hebrew"
-msgstr "Hébreu"
-
-#: src/ext_l10n.h:509
-msgid "Irish"
-msgstr "Irlandais"
-
-#: src/ext_l10n.h:510
-msgid "Italian"
-msgstr "Italien"
-
-#: src/ext_l10n.h:511
-msgid "Lsorbian"
-msgstr "Bas-Sorbe"
-
-#: src/ext_l10n.h:512
-msgid "Magyar"
-msgstr "Magyar"
-
-#: src/ext_l10n.h:513
-msgid "Norsk"
-msgstr "Norvégien"
-
-#: src/ext_l10n.h:514
-msgid "Polish"
-msgstr "Polonais"
-
-#: src/ext_l10n.h:515
-msgid "Portugese"
-msgstr "Portugais"
-
-#: src/ext_l10n.h:516
-msgid "Romanian"
-msgstr "Roumain"
-
-#: src/ext_l10n.h:517
-msgid "Russian"
-msgstr "Russe"
-
-#: src/ext_l10n.h:518
-msgid "Scottish"
-msgstr "Écossais"
-
-#: src/ext_l10n.h:519
-msgid "Serbian"
-msgstr "Serbe"
-
-#: src/ext_l10n.h:520
-msgid "Serbo-Croatian"
-msgstr "Serbo-Croate"
-
-#: src/ext_l10n.h:521
-msgid "Spanish"
-msgstr "Espagnol"
-
-#: src/ext_l10n.h:522
-msgid "Slovak"
-msgstr "Slovaque"
-
-#: src/ext_l10n.h:523
-msgid "Slovene"
-msgstr "Slovène"
-
-#: src/ext_l10n.h:524
-msgid "Swedish"
-msgstr "Suédois"
-
-#: src/ext_l10n.h:525
-msgid "Thai"
-msgstr "Thaï"
-
-#: src/ext_l10n.h:526
-msgid "Turkish"
-msgstr "Turc"
-
-#: src/ext_l10n.h:527
-msgid "Ukrainian"
-msgstr "Ukrainien"
-
-#: src/ext_l10n.h:528
-msgid "Usorbian"
-msgstr "Haut-Sorbe"
-
-#: src/ext_l10n.h:529
-msgid "Welsh"
-msgstr "Gallois"
-
-#: src/ext_l10n.h:530 src/frontends/qt2/QAbout.C:32
-#: src/frontends/xforms/FormAboutlyx.C:28
-msgid "About LyX"
-msgstr "À Propos de LyX"
-
-#: src/ext_l10n.h:531
-msgid "Version"
-msgstr "Version"
-
-#: src/ext_l10n.h:532
-msgid "Version goes here"
-msgstr "La version va là"
-
-#: src/ext_l10n.h:533 src/frontends/xforms/FormAboutlyx.C:65
-msgid "Credits"
-msgstr "Crédits"
-
-#: src/ext_l10n.h:535 src/ext_l10n.h:546 src/ext_l10n.h:600 src/ext_l10n.h:767
-#: src/ext_l10n.h:776 src/ext_l10n.h:794 src/ext_l10n.h:799 src/ext_l10n.h:875
-#: src/ext_l10n.h:894 src/ext_l10n.h:905 src/ext_l10n.h:919
-#: src/ext_l10n.h:1070 src/ext_l10n.h:1119 src/ext_l10n.h:1129
-#: src/ext_l10n.h:1131 src/ext_l10n.h:1143 src/ext_l10n.h:1173
-#: src/ext_l10n.h:1185 src/ext_l10n.h:1190 src/ext_l10n.h:1200
-#: src/ext_l10n.h:1204 src/frontends/qt2/QParagraphDialog.C:49
-msgid "&Close"
-msgstr "&Fermer"
-
-#: src/ext_l10n.h:536
-msgid "LyX: Enter text"
-msgstr "LyX : Entrez du texte"
-
-#: src/ext_l10n.h:537
-msgid "&Dummy"
-msgstr "Bidon"
-
-#: src/ext_l10n.h:538 src/ext_l10n.h:570 src/ext_l10n.h:603 src/ext_l10n.h:762
-#: src/ext_l10n.h:775 src/ext_l10n.h:900 src/frontends/qt2/QSpellchecker.C:114
-#: src/frontends/xforms/form_bibitem.C:35
-#: src/frontends/xforms/form_bibtex.C:35
-#: src/frontends/xforms/form_citation.C:173
-#: src/frontends/xforms/form_document.C:47 src/frontends/xforms/form_ert.C:72
-#: src/frontends/xforms/form_external.C:89
-#: src/frontends/xforms/form_filedialog.C:89
-#: src/frontends/xforms/form_float.C:74 src/frontends/xforms/form_forks.C:53
-#: src/frontends/xforms/form_include.C:42 src/frontends/xforms/form_index.C:44
-#: src/frontends/xforms/form_maths_delim.C:49
-#: src/frontends/xforms/form_minipage.C:81
-#: src/frontends/xforms/form_paragraph.C:181
-#: src/frontends/xforms/form_print.C:53 src/frontends/xforms/form_ref.C:86
-#: src/frontends/xforms/form_sendto.C:46
-#: src/frontends/xforms/form_tabular_create.C:28
-#: src/frontends/xforms/form_url.C:64
-msgid "OK"
-msgstr "OK"
-
-#: src/ext_l10n.h:539 src/ext_l10n.h:1063 src/frontends/qt2/Alert_pimpl.C:45
-#: src/frontends/qt2/QParagraphDialog.C:49
-msgid "&Cancel"
-msgstr "&Annuler"
-
-#: src/ext_l10n.h:540 src/ext_l10n.h:897 src/frontends/qt2/QIndex.C:23
-#: src/frontends/xforms/FormIndex.C:24 src/insets/insetindex.C:61
-msgid "Index"
-msgstr "Index"
-
-#: src/ext_l10n.h:541
-msgid "&Key"
-msgstr "&Clé"
-
-#: src/ext_l10n.h:542
-msgid "The citation key"
-msgstr "La clé de citation"
-
-#: src/ext_l10n.h:543
-msgid "&Label"
-msgstr "&Étiquette"
-
-#: src/ext_l10n.h:544
-msgid "The label as it appears in the document"
-msgstr "Le nom du format tel qu'il apparaîtra dans le document"
-
-#: src/ext_l10n.h:545 src/ext_l10n.h:598 src/ext_l10n.h:792 src/ext_l10n.h:797
-#: src/ext_l10n.h:873 src/ext_l10n.h:893 src/ext_l10n.h:917
-#: src/ext_l10n.h:1062 src/ext_l10n.h:1068 src/ext_l10n.h:1118
-#: src/ext_l10n.h:1158 src/ext_l10n.h:1199
-msgid "&OK"
-msgstr "&OK"
-
-#: src/ext_l10n.h:547
-msgid "Bibtex"
-msgstr "BibTeX"
-
-# contrainte de longueur
-#: src/ext_l10n.h:548
-msgid "Databases"
-msgstr "Base de D."
-
-# contrainte de longueur
-#: src/ext_l10n.h:549
-msgid "BibTeX database to use"
-msgstr "Base de D. BibTeX"
-
-#: src/ext_l10n.h:550 src/ext_l10n.h:626 src/ext_l10n.h:628
-#: src/ext_l10n.h:1167
-msgid "New Item"
-msgstr "Nouvel Élément"
-
-# contrainte de longueur
-#: src/ext_l10n.h:551
-msgid "Available BibTeX databases"
-msgstr "Bases de D. BibTeX disponibles"
-
-#: src/ext_l10n.h:552
-msgid "&Add ..."
-msgstr "&Ajouter ..."
-
-# contrainte de longueur
-#: src/ext_l10n.h:553
-msgid "Add a BibTeX database file"
-msgstr "Ajouter un fichier BibTeX"
-
-#: src/ext_l10n.h:554
-msgid "&Delete"
-msgstr "&Effacer"
-
-#: src/ext_l10n.h:555
-msgid "Remove the selected database"
-msgstr "Enlever la base de D. sélectionnée"
-
-#: src/ext_l10n.h:556
-msgid "&Style"
-msgstr "&Style"
-
-#: src/ext_l10n.h:557 src/ext_l10n.h:563
-msgid "The BibTeX style"
-msgstr "Le style BibTeX"
-
-#: src/ext_l10n.h:558 src/ext_l10n.h:644 src/frontends/qt2/QDocument.C:126
-msgid "plain"
-msgstr "ordinaire"
-
-#: src/ext_l10n.h:559
-msgid "unsrt"
-msgstr "unsrt"
-
-#: src/ext_l10n.h:560
-msgid "alpha"
-msgstr "alpha"
-
-#: src/ext_l10n.h:561
-msgid "abbrv"
-msgstr "abbrv"
-
-#: src/ext_l10n.h:562 src/frontends/qt2/QBibtex.C:114
-#: src/frontends/qt2/QBibtexDialog.C:77
-msgid "Other ..."
-msgstr "Autre ..."
-
-#: src/ext_l10n.h:564
-msgid "FIXME !"
-msgstr "À CORRIGER !"
-
-#: src/ext_l10n.h:565
-msgid "The name of the style to use"
-msgstr "Le nom du style à utiliser"
-
-#: src/ext_l10n.h:566
-msgid "&Browse"
-msgstr "&Parcourir"
-
-#: src/ext_l10n.h:567
-msgid "Choose a style file"
-msgstr "Choisir un fichier de style"
-
-#: src/ext_l10n.h:568
-msgid "Add bibliography to &TOC"
-msgstr "Ajouter la bibliographie à la &TdM"
-
-#: src/ext_l10n.h:569
-msgid "Add bibliography to the table of contents"
-msgstr "Ajouter la bibliographie à la table des matières"
-
-#. /
-#: src/ext_l10n.h:571 src/ext_l10n.h:605 src/ext_l10n.h:764 src/ext_l10n.h:901
-#: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:157
-#: src/lyxfunc.C:1082
-msgid "Cancel"
-msgstr "Annuler"
-
-#: src/ext_l10n.h:572 src/frontends/qt2/QCharacter.C:31
-msgid "Character"
-msgstr "Caractère"
-
-#: src/ext_l10n.h:573
-msgid "&Family:"
-msgstr "&Famille :"
-
-#: src/ext_l10n.h:574
-msgid "Font family"
-msgstr "Famille police"
-
-#: src/ext_l10n.h:575
-msgid "&Series:"
-msgstr "&Série :|#S"
-
-#: src/ext_l10n.h:576 src/ext_l10n.h:583
-msgid "Font series"
-msgstr "Série police :"
-
-#: src/ext_l10n.h:577 src/ext_l10n.h:705
-msgid "&Language:"
-msgstr "&Langue :"
-
-#: src/ext_l10n.h:578 src/ext_l10n.h:586 src/ext_l10n.h:704
-#: src/frontends/xforms/FormDocument.C:331
-#: src/frontends/xforms/FormPreferences.C:258
-msgid "Language"
-msgstr "Langue"
-
-#: src/ext_l10n.h:579 src/ext_l10n.h:582
-msgid "Font shape"
-msgstr "Forme police"
-
-#: src/ext_l10n.h:580 src/ext_l10n.h:585
-msgid "Font color"
-msgstr "Couleur police"
-
-#: src/ext_l10n.h:581
-msgid "S&hape:"
-msgstr "F&orme :|#o"
-
-#: src/ext_l10n.h:584
-msgid "&Color:"
-msgstr "Couleurs :"
-
-#: src/ext_l10n.h:587
-msgid "&Toggle all"
-msgstr "(Dés)Activer Tous"
-
-#: src/ext_l10n.h:588
-msgid "toggle font on all of the above"
-msgstr "(Dés)Activer Tous|#v"
-
-#: src/ext_l10n.h:589
-msgid "Never toggled"
-msgstr "Paramètres non (dés)activables"
-
-#: src/ext_l10n.h:590 src/ext_l10n.h:818
-msgid "Si&ze:"
-msgstr "Taille :"
-
-#: src/ext_l10n.h:591
-msgid "Font size"
-msgstr "Taille police"
-
-#: src/ext_l10n.h:592
-msgid "Always toggled"
-msgstr "Paramètres (dés)activables"
-
-#: src/ext_l10n.h:593 src/ext_l10n.h:595
-msgid "Other font settings"
-msgstr "Autres réglages de police"
-
-#: src/ext_l10n.h:594
-msgid "&Misc:"
-msgstr "Divers :"
-
-#: src/ext_l10n.h:596
-msgid "Auto apply"
-msgstr "Appliquer automatiquement"
-
-#: src/ext_l10n.h:597
-msgid "Apply each change automatically"
-msgstr "Appliquer tous les changements automatiquement"
-
-#: src/ext_l10n.h:599 src/ext_l10n.h:604 src/ext_l10n.h:763 src/ext_l10n.h:793
-#: src/ext_l10n.h:798 src/ext_l10n.h:874 src/ext_l10n.h:918
-#: src/ext_l10n.h:1061 src/ext_l10n.h:1069
-msgid "&Apply"
-msgstr "&Appliquer"
-
-# ---------------------------XFORMS---------------------------
-#: src/ext_l10n.h:601 src/frontends/qt2/QCitation.C:45
-#: src/frontends/xforms/FormCitation.C:117
-msgid "Citation"
-msgstr "Citation"
-
-#: src/ext_l10n.h:602 src/ext_l10n.h:761 src/ext_l10n.h:796 src/ext_l10n.h:872
-#: src/ext_l10n.h:916 src/ext_l10n.h:1060
-msgid "&Restore"
-msgstr "&Restaurer"
-
-#: src/ext_l10n.h:606
-msgid "Text after"
-msgstr "Texte après le paramètre"
-
-#: src/ext_l10n.h:607 src/frontends/xforms/form_citation.C:116
-msgid "Citation style"
-msgstr "Style de citation"
-
-#: src/ext_l10n.h:608
-msgid "Natbib citation style to use"
-msgstr "Style de citation Natbib"
-
-#: src/ext_l10n.h:609
-msgid "Text before"
-msgstr "Texte avant"
-
-#: src/ext_l10n.h:610 src/frontends/xforms/form_citation.C:73 src/lyxvc.C:122
-msgid "Info"
-msgstr "Informations"
-
-#: src/ext_l10n.h:611
-msgid "Citation entry"
-msgstr "Entrée de citation"
-
-#: src/ext_l10n.h:612 src/frontends/qt2/QSearch.C:31
-#: src/frontends/xforms/form_citation.C:78
-msgid "Search"
-msgstr "Chercher"
-
-#: src/ext_l10n.h:613
-msgid "Search the available citations"
-msgstr "Rechercher les citations disponibles"
-
-#: src/ext_l10n.h:614
-msgid "Regular E&xpression"
-msgstr "E&xpression Régulière"
-
-#: src/ext_l10n.h:615
-msgid "Interpret search entry as a regular expression"
-msgstr "Interpréter comme une expression régulière"
-
-#: src/ext_l10n.h:616
-msgid "&Previous"
-msgstr "Précédent"
-
-#: src/ext_l10n.h:617
-msgid "&Case sensitive"
-msgstr "Selon la casse"
-
-#: src/ext_l10n.h:618
-msgid "Make the search case-sensitive"
-msgstr "Recherche sensible à la casse"
-
-#: src/ext_l10n.h:619
-msgid "&Next"
-msgstr "Suivant"
-
-#: src/ext_l10n.h:620
-msgid "Add the selected citation"
-msgstr "Ajouter la citation"
-
-#: src/ext_l10n.h:621
-msgid "Remove the selected citation"
-msgstr "Enlever la citation"
-
-#: src/ext_l10n.h:622
-msgid "Move the selected citation up"
-msgstr "Remonter la citation"
-
-#: src/ext_l10n.h:623
-msgid "Move the selected citation down"
-msgstr "Descendre la citation"
-
-#: src/ext_l10n.h:624
-msgid "Available"
-msgstr "Disponible"
-
-#: src/ext_l10n.h:625
-msgid "Selected"
-msgstr "Sélectionné"
-
-#: src/ext_l10n.h:627
-msgid "Available citation keys"
-msgstr "Clés disponibles"
-
-#: src/ext_l10n.h:629
-msgid "Citations currently selected"
-msgstr "Clés sélectionnées"
-
-#: src/ext_l10n.h:630
-msgid "Text to place after citation"
-msgstr "Texte à ajouter après la citation"
-
-# à revoir
-#: src/ext_l10n.h:631
-msgid "&Full author list"
-msgstr "Liste complète des auteurs"
-
-#: src/ext_l10n.h:632
-msgid "List all authors"
-msgstr "Donne la liste de tous les auteurs"
-
-#: src/ext_l10n.h:633
-msgid "Force &upper case"
-msgstr "Forcer les majuscules"
-
-#: src/ext_l10n.h:634
-msgid "Force upper case in citation"
-msgstr "Forcer les majuscules dans la citation"
-
-#: src/ext_l10n.h:635
-msgid "Text to place before citation"
-msgstr "Texte à ajouter avant la citation"
-
-#: src/ext_l10n.h:636 src/frontends/xforms/FormDocument.C:58
-msgid "Document Layout"
-msgstr "Style de Document"
-
-#: src/ext_l10n.h:638
-msgid "&Fonts:"
-msgstr "Polices :"
-
-#: src/ext_l10n.h:639
-msgid "&Pagestyle:"
-msgstr "Mise en page :"
-
-# contrainte de longueur
-#: src/ext_l10n.h:640
-msgid "Defa&ult Skip:"
-msgstr "Espacement :"
-
-#: src/ext_l10n.h:641
-msgid "F&ont Size:"
-msgstr "Taille de Police :"
-
-#. the document language page
-#: src/ext_l10n.h:642 src/ext_l10n.h:658 src/ext_l10n.h:707 src/ext_l10n.h:738
-#: src/ext_l10n.h:857 src/frontends/qt2/QDocument.C:116
-#: src/frontends/qt2/QDocument.C:124 src/frontends/qt2/QDocument.C:152
-#: src/frontends/qt2/QDocument.C:196 src/frontends/qt2/QDocument.C:575
-#: src/frontends/qt2/QDocument.C:579
-msgid "default"
-msgstr "défaut"
-
-#: src/ext_l10n.h:643 src/frontends/qt2/QDocument.C:125
-msgid "empty"
-msgstr "vide"
-
-#: src/ext_l10n.h:645 src/frontends/qt2/QDocument.C:127
-msgid "headings"
-msgstr "en-têtes"
-
-#: src/ext_l10n.h:646 src/frontends/qt2/QDocument.C:128
-msgid "fancy"
-msgstr "sophistiquée"
-
-#: src/ext_l10n.h:647
-msgid "Spacin&g:"
-msgstr "Interligne :"
-
-# contrainte de longueur
-#: src/ext_l10n.h:648
-msgid "E&xtra Options:"
-msgstr "Autres Options :"
-
-#: src/ext_l10n.h:649
-msgid "&Class:"
-msgstr "Classe :"
-
-#: src/ext_l10n.h:650
-msgid "smallskip"
-msgstr "Petit"
-
-#: src/ext_l10n.h:651
-msgid "medskip"
-msgstr "Moyen"
-
-#: src/ext_l10n.h:652
-msgid "bigskip"
-msgstr "Gros"
-
-#: src/ext_l10n.h:653
-msgid "length"
-msgstr "Taille"
-
-#: src/ext_l10n.h:655 src/frontends/qt2/QDocument.C:112
-msgid "OneHalf"
-msgstr "Un et Demi"
-
-#: src/ext_l10n.h:657 src/frontends/qt2/QDocument.C:114
-msgid "Other"
-msgstr "Autre"
-
-#: src/ext_l10n.h:659 src/frontends/qt2/QDocument.C:117
-msgid "10"
-msgstr "10"
-
-#: src/ext_l10n.h:660 src/frontends/qt2/QDocument.C:118
-msgid "11"
-msgstr "11"
-
-#: src/ext_l10n.h:661 src/frontends/qt2/QDocument.C:119
-msgid "12"
-msgstr "12"
-
-#: src/ext_l10n.h:662 src/frontends/xforms/form_document.C:256
-msgid "Sides"
-msgstr "Faces"
-
-#: src/ext_l10n.h:663
-msgid "O&ne"
-msgstr "Une"
-
-#: src/ext_l10n.h:664
-msgid "&Two"
-msgstr "Deux"
-
-#: src/ext_l10n.h:665 src/frontends/xforms/form_tabular_create.C:45
-msgid "Columns"
-msgstr "Colonnes"
-
-#: src/ext_l10n.h:666
-msgid "On&e"
-msgstr "Une"
-
-#: src/ext_l10n.h:667
-msgid "T&wo"
-msgstr "Deux"
-
-#: src/ext_l10n.h:668 src/frontends/xforms/form_document.C:254
-msgid "Separation"
-msgstr "Séparation"
-
-# contrainte de longueur
-#: src/ext_l10n.h:669
-msgid "&Indent"
-msgstr "Indentation"
-
-#: src/ext_l10n.h:670
-msgid "S&kip"
-msgstr "Interligne"
-
-#: src/ext_l10n.h:671 src/frontends/xforms/FormDocument.C:329
-msgid "Paper"
-msgstr "Papier"
-
-#: src/ext_l10n.h:672
-msgid "&Papersize:"
-msgstr "Taille :"
-
-#: src/ext_l10n.h:673 src/frontends/qt2/QDocument.C:72 src/lyxfont.C:573
-msgid "Default"
-msgstr "Défaut"
-
-#: src/ext_l10n.h:674 src/ext_l10n.h:1011 src/ext_l10n.h:1020
-#: src/frontends/qt2/QDocument.C:73
-msgid "Custom"
-msgstr "Paramétré"
-
-#: src/ext_l10n.h:675 src/frontends/qt2/QDocument.C:74
-msgid "USletter"
-msgstr "LettreUS"
-
-#: src/ext_l10n.h:676 src/frontends/qt2/QDocument.C:75
-msgid "USlegal"
-msgstr "LégalUS"
-
-#: src/ext_l10n.h:677 src/frontends/qt2/QDocument.C:76
-msgid "USexecutive"
-msgstr "ExecutiveUS"
-
-#: src/ext_l10n.h:678 src/frontends/qt2/QDocument.C:77
-msgid "A3"
-msgstr "A3"
-
-#: src/ext_l10n.h:679 src/frontends/qt2/QDocument.C:79
-msgid "A5"
-msgstr "A5"
-
-#: src/ext_l10n.h:680 src/frontends/qt2/QDocument.C:80
-msgid "B3"
-msgstr "B3"
-
-#: src/ext_l10n.h:681 src/frontends/qt2/QDocument.C:81
-msgid "B4"
-msgstr "B4"
-
-#: src/ext_l10n.h:682 src/frontends/qt2/QDocument.C:82
-msgid "B5"
-msgstr "B5"
-
-#: src/ext_l10n.h:683
-msgid "&Special:"
-msgstr "Spécial :"
-
-#: src/ext_l10n.h:684 src/ext_l10n.h:1005 src/ext_l10n.h:1014
-#: src/ext_l10n.h:1048 src/frontends/qt2/QDocument.C:84
-msgid "None"
-msgstr "Sans"
-
-#: src/ext_l10n.h:685 src/frontends/qt2/QDocument.C:85
-msgid "A4 small Margins (only portrait)"
-msgstr "A4 petites Marges (portrait seul)"
-
-#: src/ext_l10n.h:686 src/frontends/qt2/QDocument.C:86
-msgid "A4 very small Margins (only portrait)"
-msgstr "A4 très petites marges (portrait seul)"
-
-#: src/ext_l10n.h:687 src/frontends/qt2/QDocument.C:87
-msgid "A4 very wide margins (only portrait)"
-msgstr "A4 très grandes marges (portrait seul)"
-
-#: src/ext_l10n.h:688
-msgid "&Use Geometry Package"
-msgstr "Paquetage Geometry"
-
-#: src/ext_l10n.h:689 src/frontends/xforms/form_document.C:123
-msgid "Orientation"
-msgstr "Orientation"
-
-#: src/ext_l10n.h:690
-msgid "P&ortrait"
-msgstr "Portrait"
-
-#: src/ext_l10n.h:691
-msgid "&Landscape"
-msgstr "Paysage"
-
-#: src/ext_l10n.h:692 src/frontends/xforms/form_document.C:143
-msgid "Margins"
-msgstr "Marges"
-
-# contrainte de longueur
-#: src/ext_l10n.h:693
-msgid "&Right:"
-msgstr "Dr. :"
-
-#: src/ext_l10n.h:694
-msgid "&Bottom:"
-msgstr "Bas :"
-
-#: src/ext_l10n.h:695
-msgid "L&eft:"
-msgstr "Gauche :"
-
-#: src/ext_l10n.h:696
-msgid "&Top:"
-msgstr "Haut :"
-
-#: src/ext_l10n.h:697
-msgid "Custom Papersize"
-msgstr "Taille Personnalisée"
-
-#: src/ext_l10n.h:698 src/ext_l10n.h:907
-msgid "&Width:"
-msgstr "Largeur :"
-
-#: src/ext_l10n.h:699
-msgid "&Height:"
-msgstr "Hauteur :"
-
-# contrainte de longueur
-#: src/ext_l10n.h:700
-msgid "Foot/Head Margins"
-msgstr "Marge En-têtes/Pieds"
-
-# contrainte de longueur
-#: src/ext_l10n.h:701
-msgid "&Footskip:"
-msgstr "Esp. Bas :"
-
-#: src/ext_l10n.h:702
-msgid "Hea&dsep:"
-msgstr "Sép. En-tête :"
-
-# contrainte de longueur
-#: src/ext_l10n.h:703
-msgid "Headhe&ight:"
-msgstr "Ha&ut. En-tête :"
-
-#: src/ext_l10n.h:706
-msgid "Enco&ding:"
-msgstr "&Encodage :"
-
-#: src/ext_l10n.h:708 src/frontends/qt2/QDocument.C:153
-msgid "auto"
-msgstr "auto"
-
-#: src/ext_l10n.h:709 src/frontends/qt2/QDocument.C:154
-msgid "latin1"
-msgstr "latin1"
-
-#: src/ext_l10n.h:710 src/frontends/qt2/QDocument.C:155
-msgid "latin2"
-msgstr "latin2"
-
-#: src/ext_l10n.h:711 src/frontends/qt2/QDocument.C:156
-msgid "latin3"
-msgstr "latin3"
-
-#: src/ext_l10n.h:712 src/frontends/qt2/QDocument.C:157
-msgid "latin4"
-msgstr "latin4"
-
-#: src/ext_l10n.h:713 src/frontends/qt2/QDocument.C:158
-msgid "latin5"
-msgstr "latin5"
-
-#: src/ext_l10n.h:714 src/frontends/qt2/QDocument.C:159
-msgid "latin9"
-msgstr "latin9"
-
-#: src/ext_l10n.h:715 src/frontends/qt2/QDocument.C:160
-msgid "koi8-r"
-msgstr "koi8-r"
-
-#: src/ext_l10n.h:716 src/frontends/qt2/QDocument.C:161
-msgid "koi8-u"
-msgstr "koi8-u"
-
-#: src/ext_l10n.h:717 src/frontends/qt2/QDocument.C:162
-msgid "cp866"
-msgstr "cp866"
-
-#: src/ext_l10n.h:718 src/frontends/qt2/QDocument.C:163
-msgid "cp1251"
-msgstr "cp1251"
-
-#: src/ext_l10n.h:719 src/frontends/qt2/QDocument.C:164
-msgid "iso88595"
-msgstr "iso88595"
-
-#: src/ext_l10n.h:720
-msgid "Quote Style"
-msgstr "Style des Guillemets"
-
-#: src/ext_l10n.h:721
-msgid "&Type:"
-msgstr "Type :"
-
-#: src/ext_l10n.h:722 src/frontends/qt2/QDocument.C:171
-msgid "``text''"
-msgstr "``texte''"
-
-#: src/ext_l10n.h:723 src/frontends/qt2/QDocument.C:172
-msgid "''text''"
-msgstr "''texte''"
-
-#: src/ext_l10n.h:724 src/frontends/qt2/QDocument.C:173
-msgid ",,text``"
-msgstr ",,texte``"
-
-#: src/ext_l10n.h:725 src/frontends/qt2/QDocument.C:174
-msgid ",,text''"
-msgstr ",,texte''"
-
-#: src/ext_l10n.h:726
-msgid "Â«textÂ»"
-msgstr "Â«texteÂ»"
-
-#: src/ext_l10n.h:727
-msgid "Â»textÂ«"
-msgstr "Â»texteÂ«"
-
-#: src/ext_l10n.h:728
-msgid "&Single"
-msgstr "Simple"
-
-#: src/ext_l10n.h:729
-msgid "&Double"
-msgstr "Double"
-
-#: src/ext_l10n.h:730 src/ext_l10n.h:853
-#: src/frontends/xforms/FormDocument.C:333
-msgid "Extra"
-msgstr "Autres"
-
-# contrainte de longueur
-#: src/ext_l10n.h:731
-msgid "F&loat Placement:"
-msgstr "Placement des Flottants :"
-
-# contrainte de longueur
-#: src/ext_l10n.h:732
-msgid "S&ection number depth:"
-msgstr "Prof. de la numérotation :"
-
-#: src/ext_l10n.h:733
-msgid "&Table of contents depth:"
-msgstr "Profondeur de la TdM :"
-
-#: src/ext_l10n.h:734
-msgid "P&S Driver:"
-msgstr "Pilote PS :"
-
-# contrainte de longueur
-#: src/ext_l10n.h:735
-msgid "Use A&MS Math"
-msgstr "AMS Maths"
-
-#: src/ext_l10n.h:736 src/frontends/xforms/FormDocument.C:335
-msgid "Bullets"
-msgstr "Puces"
-
-#: src/ext_l10n.h:737
-msgid "Si&ze"
-msgstr "Taille"
-
-#: src/ext_l10n.h:739 src/frontends/qt2/QDocument.C:197
-#: src/frontends/xforms/form_preferences.C:171
-msgid "tiny"
-msgstr "minuscule"
-
-#: src/ext_l10n.h:740 src/frontends/qt2/QDocument.C:198
-msgid "script"
-msgstr "tout petit"
-
-#: src/ext_l10n.h:741 src/frontends/qt2/QDocument.C:199
-msgid "footnote"
-msgstr "très petit"
-
-#: src/ext_l10n.h:742 src/frontends/qt2/QDocument.C:200
-#: src/frontends/xforms/form_preferences.C:180
-msgid "small"
-msgstr "petit"
-
-#: src/ext_l10n.h:743 src/frontends/qt2/QDocument.C:201
-#: src/frontends/xforms/form_preferences.C:183
-msgid "normal"
-msgstr "normal"
-
-#: src/ext_l10n.h:744 src/frontends/qt2/QDocument.C:202
-#: src/frontends/xforms/form_preferences.C:186
-msgid "large"
-msgstr "grand"
-
-#: src/ext_l10n.h:745 src/frontends/controllers/character.C:105
-#: src/frontends/qt2/QDocument.C:203 src/lyxfont.C:56
-msgid "Large"
-msgstr "Grand"
-
-#: src/ext_l10n.h:746 src/frontends/qt2/QDocument.C:204
-msgid "LARGE"
-msgstr "GRAND"
-
-#: src/ext_l10n.h:747 src/frontends/qt2/QDocument.C:205
-#: src/frontends/xforms/form_preferences.C:195
-msgid "huge"
-msgstr "énorme"
-
-#: src/ext_l10n.h:748 src/frontends/controllers/character.C:111
-#: src/frontends/qt2/QDocument.C:206 src/lyxfont.C:57
-msgid "Huge"
-msgstr "ÉNORME"
-
-# Contrainte de longueur
-#: src/ext_l10n.h:749 src/frontends/xforms/form_document.C:608
-msgid "Bullet Depth"
-msgstr "Prof. Puces"
-
-#: src/ext_l10n.h:750
-msgid "&1"
-msgstr "&1"
-
-#: src/ext_l10n.h:751
-msgid "&2"
-msgstr "&2"
-
-#: src/ext_l10n.h:752
-msgid "&3"
-msgstr "&3"
-
-#: src/ext_l10n.h:753
-msgid "&4"
-msgstr "&4"
-
-#: src/ext_l10n.h:754
-msgid "&Standard"
-msgstr "Standard"
-
-#: src/ext_l10n.h:755
-msgid "&Maths"
-msgstr "Maths"
-
-#: src/ext_l10n.h:756
-msgid "&Ding 1"
-msgstr "&Ding 1"
-
-#: src/ext_l10n.h:757
-msgid "D&ing 2"
-msgstr "D&ing 2"
-
-#: src/ext_l10n.h:758
-msgid "Di&ng 3"
-msgstr "Di&ng 3"
-
-#: src/ext_l10n.h:759
-msgid "Din&g 4"
-msgstr "Din&g 4"
-
-#: src/ext_l10n.h:760
-msgid "&LaTeX"
-msgstr "&LaTeX"
-
-#: src/ext_l10n.h:765 src/frontends/qt2/QError.C:23
-#: src/frontends/xforms/FormError.C:24
-msgid "LaTeX Error"
-msgstr "Erreur LaTeX"
-
-#: src/ext_l10n.h:766 src/ext_l10n.h:780
-msgid "LaTeX error messages"
-msgstr "Messages d'erreur LaTeX"
-
-#: src/ext_l10n.h:768
-msgid "ERT inset display"
-msgstr "Affichage de l'insert ERT"
-
-#: src/ext_l10n.h:769
-msgid "&Inline"
-msgstr "&En Ligne"
-
-#: src/ext_l10n.h:770
-msgid "Show ERT inline"
-msgstr "Affiche l'ERT en ligne"
-
-#: src/ext_l10n.h:771
-msgid "&Collapsed"
-msgstr "&Fermé"
-
-#: src/ext_l10n.h:772
-msgid "Show ERT button only"
-msgstr "Affiche seulement le bouton ERT"
-
-#: src/ext_l10n.h:773
-msgid "&Open"
-msgstr "&Ouvert"
-
-#: src/ext_l10n.h:774
-msgid "Show ERT contents"
-msgstr "Affiche le contenu de l'ERT"
-
-#: src/ext_l10n.h:777
-msgid "External Material"
-msgstr "Objet Externe"
-
-#: src/ext_l10n.h:778
-msgid "&Template"
-msgstr "&Modèle"
-
-#: src/ext_l10n.h:779
-msgid "Available templates"
-msgstr "Modèles disponibles"
-
-#: src/ext_l10n.h:781
-msgid "&Edit file"
-msgstr "Édit&er Fichier"
-
-#: src/ext_l10n.h:782
-msgid "Edit the file externally"
-msgstr "Éditer le fichier extérieur"
-
-#: src/ext_l10n.h:783
-msgid "&View file"
-msgstr "&Visualiser le fichier"
-
-#: src/ext_l10n.h:784
-msgid "View the file"
-msgstr "Visualiser le fichier"
-
-#: src/ext_l10n.h:785 src/ext_l10n.h:903 src/ext_l10n.h:1103
-#: src/ext_l10n.h:1189 src/ext_l10n.h:1202
-msgid "&Update"
-msgstr "&Mise à jour"
-
-#: src/ext_l10n.h:786
-msgid "Update the material"
-msgstr "Met à jour le matériau"
-
-#: src/ext_l10n.h:787 src/ext_l10n.h:1075
-msgid "&File"
-msgstr "&Fichier"
-
-#: src/ext_l10n.h:788
-msgid "Filename"
-msgstr "Nom Fichier"
-
-#: src/ext_l10n.h:789 src/ext_l10n.h:810 src/ext_l10n.h:891
-#: src/ext_l10n.h:1079
-msgid "&Browse ..."
-msgstr "&Parcourir ..."
-
-#: src/ext_l10n.h:790
-msgid "&Parameters"
-msgstr "&Paramètres"
-
-#: src/ext_l10n.h:791
-msgid "Parameters"
-msgstr "Paramètres"
-
-#: src/ext_l10n.h:795 src/ext_l10n.h:806 src/ext_l10n.h:1160
-msgid "Form1"
-msgstr ""
-
-# contrainte de longueur
-#: src/ext_l10n.h:800 src/frontends/xforms/form_float.C:29
-msgid "Placement"
-msgstr "Emplacement"
-
-#: src/ext_l10n.h:801
-msgid "Bottom of the page"
-msgstr "Bas de la page"
-
-#: src/ext_l10n.h:802
-msgid "Top of the page"
-msgstr "Haut de la page"
-
-#: src/ext_l10n.h:803
-msgid "Page of floats"
-msgstr "Page de flottants"
-
-#: src/ext_l10n.h:804
-msgid "Here, if possible"
-msgstr "Ici, si possible"
-
-#: src/ext_l10n.h:805
-msgid "Here, definitely"
-msgstr "Ici, à tout prix"
-
-#. add the different tabfolders
-#: src/ext_l10n.h:807 src/frontends/xforms/FormGraphics.C:189
-msgid "File"
-msgstr "Fichier"
-
-#: src/ext_l10n.h:808
-msgid "&File:"
-msgstr "&Fichier :"
-
-#: src/ext_l10n.h:809 src/ext_l10n.h:890
-msgid "File name to include"
-msgstr "Choisir le fichier à inclure"
-
-#: src/ext_l10n.h:811 src/ext_l10n.h:892
-msgid "Select a file"
-msgstr "Choisir un fichier"
-
-#: src/ext_l10n.h:812
-msgid "Screen Options"
-msgstr "Options d'Écran"
-
-#: src/ext_l10n.h:813 src/ext_l10n.h:829
-#: src/frontends/xforms/form_minipage.C:28
-msgid "Width"
-msgstr "Largeur"
-
-#: src/ext_l10n.h:814
-msgid "Monochrome"
-msgstr "Noir et Blanc"
-
-#: src/ext_l10n.h:815
-msgid "Grayscale"
-msgstr "Niveaux de gris"
-
-#: src/ext_l10n.h:816
-msgid "Color"
-msgstr "Couleurs"
-
-#: src/ext_l10n.h:817
-msgid "Do not display"
-msgstr "Ne pas afficher"
-
-#: src/ext_l10n.h:819
-msgid "S&how:"
-msgstr ""
-
-#: src/ext_l10n.h:820 src/ext_l10n.h:830
-msgid "Height"
-msgstr "Hauteur"
-
-#: src/ext_l10n.h:821
-msgid "&Draft mode"
-msgstr "Mode &Brouillon"
-
-#: src/ext_l10n.h:822
-msgid "draft mode"
-msgstr "mode brouillon"
-
-#: src/ext_l10n.h:823 src/frontends/xforms/form_preferences.C:201
-msgid "Size"
-msgstr "Taille"
-
-#: src/ext_l10n.h:824
-msgid "&Scale"
-msgstr "Éch&elle"
-
-#: src/ext_l10n.h:825
-msgid "&Default"
-msgstr "&Défaut"
-
-#: src/ext_l10n.h:826
-msgid "&Custom"
-msgstr "&Personnalisé"
-
-#: src/ext_l10n.h:827 src/frontends/xforms/form_graphics.C:227
-#: src/frontends/xforms/form_graphics.C:444
-#, no-c-format
-msgid "%"
-msgstr "%"
-
-#: src/ext_l10n.h:828
-msgid "Keep aspect&ratio"
-msgstr ""
-
-#: src/ext_l10n.h:831
-msgid "EPS Options"
-msgstr "Options EPS"
-
-#: src/ext_l10n.h:832
-msgid "Bounding box"
-msgstr "Cadre"
-
-#: src/ext_l10n.h:833
-msgid "Left &bottom:"
-msgstr "&Bas Gauche :"
-
-# contrainte de longueur
-#: src/ext_l10n.h:834
-msgid "Right &top:"
-msgstr "&Haut Droite :"
-
-#: src/ext_l10n.h:835
-msgid "Y"
-msgstr "Y"
-
-#: src/ext_l10n.h:836
-msgid "X"
-msgstr "X"
-
-#: src/ext_l10n.h:837 src/ext_l10n.h:840 src/ext_l10n.h:843 src/ext_l10n.h:846
-#: src/frontends/qt2/lengthcombo.C:21
-msgid "pt"
-msgstr "pt"
-
-#: src/ext_l10n.h:838 src/ext_l10n.h:841 src/ext_l10n.h:844 src/ext_l10n.h:847
-#: src/frontends/qt2/lengthcombo.C:19
-msgid "cm"
-msgstr "cm"
-
-#: src/ext_l10n.h:839 src/ext_l10n.h:842 src/ext_l10n.h:845 src/ext_l10n.h:848
-#: src/frontends/qt2/lengthcombo.C:20
-msgid "in"
-msgstr "in"
-
-#: src/ext_l10n.h:849
-msgid "&Get"
-msgstr "&Obtenir"
-
-#: src/ext_l10n.h:850
-msgid "Get bounding box from file"
-msgstr "Obtenir le cadre du fichier"
-
-#: src/ext_l10n.h:851
-msgid "&Clip to bounding box"
-msgstr "&Couper au cadre"
-
-#: src/ext_l10n.h:852
-msgid "clip to bounding box"
-msgstr "couper au cadre"
-
-#: src/ext_l10n.h:854
-msgid "Rotation"
-msgstr "Rotation"
-
-#: src/ext_l10n.h:855
-msgid "&Angle:"
-msgstr "&Angle :"
-
-#: src/ext_l10n.h:856
-msgid "&Origin:"
-msgstr "&Origine :"
-
-#: src/ext_l10n.h:858
-msgid "leftTop"
-msgstr "gaucheHaut"
-
-#: src/ext_l10n.h:859
-msgid "leftBottom"
-msgstr "gaucheBas"
-
-#: src/ext_l10n.h:860
-msgid "leftBaseline"
-msgstr "gaucheBase"
-
-#: src/ext_l10n.h:861 src/frontends/controllers/ControlGraphics.C:202
-msgid "center"
-msgstr "centre"
-
-#: src/ext_l10n.h:862
-msgid "centerTop"
-msgstr "centreHaut"
-
-#: src/ext_l10n.h:863
-msgid "centerBottom"
-msgstr "centreBas"
-
-#: src/ext_l10n.h:864
-msgid "centerBaseline"
-msgstr "centreBase"
-
-#: src/ext_l10n.h:865
-msgid "rightTop"
-msgstr "droiteHaut"
-
-#: src/ext_l10n.h:866
-msgid "rightBottom"
-msgstr "droiteBas"
-
-#: src/ext_l10n.h:867
-msgid "rightBaseline"
-msgstr "droiteBase"
-
-#: src/ext_l10n.h:868
-msgid "referencePoint"
-msgstr "pointRéférence"
-
-#: src/ext_l10n.h:869
-msgid "LaTeX options"
-msgstr "Options LaTeX"
-
-# contrainte de longueur
-#: src/ext_l10n.h:870
-msgid "Su&bfigure"
-msgstr "Sous-figure"
-
-#: src/ext_l10n.h:871
-msgid "The sub-caption for the figure"
-msgstr "La sous-légende pour la figure"
-
-#: src/ext_l10n.h:876
-msgid "Include File"
-msgstr "Inclure Fichier"
-
-#: src/ext_l10n.h:877
-msgid "Include type"
-msgstr ""
-
-# à confirmer
-#: src/ext_l10n.h:878
-msgid "&Include"
-msgstr "Inclusion"
-
-#: src/ext_l10n.h:879 src/ext_l10n.h:881 src/ext_l10n.h:883 src/ext_l10n.h:886
-#: src/ext_l10n.h:888
-msgid "FIXME"
-msgstr "À CORRIGER"
-
-# à confirmer aussi
-#: src/ext_l10n.h:880
-msgid "I&nput"
-msgstr "Incorporation"
-
-# Texto mieux que "Mot à mot" ? - AR
-# Retour à verbatim (cf intro) - JPC
-#: src/ext_l10n.h:882
-msgid "&Verbatim"
-msgstr "Verbatim"
-
-#: src/ext_l10n.h:884
-msgid "Options"
-msgstr "Options"
-
-# contrainte de longueur
-#: src/ext_l10n.h:885
-msgid "&Don't typeset"
-msgstr "Formatage désactivé"
-
-#: src/ext_l10n.h:887
-msgid "Visible &Space"
-msgstr "Espace visible"
-
-# contrainte de longueur
-#: src/ext_l10n.h:889
-msgid "&Filename:"
-msgstr "Nom Fichier :"
-
-#: src/ext_l10n.h:895
-msgid "&Load"
-msgstr "Charger"
-
-#: src/ext_l10n.h:896
-msgid "Load the file"
-msgstr "Charger le fichier"
-
-#: src/ext_l10n.h:898 src/ext_l10n.h:1176
-msgid "&Keyword"
-msgstr "Mot-Clé"
-
-# contrainte de longueur
-#: src/ext_l10n.h:899 src/ext_l10n.h:1031 src/ext_l10n.h:1177
-msgid "Index entry"
-msgstr "Entrée d'index"
-
-#: src/ext_l10n.h:902 src/frontends/qt2/QLog.C:33
-msgid "Log"
-msgstr "Log"
-
-#: src/ext_l10n.h:904 src/ext_l10n.h:1203
-msgid "Update the display"
-msgstr "Mettre à jour l'affichage"
-
-#: src/ext_l10n.h:906
-msgid "Minipage settings"
-msgstr "Options de minipage"
-
-#: src/ext_l10n.h:908 src/ext_l10n.h:1057
-msgid "Top"
-msgstr "&Haut"
-
-#: src/ext_l10n.h:909 src/ext_l10n.h:1058
-msgid "Middle"
-msgstr "&Milieu"
-
-#: src/ext_l10n.h:910 src/ext_l10n.h:1059
-msgid "Bottom"
-msgstr "&Bas"
-
-#: src/ext_l10n.h:911
-msgid "Vertical alignment"
-msgstr "Alignement vertical"
-
-#: src/ext_l10n.h:912
-msgid "A&lignment:"
-msgstr "Alignement :"
-
-#: src/ext_l10n.h:913
-msgid "Units of width value"
-msgstr ""
-
-#: src/ext_l10n.h:914
-msgid "Width value"
-msgstr "Largeur"
-
-#: src/ext_l10n.h:915
-msgid "&Units:"
-msgstr "&Unité :"
-
-#: src/ext_l10n.h:921
-msgid "&Alignment and Spacing"
-msgstr "&Alignement et Interligne"
-
-#: src/ext_l10n.h:922
-msgid "Alignment:"
-msgstr "Alignement :"
-
-#: src/ext_l10n.h:923
-msgid "Justified"
-msgstr "Justifié"
-
-#: src/ext_l10n.h:924
-msgid "Left"
-msgstr "À gauche"
-
-#: src/ext_l10n.h:925
-msgid "Right"
-msgstr "À droite"
-
-#: src/ext_l10n.h:926
-msgid "Centered"
-msgstr "Centré"
-
-#: src/ext_l10n.h:927
-msgid "No indentation"
-msgstr "Pas d'indentation"
-
-#: src/ext_l10n.h:928
-msgid "Spacing"
-msgstr "Interligne"
-
-#: src/ext_l10n.h:929 src/ext_l10n.h:940 src/ext_l10n.h:951 src/ext_l10n.h:962
-#: src/ext_l10n.h:973 src/ext_l10n.h:984 src/ext_l10n.h:1037
-msgid "Centimetres"
-msgstr "Centimètres"
-
-#: src/ext_l10n.h:930 src/ext_l10n.h:941 src/ext_l10n.h:952 src/ext_l10n.h:963
-#: src/ext_l10n.h:974 src/ext_l10n.h:985 src/ext_l10n.h:1038
-msgid "Inches"
-msgstr "Pouces"
-
-#: src/ext_l10n.h:931 src/ext_l10n.h:942 src/ext_l10n.h:953 src/ext_l10n.h:964
-#: src/ext_l10n.h:975 src/ext_l10n.h:986 src/ext_l10n.h:1039
-msgid "Points"
-msgstr "Points"
-
-#: src/ext_l10n.h:932 src/ext_l10n.h:943 src/ext_l10n.h:954 src/ext_l10n.h:965
-#: src/ext_l10n.h:976 src/ext_l10n.h:987 src/ext_l10n.h:1040
-msgid "Millimetres"
-msgstr "Millimètres"
-
-#: src/ext_l10n.h:933 src/ext_l10n.h:944 src/ext_l10n.h:955 src/ext_l10n.h:966
-#: src/ext_l10n.h:977 src/ext_l10n.h:988 src/ext_l10n.h:1041
-msgid "Picas"
-msgstr "Picas"
-
-#: src/ext_l10n.h:934 src/ext_l10n.h:945 src/ext_l10n.h:956 src/ext_l10n.h:967
-#: src/ext_l10n.h:978 src/ext_l10n.h:989 src/ext_l10n.h:1042
-msgid "ex Units"
-msgstr "unités « ex »"
-
-#: src/ext_l10n.h:935 src/ext_l10n.h:946 src/ext_l10n.h:957 src/ext_l10n.h:968
-#: src/ext_l10n.h:979 src/ext_l10n.h:990 src/ext_l10n.h:1043
-msgid "em Units"
-msgstr "unités « em »"
-
-#: src/ext_l10n.h:936 src/ext_l10n.h:947 src/ext_l10n.h:958 src/ext_l10n.h:969
-#: src/ext_l10n.h:980 src/ext_l10n.h:991 src/ext_l10n.h:1044
-msgid "Scaled Points"
-msgstr "Points à l'échelle"
-
-#: src/ext_l10n.h:937 src/ext_l10n.h:948 src/ext_l10n.h:959 src/ext_l10n.h:970
-#: src/ext_l10n.h:981 src/ext_l10n.h:992 src/ext_l10n.h:1045
-msgid "Big/PS Points"
-msgstr "Points Big/PS"
-
-#: src/ext_l10n.h:938 src/ext_l10n.h:949 src/ext_l10n.h:960 src/ext_l10n.h:971
-#: src/ext_l10n.h:982 src/ext_l10n.h:993 src/ext_l10n.h:1046
-msgid "Didot Points"
-msgstr "Points Didot"
-
-#: src/ext_l10n.h:939 src/ext_l10n.h:950 src/ext_l10n.h:961 src/ext_l10n.h:972
-#: src/ext_l10n.h:983 src/ext_l10n.h:994 src/ext_l10n.h:1047
-msgid "Cicero Points"
-msgstr "Points Cicero"
-
-#: src/ext_l10n.h:995 src/ext_l10n.h:997
-msgid "Units:"
-msgstr "Unités :"
-
-#: src/ext_l10n.h:996 src/ext_l10n.h:998
-msgid "Unit of Size, Stretch and Slink"
-msgstr ""
-
-#: src/ext_l10n.h:999
-msgid "Value:"
-msgstr "Valeur :"
-
-#: src/ext_l10n.h:1000
-msgid "Amount of spacing"
-msgstr "Interligne"
-
-#: src/ext_l10n.h:1001
-msgid "Stretch:"
-msgstr "Élongation :"
-
-#: src/ext_l10n.h:1002
-msgid "Margin by which paragraph is allowed to increase"
-msgstr ""
-
-#: src/ext_l10n.h:1003
-msgid "Shrink:"
-msgstr "Rétrécissement :"
-
-#: src/ext_l10n.h:1004
-msgid "Margin by which paragraph is allowed to decrease"
-msgstr ""
-
-#: src/ext_l10n.h:1006 src/ext_l10n.h:1015
-msgid "DefSkip"
-msgstr "par Défaut"
-
-#: src/ext_l10n.h:1007 src/ext_l10n.h:1016
-msgid "SmallSkip"
-msgstr "Petit"
-
-#: src/ext_l10n.h:1008 src/ext_l10n.h:1017
-msgid "MedSkip"
-msgstr "Moyen"
-
-#: src/ext_l10n.h:1009 src/ext_l10n.h:1018
-msgid "BigSkip"
-msgstr "Gros"
-
-#: src/ext_l10n.h:1010 src/ext_l10n.h:1019
-msgid "VFill"
-msgstr "ressort vertical"
-
-#: src/ext_l10n.h:1012
-msgid "Above:"
-msgstr "Avant :"
-
-#: src/ext_l10n.h:1013
-msgid "Below:"
-msgstr "Après :"
-
-#: src/ext_l10n.h:1021
-msgid "Keep space at the top of the page"
-msgstr "Conserve l'espacement en haut de page"
-
-#: src/ext_l10n.h:1022
-msgid "Keep space at top of the page"
-msgstr "Conserve l'espacement en haut de page"
-
-#: src/ext_l10n.h:1023
-msgid "Keep space at the bottom of the page"
-msgstr "Conserve l'espacement en bas de page"
-
-#: src/ext_l10n.h:1024
-msgid "List environment"
-msgstr "Environnement de liste"
-
-# contrainte de longueur
-#: src/ext_l10n.h:1025
-msgid "Label width:"
-msgstr "Taille du marqueur :"
-
-#: src/ext_l10n.h:1026
-msgid "Label width in list environment"
-msgstr "Taille du marqueur dans l'environnement de liste"
-
-#: src/ext_l10n.h:1027
-msgid "&Lines and Page breaks"
-msgstr "&Sauts de Ligne et de Page"
-
-#: src/ext_l10n.h:1028
-msgid "Page break"
-msgstr "Saut de Page"
-
-#: src/ext_l10n.h:1029 src/ext_l10n.h:1033
-msgid "above paragraph"
-msgstr "avant un paragraphe"
-
-#: src/ext_l10n.h:1030 src/ext_l10n.h:1034
-msgid "below paragraph"
-msgstr "après un paragraphe"
-
-#: src/ext_l10n.h:1032
-msgid "Line"
-msgstr "Ligne"
-
-#: src/ext_l10n.h:1035
-msgid "&Extra options"
-msgstr "&Autres Options"
-
-#: src/ext_l10n.h:1036
-msgid "Unit:"
-msgstr "Unité :"
-
-#: src/ext_l10n.h:1049 src/frontends/qt2/QMinipage.C:33
-msgid "Minipage"
-msgstr "Minipage"
-
-#: src/ext_l10n.h:1050
-msgid "Wrap text around floats"
-msgstr "Enrober les flottants dans le texte"
-
-#: src/ext_l10n.h:1051
-msgid "Indent whole paragraph"
-msgstr "Paragraphe à retrait"
-
-#: src/ext_l10n.h:1052
-msgid "Width:"
-msgstr "Largeur :"
-
-#: src/ext_l10n.h:1053
-msgid "Minipage options"
-msgstr "Options de minipage"
-
-#: src/ext_l10n.h:1054
-msgid "Start new minipage"
-msgstr "Commencer une nouvelle minipage"
-
-#: src/ext_l10n.h:1055
-msgid "HFill between minipage paragraphs"
-msgstr "Ressort horizontal entre les minipages"
-
-#: src/ext_l10n.h:1056
-msgid "Vertical Alignment:"
-msgstr "Alignement vertical :"
-
-#: src/ext_l10n.h:1064
-msgid "LaTeX pre-amble"
-msgstr "Préambule LaTeX"
-
-#: src/ext_l10n.h:1065
-msgid "The LaTeX pre-amble"
-msgstr "Le Préambule LaTeX"
-
-#: src/ext_l10n.h:1066
-msgid "&Edit ..."
-msgstr "&Éditer ..."
-
-#: src/ext_l10n.h:1067
-msgid "Edit the pre-amble in an external editor"
-msgstr "Éditer le préambule dans un éditeur externe"
-
-#: src/ext_l10n.h:1071 src/frontends/qt2/QPrint.C:35
-#: src/frontends/xforms/form_print.C:133 src/frontends/xforms/FormPrint.C:35
-#: src/LyXAction.C:138 src/LyXAction.C:145
-msgid "Print"
-msgstr "Imprimer"
-
-#: src/ext_l10n.h:1072
-msgid "Print Destination"
-msgstr "Destination"
-
-#: src/ext_l10n.h:1073
-msgid "P&rinter"
-msgstr "Imprimante"
-
-#: src/ext_l10n.h:1074
-msgid "Send output to the printer"
-msgstr "Envoie le résultat à l'imprimante"
-
-#: src/ext_l10n.h:1076 src/ext_l10n.h:1078
-msgid "Send output to a file"
-msgstr "Envoie le résultat à un fichier"
-
-#: src/ext_l10n.h:1077
-msgid "Send output to the given printer"
-msgstr "Envoie le résultat à l'imprimante donnée"
-
-#: src/ext_l10n.h:1080
-msgid "Pages"
-msgstr "Pages"
-
-#: src/ext_l10n.h:1081
-msgid "&All"
-msgstr "&Toutes"
-
-#: src/ext_l10n.h:1082
-msgid "Print all pages"
-msgstr "Imprime toutes les pages"
-
-#: src/ext_l10n.h:1083
-msgid "&Odd"
-msgstr "&Impaires"
-
-#: src/ext_l10n.h:1084
-msgid "Print odd pages only"
-msgstr "Imprime seulement les pages impaires"
-
-#: src/ext_l10n.h:1085
-msgid "&Even"
-msgstr "&Paires"
-
-#: src/ext_l10n.h:1086
-msgid "Print even pages only"
-msgstr "Imprime seulement les pages paires"
-
-#: src/ext_l10n.h:1087
-msgid "&Last page:"
-msgstr "&Dernière page :"
-
-#: src/ext_l10n.h:1088
-msgid "Page number to print to"
-msgstr "Numéro de la page jusqu'à laquelle imprimer"
-
-#: src/ext_l10n.h:1089
-msgid "Re&verse order"
-msgstr "&Ordre inverse"
-
-#: src/ext_l10n.h:1090
-msgid "Print in reverse order"
-msgstr "Imprime à partir de la derniére page"
-
-#: src/ext_l10n.h:1091
-msgid "Page number to print from"
-msgstr "Numéro de la page à partir de laquelle imprimer"
-
-#: src/ext_l10n.h:1092
-msgid "Ran&ge"
-msgstr "Étendue"
-
-#: src/ext_l10n.h:1093
-msgid "Set a range of pages to print"
-msgstr "Étendue des pages à imprimer"
-
-#: src/ext_l10n.h:1094
-msgid "&Starting range:"
-msgstr "&Commencer une étendue :"
-
-#: src/ext_l10n.h:1095 src/frontends/xforms/form_print.C:139
-msgid "Copies"
-msgstr "Exemplaires"
-
-#: src/ext_l10n.h:1096
-msgid "Number of copies"
-msgstr "Nombre d'exemplaires"
-
-#: src/ext_l10n.h:1097
-msgid "&Collate"
-msgstr "Accoler"
-
-#: src/ext_l10n.h:1098
-msgid "Collate copies"
-msgstr "Accoler les exemplaires"
-
-#: src/ext_l10n.h:1099
-msgid "&Print"
-msgstr "&Imprimer"
-
-#: src/ext_l10n.h:1100 src/ext_l10n.h:1159
-#: src/frontends/controllers/ButtonController.h:74
-#: src/frontends/xforms/form_maths_deco.C:32
-#: src/frontends/xforms/FormMathsPanel.C:71
-#: src/frontends/xforms/FormMathsPanel.C:407
-#: src/frontends/xforms/form_maths_space.C:73
-#: src/frontends/xforms/form_maths_style.C:35 src/LyXAction.C:130
-msgid "Close"
-msgstr "Fermer"
-
-#: src/ext_l10n.h:1102 src/ext_l10n.h:1187
-msgid "&Type"
-msgstr "Type"
-
-#: src/ext_l10n.h:1104
-msgid "Update the reference list"
-msgstr "Met à jour la liste des références"
-
-#: src/ext_l10n.h:1105
-msgid "Sort"
-msgstr "Trier"
-
-#: src/ext_l10n.h:1106
-msgid "Sort references in alphabetical order"
-msgstr "Trie les références par ordre aphabétique"
-
-#: src/ext_l10n.h:1107 src/frontends/qt2/QRef.C:103
-msgid "&Goto"
-msgstr "&Aller"
-
-#: src/ext_l10n.h:1108
-msgid "Move the document cursor to reference"
-msgstr "Déplace le curseur à la référence"
-
-#: src/ext_l10n.h:1110
-msgid "Page number"
-msgstr "Numéro de Page"
-
-#: src/ext_l10n.h:1111
-msgid "Ref on page xxx"
-msgstr "Réf sur la page xxx"
-
-#: src/ext_l10n.h:1112
-msgid "On page xxx"
-msgstr "sur la page xxx"
-
-#: src/ext_l10n.h:1113
-msgid "Pretty reference"
-msgstr "Jolie Référence"
-
-#: src/ext_l10n.h:1114
-msgid "Reference as it appears in output"
-msgstr "Référence telle qu'elle sera imprimée"
-
-#: src/ext_l10n.h:1115
-msgid "&Reference:"
-msgstr "Référence :"
-
-#: src/ext_l10n.h:1116
-msgid "&Name:"
-msgstr "Nom :"
-
-#: src/ext_l10n.h:1117
-msgid "Available references"
-msgstr "Références disponibles"
-
-#: src/ext_l10n.h:1120
-msgid "Search and replace"
-msgstr "Rechercher et Remplacer"
-
-#: src/ext_l10n.h:1121
-msgid "&Find:"
-msgstr "Rechercher :"
-
-#: src/ext_l10n.h:1122
-msgid "Replace &with:"
-msgstr "Remplacer par :"
-
-#: src/ext_l10n.h:1123
-msgid "Case &sensitive"
-msgstr "Selon la casse"
-
-#: src/ext_l10n.h:1124
-msgid "Match whole words onl&y"
-msgstr "Mots complets seulement"
-
-#: src/ext_l10n.h:1125
-msgid "Find &Next"
-msgstr "Suivant"
-
-#: src/ext_l10n.h:1126 src/ext_l10n.h:1134 src/ext_l10n.h:1183
-msgid "&Replace"
-msgstr "Remplacer"
-
-#: src/ext_l10n.h:1127
-msgid "Replace &All "
-msgstr "Remplacer tout"
-
-#: src/ext_l10n.h:1128
-msgid "Search &backwards"
-msgstr "Rechercher en arrière"
-
-#: src/ext_l10n.h:1130
-msgid "File: "
-msgstr "Fichier :"
-
-#: src/ext_l10n.h:1132 src/frontends/qt2/QSpellchecker.C:27
-msgid "Spellchecker"
-msgstr "Correcteur Orthographique"
-
-#: src/ext_l10n.h:1133
-msgid "Suggestions:"
-msgstr "Suggestions :"
-
-#: src/ext_l10n.h:1135
-msgid "Replace word with current choice"
-msgstr "Remplace le mot par le choix sélectionné"
-
-#: src/ext_l10n.h:1136
-msgid "&Add"
-msgstr "&Ajouter"
-
-#: src/ext_l10n.h:1137
-msgid "Add the word to your personal dictionary"
-msgstr "Ajoute le mot à votre dictionnaire personnel"
-
-#: src/ext_l10n.h:1138
-msgid "&Ignore"
-msgstr "Ignorer"
-
-#: src/ext_l10n.h:1139
-msgid "Ignore this word"
-msgstr "Ignore le mot"
-
-#: src/ext_l10n.h:1140
-msgid "&Accept"
-msgstr "Accepter"
-
-#: src/ext_l10n.h:1141
-msgid "Accept word for this session"
-msgstr "Accepte ce mot durant cette session"
-
-#: src/ext_l10n.h:1142
-msgid "&Options..."
-msgstr "Options..."
-
-#: src/ext_l10n.h:1144
-msgid "How far spellchecking has got"
-msgstr "État d'avancement de la correction"
-
-#: src/ext_l10n.h:1145 src/frontends/xforms/form_spellchecker.C:37
-msgid "Suggestions"
-msgstr "Suggestions"
-
-#: src/ext_l10n.h:1146
-msgid "Replacement:"
-msgstr "Remplacement :"
-
-#: src/ext_l10n.h:1147
-msgid "Current word"
-msgstr "Mot actuel"
-
-#: src/ext_l10n.h:1148
-msgid "Unknown:"
-msgstr "Inconnu :"
-
-#: src/ext_l10n.h:1149
-msgid "Replace with selected word"
-msgstr "Remplace par le mot sélectionné"
-
-#: src/ext_l10n.h:1150
-msgid "&Start..."
-msgstr "&Commencer..."
-
-#: src/ext_l10n.h:1151
-msgid "Start spellcheck"
-msgstr "Commence la correction"
-
-#: src/ext_l10n.h:1152 src/frontends/qt2/QTabularCreate.C:28
-msgid "Insert table"
-msgstr "Insérer un tableau"
-
-#: src/ext_l10n.h:1153
-msgid "&Rows:"
-msgstr "&Rangées :"
-
-#: src/ext_l10n.h:1154
-msgid "Number of rows"
-msgstr "Nombre de rangées"
-
-#: src/ext_l10n.h:1155
-msgid "&Columns:"
-msgstr "&Colonnes :"
-
-#: src/ext_l10n.h:1156
-msgid "Number of columns"
-msgstr "Nombre de colonnes"
-
-#: src/ext_l10n.h:1157
-msgid "Resize this to the correct table dimensions"
-msgstr ""
-
-#: src/ext_l10n.h:1161
-msgid "LaTeX classes"
-msgstr "Classes LaTeX"
-
-#: src/ext_l10n.h:1162
-msgid "LaTeX styles"
-msgstr "Styles LaTeX"
-
-#: src/ext_l10n.h:1163
-msgid "BibTeX styles"
-msgstr "Styles BibTeX"
-
-#: src/ext_l10n.h:1164
-msgid "Selected classes or styles"
-msgstr "Classes ou styles sélectionnés"
-
-#: src/ext_l10n.h:1165
-msgid "Show &path"
-msgstr "Afficher le chemin"
-
-#: src/ext_l10n.h:1166
-msgid "Toggles view of the file list"
-msgstr ""
-
-#: src/ext_l10n.h:1168
-msgid "Installed files"
-msgstr "Fichiers installés"
-
-#: src/ext_l10n.h:1169
-msgid "&Rescan"
-msgstr "&Rafraîchir"
-
-#: src/ext_l10n.h:1170
-msgid "Built new file list"
-msgstr "A reconstruit la liste des fichiers"
-
-#: src/ext_l10n.h:1171
-msgid "&View"
-msgstr "Visualiser"
-
-#: src/ext_l10n.h:1172
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
-msgstr ""
-"Affiche le contenu du fichier sélectionné. Seulement possible quand le "
-"chemin est affiché."
-
-#: src/ext_l10n.h:1174
-msgid "Close this dialog"
-msgstr "Fermer cette fenêtre"
-
-#: src/ext_l10n.h:1178
-msgid "Entry"
-msgstr "Entrée"
-
-#: src/ext_l10n.h:1179
-msgid "Thesaurus entries"
-msgstr "Entrées du Dictionnaire"
-
-#: src/ext_l10n.h:1180
-msgid "Select a related word"
-msgstr "Sélectionne un synonyme"
-
-#: src/ext_l10n.h:1181
-msgid "&Selection"
-msgstr "&Sélection"
-
-#: src/ext_l10n.h:1182
-msgid "The selected entry"
-msgstr "L'entrée sélectionnée"
-
-#: src/ext_l10n.h:1184
-msgid "Replace the entry with the selection"
-msgstr "Remplace l'entrée par la sélection"
-
-#: src/ext_l10n.h:1186
-msgid "Table Of Contents"
-msgstr "Table des Matières"
-
-#: src/ext_l10n.h:1188
-msgid "Contents list"
-msgstr ""
-
-#: src/ext_l10n.h:1191
-msgid "Insert URL"
-msgstr "Insérer une URL"
-
-#: src/ext_l10n.h:1192
-msgid "&URL"
-msgstr "&URL"
-
-#: src/ext_l10n.h:1194
-msgid "&Name"
-msgstr "&Nom"
-
-#: src/ext_l10n.h:1195
-msgid "Name associated with the URL"
-msgstr "Nom associé à l'URL"
-
-#: src/ext_l10n.h:1197
-msgid "&Generate hyperlink"
-msgstr "&Créer un lien hypertexte"
-
-#: src/ext_l10n.h:1198
-msgid "Output as a hyperlink ?"
-msgstr "Imprimer comme lien hypertexte ?"
-
-#: src/ext_l10n.h:1201
-msgid "Version control log"
-msgstr "Historique de Contrôle de Version"
-
 #. Insert the latex builtin float-types
 #. (these will later be read from a layout file)
 #. table
@@ -5019,6 +935,10 @@ msgstr "Figure"
 #: src/FloatList.C:40
 msgid "List of Figures"
 msgstr "Liste des Figures"
+
+#: src/FloatList.C:47 src/ext_l10n.h:199
+msgid "Algorithm"
+msgstr "Algorithme"
 
 #: src/FloatList.C:48
 msgid "List of Algorithms"
@@ -5039,6 +959,23 @@ msgstr " et al."
 #: src/frontends/controllers/biblio.C:258
 msgid "No year"
 msgstr "Pas d'année"
+
+#. /
+#: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:157
+#: src/lyxfunc.C:1082 src/ext_l10n.h:571 src/ext_l10n.h:605 src/ext_l10n.h:764
+#: src/ext_l10n.h:901
+msgid "Cancel"
+msgstr "Annuler"
+
+#: src/frontends/controllers/ButtonController.h:74
+#: src/frontends/xforms/form_maths_deco.C:32
+#: src/frontends/xforms/FormMathsPanel.C:71
+#: src/frontends/xforms/FormMathsPanel.C:407
+#: src/frontends/xforms/form_maths_space.C:73
+#: src/frontends/xforms/form_maths_style.C:35 src/LyXAction.C:130
+#: src/ext_l10n.h:1100 src/ext_l10n.h:1159
+msgid "Close"
+msgstr "Fermer"
 
 #: src/frontends/controllers/character.C:33
 #: src/frontends/controllers/character.C:53
@@ -5118,6 +1055,11 @@ msgstr "Petit (-1)"
 msgid "Normal"
 msgstr "Normal"
 
+#: src/frontends/controllers/character.C:105 src/frontends/qt2/QDocument.C:203
+#: src/lyxfont.C:56 src/ext_l10n.h:745
+msgid "Large"
+msgstr "Grand"
+
 #: src/frontends/controllers/character.C:107 src/lyxfont.C:57
 msgid "Larger"
 msgstr "Très Grand (+2)"
@@ -5125,6 +1067,11 @@ msgstr "Très Grand (+2)"
 #: src/frontends/controllers/character.C:109 src/lyxfont.C:57
 msgid "Largest"
 msgstr "Très Très Grand (+3)"
+
+#: src/frontends/controllers/character.C:111 src/frontends/qt2/QDocument.C:206
+#: src/lyxfont.C:57 src/ext_l10n.h:748
+msgid "Huge"
+msgstr "ÉNORME"
 
 #: src/frontends/controllers/character.C:113 src/lyxfont.C:57
 msgid "Huger"
@@ -5268,6 +1215,10 @@ msgstr "Choisir le fichier graphique"
 msgid "Clipart|#C#c"
 msgstr "Clipart|#C#c"
 
+#: src/frontends/controllers/ControlGraphics.C:202 src/ext_l10n.h:861
+msgid "center"
+msgstr "centre"
+
 #: src/frontends/controllers/ControlGraphics.C:203
 #, fuzzy
 msgid "left top"
@@ -5410,6 +1361,11 @@ msgstr "&Oui"
 msgid "&No"
 msgstr "&Non"
 
+#: src/frontends/qt2/Alert_pimpl.C:45 src/frontends/qt2/QParagraphDialog.C:49
+#: src/ext_l10n.h:539 src/ext_l10n.h:1063
+msgid "&Cancel"
+msgstr "&Annuler"
+
 #: src/frontends/qt2/Alert_pimpl.C:51
 msgid "LyX: "
 msgstr "LyX : "
@@ -5417,6 +1373,21 @@ msgstr "LyX : "
 #: src/frontends/qt2/FileDialog.C:43
 msgid "*|All files"
 msgstr "*|Tous les fichiers"
+
+#: src/frontends/qt2/lengthcombo.C:19 src/ext_l10n.h:838 src/ext_l10n.h:841
+#: src/ext_l10n.h:844 src/ext_l10n.h:847
+msgid "cm"
+msgstr "cm"
+
+#: src/frontends/qt2/lengthcombo.C:20 src/ext_l10n.h:839 src/ext_l10n.h:842
+#: src/ext_l10n.h:845 src/ext_l10n.h:848
+msgid "in"
+msgstr "in"
+
+#: src/frontends/qt2/lengthcombo.C:21 src/ext_l10n.h:837 src/ext_l10n.h:840
+#: src/ext_l10n.h:843 src/ext_l10n.h:846
+msgid "pt"
+msgstr "pt"
 
 #: src/frontends/qt2/lengthcombo.C:22
 msgid "mm"
@@ -5446,6 +1417,10 @@ msgstr "bp"
 msgid "dd"
 msgstr "dd"
 
+#: src/frontends/qt2/lengthcombo.C:29 src/ext_l10n.h:227
+msgid "cc"
+msgstr "cc"
+
 #: src/frontends/qt2/lengthcombo.C:30
 msgid "mu"
 msgstr "mu"
@@ -5468,6 +1443,11 @@ msgstr "%l"
 msgid "FIXME - describe the units."
 msgstr ""
 
+#: src/frontends/qt2/QAbout.C:32 src/frontends/xforms/FormAboutlyx.C:28
+#: src/ext_l10n.h:530
+msgid "About LyX"
+msgstr "À Propos de LyX"
+
 #: src/frontends/qt2/QBibitem.C:26
 msgid "Bibliography Item"
 msgstr "Entrée Bibliographique"
@@ -5475,6 +1455,11 @@ msgstr "Entrée Bibliographique"
 #: src/frontends/qt2/QBibtex.C:29
 msgid "BibTeX"
 msgstr "BibTeX"
+
+#: src/frontends/qt2/QBibtex.C:114 src/frontends/qt2/QBibtexDialog.C:77
+#: src/ext_l10n.h:562
+msgid "Other ..."
+msgstr "Autre ..."
 
 #: src/frontends/qt2/QBibtexDialog.C:46
 msgid "BibTeX style files (*.bst)"
@@ -5494,6 +1479,16 @@ msgstr "Fichiers de Données BibTeX (*.bib)"
 msgid "Select a BibTeX database to add"
 msgstr "Choisir une base de D. BibTeX"
 
+#: src/frontends/qt2/QCharacter.C:31 src/ext_l10n.h:572
+msgid "Character"
+msgstr "Caractère"
+
+# ---------------------------XFORMS---------------------------
+#: src/frontends/qt2/QCitation.C:45 src/frontends/xforms/FormCitation.C:117
+#: src/ext_l10n.h:601
+msgid "Citation"
+msgstr "Citation"
+
 #: src/frontends/qt2/QCitationDialog.C:48
 #: src/frontends/xforms/FormCitation.C:476
 msgid "Not yet supported"
@@ -5503,9 +1498,112 @@ msgstr "Pas encore supporté"
 msgid "Document Settings"
 msgstr "Paramètres du Document"
 
+#: src/frontends/qt2/QDocument.C:72 src/lyxfont.C:573 src/ext_l10n.h:673
+msgid "Default"
+msgstr "Défaut"
+
+#: src/frontends/qt2/QDocument.C:73 src/ext_l10n.h:674 src/ext_l10n.h:1011
+#: src/ext_l10n.h:1020
+msgid "Custom"
+msgstr "Paramétré"
+
+#: src/frontends/qt2/QDocument.C:74 src/ext_l10n.h:675
+msgid "USletter"
+msgstr "LettreUS"
+
+#: src/frontends/qt2/QDocument.C:75 src/ext_l10n.h:676
+msgid "USlegal"
+msgstr "LégalUS"
+
+#: src/frontends/qt2/QDocument.C:76 src/ext_l10n.h:677
+msgid "USexecutive"
+msgstr "ExecutiveUS"
+
+#: src/frontends/qt2/QDocument.C:77 src/ext_l10n.h:678
+msgid "A3"
+msgstr "A3"
+
 #: src/frontends/qt2/QDocument.C:78
 msgid "A4"
 msgstr "A4"
+
+#: src/frontends/qt2/QDocument.C:79 src/ext_l10n.h:679
+msgid "A5"
+msgstr "A5"
+
+#: src/frontends/qt2/QDocument.C:80 src/ext_l10n.h:680
+msgid "B3"
+msgstr "B3"
+
+#: src/frontends/qt2/QDocument.C:81 src/ext_l10n.h:681
+msgid "B4"
+msgstr "B4"
+
+#: src/frontends/qt2/QDocument.C:82 src/ext_l10n.h:682
+msgid "B5"
+msgstr "B5"
+
+#: src/frontends/qt2/QDocument.C:84 src/ext_l10n.h:684 src/ext_l10n.h:1005
+#: src/ext_l10n.h:1014 src/ext_l10n.h:1048
+msgid "None"
+msgstr "Sans"
+
+#: src/frontends/qt2/QDocument.C:85 src/ext_l10n.h:685
+msgid "A4 small Margins (only portrait)"
+msgstr "A4 petites Marges (portrait seul)"
+
+#: src/frontends/qt2/QDocument.C:86 src/ext_l10n.h:686
+msgid "A4 very small Margins (only portrait)"
+msgstr "A4 très petites marges (portrait seul)"
+
+#: src/frontends/qt2/QDocument.C:87 src/ext_l10n.h:687
+msgid "A4 very wide margins (only portrait)"
+msgstr "A4 très grandes marges (portrait seul)"
+
+#: src/frontends/qt2/QDocument.C:112 src/ext_l10n.h:655
+msgid "OneHalf"
+msgstr "Un et Demi"
+
+#: src/frontends/qt2/QDocument.C:114 src/ext_l10n.h:657
+msgid "Other"
+msgstr "Autre"
+
+#. the document language page
+#: src/frontends/qt2/QDocument.C:116 src/frontends/qt2/QDocument.C:124
+#: src/frontends/qt2/QDocument.C:152 src/frontends/qt2/QDocument.C:196
+#: src/frontends/qt2/QDocument.C:575 src/frontends/qt2/QDocument.C:579
+#: src/ext_l10n.h:642 src/ext_l10n.h:658 src/ext_l10n.h:707 src/ext_l10n.h:738
+#: src/ext_l10n.h:857
+msgid "default"
+msgstr "défaut"
+
+#: src/frontends/qt2/QDocument.C:117 src/ext_l10n.h:659
+msgid "10"
+msgstr "10"
+
+#: src/frontends/qt2/QDocument.C:118 src/ext_l10n.h:660
+msgid "11"
+msgstr "11"
+
+#: src/frontends/qt2/QDocument.C:119 src/ext_l10n.h:661
+msgid "12"
+msgstr "12"
+
+#: src/frontends/qt2/QDocument.C:125 src/ext_l10n.h:643
+msgid "empty"
+msgstr "vide"
+
+#: src/frontends/qt2/QDocument.C:126 src/ext_l10n.h:558 src/ext_l10n.h:644
+msgid "plain"
+msgstr "ordinaire"
+
+#: src/frontends/qt2/QDocument.C:127 src/ext_l10n.h:645
+msgid "headings"
+msgstr "en-têtes"
+
+#: src/frontends/qt2/QDocument.C:128 src/ext_l10n.h:646
+msgid "fancy"
+msgstr "sophistiquée"
 
 #: src/frontends/qt2/QDocument.C:130
 msgid "Smallskip"
@@ -5523,6 +1621,70 @@ msgstr "Gros"
 msgid "Length"
 msgstr "Valeur"
 
+#: src/frontends/qt2/QDocument.C:153 src/ext_l10n.h:708
+msgid "auto"
+msgstr "auto"
+
+#: src/frontends/qt2/QDocument.C:154 src/ext_l10n.h:709
+msgid "latin1"
+msgstr "latin1"
+
+#: src/frontends/qt2/QDocument.C:155 src/ext_l10n.h:710
+msgid "latin2"
+msgstr "latin2"
+
+#: src/frontends/qt2/QDocument.C:156 src/ext_l10n.h:711
+msgid "latin3"
+msgstr "latin3"
+
+#: src/frontends/qt2/QDocument.C:157 src/ext_l10n.h:712
+msgid "latin4"
+msgstr "latin4"
+
+#: src/frontends/qt2/QDocument.C:158 src/ext_l10n.h:713
+msgid "latin5"
+msgstr "latin5"
+
+#: src/frontends/qt2/QDocument.C:159 src/ext_l10n.h:714
+msgid "latin9"
+msgstr "latin9"
+
+#: src/frontends/qt2/QDocument.C:160 src/ext_l10n.h:715
+msgid "koi8-r"
+msgstr "koi8-r"
+
+#: src/frontends/qt2/QDocument.C:161 src/ext_l10n.h:716
+msgid "koi8-u"
+msgstr "koi8-u"
+
+#: src/frontends/qt2/QDocument.C:162 src/ext_l10n.h:717
+msgid "cp866"
+msgstr "cp866"
+
+#: src/frontends/qt2/QDocument.C:163 src/ext_l10n.h:718
+msgid "cp1251"
+msgstr "cp1251"
+
+#: src/frontends/qt2/QDocument.C:164 src/ext_l10n.h:719
+msgid "iso88595"
+msgstr "iso88595"
+
+#: src/frontends/qt2/QDocument.C:171 src/ext_l10n.h:722
+msgid "``text''"
+msgstr "``texte''"
+
+#: src/frontends/qt2/QDocument.C:172 src/ext_l10n.h:723
+msgid "''text''"
+msgstr "''texte''"
+
+#: src/frontends/qt2/QDocument.C:173 src/ext_l10n.h:724
+msgid ",,text``"
+msgstr ",,texte``"
+
+#: src/frontends/qt2/QDocument.C:174 src/ext_l10n.h:725
+msgid ",,text''"
+msgstr ",,texte''"
+
 #: src/frontends/qt2/QDocument.C:175
 msgid "«text»"
 msgstr "«texte»"
@@ -5530,6 +1692,43 @@ msgstr "«texte»"
 #: src/frontends/qt2/QDocument.C:176
 msgid "»text«"
 msgstr "»texte«"
+
+#: src/frontends/qt2/QDocument.C:197
+#: src/frontends/xforms/form_preferences.C:171 src/ext_l10n.h:739
+msgid "tiny"
+msgstr "minuscule"
+
+#: src/frontends/qt2/QDocument.C:198 src/ext_l10n.h:740
+msgid "script"
+msgstr "tout petit"
+
+#: src/frontends/qt2/QDocument.C:199 src/ext_l10n.h:741
+msgid "footnote"
+msgstr "très petit"
+
+#: src/frontends/qt2/QDocument.C:200
+#: src/frontends/xforms/form_preferences.C:180 src/ext_l10n.h:742
+msgid "small"
+msgstr "petit"
+
+#: src/frontends/qt2/QDocument.C:201
+#: src/frontends/xforms/form_preferences.C:183 src/ext_l10n.h:743
+msgid "normal"
+msgstr "normal"
+
+#: src/frontends/qt2/QDocument.C:202
+#: src/frontends/xforms/form_preferences.C:186 src/ext_l10n.h:744
+msgid "large"
+msgstr "grand"
+
+#: src/frontends/qt2/QDocument.C:204 src/ext_l10n.h:746
+msgid "LARGE"
+msgstr "GRAND"
+
+#: src/frontends/qt2/QDocument.C:205
+#: src/frontends/xforms/form_preferences.C:195 src/ext_l10n.h:747
+msgid "huge"
+msgstr "énorme"
 
 #: src/frontends/qt2/QDocument.C:234 src/frontends/xforms/FormDocument.C:362
 msgid "Document layout set"
@@ -5585,6 +1784,11 @@ msgstr "leur valeur par défaut dans cette classe ?"
 msgid "Unable to switch to new document class."
 msgstr "Impossible de passer à la nouvelle classe de document."
 
+#: src/frontends/qt2/QError.C:23 src/frontends/xforms/FormError.C:24
+#: src/ext_l10n.h:765
+msgid "LaTeX Error"
+msgstr "Erreur LaTeX"
+
 #: src/frontends/qt2/QERT.C:23
 msgid "LaTeX ERT"
 msgstr "ERT LaTeX"
@@ -5615,6 +1819,15 @@ msgstr "Graphique"
 msgid "Include"
 msgstr "Inclusion"
 
+#: src/frontends/qt2/QIndex.C:23 src/frontends/xforms/FormIndex.C:24
+#: src/insets/insetindex.C:61 src/ext_l10n.h:540 src/ext_l10n.h:897
+msgid "Index"
+msgstr "Index"
+
+#: src/frontends/qt2/QLog.C:33 src/ext_l10n.h:902
+msgid "Log"
+msgstr "Log"
+
 #: src/frontends/qt2/QLog.C:51 src/frontends/xforms/FormLog.C:31
 msgid "Build log"
 msgstr ""
@@ -5631,6 +1844,10 @@ msgstr "Fichier log introuvable"
 msgid "No LaTeX log file found"
 msgstr "Fichier log introuvable"
 
+#: src/frontends/qt2/QMinipage.C:33 src/ext_l10n.h:1049
+msgid "Minipage"
+msgstr "Minipage"
+
 # à revoir
 #: src/frontends/qt2/QParagraph.C:166 src/frontends/xforms/FormParagraph.C:336
 msgid "Paragraph layout set"
@@ -5639,6 +1856,16 @@ msgstr "Le style du paragraphe a été paramétré"
 #: src/frontends/qt2/QParagraph.C:174
 msgid "LyX: Paragraph Settings"
 msgstr "LyX : Options de Paragraphe"
+
+#: src/frontends/qt2/QParagraphDialog.C:49 src/ext_l10n.h:535
+#: src/ext_l10n.h:546 src/ext_l10n.h:600 src/ext_l10n.h:767 src/ext_l10n.h:776
+#: src/ext_l10n.h:794 src/ext_l10n.h:799 src/ext_l10n.h:875 src/ext_l10n.h:894
+#: src/ext_l10n.h:905 src/ext_l10n.h:919 src/ext_l10n.h:1070
+#: src/ext_l10n.h:1119 src/ext_l10n.h:1129 src/ext_l10n.h:1131
+#: src/ext_l10n.h:1143 src/ext_l10n.h:1173 src/ext_l10n.h:1185
+#: src/ext_l10n.h:1190 src/ext_l10n.h:1200 src/ext_l10n.h:1204
+msgid "&Close"
+msgstr "&Fermer"
 
 #. FIXME: should be cleverer here
 #: src/frontends/qt2/QParagraphDialog.C:56
@@ -5657,6 +1884,12 @@ msgstr ""
 #: src/frontends/qt2/QPreambleDialog.C:63
 msgid "Editor"
 msgstr "Éditeur"
+
+#: src/frontends/qt2/QPrint.C:35 src/frontends/xforms/form_print.C:133
+#: src/frontends/xforms/FormPrint.C:35 src/LyXAction.C:138 src/LyXAction.C:145
+#: src/ext_l10n.h:1071
+msgid "Print"
+msgstr "Imprimer"
 
 #: src/frontends/qt2/QPrintDialog.C:48
 msgid "PostScript files (*.ps)"
@@ -5678,22 +1911,68 @@ msgstr "&Revenir"
 msgid "Go back"
 msgstr "Revenir"
 
+#: src/frontends/qt2/QRef.C:103 src/ext_l10n.h:1107
+msgid "&Goto"
+msgstr "&Aller"
+
 #: src/frontends/qt2/QRef.C:105 src/frontends/xforms/FormRef.C:77
 #: src/frontends/xforms/FormRef.C:194 src/frontends/xforms/FormRef.C:211
 msgid "Go to reference"
 msgstr "Aller à la référence"
 
+#: src/frontends/qt2/QSearch.C:31 src/frontends/xforms/form_citation.C:78
+#: src/ext_l10n.h:612
+msgid "Search"
+msgstr "Chercher"
+
 #: src/frontends/qt2/QShowFile.C:23
 msgid "ShowFile"
 msgstr ""
+
+#: src/frontends/qt2/QSpellchecker.C:27 src/ext_l10n.h:1132
+msgid "Spellchecker"
+msgstr "Correcteur Orthographique"
 
 #: src/frontends/qt2/QSpellchecker.C:114
 msgid "Spellcheck complete"
 msgstr "Correction orthographique terminée"
 
+#: src/frontends/qt2/QSpellchecker.C:114
+#: src/frontends/xforms/form_bibitem.C:35
+#: src/frontends/xforms/form_bibtex.C:35
+#: src/frontends/xforms/form_citation.C:173
+#: src/frontends/xforms/form_document.C:47 src/frontends/xforms/form_ert.C:72
+#: src/frontends/xforms/form_external.C:89
+#: src/frontends/xforms/form_filedialog.C:89
+#: src/frontends/xforms/form_float.C:74 src/frontends/xforms/form_forks.C:53
+#: src/frontends/xforms/form_include.C:42 src/frontends/xforms/form_index.C:44
+#: src/frontends/xforms/form_maths_delim.C:49
+#: src/frontends/xforms/form_minipage.C:81
+#: src/frontends/xforms/form_paragraph.C:181
+#: src/frontends/xforms/form_print.C:53 src/frontends/xforms/form_ref.C:86
+#: src/frontends/xforms/form_sendto.C:46
+#: src/frontends/xforms/form_tabular_create.C:28
+#: src/frontends/xforms/form_url.C:64 src/ext_l10n.h:538 src/ext_l10n.h:570
+#: src/ext_l10n.h:603 src/ext_l10n.h:762 src/ext_l10n.h:775 src/ext_l10n.h:900
+msgid "OK"
+msgstr "OK"
+
+#: src/frontends/qt2/QTabularCreate.C:28 src/ext_l10n.h:1152
+msgid "Insert table"
+msgstr "Insérer un tableau"
+
+#: src/frontends/qt2/QThesaurus.C:28 src/ext_l10n.h:449 src/ext_l10n.h:1175
+msgid "Thesaurus"
+msgstr "Dictionnaire de Synonymes"
+
 #: src/frontends/qt2/QToc.C:39
 msgid "Table of contents"
 msgstr "Table des Matières"
+
+#: src/frontends/qt2/QURL.C:25 src/ext_l10n.h:470 src/ext_l10n.h:1193
+#: src/ext_l10n.h:1196
+msgid "URL"
+msgstr "URL"
 
 #: src/frontends/qt2/QVCLog.C:30
 msgid "VCLog"
@@ -5784,6 +2063,10 @@ msgstr "Copyright et Version"
 #: src/frontends/xforms/FormAboutlyx.C:63
 msgid "License and Warranty"
 msgstr "Licence et Garantie"
+
+#: src/frontends/xforms/FormAboutlyx.C:65 src/ext_l10n.h:533
+msgid "Credits"
+msgstr "Crédits"
 
 #: src/frontends/xforms/form_bibitem.C:29
 msgid "Key:|#K"
@@ -6003,6 +2286,10 @@ msgstr "@2->"
 msgid "#&B"
 msgstr "#&B"
 
+#: src/frontends/xforms/form_citation.C:73 src/lyxvc.C:122 src/ext_l10n.h:610
+msgid "Info"
+msgstr "Informations"
+
 #: src/frontends/xforms/form_citation.C:87
 msgid "Regular Expression|#R"
 msgstr "Expression Régulière|#E"
@@ -6018,6 +2305,10 @@ msgstr "Précédent|#P"
 #: src/frontends/xforms/form_citation.C:109
 msgid "Next|#N"
 msgstr "Suivant|#S"
+
+#: src/frontends/xforms/form_citation.C:116 src/ext_l10n.h:607
+msgid "Citation style"
+msgstr "Style de citation"
 
 #: src/frontends/xforms/form_citation.C:130
 msgid "Full author list|#F"
@@ -6177,6 +2468,10 @@ msgstr "Largeur :|#L"
 msgid "Height:|#H"
 msgstr "Hauteur :|#t"
 
+#: src/frontends/xforms/form_document.C:123 src/ext_l10n.h:689
+msgid "Orientation"
+msgstr "Orientation"
+
 #: src/frontends/xforms/form_document.C:126
 msgid "Portrait|#r"
 msgstr "Portrait|#o"
@@ -6184,6 +2479,10 @@ msgstr "Portrait|#o"
 #: src/frontends/xforms/form_document.C:134
 msgid "Landscape|#L"
 msgstr "Paysage|#y"
+
+#: src/frontends/xforms/form_document.C:143 src/ext_l10n.h:692
+msgid "Margins"
+msgstr "Marges"
 
 #: src/frontends/xforms/form_document.C:145
 msgid "Custom sizes|#M"
@@ -6223,9 +2522,17 @@ msgstr "Sép. En-tête :|#p"
 msgid "Footskip:|#F"
 msgstr "Esp. Bas :|#E"
 
+#: src/frontends/xforms/form_document.C:254 src/ext_l10n.h:668
+msgid "Separation"
+msgstr "Séparation"
+
 #: src/frontends/xforms/form_document.C:255
 msgid "Page cols"
 msgstr "Colonnes"
+
+#: src/frontends/xforms/form_document.C:256 src/ext_l10n.h:662
+msgid "Sides"
+msgstr "Faces"
 
 #: src/frontends/xforms/form_document.C:258
 msgid "Fonts:|#F"
@@ -6361,6 +2668,11 @@ msgstr "3|#3"
 msgid "4|#4"
 msgstr "4|#4"
 
+# Contrainte de longueur
+#: src/frontends/xforms/form_document.C:608 src/ext_l10n.h:749
+msgid "Bullet Depth"
+msgstr "Prof. Puces"
+
 #: src/frontends/xforms/form_document.C:613
 msgid "Standard|#S"
 msgstr "Standard|#S"
@@ -6384,6 +2696,10 @@ msgstr "Ding 3|#n"
 #: src/frontends/xforms/form_document.C:664
 msgid "Ding 4|#g"
 msgstr "Ding 4|#g"
+
+#: src/frontends/xforms/FormDocument.C:58 src/ext_l10n.h:636
+msgid "Document Layout"
+msgstr "Style de Document"
 
 #: src/frontends/xforms/FormDocument.C:110
 #, fuzzy
@@ -6422,6 +2738,25 @@ msgid ""
 msgstr ""
 " défaut | minuscule(-4) | tout petit(-3) | très petit(-2)  | petit(-1) | "
 "normal | grand(+1) | Grand(+2) | GRAND(+3) | énorme(+4) | Énorme(+5)"
+
+#: src/frontends/xforms/FormDocument.C:329 src/ext_l10n.h:671
+msgid "Paper"
+msgstr "Papier"
+
+#: src/frontends/xforms/FormDocument.C:331
+#: src/frontends/xforms/FormPreferences.C:258 src/ext_l10n.h:578
+#: src/ext_l10n.h:586 src/ext_l10n.h:704
+msgid "Language"
+msgstr "Langue"
+
+#: src/frontends/xforms/FormDocument.C:333 src/ext_l10n.h:730
+#: src/ext_l10n.h:853
+msgid "Extra"
+msgstr "Autres"
+
+#: src/frontends/xforms/FormDocument.C:335 src/ext_l10n.h:736
+msgid "Bullets"
+msgstr "Puces"
 
 #: src/frontends/xforms/FormDocument.C:338
 msgid ""
@@ -6538,6 +2873,11 @@ msgstr "Utilisateur2|#2"
 #: src/frontends/xforms/FormFiledialog.C:398
 msgid "Warning! Couldn't open directory."
 msgstr "Attention ! Impossible d'ouvrir le répertoire."
+
+# contrainte de longueur
+#: src/frontends/xforms/form_float.C:29 src/ext_l10n.h:800
+msgid "Placement"
+msgstr "Emplacement"
 
 #: src/frontends/xforms/form_float.C:33
 msgid "Top of the page|#T"
@@ -6667,6 +3007,12 @@ msgstr "Personnalisé|#P"
 msgid "Value|#V"
 msgstr "Valeur|#V"
 
+#: src/frontends/xforms/form_graphics.C:227
+#: src/frontends/xforms/form_graphics.C:444 src/ext_l10n.h:827
+#, no-c-format
+msgid "%"
+msgstr "%"
+
 #: src/frontends/xforms/form_graphics.C:231
 #: src/frontends/xforms/form_graphics.C:491
 msgid "Width|#W"
@@ -6761,6 +3107,11 @@ msgstr "Ne pas afficher|#N"
 #: src/frontends/xforms/form_graphics.C:513
 msgid "Get LaTeX size|#L"
 msgstr "Taille LaTeX|#L"
+
+#. add the different tabfolders
+#: src/frontends/xforms/FormGraphics.C:189 src/ext_l10n.h:807
+msgid "File"
+msgstr "Fichier"
 
 #: src/frontends/xforms/FormGraphics.C:190
 msgid "LyX View"
@@ -6901,6 +3252,11 @@ msgstr "Fermer "
 msgid "Functions"
 msgstr "Fonctions"
 
+#: src/frontends/xforms/form_maths_panel.C:35
+#: src/frontends/xforms/FormMathsPanel.C:103 src/ext_l10n.h:507
+msgid "Greek"
+msgstr "Grec"
+
 #: src/frontends/xforms/form_maths_panel.C:39
 #: src/frontends/xforms/form_maths_panel.C:94
 msgid "­ Û"
@@ -7013,6 +3369,11 @@ msgstr "textrm"
 #: src/frontends/xforms/FormMathsStyle.C:41
 msgid "Maths Styles & Fonts"
 msgstr "Styles & Polices Mathématiques"
+
+#: src/frontends/xforms/form_minipage.C:28 src/ext_l10n.h:813
+#: src/ext_l10n.h:829
+msgid "Width"
+msgstr "Largeur"
 
 #: src/frontends/xforms/form_minipage.C:31
 #: src/frontends/xforms/form_paragraph.C:28
@@ -7207,6 +3568,10 @@ msgstr "GRAND"
 #: src/frontends/xforms/form_preferences.C:198
 msgid "huger"
 msgstr "ÉNORME"
+
+#: src/frontends/xforms/form_preferences.C:201 src/ext_l10n.h:823
+msgid "Size"
+msgstr "Taille"
 
 #: src/frontends/xforms/form_preferences.C:225
 msgid "Popup Fonts & Encoding"
@@ -7990,6 +4355,10 @@ msgstr "à"
 msgid "Order"
 msgstr "Ordre"
 
+#: src/frontends/xforms/form_print.C:139 src/ext_l10n.h:1095
+msgid "Copies"
+msgstr "Exemplaires"
+
 #: src/frontends/xforms/form_print.C:142
 msgid "Print to"
 msgstr "Imprimer vers"
@@ -8021,6 +4390,11 @@ msgstr "Type de référence|#y"
 #: src/frontends/xforms/form_ref.C:73
 msgid "Goto reference|#G"
 msgstr "Atteindre référence|#l"
+
+#: src/frontends/xforms/FormRef.C:33 src/ext_l10n.h:377 src/ext_l10n.h:1101
+#: src/ext_l10n.h:1109
+msgid "Reference"
+msgstr "Référence"
 
 #: src/frontends/xforms/FormRef.C:139
 msgid "*** No labels found in document ***"
@@ -8092,6 +4466,10 @@ msgstr ""
 #: src/frontends/xforms/form_spellchecker.C:34
 msgid "Replace"
 msgstr "Remplacer"
+
+#: src/frontends/xforms/form_spellchecker.C:37 src/ext_l10n.h:1145
+msgid "Suggestions"
+msgstr "Suggestions"
 
 #: src/frontends/xforms/form_spellchecker.C:42
 msgid "Spellchecker Options...|#O"
@@ -8355,6 +4733,10 @@ msgstr "Tab.Long"
 msgid "Wrong Cursor position, updated window"
 msgstr "Mauvaise position du curseur, MàJ fenêtre"
 
+#: src/frontends/xforms/form_tabular_create.C:45 src/ext_l10n.h:665
+msgid "Columns"
+msgstr "Colonnes"
+
 #: src/frontends/xforms/FormTabularCreate.C:29
 msgid "Insert Tabular"
 msgstr "Insérer Tableau"
@@ -8510,6 +4892,11 @@ msgstr "ERREUR ! Impossible d'imprimer !"
 msgid "Check 'range of pages'!"
 msgstr "Vérifier les pages sélectionnées !"
 
+#: src/frontends/xforms/Menubar_pimpl.C:279
+#: src/frontends/xforms/Menubar_pimpl.C:352 src/ext_l10n.h:331
+msgid "More"
+msgstr "Poursuivre"
+
 #: src/frontends/xforms/Menubar_pimpl.C:375
 #, c-format
 msgid "No Table of contents%i"
@@ -8617,7 +5004,7 @@ msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr "Modification des polices interdites dans les inserts ERT !"
 
 #: src/insets/insetert.C:251 src/insets/insettabular.C:2051
-#: src/insets/insettext.C:1392
+#: src/insets/insettext.C:1395
 msgid "Sorry."
 msgstr "Désolé."
 
@@ -8773,6 +5160,10 @@ msgstr "Insert de note ouvert"
 msgid "Parent:"
 msgstr "Parent :"
 
+#: src/insets/insetref.C:110 src/ext_l10n.h:417
+msgid "Standard"
+msgstr "Standard"
+
 #: src/insets/insetref.C:110
 msgid "Ref: "
 msgstr "Réf : "
@@ -8824,16 +5215,16 @@ msgid "Opened Text Inset"
 msgstr "Insert de texte ouvert"
 
 # à revoir
-#: src/insets/insettext.C:1390
+#: src/insets/insettext.C:1393
 msgid "Impossible operation"
 msgstr "Opération interdite"
 
 # à revoir
-#: src/insets/insettext.C:1391
+#: src/insets/insettext.C:1394
 msgid "Cannot include more than one paragraph!"
 msgstr "Les cases d'un tableau ne doivent pas inclure plus d'un paragraphe !"
 
-#: src/insets/insettext.C:1637
+#: src/insets/insettext.C:1642
 msgid "Error : LatexType Command not allowed here.\n"
 msgstr "Erreur : commande LaTeX non permise ici.\n"
 
@@ -8863,6 +5254,10 @@ msgstr "URLHtml : "
 #: src/kbsequence.C:166
 msgid "   options: "
 msgstr "   options : "
+
+#: src/language.C:40 src/ext_l10n.h:498
+msgid "English"
+msgstr "Anglais"
 
 #: src/LaTeX.C:191 src/LaTeX.C:276 src/LaTeX.C:332
 msgid "LaTeX run number"
@@ -10667,6 +7062,18 @@ msgstr "Texte Ascii en Paragraphes|P"
 msgid " (wide)"
 msgstr " (large)"
 
+#: src/MenuBackend.C:511 src/ext_l10n.h:12 src/ext_l10n.h:17
+msgid "New...|N"
+msgstr "Nouveau|N"
+
+#: src/MenuBackend.C:512 src/ext_l10n.h:14 src/ext_l10n.h:19
+msgid "Open...|O"
+msgstr "Ouvrir...|O"
+
+#: src/MenuBackend.C:513 src/ext_l10n.h:15 src/ext_l10n.h:25
+msgid "Import|I"
+msgstr "Importer|I"
+
 #: src/MenuBackend.C:514
 msgid "Quit|Q"
 msgstr "Quitter|Q"
@@ -10682,6 +7089,19 @@ msgstr "LinuxDoc...|L"
 #: src/MenuBackend.C:532
 msgid "Emphasize"
 msgstr "En Évidence"
+
+#: src/MenuBackend.C:541 src/MenuBackend.C:548 src/ext_l10n.h:1
+#: src/ext_l10n.h:4
+msgid "File|F"
+msgstr "Fichier|F"
+
+#: src/MenuBackend.C:542 src/ext_l10n.h:2 src/ext_l10n.h:5
+msgid "Edit|E"
+msgstr "Éditer|e"
+
+#: src/MenuBackend.C:544 src/ext_l10n.h:10
+msgid "Documents|D"
+msgstr "Documents|D"
 
 #: src/minibuffer.C:134
 msgid "[End of history]"
@@ -10794,6 +7214,3585 @@ msgstr "Saut de Page (Bas)"
 #: src/text.C:3558
 msgid "Space below"
 msgstr "Espacement au-dessous"
+
+#: src/ext_l10n.h:3 src/ext_l10n.h:11
+msgid "Help|H"
+msgstr "Aide|A"
+
+#: src/ext_l10n.h:6
+msgid "Insert|I"
+msgstr "Insérer|I"
+
+#: src/ext_l10n.h:7
+msgid "Layout|L"
+msgstr "Format|t"
+
+#: src/ext_l10n.h:8
+msgid "View|V"
+msgstr "Visualiser|V"
+
+#: src/ext_l10n.h:9
+msgid "Navigate|N"
+msgstr "Naviguer|N"
+
+#: src/ext_l10n.h:13 src/ext_l10n.h:18
+msgid "New from Template...|T"
+msgstr "Nouveau avec Modèle...|M"
+
+#: src/ext_l10n.h:16 src/ext_l10n.h:29
+msgid "Exit|x"
+msgstr "Quitter|Q"
+
+#: src/ext_l10n.h:20
+msgid "Close|C"
+msgstr "Fermer|F"
+
+#: src/ext_l10n.h:21
+msgid "Save|S"
+msgstr "Enregistrer|E"
+
+#: src/ext_l10n.h:22
+msgid "Save As...|A"
+msgstr "Enregistrer Sous...|S"
+
+#: src/ext_l10n.h:23
+msgid "Revert to Saved|R"
+msgstr "Revenir à la Sauvegarde|R"
+
+#: src/ext_l10n.h:24
+msgid "Version Control|V"
+msgstr "Contrôle de Version|V"
+
+#: src/ext_l10n.h:26
+msgid "Export|E"
+msgstr "Exporter|x"
+
+# contrainte de longueur
+#: src/ext_l10n.h:27
+msgid "Print...|P"
+msgstr "Imprimer...|p"
+
+#: src/ext_l10n.h:28
+msgid "Fax...|F"
+msgstr "Fax...|T"
+
+#: src/ext_l10n.h:30
+msgid "Register|R"
+msgstr "Initialiser le Contrôle|I"
+
+#: src/ext_l10n.h:31
+msgid "Check In Changes|I"
+msgstr "Figer cette Version|F"
+
+#: src/ext_l10n.h:32
+msgid "Check Out for Edit|O"
+msgstr "Nouvelle Version Éditable|N"
+
+#: src/ext_l10n.h:33
+msgid "Revert to Last Version|L"
+msgstr "Recharger la Version Précédente|R"
+
+#: src/ext_l10n.h:34
+msgid "Undo Last Check In|U"
+msgstr "Annuler Figer|A"
+
+#: src/ext_l10n.h:35
+msgid "Show History|H"
+msgstr "Visualiser l'Historique|H"
+
+#: src/ext_l10n.h:36
+msgid "Custom...|C"
+msgstr "Personnalisé...|e"
+
+#: src/ext_l10n.h:37 src/ext_l10n.h:54
+msgid "Preferences...|P"
+msgstr "Préférences...|P"
+
+#: src/ext_l10n.h:38 src/ext_l10n.h:55
+msgid "Reconfigure|R"
+msgstr "Reconfigurer|g"
+
+#: src/ext_l10n.h:39
+msgid "Undo|U"
+msgstr "Annuler|A"
+
+#: src/ext_l10n.h:40
+msgid "Redo|d"
+msgstr "Refaire|R"
+
+#: src/ext_l10n.h:41
+msgid "Cut|C"
+msgstr "Couper|o"
+
+#: src/ext_l10n.h:42
+msgid "Copy|o"
+msgstr "Copier|C"
+
+#: src/ext_l10n.h:43
+msgid "Paste|a"
+msgstr "Coller|l"
+
+#: src/ext_l10n.h:44
+msgid "Paste External Selection|x"
+msgstr "Copier Sélection Externe|S"
+
+#: src/ext_l10n.h:45
+msgid "Find & Replace...|F"
+msgstr "Rechercher et Remplacer...|h"
+
+#: src/ext_l10n.h:46
+msgid "Tabular|T"
+msgstr "Tableau|T"
+
+#: src/ext_l10n.h:47
+msgid "Math|M"
+msgstr "Math|M"
+
+#: src/ext_l10n.h:48
+msgid "Read Only"
+msgstr "Lecture Seule"
+
+#: src/ext_l10n.h:49
+msgid "Spellchecker...|S"
+msgstr "Correcteur Orthographique...|q"
+
+#: src/ext_l10n.h:50
+msgid "Thesaurus..."
+msgstr "Dictionnaire de Synonymes...|y"
+
+#: src/ext_l10n.h:51
+msgid "Check TeX|h"
+msgstr "Correcteur TeX|X"
+
+#: src/ext_l10n.h:52
+msgid "Remove All Error Boxes|E"
+msgstr "Enlever Toutes les Marques d'Erreur|E"
+
+#: src/ext_l10n.h:53
+msgid "Open/Close float|l"
+msgstr "Ouvrir/Fermer le Flottant|F"
+
+#: src/ext_l10n.h:56
+msgid "as Lines|L"
+msgstr "en Lignes|L"
+
+#: src/ext_l10n.h:57
+msgid "as Paragraphs|P"
+msgstr "en Paragraphes|P"
+
+#: src/ext_l10n.h:58
+msgid "Multicolumn|M"
+msgstr "Multi-Colonnes|M"
+
+#: src/ext_l10n.h:59
+msgid "Line Top|T"
+msgstr "Ligne en Haut|H"
+
+#: src/ext_l10n.h:60
+msgid "Line Bottom|B"
+msgstr "Ligne en Bas|B"
+
+#: src/ext_l10n.h:61
+msgid "Line Left|L"
+msgstr "Ligne à Gauche|G"
+
+#: src/ext_l10n.h:62
+msgid "Line Right|R"
+msgstr "Ligne à Droite|D"
+
+#: src/ext_l10n.h:63
+msgid "Align Left|e"
+msgstr "Aligner à Gauche|a"
+
+#: src/ext_l10n.h:64 src/ext_l10n.h:88
+msgid "Align Center|C"
+msgstr "Centrer|C"
+
+#: src/ext_l10n.h:65
+msgid "Align Right|i"
+msgstr "Aligner à Droite|r"
+
+#: src/ext_l10n.h:66
+msgid "V.Align Top|o"
+msgstr "Aligner en Haut|t"
+
+#: src/ext_l10n.h:67
+msgid "V.Align Center|n"
+msgstr "Centrer Verticalement|V"
+
+#: src/ext_l10n.h:68
+msgid "V.Align Bottom|V"
+msgstr "Aligner en Bas|s"
+
+#: src/ext_l10n.h:69
+msgid "Add Row|A"
+msgstr "Ajouter Rangée|j"
+
+#: src/ext_l10n.h:70
+msgid "Delete Row|w"
+msgstr "Supprimer Rangée|u"
+
+#: src/ext_l10n.h:71
+msgid "Add Column|u"
+msgstr "Ajouter Colonne|o"
+
+# contrainte de longueur
+#: src/ext_l10n.h:72
+msgid "Delete Column|D"
+msgstr "Supprimer Colonne|p"
+
+#: src/ext_l10n.h:73
+msgid "Make eqnarray|e"
+msgstr ""
+
+#: src/ext_l10n.h:74
+msgid "Make multline|m"
+msgstr ""
+
+#: src/ext_l10n.h:75
+msgid "Make align 1 column|1"
+msgstr ""
+
+#: src/ext_l10n.h:76
+msgid "Make align 2 columns|2"
+msgstr ""
+
+#: src/ext_l10n.h:77
+msgid "Make align 3 columns|3"
+msgstr ""
+
+#: src/ext_l10n.h:78
+msgid "Make alignat 2 columns|2"
+msgstr ""
+
+#: src/ext_l10n.h:79
+msgid "Make alignat 3 columns|3"
+msgstr ""
+
+#: src/ext_l10n.h:80
+msgid "Toggle numbering|n"
+msgstr "(Dés)Activer Numérotation|N"
+
+#: src/ext_l10n.h:81
+msgid "Toggle numbering of line|u"
+msgstr "(Dés)Activer Numérotation de la Ligne|m"
+
+#: src/ext_l10n.h:82
+msgid "Toggle limits|l"
+msgstr "(Dés)Activer Limites|i"
+
+#: src/ext_l10n.h:83
+msgid "Inline formula|I"
+msgstr "Formule En Ligne|L"
+
+#: src/ext_l10n.h:84
+msgid "Displayed formula|D"
+msgstr "Formule Hors Ligne|H"
+
+#: src/ext_l10n.h:85
+msgid "Eqnarray environment|q"
+msgstr "Environnement Tableau d'Équations|q"
+
+#: src/ext_l10n.h:86
+msgid "Align environment|A"
+msgstr "Environnement Aligné|A"
+
+#: src/ext_l10n.h:87
+msgid "Align Left|f"
+msgstr "Aligner à Gauche|G"
+
+#: src/ext_l10n.h:89
+msgid "Align Right|R"
+msgstr "Aligner à Droite|D"
+
+#: src/ext_l10n.h:90
+msgid "V.Align Top|T"
+msgstr "Aligner en Haut|t"
+
+#: src/ext_l10n.h:91
+msgid "V.Align Center|e"
+msgstr "Centrer Verticalement|V"
+
+#: src/ext_l10n.h:92
+msgid "V.Align Bottom|B"
+msgstr "Aligner en Bas|s"
+
+#: src/ext_l10n.h:93
+msgid "Add Row"
+msgstr "Ajouter Rangée|j"
+
+#: src/ext_l10n.h:94
+msgid "Delete Row"
+msgstr "Supprimer Rangée|u"
+
+#: src/ext_l10n.h:95
+msgid "Add Column"
+msgstr "Ajouter Colonne|o"
+
+#: src/ext_l10n.h:96
+msgid "Delete Column"
+msgstr "Supprimer Colonne|p"
+
+#: src/ext_l10n.h:97
+msgid "Math|h"
+msgstr "Math|M"
+
+#: src/ext_l10n.h:98
+msgid "Special Character|S"
+msgstr "Caractère Spécial|S"
+
+#: src/ext_l10n.h:99
+msgid "Citation Reference...|C"
+msgstr "Citation...|C"
+
+#: src/ext_l10n.h:100
+msgid "Cross Reference...|R"
+msgstr "Référence Croisée...|R"
+
+#: src/ext_l10n.h:101
+msgid "Label...|L"
+msgstr "Étiquette...|q"
+
+#: src/ext_l10n.h:102
+msgid "Footnote|F"
+msgstr "Note en Bas de Page|B"
+
+#: src/ext_l10n.h:103
+msgid "Marginal Note|M"
+msgstr "Note en Marge|M"
+
+# contrainte de longueur
+#: src/ext_l10n.h:104
+msgid "Index Entry...|I"
+msgstr "Entrée d'Index...|d"
+
+#: src/ext_l10n.h:105
+msgid "Index Entry of Preceding Word|W"
+msgstr "Indexer le Mot|x"
+
+#: src/ext_l10n.h:106
+msgid "URL...|U"
+msgstr "URL...|U"
+
+#: src/ext_l10n.h:107 src/ext_l10n.h:162
+msgid "Note|N"
+msgstr "Note|N"
+
+#: src/ext_l10n.h:108
+msgid "Lists & TOC|O"
+msgstr "Listes & TdM|L"
+
+#: src/ext_l10n.h:109
+msgid "TeX|T"
+msgstr "TeX|T"
+
+#: src/ext_l10n.h:110
+msgid "Minipage|p"
+msgstr "Minipage|p"
+
+#: src/ext_l10n.h:111
+msgid "Graphics...|G"
+msgstr "Graphique...|G"
+
+#: src/ext_l10n.h:112
+msgid "Tabular Material...|b"
+msgstr "Tableau...|b"
+
+#: src/ext_l10n.h:113
+msgid "Floats|a"
+msgstr "Flottants|o"
+
+#: src/ext_l10n.h:114
+msgid "Include File...|d"
+msgstr "Inclure Fichier...|u"
+
+#: src/ext_l10n.h:115
+msgid "Insert File|e"
+msgstr "Insérer Fichier|I"
+
+#: src/ext_l10n.h:116
+msgid "External Material...|x"
+msgstr "Objet Externe...|E"
+
+#: src/ext_l10n.h:117
+msgid "Superscript|S"
+msgstr "Exposant|x"
+
+#: src/ext_l10n.h:118
+msgid "Subscript|u"
+msgstr "Indice|I"
+
+#: src/ext_l10n.h:119
+msgid "HFill|H"
+msgstr "Ressort Horizontal|H"
+
+#: src/ext_l10n.h:120
+msgid "Hyphenation Point|P"
+msgstr "Point de Césure|C"
+
+#: src/ext_l10n.h:121
+msgid "Ligature break|k"
+msgstr "Séparation de Ligature|a"
+
+#: src/ext_l10n.h:122
+msgid "Protected Blank|B"
+msgstr "Espace Insécable|E"
+
+#: src/ext_l10n.h:123
+msgid "Linebreak|L"
+msgstr "Passage à la Ligne|L"
+
+#: src/ext_l10n.h:124
+msgid "Ellipsis|i"
+msgstr "Points de Suspension|S"
+
+#: src/ext_l10n.h:125
+msgid "End of Sentence|E"
+msgstr "Point Final|F"
+
+#: src/ext_l10n.h:126
+msgid "Ordinary Quote|Q"
+msgstr "Guillemet Droit|G"
+
+#: src/ext_l10n.h:127
+msgid "Menu Separator|M"
+msgstr "Séparateur de Menu|M"
+
+#: src/ext_l10n.h:128
+msgid "Inline Formula|I"
+msgstr "Formule En Ligne|L"
+
+#: src/ext_l10n.h:129
+msgid "Display Formula|D"
+msgstr "Formule Hors Ligne|H"
+
+#: src/ext_l10n.h:130
+msgid "Eqnarray environment|E"
+msgstr "Environnement Tableau d'Équations|E"
+
+#: src/ext_l10n.h:131
+msgid "AMS align environment|A"
+msgstr "Environnement AMS align|A"
+
+#: src/ext_l10n.h:132
+msgid "AMS alignat environment|t"
+msgstr "Environnement AMS alignat|M"
+
+#: src/ext_l10n.h:133
+msgid "AMS xalignat environment|x"
+msgstr "Environnement AMS xalignat|S"
+
+#: src/ext_l10n.h:134
+msgid "AMS xxalignat environment"
+msgstr "Environnement AMS xxalignat|x"
+
+#: src/ext_l10n.h:135
+msgid "Array environment|y"
+msgstr "Environnement Tableau|b"
+
+#: src/ext_l10n.h:136
+msgid "Cases environment|C"
+msgstr "Environnement Cas|C"
+
+#: src/ext_l10n.h:137
+msgid "Math Panel...|l"
+msgstr "Palette Mathématique...|P"
+
+#: src/ext_l10n.h:138
+msgid "Table of Contents|C"
+msgstr "Table des Matières|M"
+
+#: src/ext_l10n.h:139
+msgid "Index List|I"
+msgstr "Index|I"
+
+#: src/ext_l10n.h:140
+msgid "BibTeX Reference...|B"
+msgstr "Références BibTeX...|B"
+
+#: src/ext_l10n.h:141
+msgid "LyX Document...|X"
+msgstr "Document LyX...|X"
+
+#: src/ext_l10n.h:142
+msgid "Ascii as Lines...|L"
+msgstr "Ascii en Lignes...|L"
+
+#: src/ext_l10n.h:143
+msgid "Ascii as Paragraphs...|P"
+msgstr "Ascii en Paragraphes...|P"
+
+#: src/ext_l10n.h:144
+msgid "Character...|C"
+msgstr "Caractère...|C"
+
+#: src/ext_l10n.h:145
+msgid "Paragraph...|P"
+msgstr "Paragraphe...|P"
+
+#: src/ext_l10n.h:146
+msgid "Document...|D"
+msgstr "Document...|D"
+
+#: src/ext_l10n.h:147
+msgid "Tabular...|T"
+msgstr "Tableau...|T"
+
+#: src/ext_l10n.h:148
+msgid "Emphasize Style|E"
+msgstr "En Évidence|E"
+
+#: src/ext_l10n.h:149
+msgid "Noun Style|N"
+msgstr "Nom Propre|N"
+
+#: src/ext_l10n.h:150
+msgid "Bold Style|B"
+msgstr "Gras|G"
+
+#: src/ext_l10n.h:151
+msgid "TeX Style|X"
+msgstr "TeX|X"
+
+#: src/ext_l10n.h:152
+msgid "Change Environment Depth|v"
+msgstr "Changer la Profondeur d'Environnement|f"
+
+#: src/ext_l10n.h:153
+msgid "Preamble...|r"
+msgstr "Préambule...|m"
+
+#: src/ext_l10n.h:154
+msgid "Start Appendix here|A"
+msgstr "Appendice|A"
+
+#: src/ext_l10n.h:155
+msgid "Build Program|B"
+msgstr "Compiler|C"
+
+#: src/ext_l10n.h:156
+msgid "Update|U"
+msgstr "Mise à Jour|J"
+
+#: src/ext_l10n.h:157
+msgid "LaTeX Logfile|L"
+msgstr "Fichier log LaTeX|L"
+
+#: src/ext_l10n.h:158
+msgid "Table of Contents|T"
+msgstr "Table des Matières|M"
+
+#: src/ext_l10n.h:159
+msgid "Child processes|C"
+msgstr "Processus Enfantés|c"
+
+#: src/ext_l10n.h:160
+msgid "TeX Information|X"
+msgstr "Informations TeX|X"
+
+#: src/ext_l10n.h:161
+msgid "Error|E"
+msgstr "Erreur|E"
+
+#: src/ext_l10n.h:163
+msgid "Refs|R"
+msgstr "Référence|R"
+
+#: src/ext_l10n.h:164
+msgid "Bookmarks|B"
+msgstr "Signets|S"
+
+#: src/ext_l10n.h:165
+msgid "Save Bookmark 1|S"
+msgstr "Enregistrer signet 1|E"
+
+#: src/ext_l10n.h:166
+msgid "Save Bookmark 2"
+msgstr "Enregistrer signet 2|n"
+
+#: src/ext_l10n.h:167
+msgid "Save Bookmark 3"
+msgstr "Enregistrer signet 3|r"
+
+#: src/ext_l10n.h:168
+msgid "Goto Bookmark 1|1"
+msgstr "Aller au signet 1|1"
+
+#: src/ext_l10n.h:169
+msgid "Goto Bookmark 2|2"
+msgstr "Aller au signet 2|2"
+
+#: src/ext_l10n.h:170
+msgid "Goto Bookmark 3|3"
+msgstr "Aller au signet 3|3"
+
+#: src/ext_l10n.h:171
+msgid "Tooltips|o"
+msgstr "InfoBulles|B"
+
+#: src/ext_l10n.h:172
+msgid "Introduction|I"
+msgstr "Introduction|I"
+
+#: src/ext_l10n.h:173
+msgid "Tutorial|T"
+msgstr "Manuel d'Apprentissage|A"
+
+#: src/ext_l10n.h:174
+msgid "User's Guide|U"
+msgstr "Guide de l'Utilisateur|U"
+
+#: src/ext_l10n.h:175
+msgid "Extended Features|E"
+msgstr "Options Avancées|O"
+
+#: src/ext_l10n.h:176
+msgid "Customization|C"
+msgstr "Personnalisation|P"
+
+#: src/ext_l10n.h:177
+msgid "Reference Manual|R"
+msgstr "Manuel de Référence|R"
+
+#: src/ext_l10n.h:178
+msgid "FAQ|F"
+msgstr "FAQ|F"
+
+#: src/ext_l10n.h:179
+msgid "Table of Contents|a"
+msgstr "Table des Matières|M"
+
+#: src/ext_l10n.h:180
+msgid "LaTeX Configuration|L"
+msgstr "Configuration LaTeX|X"
+
+#: src/ext_l10n.h:181
+msgid "About LyX|X"
+msgstr "À Propos de LyX...|L"
+
+#: src/ext_l10n.h:183
+msgid "Accepted"
+msgstr "Accepté"
+
+#: src/ext_l10n.h:184
+msgid "Acknowledgement"
+msgstr "Remerciement"
+
+#: src/ext_l10n.h:185
+msgid "Acknowledgement*"
+msgstr "Remerciement*"
+
+#: src/ext_l10n.h:186
+msgid "Acknowledgements"
+msgstr "Remerciements"
+
+#: src/ext_l10n.h:187
+msgid "Acknowledgments"
+msgstr "Remerciements"
+
+#: src/ext_l10n.h:188
+msgid "ACT"
+msgstr "ACTE"
+
+#: src/ext_l10n.h:189
+msgid "Addchap"
+msgstr "AjoutChap"
+
+#: src/ext_l10n.h:190
+msgid "Addchap*"
+msgstr "AjoutChap*"
+
+#: src/ext_l10n.h:191
+msgid "Addition"
+msgstr "Addition"
+
+#: src/ext_l10n.h:192
+msgid "Address"
+msgstr "Adresse"
+
+#: src/ext_l10n.h:193
+msgid "AddressForOffprints"
+msgstr "AdressePourOffprints"
+
+#: src/ext_l10n.h:194
+msgid "Addsec"
+msgstr "AjoutSec"
+
+#: src/ext_l10n.h:195
+msgid "Addsec*"
+msgstr "AjoutSec*"
+
+#: src/ext_l10n.h:196
+msgid "Adresse"
+msgstr "Adresse"
+
+#: src/ext_l10n.h:197
+msgid "Affil"
+msgstr "Appart."
+
+#: src/ext_l10n.h:198
+msgid "Affiliation"
+msgstr "Affiliation"
+
+#: src/ext_l10n.h:200
+msgid "AMS"
+msgstr "AMS"
+
+#: src/ext_l10n.h:201
+msgid "And"
+msgstr "Et"
+
+#: src/ext_l10n.h:202
+msgid "Anlagen"
+msgstr "Anlagen"
+
+#: src/ext_l10n.h:203
+msgid "Anrede"
+msgstr "Anrede"
+
+#: src/ext_l10n.h:204
+msgid "Appendices"
+msgstr "Appendices"
+
+#: src/ext_l10n.h:205
+msgid "Appendix"
+msgstr "Appendice"
+
+#: src/ext_l10n.h:206
+msgid "Arrow"
+msgstr "Flèche"
+
+#: src/ext_l10n.h:207
+msgid "AT_RISE:"
+msgstr "LEVER_RIDEAU:"
+
+#: src/ext_l10n.h:208
+msgid "Author"
+msgstr "Auteur"
+
+#: src/ext_l10n.h:209
+msgid "Author_Email"
+msgstr "EMail_Auteur"
+
+#: src/ext_l10n.h:210
+msgid "Authorgroup"
+msgstr "GroupeAuteur"
+
+#: src/ext_l10n.h:211
+msgid "Authorinfo"
+msgstr "InfoAuteur"
+
+#: src/ext_l10n.h:212
+msgid "Author_Running"
+msgstr "Auteur_Courant"
+
+#: src/ext_l10n.h:213
+msgid "Author_URL"
+msgstr "URL_Auteur"
+
+#: src/ext_l10n.h:214
+msgid "Axiom"
+msgstr "Axiome"
+
+#: src/ext_l10n.h:215
+msgid "Backaddress"
+msgstr "Adresse_Retour"
+
+#: src/ext_l10n.h:216
+msgid "Bank"
+msgstr "Banque"
+
+#: src/ext_l10n.h:217
+msgid "BankAccount"
+msgstr "CompteBancaire"
+
+#: src/ext_l10n.h:218
+msgid "BankCode"
+msgstr "CodeBanque"
+
+#: src/ext_l10n.h:219
+msgid "Betreff"
+msgstr "Betreff"
+
+#: src/ext_l10n.h:220
+msgid "Bibliography"
+msgstr "Bibliographie"
+
+#: src/ext_l10n.h:221
+msgid "Biography"
+msgstr "Biographie"
+
+#: src/ext_l10n.h:222
+msgid "BLZ"
+msgstr "BLZ"
+
+#: src/ext_l10n.h:223
+msgid "BoardCentered"
+msgstr ""
+
+#: src/ext_l10n.h:224
+msgid "Brieftext"
+msgstr "Brieftext"
+
+#: src/ext_l10n.h:225
+msgid "Caption"
+msgstr "Légende"
+
+#: src/ext_l10n.h:226
+msgid "Case"
+msgstr "Cas"
+
+#: src/ext_l10n.h:228
+msgid "CC"
+msgstr "CC"
+
+#: src/ext_l10n.h:229
+msgid "CenteredCaption"
+msgstr "LégendeCentrée"
+
+#: src/ext_l10n.h:230
+msgid "Chapter"
+msgstr "Chapitre"
+
+#: src/ext_l10n.h:231
+msgid "Chapter*"
+msgstr "Chapitre*"
+
+#: src/ext_l10n.h:232
+msgid "Chapter_Exercises"
+msgstr "Exercices_Chapitre"
+
+#: src/ext_l10n.h:233
+msgid "ChessBoard"
+msgstr "Échiquier"
+
+#: src/ext_l10n.h:234
+msgid "Citta"
+msgstr "Citta"
+
+#: src/ext_l10n.h:235
+msgid "Claim"
+msgstr "Affirmation"
+
+#: src/ext_l10n.h:236
+msgid "Claim*"
+msgstr "Affirmation*"
+
+#: src/ext_l10n.h:237
+msgid "Closing"
+msgstr "Fermeture"
+
+#: src/ext_l10n.h:238
+msgid "Code"
+msgstr "Code"
+
+#: src/ext_l10n.h:239
+msgid "Comment"
+msgstr "Commentaire"
+
+#: src/ext_l10n.h:240
+msgid "Conclusion"
+msgstr "Conclusion"
+
+#: src/ext_l10n.h:241
+msgid "Conclusion*"
+msgstr "Conclusion*"
+
+#: src/ext_l10n.h:242
+msgid "Condition"
+msgstr "Condition"
+
+#: src/ext_l10n.h:243
+msgid "Conjecture"
+msgstr "Conjecture"
+
+#: src/ext_l10n.h:244
+msgid "Conjecture*"
+msgstr "Conjecture*"
+
+#: src/ext_l10n.h:245
+msgid "CopNum"
+msgstr "NumCopie"
+
+#: src/ext_l10n.h:246 src/ext_l10n.h:534
+msgid "Copyright"
+msgstr "Copyright"
+
+#: src/ext_l10n.h:247
+msgid "Corollary"
+msgstr "Corollaire"
+
+#: src/ext_l10n.h:248
+msgid "Corollary*"
+msgstr "Corollaire*"
+
+#: src/ext_l10n.h:249
+msgid "Criterion"
+msgstr "Critère"
+
+#: src/ext_l10n.h:250
+msgid "CrossList"
+msgstr "ListeCroisée"
+
+#: src/ext_l10n.h:251
+msgid "Current_Address"
+msgstr "Adresse_Actuelle"
+
+#: src/ext_l10n.h:252
+msgid "CURTAIN"
+msgstr "RIDEAU"
+
+#: src/ext_l10n.h:253
+msgid "Customer"
+msgstr "Client"
+
+# contrainte de longueur
+#: src/ext_l10n.h:254
+msgid "Data"
+msgstr "Données"
+
+#: src/ext_l10n.h:255
+msgid "Date"
+msgstr "Date"
+
+#: src/ext_l10n.h:256
+msgid "Datum"
+msgstr "Datum"
+
+#: src/ext_l10n.h:257
+msgid "Dedication"
+msgstr "Dédicace"
+
+#: src/ext_l10n.h:258
+msgid "Dedicatory"
+msgstr "Dédicace"
+
+#: src/ext_l10n.h:259
+msgid "Definition"
+msgstr "Définition"
+
+#: src/ext_l10n.h:260
+msgid "Definition*"
+msgstr "Définition*"
+
+#: src/ext_l10n.h:261
+msgid "Description"
+msgstr "Description"
+
+#: src/ext_l10n.h:262
+msgid "Dialogue"
+msgstr "Dialogue"
+
+#: src/ext_l10n.h:263
+msgid "Email"
+msgstr "Email"
+
+#: src/ext_l10n.h:264
+msgid "EMail"
+msgstr "EMail"
+
+#: src/ext_l10n.h:265
+msgid "encl"
+msgstr "PJ"
+
+#: src/ext_l10n.h:266
+msgid "Encl."
+msgstr "P.J."
+
+#: src/ext_l10n.h:267
+msgid "Encl"
+msgstr "P.J."
+
+#: src/ext_l10n.h:268
+msgid "End_All_Slides"
+msgstr "Fin_Diapos"
+
+#: src/ext_l10n.h:269
+msgid "Enumerate"
+msgstr "Énumération"
+
+#: src/ext_l10n.h:270
+msgid "Example"
+msgstr "Exemple"
+
+#: src/ext_l10n.h:271
+msgid "Example*"
+msgstr "Exemple*"
+
+#: src/ext_l10n.h:272
+msgid "Exercise"
+msgstr "Exercice"
+
+#: src/ext_l10n.h:273
+msgid "EXT."
+msgstr "EXT."
+
+# contrainte de longueur
+#: src/ext_l10n.h:274
+msgid "Extratitle"
+msgstr "TitreSuppl."
+
+#: src/ext_l10n.h:275
+msgid "Fact"
+msgstr "Fait"
+
+#: src/ext_l10n.h:276
+msgid "Fact*"
+msgstr "Fait*"
+
+#: src/ext_l10n.h:277
+msgid "FADE_IN:"
+msgstr ""
+
+#: src/ext_l10n.h:278
+msgid "FADE_OUT:"
+msgstr ""
+
+#: src/ext_l10n.h:279
+msgid "FADE_OUT"
+msgstr ""
+
+#: src/ext_l10n.h:280
+msgid "FigCaption"
+msgstr "LégendeFig"
+
+#: src/ext_l10n.h:281
+msgid "FirstAuthor"
+msgstr "PremierAuteur"
+
+# contrainte de longueur
+#: src/ext_l10n.h:282
+msgid "FirstName"
+msgstr "Prénom"
+
+#: src/ext_l10n.h:283
+msgid "FitBitmap"
+msgstr "AjusteBitmap"
+
+#: src/ext_l10n.h:284
+msgid "FitFigure"
+msgstr "AjusteFigure"
+
+#: src/ext_l10n.h:285
+msgid "Foilhead"
+msgstr ""
+
+#: src/ext_l10n.h:286
+msgid "Footernote"
+msgstr "NoteBasPage"
+
+#: src/ext_l10n.h:287
+msgid "FourAffiliations"
+msgstr "QuatreAffiliations"
+
+#: src/ext_l10n.h:288
+msgid "FourAuthors"
+msgstr "QuatreAuteurs"
+
+#: src/ext_l10n.h:289
+msgid "FrontMatter"
+msgstr ""
+
+#: src/ext_l10n.h:290
+msgid "General"
+msgstr "Général"
+
+#: src/ext_l10n.h:291
+msgid "Gruss"
+msgstr "Gruss"
+
+#: src/ext_l10n.h:292
+msgid "Headnote"
+msgstr "En-tête"
+
+#: src/ext_l10n.h:293
+msgid "HideMoves"
+msgstr ""
+
+#: src/ext_l10n.h:294
+msgid "HighLight"
+msgstr ""
+
+#: src/ext_l10n.h:295
+msgid "HTTP"
+msgstr "HTTP"
+
+#: src/ext_l10n.h:296
+msgid "IhrSchreiben"
+msgstr "IhrSchreiben"
+
+#: src/ext_l10n.h:297
+msgid "IhrZeichen"
+msgstr "IhrZeichen"
+
+#: src/ext_l10n.h:298
+msgid "Institute"
+msgstr "Institut"
+
+#: src/ext_l10n.h:299
+msgid "Institution"
+msgstr "Institution"
+
+#: src/ext_l10n.h:300
+msgid "INT."
+msgstr "INT."
+
+#: src/ext_l10n.h:301
+msgid "INTERCUT"
+msgstr ""
+
+#: src/ext_l10n.h:302
+msgid "InvisibleText"
+msgstr "TexteInvisible"
+
+#: src/ext_l10n.h:303
+msgid "Invoice"
+msgstr "Facture"
+
+#: src/ext_l10n.h:304
+msgid "Itemize"
+msgstr "ListePuces"
+
+#: src/ext_l10n.h:305
+msgid "Journal"
+msgstr "Journal"
+
+#: src/ext_l10n.h:306
+msgid "Keyword"
+msgstr "Mot-Clé"
+
+#: src/ext_l10n.h:307
+msgid "Keywords"
+msgstr "Mots-Clés"
+
+#: src/ext_l10n.h:308
+msgid "KnightMove"
+msgstr ""
+
+#: src/ext_l10n.h:309
+msgid "Konto"
+msgstr "Konto"
+
+#: src/ext_l10n.h:310
+msgid "Labeling"
+msgstr "Étiquetage"
+
+#: src/ext_l10n.h:311
+msgid "Land"
+msgstr "Pays"
+
+#: src/ext_l10n.h:312
+msgid "LandscapeSlide"
+msgstr "DiapoPaysage"
+
+#: src/ext_l10n.h:313
+msgid "LaTeX"
+msgstr "LaTeX"
+
+#: src/ext_l10n.h:314
+msgid "LaTeX_Title"
+msgstr "Titre_LaTeX"
+
+#: src/ext_l10n.h:315
+msgid "Left_Header"
+msgstr "En-tête_Gauche"
+
+#: src/ext_l10n.h:316
+msgid "Lemma"
+msgstr "Lemme"
+
+#: src/ext_l10n.h:317
+msgid "Lemma*"
+msgstr "Lemme*"
+
+#: src/ext_l10n.h:318
+msgid "Letter"
+msgstr "Lettre"
+
+#: src/ext_l10n.h:319
+msgid "List"
+msgstr "Liste"
+
+#: src/ext_l10n.h:320
+msgid "ListOfSlides"
+msgstr "ListeDiapos"
+
+#: src/ext_l10n.h:321
+msgid "Literal"
+msgstr "Littéral"
+
+#: src/ext_l10n.h:322
+msgid "Location"
+msgstr "Adresse"
+
+#: src/ext_l10n.h:323
+msgid "Lowertitleback"
+msgstr "VersoTitreBas"
+
+#: src/ext_l10n.h:324
+msgid "LyX-Code"
+msgstr "LyX-Code"
+
+#: src/ext_l10n.h:325
+msgid "Mail"
+msgstr "Courrier"
+
+#: src/ext_l10n.h:326
+msgid "Mainline"
+msgstr ""
+
+#: src/ext_l10n.h:327
+msgid "MarkBoth"
+msgstr "DoubleMarque"
+
+#: src/ext_l10n.h:328
+msgid "MathLetters"
+msgstr "LettresMathématiques"
+
+#: src/ext_l10n.h:329
+msgid "MeinZeichen"
+msgstr "MeinZeichen"
+
+#: src/ext_l10n.h:330
+msgid "Minisec"
+msgstr "Minisec"
+
+#: src/ext_l10n.h:332
+msgid "msnumber"
+msgstr ""
+
+#: src/ext_l10n.h:333
+msgid "My_Address"
+msgstr "Mon_Adresse"
+
+#: src/ext_l10n.h:334
+msgid "Myref"
+msgstr "Ma_Réf"
+
+#: src/ext_l10n.h:335
+msgid "MyRef"
+msgstr "MesRéfs"
+
+# Nom tout simplement ?
+#: src/ext_l10n.h:336
+msgid "Name"
+msgstr "Destinataire"
+
+#: src/ext_l10n.h:337
+msgid "Narrative"
+msgstr "Narratif"
+
+#: src/ext_l10n.h:338
+msgid "Notation"
+msgstr "Notation"
+
+#: src/ext_l10n.h:339
+msgid "Note"
+msgstr "Note"
+
+#: src/ext_l10n.h:340
+msgid "Note*"
+msgstr "Note*"
+
+#: src/ext_l10n.h:341
+msgid "NoteToEditor"
+msgstr "Note_À_l'Éditeur"
+
+#: src/ext_l10n.h:342
+msgid "Offprint"
+msgstr "Offprint"
+
+#: src/ext_l10n.h:343
+msgid "Offprints"
+msgstr "Offprints"
+
+#: src/ext_l10n.h:344
+msgid "Offsets"
+msgstr "Offsets"
+
+#: src/ext_l10n.h:345
+msgid "Oggetto"
+msgstr "Oggetto"
+
+#: src/ext_l10n.h:346
+msgid "Opening"
+msgstr "Ouverture"
+
+#: src/ext_l10n.h:347
+msgid "Ort"
+msgstr "Ort"
+
+#: src/ext_l10n.h:348
+msgid "Overlay"
+msgstr "SurCouche"
+
+#: src/ext_l10n.h:349
+msgid "PACS"
+msgstr ""
+
+#: src/ext_l10n.h:350 src/ext_l10n.h:920
+msgid "Paragraph"
+msgstr "Paragraphe"
+
+#: src/ext_l10n.h:351
+msgid "Paragraph*"
+msgstr "Paragraphe*"
+
+#: src/ext_l10n.h:352
+msgid "Part"
+msgstr "Partie"
+
+#: src/ext_l10n.h:353
+msgid "Part*"
+msgstr "Partie*"
+
+#: src/ext_l10n.h:354
+msgid "Petit"
+msgstr "Petit"
+
+#: src/ext_l10n.h:355
+msgid "Phone"
+msgstr "Téléphone"
+
+# Placement ou endroit ?
+#: src/ext_l10n.h:356
+msgid "Place"
+msgstr ""
+
+#: src/ext_l10n.h:357
+msgid "PlaceFigure"
+msgstr "PlacementFigure"
+
+#: src/ext_l10n.h:358
+msgid "PlaceTable"
+msgstr "PlacementTableau"
+
+#: src/ext_l10n.h:359
+msgid "PortraitSlide"
+msgstr "DiapoPortrait"
+
+#: src/ext_l10n.h:360
+msgid "PostalCommend"
+msgstr ""
+
+#: src/ext_l10n.h:361
+msgid "PostalComment"
+msgstr ""
+
+#: src/ext_l10n.h:362
+msgid "Postvermerk"
+msgstr "Postvermerk"
+
+#: src/ext_l10n.h:363
+msgid "Preprint"
+msgstr "Preprint"
+
+#: src/ext_l10n.h:364
+msgid "Problem"
+msgstr "Problème"
+
+#: src/ext_l10n.h:365
+msgid "ProgressContents"
+msgstr ""
+
+#: src/ext_l10n.h:366
+msgid "Proof"
+msgstr "Preuve"
+
+#: src/ext_l10n.h:367
+msgid "Property"
+msgstr "Propriété"
+
+#: src/ext_l10n.h:368
+msgid "Proposition"
+msgstr "Proposition"
+
+#: src/ext_l10n.h:369
+msgid "Proposition*"
+msgstr "Proposition*"
+
+#: src/ext_l10n.h:370
+msgid "ps"
+msgstr "ps"
+
+#: src/ext_l10n.h:371
+msgid "PS"
+msgstr "PS"
+
+#: src/ext_l10n.h:372
+msgid "Publishers"
+msgstr "Éditeurs"
+
+#: src/ext_l10n.h:373
+msgid "Question"
+msgstr "Question"
+
+#: src/ext_l10n.h:374
+msgid "Quotation"
+msgstr "Citation"
+
+#: src/ext_l10n.h:375
+msgid "Quote"
+msgstr "Cite"
+
+#: src/ext_l10n.h:376
+msgid "Received"
+msgstr "Reçu"
+
+#: src/ext_l10n.h:379
+msgid "Remark"
+msgstr "Remarque"
+
+#: src/ext_l10n.h:380
+msgid "Remark*"
+msgstr "Remarque*"
+
+#: src/ext_l10n.h:381
+msgid "Remarks"
+msgstr "Remarques"
+
+#: src/ext_l10n.h:382
+msgid "RetourAdresse"
+msgstr "AdresseRetour"
+
+#: src/ext_l10n.h:383
+msgid "ReturnAddress"
+msgstr "AdresseRetour"
+
+#: src/ext_l10n.h:384
+msgid "Revision"
+msgstr "Révision"
+
+#: src/ext_l10n.h:385
+msgid "RevisionHistory"
+msgstr "HistoriqueRévisions"
+
+#: src/ext_l10n.h:386
+msgid "RevisionRemark"
+msgstr "RemarqueRévision"
+
+#: src/ext_l10n.h:387
+msgid "REVTEX_Title"
+msgstr "Titre_REVTEX"
+
+#: src/ext_l10n.h:388
+msgid "Right_Address"
+msgstr "Adresse_À_Droite"
+
+#: src/ext_l10n.h:389
+msgid "Right_Header"
+msgstr "En-tête_Droite"
+
+#: src/ext_l10n.h:390
+msgid "RightHeader"
+msgstr "En-têteDroite"
+
+#: src/ext_l10n.h:391
+msgid "Rotatefoilhead"
+msgstr ""
+
+#: src/ext_l10n.h:392
+msgid "RunningAuthor"
+msgstr "AuteurCourant"
+
+#: src/ext_l10n.h:393
+msgid "Running_LaTeX_Title"
+msgstr "Titre_LaTeX_Courant"
+
+#: src/ext_l10n.h:394
+msgid "RunningTitle"
+msgstr "TitreCourant"
+
+#: src/ext_l10n.h:395
+msgid "Scene"
+msgstr "Scène"
+
+#: src/ext_l10n.h:396
+msgid "SCENE"
+msgstr "SCÈNE"
+
+#: src/ext_l10n.h:397
+msgid "SCENE*"
+msgstr "SCÈNE*"
+
+#: src/ext_l10n.h:398
+msgid "Scrap"
+msgstr "Scrap"
+
+#: src/ext_l10n.h:399
+msgid "Section"
+msgstr "Section"
+
+#: src/ext_l10n.h:400
+msgid "Section*"
+msgstr "Section*"
+
+#: src/ext_l10n.h:401
+msgid "Send_To_Address"
+msgstr "Envoi_À_Adresse"
+
+#: src/ext_l10n.h:402
+msgid "Seriate"
+msgstr ""
+
+#: src/ext_l10n.h:403
+msgid "SGML"
+msgstr "SGML"
+
+#: src/ext_l10n.h:404
+msgid "ShortFoilhead"
+msgstr ""
+
+#: src/ext_l10n.h:405
+msgid "ShortRotatefoilhead"
+msgstr ""
+
+#: src/ext_l10n.h:406
+msgid "ShortTitle"
+msgstr "TitreCourt"
+
+#: src/ext_l10n.h:407
+msgid "Signature"
+msgstr "Signature"
+
+# contrainte de longueur
+#: src/ext_l10n.h:408
+msgid "Slide"
+msgstr "Diapo"
+
+# contrainte de longueur
+#: src/ext_l10n.h:409
+msgid "Slide*"
+msgstr "Diapo*"
+
+#: src/ext_l10n.h:410
+msgid "SlideContents"
+msgstr "ContenuDiapo"
+
+#: src/ext_l10n.h:411
+msgid "SlideHeading"
+msgstr "TitreDiapo"
+
+#: src/ext_l10n.h:412
+msgid "SlideSubHeading"
+msgstr "SousTitreDiapo"
+
+#: src/ext_l10n.h:413
+msgid "Solution"
+msgstr "Solution"
+
+# ou "Acteur" ou "Intervenant" (Hollywood/Broadway)
+#: src/ext_l10n.h:414
+msgid "Speaker"
+msgstr "Personnage"
+
+# contrainte de longueur
+#: src/ext_l10n.h:415
+msgid "Specialmail"
+msgstr "CourrierSpécial"
+
+#: src/ext_l10n.h:416
+msgid "Stadt"
+msgstr "Stadt"
+
+#: src/ext_l10n.h:418
+msgid "State"
+msgstr "État"
+
+#: src/ext_l10n.h:419
+msgid "Strasse"
+msgstr "Strasse"
+
+#: src/ext_l10n.h:420
+msgid "Street"
+msgstr "Rue"
+
+#: src/ext_l10n.h:421
+msgid "Subject"
+msgstr "Sujet"
+
+#: src/ext_l10n.h:422
+msgid "Subjectclass"
+msgstr ""
+
+#: src/ext_l10n.h:423
+msgid "Subparagraph"
+msgstr "SousParagraphe"
+
+#: src/ext_l10n.h:424
+msgid "Subparagraph*"
+msgstr "SousParagraphe*"
+
+#: src/ext_l10n.h:425
+msgid "Subsection"
+msgstr "SousSection"
+
+#: src/ext_l10n.h:426
+msgid "Subsection*"
+msgstr "SousSection*"
+
+#: src/ext_l10n.h:427
+msgid "SubSection"
+msgstr "SousSection"
+
+#: src/ext_l10n.h:428
+msgid "Subsubsection"
+msgstr "SousSousSection"
+
+#: src/ext_l10n.h:429
+msgid "Subsubsection*"
+msgstr "SousSousSection*"
+
+#: src/ext_l10n.h:430
+msgid "Subtitle"
+msgstr "SousTitre"
+
+#: src/ext_l10n.h:431
+msgid "SubTitle"
+msgstr "SousTitre"
+
+#: src/ext_l10n.h:432
+msgid "SubVariation"
+msgstr "SousVariation"
+
+#: src/ext_l10n.h:433
+msgid "SubVariation2"
+msgstr "SousVariation2"
+
+#: src/ext_l10n.h:434
+msgid "SubVariation3"
+msgstr "SousVariation3"
+
+#: src/ext_l10n.h:435
+msgid "SubVariation4"
+msgstr "SousVariation4"
+
+#: src/ext_l10n.h:436
+msgid "SubVariation5"
+msgstr "SousVariation5"
+
+#: src/ext_l10n.h:437
+msgid "Summary"
+msgstr "Résumé"
+
+#: src/ext_l10n.h:438
+msgid "Surname"
+msgstr "Surnom"
+
+#: src/ext_l10n.h:439
+msgid "TableComments"
+msgstr "RemarquesTableau"
+
+#: src/ext_l10n.h:440
+msgid "TableRefs"
+msgstr "RéfsTableau"
+
+#: src/ext_l10n.h:441
+msgid "Telefax"
+msgstr "Telefax"
+
+#: src/ext_l10n.h:442
+msgid "Telefon"
+msgstr "Telefon"
+
+#: src/ext_l10n.h:443
+msgid "Telephone"
+msgstr "Téléphone"
+
+#: src/ext_l10n.h:444
+msgid "Telex"
+msgstr "Telex"
+
+#: src/ext_l10n.h:445
+msgid "Thanks"
+msgstr "Remerciements"
+
+#: src/ext_l10n.h:446
+msgid "Theorem"
+msgstr "Théorème"
+
+#: src/ext_l10n.h:447
+msgid "Theorem*"
+msgstr "Théorème*"
+
+#: src/ext_l10n.h:448
+msgid "TheoremTemplate"
+msgstr "ModèleThéorème"
+
+#: src/ext_l10n.h:450
+msgid "ThickLine"
+msgstr "LigneÉpaisse"
+
+#: src/ext_l10n.h:451
+msgid "ThreeAffiliations"
+msgstr "TroisAffiliations"
+
+#: src/ext_l10n.h:452
+msgid "ThreeAuthors"
+msgstr "TroisAuteurs"
+
+#: src/ext_l10n.h:453
+msgid "TickList"
+msgstr ""
+
+#: src/ext_l10n.h:454
+msgid "Title"
+msgstr "Titre"
+
+#: src/ext_l10n.h:455
+msgid "Titlehead"
+msgstr "En-têteTitre"
+
+#: src/ext_l10n.h:456
+msgid "TITLE_OVER:"
+msgstr ""
+
+#: src/ext_l10n.h:457
+msgid "TOC_Author"
+msgstr "Auteur_TdM"
+
+#: src/ext_l10n.h:458
+msgid "TOC_Title"
+msgstr "Titre_TdM"
+
+#: src/ext_l10n.h:459
+msgid "Topic"
+msgstr ""
+
+#: src/ext_l10n.h:460
+msgid "Town"
+msgstr "Ville"
+
+#: src/ext_l10n.h:461
+msgid "Transition"
+msgstr "Transition"
+
+#: src/ext_l10n.h:462
+msgid "Trans_Keywords"
+msgstr ""
+
+#: src/ext_l10n.h:463
+msgid "TranslatedAbstract"
+msgstr "AbstractTraduit"
+
+#: src/ext_l10n.h:464
+msgid "Translated_Title"
+msgstr "Titre_Traduit"
+
+#: src/ext_l10n.h:465
+msgid "Translator"
+msgstr "Traducteur"
+
+#: src/ext_l10n.h:466
+msgid "TwoAffiliations"
+msgstr "DeuxAffiliations"
+
+#: src/ext_l10n.h:467
+msgid "TwoAuthors"
+msgstr "DeuxAuteurs"
+
+#: src/ext_l10n.h:468
+msgid "Unterschrift"
+msgstr "Unterschrift"
+
+#: src/ext_l10n.h:469
+msgid "Uppertitleback"
+msgstr "VersoTitreHaut"
+
+#: src/ext_l10n.h:471
+msgid "Variation"
+msgstr "Variation"
+
+# Texto mieux que "Mot à mot" ? - AR
+# Retour à verbatim (cf intro) - JPC
+#: src/ext_l10n.h:472
+msgid "Verbatim"
+msgstr "Verbatim"
+
+#: src/ext_l10n.h:473
+msgid "Verse"
+msgstr "Vers"
+
+#: src/ext_l10n.h:474
+msgid "Verteiler"
+msgstr "Verteiler"
+
+#: src/ext_l10n.h:475
+msgid "VisibleText"
+msgstr "TexteVisible"
+
+#: src/ext_l10n.h:476
+msgid "Yourmail"
+msgstr "Votremail"
+
+#: src/ext_l10n.h:477
+msgid "YourMail"
+msgstr "VotreMail"
+
+#: src/ext_l10n.h:478
+msgid "Yourref"
+msgstr "Votreréf"
+
+#: src/ext_l10n.h:479
+msgid "YourRef"
+msgstr "VotreRéf"
+
+#: src/ext_l10n.h:480
+msgid "Zusatz"
+msgstr "Zusatz"
+
+#: src/ext_l10n.h:481
+msgid "Afrikaans"
+msgstr "Afrikaans"
+
+#: src/ext_l10n.h:482
+msgid "American"
+msgstr "Américain"
+
+#: src/ext_l10n.h:483
+msgid "Arabic"
+msgstr "Arabe"
+
+#: src/ext_l10n.h:484
+msgid "Austrian"
+msgstr "Autrichien"
+
+#: src/ext_l10n.h:485
+msgid "Bahasa"
+msgstr "Bahasa"
+
+#: src/ext_l10n.h:486
+msgid "Basque"
+msgstr "Basque"
+
+#: src/ext_l10n.h:487
+msgid "Portuguese (Brazil)"
+msgstr "Portugais (Brésil)"
+
+#: src/ext_l10n.h:488
+msgid "Breton"
+msgstr "Breton"
+
+#: src/ext_l10n.h:489
+msgid "British"
+msgstr "Anglais Britannique"
+
+#: src/ext_l10n.h:490
+msgid "Bulgarian"
+msgstr "Bulgare"
+
+#: src/ext_l10n.h:491
+msgid "Canadian"
+msgstr "Canadien"
+
+#: src/ext_l10n.h:492
+msgid "French Canadian"
+msgstr "Français Canadien"
+
+#: src/ext_l10n.h:493
+msgid "Catalan"
+msgstr "Catalan"
+
+#: src/ext_l10n.h:494
+msgid "Croatian"
+msgstr "Croate"
+
+#: src/ext_l10n.h:495
+msgid "Czech"
+msgstr "Tchèque"
+
+#: src/ext_l10n.h:496
+msgid "Danish"
+msgstr "Danois"
+
+#: src/ext_l10n.h:497
+msgid "Dutch"
+msgstr "Néerlandais"
+
+#: src/ext_l10n.h:499
+msgid "Esperanto"
+msgstr "Espéranto"
+
+#: src/ext_l10n.h:500
+msgid "Estonian"
+msgstr "Estonien"
+
+#: src/ext_l10n.h:501
+msgid "Finnish"
+msgstr "Finnois"
+
+#: src/ext_l10n.h:502
+msgid "French"
+msgstr "Français"
+
+#: src/ext_l10n.h:503
+msgid "French (GUTenberg)"
+msgstr "Français (GUTenberg)"
+
+#: src/ext_l10n.h:504
+msgid "Galician"
+msgstr "Galicien"
+
+#: src/ext_l10n.h:505
+msgid "German"
+msgstr "Allemand"
+
+#: src/ext_l10n.h:506
+msgid "German (new spelling)"
+msgstr "Allemand (nouvelle orthographe)"
+
+#: src/ext_l10n.h:508
+msgid "Hebrew"
+msgstr "Hébreu"
+
+#: src/ext_l10n.h:509
+msgid "Irish"
+msgstr "Irlandais"
+
+#: src/ext_l10n.h:510
+msgid "Italian"
+msgstr "Italien"
+
+#: src/ext_l10n.h:511
+msgid "Lsorbian"
+msgstr "Bas-Sorbe"
+
+#: src/ext_l10n.h:512
+msgid "Magyar"
+msgstr "Magyar"
+
+#: src/ext_l10n.h:513
+msgid "Norsk"
+msgstr "Norvégien"
+
+#: src/ext_l10n.h:514
+msgid "Polish"
+msgstr "Polonais"
+
+#: src/ext_l10n.h:515
+msgid "Portugese"
+msgstr "Portugais"
+
+#: src/ext_l10n.h:516
+msgid "Romanian"
+msgstr "Roumain"
+
+#: src/ext_l10n.h:517
+msgid "Russian"
+msgstr "Russe"
+
+#: src/ext_l10n.h:518
+msgid "Scottish"
+msgstr "Écossais"
+
+#: src/ext_l10n.h:519
+msgid "Serbian"
+msgstr "Serbe"
+
+#: src/ext_l10n.h:520
+msgid "Serbo-Croatian"
+msgstr "Serbo-Croate"
+
+#: src/ext_l10n.h:521
+msgid "Spanish"
+msgstr "Espagnol"
+
+#: src/ext_l10n.h:522
+msgid "Slovak"
+msgstr "Slovaque"
+
+#: src/ext_l10n.h:523
+msgid "Slovene"
+msgstr "Slovène"
+
+#: src/ext_l10n.h:524
+msgid "Swedish"
+msgstr "Suédois"
+
+#: src/ext_l10n.h:525
+msgid "Thai"
+msgstr "Thaï"
+
+#: src/ext_l10n.h:526
+msgid "Turkish"
+msgstr "Turc"
+
+#: src/ext_l10n.h:527
+msgid "Ukrainian"
+msgstr "Ukrainien"
+
+#: src/ext_l10n.h:528
+msgid "Usorbian"
+msgstr "Haut-Sorbe"
+
+#: src/ext_l10n.h:529
+msgid "Welsh"
+msgstr "Gallois"
+
+#: src/ext_l10n.h:531
+msgid "Version"
+msgstr "Version"
+
+#: src/ext_l10n.h:532
+msgid "Version goes here"
+msgstr "La version va là"
+
+#: src/ext_l10n.h:536
+msgid "LyX: Enter text"
+msgstr "LyX : Entrez du texte"
+
+#: src/ext_l10n.h:537
+msgid "&Dummy"
+msgstr "Bidon"
+
+#: src/ext_l10n.h:541
+msgid "&Key"
+msgstr "&Clé"
+
+#: src/ext_l10n.h:542
+msgid "The citation key"
+msgstr "La clé de citation"
+
+#: src/ext_l10n.h:543
+msgid "&Label"
+msgstr "&Étiquette"
+
+#: src/ext_l10n.h:544
+msgid "The label as it appears in the document"
+msgstr "Le nom du format tel qu'il apparaîtra dans le document"
+
+#: src/ext_l10n.h:545 src/ext_l10n.h:598 src/ext_l10n.h:792 src/ext_l10n.h:797
+#: src/ext_l10n.h:873 src/ext_l10n.h:893 src/ext_l10n.h:917
+#: src/ext_l10n.h:1062 src/ext_l10n.h:1068 src/ext_l10n.h:1118
+#: src/ext_l10n.h:1158 src/ext_l10n.h:1199
+msgid "&OK"
+msgstr "&OK"
+
+#: src/ext_l10n.h:547
+msgid "Bibtex"
+msgstr "BibTeX"
+
+# contrainte de longueur
+#: src/ext_l10n.h:548
+msgid "Databases"
+msgstr "Base de D."
+
+# contrainte de longueur
+#: src/ext_l10n.h:549
+msgid "BibTeX database to use"
+msgstr "Base de D. BibTeX"
+
+#: src/ext_l10n.h:550 src/ext_l10n.h:626 src/ext_l10n.h:628
+#: src/ext_l10n.h:1167
+msgid "New Item"
+msgstr "Nouvel Élément"
+
+# contrainte de longueur
+#: src/ext_l10n.h:551
+msgid "Available BibTeX databases"
+msgstr "Bases de D. BibTeX disponibles"
+
+#: src/ext_l10n.h:552
+msgid "&Add ..."
+msgstr "&Ajouter ..."
+
+# contrainte de longueur
+#: src/ext_l10n.h:553
+msgid "Add a BibTeX database file"
+msgstr "Ajouter un fichier BibTeX"
+
+#: src/ext_l10n.h:554
+msgid "&Delete"
+msgstr "&Effacer"
+
+#: src/ext_l10n.h:555
+msgid "Remove the selected database"
+msgstr "Enlever la base de D. sélectionnée"
+
+#: src/ext_l10n.h:556
+msgid "&Style"
+msgstr "&Style"
+
+#: src/ext_l10n.h:557 src/ext_l10n.h:563
+msgid "The BibTeX style"
+msgstr "Le style BibTeX"
+
+#: src/ext_l10n.h:559
+msgid "unsrt"
+msgstr "unsrt"
+
+#: src/ext_l10n.h:560
+msgid "alpha"
+msgstr "alpha"
+
+#: src/ext_l10n.h:561
+msgid "abbrv"
+msgstr "abbrv"
+
+#: src/ext_l10n.h:564
+msgid "FIXME !"
+msgstr "À CORRIGER !"
+
+#: src/ext_l10n.h:565
+msgid "The name of the style to use"
+msgstr "Le nom du style à utiliser"
+
+#: src/ext_l10n.h:566
+msgid "&Browse"
+msgstr "&Parcourir"
+
+#: src/ext_l10n.h:567
+msgid "Choose a style file"
+msgstr "Choisir un fichier de style"
+
+#: src/ext_l10n.h:568
+msgid "Add bibliography to &TOC"
+msgstr "Ajouter la bibliographie à la &TdM"
+
+#: src/ext_l10n.h:569
+msgid "Add bibliography to the table of contents"
+msgstr "Ajouter la bibliographie à la table des matières"
+
+#: src/ext_l10n.h:573
+msgid "&Family:"
+msgstr "&Famille :"
+
+#: src/ext_l10n.h:574
+msgid "Font family"
+msgstr "Famille police"
+
+#: src/ext_l10n.h:575
+msgid "&Series:"
+msgstr "&Série :|#S"
+
+#: src/ext_l10n.h:576 src/ext_l10n.h:583
+msgid "Font series"
+msgstr "Série police :"
+
+#: src/ext_l10n.h:577 src/ext_l10n.h:705
+msgid "&Language:"
+msgstr "&Langue :"
+
+#: src/ext_l10n.h:579 src/ext_l10n.h:582
+msgid "Font shape"
+msgstr "Forme police"
+
+#: src/ext_l10n.h:580 src/ext_l10n.h:585
+msgid "Font color"
+msgstr "Couleur police"
+
+#: src/ext_l10n.h:581
+msgid "S&hape:"
+msgstr "F&orme :|#o"
+
+#: src/ext_l10n.h:584
+msgid "&Color:"
+msgstr "Couleurs :"
+
+#: src/ext_l10n.h:587
+msgid "&Toggle all"
+msgstr "(Dés)Activer Tous"
+
+#: src/ext_l10n.h:588
+msgid "toggle font on all of the above"
+msgstr "(Dés)Activer Tous|#v"
+
+#: src/ext_l10n.h:589
+msgid "Never toggled"
+msgstr "Paramètres non (dés)activables"
+
+#: src/ext_l10n.h:590 src/ext_l10n.h:818
+msgid "Si&ze:"
+msgstr "Taille :"
+
+#: src/ext_l10n.h:591
+msgid "Font size"
+msgstr "Taille police"
+
+#: src/ext_l10n.h:592
+msgid "Always toggled"
+msgstr "Paramètres (dés)activables"
+
+#: src/ext_l10n.h:593 src/ext_l10n.h:595
+msgid "Other font settings"
+msgstr "Autres réglages de police"
+
+#: src/ext_l10n.h:594
+msgid "&Misc:"
+msgstr "Divers :"
+
+#: src/ext_l10n.h:596
+msgid "Auto apply"
+msgstr "Appliquer automatiquement"
+
+#: src/ext_l10n.h:597
+msgid "Apply each change automatically"
+msgstr "Appliquer tous les changements automatiquement"
+
+#: src/ext_l10n.h:599 src/ext_l10n.h:604 src/ext_l10n.h:763 src/ext_l10n.h:793
+#: src/ext_l10n.h:798 src/ext_l10n.h:874 src/ext_l10n.h:918
+#: src/ext_l10n.h:1061 src/ext_l10n.h:1069
+msgid "&Apply"
+msgstr "&Appliquer"
+
+#: src/ext_l10n.h:602 src/ext_l10n.h:761 src/ext_l10n.h:796 src/ext_l10n.h:872
+#: src/ext_l10n.h:916 src/ext_l10n.h:1060
+msgid "&Restore"
+msgstr "&Restaurer"
+
+#: src/ext_l10n.h:606
+msgid "Text after"
+msgstr "Texte après le paramètre"
+
+#: src/ext_l10n.h:608
+msgid "Natbib citation style to use"
+msgstr "Style de citation Natbib"
+
+#: src/ext_l10n.h:609
+msgid "Text before"
+msgstr "Texte avant"
+
+#: src/ext_l10n.h:611
+msgid "Citation entry"
+msgstr "Entrée de citation"
+
+#: src/ext_l10n.h:613
+msgid "Search the available citations"
+msgstr "Rechercher les citations disponibles"
+
+#: src/ext_l10n.h:614
+msgid "Regular E&xpression"
+msgstr "E&xpression Régulière"
+
+#: src/ext_l10n.h:615
+msgid "Interpret search entry as a regular expression"
+msgstr "Interpréter comme une expression régulière"
+
+#: src/ext_l10n.h:616
+msgid "&Previous"
+msgstr "Précédent"
+
+#: src/ext_l10n.h:617
+msgid "&Case sensitive"
+msgstr "Selon la casse"
+
+#: src/ext_l10n.h:618
+msgid "Make the search case-sensitive"
+msgstr "Recherche sensible à la casse"
+
+#: src/ext_l10n.h:619
+msgid "&Next"
+msgstr "Suivant"
+
+#: src/ext_l10n.h:620
+msgid "Add the selected citation"
+msgstr "Ajouter la citation"
+
+#: src/ext_l10n.h:621
+msgid "Remove the selected citation"
+msgstr "Enlever la citation"
+
+#: src/ext_l10n.h:622
+msgid "Move the selected citation up"
+msgstr "Remonter la citation"
+
+#: src/ext_l10n.h:623
+msgid "Move the selected citation down"
+msgstr "Descendre la citation"
+
+#: src/ext_l10n.h:624
+msgid "Available"
+msgstr "Disponible"
+
+#: src/ext_l10n.h:625
+msgid "Selected"
+msgstr "Sélectionné"
+
+#: src/ext_l10n.h:627
+msgid "Available citation keys"
+msgstr "Clés disponibles"
+
+#: src/ext_l10n.h:629
+msgid "Citations currently selected"
+msgstr "Clés sélectionnées"
+
+#: src/ext_l10n.h:630
+msgid "Text to place after citation"
+msgstr "Texte à ajouter après la citation"
+
+# à revoir
+#: src/ext_l10n.h:631
+msgid "&Full author list"
+msgstr "Liste complète des auteurs"
+
+#: src/ext_l10n.h:632
+msgid "List all authors"
+msgstr "Donne la liste de tous les auteurs"
+
+#: src/ext_l10n.h:633
+msgid "Force &upper case"
+msgstr "Forcer les majuscules"
+
+#: src/ext_l10n.h:634
+msgid "Force upper case in citation"
+msgstr "Forcer les majuscules dans la citation"
+
+#: src/ext_l10n.h:635
+msgid "Text to place before citation"
+msgstr "Texte à ajouter avant la citation"
+
+#: src/ext_l10n.h:638
+msgid "&Fonts:"
+msgstr "Polices :"
+
+#: src/ext_l10n.h:639
+msgid "&Pagestyle:"
+msgstr "Mise en page :"
+
+# contrainte de longueur
+#: src/ext_l10n.h:640
+msgid "Defa&ult Skip:"
+msgstr "Espacement :"
+
+#: src/ext_l10n.h:641
+msgid "F&ont Size:"
+msgstr "Taille de Police :"
+
+#: src/ext_l10n.h:647
+msgid "Spacin&g:"
+msgstr "Interligne :"
+
+# contrainte de longueur
+#: src/ext_l10n.h:648
+msgid "E&xtra Options:"
+msgstr "Autres Options :"
+
+#: src/ext_l10n.h:649
+msgid "&Class:"
+msgstr "Classe :"
+
+#: src/ext_l10n.h:650
+msgid "smallskip"
+msgstr "Petit"
+
+#: src/ext_l10n.h:651
+msgid "medskip"
+msgstr "Moyen"
+
+#: src/ext_l10n.h:652
+msgid "bigskip"
+msgstr "Gros"
+
+#: src/ext_l10n.h:653
+msgid "length"
+msgstr "Taille"
+
+#: src/ext_l10n.h:663
+msgid "O&ne"
+msgstr "Une"
+
+#: src/ext_l10n.h:664
+msgid "&Two"
+msgstr "Deux"
+
+#: src/ext_l10n.h:666
+msgid "On&e"
+msgstr "Une"
+
+#: src/ext_l10n.h:667
+msgid "T&wo"
+msgstr "Deux"
+
+# contrainte de longueur
+#: src/ext_l10n.h:669
+msgid "&Indent"
+msgstr "Indentation"
+
+#: src/ext_l10n.h:670
+msgid "S&kip"
+msgstr "Interligne"
+
+#: src/ext_l10n.h:672
+msgid "&Papersize:"
+msgstr "Taille :"
+
+#: src/ext_l10n.h:683
+msgid "&Special:"
+msgstr "Spécial :"
+
+#: src/ext_l10n.h:688
+msgid "&Use Geometry Package"
+msgstr "Paquetage Geometry"
+
+#: src/ext_l10n.h:690
+msgid "P&ortrait"
+msgstr "Portrait"
+
+#: src/ext_l10n.h:691
+msgid "&Landscape"
+msgstr "Paysage"
+
+# contrainte de longueur
+#: src/ext_l10n.h:693
+msgid "&Right:"
+msgstr "Dr. :"
+
+#: src/ext_l10n.h:694
+msgid "&Bottom:"
+msgstr "Bas :"
+
+#: src/ext_l10n.h:695
+msgid "L&eft:"
+msgstr "Gauche :"
+
+#: src/ext_l10n.h:696
+msgid "&Top:"
+msgstr "Haut :"
+
+#: src/ext_l10n.h:697
+msgid "Custom Papersize"
+msgstr "Taille Personnalisée"
+
+#: src/ext_l10n.h:698 src/ext_l10n.h:907
+msgid "&Width:"
+msgstr "Largeur :"
+
+#: src/ext_l10n.h:699
+msgid "&Height:"
+msgstr "Hauteur :"
+
+# contrainte de longueur
+#: src/ext_l10n.h:700
+msgid "Foot/Head Margins"
+msgstr "Marge En-têtes/Pieds"
+
+# contrainte de longueur
+#: src/ext_l10n.h:701
+msgid "&Footskip:"
+msgstr "Esp. Bas :"
+
+#: src/ext_l10n.h:702
+msgid "Hea&dsep:"
+msgstr "Sép. En-tête :"
+
+# contrainte de longueur
+#: src/ext_l10n.h:703
+msgid "Headhe&ight:"
+msgstr "Ha&ut. En-tête :"
+
+#: src/ext_l10n.h:706
+msgid "Enco&ding:"
+msgstr "&Encodage :"
+
+#: src/ext_l10n.h:720
+msgid "Quote Style"
+msgstr "Style des Guillemets"
+
+#: src/ext_l10n.h:721
+msgid "&Type:"
+msgstr "Type :"
+
+#: src/ext_l10n.h:726
+msgid "Â«textÂ»"
+msgstr "Â«texteÂ»"
+
+#: src/ext_l10n.h:727
+msgid "Â»textÂ«"
+msgstr "Â»texteÂ«"
+
+#: src/ext_l10n.h:728
+msgid "&Single"
+msgstr "Simple"
+
+#: src/ext_l10n.h:729
+msgid "&Double"
+msgstr "Double"
+
+# contrainte de longueur
+#: src/ext_l10n.h:731
+msgid "F&loat Placement:"
+msgstr "Placement des Flottants :"
+
+# contrainte de longueur
+#: src/ext_l10n.h:732
+msgid "S&ection number depth:"
+msgstr "Prof. de la numérotation :"
+
+#: src/ext_l10n.h:733
+msgid "&Table of contents depth:"
+msgstr "Profondeur de la TdM :"
+
+#: src/ext_l10n.h:734
+msgid "P&S Driver:"
+msgstr "Pilote PS :"
+
+# contrainte de longueur
+#: src/ext_l10n.h:735
+msgid "Use A&MS Math"
+msgstr "AMS Maths"
+
+#: src/ext_l10n.h:737
+msgid "Si&ze"
+msgstr "Taille"
+
+#: src/ext_l10n.h:750
+msgid "&1"
+msgstr "&1"
+
+#: src/ext_l10n.h:751
+msgid "&2"
+msgstr "&2"
+
+#: src/ext_l10n.h:752
+msgid "&3"
+msgstr "&3"
+
+#: src/ext_l10n.h:753
+msgid "&4"
+msgstr "&4"
+
+#: src/ext_l10n.h:754
+msgid "&Standard"
+msgstr "Standard"
+
+#: src/ext_l10n.h:755
+msgid "&Maths"
+msgstr "Maths"
+
+#: src/ext_l10n.h:756
+msgid "&Ding 1"
+msgstr "&Ding 1"
+
+#: src/ext_l10n.h:757
+msgid "D&ing 2"
+msgstr "D&ing 2"
+
+#: src/ext_l10n.h:758
+msgid "Di&ng 3"
+msgstr "Di&ng 3"
+
+#: src/ext_l10n.h:759
+msgid "Din&g 4"
+msgstr "Din&g 4"
+
+#: src/ext_l10n.h:760
+msgid "&LaTeX"
+msgstr "&LaTeX"
+
+#: src/ext_l10n.h:766 src/ext_l10n.h:780
+msgid "LaTeX error messages"
+msgstr "Messages d'erreur LaTeX"
+
+#: src/ext_l10n.h:768
+msgid "ERT inset display"
+msgstr "Affichage de l'insert ERT"
+
+#: src/ext_l10n.h:769
+msgid "&Inline"
+msgstr "&En Ligne"
+
+#: src/ext_l10n.h:770
+msgid "Show ERT inline"
+msgstr "Affiche l'ERT en ligne"
+
+#: src/ext_l10n.h:771
+msgid "&Collapsed"
+msgstr "&Fermé"
+
+#: src/ext_l10n.h:772
+msgid "Show ERT button only"
+msgstr "Affiche seulement le bouton ERT"
+
+#: src/ext_l10n.h:773
+msgid "&Open"
+msgstr "&Ouvert"
+
+#: src/ext_l10n.h:774
+msgid "Show ERT contents"
+msgstr "Affiche le contenu de l'ERT"
+
+#: src/ext_l10n.h:777
+msgid "External Material"
+msgstr "Objet Externe"
+
+#: src/ext_l10n.h:778
+msgid "&Template"
+msgstr "&Modèle"
+
+#: src/ext_l10n.h:779
+msgid "Available templates"
+msgstr "Modèles disponibles"
+
+#: src/ext_l10n.h:781
+msgid "&Edit file"
+msgstr "Édit&er Fichier"
+
+#: src/ext_l10n.h:782
+msgid "Edit the file externally"
+msgstr "Éditer le fichier extérieur"
+
+#: src/ext_l10n.h:783
+msgid "&View file"
+msgstr "&Visualiser le fichier"
+
+#: src/ext_l10n.h:784
+msgid "View the file"
+msgstr "Visualiser le fichier"
+
+#: src/ext_l10n.h:785 src/ext_l10n.h:903 src/ext_l10n.h:1103
+#: src/ext_l10n.h:1189 src/ext_l10n.h:1202
+msgid "&Update"
+msgstr "&Mise à jour"
+
+#: src/ext_l10n.h:786
+msgid "Update the material"
+msgstr "Met à jour le matériau"
+
+#: src/ext_l10n.h:787 src/ext_l10n.h:1075
+msgid "&File"
+msgstr "&Fichier"
+
+#: src/ext_l10n.h:788
+msgid "Filename"
+msgstr "Nom Fichier"
+
+#: src/ext_l10n.h:789 src/ext_l10n.h:810 src/ext_l10n.h:891
+#: src/ext_l10n.h:1079
+msgid "&Browse ..."
+msgstr "&Parcourir ..."
+
+#: src/ext_l10n.h:790
+msgid "&Parameters"
+msgstr "&Paramètres"
+
+#: src/ext_l10n.h:791
+msgid "Parameters"
+msgstr "Paramètres"
+
+#: src/ext_l10n.h:795 src/ext_l10n.h:806 src/ext_l10n.h:1160
+msgid "Form1"
+msgstr ""
+
+#: src/ext_l10n.h:801
+msgid "Bottom of the page"
+msgstr "Bas de la page"
+
+#: src/ext_l10n.h:802
+msgid "Top of the page"
+msgstr "Haut de la page"
+
+#: src/ext_l10n.h:803
+msgid "Page of floats"
+msgstr "Page de flottants"
+
+#: src/ext_l10n.h:804
+msgid "Here, if possible"
+msgstr "Ici, si possible"
+
+#: src/ext_l10n.h:805
+msgid "Here, definitely"
+msgstr "Ici, à tout prix"
+
+#: src/ext_l10n.h:808
+msgid "&File:"
+msgstr "&Fichier :"
+
+#: src/ext_l10n.h:809 src/ext_l10n.h:890
+msgid "File name to include"
+msgstr "Choisir le fichier à inclure"
+
+#: src/ext_l10n.h:811 src/ext_l10n.h:892
+msgid "Select a file"
+msgstr "Choisir un fichier"
+
+#: src/ext_l10n.h:812
+msgid "Screen Options"
+msgstr "Options d'Écran"
+
+#: src/ext_l10n.h:814
+msgid "Monochrome"
+msgstr "Noir et Blanc"
+
+#: src/ext_l10n.h:815
+msgid "Grayscale"
+msgstr "Niveaux de gris"
+
+#: src/ext_l10n.h:816
+msgid "Color"
+msgstr "Couleurs"
+
+#: src/ext_l10n.h:817
+msgid "Do not display"
+msgstr "Ne pas afficher"
+
+#: src/ext_l10n.h:819
+msgid "S&how:"
+msgstr ""
+
+#: src/ext_l10n.h:820 src/ext_l10n.h:830
+msgid "Height"
+msgstr "Hauteur"
+
+#: src/ext_l10n.h:821
+msgid "&Draft mode"
+msgstr "Mode &Brouillon"
+
+#: src/ext_l10n.h:822
+msgid "draft mode"
+msgstr "mode brouillon"
+
+#: src/ext_l10n.h:824
+msgid "&Scale"
+msgstr "Éch&elle"
+
+#: src/ext_l10n.h:825
+msgid "&Default"
+msgstr "&Défaut"
+
+#: src/ext_l10n.h:826
+msgid "&Custom"
+msgstr "&Personnalisé"
+
+#: src/ext_l10n.h:828
+msgid "Keep aspect&ratio"
+msgstr ""
+
+#: src/ext_l10n.h:831
+msgid "EPS Options"
+msgstr "Options EPS"
+
+#: src/ext_l10n.h:832
+msgid "Bounding box"
+msgstr "Cadre"
+
+#: src/ext_l10n.h:833
+msgid "Left &bottom:"
+msgstr "&Bas Gauche :"
+
+# contrainte de longueur
+#: src/ext_l10n.h:834
+msgid "Right &top:"
+msgstr "&Haut Droite :"
+
+#: src/ext_l10n.h:835
+msgid "Y"
+msgstr "Y"
+
+#: src/ext_l10n.h:836
+msgid "X"
+msgstr "X"
+
+#: src/ext_l10n.h:849
+msgid "&Get"
+msgstr "&Obtenir"
+
+#: src/ext_l10n.h:850
+msgid "Get bounding box from file"
+msgstr "Obtenir le cadre du fichier"
+
+#: src/ext_l10n.h:851
+msgid "&Clip to bounding box"
+msgstr "&Couper au cadre"
+
+#: src/ext_l10n.h:852
+msgid "clip to bounding box"
+msgstr "couper au cadre"
+
+#: src/ext_l10n.h:854
+msgid "Rotation"
+msgstr "Rotation"
+
+#: src/ext_l10n.h:855
+msgid "&Angle:"
+msgstr "&Angle :"
+
+#: src/ext_l10n.h:856
+msgid "&Origin:"
+msgstr "&Origine :"
+
+#: src/ext_l10n.h:858
+msgid "leftTop"
+msgstr "gaucheHaut"
+
+#: src/ext_l10n.h:859
+msgid "leftBottom"
+msgstr "gaucheBas"
+
+#: src/ext_l10n.h:860
+msgid "leftBaseline"
+msgstr "gaucheBase"
+
+#: src/ext_l10n.h:862
+msgid "centerTop"
+msgstr "centreHaut"
+
+#: src/ext_l10n.h:863
+msgid "centerBottom"
+msgstr "centreBas"
+
+#: src/ext_l10n.h:864
+msgid "centerBaseline"
+msgstr "centreBase"
+
+#: src/ext_l10n.h:865
+msgid "rightTop"
+msgstr "droiteHaut"
+
+#: src/ext_l10n.h:866
+msgid "rightBottom"
+msgstr "droiteBas"
+
+#: src/ext_l10n.h:867
+msgid "rightBaseline"
+msgstr "droiteBase"
+
+#: src/ext_l10n.h:868
+msgid "referencePoint"
+msgstr "pointRéférence"
+
+#: src/ext_l10n.h:869
+msgid "LaTeX options"
+msgstr "Options LaTeX"
+
+# contrainte de longueur
+#: src/ext_l10n.h:870
+msgid "Su&bfigure"
+msgstr "Sous-figure"
+
+#: src/ext_l10n.h:871
+msgid "The sub-caption for the figure"
+msgstr "La sous-légende pour la figure"
+
+#: src/ext_l10n.h:876
+msgid "Include File"
+msgstr "Inclure Fichier"
+
+#: src/ext_l10n.h:877
+msgid "Include type"
+msgstr ""
+
+# à confirmer
+#: src/ext_l10n.h:878
+msgid "&Include"
+msgstr "Inclusion"
+
+#: src/ext_l10n.h:879 src/ext_l10n.h:881 src/ext_l10n.h:883 src/ext_l10n.h:886
+#: src/ext_l10n.h:888
+msgid "FIXME"
+msgstr "À CORRIGER"
+
+# à confirmer aussi
+#: src/ext_l10n.h:880
+msgid "I&nput"
+msgstr "Incorporation"
+
+# Texto mieux que "Mot à mot" ? - AR
+# Retour à verbatim (cf intro) - JPC
+#: src/ext_l10n.h:882
+msgid "&Verbatim"
+msgstr "Verbatim"
+
+#: src/ext_l10n.h:884
+msgid "Options"
+msgstr "Options"
+
+# contrainte de longueur
+#: src/ext_l10n.h:885
+msgid "&Don't typeset"
+msgstr "Formatage désactivé"
+
+#: src/ext_l10n.h:887
+msgid "Visible &Space"
+msgstr "Espace visible"
+
+# contrainte de longueur
+#: src/ext_l10n.h:889
+msgid "&Filename:"
+msgstr "Nom Fichier :"
+
+#: src/ext_l10n.h:895
+msgid "&Load"
+msgstr "Charger"
+
+#: src/ext_l10n.h:896
+msgid "Load the file"
+msgstr "Charger le fichier"
+
+#: src/ext_l10n.h:898 src/ext_l10n.h:1176
+msgid "&Keyword"
+msgstr "Mot-Clé"
+
+# contrainte de longueur
+#: src/ext_l10n.h:899 src/ext_l10n.h:1031 src/ext_l10n.h:1177
+msgid "Index entry"
+msgstr "Entrée d'index"
+
+#: src/ext_l10n.h:904 src/ext_l10n.h:1203
+msgid "Update the display"
+msgstr "Mettre à jour l'affichage"
+
+#: src/ext_l10n.h:906
+msgid "Minipage settings"
+msgstr "Options de minipage"
+
+#: src/ext_l10n.h:908 src/ext_l10n.h:1057
+msgid "Top"
+msgstr "&Haut"
+
+#: src/ext_l10n.h:909 src/ext_l10n.h:1058
+msgid "Middle"
+msgstr "&Milieu"
+
+#: src/ext_l10n.h:910 src/ext_l10n.h:1059
+msgid "Bottom"
+msgstr "&Bas"
+
+#: src/ext_l10n.h:911
+msgid "Vertical alignment"
+msgstr "Alignement vertical"
+
+#: src/ext_l10n.h:912
+msgid "A&lignment:"
+msgstr "Alignement :"
+
+#: src/ext_l10n.h:913
+msgid "Units of width value"
+msgstr ""
+
+#: src/ext_l10n.h:914
+msgid "Width value"
+msgstr "Largeur"
+
+#: src/ext_l10n.h:915
+msgid "&Units:"
+msgstr "&Unité :"
+
+#: src/ext_l10n.h:921
+msgid "&Alignment and Spacing"
+msgstr "&Alignement et Interligne"
+
+#: src/ext_l10n.h:922
+msgid "Alignment:"
+msgstr "Alignement :"
+
+#: src/ext_l10n.h:923
+msgid "Justified"
+msgstr "Justifié"
+
+#: src/ext_l10n.h:924
+msgid "Left"
+msgstr "À gauche"
+
+#: src/ext_l10n.h:925
+msgid "Right"
+msgstr "À droite"
+
+#: src/ext_l10n.h:926
+msgid "Centered"
+msgstr "Centré"
+
+#: src/ext_l10n.h:927
+msgid "No indentation"
+msgstr "Pas d'indentation"
+
+#: src/ext_l10n.h:928
+msgid "Spacing"
+msgstr "Interligne"
+
+#: src/ext_l10n.h:929 src/ext_l10n.h:940 src/ext_l10n.h:951 src/ext_l10n.h:962
+#: src/ext_l10n.h:973 src/ext_l10n.h:984 src/ext_l10n.h:1037
+msgid "Centimetres"
+msgstr "Centimètres"
+
+#: src/ext_l10n.h:930 src/ext_l10n.h:941 src/ext_l10n.h:952 src/ext_l10n.h:963
+#: src/ext_l10n.h:974 src/ext_l10n.h:985 src/ext_l10n.h:1038
+msgid "Inches"
+msgstr "Pouces"
+
+#: src/ext_l10n.h:931 src/ext_l10n.h:942 src/ext_l10n.h:953 src/ext_l10n.h:964
+#: src/ext_l10n.h:975 src/ext_l10n.h:986 src/ext_l10n.h:1039
+msgid "Points"
+msgstr "Points"
+
+#: src/ext_l10n.h:932 src/ext_l10n.h:943 src/ext_l10n.h:954 src/ext_l10n.h:965
+#: src/ext_l10n.h:976 src/ext_l10n.h:987 src/ext_l10n.h:1040
+msgid "Millimetres"
+msgstr "Millimètres"
+
+#: src/ext_l10n.h:933 src/ext_l10n.h:944 src/ext_l10n.h:955 src/ext_l10n.h:966
+#: src/ext_l10n.h:977 src/ext_l10n.h:988 src/ext_l10n.h:1041
+msgid "Picas"
+msgstr "Picas"
+
+#: src/ext_l10n.h:934 src/ext_l10n.h:945 src/ext_l10n.h:956 src/ext_l10n.h:967
+#: src/ext_l10n.h:978 src/ext_l10n.h:989 src/ext_l10n.h:1042
+msgid "ex Units"
+msgstr "unités « ex »"
+
+#: src/ext_l10n.h:935 src/ext_l10n.h:946 src/ext_l10n.h:957 src/ext_l10n.h:968
+#: src/ext_l10n.h:979 src/ext_l10n.h:990 src/ext_l10n.h:1043
+msgid "em Units"
+msgstr "unités « em »"
+
+#: src/ext_l10n.h:936 src/ext_l10n.h:947 src/ext_l10n.h:958 src/ext_l10n.h:969
+#: src/ext_l10n.h:980 src/ext_l10n.h:991 src/ext_l10n.h:1044
+msgid "Scaled Points"
+msgstr "Points à l'échelle"
+
+#: src/ext_l10n.h:937 src/ext_l10n.h:948 src/ext_l10n.h:959 src/ext_l10n.h:970
+#: src/ext_l10n.h:981 src/ext_l10n.h:992 src/ext_l10n.h:1045
+msgid "Big/PS Points"
+msgstr "Points Big/PS"
+
+#: src/ext_l10n.h:938 src/ext_l10n.h:949 src/ext_l10n.h:960 src/ext_l10n.h:971
+#: src/ext_l10n.h:982 src/ext_l10n.h:993 src/ext_l10n.h:1046
+msgid "Didot Points"
+msgstr "Points Didot"
+
+#: src/ext_l10n.h:939 src/ext_l10n.h:950 src/ext_l10n.h:961 src/ext_l10n.h:972
+#: src/ext_l10n.h:983 src/ext_l10n.h:994 src/ext_l10n.h:1047
+msgid "Cicero Points"
+msgstr "Points Cicero"
+
+#: src/ext_l10n.h:995 src/ext_l10n.h:997
+msgid "Units:"
+msgstr "Unités :"
+
+#: src/ext_l10n.h:996 src/ext_l10n.h:998
+msgid "Unit of Size, Stretch and Slink"
+msgstr ""
+
+#: src/ext_l10n.h:999
+msgid "Value:"
+msgstr "Valeur :"
+
+#: src/ext_l10n.h:1000
+msgid "Amount of spacing"
+msgstr "Interligne"
+
+#: src/ext_l10n.h:1001
+msgid "Stretch:"
+msgstr "Élongation :"
+
+#: src/ext_l10n.h:1002
+msgid "Margin by which paragraph is allowed to increase"
+msgstr ""
+
+#: src/ext_l10n.h:1003
+msgid "Shrink:"
+msgstr "Rétrécissement :"
+
+#: src/ext_l10n.h:1004
+msgid "Margin by which paragraph is allowed to decrease"
+msgstr ""
+
+#: src/ext_l10n.h:1006 src/ext_l10n.h:1015
+msgid "DefSkip"
+msgstr "par Défaut"
+
+#: src/ext_l10n.h:1007 src/ext_l10n.h:1016
+msgid "SmallSkip"
+msgstr "Petit"
+
+#: src/ext_l10n.h:1008 src/ext_l10n.h:1017
+msgid "MedSkip"
+msgstr "Moyen"
+
+#: src/ext_l10n.h:1009 src/ext_l10n.h:1018
+msgid "BigSkip"
+msgstr "Gros"
+
+#: src/ext_l10n.h:1010 src/ext_l10n.h:1019
+msgid "VFill"
+msgstr "ressort vertical"
+
+#: src/ext_l10n.h:1012
+msgid "Above:"
+msgstr "Avant :"
+
+#: src/ext_l10n.h:1013
+msgid "Below:"
+msgstr "Après :"
+
+#: src/ext_l10n.h:1021
+msgid "Keep space at the top of the page"
+msgstr "Conserve l'espacement en haut de page"
+
+#: src/ext_l10n.h:1022
+msgid "Keep space at top of the page"
+msgstr "Conserve l'espacement en haut de page"
+
+#: src/ext_l10n.h:1023
+msgid "Keep space at the bottom of the page"
+msgstr "Conserve l'espacement en bas de page"
+
+#: src/ext_l10n.h:1024
+msgid "List environment"
+msgstr "Environnement de liste"
+
+# contrainte de longueur
+#: src/ext_l10n.h:1025
+msgid "Label width:"
+msgstr "Taille du marqueur :"
+
+#: src/ext_l10n.h:1026
+msgid "Label width in list environment"
+msgstr "Taille du marqueur dans l'environnement de liste"
+
+#: src/ext_l10n.h:1027
+msgid "&Lines and Page breaks"
+msgstr "&Sauts de Ligne et de Page"
+
+#: src/ext_l10n.h:1028
+msgid "Page break"
+msgstr "Saut de Page"
+
+#: src/ext_l10n.h:1029 src/ext_l10n.h:1033
+msgid "above paragraph"
+msgstr "avant un paragraphe"
+
+#: src/ext_l10n.h:1030 src/ext_l10n.h:1034
+msgid "below paragraph"
+msgstr "après un paragraphe"
+
+#: src/ext_l10n.h:1032
+msgid "Line"
+msgstr "Ligne"
+
+#: src/ext_l10n.h:1035
+msgid "&Extra options"
+msgstr "&Autres Options"
+
+#: src/ext_l10n.h:1036
+msgid "Unit:"
+msgstr "Unité :"
+
+#: src/ext_l10n.h:1050
+msgid "Wrap text around floats"
+msgstr "Enrober les flottants dans le texte"
+
+#: src/ext_l10n.h:1051
+msgid "Indent whole paragraph"
+msgstr "Paragraphe à retrait"
+
+#: src/ext_l10n.h:1052
+msgid "Width:"
+msgstr "Largeur :"
+
+#: src/ext_l10n.h:1053
+msgid "Minipage options"
+msgstr "Options de minipage"
+
+#: src/ext_l10n.h:1054
+msgid "Start new minipage"
+msgstr "Commencer une nouvelle minipage"
+
+#: src/ext_l10n.h:1055
+msgid "HFill between minipage paragraphs"
+msgstr "Ressort horizontal entre les minipages"
+
+#: src/ext_l10n.h:1056
+msgid "Vertical Alignment:"
+msgstr "Alignement vertical :"
+
+#: src/ext_l10n.h:1064
+msgid "LaTeX pre-amble"
+msgstr "Préambule LaTeX"
+
+#: src/ext_l10n.h:1065
+msgid "The LaTeX pre-amble"
+msgstr "Le Préambule LaTeX"
+
+#: src/ext_l10n.h:1066
+msgid "&Edit ..."
+msgstr "&Éditer ..."
+
+#: src/ext_l10n.h:1067
+msgid "Edit the pre-amble in an external editor"
+msgstr "Éditer le préambule dans un éditeur externe"
+
+#: src/ext_l10n.h:1072
+msgid "Print Destination"
+msgstr "Destination"
+
+#: src/ext_l10n.h:1073
+msgid "P&rinter"
+msgstr "Imprimante"
+
+#: src/ext_l10n.h:1074
+msgid "Send output to the printer"
+msgstr "Envoie le résultat à l'imprimante"
+
+#: src/ext_l10n.h:1076 src/ext_l10n.h:1078
+msgid "Send output to a file"
+msgstr "Envoie le résultat à un fichier"
+
+#: src/ext_l10n.h:1077
+msgid "Send output to the given printer"
+msgstr "Envoie le résultat à l'imprimante donnée"
+
+#: src/ext_l10n.h:1080
+msgid "Pages"
+msgstr "Pages"
+
+#: src/ext_l10n.h:1081
+msgid "&All"
+msgstr "&Toutes"
+
+#: src/ext_l10n.h:1082
+msgid "Print all pages"
+msgstr "Imprime toutes les pages"
+
+#: src/ext_l10n.h:1083
+msgid "&Odd"
+msgstr "&Impaires"
+
+#: src/ext_l10n.h:1084
+msgid "Print odd pages only"
+msgstr "Imprime seulement les pages impaires"
+
+#: src/ext_l10n.h:1085
+msgid "&Even"
+msgstr "&Paires"
+
+#: src/ext_l10n.h:1086
+msgid "Print even pages only"
+msgstr "Imprime seulement les pages paires"
+
+#: src/ext_l10n.h:1087
+msgid "&Last page:"
+msgstr "&Dernière page :"
+
+#: src/ext_l10n.h:1088
+msgid "Page number to print to"
+msgstr "Numéro de la page jusqu'à laquelle imprimer"
+
+#: src/ext_l10n.h:1089
+msgid "Re&verse order"
+msgstr "&Ordre inverse"
+
+#: src/ext_l10n.h:1090
+msgid "Print in reverse order"
+msgstr "Imprime à partir de la derniére page"
+
+#: src/ext_l10n.h:1091
+msgid "Page number to print from"
+msgstr "Numéro de la page à partir de laquelle imprimer"
+
+#: src/ext_l10n.h:1092
+msgid "Ran&ge"
+msgstr "Étendue"
+
+#: src/ext_l10n.h:1093
+msgid "Set a range of pages to print"
+msgstr "Étendue des pages à imprimer"
+
+#: src/ext_l10n.h:1094
+msgid "&Starting range:"
+msgstr "&Commencer une étendue :"
+
+#: src/ext_l10n.h:1096
+msgid "Number of copies"
+msgstr "Nombre d'exemplaires"
+
+#: src/ext_l10n.h:1097
+msgid "&Collate"
+msgstr "Accoler"
+
+#: src/ext_l10n.h:1098
+msgid "Collate copies"
+msgstr "Accoler les exemplaires"
+
+#: src/ext_l10n.h:1099
+msgid "&Print"
+msgstr "&Imprimer"
+
+#: src/ext_l10n.h:1102 src/ext_l10n.h:1187
+msgid "&Type"
+msgstr "Type"
+
+#: src/ext_l10n.h:1104
+msgid "Update the reference list"
+msgstr "Met à jour la liste des références"
+
+#: src/ext_l10n.h:1105
+msgid "Sort"
+msgstr "Trier"
+
+#: src/ext_l10n.h:1106
+msgid "Sort references in alphabetical order"
+msgstr "Trie les références par ordre aphabétique"
+
+#: src/ext_l10n.h:1108
+msgid "Move the document cursor to reference"
+msgstr "Déplace le curseur à la référence"
+
+#: src/ext_l10n.h:1110
+msgid "Page number"
+msgstr "Numéro de Page"
+
+#: src/ext_l10n.h:1111
+msgid "Ref on page xxx"
+msgstr "Réf sur la page xxx"
+
+#: src/ext_l10n.h:1112
+msgid "On page xxx"
+msgstr "sur la page xxx"
+
+#: src/ext_l10n.h:1113
+msgid "Pretty reference"
+msgstr "Jolie Référence"
+
+#: src/ext_l10n.h:1114
+msgid "Reference as it appears in output"
+msgstr "Référence telle qu'elle sera imprimée"
+
+#: src/ext_l10n.h:1115
+msgid "&Reference:"
+msgstr "Référence :"
+
+#: src/ext_l10n.h:1116
+msgid "&Name:"
+msgstr "Nom :"
+
+#: src/ext_l10n.h:1117
+msgid "Available references"
+msgstr "Références disponibles"
+
+#: src/ext_l10n.h:1120
+msgid "Search and replace"
+msgstr "Rechercher et Remplacer"
+
+#: src/ext_l10n.h:1121
+msgid "&Find:"
+msgstr "Rechercher :"
+
+#: src/ext_l10n.h:1122
+msgid "Replace &with:"
+msgstr "Remplacer par :"
+
+#: src/ext_l10n.h:1123
+msgid "Case &sensitive"
+msgstr "Selon la casse"
+
+#: src/ext_l10n.h:1124
+msgid "Match whole words onl&y"
+msgstr "Mots complets seulement"
+
+#: src/ext_l10n.h:1125
+msgid "Find &Next"
+msgstr "Suivant"
+
+#: src/ext_l10n.h:1126 src/ext_l10n.h:1134 src/ext_l10n.h:1183
+msgid "&Replace"
+msgstr "Remplacer"
+
+#: src/ext_l10n.h:1127
+msgid "Replace &All "
+msgstr "Remplacer tout"
+
+#: src/ext_l10n.h:1128
+msgid "Search &backwards"
+msgstr "Rechercher en arrière"
+
+#: src/ext_l10n.h:1130
+msgid "File: "
+msgstr "Fichier :"
+
+#: src/ext_l10n.h:1133
+msgid "Suggestions:"
+msgstr "Suggestions :"
+
+#: src/ext_l10n.h:1135
+msgid "Replace word with current choice"
+msgstr "Remplace le mot par le choix sélectionné"
+
+#: src/ext_l10n.h:1136
+msgid "&Add"
+msgstr "&Ajouter"
+
+#: src/ext_l10n.h:1137
+msgid "Add the word to your personal dictionary"
+msgstr "Ajoute le mot à votre dictionnaire personnel"
+
+#: src/ext_l10n.h:1138
+msgid "&Ignore"
+msgstr "Ignorer"
+
+#: src/ext_l10n.h:1139
+msgid "Ignore this word"
+msgstr "Ignore le mot"
+
+#: src/ext_l10n.h:1140
+msgid "&Accept"
+msgstr "Accepter"
+
+#: src/ext_l10n.h:1141
+msgid "Accept word for this session"
+msgstr "Accepte ce mot durant cette session"
+
+#: src/ext_l10n.h:1142
+msgid "&Options..."
+msgstr "Options..."
+
+#: src/ext_l10n.h:1144
+msgid "How far spellchecking has got"
+msgstr "État d'avancement de la correction"
+
+#: src/ext_l10n.h:1146
+msgid "Replacement:"
+msgstr "Remplacement :"
+
+#: src/ext_l10n.h:1147
+msgid "Current word"
+msgstr "Mot actuel"
+
+#: src/ext_l10n.h:1148
+msgid "Unknown:"
+msgstr "Inconnu :"
+
+#: src/ext_l10n.h:1149
+msgid "Replace with selected word"
+msgstr "Remplace par le mot sélectionné"
+
+#: src/ext_l10n.h:1150
+msgid "&Start..."
+msgstr "&Commencer..."
+
+#: src/ext_l10n.h:1151
+msgid "Start spellcheck"
+msgstr "Commence la correction"
+
+#: src/ext_l10n.h:1153
+msgid "&Rows:"
+msgstr "&Rangées :"
+
+#: src/ext_l10n.h:1154
+msgid "Number of rows"
+msgstr "Nombre de rangées"
+
+#: src/ext_l10n.h:1155
+msgid "&Columns:"
+msgstr "&Colonnes :"
+
+#: src/ext_l10n.h:1156
+msgid "Number of columns"
+msgstr "Nombre de colonnes"
+
+#: src/ext_l10n.h:1157
+msgid "Resize this to the correct table dimensions"
+msgstr ""
+
+#: src/ext_l10n.h:1161
+msgid "LaTeX classes"
+msgstr "Classes LaTeX"
+
+#: src/ext_l10n.h:1162
+msgid "LaTeX styles"
+msgstr "Styles LaTeX"
+
+#: src/ext_l10n.h:1163
+msgid "BibTeX styles"
+msgstr "Styles BibTeX"
+
+#: src/ext_l10n.h:1164
+msgid "Selected classes or styles"
+msgstr "Classes ou styles sélectionnés"
+
+#: src/ext_l10n.h:1165
+msgid "Show &path"
+msgstr "Afficher le chemin"
+
+#: src/ext_l10n.h:1166
+msgid "Toggles view of the file list"
+msgstr ""
+
+#: src/ext_l10n.h:1168
+msgid "Installed files"
+msgstr "Fichiers installés"
+
+#: src/ext_l10n.h:1169
+msgid "&Rescan"
+msgstr "&Rafraîchir"
+
+#: src/ext_l10n.h:1170
+msgid "Built new file list"
+msgstr "A reconstruit la liste des fichiers"
+
+#: src/ext_l10n.h:1171
+msgid "&View"
+msgstr "Visualiser"
+
+#: src/ext_l10n.h:1172
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
+msgstr ""
+"Affiche le contenu du fichier sélectionné. Seulement possible quand le "
+"chemin est affiché."
+
+#: src/ext_l10n.h:1174
+msgid "Close this dialog"
+msgstr "Fermer cette fenêtre"
+
+#: src/ext_l10n.h:1178
+msgid "Entry"
+msgstr "Entrée"
+
+#: src/ext_l10n.h:1179
+msgid "Thesaurus entries"
+msgstr "Entrées du Dictionnaire"
+
+#: src/ext_l10n.h:1180
+msgid "Select a related word"
+msgstr "Sélectionne un synonyme"
+
+#: src/ext_l10n.h:1181
+msgid "&Selection"
+msgstr "&Sélection"
+
+#: src/ext_l10n.h:1182
+msgid "The selected entry"
+msgstr "L'entrée sélectionnée"
+
+#: src/ext_l10n.h:1184
+msgid "Replace the entry with the selection"
+msgstr "Remplace l'entrée par la sélection"
+
+#: src/ext_l10n.h:1186
+msgid "Table Of Contents"
+msgstr "Table des Matières"
+
+#: src/ext_l10n.h:1188
+msgid "Contents list"
+msgstr ""
+
+#: src/ext_l10n.h:1191
+msgid "Insert URL"
+msgstr "Insérer une URL"
+
+#: src/ext_l10n.h:1192
+msgid "&URL"
+msgstr "&URL"
+
+#: src/ext_l10n.h:1194
+msgid "&Name"
+msgstr "&Nom"
+
+#: src/ext_l10n.h:1195
+msgid "Name associated with the URL"
+msgstr "Nom associé à l'URL"
+
+#: src/ext_l10n.h:1197
+msgid "&Generate hyperlink"
+msgstr "&Créer un lien hypertexte"
+
+#: src/ext_l10n.h:1198
+msgid "Output as a hyperlink ?"
+msgstr "Imprimer comme lien hypertexte ?"
+
+#: src/ext_l10n.h:1201
+msgid "Version control log"
+msgstr "Historique de Contrôle de Version"
 
 #~ msgid "' indexed."
 #~ msgstr " » indexé."

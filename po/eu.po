@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.6fix1\n"
-"POT-Creation-Date: 2002-05-16 00:06+0200\n"
+"POT-Creation-Date: 2002-05-16 01:51+0200\n"
 "PO-Revision-Date: 2001-04-17 12:19+02:00\n"
 "Last-Translator: Iñaki Larrañaga<>\n"
 "Language-Team: Euskara <linux-eu@chanae.alphanet.ch>\n"
@@ -340,8 +340,8 @@ msgstr ", Sakonera: "
 msgid ", Spacing: "
 msgstr ", Hutsunea egiten:"
 
-#: src/bufferview_funcs.C:182 src/ext_l10n.h:654
-#: src/frontends/qt2/QDocument.C:111
+#: src/bufferview_funcs.C:182 src/frontends/qt2/QDocument.C:111
+#: src/ext_l10n.h:654
 msgid "Single"
 msgstr "Bakarra"
 
@@ -349,15 +349,15 @@ msgstr "Bakarra"
 msgid "Onehalf"
 msgstr "Bat'erdi"
 
-#: src/bufferview_funcs.C:189 src/ext_l10n.h:656
-#: src/frontends/qt2/QDocument.C:113 src/frontends/xforms/form_tabular.C:492
+#: src/bufferview_funcs.C:189 src/frontends/qt2/QDocument.C:113
+#: src/frontends/xforms/form_tabular.C:492
 #: src/frontends/xforms/form_tabular.C:494
 #: src/frontends/xforms/form_tabular.C:508
 #: src/frontends/xforms/form_tabular.C:510
 #: src/frontends/xforms/form_tabular.C:512
 #: src/frontends/xforms/form_tabular.C:514
 #: src/frontends/xforms/form_tabular.C:516
-#: src/frontends/xforms/form_tabular.C:518
+#: src/frontends/xforms/form_tabular.C:518 src/ext_l10n.h:656
 msgid "Double"
 msgstr "Bikoitza"
 
@@ -382,12 +382,12 @@ msgstr ""
 msgid "Moved to bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1611
+#: src/BufferView_pimpl.C:1612
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Sartu beharreko Idazkia Hautatu"
 
-#: src/BufferView_pimpl.C:1613 src/frontends/controllers/ControlBibtex.C:68
+#: src/BufferView_pimpl.C:1614 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
 #: src/frontends/controllers/ControlGraphics.C:154
 #: src/frontends/controllers/ControlInclude.C:71 src/lyx_cb.C:113
@@ -396,94 +396,93 @@ msgstr "Sartu beharreko Idazkia Hautatu"
 msgid "Documents|#o#O"
 msgstr "Idazkiak|d"
 
-#: src/BufferView_pimpl.C:1615 src/lyxfunc.C:1865 src/lyxfunc.C:1942
+#: src/BufferView_pimpl.C:1616 src/lyxfunc.C:1865 src/lyxfunc.C:1942
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Adibideak"
 
-#: src/BufferView_pimpl.C:1620 src/frontends/controllers/ControlInclude.C:67
+#: src/BufferView_pimpl.C:1621 src/frontends/controllers/ControlInclude.C:67
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1629 src/lyxfunc.C:1749 src/lyxfunc.C:1776
+#: src/BufferView_pimpl.C:1630 src/lyxfunc.C:1749 src/lyxfunc.C:1776
 #: src/lyxfunc.C:1879 src/lyxfunc.C:1959 src/lyxfunc.C:1987
 msgid "Canceled."
 msgstr "Ezeztatua."
 
-#: src/BufferView_pimpl.C:1641
+#: src/BufferView_pimpl.C:1642
 msgid "Inserting document"
 msgstr "Idazkia sartzen"
 
-#: src/BufferView_pimpl.C:1647 src/ext_l10n.h:637
-#: src/frontends/xforms/FormDocument.C:327 src/lyxfunc.C:1797
-#: src/lyxfunc.C:1907
+#: src/BufferView_pimpl.C:1648 src/frontends/xforms/FormDocument.C:327
+#: src/lyxfunc.C:1797 src/lyxfunc.C:1907 src/ext_l10n.h:637
 msgid "Document"
 msgstr "Idazkia"
 
-#: src/BufferView_pimpl.C:1648
+#: src/BufferView_pimpl.C:1649
 msgid "inserted."
 msgstr "sartuta."
 
-#: src/BufferView_pimpl.C:1652
+#: src/BufferView_pimpl.C:1653
 msgid "Could not insert document"
 msgstr "Idazkia ezin da sartu"
 
-#: src/BufferView_pimpl.C:1818
+#: src/BufferView_pimpl.C:1819
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
 
-#: src/BufferView_pimpl.C:1836 src/insets/insettext.C:1458
+#: src/BufferView_pimpl.C:1837 src/insets/insettext.C:1463
 msgid "Layout "
 msgstr "Itxura "
 
-#: src/BufferView_pimpl.C:1837 src/insets/insettext.C:1458
+#: src/BufferView_pimpl.C:1838 src/insets/insettext.C:1463
 msgid " not known"
 msgstr " ezezaguna"
 
-#: src/BufferView_pimpl.C:2033 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:2034 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77 src/lyxfunc.C:1889
 msgid "Error"
 msgstr "Akatsa"
 
-#: src/BufferView_pimpl.C:2034
+#: src/BufferView_pimpl.C:2035
 msgid "Couldn't find this label"
 msgstr "Txartel hau ezin izan da aurkitu"
 
-#: src/BufferView_pimpl.C:2035
+#: src/BufferView_pimpl.C:2036
 msgid "in current document."
 msgstr "oraingo idazkian."
 
-#: src/BufferView_pimpl.C:2532
+#: src/BufferView_pimpl.C:2533
 msgid "Mark removed"
 msgstr "Kakotx ezabatua"
 
-#: src/BufferView_pimpl.C:2539
+#: src/BufferView_pimpl.C:2540
 msgid "Mark set"
 msgstr "Kakotx ezarria"
 
-#: src/BufferView_pimpl.C:2670
+#: src/BufferView_pimpl.C:2671
 msgid "Mark off"
 msgstr "Kakotx itzalia"
 
-#: src/BufferView_pimpl.C:2683
+#: src/BufferView_pimpl.C:2684
 msgid "Mark on"
 msgstr "Kakotx piztua"
 
-#: src/BufferView_pimpl.C:2857 src/insets/insettext.C:1511
+#: src/BufferView_pimpl.C:2858 src/insets/insettext.C:1516
 msgid "Unknown spacing argument: "
 msgstr "Argumentu hedaketa ezezaguna: "
 
-#: src/BufferView_pimpl.C:3212
+#: src/BufferView_pimpl.C:3213
 msgid "Word `"
 msgstr ""
 
-#: src/BufferView_pimpl.C:3370
+#: src/BufferView_pimpl.C:3371
 #, fuzzy
 msgid "Unknown function!"
 msgstr "Ekitaldi ezezaguna"
 
-#: src/BufferView_pimpl.C:3633 src/BufferView_pimpl.C:3636
+#: src/BufferView_pimpl.C:3634 src/BufferView_pimpl.C:3637
 #, fuzzy
 msgid "No more insets"
 msgstr "Ohar gehiagorik ez"
@@ -777,4437 +776,6 @@ msgstr "Idazkia kanporatua "
 msgid " to file `"
 msgstr "fitxategira `"
 
-#: src/ext_l10n.h:1 src/ext_l10n.h:4 src/MenuBackend.C:541
-#: src/MenuBackend.C:548
-msgid "File|F"
-msgstr "Fitxategia|F"
-
-#: src/ext_l10n.h:2 src/ext_l10n.h:5 src/MenuBackend.C:542
-msgid "Edit|E"
-msgstr "Argitatu|A"
-
-#: src/ext_l10n.h:3 src/ext_l10n.h:11
-msgid "Help|H"
-msgstr "Laguntza|L"
-
-#: src/ext_l10n.h:6
-msgid "Insert|I"
-msgstr "Sartu|S"
-
-#: src/ext_l10n.h:7
-msgid "Layout|L"
-msgstr "Aurkezpena|u"
-
-#: src/ext_l10n.h:8
-msgid "View|V"
-msgstr "Ikusi|I"
-
-#: src/ext_l10n.h:9
-msgid "Navigate|N"
-msgstr "Arakatu|k"
-
-#: src/ext_l10n.h:10 src/MenuBackend.C:544
-msgid "Documents|D"
-msgstr "Idazkiak|d"
-
-#: src/ext_l10n.h:12 src/ext_l10n.h:17 src/MenuBackend.C:511
-msgid "New...|N"
-msgstr "Berria...|B"
-
-#: src/ext_l10n.h:13 src/ext_l10n.h:18
-msgid "New from Template...|T"
-msgstr "Eredutik Berri bat...|E"
-
-#: src/ext_l10n.h:14 src/ext_l10n.h:19 src/MenuBackend.C:512
-msgid "Open...|O"
-msgstr "Ireki...|I"
-
-#: src/ext_l10n.h:15 src/ext_l10n.h:25 src/MenuBackend.C:513
-msgid "Import|I"
-msgstr "Barneratu|a"
-
-#: src/ext_l10n.h:16 src/ext_l10n.h:29
-msgid "Exit|x"
-msgstr "Irten|n"
-
-#: src/ext_l10n.h:20
-msgid "Close|C"
-msgstr "Itxi|x"
-
-#: src/ext_l10n.h:21
-msgid "Save|S"
-msgstr "Gorde|G"
-
-#: src/ext_l10n.h:22
-msgid "Save As...|A"
-msgstr "Gorde Honela...|H"
-
-#: src/ext_l10n.h:23
-#, fuzzy
-msgid "Revert to Saved|R"
-msgstr "Gordetakora Itzuli|d"
-
-#: src/ext_l10n.h:24
-msgid "Version Control|V"
-msgstr "Bertsio Kontrola|r"
-
-#: src/ext_l10n.h:26
-msgid "Export|E"
-msgstr "Kanporatu|K"
-
-#: src/ext_l10n.h:27
-msgid "Print...|P"
-msgstr "Inprimatu...|p"
-
-#: src/ext_l10n.h:28
-msgid "Fax...|F"
-msgstr "Fax...|F"
-
-#: src/ext_l10n.h:30
-msgid "Register|R"
-msgstr "Harpidetu|I"
-
-#: src/ext_l10n.h:31
-msgid "Check In Changes|I"
-msgstr "Aldaketak Egiztatu|l"
-
-#: src/ext_l10n.h:32
-msgid "Check Out for Edit|O"
-msgstr "Argitatzeko Egiztatu|g"
-
-#: src/ext_l10n.h:33
-msgid "Revert to Last Version|L"
-msgstr "Azken Bertsiora Itzuli|z"
-
-#: src/ext_l10n.h:34
-msgid "Undo Last Check In|U"
-msgstr "Azken Egiztaketa Desegin|D"
-
-#: src/ext_l10n.h:35
-msgid "Show History|H"
-msgstr "Historiala Erakutsi|H"
-
-#: src/ext_l10n.h:36
-#, fuzzy
-msgid "Custom...|C"
-msgstr "Bezeroa"
-
-#: src/ext_l10n.h:37 src/ext_l10n.h:54
-msgid "Preferences...|P"
-msgstr "Lehentasunak...|L"
-
-#: src/ext_l10n.h:38 src/ext_l10n.h:55
-msgid "Reconfigure|R"
-msgstr "Berregokitu|g"
-
-#: src/ext_l10n.h:39
-msgid "Undo|U"
-msgstr "Desegin|D"
-
-#: src/ext_l10n.h:40
-msgid "Redo|d"
-msgstr "Berregin|B"
-
-#: src/ext_l10n.h:41
-msgid "Cut|C"
-msgstr "Ebaki|E"
-
-#: src/ext_l10n.h:42
-msgid "Copy|o"
-msgstr "Kopiatu|K"
-
-#: src/ext_l10n.h:43
-msgid "Paste|a"
-msgstr "Itsatsi|I"
-
-#: src/ext_l10n.h:44
-msgid "Paste External Selection|x"
-msgstr "Kanpo Hautaketa Itsatsi|H"
-
-#: src/ext_l10n.h:45
-msgid "Find & Replace...|F"
-msgstr "Bilatu eta Ordezkatu|O"
-
-#: src/ext_l10n.h:46
-msgid "Tabular|T"
-msgstr "Tabulaketa|T"
-
-#: src/ext_l10n.h:47
-#, fuzzy
-msgid "Math|M"
-msgstr "Matematika|#M"
-
-#: src/ext_l10n.h:48
-#, fuzzy
-msgid "Read Only"
-msgstr " (irakur era)"
-
-#: src/ext_l10n.h:49
-msgid "Spellchecker...|S"
-msgstr "Zuzentzailea...|Z"
-
-#: src/ext_l10n.h:50
-#, fuzzy
-msgid "Thesaurus..."
-msgstr "Hiztegi Ideologikoa"
-
-#: src/ext_l10n.h:51
-msgid "Check TeX|h"
-msgstr "TeX Egiaztatu|X"
-
-#: src/ext_l10n.h:52
-msgid "Remove All Error Boxes|E"
-msgstr "Ezabatu Akats-Mezu guztiak|z"
-
-#: src/ext_l10n.h:53
-#, fuzzy
-msgid "Open/Close float|l"
-msgstr "Mugikorra itxita"
-
-#: src/ext_l10n.h:56
-msgid "as Lines|L"
-msgstr "Lerroak bezala|L"
-
-#: src/ext_l10n.h:57
-msgid "as Paragraphs|P"
-msgstr "Parrafo bezala|P"
-
-#: src/ext_l10n.h:58
-msgid "Multicolumn|M"
-msgstr "Zutabe anitza|M"
-
-#: src/ext_l10n.h:59
-msgid "Line Top|T"
-msgstr "Goikaldeko Lerroa|G"
-
-#: src/ext_l10n.h:60
-msgid "Line Bottom|B"
-msgstr "Azpikaldeko Lerroa|A"
-
-#: src/ext_l10n.h:61
-msgid "Line Left|L"
-msgstr "Ezker Lerroa|z"
-
-#: src/ext_l10n.h:62
-msgid "Line Right|R"
-msgstr "Eskuin Lerroa|s"
-
-#: src/ext_l10n.h:63
-msgid "Align Left|e"
-msgstr "Ezker Lerrokaketa|e"
-
-#: src/ext_l10n.h:64 src/ext_l10n.h:88
-msgid "Align Center|C"
-msgstr "Erdi Lerrokaketa|d"
-
-#: src/ext_l10n.h:65
-msgid "Align Right|i"
-msgstr "Eskuin Lerrokaketa|i"
-
-#: src/ext_l10n.h:66
-msgid "V.Align Top|o"
-msgstr "Goitibeherako Goi Lerroketa|o"
-
-#: src/ext_l10n.h:67
-msgid "V.Align Center|n"
-msgstr "GoitiBeherako Erdigune Lerroketa|n"
-
-#: src/ext_l10n.h:68
-msgid "V.Align Bottom|V"
-msgstr "GoitiBeherako Azpi Lerroketa|z"
-
-#: src/ext_l10n.h:69
-#, fuzzy
-msgid "Add Row|A"
-msgstr "Lerroa gehitu|e"
-
-#: src/ext_l10n.h:70
-msgid "Delete Row|w"
-msgstr "Lerroa ezabatu|z"
-
-#: src/ext_l10n.h:71
-#, fuzzy
-msgid "Add Column|u"
-msgstr "Zutabea gehitu|u"
-
-#: src/ext_l10n.h:72
-msgid "Delete Column|D"
-msgstr "Zutabea ezabatu|a"
-
-#: src/ext_l10n.h:73
-msgid "Make eqnarray|e"
-msgstr ""
-
-#: src/ext_l10n.h:74
-msgid "Make multline|m"
-msgstr ""
-
-#: src/ext_l10n.h:75
-msgid "Make align 1 column|1"
-msgstr ""
-
-#: src/ext_l10n.h:76
-msgid "Make align 2 columns|2"
-msgstr ""
-
-#: src/ext_l10n.h:77
-msgid "Make align 3 columns|3"
-msgstr ""
-
-#: src/ext_l10n.h:78
-msgid "Make alignat 2 columns|2"
-msgstr ""
-
-#: src/ext_l10n.h:79
-msgid "Make alignat 3 columns|3"
-msgstr ""
-
-#: src/ext_l10n.h:80
-#, fuzzy
-msgid "Toggle numbering|n"
-msgstr "Azpimarratua txandatu"
-
-#: src/ext_l10n.h:81
-#, fuzzy
-msgid "Toggle numbering of line|u"
-msgstr "Azpimarratua txandatu"
-
-#: src/ext_l10n.h:82
-#, fuzzy
-msgid "Toggle limits|l"
-msgstr "Beltza txandatu"
-
-#: src/ext_l10n.h:83
-#, fuzzy
-msgid "Inline formula|I"
-msgstr "Irudi Lerrokatua|#I"
-
-#: src/ext_l10n.h:84
-#, fuzzy
-msgid "Displayed formula|D"
-msgstr "Azalpeneko Formula|u"
-
-#: src/ext_l10n.h:85
-#, fuzzy
-msgid "Eqnarray environment|q"
-msgstr "Parrafo gune-mota ezarria"
-
-#: src/ext_l10n.h:86
-#, fuzzy
-msgid "Align environment|A"
-msgstr "Lerrokaketa|#L"
-
-#: src/ext_l10n.h:87
-#, fuzzy
-msgid "Align Left|f"
-msgstr "Ezker Lerrokaketa|e"
-
-#: src/ext_l10n.h:89
-#, fuzzy
-msgid "Align Right|R"
-msgstr "Eskuin Lerrokaketa|i"
-
-#: src/ext_l10n.h:90
-#, fuzzy
-msgid "V.Align Top|T"
-msgstr "Goitibeherako Goi Lerroketa|o"
-
-#: src/ext_l10n.h:91
-#, fuzzy
-msgid "V.Align Center|e"
-msgstr "GoitiBeherako Erdigune Lerroketa|n"
-
-#: src/ext_l10n.h:92
-#, fuzzy
-msgid "V.Align Bottom|B"
-msgstr "GoitiBeherako Azpi Lerroketa|z"
-
-#: src/ext_l10n.h:93
-#, fuzzy
-msgid "Add Row"
-msgstr "Lerroa gehitu|e"
-
-#: src/ext_l10n.h:94
-#, fuzzy
-msgid "Delete Row"
-msgstr "Lerroa ezabatu|z"
-
-#: src/ext_l10n.h:95
-#, fuzzy
-msgid "Add Column"
-msgstr "Zutabea gehitu|u"
-
-#: src/ext_l10n.h:96
-#, fuzzy
-msgid "Delete Column"
-msgstr "Zutabea ezabatu|a"
-
-#: src/ext_l10n.h:97
-#, fuzzy
-msgid "Math|h"
-msgstr "Matematika|#M"
-
-#: src/ext_l10n.h:98
-msgid "Special Character|S"
-msgstr "Hizki Berezia|H"
-
-#: src/ext_l10n.h:99
-msgid "Citation Reference...|C"
-msgstr "Aipamen Erreferentzia...|A"
-
-#: src/ext_l10n.h:100
-msgid "Cross Reference...|R"
-msgstr "Gurutzatutako Erreferentzia...|G"
-
-#: src/ext_l10n.h:101
-msgid "Label...|L"
-msgstr "Txartela...|x"
-
-#: src/ext_l10n.h:102
-msgid "Footnote|F"
-msgstr "Oineko Oharra|n"
-
-#: src/ext_l10n.h:103
-msgid "Marginal Note|M"
-msgstr "Alboko Oharra|l"
-
-#: src/ext_l10n.h:104
-msgid "Index Entry...|I"
-msgstr "Sarrera Erroldatu...|E"
-
-#: src/ext_l10n.h:105
-#, fuzzy
-msgid "Index Entry of Preceding Word|W"
-msgstr "Aurreko Hitzaren Sarrera Erroldatu|d"
-
-#: src/ext_l10n.h:106
-msgid "URL...|U"
-msgstr "URL...|U"
-
-#: src/ext_l10n.h:107 src/ext_l10n.h:162
-msgid "Note|N"
-msgstr "Oharra|O"
-
-#: src/ext_l10n.h:108
-msgid "Lists & TOC|O"
-msgstr "Aurkibide eta Zerrendak|Z"
-
-#: src/ext_l10n.h:109
-#, fuzzy
-msgid "TeX|T"
-msgstr "LaTeX|#T"
-
-#: src/ext_l10n.h:110
-#, fuzzy
-msgid "Minipage|p"
-msgstr "Orri-ttipia"
-
-#: src/ext_l10n.h:111
-#, fuzzy
-msgid "Graphics...|G"
-msgstr "Grafikoak"
-
-#: src/ext_l10n.h:112
-#, fuzzy
-msgid "Tabular Material...|b"
-msgstr "Tabulaketa...|T"
-
-#: src/ext_l10n.h:113
-msgid "Floats|a"
-msgstr "Mugikorrak|M"
-
-#: src/ext_l10n.h:114
-#, fuzzy
-msgid "Include File...|d"
-msgstr "Fitxategia Barneratu|B"
-
-#: src/ext_l10n.h:115
-#, fuzzy
-msgid "Insert File|e"
-msgstr "Fitxategia Sartu|S"
-
-#: src/ext_l10n.h:116
-msgid "External Material...|x"
-msgstr "Kanpo Materiala...|K"
-
-#: src/ext_l10n.h:117
-msgid "Superscript|S"
-msgstr "Goi-indizea|o"
-
-#: src/ext_l10n.h:118
-msgid "Subscript|u"
-msgstr "Azpi-indizea|z"
-
-#: src/ext_l10n.h:119
-msgid "HFill|H"
-msgstr "Lerro Betetzailea|L"
-
-#: src/ext_l10n.h:120
-msgid "Hyphenation Point|P"
-msgstr "Hipenazio Lekua|H"
-
-#: src/ext_l10n.h:121
-#, fuzzy
-msgid "Ligature break|k"
-msgstr "Lerro Jauzia|J"
-
-#: src/ext_l10n.h:122
-msgid "Protected Blank|B"
-msgstr "Babesdun Hutsunea|B"
-
-#: src/ext_l10n.h:123
-msgid "Linebreak|L"
-msgstr "Lerro Jauzia|J"
-
-#: src/ext_l10n.h:124
-msgid "Ellipsis|i"
-msgstr "Elipsiak (...)|E"
-
-#: src/ext_l10n.h:125
-msgid "End of Sentence|E"
-msgstr "Esaldi Amaiera|A"
-
-#: src/ext_l10n.h:126
-msgid "Ordinary Quote|Q"
-msgstr "Komilla Normala|K"
-
-#: src/ext_l10n.h:127
-msgid "Menu Separator|M"
-msgstr "Menu Banatzailea|M"
-
-#: src/ext_l10n.h:128
-#, fuzzy
-msgid "Inline Formula|I"
-msgstr "Irudi Lerrokatua|#I"
-
-#: src/ext_l10n.h:129
-msgid "Display Formula|D"
-msgstr "Azalpeneko Formula|u"
-
-#: src/ext_l10n.h:130
-#, fuzzy
-msgid "Eqnarray environment|E"
-msgstr "Parrafo gune-mota ezarria"
-
-#: src/ext_l10n.h:131
-#, fuzzy
-msgid "AMS align environment|A"
-msgstr "Lerrokaketa|#L"
-
-#: src/ext_l10n.h:132
-#, fuzzy
-msgid "AMS alignat environment|t"
-msgstr "Lerrokaketa|#L"
-
-#: src/ext_l10n.h:133
-#, fuzzy
-msgid "AMS xalignat environment|x"
-msgstr "Lerrokaketa|#L"
-
-#: src/ext_l10n.h:134
-#, fuzzy
-msgid "AMS xxalignat environment"
-msgstr "Lerrokaketa|#L"
-
-#: src/ext_l10n.h:135
-#, fuzzy
-msgid "Array environment|y"
-msgstr "Parrafo gune-mota ezarria"
-
-#: src/ext_l10n.h:136
-#, fuzzy
-msgid "Cases environment|C"
-msgstr "Guneko sakonera aldatu"
-
-#: src/ext_l10n.h:137
-#, fuzzy
-msgid "Math Panel...|l"
-msgstr "Matematika Arbela|A"
-
-#: src/ext_l10n.h:138
-msgid "Table of Contents|C"
-msgstr "Aurkibide Orokorra|O"
-
-#: src/ext_l10n.h:139
-msgid "Index List|I"
-msgstr "Errolden Zerrenda|E"
-
-#: src/ext_l10n.h:140
-msgid "BibTeX Reference...|B"
-msgstr "BibTeX-eko Erreferentzia...|B"
-
-#: src/ext_l10n.h:141
-msgid "LyX Document...|X"
-msgstr "LyX Idazkia...|X"
-
-#: src/ext_l10n.h:142
-msgid "Ascii as Lines...|L"
-msgstr "Ascii Lerro bezala...|L"
-
-#: src/ext_l10n.h:143
-msgid "Ascii as Paragraphs...|P"
-msgstr "Ascii Parrafo bezala...|P"
-
-#: src/ext_l10n.h:144
-msgid "Character...|C"
-msgstr "Hizki-jokoa...|H"
-
-#: src/ext_l10n.h:145
-msgid "Paragraph...|P"
-msgstr "Parrafoa...|P"
-
-#: src/ext_l10n.h:146
-msgid "Document...|D"
-msgstr "Idazkia...|d"
-
-#: src/ext_l10n.h:147
-msgid "Tabular...|T"
-msgstr "Tabulaketa...|T"
-
-#: src/ext_l10n.h:148
-msgid "Emphasize Style|E"
-msgstr "Enfasiaren Itxura|E "
-
-#: src/ext_l10n.h:149
-msgid "Noun Style|N"
-msgstr "Izen Itxura|I"
-
-#: src/ext_l10n.h:150
-msgid "Bold Style|B"
-msgstr "Beltz Itxura|B"
-
-#: src/ext_l10n.h:151
-msgid "TeX Style|X"
-msgstr "TeX Itxura|X"
-
-#: src/ext_l10n.h:152
-msgid "Change Environment Depth|v"
-msgstr "Gune Sakonera Aldatu|S"
-
-#: src/ext_l10n.h:153
-#, fuzzy
-msgid "Preamble...|r"
-msgstr "LaTeX Aurre-Esana...|L"
-
-#: src/ext_l10n.h:154
-msgid "Start Appendix here|A"
-msgstr ""
-
-#: src/ext_l10n.h:155
-msgid "Build Program|B"
-msgstr "Programa Eraiki|E"
-
-#: src/ext_l10n.h:156
-msgid "Update|U"
-msgstr "Eguneratu|E"
-
-#: src/ext_l10n.h:157
-msgid "LaTeX Logfile|L"
-msgstr "LaTeX-en Erregistro Artxiboa|L"
-
-#: src/ext_l10n.h:158
-msgid "Table of Contents|T"
-msgstr "Aurkibide Orokorra|A"
-
-#: src/ext_l10n.h:159
-msgid "Child processes|C"
-msgstr ""
-
-#: src/ext_l10n.h:160
-#, fuzzy
-msgid "TeX Information|X"
-msgstr "LaTeX-en  Egokitzaketa|L"
-
-#: src/ext_l10n.h:161
-msgid "Error|E"
-msgstr "Akatsa|A"
-
-#: src/ext_l10n.h:163
-#, fuzzy
-msgid "Refs|R"
-msgstr "Erref"
-
-#: src/ext_l10n.h:164
-#, fuzzy
-msgid "Bookmarks|B"
-msgstr "Azpikalde|#A"
-
-#: src/ext_l10n.h:165
-msgid "Save Bookmark 1|S"
-msgstr ""
-
-#: src/ext_l10n.h:166
-msgid "Save Bookmark 2"
-msgstr ""
-
-#: src/ext_l10n.h:167
-msgid "Save Bookmark 3"
-msgstr ""
-
-#: src/ext_l10n.h:168
-msgid "Goto Bookmark 1|1"
-msgstr ""
-
-#: src/ext_l10n.h:169
-msgid "Goto Bookmark 2|2"
-msgstr ""
-
-#: src/ext_l10n.h:170
-msgid "Goto Bookmark 3|3"
-msgstr ""
-
-#: src/ext_l10n.h:171
-msgid "Tooltips|o"
-msgstr ""
-
-#: src/ext_l10n.h:172
-msgid "Introduction|I"
-msgstr "Sarrera|S"
-
-#: src/ext_l10n.h:173
-msgid "Tutorial|T"
-msgstr "Tutoretza|T"
-
-#: src/ext_l10n.h:174
-msgid "User's Guide|U"
-msgstr "Erabiltzailearen Gida|G"
-
-#: src/ext_l10n.h:175
-msgid "Extended Features|E"
-msgstr "Ezaugarri Zabalduak|Z"
-
-#: src/ext_l10n.h:176
-msgid "Customization|C"
-msgstr "Egokitzaketa|E"
-
-#: src/ext_l10n.h:177
-msgid "Reference Manual|R"
-msgstr "Erreferentzi Eskuliburua|r"
-
-#: src/ext_l10n.h:178
-msgid "FAQ|F"
-msgstr "Sarritan Egindako Galderak|d"
-
-#: src/ext_l10n.h:179
-msgid "Table of Contents|a"
-msgstr "Aurkibide Orokorra|O"
-
-#: src/ext_l10n.h:180
-msgid "LaTeX Configuration|L"
-msgstr "LaTeX-en  Egokitzaketa|L"
-
-#: src/ext_l10n.h:181
-msgid "About LyX|X"
-msgstr ""
-
-#: src/ext_l10n.h:183
-msgid "Accepted"
-msgstr "Onartua"
-
-#: src/ext_l10n.h:184
-msgid "Acknowledgement"
-msgstr "Eskerbidea"
-
-#: src/ext_l10n.h:185
-msgid "Acknowledgement*"
-msgstr "Eskerbidea*"
-
-#: src/ext_l10n.h:186
-msgid "Acknowledgements"
-msgstr "Eskerbideak"
-
-#: src/ext_l10n.h:187
-msgid "Acknowledgments"
-msgstr "Eskerbideak"
-
-#: src/ext_l10n.h:188
-msgid "ACT"
-msgstr ""
-
-#: src/ext_l10n.h:189
-msgid "Addchap"
-msgstr "Alea Gehitu"
-
-#: src/ext_l10n.h:190
-msgid "Addchap*"
-msgstr "Alea* Gehitu"
-
-#: src/ext_l10n.h:191
-msgid "Addition"
-msgstr "Gehitu"
-
-#: src/ext_l10n.h:192
-msgid "Address"
-msgstr "Helbidea"
-
-#: src/ext_l10n.h:193
-msgid "AddressForOffprints"
-msgstr ""
-
-#: src/ext_l10n.h:194
-msgid "Addsec"
-msgstr "Atala Gehitu"
-
-#: src/ext_l10n.h:195
-msgid "Addsec*"
-msgstr "Atala* Gehitu"
-
-#: src/ext_l10n.h:196
-msgid "Adresse"
-msgstr "Helbidea"
-
-#: src/ext_l10n.h:197
-msgid "Affil"
-msgstr "Harpidetu"
-
-#: src/ext_l10n.h:198
-msgid "Affiliation"
-msgstr "Harpidetza"
-
-#: src/ext_l10n.h:199 src/FloatList.C:47
-msgid "Algorithm"
-msgstr "Algoritmoa"
-
-#: src/ext_l10n.h:200
-msgid "AMS"
-msgstr "AMS"
-
-#: src/ext_l10n.h:201
-msgid "And"
-msgstr "Eta"
-
-#: src/ext_l10n.h:202
-msgid "Anlagen"
-msgstr ""
-
-#: src/ext_l10n.h:203
-msgid "Anrede"
-msgstr ""
-
-#: src/ext_l10n.h:204
-msgid "Appendices"
-msgstr "Eranskinak"
-
-#: src/ext_l10n.h:205
-msgid "Appendix"
-msgstr "Eranskina"
-
-#: src/ext_l10n.h:206
-#, fuzzy
-msgid "Arrow"
-msgstr "akatsa"
-
-#: src/ext_l10n.h:207
-msgid "AT_RISE:"
-msgstr "GOIAN:"
-
-#: src/ext_l10n.h:208
-msgid "Author"
-msgstr "Egilea"
-
-#: src/ext_l10n.h:209
-msgid "Author_Email"
-msgstr "Egileraren e-Gutuna"
-
-#: src/ext_l10n.h:210
-#, fuzzy
-msgid "Authorgroup"
-msgstr "Egilea"
-
-#: src/ext_l10n.h:211
-#, fuzzy
-msgid "Authorinfo"
-msgstr "Egilea"
-
-#: src/ext_l10n.h:212
-msgid "Author_Running"
-msgstr "Egilea_Lantzen"
-
-#: src/ext_l10n.h:213
-msgid "Author_URL"
-msgstr "Egilearen URL"
-
-#: src/ext_l10n.h:214
-msgid "Axiom"
-msgstr "Axioma"
-
-#: src/ext_l10n.h:215
-msgid "Backaddress"
-msgstr "Itzulketa helbidea"
-
-#: src/ext_l10n.h:216
-msgid "Bank"
-msgstr "Bankua"
-
-#: src/ext_l10n.h:217
-msgid "BankAccount"
-msgstr "Banko Kontua"
-
-#: src/ext_l10n.h:218
-msgid "BankCode"
-msgstr "Banko Kodea"
-
-#: src/ext_l10n.h:219
-msgid "Betreff"
-msgstr ""
-
-#: src/ext_l10n.h:220
-msgid "Bibliography"
-msgstr "Bibliografia"
-
-#: src/ext_l10n.h:221
-msgid "Biography"
-msgstr "Bibliografia"
-
-#: src/ext_l10n.h:222
-msgid "BLZ"
-msgstr ""
-
-#: src/ext_l10n.h:223
-#, fuzzy
-msgid "BoardCentered"
-msgstr "Erdigunea"
-
-#: src/ext_l10n.h:224
-msgid "Brieftext"
-msgstr "Testu Laburra"
-
-#: src/ext_l10n.h:225
-msgid "Caption"
-msgstr "Azalpena"
-
-#: src/ext_l10n.h:226
-msgid "Case"
-msgstr "Kutxa"
-
-#: src/ext_l10n.h:227 src/frontends/qt2/lengthcombo.C:29
-msgid "cc"
-msgstr "kopia nori"
-
-#: src/ext_l10n.h:228
-msgid "CC"
-msgstr "Kopia Nori"
-
-#: src/ext_l10n.h:229
-msgid "CenteredCaption"
-msgstr "AzalpenErdiratua"
-
-#: src/ext_l10n.h:230
-msgid "Chapter"
-msgstr "Alea"
-
-#: src/ext_l10n.h:231
-msgid "Chapter*"
-msgstr "Alea*"
-
-#: src/ext_l10n.h:232
-msgid "Chapter_Exercises"
-msgstr "Ale Ariketa"
-
-#: src/ext_l10n.h:233
-msgid "ChessBoard"
-msgstr ""
-
-#: src/ext_l10n.h:234
-msgid "Citta"
-msgstr "Aipamena"
-
-#: src/ext_l10n.h:235
-msgid "Claim"
-msgstr "Aldarrikapena"
-
-#: src/ext_l10n.h:236
-msgid "Claim*"
-msgstr "Aldarrikapena*"
-
-#: src/ext_l10n.h:237
-msgid "Closing"
-msgstr "Itxitzen"
-
-#: src/ext_l10n.h:238
-msgid "Code"
-msgstr "Kodea"
-
-#: src/ext_l10n.h:239
-msgid "Comment"
-msgstr "Aipamena"
-
-#: src/ext_l10n.h:240
-msgid "Conclusion"
-msgstr "Hitzaldi Buru"
-
-#: src/ext_l10n.h:241
-msgid "Conclusion*"
-msgstr "Hitzaldi Buru*"
-
-#: src/ext_l10n.h:242
-msgid "Condition"
-msgstr "Baldintza"
-
-#: src/ext_l10n.h:243
-msgid "Conjecture"
-msgstr "Agerpidea"
-
-#: src/ext_l10n.h:244
-msgid "Conjecture*"
-msgstr "Agerpidea*"
-
-#: src/ext_l10n.h:245
-msgid "CopNum"
-msgstr "Kopia Kopurua"
-
-#: src/ext_l10n.h:246 src/ext_l10n.h:534
-msgid "Copyright"
-msgstr "Copyright"
-
-#: src/ext_l10n.h:247
-msgid "Corollary"
-msgstr "Ondorioa"
-
-#: src/ext_l10n.h:248
-msgid "Corollary*"
-msgstr "Ondorioa*"
-
-#: src/ext_l10n.h:249
-msgid "Criterion"
-msgstr "Erizpidea"
-
-#: src/ext_l10n.h:250
-msgid "CrossList"
-msgstr "Gurutzatuen Zerrenda"
-
-#: src/ext_l10n.h:251
-msgid "Current_Address"
-msgstr "Oraingo Helbidea"
-
-#: src/ext_l10n.h:252
-msgid "CURTAIN"
-msgstr "OIHALA"
-
-#: src/ext_l10n.h:253
-msgid "Customer"
-msgstr "Bezeroa"
-
-#: src/ext_l10n.h:254
-msgid "Data"
-msgstr "Datua"
-
-#: src/ext_l10n.h:255
-msgid "Date"
-msgstr "Eguna"
-
-#: src/ext_l10n.h:256
-msgid "Datum"
-msgstr "Datu"
-
-#: src/ext_l10n.h:257
-msgid "Dedication"
-msgstr "Eskeintza"
-
-#: src/ext_l10n.h:258
-msgid "Dedicatory"
-msgstr "Eskeintza"
-
-#: src/ext_l10n.h:259
-msgid "Definition"
-msgstr "Zehaztaketa"
-
-#: src/ext_l10n.h:260
-msgid "Definition*"
-msgstr "Zehaztaketa*"
-
-#: src/ext_l10n.h:261
-msgid "Description"
-msgstr "Deskribaketa"
-
-#: src/ext_l10n.h:262
-msgid "Dialogue"
-msgstr "Elkarhizketa"
-
-#: src/ext_l10n.h:263
-msgid "Email"
-msgstr "Email"
-
-#: src/ext_l10n.h:264
-msgid "EMail"
-msgstr "e-Gutuna"
-
-#: src/ext_l10n.h:265
-msgid "encl"
-msgstr "erantsia"
-
-#: src/ext_l10n.h:266
-msgid "Encl."
-msgstr "Erantsia."
-
-#: src/ext_l10n.h:267
-msgid "Encl"
-msgstr "Erantsia"
-
-#: src/ext_l10n.h:268
-msgid "End_All_Slides"
-msgstr "Gardentasun_Guztiak_Amaitu"
-
-#: src/ext_l10n.h:269
-msgid "Enumerate"
-msgstr "Zenbakitua"
-
-#: src/ext_l10n.h:270
-msgid "Example"
-msgstr "Adibidea"
-
-#: src/ext_l10n.h:271
-msgid "Example*"
-msgstr "Adibidea*"
-
-#: src/ext_l10n.h:272
-msgid "Exercise"
-msgstr "Ariketa"
-
-#: src/ext_l10n.h:273
-msgid "EXT."
-msgstr "KANPO."
-
-#: src/ext_l10n.h:274
-msgid "Extratitle"
-msgstr "Izenburuordea"
-
-#: src/ext_l10n.h:275
-msgid "Fact"
-msgstr "Gertaera"
-
-#: src/ext_l10n.h:276
-msgid "Fact*"
-msgstr "Gertaera*"
-
-#: src/ext_l10n.h:277
-msgid "FADE_IN:"
-msgstr "SARERRA:"
-
-#: src/ext_l10n.h:278
-msgid "FADE_OUT:"
-msgstr "IRTEERA:"
-
-#: src/ext_l10n.h:279
-#, fuzzy
-msgid "FADE_OUT"
-msgstr "IRTEERA:"
-
-#: src/ext_l10n.h:280
-msgid "FigCaption"
-msgstr "IrudiAzalpena"
-
-#: src/ext_l10n.h:281
-msgid "FirstAuthor"
-msgstr "Lehen Egilea"
-
-#: src/ext_l10n.h:282
-msgid "FirstName"
-msgstr "Lehen Izena"
-
-#: src/ext_l10n.h:283
-msgid "FitBitmap"
-msgstr "BitmapDoitu"
-
-#: src/ext_l10n.h:284
-msgid "FitFigure"
-msgstr "IrudiaDoitu"
-
-#: src/ext_l10n.h:285
-msgid "Foilhead"
-msgstr "Orriburua"
-
-#: src/ext_l10n.h:286
-msgid "Footernote"
-msgstr "Oineko Oharra"
-
-#: src/ext_l10n.h:287
-msgid "FourAffiliations"
-msgstr "Lau Izen Emate"
-
-#: src/ext_l10n.h:288
-msgid "FourAuthors"
-msgstr "Lau Egile"
-
-#: src/ext_l10n.h:289
-msgid "FrontMatter"
-msgstr ""
-
-#: src/ext_l10n.h:290
-msgid "General"
-msgstr "Orokorra"
-
-#: src/ext_l10n.h:291
-msgid "Gruss"
-msgstr ""
-
-#: src/ext_l10n.h:292
-msgid "Headnote"
-msgstr "Buru Oharra"
-
-#: src/ext_l10n.h:293
-msgid "HideMoves"
-msgstr ""
-
-#: src/ext_l10n.h:294
-#, fuzzy
-msgid "HighLight"
-msgstr "Altuera"
-
-#: src/ext_l10n.h:295
-msgid "HTTP"
-msgstr "HTTP"
-
-#: src/ext_l10n.h:296
-msgid "IhrSchreiben"
-msgstr ""
-
-#: src/ext_l10n.h:297
-msgid "IhrZeichen"
-msgstr ""
-
-#: src/ext_l10n.h:298
-msgid "Institute"
-msgstr "Ikastetxea"
-
-#: src/ext_l10n.h:299
-msgid "Institution"
-msgstr "Egoitza"
-
-#: src/ext_l10n.h:300
-msgid "INT."
-msgstr "BARNE."
-
-#: src/ext_l10n.h:301
-msgid "INTERCUT"
-msgstr ""
-
-#: src/ext_l10n.h:302
-msgid "InvisibleText"
-msgstr "Testu Ikuskaitza"
-
-#: src/ext_l10n.h:303
-msgid "Invoice"
-msgstr "Ordain Agiria"
-
-#: src/ext_l10n.h:304
-msgid "Itemize"
-msgstr "Zehaztatua"
-
-#: src/ext_l10n.h:305
-msgid "Journal"
-msgstr "Egunkaria"
-
-#: src/ext_l10n.h:306
-msgid "Keyword"
-msgstr "Giltza"
-
-#: src/ext_l10n.h:307
-msgid "Keywords"
-msgstr "Giltza"
-
-#: src/ext_l10n.h:308
-msgid "KnightMove"
-msgstr ""
-
-#: src/ext_l10n.h:309
-msgid "Konto"
-msgstr ""
-
-#: src/ext_l10n.h:310
-msgid "Labeling"
-msgstr "Txarteketa"
-
-#: src/ext_l10n.h:311
-msgid "Land"
-msgstr "Lurra"
-
-#: src/ext_l10n.h:312
-msgid "LandscapeSlide"
-msgstr "Zeharretako Barra"
-
-#: src/ext_l10n.h:313
-msgid "LaTeX"
-msgstr "LaTeX"
-
-#: src/ext_l10n.h:314
-msgid "LaTeX_Title"
-msgstr "LaTeX Izenburua"
-
-#: src/ext_l10n.h:315
-#, fuzzy
-msgid "Left_Header"
-msgstr "Burua"
-
-#: src/ext_l10n.h:316
-msgid "Lemma"
-msgstr "Lema"
-
-#: src/ext_l10n.h:317
-msgid "Lemma*"
-msgstr "Lema"
-
-#: src/ext_l10n.h:318
-msgid "Letter"
-msgstr "Gutuna"
-
-#: src/ext_l10n.h:319
-msgid "List"
-msgstr "Zerrenda"
-
-#: src/ext_l10n.h:320
-msgid "ListOfSlides"
-msgstr "Barra Zerrenda"
-
-#: src/ext_l10n.h:321
-msgid "Literal"
-msgstr "Hitzez Hitz"
-
-#: src/ext_l10n.h:322
-msgid "Location"
-msgstr "Kokapena"
-
-#: src/ext_l10n.h:323
-msgid "Lowertitleback"
-msgstr "Atze Izenburutxoa"
-
-#: src/ext_l10n.h:324
-msgid "LyX-Code"
-msgstr "Lyx Kodea"
-
-#: src/ext_l10n.h:325
-msgid "Mail"
-msgstr "Gutuna"
-
-#: src/ext_l10n.h:326
-#, fuzzy
-msgid "Mainline"
-msgstr "Ataltxoa"
-
-#: src/ext_l10n.h:327
-msgid "MarkBoth"
-msgstr "Biak Zotzakin"
-
-#: src/ext_l10n.h:328
-msgid "MathLetters"
-msgstr "Matematika Gutunak"
-
-#: src/ext_l10n.h:329
-msgid "MeinZeichen"
-msgstr ""
-
-#: src/ext_l10n.h:330
-msgid "Minisec"
-msgstr "Ataltxoa"
-
-#: src/ext_l10n.h:331 src/frontends/xforms/Menubar_pimpl.C:279
-#: src/frontends/xforms/Menubar_pimpl.C:352
-msgid "More"
-msgstr "Gehiago"
-
-#: src/ext_l10n.h:332
-msgid "msnumber"
-msgstr "mszenbakia"
-
-#: src/ext_l10n.h:333
-msgid "My_Address"
-msgstr "Nere Helbidea"
-
-#: src/ext_l10n.h:334
-msgid "Myref"
-msgstr "Nere Erref"
-
-#: src/ext_l10n.h:335
-msgid "MyRef"
-msgstr "Nere Erref"
-
-#: src/ext_l10n.h:336
-msgid "Name"
-msgstr "Izena"
-
-#: src/ext_l10n.h:337
-msgid "Narrative"
-msgstr "Ipuia"
-
-#: src/ext_l10n.h:338
-msgid "Notation"
-msgstr "Oharra"
-
-#: src/ext_l10n.h:339
-msgid "Note"
-msgstr "Oharra"
-
-#: src/ext_l10n.h:340
-msgid "Note*"
-msgstr "Oharra*"
-
-#: src/ext_l10n.h:341
-msgid "NoteToEditor"
-msgstr "ArgitariarentzatOharra"
-
-#: src/ext_l10n.h:342
-msgid "Offprint"
-msgstr ""
-
-#: src/ext_l10n.h:343
-msgid "Offprints"
-msgstr ""
-
-#: src/ext_l10n.h:344
-msgid "Offsets"
-msgstr ""
-
-#: src/ext_l10n.h:345
-msgid "Oggetto"
-msgstr ""
-
-#: src/ext_l10n.h:346
-msgid "Opening"
-msgstr "Irekitzen"
-
-#: src/ext_l10n.h:347
-msgid "Ort"
-msgstr ""
-
-#: src/ext_l10n.h:348
-msgid "Overlay"
-msgstr "Eztaldu"
-
-#: src/ext_l10n.h:349
-msgid "PACS"
-msgstr "SORTAK"
-
-#: src/ext_l10n.h:350 src/ext_l10n.h:920
-msgid "Paragraph"
-msgstr "Parrafoa"
-
-#: src/ext_l10n.h:351
-msgid "Paragraph*"
-msgstr "Parrafoa*"
-
-#: src/ext_l10n.h:352
-msgid "Part"
-msgstr "Zatia"
-
-#: src/ext_l10n.h:353
-msgid "Part*"
-msgstr "Zatia*"
-
-#: src/ext_l10n.h:354
-msgid "Petit"
-msgstr "Txikia"
-
-#: src/ext_l10n.h:355
-msgid "Phone"
-msgstr "Telefonoa"
-
-#: src/ext_l10n.h:356
-msgid "Place"
-msgstr "Jarri"
-
-#: src/ext_l10n.h:357
-msgid "PlaceFigure"
-msgstr "JarriIrudia"
-
-#: src/ext_l10n.h:358
-msgid "PlaceTable"
-msgstr "JarriTaula"
-
-#: src/ext_l10n.h:359
-msgid "PortraitSlide"
-msgstr "ArgazkiGardena"
-
-#: src/ext_l10n.h:360
-msgid "PostalCommend"
-msgstr "GutunAgindua"
-
-#: src/ext_l10n.h:361
-#, fuzzy
-msgid "PostalComment"
-msgstr "GutunAgindua"
-
-#: src/ext_l10n.h:362
-msgid "Postvermerk"
-msgstr ""
-
-#: src/ext_l10n.h:363
-msgid "Preprint"
-msgstr "Aurreinprimaketa"
-
-#: src/ext_l10n.h:364
-msgid "Problem"
-msgstr "Arazoa"
-
-#: src/ext_l10n.h:365
-msgid "ProgressContents"
-msgstr "GaienJarraiera"
-
-#: src/ext_l10n.h:366
-msgid "Proof"
-msgstr "Saiakera"
-
-#: src/ext_l10n.h:367
-msgid "Property"
-msgstr "Jabegotza"
-
-#: src/ext_l10n.h:368
-msgid "Proposition"
-msgstr "Proposamena"
-
-#: src/ext_l10n.h:369
-msgid "Proposition*"
-msgstr "Proposamena*"
-
-#: src/ext_l10n.h:370
-msgid "ps"
-msgstr "ps"
-
-#: src/ext_l10n.h:371
-msgid "PS"
-msgstr "PS"
-
-#: src/ext_l10n.h:372
-msgid "Publishers"
-msgstr "Argitatzaileak"
-
-#: src/ext_l10n.h:373
-msgid "Question"
-msgstr "Galdera"
-
-#: src/ext_l10n.h:374
-msgid "Quotation"
-msgstr "Parrafo Sakona"
-
-#: src/ext_l10n.h:375
-msgid "Quote"
-msgstr "Lerro Sakona"
-
-#: src/ext_l10n.h:376
-msgid "Received"
-msgstr "Eskuratua"
-
-#: src/ext_l10n.h:377 src/ext_l10n.h:1101 src/ext_l10n.h:1109
-#: src/frontends/xforms/FormRef.C:33
-msgid "Reference"
-msgstr "Erreferentzia"
-
-#: src/ext_l10n.h:379
-msgid "Remark"
-msgstr "Ohar"
-
-#: src/ext_l10n.h:380
-msgid "Remark*"
-msgstr "Ohar*"
-
-#: src/ext_l10n.h:381
-msgid "Remarks"
-msgstr "Oharrak"
-
-#: src/ext_l10n.h:382
-msgid "RetourAdresse"
-msgstr "HelbideaItzuli"
-
-#: src/ext_l10n.h:383
-msgid "ReturnAddress"
-msgstr "HelbideaItzuli"
-
-#: src/ext_l10n.h:384
-#, fuzzy
-msgid "Revision"
-msgstr "Galdera"
-
-#: src/ext_l10n.h:385
-msgid "RevisionHistory"
-msgstr ""
-
-#: src/ext_l10n.h:386
-#, fuzzy
-msgid "RevisionRemark"
-msgstr "Ohar"
-
-#: src/ext_l10n.h:387
-msgid "REVTEX_Title"
-msgstr "REVTEX_Izenburura"
-
-#: src/ext_l10n.h:388
-msgid "Right_Address"
-msgstr "Helbide_Zuzena"
-
-#: src/ext_l10n.h:389
-#, fuzzy
-msgid "Right_Header"
-msgstr "BuruZuzena"
-
-#: src/ext_l10n.h:390
-msgid "RightHeader"
-msgstr "BuruZuzena"
-
-#: src/ext_l10n.h:391
-msgid "Rotatefoilhead"
-msgstr "OrriBuruaBiratu"
-
-#: src/ext_l10n.h:392
-#, fuzzy
-msgid "RunningAuthor"
-msgstr "Egilea"
-
-#: src/ext_l10n.h:393
-msgid "Running_LaTeX_Title"
-msgstr "LaTeX_Izenburua_Lantzen"
-
-#: src/ext_l10n.h:394
-#, fuzzy
-msgid "RunningTitle"
-msgstr "LaTeX_Izenburua_Lantzen"
-
-#: src/ext_l10n.h:395
-#, fuzzy
-msgid "Scene"
-msgstr "Bidali"
-
-#: src/ext_l10n.h:396
-msgid "SCENE"
-msgstr "ANTZEZLEKUA"
-
-#: src/ext_l10n.h:397
-msgid "SCENE*"
-msgstr "ANTZEZLEKUA*"
-
-#: src/ext_l10n.h:398
-msgid "Scrap"
-msgstr "Papur"
-
-#: src/ext_l10n.h:399
-msgid "Section"
-msgstr "Atala"
-
-#: src/ext_l10n.h:400
-msgid "Section*"
-msgstr "Atala*"
-
-#: src/ext_l10n.h:401
-msgid "Send_To_Address"
-msgstr "Helbidera_Bidali"
-
-#: src/ext_l10n.h:402
-msgid "Seriate"
-msgstr "Errenkada"
-
-#: src/ext_l10n.h:403
-msgid "SGML"
-msgstr "SGML"
-
-#: src/ext_l10n.h:404
-msgid "ShortFoilhead"
-msgstr "OrriBuruMotza"
-
-#: src/ext_l10n.h:405
-msgid "ShortRotatefoilhead"
-msgstr "OrriburuBiraketaMotza"
-
-#: src/ext_l10n.h:406
-msgid "ShortTitle"
-msgstr "IzenburuMotza"
-
-#: src/ext_l10n.h:407
-msgid "Signature"
-msgstr "Zinadura"
-
-#: src/ext_l10n.h:408
-msgid "Slide"
-msgstr "Eskarria"
-
-#: src/ext_l10n.h:409
-msgid "Slide*"
-msgstr "Eskarria*"
-
-#: src/ext_l10n.h:410
-msgid "SlideContents"
-msgstr "GaienEskarria"
-
-#: src/ext_l10n.h:411
-msgid "SlideHeading"
-msgstr "EskarriBurua"
-
-#: src/ext_l10n.h:412
-msgid "SlideSubHeading"
-msgstr "EskarriAzpiBurua"
-
-#: src/ext_l10n.h:413
-msgid "Solution"
-msgstr "Emaitza"
-
-#: src/ext_l10n.h:414
-msgid "Speaker"
-msgstr "Hizlaria"
-
-#: src/ext_l10n.h:415
-msgid "Specialmail"
-msgstr "Gutunberezia"
-
-#: src/ext_l10n.h:416
-msgid "Stadt"
-msgstr ""
-
-#: src/ext_l10n.h:417 src/insets/insetref.C:110
-msgid "Standard"
-msgstr "Arrunta"
-
-#: src/ext_l10n.h:418
-msgid "State"
-msgstr "Egoera"
-
-#: src/ext_l10n.h:419
-msgid "Strasse"
-msgstr ""
-
-#: src/ext_l10n.h:420
-msgid "Street"
-msgstr "Kalea"
-
-#: src/ext_l10n.h:421
-msgid "Subject"
-msgstr "Gaia"
-
-#: src/ext_l10n.h:422
-msgid "Subjectclass"
-msgstr "Gaimota"
-
-#: src/ext_l10n.h:423
-msgid "Subparagraph"
-msgstr "Azpiparrafoa"
-
-#: src/ext_l10n.h:424
-msgid "Subparagraph*"
-msgstr "Azpiparrafoa*"
-
-#: src/ext_l10n.h:425
-msgid "Subsection"
-msgstr "Azpiatala"
-
-#: src/ext_l10n.h:426
-msgid "Subsection*"
-msgstr "Azpiatala*"
-
-#: src/ext_l10n.h:427
-#, fuzzy
-msgid "SubSection"
-msgstr "Azpiatala"
-
-#: src/ext_l10n.h:428
-msgid "Subsubsection"
-msgstr "Azpiazpiatala"
-
-#: src/ext_l10n.h:429
-msgid "Subsubsection*"
-msgstr "Azpiazpiatala*"
-
-#: src/ext_l10n.h:430
-msgid "Subtitle"
-msgstr "Azpiizenburua"
-
-#: src/ext_l10n.h:431
-msgid "SubTitle"
-msgstr "Azpiizenburua"
-
-#: src/ext_l10n.h:432
-#, fuzzy
-msgid "SubVariation"
-msgstr "Banaketa"
-
-#: src/ext_l10n.h:433
-#, fuzzy
-msgid "SubVariation2"
-msgstr "Banaketa"
-
-#: src/ext_l10n.h:434
-#, fuzzy
-msgid "SubVariation3"
-msgstr "Banaketa"
-
-#: src/ext_l10n.h:435
-#, fuzzy
-msgid "SubVariation4"
-msgstr "Banaketa"
-
-#: src/ext_l10n.h:436
-#, fuzzy
-msgid "SubVariation5"
-msgstr "Banaketa"
-
-#: src/ext_l10n.h:437
-msgid "Summary"
-msgstr "Laburpena"
-
-#: src/ext_l10n.h:438
-msgid "Surname"
-msgstr "Gaitzizena"
-
-#: src/ext_l10n.h:439
-msgid "TableComments"
-msgstr "AipamenTaula"
-
-#: src/ext_l10n.h:440
-msgid "TableRefs"
-msgstr "ErrefTaula"
-
-#: src/ext_l10n.h:441
-msgid "Telefax"
-msgstr "Telefax"
-
-#: src/ext_l10n.h:442
-msgid "Telefon"
-msgstr "Telefonoa"
-
-#: src/ext_l10n.h:443
-msgid "Telephone"
-msgstr "Telefonoa"
-
-#: src/ext_l10n.h:444
-msgid "Telex"
-msgstr "Telex"
-
-#: src/ext_l10n.h:445
-msgid "Thanks"
-msgstr "Eskarrik Asko"
-
-#: src/ext_l10n.h:446
-msgid "Theorem"
-msgstr "Azalkizuna"
-
-#: src/ext_l10n.h:447
-msgid "Theorem*"
-msgstr "Azalkizuna*"
-
-#: src/ext_l10n.h:448
-msgid "TheoremTemplate"
-msgstr "AzalkizunEredua"
-
-#: src/ext_l10n.h:449 src/ext_l10n.h:1175 src/frontends/qt2/QThesaurus.C:28
-msgid "Thesaurus"
-msgstr "Hiztegi Ideologikoa"
-
-#: src/ext_l10n.h:450
-msgid "ThickLine"
-msgstr "Lerromehea"
-
-#: src/ext_l10n.h:451
-msgid "ThreeAffiliations"
-msgstr "HiruHarpidaketa"
-
-#: src/ext_l10n.h:452
-msgid "ThreeAuthors"
-msgstr "HiruEgile"
-
-#: src/ext_l10n.h:453
-#, fuzzy
-msgid "TickList"
-msgstr "ErosketaZerrenda"
-
-#: src/ext_l10n.h:454
-msgid "Title"
-msgstr "Izenburua"
-
-#: src/ext_l10n.h:455
-msgid "Titlehead"
-msgstr "Izenburua"
-
-#: src/ext_l10n.h:456
-msgid "TITLE_OVER:"
-msgstr ""
-
-#: src/ext_l10n.h:457
-msgid "TOC_Author"
-msgstr "Egileen_Aurkibidea"
-
-#: src/ext_l10n.h:458
-msgid "TOC_Title"
-msgstr "Izenburuen_Aurkibidea"
-
-#: src/ext_l10n.h:459
-#, fuzzy
-msgid "Topic"
-msgstr "&Goikaldea"
-
-#: src/ext_l10n.h:460
-msgid "Town"
-msgstr "Herria"
-
-#: src/ext_l10n.h:461
-msgid "Transition"
-msgstr "Aldaketa"
-
-#: src/ext_l10n.h:462
-msgid "Trans_Keywords"
-msgstr "Itzul_Giltza"
-
-#: src/ext_l10n.h:463
-msgid "TranslatedAbstract"
-msgstr "LaburpenItzulia"
-
-#: src/ext_l10n.h:464
-msgid "Translated_Title"
-msgstr "Itzulitako_Izenburua"
-
-#: src/ext_l10n.h:465
-msgid "Translator"
-msgstr "Itzultzailea"
-
-#: src/ext_l10n.h:466
-msgid "TwoAffiliations"
-msgstr "BiHarpidaketa"
-
-#: src/ext_l10n.h:467
-msgid "TwoAuthors"
-msgstr "BiEgile"
-
-#: src/ext_l10n.h:468
-msgid "Unterschrift"
-msgstr ""
-
-#: src/ext_l10n.h:469
-msgid "Uppertitleback"
-msgstr "GoiIzenburuAtzea"
-
-#: src/ext_l10n.h:470 src/ext_l10n.h:1193 src/ext_l10n.h:1196
-#: src/frontends/qt2/QURL.C:25
-msgid "URL"
-msgstr "URL"
-
-#: src/ext_l10n.h:471
-#, fuzzy
-msgid "Variation"
-msgstr "Banaketa"
-
-#: src/ext_l10n.h:472
-msgid "Verbatim"
-msgstr "Hitzez-hitz"
-
-#: src/ext_l10n.h:473
-msgid "Verse"
-msgstr "Olerki-lerroa"
-
-#: src/ext_l10n.h:474
-msgid "Verteiler"
-msgstr ""
-
-#: src/ext_l10n.h:475
-msgid "VisibleText"
-msgstr "TestuIkuskorra"
-
-#: src/ext_l10n.h:476
-msgid "Yourmail"
-msgstr "ZurePostaKutxa"
-
-#: src/ext_l10n.h:477
-msgid "YourMail"
-msgstr "ZurePostaKutxa"
-
-#: src/ext_l10n.h:478
-msgid "Yourref"
-msgstr "ZureErref"
-
-#: src/ext_l10n.h:479
-msgid "YourRef"
-msgstr "ZureErref"
-
-#: src/ext_l10n.h:480
-msgid "Zusatz"
-msgstr ""
-
-#: src/ext_l10n.h:481
-msgid "Afrikaans"
-msgstr "Afrikarrera"
-
-#: src/ext_l10n.h:482
-msgid "American"
-msgstr "Amerikarrera"
-
-#: src/ext_l10n.h:483
-msgid "Arabic"
-msgstr "Arabiera"
-
-#: src/ext_l10n.h:484
-msgid "Austrian"
-msgstr "Austriakoak"
-
-#: src/ext_l10n.h:485
-msgid "Bahasa"
-msgstr "Bahasaera"
-
-#: src/ext_l10n.h:486
-#, fuzzy
-msgid "Basque"
-msgstr "urdina"
-
-#: src/ext_l10n.h:487
-msgid "Portuguese (Brazil)"
-msgstr ""
-
-#: src/ext_l10n.h:488
-msgid "Breton"
-msgstr "Bretoiera"
-
-#: src/ext_l10n.h:489
-msgid "British"
-msgstr "Inglesa"
-
-#: src/ext_l10n.h:490
-#, fuzzy
-msgid "Bulgarian"
-msgstr "Hungariera"
-
-#: src/ext_l10n.h:491
-msgid "Canadian"
-msgstr "Kanadiera"
-
-#: src/ext_l10n.h:492
-msgid "French Canadian"
-msgstr "Frantsez Kanadiarra"
-
-#: src/ext_l10n.h:493
-msgid "Catalan"
-msgstr "Katalanera"
-
-#: src/ext_l10n.h:494
-msgid "Croatian"
-msgstr "Kroatakera"
-
-#: src/ext_l10n.h:495
-msgid "Czech"
-msgstr "Txekokera"
-
-#: src/ext_l10n.h:496
-msgid "Danish"
-msgstr "Daniera"
-
-#: src/ext_l10n.h:497
-msgid "Dutch"
-msgstr "Alemanera"
-
-#: src/ext_l10n.h:498 src/language.C:40
-msgid "English"
-msgstr "Inglesa"
-
-#: src/ext_l10n.h:499
-msgid "Esperanto"
-msgstr "Esperantoa"
-
-#: src/ext_l10n.h:500
-msgid "Estonian"
-msgstr "Estoniera"
-
-#: src/ext_l10n.h:501
-msgid "Finnish"
-msgstr "Finlandera"
-
-#: src/ext_l10n.h:502
-msgid "French"
-msgstr "Frantzesera"
-
-#: src/ext_l10n.h:503
-msgid "French (GUTenberg)"
-msgstr "Frantseza (GUTenberg)"
-
-#: src/ext_l10n.h:504
-msgid "Galician"
-msgstr "Galegera"
-
-#: src/ext_l10n.h:505
-msgid "German"
-msgstr "Alemaniera"
-
-#: src/ext_l10n.h:506
-msgid "German (new spelling)"
-msgstr "Alemaniera (era berria)"
-
-#: src/ext_l10n.h:507 src/frontends/xforms/form_maths_panel.C:35
-#: src/frontends/xforms/FormMathsPanel.C:103
-msgid "Greek"
-msgstr "Grekera"
-
-#: src/ext_l10n.h:508
-msgid "Hebrew"
-msgstr "Hebreokera"
-
-#: src/ext_l10n.h:509
-msgid "Irish"
-msgstr "Irishera"
-
-#: src/ext_l10n.h:510
-msgid "Italian"
-msgstr "Italiera"
-
-#: src/ext_l10n.h:511
-msgid "Lsorbian"
-msgstr "Lsorbianera"
-
-#: src/ext_l10n.h:512
-msgid "Magyar"
-msgstr "Magyarrera"
-
-#: src/ext_l10n.h:513
-msgid "Norsk"
-msgstr "Norskera"
-
-#: src/ext_l10n.h:514
-msgid "Polish"
-msgstr "Polishera"
-
-#: src/ext_l10n.h:515
-#, fuzzy
-msgid "Portugese"
-msgstr "Portugekera"
-
-#: src/ext_l10n.h:516
-msgid "Romanian"
-msgstr "Erromakera"
-
-#: src/ext_l10n.h:517
-msgid "Russian"
-msgstr "Errusiera"
-
-#: src/ext_l10n.h:518
-msgid "Scottish"
-msgstr "Skottishera"
-
-#: src/ext_l10n.h:519
-#, fuzzy
-msgid "Serbian"
-msgstr "Errenkada"
-
-#: src/ext_l10n.h:520
-#, fuzzy
-msgid "Serbo-Croatian"
-msgstr "Kroatakera"
-
-#: src/ext_l10n.h:521
-msgid "Spanish"
-msgstr "Gaztelera"
-
-#: src/ext_l10n.h:522
-msgid "Slovak"
-msgstr "Slobakera"
-
-#: src/ext_l10n.h:523
-msgid "Slovene"
-msgstr "Slobakera"
-
-#: src/ext_l10n.h:524
-msgid "Swedish"
-msgstr "Suediera"
-
-#: src/ext_l10n.h:525
-#, fuzzy
-msgid "Thai"
-msgstr "Hauxe"
-
-#: src/ext_l10n.h:526
-msgid "Turkish"
-msgstr "Turkera"
-
-#: src/ext_l10n.h:527
-msgid "Ukrainian"
-msgstr "Ukraniarrera"
-
-#: src/ext_l10n.h:528
-msgid "Usorbian"
-msgstr "Usorbiera"
-
-#: src/ext_l10n.h:529
-msgid "Welsh"
-msgstr "Welshera"
-
-#: src/ext_l10n.h:530 src/frontends/qt2/QAbout.C:32
-#: src/frontends/xforms/FormAboutlyx.C:28
-msgid "About LyX"
-msgstr ""
-
-#: src/ext_l10n.h:531
-#, fuzzy
-msgid "Version"
-msgstr "Bertsioa...|B"
-
-#: src/ext_l10n.h:532
-#, fuzzy
-msgid "Version goes here"
-msgstr "Bertsio Kontrola"
-
-#: src/ext_l10n.h:533 src/frontends/xforms/FormAboutlyx.C:65
-msgid "Credits"
-msgstr "Kredituak"
-
-#: src/ext_l10n.h:535 src/ext_l10n.h:546 src/ext_l10n.h:600 src/ext_l10n.h:767
-#: src/ext_l10n.h:776 src/ext_l10n.h:794 src/ext_l10n.h:799 src/ext_l10n.h:875
-#: src/ext_l10n.h:894 src/ext_l10n.h:905 src/ext_l10n.h:919
-#: src/ext_l10n.h:1070 src/ext_l10n.h:1119 src/ext_l10n.h:1129
-#: src/ext_l10n.h:1131 src/ext_l10n.h:1143 src/ext_l10n.h:1173
-#: src/ext_l10n.h:1185 src/ext_l10n.h:1190 src/ext_l10n.h:1200
-#: src/ext_l10n.h:1204 src/frontends/qt2/QParagraphDialog.C:49
-msgid "&Close"
-msgstr "&Itxi"
-
-#: src/ext_l10n.h:536
-#, fuzzy
-msgid "LyX: Enter text"
-msgstr "LyX: Erroldaketa"
-
-#: src/ext_l10n.h:537
-#, fuzzy
-msgid "&Dummy"
-msgstr "Laburpena"
-
-#: src/ext_l10n.h:538 src/ext_l10n.h:570 src/ext_l10n.h:603 src/ext_l10n.h:762
-#: src/ext_l10n.h:775 src/ext_l10n.h:900 src/frontends/qt2/QSpellchecker.C:114
-#: src/frontends/xforms/form_bibitem.C:35
-#: src/frontends/xforms/form_bibtex.C:35
-#: src/frontends/xforms/form_citation.C:173
-#: src/frontends/xforms/form_document.C:47 src/frontends/xforms/form_ert.C:72
-#: src/frontends/xforms/form_external.C:89
-#: src/frontends/xforms/form_filedialog.C:89
-#: src/frontends/xforms/form_float.C:74 src/frontends/xforms/form_forks.C:53
-#: src/frontends/xforms/form_include.C:42 src/frontends/xforms/form_index.C:44
-#: src/frontends/xforms/form_maths_delim.C:49
-#: src/frontends/xforms/form_minipage.C:81
-#: src/frontends/xforms/form_paragraph.C:181
-#: src/frontends/xforms/form_print.C:53 src/frontends/xforms/form_ref.C:86
-#: src/frontends/xforms/form_sendto.C:46
-#: src/frontends/xforms/form_tabular_create.C:28
-#: src/frontends/xforms/form_url.C:64
-msgid "OK"
-msgstr "Ongi"
-
-#: src/ext_l10n.h:539 src/ext_l10n.h:1063 src/frontends/qt2/Alert_pimpl.C:45
-#: src/frontends/qt2/QParagraphDialog.C:49
-msgid "&Cancel"
-msgstr "&Etsi"
-
-#: src/ext_l10n.h:540 src/ext_l10n.h:897 src/frontends/qt2/QIndex.C:23
-#: src/frontends/xforms/FormIndex.C:24 src/insets/insetindex.C:61
-msgid "Index"
-msgstr "Errolda"
-
-#: src/ext_l10n.h:541
-#, fuzzy
-msgid "&Key"
-msgstr "Tekla"
-
-#: src/ext_l10n.h:542
-#, fuzzy
-msgid "The citation key"
-msgstr "Aipamena Sartu"
-
-#: src/ext_l10n.h:543
-#, fuzzy
-msgid "&Label"
-msgstr "Txarteketa"
-
-#: src/ext_l10n.h:544
-#, fuzzy
-msgid "The label as it appears in the document"
-msgstr "Egituraren izena era berdinean aukera zerrendatan agertuko da."
-
-#: src/ext_l10n.h:545 src/ext_l10n.h:598 src/ext_l10n.h:792 src/ext_l10n.h:797
-#: src/ext_l10n.h:873 src/ext_l10n.h:893 src/ext_l10n.h:917
-#: src/ext_l10n.h:1062 src/ext_l10n.h:1068 src/ext_l10n.h:1118
-#: src/ext_l10n.h:1158 src/ext_l10n.h:1199
-msgid "&OK"
-msgstr "&Onartu"
-
-#: src/ext_l10n.h:547
-#, fuzzy
-msgid "Bibtex"
-msgstr "BibTeX"
-
-#: src/ext_l10n.h:548
-#, fuzzy
-msgid "Databases"
-msgstr "Datu Basea:"
-
-#: src/ext_l10n.h:549
-#, fuzzy
-msgid "BibTeX database to use"
-msgstr "Datu Basea:"
-
-#: src/ext_l10n.h:550 src/ext_l10n.h:626 src/ext_l10n.h:628
-#: src/ext_l10n.h:1167
-msgid "New Item"
-msgstr ""
-
-#: src/ext_l10n.h:551
-#, fuzzy
-msgid "Available BibTeX databases"
-msgstr "Datu Basea:"
-
-#: src/ext_l10n.h:552
-#, fuzzy
-msgid "&Add ..."
-msgstr "&Gehitu"
-
-#: src/ext_l10n.h:553
-#, fuzzy
-msgid "Add a BibTeX database file"
-msgstr "Datu Basea:"
-
-#: src/ext_l10n.h:554
-#, fuzzy
-msgid "&Delete"
-msgstr "Ezabatu|#E"
-
-#: src/ext_l10n.h:555
-msgid "Remove the selected database"
-msgstr ""
-
-#: src/ext_l10n.h:556
-#, fuzzy
-msgid "&Style"
-msgstr "Itxura:  "
-
-#: src/ext_l10n.h:557 src/ext_l10n.h:563
-#, fuzzy
-msgid "The BibTeX style"
-msgstr "TeX itxura txandatu"
-
-#: src/ext_l10n.h:558 src/ext_l10n.h:644 src/frontends/qt2/QDocument.C:126
-#, fuzzy
-msgid "plain"
-msgstr "Gertaera Laua"
-
-#: src/ext_l10n.h:559
-#, fuzzy
-msgid "unsrt"
-msgstr "&Sartu"
-
-#: src/ext_l10n.h:560
-msgid "alpha"
-msgstr ""
-
-#: src/ext_l10n.h:561
-msgid "abbrv"
-msgstr ""
-
-#: src/ext_l10n.h:562 src/frontends/qt2/QBibtex.C:114
-#: src/frontends/qt2/QBibtexDialog.C:77
-#, fuzzy
-msgid "Other ..."
-msgstr "beste..."
-
-#: src/ext_l10n.h:564
-msgid "FIXME !"
-msgstr ""
-
-#: src/ext_l10n.h:565
-msgid "The name of the style to use"
-msgstr ""
-
-#: src/ext_l10n.h:566
-msgid "&Browse"
-msgstr "&Arakatu"
-
-#: src/ext_l10n.h:567
-#, fuzzy
-msgid "Choose a style file"
-msgstr "Eredua aukeratu"
-
-#: src/ext_l10n.h:568
-#, fuzzy
-msgid "Add bibliography to &TOC"
-msgstr "Bibliografi elementua"
-
-#: src/ext_l10n.h:569
-#, fuzzy
-msgid "Add bibliography to the table of contents"
-msgstr "Aurkibide Orokorra Ikusi"
-
-#. /
-#: src/ext_l10n.h:571 src/ext_l10n.h:605 src/ext_l10n.h:764 src/ext_l10n.h:901
-#: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:157
-#: src/lyxfunc.C:1082
-msgid "Cancel"
-msgstr "Etsi"
-
-#: src/ext_l10n.h:572 src/frontends/qt2/QCharacter.C:31
-#, fuzzy
-msgid "Character"
-msgstr "Hizki-jokoa:|#J"
-
-#: src/ext_l10n.h:573
-#, fuzzy
-msgid "&Family:"
-msgstr "Senidea:|#n"
-
-#: src/ext_l10n.h:574
-#, fuzzy
-msgid "Font family"
-msgstr "Senidea:|#n"
-
-#: src/ext_l10n.h:575
-#, fuzzy
-msgid "&Series:"
-msgstr "Serieak:|#S"
-
-#: src/ext_l10n.h:576 src/ext_l10n.h:583
-#, fuzzy
-msgid "Font series"
-msgstr "Hizki Neurria:|#u"
-
-#: src/ext_l10n.h:577 src/ext_l10n.h:705
-#, fuzzy
-msgid "&Language:"
-msgstr "Hizkuntza"
-
-#: src/ext_l10n.h:578 src/ext_l10n.h:586 src/ext_l10n.h:704
-#: src/frontends/xforms/FormDocument.C:331
-#: src/frontends/xforms/FormPreferences.C:258
-msgid "Language"
-msgstr "Hizkuntza"
-
-#: src/ext_l10n.h:579 src/ext_l10n.h:582
-#, fuzzy
-msgid "Font shape"
-msgstr "Hizki Neurria:|#u"
-
-#: src/ext_l10n.h:580 src/ext_l10n.h:585
-msgid "Font color"
-msgstr ""
-
-#: src/ext_l10n.h:581
-#, fuzzy
-msgid "S&hape:"
-msgstr "Marrazkia:|#r"
-
-#: src/ext_l10n.h:584
-#, fuzzy
-msgid "&Color:"
-msgstr "Koloreak"
-
-#: src/ext_l10n.h:587
-#, fuzzy
-msgid "&Toggle all"
-msgstr "Beltza txandatu"
-
-#: src/ext_l10n.h:588
-#, fuzzy
-msgid "toggle font on all of the above"
-msgstr "Hauek denak txandatu|#t"
-
-#: src/ext_l10n.h:589
-#, fuzzy
-msgid "Never toggled"
-msgstr "Hauek Inoiz ez dira txandatzen"
-
-#: src/ext_l10n.h:590 src/ext_l10n.h:818
-#, fuzzy
-msgid "Si&ze:"
-msgstr "Neurria:|#N"
-
-#: src/ext_l10n.h:591
-#, fuzzy
-msgid "Font size"
-msgstr "Hizki Neurria:|#u"
-
-#: src/ext_l10n.h:592
-#, fuzzy
-msgid "Always toggled"
-msgstr "Hauek beti bihurtzen dira"
-
-#: src/ext_l10n.h:593 src/ext_l10n.h:595
-msgid "Other font settings"
-msgstr ""
-
-#: src/ext_l10n.h:594
-#, fuzzy
-msgid "&Misc:"
-msgstr "Batzuk"
-
-#: src/ext_l10n.h:596
-#, fuzzy
-msgid "Auto apply"
-msgstr "&Eragin"
-
-#: src/ext_l10n.h:597
-msgid "Apply each change automatically"
-msgstr ""
-
-#: src/ext_l10n.h:599 src/ext_l10n.h:604 src/ext_l10n.h:763 src/ext_l10n.h:793
-#: src/ext_l10n.h:798 src/ext_l10n.h:874 src/ext_l10n.h:918
-#: src/ext_l10n.h:1061 src/ext_l10n.h:1069
-msgid "&Apply"
-msgstr "&Eragin"
-
-#: src/ext_l10n.h:601 src/frontends/qt2/QCitation.C:45
-#: src/frontends/xforms/FormCitation.C:117
-msgid "Citation"
-msgstr "Aipamena"
-
-#: src/ext_l10n.h:602 src/ext_l10n.h:761 src/ext_l10n.h:796 src/ext_l10n.h:872
-#: src/ext_l10n.h:916 src/ext_l10n.h:1060
-msgid "&Restore"
-msgstr "&Berrezarri"
-
-#: src/ext_l10n.h:606
-msgid "Text after"
-msgstr "Testu ondoren"
-
-#: src/ext_l10n.h:607 src/frontends/xforms/form_citation.C:116
-#, fuzzy
-msgid "Citation style"
-msgstr "Aipamen itxura|#t"
-
-#: src/ext_l10n.h:608
-#, fuzzy
-msgid "Natbib citation style to use"
-msgstr "Aipamen itxura|#t"
-
-#: src/ext_l10n.h:609
-#, fuzzy
-msgid "Text before"
-msgstr "Testu aurretik|#T"
-
-#: src/ext_l10n.h:610 src/frontends/xforms/form_citation.C:73 src/lyxvc.C:122
-msgid "Info"
-msgstr "Info"
-
-#: src/ext_l10n.h:611
-#, fuzzy
-msgid "Citation entry"
-msgstr "Aipamen itxura|#t"
-
-#: src/ext_l10n.h:612 src/frontends/qt2/QSearch.C:31
-#: src/frontends/xforms/form_citation.C:78
-msgid "Search"
-msgstr "Aurkitu"
-
-#: src/ext_l10n.h:613
-msgid "Search the available citations"
-msgstr ""
-
-#: src/ext_l10n.h:614
-#, fuzzy
-msgid "Regular E&xpression"
-msgstr "Expresio Erregularrak Erabili"
-
-#: src/ext_l10n.h:615
-#, fuzzy
-msgid "Interpret search entry as a regular expression"
-msgstr "Aipamena sartu: Giltza(k) edo expresio erregularra idatzi"
-
-#: src/ext_l10n.h:616
-msgid "&Previous"
-msgstr ""
-
-#: src/ext_l10n.h:617
-#, fuzzy
-msgid "&Case sensitive"
-msgstr "Larri/Xehea|#M"
-
-#: src/ext_l10n.h:618
-msgid "Make the search case-sensitive"
-msgstr ""
-
-#: src/ext_l10n.h:619
-#, fuzzy
-msgid "&Next"
-msgstr "testua"
-
-#: src/ext_l10n.h:620
-#, fuzzy
-msgid "Add the selected citation"
-msgstr "_Aipamen berria sartu"
-
-#: src/ext_l10n.h:621
-msgid "Remove the selected citation"
-msgstr ""
-
-#: src/ext_l10n.h:622
-#, fuzzy
-msgid "Move the selected citation up"
-msgstr "Aipamena Sartu: Aipamena hautatu"
-
-#: src/ext_l10n.h:623
-msgid "Move the selected citation down"
-msgstr ""
-
-#: src/ext_l10n.h:624
-#, fuzzy
-msgid "Available"
-msgstr "Tekla Eskuragarriak"
-
-#: src/ext_l10n.h:625
-#, fuzzy
-msgid "Selected"
-msgstr "Hautatu"
-
-#: src/ext_l10n.h:627
-#, fuzzy
-msgid "Available citation keys"
-msgstr "Tekla Eskuragarriak"
-
-#: src/ext_l10n.h:629
-#, fuzzy
-msgid "Citations currently selected"
-msgstr "Orain hautatutako teklak"
-
-#: src/ext_l10n.h:630
-#, fuzzy
-msgid "Text to place after citation"
-msgstr "Testua, aipamenaren ondoren kokatzeko"
-
-#: src/ext_l10n.h:631
-#, fuzzy
-msgid "&Full author list"
-msgstr "Mugikorra:|#F"
-
-#: src/ext_l10n.h:632
-msgid "List all authors"
-msgstr ""
-
-#: src/ext_l10n.h:633
-msgid "Force &upper case"
-msgstr ""
-
-#: src/ext_l10n.h:634
-msgid "Force upper case in citation"
-msgstr ""
-
-#: src/ext_l10n.h:635
-msgid "Text to place before citation"
-msgstr ""
-
-#: src/ext_l10n.h:636 src/frontends/xforms/FormDocument.C:58
-msgid "Document Layout"
-msgstr "Idazki Aurkezpena"
-
-#: src/ext_l10n.h:638
-#, fuzzy
-msgid "&Fonts:"
-msgstr "Hizki-mota: "
-
-#: src/ext_l10n.h:639
-#, fuzzy
-msgid "&Pagestyle:"
-msgstr "Orri itxura:|#O"
-
-#: src/ext_l10n.h:640
-#, fuzzy
-msgid "Defa&ult Skip:"
-msgstr "Jatorrizko Jauzia:|#J"
-
-#: src/ext_l10n.h:641
-#, fuzzy
-msgid "F&ont Size:"
-msgstr "Hizki Neurria:|#u"
-
-#. the document language page
-#: src/ext_l10n.h:642 src/ext_l10n.h:658 src/ext_l10n.h:707 src/ext_l10n.h:738
-#: src/ext_l10n.h:857 src/frontends/qt2/QDocument.C:116
-#: src/frontends/qt2/QDocument.C:124 src/frontends/qt2/QDocument.C:152
-#: src/frontends/qt2/QDocument.C:196 src/frontends/qt2/QDocument.C:575
-#: src/frontends/qt2/QDocument.C:579
-#, fuzzy
-msgid "default"
-msgstr "Jatorrizkoa"
-
-#: src/ext_l10n.h:643 src/frontends/qt2/QDocument.C:125
-#, fuzzy
-msgid "empty"
-msgstr "Sakonera"
-
-#: src/ext_l10n.h:645 src/frontends/qt2/QDocument.C:127
-#, fuzzy
-msgid "headings"
-msgstr "GUI erabiltzen"
-
-#: src/ext_l10n.h:646 src/frontends/qt2/QDocument.C:128
-msgid "fancy"
-msgstr ""
-
-#: src/ext_l10n.h:647
-#, fuzzy
-msgid "Spacin&g:"
-msgstr ", Hutsunea egiten:"
-
-#: src/ext_l10n.h:648
-#, fuzzy
-msgid "E&xtra Options:"
-msgstr "Aukera Gehiago"
-
-#: src/ext_l10n.h:649
-#, fuzzy
-msgid "&Class:"
-msgstr "Mota:|#M"
-
-#: src/ext_l10n.h:650
-#, fuzzy
-msgid "smallskip"
-msgstr "Jauzi txikia"
-
-#: src/ext_l10n.h:651
-#, fuzzy
-msgid "medskip"
-msgstr "Jauzi Erdia"
-
-#: src/ext_l10n.h:652
-#, fuzzy
-msgid "bigskip"
-msgstr "Jauzi Haundia"
-
-#: src/ext_l10n.h:653
-#, fuzzy
-msgid "length"
-msgstr "Luzera"
-
-#: src/ext_l10n.h:655 src/frontends/qt2/QDocument.C:112
-#, fuzzy
-msgid "OneHalf"
-msgstr "Bat'erdi"
-
-#: src/ext_l10n.h:657 src/frontends/qt2/QDocument.C:114
-#, fuzzy
-msgid "Other"
-msgstr "Beste ("
-
-#: src/ext_l10n.h:659 src/frontends/qt2/QDocument.C:117
-msgid "10"
-msgstr ""
-
-#: src/ext_l10n.h:660 src/frontends/qt2/QDocument.C:118
-#, fuzzy
-msgid "11"
-msgstr "1|#1"
-
-#: src/ext_l10n.h:661 src/frontends/qt2/QDocument.C:119
-msgid "12"
-msgstr ""
-
-#: src/ext_l10n.h:662 src/frontends/xforms/form_document.C:256
-msgid "Sides"
-msgstr "Alboak"
-
-#: src/ext_l10n.h:663
-#, fuzzy
-msgid "O&ne"
-msgstr "Piztuta"
-
-#: src/ext_l10n.h:664
-#, fuzzy
-msgid "&Two"
-msgstr "&Goikaldea"
-
-#: src/ext_l10n.h:665 src/frontends/xforms/form_tabular_create.C:45
-msgid "Columns"
-msgstr "Zutabeak"
-
-#: src/ext_l10n.h:666
-#, fuzzy
-msgid "On&e"
-msgstr "Piztuta"
-
-#: src/ext_l10n.h:667
-#, fuzzy
-msgid "T&wo"
-msgstr "Nora"
-
-#: src/ext_l10n.h:668 src/frontends/xforms/form_document.C:254
-msgid "Separation"
-msgstr "Banaketa"
-
-#: src/ext_l10n.h:669
-#, fuzzy
-msgid "&Indent"
-msgstr "Sangratua"
-
-#: src/ext_l10n.h:670
-#, fuzzy
-msgid "S&kip"
-msgstr "Jauzia|#J"
-
-#: src/ext_l10n.h:671 src/frontends/xforms/FormDocument.C:329
-msgid "Paper"
-msgstr "Orria"
-
-#: src/ext_l10n.h:672
-#, fuzzy
-msgid "&Papersize:"
-msgstr "orriaren neurria"
-
-#: src/ext_l10n.h:673 src/frontends/qt2/QDocument.C:72 src/lyxfont.C:573
-msgid "Default"
-msgstr "Jatorrizkoa"
-
-#: src/ext_l10n.h:674 src/ext_l10n.h:1011 src/ext_l10n.h:1020
-#: src/frontends/qt2/QDocument.C:73
-#, fuzzy
-msgid "Custom"
-msgstr "Bezeroa"
-
-#: src/ext_l10n.h:675 src/frontends/qt2/QDocument.C:74
-#, fuzzy
-msgid "USletter"
-msgstr "Gutuna"
-
-#: src/ext_l10n.h:676 src/frontends/qt2/QDocument.C:75
-msgid "USlegal"
-msgstr ""
-
-#: src/ext_l10n.h:677 src/frontends/qt2/QDocument.C:76
-msgid "USexecutive"
-msgstr ""
-
-#: src/ext_l10n.h:678 src/frontends/qt2/QDocument.C:77
-msgid "A3"
-msgstr ""
-
-#: src/ext_l10n.h:679 src/frontends/qt2/QDocument.C:79
-msgid "A5"
-msgstr ""
-
-#: src/ext_l10n.h:680 src/frontends/qt2/QDocument.C:80
-msgid "B3"
-msgstr ""
-
-#: src/ext_l10n.h:681 src/frontends/qt2/QDocument.C:81
-msgid "B4"
-msgstr ""
-
-#: src/ext_l10n.h:682 src/frontends/qt2/QDocument.C:82
-msgid "B5"
-msgstr ""
-
-#: src/ext_l10n.h:683
-#, fuzzy
-msgid "&Special:"
-msgstr "Berezia"
-
-#: src/ext_l10n.h:684 src/ext_l10n.h:1005 src/ext_l10n.h:1014
-#: src/ext_l10n.h:1048 src/frontends/qt2/QDocument.C:84
-msgid "None"
-msgstr "Ezer Ez"
-
-#: src/ext_l10n.h:685 src/frontends/qt2/QDocument.C:85
-msgid "A4 small Margins (only portrait)"
-msgstr ""
-
-#: src/ext_l10n.h:686 src/frontends/qt2/QDocument.C:86
-msgid "A4 very small Margins (only portrait)"
-msgstr ""
-
-#: src/ext_l10n.h:687 src/frontends/qt2/QDocument.C:87
-msgid "A4 very wide margins (only portrait)"
-msgstr ""
-
-#: src/ext_l10n.h:688
-#, fuzzy
-msgid "&Use Geometry Package"
-msgstr "Geometri Sorta Erabili|#S"
-
-#: src/ext_l10n.h:689 src/frontends/xforms/form_document.C:123
-msgid "Orientation"
-msgstr "Norabidea"
-
-#: src/ext_l10n.h:690
-#, fuzzy
-msgid "P&ortrait"
-msgstr "Goitibehera|#e"
-
-#: src/ext_l10n.h:691
-#, fuzzy
-msgid "&Landscape"
-msgstr "zeharretaka"
-
-#: src/ext_l10n.h:692 src/frontends/xforms/form_document.C:143
-msgid "Margins"
-msgstr "Margenak"
-
-#: src/ext_l10n.h:693
-#, fuzzy
-msgid "&Right:"
-msgstr "Eskuin"
-
-#: src/ext_l10n.h:694
-#, fuzzy
-msgid "&Bottom:"
-msgstr "&Azpikaldea"
-
-#: src/ext_l10n.h:695
-#, fuzzy
-msgid "L&eft:"
-msgstr "Ezker"
-
-#: src/ext_l10n.h:696
-#, fuzzy
-msgid "&Top:"
-msgstr "&Goikaldea"
-
-#: src/ext_l10n.h:697
-msgid "Custom Papersize"
-msgstr "Egokitutako OrriNeurria"
-
-#: src/ext_l10n.h:698 src/ext_l10n.h:907
-#, fuzzy
-msgid "&Width:"
-msgstr "Zabalera"
-
-#: src/ext_l10n.h:699
-#, fuzzy
-msgid "&Height:"
-msgstr "Altuera"
-
-#: src/ext_l10n.h:700
-msgid "Foot/Head Margins"
-msgstr "Oin/Buruko Margenak"
-
-#: src/ext_l10n.h:701
-#, fuzzy
-msgid "&Footskip:"
-msgstr "Oin ohar jauzia:|#j"
-
-#: src/ext_l10n.h:702
-#, fuzzy
-msgid "Hea&dsep:"
-msgstr "Banaketa:|#b"
-
-#: src/ext_l10n.h:703
-#, fuzzy
-msgid "Headhe&ight:"
-msgstr "Altuera:|#u"
-
-#: src/ext_l10n.h:706
-#, fuzzy
-msgid "Enco&ding:"
-msgstr "Kodeaketa"
-
-#: src/ext_l10n.h:708 src/frontends/qt2/QDocument.C:153
-#, fuzzy
-msgid "auto"
-msgstr "nora"
-
-#: src/ext_l10n.h:709 src/frontends/qt2/QDocument.C:154
-#, fuzzy
-msgid "latin1"
-msgstr "Azalpena"
-
-#: src/ext_l10n.h:710 src/frontends/qt2/QDocument.C:155
-#, fuzzy
-msgid "latin2"
-msgstr "Azalpena"
-
-#: src/ext_l10n.h:711 src/frontends/qt2/QDocument.C:156
-#, fuzzy
-msgid "latin3"
-msgstr "Azalpena"
-
-#: src/ext_l10n.h:712 src/frontends/qt2/QDocument.C:157
-#, fuzzy
-msgid "latin4"
-msgstr "Azalpena"
-
-#: src/ext_l10n.h:713 src/frontends/qt2/QDocument.C:158
-#, fuzzy
-msgid "latin5"
-msgstr "Azalpena"
-
-#: src/ext_l10n.h:714 src/frontends/qt2/QDocument.C:159
-#, fuzzy
-msgid "latin9"
-msgstr "Azalpena"
-
-#: src/ext_l10n.h:715 src/frontends/qt2/QDocument.C:160
-msgid "koi8-r"
-msgstr ""
-
-#: src/ext_l10n.h:716 src/frontends/qt2/QDocument.C:161
-msgid "koi8-u"
-msgstr ""
-
-#: src/ext_l10n.h:717 src/frontends/qt2/QDocument.C:162
-msgid "cp866"
-msgstr ""
-
-#: src/ext_l10n.h:718 src/frontends/qt2/QDocument.C:163
-msgid "cp1251"
-msgstr ""
-
-#: src/ext_l10n.h:719 src/frontends/qt2/QDocument.C:164
-msgid "iso88595"
-msgstr ""
-
-#: src/ext_l10n.h:720
-#, fuzzy
-msgid "Quote Style"
-msgstr "Komila Itxura    "
-
-#: src/ext_l10n.h:721
-#, fuzzy
-msgid "&Type:"
-msgstr "Hizkia:"
-
-#: src/ext_l10n.h:722 src/frontends/qt2/QDocument.C:171
-#, fuzzy
-msgid "``text''"
-msgstr "testua"
-
-#: src/ext_l10n.h:723 src/frontends/qt2/QDocument.C:172
-#, fuzzy
-msgid "''text''"
-msgstr "testua"
-
-#: src/ext_l10n.h:724 src/frontends/qt2/QDocument.C:173
-#, fuzzy
-msgid ",,text``"
-msgstr "testua"
-
-#: src/ext_l10n.h:725 src/frontends/qt2/QDocument.C:174
-#, fuzzy
-msgid ",,text''"
-msgstr "testua"
-
-#: src/ext_l10n.h:726
-#, fuzzy
-msgid "Â«textÂ»"
-msgstr "testua"
-
-#: src/ext_l10n.h:727
-#, fuzzy
-msgid "Â»textÂ«"
-msgstr "testua"
-
-#: src/ext_l10n.h:728
-#, fuzzy
-msgid "&Single"
-msgstr "Bakarra"
-
-#: src/ext_l10n.h:729
-#, fuzzy
-msgid "&Double"
-msgstr "Bikoitza"
-
-#: src/ext_l10n.h:730 src/ext_l10n.h:853
-#: src/frontends/xforms/FormDocument.C:333
-msgid "Extra"
-msgstr "Bestelakoak"
-
-#: src/ext_l10n.h:731
-#, fuzzy
-msgid "F&loat Placement:"
-msgstr "Mugikorren Kokapena:|#M"
-
-#: src/ext_l10n.h:732
-#, fuzzy
-msgid "S&ection number depth:"
-msgstr "Atal zenbaki sakonera"
-
-#: src/ext_l10n.h:733
-#, fuzzy
-msgid "&Table of contents depth:"
-msgstr "Aurkibideko sakonera"
-
-#: src/ext_l10n.h:734
-#, fuzzy
-msgid "P&S Driver:"
-msgstr "PS Kontrolatzailea:|#K"
-
-#: src/ext_l10n.h:735
-#, fuzzy
-msgid "Use A&MS Math"
-msgstr "AMS Matematika erabili|#A"
-
-#: src/ext_l10n.h:736 src/frontends/xforms/FormDocument.C:335
-msgid "Bullets"
-msgstr "Pinportak"
-
-#: src/ext_l10n.h:737
-#, fuzzy
-msgid "Si&ze"
-msgstr "Neurria|#N"
-
-#: src/ext_l10n.h:739 src/frontends/qt2/QDocument.C:197
-#: src/frontends/xforms/form_preferences.C:171
-msgid "tiny"
-msgstr "ttipia"
-
-#: src/ext_l10n.h:740 src/frontends/qt2/QDocument.C:198
-msgid "script"
-msgstr "indizea"
-
-#: src/ext_l10n.h:741 src/frontends/qt2/QDocument.C:199
-msgid "footnote"
-msgstr "oin oharra"
-
-#: src/ext_l10n.h:742 src/frontends/qt2/QDocument.C:200
-#: src/frontends/xforms/form_preferences.C:180
-msgid "small"
-msgstr "txikia"
-
-#: src/ext_l10n.h:743 src/frontends/qt2/QDocument.C:201
-#: src/frontends/xforms/form_preferences.C:183
-msgid "normal"
-msgstr "normala"
-
-#: src/ext_l10n.h:744 src/frontends/qt2/QDocument.C:202
-#: src/frontends/xforms/form_preferences.C:186
-msgid "large"
-msgstr "handia"
-
-#: src/ext_l10n.h:745 src/frontends/controllers/character.C:105
-#: src/frontends/qt2/QDocument.C:203 src/lyxfont.C:56
-msgid "Large"
-msgstr "Handia"
-
-#: src/ext_l10n.h:746 src/frontends/qt2/QDocument.C:204
-msgid "LARGE"
-msgstr ""
-
-#: src/ext_l10n.h:747 src/frontends/qt2/QDocument.C:205
-#: src/frontends/xforms/form_preferences.C:195
-msgid "huge"
-msgstr "erraldoia"
-
-#: src/ext_l10n.h:748 src/frontends/controllers/character.C:111
-#: src/frontends/qt2/QDocument.C:206 src/lyxfont.C:57
-msgid "Huge"
-msgstr "Erraldoia"
-
-#: src/ext_l10n.h:749 src/frontends/xforms/form_document.C:608
-msgid "Bullet Depth"
-msgstr "Sakonera"
-
-#: src/ext_l10n.h:750
-msgid "&1"
-msgstr ""
-
-#: src/ext_l10n.h:751
-msgid "&2"
-msgstr ""
-
-#: src/ext_l10n.h:752
-msgid "&3"
-msgstr ""
-
-#: src/ext_l10n.h:753
-msgid "&4"
-msgstr ""
-
-#: src/ext_l10n.h:754
-#, fuzzy
-msgid "&Standard"
-msgstr "Arrunta"
-
-#: src/ext_l10n.h:755
-#, fuzzy
-msgid "&Maths"
-msgstr "Ibilbideak"
-
-#: src/ext_l10n.h:756
-#, fuzzy
-msgid "&Ding 1"
-msgstr "Ding 1|#D"
-
-#: src/ext_l10n.h:757
-#, fuzzy
-msgid "D&ing 2"
-msgstr "Ding 2|#i"
-
-#: src/ext_l10n.h:758
-#, fuzzy
-msgid "Di&ng 3"
-msgstr "Ding 3|#n"
-
-#: src/ext_l10n.h:759
-#, fuzzy
-msgid "Din&g 4"
-msgstr "Ding 4|#g"
-
-#: src/ext_l10n.h:760
-#, fuzzy
-msgid "&LaTeX"
-msgstr "LaTeX"
-
-#: src/ext_l10n.h:765 src/frontends/qt2/QError.C:23
-#: src/frontends/xforms/FormError.C:24
-msgid "LaTeX Error"
-msgstr "LaTeX-eko Akatsa"
-
-#: src/ext_l10n.h:766 src/ext_l10n.h:780
-#, fuzzy
-msgid "LaTeX error messages"
-msgstr "LaTeX-eko Akatsa"
-
-#: src/ext_l10n.h:768
-#, fuzzy
-msgid "ERT inset display"
-msgstr "[erakutsi barik]"
-
-#: src/ext_l10n.h:769
-msgid "&Inline"
-msgstr ""
-
-#: src/ext_l10n.h:770
-msgid "Show ERT inline"
-msgstr ""
-
-#: src/ext_l10n.h:771
-#, fuzzy
-msgid "&Collapsed"
-msgstr "Erkatu"
-
-#: src/ext_l10n.h:772
-msgid "Show ERT button only"
-msgstr ""
-
-#: src/ext_l10n.h:773
-#, fuzzy
-msgid "&Open"
-msgstr "Ireki"
-
-#: src/ext_l10n.h:774
-#, fuzzy
-msgid "Show ERT contents"
-msgstr "Aurkibide Orokorrik Ez%i"
-
-#: src/ext_l10n.h:777
-#, fuzzy
-msgid "External Material"
-msgstr "Kanpo Materiala...|K"
-
-#: src/ext_l10n.h:778
-#, fuzzy
-msgid "&Template"
-msgstr "Ereduak"
-
-#: src/ext_l10n.h:779
-#, fuzzy
-msgid "Available templates"
-msgstr "Tekla Eskuragarriak"
-
-#: src/ext_l10n.h:781
-#, fuzzy
-msgid "&Edit file"
-msgstr "Fitxategia argitatu|#a"
-
-#: src/ext_l10n.h:782
-#, fuzzy
-msgid "Edit the file externally"
-msgstr "Kanpo fitxategi multzoa"
-
-#: src/ext_l10n.h:783
-#, fuzzy
-msgid "&View file"
-msgstr "fitxategi berria"
-
-#: src/ext_l10n.h:784
-#, fuzzy
-msgid "View the file"
-msgstr "Taulen Zerrenda Ikusi"
-
-#: src/ext_l10n.h:785 src/ext_l10n.h:903 src/ext_l10n.h:1103
-#: src/ext_l10n.h:1189 src/ext_l10n.h:1202
-msgid "&Update"
-msgstr "&Eguneratu"
-
-#: src/ext_l10n.h:786
-msgid "Update the material"
-msgstr ""
-
-#: src/ext_l10n.h:787 src/ext_l10n.h:1075
-msgid "&File"
-msgstr "&Fitxategia"
-
-#: src/ext_l10n.h:788
-#, fuzzy
-msgid "Filename"
-msgstr "Fitxategia:|#F"
-
-#: src/ext_l10n.h:789 src/ext_l10n.h:810 src/ext_l10n.h:891
-#: src/ext_l10n.h:1079
-#, fuzzy
-msgid "&Browse ..."
-msgstr "Arakatu..."
-
-#: src/ext_l10n.h:790
-#, fuzzy
-msgid "&Parameters"
-msgstr "Agerbideak|#g"
-
-#: src/ext_l10n.h:791
-#, fuzzy
-msgid "Parameters"
-msgstr "Agerbideak|#g"
-
-#: src/ext_l10n.h:795 src/ext_l10n.h:806 src/ext_l10n.h:1160
-#, fuzzy
-msgid "Form1"
-msgstr "Nondik"
-
-#: src/ext_l10n.h:800 src/frontends/xforms/form_float.C:29
-#, fuzzy
-msgid "Placement"
-msgstr "Mugikorren Kokapena:|#M"
-
-#: src/ext_l10n.h:801
-#, fuzzy
-msgid "Bottom of the page"
-msgstr "azpikaldea"
-
-#: src/ext_l10n.h:802
-#, fuzzy
-msgid "Top of the page"
-msgstr "% Orriarena"
-
-#: src/ext_l10n.h:803
-#, fuzzy
-msgid "Page of floats"
-msgstr "Orri zutabeak"
-
-#: src/ext_l10n.h:804
-msgid "Here, if possible"
-msgstr ""
-
-#: src/ext_l10n.h:805
-msgid "Here, definitely"
-msgstr ""
-
-#. add the different tabfolders
-#: src/ext_l10n.h:807 src/frontends/xforms/FormGraphics.C:189
-#, fuzzy
-msgid "File"
-msgstr "&Fitxategia"
-
-#: src/ext_l10n.h:808
-#, fuzzy
-msgid "&File:"
-msgstr "&Fitxategia"
-
-#: src/ext_l10n.h:809 src/ext_l10n.h:890
-#, fuzzy
-msgid "File name to include"
-msgstr "Sartu beharreko Idazkia Hautatu"
-
-#: src/ext_l10n.h:811 src/ext_l10n.h:892
-#, fuzzy
-msgid "Select a file"
-msgstr "Irteerako fitxategi izena hautatu"
-
-#: src/ext_l10n.h:812
-#, fuzzy
-msgid "Screen Options"
-msgstr "Pantailako Hizkimotak"
-
-#: src/ext_l10n.h:813 src/ext_l10n.h:829
-#: src/frontends/xforms/form_minipage.C:28
-msgid "Width"
-msgstr "Zabalera"
-
-#: src/ext_l10n.h:814
-#, fuzzy
-msgid "Monochrome"
-msgstr "Monokromo eran|#M"
-
-#: src/ext_l10n.h:815
-#, fuzzy
-msgid "Grayscale"
-msgstr "Txuribeltz eran|#T"
-
-#: src/ext_l10n.h:816
-#, fuzzy
-msgid "Color"
-msgstr "Koloreak"
-
-#: src/ext_l10n.h:817
-#, fuzzy
-msgid "Do not display"
-msgstr "Ez bistaratu|#A"
-
-#: src/ext_l10n.h:819
-msgid "S&how:"
-msgstr ""
-
-#: src/ext_l10n.h:820 src/ext_l10n.h:830
-msgid "Height"
-msgstr "Altuera"
-
-#: src/ext_l10n.h:821
-#, fuzzy
-msgid "&Draft mode"
-msgstr "Matematika Era"
-
-#: src/ext_l10n.h:822
-#, fuzzy
-msgid "draft mode"
-msgstr "Matematika Era"
-
-#: src/ext_l10n.h:823 src/frontends/xforms/form_preferences.C:201
-#, fuzzy
-msgid "Size"
-msgstr "Neurria|#N"
-
-#: src/ext_l10n.h:824
-#, fuzzy
-msgid "&Scale"
-msgstr "Txikiago"
-
-#: src/ext_l10n.h:825
-#, fuzzy
-msgid "&Default"
-msgstr "Jatorrizkoa"
-
-#: src/ext_l10n.h:826
-#, fuzzy
-msgid "&Custom"
-msgstr "Bezeroa"
-
-#: src/ext_l10n.h:827 src/frontends/xforms/form_graphics.C:227
-#: src/frontends/xforms/form_graphics.C:444
-#, no-c-format
-msgid "%"
-msgstr ""
-
-#: src/ext_l10n.h:828
-msgid "Keep aspect&ratio"
-msgstr ""
-
-#: src/ext_l10n.h:831
-#, fuzzy
-msgid "EPS Options"
-msgstr "Aukerak"
-
-#: src/ext_l10n.h:832
-msgid "Bounding box"
-msgstr ""
-
-#: src/ext_l10n.h:833
-#, fuzzy
-msgid "Left &bottom:"
-msgstr "Ezker"
-
-#: src/ext_l10n.h:834
-#, fuzzy
-msgid "Right &top:"
-msgstr "Eskuin"
-
-#: src/ext_l10n.h:835
-msgid "Y"
-msgstr ""
-
-#: src/ext_l10n.h:836
-#, fuzzy
-msgid "X"
-msgstr "#X"
-
-#: src/ext_l10n.h:837 src/ext_l10n.h:840 src/ext_l10n.h:843 src/ext_l10n.h:846
-#: src/frontends/qt2/lengthcombo.C:21
-msgid "pt"
-msgstr ""
-
-#: src/ext_l10n.h:838 src/ext_l10n.h:841 src/ext_l10n.h:844 src/ext_l10n.h:847
-#: src/frontends/qt2/lengthcombo.C:19
-msgid "cm"
-msgstr "zm"
-
-#: src/ext_l10n.h:839 src/ext_l10n.h:842 src/ext_l10n.h:845 src/ext_l10n.h:848
-#: src/frontends/qt2/lengthcombo.C:20
-#, fuzzy
-msgid "in"
-msgstr "ttipia"
-
-#: src/ext_l10n.h:849
-msgid "&Get"
-msgstr ""
-
-#: src/ext_l10n.h:850
-msgid "Get bounding box from file"
-msgstr ""
-
-#: src/ext_l10n.h:851
-msgid "&Clip to bounding box"
-msgstr ""
-
-#: src/ext_l10n.h:852
-msgid "clip to bounding box"
-msgstr ""
-
-#: src/ext_l10n.h:854
-msgid "Rotation"
-msgstr "Biraketa"
-
-#: src/ext_l10n.h:855
-#, fuzzy
-msgid "&Angle:"
-msgstr "Anguloa|#L"
-
-#: src/ext_l10n.h:856
-msgid "&Origin:"
-msgstr ""
-
-#: src/ext_l10n.h:858
-msgid "leftTop"
-msgstr ""
-
-#: src/ext_l10n.h:859
-#, fuzzy
-msgid "leftBottom"
-msgstr "&Azpikaldea"
-
-#: src/ext_l10n.h:860
-#, fuzzy
-msgid "leftBaseline"
-msgstr "taula lerroa"
-
-#: src/ext_l10n.h:861 src/frontends/controllers/ControlGraphics.C:202
-#, fuzzy
-msgid "center"
-msgstr "Erdigunea"
-
-#: src/ext_l10n.h:862
-msgid "centerTop"
-msgstr ""
-
-#: src/ext_l10n.h:863
-#, fuzzy
-msgid "centerBottom"
-msgstr "Goratua | Erdiratua | Azpiratu"
-
-#: src/ext_l10n.h:864
-msgid "centerBaseline"
-msgstr ""
-
-#: src/ext_l10n.h:865
-#, fuzzy
-msgid "rightTop"
-msgstr "Altuera"
-
-#: src/ext_l10n.h:866
-#, fuzzy
-msgid "rightBottom"
-msgstr "botoitxoaren eskuinaldea"
-
-#: src/ext_l10n.h:867
-#, fuzzy
-msgid "rightBaseline"
-msgstr "taula lerroa"
-
-#: src/ext_l10n.h:868
-#, fuzzy
-msgid "referencePoint"
-msgstr "Lehentasuna"
-
-#: src/ext_l10n.h:869
-#, fuzzy
-msgid "LaTeX options"
-msgstr "beste aukerak"
-
-#: src/ext_l10n.h:870
-#, fuzzy
-msgid "Su&bfigure"
-msgstr "Azpi-irudia|#b"
-
-#: src/ext_l10n.h:871
-msgid "The sub-caption for the figure"
-msgstr ""
-
-#: src/ext_l10n.h:876
-#, fuzzy
-msgid "Include File"
-msgstr "Fitxategia Barneratu|B"
-
-#: src/ext_l10n.h:877
-#, fuzzy
-msgid "Include type"
-msgstr "Fitxategia Barneratu|B"
-
-#: src/ext_l10n.h:878
-#, fuzzy
-msgid "&Include"
-msgstr "Barneratu"
-
-#: src/ext_l10n.h:879 src/ext_l10n.h:881 src/ext_l10n.h:883 src/ext_l10n.h:886
-#: src/ext_l10n.h:888
-msgid "FIXME"
-msgstr ""
-
-#: src/ext_l10n.h:880
-#, fuzzy
-msgid "I&nput"
-msgstr "Sarrera"
-
-#: src/ext_l10n.h:882
-#, fuzzy
-msgid "&Verbatim"
-msgstr "Hitzez-hitz"
-
-#: src/ext_l10n.h:884
-msgid "Options"
-msgstr "Aukerak"
-
-#: src/ext_l10n.h:885
-#, fuzzy
-msgid "&Don't typeset"
-msgstr "Hizki motarik ez|#H"
-
-#: src/ext_l10n.h:887
-#, fuzzy
-msgid "Visible &Space"
-msgstr "Hutsune ikuskorra|#s"
-
-#: src/ext_l10n.h:889
-#, fuzzy
-msgid "&Filename:"
-msgstr "Fitxategia:|#F"
-
-#: src/ext_l10n.h:895
-#, fuzzy
-msgid "&Load"
-msgstr "Bereganatu|#B"
-
-#: src/ext_l10n.h:896
-#, fuzzy
-msgid "Load the file"
-msgstr "Azken fitxategia"
-
-#: src/ext_l10n.h:898 src/ext_l10n.h:1176
-#, fuzzy
-msgid "&Keyword"
-msgstr "Giltza"
-
-#: src/ext_l10n.h:899 src/ext_l10n.h:1031 src/ext_l10n.h:1177
-msgid "Index entry"
-msgstr "Sartu Errolda"
-
-#: src/ext_l10n.h:902 src/frontends/qt2/QLog.C:33
-msgid "Log"
-msgstr ""
-
-#: src/ext_l10n.h:904 src/ext_l10n.h:1203
-msgid "Update the display"
-msgstr ""
-
-#: src/ext_l10n.h:906
-#, fuzzy
-msgid "Minipage settings"
-msgstr "orritxo lerroa"
-
-#: src/ext_l10n.h:908 src/ext_l10n.h:1057
-#, fuzzy
-msgid "Top"
-msgstr "&Goikaldea"
-
-#: src/ext_l10n.h:909 src/ext_l10n.h:1058
-#, fuzzy
-msgid "Middle"
-msgstr "&Erdia"
-
-#: src/ext_l10n.h:910 src/ext_l10n.h:1059
-#, fuzzy
-msgid "Bottom"
-msgstr "&Azpikaldea"
-
-#: src/ext_l10n.h:911
-#, fuzzy
-msgid "Vertical alignment"
-msgstr "Goitiberako Lerrokaketa|#V"
-
-#: src/ext_l10n.h:912
-#, fuzzy
-msgid "A&lignment:"
-msgstr "Lerrokaketa"
-
-#: src/ext_l10n.h:913
-msgid "Units of width value"
-msgstr ""
-
-#: src/ext_l10n.h:914
-#, fuzzy
-msgid "Width value"
-msgstr "Zabalera"
-
-#: src/ext_l10n.h:915
-msgid "&Units:"
-msgstr ""
-
-#: src/ext_l10n.h:921
-msgid "&Alignment and Spacing"
-msgstr ""
-
-#: src/ext_l10n.h:922
-#, fuzzy
-msgid "Alignment:"
-msgstr "Lerrokaketa"
-
-#: src/ext_l10n.h:923
-#, fuzzy
-msgid "Justified"
-msgstr "Egokitzaketa|E"
-
-#: src/ext_l10n.h:924
-msgid "Left"
-msgstr "Ezker"
-
-#: src/ext_l10n.h:925
-msgid "Right"
-msgstr "Eskuin"
-
-#: src/ext_l10n.h:926
-#, fuzzy
-msgid "Centered"
-msgstr "Erdigunea"
-
-#: src/ext_l10n.h:927
-#, fuzzy
-msgid "No indentation"
-msgstr "Oharra"
-
-#: src/ext_l10n.h:928
-#, fuzzy
-msgid "Spacing"
-msgstr "Hutsunea|#H"
-
-#: src/ext_l10n.h:929 src/ext_l10n.h:940 src/ext_l10n.h:951 src/ext_l10n.h:962
-#: src/ext_l10n.h:973 src/ext_l10n.h:984 src/ext_l10n.h:1037
-msgid "Centimetres"
-msgstr "Zentimetroak"
-
-#: src/ext_l10n.h:930 src/ext_l10n.h:941 src/ext_l10n.h:952 src/ext_l10n.h:963
-#: src/ext_l10n.h:974 src/ext_l10n.h:985 src/ext_l10n.h:1038
-msgid "Inches"
-msgstr "Atzak"
-
-#: src/ext_l10n.h:931 src/ext_l10n.h:942 src/ext_l10n.h:953 src/ext_l10n.h:964
-#: src/ext_l10n.h:975 src/ext_l10n.h:986 src/ext_l10n.h:1039
-#, fuzzy
-msgid "Points"
-msgstr "Inprimatu"
-
-#: src/ext_l10n.h:932 src/ext_l10n.h:943 src/ext_l10n.h:954 src/ext_l10n.h:965
-#: src/ext_l10n.h:976 src/ext_l10n.h:987 src/ext_l10n.h:1040
-msgid "Millimetres"
-msgstr "Milimetroak"
-
-#: src/ext_l10n.h:933 src/ext_l10n.h:944 src/ext_l10n.h:955 src/ext_l10n.h:966
-#: src/ext_l10n.h:977 src/ext_l10n.h:988 src/ext_l10n.h:1041
-msgid "Picas"
-msgstr "Pikak"
-
-#: src/ext_l10n.h:934 src/ext_l10n.h:945 src/ext_l10n.h:956 src/ext_l10n.h:967
-#: src/ext_l10n.h:978 src/ext_l10n.h:989 src/ext_l10n.h:1042
-#, fuzzy
-msgid "ex Units"
-msgstr "neurriz kanpo"
-
-#: src/ext_l10n.h:935 src/ext_l10n.h:946 src/ext_l10n.h:957 src/ext_l10n.h:968
-#: src/ext_l10n.h:979 src/ext_l10n.h:990 src/ext_l10n.h:1043
-#, fuzzy
-msgid "em Units"
-msgstr "em neurrietan"
-
-#: src/ext_l10n.h:936 src/ext_l10n.h:947 src/ext_l10n.h:958 src/ext_l10n.h:969
-#: src/ext_l10n.h:980 src/ext_l10n.h:991 src/ext_l10n.h:1044
-#, fuzzy
-msgid "Scaled Points"
-msgstr "Cicero puntuak"
-
-#: src/ext_l10n.h:937 src/ext_l10n.h:948 src/ext_l10n.h:959 src/ext_l10n.h:970
-#: src/ext_l10n.h:981 src/ext_l10n.h:992 src/ext_l10n.h:1045
-#, fuzzy
-msgid "Big/PS Points"
-msgstr "Haundia/PS puntuak (1/72 atz)"
-
-#: src/ext_l10n.h:938 src/ext_l10n.h:949 src/ext_l10n.h:960 src/ext_l10n.h:971
-#: src/ext_l10n.h:982 src/ext_l10n.h:993 src/ext_l10n.h:1046
-#, fuzzy
-msgid "Didot Points"
-msgstr "Didot puntuak"
-
-#: src/ext_l10n.h:939 src/ext_l10n.h:950 src/ext_l10n.h:961 src/ext_l10n.h:972
-#: src/ext_l10n.h:983 src/ext_l10n.h:994 src/ext_l10n.h:1047
-#, fuzzy
-msgid "Cicero Points"
-msgstr "Cicero puntuak"
-
-#: src/ext_l10n.h:995 src/ext_l10n.h:997
-msgid "Units:"
-msgstr ""
-
-#: src/ext_l10n.h:996 src/ext_l10n.h:998
-msgid "Unit of Size, Stretch and Slink"
-msgstr ""
-
-#: src/ext_l10n.h:999
-#, fuzzy
-msgid "Value:"
-msgstr "Balioa"
-
-#: src/ext_l10n.h:1000
-#, fuzzy
-msgid "Amount of spacing"
-msgstr "Hutsunea"
-
-#: src/ext_l10n.h:1001
-#, fuzzy
-msgid "Stretch:"
-msgstr "Kalea"
-
-#: src/ext_l10n.h:1002
-msgid "Margin by which paragraph is allowed to increase"
-msgstr ""
-
-#: src/ext_l10n.h:1003
-msgid "Shrink:"
-msgstr ""
-
-#: src/ext_l10n.h:1004
-msgid "Margin by which paragraph is allowed to decrease"
-msgstr ""
-
-#: src/ext_l10n.h:1006 src/ext_l10n.h:1015
-#, fuzzy
-msgid "DefSkip"
-msgstr "Jauziaren Ezaugarria"
-
-#: src/ext_l10n.h:1007 src/ext_l10n.h:1016
-#, fuzzy
-msgid "SmallSkip"
-msgstr "Jauzi txikia"
-
-#: src/ext_l10n.h:1008 src/ext_l10n.h:1017
-#, fuzzy
-msgid "MedSkip"
-msgstr "Jauzi Erdia"
-
-#: src/ext_l10n.h:1009 src/ext_l10n.h:1018
-#, fuzzy
-msgid "BigSkip"
-msgstr "Jauzi Haundia"
-
-#: src/ext_l10n.h:1010 src/ext_l10n.h:1019
-msgid "VFill"
-msgstr "GoibeherakoBetegarria"
-
-#: src/ext_l10n.h:1012
-#, fuzzy
-msgid "Above:"
-msgstr "Gain|#n"
-
-#: src/ext_l10n.h:1013
-#, fuzzy
-msgid "Below:"
-msgstr "Azpi|#p"
-
-#: src/ext_l10n.h:1021
-#, fuzzy
-msgid "Keep space at the top of the page"
-msgstr "Orriaren goikaldean hutsunea eduki"
-
-#: src/ext_l10n.h:1022
-#, fuzzy
-msgid "Keep space at top of the page"
-msgstr "Orriaren goikaldean hutsunea eduki"
-
-#: src/ext_l10n.h:1023
-#, fuzzy
-msgid "Keep space at the bottom of the page"
-msgstr "Orriaren goikaldean hutsunea eduki"
-
-#: src/ext_l10n.h:1024
-#, fuzzy
-msgid "List environment"
-msgstr "Lerrokaketa|#L"
-
-#: src/ext_l10n.h:1025
-#, fuzzy
-msgid "Label width:"
-msgstr "Txartel zabaleroa"
-
-#: src/ext_l10n.h:1026
-#, fuzzy
-msgid "Label width in list environment"
-msgstr "Gune Sakonera Aldatu|S"
-
-#: src/ext_l10n.h:1027
-#, fuzzy
-msgid "&Lines and Page breaks"
-msgstr "Orri Jauziak"
-
-#: src/ext_l10n.h:1028
-msgid "Page break"
-msgstr "Orri Jauzia"
-
-#: src/ext_l10n.h:1029 src/ext_l10n.h:1033
-#, fuzzy
-msgid "above paragraph"
-msgstr "Parrafo bat gora joan"
-
-#: src/ext_l10n.h:1030 src/ext_l10n.h:1034
-#, fuzzy
-msgid "below paragraph"
-msgstr "Parrafo bat gora joan"
-
-#: src/ext_l10n.h:1032
-#, fuzzy
-msgid "Line"
-msgstr "Lerroak"
-
-#: src/ext_l10n.h:1035
-#, fuzzy
-msgid "&Extra options"
-msgstr "Aukera Gehiago"
-
-#: src/ext_l10n.h:1036
-#, fuzzy
-msgid "Unit:"
-msgstr "Hizki-mota: "
-
-#: src/ext_l10n.h:1049 src/frontends/qt2/QMinipage.C:33
-msgid "Minipage"
-msgstr "Orri-ttipia"
-
-#: src/ext_l10n.h:1050
-#, fuzzy
-msgid "Wrap text around floats"
-msgstr "Testua mugikorren inguruan jarri (floatflt)"
-
-#: src/ext_l10n.h:1051
-#, fuzzy
-msgid "Indent whole paragraph"
-msgstr "Sangratutako Parrafoa"
-
-#: src/ext_l10n.h:1052
-#, fuzzy
-msgid "Width:"
-msgstr "Zabalera"
-
-#: src/ext_l10n.h:1053
-#, fuzzy
-msgid "Minipage options"
-msgstr "orritxo lerroa"
-
-#: src/ext_l10n.h:1054
-#, fuzzy
-msgid "Start new minipage"
-msgstr "&Orri-ttipi berria Hasi"
-
-#: src/ext_l10n.h:1055
-#, fuzzy
-msgid "HFill between minipage paragraphs"
-msgstr "&HBetegarri Orri-ttipiko parrafoen artean"
-
-#: src/ext_l10n.h:1056
-#, fuzzy
-msgid "Vertical Alignment:"
-msgstr "Goitiberako Lerrokaketa|#V"
-
-#: src/ext_l10n.h:1064
-#, fuzzy
-msgid "LaTeX pre-amble"
-msgstr "LaTeX Aurre-Esana"
-
-#: src/ext_l10n.h:1065
-#, fuzzy
-msgid "The LaTeX pre-amble"
-msgstr "LaTeX Aurre-Esana"
-
-#: src/ext_l10n.h:1066
-msgid "&Edit ..."
-msgstr ""
-
-#: src/ext_l10n.h:1067
-msgid "Edit the pre-amble in an external editor"
-msgstr ""
-
-#: src/ext_l10n.h:1071 src/frontends/qt2/QPrint.C:35
-#: src/frontends/xforms/form_print.C:133 src/frontends/xforms/FormPrint.C:35
-#: src/LyXAction.C:138 src/LyXAction.C:145
-msgid "Print"
-msgstr "Inprimatu"
-
-#: src/ext_l10n.h:1072
-#, fuzzy
-msgid "Print Destination"
-msgstr "Norabidea"
-
-#: src/ext_l10n.h:1073
-#, fuzzy
-msgid "P&rinter"
-msgstr "Inprimagailua"
-
-#: src/ext_l10n.h:1074
-msgid "Send output to the printer"
-msgstr ""
-
-#: src/ext_l10n.h:1076 src/ext_l10n.h:1078
-#, fuzzy
-msgid "Send output to a file"
-msgstr "Irteerako fitxategi izena hautatu"
-
-#: src/ext_l10n.h:1077
-msgid "Send output to the given printer"
-msgstr ""
-
-#: src/ext_l10n.h:1080
-msgid "Pages"
-msgstr "Orriak"
-
-#: src/ext_l10n.h:1081
-#, fuzzy
-msgid "&All"
-msgstr "&Eragin"
-
-#: src/ext_l10n.h:1082
-#, fuzzy
-msgid "Print all pages"
-msgstr "Orri guztiak inprimatu"
-
-#: src/ext_l10n.h:1083
-#, fuzzy
-msgid "&Odd"
-msgstr "&Gehitu"
-
-#: src/ext_l10n.h:1084
-#, fuzzy
-msgid "Print odd pages only"
-msgstr "Orrialde bakoitiarrak soilik inprimatu"
-
-#: src/ext_l10n.h:1085
-#, fuzzy
-msgid "&Even"
-msgstr "&Orrialde Bikoitiak"
-
-#: src/ext_l10n.h:1086
-#, fuzzy
-msgid "Print even pages only"
-msgstr "Orri bikoitiarrak soilik inprimatu"
-
-#: src/ext_l10n.h:1087
-#, fuzzy
-msgid "&Last page:"
-msgstr "Hizkuntza"
-
-#: src/ext_l10n.h:1088
-#, fuzzy
-msgid "Page number to print to"
-msgstr "Inprimaketa Ezinezkoa"
-
-#: src/ext_l10n.h:1089
-#, fuzzy
-msgid "Re&verse order"
-msgstr "&Alderantzizko antolaketa"
-
-#: src/ext_l10n.h:1090
-#, fuzzy
-msgid "Print in reverse order"
-msgstr "Alderantziz inprimatu (azken orrialdea lehendabizi)"
-
-#: src/ext_l10n.h:1091
-#, fuzzy
-msgid "Page number to print from"
-msgstr "Inprimaketa Ezinezkoa"
-
-#: src/ext_l10n.h:1092
-#, fuzzy
-msgid "Ran&ge"
-msgstr "Orrialdea"
-
-#: src/ext_l10n.h:1093
-#, fuzzy
-msgid "Set a range of pages to print"
-msgstr "Inprimatzeko Kopien zenbakia"
-
-#: src/ext_l10n.h:1094
-#, fuzzy
-msgid "&Starting range:"
-msgstr "&Orri-ttipi berria Hasi"
-
-#: src/ext_l10n.h:1095 src/frontends/xforms/form_print.C:139
-msgid "Copies"
-msgstr "Kopiak"
-
-#: src/ext_l10n.h:1096
-#, fuzzy
-msgid "Number of copies"
-msgstr "Inprimatzeko Kopien zenbakia"
-
-#: src/ext_l10n.h:1097
-#, fuzzy
-msgid "&Collate"
-msgstr "Erkatu"
-
-#: src/ext_l10n.h:1098
-#, fuzzy
-msgid "Collate copies"
-msgstr "Hainbat kopia eman"
-
-#: src/ext_l10n.h:1099
-msgid "&Print"
-msgstr "&Inprimatu"
-
-#: src/ext_l10n.h:1100 src/ext_l10n.h:1159
-#: src/frontends/controllers/ButtonController.h:74
-#: src/frontends/xforms/form_maths_deco.C:32
-#: src/frontends/xforms/FormMathsPanel.C:71
-#: src/frontends/xforms/FormMathsPanel.C:407
-#: src/frontends/xforms/form_maths_space.C:73
-#: src/frontends/xforms/form_maths_style.C:35 src/LyXAction.C:130
-msgid "Close"
-msgstr "Itxi"
-
-#: src/ext_l10n.h:1102 src/ext_l10n.h:1187
-#, fuzzy
-msgid "&Type"
-msgstr "Hizkia"
-
-#: src/ext_l10n.h:1104
-#, fuzzy
-msgid "Update the reference list"
-msgstr "Lehentasunak Argitatu"
-
-#: src/ext_l10n.h:1105
-msgid "Sort"
-msgstr "Sailkatu"
-
-#: src/ext_l10n.h:1106
-#, fuzzy
-msgid "Sort references in alphabetical order"
-msgstr "Erreferentziak alfabetikoki sailkatu?"
-
-#: src/ext_l10n.h:1107 src/frontends/qt2/QRef.C:103
-#, fuzzy
-msgid "&Goto"
-msgstr "&Azpikaldea"
-
-#: src/ext_l10n.h:1108
-#, fuzzy
-msgid "Move the document cursor to reference"
-msgstr "Idazkia aldatua egon daiteke"
-
-#: src/ext_l10n.h:1110
-#, fuzzy
-msgid "Page number"
-msgstr "Orri zenbakia"
-
-#: src/ext_l10n.h:1111
-msgid "Ref on page xxx"
-msgstr "xxx orrian erref"
-
-#: src/ext_l10n.h:1112
-#, fuzzy
-msgid "On page xxx"
-msgstr "xxx orrian"
-
-#: src/ext_l10n.h:1113
-msgid "Pretty reference"
-msgstr "Erreferentzia politta"
-
-#: src/ext_l10n.h:1114
-msgid "Reference as it appears in output"
-msgstr "Irteeran ageri den bezala erreferentziatu"
-
-#: src/ext_l10n.h:1115
-#, fuzzy
-msgid "&Reference:"
-msgstr "Erreferentzia :"
-
-#: src/ext_l10n.h:1116
-#, fuzzy
-msgid "&Name:"
-msgstr "Izena:"
-
-#: src/ext_l10n.h:1117
-#, fuzzy
-msgid "Available references"
-msgstr "Erreferentzi Eskuragarriak"
-
-#: src/ext_l10n.h:1120
-#, fuzzy
-msgid "Search and replace"
-msgstr "Bilatu eta Ordezkatu"
-
-#: src/ext_l10n.h:1121
-#, fuzzy
-msgid "&Find:"
-msgstr "Bilatu|#B"
-
-#: src/ext_l10n.h:1122
-#, fuzzy
-msgid "Replace &with:"
-msgstr "Ordezkatu|#R"
-
-#: src/ext_l10n.h:1123
-#, fuzzy
-msgid "Case &sensitive"
-msgstr "Larri/Xehea|#M"
-
-#: src/ext_l10n.h:1124
-msgid "Match whole words onl&y"
-msgstr ""
-
-#: src/ext_l10n.h:1125
-msgid "Find &Next"
-msgstr ""
-
-#: src/ext_l10n.h:1126 src/ext_l10n.h:1134 src/ext_l10n.h:1183
-#, fuzzy
-msgid "&Replace"
-msgstr "Ordezkatu"
-
-#: src/ext_l10n.h:1127
-#, fuzzy
-msgid "Replace &All "
-msgstr "Guztiak Ord.|#G#g"
-
-#: src/ext_l10n.h:1128
-msgid "Search &backwards"
-msgstr ""
-
-#: src/ext_l10n.h:1130
-#, fuzzy
-msgid "File: "
-msgstr "Fitxategia `"
-
-#: src/ext_l10n.h:1132 src/frontends/qt2/QSpellchecker.C:27
-#, fuzzy
-msgid "Spellchecker"
-msgstr "Zuzentzailea"
-
-#: src/ext_l10n.h:1133
-#, fuzzy
-msgid "Suggestions:"
-msgstr "Galdera"
-
-#: src/ext_l10n.h:1135
-#, fuzzy
-msgid "Replace word with current choice"
-msgstr "Oraingo idazkia ordezkatu?"
-
-#: src/ext_l10n.h:1136
-msgid "&Add"
-msgstr "&Gehitu"
-
-#: src/ext_l10n.h:1137
-#, fuzzy
-msgid "Add the word to your personal dictionary"
-msgstr "Erabiltzailearen hiztegian Sartu|#I"
-
-#: src/ext_l10n.h:1138
-#, fuzzy
-msgid "&Ignore"
-msgstr "Ahaztu"
-
-#: src/ext_l10n.h:1139
-#, fuzzy
-msgid "Ignore this word"
-msgstr "Ahaztu hitza|#h"
-
-#: src/ext_l10n.h:1140
-#, fuzzy
-msgid "&Accept"
-msgstr "Onartua"
-
-#: src/ext_l10n.h:1141
-#, fuzzy
-msgid "Accept word for this session"
-msgstr "Lanordu honetan hitza onartu|#A"
-
-#: src/ext_l10n.h:1142
-#, fuzzy
-msgid "&Options..."
-msgstr "Aukerak"
-
-#: src/ext_l10n.h:1144
-#, fuzzy
-msgid "How far spellchecking has got"
-msgstr "Zuzentzailea abiatu|#S"
-
-#: src/ext_l10n.h:1145 src/frontends/xforms/form_spellchecker.C:37
-#, fuzzy
-msgid "Suggestions"
-msgstr "Galdera"
-
-#: src/ext_l10n.h:1146
-#, fuzzy
-msgid "Replacement:"
-msgstr "Mugikorren Kokapena:|#M"
-
-#: src/ext_l10n.h:1147
-#, fuzzy
-msgid "Current word"
-msgstr "Oraingoa"
-
-#: src/ext_l10n.h:1148
-#, fuzzy
-msgid "Unknown:"
-msgstr "ezezaguna"
-
-#: src/ext_l10n.h:1149
-#, fuzzy
-msgid "Replace with selected word"
-msgstr "Oraingo idazkia ordezkatu?"
-
-#: src/ext_l10n.h:1150
-msgid "&Start..."
-msgstr ""
-
-#: src/ext_l10n.h:1151
-#, fuzzy
-msgid "Start spellcheck"
-msgstr "Zuzentzailea abiatu|#S"
-
-#: src/ext_l10n.h:1152 src/frontends/qt2/QTabularCreate.C:28
-#, fuzzy
-msgid "Insert table"
-msgstr "Taula Sartu"
-
-#: src/ext_l10n.h:1153
-#, fuzzy
-msgid "&Rows:"
-msgstr "Lerroak"
-
-#: src/ext_l10n.h:1154
-#, fuzzy
-msgid "Number of rows"
-msgstr "Inprimatzeko Kopien zenbakia"
-
-#: src/ext_l10n.h:1155
-#, fuzzy
-msgid "&Columns:"
-msgstr "Zutabeak"
-
-#: src/ext_l10n.h:1156
-#, fuzzy
-msgid "Number of columns"
-msgstr "Zutabeen ehunekoa"
-
-#: src/ext_l10n.h:1157
-msgid "Resize this to the correct table dimensions"
-msgstr ""
-
-#: src/ext_l10n.h:1161
-#, fuzzy
-msgid "LaTeX classes"
-msgstr "LaTeX-en Erregistro Artxiboa"
-
-#: src/ext_l10n.h:1162
-#, fuzzy
-msgid "LaTeX styles"
-msgstr "LaTeX Izenburua"
-
-#: src/ext_l10n.h:1163
-#, fuzzy
-msgid "BibTeX styles"
-msgstr "TeX Itxura|X"
-
-#: src/ext_l10n.h:1164
-#, fuzzy
-msgid "Selected classes or styles"
-msgstr "Hautatutako Teklak"
-
-#: src/ext_l10n.h:1165
-msgid "Show &path"
-msgstr ""
-
-#: src/ext_l10n.h:1166
-msgid "Toggles view of the file list"
-msgstr ""
-
-#: src/ext_l10n.h:1168
-#, fuzzy
-msgid "Installed files"
-msgstr "Fitxategia Barneratu|B"
-
-#: src/ext_l10n.h:1169
-#, fuzzy
-msgid "&Rescan"
-msgstr "Berrirakurri|#R#r"
-
-#: src/ext_l10n.h:1170
-#, fuzzy
-msgid "Built new file list"
-msgstr "Emaitzaren fitxategia hutsa dago"
-
-#: src/ext_l10n.h:1171
-#, fuzzy
-msgid "&View"
-msgstr "Ikuspegia"
-
-#: src/ext_l10n.h:1172
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
-msgstr ""
-
-#: src/ext_l10n.h:1174
-msgid "Close this dialog"
-msgstr ""
-
-#: src/ext_l10n.h:1178
-#, fuzzy
-msgid "Entry"
-msgstr "Txartela sartu:"
-
-#: src/ext_l10n.h:1179
-#, fuzzy
-msgid "Thesaurus entries"
-msgstr "Hiztegi Ideologikoa"
-
-#: src/ext_l10n.h:1180
-#, fuzzy
-msgid "Select a related word"
-msgstr "Irteerako fitxategi izena hautatu"
-
-#: src/ext_l10n.h:1181
-#, fuzzy
-msgid "&Selection"
-msgstr "hautaketa"
-
-#: src/ext_l10n.h:1182
-#, fuzzy
-msgid "The selected entry"
-msgstr "Hautatutako Teklak"
-
-#: src/ext_l10n.h:1184
-msgid "Replace the entry with the selection"
-msgstr ""
-
-#: src/ext_l10n.h:1186
-#, fuzzy
-msgid "Table Of Contents"
-msgstr "Aurkibide Orokorra"
-
-#: src/ext_l10n.h:1188
-#, fuzzy
-msgid "Contents list"
-msgstr "GaienEskarria"
-
-#: src/ext_l10n.h:1191
-#, fuzzy
-msgid "Insert URL"
-msgstr "Txartela Sartu"
-
-#: src/ext_l10n.h:1192
-#, fuzzy
-msgid "&URL"
-msgstr "URL"
-
-#: src/ext_l10n.h:1194
-#, fuzzy
-msgid "&Name"
-msgstr "Izena"
-
-#: src/ext_l10n.h:1195
-msgid "Name associated with the URL"
-msgstr "URL-arekin elkarturiko izena"
-
-#: src/ext_l10n.h:1197
-#, fuzzy
-msgid "&Generate hyperlink"
-msgstr "Hiperloturak sortu"
-
-#: src/ext_l10n.h:1198
-msgid "Output as a hyperlink ?"
-msgstr "Hiperlotura erako irteera?"
-
-#: src/ext_l10n.h:1201
-#, fuzzy
-msgid "Version control log"
-msgstr "Bertsio Kontrola|r"
-
 #. Insert the latex builtin float-types
 #. (these will later be read from a layout file)
 #. table
@@ -5229,6 +797,10 @@ msgstr "Irudia"
 #, fuzzy
 msgid "List of Figures"
 msgstr "Taulen Zerrenda"
+
+#: src/FloatList.C:47 src/ext_l10n.h:199
+msgid "Algorithm"
+msgstr "Algoritmoa"
 
 #: src/FloatList.C:48
 #, fuzzy
@@ -5252,6 +824,23 @@ msgstr ""
 #, fuzzy
 msgid "No year"
 msgstr "Zenbakirik gabe"
+
+#. /
+#: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:157
+#: src/lyxfunc.C:1082 src/ext_l10n.h:571 src/ext_l10n.h:605 src/ext_l10n.h:764
+#: src/ext_l10n.h:901
+msgid "Cancel"
+msgstr "Etsi"
+
+#: src/frontends/controllers/ButtonController.h:74
+#: src/frontends/xforms/form_maths_deco.C:32
+#: src/frontends/xforms/FormMathsPanel.C:71
+#: src/frontends/xforms/FormMathsPanel.C:407
+#: src/frontends/xforms/form_maths_space.C:73
+#: src/frontends/xforms/form_maths_style.C:35 src/LyXAction.C:130
+#: src/ext_l10n.h:1100 src/ext_l10n.h:1159
+msgid "Close"
+msgstr "Itxi"
 
 #: src/frontends/controllers/character.C:33
 #: src/frontends/controllers/character.C:53
@@ -5332,6 +921,11 @@ msgstr "Txikia"
 msgid "Normal"
 msgstr "Ohizkoa"
 
+#: src/frontends/controllers/character.C:105 src/frontends/qt2/QDocument.C:203
+#: src/lyxfont.C:56 src/ext_l10n.h:745
+msgid "Large"
+msgstr "Handia"
+
 #: src/frontends/controllers/character.C:107 src/lyxfont.C:57
 msgid "Larger"
 msgstr "Galanta"
@@ -5339,6 +933,11 @@ msgstr "Galanta"
 #: src/frontends/controllers/character.C:109 src/lyxfont.C:57
 msgid "Largest"
 msgstr "Egundokoa"
+
+#: src/frontends/controllers/character.C:111 src/frontends/qt2/QDocument.C:206
+#: src/lyxfont.C:57 src/ext_l10n.h:748
+msgid "Huge"
+msgstr "Erraldoia"
 
 #: src/frontends/controllers/character.C:113 src/lyxfont.C:57
 msgid "Huger"
@@ -5507,6 +1106,11 @@ msgstr "Ondorengo lerroa aukeratu"
 msgid "Clipart|#C#c"
 msgstr "Marrazki Liburutegia"
 
+#: src/frontends/controllers/ControlGraphics.C:202 src/ext_l10n.h:861
+#, fuzzy
+msgid "center"
+msgstr "Erdigunea"
+
 #: src/frontends/controllers/ControlGraphics.C:203
 #, fuzzy
 msgid "left top"
@@ -5654,6 +1258,11 @@ msgstr ""
 msgid "&No"
 msgstr ""
 
+#: src/frontends/qt2/Alert_pimpl.C:45 src/frontends/qt2/QParagraphDialog.C:49
+#: src/ext_l10n.h:539 src/ext_l10n.h:1063
+msgid "&Cancel"
+msgstr "&Etsi"
+
 #: src/frontends/qt2/Alert_pimpl.C:51
 #, fuzzy
 msgid "LyX: "
@@ -5661,6 +1270,22 @@ msgstr "LyX: Url"
 
 #: src/frontends/qt2/FileDialog.C:43
 msgid "*|All files"
+msgstr ""
+
+#: src/frontends/qt2/lengthcombo.C:19 src/ext_l10n.h:838 src/ext_l10n.h:841
+#: src/ext_l10n.h:844 src/ext_l10n.h:847
+msgid "cm"
+msgstr "zm"
+
+#: src/frontends/qt2/lengthcombo.C:20 src/ext_l10n.h:839 src/ext_l10n.h:842
+#: src/ext_l10n.h:845 src/ext_l10n.h:848
+#, fuzzy
+msgid "in"
+msgstr "ttipia"
+
+#: src/frontends/qt2/lengthcombo.C:21 src/ext_l10n.h:837 src/ext_l10n.h:840
+#: src/ext_l10n.h:843 src/ext_l10n.h:846
+msgid "pt"
 msgstr ""
 
 #: src/frontends/qt2/lengthcombo.C:22
@@ -5693,6 +1318,10 @@ msgstr ""
 msgid "dd"
 msgstr "Gehitu"
 
+#: src/frontends/qt2/lengthcombo.C:29 src/ext_l10n.h:227
+msgid "cc"
+msgstr "kopia nori"
+
 #: src/frontends/qt2/lengthcombo.C:30
 msgid "mu"
 msgstr ""
@@ -5715,6 +1344,11 @@ msgstr ""
 msgid "FIXME - describe the units."
 msgstr ""
 
+#: src/frontends/qt2/QAbout.C:32 src/frontends/xforms/FormAboutlyx.C:28
+#: src/ext_l10n.h:530
+msgid "About LyX"
+msgstr ""
+
 #: src/frontends/qt2/QBibitem.C:26
 #, fuzzy
 msgid "Bibliography Item"
@@ -5723,6 +1357,12 @@ msgstr "Bibliografi elementua"
 #: src/frontends/qt2/QBibtex.C:29
 msgid "BibTeX"
 msgstr "BibTeX"
+
+#: src/frontends/qt2/QBibtex.C:114 src/frontends/qt2/QBibtexDialog.C:77
+#: src/ext_l10n.h:562
+#, fuzzy
+msgid "Other ..."
+msgstr "beste..."
 
 #: src/frontends/qt2/QBibtexDialog.C:46
 msgid "BibTeX style files (*.bst)"
@@ -5743,6 +1383,16 @@ msgstr "Datu Basea:"
 msgid "Select a BibTeX database to add"
 msgstr "Datu Basea:"
 
+#: src/frontends/qt2/QCharacter.C:31 src/ext_l10n.h:572
+#, fuzzy
+msgid "Character"
+msgstr "Hizki-jokoa:|#J"
+
+#: src/frontends/qt2/QCitation.C:45 src/frontends/xforms/FormCitation.C:117
+#: src/ext_l10n.h:601
+msgid "Citation"
+msgstr "Aipamena"
+
 #: src/frontends/qt2/QCitationDialog.C:48
 #: src/frontends/xforms/FormCitation.C:476
 #, fuzzy
@@ -5754,8 +1404,120 @@ msgstr "Matematika eran Berregin oraindik ez dabil"
 msgid "Document Settings"
 msgstr "Idazkiak"
 
+#: src/frontends/qt2/QDocument.C:72 src/lyxfont.C:573 src/ext_l10n.h:673
+msgid "Default"
+msgstr "Jatorrizkoa"
+
+#: src/frontends/qt2/QDocument.C:73 src/ext_l10n.h:674 src/ext_l10n.h:1011
+#: src/ext_l10n.h:1020
+#, fuzzy
+msgid "Custom"
+msgstr "Bezeroa"
+
+#: src/frontends/qt2/QDocument.C:74 src/ext_l10n.h:675
+#, fuzzy
+msgid "USletter"
+msgstr "Gutuna"
+
+#: src/frontends/qt2/QDocument.C:75 src/ext_l10n.h:676
+msgid "USlegal"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:76 src/ext_l10n.h:677
+msgid "USexecutive"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:77 src/ext_l10n.h:678
+msgid "A3"
+msgstr ""
+
 #: src/frontends/qt2/QDocument.C:78
 msgid "A4"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:79 src/ext_l10n.h:679
+msgid "A5"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:80 src/ext_l10n.h:680
+msgid "B3"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:81 src/ext_l10n.h:681
+msgid "B4"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:82 src/ext_l10n.h:682
+msgid "B5"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:84 src/ext_l10n.h:684 src/ext_l10n.h:1005
+#: src/ext_l10n.h:1014 src/ext_l10n.h:1048
+msgid "None"
+msgstr "Ezer Ez"
+
+#: src/frontends/qt2/QDocument.C:85 src/ext_l10n.h:685
+msgid "A4 small Margins (only portrait)"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:86 src/ext_l10n.h:686
+msgid "A4 very small Margins (only portrait)"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:87 src/ext_l10n.h:687
+msgid "A4 very wide margins (only portrait)"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:112 src/ext_l10n.h:655
+#, fuzzy
+msgid "OneHalf"
+msgstr "Bat'erdi"
+
+#: src/frontends/qt2/QDocument.C:114 src/ext_l10n.h:657
+#, fuzzy
+msgid "Other"
+msgstr "Beste ("
+
+#. the document language page
+#: src/frontends/qt2/QDocument.C:116 src/frontends/qt2/QDocument.C:124
+#: src/frontends/qt2/QDocument.C:152 src/frontends/qt2/QDocument.C:196
+#: src/frontends/qt2/QDocument.C:575 src/frontends/qt2/QDocument.C:579
+#: src/ext_l10n.h:642 src/ext_l10n.h:658 src/ext_l10n.h:707 src/ext_l10n.h:738
+#: src/ext_l10n.h:857
+#, fuzzy
+msgid "default"
+msgstr "Jatorrizkoa"
+
+#: src/frontends/qt2/QDocument.C:117 src/ext_l10n.h:659
+msgid "10"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:118 src/ext_l10n.h:660
+#, fuzzy
+msgid "11"
+msgstr "1|#1"
+
+#: src/frontends/qt2/QDocument.C:119 src/ext_l10n.h:661
+msgid "12"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:125 src/ext_l10n.h:643
+#, fuzzy
+msgid "empty"
+msgstr "Sakonera"
+
+#: src/frontends/qt2/QDocument.C:126 src/ext_l10n.h:558 src/ext_l10n.h:644
+#, fuzzy
+msgid "plain"
+msgstr "Gertaera Laua"
+
+#: src/frontends/qt2/QDocument.C:127 src/ext_l10n.h:645
+#, fuzzy
+msgid "headings"
+msgstr "GUI erabiltzen"
+
+#: src/frontends/qt2/QDocument.C:128 src/ext_l10n.h:646
+msgid "fancy"
 msgstr ""
 
 #: src/frontends/qt2/QDocument.C:130
@@ -5777,6 +1539,81 @@ msgstr "Jauzi Haundia"
 msgid "Length"
 msgstr "Luzera"
 
+#: src/frontends/qt2/QDocument.C:153 src/ext_l10n.h:708
+#, fuzzy
+msgid "auto"
+msgstr "nora"
+
+#: src/frontends/qt2/QDocument.C:154 src/ext_l10n.h:709
+#, fuzzy
+msgid "latin1"
+msgstr "Azalpena"
+
+#: src/frontends/qt2/QDocument.C:155 src/ext_l10n.h:710
+#, fuzzy
+msgid "latin2"
+msgstr "Azalpena"
+
+#: src/frontends/qt2/QDocument.C:156 src/ext_l10n.h:711
+#, fuzzy
+msgid "latin3"
+msgstr "Azalpena"
+
+#: src/frontends/qt2/QDocument.C:157 src/ext_l10n.h:712
+#, fuzzy
+msgid "latin4"
+msgstr "Azalpena"
+
+#: src/frontends/qt2/QDocument.C:158 src/ext_l10n.h:713
+#, fuzzy
+msgid "latin5"
+msgstr "Azalpena"
+
+#: src/frontends/qt2/QDocument.C:159 src/ext_l10n.h:714
+#, fuzzy
+msgid "latin9"
+msgstr "Azalpena"
+
+#: src/frontends/qt2/QDocument.C:160 src/ext_l10n.h:715
+msgid "koi8-r"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:161 src/ext_l10n.h:716
+msgid "koi8-u"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:162 src/ext_l10n.h:717
+msgid "cp866"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:163 src/ext_l10n.h:718
+msgid "cp1251"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:164 src/ext_l10n.h:719
+msgid "iso88595"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:171 src/ext_l10n.h:722
+#, fuzzy
+msgid "``text''"
+msgstr "testua"
+
+#: src/frontends/qt2/QDocument.C:172 src/ext_l10n.h:723
+#, fuzzy
+msgid "''text''"
+msgstr "testua"
+
+#: src/frontends/qt2/QDocument.C:173 src/ext_l10n.h:724
+#, fuzzy
+msgid ",,text``"
+msgstr "testua"
+
+#: src/frontends/qt2/QDocument.C:174 src/ext_l10n.h:725
+#, fuzzy
+msgid ",,text''"
+msgstr "testua"
+
 #: src/frontends/qt2/QDocument.C:175
 #, fuzzy
 msgid "«text»"
@@ -5786,6 +1623,43 @@ msgstr "testua"
 #, fuzzy
 msgid "»text«"
 msgstr "testua"
+
+#: src/frontends/qt2/QDocument.C:197
+#: src/frontends/xforms/form_preferences.C:171 src/ext_l10n.h:739
+msgid "tiny"
+msgstr "ttipia"
+
+#: src/frontends/qt2/QDocument.C:198 src/ext_l10n.h:740
+msgid "script"
+msgstr "indizea"
+
+#: src/frontends/qt2/QDocument.C:199 src/ext_l10n.h:741
+msgid "footnote"
+msgstr "oin oharra"
+
+#: src/frontends/qt2/QDocument.C:200
+#: src/frontends/xforms/form_preferences.C:180 src/ext_l10n.h:742
+msgid "small"
+msgstr "txikia"
+
+#: src/frontends/qt2/QDocument.C:201
+#: src/frontends/xforms/form_preferences.C:183 src/ext_l10n.h:743
+msgid "normal"
+msgstr "normala"
+
+#: src/frontends/qt2/QDocument.C:202
+#: src/frontends/xforms/form_preferences.C:186 src/ext_l10n.h:744
+msgid "large"
+msgstr "handia"
+
+#: src/frontends/qt2/QDocument.C:204 src/ext_l10n.h:746
+msgid "LARGE"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:205
+#: src/frontends/xforms/form_preferences.C:195 src/ext_l10n.h:747
+msgid "huge"
+msgstr "erraldoia"
 
 #: src/frontends/qt2/QDocument.C:234 src/frontends/xforms/FormDocument.C:362
 msgid "Document layout set"
@@ -5841,6 +1715,11 @@ msgstr "idazki mota honetako jatorrizko balioentzat?"
 msgid "Unable to switch to new document class."
 msgstr "Idazki mota berrira ezin aldatu"
 
+#: src/frontends/qt2/QError.C:23 src/frontends/xforms/FormError.C:24
+#: src/ext_l10n.h:765
+msgid "LaTeX Error"
+msgstr "LaTeX-eko Akatsa"
+
 #: src/frontends/qt2/QERT.C:23
 #, fuzzy
 msgid "LaTeX ERT"
@@ -5874,6 +1753,15 @@ msgstr "Grafikoak"
 msgid "Include"
 msgstr "Barneratu"
 
+#: src/frontends/qt2/QIndex.C:23 src/frontends/xforms/FormIndex.C:24
+#: src/insets/insetindex.C:61 src/ext_l10n.h:540 src/ext_l10n.h:897
+msgid "Index"
+msgstr "Errolda"
+
+#: src/frontends/qt2/QLog.C:33 src/ext_l10n.h:902
+msgid "Log"
+msgstr ""
+
 #: src/frontends/qt2/QLog.C:51 src/frontends/xforms/FormLog.C:31
 #, fuzzy
 msgid "Build log"
@@ -5893,6 +1781,10 @@ msgstr "LaTeX-en Erregistro Artxiboarik ez da aurkitu"
 msgid "No LaTeX log file found"
 msgstr "LaTeX-en Erregistro Artxiboarik ez da aurkitu"
 
+#: src/frontends/qt2/QMinipage.C:33 src/ext_l10n.h:1049
+msgid "Minipage"
+msgstr "Orri-ttipia"
+
 #: src/frontends/qt2/QParagraph.C:166 src/frontends/xforms/FormParagraph.C:336
 msgid "Paragraph layout set"
 msgstr "Parrafoaren aurkezpena ezarria"
@@ -5901,6 +1793,16 @@ msgstr "Parrafoaren aurkezpena ezarria"
 #, fuzzy
 msgid "LyX: Paragraph Settings"
 msgstr "LyX: Parrafoen Aukerak"
+
+#: src/frontends/qt2/QParagraphDialog.C:49 src/ext_l10n.h:535
+#: src/ext_l10n.h:546 src/ext_l10n.h:600 src/ext_l10n.h:767 src/ext_l10n.h:776
+#: src/ext_l10n.h:794 src/ext_l10n.h:799 src/ext_l10n.h:875 src/ext_l10n.h:894
+#: src/ext_l10n.h:905 src/ext_l10n.h:919 src/ext_l10n.h:1070
+#: src/ext_l10n.h:1119 src/ext_l10n.h:1129 src/ext_l10n.h:1131
+#: src/ext_l10n.h:1143 src/ext_l10n.h:1173 src/ext_l10n.h:1185
+#: src/ext_l10n.h:1190 src/ext_l10n.h:1200 src/ext_l10n.h:1204
+msgid "&Close"
+msgstr "&Itxi"
 
 #. FIXME: should be cleverer here
 #: src/frontends/qt2/QParagraphDialog.C:56
@@ -5921,6 +1823,12 @@ msgstr ""
 #, fuzzy
 msgid "Editor"
 msgstr "ArgitariarentzatOharra"
+
+#: src/frontends/qt2/QPrint.C:35 src/frontends/xforms/form_print.C:133
+#: src/frontends/xforms/FormPrint.C:35 src/LyXAction.C:138 src/LyXAction.C:145
+#: src/ext_l10n.h:1071
+msgid "Print"
+msgstr "Inprimatu"
 
 #: src/frontends/qt2/QPrintDialog.C:48
 msgid "PostScript files (*.ps)"
@@ -5944,26 +1852,75 @@ msgstr "&Atzera Joan"
 msgid "Go back"
 msgstr "Atzera joan"
 
+#: src/frontends/qt2/QRef.C:103 src/ext_l10n.h:1107
+#, fuzzy
+msgid "&Goto"
+msgstr "&Azpikaldea"
+
 #: src/frontends/qt2/QRef.C:105 src/frontends/xforms/FormRef.C:77
 #: src/frontends/xforms/FormRef.C:194 src/frontends/xforms/FormRef.C:211
 #, fuzzy
 msgid "Go to reference"
 msgstr "Erreferentzira Joan"
 
+#: src/frontends/qt2/QSearch.C:31 src/frontends/xforms/form_citation.C:78
+#: src/ext_l10n.h:612
+msgid "Search"
+msgstr "Aurkitu"
+
 #: src/frontends/qt2/QShowFile.C:23
 #, fuzzy
 msgid "ShowFile"
 msgstr "IzenburuMotza"
+
+#: src/frontends/qt2/QSpellchecker.C:27 src/ext_l10n.h:1132
+#, fuzzy
+msgid "Spellchecker"
+msgstr "Zuzentzailea"
 
 #: src/frontends/qt2/QSpellchecker.C:114
 #, fuzzy
 msgid "Spellcheck complete"
 msgstr "Zuzenketa lana amaitua!"
 
+#: src/frontends/qt2/QSpellchecker.C:114
+#: src/frontends/xforms/form_bibitem.C:35
+#: src/frontends/xforms/form_bibtex.C:35
+#: src/frontends/xforms/form_citation.C:173
+#: src/frontends/xforms/form_document.C:47 src/frontends/xforms/form_ert.C:72
+#: src/frontends/xforms/form_external.C:89
+#: src/frontends/xforms/form_filedialog.C:89
+#: src/frontends/xforms/form_float.C:74 src/frontends/xforms/form_forks.C:53
+#: src/frontends/xforms/form_include.C:42 src/frontends/xforms/form_index.C:44
+#: src/frontends/xforms/form_maths_delim.C:49
+#: src/frontends/xforms/form_minipage.C:81
+#: src/frontends/xforms/form_paragraph.C:181
+#: src/frontends/xforms/form_print.C:53 src/frontends/xforms/form_ref.C:86
+#: src/frontends/xforms/form_sendto.C:46
+#: src/frontends/xforms/form_tabular_create.C:28
+#: src/frontends/xforms/form_url.C:64 src/ext_l10n.h:538 src/ext_l10n.h:570
+#: src/ext_l10n.h:603 src/ext_l10n.h:762 src/ext_l10n.h:775 src/ext_l10n.h:900
+msgid "OK"
+msgstr "Ongi"
+
+#: src/frontends/qt2/QTabularCreate.C:28 src/ext_l10n.h:1152
+#, fuzzy
+msgid "Insert table"
+msgstr "Taula Sartu"
+
+#: src/frontends/qt2/QThesaurus.C:28 src/ext_l10n.h:449 src/ext_l10n.h:1175
+msgid "Thesaurus"
+msgstr "Hiztegi Ideologikoa"
+
 #: src/frontends/qt2/QToc.C:39
 #, fuzzy
 msgid "Table of contents"
 msgstr "Aurkibide Orokorra"
+
+#: src/frontends/qt2/QURL.C:25 src/ext_l10n.h:470 src/ext_l10n.h:1193
+#: src/ext_l10n.h:1196
+msgid "URL"
+msgstr "URL"
 
 #: src/frontends/qt2/QVCLog.C:30
 msgid "VCLog"
@@ -6059,6 +2016,10 @@ msgstr "Copyright eta Garantia"
 #, fuzzy
 msgid "License and Warranty"
 msgstr "Copyright eta Garantia"
+
+#: src/frontends/xforms/FormAboutlyx.C:65 src/ext_l10n.h:533
+msgid "Credits"
+msgstr "Kredituak"
 
 #: src/frontends/xforms/form_bibitem.C:29
 msgid "Key:|#K"
@@ -6277,6 +2238,10 @@ msgstr "@2->"
 msgid "#&B"
 msgstr "#&B"
 
+#: src/frontends/xforms/form_citation.C:73 src/lyxvc.C:122 src/ext_l10n.h:610
+msgid "Info"
+msgstr "Info"
+
 #: src/frontends/xforms/form_citation.C:87
 #, fuzzy
 msgid "Regular Expression|#R"
@@ -6295,6 +2260,11 @@ msgstr ""
 #, fuzzy
 msgid "Next|#N"
 msgstr "Izena|#I"
+
+#: src/frontends/xforms/form_citation.C:116 src/ext_l10n.h:607
+#, fuzzy
+msgid "Citation style"
+msgstr "Aipamen itxura|#t"
 
 #: src/frontends/xforms/form_citation.C:130
 #, fuzzy
@@ -6445,6 +2415,10 @@ msgstr "Zabalera:|#Z"
 msgid "Height:|#H"
 msgstr "Altuera:|#l"
 
+#: src/frontends/xforms/form_document.C:123 src/ext_l10n.h:689
+msgid "Orientation"
+msgstr "Norabidea"
+
 #: src/frontends/xforms/form_document.C:126
 #, fuzzy
 msgid "Portrait|#r"
@@ -6453,6 +2427,10 @@ msgstr "Goitibehera|#e"
 #: src/frontends/xforms/form_document.C:134
 msgid "Landscape|#L"
 msgstr "Zeharretaka|#h"
+
+#: src/frontends/xforms/form_document.C:143 src/ext_l10n.h:692
+msgid "Margins"
+msgstr "Margenak"
 
 #: src/frontends/xforms/form_document.C:145
 #, fuzzy
@@ -6494,9 +2472,17 @@ msgstr "Banaketa:|#b"
 msgid "Footskip:|#F"
 msgstr "Oin ohar jauzia:|#j"
 
+#: src/frontends/xforms/form_document.C:254 src/ext_l10n.h:668
+msgid "Separation"
+msgstr "Banaketa"
+
 #: src/frontends/xforms/form_document.C:255
 msgid "Page cols"
 msgstr "Orri zutabeak"
+
+#: src/frontends/xforms/form_document.C:256 src/ext_l10n.h:662
+msgid "Sides"
+msgstr "Alboak"
 
 #: src/frontends/xforms/form_document.C:258
 msgid "Fonts:|#F"
@@ -6630,6 +2616,10 @@ msgstr "3|#3"
 msgid "4|#4"
 msgstr "4|#4"
 
+#: src/frontends/xforms/form_document.C:608 src/ext_l10n.h:749
+msgid "Bullet Depth"
+msgstr "Sakonera"
+
 #: src/frontends/xforms/form_document.C:613
 msgid "Standard|#S"
 msgstr "Arrunta|#A"
@@ -6653,6 +2643,10 @@ msgstr "Ding 3|#n"
 #: src/frontends/xforms/form_document.C:664
 msgid "Ding 4|#g"
 msgstr "Ding 4|#g"
+
+#: src/frontends/xforms/FormDocument.C:58 src/ext_l10n.h:636
+msgid "Document Layout"
+msgstr "Idazki Aurkezpena"
 
 #: src/frontends/xforms/FormDocument.C:110
 #, fuzzy
@@ -6695,6 +2689,25 @@ msgid ""
 msgstr ""
 " jatorrizkoa | ttipia | indizea | oin oharra | txikia | arrunta  | handia | "
 "Handia | Galanta | Egundokoa | Erraldoia"
+
+#: src/frontends/xforms/FormDocument.C:329 src/ext_l10n.h:671
+msgid "Paper"
+msgstr "Orria"
+
+#: src/frontends/xforms/FormDocument.C:331
+#: src/frontends/xforms/FormPreferences.C:258 src/ext_l10n.h:578
+#: src/ext_l10n.h:586 src/ext_l10n.h:704
+msgid "Language"
+msgstr "Hizkuntza"
+
+#: src/frontends/xforms/FormDocument.C:333 src/ext_l10n.h:730
+#: src/ext_l10n.h:853
+msgid "Extra"
+msgstr "Bestelakoak"
+
+#: src/frontends/xforms/FormDocument.C:335 src/ext_l10n.h:736
+msgid "Bullets"
+msgstr "Pinportak"
 
 #: src/frontends/xforms/FormDocument.C:338
 #, fuzzy
@@ -6819,6 +2832,11 @@ msgstr "Erabiltzaile2|#2"
 #: src/frontends/xforms/FormFiledialog.C:398
 msgid "Warning! Couldn't open directory."
 msgstr "Oharra! Direktorioa ezin ireki."
+
+#: src/frontends/xforms/form_float.C:29 src/ext_l10n.h:800
+#, fuzzy
+msgid "Placement"
+msgstr "Mugikorren Kokapena:|#M"
 
 #: src/frontends/xforms/form_float.C:33
 #, fuzzy
@@ -6958,6 +2976,12 @@ msgstr "Bezeroa"
 msgid "Value|#V"
 msgstr "Balioa"
 
+#: src/frontends/xforms/form_graphics.C:227
+#: src/frontends/xforms/form_graphics.C:444 src/ext_l10n.h:827
+#, no-c-format
+msgid "%"
+msgstr ""
+
 #: src/frontends/xforms/form_graphics.C:231
 #: src/frontends/xforms/form_graphics.C:491
 msgid "Width|#W"
@@ -7060,6 +3084,12 @@ msgstr "Ez bistaratu|#A"
 #, fuzzy
 msgid "Get LaTeX size|#L"
 msgstr "LaTeX|#L"
+
+#. add the different tabfolders
+#: src/frontends/xforms/FormGraphics.C:189 src/ext_l10n.h:807
+#, fuzzy
+msgid "File"
+msgstr "&Fitxategia"
 
 #: src/frontends/xforms/FormGraphics.C:190
 #, fuzzy
@@ -7203,6 +3233,11 @@ msgstr "Itxi "
 msgid "Functions"
 msgstr "Funtzioak"
 
+#: src/frontends/xforms/form_maths_panel.C:35
+#: src/frontends/xforms/FormMathsPanel.C:103 src/ext_l10n.h:507
+msgid "Greek"
+msgstr "Grekera"
+
 #: src/frontends/xforms/form_maths_panel.C:39
 #: src/frontends/xforms/form_maths_panel.C:94
 msgid "­ Û"
@@ -7323,6 +3358,11 @@ msgstr "testua"
 #: src/frontends/xforms/FormMathsStyle.C:41
 msgid "Maths Styles & Fonts"
 msgstr ""
+
+#: src/frontends/xforms/form_minipage.C:28 src/ext_l10n.h:813
+#: src/ext_l10n.h:829
+msgid "Width"
+msgstr "Zabalera"
 
 #: src/frontends/xforms/form_minipage.C:31
 #: src/frontends/xforms/form_paragraph.C:28
@@ -7532,6 +3572,11 @@ msgstr "egundokoa"
 #: src/frontends/xforms/form_preferences.C:198
 msgid "huger"
 msgstr "izutzekoa"
+
+#: src/frontends/xforms/form_preferences.C:201 src/ext_l10n.h:823
+#, fuzzy
+msgid "Size"
+msgstr "Neurria|#N"
 
 #: src/frontends/xforms/form_preferences.C:225
 #, fuzzy
@@ -8336,6 +4381,10 @@ msgstr "nora"
 msgid "Order"
 msgstr "Antolatu"
 
+#: src/frontends/xforms/form_print.C:139 src/ext_l10n.h:1095
+msgid "Copies"
+msgstr "Kopiak"
+
 #: src/frontends/xforms/form_print.C:142
 msgid "Print to"
 msgstr "Inprimatu"
@@ -8368,6 +4417,11 @@ msgstr "Erreferentzi mota|#r"
 #: src/frontends/xforms/form_ref.C:73
 msgid "Goto reference|#G"
 msgstr "Erreferentzira Joan|#J"
+
+#: src/frontends/xforms/FormRef.C:33 src/ext_l10n.h:377 src/ext_l10n.h:1101
+#: src/ext_l10n.h:1109
+msgid "Reference"
+msgstr "Erreferentzia"
 
 #: src/frontends/xforms/FormRef.C:139
 msgid "*** No labels found in document ***"
@@ -8441,6 +4495,11 @@ msgstr ""
 #: src/frontends/xforms/form_spellchecker.C:34
 msgid "Replace"
 msgstr "Ordezkatu"
+
+#: src/frontends/xforms/form_spellchecker.C:37 src/ext_l10n.h:1145
+#, fuzzy
+msgid "Suggestions"
+msgstr "Galdera"
 
 #: src/frontends/xforms/form_spellchecker.C:42
 msgid "Spellchecker Options...|#O"
@@ -8704,6 +4763,10 @@ msgstr "Taula-Luzea"
 msgid "Wrong Cursor position, updated window"
 msgstr "Oharra: Kurtsora kokapen okerra, eguneratutako lehioa"
 
+#: src/frontends/xforms/form_tabular_create.C:45 src/ext_l10n.h:665
+msgid "Columns"
+msgstr "Zutabeak"
+
 #: src/frontends/xforms/FormTabularCreate.C:29
 msgid "Insert Tabular"
 msgstr "Tabulaketa Sartu"
@@ -8855,6 +4918,11 @@ msgstr "AKATSA! Inprimaketa Ezinezkoa"
 msgid "Check 'range of pages'!"
 msgstr "'Orrialdeak' begiztatu!"
 
+#: src/frontends/xforms/Menubar_pimpl.C:279
+#: src/frontends/xforms/Menubar_pimpl.C:352 src/ext_l10n.h:331
+msgid "More"
+msgstr "Gehiago"
+
 #: src/frontends/xforms/Menubar_pimpl.C:375
 #, fuzzy, c-format
 msgid "No Table of contents%i"
@@ -8962,7 +5030,7 @@ msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr "ERT Multzo barruan hizki motak ezin dira aldatu!"
 
 #: src/insets/insetert.C:251 src/insets/insettabular.C:2051
-#: src/insets/insettext.C:1392
+#: src/insets/insettext.C:1395
 msgid "Sorry."
 msgstr "Barkatu."
 
@@ -9124,6 +5192,10 @@ msgstr "Multzo Mugikorra Irekita"
 msgid "Parent:"
 msgstr "Gurasoa:"
 
+#: src/insets/insetref.C:110 src/ext_l10n.h:417
+msgid "Standard"
+msgstr "Arrunta"
+
 #: src/insets/insetref.C:110
 #, fuzzy
 msgid "Ref: "
@@ -9178,15 +5250,15 @@ msgstr "Zutabe Anitzak horizontalki soilik izan daitezke."
 msgid "Opened Text Inset"
 msgstr "Testu Multzoa irekita"
 
-#: src/insets/insettext.C:1390
+#: src/insets/insettext.C:1393
 msgid "Impossible operation"
 msgstr "Ezinezko eragiketa"
 
-#: src/insets/insettext.C:1391
+#: src/insets/insettext.C:1394
 msgid "Cannot include more than one paragraph!"
 msgstr "Taulako gela batek parrafo bat baino gehiago ezin du eduki!"
 
-#: src/insets/insettext.C:1637
+#: src/insets/insettext.C:1642
 #, fuzzy
 msgid "Error : LatexType Command not allowed here.\n"
 msgstr "Akatsa: LaTeXType Aginduarentzat sakonera okerra.\n"
@@ -9215,6 +5287,10 @@ msgstr "HtmlUrl: "
 #: src/kbsequence.C:166
 msgid "   options: "
 msgstr "   aukerak: "
+
+#: src/language.C:40 src/ext_l10n.h:498
+msgid "English"
+msgstr "Inglesa"
 
 #: src/LaTeX.C:191 src/LaTeX.C:276 src/LaTeX.C:332
 #, fuzzy
@@ -11042,6 +7118,18 @@ msgstr "Ascii testua parrafo bezala"
 msgid " (wide)"
 msgstr ""
 
+#: src/MenuBackend.C:511 src/ext_l10n.h:12 src/ext_l10n.h:17
+msgid "New...|N"
+msgstr "Berria...|B"
+
+#: src/MenuBackend.C:512 src/ext_l10n.h:14 src/ext_l10n.h:19
+msgid "Open...|O"
+msgstr "Ireki...|I"
+
+#: src/MenuBackend.C:513 src/ext_l10n.h:15 src/ext_l10n.h:25
+msgid "Import|I"
+msgstr "Barneratu|a"
+
 #: src/MenuBackend.C:514
 msgid "Quit|Q"
 msgstr "Irten|I"
@@ -11057,6 +7145,19 @@ msgstr "LinuxDoc...|L"
 #: src/MenuBackend.C:532
 msgid "Emphasize"
 msgstr "Enfasia "
+
+#: src/MenuBackend.C:541 src/MenuBackend.C:548 src/ext_l10n.h:1
+#: src/ext_l10n.h:4
+msgid "File|F"
+msgstr "Fitxategia|F"
+
+#: src/MenuBackend.C:542 src/ext_l10n.h:2 src/ext_l10n.h:5
+msgid "Edit|E"
+msgstr "Argitatu|A"
+
+#: src/MenuBackend.C:544 src/ext_l10n.h:10
+msgid "Documents|D"
+msgstr "Idazkiak|d"
 
 #: src/minibuffer.C:134
 msgid "[End of history]"
@@ -11171,6 +7272,3904 @@ msgstr "Orri Jauzia (azpikaldea)"
 #, fuzzy
 msgid "Space below"
 msgstr "&Azpiko Hutsunea"
+
+#: src/ext_l10n.h:3 src/ext_l10n.h:11
+msgid "Help|H"
+msgstr "Laguntza|L"
+
+#: src/ext_l10n.h:6
+msgid "Insert|I"
+msgstr "Sartu|S"
+
+#: src/ext_l10n.h:7
+msgid "Layout|L"
+msgstr "Aurkezpena|u"
+
+#: src/ext_l10n.h:8
+msgid "View|V"
+msgstr "Ikusi|I"
+
+#: src/ext_l10n.h:9
+msgid "Navigate|N"
+msgstr "Arakatu|k"
+
+#: src/ext_l10n.h:13 src/ext_l10n.h:18
+msgid "New from Template...|T"
+msgstr "Eredutik Berri bat...|E"
+
+#: src/ext_l10n.h:16 src/ext_l10n.h:29
+msgid "Exit|x"
+msgstr "Irten|n"
+
+#: src/ext_l10n.h:20
+msgid "Close|C"
+msgstr "Itxi|x"
+
+#: src/ext_l10n.h:21
+msgid "Save|S"
+msgstr "Gorde|G"
+
+#: src/ext_l10n.h:22
+msgid "Save As...|A"
+msgstr "Gorde Honela...|H"
+
+#: src/ext_l10n.h:23
+#, fuzzy
+msgid "Revert to Saved|R"
+msgstr "Gordetakora Itzuli|d"
+
+#: src/ext_l10n.h:24
+msgid "Version Control|V"
+msgstr "Bertsio Kontrola|r"
+
+#: src/ext_l10n.h:26
+msgid "Export|E"
+msgstr "Kanporatu|K"
+
+#: src/ext_l10n.h:27
+msgid "Print...|P"
+msgstr "Inprimatu...|p"
+
+#: src/ext_l10n.h:28
+msgid "Fax...|F"
+msgstr "Fax...|F"
+
+#: src/ext_l10n.h:30
+msgid "Register|R"
+msgstr "Harpidetu|I"
+
+#: src/ext_l10n.h:31
+msgid "Check In Changes|I"
+msgstr "Aldaketak Egiztatu|l"
+
+#: src/ext_l10n.h:32
+msgid "Check Out for Edit|O"
+msgstr "Argitatzeko Egiztatu|g"
+
+#: src/ext_l10n.h:33
+msgid "Revert to Last Version|L"
+msgstr "Azken Bertsiora Itzuli|z"
+
+#: src/ext_l10n.h:34
+msgid "Undo Last Check In|U"
+msgstr "Azken Egiztaketa Desegin|D"
+
+#: src/ext_l10n.h:35
+msgid "Show History|H"
+msgstr "Historiala Erakutsi|H"
+
+#: src/ext_l10n.h:36
+#, fuzzy
+msgid "Custom...|C"
+msgstr "Bezeroa"
+
+#: src/ext_l10n.h:37 src/ext_l10n.h:54
+msgid "Preferences...|P"
+msgstr "Lehentasunak...|L"
+
+#: src/ext_l10n.h:38 src/ext_l10n.h:55
+msgid "Reconfigure|R"
+msgstr "Berregokitu|g"
+
+#: src/ext_l10n.h:39
+msgid "Undo|U"
+msgstr "Desegin|D"
+
+#: src/ext_l10n.h:40
+msgid "Redo|d"
+msgstr "Berregin|B"
+
+#: src/ext_l10n.h:41
+msgid "Cut|C"
+msgstr "Ebaki|E"
+
+#: src/ext_l10n.h:42
+msgid "Copy|o"
+msgstr "Kopiatu|K"
+
+#: src/ext_l10n.h:43
+msgid "Paste|a"
+msgstr "Itsatsi|I"
+
+#: src/ext_l10n.h:44
+msgid "Paste External Selection|x"
+msgstr "Kanpo Hautaketa Itsatsi|H"
+
+#: src/ext_l10n.h:45
+msgid "Find & Replace...|F"
+msgstr "Bilatu eta Ordezkatu|O"
+
+#: src/ext_l10n.h:46
+msgid "Tabular|T"
+msgstr "Tabulaketa|T"
+
+#: src/ext_l10n.h:47
+#, fuzzy
+msgid "Math|M"
+msgstr "Matematika|#M"
+
+#: src/ext_l10n.h:48
+#, fuzzy
+msgid "Read Only"
+msgstr " (irakur era)"
+
+#: src/ext_l10n.h:49
+msgid "Spellchecker...|S"
+msgstr "Zuzentzailea...|Z"
+
+#: src/ext_l10n.h:50
+#, fuzzy
+msgid "Thesaurus..."
+msgstr "Hiztegi Ideologikoa"
+
+#: src/ext_l10n.h:51
+msgid "Check TeX|h"
+msgstr "TeX Egiaztatu|X"
+
+#: src/ext_l10n.h:52
+msgid "Remove All Error Boxes|E"
+msgstr "Ezabatu Akats-Mezu guztiak|z"
+
+#: src/ext_l10n.h:53
+#, fuzzy
+msgid "Open/Close float|l"
+msgstr "Mugikorra itxita"
+
+#: src/ext_l10n.h:56
+msgid "as Lines|L"
+msgstr "Lerroak bezala|L"
+
+#: src/ext_l10n.h:57
+msgid "as Paragraphs|P"
+msgstr "Parrafo bezala|P"
+
+#: src/ext_l10n.h:58
+msgid "Multicolumn|M"
+msgstr "Zutabe anitza|M"
+
+#: src/ext_l10n.h:59
+msgid "Line Top|T"
+msgstr "Goikaldeko Lerroa|G"
+
+#: src/ext_l10n.h:60
+msgid "Line Bottom|B"
+msgstr "Azpikaldeko Lerroa|A"
+
+#: src/ext_l10n.h:61
+msgid "Line Left|L"
+msgstr "Ezker Lerroa|z"
+
+#: src/ext_l10n.h:62
+msgid "Line Right|R"
+msgstr "Eskuin Lerroa|s"
+
+#: src/ext_l10n.h:63
+msgid "Align Left|e"
+msgstr "Ezker Lerrokaketa|e"
+
+#: src/ext_l10n.h:64 src/ext_l10n.h:88
+msgid "Align Center|C"
+msgstr "Erdi Lerrokaketa|d"
+
+#: src/ext_l10n.h:65
+msgid "Align Right|i"
+msgstr "Eskuin Lerrokaketa|i"
+
+#: src/ext_l10n.h:66
+msgid "V.Align Top|o"
+msgstr "Goitibeherako Goi Lerroketa|o"
+
+#: src/ext_l10n.h:67
+msgid "V.Align Center|n"
+msgstr "GoitiBeherako Erdigune Lerroketa|n"
+
+#: src/ext_l10n.h:68
+msgid "V.Align Bottom|V"
+msgstr "GoitiBeherako Azpi Lerroketa|z"
+
+#: src/ext_l10n.h:69
+#, fuzzy
+msgid "Add Row|A"
+msgstr "Lerroa gehitu|e"
+
+#: src/ext_l10n.h:70
+msgid "Delete Row|w"
+msgstr "Lerroa ezabatu|z"
+
+#: src/ext_l10n.h:71
+#, fuzzy
+msgid "Add Column|u"
+msgstr "Zutabea gehitu|u"
+
+#: src/ext_l10n.h:72
+msgid "Delete Column|D"
+msgstr "Zutabea ezabatu|a"
+
+#: src/ext_l10n.h:73
+msgid "Make eqnarray|e"
+msgstr ""
+
+#: src/ext_l10n.h:74
+msgid "Make multline|m"
+msgstr ""
+
+#: src/ext_l10n.h:75
+msgid "Make align 1 column|1"
+msgstr ""
+
+#: src/ext_l10n.h:76
+msgid "Make align 2 columns|2"
+msgstr ""
+
+#: src/ext_l10n.h:77
+msgid "Make align 3 columns|3"
+msgstr ""
+
+#: src/ext_l10n.h:78
+msgid "Make alignat 2 columns|2"
+msgstr ""
+
+#: src/ext_l10n.h:79
+msgid "Make alignat 3 columns|3"
+msgstr ""
+
+#: src/ext_l10n.h:80
+#, fuzzy
+msgid "Toggle numbering|n"
+msgstr "Azpimarratua txandatu"
+
+#: src/ext_l10n.h:81
+#, fuzzy
+msgid "Toggle numbering of line|u"
+msgstr "Azpimarratua txandatu"
+
+#: src/ext_l10n.h:82
+#, fuzzy
+msgid "Toggle limits|l"
+msgstr "Beltza txandatu"
+
+#: src/ext_l10n.h:83
+#, fuzzy
+msgid "Inline formula|I"
+msgstr "Irudi Lerrokatua|#I"
+
+#: src/ext_l10n.h:84
+#, fuzzy
+msgid "Displayed formula|D"
+msgstr "Azalpeneko Formula|u"
+
+#: src/ext_l10n.h:85
+#, fuzzy
+msgid "Eqnarray environment|q"
+msgstr "Parrafo gune-mota ezarria"
+
+#: src/ext_l10n.h:86
+#, fuzzy
+msgid "Align environment|A"
+msgstr "Lerrokaketa|#L"
+
+#: src/ext_l10n.h:87
+#, fuzzy
+msgid "Align Left|f"
+msgstr "Ezker Lerrokaketa|e"
+
+#: src/ext_l10n.h:89
+#, fuzzy
+msgid "Align Right|R"
+msgstr "Eskuin Lerrokaketa|i"
+
+#: src/ext_l10n.h:90
+#, fuzzy
+msgid "V.Align Top|T"
+msgstr "Goitibeherako Goi Lerroketa|o"
+
+#: src/ext_l10n.h:91
+#, fuzzy
+msgid "V.Align Center|e"
+msgstr "GoitiBeherako Erdigune Lerroketa|n"
+
+#: src/ext_l10n.h:92
+#, fuzzy
+msgid "V.Align Bottom|B"
+msgstr "GoitiBeherako Azpi Lerroketa|z"
+
+#: src/ext_l10n.h:93
+#, fuzzy
+msgid "Add Row"
+msgstr "Lerroa gehitu|e"
+
+#: src/ext_l10n.h:94
+#, fuzzy
+msgid "Delete Row"
+msgstr "Lerroa ezabatu|z"
+
+#: src/ext_l10n.h:95
+#, fuzzy
+msgid "Add Column"
+msgstr "Zutabea gehitu|u"
+
+#: src/ext_l10n.h:96
+#, fuzzy
+msgid "Delete Column"
+msgstr "Zutabea ezabatu|a"
+
+#: src/ext_l10n.h:97
+#, fuzzy
+msgid "Math|h"
+msgstr "Matematika|#M"
+
+#: src/ext_l10n.h:98
+msgid "Special Character|S"
+msgstr "Hizki Berezia|H"
+
+#: src/ext_l10n.h:99
+msgid "Citation Reference...|C"
+msgstr "Aipamen Erreferentzia...|A"
+
+#: src/ext_l10n.h:100
+msgid "Cross Reference...|R"
+msgstr "Gurutzatutako Erreferentzia...|G"
+
+#: src/ext_l10n.h:101
+msgid "Label...|L"
+msgstr "Txartela...|x"
+
+#: src/ext_l10n.h:102
+msgid "Footnote|F"
+msgstr "Oineko Oharra|n"
+
+#: src/ext_l10n.h:103
+msgid "Marginal Note|M"
+msgstr "Alboko Oharra|l"
+
+#: src/ext_l10n.h:104
+msgid "Index Entry...|I"
+msgstr "Sarrera Erroldatu...|E"
+
+#: src/ext_l10n.h:105
+#, fuzzy
+msgid "Index Entry of Preceding Word|W"
+msgstr "Aurreko Hitzaren Sarrera Erroldatu|d"
+
+#: src/ext_l10n.h:106
+msgid "URL...|U"
+msgstr "URL...|U"
+
+#: src/ext_l10n.h:107 src/ext_l10n.h:162
+msgid "Note|N"
+msgstr "Oharra|O"
+
+#: src/ext_l10n.h:108
+msgid "Lists & TOC|O"
+msgstr "Aurkibide eta Zerrendak|Z"
+
+#: src/ext_l10n.h:109
+#, fuzzy
+msgid "TeX|T"
+msgstr "LaTeX|#T"
+
+#: src/ext_l10n.h:110
+#, fuzzy
+msgid "Minipage|p"
+msgstr "Orri-ttipia"
+
+#: src/ext_l10n.h:111
+#, fuzzy
+msgid "Graphics...|G"
+msgstr "Grafikoak"
+
+#: src/ext_l10n.h:112
+#, fuzzy
+msgid "Tabular Material...|b"
+msgstr "Tabulaketa...|T"
+
+#: src/ext_l10n.h:113
+msgid "Floats|a"
+msgstr "Mugikorrak|M"
+
+#: src/ext_l10n.h:114
+#, fuzzy
+msgid "Include File...|d"
+msgstr "Fitxategia Barneratu|B"
+
+#: src/ext_l10n.h:115
+#, fuzzy
+msgid "Insert File|e"
+msgstr "Fitxategia Sartu|S"
+
+#: src/ext_l10n.h:116
+msgid "External Material...|x"
+msgstr "Kanpo Materiala...|K"
+
+#: src/ext_l10n.h:117
+msgid "Superscript|S"
+msgstr "Goi-indizea|o"
+
+#: src/ext_l10n.h:118
+msgid "Subscript|u"
+msgstr "Azpi-indizea|z"
+
+#: src/ext_l10n.h:119
+msgid "HFill|H"
+msgstr "Lerro Betetzailea|L"
+
+#: src/ext_l10n.h:120
+msgid "Hyphenation Point|P"
+msgstr "Hipenazio Lekua|H"
+
+#: src/ext_l10n.h:121
+#, fuzzy
+msgid "Ligature break|k"
+msgstr "Lerro Jauzia|J"
+
+#: src/ext_l10n.h:122
+msgid "Protected Blank|B"
+msgstr "Babesdun Hutsunea|B"
+
+#: src/ext_l10n.h:123
+msgid "Linebreak|L"
+msgstr "Lerro Jauzia|J"
+
+#: src/ext_l10n.h:124
+msgid "Ellipsis|i"
+msgstr "Elipsiak (...)|E"
+
+#: src/ext_l10n.h:125
+msgid "End of Sentence|E"
+msgstr "Esaldi Amaiera|A"
+
+#: src/ext_l10n.h:126
+msgid "Ordinary Quote|Q"
+msgstr "Komilla Normala|K"
+
+#: src/ext_l10n.h:127
+msgid "Menu Separator|M"
+msgstr "Menu Banatzailea|M"
+
+#: src/ext_l10n.h:128
+#, fuzzy
+msgid "Inline Formula|I"
+msgstr "Irudi Lerrokatua|#I"
+
+#: src/ext_l10n.h:129
+msgid "Display Formula|D"
+msgstr "Azalpeneko Formula|u"
+
+#: src/ext_l10n.h:130
+#, fuzzy
+msgid "Eqnarray environment|E"
+msgstr "Parrafo gune-mota ezarria"
+
+#: src/ext_l10n.h:131
+#, fuzzy
+msgid "AMS align environment|A"
+msgstr "Lerrokaketa|#L"
+
+#: src/ext_l10n.h:132
+#, fuzzy
+msgid "AMS alignat environment|t"
+msgstr "Lerrokaketa|#L"
+
+#: src/ext_l10n.h:133
+#, fuzzy
+msgid "AMS xalignat environment|x"
+msgstr "Lerrokaketa|#L"
+
+#: src/ext_l10n.h:134
+#, fuzzy
+msgid "AMS xxalignat environment"
+msgstr "Lerrokaketa|#L"
+
+#: src/ext_l10n.h:135
+#, fuzzy
+msgid "Array environment|y"
+msgstr "Parrafo gune-mota ezarria"
+
+#: src/ext_l10n.h:136
+#, fuzzy
+msgid "Cases environment|C"
+msgstr "Guneko sakonera aldatu"
+
+#: src/ext_l10n.h:137
+#, fuzzy
+msgid "Math Panel...|l"
+msgstr "Matematika Arbela|A"
+
+#: src/ext_l10n.h:138
+msgid "Table of Contents|C"
+msgstr "Aurkibide Orokorra|O"
+
+#: src/ext_l10n.h:139
+msgid "Index List|I"
+msgstr "Errolden Zerrenda|E"
+
+#: src/ext_l10n.h:140
+msgid "BibTeX Reference...|B"
+msgstr "BibTeX-eko Erreferentzia...|B"
+
+#: src/ext_l10n.h:141
+msgid "LyX Document...|X"
+msgstr "LyX Idazkia...|X"
+
+#: src/ext_l10n.h:142
+msgid "Ascii as Lines...|L"
+msgstr "Ascii Lerro bezala...|L"
+
+#: src/ext_l10n.h:143
+msgid "Ascii as Paragraphs...|P"
+msgstr "Ascii Parrafo bezala...|P"
+
+#: src/ext_l10n.h:144
+msgid "Character...|C"
+msgstr "Hizki-jokoa...|H"
+
+#: src/ext_l10n.h:145
+msgid "Paragraph...|P"
+msgstr "Parrafoa...|P"
+
+#: src/ext_l10n.h:146
+msgid "Document...|D"
+msgstr "Idazkia...|d"
+
+#: src/ext_l10n.h:147
+msgid "Tabular...|T"
+msgstr "Tabulaketa...|T"
+
+#: src/ext_l10n.h:148
+msgid "Emphasize Style|E"
+msgstr "Enfasiaren Itxura|E "
+
+#: src/ext_l10n.h:149
+msgid "Noun Style|N"
+msgstr "Izen Itxura|I"
+
+#: src/ext_l10n.h:150
+msgid "Bold Style|B"
+msgstr "Beltz Itxura|B"
+
+#: src/ext_l10n.h:151
+msgid "TeX Style|X"
+msgstr "TeX Itxura|X"
+
+#: src/ext_l10n.h:152
+msgid "Change Environment Depth|v"
+msgstr "Gune Sakonera Aldatu|S"
+
+#: src/ext_l10n.h:153
+#, fuzzy
+msgid "Preamble...|r"
+msgstr "LaTeX Aurre-Esana...|L"
+
+#: src/ext_l10n.h:154
+msgid "Start Appendix here|A"
+msgstr ""
+
+#: src/ext_l10n.h:155
+msgid "Build Program|B"
+msgstr "Programa Eraiki|E"
+
+#: src/ext_l10n.h:156
+msgid "Update|U"
+msgstr "Eguneratu|E"
+
+#: src/ext_l10n.h:157
+msgid "LaTeX Logfile|L"
+msgstr "LaTeX-en Erregistro Artxiboa|L"
+
+#: src/ext_l10n.h:158
+msgid "Table of Contents|T"
+msgstr "Aurkibide Orokorra|A"
+
+#: src/ext_l10n.h:159
+msgid "Child processes|C"
+msgstr ""
+
+#: src/ext_l10n.h:160
+#, fuzzy
+msgid "TeX Information|X"
+msgstr "LaTeX-en  Egokitzaketa|L"
+
+#: src/ext_l10n.h:161
+msgid "Error|E"
+msgstr "Akatsa|A"
+
+#: src/ext_l10n.h:163
+#, fuzzy
+msgid "Refs|R"
+msgstr "Erref"
+
+#: src/ext_l10n.h:164
+#, fuzzy
+msgid "Bookmarks|B"
+msgstr "Azpikalde|#A"
+
+#: src/ext_l10n.h:165
+msgid "Save Bookmark 1|S"
+msgstr ""
+
+#: src/ext_l10n.h:166
+msgid "Save Bookmark 2"
+msgstr ""
+
+#: src/ext_l10n.h:167
+msgid "Save Bookmark 3"
+msgstr ""
+
+#: src/ext_l10n.h:168
+msgid "Goto Bookmark 1|1"
+msgstr ""
+
+#: src/ext_l10n.h:169
+msgid "Goto Bookmark 2|2"
+msgstr ""
+
+#: src/ext_l10n.h:170
+msgid "Goto Bookmark 3|3"
+msgstr ""
+
+#: src/ext_l10n.h:171
+msgid "Tooltips|o"
+msgstr ""
+
+#: src/ext_l10n.h:172
+msgid "Introduction|I"
+msgstr "Sarrera|S"
+
+#: src/ext_l10n.h:173
+msgid "Tutorial|T"
+msgstr "Tutoretza|T"
+
+#: src/ext_l10n.h:174
+msgid "User's Guide|U"
+msgstr "Erabiltzailearen Gida|G"
+
+#: src/ext_l10n.h:175
+msgid "Extended Features|E"
+msgstr "Ezaugarri Zabalduak|Z"
+
+#: src/ext_l10n.h:176
+msgid "Customization|C"
+msgstr "Egokitzaketa|E"
+
+#: src/ext_l10n.h:177
+msgid "Reference Manual|R"
+msgstr "Erreferentzi Eskuliburua|r"
+
+#: src/ext_l10n.h:178
+msgid "FAQ|F"
+msgstr "Sarritan Egindako Galderak|d"
+
+#: src/ext_l10n.h:179
+msgid "Table of Contents|a"
+msgstr "Aurkibide Orokorra|O"
+
+#: src/ext_l10n.h:180
+msgid "LaTeX Configuration|L"
+msgstr "LaTeX-en  Egokitzaketa|L"
+
+#: src/ext_l10n.h:181
+msgid "About LyX|X"
+msgstr ""
+
+#: src/ext_l10n.h:183
+msgid "Accepted"
+msgstr "Onartua"
+
+#: src/ext_l10n.h:184
+msgid "Acknowledgement"
+msgstr "Eskerbidea"
+
+#: src/ext_l10n.h:185
+msgid "Acknowledgement*"
+msgstr "Eskerbidea*"
+
+#: src/ext_l10n.h:186
+msgid "Acknowledgements"
+msgstr "Eskerbideak"
+
+#: src/ext_l10n.h:187
+msgid "Acknowledgments"
+msgstr "Eskerbideak"
+
+#: src/ext_l10n.h:188
+msgid "ACT"
+msgstr ""
+
+#: src/ext_l10n.h:189
+msgid "Addchap"
+msgstr "Alea Gehitu"
+
+#: src/ext_l10n.h:190
+msgid "Addchap*"
+msgstr "Alea* Gehitu"
+
+#: src/ext_l10n.h:191
+msgid "Addition"
+msgstr "Gehitu"
+
+#: src/ext_l10n.h:192
+msgid "Address"
+msgstr "Helbidea"
+
+#: src/ext_l10n.h:193
+msgid "AddressForOffprints"
+msgstr ""
+
+#: src/ext_l10n.h:194
+msgid "Addsec"
+msgstr "Atala Gehitu"
+
+#: src/ext_l10n.h:195
+msgid "Addsec*"
+msgstr "Atala* Gehitu"
+
+#: src/ext_l10n.h:196
+msgid "Adresse"
+msgstr "Helbidea"
+
+#: src/ext_l10n.h:197
+msgid "Affil"
+msgstr "Harpidetu"
+
+#: src/ext_l10n.h:198
+msgid "Affiliation"
+msgstr "Harpidetza"
+
+#: src/ext_l10n.h:200
+msgid "AMS"
+msgstr "AMS"
+
+#: src/ext_l10n.h:201
+msgid "And"
+msgstr "Eta"
+
+#: src/ext_l10n.h:202
+msgid "Anlagen"
+msgstr ""
+
+#: src/ext_l10n.h:203
+msgid "Anrede"
+msgstr ""
+
+#: src/ext_l10n.h:204
+msgid "Appendices"
+msgstr "Eranskinak"
+
+#: src/ext_l10n.h:205
+msgid "Appendix"
+msgstr "Eranskina"
+
+#: src/ext_l10n.h:206
+#, fuzzy
+msgid "Arrow"
+msgstr "akatsa"
+
+#: src/ext_l10n.h:207
+msgid "AT_RISE:"
+msgstr "GOIAN:"
+
+#: src/ext_l10n.h:208
+msgid "Author"
+msgstr "Egilea"
+
+#: src/ext_l10n.h:209
+msgid "Author_Email"
+msgstr "Egileraren e-Gutuna"
+
+#: src/ext_l10n.h:210
+#, fuzzy
+msgid "Authorgroup"
+msgstr "Egilea"
+
+#: src/ext_l10n.h:211
+#, fuzzy
+msgid "Authorinfo"
+msgstr "Egilea"
+
+#: src/ext_l10n.h:212
+msgid "Author_Running"
+msgstr "Egilea_Lantzen"
+
+#: src/ext_l10n.h:213
+msgid "Author_URL"
+msgstr "Egilearen URL"
+
+#: src/ext_l10n.h:214
+msgid "Axiom"
+msgstr "Axioma"
+
+#: src/ext_l10n.h:215
+msgid "Backaddress"
+msgstr "Itzulketa helbidea"
+
+#: src/ext_l10n.h:216
+msgid "Bank"
+msgstr "Bankua"
+
+#: src/ext_l10n.h:217
+msgid "BankAccount"
+msgstr "Banko Kontua"
+
+#: src/ext_l10n.h:218
+msgid "BankCode"
+msgstr "Banko Kodea"
+
+#: src/ext_l10n.h:219
+msgid "Betreff"
+msgstr ""
+
+#: src/ext_l10n.h:220
+msgid "Bibliography"
+msgstr "Bibliografia"
+
+#: src/ext_l10n.h:221
+msgid "Biography"
+msgstr "Bibliografia"
+
+#: src/ext_l10n.h:222
+msgid "BLZ"
+msgstr ""
+
+#: src/ext_l10n.h:223
+#, fuzzy
+msgid "BoardCentered"
+msgstr "Erdigunea"
+
+#: src/ext_l10n.h:224
+msgid "Brieftext"
+msgstr "Testu Laburra"
+
+#: src/ext_l10n.h:225
+msgid "Caption"
+msgstr "Azalpena"
+
+#: src/ext_l10n.h:226
+msgid "Case"
+msgstr "Kutxa"
+
+#: src/ext_l10n.h:228
+msgid "CC"
+msgstr "Kopia Nori"
+
+#: src/ext_l10n.h:229
+msgid "CenteredCaption"
+msgstr "AzalpenErdiratua"
+
+#: src/ext_l10n.h:230
+msgid "Chapter"
+msgstr "Alea"
+
+#: src/ext_l10n.h:231
+msgid "Chapter*"
+msgstr "Alea*"
+
+#: src/ext_l10n.h:232
+msgid "Chapter_Exercises"
+msgstr "Ale Ariketa"
+
+#: src/ext_l10n.h:233
+msgid "ChessBoard"
+msgstr ""
+
+#: src/ext_l10n.h:234
+msgid "Citta"
+msgstr "Aipamena"
+
+#: src/ext_l10n.h:235
+msgid "Claim"
+msgstr "Aldarrikapena"
+
+#: src/ext_l10n.h:236
+msgid "Claim*"
+msgstr "Aldarrikapena*"
+
+#: src/ext_l10n.h:237
+msgid "Closing"
+msgstr "Itxitzen"
+
+#: src/ext_l10n.h:238
+msgid "Code"
+msgstr "Kodea"
+
+#: src/ext_l10n.h:239
+msgid "Comment"
+msgstr "Aipamena"
+
+#: src/ext_l10n.h:240
+msgid "Conclusion"
+msgstr "Hitzaldi Buru"
+
+#: src/ext_l10n.h:241
+msgid "Conclusion*"
+msgstr "Hitzaldi Buru*"
+
+#: src/ext_l10n.h:242
+msgid "Condition"
+msgstr "Baldintza"
+
+#: src/ext_l10n.h:243
+msgid "Conjecture"
+msgstr "Agerpidea"
+
+#: src/ext_l10n.h:244
+msgid "Conjecture*"
+msgstr "Agerpidea*"
+
+#: src/ext_l10n.h:245
+msgid "CopNum"
+msgstr "Kopia Kopurua"
+
+#: src/ext_l10n.h:246 src/ext_l10n.h:534
+msgid "Copyright"
+msgstr "Copyright"
+
+#: src/ext_l10n.h:247
+msgid "Corollary"
+msgstr "Ondorioa"
+
+#: src/ext_l10n.h:248
+msgid "Corollary*"
+msgstr "Ondorioa*"
+
+#: src/ext_l10n.h:249
+msgid "Criterion"
+msgstr "Erizpidea"
+
+#: src/ext_l10n.h:250
+msgid "CrossList"
+msgstr "Gurutzatuen Zerrenda"
+
+#: src/ext_l10n.h:251
+msgid "Current_Address"
+msgstr "Oraingo Helbidea"
+
+#: src/ext_l10n.h:252
+msgid "CURTAIN"
+msgstr "OIHALA"
+
+#: src/ext_l10n.h:253
+msgid "Customer"
+msgstr "Bezeroa"
+
+#: src/ext_l10n.h:254
+msgid "Data"
+msgstr "Datua"
+
+#: src/ext_l10n.h:255
+msgid "Date"
+msgstr "Eguna"
+
+#: src/ext_l10n.h:256
+msgid "Datum"
+msgstr "Datu"
+
+#: src/ext_l10n.h:257
+msgid "Dedication"
+msgstr "Eskeintza"
+
+#: src/ext_l10n.h:258
+msgid "Dedicatory"
+msgstr "Eskeintza"
+
+#: src/ext_l10n.h:259
+msgid "Definition"
+msgstr "Zehaztaketa"
+
+#: src/ext_l10n.h:260
+msgid "Definition*"
+msgstr "Zehaztaketa*"
+
+#: src/ext_l10n.h:261
+msgid "Description"
+msgstr "Deskribaketa"
+
+#: src/ext_l10n.h:262
+msgid "Dialogue"
+msgstr "Elkarhizketa"
+
+#: src/ext_l10n.h:263
+msgid "Email"
+msgstr "Email"
+
+#: src/ext_l10n.h:264
+msgid "EMail"
+msgstr "e-Gutuna"
+
+#: src/ext_l10n.h:265
+msgid "encl"
+msgstr "erantsia"
+
+#: src/ext_l10n.h:266
+msgid "Encl."
+msgstr "Erantsia."
+
+#: src/ext_l10n.h:267
+msgid "Encl"
+msgstr "Erantsia"
+
+#: src/ext_l10n.h:268
+msgid "End_All_Slides"
+msgstr "Gardentasun_Guztiak_Amaitu"
+
+#: src/ext_l10n.h:269
+msgid "Enumerate"
+msgstr "Zenbakitua"
+
+#: src/ext_l10n.h:270
+msgid "Example"
+msgstr "Adibidea"
+
+#: src/ext_l10n.h:271
+msgid "Example*"
+msgstr "Adibidea*"
+
+#: src/ext_l10n.h:272
+msgid "Exercise"
+msgstr "Ariketa"
+
+#: src/ext_l10n.h:273
+msgid "EXT."
+msgstr "KANPO."
+
+#: src/ext_l10n.h:274
+msgid "Extratitle"
+msgstr "Izenburuordea"
+
+#: src/ext_l10n.h:275
+msgid "Fact"
+msgstr "Gertaera"
+
+#: src/ext_l10n.h:276
+msgid "Fact*"
+msgstr "Gertaera*"
+
+#: src/ext_l10n.h:277
+msgid "FADE_IN:"
+msgstr "SARERRA:"
+
+#: src/ext_l10n.h:278
+msgid "FADE_OUT:"
+msgstr "IRTEERA:"
+
+#: src/ext_l10n.h:279
+#, fuzzy
+msgid "FADE_OUT"
+msgstr "IRTEERA:"
+
+#: src/ext_l10n.h:280
+msgid "FigCaption"
+msgstr "IrudiAzalpena"
+
+#: src/ext_l10n.h:281
+msgid "FirstAuthor"
+msgstr "Lehen Egilea"
+
+#: src/ext_l10n.h:282
+msgid "FirstName"
+msgstr "Lehen Izena"
+
+#: src/ext_l10n.h:283
+msgid "FitBitmap"
+msgstr "BitmapDoitu"
+
+#: src/ext_l10n.h:284
+msgid "FitFigure"
+msgstr "IrudiaDoitu"
+
+#: src/ext_l10n.h:285
+msgid "Foilhead"
+msgstr "Orriburua"
+
+#: src/ext_l10n.h:286
+msgid "Footernote"
+msgstr "Oineko Oharra"
+
+#: src/ext_l10n.h:287
+msgid "FourAffiliations"
+msgstr "Lau Izen Emate"
+
+#: src/ext_l10n.h:288
+msgid "FourAuthors"
+msgstr "Lau Egile"
+
+#: src/ext_l10n.h:289
+msgid "FrontMatter"
+msgstr ""
+
+#: src/ext_l10n.h:290
+msgid "General"
+msgstr "Orokorra"
+
+#: src/ext_l10n.h:291
+msgid "Gruss"
+msgstr ""
+
+#: src/ext_l10n.h:292
+msgid "Headnote"
+msgstr "Buru Oharra"
+
+#: src/ext_l10n.h:293
+msgid "HideMoves"
+msgstr ""
+
+#: src/ext_l10n.h:294
+#, fuzzy
+msgid "HighLight"
+msgstr "Altuera"
+
+#: src/ext_l10n.h:295
+msgid "HTTP"
+msgstr "HTTP"
+
+#: src/ext_l10n.h:296
+msgid "IhrSchreiben"
+msgstr ""
+
+#: src/ext_l10n.h:297
+msgid "IhrZeichen"
+msgstr ""
+
+#: src/ext_l10n.h:298
+msgid "Institute"
+msgstr "Ikastetxea"
+
+#: src/ext_l10n.h:299
+msgid "Institution"
+msgstr "Egoitza"
+
+#: src/ext_l10n.h:300
+msgid "INT."
+msgstr "BARNE."
+
+#: src/ext_l10n.h:301
+msgid "INTERCUT"
+msgstr ""
+
+#: src/ext_l10n.h:302
+msgid "InvisibleText"
+msgstr "Testu Ikuskaitza"
+
+#: src/ext_l10n.h:303
+msgid "Invoice"
+msgstr "Ordain Agiria"
+
+#: src/ext_l10n.h:304
+msgid "Itemize"
+msgstr "Zehaztatua"
+
+#: src/ext_l10n.h:305
+msgid "Journal"
+msgstr "Egunkaria"
+
+#: src/ext_l10n.h:306
+msgid "Keyword"
+msgstr "Giltza"
+
+#: src/ext_l10n.h:307
+msgid "Keywords"
+msgstr "Giltza"
+
+#: src/ext_l10n.h:308
+msgid "KnightMove"
+msgstr ""
+
+#: src/ext_l10n.h:309
+msgid "Konto"
+msgstr ""
+
+#: src/ext_l10n.h:310
+msgid "Labeling"
+msgstr "Txarteketa"
+
+#: src/ext_l10n.h:311
+msgid "Land"
+msgstr "Lurra"
+
+#: src/ext_l10n.h:312
+msgid "LandscapeSlide"
+msgstr "Zeharretako Barra"
+
+#: src/ext_l10n.h:313
+msgid "LaTeX"
+msgstr "LaTeX"
+
+#: src/ext_l10n.h:314
+msgid "LaTeX_Title"
+msgstr "LaTeX Izenburua"
+
+#: src/ext_l10n.h:315
+#, fuzzy
+msgid "Left_Header"
+msgstr "Burua"
+
+#: src/ext_l10n.h:316
+msgid "Lemma"
+msgstr "Lema"
+
+#: src/ext_l10n.h:317
+msgid "Lemma*"
+msgstr "Lema"
+
+#: src/ext_l10n.h:318
+msgid "Letter"
+msgstr "Gutuna"
+
+#: src/ext_l10n.h:319
+msgid "List"
+msgstr "Zerrenda"
+
+#: src/ext_l10n.h:320
+msgid "ListOfSlides"
+msgstr "Barra Zerrenda"
+
+#: src/ext_l10n.h:321
+msgid "Literal"
+msgstr "Hitzez Hitz"
+
+#: src/ext_l10n.h:322
+msgid "Location"
+msgstr "Kokapena"
+
+#: src/ext_l10n.h:323
+msgid "Lowertitleback"
+msgstr "Atze Izenburutxoa"
+
+#: src/ext_l10n.h:324
+msgid "LyX-Code"
+msgstr "Lyx Kodea"
+
+#: src/ext_l10n.h:325
+msgid "Mail"
+msgstr "Gutuna"
+
+#: src/ext_l10n.h:326
+#, fuzzy
+msgid "Mainline"
+msgstr "Ataltxoa"
+
+#: src/ext_l10n.h:327
+msgid "MarkBoth"
+msgstr "Biak Zotzakin"
+
+#: src/ext_l10n.h:328
+msgid "MathLetters"
+msgstr "Matematika Gutunak"
+
+#: src/ext_l10n.h:329
+msgid "MeinZeichen"
+msgstr ""
+
+#: src/ext_l10n.h:330
+msgid "Minisec"
+msgstr "Ataltxoa"
+
+#: src/ext_l10n.h:332
+msgid "msnumber"
+msgstr "mszenbakia"
+
+#: src/ext_l10n.h:333
+msgid "My_Address"
+msgstr "Nere Helbidea"
+
+#: src/ext_l10n.h:334
+msgid "Myref"
+msgstr "Nere Erref"
+
+#: src/ext_l10n.h:335
+msgid "MyRef"
+msgstr "Nere Erref"
+
+#: src/ext_l10n.h:336
+msgid "Name"
+msgstr "Izena"
+
+#: src/ext_l10n.h:337
+msgid "Narrative"
+msgstr "Ipuia"
+
+#: src/ext_l10n.h:338
+msgid "Notation"
+msgstr "Oharra"
+
+#: src/ext_l10n.h:339
+msgid "Note"
+msgstr "Oharra"
+
+#: src/ext_l10n.h:340
+msgid "Note*"
+msgstr "Oharra*"
+
+#: src/ext_l10n.h:341
+msgid "NoteToEditor"
+msgstr "ArgitariarentzatOharra"
+
+#: src/ext_l10n.h:342
+msgid "Offprint"
+msgstr ""
+
+#: src/ext_l10n.h:343
+msgid "Offprints"
+msgstr ""
+
+#: src/ext_l10n.h:344
+msgid "Offsets"
+msgstr ""
+
+#: src/ext_l10n.h:345
+msgid "Oggetto"
+msgstr ""
+
+#: src/ext_l10n.h:346
+msgid "Opening"
+msgstr "Irekitzen"
+
+#: src/ext_l10n.h:347
+msgid "Ort"
+msgstr ""
+
+#: src/ext_l10n.h:348
+msgid "Overlay"
+msgstr "Eztaldu"
+
+#: src/ext_l10n.h:349
+msgid "PACS"
+msgstr "SORTAK"
+
+#: src/ext_l10n.h:350 src/ext_l10n.h:920
+msgid "Paragraph"
+msgstr "Parrafoa"
+
+#: src/ext_l10n.h:351
+msgid "Paragraph*"
+msgstr "Parrafoa*"
+
+#: src/ext_l10n.h:352
+msgid "Part"
+msgstr "Zatia"
+
+#: src/ext_l10n.h:353
+msgid "Part*"
+msgstr "Zatia*"
+
+#: src/ext_l10n.h:354
+msgid "Petit"
+msgstr "Txikia"
+
+#: src/ext_l10n.h:355
+msgid "Phone"
+msgstr "Telefonoa"
+
+#: src/ext_l10n.h:356
+msgid "Place"
+msgstr "Jarri"
+
+#: src/ext_l10n.h:357
+msgid "PlaceFigure"
+msgstr "JarriIrudia"
+
+#: src/ext_l10n.h:358
+msgid "PlaceTable"
+msgstr "JarriTaula"
+
+#: src/ext_l10n.h:359
+msgid "PortraitSlide"
+msgstr "ArgazkiGardena"
+
+#: src/ext_l10n.h:360
+msgid "PostalCommend"
+msgstr "GutunAgindua"
+
+#: src/ext_l10n.h:361
+#, fuzzy
+msgid "PostalComment"
+msgstr "GutunAgindua"
+
+#: src/ext_l10n.h:362
+msgid "Postvermerk"
+msgstr ""
+
+#: src/ext_l10n.h:363
+msgid "Preprint"
+msgstr "Aurreinprimaketa"
+
+#: src/ext_l10n.h:364
+msgid "Problem"
+msgstr "Arazoa"
+
+#: src/ext_l10n.h:365
+msgid "ProgressContents"
+msgstr "GaienJarraiera"
+
+#: src/ext_l10n.h:366
+msgid "Proof"
+msgstr "Saiakera"
+
+#: src/ext_l10n.h:367
+msgid "Property"
+msgstr "Jabegotza"
+
+#: src/ext_l10n.h:368
+msgid "Proposition"
+msgstr "Proposamena"
+
+#: src/ext_l10n.h:369
+msgid "Proposition*"
+msgstr "Proposamena*"
+
+#: src/ext_l10n.h:370
+msgid "ps"
+msgstr "ps"
+
+#: src/ext_l10n.h:371
+msgid "PS"
+msgstr "PS"
+
+#: src/ext_l10n.h:372
+msgid "Publishers"
+msgstr "Argitatzaileak"
+
+#: src/ext_l10n.h:373
+msgid "Question"
+msgstr "Galdera"
+
+#: src/ext_l10n.h:374
+msgid "Quotation"
+msgstr "Parrafo Sakona"
+
+#: src/ext_l10n.h:375
+msgid "Quote"
+msgstr "Lerro Sakona"
+
+#: src/ext_l10n.h:376
+msgid "Received"
+msgstr "Eskuratua"
+
+#: src/ext_l10n.h:379
+msgid "Remark"
+msgstr "Ohar"
+
+#: src/ext_l10n.h:380
+msgid "Remark*"
+msgstr "Ohar*"
+
+#: src/ext_l10n.h:381
+msgid "Remarks"
+msgstr "Oharrak"
+
+#: src/ext_l10n.h:382
+msgid "RetourAdresse"
+msgstr "HelbideaItzuli"
+
+#: src/ext_l10n.h:383
+msgid "ReturnAddress"
+msgstr "HelbideaItzuli"
+
+#: src/ext_l10n.h:384
+#, fuzzy
+msgid "Revision"
+msgstr "Galdera"
+
+#: src/ext_l10n.h:385
+msgid "RevisionHistory"
+msgstr ""
+
+#: src/ext_l10n.h:386
+#, fuzzy
+msgid "RevisionRemark"
+msgstr "Ohar"
+
+#: src/ext_l10n.h:387
+msgid "REVTEX_Title"
+msgstr "REVTEX_Izenburura"
+
+#: src/ext_l10n.h:388
+msgid "Right_Address"
+msgstr "Helbide_Zuzena"
+
+#: src/ext_l10n.h:389
+#, fuzzy
+msgid "Right_Header"
+msgstr "BuruZuzena"
+
+#: src/ext_l10n.h:390
+msgid "RightHeader"
+msgstr "BuruZuzena"
+
+#: src/ext_l10n.h:391
+msgid "Rotatefoilhead"
+msgstr "OrriBuruaBiratu"
+
+#: src/ext_l10n.h:392
+#, fuzzy
+msgid "RunningAuthor"
+msgstr "Egilea"
+
+#: src/ext_l10n.h:393
+msgid "Running_LaTeX_Title"
+msgstr "LaTeX_Izenburua_Lantzen"
+
+#: src/ext_l10n.h:394
+#, fuzzy
+msgid "RunningTitle"
+msgstr "LaTeX_Izenburua_Lantzen"
+
+#: src/ext_l10n.h:395
+#, fuzzy
+msgid "Scene"
+msgstr "Bidali"
+
+#: src/ext_l10n.h:396
+msgid "SCENE"
+msgstr "ANTZEZLEKUA"
+
+#: src/ext_l10n.h:397
+msgid "SCENE*"
+msgstr "ANTZEZLEKUA*"
+
+#: src/ext_l10n.h:398
+msgid "Scrap"
+msgstr "Papur"
+
+#: src/ext_l10n.h:399
+msgid "Section"
+msgstr "Atala"
+
+#: src/ext_l10n.h:400
+msgid "Section*"
+msgstr "Atala*"
+
+#: src/ext_l10n.h:401
+msgid "Send_To_Address"
+msgstr "Helbidera_Bidali"
+
+#: src/ext_l10n.h:402
+msgid "Seriate"
+msgstr "Errenkada"
+
+#: src/ext_l10n.h:403
+msgid "SGML"
+msgstr "SGML"
+
+#: src/ext_l10n.h:404
+msgid "ShortFoilhead"
+msgstr "OrriBuruMotza"
+
+#: src/ext_l10n.h:405
+msgid "ShortRotatefoilhead"
+msgstr "OrriburuBiraketaMotza"
+
+#: src/ext_l10n.h:406
+msgid "ShortTitle"
+msgstr "IzenburuMotza"
+
+#: src/ext_l10n.h:407
+msgid "Signature"
+msgstr "Zinadura"
+
+#: src/ext_l10n.h:408
+msgid "Slide"
+msgstr "Eskarria"
+
+#: src/ext_l10n.h:409
+msgid "Slide*"
+msgstr "Eskarria*"
+
+#: src/ext_l10n.h:410
+msgid "SlideContents"
+msgstr "GaienEskarria"
+
+#: src/ext_l10n.h:411
+msgid "SlideHeading"
+msgstr "EskarriBurua"
+
+#: src/ext_l10n.h:412
+msgid "SlideSubHeading"
+msgstr "EskarriAzpiBurua"
+
+#: src/ext_l10n.h:413
+msgid "Solution"
+msgstr "Emaitza"
+
+#: src/ext_l10n.h:414
+msgid "Speaker"
+msgstr "Hizlaria"
+
+#: src/ext_l10n.h:415
+msgid "Specialmail"
+msgstr "Gutunberezia"
+
+#: src/ext_l10n.h:416
+msgid "Stadt"
+msgstr ""
+
+#: src/ext_l10n.h:418
+msgid "State"
+msgstr "Egoera"
+
+#: src/ext_l10n.h:419
+msgid "Strasse"
+msgstr ""
+
+#: src/ext_l10n.h:420
+msgid "Street"
+msgstr "Kalea"
+
+#: src/ext_l10n.h:421
+msgid "Subject"
+msgstr "Gaia"
+
+#: src/ext_l10n.h:422
+msgid "Subjectclass"
+msgstr "Gaimota"
+
+#: src/ext_l10n.h:423
+msgid "Subparagraph"
+msgstr "Azpiparrafoa"
+
+#: src/ext_l10n.h:424
+msgid "Subparagraph*"
+msgstr "Azpiparrafoa*"
+
+#: src/ext_l10n.h:425
+msgid "Subsection"
+msgstr "Azpiatala"
+
+#: src/ext_l10n.h:426
+msgid "Subsection*"
+msgstr "Azpiatala*"
+
+#: src/ext_l10n.h:427
+#, fuzzy
+msgid "SubSection"
+msgstr "Azpiatala"
+
+#: src/ext_l10n.h:428
+msgid "Subsubsection"
+msgstr "Azpiazpiatala"
+
+#: src/ext_l10n.h:429
+msgid "Subsubsection*"
+msgstr "Azpiazpiatala*"
+
+#: src/ext_l10n.h:430
+msgid "Subtitle"
+msgstr "Azpiizenburua"
+
+#: src/ext_l10n.h:431
+msgid "SubTitle"
+msgstr "Azpiizenburua"
+
+#: src/ext_l10n.h:432
+#, fuzzy
+msgid "SubVariation"
+msgstr "Banaketa"
+
+#: src/ext_l10n.h:433
+#, fuzzy
+msgid "SubVariation2"
+msgstr "Banaketa"
+
+#: src/ext_l10n.h:434
+#, fuzzy
+msgid "SubVariation3"
+msgstr "Banaketa"
+
+#: src/ext_l10n.h:435
+#, fuzzy
+msgid "SubVariation4"
+msgstr "Banaketa"
+
+#: src/ext_l10n.h:436
+#, fuzzy
+msgid "SubVariation5"
+msgstr "Banaketa"
+
+#: src/ext_l10n.h:437
+msgid "Summary"
+msgstr "Laburpena"
+
+#: src/ext_l10n.h:438
+msgid "Surname"
+msgstr "Gaitzizena"
+
+#: src/ext_l10n.h:439
+msgid "TableComments"
+msgstr "AipamenTaula"
+
+#: src/ext_l10n.h:440
+msgid "TableRefs"
+msgstr "ErrefTaula"
+
+#: src/ext_l10n.h:441
+msgid "Telefax"
+msgstr "Telefax"
+
+#: src/ext_l10n.h:442
+msgid "Telefon"
+msgstr "Telefonoa"
+
+#: src/ext_l10n.h:443
+msgid "Telephone"
+msgstr "Telefonoa"
+
+#: src/ext_l10n.h:444
+msgid "Telex"
+msgstr "Telex"
+
+#: src/ext_l10n.h:445
+msgid "Thanks"
+msgstr "Eskarrik Asko"
+
+#: src/ext_l10n.h:446
+msgid "Theorem"
+msgstr "Azalkizuna"
+
+#: src/ext_l10n.h:447
+msgid "Theorem*"
+msgstr "Azalkizuna*"
+
+#: src/ext_l10n.h:448
+msgid "TheoremTemplate"
+msgstr "AzalkizunEredua"
+
+#: src/ext_l10n.h:450
+msgid "ThickLine"
+msgstr "Lerromehea"
+
+#: src/ext_l10n.h:451
+msgid "ThreeAffiliations"
+msgstr "HiruHarpidaketa"
+
+#: src/ext_l10n.h:452
+msgid "ThreeAuthors"
+msgstr "HiruEgile"
+
+#: src/ext_l10n.h:453
+#, fuzzy
+msgid "TickList"
+msgstr "ErosketaZerrenda"
+
+#: src/ext_l10n.h:454
+msgid "Title"
+msgstr "Izenburua"
+
+#: src/ext_l10n.h:455
+msgid "Titlehead"
+msgstr "Izenburua"
+
+#: src/ext_l10n.h:456
+msgid "TITLE_OVER:"
+msgstr ""
+
+#: src/ext_l10n.h:457
+msgid "TOC_Author"
+msgstr "Egileen_Aurkibidea"
+
+#: src/ext_l10n.h:458
+msgid "TOC_Title"
+msgstr "Izenburuen_Aurkibidea"
+
+#: src/ext_l10n.h:459
+#, fuzzy
+msgid "Topic"
+msgstr "&Goikaldea"
+
+#: src/ext_l10n.h:460
+msgid "Town"
+msgstr "Herria"
+
+#: src/ext_l10n.h:461
+msgid "Transition"
+msgstr "Aldaketa"
+
+#: src/ext_l10n.h:462
+msgid "Trans_Keywords"
+msgstr "Itzul_Giltza"
+
+#: src/ext_l10n.h:463
+msgid "TranslatedAbstract"
+msgstr "LaburpenItzulia"
+
+#: src/ext_l10n.h:464
+msgid "Translated_Title"
+msgstr "Itzulitako_Izenburua"
+
+#: src/ext_l10n.h:465
+msgid "Translator"
+msgstr "Itzultzailea"
+
+#: src/ext_l10n.h:466
+msgid "TwoAffiliations"
+msgstr "BiHarpidaketa"
+
+#: src/ext_l10n.h:467
+msgid "TwoAuthors"
+msgstr "BiEgile"
+
+#: src/ext_l10n.h:468
+msgid "Unterschrift"
+msgstr ""
+
+#: src/ext_l10n.h:469
+msgid "Uppertitleback"
+msgstr "GoiIzenburuAtzea"
+
+#: src/ext_l10n.h:471
+#, fuzzy
+msgid "Variation"
+msgstr "Banaketa"
+
+#: src/ext_l10n.h:472
+msgid "Verbatim"
+msgstr "Hitzez-hitz"
+
+#: src/ext_l10n.h:473
+msgid "Verse"
+msgstr "Olerki-lerroa"
+
+#: src/ext_l10n.h:474
+msgid "Verteiler"
+msgstr ""
+
+#: src/ext_l10n.h:475
+msgid "VisibleText"
+msgstr "TestuIkuskorra"
+
+#: src/ext_l10n.h:476
+msgid "Yourmail"
+msgstr "ZurePostaKutxa"
+
+#: src/ext_l10n.h:477
+msgid "YourMail"
+msgstr "ZurePostaKutxa"
+
+#: src/ext_l10n.h:478
+msgid "Yourref"
+msgstr "ZureErref"
+
+#: src/ext_l10n.h:479
+msgid "YourRef"
+msgstr "ZureErref"
+
+#: src/ext_l10n.h:480
+msgid "Zusatz"
+msgstr ""
+
+#: src/ext_l10n.h:481
+msgid "Afrikaans"
+msgstr "Afrikarrera"
+
+#: src/ext_l10n.h:482
+msgid "American"
+msgstr "Amerikarrera"
+
+#: src/ext_l10n.h:483
+msgid "Arabic"
+msgstr "Arabiera"
+
+#: src/ext_l10n.h:484
+msgid "Austrian"
+msgstr "Austriakoak"
+
+#: src/ext_l10n.h:485
+msgid "Bahasa"
+msgstr "Bahasaera"
+
+#: src/ext_l10n.h:486
+#, fuzzy
+msgid "Basque"
+msgstr "urdina"
+
+#: src/ext_l10n.h:487
+msgid "Portuguese (Brazil)"
+msgstr ""
+
+#: src/ext_l10n.h:488
+msgid "Breton"
+msgstr "Bretoiera"
+
+#: src/ext_l10n.h:489
+msgid "British"
+msgstr "Inglesa"
+
+#: src/ext_l10n.h:490
+#, fuzzy
+msgid "Bulgarian"
+msgstr "Hungariera"
+
+#: src/ext_l10n.h:491
+msgid "Canadian"
+msgstr "Kanadiera"
+
+#: src/ext_l10n.h:492
+msgid "French Canadian"
+msgstr "Frantsez Kanadiarra"
+
+#: src/ext_l10n.h:493
+msgid "Catalan"
+msgstr "Katalanera"
+
+#: src/ext_l10n.h:494
+msgid "Croatian"
+msgstr "Kroatakera"
+
+#: src/ext_l10n.h:495
+msgid "Czech"
+msgstr "Txekokera"
+
+#: src/ext_l10n.h:496
+msgid "Danish"
+msgstr "Daniera"
+
+#: src/ext_l10n.h:497
+msgid "Dutch"
+msgstr "Alemanera"
+
+#: src/ext_l10n.h:499
+msgid "Esperanto"
+msgstr "Esperantoa"
+
+#: src/ext_l10n.h:500
+msgid "Estonian"
+msgstr "Estoniera"
+
+#: src/ext_l10n.h:501
+msgid "Finnish"
+msgstr "Finlandera"
+
+#: src/ext_l10n.h:502
+msgid "French"
+msgstr "Frantzesera"
+
+#: src/ext_l10n.h:503
+msgid "French (GUTenberg)"
+msgstr "Frantseza (GUTenberg)"
+
+#: src/ext_l10n.h:504
+msgid "Galician"
+msgstr "Galegera"
+
+#: src/ext_l10n.h:505
+msgid "German"
+msgstr "Alemaniera"
+
+#: src/ext_l10n.h:506
+msgid "German (new spelling)"
+msgstr "Alemaniera (era berria)"
+
+#: src/ext_l10n.h:508
+msgid "Hebrew"
+msgstr "Hebreokera"
+
+#: src/ext_l10n.h:509
+msgid "Irish"
+msgstr "Irishera"
+
+#: src/ext_l10n.h:510
+msgid "Italian"
+msgstr "Italiera"
+
+#: src/ext_l10n.h:511
+msgid "Lsorbian"
+msgstr "Lsorbianera"
+
+#: src/ext_l10n.h:512
+msgid "Magyar"
+msgstr "Magyarrera"
+
+#: src/ext_l10n.h:513
+msgid "Norsk"
+msgstr "Norskera"
+
+#: src/ext_l10n.h:514
+msgid "Polish"
+msgstr "Polishera"
+
+#: src/ext_l10n.h:515
+#, fuzzy
+msgid "Portugese"
+msgstr "Portugekera"
+
+#: src/ext_l10n.h:516
+msgid "Romanian"
+msgstr "Erromakera"
+
+#: src/ext_l10n.h:517
+msgid "Russian"
+msgstr "Errusiera"
+
+#: src/ext_l10n.h:518
+msgid "Scottish"
+msgstr "Skottishera"
+
+#: src/ext_l10n.h:519
+#, fuzzy
+msgid "Serbian"
+msgstr "Errenkada"
+
+#: src/ext_l10n.h:520
+#, fuzzy
+msgid "Serbo-Croatian"
+msgstr "Kroatakera"
+
+#: src/ext_l10n.h:521
+msgid "Spanish"
+msgstr "Gaztelera"
+
+#: src/ext_l10n.h:522
+msgid "Slovak"
+msgstr "Slobakera"
+
+#: src/ext_l10n.h:523
+msgid "Slovene"
+msgstr "Slobakera"
+
+#: src/ext_l10n.h:524
+msgid "Swedish"
+msgstr "Suediera"
+
+#: src/ext_l10n.h:525
+#, fuzzy
+msgid "Thai"
+msgstr "Hauxe"
+
+#: src/ext_l10n.h:526
+msgid "Turkish"
+msgstr "Turkera"
+
+#: src/ext_l10n.h:527
+msgid "Ukrainian"
+msgstr "Ukraniarrera"
+
+#: src/ext_l10n.h:528
+msgid "Usorbian"
+msgstr "Usorbiera"
+
+#: src/ext_l10n.h:529
+msgid "Welsh"
+msgstr "Welshera"
+
+#: src/ext_l10n.h:531
+#, fuzzy
+msgid "Version"
+msgstr "Bertsioa...|B"
+
+#: src/ext_l10n.h:532
+#, fuzzy
+msgid "Version goes here"
+msgstr "Bertsio Kontrola"
+
+#: src/ext_l10n.h:536
+#, fuzzy
+msgid "LyX: Enter text"
+msgstr "LyX: Erroldaketa"
+
+#: src/ext_l10n.h:537
+#, fuzzy
+msgid "&Dummy"
+msgstr "Laburpena"
+
+#: src/ext_l10n.h:541
+#, fuzzy
+msgid "&Key"
+msgstr "Tekla"
+
+#: src/ext_l10n.h:542
+#, fuzzy
+msgid "The citation key"
+msgstr "Aipamena Sartu"
+
+#: src/ext_l10n.h:543
+#, fuzzy
+msgid "&Label"
+msgstr "Txarteketa"
+
+#: src/ext_l10n.h:544
+#, fuzzy
+msgid "The label as it appears in the document"
+msgstr "Egituraren izena era berdinean aukera zerrendatan agertuko da."
+
+#: src/ext_l10n.h:545 src/ext_l10n.h:598 src/ext_l10n.h:792 src/ext_l10n.h:797
+#: src/ext_l10n.h:873 src/ext_l10n.h:893 src/ext_l10n.h:917
+#: src/ext_l10n.h:1062 src/ext_l10n.h:1068 src/ext_l10n.h:1118
+#: src/ext_l10n.h:1158 src/ext_l10n.h:1199
+msgid "&OK"
+msgstr "&Onartu"
+
+#: src/ext_l10n.h:547
+#, fuzzy
+msgid "Bibtex"
+msgstr "BibTeX"
+
+#: src/ext_l10n.h:548
+#, fuzzy
+msgid "Databases"
+msgstr "Datu Basea:"
+
+#: src/ext_l10n.h:549
+#, fuzzy
+msgid "BibTeX database to use"
+msgstr "Datu Basea:"
+
+#: src/ext_l10n.h:550 src/ext_l10n.h:626 src/ext_l10n.h:628
+#: src/ext_l10n.h:1167
+msgid "New Item"
+msgstr ""
+
+#: src/ext_l10n.h:551
+#, fuzzy
+msgid "Available BibTeX databases"
+msgstr "Datu Basea:"
+
+#: src/ext_l10n.h:552
+#, fuzzy
+msgid "&Add ..."
+msgstr "&Gehitu"
+
+#: src/ext_l10n.h:553
+#, fuzzy
+msgid "Add a BibTeX database file"
+msgstr "Datu Basea:"
+
+#: src/ext_l10n.h:554
+#, fuzzy
+msgid "&Delete"
+msgstr "Ezabatu|#E"
+
+#: src/ext_l10n.h:555
+msgid "Remove the selected database"
+msgstr ""
+
+#: src/ext_l10n.h:556
+#, fuzzy
+msgid "&Style"
+msgstr "Itxura:  "
+
+#: src/ext_l10n.h:557 src/ext_l10n.h:563
+#, fuzzy
+msgid "The BibTeX style"
+msgstr "TeX itxura txandatu"
+
+#: src/ext_l10n.h:559
+#, fuzzy
+msgid "unsrt"
+msgstr "&Sartu"
+
+#: src/ext_l10n.h:560
+msgid "alpha"
+msgstr ""
+
+#: src/ext_l10n.h:561
+msgid "abbrv"
+msgstr ""
+
+#: src/ext_l10n.h:564
+msgid "FIXME !"
+msgstr ""
+
+#: src/ext_l10n.h:565
+msgid "The name of the style to use"
+msgstr ""
+
+#: src/ext_l10n.h:566
+msgid "&Browse"
+msgstr "&Arakatu"
+
+#: src/ext_l10n.h:567
+#, fuzzy
+msgid "Choose a style file"
+msgstr "Eredua aukeratu"
+
+#: src/ext_l10n.h:568
+#, fuzzy
+msgid "Add bibliography to &TOC"
+msgstr "Bibliografi elementua"
+
+#: src/ext_l10n.h:569
+#, fuzzy
+msgid "Add bibliography to the table of contents"
+msgstr "Aurkibide Orokorra Ikusi"
+
+#: src/ext_l10n.h:573
+#, fuzzy
+msgid "&Family:"
+msgstr "Senidea:|#n"
+
+#: src/ext_l10n.h:574
+#, fuzzy
+msgid "Font family"
+msgstr "Senidea:|#n"
+
+#: src/ext_l10n.h:575
+#, fuzzy
+msgid "&Series:"
+msgstr "Serieak:|#S"
+
+#: src/ext_l10n.h:576 src/ext_l10n.h:583
+#, fuzzy
+msgid "Font series"
+msgstr "Hizki Neurria:|#u"
+
+#: src/ext_l10n.h:577 src/ext_l10n.h:705
+#, fuzzy
+msgid "&Language:"
+msgstr "Hizkuntza"
+
+#: src/ext_l10n.h:579 src/ext_l10n.h:582
+#, fuzzy
+msgid "Font shape"
+msgstr "Hizki Neurria:|#u"
+
+#: src/ext_l10n.h:580 src/ext_l10n.h:585
+msgid "Font color"
+msgstr ""
+
+#: src/ext_l10n.h:581
+#, fuzzy
+msgid "S&hape:"
+msgstr "Marrazkia:|#r"
+
+#: src/ext_l10n.h:584
+#, fuzzy
+msgid "&Color:"
+msgstr "Koloreak"
+
+#: src/ext_l10n.h:587
+#, fuzzy
+msgid "&Toggle all"
+msgstr "Beltza txandatu"
+
+#: src/ext_l10n.h:588
+#, fuzzy
+msgid "toggle font on all of the above"
+msgstr "Hauek denak txandatu|#t"
+
+#: src/ext_l10n.h:589
+#, fuzzy
+msgid "Never toggled"
+msgstr "Hauek Inoiz ez dira txandatzen"
+
+#: src/ext_l10n.h:590 src/ext_l10n.h:818
+#, fuzzy
+msgid "Si&ze:"
+msgstr "Neurria:|#N"
+
+#: src/ext_l10n.h:591
+#, fuzzy
+msgid "Font size"
+msgstr "Hizki Neurria:|#u"
+
+#: src/ext_l10n.h:592
+#, fuzzy
+msgid "Always toggled"
+msgstr "Hauek beti bihurtzen dira"
+
+#: src/ext_l10n.h:593 src/ext_l10n.h:595
+msgid "Other font settings"
+msgstr ""
+
+#: src/ext_l10n.h:594
+#, fuzzy
+msgid "&Misc:"
+msgstr "Batzuk"
+
+#: src/ext_l10n.h:596
+#, fuzzy
+msgid "Auto apply"
+msgstr "&Eragin"
+
+#: src/ext_l10n.h:597
+msgid "Apply each change automatically"
+msgstr ""
+
+#: src/ext_l10n.h:599 src/ext_l10n.h:604 src/ext_l10n.h:763 src/ext_l10n.h:793
+#: src/ext_l10n.h:798 src/ext_l10n.h:874 src/ext_l10n.h:918
+#: src/ext_l10n.h:1061 src/ext_l10n.h:1069
+msgid "&Apply"
+msgstr "&Eragin"
+
+#: src/ext_l10n.h:602 src/ext_l10n.h:761 src/ext_l10n.h:796 src/ext_l10n.h:872
+#: src/ext_l10n.h:916 src/ext_l10n.h:1060
+msgid "&Restore"
+msgstr "&Berrezarri"
+
+#: src/ext_l10n.h:606
+msgid "Text after"
+msgstr "Testu ondoren"
+
+#: src/ext_l10n.h:608
+#, fuzzy
+msgid "Natbib citation style to use"
+msgstr "Aipamen itxura|#t"
+
+#: src/ext_l10n.h:609
+#, fuzzy
+msgid "Text before"
+msgstr "Testu aurretik|#T"
+
+#: src/ext_l10n.h:611
+#, fuzzy
+msgid "Citation entry"
+msgstr "Aipamen itxura|#t"
+
+#: src/ext_l10n.h:613
+msgid "Search the available citations"
+msgstr ""
+
+#: src/ext_l10n.h:614
+#, fuzzy
+msgid "Regular E&xpression"
+msgstr "Expresio Erregularrak Erabili"
+
+#: src/ext_l10n.h:615
+#, fuzzy
+msgid "Interpret search entry as a regular expression"
+msgstr "Aipamena sartu: Giltza(k) edo expresio erregularra idatzi"
+
+#: src/ext_l10n.h:616
+msgid "&Previous"
+msgstr ""
+
+#: src/ext_l10n.h:617
+#, fuzzy
+msgid "&Case sensitive"
+msgstr "Larri/Xehea|#M"
+
+#: src/ext_l10n.h:618
+msgid "Make the search case-sensitive"
+msgstr ""
+
+#: src/ext_l10n.h:619
+#, fuzzy
+msgid "&Next"
+msgstr "testua"
+
+#: src/ext_l10n.h:620
+#, fuzzy
+msgid "Add the selected citation"
+msgstr "_Aipamen berria sartu"
+
+#: src/ext_l10n.h:621
+msgid "Remove the selected citation"
+msgstr ""
+
+#: src/ext_l10n.h:622
+#, fuzzy
+msgid "Move the selected citation up"
+msgstr "Aipamena Sartu: Aipamena hautatu"
+
+#: src/ext_l10n.h:623
+msgid "Move the selected citation down"
+msgstr ""
+
+#: src/ext_l10n.h:624
+#, fuzzy
+msgid "Available"
+msgstr "Tekla Eskuragarriak"
+
+#: src/ext_l10n.h:625
+#, fuzzy
+msgid "Selected"
+msgstr "Hautatu"
+
+#: src/ext_l10n.h:627
+#, fuzzy
+msgid "Available citation keys"
+msgstr "Tekla Eskuragarriak"
+
+#: src/ext_l10n.h:629
+#, fuzzy
+msgid "Citations currently selected"
+msgstr "Orain hautatutako teklak"
+
+#: src/ext_l10n.h:630
+#, fuzzy
+msgid "Text to place after citation"
+msgstr "Testua, aipamenaren ondoren kokatzeko"
+
+#: src/ext_l10n.h:631
+#, fuzzy
+msgid "&Full author list"
+msgstr "Mugikorra:|#F"
+
+#: src/ext_l10n.h:632
+msgid "List all authors"
+msgstr ""
+
+#: src/ext_l10n.h:633
+msgid "Force &upper case"
+msgstr ""
+
+#: src/ext_l10n.h:634
+msgid "Force upper case in citation"
+msgstr ""
+
+#: src/ext_l10n.h:635
+msgid "Text to place before citation"
+msgstr ""
+
+#: src/ext_l10n.h:638
+#, fuzzy
+msgid "&Fonts:"
+msgstr "Hizki-mota: "
+
+#: src/ext_l10n.h:639
+#, fuzzy
+msgid "&Pagestyle:"
+msgstr "Orri itxura:|#O"
+
+#: src/ext_l10n.h:640
+#, fuzzy
+msgid "Defa&ult Skip:"
+msgstr "Jatorrizko Jauzia:|#J"
+
+#: src/ext_l10n.h:641
+#, fuzzy
+msgid "F&ont Size:"
+msgstr "Hizki Neurria:|#u"
+
+#: src/ext_l10n.h:647
+#, fuzzy
+msgid "Spacin&g:"
+msgstr ", Hutsunea egiten:"
+
+#: src/ext_l10n.h:648
+#, fuzzy
+msgid "E&xtra Options:"
+msgstr "Aukera Gehiago"
+
+#: src/ext_l10n.h:649
+#, fuzzy
+msgid "&Class:"
+msgstr "Mota:|#M"
+
+#: src/ext_l10n.h:650
+#, fuzzy
+msgid "smallskip"
+msgstr "Jauzi txikia"
+
+#: src/ext_l10n.h:651
+#, fuzzy
+msgid "medskip"
+msgstr "Jauzi Erdia"
+
+#: src/ext_l10n.h:652
+#, fuzzy
+msgid "bigskip"
+msgstr "Jauzi Haundia"
+
+#: src/ext_l10n.h:653
+#, fuzzy
+msgid "length"
+msgstr "Luzera"
+
+#: src/ext_l10n.h:663
+#, fuzzy
+msgid "O&ne"
+msgstr "Piztuta"
+
+#: src/ext_l10n.h:664
+#, fuzzy
+msgid "&Two"
+msgstr "&Goikaldea"
+
+#: src/ext_l10n.h:666
+#, fuzzy
+msgid "On&e"
+msgstr "Piztuta"
+
+#: src/ext_l10n.h:667
+#, fuzzy
+msgid "T&wo"
+msgstr "Nora"
+
+#: src/ext_l10n.h:669
+#, fuzzy
+msgid "&Indent"
+msgstr "Sangratua"
+
+#: src/ext_l10n.h:670
+#, fuzzy
+msgid "S&kip"
+msgstr "Jauzia|#J"
+
+#: src/ext_l10n.h:672
+#, fuzzy
+msgid "&Papersize:"
+msgstr "orriaren neurria"
+
+#: src/ext_l10n.h:683
+#, fuzzy
+msgid "&Special:"
+msgstr "Berezia"
+
+#: src/ext_l10n.h:688
+#, fuzzy
+msgid "&Use Geometry Package"
+msgstr "Geometri Sorta Erabili|#S"
+
+#: src/ext_l10n.h:690
+#, fuzzy
+msgid "P&ortrait"
+msgstr "Goitibehera|#e"
+
+#: src/ext_l10n.h:691
+#, fuzzy
+msgid "&Landscape"
+msgstr "zeharretaka"
+
+#: src/ext_l10n.h:693
+#, fuzzy
+msgid "&Right:"
+msgstr "Eskuin"
+
+#: src/ext_l10n.h:694
+#, fuzzy
+msgid "&Bottom:"
+msgstr "&Azpikaldea"
+
+#: src/ext_l10n.h:695
+#, fuzzy
+msgid "L&eft:"
+msgstr "Ezker"
+
+#: src/ext_l10n.h:696
+#, fuzzy
+msgid "&Top:"
+msgstr "&Goikaldea"
+
+#: src/ext_l10n.h:697
+msgid "Custom Papersize"
+msgstr "Egokitutako OrriNeurria"
+
+#: src/ext_l10n.h:698 src/ext_l10n.h:907
+#, fuzzy
+msgid "&Width:"
+msgstr "Zabalera"
+
+#: src/ext_l10n.h:699
+#, fuzzy
+msgid "&Height:"
+msgstr "Altuera"
+
+#: src/ext_l10n.h:700
+msgid "Foot/Head Margins"
+msgstr "Oin/Buruko Margenak"
+
+#: src/ext_l10n.h:701
+#, fuzzy
+msgid "&Footskip:"
+msgstr "Oin ohar jauzia:|#j"
+
+#: src/ext_l10n.h:702
+#, fuzzy
+msgid "Hea&dsep:"
+msgstr "Banaketa:|#b"
+
+#: src/ext_l10n.h:703
+#, fuzzy
+msgid "Headhe&ight:"
+msgstr "Altuera:|#u"
+
+#: src/ext_l10n.h:706
+#, fuzzy
+msgid "Enco&ding:"
+msgstr "Kodeaketa"
+
+#: src/ext_l10n.h:720
+#, fuzzy
+msgid "Quote Style"
+msgstr "Komila Itxura    "
+
+#: src/ext_l10n.h:721
+#, fuzzy
+msgid "&Type:"
+msgstr "Hizkia:"
+
+#: src/ext_l10n.h:726
+#, fuzzy
+msgid "Â«textÂ»"
+msgstr "testua"
+
+#: src/ext_l10n.h:727
+#, fuzzy
+msgid "Â»textÂ«"
+msgstr "testua"
+
+#: src/ext_l10n.h:728
+#, fuzzy
+msgid "&Single"
+msgstr "Bakarra"
+
+#: src/ext_l10n.h:729
+#, fuzzy
+msgid "&Double"
+msgstr "Bikoitza"
+
+#: src/ext_l10n.h:731
+#, fuzzy
+msgid "F&loat Placement:"
+msgstr "Mugikorren Kokapena:|#M"
+
+#: src/ext_l10n.h:732
+#, fuzzy
+msgid "S&ection number depth:"
+msgstr "Atal zenbaki sakonera"
+
+#: src/ext_l10n.h:733
+#, fuzzy
+msgid "&Table of contents depth:"
+msgstr "Aurkibideko sakonera"
+
+#: src/ext_l10n.h:734
+#, fuzzy
+msgid "P&S Driver:"
+msgstr "PS Kontrolatzailea:|#K"
+
+#: src/ext_l10n.h:735
+#, fuzzy
+msgid "Use A&MS Math"
+msgstr "AMS Matematika erabili|#A"
+
+#: src/ext_l10n.h:737
+#, fuzzy
+msgid "Si&ze"
+msgstr "Neurria|#N"
+
+#: src/ext_l10n.h:750
+msgid "&1"
+msgstr ""
+
+#: src/ext_l10n.h:751
+msgid "&2"
+msgstr ""
+
+#: src/ext_l10n.h:752
+msgid "&3"
+msgstr ""
+
+#: src/ext_l10n.h:753
+msgid "&4"
+msgstr ""
+
+#: src/ext_l10n.h:754
+#, fuzzy
+msgid "&Standard"
+msgstr "Arrunta"
+
+#: src/ext_l10n.h:755
+#, fuzzy
+msgid "&Maths"
+msgstr "Ibilbideak"
+
+#: src/ext_l10n.h:756
+#, fuzzy
+msgid "&Ding 1"
+msgstr "Ding 1|#D"
+
+#: src/ext_l10n.h:757
+#, fuzzy
+msgid "D&ing 2"
+msgstr "Ding 2|#i"
+
+#: src/ext_l10n.h:758
+#, fuzzy
+msgid "Di&ng 3"
+msgstr "Ding 3|#n"
+
+#: src/ext_l10n.h:759
+#, fuzzy
+msgid "Din&g 4"
+msgstr "Ding 4|#g"
+
+#: src/ext_l10n.h:760
+#, fuzzy
+msgid "&LaTeX"
+msgstr "LaTeX"
+
+#: src/ext_l10n.h:766 src/ext_l10n.h:780
+#, fuzzy
+msgid "LaTeX error messages"
+msgstr "LaTeX-eko Akatsa"
+
+#: src/ext_l10n.h:768
+#, fuzzy
+msgid "ERT inset display"
+msgstr "[erakutsi barik]"
+
+#: src/ext_l10n.h:769
+msgid "&Inline"
+msgstr ""
+
+#: src/ext_l10n.h:770
+msgid "Show ERT inline"
+msgstr ""
+
+#: src/ext_l10n.h:771
+#, fuzzy
+msgid "&Collapsed"
+msgstr "Erkatu"
+
+#: src/ext_l10n.h:772
+msgid "Show ERT button only"
+msgstr ""
+
+#: src/ext_l10n.h:773
+#, fuzzy
+msgid "&Open"
+msgstr "Ireki"
+
+#: src/ext_l10n.h:774
+#, fuzzy
+msgid "Show ERT contents"
+msgstr "Aurkibide Orokorrik Ez%i"
+
+#: src/ext_l10n.h:777
+#, fuzzy
+msgid "External Material"
+msgstr "Kanpo Materiala...|K"
+
+#: src/ext_l10n.h:778
+#, fuzzy
+msgid "&Template"
+msgstr "Ereduak"
+
+#: src/ext_l10n.h:779
+#, fuzzy
+msgid "Available templates"
+msgstr "Tekla Eskuragarriak"
+
+#: src/ext_l10n.h:781
+#, fuzzy
+msgid "&Edit file"
+msgstr "Fitxategia argitatu|#a"
+
+#: src/ext_l10n.h:782
+#, fuzzy
+msgid "Edit the file externally"
+msgstr "Kanpo fitxategi multzoa"
+
+#: src/ext_l10n.h:783
+#, fuzzy
+msgid "&View file"
+msgstr "fitxategi berria"
+
+#: src/ext_l10n.h:784
+#, fuzzy
+msgid "View the file"
+msgstr "Taulen Zerrenda Ikusi"
+
+#: src/ext_l10n.h:785 src/ext_l10n.h:903 src/ext_l10n.h:1103
+#: src/ext_l10n.h:1189 src/ext_l10n.h:1202
+msgid "&Update"
+msgstr "&Eguneratu"
+
+#: src/ext_l10n.h:786
+msgid "Update the material"
+msgstr ""
+
+#: src/ext_l10n.h:787 src/ext_l10n.h:1075
+msgid "&File"
+msgstr "&Fitxategia"
+
+#: src/ext_l10n.h:788
+#, fuzzy
+msgid "Filename"
+msgstr "Fitxategia:|#F"
+
+#: src/ext_l10n.h:789 src/ext_l10n.h:810 src/ext_l10n.h:891
+#: src/ext_l10n.h:1079
+#, fuzzy
+msgid "&Browse ..."
+msgstr "Arakatu..."
+
+#: src/ext_l10n.h:790
+#, fuzzy
+msgid "&Parameters"
+msgstr "Agerbideak|#g"
+
+#: src/ext_l10n.h:791
+#, fuzzy
+msgid "Parameters"
+msgstr "Agerbideak|#g"
+
+#: src/ext_l10n.h:795 src/ext_l10n.h:806 src/ext_l10n.h:1160
+#, fuzzy
+msgid "Form1"
+msgstr "Nondik"
+
+#: src/ext_l10n.h:801
+#, fuzzy
+msgid "Bottom of the page"
+msgstr "azpikaldea"
+
+#: src/ext_l10n.h:802
+#, fuzzy
+msgid "Top of the page"
+msgstr "% Orriarena"
+
+#: src/ext_l10n.h:803
+#, fuzzy
+msgid "Page of floats"
+msgstr "Orri zutabeak"
+
+#: src/ext_l10n.h:804
+msgid "Here, if possible"
+msgstr ""
+
+#: src/ext_l10n.h:805
+msgid "Here, definitely"
+msgstr ""
+
+#: src/ext_l10n.h:808
+#, fuzzy
+msgid "&File:"
+msgstr "&Fitxategia"
+
+#: src/ext_l10n.h:809 src/ext_l10n.h:890
+#, fuzzy
+msgid "File name to include"
+msgstr "Sartu beharreko Idazkia Hautatu"
+
+#: src/ext_l10n.h:811 src/ext_l10n.h:892
+#, fuzzy
+msgid "Select a file"
+msgstr "Irteerako fitxategi izena hautatu"
+
+#: src/ext_l10n.h:812
+#, fuzzy
+msgid "Screen Options"
+msgstr "Pantailako Hizkimotak"
+
+#: src/ext_l10n.h:814
+#, fuzzy
+msgid "Monochrome"
+msgstr "Monokromo eran|#M"
+
+#: src/ext_l10n.h:815
+#, fuzzy
+msgid "Grayscale"
+msgstr "Txuribeltz eran|#T"
+
+#: src/ext_l10n.h:816
+#, fuzzy
+msgid "Color"
+msgstr "Koloreak"
+
+#: src/ext_l10n.h:817
+#, fuzzy
+msgid "Do not display"
+msgstr "Ez bistaratu|#A"
+
+#: src/ext_l10n.h:819
+msgid "S&how:"
+msgstr ""
+
+#: src/ext_l10n.h:820 src/ext_l10n.h:830
+msgid "Height"
+msgstr "Altuera"
+
+#: src/ext_l10n.h:821
+#, fuzzy
+msgid "&Draft mode"
+msgstr "Matematika Era"
+
+#: src/ext_l10n.h:822
+#, fuzzy
+msgid "draft mode"
+msgstr "Matematika Era"
+
+#: src/ext_l10n.h:824
+#, fuzzy
+msgid "&Scale"
+msgstr "Txikiago"
+
+#: src/ext_l10n.h:825
+#, fuzzy
+msgid "&Default"
+msgstr "Jatorrizkoa"
+
+#: src/ext_l10n.h:826
+#, fuzzy
+msgid "&Custom"
+msgstr "Bezeroa"
+
+#: src/ext_l10n.h:828
+msgid "Keep aspect&ratio"
+msgstr ""
+
+#: src/ext_l10n.h:831
+#, fuzzy
+msgid "EPS Options"
+msgstr "Aukerak"
+
+#: src/ext_l10n.h:832
+msgid "Bounding box"
+msgstr ""
+
+#: src/ext_l10n.h:833
+#, fuzzy
+msgid "Left &bottom:"
+msgstr "Ezker"
+
+#: src/ext_l10n.h:834
+#, fuzzy
+msgid "Right &top:"
+msgstr "Eskuin"
+
+#: src/ext_l10n.h:835
+msgid "Y"
+msgstr ""
+
+#: src/ext_l10n.h:836
+#, fuzzy
+msgid "X"
+msgstr "#X"
+
+#: src/ext_l10n.h:849
+msgid "&Get"
+msgstr ""
+
+#: src/ext_l10n.h:850
+msgid "Get bounding box from file"
+msgstr ""
+
+#: src/ext_l10n.h:851
+msgid "&Clip to bounding box"
+msgstr ""
+
+#: src/ext_l10n.h:852
+msgid "clip to bounding box"
+msgstr ""
+
+#: src/ext_l10n.h:854
+msgid "Rotation"
+msgstr "Biraketa"
+
+#: src/ext_l10n.h:855
+#, fuzzy
+msgid "&Angle:"
+msgstr "Anguloa|#L"
+
+#: src/ext_l10n.h:856
+msgid "&Origin:"
+msgstr ""
+
+#: src/ext_l10n.h:858
+msgid "leftTop"
+msgstr ""
+
+#: src/ext_l10n.h:859
+#, fuzzy
+msgid "leftBottom"
+msgstr "&Azpikaldea"
+
+#: src/ext_l10n.h:860
+#, fuzzy
+msgid "leftBaseline"
+msgstr "taula lerroa"
+
+#: src/ext_l10n.h:862
+msgid "centerTop"
+msgstr ""
+
+#: src/ext_l10n.h:863
+#, fuzzy
+msgid "centerBottom"
+msgstr "Goratua | Erdiratua | Azpiratu"
+
+#: src/ext_l10n.h:864
+msgid "centerBaseline"
+msgstr ""
+
+#: src/ext_l10n.h:865
+#, fuzzy
+msgid "rightTop"
+msgstr "Altuera"
+
+#: src/ext_l10n.h:866
+#, fuzzy
+msgid "rightBottom"
+msgstr "botoitxoaren eskuinaldea"
+
+#: src/ext_l10n.h:867
+#, fuzzy
+msgid "rightBaseline"
+msgstr "taula lerroa"
+
+#: src/ext_l10n.h:868
+#, fuzzy
+msgid "referencePoint"
+msgstr "Lehentasuna"
+
+#: src/ext_l10n.h:869
+#, fuzzy
+msgid "LaTeX options"
+msgstr "beste aukerak"
+
+#: src/ext_l10n.h:870
+#, fuzzy
+msgid "Su&bfigure"
+msgstr "Azpi-irudia|#b"
+
+#: src/ext_l10n.h:871
+msgid "The sub-caption for the figure"
+msgstr ""
+
+#: src/ext_l10n.h:876
+#, fuzzy
+msgid "Include File"
+msgstr "Fitxategia Barneratu|B"
+
+#: src/ext_l10n.h:877
+#, fuzzy
+msgid "Include type"
+msgstr "Fitxategia Barneratu|B"
+
+#: src/ext_l10n.h:878
+#, fuzzy
+msgid "&Include"
+msgstr "Barneratu"
+
+#: src/ext_l10n.h:879 src/ext_l10n.h:881 src/ext_l10n.h:883 src/ext_l10n.h:886
+#: src/ext_l10n.h:888
+msgid "FIXME"
+msgstr ""
+
+#: src/ext_l10n.h:880
+#, fuzzy
+msgid "I&nput"
+msgstr "Sarrera"
+
+#: src/ext_l10n.h:882
+#, fuzzy
+msgid "&Verbatim"
+msgstr "Hitzez-hitz"
+
+#: src/ext_l10n.h:884
+msgid "Options"
+msgstr "Aukerak"
+
+#: src/ext_l10n.h:885
+#, fuzzy
+msgid "&Don't typeset"
+msgstr "Hizki motarik ez|#H"
+
+#: src/ext_l10n.h:887
+#, fuzzy
+msgid "Visible &Space"
+msgstr "Hutsune ikuskorra|#s"
+
+#: src/ext_l10n.h:889
+#, fuzzy
+msgid "&Filename:"
+msgstr "Fitxategia:|#F"
+
+#: src/ext_l10n.h:895
+#, fuzzy
+msgid "&Load"
+msgstr "Bereganatu|#B"
+
+#: src/ext_l10n.h:896
+#, fuzzy
+msgid "Load the file"
+msgstr "Azken fitxategia"
+
+#: src/ext_l10n.h:898 src/ext_l10n.h:1176
+#, fuzzy
+msgid "&Keyword"
+msgstr "Giltza"
+
+#: src/ext_l10n.h:899 src/ext_l10n.h:1031 src/ext_l10n.h:1177
+msgid "Index entry"
+msgstr "Sartu Errolda"
+
+#: src/ext_l10n.h:904 src/ext_l10n.h:1203
+msgid "Update the display"
+msgstr ""
+
+#: src/ext_l10n.h:906
+#, fuzzy
+msgid "Minipage settings"
+msgstr "orritxo lerroa"
+
+#: src/ext_l10n.h:908 src/ext_l10n.h:1057
+#, fuzzy
+msgid "Top"
+msgstr "&Goikaldea"
+
+#: src/ext_l10n.h:909 src/ext_l10n.h:1058
+#, fuzzy
+msgid "Middle"
+msgstr "&Erdia"
+
+#: src/ext_l10n.h:910 src/ext_l10n.h:1059
+#, fuzzy
+msgid "Bottom"
+msgstr "&Azpikaldea"
+
+#: src/ext_l10n.h:911
+#, fuzzy
+msgid "Vertical alignment"
+msgstr "Goitiberako Lerrokaketa|#V"
+
+#: src/ext_l10n.h:912
+#, fuzzy
+msgid "A&lignment:"
+msgstr "Lerrokaketa"
+
+#: src/ext_l10n.h:913
+msgid "Units of width value"
+msgstr ""
+
+#: src/ext_l10n.h:914
+#, fuzzy
+msgid "Width value"
+msgstr "Zabalera"
+
+#: src/ext_l10n.h:915
+msgid "&Units:"
+msgstr ""
+
+#: src/ext_l10n.h:921
+msgid "&Alignment and Spacing"
+msgstr ""
+
+#: src/ext_l10n.h:922
+#, fuzzy
+msgid "Alignment:"
+msgstr "Lerrokaketa"
+
+#: src/ext_l10n.h:923
+#, fuzzy
+msgid "Justified"
+msgstr "Egokitzaketa|E"
+
+#: src/ext_l10n.h:924
+msgid "Left"
+msgstr "Ezker"
+
+#: src/ext_l10n.h:925
+msgid "Right"
+msgstr "Eskuin"
+
+#: src/ext_l10n.h:926
+#, fuzzy
+msgid "Centered"
+msgstr "Erdigunea"
+
+#: src/ext_l10n.h:927
+#, fuzzy
+msgid "No indentation"
+msgstr "Oharra"
+
+#: src/ext_l10n.h:928
+#, fuzzy
+msgid "Spacing"
+msgstr "Hutsunea|#H"
+
+#: src/ext_l10n.h:929 src/ext_l10n.h:940 src/ext_l10n.h:951 src/ext_l10n.h:962
+#: src/ext_l10n.h:973 src/ext_l10n.h:984 src/ext_l10n.h:1037
+msgid "Centimetres"
+msgstr "Zentimetroak"
+
+#: src/ext_l10n.h:930 src/ext_l10n.h:941 src/ext_l10n.h:952 src/ext_l10n.h:963
+#: src/ext_l10n.h:974 src/ext_l10n.h:985 src/ext_l10n.h:1038
+msgid "Inches"
+msgstr "Atzak"
+
+#: src/ext_l10n.h:931 src/ext_l10n.h:942 src/ext_l10n.h:953 src/ext_l10n.h:964
+#: src/ext_l10n.h:975 src/ext_l10n.h:986 src/ext_l10n.h:1039
+#, fuzzy
+msgid "Points"
+msgstr "Inprimatu"
+
+#: src/ext_l10n.h:932 src/ext_l10n.h:943 src/ext_l10n.h:954 src/ext_l10n.h:965
+#: src/ext_l10n.h:976 src/ext_l10n.h:987 src/ext_l10n.h:1040
+msgid "Millimetres"
+msgstr "Milimetroak"
+
+#: src/ext_l10n.h:933 src/ext_l10n.h:944 src/ext_l10n.h:955 src/ext_l10n.h:966
+#: src/ext_l10n.h:977 src/ext_l10n.h:988 src/ext_l10n.h:1041
+msgid "Picas"
+msgstr "Pikak"
+
+#: src/ext_l10n.h:934 src/ext_l10n.h:945 src/ext_l10n.h:956 src/ext_l10n.h:967
+#: src/ext_l10n.h:978 src/ext_l10n.h:989 src/ext_l10n.h:1042
+#, fuzzy
+msgid "ex Units"
+msgstr "neurriz kanpo"
+
+#: src/ext_l10n.h:935 src/ext_l10n.h:946 src/ext_l10n.h:957 src/ext_l10n.h:968
+#: src/ext_l10n.h:979 src/ext_l10n.h:990 src/ext_l10n.h:1043
+#, fuzzy
+msgid "em Units"
+msgstr "em neurrietan"
+
+#: src/ext_l10n.h:936 src/ext_l10n.h:947 src/ext_l10n.h:958 src/ext_l10n.h:969
+#: src/ext_l10n.h:980 src/ext_l10n.h:991 src/ext_l10n.h:1044
+#, fuzzy
+msgid "Scaled Points"
+msgstr "Cicero puntuak"
+
+#: src/ext_l10n.h:937 src/ext_l10n.h:948 src/ext_l10n.h:959 src/ext_l10n.h:970
+#: src/ext_l10n.h:981 src/ext_l10n.h:992 src/ext_l10n.h:1045
+#, fuzzy
+msgid "Big/PS Points"
+msgstr "Haundia/PS puntuak (1/72 atz)"
+
+#: src/ext_l10n.h:938 src/ext_l10n.h:949 src/ext_l10n.h:960 src/ext_l10n.h:971
+#: src/ext_l10n.h:982 src/ext_l10n.h:993 src/ext_l10n.h:1046
+#, fuzzy
+msgid "Didot Points"
+msgstr "Didot puntuak"
+
+#: src/ext_l10n.h:939 src/ext_l10n.h:950 src/ext_l10n.h:961 src/ext_l10n.h:972
+#: src/ext_l10n.h:983 src/ext_l10n.h:994 src/ext_l10n.h:1047
+#, fuzzy
+msgid "Cicero Points"
+msgstr "Cicero puntuak"
+
+#: src/ext_l10n.h:995 src/ext_l10n.h:997
+msgid "Units:"
+msgstr ""
+
+#: src/ext_l10n.h:996 src/ext_l10n.h:998
+msgid "Unit of Size, Stretch and Slink"
+msgstr ""
+
+#: src/ext_l10n.h:999
+#, fuzzy
+msgid "Value:"
+msgstr "Balioa"
+
+#: src/ext_l10n.h:1000
+#, fuzzy
+msgid "Amount of spacing"
+msgstr "Hutsunea"
+
+#: src/ext_l10n.h:1001
+#, fuzzy
+msgid "Stretch:"
+msgstr "Kalea"
+
+#: src/ext_l10n.h:1002
+msgid "Margin by which paragraph is allowed to increase"
+msgstr ""
+
+#: src/ext_l10n.h:1003
+msgid "Shrink:"
+msgstr ""
+
+#: src/ext_l10n.h:1004
+msgid "Margin by which paragraph is allowed to decrease"
+msgstr ""
+
+#: src/ext_l10n.h:1006 src/ext_l10n.h:1015
+#, fuzzy
+msgid "DefSkip"
+msgstr "Jauziaren Ezaugarria"
+
+#: src/ext_l10n.h:1007 src/ext_l10n.h:1016
+#, fuzzy
+msgid "SmallSkip"
+msgstr "Jauzi txikia"
+
+#: src/ext_l10n.h:1008 src/ext_l10n.h:1017
+#, fuzzy
+msgid "MedSkip"
+msgstr "Jauzi Erdia"
+
+#: src/ext_l10n.h:1009 src/ext_l10n.h:1018
+#, fuzzy
+msgid "BigSkip"
+msgstr "Jauzi Haundia"
+
+#: src/ext_l10n.h:1010 src/ext_l10n.h:1019
+msgid "VFill"
+msgstr "GoibeherakoBetegarria"
+
+#: src/ext_l10n.h:1012
+#, fuzzy
+msgid "Above:"
+msgstr "Gain|#n"
+
+#: src/ext_l10n.h:1013
+#, fuzzy
+msgid "Below:"
+msgstr "Azpi|#p"
+
+#: src/ext_l10n.h:1021
+#, fuzzy
+msgid "Keep space at the top of the page"
+msgstr "Orriaren goikaldean hutsunea eduki"
+
+#: src/ext_l10n.h:1022
+#, fuzzy
+msgid "Keep space at top of the page"
+msgstr "Orriaren goikaldean hutsunea eduki"
+
+#: src/ext_l10n.h:1023
+#, fuzzy
+msgid "Keep space at the bottom of the page"
+msgstr "Orriaren goikaldean hutsunea eduki"
+
+#: src/ext_l10n.h:1024
+#, fuzzy
+msgid "List environment"
+msgstr "Lerrokaketa|#L"
+
+#: src/ext_l10n.h:1025
+#, fuzzy
+msgid "Label width:"
+msgstr "Txartel zabaleroa"
+
+#: src/ext_l10n.h:1026
+#, fuzzy
+msgid "Label width in list environment"
+msgstr "Gune Sakonera Aldatu|S"
+
+#: src/ext_l10n.h:1027
+#, fuzzy
+msgid "&Lines and Page breaks"
+msgstr "Orri Jauziak"
+
+#: src/ext_l10n.h:1028
+msgid "Page break"
+msgstr "Orri Jauzia"
+
+#: src/ext_l10n.h:1029 src/ext_l10n.h:1033
+#, fuzzy
+msgid "above paragraph"
+msgstr "Parrafo bat gora joan"
+
+#: src/ext_l10n.h:1030 src/ext_l10n.h:1034
+#, fuzzy
+msgid "below paragraph"
+msgstr "Parrafo bat gora joan"
+
+#: src/ext_l10n.h:1032
+#, fuzzy
+msgid "Line"
+msgstr "Lerroak"
+
+#: src/ext_l10n.h:1035
+#, fuzzy
+msgid "&Extra options"
+msgstr "Aukera Gehiago"
+
+#: src/ext_l10n.h:1036
+#, fuzzy
+msgid "Unit:"
+msgstr "Hizki-mota: "
+
+#: src/ext_l10n.h:1050
+#, fuzzy
+msgid "Wrap text around floats"
+msgstr "Testua mugikorren inguruan jarri (floatflt)"
+
+#: src/ext_l10n.h:1051
+#, fuzzy
+msgid "Indent whole paragraph"
+msgstr "Sangratutako Parrafoa"
+
+#: src/ext_l10n.h:1052
+#, fuzzy
+msgid "Width:"
+msgstr "Zabalera"
+
+#: src/ext_l10n.h:1053
+#, fuzzy
+msgid "Minipage options"
+msgstr "orritxo lerroa"
+
+#: src/ext_l10n.h:1054
+#, fuzzy
+msgid "Start new minipage"
+msgstr "&Orri-ttipi berria Hasi"
+
+#: src/ext_l10n.h:1055
+#, fuzzy
+msgid "HFill between minipage paragraphs"
+msgstr "&HBetegarri Orri-ttipiko parrafoen artean"
+
+#: src/ext_l10n.h:1056
+#, fuzzy
+msgid "Vertical Alignment:"
+msgstr "Goitiberako Lerrokaketa|#V"
+
+#: src/ext_l10n.h:1064
+#, fuzzy
+msgid "LaTeX pre-amble"
+msgstr "LaTeX Aurre-Esana"
+
+#: src/ext_l10n.h:1065
+#, fuzzy
+msgid "The LaTeX pre-amble"
+msgstr "LaTeX Aurre-Esana"
+
+#: src/ext_l10n.h:1066
+msgid "&Edit ..."
+msgstr ""
+
+#: src/ext_l10n.h:1067
+msgid "Edit the pre-amble in an external editor"
+msgstr ""
+
+#: src/ext_l10n.h:1072
+#, fuzzy
+msgid "Print Destination"
+msgstr "Norabidea"
+
+#: src/ext_l10n.h:1073
+#, fuzzy
+msgid "P&rinter"
+msgstr "Inprimagailua"
+
+#: src/ext_l10n.h:1074
+msgid "Send output to the printer"
+msgstr ""
+
+#: src/ext_l10n.h:1076 src/ext_l10n.h:1078
+#, fuzzy
+msgid "Send output to a file"
+msgstr "Irteerako fitxategi izena hautatu"
+
+#: src/ext_l10n.h:1077
+msgid "Send output to the given printer"
+msgstr ""
+
+#: src/ext_l10n.h:1080
+msgid "Pages"
+msgstr "Orriak"
+
+#: src/ext_l10n.h:1081
+#, fuzzy
+msgid "&All"
+msgstr "&Eragin"
+
+#: src/ext_l10n.h:1082
+#, fuzzy
+msgid "Print all pages"
+msgstr "Orri guztiak inprimatu"
+
+#: src/ext_l10n.h:1083
+#, fuzzy
+msgid "&Odd"
+msgstr "&Gehitu"
+
+#: src/ext_l10n.h:1084
+#, fuzzy
+msgid "Print odd pages only"
+msgstr "Orrialde bakoitiarrak soilik inprimatu"
+
+#: src/ext_l10n.h:1085
+#, fuzzy
+msgid "&Even"
+msgstr "&Orrialde Bikoitiak"
+
+#: src/ext_l10n.h:1086
+#, fuzzy
+msgid "Print even pages only"
+msgstr "Orri bikoitiarrak soilik inprimatu"
+
+#: src/ext_l10n.h:1087
+#, fuzzy
+msgid "&Last page:"
+msgstr "Hizkuntza"
+
+#: src/ext_l10n.h:1088
+#, fuzzy
+msgid "Page number to print to"
+msgstr "Inprimaketa Ezinezkoa"
+
+#: src/ext_l10n.h:1089
+#, fuzzy
+msgid "Re&verse order"
+msgstr "&Alderantzizko antolaketa"
+
+#: src/ext_l10n.h:1090
+#, fuzzy
+msgid "Print in reverse order"
+msgstr "Alderantziz inprimatu (azken orrialdea lehendabizi)"
+
+#: src/ext_l10n.h:1091
+#, fuzzy
+msgid "Page number to print from"
+msgstr "Inprimaketa Ezinezkoa"
+
+#: src/ext_l10n.h:1092
+#, fuzzy
+msgid "Ran&ge"
+msgstr "Orrialdea"
+
+#: src/ext_l10n.h:1093
+#, fuzzy
+msgid "Set a range of pages to print"
+msgstr "Inprimatzeko Kopien zenbakia"
+
+#: src/ext_l10n.h:1094
+#, fuzzy
+msgid "&Starting range:"
+msgstr "&Orri-ttipi berria Hasi"
+
+#: src/ext_l10n.h:1096
+#, fuzzy
+msgid "Number of copies"
+msgstr "Inprimatzeko Kopien zenbakia"
+
+#: src/ext_l10n.h:1097
+#, fuzzy
+msgid "&Collate"
+msgstr "Erkatu"
+
+#: src/ext_l10n.h:1098
+#, fuzzy
+msgid "Collate copies"
+msgstr "Hainbat kopia eman"
+
+#: src/ext_l10n.h:1099
+msgid "&Print"
+msgstr "&Inprimatu"
+
+#: src/ext_l10n.h:1102 src/ext_l10n.h:1187
+#, fuzzy
+msgid "&Type"
+msgstr "Hizkia"
+
+#: src/ext_l10n.h:1104
+#, fuzzy
+msgid "Update the reference list"
+msgstr "Lehentasunak Argitatu"
+
+#: src/ext_l10n.h:1105
+msgid "Sort"
+msgstr "Sailkatu"
+
+#: src/ext_l10n.h:1106
+#, fuzzy
+msgid "Sort references in alphabetical order"
+msgstr "Erreferentziak alfabetikoki sailkatu?"
+
+#: src/ext_l10n.h:1108
+#, fuzzy
+msgid "Move the document cursor to reference"
+msgstr "Idazkia aldatua egon daiteke"
+
+#: src/ext_l10n.h:1110
+#, fuzzy
+msgid "Page number"
+msgstr "Orri zenbakia"
+
+#: src/ext_l10n.h:1111
+msgid "Ref on page xxx"
+msgstr "xxx orrian erref"
+
+#: src/ext_l10n.h:1112
+#, fuzzy
+msgid "On page xxx"
+msgstr "xxx orrian"
+
+#: src/ext_l10n.h:1113
+msgid "Pretty reference"
+msgstr "Erreferentzia politta"
+
+#: src/ext_l10n.h:1114
+msgid "Reference as it appears in output"
+msgstr "Irteeran ageri den bezala erreferentziatu"
+
+#: src/ext_l10n.h:1115
+#, fuzzy
+msgid "&Reference:"
+msgstr "Erreferentzia :"
+
+#: src/ext_l10n.h:1116
+#, fuzzy
+msgid "&Name:"
+msgstr "Izena:"
+
+#: src/ext_l10n.h:1117
+#, fuzzy
+msgid "Available references"
+msgstr "Erreferentzi Eskuragarriak"
+
+#: src/ext_l10n.h:1120
+#, fuzzy
+msgid "Search and replace"
+msgstr "Bilatu eta Ordezkatu"
+
+#: src/ext_l10n.h:1121
+#, fuzzy
+msgid "&Find:"
+msgstr "Bilatu|#B"
+
+#: src/ext_l10n.h:1122
+#, fuzzy
+msgid "Replace &with:"
+msgstr "Ordezkatu|#R"
+
+#: src/ext_l10n.h:1123
+#, fuzzy
+msgid "Case &sensitive"
+msgstr "Larri/Xehea|#M"
+
+#: src/ext_l10n.h:1124
+msgid "Match whole words onl&y"
+msgstr ""
+
+#: src/ext_l10n.h:1125
+msgid "Find &Next"
+msgstr ""
+
+#: src/ext_l10n.h:1126 src/ext_l10n.h:1134 src/ext_l10n.h:1183
+#, fuzzy
+msgid "&Replace"
+msgstr "Ordezkatu"
+
+#: src/ext_l10n.h:1127
+#, fuzzy
+msgid "Replace &All "
+msgstr "Guztiak Ord.|#G#g"
+
+#: src/ext_l10n.h:1128
+msgid "Search &backwards"
+msgstr ""
+
+#: src/ext_l10n.h:1130
+#, fuzzy
+msgid "File: "
+msgstr "Fitxategia `"
+
+#: src/ext_l10n.h:1133
+#, fuzzy
+msgid "Suggestions:"
+msgstr "Galdera"
+
+#: src/ext_l10n.h:1135
+#, fuzzy
+msgid "Replace word with current choice"
+msgstr "Oraingo idazkia ordezkatu?"
+
+#: src/ext_l10n.h:1136
+msgid "&Add"
+msgstr "&Gehitu"
+
+#: src/ext_l10n.h:1137
+#, fuzzy
+msgid "Add the word to your personal dictionary"
+msgstr "Erabiltzailearen hiztegian Sartu|#I"
+
+#: src/ext_l10n.h:1138
+#, fuzzy
+msgid "&Ignore"
+msgstr "Ahaztu"
+
+#: src/ext_l10n.h:1139
+#, fuzzy
+msgid "Ignore this word"
+msgstr "Ahaztu hitza|#h"
+
+#: src/ext_l10n.h:1140
+#, fuzzy
+msgid "&Accept"
+msgstr "Onartua"
+
+#: src/ext_l10n.h:1141
+#, fuzzy
+msgid "Accept word for this session"
+msgstr "Lanordu honetan hitza onartu|#A"
+
+#: src/ext_l10n.h:1142
+#, fuzzy
+msgid "&Options..."
+msgstr "Aukerak"
+
+#: src/ext_l10n.h:1144
+#, fuzzy
+msgid "How far spellchecking has got"
+msgstr "Zuzentzailea abiatu|#S"
+
+#: src/ext_l10n.h:1146
+#, fuzzy
+msgid "Replacement:"
+msgstr "Mugikorren Kokapena:|#M"
+
+#: src/ext_l10n.h:1147
+#, fuzzy
+msgid "Current word"
+msgstr "Oraingoa"
+
+#: src/ext_l10n.h:1148
+#, fuzzy
+msgid "Unknown:"
+msgstr "ezezaguna"
+
+#: src/ext_l10n.h:1149
+#, fuzzy
+msgid "Replace with selected word"
+msgstr "Oraingo idazkia ordezkatu?"
+
+#: src/ext_l10n.h:1150
+msgid "&Start..."
+msgstr ""
+
+#: src/ext_l10n.h:1151
+#, fuzzy
+msgid "Start spellcheck"
+msgstr "Zuzentzailea abiatu|#S"
+
+#: src/ext_l10n.h:1153
+#, fuzzy
+msgid "&Rows:"
+msgstr "Lerroak"
+
+#: src/ext_l10n.h:1154
+#, fuzzy
+msgid "Number of rows"
+msgstr "Inprimatzeko Kopien zenbakia"
+
+#: src/ext_l10n.h:1155
+#, fuzzy
+msgid "&Columns:"
+msgstr "Zutabeak"
+
+#: src/ext_l10n.h:1156
+#, fuzzy
+msgid "Number of columns"
+msgstr "Zutabeen ehunekoa"
+
+#: src/ext_l10n.h:1157
+msgid "Resize this to the correct table dimensions"
+msgstr ""
+
+#: src/ext_l10n.h:1161
+#, fuzzy
+msgid "LaTeX classes"
+msgstr "LaTeX-en Erregistro Artxiboa"
+
+#: src/ext_l10n.h:1162
+#, fuzzy
+msgid "LaTeX styles"
+msgstr "LaTeX Izenburua"
+
+#: src/ext_l10n.h:1163
+#, fuzzy
+msgid "BibTeX styles"
+msgstr "TeX Itxura|X"
+
+#: src/ext_l10n.h:1164
+#, fuzzy
+msgid "Selected classes or styles"
+msgstr "Hautatutako Teklak"
+
+#: src/ext_l10n.h:1165
+msgid "Show &path"
+msgstr ""
+
+#: src/ext_l10n.h:1166
+msgid "Toggles view of the file list"
+msgstr ""
+
+#: src/ext_l10n.h:1168
+#, fuzzy
+msgid "Installed files"
+msgstr "Fitxategia Barneratu|B"
+
+#: src/ext_l10n.h:1169
+#, fuzzy
+msgid "&Rescan"
+msgstr "Berrirakurri|#R#r"
+
+#: src/ext_l10n.h:1170
+#, fuzzy
+msgid "Built new file list"
+msgstr "Emaitzaren fitxategia hutsa dago"
+
+#: src/ext_l10n.h:1171
+#, fuzzy
+msgid "&View"
+msgstr "Ikuspegia"
+
+#: src/ext_l10n.h:1172
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
+msgstr ""
+
+#: src/ext_l10n.h:1174
+msgid "Close this dialog"
+msgstr ""
+
+#: src/ext_l10n.h:1178
+#, fuzzy
+msgid "Entry"
+msgstr "Txartela sartu:"
+
+#: src/ext_l10n.h:1179
+#, fuzzy
+msgid "Thesaurus entries"
+msgstr "Hiztegi Ideologikoa"
+
+#: src/ext_l10n.h:1180
+#, fuzzy
+msgid "Select a related word"
+msgstr "Irteerako fitxategi izena hautatu"
+
+#: src/ext_l10n.h:1181
+#, fuzzy
+msgid "&Selection"
+msgstr "hautaketa"
+
+#: src/ext_l10n.h:1182
+#, fuzzy
+msgid "The selected entry"
+msgstr "Hautatutako Teklak"
+
+#: src/ext_l10n.h:1184
+msgid "Replace the entry with the selection"
+msgstr ""
+
+#: src/ext_l10n.h:1186
+#, fuzzy
+msgid "Table Of Contents"
+msgstr "Aurkibide Orokorra"
+
+#: src/ext_l10n.h:1188
+#, fuzzy
+msgid "Contents list"
+msgstr "GaienEskarria"
+
+#: src/ext_l10n.h:1191
+#, fuzzy
+msgid "Insert URL"
+msgstr "Txartela Sartu"
+
+#: src/ext_l10n.h:1192
+#, fuzzy
+msgid "&URL"
+msgstr "URL"
+
+#: src/ext_l10n.h:1194
+#, fuzzy
+msgid "&Name"
+msgstr "Izena"
+
+#: src/ext_l10n.h:1195
+msgid "Name associated with the URL"
+msgstr "URL-arekin elkarturiko izena"
+
+#: src/ext_l10n.h:1197
+#, fuzzy
+msgid "&Generate hyperlink"
+msgstr "Hiperloturak sortu"
+
+#: src/ext_l10n.h:1198
+msgid "Output as a hyperlink ?"
+msgstr "Hiperlotura erako irteera?"
+
+#: src/ext_l10n.h:1201
+#, fuzzy
+msgid "Version control log"
+msgstr "Bertsio Kontrola|r"
 
 #~ msgid "Encoding"
 #~ msgstr "Kodeaketa"

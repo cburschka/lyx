@@ -30,7 +30,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0.1\n"
-"POT-Creation-Date: 2002-05-16 00:06+0200\n"
+"POT-Creation-Date: 2002-05-16 01:51+0200\n"
 "PO-Revision-Date: 2002-02-16 14:29MSK\n"
 "Last-Translator: Vitaly Lipatov <lav@altlinux.ru>\n"
 "Language-Team: russian <ru@li.org>\n"
@@ -365,8 +365,8 @@ msgid ", Spacing: "
 msgstr "Промежутки"
 
 #
-#: src/bufferview_funcs.C:182 src/ext_l10n.h:654
-#: src/frontends/qt2/QDocument.C:111
+#: src/bufferview_funcs.C:182 src/frontends/qt2/QDocument.C:111
+#: src/ext_l10n.h:654
 msgid "Single"
 msgstr ""
 "Оди-\n"
@@ -377,15 +377,15 @@ msgid "Onehalf"
 msgstr "Полуторный"
 
 #
-#: src/bufferview_funcs.C:189 src/ext_l10n.h:656
-#: src/frontends/qt2/QDocument.C:113 src/frontends/xforms/form_tabular.C:492
+#: src/bufferview_funcs.C:189 src/frontends/qt2/QDocument.C:113
+#: src/frontends/xforms/form_tabular.C:492
 #: src/frontends/xforms/form_tabular.C:494
 #: src/frontends/xforms/form_tabular.C:508
 #: src/frontends/xforms/form_tabular.C:510
 #: src/frontends/xforms/form_tabular.C:512
 #: src/frontends/xforms/form_tabular.C:514
 #: src/frontends/xforms/form_tabular.C:516
-#: src/frontends/xforms/form_tabular.C:518
+#: src/frontends/xforms/form_tabular.C:518 src/ext_l10n.h:656
 msgid "Double"
 msgstr "Двойной"
 
@@ -410,12 +410,12 @@ msgstr "Сохранённая закладка"
 msgid "Moved to bookmark"
 msgstr "Перемещены к закладке"
 
-#: src/BufferView_pimpl.C:1611
+#: src/BufferView_pimpl.C:1612
 msgid "Select LyX document to insert"
 msgstr "Выберите документ LyX для вставки"
 
 #
-#: src/BufferView_pimpl.C:1613 src/frontends/controllers/ControlBibtex.C:68
+#: src/BufferView_pimpl.C:1614 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
 #: src/frontends/controllers/ControlGraphics.C:154
 #: src/frontends/controllers/ControlInclude.C:71 src/lyx_cb.C:113
@@ -423,93 +423,92 @@ msgstr "Выберите документ LyX для вставки"
 msgid "Documents|#o#O"
 msgstr "Документы"
 
-#: src/BufferView_pimpl.C:1615 src/lyxfunc.C:1865 src/lyxfunc.C:1942
+#: src/BufferView_pimpl.C:1616 src/lyxfunc.C:1865 src/lyxfunc.C:1942
 msgid "Examples|#E#e"
 msgstr "Примеры"
 
-#: src/BufferView_pimpl.C:1620 src/frontends/controllers/ControlInclude.C:67
+#: src/BufferView_pimpl.C:1621 src/frontends/controllers/ControlInclude.C:67
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| Документ LyX (*.lyx)"
 
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1629 src/lyxfunc.C:1749 src/lyxfunc.C:1776
+#: src/BufferView_pimpl.C:1630 src/lyxfunc.C:1749 src/lyxfunc.C:1776
 #: src/lyxfunc.C:1879 src/lyxfunc.C:1959 src/lyxfunc.C:1987
 msgid "Canceled."
 msgstr "Отменено."
 
-#: src/BufferView_pimpl.C:1641
+#: src/BufferView_pimpl.C:1642
 msgid "Inserting document"
 msgstr "Вставляю документ"
 
-#: src/BufferView_pimpl.C:1647 src/ext_l10n.h:637
-#: src/frontends/xforms/FormDocument.C:327 src/lyxfunc.C:1797
-#: src/lyxfunc.C:1907
+#: src/BufferView_pimpl.C:1648 src/frontends/xforms/FormDocument.C:327
+#: src/lyxfunc.C:1797 src/lyxfunc.C:1907 src/ext_l10n.h:637
 msgid "Document"
 msgstr "Документ"
 
-#: src/BufferView_pimpl.C:1648
+#: src/BufferView_pimpl.C:1649
 msgid "inserted."
 msgstr "вставлен."
 
-#: src/BufferView_pimpl.C:1652
+#: src/BufferView_pimpl.C:1653
 msgid "Could not insert document"
 msgstr "Ошибка вставки документа"
 
-#: src/BufferView_pimpl.C:1818
+#: src/BufferView_pimpl.C:1819
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
 
-#: src/BufferView_pimpl.C:1836 src/insets/insettext.C:1458
+#: src/BufferView_pimpl.C:1837 src/insets/insettext.C:1463
 msgid "Layout "
 msgstr "Формат "
 
-#: src/BufferView_pimpl.C:1837 src/insets/insettext.C:1458
+#: src/BufferView_pimpl.C:1838 src/insets/insettext.C:1463
 msgid " not known"
 msgstr " не известно"
 
-#: src/BufferView_pimpl.C:2033 src/insets/inseterror.C:55
+#: src/BufferView_pimpl.C:2034 src/insets/inseterror.C:55
 #: src/insets/inseterror.C:77 src/lyxfunc.C:1889
 msgid "Error"
 msgstr "Ошибка"
 
-#: src/BufferView_pimpl.C:2034
+#: src/BufferView_pimpl.C:2035
 msgid "Couldn't find this label"
 msgstr "Невозможно найти эту метку"
 
-#: src/BufferView_pimpl.C:2035
+#: src/BufferView_pimpl.C:2036
 msgid "in current document."
 msgstr "в текущем документе."
 
-#: src/BufferView_pimpl.C:2532
+#: src/BufferView_pimpl.C:2533
 msgid "Mark removed"
 msgstr "Метка удалена"
 
-#: src/BufferView_pimpl.C:2539
+#: src/BufferView_pimpl.C:2540
 msgid "Mark set"
 msgstr "Метка установлена"
 
-#: src/BufferView_pimpl.C:2670
+#: src/BufferView_pimpl.C:2671
 msgid "Mark off"
 msgstr "Метка выключена"
 
-#: src/BufferView_pimpl.C:2683
+#: src/BufferView_pimpl.C:2684
 msgid "Mark on"
 msgstr "Метка включена"
 
 #
-#: src/BufferView_pimpl.C:2857 src/insets/insettext.C:1511
+#: src/BufferView_pimpl.C:2858 src/insets/insettext.C:1516
 msgid "Unknown spacing argument: "
 msgstr "Отсутствует аргумент"
 
-#: src/BufferView_pimpl.C:3212
+#: src/BufferView_pimpl.C:3213
 msgid "Word `"
 msgstr "Слово `"
 
-#: src/BufferView_pimpl.C:3370
+#: src/BufferView_pimpl.C:3371
 msgid "Unknown function!"
 msgstr "Неизвестная функция!"
 
-#: src/BufferView_pimpl.C:3633 src/BufferView_pimpl.C:3636
+#: src/BufferView_pimpl.C:3634 src/BufferView_pimpl.C:3637
 msgid "No more insets"
 msgstr "Больше нет блоков"
 
@@ -823,4516 +822,6 @@ msgid " to file `"
 msgstr " в файл `"
 
 #
-#: src/ext_l10n.h:1 src/ext_l10n.h:4 src/MenuBackend.C:541
-#: src/MenuBackend.C:548
-msgid "File|F"
-msgstr "Файл"
-
-#
-#: src/ext_l10n.h:2 src/ext_l10n.h:5 src/MenuBackend.C:542
-msgid "Edit|E"
-msgstr "Правка"
-
-#
-#: src/ext_l10n.h:3 src/ext_l10n.h:11
-msgid "Help|H"
-msgstr "Помощь"
-
-#
-#: src/ext_l10n.h:6
-msgid "Insert|I"
-msgstr "Вставить"
-
-#
-#: src/ext_l10n.h:7
-msgid "Layout|L"
-msgstr "Формат"
-
-#
-#: src/ext_l10n.h:8
-msgid "View|V"
-msgstr "Просмотреть"
-
-#
-#: src/ext_l10n.h:9
-msgid "Navigate|N"
-msgstr "Перейти"
-
-#
-#: src/ext_l10n.h:10 src/MenuBackend.C:544
-msgid "Documents|D"
-msgstr "Документы"
-
-#: src/ext_l10n.h:12 src/ext_l10n.h:17 src/MenuBackend.C:511
-msgid "New...|N"
-msgstr "Создать..."
-
-#
-#: src/ext_l10n.h:13 src/ext_l10n.h:18
-msgid "New from Template...|T"
-msgstr "Создать из шаблона..."
-
-#
-#: src/ext_l10n.h:14 src/ext_l10n.h:19 src/MenuBackend.C:512
-msgid "Open...|O"
-msgstr "Открыть..."
-
-#
-#: src/ext_l10n.h:15 src/ext_l10n.h:25 src/MenuBackend.C:513
-msgid "Import|I"
-msgstr "Импортировать из..."
-
-#
-#: src/ext_l10n.h:16 src/ext_l10n.h:29
-msgid "Exit|x"
-msgstr "Выйти"
-
-#
-#: src/ext_l10n.h:20
-msgid "Close|C"
-msgstr "Закрыть"
-
-#
-#: src/ext_l10n.h:21
-msgid "Save|S"
-msgstr "Сохранить"
-
-#
-#: src/ext_l10n.h:22
-msgid "Save As...|A"
-msgstr "Сохранить как"
-
-#
-#: src/ext_l10n.h:23
-msgid "Revert to Saved|R"
-msgstr "Вернуться к сохранённому|В"
-
-#
-#: src/ext_l10n.h:24
-msgid "Version Control|V"
-msgstr "Контроль версий"
-
-#
-#: src/ext_l10n.h:26
-msgid "Export|E"
-msgstr "Экспортировать в..."
-
-#
-#: src/ext_l10n.h:27
-msgid "Print...|P"
-msgstr "Напечатать..."
-
-#
-#: src/ext_l10n.h:28
-msgid "Fax...|F"
-msgstr "Отправить по факсу..."
-
-#
-#: src/ext_l10n.h:30
-msgid "Register|R"
-msgstr "Зарегистрировать"
-
-#
-#: src/ext_l10n.h:31
-msgid "Check In Changes|I"
-msgstr "Влить изменения"
-
-#
-#: src/ext_l10n.h:32
-msgid "Check Out for Edit|O"
-msgstr "Захватить на редакцию"
-
-#
-#: src/ext_l10n.h:33
-msgid "Revert to Last Version|L"
-msgstr "Откатиться к предыдущей версии"
-
-#
-#: src/ext_l10n.h:34
-msgid "Undo Last Check In|U"
-msgstr "Отменить последнюю заливку"
-
-#
-#: src/ext_l10n.h:35
-msgid "Show History|H"
-msgstr "Показать историю"
-
-#
-#: src/ext_l10n.h:36
-msgid "Custom...|C"
-msgstr "Выборочно..."
-
-#: src/ext_l10n.h:37 src/ext_l10n.h:54
-msgid "Preferences...|P"
-msgstr "Параметры..."
-
-#
-#: src/ext_l10n.h:38 src/ext_l10n.h:55
-msgid "Reconfigure|R"
-msgstr "Переконфигурировать"
-
-#
-#: src/ext_l10n.h:39
-msgid "Undo|U"
-msgstr "Отменить последнее действие"
-
-#
-#: src/ext_l10n.h:40
-msgid "Redo|d"
-msgstr "Повторить отменённое действие"
-
-#
-#: src/ext_l10n.h:41
-msgid "Cut|C"
-msgstr "Вырезать"
-
-#
-#: src/ext_l10n.h:42
-msgid "Copy|o"
-msgstr "Копировать"
-
-#
-#: src/ext_l10n.h:43
-msgid "Paste|a"
-msgstr "Вставить"
-
-#: src/ext_l10n.h:44
-msgid "Paste External Selection|x"
-msgstr "Вставить извне"
-
-#
-#: src/ext_l10n.h:45
-msgid "Find & Replace...|F"
-msgstr "Найти и заменить"
-
-#
-#: src/ext_l10n.h:46
-msgid "Tabular|T"
-msgstr "Формат таблицы"
-
-#: src/ext_l10n.h:47
-msgid "Math|M"
-msgstr "Математика"
-
-#: src/ext_l10n.h:48
-msgid "Read Only"
-msgstr "Только для чтения"
-
-#
-#: src/ext_l10n.h:49
-msgid "Spellchecker...|S"
-msgstr "Проверка правописания"
-
-#: src/ext_l10n.h:50
-#, fuzzy
-msgid "Thesaurus..."
-msgstr "Тезаурус"
-
-#
-#: src/ext_l10n.h:51
-msgid "Check TeX|h"
-msgstr "Проверить LaTeX"
-
-#
-#: src/ext_l10n.h:52
-msgid "Remove All Error Boxes|E"
-msgstr "Удалить все сообщения об ошибках"
-
-#
-#: src/ext_l10n.h:53
-#, fuzzy
-msgid "Open/Close float|l"
-msgstr "Раскрыть/Закрыть..."
-
-#
-#: src/ext_l10n.h:56
-msgid "as Lines|L"
-msgstr "вставлять отдельными строками"
-
-#
-#: src/ext_l10n.h:57
-msgid "as Paragraphs|P"
-msgstr "вставлять абзацами"
-
-#
-#: src/ext_l10n.h:58
-msgid "Multicolumn|M"
-msgstr "Многоколоночная"
-
-#
-#: src/ext_l10n.h:59
-msgid "Line Top|T"
-msgstr "Линия сверху"
-
-#
-#: src/ext_l10n.h:60
-msgid "Line Bottom|B"
-msgstr "Линия снизу"
-
-#
-#: src/ext_l10n.h:61
-msgid "Line Left|L"
-msgstr "Линия слева"
-
-#
-#: src/ext_l10n.h:62
-msgid "Line Right|R"
-msgstr "Линия справа"
-
-#
-#: src/ext_l10n.h:63
-msgid "Align Left|e"
-msgstr "Прижать влево"
-
-#
-#: src/ext_l10n.h:64 src/ext_l10n.h:88
-msgid "Align Center|C"
-msgstr "По центру горизонтально"
-
-#
-#: src/ext_l10n.h:65
-msgid "Align Right|i"
-msgstr "Прижать вправо"
-
-#: src/ext_l10n.h:66
-msgid "V.Align Top|o"
-msgstr "Прижать кверху"
-
-#
-#: src/ext_l10n.h:67
-msgid "V.Align Center|n"
-msgstr "По центру вертикально"
-
-#
-#: src/ext_l10n.h:68
-msgid "V.Align Bottom|V"
-msgstr "Прижать книзу"
-
-#
-#: src/ext_l10n.h:69
-msgid "Add Row|A"
-msgstr "Добавить строку (ниже текущей)"
-
-#
-#: src/ext_l10n.h:70
-msgid "Delete Row|w"
-msgstr "Удалить строку"
-
-#
-#: src/ext_l10n.h:71
-msgid "Add Column|u"
-msgstr "Добавить колонку (правее текущей)"
-
-#
-#: src/ext_l10n.h:72
-msgid "Delete Column|D"
-msgstr "Удалить колонку"
-
-#: src/ext_l10n.h:73
-msgid "Make eqnarray|e"
-msgstr ""
-
-#: src/ext_l10n.h:74
-msgid "Make multline|m"
-msgstr ""
-
-#: src/ext_l10n.h:75
-msgid "Make align 1 column|1"
-msgstr ""
-
-#: src/ext_l10n.h:76
-msgid "Make align 2 columns|2"
-msgstr ""
-
-#: src/ext_l10n.h:77
-msgid "Make align 3 columns|3"
-msgstr ""
-
-#: src/ext_l10n.h:78
-msgid "Make alignat 2 columns|2"
-msgstr ""
-
-#: src/ext_l10n.h:79
-msgid "Make alignat 3 columns|3"
-msgstr ""
-
-#: src/ext_l10n.h:80
-msgid "Toggle numbering|n"
-msgstr "Переключить нумерацию"
-
-#: src/ext_l10n.h:81
-msgid "Toggle numbering of line|u"
-msgstr "Переключить нумерацию строк"
-
-#: src/ext_l10n.h:82
-msgid "Toggle limits|l"
-msgstr "Переключить расположение пределов"
-
-#
-#: src/ext_l10n.h:83
-msgid "Inline formula|I"
-msgstr "Математическую формулу в строку"
-
-#
-#: src/ext_l10n.h:84
-msgid "Displayed formula|D"
-msgstr "Математическую формулу на отдельной строке"
-
-#: src/ext_l10n.h:85
-#, fuzzy
-msgid "Eqnarray environment|q"
-msgstr "Установлен тип окружения абзаца"
-
-#
-#: src/ext_l10n.h:86
-#, fuzzy
-msgid "Align environment|A"
-msgstr "Выравнивание"
-
-#
-#: src/ext_l10n.h:87
-msgid "Align Left|f"
-msgstr "Прижать влево"
-
-#
-#: src/ext_l10n.h:89
-msgid "Align Right|R"
-msgstr "Прижать вправо"
-
-#: src/ext_l10n.h:90
-msgid "V.Align Top|T"
-msgstr "Прижать кверху"
-
-#
-#: src/ext_l10n.h:91
-msgid "V.Align Center|e"
-msgstr "По центру вертикально"
-
-#
-#: src/ext_l10n.h:92
-msgid "V.Align Bottom|B"
-msgstr "Прижать книзу"
-
-#
-#: src/ext_l10n.h:93
-msgid "Add Row"
-msgstr "Добавить строку (ниже текущей)"
-
-#
-#: src/ext_l10n.h:94
-msgid "Delete Row"
-msgstr "Удалить строку"
-
-#
-#: src/ext_l10n.h:95
-msgid "Add Column"
-msgstr "Добавить колонку (правее текущей)"
-
-#
-#: src/ext_l10n.h:96
-msgid "Delete Column"
-msgstr "Удалить колонку"
-
-#: src/ext_l10n.h:97
-msgid "Math|h"
-msgstr "Математика"
-
-#
-#: src/ext_l10n.h:98
-msgid "Special Character|S"
-msgstr "Специальный символ..."
-
-#
-#: src/ext_l10n.h:99
-msgid "Citation Reference...|C"
-msgstr "Ссылку на источник цитирования..."
-
-#
-#: src/ext_l10n.h:100
-msgid "Cross Reference...|R"
-msgstr "Перекрёстную ссылку..."
-
-#
-#: src/ext_l10n.h:101
-msgid "Label...|L"
-msgstr "Метку..."
-
-#
-#: src/ext_l10n.h:102
-msgid "Footnote|F"
-msgstr "Сноску"
-
-#
-#: src/ext_l10n.h:103
-msgid "Marginal Note|M"
-msgstr "Примечание на полях"
-
-#
-#: src/ext_l10n.h:104
-msgid "Index Entry...|I"
-msgstr "Вхождение слова в предметный указатель..."
-
-#: src/ext_l10n.h:105
-msgid "Index Entry of Preceding Word|W"
-msgstr "Вхождение предыдущего слова в указатель..."
-
-#
-#: src/ext_l10n.h:106
-msgid "URL...|U"
-msgstr "URL..."
-
-#
-#: src/ext_l10n.h:107 src/ext_l10n.h:162
-msgid "Note|N"
-msgstr "Непечатаемую заметку"
-
-#: src/ext_l10n.h:108
-msgid "Lists & TOC|O"
-msgstr "Списки и содержания..."
-
-#: src/ext_l10n.h:109
-msgid "TeX|T"
-msgstr "Команду LaTeX"
-
-#
-#: src/ext_l10n.h:110
-msgid "Minipage|p"
-msgstr "Мини-страницу"
-
-#: src/ext_l10n.h:111
-msgid "Graphics...|G"
-msgstr "Рисунок..."
-
-#
-#: src/ext_l10n.h:112
-msgid "Tabular Material...|b"
-msgstr "Таблицу..."
-
-#
-#: src/ext_l10n.h:113
-msgid "Floats|a"
-msgstr "Плавающий объект"
-
-#
-#: src/ext_l10n.h:114
-msgid "Include File...|d"
-msgstr "Включить файл"
-
-#
-#: src/ext_l10n.h:115
-msgid "Insert File|e"
-msgstr "Файл"
-
-#: src/ext_l10n.h:116
-msgid "External Material...|x"
-msgstr "Внешний объект"
-
-#
-#: src/ext_l10n.h:117
-msgid "Superscript|S"
-msgstr "Верхний индекс"
-
-#
-#: src/ext_l10n.h:118
-msgid "Subscript|u"
-msgstr "Нижний индекс"
-
-#: src/ext_l10n.h:119
-msgid "HFill|H"
-msgstr "Горизонтальный клей"
-
-#
-#: src/ext_l10n.h:120
-msgid "Hyphenation Point|P"
-msgstr "Мягкий перенос"
-
-#
-#: src/ext_l10n.h:121
-msgid "Ligature break|k"
-msgstr "Разрыв лигатуры"
-
-#: src/ext_l10n.h:122
-msgid "Protected Blank|B"
-msgstr "Неразрывный пробел"
-
-#
-#: src/ext_l10n.h:123
-msgid "Linebreak|L"
-msgstr "Разрыв строки"
-
-#: src/ext_l10n.h:124
-msgid "Ellipsis|i"
-msgstr "Многоточие"
-
-#
-#: src/ext_l10n.h:125
-msgid "End of Sentence|E"
-msgstr "Точку конца предложения"
-
-#: src/ext_l10n.h:126
-msgid "Ordinary Quote|Q"
-msgstr "Прямую кавычку"
-
-#
-#: src/ext_l10n.h:127
-msgid "Menu Separator|M"
-msgstr "Разделитель пунктов меню"
-
-#
-#: src/ext_l10n.h:128
-#, fuzzy
-msgid "Inline Formula|I"
-msgstr "Математическую формулу в строку"
-
-#
-#: src/ext_l10n.h:129
-msgid "Display Formula|D"
-msgstr "Математическую формулу на отдельной строке"
-
-#: src/ext_l10n.h:130
-msgid "Eqnarray environment|E"
-msgstr "Eqnarray окружение"
-
-#
-#: src/ext_l10n.h:131
-msgid "AMS align environment|A"
-msgstr "AMS align окружение"
-
-#
-#: src/ext_l10n.h:132
-msgid "AMS alignat environment|t"
-msgstr "AMS alignat окружение"
-
-#
-#: src/ext_l10n.h:133
-msgid "AMS xalignat environment|x"
-msgstr "AMS xalignat окружение"
-
-#
-#: src/ext_l10n.h:134
-msgid "AMS xxalignat environment"
-msgstr "AMS xxalignat окружение"
-
-#: src/ext_l10n.h:135
-msgid "Array environment|y"
-msgstr "Array окружение"
-
-#: src/ext_l10n.h:136
-msgid "Cases environment|C"
-msgstr "Cases окружение"
-
-#
-#: src/ext_l10n.h:137
-msgid "Math Panel...|l"
-msgstr "Математическая панель"
-
-#
-#: src/ext_l10n.h:138
-msgid "Table of Contents|C"
-msgstr "Содержание"
-
-#
-#: src/ext_l10n.h:139
-msgid "Index List|I"
-msgstr "Предметный указатель"
-
-#
-#: src/ext_l10n.h:140
-msgid "BibTeX Reference...|B"
-msgstr "Ссылки, сгенерированные через BibTeX"
-
-#
-#: src/ext_l10n.h:141
-msgid "LyX Document...|X"
-msgstr "Документ LyX..."
-
-#
-#: src/ext_l10n.h:142
-msgid "Ascii as Lines...|L"
-msgstr "Простой текст отдельными строками"
-
-#
-#: src/ext_l10n.h:143
-msgid "Ascii as Paragraphs...|P"
-msgstr "Простой текст целыми абзацами"
-
-#
-#: src/ext_l10n.h:144
-msgid "Character...|C"
-msgstr "Символ..."
-
-#: src/ext_l10n.h:145
-msgid "Paragraph...|P"
-msgstr "Абзац..."
-
-#
-#: src/ext_l10n.h:146
-msgid "Document...|D"
-msgstr "Документ..."
-
-#: src/ext_l10n.h:147
-msgid "Tabular...|T"
-msgstr "Таблица..."
-
-#
-#: src/ext_l10n.h:148
-msgid "Emphasize Style|E"
-msgstr "Выделительный шрифт "
-
-#: src/ext_l10n.h:149
-msgid "Noun Style|N"
-msgstr "Шрифт имён собственных"
-
-#: src/ext_l10n.h:150
-msgid "Bold Style|B"
-msgstr "Полужирный шрифт"
-
-#: src/ext_l10n.h:151
-msgid "TeX Style|X"
-msgstr "Режим команд LaTeX"
-
-#
-#: src/ext_l10n.h:152
-msgid "Change Environment Depth|v"
-msgstr "Изменить уровень абзаца"
-
-#
-#: src/ext_l10n.h:153
-#, fuzzy
-msgid "Preamble...|r"
-msgstr "Преамбула LaTeX"
-
-#: src/ext_l10n.h:154
-msgid "Start Appendix here|A"
-msgstr "Начало приложения"
-
-#
-#: src/ext_l10n.h:155
-msgid "Build Program|B"
-msgstr "Создать программу"
-
-#
-#: src/ext_l10n.h:156
-msgid "Update|U"
-msgstr "Обновить"
-
-#
-#: src/ext_l10n.h:157
-msgid "LaTeX Logfile|L"
-msgstr "Журнал сообщений LaTeX"
-
-#
-#: src/ext_l10n.h:158
-msgid "Table of Contents|T"
-msgstr "Содержание"
-
-#: src/ext_l10n.h:159
-msgid "Child processes|C"
-msgstr ""
-
-#
-#: src/ext_l10n.h:160
-#, fuzzy
-msgid "TeX Information|X"
-msgstr "Общая информация"
-
-#
-#: src/ext_l10n.h:161
-msgid "Error|E"
-msgstr "К следующей ошибке"
-
-#
-#: src/ext_l10n.h:163
-msgid "Refs|R"
-msgstr "К следующей ссылке"
-
-#: src/ext_l10n.h:164
-msgid "Bookmarks|B"
-msgstr "Закладки"
-
-#: src/ext_l10n.h:165
-msgid "Save Bookmark 1|S"
-msgstr "Заложить закладку 1"
-
-#: src/ext_l10n.h:166
-msgid "Save Bookmark 2"
-msgstr "Заложить закладку 2"
-
-#: src/ext_l10n.h:167
-msgid "Save Bookmark 3"
-msgstr "Заложить закладку 3"
-
-#: src/ext_l10n.h:168
-msgid "Goto Bookmark 1|1"
-msgstr "Перейти к Закладке 1"
-
-#: src/ext_l10n.h:169
-msgid "Goto Bookmark 2|2"
-msgstr "Перейти к Закладке 2"
-
-#: src/ext_l10n.h:170
-msgid "Goto Bookmark 3|3"
-msgstr "Перейти к Закладке 3"
-
-#: src/ext_l10n.h:171
-msgid "Tooltips|o"
-msgstr ""
-
-#: src/ext_l10n.h:172
-msgid "Introduction|I"
-msgstr "Введение"
-
-#: src/ext_l10n.h:173
-msgid "Tutorial|T"
-msgstr "Самоучитель"
-
-#
-#: src/ext_l10n.h:174
-msgid "User's Guide|U"
-msgstr "Руководство пользователя"
-
-#: src/ext_l10n.h:175
-msgid "Extended Features|E"
-msgstr "Дополнительные возможности"
-
-#
-#: src/ext_l10n.h:176
-msgid "Customization|C"
-msgstr "Руководство по настройке"
-
-#: src/ext_l10n.h:177
-msgid "Reference Manual|R"
-msgstr "Справочное руководство"
-
-#: src/ext_l10n.h:178
-msgid "FAQ|F"
-msgstr "Часто задаваемые вопросы"
-
-#
-#: src/ext_l10n.h:179
-msgid "Table of Contents|a"
-msgstr "Содержание документации"
-
-#: src/ext_l10n.h:180
-msgid "LaTeX Configuration|L"
-msgstr "Текущая конфигурация LaTeX"
-
-#: src/ext_l10n.h:181
-msgid "About LyX|X"
-msgstr "О LyX"
-
-#: src/ext_l10n.h:183
-msgid "Accepted"
-msgstr ""
-
-#: src/ext_l10n.h:184
-msgid "Acknowledgement"
-msgstr ""
-
-#: src/ext_l10n.h:185
-msgid "Acknowledgement*"
-msgstr ""
-
-#: src/ext_l10n.h:186
-msgid "Acknowledgements"
-msgstr ""
-
-#: src/ext_l10n.h:187
-msgid "Acknowledgments"
-msgstr ""
-
-#: src/ext_l10n.h:188
-msgid "ACT"
-msgstr ""
-
-#: src/ext_l10n.h:189
-msgid "Addchap"
-msgstr ""
-
-#: src/ext_l10n.h:190
-msgid "Addchap*"
-msgstr ""
-
-#
-#: src/ext_l10n.h:191
-msgid "Addition"
-msgstr ""
-
-#: src/ext_l10n.h:192
-msgid "Address"
-msgstr ""
-
-#: src/ext_l10n.h:193
-msgid "AddressForOffprints"
-msgstr ""
-
-#: src/ext_l10n.h:194
-msgid "Addsec"
-msgstr ""
-
-#: src/ext_l10n.h:195
-msgid "Addsec*"
-msgstr ""
-
-#: src/ext_l10n.h:196
-msgid "Adresse"
-msgstr ""
-
-#: src/ext_l10n.h:197
-msgid "Affil"
-msgstr ""
-
-#
-#: src/ext_l10n.h:198
-msgid "Affiliation"
-msgstr ""
-
-#
-#: src/ext_l10n.h:199 src/FloatList.C:47
-msgid "Algorithm"
-msgstr ""
-
-#: src/ext_l10n.h:200
-msgid "AMS"
-msgstr ""
-
-#: src/ext_l10n.h:201
-msgid "And"
-msgstr ""
-
-#
-#: src/ext_l10n.h:202
-msgid "Anlagen"
-msgstr ""
-
-#
-#: src/ext_l10n.h:203
-msgid "Anrede"
-msgstr ""
-
-#
-#: src/ext_l10n.h:204
-msgid "Appendices"
-msgstr ""
-
-#
-#: src/ext_l10n.h:205
-msgid "Appendix"
-msgstr ""
-
-#: src/ext_l10n.h:206
-#, fuzzy
-msgid "Arrow"
-msgstr "Ошибка"
-
-#: src/ext_l10n.h:207
-msgid "AT_RISE:"
-msgstr ""
-
-#: src/ext_l10n.h:208
-msgid "Author"
-msgstr ""
-
-#: src/ext_l10n.h:209
-msgid "Author_Email"
-msgstr ""
-
-#: src/ext_l10n.h:210
-msgid "Authorgroup"
-msgstr ""
-
-#: src/ext_l10n.h:211
-#, fuzzy
-msgid "Authorinfo"
-msgstr "Австрийский"
-
-#: src/ext_l10n.h:212
-msgid "Author_Running"
-msgstr ""
-
-#: src/ext_l10n.h:213
-msgid "Author_URL"
-msgstr ""
-
-#: src/ext_l10n.h:214
-msgid "Axiom"
-msgstr ""
-
-#: src/ext_l10n.h:215
-msgid "Backaddress"
-msgstr ""
-
-#: src/ext_l10n.h:216
-msgid "Bank"
-msgstr ""
-
-#: src/ext_l10n.h:217
-msgid "BankAccount"
-msgstr ""
-
-#: src/ext_l10n.h:218
-msgid "BankCode"
-msgstr ""
-
-#: src/ext_l10n.h:219
-msgid "Betreff"
-msgstr ""
-
-#
-#: src/ext_l10n.h:220
-msgid "Bibliography"
-msgstr ""
-
-#: src/ext_l10n.h:221
-msgid "Biography"
-msgstr "Элемент биографии"
-
-#: src/ext_l10n.h:222
-msgid "BLZ"
-msgstr ""
-
-#: src/ext_l10n.h:223
-#, fuzzy
-msgid "BoardCentered"
-msgstr "Линия"
-
-#: src/ext_l10n.h:224
-msgid "Brieftext"
-msgstr ""
-
-#: src/ext_l10n.h:225
-msgid "Caption"
-msgstr ""
-
-#: src/ext_l10n.h:226
-msgid "Case"
-msgstr ""
-
-#: src/ext_l10n.h:227 src/frontends/qt2/lengthcombo.C:29
-msgid "cc"
-msgstr ""
-
-#: src/ext_l10n.h:228
-msgid "CC"
-msgstr ""
-
-#: src/ext_l10n.h:229
-msgid "CenteredCaption"
-msgstr ""
-
-#: src/ext_l10n.h:230
-msgid "Chapter"
-msgstr ""
-
-#: src/ext_l10n.h:231
-msgid "Chapter*"
-msgstr ""
-
-#: src/ext_l10n.h:232
-msgid "Chapter_Exercises"
-msgstr ""
-
-#: src/ext_l10n.h:233
-msgid "ChessBoard"
-msgstr ""
-
-#: src/ext_l10n.h:234
-msgid "Citta"
-msgstr ""
-
-#: src/ext_l10n.h:235
-msgid "Claim"
-msgstr ""
-
-#: src/ext_l10n.h:236
-msgid "Claim*"
-msgstr ""
-
-#: src/ext_l10n.h:237
-msgid "Closing"
-msgstr ""
-
-#: src/ext_l10n.h:238
-msgid "Code"
-msgstr ""
-
-#: src/ext_l10n.h:239
-msgid "Comment"
-msgstr ""
-
-#: src/ext_l10n.h:240
-msgid "Conclusion"
-msgstr ""
-
-#: src/ext_l10n.h:241
-msgid "Conclusion*"
-msgstr ""
-
-#: src/ext_l10n.h:242
-msgid "Condition"
-msgstr ""
-
-#: src/ext_l10n.h:243
-msgid "Conjecture"
-msgstr ""
-
-#: src/ext_l10n.h:244
-msgid "Conjecture*"
-msgstr ""
-
-#: src/ext_l10n.h:245
-msgid "CopNum"
-msgstr ""
-
-#: src/ext_l10n.h:246 src/ext_l10n.h:534
-msgid "Copyright"
-msgstr ""
-
-#: src/ext_l10n.h:247
-msgid "Corollary"
-msgstr ""
-
-#: src/ext_l10n.h:248
-msgid "Corollary*"
-msgstr ""
-
-#: src/ext_l10n.h:249
-msgid "Criterion"
-msgstr ""
-
-#: src/ext_l10n.h:250
-msgid "CrossList"
-msgstr ""
-
-#: src/ext_l10n.h:251
-msgid "Current_Address"
-msgstr ""
-
-#: src/ext_l10n.h:252
-msgid "CURTAIN"
-msgstr ""
-
-#: src/ext_l10n.h:253
-msgid "Customer"
-msgstr ""
-
-#: src/ext_l10n.h:254
-msgid "Data"
-msgstr ""
-
-#: src/ext_l10n.h:255
-msgid "Date"
-msgstr ""
-
-#: src/ext_l10n.h:256
-msgid "Datum"
-msgstr ""
-
-#: src/ext_l10n.h:257
-msgid "Dedication"
-msgstr ""
-
-#: src/ext_l10n.h:258
-msgid "Dedicatory"
-msgstr ""
-
-#: src/ext_l10n.h:259
-msgid "Definition"
-msgstr ""
-
-#: src/ext_l10n.h:260
-msgid "Definition*"
-msgstr ""
-
-#: src/ext_l10n.h:261
-msgid "Description"
-msgstr ""
-
-#: src/ext_l10n.h:262
-msgid "Dialogue"
-msgstr ""
-
-#: src/ext_l10n.h:263
-msgid "Email"
-msgstr ""
-
-#: src/ext_l10n.h:264
-msgid "EMail"
-msgstr ""
-
-#: src/ext_l10n.h:265
-msgid "encl"
-msgstr ""
-
-#: src/ext_l10n.h:266
-msgid "Encl."
-msgstr ""
-
-#: src/ext_l10n.h:267
-msgid "Encl"
-msgstr ""
-
-#: src/ext_l10n.h:268
-msgid "End_All_Slides"
-msgstr ""
-
-#: src/ext_l10n.h:269
-msgid "Enumerate"
-msgstr ""
-
-#: src/ext_l10n.h:270
-msgid "Example"
-msgstr "Пример"
-
-#: src/ext_l10n.h:271
-msgid "Example*"
-msgstr "Пример*"
-
-#: src/ext_l10n.h:272
-msgid "Exercise"
-msgstr ""
-
-#: src/ext_l10n.h:273
-msgid "EXT."
-msgstr ""
-
-#: src/ext_l10n.h:274
-msgid "Extratitle"
-msgstr ""
-
-#: src/ext_l10n.h:275
-msgid "Fact"
-msgstr ""
-
-#: src/ext_l10n.h:276
-msgid "Fact*"
-msgstr ""
-
-#: src/ext_l10n.h:277
-msgid "FADE_IN:"
-msgstr ""
-
-#: src/ext_l10n.h:278
-msgid "FADE_OUT:"
-msgstr ""
-
-#: src/ext_l10n.h:279
-msgid "FADE_OUT"
-msgstr ""
-
-#: src/ext_l10n.h:280
-msgid "FigCaption"
-msgstr ""
-
-#: src/ext_l10n.h:281
-msgid "FirstAuthor"
-msgstr ""
-
-#: src/ext_l10n.h:282
-msgid "FirstName"
-msgstr ""
-
-#: src/ext_l10n.h:283
-msgid "FitBitmap"
-msgstr ""
-
-#: src/ext_l10n.h:284
-msgid "FitFigure"
-msgstr ""
-
-#: src/ext_l10n.h:285
-msgid "Foilhead"
-msgstr ""
-
-#: src/ext_l10n.h:286
-msgid "Footernote"
-msgstr ""
-
-#: src/ext_l10n.h:287
-msgid "FourAffiliations"
-msgstr ""
-
-#: src/ext_l10n.h:288
-msgid "FourAuthors"
-msgstr ""
-
-#: src/ext_l10n.h:289
-msgid "FrontMatter"
-msgstr ""
-
-#: src/ext_l10n.h:290
-#, fuzzy
-msgid "General"
-msgstr "Немецкий"
-
-#: src/ext_l10n.h:291
-msgid "Gruss"
-msgstr ""
-
-#: src/ext_l10n.h:292
-msgid "Headnote"
-msgstr ""
-
-#: src/ext_l10n.h:293
-msgid "HideMoves"
-msgstr ""
-
-#: src/ext_l10n.h:294
-#, fuzzy
-msgid "HighLight"
-msgstr "Высота"
-
-#: src/ext_l10n.h:295
-msgid "HTTP"
-msgstr ""
-
-#: src/ext_l10n.h:296
-msgid "IhrSchreiben"
-msgstr ""
-
-#: src/ext_l10n.h:297
-msgid "IhrZeichen"
-msgstr ""
-
-#: src/ext_l10n.h:298
-msgid "Institute"
-msgstr ""
-
-#: src/ext_l10n.h:299
-msgid "Institution"
-msgstr ""
-
-#: src/ext_l10n.h:300
-msgid "INT."
-msgstr ""
-
-#: src/ext_l10n.h:301
-msgid "INTERCUT"
-msgstr ""
-
-#: src/ext_l10n.h:302
-msgid "InvisibleText"
-msgstr ""
-
-#: src/ext_l10n.h:303
-msgid "Invoice"
-msgstr ""
-
-#: src/ext_l10n.h:304
-msgid "Itemize"
-msgstr ""
-
-#: src/ext_l10n.h:305
-msgid "Journal"
-msgstr ""
-
-#
-#: src/ext_l10n.h:306
-msgid "Keyword"
-msgstr ""
-"Ключевое\n"
-"слово"
-
-#: src/ext_l10n.h:307
-msgid "Keywords"
-msgstr ""
-"Ключевое\n"
-"слово"
-
-#: src/ext_l10n.h:308
-msgid "KnightMove"
-msgstr ""
-
-#: src/ext_l10n.h:309
-msgid "Konto"
-msgstr ""
-
-#: src/ext_l10n.h:310
-msgid "Labeling"
-msgstr ""
-
-#: src/ext_l10n.h:311
-msgid "Land"
-msgstr ""
-
-#: src/ext_l10n.h:312
-msgid "LandscapeSlide"
-msgstr ""
-
-#: src/ext_l10n.h:313
-msgid "LaTeX"
-msgstr "LaTeX"
-
-#: src/ext_l10n.h:314
-msgid "LaTeX_Title"
-msgstr ""
-
-#
-#: src/ext_l10n.h:315
-msgid "Left_Header"
-msgstr ""
-
-#: src/ext_l10n.h:316
-msgid "Lemma"
-msgstr ""
-
-#: src/ext_l10n.h:317
-msgid "Lemma*"
-msgstr ""
-
-#: src/ext_l10n.h:318
-msgid "Letter"
-msgstr ""
-
-#: src/ext_l10n.h:319
-msgid "List"
-msgstr ""
-
-#: src/ext_l10n.h:320
-msgid "ListOfSlides"
-msgstr ""
-
-#: src/ext_l10n.h:321
-msgid "Literal"
-msgstr ""
-
-#: src/ext_l10n.h:322
-msgid "Location"
-msgstr ""
-
-#: src/ext_l10n.h:323
-msgid "Lowertitleback"
-msgstr ""
-
-#: src/ext_l10n.h:324
-msgid "LyX-Code"
-msgstr ""
-
-#: src/ext_l10n.h:325
-msgid "Mail"
-msgstr ""
-
-#
-#: src/ext_l10n.h:326
-#, fuzzy
-msgid "Mainline"
-msgstr "Мини-страницы"
-
-#: src/ext_l10n.h:327
-msgid "MarkBoth"
-msgstr ""
-
-#: src/ext_l10n.h:328
-msgid "MathLetters"
-msgstr ""
-
-#: src/ext_l10n.h:329
-msgid "MeinZeichen"
-msgstr ""
-
-#: src/ext_l10n.h:330
-msgid "Minisec"
-msgstr ""
-
-#
-#: src/ext_l10n.h:331 src/frontends/xforms/Menubar_pimpl.C:279
-#: src/frontends/xforms/Menubar_pimpl.C:352
-msgid "More"
-msgstr "игнорировать"
-
-#: src/ext_l10n.h:332
-msgid "msnumber"
-msgstr ""
-
-#: src/ext_l10n.h:333
-msgid "My_Address"
-msgstr ""
-
-#: src/ext_l10n.h:334
-msgid "Myref"
-msgstr ""
-
-#: src/ext_l10n.h:335
-msgid "MyRef"
-msgstr ""
-
-#: src/ext_l10n.h:336
-msgid "Name"
-msgstr "Имя"
-
-#: src/ext_l10n.h:337
-msgid "Narrative"
-msgstr "Отрицательный"
-
-#: src/ext_l10n.h:338
-msgid "Notation"
-msgstr ""
-
-#: src/ext_l10n.h:339
-msgid "Note"
-msgstr "Заметка"
-
-#: src/ext_l10n.h:340
-msgid "Note*"
-msgstr "Примечание*"
-
-#: src/ext_l10n.h:341
-msgid "NoteToEditor"
-msgstr ""
-
-#: src/ext_l10n.h:342
-msgid "Offprint"
-msgstr ""
-
-#: src/ext_l10n.h:343
-msgid "Offprints"
-msgstr ""
-
-#: src/ext_l10n.h:344
-msgid "Offsets"
-msgstr ""
-
-#: src/ext_l10n.h:345
-msgid "Oggetto"
-msgstr ""
-
-#: src/ext_l10n.h:346
-msgid "Opening"
-msgstr ""
-
-#: src/ext_l10n.h:347
-msgid "Ort"
-msgstr ""
-
-#: src/ext_l10n.h:348
-msgid "Overlay"
-msgstr ""
-
-#: src/ext_l10n.h:349
-msgid "PACS"
-msgstr ""
-
-#: src/ext_l10n.h:350 src/ext_l10n.h:920
-msgid "Paragraph"
-msgstr ""
-
-#: src/ext_l10n.h:351
-msgid "Paragraph*"
-msgstr ""
-
-#: src/ext_l10n.h:352
-msgid "Part"
-msgstr ""
-
-#: src/ext_l10n.h:353
-msgid "Part*"
-msgstr ""
-
-#: src/ext_l10n.h:354
-msgid "Petit"
-msgstr ""
-
-#: src/ext_l10n.h:355
-msgid "Phone"
-msgstr ""
-
-#: src/ext_l10n.h:356
-msgid "Place"
-msgstr ""
-
-#: src/ext_l10n.h:357
-msgid "PlaceFigure"
-msgstr ""
-
-#: src/ext_l10n.h:358
-msgid "PlaceTable"
-msgstr ""
-
-#: src/ext_l10n.h:359
-msgid "PortraitSlide"
-msgstr ""
-
-#: src/ext_l10n.h:360
-msgid "PostalCommend"
-msgstr ""
-
-#: src/ext_l10n.h:361
-msgid "PostalComment"
-msgstr ""
-
-#: src/ext_l10n.h:362
-msgid "Postvermerk"
-msgstr ""
-
-#: src/ext_l10n.h:363
-msgid "Preprint"
-msgstr ""
-
-#: src/ext_l10n.h:364
-msgid "Problem"
-msgstr ""
-
-#: src/ext_l10n.h:365
-msgid "ProgressContents"
-msgstr ""
-
-#: src/ext_l10n.h:366
-msgid "Proof"
-msgstr ""
-
-#: src/ext_l10n.h:367
-msgid "Property"
-msgstr ""
-
-#: src/ext_l10n.h:368
-msgid "Proposition"
-msgstr ""
-
-#: src/ext_l10n.h:369
-msgid "Proposition*"
-msgstr ""
-
-#: src/ext_l10n.h:370
-msgid "ps"
-msgstr ""
-
-#: src/ext_l10n.h:371
-msgid "PS"
-msgstr ""
-
-#: src/ext_l10n.h:372
-msgid "Publishers"
-msgstr ""
-
-#: src/ext_l10n.h:373
-msgid "Question"
-msgstr ""
-
-#: src/ext_l10n.h:374
-msgid "Quotation"
-msgstr ""
-
-#: src/ext_l10n.h:375
-msgid "Quote"
-msgstr ""
-
-#: src/ext_l10n.h:376
-msgid "Received"
-msgstr ""
-
-#: src/ext_l10n.h:377 src/ext_l10n.h:1101 src/ext_l10n.h:1109
-#: src/frontends/xforms/FormRef.C:33
-msgid "Reference"
-msgstr "Перекрёстная ссылка"
-
-#: src/ext_l10n.h:379
-msgid "Remark"
-msgstr "Пометка"
-
-#: src/ext_l10n.h:380
-msgid "Remark*"
-msgstr "Пометка*"
-
-#: src/ext_l10n.h:381
-msgid "Remarks"
-msgstr "Пометки"
-
-#: src/ext_l10n.h:382
-msgid "RetourAdresse"
-msgstr ""
-
-#: src/ext_l10n.h:383
-msgid "ReturnAddress"
-msgstr ""
-
-#: src/ext_l10n.h:384
-msgid "Revision"
-msgstr ""
-
-#: src/ext_l10n.h:385
-msgid "RevisionHistory"
-msgstr ""
-
-#: src/ext_l10n.h:386
-#, fuzzy
-msgid "RevisionRemark"
-msgstr "Пометка"
-
-#: src/ext_l10n.h:387
-msgid "REVTEX_Title"
-msgstr ""
-
-#: src/ext_l10n.h:388
-msgid "Right_Address"
-msgstr ""
-
-#
-#: src/ext_l10n.h:389
-msgid "Right_Header"
-msgstr ""
-
-#: src/ext_l10n.h:390
-msgid "RightHeader"
-msgstr ""
-
-#: src/ext_l10n.h:391
-msgid "Rotatefoilhead"
-msgstr ""
-
-#: src/ext_l10n.h:392
-msgid "RunningAuthor"
-msgstr ""
-
-#: src/ext_l10n.h:393
-msgid "Running_LaTeX_Title"
-msgstr "Обработка с помощью LaTeX..."
-
-#: src/ext_l10n.h:394
-#, fuzzy
-msgid "RunningTitle"
-msgstr "Обработка с помощью LaTeX..."
-
-#: src/ext_l10n.h:395
-#, fuzzy
-msgid "Scene"
-msgstr "Масштаб"
-
-#: src/ext_l10n.h:396
-msgid "SCENE"
-msgstr ""
-
-#: src/ext_l10n.h:397
-msgid "SCENE*"
-msgstr ""
-
-#: src/ext_l10n.h:398
-msgid "Scrap"
-msgstr ""
-
-#: src/ext_l10n.h:399
-msgid "Section"
-msgstr ""
-
-#: src/ext_l10n.h:400
-msgid "Section*"
-msgstr ""
-
-#: src/ext_l10n.h:401
-msgid "Send_To_Address"
-msgstr ""
-
-#: src/ext_l10n.h:402
-msgid "Seriate"
-msgstr ""
-
-#: src/ext_l10n.h:403
-msgid "SGML"
-msgstr ""
-
-#: src/ext_l10n.h:404
-msgid "ShortFoilhead"
-msgstr ""
-
-#: src/ext_l10n.h:405
-msgid "ShortRotatefoilhead"
-msgstr ""
-
-#: src/ext_l10n.h:406
-msgid "ShortTitle"
-msgstr ""
-
-#: src/ext_l10n.h:407
-msgid "Signature"
-msgstr ""
-
-#: src/ext_l10n.h:408
-msgid "Slide"
-msgstr ""
-
-#: src/ext_l10n.h:409
-msgid "Slide*"
-msgstr ""
-
-#: src/ext_l10n.h:410
-msgid "SlideContents"
-msgstr ""
-
-#: src/ext_l10n.h:411
-msgid "SlideHeading"
-msgstr ""
-
-#: src/ext_l10n.h:412
-msgid "SlideSubHeading"
-msgstr ""
-
-#: src/ext_l10n.h:413
-msgid "Solution"
-msgstr ""
-
-#: src/ext_l10n.h:414
-msgid "Speaker"
-msgstr ""
-
-#: src/ext_l10n.h:415
-msgid "Specialmail"
-msgstr ""
-
-#: src/ext_l10n.h:416
-msgid "Stadt"
-msgstr ""
-
-#: src/ext_l10n.h:417 src/insets/insetref.C:110
-msgid "Standard"
-msgstr "Обычный"
-
-#: src/ext_l10n.h:418
-msgid "State"
-msgstr ""
-
-#: src/ext_l10n.h:419
-msgid "Strasse"
-msgstr ""
-
-#: src/ext_l10n.h:420
-msgid "Street"
-msgstr ""
-
-#: src/ext_l10n.h:421
-msgid "Subject"
-msgstr ""
-
-#: src/ext_l10n.h:422
-msgid "Subjectclass"
-msgstr ""
-
-#: src/ext_l10n.h:423
-msgid "Subparagraph"
-msgstr ""
-
-#: src/ext_l10n.h:424
-msgid "Subparagraph*"
-msgstr ""
-
-#: src/ext_l10n.h:425
-msgid "Subsection"
-msgstr ""
-
-#: src/ext_l10n.h:426
-msgid "Subsection*"
-msgstr ""
-
-#
-#: src/ext_l10n.h:427
-msgid "SubSection"
-msgstr ""
-
-#: src/ext_l10n.h:428
-msgid "Subsubsection"
-msgstr ""
-
-#: src/ext_l10n.h:429
-msgid "Subsubsection*"
-msgstr ""
-
-#: src/ext_l10n.h:430
-msgid "Subtitle"
-msgstr ""
-
-#: src/ext_l10n.h:431
-msgid "SubTitle"
-msgstr ""
-
-#: src/ext_l10n.h:432
-#, fuzzy
-msgid "SubVariation"
-msgstr "Разд. абзацы"
-
-#: src/ext_l10n.h:433
-#, fuzzy
-msgid "SubVariation2"
-msgstr "Разд. абзацы"
-
-#: src/ext_l10n.h:434
-#, fuzzy
-msgid "SubVariation3"
-msgstr "Разд. абзацы"
-
-#: src/ext_l10n.h:435
-#, fuzzy
-msgid "SubVariation4"
-msgstr "Разд. абзацы"
-
-#: src/ext_l10n.h:436
-#, fuzzy
-msgid "SubVariation5"
-msgstr "Разд. абзацы"
-
-#: src/ext_l10n.h:437
-msgid "Summary"
-msgstr ""
-
-#: src/ext_l10n.h:438
-msgid "Surname"
-msgstr ""
-
-#: src/ext_l10n.h:439
-msgid "TableComments"
-msgstr ""
-
-#: src/ext_l10n.h:440
-msgid "TableRefs"
-msgstr ""
-
-#: src/ext_l10n.h:441
-msgid "Telefax"
-msgstr ""
-
-#: src/ext_l10n.h:442
-msgid "Telefon"
-msgstr ""
-
-#: src/ext_l10n.h:443
-msgid "Telephone"
-msgstr ""
-
-#: src/ext_l10n.h:444
-msgid "Telex"
-msgstr ""
-
-#: src/ext_l10n.h:445
-msgid "Thanks"
-msgstr ""
-
-#: src/ext_l10n.h:446
-msgid "Theorem"
-msgstr ""
-
-#: src/ext_l10n.h:447
-msgid "Theorem*"
-msgstr ""
-
-#: src/ext_l10n.h:448
-msgid "TheoremTemplate"
-msgstr ""
-
-#: src/ext_l10n.h:449 src/ext_l10n.h:1175 src/frontends/qt2/QThesaurus.C:28
-msgid "Thesaurus"
-msgstr "Тезаурус"
-
-#: src/ext_l10n.h:450
-msgid "ThickLine"
-msgstr ""
-
-#: src/ext_l10n.h:451
-msgid "ThreeAffiliations"
-msgstr ""
-
-#: src/ext_l10n.h:452
-msgid "ThreeAuthors"
-msgstr ""
-
-#: src/ext_l10n.h:453
-msgid "TickList"
-msgstr ""
-
-#: src/ext_l10n.h:454
-msgid "Title"
-msgstr ""
-
-#: src/ext_l10n.h:455
-msgid "Titlehead"
-msgstr ""
-
-#: src/ext_l10n.h:456
-msgid "TITLE_OVER:"
-msgstr ""
-
-#: src/ext_l10n.h:457
-msgid "TOC_Author"
-msgstr ""
-
-#: src/ext_l10n.h:458
-msgid "TOC_Title"
-msgstr ""
-
-#
-#: src/ext_l10n.h:459
-msgid "Topic"
-msgstr ""
-
-#: src/ext_l10n.h:460
-msgid "Town"
-msgstr ""
-
-#: src/ext_l10n.h:461
-msgid "Transition"
-msgstr ""
-
-#: src/ext_l10n.h:462
-msgid "Trans_Keywords"
-msgstr ""
-
-#: src/ext_l10n.h:463
-msgid "TranslatedAbstract"
-msgstr ""
-
-#: src/ext_l10n.h:464
-msgid "Translated_Title"
-msgstr ""
-
-#: src/ext_l10n.h:465
-msgid "Translator"
-msgstr ""
-
-#: src/ext_l10n.h:466
-msgid "TwoAffiliations"
-msgstr ""
-
-#: src/ext_l10n.h:467
-msgid "TwoAuthors"
-msgstr ""
-
-#: src/ext_l10n.h:468
-msgid "Unterschrift"
-msgstr ""
-
-#: src/ext_l10n.h:469
-msgid "Uppertitleback"
-msgstr ""
-
-#
-#: src/ext_l10n.h:470 src/ext_l10n.h:1193 src/ext_l10n.h:1196
-#: src/frontends/qt2/QURL.C:25
-msgid "URL"
-msgstr ""
-
-#: src/ext_l10n.h:471
-#, fuzzy
-msgid "Variation"
-msgstr "Разд. абзацы"
-
-#: src/ext_l10n.h:472
-msgid "Verbatim"
-msgstr ""
-
-#: src/ext_l10n.h:473
-msgid "Verse"
-msgstr ""
-
-#: src/ext_l10n.h:474
-msgid "Verteiler"
-msgstr ""
-
-#: src/ext_l10n.h:475
-msgid "VisibleText"
-msgstr ""
-
-#: src/ext_l10n.h:476
-msgid "Yourmail"
-msgstr ""
-
-#: src/ext_l10n.h:477
-msgid "YourMail"
-msgstr ""
-
-#: src/ext_l10n.h:478
-msgid "Yourref"
-msgstr ""
-
-#: src/ext_l10n.h:479
-msgid "YourRef"
-msgstr ""
-
-#: src/ext_l10n.h:480
-msgid "Zusatz"
-msgstr ""
-
-#: src/ext_l10n.h:481
-msgid "Afrikaans"
-msgstr "Африканский"
-
-#: src/ext_l10n.h:482
-msgid "American"
-msgstr "Американский"
-
-#: src/ext_l10n.h:483
-msgid "Arabic"
-msgstr "Арабский"
-
-#: src/ext_l10n.h:484
-msgid "Austrian"
-msgstr "Австрийский"
-
-#: src/ext_l10n.h:485
-msgid "Bahasa"
-msgstr ""
-
-#
-#: src/ext_l10n.h:486
-#, fuzzy
-msgid "Basque"
-msgstr "Голубой"
-
-#: src/ext_l10n.h:487
-msgid "Portuguese (Brazil)"
-msgstr "Португальский (Бразильский)"
-
-#: src/ext_l10n.h:488
-msgid "Breton"
-msgstr ""
-
-#: src/ext_l10n.h:489
-msgid "British"
-msgstr "Британский"
-
-#: src/ext_l10n.h:490
-msgid "Bulgarian"
-msgstr ""
-
-#: src/ext_l10n.h:491
-msgid "Canadian"
-msgstr "Канадский"
-
-#: src/ext_l10n.h:492
-msgid "French Canadian"
-msgstr "Французский канадский"
-
-#: src/ext_l10n.h:493
-msgid "Catalan"
-msgstr ""
-
-#: src/ext_l10n.h:494
-msgid "Croatian"
-msgstr ""
-
-#: src/ext_l10n.h:495
-msgid "Czech"
-msgstr "Чешский"
-
-#: src/ext_l10n.h:496
-msgid "Danish"
-msgstr ""
-
-#: src/ext_l10n.h:497
-msgid "Dutch"
-msgstr "Датский"
-
-#: src/ext_l10n.h:498 src/language.C:40
-msgid "English"
-msgstr "Английский"
-
-#: src/ext_l10n.h:499
-msgid "Esperanto"
-msgstr "Эсперанто"
-
-#: src/ext_l10n.h:500
-msgid "Estonian"
-msgstr "Эстонский"
-
-#: src/ext_l10n.h:501
-msgid "Finnish"
-msgstr "Финский"
-
-#: src/ext_l10n.h:502
-msgid "French"
-msgstr "Французский"
-
-#: src/ext_l10n.h:503
-msgid "French (GUTenberg)"
-msgstr ""
-
-#: src/ext_l10n.h:504
-msgid "Galician"
-msgstr ""
-
-#: src/ext_l10n.h:505
-msgid "German"
-msgstr "Немецкий"
-
-#: src/ext_l10n.h:506
-msgid "German (new spelling)"
-msgstr "Немецкий (новая орфография)"
-
-#: src/ext_l10n.h:507 src/frontends/xforms/form_maths_panel.C:35
-#: src/frontends/xforms/FormMathsPanel.C:103
-msgid "Greek"
-msgstr "Греческий"
-
-#: src/ext_l10n.h:508
-msgid "Hebrew"
-msgstr "Еврейский"
-
-#: src/ext_l10n.h:509
-msgid "Irish"
-msgstr ""
-
-#
-#: src/ext_l10n.h:510
-msgid "Italian"
-msgstr "Итальянский"
-
-#: src/ext_l10n.h:511
-msgid "Lsorbian"
-msgstr ""
-
-#: src/ext_l10n.h:512
-msgid "Magyar"
-msgstr ""
-
-#: src/ext_l10n.h:513
-msgid "Norsk"
-msgstr ""
-
-#: src/ext_l10n.h:514
-msgid "Polish"
-msgstr "Польский"
-
-#: src/ext_l10n.h:515
-msgid "Portugese"
-msgstr "Португальский"
-
-#: src/ext_l10n.h:516
-msgid "Romanian"
-msgstr "Romanian"
-
-#: src/ext_l10n.h:517
-msgid "Russian"
-msgstr "Русский"
-
-#: src/ext_l10n.h:518
-msgid "Scottish"
-msgstr ""
-
-#: src/ext_l10n.h:519
-msgid "Serbian"
-msgstr "Сербский"
-
-#: src/ext_l10n.h:520
-msgid "Serbo-Croatian"
-msgstr ""
-
-#: src/ext_l10n.h:521
-msgid "Spanish"
-msgstr "Испанский"
-
-#: src/ext_l10n.h:522
-msgid "Slovak"
-msgstr ""
-
-#: src/ext_l10n.h:523
-msgid "Slovene"
-msgstr "Словенский"
-
-#: src/ext_l10n.h:524
-msgid "Swedish"
-msgstr "Шведский"
-
-#: src/ext_l10n.h:525
-msgid "Thai"
-msgstr ""
-
-#: src/ext_l10n.h:526
-msgid "Turkish"
-msgstr "Турецкий"
-
-#
-#: src/ext_l10n.h:527
-msgid "Ukrainian"
-msgstr "Украинский"
-
-#: src/ext_l10n.h:528
-msgid "Usorbian"
-msgstr ""
-
-#: src/ext_l10n.h:529
-msgid "Welsh"
-msgstr ""
-
-#: src/ext_l10n.h:530 src/frontends/qt2/QAbout.C:32
-#: src/frontends/xforms/FormAboutlyx.C:28
-msgid "About LyX"
-msgstr "О LyX"
-
-#: src/ext_l10n.h:531
-#, fuzzy
-msgid "Version"
-msgstr "LyX версии "
-
-#
-#: src/ext_l10n.h:532
-#, fuzzy
-msgid "Version goes here"
-msgstr "Контроль версий"
-
-#: src/ext_l10n.h:533 src/frontends/xforms/FormAboutlyx.C:65
-msgid "Credits"
-msgstr "Благодарности"
-
-#
-#: src/ext_l10n.h:535 src/ext_l10n.h:546 src/ext_l10n.h:600 src/ext_l10n.h:767
-#: src/ext_l10n.h:776 src/ext_l10n.h:794 src/ext_l10n.h:799 src/ext_l10n.h:875
-#: src/ext_l10n.h:894 src/ext_l10n.h:905 src/ext_l10n.h:919
-#: src/ext_l10n.h:1070 src/ext_l10n.h:1119 src/ext_l10n.h:1129
-#: src/ext_l10n.h:1131 src/ext_l10n.h:1143 src/ext_l10n.h:1173
-#: src/ext_l10n.h:1185 src/ext_l10n.h:1190 src/ext_l10n.h:1200
-#: src/ext_l10n.h:1204 src/frontends/qt2/QParagraphDialog.C:49
-msgid "&Close"
-msgstr "Закрыть"
-
-#: src/ext_l10n.h:536
-msgid "LyX: Enter text"
-msgstr ""
-
-#: src/ext_l10n.h:537
-msgid "&Dummy"
-msgstr ""
-
-#: src/ext_l10n.h:538 src/ext_l10n.h:570 src/ext_l10n.h:603 src/ext_l10n.h:762
-#: src/ext_l10n.h:775 src/ext_l10n.h:900 src/frontends/qt2/QSpellchecker.C:114
-#: src/frontends/xforms/form_bibitem.C:35
-#: src/frontends/xforms/form_bibtex.C:35
-#: src/frontends/xforms/form_citation.C:173
-#: src/frontends/xforms/form_document.C:47 src/frontends/xforms/form_ert.C:72
-#: src/frontends/xforms/form_external.C:89
-#: src/frontends/xforms/form_filedialog.C:89
-#: src/frontends/xforms/form_float.C:74 src/frontends/xforms/form_forks.C:53
-#: src/frontends/xforms/form_include.C:42 src/frontends/xforms/form_index.C:44
-#: src/frontends/xforms/form_maths_delim.C:49
-#: src/frontends/xforms/form_minipage.C:81
-#: src/frontends/xforms/form_paragraph.C:181
-#: src/frontends/xforms/form_print.C:53 src/frontends/xforms/form_ref.C:86
-#: src/frontends/xforms/form_sendto.C:46
-#: src/frontends/xforms/form_tabular_create.C:28
-#: src/frontends/xforms/form_url.C:64
-msgid "OK"
-msgstr "ОК"
-
-#
-#: src/ext_l10n.h:539 src/ext_l10n.h:1063 src/frontends/qt2/Alert_pimpl.C:45
-#: src/frontends/qt2/QParagraphDialog.C:49
-msgid "&Cancel"
-msgstr "Отмена"
-
-#: src/ext_l10n.h:540 src/ext_l10n.h:897 src/frontends/qt2/QIndex.C:23
-#: src/frontends/xforms/FormIndex.C:24 src/insets/insetindex.C:61
-msgid "Index"
-msgstr "Предметный указатель"
-
-#
-#: src/ext_l10n.h:541
-#, fuzzy
-msgid "&Key"
-msgstr "Ключ:"
-
-#: src/ext_l10n.h:542
-#, fuzzy
-msgid "The citation key"
-msgstr "Вставить цитату"
-
-#: src/ext_l10n.h:543
-#, fuzzy
-msgid "&Label"
-msgstr "Метка:"
-
-#: src/ext_l10n.h:544
-#, fuzzy
-msgid "The label as it appears in the document"
-msgstr "Имя формата, как оно будет показываться в меню."
-
-#: src/ext_l10n.h:545 src/ext_l10n.h:598 src/ext_l10n.h:792 src/ext_l10n.h:797
-#: src/ext_l10n.h:873 src/ext_l10n.h:893 src/ext_l10n.h:917
-#: src/ext_l10n.h:1062 src/ext_l10n.h:1068 src/ext_l10n.h:1118
-#: src/ext_l10n.h:1158 src/ext_l10n.h:1199
-#, fuzzy
-msgid "&OK"
-msgstr "ОК"
-
-#: src/ext_l10n.h:547
-#, fuzzy
-msgid "Bibtex"
-msgstr "BibTeX"
-
-#: src/ext_l10n.h:548
-#, fuzzy
-msgid "Databases"
-msgstr "База данных:"
-
-#: src/ext_l10n.h:549
-#, fuzzy
-msgid "BibTeX database to use"
-msgstr "База данных BiBTeX"
-
-#: src/ext_l10n.h:550 src/ext_l10n.h:626 src/ext_l10n.h:628
-#: src/ext_l10n.h:1167
-msgid "New Item"
-msgstr ""
-
-#: src/ext_l10n.h:551
-#, fuzzy
-msgid "Available BibTeX databases"
-msgstr "База данных BiBTeX"
-
-#: src/ext_l10n.h:552
-msgid "&Add ..."
-msgstr ""
-
-#: src/ext_l10n.h:553
-#, fuzzy
-msgid "Add a BibTeX database file"
-msgstr "База данных BiBTeX"
-
-#
-#: src/ext_l10n.h:554
-#, fuzzy
-msgid "&Delete"
-msgstr "Удалить из"
-
-#: src/ext_l10n.h:555
-msgid "Remove the selected database"
-msgstr ""
-
-#: src/ext_l10n.h:556
-#, fuzzy
-msgid "&Style"
-msgstr "Стиль:  "
-
-#: src/ext_l10n.h:557 src/ext_l10n.h:563
-#, fuzzy
-msgid "The BibTeX style"
-msgstr "Переключить режим команд LaTeX"
-
-#: src/ext_l10n.h:558 src/ext_l10n.h:644 src/frontends/qt2/QDocument.C:126
-#, fuzzy
-msgid "plain"
-msgstr "Промежуток"
-
-#
-#: src/ext_l10n.h:559
-#, fuzzy
-msgid "unsrt"
-msgstr "Вставить"
-
-#: src/ext_l10n.h:560
-msgid "alpha"
-msgstr ""
-
-#: src/ext_l10n.h:561
-msgid "abbrv"
-msgstr ""
-
-#: src/ext_l10n.h:562 src/frontends/qt2/QBibtex.C:114
-#: src/frontends/qt2/QBibtexDialog.C:77
-msgid "Other ..."
-msgstr "другие ..."
-
-#: src/ext_l10n.h:564
-msgid "FIXME !"
-msgstr ""
-
-#: src/ext_l10n.h:565
-msgid "The name of the style to use"
-msgstr ""
-
-#
-#: src/ext_l10n.h:566
-#, fuzzy
-msgid "&Browse"
-msgstr "Обзор"
-
-#: src/ext_l10n.h:567
-#, fuzzy
-msgid "Choose a style file"
-msgstr ""
-"Список\n"
-"недавних файлов"
-
-#
-#: src/ext_l10n.h:568
-#, fuzzy
-msgid "Add bibliography to &TOC"
-msgstr "Все ссылки в библиографии"
-
-#
-#: src/ext_l10n.h:569
-#, fuzzy
-msgid "Add bibliography to the table of contents"
-msgstr "Просмотреть Содержание"
-
-#. /
-#: src/ext_l10n.h:571 src/ext_l10n.h:605 src/ext_l10n.h:764 src/ext_l10n.h:901
-#: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:157
-#: src/lyxfunc.C:1082
-msgid "Cancel"
-msgstr "Отмена"
-
-#
-#: src/ext_l10n.h:572 src/frontends/qt2/QCharacter.C:31
-msgid "Character"
-msgstr "Символ"
-
-#: src/ext_l10n.h:573
-msgid "&Family:"
-msgstr "Семейство:"
-
-#: src/ext_l10n.h:574
-msgid "Font family"
-msgstr "Семейство шрифтов"
-
-#: src/ext_l10n.h:575
-msgid "&Series:"
-msgstr "Серия:"
-
-#: src/ext_l10n.h:576 src/ext_l10n.h:583
-msgid "Font series"
-msgstr "Серии шрифтов"
-
-#: src/ext_l10n.h:577 src/ext_l10n.h:705
-msgid "&Language:"
-msgstr "Язык:"
-
-#: src/ext_l10n.h:578 src/ext_l10n.h:586 src/ext_l10n.h:704
-#: src/frontends/xforms/FormDocument.C:331
-#: src/frontends/xforms/FormPreferences.C:258
-msgid "Language"
-msgstr "Язык"
-
-#: src/ext_l10n.h:579 src/ext_l10n.h:582
-msgid "Font shape"
-msgstr "Начертание шрифта"
-
-#: src/ext_l10n.h:580 src/ext_l10n.h:585
-msgid "Font color"
-msgstr "Цвет шрифта"
-
-#: src/ext_l10n.h:581
-msgid "S&hape:"
-msgstr "Начертание:"
-
-#
-#: src/ext_l10n.h:584
-msgid "&Color:"
-msgstr "Цвет:"
-
-#: src/ext_l10n.h:587
-msgid "&Toggle all"
-msgstr "Переключить всё"
-
-#: src/ext_l10n.h:588
-msgid "toggle font on all of the above"
-msgstr ""
-"Переключить всё указанное выше\n"
-"(укажите что и нажмите Применить)"
-
-#: src/ext_l10n.h:589
-msgid "Never toggled"
-msgstr "Никогда не переключается"
-
-#: src/ext_l10n.h:590 src/ext_l10n.h:818
-msgid "Si&ze:"
-msgstr "Размер:"
-
-#: src/ext_l10n.h:591
-msgid "Font size"
-msgstr "Размер шрифта"
-
-#
-#: src/ext_l10n.h:592
-msgid "Always toggled"
-msgstr "Всегда переключается"
-
-#: src/ext_l10n.h:593 src/ext_l10n.h:595
-msgid "Other font settings"
-msgstr "Другие настройки шрифта"
-
-#: src/ext_l10n.h:594
-msgid "&Misc:"
-msgstr "Другие:"
-
-#
-#: src/ext_l10n.h:596
-msgid "Auto apply"
-msgstr "Автоматическое применение"
-
-#: src/ext_l10n.h:597
-msgid "Apply each change automatically"
-msgstr "Применять каждое изменение автоматически"
-
-#
-#: src/ext_l10n.h:599 src/ext_l10n.h:604 src/ext_l10n.h:763 src/ext_l10n.h:793
-#: src/ext_l10n.h:798 src/ext_l10n.h:874 src/ext_l10n.h:918
-#: src/ext_l10n.h:1061 src/ext_l10n.h:1069
-msgid "&Apply"
-msgstr "Применить"
-
-#: src/ext_l10n.h:601 src/frontends/qt2/QCitation.C:45
-#: src/frontends/xforms/FormCitation.C:117
-msgid "Citation"
-msgstr "Цитата"
-
-#
-#: src/ext_l10n.h:602 src/ext_l10n.h:761 src/ext_l10n.h:796 src/ext_l10n.h:872
-#: src/ext_l10n.h:916 src/ext_l10n.h:1060
-msgid "&Restore"
-msgstr "Восстановить"
-
-#: src/ext_l10n.h:606
-msgid "Text after"
-msgstr "Текст после"
-
-#: src/ext_l10n.h:607 src/frontends/xforms/form_citation.C:116
-msgid "Citation style"
-msgstr "Представление цитат"
-
-#: src/ext_l10n.h:608
-#, fuzzy
-msgid "Natbib citation style to use"
-msgstr "Представление цитат"
-
-#
-#: src/ext_l10n.h:609
-msgid "Text before"
-msgstr "Текст перед"
-
-#
-#: src/ext_l10n.h:610 src/frontends/xforms/form_citation.C:73 src/lyxvc.C:122
-msgid "Info"
-msgstr "Текст ссылки"
-
-#: src/ext_l10n.h:611
-#, fuzzy
-msgid "Citation entry"
-msgstr "Представление цитат"
-
-#: src/ext_l10n.h:612 src/frontends/qt2/QSearch.C:31
-#: src/frontends/xforms/form_citation.C:78
-msgid "Search"
-msgstr "Поиск"
-
-#: src/ext_l10n.h:613
-msgid "Search the available citations"
-msgstr "Поиск доступных цитат"
-
-#: src/ext_l10n.h:614
-msgid "Regular E&xpression"
-msgstr "Регулярное выражение"
-
-#: src/ext_l10n.h:615
-msgid "Interpret search entry as a regular expression"
-msgstr ""
-
-#: src/ext_l10n.h:616
-msgid "&Previous"
-msgstr "Предыдущий"
-
-#: src/ext_l10n.h:617
-msgid "&Case sensitive"
-msgstr ""
-"Учитывать\n"
-"регистр"
-
-#: src/ext_l10n.h:618
-msgid "Make the search case-sensitive"
-msgstr "Делать поиск чувствительным к регистру"
-
-#
-#: src/ext_l10n.h:619
-msgid "&Next"
-msgstr "Следующий"
-
-#: src/ext_l10n.h:620
-#, fuzzy
-msgid "Add the selected citation"
-msgstr "Вставить цитату"
-
-#: src/ext_l10n.h:621
-msgid "Remove the selected citation"
-msgstr "Удалить выбранную цитату"
-
-#
-#: src/ext_l10n.h:622
-#, fuzzy
-msgid "Move the selected citation up"
-msgstr "Вставить цитату"
-
-#: src/ext_l10n.h:623
-msgid "Move the selected citation down"
-msgstr ""
-
-#: src/ext_l10n.h:624
-msgid "Available"
-msgstr "Доступны"
-
-#
-#: src/ext_l10n.h:625
-msgid "Selected"
-msgstr "Выбраны"
-
-#: src/ext_l10n.h:627
-msgid "Available citation keys"
-msgstr ""
-
-#: src/ext_l10n.h:629
-#, fuzzy
-msgid "Citations currently selected"
-msgstr "Представление цитат"
-
-#: src/ext_l10n.h:630
-msgid "Text to place after citation"
-msgstr "Текст для размещения после цитат"
-
-#: src/ext_l10n.h:631
-msgid "&Full author list"
-msgstr "Полный список авторов"
-
-#: src/ext_l10n.h:632
-msgid "List all authors"
-msgstr "Список всех авторов"
-
-#: src/ext_l10n.h:633
-#, fuzzy
-msgid "Force &upper case"
-msgstr "Верхний регистр"
-
-#: src/ext_l10n.h:634
-#, fuzzy
-msgid "Force upper case in citation"
-msgstr "Верхний регистр"
-
-#: src/ext_l10n.h:635
-msgid "Text to place before citation"
-msgstr "Текст для размещения перед цитатой"
-
-#: src/ext_l10n.h:636 src/frontends/xforms/FormDocument.C:58
-msgid "Document Layout"
-msgstr "Формат документа"
-
-#: src/ext_l10n.h:638
-msgid "&Fonts:"
-msgstr "Шрифты:"
-
-#: src/ext_l10n.h:639
-msgid "&Pagestyle:"
-msgstr ""
-"Стиль\n"
-"страницы:"
-
-#: src/ext_l10n.h:640
-#, fuzzy
-msgid "Defa&ult Skip:"
-msgstr ""
-"Промежуток\n"
-"между абзацами:"
-
-#: src/ext_l10n.h:641
-msgid "F&ont Size:"
-msgstr ""
-"Размер\n"
-"шрифта:"
-
-#. the document language page
-#: src/ext_l10n.h:642 src/ext_l10n.h:658 src/ext_l10n.h:707 src/ext_l10n.h:738
-#: src/ext_l10n.h:857 src/frontends/qt2/QDocument.C:116
-#: src/frontends/qt2/QDocument.C:124 src/frontends/qt2/QDocument.C:152
-#: src/frontends/qt2/QDocument.C:196 src/frontends/qt2/QDocument.C:575
-#: src/frontends/qt2/QDocument.C:579
-msgid "default"
-msgstr "По умолчанию"
-
-#
-#: src/ext_l10n.h:643 src/frontends/qt2/QDocument.C:125
-msgid "empty"
-msgstr "пустой"
-
-#: src/ext_l10n.h:645 src/frontends/qt2/QDocument.C:127
-msgid "headings"
-msgstr "заголовки"
-
-#: src/ext_l10n.h:646 src/frontends/qt2/QDocument.C:128
-msgid "fancy"
-msgstr "красивый"
-
-#
-#: src/ext_l10n.h:647
-msgid "Spacin&g:"
-msgstr "Промежутки"
-
-#: src/ext_l10n.h:648
-msgid "E&xtra Options:"
-msgstr "Доп. параметры:"
-
-#: src/ext_l10n.h:649
-msgid "&Class:"
-msgstr "Класс:"
-
-#
-#: src/ext_l10n.h:650
-msgid "smallskip"
-msgstr "Маленький"
-
-#
-#: src/ext_l10n.h:651
-msgid "medskip"
-msgstr "Средний"
-
-#: src/ext_l10n.h:652
-msgid "bigskip"
-msgstr "Большой"
-
-#
-#: src/ext_l10n.h:653
-msgid "length"
-msgstr "Указать длину"
-
-#: src/ext_l10n.h:655 src/frontends/qt2/QDocument.C:112
-msgid "OneHalf"
-msgstr "Полуторный"
-
-#: src/ext_l10n.h:657 src/frontends/qt2/QDocument.C:114
-msgid "Other"
-msgstr "Другой"
-
-#: src/ext_l10n.h:659 src/frontends/qt2/QDocument.C:117
-msgid "10"
-msgstr ""
-
-#: src/ext_l10n.h:660 src/frontends/qt2/QDocument.C:118
-msgid "11"
-msgstr ""
-
-#: src/ext_l10n.h:661 src/frontends/qt2/QDocument.C:119
-msgid "12"
-msgstr ""
-
-#: src/ext_l10n.h:662 src/frontends/xforms/form_document.C:256
-msgid "Sides"
-msgstr "Сторон"
-
-#: src/ext_l10n.h:663
-msgid "O&ne"
-msgstr "Одна"
-
-#: src/ext_l10n.h:664
-msgid "&Two"
-msgstr "Две"
-
-#: src/ext_l10n.h:665 src/frontends/xforms/form_tabular_create.C:45
-msgid "Columns"
-msgstr "Колонок"
-
-#: src/ext_l10n.h:666
-msgid "On&e"
-msgstr "Одна"
-
-#: src/ext_l10n.h:667
-msgid "T&wo"
-msgstr "Две"
-
-#: src/ext_l10n.h:668 src/frontends/xforms/form_document.C:254
-msgid "Separation"
-msgstr "Разд. абзацы"
-
-#: src/ext_l10n.h:669
-msgid "&Indent"
-msgstr "Отступ"
-
-#: src/ext_l10n.h:670
-msgid "S&kip"
-msgstr "Промежуток"
-
-#
-#: src/ext_l10n.h:671 src/frontends/xforms/FormDocument.C:329
-msgid "Paper"
-msgstr "Бумага"
-
-#: src/ext_l10n.h:672
-msgid "&Papersize:"
-msgstr ""
-"Размер\n"
-"бумаги:"
-
-#: src/ext_l10n.h:673 src/frontends/qt2/QDocument.C:72 src/lyxfont.C:573
-msgid "Default"
-msgstr "По умолчанию"
-
-#: src/ext_l10n.h:674 src/ext_l10n.h:1011 src/ext_l10n.h:1020
-#: src/frontends/qt2/QDocument.C:73
-msgid "Custom"
-msgstr "Пользовательский"
-
-#: src/ext_l10n.h:675 src/frontends/qt2/QDocument.C:74
-msgid "USletter"
-msgstr ""
-
-#: src/ext_l10n.h:676 src/frontends/qt2/QDocument.C:75
-msgid "USlegal"
-msgstr ""
-
-#: src/ext_l10n.h:677 src/frontends/qt2/QDocument.C:76
-msgid "USexecutive"
-msgstr ""
-
-#: src/ext_l10n.h:678 src/frontends/qt2/QDocument.C:77
-msgid "A3"
-msgstr ""
-
-#: src/ext_l10n.h:679 src/frontends/qt2/QDocument.C:79
-msgid "A5"
-msgstr ""
-
-#: src/ext_l10n.h:680 src/frontends/qt2/QDocument.C:80
-msgid "B3"
-msgstr ""
-
-#: src/ext_l10n.h:681 src/frontends/qt2/QDocument.C:81
-msgid "B4"
-msgstr ""
-
-#: src/ext_l10n.h:682 src/frontends/qt2/QDocument.C:82
-msgid "B5"
-msgstr ""
-
-#: src/ext_l10n.h:683
-#, fuzzy
-msgid "&Special:"
-msgstr "Дополнительно"
-
-#
-#: src/ext_l10n.h:684 src/ext_l10n.h:1005 src/ext_l10n.h:1014
-#: src/ext_l10n.h:1048 src/frontends/qt2/QDocument.C:84
-msgid "None"
-msgstr "Ничего"
-
-#: src/ext_l10n.h:685 src/frontends/qt2/QDocument.C:85
-msgid "A4 small Margins (only portrait)"
-msgstr "A4 маленькие поля"
-
-#: src/ext_l10n.h:686 src/frontends/qt2/QDocument.C:86
-msgid "A4 very small Margins (only portrait)"
-msgstr "A4 очень маленькие поля"
-
-#: src/ext_l10n.h:687 src/frontends/qt2/QDocument.C:87
-msgid "A4 very wide margins (only portrait)"
-msgstr "A4 очень широкие поля"
-
-#: src/ext_l10n.h:688
-msgid "&Use Geometry Package"
-msgstr "Использовать пакет геометрии (включите для указания полей)"
-
-#: src/ext_l10n.h:689 src/frontends/xforms/form_document.C:123
-msgid "Orientation"
-msgstr "Ориентация"
-
-#: src/ext_l10n.h:690
-msgid "P&ortrait"
-msgstr "Портрет"
-
-#
-#: src/ext_l10n.h:691
-msgid "&Landscape"
-msgstr "Ландшафт"
-
-#: src/ext_l10n.h:692 src/frontends/xforms/form_document.C:143
-msgid "Margins"
-msgstr "Поля"
-
-#: src/ext_l10n.h:693
-msgid "&Right:"
-msgstr "Справа:"
-
-#: src/ext_l10n.h:694
-msgid "&Bottom:"
-msgstr "Снизу:"
-
-#: src/ext_l10n.h:695
-msgid "L&eft:"
-msgstr "Слева:"
-
-#: src/ext_l10n.h:696
-msgid "&Top:"
-msgstr "Сверху:"
-
-#: src/ext_l10n.h:697
-msgid "Custom Papersize"
-msgstr "Пользовательский размер бумаги"
-
-#: src/ext_l10n.h:698 src/ext_l10n.h:907
-msgid "&Width:"
-msgstr "Ширина"
-
-#: src/ext_l10n.h:699
-msgid "&Height:"
-msgstr "Высота"
-
-#: src/ext_l10n.h:700
-msgid "Foot/Head Margins"
-msgstr "Поля вверху/внизу"
-
-#: src/ext_l10n.h:701
-msgid "&Footskip:"
-msgstr ""
-"Промежуток\n"
-"сноски:"
-
-#: src/ext_l10n.h:702
-msgid "Hea&dsep:"
-msgstr ""
-"Разделитель\n"
-"верха:"
-
-#: src/ext_l10n.h:703
-msgid "Headhe&ight:"
-msgstr ""
-"Высота\n"
-"верха:"
-
-#
-#: src/ext_l10n.h:706
-msgid "Enco&ding:"
-msgstr "Кодировка:"
-
-#
-#: src/ext_l10n.h:708 src/frontends/qt2/QDocument.C:153
-msgid "auto"
-msgstr " автоматически "
-
-#
-#: src/ext_l10n.h:709 src/frontends/qt2/QDocument.C:154
-#, fuzzy
-msgid "latin1"
-msgstr "Крохотный"
-
-#
-#: src/ext_l10n.h:710 src/frontends/qt2/QDocument.C:155
-#, fuzzy
-msgid "latin2"
-msgstr "Крохотный"
-
-#
-#: src/ext_l10n.h:711 src/frontends/qt2/QDocument.C:156
-#, fuzzy
-msgid "latin3"
-msgstr "Крохотный"
-
-#
-#: src/ext_l10n.h:712 src/frontends/qt2/QDocument.C:157
-#, fuzzy
-msgid "latin4"
-msgstr "Крохотный"
-
-#
-#: src/ext_l10n.h:713 src/frontends/qt2/QDocument.C:158
-msgid "latin5"
-msgstr ""
-
-#
-#: src/ext_l10n.h:714 src/frontends/qt2/QDocument.C:159
-msgid "latin9"
-msgstr ""
-
-#: src/ext_l10n.h:715 src/frontends/qt2/QDocument.C:160
-msgid "koi8-r"
-msgstr ""
-
-#: src/ext_l10n.h:716 src/frontends/qt2/QDocument.C:161
-msgid "koi8-u"
-msgstr ""
-
-#: src/ext_l10n.h:717 src/frontends/qt2/QDocument.C:162
-msgid "cp866"
-msgstr ""
-
-#: src/ext_l10n.h:718 src/frontends/qt2/QDocument.C:163
-msgid "cp1251"
-msgstr ""
-
-#: src/ext_l10n.h:719 src/frontends/qt2/QDocument.C:164
-msgid "iso88595"
-msgstr ""
-
-#
-#: src/ext_l10n.h:720
-msgid "Quote Style"
-msgstr "Тип кавычек"
-
-#
-#: src/ext_l10n.h:721
-msgid "&Type:"
-msgstr "Тип:"
-
-#
-#: src/ext_l10n.h:722 src/frontends/qt2/QDocument.C:171
-msgid "``text''"
-msgstr "``текст''"
-
-#
-#: src/ext_l10n.h:723 src/frontends/qt2/QDocument.C:172
-msgid "''text''"
-msgstr "''текст''"
-
-#
-#: src/ext_l10n.h:724 src/frontends/qt2/QDocument.C:173
-msgid ",,text``"
-msgstr ",,текст``"
-
-#
-#: src/ext_l10n.h:725 src/frontends/qt2/QDocument.C:174
-msgid ",,text''"
-msgstr ",,текст''"
-
-#
-#: src/ext_l10n.h:726
-msgid "б╚textб╩"
-msgstr "б╚текстб╩"
-
-#
-#: src/ext_l10n.h:727
-msgid "б╩textб╚"
-msgstr "б╩текстб╚"
-
-#
-#: src/ext_l10n.h:728
-msgid "&Single"
-msgstr ""
-"Оди-\n"
-"нарный"
-
-#
-#: src/ext_l10n.h:729
-msgid "&Double"
-msgstr "Двойной"
-
-#
-#: src/ext_l10n.h:730 src/ext_l10n.h:853
-#: src/frontends/xforms/FormDocument.C:333
-msgid "Extra"
-msgstr "Дополнительно"
-
-#: src/ext_l10n.h:731
-msgid "F&loat Placement:"
-msgstr ""
-"Размещение\n"
-"плавающих объектов:\n"
-"[!](h,t,b,p)"
-
-#: src/ext_l10n.h:732
-msgid "S&ection number depth:"
-msgstr ""
-"Глубина нумерации\n"
-"разделов"
-
-#: src/ext_l10n.h:733
-msgid "&Table of contents depth:"
-msgstr "Глубина нумерации в содержании"
-
-#: src/ext_l10n.h:734
-msgid "P&S Driver:"
-msgstr "Драйвер PS"
-
-#: src/ext_l10n.h:735
-msgid "Use A&MS Math"
-msgstr ""
-"Использовать\n"
-"AMS-математику"
-
-#
-#: src/ext_l10n.h:736 src/frontends/xforms/FormDocument.C:335
-msgid "Bullets"
-msgstr "Маркеры"
-
-#: src/ext_l10n.h:737
-msgid "Si&ze"
-msgstr "Размер"
-
-#
-#: src/ext_l10n.h:739 src/frontends/qt2/QDocument.C:197
-#: src/frontends/xforms/form_preferences.C:171
-msgid "tiny"
-msgstr "Крохотный"
-
-#
-#: src/ext_l10n.h:740 src/frontends/qt2/QDocument.C:198
-msgid "script"
-msgstr "как индекс"
-
-#
-#: src/ext_l10n.h:741 src/frontends/qt2/QDocument.C:199
-msgid "footnote"
-msgstr "как сноска"
-
-#
-#: src/ext_l10n.h:742 src/frontends/qt2/QDocument.C:200
-#: src/frontends/xforms/form_preferences.C:180
-msgid "small"
-msgstr "Маленький"
-
-#
-#: src/ext_l10n.h:743 src/frontends/qt2/QDocument.C:201
-#: src/frontends/xforms/form_preferences.C:183
-msgid "normal"
-msgstr "Нормальный"
-
-#
-#: src/ext_l10n.h:744 src/frontends/qt2/QDocument.C:202
-#: src/frontends/xforms/form_preferences.C:186
-msgid "large"
-msgstr "Большой"
-
-#: src/ext_l10n.h:745 src/frontends/controllers/character.C:105
-#: src/frontends/qt2/QDocument.C:203 src/lyxfont.C:56
-msgid "Large"
-msgstr "Большой"
-
-#: src/ext_l10n.h:746 src/frontends/qt2/QDocument.C:204
-msgid "LARGE"
-msgstr "БОЛЬШОЙ"
-
-#
-#: src/ext_l10n.h:747 src/frontends/qt2/QDocument.C:205
-#: src/frontends/xforms/form_preferences.C:195
-msgid "huge"
-msgstr "Огромный"
-
-#: src/ext_l10n.h:748 src/frontends/controllers/character.C:111
-#: src/frontends/qt2/QDocument.C:206 src/lyxfont.C:57
-msgid "Huge"
-msgstr "Огромный"
-
-#: src/ext_l10n.h:749 src/frontends/xforms/form_document.C:608
-msgid "Bullet Depth"
-msgstr "Маркеры"
-
-#: src/ext_l10n.h:750
-msgid "&1"
-msgstr ""
-
-#: src/ext_l10n.h:751
-msgid "&2"
-msgstr ""
-
-#: src/ext_l10n.h:752
-msgid "&3"
-msgstr ""
-
-#: src/ext_l10n.h:753
-msgid "&4"
-msgstr ""
-
-#: src/ext_l10n.h:754
-msgid "&Standard"
-msgstr "Обычный"
-
-#
-#: src/ext_l10n.h:755
-msgid "&Maths"
-msgstr "Матем."
-
-#: src/ext_l10n.h:756
-msgid "&Ding 1"
-msgstr "Маркер 1"
-
-#: src/ext_l10n.h:757
-msgid "D&ing 2"
-msgstr "Маркер 2"
-
-#: src/ext_l10n.h:758
-msgid "Di&ng 3"
-msgstr "Маркер 3"
-
-#: src/ext_l10n.h:759
-msgid "Din&g 4"
-msgstr "Маркер 4"
-
-#: src/ext_l10n.h:760
-msgid "&LaTeX"
-msgstr "LaTeX"
-
-#: src/ext_l10n.h:765 src/frontends/qt2/QError.C:23
-#: src/frontends/xforms/FormError.C:24
-msgid "LaTeX Error"
-msgstr "Ошибка LaTeX"
-
-#: src/ext_l10n.h:766 src/ext_l10n.h:780
-msgid "LaTeX error messages"
-msgstr "Сообщения об ошибках LaTeX"
-
-#: src/ext_l10n.h:768
-#, fuzzy
-msgid "ERT inset display"
-msgstr "[не показан]"
-
-#: src/ext_l10n.h:769
-msgid "&Inline"
-msgstr ""
-
-#: src/ext_l10n.h:770
-msgid "Show ERT inline"
-msgstr ""
-
-#
-#: src/ext_l10n.h:771
-#, fuzzy
-msgid "&Collapsed"
-msgstr "Свернуть"
-
-#: src/ext_l10n.h:772
-msgid "Show ERT button only"
-msgstr "Показывать только кнопку команд LaTeX"
-
-#
-#: src/ext_l10n.h:773
-msgid "&Open"
-msgstr "Раскрыть"
-
-#: src/ext_l10n.h:774
-msgid "Show ERT contents"
-msgstr "Показать содержание команд LaTeX"
-
-#: src/ext_l10n.h:777
-msgid "External Material"
-msgstr "Внешний объект"
-
-#: src/ext_l10n.h:778
-msgid "&Template"
-msgstr "Шаблоны"
-
-#: src/ext_l10n.h:779
-msgid "Available templates"
-msgstr "Доступные шаблоны"
-
-#
-#: src/ext_l10n.h:781
-msgid "&Edit file"
-msgstr "Редактировать"
-
-#
-#: src/ext_l10n.h:782
-msgid "Edit the file externally"
-msgstr "Редактировать внешний объект"
-
-#: src/ext_l10n.h:783
-msgid "&View file"
-msgstr "Просмотр файла"
-
-#: src/ext_l10n.h:784
-msgid "View the file"
-msgstr "Просмотреть файл"
-
-#
-#: src/ext_l10n.h:785 src/ext_l10n.h:903 src/ext_l10n.h:1103
-#: src/ext_l10n.h:1189 src/ext_l10n.h:1202
-msgid "&Update"
-msgstr "Обновить"
-
-#: src/ext_l10n.h:786
-msgid "Update the material"
-msgstr "Обновить внешний объект"
-
-#
-#: src/ext_l10n.h:787 src/ext_l10n.h:1075
-msgid "&File"
-msgstr "Файл"
-
-#: src/ext_l10n.h:788
-msgid "Filename"
-msgstr "Имя файла"
-
-#
-#: src/ext_l10n.h:789 src/ext_l10n.h:810 src/ext_l10n.h:891
-#: src/ext_l10n.h:1079
-msgid "&Browse ..."
-msgstr "Обзор..."
-
-#
-#: src/ext_l10n.h:790
-msgid "&Parameters"
-msgstr "Параметры"
-
-#
-#: src/ext_l10n.h:791
-msgid "Parameters"
-msgstr "Параметры"
-
-#
-#: src/ext_l10n.h:795 src/ext_l10n.h:806 src/ext_l10n.h:1160
-#, fuzzy
-msgid "Form1"
-msgstr "Форматы"
-
-#: src/ext_l10n.h:800 src/frontends/xforms/form_float.C:29
-msgid "Placement"
-msgstr "Размещение плавающих объектов:"
-
-#: src/ext_l10n.h:801
-msgid "Bottom of the page"
-msgstr "Внизу страницы"
-
-#: src/ext_l10n.h:802
-msgid "Top of the page"
-msgstr "Наверху страницы"
-
-#
-#: src/ext_l10n.h:803
-msgid "Page of floats"
-msgstr ""
-"На странице\n"
-"плавающих объектов"
-
-#: src/ext_l10n.h:804
-msgid "Here, if possible"
-msgstr "Здесь, если возможно"
-
-#: src/ext_l10n.h:805
-msgid "Here, definitely"
-msgstr "Именно здесь"
-
-#
-#. add the different tabfolders
-#: src/ext_l10n.h:807 src/frontends/xforms/FormGraphics.C:189
-msgid "File"
-msgstr "Файл"
-
-#
-#: src/ext_l10n.h:808
-msgid "&File:"
-msgstr "Файл"
-
-#: src/ext_l10n.h:809 src/ext_l10n.h:890
-msgid "File name to include"
-msgstr "Имя файла для вставки"
-
-#
-#: src/ext_l10n.h:811 src/ext_l10n.h:892
-msgid "Select a file"
-msgstr "Выберите файл"
-
-#
-#: src/ext_l10n.h:812
-msgid "Screen Options"
-msgstr "Параметры экрана"
-
-#: src/ext_l10n.h:813 src/ext_l10n.h:829
-#: src/frontends/xforms/form_minipage.C:28
-msgid "Width"
-msgstr "Ширина"
-
-#
-#: src/ext_l10n.h:814
-msgid "Monochrome"
-msgstr "Монохромный"
-
-#
-#: src/ext_l10n.h:815
-msgid "Grayscale"
-msgstr "Черно-белый"
-
-#
-#: src/ext_l10n.h:816
-msgid "Color"
-msgstr "Цвета"
-
-#
-#: src/ext_l10n.h:817
-msgid "Do not display"
-msgstr "Не показывать"
-
-#: src/ext_l10n.h:819
-msgid "S&how:"
-msgstr "Показать:"
-
-#: src/ext_l10n.h:820 src/ext_l10n.h:830
-msgid "Height"
-msgstr "Высота"
-
-#: src/ext_l10n.h:821
-msgid "&Draft mode"
-msgstr "Черновой режим"
-
-#: src/ext_l10n.h:822
-msgid "draft mode"
-msgstr "черновой режим"
-
-#: src/ext_l10n.h:823 src/frontends/xforms/form_preferences.C:201
-msgid "Size"
-msgstr "Размер"
-
-#: src/ext_l10n.h:824
-msgid "&Scale"
-msgstr "Масштаб"
-
-#: src/ext_l10n.h:825
-msgid "&Default"
-msgstr "По умолчанию"
-
-#: src/ext_l10n.h:826
-msgid "&Custom"
-msgstr "Выборочно"
-
-#: src/ext_l10n.h:827 src/frontends/xforms/form_graphics.C:227
-#: src/frontends/xforms/form_graphics.C:444
-#, no-c-format
-msgid "%"
-msgstr ""
-
-#: src/ext_l10n.h:828
-msgid "Keep aspect&ratio"
-msgstr "Сохранять пропорции"
-
-#: src/ext_l10n.h:831
-msgid "EPS Options"
-msgstr "Параметры EPS"
-
-#: src/ext_l10n.h:832
-msgid "Bounding box"
-msgstr ""
-
-#
-#: src/ext_l10n.h:833
-#, fuzzy
-msgid "Left &bottom:"
-msgstr "Линия снизу"
-
-#: src/ext_l10n.h:834
-#, fuzzy
-msgid "Right &top:"
-msgstr "Справа:"
-
-#: src/ext_l10n.h:835
-msgid "Y"
-msgstr ""
-
-#: src/ext_l10n.h:836
-msgid "X"
-msgstr ""
-
-#: src/ext_l10n.h:837 src/ext_l10n.h:840 src/ext_l10n.h:843 src/ext_l10n.h:846
-#: src/frontends/qt2/lengthcombo.C:21
-msgid "pt"
-msgstr ""
-
-#: src/ext_l10n.h:838 src/ext_l10n.h:841 src/ext_l10n.h:844 src/ext_l10n.h:847
-#: src/frontends/qt2/lengthcombo.C:19
-msgid "cm"
-msgstr "см"
-
-#
-#: src/ext_l10n.h:839 src/ext_l10n.h:842 src/ext_l10n.h:845 src/ext_l10n.h:848
-#: src/frontends/qt2/lengthcombo.C:20
-#, fuzzy
-msgid "in"
-msgstr "Крохотный"
-
-#
-#: src/ext_l10n.h:849
-#, fuzzy
-msgid "&Get"
-msgstr "Книзу"
-
-#: src/ext_l10n.h:850
-msgid "Get bounding box from file"
-msgstr ""
-
-#: src/ext_l10n.h:851
-msgid "&Clip to bounding box"
-msgstr ""
-
-#: src/ext_l10n.h:852
-msgid "clip to bounding box"
-msgstr ""
-
-#: src/ext_l10n.h:854
-msgid "Rotation"
-msgstr "Поворот"
-
-#: src/ext_l10n.h:855
-#, fuzzy
-msgid "&Angle:"
-msgstr "Угол:"
-
-#: src/ext_l10n.h:856
-msgid "&Origin:"
-msgstr ""
-
-#: src/ext_l10n.h:858
-msgid "leftTop"
-msgstr ""
-
-#
-#: src/ext_l10n.h:859
-#, fuzzy
-msgid "leftBottom"
-msgstr "Книзу"
-
-#: src/ext_l10n.h:860
-msgid "leftBaseline"
-msgstr ""
-
-#
-#: src/ext_l10n.h:861 src/frontends/controllers/ControlGraphics.C:202
-#, fuzzy
-msgid "center"
-msgstr "По центру"
-
-#: src/ext_l10n.h:862
-msgid "centerTop"
-msgstr ""
-
-#: src/ext_l10n.h:863
-#, fuzzy
-msgid "centerBottom"
-msgstr "Кверху | По центру | Книзу"
-
-#: src/ext_l10n.h:864
-msgid "centerBaseline"
-msgstr ""
-
-#: src/ext_l10n.h:865
-#, fuzzy
-msgid "rightTop"
-msgstr "Прямой"
-
-#
-#: src/ext_l10n.h:866
-#, fuzzy
-msgid "rightBottom"
-msgstr "Книзу"
-
-#: src/ext_l10n.h:867
-msgid "rightBaseline"
-msgstr ""
-
-#
-#: src/ext_l10n.h:868
-#, fuzzy
-msgid "referencePoint"
-msgstr "Параметры"
-
-#
-#: src/ext_l10n.h:869
-#, fuzzy
-msgid "LaTeX options"
-msgstr "доп. параметры"
-
-#: src/ext_l10n.h:870
-#, fuzzy
-msgid "Su&bfigure"
-msgstr ""
-"Подри-\n"
-"сунок"
-
-#: src/ext_l10n.h:871
-msgid "The sub-caption for the figure"
-msgstr ""
-
-#
-#: src/ext_l10n.h:876
-#, fuzzy
-msgid "Include File"
-msgstr "Включить файл"
-
-#
-#: src/ext_l10n.h:877
-#, fuzzy
-msgid "Include type"
-msgstr "Включить файл"
-
-#: src/ext_l10n.h:878
-#, fuzzy
-msgid "&Include"
-msgstr "Включить файл"
-
-#: src/ext_l10n.h:879 src/ext_l10n.h:881 src/ext_l10n.h:883 src/ext_l10n.h:886
-#: src/ext_l10n.h:888
-msgid "FIXME"
-msgstr ""
-
-#: src/ext_l10n.h:880
-#, fuzzy
-msgid "I&nput"
-msgstr "Вставить файл"
-
-#: src/ext_l10n.h:882
-#, fuzzy
-msgid "&Verbatim"
-msgstr "Буквально"
-
-#: src/ext_l10n.h:884
-msgid "Options"
-msgstr "Параметры"
-
-#: src/ext_l10n.h:885
-#, fuzzy
-msgid "&Don't typeset"
-msgstr "Не оформлять"
-
-#: src/ext_l10n.h:887
-#, fuzzy
-msgid "Visible &Space"
-msgstr ""
-"Показывать\n"
-"пробелы"
-
-#: src/ext_l10n.h:889
-#, fuzzy
-msgid "&Filename:"
-msgstr "Имя файла:"
-
-#: src/ext_l10n.h:895
-#, fuzzy
-msgid "&Load"
-msgstr "Загрузить"
-
-#
-#: src/ext_l10n.h:896
-#, fuzzy
-msgid "Load the file"
-msgstr ""
-"Список\n"
-"недавних файлов"
-
-#
-#: src/ext_l10n.h:898 src/ext_l10n.h:1176
-#, fuzzy
-msgid "&Keyword"
-msgstr ""
-"Ключевое\n"
-"слово"
-
-#
-#: src/ext_l10n.h:899 src/ext_l10n.h:1031 src/ext_l10n.h:1177
-#, fuzzy
-msgid "Index entry"
-msgstr "Вхождение слова в предметный указатель..."
-
-#: src/ext_l10n.h:902 src/frontends/qt2/QLog.C:33
-msgid "Log"
-msgstr ""
-
-#: src/ext_l10n.h:904 src/ext_l10n.h:1203
-msgid "Update the display"
-msgstr ""
-
-#
-#: src/ext_l10n.h:906
-#, fuzzy
-msgid "Minipage settings"
-msgstr "Настройки Мини-страницы"
-
-#
-#: src/ext_l10n.h:908 src/ext_l10n.h:1057
-#, fuzzy
-msgid "Top"
-msgstr "Кверху"
-
-#: src/ext_l10n.h:909 src/ext_l10n.h:1058
-#, fuzzy
-msgid "Middle"
-msgstr ""
-"По\n"
-"середине"
-
-#: src/ext_l10n.h:910 src/ext_l10n.h:1059
-#, fuzzy
-msgid "Bottom"
-msgstr "Книзу"
-
-#: src/ext_l10n.h:911
-#, fuzzy
-msgid "Vertical alignment"
-msgstr "Верт. выравнивание"
-
-#: src/ext_l10n.h:912
-#, fuzzy
-msgid "A&lignment:"
-msgstr "Выровнять"
-
-#: src/ext_l10n.h:913
-msgid "Units of width value"
-msgstr ""
-
-#: src/ext_l10n.h:914
-#, fuzzy
-msgid "Width value"
-msgstr "Ширина"
-
-#: src/ext_l10n.h:915
-msgid "&Units:"
-msgstr ""
-
-#: src/ext_l10n.h:921
-msgid "&Alignment and Spacing"
-msgstr ""
-
-#: src/ext_l10n.h:922
-#, fuzzy
-msgid "Alignment:"
-msgstr "Выровнять"
-
-#: src/ext_l10n.h:923
-msgid "Justified"
-msgstr ""
-
-#: src/ext_l10n.h:924
-#, fuzzy
-msgid "Left"
-msgstr "Слева"
-
-#: src/ext_l10n.h:925
-#, fuzzy
-msgid "Right"
-msgstr "Справа"
-
-#
-#: src/ext_l10n.h:926
-#, fuzzy
-msgid "Centered"
-msgstr "Сантиметры"
-
-#: src/ext_l10n.h:927
-#, fuzzy
-msgid "No indentation"
-msgstr "Ориентация"
-
-#: src/ext_l10n.h:928
-msgid "Spacing"
-msgstr ""
-"Междустрочный\n"
-"интервал"
-
-#
-#: src/ext_l10n.h:929 src/ext_l10n.h:940 src/ext_l10n.h:951 src/ext_l10n.h:962
-#: src/ext_l10n.h:973 src/ext_l10n.h:984 src/ext_l10n.h:1037
-msgid "Centimetres"
-msgstr "Сантиметры"
-
-#
-#: src/ext_l10n.h:930 src/ext_l10n.h:941 src/ext_l10n.h:952 src/ext_l10n.h:963
-#: src/ext_l10n.h:974 src/ext_l10n.h:985 src/ext_l10n.h:1038
-msgid "Inches"
-msgstr "Дюймы"
-
-#: src/ext_l10n.h:931 src/ext_l10n.h:942 src/ext_l10n.h:953 src/ext_l10n.h:964
-#: src/ext_l10n.h:975 src/ext_l10n.h:986 src/ext_l10n.h:1039
-#, fuzzy
-msgid "Points"
-msgstr "Печатать"
-
-#: src/ext_l10n.h:932 src/ext_l10n.h:943 src/ext_l10n.h:954 src/ext_l10n.h:965
-#: src/ext_l10n.h:976 src/ext_l10n.h:987 src/ext_l10n.h:1040
-msgid "Millimetres"
-msgstr "Миллиметры"
-
-#
-#: src/ext_l10n.h:933 src/ext_l10n.h:944 src/ext_l10n.h:955 src/ext_l10n.h:966
-#: src/ext_l10n.h:977 src/ext_l10n.h:988 src/ext_l10n.h:1041
-msgid "Picas"
-msgstr ""
-
-#: src/ext_l10n.h:934 src/ext_l10n.h:945 src/ext_l10n.h:956 src/ext_l10n.h:967
-#: src/ext_l10n.h:978 src/ext_l10n.h:989 src/ext_l10n.h:1042
-msgid "ex Units"
-msgstr ""
-
-#: src/ext_l10n.h:935 src/ext_l10n.h:946 src/ext_l10n.h:957 src/ext_l10n.h:968
-#: src/ext_l10n.h:979 src/ext_l10n.h:990 src/ext_l10n.h:1043
-msgid "em Units"
-msgstr ""
-
-#
-#: src/ext_l10n.h:936 src/ext_l10n.h:947 src/ext_l10n.h:958 src/ext_l10n.h:969
-#: src/ext_l10n.h:980 src/ext_l10n.h:991 src/ext_l10n.h:1044
-#, fuzzy
-msgid "Scaled Points"
-msgstr "Экранные шрифты"
-
-#: src/ext_l10n.h:937 src/ext_l10n.h:948 src/ext_l10n.h:959 src/ext_l10n.h:970
-#: src/ext_l10n.h:981 src/ext_l10n.h:992 src/ext_l10n.h:1045
-#, fuzzy
-msgid "Big/PS Points"
-msgstr "Печатать"
-
-#: src/ext_l10n.h:938 src/ext_l10n.h:949 src/ext_l10n.h:960 src/ext_l10n.h:971
-#: src/ext_l10n.h:982 src/ext_l10n.h:993 src/ext_l10n.h:1046
-#, fuzzy
-msgid "Didot Points"
-msgstr "Печатать"
-
-#: src/ext_l10n.h:939 src/ext_l10n.h:950 src/ext_l10n.h:961 src/ext_l10n.h:972
-#: src/ext_l10n.h:983 src/ext_l10n.h:994 src/ext_l10n.h:1047
-#, fuzzy
-msgid "Cicero Points"
-msgstr "Печатать"
-
-#: src/ext_l10n.h:995 src/ext_l10n.h:997
-msgid "Units:"
-msgstr "Единицы:"
-
-#: src/ext_l10n.h:996 src/ext_l10n.h:998
-msgid "Unit of Size, Stretch and Slink"
-msgstr ""
-
-#
-#: src/ext_l10n.h:999
-msgid "Value:"
-msgstr "Значение:"
-
-#: src/ext_l10n.h:1000
-#, fuzzy
-msgid "Amount of spacing"
-msgstr "Промежуток"
-
-#: src/ext_l10n.h:1001
-msgid "Stretch:"
-msgstr ""
-
-#: src/ext_l10n.h:1002
-msgid "Margin by which paragraph is allowed to increase"
-msgstr ""
-
-#: src/ext_l10n.h:1003
-msgid "Shrink:"
-msgstr ""
-
-#: src/ext_l10n.h:1004
-msgid "Margin by which paragraph is allowed to decrease"
-msgstr ""
-
-#: src/ext_l10n.h:1006 src/ext_l10n.h:1015
-#, fuzzy
-msgid "DefSkip"
-msgstr ""
-"Промежуток\n"
-"между абзацами:"
-
-#
-#: src/ext_l10n.h:1007 src/ext_l10n.h:1016
-msgid "SmallSkip"
-msgstr "Маленький"
-
-#
-#: src/ext_l10n.h:1008 src/ext_l10n.h:1017
-msgid "MedSkip"
-msgstr "Средний"
-
-#: src/ext_l10n.h:1009 src/ext_l10n.h:1018
-msgid "BigSkip"
-msgstr "Большой"
-
-#: src/ext_l10n.h:1010 src/ext_l10n.h:1019
-msgid "VFill"
-msgstr "Вертикальный клей"
-
-#: src/ext_l10n.h:1012
-msgid "Above:"
-msgstr "Перед:"
-
-#: src/ext_l10n.h:1013
-msgid "Below:"
-msgstr "После:"
-
-#: src/ext_l10n.h:1021
-msgid "Keep space at the top of the page"
-msgstr "Сохранять расстояние сверху страницы"
-
-#: src/ext_l10n.h:1022
-msgid "Keep space at top of the page"
-msgstr "Сохранять расстояние сверху страницы"
-
-#: src/ext_l10n.h:1023
-msgid "Keep space at the bottom of the page"
-msgstr "Сохранять расстояние снизу страницы"
-
-#
-#: src/ext_l10n.h:1024
-msgid "List environment"
-msgstr "окружение Список"
-
-#
-#: src/ext_l10n.h:1025
-msgid "Label width:"
-msgstr "Ширина метки:"
-
-#
-#: src/ext_l10n.h:1026
-msgid "Label width in list environment"
-msgstr "Ширина метки в окружении Список"
-
-#
-#: src/ext_l10n.h:1027
-msgid "&Lines and Page breaks"
-msgstr "Разрывы строк и страниц"
-
-#
-#: src/ext_l10n.h:1028
-msgid "Page break"
-msgstr "Разрыв страницы"
-
-#: src/ext_l10n.h:1029 src/ext_l10n.h:1033
-msgid "above paragraph"
-msgstr "выше абзац"
-
-#: src/ext_l10n.h:1030 src/ext_l10n.h:1034
-msgid "below paragraph"
-msgstr "ниже абзац"
-
-#: src/ext_l10n.h:1032
-msgid "Line"
-msgstr "Линия"
-
-#
-#: src/ext_l10n.h:1035
-msgid "&Extra options"
-msgstr "Доп. параметры"
-
-#: src/ext_l10n.h:1036
-msgid "Unit:"
-msgstr "Единицы:"
-
-#
-#: src/ext_l10n.h:1049 src/frontends/qt2/QMinipage.C:33
-msgid "Minipage"
-msgstr "Мини-страница"
-
-#: src/ext_l10n.h:1050
-msgid "Wrap text around floats"
-msgstr "Окружать плавающие объекты текстом"
-
-#: src/ext_l10n.h:1051
-msgid "Indent whole paragraph"
-msgstr "Отступ всего параграфа"
-
-#: src/ext_l10n.h:1052
-msgid "Width:"
-msgstr "Ширина:"
-
-#
-#: src/ext_l10n.h:1053
-msgid "Minipage options"
-msgstr "Настройки Мини-страницы"
-
-#
-#: src/ext_l10n.h:1054
-msgid "Start new minipage"
-msgstr "Начать мини-страницу"
-
-#: src/ext_l10n.h:1055
-msgid "HFill between minipage paragraphs"
-msgstr "Горизонтальный клей между абзацами мини-страницы"
-
-#: src/ext_l10n.h:1056
-msgid "Vertical Alignment:"
-msgstr "Верт. выравнивание:"
-
-#: src/ext_l10n.h:1064
-msgid "LaTeX pre-amble"
-msgstr "Преамбула LaTeX"
-
-#: src/ext_l10n.h:1065
-msgid "The LaTeX pre-amble"
-msgstr "Преамбула LaTeX"
-
-#: src/ext_l10n.h:1066
-msgid "&Edit ..."
-msgstr ""
-
-#: src/ext_l10n.h:1067
-msgid "Edit the pre-amble in an external editor"
-msgstr ""
-
-#: src/ext_l10n.h:1071 src/frontends/qt2/QPrint.C:35
-#: src/frontends/xforms/form_print.C:133 src/frontends/xforms/FormPrint.C:35
-#: src/LyXAction.C:138 src/LyXAction.C:145
-msgid "Print"
-msgstr "Напечатать"
-
-#: src/ext_l10n.h:1072
-#, fuzzy
-msgid "Print Destination"
-msgstr "Ориентация"
-
-#
-#: src/ext_l10n.h:1073
-msgid "P&rinter"
-msgstr "Принтер"
-
-#: src/ext_l10n.h:1074
-msgid "Send output to the printer"
-msgstr "Послать вывод на принтер"
-
-#: src/ext_l10n.h:1076 src/ext_l10n.h:1078
-msgid "Send output to a file"
-msgstr "Послать вывод в файл"
-
-#: src/ext_l10n.h:1077
-msgid "Send output to the given printer"
-msgstr "Послать вывод на данный принтер"
-
-#: src/ext_l10n.h:1080
-msgid "Pages"
-msgstr "Страницы"
-
-#: src/ext_l10n.h:1081
-msgid "&All"
-msgstr "Все"
-
-#: src/ext_l10n.h:1082
-msgid "Print all pages"
-msgstr "Печатать все страницы"
-
-#: src/ext_l10n.h:1083
-msgid "&Odd"
-msgstr "Нечётные"
-
-#: src/ext_l10n.h:1084
-msgid "Print odd pages only"
-msgstr "нечётные страницы"
-
-#: src/ext_l10n.h:1085
-msgid "&Even"
-msgstr "Чётные"
-
-#: src/ext_l10n.h:1086
-msgid "Print even pages only"
-msgstr "чётные страницы"
-
-#: src/ext_l10n.h:1087
-msgid "&Last page:"
-msgstr "Последняя страница:"
-
-#: src/ext_l10n.h:1088
-msgid "Page number to print to"
-msgstr "Номер страницы до которой печатать"
-
-#: src/ext_l10n.h:1089
-msgid "Re&verse order"
-msgstr "Обратный"
-
-#: src/ext_l10n.h:1090
-msgid "Print in reverse order"
-msgstr "Печатать в обратном порядке"
-
-#: src/ext_l10n.h:1091
-msgid "Page number to print from"
-msgstr "Номер страницы с которой печатать"
-
-#: src/ext_l10n.h:1092
-msgid "Ran&ge"
-msgstr "Диапазон"
-
-#: src/ext_l10n.h:1093
-msgid "Set a range of pages to print"
-msgstr "Установить диапазон страниц для печати"
-
-#: src/ext_l10n.h:1094
-msgid "&Starting range:"
-msgstr "Начальный диапазон"
-
-#: src/ext_l10n.h:1095 src/frontends/xforms/form_print.C:139
-msgid "Copies"
-msgstr "Копии"
-
-#: src/ext_l10n.h:1096
-msgid "Number of copies"
-msgstr "Число копий"
-
-#
-#: src/ext_l10n.h:1097
-msgid "&Collate"
-msgstr "собирать"
-
-#: src/ext_l10n.h:1098
-msgid "Collate copies"
-msgstr "Собирать копии"
-
-#: src/ext_l10n.h:1099
-#, fuzzy
-msgid "&Print"
-msgstr "Печатать"
-
-#: src/ext_l10n.h:1100 src/ext_l10n.h:1159
-#: src/frontends/controllers/ButtonController.h:74
-#: src/frontends/xforms/form_maths_deco.C:32
-#: src/frontends/xforms/FormMathsPanel.C:71
-#: src/frontends/xforms/FormMathsPanel.C:407
-#: src/frontends/xforms/form_maths_space.C:73
-#: src/frontends/xforms/form_maths_style.C:35 src/LyXAction.C:130
-msgid "Close"
-msgstr "Закрыть"
-
-#: src/ext_l10n.h:1102 src/ext_l10n.h:1187
-#, fuzzy
-msgid "&Type"
-msgstr "Тип"
-
-#
-#: src/ext_l10n.h:1104
-#, fuzzy
-msgid "Update the reference list"
-msgstr "Редактировать параметры"
-
-#
-#: src/ext_l10n.h:1105
-#, fuzzy
-msgid "Sort"
-msgstr "Упорядочить"
-
-#: src/ext_l10n.h:1106
-msgid "Sort references in alphabetical order"
-msgstr ""
-
-#
-#: src/ext_l10n.h:1107 src/frontends/qt2/QRef.C:103
-#, fuzzy
-msgid "&Goto"
-msgstr "Книзу"
-
-#: src/ext_l10n.h:1108
-#, fuzzy
-msgid "Move the document cursor to reference"
-msgstr "Возможно, этот документ обрезан"
-
-#
-#: src/ext_l10n.h:1110
-#, fuzzy
-msgid "Page number"
-msgstr "Номер страницы"
-
-#: src/ext_l10n.h:1111
-msgid "Ref on page xxx"
-msgstr ""
-
-#: src/ext_l10n.h:1112
-msgid "On page xxx"
-msgstr ""
-
-#
-#: src/ext_l10n.h:1113
-#, fuzzy
-msgid "Pretty reference"
-msgstr "Параметры"
-
-#: src/ext_l10n.h:1114
-#, fuzzy
-msgid "Reference as it appears in output"
-msgstr "Имя формата, как оно будет показываться в меню."
-
-#: src/ext_l10n.h:1115
-#, fuzzy
-msgid "&Reference:"
-msgstr "Перекрёстная ссылка"
-
-#: src/ext_l10n.h:1116
-#, fuzzy
-msgid "&Name:"
-msgstr "Имя"
-
-#
-#: src/ext_l10n.h:1117
-#, fuzzy
-msgid "Available references"
-msgstr "Сохранить параметры"
-
-#
-#: src/ext_l10n.h:1120
-#, fuzzy
-msgid "Search and replace"
-msgstr "Cтрока была заменена."
-
-#: src/ext_l10n.h:1121
-#, fuzzy
-msgid "&Find:"
-msgstr "Искать"
-
-#: src/ext_l10n.h:1122
-#, fuzzy
-msgid "Replace &with:"
-msgstr "Заменить на"
-
-#: src/ext_l10n.h:1123
-#, fuzzy
-msgid "Case &sensitive"
-msgstr ""
-"Учитывать\n"
-"регистр"
-
-#: src/ext_l10n.h:1124
-msgid "Match whole words onl&y"
-msgstr ""
-
-#: src/ext_l10n.h:1125
-msgid "Find &Next"
-msgstr ""
-
-#: src/ext_l10n.h:1126 src/ext_l10n.h:1134 src/ext_l10n.h:1183
-#, fuzzy
-msgid "&Replace"
-msgstr ""
-"Заменить\n"
-"на"
-
-#: src/ext_l10n.h:1127
-#, fuzzy
-msgid "Replace &All "
-msgstr "Заменить все"
-
-#: src/ext_l10n.h:1128
-msgid "Search &backwards"
-msgstr ""
-
-#: src/ext_l10n.h:1130
-#, fuzzy
-msgid "File: "
-msgstr "Тип файла"
-
-#: src/ext_l10n.h:1132 src/frontends/qt2/QSpellchecker.C:27
-msgid "Spellchecker"
-msgstr "Проверка правописания"
-
-#: src/ext_l10n.h:1133
-#, fuzzy
-msgid "Suggestions:"
-msgstr "Функции"
-
-#: src/ext_l10n.h:1135
-#, fuzzy
-msgid "Replace word with current choice"
-msgstr "Заменить на текущий документ?"
-
-#
-#: src/ext_l10n.h:1136
-#, fuzzy
-msgid "&Add"
-msgstr "Добавить"
-
-#: src/ext_l10n.h:1137
-#, fuzzy
-msgid "Add the word to your personal dictionary"
-msgstr "Добавить в личный словарь"
-
-#: src/ext_l10n.h:1138
-#, fuzzy
-msgid "&Ignore"
-msgstr "Игнорировать"
-
-#: src/ext_l10n.h:1139
-#, fuzzy
-msgid "Ignore this word"
-msgstr "Пропустить слово"
-
-#: src/ext_l10n.h:1140
-msgid "&Accept"
-msgstr ""
-
-#: src/ext_l10n.h:1141
-#, fuzzy
-msgid "Accept word for this session"
-msgstr "Пропускать это слово и дальше"
-
-#: src/ext_l10n.h:1142
-#, fuzzy
-msgid "&Options..."
-msgstr "Параметры"
-
-#: src/ext_l10n.h:1144
-#, fuzzy
-msgid "How far spellchecking has got"
-msgstr "Проверить правописание"
-
-#: src/ext_l10n.h:1145 src/frontends/xforms/form_spellchecker.C:37
-#, fuzzy
-msgid "Suggestions"
-msgstr "Функции"
-
-#: src/ext_l10n.h:1146
-#, fuzzy
-msgid "Replacement:"
-msgstr "Размещение плавающих объектов:"
-
-#: src/ext_l10n.h:1147
-msgid "Current word"
-msgstr ""
-
-#: src/ext_l10n.h:1148
-#, fuzzy
-msgid "Unknown:"
-msgstr "неизвестная"
-
-#: src/ext_l10n.h:1149
-#, fuzzy
-msgid "Replace with selected word"
-msgstr "Заменить на текущий документ?"
-
-#: src/ext_l10n.h:1150
-msgid "&Start..."
-msgstr ""
-
-#: src/ext_l10n.h:1151
-#, fuzzy
-msgid "Start spellcheck"
-msgstr "Проверить правописание"
-
-#
-#: src/ext_l10n.h:1152 src/frontends/qt2/QTabularCreate.C:28
-msgid "Insert table"
-msgstr "Вставить таблицу"
-
-#: src/ext_l10n.h:1153
-#, fuzzy
-msgid "&Rows:"
-msgstr "Строк"
-
-#
-#: src/ext_l10n.h:1154
-#, fuzzy
-msgid "Number of rows"
-msgstr "  Номер "
-
-#: src/ext_l10n.h:1155
-#, fuzzy
-msgid "&Columns:"
-msgstr "Колонок"
-
-#: src/ext_l10n.h:1156
-#, fuzzy
-msgid "Number of columns"
-msgstr "% колонки"
-
-#: src/ext_l10n.h:1157
-msgid "Resize this to the correct table dimensions"
-msgstr ""
-
-#: src/ext_l10n.h:1161
-#, fuzzy
-msgid "LaTeX classes"
-msgstr "Журнал сообщений LaTeX"
-
-#: src/ext_l10n.h:1162
-#, fuzzy
-msgid "LaTeX styles"
-msgstr "Режим команд LaTeX"
-
-#: src/ext_l10n.h:1163
-#, fuzzy
-msgid "BibTeX styles"
-msgstr "Переключить режим команд LaTeX"
-
-#: src/ext_l10n.h:1164
-#, fuzzy
-msgid "Selected classes or styles"
-msgstr "Переключить режим команд LaTeX"
-
-#: src/ext_l10n.h:1165
-msgid "Show &path"
-msgstr ""
-
-#: src/ext_l10n.h:1166
-msgid "Toggles view of the file list"
-msgstr ""
-
-#
-#: src/ext_l10n.h:1168
-#, fuzzy
-msgid "Installed files"
-msgstr "Включить файл"
-
-#: src/ext_l10n.h:1169
-#, fuzzy
-msgid "&Rescan"
-msgstr "Обновить"
-
-#: src/ext_l10n.h:1170
-#, fuzzy
-msgid "Built new file list"
-msgstr "В результате преобразования получен пустой файл"
-
-#
-#: src/ext_l10n.h:1171
-#, fuzzy
-msgid "&View"
-msgstr "Просмотр"
-
-#: src/ext_l10n.h:1172
-msgid ""
-"Show contents of marked file. Only possible when files are shown with path"
-msgstr ""
-
-#: src/ext_l10n.h:1174
-msgid "Close this dialog"
-msgstr ""
-
-#
-#: src/ext_l10n.h:1178
-#, fuzzy
-msgid "Entry"
-msgstr "Введите метку:"
-
-#: src/ext_l10n.h:1179
-#, fuzzy
-msgid "Thesaurus entries"
-msgstr "Тезаурус"
-
-#
-#: src/ext_l10n.h:1180
-#, fuzzy
-msgid "Select a related word"
-msgstr "Выберите файл шаблона"
-
-#
-#: src/ext_l10n.h:1181
-#, fuzzy
-msgid "&Selection"
-msgstr "выделенная область"
-
-#: src/ext_l10n.h:1182
-msgid "The selected entry"
-msgstr ""
-
-#: src/ext_l10n.h:1184
-msgid "Replace the entry with the selection"
-msgstr ""
-
-#: src/ext_l10n.h:1186
-msgid "Table Of Contents"
-msgstr "Содержание"
-
-#: src/ext_l10n.h:1188
-msgid "Contents list"
-msgstr ""
-
-#: src/ext_l10n.h:1191
-#, fuzzy
-msgid "Insert URL"
-msgstr "Вставить метку"
-
-#
-#: src/ext_l10n.h:1192
-#, fuzzy
-msgid "&URL"
-msgstr "URL: "
-
-#: src/ext_l10n.h:1194
-#, fuzzy
-msgid "&Name"
-msgstr "Имя"
-
-#: src/ext_l10n.h:1195
-msgid "Name associated with the URL"
-msgstr ""
-
-#: src/ext_l10n.h:1197
-msgid "&Generate hyperlink"
-msgstr ""
-
-#: src/ext_l10n.h:1198
-msgid "Output as a hyperlink ?"
-msgstr ""
-
-#
-#: src/ext_l10n.h:1201
-#, fuzzy
-msgid "Version control log"
-msgstr "Лог контроля версий"
-
-#
 #. Insert the latex builtin float-types
 #. (these will later be read from a layout file)
 #. table
@@ -5352,6 +841,11 @@ msgstr "Рисунок"
 #: src/FloatList.C:40
 msgid "List of Figures"
 msgstr "Список рисунков"
+
+#
+#: src/FloatList.C:47 src/ext_l10n.h:199
+msgid "Algorithm"
+msgstr ""
 
 #: src/FloatList.C:48
 msgid "List of Algorithms"
@@ -5373,6 +867,23 @@ msgstr ""
 #, fuzzy
 msgid "No year"
 msgstr "Без номеров"
+
+#. /
+#: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:157
+#: src/lyxfunc.C:1082 src/ext_l10n.h:571 src/ext_l10n.h:605 src/ext_l10n.h:764
+#: src/ext_l10n.h:901
+msgid "Cancel"
+msgstr "Отмена"
+
+#: src/frontends/controllers/ButtonController.h:74
+#: src/frontends/xforms/form_maths_deco.C:32
+#: src/frontends/xforms/FormMathsPanel.C:71
+#: src/frontends/xforms/FormMathsPanel.C:407
+#: src/frontends/xforms/form_maths_space.C:73
+#: src/frontends/xforms/form_maths_style.C:35 src/LyXAction.C:130
+#: src/ext_l10n.h:1100 src/ext_l10n.h:1159
+msgid "Close"
+msgstr "Закрыть"
 
 #
 #: src/frontends/controllers/character.C:33
@@ -5455,6 +966,11 @@ msgstr "Маленький"
 msgid "Normal"
 msgstr "Нормальный"
 
+#: src/frontends/controllers/character.C:105 src/frontends/qt2/QDocument.C:203
+#: src/lyxfont.C:56 src/ext_l10n.h:745
+msgid "Large"
+msgstr "Большой"
+
 #: src/frontends/controllers/character.C:107 src/lyxfont.C:57
 msgid "Larger"
 msgstr "Больше"
@@ -5462,6 +978,11 @@ msgstr "Больше"
 #: src/frontends/controllers/character.C:109 src/lyxfont.C:57
 msgid "Largest"
 msgstr "Наибольший"
+
+#: src/frontends/controllers/character.C:111 src/frontends/qt2/QDocument.C:206
+#: src/lyxfont.C:57 src/ext_l10n.h:748
+msgid "Huge"
+msgstr "Огромный"
 
 #: src/frontends/controllers/character.C:113 src/lyxfont.C:57
 msgid "Huger"
@@ -5620,6 +1141,12 @@ msgid "Clipart|#C#c"
 msgstr "Галерея"
 
 #
+#: src/frontends/controllers/ControlGraphics.C:202 src/ext_l10n.h:861
+#, fuzzy
+msgid "center"
+msgstr "По центру"
+
+#
 #: src/frontends/controllers/ControlGraphics.C:203
 #, fuzzy
 msgid "left top"
@@ -5770,6 +1297,12 @@ msgid "&No"
 msgstr ""
 
 #
+#: src/frontends/qt2/Alert_pimpl.C:45 src/frontends/qt2/QParagraphDialog.C:49
+#: src/ext_l10n.h:539 src/ext_l10n.h:1063
+msgid "&Cancel"
+msgstr "Отмена"
+
+#
 #: src/frontends/qt2/Alert_pimpl.C:51
 #, fuzzy
 msgid "LyX: "
@@ -5777,6 +1310,23 @@ msgstr "Просмотр"
 
 #: src/frontends/qt2/FileDialog.C:43
 msgid "*|All files"
+msgstr ""
+
+#: src/frontends/qt2/lengthcombo.C:19 src/ext_l10n.h:838 src/ext_l10n.h:841
+#: src/ext_l10n.h:844 src/ext_l10n.h:847
+msgid "cm"
+msgstr "см"
+
+#
+#: src/frontends/qt2/lengthcombo.C:20 src/ext_l10n.h:839 src/ext_l10n.h:842
+#: src/ext_l10n.h:845 src/ext_l10n.h:848
+#, fuzzy
+msgid "in"
+msgstr "Крохотный"
+
+#: src/frontends/qt2/lengthcombo.C:21 src/ext_l10n.h:837 src/ext_l10n.h:840
+#: src/ext_l10n.h:843 src/ext_l10n.h:846
+msgid "pt"
 msgstr ""
 
 #: src/frontends/qt2/lengthcombo.C:22
@@ -5811,6 +1361,10 @@ msgstr ""
 msgid "dd"
 msgstr "Добавить"
 
+#: src/frontends/qt2/lengthcombo.C:29 src/ext_l10n.h:227
+msgid "cc"
+msgstr ""
+
 #: src/frontends/qt2/lengthcombo.C:30
 msgid "mu"
 msgstr ""
@@ -5833,6 +1387,11 @@ msgstr ""
 msgid "FIXME - describe the units."
 msgstr ""
 
+#: src/frontends/qt2/QAbout.C:32 src/frontends/xforms/FormAboutlyx.C:28
+#: src/ext_l10n.h:530
+msgid "About LyX"
+msgstr "О LyX"
+
 #: src/frontends/qt2/QBibitem.C:26
 #, fuzzy
 msgid "Bibliography Item"
@@ -5841,6 +1400,11 @@ msgstr "Элемент библиографии"
 #: src/frontends/qt2/QBibtex.C:29
 msgid "BibTeX"
 msgstr "BibTeX"
+
+#: src/frontends/qt2/QBibtex.C:114 src/frontends/qt2/QBibtexDialog.C:77
+#: src/ext_l10n.h:562
+msgid "Other ..."
+msgstr "другие ..."
 
 #: src/frontends/qt2/QBibtexDialog.C:46
 msgid "BibTeX style files (*.bst)"
@@ -5859,6 +1423,16 @@ msgstr ""
 msgid "Select a BibTeX database to add"
 msgstr ""
 
+#
+#: src/frontends/qt2/QCharacter.C:31 src/ext_l10n.h:572
+msgid "Character"
+msgstr "Символ"
+
+#: src/frontends/qt2/QCitation.C:45 src/frontends/xforms/FormCitation.C:117
+#: src/ext_l10n.h:601
+msgid "Citation"
+msgstr "Цитата"
+
 #: src/frontends/qt2/QCitationDialog.C:48
 #: src/frontends/xforms/FormCitation.C:476
 msgid "Not yet supported"
@@ -5868,9 +1442,115 @@ msgstr "Ещё не поддерживается"
 msgid "Document Settings"
 msgstr "Настройки документа"
 
+#: src/frontends/qt2/QDocument.C:72 src/lyxfont.C:573 src/ext_l10n.h:673
+msgid "Default"
+msgstr "По умолчанию"
+
+#: src/frontends/qt2/QDocument.C:73 src/ext_l10n.h:674 src/ext_l10n.h:1011
+#: src/ext_l10n.h:1020
+msgid "Custom"
+msgstr "Пользовательский"
+
+#: src/frontends/qt2/QDocument.C:74 src/ext_l10n.h:675
+msgid "USletter"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:75 src/ext_l10n.h:676
+msgid "USlegal"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:76 src/ext_l10n.h:677
+msgid "USexecutive"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:77 src/ext_l10n.h:678
+msgid "A3"
+msgstr ""
+
 #: src/frontends/qt2/QDocument.C:78
 msgid "A4"
 msgstr ""
+
+#: src/frontends/qt2/QDocument.C:79 src/ext_l10n.h:679
+msgid "A5"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:80 src/ext_l10n.h:680
+msgid "B3"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:81 src/ext_l10n.h:681
+msgid "B4"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:82 src/ext_l10n.h:682
+msgid "B5"
+msgstr ""
+
+#
+#: src/frontends/qt2/QDocument.C:84 src/ext_l10n.h:684 src/ext_l10n.h:1005
+#: src/ext_l10n.h:1014 src/ext_l10n.h:1048
+msgid "None"
+msgstr "Ничего"
+
+#: src/frontends/qt2/QDocument.C:85 src/ext_l10n.h:685
+msgid "A4 small Margins (only portrait)"
+msgstr "A4 маленькие поля"
+
+#: src/frontends/qt2/QDocument.C:86 src/ext_l10n.h:686
+msgid "A4 very small Margins (only portrait)"
+msgstr "A4 очень маленькие поля"
+
+#: src/frontends/qt2/QDocument.C:87 src/ext_l10n.h:687
+msgid "A4 very wide margins (only portrait)"
+msgstr "A4 очень широкие поля"
+
+#: src/frontends/qt2/QDocument.C:112 src/ext_l10n.h:655
+msgid "OneHalf"
+msgstr "Полуторный"
+
+#: src/frontends/qt2/QDocument.C:114 src/ext_l10n.h:657
+msgid "Other"
+msgstr "Другой"
+
+#. the document language page
+#: src/frontends/qt2/QDocument.C:116 src/frontends/qt2/QDocument.C:124
+#: src/frontends/qt2/QDocument.C:152 src/frontends/qt2/QDocument.C:196
+#: src/frontends/qt2/QDocument.C:575 src/frontends/qt2/QDocument.C:579
+#: src/ext_l10n.h:642 src/ext_l10n.h:658 src/ext_l10n.h:707 src/ext_l10n.h:738
+#: src/ext_l10n.h:857
+msgid "default"
+msgstr "По умолчанию"
+
+#: src/frontends/qt2/QDocument.C:117 src/ext_l10n.h:659
+msgid "10"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:118 src/ext_l10n.h:660
+msgid "11"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:119 src/ext_l10n.h:661
+msgid "12"
+msgstr ""
+
+#
+#: src/frontends/qt2/QDocument.C:125 src/ext_l10n.h:643
+msgid "empty"
+msgstr "пустой"
+
+#: src/frontends/qt2/QDocument.C:126 src/ext_l10n.h:558 src/ext_l10n.h:644
+#, fuzzy
+msgid "plain"
+msgstr "Промежуток"
+
+#: src/frontends/qt2/QDocument.C:127 src/ext_l10n.h:645
+msgid "headings"
+msgstr "заголовки"
+
+#: src/frontends/qt2/QDocument.C:128 src/ext_l10n.h:646
+msgid "fancy"
+msgstr "красивый"
 
 #
 #: src/frontends/qt2/QDocument.C:130
@@ -5892,6 +1572,85 @@ msgid "Length"
 msgstr "Указать длину"
 
 #
+#: src/frontends/qt2/QDocument.C:153 src/ext_l10n.h:708
+msgid "auto"
+msgstr " автоматически "
+
+#
+#: src/frontends/qt2/QDocument.C:154 src/ext_l10n.h:709
+#, fuzzy
+msgid "latin1"
+msgstr "Крохотный"
+
+#
+#: src/frontends/qt2/QDocument.C:155 src/ext_l10n.h:710
+#, fuzzy
+msgid "latin2"
+msgstr "Крохотный"
+
+#
+#: src/frontends/qt2/QDocument.C:156 src/ext_l10n.h:711
+#, fuzzy
+msgid "latin3"
+msgstr "Крохотный"
+
+#
+#: src/frontends/qt2/QDocument.C:157 src/ext_l10n.h:712
+#, fuzzy
+msgid "latin4"
+msgstr "Крохотный"
+
+#
+#: src/frontends/qt2/QDocument.C:158 src/ext_l10n.h:713
+msgid "latin5"
+msgstr ""
+
+#
+#: src/frontends/qt2/QDocument.C:159 src/ext_l10n.h:714
+msgid "latin9"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:160 src/ext_l10n.h:715
+msgid "koi8-r"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:161 src/ext_l10n.h:716
+msgid "koi8-u"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:162 src/ext_l10n.h:717
+msgid "cp866"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:163 src/ext_l10n.h:718
+msgid "cp1251"
+msgstr ""
+
+#: src/frontends/qt2/QDocument.C:164 src/ext_l10n.h:719
+msgid "iso88595"
+msgstr ""
+
+#
+#: src/frontends/qt2/QDocument.C:171 src/ext_l10n.h:722
+msgid "``text''"
+msgstr "``текст''"
+
+#
+#: src/frontends/qt2/QDocument.C:172 src/ext_l10n.h:723
+msgid "''text''"
+msgstr "''текст''"
+
+#
+#: src/frontends/qt2/QDocument.C:173 src/ext_l10n.h:724
+msgid ",,text``"
+msgstr ",,текст``"
+
+#
+#: src/frontends/qt2/QDocument.C:174 src/ext_l10n.h:725
+msgid ",,text''"
+msgstr ",,текст''"
+
+#
 #: src/frontends/qt2/QDocument.C:175
 msgid "╚text╩"
 msgstr "текст "
@@ -5900,6 +1659,50 @@ msgstr "текст "
 #: src/frontends/qt2/QDocument.C:176
 msgid "╩text╚"
 msgstr "текст "
+
+#
+#: src/frontends/qt2/QDocument.C:197
+#: src/frontends/xforms/form_preferences.C:171 src/ext_l10n.h:739
+msgid "tiny"
+msgstr "Крохотный"
+
+#
+#: src/frontends/qt2/QDocument.C:198 src/ext_l10n.h:740
+msgid "script"
+msgstr "как индекс"
+
+#
+#: src/frontends/qt2/QDocument.C:199 src/ext_l10n.h:741
+msgid "footnote"
+msgstr "как сноска"
+
+#
+#: src/frontends/qt2/QDocument.C:200
+#: src/frontends/xforms/form_preferences.C:180 src/ext_l10n.h:742
+msgid "small"
+msgstr "Маленький"
+
+#
+#: src/frontends/qt2/QDocument.C:201
+#: src/frontends/xforms/form_preferences.C:183 src/ext_l10n.h:743
+msgid "normal"
+msgstr "Нормальный"
+
+#
+#: src/frontends/qt2/QDocument.C:202
+#: src/frontends/xforms/form_preferences.C:186 src/ext_l10n.h:744
+msgid "large"
+msgstr "Большой"
+
+#: src/frontends/qt2/QDocument.C:204 src/ext_l10n.h:746
+msgid "LARGE"
+msgstr "БОЛЬШОЙ"
+
+#
+#: src/frontends/qt2/QDocument.C:205
+#: src/frontends/xforms/form_preferences.C:195 src/ext_l10n.h:747
+msgid "huge"
+msgstr "Огромный"
 
 #: src/frontends/qt2/QDocument.C:234 src/frontends/xforms/FormDocument.C:362
 msgid "Document layout set"
@@ -5958,6 +1761,11 @@ msgstr "значения по умолчанию для этого класса документов?"
 msgid "Unable to switch to new document class."
 msgstr "Невозможно переключиться к новому классу документа."
 
+#: src/frontends/qt2/QError.C:23 src/frontends/xforms/FormError.C:24
+#: src/ext_l10n.h:765
+msgid "LaTeX Error"
+msgstr "Ошибка LaTeX"
+
 #: src/frontends/qt2/QERT.C:23
 msgid "LaTeX ERT"
 msgstr "режим LaTeX"
@@ -5991,6 +1799,15 @@ msgstr "Графика"
 msgid "Include"
 msgstr "Включить файл"
 
+#: src/frontends/qt2/QIndex.C:23 src/frontends/xforms/FormIndex.C:24
+#: src/insets/insetindex.C:61 src/ext_l10n.h:540 src/ext_l10n.h:897
+msgid "Index"
+msgstr "Предметный указатель"
+
+#: src/frontends/qt2/QLog.C:33 src/ext_l10n.h:902
+msgid "Log"
+msgstr ""
+
 #: src/frontends/qt2/QLog.C:51 src/frontends/xforms/FormLog.C:31
 msgid "Build log"
 msgstr "Создать журнал сообщений"
@@ -6009,6 +1826,11 @@ msgstr "Не найден файл сообщений"
 msgid "No LaTeX log file found"
 msgstr "Предупреждений не обнаружено."
 
+#
+#: src/frontends/qt2/QMinipage.C:33 src/ext_l10n.h:1049
+msgid "Minipage"
+msgstr "Мини-страница"
+
 #: src/frontends/qt2/QParagraph.C:166 src/frontends/xforms/FormParagraph.C:336
 msgid "Paragraph layout set"
 msgstr "Установлено размещение абзаца"
@@ -6018,6 +1840,17 @@ msgstr "Установлено размещение абзаца"
 #, fuzzy
 msgid "LyX: Paragraph Settings"
 msgstr "Окружение абзаца"
+
+#
+#: src/frontends/qt2/QParagraphDialog.C:49 src/ext_l10n.h:535
+#: src/ext_l10n.h:546 src/ext_l10n.h:600 src/ext_l10n.h:767 src/ext_l10n.h:776
+#: src/ext_l10n.h:794 src/ext_l10n.h:799 src/ext_l10n.h:875 src/ext_l10n.h:894
+#: src/ext_l10n.h:905 src/ext_l10n.h:919 src/ext_l10n.h:1070
+#: src/ext_l10n.h:1119 src/ext_l10n.h:1129 src/ext_l10n.h:1131
+#: src/ext_l10n.h:1143 src/ext_l10n.h:1173 src/ext_l10n.h:1185
+#: src/ext_l10n.h:1190 src/ext_l10n.h:1200 src/ext_l10n.h:1204
+msgid "&Close"
+msgstr "Закрыть"
 
 #. FIXME: should be cleverer here
 #: src/frontends/qt2/QParagraphDialog.C:56
@@ -6038,6 +1871,12 @@ msgstr ""
 #, fuzzy
 msgid "Editor"
 msgstr "Правка"
+
+#: src/frontends/qt2/QPrint.C:35 src/frontends/xforms/form_print.C:133
+#: src/frontends/xforms/FormPrint.C:35 src/LyXAction.C:138 src/LyXAction.C:145
+#: src/ext_l10n.h:1071
+msgid "Print"
+msgstr "Напечатать"
 
 #: src/frontends/qt2/QPrintDialog.C:48
 msgid "PostScript files (*.ps)"
@@ -6064,22 +1903,72 @@ msgid "Go back"
 msgstr "Вернуться обратно"
 
 #
+#: src/frontends/qt2/QRef.C:103 src/ext_l10n.h:1107
+#, fuzzy
+msgid "&Goto"
+msgstr "Книзу"
+
+#
 #: src/frontends/qt2/QRef.C:105 src/frontends/xforms/FormRef.C:77
 #: src/frontends/xforms/FormRef.C:194 src/frontends/xforms/FormRef.C:211
 msgid "Go to reference"
 msgstr "Перейти к ссылке"
 
+#: src/frontends/qt2/QSearch.C:31 src/frontends/xforms/form_citation.C:78
+#: src/ext_l10n.h:612
+msgid "Search"
+msgstr "Поиск"
+
 #: src/frontends/qt2/QShowFile.C:23
 msgid "ShowFile"
 msgstr ""
+
+#: src/frontends/qt2/QSpellchecker.C:27 src/ext_l10n.h:1132
+msgid "Spellchecker"
+msgstr "Проверка правописания"
 
 #: src/frontends/qt2/QSpellchecker.C:114
 msgid "Spellcheck complete"
 msgstr "Проверка правописания окончена"
 
+#: src/frontends/qt2/QSpellchecker.C:114
+#: src/frontends/xforms/form_bibitem.C:35
+#: src/frontends/xforms/form_bibtex.C:35
+#: src/frontends/xforms/form_citation.C:173
+#: src/frontends/xforms/form_document.C:47 src/frontends/xforms/form_ert.C:72
+#: src/frontends/xforms/form_external.C:89
+#: src/frontends/xforms/form_filedialog.C:89
+#: src/frontends/xforms/form_float.C:74 src/frontends/xforms/form_forks.C:53
+#: src/frontends/xforms/form_include.C:42 src/frontends/xforms/form_index.C:44
+#: src/frontends/xforms/form_maths_delim.C:49
+#: src/frontends/xforms/form_minipage.C:81
+#: src/frontends/xforms/form_paragraph.C:181
+#: src/frontends/xforms/form_print.C:53 src/frontends/xforms/form_ref.C:86
+#: src/frontends/xforms/form_sendto.C:46
+#: src/frontends/xforms/form_tabular_create.C:28
+#: src/frontends/xforms/form_url.C:64 src/ext_l10n.h:538 src/ext_l10n.h:570
+#: src/ext_l10n.h:603 src/ext_l10n.h:762 src/ext_l10n.h:775 src/ext_l10n.h:900
+msgid "OK"
+msgstr "ОК"
+
+#
+#: src/frontends/qt2/QTabularCreate.C:28 src/ext_l10n.h:1152
+msgid "Insert table"
+msgstr "Вставить таблицу"
+
+#: src/frontends/qt2/QThesaurus.C:28 src/ext_l10n.h:449 src/ext_l10n.h:1175
+msgid "Thesaurus"
+msgstr "Тезаурус"
+
 #: src/frontends/qt2/QToc.C:39
 msgid "Table of contents"
 msgstr "Содержание"
+
+#
+#: src/frontends/qt2/QURL.C:25 src/ext_l10n.h:470 src/ext_l10n.h:1193
+#: src/ext_l10n.h:1196
+msgid "URL"
+msgstr ""
 
 #: src/frontends/qt2/QVCLog.C:30
 msgid "VCLog"
@@ -6174,6 +2063,10 @@ msgstr "Авторские права и версия"
 #: src/frontends/xforms/FormAboutlyx.C:63
 msgid "License and Warranty"
 msgstr "Лицензия и гарантии"
+
+#: src/frontends/xforms/FormAboutlyx.C:65 src/ext_l10n.h:533
+msgid "Credits"
+msgstr "Благодарности"
 
 #: src/frontends/xforms/form_bibitem.C:29
 msgid "Key:|#K"
@@ -6391,6 +2284,11 @@ msgstr ""
 msgid "#&B"
 msgstr ""
 
+#
+#: src/frontends/xforms/form_citation.C:73 src/lyxvc.C:122 src/ext_l10n.h:610
+msgid "Info"
+msgstr "Текст ссылки"
+
 #: src/frontends/xforms/form_citation.C:87
 #, fuzzy
 msgid "Regular Expression|#R"
@@ -6411,6 +2309,10 @@ msgstr "Предыдущий"
 #: src/frontends/xforms/form_citation.C:109
 msgid "Next|#N"
 msgstr "Следующий"
+
+#: src/frontends/xforms/form_citation.C:116 src/ext_l10n.h:607
+msgid "Citation style"
+msgstr "Представление цитат"
 
 #: src/frontends/xforms/form_citation.C:130
 msgid "Full author list|#F"
@@ -6568,6 +2470,10 @@ msgstr "Ширина:"
 msgid "Height:|#H"
 msgstr "Высота:"
 
+#: src/frontends/xforms/form_document.C:123 src/ext_l10n.h:689
+msgid "Orientation"
+msgstr "Ориентация"
+
 #: src/frontends/xforms/form_document.C:126
 msgid "Portrait|#r"
 msgstr "Портрет"
@@ -6575,6 +2481,10 @@ msgstr "Портрет"
 #: src/frontends/xforms/form_document.C:134
 msgid "Landscape|#L"
 msgstr "Ландшафт"
+
+#: src/frontends/xforms/form_document.C:143 src/ext_l10n.h:692
+msgid "Margins"
+msgstr "Поля"
 
 #: src/frontends/xforms/form_document.C:145
 msgid "Custom sizes|#M"
@@ -6621,10 +2531,18 @@ msgstr ""
 "Промежуток\n"
 "сноски:"
 
+#: src/frontends/xforms/form_document.C:254 src/ext_l10n.h:668
+msgid "Separation"
+msgstr "Разд. абзацы"
+
 #
 #: src/frontends/xforms/form_document.C:255
 msgid "Page cols"
 msgstr "Колонка"
+
+#: src/frontends/xforms/form_document.C:256 src/ext_l10n.h:662
+msgid "Sides"
+msgstr "Сторон"
 
 #: src/frontends/xforms/form_document.C:258
 msgid "Fonts:|#F"
@@ -6774,6 +2692,10 @@ msgstr "3|#3"
 msgid "4|#4"
 msgstr "4|#4"
 
+#: src/frontends/xforms/form_document.C:608 src/ext_l10n.h:749
+msgid "Bullet Depth"
+msgstr "Маркеры"
+
 #: src/frontends/xforms/form_document.C:613
 msgid "Standard|#S"
 msgstr "Обычный"
@@ -6797,6 +2719,10 @@ msgstr "Маркер 3"
 #: src/frontends/xforms/form_document.C:664
 msgid "Ding 4|#g"
 msgstr "Маркер 4"
+
+#: src/frontends/xforms/FormDocument.C:58 src/ext_l10n.h:636
+msgid "Document Layout"
+msgstr "Формат документа"
 
 #: src/frontends/xforms/FormDocument.C:110
 #, fuzzy
@@ -6836,6 +2762,28 @@ msgid ""
 msgstr ""
 " по умолчанию | крохотный | как индекс | как сноска | маленький | нормальный "
 "| большой | Большой | БОЛЬШОЙ | огромный | Огромный"
+
+#
+#: src/frontends/xforms/FormDocument.C:329 src/ext_l10n.h:671
+msgid "Paper"
+msgstr "Бумага"
+
+#: src/frontends/xforms/FormDocument.C:331
+#: src/frontends/xforms/FormPreferences.C:258 src/ext_l10n.h:578
+#: src/ext_l10n.h:586 src/ext_l10n.h:704
+msgid "Language"
+msgstr "Язык"
+
+#
+#: src/frontends/xforms/FormDocument.C:333 src/ext_l10n.h:730
+#: src/ext_l10n.h:853
+msgid "Extra"
+msgstr "Дополнительно"
+
+#
+#: src/frontends/xforms/FormDocument.C:335 src/ext_l10n.h:736
+msgid "Bullets"
+msgstr "Маркеры"
 
 #: src/frontends/xforms/FormDocument.C:338
 msgid ""
@@ -6962,6 +2910,10 @@ msgstr "Пользователь2|#2"
 #: src/frontends/xforms/FormFiledialog.C:398
 msgid "Warning! Couldn't open directory."
 msgstr "Предупреждение! Невозможно открыть каталог."
+
+#: src/frontends/xforms/form_float.C:29 src/ext_l10n.h:800
+msgid "Placement"
+msgstr "Размещение плавающих объектов:"
 
 #: src/frontends/xforms/form_float.C:33
 msgid "Top of the page|#T"
@@ -7106,6 +3058,12 @@ msgstr "Выборочно..."
 msgid "Value|#V"
 msgstr "Значение:"
 
+#: src/frontends/xforms/form_graphics.C:227
+#: src/frontends/xforms/form_graphics.C:444 src/ext_l10n.h:827
+#, no-c-format
+msgid "%"
+msgstr ""
+
 #: src/frontends/xforms/form_graphics.C:231
 #: src/frontends/xforms/form_graphics.C:491
 #, fuzzy
@@ -7216,6 +3174,12 @@ msgstr "Не показывать"
 #, fuzzy
 msgid "Get LaTeX size|#L"
 msgstr "LaTeX размер"
+
+#
+#. add the different tabfolders
+#: src/frontends/xforms/FormGraphics.C:189 src/ext_l10n.h:807
+msgid "File"
+msgstr "Файл"
 
 #
 #: src/frontends/xforms/FormGraphics.C:190
@@ -7362,6 +3326,11 @@ msgstr "Закрыть "
 msgid "Functions"
 msgstr "Функции"
 
+#: src/frontends/xforms/form_maths_panel.C:35
+#: src/frontends/xforms/FormMathsPanel.C:103 src/ext_l10n.h:507
+msgid "Greek"
+msgstr "Греческий"
+
 #: src/frontends/xforms/form_maths_panel.C:39
 #: src/frontends/xforms/form_maths_panel.C:94
 msgid "╜ ш"
@@ -7481,6 +3450,11 @@ msgstr "текст "
 #: src/frontends/xforms/FormMathsStyle.C:41
 msgid "Maths Styles & Fonts"
 msgstr ""
+
+#: src/frontends/xforms/form_minipage.C:28 src/ext_l10n.h:813
+#: src/ext_l10n.h:829
+msgid "Width"
+msgstr "Ширина"
 
 #: src/frontends/xforms/form_minipage.C:31
 #: src/frontends/xforms/form_paragraph.C:28
@@ -7704,6 +3678,10 @@ msgstr "Наибольший"
 #: src/frontends/xforms/form_preferences.C:198
 msgid "huger"
 msgstr "Огромнее"
+
+#: src/frontends/xforms/form_preferences.C:201 src/ext_l10n.h:823
+msgid "Size"
+msgstr "Размер"
 
 #
 #: src/frontends/xforms/form_preferences.C:225
@@ -8604,6 +4582,10 @@ msgstr "до "
 msgid "Order"
 msgstr "Порядок"
 
+#: src/frontends/xforms/form_print.C:139 src/ext_l10n.h:1095
+msgid "Copies"
+msgstr "Копии"
+
 #: src/frontends/xforms/form_print.C:142
 msgid "Print to"
 msgstr "Печать в"
@@ -8643,6 +4625,11 @@ msgstr "Тип ссылки"
 #: src/frontends/xforms/form_ref.C:73
 msgid "Goto reference|#G"
 msgstr "Перейти к ссылке"
+
+#: src/frontends/xforms/FormRef.C:33 src/ext_l10n.h:377 src/ext_l10n.h:1101
+#: src/ext_l10n.h:1109
+msgid "Reference"
+msgstr "Перекрёстная ссылка"
 
 #: src/frontends/xforms/FormRef.C:139
 msgid "*** No labels found in document ***"
@@ -8719,6 +4706,11 @@ msgid "Replace"
 msgstr ""
 "Заменить\n"
 "на"
+
+#: src/frontends/xforms/form_spellchecker.C:37 src/ext_l10n.h:1145
+#, fuzzy
+msgid "Suggestions"
+msgstr "Функции"
 
 #: src/frontends/xforms/form_spellchecker.C:42
 msgid "Spellchecker Options...|#O"
@@ -9007,6 +4999,10 @@ msgstr "Длинная таблица"
 msgid "Wrong Cursor position, updated window"
 msgstr "Предупреждение: неверная позиция курсора, окно обновлено"
 
+#: src/frontends/xforms/form_tabular_create.C:45 src/ext_l10n.h:665
+msgid "Columns"
+msgstr "Колонок"
+
 #: src/frontends/xforms/FormTabularCreate.C:29
 msgid "Insert Tabular"
 msgstr "Вставить таблицу"
@@ -9156,6 +5152,12 @@ msgstr "ОШИБКА! Невозможно распечатать!"
 msgid "Check 'range of pages'!"
 msgstr "Проверьте 'диапазон страниц'!"
 
+#
+#: src/frontends/xforms/Menubar_pimpl.C:279
+#: src/frontends/xforms/Menubar_pimpl.C:352 src/ext_l10n.h:331
+msgid "More"
+msgstr "игнорировать"
+
 #: src/frontends/xforms/Menubar_pimpl.C:375
 #, c-format
 msgid "No Table of contents%i"
@@ -9272,7 +5274,7 @@ msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr "Не разрешено изменять тип шрифта внутри блока режима LaTeX!"
 
 #: src/insets/insetert.C:251 src/insets/insettabular.C:2051
-#: src/insets/insettext.C:1392
+#: src/insets/insettext.C:1395
 msgid "Sorry."
 msgstr "Извините."
 
@@ -9453,6 +5455,10 @@ msgstr "Открытое примечание"
 msgid "Parent:"
 msgstr "Родительский:"
 
+#: src/insets/insetref.C:110 src/ext_l10n.h:417
+msgid "Standard"
+msgstr "Обычный"
+
 #
 #: src/insets/insetref.C:110
 msgid "Ref: "
@@ -9507,16 +5513,16 @@ msgstr "Многоколоночность может быть только горизонтальной."
 msgid "Opened Text Inset"
 msgstr "Открытый текст"
 
-#: src/insets/insettext.C:1390
+#: src/insets/insettext.C:1393
 msgid "Impossible operation"
 msgstr "Недопустимая операция"
 
 #
-#: src/insets/insettext.C:1391
+#: src/insets/insettext.C:1394
 msgid "Cannot include more than one paragraph!"
 msgstr "Ячейка таблицы не может включать более одного абзаца!"
 
-#: src/insets/insettext.C:1637
+#: src/insets/insettext.C:1642
 #, fuzzy
 msgid "Error : LatexType Command not allowed here.\n"
 msgstr "Ошибка : Неверная глубина команды LatexType.\n"
@@ -9545,6 +5551,10 @@ msgstr "Ссылка на гипертекстовый файл (html): "
 #: src/kbsequence.C:166
 msgid "   options: "
 msgstr "   параметры: "
+
+#: src/language.C:40 src/ext_l10n.h:498
+msgid "English"
+msgstr "Английский"
 
 #: src/LaTeX.C:191 src/LaTeX.C:276 src/LaTeX.C:332
 msgid "LaTeX run number"
@@ -11410,6 +7420,20 @@ msgstr "Простой текст целыми абзацами"
 msgid " (wide)"
 msgstr ""
 
+#: src/MenuBackend.C:511 src/ext_l10n.h:12 src/ext_l10n.h:17
+msgid "New...|N"
+msgstr "Создать..."
+
+#
+#: src/MenuBackend.C:512 src/ext_l10n.h:14 src/ext_l10n.h:19
+msgid "Open...|O"
+msgstr "Открыть..."
+
+#
+#: src/MenuBackend.C:513 src/ext_l10n.h:15 src/ext_l10n.h:25
+msgid "Import|I"
+msgstr "Импортировать из..."
+
 #: src/MenuBackend.C:514
 msgid "Quit|Q"
 msgstr "Выйти"
@@ -11427,6 +7451,22 @@ msgstr ""
 #: src/MenuBackend.C:532
 msgid "Emphasize"
 msgstr "Акцент "
+
+#
+#: src/MenuBackend.C:541 src/MenuBackend.C:548 src/ext_l10n.h:1
+#: src/ext_l10n.h:4
+msgid "File|F"
+msgstr "Файл"
+
+#
+#: src/MenuBackend.C:542 src/ext_l10n.h:2 src/ext_l10n.h:5
+msgid "Edit|E"
+msgstr "Правка"
+
+#
+#: src/MenuBackend.C:544 src/ext_l10n.h:10
+msgid "Documents|D"
+msgstr "Документы"
 
 #: src/minibuffer.C:134
 msgid "[End of history]"
@@ -11540,6 +7580,3965 @@ msgstr "Разрыв страницы (снизу)"
 #: src/text.C:3558
 msgid "Space below"
 msgstr "Пространство снизу"
+
+#
+#: src/ext_l10n.h:3 src/ext_l10n.h:11
+msgid "Help|H"
+msgstr "Помощь"
+
+#
+#: src/ext_l10n.h:6
+msgid "Insert|I"
+msgstr "Вставить"
+
+#
+#: src/ext_l10n.h:7
+msgid "Layout|L"
+msgstr "Формат"
+
+#
+#: src/ext_l10n.h:8
+msgid "View|V"
+msgstr "Просмотреть"
+
+#
+#: src/ext_l10n.h:9
+msgid "Navigate|N"
+msgstr "Перейти"
+
+#
+#: src/ext_l10n.h:13 src/ext_l10n.h:18
+msgid "New from Template...|T"
+msgstr "Создать из шаблона..."
+
+#
+#: src/ext_l10n.h:16 src/ext_l10n.h:29
+msgid "Exit|x"
+msgstr "Выйти"
+
+#
+#: src/ext_l10n.h:20
+msgid "Close|C"
+msgstr "Закрыть"
+
+#
+#: src/ext_l10n.h:21
+msgid "Save|S"
+msgstr "Сохранить"
+
+#
+#: src/ext_l10n.h:22
+msgid "Save As...|A"
+msgstr "Сохранить как"
+
+#
+#: src/ext_l10n.h:23
+msgid "Revert to Saved|R"
+msgstr "Вернуться к сохранённому|В"
+
+#
+#: src/ext_l10n.h:24
+msgid "Version Control|V"
+msgstr "Контроль версий"
+
+#
+#: src/ext_l10n.h:26
+msgid "Export|E"
+msgstr "Экспортировать в..."
+
+#
+#: src/ext_l10n.h:27
+msgid "Print...|P"
+msgstr "Напечатать..."
+
+#
+#: src/ext_l10n.h:28
+msgid "Fax...|F"
+msgstr "Отправить по факсу..."
+
+#
+#: src/ext_l10n.h:30
+msgid "Register|R"
+msgstr "Зарегистрировать"
+
+#
+#: src/ext_l10n.h:31
+msgid "Check In Changes|I"
+msgstr "Влить изменения"
+
+#
+#: src/ext_l10n.h:32
+msgid "Check Out for Edit|O"
+msgstr "Захватить на редакцию"
+
+#
+#: src/ext_l10n.h:33
+msgid "Revert to Last Version|L"
+msgstr "Откатиться к предыдущей версии"
+
+#
+#: src/ext_l10n.h:34
+msgid "Undo Last Check In|U"
+msgstr "Отменить последнюю заливку"
+
+#
+#: src/ext_l10n.h:35
+msgid "Show History|H"
+msgstr "Показать историю"
+
+#
+#: src/ext_l10n.h:36
+msgid "Custom...|C"
+msgstr "Выборочно..."
+
+#: src/ext_l10n.h:37 src/ext_l10n.h:54
+msgid "Preferences...|P"
+msgstr "Параметры..."
+
+#
+#: src/ext_l10n.h:38 src/ext_l10n.h:55
+msgid "Reconfigure|R"
+msgstr "Переконфигурировать"
+
+#
+#: src/ext_l10n.h:39
+msgid "Undo|U"
+msgstr "Отменить последнее действие"
+
+#
+#: src/ext_l10n.h:40
+msgid "Redo|d"
+msgstr "Повторить отменённое действие"
+
+#
+#: src/ext_l10n.h:41
+msgid "Cut|C"
+msgstr "Вырезать"
+
+#
+#: src/ext_l10n.h:42
+msgid "Copy|o"
+msgstr "Копировать"
+
+#
+#: src/ext_l10n.h:43
+msgid "Paste|a"
+msgstr "Вставить"
+
+#: src/ext_l10n.h:44
+msgid "Paste External Selection|x"
+msgstr "Вставить извне"
+
+#
+#: src/ext_l10n.h:45
+msgid "Find & Replace...|F"
+msgstr "Найти и заменить"
+
+#
+#: src/ext_l10n.h:46
+msgid "Tabular|T"
+msgstr "Формат таблицы"
+
+#: src/ext_l10n.h:47
+msgid "Math|M"
+msgstr "Математика"
+
+#: src/ext_l10n.h:48
+msgid "Read Only"
+msgstr "Только для чтения"
+
+#
+#: src/ext_l10n.h:49
+msgid "Spellchecker...|S"
+msgstr "Проверка правописания"
+
+#: src/ext_l10n.h:50
+#, fuzzy
+msgid "Thesaurus..."
+msgstr "Тезаурус"
+
+#
+#: src/ext_l10n.h:51
+msgid "Check TeX|h"
+msgstr "Проверить LaTeX"
+
+#
+#: src/ext_l10n.h:52
+msgid "Remove All Error Boxes|E"
+msgstr "Удалить все сообщения об ошибках"
+
+#
+#: src/ext_l10n.h:53
+#, fuzzy
+msgid "Open/Close float|l"
+msgstr "Раскрыть/Закрыть..."
+
+#
+#: src/ext_l10n.h:56
+msgid "as Lines|L"
+msgstr "вставлять отдельными строками"
+
+#
+#: src/ext_l10n.h:57
+msgid "as Paragraphs|P"
+msgstr "вставлять абзацами"
+
+#
+#: src/ext_l10n.h:58
+msgid "Multicolumn|M"
+msgstr "Многоколоночная"
+
+#
+#: src/ext_l10n.h:59
+msgid "Line Top|T"
+msgstr "Линия сверху"
+
+#
+#: src/ext_l10n.h:60
+msgid "Line Bottom|B"
+msgstr "Линия снизу"
+
+#
+#: src/ext_l10n.h:61
+msgid "Line Left|L"
+msgstr "Линия слева"
+
+#
+#: src/ext_l10n.h:62
+msgid "Line Right|R"
+msgstr "Линия справа"
+
+#
+#: src/ext_l10n.h:63
+msgid "Align Left|e"
+msgstr "Прижать влево"
+
+#
+#: src/ext_l10n.h:64 src/ext_l10n.h:88
+msgid "Align Center|C"
+msgstr "По центру горизонтально"
+
+#
+#: src/ext_l10n.h:65
+msgid "Align Right|i"
+msgstr "Прижать вправо"
+
+#: src/ext_l10n.h:66
+msgid "V.Align Top|o"
+msgstr "Прижать кверху"
+
+#
+#: src/ext_l10n.h:67
+msgid "V.Align Center|n"
+msgstr "По центру вертикально"
+
+#
+#: src/ext_l10n.h:68
+msgid "V.Align Bottom|V"
+msgstr "Прижать книзу"
+
+#
+#: src/ext_l10n.h:69
+msgid "Add Row|A"
+msgstr "Добавить строку (ниже текущей)"
+
+#
+#: src/ext_l10n.h:70
+msgid "Delete Row|w"
+msgstr "Удалить строку"
+
+#
+#: src/ext_l10n.h:71
+msgid "Add Column|u"
+msgstr "Добавить колонку (правее текущей)"
+
+#
+#: src/ext_l10n.h:72
+msgid "Delete Column|D"
+msgstr "Удалить колонку"
+
+#: src/ext_l10n.h:73
+msgid "Make eqnarray|e"
+msgstr ""
+
+#: src/ext_l10n.h:74
+msgid "Make multline|m"
+msgstr ""
+
+#: src/ext_l10n.h:75
+msgid "Make align 1 column|1"
+msgstr ""
+
+#: src/ext_l10n.h:76
+msgid "Make align 2 columns|2"
+msgstr ""
+
+#: src/ext_l10n.h:77
+msgid "Make align 3 columns|3"
+msgstr ""
+
+#: src/ext_l10n.h:78
+msgid "Make alignat 2 columns|2"
+msgstr ""
+
+#: src/ext_l10n.h:79
+msgid "Make alignat 3 columns|3"
+msgstr ""
+
+#: src/ext_l10n.h:80
+msgid "Toggle numbering|n"
+msgstr "Переключить нумерацию"
+
+#: src/ext_l10n.h:81
+msgid "Toggle numbering of line|u"
+msgstr "Переключить нумерацию строк"
+
+#: src/ext_l10n.h:82
+msgid "Toggle limits|l"
+msgstr "Переключить расположение пределов"
+
+#
+#: src/ext_l10n.h:83
+msgid "Inline formula|I"
+msgstr "Математическую формулу в строку"
+
+#
+#: src/ext_l10n.h:84
+msgid "Displayed formula|D"
+msgstr "Математическую формулу на отдельной строке"
+
+#: src/ext_l10n.h:85
+#, fuzzy
+msgid "Eqnarray environment|q"
+msgstr "Установлен тип окружения абзаца"
+
+#
+#: src/ext_l10n.h:86
+#, fuzzy
+msgid "Align environment|A"
+msgstr "Выравнивание"
+
+#
+#: src/ext_l10n.h:87
+msgid "Align Left|f"
+msgstr "Прижать влево"
+
+#
+#: src/ext_l10n.h:89
+msgid "Align Right|R"
+msgstr "Прижать вправо"
+
+#: src/ext_l10n.h:90
+msgid "V.Align Top|T"
+msgstr "Прижать кверху"
+
+#
+#: src/ext_l10n.h:91
+msgid "V.Align Center|e"
+msgstr "По центру вертикально"
+
+#
+#: src/ext_l10n.h:92
+msgid "V.Align Bottom|B"
+msgstr "Прижать книзу"
+
+#
+#: src/ext_l10n.h:93
+msgid "Add Row"
+msgstr "Добавить строку (ниже текущей)"
+
+#
+#: src/ext_l10n.h:94
+msgid "Delete Row"
+msgstr "Удалить строку"
+
+#
+#: src/ext_l10n.h:95
+msgid "Add Column"
+msgstr "Добавить колонку (правее текущей)"
+
+#
+#: src/ext_l10n.h:96
+msgid "Delete Column"
+msgstr "Удалить колонку"
+
+#: src/ext_l10n.h:97
+msgid "Math|h"
+msgstr "Математика"
+
+#
+#: src/ext_l10n.h:98
+msgid "Special Character|S"
+msgstr "Специальный символ..."
+
+#
+#: src/ext_l10n.h:99
+msgid "Citation Reference...|C"
+msgstr "Ссылку на источник цитирования..."
+
+#
+#: src/ext_l10n.h:100
+msgid "Cross Reference...|R"
+msgstr "Перекрёстную ссылку..."
+
+#
+#: src/ext_l10n.h:101
+msgid "Label...|L"
+msgstr "Метку..."
+
+#
+#: src/ext_l10n.h:102
+msgid "Footnote|F"
+msgstr "Сноску"
+
+#
+#: src/ext_l10n.h:103
+msgid "Marginal Note|M"
+msgstr "Примечание на полях"
+
+#
+#: src/ext_l10n.h:104
+msgid "Index Entry...|I"
+msgstr "Вхождение слова в предметный указатель..."
+
+#: src/ext_l10n.h:105
+msgid "Index Entry of Preceding Word|W"
+msgstr "Вхождение предыдущего слова в указатель..."
+
+#
+#: src/ext_l10n.h:106
+msgid "URL...|U"
+msgstr "URL..."
+
+#
+#: src/ext_l10n.h:107 src/ext_l10n.h:162
+msgid "Note|N"
+msgstr "Непечатаемую заметку"
+
+#: src/ext_l10n.h:108
+msgid "Lists & TOC|O"
+msgstr "Списки и содержания..."
+
+#: src/ext_l10n.h:109
+msgid "TeX|T"
+msgstr "Команду LaTeX"
+
+#
+#: src/ext_l10n.h:110
+msgid "Minipage|p"
+msgstr "Мини-страницу"
+
+#: src/ext_l10n.h:111
+msgid "Graphics...|G"
+msgstr "Рисунок..."
+
+#
+#: src/ext_l10n.h:112
+msgid "Tabular Material...|b"
+msgstr "Таблицу..."
+
+#
+#: src/ext_l10n.h:113
+msgid "Floats|a"
+msgstr "Плавающий объект"
+
+#
+#: src/ext_l10n.h:114
+msgid "Include File...|d"
+msgstr "Включить файл"
+
+#
+#: src/ext_l10n.h:115
+msgid "Insert File|e"
+msgstr "Файл"
+
+#: src/ext_l10n.h:116
+msgid "External Material...|x"
+msgstr "Внешний объект"
+
+#
+#: src/ext_l10n.h:117
+msgid "Superscript|S"
+msgstr "Верхний индекс"
+
+#
+#: src/ext_l10n.h:118
+msgid "Subscript|u"
+msgstr "Нижний индекс"
+
+#: src/ext_l10n.h:119
+msgid "HFill|H"
+msgstr "Горизонтальный клей"
+
+#
+#: src/ext_l10n.h:120
+msgid "Hyphenation Point|P"
+msgstr "Мягкий перенос"
+
+#
+#: src/ext_l10n.h:121
+msgid "Ligature break|k"
+msgstr "Разрыв лигатуры"
+
+#: src/ext_l10n.h:122
+msgid "Protected Blank|B"
+msgstr "Неразрывный пробел"
+
+#
+#: src/ext_l10n.h:123
+msgid "Linebreak|L"
+msgstr "Разрыв строки"
+
+#: src/ext_l10n.h:124
+msgid "Ellipsis|i"
+msgstr "Многоточие"
+
+#
+#: src/ext_l10n.h:125
+msgid "End of Sentence|E"
+msgstr "Точку конца предложения"
+
+#: src/ext_l10n.h:126
+msgid "Ordinary Quote|Q"
+msgstr "Прямую кавычку"
+
+#
+#: src/ext_l10n.h:127
+msgid "Menu Separator|M"
+msgstr "Разделитель пунктов меню"
+
+#
+#: src/ext_l10n.h:128
+#, fuzzy
+msgid "Inline Formula|I"
+msgstr "Математическую формулу в строку"
+
+#
+#: src/ext_l10n.h:129
+msgid "Display Formula|D"
+msgstr "Математическую формулу на отдельной строке"
+
+#: src/ext_l10n.h:130
+msgid "Eqnarray environment|E"
+msgstr "Eqnarray окружение"
+
+#
+#: src/ext_l10n.h:131
+msgid "AMS align environment|A"
+msgstr "AMS align окружение"
+
+#
+#: src/ext_l10n.h:132
+msgid "AMS alignat environment|t"
+msgstr "AMS alignat окружение"
+
+#
+#: src/ext_l10n.h:133
+msgid "AMS xalignat environment|x"
+msgstr "AMS xalignat окружение"
+
+#
+#: src/ext_l10n.h:134
+msgid "AMS xxalignat environment"
+msgstr "AMS xxalignat окружение"
+
+#: src/ext_l10n.h:135
+msgid "Array environment|y"
+msgstr "Array окружение"
+
+#: src/ext_l10n.h:136
+msgid "Cases environment|C"
+msgstr "Cases окружение"
+
+#
+#: src/ext_l10n.h:137
+msgid "Math Panel...|l"
+msgstr "Математическая панель"
+
+#
+#: src/ext_l10n.h:138
+msgid "Table of Contents|C"
+msgstr "Содержание"
+
+#
+#: src/ext_l10n.h:139
+msgid "Index List|I"
+msgstr "Предметный указатель"
+
+#
+#: src/ext_l10n.h:140
+msgid "BibTeX Reference...|B"
+msgstr "Ссылки, сгенерированные через BibTeX"
+
+#
+#: src/ext_l10n.h:141
+msgid "LyX Document...|X"
+msgstr "Документ LyX..."
+
+#
+#: src/ext_l10n.h:142
+msgid "Ascii as Lines...|L"
+msgstr "Простой текст отдельными строками"
+
+#
+#: src/ext_l10n.h:143
+msgid "Ascii as Paragraphs...|P"
+msgstr "Простой текст целыми абзацами"
+
+#
+#: src/ext_l10n.h:144
+msgid "Character...|C"
+msgstr "Символ..."
+
+#: src/ext_l10n.h:145
+msgid "Paragraph...|P"
+msgstr "Абзац..."
+
+#
+#: src/ext_l10n.h:146
+msgid "Document...|D"
+msgstr "Документ..."
+
+#: src/ext_l10n.h:147
+msgid "Tabular...|T"
+msgstr "Таблица..."
+
+#
+#: src/ext_l10n.h:148
+msgid "Emphasize Style|E"
+msgstr "Выделительный шрифт "
+
+#: src/ext_l10n.h:149
+msgid "Noun Style|N"
+msgstr "Шрифт имён собственных"
+
+#: src/ext_l10n.h:150
+msgid "Bold Style|B"
+msgstr "Полужирный шрифт"
+
+#: src/ext_l10n.h:151
+msgid "TeX Style|X"
+msgstr "Режим команд LaTeX"
+
+#
+#: src/ext_l10n.h:152
+msgid "Change Environment Depth|v"
+msgstr "Изменить уровень абзаца"
+
+#
+#: src/ext_l10n.h:153
+#, fuzzy
+msgid "Preamble...|r"
+msgstr "Преамбула LaTeX"
+
+#: src/ext_l10n.h:154
+msgid "Start Appendix here|A"
+msgstr "Начало приложения"
+
+#
+#: src/ext_l10n.h:155
+msgid "Build Program|B"
+msgstr "Создать программу"
+
+#
+#: src/ext_l10n.h:156
+msgid "Update|U"
+msgstr "Обновить"
+
+#
+#: src/ext_l10n.h:157
+msgid "LaTeX Logfile|L"
+msgstr "Журнал сообщений LaTeX"
+
+#
+#: src/ext_l10n.h:158
+msgid "Table of Contents|T"
+msgstr "Содержание"
+
+#: src/ext_l10n.h:159
+msgid "Child processes|C"
+msgstr ""
+
+#
+#: src/ext_l10n.h:160
+#, fuzzy
+msgid "TeX Information|X"
+msgstr "Общая информация"
+
+#
+#: src/ext_l10n.h:161
+msgid "Error|E"
+msgstr "К следующей ошибке"
+
+#
+#: src/ext_l10n.h:163
+msgid "Refs|R"
+msgstr "К следующей ссылке"
+
+#: src/ext_l10n.h:164
+msgid "Bookmarks|B"
+msgstr "Закладки"
+
+#: src/ext_l10n.h:165
+msgid "Save Bookmark 1|S"
+msgstr "Заложить закладку 1"
+
+#: src/ext_l10n.h:166
+msgid "Save Bookmark 2"
+msgstr "Заложить закладку 2"
+
+#: src/ext_l10n.h:167
+msgid "Save Bookmark 3"
+msgstr "Заложить закладку 3"
+
+#: src/ext_l10n.h:168
+msgid "Goto Bookmark 1|1"
+msgstr "Перейти к Закладке 1"
+
+#: src/ext_l10n.h:169
+msgid "Goto Bookmark 2|2"
+msgstr "Перейти к Закладке 2"
+
+#: src/ext_l10n.h:170
+msgid "Goto Bookmark 3|3"
+msgstr "Перейти к Закладке 3"
+
+#: src/ext_l10n.h:171
+msgid "Tooltips|o"
+msgstr ""
+
+#: src/ext_l10n.h:172
+msgid "Introduction|I"
+msgstr "Введение"
+
+#: src/ext_l10n.h:173
+msgid "Tutorial|T"
+msgstr "Самоучитель"
+
+#
+#: src/ext_l10n.h:174
+msgid "User's Guide|U"
+msgstr "Руководство пользователя"
+
+#: src/ext_l10n.h:175
+msgid "Extended Features|E"
+msgstr "Дополнительные возможности"
+
+#
+#: src/ext_l10n.h:176
+msgid "Customization|C"
+msgstr "Руководство по настройке"
+
+#: src/ext_l10n.h:177
+msgid "Reference Manual|R"
+msgstr "Справочное руководство"
+
+#: src/ext_l10n.h:178
+msgid "FAQ|F"
+msgstr "Часто задаваемые вопросы"
+
+#
+#: src/ext_l10n.h:179
+msgid "Table of Contents|a"
+msgstr "Содержание документации"
+
+#: src/ext_l10n.h:180
+msgid "LaTeX Configuration|L"
+msgstr "Текущая конфигурация LaTeX"
+
+#: src/ext_l10n.h:181
+msgid "About LyX|X"
+msgstr "О LyX"
+
+#: src/ext_l10n.h:183
+msgid "Accepted"
+msgstr ""
+
+#: src/ext_l10n.h:184
+msgid "Acknowledgement"
+msgstr ""
+
+#: src/ext_l10n.h:185
+msgid "Acknowledgement*"
+msgstr ""
+
+#: src/ext_l10n.h:186
+msgid "Acknowledgements"
+msgstr ""
+
+#: src/ext_l10n.h:187
+msgid "Acknowledgments"
+msgstr ""
+
+#: src/ext_l10n.h:188
+msgid "ACT"
+msgstr ""
+
+#: src/ext_l10n.h:189
+msgid "Addchap"
+msgstr ""
+
+#: src/ext_l10n.h:190
+msgid "Addchap*"
+msgstr ""
+
+#
+#: src/ext_l10n.h:191
+msgid "Addition"
+msgstr ""
+
+#: src/ext_l10n.h:192
+msgid "Address"
+msgstr ""
+
+#: src/ext_l10n.h:193
+msgid "AddressForOffprints"
+msgstr ""
+
+#: src/ext_l10n.h:194
+msgid "Addsec"
+msgstr ""
+
+#: src/ext_l10n.h:195
+msgid "Addsec*"
+msgstr ""
+
+#: src/ext_l10n.h:196
+msgid "Adresse"
+msgstr ""
+
+#: src/ext_l10n.h:197
+msgid "Affil"
+msgstr ""
+
+#
+#: src/ext_l10n.h:198
+msgid "Affiliation"
+msgstr ""
+
+#: src/ext_l10n.h:200
+msgid "AMS"
+msgstr ""
+
+#: src/ext_l10n.h:201
+msgid "And"
+msgstr ""
+
+#
+#: src/ext_l10n.h:202
+msgid "Anlagen"
+msgstr ""
+
+#
+#: src/ext_l10n.h:203
+msgid "Anrede"
+msgstr ""
+
+#
+#: src/ext_l10n.h:204
+msgid "Appendices"
+msgstr ""
+
+#
+#: src/ext_l10n.h:205
+msgid "Appendix"
+msgstr ""
+
+#: src/ext_l10n.h:206
+#, fuzzy
+msgid "Arrow"
+msgstr "Ошибка"
+
+#: src/ext_l10n.h:207
+msgid "AT_RISE:"
+msgstr ""
+
+#: src/ext_l10n.h:208
+msgid "Author"
+msgstr ""
+
+#: src/ext_l10n.h:209
+msgid "Author_Email"
+msgstr ""
+
+#: src/ext_l10n.h:210
+msgid "Authorgroup"
+msgstr ""
+
+#: src/ext_l10n.h:211
+#, fuzzy
+msgid "Authorinfo"
+msgstr "Австрийский"
+
+#: src/ext_l10n.h:212
+msgid "Author_Running"
+msgstr ""
+
+#: src/ext_l10n.h:213
+msgid "Author_URL"
+msgstr ""
+
+#: src/ext_l10n.h:214
+msgid "Axiom"
+msgstr ""
+
+#: src/ext_l10n.h:215
+msgid "Backaddress"
+msgstr ""
+
+#: src/ext_l10n.h:216
+msgid "Bank"
+msgstr ""
+
+#: src/ext_l10n.h:217
+msgid "BankAccount"
+msgstr ""
+
+#: src/ext_l10n.h:218
+msgid "BankCode"
+msgstr ""
+
+#: src/ext_l10n.h:219
+msgid "Betreff"
+msgstr ""
+
+#
+#: src/ext_l10n.h:220
+msgid "Bibliography"
+msgstr ""
+
+#: src/ext_l10n.h:221
+msgid "Biography"
+msgstr "Элемент биографии"
+
+#: src/ext_l10n.h:222
+msgid "BLZ"
+msgstr ""
+
+#: src/ext_l10n.h:223
+#, fuzzy
+msgid "BoardCentered"
+msgstr "Линия"
+
+#: src/ext_l10n.h:224
+msgid "Brieftext"
+msgstr ""
+
+#: src/ext_l10n.h:225
+msgid "Caption"
+msgstr ""
+
+#: src/ext_l10n.h:226
+msgid "Case"
+msgstr ""
+
+#: src/ext_l10n.h:228
+msgid "CC"
+msgstr ""
+
+#: src/ext_l10n.h:229
+msgid "CenteredCaption"
+msgstr ""
+
+#: src/ext_l10n.h:230
+msgid "Chapter"
+msgstr ""
+
+#: src/ext_l10n.h:231
+msgid "Chapter*"
+msgstr ""
+
+#: src/ext_l10n.h:232
+msgid "Chapter_Exercises"
+msgstr ""
+
+#: src/ext_l10n.h:233
+msgid "ChessBoard"
+msgstr ""
+
+#: src/ext_l10n.h:234
+msgid "Citta"
+msgstr ""
+
+#: src/ext_l10n.h:235
+msgid "Claim"
+msgstr ""
+
+#: src/ext_l10n.h:236
+msgid "Claim*"
+msgstr ""
+
+#: src/ext_l10n.h:237
+msgid "Closing"
+msgstr ""
+
+#: src/ext_l10n.h:238
+msgid "Code"
+msgstr ""
+
+#: src/ext_l10n.h:239
+msgid "Comment"
+msgstr ""
+
+#: src/ext_l10n.h:240
+msgid "Conclusion"
+msgstr ""
+
+#: src/ext_l10n.h:241
+msgid "Conclusion*"
+msgstr ""
+
+#: src/ext_l10n.h:242
+msgid "Condition"
+msgstr ""
+
+#: src/ext_l10n.h:243
+msgid "Conjecture"
+msgstr ""
+
+#: src/ext_l10n.h:244
+msgid "Conjecture*"
+msgstr ""
+
+#: src/ext_l10n.h:245
+msgid "CopNum"
+msgstr ""
+
+#: src/ext_l10n.h:246 src/ext_l10n.h:534
+msgid "Copyright"
+msgstr ""
+
+#: src/ext_l10n.h:247
+msgid "Corollary"
+msgstr ""
+
+#: src/ext_l10n.h:248
+msgid "Corollary*"
+msgstr ""
+
+#: src/ext_l10n.h:249
+msgid "Criterion"
+msgstr ""
+
+#: src/ext_l10n.h:250
+msgid "CrossList"
+msgstr ""
+
+#: src/ext_l10n.h:251
+msgid "Current_Address"
+msgstr ""
+
+#: src/ext_l10n.h:252
+msgid "CURTAIN"
+msgstr ""
+
+#: src/ext_l10n.h:253
+msgid "Customer"
+msgstr ""
+
+#: src/ext_l10n.h:254
+msgid "Data"
+msgstr ""
+
+#: src/ext_l10n.h:255
+msgid "Date"
+msgstr ""
+
+#: src/ext_l10n.h:256
+msgid "Datum"
+msgstr ""
+
+#: src/ext_l10n.h:257
+msgid "Dedication"
+msgstr ""
+
+#: src/ext_l10n.h:258
+msgid "Dedicatory"
+msgstr ""
+
+#: src/ext_l10n.h:259
+msgid "Definition"
+msgstr ""
+
+#: src/ext_l10n.h:260
+msgid "Definition*"
+msgstr ""
+
+#: src/ext_l10n.h:261
+msgid "Description"
+msgstr ""
+
+#: src/ext_l10n.h:262
+msgid "Dialogue"
+msgstr ""
+
+#: src/ext_l10n.h:263
+msgid "Email"
+msgstr ""
+
+#: src/ext_l10n.h:264
+msgid "EMail"
+msgstr ""
+
+#: src/ext_l10n.h:265
+msgid "encl"
+msgstr ""
+
+#: src/ext_l10n.h:266
+msgid "Encl."
+msgstr ""
+
+#: src/ext_l10n.h:267
+msgid "Encl"
+msgstr ""
+
+#: src/ext_l10n.h:268
+msgid "End_All_Slides"
+msgstr ""
+
+#: src/ext_l10n.h:269
+msgid "Enumerate"
+msgstr ""
+
+#: src/ext_l10n.h:270
+msgid "Example"
+msgstr "Пример"
+
+#: src/ext_l10n.h:271
+msgid "Example*"
+msgstr "Пример*"
+
+#: src/ext_l10n.h:272
+msgid "Exercise"
+msgstr ""
+
+#: src/ext_l10n.h:273
+msgid "EXT."
+msgstr ""
+
+#: src/ext_l10n.h:274
+msgid "Extratitle"
+msgstr ""
+
+#: src/ext_l10n.h:275
+msgid "Fact"
+msgstr ""
+
+#: src/ext_l10n.h:276
+msgid "Fact*"
+msgstr ""
+
+#: src/ext_l10n.h:277
+msgid "FADE_IN:"
+msgstr ""
+
+#: src/ext_l10n.h:278
+msgid "FADE_OUT:"
+msgstr ""
+
+#: src/ext_l10n.h:279
+msgid "FADE_OUT"
+msgstr ""
+
+#: src/ext_l10n.h:280
+msgid "FigCaption"
+msgstr ""
+
+#: src/ext_l10n.h:281
+msgid "FirstAuthor"
+msgstr ""
+
+#: src/ext_l10n.h:282
+msgid "FirstName"
+msgstr ""
+
+#: src/ext_l10n.h:283
+msgid "FitBitmap"
+msgstr ""
+
+#: src/ext_l10n.h:284
+msgid "FitFigure"
+msgstr ""
+
+#: src/ext_l10n.h:285
+msgid "Foilhead"
+msgstr ""
+
+#: src/ext_l10n.h:286
+msgid "Footernote"
+msgstr ""
+
+#: src/ext_l10n.h:287
+msgid "FourAffiliations"
+msgstr ""
+
+#: src/ext_l10n.h:288
+msgid "FourAuthors"
+msgstr ""
+
+#: src/ext_l10n.h:289
+msgid "FrontMatter"
+msgstr ""
+
+#: src/ext_l10n.h:290
+#, fuzzy
+msgid "General"
+msgstr "Немецкий"
+
+#: src/ext_l10n.h:291
+msgid "Gruss"
+msgstr ""
+
+#: src/ext_l10n.h:292
+msgid "Headnote"
+msgstr ""
+
+#: src/ext_l10n.h:293
+msgid "HideMoves"
+msgstr ""
+
+#: src/ext_l10n.h:294
+#, fuzzy
+msgid "HighLight"
+msgstr "Высота"
+
+#: src/ext_l10n.h:295
+msgid "HTTP"
+msgstr ""
+
+#: src/ext_l10n.h:296
+msgid "IhrSchreiben"
+msgstr ""
+
+#: src/ext_l10n.h:297
+msgid "IhrZeichen"
+msgstr ""
+
+#: src/ext_l10n.h:298
+msgid "Institute"
+msgstr ""
+
+#: src/ext_l10n.h:299
+msgid "Institution"
+msgstr ""
+
+#: src/ext_l10n.h:300
+msgid "INT."
+msgstr ""
+
+#: src/ext_l10n.h:301
+msgid "INTERCUT"
+msgstr ""
+
+#: src/ext_l10n.h:302
+msgid "InvisibleText"
+msgstr ""
+
+#: src/ext_l10n.h:303
+msgid "Invoice"
+msgstr ""
+
+#: src/ext_l10n.h:304
+msgid "Itemize"
+msgstr ""
+
+#: src/ext_l10n.h:305
+msgid "Journal"
+msgstr ""
+
+#
+#: src/ext_l10n.h:306
+msgid "Keyword"
+msgstr ""
+"Ключевое\n"
+"слово"
+
+#: src/ext_l10n.h:307
+msgid "Keywords"
+msgstr ""
+"Ключевое\n"
+"слово"
+
+#: src/ext_l10n.h:308
+msgid "KnightMove"
+msgstr ""
+
+#: src/ext_l10n.h:309
+msgid "Konto"
+msgstr ""
+
+#: src/ext_l10n.h:310
+msgid "Labeling"
+msgstr ""
+
+#: src/ext_l10n.h:311
+msgid "Land"
+msgstr ""
+
+#: src/ext_l10n.h:312
+msgid "LandscapeSlide"
+msgstr ""
+
+#: src/ext_l10n.h:313
+msgid "LaTeX"
+msgstr "LaTeX"
+
+#: src/ext_l10n.h:314
+msgid "LaTeX_Title"
+msgstr ""
+
+#
+#: src/ext_l10n.h:315
+msgid "Left_Header"
+msgstr ""
+
+#: src/ext_l10n.h:316
+msgid "Lemma"
+msgstr ""
+
+#: src/ext_l10n.h:317
+msgid "Lemma*"
+msgstr ""
+
+#: src/ext_l10n.h:318
+msgid "Letter"
+msgstr ""
+
+#: src/ext_l10n.h:319
+msgid "List"
+msgstr ""
+
+#: src/ext_l10n.h:320
+msgid "ListOfSlides"
+msgstr ""
+
+#: src/ext_l10n.h:321
+msgid "Literal"
+msgstr ""
+
+#: src/ext_l10n.h:322
+msgid "Location"
+msgstr ""
+
+#: src/ext_l10n.h:323
+msgid "Lowertitleback"
+msgstr ""
+
+#: src/ext_l10n.h:324
+msgid "LyX-Code"
+msgstr ""
+
+#: src/ext_l10n.h:325
+msgid "Mail"
+msgstr ""
+
+#
+#: src/ext_l10n.h:326
+#, fuzzy
+msgid "Mainline"
+msgstr "Мини-страницы"
+
+#: src/ext_l10n.h:327
+msgid "MarkBoth"
+msgstr ""
+
+#: src/ext_l10n.h:328
+msgid "MathLetters"
+msgstr ""
+
+#: src/ext_l10n.h:329
+msgid "MeinZeichen"
+msgstr ""
+
+#: src/ext_l10n.h:330
+msgid "Minisec"
+msgstr ""
+
+#: src/ext_l10n.h:332
+msgid "msnumber"
+msgstr ""
+
+#: src/ext_l10n.h:333
+msgid "My_Address"
+msgstr ""
+
+#: src/ext_l10n.h:334
+msgid "Myref"
+msgstr ""
+
+#: src/ext_l10n.h:335
+msgid "MyRef"
+msgstr ""
+
+#: src/ext_l10n.h:336
+msgid "Name"
+msgstr "Имя"
+
+#: src/ext_l10n.h:337
+msgid "Narrative"
+msgstr "Отрицательный"
+
+#: src/ext_l10n.h:338
+msgid "Notation"
+msgstr ""
+
+#: src/ext_l10n.h:339
+msgid "Note"
+msgstr "Заметка"
+
+#: src/ext_l10n.h:340
+msgid "Note*"
+msgstr "Примечание*"
+
+#: src/ext_l10n.h:341
+msgid "NoteToEditor"
+msgstr ""
+
+#: src/ext_l10n.h:342
+msgid "Offprint"
+msgstr ""
+
+#: src/ext_l10n.h:343
+msgid "Offprints"
+msgstr ""
+
+#: src/ext_l10n.h:344
+msgid "Offsets"
+msgstr ""
+
+#: src/ext_l10n.h:345
+msgid "Oggetto"
+msgstr ""
+
+#: src/ext_l10n.h:346
+msgid "Opening"
+msgstr ""
+
+#: src/ext_l10n.h:347
+msgid "Ort"
+msgstr ""
+
+#: src/ext_l10n.h:348
+msgid "Overlay"
+msgstr ""
+
+#: src/ext_l10n.h:349
+msgid "PACS"
+msgstr ""
+
+#: src/ext_l10n.h:350 src/ext_l10n.h:920
+msgid "Paragraph"
+msgstr ""
+
+#: src/ext_l10n.h:351
+msgid "Paragraph*"
+msgstr ""
+
+#: src/ext_l10n.h:352
+msgid "Part"
+msgstr ""
+
+#: src/ext_l10n.h:353
+msgid "Part*"
+msgstr ""
+
+#: src/ext_l10n.h:354
+msgid "Petit"
+msgstr ""
+
+#: src/ext_l10n.h:355
+msgid "Phone"
+msgstr ""
+
+#: src/ext_l10n.h:356
+msgid "Place"
+msgstr ""
+
+#: src/ext_l10n.h:357
+msgid "PlaceFigure"
+msgstr ""
+
+#: src/ext_l10n.h:358
+msgid "PlaceTable"
+msgstr ""
+
+#: src/ext_l10n.h:359
+msgid "PortraitSlide"
+msgstr ""
+
+#: src/ext_l10n.h:360
+msgid "PostalCommend"
+msgstr ""
+
+#: src/ext_l10n.h:361
+msgid "PostalComment"
+msgstr ""
+
+#: src/ext_l10n.h:362
+msgid "Postvermerk"
+msgstr ""
+
+#: src/ext_l10n.h:363
+msgid "Preprint"
+msgstr ""
+
+#: src/ext_l10n.h:364
+msgid "Problem"
+msgstr ""
+
+#: src/ext_l10n.h:365
+msgid "ProgressContents"
+msgstr ""
+
+#: src/ext_l10n.h:366
+msgid "Proof"
+msgstr ""
+
+#: src/ext_l10n.h:367
+msgid "Property"
+msgstr ""
+
+#: src/ext_l10n.h:368
+msgid "Proposition"
+msgstr ""
+
+#: src/ext_l10n.h:369
+msgid "Proposition*"
+msgstr ""
+
+#: src/ext_l10n.h:370
+msgid "ps"
+msgstr ""
+
+#: src/ext_l10n.h:371
+msgid "PS"
+msgstr ""
+
+#: src/ext_l10n.h:372
+msgid "Publishers"
+msgstr ""
+
+#: src/ext_l10n.h:373
+msgid "Question"
+msgstr ""
+
+#: src/ext_l10n.h:374
+msgid "Quotation"
+msgstr ""
+
+#: src/ext_l10n.h:375
+msgid "Quote"
+msgstr ""
+
+#: src/ext_l10n.h:376
+msgid "Received"
+msgstr ""
+
+#: src/ext_l10n.h:379
+msgid "Remark"
+msgstr "Пометка"
+
+#: src/ext_l10n.h:380
+msgid "Remark*"
+msgstr "Пометка*"
+
+#: src/ext_l10n.h:381
+msgid "Remarks"
+msgstr "Пометки"
+
+#: src/ext_l10n.h:382
+msgid "RetourAdresse"
+msgstr ""
+
+#: src/ext_l10n.h:383
+msgid "ReturnAddress"
+msgstr ""
+
+#: src/ext_l10n.h:384
+msgid "Revision"
+msgstr ""
+
+#: src/ext_l10n.h:385
+msgid "RevisionHistory"
+msgstr ""
+
+#: src/ext_l10n.h:386
+#, fuzzy
+msgid "RevisionRemark"
+msgstr "Пометка"
+
+#: src/ext_l10n.h:387
+msgid "REVTEX_Title"
+msgstr ""
+
+#: src/ext_l10n.h:388
+msgid "Right_Address"
+msgstr ""
+
+#
+#: src/ext_l10n.h:389
+msgid "Right_Header"
+msgstr ""
+
+#: src/ext_l10n.h:390
+msgid "RightHeader"
+msgstr ""
+
+#: src/ext_l10n.h:391
+msgid "Rotatefoilhead"
+msgstr ""
+
+#: src/ext_l10n.h:392
+msgid "RunningAuthor"
+msgstr ""
+
+#: src/ext_l10n.h:393
+msgid "Running_LaTeX_Title"
+msgstr "Обработка с помощью LaTeX..."
+
+#: src/ext_l10n.h:394
+#, fuzzy
+msgid "RunningTitle"
+msgstr "Обработка с помощью LaTeX..."
+
+#: src/ext_l10n.h:395
+#, fuzzy
+msgid "Scene"
+msgstr "Масштаб"
+
+#: src/ext_l10n.h:396
+msgid "SCENE"
+msgstr ""
+
+#: src/ext_l10n.h:397
+msgid "SCENE*"
+msgstr ""
+
+#: src/ext_l10n.h:398
+msgid "Scrap"
+msgstr ""
+
+#: src/ext_l10n.h:399
+msgid "Section"
+msgstr ""
+
+#: src/ext_l10n.h:400
+msgid "Section*"
+msgstr ""
+
+#: src/ext_l10n.h:401
+msgid "Send_To_Address"
+msgstr ""
+
+#: src/ext_l10n.h:402
+msgid "Seriate"
+msgstr ""
+
+#: src/ext_l10n.h:403
+msgid "SGML"
+msgstr ""
+
+#: src/ext_l10n.h:404
+msgid "ShortFoilhead"
+msgstr ""
+
+#: src/ext_l10n.h:405
+msgid "ShortRotatefoilhead"
+msgstr ""
+
+#: src/ext_l10n.h:406
+msgid "ShortTitle"
+msgstr ""
+
+#: src/ext_l10n.h:407
+msgid "Signature"
+msgstr ""
+
+#: src/ext_l10n.h:408
+msgid "Slide"
+msgstr ""
+
+#: src/ext_l10n.h:409
+msgid "Slide*"
+msgstr ""
+
+#: src/ext_l10n.h:410
+msgid "SlideContents"
+msgstr ""
+
+#: src/ext_l10n.h:411
+msgid "SlideHeading"
+msgstr ""
+
+#: src/ext_l10n.h:412
+msgid "SlideSubHeading"
+msgstr ""
+
+#: src/ext_l10n.h:413
+msgid "Solution"
+msgstr ""
+
+#: src/ext_l10n.h:414
+msgid "Speaker"
+msgstr ""
+
+#: src/ext_l10n.h:415
+msgid "Specialmail"
+msgstr ""
+
+#: src/ext_l10n.h:416
+msgid "Stadt"
+msgstr ""
+
+#: src/ext_l10n.h:418
+msgid "State"
+msgstr ""
+
+#: src/ext_l10n.h:419
+msgid "Strasse"
+msgstr ""
+
+#: src/ext_l10n.h:420
+msgid "Street"
+msgstr ""
+
+#: src/ext_l10n.h:421
+msgid "Subject"
+msgstr ""
+
+#: src/ext_l10n.h:422
+msgid "Subjectclass"
+msgstr ""
+
+#: src/ext_l10n.h:423
+msgid "Subparagraph"
+msgstr ""
+
+#: src/ext_l10n.h:424
+msgid "Subparagraph*"
+msgstr ""
+
+#: src/ext_l10n.h:425
+msgid "Subsection"
+msgstr ""
+
+#: src/ext_l10n.h:426
+msgid "Subsection*"
+msgstr ""
+
+#
+#: src/ext_l10n.h:427
+msgid "SubSection"
+msgstr ""
+
+#: src/ext_l10n.h:428
+msgid "Subsubsection"
+msgstr ""
+
+#: src/ext_l10n.h:429
+msgid "Subsubsection*"
+msgstr ""
+
+#: src/ext_l10n.h:430
+msgid "Subtitle"
+msgstr ""
+
+#: src/ext_l10n.h:431
+msgid "SubTitle"
+msgstr ""
+
+#: src/ext_l10n.h:432
+#, fuzzy
+msgid "SubVariation"
+msgstr "Разд. абзацы"
+
+#: src/ext_l10n.h:433
+#, fuzzy
+msgid "SubVariation2"
+msgstr "Разд. абзацы"
+
+#: src/ext_l10n.h:434
+#, fuzzy
+msgid "SubVariation3"
+msgstr "Разд. абзацы"
+
+#: src/ext_l10n.h:435
+#, fuzzy
+msgid "SubVariation4"
+msgstr "Разд. абзацы"
+
+#: src/ext_l10n.h:436
+#, fuzzy
+msgid "SubVariation5"
+msgstr "Разд. абзацы"
+
+#: src/ext_l10n.h:437
+msgid "Summary"
+msgstr ""
+
+#: src/ext_l10n.h:438
+msgid "Surname"
+msgstr ""
+
+#: src/ext_l10n.h:439
+msgid "TableComments"
+msgstr ""
+
+#: src/ext_l10n.h:440
+msgid "TableRefs"
+msgstr ""
+
+#: src/ext_l10n.h:441
+msgid "Telefax"
+msgstr ""
+
+#: src/ext_l10n.h:442
+msgid "Telefon"
+msgstr ""
+
+#: src/ext_l10n.h:443
+msgid "Telephone"
+msgstr ""
+
+#: src/ext_l10n.h:444
+msgid "Telex"
+msgstr ""
+
+#: src/ext_l10n.h:445
+msgid "Thanks"
+msgstr ""
+
+#: src/ext_l10n.h:446
+msgid "Theorem"
+msgstr ""
+
+#: src/ext_l10n.h:447
+msgid "Theorem*"
+msgstr ""
+
+#: src/ext_l10n.h:448
+msgid "TheoremTemplate"
+msgstr ""
+
+#: src/ext_l10n.h:450
+msgid "ThickLine"
+msgstr ""
+
+#: src/ext_l10n.h:451
+msgid "ThreeAffiliations"
+msgstr ""
+
+#: src/ext_l10n.h:452
+msgid "ThreeAuthors"
+msgstr ""
+
+#: src/ext_l10n.h:453
+msgid "TickList"
+msgstr ""
+
+#: src/ext_l10n.h:454
+msgid "Title"
+msgstr ""
+
+#: src/ext_l10n.h:455
+msgid "Titlehead"
+msgstr ""
+
+#: src/ext_l10n.h:456
+msgid "TITLE_OVER:"
+msgstr ""
+
+#: src/ext_l10n.h:457
+msgid "TOC_Author"
+msgstr ""
+
+#: src/ext_l10n.h:458
+msgid "TOC_Title"
+msgstr ""
+
+#
+#: src/ext_l10n.h:459
+msgid "Topic"
+msgstr ""
+
+#: src/ext_l10n.h:460
+msgid "Town"
+msgstr ""
+
+#: src/ext_l10n.h:461
+msgid "Transition"
+msgstr ""
+
+#: src/ext_l10n.h:462
+msgid "Trans_Keywords"
+msgstr ""
+
+#: src/ext_l10n.h:463
+msgid "TranslatedAbstract"
+msgstr ""
+
+#: src/ext_l10n.h:464
+msgid "Translated_Title"
+msgstr ""
+
+#: src/ext_l10n.h:465
+msgid "Translator"
+msgstr ""
+
+#: src/ext_l10n.h:466
+msgid "TwoAffiliations"
+msgstr ""
+
+#: src/ext_l10n.h:467
+msgid "TwoAuthors"
+msgstr ""
+
+#: src/ext_l10n.h:468
+msgid "Unterschrift"
+msgstr ""
+
+#: src/ext_l10n.h:469
+msgid "Uppertitleback"
+msgstr ""
+
+#: src/ext_l10n.h:471
+#, fuzzy
+msgid "Variation"
+msgstr "Разд. абзацы"
+
+#: src/ext_l10n.h:472
+msgid "Verbatim"
+msgstr ""
+
+#: src/ext_l10n.h:473
+msgid "Verse"
+msgstr ""
+
+#: src/ext_l10n.h:474
+msgid "Verteiler"
+msgstr ""
+
+#: src/ext_l10n.h:475
+msgid "VisibleText"
+msgstr ""
+
+#: src/ext_l10n.h:476
+msgid "Yourmail"
+msgstr ""
+
+#: src/ext_l10n.h:477
+msgid "YourMail"
+msgstr ""
+
+#: src/ext_l10n.h:478
+msgid "Yourref"
+msgstr ""
+
+#: src/ext_l10n.h:479
+msgid "YourRef"
+msgstr ""
+
+#: src/ext_l10n.h:480
+msgid "Zusatz"
+msgstr ""
+
+#: src/ext_l10n.h:481
+msgid "Afrikaans"
+msgstr "Африканский"
+
+#: src/ext_l10n.h:482
+msgid "American"
+msgstr "Американский"
+
+#: src/ext_l10n.h:483
+msgid "Arabic"
+msgstr "Арабский"
+
+#: src/ext_l10n.h:484
+msgid "Austrian"
+msgstr "Австрийский"
+
+#: src/ext_l10n.h:485
+msgid "Bahasa"
+msgstr ""
+
+#
+#: src/ext_l10n.h:486
+#, fuzzy
+msgid "Basque"
+msgstr "Голубой"
+
+#: src/ext_l10n.h:487
+msgid "Portuguese (Brazil)"
+msgstr "Португальский (Бразильский)"
+
+#: src/ext_l10n.h:488
+msgid "Breton"
+msgstr ""
+
+#: src/ext_l10n.h:489
+msgid "British"
+msgstr "Британский"
+
+#: src/ext_l10n.h:490
+msgid "Bulgarian"
+msgstr ""
+
+#: src/ext_l10n.h:491
+msgid "Canadian"
+msgstr "Канадский"
+
+#: src/ext_l10n.h:492
+msgid "French Canadian"
+msgstr "Французский канадский"
+
+#: src/ext_l10n.h:493
+msgid "Catalan"
+msgstr ""
+
+#: src/ext_l10n.h:494
+msgid "Croatian"
+msgstr ""
+
+#: src/ext_l10n.h:495
+msgid "Czech"
+msgstr "Чешский"
+
+#: src/ext_l10n.h:496
+msgid "Danish"
+msgstr ""
+
+#: src/ext_l10n.h:497
+msgid "Dutch"
+msgstr "Датский"
+
+#: src/ext_l10n.h:499
+msgid "Esperanto"
+msgstr "Эсперанто"
+
+#: src/ext_l10n.h:500
+msgid "Estonian"
+msgstr "Эстонский"
+
+#: src/ext_l10n.h:501
+msgid "Finnish"
+msgstr "Финский"
+
+#: src/ext_l10n.h:502
+msgid "French"
+msgstr "Французский"
+
+#: src/ext_l10n.h:503
+msgid "French (GUTenberg)"
+msgstr ""
+
+#: src/ext_l10n.h:504
+msgid "Galician"
+msgstr ""
+
+#: src/ext_l10n.h:505
+msgid "German"
+msgstr "Немецкий"
+
+#: src/ext_l10n.h:506
+msgid "German (new spelling)"
+msgstr "Немецкий (новая орфография)"
+
+#: src/ext_l10n.h:508
+msgid "Hebrew"
+msgstr "Еврейский"
+
+#: src/ext_l10n.h:509
+msgid "Irish"
+msgstr ""
+
+#
+#: src/ext_l10n.h:510
+msgid "Italian"
+msgstr "Итальянский"
+
+#: src/ext_l10n.h:511
+msgid "Lsorbian"
+msgstr ""
+
+#: src/ext_l10n.h:512
+msgid "Magyar"
+msgstr ""
+
+#: src/ext_l10n.h:513
+msgid "Norsk"
+msgstr ""
+
+#: src/ext_l10n.h:514
+msgid "Polish"
+msgstr "Польский"
+
+#: src/ext_l10n.h:515
+msgid "Portugese"
+msgstr "Португальский"
+
+#: src/ext_l10n.h:516
+msgid "Romanian"
+msgstr "Romanian"
+
+#: src/ext_l10n.h:517
+msgid "Russian"
+msgstr "Русский"
+
+#: src/ext_l10n.h:518
+msgid "Scottish"
+msgstr ""
+
+#: src/ext_l10n.h:519
+msgid "Serbian"
+msgstr "Сербский"
+
+#: src/ext_l10n.h:520
+msgid "Serbo-Croatian"
+msgstr ""
+
+#: src/ext_l10n.h:521
+msgid "Spanish"
+msgstr "Испанский"
+
+#: src/ext_l10n.h:522
+msgid "Slovak"
+msgstr ""
+
+#: src/ext_l10n.h:523
+msgid "Slovene"
+msgstr "Словенский"
+
+#: src/ext_l10n.h:524
+msgid "Swedish"
+msgstr "Шведский"
+
+#: src/ext_l10n.h:525
+msgid "Thai"
+msgstr ""
+
+#: src/ext_l10n.h:526
+msgid "Turkish"
+msgstr "Турецкий"
+
+#
+#: src/ext_l10n.h:527
+msgid "Ukrainian"
+msgstr "Украинский"
+
+#: src/ext_l10n.h:528
+msgid "Usorbian"
+msgstr ""
+
+#: src/ext_l10n.h:529
+msgid "Welsh"
+msgstr ""
+
+#: src/ext_l10n.h:531
+#, fuzzy
+msgid "Version"
+msgstr "LyX версии "
+
+#
+#: src/ext_l10n.h:532
+#, fuzzy
+msgid "Version goes here"
+msgstr "Контроль версий"
+
+#: src/ext_l10n.h:536
+msgid "LyX: Enter text"
+msgstr ""
+
+#: src/ext_l10n.h:537
+msgid "&Dummy"
+msgstr ""
+
+#
+#: src/ext_l10n.h:541
+#, fuzzy
+msgid "&Key"
+msgstr "Ключ:"
+
+#: src/ext_l10n.h:542
+#, fuzzy
+msgid "The citation key"
+msgstr "Вставить цитату"
+
+#: src/ext_l10n.h:543
+#, fuzzy
+msgid "&Label"
+msgstr "Метка:"
+
+#: src/ext_l10n.h:544
+#, fuzzy
+msgid "The label as it appears in the document"
+msgstr "Имя формата, как оно будет показываться в меню."
+
+#: src/ext_l10n.h:545 src/ext_l10n.h:598 src/ext_l10n.h:792 src/ext_l10n.h:797
+#: src/ext_l10n.h:873 src/ext_l10n.h:893 src/ext_l10n.h:917
+#: src/ext_l10n.h:1062 src/ext_l10n.h:1068 src/ext_l10n.h:1118
+#: src/ext_l10n.h:1158 src/ext_l10n.h:1199
+#, fuzzy
+msgid "&OK"
+msgstr "ОК"
+
+#: src/ext_l10n.h:547
+#, fuzzy
+msgid "Bibtex"
+msgstr "BibTeX"
+
+#: src/ext_l10n.h:548
+#, fuzzy
+msgid "Databases"
+msgstr "База данных:"
+
+#: src/ext_l10n.h:549
+#, fuzzy
+msgid "BibTeX database to use"
+msgstr "База данных BiBTeX"
+
+#: src/ext_l10n.h:550 src/ext_l10n.h:626 src/ext_l10n.h:628
+#: src/ext_l10n.h:1167
+msgid "New Item"
+msgstr ""
+
+#: src/ext_l10n.h:551
+#, fuzzy
+msgid "Available BibTeX databases"
+msgstr "База данных BiBTeX"
+
+#: src/ext_l10n.h:552
+msgid "&Add ..."
+msgstr ""
+
+#: src/ext_l10n.h:553
+#, fuzzy
+msgid "Add a BibTeX database file"
+msgstr "База данных BiBTeX"
+
+#
+#: src/ext_l10n.h:554
+#, fuzzy
+msgid "&Delete"
+msgstr "Удалить из"
+
+#: src/ext_l10n.h:555
+msgid "Remove the selected database"
+msgstr ""
+
+#: src/ext_l10n.h:556
+#, fuzzy
+msgid "&Style"
+msgstr "Стиль:  "
+
+#: src/ext_l10n.h:557 src/ext_l10n.h:563
+#, fuzzy
+msgid "The BibTeX style"
+msgstr "Переключить режим команд LaTeX"
+
+#
+#: src/ext_l10n.h:559
+#, fuzzy
+msgid "unsrt"
+msgstr "Вставить"
+
+#: src/ext_l10n.h:560
+msgid "alpha"
+msgstr ""
+
+#: src/ext_l10n.h:561
+msgid "abbrv"
+msgstr ""
+
+#: src/ext_l10n.h:564
+msgid "FIXME !"
+msgstr ""
+
+#: src/ext_l10n.h:565
+msgid "The name of the style to use"
+msgstr ""
+
+#
+#: src/ext_l10n.h:566
+#, fuzzy
+msgid "&Browse"
+msgstr "Обзор"
+
+#: src/ext_l10n.h:567
+#, fuzzy
+msgid "Choose a style file"
+msgstr ""
+"Список\n"
+"недавних файлов"
+
+#
+#: src/ext_l10n.h:568
+#, fuzzy
+msgid "Add bibliography to &TOC"
+msgstr "Все ссылки в библиографии"
+
+#
+#: src/ext_l10n.h:569
+#, fuzzy
+msgid "Add bibliography to the table of contents"
+msgstr "Просмотреть Содержание"
+
+#: src/ext_l10n.h:573
+msgid "&Family:"
+msgstr "Семейство:"
+
+#: src/ext_l10n.h:574
+msgid "Font family"
+msgstr "Семейство шрифтов"
+
+#: src/ext_l10n.h:575
+msgid "&Series:"
+msgstr "Серия:"
+
+#: src/ext_l10n.h:576 src/ext_l10n.h:583
+msgid "Font series"
+msgstr "Серии шрифтов"
+
+#: src/ext_l10n.h:577 src/ext_l10n.h:705
+msgid "&Language:"
+msgstr "Язык:"
+
+#: src/ext_l10n.h:579 src/ext_l10n.h:582
+msgid "Font shape"
+msgstr "Начертание шрифта"
+
+#: src/ext_l10n.h:580 src/ext_l10n.h:585
+msgid "Font color"
+msgstr "Цвет шрифта"
+
+#: src/ext_l10n.h:581
+msgid "S&hape:"
+msgstr "Начертание:"
+
+#
+#: src/ext_l10n.h:584
+msgid "&Color:"
+msgstr "Цвет:"
+
+#: src/ext_l10n.h:587
+msgid "&Toggle all"
+msgstr "Переключить всё"
+
+#: src/ext_l10n.h:588
+msgid "toggle font on all of the above"
+msgstr ""
+"Переключить всё указанное выше\n"
+"(укажите что и нажмите Применить)"
+
+#: src/ext_l10n.h:589
+msgid "Never toggled"
+msgstr "Никогда не переключается"
+
+#: src/ext_l10n.h:590 src/ext_l10n.h:818
+msgid "Si&ze:"
+msgstr "Размер:"
+
+#: src/ext_l10n.h:591
+msgid "Font size"
+msgstr "Размер шрифта"
+
+#
+#: src/ext_l10n.h:592
+msgid "Always toggled"
+msgstr "Всегда переключается"
+
+#: src/ext_l10n.h:593 src/ext_l10n.h:595
+msgid "Other font settings"
+msgstr "Другие настройки шрифта"
+
+#: src/ext_l10n.h:594
+msgid "&Misc:"
+msgstr "Другие:"
+
+#
+#: src/ext_l10n.h:596
+msgid "Auto apply"
+msgstr "Автоматическое применение"
+
+#: src/ext_l10n.h:597
+msgid "Apply each change automatically"
+msgstr "Применять каждое изменение автоматически"
+
+#
+#: src/ext_l10n.h:599 src/ext_l10n.h:604 src/ext_l10n.h:763 src/ext_l10n.h:793
+#: src/ext_l10n.h:798 src/ext_l10n.h:874 src/ext_l10n.h:918
+#: src/ext_l10n.h:1061 src/ext_l10n.h:1069
+msgid "&Apply"
+msgstr "Применить"
+
+#
+#: src/ext_l10n.h:602 src/ext_l10n.h:761 src/ext_l10n.h:796 src/ext_l10n.h:872
+#: src/ext_l10n.h:916 src/ext_l10n.h:1060
+msgid "&Restore"
+msgstr "Восстановить"
+
+#: src/ext_l10n.h:606
+msgid "Text after"
+msgstr "Текст после"
+
+#: src/ext_l10n.h:608
+#, fuzzy
+msgid "Natbib citation style to use"
+msgstr "Представление цитат"
+
+#
+#: src/ext_l10n.h:609
+msgid "Text before"
+msgstr "Текст перед"
+
+#: src/ext_l10n.h:611
+#, fuzzy
+msgid "Citation entry"
+msgstr "Представление цитат"
+
+#: src/ext_l10n.h:613
+msgid "Search the available citations"
+msgstr "Поиск доступных цитат"
+
+#: src/ext_l10n.h:614
+msgid "Regular E&xpression"
+msgstr "Регулярное выражение"
+
+#: src/ext_l10n.h:615
+msgid "Interpret search entry as a regular expression"
+msgstr ""
+
+#: src/ext_l10n.h:616
+msgid "&Previous"
+msgstr "Предыдущий"
+
+#: src/ext_l10n.h:617
+msgid "&Case sensitive"
+msgstr ""
+"Учитывать\n"
+"регистр"
+
+#: src/ext_l10n.h:618
+msgid "Make the search case-sensitive"
+msgstr "Делать поиск чувствительным к регистру"
+
+#
+#: src/ext_l10n.h:619
+msgid "&Next"
+msgstr "Следующий"
+
+#: src/ext_l10n.h:620
+#, fuzzy
+msgid "Add the selected citation"
+msgstr "Вставить цитату"
+
+#: src/ext_l10n.h:621
+msgid "Remove the selected citation"
+msgstr "Удалить выбранную цитату"
+
+#
+#: src/ext_l10n.h:622
+#, fuzzy
+msgid "Move the selected citation up"
+msgstr "Вставить цитату"
+
+#: src/ext_l10n.h:623
+msgid "Move the selected citation down"
+msgstr ""
+
+#: src/ext_l10n.h:624
+msgid "Available"
+msgstr "Доступны"
+
+#
+#: src/ext_l10n.h:625
+msgid "Selected"
+msgstr "Выбраны"
+
+#: src/ext_l10n.h:627
+msgid "Available citation keys"
+msgstr ""
+
+#: src/ext_l10n.h:629
+#, fuzzy
+msgid "Citations currently selected"
+msgstr "Представление цитат"
+
+#: src/ext_l10n.h:630
+msgid "Text to place after citation"
+msgstr "Текст для размещения после цитат"
+
+#: src/ext_l10n.h:631
+msgid "&Full author list"
+msgstr "Полный список авторов"
+
+#: src/ext_l10n.h:632
+msgid "List all authors"
+msgstr "Список всех авторов"
+
+#: src/ext_l10n.h:633
+#, fuzzy
+msgid "Force &upper case"
+msgstr "Верхний регистр"
+
+#: src/ext_l10n.h:634
+#, fuzzy
+msgid "Force upper case in citation"
+msgstr "Верхний регистр"
+
+#: src/ext_l10n.h:635
+msgid "Text to place before citation"
+msgstr "Текст для размещения перед цитатой"
+
+#: src/ext_l10n.h:638
+msgid "&Fonts:"
+msgstr "Шрифты:"
+
+#: src/ext_l10n.h:639
+msgid "&Pagestyle:"
+msgstr ""
+"Стиль\n"
+"страницы:"
+
+#: src/ext_l10n.h:640
+#, fuzzy
+msgid "Defa&ult Skip:"
+msgstr ""
+"Промежуток\n"
+"между абзацами:"
+
+#: src/ext_l10n.h:641
+msgid "F&ont Size:"
+msgstr ""
+"Размер\n"
+"шрифта:"
+
+#
+#: src/ext_l10n.h:647
+msgid "Spacin&g:"
+msgstr "Промежутки"
+
+#: src/ext_l10n.h:648
+msgid "E&xtra Options:"
+msgstr "Доп. параметры:"
+
+#: src/ext_l10n.h:649
+msgid "&Class:"
+msgstr "Класс:"
+
+#
+#: src/ext_l10n.h:650
+msgid "smallskip"
+msgstr "Маленький"
+
+#
+#: src/ext_l10n.h:651
+msgid "medskip"
+msgstr "Средний"
+
+#: src/ext_l10n.h:652
+msgid "bigskip"
+msgstr "Большой"
+
+#
+#: src/ext_l10n.h:653
+msgid "length"
+msgstr "Указать длину"
+
+#: src/ext_l10n.h:663
+msgid "O&ne"
+msgstr "Одна"
+
+#: src/ext_l10n.h:664
+msgid "&Two"
+msgstr "Две"
+
+#: src/ext_l10n.h:666
+msgid "On&e"
+msgstr "Одна"
+
+#: src/ext_l10n.h:667
+msgid "T&wo"
+msgstr "Две"
+
+#: src/ext_l10n.h:669
+msgid "&Indent"
+msgstr "Отступ"
+
+#: src/ext_l10n.h:670
+msgid "S&kip"
+msgstr "Промежуток"
+
+#: src/ext_l10n.h:672
+msgid "&Papersize:"
+msgstr ""
+"Размер\n"
+"бумаги:"
+
+#: src/ext_l10n.h:683
+#, fuzzy
+msgid "&Special:"
+msgstr "Дополнительно"
+
+#: src/ext_l10n.h:688
+msgid "&Use Geometry Package"
+msgstr "Использовать пакет геометрии (включите для указания полей)"
+
+#: src/ext_l10n.h:690
+msgid "P&ortrait"
+msgstr "Портрет"
+
+#
+#: src/ext_l10n.h:691
+msgid "&Landscape"
+msgstr "Ландшафт"
+
+#: src/ext_l10n.h:693
+msgid "&Right:"
+msgstr "Справа:"
+
+#: src/ext_l10n.h:694
+msgid "&Bottom:"
+msgstr "Снизу:"
+
+#: src/ext_l10n.h:695
+msgid "L&eft:"
+msgstr "Слева:"
+
+#: src/ext_l10n.h:696
+msgid "&Top:"
+msgstr "Сверху:"
+
+#: src/ext_l10n.h:697
+msgid "Custom Papersize"
+msgstr "Пользовательский размер бумаги"
+
+#: src/ext_l10n.h:698 src/ext_l10n.h:907
+msgid "&Width:"
+msgstr "Ширина"
+
+#: src/ext_l10n.h:699
+msgid "&Height:"
+msgstr "Высота"
+
+#: src/ext_l10n.h:700
+msgid "Foot/Head Margins"
+msgstr "Поля вверху/внизу"
+
+#: src/ext_l10n.h:701
+msgid "&Footskip:"
+msgstr ""
+"Промежуток\n"
+"сноски:"
+
+#: src/ext_l10n.h:702
+msgid "Hea&dsep:"
+msgstr ""
+"Разделитель\n"
+"верха:"
+
+#: src/ext_l10n.h:703
+msgid "Headhe&ight:"
+msgstr ""
+"Высота\n"
+"верха:"
+
+#
+#: src/ext_l10n.h:706
+msgid "Enco&ding:"
+msgstr "Кодировка:"
+
+#
+#: src/ext_l10n.h:720
+msgid "Quote Style"
+msgstr "Тип кавычек"
+
+#
+#: src/ext_l10n.h:721
+msgid "&Type:"
+msgstr "Тип:"
+
+#
+#: src/ext_l10n.h:726
+msgid "б╚textб╩"
+msgstr "б╚текстб╩"
+
+#
+#: src/ext_l10n.h:727
+msgid "б╩textб╚"
+msgstr "б╩текстб╚"
+
+#
+#: src/ext_l10n.h:728
+msgid "&Single"
+msgstr ""
+"Оди-\n"
+"нарный"
+
+#
+#: src/ext_l10n.h:729
+msgid "&Double"
+msgstr "Двойной"
+
+#: src/ext_l10n.h:731
+msgid "F&loat Placement:"
+msgstr ""
+"Размещение\n"
+"плавающих объектов:\n"
+"[!](h,t,b,p)"
+
+#: src/ext_l10n.h:732
+msgid "S&ection number depth:"
+msgstr ""
+"Глубина нумерации\n"
+"разделов"
+
+#: src/ext_l10n.h:733
+msgid "&Table of contents depth:"
+msgstr "Глубина нумерации в содержании"
+
+#: src/ext_l10n.h:734
+msgid "P&S Driver:"
+msgstr "Драйвер PS"
+
+#: src/ext_l10n.h:735
+msgid "Use A&MS Math"
+msgstr ""
+"Использовать\n"
+"AMS-математику"
+
+#: src/ext_l10n.h:737
+msgid "Si&ze"
+msgstr "Размер"
+
+#: src/ext_l10n.h:750
+msgid "&1"
+msgstr ""
+
+#: src/ext_l10n.h:751
+msgid "&2"
+msgstr ""
+
+#: src/ext_l10n.h:752
+msgid "&3"
+msgstr ""
+
+#: src/ext_l10n.h:753
+msgid "&4"
+msgstr ""
+
+#: src/ext_l10n.h:754
+msgid "&Standard"
+msgstr "Обычный"
+
+#
+#: src/ext_l10n.h:755
+msgid "&Maths"
+msgstr "Матем."
+
+#: src/ext_l10n.h:756
+msgid "&Ding 1"
+msgstr "Маркер 1"
+
+#: src/ext_l10n.h:757
+msgid "D&ing 2"
+msgstr "Маркер 2"
+
+#: src/ext_l10n.h:758
+msgid "Di&ng 3"
+msgstr "Маркер 3"
+
+#: src/ext_l10n.h:759
+msgid "Din&g 4"
+msgstr "Маркер 4"
+
+#: src/ext_l10n.h:760
+msgid "&LaTeX"
+msgstr "LaTeX"
+
+#: src/ext_l10n.h:766 src/ext_l10n.h:780
+msgid "LaTeX error messages"
+msgstr "Сообщения об ошибках LaTeX"
+
+#: src/ext_l10n.h:768
+#, fuzzy
+msgid "ERT inset display"
+msgstr "[не показан]"
+
+#: src/ext_l10n.h:769
+msgid "&Inline"
+msgstr ""
+
+#: src/ext_l10n.h:770
+msgid "Show ERT inline"
+msgstr ""
+
+#
+#: src/ext_l10n.h:771
+#, fuzzy
+msgid "&Collapsed"
+msgstr "Свернуть"
+
+#: src/ext_l10n.h:772
+msgid "Show ERT button only"
+msgstr "Показывать только кнопку команд LaTeX"
+
+#
+#: src/ext_l10n.h:773
+msgid "&Open"
+msgstr "Раскрыть"
+
+#: src/ext_l10n.h:774
+msgid "Show ERT contents"
+msgstr "Показать содержание команд LaTeX"
+
+#: src/ext_l10n.h:777
+msgid "External Material"
+msgstr "Внешний объект"
+
+#: src/ext_l10n.h:778
+msgid "&Template"
+msgstr "Шаблоны"
+
+#: src/ext_l10n.h:779
+msgid "Available templates"
+msgstr "Доступные шаблоны"
+
+#
+#: src/ext_l10n.h:781
+msgid "&Edit file"
+msgstr "Редактировать"
+
+#
+#: src/ext_l10n.h:782
+msgid "Edit the file externally"
+msgstr "Редактировать внешний объект"
+
+#: src/ext_l10n.h:783
+msgid "&View file"
+msgstr "Просмотр файла"
+
+#: src/ext_l10n.h:784
+msgid "View the file"
+msgstr "Просмотреть файл"
+
+#
+#: src/ext_l10n.h:785 src/ext_l10n.h:903 src/ext_l10n.h:1103
+#: src/ext_l10n.h:1189 src/ext_l10n.h:1202
+msgid "&Update"
+msgstr "Обновить"
+
+#: src/ext_l10n.h:786
+msgid "Update the material"
+msgstr "Обновить внешний объект"
+
+#
+#: src/ext_l10n.h:787 src/ext_l10n.h:1075
+msgid "&File"
+msgstr "Файл"
+
+#: src/ext_l10n.h:788
+msgid "Filename"
+msgstr "Имя файла"
+
+#
+#: src/ext_l10n.h:789 src/ext_l10n.h:810 src/ext_l10n.h:891
+#: src/ext_l10n.h:1079
+msgid "&Browse ..."
+msgstr "Обзор..."
+
+#
+#: src/ext_l10n.h:790
+msgid "&Parameters"
+msgstr "Параметры"
+
+#
+#: src/ext_l10n.h:791
+msgid "Parameters"
+msgstr "Параметры"
+
+#
+#: src/ext_l10n.h:795 src/ext_l10n.h:806 src/ext_l10n.h:1160
+#, fuzzy
+msgid "Form1"
+msgstr "Форматы"
+
+#: src/ext_l10n.h:801
+msgid "Bottom of the page"
+msgstr "Внизу страницы"
+
+#: src/ext_l10n.h:802
+msgid "Top of the page"
+msgstr "Наверху страницы"
+
+#
+#: src/ext_l10n.h:803
+msgid "Page of floats"
+msgstr ""
+"На странице\n"
+"плавающих объектов"
+
+#: src/ext_l10n.h:804
+msgid "Here, if possible"
+msgstr "Здесь, если возможно"
+
+#: src/ext_l10n.h:805
+msgid "Here, definitely"
+msgstr "Именно здесь"
+
+#
+#: src/ext_l10n.h:808
+msgid "&File:"
+msgstr "Файл"
+
+#: src/ext_l10n.h:809 src/ext_l10n.h:890
+msgid "File name to include"
+msgstr "Имя файла для вставки"
+
+#
+#: src/ext_l10n.h:811 src/ext_l10n.h:892
+msgid "Select a file"
+msgstr "Выберите файл"
+
+#
+#: src/ext_l10n.h:812
+msgid "Screen Options"
+msgstr "Параметры экрана"
+
+#
+#: src/ext_l10n.h:814
+msgid "Monochrome"
+msgstr "Монохромный"
+
+#
+#: src/ext_l10n.h:815
+msgid "Grayscale"
+msgstr "Черно-белый"
+
+#
+#: src/ext_l10n.h:816
+msgid "Color"
+msgstr "Цвета"
+
+#
+#: src/ext_l10n.h:817
+msgid "Do not display"
+msgstr "Не показывать"
+
+#: src/ext_l10n.h:819
+msgid "S&how:"
+msgstr "Показать:"
+
+#: src/ext_l10n.h:820 src/ext_l10n.h:830
+msgid "Height"
+msgstr "Высота"
+
+#: src/ext_l10n.h:821
+msgid "&Draft mode"
+msgstr "Черновой режим"
+
+#: src/ext_l10n.h:822
+msgid "draft mode"
+msgstr "черновой режим"
+
+#: src/ext_l10n.h:824
+msgid "&Scale"
+msgstr "Масштаб"
+
+#: src/ext_l10n.h:825
+msgid "&Default"
+msgstr "По умолчанию"
+
+#: src/ext_l10n.h:826
+msgid "&Custom"
+msgstr "Выборочно"
+
+#: src/ext_l10n.h:828
+msgid "Keep aspect&ratio"
+msgstr "Сохранять пропорции"
+
+#: src/ext_l10n.h:831
+msgid "EPS Options"
+msgstr "Параметры EPS"
+
+#: src/ext_l10n.h:832
+msgid "Bounding box"
+msgstr ""
+
+#
+#: src/ext_l10n.h:833
+#, fuzzy
+msgid "Left &bottom:"
+msgstr "Линия снизу"
+
+#: src/ext_l10n.h:834
+#, fuzzy
+msgid "Right &top:"
+msgstr "Справа:"
+
+#: src/ext_l10n.h:835
+msgid "Y"
+msgstr ""
+
+#: src/ext_l10n.h:836
+msgid "X"
+msgstr ""
+
+#
+#: src/ext_l10n.h:849
+#, fuzzy
+msgid "&Get"
+msgstr "Книзу"
+
+#: src/ext_l10n.h:850
+msgid "Get bounding box from file"
+msgstr ""
+
+#: src/ext_l10n.h:851
+msgid "&Clip to bounding box"
+msgstr ""
+
+#: src/ext_l10n.h:852
+msgid "clip to bounding box"
+msgstr ""
+
+#: src/ext_l10n.h:854
+msgid "Rotation"
+msgstr "Поворот"
+
+#: src/ext_l10n.h:855
+#, fuzzy
+msgid "&Angle:"
+msgstr "Угол:"
+
+#: src/ext_l10n.h:856
+msgid "&Origin:"
+msgstr ""
+
+#: src/ext_l10n.h:858
+msgid "leftTop"
+msgstr ""
+
+#
+#: src/ext_l10n.h:859
+#, fuzzy
+msgid "leftBottom"
+msgstr "Книзу"
+
+#: src/ext_l10n.h:860
+msgid "leftBaseline"
+msgstr ""
+
+#: src/ext_l10n.h:862
+msgid "centerTop"
+msgstr ""
+
+#: src/ext_l10n.h:863
+#, fuzzy
+msgid "centerBottom"
+msgstr "Кверху | По центру | Книзу"
+
+#: src/ext_l10n.h:864
+msgid "centerBaseline"
+msgstr ""
+
+#: src/ext_l10n.h:865
+#, fuzzy
+msgid "rightTop"
+msgstr "Прямой"
+
+#
+#: src/ext_l10n.h:866
+#, fuzzy
+msgid "rightBottom"
+msgstr "Книзу"
+
+#: src/ext_l10n.h:867
+msgid "rightBaseline"
+msgstr ""
+
+#
+#: src/ext_l10n.h:868
+#, fuzzy
+msgid "referencePoint"
+msgstr "Параметры"
+
+#
+#: src/ext_l10n.h:869
+#, fuzzy
+msgid "LaTeX options"
+msgstr "доп. параметры"
+
+#: src/ext_l10n.h:870
+#, fuzzy
+msgid "Su&bfigure"
+msgstr ""
+"Подри-\n"
+"сунок"
+
+#: src/ext_l10n.h:871
+msgid "The sub-caption for the figure"
+msgstr ""
+
+#
+#: src/ext_l10n.h:876
+#, fuzzy
+msgid "Include File"
+msgstr "Включить файл"
+
+#
+#: src/ext_l10n.h:877
+#, fuzzy
+msgid "Include type"
+msgstr "Включить файл"
+
+#: src/ext_l10n.h:878
+#, fuzzy
+msgid "&Include"
+msgstr "Включить файл"
+
+#: src/ext_l10n.h:879 src/ext_l10n.h:881 src/ext_l10n.h:883 src/ext_l10n.h:886
+#: src/ext_l10n.h:888
+msgid "FIXME"
+msgstr ""
+
+#: src/ext_l10n.h:880
+#, fuzzy
+msgid "I&nput"
+msgstr "Вставить файл"
+
+#: src/ext_l10n.h:882
+#, fuzzy
+msgid "&Verbatim"
+msgstr "Буквально"
+
+#: src/ext_l10n.h:884
+msgid "Options"
+msgstr "Параметры"
+
+#: src/ext_l10n.h:885
+#, fuzzy
+msgid "&Don't typeset"
+msgstr "Не оформлять"
+
+#: src/ext_l10n.h:887
+#, fuzzy
+msgid "Visible &Space"
+msgstr ""
+"Показывать\n"
+"пробелы"
+
+#: src/ext_l10n.h:889
+#, fuzzy
+msgid "&Filename:"
+msgstr "Имя файла:"
+
+#: src/ext_l10n.h:895
+#, fuzzy
+msgid "&Load"
+msgstr "Загрузить"
+
+#
+#: src/ext_l10n.h:896
+#, fuzzy
+msgid "Load the file"
+msgstr ""
+"Список\n"
+"недавних файлов"
+
+#
+#: src/ext_l10n.h:898 src/ext_l10n.h:1176
+#, fuzzy
+msgid "&Keyword"
+msgstr ""
+"Ключевое\n"
+"слово"
+
+#
+#: src/ext_l10n.h:899 src/ext_l10n.h:1031 src/ext_l10n.h:1177
+#, fuzzy
+msgid "Index entry"
+msgstr "Вхождение слова в предметный указатель..."
+
+#: src/ext_l10n.h:904 src/ext_l10n.h:1203
+msgid "Update the display"
+msgstr ""
+
+#
+#: src/ext_l10n.h:906
+#, fuzzy
+msgid "Minipage settings"
+msgstr "Настройки Мини-страницы"
+
+#
+#: src/ext_l10n.h:908 src/ext_l10n.h:1057
+#, fuzzy
+msgid "Top"
+msgstr "Кверху"
+
+#: src/ext_l10n.h:909 src/ext_l10n.h:1058
+#, fuzzy
+msgid "Middle"
+msgstr ""
+"По\n"
+"середине"
+
+#: src/ext_l10n.h:910 src/ext_l10n.h:1059
+#, fuzzy
+msgid "Bottom"
+msgstr "Книзу"
+
+#: src/ext_l10n.h:911
+#, fuzzy
+msgid "Vertical alignment"
+msgstr "Верт. выравнивание"
+
+#: src/ext_l10n.h:912
+#, fuzzy
+msgid "A&lignment:"
+msgstr "Выровнять"
+
+#: src/ext_l10n.h:913
+msgid "Units of width value"
+msgstr ""
+
+#: src/ext_l10n.h:914
+#, fuzzy
+msgid "Width value"
+msgstr "Ширина"
+
+#: src/ext_l10n.h:915
+msgid "&Units:"
+msgstr ""
+
+#: src/ext_l10n.h:921
+msgid "&Alignment and Spacing"
+msgstr ""
+
+#: src/ext_l10n.h:922
+#, fuzzy
+msgid "Alignment:"
+msgstr "Выровнять"
+
+#: src/ext_l10n.h:923
+msgid "Justified"
+msgstr ""
+
+#: src/ext_l10n.h:924
+#, fuzzy
+msgid "Left"
+msgstr "Слева"
+
+#: src/ext_l10n.h:925
+#, fuzzy
+msgid "Right"
+msgstr "Справа"
+
+#
+#: src/ext_l10n.h:926
+#, fuzzy
+msgid "Centered"
+msgstr "Сантиметры"
+
+#: src/ext_l10n.h:927
+#, fuzzy
+msgid "No indentation"
+msgstr "Ориентация"
+
+#: src/ext_l10n.h:928
+msgid "Spacing"
+msgstr ""
+"Междустрочный\n"
+"интервал"
+
+#
+#: src/ext_l10n.h:929 src/ext_l10n.h:940 src/ext_l10n.h:951 src/ext_l10n.h:962
+#: src/ext_l10n.h:973 src/ext_l10n.h:984 src/ext_l10n.h:1037
+msgid "Centimetres"
+msgstr "Сантиметры"
+
+#
+#: src/ext_l10n.h:930 src/ext_l10n.h:941 src/ext_l10n.h:952 src/ext_l10n.h:963
+#: src/ext_l10n.h:974 src/ext_l10n.h:985 src/ext_l10n.h:1038
+msgid "Inches"
+msgstr "Дюймы"
+
+#: src/ext_l10n.h:931 src/ext_l10n.h:942 src/ext_l10n.h:953 src/ext_l10n.h:964
+#: src/ext_l10n.h:975 src/ext_l10n.h:986 src/ext_l10n.h:1039
+#, fuzzy
+msgid "Points"
+msgstr "Печатать"
+
+#: src/ext_l10n.h:932 src/ext_l10n.h:943 src/ext_l10n.h:954 src/ext_l10n.h:965
+#: src/ext_l10n.h:976 src/ext_l10n.h:987 src/ext_l10n.h:1040
+msgid "Millimetres"
+msgstr "Миллиметры"
+
+#
+#: src/ext_l10n.h:933 src/ext_l10n.h:944 src/ext_l10n.h:955 src/ext_l10n.h:966
+#: src/ext_l10n.h:977 src/ext_l10n.h:988 src/ext_l10n.h:1041
+msgid "Picas"
+msgstr ""
+
+#: src/ext_l10n.h:934 src/ext_l10n.h:945 src/ext_l10n.h:956 src/ext_l10n.h:967
+#: src/ext_l10n.h:978 src/ext_l10n.h:989 src/ext_l10n.h:1042
+msgid "ex Units"
+msgstr ""
+
+#: src/ext_l10n.h:935 src/ext_l10n.h:946 src/ext_l10n.h:957 src/ext_l10n.h:968
+#: src/ext_l10n.h:979 src/ext_l10n.h:990 src/ext_l10n.h:1043
+msgid "em Units"
+msgstr ""
+
+#
+#: src/ext_l10n.h:936 src/ext_l10n.h:947 src/ext_l10n.h:958 src/ext_l10n.h:969
+#: src/ext_l10n.h:980 src/ext_l10n.h:991 src/ext_l10n.h:1044
+#, fuzzy
+msgid "Scaled Points"
+msgstr "Экранные шрифты"
+
+#: src/ext_l10n.h:937 src/ext_l10n.h:948 src/ext_l10n.h:959 src/ext_l10n.h:970
+#: src/ext_l10n.h:981 src/ext_l10n.h:992 src/ext_l10n.h:1045
+#, fuzzy
+msgid "Big/PS Points"
+msgstr "Печатать"
+
+#: src/ext_l10n.h:938 src/ext_l10n.h:949 src/ext_l10n.h:960 src/ext_l10n.h:971
+#: src/ext_l10n.h:982 src/ext_l10n.h:993 src/ext_l10n.h:1046
+#, fuzzy
+msgid "Didot Points"
+msgstr "Печатать"
+
+#: src/ext_l10n.h:939 src/ext_l10n.h:950 src/ext_l10n.h:961 src/ext_l10n.h:972
+#: src/ext_l10n.h:983 src/ext_l10n.h:994 src/ext_l10n.h:1047
+#, fuzzy
+msgid "Cicero Points"
+msgstr "Печатать"
+
+#: src/ext_l10n.h:995 src/ext_l10n.h:997
+msgid "Units:"
+msgstr "Единицы:"
+
+#: src/ext_l10n.h:996 src/ext_l10n.h:998
+msgid "Unit of Size, Stretch and Slink"
+msgstr ""
+
+#
+#: src/ext_l10n.h:999
+msgid "Value:"
+msgstr "Значение:"
+
+#: src/ext_l10n.h:1000
+#, fuzzy
+msgid "Amount of spacing"
+msgstr "Промежуток"
+
+#: src/ext_l10n.h:1001
+msgid "Stretch:"
+msgstr ""
+
+#: src/ext_l10n.h:1002
+msgid "Margin by which paragraph is allowed to increase"
+msgstr ""
+
+#: src/ext_l10n.h:1003
+msgid "Shrink:"
+msgstr ""
+
+#: src/ext_l10n.h:1004
+msgid "Margin by which paragraph is allowed to decrease"
+msgstr ""
+
+#: src/ext_l10n.h:1006 src/ext_l10n.h:1015
+#, fuzzy
+msgid "DefSkip"
+msgstr ""
+"Промежуток\n"
+"между абзацами:"
+
+#
+#: src/ext_l10n.h:1007 src/ext_l10n.h:1016
+msgid "SmallSkip"
+msgstr "Маленький"
+
+#
+#: src/ext_l10n.h:1008 src/ext_l10n.h:1017
+msgid "MedSkip"
+msgstr "Средний"
+
+#: src/ext_l10n.h:1009 src/ext_l10n.h:1018
+msgid "BigSkip"
+msgstr "Большой"
+
+#: src/ext_l10n.h:1010 src/ext_l10n.h:1019
+msgid "VFill"
+msgstr "Вертикальный клей"
+
+#: src/ext_l10n.h:1012
+msgid "Above:"
+msgstr "Перед:"
+
+#: src/ext_l10n.h:1013
+msgid "Below:"
+msgstr "После:"
+
+#: src/ext_l10n.h:1021
+msgid "Keep space at the top of the page"
+msgstr "Сохранять расстояние сверху страницы"
+
+#: src/ext_l10n.h:1022
+msgid "Keep space at top of the page"
+msgstr "Сохранять расстояние сверху страницы"
+
+#: src/ext_l10n.h:1023
+msgid "Keep space at the bottom of the page"
+msgstr "Сохранять расстояние снизу страницы"
+
+#
+#: src/ext_l10n.h:1024
+msgid "List environment"
+msgstr "окружение Список"
+
+#
+#: src/ext_l10n.h:1025
+msgid "Label width:"
+msgstr "Ширина метки:"
+
+#
+#: src/ext_l10n.h:1026
+msgid "Label width in list environment"
+msgstr "Ширина метки в окружении Список"
+
+#
+#: src/ext_l10n.h:1027
+msgid "&Lines and Page breaks"
+msgstr "Разрывы строк и страниц"
+
+#
+#: src/ext_l10n.h:1028
+msgid "Page break"
+msgstr "Разрыв страницы"
+
+#: src/ext_l10n.h:1029 src/ext_l10n.h:1033
+msgid "above paragraph"
+msgstr "выше абзац"
+
+#: src/ext_l10n.h:1030 src/ext_l10n.h:1034
+msgid "below paragraph"
+msgstr "ниже абзац"
+
+#: src/ext_l10n.h:1032
+msgid "Line"
+msgstr "Линия"
+
+#
+#: src/ext_l10n.h:1035
+msgid "&Extra options"
+msgstr "Доп. параметры"
+
+#: src/ext_l10n.h:1036
+msgid "Unit:"
+msgstr "Единицы:"
+
+#: src/ext_l10n.h:1050
+msgid "Wrap text around floats"
+msgstr "Окружать плавающие объекты текстом"
+
+#: src/ext_l10n.h:1051
+msgid "Indent whole paragraph"
+msgstr "Отступ всего параграфа"
+
+#: src/ext_l10n.h:1052
+msgid "Width:"
+msgstr "Ширина:"
+
+#
+#: src/ext_l10n.h:1053
+msgid "Minipage options"
+msgstr "Настройки Мини-страницы"
+
+#
+#: src/ext_l10n.h:1054
+msgid "Start new minipage"
+msgstr "Начать мини-страницу"
+
+#: src/ext_l10n.h:1055
+msgid "HFill between minipage paragraphs"
+msgstr "Горизонтальный клей между абзацами мини-страницы"
+
+#: src/ext_l10n.h:1056
+msgid "Vertical Alignment:"
+msgstr "Верт. выравнивание:"
+
+#: src/ext_l10n.h:1064
+msgid "LaTeX pre-amble"
+msgstr "Преамбула LaTeX"
+
+#: src/ext_l10n.h:1065
+msgid "The LaTeX pre-amble"
+msgstr "Преамбула LaTeX"
+
+#: src/ext_l10n.h:1066
+msgid "&Edit ..."
+msgstr ""
+
+#: src/ext_l10n.h:1067
+msgid "Edit the pre-amble in an external editor"
+msgstr ""
+
+#: src/ext_l10n.h:1072
+#, fuzzy
+msgid "Print Destination"
+msgstr "Ориентация"
+
+#
+#: src/ext_l10n.h:1073
+msgid "P&rinter"
+msgstr "Принтер"
+
+#: src/ext_l10n.h:1074
+msgid "Send output to the printer"
+msgstr "Послать вывод на принтер"
+
+#: src/ext_l10n.h:1076 src/ext_l10n.h:1078
+msgid "Send output to a file"
+msgstr "Послать вывод в файл"
+
+#: src/ext_l10n.h:1077
+msgid "Send output to the given printer"
+msgstr "Послать вывод на данный принтер"
+
+#: src/ext_l10n.h:1080
+msgid "Pages"
+msgstr "Страницы"
+
+#: src/ext_l10n.h:1081
+msgid "&All"
+msgstr "Все"
+
+#: src/ext_l10n.h:1082
+msgid "Print all pages"
+msgstr "Печатать все страницы"
+
+#: src/ext_l10n.h:1083
+msgid "&Odd"
+msgstr "Нечётные"
+
+#: src/ext_l10n.h:1084
+msgid "Print odd pages only"
+msgstr "нечётные страницы"
+
+#: src/ext_l10n.h:1085
+msgid "&Even"
+msgstr "Чётные"
+
+#: src/ext_l10n.h:1086
+msgid "Print even pages only"
+msgstr "чётные страницы"
+
+#: src/ext_l10n.h:1087
+msgid "&Last page:"
+msgstr "Последняя страница:"
+
+#: src/ext_l10n.h:1088
+msgid "Page number to print to"
+msgstr "Номер страницы до которой печатать"
+
+#: src/ext_l10n.h:1089
+msgid "Re&verse order"
+msgstr "Обратный"
+
+#: src/ext_l10n.h:1090
+msgid "Print in reverse order"
+msgstr "Печатать в обратном порядке"
+
+#: src/ext_l10n.h:1091
+msgid "Page number to print from"
+msgstr "Номер страницы с которой печатать"
+
+#: src/ext_l10n.h:1092
+msgid "Ran&ge"
+msgstr "Диапазон"
+
+#: src/ext_l10n.h:1093
+msgid "Set a range of pages to print"
+msgstr "Установить диапазон страниц для печати"
+
+#: src/ext_l10n.h:1094
+msgid "&Starting range:"
+msgstr "Начальный диапазон"
+
+#: src/ext_l10n.h:1096
+msgid "Number of copies"
+msgstr "Число копий"
+
+#
+#: src/ext_l10n.h:1097
+msgid "&Collate"
+msgstr "собирать"
+
+#: src/ext_l10n.h:1098
+msgid "Collate copies"
+msgstr "Собирать копии"
+
+#: src/ext_l10n.h:1099
+#, fuzzy
+msgid "&Print"
+msgstr "Печатать"
+
+#: src/ext_l10n.h:1102 src/ext_l10n.h:1187
+#, fuzzy
+msgid "&Type"
+msgstr "Тип"
+
+#
+#: src/ext_l10n.h:1104
+#, fuzzy
+msgid "Update the reference list"
+msgstr "Редактировать параметры"
+
+#
+#: src/ext_l10n.h:1105
+#, fuzzy
+msgid "Sort"
+msgstr "Упорядочить"
+
+#: src/ext_l10n.h:1106
+msgid "Sort references in alphabetical order"
+msgstr ""
+
+#: src/ext_l10n.h:1108
+#, fuzzy
+msgid "Move the document cursor to reference"
+msgstr "Возможно, этот документ обрезан"
+
+#
+#: src/ext_l10n.h:1110
+#, fuzzy
+msgid "Page number"
+msgstr "Номер страницы"
+
+#: src/ext_l10n.h:1111
+msgid "Ref on page xxx"
+msgstr ""
+
+#: src/ext_l10n.h:1112
+msgid "On page xxx"
+msgstr ""
+
+#
+#: src/ext_l10n.h:1113
+#, fuzzy
+msgid "Pretty reference"
+msgstr "Параметры"
+
+#: src/ext_l10n.h:1114
+#, fuzzy
+msgid "Reference as it appears in output"
+msgstr "Имя формата, как оно будет показываться в меню."
+
+#: src/ext_l10n.h:1115
+#, fuzzy
+msgid "&Reference:"
+msgstr "Перекрёстная ссылка"
+
+#: src/ext_l10n.h:1116
+#, fuzzy
+msgid "&Name:"
+msgstr "Имя"
+
+#
+#: src/ext_l10n.h:1117
+#, fuzzy
+msgid "Available references"
+msgstr "Сохранить параметры"
+
+#
+#: src/ext_l10n.h:1120
+#, fuzzy
+msgid "Search and replace"
+msgstr "Cтрока была заменена."
+
+#: src/ext_l10n.h:1121
+#, fuzzy
+msgid "&Find:"
+msgstr "Искать"
+
+#: src/ext_l10n.h:1122
+#, fuzzy
+msgid "Replace &with:"
+msgstr "Заменить на"
+
+#: src/ext_l10n.h:1123
+#, fuzzy
+msgid "Case &sensitive"
+msgstr ""
+"Учитывать\n"
+"регистр"
+
+#: src/ext_l10n.h:1124
+msgid "Match whole words onl&y"
+msgstr ""
+
+#: src/ext_l10n.h:1125
+msgid "Find &Next"
+msgstr ""
+
+#: src/ext_l10n.h:1126 src/ext_l10n.h:1134 src/ext_l10n.h:1183
+#, fuzzy
+msgid "&Replace"
+msgstr ""
+"Заменить\n"
+"на"
+
+#: src/ext_l10n.h:1127
+#, fuzzy
+msgid "Replace &All "
+msgstr "Заменить все"
+
+#: src/ext_l10n.h:1128
+msgid "Search &backwards"
+msgstr ""
+
+#: src/ext_l10n.h:1130
+#, fuzzy
+msgid "File: "
+msgstr "Тип файла"
+
+#: src/ext_l10n.h:1133
+#, fuzzy
+msgid "Suggestions:"
+msgstr "Функции"
+
+#: src/ext_l10n.h:1135
+#, fuzzy
+msgid "Replace word with current choice"
+msgstr "Заменить на текущий документ?"
+
+#
+#: src/ext_l10n.h:1136
+#, fuzzy
+msgid "&Add"
+msgstr "Добавить"
+
+#: src/ext_l10n.h:1137
+#, fuzzy
+msgid "Add the word to your personal dictionary"
+msgstr "Добавить в личный словарь"
+
+#: src/ext_l10n.h:1138
+#, fuzzy
+msgid "&Ignore"
+msgstr "Игнорировать"
+
+#: src/ext_l10n.h:1139
+#, fuzzy
+msgid "Ignore this word"
+msgstr "Пропустить слово"
+
+#: src/ext_l10n.h:1140
+msgid "&Accept"
+msgstr ""
+
+#: src/ext_l10n.h:1141
+#, fuzzy
+msgid "Accept word for this session"
+msgstr "Пропускать это слово и дальше"
+
+#: src/ext_l10n.h:1142
+#, fuzzy
+msgid "&Options..."
+msgstr "Параметры"
+
+#: src/ext_l10n.h:1144
+#, fuzzy
+msgid "How far spellchecking has got"
+msgstr "Проверить правописание"
+
+#: src/ext_l10n.h:1146
+#, fuzzy
+msgid "Replacement:"
+msgstr "Размещение плавающих объектов:"
+
+#: src/ext_l10n.h:1147
+msgid "Current word"
+msgstr ""
+
+#: src/ext_l10n.h:1148
+#, fuzzy
+msgid "Unknown:"
+msgstr "неизвестная"
+
+#: src/ext_l10n.h:1149
+#, fuzzy
+msgid "Replace with selected word"
+msgstr "Заменить на текущий документ?"
+
+#: src/ext_l10n.h:1150
+msgid "&Start..."
+msgstr ""
+
+#: src/ext_l10n.h:1151
+#, fuzzy
+msgid "Start spellcheck"
+msgstr "Проверить правописание"
+
+#: src/ext_l10n.h:1153
+#, fuzzy
+msgid "&Rows:"
+msgstr "Строк"
+
+#
+#: src/ext_l10n.h:1154
+#, fuzzy
+msgid "Number of rows"
+msgstr "  Номер "
+
+#: src/ext_l10n.h:1155
+#, fuzzy
+msgid "&Columns:"
+msgstr "Колонок"
+
+#: src/ext_l10n.h:1156
+#, fuzzy
+msgid "Number of columns"
+msgstr "% колонки"
+
+#: src/ext_l10n.h:1157
+msgid "Resize this to the correct table dimensions"
+msgstr ""
+
+#: src/ext_l10n.h:1161
+#, fuzzy
+msgid "LaTeX classes"
+msgstr "Журнал сообщений LaTeX"
+
+#: src/ext_l10n.h:1162
+#, fuzzy
+msgid "LaTeX styles"
+msgstr "Режим команд LaTeX"
+
+#: src/ext_l10n.h:1163
+#, fuzzy
+msgid "BibTeX styles"
+msgstr "Переключить режим команд LaTeX"
+
+#: src/ext_l10n.h:1164
+#, fuzzy
+msgid "Selected classes or styles"
+msgstr "Переключить режим команд LaTeX"
+
+#: src/ext_l10n.h:1165
+msgid "Show &path"
+msgstr ""
+
+#: src/ext_l10n.h:1166
+msgid "Toggles view of the file list"
+msgstr ""
+
+#
+#: src/ext_l10n.h:1168
+#, fuzzy
+msgid "Installed files"
+msgstr "Включить файл"
+
+#: src/ext_l10n.h:1169
+#, fuzzy
+msgid "&Rescan"
+msgstr "Обновить"
+
+#: src/ext_l10n.h:1170
+#, fuzzy
+msgid "Built new file list"
+msgstr "В результате преобразования получен пустой файл"
+
+#
+#: src/ext_l10n.h:1171
+#, fuzzy
+msgid "&View"
+msgstr "Просмотр"
+
+#: src/ext_l10n.h:1172
+msgid ""
+"Show contents of marked file. Only possible when files are shown with path"
+msgstr ""
+
+#: src/ext_l10n.h:1174
+msgid "Close this dialog"
+msgstr ""
+
+#
+#: src/ext_l10n.h:1178
+#, fuzzy
+msgid "Entry"
+msgstr "Введите метку:"
+
+#: src/ext_l10n.h:1179
+#, fuzzy
+msgid "Thesaurus entries"
+msgstr "Тезаурус"
+
+#
+#: src/ext_l10n.h:1180
+#, fuzzy
+msgid "Select a related word"
+msgstr "Выберите файл шаблона"
+
+#
+#: src/ext_l10n.h:1181
+#, fuzzy
+msgid "&Selection"
+msgstr "выделенная область"
+
+#: src/ext_l10n.h:1182
+msgid "The selected entry"
+msgstr ""
+
+#: src/ext_l10n.h:1184
+msgid "Replace the entry with the selection"
+msgstr ""
+
+#: src/ext_l10n.h:1186
+msgid "Table Of Contents"
+msgstr "Содержание"
+
+#: src/ext_l10n.h:1188
+msgid "Contents list"
+msgstr ""
+
+#: src/ext_l10n.h:1191
+#, fuzzy
+msgid "Insert URL"
+msgstr "Вставить метку"
+
+#
+#: src/ext_l10n.h:1192
+#, fuzzy
+msgid "&URL"
+msgstr "URL: "
+
+#: src/ext_l10n.h:1194
+#, fuzzy
+msgid "&Name"
+msgstr "Имя"
+
+#: src/ext_l10n.h:1195
+msgid "Name associated with the URL"
+msgstr ""
+
+#: src/ext_l10n.h:1197
+msgid "&Generate hyperlink"
+msgstr ""
+
+#: src/ext_l10n.h:1198
+msgid "Output as a hyperlink ?"
+msgstr ""
+
+#
+#: src/ext_l10n.h:1201
+#, fuzzy
+msgid "Version control log"
+msgstr "Лог контроля версий"
 
 #
 #~ msgid "Encoding"
