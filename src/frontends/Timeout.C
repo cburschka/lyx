@@ -1,7 +1,8 @@
 /**
  * \file Timeout.C
  * Copyright 2001 LyX Team
- * Read COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Lars Gullik Bjønnes
  * \author John Levon

@@ -1,10 +1,12 @@
 #!/bin/sh
 #
-# \file fdfix.sh
-# Copyright 2002 the LyX Team
-# Read the file COPYING
+# file fdfix.sh
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
 #
-# \author Angus Leeming, leeming@lyx.org
+# author Angus Leeming
+#
+# Full author contact details are available in file CREDITS
 #
 # This shell script takes the dialog created with fdesign and generates the
 # .C and .h files used by LyX from it.
@@ -13,8 +15,6 @@
 
 INTRO_MESSAGE ()
 {
-DATE=`date +"%Y"`
-
 # Note that we can't create a variable containing this and then
 # echo it across because some machines require -e to recognize \n et al.
 # Other machines, of course output -e, it not being an option they
@@ -27,8 +27,8 @@ cat - > ${OUTPUT_FILE} <<EOF
 
 // WARNING! All changes made to this file will be lost!
 
-// Copyright $DATE the LyX Team
-// Read the file COPYING
+// This file is part of LyX, the document processor.
+// Licence details can be found in the file COPYING.
 EOF
 }
 

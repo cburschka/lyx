@@ -2,7 +2,8 @@
 /**
  * \file xforms/FormPrint.h
  * Copyright 1999-2001 Allan Rae
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Allan Rae
  * \author Angus Leeming 

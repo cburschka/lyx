@@ -1,6 +1,7 @@
 /**
  * \file mouse_state.h
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * GUII representation of mouse presses and
  * mouse button states

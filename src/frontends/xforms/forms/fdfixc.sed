@@ -1,8 +1,10 @@
-# \file fdfixc.sed
-# Copyright 2002 the LyX Team
-# Read the file COPYING
+# file fdfixc.sed
+# This file is part of LyX, the document processor.
+# Licence details can be found in the file COPYING.
 #
-# \author Angus Leeming, leeming@lyx.org and others
+# author Angus Leeming
+#
+# Full author contact details are available in file CREDITS
 #
 # Use so:
 # sed -f fdfixc.sed < somefile.c > fixedfile.C

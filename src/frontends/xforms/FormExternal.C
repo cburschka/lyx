@@ -1,6 +1,7 @@
 /**
  * \file FormExternal.C
- * See the file COPYING.
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Asger Alstrup
  * \author John Levon

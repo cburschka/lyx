@@ -2,7 +2,8 @@
  * \file Toolbar_pimpl.C
  * Copyright 1995 Matthias Ettrich
  * Copyright 1996-1998 Lars Gullik Bjønnes
- * See the file COPYING.
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Lars Gullik Bjønnes
  *

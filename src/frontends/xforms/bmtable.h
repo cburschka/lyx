@@ -1,7 +1,8 @@
 /**
  * \file bmtable.h
  * Copyright 1995-1996 Alejandro Aguilar Sierra
- * Read the file COPYING
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Alejandro Aguilar Sierra
  *

@@ -2,7 +2,8 @@
  * \file RadioButtonGroup.C
  * Copyright 1995 Matthias Ettrich.
  * Copyright 2000 Baruch Even
- * See the file COPYING.
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
  * \author Baruch Even
  *
