@@ -27,22 +27,25 @@ implemented, since we had much time to polish it. In this release,
 most of the dialogs have been redesigned to be tighter.
 
 Note also that the xforms library has been very recently updated to
-version 1.0. This version has been released under the GPL, and the
-availability of the source means that many bugs that have been
-plaguing LyX have been fixed in xforms. You are advised to upgrade to
-xforms 1.0 to enjoy all these new fixes. As a matter of fact, LyX
-1.3.0 does not support anymore versions of xforms older than 0.89.5.
+version 1.0. This version has been released under the LGPL (Lesser
+General Public License), and the availability of the source means that
+many bugs that have been plaguing LyX have been fixed in xforms. You
+are advised to upgrade to xforms 1.0 to enjoy all these new fixes. As
+a matter of fact, LyX 1.3.0 does not support anymore versions of
+xforms older than 0.89.5.
 
-New features:
-
-- Angus??
+In most cases the dialogs have been designed to make it impossible to input 
+invalid parameters. The exception to this rule is the input of length data. 
+Power LaTeX users can still input obtuse "glue lengths", but the widgets are 
+highlighted in red if this input is invalid or incomplete. This visual 
+feedback makes it easy to see why LyX won't allow you to Apply your changes.
 
 ** Gnome frontend
 
 Unfortunately, the development of the Gnome frontend has mostly
-stopped recently and we have therefore disabled it. We strongly invite
-anyone willing to revive this port to volunteer on the developpers
-list.
+stopped recently and we have therefore chosen to disable it. We
+strongly invite anyone willing to revive this port to volunteer on the
+developpers list.
 
 ** Instant preview
 
@@ -58,14 +61,46 @@ actual equation, so it's unobtrusive too.
 
 ** Math editor
 
-Andre??
+There have been few visible and some not-so-visible changes. On the
+visible side we have better visual feedback regarding the structure of
+a formula by showing the nesting by small purple decorations in the
+formula itself and by revealing the names of the nesting levels in the
+minibuffer. There is now native support for symbols from the wasy
+package containing e.g. the zodiac symbols. New is also the internal
+structure of font changes which are now proper "insets" as anything
+else from a square root to an array. This does not only simplify the
+code greatly but also allows the same editing tricks as for the
+"regular" math. However, it was not possible to tweak the visible
+behaviour to mimic 1.2 in all cases, so this might take some time to
+get accustomed to. On the pro side, the new structure allowed
+implementing support for LaTeX's \mbox and \fbox and general
+"switching back to text mode within math", so a lot of "evil red text"
+trickery is not needed anymore.
+
+** Reading old files
+
+LyX now has a new script lyx2lyx which allows to read any old file
+produced by LyX versions as old as 0.12. 0.10 series is in the works
+for 0.10 (1.4 time line) and still older files are in the forge.
+Basically if lyx wrote it lyx will read it. :-)
+
+There is also a strong demand for being able to read files produced by
+_newer_ versions of LyX. While lyx2lyx has an infrastructure in place
+to do such things, the filters to `downgrade' LyX files (from 1.3.0 to
+1.2.x, for example) have not yet been written.
 
 ** Miscellaneous changes
 
 - LyX now automatically uses TeX fonts for screen rendering if they are
   available (it is not necessary anymore to configure your font server).
 
-- Other??
+- The Insert>Short Title allows to add an optional text for section
+  headings and captions that is designed to be used in table of
+  contents.
+
+- The Insert>Float>Floatflt Figure menu item restores the capability
+  of wrapping a text around an image which was present in 1.1.6 and
+  removed in 1.2.0
 
 What's new in version 1.2.2?
 ----------------------------
