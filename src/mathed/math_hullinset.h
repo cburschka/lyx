@@ -1,6 +1,6 @@
 // -*- C++ -*-
-#ifndef MATH_MATRIXINSET_H
-#define MATH_MATRIXINSET_H
+#ifndef MATH_HULLINSET_H
+#define MATH_HULLINSET_H
 
 #include "math_gridinset.h"
 
@@ -8,22 +8,20 @@
 #pragma interface
 #endif
 
-/** Multiline math paragraph base class.
-    This is the base to all multiline editable math objects
-    like array and eqnarray.
-    \author Alejandro Aguilar Sierra
-*/
+/** This provides an interface between "LyX insets" and "LyX math insets"
+ *  \author André Pönitz
+ */
 
 class LaTeXFeatures;
 
-class MathMatrixInset : public MathGridInset {
+class MathHullInset : public MathGridInset {
 public: 
 	///
-	MathMatrixInset();
+	MathHullInset();
 	///
-	explicit MathMatrixInset(MathInsetTypes t);
+	explicit MathHullInset(MathInsetTypes t);
 	///
-	MathMatrixInset(MathInsetTypes t, col_type cols);
+	MathHullInset(MathInsetTypes t, col_type cols);
 	///
 	MathInset * clone() const;
 	///
@@ -53,9 +51,9 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	/// identifies MatrixInsets
-	virtual MathMatrixInset const * asMatrixInset() const { return this; }
+	virtual MathHullInset const * asMatrixInset() const { return this; }
 	/// identifies MatrixInsets
-	virtual MathMatrixInset * asMatrixInset() { return this; }
+	virtual MathHullInset * asMatrixInset() { return this; }
 
 	///
 	void addRow(row_type);

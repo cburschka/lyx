@@ -4,7 +4,7 @@
 
 #include <vector>
 
-#include "math_matrixinset.h"
+#include "math_hullinset.h"
 #include "math_support.h"
 #include "debug.h"
 #include "Painter.h"
@@ -81,34 +81,34 @@ namespace {
 } // end anon namespace
 
 
-MathMatrixInset::MathMatrixInset()
+MathHullInset::MathHullInset()
 	: MathGridInset(1, 1), objtype_(LM_OT_SIMPLE), nonum_(1), label_(1)
 {
 	setDefaults();
 }
 
 
-MathMatrixInset::MathMatrixInset(MathInsetTypes t)
+MathHullInset::MathHullInset(MathInsetTypes t)
 	: MathGridInset(getCols(t), 1), objtype_(t), nonum_(1), label_(1)
 {
 	setDefaults();
 }
 
 
-MathMatrixInset::MathMatrixInset(MathInsetTypes t, col_type cols)
+MathHullInset::MathHullInset(MathInsetTypes t, col_type cols)
 	: MathGridInset(cols, 1), objtype_(t), nonum_(1), label_(1)
 {
 	setDefaults();
 }
 
 
-MathInset * MathMatrixInset::clone() const
+MathInset * MathHullInset::clone() const
 {
-	return new MathMatrixInset(*this);
+	return new MathHullInset(*this);
 }
 
 
-char MathMatrixInset::defaultColAlign(col_type col)
+char MathHullInset::defaultColAlign(col_type col)
 {
 	switch (getType()) {
 		case LM_OT_ALIGN:
@@ -124,7 +124,7 @@ char MathMatrixInset::defaultColAlign(col_type col)
 }
 
 
-int MathMatrixInset::defaultColSpace(col_type col)
+int MathHullInset::defaultColSpace(col_type col)
 {
 	switch (getType()) {
 		case LM_OT_ALIGN:
@@ -140,7 +140,7 @@ int MathMatrixInset::defaultColSpace(col_type col)
 }
 
 
-void MathMatrixInset::metrics(MathMetricsInfo const & mi) const
+void MathHullInset::metrics(MathMetricsInfo const & mi) const
 {
 	mi_ = mi;
 	mi_.style = (getType() == LM_OT_SIMPLE) ? LM_ST_TEXT : LM_ST_DISPLAY;
@@ -171,7 +171,7 @@ void MathMatrixInset::metrics(MathMetricsInfo const & mi) const
 }
 
 
-void MathMatrixInset::draw(Painter & pain, int x, int y) const
+void MathHullInset::draw(Painter & pain, int x, int y) const
 {
 	MathGridInset::draw(pain, x, y);
 
@@ -185,37 +185,37 @@ void MathMatrixInset::draw(Painter & pain, int x, int y) const
 }
 
 
-void MathMatrixInset::mathmlize(MathMLStream & os) const
+void MathHullInset::mathmlize(MathMLStream & os) const
 {
 	MathGridInset::mathmlize(os);
 }
 
 
-string MathMatrixInset::label(row_type row) const
+string MathHullInset::label(row_type row) const
 {
 	return label_[row];
 }
 
 
-void MathMatrixInset::label(row_type row, string const & label)
+void MathHullInset::label(row_type row, string const & label)
 {
 	label_[row] = label; 
 }
 
 
-void MathMatrixInset::numbered(row_type row, bool num)
+void MathHullInset::numbered(row_type row, bool num)
 {
 	nonum_[row] = !num; 
 }
 
 
-bool MathMatrixInset::numbered(row_type row) const
+bool MathHullInset::numbered(row_type row) const
 {
 	return !nonum_[row];
 }
 
 
-bool MathMatrixInset::ams() const
+bool MathHullInset::ams() const
 {
 	return true;
 
@@ -229,13 +229,13 @@ bool MathMatrixInset::ams() const
 }
 
 
-bool MathMatrixInset::display() const
+bool MathHullInset::display() const
 {
 	return getType() != LM_OT_SIMPLE;
 }
 
 
-std::vector<string> const MathMatrixInset::getLabelList() const
+std::vector<string> const MathHullInset::getLabelList() const
 {
 	std::vector<string> res;
 	for (row_type row = 0; row < nrows(); ++row)
@@ -245,7 +245,7 @@ std::vector<string> const MathMatrixInset::getLabelList() const
 }
 
 
-bool MathMatrixInset::numberedType() const
+bool MathHullInset::numberedType() const
 {
 	if (getType() == LM_OT_SIMPLE || getType() == LM_OT_XXALIGNAT)
 		return false;
@@ -256,7 +256,7 @@ bool MathMatrixInset::numberedType() const
 }
 
 
-void MathMatrixInset::validate(LaTeXFeatures & features) const
+void MathHullInset::validate(LaTeXFeatures & features) const
 {
 	features.amsstyle = ams();
 
@@ -272,7 +272,7 @@ void MathMatrixInset::validate(LaTeXFeatures & features) const
 }
 
 
-void MathMatrixInset::header_write(std::ostream & os) const
+void MathHullInset::header_write(std::ostream & os) const
 {
 	bool n = numberedType();
 
@@ -324,7 +324,7 @@ void MathMatrixInset::header_write(std::ostream & os) const
 }
 
 
-void MathMatrixInset::footer_write(std::ostream & os) const
+void MathHullInset::footer_write(std::ostream & os) const
 {
 	bool n = numberedType();
 
@@ -374,7 +374,7 @@ void MathMatrixInset::footer_write(std::ostream & os) const
 }
 
 
-void MathMatrixInset::addRow(row_type row) 
+void MathHullInset::addRow(row_type row) 
 {
 	nonum_.insert(nonum_.begin() + row + 1, !numberedType());
 	label_.insert(label_.begin() + row + 1, string());
@@ -382,7 +382,7 @@ void MathMatrixInset::addRow(row_type row)
 }
 
 
-void MathMatrixInset::appendRow()
+void MathHullInset::appendRow()
 {
 	nonum_.push_back(!numberedType());
 	label_.push_back(string());
@@ -390,7 +390,7 @@ void MathMatrixInset::appendRow()
 }
 
 
-void MathMatrixInset::delRow(row_type row) 
+void MathHullInset::delRow(row_type row) 
 {
 	MathGridInset::delRow(row);
 	nonum_.erase(nonum_.begin() + row);
@@ -398,7 +398,7 @@ void MathMatrixInset::delRow(row_type row)
 }
 
 
-void MathMatrixInset::addCol(col_type col)
+void MathHullInset::addCol(col_type col)
 {
 	switch (getType()) {
 		case LM_OT_EQUATION:
@@ -428,7 +428,7 @@ void MathMatrixInset::addCol(col_type col)
 }
 
 
-void MathMatrixInset::delCol(col_type col)
+void MathHullInset::delCol(col_type col)
 {
 	switch (getType()) {
 		case LM_OT_ALIGNAT:
@@ -443,7 +443,7 @@ void MathMatrixInset::delCol(col_type col)
 }
 
 
-string MathMatrixInset::nicelabel(row_type row) const
+string MathHullInset::nicelabel(row_type row) const
 {
 	if (nonum_[row])
 		return string();
@@ -453,7 +453,7 @@ string MathMatrixInset::nicelabel(row_type row) const
 }
 
 
-void MathMatrixInset::mutate(string const & newtype)
+void MathHullInset::mutate(string const & newtype)
 {
 	if (newtype == "dump") {
 		dump();
@@ -464,23 +464,23 @@ void MathMatrixInset::mutate(string const & newtype)
 }
 
 
-void MathMatrixInset::glueall()
+void MathHullInset::glueall()
 {
 	MathArray ar;
 	for (idx_type i = 0; i < nargs(); ++i)
 		ar.push_back(cell(i));
-	*this = MathMatrixInset(LM_OT_SIMPLE);
+	*this = MathHullInset(LM_OT_SIMPLE);
 	cell(0) = ar;
 }
 
 
-MathInsetTypes MathMatrixInset::getType() const
+MathInsetTypes MathHullInset::getType() const
 {
 	return objtype_;
 }
 
 
-void MathMatrixInset::setType(MathInsetTypes t)
+void MathHullInset::setType(MathInsetTypes t)
 {
 	objtype_ = t;
 	setDefaults();
@@ -488,7 +488,7 @@ void MathMatrixInset::setType(MathInsetTypes t)
 
 
 
-void MathMatrixInset::mutate(MathInsetTypes newtype)
+void MathHullInset::mutate(MathInsetTypes newtype)
 {
 	//lyxerr << "mutating from '" << getType() << "' to '" << newtype << "'\n";
 
@@ -645,7 +645,7 @@ void MathMatrixInset::mutate(MathInsetTypes newtype)
 }
 
 
-void MathMatrixInset::write(MathWriteInfo & os) const
+void MathHullInset::write(MathWriteInfo & os) const
 {
   header_write(os.os);
 
@@ -667,7 +667,7 @@ void MathMatrixInset::write(MathWriteInfo & os) const
 }
 
 
-void MathMatrixInset::writeNormal(NormalStream & os) const
+void MathHullInset::writeNormal(NormalStream & os) const
 {
 	os << "[formula " << normalName(getType()).c_str() << " ";
 	MathGridInset::writeNormal(os);
