@@ -1,3 +1,8 @@
+2002-04-30  Herbert Voss  <voss@lyx.org>
+
+	* buffer.C (parseSingleLyXformat2Token): fix bug with ignored
+	"keep" option
+
 2002-05-31  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxvc.C: fix bug 416 (make sure buffer is saved before
