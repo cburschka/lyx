@@ -11,13 +11,9 @@ announce that version 1.3.0 shows the first results of this.
 ** Qt frontend
 
 This is of course the most visible new feature. This frontend supports
-either Qt 2.x or 3.0.x and is mostly feature complete. The dialogs are
-not copies of those of xforms, but that some different design choices
-have been made.
-
-There are a few caveats though:
-
-- John???
+either Qt 2.x or 3.0.x and is mostly feature complete. Note that some
+of the dialogs are slightly different in design, but are generally
+functionally equivalent.
 
 ** Xforms frontend
 
@@ -45,7 +41,7 @@ feedback makes it easy to see why LyX won't allow you to Apply your changes.
 Unfortunately, the development of the Gnome frontend has mostly
 stopped recently and we have therefore chosen to disable it. We
 strongly invite anyone willing to revive this port to volunteer on the
-developpers list.
+developer's list.
 
 ** Instant preview
 
@@ -101,6 +97,11 @@ to do such things, the filters to `downgrade' LyX files (from 1.3.0 to
 - The Insert>Float>Floatflt Figure menu item restores the capability
   of wrapping a text around an image which was present in 1.1.6 and
   removed in 1.2.0
+
+- If you configure with --with-pspell (which uses the PSpell library for
+  spellchecking), you will be able to automatically spell-check
+  multi-language documents, assuming you have the right dictionaries
+  installed.
 
 What's new in version 1.2.2?
 ----------------------------
