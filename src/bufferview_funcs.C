@@ -216,11 +216,11 @@ void lang(BufferView * bv, string const & l)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 	Language const * lang = languages.getLanguage(l);
-	if (lang) {
-		font.setLanguage(lang);
-		toggleAndShow(bv, font);
-	} else
-		Alert::alert(_("Error! unknown language"),l);
+	if (!lang)
+		return;
+
+	font.setLanguage(lang);
+	toggleAndShow(bv, font);
 }
 
 

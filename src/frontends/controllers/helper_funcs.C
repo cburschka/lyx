@@ -57,9 +57,10 @@ string const browseFile(string const & filename,
 		if (result.second.find_first_of("#~$% ") == string::npos)
 			break;
 
-		Alert::alert(_("Filename can't contain any "
-			"of these characters:"),
-			_("space, '#', '~', '$' or '%'."));
+		Alert::error(_("Invalid filename"),
+			_("Filename can't contain any "
+			"of these characters:\n"
+			"space, '#', '~', '$' or '%'."));
 	}
 
 	return result.second;
@@ -111,9 +112,10 @@ string const browseDir(string const & pathname,
 		if (result.second.find_first_of("#~$% ") == string::npos)
 			break;
 
-		Alert::alert(_("directory name can't contain any "
-			"of these characters:"),
-			_("space, '#', '~', '$' or '%'."));
+		Alert::error(_("Invalid filename"),
+			_("Filename can't contain any "
+			"of these characters:\n"
+			"space, '#', '~', '$' or '%'."));
 	}
 
 	return result.second;
