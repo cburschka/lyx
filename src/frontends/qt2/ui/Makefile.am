@@ -22,7 +22,7 @@ noinst_LTLIBRARIES = libqt2ui.la
 
 nodist_libqt2ui_la_SOURCES = $(UIFILES:.ui=.h) $(UIFILES:.ui=.C)
 # The trick.
-libqt2ui_la_LINK = touch libqt2ui.la
+libqt2ui_la_LINK = touch libqt2ui.la ; echo
 
 # Use _() for localization instead of tr() or trUtf8()
 UICFLAGS=-tr qt_

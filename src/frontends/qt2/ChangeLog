@@ -1,3 +1,8 @@
+2005-01-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* ui/Makefile.am (libqt2ui_la_LINK): Improve the trick to avoid
+	relink or lib all the time.
+
 2005-01-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* QExternal.C: store all float/double values as strings.
