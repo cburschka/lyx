@@ -12,24 +12,28 @@
 #ifndef BUFFER_H
 #define BUFFER_H
 
-#include "support/std_string.h"
-#include "undo.h"
-#include "support/limited_stack.h"
-
-#include "lyxvc.h"
 #include "bufferparams.h"
-#include "texrow.h"
-#include "ParagraphList_fwd.h"
-#include "errorlist.h"
 #include "InsetList.h"
+#include "lyxvc.h"
+#include "ParagraphList_fwd.h"
+#include "texrow.h"
 
+#include "support/limited_stack.h"
 #include "support/types.h"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/signal1.hpp>
 
+#include "support/std_string.h"
+#include <iosfwd>
+#include <map>
+#include <utility>
+#include <vector>
+
+
 class AuthorList;
+class ErrorItem;
 class LyXRC;
 class LaTeXFeatures;
 class LatexRunParams;
@@ -38,6 +42,7 @@ class Messages;
 class ParIterator;
 class ParConstIterator;
 class TeXErrors;
+class Undo;
 
 
 /** The buffer object.
@@ -99,8 +104,9 @@ public:
 
 	/// This parses a single token
 	int readParagraph(LyXLex &, string const & token,
-	              ParagraphList & pars, ParagraphList::iterator & pit,
-	              lyx::depth_type & depth);
+			  ParagraphList & pars,
+			  ParagraphList::iterator & pit,
+			  lyx::depth_type & depth);
 
 	///
 	void insertStringAsLines(ParagraphList::iterator &, lyx::pos_type &,
@@ -137,7 +143,7 @@ public:
 	bool writeFile(string const &) const;
 
 	///
-	void writeFileAscii(string const & , int);
+	void writeFileAscii(string const &, int);
 	///
 	void writeFileAscii(std::ostream &, int);
 	///
@@ -157,12 +163,13 @@ public:
 			   bool output_body = true);
 	///
 	void simpleDocBookOnePar(std::ostream &,
-				 ParagraphList::iterator par, int & desc_on,
+				 ParagraphList::iterator par,
+				 int & desc_on,
 				 lyx::depth_type depth) const;
 	///
 	void simpleLinuxDocOnePar(std::ostream & os,
-	       ParagraphList::iterator par,
-				 lyx::depth_type depth) const;
+				  ParagraphList::iterator par,
+				  lyx::depth_type depth) const;
 	///
 	void makeLinuxDocFile(string const & filename,
 			      bool nice, bool only_body = false);

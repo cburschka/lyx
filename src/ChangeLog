@@ -1,5 +1,28 @@
 2003-09-06  Angus Leeming  <leeming@lyx.org>
 
+	* buffer_funcs.C:
+	* buffer.h:
+	* bufferlist.C:
+	* BufferView.C:
+	* bufferview_funcs.C:
+	* BufferView_pimpl.C:
+	* CutAndPaste.C:
+	* lyx_cb.C:
+	* lyxfunc.C:
+	* paragraph.h:
+	* ParagraphParameters.C:
+	* tabular.C:
+	* text3.C:
+	* toc.C:
+	* undo_funcs.C:
+	* frontends/controllers/ControlDocument.C:
+	* insets/insetcaption.C: rearrange the #includes into some sort of
+	coherent order.
+
+	* buffer.h: remove #includes ErrorList.h, undo.h
+
+2003-09-06  Angus Leeming  <leeming@lyx.org>
+
 	* support/types.h: add a 'depth_type' typedef, used to store the
 	nesting depth of a paragraph.
 

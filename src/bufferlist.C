@@ -11,24 +11,23 @@
 #include <config.h>
 
 #include "bufferlist.h"
-#include "lyx_main.h"
-#include "lastfiles.h"
+
 #include "buffer.h"
 #include "debug.h"
-#include "lyx_cb.h"
 #include "gettext.h"
+#include "lastfiles.h"
+#include "lyx_cb.h"
+#include "lyx_main.h"
 #include "paragraph.h"
 #include "TextCache.h"
 
 #include "frontends/Alert.h"
 
 #include "support/filetools.h"
-#include "support/lyxfunctional.h"
 #include "support/LAssert.h"
+#include "support/lyxfunctional.h"
 
 #include <boost/bind.hpp>
-
-
 
 using namespace lyx::support;
 

@@ -20,27 +20,29 @@
 #include <config.h>
 
 #include "lyxtext.h"
-#include "support/std_sstream.h"
-#include "funcrequest.h"
-#include "frontends/LyXView.h"
-#include "undo_funcs.h"
+
 #include "buffer.h"
 #include "buffer_funcs.h"
-#include "gettext.h"
 #include "BufferView.h"
+#include "counters.h"
 #include "CutAndPaste.h"
-#include "frontends/font_metrics.h"
 #include "debug.h"
-#include "lyxrc.h"
+#include "errorlist.h"
 #include "Floating.h"
 #include "FloatList.h"
+#include "funcrequest.h"
+#include "gettext.h"
 #include "language.h"
-#include "ParagraphParameters.h"
-#include "counters.h"
+#include "lyxrc.h"
 #include "lyxrow.h"
 #include "lyxrow_funcs.h"
 #include "metricsinfo.h"
 #include "paragraph_funcs.h"
+#include "ParagraphParameters.h"
+#include "undo_funcs.h"
+
+#include "frontends/font_metrics.h"
+#include "frontends/LyXView.h"
 
 #include "insets/insetbibitem.h"
 #include "insets/insetenv.h"
@@ -48,11 +50,12 @@
 #include "insets/insetwrap.h"
 
 #include "support/LAssert.h"
-#include "support/textutils.h"
 #include "support/lstrings.h"
+#include "support/textutils.h"
 
 #include <boost/tuple/tuple.hpp>
 
+#include "support/std_sstream.h"
 
 using namespace lyx::support;
 

@@ -13,24 +13,27 @@
 
 #include <config.h>
 
-#include "buffer.h"
 #include "bufferview_funcs.h"
+
+#include "buffer.h"
 #include "BufferView.h"
-#include "language.h"
 #include "gettext.h"
+#include "language.h"
 #include "lyxlex.h"
 #include "lyxrow.h"
 #include "paragraph.h"
 #include "ParagraphParameters.h"
 
-#include "frontends/LyXView.h"
 #include "frontends/Alert.h"
+#include "frontends/LyXView.h"
+
+#include "insets/insettext.h"
+
 #include "mathed/math_cursor.h"
 
 #include "support/tostr.h"
-#include "support/std_sstream.h"
 
-#include "insets/insettext.h"
+#include "support/std_sstream.h"
 
 using namespace lyx::support;
 

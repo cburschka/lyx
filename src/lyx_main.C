@@ -23,6 +23,7 @@
 #include "converter.h"
 #include "debug.h"
 #include "encoding.h"
+#include "errorlist.h"
 #include "format.h"
 #include "gettext.h"
 #include "kbmap.h"
@@ -37,7 +38,6 @@
 
 #include "frontends/Alert.h"
 #include "frontends/lyx_gui.h"
-
 
 #include "support/FileInfo.h"
 #include "support/filetools.h"

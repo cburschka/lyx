@@ -14,6 +14,7 @@
 #include "paragraph_pimpl.h"
 #include "buffer.h"
 #include "debug.h"
+#include "errorlist.h"
 #include "gettext.h"
 #include "iterators.h"
 #include "language.h"

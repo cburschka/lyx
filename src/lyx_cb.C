@@ -15,29 +15,30 @@
 #include <config.h>
 
 #include "lyx_cb.h"
-#include "lyx_main.h"
+
 #include "buffer.h"
 #include "bufferlist.h"
+#include "BufferView.h"
 #include "debug.h"
+#include "gettext.h"
 #include "lastfiles.h"
+#include "lyx_main.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
-#include "gettext.h"
-#include "BufferView.h"
 #include "paragraph.h"
 
-#include "frontends/lyx_gui.h"
-#include "frontends/LyXView.h"
 #include "frontends/Alert.h"
 #include "frontends/FileDialog.h"
+#include "frontends/lyx_gui.h"
+#include "frontends/LyXView.h"
 
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/forkedcall.h"
 #include "support/lyxlib.h"
+#include "support/os.h"
 #include "support/path.h"
 #include "support/path_defines.h"
-#include "support/os.h"
 #include "support/systemcall.h"
 
 #include <cerrno>

@@ -13,17 +13,19 @@
 #include <config.h>
 
 #include "buffer_funcs.h"
-#include "bufferlist.h"
+
 #include "buffer.h"
+#include "bufferlist.h"
+#include "errorlist.h"
 #include "gettext.h"
+#include "LaTeX.h"
 #include "paragraph.h"
 #include "vc-backend.h"
-#include "LaTeX.h"
 
 #include "frontends/Alert.h"
 
-#include "support/filetools.h"
 #include "support/FileInfo.h"
+#include "support/filetools.h"
 #include "support/lyxlib.h"
 
 

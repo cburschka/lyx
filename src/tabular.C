@@ -18,10 +18,10 @@
 #include <config.h>
 
 #include "tabular.h"
-#include "LaTeXFeatures.h"
-#include "support/std_sstream.h"
+
 #include "buffer.h"
 #include "debug.h"
+#include "LaTeXFeatures.h"
 #include "lyxlex.h"
 #include "paragraph.h"
 
@@ -31,7 +31,7 @@
 #include "support/lstrings.h"
 #include "support/tostr.h"
 
-
+#include "support/std_sstream.h"
 
 using namespace lyx::support;
 

@@ -15,32 +15,31 @@
 #include <config.h>
 
 #include "BufferView.h"
-#include "BufferView_pimpl.h"
-
-#include "WordLangTuple.h"
 #include "buffer.h"
 #include "bufferlist.h"
-#include "gettext.h"
+#include "BufferView_pimpl.h"
 #include "funcrequest.h"
+#include "gettext.h"
 #include "iterators.h"
 #include "language.h"
 #include "lyxtext.h"
-#include "undo_funcs.h"
 #include "paragraph.h"
 #include "paragraph_funcs.h"
+#include "undo_funcs.h"
+#include "WordLangTuple.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
-#include "frontends/WorkArea.h"
 #include "frontends/screen.h"
+#include "frontends/WorkArea.h"
 
 #include "insets/insetcommand.h" // ChangeRefs
 #include "insets/updatableinset.h"
 
 #include "support/filetools.h"
-#include "support/lyxalgo.h" // lyx_count
 #include "support/LAssert.h"
+#include "support/lyxalgo.h" // lyx_count
 
 
 extern BufferList bufferlist;

@@ -16,15 +16,15 @@
 #ifndef PARAGRAPH_H
 #define PARAGRAPH_H
 
+#include "changes.h"
+#include "InsetList.h"
 #include "lyxlayout_ptr_fwd.h"
 #include "lyxfont.h" // Just for LyXFont::FONT_SIZE
-#include "InsetList.h"
+#include "RowList_fwd.h"
 
 #include "insets/inset.h" // Just for InsetOld::Code
 
 #include "support/types.h"
-#include "changes.h"
-#include "RowList_fwd.h"
 
 #include "support/std_string.h"
 
@@ -85,7 +85,7 @@ public:
 
 	///
 	void write(Buffer const &, std::ostream &, BufferParams const &,
-		       depth_type & depth) const;
+		   depth_type & depth) const;
 	///
 	void validate(LaTeXFeatures &) const;
 

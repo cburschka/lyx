@@ -15,20 +15,20 @@
 #include <config.h>
 
 #include "ParagraphParameters.h"
-#include "tex-strings.h"
-#include "lyxlex.h"
 
 #include "buffer.h"
 #include "BufferView.h"
-#include "support/std_sstream.h"
 #include "gettext.h"
+#include "lyxlex.h"
 #include "lyxtext.h"
 #include "paragraph.h"
+#include "tex-strings.h"
 
 #include "frontends/LyXView.h"
 
 #include "support/lstrings.h"
 
+#include "support/std_sstream.h"
 
 using namespace lyx::support;
 

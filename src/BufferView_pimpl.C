@@ -19,9 +19,9 @@
 #include <config.h>
 
 #include "BufferView_pimpl.h"
-#include "bufferlist.h"
 #include "buffer.h"
 #include "buffer_funcs.h"
+#include "bufferlist.h"
 #include "debug.h"
 #include "factory.h"
 #include "FloatList.h"
@@ -54,16 +54,15 @@
 #include "frontends/WorkArea.h"
 #include "frontends/WorkAreaFactory.h"
 
-#include "mathed/formulabase.h"
-
 #include "graphics/Previews.h"
 
-#include "support/tostr.h"
+#include "mathed/formulabase.h"
+
 #include "support/filetools.h"
 #include "support/path_defines.h"
+#include "support/tostr.h"
 
 #include <boost/bind.hpp>
-
 
 
 using std::vector;

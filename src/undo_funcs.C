@@ -15,13 +15,15 @@
 #include <config.h>
 
 #include "undo_funcs.h"
-#include "lyxtext.h"
-#include "funcrequest.h"
-#include "BufferView.h"
+
 #include "buffer.h"
-#include "insets/updatableinset.h"
+#include "BufferView.h"
+#include "funcrequest.h"
 #include "iterators.h"
+#include "lyxtext.h"
 #include "paragraph.h"
+
+#include "insets/updatableinset.h"
 
 
 /// The flag used by FinishUndo().

@@ -16,31 +16,35 @@
 #include <config.h>
 
 #include "lyxtext.h"
-#include "BufferView.h"
-#include "funcrequest.h"
-#include "lyxrc.h"
-#include "support/std_sstream.h"
-#include "debug.h"
+
 #include "buffer.h"
+#include "BufferView.h"
+#include "debug.h"
+#include "factory.h"
+#include "funcrequest.h"
+#include "gettext.h"
+#include "intl.h"
+#include "language.h"
+#include "lyxrc.h"
 #include "lyxrow.h"
 #include "paragraph.h"
 #include "ParagraphParameters.h"
-#include "gettext.h"
-#include "factory.h"
-#include "intl.h"
-#include "language.h"
-#include "support/tostr.h"
-#include "support/lstrings.h"
-#include "support/LAssert.h"
-#include "frontends/LyXView.h"
+#include "text_funcs.h"
+#include "undo_funcs.h"
+
 #include "frontends/Dialogs.h"
-#include "insets/insetspecialchar.h"
-#include "insets/insettext.h"
+#include "frontends/LyXView.h"
+
 #include "insets/insetcommand.h"
 #include "insets/insetnewline.h"
-#include "undo_funcs.h"
-#include "text_funcs.h"
+#include "insets/insetspecialchar.h"
+#include "insets/insettext.h"
 
+#include "support/LAssert.h"
+#include "support/lstrings.h"
+#include "support/tostr.h"
+
+#include "support/std_sstream.h"
 #include <clocale>
 
 using namespace lyx::support;

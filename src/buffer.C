@@ -11,28 +11,28 @@
 #include <config.h>
 
 #include "buffer.h"
+
 #include "buffer_funcs.h"
 #include "bufferlist.h"
-#include "LyXAction.h"
-#include "lyxrc.h"
-#include "lyxlex.h"
-#include "version.h"
-#include "LaTeX.h"
 #include "Chktex.h"
 #include "debug.h"
-#include "LaTeXFeatures.h"
-#include "gettext.h"
-#include "language.h"
+#include "errorlist.h"
 #include "exporter.h"
-#include "support/std_sstream.h"
 #include "format.h"
-#include "ParagraphParameters.h"
+#include "gettext.h"
 #include "iterators.h"
-#include "sgml.h"
-#include "paragraph_funcs.h"
+#include "language.h"
+#include "LaTeX.h"
+#include "LaTeXFeatures.h"
+#include "LyXAction.h"
+#include "lyxlex.h"
+#include "lyxrc.h"
 #include "messages.h"
-
-
+#include "paragraph_funcs.h"
+#include "ParagraphParameters.h"
+#include "sgml.h"
+#include "undo.h"
+#include "version.h"
 
 #include "insets/insetbibitem.h"
 #include "insets/insetbibtex.h"
@@ -43,18 +43,20 @@
 
 #include "graphics/Previews.h"
 
-#include "support/LAssert.h"
-#include "support/textutils.h"
-#include "support/filetools.h"
-#include "support/path.h"
-#include "support/os.h"
-#include "support/tostr.h"
-#include "support/lyxlib.h"
 #include "support/FileInfo.h"
+#include "support/filetools.h"
 #include "support/gzstream.h"
+#include "support/LAssert.h"
+#include "support/lyxlib.h"
+#include "support/os.h"
+#include "support/path.h"
+#include "support/textutils.h"
+#include "support/tostr.h"
 
 #include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>
+
+#include "support/std_sstream.h"
 
 #include <iomanip>
 #include <stack>

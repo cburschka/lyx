@@ -17,6 +17,7 @@
 #include "BufferView.h"
 #include "CutAndPaste.h"
 #include "debug.h"
+#include "errorlist.h"
 #include "funcrequest.h"
 #include "gettext.h"
 #include "intl.h"

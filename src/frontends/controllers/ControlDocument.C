@@ -10,25 +10,25 @@
 
 #include <config.h>
 
-#include "BufferView.h"
 #include "ControlDocument.h"
 #include "ViewBase.h"
 
-#include "gettext.h"
-
 #include "buffer.h"
 #include "buffer_funcs.h"
+#include "BufferView.h"
+#include "CutAndPaste.h"
+#include "errorlist.h"
+#include "gettext.h"
 #include "iterators.h"
 #include "language.h"
 #include "lyxtextclasslist.h"
-#include "CutAndPaste.h"
 #include "paragraph.h"
 
-#include "frontends/LyXView.h"
 #include "frontends/Alert.h"
+#include "frontends/LyXView.h"
 
-#include "support/LAssert.h"
 #include "support/filetools.h"
+#include "support/LAssert.h"
 #include "support/path_defines.h"
 
 using namespace lyx::support;
