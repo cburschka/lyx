@@ -55,7 +55,7 @@ cat <<EOF > tmppot
 EOF
 
 grep -E "_\(\".*\"\)" `find src -name \*.[hHC]` | \
-awk 'BEGIN {FS= ":"} {print $1}' | sort -f | uniq >> tmppot
+awk 'BEGIN {FS= ":"} {print $1}' | sort -f -n | uniq >> tmppot
 mv tmppot po/POTFILES.in
 echo "done"
 
