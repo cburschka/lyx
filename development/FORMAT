@@ -1,6 +1,14 @@
 Changes to the LyX format since version 220 (LyX 1.2.0) was released.
 =====================================================================
 
+2002-08-12  Andre' Poenitz <poenitz@gmx.de>
+
+Added \lyxlock for locked math inset when written to .lyx file.
+When "downgrading" .lyx files this should simple be deleted but it
+does not hurt at all if it stays in. It does not have to be added
+when "upgrading".
+
+
 2002-08-02  Angus Leeming  <leeming@lyx.org>
 
 Added a boolean "preview" flag to InsetCommandParams.
