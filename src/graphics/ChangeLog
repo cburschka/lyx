@@ -1,3 +1,8 @@
+2001-09-21  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ImageLoaderXPM.C (runImageLoader): If the pixmap contains a
+	transparent colour, then set it to the colour of the background.
+
 2001-09-20  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* GraphicsCacheItem.C (convertImage): only convert if "from" and "to"

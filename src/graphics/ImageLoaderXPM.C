@@ -13,6 +13,7 @@
 
 #include <config.h>
 #include "ImageLoaderXPM.h"
+#include "ColorHandler.h"
 #include "frontends/support/LyXImage.h"
 #include "frontends/GUIRunTime.h"
 #include "support/filetools.h"
@@ -66,11 +67,21 @@ ImageLoaderXPM::runImageLoader(string const & filename)
 
 	Pixmap pixmap;
 	Pixmap mask;
+
+	// If the pixmap contains a transparent colour, then set it to the
+	// colour of the background (Angus 21 Sep 2001)
+	XpmColorSymbol xpm_col;
+	xpm_col.name = 0;
+	xpm_col.value = "none";
+	xpm_col.pixel = lyxColorHandler->colorPixel(LColor::graphicsbg);
+
 	XpmAttributes attrib;
-	
-	attrib.valuemask = XpmCloseness;
+	attrib.valuemask = XpmCloseness | XpmColorSymbols;
 	attrib.closeness = 10000;
-	
+	attrib.valuemask = XpmColorSymbols;
+	attrib.numsymbols = 1;
+	attrib.colorsymbols = &xpm_col;
+
 	int status = XpmReadFileToPixmap(
 			display, 
 			XRootWindowOfScreen(screen), 
@@ -83,7 +94,7 @@ ImageLoaderXPM::runImageLoader(string const & filename)
 			<< endl;
 		return ErrorWhileLoading;
 	}
-	
+
 	// This should have been set by the XpmReadFileToPixmap call!
 	lyx::Assert(attrib.valuemask & XpmSize);
 

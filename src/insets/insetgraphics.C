@@ -284,12 +284,6 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 	// we draw just a rectangle.
 	if (imageLoaded) {
 
-		// Draw a ractangle with the specified color. If the image is
-		// transparent, this will shine through.
-		paint.fillRectangle(old_x + 2, baseline - lascent,
-				    lwidth - 4, lascent + ldescent,
-				    LColor::graphicsbg);
-
 		paint.image(old_x + 2, baseline - lascent,
 		            lwidth - 4, lascent + ldescent,
 		            cacheHandle->getImage());
