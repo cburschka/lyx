@@ -82,6 +82,8 @@ void MathArrayInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	ArrayChanger dummy(mi.base);
 	MathGridInset::metrics(mi, dim);
+	dim.wid += 6;	
+	dim_ = dim;
 }
 
 
@@ -89,7 +91,7 @@ void MathArrayInset::draw(PainterInfo & pi, int x, int y) const
 {
 	setPosCache(pi, x, y);
 	ArrayChanger dummy(pi.base);
-	MathGridInset::draw(pi, x + 1, y);
+	MathGridInset::drawWithMargin(pi, x, y, 4, 2);
 }
 
 

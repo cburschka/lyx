@@ -128,6 +128,7 @@ void MathNestInset::getCursorPos(CursorSlice const & sl,
 		x += 2;
 }
 
+
 void MathNestInset::metrics(MetricsInfo const & mi) const
 {
 	MetricsInfo m = mi;

@@ -111,6 +111,7 @@ void MathDelimInset::draw(PainterInfo & pi, int x, int y) const
 	mathed_draw_deco(pi, x + 4, b, dw_, dim_.height(), left_);
 	mathed_draw_deco(pi, x + dim_.width() - dw_ - 4,
 		b, dw_, dim_.height(), right_);
+	setPosCache(pi, x, y);
 }
 
 

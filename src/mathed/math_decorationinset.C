@@ -128,6 +128,7 @@ void MathDecorationInset::draw(PainterInfo & pi, int x, int y) const
 		mathed_draw_deco(pi, x + 1 + (cell(0).width() - dw_) / 2,
 			y + dy_, dw_, dh_, key_->name);
 	drawMarkers(pi, x, y);
+	setPosCache(pi, x, y);
 }
 
 

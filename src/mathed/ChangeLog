@@ -1,3 +1,13 @@
+2005-04-05  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* math_amsarrayinset.C:
+	* math__arrayinset.C:
+	* math_decorationinset.C:
+	* math_deliminset.C:
+	* math_nestinset.C:
+	* math_tabularinset.C: Final touch on various corner marker
+	positions and inset clickability in math
+
 2005-04-04  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* math_splitinset.[Ch]: add draw method calling setPosCache,

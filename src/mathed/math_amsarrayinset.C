@@ -84,17 +84,17 @@ void MathAMSArrayInset::metrics(MetricsInfo & mi, Dimension & dim) const
 	if (m.base.style == LM_ST_DISPLAY)
 		m.base.style = LM_ST_TEXT;
 	MathGridInset::metrics(m, dim);
-	dim.wid += 12;
+	dim.wid += 14;
 	dim_ = dim;
 }
 
 
 void MathAMSArrayInset::draw(PainterInfo & pi, int x, int y) const
 {
-	MathGridInset::drawWithMargin(pi, x, y, 6, 6);
+	MathGridInset::drawWithMargin(pi, x, y, 6, 8);
 	int const yy = y - dim_.ascent();
 	mathed_draw_deco(pi, x + 1, yy, 5, dim_.height(), name_left());
-	mathed_draw_deco(pi, x + dim_.width() - 6, yy, 5, dim_.height(), name_right());
+	mathed_draw_deco(pi, x + dim_.width() - 8, yy, 5, dim_.height(), name_right());
 	setPosCache(pi, x, y);
 }
 

@@ -48,17 +48,19 @@ auto_ptr<InsetBase> MathTabularInset::doClone() const
 }
 
 
-void MathTabularInset::metrics(MetricsInfo & mi, Dimension & /*dim*/) const
+void MathTabularInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
-	return MathGridInset::metrics(mi);
+	MathGridInset::metrics(mi, dim);
+	dim.wid += 6;
+	dim_ = dim;
 }
 
 
 void MathTabularInset::draw(PainterInfo & pi, int x, int y) const
 {
 	FontSetChanger dummy(pi.base, "textnormal");
-	MathGridInset::draw(pi, x, y);
+	MathGridInset::drawWithMargin(pi, x, y, 4, 2);
 }
 
 
