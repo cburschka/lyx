@@ -256,11 +256,9 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const& token)
 	} else if (token == "width") {
 		lex.next();
 		width = LyXLength(lex.getString());
-		size_type = WH;
 	} else if (token == "height") {
 		lex.next();
 		height = LyXLength(lex.getString());
-		size_type = WH;
 	} else if (token == "keepAspectRatio") {
 		keepAspectRatio = true;
 	} else if (token == "scale") {
