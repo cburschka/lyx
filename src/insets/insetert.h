@@ -134,8 +134,6 @@ public:
 	}
 	///
 	int getMaxWidth(BufferView *, UpdatableInset const *) const;
-	///
-	void update(BufferView *, LyXFont const &, bool =false);
 
 private:
 	///
