@@ -273,6 +273,7 @@ int Buffer::readHeader(LyXLex & lex)
 		lyxerr[Debug::PARSER] << "Handling header token: `"
 				      << token << '\'' << endl;
 
+
 		string unknown = params.readToken(lex, token);
 		if (!unknown.empty()) {
 			if (unknown[0] != '\\') {
@@ -306,6 +307,7 @@ bool Buffer::readBody(LyXLex & lex, ParagraphList::iterator pit)
 	bool the_end_read = false;
 
 	if (paragraphs.empty()) {
+		readHeader(lex);
 		if (!params.getLyXTextClass().load()) {
 			string theclass = params.getLyXTextClass().name();
 			Alert::error(_("Can't load document class"), bformat(

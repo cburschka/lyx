@@ -1,3 +1,7 @@
+2003-06-22  Alfredo Braunstein  <abraunst@libero.it>
+
+	* buffer.C: fix a bug just introduced
+	
 2003-06-21  Alfredo Braunstein  <abraunst@libero.it>
 
 	* buffer.[Ch]: added the parseError signal and use it, removed 
