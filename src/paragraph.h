@@ -92,8 +92,6 @@ public:
 
 	/// return the unique ID of this paragraph
 	int id() const;
-	///
-	void read();
 
 	///
 	int startTeXParParams(BufferParams const &, std::ostream &, bool) const;

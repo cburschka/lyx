@@ -975,15 +975,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		// a tabular-inset
 		break;
 
-	case LFUN_LAYOUT_COPY:
-		bv_->copyEnvironment();
-		break;
-
-	case LFUN_LAYOUT_PASTE:
-		bv_->pasteEnvironment();
-		switchKeyMap();
-		break;
-
 	case LFUN_FILE_INSERT:
 		MenuInsertLyXFile(ev.argument);
 		break;

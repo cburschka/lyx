@@ -146,11 +146,6 @@ public:
 	/// move cursor to the named label
 	void gotoLabel(string const & label);
 
-	/// copy the environment type from current paragraph
-	void copyEnvironment();
-	/// set the current paragraph's environment type
-	void pasteEnvironment();
-
 	/// undo last action
 	void undo();
 	/// redo last action

@@ -79,7 +79,6 @@ void LyXText::init(BufferView * bview, bool reinit)
 		rowlist_.clear();
 		need_break_row = rows().end();
 		width = height = 0;
-		copylayouttype.erase();
 		top_y(0);
 		clearPaint();
 	} else if (!rowlist_.empty())
@@ -1270,20 +1269,6 @@ void LyXText::insertInset(Inset * inset)
 		cursorLeft(true);
 	}
 	unFreezeUndo();
-}
-
-
-void LyXText::copyEnvironmentType()
-{
-	copylayouttype = cursor.par()->layout()->name();
-}
-
-
-void LyXText::pasteEnvironmentType()
-{
-	// do nothing if there has been no previous copyEnvironmentType()
-	if (!copylayouttype.empty())
-		setLayout(copylayouttype);
 }
 
 

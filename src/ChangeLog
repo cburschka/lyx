@@ -1,3 +1,13 @@
+2003-04-18  John Levon  <levon@movementarian.org>
+
+	* BufferView.h:
+	* BufferView.C:
+	* BufferView_pimpl.C:
+	* lfuns.h:
+	* LyXAction.C:
+	* lyxtext.h:
+	* text2.C: remove layout-copy/paste (bug 778)
+	
 2003-04-16  Alfredo Braunstein  <abraunst@libero.it>
  
  	* text2.C (redoParagraphs): eliminate good_prevrit, rewrite a loop

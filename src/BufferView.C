@@ -613,25 +613,6 @@ void BufferView::redo()
 }
 
 
-void BufferView::copyEnvironment()
-{
-	if (available()) {
-		text->copyEnvironmentType();
-		owner()->message(_("Paragraph environment type copied"));
-	}
-}
-
-
-void BufferView::pasteEnvironment()
-{
-	if (available()) {
-		text->pasteEnvironmentType();
-		owner()->message(_("Paragraph environment type set"));
-		update(text, BufferView::SELECT);
-	}
-}
-
-
 // these functions are for the spellchecker
 WordLangTuple const BufferView::nextWord(float & value)
 {

@@ -419,10 +419,6 @@ public:
 	void copySelection();
 	///
 	void pasteSelection();
-	///
-	void copyEnvironmentType();
-	///
-	void pasteEnvironmentType();
 
 	/** the DTP switches for paragraphs. LyX will store the top settings
 	 always in the first physical paragraph, the bottom settings in the
@@ -504,12 +500,6 @@ private:
 	    right address box
 	    */
 	void redoDrawingOfParagraph(LyXCursor const & cursor);
-
-	/** Copybuffer for copy environment type.
-	  Asger has learned that this should be a buffer-property instead
-	  Lgb has learned that 'char' is a lousy type for non-characters
-	  */
-	string copylayouttype;
 
 	/// removes the row and reset the touched counters
 	void removeRow(RowList::iterator rit);
