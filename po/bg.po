@@ -1,0 +1,8298 @@
+# Български превод на LyX
+# Copyright (C) 2000, The LyX team.
+# George Tellalov <gogi_t@yahoo.com>
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: LyX 1.1.6\n"
+"POT-Creation-Date: 2001-07-24 15:15+0200\n"
+"PO-Revision-Date: 2001-07-10 17:40+01:00\n"
+"Last-Translator: George Tellalov <gogi_t@yahoo.com>\n"
+"Language-Team: Bulgarian <gogi_t@yahoo.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=windows-1251\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/buffer.C:321
+msgid "Couldn't set the layout for "
+msgstr ""
+
+#: src/buffer.C:323
+#, fuzzy
+msgid "one paragraph"
+msgstr "Един абзац назад"
+
+#: src/buffer.C:326
+#, fuzzy
+msgid " paragraphs"
+msgstr "като абзаци(A)|A"
+
+#. if the textclass wasn't loaded properly
+#. we need to either substitute another
+#. or stop loading the file.
+#. I can substitute but I don't see how I can
+#. stop loading... ideas??  ARRae980418
+#: src/buffer.C:328 src/buffer.C:545
+msgid "Textclass Loading Error!"
+msgstr "Грешка при зареждане на текстклас!"
+
+#: src/buffer.C:329
+#, fuzzy
+msgid "When reading "
+msgstr "Грешка при ченете от "
+
+#: src/CutAndPaste.C:447 src/buffer.C:383
+msgid "Layout had to be changed from\n"
+msgstr "Оформлението трябва да се смени от\n"
+
+#: src/CutAndPaste.C:448 src/CutAndPaste.C:451 src/buffer.C:384
+#: src/converter.C:554
+msgid " to "
+msgstr " на "
+
+#: src/buffer.C:533
+msgid "Textclass error"
+msgstr "Текстклас грешка"
+
+#: src/buffer.C:534
+msgid "The document uses an unknown textclass \""
+msgstr "Документът използва непознат текстклас \""
+
+#: src/buffer.C:536
+msgid "LyX will not be able to produce output correctly."
+msgstr "LyX не може да изработи правилен резултат."
+
+#: src/buffer.C:546
+msgid "Can't load textclass "
+msgstr "Невъзможност за зареждане на текстклас "
+
+#: src/buffer.C:548
+msgid "-- substituting default"
+msgstr "-- заместване по подразбиране"
+
+#: src/buffer.C:1105
+#, c-format
+msgid "Warning: need lyxformat %.2f but found %.2f"
+msgstr "Внимание: необходим е LyX-формат %.2f, но е открит %.2f"
+
+#: src/buffer.C:1109
+#, c-format
+msgid "ERROR: need lyxformat %.2f but found %.2f"
+msgstr "ГРЕШКА: необходим е LyX-формат %.2f, но е открит %.2f"
+
+#. future format
+#: src/buffer.C:1120 src/buffer.C:1147 src/buffer.C:1167
+msgid "Warning!"
+msgstr "Внимание!"
+
+#: src/buffer.C:1121 src/buffer.C:1168
+msgid "Reading of document is not complete"
+msgstr "Непълно прочитане на документа"
+
+#: src/buffer.C:1122 src/buffer.C:1169
+msgid "Maybe the document is truncated"
+msgstr "Вероятно документът е изрязан"
+
+#. "\\lyxformat" not found
+#: src/buffer.C:1128 src/buffer.C:1154 src/buffer.C:1173 src/buffer.C:1176
+msgid "ERROR!"
+msgstr "ГРЕШКА!"
+
+#: src/buffer.C:1129 src/buffer.C:1155
+msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
+msgstr "Остарял LyX формат. Използвайте LyX 0.10.x за да прочетете това!"
+
+#: src/buffer.C:1148
+msgid "LyX file format is newer that what"
+msgstr "LyX файловият формат е по-нов от"
+
+#: src/buffer.C:1149
+msgid "is supported in this LyX version. Expect some problems."
+msgstr "поддържания в тази LyX версия. Възможни са проблеми."
+
+#: src/buffer.C:1173
+msgid "Not a LyX file!"
+msgstr "Това не е LyX файл!"
+
+#: src/buffer.C:1176
+msgid "Unable to read file!"
+msgstr "Прочитането на файла e невъзможно!"
+
+#: src/buffer.C:1270 src/buffer.C:1273
+msgid "Error! Document is read-only: "
+msgstr "Грешка! Документът е само за четене: "
+
+#: src/buffer.C:1283 src/buffer.C:1286
+msgid "Error! Cannot write file: "
+msgstr "Грешка! Записът е невъзможен във файл: "
+
+#: src/buffer.C:1294 src/buffer.C:1297
+msgid "Error! Cannot open file: "
+msgstr "Грешка! Отварянето е невъзможно! Файл: "
+
+#: src/buffer.C:1593
+msgid "Error: Cannot write file:"
+msgstr "Грешка! Записът е невъзможен във файл: "
+
+#: src/buffer.C:1627
+msgid "Error: Cannot open file: "
+msgstr "Грешка! Отварянето е невъзможно! Файл: "
+
+#: src/buffer.C:2263 src/buffer.C:2912
+msgid "LYX_ERROR:"
+msgstr "LYX_ГРЕШКА:"
+
+#: src/buffer.C:2263 src/buffer.C:2912
+msgid "Cannot write file"
+msgstr "Грешка! Записът е невъзможен във файл"
+
+#: src/buffer.C:2350 src/buffer.C:2996
+msgid "Error : Wrong depth for LatexType Command.\n"
+msgstr "Грешка: Грешна дълбочина на LatexType команда.\n"
+
+#. path to LaTeX file
+#: src/buffer.C:3317
+msgid "Running chktex..."
+msgstr "Стартирам chktex..."
+
+#: src/buffer.C:3330
+msgid "chktex did not work!"
+msgstr "ChkTeX пропадна!"
+
+#: src/buffer.C:3331
+msgid "Could not run with file:"
+msgstr "Недъзможна е работата с файл: "
+
+#: src/bufferlist.C:111 src/bufferlist.C:187 src/lyxvc.C:92 src/lyxvc.C:125
+#: src/lyxvc.C:155
+msgid "Changes in document:"
+msgstr "Промени в документа:"
+
+#: src/bufferlist.C:113 src/bufferlist.C:189
+msgid "Save document?"
+msgstr "Запазване на документа?"
+
+#: src/bufferlist.C:141
+msgid "Some documents were not saved:"
+msgstr "Някои документи не са запазени:"
+
+#: src/bufferlist.C:142
+msgid "Exit anyway?"
+msgstr "Желаете ли изход въпреки това?"
+
+#: src/bufferlist.C:289
+#, c-format
+msgid "lyx: Attempting to save document %s as..."
+msgstr "LyX: Опит за запазване на докумнета %s като..."
+
+#: src/bufferlist.C:302 src/bufferlist.C:315 src/bufferlist.C:329
+msgid "  Save seems successful. Phew."
+msgstr "  Записът изглежда е успешен. Какъв късмет!"
+
+#: src/bufferlist.C:305 src/bufferlist.C:319
+msgid "  Save failed! Trying..."
+msgstr "  Записът пропадна! Опитвам..."
+
+#: src/bufferlist.C:332
+msgid "  Save failed! Bummer. Document is lost."
+msgstr "  Записът пропадна! Документът е загубен."
+
+#: src/bufferlist.C:356
+msgid "An emergency save of this document exists!"
+msgstr "Съществува аварийно копие на този документ!"
+
+#: src/bufferlist.C:358
+msgid "Try to load that instead?"
+msgstr "Да заредя ли това вместо него?"
+
+#: src/bufferlist.C:380
+msgid "Autosave file is newer."
+msgstr "Автоматичният запис е по-нов."
+
+#: src/bufferlist.C:382
+msgid "Load that one instead?"
+msgstr "Да заредя ли това вместо него?"
+
+#: src/BufferView2.C:62 src/BufferView2.C:72 src/bufferlist.C:449
+#: src/lyx_cb.C:298
+msgid "Error!"
+msgstr "Грешка!"
+
+#: src/bufferlist.C:449
+msgid "Unable to open template"
+msgstr "Невъзможно е да се отвори шаблона"
+
+#: src/bufferlist.C:476 src/lyxfunc.C:3074 src/lyxfunc.C:3237
+msgid "Document is already open:"
+msgstr "Документът вече е отворен:"
+
+#: src/bufferlist.C:478
+msgid "Do you want to reload that document?"
+msgstr "Желаете ли повторно зареждане?"
+
+#: src/bufferlist.C:496
+msgid "File `"
+msgstr "Файлът `"
+
+#: src/bufferlist.C:497
+msgid "' is read-only."
+msgstr "' е само за четене."
+
+#. Ask if the file should be checked out for
+#. viewing/editing, if so: load it.
+#: src/bufferlist.C:512
+msgid "Do you want to retrieve file under version control?"
+msgstr "Да изтегля ли файла от системата за контрол на версията?"
+
+#: src/bufferlist.C:520
+msgid "Cannot open specified file:"
+msgstr "Невъзможно е да бъде отворен указаният файл:"
+
+#: src/bufferlist.C:522
+msgid "Create new document with this name?"
+msgstr "Да създам ли нов документ с това име?"
+
+#: src/BufferView2.C:63
+msgid "Specified file is unreadable: "
+msgstr "Указаният файл е нечетим: "
+
+#: src/BufferView2.C:73
+msgid "Cannot open specified file: "
+msgstr "Невъзможно е да бъде отворен указаният файл: "
+
+#: src/BufferView2.C:407 src/BufferView2.C:421
+msgid "Open/Close..."
+msgstr "Отвори/Затвори..."
+
+#: src/BufferView2.C:435 src/LyXAction.C:406
+msgid "Undo"
+msgstr "Отмени"
+
+#: src/BufferView2.C:440
+msgid "No further undo information"
+msgstr "Няма нищо повече за отменяне"
+
+#: src/BufferView2.C:451
+msgid "Redo not yet supported in math mode"
+msgstr "Повтарянето все още не се поддържа в математически режим"
+
+#: src/BufferView2.C:456 src/LyXAction.C:357
+msgid "Redo"
+msgstr "Повтори"
+
+#: src/BufferView2.C:461
+msgid "No further redo information"
+msgstr "Няма нищо повече за повтаряне"
+
+#: src/BufferView2.C:558
+msgid "Paragraph environment type copied"
+msgstr "Средата на абзаца е копирана"
+
+#: src/BufferView2.C:567
+msgid "Paragraph environment type set"
+msgstr "Средата на абзаца е установена"
+
+#: src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:432
+msgid "Copy"
+msgstr "Копирай"
+
+#: src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:431
+msgid "Cut"
+msgstr "Отрежи"
+
+#: src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:433
+msgid "Paste"
+msgstr "Залепи"
+
+#: src/BufferView2.C:636 src/BufferView2.C:640
+msgid "No more notes"
+msgstr "Няма повече бележки"
+
+#: src/bufferview_funcs.C:39
+msgid "Inserting Footnote..."
+msgstr "Вмъквам бележка под линия..."
+
+#: src/bufferview_funcs.C:76
+msgid "Inserting margin note..."
+msgstr "Вмъквам бележка в полето..."
+
+#: src/bufferview_funcs.C:100
+msgid "Error! unknown language"
+msgstr "Грешка! Непознат език"
+
+#: src/LyXAction.C:326 src/bufferview_funcs.C:109
+msgid "Melt"
+msgstr "Слей"
+
+#: src/bufferview_funcs.C:145
+msgid "Changed environment depth (in possible range, maybe not)"
+msgstr "Дълбочината на средата е променета( навярно в допустимия интервал)"
+
+#: src/bufferview_funcs.C:267
+msgid "Font: "
+msgstr "Шрифт:"
+
+#: src/bufferview_funcs.C:271
+msgid ", Depth: "
+msgstr ", Дълбочина: "
+
+#: src/bufferview_funcs.C:277
+msgid ", Spacing: "
+msgstr ", Отместване: "
+
+#: src/bufferview_funcs.C:280
+msgid "Single"
+msgstr "Единично"
+
+#: src/bufferview_funcs.C:283
+msgid "Onehalf"
+msgstr "Половин"
+
+#: src/bufferview_funcs.C:286
+msgid "Double"
+msgstr "Двойно"
+
+#: src/bufferview_funcs.C:289
+msgid "Other ("
+msgstr "Друго ("
+
+#: src/BufferView_pimpl.C:256
+msgid "Formatting document..."
+msgstr "Форматирам документа..."
+
+#: src/BufferView_pimpl.C:340 src/BufferView_pimpl.C:344
+msgid "No more errors"
+msgstr "Няма други грешки"
+
+#: src/Chktex.C:79
+msgid "ChkTeX warning id #"
+msgstr "ChkTeX предупреждение Nr. "
+
+#: src/ColorHandler.C:83
+msgid "LyX: Unknown X11 color "
+msgstr "LyX: Непознат X11 цвят "
+
+#: src/ColorHandler.C:84
+msgid " for "
+msgstr " за "
+
+#: src/ColorHandler.C:85
+msgid "     Using black instead, sorry!."
+msgstr "    Замествам с черен! "
+
+#: src/ColorHandler.C:92
+msgid "LyX: X11 color "
+msgstr "LyX: X11 цвят "
+
+#: src/ColorHandler.C:93 src/ColorHandler.C:99
+msgid " allocated for "
+msgstr " заделен за "
+
+#: src/ColorHandler.C:98
+msgid "LyX: Using approximated X11 color "
+msgstr "LyX: Използвам подобен X11 цвят "
+
+#: src/ColorHandler.C:139
+msgid "LyX: Couldn't allocate '"
+msgstr "LyX: Неуспех при заделяне на '"
+
+#: src/ColorHandler.C:140
+msgid "' for "
+msgstr "' за "
+
+#: src/ColorHandler.C:141
+msgid " with (r,g,b)=("
+msgstr " с (r,g,b)=("
+
+#: src/ColorHandler.C:144
+msgid "     Using closest allocated color with (r,g,b)=("
+msgstr "     Вместо това използвам цвят с (r,g,b)=("
+
+#: src/ColorHandler.C:148
+msgid ") instead.\n"
+msgstr ").\n"
+
+#: src/ColorHandler.C:149
+msgid "Pixel ["
+msgstr "Точката ["
+
+#: src/ColorHandler.C:149
+msgid "] is used."
+msgstr "] вече е използвана."
+
+#: src/combox.C:502
+msgid "Done"
+msgstr "Готов"
+
+#: src/converter.C:165 src/converter.C:195
+msgid "Can not view file"
+msgstr "Не мога да покажа файла."
+
+#: src/converter.C:166
+msgid "No information for viewing "
+msgstr "Липсва информация за показване на "
+
+#: src/converter.C:188 src/converter.C:618
+msgid "Executing command:"
+msgstr "Изпълнявам команда:"
+
+#: src/converter.C:196
+msgid "Error while executing"
+msgstr "Грешка при изпълнение на "
+
+#: src/converter.C:552 src/converter.C:645
+msgid "Can not convert file"
+msgstr "Невъзможно е преобразуването на файла"
+
+#: src/converter.C:553
+msgid "No information for converting from "
+msgstr "Няма информация за преобразуване от "
+
+#: src/converter.C:642
+msgid "There were errors during the Build process."
+msgstr "Имаше грешки по време на изграждането."
+
+#: src/converter.C:643 src/converter.C:788 src/converter.C:858
+msgid "You should try to fix them."
+msgstr "Опитайте да ги отстраните."
+
+#: src/converter.C:668
+msgid "Error while trying to move directory:"
+msgstr "Грешка при опит за преместване на директорията:"
+
+#: src/converter.C:703
+msgid "Error while trying to move file:"
+msgstr "Грешка при опит за преместване на файла:"
+
+#: src/converter.C:704
+msgid "to "
+msgstr "в "
+
+#: src/converter.C:783 src/converter.C:853
+msgid "One error detected"
+msgstr "Открита е една грешка"
+
+#: src/converter.C:784 src/converter.C:854
+msgid "You should try to fix it."
+msgstr "Опитайте да я отстраните."
+
+#: src/converter.C:787 src/converter.C:857
+msgid " errors detected."
+msgstr " грешки са открити."
+
+#: src/converter.C:792
+msgid "There were errors during running of "
+msgstr "Имаше грешки по време на изпълнението на: "
+
+#: src/converter.C:796 src/converter.C:863
+msgid "The operation resulted in"
+msgstr "Резултатът от операцията е"
+
+#: src/converter.C:797 src/converter.C:864
+msgid "an empty file."
+msgstr "празен файл."
+
+#: src/converter.C:798 src/converter.C:865
+msgid "Resulting file is empty"
+msgstr "Полученият файл е празен"
+
+#: src/converter.C:816
+msgid "Running LaTeX..."
+msgstr "Стратирам LaTeX..."
+
+#: src/converter.C:846
+msgid "LaTeX did not work!"
+msgstr "Стартирането на LaTeX пропадна!"
+
+#: src/converter.C:847
+msgid "Missing log file:"
+msgstr "Липсващ файл-протокол: "
+
+#: src/converter.C:860
+msgid "There were errors during the LaTeX run."
+msgstr "Имаше грешки по време на изпълнението на LaTeX."
+
+#: src/credits.C:55
+msgid "ERROR: LyX wasn't able to read CREDITS file"
+msgstr "Грешка: LyX не успя да прочете файла CREDITS"
+
+#: src/credits.C:59
+msgid "Please install correctly to estimate the great"
+msgstr "Моля, инсталирайте правилно, за да оцените огромното"
+
+#: src/credits.C:62
+msgid "amount of work other people have done for the LyX project."
+msgstr "количество от работа, което е извършено от други хора за LyX проекта."
+
+#: src/credits.C:72
+msgid "Credits"
+msgstr "Credits"
+
+#: src/credits_form.C:19 src/form1.C:43 src/form1.C:117 src/form1.C:261
+#: src/frontends/xforms/form_citation.C:85
+#: src/frontends/xforms/form_document.C:46
+#: src/frontends/xforms/form_index.C:41
+#: src/frontends/xforms/form_paragraph.C:330
+#: src/frontends/xforms/form_print.C:52 src/frontends/xforms/form_ref.C:71
+#: src/frontends/xforms/form_tabular_create.C:28
+#: src/frontends/xforms/form_url.C:64 src/insets/insetbib.C:62
+#: src/insets/insetinclude.C:52 src/lyx.C:47 src/lyx.C:105
+#: src/mathed/math_forms.C:109 src/print_form.C:28 src/sp_form.C:38
+msgid "OK"
+msgstr "OK"
+
+#: src/credits_form.C:24
+msgid "Matthias"
+msgstr "Matthias"
+
+#: src/credits_form.C:29
+msgid "All these people have contributed to the LyX project. Thanks,"
+msgstr "Всикчи тези хора са подпомогнали LyX проекта. Благодарности,"
+
+#: src/CutAndPaste.C:450
+msgid ""
+"\n"
+"because of class conversion from\n"
+msgstr ""
+"\n"
+"geдndert werden; Grund: Klassenumwandlung von\n"
+
+#: src/CutAndPaste.C:476 src/insets/insettext.C:969 src/text.C:3961
+#: src/text.C:3969 src/text.C:3996 src/text2.C:2197 src/text2.C:2310
+msgid "Impossible operation"
+msgstr "Операцията е невъзможна"
+
+#: src/CutAndPaste.C:477
+msgid "Can't paste float into float!"
+msgstr "Невазможно е да се залепи един Float обект в друг такъв!"
+
+#: src/CutAndPaste.C:478 src/insets/insetert.C:67
+#: src/insets/insettabular.C:1702 src/insets/insettext.C:971 src/text.C:3963
+#: src/text.C:3971 src/text.C:3998
+msgid "Sorry."
+msgstr "Уви."
+
+#: src/debug.C:32
+msgid "No debugging message"
+msgstr "Няма Debug съобщения"
+
+#: src/debug.C:33
+msgid "General information"
+msgstr "Обща информация"
+
+#: src/debug.C:34
+msgid "Program initialisation"
+msgstr "Инсталиране на програмата"
+
+#: src/debug.C:35
+msgid "Keyboard events handling"
+msgstr "Обработка на събития от клавиатурата"
+
+#: src/debug.C:36
+msgid "GUI handling"
+msgstr "GUI"
+
+#: src/debug.C:37
+msgid "Lyxlex grammer parser"
+msgstr "Lyxlex синтактичен анализ"
+
+#: src/debug.C:38
+msgid "Configuration files reading"
+msgstr "Четене на конфигурационните файлове"
+
+#: src/debug.C:39
+msgid "Custom keyboard definition"
+msgstr "Дефиниране на собствена клавиатурна подредба"
+
+#: src/debug.C:40
+msgid "LaTeX generation/execution"
+msgstr "LaTeX герериране/изпълнение"
+
+#: src/debug.C:41
+msgid "Math editor"
+msgstr "Математически редактор"
+
+#: src/debug.C:42
+msgid "Font handling"
+msgstr "Шрифтове"
+
+#: src/debug.C:43
+msgid "Textclass files reading"
+msgstr "Четене на текстклас файлове"
+
+#: src/debug.C:44
+msgid "Version control"
+msgstr "Система за контрол на версиите"
+
+#: src/debug.C:45
+msgid "External control interface"
+msgstr "Външна контролна среда"
+
+#: src/debug.C:46
+msgid "Keep *roff temporary files"
+msgstr "Задръжтеe *roff временните файлове"
+
+#: src/debug.C:47
+msgid "User commands"
+msgstr "Потребителски команди"
+
+#: src/debug.C:48
+msgid "The LyX Lexxer"
+msgstr "LyX Lexxer"
+
+#: src/debug.C:49
+msgid "Dependency information"
+msgstr "Информация за взаимовръзките"
+
+#: src/debug.C:50
+msgid "LyX Insets"
+msgstr "LyX добавки"
+
+#: src/debug.C:51
+msgid "Files used by LyX"
+msgstr "Файлове, използвани от LyX"
+
+#: src/debug.C:52
+msgid "All debugging messages"
+msgstr "Всички Debug съобщения"
+
+#: src/debug.C:100
+msgid "Debugging `"
+msgstr "Анализиране `"
+
+#: src/exporter.C:47
+msgid "Can not export file"
+msgstr "Невъзможно е да бъде експортиран файла"
+
+#: src/exporter.C:48
+msgid "No information for exporting to "
+msgstr "Няма информация относно експортиране в "
+
+#: src/exporter.C:74
+msgid "Cannot run latex."
+msgstr "Невъзможно е стартирането на LaTeX."
+
+#: src/exporter.C:75
+msgid "The path to the lyx file cannot contain spaces."
+msgstr "Пътят към LyX файла не може да съдържа интервали."
+
+#: src/exporter.C:89
+msgid "Document exported as "
+msgstr "Документът ще бъде експортиран във формат "
+
+#: src/exporter.C:91
+msgid " to file `"
+msgstr " във файл `"
+
+#: src/MenuBackend.C:443 src/MenuBackend.C:450 src/ext_l10n.h:1
+#: src/ext_l10n.h:4
+msgid "File|F"
+msgstr "Файл(F)|F"
+
+#: src/MenuBackend.C:444 src/ext_l10n.h:2 src/ext_l10n.h:5
+msgid "Edit|E"
+msgstr "Редактирай(E)|E"
+
+#: src/ext_l10n.h:3 src/ext_l10n.h:11
+msgid "Help|H"
+msgstr "Помощ(H)|H"
+
+#: src/ext_l10n.h:6
+msgid "Insert|I"
+msgstr "Вмъкни(I)|I"
+
+#: src/ext_l10n.h:7
+msgid "Layout|L"
+msgstr "Оформи(L)|L"
+
+#: src/ext_l10n.h:8
+msgid "View|V"
+msgstr "Изглед(V)|V"
+
+#: src/ext_l10n.h:9
+msgid "Navigate|N"
+msgstr "Предвижи(N)|N"
+
+#: src/MenuBackend.C:446 src/ext_l10n.h:10
+msgid "Documents|D"
+msgstr "Документи(D)|D"
+
+#: src/MenuBackend.C:413 src/ext_l10n.h:12 src/ext_l10n.h:17
+msgid "New...|N"
+msgstr "Нов(N)...|N"
+
+#: src/ext_l10n.h:13 src/ext_l10n.h:18
+msgid "New from Template...|T"
+msgstr "Нов от шаблон(T)...|T"
+
+#: src/MenuBackend.C:414 src/ext_l10n.h:14 src/ext_l10n.h:19
+msgid "Open...|O"
+msgstr "Отвори(O)...|O"
+
+#: src/MenuBackend.C:415 src/ext_l10n.h:15 src/ext_l10n.h:25
+msgid "Import|I"
+msgstr "Импорт(I)|I"
+
+#: src/ext_l10n.h:16 src/ext_l10n.h:29
+msgid "Exit|x"
+msgstr "Изход(x)|x"
+
+#: src/ext_l10n.h:20
+msgid "Close|C"
+msgstr "Затвори(C)|C"
+
+#: src/ext_l10n.h:21
+msgid "Save|S"
+msgstr "Запази(S)|S"
+
+#: src/ext_l10n.h:22
+msgid "Save As...|A"
+msgstr "Запази като(A)...|A"
+
+#: src/ext_l10n.h:23
+msgid "Revert to Saved|d"
+msgstr "Върни към записаното(d)|d"
+
+#: src/ext_l10n.h:24
+msgid "Version Control|V"
+msgstr "Контрол на версията(V)|V"
+
+#: src/ext_l10n.h:26
+msgid "Export|E"
+msgstr "Експорт(E)|E"
+
+#: src/ext_l10n.h:27
+msgid "Print...|P"
+msgstr "Печат(P)...|P"
+
+#: src/ext_l10n.h:28
+msgid "Fax...|F"
+msgstr "Факс(F)...|F"
+
+#: src/ext_l10n.h:30
+msgid "Register|R"
+msgstr "Регистрирай(R)|R"
+
+#: src/ext_l10n.h:31
+msgid "Check In Changes|I"
+msgstr "Вкарай промените(I)|I"
+
+#: src/ext_l10n.h:32
+msgid "Check Out for Edit|O"
+msgstr "Изтегли за редактиране(O)|O"
+
+#: src/ext_l10n.h:33
+msgid "Revert to Last Version|L"
+msgstr "Върни към последната версия(L)|L"
+
+#: src/ext_l10n.h:34
+msgid "Undo Last Check In|U"
+msgstr "Отмени последното вкарване(U)|U"
+
+#: src/ext_l10n.h:35
+msgid "Show History|H"
+msgstr "История(H)|H"
+
+#: src/ext_l10n.h:36 src/ext_l10n.h:51
+msgid "Preferences...|P"
+msgstr "Настройки(P)...|P"
+
+#: src/ext_l10n.h:37 src/ext_l10n.h:52
+msgid "Reconfigure|R"
+msgstr "Ново конфигуриране(R)|R"
+
+#: src/ext_l10n.h:38
+msgid "Undo|U"
+msgstr "Отмени(U)|U"
+
+#: src/ext_l10n.h:39
+msgid "Redo|d"
+msgstr "Повтори(d)|d"
+
+#: src/ext_l10n.h:40
+msgid "Cut|C"
+msgstr "Отрежи(C)|C"
+
+#: src/ext_l10n.h:41
+msgid "Copy|o"
+msgstr "Копирай(o)|o"
+
+#: src/ext_l10n.h:42
+msgid "Paste|a"
+msgstr "Залепи(a)|a"
+
+#: src/ext_l10n.h:43
+msgid "Paste External Selection|x"
+msgstr "Залепи външен обект(x)|x"
+
+#: src/ext_l10n.h:44
+msgid "Find & Replace...|F"
+msgstr "Търси и Замести(F)...|F"
+
+#: src/ext_l10n.h:45
+msgid "Tabular|T"
+msgstr "Табулатор(T)|T"
+
+#: src/ext_l10n.h:46
+msgid "Floats & Insets|I"
+msgstr ""
+
+#: src/ext_l10n.h:47
+msgid "Math Panel|l"
+msgstr "Математически Символи(l)|l"
+
+#: src/ext_l10n.h:48
+msgid "Spellchecker...|S"
+msgstr "Правописна проверка(S)...|S"
+
+#: src/ext_l10n.h:49
+msgid "Check TeX|h"
+msgstr "TeX проверка(h)|h"
+
+#: src/ext_l10n.h:50
+msgid "Remove All Error Boxes|E"
+msgstr "Премахни всички грешки(E)|E"
+
+#: src/ext_l10n.h:53
+msgid "as Lines|L"
+msgstr "като редове(L)|L"
+
+#: src/ext_l10n.h:54
+msgid "as Paragraphs|P"
+msgstr "като абзаци(P)|P"
+
+#: src/ext_l10n.h:55
+msgid "Open/Close|O"
+msgstr "Отвори/Затвори(O)|O"
+
+#: src/ext_l10n.h:56
+msgid "Melt|M"
+msgstr "Слей(M)|M"
+
+#: src/ext_l10n.h:57
+msgid "Open All Figures/Tables|F"
+msgstr "Отвори всички фигури/таблици(F)|F"
+
+#: src/ext_l10n.h:58
+msgid "Close All Figures/Tables|T"
+msgstr "Затвори всички фигури/таблици(T)|T"
+
+#: src/ext_l10n.h:59
+msgid "Open All Footnotes/Marginal Notes|A"
+msgstr "Отвори всички бележки(A)|A"
+
+#: src/ext_l10n.h:60
+msgid "Close All Footnotes/Marginal Notes|C"
+msgstr "Затвори всички бележки(C)|C"
+
+#: src/ext_l10n.h:61
+msgid "Multicolumn|M"
+msgstr "Многоколонно(M)|M"
+
+#: src/ext_l10n.h:62
+msgid "Line Top|T"
+msgstr "Ред отгоре(T)|T"
+
+#: src/ext_l10n.h:63
+msgid "Line Bottom|B"
+msgstr "Ред отдолу(B)|B"
+
+#: src/ext_l10n.h:64
+msgid "Line Left|L"
+msgstr "Ред отляво(L)|L"
+
+#: src/ext_l10n.h:65
+msgid "Line Right|R"
+msgstr "Ред отдясно(R)|R"
+
+#: src/ext_l10n.h:66
+msgid "Align Left|e"
+msgstr "Подравни отляво(e)|e"
+
+#: src/ext_l10n.h:67
+msgid "Align Center|C"
+msgstr "Подравни в средата(C)|C"
+
+#: src/ext_l10n.h:68
+msgid "Align Right|i"
+msgstr "Подравни отдясно(i)|i"
+
+#: src/ext_l10n.h:69
+msgid "V.Align Top|o"
+msgstr "В.Подр. отгоре(o)|o"
+
+#: src/ext_l10n.h:70
+msgid "V.Align Center|n"
+msgstr "В.Подр. в средата(n)|n"
+
+#: src/ext_l10n.h:71
+msgid "V.Align Bottom|V"
+msgstr "В.Подр. отдолу(V)|V"
+
+#: src/ext_l10n.h:72
+msgid "Append Row|A"
+msgstr "Добави ред(A)|A"
+
+#: src/ext_l10n.h:73
+msgid "Append Column|u"
+msgstr "Добави колона(u)|u"
+
+#: src/ext_l10n.h:74
+msgid "Delete Row|w"
+msgstr "Изтрий ред(w)|w"
+
+#: src/ext_l10n.h:75
+msgid "Delete Column|D"
+msgstr "Изтрий колона(D)|D"
+
+#: src/ext_l10n.h:76
+msgid "Math Formula|h"
+msgstr "Формула(h)|h"
+
+#: src/ext_l10n.h:77
+msgid "Display Formula|D"
+msgstr "Покажи формула(D)|D"
+
+#: src/ext_l10n.h:78
+msgid "Special Character|S"
+msgstr "Специален символ(S)|S"
+
+#: src/ext_l10n.h:79
+msgid "Citation Reference...|C"
+msgstr "Цитат(C)...|C"
+
+#: src/ext_l10n.h:80
+msgid "Cross Reference...|R"
+msgstr "Препратка(R)...|R"
+
+#: src/ext_l10n.h:81
+msgid "Label...|L"
+msgstr "Етикет(L)...|L"
+
+#: src/ext_l10n.h:82
+msgid "Footnote|F"
+msgstr "Бележка под линия(F)|F"
+
+#: src/ext_l10n.h:83
+msgid "Marginal Note|M"
+msgstr "Бележка в полето(M)|M"
+
+#: src/ext_l10n.h:84
+msgid "Index Entry...|I"
+msgstr "Индекс Запис(I)...|I"
+
+#: src/ext_l10n.h:85
+msgid "Index Entry of Preceeding Word|W"
+msgstr "Индекс Запис на предходна дума(W)|W"
+
+#: src/ext_l10n.h:86
+msgid "URL...|U"
+msgstr "URL...|U"
+
+#: src/ext_l10n.h:87
+msgid "Note...|N"
+msgstr "Бележка(N)...|N"
+
+#: src/ext_l10n.h:88
+msgid "Lists & TOC|O"
+msgstr "Спъсъци и Съдържание(O)|O"
+
+#: src/ext_l10n.h:89
+msgid "Figure...|g"
+msgstr "Фигура(g)...|g"
+
+
+#: src/ext_l10n.h:90
+msgid "Tabular...|b"
+msgstr "Табулатор(b)...|b"
+
+#: src/ext_l10n.h:91
+msgid "Floats|a"
+msgstr ""
+
+#: src/ext_l10n.h:92
+msgid "Include File|e"
+msgstr "Включи файл(e)|e"
+
+#: src/ext_l10n.h:93
+msgid "Insert File|t"
+msgstr "Вмъкни файл(t)|t"
+
+#: src/ext_l10n.h:94
+msgid "External Material...|x"
+msgstr "Външен материал(x)...|x"
+
+#: src/ext_l10n.h:95
+msgid "Superscript|S"
+msgstr "Степен(S)|S"
+
+#: src/ext_l10n.h:96
+msgid "Subscript|u"
+msgstr "Индекс(u)|u"
+
+#: src/ext_l10n.h:97
+msgid "HFill|H"
+msgstr ""
+
+#: src/ext_l10n.h:98
+msgid "Hyphenation Point|P"
+msgstr "Точка на пренасяне(P)|P"
+
+#: src/ext_l10n.h:99
+msgid "Protected Blank|B"
+msgstr "Защитен интервал(B)|B"
+
+#: src/ext_l10n.h:100
+msgid "Linebreak|L"
+
+msgstr "Нов ред(L)|L"
+
+#: src/ext_l10n.h:101
+msgid "Ellipsis|i"
+msgstr "Елипса(i)|i"
+
+#: src/ext_l10n.h:102
+msgid "End of Sentence|E"
+msgstr "Край на изречение(E)|E"
+
+#: src/ext_l10n.h:103
+msgid "Ordinary Quote|Q"
+msgstr "Кавичка(Q)|Q"
+
+#: src/ext_l10n.h:104
+msgid "Menu Separator|M"
+msgstr "Меню разделител(M)|M"
+
+#: src/ext_l10n.h:105
+msgid "Figure Float|F"
+msgstr ""
+
+#: src/ext_l10n.h:106
+msgid "Table Float|T"
+msgstr ""
+
+#: src/ext_l10n.h:107
+msgid "Wide Figure Float|W"
+msgstr ""
+
+#: src/ext_l10n.h:108
+msgid "Wide Table Float|d"
+msgstr ""
+
+#: src/ext_l10n.h:109
+msgid "Algorithm Float|A"
+msgstr "Алгоритъм(A)|A"
+
+#: src/ext_l10n.h:110
+msgid "Table of Contents|C"
+msgstr "Съдържание(C)|C"
+
+#: src/ext_l10n.h:111
+msgid "List of Figures|F"
+msgstr "Списък на фигурите(F)|F"
+
+#: src/ext_l10n.h:112
+msgid "List of Tables|T"
+msgstr "Списък на таблиците(T)|T"
+
+#: src/ext_l10n.h:113
+msgid "List of Algorithms|A"
+msgstr "Списък на алгоритмите(A)|A"
+
+#: src/ext_l10n.h:114
+msgid "Index List|I"
+msgstr "Индекс списък(I)|I"
+
+#: src/ext_l10n.h:115
+msgid "BibTeX Reference...|B"
+msgstr "BibTeX препратка(B)|B"
+
+#: src/ext_l10n.h:116
+msgid "LyX Document...|X"
+msgstr "LyX документ(X)...|X"
+
+#: src/ext_l10n.h:117
+msgid "Ascii as Lines...|L"
+msgstr "Ascii като редове(L)...|L"
+
+#: src/ext_l10n.h:118
+msgid "Ascii as Paragraphs...|P"
+msgstr "Ascii като абзаци(P)...|P"
+
+#: src/ext_l10n.h:119
+msgid "Character...|C"
+msgstr "Символ(C)...|C"
+
+#: src/ext_l10n.h:120
+msgid "Paragraph...|P"
+msgstr "Абзац(P)...|P"
+
+#: src/ext_l10n.h:121
+msgid "Document...|D"
+msgstr "Документ(D)...|D"
+
+#: src/ext_l10n.h:122
+msgid "Tabular...|T"
+msgstr "Табулатор(T)...|T"
+
+#: src/ext_l10n.h:123
+msgid "Emphasize Style|E"
+msgstr "Стил наблягане(E)|Е"
+
+#: src/ext_l10n.h:124
+msgid "Noun Style|N"
+msgstr "Стил съществително(N)|N"
+
+#: src/ext_l10n.h:125
+msgid "Bold Style|B"
+msgstr "Удебелен(B)|B"
+
+#: src/ext_l10n.h:126
+msgid "TeX Style|X"
+msgstr "Стил TeX|X"
+
+#: src/ext_l10n.h:127
+msgid "Change Environment Depth|v"
+msgstr "Промени дълбочината на средата(v)|v"
+
+#: src/ext_l10n.h:128
+msgid "LaTeX Preamble...|L"
+msgstr "Увод в LaTeX...|L"
+
+#: src/ext_l10n.h:129
+msgid "Toggle Appendix|A"
+msgstr "Приложение вкл/изкл(A)|A"
+
+#: src/ext_l10n.h:130
+msgid "Save Layout as Default|S"
+msgstr "Запази оформлението като подразбиращо се(S)|S"
+
+#: src/ext_l10n.h:131
+msgid "Build Program|B"
+msgstr "Изгради програма(B)|B"
+
+#: src/ext_l10n.h:132
+msgid "Update|U"
+msgstr "Актуализирай(U)|U"
+
+#: src/ext_l10n.h:133
+msgid "LaTeX Logfile|L"
+msgstr "LaTeX Протокол(L)|L"
+
+#: src/ext_l10n.h:134
+msgid "Table of Contents|T"
+msgstr "Съдържание(T)|T"
+
+#: src/ext_l10n.h:135
+msgid "Error|E"
+msgstr "Грешка(E)|E"
+
+#: src/ext_l10n.h:136
+msgid "Note|N"
+msgstr "Бележка(N)|N"
+
+#: src/ext_l10n.h:137
+msgid "Introduction|I"
+msgstr "Въведение(I)|I"
+
+#: src/ext_l10n.h:138
+msgid "Tutorial|T"
+msgstr "Ръководство(T)|T"
+
+#: src/ext_l10n.h:139
+msgid "User's Guide|U"
+msgstr "Водач на потребителя(U)|U"
+
+#: src/ext_l10n.h:140
+msgid "Extended Features|E"
+msgstr "Разширени свойства(E)|E"
+
+#: src/ext_l10n.h:141
+msgid "Customization|C"
+msgstr "Настройки(C)|C"
+
+#: src/ext_l10n.h:142
+msgid "Reference Manual|R"
+msgstr "Наръкник за справки(R)|R"
+
+#: src/ext_l10n.h:143
+msgid "FAQ|F"
+msgstr "FAQ|F"
+
+#: src/ext_l10n.h:144
+msgid "Table of Contents|a"
+msgstr "Съдържание(a)|a"
+
+#: src/ext_l10n.h:145
+msgid "Known Bugs|K"
+msgstr "Известни бъгове(K)|K"
+
+#: src/ext_l10n.h:146
+msgid "LaTeX Configuration|L"
+msgstr "LaTeX конфигурация|L"
+
+#: src/ext_l10n.h:147
+msgid "Copyright and Warranty...|o"
+msgstr "Авторски права и гаранции(o)...|o"
+
+#: src/ext_l10n.h:148
+msgid "Credits...|d"
+msgstr ""
+
+#: src/ext_l10n.h:149
+msgid "Version...|V"
+msgstr "Версия(V)...|V"
+
+#: src/ext_l10n.h:150
+msgid "\t\t\tAbstract"
+msgstr ""
+
+#: src/ext_l10n.h:151
+msgid "ACT"
+msgstr ""
+
+#: src/ext_l10n.h:152
+msgid "AMS"
+msgstr ""
+
+#: src/ext_l10n.h:153
+msgid "AT_RISE:"
+msgstr ""
+
+#: src/ext_l10n.h:154
+msgid "Abstract"
+msgstr ""
+
+#: src/ext_l10n.h:155
+msgid "Accepted"
+msgstr ""
+
+#: src/ext_l10n.h:156
+msgid "Acknowledgement"
+msgstr ""
+
+#: src/ext_l10n.h:157
+msgid "Acknowledgement*"
+msgstr ""
+
+#: src/ext_l10n.h:158
+msgid "Acknowledgements"
+msgstr ""
+
+#: src/ext_l10n.h:159
+msgid "Acknowledgments"
+msgstr ""
+
+#: src/ext_l10n.h:160
+msgid "Addchap"
+msgstr ""
+
+#: src/ext_l10n.h:161
+msgid "Addchap*"
+msgstr ""
+
+#: src/ext_l10n.h:162
+msgid "Addition"
+msgstr "Допълнение"
+
+#: src/ext_l10n.h:163
+msgid "Address"
+msgstr "Адреси"
+
+#: src/ext_l10n.h:164
+msgid "Addsec"
+msgstr ""
+
+#: src/ext_l10n.h:165
+msgid "Addsec*"
+msgstr ""
+
+#: src/ext_l10n.h:166
+msgid "Adresse"
+msgstr "Адрес"
+
+#: src/ext_l10n.h:167
+msgid "Affil"
+msgstr ""
+
+#: src/ext_l10n.h:168
+msgid "Affiliation"
+msgstr ""
+
+#: src/ext_l10n.h:169
+msgid "Algorithm"
+msgstr "Aлгоритъм"
+
+#: src/ext_l10n.h:170
+msgid "And"
+msgstr "И"
+
+#: src/ext_l10n.h:171
+msgid "Anlagen"
+msgstr "Подравняване"
+
+#: src/ext_l10n.h:172
+msgid "Anrede"
+msgstr ""
+
+#: src/ext_l10n.h:173
+msgid "Appendices"
+msgstr "Приложения"
+
+#: src/ext_l10n.h:174
+msgid "Appendix"
+msgstr "Приложение"
+
+#: src/ext_l10n.h:175
+msgid "Author"
+msgstr "Автор"
+
+
+#: src/ext_l10n.h:176
+msgid "Author_Email"
+msgstr ""
+
+#: src/ext_l10n.h:177
+msgid "Author_Running"
+msgstr ""
+
+#: src/ext_l10n.h:178
+msgid "Author_URL"
+msgstr ""
+
+#: src/ext_l10n.h:179
+msgid "Axiom"
+msgstr ""
+
+#: src/ext_l10n.h:180
+msgid "BLZ"
+msgstr ""
+
+#: src/ext_l10n.h:181
+msgid "Backaddress"
+msgstr ""
+
+#: src/ext_l10n.h:182
+msgid "Bank"
+msgstr ""
+
+#: src/ext_l10n.h:183
+msgid "BankAccount"
+msgstr ""
+
+#: src/ext_l10n.h:184
+msgid "BankCode"
+msgstr ""
+
+#: src/ext_l10n.h:185
+msgid "Betreff"
+msgstr ""
+
+#: src/ext_l10n.h:186
+msgid "Bibliography"
+msgstr "Библиография"
+
+#: src/ext_l10n.h:187
+msgid "Biography"
+msgstr "Биография"
+
+#: src/ext_l10n.h:188
+msgid "Brieftext"
+msgstr ""
+
+#: src/ext_l10n.h:189
+msgid "CC"
+msgstr ""
+
+#: src/ext_l10n.h:190
+msgid "CURTAIN"
+msgstr ""
+
+#: src/ext_l10n.h:191
+msgid "Caption"
+msgstr "Заглавие"
+
+#: src/ext_l10n.h:192
+msgid "Case"
+msgstr ""
+
+#: src/ext_l10n.h:193
+msgid "CenteredCaption"
+msgstr "Центр. заглавие"
+
+
+#: src/ext_l10n.h:194
+msgid "Chapter"
+msgstr "Глава"
+
+#: src/ext_l10n.h:195
+msgid "Chapter*"
+msgstr "Глава*"
+
+#: src/ext_l10n.h:196
+msgid "Chapter_Exercises"
+msgstr ""
+
+#: src/ext_l10n.h:197
+msgid "Citta"
+msgstr ""
+
+#: src/ext_l10n.h:198
+msgid "Claim"
+msgstr ""
+
+#: src/ext_l10n.h:199
+msgid "Claim*"
+msgstr ""
+
+#: src/ext_l10n.h:200
+msgid "Closing"
+msgstr "Затваряне"
+
+#: src/ext_l10n.h:201
+msgid "Code"
+msgstr "Код"
+
+#: src/ext_l10n.h:202
+msgid "Comment"
+msgstr "Коментар"
+
+#: src/ext_l10n.h:203
+msgid "Conclusion"
+msgstr "Заключение"
+
+#: src/ext_l10n.h:204
+msgid "Conclusion*"
+msgstr "Заключение*"
+
+#: src/ext_l10n.h:205
+msgid "Condition"
+msgstr "Условие"
+
+#: src/ext_l10n.h:206
+msgid "Conjecture"
+msgstr ""
+
+#: src/ext_l10n.h:207
+msgid "Conjecture*"
+msgstr ""
+
+#: src/ext_l10n.h:208
+msgid "CopNum"
+msgstr ""
+
+#: src/ext_l10n.h:209
+msgid "Copyright"
+msgstr "Авторски права"
+
+#: src/ext_l10n.h:210
+msgid "Corollary"
+msgstr ""
+
+#: src/ext_l10n.h:211
+msgid "Corollary*"
+msgstr ""
+
+#: src/ext_l10n.h:212
+msgid "Criterion"
+msgstr ""
+
+#: src/ext_l10n.h:213
+msgid "CrossList"
+msgstr ""
+
+#: src/ext_l10n.h:214
+msgid "Current_Address"
+msgstr ""
+
+#: src/ext_l10n.h:215
+msgid "Customer"
+msgstr "Клиент"
+
+#: src/ext_l10n.h:216
+msgid "Data"
+msgstr "База данни"
+
+#: src/ext_l10n.h:217
+msgid "Date"
+msgstr "Дата"
+
+#: src/ext_l10n.h:218
+msgid "Datum"
+msgstr ""
+
+#: src/ext_l10n.h:219
+msgid "Dedication"
+msgstr "Посвещение"
+
+#: src/ext_l10n.h:220
+msgid "Dedicatory"
+msgstr "Речник"
+
+#: src/ext_l10n.h:221
+msgid "Definition"
+msgstr "Дефиниция"
+
+#: src/ext_l10n.h:222
+msgid "Definition*"
+msgstr "Дефиниция*"
+
+#: src/ext_l10n.h:223
+msgid "Description"
+msgstr "Описание"
+
+#: src/ext_l10n.h:224
+msgid "Dialogue"
+msgstr ""
+
+#: src/ext_l10n.h:225
+msgid "EMail"
+msgstr ""
+
+#: src/ext_l10n.h:226
+msgid "EXT."
+msgstr ""
+
+#: src/ext_l10n.h:227
+msgid "Email"
+msgstr ""
+
+#: src/ext_l10n.h:228
+msgid "Encl"
+msgstr ""
+
+#: src/ext_l10n.h:229
+msgid "Encl."
+msgstr ""
+
+#: src/ext_l10n.h:230
+msgid "End_All_Slides"
+msgstr ""
+
+#: src/ext_l10n.h:231
+msgid "Enumerate"
+msgstr "Номерация"
+
+#: src/ext_l10n.h:232
+msgid "Example"
+msgstr "Пример"
+
+#: src/ext_l10n.h:233
+msgid "Example*"
+msgstr "Пример*"
+
+#: src/ext_l10n.h:234
+msgid "Exercise"
+msgstr "Упражнение"
+
+#: src/ext_l10n.h:235
+msgid "Extratitle"
+msgstr ""
+
+#: src/ext_l10n.h:236
+msgid "FADE_IN:"
+msgstr ""
+
+#: src/ext_l10n.h:237
+msgid "FADE_OUT:"
+msgstr ""
+
+#: src/ext_l10n.h:238
+msgid "Fact"
+msgstr "Факт"
+
+#: src/ext_l10n.h:239
+msgid "Fact*"
+msgstr "Факт*"
+
+#: src/ext_l10n.h:240
+msgid "FigCaption"
+msgstr "Фиг.заглавие"
+
+#: src/ext_l10n.h:241
+msgid "FirstAuthor"
+msgstr ""
+
+#: src/ext_l10n.h:242
+msgid "FirstName"
+msgstr "Малко име"
+
+#: src/ext_l10n.h:243
+msgid "FitBitmap"
+msgstr ""
+
+#: src/ext_l10n.h:244
+msgid "FitFigure"
+msgstr "Фигура"
+
+#: src/ext_l10n.h:245
+msgid "Foilhead"
+msgstr ""
+
+#: src/ext_l10n.h:246
+msgid "Footernote"
+msgstr "Бел. под линия"
+
+#: src/ext_l10n.h:247
+msgid "FourAffiliations"
+msgstr ""
+
+#: src/ext_l10n.h:248
+msgid "FourAuthors"
+msgstr ""
+
+#: src/ext_l10n.h:249
+msgid "FrontMatter"
+msgstr ""
+
+#: src/ext_l10n.h:250
+msgid "Gruss"
+msgstr ""
+
+#: src/ext_l10n.h:251
+msgid "HTTP"
+msgstr ""
+
+#: src/ext_l10n.h:252
+msgid "Headnote"
+msgstr "Заглавие"
+
+#: src/ext_l10n.h:253
+msgid "INT."
+msgstr ""
+
+#: src/ext_l10n.h:254
+msgid "IhrSchreiben"
+msgstr ""
+
+#: src/ext_l10n.h:255
+msgid "IhrZeichen"
+msgstr ""
+
+#: src/ext_l10n.h:256
+msgid "Institute"
+msgstr ""
+
+#: src/ext_l10n.h:257
+msgid "Institution"
+msgstr ""
+
+#: src/ext_l10n.h:258
+msgid "InvisibleText"
+msgstr ""
+
+#: src/ext_l10n.h:259
+msgid "Invoice"
+msgstr "Игнорирай"
+
+#: src/ext_l10n.h:260
+msgid "Itemize"
+msgstr ""
+
+#: src/ext_l10n.h:261 src/frontends/gnome/FormCitation.C:531
+msgid "Journal"
+msgstr ""
+
+#: src/ext_l10n.h:262 src/frontends/gnome/FormIndex.C:89
+#: src/frontends/xforms/form_index.C:28
+msgid "Keyword"
+msgstr "Ключова дума"
+
+#: src/ext_l10n.h:263
+msgid "Keywords"
+msgstr "Ключови дума"
+
+#: src/ext_l10n.h:264
+msgid "Konto"
+msgstr ""
+
+#: src/ext_l10n.h:265
+msgid "LaTeX"
+msgstr ""
+
+#: src/ext_l10n.h:266
+msgid "LaTeX_Title"
+msgstr ""
+
+#: src/ext_l10n.h:267
+msgid "Labeling"
+msgstr ""
+
+#: src/ext_l10n.h:268
+msgid "Land"
+msgstr ""
+
+#: src/ext_l10n.h:269
+msgid "LandscapeSlide"
+msgstr ""
+
+#: src/ext_l10n.h:270
+msgid "Left_Header"
+msgstr "Заглавие"
+
+#: src/ext_l10n.h:271
+msgid "Lemma"
+msgstr "Лема"
+
+#: src/ext_l10n.h:272
+msgid "Lemma*"
+msgstr "Лема*"
+
+#: src/ext_l10n.h:273
+msgid "Letter"
+msgstr ""
+
+#: src/ext_l10n.h:274
+msgid "List"
+msgstr "Списък"
+
+#: src/ext_l10n.h:275
+msgid "ListOfSlides"
+msgstr "Списък на таблиците"
+
+#: src/ext_l10n.h:276
+msgid "Literal"
+msgstr ""
+
+#: src/ext_l10n.h:277
+msgid "Location"
+msgstr ""
+
+#: src/ext_l10n.h:278
+msgid "Lowertitleback"
+msgstr ""
+
+#: src/ext_l10n.h:279
+msgid "LyX-Code"
+msgstr "LyX Код"
+
+#: src/ext_l10n.h:280
+msgid "Mail"
+msgstr ""
+
+#: src/ext_l10n.h:281
+msgid "MarkBoth"
+msgstr ""
+
+#: src/ext_l10n.h:282
+msgid "MathLetters"
+msgstr ""
+
+#: src/ext_l10n.h:283
+msgid "MeinZeichen"
+msgstr ""
+
+#: src/ext_l10n.h:284
+msgid "Minisec"
+msgstr ""
+
+#: src/ext_l10n.h:285
+msgid "MyRef"
+msgstr "Препратка"
+
+#: src/ext_l10n.h:286
+msgid "My_Address"
+msgstr ""
+
+#: src/ext_l10n.h:287
+msgid "Myref"
+msgstr ""
+
+#: src/ext_l10n.h:288 src/frontends/gnome/FormUrl.C:119
+msgid "Name"
+msgstr "Име"
+
+#: src/ext_l10n.h:289
+msgid "Narrative"
+msgstr "Описание"
+
+#: src/ext_l10n.h:290
+msgid "Notation"
+msgstr ""
+
+#: src/ext_l10n.h:291 src/insets/insetinfo.C:77 src/insets/insetinfo.C:102
+#: src/insets/insetinfo.C:231
+msgid "Note"
+msgstr "Бележка"
+
+#: src/ext_l10n.h:292
+msgid "Note*"
+msgstr "Бележка*"
+
+#: src/ext_l10n.h:293
+msgid "NoteToEditor"
+msgstr ""
+
+#: src/ext_l10n.h:294
+msgid "Offprint"
+msgstr ""
+
+#: src/ext_l10n.h:295
+msgid "Offprints"
+msgstr ""
+
+#: src/ext_l10n.h:296
+msgid "Offsets"
+msgstr ""
+
+#: src/ext_l10n.h:297
+msgid "Oggetto"
+msgstr ""
+
+#: src/ext_l10n.h:298
+msgid "Opening"
+msgstr "Отваряне"
+
+#: src/ext_l10n.h:299
+msgid "Ort"
+msgstr ""
+
+#: src/ext_l10n.h:300
+msgid "Overlay"
+msgstr ""
+
+#: src/ext_l10n.h:301
+msgid "PACS"
+msgstr ""
+
+#: src/ext_l10n.h:302
+msgid "PS"
+msgstr ""
+
+#: src/ext_l10n.h:303
+msgid "Paragraph"
+msgstr "Абзац"
+
+#: src/ext_l10n.h:304
+msgid "Paragraph*"
+msgstr "Абзац*"
+
+#: src/ext_l10n.h:305
+msgid "Part"
+msgstr ""
+
+#: src/ext_l10n.h:306
+msgid "Part*"
+msgstr ""
+
+#: src/ext_l10n.h:307
+msgid "Petit"
+msgstr ""
+
+#: src/ext_l10n.h:308
+msgid "Phone"
+msgstr "Телефонен указател"
+
+#: src/ext_l10n.h:309
+msgid "Place"
+msgstr ""
+
+#: src/ext_l10n.h:310
+msgid "PlaceFigure"
+msgstr "Фигура"
+
+#: src/ext_l10n.h:311
+msgid "PlaceTable"
+msgstr "Таблица"
+
+#: src/ext_l10n.h:312
+msgid "PortraitSlide"
+msgstr "Портрет"
+
+#: src/ext_l10n.h:313
+msgid "PostalCommend"
+msgstr ""
+
+#: src/ext_l10n.h:314
+msgid "Postvermerk"
+msgstr ""
+
+#: src/ext_l10n.h:315
+msgid "Preprint"
+msgstr ""
+
+#: src/ext_l10n.h:316
+msgid "Problem"
+msgstr "Проблем"
+
+#: src/ext_l10n.h:317
+msgid "ProgressContents"
+msgstr ""
+
+#: src/ext_l10n.h:318
+msgid "Proof"
+msgstr "Доказателство"
+
+#: src/ext_l10n.h:319
+msgid "Property"
+msgstr ""
+
+#: src/ext_l10n.h:320
+msgid "Proposition"
+msgstr "Допускане"
+
+#: src/ext_l10n.h:321
+msgid "Proposition*"
+msgstr "Допускане*"
+
+#: src/ext_l10n.h:322
+msgid "Publishers"
+msgstr ""
+
+#: src/ext_l10n.h:323
+msgid "Question"
+msgstr "Въпрос"
+
+#: src/ext_l10n.h:324
+msgid "Quotation"
+msgstr ""
+
+#: src/ext_l10n.h:325
+msgid "Quote"
+msgstr ""
+
+#: src/ext_l10n.h:326
+msgid "REVTEX_Title"
+msgstr ""
+
+#: src/ext_l10n.h:327
+msgid "Received"
+msgstr "Получен"
+
+#: src/ext_l10n.h:328 src/frontends/kde/refdlg.C:62
+#: src/frontends/xforms/FormRef.C:36
+msgid "Reference"
+msgstr "Препратка"
+
+#: src/ext_l10n.h:329
+msgid "References"
+msgstr "Препратки"
+
+#: src/ext_l10n.h:330
+msgid "Remark"
+msgstr ""
+
+#: src/ext_l10n.h:331
+msgid "Remark*"
+msgstr ""
+
+#: src/ext_l10n.h:332
+msgid "Remarks"
+msgstr ""
+
+#: src/ext_l10n.h:333
+msgid "RetourAdresse"
+msgstr ""
+
+#: src/ext_l10n.h:334
+msgid "ReturnAddress"
+msgstr ""
+
+#: src/ext_l10n.h:335
+msgid "RightHeader"
+msgstr ""
+
+#: src/ext_l10n.h:336
+msgid "Right_Address"
+msgstr ""
+
+#: src/ext_l10n.h:337
+msgid "Right_Header"
+msgstr "Заглавие"
+
+#: src/ext_l10n.h:338
+msgid "Rotatefoilhead"
+msgstr ""
+
+#: src/ext_l10n.h:339
+msgid "Running_LaTeX_Title"
+msgstr ""
+
+#: src/ext_l10n.h:340
+msgid "SCENE"
+msgstr ""
+
+#: src/ext_l10n.h:341
+msgid "SCENE*"
+msgstr ""
+
+#: src/ext_l10n.h:342
+msgid "SGML"
+msgstr ""
+
+#: src/ext_l10n.h:343
+msgid "Scrap"
+msgstr ""
+
+#: src/ext_l10n.h:344
+msgid "Section"
+msgstr "Раздел"
+
+#: src/ext_l10n.h:345
+msgid "Section*"
+msgstr "Раздел*"
+
+#: src/ext_l10n.h:346
+msgid "Send_To_Address"
+msgstr ""
+
+#: src/ext_l10n.h:347
+msgid "Seriate"
+msgstr ""
+
+#: src/ext_l10n.h:348
+msgid "ShortFoilhead"
+msgstr ""
+
+#: src/ext_l10n.h:349
+msgid "ShortRotatefoilhead"
+msgstr ""
+
+#: src/ext_l10n.h:350
+msgid "ShortTitle"
+msgstr ""
+
+#: src/ext_l10n.h:351
+msgid "Signature"
+msgstr "Подпис"
+
+#: src/ext_l10n.h:352
+msgid "Slide"
+msgstr ""
+
+#: src/ext_l10n.h:353
+msgid "Slide*"
+msgstr ""
+
+#: src/ext_l10n.h:354
+msgid "SlideContents"
+msgstr ""
+
+#: src/ext_l10n.h:355
+msgid "SlideHeading"
+msgstr ""
+
+#: src/ext_l10n.h:356
+msgid "SlideSubHeading"
+msgstr ""
+
+#: src/ext_l10n.h:357
+msgid "Solution"
+msgstr "Решение"
+
+#: src/ext_l10n.h:358
+msgid "Speaker"
+msgstr ""
+
+#: src/ext_l10n.h:359
+msgid "Specialmail"
+msgstr ""
+
+#: src/ext_l10n.h:360
+msgid "Stadt"
+msgstr ""
+
+#: src/ext_l10n.h:361
+msgid "Standard"
+msgstr "Стандартен"
+
+#: src/ext_l10n.h:362
+msgid "State"
+msgstr "Държава"
+
+#: src/ext_l10n.h:363
+msgid "Strasse"
+msgstr ""
+
+#: src/ext_l10n.h:364
+msgid "Street"
+msgstr "Улица"
+
+#: src/ext_l10n.h:365
+msgid "SubSection"
+msgstr "Подраздел"
+
+#: src/ext_l10n.h:366
+msgid "SubTitle"
+msgstr "Подзаглавие"
+
+#: src/ext_l10n.h:367
+msgid "Subject"
+msgstr "Тема"
+
+#: src/ext_l10n.h:368
+msgid "Subjectclass"
+msgstr ""
+
+#: src/ext_l10n.h:369
+msgid "Subparagraph"
+msgstr "Подабзац"
+
+#: src/ext_l10n.h:370
+msgid "Subparagraph*"
+msgstr "Подабзац*"
+
+#: src/ext_l10n.h:371
+msgid "Subsection"
+msgstr "Подраздел"
+
+#: src/ext_l10n.h:372
+msgid "Subsection*"
+msgstr "Подраздел*"
+
+#: src/ext_l10n.h:373
+msgid "Subsubsection"
+msgstr "Под-подраздел"
+
+#: src/ext_l10n.h:374
+msgid "Subsubsection*"
+msgstr "Под-подраздел*"
+
+#: src/ext_l10n.h:375
+msgid "Subtitle"
+msgstr "Подзаглавие"
+
+#: src/ext_l10n.h:376
+msgid "Summary"
+msgstr "Обобщение"
+
+#: src/ext_l10n.h:377
+msgid "Surname"
+msgstr "Презиме"
+
+#: src/ext_l10n.h:378
+msgid "TOC_Author"
+msgstr ""
+
+#: src/ext_l10n.h:379
+msgid "TOC_Title"
+msgstr ""
+
+#: src/ext_l10n.h:380
+msgid "TableComments"
+msgstr ""
+
+#: src/ext_l10n.h:381
+msgid "TableRefs"
+msgstr ""
+
+#: src/ext_l10n.h:382
+msgid "Telefax"
+msgstr ""
+
+#: src/ext_l10n.h:383
+msgid "Telefon"
+msgstr ""
+
+#: src/ext_l10n.h:384
+msgid "Telephone"
+msgstr "Телефон"
+
+#: src/ext_l10n.h:385
+msgid "Telex"
+msgstr "Телекс"
+
+#: src/ext_l10n.h:386
+msgid "Thanks"
+msgstr "Благодаря"
+
+#: src/ext_l10n.h:387
+msgid "Theorem"
+msgstr "Теорема"
+
+#: src/ext_l10n.h:388
+msgid "Theorem*"
+msgstr "Теорема*"
+
+#: src/ext_l10n.h:389
+msgid "TheoremTemplate"
+msgstr ""
+
+#: src/ext_l10n.h:390
+msgid "Thesaurus"
+msgstr ""
+
+#: src/ext_l10n.h:391
+msgid "ThickLine"
+msgstr ""
+
+#: src/ext_l10n.h:392
+msgid "ThreeAffiliations"
+msgstr ""
+
+#: src/ext_l10n.h:393
+msgid "ThreeAuthors"
+msgstr ""
+
+#: src/ext_l10n.h:394
+msgid "TickList"
+msgstr ""
+
+#: src/ext_l10n.h:395 src/frontends/gnome/FormCitation.C:529
+msgid "Title"
+msgstr "Заглавие"
+
+#: src/ext_l10n.h:396
+msgid "Titlehead"
+msgstr ""
+
+#: src/ext_l10n.h:397
+msgid "Topic"
+msgstr ""
+
+#: src/ext_l10n.h:398
+msgid "Town"
+msgstr "Град"
+
+#: src/ext_l10n.h:399
+msgid "Trans_Keywords"
+msgstr ""
+
+#: src/ext_l10n.h:400
+msgid "Transition"
+msgstr "Преход"
+
+#: src/ext_l10n.h:401
+msgid "TranslatedAbstract"
+msgstr ""
+
+#: src/ext_l10n.h:402
+msgid "Translated_Title"
+msgstr ""
+
+#: src/ext_l10n.h:403
+msgid "Translator"
+msgstr "Преводач"
+
+#: src/ext_l10n.h:404
+msgid "TwoAffiliations"
+msgstr ""
+
+#: src/ext_l10n.h:405
+msgid "TwoAuthors"
+msgstr ""
+
+#. tooltips
+#: src/ext_l10n.h:406 src/frontends/gnome/FormUrl.C:117
+#: src/frontends/kde/urldlg.C:62 src/frontends/kde/urldlg.C:63
+msgid "URL"
+msgstr "URL"
+
+#: src/ext_l10n.h:407
+msgid "Unterschrift"
+msgstr ""
+
+#: src/ext_l10n.h:408
+msgid "Uppertitleback"
+msgstr ""
+
+#: src/ext_l10n.h:409
+msgid "Verbatim"
+msgstr ""
+
+#: src/ext_l10n.h:410
+msgid "Verse"
+msgstr ""
+
+#: src/ext_l10n.h:411
+msgid "Verteiler"
+msgstr ""
+
+#: src/ext_l10n.h:412
+msgid "VisibleText"
+msgstr ""
+
+#: src/ext_l10n.h:413
+msgid "YourMail"
+msgstr ""
+
+#: src/ext_l10n.h:414
+msgid "YourRef"
+msgstr ""
+
+#: src/ext_l10n.h:415
+msgid "Yourmail"
+msgstr ""
+
+#: src/ext_l10n.h:416
+msgid "Yourref"
+msgstr ""
+
+#: src/ext_l10n.h:417
+msgid "Zusatz"
+msgstr ""
+
+#: src/ext_l10n.h:418
+msgid "cc"
+msgstr ""
+
+#: src/ext_l10n.h:419
+msgid "encl"
+msgstr ""
+
+#: src/ext_l10n.h:420
+msgid "msnumber"
+msgstr ""
+
+#: src/ext_l10n.h:421
+msgid "ps"
+msgstr ""
+
+#: src/ext_l10n.h:422
+msgid "Afrikaans"
+msgstr "Бурски"
+
+#: src/ext_l10n.h:423
+msgid "American"
+msgstr "Американски"
+
+#: src/ext_l10n.h:424
+msgid "Arabic"
+msgstr "Арабски"
+
+#: src/ext_l10n.h:425
+msgid "Austrian"
+msgstr "Австрийски"
+
+#: src/ext_l10n.h:426
+msgid "Bahasa"
+msgstr ""
+
+#: src/ext_l10n.h:427
+msgid "Portuguese (Brazil)"
+msgstr "Португалски"
+
+#: src/ext_l10n.h:428
+msgid "Breton"
+msgstr "Бретонски?"
+
+#: src/ext_l10n.h:429
+msgid "British"
+msgstr "Британски"
+
+#: src/ext_l10n.h:430
+msgid "Canadian"
+msgstr "Канадски"
+
+#: src/ext_l10n.h:431
+msgid "French Canadian"
+msgstr "Канадски френски"
+
+#: src/ext_l10n.h:432
+msgid "Catalan"
+msgstr "Каталонски"
+
+#: src/ext_l10n.h:433
+msgid "Croatian"
+msgstr "Хърватски"
+
+#: src/ext_l10n.h:434
+msgid "Czech"
+msgstr "Чешки"
+
+#: src/ext_l10n.h:435
+msgid "Danish"
+msgstr "Датски"
+
+#: src/ext_l10n.h:436
+msgid "Dutch"
+msgstr "Холандски"
+
+#: src/ext_l10n.h:437 src/language.C:35
+msgid "English"
+msgstr "Английски"
+
+#: src/ext_l10n.h:438
+msgid "Esperanto"
+msgstr "Есперанто"
+
+#: src/ext_l10n.h:439
+msgid "Estonian"
+msgstr "Естонски"
+
+#: src/ext_l10n.h:440
+msgid "Finnish"
+msgstr "Финландски"
+
+#: src/ext_l10n.h:441
+msgid "French"
+msgstr "Френски"
+
+#: src/ext_l10n.h:442
+msgid "French (GUTenberg)"
+msgstr "Френски (GUTenberg)"
+
+#: src/ext_l10n.h:443
+msgid "Galician"
+msgstr "Галски?"
+
+#: src/ext_l10n.h:444
+msgid "German"
+msgstr "Немски"
+
+#: src/ext_l10n.h:445
+msgid "German (new spelling)"
+msgstr "Немски (нова граматика)"
+
+#: src/ext_l10n.h:446 src/mathed/math_forms.C:26
+msgid "Greek"
+msgstr "Гръцки"
+
+#: src/ext_l10n.h:447
+msgid "Hebrew"
+msgstr "Иврит"
+
+#: src/ext_l10n.h:448
+msgid "Irish"
+msgstr "Ирландски"
+
+#: src/ext_l10n.h:449
+msgid "Italian"
+msgstr "Италиански"
+
+#: src/ext_l10n.h:450
+msgid "Lsorbian"
+msgstr "???"
+
+#: src/ext_l10n.h:451
+msgid "Magyar"
+msgstr "Унгарски"
+
+#: src/ext_l10n.h:452
+msgid "Norsk"
+msgstr "???"
+
+#: src/ext_l10n.h:453
+msgid "Polish"
+msgstr "Полски"
+
+#: src/ext_l10n.h:454
+msgid "Portugese"
+msgstr "Португалски"
+
+#: src/ext_l10n.h:455
+msgid "Romanian"
+msgstr "Румънски"
+
+#: src/ext_l10n.h:456
+msgid "Russian"
+msgstr "Руски"
+
+#: src/ext_l10n.h:457
+msgid "Scottish"
+msgstr "Шотландски"
+
+#: src/ext_l10n.h:458
+msgid "Serbian"
+msgstr "Сръбски"
+
+#: src/ext_l10n.h:459
+msgid "Serbo-Croatian"
+msgstr "Сърбо-хърватски"
+
+#: src/ext_l10n.h:460
+msgid "Spanish"
+msgstr "Испански"
+
+#: src/ext_l10n.h:461
+msgid "Slovak"
+msgstr "Словашки"
+
+#: src/ext_l10n.h:462
+msgid "Slovene"
+msgstr "Словенски"
+
+#: src/ext_l10n.h:463
+msgid "Swedish"
+msgstr "Шведски"
+
+#: src/ext_l10n.h:464
+msgid "Thai"
+msgstr ""
+
+#: src/ext_l10n.h:465
+msgid "Turkish"
+msgstr "Турски"
+
+#: src/ext_l10n.h:466
+msgid "Ukrainian"
+msgstr "Украински"
+
+#: src/ext_l10n.h:467
+msgid "Usorbian"
+msgstr ""
+
+#: src/ext_l10n.h:468
+msgid "Welsh"
+msgstr "Уелски"
+
+#: src/filedlg.C:204
+msgid "Warning! Couldn't open directory."
+msgstr "Внимание: Отварянето на директория е невъзможно."
+
+#: src/FontLoader.C:246
+msgid "Loading font into X-Server..."
+msgstr "Зареждане на шрифт в X-сървъра..."
+
+#: src/form1.C:21
+msgid "Set Charset|#C"
+msgstr "Избор на кодировка(C)|#C"
+
+#: src/form1.C:23
+msgid "Charset not found!"
+msgstr "Символът не е намерен!"
+
+#: src/form1.C:28
+msgid ""
+"Error:\n"
+"\n"
+"Keymap\n"
+"not found"
+msgstr ""
+"Грешка:\n"
+"\n"
+"Не е намерена\n"
+"клав. подредба"
+
+#: src/form1.C:33
+msgid "Character set:|#H"
+msgstr "Кодировка(H):|#H"
+
+#: src/form1.C:45
+msgid "Other...|#O"
+msgstr "Друга(O)...|#O"
+
+#: src/form1.C:48
+msgid "Other...|#T"
+msgstr "Друга(Т)...|#T"
+
+#: src/form1.C:51 src/frontends/xforms/FormDocument.C:277
+#: src/frontends/xforms/FormPreferences.C:280
+msgid "Language"
+msgstr "Език"
+
+#: src/form1.C:56
+msgid "Mapping"
+msgstr "Подредба"
+
+#: src/form1.C:62
+msgid "Primary key map|#r"
+msgstr "Основна клав. подредба(r)|#r"
+
+#: src/form1.C:64
+msgid "No key mapping|#N"
+msgstr "Без клав. подредба(N)|#N"
+
+#: src/form1.C:66
+msgid "Secondary key map|#e"
+msgstr "Допълнителна клав. подредба(e)|#e"
+
+#: src/form1.C:70
+msgid "Secondary"
+msgstr "Допълнителен"
+
+#: src/form1.C:73
+msgid "Primary"
+msgstr "Основен"
+
+#: src/form1.C:99
+
+msgid "EPS file|#E"
+msgstr "EPS файл(Е)|#E"
+
+#: src/form1.C:102
+msgid "Full Screen Preview|#v"
+msgstr "Преглед(v)|#v"
+
+#: src/form1.C:105 src/frontends/xforms/form_preferences.C:308 src/lyx.C:83
+msgid "Browse...|#B"
+msgstr "Търсене(B)...|#B"
+
+#: src/form1.C:114 src/frontends/xforms/form_citation.C:89
+#: src/frontends/xforms/form_document.C:40
+#: src/frontends/xforms/form_graphics.C:144
+#: src/frontends/xforms/form_index.C:45
+#: src/frontends/xforms/form_paragraph.C:324
+#: src/frontends/xforms/form_preferences.C:31
+#: src/frontends/xforms/form_print.C:56 src/frontends/xforms/form_ref.C:82
+#: src/frontends/xforms/form_tabular_create.C:32
+#: src/frontends/xforms/form_url.C:68 src/layout_forms.C:48
+#: src/layout_forms.C:94 src/lyx.C:50 src/mathed/math_forms.C:106
+#: src/mathed/math_forms.C:156 src/mathed/math_forms.C:201 src/print_form.C:31
+#: src/sp_form.C:62
+msgid "Apply|#A"
+msgstr "Установи(A)|#A"
+
+#: src/form1.C:120 src/form1.C:264 src/frontends/xforms/form_graphics.C:150
+#: src/insets/insetbib.C:65 src/insets/insetbib.C:66
+#: src/insets/insetinclude.C:55 src/insets/insetinclude.C:56
+#: src/layout_forms.C:98 src/lyx.C:53 src/lyx_gui_misc.C:408
+#: src/lyx_gui_misc.C:412 src/lyx_gui_misc.C:428 src/mathed/math_forms.C:100
+#: src/mathed/math_forms.C:130 src/mathed/math_forms.C:198 src/print_form.C:34
+#: src/sp_form.C:42
+msgid "Cancel|^["
+msgstr "Отказ|^["
+
+#: src/form1.C:123
+msgid "Display Frame|#F"
+msgstr "Покажи рамка(F)|#F"
+
+#: src/form1.C:126
+msgid "Do Translations|#r"
+msgstr ""
+
+#: src/form1.C:129 src/sp_form.C:58
+msgid "Options"
+msgstr "Опции"
+
+#: src/form1.C:133
+msgid "Angle:|#L"
+msgstr "Ъгъл(L):|#L"
+
+#: src/form1.C:139
+#, no-c-format
+msgid "% of Page|#g"
+msgstr "% на страница(g)|#g"
+
+#: src/form1.C:142
+msgid "Default|#t"
+msgstr "Стандартно(t)|#t"
+
+#: src/form1.C:145
+msgid "cm|#m"
+msgstr "cm|#m"
+
+#: src/form1.C:148
+msgid "inches|#h"
+msgstr "инчове(h)|#h"
+
+#: src/form1.C:153 src/frontends/xforms/form_graphics.C:54
+msgid "Display"
+msgstr "Показване"
+
+#: src/form1.C:157 src/frontends/xforms/form_graphics.C:46
+msgid "Height"
+msgstr "Височина"
+
+#: src/form1.C:161 src/frontends/kde/dlg/paraextradlgdata.C:91
+#: src/frontends/xforms/form_graphics.C:44
+#: src/frontends/xforms/form_paragraph.C:219
+msgid "Width"
+msgstr "Ширина"
+
+#: src/form1.C:165
+msgid "Rotation"
+msgstr "Ротация"
+
+#: src/form1.C:171
+msgid "Display in Color|#D"
+msgstr "Покажи в цвят(D)|#D"
+
+#: src/form1.C:174
+msgid "Do not display this figure|#y"
+msgstr "Не показвай тази фигура(y)|#y"
+
+#: src/form1.C:177
+msgid "Display as Grayscale|#i"
+msgstr "Покажи в сиви тонове(i)|#i"
+
+#: src/form1.C:180
+msgid "Display as Monochrome|#s"
+msgstr "Покажи монохромно(s)|#s"
+
+#: src/form1.C:187
+msgid "Default|#U"
+msgstr "Стандартно"
+
+#: src/form1.C:190
+msgid "cm|#c"
+msgstr "cm|#c"
+
+#: src/form1.C:193
+msgid "inches|#n"
+msgstr "инчове(n)|#n"
+
+# , c-format
+# , c-format
+#: src/form1.C:197
+#, no-c-format
+msgid "% of Page|#P"
+msgstr "% на страница(P)|#P"
+
+# , c-format
+#: src/form1.C:201
+#, no-c-format
+msgid "% of Column|#o"
+msgstr "% на колона(o)|#o"
+
+#: src/form1.C:207
+msgid "Caption|#k"
+msgstr "Заглавие"
+
+#: src/form1.C:210
+msgid "Subfigure|#q"
+msgstr ""
+
+#: src/form1.C:233
+msgid "Directory:|#D"
+msgstr "Директория(D):|#D"
+
+#: src/form1.C:237
+msgid "Pattern:|#P"
+msgstr "Шаблон(P):|#P"
+
+#: src/form1.C:245
+msgid "Filename:|#F"
+msgstr "Име на файл(F):|#F"
+
+#: src/form1.C:249
+msgid "Rescan|#R#r"
+msgstr "Нов прочит"
+
+#: src/form1.C:252
+msgid "Home|#H#h"
+msgstr ""
+
+#: src/form1.C:255
+msgid "User1|#1"
+msgstr "Потребител1|#1"
+
+#: src/form1.C:258
+msgid "User2|#2"
+msgstr "Потребител2|#2"
+
+#: src/form1.C:286
+msgid "Find|#n"
+msgstr "Търси(n)|#n"
+
+#: src/form1.C:290
+msgid "Replace with|#W"
+msgstr "Замести с(W)|#W"
+
+#: src/form1.C:294
+msgid "@>|#F^s"
+msgstr "@>|#F^s"
+
+#: src/form1.C:298
+msgid "@<|#B^r"
+msgstr "@<|#B^r"
+
+#: src/form1.C:302
+msgid "Replace|#R#r"
+msgstr "Замести|#R#r"
+
+#: src/form1.C:306
+msgid "Close|^["
+msgstr "Затвори|^["
+
+#: src/form1.C:310
+msgid "Case sensitive|#s#S"
+msgstr ""
+"Различаване на\n"
+" малки/големи|#s#S"
+
+#: src/form1.C:312
+msgid "Match word|#M#m"
+msgstr "Дума|#M#m"
+
+#: src/form1.C:314
+msgid "Replace All|#A#a"
+msgstr "Замести всички|#A#a"
+
+#: src/frontends/gnome/FormCitation.C:371
+msgid "_Add new citation"
+msgstr "Добави нов цитат"
+
+#: src/frontends/gnome/FormCitation.C:372
+msgid "_Edit/remove citation(s)"
+msgstr "Промяна/премахване на цитат"
+
+#: src/frontends/gnome/FormCitation.C:397
+msgid " Citation: Select action "
+msgstr "Цитат: Избор на действие "
+
+#: src/frontends/gnome/FormCitation.C:451
+msgid "Use Regular Expression"
+msgstr "Използвай регулярен израз"
+
+#: src/frontends/gnome/FormCitation.C:453
+msgid "Search"
+msgstr "Търси"
+
+#: src/frontends/gnome/FormCitation.C:471
+msgid " Insert Citation: Enter keyword(s) or regular expression "
+msgstr " Вмъкване на цитат: Въведете ключова дума или регулярен израз "
+
+#: src/frontends/gnome/FormCitation.C:527
+msgid "Key"
+msgstr "Ключ"
+
+#: src/frontends/gnome/FormCitation.C:528
+msgid "Author(s)"
+msgstr "Автор(и)"
+
+
+#: src/frontends/gnome/FormCitation.C:530
+msgid "Year"
+msgstr "Година"
+
+#: src/frontends/gnome/FormCitation.C:549
+#: src/frontends/gnome/FormCitation.C:639 src/frontends/kde/citationdlg.C:54
+msgid "Text after"
+msgstr "Текст след"
+
+#: src/frontends/gnome/FormCitation.C:560
+msgid " Insert Citation: Select citation "
+msgstr "Вмъкване на цитат: Изберете цитат "
+
+#: src/frontends/gnome/FormCitation.C:607
+msgid "_Remove"
+msgstr "Изтрий"
+
+#: src/frontends/gnome/FormCitation.C:608
+msgid "_Up"
+msgstr "Назад"
+
+#: src/frontends/gnome/FormCitation.C:609
+msgid "_Down"
+msgstr "Напред"
+
+#: src/frontends/gnome/FormCitation.C:657
+msgid " Citation: Edit "
+msgstr "Цитат: Редактиране "
+
+#: src/frontends/gnome/FormCitation.C:756
+msgid "--- No such key in the database ---"
+msgstr "--- Няма такъв ключ в базата данни ---"
+
+#: src/frontends/gnome/FormCopyright.C:46
+msgid ""
+"(C) 1995 by Matthias Ettrich, \n"
+"1995-2000 LyX Team"
+msgstr ""
+
+#: src/frontends/gnome/FormCopyright.C:48
+msgid ""
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version.\n"
+"LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
+"details. You should have received a copy of the GNU General Public License "
+"along with this program; if not, write to the Free Software Foundation, "
+"Inc.,  675 Mass Ave, Cambridge, MA 02139, USA."
+msgstr ""
+"Тази програма е свободен Софтуер; Можете да я разпространяване и/или променяте съгласно правилата на GNU General Public License, както е публикуван от Free Software Foundation(Фондацията за Свободен Софтуер), във версия 2 или (по ваша преценка) всяка по-нова версия.\n"
+"LyX се разпространява с надеждата, че ще бъде полезен, но БЕЗ НИКАКВИ ГАРАНЦИИ; дори без подразбиращата се гаранция за ПРИГОДНОСТ ЗА ОПРЕДЕЛЕНА ЦЕЛ. Вижте GNU General Public License за подробности. Би трябвало да сте получили копие на GNU General Public License заедно с тази програма; ако не сте, пишете на Фондацията за Свободен Софтуер, Inc., 675 Mass Ave, Cambridge, MA 02139, USA."
+
+#: src/frontends/gnome/FormError.C:89
+msgid " Error "
+msgstr "Грешка "
+
+#: src/frontends/gnome/FormIndex.C:119
+msgid " Index "
+msgstr "Индекс "
+
+#: src/frontends/gnome/FormPrint.C:165 src/frontends/xforms/FormPrint.C:158
+msgid "Error:"
+msgstr "Грешка:"
+
+#: src/frontends/gnome/FormPrint.C:166 src/frontends/xforms/FormPrint.C:159
+msgid "Unable to print"
+msgstr "Невъзможност за печат"
+
+#: src/frontends/gnome/FormPrint.C:167 src/frontends/xforms/FormPrint.C:160
+msgid "Check that your parameters are correct"
+msgstr "Проверете дали параметрите ви са коректни"
+
+#. goto button labels
+#: src/frontends/gnome/FormRef.C:48 src/frontends/xforms/FormRef.C:105
+#: src/frontends/xforms/FormRef.C:222 src/frontends/xforms/FormRef.C:245
+msgid "Goto reference"
+msgstr "Към препратка"
+
+#: src/frontends/gnome/FormRef.C:49 src/frontends/xforms/FormRef.C:214
+msgid "Go back"
+msgstr "Обратно"
+
+#: src/frontends/gnome/FormRef.C:91 src/frontends/xforms/FormRef.C:143
+msgid "*** No labels found in document ***"
+msgstr "*** Няма етикети в документа ***"
+
+#: src/frontends/gnome/FormRef.C:116
+msgid " Reference "
+msgstr " Препракта "
+
+#: src/frontends/gnome/FormRef.C:185
+msgid " Reference: Select reference "
+msgstr " Препратка: Избор на препратка "
+
+#: src/frontends/gnome/FormRef.C:254
+msgid "Ref"
+msgstr ""
+
+#: src/frontends/gnome/FormRef.C:259
+msgid "Page"
+msgstr "Страница"
+
+#: src/frontends/gnome/FormRef.C:264
+msgid "TextRef"
+msgstr ""
+
+#: src/frontends/gnome/FormRef.C:269
+msgid "TextPage"
+msgstr ""
+
+#: src/frontends/gnome/FormRef.C:274
+msgid "PrettyRef"
+msgstr ""
+
+#: src/frontends/gnome/FormRef.C:300
+msgid "Type:"
+msgstr ""
+
+#: src/frontends/gnome/FormRef.C:301
+msgid "Name:"
+msgstr "Име:"
+
+#: src/frontends/gnome/FormRef.C:311
+msgid " Reference: "
+msgstr " Препратка: "
+
+#: src/frontends/gnome/FormToc.C:100 src/frontends/gnome/FormToc.C:167
+#: src/frontends/kde/FormToc.C:167 src/frontends/kde/FormToc.C:168
+#: src/frontends/kde/tocdlg.C:28 src/frontends/xforms/FormToc.C:35
+#: src/insets/insettoc.C:22
+msgid "Table of Contents"
+msgstr "Съдържание"
+
+#: src/frontends/gnome/FormToc.C:104 src/frontends/gnome/FormToc.C:173
+#: src/frontends/kde/FormToc.C:172 src/frontends/kde/FormToc.C:173
+#: src/frontends/kde/tocdlg.C:29 src/insets/insettoc.C:26
+msgid "List of Figures"
+msgstr "Списък на фигури"
+
+#: src/frontends/gnome/FormToc.C:108 src/frontends/gnome/FormToc.C:185
+#: src/frontends/kde/FormToc.C:177 src/frontends/kde/FormToc.C:178
+#: src/frontends/kde/tocdlg.C:30 src/insets/insettoc.C:28
+msgid "List of Tables"
+msgstr "Списък на таблици"
+
+#: src/frontends/gnome/FormToc.C:112 src/frontends/gnome/FormToc.C:179
+#: src/frontends/kde/FormToc.C:182 src/frontends/kde/FormToc.C:183
+#: src/frontends/kde/tocdlg.C:31 src/insets/insettoc.C:24
+msgid "List of Algorithms"
+msgstr "Списък на алгоритми"
+
+#: src/frontends/gnome/FormToc.C:148 src/frontends/xforms/FormToc.C:113
+msgid "*** No Document ***"
+msgstr "*** Няма документ ***"
+
+#: src/frontends/gnome/FormUrl.C:91
+msgid "HTML type"
+msgstr "HTML-тип"
+
+#: src/frontends/gnome/FormUrl.C:131
+msgid " URL "
+msgstr ""
+
+#: src/frontends/gnome/Menubar_pimpl.C:119
+msgid "Refresh"
+msgstr "Опресни"
+
+#: src/frontends/gnome/Menubar_pimpl.C:149
+msgid "<No Name>"
+msgstr "<Няма име>"
+
+#: src/frontends/kde/citationdlg.C:28
+msgid "Selected keys"
+msgstr "Избрани клавиши"
+
+#: src/frontends/kde/citationdlg.C:35
+msgid "Available keys"
+msgstr "Достъпни клавиши"
+
+#: src/frontends/kde/citationdlg.C:42
+msgid "Reference entry"
+msgstr "Елемент препратка"
+
+#: src/frontends/kde/citationdlg.C:61
+msgid "&Add"
+msgstr "(&A)Добави"
+
+#: src/frontends/kde/citationdlg.C:66
+msgid "&Up"
+msgstr "(&U)Назад"
+
+#: src/frontends/kde/citationdlg.C:71
+msgid "&Down"
+msgstr "(&D)Напред"
+
+#: src/frontends/kde/citationdlg.C:76
+msgid "&Remove"
+msgstr "(&R)Изтрий"
+
+#: src/frontends/kde/FormPrint.C:108 src/frontends/kde/citationdlg.C:81
+#: src/frontends/kde/dlg/copyrightdlgdata.C:40
+#: src/frontends/kde/dlg/indexdlgdata.C:68
+#: src/frontends/kde/dlg/paradlgdata.C:39 src/frontends/kde/refdlg.C:86
+#: src/frontends/kde/urldlg.C:52
+msgid "&OK"
+msgstr "&OK"
+
+#: src/frontends/kde/FormCitation.C:166 src/frontends/kde/FormRef.C:203
+#: src/frontends/kde/citationdlg.C:87 src/frontends/kde/dlg/indexdlgdata.C:85
+#: src/frontends/kde/dlg/paradlgdata.C:99
+#: src/frontends/kde/dlg/printdlgdata.C:133
+#: src/frontends/kde/dlg/tabcreatedlgdata.C:60 src/frontends/kde/indexdlg.C:65
+#: src/frontends/kde/refdlg.C:92 src/frontends/kde/urldlg.C:58
+msgid "&Cancel"
+msgstr "(&C)Отказ"
+
+#. tooltips
+#: src/frontends/kde/citationdlg.C:93
+msgid "Keys currently selected"
+msgstr "Текущо избрани клавиши"
+
+#: src/frontends/kde/citationdlg.C:94
+msgid "Reference keys available"
+msgstr "Достъпни клавиши за препратка"
+
+#: src/frontends/kde/citationdlg.C:95
+msgid "Reference entry text"
+msgstr "Текст на препратка"
+
+#: src/frontends/kde/citationdlg.C:96
+msgid "Text to place after citation"
+msgstr "Текст след цитат"
+
+#: src/frontends/kde/dlg/copyrightdlgdata.C:61
+msgid ""
+"LyX is Copyright (C) 1995 by Matthias Ettrich, \n"
+"1995-2000 LyX Team"
+msgstr ""
+
+#: src/frontends/kde/dlg/copyrightdlgdata.C:78
+msgid ""
+"This program is free software; you can redistribute it\n"
+"and/or modify it under the terms of the GNU General\n"
+"Public License as published by the Free Software\n"
+"Foundation; either version 2 of the License, or\n"
+"(at your option) any later version."
+msgstr ""
+"Тази програма е свободен софтуер; можете да я разпространявате\n"
+"и/или променяте съгласно правилана на GNU General\n"
+"Public License, така както е публикуван от Free.\n"
+"Software Foundation; или версия 2 или \n"
+"(по ваша преценка) всяка по-нова версия."
+
+#: src/frontends/kde/dlg/copyrightdlgdata.C:95
+msgid ""
+"LyX is distributed in the hope that it will\n"
+"be useful, but WITHOUT ANY WARRANTY;\n"
+"without even the implied warranty of MERCHANTABILITY\n"
+"or FITNESS FOR A PARTICULAR PURPOSE.\n"
+"See the GNU General Public License for more details.\n"
+"You should have received a copy of\n"
+"the GNU General Public License\n"
+"along with this program; if not, write to\n"
+"the Free Software Foundation, Inc., \n"
+"675 Mass Ave, Cambridge, MA 02139, USA."
+msgstr ""
+"LyX се разпространява с надеждата, че ще бъде полезен,\n"
+"но БЕЗ НИКАКВА ГАРАНЦИЯ; дори без подразбиращата се \n"
+"гаранция за ПРИГОДНОСТ ЗА ОПРЕДЕЛЕНА ЦЕЛ. Вижте GNU General\n"
+"Public License за повече подробности. Би трябвало да сте\n"
+"получили копие на GNU General Public License заедно с тази\n"
+"програма; ако не сте, пишете на\n"
+"\n"
+"Free Software Foundation, Inc.,\n"
+"675 Mass Ave, Cambridge, MA 02139, USA."
+
+#: src/frontends/kde/dlg/indexdlgdata.C:42
+msgid "Keyword:"
+msgstr "Ключ:"
+
+#: src/frontends/kde/dlg/paraabovedlgdata.C:39
+#: src/frontends/kde/dlg/parabelowdlgdata.C:39
+msgid "Page break"
+msgstr "Нова страница"
+
+#: src/frontends/kde/dlg/paraabovedlgdata.C:52
+msgid "Keep space when at top of page"
+msgstr "Запази интервала най-отгоре на страницата"
+
+#: src/frontends/kde/dlg/paraabovedlgdata.C:70
+#: src/frontends/kde/dlg/parabelowdlgdata.C:70
+msgid "Extra Space"
+msgstr "Допълнителен интервал"
+
+#: src/frontends/kde/dlg/paraabovedlgdata.C:101
+#: src/frontends/kde/dlg/parabelowdlgdata.C:101
+msgid "Value"
+msgstr "Стойност"
+
+#: src/frontends/kde/dlg/paraabovedlgdata.C:118
+#: src/frontends/kde/dlg/parabelowdlgdata.C:118
+msgid "Plus"
+msgstr "Повече"
+
+#: src/frontends/kde/dlg/paraabovedlgdata.C:135
+#: src/frontends/kde/dlg/parabelowdlgdata.C:135
+msgid "Minus"
+msgstr "По-малко"
+
+#: src/frontends/kde/dlg/parabelowdlgdata.C:52
+msgid "Keep space when at bottom of page"
+msgstr "Leerraum am Seitenende beibehalten"
+
+#: src/frontends/kde/dlg/paradlgdata.C:65
+msgid "&Apply"
+msgstr "(&A)Установи"
+
+#: src/frontends/kde/dlg/paradlgdata.C:82
+msgid "&Restore"
+msgstr "(&R)Въстанови"
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:43
+#: src/frontends/kde/dlg/parageneraldlgdata.C:43
+#: src/frontends/xforms/form_paragraph.C:149
+#: src/frontends/xforms/form_paragraph.C:223
+msgid "Alignment"
+msgstr "Подравняване"
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:74 src/lyx.C:56
+msgid "Type"
+msgstr ""
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:116
+msgid "&HFill between minipage paragraphs"
+msgstr "&HFill между министраница абзаците"
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:129
+msgid "&Start new minipage"
+msgstr "(&S)Начало на нова министраница"
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:142
+msgid "&Top"
+msgstr "(&T)Отгоре"
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:155
+msgid "&Middle"
+msgstr "(&M)В средата"
+
+#: src/frontends/kde/dlg/paraextradlgdata.C:168
+msgid "&Bottom"
+msgstr "(&B)Отдолу"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:55
+msgid "Draw line above paragraph"
+msgstr "Черта над абзац"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:68
+msgid "Draw line below paragraph"
+msgstr "Черта под абзац"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:81
+msgid "Don't indent paragraph"
+msgstr "Абцаз без отместване"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:94
+msgid "Block"
+msgstr "Блок"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:107
+msgid "Center"
+msgstr "Центринан"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:120
+msgid "Left"
+msgstr "Ляв"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:133
+msgid "Right"
+msgstr "Десен"
+
+#: src/frontends/kde/dlg/parageneraldlgdata.C:151
+msgid "Label width"
+msgstr "Ширина на етикет"
+
+#: src/frontends/kde/dlg/printdlgdata.C:42
+msgid "Pages"
+msgstr "Страници"
+
+#: src/frontends/kde/dlg/printdlgdata.C:73
+#: src/frontends/xforms/form_print.C:135
+msgid "Copies"
+msgstr "Копия"
+
+#: src/frontends/kde/dlg/printdlgdata.C:88
+#: src/frontends/xforms/form_print.C:138
+msgid "Print to"
+msgstr "Печат на"
+
+#: src/frontends/kde/dlg/printdlgdata.C:116
+msgid "&Print"
+msgstr "(&P)Печат"
+
+#: src/frontends/kde/dlg/printdlgdata.C:149
+msgid "&All pages"
+msgstr "(&A)Всички страници"
+
+#: src/frontends/kde/dlg/printdlgdata.C:162
+msgid "&Even pages"
+msgstr "(&E)Четни страници"
+
+#: src/frontends/kde/dlg/printdlgdata.C:192
+msgid "From"
+msgstr "От"
+
+#: src/frontends/kde/dlg/printdlgdata.C:208
+msgid "To"
+msgstr "до"
+
+#: src/frontends/kde/dlg/printdlgdata.C:220
+msgid "&Odd pages"
+msgstr "(&O)Нечетни страници"
+
+#: src/frontends/kde/dlg/printdlgdata.C:233
+msgid "&Printer"
+msgstr "(&P)Принтер"
+
+#: src/frontends/kde/dlg/printdlgdata.C:246
+msgid "&File"
+msgstr "(&F)Файл"
+
+#: src/frontends/kde/dlg/printdlgdata.C:272
+msgid "&Reverse order"
+msgstr "(&R)Обърни реда"
+
+#: src/frontends/kde/dlg/printdlgdata.C:298
+msgid "Co&llate"
+msgstr ""
+
+#: src/frontends/kde/dlg/printdlgdata.C:312
+msgid "&Browse"
+msgstr "(&B)Търси"
+
+#: src/frontends/kde/dlg/printdlgdata.C:346
+msgid "Count"
+msgstr "Брой"
+
+#: src/frontends/kde/dlg/tabcreatedlgdata.C:42
+msgid "&Insert"
+msgstr "(&I)Вмъкни"
+
+#: src/frontends/kde/dlg/tabcreatedlgdata.C:90
+#: src/frontends/xforms/form_tabular_create.C:49 src/mathed/math_forms.C:133
+msgid "Rows"
+msgstr "Редове"
+
+#: src/frontends/kde/dlg/tabcreatedlgdata.C:107
+#: src/frontends/xforms/form_tabular_create.C:45
+msgid "Columns"
+msgstr "Колони"
+
+#: src/frontends/kde/FormCitation.C:160 src/frontends/kde/FormRef.C:201
+#: src/frontends/kde/indexdlg.C:60 src/frontends/kde/tocdlg.C:48
+msgid "&Close"
+msgstr "(&C)Затвори"
+
+#: src/frontends/kde/FormCitation.C:199
+msgid "LyX: Citation Reference"
+msgstr ""
+
+#: src/frontends/kde/FormCitation.C:382
+msgid "Key not found in references."
+msgstr "Клавишът не е намерен в препратките."
+
+#: src/frontends/kde/FormCopyright.C:42
+msgid "LyX: Copyright and Warranty"
+msgstr "LyX: Авторски права и гаранции"
+
+#: src/frontends/kde/FormIndex.C:96
+msgid "LyX: Index"
+msgstr "LyX: Индекс"
+
+#: src/frontends/kde/FormParagraph.C:183
+#: src/frontends/xforms/FormParagraph.C:148
+msgid "Paragraph layout set"
+msgstr "Оформяне на абзаци"
+
+#: src/frontends/kde/FormParagraph.C:189
+msgid "LyX: Paragraph Options"
+msgstr "LyX: Параметри на абзаци"
+
+#. FIXME: should have a utility class for this
+#: src/frontends/kde/FormPrint.C:106
+msgid ""
+"An error occured while printing.\n"
+"\n"
+msgstr ""
+"Грешка по време на печат.\n"
+"\n"
+
+#: src/frontends/kde/FormPrint.C:107
+msgid "Check the parameters are correct.\n"
+msgstr "Проверете дали параметрите са коректни.\n"
+
+#: src/frontends/kde/FormPrint.C:108
+msgid "LyX: Print Error"
+msgstr "LyX: Грешка при печат"
+
+#: src/frontends/kde/FormPrint.C:118
+msgid "LyX: Print"
+msgstr "LyX: Печат"
+
+#: src/frontends/kde/FormRef.C:103
+msgid "&Go back"
+msgstr "(&G)Назад"
+
+#: src/frontends/kde/FormRef.C:108 src/frontends/kde/FormRef.C:119
+#: src/frontends/kde/FormRef.C:184 src/frontends/kde/refdlg.C:76
+msgid "&Goto reference"
+msgstr "(&G)Към препратка"
+
+#: src/frontends/kde/FormRef.C:249
+msgid "LyX: Cross Reference"
+msgstr "LyX: Препратка"
+
+#: src/frontends/kde/FormTabularCreate.C:53
+msgid "LyX: Insert Table"
+msgstr "LyX: Вмъкване на таблица"
+
+#: src/frontends/kde/FormToc.C:246
+msgid "LyX: Table of Contents"
+msgstr "LyX: Съдържание"
+
+#: src/LyXAction.C:123 src/frontends/kde/FormUrl.C:86
+#: src/frontends/kde/paradlg.C:89 src/frontends/xforms/FormBase.h:137
+#: src/frontends/xforms/FormBase.h:152 src/frontends/xforms/FormInset.h:30
+#: src/frontends/xforms/FormInset.h:54 src/layout_forms.C:52 src/log_form.C:21
+#: src/lyxvc.C:263 src/mathed/math_forms.C:177
+msgid "Close"
+msgstr "Затвори"
+
+#: src/LyXAction.C:157 src/frontends/kde/FormUrl.C:93
+#: src/frontends/kde/paradlg.C:89 src/frontends/xforms/FormBase.h:138
+#: src/frontends/xforms/FormBase.h:153 src/frontends/xforms/FormInset.h:31
+#: src/frontends/xforms/FormInset.h:55 src/lyxfunc.C:744
+msgid "Cancel"
+msgstr "Отказ"
+
+#: src/frontends/kde/FormUrl.C:123
+msgid "LyX: Url"
+msgstr ""
+
+#. tooltips
+#: src/frontends/kde/indexdlg.C:27 src/frontends/kde/indexdlg.C:28
+msgid "Index entry"
+msgstr "Индекс запис"
+
+#: src/frontends/kde/paradlg.C:34
+msgid "&General"
+msgstr "(&G)Общ"
+
+#: src/frontends/kde/paradlg.C:35
+msgid "&Extra"
+msgstr "(&E)Допълнителен"
+
+#. FIXME: should be cleverer here
+#: src/frontends/kde/paradlg.C:95 src/paragraph.C:1957
+msgid "Senseless with this layout!"
+msgstr "Неизползваем с това оформление!"
+
+#: src/frontends/kde/paraextradlg.C:25 src/lyxfont.C:56
+msgid "Normal"
+msgstr "Нормален"
+
+#: src/frontends/kde/paraextradlg.C:26
+msgid "Indented paragraph"
+msgstr "Абзац с отместване"
+
+#: src/frontends/kde/paraextradlg.C:27
+msgid "Minipage"
+msgstr "Министраница"
+
+#: src/frontends/kde/paraextradlg.C:28
+msgid "Wrap text around floats (floatflt)"
+msgstr ""
+
+#. if you change this, remember to change ParaDialog::get/setUnits()
+#: src/frontends/kde/paraextradlg.C:30 src/frontends/kde/parageneraldlg.C:63
+msgid "Centimetres"
+msgstr "Сантиметри"
+
+#: src/frontends/kde/paraextradlg.C:31 src/frontends/kde/parageneraldlg.C:64
+msgid "Inches"
+msgstr "Инчове"
+
+#: src/frontends/kde/paraextradlg.C:32 src/frontends/kde/parageneraldlg.C:65
+msgid "Points (1/72.27 inch)"
+msgstr "Точки (1/72.27 инча)"
+
+#: src/frontends/kde/paraextradlg.C:33 src/frontends/kde/parageneraldlg.C:66
+msgid "Millimetres"
+msgstr "Милиметри"
+
+#: src/frontends/kde/paraextradlg.C:34 src/frontends/kde/parageneraldlg.C:67
+msgid "Picas"
+msgstr ""
+
+#: src/frontends/kde/paraextradlg.C:35 src/frontends/kde/parageneraldlg.C:68
+msgid "ex units"
+msgstr "ex единици"
+
+#: src/frontends/kde/paraextradlg.C:36 src/frontends/kde/parageneraldlg.C:69
+msgid "em units"
+msgstr "em единици"
+
+#: src/frontends/kde/paraextradlg.C:37 src/frontends/kde/parageneraldlg.C:70
+msgid "Scaled points (1/65536 pt)"
+msgstr ""
+
+#: src/frontends/kde/paraextradlg.C:38 src/frontends/kde/parageneraldlg.C:71
+msgid "Big/PS points (1/72 inch)"
+msgstr "Big/PS точки (1/72 инча)"
+
+#: src/frontends/kde/paraextradlg.C:39 src/frontends/kde/parageneraldlg.C:72
+msgid "Didot points"
+msgstr ""
+
+#: src/frontends/kde/paraextradlg.C:40 src/frontends/kde/parageneraldlg.C:73
+msgid "Cicero points"
+msgstr ""
+
+#: src/frontends/kde/paraextradlg.C:41
+msgid "Percent of column"
+msgstr "Процент от колона"
+
+#. FIXME: free punctuation to whoever can make the value
+#. boxes not be overly large
+#: src/frontends/kde/parageneraldlg.C:31
+msgid "&Spacing Above"
+msgstr "(&S)Разстояние отгоре"
+
+#: src/frontends/kde/parageneraldlg.C:32
+msgid "Spacing &Below"
+msgstr "(&B)Разстояние отдолу"
+
+#: src/frontends/kde/parageneraldlg.C:37 src/frontends/kde/parageneraldlg.C:44
+msgid "None"
+msgstr "Няма"
+
+#: src/frontends/kde/parageneraldlg.C:38 src/frontends/kde/parageneraldlg.C:45
+msgid "Defskip"
+msgstr "Нормално разстояние"
+
+#: src/frontends/kde/parageneraldlg.C:39 src/frontends/kde/parageneraldlg.C:46
+msgid "Small skip"
+msgstr "Малко разстояние"
+
+#: src/frontends/kde/parageneraldlg.C:40 src/frontends/kde/parageneraldlg.C:47
+msgid "Medium skip"
+msgstr "Средно разстояние"
+
+#: src/frontends/kde/parageneraldlg.C:41 src/frontends/kde/parageneraldlg.C:48
+msgid "Big skip"
+msgstr "Голямо разстояние"
+
+#: src/frontends/kde/parageneraldlg.C:42 src/frontends/kde/parageneraldlg.C:49
+msgid "VFill"
+msgstr ""
+
+#: src/frontends/kde/parageneraldlg.C:43 src/frontends/kde/parageneraldlg.C:50
+msgid "Length"
+msgstr "Дължина"
+
+#: src/frontends/kde/printdlg.C:25
+msgid "Print every page"
+msgstr "Печат на всяка страница"
+
+#: src/frontends/kde/printdlg.C:26
+msgid "Print odd-numbered pages only"
+msgstr "Печат само на нечетни страници"
+
+#: src/frontends/kde/printdlg.C:27
+msgid "Print even-numbered pages only"
+msgstr "Печат само на четни страници"
+
+#: src/frontends/kde/printdlg.C:28
+msgid "Print from page number"
+msgstr "Печат от страница"
+
+#: src/frontends/kde/printdlg.C:29
+msgid "Print to page number"
+msgstr "Печат до странича"
+
+#: src/frontends/kde/printdlg.C:30
+msgid "Print in reverse order (last page first)"
+msgstr "Печат в обратен ред (първо последната страница)"
+
+#: src/frontends/kde/printdlg.C:31
+msgid "Number of copies to print"
+msgstr "Брой копия за печат"
+
+#: src/frontends/kde/printdlg.C:32
+msgid "Collate multiple copies"
+msgstr "Подреждане на многото копия"
+
+#: src/frontends/kde/printdlg.C:33
+msgid "Printer name"
+msgstr "Име на принтер"
+
+#: src/frontends/kde/printdlg.C:34
+msgid "Output filename"
+msgstr "Име на файл"
+
+#: src/frontends/kde/printdlg.C:35
+msgid "Select output filename"
+msgstr "Избор на файл"
+
+#: src/frontends/kde/refdlg.C:30
+msgid "Available References"
+msgstr "Достъпни препратки"
+
+#: src/frontends/kde/refdlg.C:45 src/frontends/kde/urldlg.C:39
+msgid "Name :"
+msgstr "Име :"
+
+#: src/frontends/kde/refdlg.C:51
+msgid "Reference :"
+msgstr "Препратка :"
+
+#: src/frontends/kde/refdlg.C:57
+msgid "Sort"
+msgstr "Сортирай"
+
+#: src/frontends/kde/refdlg.C:63
+msgid "Page number"
+msgstr "Номер на страница"
+
+#: src/frontends/kde/refdlg.C:64
+msgid "Ref on page xxx"
+msgstr "Препратка на страница ххх"
+
+#: src/frontends/kde/refdlg.C:65
+msgid "on page xxx"
+msgstr "на страница ххх"
+
+#: src/frontends/kde/refdlg.C:66
+msgid "Pretty reference"
+msgstr "\"Хубава\" препратка"
+
+#: src/frontends/kde/refdlg.C:70
+msgid "Reference Type"
+msgstr "Тип на препратка"
+
+#: src/frontends/kde/refdlg.C:81 src/frontends/kde/tocdlg.C:43
+msgid "&Update"
+msgstr "(&U)Актуализирай"
+
+#. tooltips
+#: src/frontends/kde/refdlg.C:98
+msgid "Reference as it appears in output"
+msgstr "Препратка, както изглежда в текста"
+
+#: src/frontends/kde/refdlg.C:99
+msgid "Sort references in alphabetical order ?"
+msgstr "Азбучна подредба на препратките ?"
+
+#: src/frontends/kde/tocdlg.C:57
+msgid "Depth"
+msgstr "Дълбочина"
+
+#: src/frontends/kde/urldlg.C:33
+msgid "Url :"
+msgstr ""
+
+#: src/frontends/kde/urldlg.C:45
+msgid "Generate hyperlink"
+msgstr "Генерирай hyperlink"
+
+#: src/frontends/kde/urldlg.C:64 src/frontends/kde/urldlg.C:65
+msgid "Name associated with the URL"
+msgstr "Име за URL-а"
+
+#: src/frontends/kde/urldlg.C:66
+msgid "Output as a hyperlink ?"
+msgstr "Представяне като hyperlink ?"
+
+#: src/frontends/xforms/FormCitation.C:37
+msgid "Citation"
+msgstr "Цитат"
+
+#: src/frontends/xforms/form_citation.C:29
+msgid "Inset keys|#I"
+msgstr ""
+
+#: src/frontends/xforms/form_citation.C:38
+msgid "Bibliography keys|#B"
+msgstr "Клавиши за библиография(B)|#B"
+
+#: src/frontends/xforms/form_citation.C:46
+msgid "@4->"
+msgstr ""
+
+#: src/frontends/xforms/form_citation.C:47
+msgid "#&D"
+msgstr ""
+
+#: src/frontends/xforms/form_citation.C:51
+msgid "@9+"
+msgstr ""
+
+#: src/frontends/xforms/form_citation.C:52
+msgid "#X"
+msgstr ""
+
+#: src/frontends/xforms/form_citation.C:56
+msgid "@8->"
+msgstr ""
+
+#: src/frontends/xforms/form_citation.C:57
+msgid "#&A"
+msgstr ""
+
+#: src/frontends/xforms/form_citation.C:61
+msgid "@2->"
+msgstr ""
+
+#: src/frontends/xforms/form_citation.C:62
+msgid "#&B"
+msgstr ""
+
+#: src/frontends/xforms/form_citation.C:66 src/lyxvc.C:112
+msgid "Info"
+msgstr "Информация"
+
+#: src/frontends/xforms/form_citation.C:71
+msgid "Text after|#e"
+msgstr "Текст след(e)|#e"
+
+#: src/frontends/xforms/form_citation.C:79
+#: src/frontends/xforms/form_document.C:52
+#: src/frontends/xforms/form_index.C:34
+#: src/frontends/xforms/form_paragraph.C:334
+#: src/frontends/xforms/form_preferences.C:48
+#: src/frontends/xforms/form_ref.C:89 src/frontends/xforms/form_url.C:76
+msgid "Restore|#R"
+msgstr "Въстанови(R)|#R"
+
+#: src/frontends/xforms/form_citation.C:96
+#: src/frontends/xforms/form_document.C:33
+#: src/frontends/xforms/form_index.C:53 src/frontends/xforms/form_ref.C:75
+#: src/frontends/xforms/form_tabular_create.C:39
+#: src/frontends/xforms/form_url.C:57 src/lyx.C:110
+msgid "Cancel|#C^["
+msgstr "Отказ(C)|#C^["
+
+#: src/frontends/xforms/FormCopyright.C:20
+msgid "Copyright and Warranty"
+msgstr "Авторски права и гаранции"
+
+#: src/frontends/xforms/FormCopyright.C:51
+msgid "LyX is Copyright (C) 1995 by Matthias Ettrich, 1995-2000 LyX Team"
+msgstr ""
+"LyX --- Copyright (C) 1995 Matthias Ettrich,\n"
+"1995-2000 LyX Team"
+
+#: src/frontends/xforms/FormCopyright.C:56
+msgid ""
+"This program is free software; you can redistribute it and/or modify it "
+"under the terms of the GNU General Public License as published by the Free "
+"Software Foundation; either version 2 of the License, or (at your option) "
+"any later version."
+msgstr ""
+"Тази програма е свободен софтуер; можете да я разпространявате\n"
+"и/или променяте съгласно правилата на GNU General Public\n"
+"License, както е публикуван от Фондацията за Свободен Софтуер;\n"
+"версия 2 или (по ваша преценка) всяка по-нова версия."
+
+
+#: src/frontends/xforms/FormCopyright.C:61
+msgid ""
+"LyX is distributed in the hope that it will be useful, but WITHOUT ANY "
+"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
+"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
+"details. You should have received a copy of the GNU General Public License "
+"along with this program; if not, write to the Free Software Foundation, "
+"Inc., 675 Mass Ave, Cambridge, MA 02139, USA."
+msgstr ""
+"LyX се разпространява с надеждата, че ще бъде полезен, но\n"
+"БЕЗ НИКАКВА ГАРАНЦИЯ; дори без подразбиращата се гаранция\n"
+"за ПРИГОДНОСТ ЗА ОПРЕДЕЛЕНА ЦЕЛ. Вижте GNU General Public\n"
+"License за повече подробности. Би трябвало да сте получили\n"
+"копие на GNU General Public License заедно с тази програма,\n"
+"ако не сте, пишете на Фонацията за Свободен Софтуер.\n"
+"\n"
+"Free Software Foundation, Inc.,\n"
+"675 Mass Ave, Cambridge, MA 02139, USA."
+
+#: src/frontends/xforms/form_copyright.C:41
+#: src/frontends/xforms/form_error.C:31 src/frontends/xforms/form_toc.C:48
+msgid "Close|#C^[^M"
+msgstr "SchlieЯen|#S^["
+
+#: src/frontends/xforms/FormDocument.C:48
+msgid "Document Layout"
+msgstr "Оформление на документ"
+
+#: src/frontends/xforms/FormDocument.C:117
+msgid ""
+" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
+"B4 | B5 "
+msgstr ""
+" Стандартно | Потребителско | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 "
+"| B4 | B5 "
+
+#: src/frontends/xforms/FormDocument.C:120
+msgid ""
+" None | A4 small Margins (only portrait) | A4 very small Margins (only "
+"portrait) | A4 very wide margins (only portrait) "
+msgstr " Няма | A4 малки полета (само портрет) | A4 много малки полета (само "
+"портретt) | A4 много широки полета (само портрет) "
+
+#: src/frontends/xforms/FormDocument.C:179
+msgid " Single | OneHalf | Double | Other "
+msgstr " Единично | Половин | Двойно | Друго "
+
+#: src/frontends/xforms/FormDocument.C:187
+msgid " Smallskip | Medskip | Bigskip | Length "
+msgstr " Малко | Средно | Голямо | Дължина "
+
+#: src/frontends/xforms/FormDocument.C:236
+msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | \"text\" | \"text\" "
+msgstr " ``text'' | ''text'' | ,,text`` | ,,text'' | \"text\" | \"text\" "
+
+#: src/frontends/xforms/FormDocument.C:263
+msgid ""
+" default | tiny | script | footnote | small | normal | large | Large | LARGE "
+"| huge | Huge"
+msgstr " Стандартно | тънко | скрипт | под линия | малко | нормолно | голямо "
+"| Голямо | ГОЛЯМО | огромно | Огромно"
+
+#: src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1975
+#: src/insets/insetexternal.C:143 src/lyxfunc.C:3105 src/lyxfunc.C:3181
+#: src/lyxfunc.C:3313
+msgid "Document"
+msgstr "Документ"
+
+#: src/frontends/xforms/FormDocument.C:275
+msgid "Paper"
+msgstr "Страница"
+
+#: src/frontends/xforms/FormDocument.C:279
+#: src/frontends/xforms/FormParagraph.C:133
+msgid "Extra"
+msgstr "Екстри"
+
+#: src/frontends/xforms/FormDocument.C:281
+msgid "Bullets"
+msgstr "Точки"
+
+#: src/frontends/xforms/FormDocument.C:284
+msgid ""
+"Your version of libXpm is older than 4.7.\n"
+"The `bullet' tab of the document popup has been disabled"
+msgstr ""
+"Версията на вашата библиотека libXpm е по-стара от 4.7.\n"
+"Затова е деактивиран диалогът \"Точки\"."
+
+#: src/frontends/xforms/FormDocument.C:308
+msgid "Document layout set"
+msgstr "Установено е оформлението на документа"
+
+#: src/frontends/xforms/FormDocument.C:426
+msgid "Converting document to new document class..."
+msgstr "Документът се конвертира към нов документ клас..."
+
+#: src/frontends/xforms/FormDocument.C:434
+msgid "One paragraph couldn't be converted"
+msgstr "Един абзац не може да бъде конвертиран"
+
+#: src/frontends/xforms/FormDocument.C:437
+msgid " paragraphs couldn't be converted"
+msgstr " абзаци не могат да бъдат конвертирани"
+
+#. problem changing class -- warn user and retain old style
+#: src/frontends/xforms/FormDocument.C:439
+#: src/frontends/xforms/FormDocument.C:446
+#: src/frontends/xforms/FormDocument.C:1108
+msgid "Conversion Errors!"
+msgstr "Грешки при конвертиране!"
+
+#: src/frontends/xforms/FormDocument.C:440
+msgid "into chosen document class"
+msgstr " към избрания документ клас!"
+
+#: src/frontends/xforms/FormDocument.C:447
+msgid "Errors loading new document class."
+msgstr "Грешки при зареждене на нов документ клас."
+
+#: src/frontends/xforms/FormDocument.C:448
+#: src/frontends/xforms/FormDocument.C:1110
+msgid "Reverting to original document class."
+msgstr "Обръщане в предишния документ клас!"
+
+#: src/frontends/xforms/FormDocument.C:825
+msgid "Document is read-only. No changes to layout permitted."
+msgstr "Документът е само за четене. Не са разрешени промени в оформлението."
+
+#: src/frontends/xforms/FormDocument.C:1100
+msgid "Should I set some parameters to"
+msgstr "Да бъдат ли установени някои параметри в"
+
+#: src/frontends/xforms/FormDocument.C:1101
+msgid "the defaults of this document class?"
+msgstr "подразбиращи се за този документ клас?"
+
+#: src/frontends/xforms/FormDocument.C:1109
+msgid "Unable to switch to new document class."
+msgstr "Невъзможност за превключване към нов документ клас!"
+
+#: src/frontends/xforms/form_document.C:30
+#: src/frontends/xforms/form_paragraph.C:314
+#: src/frontends/xforms/form_tabular.C:28
+msgid "Tabbed folder"
+msgstr ""
+
+#: src/frontends/xforms/form_document.C:85
+msgid "Special:|#S"
+msgstr "Специални(S):|#S"
+
+#: src/frontends/xforms/form_document.C:98
+msgid "Margins"
+msgstr "Полета"
+
+#: src/frontends/xforms/form_document.C:102
+msgid "Foot/Head Margins"
+msgstr "Долни/горни полета"
+
+#: src/frontends/xforms/form_document.C:113
+msgid "Orientation"
+msgstr "Ориентация"
+
+#: src/frontends/xforms/form_document.C:120
+msgid "Portrait|#o"
+msgstr "Портрет(o)|#o"
+
+#: src/frontends/xforms/form_document.C:127
+msgid "Landscape|#L"
+msgstr "Пейзаж(L)|#L"
+
+#: src/frontends/xforms/form_document.C:136
+msgid "Papersize:|#P"
+msgstr "Формат(P):|#P"
+
+#: src/frontends/xforms/form_document.C:143
+msgid "Custom Papersize"
+msgstr "Собствени размери"
+
+#: src/frontends/xforms/form_document.C:148
+msgid "Use Geometry Package|#U"
+msgstr "Използвай пакет Геометрия(U)|#U"
+
+#: src/frontends/xforms/form_document.C:155
+msgid "Width:|#W"
+msgstr "Широчина(W):|#W"
+
+#: src/frontends/xforms/form_document.C:162
+msgid "Height:|#H"
+msgstr "Височина(H):|#H"
+
+#: src/frontends/xforms/form_document.C:169
+msgid "Top:|#T"
+msgstr "Горе(T):|#T"
+
+#: src/frontends/xforms/form_document.C:176
+msgid "Bottom:|#B"
+msgstr "Долу(B):|#B"
+
+#: src/frontends/xforms/form_document.C:183
+msgid "Left:|#e"
+msgstr "Ляво(e):|#e"
+
+#: src/frontends/xforms/form_document.C:190
+msgid "Right:|#R"
+msgstr "Дясно(R):|#R"
+
+#: src/frontends/xforms/form_document.C:197
+msgid "Headheight:|#i"
+msgstr ""
+
+#: src/frontends/xforms/form_document.C:204
+msgid "Headsep:|#d"
+msgstr ""
+
+#: src/frontends/xforms/form_document.C:211
+msgid "Footskip:|#F"
+msgstr ""
+
+#: src/frontends/xforms/form_document.C:244
+msgid "Separation"
+msgstr "Абзац разделяне"
+
+#: src/frontends/xforms/form_document.C:247
+msgid "Page cols"
+msgstr "Колони"
+
+#: src/frontends/xforms/form_document.C:250
+msgid "Sides"
+msgstr ""
+
+#: src/frontends/xforms/form_document.C:254
+msgid "Fonts:|#F"
+msgstr "Шрифтове(F):|#F"
+
+#: src/frontends/xforms/form_document.C:262
+msgid "Font Size:|#O"
+msgstr "Шрифт размер(O):|#O"
+
+#: src/frontends/xforms/form_document.C:270
+msgid "Class:|#C"
+msgstr "Клас(C):|#C"
+
+#: src/frontends/xforms/form_document.C:278
+msgid "Pagestyle:|#P"
+msgstr "Формат на страница(P)|#P"
+
+#: src/frontends/xforms/form_document.C:286
+msgid "Spacing|#g"
+msgstr "Разстояния(g)|#g"
+
+#: src/frontends/xforms/form_document.C:294
+msgid "Extra Options:|#X"
+msgstr "Допълнителни опции(X)|#X"
+
+#: src/frontends/xforms/form_document.C:304
+msgid "Default Skip:|#u"
+msgstr "Нормално отместване(u)|#u"
+
+#: src/frontends/xforms/form_document.C:314
+msgid "One|#n"
+msgstr "Едностранно(n)|#n"
+
+#: src/frontends/xforms/form_document.C:321
+msgid "Two|#T"
+msgstr "Двустранно(w)|#w"
+
+#: src/frontends/xforms/form_document.C:332
+msgid "One|#e"
+msgstr "Едно(e)|#e"
+
+#: src/frontends/xforms/form_document.C:339
+msgid "Two|#w"
+msgstr "Дву(w)|#w"
+
+#: src/frontends/xforms/form_document.C:350
+msgid "Indent|#I"
+msgstr "Отместване(I)|#I"
+
+#: src/frontends/xforms/form_document.C:357
+msgid "Skip|#K"
+msgstr "Верт. отместване(K)|#K"
+
+#: src/frontends/xforms/form_document.C:392
+msgid "Quote Style    "
+msgstr "Вид кавички"
+
+#: src/frontends/xforms/form_document.C:394
+msgid "Encoding:|#D"
+msgstr "Кодировка(D):|#D"
+
+#: src/frontends/xforms/form_document.C:402
+msgid "Type:|#T"
+msgstr "Тип(T):|#T"
+
+#: src/frontends/xforms/form_document.C:411
+msgid "Single|#S"
+msgstr "Единично(S)|#S"
+
+#: src/frontends/xforms/form_document.C:418
+msgid "Double|#D"
+msgstr "Двойно(D)|#D"
+
+#: src/frontends/xforms/form_document.C:427
+msgid "Language:|#L"
+msgstr "Език(L):|#L"
+
+#: src/frontends/xforms/form_document.C:458
+msgid "Float Placement:|#L"
+msgstr ""
+
+#: src/frontends/xforms/form_document.C:464
+msgid "Section number depth"
+msgstr "Дълбочина на номериране"
+
+#: src/frontends/xforms/form_document.C:468
+msgid "Table of contents depth"
+msgstr "Дълбочина на съдържанието"
+
+#: src/frontends/xforms/form_document.C:473
+msgid "PS Driver:|#S"
+msgstr ""
+
+#: src/frontends/xforms/form_document.C:481
+msgid "Use AMS Math|#M"
+msgstr "AMS математика|#M"
+
+#: src/frontends/xforms/form_document.C:523
+msgid "Size|#z"
+msgstr "Големина(z)|#z"
+
+#: src/frontends/xforms/form_document.C:532
+msgid "LaTeX|#L"
+msgstr ""
+
+#: src/frontends/xforms/form_document.C:542
+msgid "1|#1"
+msgstr ""
+
+#: src/frontends/xforms/form_document.C:550
+msgid "2|#2"
+msgstr ""
+
+#: src/frontends/xforms/form_document.C:557
+msgid "3|#3"
+msgstr ""
+
+#: src/frontends/xforms/form_document.C:564
+msgid "4|#4"
+msgstr ""
+
+#: src/frontends/xforms/form_document.C:572
+msgid "Bullet Depth"
+msgstr "Дълбочина на точките"
+
+#: src/frontends/xforms/form_document.C:578
+msgid "Standard|#S"
+msgstr "Стандартно(S)|#S"
+
+#: src/frontends/xforms/form_document.C:587
+msgid "Maths|#M"
+msgstr "Математика(M)|#M"
+
+#: src/frontends/xforms/form_document.C:595
+msgid "Ding 2|#i"
+msgstr ""
+
+#: src/frontends/xforms/form_document.C:603
+msgid "Ding 3|#n"
+msgstr ""
+
+#: src/frontends/xforms/form_document.C:611
+msgid "Ding 4|#g"
+msgstr ""
+
+#: src/frontends/xforms/form_document.C:619
+msgid "Ding 1|#D"
+msgstr ""
+
+#: src/frontends/xforms/FormError.C:26
+msgid "LaTeX Error"
+msgstr "LaTeX Грешка"
+
+#: src/frontends/xforms/FormGraphics.C:36
+#: src/frontends/xforms/FormGraphics.C:359
+msgid "Graphics"
+msgstr "Графика"
+
+#: src/frontends/xforms/FormGraphics.C:368 src/insets/figinset.C:1974
+msgid "Clipart"
+msgstr ""
+
+#: src/frontends/xforms/form_graphics.C:33
+msgid "Graphics File|#F"
+msgstr "Графичен файл(F)|#F"
+
+#: src/frontends/xforms/form_graphics.C:39 src/insets/insetinclude.C:45
+#: src/insets/insetinclude.C:46
+msgid "Browse|#B"
+msgstr "Търсене(B)|#B"
+
+#: src/frontends/xforms/form_graphics.C:59
+#: src/frontends/xforms/form_graphics.C:76
+#, no-c-format
+msgid "% of Page"
+msgstr "% от страница"
+
+#: src/frontends/xforms/form_graphics.C:61
+#: src/frontends/xforms/form_graphics.C:82 src/lyxfont.C:411
+msgid "Default"
+msgstr "Стандартно"
+
+#: src/frontends/xforms/form_graphics.C:64
+#: src/frontends/xforms/form_graphics.C:80
+msgid "cm"
+msgstr ""
+
+#: src/frontends/xforms/form_graphics.C:66
+#: src/frontends/xforms/form_graphics.C:78
+msgid "Inch"
+msgstr "инча"
+
+# , c-format
+#: src/frontends/xforms/form_graphics.C:69
+#, no-c-format
+msgid "% of Column"
+msgstr "% от колона"
+
+#: src/frontends/xforms/form_graphics.C:90
+msgid "in Monochrome|#M"
+msgstr "Монохромно(M)|#M"
+
+#: src/frontends/xforms/form_graphics.C:96
+msgid "in Grayscale|#G"
+msgstr "в сиви тонове(G)|#G"
+
+#: src/frontends/xforms/form_graphics.C:101
+msgid "in Color|#C"
+msgstr "в цвят(C)|#C"
+
+#: src/frontends/xforms/form_graphics.C:106
+msgid "Don't display|#D"
+msgstr "Не показвай(D)|#D"
+
+#: src/frontends/xforms/form_graphics.C:112
+msgid "Rotate"
+msgstr "Ротация"
+
+#: src/frontends/xforms/form_graphics.C:114
+msgid "Angle|#A"
+msgstr "Ъгъл(A)|#A"
+
+#: src/frontends/xforms/form_graphics.C:120
+msgid "Inline Figure|#I"
+msgstr ""
+
+
+#: src/frontends/xforms/form_graphics.C:128
+msgid "Subcaption|#S"
+msgstr "Подзаглавие(S)|#S"
+
+#: src/frontends/xforms/form_graphics.C:135 src/frontends/xforms/form_ref.C:33
+#: src/frontends/xforms/form_toc.C:32
+msgid "Update|#U"
+msgstr "Актуализация(U)|#U"
+
+#: src/frontends/xforms/form_graphics.C:141
+msgid "Ok"
+msgstr ""
+
+#: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:36
+msgid "Index"
+msgstr "Индекс"
+
+#: src/frontends/xforms/form_index.C:29
+msgid "Keyword|#K"
+msgstr "Ключова дума(K)|#K"
+
+#: src/frontends/xforms/FormParagraph.C:33
+msgid "Paragraph Layout"
+msgstr "Оформление на абзац"
+
+#: src/frontends/xforms/FormParagraph.C:92
+#: src/frontends/xforms/FormParagraph.C:95
+msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
+msgstr " Няма | Стандартно | Smallskip | Medskip | Bigskip | VFill | Дължина "
+
+#. now make them fit together
+#: src/frontends/xforms/FormParagraph.C:132
+msgid "General"
+msgstr "Общо"
+
+#: src/frontends/xforms/FormParagraph.C:680
+#: src/frontends/xforms/FormParagraph.C:717
+#: src/frontends/xforms/FormTabular.C:454
+#: src/frontends/xforms/FormTabular.C:466
+#: src/frontends/xforms/FormTabular.C:478
+msgid "Warning: Invalid Length (valid example: 10mm)"
+msgstr "Внимание: Недалидна дължина (валиден пример: 10mm)"
+
+#: src/frontends/xforms/FormParagraph.C:729
+msgid "Warning: Invalid percent value (0-100)"
+msgstr "Внимание: Невалиден процент (0-100)"
+
+#: src/frontends/xforms/form_paragraph.C:40
+msgid "Label Width:|#d"
+
+msgstr "Ширина на етикет(d):|#d"
+
+#: src/frontends/xforms/form_paragraph.C:48
+msgid "Indent"
+msgstr "Отместване"
+
+#: src/frontends/xforms/form_paragraph.C:53
+msgid "Above|#b"
+msgstr "Отгоре(b)|#b"
+
+#: src/frontends/xforms/form_paragraph.C:60
+msgid "Below|#E"
+msgstr "Отдолу(E)|#E"
+
+#: src/frontends/xforms/form_paragraph.C:67
+msgid "Above|#o"
+msgstr "Преди(o)|#o"
+
+#: src/frontends/xforms/form_paragraph.C:74
+msgid "Below|#l"
+msgstr "След(l)|#l"
+
+#: src/frontends/xforms/form_paragraph.C:81
+msgid "No Indent|#I"
+msgstr "Без отместване(I)|#I"
+
+#: src/frontends/xforms/form_paragraph.C:90 src/mathed/math_forms.C:92
+msgid "Right|#R"
+msgstr "Вдясно(R)|#R"
+
+#: src/frontends/xforms/form_paragraph.C:97
+msgid "Left|#f"
+msgstr "Вляво(L)|#L"
+
+
+#: src/frontends/xforms/form_paragraph.C:104
+msgid "Block|#c"
+msgstr "Блок(c)|#c"
+
+#: src/frontends/xforms/form_paragraph.C:111
+#: src/frontends/xforms/form_tabular.C:210
+#: src/frontends/xforms/form_tabular.C:336
+msgid "Center|#n"
+msgstr "Центрирано(n)|#n"
+
+#: src/frontends/xforms/form_paragraph.C:126
+msgid "Above:|#v"
+msgstr "Отгоре(v):|#v"
+
+#: src/frontends/xforms/form_paragraph.C:134
+msgid "Below:|#w"
+msgstr "Отдолу(w)|#w"
+
+#: src/frontends/xforms/form_paragraph.C:141
+msgid "Pagebreaks"
+msgstr "Нови страници"
+
+#: src/frontends/xforms/form_paragraph.C:145
+msgid "Lines"
+msgstr "Редове"
+
+#: src/frontends/xforms/form_paragraph.C:153
+msgid "Vertical Spaces"
+msgstr "Вертикално разстояние"
+
+#: src/frontends/xforms/form_paragraph.C:158
+msgid "Keep|#K"
+msgstr ""
+
+#: src/frontends/xforms/form_paragraph.C:165
+msgid "Keep|#p"
+msgstr ""
+
+#: src/frontends/xforms/form_paragraph.C:200
+msgid "Extra Options"
+msgstr "Допълнителни опции"
+
+#: src/frontends/xforms/form_paragraph.C:205
+msgid "Length|#L"
+msgstr "Дължина(L)|#L"
+
+# , c-format
+#: src/frontends/xforms/form_paragraph.C:213
+#, no-c-format
+msgid "or %|#o"
+msgstr "или %|#o"
+
+#: src/frontends/xforms/form_paragraph.C:230
+msgid "Top|#T"
+msgstr "Горе(T)|#T"
+
+#: src/frontends/xforms/form_paragraph.C:237
+msgid "Middle|#d"
+msgstr "В средата(d)|#d"
+
+#: src/frontends/xforms/form_paragraph.C:244
+msgid "Bottom|#B"
+msgstr "Долу(B)|#B"
+
+#: src/frontends/xforms/form_paragraph.C:253
+msgid "HFill between Minipage paragraphs|#H"
+msgstr ""
+
+#: src/frontends/xforms/form_paragraph.C:260
+msgid "Start new Minipage|#S"
+msgstr "Започни нова министраница(S)|#S"
+
+#: src/frontends/xforms/form_paragraph.C:269
+msgid "Indented Paragraph|#I"
+msgstr ""
+
+#: src/frontends/xforms/form_paragraph.C:276
+msgid "Minipage|#M"
+msgstr "Министраница(M)|#M"
+
+#: src/frontends/xforms/form_paragraph.C:283
+msgid "Floatflt|#F"
+msgstr ""
+
+#: src/frontends/xforms/form_paragraph.C:317
+#: src/frontends/xforms/form_preferences.C:38
+#: src/frontends/xforms/form_print.C:63
+msgid "Cancel|C#C^["
+msgstr "Отказ(C)|C#C^["
+
+#: src/frontends/xforms/FormPreferences.C:68
+msgid "Preferences"
+msgstr "Настройки"
+
+#: src/frontends/xforms/FormPreferences.C:220
+msgid "Look & Feel"
+msgstr "Изглед"
+
+
+#: src/frontends/xforms/FormPreferences.C:223
+msgid "Lang Opts"
+msgstr "Език"
+
+#: src/frontends/xforms/FormPreferences.C:226
+#: src/frontends/xforms/FormPreferences.C:255
+msgid "Converters"
+msgstr "Конвертори"
+
+#: src/frontends/xforms/FormPreferences.C:229
+msgid "Inputs"
+msgstr "Вход"
+
+#: src/frontends/xforms/FormPreferences.C:232
+msgid "Outputs"
+msgstr "Изход"
+
+#: src/frontends/xforms/FormPreferences.C:238
+msgid "Screen Fonts"
+msgstr "Екранни шрифтове"
+
+#: src/frontends/xforms/FormPreferences.C:241
+msgid "Interface"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:244
+msgid "Colors"
+msgstr "Цветове"
+
+#: src/frontends/xforms/FormPreferences.C:247
+#: src/frontends/xforms/FormPreferences.C:264
+#: src/frontends/xforms/FormPreferences.C:272 src/mathed/math_forms.C:46
+msgid "Misc"
+msgstr "Различни"
+
+#: src/frontends/xforms/FormPreferences.C:252
+msgid "Formats"
+msgstr "Формати"
+
+#: src/frontends/xforms/FormPreferences.C:261
+msgid "Paths"
+msgstr "Пътища"
+
+#: src/frontends/xforms/FormPreferences.C:269
+msgid "Printer"
+msgstr "Принтер"
+
+#: src/frontends/xforms/FormPreferences.C:277
+msgid "Spell checker"
+msgstr "Правопис"
+
+#: src/frontends/xforms/FormPreferences.C:533
+msgid "LyX objects that can be assigned a color."
+msgstr "LyX обекти, на които може да се зададе цвят."
+
+#: src/frontends/xforms/FormPreferences.C:536
+msgid ""
+"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr "Промяна на цвета на LyX обект.  Забележка: После трябва да натиснете \"Установи\"."
+
+#: src/frontends/xforms/FormPreferences.C:544
+msgid "Find a new color."
+msgstr "Намери нов цвят."
+
+#: src/frontends/xforms/FormPreferences.C:547
+msgid "Toggle between RGB and HSV color spaces."
+msgstr "Превключване между RGB и HSV представяне."
+
+#: src/frontends/xforms/FormPreferences.C:742
+msgid "GUI background"
+msgstr "GUI фон"
+
+#: src/frontends/xforms/FormPreferences.C:748
+msgid "GUI text"
+msgstr "GUI текст"
+
+#: src/frontends/xforms/FormPreferences.C:757
+msgid "GUI selection"
+msgstr "GUI избор"
+
+#: src/frontends/xforms/FormPreferences.C:763
+msgid "GUI pointer"
+msgstr "GUI курсор"
+
+#: src/frontends/xforms/FormPreferences.C:896
+msgid "HSV"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:928
+msgid "RGB"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1004
+msgid "All the currently defined converters known to LyX."
+msgstr "Всички настоящо дефинирани конвертори, познати на LyX."
+
+#: src/frontends/xforms/FormPreferences.C:1006
+msgid "Convert \"from\" this format"
+msgstr "Конвертирай \"от\" този формат"
+
+#: src/frontends/xforms/FormPreferences.C:1008
+msgid "Convert \"to\" this format"
+msgstr "Конвертирай \"към\" този формат"
+
+#: src/frontends/xforms/FormPreferences.C:1010
+msgid ""
+"The conversion command. $$i is the input file name, $$b is the file name "
+"without its extension and $$o is the name of the output file."
+msgstr ""
+"Командата конвертиране. $$i е името на входния файл, $$b е името без "
+"неговото разширение и $$o е името на изходния файл."
+
+#: src/frontends/xforms/FormPreferences.C:1012
+msgid "Flags that control the converter behavior"
+msgstr "Флагове, управляващи поведението на конвертирането"
+
+#: src/frontends/xforms/FormPreferences.C:1014
+msgid ""
+"Remove the current converter from the list of available converters. Note: "
+"you must then \"Apply\" the change."
+msgstr "Премахни настоящия конвертор от списъка на наличните.  Забележка: Трябва да натиснете \"Установи\" за активиране."
+
+#: src/frontends/xforms/FormPreferences.C:1016
+#: src/frontends/xforms/FormPreferences.C:1288
+msgid "Add"
+msgstr "Добави"
+
+#: src/frontends/xforms/FormPreferences.C:1017
+msgid ""
+"Add the current converter to the list of available converters. Note: you "
+"must then \"Apply\" the change."
+msgstr "Добави настоящия конвертор към списъка с наличните.  Забележка: Трябва да натиснете \"Установи\" за активиране."
+
+#: src/frontends/xforms/FormPreferences.C:1019
+msgid ""
+"Modify the contents of the current converter. Note: you must then \"Apply\" "
+"the change."
+msgstr "Промени настройките на настоящия конвертор. Забележка: Трябва да натиснете \"Установи\" за активиране."
+
+#: src/frontends/xforms/FormPreferences.C:1112
+#: src/frontends/xforms/FormPreferences.C:1114
+#: src/frontends/xforms/FormPreferences.C:1159
+#: src/frontends/xforms/FormPreferences.C:1161
+#: src/frontends/xforms/FormPreferences.C:1388
+#: src/frontends/xforms/FormPreferences.C:1389
+#: src/frontends/xforms/FormPreferences.C:1438
+#: src/frontends/xforms/FormPreferences.C:1440
+#: src/frontends/xforms/form_preferences.C:504
+msgid "Modify|#M"
+msgstr "Промени(M)|#M"
+
+#: src/frontends/xforms/FormPreferences.C:1148
+#: src/frontends/xforms/FormPreferences.C:1150
+#: src/frontends/xforms/FormPreferences.C:1427
+#: src/frontends/xforms/FormPreferences.C:1429
+#: src/frontends/xforms/form_preferences.C:607
+#: src/frontends/xforms/form_preferences.C:694
+msgid "Add|#A"
+msgstr "Добави(A)|#A"
+
+#: src/frontends/xforms/FormPreferences.C:1274
+msgid "All the currently defined formats known to LyX."
+msgstr "Всички текущо дефинирани формати, известни на LyX."
+
+#: src/frontends/xforms/FormPreferences.C:1276
+msgid "The format identifier."
+msgstr "Идентификатор на формат."
+
+#: src/frontends/xforms/FormPreferences.C:1278
+msgid "The format name as it will appear in the menus."
+msgstr "Името на формата, както ще се вижда в менютата."
+
+#: src/frontends/xforms/FormPreferences.C:1280
+msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
+msgstr "Клавиш за бърз достъп. Използвайте буква от GUI името. Различава малки и големи букви."
+
+#: src/frontends/xforms/FormPreferences.C:1282
+msgid "Used to recognize the file. E.g., ps, pdf, tex."
+msgstr "Използва се за разпознаване на файла. Напр. ps, pdf, tex."
+
+#: src/frontends/xforms/FormPreferences.C:1284
+msgid "The command used to launch the viewer application."
+msgstr "Командата за стартиране на приложението за разглеждане."
+
+#: src/frontends/xforms/FormPreferences.C:1286
+msgid ""
+"Remove the current format from the list of available formats. Note: you must "
+"then \"Apply\" the change."
+msgstr "Премахни настоящия формат от списъка с наличните. Забележка: Трябва да натиснете \"Установи\" за активиране."
+
+#: src/frontends/xforms/FormPreferences.C:1289
+msgid ""
+"Add the current format to the list of available formats. Note: you must then "
+"\"Apply\" the change."
+msgstr "Добави настоящия формат към списъка с наличните. Забележка: Трябва да натиснете \"Устнови\" за активиране."
+
+#: src/frontends/xforms/FormPreferences.C:1291
+msgid ""
+"Modify the contents of the current format. Note: you must then \"Apply\" the "
+"change."
+msgstr "Промени настройките на настоящия формат. Забележка: Трябва да натиснете \"Установи\" за активиране."
+
+#: src/frontends/xforms/FormPreferences.C:1407
+msgid "Cannot remove a Format used by a Converter. Remove the converter first."
+msgstr "Не може да се премахне формат, който се използва от конвертор. Първо премахнете конвертора."
+
+#: src/frontends/xforms/FormPreferences.C:1578
+msgid "Sys Bind"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1582
+msgid "User Bind"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1586
+msgid "Bind file"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1590
+msgid "Sys UI"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1594
+msgid "User UI"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1598
+msgid "UI file"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1794
+#: src/frontends/xforms/FormPreferences.C:1802
+msgid "Key maps"
+msgstr "Клавиатурни подредби"
+
+#: src/frontends/xforms/FormPreferences.C:1798
+#: src/frontends/xforms/FormPreferences.C:1806
+msgid "Keyboard map"
+msgstr "Клавиатурна подредба"
+
+#: src/frontends/xforms/FormPreferences.C:1979
+msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
+msgstr " Стандартно | US letter | legal | executive | A3 | A4 | A5 | B5 "
+
+#: src/frontends/xforms/FormPreferences.C:2231
+msgid "Default path"
+msgstr "Стандартен път"
+
+#: src/frontends/xforms/FormPreferences.C:2236
+msgid "Template path"
+msgstr "Път за шаблони"
+
+#: src/frontends/xforms/FormPreferences.C:2241
+msgid "Temp dir"
+msgstr "Временна директория"
+
+#: src/frontends/xforms/FormPreferences.C:2245
+msgid "User"
+msgstr "Потребител"
+
+#: src/frontends/xforms/FormPreferences.C:2248
+msgid "Lastfiles"
+msgstr "Последни файлове"
+
+#: src/frontends/xforms/FormPreferences.C:2252
+msgid "Backup path"
+msgstr "Път за архивни копия"
+
+#: src/frontends/xforms/FormPreferences.C:2257
+msgid "LyX Server pipes"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2701
+msgid "Fonts must be positive!"
+msgstr "Шрифтовете трябва да са положителни!"
+
+#: src/frontends/xforms/FormPreferences.C:2724
+msgid ""
+"Fonts must be input in the order tiny > script> footnote > small > normal > "
+"large > larger > largest > huge > huger."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2840
+msgid " none | ispell | aspell "
+msgstr " няма | ispell | aspell "
+
+#: src/frontends/xforms/FormPreferences.C:2952
+msgid "Personal dictionary"
+msgstr "Личен речник"
+
+#: src/frontends/xforms/FormPreferences.C:3008
+msgid "WARNING!"
+msgstr "ВНИМАНИЕ!"
+
+#: src/LyXAction.C:154 src/frontends/xforms/form_preferences.C:44
+msgid "Save"
+msgstr "Запази"
+
+#: src/frontends/xforms/form_preferences.C:105 src/lyxfont.C:42
+msgid "Roman"
+msgstr "Roman"
+
+#: src/frontends/xforms/form_preferences.C:108
+msgid "Sans Serif"
+msgstr "Sans Serif"
+
+#: src/frontends/xforms/form_preferences.C:111 src/lyxfont.C:42
+msgid "Typewriter"
+msgstr "Машинопис"
+
+# , c-format
+#: src/frontends/xforms/form_preferences.C:116
+#, no-c-format
+msgid "Zoom %|#Z"
+msgstr "Увеличение(Z) %|#Z"
+
+#: src/frontends/xforms/form_preferences.C:127
+msgid "Use scalable fonts"
+msgstr "Използвай мащабируеми шрифтове"
+
+#: src/frontends/xforms/form_preferences.C:132
+msgid "Encoding"
+msgstr "Кодировка"
+
+#: src/frontends/xforms/form_preferences.C:135
+msgid "script"
+msgstr "скрипт"
+
+#: src/LColor.C:85 src/frontends/xforms/form_preferences.C:138
+msgid "footnote"
+msgstr "бел. под линия"
+
+#: src/frontends/xforms/form_preferences.C:141
+msgid "large"
+msgstr "голям"
+
+#: src/frontends/xforms/form_preferences.C:144
+msgid "largest"
+msgstr "най-голям"
+
+#: src/frontends/xforms/form_preferences.C:147
+msgid "huge"
+msgstr "огромен"
+
+#: src/frontends/xforms/form_preferences.C:150
+msgid "normal"
+msgstr "нормален"
+
+#: src/frontends/xforms/form_preferences.C:154
+msgid "Screen DPI|#D"
+msgstr "Екранна разделителна способност"
+
+#: src/frontends/xforms/form_preferences.C:165
+msgid "tiny"
+msgstr "мъничък"
+
+#: src/frontends/xforms/form_preferences.C:168
+msgid "larger"
+msgstr "по-голям"
+
+#: src/frontends/xforms/form_preferences.C:171
+msgid "small"
+msgstr "малък"
+
+#: src/frontends/xforms/form_preferences.C:174
+msgid "huger"
+msgstr "по-огромен"
+
+#: src/frontends/xforms/form_preferences.C:202
+msgid "Ascii line length|#A"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:214
+msgid "TeX encoding|#T"
+msgstr "TeX кодировка|#T"
+
+#: src/frontends/xforms/form_preferences.C:221
+msgid "Default paper size|#p"
+msgstr "Стандартен размер на лист"
+
+#: src/frontends/xforms/form_preferences.C:229
+msgid "ascii roff|#r"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:236
+msgid "checktex|#c"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:242
+msgid "Outside code interaction"
+msgstr "Взаимодействие с външен код"
+
+#: src/frontends/xforms/form_preferences.C:269
+msgid "Spell command|#S"
+msgstr "Команда за правопис(S)|#S"
+
+#: src/frontends/xforms/form_preferences.C:278
+msgid "Use alternative language|#a"
+msgstr "Използвай алтернативен език"
+
+#: src/frontends/xforms/form_preferences.C:288
+msgid "Use escape characters|#e"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:298
+msgid "Use personal dictionary|#d"
+msgstr "Използвай личен речник"
+
+#: src/frontends/xforms/form_preferences.C:315
+msgid "Accept compound words|#w"
+msgstr "Приемане на съставни думи(w)|#w"
+
+#: src/frontends/xforms/form_preferences.C:323
+msgid "Use input encoding|#i"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:354
+msgid "date format|#f"
+msgstr "Формат на датата"
+
+# , c-format
+# , c-format
+#: src/frontends/xforms/form_preferences.C:384
+msgid "Package|#P"
+msgstr "Пакет(P)|#P"
+
+#: src/frontends/xforms/form_preferences.C:391
+msgid "Default language|#l"
+msgstr "Стандартен език(l)|#l"
+
+#: src/frontends/xforms/form_preferences.C:398
+msgid ""
+"Keyboard\n"
+"map|#K"
+msgstr ""
+"Клавишна\n"
+"подредба"
+
+#: src/frontends/xforms/form_preferences.C:406
+msgid "RtL support|#R"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:414
+msgid "Mark foreign|#M"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:422
+msgid "Auto begin|#b"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:430
+msgid "Auto finish|#f"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:438
+msgid "Command start|#s"
+msgstr "Започни команда(s)|#s"
+
+#: src/frontends/xforms/form_preferences.C:445
+msgid "Command end|#e"
+msgstr "Завърши команда(e)|#e"
+
+#: src/frontends/xforms/form_preferences.C:452
+msgid "1st|#1"
+msgstr "Първи|#1"
+
+#: src/frontends/xforms/form_preferences.C:459
+msgid "2nd|#2"
+msgstr "Втори|#2"
+
+#: src/frontends/xforms/form_preferences.C:465
+#: src/frontends/xforms/form_preferences.C:467
+msgid "Browse"
+msgstr "Търси"
+
+#: src/frontends/xforms/form_preferences.C:496
+msgid "LyX objects|#L"
+msgstr "LyX обекти|#L"
+
+#: src/frontends/xforms/form_preferences.C:511
+msgid "S|#S"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:520
+msgid "V|#V"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:529
+msgid "H|#H"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:536
+msgid "R|#R"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:545
+msgid "B|#B"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:554
+msgid "G|#G"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:592
+msgid "All converters|#A"
+msgstr "Всички конвертори(A)|#A"
+
+#: src/frontends/xforms/form_preferences.C:600
+#: src/frontends/xforms/form_preferences.C:687
+msgid "Delete|#D"
+msgstr "Изтрий(D)|#D"
+
+#: src/frontends/xforms/form_preferences.C:614
+msgid "Converter|#C"
+msgstr "Конвертор(C)|#C"
+
+#: src/frontends/xforms/form_preferences.C:621
+msgid "From|#F"
+msgstr "От(F)|#F"
+
+#: src/frontends/xforms/form_preferences.C:628
+msgid "To|#T"
+msgstr "Към(T)|#T"
+
+#: src/frontends/xforms/form_preferences.C:635
+msgid "Flags|#F"
+msgstr "Флагове(F)|#F"
+
+#: src/frontends/xforms/form_preferences.C:665
+msgid "All formats|#A"
+msgstr "Всички формати(A)|#A"
+
+#: src/frontends/xforms/form_preferences.C:673
+msgid "Format|#F"
+msgstr "Формат(F)|#F"
+
+#: src/frontends/xforms/form_preferences.C:680
+msgid "GUI name|#G"
+msgstr "GUI име|#G"
+
+#: src/frontends/xforms/form_preferences.C:701
+msgid "Extension|#E"
+msgstr "Разширение(E)|#E"
+
+#: src/frontends/xforms/form_preferences.C:708
+msgid "Viewer|#V"
+msgstr "Покажи с(V)|#V"
+
+#: src/frontends/xforms/form_preferences.C:715
+msgid "Shortcut|#S"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:745
+msgid "Show banner|#S"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:753
+msgid "Auto region delete|#A"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:761
+msgid "Exit confirmation|#E"
+msgstr "Потвърждение при изход(E)|#E"
+
+#: src/frontends/xforms/form_preferences.C:768
+msgid "Display keyboard shortcuts"
+msgstr "Покажи кратки клавиши"
+
+#: src/frontends/xforms/form_preferences.C:772
+msgid "Autosave interval"
+msgstr "Интервал за автоматичен запис"
+
+#: src/frontends/xforms/form_preferences.C:781
+msgid "File->New asks for name|#N"
+msgstr "Файл->Нов пита за име(N)|#N"
+
+#: src/frontends/xforms/form_preferences.C:789
+msgid "Cursor follows scrollbar|#C"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:796
+msgid "Wheel mouse jump"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:827
+msgid "Popup Font"
+msgstr "Диалог Шрифт"
+
+#: src/frontends/xforms/form_preferences.C:830
+msgid "Menu Font"
+msgstr "Меню Шрифт"
+
+#: src/frontends/xforms/form_preferences.C:833
+msgid "Popup Encoding"
+msgstr "Диалог Кодировка"
+
+#: src/frontends/xforms/form_preferences.C:837
+msgid "Bind file|#B"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:843
+#: src/frontends/xforms/form_preferences.C:853
+#: src/frontends/xforms/form_preferences.C:973
+#: src/frontends/xforms/form_preferences.C:995
+#: src/frontends/xforms/form_preferences.C:1007
+#: src/frontends/xforms/form_preferences.C:1013
+#: src/frontends/xforms/form_preferences.C:1028
+#: src/frontends/xforms/form_preferences.C:1038
+msgid "Browse..."
+msgstr "Търси..."
+
+#: src/frontends/xforms/form_preferences.C:847
+msgid "User Interface file|#U"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:857
+msgid "Override X-Windows dead-keys|#O"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:887
+msgid "command"
+msgstr "команда"
+
+#: src/frontends/xforms/form_preferences.C:890
+msgid "page range"
+msgstr "избор на страници"
+
+#: src/frontends/xforms/form_preferences.C:893
+msgid "copies"
+msgstr "копия"
+
+#: src/frontends/xforms/form_preferences.C:896
+msgid "reverse"
+msgstr "обърнато"
+
+#: src/frontends/xforms/form_preferences.C:899
+msgid "to printer"
+msgstr "на принтер"
+
+#: src/frontends/xforms/form_preferences.C:902
+msgid "file extension"
+msgstr "разширение"
+
+#: src/frontends/xforms/form_preferences.C:905
+msgid "spool command"
+msgstr "spool команда"
+
+#: src/frontends/xforms/form_preferences.C:908
+msgid "paper type"
+msgstr "тип на хартията"
+
+#: src/frontends/xforms/form_preferences.C:911
+msgid "even pages"
+msgstr "четни страници"
+
+#: src/frontends/xforms/form_preferences.C:914
+msgid "odd pages"
+msgstr "нечетни страници"
+
+#: src/frontends/xforms/form_preferences.C:917
+msgid "collated"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:920
+msgid "landscape"
+msgstr "пейзаж"
+
+#: src/frontends/xforms/form_preferences.C:923
+msgid "to file"
+msgstr "във файл"
+
+#: src/frontends/xforms/form_preferences.C:926
+msgid "extra options"
+msgstr "допълнителни опции"
+
+#: src/frontends/xforms/form_preferences.C:929
+msgid "spool printer prefix"
+msgstr "име на принтер"
+
+#: src/frontends/xforms/form_preferences.C:932
+msgid "paper size"
+msgstr "размер на хартията"
+
+#: src/frontends/xforms/form_preferences.C:935
+msgid "name"
+msgstr "име"
+
+#: src/frontends/xforms/form_preferences.C:938
+msgid "adapt output"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:941
+msgid "Printer Command and Flags"
+msgstr "Команди и опции на принтера"
+
+#: src/frontends/xforms/form_preferences.C:967
+msgid "Default path|#p"
+msgstr "Подразбиращ се път(p)|#p"
+
+#: src/frontends/xforms/form_preferences.C:977
+msgid "Last file count|#L"
+msgstr "Последни файлове(L)|#L"
+
+#: src/frontends/xforms/form_preferences.C:989
+msgid "Template path|#T"
+msgstr "Път за шаблони(T)|#T"
+
+#: src/frontends/xforms/form_preferences.C:999
+msgid "Check last files|#C"
+msgstr "Провери старите файлове(C)|#C"
+
+#: src/frontends/xforms/form_preferences.C:1017
+msgid "Backup path|#B"
+msgstr "Път за архивни копия(B)|#B"
+
+#: src/frontends/xforms/form_preferences.C:1032
+msgid "LyXServer pipe|#S"
+msgstr ""
+
+#: src/frontends/xforms/form_preferences.C:1045
+msgid "Temp dir|#d"
+msgstr "Временна директория(d)|#d"
+
+#: src/LyXAction.C:137 src/LyXAction.C:145 src/frontends/xforms/FormPrint.C:41
+#: src/frontends/xforms/form_print.C:129
+msgid "Print"
+msgstr "Печат"
+
+#: src/frontends/xforms/form_print.C:37
+msgid "Printer|#P"
+msgstr "Принтер(P)|#P"
+
+#: src/frontends/xforms/form_print.C:44 src/lyx.C:80
+msgid "File|#F"
+msgstr "Файл(F)|#F"
+
+#: src/frontends/xforms/form_print.C:72
+msgid "All Pages|#G"
+msgstr "Всички страници(G)|#G"
+
+#: src/frontends/xforms/form_print.C:79
+msgid "Only Odd Pages|#O"
+msgstr "Само нечетни страници(O)|#O"
+
+#: src/frontends/xforms/form_print.C:86
+msgid "Only Even Pages|#E"
+msgstr "Само четни страници(E)|#E"
+
+#: src/frontends/xforms/form_print.C:97
+msgid "Normal Order|#N"
+msgstr "Нормално подреждане(N)|#N"
+
+#: src/frontends/xforms/form_print.C:104
+msgid "Reverse Order|#R"
+msgstr "Обратно подреждане(R) |#R"
+
+#: src/frontends/xforms/form_print.C:112
+msgid "Pages:"
+msgstr "Страници:"
+
+#: src/frontends/xforms/form_print.C:116
+msgid "Count:"
+msgstr "Брой:"
+
+#: src/frontends/xforms/form_print.C:121
+msgid "Collated|#C"
+msgstr ""
+
+#: src/frontends/xforms/form_print.C:127
+msgid "to"
+msgstr "до"
+
+#: src/frontends/xforms/form_print.C:132
+msgid "Order"
+msgstr "Подреждане"
+
+#: src/frontends/xforms/FormRef.C:72
+msgid " Ref | Page | TextRef | TextPage | PrettyRef "
+msgstr ""
+
+#: src/frontends/xforms/form_ref.C:40
+msgid "Sort|#S"
+msgstr "Сортиране(S)|#S"
+
+#: src/frontends/xforms/form_ref.C:48
+msgid "Name:|#N"
+msgstr "Име(N):|#N"
+
+#: src/frontends/xforms/form_ref.C:53
+msgid "Ref:"
+msgstr ""
+
+#: src/frontends/xforms/form_ref.C:56
+msgid "Reference type|#R"
+msgstr "Тип на препратка(R)|#R"
+
+#: src/frontends/xforms/form_ref.C:65
+msgid "Goto reference|#G"
+msgstr "Към препратка(G)|#G"
+
+#: src/frontends/xforms/FormTabular.C:26
+msgid "Tabular Layout"
+msgstr ""
+
+#: src/frontends/xforms/FormTabular.C:127
+msgid "Tabular"
+msgstr "Табличен"
+
+#: src/frontends/xforms/FormTabular.C:129
+msgid "Column/Row"
+msgstr "Колона/Ред"
+
+#: src/frontends/xforms/FormTabular.C:131
+msgid "Cell"
+msgstr "Клетка"
+
+#: src/frontends/xforms/FormTabular.C:133
+msgid "LongTable"
+msgstr "Дълга таблица"
+
+#: src/frontends/xforms/FormTabular.C:440
+msgid "Warning: Wrong Cursor position, updated window"
+msgstr "Внимание: Грешна позиция на курсор, прозорецът актуализиран"
+
+#: src/frontends/xforms/form_tabular.C:31 src/insets/insetinfo.C:216
+#: src/insets/insetinfo.C:221
+msgid "Close|#C^["
+msgstr "Затвори(C)|#C^["
+
+#: src/frontends/xforms/form_tabular.C:71
+msgid "Append Column|#A"
+msgstr "Добави колона(A)|#A"
+
+#: src/frontends/xforms/form_tabular.C:78
+msgid "Delete Column|#O"
+msgstr "Изтрий колона(O)|#O"
+
+#: src/frontends/xforms/form_tabular.C:85
+msgid "Append Row|#p"
+msgstr "Добави ред(p)|#p"
+
+#: src/frontends/xforms/form_tabular.C:92
+msgid "Delete Row|#w"
+msgstr "Изтрий ред(w)|#w"
+
+#: src/frontends/xforms/form_tabular.C:99
+msgid "Set Borders|#S"
+msgstr "Установи рамки(S)|#S"
+
+#: src/frontends/xforms/form_tabular.C:106
+msgid "Unset Borders|#U"
+msgstr "Премахни рамки(U)|#U"
+
+#: src/frontends/xforms/form_tabular.C:113
+msgid "Longtable|#L"
+msgstr " Дълга таблица(L)|#L"
+
+#: src/frontends/xforms/form_tabular.C:119
+#: src/frontends/xforms/form_tabular.C:383
+msgid "Rotate 90°|#9"
+msgstr "Завъртане на 90°|#9"
+
+#: src/frontends/xforms/form_tabular.C:124
+msgid "Spec. Table"
+msgstr "Спец. таблица"
+
+#: src/frontends/xforms/form_tabular.C:150
+#: src/frontends/xforms/form_tabular.C:276
+msgid "Top|#t"
+msgstr "Горе(t)|#t"
+
+#: src/frontends/xforms/form_tabular.C:158
+#: src/frontends/xforms/form_tabular.C:284
+msgid "Bottom|#b"
+msgstr "Долу(b)|#b"
+
+#: src/frontends/xforms/form_tabular.C:166
+#: src/frontends/xforms/form_tabular.C:292
+msgid "Left|#l"
+msgstr "Ляво(l)|#l"
+
+#: src/frontends/xforms/form_tabular.C:174
+#: src/frontends/xforms/form_tabular.C:300
+msgid "Right|#r"
+
+msgstr "Дясно(r)|#r"
+
+#: src/frontends/xforms/form_tabular.C:182
+#: src/frontends/xforms/form_tabular.C:308
+msgid "Left|#e"
+msgstr "Ляво(e)|#e"
+
+#: src/frontends/xforms/form_tabular.C:189
+#: src/frontends/xforms/form_tabular.C:315
+msgid "Right|#i"
+msgstr "Дясно(i)|#i"
+
+#: src/frontends/xforms/form_tabular.C:196
+#: src/frontends/xforms/form_tabular.C:322
+msgid "Center|#c"
+msgstr "Центрирано(c)|#c"
+
+#: src/frontends/xforms/form_tabular.C:203
+#: src/frontends/xforms/form_tabular.C:329
+msgid "Top|#p"
+msgstr "Горе(p)|#p"
+
+#: src/frontends/xforms/form_tabular.C:217
+#: src/frontends/xforms/form_tabular.C:343
+msgid "Bottom|#o"
+msgstr "Долу(o)|#o"
+
+#: src/frontends/xforms/form_tabular.C:223
+#: src/frontends/xforms/form_tabular.C:349
+msgid "Borders"
+msgstr "Рамки"
+
+#: src/frontends/xforms/form_tabular.C:226
+#: src/frontends/xforms/form_tabular.C:352
+msgid "H. Alignment"
+msgstr "Х. подравняване"
+
+#: src/frontends/xforms/form_tabular.C:229
+#: src/frontends/xforms/form_tabular.C:355
+
+msgid "V. Alignment"
+msgstr "В. подравняване"
+
+#: src/frontends/xforms/form_tabular.C:233
+#: src/frontends/xforms/form_tabular.C:359
+msgid "Width|#W"
+msgstr "Ширина(W):|#W"
+
+#: src/frontends/xforms/form_tabular.C:241
+#: src/frontends/xforms/form_tabular.C:365
+msgid "Alignment|#A"
+msgstr "Подравняване(A)|#A"
+
+#: src/frontends/xforms/form_tabular.C:248
+msgid "Special column"
+msgstr "Специална колона"
+
+#: src/frontends/xforms/form_tabular.C:371
+msgid "Multicolumn|#M"
+msgstr "Многоколонно|#p"
+
+#: src/frontends/xforms/form_tabular.C:377
+msgid "Use Minipage|#s"
+msgstr "Министраница(s)|#s"
+
+#: src/frontends/xforms/form_tabular.C:388
+msgid "Special Cell"
+msgstr "Специална клетка"
+
+#: src/frontends/xforms/form_tabular.C:391
+msgid "Special Multicolumn"
+msgstr "Специално многоколонно"
+
+#: src/frontends/xforms/form_tabular.C:418
+msgid "1st Head|#1"
+msgstr "1ва глава|#1"
+
+#: src/frontends/xforms/form_tabular.C:424
+msgid "Head|#H"
+msgstr "Глава(H)|#H"
+
+#: src/frontends/xforms/form_tabular.C:430
+msgid "Foot|#F"
+msgstr ""
+
+#: src/frontends/xforms/form_tabular.C:436
+msgid "Last Foot|#L"
+msgstr ""
+
+#: src/frontends/xforms/form_tabular.C:442
+msgid "New Page|#N"
+msgstr "Нова страница(N)|#N"
+
+#: src/frontends/xforms/form_tabular.C:447
+msgid "Header"
+msgstr ""
+
+#: src/frontends/xforms/form_tabular.C:450
+msgid "Footer"
+msgstr ""
+
+#: src/frontends/xforms/form_tabular.C:453
+msgid "Special"
+msgstr "Специален"
+
+#: src/frontends/xforms/FormTabularCreate.C:31
+msgid "Insert Tabular"
+msgstr "Вмъкни таблица"
+
+#: src/frontends/xforms/FormToc.C:71
+msgid " TOC | LOF | LOT | LOA "
+msgstr " Съдържание | Фигури | Таблици | Алгоритми "
+
+#: src/frontends/xforms/form_toc.C:40
+msgid "Type|#T"
+msgstr "Тип(T):|#T"
+
+#: src/frontends/xforms/FormUrl.C:29
+msgid "Url"
+msgstr "Url"
+
+#: src/frontends/xforms/form_url.C:29
+msgid "URL|#U"
+msgstr "URL|#U"
+
+#: src/frontends/xforms/form_url.C:38
+msgid "Name|#N"
+msgstr "Име(N):|#N"
+
+#: src/frontends/xforms/form_url.C:47
+msgid "HTML type|#H"
+msgstr "HTML тип|#H"
+
+#: src/frontends/xforms/input_validators.C:102
+msgid "ERROR!  Unable to print!"
+msgstr "ГРЕШКА! Невъзможност за печат!"
+
+#: src/frontends/xforms/input_validators.C:103
+msgid "Check 'range of pages'!"
+msgstr "Проверете поредицата от страници!"
+
+#: src/frontends/xforms/Menubar_pimpl.C:257
+msgid "More"
+msgstr "Още"
+
+#: src/frontends/xforms/Menubar_pimpl.C:298
+#, no-c-format
+msgid "List of Figures%m"
+msgstr "Списък на фигурите%m"
+
+#: src/frontends/xforms/Menubar_pimpl.C:300
+#, no-c-format
+msgid "List of Tables%m"
+msgstr "Списък на таблиците%m"
+
+#: src/frontends/xforms/Menubar_pimpl.C:302
+#, no-c-format
+msgid "List of Algorithms%m"
+msgstr "Списък на алгоритмите%m"
+
+#: src/frontends/xforms/Menubar_pimpl.C:339
+#, c-format
+msgid "No Table of Contents%i"
+msgstr "Няма съдържание%i"
+
+#: src/frontends/xforms/Menubar_pimpl.C:417
+#, no-c-format
+msgid "Insert Reference%m"
+msgstr "Вмъкни препратка%m"
+
+#: src/frontends/xforms/Menubar_pimpl.C:419
+#, no-c-format
+msgid "Insert Page Number%m"
+msgstr "Вмъкни номер на страница%m"
+
+#: src/frontends/xforms/Menubar_pimpl.C:421
+#, no-c-format
+msgid "Insert vref%m"
+msgstr "Вмъкни vref%m"
+
+#: src/frontends/xforms/Menubar_pimpl.C:423
+#, no-c-format
+msgid "Insert vpageref%m"
+msgstr "Вмъкни vpageref%m"
+
+#: src/frontends/xforms/Menubar_pimpl.C:425
+#, no-c-format
+msgid "Insert Pretty Ref%m"
+msgstr "Вмъкни Pretty Ref%m"
+
+#: src/frontends/xforms/Menubar_pimpl.C:427
+#, no-c-format
+msgid "Goto Reference%m"
+msgstr "Към препратка%m"
+
+#: src/frontends/xforms/xform_helpers.C:108 src/insets/figinset.C:1998
+#: src/insets/insetexternal.C:171
+msgid "Filename can't contain any of these characters:"
+msgstr "Името на файл не може да съдържа никой от символите:"
+
+# , c-format
+# , c-format
+#: src/frontends/xforms/xform_helpers.C:110 src/insets/figinset.C:2001
+#, no-c-format
+msgid "space, '#', '~', '$' or '%'."
+msgstr "интервал, '#', '~', '$' или '%'."
+
+#: src/frontends/xforms/xform_helpers.C:217
+#: src/frontends/xforms/xform_helpers.C:241
+#: src/frontends/xforms/xform_helpers.C:276
+#: src/frontends/xforms/xform_helpers.C:321
+msgid "The absolute path is required."
+msgstr "Необходим е абсолютен път."
+
+#: src/frontends/xforms/xform_helpers.C:223
+#: src/frontends/xforms/xform_helpers.C:247
+#: src/frontends/xforms/xform_helpers.C:286
+#: src/frontends/xforms/xform_helpers.C:331
+msgid "Directory does not exist."
+msgstr "Директорията не съществува."
+
+#: src/frontends/xforms/xform_helpers.C:228
+#: src/frontends/xforms/xform_helpers.C:291
+msgid "Cannot write to this directory."
+msgstr "Невъзможност за запис в тази директория."
+
+#: src/frontends/xforms/xform_helpers.C:252
+msgid "Cannot read this directory."
+msgstr "Невъзможност за четене на тази директория."
+
+#: src/frontends/xforms/xform_helpers.C:270
+#: src/frontends/xforms/xform_helpers.C:315
+msgid "No file input."
+msgstr "Няма входен файл."
+
+#: src/frontends/xforms/xform_helpers.C:297
+#: src/frontends/xforms/xform_helpers.C:342
+msgid "A file is required, not a directory."
+msgstr "Необходим е файл, а не директория."
+
+#: src/frontends/xforms/xform_helpers.C:302
+msgid "Cannot write to this file."
+msgstr "Невъзможност за запис в този файл."
+
+#: src/frontends/xforms/xform_helpers.C:336
+msgid "Cannot read from this directory."
+msgstr "Невъзможност за четене от тази директория."
+
+#: src/frontends/xforms/xform_helpers.C:347
+msgid "File does not exist."
+msgstr "Файлът не съществува."
+
+#: src/frontends/xforms/xform_helpers.C:352
+msgid "Cannot read from this file."
+msgstr "Невъзможност за четене от този файл."
+
+#: src/importer.C:39
+msgid "Importing"
+msgstr "Импортиране"
+
+#: src/importer.C:57
+msgid "Can not import file"
+msgstr "Невъзможност за импортиране на файл"
+
+#: src/importer.C:58
+msgid "No information for importing from "
+msgstr "Няма информация за импортиране от "
+
+#. we are done
+#: src/importer.C:81
+msgid "imported."
+msgstr "импортиран."
+
+#: src/insets/figinset.C:1037
+msgid "[render error]"
+msgstr "[грешка при изобразяване]"
+
+#: src/insets/figinset.C:1038
+msgid "[rendering ... ]"
+msgstr "[изобразяване ... ]"
+
+#: src/insets/figinset.C:1041
+msgid "[no file]"
+msgstr "[няма файл]"
+
+#: src/insets/figinset.C:1043
+msgid "[bad file name]"
+msgstr "[лошо име на файл]"
+
+#: src/insets/figinset.C:1045
+msgid "[not displayed]"
+msgstr "[не е показан]"
+
+#: src/insets/figinset.C:1047
+msgid "[no ghostscript]"
+msgstr "[няма ghostscript]"
+
+#: src/insets/figinset.C:1049
+msgid "[unknown error]"
+msgstr "[непозната грешка]"
+
+#: src/insets/figinset.C:1222
+msgid "Opened figure"
+msgstr "Отворена фигура"
+
+#: src/insets/figinset.C:1250
+msgid "Figure"
+msgstr "Фигура"
+
+#: src/insets/figinset.C:1339 src/insets/figinset.C:1402
+#: src/insets/insetgraphics.C:492
+msgid "empty figure path"
+msgstr "празен път към фигура"
+
+#: src/insets/figinset.C:1981 src/insets/figinset.C:1985
+msgid "EPS Figure"
+msgstr "EPS фигура"
+
+#. InsetBibtex uses the same form, with different labels
+#: src/insets/insetbib.C:59 src/insets/insetbib.C:60 src/insets/insetbib.C:208
+#: src/insets/insetbib.C:209
+msgid "Key:|#K"
+msgstr "Ключ(K):|#K"
+
+#: src/insets/insetbib.C:69 src/insets/insetbib.C:70 src/insets/insetbib.C:210
+#: src/insets/insetbib.C:211
+msgid "Label:|#L"
+msgstr "Етикет(L):|#L"
+
+#: src/insets/insetbib.C:219
+msgid "Bibliography item"
+msgstr "Библ. перо"
+
+#: src/insets/insetbib.C:240
+msgid "BibTeX Generated References"
+msgstr "Препратки генерирани от BibTeX"
+
+#: src/insets/insetbib.C:339
+msgid "Database:"
+msgstr "База данни:"
+
+#: src/insets/insetbib.C:340
+msgid "Style:  "
+msgstr "Стил: "
+
+#: src/insets/insetbib.C:348
+msgid "BibTeX"
+msgstr "BibTeX"
+
+#: src/insets/inset.C:75
+msgid "Opened inset"
+msgstr "Отворен inset"
+
+#: src/insets/inseterror.C:54 src/insets/inseterror.C:76 src/lyxfunc.C:1440
+msgid "Error"
+msgstr "Грешка"
+
+#: src/insets/inseterror.C:84
+msgid "Opened error"
+msgstr "Отворена грешка"
+
+#: src/insets/insetert.C:28
+msgid "ERT"
+msgstr "ERT"
+
+#: src/insets/insetert.C:59
+msgid "Opened ERT Inset"
+msgstr "Отворен ERT Inset"
+
+#: src/insets/insetert.C:65 src/insets/insettabular.C:1700
+msgid "Impossible Operation!"
+msgstr "Невъзможна операция!"
+
+#: src/insets/insetert.C:66
+msgid "Not permitted to change font-types inside ERT-insets!"
+msgstr "Смяната на типа на шрифт не е разрешена в  ERT-inset!"
+
+#: src/insets/insetexternal.C:155 src/insets/insetexternal.C:159
+msgid "External inset file"
+msgstr "Външен inset файл"
+
+# , c-format
+# , c-format
+#: src/insets/insetexternal.C:174
+#, no-c-format
+msgid "'#', '~', '$' or '%'."
+msgstr "'#', '~', '$' или '%'."
+
+#: src/insets/insetexternal.C:309
+msgid "Insert external inset"
+msgstr "Вмъкни външен inset"
+
+#: src/insets/insetexternal.C:439
+msgid "External"
+msgstr "Външен"
+
+#: src/insets/insetfloat.C:84 src/insets/insetfloat.C:206
+#: src/insets/insetfloat.C:211
+msgid "float:"
+msgstr ""
+
+#: src/insets/insetfloat.C:150
+msgid "Opened Float Inset"
+msgstr "Отворен Float Inset"
+
+#: src/insets/insetfoot.C:32
+msgid "foot"
+msgstr "бел. под линия"
+
+#: src/insets/insetfoot.C:49
+msgid "Opened Footnote Inset"
+msgstr "Отворена бел. под линия"
+
+#: src/insets/insetgraphics.C:223
+msgid "Unknown Error"
+msgstr "Непозната грешка"
+
+#: src/insets/insetgraphics.C:227
+msgid "Loading..."
+msgstr "Зареждане..."
+
+#: src/insets/insetgraphics.C:231
+msgid "Error reading"
+msgstr "Грешка при четене"
+
+#: src/insets/insetgraphics.C:235
+msgid "Error converting"
+msgstr "Грешка при конвертиране"
+
+#: src/insets/insetgraphics.C:243
+msgid "Inline view disabled"
+msgstr ""
+
+#: src/insets/insetinclude.C:49 src/insets/insetinclude.C:50
+msgid "Don't typeset|#D"
+msgstr ""
+
+#: src/insets/insetinclude.C:59 src/insets/insetinclude.C:60
+msgid "Load|#L"
+msgstr "Зареди(L)|#L"
+
+#: src/insets/insetinclude.C:63 src/insets/insetinclude.C:64
+msgid "File name:|#F"
+msgstr "Име на файл(F):|#F"
+
+#: src/insets/insetinclude.C:67 src/insets/insetinclude.C:68
+msgid "Visible space|#s"
+msgstr "Видим интервал(s)|#s"
+
+#: src/insets/insetinclude.C:72 src/insets/insetinclude.C:73
+msgid "Verbatim|#V"
+msgstr "Неформатиран(V)|#V"
+
+#: src/insets/insetinclude.C:76 src/insets/insetinclude.C:77
+msgid "Use input|#i"
+msgstr "Използнай input|#i"
+
+#: src/insets/insetinclude.C:80 src/insets/insetinclude.C:81
+msgid "Use include|#U"
+msgstr "Използвай include|#u"
+
+#. launches dialog
+#: src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3054
+#: src/lyxfunc.C:3156 src/lyxfunc.C:3212 src/lyxfunc.C:3288
+msgid "Documents"
+msgstr "Документи"
+
+#: src/insets/insetinclude.C:121
+msgid "Select Child Document"
+msgstr ""
+
+#: src/insets/insetinclude.C:277 src/insets/insetinclude.C:318
+msgid "Include"
+msgstr "Включи"
+
+#: src/insets/insetinclude.C:314
+msgid "Input"
+msgstr "Вход"
+
+#: src/insets/insetinclude.C:316
+msgid "Verbatim Input"
+msgstr "Неформатиран вход"
+
+#: src/insets/insetindex.C:20
+msgid "Idx"
+msgstr "Idx"
+
+#: src/insets/insetinfo.C:198
+msgid "Opened note"
+msgstr "Отворена бележка"
+
+#: src/insets/insetlabel.C:49 src/mathed/formula.C:1093
+msgid "Enter label:"
+msgstr "Въведете етикет:"
+
+#: src/insets/insetlist.C:42
+msgid "list"
+msgstr "списък"
+
+#: src/insets/insetlist.C:72
+msgid "Opened List Inset"
+msgstr "Отворен List Inset"
+
+#: src/insets/insetmarginal.C:33
+msgid "margin"
+msgstr ""
+
+#: src/insets/insetmarginal.C:50
+msgid "Opened Marginal Note Inset"
+msgstr "Отворен Marginal Note Inset"
+
+#: src/insets/insetminipage.C:60
+msgid "minipage"
+msgstr "министраница"
+
+#: src/insets/insetminipage.C:90
+
+msgid "Opened Minipage Inset"
+msgstr "Отворен Minipage Inset"
+
+#: src/insets/insetparent.C:42
+msgid "Parent:"
+msgstr ""
+
+#: src/insets/insettabular.C:481
+msgid "Opened Tabular Inset"
+msgstr "Отворен Tabular Inset "
+
+#: src/insets/insettabular.C:1701
+msgid "Multicolumns can only be horizontally."
+msgstr "Възможни са само хоризонтални много колони."
+
+#: src/insets/insettext.C:478
+msgid "Opened Text Inset"
+msgstr "Отворен Text Inset"
+
+#: src/insets/insettext.C:970
+msgid "Cannot include more than one paragraph!"
+msgstr "Невъзможност за включване на повече от един абзац!"
+
+#: src/insets/insettext.C:1036 src/lyxfunc.C:1260
+msgid "Layout "
+msgstr "Непознато "
+
+#: src/insets/insettext.C:1036 src/lyxfunc.C:1261
+msgid " not known"
+msgstr " оформление"
+
+#: src/insets/insettext.C:1089 src/lyxfunc.C:2113
+msgid "Unknown spacing argument: "
+msgstr ""
+
+#: src/insets/insettheorem.C:39
+msgid "theorem"
+msgstr "Теорема"
+
+#: src/insets/insettheorem.C:68
+msgid "Opened Theorem Inset"
+msgstr "Отворен Theorem Inset"
+
+#: src/insets/inseturl.C:32
+msgid "Url: "
+msgstr "Url: "
+
+#: src/insets/inseturl.C:34
+msgid "HtmlUrl: "
+msgstr "HtmlUrl: "
+
+#: src/intl.C:349 src/intl.C:350
+msgid "other..."
+msgstr "други..."
+
+#: src/intl.C:435
+msgid "Key Mappings"
+msgstr "Клавишни комбинации"
+
+#: src/kbsequence.C:215
+msgid "   options: "
+msgstr "   опции: "
+
+#: src/language.C:81
+msgid "Document wide language"
+msgstr "Език на документа"
+
+#: src/LaTeX.C:177 src/LaTeX.C:252 src/LaTeX.C:300
+
+msgid "LaTeX run number "
+msgstr "LaTeX изпълнение номер "
+
+#: src/LaTeX.C:210 src/LaTeX.C:279
+msgid "Running MakeIndex."
+msgstr "Изпълнявам MakeIndex."
+
+#: src/LaTeX.C:223
+msgid "Running BibTeX."
+msgstr "Стартирам BibTeX."
+
+#: src/LaTeXLog.C:59 src/LaTeXLog.C:62
+msgid "No LaTeX log file found"
+msgstr "Не е намерен LaTeX файл-протокол"
+
+#: src/LaTeXLog.C:69
+msgid "Build Program Log"
+msgstr "Изграждам протокол"
+
+#: src/LaTeXLog.C:69
+msgid "LaTeX Log"
+msgstr "LaTeX протокол"
+
+#: src/layout.C:1343
+msgid "LyX wasn't able to find its layout descriptions!"
+msgstr "LyX не успя да намери своите описания на оформления!"
+
+#: src/layout.C:1344
+msgid "Check that the file \"textclass.lst\""
+msgstr "Моля, проверете дали файлът \"textclass.lst\""
+
+#: src/layout.C:1345
+msgid "is installed correctly. Sorry, has to exit :-("
+msgstr "е инсталиран правилно. За съжаление спира :-(!"
+
+#: src/layout.C:1407
+msgid "LyX wasn't able to find any layout description!"
+msgstr "LyX не успя да намери никакво описание на оформление!"
+
+#: src/layout.C:1408
+msgid "Check the contents of  the file \"textclass.lst\""
+msgstr "Моля, проверете съдържанието на файл\"textclass.lst\""
+
+#: src/layout.C:1409
+msgid "Sorry, has to exit :-("
+msgstr "За съжаление спира :-(!"
+
+#: src/layout_forms.C:23
+msgid "Family:|#F"
+msgstr "Семейство(F):|#F"
+
+#: src/layout_forms.C:28
+msgid "Series:|#S"
+msgstr "Серия(S):|#S"
+
+#: src/layout_forms.C:33
+msgid "Shape:|#H"
+msgstr "Форма(H):|#H"
+
+#: src/layout_forms.C:38
+msgid "Size:|#Z"
+msgstr "Размер(Z):|#Z"
+
+#: src/layout_forms.C:43
+msgid "Misc:|#M"
+msgstr "Разни(M):|#M"
+
+#: src/layout_forms.C:56
+msgid "Color:|#C"
+msgstr "Цвят(C):|#C"
+
+#: src/layout_forms.C:61
+msgid "Toggle on all these|#T"
+msgstr "Превключване между(T)|#T"
+
+#: src/layout_forms.C:64
+msgid "Language:"
+msgstr "Език:"
+
+#: src/layout_forms.C:69
+msgid "These are never toggled"
+msgstr "Без превключване"
+
+#: src/layout_forms.C:72
+msgid "These are always toggled"
+msgstr "Винаги превключване"
+
+#: src/layout_forms.C:90 src/lyx_gui_misc.C:429
+msgid "OK|#O"
+msgstr ""
+
+#: src/LColor.C:52
+msgid "none"
+msgstr "няма"
+
+#: src/LColor.C:53
+msgid "black"
+msgstr "черен"
+
+#: src/LColor.C:54
+msgid "white"
+msgstr "бял"
+
+#: src/LColor.C:55
+
+msgid "red"
+msgstr "червен"
+
+#: src/LColor.C:56
+msgid "green"
+msgstr "зелен"
+
+#: src/LColor.C:57
+msgid "blue"
+msgstr "син"
+
+#: src/LColor.C:58
+msgid "cyan"
+msgstr ""
+
+#: src/LColor.C:59
+msgid "magenta"
+msgstr ""
+
+#: src/LColor.C:60
+
+msgid "yellow"
+msgstr "жълт"
+
+#: src/LColor.C:61
+msgid "cursor"
+msgstr "курсор"
+
+#: src/LColor.C:62
+msgid "background"
+msgstr "фон"
+
+#: src/LColor.C:63
+msgid "text"
+msgstr "текст"
+
+#: src/LColor.C:64
+msgid "selection"
+msgstr "избор"
+
+#: src/LColor.C:65
+msgid "latex"
+msgstr "Latex"
+
+#: src/LColor.C:66
+msgid "floats"
+msgstr ""
+
+#: src/LColor.C:67
+msgid "note"
+msgstr "бележка"
+
+#: src/LColor.C:68
+msgid "note background"
+msgstr "фон на бележка"
+
+#: src/LColor.C:69
+msgid "note frame"
+msgstr "рамка на бележка"
+
+#: src/LColor.C:70
+msgid "depth bar"
+msgstr ""
+
+#: src/LColor.C:71
+msgid "language"
+msgstr "език"
+
+#: src/LColor.C:72
+msgid "command-inset"
+msgstr ""
+
+#: src/LColor.C:73
+msgid "command-inset background"
+msgstr "фон на command-inset"
+
+#: src/LColor.C:74
+msgid "command-inset frame"
+msgstr "рамка на command-inset"
+
+#: src/LColor.C:75
+msgid "accent"
+msgstr "акцент"
+
+#: src/LColor.C:76
+msgid "accent background"
+msgstr "фон на акцент"
+
+#: src/LColor.C:77
+msgid "accent frame"
+msgstr "рамка на акцент"
+
+#: src/LColor.C:78
+msgid "minipage line"
+msgstr "ред на министраница"
+
+#: src/LColor.C:79
+msgid "special char"
+msgstr "спец. символ"
+
+#: src/LColor.C:80
+msgid "math"
+msgstr "математика"
+
+
+#: src/LColor.C:81
+msgid "math background"
+msgstr "фон на математика"
+
+#: src/LColor.C:82
+msgid "math frame"
+msgstr "рамка на математика"
+
+#: src/LColor.C:83
+msgid "math cursor"
+msgstr "курсор на математика"
+
+#: src/LColor.C:84
+msgid "math line"
+msgstr "ред на математика"
+
+#: src/LColor.C:86
+msgid "footnote background"
+msgstr "фон на бел. под линия"
+
+#: src/LColor.C:87
+msgid "footnote frame"
+msgstr "рамка на бел. под линия"
+
+#: src/LColor.C:88
+msgid "latex inset"
+msgstr ""
+
+#: src/LColor.C:89
+msgid "inset"
+msgstr ""
+
+#: src/LColor.C:90
+msgid "inset background"
+msgstr "фон на inset"
+
+#: src/LColor.C:91
+msgid "inset frame"
+msgstr "рамка на inset"
+
+#: src/LColor.C:92
+msgid "error"
+msgstr "грешка"
+
+#: src/LColor.C:93
+
+msgid "end-of-line marker"
+msgstr "маркер край-на-ред"
+
+#: src/LColor.C:94
+msgid "appendix line"
+msgstr "ред на приложение"
+
+#: src/LColor.C:95
+msgid "vfill line"
+msgstr "ред на vfill"
+
+#: src/LColor.C:96
+msgid "top/bottom line"
+msgstr "горен/долен ред"
+
+#: src/LColor.C:97
+msgid "table line"
+msgstr "ред на таблица"
+
+#: src/LColor.C:98
+msgid "tabular line"
+msgstr ""
+
+#: src/LColor.C:100
+msgid "tabularonoff line"
+msgstr ""
+
+#: src/LColor.C:102
+msgid "bottom area"
+msgstr "долна област"
+
+#: src/LColor.C:103
+msgid "page break"
+msgstr "нова страница"
+
+#: src/LColor.C:104
+msgid "top of button"
+msgstr "бутон (отгоре)"
+
+#: src/LColor.C:105
+msgid "bottom of button"
+msgstr "бутон (отдолу)"
+
+#: src/LColor.C:106
+msgid "left of button"
+msgstr "бутон (отляво)"
+
+#: src/LColor.C:107
+msgid "right of button"
+msgstr "бутон (отдясно)"
+
+#: src/LColor.C:108
+msgid "button background"
+msgstr "фон на бутон"
+
+#: src/LColor.C:109
+msgid "inherit"
+msgstr "наследяване"
+
+#: src/LColor.C:110
+msgid "ignore"
+msgstr "игнориране"
+
+#: src/log_form.C:25 src/lyxvc.C:267 src/lyxvc.C:268
+msgid "Update|#Uu"
+msgstr "Актуализация(A)|#A"
+
+#: src/LyXAction.C:98
+msgid "Insert appendix"
+msgstr "Вмъкни приложение"
+
+#: src/LyXAction.C:99
+msgid "Describe command"
+msgstr "Описание на команда"
+
+#: src/LyXAction.C:102
+msgid "Select previous char"
+msgstr "Избор на предшестващ символ"
+
+#: src/LyXAction.C:105
+msgid "Insert bibtex"
+msgstr "Вмъквани BibTeX"
+
+#: src/LyXAction.C:114
+msgid "Build program"
+msgstr ""
+
+#: src/LyXAction.C:115
+msgid "Autosave"
+msgstr "Автозапазване"
+
+#: src/LyXAction.C:117
+msgid "Go to beginning of document"
+msgstr "Към началото на документа"
+
+#: src/LyXAction.C:119
+msgid "Select to beginning of document"
+msgstr "Маркирай до началото на документа"
+
+#: src/LyXAction.C:122
+msgid "Check TeX"
+msgstr ""
+
+#: src/LyXAction.C:125
+msgid "Go to end of document"
+msgstr "Към края на документа"
+
+#: src/LyXAction.C:127
+msgid "Select to end of document"
+
+msgstr "Маркирай до края на документа"
+
+#: src/LyXAction.C:128
+msgid "Export to"
+msgstr "Експорт към"
+
+#: src/LyXAction.C:130
+msgid "Fax"
+msgstr "Факс"
+
+#: src/LyXAction.C:136
+msgid "Import document"
+msgstr "Импортирай документ"
+
+#: src/LyXAction.C:140
+msgid "Get the printer parameters"
+msgstr "Принтер параметри"
+
+#: src/LyXAction.C:141
+msgid "New document"
+msgstr "Нов документ"
+
+#: src/LyXAction.C:143
+msgid "New document from template"
+msgstr "Нов документ от шаблон"
+
+#: src/LyXAction.C:144
+msgid "Open"
+msgstr "Отвори"
+
+#: src/LyXAction.C:147
+msgid "Revert to saved"
+msgstr "Записано състояние"
+
+#: src/LyXAction.C:149
+msgid "Switch to an open document"
+msgstr "Превключи към отворен документ"
+
+#: src/LyXAction.C:151
+
+msgid "Toggle read-only"
+msgstr "Превключи само-четене"
+
+#: src/LyXAction.C:152
+msgid "Update"
+msgstr "Актуалицирай"
+
+#: src/LyXAction.C:153
+msgid "View"
+msgstr "Изглед"
+
+#: src/LyXAction.C:155
+msgid "Save As"
+msgstr "Запази като"
+
+#: src/LyXAction.C:159
+msgid "Go one char back"
+msgstr "Един символ назад"
+
+#: src/LyXAction.C:161
+msgid "Go one char forward"
+msgstr "Един символ напред"
+
+#: src/LyXAction.C:164
+msgid "Insert citation"
+msgstr "Вмъкни цитат"
+
+#: src/LyXAction.C:167
+msgid "Execute command"
+msgstr "Изпълни команда"
+
+#: src/LyXAction.C:177
+msgid "Decrement environment depth"
+msgstr ""
+
+#: src/LyXAction.C:179
+msgid "Increment environment depth"
+msgstr ""
+
+#: src/LyXAction.C:181
+msgid "Change environment depth"
+
+msgstr ""
+
+#: src/LyXAction.C:182
+msgid "Insert ... dots"
+msgstr "Вмъкни многоточие (...)"
+
+#: src/LyXAction.C:183
+msgid "Go down"
+msgstr "Надолу"
+
+#: src/LyXAction.C:185
+msgid "Select next line"
+msgstr "Избор на следващ ред"
+
+#: src/LyXAction.C:187
+msgid "Choose Paragraph Environment"
+msgstr ""
+
+#: src/LyXAction.C:189
+msgid "Insert end of sentence period"
+msgstr "Вмъкни край на изречение (.)"
+
+#: src/LyXAction.C:190
+msgid "Go to next error"
+msgstr "Към следваща грешка"
+
+#: src/LyXAction.C:192
+msgid "Remove all error boxes"
+msgstr "Премахване на всички грешки"
+
+#: src/LyXAction.C:194
+msgid "Insert a new ERT Inset"
+msgstr "Вмъкни нов ERT"
+
+#: src/LyXAction.C:196
+msgid "Insert a new external inset"
+msgstr "Вмъкни нов външен inset"
+
+#: src/LyXAction.C:197 src/lyx_cb.C:878
+msgid "Insert Figure"
+msgstr "Вмъкни фигура"
+
+#: src/LyXAction.C:199
+msgid "Insert Graphics"
+msgstr "Вмънки графика"
+
+#: src/LyXAction.C:204 src/lyxfr0.C:108
+msgid "Find & Replace"
+msgstr "Търси и Замести"
+
+#: src/LyXAction.C:208
+msgid "Toggle bold"
+msgstr "Превключи удебеляване"
+
+#: src/LyXAction.C:209
+msgid "Toggle code style"
+msgstr "Превключи стил код"
+
+#: src/LyXAction.C:210
+msgid "Default font style"
+msgstr "Подразбиращ се стил на шрифт"
+
+#: src/LyXAction.C:212
+msgid "Toggle emphasize"
+msgstr "Превключи наблягане"
+
+#: src/LyXAction.C:213
+msgid "Toggle user defined style"
+msgstr "Превключи потребителски стил"
+
+#: src/LyXAction.C:215
+msgid "Toggle noun style"
+msgstr "Превключи стил съществително"
+
+#: src/LyXAction.C:216
+msgid "Toggle roman font style"
+msgstr "Schriftart Roman an/aus"
+
+#: src/LyXAction.C:218
+msgid "Toggle sans font style"
+msgstr "Превключи sans font стил"
+
+#: src/LyXAction.C:219
+msgid "Set font size"
+msgstr "Размер на шрифт"
+
+#: src/LyXAction.C:220
+msgid "Show font state"
+msgstr "Статус на шрифт"
+
+#: src/LyXAction.C:223
+msgid "Toggle font underline"
+msgstr "Превключи подчертаване"
+
+#: src/LyXAction.C:225 src/LyXAction.C:229
+msgid "Insert Footnote"
+msgstr "Вмъкни бел. под линия"
+
+#: src/LyXAction.C:231
+msgid "Select next char"
+msgstr "Избор на следващ символ"
+
+#: src/LyXAction.C:234
+msgid "Insert horizontal fill"
+msgstr "Вмъкни хоризонтално запълване"
+
+#: src/LyXAction.C:236
+
+msgid "Display copyright information"
+msgstr "Покажи Copyright информацията"
+
+#: src/LyXAction.C:238
+msgid "Show the list of people who helped writing LyX"
+msgstr "Покажи списъка на хората, помогнали за създаването на LyX"
+
+#: src/LyXAction.C:240
+msgid "Open a Help file"
+msgstr "Отвори помощен файл"
+
+#: src/LyXAction.C:243
+msgid "Show the actual LyX version"
+msgstr "Покажи настоящата версия на LyX"
+
+#: src/LyXAction.C:246
+msgid "Insert hyphenation point"
+msgstr "Вмъкни тире за пренос "
+
+#: src/LyXAction.C:248
+msgid "Insert index item"
+msgstr "Вмъкни индекс перо"
+
+#: src/LyXAction.C:250
+msgid "Insert last index item"
+msgstr "Вмъкни последно индеск перо"
+
+#: src/LyXAction.C:251
+msgid "Insert index list"
+msgstr "Вмъкни индекс списък"
+
+#: src/LyXAction.C:253
+msgid "Turn off keymap"
+msgstr "Изключи клав. подредба"
+
+#: src/LyXAction.C:256
+msgid "Use primary keymap"
+msgstr "Основна клав. подредба"
+
+#: src/LyXAction.C:258
+msgid "Use secondary keymap"
+msgstr "Допълнителна клав. подредба"
+
+#: src/LyXAction.C:259
+msgid "Toggle keymap"
+msgstr "Превключи клав. подредба"
+
+#: src/LyXAction.C:261
+msgid "Insert Label"
+msgstr "Вмъкни етикет"
+
+#: src/LyXAction.C:263
+msgid "Change language"
+msgstr "Смяна на език"
+
+#: src/LyXAction.C:264
+msgid "View LaTeX log"
+msgstr "Покажи LaTeX протокол"
+
+#: src/LyXAction.C:269
+msgid "Copy paragraph environment type"
+msgstr ""
+
+#: src/LyXAction.C:274
+msgid "Paste paragraph environment type"
+msgstr ""
+
+#: src/LyXAction.C:279
+msgid "Open the tabular layout"
+msgstr "Отвори оформление на табица"
+
+#: src/LyXAction.C:281
+msgid "Go to beginning of line"
+msgstr "Към начало на ред"
+
+#: src/LyXAction.C:283
+msgid "Select to beginning of line"
+msgstr "Маркирай до началото на реда"
+
+
+#: src/LyXAction.C:285
+msgid "Go to end of line"
+msgstr "Към край на ред"
+
+#: src/LyXAction.C:287
+msgid "Select to end of line"
+msgstr "Маркирай до края на реда"
+
+#: src/LyXAction.C:290
+msgid "Insert list of algorithms"
+msgstr "Вмъкни списък на алгоритмите"
+
+#: src/LyXAction.C:292
+msgid "View list of algorithms"
+msgstr "Покажи списъка на алгоритмите"
+
+#: src/LyXAction.C:294
+msgid "Insert list of figures"
+msgstr "Вмъкни списък на фигурите"
+
+#: src/LyXAction.C:296
+msgid "View list of figures"
+msgstr "Покажи списъка на фигурите"
+
+#: src/LyXAction.C:298
+msgid "Insert list of tables"
+msgstr "Вмъкни списък на таблиците"
+
+#: src/LyXAction.C:300
+msgid "View list of tables"
+msgstr "Покажи списъка на таблиците"
+
+#: src/LyXAction.C:301
+msgid "Exit"
+msgstr "Изход"
+
+#: src/LyXAction.C:303
+msgid "Insert Marginalnote"
+msgstr "Вмъкни бел. в поле"
+
+#: src/LyXAction.C:306
+msgid "Insert Margin note"
+msgstr "Вмъкни бел. в поле"
+
+#: src/LyXAction.C:313
+msgid "Math Greek"
+msgstr "Гръцки знаци"
+
+#: src/LyXAction.C:316
+msgid "Insert math symbol"
+msgstr "Вмъкни матем. символ"
+
+#: src/LyXAction.C:321
+msgid "Math mode"
+msgstr "Матем. режим"
+
+#: src/LyXAction.C:335
+msgid "Go one paragraph down"
+msgstr "Към следващ абзац"
+
+#: src/LyXAction.C:337
+msgid "Select next paragraph"
+msgstr "Маркирай следващия абзац"
+
+#: src/LyXAction.C:339
+msgid "Go to paragraph"
+msgstr "Към абзац"
+
+#: src/LyXAction.C:342
+msgid "Go one paragraph up"
+msgstr "Към предишен абзац"
+
+#: src/LyXAction.C:344
+msgid "Select previous paragraph"
+msgstr "Маркирай предишния абзац"
+
+#: src/LyXAction.C:348
+msgid "Edit Preferences"
+msgstr "Промяна на настройките"
+
+#: src/LyXAction.C:350
+msgid "Save Preferences"
+msgstr "Запис на настройките"
+
+#: src/LyXAction.C:353
+msgid "Insert protected space"
+msgstr "Вмъкни защитен интервал"
+
+#: src/LyXAction.C:354
+msgid "Insert quote"
+msgstr "Вмъкни кавички"
+
+#: src/LyXAction.C:356
+msgid "Reconfigure"
+msgstr "Преконфигуриране"
+
+#: src/LyXAction.C:361
+msgid "Insert cross reference"
+msgstr "Вмъкни препратка"
+
+#: src/LyXAction.C:369
+msgid "Scroll inset"
+msgstr ""
+
+#: src/LyXAction.C:388
+msgid "Insert Table"
+msgstr "Вмъкни таблица"
+
+#: src/LyXAction.C:390
+msgid "Tabular Features"
+msgstr "Свойства на таблица"
+
+#: src/LyXAction.C:392
+msgid "Insert a new Tabular Inset"
+msgstr ""
+
+#: src/LyXAction.C:393
+msgid "Toggle TeX style"
+msgstr "Превключване на TeX стил"
+
+#: src/LyXAction.C:395
+msgid "Insert a new Text Inset"
+msgstr ""
+
+#: src/LyXAction.C:398
+msgid "Insert table of contents"
+msgstr "Вмъкни съдържание"
+
+#: src/LyXAction.C:400
+msgid "View table of contents"
+msgstr "Покажи съдържанието"
+
+#: src/LyXAction.C:402
+msgid "Toggle cursor does/doesn't follow the scrollbar"
+msgstr "Превключи курсорът не/следва скролер"
+
+#: src/LyXAction.C:415
+msgid "Register document under version control"
+msgstr "Регистрирай документа в система за контрол на версията"
+
+#: src/LyXAction.C:653
+msgid "No description available!"
+msgstr "Няма налично описание!"
+
+#: src/lyx.C:41
+msgid "Encapsulated Postscript (*.eps, *.ps)|#E"
+msgstr ""
+
+#: src/lyx.C:43
+msgid "Inlined EPS (*.eps, *.ps)|#I"
+msgstr ""
+
+#: src/lyx.C:75
+msgid "Template|#t"
+msgstr "Шаблон(t)|#t"
+
+#: src/lyx.C:87
+msgid "Parameters|#P"
+msgstr "Параметри(p)|#p"
+
+#: src/lyx.C:90
+msgid "Edit file|#E"
+msgstr "Редактирай файл(E)|#E"
+
+#: src/lyx.C:95
+msgid "View result|#V"
+msgstr "Покажи резултата(V)|#V"
+
+#: src/lyx.C:100
+msgid "Update result|#U"
+msgstr "Актуализирай резултата(U)|#U"
+
+#: src/lyx_cb.C:171
+msgid "Save failed. Rename and try again?"
+msgstr "Записът пропадна. Смяна на името и нов опит?"
+
+#: src/lyx_cb.C:173
+msgid "(If not, document is not saved.)"
+msgstr "(Иначе документът няма да бъде запазен!)"
+
+
+#: src/lyx_cb.C:198 src/lyxfunc.C:3055
+msgid "Templates"
+msgstr "Шаблони"
+
+#: src/lyx_cb.C:203
+msgid "Enter Filename to Save Document as"
+msgstr "Въведете име за запазване на документа"
+
+#: src/lyx_cb.C:220
+msgid "Same name as document already has:"
+msgstr "Вече съществува документ с това име:"
+
+#: src/lyx_cb.C:222
+msgid "Save anyway?"
+msgstr "Запис въпреки това?"
+
+#: src/lyx_cb.C:228
+msgid "Another document with same name open!"
+msgstr "Отворен е друг документ със същото име!"
+
+#: src/lyx_cb.C:230
+msgid "Replace with current document?"
+msgstr "Да го заменя ли с текущия документ?"
+
+#: src/lyx_cb.C:238
+msgid "Document renamed to '"
+msgstr "Документът е преименуван в '"
+
+#: src/lyx_cb.C:239
+msgid "', but not saved..."
+msgstr "', но не е запазен..."
+
+#: src/lyx_cb.C:245
+msgid "Document already exists:"
+msgstr "Документът вече съществува:"
+
+#: src/lyx_cb.C:247
+msgid "Replace file?"
+msgstr "Да заменя ли файла?"
+
+#: src/lyx_cb.C:263
+msgid "Document could not be saved!"
+msgstr "Документът не може да бъде записан!"
+
+#: src/lyx_cb.C:264
+msgid "Holding the old name."
+msgstr "Запазвам старото име."
+
+#: src/lyx_cb.C:278
+msgid "Chktex does not work with SGML derived documents."
+msgstr "Chktex не работи с SGML базирани документи."
+
+#: src/lyx_cb.C:287
+msgid "No warnings found."
+msgstr "Няма намерени предупреждения."
+
+#: src/lyx_cb.C:289
+msgid "One warning found."
+msgstr "Едно намерено предупреждение."
+
+#: src/lyx_cb.C:290
+msgid "Use 'Edit->Go to Error' to find it."
+msgstr "Използвайте 'Редактирай->Към грешка', за да го намерите"
+
+#: src/lyx_cb.C:293
+msgid " warnings found."
+msgstr " намерени предупреждения."
+
+#: src/lyx_cb.C:294
+msgid "Use 'Edit->Go to Error' to find them."
+msgstr "Използвайте 'Редактирай->Към грешка', за да ги намерите"
+
+#: src/lyx_cb.C:296
+msgid "Chktex run successfully"
+msgstr "Chktex премина успешно"
+
+#: src/lyx_cb.C:298
+msgid "It seems chktex does not work."
+msgstr "Вероятно chktex не рабти."
+
+#: src/lyx_cb.C:371
+msgid "Autosaving current document..."
+msgstr "Автозапис на текущия документ..."
+
+#: src/lyx_cb.C:411
+msgid "Autosave Failed!"
+msgstr "Автозаписът пропадна!"
+
+#: src/lyx_cb.C:467
+msgid "File to Insert"
+msgstr "Файл за вмъкване"
+
+#: src/lyx_cb.C:477
+
+msgid "Error! Specified file is unreadable: "
+msgstr "Грешка! Указаният файл не може да бъде прочетен: "
+
+#: src/lyx_cb.C:484
+msgid "Error! Cannot open specified file: "
+msgstr "Грешка! Не мога да отворя указаният файл:"
+
+#: src/lyx_cb.C:587 src/lyx_cb.C:590 src/mathed/formula.C:1088
+#: src/mathed/formula.C:1091
+msgid "Enter new label to insert:"
+msgstr "Въведете нов етикет за вмъкване:"
+
+#: src/lyx_cb.C:624
+msgid "Character Style"
+msgstr "Стил на символ"
+
+#: src/lyx_cb.C:675
+msgid "LaTeX Preamble"
+msgstr "LaTeX увод"
+
+#: src/lyx_cb.C:692
+msgid "Do you want to save the current settings"
+msgstr "Желаете ли да запишете текущите настройки "
+
+#: src/lyx_cb.C:693
+msgid "for Character, Document, Paper and Quotes"
+msgstr "за Символ, Документ, Хартия и Кавички "
+
+#: src/lyx_cb.C:694
+msgid "as default for new documents?"
+msgstr "като подразбиращи се за нови документи?"
+
+#: src/lyx_cb.C:859
+msgid "LaTeX preamble set"
+msgstr "LaTeX увод установен"
+
+#: src/lyx_cb.C:894
+msgid "Inserting figure..."
+msgstr "Вмъквам фигура..."
+
+#: src/lyx_cb.C:898 src/lyx_cb.C:954
+msgid "Figure inserted"
+msgstr "Фигурата е вмъкната"
+
+#: src/lyx_cb.C:977
+msgid "Running configure..."
+msgstr "Стартирам конфигуриране..."
+
+#: src/lyx_cb.C:984
+msgid "Reloading configuration..."
+msgstr "Презареждам конфигурацията..."
+
+#: src/lyx_cb.C:986
+msgid "The system has been reconfigured."
+msgstr "Системата беше преконфигурирана."
+
+#: src/lyx_cb.C:987
+msgid "You need to restart LyX to make use of any"
+msgstr "Ще трябва да рестартирате LyX, за да използате"
+
+#: src/lyx_cb.C:988
+msgid "updated document class specifications."
+msgstr "актуализираните клас спецификации."
+
+#: src/lyxfont.C:42
+msgid "Sans serif"
+msgstr ""
+
+#: src/lyxfont.C:42
+msgid "Symbol"
+msgstr "Символ"
+
+#: src/lyxfont.C:42 src/lyxfont.C:47 src/lyxfont.C:51 src/lyxfont.C:58
+#: src/lyxfont.C:62
+msgid "Inherit"
+msgstr "Наследи"
+
+#: src/lyxfont.C:43 src/lyxfont.C:47 src/lyxfont.C:52 src/lyxfont.C:58
+#: src/lyxfont.C:62
+msgid "Ignore"
+msgstr "Игнорирай"
+
+#: src/lyxfont.C:47
+msgid "Medium"
+msgstr "Средно"
+
+#: src/lyxfont.C:47
+msgid "Bold"
+msgstr "Удебелен"
+
+#: src/lyxfont.C:51
+msgid "Upright"
+msgstr "Нормален"
+
+#: src/lyxfont.C:51
+msgid "Italic"
+msgstr "Курсив"
+
+#: src/lyxfont.C:51
+msgid "Slanted"
+msgstr ""
+
+#: src/lyxfont.C:51
+msgid "Smallcaps"
+msgstr "Малки букви"
+
+#: src/lyxfont.C:56
+msgid "Tiny"
+msgstr "Дребен"
+
+#: src/lyxfont.C:56
+msgid "Smallest"
+msgstr "Малък 3"
+
+#: src/lyxfont.C:56
+msgid "Smaller"
+msgstr "Малък 2"
+
+#: src/lyxfont.C:56
+msgid "Small"
+msgstr "Малък"
+
+#: src/lyxfont.C:56
+msgid "Large"
+msgstr "Голям"
+
+#: src/lyxfont.C:57
+msgid "Larger"
+msgstr "Голям 2"
+
+#: src/lyxfont.C:57
+msgid "Largest"
+msgstr "Голям 3"
+
+
+#: src/lyxfont.C:57
+msgid "Huge"
+msgstr "Огромен"
+
+#: src/lyxfont.C:57
+msgid "Huger"
+msgstr "Огромен 2"
+
+#: src/lyxfont.C:57
+msgid "Increase"
+msgstr "Увеличи"
+
+#: src/lyxfont.C:57
+msgid "Decrease"
+msgstr "Намали"
+
+#: src/lyxfont.C:62
+msgid "Off"
+msgstr "Изкл."
+
+#: src/lyxfont.C:62
+msgid "On"
+msgstr "Вкл."
+
+#: src/lyxfont.C:62
+msgid "Toggle"
+msgstr "Превкл."
+
+#: src/lyxfont.C:401
+msgid "Emphasis "
+msgstr "Наблягане "
+
+#: src/lyxfont.C:404
+msgid "Underline "
+msgstr "Подчертаване "
+
+#: src/lyxfont.C:407
+msgid "Noun "
+msgstr "Съществително "
+
+#: src/lyxfont.C:409
+msgid "Latex "
+msgstr ""
+
+#: src/lyxfont.C:413
+msgid "Language: "
+msgstr "Език: "
+
+#: src/lyxfont.C:415
+msgid "  Number "
+msgstr " Номер "
+
+#: src/lyxfr1.C:124 src/lyxfr1.C:161
+msgid "Sorry!"
+msgstr ""
+
+#: src/lyxfr1.C:124 src/lyxfr1.C:161
+msgid "You cannot replace a single space, nor an empty character."
+msgstr "Не можете да замествате интервал нито празен символ."
+
+#: src/lyxfr1.C:192 src/lyxfr1.C:239
+msgid "String not found!"
+msgstr "Низът не е намерен!"
+
+#: src/lyxfr1.C:196
+msgid "1 string has been replaced."
+msgstr "1 низ беше заместен."
+
+#: src/lyxfr1.C:199
+msgid " strings have been replaced."
+msgstr " низа бяха заместени."
+
+#: src/lyxfr1.C:235
+msgid "Found."
+msgstr "Намерен."
+
+#: src/lyxfunc.C:257
+msgid "Unknown sequence:"
+msgstr "Непозната поредица:"
+
+#: src/lyxfunc.C:328 src/lyxfunc.C:2996
+msgid "Unknown action"
+msgstr "Непознато действие"
+
+#. no
+#: src/lyxfunc.C:342
+
+msgid "Document is read-only"
+msgstr "Документът е само за четене"
+
+#. no
+#: src/lyxfunc.C:347
+msgid "Command not allowed without any document open"
+msgstr "Командата не е позволена без да има отворен документ"
+
+#: src/lyxfunc.C:795
+msgid "Saving document"
+msgstr "Записвам документа"
+
+#: src/lyxfunc.C:1105 src/lyxfunc.C:2550
+msgid "Missing argument"
+msgstr "Липсващ аргумент"
+
+#: src/lyxfunc.C:1116
+msgid "Opening help file"
+msgstr "Отварям помощен файл"
+
+#: src/lyxfunc.C:1125
+msgid "LyX Version "
+msgstr "LyX версия "
+
+#: src/lyxfunc.C:1130
+msgid "Library directory: "
+msgstr "Библиотечна директория: "
+
+#: src/lyxfunc.C:1132
+msgid "User directory: "
+msgstr "Потребителска директория: "
+
+#: src/lyxfunc.C:1441
+msgid "Couldn't find this label"
+msgstr "Този етикет не може да бъде намерен "
+
+#: src/lyxfunc.C:1442
+msgid "in current document."
+msgstr "в текущия документ."
+
+#: src/lyxfunc.C:1839
+msgid "Mark removed"
+msgstr "Маркиране премахнато"
+
+#: src/lyxfunc.C:1844
+msgid "Mark set"
+msgstr "Маркиране установено"
+
+#: src/lyxfunc.C:1949
+msgid "Mark off"
+msgstr "Маркиране изкл."
+
+#: src/lyxfunc.C:1962
+msgid "Mark on"
+msgstr "Маркиране вкл."
+
+#: src/lyxfunc.C:2464
+msgid "Push-toolbar needs argument > 0"
+msgstr "Команадта 'Push-toolbar' изисква аргумент > 0"
+
+#: src/lyxfunc.C:2481
+msgid "Usage: toolbar-add-to <LyX command>"
+msgstr "Употреба: toolbar-add-to <LyX команда>"
+
+#: src/lyxfunc.C:2498 src/mathed/formula.C:883
+msgid "Math greek mode on"
+msgstr "Матем. гръцки режим вкл."
+
+#: src/lyxfunc.C:2509 src/mathed/formula.C:894
+msgid "Math greek keyboard on"
+msgstr "Матем. гръцка клавиатура вкл."
+
+#: src/lyxfunc.C:2511 src/mathed/formula.C:896
+msgid "Math greek keyboard off"
+msgstr "Матем гръцка клавиатура изкл."
+
+#: src/lyxfunc.C:2565 src/mathed/formula.C:486
+msgid "Math editor mode"
+msgstr "Матем. редактор"
+
+#: src/lyxfunc.C:2572
+msgid "This is only allowed in math mode!"
+msgstr "Това е позволено само в матем. режим!"
+
+#: src/lyxfunc.C:2761
+msgid "Opening child document "
+msgstr "Отварям поддокумент "
+
+#: src/lyxfunc.C:2793
+msgid "Unknown kind of footnote"
+msgstr "Непознат тип бел. под линия"
+
+#: src/lyxfunc.C:2912
+msgid "Syntax: set-color <lyx_name> <x11_name>"
+msgstr ""
+
+#: src/lyxfunc.C:2918
+msgid "Set-color \""
+msgstr ""
+
+#: src/lyxfunc.C:2920
+msgid "\" failed - color is undefined or may not be redefined"
+msgstr "\" пропадна  - цветът не е дефиниран или не може да бъде предефиниран"
+
+#: src/lyxfunc.C:2935
+msgid "No document open"
+msgstr "Няма отворен документ"
+
+#: src/lyxfunc.C:2941
+msgid "Document is read only"
+msgstr "Документът е само за четене"
+
+#: src/lyxfunc.C:3056
+msgid "Enter Filename for new document"
+msgstr "Въведете име на файл за нов документ"
+
+#: src/lyxfunc.C:3057
+msgid "newfile"
+msgstr "нов файл"
+
+#. Cancel: Do nothing
+#: src/lyxfunc.C:3061 src/lyxfunc.C:3088 src/lyxfunc.C:3165 src/lyxfunc.C:3223
+#: src/lyxfunc.C:3251 src/lyxfunc.C:3261 src/lyxfunc.C:3297
+msgid "Canceled."
+msgstr "Прекъснат."
+
+#: src/lyxfunc.C:3076 src/lyxfunc.C:3239
+msgid ""
+"Do you want to close that document now?\n"
+"('No' will just switch to the open version)"
+msgstr ""
+"Искате ли да затворите този документ сега?\n"
+"('Не' ще превключи на отворената версия"
+
+
+#: src/lyxfunc.C:3096
+msgid "File already exists:"
+msgstr "Файлът вече съществува:"
+
+#: src/lyxfunc.C:3098
+msgid "Do you want to open the document?"
+msgstr "Искате ли да отворите документа?"
+
+#. loads document
+#: src/lyxfunc.C:3100 src/lyxfunc.C:3176
+msgid "Opening document"
+msgstr "Отварям документ"
+
+#: src/lyxfunc.C:3107 src/lyxfunc.C:3183
+msgid "opened."
+msgstr "отворен."
+
+#: src/lyxfunc.C:3128
+msgid "Choose template"
+msgstr "Изберете шаблон"
+
+#: src/lyxfunc.C:3157 src/lyxfunc.C:3213 src/lyxfunc.C:3289
+msgid "Examples"
+msgstr "Примери"
+
+#: src/lyxfunc.C:3159
+msgid "Select Document to Open"
+msgstr "Изберете документ за отваряне"
+
+#: src/lyxfunc.C:3185
+msgid "Could not open document"
+msgstr "Неуспех при отварянето"
+
+#: src/lyxfunc.C:3215
+msgid "Select "
+msgstr "Изберете "
+
+#: src/lyxfunc.C:3216
+msgid " file to import"
+msgstr " Файл за импортиране"
+
+#: src/lyxfunc.C:3258
+msgid "A document by the name"
+msgstr "Документ с името"
+
+#: src/lyxfunc.C:3260
+msgid "already exists. Overwrite?"
+msgstr "вече съществува. Запис отогоре?"
+
+#: src/lyxfunc.C:3291
+msgid "Select Document to Insert"
+msgstr "Изберете документ за вмъкване"
+
+#. Inserts document
+#: src/lyxfunc.C:3309
+msgid "Inserting document"
+msgstr "Вмъквам документ"
+
+#: src/lyxfunc.C:3315
+msgid "inserted."
+msgstr "вмъкнат."
+
+#: src/lyxfunc.C:3317
+
+msgid "Could not insert document"
+msgstr "Неуспех при вмъкването"
+
+#: src/lyx_gui.C:315
+msgid " No change %l| Roman | Sans Serif | Typewriter %l| Reset "
+msgstr " Без промяна %l| Roman | Sans Serif | Машинопис %l| Reset "
+
+#: src/lyx_gui.C:317
+msgid " No change %l| Medium | Bold %l| Reset "
+msgstr " Без промяна %l| Средно | Удебелен %l| Reset "
+
+#: src/lyx_gui.C:319
+msgid " No change %l| Upright | Italic | Slanted | Small Caps %l| Reset "
+msgstr " Без промяна %l| Нормален | Курсив | Slanted | Малки букви %l| Reset "
+
+#: src/lyx_gui.C:322
+msgid ""
+" No change %l| Tiny | Smallest | Smaller | Small | Normal | Large | Larger | "
+"Largest | Huge | Huger %l| Increase | Decrease | Reset "
+msgstr " Без промяна %l| Дребен | Малък 3 | Малък 2 | Малък | Нормален | Голям | Голям 2 | Голям 3 | Огромен | Огромен 2 %l| Увеличи | Намали | Reset "
+
+#: src/lyx_gui.C:326
+msgid " No change %l| Emph | Underbar | Noun | LaTeX mode %l| Reset "
+msgstr " Без промяна %l| Наблягане | Подчертан | Съществително | LaTeX режим %l| Reset "
+
+#: src/lyx_gui.C:328
+msgid ""
+" No change %l| No color | Black | White | Red | Green | Blue | Cyan | "
+"Magenta | Yellow %l| Reset "
+msgstr " Без промяна %l| Без цвят | Черен | Бял | Червен | Зелен | Син | Cyan | Magenta | Жълт %l| Reset "
+
+#: src/lyx_gui.C:333
+msgid " English %l| German | French "
+msgstr " Английски %l| Немски | Френски "
+
+#. build up the combox entries
+#: src/lyx_gui.C:347
+msgid "No change"
+msgstr "Без промяна"
+
+#: src/lyx_gui.C:348
+msgid "Reset"
+msgstr ""
+
+#: src/lyx_gui.C:405
+msgid "LyX Banner"
+msgstr "LyX лого"
+
+#: src/lyx_gui_misc.C:341
+msgid "Dismiss"
+msgstr "Затвори"
+
+#: src/lyx_gui_misc.C:377 src/lyx_gui_misc.C:406 src/lyx_gui_misc.C:410
+msgid "Yes|Yy#y"
+msgstr "Да(Y)|Yy#y"
+
+#: src/lyx_gui_misc.C:378 src/lyx_gui_misc.C:407 src/lyx_gui_misc.C:411
+msgid "No|Nn#n"
+msgstr "Не(N)|Nn#n"
+
+#: src/lyx_gui_misc.C:430
+msgid "Clear|#e"
+msgstr "Изтрий(e)|#e"
+
+#: src/lyx_gui_misc.C:443
+msgid "Any changes will be ignored"
+msgstr "Промените ще бъдат игнорирани"
+
+#: src/lyx_gui_misc.C:444
+msgid "The document is read-only:"
+msgstr "Документът е само за четене:"
+
+#: src/lyx_main.C:95
+msgid "Wrong command line option `"
+msgstr "Грешна опция от командния ред `"
+
+#: src/lyx_main.C:97
+msgid "'. Exiting."
+msgstr "'.  Излизам."
+
+#: src/lyx_main.C:219
+msgid "Warning: could not determine path of binary."
+msgstr "Внимание: не мога да определя път към изпълним файл."
+
+#: src/lyx_main.C:221
+msgid "If you have problems, try starting LyX with an absolute path."
+msgstr "Ако имате проблеми, опитайте да стартирате LyX с абсолютен път."
+
+#: src/lyx_main.C:311
+msgid "LYX_DIR_11x environment variable no good."
+msgstr "Променливата на средата LYX_DIR_11x не е добра."
+
+#: src/lyx_main.C:313
+msgid "System directory set to: "
+msgstr "Системната директория е установена на: "
+
+#: src/lyx_main.C:321
+msgid "LyX Warning! Couldn't determine system directory. "
+msgstr "Внимание! Не мога да определя системна директория."
+
+#: src/lyx_main.C:322
+msgid "Try the '-sysdir' command line parameter or "
+msgstr "Опитайте с параметър `-sysdir' на командния ред или "
+
+#: src/lyx_main.C:323
+msgid "set the environment variable LYX_DIR_11x to the LyX system directory "
+msgstr "установете променливата на средата LYX_DIR_11x към системната"
+
+#: src/lyx_main.C:325
+msgid "containing the file `chkconfig.ltx'."
+msgstr "директория, съдържаща `chkconfig.ltx'."
+
+#: src/lyx_main.C:327
+msgid "Using built-in default "
+msgstr "Използвам вградената стойност "
+
+#: src/lyx_main.C:328
+msgid " but expect problems."
+msgstr " но очаквайте проблеми."
+
+#: src/lyx_main.C:331
+msgid "Expect problems."
+msgstr "Очаквайте проблеми."
+
+#: src/lyx_main.C:563
+msgid "You have specified an invalid LyX directory."
+msgstr "Указали сте невалидна LyX директория."
+
+#: src/lyx_main.C:564
+msgid "You don't have a personal LyX directory."
+msgstr "Нямате лична LyX директория."
+
+#: src/lyx_main.C:566
+msgid "It is needed to keep your own configuration."
+msgstr "Тя е необходима, за да запазите своята конфигурация."
+
+#: src/lyx_main.C:567
+msgid "Should I try to set it up for you (recommended)?"
+msgstr "Да опитам ли да я установя за Вас (препоръчително)?"
+
+#: src/lyx_main.C:568
+msgid "Running without personal LyX directory."
+msgstr "Стартирам без лична LyX директория."
+
+#. Tell the user what is going on
+#: src/lyx_main.C:575
+msgid "LyX: Creating directory "
+msgstr "LyX: Създавам директория "
+
+#: src/lyx_main.C:576
+msgid " and running configure..."
+msgstr " и конфигурирам..."
+
+#: src/lyx_main.C:582
+msgid "Failed. Will use "
+msgstr "Неуспех. Ще използвам "
+
+#: src/lyx_main.C:583
+msgid " instead."
+msgstr " вместо това."
+
+#: src/lyx_main.C:590
+msgid "Done!"
+msgstr "Готов!"
+
+#: src/lyx_main.C:604
+msgid "LyX Warning!"
+msgstr "LyX Предупреждение!"
+
+#: src/lyx_main.C:605
+msgid "Error while reading "
+msgstr "Грешка при четене "
+
+#: src/lyx_main.C:606
+
+msgid "Using built-in defaults."
+msgstr "Използвам вградените настройки."
+
+#: src/lyx_main.C:704
+msgid "Setting debug level to "
+msgstr "Установявам debug ниво на  "
+
+#: src/lyx_main.C:716
+msgid ""
+"Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
+"Command line switches (case sensitive):\n"
+"\t-help              summarize LyX usage\n"
+"\t-userdir dir       try to set user directory to dir\n"
+"\t-sysdir dir        try to set system directory to dir\n"
+"\t-geometry WxH+X+Y  set geometry of the main window\n"
+"\t-dbg feature[,feature]...\n"
+"                  select the features to debug.\n"
+"                  Type `lyx -dbg' to see the list of features\n"
+"\t-x [--execute] command\n"
+"                  where command is a lyx command.\n"
+"\t-e [--export] fmt\n"
+"                  where fmt is the export format of choice.\n"
+"\t-i [--import] fmt file.xxx\n"
+"                  where fmt is the import format of choice\n"
+"                  and file.xxx is the file to be imported.\n"
+"Check the LyX man page for more details."
+msgstr ""
+"Употреба: lyx [ опции ] [ име.lyx ... ]\n"
+"Опции (спазвайте големи/малки букви):\n"
+"\t-help              преглед на употребата на LyX\n"
+"\t-userdir dir       установи потребителска директория на dir\n"
+"\t-sysdir dir        установи системна директория на dir\n"
+"\t-geometry WxH+X+Y  установи размерите на главния екран.\n"
+"\t-dbg свойство[,свойство]...\n"
+"                     избор на свойства за debug.\n"
+"                     Въведете `lyx -dbg' за списък на свойствата\n"
+"\t-x [--execute] command\n"
+"                     където command е LyX команда.\n"
+"\t-e [--export] fmt\n"
+"                     където fmt е формат за експорт.\n"
+"\t-i [--import] fmt file.xxx\n"
+"                     където fmt е формат за импорт, \n"
+"                     и file.xxx е файлът, който ще бъде импортиран.\n"
+"Вижте man страницата на LyX за повече информация."
+
+#: src/lyx_main.C:749
+msgid "List of supported debug flags:"
+msgstr "Списък на поддържаните debug опции:"
+
+#: src/lyx_main.C:761
+msgid "Missing directory for -sysdir switch!"
+msgstr "Липсваща директория за -sysdir опцията!"
+
+#: src/lyx_main.C:772
+msgid "Missing directory for -userdir switch!"
+msgstr "Липсваща директория за -userdir опцията!"
+
+#: src/lyx_main.C:795
+msgid "Missing command string after  -x switch!"
+msgstr "Липсваща команда след -x опцията!"
+
+#: src/lyx_main.C:808
+msgid "Missing file type [eg latex, ps...] after "
+msgstr "Липсващ тип на файл [напр. latex, ps...] след "
+
+#: src/lyx_main.C:810 src/lyx_main.C:825
+msgid " switch!"
+msgstr " опцията"
+
+#: src/lyx_main.C:823
+msgid "Missing type [eg latex, ps...] after "
+msgstr "Липсващ тип [напр. latex, ps...] след "
+
+#: src/lyxrc.C:1644
+msgid ""
+"The font encoding used for the LaTeX2e fontenc package. T1 is highly "
+"recommended for non-English languages."
+msgstr ""
+
+#: src/lyxrc.C:1648
+msgid ""
+"The default printer to print on. If none is specified, LyX will use the "
+"environment variable PRINTER."
+msgstr "Стандартен принтер за печат.  Ако няма указан, LyX ще използва "
+"променливата на средата PRINTER."
+
+#: src/lyxrc.C:1652
+msgid "Your favorite print program, e.g. \"dvips\", \"dvilj4\"."
+msgstr "Вашата предпочитана програма за печат, напр. \"dvips\", \"dvilj4\"."
+
+#: src/lyxrc.C:1656
+msgid "The option to print only even pages."
+msgstr "Опция за печат само на четни страници."
+
+#: src/lyxrc.C:1660
+msgid "The option to print only odd pages."
+msgstr "Опция за печат само на нечетни страници."
+
+#: src/lyxrc.C:1664
+msgid "The option for specifying a comma-separated list of pages to print."
+msgstr "Опция за указване на списък от страници за печат."
+
+#: src/lyxrc.C:1668
+msgid "The option for specifying the number of copies to print."
+msgstr "Опция за указване на брой копия за печат."
+
+#: src/lyxrc.C:1672
+msgid "The option for specifying whether the copies should be collated."
+msgstr "Опзия за указване дали копията да бъдат подреждани."
+
+#: src/lyxrc.C:1676
+msgid "The option to reverse the order of the pages printed."
+msgstr "Опция за обръщане на реда за печат на страниците."
+
+#: src/lyxrc.C:1680
+msgid "The option to print out in landscape."
+msgstr "Опция за печат на пейзаж."
+
+#: src/lyxrc.C:1684
+msgid "The option to specify paper type."
+msgstr "Опция за указване на вида хартия."
+
+#: src/lyxrc.C:1688
+msgid "Option to specify the dimensions of the print paper."
+msgstr "Опция за указване на размерите на хартията."
+
+#: src/lyxrc.C:1692
+msgid "Option to pass to the print program to print on a specific printer."
+msgstr "Опции за подаване към печатащата програма за печат на специфичен принтер."
+
+#: src/lyxrc.C:1696
+msgid ""
+"Select for LyX to pass the name of the destination printer to your print "
+"command."
+msgstr ""
+"Изберете, за да бъде подавано името на принтера към вашата команда "
+"за печат."
+
+#: src/lyxrc.C:1700
+msgid "Option to pass to the print program to print to a file."
+msgstr "Опция за подаване към командата за печат, за да печата във файл."
+
+#: src/lyxrc.C:1704
+msgid "Extension of printer program output file. Usually \".ps\"."
+msgstr "Разширение на изходния файл.  Обикновено \".ps\"."
+
+#: src/lyxrc.C:1708
+msgid ""
+"Extra options to pass to printing program after everything else, but before "
+"the filename of the DVI file to be printed."
+msgstr ""
+"Други опции за подаване към печатащата програма след всичко останало, но "
+"преди името на DVI файла за печат."
+
+#: src/lyxrc.C:1712
+msgid ""
+"When set, this printer option automatically prints to a file and then calls "
+"a separate print spooling program on that file with the given name and "
+"arguments."
+msgstr "Когато е избрана, тази опция автоматично печата във файл и после извиква отделна програма с дадено име и аргументи."
+
+#: src/lyxrc.C:1716
+msgid ""
+"If you specify a printer name in the print dialog, the following argument is "
+"prepended along with the printer name after the spool command."
+msgstr "Ако укажете име на принтер в диалога печат, следващият аргумент ще бъде подаден заедно името на принтера след командата."
+
+#: src/lyxrc.C:1720
+msgid ""
+"DPI (dots per inch) of your monitor is auto-detected by LyX. If that goes "
+"wrong, override the setting here."
+msgstr " DPI (Dots Per inch - точки на инч) на вашия монитор се определя автоматично от LyX.  Ако се определи неправилно, изберете стойността оттук."
+
+#: src/lyxrc.C:1725
+#, no-c-format
+msgid ""
+"The zoom percentage for screen fonts. A setting of 100% will make the fonts "
+"roughly the same size as on paper."
+msgstr "Процент на мащабиране на екранните шрифтове. Стойността 100% ще направи размерът приблизително както на хартията."
+
+#: src/lyxrc.C:1729
+msgid "The font sizes used for calculating the scaling of the screen fonts."
+msgstr "Размерите на шрифтовете за изчисляване на мащабирането на екранните шрифтове."
+
+#: src/lyxrc.C:1735
+msgid "The screen fonts used to display the text while editing."
+msgstr "Екранните шрифтове за изобразяване на текст по време на редактиране."
+
+#: src/lyxrc.C:1739
+msgid "The font for menus (and groups titles in popups)."
+msgstr "Шрифтът за менютата (и имената на групите)."
+
+#: src/lyxrc.C:1743
+
+msgid "The font for popups."
+msgstr "Шрифтът за popup прозорците."
+
+#: src/lyxrc.C:1747
+msgid "The encoding for the screen fonts."
+msgstr "Кодировка за екранните шрифтове."
+
+#: src/lyxrc.C:1751
+msgid "The encoding for the menu/popups fonts."
+msgstr "Кодировка за шрифтовете в менюта/прозорци."
+
+#: src/lyxrc.C:1758
+msgid ""
+"The time interval between auto-saves (in seconds). 0 means no auto-save."
+msgstr ""
+"Интервалът между автозаписите (в секунди).  0 значи без автозапис."
+
+#: src/lyxrc.C:1762
+msgid "The default path for your documents."
+msgstr "Стандартния път за вашите документи."
+
+#: src/lyxrc.C:1766
+msgid "The path that LyX will set when offering to choose a template."
+msgstr "Пътя, който LyX ще покаже, когато предлага избор на шаблон."
+
+#: src/lyxrc.C:1770
+msgid ""
+"LyX will place its temporary directories in this path. They will be deleted "
+"when you quit LyX."
+msgstr "LyX ще разположи своите временни директории на този път.  Те ще бъдат изтрити, когато излезете от LyX."
+
+#: src/lyxrc.C:1774
+msgid ""
+"Select if you wish to use a temporary directory structure to store temporary "
+"TeX output."
+msgstr "Изберете, ако искате да използвате временни директории за съхранение на временните TeX данни."
+
+#: src/lyxrc.C:1778
+msgid "The file where the last-files information should be stored."
+msgstr "Файлът, където ще се записва списъкът с последни файлове."
+
+#: src/lyxrc.C:1782
+msgid ""
+"De-select if you don't want the current selection to be replaced "
+"automatically by what you type."
+msgstr "Деактивирайте, ако не искате маркираният текст да бъде заместен автоматично от това, което пишете."
+
+
+#: src/lyxrc.C:1786
+msgid ""
+"Select if LyX is to take over the handling of the dead keys (a.k.a. accent "
+"keys) that may be defined for your keyboard."
+msgstr ""
+
+#: src/lyxrc.C:1791
+msgid ""
+"This starts the lyxserver. The pipes get an additional extension \".in\" and "
+"\".out\". Only for advanced users."
+msgstr "Това стартира LyX сървъра.  Тръбите получават допълнително разширение \".in\" und \".out\".  Само за напреднали потребители."
+
+#: src/lyxrc.C:1795
+msgid ""
+"Keybindings file. Can either specify an absolute path, or LyX will look in "
+"its global and local bind/ directories."
+msgstr "Файл с клавишни комбинации.  Можете или да зададете абсолютен път, или LyX ще търси в глобалната и локалната bind/ директории."
+
+#: src/lyxrc.C:1799
+msgid ""
+"The  UI (user interface) file. Can either specify an absolute path, or LyX "
+"will look in its global and local ui/ directories."
+msgstr "ПИ (Потребителски Интерфейс) файл. Можете или да зададете абсолютен път, или LyX ще търси в глобалната и локалната ui/ директории."
+
+#: src/lyxrc.C:1805
+msgid ""
+"Use this to set the correct mapping file for your keyboard. You'll need this "
+"if you for instance want to type German documents on an American keyboard."
+msgstr "Използвайте това, за да зададете правилната подредба за вашата клавиатура. Това ще ви е нужно, ако искате например да пишете немски документи с американска подредба."
+
+#: src/lyxrc.C:1819
+msgid ""
+"Use to define an external program to render tables in the ASCII output. E.g. "
+"\"groff -t -Tlatin1 $$FName\"  where $$FName is the input file. If \"none\" "
+"is specified, an internal routine is used."
+msgstr "Използвайте, за да зададете външна програма за превръщане на таблиците в ASCII формат, напр. \"groff -t -Tlatin1 $$FName\", където  $$FName е името на входния файл.  Ако е зададена \"none\", се използва вътрешна процедура."
+
+#: src/lyxrc.C:1823
+msgid ""
+"This is the maximum line length of an exported ASCII file (LaTeX, SGML or "
+"plain text)."
+msgstr "Това е максималната дължина на ред за експортиране на ASCII файл (LaTeX, SGML или обикновен текст)."
+
+#: src/lyxrc.C:1827
+msgid "Maximal number of lastfiles. Up to 9 can appear in the file menu."
+msgstr "Максимален брой последни файлове.  Във менюто Файл могат да се виждат до 9."
+
+#: src/lyxrc.C:1831
+msgid "Select to check whether the lastfiles still exist."
+msgstr "Изберете за проверка дали последните файлове още съществуват."
+
+#: src/lyxrc.C:1838
+msgid "Specify the default paper size."
+msgstr "Укажете стандартния размер на хартията."
+
+#: src/lyxrc.C:1845
+msgid ""
+"Consider run-together words, such as \"diskdrive\" for \"disk drive\", as "
+"legal words?"
+msgstr ""
+"Да приема ли, че написаните заедно думи като \"харддиск\" за \"хард диск\" "
+"са коректни?"
+
+#: src/lyxrc.C:1849
+msgid "What command runs the spell checker?"
+msgstr "Коя команда стартира правописната проверка?"
+
+#: src/lyxrc.C:1853
+msgid ""
+"Specify whether to pass the -T input encoding option to ispell. Enable this "
+"if you can't spellcheck words with international letters in them. This may "
+"not work with all dictionaries."
+msgstr "Укажете дали опцията за кодировка -T да се предава на ispell. Изберете това ако не можете да проверявате думи с нелатински букви в тях.  Това може да не работи с всички речници."
+
+#: src/lyxrc.C:1858
+msgid ""
+"Specify an alternate language. The default is to use the language of the "
+"document."
+msgstr "Укажете алтернативен език. Стандартно се използва езика на документа."
+
+#: src/lyxrc.C:1863
+msgid ""
+"Specify an alternate personal dictionary file. E.g. \".ispell_english\"."
+msgstr "Укажете файл за алтернативен личен речник, напр. \".ispell_bulg\"."
+
+#: src/lyxrc.C:1868
+msgid "Specify additional chars that can be part of a word."
+msgstr "Укажете допълнителни символи, които могат да са част от дума."
+
+#: src/lyxrc.C:1872
+msgid ""
+"Allow the use of scalable screen fonts? If false, LyX will use the closest "
+"existing size for a match. Use this if the scalable fonts look bad and you "
+"have many fixed size fonts."
+msgstr "Позволена ли е употребата на мащабируеми екранни шрифтове? Ако това не е избрано, LyX ще използва най-близкия съществуващ размер. Използвайте това, ако мащабируемите шрифтове не изглеждат добре и имате много шрифтове с фиксиран размер."
+
+#: src/lyxrc.C:1876
+msgid ""
+"Define how to run chktex. E.g. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -"
+"n38\" Refer to the ChkTeX documentation."
+msgstr "Укажете как да бъде стартиран chktex, напр. \"chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38\".  Обърнете се към ChkTeX документацията."
+
+
+#: src/lyxrc.C:1880
+msgid ""
+"LyX normally doesn't update the cursor position if you move the scrollbar. "
+"Set to true if you'd prefer to always have the cursor on screen."
+msgstr "Обикновено LyX не актуализира позицията на курсора, когато премествате скролбара. Изберете това, ако предпочитате курсорът винаги да е на екрана."
+
+#: src/lyxrc.C:1884
+msgid ""
+"Sets whether LyX asks for a second confirmation to exit when you have "
+"changed documents. (LyX will still ask to save changed documents.)"
+msgstr "Указва дали LyX ще пита за повторно потвърждение при изход, когато имате променени документи."
+
+#: src/lyxrc.C:1888
+msgid ""
+"LyX continously displays names of last command executed, along with a list "
+"of defined short-cuts for it in the minibuffer. Set to false if LyX seems "
+"slow."
+msgstr "LyX показва имената на последните изпълнени команди, заедно със списъка на указаните кракти имена за тях, в минибуфера. Изключете това, ако LyX работи бавно."
+
+#: src/lyxrc.C:1892
+msgid "De-select if you don't want LyX to create backup files."
+msgstr "Изключете, ако не искате LyX да създава резервни (backup) копия."
+
+#: src/lyxrc.C:1896
+msgid ""
+"The path for storing backup files. If it is an empty string, LyX will store "
+"the backup file in the same directory as the original file."
+msgstr "Път за съхранение на резервните копия.  Ако е празен низ, LyX ще запазва резервното копие в същата директория, където е оригиналният файл."
+
+#: src/lyxrc.C:1900
+msgid ""
+"Select to enable support of right-to-left languages (e.g. Hebrew, Arabic)."
+msgstr "Изберете, за да включите поддръжка на дясно-към-ляво езици като арабски и иврид."
+
+#: src/lyxrc.C:1904
+msgid ""
+"Select to control the highlighting of words with a language foreign to that "
+"of the document."
+msgstr ""
+"Изберете за да контролирате осветяването на думи с различен език от този на "
+"документа."
+
+#: src/lyxrc.C:1908
+msgid ""
+"The latex command for loading the language package. E.g. \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
+msgstr ""
+"LaTeX командата за зареждане на езиков пакет.  Напл: \"\\usepackage"
+"{babel}\", \"\\usepackage{omega}\"."
+
+#: src/lyxrc.C:1912
+msgid ""
+"De-select if you don't want the language(s) used as an argument to "
+"\\documentclass."
+
+msgstr "Изключете, ако не искате езиците да подават като аргумент към \\documentclass командата."
+
+#: src/lyxrc.C:1916
+msgid ""
+"De-select if you don't want babel to be used when the language of the "
+"document is the default language."
+msgstr "Изключете, ако не искате да се използва Babel, когато езикът на документа е стандартния."
+
+#: src/lyxrc.C:1920
+msgid ""
+"Select if a language switching command is needed at the beginning of the "
+"document."
+msgstr "Изберете, ако е необходима команда за смяна на езика в началото на документа."
+
+#: src/lyxrc.C:1924
+msgid ""
+"Select if a language switching command is needed at the end of the document."
+msgstr "Изберете, ако е необходима команда за смяна на езика в края на документа."
+
+#: src/lyxrc.C:1928
+msgid ""
+"The latex command for changing from the language of the document to another "
+"language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
+"name of the second language."
+msgstr ""
+"LaTeX командата за смяна на езика на документа с друг език, напр. "
+"\\selectlanguage{$$lang}; където $$lang се замества и името на втория език."
+
+#: src/lyxrc.C:1932
+msgid "The latex command for changing back to the language of the document."
+msgstr "LaTeX командата за връщане към езика на документа."
+
+#: src/lyxrc.C:1936
+msgid "The latex command for local changing of the language."
+msgstr "LaTeX командата за локална смяна на езика."
+
+#: src/lyxrc.C:1941
+#, no-c-format
+msgid ""
+"This accepts the normal strftime formats; see man strftime for full details. "
+"E.g.\"%A, %e. %B %Y\"."
+msgstr "Това позволява strftime форматите; вижте man странизата на strftime за подробности. Напр. \"%A, %e. %B %Y\"."
+
+#: src/lyxrc.C:1945
+msgid "De-select if you don't want the startup banner."
+msgstr "Изключете ако не искате началното лого"
+
+#: src/lyxrc.C:1949
+msgid "The wheel movement factor (for mice with wheels or five button mice)."
+msgstr "Множител за движението на колелото (за мишки с колело или петбутонни мишки)."
+
+#: src/lyxrc.C:1962
+msgid ""
+"This sets the behaviour if you want to be asked for a filename when creating "
+"a new document or wait until you save it and be asked then."
+msgstr ""
+"Това указва дали да бъдете питани за име на файл по време на създаването на "
+"нов документ или при първото записване."
+
+#: src/lyxrc.C:1966
+msgid "New documents will be assigned this language."
+msgstr "Новите документи ще бъдат на този език."
+
+#: src/lyxrc.C:1970
+msgid "Maximum number of words in the initialization string for a new label"
+msgstr "Максимален брой думи в инициализиращия низ за нов етикет."
+
+#: src/LyXSendto.C:40
+msgid "Send Document to Command"
+msgstr "Подаване на документа към команда"
+
+#: src/lyxvc.C:94 src/lyxvc.C:127
+msgid "Save document and proceed?"
+msgstr "Запазване на документа и продължение?"
+
+#: src/lyxvc.C:107
+msgid "LyX VC: Initial description"
+msgstr "LyX СКВ: Начално описание"
+
+#: src/lyxvc.C:108
+msgid "(no initial description)"
+msgstr "(няма начално описание)"
+
+#: src/lyxvc.C:113
+msgid "This document has NOT been registered."
+msgstr "Този документ НЕ е бил регистриран."
+
+#: src/lyxvc.C:139
+msgid "LyX VC: Log Message"
+msgstr "LyX СКВ: протоколно съобщение"
+
+#: src/lyxvc.C:142
+msgid "(no log message)"
+msgstr "(няма протоколно съобщение)"
+
+#: src/lyxvc.C:157
+msgid "Ignore changes and proceed with check out?"
+msgstr "Пренебрегване на промените и продължаване с check out?"
+
+#. Here we should check if the buffer is dirty. And if it is
+#. we should warn the user that reverting will discard all
+#. changes made since the last check in.
+#: src/lyxvc.C:172
+msgid "When you revert, you will loose all changes made"
+msgstr "При връщане назад ще загубите всички направени промени "
+
+#: src/lyxvc.C:173
+msgid "to the document since the last check in."
+msgstr "в документа от последния check in."
+
+#: src/lyxvc.C:174
+msgid "Do you still want to do it?"
+msgstr "Все още ли искате операцията?"
+
+#: src/lyxvc.C:277
+msgid "No VC History!"
+msgstr "Няма СКВ история!"
+
+#: src/lyxvc.C:284
+msgid "VC History"
+msgstr "СКВ история"
+
+#: src/LyXView.C:370 src/minibuffer.C:242
+msgid " (Changed)"
+msgstr " (Променен)"
+
+#: src/LyXView.C:372
+msgid " (read only)"
+msgstr " (само за четене)"
+
+#: src/mathed/formula.C:911 src/mathed/formula.C:1257
+msgid "TeX mode"
+msgstr "TeX режим"
+
+#: src/mathed/formula.C:926
+msgid "No number"
+msgstr "Без номериране"
+
+#: src/mathed/formula.C:929
+msgid "Number"
+msgstr "Номериране"
+
+#: src/mathed/formula.C:1128
+msgid "math text mode"
+msgstr "матем. текстов режим"
+
+#: src/mathed/formula.C:1137
+msgid "Invalid action in math mode!"
+msgstr "Невалидно действие в матем. режим!"
+
+#: src/mathed/formulamacro.C:144 src/mathed/formulamacro.C:171
+msgid "Macro: "
+msgstr "Макрос: "
+
+#: src/mathed/formulamacro.C:181
+msgid "Math macro editor mode"
+msgstr "Матем. режим: макро-редактор"
+
+#: src/mathed/math_forms.C:19
+msgid "Close "
+msgstr "Затвори "
+
+#: src/mathed/math_forms.C:22
+msgid "Functions"
+msgstr "Функции"
+
+#: src/mathed/math_forms.C:30
+msgid "­ Ы"
+msgstr "­ Ы"
+
+#: src/mathed/math_forms.C:34
+msgid "± ґ"
+msgstr "± ґ"
+
+#: src/mathed/math_forms.C:38
+msgid "Ј @"
+msgstr "Ј @"
+
+#: src/mathed/math_forms.C:42
+msgid "S  т"
+msgstr "S  т"
+
+#: src/mathed/math_forms.C:95
+msgid "Left|#L"
+msgstr "Ляво|#L"
+
+#: src/mathed/math_forms.C:127
+msgid "OK  "
+msgstr "OK  "
+
+#: src/mathed/math_forms.C:140
+msgid "Columns "
+msgstr "Колони "
+
+#: src/mathed/math_forms.C:147
+msgid "Vertical align|#V"
+msgstr "Верт. Подравняване(V)|#V"
+
+#: src/mathed/math_forms.C:152
+msgid "Horizontal align|#H"
+msgstr "Хориз. Подравняване(H)|#H"
+
+#: src/mathed/math_forms.C:195
+msgid "OK "
+msgstr "OK "
+
+#: src/mathed/math_forms.C:206
+msgid "Thin|#T"
+msgstr "Тънко(T)|#T"
+
+#: src/mathed/math_forms.C:210
+msgid "Medium|#M"
+msgstr "Средно(M)|#M"
+
+#: src/mathed/math_forms.C:214
+msgid "Thick|#H"
+msgstr "Дебело(H)|#H"
+
+#: src/mathed/math_forms.C:218
+msgid "Negative|#N"
+msgstr "Отрицателно(N)|#N"
+
+#: src/mathed/math_forms.C:222
+msgid "Quadratin|#Q"
+msgstr ""
+
+#: src/mathed/math_forms.C:226
+msgid "2Quadratin|#2"
+msgstr ""
+
+#: src/mathed/math_panel.C:116
+msgid "Delimiter"
+msgstr "Разделител"
+
+#: src/mathed/math_panel.C:122
+msgid "Decoration"
+msgstr "Декорация"
+
+#: src/mathed/math_panel.C:128
+msgid "Spacing"
+msgstr "Разстояние"
+
+#: src/mathed/math_panel.C:134
+msgid "Matrix"
+msgstr "Матрица"
+
+#: src/mathed/math_panel.C:330
+msgid "Top | Center | Bottom"
+msgstr " Горе | Център | Долу"
+
+#: src/mathed/math_panel.C:383
+msgid "Math Panel"
+msgstr "Матем. символи"
+
+#: src/MenuBackend.C:263
+msgid "No Documents Open!"
+msgstr "Няма отворени документи!"
+
+#: src/MenuBackend.C:311
+msgid "Ascii text as lines"
+msgstr "Ascii текст като редове"
+
+#: src/MenuBackend.C:313
+msgid "Ascii text as paragraphs"
+msgstr "Ascii текст като абзаци"
+
+#: src/MenuBackend.C:416
+msgid "Quit|Q"
+msgstr "Изход(Q)|Q"
+
+#: src/MenuBackend.C:424
+msgid "LaTeX...|L"
+msgstr "LaTeX...|L"
+
+#: src/MenuBackend.C:426
+msgid "LinuxDoc...|L"
+msgstr ""
+
+
+#: src/MenuBackend.C:434
+msgid "Emphasize"
+msgstr "Наблягане"
+
+#: src/minibuffer.C:46 src/minibuffer.C:244
+msgid "Welcome to LyX!"
+msgstr "Добре дошли в LyX!"
+
+#: src/minibuffer.C:64
+msgid "Executing:"
+msgstr "Изпълнявам:"
+
+#. this is a hack
+#: src/minibuffer.C:245
+msgid "* No document open *"
+msgstr "* Няма отворен документ *"
+
+#: src/print_form.C:21
+msgid "File Type"
+msgstr "Тип на файл"
+
+#: src/print_form.C:25
+msgid "Command:|#C"
+msgstr "Команда(C):|#C"
+
+#: src/print_form.C:39
+msgid "DVI|#D"
+msgstr ""
+
+#: src/print_form.C:41
+msgid "Postscript|#P"
+msgstr ""
+
+#: src/print_form.C:43
+msgid "LaTeX|#T"
+msgstr ""
+
+#: src/print_form.C:46
+msgid "LyX|#L"
+msgstr ""
+
+#: src/print_form.C:48
+msgid "Ascii|#s"
+msgstr ""
+
+#: src/spellchecker.C:286
+msgid "Spellchecker Options"
+msgstr "Настройки на правопис"
+
+#: src/spellchecker.C:717
+msgid "Spellchecker"
+msgstr "Правопис"
+
+#: src/spellchecker.C:963
+msgid " words checked."
+msgstr " проверени думи."
+
+#: src/spellchecker.C:965
+msgid " word checked."
+msgstr " проверена дума."
+
+
+#: src/spellchecker.C:967
+msgid "Spellchecking completed!"
+msgstr "Правописната проверка завърши!"
+
+#: src/spellchecker.C:971
+msgid ""
+"The spell checker has died for some reason.\n"
+"Maybe it has been killed."
+msgstr ""
+"Правописната проверка се провали по някаква причина.\n"
+"Възможно е да е била прекъсната с 'kill'."
+
+#: src/sp_form.C:26
+msgid "Use language of document|#D"
+msgstr "Използвай езика на документа(D)|#D"
+
+#: src/sp_form.C:28
+msgid "Use alternate language:|#U"
+msgstr "Използвай алтернативния език(U):|#U"
+
+#: src/sp_form.C:34
+msgid "Treat run-together words as legal|#T"
+msgstr "Свързаните думи се допускат(T)|#T"
+
+#: src/sp_form.C:36
+msgid "Input Encoding switch to ispell|#I"
+msgstr "Кодировка за ispell(I)|#I"
+
+#: src/sp_form.C:46
+msgid "Use alternate personal dictionary:|#P"
+msgstr "Използвай алтернативен личен речник(P):|#P"
+
+#: src/sp_form.C:48
+msgid "Extra special chars allowed in words:|#E"
+msgstr "Специалните символи в думите се допускат(E):|#E"
+
+#: src/sp_form.C:54
+msgid "Dictionary"
+msgstr "Речник"
+
+#: src/sp_form.C:86
+msgid "Replace"
+msgstr "Замести"
+
+#: src/sp_form.C:88
+msgid ""
+"Near\n"
+"Misses"
+msgstr "Предложения"
+
+#: src/sp_form.C:91
+msgid "Spellchecker Options...|#O"
+msgstr "Опции за правописа(O)..|#O"
+
+#: src/sp_form.C:93
+msgid "Start spellchecking|#S"
+msgstr "Стартирай правописна проверка(S)|#S"
+
+#: src/sp_form.C:95
+msgid "Insert in personal dictionary|#I"
+msgstr "Вмъкни в личния речник(I)|#I"
+
+#: src/sp_form.C:97
+msgid "Ignore word|#g"
+msgstr "Игнорирай(g)|#g"
+
+#: src/sp_form.C:99
+msgid "Accept word in this session|#A"
+msgstr "Приеми думата за тази сесия(A)|#A"
+
+#: src/sp_form.C:101
+msgid "Stop spellchecking|#T"
+msgstr "Спри проверката(T)|#T"
+
+#: src/sp_form.C:103
+msgid "Close Spellchecker|#C^["
+msgstr "Затвори правописа(C)|#C^["
+
+#: src/sp_form.C:106
+#, no-c-format
+msgid "0 %"
+msgstr ""
+
+#: src/sp_form.C:110
+#, no-c-format
+msgid "100 %"
+msgstr ""
+
+#: src/sp_form.C:113
+msgid "Replace word|#R"
+msgstr "Замести дума(R)|#R"
+
+
+#: src/support/filetools.C:159
+msgid "LyX Internal Error!"
+msgstr "Вътрешна LyX грешка!"
+
+#: src/support/filetools.C:160
+msgid "Could not test if directory is writeable"
+msgstr "Не мога да тествам дали директорията е разрешена за запис"
+
+#: src/support/filetools.C:410
+msgid "Error! Cannot open directory:"
+msgstr "Грешка! Не мога да отворя директория:"
+
+#: src/support/filetools.C:428
+msgid "Error! Could not remove file:"
+msgstr "Грешка! Не мога да изтрия файл:"
+
+#: src/support/filetools.C:453
+msgid "Error! Couldn't create temporary directory:"
+msgstr "Грешка! Не мога да създам временна директория: "
+
+#: src/support/filetools.C:469
+msgid "Error! Couldn't delete temporary directory:"
+msgstr "Грешка! Не мога да изтрия временната директория:"
+
+#: src/support/filetools.C:522
+msgid "Internal error!"
+msgstr "Вътрешна грешка!"
+
+#: src/support/filetools.C:523
+msgid "Call to createDirectory with invalid name"
+msgstr "Извикване на createDirectory с невалидно име"
+
+#: src/support/filetools.C:528
+msgid "Error! Couldn't create directory:"
+msgstr "Грешка! Не мога да създам директория:"
+
+#: src/support/filetools.C:1133
+msgid "Could not delete auto-save file!"
+msgstr "Не мога да изтрия авто-запис файл!"
+
+#: src/support/getUserName.C:13
+msgid "unknown"
+msgstr "непозната"
+
+#: src/tabular.C:1705
+msgid "Warning:"
+msgstr "Предупреждение:"
+
+#: src/tabular.C:1706
+msgid "Tabular format < 5 is not supported anymore\n"
+msgstr "Формат на таблица < 5 вече не се поддържа\n"
+
+#: src/tabular.C:1707
+msgid "Get an older version of LyX (< 1.1.x) for conversion!"
+msgstr "Вземете по-стара версия на LyX (< 1.1.x) за конвертиране!"
+
+#: src/text2.C:411
+msgid "Opened float"
+msgstr ""
+
+#: src/text2.C:413
+msgid "Closed float"
+msgstr ""
+
+
+#: src/text2.C:456
+msgid "Nothing to do"
+msgstr "Няма нищо за правене"
+
+#: src/text2.C:1275
+msgid ""
+"No font change defined. Use Character under the Layout menu to define font "
+"change."
+msgstr ""
+
+#: src/text2.C:2198 src/text2.C:2311
+msgid "Don't know what to do with half floats."
+msgstr ""
+
+#: src/text2.C:2199 src/text2.C:2313
+msgid "sorry."
+msgstr ""
+
+#: src/text.C:2003
+msgid ""
+"You cannot insert a space at the beginning of a paragraph.  Please read the "
+"Tutorial."
+msgstr ""
+"Am Anfang eines Absatzes kann kein Leerzeichen gesetzt werden.  Bitte lesen "
+"Sie das Tutorium."
+
+#: src/text.C:2005
+msgid "You cannot type two spaces this way.  Please read the Tutorial."
+msgstr "Не можете да въведете два интервала така.  Моля прочетете Ръководството."
+
+#: src/text.C:3462 src/text.C:3468
+msgid "Page Break (top)"
+msgstr "Нова стр. (отгоре)"
+
+#: src/text.C:3662 src/text.C:3668
+msgid "Page Break (bottom)"
+
+msgstr "Нова стр. (отдолу)"
+
+#: src/text.C:3962
+msgid "You can't insert a float in a float!"
+msgstr ""
+
+#: src/text.C:3970
+msgid "You can't insert a marginpar in a minipage!"
+msgstr ""
+
+#: src/text.C:3997
+msgid "Float would include float!"
+msgstr ""
+
+#~ msgid "A&A"
+#~ msgstr "A&A"
+
+#~ msgid "Hungarian"
+#~ msgstr "Унгарски"
+
+#~ msgid "Citation style|#s"
+#~ msgstr "Стил цитат(s)|#s"
+
+#~ msgid "Text before|#T"
+#~ msgstr "Текст преди(T)|#T"
+
+#~ msgid "Text mode"
+#~ msgstr ""
+

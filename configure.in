@@ -20,7 +20,7 @@ AM_INIT_AUTOMAKE($lyxname, $VERSION)
 
 # The list of languages known to LyX
 # This is needed by GNU gettext
-ALL_LINGUAS="ca cs da de es eu fi fr he hu it nl no pl pt ro ru sk sl sv tr wa"
+ALL_LINGUAS="bg ca cs da de es eu fi fr he hu it nl no pl pt ro ru sk sl sv tr wa"
 
 # fix the value of the prefixes.
 test "x$prefix" = xNONE && prefix=$ac_default_prefix
