@@ -1,3 +1,10 @@
+2000-03-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/text2.C (DeleteEmptyParagraphMechanism): don't run,
+	RedoParagraphs from the doublespace handling part, just set status
+	to NEED_MORE_REFRESH. Also don't update cursor position (should be
+	done, but perhaps not like this.)
+
 2000-03-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/text2.C (InsertStringA): don't forget to insert a META_INSET

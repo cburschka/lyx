@@ -3289,16 +3289,16 @@ void LyXText::CursorDownParagraph() const
 
 void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 {
-	bool deleted = false;
-	
-	// this is the delete-empty-paragraph-mechanism.
+	// Would be wrong to delete anything if we have a selection.
 	if (selection) return;
 
-	// if free-spacing, then return also.
+	// We allow all kinds of "mumbo-jumbo" when freespacing.
 	if (textclasslist.Style(parameters->textclass,
 				old_cursor.par->GetLayout()).free_spacing)
 		return;
 
+	bool deleted = false;
+	
 #ifdef FIX_DOUBLE_SPACE
 	/* Ok I'll put some comments here about what is missing.
 	   I have fixed BackSpace (and thus Delete) to not delete
@@ -3324,25 +3324,27 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 	// MISSING
 
 	// If the pos around the old_cursor were spaces, delete one of them.
-	if (!(old_cursor.par == cursor.par && old_cursor.pos == cursor.pos)
-	    && old_cursor.pos > 0
-	    && old_cursor.pos < old_cursor.par->Last()
-	    && old_cursor.par->IsLineSeparator(old_cursor.pos)
-	    && old_cursor.par->IsLineSeparator(old_cursor.pos - 1)) {
-		old_cursor.par->Erase(old_cursor.pos - 1);
-		RedoParagraphs(old_cursor, old_cursor.par->Next());
-		// or RedoDrawingOfParagraph(old_cursor);
-		// correct cursor
-		if (old_cursor.par == cursor.par &&
-		    cursor.pos > old_cursor.pos)
-			SetCursor(cursor.par, cursor.pos - 1);
-		else
-			SetCursor(cursor.par, cursor.pos);
-		return;
+	if (old_cursor.par != cursor.par || old_cursor.pos != cursor.pos) { // Only if the cursor has really moved
+		if (old_cursor.pos > 0
+		    && old_cursor.pos < old_cursor.par->Last()
+		    && old_cursor.par->IsLineSeparator(old_cursor.pos)
+		    && old_cursor.par->IsLineSeparator(old_cursor.pos - 1)) {
+			old_cursor.par->Erase(old_cursor.pos - 1);
+			//RedoParagraphs(old_cursor, old_cursor.par->Next());
+			status = LyXText::NEED_MORE_REFRESH;
+			//deleted = true;
+			// correct cursor
+			//if (old_cursor.par == cursor.par &&
+			//    cursor.pos > old_cursor.pos)
+			//	SetCursor(cursor.par, cursor.pos - 1);
+			//else
+			//	SetCursor(cursor.par, cursor.pos);
+			//return;
+		}
 	}
 #endif
-	//
-	// Paragraph should not be deleted if empty
+#if 1
+	// Do not delete empty paragraphs with keepempty set.
 	if ((textclasslist.Style(parameters->textclass,
 				 old_cursor.par->GetLayout())).keepempty)
 		return;
@@ -3352,7 +3354,7 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 	if (old_cursor.par != cursor.par) {
 		if ( (old_cursor.par->Last() == 0
 		      || (old_cursor.par->Last() == 1
-			  && (old_cursor.par->IsLineSeparator(0))))
+			  && old_cursor.par->IsLineSeparator(0)))
 		     && old_cursor.par->FirstPhysicalPar()
 		     == old_cursor.par->LastPhysicalPar()) {
 			
@@ -3364,13 +3366,11 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 			       && old_cursor.row->previous->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE)
 			     && !(old_cursor.row->next 
 				  && old_cursor.row->next->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE))
-			    || 
-			    (old_cursor.par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE &&
-			     ((old_cursor.row->previous 
-			       && old_cursor.row->previous->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE)
-			      || 
-			      (old_cursor.row->next
-			       && old_cursor.row->next->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE))
+			    || (old_cursor.par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE &&
+				((old_cursor.row->previous 
+				  && old_cursor.row->previous->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE)
+				 || (old_cursor.row->next
+				     && old_cursor.row->next->par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE))
 				    )) {
 				status = LyXText::NEED_MORE_REFRESH;
 				deleted = true;
@@ -3468,6 +3468,7 @@ void LyXText::DeleteEmptyParagraphMechanism(LyXCursor const & old_cursor) const
 			}
 		}
 	}
+#endif
 }
 
 

@@ -3292,7 +3292,7 @@ void LyXText::Delete()
 }
 
 
-void  LyXText::Backspace()
+void LyXText::Backspace()
 {
 	LyXParagraph * tmppar;
 	Row * tmprow, * row;
