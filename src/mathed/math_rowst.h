@@ -117,6 +117,34 @@ struct MathedRowContainer {
 	MathedRowContainer() : data_(0) {}
 
 	///
+	MathedRowContainer(MathedRowContainer const & c) : data_(0) {
+		if (!c.empty()) {
+			MathedRowSt * ro = 0;
+			MathedRowSt * mrow = c.data_;
+
+			while (mrow) {
+				MathedRowSt * r = new MathedRowSt(*mrow);
+				if (!ro) 
+					data_ = r;
+				else
+					ro->next_ = r;
+				mrow = mrow->next_;
+				ro = r;
+			}
+		}
+	}
+
+		
+	~MathedRowContainer() {
+		MathedRowSt * r = data_;
+		while (r) {
+			MathedRowSt * q = r->next_;
+			delete r;
+			r = q;
+		}
+	}
+
+	///
 	iterator begin() { return iterator(this); }
 	///
 	bool empty() const { return data_ == 0; }
@@ -151,7 +179,6 @@ struct MathedRowContainer {
 
 private:
 	// currently unimplemented just to make sure it's not used
-	MathedRowContainer(MathedRowContainer const &); // unimplemented
 	void operator=(MathedRowContainer const &); // unimplemented
 };
 

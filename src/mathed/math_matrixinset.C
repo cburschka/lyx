@@ -35,47 +35,6 @@ MathMatrixInset::MathMatrixInset(int m, int n, short st)
 }
 
 
-MathMatrixInset::MathMatrixInset(MathMatrixInset const & mt)
-	: MathParInset(mt.GetStyle(), mt.GetName(), mt.GetType()),
-	  nc_(mt.nc_), nr_(0), ws_(mt.nc_),
-	  v_align_(mt.v_align_), h_align_(mt.h_align_)
-{
-	array = mt.GetData();
-	if (!mt.row_.empty()) {
-		MathedRowSt * ro = 0;
-		MathedRowSt * mrow = mt.row_.data_;
-
-		while (mrow) {
-			MathedRowSt * r = new MathedRowSt(nc_ + 1);
-			r->setNumbered(mrow->isNumbered());
-			//if (mrow->label) 
-			r->setLabel(mrow->getLabel());
-			if (!ro) 
-				row_.data_ = r;
-			else
-				ro->next_ = r;
-			mrow = mrow->next_;
-			ro = r;
-			++nr_;
-		}
-	} else   
-		row_.data_ = 0;
-	flag = mt.flag;
-}
-
-
-MathMatrixInset::~MathMatrixInset()
-{
-	MathedRowSt * r = row_.data_;
-	while (r) {
-		MathedRowSt * q = r->next_;
-		delete r;
-		r = q;
-	}
-}
-
-
-
 MathedInset * MathMatrixInset::Clone()
 {
 	return new MathMatrixInset(*this);

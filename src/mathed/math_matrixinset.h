@@ -18,13 +18,7 @@
 class MathMatrixInset : public MathParInset {
 public: 
 	///
-	explicit
 	MathMatrixInset(int m, int n, short st = LM_ST_TEXT);
-	///
-	explicit
-	MathMatrixInset(MathMatrixInset const &);
-	///
-	~MathMatrixInset();
 	///
 	MathedInset * Clone();
 	///

@@ -3,6 +3,12 @@
 
 	* math_xiter.C: new 'container()' method to encapsulated access to
 	  the MathParInset's MathedRowContainer
+
+	* math_rowst.h: proper copy constructor and destructor for
+	  MathedRowContainer
+
+	* math_matrixinset.[hC]: remove copy constructr and destructor. Those
+	  automatically created by the compiler are ok now.
 	
 2001-03-06  André Pönitz  <poenitz@htwm.de>
 	* array.[Ch]: factor out deep_copy,
