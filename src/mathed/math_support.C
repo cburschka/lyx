@@ -760,15 +760,9 @@ void drawChar(Painter & pain, MathTextCodes type, MathMetricsInfo const & size,
 {
 	LyXFont font;
 	whichFont(font, type, size);
-	if (isBinaryOp(c, type)) {
-		pain.text(x, y, ' ', font);
+	if (isBinaryOp(c, type)) 
 		x += lyxfont::width(' ', font);
-		pain.text(x, y, c, font);
-		x += lyxfont::width(c, font);
-		pain.text(x, y, ' ', font);
-	} else {
-		pain.text(x, y, c, font);
-	}
+	pain.text(x, y, c, font);
 }
 
 
