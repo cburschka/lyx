@@ -75,9 +75,9 @@ string getLengthFromWidgets(FL_OBJECT * input, FL_OBJECT * choice)
 	lyx::Assert(input  && input->objclass  == FL_INPUT &&
 		    choice && choice->objclass == FL_CHOICE);
 
-	string length = strip(frontStrip(fl_get_input(input)));
+	string const length = strip(frontStrip(fl_get_input(input)));
 	if (length.empty())
-		length = "0";
+		return string();
 
 	string const units = strip(frontStrip(fl_get_choice_text(choice)));
 
@@ -91,6 +91,12 @@ void updateWidgetsFromLengthString(FL_OBJECT * input, FL_OBJECT * choice,
 	// Paranoia check
 	lyx::Assert(input  && input->objclass  == FL_INPUT &&
 		    choice && choice->objclass == FL_CHOICE);
+
+	if (str.empty()) {
+		fl_set_input(input, "");
+		fl_set_choice(choice, 1);
+		return;
+	}
 
 	// The unit is presumed to begin at the first char a-z
 	string const tmp = lowercase(strip(frontStrip(str)));

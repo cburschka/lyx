@@ -345,10 +345,6 @@ void FormDocument::update()
 
 	BufferParams const & params = lv_->buffer()->params;
 
-//	fl_set_object_label(dialog_->button_save_defaults,
-//			    _("Save as Defaults"));
-//	fl_set_object_label(dialog_->button_reset_defaults,
-//			    _("Use Class Defaults"));
 	setEnabled(dialog_->button_reset_defaults,
 		   !params.hasClassDefaults());
 
@@ -416,10 +412,38 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 		BufferParams::PACKAGE_NONE + 1);
 
 	if (ob == paper_->choice_papersize) {
-		if (fl_get_choice(paper_->choice_papersize) == 2)
-			fl_set_button(paper_->radio_portrait, 1);
 		bool const custom =
 			fl_get_choice(paper_->choice_papersize) == 2;
+		bool const a3size =
+			fl_get_choice(paper_->choice_papersize) == 6;
+		bool const b3size =
+			fl_get_choice(paper_->choice_papersize) == 9;
+		bool const b4size =
+			fl_get_choice(paper_->choice_papersize) == 10;
+
+		fl_set_button(paper_->radio_portrait, int(custom));
+
+		bool const use_geom = (custom || a3size || b3size || b4size);
+
+		fl_set_button(paper_->check_use_geometry, int(use_geom));
+
+		setEnabled(paper_->input_top_margin,    use_geom);
+		setEnabled(paper_->input_bottom_margin, use_geom);
+		setEnabled(paper_->input_left_margin,   use_geom);
+		setEnabled(paper_->input_right_margin,  use_geom);
+		setEnabled(paper_->input_head_height,   use_geom);
+		setEnabled(paper_->input_head_sep,      use_geom);
+		setEnabled(paper_->input_foot_skip,     use_geom);
+		setEnabled(paper_->choice_top_margin_units,    use_geom);
+		setEnabled(paper_->choice_bottom_margin_units, use_geom);
+		setEnabled(paper_->choice_left_margin_units,   use_geom);
+		setEnabled(paper_->choice_right_margin_units,  use_geom);
+		setEnabled(paper_->choice_head_height_units,   use_geom);
+		setEnabled(paper_->choice_head_sep_units,      use_geom);
+		setEnabled(paper_->choice_foot_skip_units,     use_geom);
+		setEnabled(paper_->choice_custom_width_units,  use_geom);
+		setEnabled(paper_->choice_custom_height_units, use_geom);
+
 		setEnabled(paper_->input_custom_width,  custom);
 		setEnabled(paper_->input_custom_height, custom);
 		setEnabled(paper_->choice_custom_width_units,  custom);
@@ -428,9 +452,9 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 		setEnabled(paper_->radio_landscape, !custom);
 	}
 
-	if (ob == paper_->choice_papersize
-	    || paper_->radio_portrait
-	    || paper_->radio_landscape) {
+	if (ob == paper_->choice_papersize ||
+	    ob == paper_->radio_portrait ||
+	    ob == paper_->radio_landscape) {
 
 		setEnabled(paper_->choice_paperpackage,
 			   //either default papersize (preferences)
@@ -464,8 +488,11 @@ bool FormDocument::input( FL_OBJECT * ob, long data )
 
 	if (ob == paper_->check_use_geometry) {
 		//don't allow switching geometry off in custom papersize mode
-		if (fl_get_choice(paper_->choice_papersize) == 2)
+		//nor in A3, B3, and B4
+		int const choice = fl_get_choice(paper_->choice_papersize);
+		if (choice == 2 || choice == 6 || choice == 9 || choice == 10)
 			fl_set_button(paper_->check_use_geometry, 1);
+
 		fl_set_choice(paper_->choice_paperpackage,
 			      BufferParams::PACKAGE_NONE + 1);
 
@@ -1030,128 +1057,11 @@ void FormDocument::checkReadOnly()
 }
 
 
-void FormDocument::checkMarginValues()
-{
-//this is not needed after the recent redesign (JSpitzm)
-#if 0
-	bool const not_empty =
-		strlen(fl_get_input(paper_->input_top_margin)) ||
-		strlen(fl_get_input(paper_->input_bottom_margin)) ||
-		strlen(fl_get_input(paper_->input_left_margin)) ||
-		strlen(fl_get_input(paper_->input_right_margin)) ||
-		strlen(fl_get_input(paper_->input_head_height)) ||
-		strlen(fl_get_input(paper_->input_head_sep)) ||
-		strlen(fl_get_input(paper_->input_foot_skip)) ||
-		strlen(fl_get_input(paper_->input_custom_width)) ||
-		strlen(fl_get_input(paper_->input_custom_height));
-#endif
-}
-
-
-
 bool FormDocument::CheckDocumentInput(FL_OBJECT * ob, long)
 {
 	string str;
 	bool ok = true;
 	char const * input;
-
-// this is not needed after the recent redesign (Angus)
-#if 0 
-	int val;
-	checkMarginValues();
-	if (ob == paper_->choice_papersize) {
-		val = fl_get_choice(paper_->choice_papersize)-1;
-		if (val == BufferParams::VM_PAPER_DEFAULT) {
-			fl_set_button(paper_->check_use_geometry, 0);
-			setEnabled(paper_->input_top_margin,
-				   fl_get_button(paper_->check_use_geometry));
-			setEnabled(paper_->input_bottom_margin,
-				   fl_get_button(paper_->check_use_geometry));
-			setEnabled(paper_->input_left_margin,
-				   fl_get_button(paper_->check_use_geometry));
-			setEnabled(paper_->input_right_margin,
-				   fl_get_button(paper_->check_use_geometry));
-			setEnabled(paper_->input_head_height,
-				   fl_get_button(paper_->check_use_geometry));
-			setEnabled(paper_->input_head_sep,
-				   fl_get_button(paper_->check_use_geometry));
-			setEnabled(paper_->input_foot_skip,
-				   fl_get_button(paper_->check_use_geometry));
-			checkMarginValues();
-		} else {
-			if ((val != BufferParams::VM_PAPER_USLETTER) &&
-			    (val != BufferParams::VM_PAPER_USLEGAL) &&
-			    (val != BufferParams::VM_PAPER_USEXECUTIVE) &&
-			    (val != BufferParams::VM_PAPER_A4) &&
-			    (val != BufferParams::VM_PAPER_A5) &&
-			    (val != BufferParams::VM_PAPER_B5)) {
-				fl_set_button(paper_->check_use_geometry, 1);
-				setEnabled(paper_->input_top_margin,
-					   fl_get_button(paper_->check_use_geometry));
-				setEnabled(paper_->input_bottom_margin,
-					   fl_get_button(paper_->check_use_geometry));
-				setEnabled(paper_->input_left_margin,
-					   fl_get_button(paper_->check_use_geometry));
-				setEnabled(paper_->input_right_margin,
-					   fl_get_button(paper_->check_use_geometry));
-				setEnabled(paper_->input_head_height,
-					   fl_get_button(paper_->check_use_geometry));
-				setEnabled(paper_->input_head_sep,
-					   fl_get_button(paper_->check_use_geometry));
-				setEnabled(paper_->input_foot_skip,
-					   fl_get_button(paper_->check_use_geometry));
-			}
-			fl_set_choice(paper_->choice_paperpackage,
-				      BufferParams::PACKAGE_NONE + 1);
-		}
-	} else if (ob == paper_->choice_paperpackage) {
-		val = fl_get_choice(paper_->choice_paperpackage)-1;
-		if (val != BufferParams::PACKAGE_NONE) {
-			fl_set_button(paper_->check_use_geometry, 0);
-			setEnabled(paper_->input_top_margin,
-				   fl_get_button(paper_->check_use_geometry));
-			setEnabled(paper_->input_bottom_margin,
-				   fl_get_button(paper_->check_use_geometry));
-			setEnabled(paper_->input_left_margin,
-				   fl_get_button(paper_->check_use_geometry));
-			setEnabled(paper_->input_right_margin,
-				   fl_get_button(paper_->check_use_geometry));
-			setEnabled(paper_->input_head_height,
-				   fl_get_button(paper_->check_use_geometry));
-			setEnabled(paper_->input_head_sep,
-				   fl_get_button(paper_->check_use_geometry));
-			setEnabled(paper_->input_foot_skip,
-				   fl_get_button(paper_->check_use_geometry));
-		}
-	} else if (ob == class_->input_doc_spacing) {
-		input = fl_get_input(class_->input_doc_spacing);
-		if (!*input) {
-			fl_set_choice (class_->choice_doc_spacing, 1);
-		} else {
-			fl_set_choice(class_->choice_doc_spacing, 4);
-		}
-	}
-	// this has to be all out of if/elseif because it has to deactivate
-	// the document buttons and so the whole stuff has to be tested again.
-	str = fl_get_input(paper_->input_custom_width);
-	ok = ok && (str.empty() || isValidLength(str));
-	str = fl_get_input(paper_->input_custom_height);
-	ok = ok && (str.empty() || isValidLength(str));
-	str = fl_get_input(paper_->input_left_margin);
-	ok = ok && (str.empty() || isValidLength(str));
-	str = fl_get_input(paper_->input_right_margin);
-	ok = ok && (str.empty() || isValidLength(str));
-	str = fl_get_input(paper_->input_top_margin);
-	ok = ok && (str.empty() || isValidLength(str));
-	str = fl_get_input(paper_->input_bottom_margin);
-	ok = ok && (str.empty() || isValidLength(str));
-	str = fl_get_input(paper_->input_head_height);
-	ok = ok && (str.empty() || isValidLength(str));
-	str = fl_get_input(paper_->input_head_sep);
-	ok = ok && (str.empty() || isValidLength(str));
-	str = fl_get_input(paper_->input_foot_skip);
-	ok = ok && (str.empty() || isValidLength(str));
-#endif
 
 	// "Synchronize" the choice and the input field, so that it
 	// is impossible to commit senseless data.

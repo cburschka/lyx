@@ -141,7 +141,7 @@ FD_form_doc_paper * FormDocument::build_doc_paper()
 
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 10, 150, 415, 185, _("Margins"));
   {
-    char const * const dummy = N_("Custom Margins/Sizes|#M");
+    char const * const dummy = N_("Custom sizes|#M");
     fdui->check_use_geometry = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 20, 155, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }

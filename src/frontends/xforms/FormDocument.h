@@ -107,8 +107,6 @@ private:
 	///
 	void BulletBMTable(FL_OBJECT * ob, long);
 	///
-	void checkMarginValues();
-	///
 	void checkReadOnly();
 	///
 	void CheckChoiceClass(FL_OBJECT * ob, long);
