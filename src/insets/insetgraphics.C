@@ -708,8 +708,8 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 			string str = fmt.str();
 #else
 			string str = _("No information for converting ");
-			str += from + _(" format files to " + to;
-			str += ".\nTry defining a convertor in the preferences.");
+			str += from + _(" format files to ") + to;
+			str += _(".\nTry defining a convertor in the preferences.");
 #endif
 			Alert::error(_("Could not convert image"), str);
 		}
