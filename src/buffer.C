@@ -501,87 +501,96 @@ bool Buffer::readFile(LyXLex & lex, string const & filename)
 // FIXME: all the below Alerts should give the filename..
 bool Buffer::readFile(LyXLex & lex, string const & filename, ParagraphList::iterator pit)
 {
-	if (lex.isOK()) {
-		lex.next();
-		string const token(lex.getString());
-		if (token == "\\lyxformat") { // the first token _must_ be...
-			lex.eatLine();
-			string tmp_format = lex.getString();
-			//lyxerr << "LyX Format: `" << tmp_format << '\'' << endl;
-			// if present remove ".," from string.
-			string::size_type dot = tmp_format.find_first_of(".,");
-			//lyxerr << "           dot found at " << dot << endl;
-			if (dot != string::npos)
-				tmp_format.erase(dot, 1);
-			file_format = strToInt(tmp_format);
-			//lyxerr << "format: " << file_format << endl;
-			if (file_format == LYX_FORMAT) {
-				// current format
-			} else if (file_format > LYX_FORMAT) {
-				Alert::warning(_("Document format failure"),
-					_("This document was created with a newer version of "
-					"LyX. This is likely to cause problems."));
-			} else if (file_format < LYX_FORMAT) {
-				// old formats
-				if (file_format < 200) {
-					Alert::error(_("Document format failure"),
-						_("This LyX document is too old to be read "
-						"by this version of LyX. Try LyX 0.10."));
-					return false;
-				} else if (!filename.empty()) {
-					string command =
-						LibFileSearch("lyx2lyx", "lyx2lyx");
-					if (command.empty()) {
-						Alert::error(_("Conversion script not found"),
-							_("The document is from an earlier version "
-							  "of LyX, but the conversion script lyx2lyx "
-							  "could not be found."));
-						return false;
-					}
-					command += " -t"
-						+tostr(LYX_FORMAT) + ' '
-						+ QuoteName(filename);
-					lyxerr[Debug::INFO] << "Running '"
-							    << command << '\''
-							    << endl;
-					cmd_ret const ret = RunCommand(command);
-					if (ret.first) {
-						Alert::error(_("Conversion script failed"),
-							_("The document is from an earlier version "
-							  "of LyX, but the lyx2lyx script failed "
-							  "to convert it."));
-						return false;
-					}
-					istringstream is(STRCONV(ret.second));
-					LyXLex tmplex(0, 0);
-					tmplex.setStream(is);
-					return readFile(tmplex, string(), pit);
-				} else {
-					// This code is reached if lyx2lyx failed (for
-					// some reason) to change the file format of
-					// the file.
-					lyx::Assert(false);
-					return false;
-				}
-			}
-			bool the_end = readBody(lex, pit);
-			params.setPaperStuff();
-
-			if (!the_end) {
-				Alert::error(_("Document format failure"),
-					_("The document ended unexpectedly, which means "
-					  "that it is probably corrupted."));
-			}
-			return true;
-		} else {
-			Alert::error(_("Document format failure"),
-				_("The specified document is not a LyX document."));
-		}
-	} else {
+	if (!lex.isOK()) {
 		Alert::error(_("Document could not be read"),
 			_("The specified document could not be read."));
+		return false;
 	}
-	return false;
+
+	lex.next();
+	string const token(lex.getString());
+
+	if (!lex.isOK()) {
+		Alert::error(_("Document could not be read"),
+			_("The specified document could not be read."));
+		return false;
+	}
+
+	// the first token _must_ be...
+	if (token != "\\lyxformat") {
+		Alert::error(_("Document format failure"),
+			_("The specified document is not a LyX document."));
+		return false;
+	}
+
+	lex.eatLine();
+	string tmp_format = lex.getString();
+	//lyxerr << "LyX Format: `" << tmp_format << '\'' << endl;
+	// if present remove ".," from string.
+	string::size_type dot = tmp_format.find_first_of(".,");
+	//lyxerr << "           dot found at " << dot << endl;
+	if (dot != string::npos)
+			tmp_format.erase(dot, 1);
+	file_format = strToInt(tmp_format);
+	//lyxerr << "format: " << file_format << endl;
+	if (file_format == LYX_FORMAT) {
+		// current format
+	} else if (file_format > LYX_FORMAT) {
+		Alert::warning(_("Document format failure"),
+			_("This document was created with a newer version of "
+			"LyX. This is likely to cause problems."));
+	} else if (file_format < LYX_FORMAT) {
+		// old formats
+		if (file_format < 200) {
+			Alert::error(_("Document format failure"),
+				_("This LyX document is too old to be read "
+				"by this version of LyX. Try LyX 0.10."));
+			return false;
+		} else if (!filename.empty()) {
+			string command =
+				LibFileSearch("lyx2lyx", "lyx2lyx");
+			if (command.empty()) {
+				Alert::error(_("Conversion script not found"),
+					_("The document is from an earlier version "
+					  "of LyX, but the conversion script lyx2lyx "
+					  "could not be found."));
+				return false;
+			}
+			command += " -t"
+				+tostr(LYX_FORMAT) + ' '
+				+ QuoteName(filename);
+			lyxerr[Debug::INFO] << "Running '"
+					    << command << '\''
+					    << endl;
+			cmd_ret const ret = RunCommand(command);
+			if (ret.first) {
+				Alert::error(_("Conversion script failed"),
+					_("The document is from an earlier version "
+					  "of LyX, but the lyx2lyx script failed "
+					  "to convert it."));
+				return false;
+			}
+			istringstream is(STRCONV(ret.second));
+			LyXLex tmplex(0, 0);
+			tmplex.setStream(is);
+			return readFile(tmplex, string(), pit);
+		} else {
+			// This code is reached if lyx2lyx failed (for
+			// some reason) to change the file format of
+			// the file.
+			lyx::Assert(false);
+			return false;
+		}
+	}
+	bool the_end = readBody(lex, pit);
+	params.setPaperStuff();
+
+	if (!the_end) {
+		Alert::error(_("Document format failure"),
+			_("The document ended unexpectedly, which means "
+			  "that it is probably corrupted."));
+	}
+	return true;
 }
 
 

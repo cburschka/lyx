@@ -2,6 +2,9 @@
 
 	* bufferview_funcs.C: remove pointless Alert
 
+	* buffer.C: fix confusing error message when
+	a template is chmoded 000
+
 2003-03-29  John Levon  <levon@movementarian.org>
 
 	* BufferView.C:

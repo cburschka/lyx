@@ -115,7 +115,7 @@ void ControlSpellchecker::startSession()
 		message = _("The spell-checker could not be started.\n"
 			 "Maybe it is mis-configured.");
 
-	Alert::alert(_("The spell-checker has failed"), message);
+	Alert::error(_("The spell-checker has failed"), message);
 	speller_.reset(0);
 }
 
@@ -208,7 +208,7 @@ bool ControlSpellchecker::checkAlive()
 	view().hide();
 	speller_.reset(0);
 
-	Alert::alert(_("The spell-checker has failed"), message);
+	Alert::error(_("The spell-checker has failed"), message);
 	return false;
 }
 
@@ -239,7 +239,7 @@ void ControlSpellchecker::showSummary()
 #endif
 
 	view().hide();
-	Alert::alert(_("Spell-checking is complete"), message);
+	Alert::information(_("Spell-checking is complete"), message);
 }
 
 

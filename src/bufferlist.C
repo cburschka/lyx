@@ -331,8 +331,16 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 	FileInfo fileInfo2(s);
 
 	if (!fileInfo2.exist()) {
-		Alert::alert(_("Error!"), _("Cannot open file"),
-			MakeDisplayPath(s));
+		string const file = MakeDisplayPath(s, 50);
+#if USE_BOOST_FORMAT
+		boost::format fmt(_("The specified document\n%1$s\ncould not be read."));
+		fmt % file;
+		string text = fmt.str();
+#else
+		string text = _("The specified document\n");
+		text += file + _(" could not be read.");
+#endif
+		Alert::error(_("Could not read document"), text);
 		return 0;
 	}
 
@@ -463,8 +471,16 @@ Buffer * BufferList::newFile(string const & name, string tname, bool isNamed)
 			}
 		}
 		if (!templateok) {
-			Alert::alert(_("Error!"), _("Unable to open template"),
-				   MakeDisplayPath(tname));
+			string const file = MakeDisplayPath(tname, 50);
+#if USE_BOOST_FORMAT
+			boost::format fmt(_("The specified document template\n%1$s\ncould not be read."));
+			fmt % file;
+			string text = fmt.str();
+#else
+			string text = _("The specified document template\n");
+			text += file + _(" could not be read.");
+#endif
+			Alert::error(_("Could not read template"), text);
 			// no template, start with empty buffer
 			b->paragraphs.set(new Paragraph);
 			b->paragraphs.begin()->layout(b->params.getLyXTextClass().defaultLayout());
