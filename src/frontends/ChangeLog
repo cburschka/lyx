@@ -1,3 +1,12 @@
+2003-03-12  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.[Ch] (hide): rejig as a static method. Hide the signal
+	away.
+	(show): add a string arg.
+
+	* Dialogs.h: remove showCharacter and setUserFreeFont.
+	* guiapi.[Ch]: remove gui_ShowCharacter and gui_SetUserFreeFont.
+
 2003-03-10  Angus Leeming  <leeming@lyx.org>
 
 	* Dialogs.h (hide): make it a static method that returns a

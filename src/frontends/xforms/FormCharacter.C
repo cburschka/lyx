@@ -34,10 +34,10 @@ using std::find;
 
 using namespace frnt;
 
-typedef FormCB<ControlCharacter, FormDB<FD_character> > base_class;
+typedef FormController<ControlCharacter, FormView<FD_character> > base_class;
 
-FormCharacter::FormCharacter()
-	: base_class(_("Character Layout"), false)
+FormCharacter::FormCharacter(Dialog & parent)
+	: base_class(parent, _("Character Layout"), false)
 {}
 
 

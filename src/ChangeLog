@@ -1,3 +1,20 @@
+2003-03-12  Angus Leeming  <leeming@lyx.org>
+
+	* BufferView_pimpl.C (dispatch): remove LFUNs from switch as they
+	duplicate those in LyXFunc::dispatch.
+
+	* commandtags.h:
+	* LyXAction.C:
+	* ToolbarDefaults.C:
+	rename LFUN_FREE as LFUN_FONTFREE_APPLY.
+	Add LFUN_FONTFREE_UPDATE.
+
+	* lyxfunc.C (dispatch): code for LFUN_FREEFONT_APPLY,
+	LFUN_FREEFONT_UPDATE, LFUN_LAYOUT_CHARACTER.
+
+	* bufferview_func.[Ch]: several new functions to facilliate
+	transfer of data to and from the character dialog.
+
 2003-03-12  John Levon  <levon@movementarian.org>
 
 	* buffer.C:

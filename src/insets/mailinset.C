@@ -36,5 +36,5 @@ void MailInset::updateDialog(BufferView * bv) const
 
 void MailInset::hideDialog() const
 {
-	Dialogs::hide()(name(), &inset());
+	Dialogs::hide(name(), &inset());
 }

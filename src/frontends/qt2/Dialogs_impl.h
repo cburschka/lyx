@@ -14,7 +14,6 @@
 #include "Dialogs.h"
 #include "controllers/GUI.h"
 
-#include "ControlCharacter.h"
 #include "ControlDocument.h"
 #include "ControlForks.h"
 #include "ControlLog.h"
@@ -69,9 +68,6 @@
 
 
 
-typedef GUI<ControlCharacter, QCharacter, OkApplyCancelReadOnlyPolicy, Qt2BC>
-CharacterDialog;
-
 typedef GUI<ControlDocument, QDocument, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 DocumentDialog;
 
@@ -114,7 +110,6 @@ VCLogFileDialog;
 struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
 
-	CharacterDialog     character;
 	DocumentDialog      document;
 	FileDialog          file;
 	LogFileDialog       logfile;

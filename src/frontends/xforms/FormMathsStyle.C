@@ -33,7 +33,7 @@ char const * latex_mathstyle[] = {
 
 kb_action latex_mathfontcmds[] = {
 	LFUN_BOLD, LFUN_SANS, LFUN_ROMAN, LFUN_ITAL, LFUN_CODE,
-	LFUN_NOUN, LFUN_FRAK, LFUN_EMPH, LFUN_FREE, LFUN_DEFAULT
+	LFUN_NOUN, LFUN_FRAK, LFUN_EMPH, LFUN_FREEFONT_APPLY, LFUN_DEFAULT
 };
 
 

@@ -10,30 +10,25 @@
 
 #include <config.h>
 
-
 #include "ControlCharacter.h"
-
-#include "ViewBase.h"
 #include "ButtonController.h"
 
 #include "buffer.h"
-#include "bufferview_funcs.h" // ToggleAndShow
+#include "bufferview_funcs.h"
+#include "funcrequest.h"
 #include "gettext.h"
 #include "language.h"
 
-#include "frontends/LyXView.h"
 
-
-ControlCharacter::ControlCharacter(LyXView & lv, Dialogs & d)
-	: ControlDialogBD(lv, d),
+ControlCharacter::ControlCharacter(Dialog & parent)
+	: Dialog::Controller(parent),
 	  font_(0), toggleall_(false)
 {}
 
 
-void ControlCharacter::setParams()
+void ControlCharacter::initialiseParams(string const &)
 {
-	// Do this the first time only. Used as a flag for whether or not the
-	// view has been built
+	// Do this the first time only.
 	if (!font_.get())
 		font_.reset(new LyXFont(LyXFont::ALL_IGNORE));
 
@@ -45,24 +40,24 @@ void ControlCharacter::setParams()
 	    getBar()      != frnt::IGNORE ||
 	    getColor()    != LColor::ignore ||
 	    font_->language() != ignore_language)
-		bc().valid();
+		dialog().bc().valid();
 }
 
 
-void ControlCharacter::apply()
+void ControlCharacter::clearParams()
+{}
+
+
+void ControlCharacter::dispatchParams()
 {
-	// Nothing to apply. (Can be called from the Toolbar.)
+	// Nothing to dispatch. (Can be called from the Toolbar.)
 	if (!font_.get())
 		return;
 
-	// Apply from the view if it's visible. Otherwise, use the stored values
-	if (bufferIsAvailable())
-		view().apply();
-
-	toggleAndShow(bufferview(), *(font_.get()), toggleall_);
-	lv_.view_state_changed();
-	buffer()->markDirty();
-	lv_.message(_("Character set"));
+        string data;
+        if (font2string(*font_.get(), toggleall_, data)) {
+                kernel().dispatch(FuncRequest(LFUN_FREEFONT_UPDATE, data));
+        }
 }
 
 
@@ -220,7 +215,7 @@ void ControlCharacter::setLanguage(string const & val)
 		font_->setLanguage(ignore_language);
 
 	else if (val == "reset")
-		font_->setLanguage(buffer()->params.language);
+		font_->setLanguage(kernel().buffer()->params.language);
 
 	else
 		font_->setLanguage(languages.getLanguage(val));

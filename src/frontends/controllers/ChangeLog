@@ -1,3 +1,8 @@
+2003-03-12  Angus Leeming  <leeming@lyx.org>
+
+	* ControlCharacter.[Ch]: rewrite to use the Dialog-based scheme and
+	the new dispatch lfuns.
+
 2003-03-09  Angus Leeming  <leeming@lyx.org>
 
 	Flatten the ButtonController tree by splitting it into a Controller

@@ -14,7 +14,7 @@
 #define FORM_CHARACTER_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 #include "lyxfont.h"          // for LyXFont enums
 #include "ControlCharacter.h" // for ControlCharacter enum
 #include "LColor.h"           // for LColor enum
@@ -31,10 +31,10 @@ struct FD_character;
  * in their documents.
  */
 class FormCharacter
-	: public FormCB<ControlCharacter, FormDB<FD_character> > {
+	: public FormController<ControlCharacter, FormView<FD_character> > {
 public:
 	///
-	FormCharacter();
+	FormCharacter(Dialog &);
 private:
 
 	/// Apply from dialog

@@ -14,7 +14,7 @@
 #define QCHARACTER_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
 #include "controllers/character.h"
 #include "controllers/frnt_lang.h"
 
@@ -28,12 +28,12 @@ class QCharacterDialog;
 
 
 class QCharacter
-	: public Qt2CB<ControlCharacter, Qt2DB<QCharacterDialog> >
+	: public QController<ControlCharacter, QView<QCharacterDialog> >
 {
 public:
 	friend class QCharacterDialog;
 
-	QCharacter();
+	QCharacter(Dialog &);
 private:
 	/// Apply changes
 	virtual void apply();

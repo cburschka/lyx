@@ -29,11 +29,11 @@
 using namespace frnt;
 using std::vector;
 
-typedef Qt2CB<ControlCharacter, Qt2DB<QCharacterDialog> > base_class;
+typedef QController<ControlCharacter, QView<QCharacterDialog> > base_class;
 
 
-QCharacter::QCharacter()
-	: base_class(qt_("LyX: Change Character Settings"))
+QCharacter::QCharacter(Dialog & parent)
+	: base_class(parent, qt_("LyX: Change Character Settings"))
 {
 }
 

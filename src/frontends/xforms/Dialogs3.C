@@ -18,6 +18,7 @@
 #include "ControlAboutlyx.h"
 #include "ControlBibtex.h"
 #include "ControlChanges.h"
+#include "ControlCharacter.h"
 #include "ControlCitation.h"
 #include "ControlCommand.h"
 #include "ControlError.h"
@@ -41,6 +42,8 @@
 #include "forms/form_bibtex.h"
 #include "FormChanges.h"
 #include "forms/form_changes.h"
+#include "FormCharacter.h"
+#include "forms/form_character.h"
 #include "FormCitation.h"
 #include "forms/form_citation.h"
 #include "FormError.h"
@@ -79,10 +82,9 @@
 namespace {
 
 char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes",
-				     "citation", "error", "ert", "external",
-				     "float", "graphics", "include", "index",
-				     "label", "minipage", "ref", "tabular",
-				     "tabularcreate", "toc", "url", "wrap" };
+"character", "citation", "error", "ert", "external", "float", "graphics",
+"include", "index", "label", "minipage", "ref", "tabular", "tabularcreate",
+"toc", "url", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -127,6 +129,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlBibtex(*dialog));
 		dialog->setView(new FormBibtex(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "character") {
+		dialog->setController(new ControlCharacter(*dialog));
+		dialog->setView(new FormCharacter(*dialog));
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "changes") {
 		dialog->setController(new ControlChanges(*dialog));
 		dialog->setView(new FormChanges(*dialog));

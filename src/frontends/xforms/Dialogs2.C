@@ -15,18 +15,6 @@
 #include "Dialogs_impl.h"
 
 
-void Dialogs::showCharacter()
-{
-	pimpl_->character.controller().show();
-}
-
-
-void Dialogs::setUserFreeFont()
-{
-	pimpl_->character.controller().apply();
-}
-
-
 void Dialogs::showDocument()
 {
 	pimpl_->document.controller().show();

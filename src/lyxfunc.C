@@ -1101,9 +1101,13 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		changeDepth(view(), TEXT(false), 1);
 		break;
 
-	case LFUN_FREE:
-		owner->getDialogs().setUserFreeFont();
-		break;
+	case LFUN_FREEFONT_APPLY:
+                apply_freefont(view());
+                break;
+
+        case LFUN_FREEFONT_UPDATE:
+                update_and_apply_freefont(view(), argument);
+                break;
 
 	case LFUN_RECONFIGURE:
 		Reconfigure(view());
@@ -1232,9 +1236,12 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		owner->getDialogs().showParagraph();
 		break;
 
-	case LFUN_LAYOUT_CHARACTER:
-		owner->getDialogs().showCharacter();
-		break;
+        case LFUN_LAYOUT_CHARACTER: {
+                string data = freefont2string();
+                if (!data.empty())
+                        owner->getDialogs().show("character", data);
+                break;
+        }
 
 	case LFUN_LAYOUT_TABULAR:
 	    if (view()->theLockingInset()) {
@@ -1409,7 +1416,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 	break;
 
 	case LFUN_DIALOG_HIDE:
-		Dialogs::hide()(argument, 0);
+		Dialogs::hide(argument, 0);
 		break;
 
 	case LFUN_DIALOG_DISCONNECT_INSET:

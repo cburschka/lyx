@@ -35,7 +35,7 @@ InsetError::InsetError(string const & str, bool)
 
 InsetError::~InsetError()
 {
-	Dialogs::hide()("error", this);
+	Dialogs::hide("error", this);
 }
 
 

@@ -13,17 +13,22 @@
 #define CONTROLCHARACTER_H
 
 
-#include "ControlDialog_impl.h"
+#include "Dialog.h"
 #include "character.h"
 
-#include <boost/scoped_ptr.hpp>
 
-/** A controller for Character dialogs.
- */
-class ControlCharacter : public ControlDialogBD {
+class ControlCharacter : public Dialog::Controller {
 public:
 	///
-	ControlCharacter(LyXView &, Dialogs &);
+	ControlCharacter(Dialog &);
+	///
+	virtual void initialiseParams(string const &);
+	///
+	virtual void clearParams();
+	///
+	virtual void dispatchParams();
+	///
+	virtual bool isBufferDependent() const { return true; }
 
 	///
 	void setFamily(LyXFont::FONT_FAMILY);
@@ -58,13 +63,7 @@ public:
 	string getLanguage() const;
 	///
 	bool getToggleAll() const;
-
-	/// Get changed parameters and Dispatch them to the kernel.
-	virtual void apply();
 private:
-	/// set the params before show or update.
-	virtual void setParams();
-
 	///
 	boost::scoped_ptr<LyXFont> font_;
 	///

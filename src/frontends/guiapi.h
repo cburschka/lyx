@@ -21,8 +21,6 @@ extern "C" {
 
 void gui_show_dialog(Dialogs *, char const * name, char const * data);
 
-void gui_ShowCharacter(Dialogs &);
-void gui_SetUserFreeFont(Dialogs &);
 void gui_ShowDocument(Dialogs &);
 void gui_ShowFile(string const &, Dialogs &);
 void gui_ShowForks(Dialogs &);

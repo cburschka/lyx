@@ -1,12 +1,15 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file bufferview_funcs.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Lars Gullik Bjønnes
+ * \author Jean-Marc Lasgouttes
+ * \author John Levon
+ * \author Angus Leeming
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #include <config.h>
 
@@ -14,6 +17,7 @@
 #include "BufferView.h"
 #include "paragraph.h"
 #include "lyxfont.h"
+#include "lyxlex.h"
 #include "lyxtext.h"
 #include "buffer.h"
 #include "lyx_cb.h"
@@ -27,10 +31,156 @@
 #include "frontends/Alert.h"
 
 #include "support/lstrings.h"
+#include "Lsstream.h"
 
 #include "insets/updatableinset.h"
 
 #include "BoostFormat.h"
+
+namespace {
+LyXFont freefont(LyXFont::ALL_IGNORE);
+bool toggleall(false);
+}
+
+
+// Set data using font and toggle
+// If successful, returns true
+bool font2string(LyXFont const & font, bool toggle, string & data)
+{
+	string lang = "ignore";
+	if (font.language())
+		lang = font.language()->lang();
+
+	ostringstream os;
+	os << "family " << font.family() << '\n'
+	   << "series " << font.series() << '\n'
+	   << "shape " << font.shape() << '\n'
+	   << "size " << font.size() << '\n'
+	   << "emph " << font.emph() << '\n'
+	   << "underbar " << font.underbar() << '\n'
+	   << "noun " << font.noun() << '\n'
+	   << "number " << font.number() << '\n'
+	   << "color " << font.color() << '\n'
+	   << "language " << lang << '\n'
+	   << "toggleall " << tostr(toggle);
+	data = os.str();
+	return true;
+}
+
+
+// Set font and toggle using data
+// If successful, returns true
+bool string2font(string const & data, LyXFont & font, bool & toggle)
+{
+	istringstream is(data);
+	LyXLex lex(0,0);
+	lex.setStream(is);
+
+	int Int = 0;
+	bool Bool = false;
+	string String;
+			
+	int nset = 0;
+	while (lex.isOK()) {
+		lex.next();
+		string const token = lex.getString();
+
+		if (token == "family" ||
+		    token == "series" ||
+		    token == "shape" ||
+		    token == "size" ||
+		    token == "emph" ||
+		    token == "underbar" ||
+		    token == "noun" ||
+		    token == "number" ||
+		    token == "color") {
+			lex.next();
+			Int = lex.getInteger();
+		} else if (token == "language") {
+			lex.next();
+			String = lex.getString();
+		} else if (token == "toggleall") {
+			lex.next();
+			Bool = lex.getBool();
+		} else {
+			// Unrecognised token
+			break;
+		}
+
+		if (!lex.isOK())
+			break;
+		++nset;
+
+		if (token == "family") {
+			font.setFamily(static_cast<LyXFont::FONT_FAMILY>(Int));
+			
+		} else if (token == "series") {
+			font.setSeries(static_cast<LyXFont::FONT_SERIES>(Int));
+
+		} else if (token == "shape") {
+			font.setShape(static_cast<LyXFont::FONT_SHAPE>(Int));
+
+		} else if (token == "size") {
+			font.setSize(static_cast<LyXFont::FONT_SIZE>(Int));
+
+		} else if (token == "emph") {
+			font.setEmph(static_cast<LyXFont::FONT_MISC_STATE>(Int));
+
+		} else if (token == "underbar") {
+			font.setUnderbar(static_cast<LyXFont::FONT_MISC_STATE>(Int));
+
+		} else if (token == "noun") {
+			font.setNoun(static_cast<LyXFont::FONT_MISC_STATE>(Int));
+
+		} else if (token == "number") {
+			font.setNumber(static_cast<LyXFont::FONT_MISC_STATE>(Int));
+
+		} else if (token == "color") {
+			font.setColor(static_cast<LColor::color>(Int));
+
+		} else if (token == "language") {
+			if (String == "ignore")
+				font.setLanguage(ignore_language);
+			else
+				font.setLanguage(languages.getLanguage(String));
+
+		} else if (token == "toggleall") {
+			toggle = Bool;
+		}
+	}
+	return (nset > 0);
+}
+
+
+string const freefont2string()
+{
+	string data;
+	if (font2string(freefont, toggleall, data))
+		return data;
+	return string();
+}
+
+
+void update_and_apply_freefont(BufferView * bv, string const & data)
+{
+	LyXFont font;
+	bool toggle;
+	if (string2font(data, font, toggle)) {
+		freefont = font;
+		toggleall = toggle;
+		apply_freefont(bv);
+	}
+}
+
+
+void apply_freefont(BufferView * bv)
+{
+	toggleAndShow(bv, freefont, toggleall);
+	bv->owner()->view_state_changed();
+	bv->buffer()->markDirty();
+	bv->owner()->message(_("Character set"));
+}
+
 
 void emph(BufferView * bv)
 {
@@ -77,7 +227,7 @@ void lang(BufferView * bv, string const & l)
 
 // Change environment depth.
 // if decInc >= 0, increment depth
-// if decInc <  0, decrement depth
+// if decInc <	0, decrement depth
 void changeDepth(BufferView * bv, LyXText * text, int decInc)
 {
 	if (!bv->available() || !text)

@@ -73,7 +73,7 @@ void ToolbarDefaults::init()
 
 	add(LFUN_EMPH);
 	add(LFUN_NOUN);
-	add(LFUN_FREE);
+	add(LFUN_FREEFONT_APPLY);
 	add(SEPARATOR);
 
 	add(LFUN_INSET_FOOTNOTE);

@@ -21,10 +21,6 @@
 #include "FormBrowser.h"
 #include "forms/form_browser.h"
 
-#include "ControlCharacter.h"
-#include "FormCharacter.h"
-#include "forms/form_character.h"
-
 #include "ControlDocument.h"
 #include "FormDocument.h"
 #include "forms/form_document.h"
@@ -84,9 +80,6 @@
 #include "ControlVCLog.h"
 #include "FormVCLog.h"
 
-typedef GUI<ControlCharacter, FormCharacter, OkApplyCancelReadOnlyPolicy, xformsBC>
-CharacterDialog;
-
 typedef GUI<ControlDocument, FormDocument, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 DocumentDialog;
 
@@ -137,7 +130,6 @@ VCLogFileDialog;
 struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
 
-        CharacterDialog     character;
 	DocumentDialog      document;
 	FileDialog          file;
 	ForksDialog         forks;

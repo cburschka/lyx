@@ -13,6 +13,7 @@
 
 #include "Dialogs.h"
 #include "controllers/Dialog.h"
+#include <boost/signals/signal2.hpp>
 #include <boost/bind.hpp>
 
 
@@ -43,11 +44,16 @@ boost::signal0<void> & Dialogs::redrawGUI()
 }
 
 
-boost::signal2<void, string const &, InsetBase*> & Dialogs::hide()
+namespace {
+
+BugfixSignal<boost::signal2<void, string const &, InsetBase*> > hideSignal;
+
+}
+
+
+void Dialogs::hide(string const & name, InsetBase* inset)
 {
-	static BugfixSignal<boost::signal2<void, string const &, InsetBase*> >
-		thesignal;
-	return thesignal();
+	hideSignal()(name, inset);
 }
 
 
@@ -56,7 +62,7 @@ Dialogs::Dialogs(LyXView & lyxview)
 {
 	// Connect signals
 	redrawGUI().connect(boost::bind(&Dialogs::redraw, this));
-	hide().connect(boost::bind(&Dialogs::hideSlot, this, _1, _2));
+	hideSignal().connect(boost::bind(&Dialogs::hideSlot, this, _1, _2));
 
 	// All this is slated to go
 	init_pimpl();
@@ -83,13 +89,13 @@ Dialog * Dialogs::find(string const & name)
 }
 
 
-void Dialogs::show(string const & name)
+void Dialogs::show(string const & name, string const & data)
 {
 	Dialog * dialog = find(name);
 	if (!dialog)
 		return;
 
-	dialog->show();
+	dialog->show(data);
 }
 
 

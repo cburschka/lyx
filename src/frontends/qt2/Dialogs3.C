@@ -16,6 +16,7 @@
 #include "ControlAboutlyx.h"
 #include "ControlBibtex.h"
 #include "ControlChanges.h"
+#include "ControlCharacter.h"
 #include "ControlCitation.h"
 #include "ControlError.h"
 #include "ControlERT.h"
@@ -38,6 +39,8 @@
 #include "QBibtexDialog.h"
 #include "QChanges.h"
 #include "QChangesDialog.h"
+#include "QCharacter.h"
+#include "QCharacterDialog.h"
 #include "QCitation.h"
 #include "QCitationDialog.h"
 #include "QError.h"
@@ -81,10 +84,9 @@
 namespace {
 
 char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes",
-				     "citation", "error", "ert", "external",
-				     "float", "graphics", "include", "index",
-				     "label", "minipage", "ref", "tabular",
-				     "tabularcreate", "toc", "url", "wrap" };
+"character", "citation", "error", "ert", "external", "float", "graphics",
+"include", "index", "label", "minipage", "ref", "tabular", "tabularcreate",
+"toc", "url", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -133,6 +135,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlChanges(*dialog));
 		dialog->setView(new QChanges(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+	} else if (name == "character") {
+		dialog->setController(new ControlCharacter(*dialog));
+		dialog->setView(new QCharacter(*dialog));
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "citation") {
 		dialog->setController(new ControlCitation(*dialog));
 		dialog->setView(new QCitation(*dialog));

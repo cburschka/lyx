@@ -997,18 +997,6 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 		switchKeyMap();
 		break;
 
-	case LFUN_DEPTH_MIN:
-		changeDepth(bv_, bv_->getLyXText(), -1);
-		break;
-
-	case LFUN_DEPTH_PLUS:
-		changeDepth(bv_, bv_->getLyXText(), 1);
-		break;
-
-	case LFUN_FREE:
-		owner_->getDialogs().setUserFreeFont();
-		break;
-
 	case LFUN_FILE_INSERT:
 		MenuInsertLyXFile(ev.argument);
 		break;

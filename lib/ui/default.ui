@@ -219,8 +219,8 @@ Menuset
     End
 
     Menu "insert_special"
-	Item "Superscript|S" "command-sequence math-mode ; math-superscript ; font-free; "
-	Item "Subscript|u" "command-sequence math-mode ; math-subscript ; font-free; "
+	Item "Superscript|S" "command-sequence math-mode ; math-superscript ; font-free-apply; "
+	Item "Subscript|u" "command-sequence math-mode ; math-subscript ; font-free-apply; "
 	Item "HFill|H" "hfill-insert"
 	Item "Hyphenation Point|P" "hyphenation-point-insert"
 	Item "Ligature Break|k" "ligature-break-insert"
@@ -423,7 +423,7 @@ Toolbar
     Separator
     Icon "font-emph"
     Icon "font-noun"
-    Icon "font-free"
+    Icon "font-free-apply"
     Separator
     Icon "ert-insert"
     Icon "math-mode"

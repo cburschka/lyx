@@ -27,8 +27,7 @@ Dialogs::~Dialogs()
 
 
 Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
-	: character(lv, d),
-	  document(lv, d),
+	: document(lv, d),
 	  file(lv, d),
 	  logfile(lv, d),
 	  paragraph(lv, d),
