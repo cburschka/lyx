@@ -1,3 +1,27 @@
+2001-07-13  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	Consistent use of Lsstream.h:
+	* FormAboutlyx.C (build):
+	* FormVCLog.C (update): std::ostringstream -> ostringstream.
+
+	* FormMathsDelim.C (apply):
+	* FormMathsMatrix.C (apply): std::stringstream -> stringstream.
+
+2001-07-13  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* implement 1 about lyx dialog instead of 3 separate ones
+
+	* FormCredits.[Ch]: removed
+	* FormCopyright.[Ch]: removed
+	* form_credits.[Ch]: removed
+	* forms/form_credits.fd: removed
+	* form_copyright.[Ch]: removed
+	* forms/form_copyright.fd: removed
+	* FormAboutlyx.[Ch]: added
+	* form_aboutlyx.[Ch]: added
+	* forms/form_aboutlyx.fd: added
+	* Dialogs.C: add about lyx stuff
+
 2001-07-13  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* add spellchecker

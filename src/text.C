@@ -2261,7 +2261,7 @@ string const LyXText::selectNextWord(BufferView * bview,
 	// Start the selection from here
 	selection.cursor = cursor;
 	
-	std::ostringstream latex;
+	ostringstream latex;
 
 	// and find the end of the word 
 	// (optional hyphens are part of a word)
@@ -2295,7 +2295,7 @@ void LyXText::selectSelectedWord(BufferView * bview)
 	
 	// set the sel cursor
 	selection.cursor = cursor;
-	std::ostringstream latex;
+	ostringstream latex;
 	
 	// now find the end of the word
 	while (cursor.pos() < cursor.par()->size()

@@ -1269,7 +1269,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 					par->params().labelString(string());
 			}
 
-			std::ostringstream s;
+			ostringstream s;
 
 			if (!par->params().appendix()) {
 				switch (2 * LABEL_COUNTER_CHAPTER -
@@ -1411,7 +1411,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 			par->incCounter(i + par->enumdepth);
 			int number = par->getCounter(i + par->enumdepth);
 
-			std::ostringstream s;
+			ostringstream s;
 
 			switch (par->enumdepth) {
 			case 1:

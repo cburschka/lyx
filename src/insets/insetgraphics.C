@@ -394,7 +394,7 @@ InsetGraphics::createLatexOptions() const
 	// Calculate the options part of the command, we must do it to a string
 	// stream since we might have a trailing comma that we would like to remove
 	// before writing it to the output stream.
-	std::ostringstream options;
+	ostringstream options;
 
 	formatResize(options, "width", params.widthResize, params.widthSize);
 	formatResize(options, "height", params.heightResize, params.heightSize);

@@ -731,7 +731,7 @@ string const GetFileContents(string const & fname)
 	FileInfo finfo(fname);
 	if (finfo.exist()) {
 		ifstream ifs(fname.c_str());
-		std::ostringstream ofs;
+		ostringstream ofs;
 		if (ifs && ofs) {
 			ofs << ifs.rdbuf();
 			ifs.close();

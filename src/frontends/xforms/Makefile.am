@@ -26,6 +26,10 @@ libxforms_la_SOURCES = \
 	form_filedialog.C \
 	form_filedialog.h \
 	GUIRunTime.C \
+	FormAboutlyx.C \
+	FormAboutlyx.h \
+	form_aboutlyx.C \
+	form_aboutlyx.h \
 	FormBase.C \
 	FormBase.h \
 	FormBaseDeprecated.C \
@@ -50,14 +54,6 @@ libxforms_la_SOURCES = \
 	FormCitation.h \
 	form_citation.C \
 	form_citation.h \
-	FormCopyright.C \
-	FormCopyright.h \
-	form_copyright.C \
-	form_copyright.h \
-	FormCredits.C \
-	FormCredits.h \
-	form_credits.C \
-	form_credits.h \
 	FormDocument.C \
 	FormDocument.h \
 	form_document.C \

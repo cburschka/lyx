@@ -103,7 +103,6 @@
 #include "BufferView.h"
 #include "ParagraphParameters.h"
 
-using std::stringstream;
 using std::ostream;
 using std::ofstream;
 using std::ifstream;
@@ -3244,7 +3243,7 @@ void Buffer::simpleDocBookOnePar(ostream & os, string & extra,
 
 		if (c == Paragraph::META_INSET) {
 			Inset * inset = par->getInset(i);
-			std::ostringstream ost;
+			ostringstream ost;
 			inset->docBook(this, ost);
 			string tmp_out = ost.str().c_str();
 

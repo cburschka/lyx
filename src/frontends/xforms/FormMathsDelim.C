@@ -83,7 +83,7 @@ void FormMathsDelim::apply()
 	int const left = int(dialog_->radio_left->u_ldata);
 	int const right= int(dialog_->radio_right->u_ldata);
 
-	std::ostringstream ost;
+	ostringstream ost;
 	ost << delim_values[left] << ' ' << delim_values[right];
 
 	lv_->getLyXFunc()->Dispatch(LFUN_MATH_DELIM, ost.str().c_str());

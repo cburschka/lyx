@@ -43,7 +43,7 @@ void FormCredits::build()
 	bc().setCancel(dialog_->okPB);
 	bc().refresh();
 
-	std::stringstream ss;
+	stringstream ss;
 	QString xformscredits = controller().getCredits( ss ).str().c_str();
 	QStringList xformslist = QStringList::split( '\n', controller().getCredits( ss ).str().c_str(), true );
 	for( QStringList::Iterator it = xformslist.begin(); it != xformslist.end(); ++it ) {

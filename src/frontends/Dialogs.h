@@ -85,6 +85,8 @@ public:
 	//@{
 	/// Do we really have to push this?
 	SigC::Signal1<void, std::vector<string> const &> SetDocumentClassChoice;
+	///
+	SigC::Signal0<void> showAboutlyx;
 	/// show the key and label of a bibliography entry
 	SigC::Signal1<void, InsetCommand *> showBibitem;
 	/// show the bibtex dialog
@@ -97,10 +99,6 @@ public:
 	SigC::Signal1<void, InsetCommand *> showCitation;
 	///
 	SigC::Signal1<void, string const &> createCitation;
-	///
-	SigC::Signal0<void> showCopyright;
-	///
-	SigC::Signal0<void> showCredits;
 	///
 	SigC::Signal0<void> showDocument;
 	///

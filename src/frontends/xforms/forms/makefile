@@ -17,13 +17,13 @@
 SHELL = /bin/sh
 .SUFFIXES: .fd .c
 
-SRCS =  form_bibitem.fd \
+SRCS =  form_aboutlyx.fd \
+	form_bibitem.fd \
+	form_bibtex.fd \
 	form_bibtex.fd \
 	form_browser.fd \
 	form_character.fd \
 	form_citation.fd \
-	form_copyright.fd \
-	form_credits.fd \
 	form_document.fd \
 	form_error.fd \
 	form_external.fd \

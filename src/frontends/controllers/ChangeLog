@@ -1,9 +1,22 @@
+2001-07-13  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	Consistent use of Lsstream.h:
+	* ControlAboutlyx.[Ch] (getCredits):
+	* ControlVCLog.[Ch] (getVCLogFile): std::stringstream -> stringstream.
+
+2001-07-13  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* ControlCredits.[Ch]: removed
+	* ControlCopyright.[Ch]: removed
+	* ControlAboutlyx.[Ch]: added (replaces previous)
+	* GUI.h: removed credits and copyright added about lyx stuff
+
 2001-07-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* ControlSpellchecker.C (getSuggestion): 
 	(getWord): add std:: qualifier
 
-2001-07-13  Edwin Leuven  <leuven@fee.uva.nl>
+>001-07-13  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* ControlSpellchecker.[Ch]: added
 	* ViewBase.h: added partialUpdate(int) member
@@ -27,8 +40,8 @@
 	* *.[h]: added // -*- C++ -*-
 	* *.[C]: removed // -*- C++ -*-
 
-	* ControlCharacter.[Ch]: added // -*- C++ -*-
-	(setParams): Check contents of font_ to activate Apply button.
+	* ControlCharacter.[Ch]: (setParams): Check contents of font_ to
+	activate Apply button.
 	(clearParams): removed.
 	font_ is now stored as a boost::scoped_ptr.
 	font_ is no longer deleted on hide(), so it's contents can now be used

@@ -35,7 +35,7 @@ string const unique_id()
 {
 	static unsigned int seed = 1000;
 
-	std::ostringstream ost;
+	ostringstream ost;
 	ost << "file" << ++seed;
 
 	// Needed if we use lyxstring.

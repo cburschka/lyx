@@ -557,7 +557,7 @@ bool LyXFont::resolved() const
 /// Build GUI description of font state
 string const LyXFont::stateText(BufferParams * params) const
 {
-	std::ostringstream ost;
+	ostringstream ost;
 	if (family() != INHERIT_FAMILY)
 		ost << _(GUIFamilyNames[family()]) << ", ";
 	if (series() != INHERIT_SERIES)

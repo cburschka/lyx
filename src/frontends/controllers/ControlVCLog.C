@@ -44,7 +44,7 @@ string const ControlVCLog::getBufferFileName() const
 }
 
 
-std::stringstream & ControlVCLog::getVCLogFile(std::stringstream & ss) const
+stringstream & ControlVCLog::getVCLogFile(stringstream & ss) const
 {
 	string const name = lv_.view()->buffer()->lyxvc.getLogFile();
 

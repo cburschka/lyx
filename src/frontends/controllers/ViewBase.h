@@ -51,7 +51,7 @@ public:
 	/** Defaults to nothing. Can be used by the Controller, however, to
 	    indicate to the View that something has changed and that the
 	    dialog therefore needs updating. */
-	virtual void partialUpdate(int id) {}
+	virtual void partialUpdate(int) {}
    
 protected:
 	/// The view is, after all, controlled!

@@ -1896,7 +1896,7 @@ string const Paragraph::asString(Buffer const * buffer, bool label)
 			s += c;
 		else if (c == META_INSET &&
 			 getInset(i)->lyxCode() == Inset::MATH_CODE) {
-			std::ostringstream ost;
+			ostringstream ost;
 			getInset(i)->ascii(buffer, ost);
 			s += subst(ost.str().c_str(),'\n',' ');
 		}
@@ -1913,7 +1913,7 @@ string const Paragraph::asString(Buffer const * buffer,
 			    Paragraph::size_type beg,
 			    Paragraph::size_type end)
 {
-	std::ostringstream ost;
+	ostringstream ost;
 
 	if (beg == 0 && !params().labelString().empty())
 		ost << params().labelString() << ' ';

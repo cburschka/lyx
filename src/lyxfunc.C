@@ -1090,13 +1090,13 @@ string const LyXFunc::Dispatch(int ac,
 #warning Find another implementation here (or another lyxfunc)!
 #endif
 #endif
-	case LFUN_HELP_COPYRIGHT:
-		owner->getDialogs()->showCopyright();
+	case LFUN_HELP_ABOUTLYX:
+		owner->getDialogs()->showAboutlyx();
 		break;
 
+	case LFUN_HELP_COPYRIGHT:
 	case LFUN_HELP_CREDITS:
-		owner->getDialogs()->showCredits();
-		break;
+		
 
         case LFUN_HELP_OPEN:
 	{
@@ -1122,20 +1122,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
         }
 
-	case LFUN_HELP_VERSION: {
-		owner->prohibitInput();
-		string msg(_("LyX Version "));
-		msg += LYX_VERSION;
-		msg += " of ";
-		msg += LYX_RELEASE;
-		fl_show_message(msg.c_str(),
-				(_("Library directory: ")
-				 + MakeDisplayPath(system_lyxdir)).c_str(),
-				(_("User directory: ") 
-				 + MakeDisplayPath(user_lyxdir)).c_str());
-		owner->allowInput();
-		break;
-	}
+	case LFUN_HELP_VERSION:
 	
 		// --- version control -------------------------------
 	case LFUN_VC_REGISTER:

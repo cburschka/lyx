@@ -85,7 +85,7 @@ void FormMathsMatrix::apply()
 	int const nx = int(fl_get_slider_value(dialog_->slider_columns) + 0.5);
 	int const ny = int(fl_get_slider_value(dialog_->slider_rows) + 0.5);
  
-	std::ostringstream ost;
+	ostringstream ost;
 	ost << nx << ' ' << ny << ' ' << c << sh;
  
 	lv_->getLyXFunc()->Dispatch(LFUN_INSERT_MATRIX, ost.str().c_str());

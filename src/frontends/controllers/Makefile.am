@@ -19,6 +19,8 @@ libcontrollers_la_SOURCES=\
 	ButtonControllerBase.h \
 	ButtonPolicies.C \
 	ButtonPolicies.h \
+	ControlAboutlyx.C \
+	ControlAboutlyx.h \
 	ControlBibitem.C \
 	ControlBibitem.h \
 	ControlBibtex.C \
@@ -33,10 +35,6 @@ libcontrollers_la_SOURCES=\
 	ControlCommand.h \
 	ControlConnections.C \
 	ControlConnections.h \
-	ControlCopyright.C \
-	ControlCopyright.h \
-	ControlCredits.h \
-	ControlCredits.C \
 	ControlDialogs.h \
 	ControlError.h \
 	ControlError.C \

@@ -41,7 +41,7 @@ void FormCredits::build()
 	text()->freeze();
 	
 	// Get the credits into the string stream
-	std::stringstream ss;
+	stringstream ss;
 	string credits = controller().getCredits(ss).str();
 
 	// Create the strings that we need to detect.

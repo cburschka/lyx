@@ -38,7 +38,6 @@
 #include "math_matrixinset.h"
 #include "mathed/support.h"
 
-using std::ostringstream;
 using std::ostream;
 using std::ifstream;
 using std::istream;

@@ -19,12 +19,11 @@
 
 #include "xformsBC.h"
 
+#include "ControlAboutlyx.h"
 #include "ControlBibitem.h"
 #include "ControlBibtex.h"
 #include "ControlCharacter.h"
 #include "ControlCitation.h"
-#include "ControlCopyright.h"
-#include "ControlCredits.h"
 #include "ControlError.h"
 #include "ControlExternal.h" 
 #include "ControlGraphics.h"
@@ -47,13 +46,12 @@
 #include "GUI.h"
 
 #include "combox.h"       // needed for clean destruction of boost::scoped_ptr
+#include "form_aboutlyx.h"
 #include "form_bibitem.h"
 #include "form_bibtex.h"
 #include "form_browser.h"
 #include "form_character.h"
 #include "form_citation.h"
-#include "form_copyright.h"
-#include "form_credits.h"
 #include "form_error.h"
 #include "form_external.h" 
 #include "form_graphics.h"
@@ -70,12 +68,11 @@
 #include "form_toc.h"
 #include "form_url.h"
 
+#include "FormAboutlyx.h"
 #include "FormBibitem.h"
 #include "FormBibtex.h"
 #include "FormCharacter.h"
 #include "FormCitation.h"
-#include "FormCopyright.h"
-#include "FormCredits.h"
 #include "FormError.h"
 #include "FormExternal.h" 
 #include "FormGraphics.h"
@@ -108,12 +105,11 @@ Dialogs::Dialogs(LyXView * lv)
 {
 	splash_.reset(new GUISplash<FormSplash>(*this));
 
+	add(new GUIAboutlyx<FormAboutlyx, xformsBC>(*lv, *this));
 	add(new GUIBibitem<FormBibitem, xformsBC>(*lv, *this));
 	add(new GUIBibtex<FormBibtex, xformsBC>(*lv, *this));
 	add(new GUICharacter<FormCharacter, xformsBC>(*lv, *this));
 	add(new GUICitation<FormCitation, xformsBC>(*lv, *this));
-	add(new GUICopyright<FormCopyright, xformsBC>(*lv, *this));
-	add(new GUICredits<FormCredits, xformsBC>(*lv, *this));
 	add(new GUIError<FormError, xformsBC>(*lv, *this));
 	add(new GUIExternal<FormExternal, xformsBC>(*lv, *this));
 	add(new GUIGraphics<FormGraphics, xformsBC>(*lv, *this));

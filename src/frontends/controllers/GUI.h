@@ -52,6 +52,18 @@ class OkCancelPolicy;
 class OkCancelReadOnlyPolicy;
 class NoRepeatedApplyReadOnlyPolicy;
 
+/** Specialization for About LyX dialog
+ */
+class ControlAboutlyx;
+
+template <class GUIview, class GUIbc>
+class GUIAboutlyx :
+	public GUI<ControlAboutlyx, GUIview, OkCancelPolicy, GUIbc> {
+public:
+	///
+	GUIAboutlyx(LyXView & lv, Dialogs & d)
+		: GUI<ControlAboutlyx, GUIview, OkCancelPolicy, GUIbc>(lv, d) {}
+};
 
 /** Specialization for Bibitem dialog
  */
@@ -110,34 +122,6 @@ public:
 	GUICitation(LyXView & lv, Dialogs & d)
 		: GUI<ControlCitation, GUIview,
 		      NoRepeatedApplyReadOnlyPolicy, GUIbc>(lv, d) {}
-};
-
-
-/** Specialization for Copyright dialog
- */
-class ControlCopyright;
-
-template <class GUIview, class GUIbc>
-class GUICopyright :
-	public GUI<ControlCopyright, GUIview, OkCancelPolicy, GUIbc> {
-public:
-	///
-	GUICopyright(LyXView & lv, Dialogs & d)
-		: GUI<ControlCopyright, GUIview, OkCancelPolicy, GUIbc>(lv, d) {}
-};
-
-
-/** Specialization for Credits dialog
- */
-class ControlCredits;
-
-template <class GUIview, class GUIbc>
-class GUICredits :
-	public GUI<ControlCredits, GUIview, OkCancelPolicy, GUIbc> {
-public:
-	///
-	GUICredits(LyXView & lv, Dialogs & d)
-		: GUI<ControlCredits, GUIview, OkCancelPolicy, GUIbc>(lv, d) {}
 };
 
 

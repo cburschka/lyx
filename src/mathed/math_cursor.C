@@ -596,7 +596,7 @@ in_word_set(s) << " \n";
 			int n = 1;
 			string v_align;
 			string h_align;
-			std::istringstream is(s.substr(7).c_str());
+			istringstream is(s.substr(7).c_str());
 			is >> m >> n >> v_align >> h_align;
 			m = std::max(1, m);
 			n = std::max(1, n);

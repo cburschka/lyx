@@ -25,14 +25,12 @@
 /**
  * A controller for the Version Control log viewer.
  */
-class stringstream;
-
 class ControlVCLog : public ControlDialog<ControlConnectBD> {
 public:
 	///
 	ControlVCLog(LyXView &, Dialogs &);
 	/// get a stringstream containing the log file
-	std::stringstream & getVCLogFile(std::stringstream & ss) const;
+	stringstream & getVCLogFile(stringstream & ss) const;
 	/// get the filename of the buffer
 	string const getBufferFileName() const;
 

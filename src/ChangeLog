@@ -1,3 +1,23 @@
+2001-07-13  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	Consistent use of Lsstream.h:
+	* Lsstream.h: added using std::stringstream for consistencies sake.
+
+	* buffer.C: removed using std::stringstream
+
+	* lyxfont.C (stateText):
+	* paragraph.C (asString):
+	* text.C (selectNextWord, selectSelectedWord):
+	* text2.C (setCounter):
+	* vspace.C (asString, asLatexString):
+	std::ostringstream -> ostringstream.
+
+2001-07-13  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* LyXAction.C: add LFUN_HELP_ABOUTLYX
+	* commandtags.h: add LFUN_HELP_ABOUTLYX
+	* lyxfunc.C: add about lyx remove credits/copyright/version stuff
+
 2001-07-13  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* BufferView_pimpl.C: sigchldchecker instead of sigchldhandeler in

@@ -326,7 +326,7 @@ LyXLength::LyXLength(string const & data)
 
 string const LyXLength::asString() const
 {
-	std::ostringstream buffer;
+	ostringstream buffer;
 	buffer << val << unit_name[uni]; // setw?
 	return buffer.str().c_str();
 }
@@ -334,7 +334,7 @@ string const LyXLength::asString() const
 
 string const LyXLength::asLatexString() const
 {
-	std::ostringstream buffer;
+	ostringstream buffer;
 	switch(uni) {
 	case PW:
 	case PE:
@@ -376,7 +376,7 @@ LyXGlueLength::LyXGlueLength (string const & data)
 
 string const LyXGlueLength::asString() const
 {
-	std::ostringstream buffer;
+	ostringstream buffer;
 
 	if (plus_val != 0.0)
 		if (minus_val != 0.0)
@@ -430,7 +430,7 @@ string const LyXGlueLength::asString() const
 
 string const LyXGlueLength::asLatexString() const
 {
-	std::ostringstream buffer;
+	ostringstream buffer;
 
 	if (plus_val != 0.0)
 		if (minus_val != 0.0)

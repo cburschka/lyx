@@ -1,3 +1,8 @@
+2001-07-13  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	Consistent use of Lsstream.h:
+	* FormCredits.C (build): std::stringstream -> stringstream.
+
 2001-06-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* gnomeBC.h: clean-up of included files.
