@@ -1,3 +1,7 @@
+2001-02-23  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormPreferences(GetFrom, GetTo): use size_type rather than int.
+
 2001-02-23  John Levon  <moz@compsoc.man.ac.uk>
 
 	* FormBase.C: no longer transient dialogs, XMapWindow()
