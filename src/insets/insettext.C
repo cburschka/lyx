@@ -1146,6 +1146,8 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 			}
 			the_locking_inset = 0;
 			updateLocal(bv, CURSOR, false);
+			// make sure status gets reset immediately
+			bv->owner()->clearMessage();
 			return result;
 		}
 	}

@@ -818,6 +818,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 				goto exit_with_message;
 					// If UNDISPATCHED, just soldier on
 			else if (result == FINISHED) {
+				owner->clearMessage();
 				goto exit_with_message;
 				// We do not need special RTL handling here:
 				// FINISHED means that the cursor should be
@@ -825,7 +826,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			} else if (result == FINISHED_RIGHT) {
 				TEXT()->cursorRight(view());
 				moveCursorUpdate(true, false);
-				owner->view_state_changed();
+				owner->clearMessage();
 				goto exit_with_message;
 			} else if (result == FINISHED_UP) {
 				if (TEXT()->cursor.irow() != TEXT()->rows().begin()) {
@@ -839,10 +840,10 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 					TEXT()->cursorUp(view());
 #endif
 					moveCursorUpdate(true, false);
-					owner->view_state_changed();
 				} else {
 					view()->update(TEXT(), BufferView::SELECT);
 				}
+				owner->clearMessage();
 				goto exit_with_message;
 			} else if (result == FINISHED_DOWN) {
 				if (boost::next(TEXT()->cursor.irow()) != TEXT()->rows().end()) {
@@ -860,7 +861,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 					TEXT()->cursorRight(view());
 				}
 				moveCursorUpdate(true, false);
-				owner->view_state_changed();
+				owner->clearMessage();
 				goto exit_with_message;
 			}
 #warning I am not sure this is still right, please have a look! (Jug 20020417)

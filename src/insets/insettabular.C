@@ -854,10 +854,17 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 			return result;
 		} else if (result == FINISHED_UP) {
 			action = LFUN_UP;
+			// Make sure to reset status message after
+			// exiting, e.g. math inset
+			bv->owner()->clearMessage();
 		} else if (result == FINISHED_DOWN) {
 			action = LFUN_DOWN;
+			bv->owner()->clearMessage();
 		} else if (result == FINISHED_RIGHT) {
 			action = LFUN_RIGHT;
+			bv->owner()->clearMessage();
+		} else if (result == FINISHED) {
+			bv->owner()->clearMessage();
 		}
 	}
 

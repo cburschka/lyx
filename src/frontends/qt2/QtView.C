@@ -19,7 +19,6 @@
 #include "MenuBackend.h"
 #include "ToolbarBackend.h"
 #include "lyxfunc.h"
-#include "bufferview_funcs.h"
 #include "BufferView.h"
 
 #include "frontends/Toolbar.h"
@@ -41,7 +40,6 @@
 #include <qstatusbar.h>
 
 using std::endl;
-using namespace bv_funcs;
 
 namespace {
 
@@ -109,6 +107,12 @@ void QtView::message(string const & str)
 }
 
 
+void QtView::clearMessage()
+{
+	update_view_state_qt();
+}
+
+
 void QtView::focus_command_widget()
 {
 	commandbuffer_->focus_command();
@@ -117,7 +121,7 @@ void QtView::focus_command_widget()
 
 void QtView::update_view_state_qt()
 {
-	statusBar()->message(toqstr(currentState(view().get())));
+	statusBar()->message(toqstr(getLyXFunc().view_status_message()));
 	statusbar_timer_.stop();
 }
 
@@ -128,7 +132,7 @@ void QtView::update_view_state()
 	if (statusbar_timer_.isActive())
        		return;
 
-	statusBar()->message(toqstr(currentState(view().get())));
+	statusBar()->message(toqstr(getLyXFunc().view_status_message()));
 }
 
 

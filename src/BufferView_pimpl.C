@@ -337,6 +337,9 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	switchKeyMap();
 	owner_->busy(false);
 
+	// reset the "Formatting..." message
+	owner_->clearMessage();
+
 	updateScrollbar();
 
 	return 0;
@@ -936,6 +939,11 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & ev_in)
 
 	bv_->owner()->updateLayoutChoice();
 	bv_->fitCursor();
+
+	// slight hack: this is only called currently when
+	// we clicked somewhere, so we force through the display
+	// of the new status here.
+	bv_->owner()->clearMessage();
 
 	return res;
 }

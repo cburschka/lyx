@@ -124,6 +124,9 @@ public:
 	/// display a message in the view
 	virtual void message(string const &) = 0;
 
+	/// clear any temporary message and replace with current status
+	virtual void clearMessage() = 0;
+
 	/// updates the title of the window
 	void updateWindowTitle();
 

@@ -42,6 +42,10 @@ public:
 
 	/// display a status message
 	virtual void message(string const & str);
+
+	/// clear status message
+	virtual void clearMessage();
+
 public slots:
 	/// menu item has been selected
 	void activated(int id);

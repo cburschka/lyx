@@ -53,6 +53,9 @@ public:
 	/// display a status message
 	virtual void message(string const & str);
 
+	/// clear back to normal status message
+	virtual void clearMessage();
+
 private:
 	/**
 	 * setWindowTitle - set title of window

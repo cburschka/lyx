@@ -1,5 +1,12 @@
 2003-04-07  John Levon  <levon@movementarian.org>
 
+	* BufferView_pimpl.C: clear message when doc finishes resizing,
+	and after a mouse event
+
+	* lyxfunc.C: clear message after exiting inset
+
+2003-04-07  John Levon  <levon@movementarian.org>
+
 	* bufferview_funcs.C: show math status not outside
 	status in the statusbar
 

@@ -189,6 +189,12 @@ void XFormsView::message(string const & str)
 }
 
 
+void XFormsView::clearMessage()
+{
+	message(getLyXFunc().view_status_message());
+}
+
+
 void XFormsView::show_view_state()
 {
 	message(getLyXFunc().view_status_message());
