@@ -1,5 +1,28 @@
 2000-09-25  Juergen Vigna  <jug@sad.it>
 
+	* src/frontends/kde/Dialogs.C (Dialogs): 
+	* src/frontends/gnome/Dialogs.C (Dialogs): 
+	* src/frontends/kde/Makefile.am: 
+	* src/frontends/gnome/Makefile.am: added FormParagraph from xforms.
+
+	* src/frontends/xforms/forms/makefile: added form_paragraph.fd.
+
+	* src/frontends/xforms/Dialogs.C (Dialogs): added FormParagraph.
+
+	* src/frontends/xforms/Makefile.am: added files for FormParagraph.
+
+	* src/frontends/xforms/FormParagraph.C: 
+	* src/frontends/xforms/FormParagraph.h:
+	* src/frontends/xforms/form_paragraph.C:
+	* src/frontends/xforms/form_paragraph.h:
+	* src/frontends/xforms/forms/form_paragraph.fd: new files for the new
+	paragraph layout.
+
+	* src/lyxfunc.C (Dispatch): call the new layout paragraph.
+
+	* src/tabular.C (OldFormatRead): forgot to delete the temporary
+	Paragraph-Data after use.
+
 	* src/insets/insettext.C (LocalDispatch): don't set the layout on
 	non breakable paragraphs.
 

@@ -8,6 +8,7 @@
 #include "FormError.h"
 #include "FormGraphics.h"
 #include "FormIndex.h"
+#include "FormParagraph.h"
 #include "FormPreferences.h"
 #include "FormPrint.h"
 #include "FormRef.h"
@@ -31,6 +32,7 @@ Dialogs::Dialogs(LyXView * lv)
 	dialogs_.push_back(new FormError(lv, this));
 	dialogs_.push_back(new FormGraphics(lv, this));
 	dialogs_.push_back(new FormIndex(lv, this));
+	dialogs_.push_back(new FormParagraph(lv, this));
 	dialogs_.push_back(new FormPreferences(lv, this));
 	dialogs_.push_back(new FormPrint(lv, this));
 	dialogs_.push_back(new FormRef(lv, this));

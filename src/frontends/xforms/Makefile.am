@@ -42,6 +42,10 @@ libxforms_la_SOURCES = \
 	FormIndex.h \
 	form_index.C \
 	form_index.h \
+	FormParagraph.C \
+	FormParagraph.h \
+	form_paragraph.C \
+	form_paragraph.h \
 	FormPreferences.C \
 	FormPreferences.h \
 	form_preferences.C \

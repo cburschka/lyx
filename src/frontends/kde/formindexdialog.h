@@ -1,75 +1,43 @@
-/*
- * formindexdialog.h
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
- */
+/**********************************************************************
 
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
+	--- Qt Architect generated file ---
 
-#ifndef FORMINDEXDIALOG_H
-#define FORMINDEXDIALOG_H
+	File: formindexdialog.h
+	Last generated: Thu Sep 14 12:08:37 2000
 
-#include <config.h>
-#include <gettext.h>
+ *********************************************************************/
 
-// to connect apply() and hide()
-#include "FormIndex.h"
+#ifndef FormIndexDialog_included
+#define FormIndexDialog_included
 
-#include <qdialog.h>
-#include <qlayout.h>
-#include <qlabel.h>
-#include <qtooltip.h>
-#include <qlineedit.h>
-#include <qpushbutton.h>
+#include "formindexdialogdata.h"
 
-class FormIndexDialog : public QDialog  {
-   Q_OBJECT
+class FormIndex;
+
+class FormIndexDialog : public FormIndexDialogData
+{
+    Q_OBJECT
+
 public:
-	FormIndexDialog(FormIndex *form, QWidget *parent=0, const char *name=0,
-			    bool modal=false, WFlags f=0);
-	~FormIndexDialog();
 
-	// widgets
- 
-	QLabel *labelindex;
-	QLineEdit *index;
-	QPushButton *buttonOk;
-	QPushButton *buttonCancel;
- 
+    FormIndexDialog
+    (
+        FormIndex *, QWidget* parent = NULL,
+        const char* name = NULL
+    );
 
-protected:
-	void closeEvent(QCloseEvent *e);
- 
-private:
-	FormIndex *form_;
+    virtual ~FormIndexDialog();
 
-	// layouts
- 
-	QHBoxLayout *topLayout;
-	QVBoxLayout *layout;
-	QHBoxLayout *indexLayout;
-	QHBoxLayout *buttonLayout;
+    void setIndexText(const char * str) { index->setText(str); }
+    const char * getIndexText() { return index->text(); }
+    void setReadOnly(bool);
 
 private slots:
-	/// adaptor to FormIndex::apply
-	void apply_adaptor(void) {
-		form_->apply();
-		form_->close();
-		hide();
-	}
+    void clickedOK();
+    void clickedCancel();
 
-	/// adaptor to FormIndex::close
-	void close_adaptor(void) {
-		form_->close();
-		hide();
-	}
+private:
+    FormIndex *form_;
+
 };
-
-#endif
+#endif // FormIndexDialog_included

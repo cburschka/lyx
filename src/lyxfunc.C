@@ -1436,7 +1436,11 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_LAYOUT_PARAGRAPH:
+#ifdef USE_OLD_PARAGRAPH_LAYOUT
 		MenuLayoutParagraph();
+#else
+		owner->getDialogs()->showLayoutParagraph();
+#endif
 		break;
 		
 	case LFUN_LAYOUT_CHARACTER:

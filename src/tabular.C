@@ -1312,6 +1312,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 		lyxerr << "Some error in reading old table format occured!" <<
 		    endl << "Terminating when reading cell[" << cell << "]!" <<
 		    endl;
+		delete par;
 		return;
 	    }
 	    row = row_of_cell(cell);
@@ -1335,6 +1336,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 	par->CopyIntoMinibuffer(current_view->buffer()->params, i);
 	inset->par->InsertFromMinibuffer(inset->par->Last());
     }
+    delete par;
     Reinit();
 }
 

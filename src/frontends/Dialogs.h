@@ -106,9 +106,9 @@ public:
 	///
 	Signal0<void> showLayoutDocument;
 	///
-	Signal0<void> showLogFile;
+	Signal0<void> showLayoutParagraph;
 	///
-	Signal0<void> showParagraph;
+	Signal0<void> showLogFile;
 	///
 	Signal0<void> showPreamble;
 	///

@@ -1,0 +1,1054 @@
+Magic: 13000
+
+Internal Form Definition File
+    (do not change)
+
+Number of forms: 3
+Unit of measure: FL_COORD_PIXEL
+
+=============== FORM ===============
+Name: form_paragraph_general
+Width: 490
+Height: 260
+Number of Objects: 29
+
+--------------------
+class: FL_BOX
+type: UP_BOX
+box: 0 0 490 260
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_FRAME
+type: ENGRAVED_FRAME
+box: 360 110 120 50
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_FRAME
+type: ENGRAVED_FRAME
+box: 10 110 340 90
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_FRAME
+type: ENGRAVED_FRAME
+box: 360 20 120 70
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_FRAME
+type: ENGRAVED_FRAME
+box: 210 20 140 70
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_FRAME
+type: ENGRAVED_FRAME
+box: 10 20 190 70
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 100 210 360 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Label Width:|#d
+shortcut: 
+resize: FL_RESIZE_X
+gravity: FL_West FL_East
+name: input_labelwidth
+callback: C_FormParagraphInputCB
+argument: 
+
+--------------------
+class: FL_TEXT
+type: NORMAL_TEXT
+box: 370 100 60 20
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
+style: FL_BOLD_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Indent
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 230 30 120 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Above|#b
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_lines_top
+callback: C_FormParagraphInputCB
+argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 230 60 120 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Below|#E
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_lines_bottom
+callback: C_FormParagraphInputCB
+argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 360 30 120 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Above|#o
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_pagebreaks_top
+callback: C_FormParagraphInputCB
+argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 360 60 120 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Below|#l
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_pagebreaks_bottom
+callback: C_FormParagraphInputCB
+argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 360 120 120 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: No Indent|#I
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_noindent
+callback: C_FormParagraphInputCB
+argument: 
+
+--------------------
+class: FL_BEGIN_GROUP
+type: 0
+box: 0 0 0 0
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: group_radio_alignment
+callback: 
+argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: RADIO_BUTTON
+box: 10 30 80 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Right|#R
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_align_right
+callback: C_FormParagraphInputCB
+argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: RADIO_BUTTON
+box: 10 60 80 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Left|#f
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_align_left
+callback: C_FormParagraphInputCB
+argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: RADIO_BUTTON
+box: 100 30 80 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Block|#c
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_align_block
+callback: C_FormParagraphInputCB
+argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: RADIO_BUTTON
+box: 100 60 80 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Center|#n
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_align_center
+callback: C_FormParagraphInputCB
+argument: 
+
+--------------------
+class: FL_END_GROUP
+type: 0
+box: 0 0 0 0
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 180 120 90 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_space_above
+callback: C_FormParagraphVSpaceCB
+argument: 0
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 180 160 90 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_space_below
+callback: C_FormParagraphVSpaceCB
+argument: 0
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 70 120 100 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Above:|#v
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: choice_space_above
+callback: C_FormParagraphVSpaceCB
+argument: 0
+
+--------------------
+class: FL_CHOICE
+type: NORMAL_CHOICE
+box: 70 160 100 30
+boxtype: FL_FRAME_BOX
+colors: FL_COL1 FL_BLACK
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Below:|#w
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: choice_space_below
+callback: C_FormParagraphVSpaceCB
+argument: 0
+
+--------------------
+class: FL_TEXT
+type: NORMAL_TEXT
+box: 370 10 100 20
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
+style: FL_BOLD_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Pagebreaks
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_TEXT
+type: NORMAL_TEXT
+box: 230 10 50 20
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
+style: FL_BOLD_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Lines
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_TEXT
+type: NORMAL_TEXT
+box: 20 10 80 20
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
+style: FL_BOLD_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Alignment
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_TEXT
+type: NORMAL_TEXT
+box: 20 100 130 20
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
+style: FL_BOLD_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Vertical Spaces
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 270 120 40 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Keep|#K
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_space_above
+callback: C_FormParagraphInputCB
+argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 270 160 40 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Keep|#p
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_space_below
+callback: C_FormParagraphInputCB
+argument: 
+
+=============== FORM ===============
+Name: form_paragraph_extra
+Width: 490
+Height: 260
+Number of Objects: 22
+
+--------------------
+class: FL_BOX
+type: UP_BOX
+box: 0 0 490 260
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_FRAME
+type: ENGRAVED_FRAME
+box: 10 20 170 100
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_FRAME
+type: ENGRAVED_FRAME
+box: 350 20 100 100
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_FRAME
+type: ENGRAVED_FRAME
+box: 190 20 150 100
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_TEXT
+type: NORMAL_TEXT
+box: 20 10 120 20
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
+style: FL_BOLD_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Extra Options
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 240 30 90 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Length|#L
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_pextra_width
+callback: C_FormParagraphInputCB
+argument: 0
+
+--------------------
+class: FL_INPUT
+type: INT_INPUT
+box: 240 70 90 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: or %|#o
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_pextra_widthp
+callback: C_FormParagraphInputCB
+argument: 0
+
+--------------------
+class: FL_TEXT
+type: NORMAL_TEXT
+box: 200 10 60 20
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
+style: FL_BOLD_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Width
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_TEXT
+type: NORMAL_TEXT
+box: 350 10 90 20
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
+style: FL_BOLD_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Alignment
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_BEGIN_GROUP
+type: 0
+box: 0 0 0 0
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: group_alignment
+callback: 
+argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: RADIO_BUTTON
+box: 360 30 80 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Top|#T
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_pextra_top
+callback: C_FormParagraphInputCB
+argument: 0
+
+--------------------
+class: FL_CHECKBUTTON
+type: RADIO_BUTTON
+box: 360 60 80 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Middle|#d
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_pextra_middle
+callback: C_FormParagraphInputCB
+argument: 0
+
+--------------------
+class: FL_CHECKBUTTON
+type: RADIO_BUTTON
+box: 360 90 80 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Bottom|#B
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_pextra_bottom
+callback: C_FormParagraphInputCB
+argument: 0
+
+--------------------
+class: FL_END_GROUP
+type: 0
+box: 0 0 0 0
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_TEXT
+type: NORMAL_TEXT
+box: 10 190 470 30
+boxtype: FL_FLAT_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
+style: FL_BOLD_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: text_warning
+callback: 
+argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 10 130 300 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: HFill between Minipage paragraphs|#H
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_pextra_hfill
+callback: C_FormParagraphInputCB
+argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 10 160 260 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Start new Minipage|#S
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_pextra_startmp
+callback: C_FormParagraphInputCB
+argument: 
+
+--------------------
+class: FL_BEGIN_GROUP
+type: 0
+box: 0 0 0 0
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: group_extraopt
+callback: 
+argument: 
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 10 30 160 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Indented Paragraph|#I
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_pextra_indent
+callback: C_FormParagraphInputCB
+argument: 0
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 10 60 160 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Minipage|#M
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_pextra_minipage
+callback: C_FormParagraphInputCB
+argument: 0
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 10 90 160 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Floatflt|#F
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_pextra_floatflt
+callback: C_FormParagraphInputCB
+argument: 0
+
+--------------------
+class: FL_END_GROUP
+type: 0
+box: 0 0 0 0
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+=============== FORM ===============
+Name: form_tabbed_paragraph
+Width: 510
+Height: 340
+Number of Objects: 6
+
+--------------------
+class: FL_BOX
+type: UP_BOX
+box: 0 0 510 340
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: 
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: 
+callback: 
+argument: 
+
+--------------------
+class: FL_TABFOLDER
+type: TOP_TABFOLDER
+box: 10 10 490 280
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_TOP_LEFT
+style: FL_NORMAL_STYLE
+size: FL_DEFAULT_SIZE
+lcol: FL_BLACK
+label: Tabbed folder
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: tabbed_folder
+callback: 
+argument: 
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 400 300 100 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Cancel|^[
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_cancel
+callback: C_FormParagraphCancelCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 290 300 100 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Apply|#A
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_apply
+callback: C_FormParagraphApplyCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: RETURN_BUTTON
+box: 180 300 100 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: OK
+shortcut: ^M
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_ok
+callback: C_FormParagraphOKCB
+argument: 0
+
+--------------------
+class: FL_BUTTON
+type: NORMAL_BUTTON
+box: 10 300 100 30
+boxtype: FL_UP_BOX
+colors: FL_COL1 FL_COL1
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Restore|#R
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: button_restore
+callback: C_FormParagraphRestoreCB
+argument: 0
+
+==============================
+create_the_forms

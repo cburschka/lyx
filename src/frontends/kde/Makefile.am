@@ -24,6 +24,8 @@ libkde_la_OBJADD = \
         ../xforms/form_error.lo \
         ../xforms/FormGraphics.lo \
         ../xforms/form_graphics.lo \
+	../xforms/FormParagraph.lo \
+	../xforms/form_paragraph.lo \
         ../xforms/FormPreferences.lo \
         ../xforms/form_preferences.lo \
 	../xforms/FormPrint.lo \
@@ -56,6 +58,8 @@ libkde_la_SOURCES = \
 	FormIndex.h \
 	formindexdialog.C \
 	formindexdialog.h \
+	formindexdialogdata.C \
+	formindexdialogdata.h \
 	FormCitation.C \
 	FormCitation.h \
 	formcitationdialog.C \

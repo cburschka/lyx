@@ -1,88 +1,67 @@
-/*
- * formindexdialog.C
- * (C) 2000 LyX Team
- * John Levon, moz@compsoc.man.ac.uk
- */
+/**********************************************************************
 
-/***************************************************************************
- *                                                                         *
- *   This program is free software; you can redistribute it and/or modify  *
- *   it under the terms of the GNU General Public License as published by  *
- *   the Free Software Foundation; either version 2 of the License, or     *
- *   (at your option) any later version.                                   *
- *                                                                         *
- ***************************************************************************/
+	--- Qt Architect generated file ---
+
+	File: formindexdialog.C
+	Last generated: Thu Sep 14 12:08:37 2000
+
+ *********************************************************************/
+
+#include <config.h>
+#include <gettext.h>
 
 #include "formindexdialog.h"
+#include "FormIndex.h"
 
-FormIndexDialog::FormIndexDialog(FormIndex *form, QWidget *parent, const char *name, bool, WFlags)
-	: QDialog(parent,name,false), form_(form)
+#include <qtooltip.h>
+
+#define Inherited FormIndexDialogData
+
+FormIndexDialog::FormIndexDialog(FormIndex * f, QWidget *p, const char* name)
+	: Inherited( p, name ), form_(f)
 {
 	setCaption(name);
-
-	// widgets
-
-	index = new QLineEdit(this);
-	index->setMinimumSize(index->sizeHint());
-
-	labelindex = new QLabel(this);
-	labelindex->setText(_("Keyword :"));
-	labelindex->setMargin(5);
-	labelindex->setMinimumSize(labelindex->sizeHint());
-	labelindex->setMaximumSize(labelindex->sizeHint());
-
-	buttonOk = new QPushButton(this);
-	buttonOk->setMinimumSize(buttonOk->sizeHint());
-	buttonOk->setMaximumSize(buttonOk->sizeHint());
-	buttonOk->setText(_("&OK"));
-	buttonOk->setDefault(true);
-
-	buttonCancel = new QPushButton(this);
-	buttonCancel->setMinimumSize(buttonCancel->sizeHint());
-	buttonCancel->setMaximumSize(buttonCancel->sizeHint());
-	buttonCancel->setText(_("&Cancel"));
 
 	// tooltips
 
 	QToolTip::add(labelindex,_("Index entry"));
 	QToolTip::add(index,_("Index entry"));
 
-	// layouts
-
-	topLayout = new QHBoxLayout(this,10);
-
-	layout = new QVBoxLayout();
-	topLayout->addLayout(layout);
-	layout->addSpacing(10);
-
-	indexLayout = new QHBoxLayout();
-	layout->addLayout(indexLayout);
-	indexLayout->addWidget(labelindex, 0);
-	indexLayout->addWidget(index, 1);
-
-	layout->addStretch(1);
-
-	buttonLayout = new QHBoxLayout();
-
-	layout->addLayout(buttonLayout);
-	buttonLayout->addStretch(1);
-	buttonLayout->addWidget(buttonOk, 1);
-	buttonLayout->addStretch(2);
-	buttonLayout->addWidget(buttonCancel, 1);
-	buttonLayout->addStretch(1);
- 
-	// connections
-
-	connect(buttonOk, SIGNAL(clicked()), this, SLOT(apply_adaptor()));
-	connect(buttonCancel, SIGNAL(clicked()), this, SLOT(close_adaptor()));
+	setMinimumSize( 200, 65 );
+	setMaximumSize( 32767, 65 );
 }
 
-void FormIndexDialog::closeEvent(QCloseEvent *e)
-{
-	form_->close();
-	e->accept();
-}
 
 FormIndexDialog::~FormIndexDialog()
 {
+}
+
+
+void FormIndexDialog::clickedOK()
+{
+    form_->apply();
+    form_->close();
+    hide();
+}
+
+
+void FormIndexDialog::clickedCancel()
+{
+    form_->close();
+    hide();
+}
+
+
+void FormIndexDialog::setReadOnly(bool readonly)
+{
+    if (readonly) {
+	index->setFocusPolicy(QWidget::NoFocus);
+	buttonOk->setEnabled(false);
+	buttonCancel->setText(_("Close"));
+    } else {
+	index->setFocusPolicy(QWidget::StrongFocus);
+	index->setFocus();
+	buttonOk->setEnabled(true);
+	buttonCancel->setText(_("Cancel"));
+    }
 }

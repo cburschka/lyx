@@ -18,6 +18,8 @@ libgnome_la_OBJADD = \
 	../xforms/form_graphics.lo \
 	../xforms/FormIndex.lo \
 	../xforms/form_index.lo \
+	../xforms/FormParagraph.lo \
+	../xforms/form_paragraph.lo \
 	../xforms/FormPreferences.lo \
 	../xforms/form_preferences.lo \
 	../xforms/FormRef.lo \

@@ -65,18 +65,8 @@ void FormIndex::createIndex(string const & arg)
  
 void FormIndex::update()
 {
-	dialog_->index->setText(params.getContents().c_str());
-
-	if (readonly) {
-		dialog_->index->setFocusPolicy(QWidget::NoFocus);
-		dialog_->buttonOk->setEnabled(false);
-		dialog_->buttonCancel->setText(_("Close"));
-	} else {
-		dialog_->index->setFocusPolicy(QWidget::StrongFocus);
-		dialog_->index->setFocus();
-		dialog_->buttonOk->setEnabled(true);
-		dialog_->buttonCancel->setText(_("Cancel"));
-	}
+	dialog_->setIndexText(params.getContents().c_str());
+//	dialog_->setReadOnly(readonly);
 }
  
 void FormIndex::apply()
@@ -84,7 +74,7 @@ void FormIndex::apply()
 	if (readonly)
 		return;
 
-	params.setContents(dialog_->index->text());
+	params.setContents(dialog_->getIndexText());
 
 	if (inset_ != 0) {
 		if (params != inset_->params()) {
@@ -98,7 +88,11 @@ void FormIndex::apply()
 void FormIndex::show()
 {
 	if (!dialog_)
+#if 1
+		dialog_ = new FormIndexDialog(this, 0, _("LyX: Index"));
+#else
 		dialog_ = new FormIndexDialog(this, 0, _("LyX: Index"), false);
+#endif
  
 	if (!dialog_->isVisible()) {
 		h_ = d_->hideBufferDependent.connect(slot(this, &FormIndex::hide));
