@@ -26,7 +26,7 @@
 
 /** Use objects of this class to get information about files.
  */
-class FileInfo : public boost::noncopyable {
+class FileInfo : boost::noncopyable {
 public:
 	///
 	FileInfo();

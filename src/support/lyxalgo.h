@@ -3,7 +3,10 @@
 #ifndef LYX_ALGO_H
 #define LYX_ALGO_H
 
-//namespace lyx {
+#include <utility>
+
+namespace lyx {
+
 
 /// Returns true if the sequence first,last is sorted, false if not.
 template <class For>
@@ -17,6 +20,7 @@ bool sorted(For first, For last)
 	return true;
 }
 
+
 /// Cmp is the same Cmp as you would pass to std::sort.
 template <class For, class Cmp>
 bool sorted(For first, For last, Cmp cmp)
@@ -29,5 +33,26 @@ bool sorted(For first, For last, Cmp cmp)
 	return true;
 }
 
-// }  // end of namespace lyx
+
+struct firster {
+	template <class P1, class P2>
+	P1 operator()(std::pair<P1, P2> const & p) {
+		return p.first;
+	}
+};
+
+
+template <class InputIter, class OutputIter, class Func>
+OutputIter copy_if(InputIter first, InputIter last,
+	       OutputIter result, Func func) 
+{
+	for (; first != last; ++first) {
+		if (func(*first)) {
+			*result++ = *first;
+		}
+	}
+	return result;
+}
+
+}  // end of namespace lyx
 #endif

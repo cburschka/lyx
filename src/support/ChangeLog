@@ -1,3 +1,10 @@
+2001-04-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxalgo.h: put into namespace lyx, add firster and copy_if
+
+	* FileInfo.h: inherit privately from noncopyable
+	* path.h: ditto
+
 2001-04-16  Allan Rae  <rae@lyx.org>
 
 	* tempname.C (make_tempfile): #warning triggers an error on Sun CC 6.0
