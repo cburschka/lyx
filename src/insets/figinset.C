@@ -81,6 +81,7 @@ using std::endl;
 using std::copy;
 using std::pair;
 using std::make_pair;
+using std::ios;
 
 #ifndef CXX_GLOBAL_CSTD
 using std::memcpy;
