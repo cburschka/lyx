@@ -1,5 +1,5 @@
-/* Implementation of the textdomain(3) function
-   Copyright (C) 1995, 1996, 1997 Free Software Foundation, Inc.
+/* Implementation of the textdomain(3) function.
+   Copyright (C) 1995, 1996, 1997, 1998 Free Software Foundation, Inc.
    Written by Ulrich Drepper <drepper@gnu.ai.mit.edu>, 1995.
 
    This program is free software; you can redistribute it and/or modify
@@ -54,6 +54,9 @@ extern const char *_nl_current_default_domain;
    prefix.  So we have to make a difference here.  */
 #ifdef _LIBC
 # define TEXTDOMAIN __textdomain
+# ifndef strdup
+#  define strdup(str) __strdup (str)
+# endif
 #else
 # define TEXTDOMAIN textdomain__
 #endif
@@ -82,11 +85,15 @@ TEXTDOMAIN (domainname)
       /* If the following malloc fails `_nl_current_default_domain'
 	 will be NULL.  This value will be returned and so signals we
 	 are out of core.  */
+#if defined _LIBC || defined HAVE_STRDUP
+      _nl_current_default_domain = strdup (domainname);
+#else
       size_t len = strlen (domainname) + 1;
       char *cp = (char *) malloc (len);
       if (cp != NULL)
 	memcpy (cp, domainname, len);
       _nl_current_default_domain = cp;
+#endif
     }
 
   if (old != _nl_default_default_domain)

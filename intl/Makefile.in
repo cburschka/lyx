@@ -79,7 +79,7 @@ DISTFILES.gettext = libintl.glibc intlh.inst.in
 .c.lo:
 	$(LIBTOOL) --mode=compile $(COMPILE) $<
 
-INCLUDES = -I../src -I. -I$(top_srcdir)/src -I$(top_srcdir)/intl 
+INCLUDES = -I../src -I. -I$(top_srcdir)/intl -I$(top_srcdir)/lib
 
 all: all-@USE_INCLUDED_LIBINTL@
 
@@ -171,7 +171,7 @@ mostlyclean:
 clean: mostlyclean
 
 distclean: clean
-	rm -f Makefile ID TAGS po2msg.sed po2tbl.sed libintl.h
+	rm -f Makefile ID TAGS po2msg.sed po2tbl.sed
 
 maintainer-clean: distclean
 	@echo "This command is intended for maintainers to use;"
