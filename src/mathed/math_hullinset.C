@@ -1263,17 +1263,27 @@ int MathHullInset::docbook(Buffer const & buf, ostream & os,
 			  OutputParams const & runparams) const
 {
 	MathMLStream ms(os);
-	string name="equation";
-	if (! label(0).empty()) name += " id=\"" + label(0)+ "\"";
-	ms << MTag(name.c_str());
-	ms <<   MTag("alt");
-	ms <<    "<[CDATA[";
-	int res = plaintext(buf, ms.os(), runparams);
-	ms <<    "]]>";
-	ms <<   ETag("alt");
-	ms <<   MTag("math");
-	MathGridInset::mathmlize(ms);
-	ms <<   ETag("math");
-	ms << ETag("equation");
+	int res = 0;
+	string name;
+	if (getType() == "simple")
+		name= "inlineequation";
+	else
+		name = "informalequation";
+
+	string bname = name;	
+	if (! label(0).empty()) bname += " id=\"" + label(0)+ "\"";
+	ms << MTag(bname.c_str());
+
+	if (runparams.flavor == OutputParams::XML) {
+		ms <<   MTag("math");
+		MathGridInset::mathmlize(ms);
+		ms <<   ETag("math");
+	} else {
+		ms <<   MTag("alt");
+		res = latex(buf, ms.os(), runparams);
+		ms <<   ETag("alt");
+	}
+	
+	ms << ETag(name.c_str());
 	return ms.line() + res;
 }
