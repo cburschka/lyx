@@ -857,7 +857,7 @@ string const MakeRelPath(string const & abspath0, string const & basepath0)
 	string::size_type const baselen = basepath.length();
 	
 	// Find first different character
-	int i = 0;
+	string::size_type i = 0;
 	while (i < abslen && i < baselen && abspath[i] == basepath[i]) ++i;
 
 	// Go back to last /
@@ -877,7 +877,7 @@ string const MakeRelPath(string const & abspath0, string const & basepath0)
 	// Count how many dirs there are in basepath above match
 	// and append as many '..''s into relpath
 	string buf;
-	int j = i;
+	string::size_type j = i;
 	while (j < baselen) {
 		if (basepath[j] == '/') {
 			if (j + 1 == baselen) break;

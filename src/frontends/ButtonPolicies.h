@@ -159,6 +159,20 @@ public:
 };
 
 
+inline
+ostream & operator<<(ostream & os, ButtonPolicy::SMInput smi) 
+{
+	os << int(smi);
+	return os;
+}
+
+inline
+ostream & operator<<(ostream & os, ButtonPolicy::State st)
+{
+	os << int(st);
+	return os;
+}
+
 //--------------------- Actual Policy Classes -----------------------------
 
 /** Ok and Cancel buttons for dialogs with read-only operation.

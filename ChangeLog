@@ -1,3 +1,16 @@
+2000-10-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/filetools.C (MakeRelPath): change some types to
+	string::size_type 
+
+	* src/frontends/ButtonPolicies.h (operator<<): new operator for
+	ButtonPolicy::SMInput and ButtonPolicy::State.
+
+	* src/FontLoader.C (reset): small cleanup
+	(unload): small cleanup
+
+	* src/FontInfo.C (getFontname): initialize error to 10000.0
+
 2000-10-24  Angus Leeming <a.leeming@ic.ac.uk>
 	
 	* src/frontends/xforms/FormPreferences.[Ch]:

@@ -58,11 +58,11 @@ void FontLoader::update()
 void FontLoader::reset()
 {
 	// Clear font infos, font structs and font metrics
-	for (int i1 = 0; i1<4; i1++)
-		for (int i2 = 0; i2<2; i2++)
-			for (int i3 = 0; i3<4; i3++) {
+	for (int i1 = 0; i1 < 4; ++i1)
+		for (int i2 = 0; i2 < 2; ++i2)
+			for (int i3 = 0; i3 < 4; ++i3) {
 				fontinfo[i1][i2][i3] = 0;
-				for (int i4 = 0; i4<10; i4++) {
+				for (int i4 = 0; i4<10; ++i4) {
 					fontstruct[i1][i2][i3][i4] = 0;
 				}
 			}
@@ -72,14 +72,14 @@ void FontLoader::reset()
 void FontLoader::unload() 
 {
 	// Unload all fonts
-	for (int i1 = 0; i1<4; i1++)
-		for (int i2 = 0; i2<2; i2++)
-			for (int i3 = 0; i3<4; i3++) {
+	for (int i1 = 0; i1 < 4; ++i1)
+		for (int i2 = 0; i2 < 2; ++i2)
+			for (int i3 = 0; i3 < 4; ++i3) {
 				if (fontinfo[i1][i2][i3]) {
 					delete fontinfo[i1][i2][i3];
 					fontinfo[i1][i2][i3] = 0;
 				}
-				for (int i4 = 0; i4<10; i4++) {
+				for (int i4 = 0; i4 < 10; ++i4) {
 					if (fontstruct[i1][i2][i3][i4]) {
 						XFreeFont(fl_get_display(), fontstruct[i1][i2][i3][i4]);
 						fontstruct[i1][i2][i3][i4] = 0;

@@ -32,7 +32,7 @@ string const FontInfo::getFontname(int size)
 		return string();
 
 	int closestind = -1;
-	double error = 100000;
+	double error = 100000.0;
 
 	for (int i = 0; i < matches; ++i) {
 		if (sizes[i] == 0) {
