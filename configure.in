@@ -75,6 +75,7 @@ dnl we disable rtti for now
 dnl LYX_CXX_RTTI
 AC_CHECK_HEADERS(ostream istream)
 LYX_CXX_STL_MODERN_STREAMS
+LYX_REGEX
 
 ### Library Files
 dnl by testing these we check if it is ok to have

@@ -1,11 +1,14 @@
 AUTOMAKE_OPTIONS = foreign
-pkglib_LTLIBRARIES = libsupport.la
+noinst_LTLIBRARIES = libsupport.la
 LIBS =
 ETAGS_ARGS = --c++
 INCLUDES = -I${srcdir}/../
 
 if USE_LYXSTRING
 LYXSTRING = lyxstring.C lyxstring.h
+endif
+if USE_REGEX
+REGEX = regex.c lyxregex.h
 endif
 
 libsupport_la_SOURCES = \
@@ -28,7 +31,7 @@ libsupport_la_SOURCES = \
 	lyxlib.h \
 	$(LYXSTRING) lyxsum.C \
 	path.h \
-	syscall.C \
+	$(REGEX) syscall.C \
 	syscall.h \
 	syscontr.C \
 	syscontr.h \

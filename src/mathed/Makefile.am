@@ -1,6 +1,6 @@
 AUTOMAKE_OPTIONS = foreign 1.4
 MAINTAINERCLEANFILES = Makefile.in
-pkglib_LTLIBRARIES = libmathed.la
+noinst_LTLIBRARIES = libmathed.la
 LIBS=
 ETAGS_ARGS = --c++
 INCLUDES = -I${top_srcdir}/images -I${srcdir}/../ 

@@ -1,6 +1,6 @@
 AUTOMAKE_OPTIONS = foreign
 MAINTAINERCLEANFILES = Makefile.in
-pkglib_LTLIBRARIES = libinsets.la
+noinst_LTLIBRARIES = libinsets.la
 LIBS =
 ETAGS_ARGS = --c++
 INCLUDES = -I${srcdir}/../ 

@@ -361,6 +361,15 @@ AC_DEFUN(LYX_CXX_STL_STRING,[
 ])
 
 
+dnl Usage: LYX_REGEX : checks if the header regex.h is available
+dnl   if it is not available the automake variable USE_REGEX will be
+dnl   defined and the regex.h and regex.c that we provide will be used.
+AC_DEFUN(LYX_REGEX,[
+    AC_CHECK_HEADERS(regex.h, lyx_regex=no, lyx_regex=yes)
+    AM_CONDITIONAL(USE_REGEX, test x$lyx_regex = xyes)
+])
+
+
 dnl LYX_CXX_MUTABLE
 AC_DEFUN(LYX_CXX_MUTABLE, [
 AC_REQUIRE([LYX_PROG_CXX])

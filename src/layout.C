@@ -1253,14 +1253,20 @@ LyXTextClassList::NameOfLayout(LyXTextClassList::ClassList::size_type textclass,
 			       LyXTextClass::LayoutList::size_type layout) const
 {
 	static string dummy("dummy");
+#if 1
 	static string end("@@end@@");
+#endif
 	classlist[textclass].load();
 	if (layout < classlist[textclass].numLayouts())
 		return classlist[textclass][layout].name();
+#if 1
 	else if (layout == LYX_DUMMY_LAYOUT)
 		return dummy;
 	else
 		return end;
+#else
+	return dummy;
+#endif
 }
 
 
@@ -1269,15 +1275,26 @@ string const &
 LyXTextClassList::NameOfClass(LyXTextClassList::ClassList::size_type number) const
 {
 	static string dummy("dummy");
+#if 1
 	static string end("@@end@@");
+#endif
 	if (classlist.size() == 0) {
+#if 1
 		if (number == 0) return dummy;
 		else return end;
+#else
+		return dummy;
+#endif
 	}
+#if 1
 	if (number < classlist.size())
 		return classlist[number].name();
 	else
 		return end;
+#else
+	Assert(number < classlist.size());
+	return classlist[number].name();
+#endif
 }
 
 
@@ -1286,16 +1303,28 @@ string const &
 LyXTextClassList::LatexnameOfClass(LyXTextClassList::ClassList::size_type number) const
 {
 	static string dummy("dummy");
+#if 1
 	static string end("@@end@@");
+#endif
 	classlist[number].load();
 	if (classlist.size() == 0) {
+#if 1
 		if (number == 0) return dummy;
 		else return end;
+#else
+		return dummy;
+#endif
 	}
+#if 1
 	if (number < classlist.size())
 		return classlist[number].latexname();
+	
 	else
 		return end;
+#else
+	Assert(number < classlist.size());
+	return classlist[number].latexname();
+#endif
 }
 
 
@@ -1304,15 +1333,26 @@ string const &
 LyXTextClassList::DescOfClass(LyXTextClassList::ClassList::size_type number) const
 {
 	static string dummy("dummy");
+#if 1
 	static string end("@@end@@");
+#endif
 	if (classlist.size() == 0) {
+#if 1
 		if (number == 0) return dummy;
 		else return end;
+#else
+		return dummy;
+#endif
 	}
+#if 1
 	if (number < classlist.size())
 		return classlist[number].description();
 	else
 		return end;
+#else
+	Assert(number < classlist.size());
+	return classlist[number].description();
+#endif
 }
 
 
@@ -1363,6 +1403,8 @@ bool LyXTextClassList::Read ()
 		// This causes LyX to end... Not a desirable behaviour. Lgb
 		// What do you propose? That the user gets a file dialog
 		// and is allowed to hunt for the file? (Asger)
+		// more that we have a layout for minimal.cls statically
+		// compiled in... (Lgb)
 	}
 
 	lex.setFile(real_file);

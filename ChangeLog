@@ -1,3 +1,25 @@
+1999-12-24  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/LRegex.C: include <regex.h> if HAVE_REGEX_H is
+	defined, "lyxregex.h" if not.
+
+	* src/support/Makefile.am (noinst_LTLIBRARIES): changed from
+	pkglib_ to noinst_
+	(REGEX): new variable that is set to regex.c lyxregex.h when
+	AM_CONDITIONAL USE_REGEX is set.
+	(libsupport_la_SOURCES): add $(REGEX)
+
+	* src/mathed/Makefile.am (noinst_LTLIBRARIES): changed from
+	pkglib_ to noinst_
+
+	* src/insets/Makefile.am (noinst_LTLIBRARIES): changed from
+	pkglib_ to noinst_
+
+	* configure.in: add call to LYX_REGEX 
+
+	* acinclude.m4 (LYX_REGEX): checks if we need to use the included
+	regex or not. Uses a a AM_CONDITIONAL to decide what to compile. 
+
 1999-12-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/bind/fi_menus.bind: new file, from

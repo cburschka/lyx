@@ -5,7 +5,13 @@
 #include <config.h>
 
 #include <sys/types.h>
+
+#ifdef HAVE_REGEX_H
 #include <regex.h>
+#else
+#include "lyxregex.h"
+#endif
+
 #include "LRegex.h"
 
 using std::make_pair;
