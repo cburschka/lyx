@@ -43,7 +43,6 @@ InsetNote::InsetNote(BufferParams const & bp, string const & label)
 {
 	params_.type = label;
 	init();
-	setButtonLabel();
 }
 
 
@@ -54,7 +53,7 @@ InsetNote::InsetNote(InsetNote const & in)
 }
 
 
-InsetNote::~InsetNote() // MV
+InsetNote::~InsetNote()
 {
 	InsetNoteMailer mailer("note", *this);
 	mailer.hideDialog();
@@ -136,9 +135,7 @@ dispatch_result InsetNote::localDispatch(FuncRequest const & cmd)
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
-		InsetNoteParams params;
-		InsetNoteMailer::string2params(cmd.argument, params);
-		params_.type = params.type;
+		InsetNoteMailer::string2params(cmd.argument, params_);
 		setButtonLabel();
 		bv->updateInset(this);
 		return DISPATCHED;
