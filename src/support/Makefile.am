@@ -14,6 +14,10 @@ if USE_LYXSTRING
 LYXSTRING = lyxstring.C lyxstring.h
 endif
 
+if USE_COMPRESSION
+COMPRESSION = gzstream.C gzstream.C
+endif
+
 BUILT_SOURCES = path_defines.C
 
 libsupport_la_SOURCES = \
@@ -46,9 +50,7 @@ libsupport_la_SOURCES = \
 	forkedcontr.C \
 	forkedcontr.h \
 	getcwd.C \
-	gzstream.C \
-	gzstream.h \
-	kill.C \
+	$(COMPRESSION) kill.C \
 	limited_stack.h \
 	lstrings.C \
 	lstrings.h \
@@ -66,6 +68,7 @@ libsupport_la_SOURCES = \
 	path.C \
 	path.h \
 	path_defines.C \
+	path_defines.h \
 	putenv.C \
 	rename.C \
 	rmdir.C \

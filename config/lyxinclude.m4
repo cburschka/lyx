@@ -162,7 +162,7 @@ AC_PROG_CXX
 
 ### We might want to get or shut warnings.
 AC_ARG_ENABLE(warnings,
-  [  --enable-warnings       tell the compiler to display more warnings],,
+  AC_HELP_STRING([--enable-warnings],[tell the compiler to display more warnings]),,
   [ if test $lyx_devel_version = yes -o $lyx_prerelease = yes && test $ac_cv_prog_gxx = yes ; then
 	enable_warnings=yes;
     else
@@ -177,7 +177,7 @@ fi
 
 ### We might want to disable debug
 AC_ARG_ENABLE(debug,
-  [  --enable-debug          enable debug information],,
+  AC_HELP_STRING([--enable-debug],[enable debug information]),,
   [ if test $lyx_devel_version = yes -o $lyx_prerelease = yes && test $ac_cv_prog_gxx = yes ; then
 	enable_debug=yes;
     else
@@ -186,7 +186,7 @@ AC_ARG_ENABLE(debug,
 
 ### set up optimization
 AC_ARG_ENABLE(optimization,
-  [  --enable-optimization[=value]   enable compiler optimisation],,
+  AC_HELP_STRING([--enable-optimization[=value]],[enable compiler optimisation]),,
 	enable_optimization=yes;)
 case $enable_optimization in
   yes) lyx_opt=-O;;

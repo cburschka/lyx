@@ -483,6 +483,8 @@ bool Buffer::readFile(LyXLex & lex, string const & filename,
 
 	// the first token _must_ be...
 	if (token != "\\lyxformat") {
+		lyxerr << "Token: " << token << endl;
+
 		Alert::error(_("Document format failure"),
 			_("The specified document is not a LyX document."));
 		return false;
@@ -522,7 +524,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename,
 				return false;
 			}
 			command += " -t"
-				+tostr(LYX_FORMAT) + ' '
+				+ tostr(LYX_FORMAT) + ' '
 				+ QuoteName(filename);
 			lyxerr[Debug::INFO] << "Running '"
 					    << command << '\''

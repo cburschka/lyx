@@ -1,3 +1,7 @@
+2003-07-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Makefile.am: contidionalize USE_COMPRESSION
+
 2003-07-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* filetools.C (getExtFromContents): correct magic for gzip and
