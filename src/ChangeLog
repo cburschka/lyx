@@ -1,3 +1,8 @@
+2002-04-30  Juergen Vigna  <jug@sad.it>
+
+	* buffer.C (parseSingleLyXformat2Token): reset the font before the
+	ert compatibility check for "latex" layout.
+
 2002-04-29  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* buffer.C (parseSingleLyXformat2Token): Fix reading of old format 

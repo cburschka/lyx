@@ -482,6 +482,13 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			layoutname = tclass.defaultLayoutName();
 		}
 
+		// reset the font as we start a new layout and if the font is
+		// not ALL_INHERIT,document_language then it will be set to the
+		// right values after this tag (Jug 20020420)
+		font = LyXFont(LyXFont::ALL_INHERIT, params.language);
+		if (file_format < 216 && params.language->lang() == "hebrew")
+			font.setLanguage(default_language);
+		
 #ifndef NO_COMPABILITY
 		if (compare_no_case(layoutname, "latex") == 0) {
 			ert_comp.active = true;
@@ -555,10 +562,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			if (!layout.obsoleted_by().empty())
 				par->layout(layout.obsoleted_by());
 			par->params().depth(depth);
-			font = LyXFont(LyXFont::ALL_INHERIT, params.language);
-			if (file_format < 216
-			    && params.language->lang() == "hebrew")
-				font.setLanguage(default_language);
 #if USE_CAPTION
 		}
 #endif
