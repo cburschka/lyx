@@ -1,5 +1,9 @@
 2004-04-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* ControlMath.C (find_xpm): 
+	* ControlBibtex.C (applyParamsToInset): 
+	* ControlBibitem.C (applyParamsToInset): fix #warning directives
+	
 	* ControlDialog.tmpl (show, update, hide): gcc 3.4 compilation fix
 
 2003-02-10  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>

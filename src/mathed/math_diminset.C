@@ -9,7 +9,7 @@
 
 void MathDimInset::metricsT(TextMetricsInfo const &) const
 {
-#ifndef WITH_WARNINGS
+#ifdef WITH_WARNINGS
 #warning temporarily disabled
 #endif
 /*

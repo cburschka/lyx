@@ -3161,7 +3161,9 @@ int Buffer::runChktex()
 	// if we removed error insets before we ran chktex or if we inserted
 	// error insets after we ran chktex, this must be run:
 	if (removedErrorInsets || res) {
+#ifdef WITH_WARNINGS
 #warning repaint needed here, or do you mean update() ?
+#endif
 		users->repaint();
 		users->fitCursor();
 	}
@@ -3349,7 +3351,9 @@ void Buffer::resizeInsets(BufferView * bv)
 
 void Buffer::redraw()
 {
+#ifdef WITH_WARNINGS
 #warning repaint needed here, or do you mean update() ?
+#endif
 	users->repaint();
 	users->fitCursor();
 }

@@ -364,8 +364,9 @@ int InsetCitation::latex(Buffer const * buffer, ostream & os,
 		os << getCmdName();
 	else
 		os << "cite";
-
+#ifdef WITH_WARNINGS
 #warning What is this code supposed to do? (Lgb)
+#endif
 // my guess is that this is just waiting for when we support before,
 // so it's a oneliner. But this is very silly ! - jbl
 

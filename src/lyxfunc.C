@@ -833,7 +833,9 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 				owner->view_state_changed();
 				goto exit_with_message;
 			}
+#ifdef WITH_WARNINGS
 #warning I am not sure this is still right, please have a look! (Jug 20020417)
+#endif
 			else { // result == UNDISPATCHED
 				//setMessage(N_("Text mode"));
 				switch (action) {
@@ -1083,7 +1085,9 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	case LFUN_REMOVEERRORS:
 		if (view()->removeAutoInsets()) {
+#ifdef WITH_WARNINGS
 #warning repaint() or update() or nothing ?
+#endif
 			view()->repaint();
 			view()->fitCursor();
 		}
@@ -1116,10 +1120,6 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		else if (argument == "closefig")
 			view()->allFloats(0,1);
 		break;
-#else
-#ifdef WITH_WARNINGS
-//#warning Find another implementation here (or another lyxfunc)!
-#endif
 #endif
 	case LFUN_HELP_ABOUTLYX:
 		owner->getDialogs().showAboutlyx();

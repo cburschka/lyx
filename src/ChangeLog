@@ -1,5 +1,11 @@
 2004-04-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
+	* text2.C (setCounter): 
+	* lyxfunc.C (dispatch): 
+	* exporter.C (Export): 
+	* converter.C (runLaTeX): 
+	* buffer.C (redraw, runChktex): fix #warning directives
+
 	* BoostFormat.h: fix compilation with gcc 3.4
 
 2003-09-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>

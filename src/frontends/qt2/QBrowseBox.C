@@ -24,6 +24,7 @@
 #include <cstdio>
 #include <cmath>
 
+using std::floor;
 
 QBrowseBox::QBrowseBox(int rows, int cols, QWidget* parent, const char* name, WFlags f)
 	: QGridView(parent,name,f)

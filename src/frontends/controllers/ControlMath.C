@@ -301,9 +301,10 @@ int const nr_latex_ams_ops = sizeof(latex_ams_ops) / sizeof(char const *);
 
 string const find_xpm(string const & name)
 {
+#ifdef WITH_WARNINGS
 #warning Use a static table for this (Lgb)
 	// And get O(log n) lookup (Lgb)
-
+#endif
 	string xpm_name = subst(name, ' ', '_');
 	if (xpm_name == "(") xpm_name = "lparen";
 	else if (xpm_name == ")") xpm_name = "rparen";

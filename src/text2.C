@@ -1321,7 +1321,9 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 				textclass.counters().step(fl.type());
 
 				// Doesn't work... yet.
+#ifdef WITH_WARNINGS
 #warning use boost.format
+#endif
 #if USE_BOOST_FORMAT
 				s = boost::io::str(boost::format(_("%1$s #:")) % fl.name());
 				// s << boost::format(_("%1$s %1$d:")

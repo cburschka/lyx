@@ -37,8 +37,10 @@ void ControlBibitem::applyParamsToInset()
 
 	// We need to do a redraw because the maximum
 	// InsetBibKey width could have changed
+#ifdef WITH_WARNINGS
 #warning please check you mean repaint() not update(),
 #warning and whether the repaint() is needed at all
+#endif
 	bufferview()->repaint();
 	bufferview()->fitCursor();
 }

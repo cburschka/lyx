@@ -1,3 +1,7 @@
+2004-04-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetcite.C (latex): fix #warning statement
+
 2004-04-19  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetbib.C (normalize_name): new helper function. This changes

@@ -807,9 +807,10 @@ MathInset::result_type MathHullInset::dispatch
 
 			if (!new_label.empty())
 				numbered(r, true);
-
+#ifdef WITH_WARNINGS
 #warning FIXME: please check you really mean repaint() ... is it needed,
 #warning and if so, should it be update() instead ?
+#endif
 			if (!new_label.empty()
 					&& cmd.view()->ChangeRefsIfUnique(old_label, new_label))
 				cmd.view()->repaint();
