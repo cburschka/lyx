@@ -320,7 +320,7 @@ private:
 	///
 	void clearFrame(Painter &, bool cleared) const;
 	///
-	void clearInset(Painter &, int baseline, bool & cleared) const;
+	void clearInset(BufferView *, int baseline, bool & cleared) const;
 	///
 	void saveLyXTextState(LyXText *) const;
 	void restoreLyXTextState(BufferView *, LyXText *) const;

@@ -1054,7 +1054,7 @@ void LyXText::clearSelection() const
 {
 	selection.set(false);
 	selection.mark(false);
-	selection.end = selection.start = selection.cursor = cursor;
+	last_sel_cursor = selection.end = selection.start = selection.cursor = cursor;
 }
 
 

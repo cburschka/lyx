@@ -376,7 +376,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	// repaint the background if needed
 	if (cleared && backgroundColor() != LColor::background) {
 		top_x = int(x);
-		clearInset(pain, baseline, cleared);
+		clearInset(bv, baseline, cleared);
 		top_x = old_x;
 	}
 
@@ -400,7 +400,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	if (!cleared && (top_x == int(x)) &&
 		((need_update&(INIT|FULL)) || (top_baseline!=baseline) ||
 		 (last_drawn_width!=insetWidth))) {
-		clearInset(pain, baseline, cleared);
+		clearInset(bv, baseline, cleared);
 	}
 
 	top_x = int(x);
@@ -419,9 +419,9 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	last_width = width(bv, f);
 	last_height = ascent(bv, f) + descent(bv, f);
 
-	if (cleared || (last_drawn_width != insetWidth)) {
+	if (last_drawn_width != insetWidth) {
 		if (!cleared) 
-			clearInset(pain, baseline, cleared);
+			clearInset(bv, baseline, cleared);
 		need_update |= FULL;
 		last_drawn_width = insetWidth;
 	}
@@ -1004,14 +1004,22 @@ void InsetText::insetMotionNotify(BufferView * bv, int x, int y, int state)
 						     y - inset_y,state);
 		return;
 	}
-	LyXText * t = getLyXText(bv);
+	bool clear = false;
+	if (!lt) {
+		lt = getLyXText(bv);
+		clear = true;
+	}
 	hideInsetCursor(bv);
-	t->setCursorFromCoordinates(bv, x - drawTextXOffset, y + insetAscent);
-	t->setSelection(bv);
-	if (t->toggle_cursor.par() != t->toggle_end_cursor.par() ||
-		t->toggle_cursor.pos() != t->toggle_end_cursor.pos())
+	lt->setCursorFromCoordinates(bv, x - drawTextXOffset, y + insetAscent);
+	lt->setSelection(bv);
+	if (lt->toggle_cursor.par() != lt->toggle_end_cursor.par() ||
+		lt->toggle_cursor.pos() != lt->toggle_end_cursor.pos())
+	{
 		updateLocal(bv, SELECTION, false);
+	}
 	showInsetCursor(bv);
+	if (clear)
+		lt = 0;
 }
 
 
@@ -1782,7 +1790,7 @@ bool InsetText::insertInset(BufferView * bv, Inset * inset)
 #endif
 	bv->fitCursor();
 	updateLocal(bv, CURSOR_PAR|CURSOR, true);
-	showInsetCursor(bv);
+//	showInsetCursor(bv);
 	if (clear)
 		lt = 0;
 	return true;
@@ -2282,10 +2290,12 @@ void InsetText::clearSelection(BufferView * bv)
 }
 
 
-void InsetText::clearInset(Painter & pain, int baseline, bool & cleared) const
+void InsetText::clearInset(BufferView * bv, int baseline, bool & cleared) const
 {
+	LyXFont dummy;
+	Painter & pain = bv->painter();
 	int w = insetWidth;
-	int h = insetAscent + insetDescent;
+	int h = ascent(bv, dummy) + descent(bv, dummy);
 	int ty = baseline - insetAscent;
 	
 	if (ty < 0) {
@@ -2318,7 +2328,6 @@ Paragraph * InsetText::getParFromID(int id) const
 #else
 	Paragraph * tmp = par;
 	while (tmp) {
-		int tmp_id = tmp->id();
 		if (tmp->id() == id) {
 			return tmp;
 		}
@@ -2365,6 +2374,14 @@ Paragraph * InsetText::paragraph() const
 
 void InsetText::paragraph(Paragraph * p)
 {
+	// first we have to delete the old contents otherwise we'll have a
+	// memory leak!
+	the_locking_inset = 0;
+	while (par) {
+		Paragraph * tmp = par->next();
+		delete par;
+		par = tmp;
+	}
 	par = p;
 	// set ourself as owner for all the paragraphs inserted!
 	Paragraph * np = par;

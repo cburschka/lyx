@@ -181,7 +181,7 @@ unsigned char LyXText::transformChar(unsigned char c, Paragraph * par,
 // Lgb
 
 int LyXText::singleWidth(BufferView * bview, Paragraph * par,
-			 pos_type pos) const
+                         pos_type pos) const
 {
 	char const c = par->getChar(pos);
 	return singleWidth(bview, par, pos, c);
@@ -215,7 +215,10 @@ int LyXText::singleWidth(BufferView * bview, Paragraph * par,
 	} else if (c == Paragraph::META_INSET) {
 		Inset * tmpinset = par->getInset(pos);
 		if (tmpinset) {
-#if 0 // seems not to be needed, but ...
+#if 1
+			// this IS needed otherwise on initialitation we don't get the fill
+			// of the row right (ONLY on initialization if we read a file!)
+			// should be changed! (Jug 20011204)
 			tmpinset->update(bview, font);
 #endif
 			return tmpinset->width(bview, font);
@@ -1039,13 +1042,6 @@ int LyXText::fill(BufferView * bview, Row * row, int paper_width) const
 	}
 	
 	int const fill = paper_width - w - rightMargin(bview->buffer(), row);
-#ifdef WITH_WARNINGS
-#warning Please fix me (Jug!)
-#endif
-#if 0
-	if (fill < 0)
-		return 0;
-#endif
 	return fill;
 }
 
@@ -1515,35 +1511,34 @@ void LyXText::setHeightOfRow(BufferView * bview, Row * row_ptr) const
  * start at the implicit given position */
 void LyXText::appendParagraph(BufferView * bview, Row * row) const
 {
-   bool not_ready = true;
+	bool not_ready = true;
    
-   // The last character position of a paragraph is an invariant so we can 
-   // safely get it here. (Asger)
-   pos_type const lastposition = row->par()->size();
-   do {
-      // Get the next breakpoint
-      pos_type z = nextBreakPoint(bview, row, workWidth(bview));
+	// The last character position of a paragraph is an invariant so we can 
+	// safely get it here. (Asger)
+	pos_type const lastposition = row->par()->size();
+	do {
+		// Get the next breakpoint
+		pos_type z = nextBreakPoint(bview, row, workWidth(bview));
       
-      Row * tmprow = row;
+		Row * tmprow = row;
 
-      // Insert the new row
-      if (z < lastposition) {
-	 ++z;
-	 insertRow(row, row->par(), z);
-	 row = row->next();
+		// Insert the new row
+		if (z < lastposition) {
+			++z;
+			insertRow(row, row->par(), z);
+			row = row->next();
 
-	 row->height(0);
-      } else
-	 not_ready = false;
+			row->height(0);
+		} else
+			not_ready = false;
       
-      // Set the dimensions of the row
-#ifdef WITH_WARNINGS
-#warning Something is rotten here! (Jug)
-#endif
-      tmprow->fill(fill(bview, tmprow, workWidth(bview)));
-      setHeightOfRow(bview, tmprow);
+		// Set the dimensions of the row
+		// fixed fill setting now by calling inset->update() in
+		// SingleWidth when needed!
+		tmprow->fill(fill(bview, tmprow, workWidth(bview)));
+		setHeightOfRow(bview, tmprow);
 
-   } while (not_ready);
+	} while (not_ready);
 }
 
 

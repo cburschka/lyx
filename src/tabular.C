@@ -341,12 +341,20 @@ void LyXTabular::DeleteColumn(int column)
 }
 
 
-void LyXTabular::Reinit()
-{   
-	for (int i = 0; i < rows_; ++i) {
-		for (int j = 0; j < columns_; ++j) {
-			cell_info[i][j].width_of_cell = 0;
-			cell_info[i][j].inset.setOwner(owner_);
+void LyXTabular::reinit()
+{
+	Reinit(false);
+}
+
+
+void LyXTabular::Reinit(bool reset_widths)
+{
+	if (reset_widths) {
+		for (int i = 0; i < rows_; ++i) {
+			for (int j = 0; j < columns_; ++j) {
+				cell_info[i][j].width_of_cell = 0;
+				cell_info[i][j].inset.setOwner(owner_);
+			}
 		}
 	}
   

@@ -1,3 +1,15 @@
+2001-12-04  Juergen Vigna  <jug@sad.it>
+
+	* insetert.C (edit): handle Inlined status.
+
+	* insettext.C (insertInset): trying John's fix for the trailing cursor
+
+	* insetert.C (insetButtonPress): added to handle inlined status
+	(insetMotionNotify): ditto.
+
+	* insettext.C (clearInset): changed Painter & in BufferView * param,
+	to be able to call ascent,descent methods.
+
 2001-12-03  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (updateInsetInInset): use lt variable to forbid

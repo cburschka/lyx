@@ -168,6 +168,8 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 				it->getLyXText(bv)->setCursorIntern(bv, tmppar, undo->cursor_pos);
 				it->getLyXText(bv)->updateCounters(bv, it->getLyXText(bv)->cursor.row());
 			}
+			LyXFont font;
+			it->update(bv, font, false);
 #ifdef THIS_DOES_NOT_WORK
 			// we need this anyway as also if the undo was inside an inset
 			// we have to redo the paragraph breaking

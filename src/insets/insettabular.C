@@ -587,6 +587,10 @@ void InsetTabular::insetUnlock(BufferView * bv)
 void InsetTabular::updateLocal(BufferView * bv, UpdateCodes what,
 			       bool mark_dirty) const
 {
+	if (what == INIT) {
+		LyXFont font;
+		calculate_dimensions_of_cells(bv, font, true);
+	}
 	if (need_update < what) // only set this if it has greater update
 		need_update = what;
 	if ((what == INIT) && hasSelection())
@@ -1244,6 +1248,8 @@ bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv,
 		changed = tabular->SetAscentOfRow(i, maxAsc + ADD_TO_HEIGHT) || changed;
 		changed = tabular->SetDescentOfRow(i, maxDesc + ADD_TO_HEIGHT) || changed;
 	}
+	if (changed)
+		tabular->reinit();
 	return changed;
 }
 

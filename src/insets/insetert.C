@@ -257,8 +257,14 @@ void InsetERT::edit(BufferView * bv, int x, int y, unsigned int button)
 {
 	if (button == 3)
 		return;
- 
-	InsetCollapsable::edit(bv, x, y, button);
+
+	if (status_ == Inlined) {
+		if (!bv->lockInset(this))
+			return;
+		inset.edit(bv, x, y, button);
+	} else {
+		InsetCollapsable::edit(bv, x, y, button);
+	}
 	updateStatus(0);
 	set_latex_font(bv);
 }
@@ -277,6 +283,19 @@ void InsetERT::edit(BufferView * bv, bool front)
 	InsetCollapsable::edit(bv, front);
 	updateStatus(0);
 	set_latex_font(bv);
+}
+
+
+
+
+void InsetERT::insetButtonPress(BufferView * bv,
+                                        int x, int y, int button)
+{
+	if (status_ == Inlined) {
+		inset.insetButtonPress(bv, x, y, button);
+	} else {
+		InsetCollapsable::insetButtonPress(bv, x, y, button);
+	}
 }
 
 
@@ -302,6 +321,17 @@ void InsetERT::insetButtonRelease(BufferView * bv, int x, int y, int button)
 			yy -= (ascent_collapsed() + descent_collapsed());
 			inset.insetButtonRelease(bv, x, yy, button);
 		}
+	}
+}
+
+
+void InsetERT::insetMotionNotify(BufferView * bv,
+                                         int x, int y, int state)
+{
+	if (status_ == Inlined) {
+		inset.insetMotionNotify(bv, x, y, state);
+	} else {
+		InsetCollapsable::insetMotionNotify(bv, x, y, state);
 	}
 }
 

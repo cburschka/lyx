@@ -71,7 +71,11 @@ public:
 	///
 	SigC::Signal0<void> hideDialog;
 	///
+	void insetButtonPress(BufferView *, int x, int y, int button);
+	///
 	void insetButtonRelease(BufferView * bv, int x, int y, int button);
+	///
+	void insetMotionNotify(BufferView *, int x, int y, int state);
 	///
 	int latex(Buffer const *, std::ostream &, bool fragile,
 		  bool free_spc) const;

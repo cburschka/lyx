@@ -394,6 +394,9 @@ public:
 	///
 	std::vector<string> const getLabelList() const;
 	///
+	/// recalculate the widths/heights only!
+	void reinit();
+	///
 	mutable int cur_cell;
 private:
 	///
@@ -518,7 +521,7 @@ private:
 	///
 	void Init(int columns_arg, int rows_arg, LyXTabular const * lt = 0);
 	///
-	void Reinit();
+	void Reinit(bool reset_widths = true);
 	///
 	void set_row_column_number_info(bool oldformat = false);
 	/// Returns true if a complete update is necessary, otherwise false
