@@ -50,9 +50,9 @@ void FormMinipage::build()
 	bc().addReadOnly(dialog_->input_width);
 	bc().addReadOnly(dialog_->choice_width_units);
 	bc().addReadOnly(dialog_->group_alignment);
-	// bc().addReadOnly(dialog_->radio_top);
-	// bc().addReadOnly(dialog_->radio_middle);
-	// bc().addReadOnly(dialog_->radio_bottom);
+	bc().addReadOnly(dialog_->radio_top);
+	bc().addReadOnly(dialog_->radio_middle);
+	bc().addReadOnly(dialog_->radio_bottom);
 }
 
 
