@@ -37,6 +37,7 @@
 using SigC::slot;
 using std::vector;
 using std::bind2nd;
+using std::remove_if;
 
 
 FormTabular::FormTabular(LyXView * lv, Dialogs * d)
