@@ -77,11 +77,7 @@ int InsetFormulaMacro::Latex(ostream & os, bool /*fragile*/,
 			     bool /*free_spacing*/) const
 {
 	tmacro->WriteDef(os, true); // or false?
-	// CHECK
-	// This is the only place where a '1' is used rather that '-1' or '0'
-	// for value of fragile. What is the reason behind it and does it make
-	// a difference? (Lgb)
-    return 1;
+	return 1;
 }
 
 

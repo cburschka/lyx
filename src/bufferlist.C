@@ -466,7 +466,7 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 		if (LyXVC::file_not_found_hook(s)) {
 			// Ask if the file should be checked out for
 			// viewing/editing, if so: load it.
-		        if (AskQuestion(_("Do you want to retrive file under version control?"))) {
+		        if (AskQuestion(_("Do you want to retrieve file under version control?"))) {
 				// How can we know _how_ to do the checkout?
 				// With the current VC support it has to be,
 				// a RCS file since CVS do not have special ,v files.

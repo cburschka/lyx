@@ -1,3 +1,11 @@
+2000-04-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/mathed/formulamacro.C (Latex): remove CHECK comment, since
+	code seems to be alright (it is code changed by Dekel, and the
+	intent is indeed that all macros should be defined \protect'ed)
+
+	* NEWS: a bit of reorganisation of the new user-visible features.
+
 2000-04-19  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettext.C (init): using a LyXCursor now for cursor

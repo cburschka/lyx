@@ -58,11 +58,11 @@ libXpm can be found at:
 	    (or similar locations at other sunsites like sunsite.unc.edu)
 
 You will also need a recent C++ compiler, where recent means that the
-compilers are close to C++ standard conforming. Compilers that are known
-to compile LyX are gcc 2.8.1 and 2.95.x, the various versions of egcs
-and Digital C++ version 6.1. Please tell us your experience with other
-compilers. It is _not_ possible to compile LyX with gcc
-2.7.x, and this is not likely to change in the future. 
+compilers are close to C++ standard conforming. Compilers that are
+known to compile LyX are gcc 2.8.1 and 2.95.x, the various versions of
+egcs and Digital C++ version 6.1. Please tell us your experience with
+other compilers. It is _not_ possible to compile LyX with gcc 2.7.x,
+and this is not likely to change in the future.
 
 Note that, contrary to LyX 1.0.x, LyX 1.1.x makes great use of C++
 Standard Template Library (STL); this means that gcc users will have
@@ -191,7 +191,7 @@ desperate cases:
     this flag is on for development versions only.
 
   o --enable-assertions that make the compilier generater run-time
-    code which checks that some variables have sane values.  Opposite
+    code which checks that some variables have sane values. Opposite
     is --disable-assertions.  By default, this flag is on for
     development versions only. 
 
