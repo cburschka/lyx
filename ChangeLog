@@ -1,3 +1,8 @@
+2000-08-21  Allan Rae  <rae@lyx.org>
+
+	* src/frontends/xforms/FormDocument.h: D'oh.  Forgot to change the
+	policy here also.
+
 2000-08-21  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/Spacing.C (writeEnvirBegin): Small fix when sstream not present

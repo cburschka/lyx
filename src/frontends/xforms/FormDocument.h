@@ -25,7 +25,7 @@ class LyXView;
 class Dialogs;
 class Combox;
 class BufferParams;
-class PreferencesPolicy;
+class NoRepeatedApplyReadOnlyPolicy;
 template <class x> class ButtonController;
 
 struct FD_form_tabbed_document;
@@ -189,7 +189,7 @@ private:
     ///
     Combox * combo_language;
     ///
-    ButtonController<PreferencesPolicy> * bc_;
+    ButtonController<NoRepeatedApplyReadOnlyPolicy> * bc_;
 };
 
 #endif
