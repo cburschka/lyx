@@ -208,10 +208,15 @@ void InsetText::draw(Painter & pain, LyXFont const & f,
     xpos = x;
     UpdatableInset::draw(pain, f, baseline, x);
     
-    top_x = int(x);
-    top_baseline = baseline;
-    computeTextRows(pain, x);
-    computeBaselines(baseline);
+    if (init_inset || (baseline != top_baseline) || (top_x != int(x))) {
+	top_baseline = baseline;
+	if (init_inset || (top_x != int(x))) {
+	    top_x = int(x);
+	    computeTextRows(pain, x);
+	    init_inset = false;
+	}
+	computeBaselines(baseline);
+    }
     if (the_locking_inset && (cursor.pos == inset_pos)) {
 	resetPos(pain);
 	inset_x = cursor.x - top_x + drawTextXOffset;
@@ -1287,7 +1292,7 @@ void InsetText::computeTextRows(Painter & pain, float x) const
 	    }
 	    rows.back().asc = wordAscent;
 	    rows.back().desc = wordDescent;
-	    row.pos = ++p; // +1;
+	    row.pos = ++p;
 	    rows.push_back(row);
 	    SingleHeight(pain, par, p, oasc, odesc);
 	    insetWidth = max(insetWidth, owidth);
@@ -1297,39 +1302,42 @@ void InsetText::computeTextRows(Painter & pain, float x) const
 	    nwp = p;
 	    continue;
 	}
-	Inset const * inset = 0;
+	Inset * inset = 0;
 	if (((p + 1) < par->Last()) &&
 	    (par->GetChar(p + 1)==LyXParagraph::META_INSET))
 	    inset = par->GetInset(p + 1);
-	if (inset && inset->display()) {
-	    if (!is_first_word_in_row && (width >= maxWidth)) {
-		// we have to split also the row above
-		rows.back().asc = oasc;
-		rows.back().desc = odesc;
-		row.pos = nwp;
-		rows.push_back(row);
-		oasc = wordAscent;
-		odesc = wordDescent;
-		insetWidth = max(insetWidth, owidth);
-		width = lastWordWidth;
-		lastWordWidth = 0;
-	    } else {
+	if (inset) {
+	    inset->setOwner(this);
+	    if (inset->display()) {
+		if (!is_first_word_in_row && (width >= maxWidth)) {
+		    // we have to split also the row above
+		    rows.back().asc = oasc;
+		    rows.back().desc = odesc;
+		    row.pos = nwp;
+		    rows.push_back(row);
+		    oasc = wordAscent;
+		    odesc = wordDescent;
+		    insetWidth = max(insetWidth, owidth);
+		    width = lastWordWidth;
+		    lastWordWidth = 0;
+		} else {
 		    oasc = max(oasc, wordAscent);
 		    odesc = max(odesc, wordDescent);
+		}
+		rows.back().asc = oasc;
+		rows.back().desc = odesc;
+		row.pos = ++p;
+		rows.push_back(row);
+		SingleHeight(pain, par, p, asc, desc);
+		rows.back().asc = asc;
+		rows.back().desc = desc;
+		row.pos = nwp = p + 1;
+		rows.push_back(row);
+		oasc = odesc = width = lastWordWidth = 0;
+		is_first_word_in_row = true;
+		wordAscent = wordDescent = 0;
+		continue;
 	    }
-	    rows.back().asc = oasc;
-	    rows.back().desc = odesc;
-	    row.pos = ++p;
-	    rows.push_back(row);
-	    SingleHeight(pain, par, p, asc, desc);
-	    rows.back().asc = asc;
-	    rows.back().desc = desc;
-	    row.pos = nwp = p + 1;
-	    rows.push_back(row);
-	    oasc = odesc = width = lastWordWidth = 0;
-	    is_first_word_in_row = true;
-	    wordAscent = wordDescent = 0;
-	    continue;
 	} else if (par->IsSeparator(p)) {
 	    if (width >= maxWidth) {
 		if (is_first_word_in_row) {
@@ -1402,7 +1410,6 @@ void InsetText::computeBaselines(int baseline) const
 
 void InsetText::UpdateLocal(BufferView *bv, bool flag)
 {
-#if 1
     if (flag) {
 	computeTextRows(bv->painter(), xpos);
 	computeBaselines(top_baseline);
@@ -1410,10 +1417,6 @@ void InsetText::UpdateLocal(BufferView *bv, bool flag)
     bv->updateInset(this, flag);
     if (flag)
 	resetPos(bv->painter());
-#else
-    init_inset = flag;
-    bv->updateInset(this, flag);
-#endif
 }
 
 bool InsetText::cutSelection()
@@ -1424,9 +1427,16 @@ bool InsetText::cutSelection()
     CutAndPaste cap;
 
     LyXParagraph *endpar = par;
+    int start, end;
+    if (selection_start > selection_end) {
+	    start = selection_end;
+	    end = selection_start;
+    } else {
+	    start = selection_start;
+	    end = selection_end;
+    }
 
-    return cap.cutSelection(par, &endpar, selection_start, selection_end,
-			    buffer->params.textclass);
+    return cap.cutSelection(par, &endpar, start, end,buffer->params.textclass);
 }
 
 bool InsetText::copySelection()
@@ -1436,8 +1446,15 @@ bool InsetText::copySelection()
 
     CutAndPaste cap;
 
-    return cap.copySelection(par, par, selection_start, selection_end,
-			     buffer->params.textclass);
+    int start, end;
+    if (selection_start > selection_end) {
+	    start = selection_end;
+	    end = selection_start;
+    } else {
+	    start = selection_start;
+	    end = selection_end;
+    }
+    return cap.copySelection(par, par, start, end, buffer->params.textclass);
 }
 
 bool InsetText::pasteSelection()

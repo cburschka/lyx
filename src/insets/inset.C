@@ -142,11 +142,12 @@ void UpdatableInset::Edit(BufferView * bv, int, int, unsigned int)
 
 
 void UpdatableInset::draw(Painter &, LyXFont const &,
-			  int baseline, float & x) const
+			  int /* baseline */, float & x) const
 {
     if (scx) x += float(scx);
-    top_x = int(x);
-    top_baseline = baseline;
+// ATTENTION: this is not good doing here
+//    top_x = int(x);
+//    top_baseline = baseline;
 }
 
 

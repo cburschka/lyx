@@ -30,6 +30,14 @@ using std::pair;
 // in and some method of choosing beween them (based on the first few chars
 // in the selection probably.) This would be a nice feature and quite
 // easy to implement. (Lgb)
+//
+// Sure but I just cleaned up this code for now with the same functionality
+// as before. I also want to add a XClipboard function so that we can copy
+// text from LyX to some other X-application in the form of ASCII or in the
+// form of LaTeX (or Docbook depending on the document-class!). Think how nice
+// it could be to select a math-inset do a "Copy to X-Clipboard as LaTeX" and
+// then do a middle mouse button click in the application you want and have
+// the whole formula there in LaTeX-Code. (Jug)
 
 static LyXParagraph * buf = 0;
 static LyXTextClassList::size_type textclass = 0;
@@ -41,16 +49,17 @@ static LyXTextClassList::size_type textclass = 0;
 static
 void DeleteBuffer()
 {
-	if (!buf) return;
+    if (!buf)
+	return;
 	
-	LyXParagraph * tmppar;
+    LyXParagraph * tmppar;
 	
-	while (buf) {
-		tmppar =  buf;
-		buf = buf->next;
-		delete tmppar;
-	}
-	buf = 0;
+    while (buf) {
+	tmppar =  buf;
+	buf = buf->next;
+	delete tmppar;
+    }
+    buf = 0;
 }
 
 

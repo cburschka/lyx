@@ -561,7 +561,7 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 		bv_->the_locking_inset->
 			InsetMotionNotify(bv_,
 					  x - cursor.x,
-					  y - cursor.y,
+					  y - cursor.y + screen->first,
 					  state);
 		return;
 	}
@@ -973,7 +973,9 @@ Inset * BufferView::Pimpl::checkInsetHit(int & x, int & y, unsigned int /* butto
 		if (x > start_x && x < end_x
 		    && y_tmp > cursor.y - tmpinset->ascent(bv_->painter(), font)
 		    && y_tmp < cursor.y + tmpinset->descent(bv_->painter(), font)) {
+#if 0
 			if (move_cursor && (tmpinset != bv_->the_locking_inset))
+#endif
 				bv_->text->SetCursor(cursor.par,cursor.pos,true);
 			x = x - start_x;
 			// The origin of an inset is on the baseline
@@ -1001,8 +1003,10 @@ Inset * BufferView::Pimpl::checkInsetHit(int & x, int & y, unsigned int /* butto
 		if (x > start_x && x < end_x
 		    && y_tmp > cursor.y - tmpinset->ascent(bv_->painter(), font)
 		    && y_tmp < cursor.y + tmpinset->descent(bv_->painter(), font)) {
+#if 0
 			if (move_cursor && (tmpinset != bv_->the_locking_inset))
-				bv_->text->SetCursor(cursor.par,cursor.pos,true);
+#endif
+				bv_->text->SetCursor(cursor.par,cursor.pos-1,true);
 			x = x - start_x;
 			// The origin of an inset is on the baseline
 			y = y_tmp - (bv_->text->cursor.y); 

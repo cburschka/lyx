@@ -1,3 +1,16 @@
+2000-04-20  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettext.C (cutSelection): 
+	(copySelection): Fixed with selection from right to left.
+	(draw): now the rows are not recalculated at every draw.
+	(computeTextRows): for now reset the inset-owner here (this is
+	important for an undo or copy where the inset-owner is not set
+	automatically!)
+
+	* src/BufferView_pimpl.C (workAreaMotionNotify): when passing the
+	motion to the_locking_inset screen->first was forgotten, this was
+	not important till we got multiline insets.
+
 2000-04-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/mathed/formulamacro.C (Latex): remove CHECK comment, since
