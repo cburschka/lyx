@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.6fix1\n"
-"POT-Creation-Date: 2002-04-08 11:05+0200\n"
+"POT-Creation-Date: 2002-04-16 23:38+0200\n"
 "PO-Revision-Date: 2001-02-15 \n"
 "Last-Translator: Zrubecz László <zrubi@k2.jozsef.kando.hu>\n"
 "Language-Team: Magyar <magyar@lists.linux.hu>\n"
@@ -30,7 +30,7 @@ msgstr "Bekezdés"
 #. or stop loading the file.
 #. I can substitute but I don't see how I can
 #. stop loading... ideas??  ARRae980418
-#: src/buffer.C:383 src/buffer.C:395 src/buffer.C:691
+#: src/buffer.C:383 src/buffer.C:395 src/buffer.C:695
 msgid "Textclass Loading Error!"
 msgstr "Hiba a szövegosztály betöltésénél!"
 
@@ -54,130 +54,130 @@ msgstr "Ismeretlen tevékenység"
 msgid " unknown tokens"
 msgstr "Ismeretlen tevékenység"
 
-#: src/buffer.C:679
+#: src/buffer.C:683
 msgid "Textclass error"
 msgstr "Szövegosztály hiba"
 
-#: src/buffer.C:680
+#: src/buffer.C:684
 msgid "The document uses an unknown textclass \""
 msgstr "A dokumentum ismeretlen szövegosztályt használ, \""
 
-#: src/buffer.C:682
+#: src/buffer.C:686
 msgid "LyX will not be able to produce output correctly."
 msgstr "így nem lehet pontos végeredményt létrehozni"
 
-#: src/buffer.C:692
+#: src/buffer.C:696
 msgid "Can't load textclass "
 msgstr "Nem sikerült betölteni a szövegosztályt "
 
-#: src/buffer.C:694
+#: src/buffer.C:698
 msgid "-- substituting default"
 msgstr "-- helyettesítem az alapértelmezettel"
 
-#: src/buffer.C:1194
+#: src/buffer.C:1198
 #, fuzzy
 msgid "Unknown token: "
 msgstr "Ismeretlen tevékenység"
 
 #. future format
-#: src/buffer.C:1589 src/buffer.C:1609 src/frontends/xforms/FormGraphics.C:537
+#: src/buffer.C:1595 src/buffer.C:1615 src/frontends/xforms/FormGraphics.C:537
 msgid "Warning!"
 msgstr "Figyelem!"
 
-#: src/buffer.C:1590
+#: src/buffer.C:1596
 msgid "LyX file format is newer that what"
 msgstr "A fájl újabb formátumú"
 
-#: src/buffer.C:1591
+#: src/buffer.C:1597
 msgid "is supported in this LyX version. Expect some problems."
 msgstr "a támogatottnál. Problémákra számíthat."
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1596 src/buffer.C:1615 src/buffer.C:1618
+#: src/buffer.C:1602 src/buffer.C:1621 src/buffer.C:1624
 msgid "ERROR!"
 msgstr "HIBA!"
 
-#: src/buffer.C:1597
+#: src/buffer.C:1603
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr ""
 "A fájl régi LyX-formátumú. Olvasásához használja a LyX 0.10.x-es verzióját"
 
-#: src/buffer.C:1610
+#: src/buffer.C:1616
 msgid "Reading of document is not complete"
 msgstr "A dokumentum beolvasása nem teljes"
 
-#: src/buffer.C:1611
+#: src/buffer.C:1617
 msgid "Maybe the document is truncated"
 msgstr "A fájl valószínûleg megsérült (túl rövid)"
 
-#: src/buffer.C:1615
+#: src/buffer.C:1621
 msgid "Not a LyX file!"
 msgstr "Nem LyX fájl!"
 
-#: src/buffer.C:1618
+#: src/buffer.C:1624
 msgid "Unable to read file!"
 msgstr "Nem sikerült olvasni a fájlt!"
 
-#: src/buffer.C:1711 src/buffer.C:1714
+#: src/buffer.C:1717 src/buffer.C:1720
 msgid "Error! Document is read-only: "
 msgstr "Hiba! A dokumentum csak olvasható: "
 
-#: src/buffer.C:1724 src/buffer.C:1727
+#: src/buffer.C:1730 src/buffer.C:1733
 msgid "Error! Cannot write file: "
 msgstr "Hiba! Nem sikerült fájlba írni: "
 
-#: src/buffer.C:1735 src/buffer.C:1738
+#: src/buffer.C:1741 src/buffer.C:1744
 msgid "Error! Cannot open file: "
 msgstr "Hiba: Nem lehet megnyitni a következõ fájlt: "
 
-#: src/buffer.C:1900 src/ext_l10n.h:182
+#: src/buffer.C:1906 src/ext_l10n.h:182
 msgid "Abstract"
 msgstr "Kivonat"
 
-#: src/buffer.C:1903
+#: src/buffer.C:1909
 #, fuzzy
 msgid "Abstract: "
 msgstr "Kivonat"
 
-#: src/buffer.C:1911 src/ext_l10n.h:377
+#: src/buffer.C:1917 src/ext_l10n.h:378
 msgid "References"
 msgstr "Hivatkozások"
 
-#: src/buffer.C:1914
+#: src/buffer.C:1920
 #, fuzzy
 msgid "References: "
 msgstr " Hivatkozás:"
 
-#: src/buffer.C:2028
+#: src/buffer.C:2034
 msgid "Error: Cannot write file:"
 msgstr "Hiba! Nem sikerült fájlba írni:"
 
-#: src/buffer.C:2057
+#: src/buffer.C:2063
 msgid "Error: Cannot open file: "
 msgstr "Hiba: Nem lehet megnyitni a következõ fájlt:"
 
-#: src/buffer.C:2652 src/buffer.C:3103
+#: src/buffer.C:2658 src/buffer.C:3109
 msgid "LYX_ERROR:"
 msgstr "LYX_HIBA:"
 
-#: src/buffer.C:2652 src/buffer.C:3103
+#: src/buffer.C:2658 src/buffer.C:3109
 msgid "Cannot write file"
 msgstr "Nem sikerült a fájlba írni"
 
-#: src/buffer.C:2741 src/buffer.C:3216
+#: src/buffer.C:2747 src/buffer.C:3222
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr ""
 
 #. path to LaTeX file
-#: src/buffer.C:3495
+#: src/buffer.C:3501
 msgid "Running chktex..."
 msgstr "LaTeX futtatása..."
 
-#: src/buffer.C:3508
+#: src/buffer.C:3514
 msgid "chktex did not work!"
 msgstr "Chktex nem mükõdik!"
 
-#: src/buffer.C:3509
+#: src/buffer.C:3515
 msgid "Could not run with file:"
 msgstr "Nem lehet futtatni a fájlal:"
 
@@ -215,8 +215,8 @@ msgstr "  A mentés sikertelen! Újra próbálom..."
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  A mentés sikertelen! A dokumentum elveszett. Hogy az a @$%^@$!"
 
-#: src/BufferView2.C:71 src/BufferView2.C:81 src/bufferlist.C:369
-#: src/bufferlist.C:481 src/lyx_cb.C:218
+#: src/bufferlist.C:369 src/bufferlist.C:481 src/BufferView2.C:72
+#: src/BufferView2.C:82 src/lyx_cb.C:218
 msgid "Error!"
 msgstr "Hiba!"
 
@@ -245,7 +245,7 @@ msgstr "Inkább  azt nyissam meg?"
 msgid "Unable to open template"
 msgstr "Nem sikerült a sablon betöltése"
 
-#: src/bufferlist.C:514 src/lyxfunc.C:1730 src/lyxfunc.C:1941
+#: src/bufferlist.C:514 src/lyxfunc.C:1754 src/lyxfunc.C:1965
 msgid "Document is already open:"
 msgstr "A dokumentum már nyitva van:"
 
@@ -267,52 +267,52 @@ msgstr "Nem sikerült megnyitni a megadott fájlt:"
 msgid "Create new document with this name?"
 msgstr "Készít új dokumentumot ezzel a névvel?"
 
-#: src/BufferView2.C:72
+#: src/BufferView2.C:73
 msgid "Specified file is unreadable: "
 msgstr "A megadott fájl nem olvasható: "
 
-#: src/BufferView2.C:82
+#: src/BufferView2.C:83
 msgid "Cannot open specified file: "
 msgstr "Nem lehet megnyitni a következõ fájlt: "
 
-#: src/BufferView2.C:338 src/LyXAction.C:392
+#: src/BufferView2.C:339 src/LyXAction.C:392
 msgid "Undo"
 msgstr "Visszavon"
 
-#: src/BufferView2.C:343
+#: src/BufferView2.C:344
 #, fuzzy
 msgid "No further undo information"
 msgstr "Nem lehet tovább 'visszavonni'"
 
-#: src/BufferView2.C:355
+#: src/BufferView2.C:356
 msgid "Redo not yet supported in math mode"
 msgstr "Az 'újra' még nem támogatott az egyenletszekesztõben"
 
-#: src/BufferView2.C:361 src/LyXAction.C:344
+#: src/BufferView2.C:362 src/LyXAction.C:344
 msgid "Redo"
 msgstr "Újra"
 
-#: src/BufferView2.C:366
+#: src/BufferView2.C:367
 msgid "No further redo information"
 msgstr "Nem lehet tovább 'újra' csinálni"
 
-#: src/BufferView2.C:378
+#: src/BufferView2.C:379
 msgid "Paragraph environment type copied"
 msgstr "Bekezdés stílusa lemásolva"
 
-#: src/BufferView2.C:387
+#: src/BufferView2.C:388
 msgid "Paragraph environment type set"
 msgstr "Bekezdés stílusa beállítva"
 
-#: src/BufferView2.C:397 src/LyXAction.C:170 src/MenuBackend.C:521
+#: src/BufferView2.C:398 src/LyXAction.C:170 src/MenuBackend.C:521
 msgid "Copy"
 msgstr "Másol"
 
-#: src/BufferView2.C:409 src/LyXAction.C:171 src/MenuBackend.C:520
+#: src/BufferView2.C:410 src/LyXAction.C:171 src/MenuBackend.C:520
 msgid "Cut"
 msgstr "Kivág"
 
-#: src/BufferView2.C:419 src/LyXAction.C:333 src/MenuBackend.C:522
+#: src/BufferView2.C:420 src/LyXAction.C:333 src/MenuBackend.C:522
 msgid "Paste"
 msgstr "Beilleszt"
 
@@ -337,7 +337,7 @@ msgstr ", Mélység: "
 msgid ", Spacing: "
 msgstr ", Sortávolság"
 
-#: src/bufferview_funcs.C:182 src/ext_l10n.h:653
+#: src/bufferview_funcs.C:182 src/ext_l10n.h:654
 #: src/frontends/qt2/QDocument.C:111
 msgid "Single"
 msgstr "Szimpla"
@@ -346,7 +346,7 @@ msgstr "Szimpla"
 msgid "Onehalf"
 msgstr "Másfeles"
 
-#: src/bufferview_funcs.C:189 src/ext_l10n.h:655
+#: src/bufferview_funcs.C:189 src/ext_l10n.h:656
 #: src/frontends/qt2/QDocument.C:113 src/frontends/xforms/form_tabular.C:492
 #: src/frontends/xforms/form_tabular.C:494
 #: src/frontends/xforms/form_tabular.C:508
@@ -371,117 +371,112 @@ msgstr "Bekezdés"
 msgid "Formatting document..."
 msgstr "Dokumentum formázása..."
 
-#: src/BufferView_pimpl.C:1236
+#: src/BufferView_pimpl.C:1252
 msgid "Saved bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1268
+#: src/BufferView_pimpl.C:1284
 msgid "Moved to bookmark"
 msgstr ""
 
-#: src/BufferView_pimpl.C:1495
+#: src/BufferView_pimpl.C:1511
 #, fuzzy
 msgid "Select LyX document to insert"
 msgstr "Válassza ki a beillesztendõ dokumentumot"
 
-#: src/BufferView_pimpl.C:1497 src/frontends/controllers/ControlBibtex.C:68
+#: src/BufferView_pimpl.C:1513 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
-#: src/frontends/controllers/ControlGraphics.C:98
+#: src/frontends/controllers/ControlGraphics.C:113
 #: src/frontends/controllers/ControlInclude.C:71 src/lyx_cb.C:113
-#: src/lyxfunc.C:1706 src/lyxfunc.C:1790 src/lyxfunc.C:1831 src/lyxfunc.C:1908
+#: src/lyxfunc.C:1730 src/lyxfunc.C:1814 src/lyxfunc.C:1855 src/lyxfunc.C:1932
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "Dokumentum|D"
 
-#: src/BufferView_pimpl.C:1499 src/lyxfunc.C:1833 src/lyxfunc.C:1910
+#: src/BufferView_pimpl.C:1515 src/lyxfunc.C:1857 src/lyxfunc.C:1934
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Példák"
 
-#: src/BufferView_pimpl.C:1504 src/frontends/controllers/ControlInclude.C:67
+#: src/BufferView_pimpl.C:1520 src/frontends/controllers/ControlInclude.C:67
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1513 src/lyxfunc.C:1717 src/lyxfunc.C:1744
-#: src/lyxfunc.C:1847 src/lyxfunc.C:1927 src/lyxfunc.C:1955
+#: src/BufferView_pimpl.C:1529 src/lyxfunc.C:1741 src/lyxfunc.C:1768
+#: src/lyxfunc.C:1871 src/lyxfunc.C:1951 src/lyxfunc.C:1979
 msgid "Canceled."
 msgstr "Megszakítva."
 
-#: src/BufferView_pimpl.C:1525
+#: src/BufferView_pimpl.C:1541
 msgid "Inserting document"
 msgstr "Dokumentum beillesztése"
 
-#: src/BufferView_pimpl.C:1531 src/ext_l10n.h:636
-#: src/frontends/xforms/FormDocument.C:320 src/lyxfunc.C:1765
-#: src/lyxfunc.C:1875
+#: src/BufferView_pimpl.C:1547 src/ext_l10n.h:637
+#: src/frontends/xforms/FormDocument.C:320 src/lyxfunc.C:1789
+#: src/lyxfunc.C:1899
 msgid "Document"
 msgstr "Dokumentum"
 
-#: src/BufferView_pimpl.C:1532
+#: src/BufferView_pimpl.C:1548
 msgid "inserted."
 msgstr "beillesztve."
 
-#: src/BufferView_pimpl.C:1536
+#: src/BufferView_pimpl.C:1552
 msgid "Could not insert document"
 msgstr "A dokumentumot nem tudom beilleszteni"
 
-#: src/BufferView_pimpl.C:1710 src/insets/insettext.C:1377
+#: src/BufferView_pimpl.C:1726 src/insets/insettext.C:1434
 msgid "Layout "
 msgstr "Formátum:"
 
-#: src/BufferView_pimpl.C:1711 src/insets/insettext.C:1377
+#: src/BufferView_pimpl.C:1727 src/insets/insettext.C:1434
 msgid " not known"
 msgstr " nem ismert"
 
-#: src/BufferView_pimpl.C:1894 src/insets/inseterror.C:55
-#: src/insets/inseterror.C:77 src/lyxfunc.C:1857
+#: src/BufferView_pimpl.C:1910 src/insets/inseterror.C:55
+#: src/insets/inseterror.C:77 src/lyxfunc.C:1881
 msgid "Error"
 msgstr "Hiba"
 
-#: src/BufferView_pimpl.C:1895
+#: src/BufferView_pimpl.C:1911
 msgid "Couldn't find this label"
 msgstr "Nem találom ezt a címkét"
 
-#: src/BufferView_pimpl.C:1896
+#: src/BufferView_pimpl.C:1912
 msgid "in current document."
 msgstr "a megadott dokumentumban."
 
-#: src/BufferView_pimpl.C:2392
+#: src/BufferView_pimpl.C:2408
 msgid "Mark removed"
 msgstr "Jel eltávolítva"
 
-#: src/BufferView_pimpl.C:2399
+#: src/BufferView_pimpl.C:2415
 msgid "Mark set"
 msgstr "Jel beállítva"
 
-#: src/BufferView_pimpl.C:2530
+#: src/BufferView_pimpl.C:2546
 msgid "Mark off"
 msgstr "Jel ki"
 
-#: src/BufferView_pimpl.C:2543
+#: src/BufferView_pimpl.C:2559
 msgid "Mark on"
 msgstr "Jel be"
 
-#: src/BufferView_pimpl.C:2717 src/insets/insettext.C:1430
+#: src/BufferView_pimpl.C:2733 src/insets/insettext.C:1487
 msgid "Unknown spacing argument: "
 msgstr ""
 
-#: src/BufferView_pimpl.C:3078
+#: src/BufferView_pimpl.C:3094
 msgid "Word `"
 msgstr ""
 
-#: src/BufferView_pimpl.C:3079
-#, fuzzy
-msgid "' indexed."
-msgstr " -t fogom használni."
-
-#: src/BufferView_pimpl.C:3234
+#: src/BufferView_pimpl.C:3250
 #, fuzzy
 msgid "Unknown function!"
 msgstr "Ismeretlen tevékenység"
 
-#: src/BufferView_pimpl.C:3497 src/BufferView_pimpl.C:3500
+#: src/BufferView_pimpl.C:3513 src/BufferView_pimpl.C:3516
 #, fuzzy
 msgid "No more insets"
 msgstr "Nincs több megjegyzés"
@@ -561,17 +556,15 @@ msgid "Error while executing"
 msgstr "Hiba a végrehajtás közben"
 
 #: src/converter.C:579 src/converter.C:674
-#: src/graphics/GraphicsConverter.C:177
 #, fuzzy
 msgid "Cannot convert file"
 msgstr "Nem lehet átalakítani a fájlt"
 
-#: src/converter.C:580 src/graphics/GraphicsConverter.C:178
+#: src/converter.C:580
 msgid "No information for converting from "
 msgstr "Nem tudom hogy kell átalakítani "
 
-#: src/CutAndPaste.C:431 src/CutAndPaste.C:434 src/converter.C:581
-#: src/graphics/GraphicsConverter.C:179
+#: src/converter.C:581 src/CutAndPaste.C:431 src/CutAndPaste.C:434
 msgid " to "
 msgstr " "
 
@@ -782,12 +775,12 @@ msgstr "A dokumentum exportálva a"
 msgid " to file `"
 msgstr " következõ néven `"
 
-#: src/MenuBackend.C:532 src/MenuBackend.C:539 src/ext_l10n.h:1
-#: src/ext_l10n.h:4
+#: src/ext_l10n.h:1 src/ext_l10n.h:4 src/MenuBackend.C:532
+#: src/MenuBackend.C:539
 msgid "File|F"
 msgstr "Fájl|F"
 
-#: src/MenuBackend.C:533 src/ext_l10n.h:2 src/ext_l10n.h:5
+#: src/ext_l10n.h:2 src/ext_l10n.h:5 src/MenuBackend.C:533
 msgid "Edit|E"
 msgstr "Szerkesztés|e"
 
@@ -811,11 +804,11 @@ msgstr "Nézet|N"
 msgid "Navigate|N"
 msgstr "Felépítés|p"
 
-#: src/MenuBackend.C:535 src/ext_l10n.h:10
+#: src/ext_l10n.h:10 src/MenuBackend.C:535
 msgid "Documents|D"
 msgstr "Dokumentum|D"
 
-#: src/MenuBackend.C:502 src/ext_l10n.h:12 src/ext_l10n.h:17
+#: src/ext_l10n.h:12 src/ext_l10n.h:17 src/MenuBackend.C:502
 msgid "New...|N"
 msgstr "Új...|j"
 
@@ -823,11 +816,11 @@ msgstr "Új...|j"
 msgid "New from Template...|T"
 msgstr "Új, sablon alapján...|a"
 
-#: src/MenuBackend.C:503 src/ext_l10n.h:14 src/ext_l10n.h:19
+#: src/ext_l10n.h:14 src/ext_l10n.h:19 src/MenuBackend.C:503
 msgid "Open...|O"
 msgstr "Megnyit|n"
 
-#: src/MenuBackend.C:504 src/ext_l10n.h:15 src/ext_l10n.h:25
+#: src/ext_l10n.h:15 src/ext_l10n.h:25 src/MenuBackend.C:504
 msgid "Import|I"
 msgstr "Importál|I"
 
@@ -1570,7 +1563,7 @@ msgstr ""
 msgid "Affiliation"
 msgstr ""
 
-#: src/FloatList.C:47 src/ext_l10n.h:199
+#: src/ext_l10n.h:199 src/FloatList.C:47
 msgid "Algorithm"
 msgstr ""
 
@@ -1621,1338 +1614,1343 @@ msgid "Authorgroup"
 msgstr "Szerzõ"
 
 #: src/ext_l10n.h:211
+#, fuzzy
+msgid "Authorinfo"
+msgstr "Szerzõ"
+
+#: src/ext_l10n.h:212
 msgid "Author_Running"
 msgstr ""
 
-#: src/ext_l10n.h:212
+#: src/ext_l10n.h:213
 msgid "Author_URL"
 msgstr "Szerzõ_URL"
 
-#: src/ext_l10n.h:213
+#: src/ext_l10n.h:214
 msgid "Axiom"
 msgstr "Axióma"
 
-#: src/ext_l10n.h:214
+#: src/ext_l10n.h:215
 msgid "Backaddress"
 msgstr ""
 
-#: src/ext_l10n.h:215
+#: src/ext_l10n.h:216
 msgid "Bank"
 msgstr "Bank"
 
-#: src/ext_l10n.h:216
+#: src/ext_l10n.h:217
 msgid "BankAccount"
 msgstr "Bankszámla"
 
-#: src/ext_l10n.h:217
+#: src/ext_l10n.h:218
 msgid "BankCode"
 msgstr ""
 
-#: src/ext_l10n.h:218
+#: src/ext_l10n.h:219
 msgid "Betreff"
 msgstr ""
 
-#: src/ext_l10n.h:219
+#: src/ext_l10n.h:220
 msgid "Bibliography"
 msgstr "Irodalomjegyzék"
 
-#: src/ext_l10n.h:220
+#: src/ext_l10n.h:221
 msgid "Biography"
 msgstr "Életrajz"
 
-#: src/ext_l10n.h:221
+#: src/ext_l10n.h:222
 msgid "BLZ"
 msgstr ""
 
-#: src/ext_l10n.h:222
+#: src/ext_l10n.h:223
 #, fuzzy
 msgid "BoardCentered"
 msgstr "Középre"
 
-#: src/ext_l10n.h:223
+#: src/ext_l10n.h:224
 msgid "Brieftext"
 msgstr ""
 
-#: src/ext_l10n.h:224
+#: src/ext_l10n.h:225
 msgid "Caption"
 msgstr ""
 
-#: src/ext_l10n.h:225
+#: src/ext_l10n.h:226
 msgid "Case"
 msgstr ""
 
-#: src/ext_l10n.h:226 src/frontends/qt2/lengthcombo.C:29
+#: src/ext_l10n.h:227 src/frontends/qt2/lengthcombo.C:29
 msgid "cc"
 msgstr "kapják még"
 
-#: src/ext_l10n.h:227
+#: src/ext_l10n.h:228
 msgid "CC"
 msgstr "Kapják még"
 
-#: src/ext_l10n.h:228
+#: src/ext_l10n.h:229
 msgid "CenteredCaption"
 msgstr ""
 
-#: src/ext_l10n.h:229
+#: src/ext_l10n.h:230
 msgid "Chapter"
 msgstr "Fejezet"
 
-#: src/ext_l10n.h:230
+#: src/ext_l10n.h:231
 msgid "Chapter*"
 msgstr "Fejezet*"
 
-#: src/ext_l10n.h:231
+#: src/ext_l10n.h:232
 msgid "Chapter_Exercises"
 msgstr "Fejezet_Exercises"
 
-#: src/ext_l10n.h:232
+#: src/ext_l10n.h:233
 msgid "ChessBoard"
 msgstr ""
 
-#: src/ext_l10n.h:233
+#: src/ext_l10n.h:234
 msgid "Citta"
 msgstr ""
 
-#: src/ext_l10n.h:234
+#: src/ext_l10n.h:235
 msgid "Claim"
 msgstr ""
 
-#: src/ext_l10n.h:235
+#: src/ext_l10n.h:236
 msgid "Claim*"
 msgstr ""
 
-#: src/ext_l10n.h:236
+#: src/ext_l10n.h:237
 msgid "Closing"
 msgstr "Befejezés"
 
-#: src/ext_l10n.h:237
+#: src/ext_l10n.h:238
 msgid "Code"
 msgstr ""
 
-#: src/ext_l10n.h:238
+#: src/ext_l10n.h:239
 msgid "Comment"
 msgstr "Megjegyzés"
 
-#: src/ext_l10n.h:239
+#: src/ext_l10n.h:240
 msgid "Conclusion"
 msgstr "Következtetés"
 
-#: src/ext_l10n.h:240
+#: src/ext_l10n.h:241
 msgid "Conclusion*"
 msgstr "Következtetés*"
 
-#: src/ext_l10n.h:241
+#: src/ext_l10n.h:242
 msgid "Condition"
 msgstr "Feltétel"
 
-#: src/ext_l10n.h:242
+#: src/ext_l10n.h:243
 msgid "Conjecture"
 msgstr ""
 
-#: src/ext_l10n.h:243
+#: src/ext_l10n.h:244
 msgid "Conjecture*"
 msgstr ""
 
-#: src/ext_l10n.h:244
+#: src/ext_l10n.h:245
 msgid "CopNum"
 msgstr ""
 
-#: src/ext_l10n.h:245 src/ext_l10n.h:533
+#: src/ext_l10n.h:246 src/ext_l10n.h:534
 msgid "Copyright"
 msgstr ""
 
-#: src/ext_l10n.h:246
+#: src/ext_l10n.h:247
 msgid "Corollary"
 msgstr "Következmény"
 
-#: src/ext_l10n.h:247
+#: src/ext_l10n.h:248
 msgid "Corollary*"
 msgstr "Következmény*"
 
-#: src/ext_l10n.h:248
+#: src/ext_l10n.h:249
 msgid "Criterion"
 msgstr "Kritérium"
 
-#: src/ext_l10n.h:249
+#: src/ext_l10n.h:250
 msgid "CrossList"
 msgstr ""
 
-#: src/ext_l10n.h:250
+#: src/ext_l10n.h:251
 msgid "Current_Address"
 msgstr ""
 
-#: src/ext_l10n.h:251
+#: src/ext_l10n.h:252
 msgid "CURTAIN"
 msgstr ""
 
-#: src/ext_l10n.h:252
+#: src/ext_l10n.h:253
 msgid "Customer"
 msgstr "Ügyfél"
 
-#: src/ext_l10n.h:253
+#: src/ext_l10n.h:254
 msgid "Data"
 msgstr "Adat"
 
-#: src/ext_l10n.h:254
+#: src/ext_l10n.h:255
 msgid "Date"
 msgstr "Dátum"
 
-#: src/ext_l10n.h:255
+#: src/ext_l10n.h:256
 msgid "Datum"
 msgstr ""
 
-#: src/ext_l10n.h:256
+#: src/ext_l10n.h:257
 msgid "Dedication"
 msgstr ""
 
-#: src/ext_l10n.h:257
+#: src/ext_l10n.h:258
 msgid "Dedicatory"
 msgstr ""
 
-#: src/ext_l10n.h:258
+#: src/ext_l10n.h:259
 msgid "Definition"
 msgstr "Meghatározás"
 
-#: src/ext_l10n.h:259
+#: src/ext_l10n.h:260
 msgid "Definition*"
 msgstr "Meghatározás*"
 
-#: src/ext_l10n.h:260
+#: src/ext_l10n.h:261
 msgid "Description"
 msgstr "Leírás"
 
-#: src/ext_l10n.h:261
+#: src/ext_l10n.h:262
 msgid "Dialogue"
 msgstr "Párbeszéd"
 
-#: src/ext_l10n.h:262
+#: src/ext_l10n.h:263
 msgid "Email"
 msgstr "Email"
 
-#: src/ext_l10n.h:263
+#: src/ext_l10n.h:264
 msgid "EMail"
 msgstr "EMail"
 
-#: src/ext_l10n.h:264
+#: src/ext_l10n.h:265
 msgid "encl"
 msgstr "mellékletek"
 
-#: src/ext_l10n.h:265
+#: src/ext_l10n.h:266
 msgid "Encl."
 msgstr "Mellékletek"
 
-#: src/ext_l10n.h:266
+#: src/ext_l10n.h:267
 msgid "Encl"
 msgstr "Mellékletek"
 
-#: src/ext_l10n.h:267
+#: src/ext_l10n.h:268
 msgid "End_All_Slides"
 msgstr ""
 
-#: src/ext_l10n.h:268
+#: src/ext_l10n.h:269
 msgid "Enumerate"
 msgstr "Számozott lista"
 
-#: src/ext_l10n.h:269
+#: src/ext_l10n.h:270
 msgid "Example"
 msgstr "Példa"
 
-#: src/ext_l10n.h:270
+#: src/ext_l10n.h:271
 msgid "Example*"
 msgstr "Példa*"
 
-#: src/ext_l10n.h:271
+#: src/ext_l10n.h:272
 msgid "Exercise"
 msgstr "Feladat"
 
-#: src/ext_l10n.h:272
+#: src/ext_l10n.h:273
 msgid "EXT."
 msgstr ""
 
-#: src/ext_l10n.h:273
+#: src/ext_l10n.h:274
 msgid "Extratitle"
 msgstr ""
 
-#: src/ext_l10n.h:274
+#: src/ext_l10n.h:275
 msgid "Fact"
 msgstr ""
 
-#: src/ext_l10n.h:275
+#: src/ext_l10n.h:276
 msgid "Fact*"
 msgstr ""
 
-#: src/ext_l10n.h:276
+#: src/ext_l10n.h:277
 msgid "FADE_IN:"
 msgstr ""
 
-#: src/ext_l10n.h:277
+#: src/ext_l10n.h:278
 msgid "FADE_OUT:"
 msgstr ""
 
-#: src/ext_l10n.h:278
+#: src/ext_l10n.h:279
 msgid "FADE_OUT"
 msgstr ""
 
-#: src/ext_l10n.h:279
+#: src/ext_l10n.h:280
 msgid "FigCaption"
 msgstr ""
 
-#: src/ext_l10n.h:280
+#: src/ext_l10n.h:281
 msgid "FirstAuthor"
 msgstr "Eredeti szerzõ"
 
-#: src/ext_l10n.h:281
+#: src/ext_l10n.h:282
 msgid "FirstName"
 msgstr "Keresztnév"
 
-#: src/ext_l10n.h:282
+#: src/ext_l10n.h:283
 msgid "FitBitmap"
 msgstr ""
 
-#: src/ext_l10n.h:283
+#: src/ext_l10n.h:284
 msgid "FitFigure"
 msgstr ""
 
-#: src/ext_l10n.h:284
+#: src/ext_l10n.h:285
 msgid "Foilhead"
 msgstr ""
 
-#: src/ext_l10n.h:285
+#: src/ext_l10n.h:286
 msgid "Footernote"
 msgstr ""
 
-#: src/ext_l10n.h:286
+#: src/ext_l10n.h:287
 msgid "FourAffiliations"
 msgstr ""
 
-#: src/ext_l10n.h:287
+#: src/ext_l10n.h:288
 msgid "FourAuthors"
 msgstr ""
 
-#: src/ext_l10n.h:288
+#: src/ext_l10n.h:289
 msgid "FrontMatter"
 msgstr ""
 
-#: src/ext_l10n.h:289
+#: src/ext_l10n.h:290
 msgid "General"
 msgstr "Általános"
 
-#: src/ext_l10n.h:290
+#: src/ext_l10n.h:291
 msgid "Gruss"
 msgstr ""
 
-#: src/ext_l10n.h:291
+#: src/ext_l10n.h:292
 msgid "Headnote"
 msgstr ""
 
-#: src/ext_l10n.h:292
+#: src/ext_l10n.h:293
 msgid "HideMoves"
 msgstr ""
 
-#: src/ext_l10n.h:293
+#: src/ext_l10n.h:294
 #, fuzzy
 msgid "HighLight"
 msgstr "Magasság"
 
-#: src/ext_l10n.h:294
+#: src/ext_l10n.h:295
 msgid "HTTP"
 msgstr "HTTP"
 
-#: src/ext_l10n.h:295
+#: src/ext_l10n.h:296
 msgid "IhrSchreiben"
 msgstr ""
 
-#: src/ext_l10n.h:296
+#: src/ext_l10n.h:297
 msgid "IhrZeichen"
 msgstr ""
 
-#: src/ext_l10n.h:297
+#: src/ext_l10n.h:298
 msgid "Institute"
 msgstr ""
 
-#: src/ext_l10n.h:298
+#: src/ext_l10n.h:299
 msgid "Institution"
 msgstr ""
 
-#: src/ext_l10n.h:299
+#: src/ext_l10n.h:300
 msgid "INT."
 msgstr ""
 
-#: src/ext_l10n.h:300
+#: src/ext_l10n.h:301
 msgid "INTERCUT"
 msgstr ""
 
-#: src/ext_l10n.h:301
+#: src/ext_l10n.h:302
 msgid "InvisibleText"
 msgstr ""
 
-#: src/ext_l10n.h:302
+#: src/ext_l10n.h:303
 msgid "Invoice"
 msgstr "Számla"
 
-#: src/ext_l10n.h:303
+#: src/ext_l10n.h:304
 msgid "Itemize"
 msgstr "Lista"
 
-#: src/ext_l10n.h:304
+#: src/ext_l10n.h:305
 msgid "Journal"
 msgstr ""
 
-#: src/ext_l10n.h:305
+#: src/ext_l10n.h:306
 msgid "Keyword"
 msgstr "Kulcsszó"
 
-#: src/ext_l10n.h:306
+#: src/ext_l10n.h:307
 msgid "Keywords"
 msgstr "Kulcsszavak"
 
-#: src/ext_l10n.h:307
+#: src/ext_l10n.h:308
 msgid "KnightMove"
 msgstr ""
 
-#: src/ext_l10n.h:308
+#: src/ext_l10n.h:309
 msgid "Konto"
 msgstr ""
 
-#: src/ext_l10n.h:309
+#: src/ext_l10n.h:310
 msgid "Labeling"
 msgstr ""
 
-#: src/ext_l10n.h:310
+#: src/ext_l10n.h:311
 msgid "Land"
 msgstr ""
 
-#: src/ext_l10n.h:311
+#: src/ext_l10n.h:312
 msgid "LandscapeSlide"
 msgstr ""
 
-#: src/ext_l10n.h:312
+#: src/ext_l10n.h:313
 msgid "LaTeX"
 msgstr ""
 
-#: src/ext_l10n.h:313
+#: src/ext_l10n.h:314
 msgid "LaTeX_Title"
 msgstr ""
 
-#: src/ext_l10n.h:314
+#: src/ext_l10n.h:315
 #, fuzzy
 msgid "Left_Header"
 msgstr "Fejléc"
 
-#: src/ext_l10n.h:315
+#: src/ext_l10n.h:316
 msgid "Lemma"
 msgstr ""
 
-#: src/ext_l10n.h:316
+#: src/ext_l10n.h:317
 msgid "Lemma*"
 msgstr ""
 
-#: src/ext_l10n.h:317
+#: src/ext_l10n.h:318
 msgid "Letter"
 msgstr "Levél"
 
-#: src/ext_l10n.h:318
+#: src/ext_l10n.h:319
 msgid "List"
 msgstr "Leírás*"
 
-#: src/ext_l10n.h:319
+#: src/ext_l10n.h:320
 msgid "ListOfSlides"
 msgstr ""
 
-#: src/ext_l10n.h:320
+#: src/ext_l10n.h:321
 msgid "Literal"
 msgstr ""
 
-#: src/ext_l10n.h:321
+#: src/ext_l10n.h:322
 msgid "Location"
 msgstr "Elhelyezkedés"
 
-#: src/ext_l10n.h:322
+#: src/ext_l10n.h:323
 msgid "Lowertitleback"
 msgstr ""
 
-#: src/ext_l10n.h:323
+#: src/ext_l10n.h:324
 msgid "LyX-Code"
 msgstr "Programkód"
 
-#: src/ext_l10n.h:324
+#: src/ext_l10n.h:325
 msgid "Mail"
 msgstr "Levél"
 
-#: src/ext_l10n.h:325
+#: src/ext_l10n.h:326
 #, fuzzy
 msgid "Mainline"
 msgstr "Levél"
 
-#: src/ext_l10n.h:326
+#: src/ext_l10n.h:327
 msgid "MarkBoth"
 msgstr ""
 
-#: src/ext_l10n.h:327
+#: src/ext_l10n.h:328
 msgid "MathLetters"
 msgstr ""
 
-#: src/ext_l10n.h:328
+#: src/ext_l10n.h:329
 msgid "MeinZeichen"
 msgstr ""
 
-#: src/ext_l10n.h:329
+#: src/ext_l10n.h:330
 msgid "Minisec"
 msgstr ""
 
-#: src/ext_l10n.h:330 src/frontends/xforms/Menubar_pimpl.C:279
+#: src/ext_l10n.h:331 src/frontends/xforms/Menubar_pimpl.C:279
 #: src/frontends/xforms/Menubar_pimpl.C:352
 msgid "More"
 msgstr ""
 
-#: src/ext_l10n.h:331
+#: src/ext_l10n.h:332
 msgid "msnumber"
 msgstr ""
 
-#: src/ext_l10n.h:332
+#: src/ext_l10n.h:333
 msgid "My_Address"
 msgstr "Feladó"
 
-#: src/ext_l10n.h:333
+#: src/ext_l10n.h:334
 msgid "Myref"
 msgstr ""
 
-#: src/ext_l10n.h:334
+#: src/ext_l10n.h:335
 msgid "MyRef"
 msgstr ""
 
-#: src/ext_l10n.h:335
+#: src/ext_l10n.h:336
 msgid "Name"
 msgstr "Név"
 
-#: src/ext_l10n.h:336
+#: src/ext_l10n.h:337
 msgid "Narrative"
 msgstr ""
 
-#: src/ext_l10n.h:337
+#: src/ext_l10n.h:338
 msgid "Notation"
 msgstr ""
 
-#: src/ext_l10n.h:338
+#: src/ext_l10n.h:339
 msgid "Note"
 msgstr "Megjegyzés"
 
-#: src/ext_l10n.h:339
+#: src/ext_l10n.h:340
 msgid "Note*"
 msgstr "Megjegyzés*"
 
-#: src/ext_l10n.h:340
+#: src/ext_l10n.h:341
 msgid "NoteToEditor"
 msgstr ""
 
-#: src/ext_l10n.h:341
+#: src/ext_l10n.h:342
 msgid "Offprint"
 msgstr ""
 
-#: src/ext_l10n.h:342
+#: src/ext_l10n.h:343
 msgid "Offprints"
 msgstr ""
 
-#: src/ext_l10n.h:343
+#: src/ext_l10n.h:344
 msgid "Offsets"
 msgstr ""
 
-#: src/ext_l10n.h:344
+#: src/ext_l10n.h:345
 msgid "Oggetto"
 msgstr ""
 
-#: src/ext_l10n.h:345
+#: src/ext_l10n.h:346
 msgid "Opening"
 msgstr "Megszólítás"
 
-#: src/ext_l10n.h:346
+#: src/ext_l10n.h:347
 msgid "Ort"
 msgstr ""
 
-#: src/ext_l10n.h:347
+#: src/ext_l10n.h:348
 msgid "Overlay"
 msgstr ""
 
-#: src/ext_l10n.h:348
+#: src/ext_l10n.h:349
 msgid "PACS"
 msgstr ""
 
-#: src/ext_l10n.h:349 src/ext_l10n.h:919
+#: src/ext_l10n.h:350 src/ext_l10n.h:920
 msgid "Paragraph"
 msgstr "Bekezdés"
 
-#: src/ext_l10n.h:350
+#: src/ext_l10n.h:351
 msgid "Paragraph*"
 msgstr "Bekezdés*"
 
-#: src/ext_l10n.h:351
+#: src/ext_l10n.h:352
 msgid "Part"
 msgstr "Rész (part)"
 
-#: src/ext_l10n.h:352
+#: src/ext_l10n.h:353
 msgid "Part*"
 msgstr "Rész* (part*)"
 
-#: src/ext_l10n.h:353
+#: src/ext_l10n.h:354
 msgid "Petit"
 msgstr ""
 
-#: src/ext_l10n.h:354
+#: src/ext_l10n.h:355
 msgid "Phone"
 msgstr "Telefon"
 
-#: src/ext_l10n.h:355
+#: src/ext_l10n.h:356
 msgid "Place"
 msgstr ""
 
-#: src/ext_l10n.h:356
+#: src/ext_l10n.h:357
 msgid "PlaceFigure"
 msgstr ""
 
-#: src/ext_l10n.h:357
+#: src/ext_l10n.h:358
 msgid "PlaceTable"
 msgstr ""
 
-#: src/ext_l10n.h:358
+#: src/ext_l10n.h:359
 msgid "PortraitSlide"
 msgstr ""
 
-#: src/ext_l10n.h:359
+#: src/ext_l10n.h:360
 msgid "PostalCommend"
 msgstr ""
 
-#: src/ext_l10n.h:360
+#: src/ext_l10n.h:361
 #, fuzzy
 msgid "PostalComment"
 msgstr "Megjegyzés"
 
-#: src/ext_l10n.h:361
+#: src/ext_l10n.h:362
 msgid "Postvermerk"
 msgstr ""
 
-#: src/ext_l10n.h:362
+#: src/ext_l10n.h:363
 msgid "Preprint"
 msgstr ""
 
-#: src/ext_l10n.h:363
+#: src/ext_l10n.h:364
 msgid "Problem"
 msgstr "Probléma"
 
-#: src/ext_l10n.h:364
+#: src/ext_l10n.h:365
 msgid "ProgressContents"
 msgstr ""
 
-#: src/ext_l10n.h:365
+#: src/ext_l10n.h:366
 msgid "Proof"
 msgstr ""
 
-#: src/ext_l10n.h:366
+#: src/ext_l10n.h:367
 msgid "Property"
 msgstr ""
 
-#: src/ext_l10n.h:367
+#: src/ext_l10n.h:368
 msgid "Proposition"
 msgstr ""
 
-#: src/ext_l10n.h:368
+#: src/ext_l10n.h:369
 msgid "Proposition*"
 msgstr ""
 
-#: src/ext_l10n.h:369
+#: src/ext_l10n.h:370
 msgid "ps"
 msgstr ""
 
-#: src/ext_l10n.h:370
+#: src/ext_l10n.h:371
 msgid "PS"
 msgstr ""
 
-#: src/ext_l10n.h:371
+#: src/ext_l10n.h:372
 msgid "Publishers"
 msgstr "Kiadók"
 
-#: src/ext_l10n.h:372
+#: src/ext_l10n.h:373
 msgid "Question"
 msgstr "Kérdés"
 
-#: src/ext_l10n.h:373
+#: src/ext_l10n.h:374
 msgid "Quotation"
 msgstr "Idézet*"
 
-#: src/ext_l10n.h:374
+#: src/ext_l10n.h:375
 msgid "Quote"
 msgstr "Idézet"
 
-#: src/ext_l10n.h:375
+#: src/ext_l10n.h:376
 msgid "Received"
 msgstr ""
 
-#: src/ext_l10n.h:376 src/ext_l10n.h:1100 src/ext_l10n.h:1108
+#: src/ext_l10n.h:377 src/ext_l10n.h:1101 src/ext_l10n.h:1109
 #: src/frontends/xforms/FormRef.C:33
 msgid "Reference"
 msgstr "Hivatkozás"
 
-#: src/ext_l10n.h:378
+#: src/ext_l10n.h:379
 msgid "Remark"
 msgstr "Megjegyzés"
 
-#: src/ext_l10n.h:379
+#: src/ext_l10n.h:380
 msgid "Remark*"
 msgstr "Megjegyzés*"
 
-#: src/ext_l10n.h:380
+#: src/ext_l10n.h:381
 msgid "Remarks"
 msgstr "Megjegyzések"
 
-#: src/ext_l10n.h:381
+#: src/ext_l10n.h:382
 msgid "RetourAdresse"
 msgstr ""
 
-#: src/ext_l10n.h:382
+#: src/ext_l10n.h:383
 msgid "ReturnAddress"
 msgstr ""
 
-#: src/ext_l10n.h:383
+#: src/ext_l10n.h:384
 #, fuzzy
 msgid "Revision"
 msgstr "Kérdés"
 
-#: src/ext_l10n.h:384
+#: src/ext_l10n.h:385
 msgid "RevisionHistory"
 msgstr ""
 
-#: src/ext_l10n.h:385
+#: src/ext_l10n.h:386
 #, fuzzy
 msgid "RevisionRemark"
 msgstr "Megjegyzés"
 
-#: src/ext_l10n.h:386
+#: src/ext_l10n.h:387
 msgid "REVTEX_Title"
 msgstr ""
 
-#: src/ext_l10n.h:387
+#: src/ext_l10n.h:388
 msgid "Right_Address"
 msgstr ""
 
-#: src/ext_l10n.h:388
+#: src/ext_l10n.h:389
 #, fuzzy
 msgid "Right_Header"
 msgstr "Fejléc"
 
-#: src/ext_l10n.h:389
+#: src/ext_l10n.h:390
 msgid "RightHeader"
 msgstr ""
 
-#: src/ext_l10n.h:390
+#: src/ext_l10n.h:391
 msgid "Rotatefoilhead"
 msgstr ""
 
-#: src/ext_l10n.h:391
+#: src/ext_l10n.h:392
 #, fuzzy
 msgid "RunningAuthor"
 msgstr "Szerzõ"
 
-#: src/ext_l10n.h:392
+#: src/ext_l10n.h:393
 msgid "Running_LaTeX_Title"
 msgstr ""
 
-#: src/ext_l10n.h:393
+#: src/ext_l10n.h:394
 #, fuzzy
 msgid "RunningTitle"
 msgstr "BibTeX futtatása."
 
-#: src/ext_l10n.h:394
+#: src/ext_l10n.h:395
 #, fuzzy
 msgid "Scene"
 msgstr "Szlovén"
 
-#: src/ext_l10n.h:395
+#: src/ext_l10n.h:396
 msgid "SCENE"
 msgstr ""
 
-#: src/ext_l10n.h:396
+#: src/ext_l10n.h:397
 msgid "SCENE*"
 msgstr ""
 
-#: src/ext_l10n.h:397
+#: src/ext_l10n.h:398
 msgid "Scrap"
 msgstr ""
 
-#: src/ext_l10n.h:398
+#: src/ext_l10n.h:399
 msgid "Section"
 msgstr "Rész"
 
-#: src/ext_l10n.h:399
+#: src/ext_l10n.h:400
 msgid "Section*"
 msgstr "Rész*"
 
-#: src/ext_l10n.h:400
+#: src/ext_l10n.h:401
 msgid "Send_To_Address"
 msgstr "Címzett"
 
-#: src/ext_l10n.h:401
+#: src/ext_l10n.h:402
 msgid "Seriate"
 msgstr ""
 
-#: src/ext_l10n.h:402
+#: src/ext_l10n.h:403
 msgid "SGML"
 msgstr ""
 
-#: src/ext_l10n.h:403
+#: src/ext_l10n.h:404
 msgid "ShortFoilhead"
 msgstr ""
 
-#: src/ext_l10n.h:404
+#: src/ext_l10n.h:405
 msgid "ShortRotatefoilhead"
 msgstr ""
 
-#: src/ext_l10n.h:405
+#: src/ext_l10n.h:406
 msgid "ShortTitle"
 msgstr ""
 
-#: src/ext_l10n.h:406
+#: src/ext_l10n.h:407
 msgid "Signature"
 msgstr "Aláírás"
 
-#: src/ext_l10n.h:407
+#: src/ext_l10n.h:408
 msgid "Slide"
 msgstr ""
 
-#: src/ext_l10n.h:408
+#: src/ext_l10n.h:409
 msgid "Slide*"
 msgstr ""
 
-#: src/ext_l10n.h:409
+#: src/ext_l10n.h:410
 msgid "SlideContents"
 msgstr ""
 
-#: src/ext_l10n.h:410
+#: src/ext_l10n.h:411
 msgid "SlideHeading"
 msgstr ""
 
-#: src/ext_l10n.h:411
+#: src/ext_l10n.h:412
 msgid "SlideSubHeading"
 msgstr ""
 
-#: src/ext_l10n.h:412
+#: src/ext_l10n.h:413
 msgid "Solution"
 msgstr "Megoldás"
 
-#: src/ext_l10n.h:413
+#: src/ext_l10n.h:414
 msgid "Speaker"
 msgstr ""
 
-#: src/ext_l10n.h:414
+#: src/ext_l10n.h:415
 msgid "Specialmail"
 msgstr ""
 
-#: src/ext_l10n.h:415
+#: src/ext_l10n.h:416
 msgid "Stadt"
 msgstr ""
 
-#: src/ext_l10n.h:416 src/insets/insetref.C:110
+#: src/ext_l10n.h:417 src/insets/insetref.C:110
 msgid "Standard"
 msgstr "Normál"
 
-#: src/ext_l10n.h:417
+#: src/ext_l10n.h:418
 msgid "State"
 msgstr ""
 
-#: src/ext_l10n.h:418
+#: src/ext_l10n.h:419
 msgid "Strasse"
 msgstr ""
 
-#: src/ext_l10n.h:419
+#: src/ext_l10n.h:420
 msgid "Street"
 msgstr ""
 
-#: src/ext_l10n.h:420
+#: src/ext_l10n.h:421
 msgid "Subject"
 msgstr "Tárgy"
 
-#: src/ext_l10n.h:421
+#: src/ext_l10n.h:422
 msgid "Subjectclass"
 msgstr ""
 
-#: src/ext_l10n.h:422
+#: src/ext_l10n.h:423
 msgid "Subparagraph"
 msgstr "Albekezdés"
 
-#: src/ext_l10n.h:423
+#: src/ext_l10n.h:424
 msgid "Subparagraph*"
 msgstr "Albekezdés*"
 
-#: src/ext_l10n.h:424
+#: src/ext_l10n.h:425
 msgid "Subsection"
 msgstr "Alrész"
 
-#: src/ext_l10n.h:425
+#: src/ext_l10n.h:426
 msgid "Subsection*"
 msgstr "Alrész*"
 
-#: src/ext_l10n.h:426
+#: src/ext_l10n.h:427
 #, fuzzy
 msgid "SubSection"
 msgstr "Alrész"
 
-#: src/ext_l10n.h:427
+#: src/ext_l10n.h:428
 msgid "Subsubsection"
 msgstr "Al-alrész"
 
-#: src/ext_l10n.h:428
+#: src/ext_l10n.h:429
 msgid "Subsubsection*"
 msgstr "Al-alrész*"
 
-#: src/ext_l10n.h:429
+#: src/ext_l10n.h:430
 msgid "Subtitle"
 msgstr "Alcím"
 
-#: src/ext_l10n.h:430
+#: src/ext_l10n.h:431
 msgid "SubTitle"
 msgstr "AlCím"
 
-#: src/ext_l10n.h:431
+#: src/ext_l10n.h:432
 #, fuzzy
 msgid "SubVariation"
 msgstr "Szétválasztás"
 
-#: src/ext_l10n.h:432
+#: src/ext_l10n.h:433
 #, fuzzy
 msgid "SubVariation2"
 msgstr "Szétválasztás"
 
-#: src/ext_l10n.h:433
+#: src/ext_l10n.h:434
 #, fuzzy
 msgid "SubVariation3"
 msgstr "Szétválasztás"
 
-#: src/ext_l10n.h:434
+#: src/ext_l10n.h:435
 #, fuzzy
 msgid "SubVariation4"
 msgstr "Szétválasztás"
 
-#: src/ext_l10n.h:435
+#: src/ext_l10n.h:436
 #, fuzzy
 msgid "SubVariation5"
 msgstr "Szétválasztás"
 
-#: src/ext_l10n.h:436
+#: src/ext_l10n.h:437
 msgid "Summary"
 msgstr "Összegzés"
 
-#: src/ext_l10n.h:437
+#: src/ext_l10n.h:438
 msgid "Surname"
 msgstr "Családi név"
 
-#: src/ext_l10n.h:438
+#: src/ext_l10n.h:439
 msgid "TableComments"
 msgstr ""
 
-#: src/ext_l10n.h:439
+#: src/ext_l10n.h:440
 msgid "TableRefs"
 msgstr ""
 
-#: src/ext_l10n.h:440
+#: src/ext_l10n.h:441
 msgid "Telefax"
 msgstr "Telefax"
 
-#: src/ext_l10n.h:441
+#: src/ext_l10n.h:442
 msgid "Telefon"
 msgstr "Telefon"
 
-#: src/ext_l10n.h:442
+#: src/ext_l10n.h:443
 msgid "Telephone"
 msgstr "Telefon"
 
-#: src/ext_l10n.h:443
+#: src/ext_l10n.h:444
 msgid "Telex"
 msgstr "Telex"
 
-#: src/ext_l10n.h:444
+#: src/ext_l10n.h:445
 msgid "Thanks"
 msgstr "Köszönet"
 
-#: src/ext_l10n.h:445
+#: src/ext_l10n.h:446
 msgid "Theorem"
 msgstr ""
 
-#: src/ext_l10n.h:446
+#: src/ext_l10n.h:447
 msgid "Theorem*"
 msgstr ""
 
-#: src/ext_l10n.h:447
+#: src/ext_l10n.h:448
 msgid "TheoremTemplate"
 msgstr ""
 
-#: src/ext_l10n.h:448 src/ext_l10n.h:1174 src/frontends/qt2/QThesaurus.C:28
+#: src/ext_l10n.h:449 src/ext_l10n.h:1175 src/frontends/qt2/QThesaurus.C:28
 msgid "Thesaurus"
 msgstr ""
 
-#: src/ext_l10n.h:449
+#: src/ext_l10n.h:450
 msgid "ThickLine"
 msgstr ""
 
-#: src/ext_l10n.h:450
+#: src/ext_l10n.h:451
 msgid "ThreeAffiliations"
 msgstr ""
 
-#: src/ext_l10n.h:451
+#: src/ext_l10n.h:452
 msgid "ThreeAuthors"
 msgstr ""
 
-#: src/ext_l10n.h:452
+#: src/ext_l10n.h:453
 msgid "TickList"
 msgstr ""
 
-#: src/ext_l10n.h:453
+#: src/ext_l10n.h:454
 msgid "Title"
 msgstr "Cím"
 
-#: src/ext_l10n.h:454
+#: src/ext_l10n.h:455
 msgid "Titlehead"
 msgstr ""
 
-#: src/ext_l10n.h:455
+#: src/ext_l10n.h:456
 msgid "TITLE_OVER:"
 msgstr ""
 
-#: src/ext_l10n.h:456
+#: src/ext_l10n.h:457
 msgid "TOC_Author"
 msgstr ""
 
-#: src/ext_l10n.h:457
+#: src/ext_l10n.h:458
 msgid "TOC_Title"
 msgstr ""
 
-#: src/ext_l10n.h:458
+#: src/ext_l10n.h:459
 msgid "Topic"
 msgstr ""
 
-#: src/ext_l10n.h:459
+#: src/ext_l10n.h:460
 msgid "Town"
 msgstr "Város"
 
-#: src/ext_l10n.h:460
+#: src/ext_l10n.h:461
 msgid "Transition"
 msgstr ""
 
-#: src/ext_l10n.h:461
+#: src/ext_l10n.h:462
 msgid "Trans_Keywords"
 msgstr ""
 
-#: src/ext_l10n.h:462
+#: src/ext_l10n.h:463
 msgid "TranslatedAbstract"
 msgstr ""
 
-#: src/ext_l10n.h:463
+#: src/ext_l10n.h:464
 msgid "Translated_Title"
 msgstr ""
 
-#: src/ext_l10n.h:464
+#: src/ext_l10n.h:465
 msgid "Translator"
 msgstr "Fordító"
 
-#: src/ext_l10n.h:465
+#: src/ext_l10n.h:466
 msgid "TwoAffiliations"
 msgstr ""
 
-#: src/ext_l10n.h:466
+#: src/ext_l10n.h:467
 msgid "TwoAuthors"
 msgstr ""
 
-#: src/ext_l10n.h:467
+#: src/ext_l10n.h:468
 msgid "Unterschrift"
 msgstr ""
 
-#: src/ext_l10n.h:468
+#: src/ext_l10n.h:469
 msgid "Uppertitleback"
 msgstr ""
 
-#: src/ext_l10n.h:469 src/ext_l10n.h:1192 src/ext_l10n.h:1195
+#: src/ext_l10n.h:470 src/ext_l10n.h:1193 src/ext_l10n.h:1196
 #: src/frontends/qt2/QURL.C:25
 msgid "URL"
 msgstr "URL"
 
-#: src/ext_l10n.h:470
+#: src/ext_l10n.h:471
 #, fuzzy
 msgid "Variation"
 msgstr "Szétválasztás"
 
-#: src/ext_l10n.h:471
+#: src/ext_l10n.h:472
 msgid "Verbatim"
 msgstr ""
 
-#: src/ext_l10n.h:472
+#: src/ext_l10n.h:473
 msgid "Verse"
 msgstr "Költemény"
 
-#: src/ext_l10n.h:473
+#: src/ext_l10n.h:474
 msgid "Verteiler"
 msgstr ""
 
-#: src/ext_l10n.h:474
+#: src/ext_l10n.h:475
 msgid "VisibleText"
 msgstr ""
 
-#: src/ext_l10n.h:475
+#: src/ext_l10n.h:476
 msgid "Yourmail"
 msgstr ""
 
-#: src/ext_l10n.h:476
+#: src/ext_l10n.h:477
 msgid "YourMail"
 msgstr ""
 
-#: src/ext_l10n.h:477
+#: src/ext_l10n.h:478
 msgid "Yourref"
 msgstr ""
 
-#: src/ext_l10n.h:478
+#: src/ext_l10n.h:479
 msgid "YourRef"
 msgstr ""
 
-#: src/ext_l10n.h:479
+#: src/ext_l10n.h:480
 msgid "Zusatz"
 msgstr ""
 
-#: src/ext_l10n.h:480
+#: src/ext_l10n.h:481
 msgid "Afrikaans"
 msgstr "Afrikai"
 
-#: src/ext_l10n.h:481
+#: src/ext_l10n.h:482
 msgid "American"
 msgstr "Amerikai"
 
-#: src/ext_l10n.h:482
+#: src/ext_l10n.h:483
 msgid "Arabic"
 msgstr "Arab"
 
-#: src/ext_l10n.h:483
+#: src/ext_l10n.h:484
 msgid "Austrian"
 msgstr "Osztrák"
 
-#: src/ext_l10n.h:484
+#: src/ext_l10n.h:485
 msgid "Bahasa"
 msgstr ""
 
-#: src/ext_l10n.h:485
+#: src/ext_l10n.h:486
 #, fuzzy
 msgid "Basque"
 msgstr "kék"
 
-#: src/ext_l10n.h:486
+#: src/ext_l10n.h:487
 msgid "Portuguese (Brazil)"
 msgstr "Brazil"
 
-#: src/ext_l10n.h:487
+#: src/ext_l10n.h:488
 msgid "Breton"
 msgstr ""
 
-#: src/ext_l10n.h:488
+#: src/ext_l10n.h:489
 msgid "British"
 msgstr "Angol"
 
-#: src/ext_l10n.h:489
+#: src/ext_l10n.h:490
 #, fuzzy
 msgid "Bulgarian"
 msgstr "Magyar"
 
-#: src/ext_l10n.h:490
+#: src/ext_l10n.h:491
 msgid "Canadian"
 msgstr "Kanadai"
 
-#: src/ext_l10n.h:491
+#: src/ext_l10n.h:492
 msgid "French Canadian"
 msgstr ""
 
-#: src/ext_l10n.h:492
+#: src/ext_l10n.h:493
 msgid "Catalan"
 msgstr "Katalán"
 
-#: src/ext_l10n.h:493
+#: src/ext_l10n.h:494
 msgid "Croatian"
 msgstr ""
 
-#: src/ext_l10n.h:494
+#: src/ext_l10n.h:495
 msgid "Czech"
 msgstr "Cseh"
 
-#: src/ext_l10n.h:495
+#: src/ext_l10n.h:496
 msgid "Danish"
 msgstr "Dán"
 
-#: src/ext_l10n.h:496
+#: src/ext_l10n.h:497
 msgid "Dutch"
 msgstr ""
 
-#: src/ext_l10n.h:497 src/language.C:40
+#: src/ext_l10n.h:498 src/language.C:40
 msgid "English"
 msgstr "Angol"
 
-#: src/ext_l10n.h:498
+#: src/ext_l10n.h:499
 msgid "Esperanto"
 msgstr "Eszperantó"
 
-#: src/ext_l10n.h:499
+#: src/ext_l10n.h:500
 msgid "Estonian"
 msgstr ""
 
-#: src/ext_l10n.h:500
+#: src/ext_l10n.h:501
 msgid "Finnish"
 msgstr "Finn"
 
-#: src/ext_l10n.h:501
+#: src/ext_l10n.h:502
 msgid "French"
 msgstr "Francia"
 
-#: src/ext_l10n.h:502
+#: src/ext_l10n.h:503
 msgid "French (GUTenberg)"
 msgstr "Francia (GUTemberg)"
 
-#: src/ext_l10n.h:503
+#: src/ext_l10n.h:504
 msgid "Galician"
 msgstr ""
 
-#: src/ext_l10n.h:504
+#: src/ext_l10n.h:505
 msgid "German"
 msgstr "Német"
 
-#: src/ext_l10n.h:505
+#: src/ext_l10n.h:506
 msgid "German (new spelling)"
 msgstr "Német (new spelling)"
 
-#: src/ext_l10n.h:506 src/frontends/xforms/FormMathsPanel.C:103
-#: src/frontends/xforms/form_maths_panel.C:35
+#: src/ext_l10n.h:507 src/frontends/xforms/form_maths_panel.C:35
+#: src/frontends/xforms/FormMathsPanel.C:103
 msgid "Greek"
 msgstr "Greek"
 
-#: src/ext_l10n.h:507
+#: src/ext_l10n.h:508
 msgid "Hebrew"
 msgstr "Héber"
 
-#: src/ext_l10n.h:508
+#: src/ext_l10n.h:509
 msgid "Irish"
 msgstr "Ír"
 
-#: src/ext_l10n.h:509
+#: src/ext_l10n.h:510
 msgid "Italian"
 msgstr "Olasz"
 
-#: src/ext_l10n.h:510
+#: src/ext_l10n.h:511
 msgid "Lsorbian"
 msgstr ""
 
-#: src/ext_l10n.h:511
+#: src/ext_l10n.h:512
 msgid "Magyar"
 msgstr "Magyar"
 
-#: src/ext_l10n.h:512
+#: src/ext_l10n.h:513
 msgid "Norsk"
 msgstr "Norvég"
 
-#: src/ext_l10n.h:513
+#: src/ext_l10n.h:514
 msgid "Polish"
 msgstr "Lengyel"
 
-#: src/ext_l10n.h:514
+#: src/ext_l10n.h:515
 #, fuzzy
 msgid "Portugese"
 msgstr "Portugál"
 
-#: src/ext_l10n.h:515
+#: src/ext_l10n.h:516
 msgid "Romanian"
 msgstr "Román"
 
-#: src/ext_l10n.h:516
+#: src/ext_l10n.h:517
 msgid "Russian"
 msgstr "Orosz"
 
-#: src/ext_l10n.h:517
+#: src/ext_l10n.h:518
 msgid "Scottish"
 msgstr "Skót"
 
-#: src/ext_l10n.h:518
+#: src/ext_l10n.h:519
 #, fuzzy
 msgid "Serbian"
 msgstr "Amerikai"
 
-#: src/ext_l10n.h:519
+#: src/ext_l10n.h:520
 msgid "Serbo-Croatian"
 msgstr ""
 
-#: src/ext_l10n.h:520
+#: src/ext_l10n.h:521
 msgid "Spanish"
 msgstr "Spanyol"
 
-#: src/ext_l10n.h:521
+#: src/ext_l10n.h:522
 msgid "Slovak"
 msgstr "Szlovák"
 
-#: src/ext_l10n.h:522
+#: src/ext_l10n.h:523
 msgid "Slovene"
 msgstr "Szlovén"
 
-#: src/ext_l10n.h:523
+#: src/ext_l10n.h:524
 msgid "Swedish"
 msgstr "Svéd"
 
-#: src/ext_l10n.h:524
+#: src/ext_l10n.h:525
 msgid "Thai"
 msgstr ""
 
-#: src/ext_l10n.h:525
+#: src/ext_l10n.h:526
 msgid "Turkish"
 msgstr "Török"
 
-#: src/ext_l10n.h:526
+#: src/ext_l10n.h:527
 msgid "Ukrainian"
 msgstr "Ukrán"
 
-#: src/ext_l10n.h:527
+#: src/ext_l10n.h:528
 msgid "Usorbian"
 msgstr ""
 
-#: src/ext_l10n.h:528
+#: src/ext_l10n.h:529
 msgid "Welsh"
 msgstr ""
 
-#: src/ext_l10n.h:529 src/frontends/qt2/QAbout.C:32
+#: src/ext_l10n.h:530 src/frontends/qt2/QAbout.C:32
 #: src/frontends/xforms/FormAboutlyx.C:28
 msgid "About LyX"
 msgstr ""
 
-#: src/ext_l10n.h:530
+#: src/ext_l10n.h:531
 #, fuzzy
 msgid "Version"
 msgstr "Verzió...|V"
 
-#: src/ext_l10n.h:531
+#: src/ext_l10n.h:532
 msgid "Version goes here"
 msgstr ""
 
-#: src/ext_l10n.h:532 src/frontends/xforms/FormAboutlyx.C:65
+#: src/ext_l10n.h:533 src/frontends/xforms/FormAboutlyx.C:65
 msgid "Credits"
 msgstr "Érdemek"
 
-#: src/ext_l10n.h:534 src/ext_l10n.h:545 src/ext_l10n.h:599 src/ext_l10n.h:766
-#: src/ext_l10n.h:775 src/ext_l10n.h:793 src/ext_l10n.h:798 src/ext_l10n.h:874
-#: src/ext_l10n.h:893 src/ext_l10n.h:904 src/ext_l10n.h:918
-#: src/ext_l10n.h:1069 src/ext_l10n.h:1118 src/ext_l10n.h:1128
-#: src/ext_l10n.h:1130 src/ext_l10n.h:1142 src/ext_l10n.h:1172
-#: src/ext_l10n.h:1184 src/ext_l10n.h:1189 src/ext_l10n.h:1199
-#: src/ext_l10n.h:1203 src/frontends/qt2/QParagraphDialog.C:49
+#: src/ext_l10n.h:535 src/ext_l10n.h:546 src/ext_l10n.h:600 src/ext_l10n.h:767
+#: src/ext_l10n.h:776 src/ext_l10n.h:794 src/ext_l10n.h:799 src/ext_l10n.h:875
+#: src/ext_l10n.h:894 src/ext_l10n.h:905 src/ext_l10n.h:919
+#: src/ext_l10n.h:1070 src/ext_l10n.h:1119 src/ext_l10n.h:1129
+#: src/ext_l10n.h:1131 src/ext_l10n.h:1143 src/ext_l10n.h:1173
+#: src/ext_l10n.h:1185 src/ext_l10n.h:1190 src/ext_l10n.h:1200
+#: src/ext_l10n.h:1204 src/frontends/qt2/QParagraphDialog.C:49
 msgid "&Close"
 msgstr "&Bezár"
 
-#: src/ext_l10n.h:535
+#: src/ext_l10n.h:536
 msgid "LyX: Enter text"
 msgstr ""
 
-#: src/ext_l10n.h:536
+#: src/ext_l10n.h:537
 #, fuzzy
 msgid "&Dummy"
 msgstr "Összegzés"
 
-#: src/ext_l10n.h:537 src/ext_l10n.h:569 src/ext_l10n.h:602 src/ext_l10n.h:761
-#: src/ext_l10n.h:774 src/ext_l10n.h:899 src/frontends/qt2/QSpellchecker.C:114
+#: src/ext_l10n.h:538 src/ext_l10n.h:570 src/ext_l10n.h:603 src/ext_l10n.h:762
+#: src/ext_l10n.h:775 src/ext_l10n.h:900 src/frontends/qt2/QSpellchecker.C:114
 #: src/frontends/xforms/form_bibitem.C:35
 #: src/frontends/xforms/form_bibtex.C:35
 #: src/frontends/xforms/form_citation.C:173
@@ -2971,425 +2969,425 @@ msgstr "Összegzés"
 msgid "OK"
 msgstr "OK"
 
-#: src/ext_l10n.h:538 src/ext_l10n.h:1062 src/frontends/qt2/Alert_pimpl.C:45
+#: src/ext_l10n.h:539 src/ext_l10n.h:1063 src/frontends/qt2/Alert_pimpl.C:45
 #: src/frontends/qt2/QParagraphDialog.C:49
 msgid "&Cancel"
 msgstr "&Mégsem"
 
-#: src/ext_l10n.h:539 src/ext_l10n.h:896 src/frontends/qt2/QIndex.C:23
+#: src/ext_l10n.h:540 src/ext_l10n.h:897 src/frontends/qt2/QIndex.C:23
 #: src/frontends/xforms/FormIndex.C:24 src/insets/insetindex.C:59
 msgid "Index"
 msgstr "Tárgymutató"
 
-#: src/ext_l10n.h:540
+#: src/ext_l10n.h:541
 #, fuzzy
 msgid "&Key"
 msgstr "Kulcs"
 
-#: src/ext_l10n.h:541
+#: src/ext_l10n.h:542
 #, fuzzy
 msgid "The citation key"
 msgstr "Irodalomra hivatkozás"
 
-#: src/ext_l10n.h:542
+#: src/ext_l10n.h:543
 #, fuzzy
 msgid "&Label"
 msgstr "Címke:|#C"
 
-#: src/ext_l10n.h:543
+#: src/ext_l10n.h:544
 #, fuzzy
 msgid "The label as it appears in the document"
 msgstr "A formátum neve, ahogy megjelenik a menükben."
 
-#: src/ext_l10n.h:544 src/ext_l10n.h:597 src/ext_l10n.h:791 src/ext_l10n.h:796
-#: src/ext_l10n.h:872 src/ext_l10n.h:892 src/ext_l10n.h:916
-#: src/ext_l10n.h:1061 src/ext_l10n.h:1067 src/ext_l10n.h:1117
-#: src/ext_l10n.h:1157 src/ext_l10n.h:1198
+#: src/ext_l10n.h:545 src/ext_l10n.h:598 src/ext_l10n.h:792 src/ext_l10n.h:797
+#: src/ext_l10n.h:873 src/ext_l10n.h:893 src/ext_l10n.h:917
+#: src/ext_l10n.h:1062 src/ext_l10n.h:1068 src/ext_l10n.h:1118
+#: src/ext_l10n.h:1158 src/ext_l10n.h:1199
 msgid "&OK"
 msgstr "&OK"
 
-#: src/ext_l10n.h:546
+#: src/ext_l10n.h:547
 #, fuzzy
 msgid "Bibtex"
 msgstr "BibTeX"
 
-#: src/ext_l10n.h:547
+#: src/ext_l10n.h:548
 #, fuzzy
 msgid "Databases"
 msgstr "Adatbázis:"
 
-#: src/ext_l10n.h:548
+#: src/ext_l10n.h:549
 #, fuzzy
 msgid "BibTeX database to use"
 msgstr "Adatbázis:"
 
-#: src/ext_l10n.h:549 src/ext_l10n.h:625 src/ext_l10n.h:627
-#: src/ext_l10n.h:1166
+#: src/ext_l10n.h:550 src/ext_l10n.h:626 src/ext_l10n.h:628
+#: src/ext_l10n.h:1167
 msgid "New Item"
 msgstr ""
 
-#: src/ext_l10n.h:550
+#: src/ext_l10n.h:551
 #, fuzzy
 msgid "Available BibTeX databases"
 msgstr "Adatbázis:"
 
-#: src/ext_l10n.h:551
+#: src/ext_l10n.h:552
 msgid "&Add ..."
 msgstr ""
 
-#: src/ext_l10n.h:552
+#: src/ext_l10n.h:553
 #, fuzzy
 msgid "Add a BibTeX database file"
 msgstr "Adatbázis:"
 
-#: src/ext_l10n.h:553
+#: src/ext_l10n.h:554
 #, fuzzy
 msgid "&Delete"
 msgstr "Töröl|#T"
 
-#: src/ext_l10n.h:554
+#: src/ext_l10n.h:555
 msgid "Remove the selected database"
 msgstr ""
 
-#: src/ext_l10n.h:555
+#: src/ext_l10n.h:556
 #, fuzzy
 msgid "&Style"
 msgstr "Stílus:  "
 
-#: src/ext_l10n.h:556 src/ext_l10n.h:562
+#: src/ext_l10n.h:557 src/ext_l10n.h:563
 #, fuzzy
 msgid "The BibTeX style"
 msgstr "TeX stílus (be/ki)"
 
-#: src/ext_l10n.h:557 src/ext_l10n.h:643 src/frontends/qt2/QDocument.C:126
+#: src/ext_l10n.h:558 src/ext_l10n.h:644 src/frontends/qt2/QDocument.C:126
 #, fuzzy
 msgid "plain"
 msgstr "Kihagyás"
 
-#: src/ext_l10n.h:558
+#: src/ext_l10n.h:559
 #, fuzzy
 msgid "unsrt"
 msgstr "Beszúrás|B"
 
-#: src/ext_l10n.h:559
+#: src/ext_l10n.h:560
 msgid "alpha"
 msgstr ""
 
-#: src/ext_l10n.h:560
+#: src/ext_l10n.h:561
 msgid "abbrv"
 msgstr ""
 
-#: src/ext_l10n.h:561 src/frontends/qt2/QBibtex.C:114
+#: src/ext_l10n.h:562 src/frontends/qt2/QBibtex.C:114
 #: src/frontends/qt2/QBibtexDialog.C:77
 #, fuzzy
 msgid "Other ..."
 msgstr "egyéb..."
 
-#: src/ext_l10n.h:563
+#: src/ext_l10n.h:564
 msgid "FIXME !"
 msgstr ""
 
-#: src/ext_l10n.h:564
+#: src/ext_l10n.h:565
 msgid "The name of the style to use"
 msgstr ""
 
-#: src/ext_l10n.h:565
+#: src/ext_l10n.h:566
 #, fuzzy
 msgid "&Browse"
 msgstr "Tallóz..."
 
-#: src/ext_l10n.h:566
+#: src/ext_l10n.h:567
 #, fuzzy
 msgid "Choose a style file"
 msgstr "Válassza ki a sablont"
 
-#: src/ext_l10n.h:567
+#: src/ext_l10n.h:568
 #, fuzzy
 msgid "Add bibliography to &TOC"
 msgstr "Irodalomjegyzék"
 
-#: src/ext_l10n.h:568
+#: src/ext_l10n.h:569
 #, fuzzy
 msgid "Add bibliography to the table of contents"
 msgstr "Tartalomjegyzék megtekintése"
 
 #. /
-#: src/LyXAction.C:157 src/ext_l10n.h:570 src/ext_l10n.h:604
-#: src/ext_l10n.h:763 src/ext_l10n.h:900
-#: src/frontends/controllers/ButtonController.h:73 src/lyxfunc.C:1050
+#: src/ext_l10n.h:571 src/ext_l10n.h:605 src/ext_l10n.h:764 src/ext_l10n.h:901
+#: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:157
+#: src/lyxfunc.C:1074
 msgid "Cancel"
 msgstr "Mégsem"
 
-#: src/ext_l10n.h:571 src/frontends/qt2/QCharacter.C:31
+#: src/ext_l10n.h:572 src/frontends/qt2/QCharacter.C:31
 #, fuzzy
 msgid "Character"
 msgstr "Betûkészlet|#e"
 
-#: src/ext_l10n.h:572
+#: src/ext_l10n.h:573
 #, fuzzy
 msgid "&Family:"
 msgstr "Család:|#C"
 
-#: src/ext_l10n.h:573
+#: src/ext_l10n.h:574
 #, fuzzy
 msgid "Font family"
 msgstr "Család:|#C"
 
-#: src/ext_l10n.h:574
+#: src/ext_l10n.h:575
 #, fuzzy
 msgid "&Series:"
 msgstr "Vastagság:|#V"
 
-#: src/ext_l10n.h:575 src/ext_l10n.h:582
+#: src/ext_l10n.h:576 src/ext_l10n.h:583
 #, fuzzy
 msgid "Font series"
 msgstr "Betûméret:|#r"
 
-#: src/ext_l10n.h:576 src/ext_l10n.h:704
+#: src/ext_l10n.h:577 src/ext_l10n.h:705
 #, fuzzy
 msgid "&Language:"
 msgstr "Nyelv"
 
-#: src/ext_l10n.h:577 src/ext_l10n.h:585 src/ext_l10n.h:703
+#: src/ext_l10n.h:578 src/ext_l10n.h:586 src/ext_l10n.h:704
 #: src/frontends/xforms/FormDocument.C:324
 #: src/frontends/xforms/FormPreferences.C:258
 msgid "Language"
 msgstr "Nyelv"
 
-#: src/ext_l10n.h:578 src/ext_l10n.h:581
+#: src/ext_l10n.h:579 src/ext_l10n.h:582
 #, fuzzy
 msgid "Font shape"
 msgstr "Betûméret:|#r"
 
-#: src/ext_l10n.h:579 src/ext_l10n.h:584
+#: src/ext_l10n.h:580 src/ext_l10n.h:585
 msgid "Font color"
 msgstr ""
 
-#: src/ext_l10n.h:580
+#: src/ext_l10n.h:581
 #, fuzzy
 msgid "S&hape:"
 msgstr "Alak:|#A"
 
-#: src/ext_l10n.h:583
+#: src/ext_l10n.h:584
 #, fuzzy
 msgid "&Color:"
 msgstr "Színek"
 
-#: src/ext_l10n.h:586
+#: src/ext_l10n.h:587
 #, fuzzy
 msgid "&Toggle all"
 msgstr "Félkövér (be/ki)"
 
-#: src/ext_l10n.h:587
+#: src/ext_l10n.h:588
 #, fuzzy
 msgid "toggle font on all of the above"
 msgstr "Az összeset váltsa|#t"
 
-#: src/ext_l10n.h:588
+#: src/ext_l10n.h:589
 #, fuzzy
 msgid "Never toggled"
 msgstr "Ezeket sosem váltsa"
 
-#: src/ext_l10n.h:589 src/ext_l10n.h:817
+#: src/ext_l10n.h:590 src/ext_l10n.h:818
 #, fuzzy
 msgid "Si&ze:"
 msgstr "Méret:|#M"
 
-#: src/ext_l10n.h:590
+#: src/ext_l10n.h:591
 #, fuzzy
 msgid "Font size"
 msgstr "Betûméret:|#r"
 
-#: src/ext_l10n.h:591
+#: src/ext_l10n.h:592
 #, fuzzy
 msgid "Always toggled"
 msgstr "Ezeket mindíg váltsa"
 
-#: src/ext_l10n.h:592 src/ext_l10n.h:594
+#: src/ext_l10n.h:593 src/ext_l10n.h:595
 msgid "Other font settings"
 msgstr ""
 
-#: src/ext_l10n.h:593
+#: src/ext_l10n.h:594
 #, fuzzy
 msgid "&Misc:"
 msgstr "Egyéb"
 
-#: src/ext_l10n.h:595
+#: src/ext_l10n.h:596
 #, fuzzy
 msgid "Auto apply"
 msgstr "&Alkalmaz"
 
-#: src/ext_l10n.h:596
+#: src/ext_l10n.h:597
 msgid "Apply each change automatically"
 msgstr ""
 
-#: src/ext_l10n.h:598 src/ext_l10n.h:603 src/ext_l10n.h:762 src/ext_l10n.h:792
-#: src/ext_l10n.h:797 src/ext_l10n.h:873 src/ext_l10n.h:917
-#: src/ext_l10n.h:1060 src/ext_l10n.h:1068
+#: src/ext_l10n.h:599 src/ext_l10n.h:604 src/ext_l10n.h:763 src/ext_l10n.h:793
+#: src/ext_l10n.h:798 src/ext_l10n.h:874 src/ext_l10n.h:918
+#: src/ext_l10n.h:1061 src/ext_l10n.h:1069
 msgid "&Apply"
 msgstr "&Alkalmaz"
 
-#: src/ext_l10n.h:600 src/frontends/qt2/QCitation.C:45
+#: src/ext_l10n.h:601 src/frontends/qt2/QCitation.C:45
 #: src/frontends/xforms/FormCitation.C:111
 msgid "Citation"
 msgstr "Irodalomra hivatkozás"
 
-#: src/ext_l10n.h:601 src/ext_l10n.h:760 src/ext_l10n.h:795 src/ext_l10n.h:871
-#: src/ext_l10n.h:915 src/ext_l10n.h:1059
+#: src/ext_l10n.h:602 src/ext_l10n.h:761 src/ext_l10n.h:796 src/ext_l10n.h:872
+#: src/ext_l10n.h:916 src/ext_l10n.h:1060
 msgid "&Restore"
 msgstr "&Visszaállít"
 
-#: src/ext_l10n.h:605
+#: src/ext_l10n.h:606
 msgid "Text after"
 msgstr ""
 
-#: src/ext_l10n.h:606 src/frontends/xforms/form_citation.C:116
+#: src/ext_l10n.h:607 src/frontends/xforms/form_citation.C:116
 #, fuzzy
 msgid "Citation style"
 msgstr "Irodalomra hivatkozás"
 
-#: src/ext_l10n.h:607
+#: src/ext_l10n.h:608
 #, fuzzy
 msgid "Natbib citation style to use"
 msgstr "Irodalomra hivatkozás"
 
-#: src/ext_l10n.h:608
+#: src/ext_l10n.h:609
 #, fuzzy
 msgid "Text before"
 msgstr "Szövegosztály hiba"
 
-#: src/ext_l10n.h:609 src/frontends/xforms/form_citation.C:73 src/lyxvc.C:122
+#: src/ext_l10n.h:610 src/frontends/xforms/form_citation.C:73 src/lyxvc.C:122
 msgid "Info"
 msgstr ""
 
-#: src/ext_l10n.h:610
+#: src/ext_l10n.h:611
 #, fuzzy
 msgid "Citation entry"
 msgstr "Irodalomra hivatkozás"
 
-#: src/ext_l10n.h:611 src/frontends/qt2/QSearch.C:31
+#: src/ext_l10n.h:612 src/frontends/qt2/QSearch.C:31
 #: src/frontends/xforms/form_citation.C:78
 msgid "Search"
 msgstr "Keres"
 
-#: src/ext_l10n.h:612
+#: src/ext_l10n.h:613
 msgid "Search the available citations"
 msgstr ""
 
-#: src/ext_l10n.h:613
+#: src/ext_l10n.h:614
 msgid "Regular E&xpression"
 msgstr ""
 
-#: src/ext_l10n.h:614
+#: src/ext_l10n.h:615
 msgid "Interpret search entry as a regular expression"
 msgstr ""
 
-#: src/ext_l10n.h:615
+#: src/ext_l10n.h:616
 msgid "&Previous"
 msgstr ""
 
-#: src/ext_l10n.h:616
+#: src/ext_l10n.h:617
 #, fuzzy
 msgid "&Case sensitive"
 msgstr "kisb./NAGYB.|#i"
 
-#: src/ext_l10n.h:617
+#: src/ext_l10n.h:618
 msgid "Make the search case-sensitive"
 msgstr ""
 
-#: src/ext_l10n.h:618
+#: src/ext_l10n.h:619
 #, fuzzy
 msgid "&Next"
 msgstr "szöveg"
 
-#: src/ext_l10n.h:619
+#: src/ext_l10n.h:620
 msgid "Add the selected citation"
 msgstr ""
 
-#: src/ext_l10n.h:620
+#: src/ext_l10n.h:621
 msgid "Remove the selected citation"
 msgstr ""
 
-#: src/ext_l10n.h:621
+#: src/ext_l10n.h:622
 msgid "Move the selected citation up"
 msgstr ""
 
-#: src/ext_l10n.h:622
+#: src/ext_l10n.h:623
 msgid "Move the selected citation down"
 msgstr ""
 
-#: src/ext_l10n.h:623
+#: src/ext_l10n.h:624
 #, fuzzy
 msgid "Available"
 msgstr "Beállítások mentése"
 
-#: src/ext_l10n.h:624
+#: src/ext_l10n.h:625
 #, fuzzy
 msgid "Selected"
 msgstr "Döntött"
 
-#: src/ext_l10n.h:626
+#: src/ext_l10n.h:627
 #, fuzzy
 msgid "Available citation keys"
 msgstr "Beállítások mentése"
 
-#: src/ext_l10n.h:628
+#: src/ext_l10n.h:629
 #, fuzzy
 msgid "Citations currently selected"
 msgstr "Irodalomra hivatkozás"
 
-#: src/ext_l10n.h:629
+#: src/ext_l10n.h:630
 msgid "Text to place after citation"
 msgstr ""
 
-#: src/ext_l10n.h:630
+#: src/ext_l10n.h:631
 #, fuzzy
 msgid "&Full author list"
 msgstr "Úszókép|#k"
 
-#: src/ext_l10n.h:631
+#: src/ext_l10n.h:632
 msgid "List all authors"
 msgstr ""
 
-#: src/ext_l10n.h:632
+#: src/ext_l10n.h:633
 msgid "Force &upper case"
 msgstr ""
 
-#: src/ext_l10n.h:633
+#: src/ext_l10n.h:634
 msgid "Force upper case in citation"
 msgstr ""
 
-#: src/ext_l10n.h:634
+#: src/ext_l10n.h:635
 msgid "Text to place before citation"
 msgstr ""
 
-#: src/ext_l10n.h:635 src/frontends/xforms/FormDocument.C:57
+#: src/ext_l10n.h:636 src/frontends/xforms/FormDocument.C:57
 msgid "Document Layout"
 msgstr "Dokumentum formátum"
 
-#: src/ext_l10n.h:637
+#: src/ext_l10n.h:638
 #, fuzzy
 msgid "&Fonts:"
 msgstr "Betûkészlet: "
 
-#: src/ext_l10n.h:638
+#: src/ext_l10n.h:639
 #, fuzzy
 msgid "&Pagestyle:"
 msgstr "Oldal stílusa:|#d"
 
-#: src/ext_l10n.h:639
+#: src/ext_l10n.h:640
 #, fuzzy
 msgid "Defa&ult Skip:"
 msgstr "Kihagyás:|h"
 
-#: src/ext_l10n.h:640
+#: src/ext_l10n.h:641
 #, fuzzy
 msgid "F&ont Size:"
 msgstr "Betûméret:|#r"
 
 #. the document language page
-#: src/ext_l10n.h:641 src/ext_l10n.h:657 src/ext_l10n.h:706 src/ext_l10n.h:737
-#: src/ext_l10n.h:856 src/frontends/qt2/QDocument.C:116
+#: src/ext_l10n.h:642 src/ext_l10n.h:658 src/ext_l10n.h:707 src/ext_l10n.h:738
+#: src/ext_l10n.h:857 src/frontends/qt2/QDocument.C:116
 #: src/frontends/qt2/QDocument.C:124 src/frontends/qt2/QDocument.C:152
 #: src/frontends/qt2/QDocument.C:196 src/frontends/qt2/QDocument.C:575
 #: src/frontends/qt2/QDocument.C:579
@@ -3397,1781 +3395,1781 @@ msgstr "Betûméret:|#r"
 msgid "default"
 msgstr "Alapérték"
 
-#: src/ext_l10n.h:642 src/frontends/qt2/QDocument.C:125
+#: src/ext_l10n.h:643 src/frontends/qt2/QDocument.C:125
 msgid "empty"
 msgstr ""
 
-#: src/ext_l10n.h:644 src/frontends/qt2/QDocument.C:127
+#: src/ext_l10n.h:645 src/frontends/qt2/QDocument.C:127
 #, fuzzy
 msgid "headings"
 msgstr "Grafikus felület (GUI) kezelés"
 
-#: src/ext_l10n.h:645 src/frontends/qt2/QDocument.C:128
+#: src/ext_l10n.h:646 src/frontends/qt2/QDocument.C:128
 msgid "fancy"
 msgstr ""
 
-#: src/ext_l10n.h:646
+#: src/ext_l10n.h:647
 #, fuzzy
 msgid "Spacin&g:"
 msgstr ", Sortávolság"
 
-#: src/ext_l10n.h:647
+#: src/ext_l10n.h:648
 #, fuzzy
 msgid "E&xtra Options:"
 msgstr "Egyéb beállítások"
 
-#: src/ext_l10n.h:648
+#: src/ext_l10n.h:649
 #, fuzzy
 msgid "&Class:"
 msgstr "Osztály:|#O"
 
-#: src/ext_l10n.h:649
+#: src/ext_l10n.h:650
 #, fuzzy
 msgid "smallskip"
 msgstr "Kicsi"
 
-#: src/ext_l10n.h:650
+#: src/ext_l10n.h:651
 #, fuzzy
 msgid "medskip"
 msgstr "Közepes"
 
-#: src/ext_l10n.h:651
+#: src/ext_l10n.h:652
 msgid "bigskip"
 msgstr ""
 
-#: src/ext_l10n.h:652
+#: src/ext_l10n.h:653
 #, fuzzy
 msgid "length"
 msgstr "mm|#m"
 
-#: src/ext_l10n.h:654 src/frontends/qt2/QDocument.C:112
+#: src/ext_l10n.h:655 src/frontends/qt2/QDocument.C:112
 #, fuzzy
 msgid "OneHalf"
 msgstr "Másfeles"
 
-#: src/ext_l10n.h:656 src/frontends/qt2/QDocument.C:114
+#: src/ext_l10n.h:657 src/frontends/qt2/QDocument.C:114
 #, fuzzy
 msgid "Other"
 msgstr "Adott ("
 
-#: src/ext_l10n.h:658 src/frontends/qt2/QDocument.C:117
+#: src/ext_l10n.h:659 src/frontends/qt2/QDocument.C:117
 msgid "10"
 msgstr ""
 
-#: src/ext_l10n.h:659 src/frontends/qt2/QDocument.C:118
+#: src/ext_l10n.h:660 src/frontends/qt2/QDocument.C:118
 msgid "11"
 msgstr ""
 
-#: src/ext_l10n.h:660 src/frontends/qt2/QDocument.C:119
+#: src/ext_l10n.h:661 src/frontends/qt2/QDocument.C:119
 msgid "12"
 msgstr ""
 
-#: src/ext_l10n.h:661 src/frontends/xforms/form_document.C:260
+#: src/ext_l10n.h:662 src/frontends/xforms/form_document.C:260
 msgid "Sides"
 msgstr "Oldalak"
 
-#: src/ext_l10n.h:662
+#: src/ext_l10n.h:663
 #, fuzzy
 msgid "O&ne"
 msgstr "Be"
 
-#: src/ext_l10n.h:663
+#: src/ext_l10n.h:664
 #, fuzzy
 msgid "&Two"
 msgstr "Kettõ|#e"
 
-#: src/ext_l10n.h:664 src/frontends/xforms/form_tabular_create.C:45
+#: src/ext_l10n.h:665 src/frontends/xforms/form_tabular_create.C:45
 msgid "Columns"
 msgstr "Oszlopok"
 
-#: src/ext_l10n.h:665
+#: src/ext_l10n.h:666
 #, fuzzy
 msgid "On&e"
 msgstr "Be"
 
-#: src/ext_l10n.h:666
+#: src/ext_l10n.h:667
 #, fuzzy
 msgid "T&wo"
 msgstr "Kettõ|#e"
 
-#: src/ext_l10n.h:667 src/frontends/xforms/form_document.C:254
+#: src/ext_l10n.h:668 src/frontends/xforms/form_document.C:254
 msgid "Separation"
 msgstr "Szétválasztás"
 
-#: src/ext_l10n.h:668
+#: src/ext_l10n.h:669
 #, fuzzy
 msgid "&Indent"
 msgstr "Behúzás"
 
-#: src/ext_l10n.h:669
+#: src/ext_l10n.h:670
 #, fuzzy
 msgid "S&kip"
 msgstr "Kihagyás|#y"
 
-#: src/ext_l10n.h:670 src/frontends/xforms/FormDocument.C:322
+#: src/ext_l10n.h:671 src/frontends/xforms/FormDocument.C:322
 msgid "Paper"
 msgstr "Papír"
 
-#: src/ext_l10n.h:671
+#: src/ext_l10n.h:672
 #, fuzzy
 msgid "&Papersize:"
 msgstr "papírméret"
 
-#: src/ext_l10n.h:672 src/frontends/qt2/QDocument.C:72 src/lyxfont.C:573
+#: src/ext_l10n.h:673 src/frontends/qt2/QDocument.C:72 src/lyxfont.C:573
 msgid "Default"
 msgstr "Alapérték"
 
-#: src/ext_l10n.h:673 src/ext_l10n.h:1010 src/ext_l10n.h:1019
+#: src/ext_l10n.h:674 src/ext_l10n.h:1011 src/ext_l10n.h:1020
 #: src/frontends/qt2/QDocument.C:73
 #, fuzzy
 msgid "Custom"
 msgstr "Ügyfél"
 
-#: src/ext_l10n.h:674 src/frontends/qt2/QDocument.C:74
+#: src/ext_l10n.h:675 src/frontends/qt2/QDocument.C:74
 #, fuzzy
 msgid "USletter"
 msgstr "Levél"
 
-#: src/ext_l10n.h:675 src/frontends/qt2/QDocument.C:75
+#: src/ext_l10n.h:676 src/frontends/qt2/QDocument.C:75
 msgid "USlegal"
 msgstr ""
 
-#: src/ext_l10n.h:676 src/frontends/qt2/QDocument.C:76
+#: src/ext_l10n.h:677 src/frontends/qt2/QDocument.C:76
 msgid "USexecutive"
 msgstr ""
 
-#: src/ext_l10n.h:677 src/frontends/qt2/QDocument.C:77
+#: src/ext_l10n.h:678 src/frontends/qt2/QDocument.C:77
 msgid "A3"
 msgstr ""
 
-#: src/ext_l10n.h:678 src/frontends/qt2/QDocument.C:79
+#: src/ext_l10n.h:679 src/frontends/qt2/QDocument.C:79
 msgid "A5"
 msgstr ""
 
-#: src/ext_l10n.h:679 src/frontends/qt2/QDocument.C:80
+#: src/ext_l10n.h:680 src/frontends/qt2/QDocument.C:80
 msgid "B3"
 msgstr ""
 
-#: src/ext_l10n.h:680 src/frontends/qt2/QDocument.C:81
+#: src/ext_l10n.h:681 src/frontends/qt2/QDocument.C:81
 msgid "B4"
 msgstr ""
 
-#: src/ext_l10n.h:681 src/frontends/qt2/QDocument.C:82
+#: src/ext_l10n.h:682 src/frontends/qt2/QDocument.C:82
 msgid "B5"
 msgstr ""
 
-#: src/ext_l10n.h:682
+#: src/ext_l10n.h:683
 #, fuzzy
 msgid "&Special:"
 msgstr "Különleges"
 
-#: src/ext_l10n.h:683 src/ext_l10n.h:1004 src/ext_l10n.h:1013
-#: src/ext_l10n.h:1047 src/frontends/qt2/QDocument.C:84
+#: src/ext_l10n.h:684 src/ext_l10n.h:1005 src/ext_l10n.h:1014
+#: src/ext_l10n.h:1048 src/frontends/qt2/QDocument.C:84
 msgid "None"
 msgstr ""
 
-#: src/ext_l10n.h:684 src/frontends/qt2/QDocument.C:85
+#: src/ext_l10n.h:685 src/frontends/qt2/QDocument.C:85
 msgid "A4 small Margins (only portrait)"
 msgstr ""
 
-#: src/ext_l10n.h:685 src/frontends/qt2/QDocument.C:86
+#: src/ext_l10n.h:686 src/frontends/qt2/QDocument.C:86
 msgid "A4 very small Margins (only portrait)"
 msgstr ""
 
-#: src/ext_l10n.h:686 src/frontends/qt2/QDocument.C:87
+#: src/ext_l10n.h:687 src/frontends/qt2/QDocument.C:87
 msgid "A4 very wide margins (only portrait)"
 msgstr ""
 
-#: src/ext_l10n.h:687
+#: src/ext_l10n.h:688
 #, fuzzy
 msgid "&Use Geometry Package"
 msgstr "Geometry csomag használata|#c"
 
-#: src/ext_l10n.h:688 src/frontends/xforms/form_document.C:123
+#: src/ext_l10n.h:689 src/frontends/xforms/form_document.C:123
 msgid "Orientation"
 msgstr "Oldaltípus"
 
-#: src/ext_l10n.h:689
+#: src/ext_l10n.h:690
 #, fuzzy
 msgid "P&ortrait"
 msgstr "Álló|#l"
 
-#: src/ext_l10n.h:690
+#: src/ext_l10n.h:691
 #, fuzzy
 msgid "&Landscape"
 msgstr "Fekvõ|#F"
 
-#: src/ext_l10n.h:691 src/frontends/xforms/form_document.C:143
+#: src/ext_l10n.h:692 src/frontends/xforms/form_document.C:143
 msgid "Margins"
 msgstr "Margók"
 
-#: src/ext_l10n.h:692
+#: src/ext_l10n.h:693
 #, fuzzy
 msgid "&Right:"
 msgstr "Jobbra"
 
-#: src/ext_l10n.h:693
+#: src/ext_l10n.h:694
 #, fuzzy
 msgid "&Bottom:"
 msgstr "Alsó:|#s"
 
-#: src/ext_l10n.h:694
+#: src/ext_l10n.h:695
 #, fuzzy
 msgid "L&eft:"
 msgstr "Balra"
 
-#: src/ext_l10n.h:695
+#: src/ext_l10n.h:696
 #, fuzzy
 msgid "&Top:"
 msgstr "Felsõ:|#e"
 
-#: src/ext_l10n.h:696
+#: src/ext_l10n.h:697
 msgid "Custom Papersize"
 msgstr "Egyedi papírméret"
 
-#: src/ext_l10n.h:697 src/ext_l10n.h:906
+#: src/ext_l10n.h:698 src/ext_l10n.h:907
 #, fuzzy
 msgid "&Width:"
 msgstr "Szélesség"
 
-#: src/ext_l10n.h:698
+#: src/ext_l10n.h:699
 #, fuzzy
 msgid "&Height:"
 msgstr "Magasság"
 
-#: src/ext_l10n.h:699
+#: src/ext_l10n.h:700
 msgid "Foot/Head Margins"
 msgstr "Láb/Fej margók"
 
-#: src/ext_l10n.h:700
+#: src/ext_l10n.h:701
 #, fuzzy
 msgid "&Footskip:"
 msgstr "Lábléc mag.|#v"
 
-#: src/ext_l10n.h:701
+#: src/ext_l10n.h:702
 #, fuzzy
 msgid "Hea&dsep:"
 msgstr "Elkülönítés:|#k"
 
-#: src/ext_l10n.h:702
+#: src/ext_l10n.h:703
 #, fuzzy
 msgid "Headhe&ight:"
 msgstr "Fejléc mag.:|#c"
 
-#: src/ext_l10n.h:705
+#: src/ext_l10n.h:706
 #, fuzzy
 msgid "Enco&ding:"
 msgstr "Kódolás"
 
-#: src/ext_l10n.h:707 src/frontends/qt2/QDocument.C:153
+#: src/ext_l10n.h:708 src/frontends/qt2/QDocument.C:153
 #, fuzzy
 msgid "auto"
 msgstr "-"
 
-#: src/ext_l10n.h:708 src/frontends/qt2/QDocument.C:154
+#: src/ext_l10n.h:709 src/frontends/qt2/QDocument.C:154
 #, fuzzy
 msgid "latin1"
 msgstr "apró"
 
-#: src/ext_l10n.h:709 src/frontends/qt2/QDocument.C:155
+#: src/ext_l10n.h:710 src/frontends/qt2/QDocument.C:155
 #, fuzzy
 msgid "latin2"
 msgstr "apró"
 
-#: src/ext_l10n.h:710 src/frontends/qt2/QDocument.C:156
+#: src/ext_l10n.h:711 src/frontends/qt2/QDocument.C:156
 #, fuzzy
 msgid "latin3"
 msgstr "apró"
 
-#: src/ext_l10n.h:711 src/frontends/qt2/QDocument.C:157
+#: src/ext_l10n.h:712 src/frontends/qt2/QDocument.C:157
 #, fuzzy
 msgid "latin4"
 msgstr "apró"
 
-#: src/ext_l10n.h:712 src/frontends/qt2/QDocument.C:158
+#: src/ext_l10n.h:713 src/frontends/qt2/QDocument.C:158
 #, fuzzy
 msgid "latin5"
 msgstr "apró"
 
-#: src/ext_l10n.h:713 src/frontends/qt2/QDocument.C:159
+#: src/ext_l10n.h:714 src/frontends/qt2/QDocument.C:159
 #, fuzzy
 msgid "latin9"
 msgstr "apró"
 
-#: src/ext_l10n.h:714 src/frontends/qt2/QDocument.C:160
+#: src/ext_l10n.h:715 src/frontends/qt2/QDocument.C:160
 msgid "koi8-r"
 msgstr ""
 
-#: src/ext_l10n.h:715 src/frontends/qt2/QDocument.C:161
+#: src/ext_l10n.h:716 src/frontends/qt2/QDocument.C:161
 msgid "koi8-u"
 msgstr ""
 
-#: src/ext_l10n.h:716 src/frontends/qt2/QDocument.C:162
+#: src/ext_l10n.h:717 src/frontends/qt2/QDocument.C:162
 msgid "cp866"
 msgstr ""
 
-#: src/ext_l10n.h:717 src/frontends/qt2/QDocument.C:163
+#: src/ext_l10n.h:718 src/frontends/qt2/QDocument.C:163
 msgid "cp1251"
 msgstr ""
 
-#: src/ext_l10n.h:718 src/frontends/qt2/QDocument.C:164
+#: src/ext_l10n.h:719 src/frontends/qt2/QDocument.C:164
 msgid "iso88595"
 msgstr ""
 
-#: src/ext_l10n.h:719
+#: src/ext_l10n.h:720
 #, fuzzy
 msgid "Quote Style"
 msgstr "Idézõjel stílus"
 
-#: src/ext_l10n.h:720
+#: src/ext_l10n.h:721
 #, fuzzy
 msgid "&Type:"
 msgstr "Típus:"
 
-#: src/ext_l10n.h:721 src/frontends/qt2/QDocument.C:171
+#: src/ext_l10n.h:722 src/frontends/qt2/QDocument.C:171
 #, fuzzy
 msgid "``text''"
 msgstr "szöveg"
 
-#: src/ext_l10n.h:722 src/frontends/qt2/QDocument.C:172
+#: src/ext_l10n.h:723 src/frontends/qt2/QDocument.C:172
 #, fuzzy
 msgid "''text''"
 msgstr "szöveg"
 
-#: src/ext_l10n.h:723 src/frontends/qt2/QDocument.C:173
+#: src/ext_l10n.h:724 src/frontends/qt2/QDocument.C:173
 #, fuzzy
 msgid ",,text``"
 msgstr "szöveg"
 
-#: src/ext_l10n.h:724 src/frontends/qt2/QDocument.C:174
+#: src/ext_l10n.h:725 src/frontends/qt2/QDocument.C:174
 #, fuzzy
 msgid ",,text''"
 msgstr "szöveg"
 
-#: src/ext_l10n.h:725
+#: src/ext_l10n.h:726
 #, fuzzy
 msgid "Â«textÂ»"
 msgstr "szöveg"
 
-#: src/ext_l10n.h:726
+#: src/ext_l10n.h:727
 #, fuzzy
 msgid "Â»textÂ«"
 msgstr "szöveg"
 
-#: src/ext_l10n.h:727
+#: src/ext_l10n.h:728
 #, fuzzy
 msgid "&Single"
 msgstr "Szimpla"
 
-#: src/ext_l10n.h:728
+#: src/ext_l10n.h:729
 #, fuzzy
 msgid "&Double"
 msgstr "Dupla"
 
-#: src/ext_l10n.h:729 src/ext_l10n.h:852
+#: src/ext_l10n.h:730 src/ext_l10n.h:853
 #: src/frontends/xforms/FormDocument.C:326
 msgid "Extra"
 msgstr "Extra"
 
-#: src/ext_l10n.h:730
+#: src/ext_l10n.h:731
 #, fuzzy
 msgid "F&loat Placement:"
 msgstr "Lebegõ obj.|#j"
 
-#: src/ext_l10n.h:731
+#: src/ext_l10n.h:732
 #, fuzzy
 msgid "S&ection number depth:"
 msgstr "Részek számozása"
 
-#: src/ext_l10n.h:732
+#: src/ext_l10n.h:733
 #, fuzzy
 msgid "&Table of contents depth:"
 msgstr "A Tartalomjegyzékben"
 
-#: src/ext_l10n.h:733
+#: src/ext_l10n.h:734
 #, fuzzy
 msgid "P&S Driver:"
 msgstr "PS meghajtó:|P"
 
-#: src/ext_l10n.h:734
+#: src/ext_l10n.h:735
 #, fuzzy
 msgid "Use A&MS Math"
 msgstr "AMS Math használata|#M"
 
-#: src/ext_l10n.h:735 src/frontends/xforms/FormDocument.C:328
+#: src/ext_l10n.h:736 src/frontends/xforms/FormDocument.C:328
 msgid "Bullets"
 msgstr "Jelek"
 
-#: src/ext_l10n.h:736
+#: src/ext_l10n.h:737
 #, fuzzy
 msgid "Si&ze"
 msgstr "Méret|#r"
 
-#: src/ext_l10n.h:738 src/frontends/qt2/QDocument.C:197
+#: src/ext_l10n.h:739 src/frontends/qt2/QDocument.C:197
 #: src/frontends/xforms/form_preferences.C:149
 msgid "tiny"
 msgstr "apró"
 
-#: src/ext_l10n.h:739 src/frontends/qt2/QDocument.C:198
+#: src/ext_l10n.h:740 src/frontends/qt2/QDocument.C:198
 msgid "script"
 msgstr "kézirás"
 
-#: src/ext_l10n.h:740 src/frontends/qt2/QDocument.C:199
+#: src/ext_l10n.h:741 src/frontends/qt2/QDocument.C:199
 msgid "footnote"
 msgstr "lábjegyzet"
 
-#: src/ext_l10n.h:741 src/frontends/qt2/QDocument.C:200
+#: src/ext_l10n.h:742 src/frontends/qt2/QDocument.C:200
 #: src/frontends/xforms/form_preferences.C:158
 msgid "small"
 msgstr "kicsi"
 
-#: src/ext_l10n.h:742 src/frontends/qt2/QDocument.C:201
+#: src/ext_l10n.h:743 src/frontends/qt2/QDocument.C:201
 #: src/frontends/xforms/form_preferences.C:161
 msgid "normal"
 msgstr "normál"
 
-#: src/ext_l10n.h:743 src/frontends/qt2/QDocument.C:202
+#: src/ext_l10n.h:744 src/frontends/qt2/QDocument.C:202
 #: src/frontends/xforms/form_preferences.C:164
 msgid "large"
 msgstr "nagy"
 
-#: src/ext_l10n.h:744 src/frontends/controllers/character.C:106
+#: src/ext_l10n.h:745 src/frontends/controllers/character.C:106
 #: src/frontends/qt2/QDocument.C:203 src/lyxfont.C:56
 msgid "Large"
 msgstr "Nagy"
 
-#: src/ext_l10n.h:745 src/frontends/qt2/QDocument.C:204
+#: src/ext_l10n.h:746 src/frontends/qt2/QDocument.C:204
 msgid "LARGE"
 msgstr ""
 
-#: src/ext_l10n.h:746 src/frontends/qt2/QDocument.C:205
+#: src/ext_l10n.h:747 src/frontends/qt2/QDocument.C:205
 #: src/frontends/xforms/form_preferences.C:173
 msgid "huge"
 msgstr "óriás"
 
-#: src/ext_l10n.h:747 src/frontends/controllers/character.C:112
+#: src/ext_l10n.h:748 src/frontends/controllers/character.C:112
 #: src/frontends/qt2/QDocument.C:206 src/lyxfont.C:57
 msgid "Huge"
 msgstr "Óriás"
 
-#: src/ext_l10n.h:748 src/frontends/xforms/form_document.C:614
+#: src/ext_l10n.h:749 src/frontends/xforms/form_document.C:614
 msgid "Bullet Depth"
 msgstr "Listák"
 
-#: src/ext_l10n.h:749
+#: src/ext_l10n.h:750
 msgid "&1"
 msgstr ""
 
-#: src/ext_l10n.h:750
+#: src/ext_l10n.h:751
 msgid "&2"
 msgstr ""
 
-#: src/ext_l10n.h:751
+#: src/ext_l10n.h:752
 msgid "&3"
 msgstr ""
 
-#: src/ext_l10n.h:752
+#: src/ext_l10n.h:753
 msgid "&4"
 msgstr ""
 
-#: src/ext_l10n.h:753
+#: src/ext_l10n.h:754
 #, fuzzy
 msgid "&Standard"
 msgstr "Normál"
 
-#: src/ext_l10n.h:754
+#: src/ext_l10n.h:755
 #, fuzzy
 msgid "&Maths"
 msgstr "Útvonalak"
 
-#: src/ext_l10n.h:755
+#: src/ext_l10n.h:756
 msgid "&Ding 1"
 msgstr ""
 
-#: src/ext_l10n.h:756
+#: src/ext_l10n.h:757
 msgid "D&ing 2"
 msgstr ""
 
-#: src/ext_l10n.h:757
+#: src/ext_l10n.h:758
 msgid "Di&ng 3"
 msgstr ""
 
-#: src/ext_l10n.h:758
+#: src/ext_l10n.h:759
 msgid "Din&g 4"
 msgstr ""
 
-#: src/ext_l10n.h:759
+#: src/ext_l10n.h:760
 #, fuzzy
 msgid "&LaTeX"
 msgstr "LaTeX|#L"
 
-#: src/ext_l10n.h:764 src/frontends/qt2/QError.C:23
+#: src/ext_l10n.h:765 src/frontends/qt2/QError.C:23
 #: src/frontends/xforms/FormError.C:24
 msgid "LaTeX Error"
 msgstr "LaTeX Hiba"
 
-#: src/ext_l10n.h:765 src/ext_l10n.h:779
+#: src/ext_l10n.h:766 src/ext_l10n.h:780
 #, fuzzy
 msgid "LaTeX error messages"
 msgstr "LaTeX Hiba"
 
-#: src/ext_l10n.h:767
+#: src/ext_l10n.h:768
 #, fuzzy
 msgid "ERT inset display"
 msgstr "[nincs megjelenítve]"
 
-#: src/ext_l10n.h:768
+#: src/ext_l10n.h:769
 msgid "&Inline"
 msgstr ""
 
-#: src/ext_l10n.h:769
+#: src/ext_l10n.h:770
 msgid "Show ERT inline"
 msgstr ""
 
-#: src/ext_l10n.h:770
+#: src/ext_l10n.h:771
 #, fuzzy
 msgid "&Collapsed"
 msgstr "rendezve"
 
-#: src/ext_l10n.h:771
+#: src/ext_l10n.h:772
 msgid "Show ERT button only"
 msgstr ""
 
-#: src/ext_l10n.h:772
+#: src/ext_l10n.h:773
 #, fuzzy
 msgid "&Open"
 msgstr "Megnyit"
 
-#: src/ext_l10n.h:773
+#: src/ext_l10n.h:774
 #, fuzzy
 msgid "Show ERT contents"
 msgstr "Nincs tartalomjegyzék%i"
 
-#: src/ext_l10n.h:776
+#: src/ext_l10n.h:777
 #, fuzzy
 msgid "External Material"
 msgstr "Egyéb dolgok...|d"
 
-#: src/ext_l10n.h:777
+#: src/ext_l10n.h:778
 #, fuzzy
 msgid "&Template"
 msgstr "Sablonok"
 
-#: src/ext_l10n.h:778
+#: src/ext_l10n.h:779
 #, fuzzy
 msgid "Available templates"
 msgstr "Beállítások mentése"
 
-#: src/ext_l10n.h:780
+#: src/ext_l10n.h:781
 #, fuzzy
 msgid "&Edit file"
 msgstr "fájlba"
 
-#: src/ext_l10n.h:781
+#: src/ext_l10n.h:782
 msgid "Edit the file externally"
 msgstr ""
 
-#: src/ext_l10n.h:782
+#: src/ext_l10n.h:783
 #, fuzzy
 msgid "&View file"
 msgstr "newfile"
 
-#: src/ext_l10n.h:783
+#: src/ext_l10n.h:784
 #, fuzzy
 msgid "View the file"
 msgstr "Táblázatok listája megtekintése"
 
-#: src/ext_l10n.h:784 src/ext_l10n.h:902 src/ext_l10n.h:1102
-#: src/ext_l10n.h:1188 src/ext_l10n.h:1201
+#: src/ext_l10n.h:785 src/ext_l10n.h:903 src/ext_l10n.h:1103
+#: src/ext_l10n.h:1189 src/ext_l10n.h:1202
 msgid "&Update"
 msgstr "&Frissít"
 
-#: src/ext_l10n.h:785
+#: src/ext_l10n.h:786
 msgid "Update the material"
 msgstr ""
 
-#: src/ext_l10n.h:786 src/ext_l10n.h:1074
+#: src/ext_l10n.h:787 src/ext_l10n.h:1075
 msgid "&File"
 msgstr "&Fájl"
 
-#: src/ext_l10n.h:787
+#: src/ext_l10n.h:788
 #, fuzzy
 msgid "Filename"
 msgstr "Fájlnév:|#j"
 
-#: src/ext_l10n.h:788 src/ext_l10n.h:809 src/ext_l10n.h:890
-#: src/ext_l10n.h:1078
+#: src/ext_l10n.h:789 src/ext_l10n.h:810 src/ext_l10n.h:891
+#: src/ext_l10n.h:1079
 #, fuzzy
 msgid "&Browse ..."
 msgstr "Tallóz..."
 
-#: src/ext_l10n.h:789
+#: src/ext_l10n.h:790
 msgid "&Parameters"
 msgstr ""
 
-#: src/ext_l10n.h:790
+#: src/ext_l10n.h:791
 #, fuzzy
 msgid "Parameters"
 msgstr "Betûkészlet|#e"
 
-#: src/ext_l10n.h:794 src/ext_l10n.h:805 src/ext_l10n.h:1159
+#: src/ext_l10n.h:795 src/ext_l10n.h:806 src/ext_l10n.h:1160
 #, fuzzy
 msgid "Form1"
 msgstr "Formátumok"
 
-#: src/ext_l10n.h:799 src/frontends/xforms/form_float.C:29
+#: src/ext_l10n.h:800 src/frontends/xforms/form_float.C:29
 #, fuzzy
 msgid "Placement"
 msgstr "Lebegõ obj.|#j"
 
-#: src/ext_l10n.h:800
+#: src/ext_l10n.h:801
 #, fuzzy
 msgid "Bottom of the page"
 msgstr "% az oldalnak"
 
-#: src/ext_l10n.h:801
+#: src/ext_l10n.h:802
 #, fuzzy
 msgid "Top of the page"
 msgstr "% az oldalnak"
 
-#: src/ext_l10n.h:802
+#: src/ext_l10n.h:803
 #, fuzzy
 msgid "Page of floats"
 msgstr "Hasábok"
 
-#: src/ext_l10n.h:803
+#: src/ext_l10n.h:804
 msgid "Here, if possible"
 msgstr ""
 
-#: src/ext_l10n.h:804
+#: src/ext_l10n.h:805
 msgid "Here, definitely"
 msgstr ""
 
 #. add the different tabfolders
-#: src/ext_l10n.h:806 src/frontends/xforms/FormGraphics.C:184
+#: src/ext_l10n.h:807 src/frontends/xforms/FormGraphics.C:184
 #, fuzzy
 msgid "File"
 msgstr "&Fájl"
 
-#: src/ext_l10n.h:807
+#: src/ext_l10n.h:808
 #, fuzzy
 msgid "&File:"
 msgstr "&Fájl"
 
-#: src/ext_l10n.h:808 src/ext_l10n.h:889
+#: src/ext_l10n.h:809 src/ext_l10n.h:890
 #, fuzzy
 msgid "File name to include"
 msgstr "Válassza ki a beillesztendõ dokumentumot"
 
-#: src/ext_l10n.h:810 src/ext_l10n.h:891
+#: src/ext_l10n.h:811 src/ext_l10n.h:892
 #, fuzzy
 msgid "Select a file"
 msgstr "Következõ sor kiválasztása"
 
-#: src/ext_l10n.h:811
+#: src/ext_l10n.h:812
 #, fuzzy
 msgid "Screen Options"
 msgstr "Képernyõ"
 
-#: src/ext_l10n.h:812 src/ext_l10n.h:828
+#: src/ext_l10n.h:813 src/ext_l10n.h:829
 #: src/frontends/xforms/form_minipage.C:28
 msgid "Width"
 msgstr "Szélesség"
 
-#: src/ext_l10n.h:813
+#: src/ext_l10n.h:814
 #, fuzzy
 msgid "Monochrome"
 msgstr "Fekete-fehér|#h"
 
-#: src/ext_l10n.h:814
+#: src/ext_l10n.h:815
 #, fuzzy
 msgid "Grayscale"
 msgstr "Szürkeárnyalatos|#z"
 
-#: src/ext_l10n.h:815
+#: src/ext_l10n.h:816
 #, fuzzy
 msgid "Color"
 msgstr "Színek"
 
-#: src/ext_l10n.h:816
+#: src/ext_l10n.h:817
 #, fuzzy
 msgid "Do not display"
 msgstr "Ne jelenítse meg|#t"
 
-#: src/ext_l10n.h:818
+#: src/ext_l10n.h:819
 msgid "S&how:"
 msgstr ""
 
-#: src/ext_l10n.h:819 src/ext_l10n.h:829
+#: src/ext_l10n.h:820 src/ext_l10n.h:830
 msgid "Height"
 msgstr "Magasság"
 
-#: src/ext_l10n.h:820
+#: src/ext_l10n.h:821
 #, fuzzy
 msgid "&Draft mode"
 msgstr "Képletszerkesztõ"
 
-#: src/ext_l10n.h:821
+#: src/ext_l10n.h:822
 #, fuzzy
 msgid "draft mode"
 msgstr "Képletszerkesztõ"
 
-#: src/ext_l10n.h:822 src/frontends/xforms/form_preferences.C:180
+#: src/ext_l10n.h:823 src/frontends/xforms/form_preferences.C:180
 #, fuzzy
 msgid "Size"
 msgstr "Méret|#r"
 
-#: src/ext_l10n.h:823
+#: src/ext_l10n.h:824
 #, fuzzy
 msgid "&Scale"
 msgstr "Kisebb"
 
-#: src/ext_l10n.h:824
+#: src/ext_l10n.h:825
 #, fuzzy
 msgid "&Default"
 msgstr "Alapérték"
 
-#: src/ext_l10n.h:825
+#: src/ext_l10n.h:826
 #, fuzzy
 msgid "&Custom"
 msgstr "Ügyfél"
 
-#: src/ext_l10n.h:826 src/frontends/xforms/form_graphics.C:227
+#: src/ext_l10n.h:827 src/frontends/xforms/form_graphics.C:227
 #: src/frontends/xforms/form_graphics.C:444
 #, no-c-format
 msgid "%"
 msgstr ""
 
-#: src/ext_l10n.h:827
+#: src/ext_l10n.h:828
 msgid "Keep aspect&ratio"
 msgstr ""
 
-#: src/ext_l10n.h:830
+#: src/ext_l10n.h:831
 #, fuzzy
 msgid "EPS Options"
 msgstr "Beállítások"
 
-#: src/ext_l10n.h:831
+#: src/ext_l10n.h:832
 msgid "Bounding box"
 msgstr ""
 
-#: src/ext_l10n.h:832
+#: src/ext_l10n.h:833
 #, fuzzy
 msgid "Left &bottom:"
 msgstr "Balra"
 
-#: src/ext_l10n.h:833
+#: src/ext_l10n.h:834
 #, fuzzy
 msgid "Right &top:"
 msgstr "Jobbra"
 
-#: src/ext_l10n.h:834
+#: src/ext_l10n.h:835
 msgid "Y"
 msgstr ""
 
-#: src/ext_l10n.h:835
+#: src/ext_l10n.h:836
 msgid "X"
 msgstr ""
 
-#: src/ext_l10n.h:836 src/ext_l10n.h:839 src/ext_l10n.h:842 src/ext_l10n.h:845
+#: src/ext_l10n.h:837 src/ext_l10n.h:840 src/ext_l10n.h:843 src/ext_l10n.h:846
 #: src/frontends/qt2/lengthcombo.C:21
 msgid "pt"
 msgstr ""
 
-#: src/ext_l10n.h:837 src/ext_l10n.h:840 src/ext_l10n.h:843 src/ext_l10n.h:846
+#: src/ext_l10n.h:838 src/ext_l10n.h:841 src/ext_l10n.h:844 src/ext_l10n.h:847
 #: src/frontends/qt2/lengthcombo.C:19
 msgid "cm"
 msgstr "cm"
 
-#: src/ext_l10n.h:838 src/ext_l10n.h:841 src/ext_l10n.h:844 src/ext_l10n.h:847
+#: src/ext_l10n.h:839 src/ext_l10n.h:842 src/ext_l10n.h:845 src/ext_l10n.h:848
 #: src/frontends/qt2/lengthcombo.C:20
 #, fuzzy
 msgid "in"
 msgstr "apró"
 
-#: src/ext_l10n.h:848
+#: src/ext_l10n.h:849
 msgid "&Get"
 msgstr ""
 
-#: src/ext_l10n.h:849
+#: src/ext_l10n.h:850
 msgid "Get bounding box from file"
 msgstr ""
 
-#: src/ext_l10n.h:850
+#: src/ext_l10n.h:851
 msgid "&Clip to bounding box"
 msgstr ""
 
-#: src/ext_l10n.h:851
+#: src/ext_l10n.h:852
 msgid "clip to bounding box"
 msgstr ""
 
-#: src/ext_l10n.h:853
+#: src/ext_l10n.h:854
 msgid "Rotation"
 msgstr "Elforgatás"
 
-#: src/ext_l10n.h:854
+#: src/ext_l10n.h:855
 #, fuzzy
 msgid "&Angle:"
 msgstr "Szög:|#S"
 
-#: src/ext_l10n.h:855
+#: src/ext_l10n.h:856
 msgid "&Origin:"
 msgstr ""
 
-#: src/ext_l10n.h:857
+#: src/ext_l10n.h:858
 msgid "leftTop"
 msgstr ""
 
-#: src/ext_l10n.h:858
+#: src/ext_l10n.h:859
 #, fuzzy
 msgid "leftBottom"
 msgstr "Alsó:|#s"
 
-#: src/ext_l10n.h:859
+#: src/ext_l10n.h:860
 msgid "leftBaseline"
 msgstr ""
 
-#: src/ext_l10n.h:860
+#: src/ext_l10n.h:861
 #, fuzzy
 msgid "center"
 msgstr "Középre"
 
-#: src/ext_l10n.h:861
+#: src/ext_l10n.h:862
 msgid "centerTop"
 msgstr ""
 
-#: src/ext_l10n.h:862
+#: src/ext_l10n.h:863
 #, fuzzy
 msgid "centerBottom"
 msgstr "Fel | Középre | Le"
 
-#: src/ext_l10n.h:863
+#: src/ext_l10n.h:864
 msgid "centerBaseline"
 msgstr ""
 
-#: src/ext_l10n.h:864
+#: src/ext_l10n.h:865
 #, fuzzy
 msgid "rightTop"
 msgstr "Egyenes"
 
-#: src/ext_l10n.h:865
+#: src/ext_l10n.h:866
 #, fuzzy
 msgid "rightBottom"
 msgstr "Alsó:|#s"
 
-#: src/ext_l10n.h:866
+#: src/ext_l10n.h:867
 msgid "rightBaseline"
 msgstr ""
 
-#: src/ext_l10n.h:867
+#: src/ext_l10n.h:868
 #, fuzzy
 msgid "referencePoint"
 msgstr "Beállítások"
 
-#: src/ext_l10n.h:868
+#: src/ext_l10n.h:869
 #, fuzzy
 msgid "LaTeX options"
 msgstr "egyéb opciók"
 
-#: src/ext_l10n.h:869
+#: src/ext_l10n.h:870
 #, fuzzy
 msgid "Su&bfigure"
 msgstr "Részábra|#R"
 
-#: src/ext_l10n.h:870
+#: src/ext_l10n.h:871
 msgid "The sub-caption for the figure"
 msgstr ""
 
-#: src/ext_l10n.h:875
+#: src/ext_l10n.h:876
 #, fuzzy
 msgid "Include File"
 msgstr "Fájl beillesztése új oldalra"
 
-#: src/ext_l10n.h:876
+#: src/ext_l10n.h:877
 #, fuzzy
 msgid "Include type"
 msgstr "Fájl beillesztése új oldalra"
 
-#: src/ext_l10n.h:877
+#: src/ext_l10n.h:878
 #, fuzzy
 msgid "&Include"
 msgstr "Fájl beillesztése új oldalra"
 
-#: src/ext_l10n.h:878 src/ext_l10n.h:880 src/ext_l10n.h:882 src/ext_l10n.h:885
-#: src/ext_l10n.h:887
+#: src/ext_l10n.h:879 src/ext_l10n.h:881 src/ext_l10n.h:883 src/ext_l10n.h:886
+#: src/ext_l10n.h:888
 msgid "FIXME"
 msgstr ""
 
-#: src/ext_l10n.h:879
+#: src/ext_l10n.h:880
 #, fuzzy
 msgid "I&nput"
 msgstr "Fájl beillesztése folytatólagosan"
 
-#: src/ext_l10n.h:881
+#: src/ext_l10n.h:882
 #, fuzzy
 msgid "&Verbatim"
 msgstr "Szövegfájlként|#v"
 
-#: src/ext_l10n.h:883
+#: src/ext_l10n.h:884
 msgid "Options"
 msgstr "Beállítások"
 
-#: src/ext_l10n.h:884
+#: src/ext_l10n.h:885
 #, fuzzy
 msgid "&Don't typeset"
 msgstr "Tördelés nélkül|#T"
 
-#: src/ext_l10n.h:886
+#: src/ext_l10n.h:887
 #, fuzzy
 msgid "Visible &Space"
 msgstr "Szóközök látszódjanak|#s"
 
-#: src/ext_l10n.h:888
+#: src/ext_l10n.h:889
 #, fuzzy
 msgid "&Filename:"
 msgstr "Fájlnév:|#j"
 
-#: src/ext_l10n.h:894
+#: src/ext_l10n.h:895
 #, fuzzy
 msgid "&Load"
 msgstr "Betöltés|#e"
 
-#: src/ext_l10n.h:895
+#: src/ext_l10n.h:896
 #, fuzzy
 msgid "Load the file"
 msgstr "Utoljára megnyitott"
 
-#: src/ext_l10n.h:897 src/ext_l10n.h:1175
+#: src/ext_l10n.h:898 src/ext_l10n.h:1176
 #, fuzzy
 msgid "&Keyword"
 msgstr "Kulcsszó"
 
-#: src/ext_l10n.h:898 src/ext_l10n.h:1030 src/ext_l10n.h:1176
+#: src/ext_l10n.h:899 src/ext_l10n.h:1031 src/ext_l10n.h:1177
 #, fuzzy
 msgid "Index entry"
 msgstr "Tárgymutató bejegyzés...|T"
 
-#: src/ext_l10n.h:901 src/frontends/qt2/QLog.C:33
+#: src/ext_l10n.h:902 src/frontends/qt2/QLog.C:33
 msgid "Log"
 msgstr ""
 
-#: src/ext_l10n.h:903 src/ext_l10n.h:1202
+#: src/ext_l10n.h:904 src/ext_l10n.h:1203
 msgid "Update the display"
 msgstr ""
 
-#: src/ext_l10n.h:905
+#: src/ext_l10n.h:906
 #, fuzzy
 msgid "Minipage settings"
 msgstr "minilap vonal"
 
-#: src/ext_l10n.h:907 src/ext_l10n.h:1056
+#: src/ext_l10n.h:908 src/ext_l10n.h:1057
 #, fuzzy
 msgid "Top"
 msgstr "Felsõ:|#e"
 
-#: src/ext_l10n.h:908 src/ext_l10n.h:1057
+#: src/ext_l10n.h:909 src/ext_l10n.h:1058
 #, fuzzy
 msgid "Middle"
 msgstr "Közép|#z"
 
-#: src/ext_l10n.h:909 src/ext_l10n.h:1058
+#: src/ext_l10n.h:910 src/ext_l10n.h:1059
 #, fuzzy
 msgid "Bottom"
 msgstr "Alsó:|#s"
 
-#: src/ext_l10n.h:910
+#: src/ext_l10n.h:911
 #, fuzzy
 msgid "Vertical alignment"
 msgstr "Függõleges igazítás|#F"
 
-#: src/ext_l10n.h:911
+#: src/ext_l10n.h:912
 #, fuzzy
 msgid "A&lignment:"
 msgstr "Igazítás"
 
-#: src/ext_l10n.h:912
+#: src/ext_l10n.h:913
 msgid "Units of width value"
 msgstr ""
 
-#: src/ext_l10n.h:913
+#: src/ext_l10n.h:914
 #, fuzzy
 msgid "Width value"
 msgstr "Szélesség"
 
-#: src/ext_l10n.h:914
+#: src/ext_l10n.h:915
 msgid "&Units:"
 msgstr ""
 
-#: src/ext_l10n.h:920
+#: src/ext_l10n.h:921
 msgid "&Alignment and Spacing"
 msgstr ""
 
-#: src/ext_l10n.h:921
+#: src/ext_l10n.h:922
 #, fuzzy
 msgid "Alignment:"
 msgstr "Igazítás"
 
-#: src/ext_l10n.h:922
+#: src/ext_l10n.h:923
 #, fuzzy
 msgid "Justified"
 msgstr "Testreszabás|s"
 
-#: src/ext_l10n.h:923
+#: src/ext_l10n.h:924
 msgid "Left"
 msgstr "Balra"
 
-#: src/ext_l10n.h:924
+#: src/ext_l10n.h:925
 msgid "Right"
 msgstr "Jobbra"
 
-#: src/ext_l10n.h:925
+#: src/ext_l10n.h:926
 #, fuzzy
 msgid "Centered"
 msgstr "Középre"
 
-#: src/ext_l10n.h:926
+#: src/ext_l10n.h:927
 #, fuzzy
 msgid "No indentation"
 msgstr "Oldaltípus"
 
-#: src/ext_l10n.h:927
+#: src/ext_l10n.h:928
 #, fuzzy
 msgid "Spacing"
 msgstr "Sortávolság:|#z"
 
-#: src/ext_l10n.h:928 src/ext_l10n.h:939 src/ext_l10n.h:950 src/ext_l10n.h:961
-#: src/ext_l10n.h:972 src/ext_l10n.h:983 src/ext_l10n.h:1036
+#: src/ext_l10n.h:929 src/ext_l10n.h:940 src/ext_l10n.h:951 src/ext_l10n.h:962
+#: src/ext_l10n.h:973 src/ext_l10n.h:984 src/ext_l10n.h:1037
 #, fuzzy
 msgid "Centimetres"
 msgstr "Középre"
 
-#: src/ext_l10n.h:929 src/ext_l10n.h:940 src/ext_l10n.h:951 src/ext_l10n.h:962
-#: src/ext_l10n.h:973 src/ext_l10n.h:984 src/ext_l10n.h:1037
+#: src/ext_l10n.h:930 src/ext_l10n.h:941 src/ext_l10n.h:952 src/ext_l10n.h:963
+#: src/ext_l10n.h:974 src/ext_l10n.h:985 src/ext_l10n.h:1038
 #, fuzzy
 msgid "Inches"
 msgstr "Inch"
 
-#: src/ext_l10n.h:930 src/ext_l10n.h:941 src/ext_l10n.h:952 src/ext_l10n.h:963
-#: src/ext_l10n.h:974 src/ext_l10n.h:985 src/ext_l10n.h:1038
+#: src/ext_l10n.h:931 src/ext_l10n.h:942 src/ext_l10n.h:953 src/ext_l10n.h:964
+#: src/ext_l10n.h:975 src/ext_l10n.h:986 src/ext_l10n.h:1039
 #, fuzzy
 msgid "Points"
 msgstr "Nyomtat"
 
-#: src/ext_l10n.h:931 src/ext_l10n.h:942 src/ext_l10n.h:953 src/ext_l10n.h:964
-#: src/ext_l10n.h:975 src/ext_l10n.h:986 src/ext_l10n.h:1039
+#: src/ext_l10n.h:932 src/ext_l10n.h:943 src/ext_l10n.h:954 src/ext_l10n.h:965
+#: src/ext_l10n.h:976 src/ext_l10n.h:987 src/ext_l10n.h:1040
 msgid "Millimetres"
 msgstr ""
 
-#: src/ext_l10n.h:932 src/ext_l10n.h:943 src/ext_l10n.h:954 src/ext_l10n.h:965
-#: src/ext_l10n.h:976 src/ext_l10n.h:987 src/ext_l10n.h:1040
+#: src/ext_l10n.h:933 src/ext_l10n.h:944 src/ext_l10n.h:955 src/ext_l10n.h:966
+#: src/ext_l10n.h:977 src/ext_l10n.h:988 src/ext_l10n.h:1041
 #, fuzzy
 msgid "Picas"
 msgstr "Oldalak"
 
-#: src/ext_l10n.h:933 src/ext_l10n.h:944 src/ext_l10n.h:955 src/ext_l10n.h:966
-#: src/ext_l10n.h:977 src/ext_l10n.h:988 src/ext_l10n.h:1041
-msgid "ex Units"
-msgstr ""
-
 #: src/ext_l10n.h:934 src/ext_l10n.h:945 src/ext_l10n.h:956 src/ext_l10n.h:967
 #: src/ext_l10n.h:978 src/ext_l10n.h:989 src/ext_l10n.h:1042
-msgid "em Units"
+msgid "ex Units"
 msgstr ""
 
 #: src/ext_l10n.h:935 src/ext_l10n.h:946 src/ext_l10n.h:957 src/ext_l10n.h:968
 #: src/ext_l10n.h:979 src/ext_l10n.h:990 src/ext_l10n.h:1043
-#, fuzzy
-msgid "Scaled Points"
-msgstr "Képernyõ"
+msgid "em Units"
+msgstr ""
 
 #: src/ext_l10n.h:936 src/ext_l10n.h:947 src/ext_l10n.h:958 src/ext_l10n.h:969
 #: src/ext_l10n.h:980 src/ext_l10n.h:991 src/ext_l10n.h:1044
 #, fuzzy
-msgid "Big/PS Points"
-msgstr "Nyomtat"
+msgid "Scaled Points"
+msgstr "Képernyõ"
 
 #: src/ext_l10n.h:937 src/ext_l10n.h:948 src/ext_l10n.h:959 src/ext_l10n.h:970
 #: src/ext_l10n.h:981 src/ext_l10n.h:992 src/ext_l10n.h:1045
 #, fuzzy
-msgid "Didot Points"
+msgid "Big/PS Points"
 msgstr "Nyomtat"
 
 #: src/ext_l10n.h:938 src/ext_l10n.h:949 src/ext_l10n.h:960 src/ext_l10n.h:971
 #: src/ext_l10n.h:982 src/ext_l10n.h:993 src/ext_l10n.h:1046
 #, fuzzy
+msgid "Didot Points"
+msgstr "Nyomtat"
+
+#: src/ext_l10n.h:939 src/ext_l10n.h:950 src/ext_l10n.h:961 src/ext_l10n.h:972
+#: src/ext_l10n.h:983 src/ext_l10n.h:994 src/ext_l10n.h:1047
+#, fuzzy
 msgid "Cicero Points"
 msgstr "Nyomtat"
 
-#: src/ext_l10n.h:994 src/ext_l10n.h:996
+#: src/ext_l10n.h:995 src/ext_l10n.h:997
 msgid "Units:"
 msgstr ""
 
-#: src/ext_l10n.h:995 src/ext_l10n.h:997
+#: src/ext_l10n.h:996 src/ext_l10n.h:998
 msgid "Unit of Size, Stretch and Slink"
 msgstr ""
 
-#: src/ext_l10n.h:998
+#: src/ext_l10n.h:999
 #, fuzzy
 msgid "Value:"
 msgstr "Érték"
 
-#: src/ext_l10n.h:999
+#: src/ext_l10n.h:1000
 #, fuzzy
 msgid "Amount of spacing"
 msgstr "Kihagyás"
 
-#: src/ext_l10n.h:1000
+#: src/ext_l10n.h:1001
 #, fuzzy
 msgid "Stretch:"
 msgstr "Francia"
 
-#: src/ext_l10n.h:1001
+#: src/ext_l10n.h:1002
 msgid "Margin by which paragraph is allowed to increase"
 msgstr ""
 
-#: src/ext_l10n.h:1002
+#: src/ext_l10n.h:1003
 #, fuzzy
 msgid "Shrink:"
 msgstr "Amerikai"
 
-#: src/ext_l10n.h:1003
+#: src/ext_l10n.h:1004
 msgid "Margin by which paragraph is allowed to decrease"
 msgstr ""
 
-#: src/ext_l10n.h:1005 src/ext_l10n.h:1014
+#: src/ext_l10n.h:1006 src/ext_l10n.h:1015
 #, fuzzy
 msgid "DefSkip"
 msgstr "Kihagyás:|h"
 
-#: src/ext_l10n.h:1006 src/ext_l10n.h:1015
+#: src/ext_l10n.h:1007 src/ext_l10n.h:1016
 #, fuzzy
 msgid "SmallSkip"
 msgstr "Kicsi"
 
-#: src/ext_l10n.h:1007 src/ext_l10n.h:1016
+#: src/ext_l10n.h:1008 src/ext_l10n.h:1017
 #, fuzzy
 msgid "MedSkip"
 msgstr "Közepes"
 
-#: src/ext_l10n.h:1008 src/ext_l10n.h:1017
+#: src/ext_l10n.h:1009 src/ext_l10n.h:1018
 msgid "BigSkip"
 msgstr ""
 
-#: src/ext_l10n.h:1009 src/ext_l10n.h:1018
+#: src/ext_l10n.h:1010 src/ext_l10n.h:1019
 #, fuzzy
 msgid "VFill"
 msgstr "Kitöltés|K"
 
-#: src/ext_l10n.h:1011
+#: src/ext_l10n.h:1012
 #, fuzzy
 msgid "Above:"
 msgstr "Felette:|#t"
 
-#: src/ext_l10n.h:1012
+#: src/ext_l10n.h:1013
 #, fuzzy
 msgid "Below:"
 msgstr "Alatta:|#A"
 
-#: src/ext_l10n.h:1020
+#: src/ext_l10n.h:1021
 msgid "Keep space at the top of the page"
 msgstr ""
 
-#: src/ext_l10n.h:1021
+#: src/ext_l10n.h:1022
 #, fuzzy
 msgid "Keep space at top of the page"
 msgstr "% az oldalnak"
 
-#: src/ext_l10n.h:1022
+#: src/ext_l10n.h:1023
 msgid "Keep space at the bottom of the page"
 msgstr ""
 
-#: src/ext_l10n.h:1023
+#: src/ext_l10n.h:1024
 #, fuzzy
 msgid "List environment"
 msgstr "Igazítás|#I"
 
-#: src/ext_l10n.h:1024
+#: src/ext_l10n.h:1025
 #, fuzzy
 msgid "Label width:"
 msgstr "Címke széless.:|#s"
 
 # ez vajon mi lehet??
-#: src/ext_l10n.h:1025
+#: src/ext_l10n.h:1026
 #, fuzzy
 msgid "Label width in list environment"
 msgstr "Környezet mélységének megváltoztatása|s"
 
-#: src/ext_l10n.h:1026
+#: src/ext_l10n.h:1027
 #, fuzzy
 msgid "&Lines and Page breaks"
 msgstr "Új oldal"
 
-#: src/ext_l10n.h:1027
+#: src/ext_l10n.h:1028
 msgid "Page break"
 msgstr "Új oldal"
 
-#: src/ext_l10n.h:1028 src/ext_l10n.h:1032
+#: src/ext_l10n.h:1029 src/ext_l10n.h:1033
 #, fuzzy
 msgid "above paragraph"
 msgstr "Ugrás egy bekezdéssel feljebb"
 
-#: src/ext_l10n.h:1029 src/ext_l10n.h:1033
+#: src/ext_l10n.h:1030 src/ext_l10n.h:1034
 #, fuzzy
 msgid "below paragraph"
 msgstr "Ugrás egy bekezdéssel feljebb"
 
-#: src/ext_l10n.h:1031
+#: src/ext_l10n.h:1032
 #, fuzzy
 msgid "Line"
 msgstr "Vonal"
 
-#: src/ext_l10n.h:1034
+#: src/ext_l10n.h:1035
 #, fuzzy
 msgid "&Extra options"
 msgstr "Egyéb beállítások"
 
-#: src/ext_l10n.h:1035
+#: src/ext_l10n.h:1036
 #, fuzzy
 msgid "Unit:"
 msgstr "Betûkészlet: "
 
-#: src/ext_l10n.h:1048 src/frontends/qt2/QMinipage.C:33
+#: src/ext_l10n.h:1049 src/frontends/qt2/QMinipage.C:33
 #, fuzzy
 msgid "Minipage"
 msgstr "Minilap|#n"
 
-#: src/ext_l10n.h:1049
+#: src/ext_l10n.h:1050
 msgid "Wrap text around floats"
 msgstr ""
 
-#: src/ext_l10n.h:1050
+#: src/ext_l10n.h:1051
 #, fuzzy
 msgid "Indent whole paragraph"
 msgstr "Bekezdés behúz.|#B"
 
-#: src/ext_l10n.h:1051
+#: src/ext_l10n.h:1052
 #, fuzzy
 msgid "Width:"
 msgstr "Szélesség"
 
-#: src/ext_l10n.h:1052
+#: src/ext_l10n.h:1053
 #, fuzzy
 msgid "Minipage options"
 msgstr "minilap vonal"
 
-#: src/ext_l10n.h:1053
+#: src/ext_l10n.h:1054
 #, fuzzy
 msgid "Start new minipage"
 msgstr "Új minilap kezdése|#p"
 
-#: src/ext_l10n.h:1054
+#: src/ext_l10n.h:1055
 #, fuzzy
 msgid "HFill between minipage paragraphs"
 msgstr "Kitöltés a minilap bekezdések között|#K"
 
-#: src/ext_l10n.h:1055
+#: src/ext_l10n.h:1056
 #, fuzzy
 msgid "Vertical Alignment:"
 msgstr "Függõleges igazítás|#F"
 
-#: src/ext_l10n.h:1063
+#: src/ext_l10n.h:1064
 #, fuzzy
 msgid "LaTeX pre-amble"
 msgstr "Bevezetõ LaTeX parancsok"
 
-#: src/ext_l10n.h:1064
+#: src/ext_l10n.h:1065
 #, fuzzy
 msgid "The LaTeX pre-amble"
 msgstr "Bevezetõ LaTeX parancsok"
 
-#: src/ext_l10n.h:1065
+#: src/ext_l10n.h:1066
 msgid "&Edit ..."
 msgstr ""
 
-#: src/ext_l10n.h:1066
+#: src/ext_l10n.h:1067
 msgid "Edit the pre-amble in an external editor"
 msgstr ""
 
-#: src/LyXAction.C:138 src/LyXAction.C:145 src/ext_l10n.h:1070
-#: src/frontends/qt2/QPrint.C:35 src/frontends/xforms/FormPrint.C:35
-#: src/frontends/xforms/form_print.C:133
+#: src/ext_l10n.h:1071 src/frontends/qt2/QPrint.C:35
+#: src/frontends/xforms/form_print.C:133 src/frontends/xforms/FormPrint.C:35
+#: src/LyXAction.C:138 src/LyXAction.C:145
 msgid "Print"
 msgstr "Nyomtat"
 
-#: src/ext_l10n.h:1071
+#: src/ext_l10n.h:1072
 #, fuzzy
 msgid "Print Destination"
 msgstr "Oldaltípus"
 
-#: src/ext_l10n.h:1072
+#: src/ext_l10n.h:1073
 #, fuzzy
 msgid "P&rinter"
 msgstr "Nyomtató"
 
-#: src/ext_l10n.h:1073
+#: src/ext_l10n.h:1074
 msgid "Send output to the printer"
 msgstr ""
 
-#: src/ext_l10n.h:1075 src/ext_l10n.h:1077
+#: src/ext_l10n.h:1076 src/ext_l10n.h:1078
 msgid "Send output to a file"
 msgstr ""
 
-#: src/ext_l10n.h:1076
+#: src/ext_l10n.h:1077
 msgid "Send output to the given printer"
 msgstr ""
 
-#: src/ext_l10n.h:1079
+#: src/ext_l10n.h:1080
 msgid "Pages"
 msgstr "Oldalak"
 
-#: src/ext_l10n.h:1080
+#: src/ext_l10n.h:1081
 #, fuzzy
 msgid "&All"
 msgstr "&Alkalmaz"
 
-#: src/ext_l10n.h:1081
+#: src/ext_l10n.h:1082
 #, fuzzy
 msgid "Print all pages"
 msgstr "Függõleges térköz"
 
-#: src/ext_l10n.h:1082
+#: src/ext_l10n.h:1083
 msgid "&Odd"
 msgstr ""
 
-#: src/ext_l10n.h:1083
+#: src/ext_l10n.h:1084
 #, fuzzy
 msgid "Print odd pages only"
 msgstr "páratlan oldalak"
 
-#: src/ext_l10n.h:1084
+#: src/ext_l10n.h:1085
 msgid "&Even"
 msgstr ""
 
-#: src/ext_l10n.h:1085
+#: src/ext_l10n.h:1086
 #, fuzzy
 msgid "Print even pages only"
 msgstr "páros oldalak"
 
-#: src/ext_l10n.h:1086
+#: src/ext_l10n.h:1087
 #, fuzzy
 msgid "&Last page:"
 msgstr "Nyelv"
 
-#: src/ext_l10n.h:1087
+#: src/ext_l10n.h:1088
 #, fuzzy
 msgid "Page number to print to"
 msgstr "Nem tudom kinyomtatni"
 
-#: src/ext_l10n.h:1088
+#: src/ext_l10n.h:1089
 #, fuzzy
 msgid "Re&verse order"
 msgstr "Fordított sorrend|#O"
 
-#: src/ext_l10n.h:1089
+#: src/ext_l10n.h:1090
 msgid "Print in reverse order"
 msgstr ""
 
-#: src/ext_l10n.h:1090
+#: src/ext_l10n.h:1091
 #, fuzzy
 msgid "Page number to print from"
 msgstr "Nem tudom kinyomtatni"
 
-#: src/ext_l10n.h:1091
+#: src/ext_l10n.h:1092
 #, fuzzy
 msgid "Ran&ge"
 msgstr "Oldal"
 
-#: src/ext_l10n.h:1092
+#: src/ext_l10n.h:1093
 #, fuzzy
 msgid "Set a range of pages to print"
 msgstr "Ellenõrizze a 'Megadott oldalak' -mezõt!"
 
-#: src/ext_l10n.h:1093
+#: src/ext_l10n.h:1094
 #, fuzzy
 msgid "&Starting range:"
 msgstr "hatáskör"
 
-#: src/ext_l10n.h:1094 src/frontends/xforms/form_print.C:139
+#: src/ext_l10n.h:1095 src/frontends/xforms/form_print.C:139
 msgid "Copies"
 msgstr "Másolatok"
 
-#: src/ext_l10n.h:1095
+#: src/ext_l10n.h:1096
 msgid "Number of copies"
 msgstr ""
 
-#: src/ext_l10n.h:1096
+#: src/ext_l10n.h:1097
 #, fuzzy
 msgid "&Collate"
 msgstr "rendezve"
 
-#: src/ext_l10n.h:1097
+#: src/ext_l10n.h:1098
 #, fuzzy
 msgid "Collate copies"
 msgstr "Másolatok"
 
-#: src/ext_l10n.h:1098
+#: src/ext_l10n.h:1099
 #, fuzzy
 msgid "&Print"
 msgstr "Nyomtat"
 
-#: src/LyXAction.C:130 src/ext_l10n.h:1099 src/ext_l10n.h:1158
+#: src/ext_l10n.h:1100 src/ext_l10n.h:1159
 #: src/frontends/controllers/ButtonController.h:74
 #: src/frontends/xforms/form_maths_deco.C:32
 #: src/frontends/xforms/form_maths_space.C:73
-#: src/frontends/xforms/form_maths_style.C:35
+#: src/frontends/xforms/form_maths_style.C:35 src/LyXAction.C:130
 msgid "Close"
 msgstr "Bezár"
 
-#: src/ext_l10n.h:1101 src/ext_l10n.h:1186
+#: src/ext_l10n.h:1102 src/ext_l10n.h:1187
 #, fuzzy
 msgid "&Type"
 msgstr "Típus"
 
-#: src/ext_l10n.h:1103
+#: src/ext_l10n.h:1104
 #, fuzzy
 msgid "Update the reference list"
 msgstr "Beállítások módosítása"
 
-#: src/ext_l10n.h:1104
+#: src/ext_l10n.h:1105
 msgid "Sort"
 msgstr "Rendezés"
 
-#: src/ext_l10n.h:1105
+#: src/ext_l10n.h:1106
 msgid "Sort references in alphabetical order"
 msgstr ""
 
-#: src/ext_l10n.h:1106 src/frontends/qt2/QRef.C:103
+#: src/ext_l10n.h:1107 src/frontends/qt2/QRef.C:103
 msgid "&Goto"
 msgstr ""
 
-#: src/ext_l10n.h:1107
+#: src/ext_l10n.h:1108
 #, fuzzy
 msgid "Move the document cursor to reference"
 msgstr "A fájl valószínûleg megsérült (túl rövid)"
 
-#: src/ext_l10n.h:1109
+#: src/ext_l10n.h:1110
 #, fuzzy
 msgid "Page number"
 msgstr "Olldalszám beillesztése%m"
 
-#: src/ext_l10n.h:1110
+#: src/ext_l10n.h:1111
 msgid "Ref on page xxx"
 msgstr ""
 
-#: src/ext_l10n.h:1111
+#: src/ext_l10n.h:1112
 msgid "On page xxx"
 msgstr ""
 
-#: src/ext_l10n.h:1112
+#: src/ext_l10n.h:1113
 #, fuzzy
 msgid "Pretty reference"
 msgstr "Beállítások"
 
-#: src/ext_l10n.h:1113
+#: src/ext_l10n.h:1114
 #, fuzzy
 msgid "Reference as it appears in output"
 msgstr "A formátum neve, ahogy megjelenik a menükben."
 
-#: src/ext_l10n.h:1114
+#: src/ext_l10n.h:1115
 #, fuzzy
 msgid "&Reference:"
 msgstr "Hivatkozás"
 
-#: src/ext_l10n.h:1115
+#: src/ext_l10n.h:1116
 #, fuzzy
 msgid "&Name:"
 msgstr "Név:"
 
-#: src/ext_l10n.h:1116
+#: src/ext_l10n.h:1117
 #, fuzzy
 msgid "Available references"
 msgstr "Beállítások mentése"
 
-#: src/ext_l10n.h:1119
+#: src/ext_l10n.h:1120
 #, fuzzy
 msgid "Search and replace"
 msgstr "Keres és Cserél"
 
-#: src/ext_l10n.h:1120
+#: src/ext_l10n.h:1121
 #, fuzzy
 msgid "&Find:"
 msgstr "Keresendõ:|#K"
 
-#: src/ext_l10n.h:1121
+#: src/ext_l10n.h:1122
 #, fuzzy
 msgid "Replace &with:"
 msgstr "Új szöveg:|#j"
 
-#: src/ext_l10n.h:1122
+#: src/ext_l10n.h:1123
 #, fuzzy
 msgid "Case &sensitive"
 msgstr "kisb./NAGYB.|#i"
 
-#: src/ext_l10n.h:1123
+#: src/ext_l10n.h:1124
 msgid "Match whole words onl&y"
 msgstr ""
 
-#: src/ext_l10n.h:1124
+#: src/ext_l10n.h:1125
 msgid "Find &Next"
 msgstr ""
 
-#: src/ext_l10n.h:1125 src/ext_l10n.h:1133 src/ext_l10n.h:1182
+#: src/ext_l10n.h:1126 src/ext_l10n.h:1134 src/ext_l10n.h:1183
 #, fuzzy
 msgid "&Replace"
 msgstr "Cserél"
 
-#: src/ext_l10n.h:1126
+#: src/ext_l10n.h:1127
 #, fuzzy
 msgid "Replace &All "
 msgstr "Mindet|#M "
 
-#: src/ext_l10n.h:1127
+#: src/ext_l10n.h:1128
 msgid "Search &backwards"
 msgstr ""
 
-#: src/ext_l10n.h:1129
+#: src/ext_l10n.h:1130
 #, fuzzy
 msgid "File: "
 msgstr "A(z) `"
 
-#: src/ext_l10n.h:1131 src/frontends/qt2/QSpellchecker.C:27
+#: src/ext_l10n.h:1132 src/frontends/qt2/QSpellchecker.C:27
 #, fuzzy
 msgid "Spellchecker"
 msgstr "Helyesírás-ellenõrzõ"
 
-#: src/ext_l10n.h:1132
+#: src/ext_l10n.h:1133
 #, fuzzy
 msgid "Suggestions:"
 msgstr "Kérdés"
 
-#: src/ext_l10n.h:1134
+#: src/ext_l10n.h:1135
 #, fuzzy
 msgid "Replace word with current choice"
 msgstr "Lecseréli az aktuális dokumentummal?"
 
-#: src/ext_l10n.h:1135
+#: src/ext_l10n.h:1136
 #, fuzzy
 msgid "&Add"
 msgstr "Hozzáad"
 
-#: src/ext_l10n.h:1136
+#: src/ext_l10n.h:1137
 #, fuzzy
 msgid "Add the word to your personal dictionary"
 msgstr "Szó felvétele a saját szótárba|#B"
 
-#: src/ext_l10n.h:1137
+#: src/ext_l10n.h:1138
 #, fuzzy
 msgid "&Ignore"
 msgstr "Kihagy"
 
-#: src/ext_l10n.h:1138
+#: src/ext_l10n.h:1139
 #, fuzzy
 msgid "Ignore this word"
 msgstr "Szó kihagyása|#k"
 
-#: src/ext_l10n.h:1139
+#: src/ext_l10n.h:1140
 msgid "&Accept"
 msgstr ""
 
-#: src/ext_l10n.h:1140
+#: src/ext_l10n.h:1141
 #, fuzzy
 msgid "Accept word for this session"
 msgstr "A szó elfogadása|#A"
 
-#: src/ext_l10n.h:1141
+#: src/ext_l10n.h:1142
 #, fuzzy
 msgid "&Options..."
 msgstr "Beállítások"
 
-#: src/ext_l10n.h:1143
+#: src/ext_l10n.h:1144
 #, fuzzy
 msgid "How far spellchecking has got"
 msgstr "Indítás|#I"
 
-#: src/ext_l10n.h:1144 src/frontends/xforms/form_spellchecker.C:37
+#: src/ext_l10n.h:1145 src/frontends/xforms/form_spellchecker.C:37
 #, fuzzy
 msgid "Suggestions"
 msgstr "Kérdés"
 
-#: src/ext_l10n.h:1145
+#: src/ext_l10n.h:1146
 #, fuzzy
 msgid "Replacement:"
 msgstr "Lebegõ obj.|#j"
 
-#: src/ext_l10n.h:1146
+#: src/ext_l10n.h:1147
 #, fuzzy
 msgid "Current word"
 msgstr "Középre"
 
-#: src/ext_l10n.h:1147
+#: src/ext_l10n.h:1148
 #, fuzzy
 msgid "Unknown:"
 msgstr "ismeretlen"
 
-#: src/ext_l10n.h:1148
+#: src/ext_l10n.h:1149
 #, fuzzy
 msgid "Replace with selected word"
 msgstr "Lecseréli az aktuális dokumentummal?"
 
-#: src/ext_l10n.h:1149
+#: src/ext_l10n.h:1150
 msgid "&Start..."
 msgstr ""
 
-#: src/ext_l10n.h:1150
+#: src/ext_l10n.h:1151
 #, fuzzy
 msgid "Start spellcheck"
 msgstr "Indítás|#I"
 
-#: src/ext_l10n.h:1151 src/frontends/qt2/QTabularCreate.C:28
+#: src/ext_l10n.h:1152 src/frontends/qt2/QTabularCreate.C:28
 #, fuzzy
 msgid "Insert table"
 msgstr "Táblázat beillesztése"
 
-#: src/ext_l10n.h:1152
+#: src/ext_l10n.h:1153
 #, fuzzy
 msgid "&Rows:"
 msgstr "Sorok"
 
-#: src/ext_l10n.h:1153
+#: src/ext_l10n.h:1154
 #, fuzzy
 msgid "Number of rows"
 msgstr "  Szám "
 
-#: src/ext_l10n.h:1154
+#: src/ext_l10n.h:1155
 #, fuzzy
 msgid "&Columns:"
 msgstr "Oszlopok"
 
-#: src/ext_l10n.h:1155
+#: src/ext_l10n.h:1156
 #, fuzzy
 msgid "Number of columns"
 msgstr "% az oszlopnak"
 
-#: src/ext_l10n.h:1156
+#: src/ext_l10n.h:1157
 msgid "Resize this to the correct table dimensions"
 msgstr ""
 
-#: src/ext_l10n.h:1160
+#: src/ext_l10n.h:1161
 #, fuzzy
 msgid "LaTeX classes"
 msgstr "LaTeX napló"
 
-#: src/ext_l10n.h:1161
+#: src/ext_l10n.h:1162
 #, fuzzy
 msgid "LaTeX styles"
 msgstr "TeX|X"
 
-#: src/ext_l10n.h:1162
+#: src/ext_l10n.h:1163
 #, fuzzy
 msgid "BibTeX styles"
 msgstr "TeX|X"
 
-#: src/ext_l10n.h:1163
+#: src/ext_l10n.h:1164
 msgid "Selected classes or styles"
 msgstr ""
 
-#: src/ext_l10n.h:1164
+#: src/ext_l10n.h:1165
 msgid "Show &path"
 msgstr ""
 
-#: src/ext_l10n.h:1165
+#: src/ext_l10n.h:1166
 msgid "Toggles view of the file list"
 msgstr ""
 
-#: src/ext_l10n.h:1167
+#: src/ext_l10n.h:1168
 #, fuzzy
 msgid "Installed files"
 msgstr "Fájl beillesztése új oldalra"
 
-#: src/ext_l10n.h:1168
+#: src/ext_l10n.h:1169
 #, fuzzy
 msgid "&Rescan"
 msgstr "Frissít|#F"
 
 #
-#: src/ext_l10n.h:1169
+#: src/ext_l10n.h:1170
 #, fuzzy
 msgid "Built new file list"
 msgstr "A végeredmény egy üres fájl"
 
-#: src/ext_l10n.h:1170
+#: src/ext_l10n.h:1171
 #, fuzzy
 msgid "&View"
 msgstr "Nézet"
 
-#: src/ext_l10n.h:1171
+#: src/ext_l10n.h:1172
 msgid ""
 "Show contents of marked file. Only possible when files are shown with path"
 msgstr ""
 
-#: src/ext_l10n.h:1173
+#: src/ext_l10n.h:1174
 msgid "Close this dialog"
 msgstr ""
 
-#: src/ext_l10n.h:1177
+#: src/ext_l10n.h:1178
 #, fuzzy
 msgid "Entry"
 msgstr "Extra"
 
-#: src/ext_l10n.h:1178
+#: src/ext_l10n.h:1179
 msgid "Thesaurus entries"
 msgstr ""
 
-#: src/ext_l10n.h:1179
+#: src/ext_l10n.h:1180
 #, fuzzy
 msgid "Select a related word"
 msgstr "Következõ sor kiválasztása"
 
-#: src/ext_l10n.h:1180
+#: src/ext_l10n.h:1181
 #, fuzzy
 msgid "&Selection"
 msgstr "kijelölés"
 
-#: src/ext_l10n.h:1181
+#: src/ext_l10n.h:1182
 msgid "The selected entry"
 msgstr ""
 
-#: src/ext_l10n.h:1183
+#: src/ext_l10n.h:1184
 msgid "Replace the entry with the selection"
 msgstr ""
 
-#: src/ext_l10n.h:1185
+#: src/ext_l10n.h:1186
 #, fuzzy
 msgid "Table Of Contents"
 msgstr "Tartalomjegyzék"
 
-#: src/ext_l10n.h:1187
+#: src/ext_l10n.h:1188
 msgid "Contents list"
 msgstr ""
 
-#: src/ext_l10n.h:1190
+#: src/ext_l10n.h:1191
 #, fuzzy
 msgid "Insert URL"
 msgstr "Címke beillesztése"
 
-#: src/ext_l10n.h:1191
+#: src/ext_l10n.h:1192
 #, fuzzy
 msgid "&URL"
 msgstr "URL"
 
-#: src/ext_l10n.h:1193
+#: src/ext_l10n.h:1194
 #, fuzzy
 msgid "&Name"
 msgstr "Név"
 
-#: src/ext_l10n.h:1194
+#: src/ext_l10n.h:1195
 msgid "Name associated with the URL"
 msgstr ""
 
-#: src/ext_l10n.h:1196
+#: src/ext_l10n.h:1197
 msgid "&Generate hyperlink"
 msgstr ""
 
-#: src/ext_l10n.h:1197
+#: src/ext_l10n.h:1198
 msgid "Output as a hyperlink ?"
 msgstr ""
 
-#: src/ext_l10n.h:1200
+#: src/ext_l10n.h:1201
 #, fuzzy
 msgid "Version control log"
 msgstr "LyX verziószám: "
@@ -5207,26 +5205,24 @@ msgstr "Táblázatok jegyzéke"
 msgid "Loading font into X-Server..."
 msgstr "Betûkészlet betöltése az X-Szerverbe..."
 
-#: src/frontends/controllers/biblio.C:190
+#: src/frontends/controllers/biblio.C:197
 msgid " and "
 msgstr ""
 
-#: src/frontends/controllers/biblio.C:192
+#: src/frontends/controllers/biblio.C:199
 msgid " et al."
 msgstr ""
 
-#: src/frontends/controllers/biblio.C:197
+#: src/frontends/controllers/biblio.C:204
 msgid "Caesar et al."
 msgstr ""
 
-#: src/frontends/controllers/biblio.C:510
-#: src/frontends/controllers/biblio.C:566
+#: src/frontends/controllers/biblio.C:525
+#: src/frontends/controllers/biblio.C:581
 #, fuzzy
 msgid "No database"
 msgstr "Adatbázis:"
 
-#: src/frontends/controllers/ControlCharacter.C:223
-#: src/frontends/controllers/ControlCharacter.C:229
 #: src/frontends/controllers/character.C:34
 #: src/frontends/controllers/character.C:54
 #: src/frontends/controllers/character.C:72
@@ -5234,7 +5230,9 @@ msgstr "Adatbázis:"
 #: src/frontends/controllers/character.C:132
 #: src/frontends/controllers/character.C:152
 #: src/frontends/controllers/character.C:183
-#: src/frontends/xforms/FormCharacter.C:211
+#: src/frontends/controllers/ControlCharacter.C:223
+#: src/frontends/controllers/ControlCharacter.C:229
+#: src/frontends/xforms/FormCharacter.C:213
 msgid "No change"
 msgstr "Változatlan"
 
@@ -5254,7 +5252,6 @@ msgstr ""
 msgid "Typewriter"
 msgstr ""
 
-#: src/frontends/controllers/ControlCharacter.C:232
 #: src/frontends/controllers/character.C:42
 #: src/frontends/controllers/character.C:60
 #: src/frontends/controllers/character.C:82
@@ -5262,6 +5259,7 @@ msgstr ""
 #: src/frontends/controllers/character.C:140
 #: src/frontends/controllers/character.C:172
 #: src/frontends/controllers/character.C:184
+#: src/frontends/controllers/ControlCharacter.C:232
 #: src/frontends/xforms/form_maths_style.C:44
 msgid "Reset"
 msgstr "Alapállapot"
@@ -5432,6 +5430,16 @@ msgstr ""
 msgid "LyX Version "
 msgstr "LyX verziószám: "
 
+#: src/frontends/controllers/ControlAboutlyx.C:87
+#, fuzzy
+msgid " of "
+msgstr " "
+
+#: src/frontends/controllers/ControlAboutlyx.C:90
+#, fuzzy
+msgid "Library directory: "
+msgstr "A felhasználó könyvtára: "
+
 #: src/frontends/controllers/ControlAboutlyx.C:93
 msgid "User directory: "
 msgstr "A felhasználó könyvtára: "
@@ -5446,12 +5454,12 @@ msgstr "Betûkészlet|#e"
 msgid "Select external file"
 msgstr "Következõ sor kiválasztása"
 
-#: src/frontends/controllers/ControlGraphics.C:87
+#: src/frontends/controllers/ControlGraphics.C:104
 #, fuzzy
 msgid "Select graphics file"
 msgstr "Következõ sor kiválasztása"
 
-#: src/frontends/controllers/ControlGraphics.C:97
+#: src/frontends/controllers/ControlGraphics.C:112
 #, fuzzy
 msgid "Clipart|#C#c"
 msgstr "Képek"
@@ -5542,12 +5550,11 @@ msgstr ""
 msgid "No version control log file found."
 msgstr "Nem találtam LaTeX log fájlt"
 
-#: src/frontends/controllers/helper_funcs.C:103
+#: src/frontends/controllers/helper_funcs.C:59
 msgid "Filename can't contain any of these characters:"
 msgstr "A fájlnév nem tartalmazhatja az alábbi karakterek egyikét sem:"
 
-#: src/frontends/controllers/helper_funcs.C:105
-#, c-format
+#: src/frontends/controllers/helper_funcs.C:61
 msgid "space, '#', '~', '$' or '%'."
 msgstr "szóköz, '#', '~', '$' vagy '%'."
 
@@ -5612,7 +5619,6 @@ msgid "%c"
 msgstr ""
 
 #: src/frontends/qt2/lengthcombo.C:33
-#, c-format
 msgid "%l"
 msgstr ""
 
@@ -5711,7 +5717,7 @@ msgstr " bekezdést nem tudok átalakítani"
 #: src/frontends/qt2/QDocument.C:366 src/frontends/qt2/QDocument.C:373
 #: src/frontends/qt2/QDocument.C:1005 src/frontends/xforms/FormDocument.C:781
 #: src/frontends/xforms/FormDocument.C:787
-#: src/frontends/xforms/FormDocument.C:1468
+#: src/frontends/xforms/FormDocument.C:1480
 msgid "Conversion Errors!"
 msgstr "Átalakítási hiba!"
 
@@ -5725,11 +5731,11 @@ msgstr "Hiba történt az új dokumentumosztály betöltésénél."
 
 #: src/frontends/qt2/QDocument.C:375 src/frontends/qt2/QDocument.C:1007
 #: src/frontends/xforms/FormDocument.C:789
-#: src/frontends/xforms/FormDocument.C:1470
+#: src/frontends/xforms/FormDocument.C:1482
 msgid "Reverting to original document class."
 msgstr "Visszatérés az eredeti dokumentum-osztályhoz."
 
-#: src/frontends/qt2/QDocument.C:728 src/frontends/xforms/FormDocument.C:1231
+#: src/frontends/qt2/QDocument.C:728 src/frontends/xforms/FormDocument.C:1241
 msgid "Document is read-only. No changes to layout permitted."
 msgstr "A dokumentum csak olvasható. A formátumán nem lehet változtatni."
 
@@ -5741,7 +5747,7 @@ msgstr "Beállítsak néhány paramétert a"
 msgid "the defaults of this document class?"
 msgstr " dokumentum osztály alapértelmezésére?"
 
-#: src/frontends/qt2/QDocument.C:1006 src/frontends/xforms/FormDocument.C:1469
+#: src/frontends/qt2/QDocument.C:1006 src/frontends/xforms/FormDocument.C:1481
 msgid "Unable to switch to new document class."
 msgstr "Nem lehet az új dokumentum-osztályra váltani."
 
@@ -5796,7 +5802,7 @@ msgstr "Nem találtam LaTeX log fájlt"
 msgid "No LaTeX log file found"
 msgstr "Nem találtam LaTeX log fájlt"
 
-#: src/frontends/qt2/QParagraph.C:166 src/frontends/xforms/FormParagraph.C:334
+#: src/frontends/qt2/QParagraph.C:166 src/frontends/xforms/FormParagraph.C:336
 msgid "Paragraph layout set"
 msgstr "Bekezdés stílusa beállítva"
 
@@ -5807,7 +5813,7 @@ msgstr "Bekezdés"
 
 #. FIXME: should be cleverer here
 #: src/frontends/qt2/QParagraphDialog.C:56
-#: src/frontends/xforms/FormParagraph.C:412 src/paragraph.C:1101
+#: src/frontends/xforms/FormParagraph.C:414 src/paragraph.C:1102
 msgid "Senseless with this layout!"
 msgstr "Értelmetlen ezzel a formátummal!"
 
@@ -5936,9 +5942,10 @@ msgstr "FIGYELEM!"
 msgid "*"
 msgstr ""
 
-#: src/frontends/xforms/FormMathsBitmap.C:89
 #: src/frontends/xforms/form_aboutlyx.C:29
-#: src/frontends/xforms/form_forks.C:66 src/frontends/xforms/form_search.C:73
+#: src/frontends/xforms/form_forks.C:66
+#: src/frontends/xforms/FormMathsBitmap.C:89
+#: src/frontends/xforms/form_search.C:73
 #: src/frontends/xforms/form_tabular.C:31
 msgid "Close|^["
 msgstr "Bezár|^["
@@ -6113,7 +6120,7 @@ msgstr "Ezeket sosem váltsa"
 msgid "These are always toggled"
 msgstr "Ezeket mindíg váltsa"
 
-#: src/frontends/xforms/FormCharacter.C:34
+#: src/frontends/xforms/FormCharacter.C:36
 #, fuzzy
 msgid "Character Layout"
 msgstr "Betûtípus"
@@ -6595,8 +6602,8 @@ msgstr "Dokumentum formátuma beállítva"
 msgid "(they will be valid for any new document)"
 msgstr "Adja meg az új dokumentum nevét"
 
-#: src/frontends/xforms/FormDocument.C:1283
-#: src/frontends/xforms/FormParagraph.C:582
+#: src/frontends/xforms/FormDocument.C:1293
+#: src/frontends/xforms/FormParagraph.C:584
 #: src/frontends/xforms/FormTabular.C:578
 #: src/frontends/xforms/FormTabular.C:597
 #, fuzzy
@@ -6656,7 +6663,7 @@ msgstr ""
 msgid "Cancel|#C^["
 msgstr "Mégsem|#M^["
 
-#: src/frontends/xforms/FormExternal.C:28
+#: src/frontends/xforms/FormExternal.C:30
 msgid "Edit external file"
 msgstr ""
 
@@ -7091,17 +7098,17 @@ msgstr "± ´"
 msgid "£ @"
 msgstr "£ @"
 
+#: src/frontends/xforms/form_maths_panel.C:51
+#: src/frontends/xforms/form_maths_panel.C:114
 #: src/frontends/xforms/FormMathsPanel.C:109
 #: src/frontends/xforms/FormPreferences.C:225
 #: src/frontends/xforms/FormPreferences.C:242
 #: src/frontends/xforms/FormPreferences.C:250
-#: src/frontends/xforms/form_maths_panel.C:51
-#: src/frontends/xforms/form_maths_panel.C:114
 msgid "Misc"
 msgstr "Egyéb"
 
-#: src/frontends/xforms/FormMathsPanel.C:116
 #: src/frontends/xforms/form_maths_panel.C:77
+#: src/frontends/xforms/FormMathsPanel.C:116
 #, fuzzy
 msgid "Dots"
 msgstr "Dokumentumok"
@@ -7319,12 +7326,12 @@ msgstr "Bekezdés formátuma"
 msgid "Cannot apply paragraph settings to this inset!"
 msgstr ""
 
-#: src/frontends/xforms/FormParagraph.C:120
-#: src/frontends/xforms/FormParagraph.C:123
+#: src/frontends/xforms/FormParagraph.C:122
+#: src/frontends/xforms/FormParagraph.C:125
 msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
 msgstr " Nincs | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
 
-#: src/frontends/xforms/FormParagraph.C:127
+#: src/frontends/xforms/FormParagraph.C:129
 #, fuzzy
 msgid " Default | Single | OneHalf | Double | Other "
 msgstr " Szimpla | Másfeles | Dupla | Egyéb "
@@ -7334,7 +7341,7 @@ msgstr " Szimpla | Másfeles | Dupla | Egyéb "
 msgid "LaTeX preamble"
 msgstr "Bevezetõ LaTeX parancsok"
 
-#: src/LyXAction.C:154 src/frontends/xforms/form_preferences.C:39
+#: src/frontends/xforms/form_preferences.C:39 src/LyXAction.C:154
 msgid "Save"
 msgstr "Ment"
 
@@ -7469,6 +7476,7 @@ msgstr "HSV"
 msgid "RGB"
 msgstr "RGB"
 
+#: src/frontends/xforms/form_preferences.C:355
 #: src/frontends/xforms/FormPreferences.C:1073
 #: src/frontends/xforms/FormPreferences.C:1074
 #: src/frontends/xforms/FormPreferences.C:1112
@@ -7477,7 +7485,6 @@ msgstr "RGB"
 #: src/frontends/xforms/FormPreferences.C:1343
 #: src/frontends/xforms/FormPreferences.C:1386
 #: src/frontends/xforms/FormPreferences.C:1388
-#: src/frontends/xforms/form_preferences.C:355
 msgid "Modify|#M"
 msgstr "Módosít|#M"
 
@@ -7564,8 +7571,8 @@ msgstr ""
 msgid "Advanced Options"
 msgstr "Betûtípus"
 
-#: src/frontends/xforms/FormPreferences.C:219
 #: src/frontends/xforms/form_preferences.C:572
+#: src/frontends/xforms/FormPreferences.C:219
 msgid "Interface"
 msgstr "Kezelõfelület"
 
@@ -7661,12 +7668,12 @@ msgstr "Kiterjesztés|#e"
 msgid "Viewer|#V"
 msgstr "Nézegetõ|#N"
 
+#: src/frontends/xforms/form_preferences.C:778
+#: src/frontends/xforms/form_preferences.C:851
 #: src/frontends/xforms/FormPreferences.C:1104
 #: src/frontends/xforms/FormPreferences.C:1106
 #: src/frontends/xforms/FormPreferences.C:1377
 #: src/frontends/xforms/FormPreferences.C:1379
-#: src/frontends/xforms/form_preferences.C:778
-#: src/frontends/xforms/form_preferences.C:851
 msgid "Add|#A"
 msgstr "Hozzáad|#a"
 
@@ -8742,15 +8749,6 @@ msgstr "A fájl nem létezik."
 msgid "Cannot read from this file."
 msgstr "Ebbõl a fájlból nem lehet olvasni."
 
-#: src/graphics/GraphicsCacheItem.C:470
-#, fuzzy
-msgid "Unable to convert file "
-msgstr "Nem lehet átalakítani a fájlt"
-
-#: src/graphics/GraphicsCacheItem.C:472
-msgid " to a loadable format."
-msgstr ""
-
 #: src/importer.C:42
 msgid "Importing"
 msgstr "Importálás"
@@ -8795,7 +8793,7 @@ msgstr ""
 msgid "Opened ERT Inset"
 msgstr ""
 
-#: src/insets/insetert.C:249 src/insets/insettabular.C:2035
+#: src/insets/insetert.C:249 src/insets/insettabular.C:2042
 msgid "Impossible Operation!"
 msgstr "Lehetetlen mûvelet!"
 
@@ -8803,8 +8801,8 @@ msgstr "Lehetetlen mûvelet!"
 msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr ""
 
-#: src/insets/insetert.C:251 src/insets/insettabular.C:2037
-#: src/insets/insettext.C:1311
+#: src/insets/insetert.C:251 src/insets/insettabular.C:2044
+#: src/insets/insettext.C:1368
 msgid "Sorry."
 msgstr "Sajnálom."
 
@@ -8939,7 +8937,7 @@ msgstr ""
 msgid "Opened Minipage Inset"
 msgstr ""
 
-#: src/LColor.C:65 src/insets/insetnote.C:39
+#: src/insets/insetnote.C:39 src/LColor.C:65
 msgid "note"
 msgstr "megjegyzés"
 
@@ -8997,23 +8995,23 @@ msgstr ""
 msgid "Opened Tabular Inset"
 msgstr ""
 
-#: src/insets/insettabular.C:2036
+#: src/insets/insettabular.C:2043
 msgid "Multicolumns can only be horizontally."
 msgstr "Összevont oszlop csak vízszintesen leht."
 
-#: src/insets/insettext.C:647
+#: src/insets/insettext.C:654
 msgid "Opened Text Inset"
 msgstr ""
 
-#: src/insets/insettext.C:1309
+#: src/insets/insettext.C:1366
 msgid "Impossible operation"
 msgstr "Lehetetlen mûvelet!"
 
-#: src/insets/insettext.C:1310
+#: src/insets/insettext.C:1367
 msgid "Cannot include more than one paragraph!"
 msgstr "Nem tartalmazhat egynél több bekezdést!"
 
-#: src/insets/insettext.C:1556
+#: src/insets/insettext.C:1613
 msgid "Error : LatexType Command not allowed here.\n"
 msgstr ""
 
@@ -9726,12 +9724,12 @@ msgstr "(Ha nem, a dokumentum nincs mentve.)"
 msgid "Choose a filename to save document as"
 msgstr "Adja meg a dokumentum új nevét"
 
-#: src/lyx_cb.C:115 src/lyxfunc.C:1708 src/lyxfunc.C:1792
+#: src/lyx_cb.C:115 src/lyxfunc.C:1732 src/lyxfunc.C:1816
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "Sablon|#S"
 
-#: src/lyx_cb.C:123 src/lyxfunc.C:1713 src/lyxfunc.C:1797
+#: src/lyx_cb.C:123 src/lyxfunc.C:1737 src/lyxfunc.C:1821
 msgid "*.lyx|LyX Documents (*.lyx)"
 msgstr ""
 
@@ -9948,56 +9946,56 @@ msgstr "A parancs nem megengedett nyitott dokumentum nélkül"
 msgid "Unknown function ("
 msgstr "Ismeretlen tevékenység"
 
-#: src/lyxfunc.C:1089
+#: src/lyxfunc.C:1113
 msgid "Saving document"
 msgstr "Dokumentum mentése"
 
-#: src/lyxfunc.C:1236 src/mathed/formulabase.C:924
+#: src/lyxfunc.C:1260 src/mathed/formulabase.C:930
 msgid "Missing argument"
 msgstr "Hiányzó kapcsoló"
 
-#: src/lyxfunc.C:1248
+#: src/lyxfunc.C:1272
 msgid "Opening help file"
 msgstr "Súgó megnyitása"
 
-#: src/lyxfunc.C:1450
+#: src/lyxfunc.C:1474
 msgid "Push-toolbar needs argument > 0"
 msgstr ""
 
-#: src/lyxfunc.C:1467
+#: src/lyxfunc.C:1491
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr ""
 
-#: src/lyxfunc.C:1483
+#: src/lyxfunc.C:1507
 msgid "This is only allowed in math mode!"
 msgstr "Ez csak a képletszerkesztõben megengedett!"
 
-#: src/lyxfunc.C:1525
+#: src/lyxfunc.C:1549
 msgid "Opening child document "
 msgstr "Gyerek dokumentum nyitása"
 
-#: src/lyxfunc.C:1599
+#: src/lyxfunc.C:1623
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1609
+#: src/lyxfunc.C:1633
 msgid "Set-color \""
 msgstr ""
 
-#: src/lyxfunc.C:1611
+#: src/lyxfunc.C:1635
 msgid "\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1704
+#: src/lyxfunc.C:1728
 #, fuzzy
 msgid "Enter filename for new document"
 msgstr "Adja meg az új dokumentum nevét"
 
-#: src/lyxfunc.C:1714
+#: src/lyxfunc.C:1738
 msgid "newfile"
 msgstr "newfile"
 
-#: src/lyxfunc.C:1732 src/lyxfunc.C:1943
+#: src/lyxfunc.C:1756 src/lyxfunc.C:1967
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -10005,78 +10003,78 @@ msgstr ""
 "Be akarja zárni a dokumentumot most?\n"
 "(A 'Nem' csak át fog váltani a nyitott verzióra)"
 
-#: src/lyxfunc.C:1751
+#: src/lyxfunc.C:1775
 msgid "File already exists:"
 msgstr "Fájl már létezik:"
 
-#: src/lyxfunc.C:1753
+#: src/lyxfunc.C:1777
 msgid "Do you want to open the document?"
 msgstr "Meg akarja nyitni a dokumentumot?"
 
-#: src/lyxfunc.C:1758
+#: src/lyxfunc.C:1782
 #, fuzzy
 msgid "Opening  document"
 msgstr "Dokumentum megnyitása"
 
-#: src/lyxfunc.C:1766 src/lyxfunc.C:1875
+#: src/lyxfunc.C:1790 src/lyxfunc.C:1899
 msgid "opened."
 msgstr "megnyitva."
 
-#: src/lyxfunc.C:1788
+#: src/lyxfunc.C:1812
 #, fuzzy
 msgid "Select template file"
 msgstr "Következõ sor kiválasztása"
 
-#: src/lyxfunc.C:1829
+#: src/lyxfunc.C:1853
 #, fuzzy
 msgid "Select document to open"
 msgstr "Válassza ki a megnyitni kívánt dokumentumot"
 
-#: src/lyxfunc.C:1857
+#: src/lyxfunc.C:1881
 #, fuzzy
 msgid "Could not find file"
 msgstr "Nem találom ezt a címkét"
 
-#: src/lyxfunc.C:1867
+#: src/lyxfunc.C:1891
 msgid "Opening document"
 msgstr "Dokumentum megnyitása"
 
-#: src/lyxfunc.C:1879
+#: src/lyxfunc.C:1903
 #, fuzzy
 msgid "Could not open document"
 msgstr "A dokumentumot nem tudom megnyitni"
 
-#: src/lyxfunc.C:1903
+#: src/lyxfunc.C:1927
 msgid "Select "
 msgstr ""
 
-#: src/lyxfunc.C:1904
+#: src/lyxfunc.C:1928
 msgid " file to import"
 msgstr ""
 
-#: src/lyxfunc.C:1962
+#: src/lyxfunc.C:1986
 msgid "A document by the name"
 msgstr "Egy dokumentum  ezen a néven"
 
-#: src/lyxfunc.C:1964
+#: src/lyxfunc.C:1988
 msgid "already exists. Overwrite?"
 msgstr "már nyitva van. Felülírjam?"
 
-#: src/lyxfunc.C:1965
+#: src/lyxfunc.C:1989
 #, fuzzy
 msgid "Canceled"
 msgstr "Megszakítva."
 
-#: src/lyxfunc.C:2024 src/lyxfunc.C:2061
+#: src/lyxfunc.C:2048 src/lyxfunc.C:2085
 msgid "Welcome to LyX!"
 msgstr "Üdvözljük a LyX -ben!"
 
-#: src/LyXView.C:230 src/lyxfunc.C:2059
+#: src/lyxfunc.C:2083 src/LyXView.C:230
 msgid " (Changed)"
 msgstr " (Változott)"
 
 #. this is a hack
-#: src/lyxfunc.C:2062
+#: src/lyxfunc.C:2086
 msgid "* No document open *"
 msgstr "* Nincs nyitva dokumentum *"
 
@@ -10788,11 +10786,11 @@ msgstr "Mégis ezt akarja tenni?"
 msgid " (read only)"
 msgstr " (csak olvasható)"
 
-#: src/mathed/formulabase.C:151 src/mathed/formulabase.C:898
+#: src/mathed/formulabase.C:151 src/mathed/formulabase.C:904
 msgid "Math editor mode"
 msgstr "Képlet szerkesztõ mód"
 
-#: src/mathed/formulabase.C:641
+#: src/mathed/formulabase.C:647
 msgid "Invalid action in math mode!"
 msgstr "Az egyenleszerkesztõben ez a mûvelet nem használható!"
 
@@ -10885,7 +10883,7 @@ msgstr "createDirectory hívása érvénytelen névvel"
 msgid "Error! Couldn't create directory:"
 msgstr "Hiba! Nem sikerült a könyvtárat létrehozni:"
 
-#: src/support/filetools.C:1343
+#: src/support/filetools.C:1350
 msgid "Could not delete auto-save file!"
 msgstr "Nem sikerült törölni az automatikusan elmentett fájlt!"
 
@@ -10922,34 +10920,42 @@ msgstr "Nincs mit tenni"
 msgid "Cannot index more than one paragraph!"
 msgstr "Nem tartalmazhat egynél több bekezdést!"
 
-#: src/text.C:1876
+#: src/text.C:1903
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
 msgstr ""
 "Nem Lehet szóközzel kezdeni a bekezdést. Kérem olvassa el a Tankönyvet."
 
-#: src/text.C:1878
+#: src/text.C:1905
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr "Így nem lehet több szóközt beírni. Kérem olvassa el a Tankönyvet."
 
-#: src/text.C:3309 src/text.C:3311
+#: src/text.C:3338 src/text.C:3340
 msgid "Page Break (top)"
 msgstr "Oldaltörés (fent)"
 
 #. draw the additional space if needed:
-#: src/text.C:3318
+#: src/text.C:3347
 #, fuzzy
 msgid "Space above"
 msgstr "Spec. táblázat"
 
-#: src/text.C:3488 src/text.C:3490
+#: src/text.C:3517 src/text.C:3519
 msgid "Page Break (bottom)"
 msgstr "Oldaltörés (lent)"
 
-#: src/text.C:3499
+#: src/text.C:3528
 msgid "Space below"
 msgstr ""
+
+#, fuzzy
+#~ msgid "' indexed."
+#~ msgstr " -t fogom használni."
+
+#, fuzzy
+#~ msgid "Unable to convert file "
+#~ msgstr "Nem lehet átalakítani a fájlt"
 
 #, fuzzy
 #~ msgid " List"

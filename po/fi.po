@@ -59,7 +59,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.1.6\n"
-"POT-Creation-Date: 2002-04-13 12:53+0300\n"
+"POT-Creation-Date: 2002-04-16 23:38+0200\n"
 "PO-Revision-Date: 2002-04-13 13:13+0300\n"
 "Last-Translator: Pauli Virtanen <pauli.virtanen@saunalahti.fi>\n"
 "Language-Team: Finnish <fi@li.org>\n"
@@ -261,8 +261,8 @@ msgstr "  Tallennus epäonnistui! Yrittää..."
 msgid "  Save failed! Bummer. Document is lost."
 msgstr "  Tallennus epäonnistui! Asiakirja on hävinnyt."
 
-#: src/BufferView2.C:72 src/BufferView2.C:82 src/bufferlist.C:369
-#: src/bufferlist.C:481 src/lyx_cb.C:218
+#: src/bufferlist.C:369 src/bufferlist.C:481 src/BufferView2.C:72
+#: src/BufferView2.C:82 src/lyx_cb.C:218
 msgid "Error!"
 msgstr "Virhe!"
 
@@ -290,7 +290,7 @@ msgstr "Lataatko sen mieluummin?"
 msgid "Unable to open template"
 msgstr "Mallitiedostoa ei voi avata"
 
-#: src/bufferlist.C:514 src/lyxfunc.C:1730 src/lyxfunc.C:1941
+#: src/bufferlist.C:514 src/lyxfunc.C:1754 src/lyxfunc.C:1965
 msgid "Document is already open:"
 msgstr "Asiakirja on jo avoinna:"
 
@@ -311,6 +311,54 @@ msgstr "Valittua tiedostoa ei voi avata:"
 #: src/bufferlist.C:555
 msgid "Create new document with this name?"
 msgstr "Luodaanko uusi asiakirja tällä nimellä?"
+
+#: src/BufferView2.C:73
+msgid "Specified file is unreadable: "
+msgstr "Annettua tiedostoa ei voi lukea: "
+
+#: src/BufferView2.C:83
+msgid "Cannot open specified file: "
+msgstr "Ei voi avata annettua tiedostoa: "
+
+#: src/BufferView2.C:339 src/LyXAction.C:392
+msgid "Undo"
+msgstr "Kumoa"
+
+#: src/BufferView2.C:344
+msgid "No further undo information"
+msgstr "Ei enää muuta kumottavaa"
+
+#: src/BufferView2.C:356
+msgid "Redo not yet supported in math mode"
+msgstr "\"Tee uudelleen\" ei vielä toimi matematiikkatilassa"
+
+#: src/BufferView2.C:362 src/LyXAction.C:344
+msgid "Redo"
+msgstr "Tee uudelleen"
+
+#: src/BufferView2.C:367
+msgid "No further redo information"
+msgstr "Ei muuta uudelleen tehtävää"
+
+#: src/BufferView2.C:379
+msgid "Paragraph environment type copied"
+msgstr "Kappaletyyli kopioitu"
+
+#: src/BufferView2.C:388
+msgid "Paragraph environment type set"
+msgstr "Kappaletyyli asetettu"
+
+#: src/BufferView2.C:398 src/LyXAction.C:170 src/MenuBackend.C:521
+msgid "Copy"
+msgstr "Kopioi"
+
+#: src/BufferView2.C:410 src/LyXAction.C:171 src/MenuBackend.C:520
+msgid "Cut"
+msgstr "Leikkaa"
+
+#: src/BufferView2.C:420 src/LyXAction.C:333 src/MenuBackend.C:522
+msgid "Paste"
+msgstr "Liitä"
 
 #: src/bufferview_funcs.C:73
 msgid "Error! unknown language"
@@ -365,162 +413,110 @@ msgstr ", kappale: "
 msgid "Formatting document..."
 msgstr "Asiakirja muotoutuu..."
 
-#: src/BufferView_pimpl.C:1236
+#: src/BufferView_pimpl.C:1252
 msgid "Saved bookmark"
 msgstr "Tallensi kirjanmerkin"
 
-#: src/BufferView_pimpl.C:1268
+#: src/BufferView_pimpl.C:1284
 msgid "Moved to bookmark"
 msgstr "Siirtyi kirjanmerkille"
 
-#: src/BufferView_pimpl.C:1495
+#: src/BufferView_pimpl.C:1511
 msgid "Select LyX document to insert"
 msgstr "Valitse lisättävä LyX-asiakirja"
 
-#: src/BufferView_pimpl.C:1497 src/frontends/controllers/ControlBibtex.C:68
+#: src/BufferView_pimpl.C:1513 src/frontends/controllers/ControlBibtex.C:68
 #: src/frontends/controllers/ControlExternal.C:166
 #: src/frontends/controllers/ControlGraphics.C:113
 #: src/frontends/controllers/ControlInclude.C:71 src/lyx_cb.C:113
-#: src/lyxfunc.C:1706 src/lyxfunc.C:1790 src/lyxfunc.C:1831 src/lyxfunc.C:1908
+#: src/lyxfunc.C:1730 src/lyxfunc.C:1814 src/lyxfunc.C:1855 src/lyxfunc.C:1932
 msgid "Documents|#o#O"
 msgstr "Asiakirjat|#A#a"
 
-#: src/BufferView_pimpl.C:1499 src/lyxfunc.C:1833 src/lyxfunc.C:1910
+#: src/BufferView_pimpl.C:1515 src/lyxfunc.C:1857 src/lyxfunc.C:1934
 msgid "Examples|#E#e"
 msgstr "Esimerkit|#E#e"
 
-#: src/BufferView_pimpl.C:1504 src/frontends/controllers/ControlInclude.C:67
+#: src/BufferView_pimpl.C:1520 src/frontends/controllers/ControlInclude.C:67
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX-asiakirjat (*.lyx)"
 
 #. Cancel: Do nothing
-#: src/BufferView_pimpl.C:1513 src/lyxfunc.C:1717 src/lyxfunc.C:1744
-#: src/lyxfunc.C:1847 src/lyxfunc.C:1927 src/lyxfunc.C:1955
+#: src/BufferView_pimpl.C:1529 src/lyxfunc.C:1741 src/lyxfunc.C:1768
+#: src/lyxfunc.C:1871 src/lyxfunc.C:1951 src/lyxfunc.C:1979
 msgid "Canceled."
 msgstr "Peruttu."
 
-#: src/BufferView_pimpl.C:1525
+#: src/BufferView_pimpl.C:1541
 msgid "Inserting document"
 msgstr "Lisätään asiakirja"
 
-#: src/BufferView_pimpl.C:1531 src/ext_l10n.h:637
-#: src/frontends/xforms/FormDocument.C:320 src/lyxfunc.C:1765
-#: src/lyxfunc.C:1875
+#: src/BufferView_pimpl.C:1547 src/ext_l10n.h:637
+#: src/frontends/xforms/FormDocument.C:320 src/lyxfunc.C:1789
+#: src/lyxfunc.C:1899
 msgid "Document"
 msgstr "Asiakirja"
 
-#: src/BufferView_pimpl.C:1532
+#: src/BufferView_pimpl.C:1548
 msgid "inserted."
 msgstr "lisätty."
 
-#: src/BufferView_pimpl.C:1536
+#: src/BufferView_pimpl.C:1552
 msgid "Could not insert document"
 msgstr "Asiakirjaa ei voi lisätä"
 
-#: src/BufferView_pimpl.C:1710 src/insets/insettext.C:1384
+#: src/BufferView_pimpl.C:1726 src/insets/insettext.C:1434
 msgid "Layout "
 msgstr "Muotoilu "
 
-#: src/BufferView_pimpl.C:1711 src/insets/insettext.C:1384
+#: src/BufferView_pimpl.C:1727 src/insets/insettext.C:1434
 msgid " not known"
 msgstr " tuntematon"
 
-#: src/BufferView_pimpl.C:1894 src/insets/inseterror.C:55
-#: src/insets/inseterror.C:77 src/lyxfunc.C:1857
+#: src/BufferView_pimpl.C:1910 src/insets/inseterror.C:55
+#: src/insets/inseterror.C:77 src/lyxfunc.C:1881
 msgid "Error"
 msgstr "Virhe"
 
-#: src/BufferView_pimpl.C:1895
+#: src/BufferView_pimpl.C:1911
 msgid "Couldn't find this label"
 msgstr "Nimikettä ei löytynyt"
 
-#: src/BufferView_pimpl.C:1896
+#: src/BufferView_pimpl.C:1912
 msgid "in current document."
 msgstr "tässä asiakirjassa"
 
-#: src/BufferView_pimpl.C:2392
+#: src/BufferView_pimpl.C:2408
 msgid "Mark removed"
 msgstr "Merkintä poistettu"
 
-#: src/BufferView_pimpl.C:2399
+#: src/BufferView_pimpl.C:2415
 msgid "Mark set"
 msgstr "Merkintä asetettu"
 
-#: src/BufferView_pimpl.C:2530
+#: src/BufferView_pimpl.C:2546
 msgid "Mark off"
 msgstr "Merkintä pois päältä"
 
-#: src/BufferView_pimpl.C:2543
+#: src/BufferView_pimpl.C:2559
 msgid "Mark on"
 msgstr "Merkintä päälle"
 
-#: src/BufferView_pimpl.C:2717 src/insets/insettext.C:1437
+#: src/BufferView_pimpl.C:2733 src/insets/insettext.C:1487
 msgid "Unknown spacing argument: "
 msgstr "Tuntematon väliparametri: "
 
-#: src/BufferView_pimpl.C:3078
+#: src/BufferView_pimpl.C:3094
 msgid "Word `"
 msgstr "Sana '"
 
-#: src/BufferView_pimpl.C:3079
-msgid "' indexed."
-msgstr "' lisätty hakemistoon."
-
-#: src/BufferView_pimpl.C:3234
+#: src/BufferView_pimpl.C:3250
 msgid "Unknown function!"
 msgstr "Tuntematon toiminto!"
 
-#: src/BufferView_pimpl.C:3497 src/BufferView_pimpl.C:3500
+#: src/BufferView_pimpl.C:3513 src/BufferView_pimpl.C:3516
 msgid "No more insets"
 msgstr "Ei muita muistiinpanoja"
-
-#: src/BufferView2.C:73
-msgid "Specified file is unreadable: "
-msgstr "Annettua tiedostoa ei voi lukea: "
-
-#: src/BufferView2.C:83
-msgid "Cannot open specified file: "
-msgstr "Ei voi avata annettua tiedostoa: "
-
-#: src/BufferView2.C:339 src/LyXAction.C:392
-msgid "Undo"
-msgstr "Kumoa"
-
-#: src/BufferView2.C:344
-msgid "No further undo information"
-msgstr "Ei enää muuta kumottavaa"
-
-#: src/BufferView2.C:356
-msgid "Redo not yet supported in math mode"
-msgstr "\"Tee uudelleen\" ei vielä toimi matematiikkatilassa"
-
-#: src/BufferView2.C:362 src/LyXAction.C:344
-msgid "Redo"
-msgstr "Tee uudelleen"
-
-#: src/BufferView2.C:367
-msgid "No further redo information"
-msgstr "Ei muuta uudelleen tehtävää"
-
-#: src/BufferView2.C:379
-msgid "Paragraph environment type copied"
-msgstr "Kappaletyyli kopioitu"
-
-#: src/BufferView2.C:388
-msgid "Paragraph environment type set"
-msgstr "Kappaletyyli asetettu"
-
-#: src/BufferView2.C:398 src/LyXAction.C:170 src/MenuBackend.C:521
-msgid "Copy"
-msgstr "Kopioi"
-
-#: src/BufferView2.C:410 src/LyXAction.C:171 src/MenuBackend.C:520
-msgid "Cut"
-msgstr "Leikkaa"
-
-#: src/BufferView2.C:420 src/LyXAction.C:333 src/MenuBackend.C:522
-msgid "Paste"
-msgstr "Liitä"
 
 #: src/Chktex.C:84
 msgid "ChkTeX warning id #"
@@ -596,17 +592,15 @@ msgid "Error while executing"
 msgstr "Virhe käynnistettäessä"
 
 #: src/converter.C:579 src/converter.C:674
-#: src/graphics/GraphicsConverter.C:177
 msgid "Cannot convert file"
 msgstr "Ei voi muuntaa tiedostoa"
 
-#: src/converter.C:580 src/graphics/GraphicsConverter.C:178
+#: src/converter.C:580
 msgid "No information for converting from "
 msgstr "Ei tietoja muunnokselle "
 
 # FIXME: Cannot translate properly!
-#: src/CutAndPaste.C:431 src/CutAndPaste.C:434 src/converter.C:581
-#: src/graphics/GraphicsConverter.C:179
+#: src/converter.C:581 src/CutAndPaste.C:431 src/CutAndPaste.C:434
 msgid " to "
 msgstr " -> "
 
@@ -810,12 +804,12 @@ msgstr "Asiakirja viety nimellä "
 msgid " to file `"
 msgstr " tiedostoon '"
 
-#: src/MenuBackend.C:532 src/MenuBackend.C:539 src/ext_l10n.h:1
-#: src/ext_l10n.h:4
+#: src/ext_l10n.h:1 src/ext_l10n.h:4 src/MenuBackend.C:532
+#: src/MenuBackend.C:539
 msgid "File|F"
 msgstr "Tiedosto|T"
 
-#: src/MenuBackend.C:533 src/ext_l10n.h:2 src/ext_l10n.h:5
+#: src/ext_l10n.h:2 src/ext_l10n.h:5 src/MenuBackend.C:533
 msgid "Edit|E"
 msgstr "Muokkaa|k"
 
@@ -839,11 +833,11 @@ msgstr "Näytä|N"
 msgid "Navigate|N"
 msgstr "Siirry|S"
 
-#: src/MenuBackend.C:535 src/ext_l10n.h:10
+#: src/ext_l10n.h:10 src/MenuBackend.C:535
 msgid "Documents|D"
 msgstr "Asiakirjat|A"
 
-#: src/MenuBackend.C:502 src/ext_l10n.h:12 src/ext_l10n.h:17
+#: src/ext_l10n.h:12 src/ext_l10n.h:17 src/MenuBackend.C:502
 msgid "New...|N"
 msgstr "Uusi...|U"
 
@@ -851,11 +845,11 @@ msgstr "Uusi...|U"
 msgid "New from Template...|T"
 msgstr "Uusi mallin mukaan...|m"
 
-#: src/MenuBackend.C:503 src/ext_l10n.h:14 src/ext_l10n.h:19
+#: src/ext_l10n.h:14 src/ext_l10n.h:19 src/MenuBackend.C:503
 msgid "Open...|O"
 msgstr "Avaa...|A"
 
-#: src/MenuBackend.C:504 src/ext_l10n.h:15 src/ext_l10n.h:25
+#: src/ext_l10n.h:15 src/ext_l10n.h:25 src/MenuBackend.C:504
 msgid "Import|I"
 msgstr "Tuo|o"
 
@@ -1551,7 +1545,7 @@ msgstr "Järjestö"
 msgid "Affiliation"
 msgstr "Järjestö"
 
-#: src/FloatList.C:47 src/ext_l10n.h:199
+#: src/ext_l10n.h:199 src/FloatList.C:47
 msgid "Algorithm"
 msgstr "Algoritmi"
 
@@ -2783,8 +2777,8 @@ msgstr "Saksa"
 msgid "German (new spelling)"
 msgstr "Saksa (uusi oikeinkirjoitus)"
 
-#: src/ext_l10n.h:507 src/frontends/xforms/FormMathsPanel.C:103
-#: src/frontends/xforms/form_maths_panel.C:35
+#: src/ext_l10n.h:507 src/frontends/xforms/form_maths_panel.C:35
+#: src/frontends/xforms/FormMathsPanel.C:103
 msgid "Greek"
 msgstr "Kreikka"
 
@@ -3055,9 +3049,9 @@ msgid "Add bibliography to the table of contents"
 msgstr "Lisää lähdeluettelo sisällysluetteloon"
 
 #. /
-#: src/LyXAction.C:157 src/ext_l10n.h:571 src/ext_l10n.h:605
-#: src/ext_l10n.h:764 src/ext_l10n.h:901
-#: src/frontends/controllers/ButtonController.h:73 src/lyxfunc.C:1050
+#: src/ext_l10n.h:571 src/ext_l10n.h:605 src/ext_l10n.h:764 src/ext_l10n.h:901
+#: src/frontends/controllers/ButtonController.h:73 src/LyXAction.C:157
+#: src/lyxfunc.C:1074
 msgid "Cancel"
 msgstr "Peru"
 
@@ -4433,9 +4427,9 @@ msgstr "&Muokkaa..."
 msgid "Edit the pre-amble in an external editor"
 msgstr "Muokkaa aloitusosaa toisella editorilla"
 
-#: src/LyXAction.C:138 src/LyXAction.C:145 src/ext_l10n.h:1071
-#: src/frontends/qt2/QPrint.C:35 src/frontends/xforms/FormPrint.C:35
-#: src/frontends/xforms/form_print.C:133
+#: src/ext_l10n.h:1071 src/frontends/qt2/QPrint.C:35
+#: src/frontends/xforms/form_print.C:133 src/frontends/xforms/FormPrint.C:35
+#: src/LyXAction.C:138 src/LyXAction.C:145
 msgid "Print"
 msgstr "Tulosta"
 
@@ -4539,11 +4533,11 @@ msgstr "Järjestä kopiot"
 msgid "&Print"
 msgstr "&Tulosta"
 
-#: src/LyXAction.C:130 src/ext_l10n.h:1100 src/ext_l10n.h:1159
+#: src/ext_l10n.h:1100 src/ext_l10n.h:1159
 #: src/frontends/controllers/ButtonController.h:74
 #: src/frontends/xforms/form_maths_deco.C:32
 #: src/frontends/xforms/form_maths_space.C:73
-#: src/frontends/xforms/form_maths_style.C:35
+#: src/frontends/xforms/form_maths_style.C:35 src/LyXAction.C:130
 msgid "Close"
 msgstr "Sulje"
 
@@ -4877,25 +4871,23 @@ msgstr "Algoritmit"
 msgid "Loading font into X-Server..."
 msgstr "Kirjasinlaji latautuu X-palvelimeen..."
 
-#: src/frontends/controllers/biblio.C:190
+#: src/frontends/controllers/biblio.C:197
 msgid " and "
 msgstr " ja "
 
-#: src/frontends/controllers/biblio.C:192
+#: src/frontends/controllers/biblio.C:199
 msgid " et al."
 msgstr " ym."
 
-#: src/frontends/controllers/biblio.C:197
+#: src/frontends/controllers/biblio.C:204
 msgid "Caesar et al."
 msgstr "Caesar ym."
 
-#: src/frontends/controllers/biblio.C:510
-#: src/frontends/controllers/biblio.C:566
+#: src/frontends/controllers/biblio.C:525
+#: src/frontends/controllers/biblio.C:581
 msgid "No database"
 msgstr "Ei tietokantaa"
 
-#: src/frontends/controllers/ControlCharacter.C:223
-#: src/frontends/controllers/ControlCharacter.C:229
 #: src/frontends/controllers/character.C:34
 #: src/frontends/controllers/character.C:54
 #: src/frontends/controllers/character.C:72
@@ -4903,7 +4895,9 @@ msgstr "Ei tietokantaa"
 #: src/frontends/controllers/character.C:132
 #: src/frontends/controllers/character.C:152
 #: src/frontends/controllers/character.C:183
-#: src/frontends/xforms/FormCharacter.C:211
+#: src/frontends/controllers/ControlCharacter.C:223
+#: src/frontends/controllers/ControlCharacter.C:229
+#: src/frontends/xforms/FormCharacter.C:213
 msgid "No change"
 msgstr "Ei muutosta"
 
@@ -4923,7 +4917,6 @@ msgstr "Sans serif"
 msgid "Typewriter"
 msgstr "Kirjoituskone"
 
-#: src/frontends/controllers/ControlCharacter.C:232
 #: src/frontends/controllers/character.C:42
 #: src/frontends/controllers/character.C:60
 #: src/frontends/controllers/character.C:82
@@ -4931,6 +4924,7 @@ msgstr "Kirjoituskone"
 #: src/frontends/controllers/character.C:140
 #: src/frontends/controllers/character.C:172
 #: src/frontends/controllers/character.C:184
+#: src/frontends/controllers/ControlCharacter.C:232
 #: src/frontends/xforms/form_maths_style.C:44
 msgid "Reset"
 msgstr "Palauta"
@@ -5207,12 +5201,11 @@ msgstr "Tiedostoluettelo puuttuu. Yritä päivittää."
 msgid "No version control log file found."
 msgstr "Versionhallintalokitiedostoa ei löytynyt"
 
-#: src/frontends/controllers/helper_funcs.C:103
+#: src/frontends/controllers/helper_funcs.C:59
 msgid "Filename can't contain any of these characters:"
 msgstr "Seuraavat merkit eivät ole sallittuja tiedostonnimissä:"
 
-#: src/frontends/controllers/helper_funcs.C:105
-#, c-format
+#: src/frontends/controllers/helper_funcs.C:61
 msgid "space, '#', '~', '$' or '%'."
 msgstr "välilyönti, '#', '~', '$' tai '%'."
 
@@ -5275,7 +5268,6 @@ msgid "%c"
 msgstr "%c"
 
 #: src/frontends/qt2/lengthcombo.C:33
-#, c-format
 msgid "%l"
 msgstr "%l"
 
@@ -5572,9 +5564,10 @@ msgstr "Varoitus! "
 msgid "*"
 msgstr "*"
 
-#: src/frontends/xforms/FormMathsBitmap.C:89
 #: src/frontends/xforms/form_aboutlyx.C:29
-#: src/frontends/xforms/form_forks.C:66 src/frontends/xforms/form_search.C:73
+#: src/frontends/xforms/form_forks.C:66
+#: src/frontends/xforms/FormMathsBitmap.C:89
+#: src/frontends/xforms/form_search.C:73
 #: src/frontends/xforms/form_tabular.C:31
 msgid "Close|^["
 msgstr "Sulje|^["
@@ -5747,7 +5740,7 @@ msgstr "Koko alueeseen vaikuttavat"
 msgid "These are always toggled"
 msgstr "Alueen asetuksia muuttavat"
 
-#: src/frontends/xforms/FormCharacter.C:34
+#: src/frontends/xforms/FormCharacter.C:36
 msgid "Character Layout"
 msgstr "Merkkiasettelu"
 
@@ -6274,7 +6267,7 @@ msgstr "Päivitä|#P"
 msgid "Cancel|#C^["
 msgstr "Peru|^["
 
-#: src/frontends/xforms/FormExternal.C:28
+#: src/frontends/xforms/FormExternal.C:30
 msgid "Edit external file"
 msgstr "Muokkaa ulkoista tiedostoa"
 
@@ -6682,17 +6675,17 @@ msgstr "± ´"
 msgid "£ @"
 msgstr "£ @"
 
+#: src/frontends/xforms/form_maths_panel.C:51
+#: src/frontends/xforms/form_maths_panel.C:114
 #: src/frontends/xforms/FormMathsPanel.C:109
 #: src/frontends/xforms/FormPreferences.C:225
 #: src/frontends/xforms/FormPreferences.C:242
 #: src/frontends/xforms/FormPreferences.C:250
-#: src/frontends/xforms/form_maths_panel.C:51
-#: src/frontends/xforms/form_maths_panel.C:114
 msgid "Misc"
 msgstr "Sekal."
 
-#: src/frontends/xforms/FormMathsPanel.C:116
 #: src/frontends/xforms/form_maths_panel.C:77
+#: src/frontends/xforms/FormMathsPanel.C:116
 msgid "Dots"
 msgstr "Pisteet"
 
@@ -6908,7 +6901,7 @@ msgstr " Oletus | Yksinkertainen | Puolitoista | Kaksinkertainen | Muu "
 msgid "LaTeX preamble"
 msgstr "LaTeX-aloitusosa"
 
-#: src/LyXAction.C:154 src/frontends/xforms/form_preferences.C:39
+#: src/frontends/xforms/form_preferences.C:39 src/LyXAction.C:154
 msgid "Save"
 msgstr "Tallenna"
 
@@ -7034,6 +7027,7 @@ msgstr "HSV"
 msgid "RGB"
 msgstr "RGB"
 
+#: src/frontends/xforms/form_preferences.C:355
 #: src/frontends/xforms/FormPreferences.C:1073
 #: src/frontends/xforms/FormPreferences.C:1074
 #: src/frontends/xforms/FormPreferences.C:1112
@@ -7042,7 +7036,6 @@ msgstr "RGB"
 #: src/frontends/xforms/FormPreferences.C:1343
 #: src/frontends/xforms/FormPreferences.C:1386
 #: src/frontends/xforms/FormPreferences.C:1388
-#: src/frontends/xforms/form_preferences.C:355
 msgid "Modify|#M"
 msgstr "Muuta|#M"
 
@@ -7126,8 +7119,8 @@ msgstr "Käytä syötteen merkistöä|#m"
 msgid "Advanced Options"
 msgstr "Lisäasetukset"
 
-#: src/frontends/xforms/FormPreferences.C:219
 #: src/frontends/xforms/form_preferences.C:572
+#: src/frontends/xforms/FormPreferences.C:219
 msgid "Interface"
 msgstr "Käyttöliittymä"
 
@@ -7219,12 +7212,12 @@ msgstr "Nimien pääte|#e"
 msgid "Viewer|#V"
 msgstr "Katselin|#s"
 
+#: src/frontends/xforms/form_preferences.C:778
+#: src/frontends/xforms/form_preferences.C:851
 #: src/frontends/xforms/FormPreferences.C:1104
 #: src/frontends/xforms/FormPreferences.C:1106
 #: src/frontends/xforms/FormPreferences.C:1377
 #: src/frontends/xforms/FormPreferences.C:1379
-#: src/frontends/xforms/form_preferences.C:778
-#: src/frontends/xforms/form_preferences.C:851
 msgid "Add|#A"
 msgstr "Lisää|#L"
 
@@ -8285,14 +8278,6 @@ msgstr "Tiedostoa ei ole olemassa."
 msgid "Cannot read from this file."
 msgstr "Tästä tiedostosta ei voi lukea."
 
-#: src/graphics/GraphicsCacheItem.C:488
-msgid "Unable to convert file "
-msgstr "Ei voinut muuntaa tiedostoa "
-
-#: src/graphics/GraphicsCacheItem.C:490
-msgid " to a loadable format."
-msgstr " ladattavaan muotoon."
-
 #: src/importer.C:42
 msgid "Importing"
 msgstr "Tuo"
@@ -8334,7 +8319,7 @@ msgstr "Avattiin virhe"
 msgid "Opened ERT Inset"
 msgstr "ERT-osio avattiin"
 
-#: src/insets/insetert.C:249 src/insets/insettabular.C:2035
+#: src/insets/insetert.C:249 src/insets/insettabular.C:2042
 msgid "Impossible Operation!"
 msgstr "Mahdoton toiminto!"
 
@@ -8342,8 +8327,8 @@ msgstr "Mahdoton toiminto!"
 msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr "Kirjasinlajia ei voi vaihtaa ERT-osioiden sisällä!"
 
-#: src/insets/insetert.C:251 src/insets/insettabular.C:2037
-#: src/insets/insettext.C:1318
+#: src/insets/insetert.C:251 src/insets/insettabular.C:2044
+#: src/insets/insettext.C:1368
 msgid "Sorry."
 msgstr "Valitettavasti."
 
@@ -8469,7 +8454,7 @@ msgstr "pienoissivu"
 msgid "Opened Minipage Inset"
 msgstr "Pienoissivuosio avattiin"
 
-#: src/LColor.C:65 src/insets/insetnote.C:39
+#: src/insets/insetnote.C:39 src/LColor.C:65
 msgid "note"
 msgstr "muistiinpano"
 
@@ -8521,7 +8506,7 @@ msgstr "Hieno viite: "
 msgid "Opened Tabular Inset"
 msgstr "Taulukko-osio avattu"
 
-#: src/insets/insettabular.C:2036
+#: src/insets/insettabular.C:2043
 msgid "Multicolumns can only be horizontally."
 msgstr "Sarakkeiden yhdistäminen toimii vain vaakasuuntaan."
 
@@ -8529,15 +8514,15 @@ msgstr "Sarakkeiden yhdistäminen toimii vain vaakasuuntaan."
 msgid "Opened Text Inset"
 msgstr "Tekstiosio avattiin"
 
-#: src/insets/insettext.C:1316
+#: src/insets/insettext.C:1366
 msgid "Impossible operation"
 msgstr "Mahdoton toiminto"
 
-#: src/insets/insettext.C:1317
+#: src/insets/insettext.C:1367
 msgid "Cannot include more than one paragraph!"
 msgstr "Tämä osio voi sisältää vain yhden kappaleen!"
 
-#: src/insets/insettext.C:1563
+#: src/insets/insettext.C:1613
 msgid "Error : LatexType Command not allowed here.\n"
 msgstr "Virhe : LatexType-komentoa ei voi käyttää tässä.\n"
 
@@ -9233,11 +9218,11 @@ msgstr "(muuten asiakirjaa ei tallenneta.)"
 msgid "Choose a filename to save document as"
 msgstr "Valitse tiedostonimi, joksi asiakirja tallennetaan:"
 
-#: src/lyx_cb.C:115 src/lyxfunc.C:1708 src/lyxfunc.C:1792
+#: src/lyx_cb.C:115 src/lyxfunc.C:1732 src/lyxfunc.C:1816
 msgid "Templates|#T#t"
 msgstr "Mallipohjat|#o#O"
 
-#: src/lyx_cb.C:123 src/lyxfunc.C:1713 src/lyxfunc.C:1797
+#: src/lyx_cb.C:123 src/lyxfunc.C:1737 src/lyxfunc.C:1821
 msgid "*.lyx|LyX Documents (*.lyx)"
 msgstr "*.lyx|LyX-asiakirjat (*.lyx)"
 
@@ -9446,56 +9431,56 @@ msgstr "Komento ei toimi ilman avoinna olevaa asiakirjaa"
 msgid "Unknown function ("
 msgstr "Tuntematon funktio ("
 
-#: src/lyxfunc.C:1089
+#: src/lyxfunc.C:1113
 msgid "Saving document"
 msgstr "Asiakirja tallentuu"
 
-#: src/lyxfunc.C:1236 src/mathed/formulabase.C:926
+#: src/lyxfunc.C:1260 src/mathed/formulabase.C:930
 msgid "Missing argument"
 msgstr "Argumentti puuttuu"
 
-#: src/lyxfunc.C:1248
+#: src/lyxfunc.C:1272
 msgid "Opening help file"
 msgstr "Ohjetiedosto avautuu"
 
-#: src/lyxfunc.C:1450
+#: src/lyxfunc.C:1474
 msgid "Push-toolbar needs argument > 0"
 msgstr "\"Push-toolbar\" vaatii parametria > 0"
 
-#: src/lyxfunc.C:1467
+#: src/lyxfunc.C:1491
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr "Käyttöohje: toolbar-add-to <LyX-komento>"
 
-#: src/lyxfunc.C:1483
+#: src/lyxfunc.C:1507
 msgid "This is only allowed in math mode!"
 msgstr "Tämä on mahdollista vain matematiikkatilassa!"
 
-#: src/lyxfunc.C:1525
+#: src/lyxfunc.C:1549
 msgid "Opening child document "
 msgstr "Aliasiakirja avautuu"
 
-#: src/lyxfunc.C:1599
+#: src/lyxfunc.C:1623
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr "Syntaksi: set-color <lyx_nimi> <x11_nimi>"
 
-#: src/lyxfunc.C:1609
+#: src/lyxfunc.C:1633
 msgid "Set-color \""
 msgstr "Set-color \""
 
-#: src/lyxfunc.C:1611
+#: src/lyxfunc.C:1635
 msgid "\" failed - color is undefined or may not be redefined"
 msgstr ""
 "\" epäonnistui: väriä ei ole määritelty, tai sitä ei voi uudelleenmääritellä."
 
-#: src/lyxfunc.C:1704
+#: src/lyxfunc.C:1728
 msgid "Enter filename for new document"
 msgstr "Anna uuden asiakirjatiedoston nimi"
 
-#: src/lyxfunc.C:1714
+#: src/lyxfunc.C:1738
 msgid "newfile"
 msgstr "uusi"
 
-#: src/lyxfunc.C:1732 src/lyxfunc.C:1943
+#: src/lyxfunc.C:1756 src/lyxfunc.C:1967
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -9503,72 +9488,72 @@ msgstr ""
 "Haluatko sulkea asiakirjan nyt?\n"
 "('Ei': siirry avoinna olevaan versioon)"
 
-#: src/lyxfunc.C:1751
+#: src/lyxfunc.C:1775
 msgid "File already exists:"
 msgstr "Tiedosto jo olemassa:"
 
-#: src/lyxfunc.C:1753
+#: src/lyxfunc.C:1777
 msgid "Do you want to open the document?"
 msgstr "Haluatko avata asiakirjan?"
 
-#: src/lyxfunc.C:1758
+#: src/lyxfunc.C:1782
 msgid "Opening  document"
 msgstr "Asiakirja avautuu"
 
-#: src/lyxfunc.C:1766 src/lyxfunc.C:1875
+#: src/lyxfunc.C:1790 src/lyxfunc.C:1899
 msgid "opened."
 msgstr "avattu."
 
-#: src/lyxfunc.C:1788
+#: src/lyxfunc.C:1812
 msgid "Select template file"
 msgstr "Valitse mallitiedosto"
 
-#: src/lyxfunc.C:1829
+#: src/lyxfunc.C:1853
 msgid "Select document to open"
 msgstr "Valitse avattava asiakirja"
 
-#: src/lyxfunc.C:1857
+#: src/lyxfunc.C:1881
 msgid "Could not find file"
 msgstr "Tiedostoa ei löytynyt"
 
-#: src/lyxfunc.C:1867
+#: src/lyxfunc.C:1891
 msgid "Opening document"
 msgstr "Asiakirja avautuu"
 
-#: src/lyxfunc.C:1879
+#: src/lyxfunc.C:1903
 msgid "Could not open document"
 msgstr "Ei voinut avata asiakirjaa"
 
-#: src/lyxfunc.C:1903
+#: src/lyxfunc.C:1927
 msgid "Select "
 msgstr "Valitse "
 
-#: src/lyxfunc.C:1904
+#: src/lyxfunc.C:1928
 msgid " file to import"
 msgstr " tuotava tiedosto"
 
-#: src/lyxfunc.C:1962
+#: src/lyxfunc.C:1986
 msgid "A document by the name"
 msgstr "Asiakirja, jonka nimi on"
 
-#: src/lyxfunc.C:1964
+#: src/lyxfunc.C:1988
 msgid "already exists. Overwrite?"
 msgstr "on jo olemassa. Haluatko korvata sen?"
 
-#: src/lyxfunc.C:1965
+#: src/lyxfunc.C:1989
 msgid "Canceled"
 msgstr "Peruttu"
 
-#: src/lyxfunc.C:2024 src/lyxfunc.C:2061
+#: src/lyxfunc.C:2048 src/lyxfunc.C:2085
 msgid "Welcome to LyX!"
 msgstr "Tervetuloa LyXiin!"
 
-#: src/LyXView.C:230 src/lyxfunc.C:2059
+#: src/lyxfunc.C:2083 src/LyXView.C:230
 msgid " (Changed)"
 msgstr " (Muuttunut)"
 
 #. this is a hack
-#: src/lyxfunc.C:2062
+#: src/lyxfunc.C:2086
 msgid "* No document open *"
 msgstr "* Avoimia asiakirjoja ei ole *"
 
@@ -10314,11 +10299,11 @@ msgstr "Haluatko kuitenkin tehdä se?"
 msgid " (read only)"
 msgstr " (kirjoitussuojattu)"
 
-#: src/mathed/formulabase.C:151 src/mathed/formulabase.C:900
+#: src/mathed/formulabase.C:151 src/mathed/formulabase.C:904
 msgid "Math editor mode"
 msgstr "Matematiikkaeditoritila"
 
-#: src/mathed/formulabase.C:643
+#: src/mathed/formulabase.C:647
 msgid "Invalid action in math mode!"
 msgstr "Kelvoton toiminto matematiikkatilassa!"
 
@@ -10431,6 +10416,23 @@ msgstr "Taulukon muoto < 5 ei ole enää tuettu\n"
 msgid "Get an older version of LyX (< 1.1.x) for conversion!"
 msgstr "Hanki vanhempi LyXin versio (< 1.1.x) muunnosta varten!"
 
+#. Could only happen with user style
+#: src/text2.C:1079
+msgid ""
+"No font change defined. Use Character under the Layout menu to define font "
+"change."
+msgstr ""
+"Kirjasinlajin muutosta ei määritetty. Määritä kirjasinlajin muutos Muotoilu-"
+"valikon Merkki-alivalikon avulla."
+
+#: src/text2.C:1118
+msgid "Nothing to index!"
+msgstr "Ei mitään hakemistossa!"
+
+#: src/text2.C:1122
+msgid "Cannot index more than one paragraph!"
+msgstr "Hakemistoon voi lisätä vain yhden kappaleen!"
+
 #: src/text.C:1903
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
@@ -10458,22 +10460,14 @@ msgstr "Sivunvaihto (ala)"
 msgid "Space below"
 msgstr "Väli alla"
 
-#. Could only happen with user style
-#: src/text2.C:1079
-msgid ""
-"No font change defined. Use Character under the Layout menu to define font "
-"change."
-msgstr ""
-"Kirjasinlajin muutosta ei määritetty. Määritä kirjasinlajin muutos Muotoilu-"
-"valikon Merkki-alivalikon avulla."
+#~ msgid "' indexed."
+#~ msgstr "' lisätty hakemistoon."
 
-#: src/text2.C:1118
-msgid "Nothing to index!"
-msgstr "Ei mitään hakemistossa!"
+#~ msgid "Unable to convert file "
+#~ msgstr "Ei voinut muuntaa tiedostoa "
 
-#: src/text2.C:1122
-msgid "Cannot index more than one paragraph!"
-msgstr "Hakemistoon voi lisätä vain yhden kappaleen!"
+#~ msgid " to a loadable format."
+#~ msgstr " ladattavaan muotoon."
 
 #~ msgid " List"
 #~ msgstr "luettelo"

@@ -86,9 +86,9 @@ all-no:
 # otherwise packages like GCC can not be built if only parts of the source
 # have been downloaded.
 
-$(srcdir)/$(PACKAGE).pot: $(POTFILES) $(srcdir)/POTFILES.in
+$(srcdir)/$(PACKAGE).pot: $(POTFILES) $(srcdir)/POTFILES.in $(top_srcdir)/src/ext_l10n.h
 	$(XGETTEXT) --default-domain=$(PACKAGE) --directory=$(top_srcdir) \
-	  --add-comments --keyword=_ --keyword=N_ \
+	  --escape --add-comments --keyword=_ --keyword=N_ \
 	  --files-from=$(srcdir)/POTFILES.in \
 	&& test ! -f $(PACKAGE).po \
 	   || ( rm -f $(srcdir)/$(PACKAGE).pot \
