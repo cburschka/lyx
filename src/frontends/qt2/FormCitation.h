@@ -31,6 +31,8 @@ class ControlCitation;
 class FormCitationDialogImpl;
 
 class FormCitation : public Qt2CB<ControlCitation, Qt2DB<FormCitationDialogImpl> > {
+    friend class FormCitationDialogImpl;
+    
 public:
     ///
     FormCitation(ControlCitation &);

@@ -248,6 +248,10 @@
                 <name>name</name>
                 <cstring>infoML</cstring>
             </property>
+            <property stdset="1">
+                <name>wordWrap</name>
+                <enum>WidgetWidth</enum>
+            </property>
             <property>
                 <name>toolTip</name>
                 <string>Reference entry text</string>
@@ -319,7 +323,7 @@
                             <class>QPushButton</class>
                             <property stdset="1">
                                 <name>name</name>
-                                <cstring>PushButton14</cstring>
+                                <cstring>previousPB</cstring>
                             </property>
                             <property stdset="1">
                                 <name>text</name>
@@ -387,7 +391,7 @@
                             <class>QPushButton</class>
                             <property stdset="1">
                                 <name>name</name>
-                                <cstring>PushButton15</cstring>
+                                <cstring>nextPB</cstring>
                             </property>
                             <property stdset="1">
                                 <name>text</name>
@@ -644,12 +648,6 @@
 </images>
 <connections>
     <connection>
-        <sender>citeLB</sender>
-        <signal>selected(int)</signal>
-        <receiver>FormCitationDialog</receiver>
-        <slot>slotInsetSelected(int)</slot>
-    </connection>
-    <connection>
         <sender>bibLB</sender>
         <signal>selected(int)</signal>
         <receiver>FormCitationDialog</receiver>
@@ -686,37 +684,59 @@
         <slot>slotRestoreClicked()</slot>
     </connection>
     <connection>
-        <sender>okPB</sender>
-        <signal>clicked()</signal>
+        <sender>citeLB</sender>
+        <signal>selected(int)</signal>
         <receiver>FormCitationDialog</receiver>
-        <slot>apply_adaptor()</slot>
+        <slot>slotCiteSelected(int)</slot>
     </connection>
     <connection>
-        <sender>okPB</sender>
-        <signal>clicked()</signal>
+        <sender>searchTypePB</sender>
+        <signal>toggled(bool)</signal>
         <receiver>FormCitationDialog</receiver>
-        <slot>close_adaptor()</slot>
+        <slot>slotSearchTypeSelected(bool)</slot>
     </connection>
     <connection>
-        <sender>applyPB</sender>
+        <sender>previousPB</sender>
         <signal>clicked()</signal>
         <receiver>FormCitationDialog</receiver>
-        <slot>apply_adaptor()</slot>
+        <slot>slotPreviousClicked()</slot>
     </connection>
     <connection>
-        <sender>cancelPB</sender>
+        <sender>nextPB</sender>
         <signal>clicked()</signal>
         <receiver>FormCitationDialog</receiver>
-        <slot>close_adaptor()</slot>
+        <slot>slotNextClicked()</slot>
     </connection>
-    <slot access="protected">apply_adaptor()</slot>
-    <slot access="protected">close_adaptor()</slot>
+    <connection>
+        <sender>citationStyleCO</sender>
+        <signal>activated(int)</signal>
+        <receiver>FormCitationDialog</receiver>
+        <slot>slotCitationStyleSelected(int)</slot>
+    </connection>
+    <connection>
+        <sender>textBeforeED</sender>
+        <signal>returnPressed()</signal>
+        <receiver>FormCitationDialog</receiver>
+        <slot>slotTextBeforeReturn()</slot>
+    </connection>
+    <connection>
+        <sender>textAfterED</sender>
+        <signal>returnPressed()</signal>
+        <receiver>FormCitationDialog</receiver>
+        <slot>slotTextAfterReturn()</slot>
+    </connection>
+    <slot access="protected">slotTextAfterReturn()</slot>
     <slot access="protected">slotAddClicked()</slot>
     <slot access="protected">slotBibSelected(int)</slot>
+    <slot access="protected">slotCitationStyleSelected(int)</slot>
+    <slot access="protected">slotCiteSelected(int)</slot>
     <slot access="protected">slotDelClicked()</slot>
     <slot access="protected">slotDownClicked()</slot>
     <slot access="protected">slotIUpClicked()</slot>
-    <slot access="protected">slotInsetSelected(int)</slot>
+    <slot access="protected">slotNextClicked()</slot>
+    <slot access="protected">slotPreviousClicked()</slot>
     <slot access="protected">slotRestoreClicked()</slot>
+    <slot access="protected">slotSearchTypeSelected(bool)</slot>
+    <slot access="protected">slotTextBeforeReturn()</slot>
 </connections>
 </UI>
