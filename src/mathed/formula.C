@@ -46,9 +46,6 @@ using std::pair;
 using std::endl;
 using std::vector;
 
-extern char const * latex_mathenv[];
-extern MathCursor * mathcursor;
-
 
 InsetFormula::InsetFormula()
 	: par_(new MathMatrixInset)
@@ -68,6 +65,13 @@ InsetFormula::InsetFormula(MathInsetTypes t)
 InsetFormula::InsetFormula(string const & s) 
 	: par_(mathed_parse_normal(s))
 {
+	if (!par_)
+		par_ = mathed_parse_normal("$" + s + "$");
+
+	if (!par_) {
+		lyxerr << "cannot interpret '" << s << "' as math\n";
+		par_ = new MathMatrixInset(LM_OT_SIMPLE);
+	}
 	metrics();
 }
 

@@ -131,21 +131,25 @@ void InsetFormulaBase::write(Buffer const *, ostream & os) const
 	write(os);
 }
 
+
 int InsetFormulaBase::latex(Buffer const *, ostream & os,
 	bool fragile, bool spacing) const
 {
 	return latex(os, fragile, spacing);
 }
 
+
 int InsetFormulaBase::ascii(Buffer const *, ostream & os, int spacing) const
 {
 	return ascii(os, spacing);
 }
 
+
 int InsetFormulaBase::linuxdoc(Buffer const *, ostream & os) const
 {
 	return linuxdoc(os);
 }
+
 
 int InsetFormulaBase::docBook(Buffer const *, ostream & os) const
 {
@@ -186,6 +190,7 @@ void InsetFormulaBase::edit(BufferView * bv, int x, int /*y*/, unsigned int)
 
 void InsetFormulaBase::edit(BufferView * bv, bool front)
 {
+	// looks hackish but seems to work
 	edit(bv, front ? 0 : 1, 0, 0);
 }
 
@@ -713,16 +718,16 @@ Inset::Code InsetFormulaBase::lyxCode() const
 void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
 {
 	if (bv->available()) {
-// Feature "Read math inset from selection" disabled.
-//		// use selection if available..
-//		string sel;
-//		if (action == LFUN_MATH_IMPORT_SELECTION)
-//			sel = "";
-//		else
-//			sel = bv->getLyXText()->selectionAsString(bv->buffer());
+		// use selection if available..
+		//string sel;
+		//if (action == LFUN_MATH_IMPORT_SELECTION)
+		//	sel = "";
+		//else
 
-			InsetFormula * f;
-//		if (sel.empty()) {
+		string sel = bv->getLyXText()->selectionAsString(bv->buffer());
+
+		InsetFormulaBase * f;
+		if (sel.empty()) {
 				f = new InsetFormula;
 				if (openNewInset(bv, f)) {
 					// don't do that also for LFUN_MATH_MODE unless you want end up with
@@ -732,11 +737,16 @@ void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
 						f->localDispatch(bv, LFUN_MATH_DISPLAY, string());
 					f->localDispatch(bv, LFUN_INSERT_MATH, arg);
 				}
-//		} else {
-//			f = new InsetFormula(sel);
-//			bv->getLyXText()->cutSelection(bv);
-//			openNewInset(bv, f);
-//		}
+		} else {
+			// create a macro if we see "\\newcommand" somewhere, and an ordinary
+			// formula otherwise
+			if (sel.find("\\newcommand") == string::npos) 
+				f = new InsetFormula(sel);
+			else
+				f = new InsetFormulaMacro(sel);
+			bv->getLyXText()->cutSelection(bv);
+			openNewInset(bv, f);
+		}
 	}
 	bv->owner()->getLyXFunc()->setMessage(N_("Math editor mode"));
 }
@@ -745,16 +755,19 @@ void mathDispatchMathDisplay(BufferView * bv, string const & arg)
 {
 	mathDispatchCreation(bv, arg, true);
 }
+
 	
 void mathDispatchMathMode(BufferView * bv, string const & arg)
 {
 	mathDispatchCreation(bv, arg, false);
 }
 
+
 void mathDispatchMathImportSelection(BufferView * bv, string const & arg)
 {
 	mathDispatchCreation(bv, arg, true);
 }
+
 
 void mathDispatchMathMacro(BufferView * bv, string const & arg)
 {
@@ -769,6 +782,7 @@ void mathDispatchMathMacro(BufferView * bv, string const & arg)
 		}
 	}
 }
+
 
 void mathDispatchMathDelim(BufferView * bv, string const & arg)
 { 	   
@@ -786,6 +800,7 @@ void mathDispatchInsertMatrix(BufferView * bv, string const & arg)
 			bv->theLockingInset()->localDispatch(bv, LFUN_INSERT_MATRIX, arg);
 	}
 }	   
+
 
 void mathDispatchInsertMath(BufferView * bv, string const & arg)
 {

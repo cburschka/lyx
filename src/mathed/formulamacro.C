@@ -44,6 +44,7 @@ extern MathCursor * mathcursor;
 
 InsetFormulaMacro::InsetFormulaMacro()
 {
+	// inset name is inherited from Inset
 	setInsetName("unknown");
 }
 
@@ -52,6 +53,16 @@ InsetFormulaMacro::InsetFormulaMacro(string nm, int na)
 {
 	setInsetName(nm);
 	MathMacroTable::createTemplate(nm, na, string());
+}
+
+
+InsetFormulaMacro::InsetFormulaMacro(string const & s)
+{
+	MathMacroTemplate * t = mathed_parse_macro(s);
+	MathMacroTable::insertTemplate(*t);
+	setInsetName(t->name());
+	delete t;
+	metrics();
 }
 
 

@@ -25,17 +25,18 @@
 
 class MathMacroTemplate;
 
-// InsetFormulaMacro's ParInset is the ParInset of the macro definition
-// which in turn is stored in the global MathMacroTable.
-// No copying/updating needed anymore...
+// InsetFormulaMacro's only knows its name and asks the global
+// MathMacroTable if it needs to know more. 
 
 ///
 class InsetFormulaMacro: public InsetFormulaBase {
 public:
 	///
 	InsetFormulaMacro();
-	///
+	/// construct a macro hull from its name and the number of arguments
 	explicit InsetFormulaMacro(string name, int na);
+	/// constructs a mocro from its LaTeX definition
+	explicit InsetFormulaMacro(string const & s);
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///

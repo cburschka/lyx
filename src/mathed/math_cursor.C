@@ -1194,62 +1194,6 @@ MathMatrixInset * MathCursor::outerPar() const
 		static_cast<MathMatrixInset *>(const_cast<MathInset *>(formula_->par()));
 }
 
-////////////////////////////////////////////////////////////////////////
-
-
-bool operator==(MathCursorPos const & ti, MathCursorPos const & it)
-{
-	return ti.par_ == it.par_ && ti.idx_ == it.idx_ && ti.pos_ == it.pos_;
-}
-
-
-bool operator<(MathCursorPos const & ti, MathCursorPos const & it)
-{
-	if (ti.par_ != it.par_) {
-		lyxerr << "can't compare cursor and anchor in different insets\n";
-		return true;
-	}
-	if (ti.idx_ != it.idx_)
-		return ti.idx_ < it.idx_;
-	return ti.pos_ < it.pos_;
-}
-
-
-MathArray & MathCursorPos::cell(int idx) const
-{
-	return par_->cell(idx);
-}
-
-
-MathArray & MathCursorPos::cell() const
-{
-	return par_->cell(idx_);
-}
-
-
-MathXArray & MathCursorPos::xcell(int idx) const
-{
-	return par_->xcell(idx);
-}
-
-
-MathXArray & MathCursorPos::xcell() const
-{
-	return par_->xcell(idx_);
-}
-
-
-MathCursorPos MathCursor::normalAnchor() const
-{
-	// use Anchor on the same level as Cursor
-	MathCursorPos normal = Anchor_[Cursor_.size() - 1];
-	if (Cursor_.size() < Anchor_.size() && !(normal < cursor())) {
-		// anchor is behind cursor -> move anchor behind the inset
-		++normal.pos_;
-	}
-	return normal;
-}
-
 
 void MathCursor::interpret(string const & s)
 {
@@ -1439,5 +1383,63 @@ void MathCursor::interpret(string const & s)
 		return;	
 	}
 
+}
+
+
+
+////////////////////////////////////////////////////////////////////////
+
+
+bool operator==(MathCursorPos const & ti, MathCursorPos const & it)
+{
+	return ti.par_ == it.par_ && ti.idx_ == it.idx_ && ti.pos_ == it.pos_;
+}
+
+
+bool operator<(MathCursorPos const & ti, MathCursorPos const & it)
+{
+	if (ti.par_ != it.par_) {
+		lyxerr << "can't compare cursor and anchor in different insets\n";
+		return true;
+	}
+	if (ti.idx_ != it.idx_)
+		return ti.idx_ < it.idx_;
+	return ti.pos_ < it.pos_;
+}
+
+
+MathArray & MathCursorPos::cell(int idx) const
+{
+	return par_->cell(idx);
+}
+
+
+MathArray & MathCursorPos::cell() const
+{
+	return par_->cell(idx_);
+}
+
+
+MathXArray & MathCursorPos::xcell(int idx) const
+{
+	return par_->xcell(idx);
+}
+
+
+MathXArray & MathCursorPos::xcell() const
+{
+	return par_->xcell(idx_);
+}
+
+
+MathCursorPos MathCursor::normalAnchor() const
+{
+	// use Anchor on the same level as Cursor
+	MathCursorPos normal = Anchor_[Cursor_.size() - 1];
+	if (Cursor_.size() < Anchor_.size() && !(normal < cursor())) {
+		// anchor is behind cursor -> move anchor behind the inset
+		++normal.pos_;
+	}
+	return normal;
 }
 

@@ -316,7 +316,11 @@ int Parser::yylex()
 	
 	while (is_.good()) {
 		unsigned char c = getuchar();
+
 		//lyxerr << "reading byte: '" << c << "' code: " << lexcode[c] << endl;
+
+		if (!is_.good())
+			break;
 		
 		if (lexcode[c] == LexNewLine) {
 			++lineno_; 
@@ -329,29 +333,23 @@ int Parser::yylex()
 			} while (c != '\n' && is_.good());  // eat comments
 		}
 
-		if (lexcode[c] == LexOther) {
-			ival_ = c;
+		ival_ = c;
+		if (lexcode[c] == LexOther)
 			return LM_TK_STR;
-		}
 
-		if (lexcode[c] == LexAlpha || lexcode[c] == LexSpace) {
-			ival_ = c;
+		if (lexcode[c] == LexAlpha || lexcode[c] == LexSpace)
 			return LM_TK_ALPHA;
-		}
 
-		if (lexcode[c] == LexBOP) {
-			ival_ = c;
+		if (lexcode[c] == LexBOP)
 			return LM_TK_BOP;
-		}
 
 		if (lexcode[c] == LexMath) {
 			ival_ = 0;
 			return LM_TK_MATH;
 		}
 
-		if (lexcode[c] == LexSelf) {
+		if (lexcode[c] == LexSelf)
 			return c;
-		}
 
 		if (lexcode[c] == LexArgument) {
 			c = getuchar();
@@ -361,9 +359,9 @@ int Parser::yylex()
 
 		if (lexcode[c] == LexESC)   {
 			c = getuchar();
-			//lyxerr << "reading second byte: '" << c << "' code: " << lexcode[c] << endl;
-			string s;
-			s += c;
+			//lyxerr << "reading second byte: '" << c
+			// << "' code: " << lexcode[c] << endl;
+			string s(1, c);
 			latexkeys const * l = in_word_set(s);
 			if (l) {
 				//lyxerr << "found key: " << l << endl;
@@ -578,11 +576,11 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 {
 	MathTextCodes yyvarcode   = LM_TC_VAR;
 
-	int  t      = yylex();
 	bool panic  = false;
 	int  limits = 0;
 
-	while (t) {
+	while (int t = yylex()) {
+		
 		//lyxerr << "t: " << t << " flags: " << flags << " i: " << ival_
 		//	<< " '" << sval_ << "'\n";
 		//array.dump(lyxerr);
@@ -594,9 +592,9 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 				// skip the brace and collect everything to the next matching
 				// closing brace
 				flags |= FLAG_BRACE_LAST;
-				t = yylex();
+				continue;
 			} else {
-				// take only this single token
+				// handle only this single token, leave the loop if done
 				flags |= FLAG_LEAVE;
 			}
 		}
@@ -608,14 +606,12 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 				break;
 			} else {
 				flags &= ~FLAG_BRACE;
-				t = yylex();
 				continue;
 			}
 		}
 
 		if (flags & FLAG_BLOCK) {
-			if (t == LM_TK_CLOSE || t == '&' ||
-			    t == LM_TK_NEWLINE || t == LM_TK_END) {
+			if (t == LM_TK_CLOSE || t == '&' || t == LM_TK_NEWLINE || t == LM_TK_END){
 				putback(t);
 				return;
 			}
@@ -844,16 +840,15 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 			flags &= ~FLAG_LEAVE;
 			break;
 		}
+	}
 
-		if (panic) {
-			lyxerr << " Math Panic, expect problems!\n";
-			//   Search for the end command. 
-			do {
-				t = yylex();
-			} while (is_.good() && t != LM_TK_END && t);
-		} else {
+	if (panic) {
+		lyxerr << " Math Panic, expect problems!\n";
+		//   Search for the end command. 
+		int t;
+		do {
 			t = yylex();
-		}
+		} while (is_.good() && t != LM_TK_END && t);
 	}
 }
 
