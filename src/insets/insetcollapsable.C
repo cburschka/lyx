@@ -29,6 +29,7 @@ class LyXText;
 
 using std::ostream;
 using std::endl;
+using std::max;
 
 InsetCollapsable::InsetCollapsable()
 	: UpdatableInset()
@@ -81,14 +82,15 @@ void InsetCollapsable::Write(Buffer const * buf, ostream & os) const
 
 void InsetCollapsable::Read(Buffer const * buf, LyXLex & lex)
 {
-    string token;
-
     if (lex.IsOK()) {
 	lex.next();
-        token = lex.GetString();
+        string token = lex.GetString();
 	if (token == "collapsed") {
 	    lex.next();
 	    collapsed = lex.GetBool();
+	} else {
+		lyxerr << "InsetCollapsable::Read: Missing collapsed!"
+		       << endl;
 	}
     }
     inset->Read(buf, lex);
@@ -176,18 +178,16 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
     if (!cleared && ((inset->need_update == InsetText::FULL) ||
 		     (inset->need_update == InsetText::INIT) ||
 		     (top_x!=int(x)) || (top_baseline!=baseline))) {
-	int w =  owner()? width(bv, f) : pain.paperWidth();
-	int h = ascent(bv,f) + descent(bv, f);
-	int tx = (needFullRow() && !owner())? 0:int(x);
-	int ty = baseline - ascent(bv,f);
+	int w =  owner() ? width(bv, f) : pain.paperWidth();
+	int h = ascent(bv, f) + descent(bv, f);
+	int tx = (needFullRow() && !owner()) ? 0 : int(x);
+	int ty = max(0, baseline - ascent(bv, f));
 	
-	if (ty < 0)
-	    ty = 0;
 	if ((ty + h) > pain.paperHeight())
 	    h = pain.paperHeight();
 	if ((top_x + w) > pain.paperWidth())
 	    w = pain.paperWidth();
-	pain.fillRectangle(tx, ty-1, w, h+2);
+	pain.fillRectangle(tx, ty - 1, w, h + 2);
 	cleared = true;
     }
 
@@ -293,13 +293,11 @@ int InsetCollapsable::getMaxWidth(Painter & pain,
     int w = UpdatableInset::getMaxWidth(pain,inset);
 
     if (w < 0) {
+	// What does a negative max width signify? (Lgb)
 	return w;
     }
-    w -= widthCollapsed;
     // should be at least 30 pixels !!!
-    if (w < 30)
-	w = 30;
-    return w; // - top_x - widthCollapsed;
+    return max(30, w - widthCollapsed);
 }
 
 

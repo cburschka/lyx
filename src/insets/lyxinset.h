@@ -130,7 +130,7 @@ public:
 	virtual void update(BufferView *, LyXFont const &, bool = false)
 		{}
 	///
-	virtual LyXFont ConvertFont(LyXFont font);
+	virtual LyXFont ConvertFont(LyXFont const & font) const;
 	/// what appears in the minibuffer when opening
 	virtual const char * EditMessage() const;
 	///

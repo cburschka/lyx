@@ -58,9 +58,9 @@ void Inset::Edit(BufferView *, int, int, unsigned int)
 }
 
 
-LyXFont Inset::ConvertFont(LyXFont font)
+LyXFont Inset::ConvertFont(LyXFont const & font) const
 {
-  return font;
+	return LyXFont(font);
 }
 
 

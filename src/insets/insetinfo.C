@@ -35,13 +35,19 @@ extern BufferView * current_view;
 
 
 InsetInfo::InsetInfo()
-	: form(0)
-{}
+	: form(0), labelfont(LyXFont::ALL_SANE)
+{
+	labelfont.decSize().decSize()
+		.setColor(LColor::note).setLatex(LyXFont::OFF);
+}
 
 
 InsetInfo::InsetInfo(string const & str)
-	: contents(str), form(0)
-{}
+	: contents(str), form(0), labelfont(LyXFont::ALL_SANE)
+{
+	labelfont.decSize().decSize()
+		.setColor(LColor::note).setLatex(LyXFont::OFF);
+}
 
 
 InsetInfo::~InsetInfo()
@@ -54,52 +60,53 @@ InsetInfo::~InsetInfo()
 }
 
 
-int InsetInfo::ascent(BufferView *, LyXFont const & font) const
+int InsetInfo::ascent(BufferView *, LyXFont const &) const
 {
-	return lyxfont::maxAscent(font) + 1;
+	return lyxfont::maxAscent(labelfont) + 1;
 }
 
 
-int InsetInfo::descent(BufferView *, LyXFont const & font) const
+int InsetInfo::descent(BufferView *, LyXFont const &) const
 {
-	return lyxfont::maxDescent(font) + 1;
+	return lyxfont::maxDescent(labelfont) + 1;
 }
 
 
-int InsetInfo::width(BufferView *, LyXFont const & font) const
+int InsetInfo::width(BufferView *, LyXFont const &) const
 {
-	return 6 + lyxfont::width(_("Note"), font);
+	return 6 + lyxfont::width(_("Note"), labelfont);
 }
 
 
-void InsetInfo::draw(BufferView * bv, LyXFont const & f,
+void InsetInfo::draw(BufferView * bv, LyXFont const &,
 		     int baseline, float & x, bool) const
 {
 	Painter & pain = bv->painter();
+#if 0
 	LyXFont font(f);
 	
-	/* Info-insets are never LaTeX, so just correct the font */
+	// Info-insets are never LaTeX, so just correct the font
 	font.setLatex(LyXFont::OFF).setColor(LColor::note);
-	
+#endif
 	// Draw as "Note" in a yellow box
 	x += 1;
-	pain.fillRectangle(int(x), baseline - ascent(bv, font) + 1,
-			   width(bv, font) - 2,
-			   ascent(bv, font) + descent(bv, font) - 2,
+	pain.fillRectangle(int(x), baseline - ascent(bv, labelfont),
+			   width(bv, labelfont) - 2,
+			   ascent(bv, labelfont) + descent(bv, labelfont) - 2,
 			   LColor::notebg);
-	pain.rectangle(int(x), baseline - ascent(bv, font) + 1,
-		       width(bv, font) - 2,
-		       ascent(bv, font) + descent(bv, font) - 2,
+	pain.rectangle(int(x), baseline - ascent(bv, labelfont),
+		       width(bv, labelfont) - 2,
+		       ascent(bv, labelfont) + descent(bv, labelfont) - 2,
 		       LColor::noteframe);
 	
-	pain.text(int(x + 2), baseline, _("Note"), font);
-	x +=  width(bv, font) - 1;
+	pain.text(int(x + 2), baseline, _("Note"), labelfont);
+	x +=  width(bv, labelfont) - 1;
 }
 
 
 void InsetInfo::Write(Buffer const *, ostream & os) const
 {
-	os << "Info " << contents;
+	os << "Info\n" << contents;
 }
 
 

@@ -271,6 +271,7 @@ public:
         bool noindent;
 	
 private:
+	///
 	block<int, 10> counter_;
 public:
 	///

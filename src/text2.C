@@ -1698,9 +1698,9 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 	}
    
 	/* is it a layout that has an automatic label ? */ 
-	if (layout.labeltype >=  LABEL_FIRST_COUNTER) {
+	if (layout.labeltype >=  LABEL_COUNTER_CHAPTER) {
       
-		int i = layout.labeltype - LABEL_FIRST_COUNTER;
+		int i = layout.labeltype - LABEL_COUNTER_CHAPTER;
 		if (i >= 0 && i<= buf->params.secnumdepth) {
 			par->incCounter(i);	// increment the counter  
 	 
@@ -1723,7 +1723,7 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 			ostrstream s;
 #endif
 			if (!par->appendix) {
-				switch (2 * LABEL_FIRST_COUNTER -
+				switch (2 * LABEL_COUNTER_CHAPTER -
 					textclass.maxcounter() + i) {
 				case LABEL_COUNTER_CHAPTER:
 					s << par->getCounter(i);
@@ -1761,11 +1761,14 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 
 					break;
 				default:
+					// Can this ever be reached? And in the
+					// case it is, how can this be correct?
+					// (Lgb)
 					s << par->getCounter(i) << '.';
                                         break;
 				}
 			} else { // appendix
-				switch (2 * LABEL_FIRST_COUNTER - textclass.maxcounter() + i) {
+				switch (2 * LABEL_COUNTER_CHAPTER - textclass.maxcounter() + i) {
 				case LABEL_COUNTER_CHAPTER:
 					if (par->isRightToLeftPar(buf->params))
 						s << hebrewCounter(par->getCounter(i));
@@ -1836,7 +1839,7 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 					// Can this ever be reached? And in the
 					// case it is, how can this be correct?
 					// (Lgb)
-					s << static_cast<unsigned char>(par->getCounter(i)) << '.';
+					s << par->getCounter(i) << '.';
 					
 					break;
 				}
@@ -1917,7 +1920,7 @@ void LyXText::SetCounter(Buffer const * buf, LyXParagraph * par) const
 	 
 		} 
 	} else if (layout.labeltype == LABEL_BIBLIO) {// ale970302
-		int i = LABEL_COUNTER_ENUMI - LABEL_FIRST_COUNTER + par->enumdepth;
+		int i = LABEL_COUNTER_ENUMI - LABEL_COUNTER_CHAPTER + par->enumdepth;
 		par->incCounter(i);
 		int number = par->getCounter(i);
 		if (!par->bibkey)

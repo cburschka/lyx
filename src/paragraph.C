@@ -88,6 +88,16 @@ LyXParagraph::LyXParagraph()
 	id_ = paragraph_id++;
         bibkey = 0; // ale970302
 	Clear();
+#if 0
+	// Insert the main counters
+	// Should later (asap) be moved to layout files
+	counters.newCounter("part");
+	counters.newCounter("section");
+	counters.newCounter("subsection", "section");
+	counters.newCounter("subsubsection", "subsection");
+	counters.newCounter("paragraph", "subsubsection");
+	counters.newCounter("subparagraph", "paragraph");
+#endif
 }
 
 
@@ -123,6 +133,16 @@ LyXParagraph::LyXParagraph(LyXParagraph * par)
         bibkey = 0; // ale970302        
     
 	Clear();
+#if 0
+	// Insert the main counters
+	// Should later (asap) be moved to layout files
+	counters.newCounter("part");
+	counters.newCounter("section");
+	counters.newCounter("subsection", "section");
+	counters.newCounter("subsubsection", "subsection");
+	counters.newCounter("paragraph", "subsubsection");
+	counters.newCounter("subparagraph", "paragraph");
+#endif
 }
 
 

@@ -99,12 +99,15 @@ InsetFloat::InsetFloat(string const & type)
 void InsetFloat::Write(Buffer const * buf, ostream & os) const
 {
 	os << getInsetName()
-	   << " " << floatType
-	   << "\nplacement ";
-	if (floatPlacement.empty())
-		os << floatList.getType(floatType).placement << "\n";
-	else
-		os << floatPlacement << "\n";
+	   << " " << floatType << '\n';
+
+	if (floatPlacement.empty()) {
+		os << "placement "
+		   << floatList.getType(floatType).placement << "\n";
+	} else {
+		os << "placement " << floatPlacement << "\n";
+	}
+	
 	InsetCollapsable::Write(buf, os);
 }
 
@@ -117,6 +120,9 @@ void InsetFloat::Read(Buffer const * buf, LyXLex & lex)
 		if (token == "placement") {
 			lex.next();
 			floatPlacement = lex.GetString();
+		} else {
+			lyxerr << "InsetFloat::Read: Missing placement!"
+			       << endl;
 		}
 	}
 	InsetCollapsable::Read(buf, lex);

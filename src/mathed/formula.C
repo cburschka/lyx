@@ -370,11 +370,14 @@ void InsetFormula::Read(Buffer const *, LyXLex & lex)
 		label = mathed_label;
 		mathed_label = 0;
 	}
+	
 	// reading of end_inset in the inset!!!
 	while (lex.IsOK()) {
 		lex.nextToken();
 		if (lex.GetString() == "\\end_inset")
 			break;
+		lyxerr << "InsetFormula::Read: Garbage before \\end_inset,"
+			" or missing \\end_inset!" << endl;
 	}
    
 #ifdef DEBUG

@@ -3,7 +3,7 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *          Copyright 1998 The LyX Team.
+ *          Copyright 2000 The LyX Team.
  *
  * ======================================================
  */

@@ -63,6 +63,8 @@ lyx_SOURCES = \
 	PaperLayout.C \
 	ParagraphExtra.C \
 	PrinterParams.h \
+	Sectioning.h \
+	Sectioning.C \
 	Spacing.C \
 	Spacing.h \
 	TableLayout.C \
@@ -97,6 +99,8 @@ lyx_SOURCES = \
 	combox.h \
 	commandtags.h \
 	config.h.in \
+	counters.C \
+	counters.h \
 	credits.C \
 	credits.h \
 	credits_form.C \

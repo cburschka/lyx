@@ -1,3 +1,53 @@
+2000-07-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/mathed/formula.h (ConvertFont): constify
+
+	* src/mathed/formula.C (Read): add warning if \end_inset is not
+	found on expected place.
+
+	* src/insets/lyxinset.h (ConvertFont): consify
+
+	* src/insets/insetquotes.C (ConvertFont): constify
+	* src/insets/insetquotes.h: ditto
+
+	* src/insets/insetinfo.h: add labelfont
+
+	* src/insets/insetinfo.C (InsetInfo): set the labelfont
+	(ascent): use labelfont
+	(descent): likewise
+	(width): likewise
+	(draw): likewise
+	(Write): make .lyx file a bit nicer
+
+	* src/insets/insetfloat.C (Write): simplify somewhat...
+	(Read): add warning if arg is not found
+
+	* src/insets/insetcollapsable.C: add using std::max
+	(Read): move string token and add warning in arg is not found
+	(draw): use std::max to get the right ty
+	(getMaxWidth): simplify by using std::max
+
+	* src/insets/insetsection.h: new file
+	* src/insets/insetsection.C: new file
+	* src/insets/insetcaption.h: new file
+	* src/insets/insetcaption.C: new file
+
+	* src/insets/inset.C (ConvertFont): constify signature
+
+	* src/insets/Makefile.am (libinsets_la_SOURCES): add
+	insetcaption.[Ch] and insetsection.[Ch]
+
+	* src/layout.h: remove LABEL_FIRST_COUNTER from enum, change all
+	uses to use LABEL_COUNTER_CHAPTER instead.
+	* src/text2.C (SetCounter): here
+
+	* src/counters.h: new file
+	* src/counters.C: new file
+	* src/Sectioning.h: new file
+	* src/Sectioning.C: new file
+
+	* src/Makefile.am (lyx_SOURCES): add Sectioning.[hC] and counters.[Ch]
+
 2000-07-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/Makefile.am (listerrors): build-listerrors is in ${srcdir},

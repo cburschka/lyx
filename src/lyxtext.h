@@ -71,9 +71,6 @@ public:
 	InsetText * inset_owner;
 
 	///
-	//	void owner(BufferView *);
-	
-	///
 	LyXFont GetFont(Buffer const *, LyXParagraph * par,
 			LyXParagraph::size_type pos) const;
 	///
@@ -270,7 +267,8 @@ public:
 
 	///
 	void SetCursorFromCoordinates(BufferView *, int x, long y) const;
-	void SetCursorFromCoordinates(BufferView *, LyXCursor &, int x, long y) const;
+	void SetCursorFromCoordinates(BufferView *, LyXCursor &,
+				      int x, long y) const;
 	///
 	void CursorUp(BufferView *) const;
 	///
@@ -500,8 +498,6 @@ public:
 	void toggleAppendix(BufferView *);
 	///
 	int workWidth(BufferView *) const;
-	///
-	//	Buffer * buffer() const;
 	///
 	void ComputeBidiTables(Buffer const *, Row * row) const;
 

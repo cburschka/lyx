@@ -77,5 +77,7 @@ private:
 	FL_FORM * form;
 	///
 	FL_OBJECT * strobj;
+	///
+	LyXFont labelfont;
 };
 #endif

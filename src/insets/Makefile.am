@@ -21,6 +21,8 @@ libinsets_la_SOURCES = \
 	insetbib.h \
 	insetbutton.C \
 	insetbutton.h \
+	insetcaption.C \
+	insetcaption.h \
 	insetcite.C \
 	insetcite.h \
 	insetcollapsable.C \
@@ -69,6 +71,8 @@ libinsets_la_SOURCES = \
 	insetquotes.h \
 	insetref.C \
 	insetref.h \
+	insetsection.h \
+	insetsection.C \
 	insetspecialchar.C \
 	insetspecialchar.h \
 	insettabular.C \
