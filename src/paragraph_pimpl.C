@@ -261,6 +261,8 @@ Paragraph::value_type Paragraph::Pimpl::getChar(pos_type pos) const
 	// evidence enough - jbl
 	//lyx::Assert(pos < size());
 
+	if (lyxerr.debugging(Debug::LYXVC))
+		lyx::Assert(pos < size());
 #if 1
 	// This is in the critical path for loading!
 	pos_type const siz = size();
@@ -435,7 +437,9 @@ void Paragraph::Pimpl::simpleTeXBlanks(ostream & os, TexRow & texrow,
 				       LyXFont const & font,
 				       LyXLayout const & style)
 {
-	if (style.pass_thru) return;
+	if (style.pass_thru)
+		return;
+
 	if (column > lyxrc.ascii_linelen
 	    && i
 	    && getChar(i - 1) != ' '
@@ -506,8 +510,13 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 					     value_type const c)
 {
 	if (style.pass_thru) {
-		if (c != '\0')
-			os << c;
+		if (c != Paragraph::META_INSET) {
+			if (c != '\0')
+				os << c;
+		} else {
+			Inset const * inset = owner_->getInset(i);
+			inset->ascii(buf, os, 0);
+		}
 		return;
 	}
 

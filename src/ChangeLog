@@ -1,3 +1,9 @@
+2003-03-14  Kayvan Sylvan  <kayvan@sylvan.com>
+ 
+ 	* paragraph_pimpl.C (simpleTeXSpecialChars): Added fix for the
+ 	newline inset which *can* get inserted in the pass_thru layouts.
+ 	This is primarily for literate documents.
+ 
 2003-03-14  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* buffer.C: increment LYX_FORMAT to 223
@@ -5,7 +11,7 @@
 2003-03-14 André Pönitz <poenitz@gmx.net>
 
 	* textclass.h: prepare for environment handling, ws changes
-	* lyxlauout.C: read latexheader and latexfooter tags
+	* lyxlayout.C: read latexheader and latexfooter tags
 
 2003-03-14  John Levon  <levon@movementarian.org>
 
