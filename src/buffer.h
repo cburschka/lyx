@@ -98,18 +98,22 @@ public:
 	*/
 	bool readFile(LyXLex &, string const &, Paragraph * par = 0);
 
+	/// read the header, returns number of unknown tokens
+	int readHeader(LyXLex & lex);
+
 	/** Reads a file without header.
 	    \param par if != 0 insert the file.
 	    \return \c false if file is not completely read.
 	*/
-	bool readLyXformat2(LyXLex &, Paragraph * par = 0);
+	bool readBody(LyXLex &, Paragraph * par = 0);
 
-	/// This parses a single LyXformat-Token.
-	bool parseSingleLyXformat2Token(LyXLex &, Paragraph *& par,
-					Paragraph *& return_par,
-					string const & token, int & pos,
-					Paragraph::depth_type & depth,
-					LyXFont &);
+	/// This parses a single token
+	int readToken(LyXLex &, Paragraph *& par,
+	              Paragraph *& return_par,
+	              string const & token, int & pos,
+	              Paragraph::depth_type & depth,
+	              LyXFont &);
+
 	///
 	void insertStringAsLines(Paragraph *&, lyx::pos_type &,
 				 LyXFont const &, string const &);
@@ -293,9 +297,6 @@ private:
 
 	/// need to regenerate .tex ?
 	DepClean dep_clean_;
-
-	/// the author list
-	AuthorList authorlist;
 
 	/// is save needed
 	mutable bool lyx_clean;

@@ -21,15 +21,19 @@
 #include "lyxtextclasslist.h"
 #include "lyxlex.h"
 #include "Lsstream.h"
+#include "author.h"
 
 #include "support/lyxalgo.h" // for lyx::count
 #include "support/lyxlib.h"
 #include "support/lstrings.h"
+#include "support/types.h"
 
 #include <cstdlib>
+#include <algorithm>
 
 using std::ostream;
 using std::endl;
+using std::pair;
 
 #ifdef WITH_WARNINGS
 #warning Do we need this horrible thing? (JMarc)
@@ -72,6 +76,256 @@ BufferParams::BufferParams()
 		user_defined_bullets[iter] = ITEMIZE_DEFAULTS[iter];
 		temp_bullets[iter] = ITEMIZE_DEFAULTS[iter];
 	}
+}
+
+
+string const BufferParams::readToken(LyXLex & lex, string const & token)
+{
+	if (token == "\\textclass") {
+		lex.eatLine();
+		string const classname = lex.getString();
+		pair<bool, lyx::textclass_type> pp =
+			textclasslist.NumberOfClass(classname);
+		if (pp.first) {
+			textclass = pp.second;
+		} else {
+			textclass = 0;
+			return classname;
+		}
+	} else if (token == "\\begin_preamble") {
+		readPreamble(lex);
+	} else if (token == "\\options") {
+		lex.eatLine();
+		options = lex.getString();
+	} else if (token == "\\language") {
+		readLanguage(lex);
+	} else if (token == "\\inputencoding") {
+		lex.eatLine();
+		inputenc = lex.getString();
+	} else if (token == "\\graphics") {
+		readGraphicsDriver(lex);
+	} else if (token == "\\fontscheme") {
+		lex.eatLine();
+		fonts = lex.getString();
+	} else if (token == "\\paragraph_separation") {
+		int tmpret = lex.findToken(string_paragraph_separation);
+		if (tmpret == -1)
+			++tmpret;
+		paragraph_separation =
+			static_cast<BufferParams::PARSEP>(tmpret);
+	} else if (token == "\\defskip") {
+		lex.nextToken();
+		defskip = VSpace(lex.getString());
+	} else if (token == "\\quotes_language") {
+		// FIXME: should be params.readQuotes()
+		int tmpret = lex.findToken(string_quotes_language);
+		if (tmpret == -1)
+			++tmpret;
+		InsetQuotes::quote_language tmpl =
+			InsetQuotes::EnglishQ;
+		switch (tmpret) {
+		case 0:
+			tmpl = InsetQuotes::EnglishQ;
+			break;
+		case 1:
+			tmpl = InsetQuotes::SwedishQ;
+			break;
+		case 2:
+			tmpl = InsetQuotes::GermanQ;
+			break;
+		case 3:
+			tmpl = InsetQuotes::PolishQ;
+			break;
+		case 4:
+			tmpl = InsetQuotes::FrenchQ;
+			break;
+		case 5:
+			tmpl = InsetQuotes::DanishQ;
+			break;
+		}
+		quotes_language = tmpl;
+	} else if (token == "\\quotes_times") {
+		// FIXME: should be params.readQuotes()
+		lex.nextToken();
+		switch (lex.getInteger()) {
+		case 1:
+			quotes_times = InsetQuotes::SingleQ;
+			break;
+		case 2:
+			quotes_times = InsetQuotes::DoubleQ;
+			break;
+		}
+	} else if (token == "\\papersize") {
+		int tmpret = lex.findToken(string_papersize);
+		if (tmpret == -1)
+			++tmpret;
+		else
+			papersize2 = tmpret;
+	} else if (token == "\\paperpackage") {
+		int tmpret = lex.findToken(string_paperpackages);
+		if (tmpret == -1) {
+			++tmpret;
+			paperpackage = BufferParams::PACKAGE_NONE;
+		} else
+			paperpackage = tmpret;
+	} else if (token == "\\use_geometry") {
+		lex.nextToken();
+		use_geometry = lex.getInteger();
+	} else if (token == "\\use_amsmath") {
+		lex.nextToken();
+		use_amsmath = static_cast<BufferParams::AMS>(
+			lex.getInteger());
+	} else if (token == "\\use_natbib") {
+		lex.nextToken();
+		use_natbib = lex.getInteger();
+	} else if (token == "\\use_numerical_citations") {
+		lex.nextToken();
+		use_numerical_citations = lex.getInteger();
+	} else if (token == "\\tracking_changes") {
+		lex.nextToken();
+		tracking_changes = lex.getInteger();
+	} else if (token == "\\author") {
+		lex.nextToken();
+		istringstream ss(lex.getString());
+		Author a;
+		ss >> a;
+		int aid(authorlist.record(a));
+		author_ids.push_back(aid);
+	} else if (token == "\\paperorientation") {
+		int tmpret = lex.findToken(string_orientation);
+		if (tmpret == -1)
+			++tmpret;
+		orientation =
+			static_cast<BufferParams::PAPER_ORIENTATION>(tmpret);
+	} else if (token == "\\paperwidth") {
+		lex.next();
+		paperwidth = lex.getString();
+	} else if (token == "\\paperheight") {
+		lex.next();
+		paperheight = lex.getString();
+	} else if (token == "\\leftmargin") {
+		lex.next();
+		leftmargin = lex.getString();
+	} else if (token == "\\topmargin") {
+		lex.next();
+		topmargin = lex.getString();
+	} else if (token == "\\rightmargin") {
+		lex.next();
+		rightmargin = lex.getString();
+	} else if (token == "\\bottommargin") {
+		lex.next();
+		bottommargin = lex.getString();
+	} else if (token == "\\headheight") {
+		lex.next();
+		headheight = lex.getString();
+	} else if (token == "\\headsep") {
+		lex.next();
+		headsep = lex.getString();
+	} else if (token == "\\footskip") {
+		lex.next();
+		footskip = lex.getString();
+	} else if (token == "\\paperfontsize") {
+		lex.nextToken();
+		fontsize = rtrim(lex.getString());
+	} else if (token == "\\papercolumns") {
+		lex.nextToken();
+		columns = lex.getInteger();
+	} else if (token == "\\papersides") {
+		lex.nextToken();
+		switch (lex.getInteger()) {
+		default:
+		case 1: sides = LyXTextClass::OneSide; break;
+		case 2: sides = LyXTextClass::TwoSides; break;
+		}
+	} else if (token == "\\paperpagestyle") {
+		lex.nextToken();
+		pagestyle = rtrim(lex.getString());
+	} else if (token == "\\bullet") {
+		// FIXME: should be params.readBullets()
+		lex.nextToken();
+		int const index = lex.getInteger();
+		lex.nextToken();
+		int temp_int = lex.getInteger();
+		user_defined_bullets[index].setFont(temp_int);
+		temp_bullets[index].setFont(temp_int);
+		lex.nextToken();
+		temp_int = lex.getInteger();
+		user_defined_bullets[index].setCharacter(temp_int);
+		temp_bullets[index].setCharacter(temp_int);
+		lex.nextToken();
+		temp_int = lex.getInteger();
+		user_defined_bullets[index].setSize(temp_int);
+		temp_bullets[index].setSize(temp_int);
+		lex.nextToken();
+		string const temp_str = lex.getString();
+		if (temp_str != "\\end_bullet") {
+				// this element isn't really necessary for
+				// parsing but is easier for humans
+				// to understand bullets. Put it back and
+				// set a debug message?
+			lex.printError("\\end_bullet expected, got" + temp_str);
+				//how can I put it back?
+		}
+	} else if (token == "\\bulletLaTeX") {
+		// The bullet class should be able to read this.
+		lex.nextToken();
+		int const index = lex.getInteger();
+		lex.next();
+		string temp_str = lex.getString();
+		string sum_str;
+		while (temp_str != "\\end_bullet") {
+				// this loop structure is needed when user
+				// enters an empty string since the first
+				// thing returned will be the \\end_bullet
+				// OR
+				// if the LaTeX entry has spaces. Each element
+				// therefore needs to be read in turn
+			sum_str += temp_str;
+			lex.next();
+			temp_str = lex.getString();
+		}
+
+		user_defined_bullets[index].setText(sum_str);
+		temp_bullets[index].setText(sum_str);
+	} else if (token == "\\secnumdepth") {
+		lex.nextToken();
+		secnumdepth = lex.getInteger();
+	} else if (token == "\\tocdepth") {
+		lex.nextToken();
+		tocdepth = lex.getInteger();
+	} else if (token == "\\spacing") {
+		lex.next();
+		string const tmp = rtrim(lex.getString());
+		Spacing::Space tmp_space = Spacing::Default;
+		float tmp_val = 0.0;
+		if (tmp == "single") {
+			tmp_space = Spacing::Single;
+		} else if (tmp == "onehalf") {
+			tmp_space = Spacing::Onehalf;
+		} else if (tmp == "double") {
+			tmp_space = Spacing::Double;
+		} else if (tmp == "other") {
+			lex.next();
+			tmp_space = Spacing::Other;
+			tmp_val = lex.getFloat();
+		} else {
+			lex.printError("Unknown spacing token: '$$Token'");
+		}
+#if 0 // FIXME: Handled in lyx2lyx ?
+		// Small hack so that files written with klyx will be
+		// parsed correctly.
+		if (first_par)
+			par->params().spacing(Spacing(tmp_space, tmp_val));
+#endif
+		spacing.set(tmp_space, tmp_val);
+	} else if (token == "\\float_placement") {
+		lex.nextToken();
+		float_placement = lex.getString();
+	} else {
+		return token;
+	}
+
+	return string();
 }
 
 
@@ -185,6 +439,14 @@ void BufferParams::writeFile(ostream & os) const
 	}
 
 	os << "\\tracking_changes " << tracking_changes << "\n";
+
+	if (tracking_changes) {
+		AuthorList::Authors::const_iterator it = authorlist.begin();
+		AuthorList::Authors::const_iterator end = authorlist.end();
+		for (; it != end; ++it) {
+			os << "\\author " << it->second << "\n";
+		}
+	}
 }
 
 

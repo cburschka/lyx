@@ -1,5 +1,12 @@
-Changes to the LyX format since version 220 (LyX 1.2.0) was released.
-=====================================================================
+LyX file-format changes
+-----------------------
+
+2003-03-12  John Levon  <levon@movementarian.org>
+
+	* Added \\end_header to signify the end of the header in a
+	  more robust fashion.
+
+	* use_amsmath is now a tristate {0 = never, 1 = auto, 2 = always}
 
 2003-02-10  John Levon  <levon@movementarian.org>
 

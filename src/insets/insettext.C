@@ -282,13 +282,13 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 
 		Paragraph * tmp = &*(paragraphs.begin());
 
-		if (const_cast<Buffer*>(buf)->
-			parseSingleLyXformat2Token(lex, tmp, return_par,
-						   token, pos, depth, font)) {
-			// the_end read this should NEVER happen
+		if (token == "\\the_end") {
 			lex.printError("\\the_end read in inset! Error in document!");
 			return;
 		}
+
+		const_cast<Buffer*>(buf)->readToken(lex, tmp, return_par,
+		                                    token, pos, depth, font);
 		paragraphs.set(tmp);
 	}
 	if (!return_par)

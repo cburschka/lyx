@@ -163,7 +163,7 @@ Buffer::Buffer(string const & file, bool ronly)
 	}
 
 	// set initial author
-	authorlist.record(Author(lyxrc.user_name, lyxrc.user_email));
+	authors().record(Author(lyxrc.user_name, lyxrc.user_email));
 }
 
 
@@ -246,7 +246,7 @@ void Buffer::setReadonly(bool flag)
 
 AuthorList & Buffer::authors()
 {
-	return authorlist;
+	return params.authorlist;
 }
 
 
@@ -280,16 +280,55 @@ void Buffer::setFileName(string const & newfile)
 // We'll remove this later. (Lgb)
 namespace {
 
-string last_inset_read;
-
 #ifdef WITH_WARNINGS
-#warning And _why_ is this here? (Lgb)
+#warning this is never set to != 0 !!! - remove ?
 #endif
 int unknown_layouts;
-int unknown_tokens;
-vector<int> author_ids;
+
+void unknownClass(string const & unknown)
+{
+	string msg =
+#if USE_BOOST_FORMAT
+		boost::io::str(boost::format(
+			_("The document uses an unknown textclass \"%1$s\".")) % unknown)
+		+ _("-- substituting default.");
+#else
+		_("The document uses an unknown textclass ")
+		+ unknown + _("-- substituting default.");
+#endif
+	Alert::alert(_("Textclass error"), msg);
+}
 
 } // anon
+
+int Buffer::readHeader(LyXLex & lex)
+{
+	int unknown_tokens = 0;
+
+	while (lex.isOK()) {
+		lex.nextToken();
+		string const token = lex.getString();
+
+		if (token.empty())
+			continue;
+
+		if (token == "\\end_header")
+			break;
+
+		lyxerr[Debug::PARSER] << "Handling header token: `"
+				      << token << '\'' << endl;
+
+		string unknown = params.readToken(lex, token);
+		if (!unknown.empty()) {
+			if (unknown[0] != '\\') {
+				unknownClass(unknown);
+			} else {
+			++unknown_tokens;
+			}
+		}
+	}
+	return unknown_tokens;
+}
 
 
 // candidate for move to BufferView
@@ -300,11 +339,10 @@ vector<int> author_ids;
 // if par = 0 normal behavior
 // else insert behavior
 // Returns false if "\the_end" is not read (Asger)
-bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
+bool Buffer::readBody(LyXLex & lex, Paragraph * par)
 {
 	unknown_layouts = 0;
-	unknown_tokens = 0;
-	author_ids.clear();
+	int unknown_tokens = 0;
 
 	int pos = 0;
 	Paragraph::depth_type depth = 0;
@@ -314,39 +352,61 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 	LyXFont font(LyXFont::ALL_INHERIT, params.language);
 
 	if (!par) {
+		// New document
 		par = new Paragraph;
 		par->layout(params.getLyXTextClass().defaultLayout());
+		// mark the first paragraph
+		if (params.tracking_changes)
+			par->trackChanges();
+
+		unknown_tokens += readHeader(lex);
+
+		if (!params.getLyXTextClass().load()) {
+#if USE_BOOST_FORMAT
+			Alert::alert(_("Textclass Loading Error!"),
+				   boost::io::str(boost::format(_("Can't load textclass %1$s")) %
+				   params.getLyXTextClass().name()),
+				   _("-- substituting default."));
+#else
+			Alert::alert(_("Textclass Loading Error!"),
+				     _("Can't load textclass ")
+				     + params.getLyXTextClass().name(),
+				     _("-- substituting default."));
+#endif
+			params.textclass = 0;
+		}
 	} else {
 		// We are inserting into an existing document
 		users->text->breakParagraph(users, paragraphs);
 		first_par = users->text->ownerParagraph();
 		pos = 0;
 		markDirty();
+
 		// We don't want to adopt the parameters from the
-		// document we insert, so we skip until the text begins:
-		while (lex.isOK()) {
-			lex.nextToken();
-			string const pretoken = lex.getString();
-			if (pretoken == "\\layout") {
-				lex.pushToken(pretoken);
-				break;
-			}
-		}
+		// document we insert, so read them into a temporary buffer
+		// and then discard it
+
+		Buffer tmpbuf("", false);
+		tmpbuf.readHeader(lex);
 	}
 
 	while (lex.isOK()) {
 		lex.nextToken();
 		string const token = lex.getString();
 
-		if (token.empty()) continue;
+		if (token.empty())
+			continue;
 
 		lyxerr[Debug::PARSER] << "Handling token: `"
 				      << token << '\'' << endl;
 
-		the_end_read =
-			parseSingleLyXformat2Token(lex, par, first_par,
-						   token, pos, depth,
-						   font);
+		if (token == "\\the_end") {
+			the_end_read = true;
+			continue;
+		}
+
+		unknown_tokens += readToken(lex, par, first_par,
+		                            token, pos, depth, font);
 	}
 
 	if (!first_par)
@@ -399,15 +459,15 @@ namespace {
 };
 
 
-bool
-Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
+int
+Buffer::readToken(LyXLex & lex, Paragraph *& par,
 				   Paragraph *& first_par,
 				   string const & token, int & pos,
 				   Paragraph::depth_type & depth,
 				   LyXFont & font
 	)
 {
-	bool the_end_read = false;
+	int unknown = 0;
 
 	// The order of the tags tested may seem unnatural, but this
 	// has been done in order to reduce the number of string
@@ -518,9 +578,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 
 	} else if (token == "\\end_inset") {
 		lyxerr << "Solitary \\end_inset in line " << lex.getLineNo() << "\n"
-		       << "Missing \\begin_inset?.\n"
-		       << "Last inset read was: " << last_inset_read
-		       << endl;
+		       << "Missing \\begin_inset?.\n";
 		// Simply ignore this. The insets do not have
 		// to read this.
 		// But insets should read it, it is a part of
@@ -616,62 +674,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		}
 		else
 			--depth;
-	} else if (token == "\\begin_preamble") {
-		params.readPreamble(lex);
-	} else if (token == "\\textclass") {
-		lex.eatLine();
-		pair<bool, textclass_type> pp =
-			textclasslist.NumberOfClass(lex.getString());
-		if (pp.first) {
-			params.textclass = pp.second;
-		} else {
-#if USE_BOOST_FORMAT
-			Alert::alert(_("Textclass error"),
-				boost::io::str(boost::format(_("The document uses an unknown textclass \"%1$s\".")) % lex.getString()),
-				_("-- substituting default."));
-#else
-			Alert::alert(
-				_("Textclass error"),
-				_("The document uses an unknown textclass ")
-				+ lex.getString(),
-				_("-- substituting default."));
-#endif
-			params.textclass = 0;
-		}
-		if (!params.getLyXTextClass().load()) {
-			// if the textclass wasn't loaded properly
-			// we need to either substitute another
-			// or stop loading the file.
-			// I can substitute but I don't see how I can
-			// stop loading... ideas??  ARRae980418
-#if USE_BOOST_FORMAT
-			Alert::alert(_("Textclass Loading Error!"),
-				   boost::io::str(boost::format(_("Can't load textclass %1$s")) %
-				   params.getLyXTextClass().name()),
-				   _("-- substituting default."));
-#else
-			Alert::alert(_("Textclass Loading Error!"),
-				     _("Can't load textclass ")
-				     + params.getLyXTextClass().name(),
-				     _("-- substituting default."));
-#endif
-			params.textclass = 0;
-		}
-	} else if (token == "\\options") {
-		lex.eatLine();
-		params.options = lex.getString();
-	} else if (token == "\\language") {
-		params.readLanguage(lex);
-	} else if (token == "\\fontencoding") {
-		lex.eatLine();
-	} else if (token == "\\inputencoding") {
-		lex.eatLine();
-		params.inputenc = lex.getString();
-	} else if (token == "\\graphics") {
-		params.readGraphicsDriver(lex);
-	} else if (token == "\\fontscheme") {
-		lex.eatLine();
-		params.fonts = lex.getString();
 	} else if (token == "\\noindent") {
 		par->params().noindent(true);
 	} else if (token == "\\leftindent") {
@@ -692,219 +694,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		par->params().pagebreakBottom(true);
 	} else if (token == "\\start_of_appendix") {
 		par->params().startOfAppendix(true);
-	} else if (token == "\\paragraph_separation") {
-		int tmpret = lex.findToken(string_paragraph_separation);
-		if (tmpret == -1)
-			++tmpret;
-		params.paragraph_separation =
-			static_cast<BufferParams::PARSEP>(tmpret);
-	} else if (token == "\\defskip") {
-		lex.nextToken();
-		params.defskip = VSpace(lex.getString());
-	} else if (token == "\\quotes_language") {
-		int tmpret = lex.findToken(string_quotes_language);
-		if (tmpret == -1)
-			++tmpret;
-		InsetQuotes::quote_language tmpl =
-			InsetQuotes::EnglishQ;
-		switch (tmpret) {
-		case 0:
-			tmpl = InsetQuotes::EnglishQ;
-			break;
-		case 1:
-			tmpl = InsetQuotes::SwedishQ;
-			break;
-		case 2:
-			tmpl = InsetQuotes::GermanQ;
-			break;
-		case 3:
-			tmpl = InsetQuotes::PolishQ;
-			break;
-		case 4:
-			tmpl = InsetQuotes::FrenchQ;
-			break;
-		case 5:
-			tmpl = InsetQuotes::DanishQ;
-			break;
-		}
-		params.quotes_language = tmpl;
-	} else if (token == "\\quotes_times") {
-		lex.nextToken();
-		switch (lex.getInteger()) {
-		case 1:
-			params.quotes_times = InsetQuotes::SingleQ;
-			break;
-		case 2:
-			params.quotes_times = InsetQuotes::DoubleQ;
-			break;
-		}
-	} else if (token == "\\papersize") {
-		int tmpret = lex.findToken(string_papersize);
-		if (tmpret == -1)
-			++tmpret;
-		else
-			params.papersize2 = tmpret;
-	} else if (token == "\\paperpackage") {
-		int tmpret = lex.findToken(string_paperpackages);
-		if (tmpret == -1) {
-			++tmpret;
-			params.paperpackage = BufferParams::PACKAGE_NONE;
-		} else
-			params.paperpackage = tmpret;
-	} else if (token == "\\use_geometry") {
-		lex.nextToken();
-		params.use_geometry = lex.getInteger();
-	} else if (token == "\\use_amsmath") {
-		lex.nextToken();
-		params.use_amsmath = static_cast<BufferParams::AMS>(
-			lex.getInteger());
-	} else if (token == "\\use_natbib") {
-		lex.nextToken();
-		params.use_natbib = lex.getInteger();
-	} else if (token == "\\use_numerical_citations") {
-		lex.nextToken();
-		params.use_numerical_citations = lex.getInteger();
-	} else if (token == "\\tracking_changes") {
-		lex.nextToken();
-		params.tracking_changes = lex.getInteger();
-		// mark the first paragraph
-		if (params.tracking_changes)
-			par->trackChanges();
-	} else if (token == "\\author") {
-		lex.nextToken();
-		istringstream ss(lex.getString());
-		Author a;
-		ss >> a;
-		int aid(authorlist.record(a));
-		lyxerr << "aid is " << aid << endl;
-		lyxerr << "listed aid is " << author_ids.size() << endl;
-		author_ids.push_back(authorlist.record(a));
-	} else if (token == "\\paperorientation") {
-		int tmpret = lex.findToken(string_orientation);
-		if (tmpret == -1)
-			++tmpret;
-		params.orientation =
-			static_cast<BufferParams::PAPER_ORIENTATION>(tmpret);
-	} else if (token == "\\paperwidth") {
-		lex.next();
-		params.paperwidth = lex.getString();
-	} else if (token == "\\paperheight") {
-		lex.next();
-		params.paperheight = lex.getString();
-	} else if (token == "\\leftmargin") {
-		lex.next();
-		params.leftmargin = lex.getString();
-	} else if (token == "\\topmargin") {
-		lex.next();
-		params.topmargin = lex.getString();
-	} else if (token == "\\rightmargin") {
-		lex.next();
-		params.rightmargin = lex.getString();
-	} else if (token == "\\bottommargin") {
-		lex.next();
-		params.bottommargin = lex.getString();
-	} else if (token == "\\headheight") {
-		lex.next();
-		params.headheight = lex.getString();
-	} else if (token == "\\headsep") {
-		lex.next();
-		params.headsep = lex.getString();
-	} else if (token == "\\footskip") {
-		lex.next();
-		params.footskip = lex.getString();
-	} else if (token == "\\paperfontsize") {
-		lex.nextToken();
-		params.fontsize = rtrim(lex.getString());
-	} else if (token == "\\papercolumns") {
-		lex.nextToken();
-		params.columns = lex.getInteger();
-	} else if (token == "\\papersides") {
-		lex.nextToken();
-		switch (lex.getInteger()) {
-		default:
-		case 1: params.sides = LyXTextClass::OneSide; break;
-		case 2: params.sides = LyXTextClass::TwoSides; break;
-		}
-	} else if (token == "\\paperpagestyle") {
-		lex.nextToken();
-		params.pagestyle = rtrim(lex.getString());
-	} else if (token == "\\bullet") {
-		lex.nextToken();
-		int const index = lex.getInteger();
-		lex.nextToken();
-		int temp_int = lex.getInteger();
-		params.user_defined_bullets[index].setFont(temp_int);
-		params.temp_bullets[index].setFont(temp_int);
-		lex.nextToken();
-		temp_int = lex.getInteger();
-		params.user_defined_bullets[index].setCharacter(temp_int);
-		params.temp_bullets[index].setCharacter(temp_int);
-		lex.nextToken();
-		temp_int = lex.getInteger();
-		params.user_defined_bullets[index].setSize(temp_int);
-		params.temp_bullets[index].setSize(temp_int);
-		lex.nextToken();
-		string const temp_str = lex.getString();
-		if (temp_str != "\\end_bullet") {
-				// this element isn't really necessary for
-				// parsing but is easier for humans
-				// to understand bullets. Put it back and
-				// set a debug message?
-			lex.printError("\\end_bullet expected, got" + temp_str);
-				//how can I put it back?
-		}
-	} else if (token == "\\bulletLaTeX") {
-		// The bullet class should be able to read this.
-		lex.nextToken();
-		int const index = lex.getInteger();
-		lex.next();
-		string temp_str = lex.getString();
-		string sum_str;
-		while (temp_str != "\\end_bullet") {
-				// this loop structure is needed when user
-				// enters an empty string since the first
-				// thing returned will be the \\end_bullet
-				// OR
-				// if the LaTeX entry has spaces. Each element
-				// therefore needs to be read in turn
-			sum_str += temp_str;
-			lex.next();
-			temp_str = lex.getString();
-		}
-
-		params.user_defined_bullets[index].setText(sum_str);
-		params.temp_bullets[index].setText(sum_str);
-	} else if (token == "\\secnumdepth") {
-		lex.nextToken();
-		params.secnumdepth = lex.getInteger();
-	} else if (token == "\\tocdepth") {
-		lex.nextToken();
-		params.tocdepth = lex.getInteger();
-	} else if (token == "\\spacing") {
-		lex.next();
-		string const tmp = rtrim(lex.getString());
-		Spacing::Space tmp_space = Spacing::Default;
-		float tmp_val = 0.0;
-		if (tmp == "single") {
-			tmp_space = Spacing::Single;
-		} else if (tmp == "onehalf") {
-			tmp_space = Spacing::Onehalf;
-		} else if (tmp == "double") {
-			tmp_space = Spacing::Double;
-		} else if (tmp == "other") {
-			lex.next();
-			tmp_space = Spacing::Other;
-			tmp_val = lex.getFloat();
-		} else {
-			lex.printError("Unknown spacing token: '$$Token'");
-		}
-		// Small hack so that files written with klyx will be
-		// parsed correctly.
-		if (first_par) {
-			par->params().spacing(Spacing(tmp_space, tmp_val));
-		} else {
-			params.spacing.set(tmp_space, tmp_val);
-		}
 	} else if (token == "\\paragraph_spacing") {
 		lex.next();
 		string const tmp = rtrim(lex.getString());
@@ -921,9 +710,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		} else {
 			lex.printError("Unknown spacing token: '$$Token'");
 		}
-	} else if (token == "\\float_placement") {
-		lex.nextToken();
-		params.float_placement = lex.getString();
 	} else if (token == "\\align") {
 		int tmpret = lex.findToken(string_align);
 		if (tmpret == -1)
@@ -982,7 +768,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		lyx::time_type ct;
 		istr >> aid;
 		istr >> ct;
-		current_change = Change(Change::INSERTED, author_ids[aid], ct);
+		current_change = Change(Change::INSERTED, params.author_ids[aid], ct);
 	} else if (token == "\\change_deleted") {
 		lex.nextToken();
 		istringstream istr(lex.getString());
@@ -990,12 +776,10 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		lyx::time_type ct;
 		istr >> aid;
 		istr >> ct;
-		current_change = Change(Change::DELETED, author_ids[aid], ct);
-	} else if (token == "\\the_end") {
-		the_end_read = true;
+		current_change = Change(Change::DELETED, params.author_ids[aid], ct);
 	} else {
 		// This should be insurance for the future: (Asger)
-		++unknown_tokens;
+		++unknown;
 		lex.eatLine();
 #if USE_BOOST_FORMAT
 		boost::format fmt(_("Unknown token: %1$s %2$s\n"));
@@ -1013,7 +797,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 
 	}
 
-	return the_end_read;
+	return unknown;
 }
 
 
@@ -1089,7 +873,6 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 
 	lex.next();
 	string const tmptok = lex.getString();
-	last_inset_read = tmptok;
 
 	// test the different insets
 	if (tmptok == "LatexCommand") {
@@ -1263,7 +1046,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, Paragraph * par)
 					return false;
 				}
 			}
-			bool the_end = readLyXformat2(lex, par);
+			bool the_end = readBody(lex, par);
 			params.setPaperStuff();
 
 			if (!the_end) {
@@ -1388,14 +1171,7 @@ bool Buffer::writeFile(string const & fname) const
 	// now write out the buffer paramters.
 	params.writeFile(ofs);
 
-	// if we're tracking, list all possible authors
-	if (params.tracking_changes) {
-		AuthorList::Authors::const_iterator it = authorlist.begin();
-		AuthorList::Authors::const_iterator end = authorlist.end();
-		for (; it != end; ++it) {
-			ofs << "\\author " << it->second << "\n";
-		}
-	}
+	ofs << "\\end_header\n";
 
 	Paragraph::depth_type depth = 0;
 

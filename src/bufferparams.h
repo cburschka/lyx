@@ -19,6 +19,7 @@
 #include "lyxtextclass.h"
 #include "LaTeXFeatures.h"
 #include "texrow.h"
+#include "author.h"
 
 #include "insets/insetquotes.h"
 
@@ -107,6 +108,9 @@ public:
 	};
 	///
 	BufferParams();
+
+	/// read a header token, if unrecognised, return it or an unknown class name
+	string const readToken(LyXLex & lex, string const & token);
 
 	///
 	void writeFile(std::ostream &) const;
@@ -228,6 +232,12 @@ public:
 	/// Time ago we agreed that this was a buffer property [ale990407]
 	string parentname;
 private:
+	/// mapping of author IDs
+	std::vector<int> author_ids;
+
+	/// the author list
+	AuthorList authorlist;
+
 	///
 	friend class Buffer;
 	/** This is the amount of space used for paragraph_separation "skip",

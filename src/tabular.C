@@ -1470,14 +1470,15 @@ void LyXTabular::OldFormatRead(BufferParams const & bp,
 			lex.pushToken(token);
 			break;
 		}
-		if (owner_->bufferOwner()->parseSingleLyXformat2Token(lex, par,
-															  return_par,
-															  token, pos,
-															  depth, font)) {
-			// the_end read
+
+		if (token == "\\the_end") {
 			lex.pushToken(token);
 			break;
 		}
+
+		owner_->bufferOwner()->readToken(lex, par, return_par,
+		                                 token, pos, depth, font);
+
 		if (return_par) {
 			lex.printError("New Paragraph allocated! This should not happen!");
 			lex.pushToken(token);

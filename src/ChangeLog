@@ -1,5 +1,16 @@
 2003-03-12  John Levon  <levon@movementarian.org>
 
+	* BufferView.C:
+	* tabular.C:
+	* buffer.h:
+	* buffer.C:
+	* bufferparams.h:
+	* bufferparams.C: move author list into params. Rename some
+	  functions. Move the header reading into a separate token
+	  loop. Move the header token reading into BufferParams.
+
+2003-03-12  John Levon  <levon@movementarian.org>
+
 	* changes.C: put debug inside lyxerr.debugging() checks
 
 2003-03-11 André Pönitz <poenitz@gmx.net>

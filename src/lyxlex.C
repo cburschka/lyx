@@ -140,7 +140,7 @@ string const LyXLex::getString() const
 
 
 // I would prefer to give a tag number instead of an explicit token
-// here, but it is not possible because Buffer::readLyXformat2 uses
+// here, but it is not possible because Buffer::readBody uses
 // explicit tokens (JMarc)
 string const LyXLex::getLongString(string const & endtoken)
 {

@@ -323,7 +323,7 @@ bool BufferView::insertLyXFile(string const & filen)
 	} else {
 		lyxerr[Debug::INFO] << "Will insert file without header"
 				    << endl;
-		res = buffer()->readLyXformat2(lex, text->cursor.par());
+		res = buffer()->readBody(lex, text->cursor.par());
 	}
 
 	resize();

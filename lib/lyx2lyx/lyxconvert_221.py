@@ -15,10 +15,11 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
-
+def add_end(header):
+    header.append("\\end_header");
 
 def convert(header, body):
-    pass
+    add_end(header)
 
 if __name__ == "__main__":
     pass
