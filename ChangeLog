@@ -1,3 +1,8 @@
+2001-04-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lib/layouts/revtex4.layout: make sure the PACS, keywords and
+	preprint come before \maketitle.
+
 2001-04-17  Allan Rae  <rae@lyx.org>
 
 	* src/frontends/xforms/FormRef.C: 

@@ -107,6 +107,7 @@ Input stdstruct.inc
 Style Preprint
   Margin                Right_Address_Box
   LatexType             Command
+  InTitle		1
   LatexName             preprint
   ParSkip               0.4
   BottomSep             1.5
@@ -231,6 +232,7 @@ End
 Style PACS
   Margin		Dynamic
   LatexType             Command
+  InTitle		1
   LatexName             pacs
   LabelType		Static
   LabelString           "PACS number: "
@@ -238,6 +240,7 @@ End
 
 Style Keywords
   CopyStyle             PACS
+  InTitle		1
   Latexname             keywords
   LabelString           "Keywords: "
 End
