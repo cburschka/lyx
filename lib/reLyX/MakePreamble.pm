@@ -148,7 +148,8 @@ sub translate_preamble {
 #}
 
     # Write first line of the lyx file
-    $LyX_Preamble .= "\#LyX 1.2 created this file. For more info see http://www.lyx.org/\n";
+    $LyX_Preamble .= "\# The reLyX bundled with LyX 1.3 created this file.\n" .
+	"# For more info see http://www.lyx.org/\n";
 
     # Print \lyxformat.
     $LyX_Preamble .= "\\lyxformat $Format\n";
