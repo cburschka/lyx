@@ -39,6 +39,8 @@ using lyx::support::LibFileSearch;
 // special columntypes
 extern std::map<char, int> special_columns;
 
+std::map<string, vector<string> > used_packages;
+
 namespace {
 
 const char * const known_languages[] = { "austrian", "babel", "bahasa",
@@ -103,8 +105,68 @@ void handle_opt(vector<string> & opts, char const * const * what, string & targe
 }
 
 
-void handle_package(string const & name, string const & options)
+/*!
+ * Split a package options string (keyval format) into a vector.
+ * Example input:
+ *   authorformat=smallcaps,
+ *   commabeforerest,
+ *   titleformat=colonsep,
+ *   bibformat={tabular,ibidem,numbered}
+ */
+vector<string> split_options(string const & input)
 {
+	vector<string> options;
+	string option;
+	Parser p(input);
+	while (p.good()) {
+		Token const & t = p.get_token();
+		if (t.asInput() == ",") {
+			options.push_back(option);
+			option.erase();
+		} else if (t.asInput() == "=") {
+			option += '=';
+			p.skip_spaces(true);
+			if (p.next_token().asInput() == "{")
+				option += '{' + p.getArg('{', '}') + '}';
+		} else if (t.cat() != catSpace)
+			option += t.asInput();
+	}
+	
+	if (!option.empty())
+		options.push_back(option);
+
+	return options;
+}
+
+
+/*!
+ * Add package \p name with options \p options to used_packages.
+ * Remove options from \p options that we don't want to output.
+ */
+void add_package(string const & name, vector<string> & options)
+{
+	// every package inherits the global options
+	if (used_packages.find(name) == used_packages.end())
+		used_packages[name] = split_options(h_options);
+
+	vector<string> & v = used_packages[name];
+	v.insert(v.end(), options.begin(), options.end());
+	if (name == "jurabib") {
+		// Don't output the order argument (see the cite command
+		// handling code in text.C).
+		vector<string>::iterator end =
+			remove(options.begin(), options.end(), "natbiborder");
+		end = remove(options.begin(), end, "jurabiborder");
+		options.erase(end, options.end());
+	}
+}
+
+
+void handle_package(string const & name, string const & opts)
+{
+	vector<string> options = split_options(opts);
+	add_package(name, options);
+
 	//cerr << "handle_package: '" << name << "'\n";
 	if (name == "a4wide") {
 		h_papersize = "a4paper";
@@ -121,21 +183,42 @@ void handle_package(string const & name, string const & options)
 		; // ignore this
 	else if (name == "fontenc")
 		; // ignore this
-	else if (name == "inputenc")
-		h_inputencoding = options;
-	else if (name == "makeidx")
+	else if (name == "inputenc") {
+		h_inputencoding = opts;
+		options.clear();
+	} else if (name == "makeidx")
 		; // ignore this
 	else if (name == "verbatim")
 		; // ignore this
 	else if (is_known(name, known_languages)) {
 		h_language = name;
 		h_quotes_language = name;
-	} else {
-		if (!options.empty())
-			h_preamble << "\\usepackage[" << options << "]{" << name << "}\n";
-		else
-			h_preamble << "\\usepackage{" << name << "}\n";
+	} else if (name == "natbib") {
+		h_cite_engine = "natbib_authoryear";
+		vector<string>::iterator it =
+			find(options.begin(), options.end(), "authoryear");
+		if (it != options.end())
+			options.erase(it);
+		else {
+			it = find(options.begin(), options.end(), "numbers");
+			if (it != options.end()) {
+				h_cite_engine = "natbib_numerical";
+				options.erase(it);
+			}
+		}
+	} else if (name == "jurabib") {
+		h_cite_engine = "jurabib";
+	} else if (options.empty())
+		h_preamble << "\\usepackage{" << name << "}\n";
+	else {
+		h_preamble << "\\usepackage[" << opts << "]{" << name << "}\n";
+		options.clear();
 	}
+
+	// We need to do something with the options...
+	if (!options.empty())
+		cerr << "Ignoring options '" << join(options, ",")
+		     << "' of package " << name << '.' << endl;
 }
 
 
@@ -360,6 +443,17 @@ LyXTextClass const parse_preamble(Parser & p, ostream & os, string const & force
 			if (name == "document")
 				break;
 			h_preamble << "\\begin{" << name << "}";
+		}
+
+		else if (t.cs() == "jurabibsetup") {
+			vector<string> jurabibsetup =
+				split_options(p.getArg('{', '}'));
+			// add jurabibsetup to the jurabib package options
+			add_package("jurabib", jurabibsetup);
+			if (!jurabibsetup.empty()) {
+				h_preamble << "\\jurabibsetup{"
+				           << join(jurabibsetup, ",") << '}';
+			}
 		}
 
 		else if (!t.cs().empty())

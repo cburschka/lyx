@@ -1,3 +1,18 @@
+2004-08-10  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* preamble.C (split_options): new, split package options into vector
+	* preamble.C (add_package): new, add a package with options to
+	used_packages
+	* preamble.C, tex2lyx.h (used_packages): new map of used packages
+	and options
+	* preamble.C (handle_package): handle natbib and jurabib package
+	* preamble.C (handle_package): output a message for unhandled options
+	* preamble.C (parse_preamble): handle \jurabibsetup
+	* text.C (known_natbib_commands): new list of known natbib ccommands
+	* text.C (known_jurabib_commands): new list of known jurabib ccommands
+	* text.C (getCiteArguments): new, parse cite command arguments
+	* text.C (parse_text): handle natbib and jurabib citation commands
+
 2004-07-29  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* preamble.C (end_preamble): change file format from 228 to 235

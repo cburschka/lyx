@@ -26,6 +26,9 @@ class Context;
 /// in preamble.C
 LyXTextClass const parse_preamble(Parser & p, std::ostream & os, std::string const & forceclass);
 
+/// used packages with options
+extern std::map<std::string, std::vector<std::string> > used_packages;
+
 
 /// in text.C
 void parse_text(Parser & p, std::ostream & os, unsigned flags, bool outer,

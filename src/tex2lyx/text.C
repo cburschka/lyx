@@ -22,6 +22,8 @@
 #include "support/tostr.h"
 #include "support/filetools.h"
 
+#include <boost/tuple/tuple.hpp>
+
 #include <iostream>
 #include <map>
 #include <sstream>
@@ -81,6 +83,29 @@ namespace {
 
 char const * const known_latex_commands[] = { "ref", "cite", "label", "index",
 "printindex", "pageref", "url", "vref", "vpageref", "prettyref", "eqref", 0 };
+
+/*!
+ * natbib commands.
+ * We can't put these into known_latex_commands because the argument order
+ * is reversed in lyx if there are 2 arguments.
+ * The starred forms are also known.
+ */
+char const * const known_natbib_commands[] = { "cite", "citet", "citep",
+"citealt", "citealp", "citeauthor", "citeyear", "citeyearpar",
+"citefullauthor", "Citet", "Citep", "Citealt", "Citealp", "Citeauthor", 0 };
+
+/*!
+ * jurabib commands.
+ * We can't put these into known_latex_commands because the argument order
+ * is reversed in lyx if there are 2 arguments.
+ * No starred form other than "cite*" known.
+ */
+char const * const known_jurabib_commands[] = { "cite", "citet", "citep",
+"citealt", "citealp", "citeauthor", "citeyear", "citeyearpar", "fullcite",
+// jurabib commands not (yet) supported by LyX:
+// "footcite", "footcitet", "footcitep", "footcitealt", "footcitealp",
+// "footciteauthor", "footciteyear", "footciteyearpar",
+"citefield", "citetitle", "cite*", 0 };
 
 /// LaTeX names for quotes
 char const * const known_quotes[] = { "glqq", "grqq", "quotedblbase",
@@ -821,6 +846,35 @@ void parse_text_attributes(Parser & p, ostream & os, unsigned flags, bool outer,
 	os << '\n' << attribute << ' ' << oldvalue << " \n";
 }
 
+
+/// get the arguments of a natbib or jurabib citation command
+std::pair<string, string> getCiteArguments(Parser & p, ostream & os,
+                                           Context & context, bool natbibOrder)
+{
+	// We need to distinguish "" and "[]", so we can't use p.getOpt().
+
+	// text before the citation
+	string before;
+	// text after the citation
+	string after;
+
+	eat_whitespace(p, os, context, false);
+	if (p.next_token().asInput() == "[") {
+		after = '[' + p.getArg('[', ']') + ']';
+		eat_whitespace(p, os, context, false);
+		if (natbibOrder) {
+			if (p.next_token().asInput() == "[") {
+				before = after;
+				after = '[' + p.getArg('[', ']') + ']';
+			}
+		} else {
+			if (p.next_token().asInput() == "[")
+				before = '[' + p.getArg('[', ']') + ']';
+		}
+	}
+	return std::make_pair(before, after);
+}
+
 } // anonymous namespace
 
 
@@ -830,6 +884,8 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 	LyXLayout_ptr newlayout;
 	// Store the latest bibliographystyle (needed for bibtex inset)
 	string bibliographystyle;
+	bool const use_natbib = used_packages.find("natbib") != used_packages.end();
+	bool const use_jurabib = used_packages.find("jurabib") != used_packages.end();
 	while (p.good()) {
 		Token const & t = p.get_token();
 
@@ -1402,7 +1458,98 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
 			os << "\n\\" << t.cs() << " default \n";
 		}
 
+		else if (use_natbib &&
+		         is_known(t.cs(), known_natbib_commands) &&
+		         ((t.cs() != "citefullauthor" &&
+			   t.cs() != "citeyear" &&
+			   t.cs() != "citeyearpar") ||
+		          p.next_token().asInput() != "*")) {
+			context.check_layout(os);
+			// tex                       lyx
+			// \citet[before][after]{a}  \citet[after][before]{a}
+			// \citet[before][]{a}       \citet[][before]{a}
+			// \citet[after]{a}          \citet[after]{a}
+			// \citet{a}                 \citet{a}
+			string command = '\\' + t.cs();
+			if (p.next_token().asInput() == "*") {
+				command += '*';
+				p.get_token();
+			}
+			if (command == "\\citefullauthor")
+				// alternative name for "\\citeauthor*"
+				command = "\\citeauthor*";
+
+			// text before the citation
+			string before;
+			// text after the citation
+			string after;
+
+			boost::tie(before, after) =
+				getCiteArguments(p, os, context, true);
+			if (command == "\\cite") {
+				// \cite without optional argument means
+				// \citet, \cite with at least one optional
+				// argument means \citep.
+				if (before.empty() && after.empty())
+					command = "\\citet";
+				else
+					command = "\\citep";
+			}
+			if (before.empty() && after == "[]")
+				// avoid \citet[]{a}
+				after.erase();
+			else if (before == "[]" && after == "[]") {
+				// avoid \citet[][]{a}
+				before.erase();
+				after.erase();
+			}
+			begin_inset(os, "LatexCommand ");
+			os << command << after << before
+			   << '{' << p.verbatim_item() << "}\n";
+			end_inset(os);
+		}
+
+		else if (use_jurabib &&
+		         is_known(t.cs(), known_jurabib_commands)) {
+			context.check_layout(os);
+			string const command = '\\' + t.cs();
+			char argumentOrder = '\0';
+			vector<string> const & options = used_packages["jurabib"];
+			if (std::find(options.begin(), options.end(),
+			              "natbiborder") != options.end())
+				argumentOrder = 'n';
+			else if (std::find(options.begin(), options.end(),
+			                   "jurabiborder") != options.end())
+				argumentOrder = 'j';
+
+			// text before the citation
+			string before;
+			// text after the citation
+			string after;
+
+			boost::tie(before, after) =
+				getCiteArguments(p, os, context,
+				                 argumentOrder != 'j');
+			string const citation = p.verbatim_item();
+			if (!before.empty() && argumentOrder == '\0') {
+				cerr << "Warning: Assuming argument order "
+				     << "of jurabib version 0.6 for\n'"
+				     << command << before << after << '{'
+				     << citation << "}'.\n"
+				     << "Add 'jurabiborder' to the jurabib "
+				     << "package options if you used an\n"
+				     << "earlier jurabib version." << endl;
+			}
+			begin_inset(os, "LatexCommand ");
+			os << command << after << before
+			   << '{' << citation << "}\n";
+			end_inset(os);
+		}
+
 		else if (is_known(t.cs(), known_latex_commands)) {
+			// This needs to be after the check for natbib and
+			// jurabib commands, because "cite" has different
+			// arguments with natbib and jurabib.
 			context.check_layout(os);
 			begin_inset(os, "LatexCommand ");
 			os << '\\' << t.cs();
