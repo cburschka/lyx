@@ -1,3 +1,9 @@
+
+2005-03-20  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* GWorkArea.[Ch] (onScroll, setScrollbarParams): add an adjusting_
+	flag to avoid signal reentrance.
+
 2005-03-20  John Spray  <spray_john@users.sf.net>
 
 	* ghelpers.C: use Gtk::Stock::PROPERTIES icon for document

@@ -109,6 +109,7 @@ private:
 	ColorHandler colorHandler_;
 	GtkIMContext * imContext_;
 	std::string inputCache_;
+	bool adjusting_;
 };
 
 } // namespace frontend
