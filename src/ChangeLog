@@ -1,3 +1,7 @@
+2001-04-27  Juergen Vigna  <jug@sad.it>
+
+	* spellchecker.C (sc_check_word): fixed Assert to lyx::Assert.
+
 2001-04-27  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxfunc.C (Dispatch): hack to make listof algorithm work

@@ -637,14 +637,14 @@ isp_result * sc_check_word(string const & word)
 #warning Why isnt word_ok a bool? (Lgb)
 #endif
 	int word_ok = pspell_manager_check(sc, word.c_str());
-	Assert(word_ok != -1);
+	lyx::Assert(word_ok != -1);
 
 	if (word_ok) {
 		result->flag = ISP_OK;
 	} else {
 		PspellWordList const * sugs =
 			pspell_manager_suggest(sc, word.c_str());
-		Assert(sugs != 0);
+		lyx::Assert(sugs != 0);
 		result->els = pspell_word_list_elements(sugs);
 		if (pspell_word_list_empty(sugs)) 
 			result->flag = ISP_UNKNOWN;
