@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.0.3pre2\n"
-"POT-Creation-Date: 1999-11-24 23:27+0100\n"
-"PO-Revision-Date: 1999-10-28 06:57+02:00\n"
+"POT-Creation-Date: 1999-11-30 23:57+0100\n"
+"PO-Revision-Date: 1999-12-01 00:25+01:00\n"
 "Last-Translator:  Roman Maurer <roman.maurer@fmf.uni-lj.si>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 
 #. sgml2lyx failed
 #: src/buffer.C:223 src/buffer.C:233 src/buffer.C:3575 src/bufferlist.C:513
-#: src/bufferlist.C:543 src/lyx_cb.C:519 src/lyx_cb.C:852 src/lyx_cb.C:885
+#: src/bufferlist.C:543 src/lyx_cb.C:517 src/lyx_cb.C:850 src/lyx_cb.C:882
 #: src/lyx_sendfax_main.C:262
 msgid "Error!"
 msgstr "Napaka!"
@@ -188,7 +188,7 @@ msgstr "Napaka! Ne morem odpreti zaèasne datoteke:"
 msgid "Error executing *roff command on table"
 msgstr "Napaka pri izvajanju ukaza *roff na tabeli"
 
-#: src/buffer.C:3772 src/lyx_cb.C:3168 src/text.C:1847
+#: src/buffer.C:3772 src/lyx_cb.C:3154 src/text.C:1847
 msgid "Impossible Operation!"
 msgstr "Nemogoèa operacija!"
 
@@ -196,7 +196,7 @@ msgstr "Nemogoèa operacija!"
 msgid "Cannot insert table/list in table."
 msgstr "Ne morem vstaviti tabele/seznama v tabelo."
 
-#: src/buffer.C:3774 src/lyx_cb.C:3170 src/text.C:1849 src/text.C:3888
+#: src/buffer.C:3774 src/lyx_cb.C:3156 src/text.C:1849 src/text.C:3888
 #: src/text.C:3896 src/text.C:3911 src/text.C:3928 src/text2.C:2102
 #: src/text2.C:2112
 msgid "Sorry."
@@ -283,8 +283,8 @@ msgstr "Ne morem odpreti vzorca"
 msgid "Could not convert file"
 msgstr "Ne morem pretvoriti datoteke"
 
-#: src/bufferlist.C:557 src/lyxfunc.C:2562 src/lyxfunc.C:2701
-#: src/lyxfunc.C:2780
+#: src/bufferlist.C:557 src/lyxfunc.C:2559 src/lyxfunc.C:2698
+#: src/lyxfunc.C:2777
 msgid "Document is already open:"
 msgstr "Spis je ¾e odprt:"
 
@@ -322,7 +322,7 @@ msgstr "Velikost|#z"
 
 #: src/bullet_forms.C:51 src/credits_form.C:19 src/credits_form.C:59
 #: src/form1.C:43 src/form1.C:117 src/form1.C:261 src/form1.C:284
-#: src/insets/insetbib.C:87 src/insets/insetbib.C:115
+#: src/insets/insetbib.C:89 src/insets/insetbib.C:117
 #: src/insets/insetinclude.C:47 src/insets/insetindex.C:56
 #: src/latexoptions.C:21 src/layout_forms.C:72 src/layout_forms.C:277
 #: src/layout_forms.C:413 src/layout_forms.C:477 src/layout_forms.C:697
@@ -342,8 +342,8 @@ msgid "Apply|#A"
 msgstr "Uporabi|#A"
 
 #: src/bullet_forms.C:57 src/form1.C:120 src/form1.C:264 src/form1.C:290
-#: src/insets/insetbib.C:90 src/insets/insetbib.C:91 src/insets/insetbib.C:118
-#: src/insets/insetbib.C:119 src/insets/insetinclude.C:50
+#: src/insets/insetbib.C:92 src/insets/insetbib.C:93 src/insets/insetbib.C:120
+#: src/insets/insetbib.C:121 src/insets/insetinclude.C:50
 #: src/insets/insetinclude.C:51 src/insets/insetindex.C:60
 #: src/insets/insetindex.C:61 src/latexoptions.C:27 src/layout_forms.C:64
 #: src/layout_forms.C:285 src/layout_forms.C:391 src/layout_forms.C:419
@@ -757,59 +757,65 @@ msgstr "Ujemanje besede|#M#m"
 msgid "Replace All|#A#a"
 msgstr "Nadomesti vse|#V#v"
 
-#: src/insets/figinset.C:1090
+#: src/insets/figinset.C:1097
 msgid "[render error]"
 msgstr "[napaka pri upodabljanju]"
 
-#: src/insets/figinset.C:1091
+#: src/insets/figinset.C:1098
 msgid "[rendering ... ]"
 msgstr "[upodabljam ... ]"
 
-#: src/insets/figinset.C:1093
+#: src/insets/figinset.C:1100
 msgid "[no file]"
 msgstr "[ni datoteke]"
 
-#: src/insets/figinset.C:1094
+#: src/insets/figinset.C:1101
 msgid "[not displayed]"
 msgstr "[ni prikazano]"
 
-#: src/insets/figinset.C:1095
+#: src/insets/figinset.C:1102
 msgid "[no ghostscript]"
 msgstr "[ni ghostscripta]"
 
-#: src/insets/figinset.C:1097
+#: src/insets/figinset.C:1104
 msgid "[unknown error]"
 msgstr "[neznana napaka]"
 
-#: src/insets/figinset.C:1294
+#: src/insets/figinset.C:1301
 msgid "Figure"
 msgstr "Slika"
 
-#: src/insets/figinset.C:1356 src/insets/figinset.C:1494
+#: src/insets/figinset.C:1363 src/insets/figinset.C:1501
 msgid "empty figure path"
 msgstr "prazna pot do slike"
 
-#: src/insets/figinset.C:2153
+#: src/insets/figinset.C:2160
 msgid "Clipart"
 msgstr "Izrezek"
 
-#: src/insets/figinset.C:2154 src/lyxfunc.C:2594 src/lyxfunc.C:2657
-#: src/lyxfunc.C:2880
+#: src/insets/figinset.C:2161 src/lyxfunc.C:2591 src/lyxfunc.C:2654
+#: src/lyxfunc.C:2877
 msgid "Document"
 msgstr "Spis"
 
-#: src/insets/figinset.C:2160 src/insets/figinset.C:2163
+#: src/insets/figinset.C:2167 src/insets/figinset.C:2170
 msgid "EPS Figure"
 msgstr "Slika EPS"
 
-#: src/insets/figinset.C:2177
+#: src/insets/figinset.C:2184
 msgid "Filename can't contain any of these characters:"
 msgstr "Ime datoteke ne sme vsebovati teh znakov:"
 
-#: src/insets/figinset.C:2178
+#: src/insets/figinset.C:2185
 #, no-c-format
 msgid "space, '#', '~', '$' or '%'."
 msgstr "presledek, '#', '~', '$' ali '%'."
+
+#. / what appears in the minibuffer when opening
+#: src/insets/figinset.h:50
+#, fuzzy
+msgid "Opened figure"
+msgstr "Odprt vstavek"
 
 #: src/insets/form_url.C:19
 #, fuzzy
@@ -845,50 +851,50 @@ msgstr "Tip HTML|#H"
 msgid "Close"
 msgstr "Zapri"
 
-#: src/insets/insetbib.C:80
+#: src/insets/insetbib.C:82
 msgid "Key:"
 msgstr "Kljuè:"
 
-#: src/insets/insetbib.C:94 src/insets/insetbib.C:95
+#: src/insets/insetbib.C:96 src/insets/insetbib.C:97
 msgid "Remark:|#R"
 msgstr "Opomba:|#R"
 
 #. InsetBibtex uses the same form, with different labels
-#: src/insets/insetbib.C:112 src/insets/insetbib.C:113
-#: src/insets/insetbib.C:264 src/insets/insetbib.C:265
+#: src/insets/insetbib.C:114 src/insets/insetbib.C:115
+#: src/insets/insetbib.C:266 src/insets/insetbib.C:267
 msgid "Key:|#K"
 msgstr "Kljuè:|#K"
 
-#: src/insets/insetbib.C:122 src/insets/insetbib.C:123
-#: src/insets/insetbib.C:266 src/insets/insetbib.C:267
+#: src/insets/insetbib.C:124 src/insets/insetbib.C:125
+#: src/insets/insetbib.C:268 src/insets/insetbib.C:269
 msgid "Label:|#L"
 msgstr "Oznaka:|#L"
 
-#: src/insets/insetbib.C:169
+#: src/insets/insetbib.C:171
 msgid "Citation"
 msgstr "Citat"
 
-#: src/insets/insetbib.C:275
+#: src/insets/insetbib.C:277
 msgid "Bibliography item"
 msgstr "Postavka literature"
 
-#: src/insets/insetbib.C:290
+#: src/insets/insetbib.C:292
 msgid "BibTeX Generated References"
 msgstr "Reference, generirane z BibTeXom"
 
-#: src/insets/insetbib.C:405
+#: src/insets/insetbib.C:407
 msgid "Database:"
 msgstr "Baza podatkov:"
 
-#: src/insets/insetbib.C:406
+#: src/insets/insetbib.C:408
 msgid "Style:  "
 msgstr "Stil:  "
 
-#: src/insets/insetbib.C:414
+#: src/insets/insetbib.C:416
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: src/insets/inseterror.C:66 src/insets/inseterror.C:85 src/lyx_cb.C:3697
+#: src/insets/inseterror.C:66 src/insets/inseterror.C:85 src/lyx_cb.C:3684
 msgid "Error"
 msgstr "Napaka"
 
@@ -934,8 +940,8 @@ msgid "Use include|#U"
 msgstr "Uporabi vkljuèitev|#U"
 
 #. launches dialog
-#: src/insets/insetinclude.C:111 src/lyx_cb.C:366 src/lyxfunc.C:2542
-#: src/lyxfunc.C:2632 src/lyxfunc.C:2681 src/lyxfunc.C:2754 src/lyxfunc.C:2855
+#: src/insets/insetinclude.C:111 src/lyx_cb.C:366 src/lyxfunc.C:2539
+#: src/lyxfunc.C:2629 src/lyxfunc.C:2678 src/lyxfunc.C:2751 src/lyxfunc.C:2852
 #: src/menus.C:177 src/menus.C:309 src/menus.C:310 src/menus.C:311
 msgid "Documents"
 msgstr "Spisi"
@@ -983,6 +989,12 @@ msgstr "Opomba"
 msgid "Close|#C^["
 msgstr "Zapri|#Z^["
 
+#. / what appears in the minibuffer when opening
+#: src/insets/insetinfo.h:60
+#, fuzzy
+msgid "Opened note"
+msgstr "Odprt vstavek"
+
 #. /
 #: src/insets/insetloa.h:37
 msgid "List of Algorithms"
@@ -1027,6 +1039,12 @@ msgstr "HtmlUrl: "
 msgid "Url: "
 msgstr "Url: "
 
+#. /
+#: src/insets/inseturl.h:61
+#, fuzzy
+msgid "Opened Url"
+msgstr "Odprta napaka"
+
 #. / what appears in the minibuffer when opening
 #: src/insets/lyxinset.h:94
 msgid "Opened inset"
@@ -1044,15 +1062,15 @@ msgstr "Polo¾aji tipk"
 msgid "   options: "
 msgstr "  izbire: "
 
-#: src/LaTeX.C:148 src/LaTeX.C:162 src/LaTeX.C:222 src/LaTeX.C:268
+#: src/LaTeX.C:148 src/LaTeX.C:165 src/LaTeX.C:225 src/LaTeX.C:271
 msgid "LaTeX run number "
 msgstr "Tek LaTeXa ¹tevilka "
 
-#: src/LaTeX.C:185 src/LaTeX.C:246
+#: src/LaTeX.C:188 src/LaTeX.C:249
 msgid "Running MakeIndex."
 msgstr "Poganjam MakeIndex."
 
-#: src/LaTeX.C:199
+#: src/LaTeX.C:202
 msgid "Running BibTeX."
 msgstr "Poganjam BibTeX."
 
@@ -1649,7 +1667,7 @@ msgstr "Odpri"
 msgid "Switch to previous document"
 msgstr "Zamenjaj s prej¹njim spisom"
 
-#: src/LyXAction.C:159 src/lyx_cb.C:954 src/print_form.C:72
+#: src/LyXAction.C:159 src/lyx_cb.C:950 src/print_form.C:72
 msgid "Print"
 msgstr "Tiskaj"
 
@@ -1706,11 +1724,11 @@ msgstr "Vnesi citat"
 msgid "Execute command"
 msgstr "Izvedi ukaz"
 
-#: src/LyXAction.C:190 src/lyx_cb.C:2396
+#: src/LyXAction.C:190 src/lyx_cb.C:2384
 msgid "Copy"
 msgstr "Kopiraj"
 
-#: src/LyXAction.C:192 src/lyx_cb.C:2408
+#: src/LyXAction.C:192 src/lyx_cb.C:2396
 msgid "Cut"
 msgstr "Izre¾i"
 
@@ -1754,7 +1772,7 @@ msgstr "Pojdi na naslednjo napako"
 msgid "Remove all error boxes"
 msgstr "Odstrani vse ¹katle z napakami"
 
-#: src/LyXAction.C:222 src/lyx_cb.C:2348
+#: src/LyXAction.C:222 src/lyx_cb.C:2336
 msgid "Insert Figure"
 msgstr "Vstavi sliko"
 
@@ -1922,7 +1940,7 @@ msgstr "Vstavi oznako"
 msgid "Math mode"
 msgstr "Matematièni naèin"
 
-#: src/LyXAction.C:360 src/lyx_cb.C:2439
+#: src/LyXAction.C:360 src/lyx_cb.C:2427
 msgid "Melt"
 msgstr "Stopi"
 
@@ -1942,7 +1960,7 @@ msgstr "Pojdi odstavek navzgor"
 msgid "Select previous paragraph"
 msgstr "Izberi prej¹nji odstavek"
 
-#: src/LyXAction.C:383 src/lyx_cb.C:2417
+#: src/LyXAction.C:383 src/lyx_cb.C:2405
 msgid "Paste"
 msgstr "Prilepi"
 
@@ -1958,7 +1976,7 @@ msgstr "Vstavi narekovaj"
 msgid "Reconfigure"
 msgstr "Ponovna ukrojitev"
 
-#: src/LyXAction.C:393 src/lyx_cb.C:2106
+#: src/LyXAction.C:393 src/lyx_cb.C:2094
 msgid "Redo"
 msgstr "Ponovi"
 
@@ -1966,7 +1984,7 @@ msgstr "Ponovi"
 msgid "Insert cross reference"
 msgstr "Vstavi navzkri¾no referenco"
 
-#: src/LyXAction.C:442 src/lyx_cb.C:2360
+#: src/LyXAction.C:442 src/lyx_cb.C:2348
 msgid "Insert Table"
 msgstr "Vstavi tabelo"
 
@@ -1988,7 +2006,7 @@ msgstr "Vsebinsko kazalo"
 msgid "Toggle cursor does/doesn't follow the scrollbar"
 msgstr "Spremeni (ne)sledenje kurzorja pomiènici"
 
-#: src/LyXAction.C:457 src/lyx_cb.C:2086
+#: src/LyXAction.C:457 src/lyx_cb.C:2074
 msgid "Undo"
 msgstr "Razveljavi"
 
@@ -2060,7 +2078,7 @@ msgstr "Shranjevanju spodletelo. Preimenujem in poskusim ponovno?"
 msgid "(If not, document is not saved.)"
 msgstr "(Sicer spis ne bo shranjen.)"
 
-#: src/lyx_cb.C:367 src/lyxfunc.C:2543
+#: src/lyx_cb.C:367 src/lyxfunc.C:2540
 msgid "Templates"
 msgstr "Vzorci"
 
@@ -2069,9 +2087,9 @@ msgid "Enter Filename to Save Document as"
 msgstr "Vnesite ime datoteke pod katerim naj shranim spis"
 
 #. Cancel: Do nothing
-#: src/lyx_cb.C:379 src/lyxfunc.C:2549 src/lyxfunc.C:2576 src/lyxfunc.C:2641
-#: src/lyxfunc.C:2690 src/lyxfunc.C:2715 src/lyxfunc.C:2725 src/lyxfunc.C:2770
-#: src/lyxfunc.C:2795 src/lyxfunc.C:2805 src/lyxfunc.C:2864
+#: src/lyx_cb.C:379 src/lyxfunc.C:2546 src/lyxfunc.C:2573 src/lyxfunc.C:2638
+#: src/lyxfunc.C:2687 src/lyxfunc.C:2712 src/lyxfunc.C:2722 src/lyxfunc.C:2767
+#: src/lyxfunc.C:2792 src/lyxfunc.C:2802 src/lyxfunc.C:2861
 msgid "Canceled."
 msgstr "Preklicano."
 
@@ -2107,19 +2125,19 @@ msgstr "Spis ¾e obstaja:"
 msgid "Replace file?"
 msgstr "Nadomestim datoteko?"
 
-#: src/lyx_cb.C:449 src/lyx_cb.C:481
+#: src/lyx_cb.C:449 src/lyx_cb.C:479
 msgid "One error detected"
 msgstr "Zaznana ena napaka"
 
-#: src/lyx_cb.C:450 src/lyx_cb.C:482
+#: src/lyx_cb.C:450 src/lyx_cb.C:480
 msgid "You should try to fix it."
 msgstr "Morali bi jo poskusiti odpraviti."
 
-#: src/lyx_cb.C:453 src/lyx_cb.C:485
+#: src/lyx_cb.C:453 src/lyx_cb.C:483
 msgid " errors detected."
 msgstr " zaznanih napak."
 
-#: src/lyx_cb.C:454 src/lyx_cb.C:486
+#: src/lyx_cb.C:454 src/lyx_cb.C:484
 msgid "You should try to fix them."
 msgstr "Morali bi jih poskusiti odpraviti."
 
@@ -2127,379 +2145,378 @@ msgstr "Morali bi jih poskusiti odpraviti."
 msgid "There were errors during the LaTeX run."
 msgstr "Med tekom LaTeXa so bile napake."
 
-#: src/lyx_cb.C:471
+#: src/lyx_cb.C:469
 msgid "Wrong type of document"
 msgstr "Napaèen tip spisa"
 
-#: src/lyx_cb.C:472
+#: src/lyx_cb.C:470
 msgid "The Build operation is not allowed in this document"
 msgstr "Operacija grajenja ni dovoljena v tem spisu"
 
-#: src/lyx_cb.C:473 src/lyx_cb.C:488
+#: src/lyx_cb.C:471 src/lyx_cb.C:486
 msgid "There were errors during the Build process."
 msgstr "Med procesom gradnje je pri¹lo do napak."
 
-#: src/lyx_cb.C:499
+#: src/lyx_cb.C:497
 #, fuzzy
 msgid "Chktex does not work with SGML derived documents."
 msgstr "Chktex ne deluje z LinuxDoc."
 
-#: src/lyx_cb.C:508
+#: src/lyx_cb.C:506
 msgid "No warnings found."
 msgstr "Nobenih odkritih opozoril."
 
-#: src/lyx_cb.C:510
+#: src/lyx_cb.C:508
 msgid "One warning found."
 msgstr "Odkrito eno opozorilo."
 
-#: src/lyx_cb.C:511
+#: src/lyx_cb.C:509
 msgid "Use 'Edit->Go to Error' to find it."
 msgstr "Uporabite 'Uredi->Pojdi na napako' za njegovo poiskanje."
 
-#: src/lyx_cb.C:514
+#: src/lyx_cb.C:512
 msgid " warnings found."
 msgstr " odkritih opozoril."
 
-#: src/lyx_cb.C:515
+#: src/lyx_cb.C:513
 msgid "Use 'Edit->Go to Error' to find them."
 msgstr "Uporabite 'Uredi->Pojdi na napako' za njihovo poiskanje."
 
-#: src/lyx_cb.C:517
+#: src/lyx_cb.C:515
 msgid "Chktex run successfully"
 msgstr "Chktex uspe¹no pognan"
 
-#: src/lyx_cb.C:519
+#: src/lyx_cb.C:517
 msgid "It seems chktex does not work."
 msgstr "Videti je, da chktex ne deluje."
 
-#: src/lyx_cb.C:603 src/lyx_cb.C:606
+#: src/lyx_cb.C:602 src/lyx_cb.C:605
 msgid "Executing command:"
 msgstr "Izvajam ukaz:"
 
-#: src/lyx_cb.C:825 src/lyx_cb.C:862 src/lyx_cb.C:895 src/lyx_cb.C:922
-#: src/lyxfunc.C:2585
+#: src/lyx_cb.C:824 src/lyx_cb.C:860 src/lyx_cb.C:893 src/lyx_cb.C:920
+#: src/lyxfunc.C:2582
 msgid "File already exists:"
 msgstr "Datoteka ¾e obstaja:"
 
-#: src/lyx_cb.C:827 src/lyx_cb.C:864 src/lyx_cb.C:897 src/lyx_cb.C:924
+#: src/lyx_cb.C:826 src/lyx_cb.C:862 src/lyx_cb.C:895 src/lyx_cb.C:922
 msgid "Do you want to overwrite the file?"
 msgstr "Ali ¾elite prepisati datoteko?"
 
-#: src/lyx_cb.C:828 src/lyx_cb.C:865 src/lyx_cb.C:898 src/lyx_cb.C:925
+#: src/lyx_cb.C:827 src/lyx_cb.C:863 src/lyx_cb.C:896 src/lyx_cb.C:923
 msgid "Canceled"
 msgstr "Preklicano"
 
-#: src/lyx_cb.C:833
+#: src/lyx_cb.C:832
 msgid "DocBook does not have a latex backend"
 msgstr ""
 
-#: src/lyx_cb.C:839
+#: src/lyx_cb.C:838
 msgid "Nice LaTeX file saved as"
 msgstr "Prijetna datoteka za LaTeX shranjena kot"
 
-#: src/lyx_cb.C:852
+#: src/lyx_cb.C:850
 msgid "Document class must be linuxdoc."
 msgstr "Razred besedila mora biti linuxdoc."
 
-#: src/lyx_cb.C:869
+#: src/lyx_cb.C:867
 msgid "Building LinuxDoc SGML file `"
 msgstr "Gradim datoteko LinuxDoc SGML `"
 
-#: src/lyx_cb.C:874
+#: src/lyx_cb.C:872
 msgid "LinuxDoc SGML file save as"
 msgstr "Shrani datoteko LinuxDoc SGML kot"
 
-#: src/lyx_cb.C:885
+#: src/lyx_cb.C:883
 #, fuzzy
 msgid "Document class must be docbook."
 msgstr "Razred besedila mora biti linuxdoc."
 
-#: src/lyx_cb.C:902
+#: src/lyx_cb.C:900
 #, fuzzy
 msgid "Building DocBook SGML file `"
 msgstr "Gradim datoteko LinuxDoc SGML `"
 
-#: src/lyx_cb.C:907
+#: src/lyx_cb.C:905
 #, fuzzy
 msgid "DocBook SGML file save as"
 msgstr "Shrani datoteko LinuxDoc SGML kot"
 
-#: src/lyx_cb.C:931
+#: src/lyx_cb.C:929
 msgid "Ascii file saved as"
 msgstr "Datoteka ASCII shranjena kot"
 
-#: src/lyx_cb.C:999
+#: src/lyx_cb.C:995
 msgid "Autosaving current document..."
 msgstr "Samodejno shranjujem trenutni spis..."
 
-#: src/lyx_cb.C:1039
+#: src/lyx_cb.C:1035
 msgid "Autosave Failed!"
 msgstr "Sámoshranjevanju spodletelo!"
 
-#: src/lyx_cb.C:1095
+#: src/lyx_cb.C:1091
 msgid "File to Insert"
 msgstr "Datoteka za vstavek"
 
-#: src/lyx_cb.C:1105
+#: src/lyx_cb.C:1101
 msgid "Error! Specified file is unreadable: "
 msgstr ""
 
-#: src/lyx_cb.C:1112
+#: src/lyx_cb.C:1108
 #, fuzzy
 msgid "Error! Cannot open specified file: "
 msgstr "Napaka! Ne morem odpreti doloèene datoteke:"
 
-#: src/lyx_cb.C:1148
+#: src/lyx_cb.C:1144
 msgid "Table Of Contents"
 msgstr "Kazalo vsebine"
 
-#: src/lyx_cb.C:1164 src/mathed/formula.C:1049
+#: src/lyx_cb.C:1160 src/mathed/formula.C:1049
 msgid "Enter new label to insert:"
 msgstr "Vnesite novo oznako za vstavitev:"
 
-#: src/lyx_cb.C:1184
+#: src/lyx_cb.C:1180
 msgid "Insert Reference"
 msgstr "Vstavi referenco"
 
-#: src/lyx_cb.C:1218
+#: src/lyx_cb.C:1214
 msgid "Inserting Footnote..."
 msgstr "Vstavi opombo v nogi..."
 
 #. Import file
-#: src/lyx_cb.C:1281
+#: src/lyx_cb.C:1277
 msgid "Importing LinuxDoc SGML file `"
 msgstr "Uvozi datoteko LinuxDoc SGML `"
 
 #. TeX output asked
-#: src/lyx_cb.C:1289
+#: src/lyx_cb.C:1285
 msgid "Converting LinuxDoc SGML to TeX file..."
 msgstr "Pretvarjam LinuxDoc SGML v datoteko za TeX..."
 
 #. dvi output asked
-#: src/lyx_cb.C:1296
+#: src/lyx_cb.C:1292
 msgid "Converting LinuxDoc SGML to dvi file..."
 msgstr "Pretvarjam LinuxDoc SGML v datoteko dvi..."
 
-#. dvi output asked
-#: src/lyx_cb.C:1353
+#: src/lyx_cb.C:1345
 #, fuzzy
 msgid "Converting DocBook SGML to dvi file..."
 msgstr "Pretvarjam LinuxDoc SGML v datoteko dvi..."
 
-#: src/lyx_cb.C:1478
+#: src/lyx_cb.C:1461
 msgid "Character Style"
 msgstr "Znakovni stil"
 
-#: src/lyx_cb.C:1686
+#: src/lyx_cb.C:1667
 msgid "Paragraph Environment"
 msgstr "Okolje odstavka"
 
-#: src/lyx_cb.C:1937
+#: src/lyx_cb.C:1922
 msgid "Document Layout"
 msgstr "Izgled spisa"
 
-#: src/lyx_cb.C:1975
+#: src/lyx_cb.C:1961
 msgid "Quotes"
 msgstr "Narekovaji"
 
-#: src/lyx_cb.C:2022
+#: src/lyx_cb.C:2008
 msgid "LaTeX Preamble"
 msgstr "Vzglavje LaTeXa"
 
-#: src/lyx_cb.C:2038
+#: src/lyx_cb.C:2025
 msgid "Do you want to save the current settings"
 msgstr "Ali ¾elite shraniti trenutne nastavitve"
 
-#: src/lyx_cb.C:2039
+#: src/lyx_cb.C:2026
 msgid "for Character, Document, Paper and Quotes"
 msgstr "za Znake, Spis, Papir in Narekovaje"
 
-#: src/lyx_cb.C:2040
+#: src/lyx_cb.C:2027
 msgid "as default for new documents?"
 msgstr "kot privzete za nove spise?"
 
-#: src/lyx_cb.C:2056 src/lyx_cb.C:2068
+#: src/lyx_cb.C:2043 src/lyx_cb.C:2056
 msgid "Open/Close..."
 msgstr "Odpri/Zapri..."
 
-#: src/lyx_cb.C:2091
+#: src/lyx_cb.C:2079
 msgid "No further undo information"
 msgstr "Ni nadaljnjih razveljavitvenih informacij"
 
-#: src/lyx_cb.C:2101
+#: src/lyx_cb.C:2089
 msgid "Redo not yet supported in math mode"
 msgstr "Ponovitev ¹e ni podprta v matematiènem naèinu"
 
-#: src/lyx_cb.C:2111
+#: src/lyx_cb.C:2099
 msgid "No further redo information"
 msgstr "Ni nadaljnjih ponovitvenih informacij"
 
-#: src/lyx_cb.C:2300
+#: src/lyx_cb.C:2288
 msgid "Font: "
 msgstr "Pisava: "
 
-#: src/lyx_cb.C:2304
+#: src/lyx_cb.C:2292
 msgid ", Depth: "
 msgstr ", globina: "
 
-#: src/lyx_cb.C:2332
+#: src/lyx_cb.C:2320
 msgid "Inserting margin note..."
 msgstr "Vstavljam opombo na robu..."
 
-#: src/lyx_cb.C:2373
+#: src/lyx_cb.C:2361
 msgid "Paragraph environment type copied"
 msgstr "Prekopiran tip okolja odstavka"
 
-#: src/lyx_cb.C:2382
+#: src/lyx_cb.C:2370
 msgid "Paragraph environment type set"
 msgstr "Nastavljen tip okolja odstavka"
 
-#: src/lyx_cb.C:2473
+#: src/lyx_cb.C:2461
 msgid "Changed environment depth (in possible range, maybe not)"
 msgstr "Spremenjena globina okolja (v mo¾nem razponu, morda tudi ne)"
 
-#: src/lyx_cb.C:2711
+#: src/lyx_cb.C:2698
 msgid "Paragraph layout set"
 msgstr "Nastavljen izgled odstavka"
 
-#: src/lyx_cb.C:2781
+#: src/lyx_cb.C:2768
 msgid "Should I set some parameters to"
 msgstr "Ali naj nastavim nekatere parametre"
 
-#: src/lyx_cb.C:2783
+#: src/lyx_cb.C:2770
 msgid "the defaults of this document class?"
 msgstr "na privzete vrednosti tega razreda spisa?"
 
 #. unable to load new style
-#: src/lyx_cb.C:2792 src/lyx_cb.C:2911 src/lyx_cb.C:2918
+#: src/lyx_cb.C:2779 src/lyx_cb.C:2898 src/lyx_cb.C:2905
 msgid "Conversion Errors!"
 msgstr "Napake pri pretvarjanju!"
 
-#: src/lyx_cb.C:2793 src/lyx_cb.C:2919
+#: src/lyx_cb.C:2780 src/lyx_cb.C:2906
 msgid "Unable to switch to new document class."
 msgstr "Ne morem preklopiti na novi razred spisa."
 
-#: src/lyx_cb.C:2794 src/lyx_cb.C:2920
+#: src/lyx_cb.C:2781 src/lyx_cb.C:2907
 msgid "Reverting to original document class."
 msgstr "Vraèam se na izvorni razred spisa."
 
-#: src/lyx_cb.C:2894
+#: src/lyx_cb.C:2881
 msgid "Converting document to new document class..."
 msgstr "Pretvarjam spis v nov razred spisa..."
 
-#: src/lyx_cb.C:2906
+#: src/lyx_cb.C:2893
 msgid "One paragraph couldn't be converted"
 msgstr "En odstavek ne more biti pretvorjen"
 
-#: src/lyx_cb.C:2909
+#: src/lyx_cb.C:2896
 msgid " paragraphs couldn't be converted"
 msgstr " odstavkov ne more biti pretvorjenih"
 
-#: src/lyx_cb.C:2912
+#: src/lyx_cb.C:2899
 msgid "into chosen document class"
 msgstr "v izbrani razred spisa"
 
-#: src/lyx_cb.C:2998
+#: src/lyx_cb.C:2985
 msgid "Document layout set"
 msgstr "Nastavitev izgleda spisa"
 
-#: src/lyx_cb.C:3048 src/lyx_cb.C:3052
+#: src/lyx_cb.C:3035 src/lyx_cb.C:3039
 msgid "No more notes"
 msgstr "Ni veè opomb"
 
-#: src/lyx_cb.C:3083
+#: src/lyx_cb.C:3070
 msgid "Quotes type set"
 msgstr "Nastavitev vrste narekovajev"
 
-#: src/lyx_cb.C:3147
+#: src/lyx_cb.C:3134
 msgid "LaTeX preamble set"
 msgstr "Nastavitev vzglavja LaTeXa"
 
-#: src/lyx_cb.C:3169
+#: src/lyx_cb.C:3155
 msgid "Cannot insert table in table."
 msgstr "Ne morem vstaviti tabele v tabelo."
 
-#: src/lyx_cb.C:3174
+#: src/lyx_cb.C:3160
 msgid "Inserting table..."
 msgstr "Vstavljam tabelo..."
 
-#: src/lyx_cb.C:3234
+#: src/lyx_cb.C:3222
 msgid "Table inserted"
 msgstr "Tabela vstavljena"
 
-#: src/lyx_cb.C:3290 src/lyx_cb.C:3308
+#: src/lyx_cb.C:3278 src/lyx_cb.C:3296
 msgid "ERROR!  Unable to print!"
 msgstr "NAPAKA!  Ne morem tiskati!"
 
-#: src/lyx_cb.C:3291
+#: src/lyx_cb.C:3279
 msgid "Check 'range of pages'!"
 msgstr "Preverite 'obseg strani'!"
 
-#: src/lyx_cb.C:3309
+#: src/lyx_cb.C:3297
 msgid "Check 'number of copies'!"
 msgstr "Preverite '¹tevilo izvodov'!"
 
-#: src/lyx_cb.C:3420
+#: src/lyx_cb.C:3407
 msgid "Error:"
 msgstr "Napaka:"
 
-#: src/lyx_cb.C:3421
+#: src/lyx_cb.C:3408
 msgid "Unable to print"
 msgstr "Ne morem tiskati"
 
-#: src/lyx_cb.C:3422
+#: src/lyx_cb.C:3409
 msgid "Check that your parameters are correct"
 msgstr "Preverite, da so va¹i parametri pravilni"
 
-#: src/lyx_cb.C:3444
+#: src/lyx_cb.C:3431
 msgid "Inserting figure..."
 msgstr "Vstavljam sliko..."
 
-#: src/lyx_cb.C:3449 src/lyx_cb.C:3499
+#: src/lyx_cb.C:3436 src/lyx_cb.C:3487
 msgid "Figure inserted"
 msgstr "Slika vstavljena"
 
-#: src/lyx_cb.C:3528
+#: src/lyx_cb.C:3517
 msgid "Screen options set"
 msgstr "Nastavitev zaslonskih izbir"
 
-#: src/lyx_cb.C:3558
+#: src/lyx_cb.C:3547
 msgid "LaTeX Options"
 msgstr "Izbire za LaTeX"
 
-#: src/lyx_cb.C:3567
+#: src/lyx_cb.C:3556
 msgid "Running configure..."
 msgstr "Poganjam prikrojitev..."
 
-#: src/lyx_cb.C:3574
+#: src/lyx_cb.C:3563
 msgid "Reloading configuration..."
 msgstr "Ponovno nalagam prikrojitev..."
 
-#: src/lyx_cb.C:3576
+#: src/lyx_cb.C:3565
 msgid "The system has been reconfigured."
 msgstr "Sistem je bil ponovno prikrojen."
 
-#: src/lyx_cb.C:3577
+#: src/lyx_cb.C:3566
 msgid "You need to restart LyX to make use of any"
 msgstr "Ponovno morate zagnati LyX, da uporabite katerekoli"
 
-#: src/lyx_cb.C:3578
+#: src/lyx_cb.C:3567
 msgid "updated document class specifications."
 msgstr "osve¾ene doloèitve razreda spisa."
 
-#: src/lyx_cb.C:3698
+#: src/lyx_cb.C:3685
 msgid "Couldn't find this label"
 msgstr "Ne najdem te oznake"
 
-#: src/lyx_cb.C:3699
+#: src/lyx_cb.C:3686
 msgid "in current document."
 msgstr "v trenutnem spisu."
 
-#: src/lyx_cb.C:3730
+#: src/lyx_cb.C:3718
 msgid "*** No Document ***"
 msgstr "*** Ni spisa ***"
 
-#: src/lyx_cb.C:3897
+#: src/lyx_cb.C:3885
 msgid "*** No labels found in document ***"
 msgstr "*** Nobene oznake najdete v spisu ***"
 
@@ -2766,7 +2783,7 @@ msgstr "odprt."
 msgid "Unknown sequence:"
 msgstr "Neznano zaporedje:"
 
-#: src/lyxfunc.C:323 src/lyxfunc.C:2492
+#: src/lyxfunc.C:323 src/lyxfunc.C:2489
 msgid "Unknown action"
 msgstr "Neznana akcija"
 
@@ -2862,27 +2879,27 @@ msgstr "Naèin matematiènega urejanja"
 msgid "This is only allowed in math mode!"
 msgstr "To je dovoljeno le v matematiènem naèinu!"
 
-#: src/lyxfunc.C:2357
+#: src/lyxfunc.C:2354
 msgid "Opening child document "
 msgstr "Odpiram podrejeni spis "
 
-#: src/lyxfunc.C:2389
+#: src/lyxfunc.C:2386
 msgid "Unknown kind of footnote"
 msgstr "Neznana vrsta opombe v nogi"
 
-#: src/lyxfunc.C:2451
+#: src/lyxfunc.C:2448
 msgid "Document is read only"
 msgstr "Spis je le za branje"
 
-#: src/lyxfunc.C:2544
+#: src/lyxfunc.C:2541
 msgid "Enter Filename for new document"
 msgstr "Vstavite ime datoteke za novi spis"
 
-#: src/lyxfunc.C:2545
+#: src/lyxfunc.C:2542
 msgid "newfile"
 msgstr "novadatoteka"
 
-#: src/lyxfunc.C:2564 src/lyxfunc.C:2703 src/lyxfunc.C:2782
+#: src/lyxfunc.C:2561 src/lyxfunc.C:2700 src/lyxfunc.C:2779
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -2890,105 +2907,105 @@ msgstr ""
 "Ali ¾elite zdaj zapreti ta spis?\n"
 "('Ne' bo le preklopilo na odprto razlièico)"
 
-#: src/lyxfunc.C:2587
+#: src/lyxfunc.C:2584
 msgid "Do you want to open the document?"
 msgstr "Ali ¾elite odpreti spis?"
 
 #. loads document
-#: src/lyxfunc.C:2589 src/lyxfunc.C:2652
+#: src/lyxfunc.C:2586 src/lyxfunc.C:2649
 msgid "Opening document"
 msgstr "Odpiram spis"
 
-#: src/lyxfunc.C:2596 src/lyxfunc.C:2659
+#: src/lyxfunc.C:2593 src/lyxfunc.C:2656
 msgid "opened."
 msgstr "odprt."
 
-#: src/lyxfunc.C:2605
+#: src/lyxfunc.C:2602
 msgid "Choose template"
 msgstr "Izberi vzorec"
 
-#: src/lyxfunc.C:2633 src/lyxfunc.C:2682 src/lyxfunc.C:2755 src/lyxfunc.C:2856
+#: src/lyxfunc.C:2630 src/lyxfunc.C:2679 src/lyxfunc.C:2752 src/lyxfunc.C:2853
 msgid "Examples"
 msgstr "Primeri"
 
-#: src/lyxfunc.C:2635
+#: src/lyxfunc.C:2632
 msgid "Select Document to Open"
 msgstr "Izberi spis za odprtje"
 
-#: src/lyxfunc.C:2661
+#: src/lyxfunc.C:2658
 msgid "Could not open document"
 msgstr "Ne morem odpreti spisa"
 
-#: src/lyxfunc.C:2684
+#: src/lyxfunc.C:2681
 msgid "Select ASCII file to Import"
 msgstr "Izberi datoteko ASCII za uvoz"
 
-#: src/lyxfunc.C:2722 src/lyxfunc.C:2802
+#: src/lyxfunc.C:2719 src/lyxfunc.C:2799
 msgid "A document by the name"
 msgstr "Spis z imenom"
 
-#: src/lyxfunc.C:2724 src/lyxfunc.C:2804
+#: src/lyxfunc.C:2721 src/lyxfunc.C:2801
 msgid "already exists. Overwrite?"
 msgstr "¾e obstaja. Prepi¹em?"
 
-#: src/lyxfunc.C:2730
+#: src/lyxfunc.C:2727
 msgid "Importing ASCII file"
 msgstr "Uvoz datoteke ASCII"
 
-#: src/lyxfunc.C:2734
+#: src/lyxfunc.C:2731
 msgid "ASCII file "
 msgstr "Datoteka ASCII "
 
-#: src/lyxfunc.C:2736 src/lyxfunc.C:2827
+#: src/lyxfunc.C:2733 src/lyxfunc.C:2824
 msgid "imported."
 msgstr "uvo¾ena."
 
-#: src/lyxfunc.C:2759
+#: src/lyxfunc.C:2756
 msgid "Select Noweb file to Import"
 msgstr "Izberi datoteko Noweb za uvoz"
 
-#: src/lyxfunc.C:2762
+#: src/lyxfunc.C:2759
 msgid "Select LaTeX file to Import"
 msgstr "Izberi datoteko LaTeX za uvoz"
 
-#: src/lyxfunc.C:2812
+#: src/lyxfunc.C:2809
 msgid "Importing LaTeX file"
 msgstr "Uva¾am datoteko za LaTeX"
 
-#: src/lyxfunc.C:2817
+#: src/lyxfunc.C:2814
 msgid "Importing Noweb file"
 msgstr "Uva¾am datoteko za Noweb"
 
-#: src/lyxfunc.C:2825
+#: src/lyxfunc.C:2822
 msgid "Noweb file "
 msgstr "Datoteka za Noweb "
 
-#: src/lyxfunc.C:2825
+#: src/lyxfunc.C:2822
 msgid "LateX file "
 msgstr "Datoteka za LaTeX "
 
-#: src/lyxfunc.C:2830
+#: src/lyxfunc.C:2827
 msgid "Could not import Noweb file"
 msgstr "Ne morem uvoziti datoteke za Noweb"
 
-#: src/lyxfunc.C:2831
+#: src/lyxfunc.C:2828
 msgid "Could not import LaTeX file"
 msgstr "Ne morem uvoziti datoteke za LaTeX"
 
-#: src/lyxfunc.C:2858
+#: src/lyxfunc.C:2855
 msgid "Select Document to Insert"
 msgstr "Izberite spis za vstavitev"
 
 #. Inserts document
-#: src/lyxfunc.C:2876
+#: src/lyxfunc.C:2873
 msgid "Inserting document"
 msgstr "Vstavljam spis"
 
-#: src/lyxfunc.C:2882
+#: src/lyxfunc.C:2879
 msgid "inserted."
 msgstr "vstavljen."
 
-#: src/lyxfunc.C:2884
+#: src/lyxfunc.C:2881
 msgid "Could not insert document"
 msgstr "Ne morem vstaviti spisa"
 
@@ -3209,11 +3226,11 @@ msgid ""
 "Check the LyX man page for more options."
 msgstr ""
 
-#: src/lyx_main.C:489
+#: src/lyx_main.C:486
 msgid "Missing number for -dbg switch!"
 msgstr "Manjka ¹tevilka za stikalo -dbg!"
 
-#: src/lyx_main.C:504
+#: src/lyx_main.C:501
 msgid "Missing directory for -sysdir switch!"
 msgstr "Manjka imenik za stikalo -sysdir!"
 
@@ -3378,6 +3395,12 @@ msgstr "Nepravilna operacija v matematiènem naèinu!"
 #: src/mathed/formulamacro.C:145 src/mathed/formulamacro.C:169
 msgid "Macro: "
 msgstr "Makroukaz: "
+
+#. / what appears in the minibuffer when opening
+#: src/mathed/formulamacro.h:62
+#, fuzzy
+msgid "Math macro editor mode"
+msgstr "Naèin matematiènega urejanja"
 
 #: src/mathed/math_forms.C:19
 msgid "Close "
@@ -4887,43 +4910,3 @@ msgstr "Ne morem razkosati tabele."
 #: src/text.C:3927
 msgid "Float would include float!"
 msgstr "Plovka bi vkljuèevala plovko!"
-
-#~ msgid "Change itemize bullet settings"
-#~ msgstr "Spremeni nastavitve pike pri na¹tevanju"
-
-#~ msgid "Specify paper size and margins"
-#~ msgstr "Doloèi velikost papirja in robove"
-
-#~ msgid "Insert menu separator"
-#~ msgstr "Vstavi loènico med menuji"
-
-#~ msgid "Reference Type"
-#~ msgstr "Tip reference"
-
-#~ msgid "Goto Label"
-#~ msgstr "Pojdi na oznako"
-
-#~ msgid "Change Label"
-#~ msgstr "Spremeni oznako"
-
-#~ msgid "Page Number"
-#~ msgstr "©tevilka strani"
-
-#~ msgid "Reference"
-#~ msgstr "Referenca"
-
-#~ msgid "Sorry, can't do this while pictures are being rendered."
-#~ msgstr "®al, tega ne morem storiti med upodabljanjem slik."
-
-#~ msgid "Please wait a few seconds for this to finish and try again."
-#~ msgstr ""
-#~ "Prosim, poèakajte nekaj sekund, da se to konèa, in poskusite ponovno."
-
-#~ msgid "(or kill runaway gs processes by hand and try again.)"
-#~ msgstr "(ali roèno pobijte pobegli proces gs in poskusite ponovno)."
-
-#~ msgid "Can't do this while the spellchecker is running."
-#~ msgstr "Tega ne morem storiti med tekom èrkovalnika."
-
-#~ msgid "Stop the spellchecker first."
-#~ msgstr "Najprej ustavite èrkovalnik."

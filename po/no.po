@@ -4,9 +4,9 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: lyx 1.1.2\n"
-"POT-Creation-Date: 1999-11-24 23:27+0100\n"
-"PO-Revision-Date: 1999-11-24 23:54+01:00\n"
+"Project-Id-Version: lyx 1.1.3\n"
+"POT-Creation-Date: 1999-11-30 23:57+0100\n"
+"PO-Revision-Date: 1999-12-01 00:24+01:00\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 
 #. sgml2lyx failed
 #: src/buffer.C:223 src/buffer.C:233 src/buffer.C:3575 src/bufferlist.C:513
-#: src/bufferlist.C:543 src/lyx_cb.C:519 src/lyx_cb.C:852 src/lyx_cb.C:885
+#: src/bufferlist.C:543 src/lyx_cb.C:517 src/lyx_cb.C:850 src/lyx_cb.C:882
 #: src/lyx_sendfax_main.C:262
 msgid "Error!"
 msgstr "Feil!"
@@ -187,7 +187,7 @@ msgstr "Feil! Kan ikke åpne temporær fil:"
 msgid "Error executing *roff command on table"
 msgstr "Feil under eksekvering av *roff kommando på tabell"
 
-#: src/buffer.C:3772 src/lyx_cb.C:3168 src/text.C:1847
+#: src/buffer.C:3772 src/lyx_cb.C:3154 src/text.C:1847
 msgid "Impossible Operation!"
 msgstr "Umulig operasjon!"
 
@@ -195,7 +195,7 @@ msgstr "Umulig operasjon!"
 msgid "Cannot insert table/list in table."
 msgstr "Kan ikke sette inn tabell/liste i tabell."
 
-#: src/buffer.C:3774 src/lyx_cb.C:3170 src/text.C:1849 src/text.C:3888
+#: src/buffer.C:3774 src/lyx_cb.C:3156 src/text.C:1849 src/text.C:3888
 #: src/text.C:3896 src/text.C:3911 src/text.C:3928 src/text2.C:2102
 #: src/text2.C:2112
 msgid "Sorry."
@@ -282,8 +282,8 @@ msgstr "Kan ikke åpne mal"
 msgid "Could not convert file"
 msgstr "Kunne ikke konvertere filen"
 
-#: src/bufferlist.C:557 src/lyxfunc.C:2562 src/lyxfunc.C:2701
-#: src/lyxfunc.C:2780
+#: src/bufferlist.C:557 src/lyxfunc.C:2559 src/lyxfunc.C:2698
+#: src/lyxfunc.C:2777
 msgid "Document is already open:"
 msgstr "Dokumentet er allerede åpent:"
 
@@ -321,7 +321,7 @@ msgstr "Størrelse|#S"
 
 #: src/bullet_forms.C:51 src/credits_form.C:19 src/credits_form.C:59
 #: src/form1.C:43 src/form1.C:117 src/form1.C:261 src/form1.C:284
-#: src/insets/insetbib.C:87 src/insets/insetbib.C:115
+#: src/insets/insetbib.C:89 src/insets/insetbib.C:117
 #: src/insets/insetinclude.C:47 src/insets/insetindex.C:56
 #: src/latexoptions.C:21 src/layout_forms.C:72 src/layout_forms.C:277
 #: src/layout_forms.C:413 src/layout_forms.C:477 src/layout_forms.C:697
@@ -341,8 +341,8 @@ msgid "Apply|#A"
 msgstr "Bruk|#B"
 
 #: src/bullet_forms.C:57 src/form1.C:120 src/form1.C:264 src/form1.C:290
-#: src/insets/insetbib.C:90 src/insets/insetbib.C:91 src/insets/insetbib.C:118
-#: src/insets/insetbib.C:119 src/insets/insetinclude.C:50
+#: src/insets/insetbib.C:92 src/insets/insetbib.C:93 src/insets/insetbib.C:120
+#: src/insets/insetbib.C:121 src/insets/insetinclude.C:50
 #: src/insets/insetinclude.C:51 src/insets/insetindex.C:60
 #: src/insets/insetindex.C:61 src/latexoptions.C:27 src/layout_forms.C:64
 #: src/layout_forms.C:285 src/layout_forms.C:391 src/layout_forms.C:419
@@ -753,59 +753,64 @@ msgstr "Eksakt ord|#k"
 msgid "Replace All|#A#a"
 msgstr "Erstatt Alle|#A#a"
 
-#: src/insets/figinset.C:1090
+#: src/insets/figinset.C:1097
 msgid "[render error]"
 msgstr "[rendre feil]"
 
-#: src/insets/figinset.C:1091
+#: src/insets/figinset.C:1098
 msgid "[rendering ... ]"
 msgstr "[rendrer ...]"
 
-#: src/insets/figinset.C:1093
+#: src/insets/figinset.C:1100
 msgid "[no file]"
 msgstr "[ingen fil]"
 
-#: src/insets/figinset.C:1094
+#: src/insets/figinset.C:1101
 msgid "[not displayed]"
 msgstr "[ikke vist]"
 
-#: src/insets/figinset.C:1095
+#: src/insets/figinset.C:1102
 msgid "[no ghostscript]"
 msgstr "[ingen ghostscript]"
 
-#: src/insets/figinset.C:1097
+#: src/insets/figinset.C:1104
 msgid "[unknown error]"
 msgstr "[ukjent feil]"
 
-#: src/insets/figinset.C:1294
+#: src/insets/figinset.C:1301
 msgid "Figure"
 msgstr "Figur"
 
-#: src/insets/figinset.C:1356 src/insets/figinset.C:1494
+#: src/insets/figinset.C:1363 src/insets/figinset.C:1501
 msgid "empty figure path"
 msgstr "tom figur filsti"
 
-#: src/insets/figinset.C:2153
+#: src/insets/figinset.C:2160
 msgid "Clipart"
 msgstr "Utklippsbilder"
 
-#: src/insets/figinset.C:2154 src/lyxfunc.C:2594 src/lyxfunc.C:2657
-#: src/lyxfunc.C:2880
+#: src/insets/figinset.C:2161 src/lyxfunc.C:2591 src/lyxfunc.C:2654
+#: src/lyxfunc.C:2877
 msgid "Document"
 msgstr "Dokumentet"
 
-#: src/insets/figinset.C:2160 src/insets/figinset.C:2163
+#: src/insets/figinset.C:2167 src/insets/figinset.C:2170
 msgid "EPS Figure"
 msgstr "EPS Figur"
 
-#: src/insets/figinset.C:2177
+#: src/insets/figinset.C:2184
 msgid "Filename can't contain any of these characters:"
 msgstr "Filnavn kan ikke inneholde noen av disse tegnene:"
 
-#: src/insets/figinset.C:2178
+#: src/insets/figinset.C:2185
 #, no-c-format
 msgid "space, '#', '~', '$' or '%'."
 msgstr "mellomrom, '#', '~', '$' or '%'."
+
+#. / what appears in the minibuffer when opening
+#: src/insets/figinset.h:50
+msgid "Opened figure"
+msgstr "Åpnet figur"
 
 #: src/insets/form_url.C:19
 msgid "Url"
@@ -838,50 +843,50 @@ msgstr "HTML type|#H"
 msgid "Close"
 msgstr "Lukk"
 
-#: src/insets/insetbib.C:80
+#: src/insets/insetbib.C:82
 msgid "Key:"
 msgstr "Tast:"
 
-#: src/insets/insetbib.C:94 src/insets/insetbib.C:95
+#: src/insets/insetbib.C:96 src/insets/insetbib.C:97
 msgid "Remark:|#R"
 msgstr "Bemerk:|#B"
 
 #. InsetBibtex uses the same form, with different labels
-#: src/insets/insetbib.C:112 src/insets/insetbib.C:113
-#: src/insets/insetbib.C:264 src/insets/insetbib.C:265
+#: src/insets/insetbib.C:114 src/insets/insetbib.C:115
+#: src/insets/insetbib.C:266 src/insets/insetbib.C:267
 msgid "Key:|#K"
 msgstr "Tast:|#T"
 
-#: src/insets/insetbib.C:122 src/insets/insetbib.C:123
-#: src/insets/insetbib.C:266 src/insets/insetbib.C:267
+#: src/insets/insetbib.C:124 src/insets/insetbib.C:125
+#: src/insets/insetbib.C:268 src/insets/insetbib.C:269
 msgid "Label:|#L"
 msgstr "Merke:|#M"
 
-#: src/insets/insetbib.C:169
+#: src/insets/insetbib.C:171
 msgid "Citation"
 msgstr "Sitering"
 
-#: src/insets/insetbib.C:275
+#: src/insets/insetbib.C:277
 msgid "Bibliography item"
 msgstr "Referanse del"
 
-#: src/insets/insetbib.C:290
+#: src/insets/insetbib.C:292
 msgid "BibTeX Generated References"
 msgstr "BibTeX genererte referanser"
 
-#: src/insets/insetbib.C:405
+#: src/insets/insetbib.C:407
 msgid "Database:"
 msgstr "Database:"
 
-#: src/insets/insetbib.C:406
+#: src/insets/insetbib.C:408
 msgid "Style:  "
 msgstr "Stil:   "
 
-#: src/insets/insetbib.C:414
+#: src/insets/insetbib.C:416
 msgid "BibTeX"
 msgstr "BibTeX"
 
-#: src/insets/inseterror.C:66 src/insets/inseterror.C:85 src/lyx_cb.C:3697
+#: src/insets/inseterror.C:66 src/insets/inseterror.C:85 src/lyx_cb.C:3684
 msgid "Error"
 msgstr "Feil"
 
@@ -927,8 +932,8 @@ msgid "Use include|#U"
 msgstr "Bruk include|#c"
 
 #. launches dialog
-#: src/insets/insetinclude.C:111 src/lyx_cb.C:366 src/lyxfunc.C:2542
-#: src/lyxfunc.C:2632 src/lyxfunc.C:2681 src/lyxfunc.C:2754 src/lyxfunc.C:2855
+#: src/insets/insetinclude.C:111 src/lyx_cb.C:366 src/lyxfunc.C:2539
+#: src/lyxfunc.C:2629 src/lyxfunc.C:2678 src/lyxfunc.C:2751 src/lyxfunc.C:2852
 #: src/menus.C:177 src/menus.C:309 src/menus.C:310 src/menus.C:311
 msgid "Documents"
 msgstr "Dokumenter"
@@ -975,6 +980,11 @@ msgstr "Notis"
 msgid "Close|#C^["
 msgstr "Lukk|#L^["
 
+#. / what appears in the minibuffer when opening
+#: src/insets/insetinfo.h:60
+msgid "Opened note"
+msgstr "Åpnet notis"
+
 #. /
 #: src/insets/insetloa.h:37
 msgid "List of Algorithms"
@@ -1019,6 +1029,11 @@ msgstr "HtmlUrl: "
 msgid "Url: "
 msgstr "Url: "
 
+#. /
+#: src/insets/inseturl.h:61
+msgid "Opened Url"
+msgstr "Åpnet Url"
+
 #. / what appears in the minibuffer when opening
 #: src/insets/lyxinset.h:94
 msgid "Opened inset"
@@ -1036,15 +1051,15 @@ msgstr "Tastaturoppsett"
 msgid "   options: "
 msgstr "   opsjoner: "
 
-#: src/LaTeX.C:148 src/LaTeX.C:162 src/LaTeX.C:222 src/LaTeX.C:268
+#: src/LaTeX.C:148 src/LaTeX.C:165 src/LaTeX.C:225 src/LaTeX.C:271
 msgid "LaTeX run number "
 msgstr "LaTeX kjøring nummer "
 
-#: src/LaTeX.C:185 src/LaTeX.C:246
+#: src/LaTeX.C:188 src/LaTeX.C:249
 msgid "Running MakeIndex."
 msgstr "Kjører MakeIndex."
 
-#: src/LaTeX.C:199
+#: src/LaTeX.C:202
 msgid "Running BibTeX."
 msgstr "Kjører BibTeX."
 
@@ -1637,7 +1652,7 @@ msgstr "Åpne"
 msgid "Switch to previous document"
 msgstr "Bytt til forrige dokument"
 
-#: src/LyXAction.C:159 src/lyx_cb.C:954 src/print_form.C:72
+#: src/LyXAction.C:159 src/lyx_cb.C:950 src/print_form.C:72
 msgid "Print"
 msgstr "Skriv ut"
 
@@ -1693,11 +1708,11 @@ msgstr "Sett inn sitat"
 msgid "Execute command"
 msgstr "Utfør kommando"
 
-#: src/LyXAction.C:190 src/lyx_cb.C:2396
+#: src/LyXAction.C:190 src/lyx_cb.C:2384
 msgid "Copy"
 msgstr "Kopier"
 
-#: src/LyXAction.C:192 src/lyx_cb.C:2408
+#: src/LyXAction.C:192 src/lyx_cb.C:2396
 msgid "Cut"
 msgstr "Klipp"
 
@@ -1741,7 +1756,7 @@ msgstr "Gå til neste feil"
 msgid "Remove all error boxes"
 msgstr "Fjern alle feilbokser"
 
-#: src/LyXAction.C:222 src/lyx_cb.C:2348
+#: src/LyXAction.C:222 src/lyx_cb.C:2336
 msgid "Insert Figure"
 msgstr "Sett inn figur"
 
@@ -1901,7 +1916,7 @@ msgstr "Sett inn mattesymbol"
 msgid "Math mode"
 msgstr "Matte modus"
 
-#: src/LyXAction.C:360 src/lyx_cb.C:2439
+#: src/LyXAction.C:360 src/lyx_cb.C:2427
 msgid "Melt"
 msgstr "Smelt"
 
@@ -1921,7 +1936,7 @@ msgstr "Gå ett avsnitt opp"
 msgid "Select previous paragraph"
 msgstr "Merk forrige avsnitt"
 
-#: src/LyXAction.C:383 src/lyx_cb.C:2417
+#: src/LyXAction.C:383 src/lyx_cb.C:2405
 msgid "Paste"
 msgstr "Lim inn"
 
@@ -1937,7 +1952,7 @@ msgstr "Sett inn sitattegn"
 msgid "Reconfigure"
 msgstr "Rekonfigurer"
 
-#: src/LyXAction.C:393 src/lyx_cb.C:2106
+#: src/LyXAction.C:393 src/lyx_cb.C:2094
 msgid "Redo"
 msgstr "Gjør om"
 
@@ -1945,7 +1960,7 @@ msgstr "Gjør om"
 msgid "Insert cross reference"
 msgstr "Sett inn kryssreferanse"
 
-#: src/LyXAction.C:442 src/lyx_cb.C:2360
+#: src/LyXAction.C:442 src/lyx_cb.C:2348
 msgid "Insert Table"
 msgstr "Sett inn tabell"
 
@@ -1965,7 +1980,7 @@ msgstr "Vis innholdsfortegnelse"
 msgid "Toggle cursor does/doesn't follow the scrollbar"
 msgstr "Markør følger/følger ikke scrollbar"
 
-#: src/LyXAction.C:457 src/lyx_cb.C:2086
+#: src/LyXAction.C:457 src/lyx_cb.C:2074
 msgid "Undo"
 msgstr "Angre"
 
@@ -2037,7 +2052,7 @@ msgstr "Lagring feilet. Gi nytt navn og prøv igjen?"
 msgid "(If not, document is not saved.)"
 msgstr "(Hvis ikke blir ikke dokumentet lagret)"
 
-#: src/lyx_cb.C:367 src/lyxfunc.C:2543
+#: src/lyx_cb.C:367 src/lyxfunc.C:2540
 msgid "Templates"
 msgstr "Maler"
 
@@ -2046,9 +2061,9 @@ msgid "Enter Filename to Save Document as"
 msgstr "Skriv inn filnavnet som dokumentet skal lagres som"
 
 #. Cancel: Do nothing
-#: src/lyx_cb.C:379 src/lyxfunc.C:2549 src/lyxfunc.C:2576 src/lyxfunc.C:2641
-#: src/lyxfunc.C:2690 src/lyxfunc.C:2715 src/lyxfunc.C:2725 src/lyxfunc.C:2770
-#: src/lyxfunc.C:2795 src/lyxfunc.C:2805 src/lyxfunc.C:2864
+#: src/lyx_cb.C:379 src/lyxfunc.C:2546 src/lyxfunc.C:2573 src/lyxfunc.C:2638
+#: src/lyxfunc.C:2687 src/lyxfunc.C:2712 src/lyxfunc.C:2722 src/lyxfunc.C:2767
+#: src/lyxfunc.C:2792 src/lyxfunc.C:2802 src/lyxfunc.C:2861
 msgid "Canceled."
 msgstr "Avbrutt."
 
@@ -2084,19 +2099,19 @@ msgstr "Dokumentet finnes allerede."
 msgid "Replace file?"
 msgstr "Erstatt fil?"
 
-#: src/lyx_cb.C:449 src/lyx_cb.C:481
+#: src/lyx_cb.C:449 src/lyx_cb.C:479
 msgid "One error detected"
 msgstr "En feil oppdaget"
 
-#: src/lyx_cb.C:450 src/lyx_cb.C:482
+#: src/lyx_cb.C:450 src/lyx_cb.C:480
 msgid "You should try to fix it."
 msgstr "Du burde forsøke å fikse den."
 
-#: src/lyx_cb.C:453 src/lyx_cb.C:485
+#: src/lyx_cb.C:453 src/lyx_cb.C:483
 msgid " errors detected."
 msgstr " feil oppdaget."
 
-#: src/lyx_cb.C:454 src/lyx_cb.C:486
+#: src/lyx_cb.C:454 src/lyx_cb.C:484
 msgid "You should try to fix them."
 msgstr "Du burde forsøke å fikse dem."
 
@@ -2104,373 +2119,372 @@ msgstr "Du burde forsøke å fikse dem."
 msgid "There were errors during the LaTeX run."
 msgstr "Det ble rapportert feil under kjøring av LaTeX."
 
-#: src/lyx_cb.C:471
+#: src/lyx_cb.C:469
 msgid "Wrong type of document"
 msgstr "Feil type dokument"
 
-#: src/lyx_cb.C:472
+#: src/lyx_cb.C:470
 msgid "The Build operation is not allowed in this document"
 msgstr "Det er ikke mulig e lage programm fra dette dokumentet"
 
-#: src/lyx_cb.C:473 src/lyx_cb.C:488
+#: src/lyx_cb.C:471 src/lyx_cb.C:486
 msgid "There were errors during the Build process."
 msgstr "Det ble rapportert feil under kjøring av 'Build' prosessen."
 
-#: src/lyx_cb.C:499
+#: src/lyx_cb.C:497
 msgid "Chktex does not work with SGML derived documents."
 msgstr "Chktex fungerer ikke for SGML dokumenter."
 
-#: src/lyx_cb.C:508
+#: src/lyx_cb.C:506
 msgid "No warnings found."
 msgstr "Ingen advarsler funnet."
 
-#: src/lyx_cb.C:510
+#: src/lyx_cb.C:508
 msgid "One warning found."
 msgstr "En advarsel funnet."
 
-#: src/lyx_cb.C:511
+#: src/lyx_cb.C:509
 msgid "Use 'Edit->Go to Error' to find it."
 msgstr "Bruk 'Rediger->Gå til feil' for å finne dem."
 
-#: src/lyx_cb.C:514
+#: src/lyx_cb.C:512
 msgid " warnings found."
 msgstr " advarsler funnet."
 
-#: src/lyx_cb.C:515
+#: src/lyx_cb.C:513
 msgid "Use 'Edit->Go to Error' to find them."
 msgstr "Bruk 'Rediger->Gå til feil' for a finne dem."
 
-#: src/lyx_cb.C:517
+#: src/lyx_cb.C:515
 msgid "Chktex run successfully"
 msgstr "Chktex kjørt med sukssess"
 
-#: src/lyx_cb.C:519
+#: src/lyx_cb.C:517
 msgid "It seems chktex does not work."
 msgstr "Det virker som om chktex ikke fungerte."
 
-#: src/lyx_cb.C:603 src/lyx_cb.C:606
+#: src/lyx_cb.C:602 src/lyx_cb.C:605
 msgid "Executing command:"
 msgstr "Eksekverer kommando:"
 
-#: src/lyx_cb.C:825 src/lyx_cb.C:862 src/lyx_cb.C:895 src/lyx_cb.C:922
-#: src/lyxfunc.C:2585
+#: src/lyx_cb.C:824 src/lyx_cb.C:860 src/lyx_cb.C:893 src/lyx_cb.C:920
+#: src/lyxfunc.C:2582
 msgid "File already exists:"
 msgstr "Filen finnes allerede:"
 
-#: src/lyx_cb.C:827 src/lyx_cb.C:864 src/lyx_cb.C:897 src/lyx_cb.C:924
+#: src/lyx_cb.C:826 src/lyx_cb.C:862 src/lyx_cb.C:895 src/lyx_cb.C:922
 msgid "Do you want to overwrite the file?"
 msgstr "Ønsker du Å skrive over filen?"
 
-#: src/lyx_cb.C:828 src/lyx_cb.C:865 src/lyx_cb.C:898 src/lyx_cb.C:925
+#: src/lyx_cb.C:827 src/lyx_cb.C:863 src/lyx_cb.C:896 src/lyx_cb.C:923
 msgid "Canceled"
 msgstr "Avbrutt."
 
-#: src/lyx_cb.C:833
+#: src/lyx_cb.C:832
 msgid "DocBook does not have a latex backend"
 msgstr "DocBook har ikke en latex motor"
 
-#: src/lyx_cb.C:839
+#: src/lyx_cb.C:838
 msgid "Nice LaTeX file saved as"
 msgstr "Pen LaTeX fil lagret som"
 
-#: src/lyx_cb.C:852
+#: src/lyx_cb.C:850
 msgid "Document class must be linuxdoc."
 msgstr "Tekstklassen må være linuxdoc."
 
-#: src/lyx_cb.C:869
+#: src/lyx_cb.C:867
 msgid "Building LinuxDoc SGML file `"
 msgstr "Lager LinuxDoc SGML fil `"
 
-#: src/lyx_cb.C:874
+#: src/lyx_cb.C:872
 msgid "LinuxDoc SGML file save as"
 msgstr "LinuxDoc SGML fil lagre som"
 
-#: src/lyx_cb.C:885
+#: src/lyx_cb.C:883
 msgid "Document class must be docbook."
 msgstr "Tekstklassen må være docbook."
 
-#: src/lyx_cb.C:902
+#: src/lyx_cb.C:900
 msgid "Building DocBook SGML file `"
 msgstr "Lager DocBook SGML fil `"
 
-#: src/lyx_cb.C:907
+#: src/lyx_cb.C:905
 msgid "DocBook SGML file save as"
 msgstr "DocBook SGML fil lagre som"
 
-#: src/lyx_cb.C:931
+#: src/lyx_cb.C:929
 msgid "Ascii file saved as"
 msgstr "Ascii fil lagret som"
 
-#: src/lyx_cb.C:999
+#: src/lyx_cb.C:995
 msgid "Autosaving current document..."
 msgstr "Autolagrer gjelende dokument..."
 
-#: src/lyx_cb.C:1039
+#: src/lyx_cb.C:1035
 msgid "Autosave Failed!"
 msgstr "Autolagring feilet!"
 
-#: src/lyx_cb.C:1095
+#: src/lyx_cb.C:1091
 msgid "File to Insert"
 msgstr "Fil som skal settes inn"
 
-#: src/lyx_cb.C:1105
+#: src/lyx_cb.C:1101
 msgid "Error! Specified file is unreadable: "
 msgstr "Feil! Den spesifiserte filen kan ikke åpnes: "
 
-#: src/lyx_cb.C:1112
+#: src/lyx_cb.C:1108
 msgid "Error! Cannot open specified file: "
 msgstr "Feil! Kan ikke åpne spesifisert fil: "
 
-#: src/lyx_cb.C:1148
+#: src/lyx_cb.C:1144
 msgid "Table Of Contents"
 msgstr "Innholdsfortegnelse"
 
-#: src/lyx_cb.C:1164 src/mathed/formula.C:1049
+#: src/lyx_cb.C:1160 src/mathed/formula.C:1049
 msgid "Enter new label to insert:"
 msgstr "Skriv inn referansemerke som skal settes inn:"
 
-#: src/lyx_cb.C:1184
+#: src/lyx_cb.C:1180
 msgid "Insert Reference"
 msgstr "Sett inn referanse"
 
-#: src/lyx_cb.C:1218
+#: src/lyx_cb.C:1214
 msgid "Inserting Footnote..."
 msgstr "Setter inn fotnote..."
 
 #. Import file
-#: src/lyx_cb.C:1281
+#: src/lyx_cb.C:1277
 msgid "Importing LinuxDoc SGML file `"
 msgstr "Importerer LinuxDoc SGML fil `"
 
 #. TeX output asked
-#: src/lyx_cb.C:1289
+#: src/lyx_cb.C:1285
 msgid "Converting LinuxDoc SGML to TeX file..."
 msgstr "Konverterer LinuxDox SGML fil til TeX fil..."
 
 #. dvi output asked
-#: src/lyx_cb.C:1296
+#: src/lyx_cb.C:1292
 msgid "Converting LinuxDoc SGML to dvi file..."
 msgstr "Konverterer LinuxDoc SGML fil til dvi fil..."
 
-#. dvi output asked
-#: src/lyx_cb.C:1353
+#: src/lyx_cb.C:1345
 msgid "Converting DocBook SGML to dvi file..."
 msgstr "Konverterer DocBook SGML til DVI..."
 
-#: src/lyx_cb.C:1478
+#: src/lyx_cb.C:1461
 msgid "Character Style"
 msgstr "Tegn stil"
 
-#: src/lyx_cb.C:1686
+#: src/lyx_cb.C:1667
 msgid "Paragraph Environment"
 msgstr "Avsnittsomgivelse"
 
-#: src/lyx_cb.C:1937
+#: src/lyx_cb.C:1922
 msgid "Document Layout"
 msgstr "Dokumentstil"
 
-#: src/lyx_cb.C:1975
+#: src/lyx_cb.C:1961
 msgid "Quotes"
 msgstr "Sitattegn"
 
-#: src/lyx_cb.C:2022
+#: src/lyx_cb.C:2008
 msgid "LaTeX Preamble"
 msgstr "LaTeX Preamble"
 
-#: src/lyx_cb.C:2038
+#: src/lyx_cb.C:2025
 msgid "Do you want to save the current settings"
 msgstr "Ønsker du å lagre de nåværende innstillingene?"
 
-#: src/lyx_cb.C:2039
+#: src/lyx_cb.C:2026
 msgid "for Character, Document, Paper and Quotes"
 msgstr "for Fonter, Document, Ark og Sitering"
 
-#: src/lyx_cb.C:2040
+#: src/lyx_cb.C:2027
 msgid "as default for new documents?"
 msgstr "som standardverdier for nye dokumenter?"
 
-#: src/lyx_cb.C:2056 src/lyx_cb.C:2068
+#: src/lyx_cb.C:2043 src/lyx_cb.C:2056
 msgid "Open/Close..."
 msgstr "Åpne/Lukk..."
 
-#: src/lyx_cb.C:2091
+#: src/lyx_cb.C:2079
 msgid "No further undo information"
 msgstr "Ikke mer \"Angre\" informasjon"
 
-#: src/lyx_cb.C:2101
+#: src/lyx_cb.C:2089
 msgid "Redo not yet supported in math mode"
 msgstr "\"Gjør om\" er ennå ikke støttet i matte modus"
 
-#: src/lyx_cb.C:2111
+#: src/lyx_cb.C:2099
 msgid "No further redo information"
 msgstr "Ikke mer \"Gjør om\" informasjon"
 
-#: src/lyx_cb.C:2300
+#: src/lyx_cb.C:2288
 msgid "Font: "
 msgstr "Font: "
 
-#: src/lyx_cb.C:2304
+#: src/lyx_cb.C:2292
 msgid ", Depth: "
 msgstr ", Dybde: "
 
-#: src/lyx_cb.C:2332
+#: src/lyx_cb.C:2320
 msgid "Inserting margin note..."
 msgstr "Setter inn note i margen..."
 
-#: src/lyx_cb.C:2373
+#: src/lyx_cb.C:2361
 msgid "Paragraph environment type copied"
 msgstr "Avsnittsomgivelse kopiert"
 
-#: src/lyx_cb.C:2382
+#: src/lyx_cb.C:2370
 msgid "Paragraph environment type set"
 msgstr "Avsnittsomgivelse satt"
 
-#: src/lyx_cb.C:2473
+#: src/lyx_cb.C:2461
 msgid "Changed environment depth (in possible range, maybe not)"
 msgstr "Endret omgivelsesdybde (kanskje mulig, kanskje ikke)"
 
-#: src/lyx_cb.C:2711
+#: src/lyx_cb.C:2698
 msgid "Paragraph layout set"
 msgstr "Avsnittstil satt"
 
-#: src/lyx_cb.C:2781
+#: src/lyx_cb.C:2768
 msgid "Should I set some parameters to"
 msgstr "Skal jeg sette noen paramtere til"
 
-#: src/lyx_cb.C:2783
+#: src/lyx_cb.C:2770
 msgid "the defaults of this document class?"
 msgstr "sette standardverdiene for denne tekstklassen?"
 
 #. unable to load new style
-#: src/lyx_cb.C:2792 src/lyx_cb.C:2911 src/lyx_cb.C:2918
+#: src/lyx_cb.C:2779 src/lyx_cb.C:2898 src/lyx_cb.C:2905
 msgid "Conversion Errors!"
 msgstr "Konverteringsfeil!"
 
-#: src/lyx_cb.C:2793 src/lyx_cb.C:2919
+#: src/lyx_cb.C:2780 src/lyx_cb.C:2906
 msgid "Unable to switch to new document class."
 msgstr "Kan ikke bytte til ny dokument klasse."
 
-#: src/lyx_cb.C:2794 src/lyx_cb.C:2920
+#: src/lyx_cb.C:2781 src/lyx_cb.C:2907
 msgid "Reverting to original document class."
 msgstr "Går tilbake til opprinnelig dokument klasse."
 
-#: src/lyx_cb.C:2894
+#: src/lyx_cb.C:2881
 msgid "Converting document to new document class..."
 msgstr "Konverterer dokument til ny tekstklasse..."
 
-#: src/lyx_cb.C:2906
+#: src/lyx_cb.C:2893
 msgid "One paragraph couldn't be converted"
 msgstr "Ett avsnitt var umulig å konvertere"
 
-#: src/lyx_cb.C:2909
+#: src/lyx_cb.C:2896
 msgid " paragraphs couldn't be converted"
 msgstr " avsnitt var umulig å konvertere"
 
-#: src/lyx_cb.C:2912
+#: src/lyx_cb.C:2899
 msgid "into chosen document class"
 msgstr "til valgete tekstklasse"
 
-#: src/lyx_cb.C:2998
+#: src/lyx_cb.C:2985
 msgid "Document layout set"
 msgstr "Dokument stil satt"
 
-#: src/lyx_cb.C:3048 src/lyx_cb.C:3052
+#: src/lyx_cb.C:3035 src/lyx_cb.C:3039
 msgid "No more notes"
 msgstr "Ingen flere notiser"
 
-#: src/lyx_cb.C:3083
+#: src/lyx_cb.C:3070
 msgid "Quotes type set"
 msgstr "Sitattegn stil satt"
 
-#: src/lyx_cb.C:3147
+#: src/lyx_cb.C:3134
 msgid "LaTeX preamble set"
 msgstr "LaTeX preamble satt"
 
-#: src/lyx_cb.C:3169
+#: src/lyx_cb.C:3155
 msgid "Cannot insert table in table."
 msgstr "Kan ikke sette inn tabell i tabell."
 
-#: src/lyx_cb.C:3174
+#: src/lyx_cb.C:3160
 msgid "Inserting table..."
 msgstr "Setter inn tabell..."
 
-#: src/lyx_cb.C:3234
+#: src/lyx_cb.C:3222
 msgid "Table inserted"
 msgstr "Tabell satt inn"
 
-#: src/lyx_cb.C:3290 src/lyx_cb.C:3308
+#: src/lyx_cb.C:3278 src/lyx_cb.C:3296
 msgid "ERROR!  Unable to print!"
 msgstr "FEIL! Kan ikke skrive ut!"
 
-#: src/lyx_cb.C:3291
+#: src/lyx_cb.C:3279
 msgid "Check 'range of pages'!"
 msgstr "Sjekk 'sideintervall'!"
 
-#: src/lyx_cb.C:3309
+#: src/lyx_cb.C:3297
 msgid "Check 'number of copies'!"
 msgstr "Sjekk 'antall kopier'!"
 
-#: src/lyx_cb.C:3420
+#: src/lyx_cb.C:3407
 msgid "Error:"
 msgstr "Feil:"
 
-#: src/lyx_cb.C:3421
+#: src/lyx_cb.C:3408
 msgid "Unable to print"
 msgstr "Kan ikke lese skrive ut!"
 
-#: src/lyx_cb.C:3422
+#: src/lyx_cb.C:3409
 msgid "Check that your parameters are correct"
 msgstr "Sjekk at parameterene er riktige"
 
-#: src/lyx_cb.C:3444
+#: src/lyx_cb.C:3431
 msgid "Inserting figure..."
 msgstr "Setter inn figur..."
 
-#: src/lyx_cb.C:3449 src/lyx_cb.C:3499
+#: src/lyx_cb.C:3436 src/lyx_cb.C:3487
 msgid "Figure inserted"
 msgstr "Figur satt inn"
 
-#: src/lyx_cb.C:3528
+#: src/lyx_cb.C:3517
 msgid "Screen options set"
 msgstr "Skjemrm opsjoner satt"
 
-#: src/lyx_cb.C:3558
+#: src/lyx_cb.C:3547
 msgid "LaTeX Options"
 msgstr "LaTeX Opsjoner"
 
-#: src/lyx_cb.C:3567
+#: src/lyx_cb.C:3556
 msgid "Running configure..."
 msgstr "Kjører \"configure\"..."
 
-#: src/lyx_cb.C:3574
+#: src/lyx_cb.C:3563
 msgid "Reloading configuration..."
 msgstr "Leser konfigurasjon om igjen..."
 
-#: src/lyx_cb.C:3576
+#: src/lyx_cb.C:3565
 msgid "The system has been reconfigured."
 msgstr "Systemed har blitt rekonfigurert."
 
-#: src/lyx_cb.C:3577
+#: src/lyx_cb.C:3566
 msgid "You need to restart LyX to make use of any"
 msgstr "Du må restarte LyX for å kunne bruke de"
 
-#: src/lyx_cb.C:3578
+#: src/lyx_cb.C:3567
 msgid "updated document class specifications."
 msgstr "oppdaterte textklasse spesifikasjonene."
 
-#: src/lyx_cb.C:3698
+#: src/lyx_cb.C:3685
 msgid "Couldn't find this label"
 msgstr "Klarte ikke å finne dette referansemerket"
 
-#: src/lyx_cb.C:3699
+#: src/lyx_cb.C:3686
 msgid "in current document."
 msgstr "i gjeldende dokument."
 
-#: src/lyx_cb.C:3730
+#: src/lyx_cb.C:3718
 msgid "*** No Document ***"
 msgstr "*** Intet Dokument ***"
 
-#: src/lyx_cb.C:3897
+#: src/lyx_cb.C:3885
 msgid "*** No labels found in document ***"
 msgstr "*** Ingen referansemerker funnet i dokumentet ***"
 
@@ -2733,7 +2747,7 @@ msgstr "Funnet."
 msgid "Unknown sequence:"
 msgstr "Ukent sekvens:"
 
-#: src/lyxfunc.C:323 src/lyxfunc.C:2492
+#: src/lyxfunc.C:323 src/lyxfunc.C:2489
 msgid "Unknown action"
 msgstr "Ukjent operasjon"
 
@@ -2828,27 +2842,27 @@ msgstr "Matte editerings modus"
 msgid "This is only allowed in math mode!"
 msgstr "Dette er bare tillatt i mattemodus!"
 
-#: src/lyxfunc.C:2357
+#: src/lyxfunc.C:2354
 msgid "Opening child document "
 msgstr "Åpner subdokument "
 
-#: src/lyxfunc.C:2389
+#: src/lyxfunc.C:2386
 msgid "Unknown kind of footnote"
 msgstr "Ukjent fotnote slag"
 
-#: src/lyxfunc.C:2451
+#: src/lyxfunc.C:2448
 msgid "Document is read only"
 msgstr "Dokumentet er ikke skrivbart:"
 
-#: src/lyxfunc.C:2544
+#: src/lyxfunc.C:2541
 msgid "Enter Filename for new document"
 msgstr "Skriv inn filnavn for nytt dokument"
 
-#: src/lyxfunc.C:2545
+#: src/lyxfunc.C:2542
 msgid "newfile"
 msgstr "nyfil"
 
-#: src/lyxfunc.C:2564 src/lyxfunc.C:2703 src/lyxfunc.C:2782
+#: src/lyxfunc.C:2561 src/lyxfunc.C:2700 src/lyxfunc.C:2779
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -2856,105 +2870,105 @@ msgstr ""
 "Ønsker du å lukke det dokumentet nå?\n"
 "('Nei' vil bare bytte til den versjonen som er åpnet)"
 
-#: src/lyxfunc.C:2587
+#: src/lyxfunc.C:2584
 msgid "Do you want to open the document?"
 msgstr "Ønsker du å åpne dokumentet?"
 
 #. loads document
-#: src/lyxfunc.C:2589 src/lyxfunc.C:2652
+#: src/lyxfunc.C:2586 src/lyxfunc.C:2649
 msgid "Opening document"
 msgstr "Ønsker du å åpne dokumentet?"
 
-#: src/lyxfunc.C:2596 src/lyxfunc.C:2659
+#: src/lyxfunc.C:2593 src/lyxfunc.C:2656
 msgid "opened."
 msgstr "åpnet"
 
-#: src/lyxfunc.C:2605
+#: src/lyxfunc.C:2602
 msgid "Choose template"
 msgstr "Velg mal"
 
-#: src/lyxfunc.C:2633 src/lyxfunc.C:2682 src/lyxfunc.C:2755 src/lyxfunc.C:2856
+#: src/lyxfunc.C:2630 src/lyxfunc.C:2679 src/lyxfunc.C:2752 src/lyxfunc.C:2853
 msgid "Examples"
 msgstr "Eksempler"
 
-#: src/lyxfunc.C:2635
+#: src/lyxfunc.C:2632
 msgid "Select Document to Open"
 msgstr "Vel dokument som skal åpnes"
 
-#: src/lyxfunc.C:2661
+#: src/lyxfunc.C:2658
 msgid "Could not open document"
 msgstr "Kunne ikke åpne dokumentet"
 
-#: src/lyxfunc.C:2684
+#: src/lyxfunc.C:2681
 msgid "Select ASCII file to Import"
 msgstr "Velg ASCII fil som skal importeres"
 
-#: src/lyxfunc.C:2722 src/lyxfunc.C:2802
+#: src/lyxfunc.C:2719 src/lyxfunc.C:2799
 msgid "A document by the name"
 msgstr "Ett annet dokument med navnet"
 
-#: src/lyxfunc.C:2724 src/lyxfunc.C:2804
+#: src/lyxfunc.C:2721 src/lyxfunc.C:2801
 msgid "already exists. Overwrite?"
 msgstr "finnes allerede. Overskrive?"
 
-#: src/lyxfunc.C:2730
+#: src/lyxfunc.C:2727
 msgid "Importing ASCII file"
 msgstr "Importerer ASCII fil"
 
-#: src/lyxfunc.C:2734
+#: src/lyxfunc.C:2731
 msgid "ASCII file "
 msgstr "ASCII fil "
 
-#: src/lyxfunc.C:2736 src/lyxfunc.C:2827
+#: src/lyxfunc.C:2733 src/lyxfunc.C:2824
 msgid "imported."
 msgstr "importert."
 
-#: src/lyxfunc.C:2759
+#: src/lyxfunc.C:2756
 msgid "Select Noweb file to Import"
 msgstr "Velg Noweb fil som skal importeres"
 
-#: src/lyxfunc.C:2762
+#: src/lyxfunc.C:2759
 msgid "Select LaTeX file to Import"
 msgstr "Velg LaTeX fil som skal importeres"
 
-#: src/lyxfunc.C:2812
+#: src/lyxfunc.C:2809
 msgid "Importing LaTeX file"
 msgstr "Importerer LaTeX fil"
 
-#: src/lyxfunc.C:2817
+#: src/lyxfunc.C:2814
 msgid "Importing Noweb file"
 msgstr "Importerer Noweb fil"
 
-#: src/lyxfunc.C:2825
+#: src/lyxfunc.C:2822
 msgid "Noweb file "
 msgstr "Noweb fil "
 
-#: src/lyxfunc.C:2825
+#: src/lyxfunc.C:2822
 msgid "LateX file "
 msgstr "LaTeX fil "
 
-#: src/lyxfunc.C:2830
+#: src/lyxfunc.C:2827
 msgid "Could not import Noweb file"
 msgstr "Kunne ikke importere Noweb filen"
 
-#: src/lyxfunc.C:2831
+#: src/lyxfunc.C:2828
 msgid "Could not import LaTeX file"
 msgstr "Kunne ikke importere LaTeX filen"
 
-#: src/lyxfunc.C:2858
+#: src/lyxfunc.C:2855
 msgid "Select Document to Insert"
 msgstr "Velg dokument som skal settes inn"
 
 #. Inserts document
-#: src/lyxfunc.C:2876
+#: src/lyxfunc.C:2873
 msgid "Inserting document"
 msgstr "Setter inn dokumentet"
 
-#: src/lyxfunc.C:2882
+#: src/lyxfunc.C:2879
 msgid "inserted."
 msgstr "satt inn."
 
-#: src/lyxfunc.C:2884
+#: src/lyxfunc.C:2881
 msgid "Could not insert document"
 msgstr "Kunne ikke sette inn dokumentet"
 
@@ -3186,11 +3200,11 @@ msgstr ""
 "\n"
 "Les manual siden til LyX for flere opsjoner."
 
-#: src/lyx_main.C:489
+#: src/lyx_main.C:486
 msgid "Missing number for -dbg switch!"
 msgstr "Mangler verdi for -dbg parameter!"
 
-#: src/lyx_main.C:504
+#: src/lyx_main.C:501
 msgid "Missing directory for -sysdir switch!"
 msgstr "Mangler folder for -sysdir parameter!"
 
@@ -3353,6 +3367,11 @@ msgstr "Ugyldig operasjon i matte modus!"
 #: src/mathed/formulamacro.C:145 src/mathed/formulamacro.C:169
 msgid "Macro: "
 msgstr "Makro: "
+
+#. / what appears in the minibuffer when opening
+#: src/mathed/formulamacro.h:62
+msgid "Math macro editor mode"
+msgstr "Mattemakro editerings modus"
 
 #: src/mathed/math_forms.C:19
 msgid "Close "
