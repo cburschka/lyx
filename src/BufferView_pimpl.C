@@ -227,8 +227,10 @@ bool BufferView::Pimpl::fitCursor()
 
 	dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 
-	if (ret)
-		updateScrollbar();
+	// We need to always update, in case we did a 
+	// paste and we stayed anchored to a row, but
+	// the actual height of the doc changed ...
+	updateScrollbar();
 	return ret;
 }
 

@@ -1,3 +1,9 @@
+2003-03-29  John Levon  <levon@movementarian.org>
+
+	* BufferView_pimpl.C: always update scrollbar top
+	because pasting text when we're anchored could mean we
+	miss an update altogether
+
 2003-03-29  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* text2.C (init): use rowlist_.end() and not 0.
