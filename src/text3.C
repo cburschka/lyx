@@ -275,7 +275,7 @@ void LyXText::cursorPrevious()
 	//bv()->screen().draw(bv()->text, bv(), new_y < 0 ? 0 : new_y);
 	if (cursorRow() != rows().begin()) {
 		LyXCursor cur;
-		setCursor(cur, boost::prior(cursorRow())->par(),
+		setCursor(cur, getPar(boost::prior(cursorRow())),
 			  boost::prior(cursorRow())->pos(), false);
 		if (cur.y() > top_y()) {
 			cursorUp(true);
@@ -338,7 +338,7 @@ void LyXText::cursorNext()
 	RowList::iterator next_row = boost::next(cursorRow());
 	if (next_row != rows().end()) {
 		LyXCursor cur;
-		setCursor(cur, next_row->par(), next_row->pos(), false);
+		setCursor(cur, getPar(next_row), next_row->pos(), false);
 		if (cur.y() < top_y() + bv()->workHeight()) {
 			cursorDown(true);
 		}

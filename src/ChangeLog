@@ -1,10 +1,13 @@
 
 2003-08-11  André Pönitz  <poenitz@gmx.net>
 
-	* Makefile.am:
-	* tracer.[Ch]: remove unneeded files
+	* lyxtext.h (getPar):
+	* text.C: new function
 
 2003-08-11  André Pönitz  <poenitz@gmx.net>
+
+	* Makefile.am:
+	* tracer.[Ch]: remove unneeded files
 
 	* InsetList.[Ch]: remove resizeInsetsLyXText()
 

@@ -13,9 +13,6 @@
 #include <config.h>
 
 #include "lyxrow.h"
-#include "paragraph.h"
-#include "layout.h"
-#include "lyxlayout.h"
 #include "debug.h"
 
 using lyx::pos_type;
@@ -29,8 +26,8 @@ Row::Row()
 {}
 
 
-Row::Row(ParagraphList::iterator pit, pos_type po)
-	: pit_(pit), pos_(po), fill_(0), height_(0), width_(0), y_(0),
+Row::Row(pos_type po)
+	: pos_(po), fill_(0), height_(0), width_(0), y_(0),
 	  ascent_of_text_(0), baseline_(0)
 {}
 
@@ -47,27 +44,9 @@ unsigned int Row::y() const
 }
 
 
-ParagraphList::iterator Row::par()
-{
-	return pit_;
-}
-
-
-ParagraphList::iterator Row::par() const
-{
-	return pit_;
-}
-
-
 unsigned short Row::height() const
 {
 	return height_;
-}
-
-
-void Row::par(ParagraphList::iterator pit)
-{
-	pit_ = pit;
 }
 
 

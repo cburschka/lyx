@@ -15,7 +15,6 @@
 #ifndef LYXROW_H
 #define LYXROW_H
 
-#include "ParagraphList.h"
 #include "support/types.h"
 
 ///
@@ -24,13 +23,7 @@ public:
 	///
 	Row();
 	///
-	Row(ParagraphList::iterator pit, lyx::pos_type pos);
-	///
-	void par(ParagraphList::iterator pit);
-	///
-	ParagraphList::iterator par();
-	///
-	ParagraphList::iterator par() const;
+	Row(lyx::pos_type pos);
 	///
 	void pos(lyx::pos_type p);
 	///
@@ -68,8 +61,6 @@ public:
 	/// current debugging only
 	void dump(const char * = "") const;
 private:
-	///
-	ParagraphList::iterator pit_;
 	///
 	lyx::pos_type pos_;
 	/** what is missing to a full row. Can be negative.
