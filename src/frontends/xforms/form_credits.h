@@ -1,21 +1,20 @@
+// File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext
 /** Header file generated with fdesign **/
 
 #ifndef FD_form_credits_h_
 #define FD_form_credits_h_
 
 /** Callbacks, globals and object handlers **/
-extern "C" void CreditsOKCB(FL_OBJECT *, long);
+extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
 
 
 /**** Forms and Objects ****/
-typedef struct {
-	FL_FORM *form_credits;
-	void *vdata;
-	char *cdata;
-	long  ldata;
-	FL_OBJECT *browser_credits;
-} FD_form_credits;
+struct FD_form_credits {
+	~FD_form_credits();
 
-extern FD_form_credits * create_form_form_credits(void);
+	FL_FORM *form;
+	FL_OBJECT *button_cancel;
+	FL_OBJECT *browser_credits;
+};
 
 #endif /* FD_form_credits_h_ */

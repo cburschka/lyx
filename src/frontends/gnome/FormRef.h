@@ -18,7 +18,6 @@
 
 #include "DialogBase.h"
 #include "LString.h"
-#include "boost/utility.hpp"
 #include "insets/insetcommand.h"
 
 #include <gtk--/container.h>
@@ -31,7 +30,7 @@
 
 /** This class provides an Gnome implementation of the FormRef Dialog.
  */
-class FormRef : public DialogBase, public noncopyable {
+class FormRef : public DialogBase {
 public:
   ///
   FormRef(LyXView *, Dialogs *);

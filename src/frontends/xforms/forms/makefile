@@ -22,6 +22,7 @@ SRCS := form_bibitem.fd \
 	form_character.fd \
 	form_citation.fd \
 	form_copyright.fd \
+	form_credits.fd \
 	form_document.fd \
 	form_error.fd \
 	form_filedialog.fd \

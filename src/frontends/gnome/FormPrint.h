@@ -15,7 +15,6 @@
 #define FORMPRINT_H
 
 #include "DialogBase.h"
-#include "boost/utility.hpp"
 
 #include <gtk--/widget.h>
 #include <gtk--/radiobutton.h>
@@ -39,7 +38,7 @@ using SigC::Connection;
 /** This class provides an Gnome implementation of the FormPrint Dialog.
     The print dialog allows users to print their documents.
  */
-class FormPrint : public DialogBase, public noncopyable {
+class FormPrint : public DialogBase {
 public:
   /**@name Constructors and Destructors */
   //@{

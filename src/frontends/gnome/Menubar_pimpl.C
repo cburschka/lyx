@@ -191,12 +191,16 @@ void Menubar::Pimpl::callback(int action)
 
 void Menubar::Pimpl::callbackToc(Buffer::TocItem tg)
 {
+#if 0 
   if (!owner_->view()->available()) return;
   
   owner_->view()->beforeChange();
   owner_->view()->text->SetCursor( owner_->view(), tg.par, 0 );
   owner_->view()->text->sel_cursor = owner_->view()->text->cursor;
   owner_->view()->update(BufferView::SELECT|BufferView::FITCUR);
+#endif
+
+  owner_->getLyXFunc()->Dispatch(LFUN_GOTO_PARAGRAPH, tg.str);
 }
 
 void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::Info> & Menus, string rootpath)

@@ -18,7 +18,6 @@
 
 #include "DialogBase.h"
 #include "LString.h"
-#include "boost/utility.hpp"
 #include "insets/insetcommand.h"
 
 #include <gtk--/container.h>
@@ -27,7 +26,7 @@
 
 /** This class provides an Gnome implementation of the FormIndex Dialog.
  */
-class FormIndex : public DialogBase, public noncopyable {
+class FormIndex : public DialogBase  {
 public:
   ///
   FormIndex(LyXView *, Dialogs *);

@@ -18,7 +18,6 @@
 
 #include "DialogBase.h"
 #include "LString.h"
-#include "boost/utility.hpp"
 #include "insets/insetcommand.h"
 
 #include <gtk--/container.h>
@@ -28,7 +27,7 @@
 
 /** This class provides an Gnome implementation of the FormUrl Dialog.
  */
-class FormUrl : public DialogBase, public noncopyable {
+class FormUrl : public DialogBase {
 public:
   /**@name Constructors and Destructors */
   //@{

@@ -66,7 +66,7 @@ void FormIndex::showInset( InsetCommand * const inset )
   if( dialog_!=0 || inset == 0 ) return;
   
   inset_ = inset;
-  ih_ = inset_->hide.connect(slot(this, &FormIndex::hide));
+  ih_ = inset_->hideDialog.connect(slot(this, &FormIndex::hide));
   
   params = inset->params();
   show();

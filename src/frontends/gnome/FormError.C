@@ -55,7 +55,7 @@ void FormError::showInset( InsetError * const inset )
   if( dialog_!=0 || inset == 0 ) return;
   
   inset_ = inset;
-  ih_ = inset_->hide.connect(slot(this, &FormError::hide));
+  ih_ = inset_->hideDialog.connect(slot(this, &FormError::hide));
 
   show();
 }

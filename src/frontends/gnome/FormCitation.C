@@ -92,7 +92,7 @@ void FormCitation::showInset( InsetCommand * const inset )
   if( dialog_!=0 || inset == 0 ) return;
   
   inset_ = inset;
-  ih_ = inset_->hide.connect(slot(this, &FormCitation::hide));
+  ih_ = inset_->hideDialog.connect(slot(this, &FormCitation::hide));
 
   u_ = d_->updateBufferDependent.connect(slot(this, &FormCitation::updateSlot));
   h_ = d_->hideBufferDependent.connect(slot(this, &FormCitation::hide));

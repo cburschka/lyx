@@ -281,11 +281,11 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	LyXParagraph * selendpar = 0;
 	UpdatableInset * the_locking_inset = 0;
 	
-	int pos = 0;
-	int selstartpos = 0;
-	int selendpos = 0;
-	int selection = 0;
-	int mark_set = 0;
+	LyXParagraph::size_type pos = 0;
+	LyXParagraph::size_type selstartpos = 0;
+	LyXParagraph::size_type selendpos = 0;
+	bool selection = false;
+	bool mark_set  = false;
 
 	ProhibitInput(bv_);
 

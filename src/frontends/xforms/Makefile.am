@@ -49,6 +49,10 @@ libxforms_la_SOURCES = \
 	FormCopyright.h \
 	form_copyright.C \
 	form_copyright.h \
+	FormCredits.C \
+	FormCredits.h \
+	form_credits.C \
+	form_credits.h \
 	FormDocument.C \
 	FormDocument.h \
 	form_document.C \

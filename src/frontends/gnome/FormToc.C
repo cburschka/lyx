@@ -23,6 +23,7 @@
 #include "LyXView.h"
 #include "form_toc.h"
 #include "lyxtext.h"
+#include "lyxfunc.h"
 
 extern "C" {
 #include "diatoc_interface.h"
@@ -59,7 +60,7 @@ void FormToc::showInset( InsetCommand * const inset )
   if( dialog_!=0 || inset == 0 ) return;
   
   inset_ = inset;
-  ih_ = inset_->hide.connect(slot(this, &FormToc::hide));
+  ih_ = inset_->hideDialog.connect(slot(this, &FormToc::hide));
   
   params = inset->params();
   show();
@@ -213,42 +214,40 @@ void FormToc::updateSlot(bool)
 
 void FormToc::apply(Buffer::TocItem tg)
 {
+#if 0  
+  // Doesn't compile anymore...
   if (!lv_->view()->available()) return;
-  
+
   lv_->view()->beforeChange();
   lv_->view()->text->SetCursor( lv_->view(), tg.par, 0 );
   lv_->view()->text->sel_cursor = lv_->view()->text->cursor;
   lv_->view()->update(BufferView::SELECT|BufferView::FITCUR);
+#endif
+
+  string const str = tg.str;
+  lv_->getLyXFunc()->Dispatch(LFUN_GOTO_PARAGRAPH, str);
 }
 
 void FormToc::changeList(Buffer::TocType type)
 {
-  if (!ignore_callback_)
-    {
-      switch (type) {
-      case Buffer::TOC_TOC :
-	{
-	  params.setCmdName("tableofcontents");
-	  break;
+	if (!ignore_callback_) {
+		switch (type) {
+		case Buffer::TOC_TOC :
+			params.setCmdName("tableofcontents");
+			break;
+		case Buffer::TOC_LOF :
+			params.setCmdName("listoffigures");
+			break;
+		case Buffer::TOC_LOT :
+			params.setCmdName("listoftabels");
+			break;
+		case Buffer::TOC_LOA :
+			params.setCmdName("listofalgorithms");
+			break;
+		};
+
+		updateSlot();
 	}
-      case Buffer::TOC_LOF :
-	{
-	  params.setCmdName("listoffigures");
-	  break;
-	}
-      case Buffer::TOC_LOT :
-	{
-	  params.setCmdName("listoftabels");
-	  break;
-	}
-      case Buffer::TOC_LOA :
-	{
-	  params.setCmdName("listofalgorithms");
-	  break;
-	}
-      };
-      updateSlot();
-    }
 }
 
 void FormToc::hide()

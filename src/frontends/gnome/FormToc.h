@@ -18,7 +18,6 @@
 
 #include "DialogBase.h"
 #include "LString.h"
-#include "boost/utility.hpp"
 #include "insets/insetcommand.h"
 #include "buffer.h"
 
@@ -28,7 +27,7 @@
 
 /** This class provides an Gnome implementation of the FormToc Dialog.
  */
-class FormToc : public DialogBase, public noncopyable {
+class FormToc : public DialogBase {
 public:
   ///
   FormToc(LyXView *, Dialogs *);

@@ -105,10 +105,6 @@ lyx_SOURCES = \
 	converter.h \
 	counters.C \
 	counters.h \
-	credits.C \
-	credits.h \
-	credits_form.C \
-	credits_form.h \
 	debug.C \
 	debug.h \
 	encoding.C \

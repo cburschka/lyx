@@ -19,7 +19,6 @@
 #include "lyx_gui_misc.h"
 #include "BufferView.h"
 #include "buffer.h"
-#include "credits_form.h"
 #include "form1.h"
 #include "gettext.h"
 #include "lyx.h"
@@ -40,7 +39,6 @@ using std::endl;
 
 extern BufferView * current_view;
 
-extern FD_form_credits * fd_form_credits;
 extern FD_form_figure * fd_form_figure;
 extern FD_form_sendto * fd_form_sendto;
 extern FD_form_spell_check * fd_form_spell_check;
@@ -67,9 +65,6 @@ void RedrawAllBufferRelatedDialogs()
 	}
 	if (fd_delim && fd_delim->delim->visible) {
 		fl_redraw_form(fd_delim->delim);
-	}
-	if (fd_form_credits && fd_form_credits->form_credits->visible) {
-		fl_redraw_form(fd_form_credits->form_credits);
 	}
 	if (fd_form_figure->form_figure->visible) {
 		fl_redraw_form(fd_form_figure->form_figure);

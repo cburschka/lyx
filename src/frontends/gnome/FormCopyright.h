@@ -16,7 +16,6 @@
 
 #include "DialogBase.h"
 #include <gnome--/about.h>
-#include "boost/utility.hpp"
 
 class Dialogs;
 // same arguement as in Dialogs.h s/LyX/UI/
@@ -24,7 +23,7 @@ class LyXView;
 
 /** This class provides an GTK-- implementation of the FormCopyright Dialog.
  */
-class FormCopyright : public DialogBase, public noncopyable {
+class FormCopyright : public DialogBase {
 public:
 	/// #FormCopyright x(LyXFunc ..., Dialogs ...);#
 	FormCopyright(LyXView *, Dialogs *);

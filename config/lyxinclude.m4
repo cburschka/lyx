@@ -235,7 +235,7 @@ dnl Check the version of g++
   fi
 else
   GXX=
-  test "${CXXFLAGS+set}" = set || CXXFLAGS="-g"
+  test "${CXXFLAGS+set}" = set || CXXFLAGS=""
 fi
 ])dnl
 

@@ -18,14 +18,13 @@
 
 #include "DialogBase.h"
 #include "LString.h"
-#include "boost/utility.hpp"
 #include "insets/inseterror.h"
 
 #include <gtk--/container.h>
 
 /** This class provides an Gnome implementation of the FormError Dialog.
  */
-class FormError : public DialogBase, public noncopyable {
+class FormError : public DialogBase {
 public:
   ///
   FormError(LyXView *, Dialogs *);

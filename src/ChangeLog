@@ -1,3 +1,11 @@
+2001-03-07  Edwin Leuven  <leuven@fee.uva.nl>
+
+        * Moved credits to frontends:
+        * credits.[Ch]: removed
+	* credits_form.[Ch]: removed
+	* lyx_gui_misc.C: remove credits stuff
+	* Makefile.am:
+
 2001-03-07  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* lyx_main.C: make toplevel_keymap a boost::scoped_ptr.

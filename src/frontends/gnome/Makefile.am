@@ -41,8 +41,9 @@ libgnome_la_OBJADD = \
 	../xforms/form_url.lo \
 	../xforms/input_validators.lo \
 	../xforms/RadioButtonGroup.lo \
+	../xforms/Timeout_pimpl.lo \
 	../xforms/Toolbar_pimpl.lo \
-	../xforms/xform_helpers.lo \
+	../xforms/xforms_helpers.lo
 LIBS= 
 LDFLAGS= $(libgnome_la_OBJADD)
 LYXDATADIRS = 

@@ -18,7 +18,6 @@
 
 #include "DialogBase.h"
 #include "LString.h"
-#include "boost/utility.hpp"
 #include "insets/insetcommand.h"
 
 #include <gtk--/container.h>
@@ -33,7 +32,7 @@
 
 /** This class provides an Gnome implementation of the FormCitation Dialog.
  */
-class FormCitation : public DialogBase, public noncopyable {
+class FormCitation : public DialogBase {
 public:
   ///
   FormCitation(LyXView *, Dialogs *);
