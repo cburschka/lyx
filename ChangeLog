@@ -1,6 +1,9 @@
 2000-05-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/LColor.C (LColor): change a couple of grey40 to grey60
+	(LColor): rewore initalization to make compiles go some magnitude
+	faster.
+	(getGUIName): don't use gettext until we need the string.
 
 2000-05-09  Dekel Tsur  <dekel@math.tau.ac.il>
 

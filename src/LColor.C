@@ -35,67 +35,85 @@ void LColor::fill(LColor::color col, string const & gui,
 	infotab[col] = in;
 }
 
+struct ColorEntry {
+	LColor::color lcolor;
+	char const * guiname;
+	char const * latexname;
+	char const * x11name;
+	char const * lyxname;
+};
+
 
 LColor::LColor()
 {
 	//  LColor::color, gui, latex, x11, lyx
-	fill(none, _("none"), "none", "black", "none");
-	fill(black, _("black"), "black", "black", "black");
-	fill(white, _("white"), "white", "white", "white");
-	fill(red, _("red"), "red", "red", "red");
-	fill(green, _("green"), "green", "green", "green");
-	fill(blue, _("blue"), "blue", "blue", "blue");
-	fill(cyan, _("cyan"), "cyan", "cyan", "cyan");
-	fill(magenta, _("magenta"), "magenta", "magenta", "magenta");
-	fill(yellow, _("yellow"), "yellow", "yellow", "yellow");
-	fill(background, _("background"), "background", "linen", "background");
-	fill(foreground, _("foreground"), "foreground", "black", "foreground");
-	fill(selection, _("selection"), "selection", "LightBlue", "selection");
-	fill(latex, _("latex"), "latex", "DarkRed", "latex");
-	fill(floats, _("floats"), "floats", "red", "floats");
-	fill(note, _("note"), "note", "black", "note");
-	fill(notebg, _("note background"), "notebg", "yellow", "notebg");
-	fill(noteframe, _("note frame"), "noteframe", "black", "noteframe");
-	fill(depthbar, _("depth bar"), "depthbar", "IndianRed", "depthbar");
-	fill(command, _("command-inset"), "command", "black", "command");
-	fill(commandbg, _("command-inset background"), "commandbg", "grey80", "commandbg");
-	fill(commandframe, _("inset frame"), "commandframe", "black", "commandframe");
-	fill(accent, _("accent"), "accent", "black", "accent");
-	fill(accentbg, _("accent background"), "accentbg", "offwhite", "accentbg");
-	fill(accentframe, _("accent frame"), "accentframe", "linen", "accentframe");
-	fill(minipageline, _("minipage line"), "minipageline", "violet", "minipageline");
-	fill(special, _("special char"), "special", "RoyalBlue", "special");
-	fill(math, _("math"), "math", "DarkBlue", "math");
-	fill(mathbg, _("math background"), "mathbg", "AntiqueWhite", "mathbg");
-	fill(mathframe, _("math frame"), "mathframe", "Magenta", "mathframe");
-	fill(mathcursor, _("math cursor"), "mathcursor", "black", "mathcursor");
-	fill(mathline, _("math line"), "mathline", "Blue", "mathline");
-	fill(footnote, _("footnote"), "footnote", "DarkRed", "footnote");
-	fill(footnotebg, _("footnote background"), "footnotebg", "grey60", "footnotebg");
-	fill(footnoteframe, _("footnote frame"), "footnoteframe", "IndianRed", "footnoteframe");
-	fill(ert, _("ert"), "ert", "DarkRed", "ert");
-	fill(inset, _("inset"), "inset", "black", "inset");
-	fill(insetbg, _("inset background"), "insetbg", "grey60", "insetbg");
-	fill(insetframe, _("inset frame"), "insetframe", "IndianRed", "insetframe");
-	fill(error, _("error"), "error", "Red", "error");
-	fill(eolmarker, _("end-of-line marker"), "eolmarker", "Brown", "eolmarker");
-	fill(appendixline, _("appendix line"), "appendixline", "Brown", "appendixline");
-	fill(vfillline, _("vfill line"), "vfillline", "Brown", "vfillline");
-	fill(topline, _("top/bottom line"), "topline", "Brown", "topline");
-	fill(tableline, _("table line"), "tableline", "black", "tableline");
-	fill(tabularline, _("tabular line"), "tabularline", "black",
-	     "tabularline");
-	fill(tabularonoffline, _("tabularonoff line"), "tabularonoffline",
-	     "LightSteelBlue", "tabularonoffline");
-	fill(bottomarea, _("bottom area"), "bottomarea", "grey40", "bottomarea");
-	fill(pagebreak, _("page break"), "pagebreak", "RoyalBlue", "pagebreak");
-	fill(top, _("top of button"), "top", "grey80", "top");
-	fill(bottom, _("bottom of button"), "bottom", "grey40", "bottom");
-	fill(left, _("left of button"), "left", "grey80", "left");
-	fill(right, _("right of button"), "right", "grey40", "right");
-	fill(buttonbg, _("button background"), "buttonbg", "grey60", "buttonbg");
-	fill(inherit, _("inherit"), "inherit", "black", "inherit");
-	fill(ignore, _("ignore"), "ignore", "black", "ignore");
+	ColorEntry items[] = {
+	{ none, N_("none"), "none", "black", "none" },
+	{ black, N_("black"), "black", "black", "black" },
+	{ white, N_("white"), "white", "white", "white" },
+	{ red, N_("red"), "red", "red", "red" },
+	{ green, N_("green"), "green", "green", "green" },
+	{ blue, N_("blue"), "blue", "blue", "blue" },
+	{ cyan, N_("cyan"), "cyan", "cyan", "cyan" },
+	{ magenta, N_("magenta"), "magenta", "magenta", "magenta" },
+	{ yellow, N_("yellow"), "yellow", "yellow", "yellow" },
+	{ background, N_("background"), "background", "linen", "background" },
+	{ foreground, N_("foreground"), "foreground", "black", "foreground" },
+	{ selection, N_("selection"), "selection", "LightBlue", "selection" },
+	{ latex, N_("latex"), "latex", "DarkRed", "latex" },
+	{ floats, N_("floats"), "floats", "red", "floats" },
+	{ note, N_("note"), "note", "black", "note" },
+	{ notebg, N_("note background"), "notebg", "yellow", "notebg" },
+	{ noteframe, N_("note frame"), "noteframe", "black", "noteframe" },
+	{ depthbar, N_("depth bar"), "depthbar", "IndianRed", "depthbar" },
+	{ command, N_("command-inset"), "command", "black", "command" },
+	{ commandbg, N_("command-inset background"), "commandbg", "grey80", "commandbg" },
+	{ commandframe, N_("inset frame"), "commandframe", "black", "commandframe" },
+	{ accent, N_("accent"), "accent", "black", "accent" },
+	{ accentbg, N_("accent background"), "accentbg", "offwhite", "accentbg" },
+	{ accentframe, N_("accent frame"), "accentframe", "linen", "accentframe" },
+	{ minipageline, N_("minipage line"), "minipageline", "violet", "minipageline" },
+	{ special, N_("special char"), "special", "RoyalBlue", "special" },
+	{ math, N_("math"), "math", "DarkBlue", "math" },
+	{ mathbg, N_("math background"), "mathbg", "AntiqueWhite", "mathbg" },
+	{ mathframe, N_("math frame"), "mathframe", "Magenta", "mathframe" },
+	{ mathcursor, N_("math cursor"), "mathcursor", "black", "mathcursor" },
+	{ mathline, N_("math line"), "mathline", "Blue", "mathline" },
+	{ footnote, N_("footnote"), "footnote", "DarkRed", "footnote" },
+	{ footnotebg, N_("footnote background"), "footnotebg", "grey60", "footnotebg" },
+	{ footnoteframe, N_("footnote frame"), "footnoteframe", "IndianRed", "footnoteframe" },
+	{ ert, N_("ert"), "ert", "DarkRed", "ert" },
+	{ inset, N_("inset"), "inset", "black", "inset" },
+	{ insetbg, N_("inset background"), "insetbg", "grey60", "insetbg" },
+	{ insetframe, N_("inset frame"), "insetframe", "IndianRed", "insetframe" },
+	{ error, N_("error"), "error", "Red", "error" },
+	{ eolmarker, N_("end-of-line marker"), "eolmarker", "Brown", "eolmarker" },
+	{ appendixline, N_("appendix line"), "appendixline", "Brown", "appendixline" },
+	{ vfillline, N_("vfill line"), "vfillline", "Brown", "vfillline" },
+	{ topline, N_("top/bottom line"), "topline", "Brown", "topline" },
+	{ tableline, N_("table line"), "tableline", "black", "tableline" },
+	{ tabularline, N_("tabular line"), "tabularline", "black",
+	     "tabularline" },
+	{ tabularonoffline, N_("tabularonoff line"), "tabularonoffline",
+	     "LightSteelBlue", "tabularonoffline" },
+	{ bottomarea, N_("bottom area"), "bottomarea", "grey40", "bottomarea" },
+	{ pagebreak, N_("page break"), "pagebreak", "RoyalBlue", "pagebreak" },
+	{ top, N_("top of button"), "top", "grey80", "top" },
+	{ bottom, N_("bottom of button"), "bottom", "grey40", "bottom" },
+	{ left, N_("left of button"), "left", "grey80", "left" },
+	{ right, N_("right of button"), "right", "grey40", "right" },
+	{ buttonbg, N_("button background"), "buttonbg", "grey60", "buttonbg" },
+	{ inherit, N_("inherit"), "inherit", "black", "inherit" },
+	{ ignore, N_("ignore"), "ignore", "black", "ignore" },
+	{ ignore, 0, 0, 0, 0 }
+	};
+
+	int i = 0;
+	while (items[i].guiname) {
+		fill(items[i].lcolor, items[i].guiname, items[i].latexname,
+		     items[i].x11name, items[i].lyxname);
+		++i;
+	}
 }
 
 
@@ -103,7 +121,7 @@ string LColor::getGUIName(LColor::color c) const
 {
 	InfoTab::const_iterator ici = infotab.find(c);
 	if (ici != infotab.end())
-		return (*ici).second.guiname;
+		return _((*ici).second.guiname.c_str());
 
 	return "none";
 }
