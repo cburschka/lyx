@@ -31,6 +31,7 @@ class LyXBuffer;
 class TexRow;
 struct LaTeXFeatures;
 class InsetBibKey;
+class BufferView;
 
 /// A LyXParagraph holds all text, attributes and insets in a text paragraph
 class LyXParagraph  {
@@ -195,7 +196,9 @@ public:
 	///
 	Inset * InInset() { return inset_owner; }
 	///
-	void SetInsetOwner(Inset * i) { inset_owner = i; }
+	void SetInsetOwner(Inset * i);
+	///
+	void deleteInsetsLyXText(BufferView *);
 private:
 	///
 	TextContainer text;

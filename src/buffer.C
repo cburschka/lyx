@@ -3801,6 +3801,20 @@ bool Buffer::Dispatch(int action, string const & argument)
 }
 
 
+void Buffer::resize()
+{
+	/// first resize the BufferViews!
+	if (users) {
+		users->resize();
+	}
+	/// then remove all LyXText in text-insets
+	LyXParagraph * par = paragraph;
+	for(;par;par = par->next) {
+		par->deleteInsetsLyXText(users);
+	}
+}
+
+
 void Buffer::ChangeLanguage(Language const * from, Language const * to)
 {
 

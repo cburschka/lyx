@@ -147,14 +147,14 @@ int InsetFormulaMacro::width(Painter & pain, LyXFont const & f) const
 
 
 void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
-			     int baseline, float & x) const
+			     int baseline, float & x, bool cleared) const
 {
 	Painter & pain = bv->painter();
 	LyXFont font(f);
 	tmacro->update();
 	if (opened) {
 		tmacro->setEditMode(true);
-		InsetFormula::draw(bv, font, baseline, x);
+		InsetFormula::draw(bv, font, baseline, x, cleared);
 		tmacro->setEditMode(false);	
 	} else {
 		font.setColor(LColor::math);

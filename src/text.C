@@ -117,12 +117,7 @@ bool is_nikud(unsigned char c)
 int LyXText::workWidth(BufferView * bview) const
 {
 	if (inset_owner) {
-#if 1
-		return inset_owner->getMaxWidth(bview->painter(), inset_owner);
-#else
-		LyXFont font(LyXFont::ALL_SANE);
-		return inset_owner->width(bview->painter(), font);
-#endif
+		return inset_owner->textWidth(bview->painter());
 	}
 	return bview->workWidth();
 }
@@ -445,7 +440,7 @@ bool LyXText::IsBoundary(Buffer const * buf, LyXParagraph * par,
 
 void LyXText::draw(BufferView * bview, Row const * row,
 		   LyXParagraph::size_type & vpos,
-		   int offset, float & x)
+		   int offset, float & x, bool cleared)
 {
 	Painter & pain = bview->painter();
 	
@@ -567,7 +562,8 @@ void LyXText::draw(BufferView * bview, Row const * row,
 	} else if (c == LyXParagraph::META_INSET) {
 		Inset const * tmpinset = row->par()->GetInset(pos);
 		if (tmpinset) {
-			tmpinset->draw(bview, font, offset+row->baseline(), x);
+			tmpinset->draw(bview, font, offset+row->baseline(), x,
+				       cleared);
 		}
 		++vpos;
 
@@ -3794,10 +3790,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	
 	// clear the area where we want to paint/print
 	int ww;
-	if (inset_owner)
-		ww = inset_owner->width(bview->painter(), font) - 1;
-	else
-		ww = bview->workWidth();
+	ww = bview->workWidth();
 
 	bool clear_area = true;
 
@@ -3807,8 +3800,14 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	{
 		clear_area = row_ptr->par()->GetInset(row_ptr->pos())->doClearArea();
 	}
-	if (clear_area)
-		pain.fillRectangle(x_offset, y_offset, ww, row_ptr->height());
+	if (clear_area) {
+		int w;
+		if (inset_owner)
+			w = inset_owner->width(bview->painter(), font);
+		else
+			w = ww;
+		pain.fillRectangle(x_offset, y_offset, w, row_ptr->height());
+	}
 	
 	if (selection) {
 		/* selection code */
@@ -4324,7 +4323,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 					- row_ptr->par()->bibkey->width(bview->painter(), font);
 			row_ptr->par()->bibkey->draw(bview, font,
 						   y_offset + row_ptr->baseline(), 
-						   tmpx);
+						   tmpx, clear_area);
 		}
 	}
 	
@@ -4528,7 +4527,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 						row_ptr->par(), pos);
 				++vpos;
 			} else
-				draw(bview, row_ptr, vpos, y_offset, x);
+				draw(bview, row_ptr, vpos, y_offset, x, clear_area);
 		}
 		
 		/* do not forget the very last cell. This has no NEWLINE so 
@@ -4640,7 +4639,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 					x += fill_separator;
 				++vpos;
 			} else
-				draw(bview, row_ptr, vpos, y_offset, x);
+				draw(bview, row_ptr, vpos, y_offset, x, clear_area);
 		}
 #ifndef NEW_TABULAR
 	}

@@ -610,7 +610,7 @@ private:
 	///
 	void draw(BufferView *, Row const * row,
 		  LyXParagraph::size_type & pos,
-		  int offset, float & x);
+		  int offset, float & x, bool cleared);
 
 	/// get the next breakpoint in a given paragraph
 	LyXParagraph::size_type NextBreakPoint(BufferView *, Row const * row,

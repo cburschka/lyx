@@ -88,11 +88,7 @@ public:
 	bool Dispatch(int, auto_mem_buffer &);
 
 	/// should be changed to work for a list.
-	void resize() {
-		if (users) {
-			users->resize();
-		}
-	}
+	void resize();
 
 	/// Update window titles of all users
 	void updateTitles() const;

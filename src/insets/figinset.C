@@ -1035,7 +1035,7 @@ int InsetFig::width(Painter &, LyXFont const &) const
 
 
 void InsetFig::draw(BufferView * bv, LyXFont const & f,
-		    int baseline, float & x) const
+		    int baseline, float & x, bool) const
 {
 	LyXFont font(f);
 	Painter & pain = bv->painter();

@@ -116,7 +116,7 @@ public:
 	virtual int width(Painter &, LyXFont const &) const = 0;
 	///
 	virtual void draw(BufferView *, LyXFont const &,
-			  int baseline, float & x) const = 0;
+			  int baseline, float & x, bool cleared) const = 0;
 	/// update the inset representation
 	virtual void update(BufferView *, LyXFont const &, bool =false)
 		{}

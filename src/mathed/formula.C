@@ -404,7 +404,7 @@ int InsetFormula::width(Painter &, LyXFont const & f) const
 
 
 void InsetFormula::draw(BufferView * bv, LyXFont const & f,
-			int baseline, float & x) const
+			int baseline, float & x, bool) const
 {
 	Painter & pain = bv->painter();
 	// Seems commenting out solves a problem.

@@ -29,10 +29,12 @@
 #include "LaTeXFeatures.h"
 #include "insets/insetinclude.h"
 #include "insets/insetbib.h"
+#include "insets/insettext.h"
 #include "support/filetools.h"
 #include "lyx_gui_misc.h"
 #include "texrow.h"
 #include "support/lyxmanip.h"
+#include "BufferView.h"
 
 using std::ostream;
 using std::endl;
@@ -4372,4 +4374,30 @@ string LyXParagraph::String(Buffer const * buffer,
 	//	s += NextAfterFootnote()->String(false);
 
 	return s;
+}
+
+
+void LyXParagraph::SetInsetOwner(Inset *i)
+{
+	inset_owner = i;
+	for (InsetList::const_iterator cit = insetlist.begin();
+	     cit != insetlist.end(); ++cit) {
+		if ((*cit).inset)
+			(*cit).inset->setOwner(i);
+	}
+}
+
+
+void LyXParagraph::deleteInsetsLyXText(BufferView * bv)
+{
+	// then the insets
+	for (InsetList::const_iterator cit = insetlist.begin();
+	     cit != insetlist.end(); ++cit) {
+		if ((*cit).inset) {
+			if ((*cit).inset->IsTextInset()) {
+				static_cast<InsetText *>((*cit).inset)->
+					deleteLyXText(bv);
+			}
+		}
+	}
 }

@@ -69,7 +69,8 @@ void LyXText::init()
 	lastrow = 0;
 	number_of_rows = 0;
 	refresh_y = 0;
-	height = width = 0;
+	height = 0;
+	width = -1;
 	first = 0;
 	status = LyXText::UNCHANGED;
 	// set cursor at the very top position
@@ -131,7 +132,7 @@ void LyXText::init(BufferView * bview)
 		par = par->Next();
 	}
 	SetCursorIntern(bview, firstrow->par(), 0);
-#if 1
+#if 0
 	// Dump all rowinformation:
 	Row * tmprow = firstrow;
 	lyxerr << "Width = " << width << endl;

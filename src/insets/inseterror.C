@@ -73,7 +73,7 @@ int InsetError::width(Painter &, LyXFont const & font) const
 
 
 void InsetError::draw(BufferView * bv, LyXFont const & font,
-		      int baseline, float & x) const
+		      int baseline, float & x, bool) const
 {
 	Painter & pain = bv->painter();
 	LyXFont efont;

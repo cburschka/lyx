@@ -45,6 +45,7 @@ public:
 	INIT,
 	FULL,
 	CURSOR_PAR,
+	CURSOR,
 	SELECTION
     };
     ///
@@ -71,7 +72,9 @@ public:
     ///
     int width(Painter &, LyXFont const & f) const;
     ///
-    void draw(BufferView *, LyXFont const &, int , float &) const;
+    int textWidth(Painter &) const;
+    ///
+    void draw(BufferView *, LyXFont const &, int , float &, bool) const;
     ///
     void update(BufferView *, LyXFont const &, bool =false);
     ///

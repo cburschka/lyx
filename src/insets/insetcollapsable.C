@@ -136,7 +136,7 @@ void InsetCollapsable::draw_collapsed(Painter & pain, LyXFont const & font,
 
 
 void InsetCollapsable::draw(BufferView * bv, LyXFont const & f, 
-			    int baseline, float & x) const
+			    int baseline, float & x, bool cleared) const
 {
     Painter & pain = bv->painter();
 
@@ -155,12 +155,11 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 
     int w =  InsetText::width(pain, f) + 2 * TEXT_TO_INSET_OFFSET;
     int h = ascent(pain,f) + descent(pain, f);
-    
-    pain.rectangle(int(x), baseline - ascent(pain, f), w, h, framecolor);
-
+    int save_x = static_cast<int>(x);
     x += TEXT_TO_INSET_OFFSET;
     drawTextXOffset = int(x) - top_x;
-    InsetText::draw(bv, f, baseline, x);
+    InsetText::draw(bv, f, baseline, x, cleared);
+    pain.rectangle(save_x, baseline - ascent(pain, f), w, h, framecolor);
 }
 
 

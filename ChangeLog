@@ -1,3 +1,17 @@
+2000-06-23  Juergen Vigna  <jug@sad.it>
+
+	* src/lyxtext.h: added a 'cleared' flag to draw() function.
+
+	* src/buffer.C (resize): delete the LyXText of textinsets.
+
+	* src/paragraph.C (SetInsetOwner): set the owner in the insets too.
+
+	* src/insets/lyxinset.h: added another parameter 'cleared' to
+	the draw() function.
+
+	* src/lyxfunc.C (processKeyEvent): move cursor to the right of the
+	unlocking inset in inset.
+
 2000-06-22  Juergen Vigna  <jug@sad.it>
 
 	* src/lyxscreen.h: added some y_offset/x_offset parameters for drawings

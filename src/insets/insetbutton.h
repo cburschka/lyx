@@ -33,7 +33,7 @@ public:
 	///
 	int width(Painter &, LyXFont const &) const;
 	///
-	void draw(BufferView *, LyXFont const &, int baseline, float & x) const;
+	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
 
 protected:
 	/// This should provide the text for the button

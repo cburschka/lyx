@@ -30,8 +30,7 @@ public:
 	///
 	int width(Painter &, LyXFont const & font) const;
 	///
-	void draw(BufferView *, LyXFont const & font,
-		  int baseline, float & x) const;
+	void draw(BufferView *, LyXFont const &, int, float &, bool) const;
 	///
 	void Write(Buffer const *, std::ostream &) const;
 	///

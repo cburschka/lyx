@@ -62,6 +62,15 @@ class Buffer;
 class InsetTabular : public UpdatableInset {
 public:
     ///
+    enum UpdateCodes {
+	NONE = 0,
+	INIT,
+	FULL,
+	CELL,
+	CURSOR,
+	SELECTION
+    };
+    ///
     InsetTabular(Buffer *, int rows=1, int columns=1);
     ///
     InsetTabular(InsetTabular const &, Buffer *);
@@ -80,7 +89,7 @@ public:
     ///
     int width(Painter &, LyXFont const & f) const;
     ///
-    void draw(BufferView *, const LyXFont &, int , float &) const;
+    void draw(BufferView *, const LyXFont &, int , float &, bool) const;
     ///
     void update(BufferView *, LyXFont const &, bool);
     ///
@@ -92,7 +101,7 @@ public:
     ///
     void InsetUnlock(BufferView *);
     ///
-    void UpdateLocal(BufferView *, bool what, bool mark_dirty);
+    void UpdateLocal(BufferView *, UpdateCodes, bool mark_dirty);
     ///
     bool LockInsetInInset(BufferView *, UpdatableInset *);
     ///
@@ -166,8 +175,6 @@ private:
     ///
     void setPos(Painter &, int x, int y) const;
     ///
-    bool SetCellDimensions(Painter & pain, int cell, int row);
-    ///
     UpdatableInset::RESULT moveRight(BufferView *, bool lock=true);
     UpdatableInset::RESULT moveLeft(BufferView *, bool lock=true);
     UpdatableInset::RESULT moveUp(BufferView *);
@@ -216,6 +223,6 @@ private:
         actrow;
     bool no_selection;
     mutable bool locked;
-    mutable bool init_inset;
+    mutable UpdateCodes need_update;
 };
 #endif

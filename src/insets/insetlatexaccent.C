@@ -356,7 +356,7 @@ bool InsetLatexAccent::DisplayISO8859_9(Painter & pain, LyXFont const & font,
 
 
 void InsetLatexAccent::draw(BufferView * bv, LyXFont const & font,
-			    int baseline, float & x) const
+			    int baseline, float & x, bool) const
 {
 	Painter & pain = bv->painter();
 

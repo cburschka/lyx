@@ -88,7 +88,7 @@ int InsetButton::width(Painter & pain, LyXFont const &) const
 
 
 void InsetButton::draw(BufferView * bv, LyXFont const &,
-			int baseline, float & x) const
+			int baseline, float & x, bool) const
 {
 	Painter & pain = bv->painter();
 	// Draw it as a box with the LaTeX text

@@ -215,7 +215,7 @@ int LyXFunc::processKeyEvent(XEvent * ev)
 			owner->getMiniBuffer()->Set(CurrentState(owner->view()));
 		} else {
 			tli->UnlockInsetInInset(owner->view(),
-						tli->GetLockingInset());
+						tli->GetLockingInset(),true);
 		}
 		return 0;
 	}
