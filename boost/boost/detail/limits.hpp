@@ -35,7 +35,11 @@
 
 #include <climits>
 #include <cfloat>
-#include <cwchar>             // for WCHAR_MIN and WCHAR_MAX
+// local lyx modification: some systems (older BSD, including Mac OS
+// X) do not have wchar.h, so we avoid to include this. AFAICS,
+// inspection of the code below show that we do not really need it
+// (JMarc)
+//#include <cwchar>             // for WCHAR_MIN and WCHAR_MAX
 #include <boost/config.hpp>
 
 #if defined(__sparc) || defined(__sparc__) || defined(__powerpc__) || defined(__ppc__) || defined(__hppa) || defined(_MIPSEB) || defined(_POWER)
