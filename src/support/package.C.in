@@ -408,7 +408,7 @@ string const abs_path_from_binary_name(string const & exe)
 	string const abs_binary = get_binary_path(exe);
 	if (abs_binary.empty()) {
 		lyxerr << bformat(_("Unable to determine the path to the "
-				    "LyX binary from the command line %1%"),
+				    "LyX binary from the command line %1$s"),
 				  exe)
 		       << std::endl;
 		bail_out();
@@ -532,7 +532,7 @@ get_system_support_dir(string const & abs_binary,
 
 	lyxerr << bformat(_("Unable to determine the system directory "
 			    "having searched\n"
-			    "\t%1%\n"
+			    "\t%1$s\n"
 			    "Try the '-sysdir' command line parameter or "
 			    "set the environment variable LYX_DIR_13x to "
 			    "the LyX system directory containing the file "
@@ -614,8 +614,8 @@ bool check_command_line_dir(string const & dir,
 {
 	string const abs_path = FileSearch(dir, file);
 	if (abs_path.empty()) {
-		lyxerr << bformat(_("Invalid %1% switch.\n"
-				    "Directory %2% does not contain %3%."),
+		lyxerr << bformat(_("Invalid %1$s switch.\n"
+				    "Directory %2$s does not contain %3$s."),
 				  command_line_switch, dir, file)
 		       << std::endl;
 	}
@@ -640,8 +640,8 @@ bool check_env_var_dir(string const & dir,
 {
 	string const abs_path = FileSearch(dir, file);
 	if (abs_path.empty()) {
-		lyxerr << bformat(_("Invalid %1% environment variable.\n"
-				    "Directory %2% does not contain %3%."),
+		lyxerr << bformat(_("Invalid %1$s environment variable.\n"
+				    "Directory %2$s does not contain %3$s."),
 			          env_var, dir, file)
 		       << std::endl;
 	}
@@ -664,7 +664,7 @@ bool check_env_var_dir(string const & dir,
 		// package.C.in as a file containing strings that need
 		// translation.
 		string const fmt =
-		_("Invalid %1% environment variable.\n%2% is not a directory.");
+		_("Invalid %1$s environment variable.\n%2$s is not a directory.");
 		
 		lyxerr << bformat(fmt, env_var, dir)
 		       << std::endl;

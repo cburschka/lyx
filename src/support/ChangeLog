@@ -1,3 +1,9 @@
+2005-01-13  Angus Leeming  <leeming@lyx.org>
+
+	* package.C.in: use "%n$s" rather than "%n%" for n=1,2,3... when
+	calling bformat so that the substitutions work for the non
+	boost::format users too.
+
 2005-01-12  Angus Leeming  <leeming@lyx.org>
 
 	* filetools.[Ch] (setEnvPath): new function to create a PATH-style
