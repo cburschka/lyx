@@ -33,7 +33,8 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
-
+	/// Goto to this error
+	void goTo(int);
 	///
 	void updateContents();
 };
