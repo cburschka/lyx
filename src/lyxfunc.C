@@ -43,8 +43,6 @@
 #include "ParagraphParameters.h"
 
 #include "insets/insetcommand.h"
-#include "insets/inseterror.h"
-#include "insets/insetert.h"
 #include "insets/insettabular.h"
 
 #include "mathed/formulamacro.h"

@@ -31,12 +31,8 @@
 #include "counters.h"
 #include "lyxrow_funcs.h"
 
-#include "insets/inseterror.h"
 #include "insets/insetbibitem.h"
-#include "insets/insetspecialchar.h"
-#include "insets/insettext.h"
 #include "insets/insetfloat.h"
-#include "insets/insetwrap.h"
 
 #include "support/LAssert.h"
 #include "support/textutils.h"
