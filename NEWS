@@ -15,6 +15,10 @@ either Qt 2.x or 3.0.x and is mostly feature complete. Note that some
 of the dialogs are slightly different in design, but are generally
 functionally equivalent.
 
+Note that if Qt is using Xft2/fontconfig, you may need to install the
+latex-ttf-fonts package on ftp://ftp.lyx.org/ to get maths symbols
+displayed properly.
+
 ** Xforms frontend
 
 The avent of the Qt frontend does not mean that the historical xforms
