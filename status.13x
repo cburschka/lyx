@@ -27,7 +27,10 @@ What's new
 - use opening quotation marks after an opening square bracket
 
 - when the autodetection of latex classes cannot be done for some
-  reason, a sensible list of textclasses is provided
+  reason, provided a sensible list of textclasses
+
+- when running under windows, configure correctly the ps and pdf
+  viewers [bug #1508]
 
 - the qt-related parts of the configure script honors the environment
   variables MOC and UIC if they are set

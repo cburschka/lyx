@@ -252,10 +252,15 @@ test $image_command = "convert" && image_command="convert \$\$i \$\$o"
 LYXRC_PROG([for a Postscript interpreter], \ps_command, gs)
 
 # Search something to preview postscript
-SEARCH_PROG([for a Postscript previewer],GHOSTVIEW,gv ghostview)
+SEARCH_PROG([for a Postscript previewer],GHOSTVIEW,gsview32 gv ghostview)
+case $GHOSTVIEW in
+  gv|ghostview) PS_VIEWER="$GHOSTVIEW -swap" ;;
+  *) PS_VIEWER="$GHOSTVIEW";;
+esac
+EPS_VIEWER=$GHOSTVIEW
 
 # Search for a program to preview pdf
-SEARCH_PROG([for a PDF preview],PDF_VIEWER,acroread gv ghostview xpdf)
+SEARCH_PROG([for a PDF preview],PDF_VIEWER, acrobat acrord32 gsview32 acroread gv ghostview xpdf)
 
 # Search something to preview dvi
 SEARCH_PROG([for a DVI previewer],DVI_VIEWER, xdvi windvi yap)
@@ -531,8 +536,8 @@ cat >$outfile <<EOF
 \\viewer dvi "$DVI_VIEWER"
 \\viewer html "$HTML_VIEWER"
 \\viewer pdf "$PDF_VIEWER"
-\\viewer ps "$GHOSTVIEW -swap"
-\\viewer eps "$GHOSTVIEW"
+\\viewer ps "$PS_VIEWER"
+\\viewer eps "$EPS_VIEWER"
 
 $rc_entries
 \\font_encoding "$chk_fontenc"

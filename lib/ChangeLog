@@ -1,3 +1,9 @@
+2004-03-17  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* configure.m4: check for acrobat, acrord32 and gsview32 as PDF
+	viewers (useful for windows); do not pass -swap option when
+	gsview32 is used as ps viewer (bug #1508)
+
 2004-03-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* doc/LaTeXConfig.lyx.in: fix entry for REVTeX (bug #1533)
