@@ -79,9 +79,6 @@ void MathNestInset::getCursorPos(CursorSlice const & cur,
 	// move cursor visually into empty cells ("blue rectangles");
 	if (cur.cell().empty())
 		x += 2;
-	lyxerr << "MathNestInset::getCursorPos: cur: " << cur
-		<< " x: " << x << " y: " << y << endl;
-	BOOST_ASSERT(x < 100000);
 }
 
 
@@ -103,7 +100,7 @@ void MathNestInset::metrics(MetricsInfo const & mi) const
 bool MathNestInset::idxNext(LCursor & cur) const
 {
 	BOOST_ASSERT(cur.inset() == this);
-	if (cur.idx() + 1 >= nargs())
+	if (cur.idx() == cur.lastidx())
 		return false;
 	++cur.idx();
 	cur.pos() = 0;
@@ -150,7 +147,7 @@ bool MathNestInset::idxLast(LCursor & cur) const
 	BOOST_ASSERT(cur.inset() == this);
 	if (nargs() == 0)
 		return false;
-	cur.idx() = nargs() - 1;
+	cur.idx() = cur.lastidx();
 	cur.pos() = cur.lastpos();
 	return true;
 }

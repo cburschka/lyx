@@ -314,8 +314,8 @@ int MathArray::pos2x(size_type pos, int glue) const
 		const_iterator it = begin() + i;
 		if ((*it)->getChar() == ' ')
 			x += glue;
-		lyxerr << "char: " << (*it)->getChar()
-			<< "width: " << (*it)->width() << std::endl;
+		//lyxerr << "char: " << (*it)->getChar()
+		//	<< "width: " << (*it)->width() << std::endl;
 		x += (*it)->width();
 	}
 	return x;

@@ -303,7 +303,8 @@ void LCursor::getPos(int & x, int & y) const
 		// inset.yo_, so getCursor() returns an old value.
 		// Ugly as you like.
 	}
-	lyxerr << "#### LCursor::getPos: x: " << x << " y: " << y << endl;
+	//lyxerr << "#### LCursor::getPos: " << *this 
+	// << " x: " << x << " y: " << y << endl;
 }
 
 
@@ -1313,7 +1314,7 @@ void LCursor::normalize()
 		       << idx() << ' ' << nargs()
 		       << " in: " << inset() << endl;
 	}
-	idx() = min(idx(), nargs() - 1);
+	idx() = min(idx(), lastidx());
 
 	if (pos() > lastpos()) {
 		lyxerr << "this should not really happen - 2: "
@@ -1537,22 +1538,22 @@ bool LCursor::script(bool up)
 		idx() = up;
 		pos() = 0;
 	} else if (pos() != 0 && prevAtom()->asScriptInset()) {
-		prevAtom().nucleus()->asScriptInset()->ensure(up);
-		posLeft();
-		push(inset());
+		--pos();
+		nextAtom().nucleus()->asScriptInset()->ensure(up);
+		push(nextInset());
 		idx() = up;
 		pos() = lastpos();
 	} else if (pos() != 0) {
 		--pos();
 		cell()[pos()] = MathAtom(new MathScriptInset(nextAtom(), up));
-		push(inset());
+		push(nextInset());
 		idx() = up;
 		pos() = 0;
 	} else {
 		plainInsert(MathAtom(new MathScriptInset(up)));
-		posLeft();
+		--pos();
 		nextAtom().nucleus()->asScriptInset()->ensure(up);
-		push(inset());
+		push(nextInset());
 		idx() = up;
 		pos() = 0;
 	}
@@ -1563,7 +1564,7 @@ bool LCursor::script(bool up)
 
 bool LCursor::interpret(char c)
 {
-	lyxerr << "interpret 2: '" << c << "'" << endl;
+	//lyxerr << "interpret 2: '" << c << "'" << endl;
 	clearTargetX();
 	if (inMacroArgMode()) {
 		posLeft();

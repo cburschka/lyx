@@ -162,13 +162,7 @@ void LyXFunc::handleKeyFunc(kb_action action)
 
 void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 {
-	string argument;
-
-	if (lyxerr.debugging(Debug::KEY)) {
-		lyxerr << "KeySym is "
-		       << keysym->getSymbolName()
-		       << endl;
-	}
+	lyxerr[Debug::KEY] << "KeySym is " << keysym->getSymbolName() << endl;
 
 	// Do nothing if we have nothing (JMarc)
 	if (!keysym->isOK()) {
@@ -254,9 +248,11 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 		if (encoded_last_key != 0) {
 			string arg;
 			arg += encoded_last_key;
+			lyxerr << "SelfInsert arg[`"
+				   << arg << "']" << endl;
 			dispatch(FuncRequest(LFUN_SELFINSERT, arg));
-			lyxerr[Debug::KEY] << "SelfInsert arg[`"
-				   << argument << "']" << endl;
+			lyxerr[Debug::KEY]
+				<< "SelfInsert arg[`" << arg << "']" << endl;
 		}
 	} else {
 		dispatch(func);
