@@ -9,7 +9,6 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 #include "math_support.h"
-#include "lyxrc.h"
 
 
 MathKernInset::MathKernInset()
@@ -32,9 +31,9 @@ MathInset * MathKernInset::clone() const
 }
 
 
-void MathKernInset::metrics(MathMetricsInfo & /*mi*/) const
+void MathKernInset::metrics(MathMetricsInfo & mi) const
 {
-	dim_.w = wid_.inBP();
+	dim_.w = wid_.inPixels(0, mathed_char_width(mi.base.font, 'M'));
 	dim_.a = 0;
 	dim_.d = 0;
 }

@@ -1,3 +1,8 @@
+2002-10-17  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* lyxlength.C (inPixels): Fix hanfling of negative length.
+	Fix LyXLength::MU case.
+
 2002-10-16  John Levon  <levon@movementarian.org>
 
 	* buffer.C: remove \\protected_separator parsing done by lyx2lyx now

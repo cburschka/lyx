@@ -196,7 +196,8 @@ clubsuit           cmsy        124 167 mathord  x
 diamondsuit        cmsy        125 168 mathord  x
 heartsuit          cmsy        126 169 mathord  x
 spadesuit          cmsy        127 170 mathord  x
-not                cmsy         54   0 mathord  x
+# We define \not as mathrel in order to align it properly
+not                cmsy         54   0 mathrel  x 
 coprod             cmex         96   0 mathop   x
 bigvee             cmex         87   0 mathop   x
 bigwedge           cmex         86   0 mathop   x
@@ -763,23 +764,35 @@ $                  mathnormal    0   0 special  x
 # pre-defined macros
 #
 
-\def\longleftrightarrow{\leftarrow\kern-2mm\rightarrow} 
-\def\Longleftrightarrow{\Leftarrow\kern-2mm\Rightarrow}
+\def\notin{\not\in}
+\def\slash{/}
+
+\def\longleftrightarrow{\leftarrow\kern-15mu\rightarrow} 
+\def\Longleftrightarrow{\Leftarrow\kern-15mu\Rightarrow}
 \def\doteq{\stackrel{\cdot}{\=}}
-\def\longrightarrow{\lyxbar\kern-2mm\rightarrow}
-\def\longleftarrow{\leftarrow\kern-2mm\lyxbar}
-\def\mapsto{\mapstochar\kern-2mm\rightarrow}
-\def\longmapsto{\mapstochar\kern-2mm\lyxbar\kern-6mu\rightarrow}
-\def\Longrightarrow{\lyxeq\kern-2mm\Rightarrow}
-\def\Longleftarrow{\Leftarrow\kern-2mm\lyxeq}
-\def\models{\vert\kern-2mm\lyxeq}
-\def\hookrightarrow{\lhook\kern-2mm\rightarrow}
-\def\hookleftarrow{\leftarrow\kern-2mm\rhook}
-\def\bowtie{\triangleright\kern-2mm\triangleleft}
+
+iffont cmsy
+\def\longrightarrow{\lyxbar\kern-11mu\rightarrow}
+\def\longleftarrow{\leftarrow\kern-11mu\lyxbar}
+\def\Longrightarrow{\lyxeq\kern-9mu\Rightarrow}
+\def\Longleftarrow{\Leftarrow\kern-9mu\lyxeq}
+\def\mapsto{\mapstochar\kern-12mu\rightarrow}
+\def\longmapsto{\mapstochar\kern-9mu\lyxbar\kern-11mu\rightarrow}
+\def\models{\vert\kern-7.5mu\lyxeq}
+end
+iffont cmm
+\def\hookrightarrow{\lhook\kern-13mu\rightarrow}
+\def\hookleftarrow{\leftarrow\kern-13mu\rhook}
+\def\bowtie{\triangleright\kern-6mu\triangleleft}
+end
+iffont msa
 \def\dashrightarrow{\lyxdabar\lyxdabar\lyxright}
 \def\dashleftarrow{\lyxleft\lyxdabar\lyxdabar}
 \def\dasharrow{\dashrightarrow}
-\def\Join{\ltimes\kern-2mm\rtimes}
+end
+iffont msb
+\def\Join{\ltimes\kern-12mu\rtimes}
+end
 \def\mathcircumflex{\mbox{\^{}}}
 
 neq                lyxsymbol             185 0 mathrel  x

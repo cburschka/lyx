@@ -142,7 +142,6 @@ int LyXLength::inPixels(int default_width, int default_height) const
 #endif
 
 	double result = 0.0;
-	int val_sign = val_ < 0.0 ? -1 : 1;
 
 	switch (unit_) {
 	case LyXLength::SP:
@@ -191,15 +190,17 @@ int LyXLength::inPixels(int default_width, int default_height) const
 		break;
 	case LyXLength::EX:
 		// Ex: The height of an "x"
-		result = zoom * val_ * default_height / 2; // what to / width?
+		// 0.4305 is the ration between 1ex and 1em in cmr10
+		result = zoom * val_ * default_height * 0.4305;
 		break;
-	case LyXLength::EM: // what to / width?
+	case LyXLength::EM:
 		// Em: The width of an "m"
-		result = zoom * val_ * default_height / 2; // Why 2?
-		break;
-	case LyXLength::MU: // This is probably only allowed in
-		// math mode
+		// 1em is approx 10points in cmr10
 		result = zoom * val_ * default_height;
+		break;
+	case LyXLength::MU:
+		// math unit = 1/18em
+		result = val_ * default_height / 18;
 		break;
 	case LyXLength::PCW: // Always % of workarea
 	case LyXLength::PTW:
@@ -215,7 +216,7 @@ int LyXLength::inPixels(int default_width, int default_height) const
 		result = 0;  // this cannot happen
 		break;
 	}
-	return static_cast<int>(result * val_sign + 0.5);
+	return static_cast<int>(result + ((result >= 0) ? 0.5 : -0.5));
 }
 
 

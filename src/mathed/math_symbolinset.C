@@ -13,7 +13,6 @@
 #include "LaTeXFeatures.h"
 #include "debug.h"
 
-
 MathSymbolInset::MathSymbolInset(const latexkeys * l)
 	: sym_(l), h_(0)
 {}
@@ -48,6 +47,7 @@ void MathSymbolInset::metrics(MathMetricsInfo & mi) const
 	//	<< "' in font: '" << sym_->inset
 	//	<< "' drawn as: '" << sym_->draw
 	//	<< "'\n";
+
 	MathFontSetChanger dummy(mi.base, sym_->inset.c_str());
 	mathed_string_dim(mi.base.font, sym_->draw, dim_);
 	// correct height for broken cmex and wasy font
@@ -56,10 +56,16 @@ void MathSymbolInset::metrics(MathMetricsInfo & mi) const
 		dim_.a += h_;
 		dim_.d -= h_;
 	}
-	if (isRelOp())
-		dim_.w += 6;
 	// seperate things a bit
-	dim_.w += 2;
+	int em = mathed_char_width(mi.base.font, 'M');
+	if (name() == "not")
+		// \not is a special case. 
+		// It must have 0 width to align properly with the next symbol.
+		dim_.w = 0;
+	else if (isRelOp())
+		dim_.w += static_cast<int>(0.5*em+0.5);
+	else
+		dim_.w += static_cast<int>(0.15*em+0.5);
 
 	scriptable_ = false;
 	if (mi.base.style == LM_ST_DISPLAY)
@@ -74,9 +80,14 @@ void MathSymbolInset::draw(MathPainterInfo & pi, int x, int y) const
 	//	<< "' in font: '" << sym_->inset
 	//	<< "' drawn as: '" << sym_->draw
 	//	<< "'\n";
+	int em = mathed_char_width(pi.base.font, 'M');
+	// Here we don't need a special case for \not, as it needs the same
+	// increase in x as the next symbol.
 	if (isRelOp())
-		x += 3;
-	x += 1;
+		x += static_cast<int>(0.25*em+0.5);
+	else
+		x += static_cast<int>(0.075*em+0.5);
+
 	MathFontSetChanger dummy(pi.base, sym_->inset.c_str());
 	drawStr(pi, pi.base.font, x, y - h_, sym_->draw);
 }
