@@ -14,9 +14,7 @@
 #include "math_mathmlstream.h"
 #include "math_data.h"
 #include "LaTeXFeatures.h"
-#include "support/std_ostream.h"
-
-using std::auto_ptr;
+#include "support/LOstream.h"
 
 
 MathBoldsymbolInset::MathBoldsymbolInset()
@@ -24,23 +22,22 @@ MathBoldsymbolInset::MathBoldsymbolInset()
 {}
 
 
-auto_ptr<InsetBase> MathBoldsymbolInset::clone() const
+MathInset * MathBoldsymbolInset::clone() const
 {
-	return auto_ptr<InsetBase>(new MathBoldsymbolInset(*this));
+	return new MathBoldsymbolInset(*this);
 }
 
 
-void MathBoldsymbolInset::metrics(MetricsInfo & mi, Dimension & dim) const
+void MathBoldsymbolInset::metrics(MathMetricsInfo & mi) const
 {
 	//FontSetChanger dummy(mi.base, "mathbf");
-	cell(0).metrics(mi, dim);
+	dim_ = cell(0).metrics(mi);
 	metricsMarkers(1);
-	++dim.wid;  // for 'double stroke'
-	dim_ = dim;
+	++dim_.w;  // for 'double stroke'
 }
 
 
-void MathBoldsymbolInset::draw(PainterInfo & pi, int x, int y) const
+void MathBoldsymbolInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	//FontSetChanger dummy(pi.base, "mathbf");
 	cell(0).draw(pi, x + 1, y);
@@ -49,9 +46,9 @@ void MathBoldsymbolInset::draw(PainterInfo & pi, int x, int y) const
 }
 
 
-void MathBoldsymbolInset::metricsT(TextMetricsInfo const & mi, Dimension & /*dim*/) const
+void MathBoldsymbolInset::metricsT(TextMetricsInfo const & mi) const
 {
-	cell(0).metricsT(mi, dim_);
+	dim_ = cell(0).metricsT(mi);
 }
 
 

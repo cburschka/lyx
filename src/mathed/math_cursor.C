@@ -932,28 +932,30 @@ bool MathCursor::goUpDown(bool up)
 		xo = targetx_;
 
 	// try neigbouring script insets
-	// try left
-	if (hasPrevAtom()) {
-		MathScriptInset const * p = prevAtom()->asScriptInset();
-		if (p && p->has(up)) {
-			--pos();
-			push(nextAtom());
-			idx() = up; // the superscript has index 1
-			pos() = size();
-			///lyxerr << "updown: handled by scriptinset to the left\n";
-			return true;
+	if (!selection()) {
+		// try left
+		if (hasPrevAtom()) {
+			MathScriptInset const * p = prevAtom()->asScriptInset();
+			if (p && p->has(up)) {
+				--pos();
+				push(nextAtom());
+				idx() = up; // the superscript has index 1
+				pos() = size();
+				///lyxerr << "updown: handled by scriptinset to the left\n";
+				return true;
+			}
 		}
-	}
 
-	// try right
-	if (hasNextAtom()) {
-		MathScriptInset const * p = nextAtom()->asScriptInset();
-		if (p && p->has(up)) {
-			push(nextAtom());
-			idx() = up;
-			pos() = 0;
-			///lyxerr << "updown: handled by scriptinset to the right\n";
-			return true;
+		// try right
+		if (hasNextAtom()) {
+			MathScriptInset const * p = nextAtom()->asScriptInset();
+			if (p && p->has(up)) {
+				push(nextAtom());
+				idx() = up;
+				pos() = 0;
+				///lyxerr << "updown: handled by scriptinset to the right\n";
+				return true;
+			}
 		}
 	}
 

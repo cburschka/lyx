@@ -22,12 +22,17 @@ What's new
 
 ** Updates
 
+- add support for \boldsymbol in math editor
+
 - update danish, italian, romanian and slovenian interface localizations
 
 ** Bug fixes
 
 - fix crash when saving file containing a table (only with some
   compilers) [Bug #1415]
+
+- fix a crash in the math editor when selecting up/down close to
+  subscript insets
 
 - add debug output if unable to open an ofstream to output the graphics
   conversion script.

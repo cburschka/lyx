@@ -15,19 +15,19 @@
 #include "math_nestinset.h"
 
 
-/// Inset for AMSTeX's \boldsymbol
+/// Inset for AMSTeX's \boldsymbol 
 class MathBoldsymbolInset : public MathNestInset {
 public:
 	///
 	MathBoldsymbolInset();
 	///
-	std::auto_ptr<InsetBase> clone() const;
+	MathInset * clone() const;
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
+	void metrics(MathMetricsInfo & mi) const;
 	///
-	void draw(PainterInfo & pi, int x, int y) const;
+	void draw(MathPainterInfo & pi, int x, int y) const;
 	///
-	void metricsT(TextMetricsInfo const & mi, Dimension & dim) const;
+	void metricsT(TextMetricsInfo const & mi) const;
 	///
 	void drawT(TextPainter & pi, int x, int y) const;
 	///
