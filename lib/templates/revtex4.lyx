@@ -1,8 +1,7 @@
-#This file was created by <karger> Thu Sep 23 10:54:03 1999
-#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
-\lyxformat 2.15
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 2.16
 \textclass revtex4
-\options aps,manuscript
+\options aps,preprint
 
 \layout Preprint
 
@@ -30,11 +29,11 @@ http://bar.com/~foo
 Thanks to you, Mrs.
  Robinson!
 \begin_inset Info Use Thanks layout instead of inserting footnotes.
-Footnotes in the title will do weird things in RevTeX 4!
+Footnotes in the title will do weird things in REVTeX 4!
 \end_inset 
 
 
-\layout Address
+\layout Affiliation
 
 Address for author 1 
 \layout Author
@@ -43,7 +42,7 @@ Author2
 \layout Author Email
 
 bar@foo.edu
-\layout Address
+\layout Affiliation
 
 Address for author 2
 \layout Abstract
@@ -62,7 +61,7 @@ Insert your abstract here.
 introduction
 \layout Standard
 
-By the way, any of the style options, like 
+Any of the style options, like 
 \family typewriter 
 prl
 \family default 
@@ -72,14 +71,12 @@ preprint
 \family default 
  should go in the 
 \family sans 
-Extra
-\protected_separator 
+Extra\SpecialChar ~
 Options
 \family default 
  field in the 
 \family sans 
-Document
-\protected_separator 
+Document\SpecialChar ~
 Layout
 \family default 
  popup (accessed from the 
@@ -87,7 +84,7 @@ Layout
 Layout
 \family default 
  menu).
- See the RevTeX 4 manual for style options, special macros, and the like.
+ See the REVTeX 4 manual for style options, special macros, and the like.
 \layout Section
 
 methods
@@ -111,28 +108,56 @@ openone{}
 \begin_inset Formula \( \sqrt{\overstar {a}}>b \)
 \end_inset 
 
-, for example, which uses the RevTeX 
+, for example, which uses the REVTeX 
 \family typewriter 
 
 \backslash 
-overcirc
+overstar
 \family default 
  command.
 \layout Standard
 
 You can do a bibliography by hand, as shown below, but it may be easier
- to erase that and use BibTeX.
- If you use BibTeX, use the RevTeX bibliography style file, 
+ to erase that and use BibTeX---in fact, APS encourages authors to use BibTeX.
+ If you do use BibTeX, use the REVTeX bibliography style file, 
 \family typewriter 
 revtex.bst
 \family default 
-.
+ (i.e., just put 
+\begin_inset Quotes eld
+\end_inset 
+
+revtex
+\begin_inset Quotes erd
+\end_inset 
+
+ in the 
+\begin_inset Quotes eld
+\end_inset 
+
+style
+\begin_inset Quotes erd
+\end_inset 
+
+ box in the 
+\family sans 
+Insert\SpecialChar \menuseparator
+Lists\SpecialChar ~
+&\SpecialChar ~
+TOC\SpecialChar \menuseparator
+BibTeX\SpecialChar ~
+Reference
+\family default 
+ popup).
  With either method, you can cite references with the LyX citation commands
 \begin_inset LatexCommand \cite{mycitation}
 
 \end_inset 
 
 .
+\layout Acknowledgments
+
+Thank you so much!
 \layout Bibliography
 \bibitem {mycitation}
 

@@ -889,14 +889,18 @@ CTAN:
 macros/latex209/contrib/revtex/
 \layout Description
 
-Notes: The document class 
+Notes: This class, which used the REVTeX 3 class, has been superseded by
+ the 
+\family sans 
+revtex4
+\family default 
+ class, so you should use that instead.
+ (Old 
 \family sans 
 revtex
 \family default 
- is used to write articles for the publications of the American Physical
- Society (APS), American Institute of Physics (AIP), and Optical Society
- of America (OSA).
- For better results, you should use the file 
+ class documents should be pretty easy to change to the new class.) If you
+ have to use this class for some reason, you should use the file 
 \family typewriter 
 revtex.cls
 \family default 
@@ -918,11 +922,13 @@ CTAN:
 macros/latex/contrib/supported/revtex4-beta/
 \layout Description
 
-Notes: RevTeX 4 is a class used for submitting manuscripts to journals including
+Notes: REVTeX 4 is a class used for submitting manuscripts to journals including
  APS (Physical Review A-E and Letters, Reviews in Modern Physics, Special
  Topics---Accelerators and Beams), the American Institute of Physics, the
  Optical Society of America, and the Society for Exploration Geophysicists.
- [It is in BETA release as of September, 1999.]
+ [It is in BETA release as of July, 2000.] Also see 
+\family typewriter 
+http://publish.aps.org/revtex4/
 \layout Subsection
 
 Springer Journal of Geodesy

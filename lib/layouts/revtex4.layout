@@ -6,14 +6,8 @@
 # paper "testmath.tex" of January, 1995
 # Author : David L. Johnson <dlj0@lehigh.edu> (AMS)
 #          Marc Mengel (RevTeX)
-#          Amir Karger (LyX v11.34 style modifications - using changes
-#                       made by Jean-Marc Lasgouttes to amsart.layout)
-#          Amir Karger (RevTeX 4 beta) 9/1999
-
-#TODO: need to make a thanks layout and write note in template not to
-#put footnotes in the title matter!
-#TODO: examine this issue that it seems you need to put the address last or you
-#get errors (seems to happen even when not using lyx...)
+#          Amir Karger (LyX v11.34 style modifications)
+#          Amir Karger (RevTeX 4 beta) 9/1999, 7/2000
 
 # General textclass parameters
 Columns			1
@@ -152,40 +146,40 @@ Style Date
   EndFont
 End
 
-# Address style definition
-# (This style is same as Afilliation for Phys. Rev.)
-Style Address
+Style Affiliation
   Margin		Dynamic
   LatexType		Command
   InTitle		1
-  LatexName		address
+  LatexName		affiliation
   ParSkip		0.4
 #  BottomSep		1.5
 #  ParSep		1.5
   Align			Center
   AlignPossible		Block, Left, Right, Center
   LabelType		Static
-  LabelString           "Address: "
+  LabelString           "Affiliation: "
 
   LabelFont
     Shape		Italic
   EndFont
 End  
 
-Style Affiliation
-  CopyStyle             Address
-  LatexName		affiliation
-  LabelString           "Affiliation: "
+# Address is exactly the same as Affiliation. We just put this in so
+# that reLyX will know what to do with it.
+Style Address
+    CopyStyle		Affiliation
+    LatexName		address
+    LabelString         "Address: "
 End
 
 Style Thanks
-  CopyStyle             Address
+  CopyStyle             Affiliation
   LatexName		thanks
   LabelString           "Thanks: "
 End
 
 Style Author_Email
-  CopyStyle             Address
+  CopyStyle             Affiliation
   LatexName             email
   LabelString           "Electronic Address: "
 
@@ -214,6 +208,25 @@ Style Abstract
     Size		Large
   EndFont
 End 
+
+Style Acknowledgments
+  LatexType             Environment
+  LatexName             acknowledgments
+  ParIndent             MM
+  ParSkip               0.4
+  Align                 Block
+  AlignPossible         Block, Left, Right, Center
+
+  # label definition
+  LabelType             Centered_Top_Environment
+  LabelString           acknowledgments
+  LabelBottomSep        0.5
+  LabelFont
+    Series 		Medium
+    Shape		Smallcaps
+    Size		Large
+  EndFont
+End
 
 Style PACS
   Margin		Dynamic
