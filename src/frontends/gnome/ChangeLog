@@ -1,3 +1,7 @@
+2002-04-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* Makefile.am: change to work correctly with dist
+
 2002-03-29  Michael A. Koziarski  <michael@koziarski.com>
 
 	* GPreamble.C
@@ -30,7 +34,7 @@
 	* dialogs/diainserttabular.glade
 	* dialogs/diainserturl.glade
 	* dialogs/diaprint.glade
-	* dialogs/diatoc.glade: old glade files.  Removed	
+	* dialogs/diatoc.glade: old glade files.  Removed
 
 2002-03-26  Michael A. Koziarski  <michael@koziarski.com>
 
@@ -60,7 +64,7 @@
 	* FormRef.C
 	* FormRef.h
 	* FormToc.C
-	* FormToc.h: Removed, they're old, unused files. 
+	* FormToc.h: Removed, they're old, unused files.
 
 2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 

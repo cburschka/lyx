@@ -2,14 +2,13 @@ include $(top_srcdir)/config/common.am
 
 SUBDIRS = controllers @FRONTEND@
 
+DIST_SUBDIRS = controllers xforms qt2 gnome
+
 noinst_LTLIBRARIES = libfrontends.la
 
 LIBS += @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
 
 INCLUDES = $(FRONTEND_INCLUDES) -I$(srcdir)/..  $(SIGC_CFLAGS) $(BOOST_INCLUDES)
-
-EXTRA_DIST = xforms qt2 gnome
-
 libfrontends_la_LIBADD = @FRONTEND_GUILIB@ controllers/*.lo
 
 libfrontends_la_DEPENDENCIES = $(libfrontends_la_LIBADD)
@@ -31,15 +30,3 @@ libfrontends_la_SOURCES = \
 	Timeout.h \
 	Toolbar.C \
 	Toolbar.h
-
-dist-hook:
-	@cd $(distdir) ; \
-	rm -rf `find qt2 -name \*CVS\*`; \
-	rm -rf `find gnome -name \*CVS\*`
-
-distclean-local:
-	for dir in $(EXTRA_DIST) ; do \
-	if test -f $$dir/Makefile ; then \
-		make -C $$dir distclean ; \
-	fi ; \
-	done

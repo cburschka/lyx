@@ -1,8 +1,29 @@
+2002-04-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* xforms/Makefile.am (EXTRA_DIST): delete 
+	(libqt2xforms_la_SOURCES): change to...
+	(nodist_libqt2xforms_la_SOURCES): this
+
+	* ui/moc/Makefile.am (libqt2uimoc_la_SOURCES): change to...
+	(nodist_libqt2uimoc_la_SOURCES): this
+
+	* ui/Makefile.am (libqt2ui_la_SOURCES): change to...
+	(nodist_libqt2ui_la_SOURCES): this
+
+	* moc/Makefile.am (libqtmoc_la_SOURCES): comment out
+	(nodist_libqt2moc_la_SOURCES): new
+
+	* Makefile.dialogs (DIALOGSOURCES): add QParagraph,
+	QParagraphDialog, QDocument, QDocumentDialog
+
+	* Makefile.am (DISTCLEANFILES): delete
+	(EXTRA_DIST): add with Makefile.dialogs
+
 2002-04-02  John Levon  <moz@compsoc.man.ac.uk>
 
 	* ui/QParagraphDialog.ui: fix a couple of typos for
 	  the translators
- 
+
 2002-03-25  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* xforms/Makefile.am (link_files): whitespace.

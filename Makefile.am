@@ -35,26 +35,6 @@ rpmdist: dist
 	rm lyx.xpm; exit $$saved_status
 
 bindist:
-	mkdir $(bindistdir)
-	if test -f README.bin ; then \
-	  $(INSTALL) README.bin  $(bindistdir)/README.bin ; \
-	fi
-	$(MAKE) $(AM_MAKEFLAGS) install-strip prefix=`pwd`/$(bindistdir)
-	(cd $(bindistdir) ; tar cf - .) | gzip >$(bindistfile)
-	rm -rf $(bindistdir)
-	@if test -f README.bin ; then \
-	  echo "*** Did you remember to check the contents of README.bin?" ; \
-	else \
-	  echo "*** WARNING: You did not provide a README.bin file." ; \
-	  echo "*** Please make one now from the example file" ; \
-	  echo "***   development/tools/README.bin.example" ; \
-	fi
-	@echo "*** It should mention any problem concerning your binary"
-	@echo "*** distribution and refer to *you* in case of problem."
-	@echo "*** $(bindistfile) has been created."
-
-
-newbindist:
 	rm -f $(bindistfile)
 	$(MAKE) $(AM_MAKEFLAGS) DESTDIR=$(bindistdir) install-strip
 	if test -f $(top_srcdir)/README.bin ; then \
@@ -64,7 +44,7 @@ newbindist:
 	(cd $(bindistdir)$(prefix) ; $(AMTAR) cf - . ) | \
 	GZIP=$(GZIP_ENV) gzip > $(bindistfile)
 	-chmod -R a+w $(bindistdir) > /dev/null 2>&1 ; rm -rf $(bindistdir)
-	@if test -f README.bin ; then \
+	@if test -f $(top_srcdir)/README.bin ; then \
 	  echo "*** Did you remember to check the contents of README.bin?" ; \
 	else \
 	  echo "*** WARNING: You did not provide a README.bin file." ; \
@@ -74,7 +54,6 @@ newbindist:
 	@echo "*** It should mention any problem concerning your binary"
 	@echo "*** distribution and refer to *you* in case of problem."
 	@echo "*** $(bindistfile) has been created."
-
 
 doxydoc: sourcedoc/Doxyfile
 	cd sourcedoc; \

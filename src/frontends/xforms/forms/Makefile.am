@@ -1,7 +1,8 @@
 include $(top_srcdir)/config/common.am
 
 SHELL = /bin/sh
-.SUFFIXES: .fd .c
+
+SUFFIXES = .fd
 
 SRCS =  form_aboutlyx.fd \
 	form_bibitem.fd \
@@ -65,6 +66,3 @@ clean-local:
 
 distclean-local:
 	rm -f *.orig *.rej *~
-
-updatesrc:
-	$(MAKE) -f makefile updatesrc

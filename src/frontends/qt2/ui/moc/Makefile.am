@@ -13,9 +13,9 @@ INCLUDES = -I$(top_srcdir)/src/ \
 
 AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR
 
-include ../../Makefile.dialogs
+include $(srcdir)/../../Makefile.dialogs
 
-libqt2uimoc_la_SOURCES := $(UIMOCDIALOGS)
+nodist_libqt2uimoc_la_SOURCES = $(UIMOCDIALOGS)
 
 libqt2uimoc.la: $(libqt2uimoc_la_OBJECTS) $(libqt2uimoc_la_DEPENDENCIES)
 

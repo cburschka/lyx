@@ -12,11 +12,11 @@ AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR
 
 SUBDIRS =. moc
 
-include ../Makefile.dialogs
+include $(srcdir)/../Makefile.dialogs
 
 DISTCLEANFILES += $(UIDIALOGS)
 
-libqt2ui_la_SOURCES = $(UIDIALOGS)
+nodist_libqt2ui_la_SOURCES = $(UIDIALOGS)
 
 libqt2ui.la: $(libqt2ui_la_OBJECTS) $(libqt2ui_la_DEPENDENCIES)
 
@@ -25,12 +25,12 @@ libqt2ui.la: $(libqt2ui_la_OBJECTS) $(libqt2ui_la_DEPENDENCIES)
 SED = sed
 SEDREPLACETR = s,[^A-Za-z]tr[ ]*(,_(,g
 SEDREMOVEEMPTY = s,_[ ]*([ ]*""[ ]*),"",g
- 
+
 QAskForTextDialog.h: QAskForTextDialog.ui
 	$(UIC) $< -o $@
 QAskForTextDialog.C: QAskForTextDialog.h QAskForTextDialog.ui
 	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
- 
+
 %Base.h: %.ui
 	$(UIC) $< -o $@
 %Base.C: %Base.h %.ui

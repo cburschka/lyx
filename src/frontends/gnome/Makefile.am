@@ -40,8 +40,7 @@ xforms_objects = \
 	../xforms/Toolbar_pimpl.lo \
 	../xforms/Tooltips.lo \
 	../xforms/xforms_helpers.lo \
-	../xforms/xformsBC.lo \
-	$(XFORMSGIMAGE)
+	../xforms/xformsBC.lo $(XFORMSGIMAGE)
 
 libgnome.la: xforms.lo $(libgnome_la_OBJECTS) $(libgnome_la_DEPENDENCIES)
 
@@ -53,7 +52,7 @@ xforms.lo: $(xforms_objects)
 ###
 
 #LDFLAGS= $(libgnome_la_OBJADD)
-LYXDATADIRS =
+#LYXDATADIRS =
 
 libgnome_la_SOURCES = \
 	Dialogs.C \
@@ -98,15 +97,15 @@ libgnome_la_SOURCES = \
 #	GUI_applymenu.C
 
 # just copied from old lyx repository
-dist-hook:
-	for subdir in $(LYXDATADIRS) ; do \
-	test -d $(distdir)/$$subdir \
-	|| mkdir $(distdir)/$$subdir \
-	|| exit 1; \
-	chmod 777 $(distdir)/$$subdir; \
-	list=`(cd $(srcdir)/$$subdir && ls -1 | grep -v CVS)`; \
-	echo $$list ; \
-	for fil in $$list ; do \
-	cp -p $(srcdir)/$$subdir/$$fil $(distdir)/$$subdir ; \
-	done ; \
-	done
+#dist-hook:
+#	for subdir in $(LYXDATADIRS) ; do \
+#	test -d $(distdir)/$$subdir \
+#	|| mkdir $(distdir)/$$subdir \
+#	|| exit 1; \
+#	chmod 777 $(distdir)/$$subdir; \
+#	list=`(cd $(srcdir)/$$subdir && ls -1 | grep -v CVS)`; \
+#	echo $$list ; \
+#	for fil in $$list ; do \
+#	cp -p $(srcdir)/$$subdir/$$fil $(distdir)/$$subdir ; \
+#	done ; \
+#	done

@@ -7,14 +7,12 @@ INCLUDES = -I$(top_srcdir)/src/ -I$(top_srcdir)/src/frontends/ \
 	$(FRONTEND_INCLUDES) $(BOOST_INCLUDES) \
 	-I$(top_srcdir)/src/frontends/controllers
 
-EXTRA_DIST = xformsGImage.C xformsGImage.h
-
 if USE_BASIC_IMAGE_LOADER
 else
 XFORMSGIMAGE = xformsGImage.C xformsGImage.h
 endif
 
-libqt2xforms_la_SOURCES = \
+nodist_libqt2xforms_la_SOURCES = \
 	bmtable.h \
 	bmtable.c \
 	combox.h \

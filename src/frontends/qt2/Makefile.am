@@ -1,8 +1,8 @@
 include $(top_srcdir)/config/common.am
 
-DISTCLEANFILES += $(BUILTSOURCES)
-
 SUBDIRS = xforms ui moc
+
+EXTRA_DIST = Makefile.dialogs
 
 noinst_LTLIBRARIES = libqt2.la
 
@@ -13,14 +13,7 @@ INCLUDES = -I$(top_srcdir)/src/ -I$(top_srcdir)/src/frontends/ \
 
 AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR
 
-include Makefile.dialogs
-
-#libqt2_la_LIBADD = \
-#	xforms/libqt2xforms.la \
-#	ui/libqt2ui.la \
-#	moc/libqt2moc.la \
-#	ui/moc/libqt2uimoc.la \
-#	@FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
+include $(srcdir)/Makefile.dialogs
 
 libqt2_la_SOURCES = \
 	$(DIALOGSOURCES) \

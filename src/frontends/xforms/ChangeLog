@@ -1,3 +1,8 @@
+2002-04-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* forms/Makefile.am (SUFFIXES): instead of .SUFFIXES
+	(updatesrc): delete wrong version
+
 2002-04-06  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* forms/.cvsignore: add Makefile.in
