@@ -3,8 +3,8 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
- *          Copyright (C) 1995-1999 The LyX Team.
+ *	    Copyright 1995 Matthias Ettrich
+ *          Copyright 1995-1999 The LyX Team.
  *
  * ====================================================== */
 
@@ -114,7 +114,8 @@ private:
 
 lyxstring::Srep::Srep(lyxstring::size_type nsz, const value_type * p)
 {
-// can be called with p == 0 by lyxstring::assign(const value_type *, size_type)
+	// can be called with p == 0 by
+	// lyxstring::assign(const value_type *, size_type)
 
 	sz = nsz;
 	ref = 1;
@@ -148,7 +149,8 @@ lyxstring::Srep::Srep(lyxstring::size_type nsz, value_type ch)
 
 void lyxstring::Srep::assign(lyxstring::size_type nsz, const value_type * p)
 {
-// can be called with p == 0 by lyxstring::assign(const value_type *, size_type)
+	// can be called with p == 0
+	// by lyxstring::assign(const value_type *, size_type)
 
 	if (res < nsz) {
 		delete[] s;
@@ -223,7 +225,7 @@ void lyxstring::Srep::push_back(value_type c)
 
 
 void lyxstring::Srep::insert(lyxstring::size_type pos, const value_type * p,
-			   lyxstring::size_type n)
+			     lyxstring::size_type n)
 {
 	if (res < n + sz) {
 		do {
@@ -799,7 +801,7 @@ lyxstring & lyxstring::insert(size_type pos, lyxstring const & x)
 
 
 lyxstring & lyxstring::insert(size_type pos, lyxstring const & x,
-			  size_type pos2, size_type n)
+			      size_type pos2, size_type n)
 {
 	Assert(pos <= rep->sz && pos2 <= x.rep->sz); // STD!
 	TestlyxstringInvariant(this);
@@ -912,7 +914,7 @@ lyxstring::size_type lyxstring::find(lyxstring const & a, size_type i) const
 
 
 lyxstring::size_type lyxstring::find(value_type const * ptr, size_type i,
-				 size_type n) const
+				     size_type n) const
 {
 	Assert(ptr); // OURS!
 	if (!rep->sz || !*ptr || i >= rep->sz) return npos;
@@ -987,7 +989,7 @@ lyxstring::size_type lyxstring::rfind(lyxstring const & a, size_type i) const
 
 
 lyxstring::size_type lyxstring::rfind(value_type const * ptr, size_type i,
-				  size_type n) const
+				      size_type n) const
 {
 	Assert(ptr); // OURS!
 	TestlyxstringInvariant(this);

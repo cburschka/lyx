@@ -30,8 +30,8 @@ LyXScreen::LyXScreen(Window window,
 		     Dimension offset_y,
 		     LyXText *text_ptr)
 	: text(text_ptr), _window(window), 
-	  _width(width), _height(height),
-	  _offset_x(offset_x), _offset_y(offset_y)
+	_width(width), _height(height),
+	_offset_x(offset_x), _offset_y(offset_y)
 {
 	first = 0;
    
@@ -85,17 +85,13 @@ void LyXScreen::expose(int x, int y, int exp_width, int exp_height)
 
 void LyXScreen::DrawFromTo(int y1, int y2)
 {
-	Row* row = 0;
-	long  y_text = 0;
-	long y = 0;
-	
-	y_text = first + y1;
+	long y_text = first + y1;
    
 	/* get the first needed row */ 
-	row = text->GetRowNearY(y_text);
+	Row * row = text->GetRowNearY(y_text);
 	/* y_text is now the real beginning of the row */
    
-	y = y_text - first;
+	long y = y_text - first;
 	/* y1 is now the real beginning of row on the screen */
 	
 	while (row != 0 && y < y2) {
@@ -117,11 +113,9 @@ void LyXScreen::DrawFromTo(int y1, int y2)
 }
 
 
-void LyXScreen::DrawOneRow(Row *row, long &y_text)
+void LyXScreen::DrawOneRow(Row * row, long & y_text)
 {
-	long y = 0;
-   
-	y = y_text - first;
+	long y = y_text - first;
       
 	if (y + row->height > 0 && y - row->height <= _height) {
 		/* ok there is something visible */
@@ -137,7 +131,7 @@ void LyXScreen::Draw(long  y)
 {
 	if (cursor_visible) HideCursor();
 
-	if (y<0) y = 0;
+	if (y < 0) y = 0;
 	long old_first = first;
 	first = y;
 
@@ -265,7 +259,8 @@ int LyXScreen::FitManualCursor(long /*x*/, long y, int asc, int desc)
 }
 
 
-void  LyXScreen::HideManualCursor(long x, long y, int asc, int desc){
+void  LyXScreen::HideManualCursor(long x, long y, int asc, int desc)
+{
 	if (fast_selection || mono_video)
 		ShowManualCursor(x, y, asc, desc);
 	else
@@ -304,7 +299,7 @@ void  LyXScreen::ShowManualCursor(long x, long y, int asc, int desc)
 			cursor_pixmap_w = 1;
 			cursor_pixmap_h = y2 - y1 + 1;
 			cursor_pixmap_x = x,
-			cursor_pixmap_y = y1;
+				cursor_pixmap_y = y1;
 			cursor_pixmap = 
 				XCreatePixmap (fl_display,
 					       fl_root,
@@ -439,14 +434,14 @@ void LyXScreen::Update()
 		DrawOneRow(text->refresh_row, y);
 		text->status = LyXText::UNCHANGED;
 		expose(0, text->refresh_y-first,
-		     _width, text->refresh_row->height);
+		       _width, text->refresh_row->height);
 	}
 }
 
 
 void LyXScreen::SmallUpdate()
 {
-	Row *row = 0;
+	Row * row = 0;
 	long y = 0;
 	long y2 = 0;
 	
@@ -486,12 +481,13 @@ void LyXScreen::SmallUpdate()
 
 void LyXScreen::ToggleSelection(bool kill_selection)
 {
-	long top = 0;
-	long bottom = 0;
-   
 	/* only if there is a selection */ 
 	if (!text->selection)
 		return;
+
+	long top = 0;
+	long bottom = 0;
+   
 	
 	if (fast_selection || mono_video){
 		
@@ -640,7 +636,7 @@ void LyXScreen::ToggleToggle()
 	    && text->toggle_cursor.pos == text->toggle_end_cursor.pos)
 		return;
 
-	if (fast_selection || mono_video){
+	if (fast_selection || mono_video) {
 		
 		/* selection only in one row ?*/ 
 		if (text->toggle_cursor.y == text->toggle_end_cursor.y) {
@@ -810,22 +806,24 @@ void LyXScreen::drawFrame(int /*ft*/, int x, int y, int w, int h,
 	// I think these calls to fl_color might make xforms sometimes
 	// draw the wrong color on other objects.
 	fl_color(FL_TOP_BCOL);
-	XFillRectangle(fl_display, foreground, fl_gc, x-d, y-d, w+2*d, d);
+	XFillRectangle(fl_display, foreground, fl_gc,
+		       x - d, y - d, w + 2 * d, d);
 	fl_color(FL_BOTTOM_BCOL);
-	XFillRectangle(fl_display, foreground, fl_gc, x-d, y+h, w+2*d, d);
+	XFillRectangle(fl_display, foreground, fl_gc,
+		       x - d, y + h, w + 2 * d, d);
  
 	// Now a couple of trapezoids
 	XPoint pl[4], pr[4]; 
  
-	pl[0].x = x-d;   pl[0].y = y-d;
-	pl[1].x = x-d;   pl[1].y = y+h+d;
-	pl[2].x = x;     pl[2].y = y+h;
+	pl[0].x = x - d;   pl[0].y = y - d;
+	pl[1].x = x - d;   pl[1].y = y + h + d;
+	pl[2].x = x;     pl[2].y = y + h;
 	pl[3].x = x;     pl[3].y = y;
 	
-	pr[0].x = x+w+d; pr[0].y = y-d;
-	pr[1].x = x+w+d; pr[1].y = y+h+d;
-	pr[2].x = x+w;   pr[2].y = y+h;
-	pr[3].x = x+w;   pr[3].y = y;
+	pr[0].x = x + w + d; pr[0].y = y - d;
+	pr[1].x = x + w + d; pr[1].y = y + h + d;
+	pr[2].x = x + w;   pr[2].y = y + h;
+	pr[3].x = x + w;   pr[3].y = y;
 	
 	fl_color(FL_LEFT_BCOL);
 	XFillPolygon(fl_display,

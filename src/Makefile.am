@@ -50,7 +50,6 @@ lyx_SOURCES = \
 	bibforms.h \
 	bmtable.C \
 	bmtable.h \
-	broken_const.h \
 	broken_headers.h \
 	buffer.C \
 	buffer.h \

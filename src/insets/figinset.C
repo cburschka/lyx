@@ -77,8 +77,8 @@ void PutInsetIntoInsetUpdateList(Inset * inset);
 extern void ProhibitInput();
 extern void AllowInput();
 
-#define DEG2PI 57.295779513
-#define figallocchunk 32
+static float const DEG2PI = 57.295779513;
+static int const figallocchunk = 32;
 
 static int figinsref = 0;	/* number of figures */
 static int figarrsize = 0;	/* current max number of figures */
@@ -97,7 +97,7 @@ struct pidwait {
 	pidwait * next;	/* next */
 };
 
-#define MAXGS 3			/* maximum 3 gs's at a time */
+static int const MAXGS = 3;			/* maximum 3 gs's at a time */
 
 static Figref ** figures;	/* all the figures */
 static figdata ** bitmaps;	/* all the bitmaps */
@@ -141,7 +141,7 @@ void addpidwait(int pid)
 
 
 extern "C" int GhostscriptMsg(FL_OBJECT *, Window, int, int,
-		   XEvent * ev, void *)
+			      XEvent * ev, void *)
 {
 	char tmp[128];
 
@@ -153,6 +153,7 @@ extern "C" int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 	}
 
 	// just kill gs, that way it will work for sure
+	// This loop looks like S**T so it probably is...
 	for (int i = 0; i < bmpinsref; ++i)
 		if ((long)bitmaps[i]->bitmap == (long)e->data.l[1]) {
 			// found the one
@@ -160,7 +161,8 @@ extern "C" int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 			p->gsdone = true;
 
 			// first update p->bitmap, if necessary
-			if (p->bitmap != None && p->flags > (1|8) && gs_color && p->wid) {
+			if (p->bitmap != None
+			    && p->flags > (1|8) && gs_color && p->wid) {
 				// query current colormap and re-render
 				// the pixmap with proper colors
 				//XColor * cmap;
@@ -172,8 +174,10 @@ extern "C" int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 				Display * tmpdisp;
 				GC gc = getGC(gc_copy);
 
-				XGetWindowAttributes(fl_display, fl_get_canvas_id(
-					figinset_canvas), &wa);
+				XGetWindowAttributes(fl_display,
+						     fl_get_canvas_id(
+							     figinset_canvas),
+						     &wa);
 				XFlush(fl_display);
 				if (lyxerr.debugging()) {
 					lyxerr << "Starting image translation "
@@ -217,36 +221,39 @@ extern "C" int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 				{
 				// query current colormap
 				//cmap = (XColor *) malloc(gs_allcolors*sizeof(XColor));
-				XColor * cmap = new XColor[gs_allcolors];
-				for (i = 0; i < gs_allcolors; ++i) cmap[i].pixel = i;
-				XQueryColors(tmpdisp, color_map, cmap, gs_allcolors);
-				XFlush(tmpdisp);
-				wid1 = p->wid - 1;
+					XColor * cmap = new XColor[gs_allcolors];
+					for (i = 0; i < gs_allcolors; ++i) cmap[i].pixel = i;
+					XQueryColors(tmpdisp, color_map, cmap, gs_allcolors);
+					XFlush(tmpdisp);
+					wid1 = p->wid - 1;
 				// now we process all the image
-				for (y = 0; y < p->hgh; ++y) {
-					for (int x = 0; x < wid; ++x) {
-						XColor * pc = cmap +
-							XGetPixel(im, x, y);
-						XFlush(tmpdisp);
-						XPutPixel(im, x, y,
-							  gs_pixels[((pc->red+6553)*
-									       spc1/65535)*spc2+((pc->green+6553)*
-												 spc1/65535)*gs_spc+((pc->blue+6553)*
-														     spc1/65535)]);
-						XFlush(tmpdisp);
+					for (y = 0; y < p->hgh; ++y) {
+						for (int x = 0; x < wid; ++x) {
+							XColor * pc = cmap +
+								XGetPixel(im, x, y);
+							XFlush(tmpdisp);
+							XPutPixel(im, x, y,
+								  gs_pixels[((pc->red+6553)*
+									     spc1/65535)*spc2+((pc->green+6553)*
+											       spc1/65535)*gs_spc+((pc->blue+6553)*
+														   spc1/65535)]);
+							XFlush(tmpdisp);
+						}
 					}
-				}
 				// This must be correct.
-				delete [] cmap;
-				if (lyxerr.debugging()) {
-					lyxerr << "Putting image back" << endl;
-				}
-				XPutImage(tmpdisp, p->bitmap, gc, im, 0, 0,
-					  0, 0, p->wid, p->hgh);
-				XDestroyImage(im);
-				if (lyxerr.debugging()) {
-					lyxerr << "Done translation" << endl;
-				}
+					delete [] cmap;
+					if (lyxerr.debugging()) {
+						lyxerr << "Putting image back"
+						       << endl;
+					}
+					XPutImage(tmpdisp, p->bitmap,
+						  gc, im, 0, 0,
+						  0, 0, p->wid, p->hgh);
+					XDestroyImage(im);
+					if (lyxerr.debugging()) {
+						lyxerr << "Done translation"
+						       << endl;
+					}
 				}
 			  noim:
 				if (lyxerr.debugging()) {
@@ -284,9 +291,6 @@ extern "C" int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 static void AllocColors(int num)
 // allocate color cube numxnumxnum, if possible
 {
-	XColor xcol;
-	int i;
-
 	if (lyxerr.debugging()) {
 		lyxerr << "Allocating color cube " << num
 		       << 'x' << num << 'x' << num << endl;
@@ -298,10 +302,11 @@ static void AllocColors(int num)
 		return;
 	}
 	if (num > 5) num = 5;
-	for (i = 0; i < num*num*num; ++i) {
-		xcol.red = 65535*(i/(num*num))/(num-1);
-		xcol.green = 65535*((i/num) % num)/(num-1);
-		xcol.blue = 65535*(i % num)/(num-1);
+	XColor xcol;
+	for (int i = 0; i < num * num * num; ++i) {
+		xcol.red = 65535 * (i / (num * num)) / (num - 1);
+		xcol.green = 65535 * ((i / num) % num) / (num - 1);
+		xcol.blue = 65535 * (i % num) / (num - 1);
 		xcol.flags = DoRed | DoGreen | DoBlue;
 		if (!XAllocColor(fl_display, color_map, &xcol)) {
 			if (i) XFreeColors(fl_display, color_map,
@@ -310,7 +315,7 @@ static void AllocColors(int num)
 				lyxerr << "Cannot allocate color cube "
 				       << num << endl;;
 			}
-			AllocColors(num-1);
+			AllocColors(num - 1);
 			return;
 		}
 		gs_pixels[i] = xcol.pixel;
@@ -318,18 +323,16 @@ static void AllocColors(int num)
 	gs_color = true;
 	gs_gray = false;
 	gs_spc = num;
-	gs_num_pixels = num*num*num;
+	gs_num_pixels = num * num * num;
 }
 
 
-static void AllocGrays(int num)
 // allocate grayscale ramp
+static
+void AllocGrays(int num)
 {
-	XColor xcol;
-	int i;
-
 	if (lyxerr.debugging()) {
-		lyxerr << "Allocating grayscale ramp "
+		lyxerr << "Allocating grayscale colormap "
 		       << num << endl;
 	}
 
@@ -339,8 +342,9 @@ static void AllocGrays(int num)
 		return;
 	}
 	if (num > 128) num = 128;
-	for (i = 0; i < num; ++i) {
-		xcol.red = xcol.green = xcol.blue = 65535*i/(num-1);
+	XColor xcol;
+	for (int i = 0; i < num; ++i) {
+		xcol.red = xcol.green = xcol.blue = 65535 * i / (num - 1);
 		xcol.flags = DoRed | DoGreen | DoBlue;
 		if (!XAllocColor(fl_display, color_map, &xcol)) {
 			if (i) XFreeColors(fl_display, color_map,
@@ -349,7 +353,7 @@ static void AllocGrays(int num)
 				lyxerr << "Cannot allocate grayscale " 
 				       << num << endl;
 			}
-			AllocGrays(num/2);
+			AllocGrays(num / 2);
 			return;
 		}
 		gs_pixels[i] = xcol.pixel;
@@ -362,16 +366,16 @@ static void AllocGrays(int num)
 
 void InitFigures()
 {
-	unsigned int i, j, k;
-	Visual *vi;
-
 	bmparrsize = figarrsize = figallocchunk;
-	figures = static_cast<Figref**>(malloc(sizeof(Figref*)*figallocchunk));
-	bitmaps = static_cast<figdata**>(malloc(sizeof(figdata*)*figallocchunk));
+	figures = static_cast<Figref**>
+		(malloc(sizeof(Figref*) * figallocchunk));
+	bitmaps = static_cast<figdata**>
+		(malloc(sizeof(figdata*) * figallocchunk));
 
-	for (i = 0; i < 256; ++i) {
+	unsigned int k;
+	for (unsigned int i = 0; i < 256; ++i) {
 		k = 0;
-		for (j = 0; j < 8; ++j)
+		for (unsigned int j = 0; j < 8; ++j)
 			if (i & (1 << (7-j))) k |= 1 << j;
 		bittable[i] = char(~k);
 	}
@@ -386,16 +390,16 @@ void InitFigures()
 	// first get visual
 	gs_color = false;
 
-	vi = DefaultVisual(fl_display, DefaultScreen(fl_display));
+	Visual * vi = DefaultVisual(fl_display, DefaultScreen(fl_display));
 	if (lyxerr.debugging()) {
 		printf("Visual ID: %ld, class: %d, bprgb: %d, mapsz: %d\n", 
 		       vi->visualid, vi->c_class, 
 		       vi->bits_per_rgb, vi->map_entries);
 	}
 	color_visual = ( (vi->c_class == StaticColor) ||
-		(vi->c_class == PseudoColor) ||
-		(vi->c_class == TrueColor) ||
-		(vi->c_class == DirectColor) );
+			 (vi->c_class == PseudoColor) ||
+			 (vi->c_class == TrueColor) ||
+			 (vi->c_class == DirectColor) );
 	if ((vi->c_class & 1) == 0) return;
 	// now allocate colors
 	if (vi->c_class == GrayScale) {
@@ -404,7 +408,7 @@ void InitFigures()
 	} else {
 		// allocate normal color
 		int i = 5;
-		while (i*i*i*2 > vi->map_entries) --i;
+		while (i * i * i * 2 > vi->map_entries) --i;
 		AllocColors(i);
 	}
 	gs_allcolors = vi->map_entries;
@@ -432,7 +436,7 @@ void DoneFigures()
 }
 
 
-int FindBmpIndex(figdata *tmpdata)
+int FindBmpIndex(figdata * tmpdata)
 {
 	int i = 0;
 	while (i < bmpinsref) {
@@ -456,7 +460,7 @@ static void chpixmap(Pixmap, int, int)
 }
 
 
-static void freefigdata(figdata *tmpdata)
+static void freefigdata(figdata * tmpdata)
 {
 	tmpdata->ref--;
 	if (tmpdata->ref) return;
@@ -478,7 +482,7 @@ static void freefigdata(figdata *tmpdata)
 	int i = FindBmpIndex(tmpdata);
 	--bmpinsref;
 	while (i < bmpinsref) {
-		bitmaps[i] = bitmaps[i+1];
+		bitmaps[i] = bitmaps[i + 1];
 		++i;
 	}
 }
@@ -557,7 +561,8 @@ static void runqueue()
 			// now set up ghostview property on a window
 			sprintf(tbuf, "0 0 0 0 %d %d 72 72 0 0 0 0",
 				p->data->wid, p->data->hgh);
-//#warning BUG seems that the only bug here might be the hardcoded dpi.. Bummer!
+			// #warning BUG seems that the only bug here
+			// might be the hardcoded dpi.. Bummer!
 			
 			if (lyxerr.debugging()) {
 				lyxerr << "Will set GHOSTVIEW property to ["
@@ -566,35 +571,37 @@ static void runqueue()
 			// wait until property is deleted if executing multiple
 			// ghostscripts
 			for (;;) {
-				// grab server to prevent other child interfering
-				// with setting GHOSTVIEW property
+				// grab server to prevent other child
+				// interfering with setting GHOSTVIEW property
 				if (lyxerr.debugging()) {
-					lyxerr << "Grabbing the server" << endl;
+					lyxerr << "Grabbing the server"
+					       << endl;
 				}
 				XGrabServer(tempdisp);
-				prop = XListProperties(tempdisp, fl_get_canvas_id(
+				prop = XListProperties(tempdisp,
+						       fl_get_canvas_id(
 					figinset_canvas), &nprop);
 				if (!prop) break;
 
 				bool err = true;
 				for (i = 0; i < nprop; ++i) {
-					char * p = XGetAtomName(tempdisp, prop[i]);
+					char * p = XGetAtomName(tempdisp,
+								prop[i]);
 					if (strcmp(p, "GHOSTVIEW") == 0) {
 						err = false;
 						break;
 					}
 					XFree(p);
 				}
-				XFree(reinterpret_cast<char *>(prop));    /* jc: */
+				XFree(reinterpret_cast<char *>(prop)); // jc:
 				if (err) break;
 				// release the server
 				XUngrabServer(tempdisp);
 				XFlush(tempdisp);
-				// ok, property found, we must wait until ghostscript
-				// deletes it
+				// ok, property found, we must wait until
+				// ghostscript deletes it
 				if (lyxerr.debugging()) {
-					lyxerr << "Releasing the server" << endl;
-					lyxerr << "["
+					lyxerr << "Releasing the server\n["
 					       << getpid()
 					       << "] GHOSTVIEW property"
 						" found. Waiting." << endl;
@@ -644,7 +651,8 @@ static void runqueue()
 
 			XChangeProperty(tempdisp, 
 					fl_get_canvas_id(figinset_canvas),
-					XInternAtom(tempdisp, "GHOSTVIEW_COLORS", false),
+					XInternAtom(tempdisp,
+						    "GHOSTVIEW_COLORS", false),
 					XInternAtom(tempdisp, "STRING", false),
 					8, PropModeReplace, 
 					reinterpret_cast<unsigned char*>(tbuf),
@@ -658,9 +666,10 @@ static void runqueue()
 
 			// set up environment
 			while (environ[ne]) ++ne;
-			env = static_cast<char **>(malloc(sizeof(char*)*(ne+2)));
+			env = static_cast<char **>
+				(malloc(sizeof(char*) * (ne + 2)));
 			env[0] = tbuf2;
-			memcpy(&env[1], environ, sizeof(char*)*(ne+1));
+			memcpy(&env[1], environ, sizeof(char*) * (ne + 1));
 			environ = env;
 
 			// now make gs command
@@ -676,8 +685,9 @@ static void runqueue()
 			sprintf(tbuf, "%s/~lyxgs%d.ps", system_tempdir.c_str(),
 				int(getpid()));
 			if (lyxerr.debugging()) {
-				printf("starting gs %s %s, pid: %d\n", tbuf,
-				       p->data->fname.c_str(), int(getpid()));
+				lyxerr << "starting gs " << tbuf << " "
+				       << p->data->fname
+				       << ", pid: " << getpid() << endl;
 			}
 
 			int err = execlp(lyxrc->ps_command.c_str(), 
@@ -710,14 +720,14 @@ static void runqueue()
 }
 
 
-static void addwait(int psx, int psy, int pswid, int pshgh, figdata *data)
+static void addwait(int psx, int psy, int pswid, int pshgh, figdata * data)
 {
 	// recompute the stuff and put in the queue
 	queue * p = new queue;
 	p->ofsx = psx;
 	p->ofsy = psy;
-	p->rx = (float(data->raw_wid) * 72.0)/pswid;
-	p->ry = (float(data->raw_hgh) * 72.0)/pshgh;
+	p->rx = (float(data->raw_wid) * 72.0) / pswid;
+	p->ry = (float(data->raw_hgh) * 72.0) / pshgh;
 
 	p->data = data;
 	p->next = 0;
@@ -758,8 +768,10 @@ static figdata * getfigdata(int wid, int hgh, string const & fname,
 	if (bmpinsref > bmparrsize) {
 		// allocate more space
 		bmparrsize += figallocchunk;
-		figdata ** tmp = static_cast<figdata**>(malloc(sizeof(figdata*)*bmparrsize));
-		memcpy(tmp, bitmaps, sizeof(figdata*)*(bmparrsize-figallocchunk));
+		figdata ** tmp = static_cast<figdata**>
+			(malloc(sizeof(figdata*) * bmparrsize));
+		memcpy(tmp, bitmaps,
+		       sizeof(figdata*) * (bmparrsize - figallocchunk));
 		free(bitmaps);
 		bitmaps = tmp;
 	}
@@ -804,13 +816,13 @@ static figdata * getfigdata(int wid, int hgh, string const & fname,
 }
 
 
-static void getbitmap(figdata *p)
+static void getbitmap(figdata * p)
 {
 	p->gspid = -1;
 }
 
 
-static void makeupdatelist(figdata *p)
+static void makeupdatelist(figdata * p)
 {
 	for (int i = 0; i < figinsref; ++i)
 		if (figures[i]->data == p) {
@@ -933,8 +945,10 @@ static void RegisterFigure(InsetFig *fi)
 	if (figinsref > figarrsize) {
 		// allocate more space
 		figarrsize += figallocchunk;
-		Figref **tmp = static_cast<Figref**>(malloc(sizeof(Figref*)*figarrsize));
-		memcpy(tmp, figures, sizeof(Figref*)*(figarrsize-figallocchunk));
+		Figref ** tmp = static_cast<Figref**>
+			(malloc(sizeof(Figref*)*figarrsize));
+		memcpy(tmp, figures,
+		       sizeof(Figref*)*(figarrsize-figallocchunk));
 		free(figures);
 		figures = tmp;
 	}
@@ -1082,12 +1096,12 @@ void InsetFig::Draw(LyXFont font, LyXScreen & scr, int baseline, float & x)
 			       int(x),
 			       baseline - hgh - 1, wid+1, hgh+1);
 		if (figure && figure->data) {
-		  if (figure->data->broken)  msg = _("[render error]");
-		  else if (figure->data->reading) msg = _("[rendering ... ]");
+			if (figure->data->broken)  msg = _("[render error]");
+			else if (figure->data->reading) msg = _("[rendering ... ]");
 		} else 
-		  if (fname.empty()) msg = _("[no file]");
-		  else if ((flags & 3) == 0) msg = _("[not displayed]");
-		  else if (lyxrc->ps_command.empty()) msg = _("[no ghostscript]");
+			if (fname.empty()) msg = _("[no file]");
+			else if ((flags & 3) == 0) msg = _("[not displayed]");
+			else if (lyxrc->ps_command.empty()) msg = _("[no ghostscript]");
 
 		if (!msg) msg = _("[unknown error]");
 		
@@ -1095,8 +1109,8 @@ void InsetFig::Draw(LyXFont font, LyXScreen & scr, int baseline, float & x)
 		font.setSize (LyXFont::SIZE_FOOTNOTE);
 		string justname = OnlyFilename (fname);
 		font.drawString(justname, pm,
-			       baseline - font.maxAscent() - 4,
-			       int(x) + 8);
+				baseline - font.maxAscent() - 4,
+				int(x) + 8);
 		font.setSize (LyXFont::SIZE_TINY);
 		font.drawText (msg, strlen(msg), pm,
 			       baseline - 4,
@@ -1112,9 +1126,9 @@ void InsetFig::Write(ostream & os)
 	Regenerate();
 	os << "Figure size " << wid << " " << hgh << "\n";
 	if (!fname.empty()) {
-	  string buf1 = OnlyPath(owner->fileName());
-	  string fname2 = MakeRelPath(fname, buf1);
-	  os << "file " << fname2 << "\n";
+		string buf1 = OnlyPath(owner->fileName());
+		string fname2 = MakeRelPath(fname, buf1);
+		os << "file " << fname2 << "\n";
 	}
 	if (!subcaption.empty())
 		os << "subcaption " << subcaption << "\n";
@@ -1234,7 +1248,7 @@ int InsetFig::Linuxdoc(string &/*file*/)
 
 int InsetFig::DocBook(string & file)
 {
-	string figurename= fname;
+	string figurename = fname;
 
 	if(suffixIs(figurename, ".eps"))
 		figurename.erase(fname.length() - 5);
@@ -1320,7 +1334,8 @@ Inset * InsetFig::Clone() const
 	tmp->pshgh = pshgh;
 	tmp->fname = fname;
 	if (!fname.empty() && (flags & 3) && !lyxrc->ps_command.empty()) { 
-	  // do not display if there is "do not display" chosen (Matthias 260696)
+		// do not display if there is
+		// "do not display" chosen (Matthias 260696)
 		tmp->figure->data = getfigdata(wid, hgh, fname, psx, psy,
 					       pswid, pshgh, raw_wid, raw_hgh,
 					       angle, flags & (3|8));
@@ -1453,7 +1468,7 @@ void InsetFig::Regenerate()
 	if (subfigure) {
 		if (!subcaption.empty())
 			cmdbuf = "\\subfigure[" + subcaption +
-			  "]{" + cmdbuf + "}";
+				"]{" + cmdbuf + "}";
 		else
 			cmdbuf = "\\subfigure{" + cmdbuf + "}";
 	}
@@ -1584,7 +1599,7 @@ void InsetFig::TempRegenerate()
 	if (!recmd.empty()) cmdbuf += '}';
 	if (psubfigure && !tsubcap.empty()) {
 		cmdbuf = string("\\subfigure{") + tsubcap
-		  + string("}{") + cmdbuf + "}";
+			+ string("}{") + cmdbuf + "}";
 	}
 }
 
@@ -1646,7 +1661,8 @@ void InsetFig::Recompute()
 			// compiler warnings.  
                         break;
 		}
-		if (htype && !wtype && frame_hgh) newx = newy*frame_wid/frame_hgh;
+		if (htype && !wtype && frame_hgh)
+			newx = newy*frame_wid/frame_hgh;
 	} else {
 		newx = wid;
 		newy = hgh;
@@ -1682,7 +1698,8 @@ void InsetFig::Recompute()
 		figdata * pf = figure->data;
 
 		// get new data
-		if (!fname.empty() && (flags & 3) && !lyxrc->ps_command.empty()) {
+		if (!fname.empty() && (flags & 3)
+		    && !lyxrc->ps_command.empty()) {
 			// do not display if there is "do not display"
 			// chosen (Matthias 260696)
 			figure->data = getfigdata(wid, hgh, fname,
@@ -1779,7 +1796,7 @@ void InsetFig::CallbackFig(long arg)
 	char const * p;
 
 	if (lyxerr.debugging()) {
-		printf("Figure callback, arg %ld\n", arg);
+		lyxerr << "Figure callback, arg " << arg << endl;
 	}
 
 	switch (arg) {
@@ -2123,15 +2140,15 @@ void InsetFig::BrowseFile()
 		buf = MakeAbsPath(p, buf2);
 		buf = OnlyPath(buf);
 	} else {
-	  buf = OnlyPath(owner->fileName().c_str());
+		buf = OnlyPath(owner->fileName().c_str());
 	}
 	
 	// Does user clipart directory exist?
 	string bufclip = AddName (user_lyxdir, "clipart");	
 	FileInfo fileInfo(bufclip);
 	if (!(fileInfo.isOK() && fileInfo.isDir()))
-	  // No - bail out to system clipart directory
-	  bufclip = AddName (system_lyxdir, "clipart");	
+		// No - bail out to system clipart directory
+		bufclip = AddName (system_lyxdir, "clipart");	
 
 
 	fileDlg.SetButton(0, _("Clipart"), bufclip); 
@@ -2141,7 +2158,8 @@ void InsetFig::BrowseFile()
 	do {
 		ProhibitInput();
 		if (once) {
-			p = fileDlg.Select(_("EPS Figure"), current_figure_path,
+			p = fileDlg.Select(_("EPS Figure"),
+					   current_figure_path,
 					   "*ps", string());
 		} else {
 			p = fileDlg.Select(_("EPS Figure"), buf,
@@ -2157,11 +2175,13 @@ void InsetFig::BrowseFile()
 		
 		if (contains(p, "#") || contains(p, "~") || contains(p, "$")
 		    || contains(p, "%") || contains(p, " ")) 
-		{
-			WriteAlert(_("Filename can't contain any of these characters:"), // xgettext:no-c-format
-				   _("space, '#', '~', '$' or '%'.")); 
-			error = true;
-		}
+			{
+				WriteAlert(_("Filename can't contain any "
+					     "of these characters:"),
+					   // xgettext:no-c-format
+					   _("space, '#', '~', '$' or '%'.")); 
+				error = true;
+			}
 	} while (error);
 
 	if (form) fl_set_input(form->EpsFile, buf.c_str());

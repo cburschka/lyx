@@ -47,15 +47,16 @@ public:
 	/// The last key was meta
 	bool wasMetaKey() const;
 
-	// These can't be global because are part of the internat state (ale970227)
+	// These can't be global because are part of the
+	// internal state (ale970227)
 	/// Get the current keyseq string
-	string keyseqStr(int l = 190) const;
+	string keyseqStr() const;
 
 	/// Is the key sequence uncomplete?
 	bool keyseqUncomplete() const;
 
 	/// get options for the current keyseq
-	string keyseqOptions(int l = 190) const;
+	string keyseqOptions() const;
 
         /// True if lyxfunc reports an error
         bool errorStat() const { return errorstat; }
@@ -70,7 +71,6 @@ public:
 	
 	/// Should a hint message be displayed?
 	void setHintMessage(bool);
-
 private:
 	///
 	LyXView * owner;
@@ -94,8 +94,8 @@ private:
         mutable bool errorstat;
 
         /** Buffer to store messages and result data. Is there a
-	  good reason to have this one as static in Dispatch? (Ale)
-         */
+	    good reason to have this one as static in Dispatch? (Ale)
+	*/
         mutable string dispatch_buffer;
 	/// Command name and shortcut information
 	string commandshortcut;
@@ -136,22 +136,22 @@ bool LyXFunc::wasMetaKey() const
      
 
 inline
-string LyXFunc::keyseqStr(int l) const
+string LyXFunc::keyseqStr() const
 {
-	char text[200];
-	keyseq.print(text, l, true);
-	string tmp(text);
-	return tmp;
+	// Why not just remove this function
+	string text;
+	keyseq.print(text, true);
+	return text;
 } 
 
 
 inline
-string LyXFunc::keyseqOptions(int l) const
+string LyXFunc::keyseqOptions() const
 {
-	char text[200];
-	keyseq.printOptions(text, l);
-	string tmp(text);
-	return tmp;
+	// Why not just remove this function
+	string text;
+	keyseq.printOptions(text);
+	return text;
 } 
 
 
@@ -161,11 +161,13 @@ bool LyXFunc::keyseqUncomplete() const
 	return (keyseq.length > 0);
 }
 
+
 inline
 void LyXFunc::setHintMessage(bool hm) 
 { 
 	show_sc = hm;
 }
+
 
 inline
 void operator|=(LyXFunc::func_status & fs, LyXFunc::func_status f)

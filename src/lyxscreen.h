@@ -42,13 +42,13 @@ public:
 	~LyXScreen();
 
 	/** Return the forground pixmap. This function is a _hack_,
-	  we should be rid of it as soon as possible. But to do that
-	  a lot in the mathcode and the figinset has to be rewritten.
-	  Tasks for 0.13. */
+	    we should be rid of it as soon as possible. But to do that
+	    a lot in the mathcode and the figinset has to be rewritten.
+	    Tasks for 0.13. */
 	Pixmap getForeground() { return foreground; };
 	
 	/** Draws the screen form textposition y. Uses as much of
-	  the already printed pixmap as possible */
+	    the already printed pixmap as possible */
 	void Draw(long y );
 
 	/// Redraws the screen, without using existing pixmap
@@ -76,27 +76,27 @@ public:
 	void ToggleToggle();
 	
 	/** Updates part of the screen. If text->status is
-	  LyXText::NEED_MORE_REFRESH, we update from the
-	  point of change and to the end of the screen.
-	  If text->status is LyXText::NEED_VERY_LITTLE_REFRESH,
-	  we only update the current row. */
+	    LyXText::NEED_MORE_REFRESH, we update from the
+	    point of change and to the end of the screen.
+	    If text->status is LyXText::NEED_VERY_LITTLE_REFRESH,
+	    we only update the current row. */
 	void Update();
 
 	/** Updates part of the screen. Updates till row with cursor,
-	  or only current row */
+	    or only current row */
 	void SmallUpdate();
 
 	/** Functions for drawing into the LyXScreen. The number of
-	  drawing functions should be minimized, now there
-	  is too many. And also there is mixed X and XForms drawing
-	  functions called. Not good. */
+	    drawing functions should be minimized, now there
+	    is too many. And also there is mixed X and XForms drawing
+	    functions called. Not good. */
 	void drawPoint(GC gc, int x, int y);
 	///
 	void drawLine(gc_type t, int baseline, int x, int length);
 	///
 	void drawLine(GC gc, int a, int b, int c, int d);
 	///
-	void drawLines(GC gc, XPoint *p, int np);
+	void drawLines(GC gc, XPoint * p, int np);
 	///
 	void drawVerticalLine(gc_type t, int x, int y1, int y2);
 	///
@@ -110,11 +110,15 @@ public:
 	///
 	void drawVerticalOnOffLine(int x, int y1, int y2);
 	///
+	void fillArc(GC gc, int x, int y,
+		     unsigned int w, unsigned int h,
+		     int a1, int a2);
+	///
 	void drawArc(GC gc, int x, int y,
 		     unsigned int w, unsigned int h,
 		     int a1, int a2);
 	///
-	void drawSegments(GC gc, XSegment *s, int ns);
+	void drawSegments(GC gc, XSegment * s, int ns);
 	///
 	void fillRectangle(gc_type t, int, int, int, int);
 	///
@@ -123,11 +127,11 @@ public:
 	void drawFrame(int ft, int x, int y, int w, int h,
 		       FL_COLOR col, int b); 
 	///
-	int drawText(LyXFont const &font, char const*,
-		      int n, int baseline, int x);
+	int drawText(LyXFont const & font, char const *,
+		     int n, int baseline, int x);
 	///
-	int drawString(LyXFont const &font, string const &str,
-			int baseline, int x);
+	int drawString(LyXFont const & font, string const & str,
+		       int baseline, int x);
 		
 	/// first visible pixel-row
 	long first;
@@ -142,10 +146,10 @@ private:
 	void DrawFromTo(int y1, int y2);
    
 	/// y is a coordinate of the text
-	void DrawOneRow(Row* row, long &y_text);
+	void DrawOneRow(Row * row, long & y_text);
 
 	///
-	LyXText *text;
+	LyXText * text;
 
 	///
 	Pixmap foreground;
@@ -172,39 +176,44 @@ private:
 	///
 	long screen_refresh_y;
 	///
-	Row *screen_refresh_row;
+	Row * screen_refresh_row;
 	///
 	friend class InsetFormula;  
 };
 
 // Some of the easy to inline draw methods:
 
-inline void LyXScreen::drawPoint(GC gc, int x, int y)
+inline
+void LyXScreen::drawPoint(GC gc, int x, int y)
 {
 	XDrawPoint(fl_display, foreground, gc,
 		   x, y);
 }
 
 
-inline void LyXScreen::drawLine(GC gc, int a, int b, int c, int d)
+inline
+void LyXScreen::drawLine(GC gc, int a, int b, int c, int d)
 {
 	XDrawLine(fl_display, foreground, gc, a, b, c, d);
 }
 
 
-inline void LyXScreen::drawLine(gc_type t, int baseline, int x, int length)
+inline
+void LyXScreen::drawLine(gc_type t, int baseline, int x, int length)
 {
 	drawLine(getGC(t), x, baseline, x + length, baseline);
 }
 
 
-inline void LyXScreen::drawLines(GC gc, XPoint *p, int np)
+inline
+void LyXScreen::drawLines(GC gc, XPoint * p, int np)
 {
 	XDrawLines(fl_display, foreground, gc, p, np, CoordModeOrigin);
 }
 
 
-inline void LyXScreen::drawVerticalLine(gc_type t, int x, int y1, int y2)
+inline
+void LyXScreen::drawVerticalLine(gc_type t, int x, int y1, int y2)
 {
 	drawLine(getGC(t),
 		 x,
@@ -214,7 +223,8 @@ inline void LyXScreen::drawVerticalLine(gc_type t, int x, int y1, int y2)
 }
 
 
-inline void LyXScreen::drawOnOffLine(int baseline, int x, int length)
+inline
+void LyXScreen::drawOnOffLine(int baseline, int x, int length)
 {
 	drawLine(getGC(gc_on_off_line),
 		 x,
@@ -224,7 +234,8 @@ inline void LyXScreen::drawOnOffLine(int baseline, int x, int length)
 }
 
 	
-inline void LyXScreen::drawThickLine(int baseline, int x, int length)
+inline
+void LyXScreen::drawThickLine(int baseline, int x, int length)
 {
 	drawLine(getGC(gc_thick_line),
 		 x,
@@ -234,7 +245,8 @@ inline void LyXScreen::drawThickLine(int baseline, int x, int length)
 }
 
 
-inline void LyXScreen::drawVerticalOnOffLine(int x, int y1, int y2)
+inline
+void LyXScreen::drawVerticalOnOffLine(int x, int y1, int y2)
 {
 	drawLine(getGC(gc_fill),
 		 x,
@@ -244,7 +256,19 @@ inline void LyXScreen::drawVerticalOnOffLine(int x, int y1, int y2)
 }	
 
 
-inline void LyXScreen::drawArc(GC gc, int x, int y,
+inline
+void LyXScreen::fillArc(GC gc, int x, int y,
+			unsigned int w, unsigned int h,
+			int a1, int a2)
+{
+	XFillArc(fl_display, foreground, gc,
+		 x, y,
+		 w, h, a1, a2);
+}
+
+
+inline
+void LyXScreen::drawArc(GC gc, int x, int y,
 			unsigned int w, unsigned int h,
 			int a1, int a2)
 {
@@ -254,35 +278,40 @@ inline void LyXScreen::drawArc(GC gc, int x, int y,
 }
 
 
-inline void LyXScreen::drawSegments(GC gc, XSegment *s, int ns)
+inline
+void LyXScreen::drawSegments(GC gc, XSegment * s, int ns)
 {
 	XDrawSegments(fl_display, foreground, gc, s, ns);
 }
 
 
-inline void LyXScreen::fillRectangle(gc_type t, int a, int b, int c, int d)
+inline
+void LyXScreen::fillRectangle(gc_type t, int a, int b, int c, int d)
 {
 	XFillRectangle(fl_display, foreground, getGC(t),
 		       a, b, c, d);
 }
 
 
-inline void LyXScreen::drawRectangle(gc_type t, int x, int y, int width, int height)
+inline
+void LyXScreen::drawRectangle(gc_type t, int x, int y, int width, int height)
 {
 	XDrawRectangle(fl_display, foreground, getGC(t),
 		       x, y, width, height);
 }
 
 
-inline int LyXScreen::drawText(LyXFont const &font, char const*fs,
-			 int n, int baseline, int x)
+inline
+int LyXScreen::drawText(LyXFont const & font, char const * fs,
+			int n, int baseline, int x)
 {
 	return font.drawText(fs, n, foreground, baseline, x);
 }
 
 
-inline int LyXScreen::drawString(LyXFont const &font, string const &str,
-			   int baseline, int x)
+inline
+int LyXScreen::drawString(LyXFont const & font, string const & str,
+			  int baseline, int x)
 {
 	return font.drawString(str, foreground, baseline, x);
 }

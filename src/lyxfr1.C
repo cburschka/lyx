@@ -35,8 +35,8 @@
 #include "support/lstrings.h"
 #include "support/textutils.h"
 
-extern BufferView *current_view; // called too many times in this file...
-extern MiniBuffer *minibuffer;
+extern BufferView * current_view; // called too many times in this file...
+extern MiniBuffer * minibuffer;
 
 // Maximum length copied from the current selection to the search string
 const int LYXSEARCH_MAXLEN =  128;
@@ -46,15 +46,15 @@ const int LYXSEARCH_MAXLEN =  128;
 // If nothing selected, select the word at the cursor.
 // Returns the current selection
 // Note: this function should be in LyXText!
-string const GetSelectionOrWordAtCursor(LyXText *lt);
+string const GetSelectionOrWordAtCursor(LyXText * lt);
 
 // Returns the current selection. If nothing is selected or if the selection
 // spans 2 paragraphs, an empty string is returned.
-string const GetCurrentSelectionAsString(LyXText *lt);
+string const GetCurrentSelectionAsString(LyXText * lt);
 
 // This is a copy of SetSelectionOverString from text.C
 // It does the same, but uses only the length as a parameter
-void SetSelectionOverLenChars(LyXText *lt, int len);
+void SetSelectionOverLenChars(LyXText * lt, int len);
 
 //-------------------------------------------------------------
 
@@ -64,9 +64,9 @@ void SetSelectionOverLenChars(LyXText *lt, int len);
 // spans 2 paragraphs, an empty string is returned.
 string const GetCurrentSelectionAsString(LyXText * lt) 
 {
-	char		sz[LYXSEARCH_MAXLEN];
-
+	char sz[LYXSEARCH_MAXLEN];
 	sz[0] = 0;
+	
 	LyXParagraph * par = lt->cursor.par;
 	if (lt->selection && (lt->sel_cursor.par == par)) {
 		// (selected) and (begin/end in same paragraph)
@@ -77,15 +77,15 @@ string const GetCurrentSelectionAsString(LyXText * lt)
 		int i = 0;
 		bool fPrevIsSpace = false;
 		char ch;
-		while ((i < LYXSEARCH_MAXLEN-2) && 
-			(pos < par->Last()) && (pos < endpos)) {
+		while ((i < LYXSEARCH_MAXLEN - 2) && 
+		       (pos < par->Last()) && (pos < endpos)) {
 			ch = par->GetChar(pos);
 
 			//HB??: Maybe (ch <= ' ') 
 			if ((ch == ' ') || (ch <= LyXParagraph::META_INSET)) {
 				// consecutive spaces --> 1 space char
 				if (fPrevIsSpace) {
-					pos++;		// Next text pos
+					++pos;		// Next text pos
 					continue;	// same search pos
 				}
 				sz[i] = ' ';
@@ -94,8 +94,8 @@ string const GetCurrentSelectionAsString(LyXText * lt)
 				sz[i] = ch;
 				fPrevIsSpace = false;
 			}
-			pos++;
-			i++;
+			++pos;
+			++i;
 		} 
 		sz[i] = 0;
 	}
@@ -105,7 +105,7 @@ string const GetCurrentSelectionAsString(LyXText * lt)
 
 // If nothing selected, select the word at the cursor.
 // Returns the current selection
-string const GetSelectionOrWordAtCursor(LyXText *lt) 
+string const GetSelectionOrWordAtCursor(LyXText * lt) 
 {
 	lt->SelectWordWhenUnderCursor();
 	return GetCurrentSelectionAsString(lt);
@@ -114,11 +114,10 @@ string const GetSelectionOrWordAtCursor(LyXText *lt)
 
 // This is a copy of SetSelectionOverString from text.C
 // It does the same, but uses only the length as a parameter
-void SetSelectionOverLenChars(LyXText *lt, int len)
+void SetSelectionOverLenChars(LyXText * lt, int len)
 {
 	lt->sel_cursor = lt->cursor;
-	int i;
-	for (i= 0; i < len; i++)
+	for (int i = 0; i < len; ++i)
 		lt->CursorRight();
 	lt->SetSelection();
 }
@@ -131,23 +130,17 @@ void LyXFindReplace1::StartSearch()
 	LyXFindReplace0::StartSearch();
 	SetReplaceEnabled(!current_view->buffer()->isReadonly());
 	searchForward = true;
-#ifdef MOVE_TEXT
 	if (lsSearch.empty()) 
 		SetSearchString(GetSelectionOrWordAtCursor(current_view->text));
-#else
-	if (lsSearch.empty()) 
-		SetSearchString(GetSelectionOrWordAtCursor(current_view->buffer()->text));
-#endif
 }	
 
 
-// TODO?: the user can insert multiple spaces with this routine (1999-01-11, dnaber)
+// TODO?: the user can insert multiple spaces with this
+// routine (1999-01-11, dnaber)
 void LyXFindReplace1::SearchReplaceCB()
 {
-	if (!current_view->getScreen())
-		return;
-	if (current_view->buffer()->isReadonly())
-	        return;
+	if (!current_view->getScreen()) return;
+	if (current_view->buffer()->isReadonly()) return;
 	
 	// CutSelection cannot cut a single space, so we have to stop
 	// in order to avoid endless loop :-(
@@ -162,7 +155,6 @@ void LyXFindReplace1::SearchReplaceCB()
 	string const replacestring = ReplaceString();
 
 	current_view->getScreen()->HideCursor();
-#ifdef MOVE_TEXT
 	current_view->update(-2);
 
 	LyXText * ltCur = current_view->text;	
@@ -175,20 +167,6 @@ void LyXFindReplace1::SearchReplaceCB()
 			SetSelectionOverString(replacestring.c_str());
 		current_view->update(1);
 	}
-#else
-	current_view->buffer()->update(-2);
-
-	LyXText * ltCur = current_view->buffer()->text;	
-	if (ltCur->selection) {
-		// clear the selection (if there is any) 
-		current_view->getScreen()->ToggleSelection(false);
-		current_view->buffer()->text->
-			ReplaceSelectionWithString(replacestring.c_str());
-		current_view->buffer()->text->
-			SetSelectionOverString(replacestring.c_str());
-		current_view->buffer()->update(1);
-	}
-#endif
 	
 	// jump to next match:
 	SearchCB( searchForward );
@@ -198,12 +176,8 @@ void LyXFindReplace1::SearchReplaceCB()
 // replaces all occurences of a string (1999-01-15, dnaber@mini.gt.owl.de)
 void LyXFindReplace1::SearchReplaceAllCB()
 {
-	LyXText	* ltCur;
-
-	if (!current_view->getScreen())
-		return;
-	if (current_view->buffer()->isReadonly())
-	        return;
+	if (!current_view->getScreen()) return;
+	if (current_view->buffer()->isReadonly()) return;
 
 	// CutSelection cannot cut a single space, so we have to stop
 	// in order to avoid endless loop :-(
@@ -212,19 +186,19 @@ void LyXFindReplace1::SearchReplaceAllCB()
 					     && SearchString()[0] == ' ') ) {
 		WriteAlert(_("Sorry!"), _("You cannot replace a single space, "
 					  "nor an empty character."));
-               return;
-       }
+		return;
+	}
 
 	string const replacestring = ReplaceString();
 
 	current_view->getScreen()->HideCursor();
 
-#ifdef MOVE_TEXT
 	// start at top
 	current_view->text->ClearSelection();
 	current_view->text->CursorTop();
 
 	int replace_count = 0;
+	LyXText	* ltCur;
 	do {
 		ltCur = current_view->text;	
 		if (ltCur->selection) {
@@ -238,26 +212,6 @@ void LyXFindReplace1::SearchReplaceAllCB()
 			++replace_count;
 		}
 	} while( SearchCB(true) );
-#else
-	// start at top
-	current_view->buffer()->text->ClearSelection();
-	current_view->buffer()->text->CursorTop();
-
-	int replace_count = 0;
-	do {
-		ltCur = current_view->buffer()->text;	
-		if (ltCur->selection) {
-			current_view->buffer()->update(-2);
-			current_view->getScreen()->ToggleSelection(false);
-			current_view->buffer()->text->
-				ReplaceSelectionWithString(replacestring.c_str());
-			current_view->buffer()->text->
-				SetSelectionOverString(replacestring.c_str());
-			current_view->buffer()->update(1); 
-			replace_count++;
-		}
-	} while( SearchCB(true) );
-#endif
 	if( replace_count == 0 ) {
 		LyXBell();	
 		minibuffer->Set(_("String not found!"));
@@ -275,33 +229,25 @@ void LyXFindReplace1::SearchReplaceAllCB()
 
 bool LyXFindReplace1::SearchCB(bool fForward)
 {
-	LyXText	* ltCur;
-	bool result;
-
 	// store search direction
 	searchForward = fForward;
 	
 	if (!current_view->getScreen())
-		return(false);
+		return false;
    
 	current_view->getScreen()->HideCursor();
-#ifdef MOVE_TEXT
 	current_view->update(-2);
-	ltCur = current_view->text;
-#else
-	current_view->buffer()->update(-2);
-	ltCur = current_view->buffer()->text;
-#endif
+	LyXText * ltCur = current_view->text;
 	if (ltCur->selection) 
 		ltCur->cursor = fForward ? ltCur->sel_end_cursor :
-                                                 ltCur->sel_start_cursor;
+		ltCur->sel_start_cursor;
 
 	ReInitFromForm();
 	iLenSelected = SearchString().length();
+	bool result;
    
 	if (!ValidSearchData() ||
 	    (fForward ? SearchForward(ltCur) : SearchBackward(ltCur))) {
-#ifdef MOVE_TEXT
 		current_view->update(-2);
 
 		// clear the selection (if there is any) 
@@ -310,16 +256,6 @@ bool LyXFindReplace1::SearchCB(bool fForward)
 
 		// set the new selection 
 		SetSelectionOverLenChars(current_view->text, iLenSelected);
-#else
-		current_view->buffer()->update(-2);
-
-		// clear the selection (if there is any) 
-		current_view->getScreen()->ToggleSelection();
-		current_view->buffer()->text->ClearSelection();
-
-		// set the new selection 
-		SetSelectionOverLenChars(current_view->buffer()->text, iLenSelected);
-#endif
 		current_view->getScreen()->ToggleSelection(false);
 		minibuffer->Set(_("Found."));
 		result = true;
@@ -332,7 +268,7 @@ bool LyXFindReplace1::SearchCB(bool fForward)
 	if (current_view->getWorkArea()->focus)
 		current_view->getScreen()->ShowCursor();
 
-	return(result);
+	return result;
 }
 
 
@@ -345,8 +281,8 @@ bool LyXFindReplace1::SearchForward(LyXText * lt)
 	LyXParagraph::size_type pos = lt->cursor.pos;
 
 	while (par && !IsSearchStringInText(par, pos)) {
-		if (pos<par->Last()-1)
-			pos++;
+		if (pos < par->Last() - 1)
+			++pos;
 		else {
 			pos = 0;
 			par = par->Next();
@@ -363,21 +299,21 @@ bool LyXFindReplace1::SearchForward(LyXText * lt)
 // if the string can be found: return true and set the cursor to
 // the new position 
 // (was: LyXText::SearchBackward(char const* string) in text2.C )
-bool LyXFindReplace1::SearchBackward(LyXText *lt)
+bool LyXFindReplace1::SearchBackward(LyXText * lt)
 {
-	LyXParagraph *par = lt->cursor.par;
+	LyXParagraph * par = lt->cursor.par;
 	int pos = lt->cursor.pos;
 
 	do {
-		if (pos>0)
-			pos--;
+		if (pos > 0)
+			--pos;
 		else {
 			// We skip empty paragraphs (Asger)
 			do {
 				par = par->Previous();
 				if (par)
-					pos = par->Last()-1;
-			} while (par && pos<0);
+					pos = par->Last() - 1;
+			} while (par && pos < 0);
 		}
 	} while (par && !IsSearchStringInText(par, pos));
   
@@ -408,12 +344,10 @@ int LyXFindReplace1::CompareChars(char chSearch, char chText)
 bool LyXFindReplace1::IsSearchStringInText(LyXParagraph * par,
 					   LyXParagraph::size_type pos)
 {
-	char		chSrch = 0;
-	char		chText;
+	if (!par) return false;
 
-	if (!par) 
-		return false;
-
+	char chSrch = 0;
+	char chText;
 	bool fPrevIsSpace = false;
 	int iText = 0;
 	string::size_type iSrch = 0;
@@ -423,7 +357,7 @@ bool LyXFindReplace1::IsSearchStringInText(LyXParagraph * par,
 		chText = par->GetChar(pos+iText);
  		if (chText == ' ') {
 			if (fPrevIsSpace) {
-				iText++;  // next Text pos
+				++iText;  // next Text pos
 				continue; // same search pos
 			}
 			fPrevIsSpace = true;
@@ -440,7 +374,7 @@ bool LyXFindReplace1::IsSearchStringInText(LyXParagraph * par,
 		return false;
 
 	if (!MatchWord() 
-	    || ((pos <= 0 || !IsLetterCharOrDigit(par->GetChar(pos-1)))
+	    || ((pos <= 0 || !IsLetterCharOrDigit(par->GetChar(pos - 1)))
 		&& (pos + iText >= par->Last() 
 		    || !IsLetterCharOrDigit(par->GetChar(pos + iText))))) {
 		iLenSelected = iText;

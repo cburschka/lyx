@@ -17,10 +17,13 @@
 
 #include "LString.h"
 
+#define NO_HASH 1
+
 #define KB_PREALLOC  16
+#ifndef NO_HASH
 #define KB_HASHSIZE 128   // yes, yes - I know. 128 is not exactly prime :-)
 // ... but we are dealing with ASCII chars mostly.
-
+#endif
 class kb_keymap;
 class kb_sequence;
 
@@ -53,11 +56,11 @@ public:
 	
 	/// Bind a key-sequence to an action
 	/** Returns 0 on success. Otherwise, position in string where
-	  error occured. */
+	    error occured. */
 	int bind(char const * seq, int action);
-	
+
 	///
-	int print(char * buf, int maxlen) const;
+	void print(string & buf) const;
 	
 	/// Look up a key in the keymap
 	int lookup(KeySym key, unsigned mod, kb_sequence * seq);
@@ -69,18 +72,21 @@ private:
 	int defkey(kb_sequence * seq, int action, int idx = 0);
 	
 	/// Size of the table (<0: hashtab)
-       int size;
+	int size;
 	
 	/// Holds the defined keys
 	/** Both kinds of tables ends with NoSymbol */
+#ifndef NO_HASH
 	union
 	{
+#endif
 		/// Table for linear array
 		kb_key * table;
-		
+#ifndef NO_HASH	
 		/// Hash table holding key lists
 		kb_key ** htable;
 	};
+#endif
 };
 
 
@@ -101,23 +107,23 @@ public:
 	
 	///
 	~kb_sequence()
-	{
-		if (sequence != staticseq) {
-			delete sequence;
-			delete modifiers;
+		{
+			if (sequence != staticseq) {
+				delete sequence;
+				delete modifiers;
+			}
 		}
-	}
 	
 	/// Add a key to the key sequence and look it up in the curmap
 	/** Add a key to the key sequence and look it up in the curmap
-	  if the latter is defined. */
+	    if the latter is defined. */
 	int addkey(KeySym key, unsigned mod, unsigned nmod = 0);
-	
+
 	///
-	int print(char * buf, int maxlen, bool when_defined = false) const; //RVDK_PATCH_5
+	int print(string & buf, bool when_defined = false) const;
 	
         ///
-	int printOptions(char * buf, int maxlen) const;
+	int printOptions(string & buf) const;
 	
 	/// Make length negative to mark the sequence as deleted
 	void delseq();

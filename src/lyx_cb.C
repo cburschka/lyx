@@ -296,11 +296,7 @@ void SetUpdateTimer(float time)
 void BeforeChange()
 {
 	current_view->getScreen()->ToggleSelection();
-#ifdef MOVE_TEXT
 	current_view->text->ClearSelection();
-#else
-	current_view->buffer()->text->ClearSelection();
-#endif
 	FreeUpdateTimer();
 }
 
@@ -310,27 +306,17 @@ void SmallUpdate(signed char f)
 {
 	current_view->getScreen()->SmallUpdate();
 	if (current_view->getScreen()->TopCursorVisible()
-	    != current_view->getScreen()->first){
-#ifdef MOVE_TEXT
+	    != current_view->getScreen()->first) {
 		current_view->update(f);
-#else
-		current_view->buffer()->update(f);
-#endif
 		return;
 	}
 
 	current_view->fitCursor();
 	current_view->updateScrollbar();
 
-#ifdef MOVE_TEXT
 	if (!current_view->text->selection)
 		current_view->text->sel_cursor = 
 			current_view->text->cursor;
-#else
-	if (!current_view->buffer()->text->selection)
-		current_view->buffer()->text->sel_cursor = 
-			current_view->buffer()->text->cursor;
-#endif
 
 	if (f == 1 || f == -1) {
 		if (current_view->buffer()->isLyxClean()) {
@@ -360,8 +346,8 @@ void MenuWrite(Buffer * buf)
 		string fname = buf->fileName();
 		string s = MakeAbsPath(fname);
 		if (AskQuestion(_("Save failed. Rename and try again?"),
-				 MakeDisplayPath(s, 50),
-				 _("(If not, document is not saved.)"))) {
+				MakeDisplayPath(s, 50),
+				_("(If not, document is not saved.)"))) {
 			MenuWriteAs(buf);
 		}
 	} else {
@@ -373,11 +359,7 @@ void MenuWrite(Buffer * buf)
 // should be moved to BufferView.C
 void MenuWriteAs(Buffer * buffer)
 {
-#ifdef MOVE_TEXT
 	if (!current_view->text) return;
-#else
-	if (!buffer->text) return;
-#endif
 
 	string fname = buffer->fileName();
 	string oldname = fname;
@@ -543,13 +525,8 @@ int MenuRunChktex(Buffer * buffer)
  
 int MakeDVIOutput(Buffer * buffer)
 {
-#ifdef MOVE_TEXT
 	if (!(current_view->text))
 		return 1;
-#else
-	if (!(buffer->text))
-		return 1;
-#endif
 
 	int ret = 0;
 
@@ -631,7 +608,7 @@ bool RunScript(Buffer * buffer, bool wait,
 	} else {
 		minibuffer->Set(_("Executing command:"), cmd);
 		result = one.startscript(wait ? Systemcalls::Wait
-					: Systemcalls::DontWait, cmd);
+					 : Systemcalls::DontWait, cmd);
 	}
 	return (result == 0);
 }
@@ -640,13 +617,8 @@ bool RunScript(Buffer * buffer, bool wait,
 // Returns false if we fail
 bool MenuRunDvips(Buffer * buffer, bool wait = false)
 {
-#ifdef MOVE_TEXT
 	if (!current_view->text)
 		return false;
-#else
-	if (!buffer->text)
-		return false;
-#endif
 
 	ProhibitInput();
 
@@ -657,7 +629,7 @@ bool MenuRunDvips(Buffer * buffer, bool wait = false)
         }
 	// Generate postscript file
 	string psname = ChangeExtension (buffer->fileName(),
-				      ".ps_tmp", true);
+					 ".ps_tmp", true);
 
 	string paper;
 	
@@ -731,13 +703,8 @@ bool MenuRunDvips(Buffer * buffer, bool wait = false)
 // Returns false if we fail
 bool MenuPreviewPS(Buffer * buffer)
 {
-#ifdef MOVE_TEXT
 	if (!current_view->text)
 		return false;
-#else
-	if (!buffer->text)
-		return false;
-#endif
 
 	// Generate postscript file
 	if (!MenuRunDvips(buffer, true)) {
@@ -747,7 +714,7 @@ bool MenuPreviewPS(Buffer * buffer)
 	// Start postscript viewer
 	ProhibitInput();
 	string ps = ChangeExtension (buffer->fileName(),
-				      ".ps_tmp", true);
+				     ".ps_tmp", true);
 	// push directorypath, if necessary 
         string path = OnlyPath(buffer->fileName());
         if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)){
@@ -762,13 +729,8 @@ bool MenuPreviewPS(Buffer * buffer)
 
 void MenuFax(Buffer * buffer)
 {
-#ifdef MOVE_TEXT
 	if (!current_view->text)
 		return;
-#else
-	if (!buffer->text)
-		return;
-#endif
 
 	// Generate postscript file
 	if (!MenuRunDvips(buffer, true)) {
@@ -794,13 +756,9 @@ void MenuFax(Buffer * buffer)
 // Returns false if we fail
 bool MenuPreview(Buffer * buffer)
 {
-#ifdef MOVE_TEXT
 	if (!current_view->text)
 		return false;
-#else
-	if (!buffer->text)
-		return false;
-#endif
+
 	string paper;
 	
 	char real_papersize = buffer->params.papersize;
@@ -859,13 +817,8 @@ bool MenuPreview(Buffer * buffer)
 
 void MenuMakeLaTeX(Buffer * buffer)
 {
-#ifdef MOVE_TEXT
 	if (!current_view->text)
 		return;
-#else
-	if (!buffer->text)
-		return;
-#endif
 	
 	// Get LaTeX-Filename
 	string s = buffer->getLatexName();
@@ -877,7 +830,7 @@ void MenuMakeLaTeX(Buffer * buffer)
 			 _("Do you want to overwrite the file?"))) {
 		minibuffer->Set(_("Canceled"));
 		return;
-		}
+	}
 	
 	if (buffer->isDocBook())
 		minibuffer->Set(_("DocBook does not have a latex backend"));
@@ -895,11 +848,7 @@ void MenuMakeLaTeX(Buffer * buffer)
 
 void MenuMakeLinuxDoc(Buffer * buffer)
 {
-#ifdef MOVE_TEXT
 	if (!current_view->text) return;
-#else
-	if (!buffer->text) return;
-#endif
 	
 	if (!buffer->isLinuxDoc()) {
 		WriteAlert(_("Error!"), _("Document class must be linuxdoc."));
@@ -931,11 +880,7 @@ void MenuMakeLinuxDoc(Buffer * buffer)
 
 void MenuMakeDocBook(Buffer * buffer)
 {
-#ifdef MOVE_TEXT
 	if (!current_view->text) return;
-#else
-	if (!buffer->text) return;
-#endif
 	
 	if (!buffer->isDocBook()) {
 		WriteAlert(_("Error!"),
@@ -968,11 +913,7 @@ void MenuMakeDocBook(Buffer * buffer)
 
 void MenuMakeAscii(Buffer * buffer)
 {
-#ifdef MOVE_TEXT
 	if (!current_view->text) return;
-#else
-	if (!buffer->text) return;
-#endif
 	
 	/* get LaTeX-Filename */
 	string s = ChangeExtension (buffer->fileName(),
@@ -995,16 +936,12 @@ void MenuMakeAscii(Buffer * buffer)
 
 void MenuPrint(Buffer * buffer)
 {
-#ifdef MOVE_TEXT
 	if (!current_view->text)
 		return;
-#else
-	if (!buffer->text)
-		return;
-#endif
+
 	string input_file = ChangeExtension(buffer->fileName(),
-				     lyxrc->print_file_extension,
-				     true);
+					    lyxrc->print_file_extension,
+					    true);
 	fl_set_input(fd_form_print->input_file, input_file.c_str());
 	
 	if (fd_form_print->form_print->visible) {
@@ -1050,7 +987,7 @@ void MenuExport(Buffer * buffer, string const & extyp)
 {
 	// latex
 	if (extyp == "latex") {
-	// make sure that this buffer is not linuxdoc
+		// make sure that this buffer is not linuxdoc
 		MenuMakeLaTeX(buffer);
 	}
 	// linuxdoc
@@ -1060,16 +997,16 @@ void MenuExport(Buffer * buffer, string const & extyp)
 	}
 	// docbook
 	else if (extyp == "docbook") {
-	// make sure that this buffer is not latex or linuxdoc
+		// make sure that this buffer is not latex or linuxdoc
 		MenuMakeDocBook(buffer);
 	}
 	// dvi
 	else if (extyp == "dvi") {
-	// Run LaTeX as "Update dvi..." Bernhard.
-	// We want the dvi in the current directory. This
-	// is achieved by temporarily disabling use of
-	// temp directory. As a side-effect, we get
-	// *.log and *.aux files also. (Asger)
+		// Run LaTeX as "Update dvi..." Bernhard.
+		// We want the dvi in the current directory. This
+		// is achieved by temporarily disabling use of
+		// temp directory. As a side-effect, we get
+		// *.log and *.aux files also. (Asger)
 		bool flag = lyxrc->use_tempdir;
 		lyxrc->use_tempdir = false;
 		MenuRunLaTeX(buffer);
@@ -1077,7 +1014,7 @@ void MenuExport(Buffer * buffer, string const & extyp)
 	}
 	// postscript
 	else if (extyp == "postscript") {
-	// Start Print-dialog. Not as good as dvi... Bernhard.
+		// Start Print-dialog. Not as good as dvi... Bernhard.
 		MenuPrint(buffer);
 		// Since the MenuPrint is a pop-up, we can't use
 		// the same trick as above. (Asger)
@@ -1272,21 +1209,12 @@ void InsertAsciiFile(string const & f, bool asParagraph)
 	
 	// clear the selection
 	BeforeChange();
-#ifdef MOVE_TEXT
 	if (!asParagraph)
 		current_view->text->InsertStringA(tmppar->text);
 	else
 		current_view->text->InsertStringB(tmppar->text);
 	delete tmppar;
 	current_view->update(1);
-#else
-	if (!asParagraph)
-		current_view->buffer()->text->InsertStringA(tmppar->text);
-	else
-		current_view->buffer()->text->InsertStringB(tmppar->text);
-	delete tmppar;
-	current_view->buffer()->update(1);
-#endif
 }
 
 
@@ -1373,15 +1301,9 @@ extern "C" void FootCB(FL_OBJECT *, long)
 	
 	minibuffer->Set(_("Inserting Footnote..."));
 	current_view->getScreen()->HideCursor();
-#ifdef MOVE_TEXT
 	current_view->update(-2);
 	current_view->text->InsertFootnoteEnvironment(LyXParagraph::FOOTNOTE);
 	current_view->update(1);
-#else
-	current_view->buffer()->update(-2);
-	current_view->buffer()->text->InsertFootnoteEnvironment(LyXParagraph::FOOTNOTE);
-	current_view->buffer()->update(1);
-#endif
 }
 
 
@@ -1390,7 +1312,7 @@ void LayoutsCB(int sel, void *)
 {
 	string tmp = tostr(sel);
 	current_view->owner()->getLyXFunc()->Dispatch(LFUN_LAYOUTNO,
-							 tmp.c_str());
+						      tmp.c_str());
 }
 
 
@@ -1534,11 +1456,7 @@ void AllFloats(char flag, char figmar)
 	if (!current_view->available())
 		return;
 
-#ifdef MOVE_TEXT
 	LyXCursor cursor = current_view->text->cursor;
-#else
-	LyXCursor cursor = current_view->buffer()->text->cursor;
-#endif
 
 	if (!flag && cursor.par->footnoteflag != LyXParagraph::NO_FOOTNOTE
 	    && ((figmar 
@@ -1577,17 +1495,11 @@ void AllFloats(char flag, char figmar)
 				if (par->previous
 				    && par->previous->footnoteflag != 
 				    LyXParagraph::CLOSED_FOOTNOTE){ /* should be */ 
-#ifdef MOVE_TEXT
 					current_view->text
 						->SetCursorIntern(par
 								  ->previous,
 								  0);
 					current_view->text->OpenFootnote();
-#else
-					current_view->buffer()->text->SetCursorIntern(par->previous,
-								      0);
-					current_view->buffer()->text->OpenFootnote();
-#endif
 				}
 			}
 		}
@@ -1614,24 +1526,15 @@ void AllFloats(char flag, char figmar)
 				     par->footnotekind != LyXParagraph::ALGORITHM
 					    )
 				    )
-				){
-#ifdef MOVE_TEXT
+				) {
 				current_view->text->SetCursorIntern(par, 0);
 				current_view->text->CloseFootnote();
-#else
-				current_view->buffer()->text->SetCursorIntern(par, 0);
-				current_view->buffer()->text->CloseFootnote();
-#endif
 			}
 		}
 		par = par->next;
 	}
 
-#ifdef MOVE_TEXT
 	current_view->text->SetCursorIntern(cursor.par, cursor.pos);
-#else
-	current_view->buffer()->text->SetCursorIntern(cursor.par, cursor.pos);
-#endif
 	current_view->redraw();
 	current_view->fitCursor();
 	current_view->updateScrollbar();
@@ -1721,7 +1624,6 @@ inline void EnableParagraphLayout ()
 }
 
 
-#ifdef MOVE_TEXT
 bool UpdateLayoutParagraph()
 {
 	if (!current_view->getScreen() || !current_view->available()) {
@@ -1742,7 +1644,7 @@ bool UpdateLayoutParagraph()
 	int align = current_view->text->cursor.par->GetAlign();
 	if (align == LYX_ALIGN_LAYOUT)
 		align = textclasslist.Style(buf->params.textclass,
-				  current_view->text->cursor.par->GetLayout()).align;
+					    current_view->text->cursor.par->GetLayout()).align;
 	 
 	switch (align) {
 	case LYX_ALIGN_RIGHT:
@@ -1844,130 +1746,7 @@ bool UpdateLayoutParagraph()
 	}
 	return true;
 }
-#else
-bool UpdateLayoutParagraph()
-{
-	if (!current_view->getScreen() || !current_view->available()) {
-		if (fd_form_paragraph->form_paragraph->visible) 
-			fl_hide_form(fd_form_paragraph->form_paragraph);
-		return false;
-	}
 
-	Buffer * buf = current_view->buffer();
-
-	fl_set_input(fd_form_paragraph->input_labelwidth,
-		     buf->text->cursor.par->GetLabelWidthString().c_str());
-	fl_set_button(fd_form_paragraph->radio_align_right, 0);
-	fl_set_button(fd_form_paragraph->radio_align_left, 0);
-	fl_set_button(fd_form_paragraph->radio_align_center, 0);
-	fl_set_button(fd_form_paragraph->radio_align_block, 0);
-
-	int align = buf->text->cursor.par->GetAlign();
-	if (align == LYX_ALIGN_LAYOUT)
-		align = textclasslist.Style(buf->params.textclass,
-				  buf->text->cursor.par->GetLayout()).align;
-	 
-	switch (align) {
-	case LYX_ALIGN_RIGHT:
-		fl_set_button(fd_form_paragraph->radio_align_right, 1);
-		break;
-	case LYX_ALIGN_LEFT:
-		fl_set_button(fd_form_paragraph->radio_align_left, 1);
-		break;
-	case LYX_ALIGN_CENTER:
-		fl_set_button(fd_form_paragraph->radio_align_center, 1);
-		break;
-	default:
-		fl_set_button(fd_form_paragraph->radio_align_block, 1);
-		break;
-	}
-	 
-	fl_set_button(fd_form_paragraph->check_lines_top,
-		      buf->text->cursor.par->FirstPhysicalPar()->line_top);
-	fl_set_button(fd_form_paragraph->check_lines_bottom,
-		      buf->text->cursor.par->FirstPhysicalPar()->line_bottom);
-	fl_set_button(fd_form_paragraph->check_pagebreaks_top,
-		      buf->text->cursor.par->FirstPhysicalPar()->pagebreak_top);
-	fl_set_button(fd_form_paragraph->check_pagebreaks_bottom,
-		      buf->text->cursor.par->FirstPhysicalPar()->pagebreak_bottom);
-	fl_set_button(fd_form_paragraph->check_noindent,
-		      buf->text->cursor.par->FirstPhysicalPar()->noindent);
-	fl_set_input (fd_form_paragraph->input_space_above, "");
-	
-	switch (buf->text->cursor.par->FirstPhysicalPar()->added_space_top.kind()) {
-	case VSpace::NONE:
-		fl_set_choice (fd_form_paragraph->choice_space_above, 1);
-		break;
-	case VSpace::DEFSKIP:
-		fl_set_choice (fd_form_paragraph->choice_space_above, 2);
-		break;
-	case VSpace::SMALLSKIP:
-		fl_set_choice (fd_form_paragraph->choice_space_above, 3);
-		break;
-	case VSpace::MEDSKIP:
-		fl_set_choice (fd_form_paragraph->choice_space_above, 4);
-		break;
-	case VSpace::BIGSKIP:
-		fl_set_choice (fd_form_paragraph->choice_space_above, 5);
-		break;
-	case VSpace::VFILL:
-		fl_set_choice (fd_form_paragraph->choice_space_above, 6);
-		break;
-	case VSpace::LENGTH:
-		fl_set_choice (fd_form_paragraph->choice_space_above, 7); 
-		fl_set_input  (fd_form_paragraph->input_space_above, 
-			       buf->text->cursor.par->FirstPhysicalPar()->added_space_top.length().asString().c_str());
-		break;
-	}
-	fl_set_button (fd_form_paragraph->check_space_above,
-		       buf->text->cursor.par->FirstPhysicalPar()->added_space_top.keep());
-	fl_set_input (fd_form_paragraph->input_space_below, "");
-	switch (buf->text->cursor.par->FirstPhysicalPar()->added_space_bottom.kind()) {
-	case VSpace::NONE:
-		fl_set_choice (fd_form_paragraph->choice_space_below,
-			       1);
-		break;
-	case VSpace::DEFSKIP:
-		fl_set_choice (fd_form_paragraph->choice_space_below,
-			       2);
-		break;
-	case VSpace::SMALLSKIP:
-		fl_set_choice (fd_form_paragraph->choice_space_below,
-			       3);
-		break;
-	case VSpace::MEDSKIP:
-		fl_set_choice (fd_form_paragraph->choice_space_below,
-			       4);
-		break;
-	case VSpace::BIGSKIP:
-		fl_set_choice (fd_form_paragraph->choice_space_below,
-			       5);
-		break;
-	case VSpace::VFILL:
-		fl_set_choice (fd_form_paragraph->choice_space_below,
-			       6);
-		break;
-	case VSpace::LENGTH:
-		fl_set_choice (fd_form_paragraph->choice_space_below,
-			       7); 
-		fl_set_input  (fd_form_paragraph->input_space_below, 
-			       buf->text->cursor.par->FirstPhysicalPar()->added_space_bottom.length().asString().c_str());
-		break;
-	}
-	fl_set_button (fd_form_paragraph->check_space_below,
-		       buf->text->cursor.par->FirstPhysicalPar()->added_space_bottom.keep());
-
-	fl_set_button(fd_form_paragraph->check_noindent,
-		      buf->text->cursor.par->FirstPhysicalPar()->noindent);
-
-	if (current_view->buffer()->isReadonly()) {
-		DisableParagraphLayout();
-	} else {
-		EnableParagraphLayout();
-	}
-	return true;
-}
-#endif
 
 void MenuLayoutParagraph()
 {
@@ -2248,7 +2027,7 @@ bool UpdateLayoutQuotes()
 	
 	if (update) {
 		fl_set_choice(fd_form_quotes->choice_quotes_language,
-		      current_view->buffer()->params.quotes_language + 1);
+			      current_view->buffer()->params.quotes_language + 1);
 		fl_set_button(fd_form_quotes->radio_single, 0);
 		fl_set_button(fd_form_quotes->radio_double, 0);
 	
@@ -2281,25 +2060,25 @@ bool UpdateLayoutPreamble()
 {
 	bool update = true;
 	if (!current_view->getScreen() || ! current_view->available())
-	    update = false;
+		update = false;
 
 	if (update) {
 		fl_set_input(fd_form_preamble->input_preamble,
-		     current_view->buffer()->params.preamble.c_str());
+			     current_view->buffer()->params.preamble.c_str());
 
 		if (current_view->buffer()->isReadonly()) {
-		  fl_deactivate_object(fd_form_preamble->input_preamble);
-		  fl_deactivate_object(fd_form_preamble->button_ok);
-		  fl_deactivate_object(fd_form_preamble->button_apply);
-		  fl_set_object_lcol(fd_form_preamble->button_ok, FL_INACTIVE);
-		  fl_set_object_lcol(fd_form_preamble->button_apply, FL_INACTIVE);
+			fl_deactivate_object(fd_form_preamble->input_preamble);
+			fl_deactivate_object(fd_form_preamble->button_ok);
+			fl_deactivate_object(fd_form_preamble->button_apply);
+			fl_set_object_lcol(fd_form_preamble->button_ok, FL_INACTIVE);
+			fl_set_object_lcol(fd_form_preamble->button_apply, FL_INACTIVE);
 		}
 		else {
-		  fl_activate_object(fd_form_preamble->input_preamble);
-		  fl_activate_object(fd_form_preamble->button_ok);
-		  fl_activate_object(fd_form_preamble->button_apply);
-		  fl_set_object_lcol(fd_form_preamble->button_ok, FL_BLACK);
-		  fl_set_object_lcol(fd_form_preamble->button_apply, FL_BLACK);
+			fl_activate_object(fd_form_preamble->input_preamble);
+			fl_activate_object(fd_form_preamble->button_ok);
+			fl_activate_object(fd_form_preamble->button_apply);
+			fl_set_object_lcol(fd_form_preamble->button_ok, FL_BLACK);
+			fl_set_object_lcol(fd_form_preamble->button_apply, FL_BLACK);
 		}
 	} else if (fd_form_preamble->form_preamble->visible) {
 		fl_hide_form(fd_form_preamble->form_preamble);
@@ -2333,7 +2112,7 @@ void MenuLayoutPreamble()
 void MenuLayoutSave()
 {
 	if (!current_view->getScreen() || ! current_view->available())
-	    return;
+		return;
 
 	if (AskQuestion(_("Do you want to save the current settings"),
 			_("for Character, Document, Paper and Quotes"),
@@ -2358,15 +2137,9 @@ void OpenStuff()
 		minibuffer->Set(_("Open/Close..."));
 		current_view->getScreen()->HideCursor();
 		BeforeChange();
-#ifdef MOVE_TEXT
 		current_view->update(-2);
 		current_view->text->OpenStuff();
 		current_view->update(0);
-#else
-		current_view->buffer()->update(-2);
-		current_view->buffer()->text->OpenStuff();
-		current_view->buffer()->update(0);
-#endif
 	}
 }
 
@@ -2378,15 +2151,9 @@ void ToggleFloat()
 		minibuffer->Set(_("Open/Close..."));
 		current_view->getScreen()->HideCursor();
 		BeforeChange();
-#ifdef MOVE_TEXT
 		current_view->update(-2);
 		current_view->text->ToggleFootnote();
 		current_view->update(0);
-#else
-		current_view->buffer()->update(-2);
-		current_view->buffer()->text->ToggleFootnote();
-		current_view->buffer()->update(0);
-#endif
 	}
 }
 
@@ -2395,27 +2162,19 @@ void ToggleFloat()
 void MenuUndo()
 {
 /*	if (current_view->buffer()->the_locking_inset) {
-		minibuffer->Set(_("Undo not yet supported in math mode"));
-		return;
+	minibuffer->Set(_("Undo not yet supported in math mode"));
+	return;
 	}*/
    
 	if (current_view->available()) {
 		minibuffer->Set(_("Undo"));
 		current_view->getScreen()->HideCursor();
 		BeforeChange();
-#ifdef MOVE_TEXT
 		current_view->update(-2);
 		if (!current_view->text->TextUndo())
 			minibuffer->Set(_("No further undo information"));
 		else
 			current_view->update(-1);
-#else
-		current_view->buffer()->update(-2);
-		if (!current_view->buffer()->text->TextUndo())
-			minibuffer->Set(_("No further undo information"));
-		else
-			current_view->buffer()->update(-1);
-#endif
 	}
 }
 
@@ -2432,19 +2191,11 @@ void MenuRedo()
 		minibuffer->Set(_("Redo"));
 		current_view->getScreen()->HideCursor();
 		BeforeChange();
-#ifdef MOVE_TEXT
 		current_view->update(-2);
 		if (!current_view->text->TextRedo())
 			minibuffer->Set(_("No further redo information"));
 		else
 			current_view->update(-1);
-#else
-		current_view->buffer()->update(-2);
-		if (!current_view->buffer()->text->TextRedo())
-			minibuffer->Set(_("No further redo information"));
-		else
-			current_view->buffer()->update(-1);
-#endif
 	}
 }
 
@@ -2454,11 +2205,7 @@ void HyphenationPoint()
 {
 	if (current_view->available())  {
 		current_view->getScreen()->HideCursor();
-#ifdef MOVE_TEXT
 		current_view->update(-2);
-#else
-		current_view->buffer()->update(-2);
-#endif
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::HYPHENATION);
 		current_view->buffer()->insertInset(new_inset);
@@ -2471,11 +2218,7 @@ void Ldots()
 {
 	if (current_view->available())  {
 		current_view->getScreen()->HideCursor();
-#ifdef MOVE_TEXT
 		current_view->update(-2);
-#else
-		current_view->buffer()->update(-2);
-#endif
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::LDOTS);
 		current_view->buffer()->insertInset(new_inset);
@@ -2486,13 +2229,9 @@ void Ldots()
 // candidate for move to BufferView
 void EndOfSentenceDot()
 {
-	if (current_view->available())  {
+	if (current_view->available()) {
 		current_view->getScreen()->HideCursor();
-#ifdef MOVE_TEXT
 		current_view->update(-2);
-#else
-		current_view->buffer()->update(-2);
-#endif
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::END_OF_SENTENCE);
 		current_view->buffer()->insertInset(new_inset);
@@ -2503,13 +2242,9 @@ void EndOfSentenceDot()
 // candidate for move to BufferView
 void MenuSeparator()
 {
-	if (current_view->available())  {
+	if (current_view->available()) {
 		current_view->getScreen()->HideCursor();
-#ifdef MOVE_TEXT
 		current_view->update(-2);
-#else
-		current_view->buffer()->update(-2);
-#endif
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::MENU_SEPARATOR);
 		current_view->buffer()->insertInset(new_inset);
@@ -2520,17 +2255,11 @@ void MenuSeparator()
 // candidate for move to BufferView
 void Newline()
 {
-	if (current_view->available())  {
+	if (current_view->available()) {
 		current_view->getScreen()->HideCursor();
-#ifdef MOVE_TEXT
 		current_view->update(-2);
 		current_view->text->InsertChar(LyXParagraph::META_NEWLINE);
 		current_view->update(-1);
-#else
-		current_view->buffer()->update(-2);
-		current_view->buffer()->text->InsertChar(LyXParagraph::META_NEWLINE);
-		current_view->buffer()->update(-1);
-#endif
 	}
 }
 
@@ -2538,17 +2267,11 @@ void Newline()
 // candidate for move to BufferView
 void ProtectedBlank()
 {
-	if (current_view->available())  {
+	if (current_view->available()) {
 		current_view->getScreen()->HideCursor();
-#ifdef MOVE_TEXT
 		current_view->update(-2);
 		current_view->text->InsertChar(LyXParagraph::META_PROTECTED_SEPARATOR);
 		current_view->update(-1);
-#else
-		current_view->buffer()->update(-2);
-		current_view->buffer()->text->InsertChar(LyXParagraph::META_PROTECTED_SEPARATOR);
-		current_view->buffer()->update(-1);
-#endif
 	}
 }
 
@@ -2556,17 +2279,11 @@ void ProtectedBlank()
 // candidate for move to BufferView
 void HFill()
 {
-	if (current_view->available())  {
+	if (current_view->available()) {
 		current_view->getScreen()->HideCursor();
-#ifdef MOVE_TEXT
 		current_view->update(-2);
 		current_view->text->InsertChar(LyXParagraph::META_HFILL);
 		current_view->update(-1);
-#else
-		current_view->buffer()->update(-2);
-		current_view->buffer()->text->InsertChar(LyXParagraph::META_HFILL);
-		current_view->buffer()->update(-1);
-#endif
 	}
 }
 
@@ -2661,7 +2378,6 @@ void StyleResetCB()
  * future perhaps we could try to implement a callback to the button-bar.
  * That is, `light' the bold button when the font is currently bold, etc.
  */
-#ifdef MOVE_TEXT
 string CurrentState()
 {
 	string state;
@@ -2671,7 +2387,7 @@ string CurrentState()
 		Buffer * buffer = current_view->buffer();
 		LyXFont font = current_view->text->real_current_font;
 		LyXFont defaultfont = textclasslist.TextClass(buffer->
-							 params.textclass).defaultfont();
+							      params.textclass).defaultfont();
 		font.reduce(defaultfont);
 		state = _("Font: ") + font.stateText();
 
@@ -2681,27 +2397,7 @@ string CurrentState()
 	}
 	return state;
 }
-#else
-string CurrentState()
-{
-	string state;
-	if (current_view->available()) { 
-		// I think we should only show changes from the default
-		// font. (Asger)
-		Buffer * buffer = current_view->buffer();
-		LyXFont font = buffer->text->real_current_font;
-		LyXFont defaultfont = textclasslist.TextClass(buffer->
-							 params.textclass).defaultfont();
-		font.reduce(defaultfont);
-		state = _("Font: ") + font.stateText();
 
-		int depth = buffer->text->GetDepth();
-		if (depth>0) 
-			state += string(_(", Depth: ")) + tostr(depth);
-	}
-	return state;
-}
-#endif
 
 // candidate for move to BufferView
 /* -------> Does the actual toggle job of the XxxCB() calls above.
@@ -2712,15 +2408,9 @@ void ToggleAndShow(LyXFont const & font)
 {
 	if (current_view->available()) { 
 		current_view->getScreen()->HideCursor();
-#ifdef MOVE_TEXT
 		current_view->update(-2);
   		current_view->text->ToggleFree(font, toggleall);
 		current_view->update(1);
-#else
-		current_view->buffer()->update(-2);
-  		current_view->buffer()->text->ToggleFree(font, toggleall);
-		current_view->buffer()->update(1);
-#endif
 	}
 	// removed since it overrides the ToggleFree Message about the style
 	// Since Styles are more "High Level" than raw fonts I think the user
@@ -2735,15 +2425,9 @@ extern "C" void MarginCB(FL_OBJECT *, long)
 	if (current_view->available()) {
 		minibuffer->Set(_("Inserting margin note..."));
 		current_view->getScreen()->HideCursor();
-#ifdef MOVE_TEXT
 		current_view->update(-2);
 		current_view->text->InsertFootnoteEnvironment(LyXParagraph::MARGIN);
 		current_view->update(1);
-#else
-		current_view->buffer()->update(-2);
-		current_view->buffer()->text->InsertFootnoteEnvironment(LyXParagraph::MARGIN);
-		current_view->buffer()->update(1);
-#endif
 	}
 }
 
@@ -2776,21 +2460,12 @@ extern "C" void TableCB(FL_OBJECT *, long)
 void CopyEnvironmentCB()
 {
 	if (current_view->available()) {
-#ifdef MOVE_TEXT
 		current_view->text->copyEnvironmentType();
 		/* clear the selection, even if mark_set */ 
 		current_view->getScreen()->ToggleSelection();
 		current_view->text->ClearSelection();
 		current_view->update(-2);
 		minibuffer->Set(_("Paragraph environment type copied"));
-#else
-		current_view->buffer()->text->copyEnvironmentType();
-		/* clear the selection, even if mark_set */ 
-		current_view->getScreen()->ToggleSelection();
-		current_view->buffer()->text->ClearSelection();
-		current_view->buffer()->update(-2);
-		minibuffer->Set(_("Paragraph environment type copied"));
-#endif
 	}
 }
 
@@ -2799,15 +2474,9 @@ void CopyEnvironmentCB()
 void PasteEnvironmentCB()
 {
 	if (current_view->available()) {
-#ifdef MOVE_TEXT
 		current_view->text->pasteEnvironmentType();
 		minibuffer->Set(_("Paragraph environment type set"));
 		current_view->update(1);
-#else
-		current_view->buffer()->text->pasteEnvironmentType();
-		minibuffer->Set(_("Paragraph environment type set"));
-		current_view->buffer()->update(1);
-#endif
 	}
 }
 
@@ -2816,21 +2485,12 @@ void PasteEnvironmentCB()
 void CopyCB()
 {
 	if (current_view->available()) {
-#ifdef MOVE_TEXT
 		current_view->text->CopySelection();
 		/* clear the selection, even if mark_set */ 
 		current_view->getScreen()->ToggleSelection();
 		current_view->text->ClearSelection();
 		current_view->update(-2);
 		minibuffer->Set(_("Copy"));
-#else
-		current_view->buffer()->text->CopySelection();
-		/* clear the selection, even if mark_set */ 
-		current_view->getScreen()->ToggleSelection();
-		current_view->buffer()->text->ClearSelection();
-		current_view->buffer()->update(-2);
-		minibuffer->Set(_("Copy"));
-#endif
 	}
 }
 
@@ -2840,15 +2500,9 @@ void CutCB()
 {
 	if (current_view->available()) {
 		current_view->getScreen()->HideCursor();
-#ifdef MOVE_TEXT
 		current_view->update(-2);
 		current_view->text->CutSelection();
 		current_view->update(1);
-#else
-		current_view->buffer()->update(-2);
-		current_view->buffer()->text->CutSelection();
-		current_view->buffer()->update(1);
-#endif
 		minibuffer->Set(_("Cut"));
 	}
 }
@@ -2862,7 +2516,6 @@ void PasteCB()
 	minibuffer->Set(_("Paste"));
 	current_view->getScreen()->HideCursor();
 	/* clear the selection */
-#ifdef MOVE_TEXT
 	current_view->getScreen()->ToggleSelection();
 	current_view->text->ClearSelection();
 	current_view->update(-2);
@@ -2875,20 +2528,6 @@ void PasteCB()
 	current_view->getScreen()->ToggleSelection();
 	current_view->text->ClearSelection();
 	current_view->update(-2);
-#else
-	current_view->getScreen()->ToggleSelection();
-	current_view->buffer()->text->ClearSelection();
-	current_view->buffer()->update(-2);
-	
-	/* paste */ 
-	current_view->buffer()->text->PasteSelection();
-	current_view->buffer()->update(1);
-	
-	/* clear the selection */ 
-	current_view->getScreen()->ToggleSelection();
-	current_view->buffer()->text->ClearSelection();
-	current_view->buffer()->update(-2);
-#endif
 }
 
 
@@ -2900,15 +2539,9 @@ extern "C" void MeltCB(FL_OBJECT *, long)
 	minibuffer->Set(_("Melt"));
 	current_view->getScreen()->HideCursor();
 	BeforeChange();
-#ifdef MOVE_TEXT
 	current_view->update(-2);
 	current_view->text->MeltFootnoteEnvironment();
 	current_view->update(1);
-#else
-	current_view->buffer()->update(-2);
-	current_view->buffer()->text->MeltFootnoteEnvironment();
-	current_view->buffer()->update(1);
-#endif
 }
 
 
@@ -2932,21 +2565,12 @@ extern "C" void DepthCB(FL_OBJECT * ob, long decInc)
   
 	if (current_view->available()) {
 		current_view->getScreen()->HideCursor();
-#ifdef MOVE_TEXT
 		current_view->update(-2);
 		if (button == 1)
 			current_view->text->IncDepth();
 		else
 			current_view->text->DecDepth();
 		current_view->update(1);
-#else
-		current_view->buffer()->update(-2);
-		if (button == 1)
-			current_view->buffer()->text->IncDepth();
-		else
-			current_view->buffer()->text->DecDepth();
-		current_view->buffer()->update(1);
-#endif
 		minibuffer->Set(_("Changed environment depth"
 				  " (in possible range, maybe not)"));
 	}
@@ -3149,7 +2773,7 @@ extern "C" void ParagraphApplyCB(FL_OBJECT *, long)
 	case 7: space_top = VSpace(LyXGlueLength (fl_get_input (fd_form_paragraph->input_space_above))); break;
 	}
 	if (fl_get_button (fd_form_paragraph->check_space_above))
-	  space_top.setKeep (true);
+		space_top.setKeep (true);
 	switch (fl_get_choice (fd_form_paragraph->choice_space_below)) {
 	case 1: space_bottom = VSpace(VSpace::NONE); break;
 	case 2: space_bottom = VSpace(VSpace::DEFSKIP); break;
@@ -3160,7 +2784,7 @@ extern "C" void ParagraphApplyCB(FL_OBJECT *, long)
 	case 7: space_bottom = VSpace(LyXGlueLength (fl_get_input (fd_form_paragraph->input_space_below))); break;
 	}
 	if (fl_get_button (fd_form_paragraph->check_space_below))
-	  space_bottom.setKeep (true);
+		space_bottom.setKeep (true);
 
 	if (fl_get_button(fd_form_paragraph->radio_align_left))
 		align = LYX_ALIGN_LEFT;
@@ -3174,7 +2798,6 @@ extern "C" void ParagraphApplyCB(FL_OBJECT *, long)
 	labelwidthstring = fl_get_input(fd_form_paragraph->input_labelwidth);
 	noindent = fl_get_button(fd_form_paragraph->check_noindent);
 
-#ifdef MOVE_TEXT
 	current_view->text->SetParagraph(line_top,
 					 line_bottom,
 					 pagebreak_top,
@@ -3185,18 +2808,6 @@ extern "C" void ParagraphApplyCB(FL_OBJECT *, long)
 					 labelwidthstring,
 					 noindent);
 	current_view->update(1);
-#else
-	current_view->buffer()->text->SetParagraph(line_top,
-							  line_bottom,
-							  pagebreak_top,
-							  pagebreak_bottom,
-							  space_top,
-							  space_bottom,
-							  align, 
-							  labelwidthstring,
-							  noindent);
-	current_view->buffer()->update(1);
-#endif
 	minibuffer->Set(_("Paragraph layout set"));
 }
 
@@ -3381,24 +2992,14 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 			// successfully loaded
 			redo = true;
 			minibuffer->Set(_("Converting document to new document class..."));
-#ifdef MOVE_TEXT
 			int ret = current_view->text->
 				SwitchLayoutsBetweenClasses(current_view->buffer()->
 							    params.textclass,
 							    new_class,
 							    current_view->buffer()->
 							    paragraph);
-#else
-			int ret = current_view->buffer()->
-				text->
-				SwitchLayoutsBetweenClasses(current_view->buffer()->
-							    params.textclass,
-							    new_class,
-							    current_view->buffer()->
-							    paragraph);
-#endif
 
-			if (ret){
+			if (ret) {
 				string s;
 				if (ret == 1)
 					s = _("One paragraph couldn't be converted");
@@ -3523,7 +3124,6 @@ extern "C" void DocumentBulletsCB(FL_OBJECT *, long)
 
 
 // candidate for move to BufferView
-#ifdef MOVE_TEXT
 void GotoNote()
 {
 	if (!current_view->getScreen())
@@ -3557,41 +3157,7 @@ void GotoNote()
 	current_view->text->sel_cursor = 
 		current_view->text->cursor;
 }
-#else
-void GotoNote()
-{
-	if (!current_view->getScreen())
-		return;
-   
-	current_view->getScreen()->HideCursor();
-	BeforeChange();
-	current_view->buffer()->update(-2);
-	LyXCursor tmp;
-   
-	if (!current_view->buffer()->text->GotoNextNote()) {
-		if (current_view->buffer()->text->cursor.pos 
-		    || current_view->buffer()->text->cursor.par != 
-		    current_view->buffer()->text->FirstParagraph())
-			{
-				tmp = current_view->buffer()->text->cursor;
-				current_view->buffer()->text->cursor.par = 
-					current_view->buffer()->text->FirstParagraph();
-				current_view->buffer()->text->cursor.pos = 0;
-				if (!current_view->buffer()->text->GotoNextNote()) {
-					current_view->buffer()->text->cursor = tmp;
-					minibuffer->Set(_("No more notes"));
-					LyXBell();
-				}
-			} else {
-				minibuffer->Set(_("No more notes"));
-				LyXBell();
-			}
-	}
-	current_view->buffer()->update(0);
-	current_view->buffer()->text->sel_cursor = 
-		current_view->buffer()->text->cursor;
-}
-#endif
+
 
 // candidate for move to BufferView
 void InsertCorrectQuote()
@@ -3599,17 +3165,10 @@ void InsertCorrectQuote()
 	Buffer * cbuffer = current_view->buffer();
 	char c;
 
-#ifdef MOVE_TEXT
 	if  (current_view->text->cursor.pos )
 		c = current_view->text->cursor.par->GetChar(current_view->text->cursor.pos - 1);
 	else 
 		c = ' ';
-#else
-	if  (cbuffer->text->cursor.pos )
-		c = cbuffer->text->cursor.par->GetChar(cbuffer->text->cursor.pos - 1);
-	else 
-		c = ' ';
-#endif
 
 	cbuffer->insertInset(new InsetQuotes(c, cbuffer->params));
 }
@@ -3699,7 +3258,6 @@ extern "C" void PreambleOKCB(FL_OBJECT * ob, long data)
 
 /* callbacks for form form_table */
 
-#ifdef MOVE_TEXT
 extern "C" void TableApplyCB(FL_OBJECT *, long)
 {
 	if (!current_view->getScreen())
@@ -3777,85 +3335,7 @@ extern "C" void TableApplyCB(FL_OBJECT *, long)
 	current_view->update(1);
 	minibuffer->Set(_("Table inserted"));
 }
-#else
-extern "C" void TableApplyCB(FL_OBJECT *, long)
-{
-	if (!current_view->getScreen())
-		return;
-   
-	// check for tables in tables
-	if (current_view->buffer()->text->cursor.par->table){
-		WriteAlert(_("Impossible Operation!"),
-			   _("Cannot insert table in table."),
-			   _("Sorry."));
-		return;
-	}
- 
-	minibuffer->Set(_("Inserting table..."));
 
-	int ysize = int(fl_get_slider_value(fd_form_table->slider_columns) + 0.5);
-	int xsize = int(fl_get_slider_value(fd_form_table->slider_rows) + 0.5);
-   
-   
-	current_view->getScreen()->HideCursor();
-	BeforeChange();
-	current_view->buffer()->update(-2);
-   
-	current_view->buffer()->text->SetCursorParUndo(); 
-	current_view->buffer()->text->FreezeUndo();
-
-	current_view->buffer()->text->BreakParagraph();
-	current_view->buffer()->update(-1);
-   
-	if (current_view->buffer()->text->cursor.par->Last()) {
-		current_view->buffer()->text->CursorLeft();
-      
-		current_view->buffer()->text->BreakParagraph();
-		current_view->buffer()->update(-1);
-	}
-
-	current_view->buffer()->text->current_font.setLatex(LyXFont::OFF);
-	//if (!fl_get_button(fd_form_table->check_latex)){
-	// insert the new wysiwy table
-	current_view->buffer()->text->SetLayout(0); // standard layout
-	if (current_view->buffer()->text->cursor.par->footnoteflag == 
-	    LyXParagraph::NO_FOOTNOTE) {
-		current_view->buffer()->
-			text->SetParagraph(0, 0,
-					   0, 0,
-					   VSpace (0.3 * current_view->buffer()->
-						   params.spacing.getValue(),
-						   LyXLength::CM),
-					   VSpace (0.3 * current_view->buffer()->
-						   params.spacing.getValue(),
-						   LyXLength::CM),
-					   LYX_ALIGN_CENTER,
-					   string(),
-					   0);
-	}
-	else
-		current_view->buffer()->
-			text->SetParagraph(0, 0,
-					   0, 0,
-					   VSpace(VSpace::NONE),
-					   VSpace(VSpace::NONE),
-					   LYX_ALIGN_CENTER, 
-					   string(),
-					   0);
-
-	current_view->buffer()->text->cursor.par->table =
-		new LyXTable(xsize, ysize);
-
-	for (int i = 0; i < xsize * ysize - 1; ++i)
-		current_view->buffer()->text->cursor.par->InsertChar(0, LyXParagraph::META_NEWLINE);
-	current_view->buffer()->text->RedoParagraph();
-   
-	current_view->buffer()->text->UnFreezeUndo();
-     
-	current_view->buffer()->update(1);
-	minibuffer->Set(_("Table inserted"));
-}
-#endif
 
 extern "C" void TableCancelCB(FL_OBJECT *, long)
 {
@@ -3910,7 +3390,7 @@ extern "C" void PrintApplyCB(FL_OBJECT *, long)
 		piece = frontStrip(piece) ;
 		if ( !stringOnlyContains (piece, "0123456789-") ) {
 			WriteAlert(_("ERROR!  Unable to print!"),
-				_("Check 'range of pages'!"));
+				   _("Check 'range of pages'!"));
 			return;
 		}
 		if (piece.find('-') == string::npos) { // not found
@@ -3928,7 +3408,7 @@ extern "C" void PrintApplyCB(FL_OBJECT *, long)
 	if (!copies.empty()) { // a number of copies was given
 		if ( !stringOnlyContains (copies, "0123456789") ) {
 			WriteAlert(_("ERROR!  Unable to print!"),
-				_("Check 'number of copies'!"));
+				   _("Check 'number of copies'!"));
 			return;
 		}
 		if (fl_get_button(fd_form_print->do_unsorted))
@@ -4011,7 +3491,7 @@ extern "C" void PrintApplyCB(FL_OBJECT *, long)
 	}
 	if (fl_get_button(fd_form_print->radio_file))
 		command += lyxrc->print_to_file 
-		           + QuoteName(MakeAbsPath(ps_file, path));
+			+ QuoteName(MakeAbsPath(ps_file, path));
 	else if (!lyxrc->print_spool_command.empty())
 		command += lyxrc->print_to_file 
 			+ QuoteName(ps_file);
@@ -4028,7 +3508,7 @@ extern "C" void PrintApplyCB(FL_OBJECT *, long)
 	    	string command2 = lyxrc->print_spool_command + ' ';
 		if (!printer.empty())
 			command2 += lyxrc->print_spool_printerprefix 
-				    + printer;
+				+ printer;
 		// First run dvips and, if succesful, then spool command
 		if ((result = RunScript(buffer, true, command))) {
 			result = RunScript(buffer, false, command2, ps_file);
@@ -4051,7 +3531,6 @@ extern "C" void PrintOKCB(FL_OBJECT * ob, long data)
 
 
 /* callbacks for form form_figure */
-#ifdef MOVE_TEXT
 extern "C" void FigureApplyCB(FL_OBJECT *, long)
 {
 	if (!current_view->available())
@@ -4104,12 +3583,12 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 				     LYX_ALIGN_CENTER, string(), 0);
 	} else
 		current_view->text->SetParagraph(0, 0,
-					   0, 0,
-					   VSpace(VSpace::NONE),
-					   VSpace(VSpace::NONE),
-					   LYX_ALIGN_CENTER, 
-					   string(),
-					   0);
+						 0, 0,
+						 VSpace(VSpace::NONE),
+						 VSpace(VSpace::NONE),
+						 LYX_ALIGN_CENTER, 
+						 string(),
+						 0);
 	
 	current_view->update(-1);
       
@@ -4120,77 +3599,8 @@ extern "C" void FigureApplyCB(FL_OBJECT *, long)
 	minibuffer->Set(_("Figure inserted"));
 	current_view->text->UnFreezeUndo();
 }
-#else
-extern "C" void FigureApplyCB(FL_OBJECT *, long)
-{
-	if (!current_view->available())
-		return;
 
-	Buffer * buffer = current_view->buffer();
-	if(buffer->isReadonly()) // paranoia
-		return;
-	
-	minibuffer->Set(_("Inserting figure..."));
-	if (fl_get_button(fd_form_figure->radio_inline)
-	    || buffer->text->cursor.par->table) {
-		InsetFig * new_inset = new InsetFig(100, 20, buffer);
-		buffer->insertInset(new_inset);
-		minibuffer->Set(_("Figure inserted"));
-		new_inset->Edit(0, 0);
-		return;
-	}
-	
-	current_view->getScreen()->HideCursor();
-	buffer->update(-2);
-	BeforeChange();
-      
-	buffer->text->SetCursorParUndo(); 
-	buffer->text->FreezeUndo();
 
-	buffer->text->BreakParagraph();
-	buffer->update(-1);
-      
-	if (buffer->text->cursor.par->Last()) {
-		buffer->text->CursorLeft();
-	 
-		buffer->text->BreakParagraph();
-		buffer->update(-1);
-	}
-
-	// The standard layout should always be numer 0;
-	buffer->text->SetLayout(0);
-	
-	if (buffer->text->cursor.par->footnoteflag == 
-	    LyXParagraph::NO_FOOTNOTE) {
-		buffer->text->
-			SetParagraph(0, 0,
-				     0, 0,
-				     VSpace (0.3 * buffer->params.spacing.getValue(),
-					     LyXLength::CM),
-				     VSpace (0.3 *
-					     buffer->params.spacing.getValue(),
-					     LyXLength::CM),
-				     LYX_ALIGN_CENTER, string(), 0);
-	} else
-		buffer->text->SetParagraph(0, 0,
-					   0, 0,
-					   VSpace(VSpace::NONE),
-					   VSpace(VSpace::NONE),
-					   LYX_ALIGN_CENTER, 
-					   string(),
-					   0);
-	
-	buffer->update(-1);
-      
-	Inset * new_inset = new InsetFig(100, 100, buffer);
-	buffer->insertInset(new_inset);
-	new_inset->Edit(0, 0);
-	buffer->update(0);
-	minibuffer->Set(_("Figure inserted"));
-	buffer->text->UnFreezeUndo();
-}
-#endif
-   
 extern "C" void FigureCancelCB(FL_OBJECT *, long)
 {
 	fl_hide_form(fd_form_figure->form_figure);
@@ -4260,7 +3670,7 @@ void Reconfigure()
 	// Run configure in user lyx directory
 	Path p(user_lyxdir);
 	Systemcalls one(Systemcalls::System, 
-                          AddName(system_lyxdir, "configure"));
+			AddName(system_lyxdir, "configure"));
 	p.pop();
 	minibuffer->Set(_("Reloading configuration..."));
 	lyxrc->read(LibFileSearch(string(), "lyxrc.defaults"));
@@ -4279,11 +3689,7 @@ char * NextWord(float & value)
 		return 0;
 	}
 
-#ifdef MOVE_TEXT
 	char * string =  current_view->text->SelectNextWord(value);
-#else
-	char * string =  current_view->buffer()->text->SelectNextWord(value);
-#endif
 
 	return string;
 }
@@ -4297,15 +3703,9 @@ void SelectLastWord()
    
 	current_view->getScreen()->HideCursor();
 	BeforeChange();
-#ifdef MOVE_TEXT
 	current_view->text->SelectSelectedWord();
 	current_view->getScreen()->ToggleSelection(false);
 	current_view->update(0);
-#else
-	current_view->buffer()->text->SelectSelectedWord();
-	current_view->getScreen()->ToggleSelection(false);
-	current_view->buffer()->update(0);
-#endif
 }
 
 
@@ -4317,15 +3717,9 @@ void EndOfSpellCheck()
    
 	current_view->getScreen()->HideCursor();
 	BeforeChange();
-#ifdef MOVE_TEXT
 	current_view->text->SelectSelectedWord();
 	current_view->text->ClearSelection();
 	current_view->update(0);
-#else
-	current_view->buffer()->text->SelectSelectedWord();
-	current_view->buffer()->text->ClearSelection();
-	current_view->buffer()->update(0);
-#endif
 }
 
 
@@ -4336,7 +3730,6 @@ void ReplaceWord(string const & replacestring)
 		return;
 
 	current_view->getScreen()->HideCursor();
-#ifdef MOVE_TEXT
 	current_view->update(-2);
    
 	/* clear the selection (if there is any) */ 
@@ -4355,27 +3748,6 @@ void ReplaceWord(string const & replacestring)
 		current_view->text->CursorLeftIntern();
 	}
 	current_view->update(1);
-#else
-	current_view->buffer()->update(-2);
-   
-	/* clear the selection (if there is any) */ 
-	current_view->getScreen()->ToggleSelection(false);
-
-	current_view->buffer()->update(-2);
-   
-	/* clear the selection (if there is any) */ 
-	current_view->getScreen()->ToggleSelection(false);
-	current_view->buffer()->text->
-		ReplaceSelectionWithString(replacestring.c_str());
-   
-	current_view->buffer()->text->SetSelectionOverString(replacestring.c_str());
-
-	// Go back so that replacement string is also spellchecked
-	for (string::size_type i = 0; i < replacestring.length() + 1; ++i) {
-		current_view->buffer()->text->CursorLeftIntern();
-	}
-	current_view->buffer()->update(1);
-#endif
 }
 // End of spellchecker stuff
 
@@ -4422,19 +3794,11 @@ extern "C" void TocSelectCB(FL_OBJECT * ob, long)
 	}
    
 	if (par) {
-#ifdef MOVE_TEXT
 		BeforeChange();
 		current_view->text->SetCursor(par, 0);
 		current_view->text->sel_cursor = 
 			current_view->text->cursor;
 		current_view->update(0);
-#else
-		BeforeChange();
-		current_view->buffer()->text->SetCursor(par, 0);
-		current_view->buffer()->text->sel_cursor = 
-			current_view->buffer()->text->cursor;
-		current_view->buffer()->update(0);
-#endif
 	}
 	else {
 		WriteAlert(_("Error"), 
@@ -4489,7 +3853,7 @@ extern "C" void TocUpdateCB(FL_OBJECT *, long)
    
 	while (par) {
 		labeltype = textclasslist.Style(current_view->buffer()->params.textclass, 
-					   par->GetLayout()).labeltype;
+						par->GetLayout()).labeltype;
       
 		if (labeltype >= LABEL_COUNTER_CHAPTER
 		    && labeltype <= LABEL_COUNTER_CHAPTER +
@@ -4500,7 +3864,7 @@ extern "C" void TocUpdateCB(FL_OBJECT *, long)
 			for (pos = 0; 
 			     pos < (labeltype - 
 				    textclasslist.TextClass(current_view->buffer()->
-						       params.textclass).maxcounter()) * 4 + 2;
+							    params.textclass).maxcounter()) * 4 + 2;
 			     pos++)
 				line[pos] = ' ';
 			
@@ -4602,7 +3966,7 @@ extern "C" void RefUpdateCB(FL_OBJECT *, long)
 
 	// Get the current line, in order to restore it later
 	char const * const btmp = fl_get_browser_line(brow,
-						     fl_get_browser(brow));
+						      fl_get_browser(brow));
 	string currentstr = btmp ? btmp : "";
 
 	fl_clear_browser(brow);
@@ -4672,7 +4036,6 @@ void UpdateInset(Inset * inset, bool mark_dirty)
 
 	/* very first check for locking insets*/
 	if (current_view->buffer()->the_locking_inset == inset){
-#ifdef MOVE_TEXT
 		if (current_view->text->UpdateInset(inset)){
 			current_view->update();
 			if (mark_dirty){
@@ -4683,24 +4046,11 @@ void UpdateInset(Inset * inset, bool mark_dirty)
 			current_view->updateScrollbar();
 			return;
 		}
-#else
-		if (current_view->buffer()->text->UpdateInset(inset)){
-			current_view->update();
-			if (mark_dirty){
-				if (current_view->buffer()->isLyxClean())
-					minibuffer->setTimer(4);
-				current_view->buffer()->markDirty();
-			}
-			current_view->updateScrollbar();
-			return;
-		}
-#endif
 	}
   
 	/* first check the current buffer */
 	if (current_view->available()){
 		current_view->getScreen()->HideCursor();
-#ifdef MOVE_TEXT
 		current_view->update(-3);
 		if (current_view->text->UpdateInset(inset)){
 			if (mark_dirty)
@@ -4709,16 +4059,6 @@ void UpdateInset(Inset * inset, bool mark_dirty)
 				current_view->update(3);
 			return;
 		}
-#else
-		current_view->buffer()->update(-3);
-		if (current_view->buffer()->text->UpdateInset(inset)){
-			if (mark_dirty)
-				current_view->buffer()->update(1);
-			else 
-				current_view->buffer()->update(3);
-			return;
-		}
-#endif
 	}
   
 	// check all buffers
@@ -4745,11 +4085,7 @@ void ShowLockedInsetCursor(long x, long y, int asc, int desc)
 {
 	if (current_view->buffer()->the_locking_inset &&
 	    current_view->getScreen()){
-#ifdef MOVE_TEXT
 		y += current_view->text->cursor.y;
-#else
-		y += current_view->buffer()->text->cursor.y;
-#endif
 		current_view->getScreen()->ShowManualCursor(x, y,
 							    asc, desc);
 	}
@@ -4761,11 +4097,7 @@ void HideLockedInsetCursor(long x, long y, int asc, int desc)
 {
 	if (current_view->buffer()->the_locking_inset &&
 	    current_view->getScreen()){
-#ifdef MOVE_TEXT
 		y += current_view->text->cursor.y;
-#else
-		y += current_view->buffer()->text->cursor.y;
-#endif
 		current_view->getScreen()->HideManualCursor(x, y,
 							    asc, desc);
 	}
@@ -4777,11 +4109,7 @@ void FitLockedInsetCursor(long x, long y, int asc, int desc)
 {
 	if (current_view->buffer()->the_locking_inset &&
 	    current_view->getScreen()){
-#ifdef MOVE_TEXT
 		y += current_view->text->cursor.y;
-#else
-		y += current_view->buffer()->text->cursor.y;
-#endif
 		if (current_view->getScreen()->FitManualCursor(x, y, asc, desc))
 			current_view->updateScrollbar();
 	}
@@ -4795,11 +4123,7 @@ int UnlockInset(UpdatableInset * inset)
 	    current_view->buffer()->the_locking_inset == inset){
 		inset->InsetUnlock();
 		current_view->buffer()->the_locking_inset = 0;
-#ifdef MOVE_TEXT
 		current_view->text->FinishUndo();
-#else
-		current_view->buffer()->text->FinishUndo();
-#endif
 		return 0;
 	}
 	return bufferlist.unlockInset(inset);
@@ -4813,19 +4137,11 @@ void LockedInsetStoreUndo(Undo::undo_kind kind)
 		return; // shouldn't happen
 	if (kind == Undo::EDIT) // in this case insets would not be stored!
 		kind = Undo::FINISH;
-#ifdef MOVE_TEXT
 	current_view->text->SetUndo(kind,
-			      current_view->text->cursor.par->
-			      ParFromPos(current_view->text->cursor.pos)->previous, 
-			      current_view->text->cursor.par->
-			      ParFromPos(current_view->text->cursor.pos)->next);
-#else
-	current_view->buffer()->text->SetUndo(kind,
-			      current_view->buffer()->text->cursor.par->
-			      ParFromPos(current_view->buffer()->text->cursor.pos)->previous, 
-			      current_view->buffer()->text->cursor.par->
-			      ParFromPos(current_view->buffer()->text->cursor.pos)->next);
-#endif
+				    current_view->text->cursor.par->
+				    ParFromPos(current_view->text->cursor.pos)->previous, 
+				    current_view->text->cursor.par->
+				    ParFromPos(current_view->text->cursor.pos)->next);
 }
 
 
@@ -4867,6 +4183,6 @@ void UpdateInsetUpdateList()
 // code is indented in the right way!!!
 void addNewlineAndDepth(string & file, int const depth)
 {
-       file += '\n';
-       file.append(depth, ' ');
+	file += '\n';
+	file.append(depth, ' ');
 }

@@ -1,3 +1,31 @@
+1999-12-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/kbmap.C: commented out the use of the hash map in kb_map,
+	beginning of movement to a stl::container. 
+
+	* several files: removed code that was not in effect when
+	MOVE_TEXT was defined.
+	
+	* lib/kbd/iso8859-1.cdef: removed bogus backslashes. Backslashes
+	for escaping should not be used. We can discuss if the string
+	should be enclosed in f.ex. [] instead of "".
+
+	* src/trans_mgr.C (insert): use the new returned value from
+	encodeString to get deadkeys and keymaps done correctly.
+
+	* src/chset.C (encodeString): changed to return a pair, to tell
+	what to use if we know the string.
+
+	* src/lyxscreen.h (fillArc): new function.
+
+	* src/FontInfo.C (resize): rewritten to use more std::string like
+	structore, especially string::replace.
+
+	* src/insets/insetlatexaccent.C (Draw): use fillArc for the
+	approp. accents.
+
+	* configure.in (chmod +x some scripts): remove config/gcc-hack 
+
 1999-12-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/buffer.C (writeFile): change once again the top comment in a

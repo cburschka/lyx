@@ -4,7 +4,7 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1995 Matthias Ettrich
+ *	    Copyright 1995 Matthias Ettrich
  *
  * ====================================================== */
 
@@ -24,7 +24,7 @@
 // for us, since we use these names below. But of course this is due
 // to some old compilers. Than is broken when it comes to C++ scoping.
 #include "gettext.h" // so that we are sure tht it won't be included
-		     // later. 
+// later. 
 #ifdef ON
 #undef ON
 #endif
@@ -39,11 +39,11 @@ class LyXLex;
 class LyXFont {
 public:
 	/** The value INHERIT_* means that the font attribute is
-	  inherited from the layout. In the case of layout fonts, the
-	  attribute is inherited from the default font.
-	  The value IGNORE_* is used with LyXFont::update() when the
-	  attribute should not be changed.
-	  */
+	    inherited from the layout. In the case of layout fonts, the
+	    attribute is inherited from the default font.
+	    The value IGNORE_* is used with LyXFont::update() when the
+	    attribute should not be changed.
+	*/
 	enum FONT_FAMILY {
 		///
 		ROMAN_FAMILY, // fontstruct rely on this to be 0
@@ -272,7 +272,7 @@ public:
 	string latexSize() const;
  
 	/** Updates font settings according to request. If an
-	  attribute is IGNORE, the attribute is left as it is. */
+	    attribute is IGNORE, the attribute is left as it is. */
  	/* 
  	 * When toggleall = true, all properties that matches the font in use
  	 * will have the effect that the properties is reset to the
@@ -284,7 +284,7 @@ public:
  	void update(LyXFont const & newfont, bool toggleall = false);
  
 	/** Reduce font to fall back to template where possible.
-	  Equal fields are reduced to INHERIT */
+	    Equal fields are reduced to INHERIT */
 	void reduce(LyXFont const & tmplt);
  
 	/// Realize font from a template (INHERIT are realized)
@@ -307,7 +307,7 @@ public:
 	int latexWriteStartChanges(string &, LyXFont const & base) const;
 
 	/** Writes tha tail of the LaTeX needed to chagne to this font.
-	  Returns number of chars written. Base is the font state we want
+	    Returns number of chars written. Base is the font state we want
 	    to achieve.
 	*/
 	int latexWriteEndChanges(string &, LyXFont const & base) const;
@@ -374,15 +374,15 @@ private:
 	typedef unsigned int ui32;
 
 	/** Representation: bit table
-	  Layout of bit table:
-	       	   11 1111 111 122 222 222 2233
-	  Bit 012 34 567 8901 2345 678 901 234 567 8901
-	      FFF SS SSS SSSS CCCC EEE UUU NNN LLL
-	      aaa ee hhh iiii oooo mmm nnn ooo aaa
-	      mmm rr aaa zzzz llll ppp ddd uuu ttt
+	    Layout of bit table:
+	    11 1111 111 122 222 222 2233
+	    Bit 012 34 567 8901 2345 678 901 234 567 8901
+	    FFF SS SSS SSSS CCCC EEE UUU NNN LLL
+	    aaa ee hhh iiii oooo mmm nnn ooo aaa
+	    mmm rr aaa zzzz llll ppp ddd uuu ttt
 
-	  Some might think this is a dirty representation, but it gives
-	  us at least 25% speed-up, so why not?
+	    Some might think this is a dirty representation, but it gives
+	    us at least 25% speed-up, so why not?
 	*/
 	ui32 bits;
 
@@ -437,25 +437,25 @@ private:
  
 	/// All inherit font
 	enum{ inherit = ui32(INHERIT_FAMILY) << Fam_Pos
-		| ui32(INHERIT_SERIES) << Ser_Pos
-		| ui32(INHERIT_SHAPE) << Sha_Pos
-		| ui32(INHERIT_SIZE) << Siz_Pos
-		| ui32(INHERIT_COLOR) << Col_Pos
-		| ui32(INHERIT) << Emp_Pos
-		| ui32(INHERIT) << Und_Pos
-		| ui32(INHERIT) << Nou_Pos
-		| ui32(INHERIT) << Lat_Pos};
+		      | ui32(INHERIT_SERIES) << Ser_Pos
+		      | ui32(INHERIT_SHAPE) << Sha_Pos
+		      | ui32(INHERIT_SIZE) << Siz_Pos
+		      | ui32(INHERIT_COLOR) << Col_Pos
+		      | ui32(INHERIT) << Emp_Pos
+		      | ui32(INHERIT) << Und_Pos
+		      | ui32(INHERIT) << Nou_Pos
+		      | ui32(INHERIT) << Lat_Pos};
  
 	/// All ignore font
 	enum{ ignore = ui32(IGNORE_FAMILY) << Fam_Pos
-	       | ui32(IGNORE_SERIES) << Ser_Pos
-	       | ui32(IGNORE_SHAPE) << Sha_Pos
-	       | ui32(IGNORE_SIZE) << Siz_Pos
-	       | ui32(IGNORE_COLOR) << Col_Pos
-	       | ui32(IGNORE) << Emp_Pos
-	       | ui32(IGNORE) << Und_Pos
-	       | ui32(IGNORE) << Nou_Pos
-	       | ui32(IGNORE) << Lat_Pos};
+		      | ui32(IGNORE_SERIES) << Ser_Pos
+		      | ui32(IGNORE_SHAPE) << Sha_Pos
+		      | ui32(IGNORE_SIZE) << Siz_Pos
+		      | ui32(IGNORE_COLOR) << Col_Pos
+		      | ui32(IGNORE) << Emp_Pos
+		      | ui32(IGNORE) << Und_Pos
+		      | ui32(IGNORE) << Nou_Pos
+		      | ui32(IGNORE) << Lat_Pos};
  
 	/// Updates a misc setting according to request
 	LyXFont::FONT_MISC_STATE setMisc(LyXFont::FONT_MISC_STATE newfont,
@@ -507,8 +507,8 @@ inline LyXFont & LyXFont::operator=(LyXFont const & x)
 }
 
 
- // You don't have to understand the stuff below :-)
- // It works, and it's bloody fast. (Asger)
+// You don't have to understand the stuff below :-)
+// It works, and it's bloody fast. (Asger)
 inline LyXFont::FONT_FAMILY LyXFont::family() const 
 {
 	return LyXFont::FONT_FAMILY((bits >> Fam_Pos) & Fam_Mask);

@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /* This file is part of
-* ====================================================== 
+ * ====================================================== 
 * 
 *           LyX, The Document Processor 	 
 *	    Copyright (C) 1995 Matthias Ettrich
@@ -34,7 +34,6 @@
 #include "lyxtext.h"
 #include "support/filetools.h"
 
-#define MOVE_TEXT 1
 
 class LyXRC;
 class TeXErrors;
@@ -73,16 +72,16 @@ public:
 	//@{
 
 	/** save the buffer's parameters as user default
- 	  This function saves a file user_lyxdir/templates/defaults.lyx 
-	  which parameters are those of the current buffer. This file
-	  is used as a default template when creating a new
-	  file. Returns true on success.
-	  */
+	    This function saves a file user_lyxdir/templates/defaults.lyx 
+	    which parameters are those of the current buffer. This file
+	    is used as a default template when creating a new
+	    file. Returns true on success.
+	*/
 	bool saveParamsAsDefaults();
 
 	/** high-level interface to buffer functionality
-	  This function parses a command string and executes it
-	  */
+	    This function parses a command string and executes it
+	*/
 	void Dispatch(const string & command);
 
 	/// Maybe we know the function already by number...
@@ -90,17 +89,11 @@ public:
 
 	/// should be changed to work for a list.
 	void resize()
-	{
-		if (users) {
-			users->resize();
+		{
+			if (users) {
+				users->resize();
+			}
 		}
-#ifndef MOVE_TEXT
-		else if (text) {
-			delete text;
-			text = 0;
-		}
-#endif
-	}
 
 	/// Update window titles of all users
 	void updateTitles();
@@ -109,26 +102,21 @@ public:
 	void resetAutosaveTimers();
 
 	/** Adds the BufferView to the users list.
-	  Later this func will insert the BufferView into a real list,
-	  not just setting a pointer.
-	  */
+	    Later this func will insert the BufferView into a real list,
+	    not just setting a pointer.
+	*/
 	void addUser(BufferView * u) { users = u; }
 
 	/** Removes the BufferView from the users list.
- 	  Since we only can have one at the moment, we just reset it.
-	  */
+	    Since we only can have one at the moment, we just reset it.
+	*/
 	void delUser(BufferView *){ users = 0; }
 	
-#ifndef MOVE_TEXT
-	///
-	void update(signed char f);
-#endif
-
 	///
 	void redraw() {
-              users->redraw(); 
-              users->fitCursor(); 
-              users->updateScrollbar();
+		users->redraw(); 
+		users->fitCursor(); 
+		users->updateScrollbar();
 	}
 
         /// Open and lock an updatable inset
@@ -263,16 +251,16 @@ public:
 
 	/// Set buffer read-only flag
 	void setReadonly(bool flag = true) 
-	{
-		if (read_only != flag) {
-			read_only = flag; 
-			updateTitles();
-			updateAllVisibleBufferRelatedPopups();
+		{
+			if (read_only != flag) {
+				read_only = flag; 
+				updateTitles();
+				updateAllVisibleBufferRelatedPopups();
+			}
+			if (read_only) {
+				WarnReadonly();
+			}
 		}
-		if (read_only) {
-			WarnReadonly();
-		}
-	}
 
 	/// returns true if the buffer contains a LaTeX document
 	bool isLatex() const;
@@ -294,19 +282,19 @@ public:
 #endif
 	
 	/** Validate a buffer for LaTeX.
-	  This validates the buffer, and returns a struct for use by
-	  makeLaTeX and others. Its main use is to figure out what commands
-	  and packages need to be included in the LaTeX file. It (should)
-	  also check that the needed constructs are there (i.e. that the \refs
-	  points to coresponding \labels). It should perhaps inset "error"
-	  insets to help the user correct obvious mistakes.
-	 */
+	    This validates the buffer, and returns a struct for use by
+	    makeLaTeX and others. Its main use is to figure out what commands
+	    and packages need to be included in the LaTeX file. It (should)
+	    also check that the needed constructs are there (i.e. that the \refs
+	    points to coresponding \labels). It should perhaps inset "error"
+	    insets to help the user correct obvious mistakes.
+	*/
 	void validate(LaTeXFeatures &); //the correct parameters to be
-				        //included later 
+	//included later 
 
 	/** Insert an inset into the buffer
-	  Insert inset into buffer, placing it in a layout of lout,
-	  if no_table make sure that it doesn't end up in a table. */
+	    Insert inset into buffer, placing it in a layout of lout,
+	    if no_table make sure that it doesn't end up in a table. */
 	void insertInset(Inset *, string const & lout = string(), 
 			 bool no_table = false);
 
@@ -326,7 +314,7 @@ public:
 	bool removeAutoInsets();
 
 	/** This will clearly have to change later. Later we can have more
-	  than one user per buffer. */
+	    than one user per buffer. */
 	BufferView * getUser() const { return users; }
 
         //@}
@@ -344,12 +332,6 @@ public:
 	 */
 	LyXParagraph * paragraph;
 
-#ifndef MOVE_TEXT
-	/** This holds the mapping between buffer paragraphs and screen rows.
-	    Should be moved to BufferView. (Asger)
-	 */
-	LyXText * text;
-#endif
 	/// per view not per buffer?
 	UpdatableInset * the_locking_inset;
 
@@ -453,12 +435,12 @@ private:
 	float format;
 	
 	/** A list of views using this buffer.
-	  Why not keep a list of the BufferViews that use this buffer?
+	    Why not keep a list of the BufferViews that use this buffer?
 
-	  At least then we don't have to do a lot of magic like:
-	  buffer->lyx_gui->bufferview->updateLayoutChoice. Just ask each
-	  of the buffers in the list of users to do a updateLayoutChoice.
-	  */
+	    At least then we don't have to do a lot of magic like:
+	    buffer->lyx_gui->bufferview->updateLayoutChoice. Just ask each
+	    of the buffers in the list of users to do a updateLayoutChoice.
+	*/
 	BufferView * users;
 
 	/// Used when typesetting to place errorboxes.
@@ -469,28 +451,28 @@ private:
 inline  
 void Buffer::InsetSleep()
 {
-    if (the_locking_inset && !inset_slept) {
-	the_locking_inset->GetCursorPos(slx, sly);
-        the_locking_inset->InsetUnlock();
-	inset_slept = true;
-    }
+	if (the_locking_inset && !inset_slept) {
+		the_locking_inset->GetCursorPos(slx, sly);
+		the_locking_inset->InsetUnlock();
+		inset_slept = true;
+	}
 }
 
 
 inline  
 void Buffer::InsetWakeup()
 {
-    if (the_locking_inset && inset_slept) {
-	the_locking_inset->Edit(slx, sly);
-	inset_slept = false;
-    }	
+	if (the_locking_inset && inset_slept) {
+		the_locking_inset->Edit(slx, sly);
+		inset_slept = false;
+	}	
 }
 
 
 inline  
 void Buffer::setParentName(string const & name)
 {
-    params.parentname = name;    
+	params.parentname = name;    
 }
 
 #endif

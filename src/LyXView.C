@@ -33,10 +33,10 @@
 
 extern FD_form_document * fd_form_document;
 FD_form_main * fd_form_main; /* a pointer to the one in LyXView
-			       should be removed as soon as possible */
+				should be removed as soon as possible */
 
 MiniBuffer * minibuffer;/* a pointer to the one in LyXView
-			  should be removed as soon as possible */
+			   should be removed as soon as possible */
 
 extern void AutoSave();
 extern char updatetimer;
@@ -68,6 +68,7 @@ LyXView::~LyXView()
 	delete intl;
 }
 
+
 /// Redraw the main form.
 void LyXView::redraw() {
 	lyxerr[Debug::INFO] << "LyXView::redraw()" << endl;
@@ -86,21 +87,19 @@ void LyXView::UpdateTimerCB(FL_OBJECT * ob, long)
 		return;
 
 	view->view()->getScreen()->HideCursor();
-#ifdef MOVE_TEXT
 	view->view()->update(-2);
-#else
-	view->buffer()->update(-2);
-#endif
+
 	/* This update can happen, even when the work area has lost
 	 * the focus. So suppress the cursor in that case */
 	updatetimer = 0;
 }
 
+
 // Wrapper for the above
-extern "C" void C_LyXView_UpdateTimerCB(FL_OBJECT * ob, long data) {
+extern "C" void C_LyXView_UpdateTimerCB(FL_OBJECT * ob, long data)
+{
 	LyXView::UpdateTimerCB(ob, data);
 }
-
 
 
 // Callback for autosave timer
@@ -110,8 +109,10 @@ void LyXView::AutosaveTimerCB(FL_OBJECT *, long)
 	AutoSave();
 }
 
+
 // Wrapper for the above
-extern "C" void C_LyXView_AutosaveTimerCB(FL_OBJECT * ob, long data) {
+extern "C" void C_LyXView_AutosaveTimerCB(FL_OBJECT * ob, long data)
+{
 	LyXView::AutosaveTimerCB(ob, data);
 }
 
@@ -133,7 +134,8 @@ int LyXView::atCloseMainFormCB(FL_FORM *, void *)
 
 
 // Wrapper for the above
-extern "C" int C_LyXView_atCloseMainFormCB(FL_FORM * form, void * p) {
+extern "C" int C_LyXView_atCloseMainFormCB(FL_FORM * form, void * p)
+{
 	return LyXView::atCloseMainFormCB(form, p);
 }
 
@@ -209,9 +211,8 @@ FD_form_main * LyXView::create_form_form_main(int width, int height)
 	//
 
 	minibuffer = new MiniBuffer(this, air, height-(25+air), 
-					  width-(2*air), 25);
+				    width-(2*air), 25);
 	::minibuffer = minibuffer; // to be removed later
-
 
 	//
 	// TIMERS
@@ -252,6 +253,7 @@ FD_form_main * LyXView::create_form_form_main(int width, int height)
 
 	return fdui;
 }
+
 
 extern "C" int C_LyXView_KeyPressMask_raw_callback(FL_FORM * fl, void * xev);
 
@@ -300,7 +302,7 @@ void LyXView::updateLayoutChoice()
 		toolbar->combox->clear();
 		for (int i = 0;
 		     textclasslist.NameOfLayout(buffer()->
-					   params.textclass, i) != "@@end@@";
+						params.textclass, i) != "@@end@@";
 		     i++) {
 			LyXLayout const & layout = textclasslist.
 				Style(buffer()->params.textclass, i);
@@ -315,11 +317,7 @@ void LyXView::updateLayoutChoice()
 	// we need to do this.
 	toolbar->combox->Redraw();
 
-#ifdef MOVE_TEXT
 	char layout = bufferview->text->cursor.par->GetLayout();
-#else
-	char layout = buffer()->text->cursor.par->GetLayout();
-#endif
 
 	if (layout != current_layout){
 		toolbar->combox->select(layout + 1);
@@ -331,10 +329,10 @@ void LyXView::updateLayoutChoice()
 void LyXView::UpdateDocumentClassChoice()
 {
 	// update the document class display in the document form
-	int i;
 	if (fd_form_document) {
 		fl_clear_choice(fd_form_document->choice_class);
-		for (i = 0; textclasslist.DescOfClass (i)!= "@@end@@"; i++) {
+		for (int i = 0;
+		     textclasslist.DescOfClass(i) != "@@end@@"; ++i) {
 			fl_addto_choice(fd_form_document->choice_class,
 					textclasslist.DescOfClass(i).c_str());
 		}
@@ -344,7 +342,7 @@ void LyXView::UpdateDocumentClassChoice()
 
 // This is necessary, since FL_FREE-Objects doesn't get all keypress events
 // as FL_KEYBOARD events :-(   Matthias 280596
-int LyXView::KeyPressMask_raw_callback(FL_FORM *fl, void *xev)
+int LyXView::KeyPressMask_raw_callback(FL_FORM * fl, void * xev)
 {
 	LyXView * view = static_cast<LyXView*>(fl->u_vdata);
 	int retval = 0;  // 0 means XForms should have a look at this event
@@ -360,14 +358,17 @@ int LyXView::KeyPressMask_raw_callback(FL_FORM *fl, void *xev)
 	return retval;
 }
 
+
 // wrapper for the above
 extern "C" int C_LyXView_KeyPressMask_raw_callback(FL_FORM * fl, void * xev)
 {
 	return LyXView::KeyPressMask_raw_callback(fl, xev);
 }
 
+
 // Updates the title of the window with the filename of the current document
-void LyXView::updateWindowTitle() {
+void LyXView::updateWindowTitle()
+{
 	static string last_title = "LyX";
 	string title = "LyX";
 

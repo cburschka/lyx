@@ -24,7 +24,7 @@ extern LyXRC * lyxrc;
 
 /* LatexAccent. Proper handling of accented characters */
 /* This part is done by Ivan Schreter, schreter@ccsun.tuke.sk */
-/* Later modified by Lars G. Bjonnes, larsbj@ifi.uio.no */
+/* Later modified by Lars G. Bjønnes, larsbj@lyx.org */
 
 InsetLatexAccent::InsetLatexAccent()
 {
@@ -33,13 +33,13 @@ InsetLatexAccent::InsetLatexAccent()
 
 
 InsetLatexAccent::InsetLatexAccent(InsetLatexAccent const & other)
-    : Inset(), contents(other.contents),
-      candisp(other.candisp),
-      modtype(other.modtype),
-      remdot(other.remdot),
-      plusasc(other.plusasc),
-      plusdesc(other.plusdesc),
-      ic(other.ic)
+	: Inset(), contents(other.contents),
+	  candisp(other.candisp),
+	  modtype(other.modtype),
+	  remdot(other.remdot),
+	  plusasc(other.plusasc),
+	  plusdesc(other.plusdesc),
+	  ic(other.ic)
 {}
 
 
@@ -199,7 +199,7 @@ void InsetLatexAccent::checkContents()
 
 	// special clause for \i{}, \j{} \l{} and \L{}
 	if ((modtype == DOT_LESS_I || modtype == DOT_LESS_J
-		|| modtype == lSLASH || modtype == LSLASH)
+	     || modtype == lSLASH || modtype == LSLASH)
 	    && contents[3] == '}' ) {
 		switch (modtype) {
 		case DOT_LESS_I: ic = 'i'; break;
@@ -218,7 +218,7 @@ void InsetLatexAccent::checkContents()
 			       << ", bot: " << plusdesc 
 			       << ", dot: " << remdot 
 			       << ", mod: " << modtype << endl;
-	// Special case for space
+		// Special case for space
 	} else if (contents[3] == '}') {
 		ic = ' ';
 	} else {
@@ -235,15 +235,16 @@ void InsetLatexAccent::checkContents()
 			else
 				return;
 		} else if ( (ic == 'i'|| ic == 'j') && contents[4] == '}') {
-		    // Do a rewrite: \<foo>{i} --> \<foo>{\i}
-		    string temp = contents;
-		    temp.erase(3, string::npos);
-		    temp += '\\';
-		    temp += char(ic);
-		    for(string::size_type j = 4; j < contents.length(); ++j)
+			// Do a rewrite: \<foo>{i} --> \<foo>{\i}
+			string temp = contents;
+			temp.erase(3, string::npos);
+			temp += '\\';
+			temp += char(ic);
+			for(string::size_type j = 4;
+			    j < contents.length(); ++j)
 				temp+= contents[j];
-		    contents= temp;
-		    ++i;
+			contents= temp;
+			++i;
 			remdot = true;
 		}    
 
@@ -320,9 +321,9 @@ int InsetLatexAccent::Rbearing(LyXFont const & font) const
 
 
 bool InsetLatexAccent::DisplayISO8859_9(LyXFont font,
-			    LyXScreen & scr,
-			    int baseline, 
-			    float & x)
+					LyXScreen & scr,
+					int baseline, 
+					float & x)
 {
 	unsigned char tmpic = ic;
 	
@@ -337,8 +338,8 @@ bool InsetLatexAccent::DisplayISO8859_9(LyXFont font,
 	}
 	case BREVE:
 	{	if (ic == 'g') tmpic = 0xf0;
-		if (ic == 'G') tmpic = 0xd0;
-		break;
+	if (ic == 'G') tmpic = 0xd0;
+	break;
 	}
 	case UMLAUT:
 	{
@@ -476,7 +477,7 @@ void InsetLatexAccent::Draw(LyXFont font,
 		case UNDERDOT:     // underdot
 		case DOT:    // dot
 		{
-			scr.drawArc(pgc, int(x2), y + (hg / 2.0),
+			scr.fillArc(pgc, int(x2), y + (hg / 2.0),
 				    1, 1, 0, 360*64); 
 			break;
 		}
@@ -541,9 +542,9 @@ void InsetLatexAccent::Draw(LyXFont font,
 		{
 			float tmpadd = y;
 			tmpadd += (remdot) ?
-				asc/3.0 :
-				asc/5.0; // if (remdot) -> i or j
-			float rad = ((hg * 4.0) / 8.0);
+				asc / 3.0 :
+				asc / 5.0; // if (remdot) -> i or j
+			float rad = hg / 2.0;
 			if (rad <= 1.0) {
 				scr.drawPoint(pgc,
 					      int(x2 - ((4.0 * hg) / 7.0)),
@@ -552,12 +553,15 @@ void InsetLatexAccent::Draw(LyXFont font,
 					      int(x2 + ((4.0 * hg) / 7.0)),
 					      tmpadd);
 			} else {
-				scr.drawArc(pgc, int(x2 - ((2.0 * hg) / 4.0)),
+				rad += .5; // this ensures that f.ex. 1.5 will
+				// not be rounded down to .5 and then
+				// converted to int = 0
+				scr.fillArc(pgc, int(x2 - ((2.0 * hg) / 4.0)),
 					    tmpadd,
-					    rad - 1, rad - 1, 0, 360*64);
-				scr.drawArc(pgc, int(x2 + ((2.0 * hg) / 4.0)),
+					    rad, rad, 0, 360*64);
+				scr.fillArc(pgc, int(x2 + ((2.0 * hg) / 4.0)),
 					    tmpadd,
-					    rad - 1, rad - 1, 0, 360*64);
+					    rad, rad, 0, 360*64);
 			}
 			break;
 		}

@@ -46,9 +46,8 @@ string DefaultTrans::process(char c, TransManager & k)
 
 Trans::Trans()
 {
-	int i;
-
-	for(i = 0; i < 256; ++i)
+	int i = 0;
+	for(; i < 256; ++i)
 		keymap_[i] = 0;
 
 	for(i = 0; i < TEX_MAX_ACCENT + 1; ++i)
@@ -81,9 +80,7 @@ void Trans::InsertException(Trans::keyexc & exclist, char c,
 
 void Trans::FreeException(Trans::keyexc & exclist)
 {
-	Trans::keyexc p;
-
-	p = exclist;
+	Trans::keyexc p = exclist;
 	while (p) {
 		p = exclist->next;
 		delete exclist;
@@ -94,9 +91,8 @@ void Trans::FreeException(Trans::keyexc & exclist)
 
 void Trans::FreeKeymap()
 {
-	int i;
-
-	for(i = 0; i < 256; ++i)
+	int i = 0;
+	for(; i < 256; ++i)
 		if (keymap_[i]) {
 			delete keymap_[i];
 			keymap_[i] = 0;
@@ -131,7 +127,7 @@ enum _kmaptags {
 };
 
 
-struct keyword_item kmapTags[K_LAST-1] = {
+struct keyword_item kmapTags[K_LAST - 1] = {
 	{"\\kcomb", KCOMB },
 	{ "\\kmap", KMAP },
 	{ "\\kmod", KMOD },
@@ -235,7 +231,8 @@ int Trans::Load(LyXLex & lex)
 			tex_accent accent_2= getkeymod(str);
 			if (accent_2 == TEX_NOACCENT) return -1;
 
-			if (kmod_list_[accent_1] == 0 || kmod_list_[accent_2] == 0)
+			if (kmod_list_[accent_1] == 0
+			    || kmod_list_[accent_2] == 0)
 				return -1;
 
 			// Find what key accent_2 is on - should
@@ -317,7 +314,8 @@ int Trans::Load(LyXLex & lex)
 			} else
 				return -1;
 
-			InsertException(kmod_list_[accent]->exception_list, key, str);
+			InsertException(kmod_list_[accent]->exception_list,
+					key, str);
 			break;
 		}
 		case LyXLex::LEX_FEOF:
@@ -352,7 +350,8 @@ string Trans::process(char c, TransManager & k)
 	if ((t == 0 && (*dt = c)) || (t[0] != 0 && (dt = t)) ){
 		return k.normalkey(c, dt);
 	} else {
-		return k.deadkey(c, *kmod_list_[static_cast<tex_accent>(t[1])]);
+		return k.deadkey(c,
+				 *kmod_list_[static_cast<tex_accent>(t[1])]);
 	}
 }
 
@@ -388,7 +387,8 @@ tex_accent getkeymod(string const & p)
 			       << "].name = `" << lyx_accent_table[i].name
 			       << "'" << endl;
 		
-		if ( lyx_accent_table[i].name && contains(p, lyx_accent_table[i].name)) {
+		if ( lyx_accent_table[i].name
+		     && contains(p, lyx_accent_table[i].name)) {
 			lyxerr[Debug::KBMAP] << "Found it!" << endl;
 			return static_cast<tex_accent>(i);
 		}

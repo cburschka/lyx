@@ -63,12 +63,13 @@ bool setForegroundColor(char const * const color, XGCValues & val)
 	if (!mono_video) {
 		if (XParseColor(fl_display, color_map, color, &xcol)
 		    && XAllocColor(fl_display, color_map, &xcol))
-		{
-			val.foreground = xcol.pixel;
-		} else {
-			lyxerr << "LyX: Couldn't get color " << color << endl;
-			return false;
-		}
+			{
+				val.foreground = xcol.pixel;
+			} else {
+				lyxerr << "LyX: Couldn't get color "
+				       << color << endl;
+				return false;
+			}
 	}
 	return true;
 }
@@ -79,14 +80,14 @@ void do_reverse_video(XGCValues &val)
 {
 	if (reverse_video) {
 		val.foreground= WhitePixel(fl_display,
-					  DefaultScreen(fl_display));
+					   DefaultScreen(fl_display));
 		val.background= BlackPixel(fl_display,
-					  DefaultScreen(fl_display));
+					   DefaultScreen(fl_display));
 	} else {
 		val.foreground= BlackPixel(fl_display,
-					  DefaultScreen(fl_display));
+					   DefaultScreen(fl_display));
 		val.background= WhitePixel(fl_display,
-					  DefaultScreen(fl_display));
+					   DefaultScreen(fl_display));
 	}
 }
 
@@ -145,17 +146,22 @@ GC GetLatexGC()
 
 	XGCValues val;
 	if (reverse_video ^ mono_video) {
-		val.foreground= WhitePixel(fl_display, DefaultScreen(fl_display));
-		val.background= BlackPixel(fl_display, DefaultScreen(fl_display));
+		val.foreground= WhitePixel(fl_display,
+					   DefaultScreen(fl_display));
+		val.background= BlackPixel(fl_display,
+					   DefaultScreen(fl_display));
 	} else {
-		val.foreground= BlackPixel(fl_display, DefaultScreen(fl_display));
-		val.background= WhitePixel(fl_display, DefaultScreen(fl_display));
+		val.foreground= BlackPixel(fl_display,
+					   DefaultScreen(fl_display));
+		val.background= WhitePixel(fl_display,
+					   DefaultScreen(fl_display));
 	}
 	val.function= GXcopy;
 	val.graphics_exposures = false;
 	setForegroundColor(latex_color, val);
 	latex_gc = XCreateGC(fl_display, fl_root, GCBackground 
-			     | GCForeground | GCFunction | GCGraphicsExposures, 
+			     | GCForeground | GCFunction
+			     | GCGraphicsExposures, 
 			     &val);
 	XFlush(fl_display);
 	
@@ -216,14 +222,14 @@ GC GetClearGC()
 
 	if (reverse_video) {
 		val.foreground= BlackPixel(fl_display,
-					  DefaultScreen(fl_display));
+					   DefaultScreen(fl_display));
 		val.background= WhitePixel(fl_display,
-					  DefaultScreen(fl_display));
+					   DefaultScreen(fl_display));
 	} else {
 		val.background= BlackPixel(fl_display,
-					  DefaultScreen(fl_display));
+					   DefaultScreen(fl_display));
 		val.foreground= WhitePixel(fl_display,
-					  DefaultScreen(fl_display));
+					   DefaultScreen(fl_display));
 	}
 	val.function = GXcopy;
 	val.graphics_exposures = false;
@@ -233,7 +239,8 @@ GC GetClearGC()
 	background_pixels = val.foreground;
 	
 	clear_gc = XCreateGC(fl_display, fl_root, GCBackground 
-			     | GCForeground | GCFunction | GCGraphicsExposures, 
+			     | GCForeground | GCFunction
+			     | GCGraphicsExposures, 
 			     &val);
 	XFlush(fl_display);
 	
@@ -276,7 +283,8 @@ GC GetThickLineGC()
 	val.line_width = 2;
 	val.line_style = LineSolid;
 	thick_line_gc = XCreateGC(fl_display, fl_root, GCBackground 
-				  | GCForeground | GCFunction | GCGraphicsExposures
+				  | GCForeground | GCFunction
+				  | GCGraphicsExposures
 				  | GCLineWidth | GCLineStyle , &val);
 	XFlush(fl_display);
 	
@@ -339,7 +347,7 @@ GC GetSelectGC()
 	val.function= GXinvert;
 	select_gc = XCreateGC(fl_display, fl_root,
 			      GCFunction | GCGraphicsExposures | GCPlaneMask
-				      | GCLineWidth | GCLineStyle , &val);
+			      | GCLineWidth | GCLineStyle , &val);
 	XFlush(fl_display);
 
 	return select_gc; 
@@ -355,14 +363,14 @@ GC GetSelectionGC()
 
 	if (!reverse_video) {
 		val.foreground= BlackPixel(fl_display,
-					  DefaultScreen(fl_display));
+					   DefaultScreen(fl_display));
 		val.background= WhitePixel(fl_display,
-					  DefaultScreen(fl_display));
+					   DefaultScreen(fl_display));
 	} else {
 		val.background= BlackPixel(fl_display,
-					  DefaultScreen(fl_display));
+					   DefaultScreen(fl_display));
 		val.foreground= WhitePixel(fl_display,
-					  DefaultScreen(fl_display));
+					   DefaultScreen(fl_display));
 	}
 	
 	val.function= GXcopy;
@@ -389,9 +397,11 @@ GC GetLightedGC()
 	if (lighted_gc) return lighted_gc;
 	XGCValues val;
 	if (reverse_video) {
-		val.background= BlackPixel(fl_display, DefaultScreen(fl_display));
+		val.background= BlackPixel(fl_display,
+					   DefaultScreen(fl_display));
 	} else {
-		val.background= WhitePixel(fl_display, DefaultScreen(fl_display));
+		val.background= WhitePixel(fl_display,
+					   DefaultScreen(fl_display));
 	}
 	val.foreground= val.background;
 	val.function= GXcopy;
@@ -400,7 +410,8 @@ GC GetLightedGC()
 	val.line_width = 0;
 	setForegroundColor(lighted_color, val);
 	lighted_gc = XCreateGC(fl_display, fl_root, GCBackground
-			       | GCForeground | GCFunction | GCGraphicsExposures
+			       | GCForeground | GCFunction
+			       | GCGraphicsExposures
 			       | GCLineWidth | GCLineStyle , &val);
 	XFlush(fl_display);
 

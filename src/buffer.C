@@ -122,9 +122,6 @@ Buffer::Buffer(string const & file, LyXRC * lyxrc, bool ronly)
 	filename = file;
 	filepath = OnlyPath(file);
 	paragraph = 0;
-#ifndef MOVE_TEXT
-	text = 0;
-#endif
 	the_locking_inset = 0;
 	lyx_clean = true;
 	bak_clean = true;
@@ -164,9 +161,6 @@ Buffer::~Buffer()
 		par = tmppar;
 	}
 	paragraph = 0;
-#ifndef MOVE_TEXT
-	delete text;
-#endif
 }
 
 
@@ -217,11 +211,7 @@ void Buffer::InsetUnlock()
 	if (the_locking_inset) {
 		if (!inset_slept) the_locking_inset->InsetUnlock();
 		the_locking_inset = 0;
-#ifdef MOVE_TEXT
 		users->text->FinishUndo();
-#else
-		text->FinishUndo();
-#endif
 		inset_slept = false;
 	}
 }
@@ -268,7 +258,6 @@ bool Buffer::insertLyXFile(string const & filen)
 
 	bool res = true;
 
-#ifdef MOVE_TEXT
 	if (c == '#') {
 		lyxerr.debug() << "Will insert file with header" << endl;
 		res = readFile(lex, users->text->cursor.par);
@@ -276,15 +265,7 @@ bool Buffer::insertLyXFile(string const & filen)
 		lyxerr.debug() << "Will insert file without header" << endl;
 		res = readLyXformat2(lex, users->text->cursor.par);
 	}
-#else
-	if (c == '#') {
-		lyxerr.debug() << "Will insert file with header" << endl;
-		res = readFile(lex, text->cursor.par);
-	} else {
-		lyxerr.debug() << "Will insert file without header" << endl;
-		res = readLyXformat2(lex, text->cursor.par);
-	}
-#endif
+
 	resize();
 	return res;
 }
@@ -319,13 +300,8 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 	if(!par) {
 		par = new LyXParagraph;
 	} else {
-#ifdef MOVE_TEXT
 		users->text->BreakParagraph();
 		return_par = users->text->FirstParagraph();
-#else
-		text->BreakParagraph();
-		return_par = text->FirstParagraph();
-#endif
 		pos = 0;
 		markDirty();
 		// We don't want to adopt the parameters from the
@@ -3160,13 +3136,9 @@ void Buffer::SimpleDocBookOnePar(string & file, string & extra,
 // candidate for move to BufferView
 bool Buffer::removeAutoInsets()
 {
-	LyXParagraph *par = paragraph;
+	LyXParagraph * par = paragraph;
 
-#ifdef MOVE_TEXT
 	LyXCursor cursor = users->text->cursor;
-#else
-	LyXCursor cursor = text->cursor;
-#endif
 	LyXCursor tmpcursor = cursor;
 	cursor.par = tmpcursor.par->ParFromPos(tmpcursor.pos);
 	cursor.pos = tmpcursor.par->PositionInParFromPos(tmpcursor.pos);
@@ -3176,19 +3148,11 @@ bool Buffer::removeAutoInsets()
 		if (par->AutoDeleteInsets()){
 			a = true;
 			if (par->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE){
-#ifdef MOVE_TEXT
 				/* this is possible now, since SetCursor takes
 				   care about footnotes */
 				users->text->SetCursorIntern(par, 0);
 				users->text->RedoParagraphs(users->text->cursor, users->text->cursor.par->Next());
 				users->text->FullRebreak();
-#else
-				/* this is possible now, since SetCursor takes
-				   care about footnotes */
-				text->SetCursorIntern(par, 0);
-				text->RedoParagraphs(text->cursor, text->cursor.par->Next());
-				text->FullRebreak();
-#endif
 			}
 		}
 		par = par->next;
@@ -3196,11 +3160,7 @@ bool Buffer::removeAutoInsets()
 	/* avoid forbidden cursor positions caused by error removing */ 
 	if (cursor.pos > cursor.par->Last())
 		cursor.pos = cursor.par->Last();
-#ifdef MOVE_TEXT
 	users->text->SetCursorIntern(cursor.par, cursor.pos);
-#else
-	text->SetCursorIntern(cursor.par, cursor.pos);
-#endif
 
 	return a;
 }
@@ -3208,11 +3168,7 @@ bool Buffer::removeAutoInsets()
 
 int Buffer::runLaTeX()
 {
-#ifdef MOVE_TEXT
 	if (!users->text) return 0;
-#else
-	if (!text) return 0;
-#endif
 
 	ProhibitInput();
 
@@ -3275,11 +3231,7 @@ int Buffer::runLaTeX()
 
 int Buffer::runLiterate()
 {
-#ifdef MOVE_TEXT
 	if (!users->text) return 0;
-#else
-	if (!text) return 0;
-#endif
 
 	ProhibitInput();
 
@@ -3348,11 +3300,7 @@ int Buffer::runLiterate()
 
 int Buffer::buildProgram()
 {
-#ifdef MOVE_TEXT
         if (!users->text) return 0;
-#else
-        if (!text) return 0;
-#endif
  
         ProhibitInput();
  
@@ -3423,11 +3371,7 @@ int Buffer::buildProgram()
 // Other flags: -wall -v0 -x
 int Buffer::runChktex()
 {
-#ifdef MOVE_TEXT
 	if (!users->text) return 0;
-#else
-	if (!text) return 0;
-#endif
 
 	ProhibitInput();
 
@@ -3483,13 +3427,8 @@ extern void AllFloats(char, char);
 // candidate for move to BufferView
 void Buffer::insertErrors(TeXErrors & terr)
 {
-#ifdef MOVE_TEXT
 	// Save the cursor position
 	LyXCursor cursor = users->text->cursor;
-#else
-	// Save the cursor position
-	LyXCursor cursor = text->cursor;
-#endif
 
 	// This is drastic, but it's the only fix, I could find. (Asger)
 	AllFloats(1, 0);
@@ -3511,41 +3450,23 @@ void Buffer::insertErrors(TeXErrors & terr)
 
 		LyXParagraph * texrowpar = 0;
 
-#ifdef MOVE_TEXT
 		if (tmpid == -1) {
 			texrowpar = users->text->FirstParagraph();
 			tmppos = 0;
 		} else {
 			texrowpar = users->text->GetParFromID(tmpid);
 		}
-#else
-		if (tmpid == -1) {
-			texrowpar = text->FirstParagraph();
-			tmppos = 0;
-		} else {
-			texrowpar = text->GetParFromID(tmpid);
-		}
-#endif
 
 		if (texrowpar == 0)
 			continue;
 
 		InsetError * new_inset = new InsetError(msgtxt);
-#ifdef MOVE_TEXT
 		users->text->SetCursorIntern(texrowpar, tmppos);
 		users->text->InsertInset(new_inset);
 		users->text->FullRebreak();
 	}
 	// Restore the cursor position
 	users->text->SetCursorIntern(cursor.par, cursor.pos);
-#else
-		text->SetCursorIntern(texrowpar, tmppos);
-		text->InsertInset(new_inset);
-		text->FullRebreak();
-	}
-	// Restore the cursor position
-	text->SetCursorIntern(cursor.par, cursor.pos);
-#endif
 }
 
 
@@ -3559,7 +3480,6 @@ void Buffer::setCursorFromRow (int row)
 
 	LyXParagraph * texrowpar;
 
-#ifdef MOVE_TEXT
 	if (tmpid == -1) {
 		texrowpar = users->text->FirstParagraph();
 		tmppos = 0;
@@ -3567,15 +3487,6 @@ void Buffer::setCursorFromRow (int row)
 		texrowpar = users->text->GetParFromID(tmpid);
 	}
 	users->text->SetCursor(texrowpar, tmppos);
-#else
-	if (tmpid == -1) {
-		texrowpar = text->FirstParagraph();
-		tmppos = 0;
-	} else {
-		texrowpar = text->GetParFromID(tmpid);
-	}
-	text->SetCursor(texrowpar, tmppos);
-#endif
 }
 
 
@@ -3726,37 +3637,6 @@ void Buffer::markDviDirty()
 }
 
 
-#ifndef MOVE_TEXT
-// candidate for move to BufferView
-void Buffer::update(signed char f)
-{
-	if (!users) return;
-	
-	users->owner()->updateLayoutChoice();
-	if (!text->selection && f > -3)
-		text->sel_cursor = text->cursor;
-	
-	FreeUpdateTimer();
-	text->FullRebreak();
-
-	users->update();
-
-	if (f != 3 && f != -3) {
-		users->fitCursor();
-		users->updateScrollbar();
-      	}
-
-	if (f == 1 || f == -1) {
-		if (isLyxClean()) {
-			markDirty();
-			users->owner()->getMiniBuffer()->setTimer(4);
-		} else {
-			markDirty();
-		}
-	}
-}
-#endif
-
 void Buffer::validate(LaTeXFeatures & features)
 {
 	LyXParagraph * par = paragraph;
@@ -3868,7 +3748,7 @@ void Buffer::setOldPaperStuff()
 }
 #endif
 
-#ifdef MOVE_TEXT
+
 // candidate for move to BufferView
 void Buffer::insertInset(Inset * inset, string const & lout,
 			 bool no_table)
@@ -3921,79 +3801,18 @@ void Buffer::insertInset(Inset * inset, string const & lout,
 
 	users->text->UnFreezeUndo();	
 }
-#else
-void Buffer::insertInset(Inset * inset, string const & lout,
-			 bool no_table)
-{
-	// check for table/list in tables
-	if (no_table && text->cursor.par->table){
-		WriteAlert(_("Impossible Operation!"),
-			   _("Cannot insert table/list in table."),
-			   _("Sorry."));
-		return;
-	}
-	// not quite sure if we want this...
-	text->SetCursorParUndo();
-	text->FreezeUndo();
-	
-	BeforeChange();
-	if (!lout.empty()) {
-		update(-2);
-		text->BreakParagraph();
-		update(-1);
-		
-		if (text->cursor.par->Last()) {
-			text->CursorLeft();
-			
-			text->BreakParagraph();
-			update(-1);
-		}
 
-		int lay = textclasslist.NumberOfLayout(params.textclass,
-						       lout).second;
-		if (lay == -1) // layout not found
-			// use default layout "Standard" (0)
-			lay = 0;
-		
-		text->SetLayout(lay);
-		
-		text->SetParagraph(0, 0,
-				   0, 0,
-				   VSpace(VSpace::NONE), VSpace(VSpace::NONE),
-				   LYX_ALIGN_LAYOUT, 
-				   string(),
-				   0);
-		update(-1);
-		
-		text->current_font.setLatex(LyXFont::OFF);
-	}
-	
-	text->InsertInset(inset);
-	update(-1);
-
-	text->UnFreezeUndo();	
-}
-#endif
 
 // Open and lock an updatable inset
 // candidate for move to BufferView
 void Buffer::open_new_inset(UpdatableInset * new_inset)
 {
-#ifdef MOVE_TEXT
 	BeforeChange();
 	users->text->FinishUndo();
 	insertInset(new_inset);
 	users->text->CursorLeft();
 	users->update(1);
     	new_inset->Edit(0, 0);
-#else
-	BeforeChange();
-	text->FinishUndo();
-	insertInset(new_inset);
-	text->CursorLeft();
-	update(1);
-    	new_inset->Edit(0, 0);
-#endif
 }
 
 
@@ -4129,19 +3948,11 @@ bool Buffer::gotoLabel(string const & label)
                 while ((inset = par->ReturnNextInsetPointer(pos))){     
                         for (int i = 0; i < inset->GetNumberOfLabels(); i++) {
 				if (label == inset->getLabel(i)) {
-#ifdef MOVE_TEXT
 					BeforeChange();
 					users->text->SetCursor(par, pos);
 					users->text->sel_cursor = users->text->cursor;
 					users->update(0);
 					return true;
-#else
-					BeforeChange();
-					text->SetCursor(par, pos);
-					text->sel_cursor = text->cursor;
-					update(0);
-					return true;
-#endif
 				}
 			}
                         pos++;

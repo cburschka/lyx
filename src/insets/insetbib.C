@@ -1,4 +1,3 @@
-
 #include <config.h>
 
 #include <fstream>
@@ -28,7 +27,7 @@ FD_citation_form * citation_form = 0;
 FD_bibitem_form * bibitem_form = 0;
 static Combox * bibcombox = 0;
 
-extern void UpdateInset(Inset* inset, bool mark_dirty = true);
+extern void UpdateInset(Inset * inset, bool mark_dirty = true);
 void BibitemUpdate(Combox *);
 FD_citation_form * create_form_citation_form(void);
 FD_bibitem_form * create_form_bibitem_form(void);
@@ -56,18 +55,13 @@ extern "C" void bibitem_cb(FL_OBJECT *, long data)
 	case 3: // OK, bibitem
         {
 		if(!current_view->buffer()->isReadonly()) {
-			InsetCommand *inset = static_cast<InsetCommand*>(bibitem_form->bibitem_form->u_vdata);
+			InsetCommand * inset = static_cast<InsetCommand*>(bibitem_form->bibitem_form->u_vdata);
 			inset->setContents(fl_get_input(bibitem_form->key));
 			inset->setOptions(fl_get_input(bibitem_form->label));
 			fl_hide_form(bibitem_form->bibitem_form);
 			// Does look like a hack? It is! (but will change at 0.13)
-#ifdef MOVE_TEXT
 			current_view->text->RedoParagraph();
 			current_view->update(1);
-#else
-			current_view->buffer()->text->RedoParagraph();
-			current_view->buffer()->update(1);
-#endif
 			break;
 		} // fall through to Cancel on RO-mode
         }
@@ -81,27 +75,27 @@ extern "C" void bibitem_cb(FL_OBJECT *, long data)
 FD_citation_form * create_form_citation_form(void)
 {
 	FL_OBJECT * obj;
-	FD_citation_form *fdui = (FD_citation_form *) fl_calloc(1, sizeof(FD_citation_form));
+	FD_citation_form * fdui = (FD_citation_form *) fl_calloc(1, sizeof(FD_citation_form));
 
 	fdui->citation_form = fl_bgn_form(FL_NO_BOX, 220, 130);
 	obj = fl_add_box(FL_UP_BOX, 0, 0, 220, 130, "");
 	fdui->key = obj = fl_add_text(FL_NORMAL_TEXT, 20, 10, 60, 30, _("Key:"));
-	  fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	  fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
+	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+	fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
 
 	bibcombox = new Combox(FL_COMBOX_INPUT);
 	bibcombox->add(80, 10, 130, 30, 120);
 
 	obj = fl_add_button(FL_RETURN_BUTTON, 20, 90, 90, 30, _("OK"));
-	  fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	  fl_set_object_callback(obj, bibitem_cb, 1);
+	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+	fl_set_object_callback(obj, bibitem_cb, 1);
 	obj = fl_add_button(FL_NORMAL_BUTTON, 120, 90, 90, 30, idex(_("Cancel|^[")));
-	  fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
-	  fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	  fl_set_object_callback(obj, bibitem_cb, 0);
+	fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
+	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+	fl_set_object_callback(obj, bibitem_cb, 0);
 	fdui->label = obj = fl_add_input(FL_NORMAL_INPUT, 80, 50, 130, 30, idex(_("Remark:|#R")));
-	  fl_set_input_shortcut(obj, scex(_("Remark:|#R")), 1);
-	  fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+	fl_set_input_shortcut(obj, scex(_("Remark:|#R")), 1);
+	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
 	fl_end_form();
 
 	//fdui->citation_form->fdui = fdui;
@@ -113,23 +107,23 @@ FD_citation_form * create_form_citation_form(void)
 FD_bibitem_form * create_form_bibitem_form(void)
 {
 	FL_OBJECT * obj;
-	FD_bibitem_form *fdui = (FD_bibitem_form *) fl_calloc(1, sizeof(FD_bibitem_form));
+	FD_bibitem_form * fdui = (FD_bibitem_form *) fl_calloc(1, sizeof(FD_bibitem_form));
 
 	fdui->bibitem_form = fl_bgn_form(FL_NO_BOX, 220, 130);
 	obj = fl_add_box(FL_UP_BOX, 0, 0, 220, 130, "");
 	fdui->key = obj = fl_add_input(FL_NORMAL_INPUT, 80, 10, 130, 30, idex(_("Key:|#K")));
-	  fl_set_input_shortcut(obj, scex(_("Key:|#K")), 1);
-	  fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+	fl_set_input_shortcut(obj, scex(_("Key:|#K")), 1);
+	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
 	obj = fl_add_button(FL_RETURN_BUTTON, 20, 90, 90, 30, _("OK"));
-	  fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	  fl_set_object_callback(obj, bibitem_cb, 3);
+	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+	fl_set_object_callback(obj, bibitem_cb, 3);
 	obj = fl_add_button(FL_NORMAL_BUTTON, 120, 90, 90, 30, idex(_("Cancel|^[")));
-	  fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
-	  fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-	  fl_set_object_callback(obj, bibitem_cb, 2);
+	fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
+	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+	fl_set_object_callback(obj, bibitem_cb, 2);
 	fdui->label = obj = fl_add_input(FL_NORMAL_INPUT, 80, 50, 130, 30, idex(_("Label:|#L")));
-	  fl_set_input_shortcut(obj, scex(_("Label:|#L")), 1);
-	  fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+	fl_set_input_shortcut(obj, scex(_("Label:|#L")), 1);
+	fl_set_object_lsize(obj, FL_NORMAL_SIZE);
 	fl_end_form();
 
 	//fdui->bibitem_form->fdui = fdui;
@@ -175,7 +169,8 @@ void InsetCitation::Edit(int, int)
 	if (citation_form->citation_form->visible) {
 		fl_raise_form(citation_form->citation_form);
 	} else {
-		fl_show_form(citation_form->citation_form, FL_PLACE_MOUSE, FL_FULLBORDER,
+		fl_show_form(citation_form->citation_form,
+			     FL_PLACE_MOUSE, FL_FULLBORDER,
 			     _("Citation"));
 	}   
 }
@@ -215,7 +210,7 @@ InsetBibKey::~InsetBibKey()
 {
 	if(bibitem_form && bibitem_form->bibitem_form
 	   && bibitem_form->bibitem_form->visible)
-				fl_hide_form(bibitem_form->bibitem_form);
+		fl_hide_form(bibitem_form->bibitem_form);
 }
 
 void InsetBibKey::setCounter(int c) 
@@ -484,7 +479,7 @@ int bibitemMaxWidth(LyXFont const & font)
 	while (par) {
 		if (par->bibkey) {
 			int wx = par->bibkey->Width(font);
-			if (wx>w) w = wx;
+			if (wx > w) w = wx;
 		}
 		par = par->next;
 	}
@@ -504,7 +499,7 @@ string bibitemWidthest()
 	while (par) {
 		if (par->bibkey) {
 			int wx = par->bibkey->Width(font);
-			if (wx>w) {
+			if (wx > w) {
 				w = wx;
 				bkey = par->bibkey;
 			}

@@ -94,7 +94,7 @@
 #include "build.xpm"
 
 // this one is not "C" because combox callbacks are really C++ %-|
-extern void LayoutsCB(int, void*);
+extern void LayoutsCB(int, void *);
 extern char const ** get_pixmap_from_symbol(char const * arg, int, int);
 extern LyXAction lyxaction;
 
@@ -109,7 +109,7 @@ enum _tooltags {
 };
 
 
-struct keyword_item toolTags[TO_LAST-1] = {
+struct keyword_item toolTags[TO_LAST - 1] = {
 	{ "\\add", TO_ADD },
 	{ "\\end_toolbar", TO_ENDTOOLBAR },
         { "\\layouts", TO_LAYOUTS },
@@ -126,7 +126,7 @@ Toolbar::Toolbar(Toolbar const &rct, LyXView *o, int x, int y)
 	reset();
 
 	// extracts the toolbar struct form rct.
-	toolbarItem *tmplist = rct.toollist;
+	toolbarItem * tmplist = rct.toollist;
 	while (tmplist != 0) {
 		add(tmplist->action);
 		lyxerr[Debug::TOOLBAR] << "tool action: "
@@ -140,7 +140,7 @@ Toolbar::Toolbar(Toolbar const &rct, LyXView *o, int x, int y)
 void Toolbar::BubbleTimerCB(FL_OBJECT *, long data)
 {
 	FL_OBJECT * ob = reinterpret_cast<FL_OBJECT*>(data);
-	char* help = static_cast<char*>(ob->u_vdata);
+	char * help = static_cast<char*>(ob->u_vdata);
 	fl_show_oneliner(help, ob->form->x + ob->x,
 			 ob->form->y + ob->y + ob->h);
 }
@@ -154,7 +154,8 @@ extern "C" void C_Toolbar_BubbleTimerCB(FL_OBJECT * ob, long data)
 
 // post_handler for bubble-help (Matthias)
 int Toolbar::BubblePost(FL_OBJECT *ob, int event,
-	     FL_Coord /*mx*/, FL_Coord /*my*/, int /*key*/, void */*xev*/)
+			FL_Coord /*mx*/, FL_Coord /*my*/,
+			int /*key*/, void */*xev*/)
 {
 	string help = static_cast<char *>(ob->u_vdata);
 	Toolbar * t = reinterpret_cast<Toolbar*>(ob->u_ldata);
@@ -174,8 +175,8 @@ int Toolbar::BubblePost(FL_OBJECT *ob, int event,
 
 
 extern "C" int C_Toolbar_BubblePost(FL_OBJECT * ob, int event,
-				   FL_Coord /*mx*/, FL_Coord /*my*/, 
-				   int key, void * xev)
+				    FL_Coord /*mx*/, FL_Coord /*my*/, 
+				    int key, void * xev)
 {
 	return Toolbar::BubblePost(ob, event, 0, 0, key, xev);
 }
@@ -229,9 +230,9 @@ int Toolbar::get_toolbar_func(string const & func)
 {
 	int action = lyxaction.LookupFunc(func.c_str());
 	if (action == -1) {
-               if (func == "separator"){
-                       action = TOOL_SEPARATOR;
-               } else if (func == "layouts"){
+		if (func == "separator"){
+			action = TOOL_SEPARATOR;
+		} else if (func == "layouts"){
                         action = TOOL_LAYOUTS;
                 } else action = 0;
 	}
@@ -286,7 +287,7 @@ void Toolbar::set(bool doingmain)
 		fl_addto_form(owner->getForm());
 	}
 
-#if FL_REVISION <86
+#if FL_REVISION < 86
 	// Ensure borderwidth is 2 to get visual feedback
 	int bw = fl_get_border_width();
 	fl_set_border_width(-2);
@@ -299,63 +300,63 @@ void Toolbar::set(bool doingmain)
 	
 	while(item != 0) {
 		switch(item->action){
-		  case TOOL_SEPARATOR:
-			  xpos += sepspace;
-			  item = item->next;
-			  break;
-		  case TOOL_LAYOUTS:
-			  xpos += standardspacing;
-			  if (!combox)
-				  combox = new Combox(FL_COMBOX_DROPLIST);
-			  combox->add(xpos, ypos, 135, height, 300);
-			  combox->setcallback(LayoutsCB);
-			  combox->resize(FL_RESIZE_ALL);
-			  combox->gravity(NorthWestGravity, NorthWestGravity);
-			  item = item->next;
-			  xpos += 135;
-			  break;
-		  default:
-			  xpos += standardspacing;
-			  item->icon = obj = 
-				  fl_add_pixmapbutton(FL_NORMAL_BUTTON,
-						      xpos, ypos,
-						      buttonwidth,
-						      height, "");
-			  fl_set_object_boxtype(obj, FL_UP_BOX);
-			  fl_set_object_color(obj, FL_MCOL, FL_BLUE);
-			  fl_set_object_resize(obj, FL_RESIZE_ALL);
-			  fl_set_object_gravity(obj,
-						NorthWestGravity,
-						NorthWestGravity);
-			  fl_set_object_callback(obj, C_Toolbar_ToolbarCB,
-						 static_cast<long>(item->action));
+		case TOOL_SEPARATOR:
+			xpos += sepspace;
+			item = item->next;
+			break;
+		case TOOL_LAYOUTS:
+			xpos += standardspacing;
+			if (!combox)
+				combox = new Combox(FL_COMBOX_DROPLIST);
+			combox->add(xpos, ypos, 135, height, 300);
+			combox->setcallback(LayoutsCB);
+			combox->resize(FL_RESIZE_ALL);
+			combox->gravity(NorthWestGravity, NorthWestGravity);
+			item = item->next;
+			xpos += 135;
+			break;
+		default:
+			xpos += standardspacing;
+			item->icon = obj = 
+				fl_add_pixmapbutton(FL_NORMAL_BUTTON,
+						    xpos, ypos,
+						    buttonwidth,
+						    height, "");
+			fl_set_object_boxtype(obj, FL_UP_BOX);
+			fl_set_object_color(obj, FL_MCOL, FL_BLUE);
+			fl_set_object_resize(obj, FL_RESIZE_ALL);
+			fl_set_object_gravity(obj,
+					      NorthWestGravity,
+					      NorthWestGravity);
+			fl_set_object_callback(obj, C_Toolbar_ToolbarCB,
+					       static_cast<long>(item->action));
 #if FL_REVISION >85
-			  // Remove the blue feedback rectangle
-			  fl_set_pixmapbutton_focus_outline(obj, 0);
+			// Remove the blue feedback rectangle
+			fl_set_pixmapbutton_focus_outline(obj, 0);
 #endif
 
-			  // set the bubble-help (Matthias)
+			// set the bubble-help (Matthias)
 #warning This is dangerous!
-			  obj->u_vdata = const_cast<char*>(item->help.c_str());
-			  // we need to know what toolbar this item
-			  // belongs too. (Lgb)
-			  obj->u_ldata = reinterpret_cast<long>(this);
+			obj->u_vdata = const_cast<char*>(item->help.c_str());
+			// we need to know what toolbar this item
+			// belongs too. (Lgb)
+			obj->u_ldata = reinterpret_cast<long>(this);
 			  
-			  fl_set_object_posthandler(obj, C_Toolbar_BubblePost);
+			fl_set_object_posthandler(obj, C_Toolbar_BubblePost);
 
-			  fl_set_pixmapbutton_data(obj, const_cast<char**>(item->pixmap));
-			  item = item->next;
-			  // we must remember to update the positions
-			  xpos += buttonwidth;
-			  // ypos is constant
-			  /* Here will come a check to see if the new
-			   * pos is within the bounds of the main frame,
-			   * and perhaps wrap the toolbar if not.
-			   */
-			  break;
+			fl_set_pixmapbutton_data(obj, const_cast<char**>(item->pixmap));
+			item = item->next;
+			// we must remember to update the positions
+			xpos += buttonwidth;
+			// ypos is constant
+			/* Here will come a check to see if the new
+			 * pos is within the bounds of the main frame,
+			 * and perhaps wrap the toolbar if not.
+			 */
+			break;
 		}
 	}
-#if FL_REVISION <86
+#if FL_REVISION < 86
 	// Reset borderwidth to its default value.
 	fl_set_border_width(bw);
 #endif
@@ -370,7 +371,7 @@ void Toolbar::set(bool doingmain)
 }
 
 
-char const **Toolbar::getPixmap(kb_action action, string const & arg)
+char const ** Toolbar::getPixmap(kb_action action, string const & arg)
 {
 	char const ** pixmap = unknown_xpm; //0
 	switch(action){
@@ -480,7 +481,8 @@ void Toolbar::add(int action, bool doclean)
 
 	if (lyxaction.isPseudoAction(action)) {
 		string arg;
-		kb_action act = static_cast<kb_action>(lyxaction.retrieveActionArg(action, arg));
+		kb_action act = static_cast<kb_action>
+			(lyxaction.retrieveActionArg(action, arg));
 		pixmap = getPixmap(act, arg);
 		help = lyxaction.helpText(act);
 		help += " ";
@@ -495,21 +497,21 @@ void Toolbar::add(int action, bool doclean)
 	if (pixmap != 0
 	    || action == TOOL_SEPARATOR
 	    || action == TOOL_LAYOUTS)
-	{
-		newItem = new toolbarItem;
-		newItem->action = action;
-		newItem->pixmap = pixmap;
-		newItem->help = help;
-		// the new item is placed at the end of the list
-		tmp = toollist;
-		if (tmp != 0){
-			while(tmp->next != 0)
-				tmp = tmp->next;
-			// here is tmp->next == 0
-			tmp->next = newItem;
-		} else
-			toollist = newItem;
-	}
+		{
+			newItem = new toolbarItem;
+			newItem->action = action;
+			newItem->pixmap = pixmap;
+			newItem->help = help;
+			// the new item is placed at the end of the list
+			tmp = toollist;
+			if (tmp != 0){
+				while(tmp->next != 0)
+					tmp = tmp->next;
+				// here is tmp->next == 0
+				tmp->next = newItem;
+			} else
+				toollist = newItem;
+		}
 	//if (action == TOOL_LAYOUTS) {
 	//	combox = new Combox(FL_COMBOX_DROPLIST);
 	//}
@@ -566,7 +568,7 @@ void Toolbar::push(int nth)
 	int count = 0;
 	toolbarItem * tmp = toollist;
 	while (tmp) {
-		count++;
+		++count;
 		if (count == nth) {
 			fl_trigger_object(tmp->icon);
 			return;
@@ -600,37 +602,37 @@ void Toolbar::read(LyXLex & lex)
 				       << lex.GetString() << '\'' << endl;
 
 		switch(lex.lex()) {
-		  case TO_ADD:
-			  if (lex.EatLine()) {
-				  func = lex.GetString();
-				  lyxerr[Debug::TOOLBAR]
-					  << "Toolbar::read TO_ADD func: `"
-					  << func << "'" << endl;
-				  add(func);
-			  }
-			  break;
+		case TO_ADD:
+			if (lex.EatLine()) {
+				func = lex.GetString();
+				lyxerr[Debug::TOOLBAR]
+					<< "Toolbar::read TO_ADD func: `"
+					<< func << "'" << endl;
+				add(func);
+			}
+			break;
 		   
-		  case TO_SEPARATOR:
-			  add(TOOL_SEPARATOR);
-			  break;
+		case TO_SEPARATOR:
+			add(TOOL_SEPARATOR);
+			break;
 		   
-		  case TO_LAYOUTS:
-			  add(TOOL_LAYOUTS);
-			  break;
+		case TO_LAYOUTS:
+			add(TOOL_LAYOUTS);
+			break;
 		   
-		  case TO_NEWLINE:
-			  add(TOOL_NEWLINE);
-			  break;
+		case TO_NEWLINE:
+			add(TOOL_NEWLINE);
+			break;
 			
-		  case TO_ENDTOOLBAR:
-			  // should not set automatically
-			  //set();
-			  quit = true;
-			  break;
-		  default:
-			  lex.printError("Toolbar::read: "
-					  "Unknown toolbar tag: `$$Token'");
-			  break;
+		case TO_ENDTOOLBAR:
+			// should not set automatically
+			//set();
+			quit = true;
+			break;
+		default:
+			lex.printError("Toolbar::read: "
+				       "Unknown toolbar tag: `$$Token'");
+			break;
 		}
 	}
 	lex.popTable();

@@ -82,6 +82,8 @@ enum LyXAlignment {
 	///
         LYX_ALIGN_SPECIAL = 32
 };
+
+
 inline void operator|=(LyXAlignment & la1, LyXAlignment la2) {
 	la1 = static_cast<LyXAlignment>(la1 | la2);
 }
@@ -187,7 +189,9 @@ public:
 	string const & labelstring() const { return labelstring_; }
 	string const & preamble() const { return preamble_; }
 	string const & latexparam() const { return latexparam_; }
-	string const & labelstring_appendix() const { return labelstring_appendix_; }
+	string const & labelstring_appendix() const {
+		return labelstring_appendix_;
+	}
 	/** Default font for this layout/environment.
 	    The main font for this kind of environment. If an attribute has
 	    LyXFont::INHERITED_*, it means that the value is specified by
@@ -290,7 +294,7 @@ public:
 	}
 	///
 	bool isCommand() const { 
-	    return latextype == LATEX_COMMAND;
+		return latextype == LATEX_COMMAND;
 	}
 	///
 	bool isEnvironment() const {
@@ -475,11 +479,13 @@ private:
 	bool loaded;
 };
 
+
 ///
 inline void operator|=(LyXTextClass::Provides & p1, LyXTextClass::Provides p2)
 {
 	p1 = static_cast<LyXTextClass::Provides>(p1 | p2);
 }
+
 
 ///
 inline ostream & operator<<(ostream & os, LyXTextClass::PageSides p)
@@ -494,6 +500,7 @@ inline ostream & operator<<(ostream & os, LyXTextClass::PageSides p)
 	}
 	return os;
 }
+
 
 ///
 class LyXTextClassList {

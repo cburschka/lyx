@@ -26,17 +26,17 @@
 #include "support/lstrings.h"
 
 extern LyXRC * lyxrc;
-extern BufferView *current_view;
+extern BufferView * current_view;
 
 /*  length units
  */
 
-static const int   num_units            = LyXLength::UNIT_NONE;
+static const int num_units = LyXLength::UNIT_NONE;
 
 // I am not sure if "mu" should be possible to select (Lgb)
 static char const * unit_name[num_units] = { "sp", "pt", "bp", "dd",
-					    "mm", "pc", "cc", "cm",
-					    "in", "ex", "em", "mu" }; 
+					     "mm", "pc", "cc", "cm",
+					     "in", "ex", "em", "mu" }; 
 
 
 LyXLength::UNIT unitFromString (string const & data)
@@ -121,7 +121,7 @@ static char nextToken (string & data)
 static struct {
 	char const * pattern;
 	int   plus_val_index, minus_val_index,
-	      plus_uni_index, minus_uni_index;
+		plus_uni_index, minus_uni_index;
 } table[] = { { "nu",       0, 0, 0, 0 },
 	      { "nu+nu",    2, 0, 2, 0 },
 	      { "nu+nu-nu", 2, 3, 2, 3 },
@@ -202,12 +202,12 @@ bool isValidGlueLength (string const & data, LyXGlueLength * result)
 	// is zero, the corresponding array value is zero or UNIT_NONE,
 	// so we needn't check this.
 	if (result) {
-	    result->val = number[1] * val_sign;
-	    result->uni = unit[1];
-	    result->plus_val  = number[table[table_index].plus_val_index];
-	    result->minus_val = number[table[table_index].minus_val_index];
-	    result->plus_uni  = unit  [table[table_index].plus_uni_index];
-	    result->minus_uni = unit  [table[table_index].minus_uni_index];
+		result->val = number[1] * val_sign;
+		result->uni = unit[1];
+		result->plus_val  = number[table[table_index].plus_val_index];
+		result->minus_val = number[table[table_index].minus_val_index];
+		result->plus_uni  = unit  [table[table_index].plus_uni_index];
+		result->minus_uni = unit  [table[table_index].minus_uni_index];
 	}
 	return true;
 }
@@ -258,8 +258,8 @@ bool isValidLength(string const & data, LyXLength * result)
 	// It _was_ a correct length string.  
 	// Store away the values we found.
 	if (result) {
-	    result->val = number[1]*val_sign;
-	    result->uni = unit[1];
+		result->val = number[1] * val_sign;
+		result->uni = unit[1];
 	}
 	return true;
 }
@@ -473,17 +473,17 @@ string VSpace::asLatexCommand() const
 	switch (kin) {
 	case NONE:      return string();
 	case DEFSKIP:   
-	  return current_view->buffer()->params.getDefSkip().asLatexCommand();
+		return current_view->buffer()->params.getDefSkip().asLatexCommand();
 	case SMALLSKIP: return kp ? "\\vspace*{\\smallskipamount}"
-				  : "\\smallskip{}";
+				: "\\smallskip{}";
 	case MEDSKIP:   return kp ? "\\vspace*{\\medskipamount}"
-				  : "\\medskip{}";
+				: "\\medskip{}";
 	case BIGSKIP:   return kp ? "\\vspace*{\\bigskipamount}"
-				  : "\\bigskip{}";
+				: "\\bigskip{}";
 	case VFILL:     return kp ? "\\vspace*{\\fill}"
-				  : "\\vfill{}";
+				: "\\vfill{}";
 	case LENGTH:    return kp ? "\\vspace*{" + len.asLatexString() + '}'
-				  : "\\vspace{" + len.asLatexString() + '}';
+				: "\\vspace{" + len.asLatexString() + '}';
 	}
 	return string();  // should never be reached
 }
@@ -492,11 +492,7 @@ string VSpace::asLatexCommand() const
 int VSpace::inPixels() const
 {
 	// Height of a normal line in pixels (zoom factor considered)
-#ifdef MOVE_TEXT
 	int height = current_view->text->DefaultHeight(); // [pixels]
-#else
-	int height = current_view->buffer()->text->DefaultHeight(); // [pixels]
-#endif
 
 	// Zoom factor specified by user in percent
 	float const zoom = lyxrc->zoom / 100.0; // [percent]
@@ -511,16 +507,16 @@ int VSpace::inPixels() const
 	case NONE: return 0;
 
 	case DEFSKIP:
-	  return current_view->buffer()->params.getDefSkip().inPixels();
+		return current_view->buffer()->params.getDefSkip().inPixels();
 
-	// This is how the skips are normally defined by
-	// LateX.  But there should be some way to change
-	// this per document.
+		// This is how the skips are normally defined by
+		// LateX.  But there should be some way to change
+		// this per document.
 	case SMALLSKIP: return height/4;
 	case MEDSKIP:   return height/2;
 	case BIGSKIP:   return height;
 	case VFILL:     return 3*height;
-		        // leave space for the vfill symbol
+		// leave space for the vfill symbol
 	case LENGTH:
 		// Pixel values are scaled so that the ratio
 		// between lengths and font sizes on the screen
@@ -551,7 +547,7 @@ int VSpace::inPixels() const
 		case LyXLength::DD:
 			// Didot: 1157dd = 1238 pt?
 			result = zoom * dpi * value
-				/ (72.27/(0.376 * 2.845)); // 67.559735
+				/ (72.27 / (0.376 * 2.845)); // 67.559735
 			break;
 		case LyXLength::MM:
 			// Millimeter: 1 mm = 1/25.4 inch
@@ -561,12 +557,12 @@ int VSpace::inPixels() const
 		case LyXLength::PC:
 			// Pica: 1 pc = 12 pt
 			result = zoom * dpi * value
-				/ (72.27/12); // 6.0225
+				/ (72.27 / 12); // 6.0225
 			break;
 		case LyXLength::CC:
 			// Cicero: 1 cc = 12 dd
 			result = zoom * dpi * value
-				/ (72.27/ (12*0.376*2.845)); // 5.6299779
+				/ (72.27 / (12 * 0.376 * 2.845)); // 5.6299779
 			break;
 		case LyXLength::CM:
 			// Centimeter: 1 cm = 1/2.54 inch
@@ -586,7 +582,7 @@ int VSpace::inPixels() const
 			result = zoom * value * height / 2; // Why 2?
 			break;
 		case LyXLength::MU: // This is probably only allowed in
-			            // math mode
+			// math mode
 			result = zoom * value * height;
 			break;
 		case LyXLength::UNIT_NONE:

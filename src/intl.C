@@ -37,8 +37,8 @@ extern "C" void C_Intl_DispatchCallback(FL_OBJECT * ob, long code);
 
 Intl::Intl()
 	: prim_lang(lyxrc->primary_kbmap), 
-	  sec_lang(lyxrc->secondary_kbmap),
-	  trans(new TransManager)
+	sec_lang(lyxrc->secondary_kbmap),
+	trans(new TransManager)
 {
 	keymapon = lyxrc->use_kbmap;
 	chsetcode = 0;

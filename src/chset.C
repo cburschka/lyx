@@ -35,6 +35,10 @@ bool CharacterSet::loadFile(string const & fname)
 	string str;
 	int n;
 	string line;
+	// Ok, I'll be the first to admit that this is probably not
+	// the fastest way to parse the cdef files, but I though it
+	// was a bit neat. Anyway it is wrong to use the lyxlex parse
+	// without the use of a keyword table.     
 	LRegex reg("^([12][0-9][0-9])[ \t]+\"([^ ]+)\".*");
 	while(getline(ifs, line)) {
 		if (reg.exact_match(line)) {
@@ -53,11 +57,20 @@ bool CharacterSet::loadFile(string const & fname)
 }
 
 
-bool CharacterSet::encodeString(string & str) const
+pair<bool, int> CharacterSet::encodeString(string & str) const
 {
+	lyxerr[Debug::KBMAP] << "Checking if we know [" << str << "]" << endl;
+	bool ret = false;
+	int val = 0;
 	Cdef::const_iterator cit = map_.find(str);
-	if (cit != map_.end()) return true;
-	return false;
+	if (cit != map_.end()) {
+		ret =  true;
+		val = (*cit).second;
+	}
+	lyxerr[Debug::KBMAP] << "   "
+			     << (ret ? "yes we" : "no we don't")
+			     <<  " know [" << str << "]" << endl;
+	return make_pair(ret, val);
 }
 
 

@@ -130,6 +130,7 @@ enum LyXRCTags {
 	RC_LAST	
 };
 
+
 static keyword_item lyxrcTags[] = {
 	{ "\\accept_compound", RC_ACCEPT_COMPOUND },
 	{ "\\alternate_language", RC_ALT_LANG },
@@ -547,7 +548,7 @@ int LyXRC::read(string const & filename)
 						BufferParams::PAPER_LEGALPAPER;
 				else if (size == "executive")
 				        default_papersize =
-					    BufferParams::PAPER_EXECUTIVEPAPER;
+						BufferParams::PAPER_EXECUTIVEPAPER;
 				else if (size == "a3")
 				        default_papersize =
 						BufferParams::PAPER_A3PAPER;

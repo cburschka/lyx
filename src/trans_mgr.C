@@ -302,21 +302,26 @@ void TransManager::insertVerbatim(string const & str, LyXText * text)
 
 void TransManager::insert(string str, LyXText * text)
 {
-    // Go through the character encoding only if the current 
-    // encoding (chset_->name()) matches the current font_norm
-    // (lyrxc->font_norm
+	// Go through the character encoding only if the current 
+	// encoding (chset_->name()) matches the current font_norm
+	// (lyrxc->font_norm
 
-    if (chset_.getName() != lyxrc->font_norm || 
-	! chset_.encodeString(str)) {
-	// Could not find an encoding
-	InsetLatexAccent ins(str);
-	if (ins.CanDisplay()) {
-	    text->InsertInset(new InsetLatexAccent(ins));
-	    return;
+	// Is false to speak about "only if" the current encoding will
+	// almost always be equal to font_norm.
+	pair<bool, int> enc = chset_.encodeString(str);
+	if (chset_.getName() != lyxrc->font_norm || 
+	    !enc.first) {
+		// Could not find an encoding
+		InsetLatexAccent ins(str);
+		if (ins.CanDisplay()) {
+			text->InsertInset(new InsetLatexAccent(ins));
+		} else {
+			insertVerbatim(str, text);
+		}
+		return;
 	}
-    }
-    
-    insertVerbatim(str, text);
+	string tmp; tmp += static_cast<char>(enc.second);
+	insertVerbatim(tmp, text);
 }
 
 

@@ -252,7 +252,7 @@ void Menus::create_menus(int air)
 						  MENU_LABEL_SIZE,
 						  _("Layout"),
 						  strlen(_("Layout"))) + mbadd,
-					  mbheight, _("Layout"));
+			      mbheight, _("Layout"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#L")), 1);
 	fl_set_object_callback(obj, C_Menus_ShowLayoutMenu, 0);
@@ -486,27 +486,27 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 	int SubFileExport = 0;
 	if (!LinuxDoc && !DocBook)
 		SubFileExport= fl_defpup(FL_ObjWin(ob),
-					_("Export%t"
-					  "|as LaTeX...%x40"
-					  "|as DVI...%x41"
-					  "|as PostScript...%x42"
-					  "|as Ascii Text...%x43"
-					  "|as HTML...%x44"
-					  "|Custom...%x45"));
+					 _("Export%t"
+					   "|as LaTeX...%x40"
+					   "|as DVI...%x41"
+					   "|as PostScript...%x42"
+					   "|as Ascii Text...%x43"
+					   "|as HTML...%x44"
+					   "|Custom...%x45"));
         else if(LinuxDoc)
 		SubFileExport= fl_defpup(FL_ObjWin(ob),
-					_("Export%t"
-					  "|as LinuxDoc...%x40"
-					  "|as DVI...%x41"
-					  "|as PostScript...%x42"
-					  "|as Ascii Text...%x43"));
+					 _("Export%t"
+					   "|as LinuxDoc...%x40"
+					   "|as DVI...%x41"
+					   "|as PostScript...%x42"
+					   "|as Ascii Text...%x43"));
         else if(DocBook)
 		SubFileExport= fl_defpup(FL_ObjWin(ob),
-					_("Export%t"
-					  "|as DocBook...%x40"
-					  "|as DVI...%x41"
-					  "|as PostScript...%x42"
-					  "|as Ascii Text...%x43"));
+					 _("Export%t"
+					   "|as DocBook...%x40"
+					   "|as DVI...%x41"
+					   "|as PostScript...%x42"
+					   "|as Ascii Text...%x43"));
 
 	fl_setpup_shortcut(SubFileExport, 40, scex(_("FEX|Ll#l#L")));
 	fl_setpup_shortcut(SubFileExport, 41, scex(_("FEX|Dd#d#D")));
@@ -674,7 +674,7 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 	default:
 		men->currentView()
 			->buffer(bufferlist
-				    .loadLyXFile((*lastfiles)[choice - 18]));
+				 .loadLyXFile((*lastfiles)[choice - 18]));
 		break;
 	}
 	fl_freepup(SubFileImport);
@@ -707,11 +707,11 @@ void Menus::ShowFileMenu2(FL_OBJECT * ob, long)
 	// Import sub-menu
 	
 	int SubFileImport = fl_defpup(FL_ObjWin(ob),
-				     _("Import%t"
-				       "|LaTeX...%x15"
-				       "|Ascii Text as Lines...%x16"
-				       "|Ascii Text as Paragraphs...%x17"
-				       "|Noweb...%x18"));
+				      _("Import%t"
+					"|LaTeX...%x15"
+					"|Ascii Text as Lines...%x16"
+					"|Ascii Text as Paragraphs...%x17"
+					"|Noweb...%x18"));
 	
 	fl_setpup_shortcut(SubFileImport, 15, scex(_("FIM|Ll#l#L")));
 	fl_setpup_shortcut(SubFileImport, 16, scex(_("FIM|Aa#a#A")));
@@ -728,10 +728,10 @@ void Menus::ShowFileMenu2(FL_OBJECT * ob, long)
 	// This can be done cleaner later.
 	int FileMenu = fl_defpup(FL_ObjWin(ob), 
 				 _("New..."
-				 "|New from template..."
-				 "|Open...%l"
-				 "|Import%m%l"
-				 "|Exit%l"), SubFileImport);
+				   "|New from template..."
+				   "|Open...%l"
+				   "|Import%m%l"
+				   "|Exit%l"), SubFileImport);
 	
 	fl_setpup_shortcut(FileMenu, 1, scex(_("FM|Nn#n#N")));
 	fl_setpup_shortcut(FileMenu, 2, scex(_("FM|tT#t#T")));
@@ -790,7 +790,7 @@ void Menus::ShowFileMenu2(FL_OBJECT * ob, long)
 	default:
 		men->currentView()
 			->buffer(bufferlist
-				    .loadLyXFile((*lastfiles)[choice - 6]));
+				 .loadLyXFile((*lastfiles)[choice - 6]));
 		break;
 	}
 
@@ -800,7 +800,7 @@ void Menus::ShowFileMenu2(FL_OBJECT * ob, long)
 	return;
 }
 
-#ifdef MOVE_TEXT
+
 void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 {
 	Menus * men = static_cast<Menus*>(ob->u_vdata);
@@ -815,14 +815,14 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 
 	// Floats & Insets submenu
 	int SubEditFloats= fl_defpup(FL_ObjWin(ob),
-				    _("Floats & Insets%t"
-				    "|Open/Close%x21"
-				    "|Melt%x22"
-				    "|Open All Footnotes/Margin Notes%x23"
-				    "|Close All Footnotes/Margin Notes%x24"
-				    "|Open All Figures/Tables%x25"
-				    "|Close All Figures/Tables%x26%l"
-				    "|Remove all Error Boxes%x27"));
+				     _("Floats & Insets%t"
+				       "|Open/Close%x21"
+				       "|Melt%x22"
+				       "|Open All Footnotes/Margin Notes%x23"
+				       "|Close All Footnotes/Margin Notes%x24"
+				       "|Open All Figures/Tables%x25"
+				       "|Close All Figures/Tables%x26%l"
+				       "|Remove all Error Boxes%x27"));
 	
 	fl_setpup_shortcut(SubEditFloats, 21, scex(_("EMF|Oo#o#O")));
 	fl_setpup_shortcut(SubEditFloats, 22, scex(_("EMF|Mm#m#M")));
@@ -897,10 +897,10 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 
 		int align = men->currentView()->text->cursor.par->
 			table->GetAlignment(men->currentView()->text->
-				     NumberOfCell(men->currentView()->
-						  text->cursor.par, 
-						  men->currentView()->
-						  text->cursor.pos));
+					    NumberOfCell(men->currentView()->
+							 text->cursor.par, 
+							 men->currentView()->
+							 text->cursor.pos));
 		if (align == LYX_ALIGN_LEFT)
 			fl_addtopup(SubEditTable, _("|Align Left%R%x40"));
 		else
@@ -979,24 +979,24 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 	fl_setpup_shortcut(SubVersionControl, 56, scex(_("EMV|Hh#h#H")));
 
 	int EditMenu= fl_defpup(FL_ObjWin(ob),
-			       _("Undo"
-			       "|Redo %l"
-			       "|Cut"
-			       "|Copy"
-			       "|Paste%l"
-			       "|Find & Replace..."
-			       "|Go to Error"
-			       "|Go to Note"
-			       "|Floats & Insets%m"
-			       "|Table%m"
-			       "|Spellchecker...."
-			       "|Check TeX"
-			       "|Table of Contents...%l"
-			       "|Version Control%m%l"
-			       "|View LaTeX log file%l"
-			       "|Paste Primary Selection as Lines"
-			       "|Paste Primary Selection as Paragraphs"),
-			       SubEditFloats, SubEditTable, SubVersionControl);
+				_("Undo"
+				  "|Redo %l"
+				  "|Cut"
+				  "|Copy"
+				  "|Paste%l"
+				  "|Find & Replace..."
+				  "|Go to Error"
+				  "|Go to Note"
+				  "|Floats & Insets%m"
+				  "|Table%m"
+				  "|Spellchecker...."
+				  "|Check TeX"
+				  "|Table of Contents...%l"
+				  "|Version Control%m%l"
+				  "|View LaTeX log file%l"
+				  "|Paste Primary Selection as Lines"
+				  "|Paste Primary Selection as Paragraphs"),
+				SubEditFloats, SubEditTable, SubVersionControl);
 
 	fl_setpup_shortcut(EditMenu, 1, scex(_("EM|Uu#u#U")));
 	fl_setpup_shortcut(EditMenu, 2, scex(_("EM|Rr#r#R")));
@@ -1121,328 +1121,6 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 	fl_freepup(SubEditTable);
 	fl_freepup(SubVersionControl);
 }
-#else
-void Menus::ShowEditMenu(FL_OBJECT * ob, long)
-{
-	Menus * men = static_cast<Menus*>(ob->u_vdata);
-	
-	// set the pseudo menu-button
-	fl_set_object_boxtype(ob, FL_UP_BOX);
-	fl_set_button(ob, 0);
-	fl_redraw_object(ob);
-
-	Buffer * tmpbuffer = men->_view->buffer();
-	LyXFunc * tmpfunc = men->_view->getLyXFunc();
-
-	// Floats & Insets submenu
-	int SubEditFloats= fl_defpup(FL_ObjWin(ob),
-				    _("Floats & Insets%t"
-				    "|Open/Close%x21"
-				    "|Melt%x22"
-				    "|Open All Footnotes/Margin Notes%x23"
-				    "|Close All Footnotes/Margin Notes%x24"
-				    "|Open All Figures/Tables%x25"
-				    "|Close All Figures/Tables%x26%l"
-				    "|Remove all Error Boxes%x27"));
-	
-	fl_setpup_shortcut(SubEditFloats, 21, scex(_("EMF|Oo#o#O")));
-	fl_setpup_shortcut(SubEditFloats, 22, scex(_("EMF|Mm#m#M")));
-	fl_setpup_shortcut(SubEditFloats, 23, scex(_("EMF|Aa#a#A")));
-	fl_setpup_shortcut(SubEditFloats, 24, scex(_("EMF|Cc#c#C")));
-	fl_setpup_shortcut(SubEditFloats, 25, scex(_("EMF|Ff#f#F")));
-	fl_setpup_shortcut(SubEditFloats, 26, scex(_("EMF|Tt#t#T")));
-	fl_setpup_shortcut(SubEditFloats, 27, scex(_("EMF|Rr#r#R")));
-
-	// Table submenu
-	int SubEditTable = fl_newpup(FL_ObjWin(ob));
-	if (men->currentView()->available() && 
-	    tmpbuffer->text->cursor.par->table &&
-	    !tmpbuffer->isReadonly()){
-
-		fl_addtopup(SubEditTable, _("Table%t"));
-
-		if (tmpbuffer->text->cursor.par->table->
-		    IsMultiColumn(tmpbuffer->text->
-				  NumberOfCell(tmpbuffer->
-					       text->cursor.par, 
-					       tmpbuffer->
-					       text->cursor.pos)))
-			fl_addtopup(SubEditTable, _("|Multicolumn%B%x44%l"));
-		else
-			fl_addtopup(SubEditTable, _("|Multicolumn%b%x44%l"));
-		fl_setpup_shortcut(SubEditTable, 44, scex(_("EMT|Mm#m#M")));
-     
-		if (tmpbuffer->text->cursor.par->table->
-		    TopLine(tmpbuffer->text->
-			    NumberOfCell(tmpbuffer->
-					 text->cursor.par, 
-					 tmpbuffer->text->
-					 cursor.pos)))
-			fl_addtopup(SubEditTable, _("|Line Top%B%x36"));
-		else
-			fl_addtopup(SubEditTable, _("|Line Top%b%x36"));
-		fl_setpup_shortcut(SubEditTable, 36, scex(_("EMT|Tt#t#T")));
-     
-		if (tmpbuffer->text->cursor.par->table->
-		    BottomLine(tmpbuffer->text->
-			       NumberOfCell(tmpbuffer->
-					    text->cursor.par, 
-					    tmpbuffer->
-					    text->cursor.pos)))
-			fl_addtopup(SubEditTable, _("|Line Bottom%B%x37"));
-		else
-			fl_addtopup(SubEditTable, _("|Line Bottom%b%x37"));
-		fl_setpup_shortcut(SubEditTable, 37, scex(_("EMT|Bb#b#B")));
-
-		if (tmpbuffer->text->cursor.par->table->
-		    LeftLine(tmpbuffer->text->
-			     NumberOfCell(tmpbuffer->
-					  text->cursor.par, 
-					  tmpbuffer->
-					  text->cursor.pos)))
-			fl_addtopup(SubEditTable, _("|Line Left%B%x38"));
-		else
-			fl_addtopup(SubEditTable, _("|Line Left%b%x38"));
-		fl_setpup_shortcut(SubEditTable, 38, scex(_("EMT|Ll#l#L")));
-
-		if (tmpbuffer->text->cursor.par->table->
-		    RightLine(tmpbuffer->text->
-			      NumberOfCell(tmpbuffer->
-					   text->cursor.par, 
-					   tmpbuffer->
-					   text->cursor.pos)))
-			fl_addtopup(SubEditTable, _("|Line Right%B%x39%l"));
-		else
-			fl_addtopup(SubEditTable, _("|Line Right%b%x39%l"));
-		fl_setpup_shortcut(SubEditTable, 39, scex(_("EMT|Rr#r#R")));
-
-		int align = tmpbuffer->text->cursor.par->
-			table->GetAlignment(tmpbuffer->text->
-				     NumberOfCell(tmpbuffer->
-						  text->cursor.par, 
-						  tmpbuffer->
-						  text->cursor.pos));
-		if (align == LYX_ALIGN_LEFT)
-			fl_addtopup(SubEditTable, _("|Align Left%R%x40"));
-		else
-			fl_addtopup(SubEditTable, _("|Align Left%r%x40"));
-		fl_setpup_shortcut(SubEditTable, 40, scex(_("EMT|eE#e#E")));
-
-		if (align == LYX_ALIGN_RIGHT)
-			fl_addtopup(SubEditTable, _("|Align Right%R%x41"));
-		else
-			fl_addtopup(SubEditTable, _("|Align Right%r%x41"));
-		fl_setpup_shortcut(SubEditTable, 41, scex(_("EMT|iI#i#I")));
-
-		if (align == LYX_ALIGN_CENTER)
-			fl_addtopup(SubEditTable, _("|Align Center%R%x42%l"));
-		else
-			fl_addtopup(SubEditTable, _("|Align Center%r%x42%l"));
-		fl_setpup_shortcut(SubEditTable, 42, scex(_("EMT|Cc#c#C")));
-
-		// xgettext:no-c-format
-		fl_addtopup(SubEditTable, _("|Append Row%x32"));
-		fl_setpup_shortcut(SubEditTable, 32, scex(_("EMT|oO#o#O")));
-		// xgettext:no-c-format
-		fl_addtopup(SubEditTable, _("|Append Column%x33%l"));
-		fl_setpup_shortcut(SubEditTable, 33, scex(_("EMT|uU#u#U")));
-		// xgettext:no-c-format
-		fl_addtopup(SubEditTable, _("|Delete Row%x34"));
-		fl_setpup_shortcut(SubEditTable, 34, scex(_("EMT|wW#w#W")));
-		// xgettext:no-c-format
-		fl_addtopup(SubEditTable, _("|Delete Column%x35%l"));
-		fl_setpup_shortcut(SubEditTable, 35, scex(_("EMT|nN#n#N")));
-		// xgettext:no-c-format
-		fl_addtopup(SubEditTable, _("|Delete Table%x43"));
-		fl_setpup_shortcut(SubEditTable, 43, scex(_("EMT|Dd#d#D")));
-	}
-	else {
-		fl_addtopup(SubEditTable, _("Table%t"));
-		// xgettext:no-c-format
-		fl_addtopup(SubEditTable, _("|Insert table%x31"));
-		fl_setpup_shortcut(SubEditTable, 31, scex(_("EMT|Ii#i#I")));
-	}
-
-	int SubVersionControl = 	fl_newpup(FL_ObjWin(ob));
-	fl_addtopup(SubVersionControl, _("Version Control%t"));
-	if (tmpbuffer->lyxvc.inUse()) {
-		// xgettext:no-c-format
-		fl_addtopup(SubVersionControl, _("|Register%d%x51"));
-		if (tmpbuffer->isReadonly()) {
-			// signifies that the file is not checked out
-			// xgettext:no-c-format
-			fl_addtopup(SubVersionControl, _("|Check In Changes%d%x52"));
-			// xgettext:no-c-format
-			fl_addtopup(SubVersionControl, _("|Check Out for Edit%x53"));
-		} else {
-			// signifies that the file is checked out
-			// xgettext:no-c-format
-			fl_addtopup(SubVersionControl, _("|Check In Changes%x52"));
-			// xgettext:no-c-format
-			fl_addtopup(SubVersionControl, _("|Check Out for Edit%d%x53"));
-		}
-		// xgettext:no-c-format
-		fl_addtopup(SubVersionControl, _("|Revert to last version%x54"));
-		// xgettext:no-c-format
-		fl_addtopup(SubVersionControl, _("|Undo last check in%x55"));
-		// xgettext:no-c-format
-		fl_addtopup(SubVersionControl, _("|Show History%x56"));
-	} else {
-		// xgettext:no-c-format
-		fl_addtopup(SubVersionControl, _("|Register%x51"));
-	}
-	// the shortcuts are not good.
-	fl_setpup_shortcut(SubVersionControl, 51, scex(_("EMV|Rr#r#R")));
-	fl_setpup_shortcut(SubVersionControl, 52, scex(_("EMV|Ii#i#I")));
-	fl_setpup_shortcut(SubVersionControl, 53, scex(_("EMV|Oo#o#O")));
-	fl_setpup_shortcut(SubVersionControl, 54, scex(_("EMV|lL#l#l")));
-	fl_setpup_shortcut(SubVersionControl, 55, scex(_("EMV|Uu#u#U")));
-	fl_setpup_shortcut(SubVersionControl, 56, scex(_("EMV|Hh#h#H")));
-
-	int EditMenu= fl_defpup(FL_ObjWin(ob),
-			       _("Undo"
-			       "|Redo %l"
-			       "|Cut"
-			       "|Copy"
-			       "|Paste%l"
-			       "|Find & Replace..."
-			       "|Go to Error"
-			       "|Go to Note"
-			       "|Floats & Insets%m"
-			       "|Table%m"
-			       "|Spellchecker...."
-			       "|Check TeX"
-			       "|Table of Contents...%l"
-			       "|Version Control%m%l"
-			       "|View LaTeX log file%l"
-			       "|Paste Primary Selection as Lines"
-			       "|Paste Primary Selection as Paragraphs"),
-			       SubEditFloats, SubEditTable, SubVersionControl);
-
-	fl_setpup_shortcut(EditMenu, 1, scex(_("EM|Uu#u#U")));
-	fl_setpup_shortcut(EditMenu, 2, scex(_("EM|Rr#r#R")));
-	fl_setpup_shortcut(EditMenu, 3, scex(_("EM|Cc#c#C")));
-	fl_setpup_shortcut(EditMenu, 4, scex(_("EM|oO#o#O")));
-	fl_setpup_shortcut(EditMenu, 5, scex(_("EM|Pp#p#P")));
-	fl_setpup_shortcut(EditMenu, 6, scex(_("EM|Ff#f#F")));
-	fl_setpup_shortcut(EditMenu, 7, scex(_("EM|Ee#e#E")));
-	fl_setpup_shortcut(EditMenu, 8, scex(_("EM|Nn#n#N")));
-	fl_setpup_shortcut(EditMenu, 9, scex(_("EM|Ii#i#I")));
-	fl_setpup_shortcut(EditMenu, 10, scex(_("EM|Tt#t#T")));
-	fl_setpup_shortcut(EditMenu, 11, scex(_("EM|Ss#s#S")));
-	fl_setpup_shortcut(EditMenu, 12, scex(_("EM|hH#h#H")));
-	fl_setpup_shortcut(EditMenu, 13, scex(_("EM|aA#a#A")));
-	fl_setpup_shortcut(EditMenu, 14, scex(_("EM|Vv#v#V")));
-	fl_setpup_shortcut(EditMenu, 15, scex(_("EM|wW#w#W")));
-	fl_setpup_shortcut(EditMenu, 16, scex(_("EM|Ll#l#L")));
-	fl_setpup_shortcut(EditMenu, 17, scex(_("EM|gG#g#G")));
-      
-	// disable unavailable entries.
-	if(tmpbuffer->undostack.empty())
-		fl_setpup_mode(EditMenu, 1, FL_PUP_GREY);
-	if(tmpbuffer->redostack.empty())
-		fl_setpup_mode(EditMenu, 2, FL_PUP_GREY);
-	if(lyxrc->isp_command == "none") 
-		fl_setpup_mode(EditMenu, 11, FL_PUP_GREY);
-	if(lyxrc->chktex_command == "none") 
-		fl_setpup_mode(EditMenu, 12, FL_PUP_GREY);
-
-	if (tmpbuffer->isReadonly()) {
-                fl_setpup_mode(EditMenu, 1, FL_PUP_GREY); 
-                fl_setpup_mode(EditMenu, 2, FL_PUP_GREY); 
-                fl_setpup_mode(EditMenu, 3, FL_PUP_GREY); 
-                fl_setpup_mode(EditMenu, 5, FL_PUP_GREY); 
-                fl_setpup_mode(EditMenu, 16, FL_PUP_GREY); 
-                fl_setpup_mode(EditMenu, 17, FL_PUP_GREY);
-	}
-	
-	fl_setpup_position(men->_view->getForm()->x + ob->x,
-			   men->_view->getForm()->y + ob->y +
-			   ob->h + 10);   
-	int choice = fl_dopup(EditMenu);
-	XFlush(fl_display);
-   
-	// set the pseudo menu-button back
-	fl_set_object_boxtype(ob, FL_FLAT_BOX);
-	fl_redraw_object(ob);
-
-	switch (choice) {
-	case  1: tmpfunc->Dispatch(LFUN_UNDO); break;
-	case  2: tmpfunc->Dispatch(LFUN_REDO); break;
-	case  3: tmpfunc->Dispatch(LFUN_CUT); break;
-	case  4: tmpfunc->Dispatch(LFUN_COPY); break;
-	case  5: tmpfunc->Dispatch(LFUN_PASTE); break;
-	case  6: tmpfunc->Dispatch(LFUN_MENUSEARCH); break;
-	case  7: tmpfunc->Dispatch(LFUN_GOTOERROR); break;
-	case  8: tmpfunc->Dispatch(LFUN_GOTONOTE); break;
-	case  9: // floats & insets
-		break;
-	case 10:// table 
-		break;
-	case 11: tmpfunc->Dispatch(LFUN_SPELLCHECK); break;
-	case 12: tmpfunc->Dispatch(LFUN_RUNCHKTEX); break;
-	case 13: tmpfunc->Dispatch(LFUN_TOCVIEW); break;
-	case 14: // version control
-		break;
-	case 15: tmpfunc->Dispatch(LFUN_LATEX_LOG); break;
-	case 16: tmpfunc->Dispatch(LFUN_PASTESELECTION, "line"); break;
-	case 17: tmpfunc->Dispatch(LFUN_PASTESELECTION, "paragraph"); break;
-
-		// floats & insets sub-menu
-	case 21: ToggleFloat(); break;
-	case 22: tmpfunc->Dispatch(LFUN_MELT); break;
-	case 23: AllFloats(1, 0); break;
-	case 24: AllFloats(0, 0); break;
-	case 25: AllFloats(1, 1); break;
-	case 26: AllFloats(0, 1); break;
-	case 27: tmpfunc->Dispatch(LFUN_REMOVEERRORS); break;
-
-	case 31: tmpfunc->Dispatch(LFUN_TABLE); break;
-		// this is really temporary. We need new function in keybind.C
-		// These should set the minibuffer, too.
-	case 32: case 33: case 34:
-	case 35: case 36: case 37:
-	case 38: case 39: case 40: 
-	case 41: case 42: case 43:
-	case 44: 
-     		if (men->currentView()->available()){
-			men->currentView()->getScreen()->HideCursor();
-			if (!tmpbuffer->text->selection){
-				BeforeChange(); 
-				tmpbuffer->update(-2);
-			}
-			tmpbuffer->text->
-				TableFeatures(choice - 32);
-			tmpbuffer->update(1);
-		}
-		break;
-		// version control sub-menu
-	case 51: // register
-		tmpfunc->Dispatch(LFUN_VC_REGISTER);
-		break;
-	case 52: // check in
-		tmpfunc->Dispatch(LFUN_VC_CHECKIN);
-		break;
-	case 53: // check out
-		tmpfunc->Dispatch(LFUN_VC_CHECKOUT);
-		break;
-	case 54: // revert to last
-		tmpfunc->Dispatch(LFUN_VC_REVERT);
-		break;
-	case 55: // undo last
-		tmpfunc->Dispatch(LFUN_VC_UNDO);
-		break;
-	case 56: // show history
-		tmpfunc->Dispatch(LFUN_VC_HISTORY);
-		break;
-	}
-
-	fl_freepup(EditMenu);
-	fl_freepup(SubEditFloats);
-	fl_freepup(SubEditTable);
-	fl_freepup(SubVersionControl);
-}
-#endif
 
 
 void Menus::ShowLayoutMenu(FL_OBJECT * ob, long)
@@ -1489,11 +1167,7 @@ void Menus::ShowLayoutMenu(FL_OBJECT * ob, long)
 	fl_setpup_shortcut(LayoutMenu, 13, scex(_("LM|Ss#s#S")));
 
 	// Set values of checkboxes according to font
-#ifdef MOVE_TEXT
 	LyXFont font = men->currentView()->text->real_current_font;
-#else
-	LyXFont font = tmpbuffer->text->real_current_font;
-#endif
 	if (font.emph() == LyXFont::ON)
 		fl_setpup_mode(LayoutMenu, 7, FL_PUP_CHECK);
 	if (font.noun() == LyXFont::ON)
@@ -1504,13 +1178,8 @@ void Menus::ShowLayoutMenu(FL_OBJECT * ob, long)
 		fl_setpup_mode(LayoutMenu, 10, FL_PUP_CHECK);
 	   
 	// Grey out unavailable entries
-#ifdef MOVE_TEXT
 	if (!men->currentView()->text->cursor.par->table)
 		fl_setpup_mode(LayoutMenu, 5, FL_PUP_GREY);
-#else
-	if (!tmpbuffer->text->cursor.par->table)
-		fl_setpup_mode(LayoutMenu, 5, FL_PUP_GREY);
-#endif
 
 	if (tmpbuffer->isReadonly()) {
 	        fl_setpup_mode(LayoutMenu, 1, FL_PUP_GREY);
@@ -1561,20 +1230,20 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 
 	int SubInsertAscii = fl_defpup(FL_ObjWin(ob),
 				       _("Import ASCII file%t"
-				       "|As Lines%x41"
-				       "|As Paragraphs%x42"));
+					 "|As Lines%x41"
+					 "|As Paragraphs%x42"));
 	
 	fl_setpup_shortcut(SubInsertAscii, 41, scex(_("IMA|Ll#l#L")));
 	fl_setpup_shortcut(SubInsertAscii, 42, scex(_("IMA|Pp#p#P")));
 
 	int SubInsertTableList= fl_defpup(FL_ObjWin(ob),
-					 _("Lists & TOC%t"
-					   "|Table of Contents%x21"
-					   "|List of Figures%x22"
-					   "|List of Tables%x23"
-					   "|List of Algorithms%x24"
-					   "|Index List%x25"
-					   "|BibTeX Reference%x26"));
+					  _("Lists & TOC%t"
+					    "|Table of Contents%x21"
+					    "|List of Figures%x22"
+					    "|List of Tables%x23"
+					    "|List of Algorithms%x24"
+					    "|Index List%x25"
+					    "|BibTeX Reference%x26"));
 	
 	fl_setpup_shortcut(SubInsertTableList, 21, scex(_("IMT|Cc#c#C")));
 	fl_setpup_shortcut(SubInsertTableList, 22, scex(_("IMT|Ff#f#F")));
@@ -1584,12 +1253,12 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 	fl_setpup_shortcut(SubInsertTableList, 26, scex(_("IMT|Bb#b#B")));
 
 	int SubInsertFloatList = fl_defpup(FL_ObjWin(ob),
-				       _("Floats%t"
-					 "|Figure Float%x71"
-					 "|Table Float%x72"
-					 "|Wide Figure Float%x73"
-					 "|Wide Table Float%l%x74"
-					 "|Algorithm Float%x75"));
+					   _("Floats%t"
+					     "|Figure Float%x71"
+					     "|Table Float%x72"
+					     "|Wide Figure Float%x73"
+					     "|Wide Table Float%l%x74"
+					     "|Algorithm Float%x75"));
 	
 	fl_setpup_shortcut(SubInsertFloatList, 71, scex(_("IMF|gG#g#G")));
 	fl_setpup_shortcut(SubInsertFloatList, 72, scex(_("IMF|Tt#t#T")));
@@ -1598,15 +1267,15 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 	fl_setpup_shortcut(SubInsertFloatList, 75, scex(_("IMF|Aa#a#A")));
  	
 	int SubInsertSpecial = fl_defpup(FL_ObjWin(ob),
-				       _("Special Character%t"
-					 "|HFill%x31"
-					 "|Hyphenation Point%x32"
-					 "|Protected Blank%x33"
-					 "|Linebreak%x34"
-					 "|Ellipsis (...)%x35"
-					 "|End of sentence period%x36"
-					 "|Ordinary Quote (\")%x37"
-					 "|Menu Separator %x38"));
+					 _("Special Character%t"
+					   "|HFill%x31"
+					   "|Hyphenation Point%x32"
+					   "|Protected Blank%x33"
+					   "|Linebreak%x34"
+					   "|Ellipsis (...)%x35"
+					   "|End of sentence period%x36"
+					   "|Ordinary Quote (\")%x37"
+					   "|Menu Separator %x38"));
 
 	fl_setpup_shortcut(SubInsertSpecial, 31, scex(_("IMS|Hh#h#H")));
 	fl_setpup_shortcut(SubInsertSpecial, 32, scex(_("IMS|Pp#p#P")));
@@ -1691,10 +1360,10 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 			break;
 
 		case 6: tmpfunc->Dispatch(LFUN_FOOTMELT); break
-;
+								  ;
 		case 7: tmpfunc->Dispatch(LFUN_MARGINMELT); break;
   
-               case 8: // Float sub-menu
+		case 8: // Float sub-menu
                 case 71:
 			tmpfunc->Dispatch(LFUN_INSERTFOOTNOTE, "figure");
 			break;
@@ -1764,14 +1433,14 @@ void Menus::ShowMathMenu(FL_OBJECT * ob, long)
 
 	int MathMenu = fl_defpup(FL_ObjWin(ob), 
 				 _("Fraction"
-				 "|Square root"
-				 "|Exponent"
-				 "|Index"
-				 "|Sum"
-				 "|Integral%l"
-				 "|Math mode"
-				 "|Display%l"
-				 "|Math Panel..."));
+				   "|Square root"
+				   "|Exponent"
+				   "|Index"
+				   "|Sum"
+				   "|Integral%l"
+				   "|Math mode"
+				   "|Display%l"
+				   "|Math Panel..."));
 
 	fl_setpup_shortcut(MathMenu, 1, scex(_("MM|Ff#f#F")));
 	fl_setpup_shortcut(MathMenu, 2, scex(_("MM|Ss#s#S")));
@@ -1848,10 +1517,10 @@ void Menus::ShowOptionsMenu(FL_OBJECT * ob, long)
 
 	int OptionsMenu = fl_defpup(FL_ObjWin(ob),
 				    _("Screen Fonts..."
-				    "|Spellchecker Options..."
-				    "|Keyboard..."
-				    "|LaTeX...%l"
-				    "|Reconfigure" ));
+				      "|Spellchecker Options..."
+				      "|Keyboard..."
+				      "|LaTeX...%l"
+				      "|Reconfigure" ));
 
 	fl_setpup_shortcut(OptionsMenu, 1, scex(_("OM|Ff#f#F")));
 	fl_setpup_shortcut(OptionsMenu, 2, scex(_("OM|Ss#s#S")));
@@ -1927,16 +1596,16 @@ void Menus::ShowHelpMenu(FL_OBJECT * ob, long)
    
 	int HelpMenu = fl_defpup(FL_ObjWin(ob),
 				 _("Introduction"
-				 "|Tutorial"
-				 "|User's Guide"
-				 "|Extended Features"
-				 "|Customization"
-				 "|Reference Manual"
-				 "|Known Bugs"
-				 "|LaTeX Configuration%l"
-				 "|Copyright and Warranty..."
-				 "|Credits..."
-				 "|Version..."));
+				   "|Tutorial"
+				   "|User's Guide"
+				   "|Extended Features"
+				   "|Customization"
+				   "|Reference Manual"
+				   "|Known Bugs"
+				   "|LaTeX Configuration%l"
+				   "|Copyright and Warranty..."
+				   "|Credits..."
+				   "|Version..."));
    
 	fl_setpup_shortcut(HelpMenu,  1, scex(_("HM|Ii#I#i")));
 	fl_setpup_shortcut(HelpMenu,  2, scex(_("HM|Tt#T#t")));

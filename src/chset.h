@@ -19,7 +19,7 @@ public:
 	///
 	string const & getName() const;
 	///
-	bool encodeString(string &) const;
+	pair<bool, int> encodeString(string &) const;
 private:
 	///
 	string name_;

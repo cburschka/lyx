@@ -39,31 +39,17 @@ enum { ModsMask = ShiftMask | ControlMask | Mod1Mask};
 	       maxlen - length of string (including '\0')
    Returns   : length of printed string if ok, 0 otherwise.
 \* ---F------------------------------------------------------------------- */
-
 static
-int printKeysym( KeySym key, unsigned int mod, char *buf, int maxlen )
+void printKeysym( KeySym key, unsigned int mod, string & buf)
 {
 	mod &= ModsMask;
 
-	// calc required length;
-	int len = 0;
-	if ( mod & ShiftMask )   len += 2;
-	if ( mod & ControlMask ) len += 2;
-	if ( mod & Mod1Mask )    len += 2;
+	char * s = XKeysymToString(key);
 	
-	char * s = XKeysymToString( key );
-	if ( s ) len += strlen( s );
-	if ( len < maxlen ) {
-		if ( mod & ShiftMask ) {
-			*buf++ = 'S'; *buf++ = '-'; }
-		if ( mod & ControlMask ) {
-			*buf++ = 'C'; *buf++ = '-'; }
-		if ( mod & Mod1Mask ) {
-			*buf++ = 'M'; *buf++ = '-'; }
-		if ( s ) strcpy( buf, s );
-		return len;
-	} else 
-		return 0;
+	if (mod & ShiftMask) buf += "S-";
+	if (mod & ControlMask) buf += "C-";
+	if (mod & Mod1Mask) buf += "M-";
+	if (s) buf += s;
 }
 
 
@@ -78,40 +64,22 @@ int printKeysym( KeySym key, unsigned int mod, char *buf, int maxlen )
 \* ---F------------------------------------------------------------------- */
 
 static
-int printKeyTab( kb_key * tabPt, char *buf, int maxLen )
+void printKeyTab( kb_key * tabPt, string & buf)
 {
-	int len, doneLen = 0;
 	unsigned int ksym, mod;
 	
 	/* -------> Print each of the slots into buf. */
 	for( ; (tabPt->code & 0xffff) != NoSymbol; ++tabPt) {
-		if ( maxLen <= 0 ) break;
-		
 		ksym =  tabPt->code;
 		mod  =  tabPt->mod & 0xffff;
 		
-		len = printKeysym( ksym, mod, buf, maxLen );
-		if ( len <= 0 ) break;
-		buf     += len;
-		maxLen  -= len;
-		doneLen += len;
-		
-		/* -------> Add space when possible. */
-		if ( maxLen > 0 ) {
-			*buf++ = ' ';
-			*buf = '\0';
-			maxLen--;
-			doneLen++;
-		}
+		printKeysym(ksym, mod, buf);
+		buf += ' ';
 	}
-	return doneLen;
 }
 
 
-
 // === kb_sequence methods ================================================ 
-
-
 
 /* ---F+------------------------------------------------------------------ *\
     Function  : kb_sequence::addkey
@@ -123,12 +91,13 @@ int printKeyTab( kb_key * tabPt, char *buf, int maxLen )
     Returns   : action or -1 if error (no map defined or key not found)
 \* ---F------------------------------------------------------------------- */
 
-int kb_sequence::addkey(KeySym key, unsigned int mod, unsigned int nmod /*= 0*/)
+int kb_sequence::addkey(KeySym key,
+			unsigned int mod, unsigned int nmod /*= 0*/)
 {
 	if(length < 0) length = 0;
 
 	if(length + 1 >= size) {
-		unsigned int * nseq = new unsigned int[size+KB_PREALLOC];
+		unsigned int * nseq = new unsigned int[size + KB_PREALLOC];
 		size += KB_PREALLOC;
 		memcpy(nseq, sequence, length * sizeof(unsigned int));
 		if(sequence != staticseq) delete sequence;
@@ -209,7 +178,7 @@ int kb_sequence::parse(char const * s)
 			}
 		} else {
 			int j = 0;
-			for(j = i; s[j] && (s[j])>' '; ++j)
+			for(j = i; s[j] && s[j] > ' '; ++j)
 				tbuf[j-i] = s[j];    // (!!!check bounds :-)
 			
 			tbuf[j-i] = '\0';
@@ -242,11 +211,10 @@ int kb_sequence::parse(char const * s)
     Returns   : 0, if ok, -1 if string too long
 \* ---F------------------------------------------------------------------- */
 
-int kb_sequence::print(char * buf, int maxlen, bool when_defined) const
+int kb_sequence::print(string & buf, bool when_defined) const
 {
 	KeySym key;
 	unsigned int mod;
-	int len;
 	int l = length;
 	if ( l < 0 && !when_defined ) l = -l;
 	
@@ -254,21 +222,12 @@ int kb_sequence::print(char * buf, int maxlen, bool when_defined) const
 		key = sequence[i];
 		mod = modifiers[i] & 0xffff;
 
-		len = printKeysym( key, mod, buf, maxlen );  // RVDK_PATCH_5
-		buf += len;
-		maxlen -= len;
-		
-		if ( len == 0 ) {
-			*buf = '\0';
-			return -1;
-		}
+		printKeysym(key, mod, buf);  // RVDK_PATCH_5
 
-		if(i+1<l && maxlen>1) {  // append a blank
-			*buf++ = ' ';
-			maxlen--;
+		if(i + 1 < l) {  // append a blank
+			buf += ' ';
 		}
 	}
-	*buf = '\0';
 	return 0;
 }
 
@@ -283,24 +242,13 @@ int kb_sequence::print(char * buf, int maxlen, bool when_defined) const
     Returns   : 0, if ok, -1 if string too long
 \* ---F------------------------------------------------------------------- */
 
-int kb_sequence::printOptions(char * buf, int maxlen) const
+int kb_sequence::printOptions(string & buf) const
 {
-	print(buf, maxlen, true);
-	int len = strlen(buf);
-	maxlen -= len;
-	buf    += len;
+	print(buf, true);
 	
-	if ( maxlen < 20 || !curmap ) return -1;
-#ifdef WITH_WARNINGS
-#warning reimplement kb_sequence using string
-#endif
-	char s[20];
-	strcpy(s, _("   options: "));
-	strcpy( buf, s);
-	buf += strlen(s);
-	maxlen -= strlen(s);
-
-	curmap->print(buf, maxlen);
+	if (!curmap) return -1;
+	buf += _("   options: ");
+	curmap->print(buf);
 	return 0;
 }
 
@@ -402,7 +350,10 @@ int kb_keymap::bind(char const * seq, int action)
 
 int kb_keymap::lookup(KeySym key, unsigned int mod, kb_sequence * seq)
 {
-	unsigned int hashval, ksym, msk1, msk0;
+#ifndef NO_HASH
+	unsigned int hashval;
+#endif
+	unsigned int ksym, msk1, msk0;
 	kb_key * tab;
 
 	//suppress modifier bits we do not handle
@@ -415,6 +366,7 @@ int kb_keymap::lookup(KeySym key, unsigned int mod, kb_sequence * seq)
 		return -1;
 	}
 
+#ifndef NO_HASH
 	if(size < 0) {               // --- if hash table ---
 		hashval = ((key&0xff) ^ ((key>>8)&0xff)) % KB_HASHSIZE;
 		tab = htable[hashval];
@@ -424,6 +376,7 @@ int kb_keymap::lookup(KeySym key, unsigned int mod, kb_sequence * seq)
 			return -1;
 		}
 	} else                       // --- else: linear list ---
+#endif
 		tab = table;
 
 	// --- now search the list of keys ---
@@ -436,11 +389,11 @@ int kb_keymap::lookup(KeySym key, unsigned int mod, kb_sequence * seq)
 		if(ksym == key && (mod & ~msk0) == msk1) {
 			// match found:
 			if(tab->table) {
-				 // this is a prefix key - set new map
+				// this is a prefix key - set new map
 				seq->curmap = tab->table;
 				return 0;
 			} else {
-				  // final key - reset map
+				// final key - reset map
 				seq->curmap = seq->stdmap;
 				seq->delseq();
 				return tab->action; // ... and return action
@@ -464,31 +417,22 @@ int kb_keymap::lookup(KeySym key, unsigned int mod, kb_sequence * seq)
     Returns   : updated maxLen.
 \* ---F------------------------------------------------------------------- */
 
-int kb_keymap::print(char * buf, int maxLen) const
+void kb_keymap::print(string & buf) const
 {
- /* -----> Return when running out of string space or when keymap has no table.
-     Else, place a terminating newline in case no other output is generated. */
-
-	if ( maxLen <= 3 || !buf ) return maxLen;
-	if ( !table ) return maxLen;
-	*buf   = '\0';
+	// Return when keymap has no table.
+	if (!table) return;
    
- /* -------> Hash table. Process each of its slots recursively and return. */
-	if ( size < 0 ) {   
-		for ( int ix = 0; (ix < KB_HASHSIZE) && (maxLen > 1); ++ix ) {
+	// Process each of its slots recursively and return.
+#ifndef NO_HASH
+	if ( size < 0 ) {   // Hash table
+		for ( int ix = 0; ix < KB_HASHSIZE; ++ix ) {
 			if ( htable[ix] ) {
-				int len = printKeyTab( htable[ix], buf, maxLen );
-				maxLen -= len;
-				buf    += len;
+				printKeyTab(htable[ix], buf);
 			}
 		}
-	} else {
-		/* -------> Normal table. */
-		int len = printKeyTab( table, buf, maxLen ); 
-		maxLen -= len;
-		buf    += len;
-	}
-	return maxLen;
+	} else // Normal table
+#endif
+		printKeyTab(table, buf);
 }
 
 
@@ -502,13 +446,13 @@ int kb_keymap::print(char * buf, int maxLen) const
     Returns   : 0 if ok.
 \* ---F------------------------------------------------------------------- */
 
-int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*= 0*/)
+int kb_keymap::defkey(kb_sequence * seq, int action, int idx /*= 0*/)
 {
 	unsigned int code = seq->sequence[idx];
 	if(code == NoSymbol) return -1;
 
 	unsigned int modmsk = seq->modifiers[idx];
-	kb_key  *tab, **ptab;
+	kb_key  * tab, ** ptab;
 	// --- get list------------------------------------------------------
 	if(!table) {
 		// If we don't have any yet, make an empty one
@@ -517,10 +461,11 @@ int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*= 0*/)
 		tab   =  table;
 		ptab  = &table;
 		size  = KB_PREALLOC;
-	} else if(size<0) {
+#ifndef NO_HASH
+	} else if(size < 0) {
 		// Hash table.
-		int hashval = (code&0xffff);
-		hashval = ((hashval&0xff) ^ ((hashval>>8)&0xff)) % KB_HASHSIZE;
+		int hashval = code & 0xffff;
+		hashval = ((hashval & 0xff) ^ ((hashval >> 8) & 0xff)) % KB_HASHSIZE;
 		tab  = htable[hashval];
 		ptab = htable+hashval;
 		if(!tab) {
@@ -528,6 +473,7 @@ int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*= 0*/)
 			tab[0].code = NoSymbol;
 			*ptab = tab;
 		}
+#endif
 	} else {
 		tab  =  table;
 		ptab = &table;
@@ -540,8 +486,8 @@ int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*= 0*/)
 	for(t = tab, tsize = 1; t->code != NoSymbol; ++t, ++tsize) {
 		if(code == t->code && modmsk == t->mod) { // -- overwrite binding ---
 			if(idx+1 == seq->length) {
-				char buf[20]; buf[0] = 0;
-				seq->print(buf, 20, true);
+				string buf;
+				seq->print(buf, true);
 				lyxerr[Debug::KEY]
 					<< "Warning: New binding for '"
 					<< buf 
@@ -555,28 +501,28 @@ int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*= 0*/)
 				t->action = action;
 				return 0;
 			} else if (!t->table) {
-				char buf[20]; buf[0] = 0;
-				seq->print(buf, 20, true);
+				string buf;
+				seq->print(buf, true);
 				lyxerr << "Error: New binding for '" << buf
 				       << "' is overriding old binding..."
 				       << endl;
 				return -1;
 			} else
-				return t->table->defkey(seq, action, idx+1);
+				return t->table->defkey(seq, action, idx + 1);
 		}
 	}
 
 	// --- extend list if necessary -------------------------------------
 
 	if(tsize % KB_PREALLOC == 0) {
-		kb_key * nt = new kb_key[tsize+KB_PREALLOC];
+		kb_key * nt = new kb_key[tsize + KB_PREALLOC];
 		// Set to 0 as table is used uninitialised later (thornley)
 		nt[tsize].table = 0;
 		memcpy(nt, tab, tsize * sizeof(kb_key));
 		*ptab = nt;
 		delete[] tab;
 		tab = nt;
-		if(size>= 0) size = tsize + KB_PREALLOC;
+		if(size >= 0) size = tsize + KB_PREALLOC;
 	}
 
 	// --- add action ---------------------------------------------------
@@ -588,6 +534,7 @@ int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*= 0*/)
 	
 	// --- convert list to hash table if necessary ----------------------
 
+#ifndef NO_HASH
 	if(size >= 0 && tsize >= 32) {
 		kb_key * oldtab = tab;
 		kb_key ** nht = new kb_key*[KB_HASHSIZE];
@@ -630,7 +577,7 @@ int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*= 0*/)
 		}
 		delete[] oldtab;
 	}
-	
+#endif
 	// --- define rest of sequence --------------------------------------
 
 	if(idx+1 == seq->length) {
@@ -656,6 +603,7 @@ int kb_keymap::defkey(kb_sequence *seq, int action, int idx /*= 0*/)
 kb_keymap::~kb_keymap()
 {
 	if(!table) return;
+#ifndef NO_HASH
 	if(size < 0) {
 		for(int i = 0; i < KB_HASHSIZE; ++i) {
 			if(htable[i]) {
@@ -668,25 +616,32 @@ kb_keymap::~kb_keymap()
 		}
 		delete htable;
 	} else {
+#endif
 		for(kb_key * t = table; t->code != NoSymbol; ++t)
 			if(t->table)
 				delete t->table;
 		delete table;
+#ifndef NO_HASH
 	}
+#endif
 }
 
-string keyname(kb_key k) {
-	char buf[100];
-	printKeysym(k.code, k.mod, buf, 100);
+
+string keyname(kb_key k)
+{
+	string buf;
+	printKeysym(k.code, k.mod, buf);
 	return buf;
 }
 
-// Finds a key for a keyaction, if possible
-string kb_keymap::findbinding(int act) const {
-	string res;
-	if (!table)
-		return res;
 
+// Finds a key for a keyaction, if possible
+string kb_keymap::findbinding(int act) const
+{
+	string res;
+	if (!table) return res;
+
+#ifndef NO_HASH
 	if (size < 0) {
 		for(int i = 0; i < KB_HASHSIZE; ++i) {
 			if(htable[i]) {
@@ -707,6 +662,7 @@ string kb_keymap::findbinding(int act) const {
 			}
 		}
 	} else {
+#endif
 		for(kb_key * t = table; t->code != NoSymbol; ++t) {
 			if(t->table) {
 				string suffix = t->table->findbinding(act);
@@ -720,7 +676,9 @@ string kb_keymap::findbinding(int act) const {
 				res += "[" + keyname(*t) + "] ";
 			}
 		}
+#ifndef NO_HASH
 	}
+#endif
 	return res;
 }
 

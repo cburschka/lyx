@@ -4,7 +4,7 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright (C) 1997 Asger Alstrup
+ *	    Copyright 1997 Asger Alstrup
  *           and the LyX Team.
  *
  * ====================================================== */
@@ -67,31 +67,29 @@ string FontInfo::getFontname(int size)
 	return strings[closestind];
 }
 
+
 /// Build newly sized font string 
-string FontInfo::resize(string const & font, int size) const {
+string FontInfo::resize(string const & font, int size) const
+{
+	string ret(font);
 	// Find the position of the size spec
-#ifdef WITH_WARNINGS
-#warning rewrite to use std::string constructs
-#endif
-	int cut = 0, before = 0, after = 0;
-	for (string::size_type i = 0; i < font.length(); ++i) {
-		if (font[i] == '-') {
+	int cut = 0;
+	string::iterator before = 0;
+	string::iterator after = 0;
+	for (string::iterator sit = ret.begin();
+	     sit != ret.end(); ++sit)
+		if ((*sit) == '-') {
 			++cut;
-			if (cut == 7) {
-				before = i;
-			} else if (cut == 8) {
-				after = i;
+			if (cut == 7) before = sit + 1;
+			else if (cut == 8) {
+				after = sit;
 				break;
 			}
 		}
-	}
-
-	string head = font;
-	head.erase(before + 1, string::npos);
-	string tail = font;
-	tail.erase(0, after);
-	return head + tostr(size) + tail;
+	ret.replace(before, after, tostr(size));
+	return ret;
 }
+
 
 /// Set new pattern
 void FontInfo::setPattern(string const & pat)
@@ -101,6 +99,7 @@ void FontInfo::setPattern(string const & pat)
 	pattern = pat;
 }
 
+
 /// Query font in X11
 void FontInfo::query()
 {
@@ -108,7 +107,8 @@ void FontInfo::query()
 		return;
 
 	if (pattern.empty()) {
-		lyxerr << "Can not use empty font name for font query." << endl;
+		lyxerr << "Can not use empty font name for font query."
+		       << endl;
 		queried = true;
 		return;
 	}
@@ -140,6 +140,7 @@ void FontInfo::query()
 	}
 	queried = true;
 }
+
 
 /// Release allocated stuff
 void FontInfo::release()

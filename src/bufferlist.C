@@ -58,8 +58,8 @@ void BufferStorage::release(Buffer * buf)
 
 
 Buffer * BufferStorage::newBuffer(string const & s,
-				 LyXRC * lyxrc,
-				 bool ronly)
+				  LyXRC * lyxrc,
+				  bool ronly)
 {
 	Buffer * tmpbuf = new Buffer(s, lyxrc, ronly);
 	tmpbuf->params.useClassDefaults();
@@ -104,7 +104,8 @@ bool BufferList::QwriteAll()
 				break;
 			case 2: // No
 				askMoreConfirmation = true;
-				unsaved += MakeDisplayPath((*it)->fileName(), 50);
+				unsaved += MakeDisplayPath((*it)->fileName(),
+							   50);
 				unsaved += "\n";
 				break;
 			case 3: // Cancel
@@ -152,7 +153,7 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 		   chmod("LyXVC3.lyx", 0100644)                    = 0
 		   lseek(0, 0, SEEK_CUR)                           = 46440
 		   _exit(0)
-		 */
+		*/
 
 		// Should proabaly have some more error checking here.
 		// Should be cleaned up in 0.13, at least a bit.
@@ -178,7 +179,8 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 					c_read = fread(cbuf, 1, blksize, fin);
 					if (c_read != 0)
 						c_write = 
-							fwrite(cbuf, 1, c_read, fout);
+							fwrite(cbuf, 1,
+							       c_read, fout);
 				} while (c_read);
 				fin.close();
 				fout.close();
@@ -189,7 +191,8 @@ bool BufferList::write(Buffer * buf, bool makeBackup)
 				}
 				delete [] cbuf;
 			} else {
-				lyxerr << "LyX was not able to make backupcopy. Beware." << endl;
+				lyxerr << "LyX was not able to make "
+					"backupcopy. Beware." << endl;
 			}
 			delete[] times;
 		}
@@ -253,8 +256,8 @@ bool BufferList::close(Buffer * buf)
 	if (buf->paragraph && !buf->isLyxClean() && !quitting) {
 		ProhibitInput();
                 switch(AskConfirmation(_("Changes in document:"),
-                              MakeDisplayPath(buf->fileName(), 50),
-                                      _("Save document?"))){
+				       MakeDisplayPath(buf->fileName(), 50),
+				       _("Save document?"))){
 		case 1: // Yes
 			if (write(buf)) {
 				lastfiles->newFile(buf->fileName());
@@ -309,19 +312,12 @@ void BufferList::updateInset(Inset * inset, bool mark_dirty)
 {
 	for (BufferStorage::iterator it = bstore.begin();
 	     it != bstore.end(); ++it) {
-#ifdef MOVE_TEXT
-		if ((*it)->getUser() && (*it)->getUser()->text->UpdateInset(inset)) {
+		if ((*it)->getUser()
+		    && (*it)->getUser()->text->UpdateInset(inset)) {
 			if (mark_dirty)
 				(*it)->markDirty();
 			break;
 		}
-#else
-		if ((*it)->text && (*it)->text->UpdateInset(inset)) {
-			if (mark_dirty)
-				(*it)->markDirty();
-			break;
-		}
-#endif
 	}
 }
 
@@ -352,7 +348,6 @@ void BufferList::updateIncludedTeXfiles(string const & mastertmpdir)
 			(*it)->makeLaTeXFile(writefile, mastertmpdir,
 					     false, true);
 			(*it)->markDepClean(mastertmpdir);
-						     
 		}
 	}
 }
@@ -366,7 +361,7 @@ void BufferList::emergencyWriteAll()
 			bool madeit = false;
 			
 			lyxerr <<_("lyx: Attempting to save"
-				      " document ")
+				   " document ")
 			       << (*it)->fileName()
 			       << _(" as...") << endl;
 			
@@ -382,7 +377,9 @@ void BufferList::emergencyWriteAll()
 				} else if (i == 1) {
 					s = AddName(GetEnvPath("HOME"),
 						    (*it)->fileName());
-				} else { // MakeAbsPath to prepend the current drive letter on OS/2
+				} else {
+					// MakeAbsPath to prepend the current
+					// drive letter on OS/2
 					s = AddName(MakeAbsPath("/tmp/"),
 						    (*it)->fileName());
 				}
@@ -399,7 +396,9 @@ void BufferList::emergencyWriteAll()
 					lyxerr << _("  Save failed! Trying...")
 					       << endl;
 				} else {
-					lyxerr << _("  Save failed! Bummer. Document is lost.") << endl;
+					lyxerr << _("  Save failed! Bummer. "
+						    "Document is lost.")
+					       << endl;
 				}
 			}
 		}
@@ -599,10 +598,10 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 		if (AskQuestion(_("Cannot open specified file:"), 
 				MakeDisplayPath(s, 50),
 				_("Create new document with this name?")))
-	    	{
-			// Find a free buffer
-			b = newFile(s, string());
-	    	}
+			{
+				// Find a free buffer
+				b = newFile(s, string());
+			}
 		break;
 	}
 
