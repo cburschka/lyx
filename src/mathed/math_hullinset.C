@@ -1345,8 +1345,14 @@ int MathHullInset::docbook(Buffer const & buf, ostream & os,
 		ms <<   MTag("math");
 		MathGridInset::mathmlize(ms);
 		ms <<   ETag("math");
+		ms <<   MTag("alt role=\"tex\" ");
+		ostringstream ls;
+		WriteStream wi(ls, false, false);
+		MathGridInset::write(wi);
+		ms << ls.str();
+		ms <<   ETag("alt");
 	} else {
-		ms <<   MTag("alt");
+		ms <<   MTag("alt role=\"tex\" ");
 		res = latex(buf, ms.os(), runparams);
 		ms <<   ETag("alt");
 	}
