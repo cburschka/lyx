@@ -142,7 +142,7 @@ void Toolbar::Pimpl::changed_layout(string const & sel)
 	for (LyXTextClass::const_iterator cit = tc.begin();
 	     cit != end; ++cit) {
 		if (_((*cit)->name()) == sel) {
-			owner_->getLyXFunc().dispatch(FuncRequest(LFUN_LAYOUT, (*cit)->name()));
+			owner_->getLyXFunc().dispatch(FuncRequest(LFUN_LAYOUT, (*cit)->name()), true);
 			return;
 		}
 	}

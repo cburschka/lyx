@@ -1,3 +1,9 @@
+2002-09-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* Toolbar_pimpl.C (changed_layout): when selecting a layout in
+	combox, make sure the corresponding shortcut is shown in
+	minibuffer 
+
 2002-09-16  John Levon  <levon@movementarian.org>
 
 	* FileDialog.C: set AnyFile mode
