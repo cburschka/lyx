@@ -13,20 +13,19 @@
 #ifndef QSPELLCHECKER_H
 #define QSPELLCHECKER_H
 
-
-#include "Qt2Base.h"
+#include "QDialogView.h"
 
 class ControlSpellchecker;
 class QSpellcheckerDialog;
 
 
 class QSpellchecker
-	: public Qt2CB<ControlSpellchecker, Qt2DB<QSpellcheckerDialog> >
+	: public QController<ControlSpellchecker, QView<QSpellcheckerDialog> >
 {
 public:
 	friend class QSpellcheckerDialog;
 
-	QSpellchecker();
+	QSpellchecker(Dialog &);
 
 	/// update from controller
 	void partialUpdate(int id);
@@ -38,8 +37,8 @@ private:
 
 	/// Apply changes
 	virtual void apply() {}
-	/// not needed
-	virtual void update_contents() {}
+	///
+	virtual void update_contents();
 	/// build the dialog
 	virtual void build_dialog();
 };

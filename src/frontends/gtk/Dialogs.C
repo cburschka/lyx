@@ -40,6 +40,7 @@
 #include "ControlSearch.h"
 #include "ControlSendto.h"
 #include "ControlShowFile.h"
+#include "ControlSpellchecker.h"
 #include "ControlTabular.h"
 #include "ControlTabularCreate.h"
 #include "ControlTexinfo.h"
@@ -80,6 +81,7 @@
 #include "FormTabular.h"
 #include "FormTexinfo.h"
 #include "FormShowFile.h"
+#include "FormSpellchecker.h"
 #include "GTableCreate.h"
 #include "FormToc.h"
 #include "GUrl.h"
@@ -132,8 +134,8 @@ char const * const dialognames[] = {
 "mathgreek", "mathmisc", "mathdots", "mathbigoperators", "mathamsmisc",
 "mathamsarrows", "mathamsrelations", "mathamsnegatedrelations",
 "mathamsoperators", "mathdelimiter", "mathmatrix", "mathspace", "mathstyle",
-"note", "paragraph", "prefs", "print", "ref", "sendto", "tabular",
-"tabularcreate", "texinfo",
+"note", "paragraph", "prefs", "print", "ref", "sendto", "spellchecker",
+"tabular", "tabularcreate", "texinfo",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
@@ -464,6 +466,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlSendto(*dialog));
 		dialog->setView(new FormSendto(*dialog));
 		dialog->bc().bp(new OkApplyCancelPolicy);
+	} else if (name == "spellchecker") {
+		dialog->setController(new ControlSpellchecker(*dialog));
+		dialog->setView(new FormSpellchecker(*dialog));
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "tabular") {
 		dialog->setController(new ControlTabular(*dialog));
 		dialog->setView(new FormTabular(*dialog));

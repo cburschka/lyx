@@ -36,6 +36,7 @@
 #include "ControlSearch.h"
 #include "ControlSendto.h"
 #include "ControlShowFile.h"
+#include "ControlSpellchecker.h"
 #include "ControlTabular.h"
 #include "ControlTabularCreate.h"
 #include "ControlToc.h"
@@ -74,6 +75,7 @@
 #include "QSearch.h"
 #include "QSendto.h"
 #include "QShowFile.h"
+#include "QSpellchecker.h"
 #include "QTabular.h"
 #include "QTabularCreate.h"
 #include "QTexinfo.h"
@@ -99,13 +101,13 @@ char const * const dialognames[] = {
 "citation", "document", "error", "errorlist", "ert", "external", "file",
 "findreplace", "float", "graphics", "include", "index", "label", "log",
 "mathpanel", "mathdelimiter", "mathmatrix", "note", "paragraph", "prefs",
-"print", "ref", "sendto", "tabular", "tabularcreate", "texinfo",
+"print", "ref", "sendto", "spellchecker","tabular", "tabularcreate",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
 #endif
 
-"toc", "url", "vspace", "wrap" };
+"texinfo", "toc", "url", "vspace", "wrap" };
 
 char const * const * const end_dialognames =
 	dialognames + (sizeof(dialognames) / sizeof(char *));
@@ -258,6 +260,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlSendto(*dialog));
 		dialog->setView(new QSendto(*dialog));
 		dialog->bc().bp(new OkApplyCancelPolicy);
+	} else if (name == "spellchecker") {
+		dialog->setController(new ControlSpellchecker(*dialog));
+		dialog->setView(new QSpellchecker(*dialog));
+		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "tabular") {
 		dialog->setController(new ControlTabular(*dialog));
 		dialog->setView(new QTabular(*dialog));

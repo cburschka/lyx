@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "ControlSpellchecker.h"
-#include "ViewBase.h"
 
 #include "buffer.h"
 #include "bufferparams.h"
@@ -37,7 +36,6 @@
 
 #include "frontends/Alert.h"
 
-
 using lyx::support::bformat;
 
 using std::advance;
@@ -46,8 +44,8 @@ using std::endl;
 using std::string;
 
 
-ControlSpellchecker::ControlSpellchecker(LyXView & lv, Dialogs & d)
-	: ControlDialogBD(lv, d),
+ControlSpellchecker::ControlSpellchecker(Dialog & parent)
+	: Dialog::Controller(parent),
 	  oldval_(0), newvalue_(0), count_(0)
 {}
 
@@ -56,22 +54,7 @@ ControlSpellchecker::~ControlSpellchecker()
 {}
 
 
-void ControlSpellchecker::setParams()
-{
-	lyxerr[Debug::GUI] << "spell setParams" << endl;
-	startSession();
-}
-
-
-void ControlSpellchecker::clearParams()
-{
-	lyxerr[Debug::GUI] << "spell clearParams" << endl;
-	endSession();
-}
-
-
 namespace {
-
 
 SpellBase * getSpeller(BufferParams const & bp)
 {
@@ -94,55 +77,35 @@ SpellBase * getSpeller(BufferParams const & bp)
 	return new ISpell(bp, lang);
 }
 
-}
+} // namespace anon
 
 
-void ControlSpellchecker::startSession()
+bool ControlSpellchecker::initialiseParams(std::string const &)
 {
-	lyxerr[Debug::GUI] << "spell startSession" << endl;
+	lyxerr[Debug::GUI] << "Spellchecker::initialiseParams" << endl;
 
-	if (speller_.get()) {
-		lyxerr[Debug::GUI] << "startSession: speller exists" << endl;
-		speller_.reset(0);
-		return;
-	}
-
-	speller_.reset(getSpeller(buffer()->params()));
+	speller_.reset(getSpeller(kernel().buffer().params()));
 
 	// reset values to initial
 	oldval_ = 0;
 	newvalue_ = 0;
 	count_ = 0;
-	emergency_exit_ = false;
 
-	// start off the check
-	if (speller_->error().empty()) {
-		check();
-		return;
+	bool const success = speller_->error().empty();
+
+	if (!success) {
+		Alert::error(_("The spell-checker could not be started"),
+			     speller_->error());
+		speller_.reset(0);
 	}
 
-	emergency_exit_ = true;
-	string message = speller_->error();
-	if (message.empty())
-		message = _("The spell-checker could not be started.\n"
-			 "Maybe it is mis-configured.");
-
-	Alert::error(_("The spell-checker has failed"), message);
-	speller_.reset(0);
+	return success;
 }
 
 
-void ControlSpellchecker::endSession()
+void ControlSpellchecker::clearParams()
 {
-	lyxerr[Debug::GUI] << "spell endSession" << endl;
-
-	emergency_exit_ = true;
-
-	if (!speller_.get()) {
-		lyxerr[Debug::GUI] << "endSession with no speller" << endl;
-		return;
-	}
-
+	lyxerr[Debug::GUI] << "Spellchecker::clearParams" << endl;
 	speller_.reset(0);
 }
 
@@ -193,14 +156,10 @@ void ControlSpellchecker::check()
 
 	SpellBase::Result res = SpellBase::OK;
 
-	DocIterator cur = bufferview()->cursor();
-
-	// a rough estimate should be sufficient:
-	//DocIterator::difference_type start = distance(beg, cur);
-	//DocIterator::difference_type const total = start + distance(cur, end);
+	DocIterator cur = kernel().bufferview()->cursor();
 
 	ptrdiff_t start = 0, total = 0;
-	DocIterator it = DocIterator(buffer()->inset());
+	DocIterator it = DocIterator(kernel().buffer().inset());
 	for (start = 0; it != cur; it.forwardPos())
 		++start; 	
 
@@ -210,11 +169,13 @@ void ControlSpellchecker::check()
 	for (; cur && isLetter(cur); cur.forwardPos())
 		++start;
 
+	BufferParams & bufferparams = kernel().buffer().params();
+
 	while (res == SpellBase::OK || res == SpellBase::IGNORE) {
-		word_ = nextWord(cur, start, buffer()->params());
+		word_ = nextWord(cur, start, bufferparams);
 
 		// end of document
-		if (word_.word().empty())
+		if (getWord().empty())
 			break;
 
 		++count_;
@@ -226,7 +187,7 @@ void ControlSpellchecker::check()
 			lyxerr[Debug::GUI] << "Updating spell progress." << endl;
 			oldval_ = newvalue_;
 			// set progress bar
-			view().partialUpdate(SPELL_PROGRESSED);
+			dialog().view().partialUpdate(SPELL_PROGRESSED);
 		}
 
 		// speller might be dead ...
@@ -240,27 +201,20 @@ void ControlSpellchecker::check()
 			return;
 	}
 
-	lyxerr[Debug::GUI] << "Found word \"" << word_.word() << "\"" << endl;
+	lyxerr[Debug::GUI] << "Found word \"" << getWord() << "\"" << endl;
 
-	if (word_.word().empty()) {
+	if (getWord().empty()) {
 		showSummary();
-		endSession();
 		return;
 	}
 
-	int const size = word_.word().size();
-#if 0
-	advance(cur, -size);
-	bufferview()->putSelectionAt(cur, size, false);
-	advance(cur, size);
-#else
-	bufferview()->putSelectionAt(cur, size, true);
-#endif
+	int const size = getWord().size();
+	kernel().bufferview()->putSelectionAt(cur, size, true);
 
 	// set suggestions
 	if (res != SpellBase::OK && res != SpellBase::IGNORE) {
 		lyxerr[Debug::GUI] << "Found a word needing checking." << endl;
-		view().partialUpdate(SPELL_FOUND_WORD);
+		dialog().view().partialUpdate(SPELL_FOUND_WORD);
 	}
 }
 
@@ -275,8 +229,7 @@ bool ControlSpellchecker::checkAlive()
 		message = _("The spell-checker has died for some reason.\n"
 			 "Maybe it has been killed.");
 
-	view().hide();
-	speller_.reset(0);
+	dialog().CancelButton();
 
 	Alert::error(_("The spell-checker has failed"), message);
 	return false;
@@ -286,7 +239,7 @@ bool ControlSpellchecker::checkAlive()
 void ControlSpellchecker::showSummary()
 {
 	if (!checkAlive() || count_ == 0) {
-		view().hide();
+		dialog().CancelButton();
 		return;
 	}
 
@@ -296,16 +249,19 @@ void ControlSpellchecker::showSummary()
 	else
 		message = _("One word checked.");
 
-	view().hide();
+	dialog().CancelButton();
 	Alert::information(_("Spell-checking is complete"), message);
 }
 
 
 void ControlSpellchecker::replace(string const & replacement)
 {
-	lyx::cap::replaceWord(bufferview()->cursor(), replacement);
-	bufferview()->buffer()->markDirty();
-	bufferview()->update();
+	lyxerr << "ControlSpellchecker::replace("
+	       << replacement << ")" << std::endl;
+	BufferView & bufferview = *kernel().bufferview();
+	lyx::cap::replaceWord(bufferview.cursor(), replacement);
+	kernel().buffer().markDirty();
+	bufferview.update();
 	// fix up the count
 	--count_;
 	check();

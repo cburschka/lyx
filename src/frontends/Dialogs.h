@@ -67,8 +67,6 @@ public:
 	//@{
 	///
 	void showPreamble();
-	/// bring up the spellchecker
-	void showSpellchecker();
 	//@}
 
 	/** \param name == "about" etc; an identifier used to

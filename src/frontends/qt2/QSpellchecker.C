@@ -11,7 +11,9 @@
 #include <config.h>
 
 #include "debug.h"
-#include "ControlSpellchecker.h"
+
+#include "controllers/ControlSpellchecker.h"
+
 #include "QSpellcheckerDialog.h"
 #include "QSpellchecker.h"
 #include "Qt2BC.h"
@@ -25,13 +27,12 @@
 
 using std::string;
 
-typedef Qt2CB<ControlSpellchecker, Qt2DB<QSpellcheckerDialog> > base_class;
+typedef QController<ControlSpellchecker, QView<QSpellcheckerDialog> > base_class;
 
 
-QSpellchecker::QSpellchecker()
-	: base_class(_("LyX: Spell-check Document"))
-{
-}
+QSpellchecker::QSpellchecker(Dialog & parent)
+	: base_class(parent, _("LyX: Spell-check Document"))
+{}
 
 
 void QSpellchecker::build_dialog()
@@ -40,6 +41,12 @@ void QSpellchecker::build_dialog()
 
 	bcview().setCancel(dialog_->closePB);
 	dialog_->wordED->setReadOnly(true);
+}
+
+
+void QSpellchecker::update_contents()
+{
+	controller().check();
 }
 
 

@@ -82,7 +82,7 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: text_unknown
-callback: C_FormBaseInputCB
+callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
@@ -100,7 +100,7 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: input_replacement
-callback: C_FormBaseInputCB
+callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
@@ -118,7 +118,7 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NorthWest FL_SouthEast
 name: browser_suggestions
-callback: C_FormBaseInputCB
+callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
@@ -136,7 +136,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_NorthEast FL_NorthEast
 name: button_add
-callback: C_FormBaseInputCB
+callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
@@ -154,7 +154,7 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthEast FL_NorthEast
 name: button_ignore
-callback: C_FormBaseInputCB
+callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
@@ -172,7 +172,7 @@ shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NorthEast FL_NorthEast
 name: button_accept
-callback: C_FormBaseInputCB
+callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
@@ -190,7 +190,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_close
-callback: C_FormBaseCancelCB
+callback: C_FormDialogView_CancelCB
 argument: 0
 
 --------------------
@@ -208,7 +208,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_NorthEast FL_NorthEast
 name: button_replace
-callback: C_FormBaseInputCB
+callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------

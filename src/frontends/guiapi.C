@@ -27,11 +27,4 @@ void gui_ShowPreamble(Dialogs & d)
 	d.showPreamble();
 }
 
-
-void gui_ShowSpellchecker(Dialogs & d)
-{
-	d.showSpellchecker();
-}
-
-
 } // extern "C"

@@ -90,8 +90,7 @@ void Dialog::update(string const & data)
 
 	if (!controller().initialiseParams(data)) {
 		lyxerr << "Dialog \"" << name_
-		       << "\" failed to translate the data "
-			"string passed to update()" << std::endl;
+		       << "\" could not be initialized" << std::endl;
 		return;
 	}
 

@@ -1051,8 +1051,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			}
 			else if (name == "preamble")
 				owner->getDialogs().showPreamble();
-			else if (name == "spellchecker")
-				owner->getDialogs().showSpellchecker();
 
 			else if (name == "latexlog") {
 				pair<Buffer::LogType, string> const logfile =

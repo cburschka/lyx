@@ -1,5 +1,13 @@
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.C (build): added spellchecker dialog.
+	* Dialogs2.C (showSpellchecker): removed.
+
+	* FormSpellchecker.[Ch]:
+	* forms/form_spellchecker.fd: converted to the Dialog-based scheme.
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
 	* Dialogs.C (build): added preferences dialog.
 	* Dialogs2.C (showPreferences): removed.
 

@@ -12,25 +12,32 @@
 #ifndef CONTROLSPELLCHECKER_H
 #define CONTROLSPELLCHECKER_H
 
+#include "Dialog.h"
+#include "WordLangTuple.h"
 #include <boost/scoped_ptr.hpp>
 
-#include "ControlDialog_impl.h"
-#include "WordLangTuple.h"
 
 class SpellBase;
 
 /** A controller for Spellchecker dialogs.
  */
-class ControlSpellchecker : public ControlDialogBD {
+class ControlSpellchecker : public Dialog::Controller {
 public:
 	enum State {
 		SPELL_PROGRESSED, //< update progress bar
 		SPELL_FOUND_WORD //< found a bad word
 	};
 
-	ControlSpellchecker(LyXView &, Dialogs &);
-
+	ControlSpellchecker(Dialog &);
 	~ControlSpellchecker();
+	///
+	virtual bool initialiseParams(std::string const & data);
+	///
+	virtual void clearParams();
+	/// Not needed here
+	virtual void dispatchParams() {}
+	///
+	virtual bool isBufferDependent() const { return true; }
 
 	/// replace word with replacement
 	void replace(std::string const &);
@@ -64,22 +71,8 @@ private:
 	/// give error message is spellchecker dies
 	bool checkAlive();
 
-	/// start a spell-checking session
-	void startSession();
-
-	/// end a spell-checking session
-	void endSession();
-
 	/// show count of checked words at normal exit
 	void showSummary();
-
-	/// set the params before show or update
-	void setParams();
-	/// clean-up on hide.
-	void clearParams();
-
-	/// not needed.
-	virtual void apply() {}
 
 	/// current word being checked and lang code
 	WordLangTuple word_;

@@ -12,8 +12,7 @@
 #ifndef FORMSPELLCHECKER_H
 #define FORMSPELLCHECKER_H
 
-
-#include "FormBase.h"
+#include "FormDialogView.h"
 
 class ControlSpellchecker;
 struct FD_spellchecker;
@@ -21,17 +20,17 @@ struct FD_spellchecker;
 /** This class provides an XForms implementation of the FormSpellchecker Dialog.
  */
 class FormSpellchecker
-	: public FormCB<ControlSpellchecker, FormDB<FD_spellchecker> > {
+	: public FormController<ControlSpellchecker, FormView<FD_spellchecker> > {
 public:
 	///
-	FormSpellchecker();
+	FormSpellchecker(Dialog &);
 private:
 	/// not needed.
 	virtual void apply() {}
 	/// Build the dialog
 	virtual void build();
-	/// not needed.
-	virtual void update() {}
+	///
+	virtual void update();
 
 	/// set suggestions and exit message
 	virtual void partialUpdate(int);

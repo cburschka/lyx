@@ -19,30 +19,18 @@
 
 #include "Qt2BC.h"
 
-#include "ControlSpellchecker.h"
-
 // Here would be an appropriate point to lecture on the evils
 // of the Qt headers, those most fucked up of disgusting ratholes.
 // But I won't.
 #undef signals
-#include "QSpellchecker.h"
-#include "QSpellcheckerDialog.h"
 
-
-
-
-typedef GUI<ControlSpellchecker, QSpellchecker, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
-SpellcheckerDialog;
 
 struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
-
-	SpellcheckerDialog spellchecker;
 };
 
 
-Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
-	: spellchecker(lv, d)
+Dialogs::Impl::Impl(LyXView &, Dialogs &)
 {}
 
 
@@ -63,10 +51,4 @@ void Dialogs::showPreamble()
 	show("document");
 	// Oh Angus, won't you help a poor child ?
 	//pimpl_->document.view()->showPreamble();
-}
-
-
-void Dialogs::showSpellchecker()
-{
-	pimpl_->spellchecker.controller().show();
 }

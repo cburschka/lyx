@@ -11,8 +11,9 @@
 #include <config.h>
 
 #include "FormSpellchecker.h"
-#include "ControlSpellchecker.h"
 #include "forms/form_spellchecker.h"
+
+#include "controllers/ControlSpellchecker.h"
 
 #include "Tooltips.h"
 #include "xforms_helpers.h"
@@ -26,10 +27,10 @@
 using std::string;
 
 
-typedef FormCB<ControlSpellchecker, FormDB<FD_spellchecker> > base_class;
+typedef FormController<ControlSpellchecker, FormView<FD_spellchecker> > base_class;
 
-FormSpellchecker::FormSpellchecker()
-	: base_class(_("Spell-check Document"))
+FormSpellchecker::FormSpellchecker(Dialog & parent)
+	: base_class(parent, _("Spell-check document"))
 {}
 
 
@@ -50,7 +51,7 @@ void FormSpellchecker::build()
 
 	// callback for double click in browser
 	fl_set_browser_dblclick_callback(dialog_->browser_suggestions,
-					 C_FormBaseInputCB, 2);
+					 C_FormDialogView_InputCB, 2);
 
 	// do not allow setting of slider by the mouse
 	fl_deactivate_object(dialog_->slider_progress);
@@ -73,6 +74,12 @@ void FormSpellchecker::build()
 	tooltips().init(dialog_->button_add, str);
 	str = _("Shows word count and progress on spell check.");
 	tooltips().init(dialog_->slider_progress, str);
+}
+
+
+void FormSpellchecker::update()
+{
+	controller().check();
 }
 
 

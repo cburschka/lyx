@@ -22,28 +22,19 @@
 #include "FormPreamble.h"
 #include "forms/form_preamble.h"
 
-#include "ControlSpellchecker.h"
-#include "FormSpellchecker.h"
-#include "forms/form_spellchecker.h"
-
 typedef GUI<ControlPreamble, FormPreamble, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 PreambleDialog;
-
-typedef GUI<ControlSpellchecker, FormSpellchecker, NoRepeatedApplyReadOnlyPolicy, xformsBC>
-SpellcheckerDialog;
 
 
 struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
 
-	PreambleDialog      preamble;
-	SpellcheckerDialog  spellchecker;
+	PreambleDialog preamble;
 };
 
 
 Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
-	: preamble(lv, d),
-	  spellchecker(lv, d)
+	: preamble(lv, d)
 {}
 
 
@@ -62,10 +53,4 @@ Dialogs::~Dialogs()
 void Dialogs::showPreamble()
 {
 	pimpl_->preamble.controller().show();
-}
-
-
-void Dialogs::showSpellchecker()
-{
-	pimpl_->spellchecker.controller().show();
 }
