@@ -26,7 +26,7 @@ extern "C" void index_cb(FL_OBJECT *, long data)
 	
 	switch (data) {
 	case 1: // OK
-		if(!current_view->currentBuffer()->isReadonly()) {
+		if(!current_view->buffer()->isReadonly()) {
 			string tmp = fl_get_input(index_form->key);
 			if(tmp != inset->getContents())	{
 				inset->setContents(tmp);
@@ -88,7 +88,7 @@ InsetIndex::~InsetIndex()
 
 void InsetIndex::Edit(int, int)
 {
-	if(current_view->currentBuffer()->isReadonly())
+	if(current_view->buffer()->isReadonly())
 		WarnReadonly();
 
 	if (!index_form)

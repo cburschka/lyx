@@ -76,7 +76,7 @@ void InsetUrl::CloseUrlCB(FL_OBJECT * ob, long)
 	else
 		cmdname = "url";
 	
-	Buffer * buffer = current_view->currentBuffer();
+	Buffer * buffer = current_view->buffer();
 	
 	if ((url != inset->getContents() ||
 	     name != inset->getOptions() ||
@@ -111,7 +111,7 @@ void InsetUrl::Edit(int, int)
 {
 	static int ow = -1, oh;
 
-	if(current_view->currentBuffer()->isReadonly())
+	if(current_view->buffer()->isReadonly())
 		WarnReadonly();
 
 	if (!fd_form_url) {

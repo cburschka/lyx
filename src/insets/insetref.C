@@ -50,7 +50,7 @@ InsetRef::~InsetRef()
 
 void InsetRef::Edit(int, int)
 {
-        current_view->getOwner()->getLyXFunc()
+        current_view->owner()->getLyXFunc()
 		->Dispatch(LFUN_REFGOTO, getContents().c_str());
 }
 
@@ -63,7 +63,7 @@ string InsetRef::getScreenLabel() const
 	else 
 		temp += _("Ref: ");
 	temp += getContents();
-	if(!current_view->currentBuffer()->isLatex()
+	if(!current_view->buffer()->isLatex()
 	   && !getOptions().empty()) {
 		temp += "||";
 		temp += getOptions();

@@ -950,7 +950,7 @@ static void RegisterFigure(InsetFig *fi)
 
 	if (lyxerr.debugging()) {
 		lyxerr << "Register Figure: buffer:["
-		       << current_view->currentBuffer() << "]" << endl;
+		       << current_view->buffer() << "]" << endl;
 	}
 }
 
@@ -1276,7 +1276,7 @@ void InsetFig::Edit(int, int)
 	// We should have RO-versions of the form instead.
 	// The actual prevention of altering a readonly doc
 	// is done in CallbackFig()
-	if(current_view->currentBuffer()->isReadonly()) 
+	if(current_view->buffer()->isReadonly()) 
 		WarnReadonly();
 
 	if (!form) {
@@ -1302,7 +1302,7 @@ Inset *InsetFig::Clone()
 
 	if (lyxerr.debugging()) {
 		lyxerr << "Clone Figure: buffer:["
-		       << current_view->currentBuffer()
+		       << current_view->buffer()
 		       << "], cbuffer:[xx]" << endl;
 	}
 
@@ -1897,7 +1897,7 @@ void InsetFig::CallbackFig(long arg)
 		break;
 	case 7:				/* apply */
 	case 8:				/* ok (apply and close) */
-		if(!current_view->currentBuffer()->isReadonly())
+		if(!current_view->buffer()->isReadonly())
 		{
 			wtype = twtype;
 			htype = thtype;
@@ -2083,7 +2083,7 @@ void InsetFig::RestoreForm()
 	}
 	else fl_set_input(form->EpsFile, "");
 	fl_set_input(form->Subcaption, subcaption.c_str());
-	if(current_view->currentBuffer()->isReadonly()) 
+	if(current_view->buffer()->isReadonly()) 
 	        DisableFigurePanel(form);
 
 	TempRegenerate();

@@ -36,8 +36,8 @@ extern "C" void bibitem_cb(FL_OBJECT *, long data)
 	switch (data) {
 	case 1: // OK, citation
         {
-		if(!current_view->currentBuffer()->isReadonly()) {
-			InsetCommand *inset = static_cast<InsetCommand*>(citation_form->citation_form->u_vdata);
+		if(!current_view->buffer()->isReadonly()) {
+			InsetCommand * inset = static_cast<InsetCommand*>(citation_form->citation_form->u_vdata);
 			inset->setContents(bibcombox->getline());
 			inset->setOptions(fl_get_input(citation_form->label));
 			fl_hide_form(citation_form->citation_form);
@@ -52,14 +52,14 @@ extern "C" void bibitem_cb(FL_OBJECT *, long data)
                 break;
 	case 3: // OK, bibitem
         {
-		if(!current_view->currentBuffer()->isReadonly()) {
+		if(!current_view->buffer()->isReadonly()) {
 			InsetCommand *inset = static_cast<InsetCommand*>(bibitem_form->bibitem_form->u_vdata);
 			inset->setContents(fl_get_input(bibitem_form->key));
 			inset->setOptions(fl_get_input(bibitem_form->label));
 			fl_hide_form(bibitem_form->bibitem_form);
 			// Does look like a hack? It is! (but will change at 0.13)
-			current_view->currentBuffer()->text->RedoParagraph();
-			current_view->currentBuffer()->update(1);
+			current_view->buffer()->text->RedoParagraph();
+			current_view->buffer()->update(1);
 			break;
 		} // fall through to Cancel on RO-mode
         }
@@ -146,7 +146,7 @@ InsetCitation::~InsetCitation()
 
 void InsetCitation::Edit(int, int)
 {
-	if(current_view->currentBuffer()->isReadonly())
+	if(current_view->buffer()->isReadonly())
 		WarnReadonly();
 
 	if (!citation_form) {
@@ -248,7 +248,7 @@ string InsetBibKey::getScreenLabel() const
 */
 void InsetBibKey::Edit(int, int)
 {
-	if(current_view->currentBuffer()->isReadonly())
+	if(current_view->buffer()->isReadonly())
 		WarnReadonly();
 	
 	if (!bibitem_form) {
@@ -310,7 +310,7 @@ int InsetBibtex::Latex(string &file, signed char /*fragile*/)
 	// inset is cut and pasted. Such hacks will not be needed
 	// later (JMarc)
 	if (!owner) {
-		owner = current_view->currentBuffer();
+		owner = current_view->buffer();
 	}
 	// If we generate in a temp dir, we might need to give an
 	// absolute path there. This is a bit complicated since we can
@@ -351,7 +351,7 @@ string InsetBibtex::getKeys()
 	// This hack is copied from InsetBibtex::Latex.
 	// Is it still needed? Probably yes.
 	if (!owner) {
-		owner = current_view->currentBuffer();
+		owner = current_view->buffer();
 	}
 
 	// We need to create absolute path names for bibliographies
@@ -474,11 +474,11 @@ void BibitemUpdate(Combox * combox)
 	if (!current_view->available())
 		return;
 
-	string tmp, bibkeys = current_view->currentBuffer()->getBibkeyList(',');
-	bibkeys=split(bibkeys, tmp,',');
+	string tmp, bibkeys = current_view->buffer()->getBibkeyList(',');
+	bibkeys = split(bibkeys, tmp,',');
 	while (!tmp.empty()) {
 	  combox->addto(tmp.c_str());
-	  bibkeys=split(bibkeys, tmp,',');
+	  bibkeys = split(bibkeys, tmp,',');
 	}
 }
 
@@ -489,7 +489,7 @@ int bibitemMaxWidth(LyXFont const & font)
 {
 	int w = 0;
 	// Does look like a hack? It is! (but will change at 0.13)
-	LyXParagraph *par = current_view->currentBuffer()->paragraph;
+	LyXParagraph * par = current_view->buffer()->paragraph;
     
 	while (par) {
 		if (par->bibkey) {
@@ -507,8 +507,8 @@ string bibitemWidthest()
 {
 	int w = 0;
 	// Does look like a hack? It is! (but will change at 0.13)
-	LyXParagraph * par = current_view->currentBuffer()->paragraph;
-	InsetBibKey * bkey=0;
+	LyXParagraph * par = current_view->buffer()->paragraph;
+	InsetBibKey * bkey = 0;
 	LyXFont font;
       
 	while (par) {

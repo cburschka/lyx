@@ -15,7 +15,7 @@ extern BufferView * current_view;
 
 void InsetTOC::Edit(int, int)
 {
-	current_view->getOwner()->getLyXFunc()->Dispatch(LFUN_TOCVIEW);
+	current_view->owner()->getLyXFunc()->Dispatch(LFUN_TOCVIEW);
 }
 
 int InsetTOC::Linuxdoc(string & file)

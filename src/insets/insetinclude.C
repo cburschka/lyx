@@ -131,7 +131,7 @@ extern "C" void include_cb(FL_OBJECT *, long arg)
 	}
 
 	case 1:
-		if(!current_view->currentBuffer()->isReadonly()) {
+		if(!current_view->buffer()->isReadonly()) {
 			inset->setContents(fl_get_input(form->input));
 			// don't typeset
 			inset->setNoLoad(fl_get_button(form->flag1));
@@ -153,7 +153,7 @@ extern "C" void include_cb(FL_OBJECT *, long arg)
 		fl_hide_form(form->include);
 		break;
 	case 5:
-		if(!current_view->currentBuffer()->isReadonly()) {
+		if(!current_view->buffer()->isReadonly()) {
 			inset->setContents(fl_get_input(form->input));
 			inset->setNoLoad(fl_get_button(form->flag1));
 			if (fl_get_button(form->flag2))
@@ -167,7 +167,7 @@ extern "C" void include_cb(FL_OBJECT *, long arg)
 			
 			fl_hide_form(form->include);
 			UpdateInset(inset);
-			current_view->getOwner()->getLyXFunc()->Dispatch(LFUN_CHILDOPEN, inset->getContents().c_str());
+			current_view->owner()->getLyXFunc()->Dispatch(LFUN_CHILDOPEN, inset->getContents().c_str());
                 }
                 break;
 		
@@ -227,7 +227,7 @@ Inset * InsetInclude::Clone()
 
 void InsetInclude::Edit(int, int)
 {
-	if(current_view->currentBuffer()->isReadonly())
+	if(current_view->buffer()->isReadonly())
 		WarnReadonly();
 
 	if (!form) {

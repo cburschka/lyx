@@ -38,7 +38,7 @@ InsetParent::InsetParent(string fn, Buffer * owner): InsetCommand("lyxparent")
 
 void InsetParent::Edit(int, int)
 {    
-    current_view->getOwner()->getLyXFunc()->Dispatch(LFUN_CHILDOPEN, 
+    current_view->owner()->getLyXFunc()->Dispatch(LFUN_CHILDOPEN, 
 						     getContents().c_str());
 }
 

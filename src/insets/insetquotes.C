@@ -228,7 +228,7 @@ int InsetQuotes::Latex(FILE * file, signed char /*fragile*/)
 int InsetQuotes::Latex(string & file, signed char /*fragile*/)
 {
 	string doclang =
-		current_view->currentBuffer()->GetLanguage();
+		current_view->buffer()->GetLanguage();
 	int quoteind = quote_index[side][language];
 	string qstr;
 	
@@ -288,7 +288,7 @@ void InsetQuotes::Validate(LaTeXFeatures & features) const
 {
 	char type = quote_char[quote_index[side][language]];
 
-	if (current_view->currentBuffer()->GetLanguage() == "default" 
+	if (current_view->buffer()->GetLanguage() == "default" 
 	    && lyxrc->fontenc != "T1") {
 		if (times == InsetQuotes::SingleQ) 
 			switch (type) {
