@@ -1,3 +1,17 @@
+2000-08-17  Allan Rae  <rae@lyx.org>
+
+	* src/frontends/xforms/Dialogs.C (Dialogs): Make a temporary connection
+	so we can at least see the credits again.
+
+	* src/frontends/xforms/FormPreferences.C: Used the appropriate button
+	controller calls for the appropriate callbacks.  Note that since Ok
+	calls apply followed by cancel, and apply isn't a valid input for the
+	APPLIED state, the bc_ calls have to be made in the static callback not
+	within each of the real callbacks.
+
+	* src/frontends/xforms/ButtonController.h (Ok): renamed from Okay()
+	(setOk): renamed from setOkay()
+
 2000-08-17  Juergen Vigna  <jug@sad.it>
 
 	* src/frontends/gnome/Menubar_pimpl.C (openByName): put this function

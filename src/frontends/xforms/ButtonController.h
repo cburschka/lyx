@@ -53,7 +53,7 @@ public:
 	/**@name Initialise Button Functions */
 	//@{
 	/// Call refresh() when finished setting the buttons.
-	void setOkay(FL_OBJECT * obj)
+	void setOk(FL_OBJECT * obj)
 		{ okay_ = obj; }
 	///
 	void setApply(FL_OBJECT * obj)
@@ -81,7 +81,7 @@ public:
 			refresh();
 		}
 	///
-	void okay()
+	void ok()
 		{ input(ButtonPolicy::SMI_OKAY); }
 	///
 	void apply()

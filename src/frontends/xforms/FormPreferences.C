@@ -62,7 +62,7 @@ void FormPreferences::build()
 	dialog_ = build_preferences();
 
 	// manage the restore, save, apply and cancel/close buttons
-	bc_->setOkay(dialog_->button_ok);
+	bc_->setOk(dialog_->button_ok);
 	bc_->setApply(dialog_->button_apply);
 	bc_->setCancel(dialog_->button_cancel);
 	bc_->setUndoAll(dialog_->button_restore);
@@ -202,7 +202,6 @@ void FormPreferences::hide()
 	if (dialog_
 	    && dialog_->form
 	    && dialog_->form->visible) {
-		bc_->hide();
 		fl_hide_form(dialog_->form);
 	}
 }
@@ -343,8 +342,6 @@ void FormPreferences::apply()
 	lyxrc.make_backup = fl_get_button(paths_->check_make_backups);
 	lyxrc.num_lastfiles = static_cast<unsigned int>
 		(fl_get_counter_value(paths_->counter_lastfiles));
-
-	bc_->apply();
 }
 
 
@@ -551,6 +548,7 @@ int FormPreferences::WMHideCB(FL_FORM * form, void *)
 	// window manager is used to close the dialog.
 	FormPreferences * pre = static_cast<FormPreferences*>(form->u_vdata);
 	pre->hide();
+	pre->bc_->hide();
 	return FL_CANCEL;
 }
 
@@ -560,7 +558,7 @@ void FormPreferences::OKCB(FL_OBJECT * ob, long)
 	FormPreferences * pre = static_cast<FormPreferences*>(ob->form->u_vdata);
 	pre->apply();
 	pre->hide();
- 
+	pre->bc_->ok();
 	pre->lv_->getLyXFunc()->Dispatch(LFUN_SAVEPREFERENCES);
 }
 
@@ -569,6 +567,7 @@ void FormPreferences::ApplyCB(FL_OBJECT * ob, long)
 {
 	FormPreferences * pre = static_cast<FormPreferences*>(ob->form->u_vdata);
 	pre->apply();
+	pre->bc_->apply();
 }
 
 
@@ -576,6 +575,7 @@ void FormPreferences::CancelCB(FL_OBJECT * ob, long)
 {
 	FormPreferences * pre = static_cast<FormPreferences*>(ob->form->u_vdata);
 	pre->hide();
+	pre->bc_->cancel();
 }
 
 
