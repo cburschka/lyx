@@ -1221,7 +1221,7 @@ Paragraph::InsetIterator(pos_type pos)
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it) {
-		if (it->pos == pos)
+		if (it->pos >= pos)
 			break;
 	}
 

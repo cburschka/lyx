@@ -1,3 +1,7 @@
+2002-06-14  Allan Rae  <rae@lyx.org>
+
+	* paragraph.C (InsetIterator): fix #432 by fixing iterator selection.
+
 2002-06-12  "Andrew Zabolotny"  <zap@cobra.ru>
 
 	* kbmap.C (getiso): add support for cyrillic and greek
