@@ -1,5 +1,7 @@
 2003-04-25  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* messages.C (Messages): fix typo in comment
+
 	* buffer.C (readFile): set message_ after file is loaded.
 	(makeDocBookFile): remove double return
 	(changeLanguage): reset message_ upon language change.

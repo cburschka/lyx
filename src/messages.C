@@ -122,7 +122,7 @@ Messages::Messages(string const & l, string const & dir)
 {}
 
 
-// We need this for the sake of scopted_ptr
+// We need this for the sake of scoped_ptr
 Messages::~Messages()
 {}
 
