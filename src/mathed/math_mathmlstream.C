@@ -195,6 +195,12 @@ WriteStream::WriteStream(std::ostream & os)
 {}
 
 
+void WriteStream::addlines(unsigned int n)
+{
+	line_ += n;
+}
+
+
 WriteStream & operator<<(WriteStream & ws, MathInset const * p)
 {
 	if (p)
@@ -215,7 +221,7 @@ WriteStream & operator<<(WriteStream & ws, MathArray const & ar)
 WriteStream & operator<<(WriteStream & ws, char const * s)
 {
 	ws.os() << s;
-	ws.line() += std::count(s, s + strlen(s), '\n');
+	ws.addlines(std::count(s, s + strlen(s), '\n'));
 	return ws;
 }
 
@@ -224,7 +230,7 @@ WriteStream & operator<<(WriteStream & ws, char c)
 {
 	ws.os() << c;
 	if (c == '\n')
-		++ws.line();
+		ws.addlines(1);
 	return ws;
 }
 

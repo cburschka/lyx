@@ -97,8 +97,6 @@ public:
 
 	/// draw the object
 	virtual void draw(Painter &, int x, int y) const;
-	/// write LaTeX and Lyx code
-	virtual void write(WriteStream & os) const;
 	/// reproduce itself
 	virtual MathInset * clone() const = 0;
 	/// substitutes macro arguments if necessary
@@ -226,6 +224,8 @@ public:
 	/// replace things by other things
 	virtual void replace(ReplaceData &) {}
 
+	/// write LaTeX and Lyx code
+	virtual void write(WriteStream & os) const;
 	/// write normalized content
 	virtual void normalize(NormalStream &) const;
 	/// write content as something readable by Maple

@@ -39,9 +39,11 @@ public:
 	///
 	std::ostream & os() { return os_; }
 	///
-	int & line() { return line_; }
+	int line() const { return line_; }
 	///
 	int & tab() { return tab_; }
+	///
+	friend MathMLStream & operator<<(MathMLStream &, char const *);
 private:
 	///
 	std::ostream & os_;
@@ -161,14 +163,16 @@ public:
 	WriteStream(std::ostream & os, bool fragile);
 	///
 	explicit WriteStream(std::ostream & os_);
-	/// yes... the references will be removed some day...
-	int & line() { return line_; }
+	///
+	int line() const { return line_; }
 	///
 	bool fragile() const { return fragile_; }
 	///
 	std::ostream & os() { return os_; }
 	///
 	bool & firstitem() { return firstitem_; }
+	///
+	void addlines(unsigned int);
 private:
 	///
 	std::ostream & os_;
