@@ -278,6 +278,18 @@ void Buffer::setFileName(string const & newfile)
 }
 
 
+// We'll remove this later. (Lgb)
+namespace {
+
+string last_inset_read;
+string inset_ert_contents;
+bool ert_active = false;
+bool in_tabular = false;
+
+} // anon
+
+
+
 // candidate for move to BufferView
 // (at least some parts in the beginning of the func)
 //
@@ -288,72 +300,63 @@ void Buffer::setFileName(string const & newfile)
 // Returns false if "\the_end" is not read for formats >= 2.13. (Asger)
 bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 {
+#ifdef NO_LATEX
+	inset_ert_contents.erase();
+	ert_active = false;
+	in_tabular = false;
+#endif
+	
 	int pos = 0;
 	Paragraph::depth_type depth = 0; 
 	bool the_end_read = false;
 
-	Paragraph * return_par = 0;
+	Paragraph * first_par = 0;
 	LyXFont font(LyXFont::ALL_INHERIT, params.language);
 	if (file_format < 216 && params.language->lang() == "hebrew")
 		font.setLanguage(default_language);
-	// If we are inserting, we cheat and get a token in advance
-	bool has_token = false;
-	string pretoken;
 
 	if (!par) {
 		par = new Paragraph;
 	} else {
 		// We are inserting into an existing document
 		users->text->breakParagraph(users);
-		return_par = users->text->firstParagraph();
+		first_par = users->text->firstParagraph();
 		pos = 0;
 		markDirty();
 		// We don't want to adopt the parameters from the
 		// document we insert, so we skip until the text begins:
 		while (lex.IsOK()) {
 			lex.nextToken();
-			pretoken = lex.GetString();
+			string const pretoken = lex.GetString();
 			if (pretoken == "\\layout") {
-				has_token = true;
+				lex.pushToken(pretoken);
 				break;
 			}
 		}
 	}
 
 	while (lex.IsOK()) {
-		if (has_token) {
-			has_token = false;
-		} else {
-			lex.nextToken();
-			pretoken = lex.GetString();
-		}
+		lex.nextToken();
+		string const token = lex.GetString();
 
-		if (pretoken.empty()) continue;
+		if (token.empty()) continue;
+
+		lyxerr[Debug::PARSER] << "Handling token: `"
+				      << token << "'" << endl;
 		
 		the_end_read =
-			parseSingleLyXformat2Token(lex, par, return_par,
-						   pretoken, pos, depth,
-						   font
-				);
+			parseSingleLyXformat2Token(lex, par, first_par,
+						   token, pos, depth,
+						   font);
 	}
    
-	if (!return_par)
-		return_par = par;
+	if (!first_par)
+		first_par = par;
 
-	paragraph = return_par;
+	paragraph = first_par;
 	
 	return the_end_read;
 }
-
-
-// We'll remove this later. (Lgb)
-namespace {
-
-string last_inset_read;
-string inset_ert_contents;
-bool ert_active = false;
-
-} // anon
 
 
 void Buffer::insertErtContents(Paragraph * par, int & pos,
@@ -374,7 +377,7 @@ void Buffer::insertErtContents(Paragraph * par, int & pos,
 
 bool
 Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
-				   Paragraph *& return_par,
+				   Paragraph *& first_par,
 				   string const & token, int & pos,
 				   Paragraph::depth_type & depth, 
 				   LyXFont & font
@@ -413,6 +416,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		++pos;
 	} else if (token == "\\layout") {
 #ifdef NO_LATEX
+		in_tabular = false;
 		// Do the insetert.
 		insertErtContents(par, pos, font);
 #endif
@@ -480,8 +484,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			++pos;
 		} else {
 #endif
-			if (!return_par)
-				return_par = par;
+			if (!first_par)
+				first_par = par;
 			else {
 				par = new Paragraph(par);
 			}
@@ -847,7 +851,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		}
 		// Small hack so that files written with klyx will be
 		// parsed correctly.
-		if (return_par) {
+		if (first_par) {
 			par->params().spacing(Spacing(tmp_space, tmp_val));
 		} else {
 			params.spacing.set(tmp_space, tmp_val);
@@ -999,6 +1003,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		// But insets should read it, it is a part of
 		// the inset isn't it? Lgb.
 	} else if (token == "\\begin_inset") {
+#ifdef NO_LATEX
+		insertErtContents(par, pos, font);
+#endif
 		readInset(lex, par, pos, font);
 	} else if (token == "\\SpecialChar") {
 		LyXLayout const & layout =
@@ -1030,13 +1037,26 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		++pos;
 	} else if (token == "\\newline") {
 #ifdef NO_LATEX
-		// Since we cannot know it this is only a regular newline or a
-		// tabular cell delimter we have to handle the ERT here.
-		insertErtContents(par, pos, font, false);
-#endif		
+
+		if (!in_tabular && ert_active) {
+			inset_ert_contents += char(Paragraph::META_NEWLINE);
+		} else {
+			// Since we cannot know it this is only a regular
+			// newline or a tabular cell delimter we have to
+			// handle the ERT here.
+			insertErtContents(par, pos, font, false);
+
+			par->insertChar(pos, Paragraph::META_NEWLINE, font);
+			++pos;
+		}
+#else
 		par->insertChar(pos, Paragraph::META_NEWLINE, font);
 		++pos;
+#endif
 	} else if (token == "\\LyXTable") {
+#ifdef NO_LATEX
+		in_tabular = true;
+#endif
 		Inset * inset = new InsetTabular(*this);
 		inset->read(this, lex);
 		par->insertInset(pos, inset, font);
@@ -1225,8 +1245,8 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		par->previous(0);
 		parBeforeMinipage = p;
 		minipar = par;
-		if (!return_par || (return_par == par))
-			return_par = p;
+		if (!first_par || (first_par == par))
+			first_par = p;
 
 		InsetMinipage * mini = new InsetMinipage;
 		mini->pos(static_cast<InsetMinipage::Position>(minipar->params().pextraAlignment()));

@@ -1,3 +1,11 @@
+2001-07-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* buffer.C (readLyXformat2): initailize the ert comp. variables.
+	(readLyXformat2): rename return_par to first_par, use lyxlex's
+	pushToken and remove the manual push handling.
+	(parseSingleLyXformat2Token): add another ert comp. variable:
+	in_tabular, rename return_par to first_par. handle newlines better
+
 2001-07-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* kbsequence.C (getiso): redirect debug info to Debug::KBMAP.

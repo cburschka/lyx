@@ -119,7 +119,15 @@ int InsetERT::latex(Buffer const *, std::ostream & os, bool /*fragile*/,
 {
 	Paragraph::size_type siz = inset.paragraph()->size();
 	for (Paragraph::size_type i = 0; i != siz; ++i) {
-		os << inset.paragraph()->getChar(i);
+		char c = inset.paragraph()->getChar(i);
+		switch (c) {
+		case Paragraph::META_NEWLINE:
+			os << '\n';
+			break;
+		default:
+			os << c;
+			break;
+		}
 	}
 	return 1;
 }
