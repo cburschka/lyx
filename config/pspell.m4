@@ -3,12 +3,12 @@
 
 AC_DEFUN(CHECK_WITH_PSPELL,
 [
-  USE_PSPELL="no"
+  USE_PSPELL="yes"
   AC_MSG_CHECKING([for pspell support])
     AC_ARG_WITH(pspell,
       [  --with-pspell           use PSpell libraries],[
-        if test "$withval" != "no"; then
-          USE_PSPELL="yes"
+        if test "$withval" = "no"; then
+          USE_PSPELL="no"
         fi
       ])
 
