@@ -705,7 +705,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_HOME:
 		if (!selection.mark())
 			bv->beforeChange(this);
-		update(bv);
+		update(bv, false);
 		cursorHome(bv);
 		finishChange(bv, false);
 		break;
@@ -713,7 +713,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_END:
 		if (!selection.mark())
 			bv->beforeChange(this);
-		update(bv);
+		update(bv, false);
 		cursorEnd(bv);
 		finishChange(bv, false);
 		break;

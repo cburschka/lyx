@@ -1,3 +1,8 @@
+2003-03-21  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text3.C (dispatch): do not mark buffer as dirty after LFUN_HOME
+	and LFUN_END
+
 2003-03-19  John Levon  <levon@movementarian.org>
 
 	* toc.h:
