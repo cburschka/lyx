@@ -30,17 +30,25 @@ public:
 	static string::size_type common_path(string const &p1,
 					     string const &p2);
 
-	// Converts a unix style path to host OS style.
+	/// Converts a unix style path to host OS style.
 	static string external_path(string const &p);
-	// Converts a host OS style path to unix style.
+	/// Converts a host OS style path to unix style.
 	static string internal_path(string const &p);
-	// is path absolute?
+	/// Is the path absolute?
 	static bool is_absolute_path(string const & p);
-	// returns a string suitable to be passed to fopen when
-	// reading a file
+	/** Returns a string suitable to be passed to fopen when
+	 *  reading a file.
+	 */
 	static char const * read_mode();
-	// same for popen().
+	/** Returns a string suitable to be passed to popen when
+	 *  reading a file.
+	 */
 	static char const * popen_read_mode();
+
+	/** The character used to separate paths returned by the
+	 *  PATH environment variable.
+	 */
+	static char path_separator();
 private:
 	static string const nulldev_;
 	static os::shell_type shell_;

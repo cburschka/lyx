@@ -378,13 +378,8 @@ vector<string> const getEnvPath(string const & name)
 	typedef boost::char_separator<char> Separator;
 	typedef boost::tokenizer<Separator> Tokenizer;
 
-#if defined (__EMX__) || defined (_WIN32)
-	Separator const separator(";");
-#else
-	Separator const separator(":");
-#endif
-
 	string const env_var = GetEnv(name);
+	Separator const separator(string(1, os::path_separator()).c_str());
 	Tokenizer const tokens(env_var, separator);
 	Tokenizer::const_iterator it = tokens.begin();
 	Tokenizer::const_iterator const end = tokens.end();
@@ -397,12 +392,31 @@ vector<string> const getEnvPath(string const & name)
 }
 
 
+void setEnvPath(string const & name, vector<string> const & env)
+{
+	char const separator(os::path_separator());
+	std::ostringstream ss;
+	vector<string>::const_iterator it = env.begin();
+	vector<string>::const_iterator const end = env.end();
+	for (; it != end; ++it) {
+		if (ss.tellp() > 0)
+			ss << separator;
+		ss << os::external_path(*it);
+	}
+	PutEnv(name + "=" + ss.str());
+}
+
+
 bool PutEnv(string const & envstr)
 {
 	// CHECK Look at and fix this.
 	// f.ex. what about error checking?
 
-#if HAVE_PUTENV
+#if defined (HAVE_SETENV)
+	string name;
+	string const value = split(envstr, name, '=');
+	int const retval = ::setenv(name.c_str(), value.c_str(), true);
+#elif defined (HAVE_PUTENV)
 	// this leaks, but what can we do about it?
 	//   Is doing a getenv() and a free() of the older value
 	//   a good idea? (JMarc)
@@ -425,14 +439,8 @@ bool PutEnv(string const & envstr)
 	// I will enable the above.
 	//int retval = lyx::putenv(envstr.c_str());
 #else
-#ifdef HAVE_SETENV
-	string varname;
-	string const str = envstr.split(varname,'=');
-	int const retval = ::setenv(varname.c_str(), str.c_str(), true);
-#else
 	// No environment setting function. Can this happen?
 	int const retval = 1; //return an error condition.
-#endif
 #endif
 	return retval == 0;
 }

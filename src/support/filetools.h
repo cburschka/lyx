@@ -113,6 +113,12 @@ string const GetEnv(string const & envname);
  */
 std::vector<string> const getEnvPath(string const & name);
 
+/** Set the contents of the environment variable \c name
+ *  using the paths stored in the \c env vector.
+ *  Each element is passed through os::external_path.
+ */
+void setEnvPath(string const & name, std::vector<string> const & env);
+
 ///
 bool PutEnv(string const & envstr);
 

@@ -133,3 +133,15 @@ char const * os::popen_read_mode()
 {
 	return "r";
 }
+
+
+// The character used to separate paths returned by the
+//  PATH environment variable.
+char os::path_separator()
+{
+#if defined (_WIN32)
+	return ';';
+#else // Cygwin
+	return ':';
+#endif
+}

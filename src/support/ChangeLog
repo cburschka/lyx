@@ -1,3 +1,13 @@
+2005-01-12  Angus Leeming  <leeming@lyx.org>
+
+	* filetools.[Ch] (setEnvPath): new function to create a PATH-style
+	string from a vector of paths and to use it to set an environment
+	variable.
+
+	* os.h, os_os2.C, os_unix.C, os_win32.C (path_separator): new
+	function returning the character used to separate paths returned
+	by the PATH environment variable.
+
 2005-01-10  Angus Leeming  <leeming@lyx.org>
 
 	* os.h:
