@@ -1798,8 +1798,6 @@ void LyXText::insertChar(char c)
 			need_break_row = rows().end();
 	} else {
 		// FIXME: similar code is duplicated all over - make resetHeightOfRow
-		int const tmpheight = row->height();
-
 		setHeightOfRow(row);
 		postPaint();
 
@@ -2606,7 +2604,6 @@ void LyXText::backspace()
 		} else  {
 			// set the dimensions of the row
 			row->fill(fill(row, workWidth()));
-			int const tmpheight = row->height();
 			setHeightOfRow(row);
 			postPaint();
 			setCursor(cursor.par(), cursor.pos(), false, cursor.boundary());
