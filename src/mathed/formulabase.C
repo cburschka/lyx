@@ -305,15 +305,12 @@ void InsetFormulaBase::insetKeyPress(XKeyEvent *)
 }
 
 
-int greek_kb_flag = 0;
-
 UpdatableInset::RESULT
 InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 			    string const & arg)
 {
 	//lyxerr << "InsetFormulaBase::LocalDispatch: act: " << action
 	//	<< " arg: '" << arg << "' cursor: " << mathcursor << "\n";
-
 
 	if (!mathcursor) 
 		return UNDISPATCHED;
