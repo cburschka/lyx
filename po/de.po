@@ -48,6 +48,7 @@
 #   setting              -> Einstellung
 #   shortcut             -> Kürzel
 #   show                 -> anzeigen / zeige ...
+#   special              -> Sonder... / besondere / spezielle
 #   specify              -> angeben
 #   template             -> Vorlage
 #   toggle               -> umschalten
@@ -57,7 +58,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.4.0\n"
-"POT-Creation-Date: 2003-08-18 13:25+0200\n"
+"POT-Creation-Date: 2003-08-21 09:23+0200\n"
 "PO-Revision-Date: 2003-08-18 13:30+0200\n"
 "Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
@@ -2080,7 +2081,7 @@ msgstr "Verändern Sie die Größe hinsichtlich der korrekten Tabellenmaße"
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:280
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:740
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:293
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:299
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:356
 #: ../src/frontends/qt2/ui/QCitationDialogBase.ui:410
 #: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:111
@@ -2153,7 +2154,7 @@ msgstr "&Export-Formate:"
 #: ../src/frontends/qt2/ui/QExternalDialogBase.ui:257
 #: ../src/frontends/qt2/ui/QWrapDialogBase.ui:299
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:759
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:308
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:314
 #: ../src/frontends/qt2/ui/QPreambleDialogBase.ui:130
 #: ../src/frontends/qt2/ui/QPrefsDialogBase.ui:125
 #: ../src/frontends/qt2/ui/QDocumentDialogBase.ui:203
@@ -2243,7 +2244,7 @@ msgstr "&Zurücksetzen"
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:774
 #: ../src/frontends/qt2/ui/QERTDialogBase.ui:162
 #: ../src/frontends/qt2/ui/QTocDialogBase.ui:203
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:323
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:329
 #: ../src/frontends/qt2/ui/QThesaurusDialogBase.ui:240
 #: ../src/frontends/qt2/ui/QIncludeDialogBase.ui:371
 #: ../src/frontends/qt2/ui/QTexinfoDialogBase.ui:252
@@ -2664,7 +2665,7 @@ msgid "Your name"
 msgstr "Ihr Name"
 
 #: ../src/frontends/qt2/ui/QPrefIdentityModule.ui:82
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:224
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:230
 msgid "&Name:"
 msgstr "&Name:"
 
@@ -3900,7 +3901,7 @@ msgstr "&Über"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:607
 msgid "Add a horizontal rule above the paragraph"
-msgstr "Eine horizontale Linie unterhalb des Absatzes hinzufügen"
+msgstr "Eine horizontale Linie oberhalb des Absatzes hinzufügen"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:618
 msgid "B&elow"
@@ -4028,38 +4029,42 @@ msgid "<reference>"
 msgstr "<Referenz>"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:131
+msgid "(<reference>)"
+msgstr "(<Referenz>)"
+
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:137
 msgid "<page>"
 msgstr "<Seite>"
 
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:137
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:143
 msgid "on page <page>"
 msgstr "auf Seite <Seite>"
 
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:143
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:149
 msgid "<reference> on page <page>"
 msgstr "<Referenz> auf Seite <Seite>"
 
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:149
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:155
 msgid "Formatted reference"
 msgstr "Formatierter Querverweis"
 
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:165
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:171
 msgid "Reference as it appears in output"
 msgstr "Querverweis, wie er in der Ausgabe erscheint"
 
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:182
 msgid "&Reference:"
 msgstr "&Querverweis:"
 
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:198
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:204
 msgid "&Format:"
 msgstr "&Format:"
 
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:347
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:353
 msgid "Available references"
 msgstr "Verfügbare Referenzen"
 
-#: ../src/frontends/qt2/ui/QRefDialogBase.ui:358
+#: ../src/frontends/qt2/ui/QRefDialogBase.ui:364
 msgid "R&eferences in:"
 msgstr "&Referenzen in:"
 
@@ -4988,7 +4993,7 @@ msgstr "VORHANG"
 #: ../lib/layouts/revtex.layout:24 ../lib/layouts/cl2emult.layout:127
 #: ../lib/layouts/paper.layout:15 ../lib/layouts/db_stdclass.inc:28
 #: ../lib/layouts/scrclass.inc:13 ../lib/ui/stdtoolbars.ui:28
-#: src/insets/insetref.C:133 src/mathed/ref_inset.C:149
+#: src/insets/insetref.C:135 src/mathed/ref_inset.C:159
 msgid "Standard"
 msgstr "Standard"
 
@@ -6861,7 +6866,7 @@ msgstr "Nummerierung an/aus|N"
 
 #: ../lib/ui/classic.ui:134 ../lib/ui/stdmenus.ui:137
 msgid "Toggle Numbering of Line|u"
-msgstr "Zeilennummerierung an/aus|Z"
+msgstr "Zeilennummerierung an/aus|u"
 
 #: ../lib/ui/classic.ui:136 ../lib/ui/stdmenus.ui:138
 msgid "Change Limits Type|L"
@@ -6873,7 +6878,7 @@ msgstr "Formelart ändern|F"
 
 #: ../lib/ui/classic.ui:140 ../lib/ui/stdmenus.ui:142
 msgid "Use Computer Algebra System|S"
-msgstr "Computer-Algebra-System verwenden|S"
+msgstr "Computer-Algebra-System verwenden|C"
 
 #: ../lib/ui/classic.ui:142 ../lib/ui/stdmenus.ui:144
 msgid "Alignment|A"
@@ -6881,11 +6886,11 @@ msgstr "Ausrichtung|A"
 
 #: ../lib/ui/classic.ui:144 ../lib/ui/stdmenus.ui:146
 msgid "Add Row|R"
-msgstr "Zeile anfügen|f"
+msgstr "Zeile anfügen|Z"
 
 #: ../lib/ui/classic.ui:145 ../lib/ui/stdmenus.ui:147
 msgid "Delete Row|D"
-msgstr "Zeile löschen|h"
+msgstr "Zeile löschen|l"
 
 #: ../lib/ui/classic.ui:149 ../lib/ui/stdmenus.ui:151
 msgid "Add Column|C"
@@ -6893,7 +6898,7 @@ msgstr "Spalte anfügen|S"
 
 #: ../lib/ui/classic.ui:150 ../lib/ui/stdmenus.ui:152
 msgid "Delete Column|e"
-msgstr "Spalte löschen|c"
+msgstr "Spalte löschen|h"
 
 #: ../lib/ui/classic.ui:156 ../lib/ui/stdmenus.ui:158
 msgid "Default|t"
@@ -6998,7 +7003,7 @@ msgstr "Randnotiz|R"
 
 #: ../lib/ui/classic.ui:196 ../lib/ui/stdmenus.ui:236
 msgid "Short Title"
-msgstr "Kurztitel"
+msgstr "Kurztitel|K"
 
 #: ../lib/ui/classic.ui:197
 msgid "Bibliography Key"
@@ -7111,11 +7116,11 @@ msgstr "Abgesetzte Formel|A"
 
 #: ../lib/ui/classic.ui:233 ../lib/ui/stdmenus.ui:264
 msgid "Eqnarray Environment|E"
-msgstr "Eqnarray-Umgebung|E"
+msgstr "Eqnarray-Umgebung|q"
 
 #: ../lib/ui/classic.ui:234 ../lib/ui/stdmenus.ui:265
 msgid "AMS align Environment|a"
-msgstr "AMS align-Umgebung|A"
+msgstr "AMS align-Umgebung|l"
 
 #: ../lib/ui/classic.ui:235 ../lib/ui/stdmenus.ui:179
 #: ../lib/ui/stdmenus.ui:266
@@ -7444,7 +7449,7 @@ msgstr ""
 
 #: ../lib/ui/stdmenus.ui:76
 msgid "Text Style...|S"
-msgstr "Textstil...|T"
+msgstr "Textstil...|s"
 
 #: ../lib/ui/stdmenus.ui:77
 msgid "Paragraph Settings...|P"
@@ -7488,7 +7493,7 @@ msgstr "Zweig-Einstellungen...|Z"
 
 #: ../lib/ui/stdmenus.ui:100
 msgid "Table Settings...|a"
-msgstr "Tabellen-Einstellungen...|T"
+msgstr "Tabellen-Einstellungen...|b"
 
 #: ../lib/ui/stdmenus.ui:117
 msgid "Top Line|T"
@@ -7508,7 +7513,7 @@ msgstr "Rechte Linie|R"
 
 #: ../lib/ui/stdmenus.ui:178
 msgid "AMS align Environment|A"
-msgstr "AMS align-Umgebung|A"
+msgstr "AMS align-Umgebung|l"
 
 #: ../lib/ui/stdmenus.ui:181 ../lib/ui/stdmenus.ui:268
 msgid "AMS gather Environment|g"
@@ -7516,7 +7521,7 @@ msgstr "AMS gather-Umgebung|g"
 
 #: ../lib/ui/stdmenus.ui:182 ../lib/ui/stdmenus.ui:269
 msgid "AMS multline Environment|m"
-msgstr "AMS multline-Umgebung|m"
+msgstr "AMS multline-Umgebung|u"
 
 #: ../lib/ui/stdmenus.ui:195
 msgid "Display Tooltips|i"
@@ -7524,7 +7529,7 @@ msgstr "Tooltips anzeigen|T"
 
 #: ../lib/ui/stdmenus.ui:216
 msgid "Special Formatting|o"
-msgstr "Spezielle Formatierung|S"
+msgstr "Besondere Formatierung|B"
 
 #: ../lib/ui/stdmenus.ui:217
 msgid "List / TOC|i"
@@ -7564,7 +7569,7 @@ msgstr "Mathe-Kontrollfläche|M"
 
 #: ../lib/ui/stdmenus.ui:306
 msgid "Text Wrap Float|W"
-msgstr "Textumbruch-Gleitobjekt|U"
+msgstr "Textumbruch-Gleitobjekt|u"
 
 #: ../lib/ui/stdmenus.ui:321
 msgid "External Material..."
@@ -8407,7 +8412,7 @@ msgstr "Fehler:"
 msgid "Wrong depth for LatexType Command.\n"
 msgstr "Falsche Tiefe für den Befehl LatexType.\n"
 
-#: src/buffer.C:1645 src/insets/insettext.C:1092
+#: src/buffer.C:1645 src/insets/insettext.C:1069
 msgid "Error"
 msgstr "Fehler"
 
@@ -10238,7 +10243,7 @@ msgstr ""
 msgid "Branches"
 msgstr "Zweige"
 
-#: src/frontends/xforms/FormDocument.C:1359
+#: src/frontends/xforms/FormDocument.C:1360
 msgid "Document is read-only. No changes to layout permitted."
 msgstr ""
 "Das Dokument ist schreibgeschützt. Es sind keine Formatierungsänderungen "
@@ -11358,47 +11363,47 @@ msgstr "Opt"
 msgid "Opened Optional Argument Inset"
 msgstr "Einfügung für optionales Argument geöffnet"
 
-#: src/insets/insetref.C:133 src/mathed/ref_inset.C:149
+#: src/insets/insetref.C:135 src/mathed/ref_inset.C:159
 msgid "Ref: "
 msgstr "Verweis: "
 
-#: src/insets/insetref.C:134 src/mathed/ref_inset.C:150
+#: src/insets/insetref.C:136 src/mathed/ref_inset.C:160
 msgid "Equation"
 msgstr "Gleichung"
 
-#: src/insets/insetref.C:134 src/mathed/ref_inset.C:150
+#: src/insets/insetref.C:136 src/mathed/ref_inset.C:160
 msgid "EqRef: "
 msgstr ""
 
-#: src/insets/insetref.C:135 src/mathed/ref_inset.C:151
+#: src/insets/insetref.C:137 src/mathed/ref_inset.C:161
 msgid "Page Number"
 msgstr "Seitennummer"
 
-#: src/insets/insetref.C:135 src/mathed/ref_inset.C:151
+#: src/insets/insetref.C:137 src/mathed/ref_inset.C:161
 msgid "Page: "
 msgstr "Seite: "
 
-#: src/insets/insetref.C:136 src/mathed/ref_inset.C:152
+#: src/insets/insetref.C:138 src/mathed/ref_inset.C:162
 msgid "Textual Page Number"
 msgstr "Seitennummer im Text"
 
-#: src/insets/insetref.C:136 src/mathed/ref_inset.C:152
+#: src/insets/insetref.C:138 src/mathed/ref_inset.C:162
 msgid "TextPage: "
 msgstr "TextSeite: "
 
-#: src/insets/insetref.C:137 src/mathed/ref_inset.C:153
+#: src/insets/insetref.C:139 src/mathed/ref_inset.C:163
 msgid "Standard+Textual Page"
 msgstr ""
 
-#: src/insets/insetref.C:137 src/mathed/ref_inset.C:153
+#: src/insets/insetref.C:139 src/mathed/ref_inset.C:163
 msgid "Ref+Text: "
 msgstr ""
 
-#: src/insets/insetref.C:138 src/mathed/ref_inset.C:154
+#: src/insets/insetref.C:140 src/mathed/ref_inset.C:164
 msgid "PrettyRef"
 msgstr ""
 
-#: src/insets/insetref.C:138 src/mathed/ref_inset.C:154
+#: src/insets/insetref.C:140 src/mathed/ref_inset.C:164
 msgid "PrettyRef: "
 msgstr ""
 
@@ -11414,27 +11419,27 @@ msgstr ""
 msgid "You cannot set multicolumn vertically."
 msgstr ""
 
-#: src/insets/insettext.C:356
+#: src/insets/insettext.C:333
 msgid "Opened Text Inset"
 msgstr "Text-Einfügung geöffnet"
 
-#: src/insets/insettext.C:874
+#: src/insets/insettext.C:851
 msgid "Paste failed"
 msgstr "Das Einfügen ist fehlgeschlagen"
 
-#: src/insets/insettext.C:874
+#: src/insets/insettext.C:851
 msgid "Cannot include more than one paragraph."
 msgstr "Es ist nicht möglich, mehr als einen Absatz einzubinden."
 
-#: src/insets/insettext.C:947 src/text3.C:1061
+#: src/insets/insettext.C:924 src/text3.C:1061
 msgid "Layout "
 msgstr "Format "
 
-#: src/insets/insettext.C:947 src/text3.C:1062
+#: src/insets/insettext.C:924 src/text3.C:1062
 msgid " not known"
 msgstr " unbekannt"
 
-#: src/insets/insettext.C:1092
+#: src/insets/insettext.C:1069
 msgid "LatexType Command not allowed here.\n"
 msgstr "Der Befehl LatexType ist hier nicht erlaubt.\n"
 
@@ -11948,7 +11953,7 @@ msgstr "Erstellung"
 msgid "ChkTeX"
 msgstr "ChkTeX"
 
-#: src/lyxfunc.C:1207 src/mathed/formulabase.C:950
+#: src/lyxfunc.C:1207 src/mathed/formulabase.C:947
 msgid "Missing argument"
 msgstr "Fehlendes Argument"
 
@@ -12553,24 +12558,24 @@ msgstr ""
 msgid "Revert to stored version of document?"
 msgstr ""
 
-#: src/mathed/formulabase.C:150 src/mathed/formulabase.C:924
+#: src/mathed/formulabase.C:147 src/mathed/formulabase.C:921
 msgid "Math editor mode"
 msgstr "Mathe-Editor-Modus"
 
-#: src/mathed/formulabase.C:631
+#: src/mathed/formulabase.C:628
 msgid "Invalid action in math mode!"
 msgstr "Diese Aktion ist im Mathe-Modus nicht möglich!"
 
-#: src/mathed/formulamacro.C:129
+#: src/mathed/formulamacro.C:127
 #, c-format
 msgid " Macro: %s: "
 msgstr "Makro: %s: "
 
-#: src/mathed/math_hullinset.C:796
+#: src/mathed/math_hullinset.C:806
 msgid "Enter new label to insert:"
 msgstr "Name der einzufügenden Marke:"
 
-#: src/mathed/math_hullinset.C:797
+#: src/mathed/math_hullinset.C:807
 msgid "Enter label:"
 msgstr "Marke eingeben:"
 
