@@ -300,7 +300,7 @@ MathAtom createMathInset(string const & s)
 		return MathAtom(new MathSqrtInset);
 	if (s == "root")
 		return MathAtom(new MathRootInset);
-	if (s == "stack")
+	if (s == "stackrel")
 		return MathAtom(new MathStackrelInset);
 	if (s == "binom" || s == "choose")
 		return MathAtom(new MathBinomInset(s == "choose"));
