@@ -1,5 +1,15 @@
 2002-08-02  Angus Leeming  <leeming@lyx.org>
 
+	* insetcommandparams.[Ch] (preview): new methods returning and setting
+	a new bool preview_ flag.
+	(read): read this flag.
+	(operator==): add flag to check.
+
+	* insetinclude.C (write): output new preview() flag.
+	(previewWanted): use this flag.
+
+2002-08-02  Angus Leeming  <leeming@lyx.org>
+
 	* insetcollapsable.[Ch] (addPreview):
 	* insettabular.[Ch] (addPreview):
 	* insettext.[Ch] (addPreview): new methods. Can now generate previews

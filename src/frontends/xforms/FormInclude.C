@@ -76,6 +76,14 @@ void FormInclude::update()
 	fl_set_button(dialog_->check_typeset,
 		      int(controller().params().noload));
 
+	if (cmdname == "input")
+		fl_set_button(dialog_->check_preview,
+			      int(controller().params().cparams.preview()));
+	else
+		fl_set_button(dialog_->check_preview, 0);
+
+	setEnabled(dialog_->check_preview, (cmdname == "input"));
+
 	fl_set_button(dialog_->radio_useinput, cmdname == "input");
 	fl_set_button(dialog_->radio_useinclude, cmdname == "include");
 	if (cmdname == "verbatiminput" || cmdname == "verbatiminput*") {
@@ -97,6 +105,8 @@ void FormInclude::update()
 void FormInclude::apply()
 {
 	controller().params().noload = fl_get_button(dialog_->check_typeset);
+	controller().params().cparams
+		.preview(fl_get_button(dialog_->check_preview));
 
 	string const file = fl_get_input(dialog_->input_filename);
 	if (controller().fileExists(file))
@@ -159,6 +169,14 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 		string const in_name = fl_get_input(dialog_->input_filename);
 		if (rtrim(in_name).empty())
 			action = ButtonPolicy::SMI_INVALID;
+	}
+
+	if (ob == dialog_->radio_useinput) {
+		setEnabled(dialog_->check_preview, true);
+	} else if (ob == dialog_->radio_verbatim ||
+		   ob == dialog_->radio_useinclude) {
+		fl_set_button(dialog_->check_preview, 0);
+		setEnabled(dialog_->check_preview, false);
 	}
 
 	return action;

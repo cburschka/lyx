@@ -56,6 +56,11 @@ public:
 	string const getAsString() const;
 	///
 	void setFromString(string const &);
+	///
+	bool preview() const { return preview_; }
+	///
+	void preview(bool p) { preview_ = p; }
+
 private:
 	///
 	string cmdname;
@@ -63,6 +68,8 @@ private:
 	string contents;
 	///
 	string options;
+	///
+	bool preview_;
 };
 
 

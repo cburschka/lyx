@@ -29,7 +29,7 @@ InsetCommandParams::InsetCommandParams()
 InsetCommandParams::InsetCommandParams(string const & n,
 					string const & c,
 					string const & o)
-	: cmdname(n), contents(c), options(o)
+	: cmdname(n), contents(c), options(o), preview_(false)
 {}
 
 
@@ -137,10 +137,14 @@ void InsetCommandParams::read(LyXLex & lex)
 	}
 
 	while (lex.isOK()) {
-		lex.nextToken();
+		lex.next();
 		token = lex.getString();
 		if (token == "\\end_inset")
 			break;
+		if (token == "preview") {
+			lex.next();
+			preview_ = lex.getBool();
+		}
 	}
 	if (token != "\\end_inset") {
 		lex.printError("Missing \\end_inset at this point. "
@@ -170,7 +174,8 @@ bool operator==(InsetCommandParams const & o1,
 {
 	return o1.getCmdName() == o2.getCmdName()
 		&& o1.getContents() == o2.getContents()
-		&& o1.getOptions() == o2.getOptions();
+		&& o1.getOptions() == o2.getOptions()
+		&& o1.preview() == o2.preview();
 }
 
 

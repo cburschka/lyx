@@ -162,7 +162,8 @@ void InsetInclude::edit(BufferView * bv, bool)
 
 void InsetInclude::write(Buffer const *, ostream & os) const
 {
-	os << "Include " << params_.cparams.getCommand() << "\n";
+	os << "Include " << params_.cparams.getCommand() << '\n'
+	   << "preview " << tostr(params_.cparams.preview()) << '\n';
 }
 
 
@@ -528,7 +529,8 @@ void InsetInclude::addPreview(grfx::PreviewLoader & ploader) const
 
 bool InsetInclude::PreviewImpl::previewWanted() const
 {
-	return parent().params_.flag == InsetInclude::INPUT;
+	return parent().params_.flag == InsetInclude::INPUT &&
+		parent().params_.cparams.preview();
 }
 
 

@@ -1,0 +1,17 @@
+Changes to the LyX format since version 220 (LyX 1.2.0) was released.
+=====================================================================
+
+2002-08-02  Angus Leeming  <leeming@lyx.org>
+
+Added a boolean "preview" flag to InsetCommandParams.
+Currently it is written only by InsetInclude, because only this
+class can generate a preview of its contents.
+
+The LyX file now contains:
+
+ \begin_inset Include \input{snapshot_t=40.tex}
++preview true
+
+ \end_inset 
+
+Earlier versions of LyX just swallow this extra token silently.
