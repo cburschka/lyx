@@ -289,7 +289,7 @@ public:
 	virtual void close(BufferView *) {}
 	/// check if the font of the char we want inserting is correct
 	/// and modify it if it is not.
-	virtual bool checkInsertChar(LyXFont & font) { return true; }
+	virtual bool checkInsertChar(LyXFont &) { return true; }
 	
 protected:
 	///
