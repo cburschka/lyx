@@ -28,8 +28,8 @@
 #include "support/lstrings.h"
 #include "support/systemcall.h"
 
-using std::vector;
 
+using std::vector;
 
 ControlSendto::ControlSendto(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d),
@@ -42,25 +42,51 @@ ControlSendto::ControlSendto(LyXView & lv, Dialogs & d)
 
 vector<Format const *> const ControlSendto::allFormats() const
 {
-	// Well, we can start with "lyx"
-	vector<Format const *> lyx_formats;
-	lyx_formats.push_back(formats.getFormat("lyx"));
+	// What formats can we output natively?
+	vector<string> exports;
+	exports.push_back("lyx");
+	exports.push_back("text");
 
-	// lyx can export to latex, what formats can be reached from latex?
-	Formats::const_iterator it  = formats.begin();
-	Formats::const_iterator end = formats.end();
-	vector<Format const *>::const_iterator lbegin = lyx_formats.begin();
-	for (; it != end; ++it) {
-		if (converters.isReachable("latex", it->name())) {
-			vector<Format const *>::const_iterator lend =
-				lyx_formats.end();
-			
-			if (std::find(lbegin, lend, it) == lend)
-				lyx_formats.push_back(it);
+	if (lv_.buffer()->isLatex())
+		exports.push_back("latex");
+	if (lv_.buffer()->isLinuxDoc())
+		exports.push_back("linuxdoc");
+	if (lv_.buffer()->isDocBook())
+		exports.push_back("docbook");
+	if (lv_.buffer()->isLiterate())
+		exports.push_back("literate");
+
+	// Loop over these native formats and ascertain what formats we
+	// can convert to
+	vector<Format const *> to;
+
+	vector<string>::const_iterator ex_it  = exports.begin();
+	vector<string>::const_iterator ex_end = exports.end();
+	for (; ex_it != ex_end; ++ex_it) {
+		// Start off with the native export format.
+		// "formats" is LyX's list of recognised formats
+		to.push_back(formats.getFormat(*ex_it));
+
+		Formats::const_iterator fo_it  = formats.begin();
+		Formats::const_iterator fo_end = formats.end();
+		for (; fo_it != fo_end; ++fo_it) {
+			if (converters.isReachable(*ex_it, fo_it->name())) {
+				to.push_back(fo_it);
+			}
 		}
 	}
 
-	return lyx_formats;
+	// Remove repeated formats.
+	std::sort(to.begin(), to.end());
+
+	vector<Format const *>::iterator to_begin = to.begin();
+	vector<Format const *>::iterator to_end   = to.end();
+	vector<Format const *>::iterator to_it =
+		std::unique(to_begin, to_end);
+	if (to_it != to_end)
+		to.erase(to_it, to_end);
+
+	return to;
 }
 
 
@@ -87,19 +113,20 @@ void ControlSendto::apply()
 		return;
 
 	// The name of the file created by the conversion process
-	string filename = lv_.buffer()->getLatexName(false);
-	if (!lv_.buffer()->tmppath.empty())
-		filename = AddName(lv_.buffer()->tmppath, filename);
-	filename = ChangeExtension(filename, format_->extension());
+	string filename;
 
 	// Output to filename
 	if (format_->name() == "lyx") {
+		filename = ChangeExtension(lv_.buffer()->getLatexName(false),
+					   format_->extension());
+		if (!lv_.buffer()->tmppath.empty())
+			filename = AddName(lv_.buffer()->tmppath, filename);
+
 		lv_.buffer()->writeFile(filename, true);
 
 	} else {
-		Exporter::Export(lv_.buffer(), format_->name(), true,
-				 filename);
-	}
+		Exporter::Export(lv_.buffer(), format_->name(), true, filename);
+  	}
 
 	// Substitute $$FName for filename
 	string command = command_;
