@@ -152,9 +152,9 @@ public:
 	///
 	bool insertInset(BufferView *, Inset *);
 	///
-	bool insertInsetAllowed(Inset *) const { return true; }
+	bool insertInsetAllowed(Inset *) const;
 	///
-	UpdatableInset * getLockingInset();
+	UpdatableInset * getLockingInset() const;
 	///
 	UpdatableInset * getFirstLockingInsetOfType(Inset::Code);
 	///
@@ -234,8 +234,14 @@ protected:
 	LColor::color frame_color;
 
 private:
+	struct InnerCache {
+		InnerCache(boost::shared_ptr<LyXText>);
+
+		boost::shared_ptr<LyXText> text;
+		bool remove;
+	};
 	///
-	typedef std::map<BufferView *, boost::shared_ptr<LyXText> > Cache;
+	typedef std::map<BufferView *, struct InnerCache > Cache;
 	///
 	typedef Cache::value_type value_type;
 	///
@@ -294,6 +300,9 @@ private:
 	void clearFrame(Painter &, bool cleared) const;
 	///
 	void clearInset(Painter &, int baseline, bool & cleared) const;
+	///
+	void saveLyXTextState(LyXText *) const;
+	void restoreLyXTextState(BufferView *, LyXText *) const;
 	
 	/* Private structures and variables */
 	///
@@ -342,5 +351,23 @@ private:
 	mutable BufferView * cached_bview;
 	///
 	mutable boost::shared_ptr<LyXText> cached_text;
+	///
+	mutable struct save_state {
+		Paragraph * lpar;
+		Paragraph * selstartpar;
+		Paragraph * selendpar;
+		Paragraph::size_type pos;
+		Paragraph::size_type selstartpos;
+		Paragraph::size_type selendpos;
+		bool boundary;
+		bool selstartboundary;
+		bool selendboundary;
+		bool selection;
+		bool mark_set;
+	} sstate;
+	///
+	// this is needed globally so we know that we're using it actually and
+	// so the LyXText-Cache is not erased until used!
+	mutable LyXText * lt;
 };
 #endif

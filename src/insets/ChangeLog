@@ -1,3 +1,25 @@
+2001-07-12  Juergen Vigna  <jug@sad.it>
+
+	* insetfloat.C (insertInsetAllowed): make a bit more checks.
+
+	* insettext.C (getLyXText): use 'lt' to assure we're not erasing the
+	LyXText which is marked for removal while we're using it!
+
+	* insettext.h: added private LyXText * lt to use it to assure we are
+	not deleting our LyXText while we're using it!
+
+2001-07-11  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (insertInset): check if we are before the inset after
+	inserting it! This check IS needed. Remove the Undo-Call as it is
+	called in LyXText::insertInset!
+
+	* insettext.h: added struct InnerCache.
+
+	* insettext.C (deleteLyXText): insert a new InnerCache mechanism so
+	that we ONLY delete the LyXText in the getLyXText() routine. So we
+	are sure we don't delete LyXText while someone is working with it!
+
 2001-07-12  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* insetexternal.C: (*it). -> it->

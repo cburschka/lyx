@@ -632,9 +632,10 @@ unsigned int InsetTabular::insetInInsetY()
 }
 
 
-UpdatableInset * InsetTabular::getLockingInset()
+UpdatableInset * InsetTabular::getLockingInset() const
 {
-	return the_locking_inset ? the_locking_inset->getLockingInset() : this;
+	return the_locking_inset ? the_locking_inset->getLockingInset() :
+		const_cast<InsetTabular *>(this);
 }
 
 

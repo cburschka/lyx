@@ -111,7 +111,7 @@ public:
 	///
 	void toggleInsetCursor(BufferView *);
 	///
-	UpdatableInset * getLockingInset();
+	UpdatableInset * getLockingInset() const;
 	///
 	UpdatableInset * getFirstLockingInsetOfType(Inset::Code);
 	///

@@ -236,8 +236,13 @@ int InsetFloat::docBook(Buffer const * buf, ostream & os) const
 
 bool InsetFloat::insertInsetAllowed(Inset * in) const
 {
+	if (in->lyxCode() == Inset::FLOAT_CODE)
+		return false;
+	if (inset.getLockingInset() != this)
+		return inset.insertInsetAllowed(in);
 	if ((in->lyxCode() == Inset::FOOT_CODE) ||
-	    (in->lyxCode() == Inset::MARGIN_CODE)) {
+	    (in->lyxCode() == Inset::MARGIN_CODE))
+	{
 		return false;
 	}
 	return true;

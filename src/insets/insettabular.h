@@ -117,7 +117,7 @@ public:
 	///
 	unsigned int insetInInsetY();
 	///
-	UpdatableInset * getLockingInset();
+	UpdatableInset * getLockingInset() const;
 	///
 	UpdatableInset * getFirstLockingInsetOfType(Inset::Code);
 	///

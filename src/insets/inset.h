@@ -369,7 +369,9 @@ public:
 	///
 	virtual bool insertInsetAllowed(Inset *) const { return false; }
 	///
-	virtual UpdatableInset * getLockingInset() { return this; }
+	virtual UpdatableInset * getLockingInset() const {
+		return const_cast<UpdatableInset *>(this);
+	}
 	///
 	virtual UpdatableInset * getFirstLockingInsetOfType(Inset::Code c)
 		{ return (c == lyxCode()) ? this : 0; }
