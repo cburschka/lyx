@@ -365,7 +365,7 @@ void InsetFloat::addToToc(toc::TocList & toclist, Buffer const * buf) const
 	ParIterator pit(inset.paragraphs.begin(), inset.paragraphs);
 	ParIterator end(inset.paragraphs.end(), inset.paragraphs);
 
-a	// Find a caption layout in one of the (child inset's) pars
+	// Find a caption layout in one of the (child inset's) pars
 	for (; pit != end; ++pit) {
 		if (pit->layout()->name() == caplayout) {
 			string const name = floatname(params_.type, buf->params);
