@@ -27,8 +27,6 @@
 
 #include "frontends/Alert.h"
 
-#include "insets/insettext.h"
-
 #include "support/textutils.h"
 
 using lyx::support::lowercase;
@@ -47,8 +45,10 @@ class MatchString
 {
 public:
 	MatchString(string const & str, bool cs, bool mw)
-		: str(str), cs(cs), mw(mw) {};
-// returns true if the specified string is at the specified position
+		: str(str), cs(cs), mw(mw)
+	{}
+
+	// returns true if the specified string is at the specified position
 	bool operator()(Paragraph const & par, pos_type pos) const
 	{			
 		string::size_type size = str.length();
@@ -60,22 +60,28 @@ public:
 			   : (uppercase(str[i]) == uppercase(par.getChar(pos + i))))) {
 			++i;
 		}
-		if (size == string::size_type(i)) {
-			// if necessary, check whether string matches word
-			if (!mw)
-				return true;
-			if ((pos <= 0 || !IsLetterCharOrDigit(par.getChar(pos - 1)))
-			    && (pos + pos_type(size) >= parsize
-				|| !IsLetterCharOrDigit(par.getChar(pos + size)))) {
-				return true;
-			}
+
+		if (size != string::size_type(i))
+			return false;
+
+		// if necessary, check whether string matches word
+		if (mw) {
+			if (pos > 0	&& IsLetterCharOrDigit(par.getChar(pos - 1)))
+				return false;
+			if (pos + pos_type(size) < parsize
+					&& IsLetterCharOrDigit(par.getChar(pos + size)));
+				return false;
 		}
-		return false;
+
+		return true;
 	}
 	
 private:
+	// search string
 	string str;
+	// case sensitive
 	bool cs;
+	// match whole words only
 	bool mw;
 };
 
@@ -127,8 +133,7 @@ bool searchAllowed(BufferView * bv, string const & str)
 
 
 
-bool find(BufferView * bv, string const & searchstr,
-	  bool cs, bool mw, bool fw)
+bool find(BufferView * bv, string const & searchstr, bool cs, bool mw, bool fw)
 {
 	if (!searchAllowed(bv, searchstr))
 		return false;
