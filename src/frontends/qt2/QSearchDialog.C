@@ -71,7 +71,6 @@ void QSearchDialog::findClicked()
 		caseCB->isChecked(),
 		wordsCB->isChecked(),
 		backwardsCB->isChecked());
-	findCO->insertItem(findCO->currentText());
 }
 
 
@@ -83,7 +82,6 @@ void QSearchDialog::replaceClicked()
 		caseCB->isChecked(),
 		wordsCB->isChecked(),
 		false);
-	replaceCO->insertItem(replaceCO->currentText());
 }
 
 
