@@ -42,7 +42,7 @@ MathRootInset::~MathRootInset()
 MathedInset * MathRootInset::Clone()
 {
 	MathRootInset * p = new MathRootInset(*this);
-	p->uroot_ = (MathParInset *) p->uroot_->Clone();
+	p->uroot_ = static_cast<MathParInset *>(p->uroot_->Clone());
 	p->setArgumentIdx(0);
 	return p;
 }

@@ -34,7 +34,7 @@ MathedInset * MathFracInset::Clone()
 {   
 	MathFracInset * p = new MathFracInset(*this);
 	// this cast will go again...
-	p->den_ = (MathParInset*) (p->den_->Clone());
+	p->den_ = static_cast<MathParInset*>(p->den_->Clone());
 	return p;
 }
 

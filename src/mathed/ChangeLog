@@ -6,6 +6,8 @@
 	* move MathIter::Copy(int, int) to MathArray::shrink(pos, pos)
 
 	* several files: subsequent changes
+	
+	* math_cursor.C: make selarray a proper MathArray
 
 
 2001-02-19  Dekel Tsur  <dekelts@tau.ac.il>

@@ -42,7 +42,7 @@
 #include "math_accentinset.h"
 #include "mathed/support.h"
 
-static MathedArray * selarray = 0;
+static MathedArray selarray;
 
 using std::endl;
 
@@ -130,7 +130,6 @@ MathedCursor::MathedCursor(MathParInset * p) // : par(p)
 	anchor   = 0;
 	lastcode = LM_TC_MIN;
 	SetPar(p);
-	//    selarray = 0;
 	if (!MathMacroTable::built)
 		MathMacroTable::mathMTable.builtinMacros();
 }
@@ -510,7 +509,7 @@ void MathedCursor::insertInset(MathedInset * p, int t)
 	if (selection) {
 		if (MathIsActive(t)) {
 			SelCut();
-			static_cast<MathParInset*>(p)->setData(selarray);
+			static_cast<MathParInset*>(p)->setData(&selarray);
 		} else
 			SelDel();
 	}
@@ -845,8 +844,10 @@ bool MathedCursor::pullArg()
 		MathedArray * a = p->GetData();
 		p->clear();
 		Delete();
-		cursor->Merge(a);
-		cursor->Adjust();
+		if (!a->empty()) {
+			cursor->Merge(a);
+			cursor->Adjust();
+		}
 
 		return true;
 	}
@@ -902,8 +903,8 @@ void MathedCursor::SelCopy()
 		int p1 = (cursor->getPos() < selpos) ? cursor->getPos() : selpos;
 		int p2 = (cursor->getPos() > selpos) ?
 			cursor->getPos() : selpos;
-		selarray = new MathedArray(*(cursor->GetData()));
-		selarray->shrink(p1, p2);
+		selarray = *(cursor->GetData());
+		selarray.shrink(p1, p2);
 		cursor->Adjust();
 		SelClear();
 	}
@@ -918,8 +919,8 @@ void MathedCursor::SelCut()
 
 		int p1 = (cursor->getPos() < selpos) ? cursor->getPos() : selpos;
 		int p2 = (cursor->getPos() > selpos) ? cursor->getPos() : selpos;
-		selarray = new MathedArray(*(cursor->GetData()));
-		selarray->shrink(p1, p2);
+		selarray = *(cursor->GetData());
+		selarray.shrink(p1, p2);
 		cursor->Clean(selpos);
 		cursor->Adjust();
 		SelClear();
@@ -946,8 +947,8 @@ void MathedCursor::SelPaste()
 	if (selection)
 		SelDel();
 
-	if (selarray) {
-		cursor->Merge(selarray);
+	if (!selarray.empty()) {
+		cursor->Merge(&selarray);
 		cursor->Adjust();
 	}
 }
