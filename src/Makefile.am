@@ -9,6 +9,7 @@ lyx_DEPENDENCIES = mathed insets support/libsupport.a
 EXTRA_DIST = config.h.in stamp-h.in
 ETAGS_ARGS = --c++
 INCLUDES = -I${top_srcdir}/images
+localedir = $(datadir)/locale
 lyx_SOURCES = \
 	BackStack.h \
 	BufferView.C \
