@@ -134,8 +134,8 @@ WorkArea::WorkArea(int xpos, int ypos, int width, int height)
 	if (!splash_file.empty()) {
 		int const splash_w = 425;
 		int const splash_h = 290;
-		int const splash_x = xpos + 0.5 * (width - 15 - splash_w);
-		int const splash_y = ypos + 0.5 * (height - splash_h);
+		int const splash_x = xpos + (width - 15 - splash_w) / 2;
+		int const splash_y = ypos + (height - splash_h) / 2;
 		splash_ = obj =
 			fl_add_pixmapbutton(FL_NORMAL_BUTTON,
 					    splash_x, splash_y, 

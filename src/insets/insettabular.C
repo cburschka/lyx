@@ -1034,7 +1034,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 			int cols = 1;
 			int rows = 1;
 			int maxCols = 1;
-			unsigned int len = clip.length();
+			string::size_type len = clip.length();
 			string::size_type p = 0;
 
 			while(p < len &&
@@ -1529,7 +1529,7 @@ bool InsetTabular::movePrevCell(BufferView * bv, bool lock)
 }
 
 
-bool InsetTabular::deletable()
+bool InsetTabular::deletable() const
 {
 	return true;
 }

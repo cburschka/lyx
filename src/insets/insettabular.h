@@ -259,7 +259,7 @@ private:
 	///
 	bool movePrevCell(BufferView *, bool lock = false);
 	///
-	bool deletable();
+	bool deletable() const;
 	///
 	int getCellXPos(int cell) const;
 	///

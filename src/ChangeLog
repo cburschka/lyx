@@ -1,3 +1,7 @@
+2001-10-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* WorkArea.C (WorkArea): remove unneeded floats in computation
+
 2001-10-01  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* buffer.C (asciiParagraph): Treat '\\' as other chars.
