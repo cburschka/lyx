@@ -53,6 +53,7 @@
 #include "tabular.h"
 #include "LString.h"
 #include "lyxcursor.h"
+#include "lyxfunc.h"
 
 class LyXLex;
 class Painter;
@@ -163,7 +164,7 @@ public:
     LyXText * getLyXText(BufferView *) const;
     void resizeLyXText(BufferView *) const;
     void OpenLayoutDialog(BufferView *) const;
-    int getStatus(string argument) const;
+    LyXFunc::func_status getStatus(string argument) const;
 
     ///
     /// Public structures and variables

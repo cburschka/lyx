@@ -569,7 +569,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 	case LFUN_TABULAR_FEATURE:
 		disable = true;
 		if (owner->view()->the_locking_inset) {
-			int ret = 0;
+			func_status ret = LyXFunc::Disabled;
 			if (owner->view()->the_locking_inset->LyxCode() == Inset::TABULAR_CODE) {
 				ret = static_cast<InsetTabular *>
 					(owner->view()->the_locking_inset)->
@@ -580,21 +580,16 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 					GetFirstLockingInsetOfType(Inset::TABULAR_CODE))->
 					getStatus(argument);
 			}
-			switch(ret) {
-			case 0:
-				break;
-			case 1:
-				disable = false;
-				break;
-			case 2:
-				disable = false;
-				flag |= LyXFunc::ToggleOn;
-				break;
-			case 3:
-				disable = false;
-				flag |= LyXFunc::ToggleOff;
-				break;
-			}
+			flag |= ret;
+		} else {
+		    static InsetTabular inset(owner->buffer(), 1, 1);
+		    func_status ret;
+
+		    disable = true;
+		    ret = inset.getStatus(argument);
+		    if ((ret & LyXFunc::ToggleOn) ||
+			(ret & LyXFunc::ToggleOff))
+			flag |= LyXFunc::ToggleOff;
 		}
 		break;
 

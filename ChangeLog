@@ -1,5 +1,10 @@
 2000-08-18  Juergen Vigna  <jug@sad.it>
 
+	* src/insets/insettabular.C (getStatus): changed to return func_status.
+
+	* src/lyxfunc.C (getStatus): fixed TabularFeatures menu to always
+	display toggle menu entries if they are.
+
 	* src/lyx_cb.C: #ifdef'ed out layout stuff which is in the
 	new document layout now.
 
