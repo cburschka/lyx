@@ -123,10 +123,10 @@ void FormRef::update()
 
 		fl_clear_choice(dialog_->choice_document);
 		fl_addto_choice(dialog_->choice_document, choice.c_str());
-
-		fl_set_choice(dialog_->choice_document,
-			      controller().getBufferNum() + 1);
 	}
+
+	fl_set_choice(dialog_->choice_document,
+		      controller().getBufferNum() + 1);
 
 	string const name = controller().
 		getBufferName(fl_get_choice(dialog_->choice_document) - 1);
