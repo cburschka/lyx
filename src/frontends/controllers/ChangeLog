@@ -1,5 +1,16 @@
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 
+	* ControlButtons.[Ch]:
+	* ControlConnections.[Ch]:
+	* ControlDialog.{h,tmpl}:
+	* ControlDialog_impl.[Ch]:
+	* GUI.h:
+	* ViewBase.[Ch]: all removed.
+
+	* Makefile.am: adjusted to suit.
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
 	* ControlPreamble.[Ch]: converted to the dialog-based scheme.
 
 2004-03-31  Angus Leeming  <leeming@lyx.org>

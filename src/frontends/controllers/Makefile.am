@@ -1,6 +1,6 @@
 include $(top_srcdir)/config/common.am
 
-EXTRA_DIST = BCView.tmpl ControlDialog.tmpl
+EXTRA_DIST = BCView.tmpl
 
 INCLUDES = -I$(top_srcdir)/src $(BOOST_INCLUDES)
 
@@ -29,8 +29,6 @@ libcontrollers_la_SOURCES= \
 	ControlAboutlyx.h \
 	ControlBibtex.C \
 	ControlBibtex.h \
-	ControlButtons.C \
-	ControlButtons.h \
 	ControlBox.C \
 	ControlBox.h \
 	ControlBranch.C \
@@ -45,11 +43,6 @@ libcontrollers_la_SOURCES= \
 	ControlCommand.h \
 	ControlCommandBuffer.C \
 	ControlCommandBuffer.h \
-	ControlConnections.C \
-	ControlConnections.h \
-	ControlDialog.h \
-	ControlDialog_impl.C \
-	ControlDialog_impl.h \
 	ControlDocument.C \
 	ControlDocument.h \
 	ControlErrorList.C \
@@ -102,8 +95,5 @@ libcontrollers_la_SOURCES= \
 	ControlVSpace.h \
 	ControlWrap.C \
 	ControlWrap.h \
-	GUI.h \
-	ViewBase.h \
-	ViewBase.C \
 	helper_funcs.C \
 	helper_funcs.h

@@ -12,7 +12,6 @@
 #include <gtkmm.h>
 
 #include "GViewBase.h"
-#include "ControlButtons.h"
 #include "support/filetools.h"
 
 using std::string;

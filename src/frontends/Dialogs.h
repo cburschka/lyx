@@ -28,8 +28,6 @@ class Dialogs : boost::noncopyable
 public:
 	///
 	Dialogs(LyXView &);
-	///
-	~Dialogs();
 
 	/** Redraw all visible dialogs because, for example, the GUI colours
 	 *  have been re-mapped.
@@ -44,13 +42,6 @@ public:
 
 	/// Are the tooltips on or off?
 	static bool tooltipsEnabled();
-
-	/// Signals slated to go
-	//@{
-	boost::signal0<void> hideAllSignal;
-	boost::signal0<void> hideBufferDependentSignal;
-	boost::signal1<void, bool> updateBufferDependentSignal;
-	//@}
 
 	/// Hide all visible dialogs
 	void hideAll() const;
@@ -121,13 +112,6 @@ private:
 
 	///
 	std::map<std::string, DialogPtr> dialogs_;
-
-	/// the stuff below is slated to go...
-	void init_pimpl();
-	///
-	class Impl;
-	///
-	Impl * pimpl_;
 };
 
 #endif

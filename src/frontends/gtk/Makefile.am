@@ -77,9 +77,7 @@ xforms_objects = \
 	../xforms/ColorHandler.lo \
 	../xforms/Color.lo \
 	../xforms/combox.lo \
-	../xforms/Dialogs2.lo \
 	../xforms/fdesign_base.lo \
-	../xforms/FormBase.lo \
 	../xforms/FormBibitem.lo \
 	../xforms/FormBibtex.lo \
 	../xforms/FormBox.lo \

@@ -1,5 +1,12 @@
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs2.C:
+	* FormBase.[Ch]: removed.
+
+	* Makefile.am: adjusted to suit.
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
 	* forms/form_search.fd: s/C_FormBase/C_FormDialogView_/ and thereby
 	fix a crash when invoking the dialog's callback functions.
 

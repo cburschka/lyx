@@ -1,5 +1,13 @@
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs2.C:
+	* Qt2Base.[Ch]: removed.
+
+	* Makefile.am:
+	* Makefile.dialogs: adjusted to suit.
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
 	* Dialogs.C (build): added "preamble" as a symonym for "document".
 	* Dialogs2.C (showPreamble): removed.
 

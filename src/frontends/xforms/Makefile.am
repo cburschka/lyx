@@ -56,7 +56,6 @@ libxforms_la_SOURCES = \
 	ColorHandler.C \
 	ColorHandler.h \
 	Dialogs.C \
-	Dialogs2.C \
 	FileDialog.C \
 	FontInfo.C \
 	FontInfo.h \
@@ -64,8 +63,6 @@ libxforms_la_SOURCES = \
 	FormFiledialog.C \
 	FormAboutlyx.C \
 	FormAboutlyx.h \
-	FormBase.C \
-	FormBase.h \
 	FormDialogView.C \
 	FormDialogView.h \
 	FormBibitem.C \

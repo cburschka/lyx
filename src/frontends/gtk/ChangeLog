@@ -1,5 +1,11 @@
 2004-03-31  Angus Leeming  <leeming@lyx.org>
 
+	* GViewBase.C: remove mention of ControlButtons.h.
+
+	* Makefile.am: remove mention of xforms' Dialogs2.lo, FormBase.lo.
+
+2004-03-31  Angus Leeming  <leeming@lyx.org>
+
 	* Dialogs.C (build): added preamble dialog.
 
 2004-03-31  Angus Leeming  <leeming@lyx.org>

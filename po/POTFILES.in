@@ -18,12 +18,10 @@ src/frontends/LyXView.C
 src/frontends/controllers/ControlAboutlyx.C
 src/frontends/controllers/ControlBibtex.C
 src/frontends/controllers/ControlBox.C
-src/frontends/controllers/ControlDocument.C
 src/frontends/controllers/ControlExternal.C
 src/frontends/controllers/ControlGraphics.C
 src/frontends/controllers/ControlInclude.C
 src/frontends/controllers/ControlLog.C
-src/frontends/controllers/ControlPreamble.C
 src/frontends/controllers/ControlPrefs.C
 src/frontends/controllers/ControlPrint.C
 src/frontends/controllers/ControlSpellchecker.C
@@ -90,7 +88,6 @@ src/frontends/xforms/Alert_pimpl.C
 src/frontends/xforms/ColorHandler.C
 src/frontends/xforms/Dialogs.C
 src/frontends/xforms/FormAboutlyx.C
-src/frontends/xforms/FormBase.C
 src/frontends/xforms/FormBibitem.C
 src/frontends/xforms/FormBibtex.C
 src/frontends/xforms/FormBox.C
@@ -190,8 +187,6 @@ src/output_plaintext.C
 src/paragraph.C
 src/rowpainter.C
 src/support/globbing.C
-src/support/path_defines.C
-src/tex2lyx/lengthcommon.C
 src/text.C
 src/text2.C
 src/text3.C

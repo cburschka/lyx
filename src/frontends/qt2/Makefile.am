@@ -21,7 +21,6 @@ libqt2_la_SOURCES = \
 	QDialogView.h \
 	Alert_pimpl.C \
 	Dialogs.C \
-	Dialogs2.C \
 	FileDialog.C \
 	LyXKeySymFactory.C \
 	LyXScreenFactory.C \

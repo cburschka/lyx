@@ -68,13 +68,6 @@ Dialogs::Dialogs(LyXView & lyxview)
 {
 	// Connect signals
 	redrawGUI().connect(boost::bind(&Dialogs::redraw, this));
-	hideSignal().connect(boost::bind(&Dialogs::hideSlot, this, _1, _2));
-
-	// All this is slated to go
-	init_pimpl();
-	// reduce the number of connections needed in
-	// dialogs by a simple connection here.
-	hideAllSignal.connect(hideBufferDependentSignal);
 }
 
 
@@ -185,7 +178,6 @@ void Dialogs::hideAll() const
 	for(; it != end; ++it) {
 		it->second->hide();
 	}
-	hideAllSignal();
 }
 
 
@@ -199,7 +191,6 @@ void Dialogs::hideBufferDependent() const
 		if (dialog->controller().isBufferDependent())
 			dialog->hide();
 	}
-	hideBufferDependentSignal();
 }
 
 
@@ -219,7 +210,6 @@ void Dialogs::updateBufferDependent(bool switched) const
 			dialog->RestoreButton();
 		}
 	}
-	updateBufferDependentSignal(switched);
 }
 
 
