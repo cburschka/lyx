@@ -109,7 +109,7 @@ string const minipageindent_def =
 
 string const boldsymbol_def =
 	"%% Bold symbol macro for standard LaTeX users\n"
-	"\\newcommand{\\boldsymbol}[1]{\\mbox{\\boldmath $#1$}}\n";
+	"\\providecommand{\\boldsymbol}[1]{\\mbox{\\boldmath $#1$}}\n";
 
 string const binom_def =
 	"%% Binom macro for standard LaTeX users\n"

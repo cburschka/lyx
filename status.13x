@@ -26,6 +26,8 @@ What's new
 
 - use opening quotation marks after an opening square bracket
 
+- Prevent clashes with LaTeX packages defining "\boldsymbol".
+
 - when the autodetection of latex classes cannot be done for some
   reason, provide a sensible list of textclasses
 

@@ -1,3 +1,10 @@
+2004-04-08  Angus Leeming  <leeming@lyx.org>
+
+	* lyx_sty.C (boldsymbol_def): modify so that it outputs
+	"\providecommand" rather than "newcommand", thereby preventing
+	clashes with packages that define "boldsymbol" themselves.
+	Eg, beamer.
+
 2004-02-18  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* version.C.in: update release date
