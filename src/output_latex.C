@@ -145,7 +145,13 @@ TeXEnvironment(Buffer const & buf,
 	do {
 		par = TeXOnePar(buf, paragraphs, par, os, texrow, runparams);
 
-		if (par != const_cast<ParagraphList&>(paragraphs).end() && par->params().depth() > pit->params().depth()) {
+		if (par == const_cast<ParagraphList&>(paragraphs).end()) {
+			// Make sure that the last paragraph is
+			// correctly terminated (because TeXOnePar does
+			// not add a \n in this case)
+			os << '\n';
+			texrow.newline();
+		} else if (par->params().depth() > pit->params().depth()) {
 			    if (par->layout()->isParagraph()) {
 
 			    // Thinko!
@@ -381,6 +387,25 @@ paragraphs);
 		}
 	}
 
+	if (boost::next(pit) == const_cast<ParagraphList&>(paragraphs).end()
+	    && language->babel() != doc_language->babel()) {
+		// Since \selectlanguage write the language to the aux file,
+		// we need to reset the language at the end of footnote or
+		// float.
+
+		if (lyxrc.language_command_end.empty())
+			os << subst(lyxrc.language_command_begin,
+				    "$$lang",
+				    doc_language->babel())
+			   << endl;
+		else
+			os << subst(lyxrc.language_command_end,
+				    "$$lang",
+				    language->babel())
+			   << endl;
+		texrow.newline();
+	}
+
 	if (!pit->forceDefaultParagraphs()) {
 		further_blank_line = false;
 
@@ -399,27 +424,11 @@ paragraphs);
 	}
 
 	// we don't need it for the last paragraph!!!
+	// Note from JMarc: we will re-add a \n explicitely in
+	// TeXEnvironment, because it is needed in this case
 	if (boost::next(pit) != const_cast<ParagraphList&>(paragraphs).end()) {
 		os << '\n';
 		texrow.newline();
-	} else {
-		// Since \selectlanguage write the language to the aux file,
-		// we need to reset the language at the end of footnote or
-		// float.
-
-		if (language->babel() != doc_language->babel()) {
-			if (lyxrc.language_command_end.empty())
-				os << subst(lyxrc.language_command_begin,
-					    "$$lang",
-					    doc_language->babel())
-				   << endl;
-			else
-				os << subst(lyxrc.language_command_end,
-					    "$$lang",
-					    language->babel())
-				   << endl;
-			texrow.newline();
-		}
 	}
 
 	lyxerr[Debug::LATEX] << "TeXOnePar...done " << &*boost::next(pit) << endl;
