@@ -111,7 +111,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.4\n"
-"POT-Creation-Date: 2000-12-29 22:25+0100\n"
+"POT-Creation-Date: 2001-01-11 19:19+0100\n"
 "PO-Revision-Date: 2000-03-10 02:56+01:00\n"
 "Last-Translator:  Jean-Pierre Chrétien <chretien@cert.fr>\n"
 "Language-Team: lyxfr <http://www.bde.enseeiht.fr/~faucheo/lyxfr.html>\n"
@@ -119,16 +119,16 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/buffer.C:488
+#: src/buffer.C:506
 #, fuzzy
 msgid "Textclass error"
 msgstr "Erreur de chargement de la classe de document !"
 
-#: src/buffer.C:489
+#: src/buffer.C:507
 msgid "The document uses an unknown textclass \""
 msgstr "Le document utilise une classe inconnue \""
 
-#: src/buffer.C:491
+#: src/buffer.C:509
 msgid "LyX will not be able to produce output correctly."
 msgstr "LyX ne sera pas à même de produire correctement une sortie"
 
@@ -137,101 +137,110 @@ msgstr "LyX ne sera pas à même de produire correctement une sortie"
 #. or stop loading the file.
 #. I can substitute but I don't see how I can
 #. stop loading... ideas??  ARRae980418
-#: src/buffer.C:500
+#: src/buffer.C:518
 msgid "Textclass Loading Error!"
 msgstr "Erreur de chargement de la classe de document !"
 
-#: src/buffer.C:501
+#: src/buffer.C:519
 msgid "Can't load textclass "
 msgstr "Impossible de charger la classe du document "
 
-#: src/buffer.C:503
+#: src/buffer.C:521
 msgid "-- substituting default"
 msgstr "-- valeur par défaut substituée"
 
-#: src/buffer.C:1059
+#: src/buffer.C:1078
 #, c-format
 msgid "Warning: need lyxformat %.2f but found %.2f"
 msgstr "Attention : nécessite le format lyx %.2f, pas le %.2f"
 
-#: src/buffer.C:1063
+#: src/buffer.C:1082
 #, c-format
 msgid "ERROR: need lyxformat %.2f but found %.2f"
 msgstr "ERREUR : nécessite le format lyx %.2f, pas le %.2f"
 
-#: src/buffer.C:1074
+#. future format
+#: src/buffer.C:1093 src/buffer.C:1120 src/buffer.C:1140
 msgid "Warning!"
 msgstr "Attention !"
 
-#: src/buffer.C:1075
+#: src/buffer.C:1094 src/buffer.C:1141
 msgid "Reading of document is not complete"
 msgstr "Lecture du document incomplète"
 
-#: src/buffer.C:1076
+#: src/buffer.C:1095 src/buffer.C:1142
 msgid "Maybe the document is truncated"
 msgstr "Sans doute le document est-il tronqué"
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1082 src/buffer.C:1089 src/buffer.C:1092
+#: src/buffer.C:1101 src/buffer.C:1127 src/buffer.C:1146 src/buffer.C:1149
 msgid "ERROR!"
 msgstr "ERREUR !"
 
-#: src/buffer.C:1083
+#: src/buffer.C:1102 src/buffer.C:1128
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr ""
 "Fichier enregistré sous un format obsolète. Utiliser LyX 0.10.x pour le "
 "relire !"
 
-#: src/buffer.C:1089
+#: src/buffer.C:1121
+msgid "LyX file format is newer that what"
+msgstr ""
+
+#: src/buffer.C:1122
+msgid "is supported in this LyX version. Expect some problems."
+msgstr ""
+
+#: src/buffer.C:1146
 msgid "Not a LyX file!"
 msgstr "Ce n'est pas un fichier LyX !"
 
-#: src/buffer.C:1092
+#: src/buffer.C:1149
 msgid "Unable to read file!"
 msgstr "Impossible de lire le fichier !"
 
-#: src/buffer.C:1186 src/buffer.C:1189
+#: src/buffer.C:1243 src/buffer.C:1246
 msgid "Error! Document is read-only: "
 msgstr "Erreur ! Document en lecture seule : "
 
-#: src/buffer.C:1199 src/buffer.C:1202
+#: src/buffer.C:1256 src/buffer.C:1259
 msgid "Error! Cannot write file: "
 msgstr "Erreur ! Impossible d'écrire le fichier : "
 
-#: src/buffer.C:1210 src/buffer.C:1213
+#: src/buffer.C:1267 src/buffer.C:1270
 msgid "Error! Cannot open file: "
 msgstr "Erreur ! Impossible de lire le fichier : "
 
-#: src/buffer.C:1505
+#: src/buffer.C:1566
 msgid "Error: Cannot write file:"
 msgstr "Erreur ! Impossible d'écrire le fichier : "
 
-#: src/buffer.C:1538
+#: src/buffer.C:1599
 msgid "Error: Cannot open file: "
 msgstr "Erreur ! Impossible de lire le fichier : "
 
-#: src/buffer.C:2163 src/buffer.C:2812
+#: src/buffer.C:2224 src/buffer.C:2873
 msgid "LYX_ERROR:"
 msgstr "ERREUR !"
 
-#: src/buffer.C:2163 src/buffer.C:2812
+#: src/buffer.C:2224 src/buffer.C:2873
 msgid "Cannot write file"
 msgstr "Impossible d'écrire le fichier"
 
-#: src/buffer.C:2250 src/buffer.C:2894
+#: src/buffer.C:2311 src/buffer.C:2955
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Erreur : mauvaise profondeur pour la commande LatexType\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3203
+#: src/buffer.C:3264
 msgid "Running chktex..."
 msgstr "Exécution de chktex..."
 
-#: src/buffer.C:3216
+#: src/buffer.C:3277
 msgid "chktex did not work!"
 msgstr "chktex a échoué !"
 
-#: src/buffer.C:3217
+#: src/buffer.C:3278
 msgid "Could not run with file:"
 msgstr "Impossible d'exécuter le fichier : "
 
@@ -294,7 +303,7 @@ msgstr "Erreur !"
 msgid "Unable to open template"
 msgstr "Impossible d'ouvrir le modèle"
 
-#: src/bufferlist.C:476 src/lyxfunc.C:3062 src/lyxfunc.C:3225
+#: src/bufferlist.C:476 src/lyxfunc.C:3072 src/lyxfunc.C:3235
 msgid "Document is already open:"
 msgstr "Le document est déjà ouvert :"
 
@@ -332,51 +341,51 @@ msgstr "Le fichier spécifié est illisible : "
 msgid "Cannot open specified file: "
 msgstr "Impossible d'ouvrir le fichier spécifié : "
 
-#: src/BufferView2.C:403 src/BufferView2.C:417
+#: src/BufferView2.C:407 src/BufferView2.C:421
 msgid "Open/Close..."
 msgstr "Ouvrir/Fermer..."
 
-#: src/BufferView2.C:431 src/LyXAction.C:406
+#: src/BufferView2.C:435 src/LyXAction.C:406
 msgid "Undo"
 msgstr "Annuler"
 
-#: src/BufferView2.C:436
+#: src/BufferView2.C:440
 msgid "No further undo information"
 msgstr "Pas d'information d'annulation disponible"
 
-#: src/BufferView2.C:447
+#: src/BufferView2.C:451
 msgid "Redo not yet supported in math mode"
 msgstr "Refaire n'est pas disponible en mode mathématique"
 
-#: src/BufferView2.C:452 src/LyXAction.C:357
+#: src/BufferView2.C:456 src/LyXAction.C:357
 msgid "Redo"
 msgstr "Recommencer"
 
-#: src/BufferView2.C:457
+#: src/BufferView2.C:461
 msgid "No further redo information"
 msgstr "Pas d'information disponible pour refaire"
 
-#: src/BufferView2.C:554
+#: src/BufferView2.C:558
 msgid "Paragraph environment type copied"
 msgstr "Le style de l'environnement du paragraphe a été recopié"
 
-#: src/BufferView2.C:563
+#: src/BufferView2.C:567
 msgid "Paragraph environment type set"
 msgstr "Le style de l'environnement du paragraphe a été paramétré"
 
-#: src/BufferView2.C:577 src/LyXAction.C:169 src/MenuBackend.C:425
+#: src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:425
 msgid "Copy"
 msgstr "Copier"
 
-#: src/BufferView2.C:588 src/LyXAction.C:170 src/MenuBackend.C:424
+#: src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:424
 msgid "Cut"
 msgstr "Couper"
 
-#: src/BufferView2.C:597 src/LyXAction.C:346 src/MenuBackend.C:426
+#: src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:426
 msgid "Paste"
 msgstr "Coller"
 
-#: src/BufferView2.C:632 src/BufferView2.C:636
+#: src/BufferView2.C:636 src/BufferView2.C:640
 msgid "No more notes"
 msgstr "Pas d'autres notes"
 
@@ -638,8 +647,8 @@ msgstr ""
 "car la conversion de la classe \n"
 
 # à revoir
-#: src/CutAndPaste.C:476 src/insets/insettext.C:946 src/text.C:3942
-#: src/text.C:3950 src/text.C:3977 src/text2.C:2200 src/text2.C:2313
+#: src/CutAndPaste.C:476 src/insets/insettext.C:970 src/text.C:3952
+#: src/text.C:3960 src/text.C:3987 src/text2.C:2197 src/text2.C:2310
 msgid "Impossible operation"
 msgstr "Opération interdite"
 
@@ -648,8 +657,8 @@ msgid "Can't paste float into float!"
 msgstr "Coller un flottant dans un flottant est interdit !"
 
 #: src/CutAndPaste.C:478 src/insets/insetert.C:67
-#: src/insets/insettabular.C:1571 src/insets/insettext.C:948 src/text.C:3944
-#: src/text.C:3952 src/text.C:3979
+#: src/insets/insettabular.C:1700 src/insets/insettext.C:972 src/text.C:3954
+#: src/text.C:3962 src/text.C:3989
 msgid "Sorry."
 msgstr "Désolé."
 
@@ -3129,7 +3138,7 @@ msgstr "Autre...|#O"
 msgid "Other...|#T"
 msgstr "Autre...|#T"
 
-#: src/form1.C:51 src/frontends/xforms/FormDocument.C:276
+#: src/form1.C:51 src/frontends/xforms/FormDocument.C:277
 #: src/frontends/xforms/FormPreferences.C:280
 msgid "Language"
 msgstr "Langue"
@@ -3572,25 +3581,25 @@ msgstr "Insérer référence"
 #: src/frontends/gnome/FormToc.C:100 src/frontends/gnome/FormToc.C:167
 #: src/frontends/kde/FormToc.C:167 src/frontends/kde/FormToc.C:168
 #: src/frontends/kde/tocdlg.C:28 src/frontends/xforms/FormToc.C:35
-#: src/insets/insettoc.C:21
+#: src/insets/insettoc.C:22
 msgid "Table of Contents"
 msgstr "Table des matières"
 
 #: src/frontends/gnome/FormToc.C:104 src/frontends/gnome/FormToc.C:173
 #: src/frontends/kde/FormToc.C:172 src/frontends/kde/FormToc.C:173
-#: src/frontends/kde/tocdlg.C:29 src/insets/insettoc.C:25
+#: src/frontends/kde/tocdlg.C:29 src/insets/insettoc.C:26
 msgid "List of Figures"
 msgstr "Liste des figures"
 
 #: src/frontends/gnome/FormToc.C:108 src/frontends/gnome/FormToc.C:185
 #: src/frontends/kde/FormToc.C:177 src/frontends/kde/FormToc.C:178
-#: src/frontends/kde/tocdlg.C:30 src/insets/insettoc.C:27
+#: src/frontends/kde/tocdlg.C:30 src/insets/insettoc.C:28
 msgid "List of Tables"
 msgstr "Liste des tableaux"
 
 #: src/frontends/gnome/FormToc.C:112 src/frontends/gnome/FormToc.C:179
 #: src/frontends/kde/FormToc.C:182 src/frontends/kde/FormToc.C:183
-#: src/frontends/kde/tocdlg.C:31 src/insets/insettoc.C:23
+#: src/frontends/kde/tocdlg.C:31 src/insets/insettoc.C:24
 msgid "List of Algorithms"
 msgstr "Liste des algorithmes"
 
@@ -4314,10 +4323,6 @@ msgstr ""
 msgid "Output as a hyperlink ?"
 msgstr ""
 
-#: src/frontends/xforms/FormCitation.C:37
-msgid "Citation"
-msgstr ""
-
 #: src/frontends/xforms/form_citation.C:29
 #, fuzzy
 msgid "Inset keys|#I"
@@ -4398,6 +4403,16 @@ msgstr "Ordre inverse|#R"
 msgid "Cancel|#C^["
 msgstr "Annuler|^["
 
+#: src/frontends/xforms/FormCitation.C:37
+msgid "Citation"
+msgstr ""
+
+#: src/frontends/xforms/form_copyright.C:41
+#: src/frontends/xforms/form_error.C:31 src/frontends/xforms/form_toc.C:48
+#, fuzzy
+msgid "Close|#C^[^M"
+msgstr "Fermer|#C^[^M"
+
 #: src/frontends/xforms/FormCopyright.C:20
 msgid "Copyright and Warranty"
 msgstr "License et Garantie"
@@ -4443,135 +4458,6 @@ msgstr ""
 " en même temps que ce programme ; si ce n'est pas le cas,\n"
 "écrivez à la Free Software Foundation, Inc., 59 Temple Place,\n"
 "Suite 330, Boston, MA 02111-1307, États-Unis."
-
-#: src/frontends/xforms/form_copyright.C:41
-#: src/frontends/xforms/form_error.C:31 src/frontends/xforms/form_toc.C:48
-#, fuzzy
-msgid "Close|#C^[^M"
-msgstr "Fermer|#C^[^M"
-
-#: src/frontends/xforms/FormDocument.C:48
-msgid "Document Layout"
-msgstr "Apparence du document"
-
-#: src/frontends/xforms/FormDocument.C:117
-msgid ""
-" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
-"B4 | B5 "
-msgstr ""
-"Défaut | Personnalisée | Lettre US | Legal US | Executive US | A3 | A4 | A5 "
-"| B3 | B4 | B5 "
-
-#: src/frontends/xforms/FormDocument.C:120
-msgid ""
-" None | A4 small Margins (only portrait) | A4 very small Margins (only "
-"portrait) | A4 very wide margins (only portrait) "
-msgstr ""
-"Aucune | A4 petites marges (portrait seulement) | A4 très petites marges "
-"(portrait seulement) | A4 très grandes marges (portrait seulement) "
-
-# à revoir
-# OneHalf c'et 1/2 ou 1 et demi ?
-#: src/frontends/xforms/FormDocument.C:178
-msgid " Single | OneHalf | Double | Other "
-msgstr "Simple | Un et demi | Double | Autre "
-
-#: src/frontends/xforms/FormDocument.C:186
-msgid " Smallskip | Medskip | Bigskip | Length "
-msgstr "Petit | Moyen | Grand | Valeur "
-
-#: src/frontends/xforms/FormDocument.C:234
-msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
-msgstr " ``texte'' | ''texte'' | ,,texte`` | ,,texte'' | «texte» | »texte« "
-
-#: src/frontends/xforms/FormDocument.C:262
-msgid ""
-" default | tiny | script | footnote | small | normal | large | Large | LARGE "
-"| huge | Huge"
-msgstr ""
-"default | petit(4) | scripte(3) | note de bas de page(2)  | petit(1) | "
-"normal | grand(1) | grand(2) | grand(3) | grand(4) | grand(5)"
-
-#: src/frontends/xforms/FormDocument.C:272 src/insets/figinset.C:1960
-#: src/insets/insetexternal.C:143 src/lyxfunc.C:3093 src/lyxfunc.C:3169
-#: src/lyxfunc.C:3301
-msgid "Document"
-msgstr ""
-
-#: src/frontends/xforms/FormDocument.C:274
-#, fuzzy
-msgid "Paper"
-msgstr "Coller"
-
-#: src/frontends/xforms/FormDocument.C:278
-#: src/frontends/xforms/FormParagraph.C:133
-#, fuzzy
-msgid "Extra"
-msgstr "Options Suppl.|#X"
-
-#: src/frontends/xforms/FormDocument.C:280
-#, fuzzy
-msgid "Bullets"
-msgstr "Indentation des puces"
-
-#: src/frontends/xforms/FormDocument.C:283
-msgid ""
-"Your version of libXpm is older than 4.7.\n"
-"The `bullet' tab of the document popup has been disabled"
-msgstr ""
-
-#: src/frontends/xforms/FormDocument.C:307
-msgid "Document layout set"
-msgstr "Mise en page du document paramétrée"
-
-#: src/frontends/xforms/FormDocument.C:424
-msgid "Converting document to new document class..."
-msgstr "Conversion du document vers sa nouvelle classe..."
-
-#: src/frontends/xforms/FormDocument.C:432
-msgid "One paragraph couldn't be converted"
-msgstr "Un paragraphe n'a pu être converti"
-
-#: src/frontends/xforms/FormDocument.C:435
-msgid " paragraphs couldn't be converted"
-msgstr " paragraphes n'ont pu être convertis"
-
-#. problem changing class -- warn user and retain old style
-#: src/frontends/xforms/FormDocument.C:437
-#: src/frontends/xforms/FormDocument.C:444
-#: src/frontends/xforms/FormDocument.C:1103
-msgid "Conversion Errors!"
-msgstr "Erreurs de conversion !"
-
-#: src/frontends/xforms/FormDocument.C:438
-msgid "into chosen document class"
-msgstr "dans la classe choisie"
-
-#: src/frontends/xforms/FormDocument.C:445
-#, fuzzy
-msgid "Errors loading new document class."
-msgstr "Impossible de passer à la nouvelle classe de documents."
-
-#: src/frontends/xforms/FormDocument.C:446
-#: src/frontends/xforms/FormDocument.C:1105
-msgid "Reverting to original document class."
-msgstr "Retour à la classe originelle."
-
-#: src/frontends/xforms/FormDocument.C:823
-msgid "Document is read-only. No changes to layout permitted."
-msgstr "Document en lecture seule. Modifications de style interdites."
-
-#: src/frontends/xforms/FormDocument.C:1093
-msgid "Should I set some parameters to"
-msgstr "Dois-je allouer moi-même"
-
-#: src/frontends/xforms/FormDocument.C:1094
-msgid "the defaults of this document class?"
-msgstr "les paramètres par défaut de cette classe de documents ?"
-
-#: src/frontends/xforms/FormDocument.C:1104
-msgid "Unable to switch to new document class."
-msgstr "Impossible de passer à la nouvelle classe de documents."
 
 #: src/frontends/xforms/form_document.C:30
 #: src/frontends/xforms/form_paragraph.C:314
@@ -4823,18 +4709,132 @@ msgstr ""
 msgid "Ding 1|#D"
 msgstr ""
 
+#: src/frontends/xforms/FormDocument.C:48
+msgid "Document Layout"
+msgstr "Apparence du document"
+
+#: src/frontends/xforms/FormDocument.C:117
+msgid ""
+" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
+"B4 | B5 "
+msgstr ""
+"Défaut | Personnalisée | Lettre US | Legal US | Executive US | A3 | A4 | A5 "
+"| B3 | B4 | B5 "
+
+#: src/frontends/xforms/FormDocument.C:120
+msgid ""
+" None | A4 small Margins (only portrait) | A4 very small Margins (only "
+"portrait) | A4 very wide margins (only portrait) "
+msgstr ""
+"Aucune | A4 petites marges (portrait seulement) | A4 très petites marges "
+"(portrait seulement) | A4 très grandes marges (portrait seulement) "
+
+# à revoir
+# OneHalf c'et 1/2 ou 1 et demi ?
+#: src/frontends/xforms/FormDocument.C:179
+msgid " Single | OneHalf | Double | Other "
+msgstr "Simple | Un et demi | Double | Autre "
+
+#: src/frontends/xforms/FormDocument.C:187
+msgid " Smallskip | Medskip | Bigskip | Length "
+msgstr "Petit | Moyen | Grand | Valeur "
+
+#: src/frontends/xforms/FormDocument.C:236
+msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
+msgstr " ``texte'' | ''texte'' | ,,texte`` | ,,texte'' | «texte» | »texte« "
+
+#: src/frontends/xforms/FormDocument.C:263
+msgid ""
+" default | tiny | script | footnote | small | normal | large | Large | LARGE "
+"| huge | Huge"
+msgstr ""
+"default | petit(4) | scripte(3) | note de bas de page(2)  | petit(1) | "
+"normal | grand(1) | grand(2) | grand(3) | grand(4) | grand(5)"
+
+#: src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1960
+#: src/insets/insetexternal.C:143 src/lyxfunc.C:3103 src/lyxfunc.C:3179
+#: src/lyxfunc.C:3311
+msgid "Document"
+msgstr ""
+
+#: src/frontends/xforms/FormDocument.C:275
+#, fuzzy
+msgid "Paper"
+msgstr "Coller"
+
+#: src/frontends/xforms/FormDocument.C:279
+#: src/frontends/xforms/FormParagraph.C:133
+#, fuzzy
+msgid "Extra"
+msgstr "Options Suppl.|#X"
+
+#: src/frontends/xforms/FormDocument.C:281
+#, fuzzy
+msgid "Bullets"
+msgstr "Indentation des puces"
+
+#: src/frontends/xforms/FormDocument.C:284
+msgid ""
+"Your version of libXpm is older than 4.7.\n"
+"The `bullet' tab of the document popup has been disabled"
+msgstr ""
+
+#: src/frontends/xforms/FormDocument.C:308
+msgid "Document layout set"
+msgstr "Mise en page du document paramétrée"
+
+#: src/frontends/xforms/FormDocument.C:426
+msgid "Converting document to new document class..."
+msgstr "Conversion du document vers sa nouvelle classe..."
+
+#: src/frontends/xforms/FormDocument.C:434
+msgid "One paragraph couldn't be converted"
+msgstr "Un paragraphe n'a pu être converti"
+
+#: src/frontends/xforms/FormDocument.C:437
+msgid " paragraphs couldn't be converted"
+msgstr " paragraphes n'ont pu être convertis"
+
+#. problem changing class -- warn user and retain old style
+#: src/frontends/xforms/FormDocument.C:439
+#: src/frontends/xforms/FormDocument.C:446
+#: src/frontends/xforms/FormDocument.C:1108
+msgid "Conversion Errors!"
+msgstr "Erreurs de conversion !"
+
+#: src/frontends/xforms/FormDocument.C:440
+msgid "into chosen document class"
+msgstr "dans la classe choisie"
+
+#: src/frontends/xforms/FormDocument.C:447
+#, fuzzy
+msgid "Errors loading new document class."
+msgstr "Impossible de passer à la nouvelle classe de documents."
+
+#: src/frontends/xforms/FormDocument.C:448
+#: src/frontends/xforms/FormDocument.C:1110
+msgid "Reverting to original document class."
+msgstr "Retour à la classe originelle."
+
+#: src/frontends/xforms/FormDocument.C:825
+msgid "Document is read-only. No changes to layout permitted."
+msgstr "Document en lecture seule. Modifications de style interdites."
+
+#: src/frontends/xforms/FormDocument.C:1100
+msgid "Should I set some parameters to"
+msgstr "Dois-je allouer moi-même"
+
+#: src/frontends/xforms/FormDocument.C:1101
+msgid "the defaults of this document class?"
+msgstr "les paramètres par défaut de cette classe de documents ?"
+
+#: src/frontends/xforms/FormDocument.C:1109
+msgid "Unable to switch to new document class."
+msgstr "Impossible de passer à la nouvelle classe de documents."
+
 #: src/frontends/xforms/FormError.C:26
 msgid "LaTeX Error"
 msgstr "Erreur LaTeX"
-
-#: src/frontends/xforms/FormGraphics.C:36
-#: src/frontends/xforms/FormGraphics.C:359
-msgid "Graphics"
-msgstr "Graphique"
-
-#: src/frontends/xforms/FormGraphics.C:368 src/insets/figinset.C:1959
-msgid "Clipart"
-msgstr ""
 
 #: src/frontends/xforms/form_graphics.C:33
 #, fuzzy
@@ -4925,8 +4925,13 @@ msgstr "Mise à jour|#Uu"
 msgid "Ok"
 msgstr ""
 
-#: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:36
-msgid "Index"
+#: src/frontends/xforms/FormGraphics.C:36
+#: src/frontends/xforms/FormGraphics.C:359
+msgid "Graphics"
+msgstr "Graphique"
+
+#: src/frontends/xforms/FormGraphics.C:368 src/insets/figinset.C:1959
+msgid "Clipart"
 msgstr ""
 
 #: src/frontends/xforms/form_index.C:29
@@ -4934,33 +4939,9 @@ msgstr ""
 msgid "Keyword|#K"
 msgstr "Mots clés :|#K"
 
-#: src/frontends/xforms/FormParagraph.C:33
-#, fuzzy
-msgid "Paragraph Layout"
-msgstr "Paramètres optionnels du style"
-
-#: src/frontends/xforms/FormParagraph.C:92
-#: src/frontends/xforms/FormParagraph.C:95
-msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
-msgstr "Aucun | Défaut | Petit | Moyen | Grand | Ressort vertical | Valeur "
-
-#. now make them fit together
-#: src/frontends/xforms/FormParagraph.C:132
-#, fuzzy
-msgid "General"
-msgstr "Allemand"
-
-#: src/frontends/xforms/FormParagraph.C:680
-#: src/frontends/xforms/FormParagraph.C:717
-#: src/frontends/xforms/FormTabular.C:454
-#: src/frontends/xforms/FormTabular.C:466
-#: src/frontends/xforms/FormTabular.C:478
-msgid "Warning: Invalid Length (valid example: 10mm)"
-msgstr "Attention : format incorrect (exemple correct: 10mm)"
-
-#: src/frontends/xforms/FormParagraph.C:729
-msgid "Warning: Invalid percent value (0-100)"
-msgstr "Attention : pourcentage incorrect"
+#: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:36
+msgid "Index"
+msgstr ""
 
 # contrainte de longueur
 #: src/frontends/xforms/form_paragraph.C:40
@@ -5094,339 +5075,33 @@ msgstr "Extension floatflt|#F"
 msgid "Cancel|C#C^["
 msgstr "Annuler|^["
 
-#: src/frontends/xforms/FormPreferences.C:68
+#: src/frontends/xforms/FormParagraph.C:33
 #, fuzzy
-msgid "Preferences"
-msgstr "Insérer référence"
+msgid "Paragraph Layout"
+msgstr "Paramètres optionnels du style"
 
-#: src/frontends/xforms/FormPreferences.C:220
-msgid "Look & Feel"
-msgstr ""
+#: src/frontends/xforms/FormParagraph.C:92
+#: src/frontends/xforms/FormParagraph.C:95
+msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
+msgstr "Aucun | Défaut | Petit | Moyen | Grand | Ressort vertical | Valeur "
 
-#: src/frontends/xforms/FormPreferences.C:223
-msgid "Lang Opts"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:226
-#: src/frontends/xforms/FormPreferences.C:255
+#. now make them fit together
+#: src/frontends/xforms/FormParagraph.C:132
 #, fuzzy
-msgid "Converters"
-msgstr "Centré|#n"
+msgid "General"
+msgstr "Allemand"
 
-# à confirmer aussi
-#: src/frontends/xforms/FormPreferences.C:229
-#, fuzzy
-msgid "Inputs"
-msgstr "Incorporation"
+#: src/frontends/xforms/FormParagraph.C:680
+#: src/frontends/xforms/FormParagraph.C:717
+#: src/frontends/xforms/FormTabular.C:454
+#: src/frontends/xforms/FormTabular.C:466
+#: src/frontends/xforms/FormTabular.C:478
+msgid "Warning: Invalid Length (valid example: 10mm)"
+msgstr "Attention : format incorrect (exemple correct: 10mm)"
 
-#: src/frontends/xforms/FormPreferences.C:232
-msgid "Outputs"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:238
-#, fuzzy
-msgid "Screen Fonts"
-msgstr "Options d'affichage"
-
-#: src/frontends/xforms/FormPreferences.C:241
-#, fuzzy
-msgid "Interface"
-msgstr "cadre de note"
-
-#: src/frontends/xforms/FormPreferences.C:244
-#, fuzzy
-msgid "Colors"
-msgstr "Fermer"
-
-#: src/frontends/xforms/FormPreferences.C:247
-#: src/frontends/xforms/FormPreferences.C:264
-#: src/frontends/xforms/FormPreferences.C:272 src/mathed/math_forms.C:46
-msgid "Misc"
-msgstr "Divers"
-
-#: src/frontends/xforms/FormPreferences.C:252
-#, fuzzy
-msgid "Formats"
-msgstr "flottants"
-
-#: src/frontends/xforms/FormPreferences.C:261
-#, fuzzy
-msgid "Paths"
-msgstr "mathématique"
-
-#: src/frontends/xforms/FormPreferences.C:269
-#, fuzzy
-msgid "Printer"
-msgstr "Imprimer"
-
-#: src/frontends/xforms/FormPreferences.C:277
-#, fuzzy
-msgid "Spell checker"
-msgstr "Correcteur orthographique"
-
-#: src/frontends/xforms/FormPreferences.C:533
-msgid "LyX objects that can be assigned a color."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:536
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:544
-msgid "Find a new color."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:547
-msgid "Toggle between RGB and HSV color spaces."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:742
-#, fuzzy
-msgid "GUI background"
-msgstr "fond"
-
-#: src/frontends/xforms/FormPreferences.C:748
-msgid "GUI text"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:757
-#, fuzzy
-msgid "GUI selection"
-msgstr "sélection"
-
-#: src/frontends/xforms/FormPreferences.C:763
-#, fuzzy
-msgid "GUI pointer"
-msgstr "Impossible d'imprimer"
-
-#: src/frontends/xforms/FormPreferences.C:896
-msgid "HSV"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:928
-msgid "RGB"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1004
-msgid "All the currently defined converters known to LyX."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1006
-msgid "Convert \"from\" this format"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1008
-msgid "Convert \"to\" this format"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1010
-msgid ""
-"The conversion command. $$i is the input file name, $$b is the file name "
-"without its extension and $$o is the name of the output file."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1012
-msgid "Flags that control the converter behavior"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1014
-msgid ""
-"Remove the current converter from the list of available converters. Note: "
-"you must then \"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1016
-#: src/frontends/xforms/FormPreferences.C:1288
-#, fuzzy
-msgid "Add"
-msgstr "Ajouter à|#t"
-
-#: src/frontends/xforms/FormPreferences.C:1017
-msgid ""
-"Add the current converter to the list of available converters. Note: you "
-"must then \"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1019
-msgid ""
-"Modify the contents of the current converter. Note: you must then \"Apply\" "
-"the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1112
-#: src/frontends/xforms/FormPreferences.C:1114
-#: src/frontends/xforms/FormPreferences.C:1159
-#: src/frontends/xforms/FormPreferences.C:1161
-#: src/frontends/xforms/FormPreferences.C:1388
-#: src/frontends/xforms/FormPreferences.C:1389
-#: src/frontends/xforms/FormPreferences.C:1438
-#: src/frontends/xforms/FormPreferences.C:1440
-#: src/frontends/xforms/form_preferences.C:504
-#, fuzzy
-msgid "Modify|#M"
-msgstr "Moyen|#M"
-
-#: src/frontends/xforms/FormPreferences.C:1148
-#: src/frontends/xforms/FormPreferences.C:1150
-#: src/frontends/xforms/FormPreferences.C:1427
-#: src/frontends/xforms/FormPreferences.C:1429
-#: src/frontends/xforms/form_preferences.C:607
-#: src/frontends/xforms/form_preferences.C:694
-#, fuzzy
-msgid "Add|#A"
-msgstr "Ajouter à|#t"
-
-#: src/frontends/xforms/FormPreferences.C:1274
-msgid "All the currently defined formats known to LyX."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1276
-msgid "The format identifier."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1278
-msgid "The format name as it will appear in the menus."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1280
-msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1282
-msgid "Used to recognize the file. E.g., ps, pdf, tex."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1284
-msgid "The command used to launch the viewer application."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1286
-msgid ""
-"Remove the current format from the list of available formats. Note: you must "
-"then \"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1289
-msgid ""
-"Add the current format to the list of available formats. Note: you must then "
-"\"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1291
-msgid ""
-"Modify the contents of the current format. Note: you must then \"Apply\" the "
-"change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1407
-msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1578
-msgid "Sys Bind"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1582
-#, fuzzy
-msgid "User Bind"
-msgstr "Utiliser include|#i"
-
-#: src/frontends/xforms/FormPreferences.C:1586
-#, fuzzy
-msgid "Bind file"
-msgstr "Fichier EPS|#E"
-
-#: src/frontends/xforms/FormPreferences.C:1590
-msgid "Sys UI"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1594
-msgid "User UI"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1598
-#, fuzzy
-msgid "UI file"
-msgstr "[pas de fichier]"
-
-#: src/frontends/xforms/FormPreferences.C:1794
-#: src/frontends/xforms/FormPreferences.C:1802
-#, fuzzy
-msgid "Key maps"
-msgstr "Table de réaffectation clavier"
-
-#: src/frontends/xforms/FormPreferences.C:1798
-#: src/frontends/xforms/FormPreferences.C:1806
-#, fuzzy
-msgid "Keyboard map"
-msgstr "Mots clés :|#K"
-
-#: src/frontends/xforms/FormPreferences.C:1979
-#, fuzzy
-msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
-msgstr ""
-"Défaut | Personnalisée | Lettre US | Legal US | Executive US | A3 | A4 | A5 "
-"| B3 | B4 | B5 "
-
-#: src/frontends/xforms/FormPreferences.C:2231
-#, fuzzy
-msgid "Default path"
-msgstr "défaut"
-
-#: src/frontends/xforms/FormPreferences.C:2236
-#, fuzzy
-msgid "Template path"
-msgstr "Modèles"
-
-#: src/frontends/xforms/FormPreferences.C:2241
-msgid "Temp dir"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2245
-#, fuzzy
-msgid "User"
-msgstr "Utilisateur1|#1"
-
-#: src/frontends/xforms/FormPreferences.C:2248
-#, fuzzy
-msgid "Lastfiles"
-msgstr "Liste des tableaux"
-
-#: src/frontends/xforms/FormPreferences.C:2252
-msgid "Backup path"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2257
-msgid "LyX Server pipes"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2701
-msgid "Fonts must be positive!"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2724
-#, fuzzy
-msgid ""
-"Fonts must be input in the order tiny > script> footnote > small > normal > "
-"large > larger > largest > huge > huger."
-msgstr ""
-"default | petit(4) | scripte(3) | note de bas de page(2)  | petit(1) | "
-"normal | grand(1) | grand(2) | grand(3) | grand(4) | grand(5)"
-
-#: src/frontends/xforms/FormPreferences.C:2840
-msgid " none | ispell | aspell "
-msgstr ""
-
-# contrainte de longueur
-#: src/frontends/xforms/FormPreferences.C:2952
-#, fuzzy
-msgid "Personal dictionary"
-msgstr "Insérer dans le dict. personnel|#I"
-
-#: src/frontends/xforms/FormPreferences.C:3008
-msgid "WARNING!"
-msgstr ""
+#: src/frontends/xforms/FormParagraph.C:729
+msgid "Warning: Invalid percent value (0-100)"
+msgstr "Attention : pourcentage incorrect"
 
 #: src/LyXAction.C:154 src/frontends/xforms/form_preferences.C:44
 msgid "Save"
@@ -5640,6 +5315,19 @@ msgstr "Parcourir|#B"
 msgid "LyX objects|#L"
 msgstr ""
 
+#: src/frontends/xforms/FormPreferences.C:1112
+#: src/frontends/xforms/FormPreferences.C:1114
+#: src/frontends/xforms/FormPreferences.C:1159
+#: src/frontends/xforms/FormPreferences.C:1161
+#: src/frontends/xforms/FormPreferences.C:1388
+#: src/frontends/xforms/FormPreferences.C:1389
+#: src/frontends/xforms/FormPreferences.C:1438
+#: src/frontends/xforms/FormPreferences.C:1440
+#: src/frontends/xforms/form_preferences.C:504
+#, fuzzy
+msgid "Modify|#M"
+msgstr "Moyen|#M"
+
 #: src/frontends/xforms/form_preferences.C:511
 #, fuzzy
 msgid "S|#S"
@@ -5679,6 +5367,16 @@ msgstr ""
 #, fuzzy
 msgid "Delete|#D"
 msgstr "Retirer de|#D"
+
+#: src/frontends/xforms/FormPreferences.C:1148
+#: src/frontends/xforms/FormPreferences.C:1150
+#: src/frontends/xforms/FormPreferences.C:1427
+#: src/frontends/xforms/FormPreferences.C:1429
+#: src/frontends/xforms/form_preferences.C:607
+#: src/frontends/xforms/form_preferences.C:694
+#, fuzzy
+msgid "Add|#A"
+msgstr "Ajouter à|#t"
 
 #: src/frontends/xforms/form_preferences.C:614
 #, fuzzy
@@ -5914,10 +5612,316 @@ msgstr ""
 msgid "Temp dir|#d"
 msgstr ""
 
-#: src/LyXAction.C:137 src/LyXAction.C:145 src/frontends/xforms/FormPrint.C:37
-#: src/frontends/xforms/form_print.C:129
-msgid "Print"
+#: src/frontends/xforms/FormPreferences.C:68
+#, fuzzy
+msgid "Preferences"
+msgstr "Insérer référence"
+
+#: src/frontends/xforms/FormPreferences.C:220
+msgid "Look & Feel"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:223
+msgid "Lang Opts"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:226
+#: src/frontends/xforms/FormPreferences.C:255
+#, fuzzy
+msgid "Converters"
+msgstr "Centré|#n"
+
+# à confirmer aussi
+#: src/frontends/xforms/FormPreferences.C:229
+#, fuzzy
+msgid "Inputs"
+msgstr "Incorporation"
+
+#: src/frontends/xforms/FormPreferences.C:232
+msgid "Outputs"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:238
+#, fuzzy
+msgid "Screen Fonts"
+msgstr "Options d'affichage"
+
+#: src/frontends/xforms/FormPreferences.C:241
+#, fuzzy
+msgid "Interface"
+msgstr "cadre de note"
+
+#: src/frontends/xforms/FormPreferences.C:244
+#, fuzzy
+msgid "Colors"
+msgstr "Fermer"
+
+#: src/frontends/xforms/FormPreferences.C:247
+#: src/frontends/xforms/FormPreferences.C:264
+#: src/frontends/xforms/FormPreferences.C:272 src/mathed/math_forms.C:46
+msgid "Misc"
+msgstr "Divers"
+
+#: src/frontends/xforms/FormPreferences.C:252
+#, fuzzy
+msgid "Formats"
+msgstr "flottants"
+
+#: src/frontends/xforms/FormPreferences.C:261
+#, fuzzy
+msgid "Paths"
+msgstr "mathématique"
+
+#: src/frontends/xforms/FormPreferences.C:269
+#, fuzzy
+msgid "Printer"
 msgstr "Imprimer"
+
+#: src/frontends/xforms/FormPreferences.C:277
+#, fuzzy
+msgid "Spell checker"
+msgstr "Correcteur orthographique"
+
+#: src/frontends/xforms/FormPreferences.C:533
+msgid "LyX objects that can be assigned a color."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:536
+msgid ""
+"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:544
+msgid "Find a new color."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:547
+msgid "Toggle between RGB and HSV color spaces."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:742
+#, fuzzy
+msgid "GUI background"
+msgstr "fond"
+
+#: src/frontends/xforms/FormPreferences.C:748
+msgid "GUI text"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:757
+#, fuzzy
+msgid "GUI selection"
+msgstr "sélection"
+
+#: src/frontends/xforms/FormPreferences.C:763
+#, fuzzy
+msgid "GUI pointer"
+msgstr "Impossible d'imprimer"
+
+#: src/frontends/xforms/FormPreferences.C:896
+msgid "HSV"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:928
+msgid "RGB"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1004
+msgid "All the currently defined converters known to LyX."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1006
+msgid "Convert \"from\" this format"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1008
+msgid "Convert \"to\" this format"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1010
+msgid ""
+"The conversion command. $$i is the input file name, $$b is the file name "
+"without its extension and $$o is the name of the output file."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1012
+msgid "Flags that control the converter behavior"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1014
+msgid ""
+"Remove the current converter from the list of available converters. Note: "
+"you must then \"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1016
+#: src/frontends/xforms/FormPreferences.C:1288
+#, fuzzy
+msgid "Add"
+msgstr "Ajouter à|#t"
+
+#: src/frontends/xforms/FormPreferences.C:1017
+msgid ""
+"Add the current converter to the list of available converters. Note: you "
+"must then \"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1019
+msgid ""
+"Modify the contents of the current converter. Note: you must then \"Apply\" "
+"the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1274
+msgid "All the currently defined formats known to LyX."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1276
+msgid "The format identifier."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1278
+msgid "The format name as it will appear in the menus."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1280
+msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1282
+msgid "Used to recognize the file. E.g., ps, pdf, tex."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1284
+msgid "The command used to launch the viewer application."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1286
+msgid ""
+"Remove the current format from the list of available formats. Note: you must "
+"then \"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1289
+msgid ""
+"Add the current format to the list of available formats. Note: you must then "
+"\"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1291
+msgid ""
+"Modify the contents of the current format. Note: you must then \"Apply\" the "
+"change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1407
+msgid "Cannot remove a Format used by a Converter. Remove the converter first."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1578
+msgid "Sys Bind"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1582
+#, fuzzy
+msgid "User Bind"
+msgstr "Utiliser include|#i"
+
+#: src/frontends/xforms/FormPreferences.C:1586
+#, fuzzy
+msgid "Bind file"
+msgstr "Fichier EPS|#E"
+
+#: src/frontends/xforms/FormPreferences.C:1590
+msgid "Sys UI"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1594
+msgid "User UI"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1598
+#, fuzzy
+msgid "UI file"
+msgstr "[pas de fichier]"
+
+#: src/frontends/xforms/FormPreferences.C:1794
+#: src/frontends/xforms/FormPreferences.C:1802
+#, fuzzy
+msgid "Key maps"
+msgstr "Table de réaffectation clavier"
+
+#: src/frontends/xforms/FormPreferences.C:1798
+#: src/frontends/xforms/FormPreferences.C:1806
+#, fuzzy
+msgid "Keyboard map"
+msgstr "Mots clés :|#K"
+
+#: src/frontends/xforms/FormPreferences.C:1979
+#, fuzzy
+msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
+msgstr ""
+"Défaut | Personnalisée | Lettre US | Legal US | Executive US | A3 | A4 | A5 "
+"| B3 | B4 | B5 "
+
+#: src/frontends/xforms/FormPreferences.C:2231
+#, fuzzy
+msgid "Default path"
+msgstr "défaut"
+
+#: src/frontends/xforms/FormPreferences.C:2236
+#, fuzzy
+msgid "Template path"
+msgstr "Modèles"
+
+#: src/frontends/xforms/FormPreferences.C:2241
+msgid "Temp dir"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2245
+#, fuzzy
+msgid "User"
+msgstr "Utilisateur1|#1"
+
+#: src/frontends/xforms/FormPreferences.C:2248
+#, fuzzy
+msgid "Lastfiles"
+msgstr "Liste des tableaux"
+
+#: src/frontends/xforms/FormPreferences.C:2252
+msgid "Backup path"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2257
+msgid "LyX Server pipes"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2701
+msgid "Fonts must be positive!"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2724
+#, fuzzy
+msgid ""
+"Fonts must be input in the order tiny > script> footnote > small > normal > "
+"large > larger > largest > huge > huger."
+msgstr ""
+"default | petit(4) | scripte(3) | note de bas de page(2)  | petit(1) | "
+"normal | grand(1) | grand(2) | grand(3) | grand(4) | grand(5)"
+
+#: src/frontends/xforms/FormPreferences.C:2840
+msgid " none | ispell | aspell "
+msgstr ""
+
+# contrainte de longueur
+#: src/frontends/xforms/FormPreferences.C:2952
+#, fuzzy
+msgid "Personal dictionary"
+msgstr "Insérer dans le dict. personnel|#I"
+
+#: src/frontends/xforms/FormPreferences.C:3008
+msgid "WARNING!"
+msgstr ""
 
 # contrainte de longueur
 #: src/frontends/xforms/form_print.C:37
@@ -5966,13 +5970,14 @@ msgstr "Commande :|#C"
 msgid "to"
 msgstr " vers "
 
+#: src/LyXAction.C:137 src/LyXAction.C:145 src/frontends/xforms/FormPrint.C:37
+#: src/frontends/xforms/form_print.C:129
+msgid "Print"
+msgstr "Imprimer"
+
 #: src/frontends/xforms/form_print.C:132
 msgid "Order"
 msgstr "Ordre"
-
-#: src/frontends/xforms/FormRef.C:72
-msgid " Ref | Page | TextRef | TextPage | PrettyRef "
-msgstr ""
 
 #: src/frontends/xforms/form_ref.C:40
 #, fuzzy
@@ -5999,33 +6004,9 @@ msgstr "Aller à la référence|#A"
 msgid "Goto reference|#G"
 msgstr "Aller à la référence|#A"
 
-#: src/frontends/xforms/FormTabular.C:26
-msgid "Tabular Layout"
-msgstr "Style du tableau"
-
-#: src/frontends/xforms/FormTabular.C:127
-#, fuzzy
-msgid "Tabular"
-msgstr "Style du tableau"
-
-#: src/frontends/xforms/FormTabular.C:129
-#, fuzzy
-msgid "Column/Row"
-msgstr "Colonne"
-
-#: src/frontends/xforms/FormTabular.C:131
-#, fuzzy
-msgid "Cell"
-msgstr "jaune"
-
-#: src/frontends/xforms/FormTabular.C:133
-#, fuzzy
-msgid "LongTable"
-msgstr "Grand tab."
-
-#: src/frontends/xforms/FormTabular.C:440
-msgid "Warning: Wrong Cursor position, updated window"
-msgstr "Attention : mauvaise position du curseur, MàJ fenêtre"
+#: src/frontends/xforms/FormRef.C:72
+msgid " Ref | Page | TextRef | TextPage | PrettyRef "
+msgstr ""
 
 #: src/frontends/xforms/form_tabular.C:31 src/insets/insetinfo.C:216
 #: src/insets/insetinfo.C:221
@@ -6225,23 +6206,47 @@ msgstr "Pied"
 msgid "Special"
 msgstr "Spécial :|#S"
 
-#: src/frontends/xforms/FormTabularCreate.C:30
+#: src/frontends/xforms/FormTabular.C:26
+msgid "Tabular Layout"
+msgstr "Style du tableau"
+
+#: src/frontends/xforms/FormTabular.C:127
+#, fuzzy
+msgid "Tabular"
+msgstr "Style du tableau"
+
+#: src/frontends/xforms/FormTabular.C:129
+#, fuzzy
+msgid "Column/Row"
+msgstr "Colonne"
+
+#: src/frontends/xforms/FormTabular.C:131
+#, fuzzy
+msgid "Cell"
+msgstr "jaune"
+
+#: src/frontends/xforms/FormTabular.C:133
+#, fuzzy
+msgid "LongTable"
+msgstr "Grand tab."
+
+#: src/frontends/xforms/FormTabular.C:440
+msgid "Warning: Wrong Cursor position, updated window"
+msgstr "Attention : mauvaise position du curseur, MàJ fenêtre"
+
+#: src/frontends/xforms/FormTabularCreate.C:31
 #, fuzzy
 msgid "Insert Tabular"
 msgstr "Insérer un tableau"
-
-#: src/frontends/xforms/FormToc.C:71
-msgid " TOC | LOF | LOT | LOA "
-msgstr "Plan | LDF | LDT | LDA "
 
 #: src/frontends/xforms/form_toc.C:40
 #, fuzzy
 msgid "Type|#T"
 msgstr "Type :|#T"
 
-#: src/frontends/xforms/FormUrl.C:29
-msgid "Url"
-msgstr ""
+#: src/frontends/xforms/FormToc.C:71
+msgid " TOC | LOF | LOT | LOA "
+msgstr "Plan | LDF | LDT | LDA "
 
 #: src/frontends/xforms/form_url.C:29
 msgid "URL|#U"
@@ -6254,6 +6259,10 @@ msgstr "Destinataire|#N"
 #: src/frontends/xforms/form_url.C:47
 msgid "HTML type|#H"
 msgstr "type HTML"
+
+#: src/frontends/xforms/FormUrl.C:29
+msgid "Url"
+msgstr ""
 
 #: src/frontends/xforms/input_validators.C:102
 #, fuzzy
@@ -6504,7 +6513,7 @@ msgid "Opened ERT Inset"
 msgstr "Insert ERT ouvert"
 
 # à revoir
-#: src/insets/insetert.C:65 src/insets/insettabular.C:1569
+#: src/insets/insetert.C:65 src/insets/insettabular.C:1698
 msgid "Impossible Operation!"
 msgstr "Opération interdite !"
 
@@ -6606,8 +6615,8 @@ msgid "Use include|#U"
 msgstr "Utiliser include|#i"
 
 #. launches dialog
-#: src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3042
-#: src/lyxfunc.C:3144 src/lyxfunc.C:3200 src/lyxfunc.C:3276
+#: src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3052
+#: src/lyxfunc.C:3154 src/lyxfunc.C:3210 src/lyxfunc.C:3286
 msgid "Documents"
 msgstr ""
 
@@ -6680,35 +6689,35 @@ msgid "Parent:"
 msgstr "Parent :"
 
 # à revoir
-#: src/insets/insettabular.C:476
+#: src/insets/insettabular.C:481
 msgid "Opened Tabular Inset"
 msgstr "Insert de tableau ouvert"
 
-#: src/insets/insettabular.C:1570
+#: src/insets/insettabular.C:1699
 msgid "Multicolumns can only be horizontally."
 msgstr "Les multicolonnes ne peuvent être qu'horizontales."
 
 # à revoir
-#: src/insets/insettext.C:467
+#: src/insets/insettext.C:478
 msgid "Opened Text Inset"
 msgstr "Insert de texte ouvert"
 
 # à revoir
-#: src/insets/insettext.C:947
+#: src/insets/insettext.C:971
 msgid "Cannot include more than one paragraph!"
 msgstr ""
 "Les cellules d'un tableau ne doivent pas inclure plus d'un paragraphe !"
 
 # revu
-#: src/insets/insettext.C:1007 src/lyxfunc.C:1258
+#: src/insets/insettext.C:1037 src/lyxfunc.C:1258
 msgid "Layout "
 msgstr "Format "
 
-#: src/insets/insettext.C:1007 src/lyxfunc.C:1259
+#: src/insets/insettext.C:1037 src/lyxfunc.C:1259
 msgid " not known"
 msgstr " inconnu"
 
-#: src/insets/insettext.C:1060 src/lyxfunc.C:2102
+#: src/insets/insettext.C:1090 src/lyxfunc.C:2111
 msgid "Unknown spacing argument: "
 msgstr "Argument manquant"
 
@@ -7583,7 +7592,7 @@ msgstr "La sauvegarde a échoué. Renommer le fichier et réessayer ?"
 msgid "(If not, document is not saved.)"
 msgstr "(Sinon le document ne sera pas sauvegardé)"
 
-#: src/lyx_cb.C:198 src/lyxfunc.C:3043
+#: src/lyx_cb.C:198 src/lyxfunc.C:3053
 msgid "Templates"
 msgstr "Modèles"
 
@@ -7894,7 +7903,7 @@ msgstr "Trouvé."
 msgid "Unknown sequence:"
 msgstr "Séquence Inconnue:"
 
-#: src/lyxfunc.C:328 src/lyxfunc.C:2984
+#: src/lyxfunc.C:328 src/lyxfunc.C:2994
 msgid "Unknown action"
 msgstr "Action Inconnue"
 
@@ -7908,15 +7917,11 @@ msgstr "Document en lecture seule"
 msgid "Command not allowed without any document open"
 msgstr "Commande non autorisée lorsqu'aucun document est ouvert"
 
-#: src/lyxfunc.C:640
-msgid "Text mode"
-msgstr "Mode texte"
-
 #: src/lyxfunc.C:795
 msgid "Saving document"
 msgstr "Enregistrement du document"
 
-#: src/lyxfunc.C:1103 src/lyxfunc.C:2539
+#: src/lyxfunc.C:1103 src/lyxfunc.C:2548
 msgid "Missing argument"
 msgstr "Argument manquant"
 
@@ -7945,93 +7950,93 @@ msgstr "Impossible de trouver cette étiquette"
 msgid "in current document."
 msgstr "dans le document courant."
 
-#: src/lyxfunc.C:1828
+#: src/lyxfunc.C:1837
 msgid "Mark removed"
 msgstr "Marque enlevée"
 
-#: src/lyxfunc.C:1833
+#: src/lyxfunc.C:1842
 msgid "Mark set"
 msgstr "Marque posée"
 
-#: src/lyxfunc.C:1938
+#: src/lyxfunc.C:1947
 msgid "Mark off"
 msgstr "Marque désactivée"
 
-#: src/lyxfunc.C:1951
+#: src/lyxfunc.C:1960
 msgid "Mark on"
 msgstr "Marque Activée"
 
-#: src/lyxfunc.C:2453
+#: src/lyxfunc.C:2462
 msgid "Push-toolbar needs argument > 0"
 msgstr "'Push-toolbar' nécessite un argument > 0"
 
-#: src/lyxfunc.C:2470
+#: src/lyxfunc.C:2479
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr "Usage : toolbar-add-to <commande LyX>"
 
-#: src/lyxfunc.C:2487 src/mathed/formula.C:881
+#: src/lyxfunc.C:2496 src/mathed/formula.C:881
 msgid "Math greek mode on"
 msgstr "Mode mathématique grec"
 
-#: src/lyxfunc.C:2498 src/mathed/formula.C:892
+#: src/lyxfunc.C:2507 src/mathed/formula.C:892
 msgid "Math greek keyboard on"
 msgstr "Mode clavier grec"
 
-#: src/lyxfunc.C:2500 src/mathed/formula.C:894
+#: src/lyxfunc.C:2509 src/mathed/formula.C:894
 msgid "Math greek keyboard off"
 msgstr "Mode clavier normal"
 
-#: src/lyxfunc.C:2554 src/mathed/formula.C:486
+#: src/lyxfunc.C:2563 src/mathed/formula.C:486
 msgid "Math editor mode"
 msgstr "Mode éditeur mathématique"
 
-#: src/lyxfunc.C:2561
+#: src/lyxfunc.C:2570
 msgid "This is only allowed in math mode!"
 msgstr "Ceci n'est autorisé qu'en mode mathématique !"
 
-#: src/lyxfunc.C:2750
+#: src/lyxfunc.C:2759
 msgid "Opening child document "
 msgstr "Ouverture du document fils"
 
-#: src/lyxfunc.C:2782
+#: src/lyxfunc.C:2791
 msgid "Unknown kind of footnote"
 msgstr "Type de note de bas de page inconnu"
 
-#: src/lyxfunc.C:2901
+#: src/lyxfunc.C:2910
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:2907
+#: src/lyxfunc.C:2916
 msgid "Set-color \""
 msgstr ""
 
-#: src/lyxfunc.C:2909
+#: src/lyxfunc.C:2918
 msgid "\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:2924
+#: src/lyxfunc.C:2933
 msgid "No document open"
 msgstr "* Aucun document ouvert *"
 
-#: src/lyxfunc.C:2930
+#: src/lyxfunc.C:2939
 msgid "Document is read only"
 msgstr "Le document est en lecture seule"
 
-#: src/lyxfunc.C:3044
+#: src/lyxfunc.C:3054
 msgid "Enter Filename for new document"
 msgstr "Entrer le nom du fichier du nouveau document"
 
-#: src/lyxfunc.C:3045
+#: src/lyxfunc.C:3055
 msgid "newfile"
 msgstr "NouveauFichier"
 
 #. Cancel: Do nothing
-#: src/lyxfunc.C:3049 src/lyxfunc.C:3076 src/lyxfunc.C:3153 src/lyxfunc.C:3211
-#: src/lyxfunc.C:3239 src/lyxfunc.C:3249 src/lyxfunc.C:3285
+#: src/lyxfunc.C:3059 src/lyxfunc.C:3086 src/lyxfunc.C:3163 src/lyxfunc.C:3221
+#: src/lyxfunc.C:3249 src/lyxfunc.C:3259 src/lyxfunc.C:3295
 msgid "Canceled."
 msgstr "Annulé."
 
-#: src/lyxfunc.C:3064 src/lyxfunc.C:3227
+#: src/lyxfunc.C:3074 src/lyxfunc.C:3237
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -8039,71 +8044,71 @@ msgstr ""
 "Voulez-vous fermer le document maintenant ?\n"
 "('Non' vous ramènera à la version ouverte)"
 
-#: src/lyxfunc.C:3084
+#: src/lyxfunc.C:3094
 msgid "File already exists:"
 msgstr "Le fichier existe déjà :"
 
-#: src/lyxfunc.C:3086
+#: src/lyxfunc.C:3096
 msgid "Do you want to open the document?"
 msgstr "Voulez-vous ouvrir le document ?"
 
 #. loads document
-#: src/lyxfunc.C:3088 src/lyxfunc.C:3164
+#: src/lyxfunc.C:3098 src/lyxfunc.C:3174
 msgid "Opening document"
 msgstr "Ouverture du document en cours..."
 
-#: src/lyxfunc.C:3095 src/lyxfunc.C:3171
+#: src/lyxfunc.C:3105 src/lyxfunc.C:3181
 msgid "opened."
 msgstr "ouvert."
 
-#: src/lyxfunc.C:3116
+#: src/lyxfunc.C:3126
 msgid "Choose template"
 msgstr "Choisir le modèle"
 
-#: src/lyxfunc.C:3145 src/lyxfunc.C:3201 src/lyxfunc.C:3277
+#: src/lyxfunc.C:3155 src/lyxfunc.C:3211 src/lyxfunc.C:3287
 msgid "Examples"
 msgstr "Exemples"
 
-#: src/lyxfunc.C:3147
+#: src/lyxfunc.C:3157
 msgid "Select Document to Open"
 msgstr "Sélectionner le document à ouvrir"
 
-#: src/lyxfunc.C:3173
+#: src/lyxfunc.C:3183
 msgid "Could not open document"
 msgstr "Impossible d'ouvrir le document"
 
-#: src/lyxfunc.C:3203
+#: src/lyxfunc.C:3213
 #, fuzzy
 msgid "Select "
 msgstr "Sélectionner depuis|#S"
 
-#: src/lyxfunc.C:3204
+#: src/lyxfunc.C:3214
 #, fuzzy
 msgid " file to import"
 msgstr "Sélectionner le fichier LaTeX à importer"
 
-#: src/lyxfunc.C:3246
+#: src/lyxfunc.C:3256
 msgid "A document by the name"
 msgstr "Un document possède le même nom"
 
-#: src/lyxfunc.C:3248
+#: src/lyxfunc.C:3258
 msgid "already exists. Overwrite?"
 msgstr "Écraser ?"
 
-#: src/lyxfunc.C:3279
+#: src/lyxfunc.C:3289
 msgid "Select Document to Insert"
 msgstr "Sélectionner le document à insérer"
 
 #. Inserts document
-#: src/lyxfunc.C:3297
+#: src/lyxfunc.C:3307
 msgid "Inserting document"
 msgstr "Insertion du document en cours..."
 
-#: src/lyxfunc.C:3303
+#: src/lyxfunc.C:3313
 msgid "inserted."
 msgstr "inséré."
 
-#: src/lyxfunc.C:3305
+#: src/lyxfunc.C:3315
 msgid "Could not insert document"
 msgstr "Impossible d'insérer le document"
 
@@ -8237,65 +8242,65 @@ msgstr " mais attendez vous à des problèmes."
 msgid "Expect problems."
 msgstr "Attendez vous à des problèmes."
 
-#: src/lyx_main.C:554
+#: src/lyx_main.C:558
 #, fuzzy
 msgid "You have specified an invalid LyX directory."
 msgstr "Vous ne possédez pas de répertoire LyX personnel."
 
-#: src/lyx_main.C:555
+#: src/lyx_main.C:559
 msgid "You don't have a personal LyX directory."
 msgstr "Vous ne possédez pas de répertoire LyX personnel."
 
-#: src/lyx_main.C:557
+#: src/lyx_main.C:561
 msgid "It is needed to keep your own configuration."
 msgstr "Il est indispensable pour personnaliser votre configuration."
 
-#: src/lyx_main.C:558
+#: src/lyx_main.C:562
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Dois-je le créer (recommandé) ?"
 
-#: src/lyx_main.C:559
+#: src/lyx_main.C:563
 msgid "Running without personal LyX directory."
 msgstr "Fonctionnement sans répertoire LyX personnel."
 
 #. Tell the user what is going on
-#: src/lyx_main.C:566
+#: src/lyx_main.C:570
 msgid "LyX: Creating directory "
 msgstr "LyX : création du répertoire "
 
-#: src/lyx_main.C:567
+#: src/lyx_main.C:571
 msgid " and running configure..."
 msgstr " et lancement de configure..."
 
-#: src/lyx_main.C:573
+#: src/lyx_main.C:577
 msgid "Failed. Will use "
 msgstr "Échec. Utilisation de "
 
-#: src/lyx_main.C:574
+#: src/lyx_main.C:578
 msgid " instead."
 msgstr " à la place."
 
-#: src/lyx_main.C:581
+#: src/lyx_main.C:585
 msgid "Done!"
 msgstr "Terminé !"
 
-#: src/lyx_main.C:595
+#: src/lyx_main.C:599
 msgid "LyX Warning!"
 msgstr "Avertissment LyX !"
 
-#: src/lyx_main.C:596
+#: src/lyx_main.C:600
 msgid "Error while reading "
 msgstr "Erreur lors de la lecture "
 
-#: src/lyx_main.C:597
+#: src/lyx_main.C:601
 msgid "Using built-in defaults."
 msgstr "Utilisation des réglages usine."
 
-#: src/lyx_main.C:695
+#: src/lyx_main.C:699
 msgid "Setting debug level to "
 msgstr "Niveau de débogage "
 
-#: src/lyx_main.C:707
+#: src/lyx_main.C:711
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -8329,32 +8334,32 @@ msgstr ""
 "                  Essayer lyx -dbg pour voir la liste des fonctions.\n"
 "Voir la page man de LyX pour les détails."
 
-#: src/lyx_main.C:740
+#: src/lyx_main.C:744
 msgid "List of supported debug flags:"
 msgstr "Liste des options de déboguage acceptées :"
 
-#: src/lyx_main.C:752
+#: src/lyx_main.C:756
 msgid "Missing directory for -sysdir switch!"
 msgstr "Il manque un répertoire pour le paramètre -sysdir !"
 
-#: src/lyx_main.C:763
+#: src/lyx_main.C:767
 #, fuzzy
 msgid "Missing directory for -userdir switch!"
 msgstr "Il manque un répertoire pour le paramètre -sysdir !"
 
-#: src/lyx_main.C:786
+#: src/lyx_main.C:790
 msgid "Missing command string after  -x switch!"
 msgstr "Il manque une valeur pour le paramètre -x !"
 
-#: src/lyx_main.C:799
+#: src/lyx_main.C:803
 msgid "Missing file type [eg latex, ps...] after "
 msgstr "Type de fichier manquant ]latex, ps,..] après "
 
-#: src/lyx_main.C:801 src/lyx_main.C:816
+#: src/lyx_main.C:805 src/lyx_main.C:820
 msgid " switch!"
 msgstr " "
 
-#: src/lyx_main.C:814
+#: src/lyx_main.C:818
 msgid "Missing type [eg latex, ps...] after "
 msgstr "Type de fichier manquant [e.g. latex, ps,..] après "
 
@@ -8902,11 +8907,11 @@ msgstr "Espacement"
 msgid "Matrix"
 msgstr "Matrice"
 
-#: src/mathed/math_panel.C:324
+#: src/mathed/math_panel.C:330
 msgid "Top | Center | Bottom"
 msgstr "Haut | Centre | Bas"
 
-#: src/mathed/math_panel.C:377
+#: src/mathed/math_panel.C:383
 msgid "Math Panel"
 msgstr "Palette mathématique"
 
@@ -9099,43 +9104,43 @@ msgstr ""
 msgid "Replace word|#R"
 msgstr "Remplacer le mot|#R"
 
-#: src/support/filetools.C:157
+#: src/support/filetools.C:159
 msgid "LyX Internal Error!"
 msgstr "Erreur interne de Lyx !"
 
-#: src/support/filetools.C:158
+#: src/support/filetools.C:160
 msgid "Could not test if directory is writeable"
 msgstr "Impossible de déterminer si le répertoire est modifiable."
 
-#: src/support/filetools.C:408
+#: src/support/filetools.C:410
 msgid "Error! Cannot open directory:"
 msgstr "Erreur ! Impossible d'ouvrir le répertoire :"
 
-#: src/support/filetools.C:426
+#: src/support/filetools.C:428
 msgid "Error! Could not remove file:"
 msgstr "Erreur ! Impossible de supprimer le fichier :"
 
-#: src/support/filetools.C:451
+#: src/support/filetools.C:453
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Erreur ! Impossible de créer le répertoire temporaire :"
 
-#: src/support/filetools.C:467
+#: src/support/filetools.C:469
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Erreur ! Impossible de supprimer le répertoire temporaire :"
 
-#: src/support/filetools.C:520
+#: src/support/filetools.C:522
 msgid "Internal error!"
 msgstr "Erreur interne !"
 
-#: src/support/filetools.C:521
+#: src/support/filetools.C:523
 msgid "Call to createDirectory with invalid name"
 msgstr "Appel à createDirectory avec un nom invalide"
 
-#: src/support/filetools.C:526
+#: src/support/filetools.C:528
 msgid "Error! Couldn't create directory:"
 msgstr "Erreur ! Impossible de créer le répertoire :"
 
-#: src/support/filetools.C:1134
+#: src/support/filetools.C:1136
 msgid "Could not delete auto-save file!"
 msgstr "Impossible d'effacer le fichier de sauvegarde !"
 
@@ -9143,15 +9148,15 @@ msgstr "Impossible d'effacer le fichier de sauvegarde !"
 msgid "unknown"
 msgstr "inconnu"
 
-#: src/tabular.C:1283
+#: src/tabular.C:1693
 msgid "Warning:"
 msgstr "Attention !"
 
-#: src/tabular.C:1284
+#: src/tabular.C:1694
 msgid "Tabular format < 5 is not supported anymore\n"
 msgstr "Le format Tabular < 5 n'est plus supporté\n"
 
-#: src/tabular.C:1285
+#: src/tabular.C:1695
 msgid "Get an older version of LyX (< 1.1.x) for conversion!"
 msgstr "Utilisez une ancienne version de LyX (< 1.1.x) pour convertir"
 
@@ -9175,15 +9180,15 @@ msgstr ""
 "Pas de changement de police défini. Utiliser Format->Caractère pour le "
 "définir."
 
-#: src/text2.C:2201 src/text2.C:2314
+#: src/text2.C:2198 src/text2.C:2311
 msgid "Don't know what to do with half floats."
 msgstr "Je ne sais pas manipuler les parties de flottants."
 
-#: src/text2.C:2202 src/text2.C:2316
+#: src/text2.C:2199 src/text2.C:2313
 msgid "sorry."
 msgstr "désolé."
 
-#: src/text.C:1993
+#: src/text.C:1995
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
@@ -9191,30 +9196,33 @@ msgstr ""
 "Vous ne pouvez pas entrer d'espace en début de paragraphe. Lisez le manuel "
 "d'apprentissage."
 
-#: src/text.C:1995
+#: src/text.C:1997
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr ""
 "Vous ne pouvez pas entrer deux espaces ici. Lisez le manuel d'apprentissage."
 
-#: src/text.C:3443 src/text.C:3449
+#: src/text.C:3453 src/text.C:3459
 msgid "Page Break (top)"
 msgstr "Saut de Page (Haut)"
 
-#: src/text.C:3643 src/text.C:3649
+#: src/text.C:3653 src/text.C:3659
 msgid "Page Break (bottom)"
 msgstr "Saut de Page (Bas)"
 
-#: src/text.C:3943
+#: src/text.C:3953
 msgid "You can't insert a float in a float!"
 msgstr "Insérer un flottant dans un flottant est interdit !"
 
-#: src/text.C:3951
+#: src/text.C:3961
 msgid "You can't insert a marginpar in a minipage!"
 msgstr "Insérer un [marginpar] dans une minipage est interdit !"
 
-#: src/text.C:3978
+#: src/text.C:3988
 msgid "Float would include float!"
 msgstr "Un flottant inclurait un flottant !"
+
+#~ msgid "Text mode"
+#~ msgstr "Mode texte"
 
 #~ msgid "Insert|r"
 #~ msgstr "Insérer|r"

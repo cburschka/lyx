@@ -1,12 +1,12 @@
 # Slovenski prevodi menujev za LyX.
 # Copyright (C) 2001, The LyX team.
 # Roman Maurer <roman.maurer@amis.net>, 2001.
-# $Id: sl.po,v 1.36 2001/01/08 14:19:28 lasgouttes Exp $
+# $Id: sl.po,v 1.36.2.1 2001/01/11 19:21:40 larsbj Exp $
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.1.5\n"
-"POT-Creation-Date: 2000-12-29 22:25+0100\n"
+"POT-Creation-Date: 2001-01-11 19:19+0100\n"
 "PO-Revision-Date: 2001-01-07 12:30+0200\n"
 "Last-Translator:  Roman Maurer <roman.maurer@amis.net>\n"
 "Language-Team: Slovenian <sl@li.org>\n"
@@ -14,15 +14,15 @@ msgstr ""
 "Content-Type: text/plain; charset=ISO-8859-2\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/buffer.C:488
+#: src/buffer.C:506
 msgid "Textclass error"
 msgstr "Napaka v razredu besedila"
 
-#: src/buffer.C:489
+#: src/buffer.C:507
 msgid "The document uses an unknown textclass \""
 msgstr "Spis uporablja neznani razred besedila \""
 
-#: src/buffer.C:491
+#: src/buffer.C:509
 msgid "LyX will not be able to produce output correctly."
 msgstr "LyX ne bo mogel izdelati pravilnega izhoda."
 
@@ -31,99 +31,108 @@ msgstr "LyX ne bo mogel izdelati pravilnega izhoda."
 #. or stop loading the file.
 #. I can substitute but I don't see how I can
 #. stop loading... ideas??  ARRae980418
-#: src/buffer.C:500
+#: src/buffer.C:518
 msgid "Textclass Loading Error!"
 msgstr "Napaka pri nalaganju besedilnega razreda!"
 
-#: src/buffer.C:501
+#: src/buffer.C:519
 msgid "Can't load textclass "
 msgstr "Ni moè nalo¾iti besedilnega razreda "
 
-#: src/buffer.C:503
+#: src/buffer.C:521
 msgid "-- substituting default"
 msgstr "-- zamenjana privzeta vrednost"
 
-#: src/buffer.C:1059
+#: src/buffer.C:1078
 #, c-format
 msgid "Warning: need lyxformat %.2f but found %.2f"
 msgstr "Pozor: potreben format LyXa %.2f, a najden %.2f"
 
-#: src/buffer.C:1063
+#: src/buffer.C:1082
 #, c-format
 msgid "ERROR: need lyxformat %.2f but found %.2f"
 msgstr "NAPAKA: potreben format LyXa %.2f, a najden %.2f"
 
-#: src/buffer.C:1074
+#. future format
+#: src/buffer.C:1093 src/buffer.C:1120 src/buffer.C:1140
 msgid "Warning!"
 msgstr "Pozor!"
 
-#: src/buffer.C:1075
+#: src/buffer.C:1094 src/buffer.C:1141
 msgid "Reading of document is not complete"
 msgstr "Branje spisa ni dokonèano"
 
-#: src/buffer.C:1076
+#: src/buffer.C:1095 src/buffer.C:1142
 msgid "Maybe the document is truncated"
 msgstr "Morda je spis odrezan"
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1082 src/buffer.C:1089 src/buffer.C:1092
+#: src/buffer.C:1101 src/buffer.C:1127 src/buffer.C:1146 src/buffer.C:1149
 msgid "ERROR!"
 msgstr "NAPAKA!"
 
-#: src/buffer.C:1083
+#: src/buffer.C:1102 src/buffer.C:1128
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr "Najden stari format datoteke. Preberite ga z LyX 0.10.x!"
 
-#: src/buffer.C:1089
+#: src/buffer.C:1121
+msgid "LyX file format is newer that what"
+msgstr ""
+
+#: src/buffer.C:1122
+msgid "is supported in this LyX version. Expect some problems."
+msgstr ""
+
+#: src/buffer.C:1146
 msgid "Not a LyX file!"
 msgstr "To ni datoteka za LyX!"
 
-#: src/buffer.C:1092
+#: src/buffer.C:1149
 msgid "Unable to read file!"
 msgstr "Datoteke ni moè prebrati!"
 
-#: src/buffer.C:1186 src/buffer.C:1189
+#: src/buffer.C:1243 src/buffer.C:1246
 msgid "Error! Document is read-only: "
 msgstr "Napaka! Datoteko lahko le beremo: "
 
-#: src/buffer.C:1199 src/buffer.C:1202
+#: src/buffer.C:1256 src/buffer.C:1259
 msgid "Error! Cannot write file: "
 msgstr "Napaka! Ni moè zapisati datoteke: "
 
-#: src/buffer.C:1210 src/buffer.C:1213
+#: src/buffer.C:1267 src/buffer.C:1270
 msgid "Error! Cannot open file: "
 msgstr "Napaka! Ni moè odpreti datoteke: "
 
-#: src/buffer.C:1505
+#: src/buffer.C:1566
 msgid "Error: Cannot write file:"
 msgstr "Napaka: Ni moè zapisati datoteke:"
 
-#: src/buffer.C:1538
+#: src/buffer.C:1599
 msgid "Error: Cannot open file: "
 msgstr "Napaka: Ni moè odpreti datoteke:"
 
-#: src/buffer.C:2163 src/buffer.C:2812
+#: src/buffer.C:2224 src/buffer.C:2873
 msgid "LYX_ERROR:"
 msgstr "NAPAKA_LYXA:"
 
-#: src/buffer.C:2163 src/buffer.C:2812
+#: src/buffer.C:2224 src/buffer.C:2873
 msgid "Cannot write file"
 msgstr "Ni moè zapisati datoteke"
 
-#: src/buffer.C:2250 src/buffer.C:2894
+#: src/buffer.C:2311 src/buffer.C:2955
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Napaka: Napaèna globina za ukaz LatexType.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3203
+#: src/buffer.C:3264
 msgid "Running chktex..."
 msgstr "Izvaja se chktex..."
 
-#: src/buffer.C:3216
+#: src/buffer.C:3277
 msgid "chktex did not work!"
 msgstr "chktex ni deloval!"
 
-#: src/buffer.C:3217
+#: src/buffer.C:3278
 msgid "Could not run with file:"
 msgstr "Ni moè pognati z datoteko:"
 
@@ -186,7 +195,7 @@ msgstr "Napaka!"
 msgid "Unable to open template"
 msgstr "Vzorca ni moè odpreti"
 
-#: src/bufferlist.C:476 src/lyxfunc.C:3062 src/lyxfunc.C:3225
+#: src/bufferlist.C:476 src/lyxfunc.C:3072 src/lyxfunc.C:3235
 msgid "Document is already open:"
 msgstr "Spis je ¾e odprt:"
 
@@ -224,51 +233,51 @@ msgstr "Podana datoteka ni berljiva: "
 msgid "Cannot open specified file: "
 msgstr "Ni moè odpreti podane datoteke: "
 
-#: src/BufferView2.C:403 src/BufferView2.C:417
+#: src/BufferView2.C:407 src/BufferView2.C:421
 msgid "Open/Close..."
 msgstr "Odpri/Zapri..."
 
-#: src/BufferView2.C:431 src/LyXAction.C:406
+#: src/BufferView2.C:435 src/LyXAction.C:406
 msgid "Undo"
 msgstr "Razveljavi"
 
-#: src/BufferView2.C:436
+#: src/BufferView2.C:440
 msgid "No further undo information"
 msgstr "Ni nadaljnjih razveljavitvenih podatkov"
 
-#: src/BufferView2.C:447
+#: src/BufferView2.C:451
 msgid "Redo not yet supported in math mode"
 msgstr "Ponovitev ¹e ni podprta v matematiènem naèinu"
 
-#: src/BufferView2.C:452 src/LyXAction.C:357
+#: src/BufferView2.C:456 src/LyXAction.C:357
 msgid "Redo"
 msgstr "Ponovi"
 
-#: src/BufferView2.C:457
+#: src/BufferView2.C:461
 msgid "No further redo information"
 msgstr "Ni nadaljnjih ponovitvenih podatkov"
 
-#: src/BufferView2.C:554
+#: src/BufferView2.C:558
 msgid "Paragraph environment type copied"
 msgstr "Prepisan tip okolja odstavka"
 
-#: src/BufferView2.C:563
+#: src/BufferView2.C:567
 msgid "Paragraph environment type set"
 msgstr "Nastavljen tip okolja odstavka"
 
-#: src/BufferView2.C:577 src/LyXAction.C:169 src/MenuBackend.C:425
+#: src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:425
 msgid "Copy"
 msgstr "Prepi¹i"
 
-#: src/BufferView2.C:588 src/LyXAction.C:170 src/MenuBackend.C:424
+#: src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:424
 msgid "Cut"
 msgstr "Izre¾i"
 
-#: src/BufferView2.C:597 src/LyXAction.C:346 src/MenuBackend.C:426
+#: src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:426
 msgid "Paste"
 msgstr "Prilepi"
 
-#: src/BufferView2.C:632 src/BufferView2.C:636
+#: src/BufferView2.C:636 src/BufferView2.C:640
 msgid "No more notes"
 msgstr "Ni veè opomb"
 
@@ -432,7 +441,7 @@ msgstr "Napaka pri poskusu premaknitve imenika:"
 msgid "Error while trying to move file:"
 msgstr "Napaka pri poskusu premaknitve datoteke:"
 
-#: src/converter.C:674
+#: src/converter.C:698
 msgid "to "
 msgstr "za "
 
@@ -448,7 +457,7 @@ msgstr "Morali bi jo poskusiti odpraviti."
 msgid " errors detected."
 msgstr " zaznanih napak."
 
-#: src/converter.C:763
+#: src/converter.C:786
 msgid "There were errors during running of "
 msgstr "Nastale so napake med izvajanjem "
 
@@ -456,7 +465,7 @@ msgstr "Nastale so napake med izvajanjem "
 msgid "The operation resulted in"
 msgstr "Rezultat operacije je"
 
-#: src/converter.C:768 src/converter.C:835
+#: src/converter.C:791 src/converter.C:858
 msgid "an empty file."
 msgstr "prazna datoteka."
 
@@ -525,10 +534,12 @@ msgstr "Videz je treba spremeniti iz\n"
 msgid ""
 "\n"
 "because of class conversion from\n"
-msgstr "\nzaradi spremembe razreda iz\n"
+msgstr ""
+"\n"
+"zaradi spremembe razreda iz\n"
 
-#: src/CutAndPaste.C:476 src/insets/insettext.C:946 src/text.C:3942
-#: src/text.C:3950 src/text.C:3977 src/text2.C:2200 src/text2.C:2313
+#: src/CutAndPaste.C:476 src/insets/insettext.C:970 src/text.C:3952
+#: src/text.C:3960 src/text.C:3987 src/text2.C:2197 src/text2.C:2310
 msgid "Impossible operation"
 msgstr "Nemogoèa operacija"
 
@@ -537,8 +548,8 @@ msgid "Can't paste float into float!"
 msgstr "Ni moè prilepiti plovke v plovko!"
 
 #: src/CutAndPaste.C:478 src/insets/insetert.C:67
-#: src/insets/insettabular.C:1571 src/insets/insettext.C:948 src/text.C:3944
-#: src/text.C:3952 src/text.C:3979
+#: src/insets/insettabular.C:1700 src/insets/insettext.C:972 src/text.C:3954
+#: src/text.C:3962 src/text.C:3989
 msgid "Sorry."
 msgstr "®al."
 
@@ -651,7 +662,7 @@ msgstr " v datoteko ,"
 msgid "File|F"
 msgstr "Datoteka|D"
 
-#: src/MenuBackend.C:431 src/ext_l10n.h:2 src/ext_l10n.h:5
+#: src/MenuBackend.C:437 src/ext_l10n.h:2 src/ext_l10n.h:5
 msgid "Edit|E"
 msgstr "Uredi|U"
 
@@ -675,7 +686,7 @@ msgstr "Ogled|O"
 msgid "Navigate|N"
 msgstr "Navigacija|N"
 
-#: src/MenuBackend.C:433 src/ext_l10n.h:10
+#: src/MenuBackend.C:439 src/ext_l10n.h:10
 msgid "Documents|D"
 msgstr "Spisi|S"
 
@@ -687,15 +698,15 @@ msgstr "Nov...|N"
 msgid "New from Template...|T"
 msgstr "Nov po vzorcu...|V"
 
-#: src/MenuBackend.C:401 src/ext_l10n.h:14 src/ext_l10n.h:19
+#: src/MenuBackend.C:407 src/ext_l10n.h:14 src/ext_l10n.h:19
 msgid "Open...|O"
 msgstr "Odpri...|O"
 
-#: src/MenuBackend.C:402 src/ext_l10n.h:15 src/ext_l10n.h:25
+#: src/MenuBackend.C:408 src/ext_l10n.h:15 src/ext_l10n.h:25
 msgid "Import|I"
 msgstr "Uvoz|U"
 
-#: src/ext_l10n.h:16 src/ext_l10n.h:30
+#: src/ext_l10n.h:16 src/ext_l10n.h:29
 msgid "Exit|x"
 msgstr "Izhod|I"
 
@@ -723,31 +734,31 @@ msgstr "Nadzor razlièic|r"
 msgid "Export|E"
 msgstr "Izvozi|z"
 
-#: src/ext_l10n.h:28
+#: src/ext_l10n.h:27
 msgid "Print...|P"
 msgstr "Tiskaj...|T"
 
-#: src/ext_l10n.h:29
+#: src/ext_l10n.h:28
 msgid "Fax...|F"
 msgstr "Faks...|F"
 
-#: src/ext_l10n.h:31
+#: src/ext_l10n.h:30
 msgid "Register|R"
 msgstr "Prijavi|P"
 
-#: src/ext_l10n.h:32
+#: src/ext_l10n.h:31
 msgid "Check In Changes|I"
 msgstr "Zapi¹i spremembe|Z"
 
-#: src/ext_l10n.h:33
+#: src/ext_l10n.h:32
 msgid "Check Out for Edit|O"
 msgstr "Vzemi za urejanje|u"
 
-#: src/ext_l10n.h:34
+#: src/ext_l10n.h:33
 msgid "Revert to Last Version|L"
 msgstr "Vrni zadnjo razlièico|z"
 
-#: src/ext_l10n.h:35
+#: src/ext_l10n.h:34
 msgid "Undo Last Check In|U"
 msgstr "Razveljavi zadnje spremembe|R"
 
@@ -759,27 +770,27 @@ msgstr "Prika¾i zgodovino|z"
 msgid "Preferences...|P"
 msgstr ""
 
-#: src/ext_l10n.h:43 src/ext_l10n.h:57
+#: src/ext_l10n.h:37 src/ext_l10n.h:52
 msgid "Reconfigure|R"
 msgstr "Vnovièno ukroji|V"
 
-#: src/ext_l10n.h:44
+#: src/ext_l10n.h:38
 msgid "Undo|U"
 msgstr "Razveljavi|R"
 
-#: src/ext_l10n.h:45
+#: src/ext_l10n.h:39
 msgid "Redo|d"
 msgstr "Ponovi|o"
 
-#: src/ext_l10n.h:46
+#: src/ext_l10n.h:40
 msgid "Cut|C"
 msgstr "Izre¾i|I"
 
-#: src/ext_l10n.h:47
+#: src/ext_l10n.h:41
 msgid "Copy|o"
 msgstr "Prepi¹i|P"
 
-#: src/ext_l10n.h:48
+#: src/ext_l10n.h:42
 msgid "Paste|a"
 msgstr "Prilepi|l"
 
@@ -787,11 +798,11 @@ msgstr "Prilepi|l"
 msgid "Paste External Selection|x"
 msgstr ""
 
-#: src/ext_l10n.h:50
+#: src/ext_l10n.h:44
 msgid "Find & Replace...|F"
 msgstr "Poi¹èi in zamenjaj...|P"
 
-#: src/ext_l10n.h:51
+#: src/ext_l10n.h:45
 msgid "Tabular|T"
 msgstr ""
 
@@ -807,27 +818,27 @@ msgstr "Matematièna plo¹èa|l"
 msgid "Spellchecker...|S"
 msgstr "Èrkovalnik...|k"
 
-#: src/ext_l10n.h:54
+#: src/ext_l10n.h:49
 msgid "Check TeX|h"
 msgstr "Preveri TeX|T"
 
-#: src/ext_l10n.h:55
+#: src/ext_l10n.h:50
 msgid "Remove All Error Boxes|E"
 msgstr "Odstrani vse ¹katle z napakami|O"
 
-#: src/ext_l10n.h:58
+#: src/ext_l10n.h:53
 msgid "as Lines|L"
 msgstr "kot èrte|k"
 
-#: src/ext_l10n.h:59
+#: src/ext_l10n.h:54
 msgid "as Paragraphs|P"
 msgstr "kot odstavke|o"
 
-#: src/ext_l10n.h:60
+#: src/ext_l10n.h:55
 msgid "Open/Close|O"
 msgstr "Odpri/Zapri|O"
 
-#: src/ext_l10n.h:61
+#: src/ext_l10n.h:56
 msgid "Melt|M"
 msgstr "Stopi|S"
 
@@ -839,7 +850,7 @@ msgstr ""
 msgid "Close All Figures/Tables|T"
 msgstr ""
 
-#: src/ext_l10n.h:64
+#: src/ext_l10n.h:59
 msgid "Open All Footnotes/Marginal Notes|A"
 msgstr ""
 
@@ -847,35 +858,35 @@ msgstr ""
 msgid "Close All Footnotes/Marginal Notes|C"
 msgstr ""
 
-#: src/ext_l10n.h:66
+#: src/ext_l10n.h:61
 msgid "Multicolumn|M"
 msgstr "Veèstolpèna|s"
 
-#: src/ext_l10n.h:67
+#: src/ext_l10n.h:62
 msgid "Line Top|T"
 msgstr "Èrta zgoraj|z"
 
-#: src/ext_l10n.h:68
+#: src/ext_l10n.h:63
 msgid "Line Bottom|B"
 msgstr "Èrta spodaj|s"
 
-#: src/ext_l10n.h:69
+#: src/ext_l10n.h:64
 msgid "Line Left|L"
 msgstr "Èrta levo|l"
 
-#: src/ext_l10n.h:70
+#: src/ext_l10n.h:65
 msgid "Line Right|R"
 msgstr "Èrta desno|d"
 
-#: src/ext_l10n.h:71
+#: src/ext_l10n.h:66
 msgid "Align Left|e"
 msgstr "Poravnaj levo|e"
 
-#: src/ext_l10n.h:72
+#: src/ext_l10n.h:67
 msgid "Align Center|C"
 msgstr "Usredini|U"
 
-#: src/ext_l10n.h:73
+#: src/ext_l10n.h:68
 msgid "Align Right|i"
 msgstr "Poravnaj desno|d"
 
@@ -883,27 +894,27 @@ msgstr "Poravnaj desno|d"
 msgid "V.Align Top|o"
 msgstr ""
 
-#: src/ext_l10n.h:75
+#: src/ext_l10n.h:70
 msgid "V.Align Center|n"
 msgstr ""
 
-#: src/ext_l10n.h:76
+#: src/ext_l10n.h:71
 msgid "V.Align Bottom|V"
 msgstr ""
 
-#: src/ext_l10n.h:77
+#: src/ext_l10n.h:72
 msgid "Append Row|A"
 msgstr "Dodaj vrsto|D"
 
-#: src/ext_l10n.h:78
+#: src/ext_l10n.h:73
 msgid "Append Column|u"
 msgstr "Dodaj stolpec|o"
 
-#: src/ext_l10n.h:79
+#: src/ext_l10n.h:74
 msgid "Delete Row|w"
 msgstr "Odstrani vrsto|d"
 
-#: src/ext_l10n.h:80
+#: src/ext_l10n.h:75
 msgid "Delete Column|D"
 msgstr "Odstrani stolpec|r"
 
@@ -919,27 +930,27 @@ msgstr "Prikazna formula|P"
 msgid "Special Character|S"
 msgstr "Posebni znak|z"
 
-#: src/ext_l10n.h:85
+#: src/ext_l10n.h:79
 msgid "Citation Reference...|C"
 msgstr ""
 
-#: src/ext_l10n.h:86
+#: src/ext_l10n.h:80
 msgid "Cross Reference...|R"
 msgstr "Navzkri¾ni sklic...|s"
 
-#: src/ext_l10n.h:87
+#: src/ext_l10n.h:81
 msgid "Label...|L"
 msgstr "Oznaka...|z"
 
-#: src/ext_l10n.h:88
+#: src/ext_l10n.h:82
 msgid "Footnote|F"
 msgstr "Opombo pod èrto|p"
 
-#: src/ext_l10n.h:89
+#: src/ext_l10n.h:83
 msgid "Marginal Note|M"
 msgstr "Opomba ob robu|r"
 
-#: src/ext_l10n.h:90
+#: src/ext_l10n.h:84
 msgid "Index Entry...|I"
 msgstr ""
 
@@ -947,11 +958,11 @@ msgstr ""
 msgid "Index Entry of Preceeding Word|W"
 msgstr ""
 
-#: src/ext_l10n.h:92
+#: src/ext_l10n.h:86
 msgid "URL...|U"
 msgstr "URL...|U"
 
-#: src/ext_l10n.h:93
+#: src/ext_l10n.h:87
 msgid "Note...|N"
 msgstr ""
 
@@ -963,11 +974,11 @@ msgstr ""
 msgid "Figure...|g"
 msgstr "Slika...|S"
 
-#: src/ext_l10n.h:95
+#: src/ext_l10n.h:90
 msgid "Tabular...|b"
 msgstr "Tabela...|T"
 
-#: src/ext_l10n.h:96
+#: src/ext_l10n.h:91
 msgid "Floats|a"
 msgstr "Plovke|P"
 
@@ -983,11 +994,11 @@ msgstr "Vstavi datoteko|t"
 msgid "External Material...|x"
 msgstr "Zunanji material...|Z"
 
-#: src/ext_l10n.h:98
+#: src/ext_l10n.h:95
 msgid "Superscript|S"
 msgstr "Eksponent|E"
 
-#: src/ext_l10n.h:99
+#: src/ext_l10n.h:96
 msgid "Subscript|u"
 msgstr "Indeks|I"
 
@@ -995,7 +1006,7 @@ msgstr "Indeks|I"
 msgid "HFill|H"
 msgstr "HFill|H"
 
-#: src/ext_l10n.h:101
+#: src/ext_l10n.h:98
 msgid "Hyphenation Point|P"
 msgstr "Mesto delitve|M"
 
@@ -1003,7 +1014,7 @@ msgstr "Mesto delitve|M"
 msgid "Protected Blank|B"
 msgstr ""
 
-#: src/ext_l10n.h:103
+#: src/ext_l10n.h:100
 msgid "Linebreak|L"
 msgstr "Prelom vrstice|P"
 
@@ -1011,7 +1022,7 @@ msgstr "Prelom vrstice|P"
 msgid "Ellipsis|i"
 msgstr "Tropièje|T"
 
-#: src/ext_l10n.h:105
+#: src/ext_l10n.h:102
 msgid "End of Sentence|E"
 msgstr "Konec stavka|K"
 
@@ -2835,7 +2846,7 @@ msgstr "Drugo...|#D"
 msgid "Other...|#T"
 msgstr "Drugo...|#R"
 
-#: src/form1.C:51 src/frontends/xforms/FormDocument.C:276
+#: src/form1.C:51 src/frontends/xforms/FormDocument.C:277
 #: src/frontends/xforms/FormPreferences.C:280
 msgid "Language"
 msgstr "Jezik"
@@ -3230,25 +3241,25 @@ msgstr " Sklic: "
 #: src/frontends/gnome/FormToc.C:100 src/frontends/gnome/FormToc.C:167
 #: src/frontends/kde/FormToc.C:167 src/frontends/kde/FormToc.C:168
 #: src/frontends/kde/tocdlg.C:28 src/frontends/xforms/FormToc.C:35
-#: src/insets/insettoc.C:21
+#: src/insets/insettoc.C:22
 msgid "Table of Contents"
 msgstr "Vsebinsko kazalo"
 
 #: src/frontends/gnome/FormToc.C:104 src/frontends/gnome/FormToc.C:173
 #: src/frontends/kde/FormToc.C:172 src/frontends/kde/FormToc.C:173
-#: src/frontends/kde/tocdlg.C:29 src/insets/insettoc.C:25
+#: src/frontends/kde/tocdlg.C:29 src/insets/insettoc.C:26
 msgid "List of Figures"
 msgstr "Seznam slik"
 
 #: src/frontends/gnome/FormToc.C:108 src/frontends/gnome/FormToc.C:185
 #: src/frontends/kde/FormToc.C:177 src/frontends/kde/FormToc.C:178
-#: src/frontends/kde/tocdlg.C:30 src/insets/insettoc.C:27
+#: src/frontends/kde/tocdlg.C:30 src/insets/insettoc.C:28
 msgid "List of Tables"
 msgstr "Seznam tabel"
 
 #: src/frontends/gnome/FormToc.C:112 src/frontends/gnome/FormToc.C:179
 #: src/frontends/kde/FormToc.C:182 src/frontends/kde/FormToc.C:183
-#: src/frontends/kde/tocdlg.C:31 src/insets/insettoc.C:23
+#: src/frontends/kde/tocdlg.C:31 src/insets/insettoc.C:24
 msgid "List of Algorithms"
 msgstr "Seznam algoritmov"
 
@@ -3600,7 +3611,9 @@ msgstr "LyX: Okolje odstavka"
 msgid ""
 "An error occured while printing.\n"
 "\n"
-msgstr "Med tiskanjem je pri¹lo do napake.\n\n"
+msgstr ""
+"Med tiskanjem je pri¹lo do napake.\n"
+"\n"
 
 #: src/frontends/kde/FormPrint.C:107
 msgid "Check the parameters are correct.\n"
@@ -3888,10 +3901,6 @@ msgstr "URL-ju priredi ime"
 msgid "Output as a hyperlink ?"
 msgstr "Izhod kot nadpovezava?"
 
-#: src/frontends/xforms/FormCitation.C:37
-msgid "Citation"
-msgstr "Citat"
-
 #: src/frontends/xforms/form_citation.C:29
 msgid "Inset keys|#I"
 msgstr "Tipke z vstavki|#v"
@@ -3965,6 +3974,15 @@ msgstr "Obnovi|#O"
 msgid "Cancel|#C^["
 msgstr "Preklièi|#P^["
 
+#: src/frontends/xforms/FormCitation.C:37
+msgid "Citation"
+msgstr "Citat"
+
+#: src/frontends/xforms/form_copyright.C:41
+#: src/frontends/xforms/form_error.C:31 src/frontends/xforms/form_toc.C:48
+msgid "Close|#C^[^M"
+msgstr "Zapri|#Z^[^M"
+
 #: src/frontends/xforms/FormCopyright.C:20
 msgid "Copyright and Warranty"
 msgstr "Pravice raz¹irjanja in jamstvo"
@@ -3980,10 +3998,10 @@ msgid ""
 "Software Foundation; either version 2 of the License, or (at your option) "
 "any later version."
 msgstr ""
-"Ta program sodi k prostemu programju; lahko ga raz¹irjate in/ali "
-"spreminjate pod pogoji gnujevske splo¹ne licence (GPL), kot jo je "
-"objavila ustanova Free Software Foundation; bodisi pod razlièico 2 te "
-"licence, ali (po va¹i izbiri) katerokoli poznej¹o razlièico."
+"Ta program sodi k prostemu programju; lahko ga raz¹irjate in/ali spreminjate "
+"pod pogoji gnujevske splo¹ne licence (GPL), kot jo je objavila ustanova Free "
+"Software Foundation; bodisi pod razlièico 2 te licence, ali (po va¹i izbiri) "
+"katerokoli poznej¹o razlièico."
 
 #: src/frontends/xforms/FormCopyright.C:61
 msgid ""
@@ -3994,137 +4012,13 @@ msgid ""
 "along with this program; if not, write to the Free Software Foundation, "
 "Inc., 675 Mass Ave, Cambridge, MA 02139, USA."
 msgstr ""
-"LyX se raz¹irja v upanju, da bo uporaben, vendar BREZ KAKR©NEGAKOLI "
-"JAMSTVA; tudi brez implicitnega jamstva VREDNOSTI SVOJE CENE ali "
-"PRIMERNOSTI ZA DOLOÈEN NAMEN.  Veè o tem si oglejte v GNUjevski "
-"splo¹ni licenci (GNU General Public License, GPL).  Poleg tega "
-"programa bi morali dobiti izvod licence GNU General Public License v "
-"angle¹èini; èe ga niste, pi¹ite na naslov: Free Software Foundation, "
-"Inc., 675 Mass Ave, Cambridge, MA 02139, USA."
-
-#: src/frontends/xforms/form_copyright.C:41
-#: src/frontends/xforms/form_error.C:31 src/frontends/xforms/form_toc.C:48
-msgid "Close|#C^[^M"
-msgstr "Zapri|#Z^[^M"
-
-#: src/frontends/xforms/FormDocument.C:48
-msgid "Document Layout"
-msgstr "Videz spisa"
-
-#: src/frontends/xforms/FormDocument.C:117
-msgid ""
-" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
-"B4 | B5 "
-msgstr ""
-" Privzeto | Prilagojeno | USletter | USlegal | USexecutive | A3 | A4 | A5 | "
-"B3 | B4 | B5 "
-
-#: src/frontends/xforms/FormDocument.C:120
-msgid ""
-" None | A4 small Margins (only portrait) | A4 very small Margins (only "
-"portrait) | A4 very wide margins (only portrait) "
-msgstr ""
-" Noben | A4 z majhnimi robovi (le pokonèen) | A4 z zelo majhnimi robovi (le "
-"pokonèen) | A4 z zelo ¹irokimi robovi (le pokonèen) "
-
-#: src/frontends/xforms/FormDocument.C:178
-msgid " Single | OneHalf | Double | Other "
-msgstr " Enojno | Polovièno | Dvojno | Drugo "
-
-#: src/frontends/xforms/FormDocument.C:186
-msgid " Smallskip | Medskip | Bigskip | Length "
-msgstr " Majhen preskok | Srednji preskok | Veliki preskok | Dol¾ina "
-
-#: src/frontends/xforms/FormDocument.C:234
-msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
-msgstr ""
-" ``besedilo'' | ''besedilo'' | ,,besedilo`` | ,,besedilo'' | «besedilo» | "
-"»besedilo« "
-
-#: src/frontends/xforms/FormDocument.C:262
-msgid ""
-" default | tiny | script | footnote | small | normal | large | Large | LARGE "
-"| huge | Huge"
-msgstr ""
-" privzeti | drobni | indeksi | opombe | mali | obièajni | veliki | Veliki | "
-"VELIKI | ogromni | Ogromni"
-
-#: src/frontends/xforms/FormDocument.C:272 src/insets/figinset.C:1960
-#: src/insets/insetexternal.C:143 src/lyxfunc.C:3093 src/lyxfunc.C:3169
-#: src/lyxfunc.C:3301
-msgid "Document"
-msgstr "Spis"
-
-#: src/frontends/xforms/FormDocument.C:274
-msgid "Paper"
-msgstr "Papir"
-
-#: src/frontends/xforms/FormDocument.C:278
-#: src/frontends/xforms/FormParagraph.C:133
-msgid "Extra"
-msgstr "Dodatno"
-
-#: src/frontends/xforms/FormDocument.C:280
-msgid "Bullets"
-msgstr "Pike"
-
-#: src/frontends/xforms/FormDocument.C:283
-msgid ""
-"Your version of libXpm is older than 4.7.\n"
-"The `bullet' tab of the document popup has been disabled"
-msgstr ""
-
-#: src/frontends/xforms/FormDocument.C:307
-msgid "Document layout set"
-msgstr "Nastavitev videza spisa"
-
-#: src/frontends/xforms/FormDocument.C:424
-msgid "Converting document to new document class..."
-msgstr "Spis se spreminja v nov razred spisa..."
-
-#: src/frontends/xforms/FormDocument.C:432
-msgid "One paragraph couldn't be converted"
-msgstr "Enega odstavka ni moè spremeniti"
-
-#: src/frontends/xforms/FormDocument.C:435
-msgid " paragraphs couldn't be converted"
-msgstr " odstavkov ni moè spremeniti"
-
-#. problem changing class -- warn user and retain old style
-#: src/frontends/xforms/FormDocument.C:437
-#: src/frontends/xforms/FormDocument.C:444
-#: src/frontends/xforms/FormDocument.C:1103
-msgid "Conversion Errors!"
-msgstr "Napake pri spreminjanju!"
-
-#: src/frontends/xforms/FormDocument.C:438
-msgid "into chosen document class"
-msgstr "v izbrani razred spisa"
-
-#: src/frontends/xforms/FormDocument.C:445
-msgid "Errors loading new document class."
-msgstr "Napaka pri nalaganju razreda novega dokumenta."
-
-#: src/frontends/xforms/FormDocument.C:446
-#: src/frontends/xforms/FormDocument.C:1105
-msgid "Reverting to original document class."
-msgstr "Vraèamo se k izvornem razredu spisa."
-
-#: src/frontends/xforms/FormDocument.C:823
-msgid "Document is read-only. No changes to layout permitted."
-msgstr "Spis je le za branje.  Spremembe videza niso dovoljene."
-
-#: src/frontends/xforms/FormDocument.C:1093
-msgid "Should I set some parameters to"
-msgstr "Ali naj nastavimo nekatere parametre"
-
-#: src/frontends/xforms/FormDocument.C:1094
-msgid "the defaults of this document class?"
-msgstr "na privzete vrednosti tega razreda spisa?"
-
-#: src/frontends/xforms/FormDocument.C:1104
-msgid "Unable to switch to new document class."
-msgstr "Ni moè preklopiti na novi razred spisa."
+"LyX se raz¹irja v upanju, da bo uporaben, vendar BREZ KAKR©NEGAKOLI JAMSTVA; "
+"tudi brez implicitnega jamstva VREDNOSTI SVOJE CENE ali PRIMERNOSTI ZA "
+"DOLOÈEN NAMEN.  Veè o tem si oglejte v GNUjevski splo¹ni licenci (GNU "
+"General Public License, GPL).  Poleg tega programa bi morali dobiti izvod "
+"licence GNU General Public License v angle¹èini; èe ga niste, pi¹ite na "
+"naslov: Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, "
+"USA."
 
 #: src/frontends/xforms/form_document.C:30
 #: src/frontends/xforms/form_paragraph.C:314
@@ -4364,18 +4258,128 @@ msgstr "Ding 4|#g"
 msgid "Ding 1|#D"
 msgstr "Ding 1|#D"
 
+#: src/frontends/xforms/FormDocument.C:48
+msgid "Document Layout"
+msgstr "Videz spisa"
+
+#: src/frontends/xforms/FormDocument.C:117
+msgid ""
+" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
+"B4 | B5 "
+msgstr ""
+" Privzeto | Prilagojeno | USletter | USlegal | USexecutive | A3 | A4 | A5 | "
+"B3 | B4 | B5 "
+
+#: src/frontends/xforms/FormDocument.C:120
+msgid ""
+" None | A4 small Margins (only portrait) | A4 very small Margins (only "
+"portrait) | A4 very wide margins (only portrait) "
+msgstr ""
+" Noben | A4 z majhnimi robovi (le pokonèen) | A4 z zelo majhnimi robovi (le "
+"pokonèen) | A4 z zelo ¹irokimi robovi (le pokonèen) "
+
+#: src/frontends/xforms/FormDocument.C:179
+msgid " Single | OneHalf | Double | Other "
+msgstr " Enojno | Polovièno | Dvojno | Drugo "
+
+#: src/frontends/xforms/FormDocument.C:187
+msgid " Smallskip | Medskip | Bigskip | Length "
+msgstr " Majhen preskok | Srednji preskok | Veliki preskok | Dol¾ina "
+
+#: src/frontends/xforms/FormDocument.C:236
+msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
+msgstr ""
+" ``besedilo'' | ''besedilo'' | ,,besedilo`` | ,,besedilo'' | «besedilo» | "
+"»besedilo« "
+
+#: src/frontends/xforms/FormDocument.C:263
+msgid ""
+" default | tiny | script | footnote | small | normal | large | Large | LARGE "
+"| huge | Huge"
+msgstr ""
+" privzeti | drobni | indeksi | opombe | mali | obièajni | veliki | Veliki | "
+"VELIKI | ogromni | Ogromni"
+
+#: src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1960
+#: src/insets/insetexternal.C:143 src/lyxfunc.C:3103 src/lyxfunc.C:3179
+#: src/lyxfunc.C:3311
+msgid "Document"
+msgstr "Spis"
+
+#: src/frontends/xforms/FormDocument.C:275
+msgid "Paper"
+msgstr "Papir"
+
+#: src/frontends/xforms/FormDocument.C:279
+#: src/frontends/xforms/FormParagraph.C:133
+msgid "Extra"
+msgstr "Dodatno"
+
+#: src/frontends/xforms/FormDocument.C:281
+msgid "Bullets"
+msgstr "Pike"
+
+#: src/frontends/xforms/FormDocument.C:284
+msgid ""
+"Your version of libXpm is older than 4.7.\n"
+"The `bullet' tab of the document popup has been disabled"
+msgstr ""
+
+#: src/frontends/xforms/FormDocument.C:308
+msgid "Document layout set"
+msgstr "Nastavitev videza spisa"
+
+#: src/frontends/xforms/FormDocument.C:426
+msgid "Converting document to new document class..."
+msgstr "Spis se spreminja v nov razred spisa..."
+
+#: src/frontends/xforms/FormDocument.C:434
+msgid "One paragraph couldn't be converted"
+msgstr "Enega odstavka ni moè spremeniti"
+
+#: src/frontends/xforms/FormDocument.C:437
+msgid " paragraphs couldn't be converted"
+msgstr " odstavkov ni moè spremeniti"
+
+#. problem changing class -- warn user and retain old style
+#: src/frontends/xforms/FormDocument.C:439
+#: src/frontends/xforms/FormDocument.C:446
+#: src/frontends/xforms/FormDocument.C:1108
+msgid "Conversion Errors!"
+msgstr "Napake pri spreminjanju!"
+
+#: src/frontends/xforms/FormDocument.C:440
+msgid "into chosen document class"
+msgstr "v izbrani razred spisa"
+
+#: src/frontends/xforms/FormDocument.C:447
+msgid "Errors loading new document class."
+msgstr "Napaka pri nalaganju razreda novega dokumenta."
+
+#: src/frontends/xforms/FormDocument.C:448
+#: src/frontends/xforms/FormDocument.C:1110
+msgid "Reverting to original document class."
+msgstr "Vraèamo se k izvornem razredu spisa."
+
+#: src/frontends/xforms/FormDocument.C:825
+msgid "Document is read-only. No changes to layout permitted."
+msgstr "Spis je le za branje.  Spremembe videza niso dovoljene."
+
+#: src/frontends/xforms/FormDocument.C:1100
+msgid "Should I set some parameters to"
+msgstr "Ali naj nastavimo nekatere parametre"
+
+#: src/frontends/xforms/FormDocument.C:1101
+msgid "the defaults of this document class?"
+msgstr "na privzete vrednosti tega razreda spisa?"
+
+#: src/frontends/xforms/FormDocument.C:1109
+msgid "Unable to switch to new document class."
+msgstr "Ni moè preklopiti na novi razred spisa."
+
 #: src/frontends/xforms/FormError.C:26
 msgid "LaTeX Error"
 msgstr "Napaka LaTeXa"
-
-#: src/frontends/xforms/FormGraphics.C:36
-#: src/frontends/xforms/FormGraphics.C:359
-msgid "Graphics"
-msgstr ""
-
-#: src/frontends/xforms/FormGraphics.C:368 src/insets/figinset.C:1959
-msgid "Clipart"
-msgstr "Izrezek"
 
 #: src/frontends/xforms/form_graphics.C:33
 msgid "Graphics File|#F"
@@ -4453,39 +4457,22 @@ msgstr "Osve¾i|#O"
 msgid "Ok"
 msgstr "V redu"
 
-#: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:36
-msgid "Index"
-msgstr "Stvarno kazalo"
+#: src/frontends/xforms/FormGraphics.C:36
+#: src/frontends/xforms/FormGraphics.C:359
+msgid "Graphics"
+msgstr ""
+
+#: src/frontends/xforms/FormGraphics.C:368 src/insets/figinset.C:1959
+msgid "Clipart"
+msgstr "Izrezek"
 
 #: src/frontends/xforms/form_index.C:29
 msgid "Keyword|#K"
 msgstr "Kljuèna beseda|#K"
 
-#: src/frontends/xforms/FormParagraph.C:33
-msgid "Paragraph Layout"
-msgstr "Videz odstavka"
-
-#: src/frontends/xforms/FormParagraph.C:92
-#: src/frontends/xforms/FormParagraph.C:95
-msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
-msgstr " Niè | Standarden | Smallskip | Medskip | Bigskip | VFill | Dol¾ina "
-
-#. now make them fit together
-#: src/frontends/xforms/FormParagraph.C:132
-msgid "General"
-msgstr "Splo¹no"
-
-#: src/frontends/xforms/FormParagraph.C:680
-#: src/frontends/xforms/FormParagraph.C:717
-#: src/frontends/xforms/FormTabular.C:454
-#: src/frontends/xforms/FormTabular.C:466
-#: src/frontends/xforms/FormTabular.C:478
-msgid "Warning: Invalid Length (valid example: 10mm)"
-msgstr "Pozor: Neprava dol¾ina (veljavni zgled: 10mm)"
-
-#: src/frontends/xforms/FormParagraph.C:729
-msgid "Warning: Invalid percent value (0-100)"
-msgstr "Pozor: Neprava vrednost v odstotkih (0-100)"
+#: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:36
+msgid "Index"
+msgstr "Stvarno kazalo"
 
 #: src/frontends/xforms/form_paragraph.C:40
 msgid "Label Width:|#d"
@@ -4612,332 +4599,31 @@ msgstr "Floatflt|#F"
 msgid "Cancel|C#C^["
 msgstr "Preklièi|P#P^["
 
-#: src/frontends/xforms/FormPreferences.C:68
-msgid "Preferences"
-msgstr "Izbire"
-
-#: src/frontends/xforms/FormPreferences.C:220
-msgid "Look & Feel"
-msgstr "Videz in obèutek"
-
-#: src/frontends/xforms/FormPreferences.C:223
-msgid "Lang Opts"
-msgstr "Jezikovne izbire"
-
-#: src/frontends/xforms/FormPreferences.C:226
-#: src/frontends/xforms/FormPreferences.C:255
-msgid "Converters"
-msgstr "Pretvorniki"
-
-#: src/frontends/xforms/FormPreferences.C:229
-msgid "Inputs"
-msgstr "Vhodi"
-
-#: src/frontends/xforms/FormPreferences.C:232
-msgid "Outputs"
-msgstr "Izhodi"
-
-#: src/frontends/xforms/FormPreferences.C:238
-msgid "Screen Fonts"
-msgstr "Zaslonske pisave"
-
-#: src/frontends/xforms/FormPreferences.C:241
-msgid "Interface"
-msgstr "Vmesnik"
-
-#: src/frontends/xforms/FormPreferences.C:244
-msgid "Colors"
-msgstr "Barve"
-
-#: src/frontends/xforms/FormPreferences.C:247
-#: src/frontends/xforms/FormPreferences.C:264
-#: src/frontends/xforms/FormPreferences.C:272 src/mathed/math_forms.C:46
-msgid "Misc"
-msgstr "Razno"
-
-#: src/frontends/xforms/FormPreferences.C:252
-msgid "Formats"
-msgstr "Formati"
-
-#: src/frontends/xforms/FormPreferences.C:261
-msgid "Paths"
-msgstr "Poti"
-
-#: src/frontends/xforms/FormPreferences.C:269
-msgid "Printer"
-msgstr "Tiskalnik"
-
-#: src/frontends/xforms/FormPreferences.C:277
-msgid "Spell checker"
-msgstr "Èrkovalnik"
-
-#: src/frontends/xforms/FormPreferences.C:533
-msgid "LyX objects that can be assigned a color."
-msgstr "LyX pravi, da temu ne more biti prirejena barva."
-
-#: src/frontends/xforms/FormPreferences.C:536
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-"Spremenite barvo predmeta v LyXu. Pozor: potem morate "
-"\"Uveljaviti\" spremembo."
-
-#: src/frontends/xforms/FormPreferences.C:544
-msgid "Find a new color."
-msgstr "Najdi novo barvo."
-
-#: src/frontends/xforms/FormPreferences.C:547
-msgid "Toggle between RGB and HSV color spaces."
-msgstr "Preklopi med barvnim prostorom RGB in HSV."
-
-#: src/frontends/xforms/FormPreferences.C:742
-msgid "GUI background"
-msgstr "Ozadje grafiènega vmesnika"
-
-#: src/frontends/xforms/FormPreferences.C:748
-msgid "GUI text"
-msgstr "Besedilo grafiènega vmesnika"
-
-#: src/frontends/xforms/FormPreferences.C:757
-msgid "GUI selection"
-msgstr "Izbira grafiènega vmesnika"
-
-#: src/frontends/xforms/FormPreferences.C:763
-msgid "GUI pointer"
-msgstr "Kazalec grafiènega vmesnika"
-
-#: src/frontends/xforms/FormPreferences.C:896
-msgid "HSV"
-msgstr "HSV"
-
-#: src/frontends/xforms/FormPreferences.C:928
-msgid "RGB"
-msgstr "RGB"
-
-#: src/frontends/xforms/FormPreferences.C:1004
-msgid "All the currently defined converters known to LyX."
-msgstr "Vsi trenutno definirani pretvorniki, ki jih pozna LyX."
-
-#: src/frontends/xforms/FormPreferences.C:1006
-msgid "Convert \"from\" this format"
-msgstr "Pretvori \"iz\" tega formata"
-
-#: src/frontends/xforms/FormPreferences.C:1008
-msgid "Convert \"to\" this format"
-msgstr "Pretvori \"v\" ta format"
-
-#: src/frontends/xforms/FormPreferences.C:1010
-msgid ""
-"The conversion command. $$i is the input file name, $$b is the file name "
-"without its extension and $$o is the name of the output file."
-msgstr ""
-"Ukaz za pretvorbo.  $$i je ime vhodne datoteke, $$b je ime datoteke "
-"brez pripone in $$o ime izhodne datoteke."
-
-#: src/frontends/xforms/FormPreferences.C:1012
-msgid "Flags that control the converter behavior"
-msgstr "Izbire, ki nadzorujejo obna¹anje pretvornika"
-
-#: src/frontends/xforms/FormPreferences.C:1014
-msgid ""
-"Remove the current converter from the list of available converters. Note: "
-"you must then \"Apply\" the change."
-msgstr ""
-"Odstranite trenutni pretvornik s seznama dostopnih. Vedite: po "
-"spremembi jo morate ¹e \"Uveljaviti\"."
-
-#: src/frontends/xforms/FormPreferences.C:1016
-#: src/frontends/xforms/FormPreferences.C:1288
-msgid "Add"
-msgstr "Dodaj"
-
-#: src/frontends/xforms/FormPreferences.C:1017
-msgid ""
-"Add the current converter to the list of available converters. Note: you "
-"must then \"Apply\" the change."
-msgstr ""
-"Dodajte trenutni pretvornik v seznam dostopnih. Vedite: po spremembi "
-"jo morate ¹e \"Uveljaviti\"."
-
-#: src/frontends/xforms/FormPreferences.C:1019
-msgid ""
-"Modify the contents of the current converter. Note: you must then \"Apply\" "
-"the change."
-msgstr ""
-"Spremenite vsebino trenutnega pretvornika. Vedite: po spremembi jo "
-"morate ¹e \"Uveljaviti\"."
-
-#: src/frontends/xforms/FormPreferences.C:1112
-#: src/frontends/xforms/FormPreferences.C:1114
-#: src/frontends/xforms/FormPreferences.C:1159
-#: src/frontends/xforms/FormPreferences.C:1161
-#: src/frontends/xforms/FormPreferences.C:1388
-#: src/frontends/xforms/FormPreferences.C:1389
-#: src/frontends/xforms/FormPreferences.C:1438
-#: src/frontends/xforms/FormPreferences.C:1440
-#: src/frontends/xforms/form_preferences.C:504
-msgid "Modify|#M"
-msgstr "Spremeni|#S"
-
-#: src/frontends/xforms/FormPreferences.C:1148
-#: src/frontends/xforms/FormPreferences.C:1150
-#: src/frontends/xforms/FormPreferences.C:1427
-#: src/frontends/xforms/FormPreferences.C:1429
-#: src/frontends/xforms/form_preferences.C:607
-#: src/frontends/xforms/form_preferences.C:694
-#, fuzzy
-msgid "Add|#A"
-msgstr "Dodaj v|#t"
-
-#: src/frontends/xforms/FormPreferences.C:1274
-msgid "All the currently defined formats known to LyX."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1276
-msgid "The format identifier."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1278
-msgid "The format name as it will appear in the menus."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1280
-msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1282
-msgid "Used to recognize the file. E.g., ps, pdf, tex."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1284
-msgid "The command used to launch the viewer application."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1286
-msgid ""
-"Remove the current format from the list of available formats. Note: you must "
-"then \"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1289
-msgid ""
-"Add the current format to the list of available formats. Note: you must then "
-"\"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1291
-msgid ""
-"Modify the contents of the current format. Note: you must then \"Apply\" the "
-"change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1407
-msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1578
-msgid "Sys Bind"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1582
-#, fuzzy
-msgid "User Bind"
-msgstr "Uporabi vkljuèitev|#U"
-
-#: src/frontends/xforms/FormPreferences.C:1586
-#, fuzzy
-msgid "Bind file"
-msgstr "Datoteka EPS|#E"
-
-#: src/frontends/xforms/FormPreferences.C:1590
-msgid "Sys UI"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1594
-msgid "User UI"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1598
-#, fuzzy
-msgid "UI file"
-msgstr "[ni datoteke]"
-
-#: src/frontends/xforms/FormPreferences.C:1794
-#: src/frontends/xforms/FormPreferences.C:1802
-#, fuzzy
-msgid "Key maps"
-msgstr "Polo¾aji tipk"
-
-#: src/frontends/xforms/FormPreferences.C:1798
-#: src/frontends/xforms/FormPreferences.C:1806
-#, fuzzy
-msgid "Keyboard map"
-msgstr "Kljuèna beseda:|#K"
-
-#: src/frontends/xforms/FormPreferences.C:1979
-#, fuzzy
-msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
-msgstr ""
-" Privzeto | Prilagojeno | USletter | USlegal | USexecutive | A3 | A4 | A5 | "
-"B3 | B4 | B5 "
-
-#: src/frontends/xforms/FormPreferences.C:2231
-#, fuzzy
-msgid "Default path"
-msgstr "privzeta"
-
-#: src/frontends/xforms/FormPreferences.C:2236
-#, fuzzy
-msgid "Template path"
-msgstr "Vzorci"
-
-#: src/frontends/xforms/FormPreferences.C:2241
-msgid "Temp dir"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2245
-#, fuzzy
-msgid "User"
-msgstr "Uporabnik1|#1"
-
-#: src/frontends/xforms/FormPreferences.C:2248
-#, fuzzy
-msgid "Lastfiles"
-msgstr "Seznam tabel"
-
-#: src/frontends/xforms/FormPreferences.C:2252
-msgid "Backup path"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2257
-msgid "LyX Server pipes"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2701
-msgid "Fonts must be positive!"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2724
-#, fuzzy
-msgid ""
-"Fonts must be input in the order tiny > script> footnote > small > normal > "
-"large > larger > largest > huge > huger."
-msgstr ""
-" privzeti | drobni | indeksi | opombe | mali | obièajni | veliki | Veliki | "
-"VELIKI | ogromni | Ogromni"
-
-#: src/frontends/xforms/FormPreferences.C:2840
-msgid " none | ispell | aspell "
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2952
-#, fuzzy
-msgid "Personal dictionary"
-msgstr "Vstavi v osebni slovar|#I"
-
-#: src/frontends/xforms/FormPreferences.C:3008
-msgid "WARNING!"
-msgstr ""
+#: src/frontends/xforms/FormParagraph.C:33
+msgid "Paragraph Layout"
+msgstr "Videz odstavka"
+
+#: src/frontends/xforms/FormParagraph.C:92
+#: src/frontends/xforms/FormParagraph.C:95
+msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
+msgstr " Niè | Standarden | Smallskip | Medskip | Bigskip | VFill | Dol¾ina "
+
+#. now make them fit together
+#: src/frontends/xforms/FormParagraph.C:132
+msgid "General"
+msgstr "Splo¹no"
+
+#: src/frontends/xforms/FormParagraph.C:680
+#: src/frontends/xforms/FormParagraph.C:717
+#: src/frontends/xforms/FormTabular.C:454
+#: src/frontends/xforms/FormTabular.C:466
+#: src/frontends/xforms/FormTabular.C:478
+msgid "Warning: Invalid Length (valid example: 10mm)"
+msgstr "Pozor: Neprava dol¾ina (veljavni zgled: 10mm)"
+
+#: src/frontends/xforms/FormParagraph.C:729
+msgid "Warning: Invalid percent value (0-100)"
+msgstr "Pozor: Neprava vrednost v odstotkih (0-100)"
 
 #: src/LyXAction.C:154 src/frontends/xforms/form_preferences.C:44
 msgid "Save"
@@ -5143,6 +4829,18 @@ msgstr "Brskaj|#B"
 msgid "LyX objects|#L"
 msgstr "LyX|#L"
 
+#: src/frontends/xforms/FormPreferences.C:1112
+#: src/frontends/xforms/FormPreferences.C:1114
+#: src/frontends/xforms/FormPreferences.C:1159
+#: src/frontends/xforms/FormPreferences.C:1161
+#: src/frontends/xforms/FormPreferences.C:1388
+#: src/frontends/xforms/FormPreferences.C:1389
+#: src/frontends/xforms/FormPreferences.C:1438
+#: src/frontends/xforms/FormPreferences.C:1440
+#: src/frontends/xforms/form_preferences.C:504
+msgid "Modify|#M"
+msgstr "Spremeni|#S"
+
 #: src/frontends/xforms/form_preferences.C:511
 #, fuzzy
 msgid "S|#S"
@@ -5181,6 +4879,16 @@ msgstr ""
 #, fuzzy
 msgid "Delete|#D"
 msgstr "Zbri¹i iz|#D"
+
+#: src/frontends/xforms/FormPreferences.C:1148
+#: src/frontends/xforms/FormPreferences.C:1150
+#: src/frontends/xforms/FormPreferences.C:1427
+#: src/frontends/xforms/FormPreferences.C:1429
+#: src/frontends/xforms/form_preferences.C:607
+#: src/frontends/xforms/form_preferences.C:694
+#, fuzzy
+msgid "Add|#A"
+msgstr "Dodaj v|#t"
 
 #: src/frontends/xforms/form_preferences.C:614
 #, fuzzy
@@ -5415,10 +5123,310 @@ msgstr ""
 msgid "Temp dir|#d"
 msgstr ""
 
-#: src/LyXAction.C:137 src/LyXAction.C:145 src/frontends/xforms/FormPrint.C:37
-#: src/frontends/xforms/form_print.C:129
-msgid "Print"
-msgstr "Tiskaj"
+#: src/frontends/xforms/FormPreferences.C:68
+msgid "Preferences"
+msgstr "Izbire"
+
+#: src/frontends/xforms/FormPreferences.C:220
+msgid "Look & Feel"
+msgstr "Videz in obèutek"
+
+#: src/frontends/xforms/FormPreferences.C:223
+msgid "Lang Opts"
+msgstr "Jezikovne izbire"
+
+#: src/frontends/xforms/FormPreferences.C:226
+#: src/frontends/xforms/FormPreferences.C:255
+msgid "Converters"
+msgstr "Pretvorniki"
+
+#: src/frontends/xforms/FormPreferences.C:229
+msgid "Inputs"
+msgstr "Vhodi"
+
+#: src/frontends/xforms/FormPreferences.C:232
+msgid "Outputs"
+msgstr "Izhodi"
+
+#: src/frontends/xforms/FormPreferences.C:238
+msgid "Screen Fonts"
+msgstr "Zaslonske pisave"
+
+#: src/frontends/xforms/FormPreferences.C:241
+msgid "Interface"
+msgstr "Vmesnik"
+
+#: src/frontends/xforms/FormPreferences.C:244
+msgid "Colors"
+msgstr "Barve"
+
+#: src/frontends/xforms/FormPreferences.C:247
+#: src/frontends/xforms/FormPreferences.C:264
+#: src/frontends/xforms/FormPreferences.C:272 src/mathed/math_forms.C:46
+msgid "Misc"
+msgstr "Razno"
+
+#: src/frontends/xforms/FormPreferences.C:252
+msgid "Formats"
+msgstr "Formati"
+
+#: src/frontends/xforms/FormPreferences.C:261
+msgid "Paths"
+msgstr "Poti"
+
+#: src/frontends/xforms/FormPreferences.C:269
+msgid "Printer"
+msgstr "Tiskalnik"
+
+#: src/frontends/xforms/FormPreferences.C:277
+msgid "Spell checker"
+msgstr "Èrkovalnik"
+
+#: src/frontends/xforms/FormPreferences.C:533
+msgid "LyX objects that can be assigned a color."
+msgstr "LyX pravi, da temu ne more biti prirejena barva."
+
+#: src/frontends/xforms/FormPreferences.C:536
+msgid ""
+"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr ""
+"Spremenite barvo predmeta v LyXu. Pozor: potem morate \"Uveljaviti\" "
+"spremembo."
+
+#: src/frontends/xforms/FormPreferences.C:544
+msgid "Find a new color."
+msgstr "Najdi novo barvo."
+
+#: src/frontends/xforms/FormPreferences.C:547
+msgid "Toggle between RGB and HSV color spaces."
+msgstr "Preklopi med barvnim prostorom RGB in HSV."
+
+#: src/frontends/xforms/FormPreferences.C:742
+msgid "GUI background"
+msgstr "Ozadje grafiènega vmesnika"
+
+#: src/frontends/xforms/FormPreferences.C:748
+msgid "GUI text"
+msgstr "Besedilo grafiènega vmesnika"
+
+#: src/frontends/xforms/FormPreferences.C:757
+msgid "GUI selection"
+msgstr "Izbira grafiènega vmesnika"
+
+#: src/frontends/xforms/FormPreferences.C:763
+msgid "GUI pointer"
+msgstr "Kazalec grafiènega vmesnika"
+
+#: src/frontends/xforms/FormPreferences.C:896
+msgid "HSV"
+msgstr "HSV"
+
+#: src/frontends/xforms/FormPreferences.C:928
+msgid "RGB"
+msgstr "RGB"
+
+#: src/frontends/xforms/FormPreferences.C:1004
+msgid "All the currently defined converters known to LyX."
+msgstr "Vsi trenutno definirani pretvorniki, ki jih pozna LyX."
+
+#: src/frontends/xforms/FormPreferences.C:1006
+msgid "Convert \"from\" this format"
+msgstr "Pretvori \"iz\" tega formata"
+
+#: src/frontends/xforms/FormPreferences.C:1008
+msgid "Convert \"to\" this format"
+msgstr "Pretvori \"v\" ta format"
+
+#: src/frontends/xforms/FormPreferences.C:1010
+msgid ""
+"The conversion command. $$i is the input file name, $$b is the file name "
+"without its extension and $$o is the name of the output file."
+msgstr ""
+"Ukaz za pretvorbo.  $$i je ime vhodne datoteke, $$b je ime datoteke brez "
+"pripone in $$o ime izhodne datoteke."
+
+#: src/frontends/xforms/FormPreferences.C:1012
+msgid "Flags that control the converter behavior"
+msgstr "Izbire, ki nadzorujejo obna¹anje pretvornika"
+
+#: src/frontends/xforms/FormPreferences.C:1014
+msgid ""
+"Remove the current converter from the list of available converters. Note: "
+"you must then \"Apply\" the change."
+msgstr ""
+"Odstranite trenutni pretvornik s seznama dostopnih. Vedite: po spremembi jo "
+"morate ¹e \"Uveljaviti\"."
+
+#: src/frontends/xforms/FormPreferences.C:1016
+#: src/frontends/xforms/FormPreferences.C:1288
+msgid "Add"
+msgstr "Dodaj"
+
+#: src/frontends/xforms/FormPreferences.C:1017
+msgid ""
+"Add the current converter to the list of available converters. Note: you "
+"must then \"Apply\" the change."
+msgstr ""
+"Dodajte trenutni pretvornik v seznam dostopnih. Vedite: po spremembi jo "
+"morate ¹e \"Uveljaviti\"."
+
+#: src/frontends/xforms/FormPreferences.C:1019
+msgid ""
+"Modify the contents of the current converter. Note: you must then \"Apply\" "
+"the change."
+msgstr ""
+"Spremenite vsebino trenutnega pretvornika. Vedite: po spremembi jo morate ¹e "
+"\"Uveljaviti\"."
+
+#: src/frontends/xforms/FormPreferences.C:1274
+msgid "All the currently defined formats known to LyX."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1276
+msgid "The format identifier."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1278
+msgid "The format name as it will appear in the menus."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1280
+msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1282
+msgid "Used to recognize the file. E.g., ps, pdf, tex."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1284
+msgid "The command used to launch the viewer application."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1286
+msgid ""
+"Remove the current format from the list of available formats. Note: you must "
+"then \"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1289
+msgid ""
+"Add the current format to the list of available formats. Note: you must then "
+"\"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1291
+msgid ""
+"Modify the contents of the current format. Note: you must then \"Apply\" the "
+"change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1407
+msgid "Cannot remove a Format used by a Converter. Remove the converter first."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1578
+msgid "Sys Bind"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1582
+#, fuzzy
+msgid "User Bind"
+msgstr "Uporabi vkljuèitev|#U"
+
+#: src/frontends/xforms/FormPreferences.C:1586
+#, fuzzy
+msgid "Bind file"
+msgstr "Datoteka EPS|#E"
+
+#: src/frontends/xforms/FormPreferences.C:1590
+msgid "Sys UI"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1594
+msgid "User UI"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1598
+#, fuzzy
+msgid "UI file"
+msgstr "[ni datoteke]"
+
+#: src/frontends/xforms/FormPreferences.C:1794
+#: src/frontends/xforms/FormPreferences.C:1802
+#, fuzzy
+msgid "Key maps"
+msgstr "Polo¾aji tipk"
+
+#: src/frontends/xforms/FormPreferences.C:1798
+#: src/frontends/xforms/FormPreferences.C:1806
+#, fuzzy
+msgid "Keyboard map"
+msgstr "Kljuèna beseda:|#K"
+
+#: src/frontends/xforms/FormPreferences.C:1979
+#, fuzzy
+msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
+msgstr ""
+" Privzeto | Prilagojeno | USletter | USlegal | USexecutive | A3 | A4 | A5 | "
+"B3 | B4 | B5 "
+
+#: src/frontends/xforms/FormPreferences.C:2231
+#, fuzzy
+msgid "Default path"
+msgstr "privzeta"
+
+#: src/frontends/xforms/FormPreferences.C:2236
+#, fuzzy
+msgid "Template path"
+msgstr "Vzorci"
+
+#: src/frontends/xforms/FormPreferences.C:2241
+msgid "Temp dir"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2245
+#, fuzzy
+msgid "User"
+msgstr "Uporabnik1|#1"
+
+#: src/frontends/xforms/FormPreferences.C:2248
+#, fuzzy
+msgid "Lastfiles"
+msgstr "Seznam tabel"
+
+#: src/frontends/xforms/FormPreferences.C:2252
+msgid "Backup path"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2257
+msgid "LyX Server pipes"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2701
+msgid "Fonts must be positive!"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2724
+#, fuzzy
+msgid ""
+"Fonts must be input in the order tiny > script> footnote > small > normal > "
+"large > larger > largest > huge > huger."
+msgstr ""
+" privzeti | drobni | indeksi | opombe | mali | obièajni | veliki | Veliki | "
+"VELIKI | ogromni | Ogromni"
+
+#: src/frontends/xforms/FormPreferences.C:2840
+msgid " none | ispell | aspell "
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2952
+#, fuzzy
+msgid "Personal dictionary"
+msgstr "Vstavi v osebni slovar|#I"
+
+#: src/frontends/xforms/FormPreferences.C:3008
+msgid "WARNING!"
+msgstr ""
 
 #: src/frontends/xforms/form_print.C:37
 msgid "Printer|#P"
@@ -5466,13 +5474,14 @@ msgstr "Ukaz:|#U"
 msgid "to"
 msgstr " z dne "
 
+#: src/LyXAction.C:137 src/LyXAction.C:145 src/frontends/xforms/FormPrint.C:37
+#: src/frontends/xforms/form_print.C:129
+msgid "Print"
+msgstr "Tiskaj"
+
 #: src/frontends/xforms/form_print.C:132
 msgid "Order"
 msgstr "Vrstni red"
-
-#: src/frontends/xforms/FormRef.C:72
-msgid " Ref | Page | TextRef | TextPage | PrettyRef "
-msgstr ""
 
 #: src/frontends/xforms/form_ref.C:40
 #, fuzzy
@@ -5499,34 +5508,9 @@ msgstr "Pojdi na referenco|#G"
 msgid "Goto reference|#G"
 msgstr "Pojdi na referenco|#G"
 
-#: src/frontends/xforms/FormTabular.C:26
-#, fuzzy
-msgid "Tabular Layout"
-msgstr "Naèrt tabele"
-
-#: src/frontends/xforms/FormTabular.C:127
-#, fuzzy
-msgid "Tabular"
-msgstr "Naèrt tabele"
-
-#: src/frontends/xforms/FormTabular.C:129
-#, fuzzy
-msgid "Column/Row"
-msgstr "Stolpec"
-
-#: src/frontends/xforms/FormTabular.C:131
-#, fuzzy
-msgid "Cell"
-msgstr "Rumena"
-
-#: src/frontends/xforms/FormTabular.C:133
-#, fuzzy
-msgid "LongTable"
-msgstr "Dolga tabela"
-
-#: src/frontends/xforms/FormTabular.C:440
-msgid "Warning: Wrong Cursor position, updated window"
-msgstr "Pozor: Napaèen polo¾aj kazalca, osve¾eno okno"
+#: src/frontends/xforms/FormRef.C:72
+msgid " Ref | Page | TextRef | TextPage | PrettyRef "
+msgstr ""
 
 #: src/frontends/xforms/form_tabular.C:31 src/insets/insetinfo.C:216
 #: src/insets/insetinfo.C:221
@@ -5715,23 +5699,48 @@ msgstr "Noga"
 msgid "Special"
 msgstr "Posebno:|#S"
 
-#: src/frontends/xforms/FormTabularCreate.C:30
+#: src/frontends/xforms/FormTabular.C:26
+#, fuzzy
+msgid "Tabular Layout"
+msgstr "Naèrt tabele"
+
+#: src/frontends/xforms/FormTabular.C:127
+#, fuzzy
+msgid "Tabular"
+msgstr "Naèrt tabele"
+
+#: src/frontends/xforms/FormTabular.C:129
+#, fuzzy
+msgid "Column/Row"
+msgstr "Stolpec"
+
+#: src/frontends/xforms/FormTabular.C:131
+#, fuzzy
+msgid "Cell"
+msgstr "Rumena"
+
+#: src/frontends/xforms/FormTabular.C:133
+#, fuzzy
+msgid "LongTable"
+msgstr "Dolga tabela"
+
+#: src/frontends/xforms/FormTabular.C:440
+msgid "Warning: Wrong Cursor position, updated window"
+msgstr "Pozor: Napaèen polo¾aj kazalca, osve¾eno okno"
+
+#: src/frontends/xforms/FormTabularCreate.C:31
 #, fuzzy
 msgid "Insert Tabular"
 msgstr "Vstavi tabelo"
-
-#: src/frontends/xforms/FormToc.C:71
-msgid " TOC | LOF | LOT | LOA "
-msgstr ""
 
 #: src/frontends/xforms/form_toc.C:40
 #, fuzzy
 msgid "Type|#T"
 msgstr "Tip:|#T"
 
-#: src/frontends/xforms/FormUrl.C:29
-msgid "Url"
-msgstr "Url"
+#: src/frontends/xforms/FormToc.C:71
+msgid " TOC | LOF | LOT | LOA "
+msgstr ""
 
 #: src/frontends/xforms/form_url.C:29
 #, fuzzy
@@ -5745,6 +5754,10 @@ msgstr "Ime|#N"
 #: src/frontends/xforms/form_url.C:47
 msgid "HTML type|#H"
 msgstr "Tip HTML|#H"
+
+#: src/frontends/xforms/FormUrl.C:29
+msgid "Url"
+msgstr "Url"
 
 #: src/frontends/xforms/input_validators.C:102
 #, fuzzy
@@ -5993,7 +6006,7 @@ msgstr ""
 msgid "Opened ERT Inset"
 msgstr "Odprt vstavek"
 
-#: src/insets/insetert.C:65 src/insets/insettabular.C:1569
+#: src/insets/insetert.C:65 src/insets/insettabular.C:1698
 msgid "Impossible Operation!"
 msgstr "Nemogoèa operacija!"
 
@@ -6093,8 +6106,8 @@ msgid "Use include|#U"
 msgstr "Uporabi vkljuèitev|#U"
 
 #. launches dialog
-#: src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3042
-#: src/lyxfunc.C:3144 src/lyxfunc.C:3200 src/lyxfunc.C:3276
+#: src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3052
+#: src/lyxfunc.C:3154 src/lyxfunc.C:3210 src/lyxfunc.C:3286
 msgid "Documents"
 msgstr "Spisi"
 
@@ -6161,34 +6174,34 @@ msgstr "Odprt vstavek"
 msgid "Parent:"
 msgstr "Nadrejeni:"
 
-#: src/insets/insettabular.C:476
+#: src/insets/insettabular.C:481
 #, fuzzy
 msgid "Opened Tabular Inset"
 msgstr "Odprt vstavek"
 
-#: src/insets/insettabular.C:1570
+#: src/insets/insettabular.C:1699
 msgid "Multicolumns can only be horizontally."
 msgstr "Veèstolpièevje je lahko le vodoravno."
 
-#: src/insets/insettext.C:467
+#: src/insets/insettext.C:478
 #, fuzzy
 msgid "Opened Text Inset"
 msgstr "Odprt vstavek"
 
-#: src/insets/insettext.C:947
+#: src/insets/insettext.C:971
 #, fuzzy
 msgid "Cannot include more than one paragraph!"
 msgstr "Celica tabele ne more obsegati veè kot enega odstavka!"
 
-#: src/insets/insettext.C:1007 src/lyxfunc.C:1258
+#: src/insets/insettext.C:1037 src/lyxfunc.C:1258
 msgid "Layout "
 msgstr "Videz "
 
-#: src/insets/insettext.C:1007 src/lyxfunc.C:1259
+#: src/insets/insettext.C:1037 src/lyxfunc.C:1259
 msgid " not known"
 msgstr " ni znan"
 
-#: src/insets/insettext.C:1060 src/lyxfunc.C:2102
+#: src/insets/insettext.C:1090 src/lyxfunc.C:2111
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "Manjkajoèi argument"
@@ -7087,7 +7100,7 @@ msgstr "Shranjevanje spodletelo. ®elite preimenovati in vnoviè poskusiti?"
 msgid "(If not, document is not saved.)"
 msgstr "(Drugaèe spis ne bo shranjen.)"
 
-#: src/lyx_cb.C:198 src/lyxfunc.C:3043
+#: src/lyx_cb.C:198 src/lyxfunc.C:3053
 msgid "Templates"
 msgstr "Vzorci"
 
@@ -7397,7 +7410,7 @@ msgstr "Najden."
 msgid "Unknown sequence:"
 msgstr "Neznano zaporedje:"
 
-#: src/lyxfunc.C:328 src/lyxfunc.C:2984
+#: src/lyxfunc.C:328 src/lyxfunc.C:2994
 msgid "Unknown action"
 msgstr "Neznana akcija"
 
@@ -7411,15 +7424,11 @@ msgstr "Spis je le za branje"
 msgid "Command not allowed without any document open"
 msgstr "Ukaz ni dovoljen brez odprtega spisa"
 
-#: src/lyxfunc.C:640
-msgid "Text mode"
-msgstr "Besedilni naèin"
-
 #: src/lyxfunc.C:795
 msgid "Saving document"
 msgstr "Spis se shranjuje"
 
-#: src/lyxfunc.C:1103 src/lyxfunc.C:2539
+#: src/lyxfunc.C:1103 src/lyxfunc.C:2548
 msgid "Missing argument"
 msgstr "Manjkajoèi argument"
 
@@ -7447,93 +7456,93 @@ msgstr "Te oznake ni moè najti"
 msgid "in current document."
 msgstr "v trenutnem spisu."
 
-#: src/lyxfunc.C:1828
+#: src/lyxfunc.C:1837
 msgid "Mark removed"
 msgstr "Znak odstranjen"
 
-#: src/lyxfunc.C:1833
+#: src/lyxfunc.C:1842
 msgid "Mark set"
 msgstr "Znak postavljen"
 
-#: src/lyxfunc.C:1938
+#: src/lyxfunc.C:1947
 msgid "Mark off"
 msgstr "Znak izkljuèen"
 
-#: src/lyxfunc.C:1951
+#: src/lyxfunc.C:1960
 msgid "Mark on"
 msgstr "Znak vkljuèen"
 
-#: src/lyxfunc.C:2453
+#: src/lyxfunc.C:2462
 msgid "Push-toolbar needs argument > 0"
 msgstr "Potisna orodna vrstica potrebuje argument > 0"
 
-#: src/lyxfunc.C:2470
+#: src/lyxfunc.C:2479
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr "Uporaba: toolbar-add-to <ukaz LyXa>"
 
-#: src/lyxfunc.C:2487 src/mathed/formula.C:881
+#: src/lyxfunc.C:2496 src/mathed/formula.C:881
 msgid "Math greek mode on"
 msgstr "Naèin matematiène gr¹èine vkljuèen"
 
-#: src/lyxfunc.C:2498 src/mathed/formula.C:892
+#: src/lyxfunc.C:2507 src/mathed/formula.C:892
 msgid "Math greek keyboard on"
 msgstr "Tipkovnica za matematièno gr¹èino vkljuèena"
 
-#: src/lyxfunc.C:2500 src/mathed/formula.C:894
+#: src/lyxfunc.C:2509 src/mathed/formula.C:894
 msgid "Math greek keyboard off"
 msgstr "Tipkovnica za matematièno gr¹èino izkljuèena"
 
-#: src/lyxfunc.C:2554 src/mathed/formula.C:486
+#: src/lyxfunc.C:2563 src/mathed/formula.C:486
 msgid "Math editor mode"
 msgstr "Naèin matematiènega urejanja"
 
-#: src/lyxfunc.C:2561
+#: src/lyxfunc.C:2570
 msgid "This is only allowed in math mode!"
 msgstr "To je dovoljeno le v matematiènem naèinu!"
 
-#: src/lyxfunc.C:2750
+#: src/lyxfunc.C:2759
 msgid "Opening child document "
 msgstr "Odpira se podrejeni spis "
 
-#: src/lyxfunc.C:2782
+#: src/lyxfunc.C:2791
 msgid "Unknown kind of footnote"
 msgstr "Neznana vrsta opombe v nogi"
 
-#: src/lyxfunc.C:2901
+#: src/lyxfunc.C:2910
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:2907
+#: src/lyxfunc.C:2916
 msgid "Set-color \""
 msgstr ""
 
-#: src/lyxfunc.C:2909
+#: src/lyxfunc.C:2918
 msgid "\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:2924
+#: src/lyxfunc.C:2933
 msgid "No document open"
 msgstr "Ni odprtega spisa"
 
-#: src/lyxfunc.C:2930
+#: src/lyxfunc.C:2939
 msgid "Document is read only"
 msgstr "Spis je le za branje"
 
-#: src/lyxfunc.C:3044
+#: src/lyxfunc.C:3054
 msgid "Enter Filename for new document"
 msgstr "Vstavite ime datoteke za novi spis"
 
-#: src/lyxfunc.C:3045
+#: src/lyxfunc.C:3055
 msgid "newfile"
 msgstr "novadatoteka"
 
 #. Cancel: Do nothing
-#: src/lyxfunc.C:3049 src/lyxfunc.C:3076 src/lyxfunc.C:3153 src/lyxfunc.C:3211
-#: src/lyxfunc.C:3239 src/lyxfunc.C:3249 src/lyxfunc.C:3285
+#: src/lyxfunc.C:3059 src/lyxfunc.C:3086 src/lyxfunc.C:3163 src/lyxfunc.C:3221
+#: src/lyxfunc.C:3249 src/lyxfunc.C:3259 src/lyxfunc.C:3295
 msgid "Canceled."
 msgstr "Preklicano."
 
-#: src/lyxfunc.C:3064 src/lyxfunc.C:3227
+#: src/lyxfunc.C:3074 src/lyxfunc.C:3237
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -7541,71 +7550,71 @@ msgstr ""
 "Ali ¾elite zdaj zapreti ta spis?\n"
 "('Ne' bo le preklopilo na odprto razlièico)"
 
-#: src/lyxfunc.C:3084
+#: src/lyxfunc.C:3094
 msgid "File already exists:"
 msgstr "Datoteka ¾e obstaja:"
 
-#: src/lyxfunc.C:3086
+#: src/lyxfunc.C:3096
 msgid "Do you want to open the document?"
 msgstr "Ali ¾elite odpreti spis?"
 
 #. loads document
-#: src/lyxfunc.C:3088 src/lyxfunc.C:3164
+#: src/lyxfunc.C:3098 src/lyxfunc.C:3174
 msgid "Opening document"
 msgstr "Odpira se spis"
 
-#: src/lyxfunc.C:3095 src/lyxfunc.C:3171
+#: src/lyxfunc.C:3105 src/lyxfunc.C:3181
 msgid "opened."
 msgstr "odprt."
 
-#: src/lyxfunc.C:3116
+#: src/lyxfunc.C:3126
 msgid "Choose template"
 msgstr "Izberi vzorec"
 
-#: src/lyxfunc.C:3145 src/lyxfunc.C:3201 src/lyxfunc.C:3277
+#: src/lyxfunc.C:3155 src/lyxfunc.C:3211 src/lyxfunc.C:3287
 msgid "Examples"
 msgstr "Zgledi"
 
-#: src/lyxfunc.C:3147
+#: src/lyxfunc.C:3157
 msgid "Select Document to Open"
 msgstr "Izberite spis za odprtje"
 
-#: src/lyxfunc.C:3173
+#: src/lyxfunc.C:3183
 msgid "Could not open document"
 msgstr "Spisa ni moè odpreti"
 
-#: src/lyxfunc.C:3203
+#: src/lyxfunc.C:3213
 #, fuzzy
 msgid "Select "
 msgstr "Izberi iz|#S"
 
-#: src/lyxfunc.C:3204
+#: src/lyxfunc.C:3214
 #, fuzzy
 msgid " file to import"
 msgstr "Izberite datoteko LaTeX za uvoz"
 
-#: src/lyxfunc.C:3246
+#: src/lyxfunc.C:3256
 msgid "A document by the name"
 msgstr "Spis z imenom"
 
-#: src/lyxfunc.C:3248
+#: src/lyxfunc.C:3258
 msgid "already exists. Overwrite?"
 msgstr "¾e obstaja. ®elite pisati èezenj?"
 
-#: src/lyxfunc.C:3279
+#: src/lyxfunc.C:3289
 msgid "Select Document to Insert"
 msgstr "Izberite spis za vstavitev"
 
 #. Inserts document
-#: src/lyxfunc.C:3297
+#: src/lyxfunc.C:3307
 msgid "Inserting document"
 msgstr "Vstavlja se spis"
 
-#: src/lyxfunc.C:3303
+#: src/lyxfunc.C:3313
 msgid "inserted."
 msgstr "vstavljen."
 
-#: src/lyxfunc.C:3305
+#: src/lyxfunc.C:3315
 msgid "Could not insert document"
 msgstr "Spisa ni moè vstaviti"
 
@@ -7738,65 +7747,65 @@ msgstr " a prièakujte te¾ave."
 msgid "Expect problems."
 msgstr "Prièakujte te¾ave."
 
-#: src/lyx_main.C:554
+#: src/lyx_main.C:558
 #, fuzzy
 msgid "You have specified an invalid LyX directory."
 msgstr "Nimate osebnega imenika za LyX."
 
-#: src/lyx_main.C:555
+#: src/lyx_main.C:559
 msgid "You don't have a personal LyX directory."
 msgstr "Nimate osebnega imenika za LyX."
 
-#: src/lyx_main.C:557
+#: src/lyx_main.C:561
 msgid "It is needed to keep your own configuration."
 msgstr "Potreben je za vzdr¾evanje va¹e lastne prikrojitve."
 
-#: src/lyx_main.C:558
+#: src/lyx_main.C:562
 msgid "Should I try to set it up for you (recommended)?"
 msgstr "Naj ga posku¹amo usposobiti za vas (priporoèeno)?"
 
-#: src/lyx_main.C:559
+#: src/lyx_main.C:563
 msgid "Running without personal LyX directory."
 msgstr "Izvajamo brez osebnega imenika za LyX."
 
 #. Tell the user what is going on
-#: src/lyx_main.C:566
+#: src/lyx_main.C:570
 msgid "LyX: Creating directory "
 msgstr "LyX: Ustvarjamo imenik "
 
-#: src/lyx_main.C:567
+#: src/lyx_main.C:571
 msgid " and running configure..."
 msgstr " in zaganjamo prikrojitev..."
 
-#: src/lyx_main.C:573
+#: src/lyx_main.C:577
 msgid "Failed. Will use "
 msgstr "Ni uspelo. Uporabljeno bo "
 
-#: src/lyx_main.C:574
+#: src/lyx_main.C:578
 msgid " instead."
 msgstr " namesto tega."
 
-#: src/lyx_main.C:581
+#: src/lyx_main.C:585
 msgid "Done!"
 msgstr "Opravljeno!"
 
-#: src/lyx_main.C:595
+#: src/lyx_main.C:599
 msgid "LyX Warning!"
 msgstr "Opozorilo LyXa!"
 
-#: src/lyx_main.C:596
+#: src/lyx_main.C:600
 msgid "Error while reading "
 msgstr "Napaka med branjem "
 
-#: src/lyx_main.C:597
+#: src/lyx_main.C:601
 msgid "Using built-in defaults."
 msgstr "Uporabljamo vgrajene privzete vrednosti."
 
-#: src/lyx_main.C:695
+#: src/lyx_main.C:699
 msgid "Setting debug level to "
 msgstr "Nastavljamo stopnjo razhro¹èevanja na "
 
-#: src/lyx_main.C:707
+#: src/lyx_main.C:711
 #, fuzzy
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
@@ -7834,32 +7843,32 @@ msgstr ""
 "\n"
 "Veè izbir najdete  v referenènem priroèniku za LyX (man lyx)."
 
-#: src/lyx_main.C:740
+#: src/lyx_main.C:744
 msgid "List of supported debug flags:"
 msgstr "Seznam podprtih zastavic za razhro¹èevanje:"
 
-#: src/lyx_main.C:752
+#: src/lyx_main.C:756
 msgid "Missing directory for -sysdir switch!"
 msgstr "Manjka imenik za stikalo -sysdir!"
 
-#: src/lyx_main.C:763
+#: src/lyx_main.C:767
 #, fuzzy
 msgid "Missing directory for -userdir switch!"
 msgstr "Manjka imenik za stikalo -sysdir!"
 
-#: src/lyx_main.C:786
+#: src/lyx_main.C:790
 msgid "Missing command string after  -x switch!"
 msgstr "Manjka ukazni niz za stikalom -x!"
 
-#: src/lyx_main.C:799
+#: src/lyx_main.C:803
 msgid "Missing file type [eg latex, ps...] after "
 msgstr "Manjkajoèa vrsta datoteke [npr. latex, ps...] po "
 
-#: src/lyx_main.C:801 src/lyx_main.C:816
+#: src/lyx_main.C:805 src/lyx_main.C:820
 msgid " switch!"
 msgstr " stikalu!"
 
-#: src/lyx_main.C:814
+#: src/lyx_main.C:818
 #, fuzzy
 msgid "Missing type [eg latex, ps...] after "
 msgstr "Manjkajoèa vrsta datoteke [npr. latex, ps...] po "
@@ -8403,11 +8412,11 @@ msgstr "Presledki"
 msgid "Matrix"
 msgstr "Matrika"
 
-#: src/mathed/math_panel.C:324
+#: src/mathed/math_panel.C:330
 msgid "Top | Center | Bottom"
 msgstr "Zgoraj | Sredina | Spodaj"
 
-#: src/mathed/math_panel.C:377
+#: src/mathed/math_panel.C:383
 msgid "Math Panel"
 msgstr "Matematièna plo¹èa"
 
@@ -8596,43 +8605,43 @@ msgstr "100 %"
 msgid "Replace word|#R"
 msgstr "Nadomesti besedo|#R"
 
-#: src/support/filetools.C:157
+#: src/support/filetools.C:159
 msgid "LyX Internal Error!"
 msgstr "Notranja napaka LyXa!"
 
-#: src/support/filetools.C:158
+#: src/support/filetools.C:160
 msgid "Could not test if directory is writeable"
 msgstr "Ni moè preveriti, ali je dovoljeno pisati v imenik"
 
-#: src/support/filetools.C:408
+#: src/support/filetools.C:410
 msgid "Error! Cannot open directory:"
 msgstr "Napaka! Imenika ni moè odpreti:"
 
-#: src/support/filetools.C:426
+#: src/support/filetools.C:428
 msgid "Error! Could not remove file:"
 msgstr "Napaka! Datoteke ni moè odstraniti:"
 
-#: src/support/filetools.C:451
+#: src/support/filetools.C:453
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Napaka! Zaèasnega imenika ni moè ustvariti:"
 
-#: src/support/filetools.C:467
+#: src/support/filetools.C:469
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Napaka! Zaèasnega imenika ni moè odstraniti:"
 
-#: src/support/filetools.C:520
+#: src/support/filetools.C:522
 msgid "Internal error!"
 msgstr "Notranja napaka!"
 
-#: src/support/filetools.C:521
+#: src/support/filetools.C:523
 msgid "Call to createDirectory with invalid name"
 msgstr "Klic funkcije ,createDirectory` z napaènim imenom"
 
-#: src/support/filetools.C:526
+#: src/support/filetools.C:528
 msgid "Error! Couldn't create directory:"
 msgstr "Napaka! Imenika ni moè ustvariti:"
 
-#: src/support/filetools.C:1134
+#: src/support/filetools.C:1136
 msgid "Could not delete auto-save file!"
 msgstr "Samodejno shranjene datoteke ni moè zbrisati!"
 
@@ -8640,16 +8649,16 @@ msgstr "Samodejno shranjene datoteke ni moè zbrisati!"
 msgid "unknown"
 msgstr "neznan"
 
-#: src/tabular.C:1283
+#: src/tabular.C:1693
 #, fuzzy
 msgid "Warning:"
 msgstr "Pozor!"
 
-#: src/tabular.C:1284
+#: src/tabular.C:1694
 msgid "Tabular format < 5 is not supported anymore\n"
 msgstr ""
 
-#: src/tabular.C:1285
+#: src/tabular.C:1695
 msgid "Get an older version of LyX (< 1.1.x) for conversion!"
 msgstr ""
 
@@ -8673,45 +8682,48 @@ msgstr ""
 "Ni doloèena sprememba pisave. Uporabite Znak pod menujem Videz za doloèitev "
 "spremembe pisave."
 
-#: src/text2.C:2201 src/text2.C:2314
+#: src/text2.C:2198 src/text2.C:2311
 msgid "Don't know what to do with half floats."
 msgstr "Ne vemo, kaj naj poènemo z delom plovke."
 
-#: src/text2.C:2202 src/text2.C:2316
+#: src/text2.C:2199 src/text2.C:2313
 msgid "sorry."
 msgstr "¾al."
 
-#: src/text.C:1993
+#: src/text.C:1995
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
 msgstr ""
 "Presledka na zaèetek odstavka ni moè vstaviti.  Prosimo, preberite Uèbenik."
 
-#: src/text.C:1995
+#: src/text.C:1997
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr "Tako ni mogoèe vstaviti dveh presledkov.  Prosimo, preberite Uèbenik."
 
-#: src/text.C:3443 src/text.C:3449
+#: src/text.C:3453 src/text.C:3459
 #, fuzzy
 msgid "Page Break (top)"
 msgstr "Prelomi strani"
 
-#: src/text.C:3643 src/text.C:3649
+#: src/text.C:3653 src/text.C:3659
 msgid "Page Break (bottom)"
 msgstr ""
 
-#: src/text.C:3943
+#: src/text.C:3953
 msgid "You can't insert a float in a float!"
 msgstr "Plovke ni mogoèe vstaviti v plovko!"
 
-#: src/text.C:3951
+#: src/text.C:3961
 msgid "You can't insert a marginpar in a minipage!"
 msgstr "Opombe ob robu ni moè vstaviti v ministran!"
 
-#: src/text.C:3978
+#: src/text.C:3988
 msgid "Float would include float!"
 msgstr "Plovka bi zajemala plovko!"
+
+#~ msgid "Text mode"
+#~ msgstr "Besedilni naèin"
 
 #~ msgid "Unable to show log file!"
 #~ msgstr "Datoteke z dnevnikom ni moè prikazati!"

@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx-1.1.3\n"
-"POT-Creation-Date: 2000-12-29 22:25+0100\n"
+"POT-Creation-Date: 2001-01-11 19:19+0100\n"
 "PO-Revision-Date: 2000-12-27 12:45+0200\n"
 "Last-Translator: Claudiu Costin <claudiuc@geocities.com>\n"
 "Language-Team: Romanian <ro-kde@egroups.com>\n"
@@ -12,16 +12,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: KBabel 0.8alpha\n"
 
-#: src/buffer.C:488
+#: src/buffer.C:506
 #, fuzzy
 msgid "Textclass error"
 msgstr "Eroare de încãrcare Textclass!"
 
-#: src/buffer.C:489
+#: src/buffer.C:507
 msgid "The document uses an unknown textclass \""
 msgstr ""
 
-#: src/buffer.C:491
+#: src/buffer.C:509
 msgid "LyX will not be able to produce output correctly."
 msgstr ""
 
@@ -30,100 +30,109 @@ msgstr ""
 #. or stop loading the file.
 #. I can substitute but I don't see how I can
 #. stop loading... ideas??  ARRae980418
-#: src/buffer.C:500
+#: src/buffer.C:518
 msgid "Textclass Loading Error!"
 msgstr "Eroare de încãrcare Textclass!"
 
-#: src/buffer.C:501
+#: src/buffer.C:519
 msgid "Can't load textclass "
 msgstr "Nu pot încãrca Textclass "
 
-#: src/buffer.C:503
+#: src/buffer.C:521
 msgid "-- substituting default"
 msgstr "-- substitui cu implicit"
 
-#: src/buffer.C:1059
+#: src/buffer.C:1078
 #, c-format
 msgid "Warning: need lyxformat %.2f but found %.2f"
 msgstr "Atenþie: este nevoie de formatul lyx %.2f, dar am gãsit %.2f"
 
-#: src/buffer.C:1063
+#: src/buffer.C:1082
 #, c-format
 msgid "ERROR: need lyxformat %.2f but found %.2f"
 msgstr "EROARE: este nevoie de formatul lyx %.2f, dar am gãsit %.2f"
 
-#: src/buffer.C:1074
+#. future format
+#: src/buffer.C:1093 src/buffer.C:1120 src/buffer.C:1140
 msgid "Warning!"
 msgstr "Atenþie!"
 
-#: src/buffer.C:1075
+#: src/buffer.C:1094 src/buffer.C:1141
 msgid "Reading of document is not complete"
 msgstr "Citirea documentului nu este completã"
 
-#: src/buffer.C:1076
+#: src/buffer.C:1095 src/buffer.C:1142
 msgid "Maybe the document is truncated"
 msgstr "Este posibil ca documentul sã fie trunchiat"
 
 #. "\\lyxformat" not found
-#: src/buffer.C:1082 src/buffer.C:1089 src/buffer.C:1092
+#: src/buffer.C:1101 src/buffer.C:1127 src/buffer.C:1146 src/buffer.C:1149
 msgid "ERROR!"
 msgstr "Eroare!"
 
-#: src/buffer.C:1083
+#: src/buffer.C:1102 src/buffer.C:1128
 msgid "Old LyX file format found. Use LyX 0.10.x to read this!"
 msgstr ""
 "Formatul de fiºier LyX este vechi. Utilizaþi LyX 0.10.x pentru a-l citi!"
 
-#: src/buffer.C:1089
+#: src/buffer.C:1121
+msgid "LyX file format is newer that what"
+msgstr ""
+
+#: src/buffer.C:1122
+msgid "is supported in this LyX version. Expect some problems."
+msgstr ""
+
+#: src/buffer.C:1146
 msgid "Not a LyX file!"
 msgstr "Nu este un fiºier LyX!"
 
-#: src/buffer.C:1092
+#: src/buffer.C:1149
 msgid "Unable to read file!"
 msgstr "Nu pot citi fiºierul!"
 
-#: src/buffer.C:1186 src/buffer.C:1189
+#: src/buffer.C:1243 src/buffer.C:1246
 msgid "Error! Document is read-only: "
 msgstr "Eroare! Documentul poate fi numai citit: "
 
-#: src/buffer.C:1199 src/buffer.C:1202
+#: src/buffer.C:1256 src/buffer.C:1259
 msgid "Error! Cannot write file: "
 msgstr "Eroare! Nu pot scrie fiºierul: "
 
-#: src/buffer.C:1210 src/buffer.C:1213
+#: src/buffer.C:1267 src/buffer.C:1270
 msgid "Error! Cannot open file: "
 msgstr "Eroare! Nu pot deschide fiºierul: "
 
-#: src/buffer.C:1505
+#: src/buffer.C:1566
 msgid "Error: Cannot write file:"
 msgstr "Eroare: Nu pot scrie fiºierul: "
 
-#: src/buffer.C:1538
+#: src/buffer.C:1599
 msgid "Error: Cannot open file: "
 msgstr "Eroare: Nu pot deschide fiºierul: "
 
-#: src/buffer.C:2163 src/buffer.C:2812
+#: src/buffer.C:2224 src/buffer.C:2873
 msgid "LYX_ERROR:"
 msgstr "EROARE_LYX:"
 
-#: src/buffer.C:2163 src/buffer.C:2812
+#: src/buffer.C:2224 src/buffer.C:2873
 msgid "Cannot write file"
 msgstr "Nu pot scrie fiºierul"
 
-#: src/buffer.C:2250 src/buffer.C:2894
+#: src/buffer.C:2311 src/buffer.C:2955
 msgid "Error : Wrong depth for LatexType Command.\n"
 msgstr "Eroare: Adîncime greºitã pentru comanda de tip LaTex.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3203
+#: src/buffer.C:3264
 msgid "Running chktex..."
 msgstr "Rulez \"chktex\"..."
 
-#: src/buffer.C:3216
+#: src/buffer.C:3277
 msgid "chktex did not work!"
 msgstr "\"chktex\" nu funcþioneazã!"
 
-#: src/buffer.C:3217
+#: src/buffer.C:3278
 msgid "Could not run with file:"
 msgstr "Nu pot rula cu fiºierul:"
 
@@ -186,7 +195,7 @@ msgstr "Eroare!"
 msgid "Unable to open template"
 msgstr "Nu pot deschide fiºierul model"
 
-#: src/bufferlist.C:476 src/lyxfunc.C:3062 src/lyxfunc.C:3225
+#: src/bufferlist.C:476 src/lyxfunc.C:3072 src/lyxfunc.C:3235
 msgid "Document is already open:"
 msgstr "Documentul este deja deschis:"
 
@@ -224,51 +233,51 @@ msgstr "Nu pot citi fiºierul specificat: "
 msgid "Cannot open specified file: "
 msgstr "Nu pot deschide fiºierul specificat: "
 
-#: src/BufferView2.C:403 src/BufferView2.C:417
+#: src/BufferView2.C:407 src/BufferView2.C:421
 msgid "Open/Close..."
 msgstr "Deschide/Închide..."
 
-#: src/BufferView2.C:431 src/LyXAction.C:406
+#: src/BufferView2.C:435 src/LyXAction.C:406
 msgid "Undo"
 msgstr "Des-face"
 
-#: src/BufferView2.C:436
+#: src/BufferView2.C:440
 msgid "No further undo information"
 msgstr "Nu existã informaþii pentru a des-face"
 
-#: src/BufferView2.C:447
+#: src/BufferView2.C:451
 msgid "Redo not yet supported in math mode"
 msgstr "Operaþia de re-facere nu este suportatã încã în modul matematic"
 
-#: src/BufferView2.C:452 src/LyXAction.C:357
+#: src/BufferView2.C:456 src/LyXAction.C:357
 msgid "Redo"
 msgstr "Re-face"
 
-#: src/BufferView2.C:457
+#: src/BufferView2.C:461
 msgid "No further redo information"
 msgstr "Nu exitã informaþii pentru re-facere"
 
-#: src/BufferView2.C:554
+#: src/BufferView2.C:558
 msgid "Paragraph environment type copied"
 msgstr "Am copiat cadru de tip paragraf"
 
-#: src/BufferView2.C:563
+#: src/BufferView2.C:567
 msgid "Paragraph environment type set"
 msgstr "Am setat cadrul de tip paragraf"
 
-#: src/BufferView2.C:577 src/LyXAction.C:169 src/MenuBackend.C:425
+#: src/BufferView2.C:581 src/LyXAction.C:169 src/MenuBackend.C:425
 msgid "Copy"
 msgstr "Copiazã"
 
-#: src/BufferView2.C:588 src/LyXAction.C:170 src/MenuBackend.C:424
+#: src/BufferView2.C:592 src/LyXAction.C:170 src/MenuBackend.C:424
 msgid "Cut"
 msgstr "Taie"
 
-#: src/BufferView2.C:597 src/LyXAction.C:346 src/MenuBackend.C:426
+#: src/BufferView2.C:601 src/LyXAction.C:346 src/MenuBackend.C:426
 msgid "Paste"
 msgstr "Lipeºte"
 
-#: src/BufferView2.C:632 src/BufferView2.C:636
+#: src/BufferView2.C:636 src/BufferView2.C:640
 msgid "No more notes"
 msgstr "Nu existã note"
 
@@ -529,8 +538,8 @@ msgstr ""
 "\n"
 "datoitã conversiei de clasã de la\n"
 
-#: src/CutAndPaste.C:476 src/insets/insettext.C:946 src/text.C:3942
-#: src/text.C:3950 src/text.C:3977 src/text2.C:2200 src/text2.C:2313
+#: src/CutAndPaste.C:476 src/insets/insettext.C:970 src/text.C:3952
+#: src/text.C:3960 src/text.C:3987 src/text2.C:2197 src/text2.C:2310
 msgid "Impossible operation"
 msgstr "Operaþie imposibilã"
 
@@ -539,8 +548,8 @@ msgid "Can't paste float into float!"
 msgstr "Nu pot pune un flotant în alt flotant!"
 
 #: src/CutAndPaste.C:478 src/insets/insetert.C:67
-#: src/insets/insettabular.C:1571 src/insets/insettext.C:948 src/text.C:3944
-#: src/text.C:3952 src/text.C:3979
+#: src/insets/insettabular.C:1700 src/insets/insettext.C:972 src/text.C:3954
+#: src/text.C:3962 src/text.C:3989
 msgid "Sorry."
 msgstr " "
 
@@ -2844,7 +2853,7 @@ msgstr "Altul...|#O"
 msgid "Other...|#T"
 msgstr "Altul...|#T"
 
-#: src/form1.C:51 src/frontends/xforms/FormDocument.C:276
+#: src/form1.C:51 src/frontends/xforms/FormDocument.C:277
 #: src/frontends/xforms/FormPreferences.C:280
 msgid "Language"
 msgstr "Limbaj"
@@ -3251,25 +3260,25 @@ msgstr " Rreferinþã: "
 #: src/frontends/gnome/FormToc.C:100 src/frontends/gnome/FormToc.C:167
 #: src/frontends/kde/FormToc.C:167 src/frontends/kde/FormToc.C:168
 #: src/frontends/kde/tocdlg.C:28 src/frontends/xforms/FormToc.C:35
-#: src/insets/insettoc.C:21
+#: src/insets/insettoc.C:22
 msgid "Table of Contents"
 msgstr "Cuprins"
 
 #: src/frontends/gnome/FormToc.C:104 src/frontends/gnome/FormToc.C:173
 #: src/frontends/kde/FormToc.C:172 src/frontends/kde/FormToc.C:173
-#: src/frontends/kde/tocdlg.C:29 src/insets/insettoc.C:25
+#: src/frontends/kde/tocdlg.C:29 src/insets/insettoc.C:26
 msgid "List of Figures"
 msgstr "Lista de figuri"
 
 #: src/frontends/gnome/FormToc.C:108 src/frontends/gnome/FormToc.C:185
 #: src/frontends/kde/FormToc.C:177 src/frontends/kde/FormToc.C:178
-#: src/frontends/kde/tocdlg.C:30 src/insets/insettoc.C:27
+#: src/frontends/kde/tocdlg.C:30 src/insets/insettoc.C:28
 msgid "List of Tables"
 msgstr "Lista de tabele"
 
 #: src/frontends/gnome/FormToc.C:112 src/frontends/gnome/FormToc.C:179
 #: src/frontends/kde/FormToc.C:182 src/frontends/kde/FormToc.C:183
-#: src/frontends/kde/tocdlg.C:31 src/insets/insettoc.C:23
+#: src/frontends/kde/tocdlg.C:31 src/insets/insettoc.C:24
 msgid "List of Algorithms"
 msgstr "Lista de algoritmi"
 
@@ -3913,10 +3922,6 @@ msgstr "Nume asociat cu URL-ul"
 msgid "Output as a hyperlink ?"
 msgstr "Tipãresc ca hiperlink?"
 
-#: src/frontends/xforms/FormCitation.C:37
-msgid "Citation"
-msgstr "Citare"
-
 #: src/frontends/xforms/form_citation.C:29
 #, fuzzy
 msgid "Inset keys|#I"
@@ -3995,6 +4000,15 @@ msgstr "Restaureazã|#R"
 msgid "Cancel|#C^["
 msgstr "Renunþã|#R^["
 
+#: src/frontends/xforms/FormCitation.C:37
+msgid "Citation"
+msgstr "Citare"
+
+#: src/frontends/xforms/form_copyright.C:41
+#: src/frontends/xforms/form_error.C:31 src/frontends/xforms/form_toc.C:48
+msgid "Close|#C^[^M"
+msgstr "Închide|#C^[^M"
+
 #: src/frontends/xforms/FormCopyright.C:20
 msgid "Copyright and Warranty"
 msgstr "Drepturi de autor ºi garanþia"
@@ -4038,130 +4052,6 @@ msgstr ""
 "o copie a acestei licenþe odatã cu acest program.\n"
 "Dacã nu, scrieþi la Free Software Foundation, Inc.,\n"
 "675 Mass Ave, Cambridge, MA 02139, USA."
-
-#: src/frontends/xforms/form_copyright.C:41
-#: src/frontends/xforms/form_error.C:31 src/frontends/xforms/form_toc.C:48
-msgid "Close|#C^[^M"
-msgstr "Închide|#C^[^M"
-
-#: src/frontends/xforms/FormDocument.C:48
-msgid "Document Layout"
-msgstr "Structurã document"
-
-#: src/frontends/xforms/FormDocument.C:117
-msgid ""
-" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
-"B4 | B5 "
-msgstr ""
-" Implicit | Personalizat | USletter | USlegal | USexecutive | A3 | A4 | A5 | "
-"B3 | B4 | B5 "
-
-#: src/frontends/xforms/FormDocument.C:120
-msgid ""
-" None | A4 small Margins (only portrait) | A4 very small Margins (only "
-"portrait) | A4 very wide margins (only portrait) "
-msgstr ""
-" Nimic | A4 margini mici (numai portret) | A4 margini foarte mici (numai "
-"portret) | A4 margini foarte mari (numai portret) "
-
-#: src/frontends/xforms/FormDocument.C:178
-msgid " Single | OneHalf | Double | Other "
-msgstr " Simplã | Unul ºi jumãtate | Double | Alta "
-
-#: src/frontends/xforms/FormDocument.C:186
-msgid " Smallskip | Medskip | Bigskip | Length "
-msgstr " Smallskip | Medskip | Bigskip | Lungime "
-
-#: src/frontends/xforms/FormDocument.C:234
-msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
-msgstr " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
-
-#: src/frontends/xforms/FormDocument.C:262
-msgid ""
-" default | tiny | script | footnote | small | normal | large | Large | LARGE "
-"| huge | Huge"
-msgstr ""
-" implicit | tiny | script | notã subsol | small | normal | large | Large | "
-"LARGE | huge | Huge"
-
-#: src/frontends/xforms/FormDocument.C:272 src/insets/figinset.C:1960
-#: src/insets/insetexternal.C:143 src/lyxfunc.C:3093 src/lyxfunc.C:3169
-#: src/lyxfunc.C:3301
-msgid "Document"
-msgstr "Document"
-
-#: src/frontends/xforms/FormDocument.C:274
-msgid "Paper"
-msgstr "Hîrtie"
-
-#: src/frontends/xforms/FormDocument.C:278
-#: src/frontends/xforms/FormParagraph.C:133
-msgid "Extra"
-msgstr "Extra"
-
-#: src/frontends/xforms/FormDocument.C:280
-msgid "Bullets"
-msgstr "Markeri"
-
-#: src/frontends/xforms/FormDocument.C:283
-msgid ""
-"Your version of libXpm is older than 4.7.\n"
-"The `bullet' tab of the document popup has been disabled"
-msgstr ""
-"Versiunea dumneavoastrã de libXpm este mai veche decît 4.7.\n"
-"Subfereastra `bullet' a documentului a fost dezactivatã."
-
-#: src/frontends/xforms/FormDocument.C:307
-msgid "Document layout set"
-msgstr "Am setat formatul de document"
-
-#: src/frontends/xforms/FormDocument.C:424
-msgid "Converting document to new document class..."
-msgstr "Convertesc documentul la o nouã clasã de document..."
-
-#: src/frontends/xforms/FormDocument.C:432
-msgid "One paragraph couldn't be converted"
-msgstr "Nu am putut converti un paragraf"
-
-#: src/frontends/xforms/FormDocument.C:435
-msgid " paragraphs couldn't be converted"
-msgstr "paragrafe nu am putut sã le convertesc"
-
-#. problem changing class -- warn user and retain old style
-#: src/frontends/xforms/FormDocument.C:437
-#: src/frontends/xforms/FormDocument.C:444
-#: src/frontends/xforms/FormDocument.C:1103
-msgid "Conversion Errors!"
-msgstr "Erori de conversie!"
-
-#: src/frontends/xforms/FormDocument.C:438
-msgid "into chosen document class"
-msgstr "în clasa de document aleasã"
-
-#: src/frontends/xforms/FormDocument.C:445
-msgid "Errors loading new document class."
-msgstr "Eroare la încãrcarea noii clasea de document."
-
-#: src/frontends/xforms/FormDocument.C:446
-#: src/frontends/xforms/FormDocument.C:1105
-msgid "Reverting to original document class."
-msgstr "Revin la clasa de document original."
-
-#: src/frontends/xforms/FormDocument.C:823
-msgid "Document is read-only. No changes to layout permitted."
-msgstr "Documentul poate fi numai citit. Nu sînt permise schimbãri de format."
-
-#: src/frontends/xforms/FormDocument.C:1093
-msgid "Should I set some parameters to"
-msgstr "Ar trebui sã setez niºte parametrii la"
-
-#: src/frontends/xforms/FormDocument.C:1094
-msgid "the defaults of this document class?"
-msgstr "setãrile implicite pentru aceastã clasã de document?"
-
-#: src/frontends/xforms/FormDocument.C:1104
-msgid "Unable to switch to new document class."
-msgstr "Nu pot comuta la noua clasã de document."
 
 #: src/frontends/xforms/form_document.C:30
 #: src/frontends/xforms/form_paragraph.C:314
@@ -4401,18 +4291,128 @@ msgstr "Ding 4|#g"
 msgid "Ding 1|#D"
 msgstr "Ding 1|#D"
 
+#: src/frontends/xforms/FormDocument.C:48
+msgid "Document Layout"
+msgstr "Structurã document"
+
+#: src/frontends/xforms/FormDocument.C:117
+msgid ""
+" Default | Custom | USletter | USlegal | USexecutive | A3 | A4 | A5 | B3 | "
+"B4 | B5 "
+msgstr ""
+" Implicit | Personalizat | USletter | USlegal | USexecutive | A3 | A4 | A5 | "
+"B3 | B4 | B5 "
+
+#: src/frontends/xforms/FormDocument.C:120
+msgid ""
+" None | A4 small Margins (only portrait) | A4 very small Margins (only "
+"portrait) | A4 very wide margins (only portrait) "
+msgstr ""
+" Nimic | A4 margini mici (numai portret) | A4 margini foarte mici (numai "
+"portret) | A4 margini foarte mari (numai portret) "
+
+#: src/frontends/xforms/FormDocument.C:179
+msgid " Single | OneHalf | Double | Other "
+msgstr " Simplã | Unul ºi jumãtate | Double | Alta "
+
+#: src/frontends/xforms/FormDocument.C:187
+msgid " Smallskip | Medskip | Bigskip | Length "
+msgstr " Smallskip | Medskip | Bigskip | Lungime "
+
+#: src/frontends/xforms/FormDocument.C:236
+msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
+msgstr " ``text'' | ''text'' | ,,text`` | ,,text'' | «text» | »text« "
+
+#: src/frontends/xforms/FormDocument.C:263
+msgid ""
+" default | tiny | script | footnote | small | normal | large | Large | LARGE "
+"| huge | Huge"
+msgstr ""
+" implicit | tiny | script | notã subsol | small | normal | large | Large | "
+"LARGE | huge | Huge"
+
+#: src/frontends/xforms/FormDocument.C:273 src/insets/figinset.C:1960
+#: src/insets/insetexternal.C:143 src/lyxfunc.C:3103 src/lyxfunc.C:3179
+#: src/lyxfunc.C:3311
+msgid "Document"
+msgstr "Document"
+
+#: src/frontends/xforms/FormDocument.C:275
+msgid "Paper"
+msgstr "Hîrtie"
+
+#: src/frontends/xforms/FormDocument.C:279
+#: src/frontends/xforms/FormParagraph.C:133
+msgid "Extra"
+msgstr "Extra"
+
+#: src/frontends/xforms/FormDocument.C:281
+msgid "Bullets"
+msgstr "Markeri"
+
+#: src/frontends/xforms/FormDocument.C:284
+msgid ""
+"Your version of libXpm is older than 4.7.\n"
+"The `bullet' tab of the document popup has been disabled"
+msgstr ""
+"Versiunea dumneavoastrã de libXpm este mai veche decît 4.7.\n"
+"Subfereastra `bullet' a documentului a fost dezactivatã."
+
+#: src/frontends/xforms/FormDocument.C:308
+msgid "Document layout set"
+msgstr "Am setat formatul de document"
+
+#: src/frontends/xforms/FormDocument.C:426
+msgid "Converting document to new document class..."
+msgstr "Convertesc documentul la o nouã clasã de document..."
+
+#: src/frontends/xforms/FormDocument.C:434
+msgid "One paragraph couldn't be converted"
+msgstr "Nu am putut converti un paragraf"
+
+#: src/frontends/xforms/FormDocument.C:437
+msgid " paragraphs couldn't be converted"
+msgstr "paragrafe nu am putut sã le convertesc"
+
+#. problem changing class -- warn user and retain old style
+#: src/frontends/xforms/FormDocument.C:439
+#: src/frontends/xforms/FormDocument.C:446
+#: src/frontends/xforms/FormDocument.C:1108
+msgid "Conversion Errors!"
+msgstr "Erori de conversie!"
+
+#: src/frontends/xforms/FormDocument.C:440
+msgid "into chosen document class"
+msgstr "în clasa de document aleasã"
+
+#: src/frontends/xforms/FormDocument.C:447
+msgid "Errors loading new document class."
+msgstr "Eroare la încãrcarea noii clasea de document."
+
+#: src/frontends/xforms/FormDocument.C:448
+#: src/frontends/xforms/FormDocument.C:1110
+msgid "Reverting to original document class."
+msgstr "Revin la clasa de document original."
+
+#: src/frontends/xforms/FormDocument.C:825
+msgid "Document is read-only. No changes to layout permitted."
+msgstr "Documentul poate fi numai citit. Nu sînt permise schimbãri de format."
+
+#: src/frontends/xforms/FormDocument.C:1100
+msgid "Should I set some parameters to"
+msgstr "Ar trebui sã setez niºte parametrii la"
+
+#: src/frontends/xforms/FormDocument.C:1101
+msgid "the defaults of this document class?"
+msgstr "setãrile implicite pentru aceastã clasã de document?"
+
+#: src/frontends/xforms/FormDocument.C:1109
+msgid "Unable to switch to new document class."
+msgstr "Nu pot comuta la noua clasã de document."
+
 #: src/frontends/xforms/FormError.C:26
 msgid "LaTeX Error"
 msgstr "Eroare de LaTeX"
-
-#: src/frontends/xforms/FormGraphics.C:36
-#: src/frontends/xforms/FormGraphics.C:359
-msgid "Graphics"
-msgstr "Graficã"
-
-#: src/frontends/xforms/FormGraphics.C:368 src/insets/figinset.C:1959
-msgid "Clipart"
-msgstr "Clipart"
 
 #: src/frontends/xforms/form_graphics.C:33
 msgid "Graphics File|#F"
@@ -4492,39 +4492,22 @@ msgstr "Actualizeazã|#a"
 msgid "Ok"
 msgstr "OK"
 
-#: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:36
-msgid "Index"
-msgstr "Index"
+#: src/frontends/xforms/FormGraphics.C:36
+#: src/frontends/xforms/FormGraphics.C:359
+msgid "Graphics"
+msgstr "Graficã"
+
+#: src/frontends/xforms/FormGraphics.C:368 src/insets/figinset.C:1959
+msgid "Clipart"
+msgstr "Clipart"
 
 #: src/frontends/xforms/form_index.C:29
 msgid "Keyword|#K"
 msgstr "Cuvînt cheie|#C"
 
-#: src/frontends/xforms/FormParagraph.C:33
-msgid "Paragraph Layout"
-msgstr "Formatare paragraf"
-
-#: src/frontends/xforms/FormParagraph.C:92
-#: src/frontends/xforms/FormParagraph.C:95
-msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
-msgstr " Nimic | Defskip | Smallskip | Medskip | Bigskip | VFill | Lungime "
-
-#. now make them fit together
-#: src/frontends/xforms/FormParagraph.C:132
-msgid "General"
-msgstr "General"
-
-#: src/frontends/xforms/FormParagraph.C:680
-#: src/frontends/xforms/FormParagraph.C:717
-#: src/frontends/xforms/FormTabular.C:454
-#: src/frontends/xforms/FormTabular.C:466
-#: src/frontends/xforms/FormTabular.C:478
-msgid "Warning: Invalid Length (valid example: 10mm)"
-msgstr "Atenþie: Lungime eronatã (exemplu valid: 10mm)"
-
-#: src/frontends/xforms/FormParagraph.C:729
-msgid "Warning: Invalid percent value (0-100)"
-msgstr "Atenþie: Valoare procentualã eronatã (0-100)"
+#: src/frontends/xforms/FormIndex.C:29 src/insets/insetindex.C:36
+msgid "Index"
+msgstr "Index"
 
 #: src/frontends/xforms/form_paragraph.C:40
 msgid "Label Width:|#d"
@@ -4651,324 +4634,31 @@ msgstr "Floatflt|#F"
 msgid "Cancel|C#C^["
 msgstr "Renunþã|C#C^["
 
-#: src/frontends/xforms/FormPreferences.C:68
-msgid "Preferences"
-msgstr "Preferinþe"
-
-#: src/frontends/xforms/FormPreferences.C:220
-#, fuzzy
-msgid "Look & Feel"
-msgstr "Aspect"
-
-#: src/frontends/xforms/FormPreferences.C:223
-msgid "Lang Opts"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:226
-#: src/frontends/xforms/FormPreferences.C:255
-msgid "Converters"
-msgstr "Convertoare"
-
-#: src/frontends/xforms/FormPreferences.C:229
-msgid "Inputs"
-msgstr "Intrãri"
-
-#: src/frontends/xforms/FormPreferences.C:232
-msgid "Outputs"
-msgstr "Ieºiri"
-
-#: src/frontends/xforms/FormPreferences.C:238
-msgid "Screen Fonts"
-msgstr "Fonturi ecran"
-
-#: src/frontends/xforms/FormPreferences.C:241
-msgid "Interface"
-msgstr "Interfaþã"
-
-#: src/frontends/xforms/FormPreferences.C:244
-msgid "Colors"
-msgstr "Culori"
-
-#: src/frontends/xforms/FormPreferences.C:247
-#: src/frontends/xforms/FormPreferences.C:264
-#: src/frontends/xforms/FormPreferences.C:272 src/mathed/math_forms.C:46
-msgid "Misc"
-msgstr "Diverse"
-
-#: src/frontends/xforms/FormPreferences.C:252
-msgid "Formats"
-msgstr "Formate"
-
-#: src/frontends/xforms/FormPreferences.C:261
-msgid "Paths"
-msgstr "Cãi"
-
-#: src/frontends/xforms/FormPreferences.C:269
-msgid "Printer"
-msgstr "Imprimantã"
-
-#: src/frontends/xforms/FormPreferences.C:277
-msgid "Spell checker"
-msgstr "Verificator ortografic"
-
-#: src/frontends/xforms/FormPreferences.C:533
-msgid "LyX objects that can be assigned a color."
-msgstr "Obiecte LyX cãrora li se poate atribui o culoare."
-
-#: src/frontends/xforms/FormPreferences.C:536
-msgid ""
-"Modify the LyX object's color. Note: you must then \"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:544
-msgid "Find a new color."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:547
-msgid "Toggle between RGB and HSV color spaces."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:742
-msgid "GUI background"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:748
-msgid "GUI text"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:757
-#, fuzzy
-msgid "GUI selection"
-msgstr "Decoraþie"
-
-#: src/frontends/xforms/FormPreferences.C:763
-#, fuzzy
-msgid "GUI pointer"
-msgstr "la imprimantã"
-
-#: src/frontends/xforms/FormPreferences.C:896
-msgid "HSV"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:928
-msgid "RGB"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1004
-msgid "All the currently defined converters known to LyX."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1006
-msgid "Convert \"from\" this format"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1008
-msgid "Convert \"to\" this format"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1010
-msgid ""
-"The conversion command. $$i is the input file name, $$b is the file name "
-"without its extension and $$o is the name of the output file."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1012
-msgid "Flags that control the converter behavior"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1014
-msgid ""
-"Remove the current converter from the list of available converters. Note: "
-"you must then \"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1016
-#: src/frontends/xforms/FormPreferences.C:1288
-#, fuzzy
-msgid "Add"
-msgstr "&Adaugã"
-
-#: src/frontends/xforms/FormPreferences.C:1017
-msgid ""
-"Add the current converter to the list of available converters. Note: you "
-"must then \"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1019
-msgid ""
-"Modify the contents of the current converter. Note: you must then \"Apply\" "
-"the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1112
-#: src/frontends/xforms/FormPreferences.C:1114
-#: src/frontends/xforms/FormPreferences.C:1159
-#: src/frontends/xforms/FormPreferences.C:1161
-#: src/frontends/xforms/FormPreferences.C:1388
-#: src/frontends/xforms/FormPreferences.C:1389
-#: src/frontends/xforms/FormPreferences.C:1438
-#: src/frontends/xforms/FormPreferences.C:1440
-#: src/frontends/xforms/form_preferences.C:504
-msgid "Modify|#M"
-msgstr "Modificã|#M"
-
-#: src/frontends/xforms/FormPreferences.C:1148
-#: src/frontends/xforms/FormPreferences.C:1150
-#: src/frontends/xforms/FormPreferences.C:1427
-#: src/frontends/xforms/FormPreferences.C:1429
-#: src/frontends/xforms/form_preferences.C:607
-#: src/frontends/xforms/form_preferences.C:694
-msgid "Add|#A"
-msgstr "Adaugã|#A"
-
-#: src/frontends/xforms/FormPreferences.C:1274
-msgid "All the currently defined formats known to LyX."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1276
-msgid "The format identifier."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1278
-#, fuzzy
-msgid "The format name as it will appear in the menus."
-msgstr "Referinþã aºa cum apare la tipãrire"
-
-#: src/frontends/xforms/FormPreferences.C:1280
-msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1282
-msgid "Used to recognize the file. E.g., ps, pdf, tex."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1284
-msgid "The command used to launch the viewer application."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1286
-msgid ""
-"Remove the current format from the list of available formats. Note: you must "
-"then \"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1289
-msgid ""
-"Add the current format to the list of available formats. Note: you must then "
-"\"Apply\" the change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1291
-msgid ""
-"Modify the contents of the current format. Note: you must then \"Apply\" the "
-"change."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1407
-msgid "Cannot remove a Format used by a Converter. Remove the converter first."
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1578
-msgid "Sys Bind"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1582
-#, fuzzy
-msgid "User Bind"
-msgstr "Ghidul utilizatorului|G"
-
-#: src/frontends/xforms/FormPreferences.C:1586
-#, fuzzy
-msgid "Bind file"
-msgstr "Fiºier asocieri|#a"
-
-#: src/frontends/xforms/FormPreferences.C:1590
-msgid "Sys UI"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1594
-msgid "User UI"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:1598
-#, fuzzy
-msgid "UI file"
-msgstr "[nu existã fiºier]"
-
-#: src/frontends/xforms/FormPreferences.C:1794
-#: src/frontends/xforms/FormPreferences.C:1802
-#, fuzzy
-msgid "Key maps"
-msgstr "Mapare taste"
-
-#: src/frontends/xforms/FormPreferences.C:1798
-#: src/frontends/xforms/FormPreferences.C:1806
-#, fuzzy
-msgid "Keyboard map"
-msgstr "Cuvînt cheie"
-
-#: src/frontends/xforms/FormPreferences.C:1979
-msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
-msgstr " implicit | US letter | legal | executive | A3 | A4 | A5 | B5 "
-
-#: src/frontends/xforms/FormPreferences.C:2231
-#, fuzzy
-msgid "Default path"
-msgstr "Implicit"
-
-#: src/frontends/xforms/FormPreferences.C:2236
-#, fuzzy
-msgid "Template path"
-msgstr "Modele"
-
-#: src/frontends/xforms/FormPreferences.C:2241
-msgid "Temp dir"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2245
-#, fuzzy
-msgid "User"
-msgstr "Utilizator1|#1"
-
-#: src/frontends/xforms/FormPreferences.C:2248
-#, fuzzy
-msgid "Lastfiles"
-msgstr "Listã de slide-uri"
-
-#: src/frontends/xforms/FormPreferences.C:2252
-msgid "Backup path"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2257
-#, fuzzy
-msgid "LyX Server pipes"
-msgstr "Conducã server LyX|#s"
-
-#: src/frontends/xforms/FormPreferences.C:2701
-msgid "Fonts must be positive!"
-msgstr ""
-
-#: src/frontends/xforms/FormPreferences.C:2724
-#, fuzzy
-msgid ""
-"Fonts must be input in the order tiny > script> footnote > small > normal > "
-"large > larger > largest > huge > huger."
-msgstr ""
-" implicit | tiny | script | notã subsol | small | normal | large | Large | "
-"LARGE | huge | Huge"
-
-#: src/frontends/xforms/FormPreferences.C:2840
-msgid " none | ispell | aspell "
-msgstr " nimic | ispell | aspell "
-
-#: src/frontends/xforms/FormPreferences.C:2952
-#, fuzzy
-msgid "Personal dictionary"
-msgstr "Utilizeazã dicþionar personal"
-
-#: src/frontends/xforms/FormPreferences.C:3008
-msgid "WARNING!"
-msgstr ""
+#: src/frontends/xforms/FormParagraph.C:33
+msgid "Paragraph Layout"
+msgstr "Formatare paragraf"
+
+#: src/frontends/xforms/FormParagraph.C:92
+#: src/frontends/xforms/FormParagraph.C:95
+msgid " None | Defskip | Smallskip | Medskip | Bigskip | VFill | Length "
+msgstr " Nimic | Defskip | Smallskip | Medskip | Bigskip | VFill | Lungime "
+
+#. now make them fit together
+#: src/frontends/xforms/FormParagraph.C:132
+msgid "General"
+msgstr "General"
+
+#: src/frontends/xforms/FormParagraph.C:680
+#: src/frontends/xforms/FormParagraph.C:717
+#: src/frontends/xforms/FormTabular.C:454
+#: src/frontends/xforms/FormTabular.C:466
+#: src/frontends/xforms/FormTabular.C:478
+msgid "Warning: Invalid Length (valid example: 10mm)"
+msgstr "Atenþie: Lungime eronatã (exemplu valid: 10mm)"
+
+#: src/frontends/xforms/FormParagraph.C:729
+msgid "Warning: Invalid percent value (0-100)"
+msgstr "Atenþie: Valoare procentualã eronatã (0-100)"
 
 #: src/LyXAction.C:154 src/frontends/xforms/form_preferences.C:44
 msgid "Save"
@@ -5156,6 +4846,18 @@ msgstr "Rãsfoieºte"
 msgid "LyX objects|#L"
 msgstr "Obiecte LyX|#O"
 
+#: src/frontends/xforms/FormPreferences.C:1112
+#: src/frontends/xforms/FormPreferences.C:1114
+#: src/frontends/xforms/FormPreferences.C:1159
+#: src/frontends/xforms/FormPreferences.C:1161
+#: src/frontends/xforms/FormPreferences.C:1388
+#: src/frontends/xforms/FormPreferences.C:1389
+#: src/frontends/xforms/FormPreferences.C:1438
+#: src/frontends/xforms/FormPreferences.C:1440
+#: src/frontends/xforms/form_preferences.C:504
+msgid "Modify|#M"
+msgstr "Modificã|#M"
+
 #: src/frontends/xforms/form_preferences.C:511
 #, fuzzy
 msgid "S|#S"
@@ -5191,6 +4893,15 @@ msgstr "Toate convertoarele|#T"
 #: src/frontends/xforms/form_preferences.C:687
 msgid "Delete|#D"
 msgstr "ªterge|#t"
+
+#: src/frontends/xforms/FormPreferences.C:1148
+#: src/frontends/xforms/FormPreferences.C:1150
+#: src/frontends/xforms/FormPreferences.C:1427
+#: src/frontends/xforms/FormPreferences.C:1429
+#: src/frontends/xforms/form_preferences.C:607
+#: src/frontends/xforms/form_preferences.C:694
+msgid "Add|#A"
+msgstr "Adaugã|#A"
 
 #: src/frontends/xforms/form_preferences.C:614
 msgid "Converter|#C"
@@ -5401,10 +5112,303 @@ msgstr "Conducã server LyX|#s"
 msgid "Temp dir|#d"
 msgstr "Director temporar|#t"
 
-#: src/LyXAction.C:137 src/LyXAction.C:145 src/frontends/xforms/FormPrint.C:37
-#: src/frontends/xforms/form_print.C:129
-msgid "Print"
-msgstr "Tipãreºte"
+#: src/frontends/xforms/FormPreferences.C:68
+msgid "Preferences"
+msgstr "Preferinþe"
+
+#: src/frontends/xforms/FormPreferences.C:220
+#, fuzzy
+msgid "Look & Feel"
+msgstr "Aspect"
+
+#: src/frontends/xforms/FormPreferences.C:223
+msgid "Lang Opts"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:226
+#: src/frontends/xforms/FormPreferences.C:255
+msgid "Converters"
+msgstr "Convertoare"
+
+#: src/frontends/xforms/FormPreferences.C:229
+msgid "Inputs"
+msgstr "Intrãri"
+
+#: src/frontends/xforms/FormPreferences.C:232
+msgid "Outputs"
+msgstr "Ieºiri"
+
+#: src/frontends/xforms/FormPreferences.C:238
+msgid "Screen Fonts"
+msgstr "Fonturi ecran"
+
+#: src/frontends/xforms/FormPreferences.C:241
+msgid "Interface"
+msgstr "Interfaþã"
+
+#: src/frontends/xforms/FormPreferences.C:244
+msgid "Colors"
+msgstr "Culori"
+
+#: src/frontends/xforms/FormPreferences.C:247
+#: src/frontends/xforms/FormPreferences.C:264
+#: src/frontends/xforms/FormPreferences.C:272 src/mathed/math_forms.C:46
+msgid "Misc"
+msgstr "Diverse"
+
+#: src/frontends/xforms/FormPreferences.C:252
+msgid "Formats"
+msgstr "Formate"
+
+#: src/frontends/xforms/FormPreferences.C:261
+msgid "Paths"
+msgstr "Cãi"
+
+#: src/frontends/xforms/FormPreferences.C:269
+msgid "Printer"
+msgstr "Imprimantã"
+
+#: src/frontends/xforms/FormPreferences.C:277
+msgid "Spell checker"
+msgstr "Verificator ortografic"
+
+#: src/frontends/xforms/FormPreferences.C:533
+msgid "LyX objects that can be assigned a color."
+msgstr "Obiecte LyX cãrora li se poate atribui o culoare."
+
+#: src/frontends/xforms/FormPreferences.C:536
+msgid ""
+"Modify the LyX object's color. Note: you must then \"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:544
+msgid "Find a new color."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:547
+msgid "Toggle between RGB and HSV color spaces."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:742
+msgid "GUI background"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:748
+msgid "GUI text"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:757
+#, fuzzy
+msgid "GUI selection"
+msgstr "Decoraþie"
+
+#: src/frontends/xforms/FormPreferences.C:763
+#, fuzzy
+msgid "GUI pointer"
+msgstr "la imprimantã"
+
+#: src/frontends/xforms/FormPreferences.C:896
+msgid "HSV"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:928
+msgid "RGB"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1004
+msgid "All the currently defined converters known to LyX."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1006
+msgid "Convert \"from\" this format"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1008
+msgid "Convert \"to\" this format"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1010
+msgid ""
+"The conversion command. $$i is the input file name, $$b is the file name "
+"without its extension and $$o is the name of the output file."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1012
+msgid "Flags that control the converter behavior"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1014
+msgid ""
+"Remove the current converter from the list of available converters. Note: "
+"you must then \"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1016
+#: src/frontends/xforms/FormPreferences.C:1288
+#, fuzzy
+msgid "Add"
+msgstr "&Adaugã"
+
+#: src/frontends/xforms/FormPreferences.C:1017
+msgid ""
+"Add the current converter to the list of available converters. Note: you "
+"must then \"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1019
+msgid ""
+"Modify the contents of the current converter. Note: you must then \"Apply\" "
+"the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1274
+msgid "All the currently defined formats known to LyX."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1276
+msgid "The format identifier."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1278
+#, fuzzy
+msgid "The format name as it will appear in the menus."
+msgstr "Referinþã aºa cum apare la tipãrire"
+
+#: src/frontends/xforms/FormPreferences.C:1280
+msgid "The keyboard accelerator. Use a letter in the GUI name. Case sensitive."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1282
+msgid "Used to recognize the file. E.g., ps, pdf, tex."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1284
+msgid "The command used to launch the viewer application."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1286
+msgid ""
+"Remove the current format from the list of available formats. Note: you must "
+"then \"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1289
+msgid ""
+"Add the current format to the list of available formats. Note: you must then "
+"\"Apply\" the change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1291
+msgid ""
+"Modify the contents of the current format. Note: you must then \"Apply\" the "
+"change."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1407
+msgid "Cannot remove a Format used by a Converter. Remove the converter first."
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1578
+msgid "Sys Bind"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1582
+#, fuzzy
+msgid "User Bind"
+msgstr "Ghidul utilizatorului|G"
+
+#: src/frontends/xforms/FormPreferences.C:1586
+#, fuzzy
+msgid "Bind file"
+msgstr "Fiºier asocieri|#a"
+
+#: src/frontends/xforms/FormPreferences.C:1590
+msgid "Sys UI"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1594
+msgid "User UI"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:1598
+#, fuzzy
+msgid "UI file"
+msgstr "[nu existã fiºier]"
+
+#: src/frontends/xforms/FormPreferences.C:1794
+#: src/frontends/xforms/FormPreferences.C:1802
+#, fuzzy
+msgid "Key maps"
+msgstr "Mapare taste"
+
+#: src/frontends/xforms/FormPreferences.C:1798
+#: src/frontends/xforms/FormPreferences.C:1806
+#, fuzzy
+msgid "Keyboard map"
+msgstr "Cuvînt cheie"
+
+#: src/frontends/xforms/FormPreferences.C:1979
+msgid " default | US letter | legal | executive | A3 | A4 | A5 | B5 "
+msgstr " implicit | US letter | legal | executive | A3 | A4 | A5 | B5 "
+
+#: src/frontends/xforms/FormPreferences.C:2231
+#, fuzzy
+msgid "Default path"
+msgstr "Implicit"
+
+#: src/frontends/xforms/FormPreferences.C:2236
+#, fuzzy
+msgid "Template path"
+msgstr "Modele"
+
+#: src/frontends/xforms/FormPreferences.C:2241
+msgid "Temp dir"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2245
+#, fuzzy
+msgid "User"
+msgstr "Utilizator1|#1"
+
+#: src/frontends/xforms/FormPreferences.C:2248
+#, fuzzy
+msgid "Lastfiles"
+msgstr "Listã de slide-uri"
+
+#: src/frontends/xforms/FormPreferences.C:2252
+msgid "Backup path"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2257
+#, fuzzy
+msgid "LyX Server pipes"
+msgstr "Conducã server LyX|#s"
+
+#: src/frontends/xforms/FormPreferences.C:2701
+msgid "Fonts must be positive!"
+msgstr ""
+
+#: src/frontends/xforms/FormPreferences.C:2724
+#, fuzzy
+msgid ""
+"Fonts must be input in the order tiny > script> footnote > small > normal > "
+"large > larger > largest > huge > huger."
+msgstr ""
+" implicit | tiny | script | notã subsol | small | normal | large | Large | "
+"LARGE | huge | Huge"
+
+#: src/frontends/xforms/FormPreferences.C:2840
+msgid " none | ispell | aspell "
+msgstr " nimic | ispell | aspell "
+
+#: src/frontends/xforms/FormPreferences.C:2952
+#, fuzzy
+msgid "Personal dictionary"
+msgstr "Utilizeazã dicþionar personal"
+
+#: src/frontends/xforms/FormPreferences.C:3008
+msgid "WARNING!"
+msgstr ""
 
 #: src/frontends/xforms/form_print.C:37
 msgid "Printer|#P"
@@ -5451,13 +5455,14 @@ msgstr "Comandã:|#C"
 msgid "to"
 msgstr ""
 
+#: src/LyXAction.C:137 src/LyXAction.C:145 src/frontends/xforms/FormPrint.C:37
+#: src/frontends/xforms/form_print.C:129
+msgid "Print"
+msgstr "Tipãreºte"
+
 #: src/frontends/xforms/form_print.C:132
 msgid "Order"
 msgstr "Ordine"
-
-#: src/frontends/xforms/FormRef.C:72
-msgid " Ref | Page | TextRef | TextPage | PrettyRef "
-msgstr ""
 
 #: src/frontends/xforms/form_ref.C:40
 #, fuzzy
@@ -5484,33 +5489,9 @@ msgstr "Du-te la referinþa|#d"
 msgid "Goto reference|#G"
 msgstr "Du-te la referinþa|#d"
 
-#: src/frontends/xforms/FormTabular.C:26
-#, fuzzy
-msgid "Tabular Layout"
-msgstr "Format tabel"
-
-#: src/frontends/xforms/FormTabular.C:127
-msgid "Tabular"
-msgstr "Tabular"
-
-#: src/frontends/xforms/FormTabular.C:129
-#, fuzzy
-msgid "Column/Row"
-msgstr "Coloanã"
-
-#: src/frontends/xforms/FormTabular.C:131
-#, fuzzy
-msgid "Cell"
-msgstr "Renunþã"
-
-#: src/frontends/xforms/FormTabular.C:133
-#, fuzzy
-msgid "LongTable"
-msgstr "Tabel lung"
-
-#: src/frontends/xforms/FormTabular.C:440
-msgid "Warning: Wrong Cursor position, updated window"
-msgstr "Avertizare: Poziþie cursor incorectã; fereastrã actualizatã"
+#: src/frontends/xforms/FormRef.C:72
+msgid " Ref | Page | TextRef | TextPage | PrettyRef "
+msgstr ""
 
 #: src/frontends/xforms/form_tabular.C:31 src/insets/insetinfo.C:216
 #: src/insets/insetinfo.C:221
@@ -5700,23 +5681,47 @@ msgstr "Subsol"
 msgid "Special"
 msgstr "Special:|#S"
 
-#: src/frontends/xforms/FormTabularCreate.C:30
+#: src/frontends/xforms/FormTabular.C:26
+#, fuzzy
+msgid "Tabular Layout"
+msgstr "Format tabel"
+
+#: src/frontends/xforms/FormTabular.C:127
+msgid "Tabular"
+msgstr "Tabular"
+
+#: src/frontends/xforms/FormTabular.C:129
+#, fuzzy
+msgid "Column/Row"
+msgstr "Coloanã"
+
+#: src/frontends/xforms/FormTabular.C:131
+#, fuzzy
+msgid "Cell"
+msgstr "Renunþã"
+
+#: src/frontends/xforms/FormTabular.C:133
+#, fuzzy
+msgid "LongTable"
+msgstr "Tabel lung"
+
+#: src/frontends/xforms/FormTabular.C:440
+msgid "Warning: Wrong Cursor position, updated window"
+msgstr "Avertizare: Poziþie cursor incorectã; fereastrã actualizatã"
+
+#: src/frontends/xforms/FormTabularCreate.C:31
 #, fuzzy
 msgid "Insert Tabular"
 msgstr "Insereazã tabel"
-
-#: src/frontends/xforms/FormToc.C:71
-msgid " TOC | LOF | LOT | LOA "
-msgstr ""
 
 #: src/frontends/xforms/form_toc.C:40
 #, fuzzy
 msgid "Type|#T"
 msgstr "Tip:|#T"
 
-#: src/frontends/xforms/FormUrl.C:29
-msgid "Url"
-msgstr "Url"
+#: src/frontends/xforms/FormToc.C:71
+msgid " TOC | LOF | LOT | LOA "
+msgstr ""
 
 #: src/frontends/xforms/form_url.C:29
 #, fuzzy
@@ -5730,6 +5735,10 @@ msgstr "Nume|#N"
 #: src/frontends/xforms/form_url.C:47
 msgid "HTML type|#H"
 msgstr "Tip HTML|#H"
+
+#: src/frontends/xforms/FormUrl.C:29
+msgid "Url"
+msgstr "Url"
 
 #: src/frontends/xforms/input_validators.C:102
 #, fuzzy
@@ -5979,7 +5988,7 @@ msgstr ""
 msgid "Opened ERT Inset"
 msgstr "Inset deschis"
 
-#: src/insets/insetert.C:65 src/insets/insettabular.C:1569
+#: src/insets/insetert.C:65 src/insets/insettabular.C:1698
 msgid "Impossible Operation!"
 msgstr "Operaþie imposibilã!"
 
@@ -6079,8 +6088,8 @@ msgid "Use include|#U"
 msgstr "Utilizeazã includere|#u"
 
 #. launches dialog
-#: src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3042
-#: src/lyxfunc.C:3144 src/lyxfunc.C:3200 src/lyxfunc.C:3276
+#: src/insets/insetinclude.C:117 src/lyx_cb.C:197 src/lyxfunc.C:3052
+#: src/lyxfunc.C:3154 src/lyxfunc.C:3210 src/lyxfunc.C:3286
 msgid "Documents"
 msgstr "Documente"
 
@@ -6147,34 +6156,34 @@ msgstr "Inset deschis"
 msgid "Parent:"
 msgstr "Pãrinte:"
 
-#: src/insets/insettabular.C:476
+#: src/insets/insettabular.C:481
 #, fuzzy
 msgid "Opened Tabular Inset"
 msgstr "Inset deschis"
 
-#: src/insets/insettabular.C:1570
+#: src/insets/insettabular.C:1699
 msgid "Multicolumns can only be horizontally."
 msgstr "Multicoloanele pot fi numai orizontale"
 
-#: src/insets/insettext.C:467
+#: src/insets/insettext.C:478
 #, fuzzy
 msgid "Opened Text Inset"
 msgstr "Inset deschis"
 
-#: src/insets/insettext.C:947
+#: src/insets/insettext.C:971
 #, fuzzy
 msgid "Cannot include more than one paragraph!"
 msgstr "Celula de tabel nu poate include mai mult de un paragraf!"
 
-#: src/insets/insettext.C:1007 src/lyxfunc.C:1258
+#: src/insets/insettext.C:1037 src/lyxfunc.C:1258
 msgid "Layout "
 msgstr "Format "
 
-#: src/insets/insettext.C:1007 src/lyxfunc.C:1259
+#: src/insets/insettext.C:1037 src/lyxfunc.C:1259
 msgid " not known"
 msgstr " necunoscut"
 
-#: src/insets/insettext.C:1060 src/lyxfunc.C:2102
+#: src/insets/insettext.C:1090 src/lyxfunc.C:2111
 #, fuzzy
 msgid "Unknown spacing argument: "
 msgstr "Lipseºte fiºierul jurnal:"
@@ -7076,7 +7085,7 @@ msgstr "Salvarea a eºuat. Redenumesc ºi încerc din nou?"
 msgid "(If not, document is not saved.)"
 msgstr "(Dacã nu, documentul nu va fi salvat.)"
 
-#: src/lyx_cb.C:198 src/lyxfunc.C:3043
+#: src/lyx_cb.C:198 src/lyxfunc.C:3053
 msgid "Templates"
 msgstr "Modele"
 
@@ -7400,7 +7409,7 @@ msgstr "Am gãsit."
 msgid "Unknown sequence:"
 msgstr "Secvenþã necunoscutã:"
 
-#: src/lyxfunc.C:328 src/lyxfunc.C:2984
+#: src/lyxfunc.C:328 src/lyxfunc.C:2994
 msgid "Unknown action"
 msgstr "Acþiune necunoscutã"
 
@@ -7414,16 +7423,11 @@ msgstr "Documentul poate fi citit numai"
 msgid "Command not allowed without any document open"
 msgstr "Comandã nepermisã fãrã un document deschis"
 
-#: src/lyxfunc.C:640
-#, fuzzy
-msgid "Text mode"
-msgstr "Modul TeX"
-
 #: src/lyxfunc.C:795
 msgid "Saving document"
 msgstr "Salvez documentul"
 
-#: src/lyxfunc.C:1103 src/lyxfunc.C:2539
+#: src/lyxfunc.C:1103 src/lyxfunc.C:2548
 #, fuzzy
 msgid "Missing argument"
 msgstr "Lipseºte fiºierul jurnal:"
@@ -7456,96 +7460,96 @@ msgstr ""
 msgid "in current document."
 msgstr "Autosalvez documentul curent..."
 
-#: src/lyxfunc.C:1828
+#: src/lyxfunc.C:1837
 msgid "Mark removed"
 msgstr ""
 
-#: src/lyxfunc.C:1833
+#: src/lyxfunc.C:1842
 msgid "Mark set"
 msgstr ""
 
-#: src/lyxfunc.C:1938
+#: src/lyxfunc.C:1947
 msgid "Mark off"
 msgstr ""
 
-#: src/lyxfunc.C:1951
+#: src/lyxfunc.C:1960
 msgid "Mark on"
 msgstr ""
 
-#: src/lyxfunc.C:2453
+#: src/lyxfunc.C:2462
 msgid "Push-toolbar needs argument > 0"
 msgstr ""
 
-#: src/lyxfunc.C:2470
+#: src/lyxfunc.C:2479
 msgid "Usage: toolbar-add-to <LyX command>"
 msgstr ""
 
-#: src/lyxfunc.C:2487 src/mathed/formula.C:881
+#: src/lyxfunc.C:2496 src/mathed/formula.C:881
 msgid "Math greek mode on"
 msgstr "Modul cu caractere matematice greceºti este activat"
 
-#: src/lyxfunc.C:2498 src/mathed/formula.C:892
+#: src/lyxfunc.C:2507 src/mathed/formula.C:892
 msgid "Math greek keyboard on"
 msgstr "Tastatura în modul matematic grecesc este activatã"
 
-#: src/lyxfunc.C:2500 src/mathed/formula.C:894
+#: src/lyxfunc.C:2509 src/mathed/formula.C:894
 msgid "Math greek keyboard off"
 msgstr "Tastatura în modul matematic grecesc este dezactivatã"
 
-#: src/lyxfunc.C:2554 src/mathed/formula.C:486
+#: src/lyxfunc.C:2563 src/mathed/formula.C:486
 msgid "Math editor mode"
 msgstr "Mod de editare matematic"
 
-#: src/lyxfunc.C:2561
+#: src/lyxfunc.C:2570
 msgid "This is only allowed in math mode!"
 msgstr "Acest lucru este permis numai în modul matematic!"
 
-#: src/lyxfunc.C:2750
+#: src/lyxfunc.C:2759
 #, fuzzy
 msgid "Opening child document "
 msgstr "Deschid documentul"
 
-#: src/lyxfunc.C:2782
+#: src/lyxfunc.C:2791
 msgid "Unknown kind of footnote"
 msgstr "Tip de subsol necunoscut"
 
-#: src/lyxfunc.C:2901
+#: src/lyxfunc.C:2910
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:2907
+#: src/lyxfunc.C:2916
 msgid "Set-color \""
 msgstr ""
 
-#: src/lyxfunc.C:2909
+#: src/lyxfunc.C:2918
 msgid "\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:2924
+#: src/lyxfunc.C:2933
 #, fuzzy
 msgid "No document open"
 msgstr "* Nici un document deschis *"
 
-#: src/lyxfunc.C:2930
+#: src/lyxfunc.C:2939
 msgid "Document is read only"
 msgstr "Documentul este poate fi citit numai"
 
-#: src/lyxfunc.C:3044
+#: src/lyxfunc.C:3054
 #, fuzzy
 msgid "Enter Filename for new document"
 msgstr "Introduceþi numele de fiºier pentru a salva documentul ca"
 
-#: src/lyxfunc.C:3045
+#: src/lyxfunc.C:3055
 msgid "newfile"
 msgstr "fiºier_nou"
 
 #. Cancel: Do nothing
-#: src/lyxfunc.C:3049 src/lyxfunc.C:3076 src/lyxfunc.C:3153 src/lyxfunc.C:3211
-#: src/lyxfunc.C:3239 src/lyxfunc.C:3249 src/lyxfunc.C:3285
+#: src/lyxfunc.C:3059 src/lyxfunc.C:3086 src/lyxfunc.C:3163 src/lyxfunc.C:3221
+#: src/lyxfunc.C:3249 src/lyxfunc.C:3259 src/lyxfunc.C:3295
 msgid "Canceled."
 msgstr "Anulat."
 
-#: src/lyxfunc.C:3064 src/lyxfunc.C:3227
+#: src/lyxfunc.C:3074 src/lyxfunc.C:3237
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -7553,76 +7557,76 @@ msgstr ""
 "Doriþi sã închid acest document acum?\n"
 "(Alegînd 'Nu' veþi trece la versiunea deschisã)"
 
-#: src/lyxfunc.C:3084
+#: src/lyxfunc.C:3094
 msgid "File already exists:"
 msgstr "Fiºierul existã deja:"
 
-#: src/lyxfunc.C:3086
+#: src/lyxfunc.C:3096
 msgid "Do you want to open the document?"
 msgstr "Doriþi sã deschid documentul?"
 
 #. loads document
-#: src/lyxfunc.C:3088 src/lyxfunc.C:3164
+#: src/lyxfunc.C:3098 src/lyxfunc.C:3174
 msgid "Opening document"
 msgstr "Deschid documentul"
 
-#: src/lyxfunc.C:3095 src/lyxfunc.C:3171
+#: src/lyxfunc.C:3105 src/lyxfunc.C:3181
 msgid "opened."
 msgstr "deschis."
 
-#: src/lyxfunc.C:3116
+#: src/lyxfunc.C:3126
 #, fuzzy
 msgid "Choose template"
 msgstr "Nu pot deschide fiºierul model"
 
-#: src/lyxfunc.C:3145 src/lyxfunc.C:3201 src/lyxfunc.C:3277
+#: src/lyxfunc.C:3155 src/lyxfunc.C:3211 src/lyxfunc.C:3287
 msgid "Examples"
 msgstr ""
 
-#: src/lyxfunc.C:3147
+#: src/lyxfunc.C:3157
 #, fuzzy
 msgid "Select Document to Open"
 msgstr "Selecteazã document fiu"
 
-#: src/lyxfunc.C:3173
+#: src/lyxfunc.C:3183
 msgid "Could not open document"
 msgstr "Nu pot deschide documentul"
 
-#: src/lyxfunc.C:3203
+#: src/lyxfunc.C:3213
 #, fuzzy
 msgid "Select "
 msgstr "S&electeazã"
 
-#: src/lyxfunc.C:3204
+#: src/lyxfunc.C:3214
 #, fuzzy
 msgid " file to import"
 msgstr "Fiºier de inserat"
 
-#: src/lyxfunc.C:3246
+#: src/lyxfunc.C:3256
 #, fuzzy
 msgid "A document by the name"
 msgstr "Existã alt document deschis cu acelaºi nume!"
 
-#: src/lyxfunc.C:3248
+#: src/lyxfunc.C:3258
 #, fuzzy
 msgid "already exists. Overwrite?"
 msgstr "Fiºierul existã deja:"
 
-#: src/lyxfunc.C:3279
+#: src/lyxfunc.C:3289
 #, fuzzy
 msgid "Select Document to Insert"
 msgstr "Selecteazã document fiu"
 
 #. Inserts document
-#: src/lyxfunc.C:3297
+#: src/lyxfunc.C:3307
 msgid "Inserting document"
 msgstr "Inserez documentul"
 
-#: src/lyxfunc.C:3303
+#: src/lyxfunc.C:3313
 msgid "inserted."
 msgstr "inserat."
 
-#: src/lyxfunc.C:3305
+#: src/lyxfunc.C:3315
 msgid "Could not insert document"
 msgstr "Nu pot insera documentul"
 
@@ -7753,69 +7757,69 @@ msgstr ""
 msgid "Expect problems."
 msgstr "Eroare ispell"
 
-#: src/lyx_main.C:554
+#: src/lyx_main.C:558
 msgid "You have specified an invalid LyX directory."
 msgstr ""
 
-#: src/lyx_main.C:555
+#: src/lyx_main.C:559
 msgid "You don't have a personal LyX directory."
 msgstr ""
 
-#: src/lyx_main.C:557
+#: src/lyx_main.C:561
 msgid "It is needed to keep your own configuration."
 msgstr ""
 
-#: src/lyx_main.C:558
+#: src/lyx_main.C:562
 msgid "Should I try to set it up for you (recommended)?"
 msgstr ""
 
-#: src/lyx_main.C:559
+#: src/lyx_main.C:563
 msgid "Running without personal LyX directory."
 msgstr ""
 
 #. Tell the user what is going on
-#: src/lyx_main.C:566
+#: src/lyx_main.C:570
 #, fuzzy
 msgid "LyX: Creating directory "
 msgstr "LyX: Creez directorul %s ºi rulez configurarea..."
 
-#: src/lyx_main.C:567
+#: src/lyx_main.C:571
 #, fuzzy
 msgid " and running configure..."
 msgstr "Execut configurarea..."
 
-#: src/lyx_main.C:573
+#: src/lyx_main.C:577
 #, fuzzy
 msgid "Failed. Will use "
 msgstr "A eºuat. Voi utiliza %s în loc."
 
-#: src/lyx_main.C:574
+#: src/lyx_main.C:578
 #, fuzzy
 msgid " instead."
 msgstr "inserat."
 
-#: src/lyx_main.C:581
+#: src/lyx_main.C:585
 #, fuzzy
 msgid "Done!"
 msgstr "Gata"
 
-#: src/lyx_main.C:595
+#: src/lyx_main.C:599
 msgid "LyX Warning!"
 msgstr "Avertizare LyX"
 
-#: src/lyx_main.C:596
+#: src/lyx_main.C:600
 msgid "Error while reading "
 msgstr "Eroare la citirea "
 
-#: src/lyx_main.C:597
+#: src/lyx_main.C:601
 msgid "Using built-in defaults."
 msgstr "Utilizez valorile implicite interne"
 
-#: src/lyx_main.C:695
+#: src/lyx_main.C:699
 msgid "Setting debug level to "
 msgstr ""
 
-#: src/lyx_main.C:707
+#: src/lyx_main.C:711
 msgid ""
 "Usage: lyx [ command line switches ] [ name.lyx ... ]\n"
 "Command line switches (case sensitive):\n"
@@ -7836,31 +7840,31 @@ msgid ""
 "Check the LyX man page for more details."
 msgstr ""
 
-#: src/lyx_main.C:740
+#: src/lyx_main.C:744
 msgid "List of supported debug flags:"
 msgstr ""
 
-#: src/lyx_main.C:752
+#: src/lyx_main.C:756
 msgid "Missing directory for -sysdir switch!"
 msgstr ""
 
-#: src/lyx_main.C:763
+#: src/lyx_main.C:767
 msgid "Missing directory for -userdir switch!"
 msgstr ""
 
-#: src/lyx_main.C:786
+#: src/lyx_main.C:790
 msgid "Missing command string after  -x switch!"
 msgstr ""
 
-#: src/lyx_main.C:799
+#: src/lyx_main.C:803
 msgid "Missing file type [eg latex, ps...] after "
 msgstr ""
 
-#: src/lyx_main.C:801 src/lyx_main.C:816
+#: src/lyx_main.C:805 src/lyx_main.C:820
 msgid " switch!"
 msgstr ""
 
-#: src/lyx_main.C:814
+#: src/lyx_main.C:818
 msgid "Missing type [eg latex, ps...] after "
 msgstr ""
 
@@ -8421,11 +8425,11 @@ msgstr "Spaþiere"
 msgid "Matrix"
 msgstr "Matrice"
 
-#: src/mathed/math_panel.C:324
+#: src/mathed/math_panel.C:330
 msgid "Top | Center | Bottom"
 msgstr ""
 
-#: src/mathed/math_panel.C:377
+#: src/mathed/math_panel.C:383
 #, fuzzy
 msgid "Math Panel"
 msgstr "Mod matematic"
@@ -8613,43 +8617,43 @@ msgstr "100 %"
 msgid "Replace word|#R"
 msgstr "Înlocuieºte cuvîntul|#R"
 
-#: src/support/filetools.C:157
+#: src/support/filetools.C:159
 msgid "LyX Internal Error!"
 msgstr "Eroare internã de LyX!"
 
-#: src/support/filetools.C:158
+#: src/support/filetools.C:160
 msgid "Could not test if directory is writeable"
 msgstr "Nu pot testa dacã este permisã scrierea în director"
 
-#: src/support/filetools.C:408
+#: src/support/filetools.C:410
 msgid "Error! Cannot open directory:"
 msgstr "Eroare! Nu pot deschide directorul:"
 
-#: src/support/filetools.C:426
+#: src/support/filetools.C:428
 msgid "Error! Could not remove file:"
 msgstr "Eroare! Nu pot ºterge fiºierul:"
 
-#: src/support/filetools.C:451
+#: src/support/filetools.C:453
 msgid "Error! Couldn't create temporary directory:"
 msgstr "Eroare! Nu pot crea directorul temporar:"
 
-#: src/support/filetools.C:467
+#: src/support/filetools.C:469
 msgid "Error! Couldn't delete temporary directory:"
 msgstr "Eroare! Nu pot ºterge directorul temporar:"
 
-#: src/support/filetools.C:520
+#: src/support/filetools.C:522
 msgid "Internal error!"
 msgstr "Eroare internã!"
 
-#: src/support/filetools.C:521
+#: src/support/filetools.C:523
 msgid "Call to createDirectory with invalid name"
 msgstr "Apel de creare director cu nume eronat"
 
-#: src/support/filetools.C:526
+#: src/support/filetools.C:528
 msgid "Error! Couldn't create directory:"
 msgstr "Eroare! Nu pot crea directorul:"
 
-#: src/support/filetools.C:1134
+#: src/support/filetools.C:1136
 msgid "Could not delete auto-save file!"
 msgstr "Nu pot ºterge fiºierul de auto-salvare!"
 
@@ -8657,16 +8661,16 @@ msgstr "Nu pot ºterge fiºierul de auto-salvare!"
 msgid "unknown"
 msgstr "necunoscut"
 
-#: src/tabular.C:1283
+#: src/tabular.C:1693
 #, fuzzy
 msgid "Warning:"
 msgstr "Atenþie!"
 
-#: src/tabular.C:1284
+#: src/tabular.C:1694
 msgid "Tabular format < 5 is not supported anymore\n"
 msgstr ""
 
-#: src/tabular.C:1285
+#: src/tabular.C:1695
 msgid "Get an older version of LyX (< 1.1.x) for conversion!"
 msgstr ""
 
@@ -8690,15 +8694,15 @@ msgstr ""
 "Nu a fost definitã o schimbare de font. Utilizaþi Caractere din\n"
 "meniul Format pentru a defini schimbarea de font."
 
-#: src/text2.C:2201 src/text2.C:2314
+#: src/text2.C:2198 src/text2.C:2311
 msgid "Don't know what to do with half floats."
 msgstr "Nu ºtiu ce sã fac cu jumãtãþi de flotante."
 
-#: src/text2.C:2202 src/text2.C:2316
+#: src/text2.C:2199 src/text2.C:2313
 msgid "sorry."
 msgstr "îmi pare rãu."
 
-#: src/text.C:1993
+#: src/text.C:1995
 msgid ""
 "You cannot insert a space at the beginning of a paragraph.  Please read the "
 "Tutorial."
@@ -8706,30 +8710,34 @@ msgstr ""
 "Nu puteþi insera un spaþiu la începutul unui paragraf.  Citiþi mai întîi "
 "Tutorialul."
 
-#: src/text.C:1995
+#: src/text.C:1997
 msgid "You cannot type two spaces this way.  Please read the Tutorial."
 msgstr "Nu puteþi pune douã spaþii în acest mod. Citiþi Tutorialul."
 
-#: src/text.C:3443 src/text.C:3449
+#: src/text.C:3453 src/text.C:3459
 #, fuzzy
 msgid "Page Break (top)"
 msgstr "Ruperi de paginã"
 
-#: src/text.C:3643 src/text.C:3649
+#: src/text.C:3653 src/text.C:3659
 msgid "Page Break (bottom)"
 msgstr ""
 
-#: src/text.C:3943
+#: src/text.C:3953
 msgid "You can't insert a float in a float!"
 msgstr "Nu puteþi insera un flotant în alt flotant!"
 
-#: src/text.C:3951
+#: src/text.C:3961
 msgid "You can't insert a marginpar in a minipage!"
 msgstr "Nu puteþi insera un paragraf marginal într-o minipaginã!"
 
-#: src/text.C:3978
+#: src/text.C:3988
 msgid "Float would include float!"
 msgstr "Flotantul va include flotant!"
+
+#, fuzzy
+#~ msgid "Text mode"
+#~ msgstr "Modul TeX"
 
 #~ msgid "Insert|r"
 #~ msgstr "Inserare|I"
