@@ -312,10 +312,11 @@ void lyx_gui::start(string const & batch, vector<string> const & files)
 		if (fl_check_forms() == FL_EVENT) {
 			XEvent ev;
 			fl_XNextEvent(&ev);
-			lyxerr << "Received unhandled X11 event" << endl;
-			lyxerr << "Type: " << ev.xany.type
-			       << " Target: 0x" << hex << ev.xany.window
-			       << dec << endl;
+			lyxerr[Debug::GUI]
+				<< "Received unhandled X11 event" << endl
+				<< "Type: " << ev.xany.type
+				<< " Target: 0x" << hex << ev.xany.window
+				<< dec << endl;
 		}
 	}
 
