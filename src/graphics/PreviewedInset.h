@@ -41,12 +41,12 @@ public:
 	/** Find the PreviewLoader, add a LaTeX snippet to it and
 	 *  start the loading process.
 	 */
-	void generatePreview() const;
+	void generatePreview();
 
 	/** Add a LaTeX snippet to the PreviewLoader but do not start the
 	 *  loading process.
 	 */
-	void addPreview(PreviewLoader & ploader) const;
+	void addPreview(PreviewLoader & ploader);
 
 	/// The preview has been generated and is ready to use.
 	bool previewReady() const;
@@ -73,10 +73,12 @@ private:
 
 	///
 	Inset & inset_;
-	/// We don't own this
+	///
+	string snippet_;
+	/// We don't own this. Cached for efficiency reasons.
 	mutable PreviewImage const * pimage_;
 	///
-	mutable boost::signals::connection connection_;
+	boost::signals::connection connection_;
 };
 
 } // namespace grfx

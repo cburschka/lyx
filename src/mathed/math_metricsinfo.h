@@ -4,6 +4,8 @@
 #include "lyxfont.h"
 #include "LString.h"
 
+#include <boost/weak_ptr.hpp>
+
 class BufferView;
 class Painter;
 class MathNestInset;
@@ -46,7 +48,7 @@ struct MathMetricsInfo {
 	///
 	MathMetricsBase base;
 	///
-	BufferView * view;
+	boost::weak_ptr<BufferView> view;
 	///
 	bool fullredraw;
 };

@@ -89,7 +89,7 @@ bool openNewInset(BufferView * bv, UpdatableInset * new_inset)
 
 
 InsetFormulaBase::InsetFormulaBase()
-	: view_(0), font_(), xo_(0), yo_(0)
+	: font_(), xo_(0), yo_(0)
 {
 	// This is needed as long the math parser is not re-entrant
 	initMath();
@@ -151,7 +151,7 @@ void InsetFormulaBase::metrics(BufferView * bv, LyXFont const & f) const
 void InsetFormulaBase::metrics(BufferView * bv) const
 {
 	if (bv)
-		view_ = bv;
+		view_ = bv->owner()->view();
 	MathMetricsInfo mi;
 	mi.view       = view_;
 	//mi.base.style = display() ? LM_ST_DISPLAY : LM_ST_TEXT;
@@ -204,6 +204,7 @@ void InsetFormulaBase::insetUnlock(BufferView * bv)
 		}
 		releaseMathCursor(bv);
 	}
+	generatePreview();
 	bv->updateInset(this, false);
 }
 
@@ -836,13 +837,13 @@ Inset::Code InsetFormulaBase::lyxCode() const
 
 int InsetFormulaBase::ylow() const
 {
-	return yo_ - ascent(view_, font_);
+	return yo_ - ascent(view(), font_);
 }
 
 
 int InsetFormulaBase::yhigh() const
 {
-	return yo_ + descent(view_, font_);
+	return yo_ + descent(view(), font_);
 }
 
 
@@ -854,7 +855,7 @@ int InsetFormulaBase::xlow() const
 
 int InsetFormulaBase::xhigh() const
 {
-	return xo_ + width(view_, font_);
+	return xo_ + width(view(), font_);
 }
 
 

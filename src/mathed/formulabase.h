@@ -23,6 +23,8 @@
 #include "frontends/mouse_state.h"
 #include "lyxfont.h"
 
+#include <boost/weak_ptr.hpp>
+
 #include <iosfwd>
 
 class Buffer;
@@ -99,7 +101,7 @@ public:
 	///
 	virtual void updateLocal(BufferView * bv, bool mark_dirty);
 	///
-	BufferView * view() const { return view_; }
+	BufferView * view() const { return view_.get(); }
 
 	///
 	virtual bool searchForward(BufferView *, string const &,
@@ -115,9 +117,6 @@ public:
 	virtual void revealCodes(BufferView *) const;
 	///
 	virtual Inset::EDITABLE editable() const { return HIGHLY_EDITABLE; }
-	///
-	virtual void updatePreview() {}
-
 
 private:
 	/// unimplemented
@@ -127,7 +126,7 @@ private:
 
 protected:
 	///
-	mutable BufferView * view_;
+	mutable boost::weak_ptr<BufferView> view_;
 	///
 	mutable LyXFont font_;
 

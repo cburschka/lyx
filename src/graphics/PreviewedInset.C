@@ -33,7 +33,7 @@ bool PreviewedInset::activated()
 }
 
 
-void PreviewedInset::generatePreview() const
+void PreviewedInset::generatePreview()
 {
 	if (!Previews::activated() || !previewWanted() ||
 	    !view() || !view()->buffer())
@@ -46,15 +46,14 @@ void PreviewedInset::generatePreview() const
 }
 
 
-void PreviewedInset::addPreview(grfx::PreviewLoader & ploader) const
+void PreviewedInset::addPreview(grfx::PreviewLoader & ploader)
 {
 	if (!Previews::activated() || !previewWanted())
 		return;
 
-	// Generate the LaTeX snippet.
-	string const snippet = latexString();
+	snippet_ = latexString();
 
-	pimage_ = ploader.preview(snippet);
+	pimage_ = ploader.preview(snippet_);
 	if (pimage_)
 		return;
 
@@ -66,7 +65,7 @@ void PreviewedInset::addPreview(grfx::PreviewLoader & ploader) const
 			boost::bind(&PreviewedInset::imageReady, this, _1));
 	}
 
-	ploader.add(snippet);
+	ploader.add(snippet_);
 }
 
 
@@ -76,13 +75,10 @@ bool PreviewedInset::previewReady() const
 	    !view() || !view()->buffer())
 		return false;
 
-	// If the cached grfx::PreviewImage is invalid, update it.
-	string const snippet = latexString();
-
-	if (!pimage_ || snippet != pimage_->snippet()) {
+	if (!pimage_ || snippet_ != pimage_->snippet()) {
 		grfx::PreviewLoader & ploader =
 			grfx::Previews::get().loader(view()->buffer());
-		pimage_ = ploader.preview(snippet);
+		pimage_ = ploader.preview(snippet_);
 	}
 
 	if (!pimage_)
@@ -95,7 +91,7 @@ bool PreviewedInset::previewReady() const
 void PreviewedInset::imageReady(grfx::PreviewImage const & pimage) const
 {
 	// Check snippet against the Inset's current contents
-	if (latexString() != pimage.snippet())
+	if (snippet_ != pimage.snippet())
 		return;
 
 	pimage_ = &pimage;

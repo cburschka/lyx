@@ -103,7 +103,7 @@ InsetFormula::InsetFormula(BufferView * bv)
 	: par_(MathAtom(new MathHullInset)),
 	  preview_(new PreviewImpl(*this))
 {
-	view_ = bv;
+	view_ = bv->owner()->view();
 }
 
 
@@ -191,7 +191,6 @@ void InsetFormula::read(Buffer const *, LyXLex & lex)
 {
 	mathed_parse_normal(par_, lex);
 	metrics();
-	updatePreview();
 }
 
 
@@ -207,6 +206,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 {
 	// This initiates the loading of the preview, so should come
 	// before the metrics are computed.
+	view_ = bv->owner()->view();
 	bool const use_preview = preview_->previewReady();
 
 	int const x = int(xx);
@@ -389,8 +389,6 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 		default:
 			result = InsetFormulaBase::localDispatch(bv, action, arg);
 	}
-
-	//updatePreview();
 
 	return result;
 }

@@ -1,3 +1,18 @@
+2002-08-02  Angus Leeming  <leeming@lyx.org>
+
+	* formulabase.[Ch]: store the BufferView as a weak_ptr.
+	(updatePreview): removed.
+	(insetUnlock): invoke generatePreview().
+
+	* formula.C (InsetFormula): pass the shared_ptr to view_, not the raw
+	BufferView.
+	(read, localDispatch): remove those calls to updatePreview().
+
+	* math_metricsinfo.[Ch]: store the BufferView as a weak_ptr.
+
+	* math_nestinset.C (notifyCursorLeaves): empty, because
+	generatePreview() is now called from InsetFormulaBase::insetUnlock.
+
 2002-08-01  Angus Leeming  <leeming@lyx.org>
 
 	* formula.C: move code into the new PreviewedInset class.

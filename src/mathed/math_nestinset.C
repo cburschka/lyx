@@ -319,11 +319,4 @@ void MathNestInset::normalize(NormalStream & os) const
 
 
 void MathNestInset::notifyCursorLeaves()
-{
-	// Generate a preview only if we are leaving the InsetFormula itself
-	if (!mathcursor || mathcursor->depth() != 1)
-		return;
-
-	InsetFormulaBase * inset = mathcursor->formula();
-	inset->generatePreview();
-}
+{}
