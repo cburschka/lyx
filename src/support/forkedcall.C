@@ -159,7 +159,7 @@ bool ForkedProcess::running() const
 	waitpid(pid(), &waitstatus, WNOHANG);
 
 	// Racy of course, but it will do.
-	if (::kill(pid(), 0) && errno == ESRCH)
+	if (lyx::kill(pid(), 0) && errno == ESRCH)
 		return false;
 	return true;
 }
