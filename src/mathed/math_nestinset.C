@@ -684,6 +684,9 @@ void MathNestInset::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_MATH_MODE:
 #if 1
+		// ignore math-mode on when already in math mode
+		if (currentMode() == InsetBase::MATH_MODE && cmd.argument == "on")
+			break;
 		cur.macroModeClose();
 		selClearOrDel(cur);
 		cur.plainInsert(MathAtom(new MathMBoxInset(cur.bv())));

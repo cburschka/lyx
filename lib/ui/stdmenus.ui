@@ -258,8 +258,8 @@ Menuset
 	End
 
 	Menu "insert_formatting"
-		Item "Superscript|S" "command-sequence math-mode ; math-superscript ; font-free-apply; "
-		Item "Subscript|u" "command-sequence math-mode ; math-subscript ; font-free-apply; "
+		Item "Superscript|S" "command-sequence math-mode on; math-superscript ; font-free-apply; "
+		Item "Subscript|u" "command-sequence math-mode on; math-subscript ; font-free-apply; "
 		Separator
 		Item "Protected Space|r" "space-insert protected"
 		Item "Inter-word Space|w" "space-insert normal"
@@ -275,14 +275,14 @@ Menuset
 	End
 
 	Menu "insert_math"
-		Item "Inline Formula|I" "math-mode"
+		Item "Inline Formula|I" "math-mode on"
 		Item "Display Formula|D" "math-display"
-		Item "Eqnarray Environment|E" "command-sequence math-mode; math-mutate eqnarray;"
-		Item "AMS align Environment|a" "command-sequence math-mode; math-mutate align;"
-		Item "AMS alignat Environment|t" "command-sequence math-mode; math-mutate alignat;"
-		Item "AMS flalign Environment|f" "command-sequence math-mode; math-mutate flalign;"
-		Item "AMS gather Environment|g" "command-sequence math-mode; math-mutate gather;"
-		Item "AMS multline Environment|m" "command-sequence math-mode; math-mutate multline;"
+		Item "Eqnarray Environment|E" "command-sequence math-mode on; math-mutate eqnarray;"
+		Item "AMS align Environment|a" "command-sequence math-mode on; math-mutate align;"
+		Item "AMS alignat Environment|t" "command-sequence math-mode on; math-mutate alignat;"
+		Item "AMS flalign Environment|f" "command-sequence math-mode on; math-mutate flalign;"
+		Item "AMS gather Environment|g" "command-sequence math-mode on; math-mutate gather;"
+		Item "AMS multline Environment|m" "command-sequence math-mode on; math-mutate multline;"
 		Separator
 		Item "Array Environment|y" "math-matrix 2 2"
 		Item "Cases Environment|C" "math-insert \cases"
