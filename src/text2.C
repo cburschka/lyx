@@ -436,6 +436,7 @@ void LyXText::toggleInset(BufferView * bview)
 		    && inset_owner->owner()->isOpen()) {
 			bview->unlockInset(static_cast<UpdatableInset *>(inset_owner->owner()));
 			inset_owner->owner()->close(bview);
+			bview->getLyXText()->cursorRight(bview);
 		}
 		return;
 	}
