@@ -146,13 +146,17 @@ void initSymbols()
 		if (isFontName(tmp.inset)) {
 			// tmp.inset _is_ the fontname here.
 			// create fallbacks if necessary
+
+			// symbol font is not available sometimes
+			string symbol_font = "lyxsymbol";
+
 			if (tmp.extra == "func" || tmp.extra == "funclim" || tmp.extra == "special") {
 				lyxerr[Debug::MATHED] << "symbol abuse for " << tmp.name << endl;
 				tmp.draw = tmp.name;
 			} else if (math_font_available(tmp.inset)) {
 				lyxerr[Debug::MATHED] << "symbol available for " << tmp.name << endl;
 				tmp.draw += char(charid);
-			} else if (fallbackid) {
+			} else if (fallbackid && math_font_available(symbol_font)) {
 				if (tmp.inset == "cmex")
 					tmp.inset  = "lyxsymbol";
 				else
