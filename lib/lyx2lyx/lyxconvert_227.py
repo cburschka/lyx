@@ -16,7 +16,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 import sys
-from parser_tools import find_tokens
+from parser_tools import find_token, find_tokens
 
 def convert_collapsable(lines):
     i = 0
@@ -34,8 +34,8 @@ def convert_collapsable(lines):
             break
 
         # Seach for a line starting 'collapsed'
-        # If, however, we find a line starting '\layout' (_always_ present)
-        # then break with a warning message
+        # If, however, we find a line starting '\begin_layout'
+        # (_always_ present) then break with a warning message
         i = i + 1
         while 1:
             if (lines[i] == "collapsed false"):
@@ -44,16 +44,44 @@ def convert_collapsable(lines):
             elif (lines[i] == "collapsed true"):
                 lines[i] = "status collapsed"
                 break
-            elif (lines[i][:7] == "\\layout"):
+            elif (lines[i][:13] == "\\begin_layout"):
                 sys.stderr.write("Malformed lyx file\n")
                 break
             i = i + 1
 
         i = i + 1
 
+def convert_ert(lines):
+    i = 0
+    while 1:
+        i = find_token(lines, "\\begin_inset ERT", i)
+        if i == -1:
+            break
+
+        # Seach for a line starting 'status'
+        # If, however, we find a line starting '\begin_layout'
+        # (_always_ present) then break with a warning message
+        i = i + 1
+        while 1:
+            if (lines[i] == "status Open"):
+                lines[i] = "status open"
+                break
+            elif (lines[i] == "status Collapsed"):
+                lines[i] = "status collapsed"
+                break
+            elif (lines[i] == "status Inlined"):
+                lines[i] = "status inlined"
+                break
+            elif (lines[i][:13] == "\\begin_layout"):
+                sys.stderr.write("Malformed lyx file\n")
+                break
+            i = i + 1
+
+        i = i + 1
 
 def convert(header, body):
     convert_collapsable(body)
+    convert_ert(body)
 
 if __name__ == "__main__":
     pass

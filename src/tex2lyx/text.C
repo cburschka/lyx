@@ -253,7 +253,7 @@ void handle_ert(ostream & os, string const & s, Context & context, bool check_la
 	}
 	Context newcontext(true, context.textclass);
 	begin_inset(os, "ERT");
-	os << "\nstatus Collapsed\n";
+	os << "\nstatus collapsed\n";
 	newcontext.check_layout(os);
 	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
 		if (*it == '\\')
@@ -271,7 +271,7 @@ void handle_comment(ostream & os, string const & s, Context & context)
 	// TODO: Handle this better
 	Context newcontext(true, context.textclass);
 	begin_inset(os, "ERT");
-	os << "\nstatus Collapsed\n";
+	os << "\nstatus collapsed\n";
 	newcontext.check_layout(os);
 	for (string::const_iterator it = s.begin(), et = s.end(); it != et; ++it) {
 		if (*it == '\\')

@@ -73,6 +73,15 @@ def convert_minipage(lines):
         else:
             width = ' "0"'
 
+        if lines[i][:9] == "collapsed":
+            if lines[i][9:] == "true":
+		status = "collapsed"
+            else:
+		status = "open"
+            del lines[i]
+        else:
+	    status = "collapsed"
+
         lines.insert(i, 'use_parbox 0')
         i = i + 1
         lines.insert(i, 'width' + width)
@@ -82,6 +91,8 @@ def convert_minipage(lines):
         lines.insert(i, 'height' + height)
         i = i + 1
         lines.insert(i, 'height_special "totalheight"')
+        i = i + 1
+        lines.insert(i, 'status ' + status)
         i = i + 1
 
 def convert(header, body):

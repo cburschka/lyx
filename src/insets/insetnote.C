@@ -82,7 +82,6 @@ void InsetNoteParams::write(ostream & os) const
 {
 	string const label = notetranslator().find(type);
 	os << "Note " << label << "\n";
-	os << label << "\n";
 }
 
 

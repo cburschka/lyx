@@ -1,3 +1,12 @@
+2004-01-06  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* lyxrevert_228.py: convert ERT status, too
+	* lyxconvert_227.py: ditto, also stop at \\begin_alyout and not
+	\\layout in convert_collapsable()
+	* lyxconvert_228.py (convert_minipage): Add status tag conversion
+	* lyxrevert_225.py: Convert vspace and frameless box insets
+	* lyxrevert_22[3-8].py: fix the 'é' in José's name
+
 2003-12-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* lyx2lyx: up the format to 229.

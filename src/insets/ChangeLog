@@ -1,3 +1,7 @@
+2004-01-06  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* insetnote.C (InsetNoteParams::write): write label only once
+
 2004-01-05  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* insetbranch.C (isBranchSelected): use the BranchNamesEqual

@@ -1,3 +1,7 @@
+2004-01-06  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* text.C: fix status tag output for ERT inset
+
 2003-12-17  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* preamble.C: Change file format from 225 to 228
@@ -5,7 +9,6 @@
 	* text.C: Changes for format 228 (see ../../development/FORMAT)
 	* text.C: Add lyxgreyedout environment
 	* context.[Ch]: New function Context::add_extra_stuff()
-	* context.[Ch]: Add ~Context() with warning message
 
 2003-12-08  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 

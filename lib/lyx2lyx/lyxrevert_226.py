@@ -1,5 +1,5 @@
 # This file is part of lyx2lyx
-# Copyright (C) 2003 JosÅÈ Matos <jamatos@fep.up.pt>
+# Copyright (C) 2003 JosÈ Matos <jamatos@fep.up.pt>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License

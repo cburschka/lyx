@@ -1,5 +1,5 @@
 # This file is part of lyx2lyx
-# Copyright (C) 2003 JosÅÈ Matos <jamatos@fep.up.pt>
+# Copyright (C) 2003 JosÈ Matos <jamatos@fep.up.pt>
 #
 # This program is free software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License
@@ -16,7 +16,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 import sys
-from parser_tools import find_tokens
+from parser_tools import find_token, find_tokens
 
 def convert_collapsable(lines):
     i = 0
@@ -33,13 +33,12 @@ def convert_collapsable(lines):
         if i == -1:
             break
 
-        # Seach for a line starting 'collapsed'
-        # If, however, we find a line starting '\layout' (_always_ present)
-        # then break with a warning message
+        # Seach for a line starting 'status'
+        # If, however, we find a line starting '\begin_layout'
+        # (_always_ present) then break with a warning message
         i = i + 1
         while 1:
             if (lines[i] == "status open"):
-                lines[i] = "collapsed false"
                 lines[i] = "collapsed false"
                 break
             elif (lines[i] == "status collapsed" or
@@ -53,8 +52,37 @@ def convert_collapsable(lines):
 
         i = i + 1
 
+def convert_ert(lines):
+    i = 0
+    while 1:
+        i = find_token(lines, "\\begin_inset ERT", i)
+        if i == -1:
+            break
+
+        # Seach for a line starting 'status'
+        # If, however, we find a line starting '\begin_layout'
+        # (_always_ present) then break with a warning message
+        i = i + 1
+        while 1:
+            if (lines[i] == "status open"):
+                lines[i] = "status Open"
+                break
+            elif (lines[i] == "status collapsed"):
+                lines[i] = "status Collapsed"
+                break
+            elif (lines[i] == "status inlined"):
+                lines[i] = "status Inlined"
+                break
+            elif (lines[i][:13] == "\\begin_layout"):
+                sys.stderr.write("Malformed lyx file\n")
+                break
+            i = i + 1
+
+        i = i + 1
+
 def convert(header, body):
     convert_collapsable(body)
+    convert_ert(body)
 
 if __name__ == "__main__":
     pass
