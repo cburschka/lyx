@@ -1,6 +1,9 @@
 
 2003-10-23  André Pönitz  <poenitz@gmx.net>
 
+	* undo.C (textUndoOrRedo):
+	* dociterator.C (asDocIterator): work around crash
+
 	* cursor.C (getStatus): replace ASSERT by more verbose error message
 	  and manual correction of the problem. Should increase stability
 	  while providing more sensible information.
