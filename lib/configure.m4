@@ -352,67 +352,6 @@ case $TOHTML in
       hevea) latex_to_html_command="hevea -s \$\$i";;
 esac
 
-#### Search for image conversion ####
-SEARCH_PROG([for an Image -> EPS converter], TOEPS, convert pnmtops)
-case $TOEPS in
-  convert)
-    bmp_to_eps="convert BMP:\$\$i EPS:\$\$o"
-    fits_to_eps="convert FITS:\$\$i EPS:\$\$o"
-    gif_to_eps="convert GIF:\$\$i EPS:\$\$o"
-    jpg_to_eps="convert JPG:\$\$i EPS:\$\$o"
-    pbm_to_eps="convert PBM:\$\$i EPS:\$\$o"
-    pgm_to_eps="convert PGM:\$\$i EPS:\$\$o"
-    png_to_eps="convert PNG:\$\$i EPS:\$\$o"
-    ppm_to_eps="convert PPM:\$\$i EPS:\$\$o"
-    sgi_to_eps="convert SGI:\$\$i EPS:\$\$o"
-    xbm_to_eps="convert XBM:\$\$i EPS:\$\$o"
-    xwd_to_eps="convert XWD:\$\$i EPS:\$\$o"
-    xpm_to_eps="convert XPM:\$\$i EPS:\$\$o" ;;
-  pnmtops) gif_to_eps="giftopnm \$\$i | pnmtops > \$\$o"
-    png_to_eps="pngtopnm \$\$i | pnmtops >\$\$o"
-    jpg_to_eps="jpegtopnm \$\$i | pnmtops >\$\$o";;
-esac
-
-SEARCH_PROG([for an Image -> PNG converter], TOPNG, convert pnmtopng)
-case $TOPNG in
-  convert)
-    gif_to_png="convert GIF:\$\$i PNG:\$\$o"
-    eps_to_png="convert EPS:\$\$i PNG:\$\$o"
-    jpg_to_png="convert JPG:\$\$i PNG:\$\$o";;
-  pnmtopng)
-    gif_to_png="giftopnm \$\$i | pnmtopng >\$\$o"
-    eps_to_png="pstopnm \$\$i| pnmtopng >\$\$o"
-    jpg_to_png="jpegtopnm \$\$i | pnmtopng >\$\$o";;
-esac
-
-SEARCH_PROG([for an Image -> XPM converter], TOXPM, convert)
-if test "$TOXPM" = "convert"; then
-  gif_to_xpm="convert GIF:\$\$i XPM:\$\$o"
-  eps_to_xpm="convert EPS:\$\$i XPM:\$\$o"
-  jpg_to_xpm="convert JPG:\$\$i XPM:\$\$o"
-  png_to_xpm="convert PNG:\$\$i XPM:\$\$o"
-  ps_to_xpm="convert PS:\$\$i XPM:\$\$o"
-  xbm_to_xpm="convert XBM:\$\$i XPM:\$\$o"
-fi
-
-SEARCH_PROG([for an EPS -> PDF converter], EPSTOPDF, epstopdf)
-case $EPSTOPDF in
-  epstopdf) eps_to_pdf="epstopdf --outfile=\$\$o \$\$i";;
-esac
-
-#### Add Grace conversions (xmgrace needs an Xserver, gracebat doesn't.)
-SEARCH_PROG([for a Grace -> Image converter], GRACE, gracebat)
-case $GRACE in
- gracebat) 
-   for device in `gracebat -version 2>/dev/null | grep "^Dummy"` ; do
-     case $device in
-       EPS) agr_to_eps="gracebat -hardcopy -printfile \$\$o -hdevice $device \$\$i 2>/dev/null";;
-       PDF) agr_to_pdf="gracebat -hardcopy -printfile \$\$o -hdevice $device \$\$i 2>/dev/null";;
-       PNG) agr_to_png="gracebat -hardcopy -printfile \$\$o -hdevice $device \$\$i 2>/dev/null";;
-     esac
-   done 
-esac
-
 #### Explore the LaTeX configuration
 MSG_CHECKING(LaTeX configuration)
 # First, remove the files that we want to re-create
@@ -489,13 +428,9 @@ cat >$outfile <<EOF
 \\Format bmp      bmp	BMP		""
 \\Format dvi	  dvi	DVI		D
 \\Format eps	  eps	EPS		""
-\\Format epsi     epsi  EPSI		""
 \\Format fax	  ""	Fax		""
-\\Format fits     fits	FITS		""
-\\Format gif      gif	GIF		""
 \\Format agr      agr	GRACE		""
 \\Format html	  html	HTML		H
-\\Format jpg      jpg	JPEG		""
 \\Format latex	  tex	LaTeX		L
 \\Format linuxdoc sgml	LinuxDoc	x
 \\Format lyx      lyx	LyX		""
@@ -503,19 +438,13 @@ cat >$outfile <<EOF
 \\Format pdf	  pdf	PDF		P
 \\Format pdf2	  pdf  "PDF (pdflatex)"	F
 \\Format pdf3	  pdf  "PDF (dvipdfm)"	m
-\\Format pbm	  pbm	PBM		""
-\\Format pgm	  pgm	PGM		""
 \\Format png	  png	PNG		""
-\\Format ppm	  ppm	PPM		""
 \\Format ps	  ps	Postscript	t
 \\Format program  ""	Program		""
-\\Format sgi      sgi	SGI		""
 \\Format tgif     obj	TGIF		""
 \\Format tiff     tif	TIFF		""
-\\Format xbm      xbm   XBM             ""
-\\Format xpm      xpm   XPM             ""
-\\Format xwd      xwd	XWD		""
 \\Format word	  doc	Word		W
+\\Format xpm	  xpm	XPM		""
 
 \\converter latex dvi "$latex_to_dvi" "latex"
 \\converter latex pdf2 "$latex_to_pdf" "latex"
@@ -537,45 +466,6 @@ cat >$outfile <<EOF
 \\converter html latex "$html_to_latex_command" ""
 \\converter word latex "$word_to_latex_command" ""
 
-\\converter bmp  eps "$bmp_to_eps" ""
-\\converter fits  eps "$fits_to_eps" ""
-\\converter gif  eps "$gif_to_eps" ""
-\\converter jpg  eps "$jpg_to_eps" ""
-\\converter pbm  eps "$pbm_to_eps" ""
-\\converter pgm  eps "$pgm_to_eps" ""
-\\converter png  eps "$png_to_eps" ""
-\\converter ppm  eps "$ppm_to_eps" ""
-\\converter sgi  eps "$sgi_to_eps" ""
-\\converter tgif eps "tgif -print -eps \$\$i" ""
-\\converter tiff eps "tiff2ps \$\$i > \$\$o" ""
-\\converter xbm  eps "$xbm_to_eps" ""
-\\converter xpm  eps "$xpm_to_eps" ""
-\\converter xwd  eps "$xwd_to_eps" ""
-
-\\converter tgif xpm "tgif -print -stdout -xpm \$\$i > \$\$o" ""
-\\converter tgif png "tgif -print -stdout -png \$\$i > \$\$o" ""
-\\converter tgif pdf "tgif -print -stdout -pdf \$\$i > \$\$o" ""
-
-\\converter gif  png "$gif_to_png" ""
-\\converter eps  png "$eps_to_png" ""
-\\converter epsi png "$eps_to_png" ""
-\\converter jpg  png "$jpg_to_png" ""
-
-\\converter gif  xpm "$gif_to_xpm" ""
-\\converter eps  xpm "$eps_to_xpm" ""
-\\converter epsi xpm "$eps_to_xpm" ""
-\\converter jpg  xpm "$jpg_to_xpm" ""
-\\converter png  xpm "$png_to_xpm" ""
-\\converter ps  xpm "$ps_to_xpm" ""
-\\converter xbm  xpm "$xbm_to_xpm" ""
-
-\\converter eps  pdf "$eps_to_pdf" ""
-\\converter epsi pdf "$eps_to_pdf" ""
-
-\\converter agr  eps "$agr_to_eps" ""
-\\converter agr  pdf "$agr_to_pdf" ""
-\\converter agr  png "$agr_to_png" ""
-
 \\viewer dvi "$DVI_VIEWER"
 \\viewer html "$HTML_VIEWER"
 \\viewer pdf "$PDF_VIEWER"
@@ -585,6 +475,44 @@ cat >$outfile <<EOF
 $rc_entries
 \\font_encoding "$chk_fontenc"
 EOF
+
+### the graphic converter part with the predefined ones
+#### Search for tne nonstandard converting progs
+#
+SEARCH_PROG([for an TIFF -> PS converter], TIFF2PS, tiff2ps)
+if test "$TIFF2PS" = "tiff2ps"; then
+cat >>$outfile <<EOF
+\\converter tiff eps "tiff2ps \$\$i > \$\$o" ""
+EOF
+fi
+
+SEARCH_PROG([for an TGIF -> EPS/XPM converter], TGIF, tgif)
+if test "$TGIF" = "tgif"; then
+cat >>$outfile <<EOF
+\\converter tgif eps "tgif -print -eps \$\$i" ""
+\\converter tgif pdf "tgif -print -pdf \$\$i" ""
+\\converter tgif png "tgif -print -png \$\$i" ""
+\\converter tgif xpm "tgif -print -stdout -xpm \$\$i > \$\$o" ""
+EOF
+fi
+
+SEARCH_PROG([for an EPS -> PDF converter], EPSTOPDF, epstopdf)
+if test "$EPSTOPDF" = "epstopdf"; then
+cat >>$outfile <<EOF
+\\converter eps pdf "epstopdf --outfile=\$\$o \$\$i" ""
+\\converter epsi pdf "epstopdf --outfile=\$\$o \$\$i" ""
+EOF
+fi
+
+#### Add Grace conversions (xmgrace needs an Xserver, gracebat doesn't.)
+SEARCH_PROG([for a Grace -> Image converter], GRACE, gracebat)
+if test "$GRACE" = "gracebat"; then 
+cat >>$outfile <<EOF
+\\converter agr eps "gracebat -hardcopy -printfile \$\$o -hdevice EPS \$\$i 2>/dev/null" ""
+\\converter agr png "gracebat -hardcopy -printfile \$\$o -hdevice PNG \$\$i 2>/dev/null" ""
+\\converter agr xpm "gracebat -hardcopy -printfile - -hdevice PNG \$\$i 2>/dev/null | convert - \$\$o" ""
+EOF
+fi
 
 ######## X FONTS
 # create a fonts.dir file to make X fonts available to LyX

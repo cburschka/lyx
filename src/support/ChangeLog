@@ -1,3 +1,12 @@
+2002-06-17  Herbert Voss  <voss@perce.de>
+
+	* filetools.[C]: (readBB_from_PSFile) add a helperfunc
+	(readBB_lyxerrMessage) to get better lyxerr messages
+	(getExtFromContents) test epsi files in the right way
+		
+	* DestroxLyXTmpDir.C: changed to true, to delete the
+	temporary unzipped files, too.
+
 2002-06-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* putenv.C (putenv): putenv should never be found in std::

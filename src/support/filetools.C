@@ -25,6 +25,7 @@
 #include "support/systemcall.h"
 
 #include "filetools.h"
+#include "lstrings.h"
 #include "frontends/Alert.h"
 #include "FileInfo.h"
 #include "support/path.h"        // I know it's OS/2 specific (SMiyata)
@@ -557,9 +558,10 @@ string const CreateLyXTmpDir(string const & deflt)
 }
 
 
+// FIXME: no need for separate method like this ... 
 int DestroyLyXTmpDir(string const & tmpdir)
 {
-	return DestroyTmpDir (tmpdir, false); // Why false?
+	return DestroyTmpDir(tmpdir, true); 
 }
 
 
@@ -991,6 +993,8 @@ string const GetExtension(string const & name)
 // AGR	Grace...
 // BMP	BM...
 // EPS	%!PS-Adobe-3.0 EPSF...
+// EPSI like EPS and with
+//      %%BeginPreview...
 // FITS ...BITPIX...
 // GIF	GIF...
 // JPG	JFIF
@@ -1021,6 +1025,7 @@ string const getExtFromContents(string const & filename)
 	if (filename.empty() || !IsFileReadable(filename))
 		return string();
 
+	
 	ifstream ifs(filename.c_str());
 	if (!ifs)
 		// Couldn't open file...
@@ -1138,7 +1143,7 @@ string const getExtFromContents(string const & filename)
 		else if (contains(str,"%!PS-Adobe")) {
 			// eps or ps
 			ifs >> str;
-			if (contains(str,"EPSF"))
+			if (contains(str,"EPSF")) 
 				format = "eps";
 			else
 			    format = "ps";
@@ -1155,9 +1160,25 @@ string const getExtFromContents(string const & filename)
 	}
 
 	if (!format.empty()) {
-	    lyxerr[Debug::GRAPHICS]
-		<< "Recognised Fileformat: " << format << endl;
-	    return format;
+		// if we have eps than epsi is also possible
+		// we have to check for a preview
+		if (format == "eps") {
+			lyxerr[Debug::GRAPHICS]
+				<< "\teps detected -> test for an epsi ..."
+				<< endl;
+			while (count++ < max_count) {
+				if (ifs.eof())
+					break;
+				getline(ifs, str);
+				if (contains(str, "BeginPreview")) {
+					format = "epsi";
+					count = max_count;
+				}
+			}
+		}
+		lyxerr[Debug::GRAPHICS]
+			<< "Recognised Fileformat: " << format << endl;
+		return format;
 	}
 
 	string const ext(GetExtension(filename));
@@ -1362,6 +1383,16 @@ void removeAutosaveFile(string const & filename)
 }
 
 
+void readBB_lyxerrMessage(string const & file, bool & zipped, 
+	string const & message) 
+{
+	lyxerr[Debug::GRAPHICS] << "[readBB_from_PSFile] " 
+		<< message << std::endl;
+	if (zipped)
+		lyx::unlink(file);
+}
+
+
 string const readBB_from_PSFile(string const & file)
 {
 	// in a (e)ps-file it's an entry like %%BoundingBox:23 45 321 345
@@ -1371,18 +1402,26 @@ string const readBB_from_PSFile(string const & file)
 	// end of the file. Than we have in the header:
 	// %%BoundingBox: (atend)
 	// In this case we must check the end.
-	string const file_ = zippedFile(file) ?
+	bool zipped = zippedFile(file);
+	string const file_ = zipped ?
 		string(unzipFile(file)) : string(file);
 	string const format = getExtFromContents(file_);
-	if (format != "eps" && format != "ps")
+
+	if (format != "eps" && format != "ps") {
+		readBB_lyxerrMessage(file_, zipped,"no(e)ps-format"); 
 		return string();
+	}
 
 	std::ifstream is(file_.c_str());
 	while (is) {
 		string s;
 		getline(is,s);
-		if (contains(s,"%%BoundingBox:") && !contains(s,"atend"))
-			return (frontStrip(s.substr(14)));
+		if (contains(s,"%%BoundingBox:") && !contains(s,"atend")) {
+			string const bb = frontStrip(s.substr(14));
+			readBB_lyxerrMessage(file_, zipped, bb);
+			return bb;
+		}
 	}
+	readBB_lyxerrMessage(file_, zipped, "no bb found");
 	return string();
 }

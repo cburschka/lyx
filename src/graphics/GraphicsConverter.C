@@ -71,47 +71,62 @@ void GConverter::convert(string const & from_file, string const & to_file_base,
 			 string const & from_format, string const & to_format,
 			 SignalTypePtr on_finish)
 {
+	lyxerr[Debug::GRAPHICS] << "[GraphicsConverter::convert]\n"
+		<< "\tfrom_file:    " << from_file
+		<< "\n\tto_file_base: " << to_file_base
+		<< "\n\tfrom_format:  " << from_format
+		<< "\n\tto_format:    " << to_format << endl;
 	// The conversion commands are stored in a stringstream
 	ostringstream script;
 	script << "#!/bin/sh\n";
+	string script_command;
+	string script_file;
 
-	bool const success = build_script(from_file, to_file_base,
-					  from_format, to_format, script);
+	bool success = build_script(from_file, to_file_base,
+				     from_format, to_format, script);
 
-	if (!success) {
-		lyxerr[Debug::GRAPHICS]
-			<< "Unable to build the conversion script" << std::endl;
-		on_finish->operator()(string());
-		return;
+	if (success) {
+		lyxerr[Debug::GRAPHICS] << "\tConversion script:\n"
+			<< "--------------------------------------\n"
+			<< script.str().c_str() 
+			<< "\n--------------------------------------\n";
+
+		// Output the script to file.
+		static int counter = 0;
+		script_file = OnlyPath(to_file_base) + "lyxconvert" +
+			tostr(counter++) + ".sh";
+
+		std::ofstream fs(script_file.c_str());
+		if (!fs.good()) {
+			// Unable to output the conversion script to file.
+			success = false;
+		} else {
+
+			fs << script.str().c_str();
+			fs.close();
+
+			// Create a dummy command for ease of understanding of the
+			// list of forked processes.
+			// Note that 'sh ' is absolutely essential, or execvp will fail.
+			script_command =
+				"sh " + script_file + " " +
+				OnlyFilename(from_file) + " " + to_format;
+		}
 	}
-
-	lyxerr[Debug::GRAPHICS] << "Conversion script:\n\n"
-				<< script.str().c_str() << "\n" << std::endl;
-
-	// Output the script to file.
-	static int counter = 0;
-	string const script_file = OnlyPath(to_file_base) + "lyxconvert" +
-		tostr(counter++) + ".sh";
-
-	std::ofstream fs(script_file.c_str());
-	if (!fs.good()) {
-		// Unable to output the conversion script to file.
-		on_finish->operator()(string());
-		return;
-	}
-
-	fs << script.str().c_str();
-	fs.close();
-
-	// Create a dummy command for ease of understanding of the
-	// list of forked processes.
-	// Note that 'sh ' is absolutely essential, or execvp will fail.
-	string const script_command =
-		"sh " + script_file + " " +
-		OnlyFilename(from_file) + " " + to_format;
 
 	string const to_file =
 		ChangeExtension(to_file_base, formats.extension(to_format));
+
+	if (!success) {
+		script_file = string();
+		script_command = 
+			"convert -depth 8 " +
+			from_format + ':' + from_file + ' ' +
+			to_format + ':' + to_file;
+		lyxerr[Debug::GRAPHICS] 
+			<< "\tNo converter defined! I use convert from ImageMagic:\n\t"
+			<< script_command << endl;
+	}	
 
 	// Launch the conversion process.
 	ConvProcessPtr shared_ptr;
@@ -161,6 +176,7 @@ bool GConverter::build_script(string const & from_file,
 			      string const & to_format,
 			      ostringstream & script) const
 {
+	lyxerr[Debug::GRAPHICS] << "[GraphicsConverter::build_script] ... ";
 	typedef Converters::EdgePath EdgePath;
 
 	string const to_file = ChangeExtension(to_file_base,
@@ -168,12 +184,14 @@ bool GConverter::build_script(string const & from_file,
 
 	if (from_format == to_format) {
 		script << move_file(QuoteName(from_file), QuoteName(to_file));
+		lyxerr[Debug::GRAPHICS] << "ready (from == to)" << endl;
 		return true;
 	}
 
 	EdgePath edgepath = converters.getPath(from_format, to_format);
 
 	if (edgepath.empty()) {
+		lyxerr[Debug::GRAPHICS] << "ready (edgepath.empty())" << endl;
 		return false;
 	}
 
@@ -244,6 +262,7 @@ bool GConverter::build_script(string const & from_file,
 
 	// Move the final outfile to to_file
 	script << move_file("${outfile}", QuoteName(to_file));
+	lyxerr[Debug::GRAPHICS] << "ready!" << endl;
 
 	return true;
 }

@@ -1774,7 +1774,6 @@ void LyXFunc::menuNew(bool fromTemplate)
 			    << disp_fn << "...";
 
 			owner->message(str.str().c_str());
-			//XFlush(fl_get_display());
 			owner->view()->buffer(bufferlist.loadLyXFile(s));
 			ostringstream str2;
 			str2 << _("Document") << ' '

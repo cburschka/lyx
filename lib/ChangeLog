@@ -1,3 +1,10 @@
+2002-06-17 Herbert Voss  <voss@perce.de>
+ 
+ 	* configure.m4: install only those converters which are different
+ 	to convert, because this is taken as the default. SO we can get
+ 	rid of all problems when user do not have installed the right
+ 	converters.
+
 2002-06-16  Adrien Rebollo  <adrien.rebollo@gmx.fr>
 
 	* examples/fr_ExemplesTableaux.lyx: update

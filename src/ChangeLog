@@ -1,3 +1,8 @@
+2002-06-17  Herbert Voss  <voss@lyx.org>
+ 
+ 	* converter.C: (convert) do not post a message, when converting
+ 	fails, let the calling function decide what to do in this case
+ 
 2002-06-18  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxfunc.C: tidy up a little

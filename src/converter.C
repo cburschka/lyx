@@ -580,10 +580,6 @@ bool Converters::convert(Buffer const * buffer,
 
 	EdgePath edgepath = getPath(from_format, to_format);
 	if (edgepath.empty()) {
-		Alert::alert(_("Cannot convert file"),
-			   _("No information for converting from ")
-			   + formats.prettyName(from_format) + _(" to ")
-			   + formats.prettyName(to_format));
 		return false;
 	}
 

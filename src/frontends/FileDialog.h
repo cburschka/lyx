@@ -66,7 +66,7 @@ public:
 	 * path, with the file selection \param mask. The \param mask
 	 * string is of the form :
 	 *
-	 * <regular expression to match> | <description>
+	 * <glob to match> | <description>
 	 *
 	 * for example, "*.ps | PostScript files (*.ps)".
 	 *

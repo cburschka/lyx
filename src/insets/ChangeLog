@@ -1,3 +1,10 @@
+2002-06-15  Herbert Voss  <voss@perce.de>
+ 
+ 	* insetgraphics.C: (prepareFile) fix bug with zipped eps-files
+ 	and take always convert when no userdefined converter was
+ 	found
+ 	(latex) small changes in the lyxerr output
+ 
 2002-06-15  LyX Development team <lyx@rilke>
 
 	* inset*.[Ch] (docbook): Added new argument to take the pernicious

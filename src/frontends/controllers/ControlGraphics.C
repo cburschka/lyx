@@ -44,56 +44,6 @@ using std::pair;
 using std::make_pair;
 using std::vector;
 
-namespace {
-
-// FIXME: currently we need the second '|' to prevent mis-interpretation!
-// All supported graphic formats with their file-extension and the
-// gzip-ext for zipped (e)ps-files.
-// string const grfx_pattern =
-//	"*.(agr|bmp|eps|epsi|fits|gif|jpg|obj|pdf|pbm|pgm|png|"
-//	"ppm|ps|tif|tiff|xbm|xpm|xwd|gz)|";
-vector<string> const grfx_formats()
-{
-	vector<string> native_formats = grfx::GCache::get().loadableFormats();
-	// We can load any format that can be loaded natively together with
-	// those that can be converted to one of these native formats.
-	vector<string> browsable_formats = native_formats;
-
-	grfx::GConverter const & gconverter = grfx::GConverter::get();
-
-	vector<string>::const_iterator to_end = native_formats.end();
-
-	Formats::const_iterator from_it = formats.begin();
-	Formats::const_iterator from_end = formats.end();
-	for (; from_it != from_end; ++from_it) {
-		string const from = from_it->name();
-
-		vector<string>::const_iterator to_it = native_formats.begin();
-		for (; to_it != to_end; ++to_it) {
-			if (gconverter.isReachable(from, *to_it)) {
-				browsable_formats.push_back(from);
-				break;
-			}
-		}
-	}
-
-	browsable_formats.push_back("gz");
-
-	return browsable_formats;
-}
-
-
-string const xforms_pattern()
-{
-	vector<string> const browsable_formats = grfx_formats();
-	string const answer =
-		"*.(" + getStringFromVector(browsable_formats, "|") +")|";
-	return answer;
-}
-
-}
-
-
 ControlGraphics::ControlGraphics(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetGraphics, InsetGraphicsParams>(lv, d)
 {}
@@ -146,7 +96,7 @@ string const ControlGraphics::Browse(string const & in_name)
 	pair<string, string> dir2(_("Documents|#o#O"), string(lyxrc.document_path));
 	// Show the file browser dialog
 	return browseRelFile(&lv_, in_name, lv_.buffer()->filePath(),
-			     title, ::xforms_pattern(), dir1, dir2);
+			     title, "*.*", dir1, dir2);
 }
 
 

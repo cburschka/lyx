@@ -441,8 +441,9 @@ string const findTargetFormat(string const & from)
 			return *it2;
 	}
 
-	// Failed!
-	return string();
+	// Failed! so we have to try to convert it to XPM format
+	// with the standard converter
+	return string("xpm");
 }
 
 } // anon namespace
@@ -451,58 +452,44 @@ string const findTargetFormat(string const & from)
 void GCacheItem::convertToDisplayFormat()
 {
 	setStatus(Converting);
-	string filename = filename_; // Make a local copy in case we unzip it
+	// Make a local copy in case we unzip it
+	string const filename = zippedFile(filename_) ?
+		unzipFile(filename_) : filename_; 
 	string const displayed_filename = MakeDisplayPath(filename_);
+	lyxerr[Debug::GRAPHICS] << "[GrahicsCacheItem::convertToDisplayFormat]\n"
+		<< "\tAttempting to convert image file: " << filename
+		<< "\n\twith displayed filename: " << displayed_filename
+		<< endl;
 
 	// First, check that the file exists!
 	if (!IsFileReadable(filename)) {
 		setStatus(ErrorNoFile);
+		lyxerr[Debug::GRAPHICS] << "\tThe file is not readable" << endl;
 		return;
 	}
 
-// maybe that other zip extensions also be useful, especially the
-// ones that may be declared in texmf/tex/latex/config/graphics.cfg.
-// for example:
-/* -----------snip-------------
-	  {\DeclareGraphicsRule{.pz}{eps}{.bb}{}%
-	   \DeclareGraphicsRule{.eps.Z}{eps}{.eps.bb}{}%
-	   \DeclareGraphicsRule{.ps.Z}{eps}{.ps.bb}{}%
-	   \DeclareGraphicsRule{.ps.gz}{eps}{.ps.bb}{}%
-	   \DeclareGraphicsRule{.eps.gz}{eps}{.eps.bb}{}}}%
-   -----------snip-------------*/
-
-	lyxerr[Debug::GRAPHICS]
-		<< "Attempting to convert image file: " << displayed_filename
-		<< "\nwith recognised extension: " << GetExtension(filename)
-		<< "." << endl;
-
-	zipped_ = zippedFile(filename);
-	if (zipped_) {
-		filename = unzipFile(filename);
-		unzipped_filename_ = filename;
-	}
-
-	string const from = getExtFromContents(filename);
-	string const to   = grfx::findTargetFormat(from);
-
-	lyxerr[Debug::GRAPHICS]
-		<< "The file contains " << from << " format data." << endl;
-
-	if (to.empty()) {
-		setStatus(ErrorConverting);
-		return;
-	}
+	string from = getExtFromContents(filename);
+	// Some old ps-files make problems, so we do not need direct
+	// loading of an ps-file
+	if (from == "ps") {
+		lyxerr[Debug::GRAPHICS] 
+		<< "\n\tThe file contains PostScript format data.\n" 
+		<< "\tchanging it to eps-format to get it converted to xpm\n";
+		from = "eps";
+	} else
+		lyxerr[Debug::GRAPHICS] 
+			<< "\n\tThe file contains " << from << " format data." << endl;
+	string const to = grfx::findTargetFormat(from);
 
 	if (from == to) {
 		// No conversion needed!
-		lyxerr[Debug::GRAPHICS] << "No conversion needed!" << endl;
+		lyxerr[Debug::GRAPHICS] << "\tNo conversion needed (from == to)!" << endl;
 		file_to_load_ = filename;
 		loadImage();
 		return;
 	}
 
-	lyxerr[Debug::GRAPHICS] << "Converting it to " << to << " format." << endl;
-
+	lyxerr[Debug::GRAPHICS] << "\tConverting it to " << to << " format." << endl;
 	// Take only the filename part of the file, without path or extension.
 	string const temp = ChangeExtension(OnlyFilename(filename), string());
 

@@ -1,3 +1,14 @@
+2002-06-17  Herbert Voss  <voss@lyx.org>
+
+	* GraphicsCachItem.C: (findTargetFormat)return xpm-format as a 
+	default when nothing different was found
+	(convertToDisplayFormat): handle zipped files in the right way and 
+	choose always convert as a default converter when no other 
+	userdefined was found
+	
+	* GraphicsConverter.C: add more lyxerr comments and choose
+	convert when no other userdefined converter was found
+		
 2002-06-10  Herbert Voss  <voss@lyx.org>
 
 	* GraphicsImageXPM.C (convertTo7chars): get another special color
