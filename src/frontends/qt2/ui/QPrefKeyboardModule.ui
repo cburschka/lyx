@@ -1,0 +1,163 @@
+<!DOCTYPE UI><UI>
+<class>QPrefKeyboardModuleBase</class>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>QPrefKeyboardModuleBase</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>358</width>
+            <height>253</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Keyboard</string>
+    </property>
+    <grid>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <spacer row="3"  column="1" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer4</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget row="1"  column="1" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>firstKeymapED</cstring>
+            </property>
+        </widget>
+        <widget row="2"  column="1" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>secondKeymapED</cstring>
+            </property>
+        </widget>
+        <widget row="2"  column="2" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>secondKeymapPB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Bro&amp;wse...</string>
+            </property>
+        </widget>
+        <widget row="2"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>secondKeymapLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>S&amp;econd:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>secondKeymapED</cstring>
+            </property>
+        </widget>
+        <spacer row="5"  column="1" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer3</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget row="1"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>firstKeymapLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;First:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>firstKeymapED</cstring>
+            </property>
+        </widget>
+        <widget row="1"  column="2" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>firstKeymapPB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Br&amp;owse...</string>
+            </property>
+        </widget>
+        <widget row="4"  column="0"  rowspan="1"  colspan="3" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>deadKeysCB_2</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Ignore dead ke&amp;ys</string>
+            </property>
+        </widget>
+        <widget row="0"  column="0"  rowspan="1"  colspan="3" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>keymapCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Use &amp;keyboard map</string>
+            </property>
+        </widget>
+    </grid>
+</widget>
+</UI>

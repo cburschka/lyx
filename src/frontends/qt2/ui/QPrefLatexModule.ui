@@ -1,0 +1,186 @@
+<!DOCTYPE UI><UI>
+<class>QPrefLatexModuleBase</class>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>QPrefLatexModuleBase</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>359</width>
+            <height>237</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>LaTeX settings</string>
+    </property>
+    <grid>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <widget row="1"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>latexPaperSizeLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Default paper si&amp;ze:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>latexPaperSizeCO</cstring>
+            </property>
+        </widget>
+        <spacer row="3"  column="1" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer2</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget row="0"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>latexEncodingLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Te&amp;X encoding:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>latexEncodingED</cstring>
+            </property>
+        </widget>
+        <widget row="4"  column="0"  rowspan="1"  colspan="2" >
+            <class>QGroupBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>GroupBox3</cstring>
+            </property>
+            <property stdset="1">
+                <name>title</name>
+                <string>External applications</string>
+            </property>
+            <grid>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>11</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget row="0"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>latexChecktexLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Chec&amp;kTeX:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>latexChecktexED</cstring>
+                    </property>
+                </widget>
+                <widget row="1"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>latexDviPaperLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>DVI paper size:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>latexDviPaperED</cstring>
+                    </property>
+                </widget>
+                <widget row="1"  column="1" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>latexDviPaperED</cstring>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Optional paper size flag (-paper) for some DVI viewers</string>
+                    </property>
+                </widget>
+                <widget row="0"  column="1" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>latexChecktexED</cstring>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>CheckTeX start options and flags</string>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+        <widget row="2"  column="1" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>latexAutoresetCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Auto&amp;reset class options</string>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>Set class options to default on class change</string>
+            </property>
+        </widget>
+        <widget row="1"  column="1" >
+            <class>QComboBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>latexPaperSizeCO</cstring>
+            </property>
+        </widget>
+        <widget row="0"  column="1" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>latexEncodingED</cstring>
+            </property>
+        </widget>
+    </grid>
+</widget>
+</UI>

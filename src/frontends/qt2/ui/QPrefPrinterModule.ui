@@ -1,0 +1,447 @@
+<!DOCTYPE UI><UI>
+<class>QPrefPrinterModuleBase</class>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>QPrefPrinterModuleBase</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>328</width>
+            <height>307</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Printer settings</string>
+    </property>
+    <grid>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <widget row="0"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>printerNameLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Name:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>printerNameED</cstring>
+            </property>
+        </widget>
+        <widget row="0"  column="1" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>printerNameED</cstring>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>Name of the default printer</string>
+            </property>
+        </widget>
+        <widget row="0"  column="2" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>printerAdaptCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Adapt outp&amp;ut</string>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>Use printer name explicitely</string>
+            </property>
+        </widget>
+        <widget row="1"  column="0"  rowspan="1"  colspan="3" >
+            <class>QGroupBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>GroupBox1</cstring>
+            </property>
+            <property stdset="1">
+                <name>title</name>
+                <string>Commands and flags</string>
+            </property>
+            <grid>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>11</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget row="1"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerPageRangeLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Pa&amp;ge range:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>printerPageRangeED</cstring>
+                    </property>
+                </widget>
+                <widget row="1"  column="3" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerOddED</cstring>
+                    </property>
+                </widget>
+                <widget row="0"  column="3" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerEvenED</cstring>
+                    </property>
+                </widget>
+                <widget row="0"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerCommandLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Co&amp;mmand:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>printerCommandED</cstring>
+                    </property>
+                </widget>
+                <widget row="6"  column="3" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerSpoolPrefixED</cstring>
+                    </property>
+                </widget>
+                <widget row="3"  column="3" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerLandscapeED</cstring>
+                    </property>
+                </widget>
+                <widget row="4"  column="3" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerToFileED</cstring>
+                    </property>
+                </widget>
+                <widget row="2"  column="3" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerCollatedED</cstring>
+                    </property>
+                </widget>
+                <widget row="5"  column="3" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerExtraED</cstring>
+                    </property>
+                </widget>
+                <widget row="2"  column="2" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerCollatedLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Co&amp;llated:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>printerCollatedED</cstring>
+                    </property>
+                </widget>
+                <widget row="2"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerCopiesLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Co&amp;pies:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>printerCopiesED</cstring>
+                    </property>
+                </widget>
+                <widget row="3"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerReverseLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Re&amp;verse:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>printerReverseED</cstring>
+                    </property>
+                </widget>
+                <widget row="4"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerToPrinterLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>To p&amp;rinter:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>printerToPrinterED</cstring>
+                    </property>
+                </widget>
+                <widget row="5"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerExtensionLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>File ex&amp;tension:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>printerExtensionED</cstring>
+                    </property>
+                </widget>
+                <widget row="3"  column="2" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerLandscapeLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Lan&amp;dscape:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>printerLandscapeED</cstring>
+                    </property>
+                </widget>
+                <widget row="7"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerPaperTypeLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Paper t&amp;ype:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>printerPaperTypeED</cstring>
+                    </property>
+                </widget>
+                <widget row="0"  column="2" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerEvenLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Even pages:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>printerEvenED</cstring>
+                    </property>
+                </widget>
+                <widget row="1"  column="2" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerOddLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Odd pages:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>printerOddED</cstring>
+                    </property>
+                </widget>
+                <widget row="4"  column="2" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerToFileLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>To &amp;file:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>printerToFileED</cstring>
+                    </property>
+                </widget>
+                <widget row="1"  column="1" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerPageRangeED</cstring>
+                    </property>
+                </widget>
+                <widget row="0"  column="1" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerCommandED</cstring>
+                    </property>
+                </widget>
+                <widget row="7"  column="1" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerPaperTypeED</cstring>
+                    </property>
+                </widget>
+                <widget row="3"  column="1" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerReverseED</cstring>
+                    </property>
+                </widget>
+                <widget row="6"  column="1" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerSpoolCommandED</cstring>
+                    </property>
+                </widget>
+                <widget row="4"  column="1" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerToPrinterED</cstring>
+                    </property>
+                </widget>
+                <widget row="2"  column="1" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerCopiesED</cstring>
+                    </property>
+                </widget>
+                <widget row="5"  column="1" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerExtensionED</cstring>
+                    </property>
+                </widget>
+                <widget row="6"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerSpoolCommandLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Spool &amp;command:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>printerSpoolCommandED</cstring>
+                    </property>
+                </widget>
+                <widget row="7"  column="3" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerPaperSizeED</cstring>
+                    </property>
+                </widget>
+                <widget row="7"  column="2" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerPaperSizeLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Paper si&amp;ze:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>printerPaperSizeED</cstring>
+                    </property>
+                </widget>
+                <widget row="6"  column="2" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerSpoolPrefixLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Spool pref&amp;ix:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>printerSpoolPrefixED</cstring>
+                    </property>
+                </widget>
+                <widget row="5"  column="2" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>printerExtraLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>E&amp;xtra options:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>printerExtraED</cstring>
+                    </property>
+                </widget>
+            </grid>
+        </widget>
+    </grid>
+</widget>
+</UI>

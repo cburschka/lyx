@@ -1,0 +1,200 @@
+<!DOCTYPE UI><UI>
+<class>QPrefUIModule</class>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>QPrefUIModule</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>328</width>
+            <height>191</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Screen Fonts</string>
+    </property>
+    <grid>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <widget row="2"  column="0"  rowspan="1"  colspan="3" >
+            <class>QGroupBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>GroupBox2_2</cstring>
+            </property>
+            <property stdset="1">
+                <name>title</name>
+                <string>Last files</string>
+            </property>
+            <grid>
+                <property stdset="1">
+                    <name>margin</name>
+                    <number>11</number>
+                </property>
+                <property stdset="1">
+                    <name>spacing</name>
+                    <number>6</number>
+                </property>
+                <widget row="2"  column="1"  rowspan="1"  colspan="2" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>lastfilePathED</cstring>
+                    </property>
+                </widget>
+                <widget row="2"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>lastfilePathLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Path:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>lastfilePathED</cstring>
+                    </property>
+                </widget>
+                <widget row="1"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>lastfilesLA</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Number:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>lastfilesSB</cstring>
+                    </property>
+                </widget>
+                <widget row="1"  column="1" >
+                    <class>QSpinBox</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>lastfilesSB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>maxValue</name>
+                        <number>20</number>
+                    </property>
+                </widget>
+                <widget row="0"  column="0"  rowspan="1"  colspan="3" >
+                    <class>QCheckBox</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>checkLastfilesCB</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>C&amp;heck last files</string>
+                    </property>
+                </widget>
+                <spacer row="1"  column="2" >
+                    <property>
+                        <name>name</name>
+                        <cstring>Spacer9</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>orientation</name>
+                        <enum>Horizontal</enum>
+                    </property>
+                    <property stdset="1">
+                        <name>sizeType</name>
+                        <enum>Expanding</enum>
+                    </property>
+                    <property>
+                        <name>sizeHint</name>
+                        <size>
+                            <width>20</width>
+                            <height>20</height>
+                        </size>
+                    </property>
+                </spacer>
+            </grid>
+        </widget>
+        <widget row="0"  column="1" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>uiFileED</cstring>
+            </property>
+        </widget>
+        <widget row="0"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>uiFileLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;User interface file:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>uiFileED</cstring>
+            </property>
+        </widget>
+        <widget row="0"  column="2" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>uiFilePB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Bro&amp;wse...</string>
+            </property>
+        </widget>
+        <widget row="1"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>bindFileLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Bind file:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>bindFileED</cstring>
+            </property>
+        </widget>
+        <widget row="1"  column="1" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>bindFileED</cstring>
+            </property>
+        </widget>
+        <widget row="1"  column="2" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>bindFilePB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>B&amp;rowse...</string>
+            </property>
+        </widget>
+    </grid>
+</widget>
+</UI>

@@ -1,0 +1,181 @@
+<!DOCTYPE UI><UI>
+<class>QPrefLNFMiscBase</class>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>QPrefLNFMiscBase</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>248</width>
+            <height>211</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Form2</string>
+    </property>
+    <grid>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <spacer row="0"  column="2"  rowspan="2"  colspan="2" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer1</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget row="5"  column="1"  rowspan="1"  colspan="2" >
+            <class>QSpinBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>wheelMouseSB</cstring>
+            </property>
+            <property stdset="1">
+                <name>maxValue</name>
+                <number>250</number>
+            </property>
+        </widget>
+        <widget row="5"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>wheelMouseLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>W&amp;heel mouse jump:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>wheelMouseSB</cstring>
+            </property>
+        </widget>
+        <widget row="0"  column="0"  rowspan="1"  colspan="2" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>autoRegionDeleteCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>A&amp;uto region delete</string>
+            </property>
+        </widget>
+        <widget row="1"  column="0"  rowspan="1"  colspan="2" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>cursorFollowsCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Cursor follo&amp;ws scrollbar</string>
+            </property>
+        </widget>
+        <widget row="2"  column="0"  rowspan="1"  colspan="4" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>dialogsIconifyCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Dia&amp;logs iconify with main window</string>
+            </property>
+        </widget>
+        <widget row="4"  column="1"  rowspan="1"  colspan="2" >
+            <class>QSpinBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>autoSaveSB</cstring>
+            </property>
+            <property stdset="1">
+                <name>maxValue</name>
+                <number>1200</number>
+            </property>
+        </widget>
+        <widget row="4"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>autoSaveLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Autosa&amp;ve Interval:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>autoSaveSB</cstring>
+            </property>
+        </widget>
+        <spacer row="4"  column="3"  rowspan="2"  colspan="1" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer2</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <spacer row="3"  column="1" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer3</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+    </grid>
+</widget>
+</UI>

@@ -1,0 +1,214 @@
+<!DOCTYPE UI><UI>
+<class>QPrefFileformatsModuleBase</class>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>QPrefFileformatsModuleBase</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>349</width>
+            <height>261</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>File Formats</string>
+    </property>
+    <grid>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <widget row="5"  column="1" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>viewerLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Viewer:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>viewerED</cstring>
+            </property>
+        </widget>
+        <widget row="3"  column="2"  rowspan="1"  colspan="2" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>shortcutED</cstring>
+            </property>
+        </widget>
+        <widget row="6"  column="3" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>formatDeletePB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>D&amp;elete</string>
+            </property>
+        </widget>
+        <widget row="4"  column="2"  rowspan="1"  colspan="2" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>extensionED</cstring>
+            </property>
+        </widget>
+        <widget row="2"  column="2"  rowspan="1"  colspan="2" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>guiNameED</cstring>
+            </property>
+        </widget>
+        <widget row="3"  column="1" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>shortcutLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>S&amp;hortcut:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>shortcutED</cstring>
+            </property>
+        </widget>
+        <widget row="5"  column="2"  rowspan="1"  colspan="2" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>viewerED</cstring>
+            </property>
+        </widget>
+        <widget row="4"  column="1" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>extensionLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>E&amp;xtension:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>extensionED</cstring>
+            </property>
+        </widget>
+        <widget row="1"  column="1" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>formatLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>F&amp;ormat:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>formatED</cstring>
+            </property>
+        </widget>
+        <widget row="1"  column="0"  rowspan="7"  colspan="1" >
+            <class>QListBox</class>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>New Item</string>
+                </property>
+            </item>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>formatsLB</cstring>
+            </property>
+        </widget>
+        <widget row="6"  column="1"  rowspan="1"  colspan="2" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>formatAddPB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>A&amp;dd</string>
+            </property>
+        </widget>
+        <widget row="1"  column="2"  rowspan="1"  colspan="2" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>formatED</cstring>
+            </property>
+        </widget>
+        <widget row="2"  column="1" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>guiNameLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;GUI name:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>guiNameED</cstring>
+            </property>
+        </widget>
+        <spacer row="7"  column="2"  rowspan="1"  colspan="2" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer26</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget row="0"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>formatsLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Known formats:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>formatsLB</cstring>
+            </property>
+        </widget>
+    </grid>
+</widget>
+</UI>

@@ -1,0 +1,250 @@
+<!DOCTYPE UI><UI>
+<class>QPrefSpellcheckerModuleBase</class>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>QPrefSpellcheckerModuleBase</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>349</width>
+            <height>213</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Spell checker</string>
+    </property>
+    <grid>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <spacer row="4"  column="1" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer17</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget row="0"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>spellCommandLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Spell chec&amp;ker program:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>spellCommandCO</cstring>
+            </property>
+        </widget>
+        <spacer row="0"  column="2" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer13</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <spacer row="1"  column="2" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer12</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget row="1"  column="1" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>altLanguageED</cstring>
+            </property>
+        </widget>
+        <widget row="1"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>altLanguageLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Al&amp;ternative language:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>altLanguageED</cstring>
+            </property>
+        </widget>
+        <widget row="6"  column="0"  rowspan="1"  colspan="3" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>inputEncodingCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Use input encod&amp;ing</string>
+            </property>
+        </widget>
+        <spacer row="2"  column="2" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer11</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget row="5"  column="0"  rowspan="1"  colspan="3" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>compoundWordCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Accept compound &amp;words</string>
+            </property>
+        </widget>
+        <widget row="0"  column="1" >
+            <class>QComboBox</class>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>ispell</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>aspell</string>
+                </property>
+            </item>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>spellCommandCO</cstring>
+            </property>
+        </widget>
+        <widget row="2"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>escapeCharactersLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Escape Cha&amp;racters:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>escapeCharactersED</cstring>
+            </property>
+        </widget>
+        <widget row="2"  column="1" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>escapeCharactersED</cstring>
+            </property>
+        </widget>
+        <widget row="3"  column="1" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>persDictionaryED</cstring>
+            </property>
+        </widget>
+        <widget row="3"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>persDictionaryLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Personal &amp;dictionary:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>persDictionaryED</cstring>
+            </property>
+        </widget>
+        <widget row="3"  column="2" >
+            <class>QPushButton</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>persDictionaryPB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Br&amp;owse...</string>
+            </property>
+        </widget>
+    </grid>
+</widget>
+</UI>

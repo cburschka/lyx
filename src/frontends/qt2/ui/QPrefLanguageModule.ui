@@ -1,0 +1,250 @@
+<!DOCTYPE UI><UI>
+<class>QLanguageModuleBase</class>
+<widget>
+    <class>QDialog</class>
+    <property stdset="1">
+        <name>name</name>
+        <cstring>QLanguageModuleBase</cstring>
+    </property>
+    <property stdset="1">
+        <name>geometry</name>
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>322</width>
+            <height>258</height>
+        </rect>
+    </property>
+    <property stdset="1">
+        <name>caption</name>
+        <string>Language settings</string>
+    </property>
+    <grid>
+        <property stdset="1">
+            <name>margin</name>
+            <number>11</number>
+        </property>
+        <property stdset="1">
+            <name>spacing</name>
+            <number>6</number>
+        </property>
+        <widget row="2"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>startCommandLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Command s&amp;tart:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>startCommandED</cstring>
+            </property>
+        </widget>
+        <widget row="3"  column="1" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>endCommandED</cstring>
+            </property>
+        </widget>
+        <widget row="2"  column="1" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>startCommandED</cstring>
+            </property>
+        </widget>
+        <widget row="5"  column="0" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>useBabelCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Use &amp;babel</string>
+            </property>
+        </widget>
+        <widget row="6"  column="0" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>globalCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Global</string>
+            </property>
+        </widget>
+        <widget row="8"  column="0" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>autoEndCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Auto &amp;end</string>
+            </property>
+        </widget>
+        <widget row="5"  column="1" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>markForeignCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Mark &amp;foreign languages</string>
+            </property>
+        </widget>
+        <widget row="6"  column="1" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>rtlCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;RtL support</string>
+            </property>
+        </widget>
+        <widget row="1"  column="1" >
+            <class>QLineEdit</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>languagePackageED</cstring>
+            </property>
+        </widget>
+        <widget row="0"  column="1" >
+            <class>QComboBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>defaultLanguageCO</cstring>
+            </property>
+        </widget>
+        <widget row="0"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>defaultLanguageLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>&amp;Default language:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>defaultLanguageCO</cstring>
+            </property>
+        </widget>
+        <widget row="3"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>endCommandLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Command e&amp;nd:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>endCommandED</cstring>
+            </property>
+        </widget>
+        <widget row="7"  column="0" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>autoBeginCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Auto &amp;begin</string>
+            </property>
+        </widget>
+        <widget row="1"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>languagePackageLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Language pac&amp;kage:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>languagePackageED</cstring>
+            </property>
+        </widget>
+        <spacer row="7"  column="1"  rowspan="2"  colspan="1" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer1</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Horizontal</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <spacer row="4"  column="1" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer2</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <spacer row="4"  column="0" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer3</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+    </grid>
+</widget>
+</UI>
