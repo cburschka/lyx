@@ -173,7 +173,10 @@ bool Formats::View(Buffer const * buffer, string const & filename,
 	if (format_name == "dvi" &&
 	    !lyxrc.view_dvi_paper_option.empty()) {
 		command += " " + lyxrc.view_dvi_paper_option;
-		command += " " + converters.dvi_papersize(buffer);
+		string paper_size = converters.papersize(buffer);
+		if (paper_size == "letter")
+			paper_size = "us";
+		command += " " + paper_size;
 		if (buffer->params.orientation 
 		    == BufferParams::ORIENTATION_LANDSCAPE)
 			command += 'r';
@@ -606,6 +609,9 @@ bool Converters::Convert(Buffer const * buffer,
 			if (conv.from == "dvi" && conv.to == "ps")
 				command = add_options(command,
 						      dvips_options(buffer));
+			else if (conv.from == "dvi" && prefixIs(conv.to, "pdf"))
+				command = add_options(command,
+						      dvipdfm_options(buffer));
 
 			lyxerr << "Calling " << command << endl;
 			if (buffer)
@@ -872,7 +878,7 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command)
 }
 
 
-string const Converters::dvi_papersize(Buffer const * buffer)
+string const Converters::papersize(Buffer const * buffer)
 {
 	char real_papersize = buffer->params.papersize;
 	if (real_papersize == BufferParams::PAPER_DEFAULT)
@@ -893,7 +899,7 @@ string const Converters::dvi_papersize(Buffer const * buffer)
 		return "legal";
 	case BufferParams::PAPER_USLETTER:
 	default:
-		return "us";
+		return "letter";
 	}
 }
 
@@ -914,9 +920,7 @@ string const Converters::dvips_options(Buffer const * buffer)
 		result += ' ' + buffer->params.paperwidth;
 		result += ',' + buffer->params.paperheight;
 	} else {
-		string paper_option = dvi_papersize(buffer);
-		if (paper_option == "us")
-			paper_option = "letter";
+		string paper_option = papersize(buffer);
 		if (paper_option != "letter" ||
 		    buffer->params.orientation != BufferParams::ORIENTATION_LANDSCAPE) {
 			// dvips won't accept -t letter -t landscape.  In all other
@@ -925,10 +929,31 @@ string const Converters::dvips_options(Buffer const * buffer)
 			result += ' ' + paper_option;
 		}
 	}
-	if (buffer->params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
+	if (buffer->params.orientation == BufferParams::ORIENTATION_LANDSCAPE &&
+	    buffer->params.papersize2 != BufferParams::VM_PAPER_CUSTOM)
 		result += ' ' + lyxrc.print_landscape_flag;
 	return result;
 }
+
+
+string const Converters::dvipdfm_options(Buffer const * buffer)
+{
+	string result;
+	if (!buffer)
+		return result;
+
+	if (buffer->params.papersize2 != BufferParams::VM_PAPER_CUSTOM) {
+		string paper_size = papersize(buffer);
+		if (paper_size != "b5" && paper_size != "foolscap")
+			result = "-p "+ paper_size;
+
+		if (buffer->params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
+			result += " -l";
+	}
+
+	return result;
+}
+
 
 vector<Converters::Vertex> Converters::vertices;
 

@@ -215,9 +215,11 @@ public:
 		     string const & from_file, string const & to_file_base,
 		     string const & from_format, string const & to_format);
 	///
-	string const dvi_papersize(Buffer const * buffer);
+	string const papersize(Buffer const * buffer);
 	///
 	string const dvips_options(Buffer const * buffer);
+	///
+	string const dvipdfm_options(Buffer const * buffer);
 	///
 	void Update(Formats const & formats);
 	///
