@@ -25,10 +25,6 @@ class BufferView;
 
 struct Row;
 
-///
-typedef unsigned short Dimension;
-
-
 /** The class LyXScreen is used for the main Textbody.
     Concretely, the screen is held in a pixmap.  This pixmap is kept up to
     date and used to optimize drawing on the screen.

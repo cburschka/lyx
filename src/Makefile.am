@@ -67,8 +67,6 @@ lyx_SOURCES = \
 	ParagraphParameters.h \
 	ParameterStruct.h \
 	PrinterParams.h \
-	Sectioning.h \
-	Sectioning.C \
 	ShareContainer.h \
 	Spacing.C \
 	Spacing.h \

@@ -162,15 +162,13 @@ public:
 	*/
 	void latexParagraphs(std::ostream & os, Paragraph * par,
 			     Paragraph * endpar, TexRow & texrow) const;
-
-        ///
+	///
 	void simpleDocBookOnePar(std::ostream &,
 				 Paragraph * par, int & desc_on,
 				 Paragraph::depth_type depth) const ;
-        ///
+	///
 	void simpleLinuxDocOnePar(std::ostream & os, Paragraph * par, 
 				  Paragraph::depth_type depth);
-
 	///
 	void makeLinuxDocFile(string const & filename,
 			      bool nice, bool only_body = false);
@@ -178,14 +176,13 @@ public:
 	void makeDocBookFile(string const & filename,
 			     bool nice, bool only_body = false);
 	/// Open SGML/XML tag.
-        void sgmlOpenTag(std::ostream & os, Paragraph::depth_type depth,
-			 string const & latexname) const;
-        /// Closes SGML/XML tag.
-        void sgmlCloseTag(std::ostream & os, Paragraph::depth_type depth,
-			  string const & latexname) const;
+	void sgmlOpenTag(std::ostream & os, Paragraph::depth_type depth,
+		string const & latexname) const;
+	/// Closes SGML/XML tag.
+	void sgmlCloseTag(std::ostream & os, Paragraph::depth_type depth,
+		string const & latexname) const;
 	///
-	void sgmlError(Paragraph * par, int pos,
-		       string const & message) const;
+	void sgmlError(Paragraph * par, int pos, string const & message) const;
 
 	/// returns the main language for the buffer (document)
 	Language const * getLanguage() const;
@@ -296,10 +293,10 @@ public:
 	bool isMultiLingual();
 
 	/// Does this mean that this is buffer local?
-        UndoStack undostack;
+	UndoStack undostack;
 	
 	/// Does this mean that this is buffer local? 
-        UndoStack redostack;
+	UndoStack redostack;
 	
 	///
 	BufferParams params;
@@ -561,7 +558,8 @@ void Buffer::setParentName(string const & name)
 
 ///
 inline
-bool operator==(Buffer::TocItem const & a, Buffer::TocItem const & b) {
+bool operator==(Buffer::TocItem const & a, Buffer::TocItem const & b)
+{
 	return a.par == b.par && a.str == b.str;
 	// No need to compare depth.
 }
@@ -569,7 +567,8 @@ bool operator==(Buffer::TocItem const & a, Buffer::TocItem const & b) {
 
 ///
 inline
-bool operator!=(Buffer::TocItem const & a, Buffer::TocItem const & b) {
+bool operator!=(Buffer::TocItem const & a, Buffer::TocItem const & b)
+{
 	return !(a == b);
 	// No need to compare depth.
 }
@@ -578,7 +577,8 @@ bool operator!=(Buffer::TocItem const & a, Buffer::TocItem const & b) {
 ///
 inline
 bool operator==(Buffer::inset_iterator const & iter1,
-		Buffer::inset_iterator const & iter2) {
+		Buffer::inset_iterator const & iter2)
+{
 	return iter1.par == iter2.par
 		&& (iter1.par == 0 || iter1.it == iter2.it);
 }
@@ -587,7 +587,8 @@ bool operator==(Buffer::inset_iterator const & iter1,
 ///
 inline
 bool operator!=(Buffer::inset_iterator const & iter1,
-		Buffer::inset_iterator const & iter2) {
+		Buffer::inset_iterator const & iter2)
+{
 	return !(iter1 == iter2);
 }
 

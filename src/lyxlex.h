@@ -21,7 +21,7 @@ struct keyword_item {
 	///
 	char const * tag;
 	///
-	short code;
+	int code;
 };
 
 /** Generalized simple lexical analizer.

@@ -288,6 +288,7 @@ void InsetFormulaBase::insetButtonPress(BufferView * bv,
 				mathcursor->setPos(x + xo_, y + yo_);
 			}
 			break;
+/*
 		case 2:
 			lyxerr << "insetButtonPress: 2\n";
 			// insert stuff
@@ -302,6 +303,7 @@ void InsetFormulaBase::insetButtonPress(BufferView * bv,
 				mathcursor->insert(ar);
 			}	
 			break;
+*/
 	}
 	bv->updateInset(this, false);
 }

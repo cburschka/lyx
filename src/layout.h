@@ -39,8 +39,8 @@ enum layout_default {
 
 /// The different output types
 enum OutputType {
-        ///
-        LATEX = 1,
+	///
+	LATEX = 1,
 	///
 	LINUXDOC,
 	///
@@ -48,6 +48,7 @@ enum OutputType {
 	///
 	LITERATE
 };
+
 
 /// The different margin types
 enum LYX_MARGIN_TYPE {
@@ -79,7 +80,7 @@ enum LyXAlignment {
 	///
 	LYX_ALIGN_LAYOUT = 16,
 	///
-        LYX_ALIGN_SPECIAL = 32
+	LYX_ALIGN_SPECIAL = 32
 };
 
 ///
@@ -87,6 +88,7 @@ inline
 void operator|=(LyXAlignment & la1, LyXAlignment la2) {
 	la1 = static_cast<LyXAlignment>(la1 | la2);
 }
+
 
 /// The different LaTeX-Types
 enum LYX_LATEX_TYPES {
@@ -102,6 +104,7 @@ enum LYX_LATEX_TYPES {
 	LATEX_LIST_ENVIRONMENT
 };
 
+
 /// The different label types
 enum LYX_LABEL_TYPES {
 	///
@@ -109,7 +112,7 @@ enum LYX_LABEL_TYPES {
 	///
 	LABEL_MANUAL,
 	///
-        LABEL_BIBLIO,
+	LABEL_BIBLIO,
 	///
 	LABEL_TOP_ENVIRONMENT,
 	///
@@ -141,6 +144,7 @@ enum LYX_LABEL_TYPES {
 	///
 	LABEL_COUNTER_ENUMIV
 };
+
 
 ///
 enum LYX_END_LABEL_TYPES {
@@ -367,9 +371,9 @@ private:
 	string labelstring_appendix_;
 
 	/// LaTeX parameter for environment
-        string latexparam_;
+	string latexparam_;
 
-        /// Macro definitions needed for this layout
+	/// Macro definitions needed for this layout
 	string preamble_;
 };
 
@@ -461,8 +465,8 @@ public:
 	///
 	int tocdepth() const { return tocdepth_; }
 
-        ///
-        OutputType outputType() const { return outputType_; }
+	///
+	OutputType outputType() const { return outputType_; }
 
 	///
 	LyXFont const & defaultfont() const { return defaultfont_; }
@@ -492,9 +496,9 @@ private:
 	///
 	string description_;
 	/// Specific class options
-        string opt_fontsize_;
+	string opt_fontsize_;
 	///
-        string opt_pagestyle_;
+	string opt_pagestyle_;
 	///
 	string options_;
 	///
@@ -511,8 +515,8 @@ private:
 	int secnumdepth_;
 	///
 	int tocdepth_;
-        ///
-        OutputType outputType_;
+	///
+	OutputType outputType_;
 	/** Base font. The paragraph and layout fonts are resolved against
 	    this font. This has to be fully instantiated. Attributes
 	    LyXFont::INHERIT, LyXFont::IGNORE, and LyXFont::TOGGLE are
@@ -524,7 +528,7 @@ private:
 
 	/// Text that dictates how wide the right margin is on the screen
 	string rightmargin_;
-        ///
+	///
 	int maxcounter_; // add approp. signedness
 
 	///
