@@ -13,7 +13,7 @@
 #endif
 
 ///
-struct LyXLex::Pimpl : public noncopyable {
+struct LyXLex::Pimpl : public boost::noncopyable {
 	///
 	enum {
 		///

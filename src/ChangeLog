@@ -1,5 +1,7 @@
 2001-03-16  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
+	* lyxlex_pimpl.h: noncopyable is in namespace boost.
+
 	* text2.C: ditto
 
 	* text.C: ditto
