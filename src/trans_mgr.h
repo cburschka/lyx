@@ -57,7 +57,7 @@ public:
 
 
 /// Init State
-class TransInitState :	virtual public TransFSMData, public TransState {
+class TransInitState :virtual public TransFSMData, public TransState {
 public:
 	///
 	TransInitState();

@@ -152,8 +152,6 @@ public:
 	///
 	void insertInset(InsetOld * inset);
 
-	/// Completes the insertion with a rebreak
-	void partialRebreak();
 	/// a full rebreak of the whole text
 	void fullRebreak();
 	/// compute text metrics
@@ -238,6 +236,8 @@ public:
 	WordLangTuple const selectNextWordToSpellcheck(float & value);
 	///
 	void selectSelectedWord();
+	/// re-computes the cached coordinates in the cursor
+	void redoCursor();
 	/// returns true if par was empty and was removed
 	bool setCursor(ParagraphList::iterator pit,
 		       lyx::pos_type pos,
@@ -403,12 +403,6 @@ private:
 	void insertParagraph(ParagraphList::iterator pit,
 			     RowList::iterator rowit);
 
-	/** appends  the implizit specified paragraph behind the specified row,
-	 * start at the implizit given position */
-	void appendParagraph(RowList::iterator rowit);
-
-	///
-	void breakAgain(RowList::iterator rit);
 	/// Calculate and set the height of the row
 	void setHeightOfRow(RowList::iterator rit);
 
@@ -424,8 +418,6 @@ public:
 	/** Updates all counters starting BEHIND the row. Changed paragraphs
 	 * with a dynamic left margin will be rebroken. */
 	void updateCounters();
-	///
-	void update();
 	/**
 	 * Returns an inset if inset was hit, or 0 if not.
 	 * If hit, the coordinates are changed relative to the inset.

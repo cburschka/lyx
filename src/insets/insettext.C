@@ -42,6 +42,7 @@
 #include "rowpainter.h"
 #include "insetnewline.h"
 #include "metricsinfo.h"
+#include "textcursor.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
@@ -78,50 +79,6 @@ using namespace bv_funcs;
 
 using lyx::pos_type;
 using lyx::textclass_type;
-
-
-// we should get rid of these (Andre')
-
-void InsetText::saveLyXTextState() const
-{
-	// check if my paragraphs are still valid
-	ParagraphList::iterator it = const_cast<ParagraphList&>(paragraphs).begin();
-	ParagraphList::iterator end = const_cast<ParagraphList&>(paragraphs).end();
-	for (; it != end; ++it)
-		if (it == text_.cursor.par())
-			break;
-
-	if (it != end && text_.cursor.pos() <= it->size())
-		sstate = text_; // slicing intended
-	else
-		sstate.cursor.par(end);
-}
-
-
-void InsetText::restoreLyXTextState() const
-{
-	if (sstate.cursor.par() == const_cast<ParagraphList&>(paragraphs).end())
-		return;
-
-	text_.selection.set(true);
-	// at this point just to avoid the DEPM when setting the cursor
-	text_.selection.mark(sstate.selection.mark());
-	if (sstate.selection.set()) {
-		text_.setCursor(sstate.selection.start.par(),
-			sstate.selection.start.pos(),
-			true, sstate.selection.start.boundary());
-		text_.selection.cursor = text_.cursor;
-		text_.setCursor(sstate.selection.end.par(), sstate.selection.end.pos(),
-			true, sstate.selection.end.boundary());
-		text_.setSelection();
-		text_.setCursor(sstate.cursor.par(), sstate.cursor.pos());
-	} else {
-		text_.setCursor(sstate.cursor.par(), sstate.cursor.pos(),
-			true, sstate.cursor.boundary());
-		text_.selection.cursor = text_.cursor;
-		text_.selection.set(false);
-	}
-}
 
 
 InsetText::InsetText(BufferParams const & bp)
@@ -162,8 +119,6 @@ void InsetText::init(InsetText const * ins)
 		for (; pit != end; ++pit)
 			pit->setInsetOwner(this);
 
-		reinitLyXText();
-
 		autoBreakRows = ins->autoBreakRows;
 		drawFrame_ = ins->drawFrame_;
 		frame_color = ins->frame_color;
@@ -182,7 +137,6 @@ void InsetText::init(InsetText const * ins)
 	drawTextYOffset = 0;
 	locked = false;
 	old_par = paragraphs.end();
-	sstate.cursor.par(paragraphs.end());
 	in_insetAllowed = false;
 }
 
@@ -192,9 +146,8 @@ void InsetText::clear(bool just_mark_erased)
 	if (just_mark_erased) {
 		ParagraphList::iterator it = paragraphs.begin();
 		ParagraphList::iterator end = paragraphs.end();
-		for (; it != end; ++it) {
+		for (; it != end; ++it) 
 			it->markErased();
-		}
 		return;
 	}
 
@@ -205,8 +158,6 @@ void InsetText::clear(bool just_mark_erased)
 	paragraphs.push_back(Paragraph());
 	paragraphs.begin()->setInsetOwner(this);
 	paragraphs.begin()->layout(old_layout);
-
-	reinitLyXText();
 }
 
 
@@ -385,7 +336,6 @@ void InsetText::updateLocal(BufferView * bv, bool /*mark_dirty*/)
 	if (!autoBreakRows && paragraphs.size() > 1)
 		collapseParagraphs(bv);
 
-	text_.partialRebreak();
 	if (!text_.selection.set())
 		text_.selection.cursor = text_.cursor;
 
@@ -1470,6 +1420,8 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 
 bool InsetText::checkAndActivateInset(BufferView * bv, bool front)
 {
+	if (cpos() == cpar()->size())
+		return false;
 	InsetOld * inset = cpar()->getInset(cpos());
 	if (!isHighlyEditableInset(inset))
 		return false;
@@ -1534,7 +1486,6 @@ void InsetText::setText(string const & data, LyXFont const & font)
 	clear(false);
 	for (unsigned int i = 0; i < data.length(); ++i)
 		paragraphs.begin()->insertChar(i, data[i], font);
-	reinitLyXText();
 }
 
 
@@ -1548,21 +1499,15 @@ void InsetText::setAutoBreakRows(bool flag)
 }
 
 
-void InsetText::setDrawFrame(BufferView * bv, DrawFrame how)
+void InsetText::setDrawFrame(DrawFrame how)
 {
-	if (how != drawFrame_) {
-		drawFrame_ = how;
-		updateLocal(bv, false);
-	}
+	drawFrame_ = how;
 }
 
 
-void InsetText::setFrameColor(BufferView * bv, LColor::color col)
+void InsetText::setFrameColor(LColor::color col)
 {
-	if (frame_color != col) {
-		frame_color = col;
-		updateLocal(bv, false);
-	}
+	frame_color = col;
 }
 
 
@@ -1638,8 +1583,14 @@ LyXText * InsetText::getLyXText(BufferView const * bv,
 
 void InsetText::setViewCache(BufferView const * bv) const
 {
-	if (bv)
+	if (bv) {
+		if (bv != text_.bv_owner) {
+			lyxerr << "setting view cache from "
+				<< text_.bv_owner << " to " << bv << "\n";
+			text_.init(const_cast<BufferView *>(bv));
+		}
 		text_.bv_owner = const_cast<BufferView *>(bv);
+	}
 }
 
 
@@ -1654,87 +1605,14 @@ void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
 }
 
 
-void InsetText::resizeLyXText(BufferView * bv, bool /*force*/) const
-{
-	if (paragraphs.size() == 1 && paragraphs.begin()->empty())
-		return;
-
-	if (!bv)
-		return;
-
-	Assert(bv);
-	setViewCache(bv);
-
-	for_each(const_cast<ParagraphList&>(paragraphs).begin(),
-		 const_cast<ParagraphList&>(paragraphs).end(),
-		 boost::bind(&Paragraph::resizeInsetsLyXText, _1, bv));
-
-	saveLyXTextState();
-	text_.init(bv);
-	restoreLyXTextState();
-
-	// seems to be unneeded
-#if 1
-	if (the_locking_inset) {
-		inset_x = cix() - top_x + drawTextXOffset;
-		inset_y = ciy() + drawTextYOffset;
-	}
-#endif
-
-#if 0
-	text_.top_y(bv->screen().topCursorVisible(&text_));
-	if (!owner()) {
-		const_cast<InsetText*>(this)->updateLocal(bv, false);
-		// this will scroll the screen such that the cursor becomes visible
-		bv->updateScrollbar();
-	}
-#endif
-}
-
-
-void InsetText::reinitLyXText() const
-{
-	BufferView * bv = text_.bv_owner;
-
-	if (!bv)
-		return;
-
-	saveLyXTextState();
-
-	for_each(const_cast<ParagraphList&>(paragraphs).begin(),
-		 const_cast<ParagraphList&>(paragraphs).end(),
-		 boost::bind(&Paragraph::resizeInsetsLyXText, _1, bv));
-
-	text_.init(bv);
-	restoreLyXTextState();
-	if (the_locking_inset) {
-		inset_x = cix() - top_x + drawTextXOffset;
-		inset_y = ciy() + drawTextYOffset;
-	}
-	text_.top_y(bv->screen().topCursorVisible(&text_));
-	if (!owner()) {
-		// this will scroll the screen such that the cursor becomes visible
-		bv->updateScrollbar();
-	}
-}
-
-
 void InsetText::removeNewlines()
 {
-	bool changed = false;
-
 	ParagraphList::iterator it = paragraphs.begin();
 	ParagraphList::iterator end = paragraphs.end();
-	for (; it != end; ++it) {
-		for (int i = 0; i < it->size(); ++i) {
-			if (it->isNewline(i)) {
-				changed = true;
+	for (; it != end; ++it)
+		for (int i = 0; i < it->size(); ++i)
+			if (it->isNewline(i))
 				it->erase(i);
-			}
-		}
-	}
-	if (changed)
-		reinitLyXText();
 }
 
 
@@ -1956,7 +1834,6 @@ void InsetText::collapseParagraphs(BufferView * bv)
 
 		mergeParagraph(bv->buffer()->params, paragraphs, first_par);
 	}
-	reinitLyXText();
 }
 
 
@@ -1981,8 +1858,6 @@ void InsetText::appendParagraphs(Buffer * buffer, ParagraphList & plist)
 	ParagraphList::iterator pend = plist.end();
 	for (; pit != pend; ++pit)
 		paragraphs.push_back(*pit);
-
-	reinitLyXText();
 }
 
 

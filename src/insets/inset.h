@@ -232,8 +232,6 @@ public:
 				     bool recursive = false) const;
 	///
 	virtual void deleteLyXText(BufferView *, bool = true) const {}
-	///
-	virtual void resizeLyXText(BufferView *, bool /*force*/= false) const {}
 	/// returns the actuall scroll-value
 	virtual int scroll(bool recursive=true) const {
 		if (!recursive || !owner_)

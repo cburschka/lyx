@@ -50,16 +50,6 @@ bool toggleall(false);
 
 namespace bv_funcs {
 
-
-void resizeInsets(BufferView * bv)
-{
-	ParagraphList & paragraphs = bv->buffer()->paragraphs;
-	/// then remove all LyXText in text-insets
-	std::for_each(paragraphs.begin(), paragraphs.end(),
-		      boost::bind(&Paragraph::resizeInsetsLyXText, _1, bv));
-}
-
-
 // Set data using font and toggle
 // If successful, returns true
 bool font2string(LyXFont const & font, bool toggle, string & data)
@@ -218,6 +208,7 @@ void number(BufferView * bv)
 	font.setNumber(LyXFont::TOGGLE);
 	toggleAndShow(bv, font);
 }
+
 
 void lang(BufferView * bv, string const & l)
 {
@@ -393,10 +384,6 @@ void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 	}
 
 	LyXText * text = bv->getLyXText();
-	// FIXME: can this happen ??
-	if (!text)
-		return;
-
 	text->toggleFree(font, toggleall);
 	bv->update();
 
@@ -417,9 +404,8 @@ void toggleAndShow(BufferView * bv, LyXFont const & font, bool toggleall)
 void replaceSelection(LyXText * lt)
 {
 	if (lt->selection.set()) {
-		lt->update();
 		lt->cutSelection(true, false);
-		lt->update();
+		lt->bv()->update();
 	}
 }
 

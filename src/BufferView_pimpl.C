@@ -29,7 +29,6 @@
 #include "lyxfunc.h"
 #include "lyxtext.h"
 #include "lyxrc.h"
-#include "lyxrow.h"
 #include "lastfiles.h"
 #include "paragraph.h"
 #include "ParagraphParameters.h"
@@ -349,7 +348,7 @@ bool BufferView::Pimpl::fitCursor()
 		ret = screen().fitCursor(bv_->text, bv_);
 	}
 
-	dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
+	//dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 
 	// We need to always update, in case we did a
 	// paste and we stayed anchored to a row, but
@@ -371,7 +370,7 @@ void BufferView::Pimpl::redoCurrentBuffer()
 }
 
 
-int BufferView::Pimpl::resizeCurrentBuffer()
+void BufferView::Pimpl::resizeCurrentBuffer()
 {
 	lyxerr[Debug::INFO] << "resizeCurrentBuffer" << endl;
 
@@ -400,7 +399,6 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 		selection = bv_->text->selection.set();
 		mark_set = bv_->text->selection.mark();
 		the_locking_inset = bv_->theLockingInset();
-		resizeInsets(bv_);
 		bv_->text->fullRebreak();
 		update();
 	} else {
@@ -418,12 +416,9 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 			//	bv_->text->owner(bv_);
 			if (lyxerr.debugging())
 				textcache.show(lyxerr, "resizeCurrentBuffer");
-
-			resizeInsets(bv_);
 		} else {
 			lyxerr << "no text in cache!" << endl;
 			bv_->text = new LyXText(bv_);
-			resizeInsets(bv_);
 			bv_->text->init(bv_);
 		}
 
@@ -461,8 +456,6 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	owner_->clearMessage();
 
 	updateScrollbar();
-
-	return 0;
 }
 
 
@@ -617,13 +610,6 @@ void BufferView::Pimpl::workAreaResize()
 			if (lyxerr.debugging())
 				textcache.show(lyxerr, "Expose delete all");
 			textcache.clear();
-			// FIXME: this is already done in resizeCurrentBuffer() ??
-			resizeInsets(bv_);
-		} else if (heightChange) {
-			// fitCursor() ensures we don't jump back
-			// to the start of the document on vertical
-			// resize
-			fitCursor();
 		}
 	}
 
@@ -633,13 +619,18 @@ void BufferView::Pimpl::workAreaResize()
 	// always make sure that the scrollbar is sane.
 	updateScrollbar();
 	owner_->updateLayoutChoice();
-	return;
 }
 
 
 void BufferView::Pimpl::update()
 {
 	lyxerr << "BufferView::update()" << endl;
+	// fix cursor coordinate cache in case something went wrong
+	if (bv_->getLyXText()) {
+		// check needed to survive LyX startup
+		bv_->getLyXText()->redoCursor();
+		fitCursor();
+	}
 	screen().redraw(*bv_);
 }
 
@@ -1229,15 +1220,13 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	case LFUN_PARAGRAPH_UPDATE: {
 		if (!bv_->owner()->getDialogs().visible("paragraph"))
 			break;
-		Paragraph const * par = &*bv_->getLyXText()->cursor.par();
-		if (!par)
-			break;
+		Paragraph const & par = *bv_->getLyXText()->cursor.par();
 
 		string data;
-		params2string(*par, data);
+		params2string(par, data);
 
 		// Will the paragraph accept changes from the dialog?
-		InsetOld * const inset = par->inInset();
+		InsetOld * const inset = par.inInset();
 		bool const accept =
 			!(inset && inset->forceDefaultParagraphs(inset));
 
@@ -1389,6 +1378,7 @@ void BufferView::Pimpl::updateInset()
 
 	// this should not be needed, but it is...
 	bv_->text->redoParagraph(bv_->text->cursor.par());
+
 	update();
 	updateScrollbar();
 }

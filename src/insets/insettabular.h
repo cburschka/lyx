@@ -140,8 +140,6 @@ public:
 	///
 	void deleteLyXText(BufferView *, bool recursive = true) const;
 	///
-	void resizeLyXText(BufferView *, bool force = false) const;
-	///
 	void openLayoutDialog(BufferView *) const;
 	///
 	bool showInsetDialog(BufferView *) const;

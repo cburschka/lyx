@@ -176,18 +176,3 @@ void InsetList::deleteInsetsLyXText(BufferView * bv)
 		}
 	}
 }
-
-
-void InsetList::resizeInsetsLyXText(BufferView * bv)
-{
-	List::iterator it = list.begin();
-	List::iterator end = list.end();
-	for (; it != end; ++it) {
-		if (it->inset) {
-			if (it->inset->isTextInset()) {
-				static_cast<UpdatableInset*>
-					(it->inset)->resizeLyXText(bv, true);
-			}
-		}
-	}
-}

@@ -43,7 +43,7 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	void redoCurrentBuffer();
 	///
-	int resizeCurrentBuffer();
+	void resizeCurrentBuffer();
 	///
 	void update();
 	/**

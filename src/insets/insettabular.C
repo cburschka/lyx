@@ -45,7 +45,6 @@
 #include <fstream>
 #include <algorithm>
 #include <cstdlib>
-#include <map>
 
 
 using namespace lyx::support;
@@ -1650,10 +1649,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 			// the insettext of the active cell (if any)
 			// until later (see InsetText::do_resize)
 			unlockInsetInInset(bv, the_locking_inset);
-
-			for (int i = 0; i < tabular.rows(); ++i)
-				tabular.getCellInset(i, column).resizeLyXText(bv);
-			updateLocal(bv);
+			bv->update();
 		}
 
 		if (vallen.zero()
@@ -1677,10 +1673,6 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 			// the insettext of the active cell (if any)
 			// until later (see InsetText::do_resize)
 			unlockInsetInInset(bv, the_locking_inset);
-
-			for (int i = 0; i < tabular.rows(); ++i)
-				tabular.getCellInset(i, column).resizeLyXText(bv);
-
 			updateLocal(bv);
 		}
 	}
@@ -1989,16 +1981,7 @@ bool InsetTabular::insetHit(BufferView *, int x, int) const
 
 void InsetTabular::deleteLyXText(BufferView * bv, bool recursive) const
 {
-	resizeLyXText(bv, recursive);
-}
-
-
-void InsetTabular::resizeLyXText(BufferView * bv, bool force) const
-{
-	if (force)
-		for (int i = 0; i < tabular.rows(); ++i)
-			for (int j = 0; j < tabular.columns(); ++j)
-				tabular.getCellInset(i, j).resizeLyXText(bv, true);
+	//resizeLyXText(bv, recursive);
 }
 
 

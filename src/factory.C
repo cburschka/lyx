@@ -128,8 +128,7 @@ InsetOld * createInset(FuncRequest const & cmd)
 		if (icp.getContents().empty()) {
 			lv->getDialogs().show("index", data, 0);
 		} else {
-			FuncRequest fr(bv, LFUN_INSET_APPLY, data);
-			lv->dispatch(fr);
+			lv->dispatch(FuncRequest(bv, LFUN_INSET_APPLY, data));
 		}
 		return 0;
 	}
@@ -151,8 +150,8 @@ InsetOld * createInset(FuncRequest const & cmd)
 			InsetCaption * inset = new InsetCaption(params);
 			inset->setOwner(bv->theLockingInset());
 			inset->setAutoBreakRows(true);
-			inset->setDrawFrame(0, InsetText::LOCKED);
-			inset->setFrameColor(0, LColor::captionframe);
+			inset->setDrawFrame(InsetText::LOCKED);
+			inset->setFrameColor(LColor::captionframe);
 			return inset;
 		}
 		return 0;

@@ -13,7 +13,6 @@
 #include "lyxfunc.h"
 #include "version.h"
 #include "kbmap.h"
-#include "lyxrow.h"
 #include "bufferlist.h"
 #include "buffer.h"
 #include "buffer_funcs.h"

@@ -11,7 +11,6 @@
 #include <config.h>
 
 #include "lyxtext.h"
-#include "lyxrow.h"
 #include "paragraph.h"
 #include "gettext.h"
 #include "bufferparams.h"
@@ -487,7 +486,7 @@ int LyXText::leftMargin(Row const & row) const
 	InsetOld * ins;
 
 	if (row.pos() < row.par()->size())
-		if ((row.par()->getChar(row.pos()) == Paragraph::META_INSET) &&
+		if (row.par()->getChar(row.pos()) == Paragraph::META_INSET &&
 		    (ins = row.par()->getInset(row.pos())) &&
 		    (ins->needFullRow() || ins->display()))
 			return LEFT_MARGIN;
@@ -1213,12 +1212,10 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 			}
 
 			labeladdon = int(
-				(font_metrics::maxAscent(labelfont) *
-				 layout->spacing.getValue() *
-				 spacing_val)
-				+(font_metrics::maxDescent(labelfont) *
+				(font_metrics::maxAscent(labelfont) +
+				 font_metrics::maxDescent(labelfont)) *
 				  layout->spacing.getValue() *
-				  spacing_val)
+				  spacing_val
 				+ layout->topsep * defaultRowHeight()
 				+ layout->labelbottomsep * defaultRowHeight());
 		}
@@ -1351,90 +1348,6 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 }
 
 
-// Appends the implicit specified paragraph before the specified row,
-// start at the implicit given position
-void LyXText::appendParagraph(RowList::iterator rowit)
-{
-	Assert(rowit != rowlist_.end());
-
-	pos_type const last = rowit->par()->size();
-	bool done = false;
-
-	do {
-		pos_type z = rowBreakPoint(*rowit);
-
-		RowList::iterator tmprow = rowit;
-
-		if (z < last) {
-			++z;
-			Row newrow(rowit->par(), z);
-			rowit = rowlist_.insert(boost::next(rowit), newrow);
-		} else {
-			done = true;
-		}
-
-		// Set the dimensions of the row
-		// fixed fill setting now by calling inset->update() in
-		// SingleWidth when needed!
-		tmprow->fill(fill(tmprow, workWidth()));
-		setHeightOfRow(tmprow);
-
-	} while (!done);
-}
-
-
-void LyXText::breakAgain(RowList::iterator rit)
-{
-	Assert(rit != rows().end());
-
-	bool not_ready = true;
-
-	do {
-		pos_type z = rowBreakPoint(*rit);
-		RowList::iterator tmprit = rit;
-		RowList::iterator end = rows().end();
-
-		if (z < rit->par()->size()) {
-			RowList::iterator next_rit = boost::next(rit);
-
-			if (next_rit == end ||
-			    (next_rit != end &&
-			     next_rit->par() != rit->par())) {
-				// insert a new row
-				++z;
-				Row newrow(rit->par(), z);
-				rit = rowlist_.insert(next_rit, newrow);
-			} else  {
-				++rit;
-				++z;
-				if (rit->pos() == z)
-					not_ready = false; // the rest will not change
-				else {
-					rit->pos(z);
-				}
-			}
-		} else {
-			// if there are some rows too much, delete them
-			// only if you broke the whole paragraph!
-			RowList::iterator tmprit2 = rit;
-			while (boost::next(tmprit2) != end
-			       && boost::next(tmprit2)->par() == rit->par()) {
-				++tmprit2;
-			}
-			while (tmprit2 != rit) {
-				--tmprit2;
-				removeRow(boost::next(tmprit2));
-			}
-			not_ready = false;
-		}
-
-		// set the dimensions of the row
-		tmprit->fill(fill(tmprit, workWidth()));
-		setHeightOfRow(tmprit);
-	} while (not_ready);
-}
-
-
 void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 {
 	// allow only if at start or end, or all previous is new text
@@ -1521,8 +1434,7 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	else
 		setCursor(cursor.par(), 0);
 
-	if (boost::next(cursorRow()) != rows().end())
-		breakAgain(boost::next(cursorRow()));
+	redoParagraph(cursor.par());
 }
 
 
@@ -1602,16 +1514,10 @@ void LyXText::insertChar(char c)
 	// and it should (along with realtmpfont) when we type the space.
 	// CHECK There is a bug here! (Asger)
 
-	LyXFont realtmpfont = real_current_font;
-	LyXFont rawtmpfont = current_font;
 	// store the current font.  This is because of the use of cursor
 	// movements. The moving cursor would refresh the current font
-
-	// Get the font that is used to calculate the baselineskip
-	pos_type const lastpos = cursor.par()->size();
-	LyXFont rawparfont =
-		cursor.par()->getFontSettings(bv()->buffer()->params,
-					      lastpos - 1);
+	LyXFont realtmpfont = real_current_font;
+	LyXFont rawtmpfont = current_font;
 
 	if (!freeSpacing && IsLineSeparatorChar(c)) {
 		if ((cursor.pos() > 0
@@ -2168,8 +2074,7 @@ void LyXText::backspace()
 			// This is an empty paragraph and we delete it just
 			// by moving the cursor one step
 			// left and let the DeleteEmptyParagraphMechanism
-			// handle the actual deletion
-			// of the paragraph.
+			// handle the actual deletion of the paragraph.
 
 			if (cursor.par() != ownerParagraphs().begin()) {
 				ParagraphList::iterator tmppit = boost::prior(cursor.par());
@@ -2213,12 +2118,7 @@ void LyXText::backspace()
 		// Pasting is not allowed, if the paragraphs have different
 		// layout. I think it is a real bug of all other
 		// word processors to allow it. It confuses the user.
-		// Even so with a footnote paragraph and a non-footnote
-		// paragraph. I will not allow pasting in this case,
-		// because the user would be confused if the footnote behaves
-		// different wether it is open or closed.
-
-		//	Correction: Pasting is always allowed with standard-layout
+		//Correction: Pasting is always allowed with standard-layout
 		LyXTextClass const & tclass =
 			bv()->buffer()->params.getLyXTextClass();
 
@@ -2228,30 +2128,14 @@ void LyXText::backspace()
 		    && cursor.par()->getAlign() == tmppit->getAlign()) {
 			removeParagraph(tmprow);
 			removeRow(tmprow);
-			mergeParagraph(bv()->buffer()->params, bv()->buffer()->paragraphs, cursor.par());
+			mergeParagraph(bv()->buffer()->params,
+				bv()->buffer()->paragraphs, cursor.par());
 
-			if (!cursor.pos() || !cursor.par()->isSeparator(cursor.pos() - 1))
-				; //cursor.par()->insertChar(cursor.pos(), ' ');
-			// strangely enough it seems that commenting out the line above removes
-			// most or all of the segfaults. I will however also try to move the
-			// two Remove... lines in front of the PasteParagraph too.
-			else
-				if (cursor.pos())
-					cursor.pos(cursor.pos() - 1);
-
-			// remove the lost paragraph
-			// This one is not safe, since the paragraph that the tmprow and the
-			// following rows belong to has been deleted by the PasteParagraph
-			// above. The question is... could this be moved in front of the
-			// PasteParagraph?
-			//RemoveParagraph(tmprow);
-			//RemoveRow(tmprow);
-
-			// This rebuilds the rows.
-			appendParagraph(cursorRow());
-			updateCounters();
+			if (cursor.pos() && cursor.par()->isSeparator(cursor.pos() - 1))
+				cursor.pos(cursor.pos() - 1);
 
 			// the row may have changed, block, hfills etc.
+			updateCounters();
 			setCursor(cursor.par(), cursor.pos(), false);
 		}
 	} else {

@@ -114,8 +114,6 @@ public:
 	///
 	void deleteLyXText(BufferView *, bool recursive=true) const;
 	///
-	void resizeLyXText(BufferView *, bool force = false) const;
-	///
 	void getLabelList(std::vector<string> &) const;
 	///
 	int scroll(bool recursive=true) const;
@@ -205,8 +203,6 @@ private:
 	///
 	bool autocollapse;
 #endif
-	///
-	mutable int oldWidth;
 	///
 	bool in_update;
 	///

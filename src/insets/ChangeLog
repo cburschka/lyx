@@ -1,4 +1,16 @@
 
+2003-08-11  André Pönitz  <poenitz@gmx.net>
+
+	* inset.h: remove resizeLyXText
+
+	* insetcaption.C:
+	* insetcollapsable.[Ch]:
+	* insetminipage.C:
+	* insettabular.[Ch]: adjust
+
+	* insettext.[Ch]: remove saveLyXTextState,
+	 restoreLyXTextStat, sstate, reinitLyXText
+
 2003-08-07  André Pönitz  <poenitz@gmx.net>
 
 	* inset.[Ch]: move non-crucial functions out-of-line

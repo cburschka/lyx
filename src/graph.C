@@ -20,7 +20,6 @@ using std::queue;
 using std::vector;
 
 
-
 int Graph::bfs_init(int s, bool clear_visited)
 {
 	if (s < 0)

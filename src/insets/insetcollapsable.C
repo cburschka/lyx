@@ -49,12 +49,12 @@ InsetCollapsable::InsetCollapsable(BufferParams const & bp, bool collapsed)
 #if 0
 	autocollapse(false),
 #endif
-	  oldWidth(0), in_update(false), first_after_edit(false)
+	  in_update(false), first_after_edit(false)
 {
 	inset.setOwner(this);
 	inset.setAutoBreakRows(true);
-	inset.setDrawFrame(0, InsetText::ALWAYS);
-	inset.setFrameColor(0, LColor::collapsableframe);
+	inset.setDrawFrame(InsetText::ALWAYS);
+	inset.setFrameColor(LColor::collapsableframe);
 	setInsetName("Collapsable");
 }
 
@@ -66,7 +66,7 @@ InsetCollapsable::InsetCollapsable(InsetCollapsable const & in)
 #if 0
 	  autocollapse(in.autocollapse),
 #endif
-	  oldWidth(0), in_update(false), first_after_edit(false)
+	  in_update(false), first_after_edit(false)
 {
 	inset.init(&(in.inset));
 	inset.setOwner(this);
@@ -243,6 +243,7 @@ void InsetCollapsable::lfunMouseRelease(FuncRequest const & cmd)
 		}
 		bv->updateInset();
 		bv->buffer()->markDirty();
+		lyxerr << "InsetCollapsable::lfunMouseRelease\n";
 	} else if (!collapsed_ && cmd.y > button_dim.y2) {
 		ret = inset.localDispatch(adjustCommand(cmd)) == DISPATCHED;
 	}
@@ -441,13 +442,6 @@ LyXText * InsetCollapsable::getLyXText(BufferView const * bv,
 void InsetCollapsable::deleteLyXText(BufferView * bv, bool recursive) const
 {
 	inset.deleteLyXText(bv, recursive);
-}
-
-
-void InsetCollapsable::resizeLyXText(BufferView * bv, bool force) const
-{
-	inset.resizeLyXText(bv, force);
-	oldWidth = width();
 }
 
 

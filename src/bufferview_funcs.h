@@ -22,8 +22,6 @@ class LyXText;
 
 namespace bv_funcs {
 
-///
-void resizeInsets(BufferView * bv);
 /** Set \param data using \param font and \param toggle.
  *  If successful, returns true.
  */

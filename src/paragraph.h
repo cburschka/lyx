@@ -111,8 +111,6 @@ public:
 	void setInsetOwner(UpdatableInset * inset);
 	///
 	void deleteInsetsLyXText(BufferView *);
-	///
-	void resizeInsetsLyXText(BufferView *);
 
 	///
 	lyx::pos_type size() const;

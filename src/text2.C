@@ -28,7 +28,6 @@
 #include "frontends/font_metrics.h"
 #include "debug.h"
 #include "lyxrc.h"
-#include "lyxrow.h"
 #include "FloatList.h"
 #include "language.h"
 #include "ParagraphParameters.h"
@@ -103,8 +102,6 @@ void LyXText::init(BufferView * bview)
 // The difference is that this one is used for displaying, and thus we
 // are allowed to make cosmetic improvements. For instance make footnotes
 // smaller. (Asger)
-// If position is -1, we get the layout font of the paragraph.
-// If position is -2, we get the font of the manual label of the paragraph.
 LyXFont LyXText::getFont(ParagraphList::iterator pit, pos_type pos) const
 {
 	Assert(pos >= 0);
@@ -285,7 +282,31 @@ void LyXText::insertParagraph(ParagraphList::iterator pit,
 	rit = rowlist_.insert(rit, Row(pit, 0));
 
 	// and now append the whole paragraph before the new row
-	appendParagraph(rit);
+	Assert(rit != rowlist_.end());
+
+	pos_type const last = rit->par()->size();
+	bool done = false;
+
+	do {
+		pos_type z = rowBreakPoint(*rit);
+
+		RowList::iterator tmprow = rit;
+
+		if (z < last) {
+			++z;
+			Row newrow(rit->par(), z);
+			rit = rowlist_.insert(boost::next(rit), newrow);
+		} else {
+			done = true;
+		}
+
+		// Set the dimensions of the row
+		// fixed fill setting now by calling inset->update() in
+		// SingleWidth when needed!
+		tmprow->fill(fill(tmprow, workWidth()));
+		setHeightOfRow(tmprow);
+
+	} while (!done);
 }
 
 
@@ -385,11 +406,10 @@ LyXText::setLayout(LyXCursor & cur, LyXCursor & sstart_cur,
 	do {
 		pit->applyLayout(lyxlayout);
 		makeFontEntriesLayoutSpecific(bv()->buffer()->params, *pit);
-		ParagraphList::iterator fppit = pit;
-		fppit->params().spaceTop(lyxlayout->fill_top ?
+		pit->params().spaceTop(lyxlayout->fill_top ?
 					 VSpace(VSpace::VFILL)
 					 : VSpace(VSpace::NONE));
-		fppit->params().spaceBottom(lyxlayout->fill_bottom ?
+		pit->params().spaceBottom(lyxlayout->fill_bottom ?
 					    VSpace(VSpace::VFILL)
 					    : VSpace(VSpace::NONE));
 		if (lyxlayout->margintype == MARGIN_MANUAL)
@@ -451,8 +471,8 @@ void LyXText::setLayout(string const & layout)
 
 bool LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type, bool test_only)
 {
-	ParagraphList::iterator pit(cursor.par());
-	ParagraphList::iterator end(cursor.par());
+	ParagraphList::iterator pit = cursor.par();
+	ParagraphList::iterator end = cursor.par();
 	ParagraphList::iterator start = pit;
 
 	if (selection.set()) {
@@ -480,10 +500,8 @@ bool LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type, bool test_only)
 			if (depth < prev_after_depth
 			    && pit->layout()->labeltype != LABEL_BIBLIO) {
 				changed = true;
-				if (!test_only) {
+				if (!test_only)
 					pit->params().depth(depth + 1);
-				}
-
 			}
 		} else if (depth) {
 			changed = true;
@@ -502,7 +520,6 @@ bool LyXText::changeDepth(bv_funcs::DEPTH_CHANGE type, bool test_only)
 
 	if (test_only)
 		return changed;
-
 
 	redoParagraphs(start, pastend);
 
@@ -623,35 +640,9 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 	}
 
 	// reinsert the paragraph
-	// insert a new row, starting at position 0
-	Row newrow(pit, 0);
-	rit = rowlist_.insert(rit, newrow);
+	insertParagraph(pit, rit);
 
-	// and now append the whole paragraph before the new row
-	pos_type const last = rit->par()->size();
-	bool done = false;
-
-	do {
-		pos_type z = rowBreakPoint(*rit);
-
-		RowList::iterator tmprow = rit;
-
-		if (z < last) {
-			++z;
-			Row newrow(rit->par(), z);
-			rit = rowlist_.insert(boost::next(rit), newrow);
-		} else {
-			done = true;
-		}
-
-		// Set the dimensions of the row
-		// fixed fill setting now by calling inset->update() in
-		// SingleWidth when needed!
-		tmprow->fill(fill(tmprow, workWidth()));
-		setHeightOfRow(tmprow);
-
-	} while (!done);
-
+	// why?
 	setHeightOfRow(rows().begin());
 }
 
@@ -659,7 +650,7 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 void LyXText::fullRebreak()
 {
 	redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());
-	setCursorIntern(cursor.par(), cursor.pos());
+	redoCursor();
 	selection.cursor = cursor;
 }
 
@@ -691,39 +682,13 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 			ii->inset->metrics(m, dim);
 		}
 
-#if 1
-		// insert a new row, starting at position 0
-		Row newrow(pit, 0);
-		RowList::iterator rit = rowlist_.insert(rowlist_.end(), newrow);
-
-		// and now append the whole paragraph before the new row
-		appendParagraph(rit);
-#else
 		redoParagraph(pit);
-#endif
 	}
-
-	// compute height
-	//lyxerr << "height 0: " << height << endl;
-	//for (RowList::iterator rit = rows().begin(); rit != rows().end(); ++rit) {
-	//	height += rit->height();
-	//}
-	//lyxerr << "height 1: " << height << endl;
 
 	// final dimension
 	dim.asc = rows().begin()->ascent_of_text();
 	dim.des = height - dim.asc;
 	dim.wid = std::max(mi.base.textwidth, int(width));
-}
-
-
-void LyXText::partialRebreak()
-{
-	if (rows().empty()) {
-		init(bv());
-		return;
-	}
-	breakAgain(rows().begin());
 }
 
 
@@ -857,8 +822,8 @@ string LyXText::getStringToIndex()
 
 
 // the DTP switches for paragraphs. LyX will store them in the first
-// physicla paragraph. When a paragraph is broken, the top settings rest,
-// the bottom settings are given to the new one. So I can make shure,
+// physical paragraph. When a paragraph is broken, the top settings rest,
+// the bottom settings are given to the new one. So I can make sure,
 // they do not duplicate themself and you cannnot make dirty things with
 // them!
 
@@ -962,13 +927,12 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 		pit->itemdepth = 0;
 	}
 
-	/* Maybe we have to increment the enumeration depth.
-	 * BUT, enumeration in a footnote is considered in isolation from its
-	 *	surrounding paragraph so don't increment if this is the
-	 *	first line of the footnote
-	 * AND, bibliographies can't have their depth changed ie. they
-	 *	are always of depth 0
-	 */
+	// Maybe we have to increment the enumeration depth.
+	// BUT, enumeration in a footnote is considered in isolation from its
+	//	surrounding paragraph so don't increment if this is the
+	//	first line of the footnote
+	// AND, bibliographies can't have their depth changed ie. they
+	//	are always of depth 0
 	if (pit != ownerParagraphs().begin()
 	    && boost::prior(pit)->getDepth() < pit->getDepth()
 	    && boost::prior(pit)->layout()->labeltype == LABEL_COUNTER_ENUMI
@@ -990,9 +954,8 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 	}
 
 	if (layout->margintype == MARGIN_MANUAL) {
-		if (pit->params().labelWidthString().empty()) {
+		if (pit->params().labelWidthString().empty())
 			pit->setLabelWidthString(layout->labelstring());
-		}
 	} else {
 		pit->setLabelWidthString(string());
 	}
@@ -1145,18 +1108,12 @@ void LyXText::setCounter(Buffer const * buf, ParagraphList::iterator pit)
 // Updates all counters. Paragraphs with changed label string will be rebroken
 void LyXText::updateCounters()
 {
-	RowList::iterator rowit = rows().begin();
-	ParagraphList::iterator pit = rowit->par();
-
-	// CHECK if this is really needed. (Lgb)
+	// start over
 	bv()->buffer()->params.getLyXTextClass().counters().reset();
 
 	ParagraphList::iterator beg = ownerParagraphs().begin();
 	ParagraphList::iterator end = ownerParagraphs().end();
-	for (; pit != end; ++pit) {
-		while (rowit->par() != pit)
-			++rowit;
-
+	for (ParagraphList::iterator pit = beg; pit != end; ++pit) {
 		string const oldLabel = pit->params().labelString();
 
 		size_t maxdepth = 0;
@@ -1171,10 +1128,8 @@ void LyXText::updateCounters()
 
 		string const & newLabel = pit->params().labelString();
 
-		if (oldLabel.empty() && !newLabel.empty()) {
-			removeParagraph(rowit);
-			appendParagraph(rowit);
-		}
+		if (oldLabel != newLabel)
+			redoParagraph(pit);
 	}
 }
 
@@ -1189,14 +1144,12 @@ void LyXText::insertInset(InsetOld * inset)
 	// Just to rebreak and refresh correctly.
 	// The character will not be inserted a second time
 	insertChar(Paragraph::META_INSET);
-	// If we enter a highly editable inset the cursor should be to before
-	// the inset. This couldn't happen before as Undo was not handled inside
-	// inset now after the Undo LyX tries to call inset->Edit(...) again
-	// and cannot do this as the cursor is behind the inset and GetInset
+	// If we enter a highly editable inset the cursor should be before
+	// the inset. After an Undo LyX tries to call inset->edit(...) 
+	// and fails if the cursor is behind the inset and getInset
 	// does not return the inset!
-	if (isHighlyEditableInset(inset)) {
+	if (isHighlyEditableInset(inset))
 		cursorLeft(true);
-	}
 	unFreezeUndo();
 }
 
@@ -1237,7 +1190,6 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 
 	recordUndo(bv(), Undo::DELETE, selection.start.par(),
 		   boost::prior(undoendpit));
-
 
 	endpit = selection.end.par();
 	int endpos = selection.end.pos();
@@ -1438,6 +1390,13 @@ bool LyXText::setCursor(ParagraphList::iterator pit,
 }
 
 
+void LyXText::redoCursor()
+{
+#warning maybe the same for selections?
+	setCursor(cursor, cursor.par(), cursor.pos(), cursor.boundary());
+}
+
+
 void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 			pos_type pos, bool boundary)
 {
@@ -1538,11 +1497,11 @@ float LyXText::getCursorX(RowList::iterator rit,
 		cursor_vpos = (rit_par->isRightToLeftPar(bv()->buffer()->params))
 			? rit_pos : last + 1;
 	else if (pos > rit_pos && (pos > last || boundary))
-		/// Place cursor after char at (logical) position pos - 1
+		// Place cursor after char at (logical) position pos - 1
 		cursor_vpos = (bidi_level(pos - 1) % 2 == 0)
 			? log2vis(pos - 1) + 1 : log2vis(pos - 1);
 	else
-		/// Place cursor before char at (logical) position pos
+		// Place cursor before char at (logical) position pos
 		cursor_vpos = (bidi_level(pos) % 2 == 0)
 			? log2vis(pos) : log2vis(pos) + 1;
 
@@ -1581,32 +1540,6 @@ float LyXText::getCursorX(RowList::iterator rit,
 void LyXText::setCursorIntern(ParagraphList::iterator pit,
 			      pos_type pos, bool setfont, bool boundary)
 {
-	UpdatableInset * it = pit->inInset();
-	if (it) {
-		if (it != inset_owner) {
-			lyxerr[Debug::INSETS] << "InsetText   is " << it
-					      << endl
-					      << "inset_owner is "
-					      << inset_owner << endl;
-#ifdef WITH_WARNINGS
-#warning I believe this code is wrong. (Lgb)
-#warning Jürgen, have a look at this. (Lgb)
-#warning Hmmm, I guess you are right but we
-#warning should verify when this is needed
-#endif
-			// Jürgen, would you like to have a look?
-			// I guess we need to move the outer cursor
-			// and open and lock the inset (bla bla bla)
-			// stuff I don't know... so can you have a look?
-			// (Lgb)
-			// I moved the lyxerr stuff in here so we can see if
-			// this is actually really needed and where!
-			// (Jug)
-			// it->getLyXText(bv())->setCursorIntern(bv(), par, pos, setfont, boundary);
-			return;
-		}
-	}
-
 	setCursor(cursor, pit, pos, boundary);
 	if (setfont)
 		setCurrentFont();
@@ -1940,8 +1873,7 @@ void LyXText::cursorDownParagraph()
 
 // fix the cursor `cur' after a characters has been deleted at `where'
 // position. Called by deleteEmptyParagraphMechanism
-void LyXText::fixCursorAfterDelete(LyXCursor & cur,
-				   LyXCursor const & where)
+void LyXText::fixCursorAfterDelete(LyXCursor & cur, LyXCursor const & where)
 {
 	// if cursor is not in the paragraph where the delete occured,
 	// do nothing
@@ -1970,10 +1902,8 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 		return false;
 
 	// We allow all kinds of "mumbo-jumbo" when freespacing.
-	if (old_cursor.par()->layout()->free_spacing
-	    || old_cursor.par()->isFreeSpacing()) {
+	if (old_cursor.par()->isFreeSpacing())
 		return false;
-	}
 
 	/* Ok I'll put some comments here about what is missing.
 	   I have fixed BackSpace (and thus Delete) to not delete
@@ -2001,8 +1931,8 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 	// If the pos around the old_cursor were spaces, delete one of them.
 	if (old_cursor.par() != cursor.par()
 	    || old_cursor.pos() != cursor.pos()) {
-		// Only if the cursor has really moved
 
+		// Only if the cursor has really moved
 		if (old_cursor.pos() > 0
 		    && old_cursor.pos() < old_cursor.par()->size()
 		    && old_cursor.par()->isLineSeparator(old_cursor.pos())
@@ -2081,7 +2011,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			 * there is another layout before */
 			RowList::iterator tmprit = boost::next(prevrow);
 			if (tmprit != rows().end()) {
-				breakAgain(tmprit);
+				redoParagraph(tmprit->par());
 				updateCounters();
 			}
 			setHeightOfRow(prevrow);
@@ -2110,7 +2040,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			   The next row can change its height, if
 			   there is another layout before */
 			if (nextrow != rows().end()) {
-				breakAgain(nextrow);
+				redoParagraph(nextrow->par());
 				updateCounters();
 			}
 		}
@@ -2146,8 +2076,7 @@ ParagraphList & LyXText::ownerParagraphs() const
 
 bool LyXText::isInInset() const
 {
-	// Sub-level has non-null bv owner and
-	// non-null inset owner.
+	// Sub-level has non-null bv owner and non-null inset owner.
 	return inset_owner != 0 && bv_owner != 0;
 }
 

@@ -13,7 +13,6 @@
 #define INSETTEXT_H
 
 #include "updatableinset.h"
-#include "textcursor.h"
 #include "LString.h"
 #include "LColor.h"
 #include "ParagraphList.h"
@@ -129,9 +128,9 @@ public:
 	///
 	bool getAutoBreakRows() const { return autoBreakRows; }
 	///
-	void setDrawFrame(BufferView *, DrawFrame);
+	void setDrawFrame(DrawFrame);
 	///
-	void setFrameColor(BufferView *, LColor::color);
+	void setFrameColor(LColor::color);
 	///
 	LyXText * getLyXText(BufferView const *,
 			     bool const recursive = false) const;
@@ -139,8 +138,6 @@ public:
 	void setViewCache(BufferView const * bv) const;
 	///
 	void deleteLyXText(BufferView *, bool recursive = true) const;
-	///
-	void resizeLyXText(BufferView *, bool force = false) const;
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
@@ -279,10 +276,6 @@ private:
 	///
 	void clearInset(BufferView *, int start_x, int baseline) const;
 	///
-	void saveLyXTextState() const;
-	///
-	void restoreLyXTextState() const;
-	///
 	void collapseParagraphs(BufferView *);
 
 	/* Private structures and variables */
@@ -307,9 +300,6 @@ private:
 	///
 	mutable ParagraphList::iterator old_par;
 
-	/// some funny 'temporarily saved state'
-	mutable TextCursor sstate;
-
 	///
 	// to remember old painted frame dimensions to clear it on the right spot!
 	///
@@ -320,8 +310,6 @@ private:
 	int mouse_x;
 	int mouse_y;
 public:
-	///
-	void reinitLyXText() const;
 	///
 	mutable LyXText text_;
 	///

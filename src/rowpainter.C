@@ -28,7 +28,6 @@
 #include "language.h"
 #include "encoding.h"
 #include "lyxtext.h"
-#include "lyxrow.h"
 #include "rowpainter.h"
 #include "lyxrc.h"
 #include "lyxrow_funcs.h"
@@ -1099,6 +1098,7 @@ int paintRows(BufferView const & bv, LyXText const & text,
 {
 	RowList::iterator end = text.rows().end();
 	while (rit != end && yf < y2) {
+		//const_cast<LyXText &>(text).setHeightOfRow(rit);
 		paintRowsHelper(bv, text, rit, y + yo, xo, y + text.top_y());
 		y += rit->height();
 		yf += rit->height();

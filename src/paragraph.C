@@ -287,7 +287,8 @@ void Paragraph::insertInset(pos_type pos, InsetOld * inset)
 }
 
 
-void Paragraph::insertInset(pos_type pos, InsetOld * inset, LyXFont const & font, Change change)
+void Paragraph::insertInset(pos_type pos, InsetOld * inset,
+	LyXFont const & font, Change change)
 {
 	pimpl_->insertInset(pos, inset, font, change);
 }
@@ -1192,12 +1193,6 @@ void Paragraph::deleteInsetsLyXText(BufferView * bv)
 }
 
 
-void Paragraph::resizeInsetsLyXText(BufferView * bv)
-{
-	insetlist.resizeInsetsLyXText(bv);
-}
-
-
 void Paragraph::setContentsFromPar(Paragraph const & par)
 {
 	pimpl_->setContentsFromPar(par);
@@ -1355,7 +1350,7 @@ bool Paragraph::isFreeSpacing() const
 		return true;
 
 	// for now we just need this, later should we need this in some
-	// other way we can always add a function to InsetOld::() too.
+	// other way we can always add a function to InsetOld too.
 	if (pimpl_->inset_owner && pimpl_->inset_owner->owner())
 		return pimpl_->inset_owner->owner()->lyxCode() == InsetOld::ERT_CODE;
 	return false;
