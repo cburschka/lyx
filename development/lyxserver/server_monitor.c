@@ -128,7 +128,7 @@ void io_cb(int fd, void *data)
     if (n>=0)
       s[n] = 0;
     fprintf(stderr, "monitor: Coming: %s\n", s);
-    if (compare(s, "LYXSRV:", 7) == 0) {
+    if (strncmp(s, "LYXSRV:", 7) == 0) {
 	if (strstr(s, "bye")) {
 	    lyx_listen = 0;
 	    fprintf(stderr, "monitor: LyX has closed connection!\n");
@@ -175,7 +175,7 @@ void openpipe()
 	fl_add_io_callback(pipeout, FL_READ, io_cb, 0);
 	
 	// greet LyX
-	sprintf(buf, "LYXSRV:%s:hello", clientname);
+	sprintf(buf, "LYXSRV:%s:hello\n", clientname);
 	write(pipein, buf, strlen(buf));
 	free(pipename);
     } else 
@@ -193,16 +193,16 @@ void closepipe()
     }
 	
     if (pipein>=0) {
-	close(pipein);
-    }
-	      
-    if (pipeout>=0) {
 	if (lyx_listen) {
 	    lyx_listen = 0;
 	    /* Say goodbye */
 	    sprintf(buf, "LYXSRV:%s:bye\n", clientname);
-	    write(pipeout, buf, strlen(buf));
+	    write(pipein, buf, strlen(buf));
 	}
+	close(pipein);
+    }
+	      
+    if (pipeout>=0) {
 	close(pipeout);
 	fl_remove_io_callback(pipeout, FL_READ, io_cb);
     }     
