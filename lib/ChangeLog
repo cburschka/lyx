@@ -1,5 +1,11 @@
 2001-12-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* configure.m4: add new macros LYXRC_VAR and LYXRC_PROG. These are
+	used for checking for a program and add the corresponding entry in
+	lyxrc.defaults. Used this for various checks (not finished yet).
+
+	* chkconfig.ltx: add test for graphic package
+
 	* doc/LaTeXConfig.lyx.in: general update: moved things around,
 	corrected some entries, collapsed some others, added graphicx.
 
