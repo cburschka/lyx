@@ -12,7 +12,27 @@ INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)
 
 bin_PROGRAMS = tex2lyx
 
+linked_files = \
+	FloatList.C \
+	Floating.C \
+	boost.C \
+	counters.C \
+	lyxlayout.h \
+	lyxlayout.C \
+	lyxtextclass.C \
+	lyxtextclass.h \
+	lyxlex.C \
+	lyxlex_pimpl.C
+
+#	debug.C
+
 tex2lyx_SOURCES = \
+	$(linked_files) \
+	Spacing.h \
+	gettext.C \
+	gettext.h \
+	lyxfont.C \
+	lyxfont.h \
 	texparser.C \
 	texparser.h \
 	tex2lyx.C \
@@ -21,3 +41,20 @@ tex2lyx_SOURCES = \
 	math.C \
 	table.C \
 	text.C
+
+tex2lyx_LDADD = \
+	../support/libsupport.la \
+	../../boost/libs/regex/src/libboostregex.la
+
+FloatList.C: link_files 
+
+link_files:
+	for i in $(linked_files); do \
+		ln -sf "$(top_srcdir)/src/$$i" . ; \
+	done ; \
+	for i in $(graphics_linked_files); do \
+		ln -sf "$(top_srcdir)/src/graphics/$$i" . ; \
+	done
+
+rm_link_files:
+	rm -f $(linked_files) $(graphics_linked_files)

@@ -282,7 +282,8 @@ void handle_hline_below(RowInfo & ri, vector<CellInfo> & ci)
 }
 
 
-void handle_tabular(Parser & p, ostream & os)
+void handle_tabular(Parser & p, ostream & os,
+		    LyXTextClass const & textclass)
 {
 	string posopts = p.getOpt();
 	if (posopts.size())
@@ -397,7 +398,7 @@ void handle_tabular(Parser & p, ostream & os)
 				handle_colalign(p, t);
 				cellinfo[row][col].multi     = 1;
 				cellinfo[row][col].align     = t.front().align;
-				cellinfo[row][col].content   = parse_text(p, FLAG_ITEM, false);
+				cellinfo[row][col].content   = parse_text(p, FLAG_ITEM, false, textclass);
 				cellinfo[row][col].leftline  |= t.front().leftline;
 				cellinfo[row][col].rightline |= t.front().rightline;
 
@@ -414,7 +415,7 @@ void handle_tabular(Parser & p, ostream & os)
 
 			} else {	
 				// FLAG_END is a hack, we need to read all of it
-				cellinfo[row][col].content = parse_text(p, FLAG_END, false);
+				cellinfo[row][col].content = parse_text(p, FLAG_END, false, textclass);
 			}
 		}
 

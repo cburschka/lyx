@@ -7,6 +7,10 @@
 #include <config.h>
 
 #include "tex2lyx.h"
+#include "FloatList.h"
+#include "lyxtextclass.h"
+#include "support/lstrings.h"
+#include "support/tostr.h"
 
 #include <iostream>
 #include <map>
@@ -21,6 +25,8 @@ using std::ostringstream;
 using std::string;
 using std::vector;
 
+using lyx::support::rtrim;
+using lyx::support::suffixIs;
 
 namespace {
 
@@ -132,7 +138,8 @@ void handle_par(ostream & os)
 } // anonymous namespace
 
 
-void parse_text(Parser & p, ostream & os, unsigned flags, bool outer)
+void parse_text(Parser & p, ostream & os, unsigned flags, bool outer,
+		LyXTextClass const & textclass)
 {
 	while (p.good()) {
 		Token const & t = p.get_token();
@@ -215,7 +222,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer)
 		else if (t.cat() == catBegin) {
 			// special handling of size changes
 			bool const is_size = is_known(p.next_token().cs(), known_sizes);
-			string const s = parse_text(p, FLAG_BRACE_LAST, outer);
+			string const s = parse_text(p, FLAG_BRACE_LAST, outer, textclass);
 			if (s.empty() && p.next_token().character() == '`')
 				; // ignore it in  {}``
 			else if (is_size || s == "[" || s == "]" || s == "*")
@@ -274,22 +281,33 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer)
 				parse_math(p, os, FLAG_END, MATH_MODE);
 				os << "\\end{" << name << "}";
 				end_inset(os);
-			} else if (name == "tabular") {
+				continue;
+			}
+
+			if (name == "tabular") {
 				begin_inset(os, "Tabular ");
-				handle_tabular(p, os);
+				handle_tabular(p, os, textclass);
 				end_inset(os);
-			} else if (name == "table" || name == "figure") {
+				continue;
+			}
+
+			bool is_starred = suffixIs(name, '*');
+			string unstarred_name = rtrim(name, "*");
+			if (textclass.floats().typeExist(unstarred_name)) {
 				string opts = p.getOpt();
-				begin_inset(os, "Float " + name + "\n");
+				begin_inset(os, "Float " + unstarred_name + "\n");
 				if (opts.size())
 					os << "placement " << opts << '\n';
-				os << "wide false\ncollapsed false\n\n"
-					 << "\\layout Standard\n";
-				parse_text(p, os, FLAG_END, outer);
+				os << "wide " << tostr(is_starred)
+				   << "\ncollapsed false\n\n"
+				   << "\\layout Standard\n";
+				parse_text(p, os, FLAG_END, outer,
+					   textclass);
 				end_inset(os);
 			} else if (name == "center") {
 				handle_par(os);
-				parse_text(p, os, FLAG_END, outer);
+				parse_text(p, os, FLAG_END, outer,
+					   textclass);
 			} else if (name == "enumerate" || name == "itemize"
 					|| name == "lyxlist") {
 				size_t const n = active_environments.size();
@@ -301,17 +319,17 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer)
 				os << "\n\\layout " << cap(name) << "\n\n";
 				if (name == "lyxlist")
 					p.verbatim_item(); // swallow next arg
-				parse_text(p, os, FLAG_END, outer);
+				parse_text(p, os, FLAG_END, outer, textclass);
 				if (deeper)
 					os << "\n\\end_deeper\n";
 				handle_par(os);
 			} else if (name == "thebibliography") {
 				p.verbatim_item(); // swallow next arg
-				parse_text(p, os, FLAG_END, outer);
+				parse_text(p, os, FLAG_END, outer, textclass);
 				os << "\n\\layout Bibliography\n\n";
 			} else {
 				handle_par(os);
-				parse_text(p, os, FLAG_END, outer);
+				parse_text(p, os, FLAG_END, outer, textclass);
 			}
 		}
 
@@ -334,7 +352,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer)
 			string s; 
 			if (p.next_token().character() == '[') {
 				p.get_token(); // eat '['
-				s = parse_text(p, FLAG_BRACK_LAST, outer);
+				s = parse_text(p, FLAG_BRACK_LAST, outer, textclass);
 			}
 			handle_par(os);
 			os << s << ' ';
@@ -367,7 +385,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer)
 				os << "collapsed true\n\n\\layout Standard\n\n" << opt;
 				end_inset(os);
 			}
-			parse_text(p, os, FLAG_ITEM, outer);
+			parse_text(p, os, FLAG_ITEM, outer, textclass);
 			os << "\n\n\\layout Standard\n\n";
 		}
 
@@ -386,12 +404,12 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer)
 		else if (t.cs() == "footnote") {
 			begin_inset(os, "Foot\n");
 			os << "collapsed true\n\n\\layout Standard\n\n";
-			parse_text(p, os, FLAG_ITEM, false);
+			parse_text(p, os, FLAG_ITEM, false, textclass);
 			end_inset(os);
 		}
 
 		else if (t.cs() == "ensuremath") {
-			string s = parse_text(p, FLAG_ITEM, false);
+			string s = parse_text(p, FLAG_ITEM, false, textclass);
 			if (s == "±" || s == "³" || s == "²" || s == "µ")
 				os << s;
 			else
@@ -401,7 +419,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer)
 		else if (t.cs() == "marginpar") {
 			begin_inset(os, "Marginal\n");
 			os << "collapsed true\n\n\\layout Standard\n\n";
-			parse_text(p, os, FLAG_ITEM, false);
+			parse_text(p, os, FLAG_ITEM, false, textclass);
 			end_inset(os);
 		}
 
@@ -418,49 +436,49 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer)
 
 		else if (t.cs() == "textrm") {
 			os << "\n\\family roman \n";
-			parse_text(p, os, FLAG_ITEM, outer);
+			parse_text(p, os, FLAG_ITEM, outer, textclass);
 			os << "\n\\family default \n";
 		}
 
 		else if (t.cs() == "textsf") {
 			os << "\n\\family sans \n";
-			parse_text(p, os, FLAG_ITEM, outer);
+			parse_text(p, os, FLAG_ITEM, outer, textclass);
 			os << "\n\\family default \n";
 		}
 
 		else if (t.cs() == "texttt") {
 			os << "\n\\family typewriter \n";
-			parse_text(p, os, FLAG_ITEM, outer);
+			parse_text(p, os, FLAG_ITEM, outer, textclass);
 			os << "\n\\family default \n";
 		}
 
 		else if (t.cs() == "textit") {
 			os << "\n\\shape italic \n";
-			parse_text(p, os, FLAG_ITEM, outer);
+			parse_text(p, os, FLAG_ITEM, outer, textclass);
 			os << "\n\\shape default \n";
 		}
 
 		else if (t.cs() == "textsc") {
 			os << "\n\\noun on \n";
-			parse_text(p, os, FLAG_ITEM, outer);
+			parse_text(p, os, FLAG_ITEM, outer, textclass);
 			os << "\n\\noun default \n";
 		}
 
 		else if (t.cs() == "textbf") {
 			os << "\n\\series bold \n";
-			parse_text(p, os, FLAG_ITEM, outer);
+			parse_text(p, os, FLAG_ITEM, outer, textclass);
 			os << "\n\\series default \n";
 		}
 
 		else if (t.cs() == "underbar") {
 			os << "\n\\bar under \n";
-			parse_text(p, os, FLAG_ITEM, outer);
+			parse_text(p, os, FLAG_ITEM, outer, textclass);
 			os << "\n\\bar default \n";
 		}
 
 		else if (t.cs() == "emph" || t.cs() == "noun") {
 			os << "\n\\" << t.cs() << " on \n";
-			parse_text(p, os, FLAG_ITEM, outer);
+			parse_text(p, os, FLAG_ITEM, outer, textclass);
 			os << "\n\\" << t.cs() << " default \n";
 		}
 
@@ -562,7 +580,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer)
 		      || t.cs() == "^" || t.cs() == "'" || t.cs() == "~") {
 			// we need the trim as the LyX parser chokes on such spaces
 			os << "\n\\i \\" << t.cs() << "{"
-			   << trim(parse_text(p, FLAG_ITEM, outer), " ") << "}\n";
+			   << trim(parse_text(p, FLAG_ITEM, outer, textclass), " ") << "}\n";
 		}
 
 		else if (t.cs() == "ss")
@@ -579,13 +597,13 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer)
 	
 		else if (t.cs() == "lyxrightaddress") {
 			os << "\n\\layout Right Address\n";
-			parse_text(p, os, FLAG_ITEM, outer);
+			parse_text(p, os, FLAG_ITEM, outer, textclass);
 			os << "\n\\layout Standard\n";
 		}
 
 		else if (t.cs() == "lyxaddress") {
 			os << "\n\\layout Address\n";
-			parse_text(p, os, FLAG_ITEM, outer);
+			parse_text(p, os, FLAG_ITEM, outer, textclass);
 			os << "\n\\layout Standard\n";
 		}
 
@@ -625,10 +643,11 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer)
 }
 
 
-string parse_text(Parser & p, unsigned flags, const bool outer)
+string parse_text(Parser & p, unsigned flags, const bool outer,
+		  LyXTextClass const & textclass)
 {
 	ostringstream os;
-	parse_text(p, os, flags, outer);
+	parse_text(p, os, flags, outer, textclass);
 	return os.str();
 }
 

@@ -7,19 +7,23 @@
 #include <string>
 #include <vector>
 
+class LyXTextClass;
 
-void parse_preamble(Parser & p, std::ostream & os);
+LyXTextClass const parse_preamble(Parser & p, std::ostream & os);
 
-void parse_text(Parser & p, std::ostream & os, unsigned flags, bool outer);
+void parse_text(Parser & p, std::ostream & os, unsigned flags,
+		bool outer, LyXTextClass const & textclass);
 
 void parse_table(Parser & p, std::ostream & os, unsigned flags);
 
 void parse_math(Parser & p, std::ostream & os, unsigned flags, mode_type mode);
 
-void handle_tabular(Parser & p, std::ostream & os);
+void handle_tabular(Parser & p, std::ostream & os,
+		    LyXTextClass const & textclass);
 
 // Helper
-std::string parse_text(Parser & p, unsigned flags, const bool outer);
+std::string parse_text(Parser & p, unsigned flags, const bool outer,
+		       LyXTextClass const & textclass);
 
 void handle_comment(Parser & p);
 std::string const trim(std::string const & a, char const * p = " \t\n\r");

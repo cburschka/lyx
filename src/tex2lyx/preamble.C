@@ -8,6 +8,11 @@
 
 #include "tex2lyx.h"
 
+#include "layout.h"
+#include "lyxtextclass.h"
+#include "lyxlex.h"
+#include "support/filetools.h"
+
 #include <algorithm>
 #include <iostream>
 #include <sstream>
@@ -24,6 +29,8 @@ using std::ostream;
 using std::ostringstream;
 using std::string;
 using std::vector;
+
+using lyx::support::LibFileSearch;
 
 // special columntypes
 extern std::map<char, int> special_columns;
@@ -128,7 +135,7 @@ void handle_package(string const & name, string const & options)
 
 
 
-void end_preamble(ostream & os)
+void end_preamble(ostream & os, LyXTextClass const & textclass)
 {
 	os << "# tex2lyx 0.0.3 created this file\n"
 	   << "\\lyxformat 224\n"
@@ -165,7 +172,7 @@ void end_preamble(ostream & os)
 
 } // anonymous namespace
 
-void parse_preamble(Parser & p, ostream & os)
+LyXTextClass const parse_preamble(Parser & p, ostream & os)
 {
 	// initialize fixed types
 	special_columns['D'] = 3;
@@ -334,17 +341,19 @@ void parse_preamble(Parser & p, ostream & os)
 
 		else if (t.cs() == "begin") {
 			string const name = p.getArg('{', '}');
-			if (name == "document") {
-				end_preamble(os);
-				return;
-			}
+			if (name == "document")
+				break;
 			h_preamble << "\\begin{" << name << "}";
 		}
 
 		else if (t.cs().size())
 			h_preamble << '\\' << t.cs() << ' ';
 	}
-}
 
+	LyXTextClass textclass;
+	textclass.Read(LibFileSearch("layouts", h_textclass, "layout"));
+	end_preamble(os, textclass);
+	return textclass;
+}
 
 // }])

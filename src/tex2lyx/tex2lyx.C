@@ -6,6 +6,10 @@
 
 #include "tex2lyx.h"
 
+#include "lyx_main.h"
+#include "debug.h"
+#include "lyxtextclass.h"
+
 #include <cctype>
 #include <fstream>
 #include <iostream>
@@ -25,6 +29,14 @@ using std::ostringstream;
 using std::stringstream;
 using std::string;
 using std::vector;
+
+// A hack to allow the thing to link in the lyxlayout stuff
+string system_lyxdir = "../../../lib";
+string build_lyxdir = "../../lib";
+string user_lyxdir = ".";
+DebugStream lyxerr;
+
+void LyX::emergencyCleanup() {}
 
 
 void handle_comment(Parser & p)
@@ -142,9 +154,9 @@ int main(int argc, char * argv[])
 	//p.dump();
 
 	stringstream ss;
-	parse_preamble(p, ss);
+	LyXTextClass textclass = parse_preamble(p, ss);
 	active_environments.push_back("document");
-	parse_text(p, ss, FLAG_END, true);
+	parse_text(p, ss, FLAG_END, true, textclass);
 	ss << "\n\\the_end\n";
 
 	ss.seekg(0);

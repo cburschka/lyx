@@ -1,3 +1,34 @@
+2003-07-26  Angus Leeming  <leeming@lyx.org>
+
+	* Spacing.h:
+	* lyxfont.[Ch]:
+	* gettext.[Ch]: minimal (near empty) analogues of the real LyX
+	files; enough to get LyXTextClass and LyXLayout to compile without
+	needing to store any real information about Spacing or Font.
+
+	* Makefile.am: add these files above and also include a minimal
+	chunk of the main lyx source tree as soft links in order to add in
+	LyXTextClass and LyXLayout.
+
+	* .cvsignore: add all these soft links.
+
+	* preamble.C (end_preamble): passed a LyXTextClass arg.
+	(parse_preamble): returns the document LyXTextClass.
+
+	* tabular.C (handle_tabular): passed a LyXTextClass arg. In turn
+	pass it to parse_text.
+
+	* tex2lyx.C: add some global vars, build_lyxdir et al. For now,
+	give them some horrible hard-coded value.
+	(main): receive a LyXTextClass var from parse_preamble and pass it
+	on to parse_text.
+
+	* text.C (parse_text): receives a LyXTextClass arg. Use it to
+	remove the hard-coded handling of floats and instead check the
+	textclass for its existence. Also handle wide floats naturally.
+
+	* tex2lyx.h: associated changes to function declarations.
+	
 2003-07-18  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* texparser.C (catInit): same warning avoidance as in math_parser.C
