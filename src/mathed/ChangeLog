@@ -1,4 +1,13 @@
+
+2001-09-04  André Pönitz  <poenitz@gmx.net>
+
+	* math_parser.C:
+	  math_matrixinset.C: some support for [x][x]alignat environments
+
+	* math_cursor.C: fix handling of | and \|
+	
 2001-09-04  José Matos  <jamatos@fep.up.pt>
+
 	* formulabase.C
 	* formulabase.h
 	* formula.C
