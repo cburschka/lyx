@@ -1,12 +1,19 @@
-2002-02-18  John Levon  <moz@compsoc.man.ac.uk>
+2002-03-01  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am:
 	* moc/Makefile.am:
 	* ui/Makefile.am:
-	* ui/moc/Makefile.am: use .o for libs
+	* ui/moc/Makefile.am: fix compile
 
+	* xforms/: compile the necessary files via symlinks
+ 
 	* QPreambleDialog.C: new systemcall interface
 
+	* Timeout_pimpl.h:
+	* Timeout_pimpl.C: add running()
+
+	* Dialogs.C: add init graphics, and doc/par xforms forms 
+ 
 2002-02-06  John Levon  <moz@compsoc.man.ac.uk>
 
 	* QToc.C: fix crash

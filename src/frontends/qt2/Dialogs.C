@@ -73,12 +73,14 @@
 #include "Qt2BC.h"
 
 // xforms stuff
-//#include "xforms/FormDocument.h"
+#include "xforms/FormDocument.h"
 #include "xforms/FormMathsPanel.h"
-//#include "xforms/FormParagraph.h"
+#include "xforms/FormParagraph.h"
 #include "xforms/FormPreferences.h"
 #include "xforms/FormShowFile.h"
 #include "xforms/FormTabular.h"
+ 
+#include "graphics/GraphicsImageXPM.h"
  
 #include "GUI.h"
 
@@ -117,13 +119,26 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIVCLog<QVCLog, Qt2BC>(*lv, *this));
 
 	// dialogs not yet MVCd
-//	add(new FormDocument(lv, this));
+	add(new FormDocument(lv, this));
  	add(new FormMathsPanel(lv, this));
-//	add(new FormParagraph(lv, this));
+	add(new FormParagraph(lv, this));
 	add(new FormPreferences(lv, this));
 	add(new FormTabular(lv, this));
  
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.
 	hideAll.connect(hideBufferDependent.slot());
+}
+ 
+ 
+// Called bu the graphics cache to connect the approriate frontend
+// image loading routines to the LyX kernel.
+void Dialogs::initialiseGraphics()
+{
+	using namespace grfx;
+	using SigC::slot;
+    
+	// connect the image loader based on the XPM library
+	GImage::newImage.connect(slot(&GImageXPM::newImage));
+	GImage::loadableFormats.connect(slot(&GImageXPM::loadableFormats));
 }

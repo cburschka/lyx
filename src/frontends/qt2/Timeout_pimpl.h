@@ -36,6 +36,8 @@ public:
 	void stop();
 	/// reset
 	void reset();
+	/// is the timer running ?
+	bool running() const; 
 
 protected:
 	/// slot

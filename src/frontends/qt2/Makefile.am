@@ -2,9 +2,9 @@ AUTOMAKE_OPTIONS = foreign 1.4
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libqt2.la
 BOOST_INCLUDES = -I$(top_srcdir)/boost
-SUBDIRS=ui moc
+SUBDIRS=xforms ui moc
 INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
-	${SIGC_CFLAGS} ${FRONTEND_INCLUDES} $(BOOST_INCLUDES) \
+	${SIGC_CFLAGS} -I$(top_srcdir)/images ${FRONTEND_INCLUDES} $(BOOST_INCLUDES) \
 	-I$(top_srcdir)/src/frontends/controllers
 AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR
 
@@ -15,14 +15,18 @@ ETAGS_ARGS = --lang=c++
 
 include Makefile.dialogs
 
+ETAGS_ARGS = --lang=c++
+
 libqt2_la_LIBADD = \
-	ui/libqt2ui.o \
-	moc/libqt2moc.o \
-	ui/moc/libqt2uimoc.o \
+	xforms/libqt2xforms.la \
+	ui/libqt2ui.la \
+	moc/libqt2moc.la \
+	ui/moc/libqt2uimoc.la \
 	@LYX_LIBS@ @FRONTEND_LDFLAGS@ @FRONTEND_LIBS@
 
 libqt2_la_SOURCES = \
 	$(DIALOGSOURCES) \
+	Alert_pimpl.C \
 	Dialogs.C \
 	GUIRunTime.C \
 	FileDialog.C \
@@ -40,41 +44,4 @@ libqt2_la_SOURCES = \
 	qttableview.h \
 	qttableview.C
 
-xforms_objects = \
-	../xforms/combox.o \
-	../xforms/Alert_pimpl.o \
-	../xforms/Color.o \
-	../xforms/DropDown.o \
-	../xforms/FormBase.o \
-	../xforms/FormBaseDeprecated.o	\
-	../xforms/FormMathsBitmap.o \
-	../xforms/FormMathsDeco.o \
-	../xforms/FormMathsDelim.o \
-	../xforms/FormMathsMatrix.o \
-	../xforms/FormMathsPanel.o \
-	../xforms/FormMathsStyle.o \
-	../xforms/FormMathsSpace.o \
-	../xforms/FormPreferences.o \
-	../xforms/FormTabular.o \
-	../xforms/FormInset.o \
-	../xforms/MathsSymbols.o \
-	../xforms/Menubar_pimpl.o \
-	../xforms/RadioButtonGroup.o \
-	../xforms/Toolbar_pimpl.o \
-	../xforms/bmtable.o \
-	../xforms/form_preferences.o \
-	../xforms/form_tabular.o \
-	../xforms/form_maths_deco.o \
-	../xforms/form_maths_delim.o \
-	../xforms/form_maths_matrix.o \
-	../xforms/form_maths_panel.o \
-	../xforms/form_maths_space.o \
-	../xforms/form_maths_style.o \
-	../xforms/input_validators.o \
-	../xforms/xformsBC.o \
-	../xforms/xforms_helpers.o
-
-libqt2.la: xforms.lo $(libqt2_la_OBJECTS) $(libqt2_la_DEPENDENCIES)
-
-xforms.lo: $(xforms_objects)
-	$(CXXLINK) $(xforms_objects)
+libqt2.la: $(libqt2_la_OBJECTS) $(libqt2_la_DEPENDENCIES)

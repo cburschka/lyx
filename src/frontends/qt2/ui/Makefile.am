@@ -22,6 +22,12 @@ libqt2ui.la: $(libqt2ui_la_OBJECTS) $(libqt2ui_la_DEPENDENCIES)
 SED=sed
 SEDREPLACETR=s,[^A-Za-z]tr[ ]*(,_(,g
 SEDREMOVEEMPTY=s,_[ ]*([ ]*""[ ]*),"",g
+ 
+QAskForTextDialog.h: QAskForTextDialog.ui
+	$(UIC) $< -o $@
+QAskForTextDialog.C: QAskForTextDialog.h QAskForTextDialog.ui
+	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+ 
 %Base.h: %.ui
 	$(UIC) $< -o $@
 %Base.C: %Base.h %.ui

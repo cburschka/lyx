@@ -1,0 +1,66 @@
+/**
+ * \file Alert_pimpl.C
+ * Copyright 2001 the LyX Team
+ * Read the file COPYING
+ *
+ * \author John Levon <moz@compsoc.man.ac.uk>
+ */
+
+#include <config.h>
+
+#include <qmessagebox.h>
+#include <qlabel.h>
+#include <qlineedit.h>
+#include "ui/QAskForTextDialog.h"
+ 
+#include FORMS_H_LOCATION
+ 
+#include <algorithm>
+ 
+#include <gettext.h>
+ 
+#include "Alert.h"
+#include "Alert_pimpl.h" 
+#include "xforms_helpers.h"
+ 
+using std::pair;
+using std::make_pair;
+
+void alert_pimpl(string const & s1, string const & s2, string const & s3)
+{
+	QMessageBox::warning(0, "LyX", (s1 + "\n" + "\n" + s2 + "\n" + s3).c_str());
+}
+
+
+bool askQuestion_pimpl(string const & s1, string const & s2, string const & s3)
+{
+	return !(QMessageBox::information(0, "LyX", (s1 + "\n" + s2 + "\n" + s3).c_str(),
+		_("&Yes"), _("&No"), 0, 1));
+}
+
+
+int askConfirmation_pimpl(string const & s1, string const & s2, string const & s3)
+{
+	return (QMessageBox::information(0, "LyX", (s1 + "\n" + s2 + "\n" + s3).c_str(),
+		_("&Yes"), _("&No"), _("&Cancel"), 0, 2)) + 1;
+}
+
+
+pair<bool, string> const askForText_pimpl(string const & msg, string const & dflt)
+{
+	string title = _("LyX: ");
+	title += msg;
+ 
+	QAskForTextDialog d(0, msg.c_str(), true); 
+	// less than ideal !
+	d.askLA->setText((string("&") + msg).c_str());
+	d.askLE->setText(dflt.c_str());
+	int ret = d.exec();
+
+	d.hide();
+ 
+	if (ret)
+		return make_pair<bool, string>(true, d.askLE->text().latin1());
+	else
+		return make_pair<bool, string>(false, string());
+}

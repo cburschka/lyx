@@ -2,6 +2,7 @@
 
 DIALOGS = \
 	QAbout \
+	QAskForText \
 	QBibitem \
 	QBibtex \
 	QCharacter \
@@ -113,6 +114,8 @@ MOCDIALOGS = \
 UIDIALOGS = \
 	QAboutDialogBase.h \
 	QAboutDialogBase.C \
+	QAskForTextDialog.h \
+	QAskForTextDialog.C \
 	QBibitemDialogBase.h \
 	QBibitemDialogBase.C \
 	QBibtexDialogBase.h \
@@ -166,6 +169,7 @@ UIDIALOGS = \
  
 UIMOCDIALOGS = \
 	QAboutDialogBase_moc.C \
+	QAskForTextDialog_moc.C \
 	QBibitemDialogBase_moc.C \
 	QBibtexDialogBase_moc.C \
 	QCharacterDialogBase_moc.C \
@@ -191,9 +195,3 @@ UIMOCDIALOGS = \
 	QTocDialogBase_moc.C \
 	QURLDialogBase_moc.C \
 	QVCLogDialogBase_moc.C
-
-
-
-
-
-

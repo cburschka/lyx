@@ -36,9 +36,15 @@ void Timeout::Pimpl::reset()
 }
 
 
+bool Timeout::Pimpl::running() const
+{
+	return timeout_id != -1;
+}
+
+ 
 void Timeout::Pimpl::start()
 {
-	if (timeout_id != -1)
+	if (running())
 		lyxerr << "Timeout::start: already running!" << endl;
 	timeout_id = startTimer(owner_->timeout_ms);
 }
@@ -46,6 +52,6 @@ void Timeout::Pimpl::start()
 
 void Timeout::Pimpl::stop()
 {
-	if (timeout_id != -1)
+	if (running())
 		reset();
 }

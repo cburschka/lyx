@@ -18,7 +18,7 @@
 #include "QPreamble.h"
 
 #include "support/lyxlib.h"
-#include "support/syscall.h"
+#include "support/forkedcall.h"
 #include "support/filetools.h"
 #include "gettext.h" 
  
@@ -81,10 +81,10 @@ void QPreambleDialog::editClicked()
 
 	editor += " " + filename;
  
-	Systemcalls sys;
+	Forkedcall call;
 
-	// FIXME: synchronous, ugh. Make async when moved to controllers ?
-	if (sys.startscript(Systemcalls::Wait, editor)) {
+	// FIXME: make async
+	if (call.startscript(Forkedcall::Wait, editor)) {
 		lyx::unlink(filename);
 		return;
 	}
