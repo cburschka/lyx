@@ -169,7 +169,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.2.0cvs\n"
-"POT-Creation-Date: 2003-12-29 15:38+0100\n"
+"POT-Creation-Date: 2004-01-05 17:35+0100\n"
 "PO-Revision-Date: 2003-12-16 14:47+0100\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@wanadoo.fr>\n"
 "Language-Team: lyxfr <http://perso.wanadoo.fr/adrien.rebollo/lyxfr/lyxfr."
@@ -4243,7 +4243,7 @@ msgid "Send output to a file"
 msgstr "Envoie le résultat à un fichier"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
-#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2.layout:836
+#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2.layout:840
 #: src/frontends/xforms/FormRef.C:37
 msgid "Reference"
 msgstr "Référence"
@@ -5176,7 +5176,7 @@ msgstr "Auteur"
 #: ../lib/layouts/aa.layout:66 ../lib/layouts/aa.layout:124
 #: ../lib/layouts/aapaper.layout:71 ../lib/layouts/egs.layout:273
 #: ../lib/layouts/entcs.layout:31 ../lib/layouts/g-brief-en.layout:452
-#: ../lib/layouts/g-brief2.layout:794 ../lib/layouts/ijmpd.layout:58
+#: ../lib/layouts/g-brief2.layout:798 ../lib/layouts/ijmpd.layout:58
 #: ../lib/layouts/kluwer.layout:179 ../lib/layouts/revtex.layout:135
 #: ../lib/layouts/revtex4.layout:170 ../lib/layouts/scrlettr.layout:155
 #: ../lib/layouts/scrlttr2.layout:48 ../lib/layouts/aapaper.inc:31
@@ -5198,7 +5198,7 @@ msgstr "Mail"
 #: ../lib/layouts/aapaper.layout:79 ../lib/layouts/aapaper.layout:167
 #: ../lib/layouts/aastex.layout:94 ../lib/layouts/aastex.layout:207
 #: ../lib/layouts/egs.layout:548 ../lib/layouts/foils.layout:153
-#: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/g-brief2.layout:816
+#: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/g-brief2.layout:820
 #: ../lib/layouts/kluwer.layout:144 ../lib/layouts/linuxdoc.layout:321
 #: ../lib/layouts/revtex.layout:123 ../lib/layouts/revtex4.layout:139
 #: ../lib/layouts/scrlettr.layout:176 ../lib/layouts/scrlttr2.layout:249
@@ -5511,7 +5511,7 @@ msgid "Send_To_Address"
 msgstr "Envoi_À_Adresse"
 
 #: ../lib/layouts/dinbrief.layout:48 ../lib/layouts/g-brief-en.layout:517
-#: ../lib/layouts/g-brief2.layout:859 ../lib/layouts/heb-letter.layout:16
+#: ../lib/layouts/g-brief2.layout:863 ../lib/layouts/heb-letter.layout:16
 #: ../lib/layouts/scrlettr.layout:70 ../lib/layouts/scrlttr2.layout:100
 #: ../lib/layouts/stdletter.inc:59
 msgid "Opening"
@@ -5525,7 +5525,7 @@ msgid "Signature"
 msgstr "Signature"
 
 #: ../lib/layouts/dinbrief.layout:74 ../lib/layouts/g-brief-en.layout:591
-#: ../lib/layouts/g-brief2.layout:932 ../lib/layouts/heb-letter.layout:20
+#: ../lib/layouts/g-brief2.layout:933 ../lib/layouts/heb-letter.layout:20
 #: ../lib/layouts/scrlettr.layout:81 ../lib/layouts/scrlttr2.layout:122
 #: ../lib/layouts/stdletter.inc:106
 msgid "Closing"
@@ -5540,7 +5540,7 @@ msgid "ps"
 msgstr "ps"
 
 #: ../lib/layouts/dinbrief.layout:122 ../lib/layouts/g-brief-en.layout:566
-#: ../lib/layouts/g-brief2.layout:907 ../lib/layouts/stdletter.inc:129
+#: ../lib/layouts/g-brief2.layout:911 ../lib/layouts/stdletter.inc:129
 #: src/lengthcommon.C:35
 msgid "cc"
 msgstr "cc"
@@ -5833,19 +5833,19 @@ msgstr "Ville"
 msgid "State"
 msgstr "État"
 
-#: ../lib/layouts/g-brief-en.layout:173 ../lib/layouts/g-brief2.layout:689
+#: ../lib/layouts/g-brief-en.layout:173 ../lib/layouts/g-brief2.layout:693
 msgid "ReturnAddress"
 msgstr "AdresseRetour"
 
-#: ../lib/layouts/g-brief-en.layout:194 ../lib/layouts/g-brief2.layout:710
+#: ../lib/layouts/g-brief-en.layout:194 ../lib/layouts/g-brief2.layout:714
 msgid "MyRef"
 msgstr "NotreRéf"
 
-#: ../lib/layouts/g-brief-en.layout:214 ../lib/layouts/g-brief2.layout:730
+#: ../lib/layouts/g-brief-en.layout:214 ../lib/layouts/g-brief2.layout:734
 msgid "YourRef"
 msgstr "VotreRéf"
 
-#: ../lib/layouts/g-brief-en.layout:236 ../lib/layouts/g-brief2.layout:752
+#: ../lib/layouts/g-brief-en.layout:236 ../lib/layouts/g-brief2.layout:756
 msgid "YourMail"
 msgstr "VotreCourrier"
 
@@ -5861,7 +5861,7 @@ msgstr "CodeBanque"
 msgid "BankAccount"
 msgstr "CompteBancaire"
 
-#: ../lib/layouts/g-brief-en.layout:424 ../lib/layouts/g-brief2.layout:773
+#: ../lib/layouts/g-brief-en.layout:424 ../lib/layouts/g-brief2.layout:777
 msgid "PostalComment"
 msgstr "CommentairePostal"
 
@@ -5869,7 +5869,7 @@ msgstr "CommentairePostal"
 msgid "PostalCommend"
 msgstr "PostalCommend"
 
-#: ../lib/layouts/g-brief-en.layout:543 ../lib/layouts/g-brief2.layout:884
+#: ../lib/layouts/g-brief-en.layout:543 ../lib/layouts/g-brief2.layout:888
 msgid "Encl."
 msgstr "P.J."
 
@@ -5910,32 +5910,32 @@ msgstr "Nom"
 
 #: ../lib/layouts/g-brief2.layout:230
 #, fuzzy
-msgid "AdressRowA"
+msgid "AddressRowA"
 msgstr "Adresse"
 
 #: ../lib/layouts/g-brief2.layout:250
 #, fuzzy
-msgid "AdressRowB"
+msgid "AddressRowB"
 msgstr "Adresse"
 
 #: ../lib/layouts/g-brief2.layout:269
 #, fuzzy
-msgid "AdressRowC"
+msgid "AddressRowC"
 msgstr "Adresse"
 
 #: ../lib/layouts/g-brief2.layout:288
 #, fuzzy
-msgid "AdressRowD"
+msgid "AddressRowD"
 msgstr "Adresse"
 
 #: ../lib/layouts/g-brief2.layout:307
 #, fuzzy
-msgid "AdressRowE"
+msgid "AddressRowE"
 msgstr "Adresse"
 
 #: ../lib/layouts/g-brief2.layout:326
 #, fuzzy
-msgid "AdressRowF"
+msgid "AddressRowF"
 msgstr "Adresse"
 
 #: ../lib/layouts/g-brief2.layout:345
@@ -5976,48 +5976,48 @@ msgstr ""
 msgid "InternetRowB"
 msgstr ""
 
-#: ../lib/layouts/g-brief2.layout:498
+#: ../lib/layouts/g-brief2.layout:499
 msgid "InternetRowC"
 msgstr ""
 
-#: ../lib/layouts/g-brief2.layout:516
+#: ../lib/layouts/g-brief2.layout:518
 msgid "InternetRowD"
 msgstr ""
 
-#: ../lib/layouts/g-brief2.layout:534
+#: ../lib/layouts/g-brief2.layout:537
 msgid "InternetRowE"
 msgstr ""
 
-#: ../lib/layouts/g-brief2.layout:552
+#: ../lib/layouts/g-brief2.layout:556
 msgid "InternetRowF"
 msgstr ""
 
-#: ../lib/layouts/g-brief2.layout:571
+#: ../lib/layouts/g-brief2.layout:575
 #, fuzzy
 msgid "BankRowA"
 msgstr "Banque"
 
-#: ../lib/layouts/g-brief2.layout:591
+#: ../lib/layouts/g-brief2.layout:595
 #, fuzzy
 msgid "BankRowB"
 msgstr "Banque"
 
-#: ../lib/layouts/g-brief2.layout:610
+#: ../lib/layouts/g-brief2.layout:614
 #, fuzzy
 msgid "BankRowC"
 msgstr "Banque"
 
-#: ../lib/layouts/g-brief2.layout:629
+#: ../lib/layouts/g-brief2.layout:633
 #, fuzzy
 msgid "BankRowD"
 msgstr "Banque"
 
-#: ../lib/layouts/g-brief2.layout:648
+#: ../lib/layouts/g-brief2.layout:652
 #, fuzzy
 msgid "BankRowE"
 msgstr "Banque"
 
-#: ../lib/layouts/g-brief2.layout:667
+#: ../lib/layouts/g-brief2.layout:671
 #, fuzzy
 msgid "BankRowF"
 msgstr "Banque"
@@ -13082,12 +13082,6 @@ msgstr "La fonction 'layout' nécessite un argument."
 #, fuzzy
 #~ msgid "InternetZeileF"
 #~ msgstr "Verteiler"
-
-#~ msgid "«text»"
-#~ msgstr "«texte»"
-
-#~ msgid "»text«"
-#~ msgstr "»texte«"
 
 #~ msgid "Icelandic"
 #~ msgstr "Islandais"

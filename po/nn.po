@@ -11,7 +11,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nn_1.3.x\n"
-"POT-Creation-Date: 2003-12-29 15:38+0100\n"
+"POT-Creation-Date: 2004-01-05 17:35+0100\n"
 "PO-Revision-Date: 2003-12-16 22:59+0100\n"
 "Last-Translator: Ingar Parelisussen <ingar.pareliussen@chembio.ntnu.no>\n"
 "Language-Team: Nynorsk <nn@li.org>\n"
@@ -4073,7 +4073,7 @@ msgid "Send output to a file"
 msgstr "Skriv til ei fil"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:22
-#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2.layout:836
+#: ../lib/layouts/g-brief-en.layout:494 ../lib/layouts/g-brief2.layout:840
 #: src/frontends/xforms/FormRef.C:37
 msgid "Reference"
 msgstr "Referanse"
@@ -5003,7 +5003,7 @@ msgstr "Forfattar"
 #: ../lib/layouts/aa.layout:66 ../lib/layouts/aa.layout:124
 #: ../lib/layouts/aapaper.layout:71 ../lib/layouts/egs.layout:273
 #: ../lib/layouts/entcs.layout:31 ../lib/layouts/g-brief-en.layout:452
-#: ../lib/layouts/g-brief2.layout:794 ../lib/layouts/ijmpd.layout:58
+#: ../lib/layouts/g-brief2.layout:798 ../lib/layouts/ijmpd.layout:58
 #: ../lib/layouts/kluwer.layout:179 ../lib/layouts/revtex.layout:135
 #: ../lib/layouts/revtex4.layout:170 ../lib/layouts/scrlettr.layout:155
 #: ../lib/layouts/scrlttr2.layout:48 ../lib/layouts/aapaper.inc:31
@@ -5025,7 +5025,7 @@ msgstr "E-post"
 #: ../lib/layouts/aapaper.layout:79 ../lib/layouts/aapaper.layout:167
 #: ../lib/layouts/aastex.layout:94 ../lib/layouts/aastex.layout:207
 #: ../lib/layouts/egs.layout:548 ../lib/layouts/foils.layout:153
-#: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/g-brief2.layout:816
+#: ../lib/layouts/g-brief-en.layout:474 ../lib/layouts/g-brief2.layout:820
 #: ../lib/layouts/kluwer.layout:144 ../lib/layouts/linuxdoc.layout:321
 #: ../lib/layouts/revtex.layout:123 ../lib/layouts/revtex4.layout:139
 #: ../lib/layouts/scrlettr.layout:176 ../lib/layouts/scrlttr2.layout:249
@@ -5337,7 +5337,7 @@ msgid "Send_To_Address"
 msgstr "Send_Til_Adresse"
 
 #: ../lib/layouts/dinbrief.layout:48 ../lib/layouts/g-brief-en.layout:517
-#: ../lib/layouts/g-brief2.layout:859 ../lib/layouts/heb-letter.layout:16
+#: ../lib/layouts/g-brief2.layout:863 ../lib/layouts/heb-letter.layout:16
 #: ../lib/layouts/scrlettr.layout:70 ../lib/layouts/scrlttr2.layout:100
 #: ../lib/layouts/stdletter.inc:59
 msgid "Opening"
@@ -5351,7 +5351,7 @@ msgid "Signature"
 msgstr "Signatur"
 
 #: ../lib/layouts/dinbrief.layout:74 ../lib/layouts/g-brief-en.layout:591
-#: ../lib/layouts/g-brief2.layout:932 ../lib/layouts/heb-letter.layout:20
+#: ../lib/layouts/g-brief2.layout:933 ../lib/layouts/heb-letter.layout:20
 #: ../lib/layouts/scrlettr.layout:81 ../lib/layouts/scrlttr2.layout:122
 #: ../lib/layouts/stdletter.inc:106
 msgid "Closing"
@@ -5366,7 +5366,7 @@ msgid "ps"
 msgstr "ps"
 
 #: ../lib/layouts/dinbrief.layout:122 ../lib/layouts/g-brief-en.layout:566
-#: ../lib/layouts/g-brief2.layout:907 ../lib/layouts/stdletter.inc:129
+#: ../lib/layouts/g-brief2.layout:911 ../lib/layouts/stdletter.inc:129
 #: src/lengthcommon.C:35
 msgid "cc"
 msgstr "Kopi til"
@@ -5659,19 +5659,19 @@ msgstr "Stad"
 msgid "State"
 msgstr "Stat"
 
-#: ../lib/layouts/g-brief-en.layout:173 ../lib/layouts/g-brief2.layout:689
+#: ../lib/layouts/g-brief-en.layout:173 ../lib/layouts/g-brief2.layout:693
 msgid "ReturnAddress"
 msgstr "Returadresse"
 
-#: ../lib/layouts/g-brief-en.layout:194 ../lib/layouts/g-brief2.layout:710
+#: ../lib/layouts/g-brief-en.layout:194 ../lib/layouts/g-brief2.layout:714
 msgid "MyRef"
 msgstr "MinRef"
 
-#: ../lib/layouts/g-brief-en.layout:214 ../lib/layouts/g-brief2.layout:730
+#: ../lib/layouts/g-brief-en.layout:214 ../lib/layouts/g-brief2.layout:734
 msgid "YourRef"
 msgstr "DinRef"
 
-#: ../lib/layouts/g-brief-en.layout:236 ../lib/layouts/g-brief2.layout:752
+#: ../lib/layouts/g-brief-en.layout:236 ../lib/layouts/g-brief2.layout:756
 msgid "YourMail"
 msgstr "DinAdresse"
 
@@ -5687,7 +5687,7 @@ msgstr "Bank"
 msgid "BankAccount"
 msgstr "Bankkonto"
 
-#: ../lib/layouts/g-brief-en.layout:424 ../lib/layouts/g-brief2.layout:773
+#: ../lib/layouts/g-brief-en.layout:424 ../lib/layouts/g-brief2.layout:777
 msgid "PostalComment"
 msgstr "Post-kommentar  "
 
@@ -5695,7 +5695,7 @@ msgstr "Post-kommentar  "
 msgid "PostalCommend"
 msgstr "Post-kommentar"
 
-#: ../lib/layouts/g-brief-en.layout:543 ../lib/layouts/g-brief2.layout:884
+#: ../lib/layouts/g-brief-en.layout:543 ../lib/layouts/g-brief2.layout:888
 msgid "Encl."
 msgstr "Vedlegg"
 
@@ -5728,27 +5728,33 @@ msgid "NameRowG"
 msgstr "NamneLinjeG"
 
 #: ../lib/layouts/g-brief2.layout:230
-msgid "AdressRowA"
+#, fuzzy
+msgid "AddressRowA"
 msgstr "AdresseLinjeA"
 
 #: ../lib/layouts/g-brief2.layout:250
-msgid "AdressRowB"
+#, fuzzy
+msgid "AddressRowB"
 msgstr "AdresseLinjeB"
 
 #: ../lib/layouts/g-brief2.layout:269
-msgid "AdressRowC"
+#, fuzzy
+msgid "AddressRowC"
 msgstr "AdresseLinjeC"
 
 #: ../lib/layouts/g-brief2.layout:288
-msgid "AdressRowD"
+#, fuzzy
+msgid "AddressRowD"
 msgstr "AdresseLinjeD"
 
 #: ../lib/layouts/g-brief2.layout:307
-msgid "AdressRowE"
+#, fuzzy
+msgid "AddressRowE"
 msgstr "AdresseLinjeE"
 
 #: ../lib/layouts/g-brief2.layout:326
-msgid "AdressRowF"
+#, fuzzy
+msgid "AddressRowF"
 msgstr "AdresseLinjeF"
 
 #: ../lib/layouts/g-brief2.layout:345
@@ -5789,43 +5795,43 @@ msgstr "InternettLinjeA"
 msgid "InternetRowB"
 msgstr "InternettLinjeB"
 
-#: ../lib/layouts/g-brief2.layout:498
+#: ../lib/layouts/g-brief2.layout:499
 msgid "InternetRowC"
 msgstr "InternettLinjeC"
 
-#: ../lib/layouts/g-brief2.layout:516
+#: ../lib/layouts/g-brief2.layout:518
 msgid "InternetRowD"
 msgstr "InternettLinjeD"
 
-#: ../lib/layouts/g-brief2.layout:534
+#: ../lib/layouts/g-brief2.layout:537
 msgid "InternetRowE"
 msgstr "InternettLinjeE"
 
-#: ../lib/layouts/g-brief2.layout:552
+#: ../lib/layouts/g-brief2.layout:556
 msgid "InternetRowF"
 msgstr "InternettLinjeF"
 
-#: ../lib/layouts/g-brief2.layout:571
+#: ../lib/layouts/g-brief2.layout:575
 msgid "BankRowA"
 msgstr "BankLinjeA"
 
-#: ../lib/layouts/g-brief2.layout:591
+#: ../lib/layouts/g-brief2.layout:595
 msgid "BankRowB"
 msgstr "BankLinjeB"
 
-#: ../lib/layouts/g-brief2.layout:610
+#: ../lib/layouts/g-brief2.layout:614
 msgid "BankRowC"
 msgstr "BankLinjeC"
 
-#: ../lib/layouts/g-brief2.layout:629
+#: ../lib/layouts/g-brief2.layout:633
 msgid "BankRowD"
 msgstr "BankLinjeD"
 
-#: ../lib/layouts/g-brief2.layout:648
+#: ../lib/layouts/g-brief2.layout:652
 msgid "BankRowE"
 msgstr "BankLinjeE"
 
-#: ../lib/layouts/g-brief2.layout:667
+#: ../lib/layouts/g-brief2.layout:671
 msgid "BankRowF"
 msgstr "BankLinjeF"
 
@@ -9298,11 +9304,11 @@ msgstr ",,tekst''"
 
 #: src/frontends/qt2/QDocument.C:92
 msgid "<<text>>"
-msgstr "<<tekst>>"
+msgstr "«tekst»"
 
 #: src/frontends/qt2/QDocument.C:93
 msgid ">>text<<"
-msgstr ">>tekst<<"
+msgstr "»tekst«"
 
 #: src/frontends/qt2/QDocument.C:105
 msgid "US letter"
@@ -14392,15 +14398,6 @@ msgstr "LyX funksjonen «Stil» treng eit argument"
 #~ msgid "Start spellcheck"
 #~ msgstr "Start stavekontroll"
 
-#~ msgid "Rotate 90Â°"
-#~ msgstr "Roter 90°"
-
-#~ msgid "«text»"
-#~ msgstr "«tekst»"
-
-#~ msgid "»text«"
-#~ msgstr "»tekst«"
-
 #~ msgid "Files (*)"
 #~ msgstr "Filer (*)"
 
@@ -15168,12 +15165,6 @@ msgstr "LyX funksjonen «Stil» treng eit argument"
 
 #~ msgid "Foot/Head Margins"
 #~ msgstr "Topp og botn margar"
-
-#~ msgid "Â«textÂ»"
-#~ msgstr "«tekst»"
-
-#~ msgid "Â»textÂ«"
-#~ msgstr "»tekst«"
 
 #~ msgid "P&S Driver:"
 #~ msgstr "PS Drivar:"
