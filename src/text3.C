@@ -368,7 +368,7 @@ void LyXText::number(LCursor & cur)
 
 bool LyXText::rtl(LCursor & cur) const
 {
-	return getPar(cur.par())->isRightToLeftPar(bv()->buffer()->params());
+	return cur.paragraph().isRightToLeftPar(bv()->buffer()->params());
 }
 
 

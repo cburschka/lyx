@@ -2547,7 +2547,7 @@ int LyXTabular::getCellFromInset(InsetBase const * inset) const
 	// is this inset part of the tabular?
 	if (!inset) {
 		lyxerr << "Error: this is not a cell of the tabular!" << endl;
-		return -1;
+		BOOST_ASSERT(false);
 	}
 
 	for (int cell = 0, n = getNumberOfCells(); cell < n; ++cell)
@@ -2560,7 +2560,9 @@ int LyXTabular::getCellFromInset(InsetBase const * inset) const
 	// We should have found a cell at this point
 	lyxerr << "LyXTabular::getCellFromInset: Cell of inset "
 		<< inset << " not found!" << endl;
-	return -1;
+	BOOST_ASSERT(false);
+	// shut up compiler
+	return 0;
 }
 
 

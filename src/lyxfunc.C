@@ -310,7 +310,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	}
 
 	UpdatableInset * tli = cur.inset() ? cur.inset()->asUpdatableInset() : 0;
-	InsetTabular * tab = cur.innerInsetTabular();
 
 	// I would really like to avoid having this switch and rather try to
 	// encode this in the function itself.
@@ -328,10 +327,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 		break;
 	case LFUN_CUT:
 	case LFUN_COPY:
-		if (tab && tab->hasSelection())
-			disable = false;
-		else
-			disable = cur.inTexted() && !cur.selection();
+		disable = !cur.selection();
 		break;
 
 	case LFUN_RUNCHKTEX:

@@ -1358,7 +1358,7 @@ bool LyXText::checkAndActivateInset(LCursor & cur, bool front)
 
 DispatchResult LyXText::moveRight(LCursor & cur)
 {
-	if (cur.paragraph().isRightToLeftPar(bv()->buffer()->params()))
+	if (rtl(cur))
 		return moveLeftIntern(cur, false, true, false);
 	else
 		return moveRightIntern(cur, true, true, false);
@@ -1367,7 +1367,7 @@ DispatchResult LyXText::moveRight(LCursor & cur)
 
 DispatchResult LyXText::moveLeft(LCursor & cur)
 {
-	if (cur.paragraph().isRightToLeftPar(bv()->buffer()->params()))
+	if (rtl(cur))
 		return moveRightIntern(cur, true, true, false);
 	else
 		return moveLeftIntern(cur, false, true, false);

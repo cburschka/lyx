@@ -121,7 +121,8 @@ public:
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
-	FuncStatus getStatus(std::string const & argument, int cell) const;
+	FuncStatus getStatus(BufferView &, 
+		std::string const & argument, int cell) const;
 	/// Appends \c list with all labels found within this inset.
 	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
 	///
@@ -139,8 +140,6 @@ public:
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 
-	/// are some cells selected ?
-	bool hasSelection() const { return has_selection; }
 	///
 	Buffer const & buffer() const;
 
@@ -174,10 +173,10 @@ private:
 	void drawCellLines(Painter &, int x, int baseline,
 			   int row, int cell) const;
 	///
-	void drawCellSelection(Painter &, int x, int baseline,
+	void drawCellSelection(PainterInfo &, int x, int baseline,
 			       int row, int column, int cell) const;
 	///
-	void setPos(LCursor & cur, int x, int y) const;
+	InsetBase * setPos(LCursor & cur, int x, int y) const;
 	///
 	bool moveRight(LCursor & cur);
 	///
@@ -209,9 +208,9 @@ private:
 	///
 	void removeTabularRow();
 	///
-	void clearSelection() const;
+	//void clearSelection() const;
 	///
-	void setSelection(int start, int end) const;
+	//void setSelection(int start, int end) const;
 	///
 	void activateCellInset(LCursor &, int cell, int x, int y);
 	///
@@ -219,18 +218,21 @@ private:
 	///
 	bool hasPasteBuffer() const;
 	///
-	bool copySelection(BufferView &);
+	bool copySelection(LCursor & cur);
 	///
-	bool pasteSelection(BufferView &);
+	bool pasteSelection(LCursor & cur);
 	///
-	bool cutSelection(BufferParams const & bp);
+	void cutSelection(LCursor & cur);
 	///
 	bool isRightToLeft(LCursor & cur);
 	///
-	void getSelection(int cell,
-		int & scol, int & ecol, int & srow, int & erow) const;
+	void getSelection(LCursor & cur,
+		int & rs, int & re, int & cs, int & ce) const;
 	///
 	bool insertAsciiString(BufferView &, std::string const & buf, bool usePaste);
+
+	/// are we operating on several cells?
+	bool tablemode(LCursor & cur) const;
 
 	//
 	// Private structures and variables
@@ -241,19 +243,15 @@ private:
 	///
 	mutable int cursory_;
 	/// true if a set of cells are selected
-	mutable bool has_selection;
+	//mutable bool has_selection;
 	/// the starting cell selection nr
-	mutable int sel_cell_start;
+	//mutable int sel_cell_start;
 	/// the ending cell selection nr
-	mutable int sel_cell_end;
+	//mutable int sel_cell_end;
 	///
 	mutable int first_visible_cell;
 	///
 	mutable int in_reset_pos;
-	/// tablemode == true  means we operate on the table as such,
-	// i.e. select cells instead of characters in a cell etc.
-	// tablemode == false directs most LFUN handling to the 'current' cell.
-	mutable bool tablemode;
 };
 
 
