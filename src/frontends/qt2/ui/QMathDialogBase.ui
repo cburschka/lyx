@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>304</width>
+            <width>322</width>
             <height>356</height>
         </rect>
     </property>
@@ -236,7 +236,7 @@
                                             </property>
                                             <property>
                                                 <name>toolTip</name>
-                                                <string>Toggle between display mode</string>
+                                                <string>Toggle between display and inline mode</string>
                                             </property>
                                         </widget>
                                         <widget row="0"  column="1" >
@@ -751,6 +751,7 @@
             <verdata>7</verdata>
         </sizepolicy>
         <pixmap>image10</pixmap>
+        <slot access="public">raiseWidget(int)</slot>
     </customwidget>
 </customwidgets>
 <images>
