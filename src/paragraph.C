@@ -85,11 +85,6 @@ LyXParagraph::LyXParagraph()
 	itemdepth = 0;
 	next_ = 0;
 	previous_ = 0;
-#ifndef NEW_INSETS
-	footnoteflag = LyXParagraph::NO_FOOTNOTE;
-	footnotekind = LyXParagraph::FOOTNOTE; // should not be needed
-#endif
-
 	inset_owner = 0;
 	id_ = paragraph_id++;
         bibkey = 0; // ale970302
@@ -106,6 +101,7 @@ LyXParagraph::LyXParagraph(LyXParagraph * par)
 	for (int i = 0; i < 10; ++i) setCounter(i, 0);
 	enumdepth = 0;
 	itemdepth = 0;
+
 	// double linked list begin
 	next_ = par->next_;
 	if (next_)
@@ -113,10 +109,7 @@ LyXParagraph::LyXParagraph(LyXParagraph * par)
 	previous_ = par;
 	previous_->next_ = this;
 	// end
-#ifndef NEW_INSETS
-	footnoteflag = LyXParagraph::NO_FOOTNOTE;
-	footnotekind = LyXParagraph::FOOTNOTE;
-#endif
+	
 	inset_owner = 0;
 	id_ = paragraph_id++;
 
@@ -130,22 +123,6 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 			     BufferParams const & bparams,
 			     char footflag, char dth) const
 {
-#ifndef NEW_INSETS
-	if (footnoteflag != LyXParagraph::NO_FOOTNOTE ||
-	    !previous_
-	    || previous_->footnoteflag == LyXParagraph::NO_FOOTNOTE) {
-		// The beginning or the end of a footnote environment?
-		if (footflag != footnoteflag) {
-			footflag = footnoteflag;
-			if (footflag) {
-				os << "\n\\begin_float "
-				   << string_footnotekinds[footnotekind]
-				   << " ";
-			} else {
-				os << "\n\\end_float ";
-			}
-		}
-#endif
 		// The beginning or end of a deeper (i.e. nested) area?
 		if (dth != params.depth()) {
 			if (params.depth() > dth) {
@@ -213,36 +190,6 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 			}
 			os << "\\align " << string_align[h] << " ";
 		}
-#ifndef NO_PEXTRA
-                if (params.pextraType() != PEXTRA_NONE) {
-                        os << "\\pextra_type " << params.pextraType();
-                        if (params.pextraType() == PEXTRA_MINIPAGE) {
-				os << " \\pextra_alignment "
-				   << params.pextraAlignment();
-				if (params.pextraHfill())
-					os << " \\pextra_hfill "
-					   << params.pextraHfill();
-				if (params.pextraStartMinipage())
-					os << " \\pextra_start_minipage "
-					   << params.pextraStartMinipage();
-                        }
-                        if (!params.pextraWidth().empty()) {
-				os << " \\pextra_width "
-				   << VSpace(params.pextraWidth()).asLyXCommand();
-                        } else if (!params.pextraWidthp().empty()) {
-				os << " \\pextra_widthp "
-				   << params.pextraWidthp();
-                        }
-			os << '\n';
-                }
-#endif
-#ifndef NEW_INSETS
-	} else {
-   		// Dummy layout. This means that a footnote ended.
-		os << "\n\\end_float ";
-		footflag = LyXParagraph::NO_FOOTNOTE;
-	}
-#endif
 
 	// bibitem  ale970302
 	if (bibkey)
@@ -331,13 +278,6 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
 {
 	BufferParams const & bparams = features.bufferParams();
 
-#ifndef NEW_INSETS
-	// this will be useful later
-	LyXLayout const & layout =
-		textclasslist.Style(bparams.textclass, 
-				    GetLayout());
-#endif
-	
 	// check the params.
 	if (params.lineTop() || params.lineBottom())
 		features.lyxline = true;
@@ -387,27 +327,6 @@ void LyXParagraph::validate(LaTeXFeatures & features) const
 		if ((*cit).inset)
 			(*cit).inset->Validate(features);
 	}
-
-#ifndef NO_PEXTRA
-        if (params.pextraType() == PEXTRA_INDENT)
-                features.LyXParagraphIndent = true;
-        if (params.pextraType() == PEXTRA_FLOATFLT)
-                features.floatflt = true;
-#endif
-#ifndef NEW_INSETS
-        if (layout.needprotect 
-	    && next_ && next_->footnoteflag != LyXParagraph::NO_FOOTNOTE)
-		features.NeedLyXFootnoteCode = true;
-#endif
-#ifndef NO_PEXTRA
-        if (bparams.paragraph_separation == BufferParams::PARSEP_INDENT
-            && params.pextraType() == LyXParagraph::PEXTRA_MINIPAGE)
-		features.NeedLyXMinipageIndent = true;
-#endif
-#ifndef NEW_INSETS
-	if (footnoteflag != NO_FOOTNOTE && footnotekind == ALGORITHM)
-		features.algorithm = true;
-#endif
 }
 
 
@@ -512,23 +431,7 @@ LyXParagraph::~LyXParagraph()
 
 void LyXParagraph::Erase(LyXParagraph::size_type pos)
 {
-#ifndef NEW_INSETS
-	// > because last is the next unused position, and you can 
-	// use it if you want
-	if (pos > size()) {
-		if (next_ && next_->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
-			NextAfterFootnote()->Erase(pos - text.size() - 1);
-		else 
-			lyxerr.debug() << "ERROR (LyXParagraph::Erase): "
-				"position does not exist." << endl;
-		return;
-	}
-#else
 	lyx::Assert(pos < size());
-#endif
-#ifndef NEW_INSETS
-	if (pos < size()) { // last is free for insertation, but should be empty
-#endif
 		// if it is an inset, delete the inset entry 
 		if (text[pos] == LyXParagraph::META_INSET) {
 			// find the entry
@@ -583,12 +486,6 @@ void LyXParagraph::Erase(LyXParagraph::size_type pos)
 					 search_inset, matchIT());
 		     it != lend; ++it)
 			--(*it).pos;
-#ifndef NEW_INSETS
-	} else {
-		lyxerr << "ERROR (LyXParagraph::Erase): "
-			"can't erase non-existant char." << endl;
-	}
-#endif
 }
 
 
@@ -604,22 +501,8 @@ void LyXParagraph::InsertChar(LyXParagraph::size_type pos,
 			      LyXParagraph::value_type c,
 			      LyXFont const & font)
 {
-#ifndef NEW_INSETS
-	// > because last is the next unused position, and you can 
-	// use it if you want
-	if (pos > size()) {
-		if (next_
-		    && next_->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
-			NextAfterFootnote()->InsertChar(pos - text.size() - 1,
-							c);
-		else 
-			lyxerr.debug() << "ERROR (LyXParagraph::InsertChar): "
-				"position does not exist." << endl;
-		return;
-	}
-#else
 	lyx::Assert(pos <= size());
-#endif
+
 	text.insert(text.begin() + pos, c);
 
 	// Update the font table.
@@ -654,24 +537,7 @@ void LyXParagraph::InsertInset(LyXParagraph::size_type pos,
 			       Inset * inset, LyXFont const & font)
 {
 	lyx::Assert(inset);
-	
-#ifndef NEW_INSETS
-	// > because last is the next unused position, and you can 
-	// use it if you want
-	if (pos > size()) {
-		if (next_
-		    && next_->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
-			NextAfterFootnote()
-				->InsertInset(pos - text.size() - 1,
-					      inset, font);
-		else
-			lyxerr << "ERROR (LyXParagraph::InsertInset): " 
-				"position does not exist: " << pos << endl;
-		return;
-	}
-#else
 	lyx::Assert(pos <= size());
-#endif
 	
 	InsertChar(pos, META_INSET, font);
 	lyx::Assert(text[pos] == META_INSET);
@@ -703,22 +569,8 @@ bool LyXParagraph::InsertInsetAllowed(Inset * inset)
 
 Inset * LyXParagraph::GetInset(LyXParagraph::size_type pos)
 {
-#ifndef NEW_INSETS
-	if (pos >= size()) {
-		if (next_
-		    && next_->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
-			return NextAfterFootnote()
-				->GetInset(pos - text.size() - 1);
-		else
-		        lyxerr << "ERROR (LyXParagraph::GetInset): "
-				"position does not exist: "
-			       << pos << endl;
-		
-		return 0;
-	}
-#else
 	lyx::Assert(pos < size());
-#endif
+
 	// Find the inset.
 	InsetTable search_inset(pos, 0);
 	InsetList::iterator it = lower_bound(insetlist.begin(),
@@ -742,22 +594,8 @@ Inset * LyXParagraph::GetInset(LyXParagraph::size_type pos)
 
 Inset const * LyXParagraph::GetInset(LyXParagraph::size_type pos) const
 {
-#ifndef NEW_INSETS
-	if (pos >= size()) {
-		if (next_
-		    && next_->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
-			return NextAfterFootnote()
-				->GetInset(pos - text.size() - 1);
-		else
-		        lyxerr << "ERROR (LyXParagraph::GetInset): "
-				"position does not exist: "
-			       << pos << endl;
-
-		return 0;
-	}
-#else
 	lyx::Assert(pos < size());
-#endif
+
 	// Find the inset.
 	InsetTable search_inset(pos, 0);
 	InsetList::const_iterator cit = lower_bound(insetlist.begin(),
@@ -779,48 +617,11 @@ Inset const * LyXParagraph::GetInset(LyXParagraph::size_type pos) const
 
 
 // Gets uninstantiated font setting at position.
-// Optimized after profiling. (Asger)
-#ifndef NEW_INSETS
-LyXFont const LyXParagraph::GetFontSettings(BufferParams const & bparams,
-				      LyXParagraph::size_type pos) const
-{
-	if (pos < size()) {
-		FontTable search_font(pos, LyXFont());
-		FontList::const_iterator cit = lower_bound(fontlist.begin(),
-						    fontlist.end(),
-						    search_font, matchFT());
-		if (cit != fontlist.end())
-			return (*cit).font();
-	}
-	// > because last is the next unused position, and you can 
-	// use it if you want
-	else if (pos > size()) {
-		if (next_
-		    && next_->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
-			return NextAfterFootnote()
-				->GetFontSettings(bparams,
-						  pos - text.size() - 1);
-		else
-			// Why is it an error to ask for the font of a
-			// position that does not exist? Would it be
-			// enough for this to be enabled on debug?
-			// We want strict error checking, but it's ok to only
-			// have it when debugging. (Asger)
-			lyxerr << "ERROR (LyXParagraph::GetFontSettings): "
-				"position does not exist. "
-			       << pos << " (" << static_cast<int>(pos)
-			       << ")" << endl;
-	} else if (pos > 0) {
-		return GetFontSettings(bparams, pos - 1);
-	}
-
-	return LyXFont(LyXFont::ALL_INHERIT, getParLanguage(bparams));
-}
-#else
 LyXFont const LyXParagraph::GetFontSettings(BufferParams const & bparams,
 					    LyXParagraph::size_type pos) const
 {
 	lyx::Assert(pos <= size());
+	
 	FontTable search_font(pos, LyXFont());
 	FontList::const_iterator cit = lower_bound(fontlist.begin(),
 						   fontlist.end(),
@@ -833,7 +634,6 @@ LyXFont const LyXParagraph::GetFontSettings(BufferParams const & bparams,
 	
 	return LyXFont(LyXFont::ALL_INHERIT, getParLanguage(bparams));
 }
-#endif
 
 
 // Gets uninstantiated font setting at position 0
@@ -844,10 +644,6 @@ LyXFont const LyXParagraph::GetFirstFontSettings() const
 			return fontlist[0].font();
 	}
 	
-#ifndef NEW_INSETS
-	else if (next_ && next_->footnoteflag != LyXParagraph::NO_FOOTNOTE) 
-		return NextAfterFootnote()->GetFirstFontSettings();
-#endif
 	return LyXFont(LyXFont::ALL_INHERIT);
 }
 
@@ -935,68 +731,6 @@ LyXParagraph::HighestFontInRange(LyXParagraph::size_type startpos,
 	}
 	return maxsize;
 }
-
-
-#ifndef NEW_INSETS
-LyXParagraph::value_type
-LyXParagraph::GetChar(LyXParagraph::size_type pos) const
-{
-	lyx::Assert(pos >= 0);
-	
-	if (pos < size()) {
-		return text[pos];
-	}
-	
-	// > because last is the next unused position, and you can 
-	// use it if you want
-	else if (pos > size()) {
-		if (next_ && next_->footnoteflag != LyXParagraph::NO_FOOTNOTE) 
-			return NextAfterFootnote()
-				->GetChar(pos - text.size() - 1);
-		else {
-			lyxerr << "ERROR (LyXParagraph::GetChar const): "
-				"position does not exist."
-			       << pos << " (" << static_cast<int>(pos)
-			       << ")\n";
-			lyx::Assert(false);
-		}
-		return '\0';
-	} else {
-		// We should have a footnote environment.
-		if (!next_ || next_->footnoteflag == LyXParagraph::NO_FOOTNOTE) {
-			// Notice that LyX does request the
-			// last char from time to time. (Asger)
-			//lyxerr << "ERROR (LyXParagraph::GetChar): "
-			//	"expected footnote." << endl;
-			return '\0';
-		}
-		switch (next_->footnotekind) {
-		case LyXParagraph::FOOTNOTE:
-			return LyXParagraph::META_FOOTNOTE;
-		case LyXParagraph::MARGIN:
-			return LyXParagraph::META_MARGIN;
-		case LyXParagraph::FIG:
-		case LyXParagraph::WIDE_FIG:
-			return LyXParagraph::META_FIG;
-		case LyXParagraph::TAB:
-		case LyXParagraph::WIDE_TAB:
-			return LyXParagraph::META_TAB;
-		case LyXParagraph::ALGORITHM:
-			return LyXParagraph::META_ALGORITHM;
-		}
-		return '\0'; // to shut up gcc
-	}
-}
-#else
-//LyXParagraph::value_type
-//LyXParagraph::GetChar(LyXParagraph::size_type pos) const
-//{
-//	lyx::Assert(pos <= size());
-//	if (!size() || pos == size()) return '\0';
-//	
-//	return text[pos];
-//}
-#endif
 
 
 LyXParagraph::value_type
@@ -1087,81 +821,10 @@ string const LyXParagraph::GetWord(LyXParagraph::size_type & lastpos) const
 }
 
 
-#ifndef NEW_INSETS
-LyXParagraph::size_type LyXParagraph::Last() const
-{
-	if (next_ && next_->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE)
-		return text.size() + NextAfterFootnote()->Last() + 1;
-	// the 1 is the symbol
-	// for the footnote
-	else
-		return text.size();
-}
-#endif
-
-
-#ifndef NEW_INSETS
-LyXParagraph * LyXParagraph::ParFromPos(LyXParagraph::size_type pos)
-{
-	// > because last is the next unused position, and you can 
-	// use it if you want
-	if (pos > size()) {
-		if (next_
-		    && next_->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
-			return NextAfterFootnote()
-				->ParFromPos(pos - text.size() - 1);
-		else
-			lyxerr << "ERROR (LyXParagraph::ParFromPos): "
-				"position does not exist." << endl;
-		return this;
-	} else
-		return this;
-}
-#endif
-
-
-#ifndef NEW_INSETS
-int LyXParagraph::PositionInParFromPos(LyXParagraph::size_type pos) const
-{
-	// > because last is the next unused position, and you can 
-	// use it if you want
-	if (pos > size()) {
-		if (next_
-		    && next_->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) 
-			return NextAfterFootnote()
-				->PositionInParFromPos(pos - text.size() - 1);
-		else
-			lyxerr <<
-				"ERROR (LyXParagraph::PositionInParFromPos): "
-				"position does not exist." << endl;
-		return pos;
-	}
-	else
-		return pos;
-}
-#endif
-
-
 void LyXParagraph::SetFont(LyXParagraph::size_type pos,
 			   LyXFont const & font)
 {
-#ifndef NEW_INSETS
-	// > because last is the next unused position, and you can 
-	// use it if you want
-	if (pos > size()) {
-		if (next_ &&
-		    next_->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
-			NextAfterFootnote()->SetFont(pos - text.size() - 1,
-						     font);
-		} else
-			lyxerr << "ERROR (LyXParagraph::SetFont): "
-				"position does not exist." << endl;
-		
-		return;
-	}
-#else
 	lyx::Assert(pos <= size());
-#endif
 
 	// First, reduce font against layout/label font
 	// Update: The SetCharFont() routine in text2.C already
@@ -1229,169 +892,14 @@ void LyXParagraph::next(LyXParagraph * p)
 // This function is able to hide closed footnotes.
 LyXParagraph * LyXParagraph::next()
 {
-#ifndef NEW_INSETS
-	if (next_ && next_->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
-		LyXParagraph * tmp = next_;
-		while (tmp
-		       && tmp->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE)
-			tmp = tmp->next_;
-		if (tmp && tmp->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE) 
-			return tmp->next(); /* there can be more than one
-					       footnote in a logical
-					       paragraph */
-		else
-			return next_;  // This should never happen!
-	} else
-#endif
-		return next_;
+	return next_;
 }
 
 
 LyXParagraph const * LyXParagraph::next() const
 {
-#ifndef NEW_INSETS
-	if (next_ && next_->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
-		LyXParagraph * tmp = next_;
-		while (tmp
-		       && tmp->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE)
-			tmp = tmp->next_;
-		if (tmp && tmp->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE) 
-			return tmp->next(); /* there can be more than one
-					       footnote in a logical
-					       paragraph */
-		else
-			return next_;  // This should never happen!
-	} else
-#endif
-		return next_;
+	return next_;
 }
-
-
-#ifndef NEW_INSETS
-LyXParagraph * LyXParagraph::NextAfterFootnote()
-{
-	if (next_ && next_->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
-		LyXParagraph * tmp = next_;
-		while (tmp && tmp->footnoteflag != LyXParagraph::NO_FOOTNOTE)
-			tmp = tmp->next_;
-		if (tmp && tmp->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE) 
-			return tmp;   /* there can be more than one footnote
-					 in a logical paragraph */
-		else
-			return next_;  // This should never happen!
-	} else
-		return next_;
-}
-#endif
-
-
-#ifndef NEW_INSETS
-LyXParagraph const * LyXParagraph::NextAfterFootnote() const
-{
-	if (next_ && next_->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
-		LyXParagraph * tmp = next_;
-		while (tmp && tmp->footnoteflag != LyXParagraph::NO_FOOTNOTE)
-			tmp = tmp->next_;
-		if (tmp && tmp->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE) 
-			return tmp;   /* there can be more than one footnote
-					 in a logical paragraph */
-		else
-			return next_;  // This should never happen!
-	} else
-		return next_;
-}
-#endif
-
-
-#ifndef NEW_INSETS
-LyXParagraph * LyXParagraph::PreviousBeforeFootnote()
-{
-	LyXParagraph * tmp;
-	if (previous_ && previous_->footnoteflag != LyXParagraph::NO_FOOTNOTE) {
-		tmp = previous_;
-		while (tmp && tmp->footnoteflag != LyXParagraph::NO_FOOTNOTE)
-			tmp = tmp->previous_;
-		if (tmp && tmp->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE) 
-			return tmp;    /* there can be more than one footnote
-					  in a logical paragraph */
-		else
-			return previous_;  // This should never happen!
-	} else
-		return previous_;
-}
-#endif
-
-
-#ifndef NEW_INSETS
-LyXParagraph * LyXParagraph::LastPhysicalPar()
-{
-	if (footnoteflag != LyXParagraph::NO_FOOTNOTE)
-		return this;
-   
-	LyXParagraph * tmp = this;
-	while (tmp->next_
-	       && tmp->next_->footnoteflag != LyXParagraph::NO_FOOTNOTE)
-		tmp = tmp->NextAfterFootnote();
-   
-	return tmp;
-}
-#endif
-
-
-#ifndef NEW_INSETS
-LyXParagraph const * LyXParagraph::LastPhysicalPar() const
-{
-	if (footnoteflag != LyXParagraph::NO_FOOTNOTE)
-		return this;
-   
-	LyXParagraph const * tmp = this;
-	while (tmp->next_
-	       && tmp->next_->footnoteflag != LyXParagraph::NO_FOOTNOTE)
-		tmp = tmp->NextAfterFootnote();
-   
-	return tmp;
-}
-#endif
-
-
-#ifndef NEW_INSETS
-LyXParagraph * LyXParagraph::FirstPhysicalPar()
-{
-	if (!IsDummy())
-		return this;
-	LyXParagraph * tmppar = this;
-
-	while (tmppar &&
-	       (tmppar->IsDummy()
-		|| tmppar->footnoteflag != LyXParagraph::NO_FOOTNOTE))
-		tmppar = tmppar->previous_;
-   
-	if (!tmppar) {
-		return this;
-	} else
-		return tmppar;
-}
-#endif
-
-
-#ifndef NEW_INSETS
-LyXParagraph const * LyXParagraph::FirstPhysicalPar() const
-{
-	if (!IsDummy())
-		return this;
-	LyXParagraph const * tmppar = this;
-
-	while (tmppar &&
-	       (tmppar->IsDummy()
-		|| tmppar->footnoteflag != LyXParagraph::NO_FOOTNOTE))
-		tmppar = tmppar->previous_;
-   
-	if (!tmppar) {
-		return this;
-	} else
-		return tmppar;
-}
-#endif
 
 
 void LyXParagraph::previous(LyXParagraph * p)
@@ -1403,132 +911,17 @@ void LyXParagraph::previous(LyXParagraph * p)
 // This function is able to hide closed footnotes.
 LyXParagraph * LyXParagraph::previous()
 {
-#ifndef NEW_INSETS
-	LyXParagraph * tmp = previous_;
-	if (!tmp)
-		return tmp;
-
-	if (tmp->previous_
-	    && tmp->previous_->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
-		tmp = tmp->previous_;
-		while (tmp
-		       && tmp->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE)
-			tmp = tmp->previous_;
-		if (tmp && tmp->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE) 
-			return tmp->next_->previous();	
-
-		else
-			return previous_; 
-	} else
-#endif
-		return previous_;
+	return previous_;
 }
 
 
 // This function is able to hide closed footnotes.
 LyXParagraph const * LyXParagraph::previous() const
 {
-#ifndef NEW_INSETS
-	LyXParagraph * tmp = previous_;
-	if (!tmp)
-		return tmp;
-	if (tmp->previous_
-	    && tmp->previous_->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
-		tmp = tmp->previous_;
-		while (tmp
-		       && tmp->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE)
-			tmp = tmp->previous_;
-		if (tmp && tmp->footnoteflag != LyXParagraph::CLOSED_FOOTNOTE) 
-			return tmp->next_->previous();	
-
-		else
-			return previous_;
-	} else
-#endif
-		return previous_;
+	return previous_;
 }
 
 
-#ifndef NEW_INSETS
-void LyXParagraph::BreakParagraph(BufferParams const & bparams,
-				  LyXParagraph::size_type pos,
-				  int flag)
-{
-	size_type i;
-	size_type j;
-	// create a new paragraph
-	size_type pos_end;
-	size_type pos_first;
-	LyXParagraph * par = ParFromPos(pos);
-	LyXParagraph * firstpar = FirstPhysicalPar();
-   
-	LyXParagraph * tmp = new LyXParagraph(par);
-
-	tmp->footnoteflag = footnoteflag;
-	tmp->footnotekind = footnotekind;
-
-	// this is an idea for a more userfriendly layout handling, I will
-	// see what the users say
-
-	// layout stays the same with latex-environments
-	if (flag) {
-		tmp->SetOnlyLayout(bparams, firstpar->layout);
-		tmp->SetLabelWidthString(firstpar->params.labelWidthString());
-	}
-
-	if (Last() > pos || !Last() || flag == 2) {
-		tmp->SetOnlyLayout(bparams, firstpar->layout);
-		tmp->params.align(firstpar->params.align());
-		tmp->SetLabelWidthString(firstpar->params.labelWidthString());
-      
-		tmp->params.lineBottom(firstpar->params.lineBottom());
-		firstpar->params.lineBottom(false);
-		tmp->params.pagebreakBottom(firstpar->params.pagebreakBottom());
-		firstpar->params.pagebreakBottom(false);
-		tmp->params.spaceBottom(firstpar->params.spaceBottom());
-		firstpar->params.spaceBottom(VSpace(VSpace::NONE));
-      
-		tmp->params.depth(firstpar->params.depth());
-		tmp->params.noindent(firstpar->params.noindent());
-
-		// copy everything behind the break-position
-		// to the new paragraph
-		pos_first = 0;
-		while (ParFromPos(pos_first) != par)
-			++pos_first;
-		pos_end = pos_first + par->text.size() - 1;
-
-
-		for (i = j = pos; i <= pos_end; ++i) {
-			par->CutIntoMinibuffer(bparams, i - pos_first);
-			if (tmp->InsertFromMinibuffer(j - pos))
-				++j;
-		}
-
-		tmp->fitToSize();
-
-		for (i = pos_end; i >= pos; --i)
-			par->Erase(i - pos_first);
-
-		par->fitToSize();
-	}
-
-	// just an idea of me
-	if (!pos) {
-		tmp->params.lineTop(firstpar->params.lineTop());
-		tmp->params.pagebreakTop(firstpar->params.pagebreakTop());
-		tmp->params.spaceTop(firstpar->params.spaceTop());
-		tmp->bibkey = firstpar->bibkey;
-		firstpar->Clear();
-		// layout stays the same with latex-environments
-		if (flag) {
-			firstpar->SetOnlyLayout(bparams, tmp->layout);
-			firstpar->SetLabelWidthString(tmp->params.labelWidthString());
-			firstpar->params.depth(tmp->params.depth());
-		}
-	}
-}
-#else
 void LyXParagraph::BreakParagraph(BufferParams const & bparams,
 				  LyXParagraph::size_type pos,
 				  int flag)
@@ -1592,16 +985,10 @@ void LyXParagraph::BreakParagraph(BufferParams const & bparams,
 		}
 	}
 }
-#endif
 	
 
 void LyXParagraph::MakeSameLayout(LyXParagraph const * par)
 {
-#ifndef NEW_INSETS
-	par = par->FirstPhysicalPar();
-	footnoteflag = par->footnoteflag;
-	footnotekind = par->footnotekind;
-#endif
 	layout = par->layout;
 	params.makeSame(par->params);
 	
@@ -1610,44 +997,18 @@ void LyXParagraph::MakeSameLayout(LyXParagraph const * par)
 }
 
 
-#ifndef NEW_INSETS
-LyXParagraph * LyXParagraph::FirstSelfrowPar()
-{
-	LyXParagraph * tmppar = this;
-	while (tmppar && (
-		(tmppar->IsDummy()
-		 && tmppar->previous_->footnoteflag == 
-		 LyXParagraph::CLOSED_FOOTNOTE)
-		|| tmppar->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE))
-		tmppar = tmppar->previous_;
-   
-	if (!tmppar)
-		return this;  // This should never happen!
-	else
-		return tmppar;
-}
-#endif
-
-
 int LyXParagraph::StripLeadingSpaces(LyXTextClassList::size_type tclass) 
 {
 	if (textclasslist.Style(tclass, GetLayout()).free_spacing)
 		return 0;
 	
 	int i = 0;
-#ifndef NEW_INSETS
-	if (!IsDummy()) {
-		while (Last()
-#else
-		while (size()
-#endif
-		       && (IsNewline(0) || IsLineSeparator(0))){
-			Erase(0);
-			++i;
-		}
-#ifndef NEW_INSETS
+	while (size()
+	       && (IsNewline(0) || IsLineSeparator(0))){
+		Erase(0);
+		++i;
 	}
-#endif
+
 	return i;
 }
 
@@ -1686,15 +1047,7 @@ LyXParagraph * LyXParagraph::Clone() const
 
 bool LyXParagraph::HasSameLayout(LyXParagraph const * par) const
 {
-#ifndef NEW_INSETS
-	par = par->FirstPhysicalPar();
-#endif
-
 	return 
-#ifndef NEW_INSETS
-		par->footnoteflag == footnoteflag &&
-		par->footnotekind == footnotekind &&
-#endif
 		par->layout == layout &&
 		params.sameLayout(par->params);
 }
@@ -1703,39 +1056,6 @@ bool LyXParagraph::HasSameLayout(LyXParagraph const * par) const
 void LyXParagraph::BreakParagraphConservative(BufferParams const & bparams,
 					      LyXParagraph::size_type pos)
 {
-#ifndef NEW_INSETS
-	// create a new paragraph
-	LyXParagraph * par = ParFromPos(pos);
-
-	LyXParagraph * tmp = new LyXParagraph(par);
-   
-	tmp->MakeSameLayout(par);
-
-	// When can pos < Last()?
-	// I guess pos == Last() is possible.
-	if (Last() > pos) {
-		// copy everything behind the break-position to the new
-		// paragraph
-		size_type pos_first = 0;
-		while (ParFromPos(pos_first) != par)
-			++pos_first;
-		size_type pos_end = pos_first + par->text.size() - 1;
-
-		size_type i, j;
-		for (i = j = pos; i <= pos_end; ++i) {
-			par->CutIntoMinibuffer(bparams, i - pos_first);
-			if (tmp->InsertFromMinibuffer(j - pos))
-				++j;
-		}
-
-		tmp->fitToSize();
-
-		for (size_type i = pos_end; i >= pos; --i)
-			par->Erase(i - pos_first);
-
-		par->fitToSize();
-	}
-#else
 	// create a new paragraph
 	LyXParagraph * tmp = new LyXParagraph(this);
 	tmp->MakeSameLayout(this);
@@ -1761,7 +1081,6 @@ void LyXParagraph::BreakParagraphConservative(BufferParams const & bparams,
 
 		fitToSize();
 	}
-#endif
 }
    
 
@@ -1774,22 +1093,12 @@ void LyXParagraph::PasteParagraph(BufferParams const & bparams)
 	LyXParagraph * the_next = next();
    
 	// first the DTP-stuff
-#ifndef NEW_INSETS
-	LyXParagraph * firstpar = FirstPhysicalPar();
-	firstpar->params.lineBottom(the_next->params.lineBottom());
-	firstpar->params.spaceBottom(the_next->params.spaceBottom());
-	firstpar->params.pagebreakBottom(the_next->params.pagebreakBottom());
-
-	size_type pos_end = the_next->text.size() - 1;
-	size_type pos_insert = Last();
-#else
 	params.lineBottom(the_next->params.lineBottom());
 	params.spaceBottom(the_next->params.spaceBottom());
 	params.pagebreakBottom(the_next->params.pagebreakBottom());
 
 	size_type pos_end = the_next->text.size() - 1;
 	size_type pos_insert = size();
-#endif
 
 	// ok, now copy the paragraph
 	size_type i, j;
@@ -1807,30 +1116,6 @@ void LyXParagraph::PasteParagraph(BufferParams const & bparams)
 }
 
 
-#ifndef NEW_INSETS
-void LyXParagraph::OpenFootnote(LyXParagraph::size_type pos)
-{
-	LyXParagraph * par = ParFromPos(pos);
-	par = par->next_;
-	while (par && par->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
-		par->footnoteflag = LyXParagraph::OPEN_FOOTNOTE;
-		par = par->next_;
-	}
-}
-
-
-void LyXParagraph::CloseFootnote(LyXParagraph::size_type pos)
-{
-	LyXParagraph * par = ParFromPos(pos);
-	par = par->next_;
-	while (par && par->footnoteflag == LyXParagraph::OPEN_FOOTNOTE) {
-		par->footnoteflag = LyXParagraph::CLOSED_FOOTNOTE;
-		par = par->next_;
-	}
-}
-#endif
-
-
 int LyXParagraph::GetEndLabel(BufferParams const & bparams) const
 {
 	LyXParagraph const * par = this;
@@ -1841,22 +1126,13 @@ int LyXParagraph::GetEndLabel(BufferParams const & bparams) const
 			textclasslist.Style(bparams.textclass,
 					    layout).endlabeltype;
 		if (endlabeltype != END_LABEL_NO_LABEL) {
-			LyXParagraph const * last = this;
-#ifndef NEW_INSETS
-			if (footnoteflag == NO_FOOTNOTE)
-				last = LastPhysicalPar();
-			else if (next_->footnoteflag == NO_FOOTNOTE)
-				return endlabeltype;
-#else
-			last = this;
-#endif
-
-			if (!last || !last->next_)
+			if (!next_)
 				return endlabeltype;
 
-			int next_depth = last->next_->GetDepth();
+			int const next_depth = next_->GetDepth();
 			if (par_depth > next_depth ||
-			    (par_depth == next_depth && layout != last->next_->GetLayout() ))
+			    (par_depth == next_depth
+			     && layout != next_->GetLayout()))
 				return endlabeltype;
 			break;
 		}
@@ -1872,54 +1148,33 @@ int LyXParagraph::GetEndLabel(BufferParams const & bparams) const
 
 char LyXParagraph::GetDepth() const
 {
-#ifndef NEW_INSETS
-	return FirstPhysicalPar()->params.depth();
-#else
 	return params.depth();
-#endif
 }
 
 
 char LyXParagraph::GetAlign() const
 {
-#ifndef NEW_INSETS
-	return FirstPhysicalPar()->params.align();
-#else
 	return params.align();
-#endif
 }
 
 
 string const & LyXParagraph::GetLabelstring() const
 {
-#ifndef NEW_INSETS
-	return FirstPhysicalPar()->params.labelString();
-#else
 	return params.labelString();
-#endif
 }
 
 
 int LyXParagraph::GetFirstCounter(int i) const
 {
-#ifndef NEW_INSETS
-	return FirstPhysicalPar()->counter_[i];
-#else
 	return counter_[i];
-#endif
 }
 
 
 // the next two functions are for the manual labels
 string const LyXParagraph::GetLabelWidthString() const
 {
-#ifndef NEW_INSETS
-	if (!FirstPhysicalPar()->params.labelWidthString().empty())
-		return FirstPhysicalPar()->params.labelWidthString();
-#else
 	if (!params.labelWidthString().empty())
 		return params.labelWidthString();
-#endif
 	else
 		return _("Senseless with this layout!");
 }
@@ -1927,112 +1182,16 @@ string const LyXParagraph::GetLabelWidthString() const
 
 void LyXParagraph::SetLabelWidthString(string const & s)
 {
-#ifndef NEW_INSETS
-	LyXParagraph * par = FirstPhysicalPar();
-
-	par->params.labelWidthString(s);
-#else
 	params.labelWidthString(s);
-#endif
 }
 
 
-#ifndef NEW_INSETS
-void LyXParagraph::SetOnlyLayout(BufferParams const & bparams,
-				 LyXTextClass::size_type new_layout)
-{
-	LyXParagraph * par = FirstPhysicalPar();
-	LyXParagraph * ppar = 0;
-	LyXParagraph * npar = 0;
-	
-	par->layout = new_layout;
-	
-        if (par->params.pextraType() == PEXTRA_NONE) {
-                if (par->previous()) {
-                        ppar = par->previous()->FirstPhysicalPar();
-                        while(ppar
-			      && ppar->previous()
-			      && (ppar->params.depth() > par->params.depth()))
-                                ppar = ppar->previous()->FirstPhysicalPar();
-                }
-                if (par->next()) {
-                        npar = par->next()->NextAfterFootnote();
-                        while(npar
-			      && npar->next()
-			      && (npar->params.depth() > par->params.depth()))
-                                npar = npar->next()->NextAfterFootnote();
-                }
-                if (ppar && (ppar->params.pextraType() != PEXTRA_NONE)) {
-                        string p1 = ppar->params.pextraWidth();
-			string p2 = ppar->params.pextraWidthp();
-                        ppar->SetPExtraType(bparams,
-					    ppar->params.pextraType(),
-                                            p1, p2);
-                }
-                if ((par->params.pextraType() == PEXTRA_NONE) &&
-                    npar && (npar->params.pextraType() != PEXTRA_NONE)) {
-                        string const p1 = npar->params.pextraWidth();
-			string const p2 = npar->params.pextraWidthp();
-                        npar->SetPExtraType(bparams, npar->params.pextraType(),
-                                            p1, p2);
-                }
-        }
-}
-#else
 void LyXParagraph::SetOnlyLayout(LyXTextClass::size_type new_layout)
 {
 	layout = new_layout;
 }
-#endif
 
 
-#ifndef NEW_INSETS
-void LyXParagraph::SetLayout(BufferParams const & bparams,
-			     LyXTextClass::size_type new_layout)
-{
-	LyXParagraph
-		* par = FirstPhysicalPar(),
-		* ppar = 0,
-		* npar = 0;
-	
-        par->layout = new_layout;
-	par->params.labelWidthString(string());
-	par->params.align(LYX_ALIGN_LAYOUT);
-	par->params.spaceTop(VSpace(VSpace::NONE));
-	par->params.spaceBottom(VSpace(VSpace::NONE));
-	par->params.spacing(Spacing(Spacing::Default));
-	
-        if (par->params.pextraType() == PEXTRA_NONE) {
-                if (par->previous()) {
-                        ppar = par->previous()->FirstPhysicalPar();
-                        while(ppar
-			      && ppar->previous()
-			      && (ppar->params.depth() > par->params.depth()))
-                                ppar = ppar->previous()->FirstPhysicalPar();
-                }
-                if (par->next()) {
-                        npar = par->next()->NextAfterFootnote();
-                        while(npar
-			      && npar->next()
-			      && (npar->params.depth() > par->params.depth()))
-                                npar = npar->next()->NextAfterFootnote();
-                }
-                if (ppar && (ppar->params.pextraType() != PEXTRA_NONE)) {
-                        string const p1 = ppar->params.pextraWidth();
-			string const p2 = ppar->params.pextraWidthp();
-                        ppar->SetPExtraType(bparams, ppar->params.pextraType(),
-                                            p1, p2);
-                }
-                if ((par->params.pextraType() == PEXTRA_NONE) &&
-                    npar && (npar->params.pextraType() != PEXTRA_NONE)) {
-                        string const p1 = npar->params.pextraWidth();
-			string const p2 = npar->params.pextraWidthp();
-                        npar->SetPExtraType(bparams, npar->params.pextraType(),
-                                            p1, p2);
-                }
-        }
-}
-#else
 void LyXParagraph::SetLayout(LyXTextClass::size_type new_layout)
 {
         layout = new_layout;
@@ -2042,7 +1201,6 @@ void LyXParagraph::SetLayout(LyXTextClass::size_type new_layout)
 	params.spaceBottom(VSpace(VSpace::NONE));
 	params.spacing(Spacing(Spacing::Default));
 }
-#endif
 
 
 // if the layout of a paragraph contains a manual label, the beginning of the 
@@ -2054,17 +1212,12 @@ void LyXParagraph::SetLayout(LyXTextClass::size_type new_layout)
 
 int LyXParagraph::BeginningOfMainBody() const
 {
-#ifndef NEW_INSETS
-	if (FirstPhysicalPar() != this)
-		return -1;
-#endif
 	// Unroll the first two cycles of the loop
 	// and remember the previous character to
 	// remove unnecessary GetChar() calls
 	size_type i = 0;
 	if (i < size()
-	    && GetChar(i) != LyXParagraph::META_NEWLINE
-		) {
+	    && GetChar(i) != LyXParagraph::META_NEWLINE) {
 		++i;
 		char previous_char = 0;
 		char temp = 0; 
@@ -2081,14 +1234,6 @@ int LyXParagraph::BeginningOfMainBody() const
 		}
 	}
 
-#ifndef NEW_INSETS
-	if (i == 0 && i == size() &&
-	    !(footnoteflag == LyXParagraph::NO_FOOTNOTE
-	      && next_ && next_->footnoteflag != LyXParagraph::NO_FOOTNOTE))
-		++i;			       /* the cursor should not jump  
-						* to the main body if there
-						* is nothing in! */
-#endif
 	return i;
 }
 
@@ -2100,16 +1245,8 @@ LyXParagraph * LyXParagraph::DepthHook(int deth)
 		return 0;
    
 	do {
-#ifndef NEW_INSETS
-		newpar = newpar->FirstPhysicalPar()->previous();
-#else
 		newpar = newpar->previous();
-#endif
-	} while (newpar && newpar->GetDepth() > deth
-#ifndef NEW_INSETS
-		 && newpar->footnoteflag == footnoteflag
-#endif
-		);
+	} while (newpar && newpar->GetDepth() > deth);
    
 	if (!newpar) {
 		if (previous() || GetDepth())
@@ -2117,11 +1254,8 @@ LyXParagraph * LyXParagraph::DepthHook(int deth)
 				"no hook." << endl;
 		newpar = this;
 	}
-#ifndef NEW_INSETS
-	return newpar->FirstPhysicalPar();
-#else
+
 	return newpar;
-#endif
 }
 
 
@@ -2132,16 +1266,8 @@ LyXParagraph const * LyXParagraph::DepthHook(int deth) const
 		return 0;
    
 	do {
-#ifndef NEW_INSETS
-		newpar = newpar->FirstPhysicalPar()->previous();
-#else
 		newpar = newpar->previous();
-#endif
-	} while (newpar && newpar->GetDepth() > deth
-#ifndef NEW_INSETS
-		 && newpar->footnoteflag == footnoteflag
-#endif
-		);
+	} while (newpar && newpar->GetDepth() > deth);
    
 	if (!newpar) {
 		if (previous() || GetDepth())
@@ -2149,11 +1275,8 @@ LyXParagraph const * LyXParagraph::DepthHook(int deth) const
 				"no hook." << endl;
 		newpar = this;
 	}
-#ifndef NEW_INSETS
-	return newpar->FirstPhysicalPar();
-#else
+
 	return newpar;
-#endif
 }
 
 
@@ -2198,16 +1321,6 @@ int LyXParagraph::GetPositionOfInset(Inset * inset) const
 	if (inset == bibkey)
 		return 0;
 
-#ifndef NEW_INSETS
-	// Think about footnotes.
-	if (footnoteflag == LyXParagraph::NO_FOOTNOTE 
-	    && next_ && next_->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
-		int const further = 
-			NextAfterFootnote()->GetPositionOfInset(inset);
-		if (further != -1)
-			return text.size() + 1 + further;
-	}
-#endif
 	return -1;
 }
 
@@ -2215,14 +1328,7 @@ int LyXParagraph::GetPositionOfInset(Inset * inset) const
 LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 				       BufferParams const & bparams,
 				       ostream & os, TexRow & texrow,
-				       bool moving_arg
-#ifndef NEW_INSETS
-				       , 
-				       ostream & foot,
-				       TexRow & foot_texrow,
-				       int & foot_count
-#endif
-	)
+				       bool moving_arg)
 {
 	lyxerr[Debug::LATEX] << "TeXOnePar...     " << this << endl;
 	LyXLayout const & style =
@@ -2230,10 +1336,6 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 				    layout);
 
 	bool further_blank_line = false;
-#ifndef NEW_INSETS
-	if (IsDummy())
-		lyxerr << "ERROR (LyXParagraph::TeXOnePar) is dummy." << endl;
-#endif
 
 	if (params.startOfAppendix()) {
 		os << "\\appendix\n";
@@ -2312,55 +1414,6 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 
 	bool need_par = SimpleTeXOnePar(buf, bparams, os, texrow, moving_arg);
  
-	LyXParagraph * par = next_;
-#ifndef NEW_INSETS
-	// Spit out footnotes
-	if (lyxrc.rtl_support) {
-		if (next_ && next_->footnoteflag != LyXParagraph::NO_FOOTNOTE
-		    && next_->footnoteflag != footnoteflag) {
-			LyXParagraph * p = 0;
-			bool is_rtl = (size() > 0) 
-				? GetFontSettings(bparams,
-						  size()-1).isRightToLeft()
-				: language->RightToLeft();
-			if ((p = NextAfterFootnote()) != 0 &&
-			     p->size() > 0 &&
-			     p->GetFontSettings(bparams, 0).isRightToLeft() != is_rtl)
-				is_rtl = getParLanguage(bparams)->RightToLeft();
-			while (par && par->footnoteflag != LyXParagraph::NO_FOOTNOTE
-			       && par->footnoteflag != footnoteflag) {
-				par = par->TeXFootnote(buf, bparams,
-						       os, texrow, foot,
-						       foot_texrow, foot_count,
-						       is_rtl);
-				par->SimpleTeXOnePar(buf, bparams,
-						     os, texrow, moving_arg);
-				is_rtl = (par->size() > 0)
-					? par->GetFontSettings(bparams,
-							       par->size()-1).isRightToLeft()
-					: language->RightToLeft();
-				if (par->next_ &&
-				    par->next_->footnoteflag != LyXParagraph::NO_FOOTNOTE &&
-				    (p = par->NextAfterFootnote()) != 0 &&
-				    p->size() > 0 &&
-				    p->GetFontSettings(bparams, 0).isRightToLeft() != is_rtl)
-					is_rtl = language->RightToLeft();
-				par = par->next_;
-			}
-		}
-	} else {
-		while (par && par->footnoteflag != LyXParagraph::NO_FOOTNOTE
-		       && par->footnoteflag != footnoteflag) {
-			par = par->TeXFootnote(buf, bparams,
-					       os, texrow,
-					       foot, foot_texrow, foot_count,
-					       false);
-			par->SimpleTeXOnePar(buf, bparams, os, texrow, moving_arg);
-			par = par->next_;
-		}
-	}
-#endif
-
 	// Make sure that \\par is done with the font of the last
 	// character if this has another size as the default.
 	// This is necessary because LaTeX (and LyX on the screen)
@@ -2370,11 +1423,8 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 	// Is this really needed ? (Dekel)
 	// We do not need to use to change the font for the last paragraph
 	// or for a command.
-#ifndef NEW_INSETS
-	LyXFont font = getFont(bparams, Last() - 1);
-#else
 	LyXFont font = getFont(bparams, size() - 1);
-#endif
+
 	bool is_command = textclasslist.Style(bparams.textclass,
 					      GetLayout()).isCommand();
 	if (style.resfont.size() != font.size() && next_ && !is_command) {
@@ -2387,11 +1437,8 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 		os << "}";
 
 	if (language->babel() != doc_language->babel() &&
-	    (!par
-#ifndef NEW_INSETS
-	     || (footnoteflag != NO_FOOTNOTE && par->footnoteflag != footnoteflag)
-#endif
-	     || par->getParLanguage(bparams)->babel() != language->babel())) {
+	    (!next_
+	     || next_->getParLanguage(bparams)->babel() != language->babel())) {
 		os << endl 
 		   << subst(lyxrc.language_command_end, "$$lang",
 			    doc_language->babel());
@@ -2400,7 +1447,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 	switch (style.latextype) {
 	case LATEX_ITEM_ENVIRONMENT:
 	case LATEX_LIST_ENVIRONMENT:
-                if (par && (params.depth() < par->params.depth())) {
+                if (next_ && (params.depth() < next_->params.depth())) {
                         os << '\n';
                         texrow.newline();
                 }
@@ -2408,13 +1455,9 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 	case LATEX_ENVIRONMENT:
 		// if its the last paragraph of the current environment
 		// skip it otherwise fall through
-		if (par
-		    && (par->layout != layout
-			|| par->params.depth() != params.depth()
-#ifndef NO_PEXTRA
-			|| par->params.pextraType() != params.pextraType()
-#endif
-			    ))
+		if (next_
+		    && (next_->layout != layout
+			|| next_->params.depth() != params.depth()))
 			break;
 	default:
 		// we don't need it for the last paragraph!!!
@@ -2422,7 +1465,6 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 		//   -- effectively creates a \par where there isn't one which
 		//      breaks a \subfigure or \subtable.
 		if (next_) {
-//		    && footnoteflag == LyXParagraph::NO_FOOTNOTE) {
 			os << '\n';
 			texrow.newline();
 		}
@@ -2430,13 +1472,8 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 	
 	further_blank_line = false;
 	if (params.lineBottom()) {
-#ifndef NEW_INSETS
-		os << "\\lyxline{\\" << getFont(bparams,
-						Last() - 1).latexSize() << '}';
-#else
 		os << "\\lyxline{\\" << getFont(bparams,
 						size() - 1).latexSize() << '}';
-#endif
 		further_blank_line = true;
 	}
 
@@ -2456,24 +1493,19 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 	}
 
 	if (!params.spacing().isDefault()
-	    && (!par || !par->HasSameLayout(this))) {
+	    && (!next_ || !next_->HasSameLayout(this))) {
 		os << params.spacing().writeEnvirEnd() << "\n";
 		texrow.newline();
 	}
 	
 	// we don't need it for the last paragraph!!!
-	if (next_
-#ifndef NEW_INSETS
-	    && !(footnoteflag != LyXParagraph::NO_FOOTNOTE && par &&
-              par->footnoteflag == LyXParagraph::NO_FOOTNOTE)
-#endif
-		) {
+	if (next_) {
 		os << '\n';
 		texrow.newline();
 	}
 
-	lyxerr[Debug::LATEX] << "TeXOnePar...done " << par << endl;
-	return par;
+	lyxerr[Debug::LATEX] << "TeXOnePar...done " << next_ << endl;
+	return next_;
 }
 
 
@@ -2509,11 +1541,7 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 	int column = 0;
 
 	if (main_body >= 0
-	    && !text.size()
-#ifndef NEW_INSETS
-	    && !IsDummy()
-#endif
-		) {
+	    && !text.size()) {
 		if (style.isCommand()) {
 			os << '{';
 			++column;
@@ -2536,11 +1564,7 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 	for (size_type i = 0; i < size(); ++i) {
 		++column;
 		// First char in paragraph or after label?
-		if (i == main_body
-#ifndef NEW_INSETS
-		    && !IsDummy()
-#endif
-			) {
+		if (i == main_body) {
 			if (main_body > 0) {
 				if (open_font) {
 					column += running_font.latexWriteEndChanges(os, basefont, basefont);
@@ -2607,16 +1631,8 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 
 		// Fully instantiated font
 		LyXFont font = getFont(bparams, i);
-#ifndef NEW_INSETS
-		LyXParagraph * p = 0;
-		if (i == 0
-		    && previous_ && 
-		    previous_->footnoteflag != LyXParagraph::NO_FOOTNOTE &&
-		    (p = PreviousBeforeFootnote()) != 0)
-			last_font = p->getFont(bparams, p->size() - 1);
-		else
-#endif
-			last_font = running_font;
+
+		last_font = running_font;
 
 		// Spaces at end of font change are simulated to be
 		// outside font change, i.e. we write "\textXX{text} "
@@ -2687,19 +1703,15 @@ bool LyXParagraph::SimpleTeXOnePar(Buffer const * buf,
 
 	// If we have an open font definition, we have to close it
 	if (open_font) {
-		LyXParagraph * p = 0;
-		if (next_
-#ifndef NEW_INSETS
-		    && next_->footnoteflag != LyXParagraph::NO_FOOTNOTE
-		    && (p =  NextAfterFootnote()) != 0
-#else
-			&& (p = next_)
-#endif
-		)
+		if (next_) {
+			running_font
+				.latexWriteEndChanges(os, basefont,
+						      next_->getFont(bparams,
+								     0));
+		} else {
 			running_font.latexWriteEndChanges(os, basefont,
-							  p->getFont(bparams, 0));
-		else
-			running_font.latexWriteEndChanges(os, basefont, basefont);
+							  basefont);
+		}
 	}
 
 	// Needed if there is an optional argument but no contents.
@@ -3084,49 +2096,19 @@ void LyXParagraph::SimpleTeXSpecialChars(Buffer const * buf,
 
 LyXParagraph * LyXParagraph::TeXDeeper(Buffer const * buf,
 				       BufferParams const & bparams,
-				       ostream & os, TexRow & texrow
-#ifndef NEW_INSETS
-				       ,ostream & foot,
-				       TexRow & foot_texrow,
-				       int & foot_count
-#endif
-	)
+				       ostream & os, TexRow & texrow)
 {
 	lyxerr[Debug::LATEX] << "TeXDeeper...     " << this << endl;
 	LyXParagraph * par = this;
 
-	while (par &&
-	       (par->params.depth() == params.depth())
-#ifndef NEW_INSETS
-	       && (par->footnoteflag == footnoteflag)
-#endif
-		) {
-#ifndef NEW_INSETS
-		if (par->IsDummy())
-			lyxerr << "ERROR (LyXParagraph::TeXDeeper)" << endl;
-#endif
+	while (par && par->params.depth() == params.depth()) {
 		if (textclasslist.Style(bparams.textclass, 
-					par->layout).isEnvironment()
-#ifndef NO_PEXTRA
-		    || par->params.pextraType() != PEXTRA_NONE
-#endif
-			) {
+					par->layout).isEnvironment()) {
 			par = par->TeXEnvironment(buf, bparams,
-						  os, texrow
-#ifndef NEW_INSETS
-						  ,foot, foot_texrow,
-						  foot_count
-#endif
-				);
+						  os, texrow);
 		} else {
 			par = par->TeXOnePar(buf, bparams,
-					     os, texrow, false
-#ifndef NEW_INSETS
-					     ,
-					     foot, foot_texrow,
-					     foot_count
-#endif
-				);
+					     os, texrow, false);
 		}
 	}
 	lyxerr[Debug::LATEX] << "TeXDeeper...done " << par << endl;
@@ -3137,133 +2119,16 @@ LyXParagraph * LyXParagraph::TeXDeeper(Buffer const * buf,
 
 LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 					    BufferParams const & bparams,
-					    ostream & os, TexRow & texrow
-#ifndef NEW_INSETS
-					    ,ostream & foot,
-					    TexRow & foot_texrow,
-					    int & foot_count
-#endif
-	)
+					    ostream & os, TexRow & texrow)
 {
-#ifndef NO_PEXTRA
-	bool eindent_open = false;
-#endif
-#ifndef NEW_INSETS
-	bool foot_this_level = false;
-#endif
-#ifndef NO_PEXTRA
-	// flags when footnotetext should be appended to file.
-        static bool minipage_open = false;
-        static int minipage_open_depth = 0;
-	char par_sep = bparams.paragraph_separation;
-#endif
-    
 	lyxerr[Debug::LATEX] << "TeXEnvironment...     " << this << endl;
-#ifndef NEW_INSETS
-	if (IsDummy())
-		lyxerr << "ERROR (LyXParagraph::TeXEnvironment)" << endl;
-#endif
 
 	LyXLayout const & style =
 		textclasslist.Style(bparams.textclass,
 				    layout);
 
-#ifndef NO_PEXTRA
-	if (params.pextraType() == PEXTRA_INDENT) {
-		if (!params.pextraWidth().empty()) {
-			os << "\\begin{LyXParagraphIndent}{"
-			   << params.pextraWidth() << "}\n";
-		} else {
-			//float ib = atof(pextra_widthp.c_str())/100;
-			// string can't handle floats at present (971109)
-			// so I'll do a conversion by hand knowing that
-			// the limits are 0.0 to 1.0. ARRae.
-			os << "\\begin{LyXParagraphIndent}{";
-			switch (params.pextraWidthp().length()) {
-			case 3:
-				os << "1.00";
-				break;
-			case 2:
-				os << "0."
-				   << params.pextraWidthp();
-				break;
-			case 1:
-				os << "0.0"
-				   << params.pextraWidthp();
-			}
-			os << "\\columnwidth}\n";
-		}
-		texrow.newline();
-		eindent_open = true;
-	}
-	if ((params.pextraType() == PEXTRA_MINIPAGE) && !minipage_open) {
-		if (params.pextraHfill() && previous() &&
-		    (previous()->params.pextraType() == PEXTRA_MINIPAGE)) {
-			os << "\\hfill{}\n";
-			texrow.newline();
-		}
-		if (par_sep == BufferParams::PARSEP_INDENT) {
-			os << "{\\setlength\\parindent{0pt}\n";
-			texrow.newline();
-		}
-		os << "\\begin{minipage}";
-		switch (params.pextraAlignment()) {
-		case MINIPAGE_ALIGN_TOP:
-			os << "[t]";
-			break;
-		case MINIPAGE_ALIGN_MIDDLE:
-			os << "[m]";
-			break;
-		case MINIPAGE_ALIGN_BOTTOM:
-			os << "[b]";
-			break;
-		}
-		if (!params.pextraWidth().empty()) {
-			os << '{' << params.pextraWidth() << "}\n";
-		} else {
-			//float ib = atof(par->pextra_width.c_str())/100;
-			// string can't handle floats at present
-			// so I'll do a conversion by hand knowing that
-			// the limits are 0.0 to 1.0. ARRae.
-			os << '{';
-			switch (params.pextraWidthp().length()) {
-			case 3:
-				os << "1.00";
-				break;
-			case 2:
-				os << "0."
-				   << params.pextraWidthp();
-				break;
-			case 1:
-				os << "0.0"
-				   << params.pextraWidthp();
-			}
-			os << "\\columnwidth}\n";
-		}
-		texrow.newline();
-		if (par_sep == BufferParams::PARSEP_INDENT) {
-			os << "\\setlength\\parindent{\\LyXMinipageIndent}\n";
-			texrow.newline();
-		}
-		minipage_open = true;
-                minipage_open_depth = params.depth();
-	}
-#endif
-#ifdef WITH_WARNINGS
-#warning Define FANCY_FOOTNOTE_CODE to re-enable Allan footnote code
-	//I disabled it because it breaks when lists span on several
-	//pages (JMarc)
-#endif
 	if (style.isEnvironment()){
 		if (style.latextype == LATEX_LIST_ENVIRONMENT) {
-#ifdef FANCY_FOOTNOTE_CODE
-			if (foot_count < 0) {
-				// flag that footnote[mark][text] should be
-				// used for any footnotes from now on
-				foot_count = 0;
-				foot_this_level = true;
-			}
-#endif
 			os << "\\begin{" << style.latexname() << "}{"
 			   << params.labelWidthString() << "}\n";
 		} else if (style.labeltype == LABEL_BIBLIO) {
@@ -3272,14 +2137,6 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 			   <<  bibitemWidest(buf)
 			   << "}\n";
 		} else if (style.latextype == LATEX_ITEM_ENVIRONMENT) {
-#ifdef FANCY_FOOTNOTE_CODE
-			if (foot_count < 0) {
-				// flag that footnote[mark][text] should be
-				// used for any footnotes from now on
-				foot_count = 0;
-				foot_this_level = true;
-			}
-#endif
 			os << "\\begin{" << style.latexname() << '}'
 			   << style.latexparam() << '\n';
 		} else 
@@ -3290,25 +2147,8 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 	LyXParagraph * par = this;
 	do {
 		par = par->TeXOnePar(buf, bparams,
-				     os, texrow, false
-#ifndef NEW_INSETS
-				     ,
-				     foot, foot_texrow, foot_count
-#endif
-			);
-#ifndef NO_PEXTRA
-                if (minipage_open && par && !style.isEnvironment() &&
-                    (par->params.pextraType() == PEXTRA_MINIPAGE) &&
-                    par->params.pextraStartMinipage()) {
-			os << "\\end{minipage}\n";
-			texrow.newline();
-			if (par_sep == BufferParams::PARSEP_INDENT) {
-				os << "}\n";
-				texrow.newline();
-			}
-			minipage_open = false;
-                }
-#endif
+				     os, texrow, false);
+
 		if (par && par->params.depth() > params.depth()) {
 			if (textclasslist.Style(bparams.textclass,
 						par->layout).isParagraph()
@@ -3329,514 +2169,19 @@ LyXParagraph * LyXParagraph::TeXEnvironment(Buffer const * buf,
 				os << '\n';
 				texrow.newline();
 			}
-			par = par->TeXDeeper(buf, bparams, os, texrow
-#ifndef NEW_INSETS
-					     ,foot, foot_texrow, foot_count
-#endif
-				);
+			par = par->TeXDeeper(buf, bparams, os, texrow);
 		}
-#ifndef NO_PEXTRA
-		if (par && par->layout == layout && par->params.depth() == params.depth() &&
-		    (par->params.pextraType() == PEXTRA_MINIPAGE) && !minipage_open) {
-			if (par->params.pextraHfill() && par->previous() &&
-			    (par->previous()->params.pextraType() == PEXTRA_MINIPAGE)){
-				os << "\\hfill{}\n";
-                                texrow.newline();
-                        }
-			if (par_sep == BufferParams::PARSEP_INDENT) {
-				os << "{\\setlength\\parindent{0pt}\n";
-				texrow.newline();
-			}
-			os << "\\begin{minipage}";
-			switch (par->params.pextraAlignment()) {
-			case MINIPAGE_ALIGN_TOP:
-				os << "[t]";
-				break;
-			case MINIPAGE_ALIGN_MIDDLE:
-				os << "[m]";
-				break;
-			case MINIPAGE_ALIGN_BOTTOM:
-				os << "[b]";
-				break;
-			}
-			if (!par->params.pextraWidth().empty()) {
-				os << '{' << par->params.pextraWidth() << "}\n";
-			} else {
-				//float ib = atof(par->pextra_widthp.c_str())/100;
-				// string can't handle floats at present
-				// so I'll do a conversion by hand knowing that
-				// the limits are 0.0 to 1.0. ARRae.
-				os << '{';
-				switch (par->params.pextraWidthp().length()) {
-				case 3:
-					os << "1.00";
-					break;
-				case 2:
-					os << "0." << par->params.pextraWidthp();
-					break;
-				case 1:
-					os << "0.0" << par->params.pextraWidthp();
-				}
-				os << "\\columnwidth}\n";
-			}
-			texrow.newline();
-			if (par_sep == BufferParams::PARSEP_INDENT) {
-				os << "\\setlength\\parindent{\\LyXMinipageIndent}\n";
-				texrow.newline();
-			}
-			minipage_open = true;
-                        minipage_open_depth = par->params.depth();
-		}
-#endif
 	} while (par
 		 && par->layout == layout
-		 && par->params.depth() == params.depth()
-#ifndef NO_PEXTRA
-		 && par->params.pextraType() == params.pextraType()
-#endif
-#ifndef NEW_INSETS
-		 && par->footnoteflag == footnoteflag
-#endif
-		);
+		 && par->params.depth() == params.depth());
  
 	if (style.isEnvironment()) {
 		os << "\\end{" << style.latexname() << "}\n";
+	}
 
-#ifndef NEW_INSETS
-		// maybe this should go after the minipage closes?
-		if (foot_this_level) {
-			if (foot_count >= 1) {
-				if (foot_count > 1) {
-					os << "\\addtocounter{footnote}{-"
-					   << foot_count - 1
-					   << '}';
-				}
-				os << foot;
-				texrow += foot_texrow;
-				foot.clear();
-				foot_texrow.reset();
-				foot_count = 0;
-			}
-		}
-#endif
-	}
-#ifndef NO_PEXTRA
-        if (minipage_open && (minipage_open_depth == params.depth()) &&
-            (!par || par->params.pextraStartMinipage() ||
-             par->params.pextraType() != PEXTRA_MINIPAGE)) {
-                os << "\\end{minipage}\n";
-		texrow.newline();
-                if (par_sep == BufferParams::PARSEP_INDENT) {
-                        os << "}\n";
-			texrow.newline();
-                }
-                if (par && par->params.pextraType() != PEXTRA_MINIPAGE) {
-                        os << "\\medskip\n\n";
-			texrow.newline();
-			texrow.newline();
-                }
-                minipage_open = false;
-        }
-	if (eindent_open) {
-		os << "\\end{LyXParagraphIndent}\n";
-		texrow.newline();
-	}
-        if (!(par && (par->params.pextraType() == PEXTRA_MINIPAGE) 
-	      && par->params.pextraHfill())) {
-                os << '\n';
-		texrow.newline();
-	}
-#endif
 	lyxerr[Debug::LATEX] << "TeXEnvironment...done " << par << endl;
 	return par;  // ale970302
 }
-
-
-#ifndef NEW_INSETS
-LyXParagraph * LyXParagraph::TeXFootnote(Buffer const * buf,
-					 BufferParams const & bparams,
-					 ostream & os, TexRow & texrow,
-					 ostream & foot, TexRow & foot_texrow,
-					 int & foot_count,
-					 bool parent_is_rtl)
-{
-	lyxerr[Debug::LATEX] << "TeXFootnote...  " << this << endl;
-	if (footnoteflag == LyXParagraph::NO_FOOTNOTE)
-		lyxerr << "ERROR (LyXParagraph::TeXFootnote): "
-			"No footnote!" << endl;
-
-	LyXParagraph * par = this;
-	LyXLayout const & style =
-		textclasslist.Style(bparams.textclass, 
-				    previous_->GetLayout());
-	
-	if (style.needprotect && footnotekind != LyXParagraph::FOOTNOTE){
-		lyxerr << "ERROR (LyXParagraph::TeXFootnote): "
-			"Float other than footnote in command"
-			" with moving argument is illegal" << endl;
-	}
-
-	if (footnotekind != LyXParagraph::FOOTNOTE
-	    && footnotekind != LyXParagraph::MARGIN
-	    && os.tellp()
-	    // Thinko
-	    // How to solve this?
-	    //&& !suffixIs(file, '\n')
-		) {
-		// we need to ensure that real floats like tables and figures
-		// have their \begin{} on a new line otherwise we can get
-		// incorrect results when using the endfloat.sty package
-		// especially if two floats follow one another.  ARRae 981022
-		// NOTE: if the file is length 0 it must have just been
-		//       written out so we assume it ended with a '\n'
-		// Thinkee:
-		// As far as I can see there is never any harm in writing
-		// a '\n' too much. Please tell me if I am wrong. (Lgb)
-		os << '\n';
-		texrow.newline();
-	}
-
-	bool moving_arg = false;
-	bool need_closing = false;
-	bool is_rtl = isRightToLeftPar(bparams);
-
-	if (is_rtl != parent_is_rtl) {
-		if (is_rtl)
-			os << "\\R{";
-		else
-			os << "\\L{";
-		need_closing = true;
-	}
-	
-	bool footer_in_body = true;
-	switch (footnotekind) {
-	case LyXParagraph::FOOTNOTE:
-		if (style.intitle) {
-			os << "\\thanks{\n";
-			footer_in_body = false;
-			moving_arg = true;
-		} else {
-			if (foot_count == -1) {
-				// we're at depth 0 so we can use:
-				os << "\\footnote{%\n";
-				footer_in_body = false;
-			} else {
-				os << "\\footnotemark{}%\n";
-				if (foot_count) {
-					// we only need this when there are
-					// multiple footnotes
-					os << "\\stepcounter{footnote}";
-				}
-				os << "\\footnotetext{%\n";
-				foot_texrow.start(this, 0);
-				foot_texrow.newline();
-				++foot_count;
-			}
-		}
-		break;
-	case LyXParagraph::MARGIN:
-		os << "\\marginpar{\n";
-		break;
-	case LyXParagraph::FIG:
-		if (params.pextraType() == PEXTRA_FLOATFLT
-		    && (!params.pextraWidth().empty()
-			|| !params.pextraWidthp().empty())) {
-			if (!params.pextraWidth().empty())
-				os << "\\begin{floatingfigure}{"
-				   << params.pextraWidth() << "}\n";
-			else
-				os << "\\begin{floatingfigure}{"
-				   << lyx::atoi(params.pextraWidthp()) / 100.0
-				   << "\\textwidth}\n";
-		} else {
-			os << "\\begin{figure}";
-			if (!bparams.float_placement.empty()) { 
-				os << '[' << bparams.float_placement << "]\n";
-			} else {
-				os << '\n';
-			}
-		}
-		break;
-	case LyXParagraph::TAB:
-		os << "\\begin{table}";
-		if (!bparams.float_placement.empty()) { 
-			os << '[' << bparams.float_placement << "]\n";
-		} else {
-			os << '\n';
-		}
-		break;
-	case LyXParagraph::WIDE_FIG:
-		os << "\\begin{figure*}";
-		if (!bparams.float_placement.empty()) { 
-			os << '[' << bparams.float_placement << "]\n";
-		} else {
-			os << '\n';
-		}
-		break;
-	case LyXParagraph::WIDE_TAB:
-		os << "\\begin{table*}";
-		if (!bparams.float_placement.empty()) { 
-			os << '[' << bparams.float_placement << "]\n";
-		} else {
-			os << '\n';
-		}
-		break;
-	case LyXParagraph::ALGORITHM:
-		os << "\\begin{algorithm}\n";
-		break;
-	}
-	texrow.newline();
-   
- 	if (footnotekind != LyXParagraph::FOOTNOTE
-	    || !footer_in_body) {
-		// Process text for all floats except footnotes in body
-		do {
-			LyXLayout const & style =
-				textclasslist
-				.Style(bparams.textclass, par->layout);
-			if (par->IsDummy())
-				lyxerr << "ERROR (LyXParagraph::TeXFootnote)"
-				       << endl;
-			if (style.isEnvironment()
-			    || par->params.pextraType() == PEXTRA_MINIPAGE) { /* && !minipage_open ?? */
-				// Allows the use of minipages within float
-				// environments. Shouldn't be circular because
-				// we don't support footnotes inside
-				// floats (yet). ARRae
-				par = par->TeXEnvironment(buf, bparams, os,
-							  texrow,
-							  foot, foot_texrow,
-							  foot_count);
-			} else {
-				par = par->TeXOnePar(buf, bparams,
-						     os, texrow, moving_arg,
-						     foot, foot_texrow,
-						     foot_count);
-			}
-			
-			if (par && !par->IsDummy() && par->params.depth() > params.depth()) {
-				par = par->TeXDeeper(buf, bparams, os, texrow,
-						     foot, foot_texrow,
-						     foot_count);
-			}
-		} while (par && par->footnoteflag != LyXParagraph::NO_FOOTNOTE);
-	} else {
-		// process footnotes > depth 0 or in environments separately
-		// NOTE: Currently don't support footnotes within footnotes
-		//       even though that is possible using the \footnotemark
-		std::ostringstream dummy;
-		TexRow dummy_texrow;
-		int dummy_count = 0;
-		do {
-			LyXLayout const & style =
-				textclasslist
-				.Style(bparams.textclass, par->layout);
-			if (par->IsDummy())
-				lyxerr << "ERROR (LyXParagraph::TeXFootnote)"
-				       << endl;
-			if (style.isEnvironment()
-			    || par->params.pextraType() == PEXTRA_MINIPAGE) { /* && !minipage_open ?? */
-				// Allows the use of minipages within float
-				// environments. Shouldn't be circular because
-				// we don't support footnotes inside
-				// floats (yet). ARRae
-				par = par->TeXEnvironment(buf, bparams,
-							  foot, foot_texrow,
-							  dummy, dummy_texrow,
-							  dummy_count);
-			} else {
-				par = par->TeXOnePar(buf, bparams,
-						     foot, foot_texrow,
-						     moving_arg,
-						     dummy, dummy_texrow,
-						     dummy_count);
-			}
-
-			if (par && !par->IsDummy() && par->params.depth() > params.depth()) {
-				par = par->TeXDeeper(buf, bparams,
-						     foot, foot_texrow,
-						     dummy, dummy_texrow,
-						     dummy_count);
-			}
-		} while (par
-			 && par->footnoteflag != LyXParagraph::NO_FOOTNOTE);
-		if (dummy_count) {
-			lyxerr << "ERROR (LyXParagraph::TeXFootnote): "
-				"Footnote in a Footnote -- not supported"
-			       << endl;
-		}
-	}
-
-	switch (footnotekind) {
-	case LyXParagraph::FOOTNOTE:
-		if (footer_in_body) {
-			// This helps tell which of the multiple
-			// footnotetexts an error was in.
-			foot << "}%\n";
-			foot_texrow.newline();
-		} else {
-			os << '}';
-		}
-		break;
-	case LyXParagraph::MARGIN:
-		os << '}';
-		break;
-	case LyXParagraph::FIG:
-		if (params.pextraType() == PEXTRA_FLOATFLT
-		    && (!params.pextraWidth().empty()
-			|| !params.pextraWidthp().empty()))
-			os << "\\end{floatingfigure}";
-		else
-			os << "\\end{figure}";
-		break;
-	case LyXParagraph::TAB:
-		os << "\\end{table}";
-		break;
-	case LyXParagraph::WIDE_FIG:
-		os << "\\end{figure*}";
-		break;
-	case LyXParagraph::WIDE_TAB:
-	        os << "\\end{table*}";
-		break;
-	case LyXParagraph::ALGORITHM:
-		os << "\\end{algorithm}";
-		break;
-	}
-
-	if (need_closing)
-		os << "}";
-
-	if (footnotekind != LyXParagraph::FOOTNOTE
-	    && footnotekind != LyXParagraph::MARGIN) {
-		// we need to ensure that real floats like tables and figures
-		// have their \end{} on a line of their own otherwise we can
-		// get incorrect results when using the endfloat.sty package.
-		os << "\n";
-		texrow.newline();
-	}
-
-	lyxerr[Debug::LATEX] << "TeXFootnote...done " << par->next_ << endl;
-	return par;
-}
-
-
-bool LyXParagraph::IsDummy() const
-{
-	return (footnoteflag == LyXParagraph::NO_FOOTNOTE && previous_
-		&& previous_->footnoteflag != LyXParagraph::NO_FOOTNOTE);
-}
-#endif
-
-#ifndef NO_PEXTRA
-void LyXParagraph::SetPExtraType(BufferParams const & bparams,
-				 int type, string const & width,
-				 string const & widthp)
-{
-	params.pextraType(type);
-	params.pextraWidth(width);
-	params.pextraWidthp(widthp);
-
-	if (textclasslist.Style(bparams.textclass, 
-				layout).isEnvironment()) {
-		LyXParagraph * par = this;
-		LyXParagraph * ppar = par;
-
-		while (par && (par->layout == layout)
-		       && (par->params.depth() == params.depth())) {
-			ppar = par;
-			par = par->previous();
-#ifndef NEW_INSETS
-			if (par)
-				par = par->FirstPhysicalPar();
-#endif
-			while (par && par->params.depth() > params.depth()) {
-				par = par->previous();
-#ifndef NEW_INSETS
-				if (par)
-					par = par->FirstPhysicalPar();
-#endif
-			}
-		}
-		par = ppar;
-		while (par && (par->layout == layout)
-		       && (par->params.depth() == params.depth())) {
-			par->params.pextraType(type);
-			par->params.pextraWidth(width);
-			par->params.pextraWidthp(widthp);
-#ifndef NEW_INSETS
-			par = par->NextAfterFootnote();
-#else
-			par = par->next();
-#endif
-			if (par && (par->params.depth() > params.depth()))
-				par->SetPExtraType(bparams,
-						   type, width, widthp);
-#ifndef NEW_INSETS
-			while (par && ((par->params.depth() > params.depth()) || par->IsDummy()))
-				par = par->NextAfterFootnote();
-#else
-			while (par && par->params.depth() > params.depth())
-				par = par->next();
-#endif
-		}
-	}
-}
-
-
-void LyXParagraph::UnsetPExtraType(BufferParams const & bparams)
-{
-	if (params.pextraType() == PEXTRA_NONE)
-		return;
-    
-	params.pextraType(PEXTRA_NONE);
-	params.pextraWidth(string());
-	params.pextraWidthp(string());
-
-	if (textclasslist.Style(bparams.textclass, 
-				layout).isEnvironment()) {
-		LyXParagraph * par = this;
-		LyXParagraph * ppar = par;
-
-		while (par && (par->layout == layout)
-		       && (par->params.depth() == params.depth())) {
-			ppar = par;
-			par = par->previous();
-#ifndef NEW_INSETS
-			if (par)
-				par = par->FirstPhysicalPar();
-#endif
-			while (par && par->params.depth() > params.depth()) {
-				par = par->previous();
-#ifndef NEW_INSETS
-				if (par)
-					par = par->FirstPhysicalPar();
-#endif
-			}
-		}
-		par = ppar;
-		while (par && (par->layout == layout)
-		       && (par->params.depth() == params.depth())) {
-			par->params.pextraType(PEXTRA_NONE);
-			par->params.pextraWidth(string());
-			par->params.pextraWidthp(string());
-#ifndef NEW_INSETS
-			par = par->NextAfterFootnote();
-#else
-			par = par->next();
-#endif
-			if (par && (par->params.depth() > params.depth()))
-				par->UnsetPExtraType(bparams);
-#ifndef NEW_INSETS
-			while (par && ((par->params.depth() > params.depth()) || par->IsDummy()))
-				par = par->NextAfterFootnote();
-#else
-			while (par && par->params.depth() > params.depth())
-				par = par->next();
-#endif
-		}
-	}
-}
-#endif
 
 
 bool LyXParagraph::IsHfill(size_type pos) const
@@ -3849,14 +2194,6 @@ bool LyXParagraph::IsInset(size_type pos) const
 {
 	return IsInsetChar(GetChar(pos));
 }
-
-
-#ifndef NEW_INSETS
-bool LyXParagraph::IsFloat(size_type pos) const
-{
-	return IsFloatChar(GetChar(pos));
-}
-#endif
 
 
 bool LyXParagraph::IsNewline(size_type pos) const
@@ -3908,11 +2245,6 @@ bool LyXParagraph::IsWord(size_type pos ) const
 Language const *
 LyXParagraph::getParLanguage(BufferParams const & bparams) const 
 {
-#ifndef NEW_INSETS
-	if (IsDummy())
-		return FirstPhysicalPar()->getParLanguage(bparams);
-	else
-#endif
 	if (size() > 0)
 		return GetFirstFontSettings().language();
 	else if (previous_)
@@ -3959,11 +2291,7 @@ string const LyXParagraph::String(Buffer const * buffer, bool label)
 {
 	BufferParams const & bparams = buffer->params;
 	string s;
-#ifndef NEW_INSETS
-	if (label && !IsDummy() && !params.labelString().empty())
-#else
 	if (label && !params.labelString().empty())
-#endif
 		s += params.labelString() + ' ';
 	string::size_type const len = s.size();
 
@@ -3979,18 +2307,9 @@ string const LyXParagraph::String(Buffer const * buffer, bool label)
 		}
 	}
 
-#ifndef NEW_INSETS
-	if (next_ && next_->footnoteflag != LyXParagraph::NO_FOOTNOTE 
-	    && footnoteflag == LyXParagraph::NO_FOOTNOTE)
-		s += NextAfterFootnote()->String(buffer, false);
+	if (isRightToLeftPar(bparams))
+		reverse(s.begin() + len,s.end());
 
-	if (!IsDummy()) {
-#endif
-		if (isRightToLeftPar(bparams))
-			reverse(s.begin() + len,s.end());
-#ifndef NEW_INSETS
-	}
-#endif
 	return s;
 }
 
@@ -4001,11 +2320,7 @@ string const LyXParagraph::String(Buffer const * buffer,
 {
 	string s;
 
-#ifndef NEW_INSETS
-	if (beg == 0 && !IsDummy() && !params.labelString().empty())
-#else
 	if (beg == 0 && !params.labelString().empty())
-#endif
 		s += params.labelString() + ' ';
 
 	for (LyXParagraph::size_type i = beg; i < end; ++i) {

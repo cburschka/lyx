@@ -66,64 +66,13 @@ public:
 #endif
 	///
 	enum META_KIND {
-#ifndef NEW_INSETS
-		///
-		META_FOOTNOTE = 1,
-		///
-		META_MARGIN,
-		///
-		META_FIG,
-		///
-		META_TAB,
-		///
-		META_ALGORITHM,
-		///
-		META_WIDE_FIG,
-		///
-		META_WIDE_TAB,
-		///
-		META_HFILL,
-#else
 		///
 		META_HFILL = 1,
-#endif
 		///
 		META_NEWLINE,
-		//
-		//META_PROTECTED_SEPARATOR,
 		///
 		META_INSET
 	};
-#ifndef NEW_INSETS
-
-	/// The footnoteflag
-	enum footnote_flag {
-		///
-		NO_FOOTNOTE,
-		///
-		OPEN_FOOTNOTE,
-		///
-		CLOSED_FOOTNOTE
-	};
-
-	/// The footnotekinds
-	enum footnote_kind {
-		///
-		FOOTNOTE,
-		///
-		MARGIN,
-		///
-		FIG,
-		///
-		TAB,
-		///
-		ALGORITHM,  // Bernhard, 970807
-		///
-		WIDE_FIG,   // CFO-G, 971106
-		///
-		WIDE_TAB    // CFO-G, 971106
-	};
-#endif
 	///
 	typedef char value_type;
 	///
@@ -173,25 +122,14 @@ public:
 	///
 	LyXParagraph * TeXOnePar(Buffer const *, BufferParams const &,
 				 std::ostream &, TexRow & texrow,
-				 bool moving_arg
-#ifndef NEW_INSETS
-				 ,
-				 std::ostream & foot, TexRow & foot_texrow,
-				 int & foot_count
-#endif
-		);
+				 bool moving_arg);
 	///
 	bool SimpleTeXOnePar(Buffer const *, BufferParams const &,
 			     std::ostream &, TexRow & texrow, bool moving_arg);
 
 	///
 	LyXParagraph * TeXEnvironment(Buffer const *, BufferParams const &,
-				      std::ostream &, TexRow & texrow
-#ifndef NEW_INSETS
-				      ,std::ostream & foot, TexRow & foot_texrow,
-				      int & foot_count
-#endif
-		);
+				      std::ostream &, TexRow & texrow);
 	///
 	LyXParagraph * Clone() const;
 	
@@ -236,20 +174,6 @@ public:
 	
 	///
 	LyXTextClass::LayoutList::size_type layout;
-#ifndef NEW_INSETS
-	/**
-	  \begin{itemize}
-	  \item no footnote, closed footnote, 
-	  \item open footnote, where footnote
-	  \item means footnote-environment
-	  \end{itemize}
-	 */
-	footnote_flag footnoteflag;
-
-	/// footnote, margin, fig, tab
-	footnote_kind footnotekind;
-#endif
-	
 private:
 	///
 	boost::array<int, 10> counter_;
@@ -266,9 +190,7 @@ public:
 	
 	///
 	char itemdepth;
-#ifdef NEW_INSETS
 private:
-#endif
 	///
 	LyXParagraph * next_;
 	///
@@ -292,30 +214,6 @@ public:
 	///
 	LyXParagraph const * previous() const;
 
-#ifndef NEW_INSETS
-	/** these function are able to hide open and closed footnotes
-	 */ 
-	LyXParagraph * NextAfterFootnote();
-	///
-	LyXParagraph const * NextAfterFootnote() const;
-	
-	///
-	LyXParagraph * PreviousBeforeFootnote();
-	///
-	LyXParagraph * LastPhysicalPar();
-	///
-	LyXParagraph const * LastPhysicalPar() const;
-	
-	///
-	LyXParagraph * FirstPhysicalPar();
-	///
-	LyXParagraph const * FirstPhysicalPar() const;
-	/// returns the physical paragraph
-	LyXParagraph * ParFromPos(size_type pos);
-	/// returns the position in the physical par
-	int PositionInParFromPos(size_type pos) const;
-#endif
-
 	/// for the environments
 	LyXParagraph * DepthHook(int depth);
 	/// for the environments
@@ -336,21 +234,10 @@ public:
 	char GetAlign() const;
 	///
 	char GetDepth() const;
-#ifndef NEW_INSETS
-	///
-	void SetLayout(BufferParams const &,
-		       LyXTextClass::LayoutList::size_type new_layout);
-	///
-	void SetOnlyLayout(BufferParams const &,
-			   LyXTextClass::LayoutList::size_type new_layout);
-	///
-	size_type Last() const;
-#else
 	///
 	void SetLayout(LyXTextClass::LayoutList::size_type new_layout);
 	///
 	void SetOnlyLayout(LyXTextClass::LayoutList::size_type new_layout);
-#endif
 	///
 	int GetFirstCounter(int i) const;
 	///
@@ -361,9 +248,9 @@ public:
 	///
 	void BreakParagraphConservative(BufferParams const &, size_type pos);
 	/** Get unistantiated font setting. Returns the difference
-	  between the characters font and the layoutfont.
-	  This is what is stored in the fonttable
-	 */
+	    between the characters font and the layoutfont.
+	    This is what is stored in the fonttable
+	*/
 	LyXFont const
 	GetFontSettings(BufferParams const &, size_type pos) const;
 	///
@@ -404,12 +291,6 @@ public:
 	Inset * GetInset(size_type pos);
 	///
 	Inset const * GetInset(size_type pos) const;
-#ifndef NEW_INSETS
-	///
-	void OpenFootnote(size_type pos);
-	///
-	void CloseFootnote(size_type pos);
-#endif
 	/** important for cut and paste
 	    Temporary change from BufferParams to Buffer. Will revert when we
 	    get rid of the argument to Inset::Clone(Buffer const &) */
@@ -423,10 +304,6 @@ public:
 	bool IsHfill(size_type pos) const;
 	///
 	bool IsInset(size_type pos) const;
-#ifndef NEW_INSETS
-	///
-	bool IsFloat(size_type pos) const;
-#endif
 	///
 	bool IsNewline(size_type pos) const;
 	///
@@ -441,13 +318,13 @@ public:
 	bool IsWord(size_type pos) const;
 
 	/** This one resets all layout and dtp switches but not the font
-	 of the single characters
-	 */ 
+	    of the single characters
+	*/ 
 	void Clear();
 
 	/** paste this paragraph with the next one
-	  be carefull, this doesent make any check at all
-	  */ 
+	    be carefull, this doesent make any check at all
+	*/ 
 	void PasteParagraph(BufferParams const &);
 
 	/// used to remove the error messages
@@ -456,28 +333,9 @@ public:
 	/// returns -1 if inset not found
 	int GetPositionOfInset(Inset * inset) const;
 
-#ifndef NEW_INSETS
-	/// ok and now some footnote functions
-	void OpenFootnotes();
-
-	///
-	void CloseFootnotes();
-	///
-	LyXParagraph * FirstSelfrowPar();
-#endif
-
 	///
 	int StripLeadingSpaces(LyXTextClassList::size_type tclass); 
 
-#ifndef NEW_INSETS
-	/** A paragraph following a footnote is a "dummy". A paragraph
-	    with a footnote in it is stored as three paragraphs:
-	    First a paragraph with the text up to the footnote, then
-	    one (or more) paragraphs with the footnote, and finally
-	    the a paragraph with the text after the footnote. Only the
-	    first paragraph keeps information  about layoutparameters, */
-	bool IsDummy() const;
-#endif
 #ifndef NO_PEXTRA_REALLY
         /* If I set a PExtra Indent on one paragraph of a ENV_LIST-TYPE
            I have to set it on each of it's elements */
@@ -511,23 +369,23 @@ private:
 		}
 	};
 	/** A font entry covers a range of positions. Notice that the
-	  entries in the list are inserted in random order.
-	  I don't think it's worth the effort to implement a more effective
-	  datastructure, because the number of different fonts in a paragraph
-	  is limited. (Asger)
-	  Nevertheless, I decided to store fontlist using a sorted vector:
-	  fontlist = { {pos_1,font_1} , {pos_2,font_2} , ... } where
-	  pos_1 < pos_2 < ..., font_{i-1} != font_i for all i,
-	  and font_i covers the chars in positions pos_{i-1}+1,...,pos_i
-	  (font_1 covers the chars 0,...,pos_1) (Dekel)
+	    entries in the list are inserted in random order.
+	    I don't think it's worth the effort to implement a more effective
+	    datastructure, because the number of different fonts in a paragraph
+	    is limited. (Asger)
+	    Nevertheless, I decided to store fontlist using a sorted vector:
+	    fontlist = { {pos_1,font_1} , {pos_2,font_2} , ... } where
+	    pos_1 < pos_2 < ..., font_{i-1} != font_i for all i,
+	    and font_i covers the chars in positions pos_{i-1}+1,...,pos_i
+	    (font_1 covers the chars 0,...,pos_1) (Dekel)
 	*/
 	struct FontTable  {
 		///
 		FontTable(size_type p, LyXFont const & f)
 			: pos_(p)
-		{
-			font_ = container.get(f);
-		}
+			{
+				font_ = container.get(f);
+			}
 		///
 		size_type pos() const { return pos_; }
 		///
@@ -540,13 +398,13 @@ private:
 		/// End position of paragraph this font attribute covers
 		size_type pos_;
 		/** Font. Interpretation of the font values:
-		If a value is LyXFont::INHERIT_*, it means that the font 
-		attribute is inherited from either the layout of this
-		paragraph or, in the case of nested paragraphs, from the 
-		layout in the environment one level up until completely 
-		resolved.
-		The values LyXFont::IGNORE_* and LyXFont::TOGGLE are NOT 
-		allowed in these font tables.
+		    If a value is LyXFont::INHERIT_*, it means that the font 
+		    attribute is inherited from either the layout of this
+		    paragraph or, in the case of nested paragraphs, from the 
+		    layout in the environment one level up until completely 
+		    resolved.
+		    The values LyXFont::IGNORE_* and LyXFont::TOGGLE are NOT 
+		    allowed in these font tables.
 		*/
 		boost::shared_ptr<LyXFont> font_;
 		///
@@ -574,20 +432,7 @@ private:
 	InsetList insetlist;
 	///
 	LyXParagraph * TeXDeeper(Buffer const *, BufferParams const &,
-				 std::ostream &, TexRow & texrow
-#ifndef NEW_INSETS
-				 ,std::ostream & foot, TexRow & foot_texrow,
-				 int & foot_count
-#endif
-		);
-#ifndef NEW_INSETS
-	///
-	LyXParagraph * TeXFootnote(Buffer const *, BufferParams const &,
-				   std::ostream &, TexRow & texrow,
-				   std::ostream & foot, TexRow & foot_texrow,
-				   int & foot_count,
-				   bool parent_is_rtl);
-#endif
+				 std::ostream &, TexRow & texrow);
 	///
 	void SimpleTeXBlanks(std::ostream &, TexRow & texrow,
 			     size_type const i,
@@ -651,7 +496,6 @@ LyXParagraph::size_type LyXParagraph::size() const
 }
 
 
-#ifdef NEW_INSETS
 inline
 LyXParagraph::value_type
 LyXParagraph::GetChar(LyXParagraph::size_type pos) const
@@ -666,7 +510,7 @@ LyXParagraph::GetChar(LyXParagraph::size_type pos) const
 	
 	return text[pos];
 }
-#endif
+
 
 inline
 int LyXParagraph::id() const
@@ -685,11 +529,7 @@ void  LyXParagraph::id(int id_arg)
 inline
 LyXTextClass::size_type LyXParagraph::GetLayout() const
 {
-#ifndef NEW_INSETS
-	return FirstPhysicalPar()->layout;
-#else
 	return layout;
-#endif
 }
 
 

@@ -1,3 +1,10 @@
+2001-04-26  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* LyXAction.C: removed all !NEW_INSETS cruft
+	(init): moved lfun_item in method
+
+	* lyxparagraph.[Ch]: removed all !NEW_INSETS cruft
+
 2001-04-26  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* BufferView2.C (theLockingInset): white space.

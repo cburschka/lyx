@@ -18,10 +18,6 @@
 #include "debug.h"
 #include "gettext.h"
 #include "support/lstrings.h"
-#if 1
-// only to get access to NEW_INSETS
-#include "lyxparagraph.h"
-#endif
 
 using std::ostream;
 using std::endl;
@@ -42,7 +38,7 @@ using std::endl;
  
      (May 19 1996, 12:04, RvdK)
  */
- 
+
 // These are globals. 
 LyXAction lyxaction;
 
@@ -58,13 +54,6 @@ void LyXAction::newFunc(kb_action action, string const & name,
 }
 
 
-struct lfun_item {
-	kb_action action;
-	char const * name;
-	char const * helpText;
-	unsigned int attrib;
-};
-
 void LyXAction::init()
 {
 	// This function was changed to use the array below in initalization
@@ -75,6 +64,13 @@ void LyXAction::init()
 	
 	static bool init = false;
 	if (init) return;
+
+	struct lfun_item {
+		kb_action action;
+		char const * name;
+		char const * helpText;
+		unsigned int attrib;
+	};
 
 	lfun_item items[] = {
 		{ LFUN_ACUTE, "accent-acute", "", Noop },
@@ -128,9 +124,6 @@ void LyXAction::init()
 		{ LFUN_ENDBUFSEL, "buffer-end-select",
 		  N_("Select to end of document"), ReadOnly },
 		{ LFUN_EXPORT, "buffer-export", N_("Export to"), ReadOnly },
-#ifndef NEW_INSETS
-		{ LFUN_INSERTFOOTNOTE, "buffer-float-insert", "", Noop },
-#endif
 		{ LFUN_IMPORT, "buffer-import",
 		  N_("Import document"), NoBuffer },
 		{ LFUN_BUFFER_PRINT, "buffer-print-xtl", N_("Print"),
@@ -203,9 +196,6 @@ void LyXAction::init()
 		{ LFUN_MENUSEARCH, "find-replace", N_("Find & Replace"),
 		  ReadOnly },
 		{ LFUN_INSET_FLOAT, "float-insert", "", Noop },
-#if 0
-		{ LFUN_FLOATSOPERATE, "floats-operate", "", ReadOnly },
-#endif
 		{ LFUN_BOLD, "font-bold", N_("Toggle bold"), Noop },
 		{ LFUN_CODE, "font-code", N_("Toggle code style"), Noop },
 		{ LFUN_DEFAULT, "font-default", N_("Default font style"),
@@ -222,13 +212,8 @@ void LyXAction::init()
 		  ReadOnly },
 		{ LFUN_UNDERLINE, "font-underline",
 		  N_("Toggle font underline"), Noop },
-#ifndef NEW_INSETS
-		{ LFUN_FOOTMELT, "footnote-insert", N_("Insert Footnote"),
-		  Noop },
-#else
 		{ LFUN_INSET_FOOTNOTE, "footnote-insert",
 		  N_("Insert Footnote"), Noop },
-#endif
 		{ LFUN_RIGHTSEL, "forward-select", N_("Select next char"),
 		  ReadOnly },
 		{ LFUN_HFILL, "hfill-insert",
@@ -302,10 +287,6 @@ void LyXAction::init()
 		{ LFUN_QUIT, "lyx-quit", N_("Exit"), NoBuffer },
 		{ LFUN_INSET_MARGINAL, "marginalnote-insert",
 		  N_("Insert Marginalnote"), Noop },
-#ifndef NEW_INSETS
-		{ LFUN_MARGINMELT, "marginpar-insert",
-		  N_("Insert Margin note"), Noop },
-#endif
 		{ LFUN_MARK_OFF, "mark-off", "", ReadOnly },
 		{ LFUN_MARK_ON, "mark-on", "", ReadOnly },
 		{ LFUN_SETMARK, "mark-toggle", "", ReadOnly },
@@ -325,9 +306,6 @@ void LyXAction::init()
 		{ LFUN_MATH_EXTERN, "math-extern", "", Noop },
 		{ LFUN_MATH_PANEL, "math-panel", "", Noop },
 		{ LFUN_MATH_SIZE, "math-size", "", Noop },
-#if 0
-		{ LFUN_MELT, "melt", N_("Melt"), Noop },
-#endif
 		{ LFUN_MENU_OPEN_BY_NAME, "menu-open", "", NoBuffer },
 		{ LFUN_MENU_SEPARATOR, "menu-separator-insert", "", Noop },
 		{ LFUN_META_FAKE, "meta-prefix", "", NoBuffer },
@@ -686,7 +664,6 @@ bool LyXAction::funcHasFlag(kb_action action,
 			"No info about kb_action: " << action << '\n';
 		return false;
 	}
-
 }
 
 
