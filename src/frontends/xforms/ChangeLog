@@ -1,10 +1,13 @@
+2002-05-02  Herbert Voss  <voss@perce.de>
+
+	* FormGraphics.C (input): do not read bb new when it was changed
+
 2002-04-30  Rob Lahaye <lahaye@users.sourceforge.net>
-	* FormDocument.C: "USletter" -> "US letter" etc.
-			  "Other" -> "Custom".
+
+	* FormDocument.C: "USletter" -> "US letter" etc., "Other" -> "Custom".
 	* FormParagraph.C: "Other" -> "Custom"
 	* FormPreferences.C: "USletter" -> "US letter" etc.
-	* forms/form_document.fd: 'Papersize" -> "Paper size"
-				  style consistency
+	* forms/form_document.fd: 'Papersize" -> "Paper size" style consistency
 	* forms/form_preferences.fd: style consistency
 
 2002-04-30  Angus Leeming  <a.leeming@ic.ac.uk>

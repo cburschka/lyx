@@ -510,7 +510,8 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		if (out_name != in_name && !out_name.empty()) {
 			fl_set_input(file_->input_filename, out_name.c_str());
 		}
-		if (controller().isFilenameValid(out_name))
+		if (controller().isFilenameValid(out_name) &&
+		    !controller().bbChanged)
   			updateBB(out_name, string());
 
 	} else if (ob == file_->check_subcaption) {
