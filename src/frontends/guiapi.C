@@ -69,10 +69,4 @@ void gui_ShowSpellchecker(Dialogs & d)
 }
 
 
-void gui_ShowTexinfo(Dialogs & d)
-{
-	d.showTexinfo();
-}
-
-
 } // extern "C"

@@ -13,17 +13,26 @@
 #define CONTROLTEXINFO_H
 
 
-#include "ControlDialog_impl.h"
-#include "LString.h"
+#include "Dialog.h"
 
 /** A controller for Texinfo dialogs. */
 
-class ControlTexinfo : public ControlDialogBI {
+class ControlTexinfo : public Dialog::Controller {
 public:
+	///
+	ControlTexinfo(Dialog &);
+	///
+	virtual bool initialiseParams(string const &) { return true; }
+	///
+	virtual void clearParams() {}
+	///
+	virtual void dispatchParams() {}
+	///
+	virtual bool isBufferDependent() const { return false; }
+
+
 	/// the file extensions
 	enum texFileSuffix {cls, sty, bst};
-	///
-	ControlTexinfo(LyXView &, Dialogs &);
 	/// show contents af a file
 	void viewFile(string const filename) const;
 	/// show all classoptions

@@ -23,7 +23,6 @@
 #include "ControlSearch.h"
 #include "ControlSendto.h"
 #include "ControlSpellchecker.h"
-#include "ControlTexinfo.h"
 
 #include "QCharacter.h"
 #include "QCharacterDialog.h"
@@ -44,8 +43,6 @@
 #include "QSendtoDialog.h"
 #include "QSpellchecker.h"
 #include "QSpellcheckerDialog.h"
-#include "QTexinfo.h"
-#include "QTexinfoDialog.h"
 
 #include "Qt2BC.h"
 
@@ -69,9 +66,6 @@ SendtoDialog;
 typedef GUI<ControlSpellchecker, QSpellchecker, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 SpellcheckerDialog;
 
-typedef GUI<ControlTexinfo, QTexinfo, OkCancelPolicy, Qt2BC>
-TexinfoDialog;
-
 struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
 
@@ -81,7 +75,6 @@ struct Dialogs::Impl {
 	SearchDialog        search;
 	SendtoDialog        sendto;
 	SpellcheckerDialog  spellchecker;
-	TexinfoDialog       texinfo;
 };
 
 
@@ -91,8 +84,7 @@ Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 	  print(lv, d),
 	  search(lv, d),
 	  sendto(lv, d),
-	  spellchecker(lv, d),
-	  texinfo(lv, d)
+	  spellchecker(lv, d)
 {}
 
 
@@ -153,10 +145,4 @@ void Dialogs::showSendto()
 void Dialogs::showSpellchecker()
 {
 	pimpl_->spellchecker.controller().show();
-}
-
-
-void Dialogs::showTexinfo()
-{
-	pimpl_->texinfo.controller().show();
 }

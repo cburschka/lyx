@@ -86,8 +86,6 @@ public:
 	void showSendto();
 	/// bring up the spellchecker
 	void showSpellchecker();
-	/// show the TexInfo
-	void showTexinfo();
 	//@}
 
 	/** \param name == "about" etc; an identifier used to

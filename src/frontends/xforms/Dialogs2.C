@@ -51,10 +51,6 @@
 #include "FormSpellchecker.h"
 #include "forms/form_spellchecker.h"
 
-#include "ControlTexinfo.h"
-#include "FormTexinfo.h"
-#include "forms/form_texinfo.h"
-
 typedef GUI<ControlDocument, FormDocument, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 DocumentDialog;
 
@@ -79,8 +75,6 @@ SendtoDialog;
 typedef GUI<ControlSpellchecker, FormSpellchecker, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 SpellcheckerDialog;
 
-typedef GUI<ControlTexinfo, FormTexinfo, OkCancelPolicy, xformsBC>
-TexinfoDialog;
 
 struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
@@ -93,7 +87,6 @@ struct Dialogs::Impl {
 	SearchDialog        search;
 	SendtoDialog        sendto;
 	SpellcheckerDialog  spellchecker;
-	TexinfoDialog       texinfo;
 };
 
 
@@ -105,8 +98,7 @@ Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 	  print(lv, d),
 	  search(lv, d),
 	  sendto(lv, d),
-	  spellchecker(lv, d),
-	  texinfo(lv, d)
+	  spellchecker(lv, d)
 {}
 
 
@@ -167,10 +159,4 @@ void Dialogs::showSendto()
 void Dialogs::showSpellchecker()
 {
 	pimpl_->spellchecker.controller().show();
-}
-
-
-void Dialogs::showTexinfo()
-{
-	pimpl_->texinfo.controller().show();
 }

@@ -36,6 +36,7 @@
 #include "ControlShowFile.h"
 #include "ControlTabular.h"
 #include "ControlTabularCreate.h"
+#include "ControlTexinfo.h"
 #include "ControlToc.h"
 #include "ControlVCLog.h"
 #include "ControlWrap.h"
@@ -64,6 +65,7 @@
 #include "FormParagraph.h"
 #include "FormRef.h"
 #include "FormTabular.h"
+#include "FormTexinfo.h"
 #include "FormShowFile.h"
 #include "FormTabularCreate.h"
 #include "FormText.h"
@@ -108,14 +110,14 @@ FormMathsBitmap * createFormBitmap(Dialog & parent, string const & title,
 }
 
 
-char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes",
+char const * const dialognames[] = { "aboutlyx", "bibitem", "bibtex", "changes",
 "character", "citation", "error", "errorlist" , "ert", "external", "file",
-"float", "graphics", "include", "index", "label", "log", "mathpanel",
+"float", "graphics", "include", "index", "label", "latexlog", "mathpanel",
 "mathaccents", "matharrows", "mathoperators", "mathrelations", "mathgreek",
 "mathmisc", "mathdots", "mathbigoperators", "mathamsmisc",
 "mathamsarrows", "mathamsrelations", "mathamsnegatedrelations", "mathamsoperators",
 "mathdelimiter", "mathmatrix", "mathspace", "mathstyle",
-"minipage", "paragraph", "ref", "tabular", "tabularcreate",
+"minipage", "paragraph", "ref", "tabular", "tabularcreate", "texinfo",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
@@ -153,7 +155,7 @@ Dialog * Dialogs::build(string const & name)
 	Dialog * dialog = new Dialog(lyxview_, name);
 	dialog->bc().view(new xformsBC(dialog->bc()));
 
-	if (name == "about") {
+	if (name == "aboutlyx") {
 		dialog->setController(new ControlAboutlyx(*dialog));
 		dialog->setView(new FormAboutlyx(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
@@ -219,7 +221,7 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setView(new FormText(*dialog,
 					     _("Label"), _("Label:|#L")));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
-	} else if (name == "log") {
+	} else if (name == "latexlog") {
 		dialog->setController(new ControlLog(*dialog));
 		dialog->setView(new FormLog(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
@@ -425,6 +427,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlTabularCreate(*dialog));
 		dialog->setView(new FormTabularCreate(*dialog));
 		dialog->bc().bp(new IgnorantPolicy);
+	} else if (name == "texinfo") {
+		dialog->setController(new ControlTexinfo(*dialog));
+		dialog->setView(new FormTexinfo(*dialog));
+		dialog->bc().bp(new OkCancelPolicy);
 #ifdef HAVE_LIBAIKSAURUS
 	} else if (name == "thesaurus") {
 		dialog->setController(new ControlThesaurus(*dialog));

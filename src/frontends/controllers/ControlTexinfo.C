@@ -10,20 +10,10 @@
 
 #include <config.h>
 
-
 #include "ControlTexinfo.h"
-
-#include "helper_funcs.h"
 #include "tex_helpers.h"
+#include "funcrequest.h"
 
-#include "frontends/Dialogs.h"
-#include "frontends/LyXView.h"
-
-#include "support/filetools.h" // FileSearch
-#include "support/path.h"
-#include "support/lstrings.h"
-
-extern string user_lyxdir; // home of *Files.lst
 
 namespace {
 
@@ -46,8 +36,8 @@ string getFileList(ControlTexinfo::texFileSuffix type, bool withFullPath)
 } // namespace anon
 
 
-ControlTexinfo::ControlTexinfo(LyXView & lv, Dialogs & d)
-	: ControlDialogBI(lv, d)
+ControlTexinfo::ControlTexinfo(Dialog & parent)
+	: Dialog::Controller(parent)
 {}
 
 
@@ -81,7 +71,8 @@ ControlTexinfo::getContents(texFileSuffix type, bool withFullPath) const
 
 void ControlTexinfo::viewFile(string const filename) const
 {
-	lv_.getDialogs().show("file", filename);
+	string const arg = "file " + filename;
+	kernel().dispatch(FuncRequest(LFUN_DIALOG_SHOW, arg));
 }
 
 

@@ -13,8 +13,7 @@
 #define QTEXINFO_H
 
 
-#include "Qt2Base.h"
-
+#include "QDialogView.h"
 #include "ControlTexinfo.h"
 
 #include <vector>
@@ -23,13 +22,12 @@ class QTexinfoDialog;
 
 ///
 class QTexinfo
-	: public Qt2CB<ControlTexinfo, Qt2DB<QTexinfoDialog> >
-{
+	 : public QController<ControlTexinfo, QView<QTexinfoDialog> > {
 public:
 	///
 	friend class QTexinfoDialog;
 	///
-	QTexinfo();
+	QTexinfo(Dialog &);
 private:
 	/// Apply changes
 	virtual void apply() {}

@@ -13,15 +13,16 @@
 #define FORMTEXINFO_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 #include "ControlTexinfo.h"
 
 struct FD_texinfo;
 
-class FormTexinfo : public FormCB<ControlTexinfo, FormDB<FD_texinfo> > {
+class FormTexinfo
+	: public FormController<ControlTexinfo, FormView<FD_texinfo> > {
 public:
 	///
-	FormTexinfo();
+	FormTexinfo(Dialog &);
 private:
 	/// not needed
 	virtual void apply() {}

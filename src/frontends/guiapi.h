@@ -29,7 +29,6 @@ void gui_ShowPrint(Dialogs &);
 void gui_ShowSearch(Dialogs &);
 void gui_ShowSendto(Dialogs &);
 void gui_ShowSpellchecker(Dialogs &);
-void gui_ShowTexinfo(Dialogs &);
 
 } // extern "C"
 

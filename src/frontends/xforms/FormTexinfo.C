@@ -26,9 +26,10 @@
 
 using std::vector;
 
-typedef FormCB<ControlTexinfo, FormDB<FD_texinfo> > base_class;
-FormTexinfo::FormTexinfo()
-	: base_class(_("LaTeX Information")),
+typedef FormController<ControlTexinfo, FormView<FD_texinfo> > base_class;
+
+FormTexinfo::FormTexinfo(Dialog & parent)
+	: base_class(parent, _("LaTeX Information")),
 	  activeStyle(ControlTexinfo::cls)
 {}
 
@@ -37,7 +38,8 @@ void FormTexinfo::build() {
 	dialog_.reset(build_texinfo(this));
 
 	// callback for double click in browser to view the selected file
-	fl_set_browser_dblclick_callback(dialog_->browser, C_FormBaseInputCB, 2);
+	fl_set_browser_dblclick_callback(dialog_->browser,
+					 C_FormDialogView_InputCB, 2);
 
 	string const classes_List = _("LaTeX classes|LaTeX styles|BibTeX styles");
 	fl_addto_choice(dialog_->choice_classes, classes_List.c_str());

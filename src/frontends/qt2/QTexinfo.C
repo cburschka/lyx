@@ -26,11 +26,11 @@
 
 using std::vector;
 
-typedef Qt2CB<ControlTexinfo, Qt2DB<QTexinfoDialog> > base_class;
+typedef QController<ControlTexinfo, QView<QTexinfoDialog> > base_class;
 
 
-QTexinfo::QTexinfo()
-	: base_class(_("LyX: LaTeX Information")),
+QTexinfo::QTexinfo(Dialog & parent)
+	: base_class(parent, _("LyX: LaTeX Information")),
 	  warningPosted(false), activeStyle(ControlTexinfo::cls)
 {
 }

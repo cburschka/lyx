@@ -33,6 +33,7 @@
 #include "ControlShowFile.h"
 #include "ControlTabular.h"
 #include "ControlTabularCreate.h"
+#include "ControlTexinfo.h"
 #include "ControlToc.h"
 #include "ControlVCLog.h"
 #include "ControlWrap.h"
@@ -63,6 +64,7 @@
 #include "QShowFile.h"
 #include "QTabular.h"
 #include "QTabularCreate.h"
+#include "QTexinfo.h"
 #include "QToc.h"
 #include "QURL.h"
 #include "QVCLog.h"
@@ -80,11 +82,11 @@
 
 namespace {
 
-char const * const dialognames[] = { "about", "bibitem", "bibtex", "changes",
+char const * const dialognames[] = { "aboutlyx", "bibitem", "bibtex", "changes",
 "character", "citation", "error", "errorlist", "ert", "external", "file",
-"float", "graphics", "include", "index", "label", "log",
+"float", "graphics", "include", "index", "label", "latexlog",
 "mathpanel", "mathdelimiter", "mathmatrix",
-"minipage", "paragraph", "ref", "tabular", "tabularcreate",
+"minipage", "paragraph", "ref", "tabular", "tabularcreate", "texinfo",
 
 #ifdef HAVE_LIBAIKSAURUS
 "thesaurus",
@@ -123,7 +125,7 @@ Dialog * Dialogs::build(string const & name)
 	Dialog * dialog = new Dialog(lyxview_, name);
 	dialog->bc().view(new Qt2BC(dialog->bc()));
 
-	if (name == "about") {
+	if (name == "aboutlyx") {
 		dialog->setController(new ControlAboutlyx(*dialog));
 		dialog->setView(new QAbout(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
@@ -191,7 +193,7 @@ Dialog * Dialogs::build(string const & name)
 					   _("LyX: Label"),
 					   qt_("&Label")));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
-	} else if (name == "log") {
+	} else if (name == "latexlog") {
 		dialog->setController(new ControlLog(*dialog));
 		dialog->setView(new QLog(*dialog));
 		dialog->bc().bp(new OkCancelPolicy);
@@ -227,6 +229,10 @@ Dialog * Dialogs::build(string const & name)
 		dialog->setController(new ControlTabularCreate(*dialog));
 		dialog->setView(new QTabularCreate(*dialog));
 		dialog->bc().bp(new IgnorantPolicy);
+	} else if (name == "texinfo") {
+		dialog->setController(new ControlTexinfo(*dialog));
+		dialog->setView(new QTexinfo(*dialog));
+		dialog->bc().bp(new OkCancelPolicy);
 #ifdef HAVE_LIBAIKSAURUS
 	} else if (name == "thesaurus") {
 		dialog->setController(new ControlThesaurus(*dialog));
