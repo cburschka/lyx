@@ -330,5 +330,20 @@ string const InsetFormula::PreviewImpl::latexString() const
 	ostringstream ls;
 	WriteStream wi(ls, false, false);
 	parent().par_->write(wi);
-	return ls.str().c_str();
+	string str = ls.str().c_str();
+
+	// If we are in displaymode, the preview will include the margins
+	// on either side of the previewed equation.
+	// We can create an image with a tight bounding box by replacing the
+	// "\[ ... \]" delimiters with "$ \displaystyle ... $".
+	// Note that we have to get rid of any trailing '\n's for the fix
+	// to work.
+	if (prefixIs(str, "\\[")) {
+		std::cerr << "before\n" << str << std::endl;
+		str = rtrim(rtrim(ltrim(str, "\\["), "\n"), "\\]");
+		str = "$ \\displaystyle " + str + " $";
+		std::cerr << "after\n" << str << std::endl;
+	}
+
+	return str;
 }

@@ -479,9 +479,7 @@ void PreviewLoader::Impl::startLoading()
 	string const command = "sh " + LibScriptSearch(cs.str().c_str());
 
 	// Initiate the conversion from LaTeX to bitmap images files.
-	Forkedcall::SignalTypePtr convert_ptr;
-	convert_ptr.reset(new Forkedcall::SignalType);
-
+	Forkedcall::SignalTypePtr convert_ptr(new Forkedcall::SignalType);
 	convert_ptr->connect(
 		boost::bind(&Impl::finishedGenerating, this, _1, _2, _3));
 

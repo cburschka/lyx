@@ -1,3 +1,8 @@
+2002-10-17  Angus Leeming  <leeming@lyx.org>
+
+	* formula.C (latexString): change "\[ ... \]" to "$ \displaystyle ... $"
+	for nicer previews.
+
 2002-10-17  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* math_kerninset.C (metrics): Use LyXLength::inPixels.
