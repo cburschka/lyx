@@ -23,7 +23,9 @@ int make_tempfile(char * templ)
 	::mktemp(templ);
 	return ::open(templ, O_CREAT | O_EXCL, S_IRUSR | S_IWUSR);
 #else
+#ifdef WITH_WARNINGS
 #warning FIX FIX FIX
+#endif
 #endif
 #endif
 }

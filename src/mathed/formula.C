@@ -326,7 +326,9 @@ void InsetFormula::Write(Buffer const * buf, ostream & os) const
 int InsetFormula::Latex(Buffer const *, ostream & os, bool fragile, bool) const
 {
     int ret = 0;      
+//#ifdef WITH_WARNINGS
 //#warning Alejandro, the number of lines is not returned in this case
+//#endif
 // This problem will disapear at 0.13.
     mathed_write(par, os, &ret, fragile, label);
     return ret;
@@ -626,8 +628,10 @@ void InsetFormula::display(bool dspf)
 
 vector<string> const InsetFormula::getLabelList() const
 {
+//#ifdef WITH_WARNINGS
 //#warning This is dirty, I know. Ill clean it at 0.11
 // Correction, the only way to clean this is with a new kernel: 0.13.
+//#endif
 
 	vector<string> label_list;
 
@@ -939,7 +943,9 @@ InsetFormula::LocalDispatch(BufferView * bv,
 	   //BUG 
 //	   mt->SetNumbered(!mt->IsNumbered());
 
+#ifdef WITH_WARNINGS
 #warning This is a terrible hack! We should find a better solution.
+#endif
        while (mathcursor->getLabel() == MathedXIter::error_label) {
 	   if (LocalDispatch(bv, LFUN_LEFT, string()) == FINISHED)
 	       return DISPATCHED;
@@ -1064,7 +1070,9 @@ InsetFormula::LocalDispatch(BufferView * bv,
 			   par->GetType() == LM_OT_MPAR)
 	       ?  mathcursor->getLabel() : label;
 
+#ifdef WITH_WARNINGS
 #warning This is a terrible hack! We should find a better solution.
+#endif
        /// This is needed becuase in some positions mathcursor->cursor->crow
        /// is equal to 0, and therefore the label cannot be inserted.
        /// So we move the cursor left until mathcursor->cursor->crow != 0.

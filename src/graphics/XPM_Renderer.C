@@ -44,7 +44,9 @@ bool XPM_Renderer::renderImage()
 	Display * display = fl_get_display();
 
 //(BE 2000-08-05)
+//#ifdef WITH_WARNINGS
 //#warning This might be a dirty thing, but I dont know any other solution.
+//#endif
 	Screen * screen = ScreenOfDisplay(display, fl_screen);
 
 	int status = XpmReadFileToPixmap(

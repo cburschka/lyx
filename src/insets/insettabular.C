@@ -1233,7 +1233,9 @@ void InsetTabular::setPos(BufferView * bv, int x, int y) const
     int lx = tabular->GetWidthOfColumn(actcell) -
 	tabular->GetAdditionalWidth(actcell);
 #if 0
+#ifdef WITH_WARNINGS
 #warning Jürgen, can you rewrite this to _not_ use the sequencing operator. (Lgb)
+#endif
     for (; !tabular->IsLastCellInRow(actcell) && (lx < x);
 	++actcell,lx += tabular->GetWidthOfColumn(actcell) +
 	    tabular->GetAdditionalWidth(actcell - 1));

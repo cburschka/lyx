@@ -108,7 +108,9 @@ GraphicsCacheItem_pimpl::renderXPM(string const & filename)
 	
 	// Add some stuff to have it a unique temp file.
 	xpmfile = lyx::tempName(string(), temp);
+#ifdef WITH_WARNINGS
 #warning When is this tempfile unlinked? (Lgb)
+#endif
 	xpmfile = ChangeExtension(xpmfile, ".xpm");	
 	
 	command += xpmfile;

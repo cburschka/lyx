@@ -1087,7 +1087,9 @@ string const LyXFunc::Dispatch(int ac,
 			owner->view()->allFloats(0,1);
 		break;
 #else
+#ifdef WITH_WARNINGS
 #warning Find another implementation here (or another lyxfunc)!
+#endif
 #endif
 	case LFUN_HELP_COPYRIGHT:
 		owner->getDialogs()->showCopyright();

@@ -99,7 +99,9 @@ enum lexcode_enum {
 };
 
 static lexcode_enum lexcode[256];  
+#ifdef WITH_WARNINGS
 #warning Replace with string
+#endif
 static char yytext[256];
 static int yylineno;
 static istream * yyis;

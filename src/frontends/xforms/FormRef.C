@@ -85,7 +85,9 @@ void FormRef::build()
 	bc_.setUndoAll(dialog_->button_restore);
 	bc_.refresh();
 
+#ifdef WITH_WARNINGS
 #warning I had to uncomment this so the buttons could be disabled in update() (dekel)
+#endif
 	//bc_.addReadOnly(dialog_->type);
 	//bc_.addReadOnly(dialog_->name);
 }

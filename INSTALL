@@ -404,6 +404,13 @@ Warning: Linking some objects which contain exception information sections
         and some which do not. This may cause fatal runtime exception handling
         problems (last obj encountered without exceptions was ../intl/libintl.a).
 
-
     You can safely ignore it. 
+
+
+  o On Solaris, compiling with Sun CC 6.0 or less will fail in the sigc++
+    directory.  Sun's compiler can't handle some of the constructs in this
+    library.  If possible find and install a libsigc++ package and then
+    configure using the --without-included-libsigc option.
+
+    The alternative is to compile LyX using GNU gcc.
 

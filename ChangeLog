@@ -1,3 +1,22 @@
+2001-04-17  Allan Rae  <rae@lyx.org>
+
+	* src/frontends/xforms/FormRef.C: 
+	* src/graphics/GraphicsCache.C: 
+	* src/graphics/GraphicsCacheItem_pimpl.C: 
+	* src/graphics/XPM_Renderer.C: 
+	* src/insets/figinset.C:
+	* src/insets/insettabular.C:
+	* src/mathed/formula.C: 
+	* src/mathed/math_parser.C: 
+	* src/support/tempname.C:
+	* src/lyxfunc.C:
+	* src/spellchecker.C: #warning triggers an error on Sun CC 6.0 as
+	an unrecognised preprocessor directive.  So ensure they're wrapped.
+	Sun CC won't compile sigc++ though so this is only a partial
+	workaround for problems with this compiler series.  If users install
+	sigc++ as a package then they can compile with the system library and
+	the rest of the source should work..
+
 2001-04-14  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/exporter.C (Export): Give an error message when path to file 
