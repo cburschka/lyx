@@ -35,7 +35,7 @@ FD_form_search * FormSearch::build_search()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Replace with|#W");
     fdui->input_replace = obj = fl_add_input(FL_NORMAL_INPUT, 110, 40, 180, 30, idex(_(dummy)));
@@ -44,7 +44,7 @@ FD_form_search * FormSearch::build_search()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_(" >|#F^s");
     fdui->findnext = obj = fl_add_button(FL_NORMAL_BUTTON, 200, 80, 90, 30, idex(_(dummy)));
@@ -52,7 +52,7 @@ FD_form_search * FormSearch::build_search()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_(" <|#B^r");
     fdui->findprev = obj = fl_add_button(FL_NORMAL_BUTTON, 110, 80, 90, 30, idex(_(dummy)));
@@ -60,7 +60,7 @@ FD_form_search * FormSearch::build_search()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Replace|#R#r");
     fdui->replace = obj = fl_add_button(FL_NORMAL_BUTTON, 110, 120, 90, 30, idex(_(dummy)));
@@ -68,7 +68,7 @@ FD_form_search * FormSearch::build_search()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Close|^[");
     fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 350, 120, 80, 30, idex(_(dummy)));
@@ -76,21 +76,21 @@ FD_form_search * FormSearch::build_search()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedCancelCB, 0);
+    fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
   {
     char const * const dummy = N_("Case sensitive|#s#S");
     fdui->casesensitive = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 300, 20, 150, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Match word|#M#m");
     fdui->matchword = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 300, 50, 150, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Replace All|#A#a");
     fdui->replaceall = obj = fl_add_button(FL_NORMAL_BUTTON, 200, 120, 90, 30, idex(_(dummy)));
@@ -98,7 +98,7 @@ FD_form_search * FormSearch::build_search()
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

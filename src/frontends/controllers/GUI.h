@@ -165,6 +165,20 @@ public:
 };
 
 
+/** Specialization for Search dialog
+ */
+class ControlSearch;
+
+template <class GUIview, class GUIbc>
+class GUISearch :
+	public GUI<ControlSearch, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc> {
+public:
+	///
+	GUISearch(LyXView & lv, Dialogs & d)
+		: GUI<ControlSearch, GUIview, NoRepeatedApplyReadOnlyPolicy, GUIbc>(lv, d) {}
+};
+
+
 /** Specialization for TabularCreate dialog
  */
 class ControlTabularCreate;

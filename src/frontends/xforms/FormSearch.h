@@ -9,59 +9,35 @@
 #ifndef FORMSEARCH_H
 #define FORMSEARCH_H
 
-#include <boost/smart_ptr.hpp>
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-#include "FormBaseDeprecated.h"
+#include "FormBase.h"
 
+class ControlSearch;
 struct FD_form_search;
 
 /** This class provides an XForms implementation of the FormSearch Dialog.
  */
-class FormSearch : public FormBaseBD {
+class FormSearch : public FormCB<ControlSearch, FormDB<FD_form_search> > {
 public:
 	///
-	FormSearch(LyXView *, Dialogs *);
+	FormSearch(ControlSearch &);
    
 private:
-	/// Pointer to the actual instantiation of the ButtonController.
-	virtual xformsBC & bc();
+	/// not needed.
+	virtual void apply() {}
+	/// Build the dialog
+	virtual void build();
+	/// not needed.
+	virtual void update() {}
 
 	/// Filter the inputs
-	virtual bool input(FL_OBJECT *, long);
+	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
    
-	/// Build the popup
-	virtual void build();
-
-	/// Update the popup
-	virtual void update();
-
-	/// Searches occurance of string
-	/// if argument=true forward search otherwise backward search
-	void Find(bool const = true);
-	/// if argument=false replace once otherwise replace all
-	/// Replaces occurance of string
-	void Replace(bool const = false);
-   
-	///
-	virtual FL_FORM * form() const;
-   
-	/// Typedefinitions from the fdesign produced Header file
+	/// Fdesign generated method
 	FD_form_search  * build_search();
-   
-	/// Real GUI implementation.
-	boost::scoped_ptr<FD_form_search> dialog_;
-	/// The ButtonController
-	ButtonController<NoRepeatedApplyReadOnlyPolicy, xformsBC> bc_;
 };
 
-
-inline
-xformsBC & FormSearch::bc()
-{
-	return bc_;
-}
-#endif
+#endif // FORMSEARCH_H

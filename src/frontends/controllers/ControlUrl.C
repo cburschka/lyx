@@ -17,7 +17,6 @@
 #pragma implementation
 #endif
 
-#include "Dialogs.h"
 #include "ControlUrl.h"
 #include "Dialogs.h"
 #include "LyXView.h"

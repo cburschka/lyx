@@ -39,10 +39,10 @@ public:
 private:
 	/// not needed.
 	virtual void apply() {}
-	/// not needed.
-	virtual void update() {}
 	/// Build the dialog
 	virtual void build();
+	/// not needed.
+	virtual void update() {}
 
 	/// Fdesign generated method
 	FD_form_copyright * build_copyright();

@@ -247,7 +247,7 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 
 		vector<string>::const_iterator start = bibkeys.begin();
 		int const sel = fl_get_browser(dialog_->browser_bib);
-		if (sel >= 1 && sel <= bibkeys.size())
+		if (sel >= 1 && sel <= int(bibkeys.size()))
 			start += sel-1;
 
 		// Find the NEXT instance...

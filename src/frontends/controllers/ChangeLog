@@ -4,8 +4,9 @@
 	of the buffer, LaTeX, Literate, LinuxDoc or DocBook.
 
 	* ControlRef.[Ch]:
-	* ControlTabularCreate.[Ch]: new files; controller for the Ref and
-	TabularCreate popups, respectively.
+	* ControlSearch.[Ch]:
+	* ControlTabularCreate.[Ch]: new files; controller for the Ref,
+	Search and TabularCreate popups, respectively.
 
 	* GUI.h:
 	* Makefile.am: associated changes.

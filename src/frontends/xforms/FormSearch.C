@@ -12,108 +12,50 @@
 #pragma implementation
 #endif
 
+#include "xformsBC.h"
+#include "ControlSearch.h"
 #include "FormSearch.h"
 #include "form_search.h"
-#include "gettext.h"
-#include "Dialogs.h"
-#include "Liason.h"
-#include "LyXView.h"
-#include "buffer.h"
-#include "gettext.h"
-#include "lyxfind.h"
-#include "debug.h"
 
-using Liason::setMinibuffer;
-using SigC::slot;
+typedef FormCB<ControlSearch, FormDB<FD_form_search> > base_class;
 
-FormSearch::FormSearch(LyXView * lv, Dialogs * d)
-	: FormBaseBD(lv, d, _("LyX: Find and Replace"))
-{
-    // let the popup be shown
-    // This is a permanent connection so we won't bother
-    // storing a copy because we won't be disconnecting.
-    d->showSearch.connect(slot(this, &FormSearch::show));
-   // perhaps in the future we'd like a
-   // "search again" button/keybinding
-//    d->searchAgain.connect(slot(this, &FormSearch::FindNext));
-}
+FormSearch::FormSearch(ControlSearch & c)
+	: base_class(c, _("LyX: Find and Replace"))
+{}
 
-
-FL_FORM * FormSearch::form() const
-{
-    if (dialog_.get()) 
-	    return dialog_->form;
-    return 0;
-}
 
 void FormSearch::build()
 {
-   dialog_.reset(build_search());
+	dialog_.reset(build_search());
 	
-   // Manage the ok, apply and cancel/close buttons
-   bc_.setCancel(dialog_->button_cancel);
-   bc_.addReadOnly(dialog_->input_replace);
-   bc_.addReadOnly(dialog_->replace);
-   bc_.addReadOnly(dialog_->replaceall);
-   bc_.refresh();
-}
-
-void FormSearch::update()
-{
-   if (!dialog_.get())
-     return;
-
-   bc_.readOnly(lv_->buffer()->isReadonly());
-}
-
-bool FormSearch::input(FL_OBJECT * obj, long)
-{
-   if (obj == dialog_->findnext)
-     Find();
-   else if (obj == dialog_->findprev)
-     Find(false);
-   else if (obj == dialog_->replace)
-     Replace();
-   else if (obj == dialog_->replaceall)
-     Replace(true);
-   
-   return 0;
-}
-
-void FormSearch::Find(bool const next)
-{
-   bool found = LyXFind(lv_->view(),
-			fl_get_input(dialog_->input_search),
-			fl_get_button(dialog_->casesensitive),
-			fl_get_button(dialog_->matchword),
-			next);
-   
-   if (!found)
-     setMinibuffer(lv_, _("String not found!"));
+	// Manage the ok, apply and cancel/close buttons
+	bc().setCancel(dialog_->button_cancel);
+	bc().addReadOnly(dialog_->input_replace);
+	bc().addReadOnly(dialog_->replace);
+	bc().addReadOnly(dialog_->replaceall);
+	bc().refresh();
 }
 
 
-void FormSearch::Replace(bool const all)
+ButtonPolicy::SMInput FormSearch::input(FL_OBJECT * obj, long)
 {
-   int replace_count = LyXReplace(lv_->view(),
-				  fl_get_input(dialog_->input_search),
-				  fl_get_input(dialog_->input_replace),
+	if (obj == dialog_->findnext || obj == dialog_->findprev) {
+		bool const forward = (obj == dialog_->findnext);
+	
+		controller().find(fl_get_input(dialog_->input_search),
 				  fl_get_button(dialog_->casesensitive),
-				  fl_get_button(dialog_->matchword), 
-				  true, 
-				  all);
-				  
-   if (replace_count == 0) {
-      setMinibuffer(lv_, _("String not found!"));
-   } else {
-      if (replace_count == 1) {
-	 setMinibuffer(lv_, _("String has been replaced."));
-      } else {
-	 string str = tostr(replace_count);
-	 str += _(" strings have been replaced.");
-	 setMinibuffer(lv_, str.c_str());
-      }
-   }
+				  fl_get_button(dialog_->matchword),
+				  forward);
+
+	} else if (obj == dialog_->replace || obj == dialog_->replaceall) {
+		bool const all = (obj == dialog_->replaceall);
+	
+		controller().replace(fl_get_input(dialog_->input_search),
+				     fl_get_input(dialog_->input_replace),
+				     fl_get_button(dialog_->casesensitive),
+				     fl_get_button(dialog_->matchword),
+				     all);
+	}
+   
+	return ButtonPolicy::SMI_VALID;
 }
-
-
