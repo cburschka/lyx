@@ -425,7 +425,8 @@ void LyXScreen::Update(LyXText * text, int y_offset, int x_offset)
 }
 
 
-void LyXScreen::ToggleSelection(LyXText * text, bool kill_selection)
+void LyXScreen::ToggleSelection(LyXText * text,  int y_offset, int x_offset,
+				bool kill_selection)
 {
 	// only if there is a selection
 	if (!text->selection) return;
@@ -440,7 +441,8 @@ void LyXScreen::ToggleSelection(LyXText * text, bool kill_selection)
 
 	if (kill_selection)
 		text->selection = 0;
-	DrawFromTo(text, top - text->first, bottom - text->first);
+	DrawFromTo(text, top - text->first, bottom - text->first,
+		   y_offset, x_offset);
 	expose(0, top - text->first,
 	       owner.workWidth(),
 	       bottom - text->first - (top - text->first));
@@ -463,7 +465,7 @@ void LyXScreen::ToggleToggle(LyXText * text, int y_offset, int x_offset)
 	
 	bottom = min(max(ulong(bottom), text->first), text->first + owner.height());
 	top = min(max(ulong(top), text->first), text->first + owner.height());
-	
+
 	DrawFromTo(text, top - text->first, bottom - text->first, y_offset,
 		   x_offset);
 	expose(0, top - text->first, owner.workWidth(),

@@ -69,7 +69,8 @@ public:
 	/// returns 1 if first has changed, otherwise 0
 	bool FitManualCursor(LyXText *, long, long, int, int);
 	///
-	void ToggleSelection(LyXText *, bool = true);
+	void ToggleSelection(LyXText *, int y_offset = 0, int x_offset = 0,
+			     bool = true);
 	///
 	void ToggleToggle(LyXText *, int y_offset = 0, int x_offset = 0);
 	

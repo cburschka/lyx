@@ -3816,6 +3816,11 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	}
 	
 	if (selection) {
+		int w;
+		if (inset_owner)
+			w = inset_owner->width(bview, font);
+		else
+			w = ww;
 		/* selection code */
 		if (bidi_same_direction) {
 			if (sel_start_cursor.row() == row_ptr &&
@@ -3841,14 +3846,14 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 				else
 					pain.fillRectangle(x_offset + sel_start_cursor.x(),
 							   y_offset,
-							   ww - sel_start_cursor.x(),
+							   w - sel_start_cursor.x(),
 							   row_ptr->height(),
 							   LColor::selection);
 			} else if (sel_end_cursor.row() == row_ptr) {
 				if (is_rtl)
 					pain.fillRectangle(x_offset + sel_end_cursor.x(),
 							   y_offset,
-							   ww - sel_end_cursor.x(),
+							   w - sel_end_cursor.x(),
 							   row_ptr->height(),
 							   LColor::selection);
 				else
@@ -3858,7 +3863,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 							   LColor::selection);
 			} else if (y > long(sel_start_cursor.y())
 				   && y < long(sel_end_cursor.y())) {
-				pain.fillRectangle(x_offset, y_offset, ww,
+				pain.fillRectangle(x_offset, y_offset, w,
 						   row_ptr->height(),
 						   LColor::selection);
 			}
@@ -3866,7 +3871,7 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 			    sel_end_cursor.row() != row_ptr &&
 			    y > long(sel_start_cursor.y())
 			    && y < long(sel_end_cursor.y())) {
-			pain.fillRectangle(x_offset, y_offset, ww,
+			pain.fillRectangle(x_offset, y_offset, w,
 					   row_ptr->height(),
 					   LColor::selection);
 		} else if (sel_start_cursor.row() == row_ptr ||

@@ -264,6 +264,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	top_x = int(x);
 	owner()->update(bv, f, true);
 	bv->text->status = LyXText::CHANGED_IN_DRAW;
+//	return;
     }
 
     top_baseline = baseline;
@@ -275,12 +276,12 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	inset_x = cx(bv) - top_x + drawTextXOffset;
 	inset_y = cy(bv) + drawTextYOffset;
     }
-    if (!cleared && (need_update == CURSOR)) {
+    if (!cleared && (need_update == CURSOR) && !TEXT(bv)->selection) {
 	x += width(bv, f);
 	need_update = NONE;
 	return;
     }
-    x += TEXT_TO_INSET_OFFSET; // place for border
+    x += 1; // place for border
     long int y = 0;
     Row * row = TEXT(bv)->GetRowNearY(y);
     y += baseline - row->ascent_of_text() + 1;
@@ -291,9 +292,14 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	    row = row->next();
 	}
     } else if (need_update == SELECTION) {
-	bv->screen()->ToggleToggle(getLyXText(bv), y, x);
+	bv->screen()->ToggleToggle(TEXT(bv), y, x);
     } else {
 	locked = false;
+	if (need_update == CURSOR) {
+	    bv->screen()->ToggleSelection(TEXT(bv), y, x, true);
+	    TEXT(bv)->ClearSelection();
+	    TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
+	}
 	bv->screen()->Update(TEXT(bv), y, x);
 	locked = true;
     }
@@ -388,7 +394,8 @@ void InsetText::UpdateLocal(BufferView * bv, UpdateCodes what, bool mark_dirty)
 	else if (!the_locking_inset || (what != CURSOR))
 	    need_update = what;
     }
-    if ((need_update != CURSOR) || (TEXT(bv)->status != LyXText::UNCHANGED))
+    if ((need_update != CURSOR) || (TEXT(bv)->status != LyXText::UNCHANGED) ||
+	TEXT(bv)->selection)
 	    bv->updateInset(this, mark_dirty);
     if (old_par != cpar(bv)) {
 	    bv->owner()->getToolbar()->combox->select(cpar(bv)->GetLayout()+1);
@@ -416,6 +423,7 @@ void InsetText::Edit(BufferView * bv, int x, int y, unsigned int button)
     the_locking_inset = 0;
     inset_pos = inset_x = inset_y = 0;
     inset_par = 0;
+    old_par = 0;
     if (!checkAndActivateInset(bv, x, y, button))
 	TEXT(bv)->SetCursorFromCoordinates(bv, x-drawTextXOffset,
 					   y+TEXT(bv)->first+insetAscent);
@@ -436,7 +444,12 @@ void InsetText::InsetUnlock(BufferView * bv)
     locked = false;
     TEXT(bv)->selection = 0;
     UpdateLocal(bv, CLEAR_FRAME, false);
-    bv->owner()->getToolbar()->combox->select(bv->text->cursor.par()->GetLayout()+1);
+    if (owner())
+	    bv->owner()->getToolbar()->combox->
+		    select(owner()->getLyXText(bv)->cursor.par()->GetLayout()+1);
+    else
+	    bv->owner()->getToolbar()->combox->select(bv->text->cursor.par()->
+						      GetLayout()+1);
 }
 
 
@@ -482,6 +495,7 @@ bool InsetText::UnlockInsetInInset(BufferView * bv, UpdatableInset * inset,
         the_locking_inset = 0;
         if (lr)
             moveRight(bv, false);
+	old_par = 0; // force layout setting
 	UpdateLocal(bv, CURSOR_PAR, false);
         return true;
     }
@@ -511,10 +525,6 @@ bool InsetText::UpdateInsetInInset(BufferView * bv, Inset * inset)
 
 void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 {
-    if (TEXT(bv)->selection) {
-	TEXT(bv)->selection = 0;
-	UpdateLocal(bv, FULL, false);
-    }
     no_selection = false;
 
     int tmp_x = x - drawTextXOffset;
@@ -557,9 +567,14 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	    return;
 	}
     }
-    if (!inset)
+    if (!inset) {
 	TEXT(bv)->SetCursorFromCoordinates(bv, x-drawTextXOffset,
 					   y+TEXT(bv)->first+insetAscent);
+	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
+	UpdateLocal(bv, CURSOR, false);
+	bv->owner()->getToolbar()->combox->select(cpar(bv)->GetLayout()+1);
+	old_par = cpar(bv);
+    }
 }
 
 
@@ -594,14 +609,14 @@ void InsetText::InsetMotionNotify(BufferView * bv, int x, int y, int state)
 					     y - inset_y,state);
         return;
     }
-#warning REDO this (Jug)
     if (!no_selection) {
-//	LyXCursor old = selection_end_cursor;
 	HideInsetCursor(bv);
-//	setPos(bv->painter(), x, y);
-//	selection_end_cursor = cursor;
-//	if (old != selection_end_cursor)
-//	    UpdateLocal(bv, false, false);
+	TEXT(bv)->SetCursorFromCoordinates(bv, x-drawTextXOffset,
+					   y+TEXT(bv)->first+insetAscent);
+	TEXT(bv)->SetSelection();
+	if (TEXT(bv)->toggle_cursor.par()!=TEXT(bv)->toggle_end_cursor.par() ||
+	    TEXT(bv)->toggle_cursor.pos()!=TEXT(bv)->toggle_end_cursor.pos())
+	    UpdateLocal(bv, SELECTION, false);
 	ShowInsetCursor(bv);
     }
     no_selection = false;
@@ -693,10 +708,8 @@ InsetText::LocalDispatch(BufferView * bv,
 	UpdateLocal(bv, SELECTION, false);
 	break;
     case LFUN_RIGHT:
-	bv->text->FinishUndo();
 	result = moveRight(bv);
-	TEXT(bv)->selection = 0;
-	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
+	bv->text->FinishUndo();
 	UpdateLocal(bv, CURSOR, false);
 	break;
     case LFUN_LEFTSEL:
@@ -708,8 +721,6 @@ InsetText::LocalDispatch(BufferView * bv,
     case LFUN_LEFT:
 	bv->text->FinishUndo();
 	result= moveLeft(bv);
-	TEXT(bv)->selection = 0;
-	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	UpdateLocal(bv, CURSOR, false);
 	break;
     case LFUN_DOWNSEL:
@@ -721,8 +732,6 @@ InsetText::LocalDispatch(BufferView * bv,
     case LFUN_DOWN:
 	bv->text->FinishUndo();
 	result = moveDown(bv);
-	TEXT(bv)->selection = 0;
-	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	UpdateLocal(bv, CURSOR, false);
 	break;
     case LFUN_UPSEL:
@@ -734,21 +743,15 @@ InsetText::LocalDispatch(BufferView * bv,
     case LFUN_UP:
 	bv->text->FinishUndo();
 	result = moveUp(bv);
-	TEXT(bv)->selection = 0;
-	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	UpdateLocal(bv, CURSOR, false);
 	break;
     case LFUN_HOME:
 	bv->text->FinishUndo();
 	TEXT(bv)->CursorHome(bv);
-	TEXT(bv)->selection = 0;
-	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	UpdateLocal(bv, CURSOR, false);
 	break;
     case LFUN_END:
 	TEXT(bv)->CursorEnd(bv);
-	TEXT(bv)->selection = 0;
-	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	UpdateLocal(bv, CURSOR, false);
 	break;
     case LFUN_BACKSPACE:

@@ -1,3 +1,15 @@
+2000-07-07  Juergen Vigna  <jug@sad.it>
+
+	* src/screen.C (ToggleSelection): added y_offset and x_offset
+ 	parameters.
+
+	* src/insets/insettext.C (InsetMotionNotify): fixed selection with
+	mouse.
+
+	* src/text.C (GetVisibleRow): fixed selection drawing in insets.
+
+	* src/insets/insettext.C: fixed Layout-Display!
+
 2000-07-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* configure.in: add check for strings.h header.

@@ -132,6 +132,7 @@ void LyXText::init(BufferView * bview)
 		par = par->Next();
 	}
 	SetCursorIntern(bview, firstrow->par(), 0);
+	sel_cursor = cursor;
 #if 0
 	// Dump all rowinformation:
 	Row * tmprow = firstrow;

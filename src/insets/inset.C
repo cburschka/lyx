@@ -69,6 +69,16 @@ char const * Inset::EditMessage() const
 	return _("Opened inset");
 }
 
+
+LyXText * Inset::getLyXText(BufferView * bv) const
+{
+    if (owner())
+	    return owner()->getLyXText(bv);
+    else
+	    return bv->text;
+}
+
+
  /* some stuff for inset locking */
 
 void UpdatableInset::InsetButtonPress(BufferView *, int x, int y, int button)

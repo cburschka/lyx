@@ -210,6 +210,11 @@ public:
 	int x() const { return top_x; }
 	///
 	int y() const { return top_baseline; }
+	///
+	/// because we could have fake text insets and have to call this
+	/// inside them without cast!!!
+	virtual LyXText * getLyXText(BufferView *) const;
+	virtual void deleteLyXText(BufferView *) {}
 
 protected:
 	///
@@ -336,11 +341,6 @@ public:
 	virtual bool isCursorVisible() const { return cursor_visible; }
 	///
 	virtual int getMaxWidth(Painter & pain, UpdatableInset const *) const;
-	///
-	/// because we could have fake text insets and have to call this
-	/// inside them without cast!!!
-	virtual LyXText * getLyXText(BufferView *) const { return 0; }
-	virtual void deleteLyXText(BufferView *) {}
 
 protected:
 	///
