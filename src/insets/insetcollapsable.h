@@ -79,7 +79,7 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	/// get the screen x,y of the cursor
-	void getCursorPos(int & x, int & y) const;
+	void getCursorPos(int cell, int & x, int & y) const;
 	///
 	void setLabel(std::string const & l);
 	///

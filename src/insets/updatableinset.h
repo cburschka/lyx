@@ -27,7 +27,7 @@ public:
 	virtual EDITABLE editable() const;
 
 	/// return the cursor pos, relative to the inset pos
-	virtual void getCursorPos(int &, int &) const {}
+	virtual void getCursorPos(int, int &, int &) const {}
 	/// return the cursor dim
 	virtual void getCursorDim(int &, int &) const;
 	// We need this method to not clobber the real method in Inset

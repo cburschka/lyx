@@ -170,7 +170,7 @@ void InsetFormulaBase::getCursor(BufferView &, int & x, int & y) const
 }
 
 
-void InsetFormulaBase::getCursorPos(int & x, int & y) const
+void InsetFormulaBase::getCursorPos(int, int & x, int & y) const
 {
 	if (!mathcursor) {
 		lyxerr << "getCursorPos - should not happen";
@@ -399,7 +399,8 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 	case LFUN_RIGHTSEL:
 		sel = true; // fall through...
 	case LFUN_RIGHT:
-		result = mathcursor->right(sel) ? DispatchResult(true, true) : DispatchResult(false, FINISHED_RIGHT);
+		result = mathcursor->right(sel) ?
+			DispatchResult(true, true) : DispatchResult(false, FINISHED_RIGHT);
 		//lyxerr << "calling scroll 20" << endl;
 		//scroll(bv, 20);
 		// write something to the minibuffer
@@ -409,19 +410,22 @@ InsetFormulaBase::priv_dispatch(FuncRequest const & cmd,
 	case LFUN_LEFTSEL:
 		sel = true; // fall through
 	case LFUN_LEFT:
-		result = mathcursor->left(sel) ? DispatchResult(true, true) : DispatchResult(true, FINISHED);
+		result = mathcursor->left(sel) ?
+			DispatchResult(true, true) : DispatchResult(false, FINISHED);
 		break;
 
 	case LFUN_UPSEL:
 		sel = true; // fall through
 	case LFUN_UP:
-		result = mathcursor->up(sel) ? DispatchResult(true, true) : DispatchResult(false, FINISHED_UP);
+		result = mathcursor->up(sel) ?
+			DispatchResult(true, true) : DispatchResult(false, FINISHED_UP);
 		break;
 
 	case LFUN_DOWNSEL:
 		sel = true; // fall through
 	case LFUN_DOWN:
-		result = mathcursor->down(sel) ? DispatchResult(true, true) : DispatchResult(false, FINISHED_DOWN);
+		result = mathcursor->down(sel) ?
+			DispatchResult(true, true) : DispatchResult(false, FINISHED_DOWN);
 		break;
 
 	case LFUN_WORDSEL:

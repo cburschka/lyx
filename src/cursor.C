@@ -181,7 +181,7 @@ void LCursor::getPos(int & x, int & y) const
 		// inset->draw() is not called: this doesn't update
 		// inset.top_baseline, so getCursor() returns an old value.
 		// Ugly as you like.
-		inset->getCursorPos(x, y);
+		inset->getCursorPos(data_.back().idx_, x, y);
 		x += inset->x();
 		y += cached_y_;
 	}
@@ -201,4 +201,27 @@ InsetTabular * LCursor::innerInsetTabular() const
 {
 	return static_cast<InsetTabular *>
 		(innerInsetOfType(InsetOld::TABULAR_CODE));
+}
+
+
+void LCursor::cell(int idx)
+{
+#if 0
+	BOOST_ASSERT(!data_.empty());
+	data_.back().idx_ = idx;
+#else
+	if (!data_.empty())
+		data_.back().idx_ = idx;
+#endif
+}
+
+
+int LCursor::cell() const
+{
+#if 0
+	BOOST_ASSERT(!data_.empty());
+	return data_.back().idx_;
+#else
+	return data_.empty() ? 0 : data_.back().idx_;
+#endif
 }

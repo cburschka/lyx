@@ -45,6 +45,10 @@ public:
 	void pop(int depth);
 	/// pop one level off the cursor
 	void pop();
+	/// set the cell the cursor is in
+	void cell(int);
+	/// return the cell this cursor is in
+	int cell() const;
 	///
 	UpdatableInset * innerInset() const;
 	///

@@ -375,9 +375,9 @@ void InsetCollapsable::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetCollapsable::getCursorPos(int & x, int & y) const
+void InsetCollapsable::getCursorPos(int cell, int & x, int & y) const
 {
-	inset.getCursorPos(x, y);
+	inset.getCursorPos(cell, x, y);
 	if (status_ != Inlined)
 		y += - ascent() + height_collapsed() + inset.ascent();
 }

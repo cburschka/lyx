@@ -47,7 +47,9 @@
 
 #include "inset.h"
 #include "tabular.h"
+
 #include "frontends/mouse_state.h"
+
 
 class FuncStatus;
 class LyXLex;
@@ -56,6 +58,8 @@ class BufferView;
 class Buffer;
 class BufferParams;
 class Paragraph;
+class CursorSlice;
+
 
 class InsetTabular : public UpdatableInset {
 public:
@@ -80,7 +84,7 @@ public:
 	///
 	void updateLocal(BufferView *) const;
 	///
-	bool insetAllowed(InsetOld::Code code) const;
+	bool insetAllowed(InsetOld::Code code) const { return true; }
 	///
 	bool isTextInset() const { return true; }
 	/** returns true if, when outputing LaTeX, font changes should
@@ -106,20 +110,18 @@ public:
 	///
 	InsetOld::Code lyxCode() const { return InsetOld::TABULAR_CODE; }
 	/// get the absolute screen x,y of the cursor
-	void getCursorPos(int & x, int & y) const;
+	void getCursorPos(int cell, int & x, int & y) const;
 	///
 	bool tabularFeatures(BufferView * bv, std::string const & what);
 	///
 	void tabularFeatures(BufferView * bv, LyXTabular::Feature feature,
 			     std::string const & val = std::string());
 	///
-	int getActCell() const { return actcell; }
-	///
 	void openLayoutDialog(BufferView *) const;
 	///
 	bool showInsetDialog(BufferView *) const;
 	///
-	FuncStatus getStatus(std::string const & argument) const;
+	FuncStatus getStatus(std::string const & argument, int cell) const;
 	/// Appends \c list with all labels found within this inset.
 	void getLabelList(Buffer const &, std::vector<std::string> & list) const;
 	///
@@ -179,27 +181,27 @@ private:
 	///
 	void setPos(BufferView *, int x, int y) const;
 	///
-	DispatchResult moveRight(BufferView *);
+	bool moveRight(BufferView *, CursorSlice & cur);
 	///
-	DispatchResult moveLeft(BufferView *);
+	bool moveLeft(BufferView *, CursorSlice & cur);
 	///
-	DispatchResult moveUp(BufferView *);
+	bool moveUp(BufferView *, CursorSlice & cur);
 	///
-	DispatchResult moveDown(BufferView *);
+	bool moveDown(BufferView *, CursorSlice & cur);
 
 	///
-	DispatchResult moveRightLock(BufferView *);
+	bool moveRightLock(BufferView *, CursorSlice & cur);
 	///
-	DispatchResult moveLeftLock(BufferView *);
+	bool moveLeftLock(BufferView *, CursorSlice & cur);
 	///
-	DispatchResult moveUpLock(BufferView *);
+	bool moveUpLock(BufferView *, CursorSlice & cur);
 	///
-	DispatchResult moveDownLock(BufferView *);
+	bool moveDownLock(BufferView *, CursorSlice & cur);
 
 	///
-	bool moveNextCell(BufferView *);
+	bool moveNextCell(BufferView *, CursorSlice & cur);
 	///
-	bool movePrevCell(BufferView *);
+	bool movePrevCell(BufferView *, CursorSlice & cur);
 
 
 	///
@@ -209,15 +211,9 @@ private:
 	///
 	void removeTabularRow();
 	///
-	void clearSelection() const {
-		sel_cell_start = sel_cell_end = 0;
-		has_selection = false;
-	}
-	void setSelection(int start, int end) const {
-		sel_cell_start = start;
-		sel_cell_end = end;
-		has_selection = true;
-	}
+	void clearSelection() const;
+	///
+	void setSelection(int start, int end) const;
 	///
 	void activateCellInset(BufferView *, int cell, int x, int y);
 	///
@@ -233,7 +229,8 @@ private:
 	///
 	bool isRightToLeft(BufferView *);
 	///
-	void getSelection(int & scol, int & ecol, int & srow, int & erow) const;
+	void getSelection(int cell,
+		int & scol, int & ecol, int & srow, int & erow) const;
 	///
 	bool insertAsciiString(BufferView *, std::string const & buf, bool usePaste);
 
@@ -252,15 +249,13 @@ private:
 	/// the ending cell selection nr
 	mutable int sel_cell_end;
 	///
-	mutable int actcell;
-	///
-	mutable int actcol;
-	///
-	mutable int actrow;
-	///
 	mutable int first_visible_cell;
 	///
 	mutable int in_reset_pos;
+	/// tablemode == true  means we operate on the table as such,
+	// i.e. select cells instead of characters in a cell etc.
+	// tablemode == false directs most LFUN handling to the 'current' cell.
+	mutable bool tablemode;
 };
 
 

@@ -382,7 +382,7 @@ void InsetText::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetText::getCursorPos(int & x, int & y) const
+void InsetText::getCursorPos(int, int & x, int & y) const
 {
 	x = text_.cursorX() + TEXT_TO_INSET_OFFSET;
 	y = text_.cursorY() - dim_.asc + TEXT_TO_INSET_OFFSET;

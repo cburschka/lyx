@@ -19,6 +19,7 @@
 class Buffer;
 class BufferView;
 class MathAtom;
+class CursorSlice;
 
 
 /// An abstract base class for all math related LyX insets
@@ -45,7 +46,7 @@ public:
 	/// what appears in the minibuffer when opening
 	virtual std::string const editMessage() const;
 	///
-	virtual void getCursorPos(int &, int &) const;
+	virtual void getCursorPos(int cell, int & x, int & y) const;
 	///
 	virtual void getCursorDim(int &, int &) const;
 	/// get the absolute document x,y of the cursor
