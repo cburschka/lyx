@@ -1,5 +1,8 @@
 2002-02-26  Juergen Vigna  <jug@sad.it>
 
+	* inseturl.h: Added a insetButtonRelease call returning true as
+	prove of concept.
+
 	* insetlabel.C (edit): Fixed wrong update handling after change I
 	leave in the wrong code for the one who wrote it to remove and have
 	a look what he did wrong.

@@ -905,9 +905,9 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 	if (the_locking_inset) {
 		if (the_locking_inset == inset) {
 			the_locking_inset->insetButtonPress(bv,
-							    x - inset_x,
-							    y - inset_y,
-							    button);
+			                                    x - inset_x,
+			                                    y - inset_y,
+			                                    button);
 			no_selection = false;
 			return;
 		} else if (inset) {
@@ -917,7 +917,7 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 			inset_y = cy(bv) + drawTextYOffset;
 			the_locking_inset = 0;
 			inset->insetButtonPress(bv, x - inset_x,
-						y - inset_y, button);
+			                        y - inset_y, button);
 			inset->edit(bv, x - inset_x, y - inset_y, button);
 			if (the_locking_inset)
 				updateLocal(bv, CURSOR, false);
