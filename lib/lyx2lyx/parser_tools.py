@@ -74,6 +74,7 @@ def get_value(lines, token, start, end = 0):
     return string.split(lines[i])[1]
 
 # Finds the paragraph that contains line i.
+import sys
 def get_paragraph(lines, i):
     while 1:
 	i = find_tokens_backwards(lines, ["\\end_inset", "\\layout"], i)
@@ -81,15 +82,14 @@ def get_paragraph(lines, i):
 	    return i
 	count = 1
 	while count > 0:
-	    i = find_tokens_backwards(lines, ["\\end_inset", "\\begin_inset"], i)
+	    i = find_tokens_backwards(lines, ["\\end_inset", "\\begin_inset"], i-1)
 	    if check_token(lines[i], "\\end_inset"):
 		count = count+1
 	    else:
 		count = count-1
-	i = i-1
 
 # Finds the matching \end_inset
-def skip_inset(lines, i):
+def find_end_of_inset(lines, i):
     count = 1
     i = i+1
     while count > 0:

@@ -190,7 +190,7 @@ def remove_oldert(lines):
 	    j = find_tokens(lines, ["\\latex default", "\\begin_inset", "\\layout", "\\end_float", "\\the_end"],
 			    j)
 	    if check_token(lines[j], "\\begin_inset"):
-		j = skip_inset(lines, j)
+		j = find_end_of_inset(lines, j)
 	    else:
 		break
 
@@ -243,7 +243,7 @@ def remove_oldert(lines):
 		new = new+ert_begin+tmp+["\\end_inset ", ""]
 
 	    if inset:
-		k3 = find_token(lines, "\\end_inset", k2+1)
+		k3 = find_end_of_inset(lines, k2)
 		new = new+[""]+lines[k2:k3+1]+[""] # Put an empty line after \end_inset
 		k = k3+1
 		# Skip the empty line after \end_inset
@@ -280,13 +280,22 @@ def convert_ertinset(lines):
 	else:
 	    status = "Open"
 	lines[j] = "status " + status
+
+	# Remove font commands
+	j = find_end_of_inset(lines, i)
+	new = []
+	for line in lines[i:j]:
+	    if not font_rexp.match(line) and not check_token(line, "\\latex"):
+		new.append(line)
+	lines[i:j] = new
+
 	i = i+1
 
 def is_ert_paragraph(lines, i):
     i = find_nonempty_line(lines, i+1)
     if not check_token(lines[i], "\\begin_inset ERT"):
 	return 0
-    j = find_token(lines, "\\end_inset", i)
+    j = find_end_of_inset(lines, i)
     k = find_nonempty_line(lines, j+1)
     return check_token(lines[k], "\\layout")
 
@@ -334,7 +343,7 @@ def remove_figinset(lines):
 	i = find_token(lines, "\\begin_inset Figure", i)
 	if i == -1:
 	    break
-	j = find_token(lines, "\\end_inset", i+1)
+	j = find_end_of_inset(lines, i)
 
 	lyxwidth = string.split(lines[i])[3]+"pt"
 	lyxheight = string.split(lines[i])[4]+"pt"
