@@ -182,13 +182,6 @@ char const * MathMLtype(string const & s)
 }
 
 
-bool MathSymbolInset::match(MathAtom const & at) const
-{
-	MathSymbolInset const * q = at->asSymbolInset();
-	return q && name() == q->name();
-}
-
-
 void MathSymbolInset::mathmlize(MathMLStream & os) const
 {
 	char const * type = MathMLtype(sym_->extra);

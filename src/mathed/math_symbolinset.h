@@ -44,8 +44,6 @@ public:
 	MathSymbolInset const * asSymbolInset() const { return this; }
 	/// the LaTeX name of the symbol (without the backslash)
 	std::string name() const;
-	///
-	bool match(MathAtom const &) const;
 	/// request "external features"
 	void validate(LaTeXFeatures & features) const;
 

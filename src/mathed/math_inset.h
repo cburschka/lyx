@@ -205,8 +205,6 @@ public:
 
 	/// char char code if possible
 	virtual void handleFont(std::string const &) {}
-	/// is this inset equal to a given other inset?
-	virtual bool match(MathAtom const &) const { return false; }
 	/// replace things by other things
 	virtual void replace(ReplaceData &) {}
 	/// do we contain a given subsequence?

@@ -14,8 +14,6 @@
 
 #include "math_diminset.h"
 
-class MathArray;
-
 
 /** Abstract base class for all math objects that contain nested items.
     This is basically everything that is not a single character or a
@@ -83,8 +81,6 @@ public:
 	/// request "external features"
 	void validate(LaTeXFeatures & features) const;
 
-	/// match in all cells
-	bool match(MathAtom const &) const;
 	/// replace in all cells
 	void replace(ReplaceData &);
 	/// do we contain a given pattern?

@@ -42,8 +42,6 @@ public:
 	char getChar() const { return char_; }
 	///
 	bool isRelOp() const;
-	///
-	bool match(MathInset const *) const;
 
 private:
 	/// the character

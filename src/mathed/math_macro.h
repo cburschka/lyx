@@ -48,8 +48,6 @@ public:
 	void validate(LaTeXFeatures &) const;
 	///
 	bool isMacro() const { return true; }
-	///
-	bool match(MathAtom const &) const { return false; }
 
 	///
 	void maple(MapleStream &) const;

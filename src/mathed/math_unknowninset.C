@@ -44,13 +44,6 @@ void MathUnknownInset::setName(string const & name)
 }
 
 
-bool MathUnknownInset::match(MathAtom const & at) const
-{
-	MathUnknownInset const * q = at->asUnknownInset();
-	return q && name_ == q->name_;
-}
-
-
 void MathUnknownInset::normalize(NormalStream & os) const
 {
 	os << "[unknown " << name_ << ']';

@@ -11,12 +11,14 @@
 #include <config.h>
 
 #include "math_autocorrect.h"
-#include "support/std_sstream.h"
-#include "debug.h"
-#include "support/filetools.h" //  LibFileSearch
 #include "math_data.h"
 #include "math_inset.h"
+#include "math_support.h"
 #include "math_parser.h"
+#include "debug.h"
+
+#include "support/std_sstream.h"
+#include "support/filetools.h" //  LibFileSearch
 
 #include <fstream>
 
@@ -85,7 +87,7 @@ bool Correction::correct(MathAtom & at, char c) const
 	//	<< "trying to correct ar: " << at << " from: '" << from1_ << '\'' << endl;
 	if (from2_ != c)
 		return false;
-	if (!at->match(from1_))
+	if (asString(at) != asString(from1_))
 		return false;
 	lyxerr[Debug::MATHED]
 		<< "match found! subst in " << at

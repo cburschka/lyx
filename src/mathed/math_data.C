@@ -19,12 +19,15 @@
 #include "math_replace.h"
 #include "debug.h"
 #include "LColor.h"
+
 #include "frontends/Painter.h"
+
 #include <boost/assert.hpp>
 
 using std::abs;
 using std::endl;
 using std::min;
+using std::ostringstream;
 
 
 MathArray::MathArray()
@@ -137,7 +140,7 @@ bool MathArray::matchpart(MathArray const & ar, pos_type pos) const
 		return false;
 	const_iterator it = begin() + pos;
 	for (const_iterator jt = ar.begin(); jt != ar.end(); ++jt, ++it)
-		if (!(*jt)->match(*it))
+		if (asString(*it) != asString(*jt))
 			return false;
 	return true;
 }
@@ -164,9 +167,9 @@ void MathArray::replace(ReplaceData & rep)
 
 bool MathArray::find1(MathArray const & ar, size_type pos) const
 {
-	//lyxerr << "finding '" << ar << "' in '" << *this << "'" << endl;
+	lyxerr << "finding '" << ar << "' in '" << *this << "'" << endl;
 	for (size_type i = 0, n = ar.size(); i < n; ++i)
-		if (!operator[](pos + i)->match(ar[i]))
+		if (asString(operator[](pos + i)) != asString(ar[i]))
 			return false;
 	return true;
 }

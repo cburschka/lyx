@@ -14,14 +14,15 @@
 
 #include "math_diminset.h"
 
-/// Unknowntions or LaTeX names for objects that we really don't know
+
+/// LaTeX names for objects that we really don't know
 class MathUnknownInset : public MathDimInset {
 public:
 	///
 	explicit MathUnknownInset(std::string const & name,
 		bool final = true, bool black = false);
 	///
-	virtual std::auto_ptr<InsetBase> clone() const;
+	std::auto_ptr<InsetBase> clone() const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///
@@ -34,8 +35,6 @@ public:
 	MathUnknownInset const * asUnknownInset() const { return this; }
 	/// identifies UnknownInsets
 	MathUnknownInset * asUnknownInset() { return this; }
-	///
-	bool match(MathAtom const & at) const;
 
 	///
 	void normalize(NormalStream &) const;

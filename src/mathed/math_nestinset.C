@@ -197,17 +197,6 @@ void MathNestInset::validate(LaTeXFeatures & features) const
 }
 
 
-bool MathNestInset::match(MathAtom const & at) const
-{
-	if (nargs() != at->nargs())
-		return false;
-	for (idx_type i = 0; i < nargs(); ++i)
-		if (!cell(i).match(at->cell(i)))
-			return false;
-	return true;
-}
-
-
 void MathNestInset::replace(ReplaceData & rep)
 {
 	for (idx_type i = 0; i < nargs(); ++i)

@@ -12,8 +12,8 @@
 #include <config.h>
 
 #include "math_support.h"
-
 #include "math_data.h"
+#include "math_inset.h"
 #include "math_mathmlstream.h"
 #include "math_parser.h"
 
@@ -707,4 +707,22 @@ string asString(MathArray const & ar)
 void asArray(string const & str, MathArray & ar)
 {
 	mathed_parse_cell(ar, str);
+}
+
+
+string asString(MathInset const & inset)
+{
+	std::ostringstream os;
+	WriteStream ws(os);
+	inset.write(ws);
+	return os.str();
+}
+
+
+string asString(MathAtom const & at)
+{
+	std::ostringstream os;
+	WriteStream ws(os);
+	at->write(ws);
+	return os.str();
 }
