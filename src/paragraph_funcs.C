@@ -23,7 +23,9 @@
 #include "lyxlex.h"
 #include "factory.h"
 #include "Lsstream.h"
+
 #include "support/lstrings.h"
+
 #include "insets/insetoptarg.h"
 #include "insets/insetcommandparams.h"
 #include "insets/insetbibitem.h"
@@ -815,70 +817,14 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 			layoutname = tclass.defaultLayoutName();
 		}
 
-#ifdef USE_CAPTION
-		// The is the compability reading of layout caption.
-		if (compare_ascii_no_case(layoutname, "caption") == 0) {
-			// We expect that the par we are now working on is
-			// really inside a InsetText inside a InsetFloat.
-			// We also know that captions can only be
-			// one paragraph. (Lgb)
+		par.layout(bp.getLyXTextClass()[layoutname]);
 
-			// We should now read until the next "\layout"
-			// is reached.
-			// This is probably not good enough, what if the
-			// caption is the last par in the document (Lgb)
-			istream & ist = lex.getStream();
-			stringstream ss;
-			string line;
-			int begin = 0;
-			while (true) {
-				getline(ist, line);
-				if (prefixIs(line, "\\layout")) {
-					lex.pushToken(line);
-					break;
-				}
-				if (prefixIs(line, "\\begin_inset"))
-					++begin;
-				if (prefixIs(line, "\\end_inset")) {
-					if (begin)
-						--begin;
-					else {
-						lex.pushToken(line);
-						break;
-					}
-				}
+		// Test whether the layout is obsolete.
+		LyXLayout_ptr const & layout = par.layout();
+		if (!layout->obsoleted_by().empty())
+			par.layout(bp.getLyXTextClass()[layout->obsoleted_by()]);
 
-				ss << line << '\n';
-			}
-
-			// Now we should have the whole layout in ss
-			// we should now be able to give this to the
-			// caption inset.
-			ss << "\\end_inset\n";
-
-			// This seems like a bug in stringstream.
-			// We really should be able to use ss
-			// directly. (Lgb)
-			istringstream is(ss.str());
-			LyXLex tmplex(0, 0);
-			tmplex.setStream(is);
-			InsetOld * inset = new InsetCaption;
-			inset->Read(this, tmplex);
-			par.insertInset(pos, inset, font);
-			++pos;
-		} else {
-#endif
-			par.layout(bp.getLyXTextClass()[layoutname]);
-
-			// Test whether the layout is obsolete.
-			LyXLayout_ptr const & layout = par.layout();
-			if (!layout->obsoleted_by().empty())
-				par.layout(bp.getLyXTextClass()[layout->obsoleted_by()]);
-
-			par.params().read(lex);
-#if USE_CAPTION
-		}
-#endif
+		par.params().read(lex);
 
 	} else if (token == "\\end_inset") {
 		lyxerr << "Solitary \\end_inset in line " << lex.getLineNo() << "\n"
@@ -888,8 +834,8 @@ int readParToken(Buffer & buf, Paragraph & par, LyXLex & lex, string const & tok
 		// But insets should read it, it is a part of
 		// the inset isn't it? Lgb.
 	} else if (token == "\\begin_inset") {
-		InsetOld * i = readInset(lex, buf);
-		par.insertInset(par.size(), i, font, change);
+		InsetOld * inset = readInset(lex, buf);
+		par.insertInset(par.size(), inset, font, change);
 	} else if (token == "\\family") {
 		lex.next();
 		font.setLyXFamily(lex.getString());
