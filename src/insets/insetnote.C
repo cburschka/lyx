@@ -169,19 +169,40 @@ int InsetNote::latex(Buffer const * buf, ostream & os,
 }
 
 
-int InsetNote::linuxdoc(Buffer const *, std::ostream &) const
+int InsetNote::linuxdoc(Buffer const * buf, std::ostream & os) const
 {
-	return 0;
+	string const pt = params_.type;
+
+	int i = 0;
+	if (pt == "Comment")
+		os << "<comment>\n";
+
+	if (pt != "Note")
+		i = inset.linuxdoc(buf, os);
+
+	if (pt == "Comment") {
+		os << "\n</comment>\n";
+		i += 3;
+	}
+	return i;
 }
 
 
 int InsetNote::docbook(Buffer const * buf, std::ostream & os, bool mixcont) const
 {
-	int i = 0;
 	string const pt = params_.type;
-	// incomplete, untested - MV
+
+	int i = 0;
+	if (pt == "Comment")
+		os << "<remark>\n";
+
 	if (pt != "Note")
 		i = inset.docbook(buf, os, mixcont);
+
+	if (pt == "Comment") {
+		os << "\n</remark>\n";
+		i += 3;
+	}
 	return i;
 }
 
