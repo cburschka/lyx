@@ -1,3 +1,7 @@
+2003-02-25  Angus Leeming  <leeming@lyx.org>
+
+	* reLyX/BasicLyX.pm (regularizeLatexLength, getAsLyXLength):
+	make a valid LaTeX length understandable to LyX.
 
 2003-02-21 André Pönitz <poenitz@gmx.net>
 

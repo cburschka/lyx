@@ -353,28 +353,54 @@ sub ending_math {
 }
 
 
-# Straight translation of LaTeX lengths to LyX ones.
-my %lengthAsLyXString = ('\textwidth' => 'text%',
-			 '\columnwidth' => 'col%',
-			 '\paperwidth' => 'page%',
-			 '\linewidth' => 'line%',
-			 '\paperheight' => 'pheight%',
-			 '\textheight' => 'theight%');
-
-sub getAsLyXLength {
+sub regularizeLatexLength {
     my $LatexLength = shift;
 
-    my $LyXLength = '';
+    # Remove any whitespace
+    $LatexLength =~ s/\s//g;
+    # Remove a leading '+' as unnecessary
+    $LatexLength =~ s/^\+?(\d)/$1/;
+    # Split into value and unit parts
+    my $val;
+    my $unit;
+    if ($LatexLength =~ /(-?\d+[.,]?\d*)(\\?[a-zA-Z]*)$/) {
+	$val  = $1;
+	$unit = $2;
+    }
+    # If the input is invalid, return what we have.
+    return $LatexLength if ($val eq '' || $unit eq '');
+
+    # '4,5' is a valid LaTeX number. Change it to '4.5'
+    $val =~ s/,/./;
+    # If the unit is not a LaTeX macro, then ensure it is lower case
+    if (!($unit =~ /^\\/)) {
+	$unit =~ s/([a-z]*)/\L$1/i;
+    }
+
+    $LatexLength = $val . $unit;
+    return $LatexLength;
+}
+    
+
+sub getAsLyXLength {
+    # Straight translation of LaTeX lengths to LyX ones.
+    my %lengthAsLyXString = ('\textwidth'   => 'text%',
+			     '\columnwidth' => 'col%',
+			     '\paperwidth'  => 'page%',
+			     '\linewidth'   => 'line%',
+			     '\paperheight' => 'pheight%',
+			     '\textheight'  => 'theight%');
+
+    my $LatexLength = shift;
+    $LatexLength = regularizeLatexLength($LatexLength);
+
+    my $LyXLength = $LatexLength;
     # If $LatexLength is something like '4.5\columnwidth', translate into
     # LyXese.
-    if ($LatexLength =~ /([0-9]+\.?[0-9]*)\s*(\\[a-z]*)/) {
+    if ($LatexLength =~ /([+-]?\d+\.?\d*)(\\[a-z]*)/) {
 	if (defined($lengthAsLyXString{$2})) {
 	    $LyXLength = ($1 * 100) . $lengthAsLyXString{$2};
 	}
-    } else {
-	$LyXLength = $LatexLength;
-	# Remove any spaces from '4.5 cm'
-	$LyXLength =~ s/\s*//g;
     }
 
     return $LyXLength;
