@@ -40,6 +40,9 @@ public:
 	/// input callback function
 	void InputCB(FL_OBJECT *, long);
 
+	/// feedback callback function
+	void FeedbackCB(FL_OBJECT *, int event);
+
 protected:
 	/// Build the dialog
 	virtual void build() = 0;
@@ -47,6 +50,20 @@ protected:
 	void hide();
 	/// Create the dialog if necessary, update it and display it.
 	void show();
+	/** Set a prehandler for ob to:
+	    1. display feedback as the mouse moves over it
+	    2. activate the button controller after a paste with the middle
+	    mouse button */
+	void setPrehandler(FL_OBJECT * ob);
+
+	/// post feedback for ob. Defaults to nothing
+	virtual void feedback(FL_OBJECT * /* ob */) {}
+	/// clear the feedback message
+	virtual void clear_feedback() {}
+
+	/** Flag that the message is a warning and should not be removed
+	    when the mouse is no longer over the object */
+	void setWarningPosted(bool);
 
 private:
 	/// Pointer to the actual instantiation of xform's form
@@ -66,6 +83,9 @@ private:
 	bool allow_resize_;
 	/// dialog title, displayed by WM.
   	string title_;
+	/** Variable used to decide whether to remove the existing feedback
+	    message or not (if it is infact a warning) */
+	bool warning_posted_;
 };
 
 

@@ -22,43 +22,16 @@
 #include "support/LAssert.h"
 #include "xformsBC.h"
 #include "lyxrc.h"
-//#include "debug.h"
 
 using SigC::slot;
 
 extern "C" {
-	
-	static
-	int C_FormBaseDeprecatedWMHideCB(FL_FORM * ob, void * d)
-	{
-		return FormBaseDeprecated::WMHideCB(ob, d);
-	}
 
-	void C_FormBaseDeprecatedApplyCB(FL_OBJECT * ob, long d)
-	{
-		FormBaseDeprecated::ApplyCB(ob, d);
-	}
-
-	void C_FormBaseDeprecatedOKCB(FL_OBJECT * ob, long d)
-	{
-		FormBaseDeprecated::OKCB(ob, d);
-	}
-
-	void C_FormBaseDeprecatedCancelCB(FL_OBJECT * ob, long d)
-	{
-		FormBaseDeprecated::CancelCB(ob, d);
-	}
-
-	void C_FormBaseDeprecatedInputCB(FL_OBJECT * ob, long d)
-	{
-		FormBaseDeprecated::InputCB(ob, d);
-	}
-
-	void C_FormBaseDeprecatedRestoreCB(FL_OBJECT * ob, long d)
-	{
-		FormBaseDeprecated::RestoreCB(ob, d);
-	}
-}
+// Callback function invoked by xforms when the dialog is closed by the
+// window manager
+static int C_FormBaseDeprecatedWMHideCB(FL_FORM *, void *);
+ 
+} // extern "C"
 
 
 FormBaseDeprecated::FormBaseDeprecated(LyXView * lv, Dialogs * d,
@@ -259,3 +232,44 @@ void FormBaseBD::disconnect()
 	u_.disconnect();
 	FormBaseDeprecated::disconnect();
 }
+
+
+extern "C" {
+	
+static int C_FormBaseDeprecatedWMHideCB(FL_FORM * ob, void * d)
+{
+	return FormBaseDeprecated::WMHideCB(ob, d);
+}
+
+
+void C_FormBaseDeprecatedApplyCB(FL_OBJECT * ob, long d)
+{
+	FormBaseDeprecated::ApplyCB(ob, d);
+}
+
+
+void C_FormBaseDeprecatedOKCB(FL_OBJECT * ob, long d)
+{
+	FormBaseDeprecated::OKCB(ob, d);
+}
+
+
+void C_FormBaseDeprecatedCancelCB(FL_OBJECT * ob, long d)
+{
+	FormBaseDeprecated::CancelCB(ob, d);
+}
+
+
+void C_FormBaseDeprecatedInputCB(FL_OBJECT * ob, long d)
+{
+		FormBaseDeprecated::InputCB(ob, d);
+}
+
+
+void C_FormBaseDeprecatedRestoreCB(FL_OBJECT * ob, long d)
+{
+	FormBaseDeprecated::RestoreCB(ob, d);
+}
+
+} // extern "C"
+

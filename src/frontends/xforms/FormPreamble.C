@@ -18,11 +18,6 @@
 #include "form_preamble.h"
 #include "xforms_helpers.h"
 
-// To trigger an input event when pasting in an xforms input object
-// using the middle mouse button.
-extern "C" int C_CutandPastePH(FL_OBJECT *, int, FL_Coord, FL_Coord,
-			       int, void *);
-
 typedef FormCB<ControlPreamble, FormDB<FD_form_preamble> > base_class;
 
 FormPreamble::FormPreamble(ControlPreamble & c)
@@ -35,7 +30,9 @@ void FormPreamble::build()
 	dialog_.reset(build_preamble());
 
 	fl_set_input_return(dialog_->input_preamble, FL_RETURN_CHANGED);
-	fl_set_object_prehandler(dialog_->input_preamble, C_CutandPastePH);
+
+	// trigger an input event when pasting using the middle mouse button.
+	setPrehandler(dialog_->input_preamble);
 
 	// Manage the ok, apply and cancel/close buttons
 	bc().setOK(dialog_->button_ok);

@@ -22,15 +22,23 @@
 #include "support/LAssert.h"
 
 extern "C" {
-	// Callback function invoked by xforms when the dialog is closed by the
-	// window manager
-	static int C_FormBaseWMHideCB(FL_FORM * form, void *);
-}
+
+// Callback function invoked by xforms when the dialog is closed by the
+// window manager
+static int C_FormBaseWMHideCB(FL_FORM * form, void *);
+
+// Use this to diaplay feedback messages or to trigger an input event on paste
+// with the middle mouse button
+static int C_FormBasePrehandler(FL_OBJECT * ob, int event,
+				FL_Coord, FL_Coord, int key, void *);
+
+} // extern "C"
 
 
 FormBase::FormBase(ControlButtons & c, string const & t, bool allowResize)
 	: ViewBC<xformsBC>(c), minw_(0), minh_(0), allow_resize_(allowResize),
-	  title_(t)
+	  title_(t), warning_posted_(false)
+
 {}
 
 
@@ -114,6 +122,41 @@ ButtonPolicy::SMInput FormBase::input(FL_OBJECT *, long)
 }
 
 
+// preemptive handler for feedback messages
+void FormBase::FeedbackCB(FL_OBJECT * ob, int event)
+{
+	lyx::Assert(ob);
+
+	switch (event) {
+	case FL_ENTER:
+		warning_posted_ = false;
+		feedback(ob);
+		break;
+
+	case FL_LEAVE:
+		if (!warning_posted_)
+			clear_feedback();
+		break;
+
+	default:
+		break;
+	}
+}
+
+
+void FormBase::setPrehandler(FL_OBJECT * ob)
+{
+	lyx::Assert(ob);
+	fl_set_object_prehandler(ob, C_FormBasePrehandler);
+}
+
+
+void FormBase::setWarningPosted(bool warning)
+{
+	warning_posted_ = warning;
+}
+
+
 namespace {
 
 FormBase * GetForm(FL_OBJECT * ob)
@@ -128,58 +171,74 @@ FormBase * GetForm(FL_OBJECT * ob)
 
 extern "C" {
 
-	static
-	int C_FormBaseWMHideCB(FL_FORM * form, void *)
-	{
-		// Close the dialog cleanly, even if the WM is used to do so.
-		lyx::Assert(form && form->u_vdata);
-		FormBase * pre = static_cast<FormBase *>(form->u_vdata);
-		pre->CancelButton();
-		return FL_CANCEL;
-	}
-
-
-	void C_FormBaseApplyCB(FL_OBJECT * ob, long)
-	{
-		GetForm(ob)->ApplyButton();
-	}
-
-
-	void C_FormBaseOKCB(FL_OBJECT * ob, long)
-	{
-		GetForm(ob)->OKButton();
-	}
-
-
-	void C_FormBaseCancelCB(FL_OBJECT * ob, long)
-	{
-		FormBase * form = GetForm(ob);
-		form->CancelButton();
-	}
-
-
-	void C_FormBaseRestoreCB(FL_OBJECT * ob, long)
-	{
-		GetForm(ob)->RestoreButton();
-	}
-
-
-	void C_FormBaseInputCB(FL_OBJECT * ob, long d)
-	{
-		GetForm(ob)->InputCB(ob, d);
-	}
-
-
-	// To trigger an input event when pasting in an xforms input object
-	// using the middle mouse button.
-	int C_CutandPastePH(FL_OBJECT * ob, int event,
-			    FL_Coord, FL_Coord, int key, void *)
-	{
-		if ((event == FL_PUSH) && (key == 2)
-		    && (ob->objclass == FL_INPUT)) {
-			C_FormBaseInputCB(ob, 0);
-		}
-		return 0;
-	}
-
+static int C_FormBaseWMHideCB(FL_FORM * form, void *)
+{
+	// Close the dialog cleanly, even if the WM is used to do so.
+	lyx::Assert(form && form->u_vdata);
+	FormBase * pre = static_cast<FormBase *>(form->u_vdata);
+	pre->CancelButton();
+	return FL_CANCEL;
 }
+
+
+void C_FormBaseApplyCB(FL_OBJECT * ob, long)
+{
+	GetForm(ob)->ApplyButton();
+}
+
+
+void C_FormBaseOKCB(FL_OBJECT * ob, long)
+{
+	GetForm(ob)->OKButton();
+}
+
+
+void C_FormBaseCancelCB(FL_OBJECT * ob, long)
+{
+	FormBase * form = GetForm(ob);
+	form->CancelButton();
+}
+
+
+void C_FormBaseRestoreCB(FL_OBJECT * ob, long)
+{
+	GetForm(ob)->RestoreButton();
+}
+
+
+void C_FormBaseInputCB(FL_OBJECT * ob, long d)
+{
+	GetForm(ob)->InputCB(ob, d);
+}
+
+
+static int C_FormBasePrehandler(FL_OBJECT * ob, int event,
+				FL_Coord, FL_Coord, int key, void *)
+{
+	// Note that the return value is important in the pre-emptive handler.
+	// Don't return anything other than 0.
+	lyx::Assert(ob);
+
+	// Don't Assert this one, as it can happen quite naturally when things
+	// are being deleted in the d-tor.
+	//Assert(ob->form);
+	if (!ob->form) return 0;
+
+	FormBase * pre = static_cast<FormBase *>(ob->form->u_vdata);
+	if (!pre) return 0;
+
+	if (event == FL_PUSH && key == 2 && ob->objclass == FL_INPUT) {
+		// Trigger an input event when pasting in an xforms input object
+		// using the middle mouse button.
+		pre->InputCB(ob, 0);
+
+	} else if (event == FL_ENTER || event == FL_LEAVE){
+		// Post feedback as the mouse enters the object,
+		// remove it as the mouse leaves.
+		pre->FeedbackCB(ob, event);
+	}
+
+	return 0;
+}
+	
+} // extern "C"

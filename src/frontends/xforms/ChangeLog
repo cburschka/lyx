@@ -1,3 +1,18 @@
+2002-02-05  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormBase.[Ch]: make it really easy to set up and use a prehandler
+	for feedback messages and to invoke an input event on paste from
+	the middle mouse button. The derived class needs invoke only
+	setPrehandler(ob) and for the feedback to override the virtual methods
+	feedback(ob) and clear_feedback(). If the message posted is a warning
+	rather than mere feedback, first setWarningPosted(true) to ensure
+	that the message remains visible.
+
+	* FormBaseDeprecated.C: a physical rearrangement of the file,
+	nothing more.
+
+	* FormPreamble.C: use setPrehandler to invoke an input event on paste.
+
 2002-02-04  Herbert Voss  <voss@lyx.org>
 
 	* forms/form_graphics.fd: small changes to the layout
