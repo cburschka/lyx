@@ -22,7 +22,7 @@
 
 #include <vector>
 #include <boost/utility.hpp>
-
+#include "support/LOstream.h"
 
 /** An abstract base class for button policies.
     A state machine implementation of the various button policies used by the
@@ -160,14 +160,14 @@ public:
 
 
 inline
-ostream & operator<<(ostream & os, ButtonPolicy::SMInput smi) 
+std::ostream & operator<<(std::ostream & os, ButtonPolicy::SMInput smi) 
 {
 	os << int(smi);
 	return os;
 }
 
 inline
-ostream & operator<<(ostream & os, ButtonPolicy::State st)
+std::ostream & operator<<(std::ostream & os, ButtonPolicy::State st)
 {
 	os << int(st);
 	return os;
