@@ -1,3 +1,8 @@
+2001-04-27  Juergen Vigna  <jug@sad.it>
+
+	* text.C (Fill): return 20 instead of 0 if paper_width < 0 (endless)
+	(SetHeightOfRow): comment out the update call should not be needed!
+
 2001-04-13  Juergen Vigna  <jug@sad.it>
 
 	* tabular.C (GetAdditionalHeight): changed parameter from cell to row.
