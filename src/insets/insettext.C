@@ -1009,7 +1009,7 @@ bool InsetText::insetButtonRelease(BufferView * bv, int x, int y, int button)
 	}
 	int tmp_x = x - drawTextXOffset;
 	int tmp_y = y + insetAscent - getLyXText(bv)->first;
-	Inset * inset = bv->checkInsetHit(getLyXText(bv), tmp_x, tmp_y, button);
+	Inset * inset = bv->checkInsetHit(getLyXText(bv), tmp_x, tmp_y);
 	bool ret = false;
 	if (inset) {
 		if (isHighlyEditableInset(inset)) {

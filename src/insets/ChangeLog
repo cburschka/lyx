@@ -1,3 +1,7 @@
+2001-12-17  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* insettext.C (insetButtonRelease): fix compile problem
+
 2001-12-17  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (insetButtonPress): set the selection cursor!
@@ -11,7 +15,7 @@
 	can be opened.
 
 	* insetcollapsable.C (insetButtonRelease): changed so that it can
-	open evetual existing popup dialogs on mousebutton==3.
+	open eventual existing popup dialogs on mousebutton==3.
 
 	* insetfloat.C (insetButtonRelease): removed not needed anymore!
 
