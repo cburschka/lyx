@@ -93,15 +93,20 @@ bool kb_keymap::read(string const & bind_file)
 
 	string const tmp = i18nLibFileSearch("bind", bind_file, "bind");
 	lexrc.setFile(tmp);
-	if (!lexrc.isOK()) return false;
+	if (!lexrc.isOK()) {
+		lyxerr << "kb_keymap::read: cannot open bind file:" 
+		       << tmp << endl;
+		return false;
+	}
 
-	lyxerr[Debug::KBMAP] << "Reading bindfile:" << tmp << endl;
+	lyxerr[Debug::KBMAP] << "Reading bind file:" << tmp << endl;
 
 	bool error = false;
-	while (lexrc.isOK()) {
+	while (!error && lexrc.isOK()) {
 		switch (lexrc.lex()) {
 		case LyXLex::LEX_UNDEF:
 			lexrc.printError("Unknown tag `$$Token'");
+			error = true;
 			continue;
 		case LyXLex::LEX_FEOF:
 			continue;
@@ -113,6 +118,7 @@ bool kb_keymap::read(string const & bind_file)
 				seq = lexrc.getString();
 			} else {
 				lexrc.printError("BN_BIND: Missing key sequence");
+				error = true;
 				break;
 			}
 			
@@ -120,6 +126,7 @@ bool kb_keymap::read(string const & bind_file)
 				cmd = lexrc.getString();
 			} else {
 				lexrc.printError("BN_BIND: missing command");
+				error = true;
 				break;
 			}
 			
@@ -127,16 +134,17 @@ bool kb_keymap::read(string const & bind_file)
 			if (!action == LFUN_UNKNOWN_ACTION) {
 				lexrc.printError("BN_BIND: Unknown LyX"
 						 " function `$$Token'");
+				error = true;
 				break;
 			}
 			
-			error = (bind(seq, kb_action(action)) != string::npos);
+			bind(seq, kb_action(action));
 			break;
 		}
 		case BN_BINDFILE:
 			if (lexrc.next()) {
 				string const tmp(lexrc.getString());
-				error = read(tmp);
+				error = !read(tmp);
 			} else {
 				lexrc.printError("BN_BINDFILE: Missing file name");
 				error = true;
@@ -147,11 +155,10 @@ bool kb_keymap::read(string const & bind_file)
 		}
 	}
 
-	if (error) {
-		lyxerr << "Error reading bind file: " << tmp << endl;
-	}
-
-	return error;
+	if (error)
+		lyxerr << "kb_keymap::read: error while reading bind file:" 
+		       << tmp << endl;
+	return !error;
 }
 
 

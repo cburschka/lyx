@@ -1,3 +1,7 @@
+2003-07-29  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* kbmap.C (read): fix error message when reading bind files
+
 2003-07-29  Angus Leeming  <leeming@lyx.org>
 
 	* BufferView.[Ch] (ChangeCitationsIfUnique): This function most
