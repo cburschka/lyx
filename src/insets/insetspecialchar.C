@@ -287,7 +287,7 @@ int InsetSpecialChar::linuxdoc(Buffer const *, ostream & os) const
 }
 
 
-int InsetSpecialChar::docbook(Buffer const *, ostream & os) const
+int InsetSpecialChar::docbook(Buffer const *, ostream & os, bool) const
 {
 	switch (kind_) {
 	case HYPHENATION:

@@ -28,6 +28,15 @@ string verboseHLine(int n)
 
 }
 
+//////////////////////////////////////////////////////////////
+
+
+MathGridInset::CellInfo::CellInfo()
+	: dummy_(false)
+{}
+
+
+
 
 //////////////////////////////////////////////////////////////
 
@@ -60,7 +69,10 @@ MathGridInset::ColInfo::ColInfo()
 
 
 MathGridInset::MathGridInset(char v, string const & h)
-	: MathNestInset(guessColumns(h)), rowinfo_(2), colinfo_(guessColumns(h) + 1)
+	: MathNestInset(guessColumns(h)),
+	  rowinfo_(2),
+	  colinfo_(guessColumns(h) + 1),
+	  cellinfo_(1 * guessColumns(h))
 {
 	setDefaults();
 	valign(v);
@@ -68,15 +80,34 @@ MathGridInset::MathGridInset(char v, string const & h)
 }
 
 
+MathGridInset::MathGridInset()
+	: MathNestInset(1),
+	  rowinfo_(1 + 1),
+		colinfo_(1 + 1),
+		cellinfo_(1),
+		v_align_('c')
+{
+	setDefaults();
+}
+
+
 MathGridInset::MathGridInset(col_type m, row_type n)
-	: MathNestInset(m * n), rowinfo_(n + 1), colinfo_(m + 1), v_align_('c')
+	: MathNestInset(m * n),
+	  rowinfo_(n + 1),
+		colinfo_(m + 1),
+		cellinfo_(m * n),
+		v_align_('c')
 {
 	setDefaults();
 }
 
 
 MathGridInset::MathGridInset(col_type m, row_type n, char v, string const & h)
-	: MathNestInset(m * n), rowinfo_(n + 1), colinfo_(m + 1), v_align_(v)
+	: MathNestInset(m * n),
+	  rowinfo_(n + 1),
+	  colinfo_(m + 1),
+		cellinfo_(m * n),
+		v_align_(v)
 {
 	setDefaults();
 	valign(v);
@@ -355,23 +386,23 @@ void MathGridInset::metrics(MathMetricsInfo & mi) const
 }
 
 
-void MathGridInset::draw(MathPainterInfo & pain, int x, int y) const
+void MathGridInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	for (idx_type idx = 0; idx < nargs(); ++idx)
-		xcell(idx).draw(pain, x + cellXOffset(idx), y + cellYOffset(idx));
+		xcell(idx).draw(pi, x + cellXOffset(idx), y + cellYOffset(idx));
 
 	for (row_type row = 0; row <= nrows(); ++row)
 		for (int i = 0; i < rowinfo_[row].lines_; ++i) {
 			int yy = y + rowinfo_[row].offset_ - rowinfo_[row].ascent_
 				- i * hlinesep() - hlinesep()/2 - rowsep()/2;
-			pain.pain.line(x + 1, yy, x + width_ - 1, yy);
+			pi.pain.line(x + 1, yy, x + width_ - 1, yy);
 		}
 
 	for (col_type col = 0; col <= ncols(); ++col)
 		for (int i = 0; i < colinfo_[col].lines_; ++i) {
 			int xx = x + colinfo_[col].offset_
 				- i * vlinesep() - vlinesep()/2 - colsep()/2;
-			pain.pain.line(xx, y - ascent_ + 1, xx, y + descent_ - 1);
+			pi.pain.line(xx, y - ascent_ + 1, xx, y + descent_ - 1);
 		}
 }
 
@@ -507,7 +538,10 @@ string MathGridInset::eocString(col_type col) const
 void MathGridInset::addRow(row_type row)
 {
 	rowinfo_.insert(rowinfo_.begin() + row + 1, RowInfo());
-	cells_.insert(cells_.begin() + (row + 1) * ncols(), ncols(), MathXArray());
+	cells_.insert
+		(cells_.begin() + (row + 1) * ncols(), ncols(), MathXArray());
+	cellinfo_.insert
+		(cellinfo_.begin() + (row + 1) * ncols(), ncols(), CellInfo());
 }
 
 
@@ -515,8 +549,10 @@ void MathGridInset::appendRow()
 {
 	rowinfo_.push_back(RowInfo());
 	//cells_.insert(cells_.end(), ncols(), MathXArray());
-	for (col_type col = 0; col < ncols(); ++col)
+	for (col_type col = 0; col < ncols(); ++col) {
 		cells_.push_back(cells_type::value_type());
+		cellinfo_.push_back(CellInfo());
+	}
 }
 
 
@@ -528,6 +564,9 @@ void MathGridInset::delRow(row_type row)
 	cells_type::iterator it = cells_.begin() + row * ncols();
 	cells_.erase(it, it + ncols());
 
+	vector<CellInfo>::iterator jt = cellinfo_.begin() + row * ncols();
+	cellinfo_.erase(jt, jt + ncols());
+
 	rowinfo_.erase(rowinfo_.begin() + row);
 }
 
@@ -537,12 +576,17 @@ void MathGridInset::addCol(col_type newcol)
 	const col_type nc = ncols();
 	const row_type nr = nrows();
 	cells_type new_cells((nc + 1) * nr);
+	vector<CellInfo> new_cellinfo((nc + 1) * nr);
 
 	for (row_type row = 0; row < nr; ++row)
-		for (col_type col = 0; col < nc; ++col)
+		for (col_type col = 0; col < nc; ++col) {
 			new_cells[row * (nc + 1) + col + (col > newcol)]
 				= cells_[row * nc + col];
+			new_cellinfo[row * (nc + 1) + col + (col > newcol)]
+				= cellinfo_[row * nc + col];
+		}
 	swap(cells_, new_cells);
+	swap(cellinfo_, new_cellinfo);
 
 	ColInfo inf;
 	inf.skip_  = defaultColSpace(newcol);
@@ -557,10 +601,14 @@ void MathGridInset::delCol(col_type col)
 		return;
 
 	cells_type tmpcells;
+	vector<CellInfo> tmpcellinfo;
 	for (col_type i = 0; i < nargs(); ++i)
-		if (i % ncols() != col)
+		if (i % ncols() != col) {
 			tmpcells.push_back(cells_[i]);
+			tmpcellinfo.push_back(cellinfo_[i]);
+		}
 	swap(cells_, tmpcells);
+	swap(cellinfo_, tmpcellinfo);
 
 	colinfo_.erase(colinfo_.begin() + col);
 }
@@ -813,8 +861,11 @@ void MathGridInset::write(WriteStream & os) const
 		os << eolString(row);
 	}
 	string const s = verboseHLine(rowinfo_[nrows()].lines_);
-	if (!s.empty() && s != " ")
+	if (!s.empty() && s != " ") {
+		if (os.fragile())
+			os << "\\protect";
 		os << "\\\\" << s;
+	}
 }
 
 
@@ -846,3 +897,4 @@ int MathGridInset::border() const
 {
 	return 1;
 }
+

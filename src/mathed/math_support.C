@@ -4,13 +4,13 @@
 
 #include "math_support.h"
 #include "lyxfont.h"
-#include "frontends/font_loader.h"
-#include "frontends/font_metrics.h"
 #include "math_cursor.h"
 #include "math_defs.h"
 #include "math_inset.h"
 #include "math_parser.h"
 #include "frontends/Painter.h"
+#include "frontends/font_metrics.h"
+#include "frontends/font_loader.h"
 #include "debug.h"
 #include "commandtags.h"
 
@@ -57,7 +57,7 @@ namespace {
 
 /*
  * Internal struct of a drawing: code n x1 y1 ... xn yn, where code is:
- * 0 = end, 1 = line, 2 = polyline, 3 = square line, 4= square polyline
+ * 0 = end, 1 = line, 2 = polyline, 3 = square line, 4 = square polyline
  */
 
 
@@ -570,6 +570,7 @@ fontinfo fontinfos[] = {
 	{"eufrak", LyXFont::EUFRAK_FAMILY, def_series, def_shape, LColor::math},
 	{"mathbf", def_family, LyXFont::BOLD_SERIES, def_shape, LColor::math},
 	{"mathcal",LyXFont::CMSY_FAMILY, def_series, def_shape, LColor::math},
+	{"mathfrak", LyXFont::EUFRAK_FAMILY, def_series, def_shape, LColor::math},
 	{"mathnormal", def_family,def_series, LyXFont::UP_SHAPE, LColor::math},
 	{"mathrm", LyXFont::ROMAN_FAMILY, def_series, def_shape, LColor::math},
 	{"mathsf", LyXFont::SANS_FAMILY, def_series, def_shape, LColor::math},
@@ -588,7 +589,21 @@ fontinfo fontinfos[] = {
 
 	{"lyxtex", def_family, def_series, def_shape, LColor::latex},
 	{"lyxsymbol", LyXFont::SYMBOL_FAMILY, def_series, def_shape, LColor::math},
-	{"lyxitsymbol", LyXFont::SYMBOL_FAMILY, def_series, LyXFont::ITALIC_SHAPE, LColor::math},
+	{"lyxboldsymbol",
+		LyXFont::SYMBOL_FAMILY, LyXFont::BOLD_SERIES, def_shape, LColor::math},
+	{"lyxitsymbol", LyXFont::SYMBOL_FAMILY,
+		def_series, LyXFont::ITALIC_SHAPE, LColor::math},
+	{"lyxredtext", LyXFont::ROMAN_FAMILY,
+		LyXFont::MEDIUM_SERIES, LyXFont::UP_SHAPE, LColor::red},
+	{"lyxblacktext", LyXFont::ROMAN_FAMILY,
+		LyXFont::MEDIUM_SERIES, LyXFont::UP_SHAPE, LColor::black},
+
+	{"lyxfakebb", LyXFont::TYPEWRITER_FAMILY, LyXFont::BOLD_SERIES,
+		LyXFont::UP_SHAPE, LColor::math},
+	{"lyxfakecal", LyXFont::SANS_FAMILY, LyXFont::MEDIUM_SERIES,
+		LyXFont::ITALIC_SHAPE, LColor::math},
+	{"lyxfakefrak", LyXFont::ROMAN_FAMILY, LyXFont::BOLD_SERIES,
+		LyXFont::ITALIC_SHAPE, LColor::math}
 };
 
 
@@ -605,58 +620,47 @@ fontinfo * searchFont(string const & name)
 }
 
 
-void augmentFont(LyXFont & font, string const & name)
+LyXFont getFont(string const & name)
 {
-	static bool initialized = false;
-	
-	if (!initialized) {
-		initialized = true;
-
-		LyXFont f1;
-		augmentFont(f1, "msb");
-		if (!fontloader.available(f1)) {
-			lyxerr << "faking msb\n";
-			fontinfo * info = searchFont("msb");
-			info->family_ = LyXFont::TYPEWRITER_FAMILY;
-			info->series_ = LyXFont::BOLD_SERIES;
-		}
-
-		LyXFont f2;
-		augmentFont(f2, "msex");
-		if (!fontloader.available(f2)) {
-			lyxerr << "faking msex\n";
-			fontinfo * info = searchFont("msex");
-			info->family_ = LyXFont::SANS_FAMILY;
-			info->series_ = LyXFont::BOLD_SERIES;
-			info->shape_  = LyXFont::ITALIC_SHAPE;
-		}
-
-		//{"fakebb", LyXFont::TYPEWRITER_FAMILY, LyXFont::BOLD_SERIES,
-		//	LyXFont::UP_SHAPE, LColor::math},
-		//{"fakecal", LyXFont::SANS_FAMILY, LyXFont::MEDIUM_SERIES,
-		//	LyXFont::ITALIC_SHAPE, LColor::math},
-		//{"fakefrak", LyXFont::SANS_FAMILY, LyXFont::BOLD_SERIES,
-		//	LyXFont::ITALIC_SHAPE, LColor::math}
-
-	}
-
-
-	fontinfo * info = searchFont(name);
-	if (info->family_ != def_family)
-		font.setFamily(info->family_);
-
-	if (info->series_ != def_series)
-		font.setSeries(info->series_);
-
-	if (info->shape_ != def_shape)
-		font.setShape(info->shape_);
-
-	if (info->color_ != LColor::none)
-		font.setColor(info->color_);
+	LyXFont font;
+	augmentFont(font, name);
+	return font;
 }
 
 
-bool math_font_available(string const & /*name*/)
+void fakeFont(string const & orig, string const & fake)
 {
-	return true;
+	fontinfo * forig = searchFont(orig);
+	fontinfo * ffake = searchFont(fake);
+	if (forig && ffake) {
+		forig->family_ = ffake->family_;
+		forig->series_ = ffake->series_;
+		forig->shape_  = ffake->shape_;
+		forig->color_  = ffake->color_;
+	} else {
+		lyxerr << "Can't fake font '" << orig << "' with '" << fake << "'\n";
+	}
+}
+
+void augmentFont(LyXFont & font, string const & name)
+{
+	static bool initialized = false;
+	if (!initialized) {
+		initialized = true;
+
+		// fake fonts if necessary
+		if (!fontloader.available(getFont("mathfrak")))
+			fakeFont("mathfrak", "lyxfakefrak");
+		if (!fontloader.available(getFont("mathcal")))
+			fakeFont("mathcal", "lyxfakecal");
+	}
+	fontinfo * info = searchFont(name);
+	if (info->family_ != def_family)
+		font.setFamily(info->family_);
+	if (info->series_ != def_series)
+		font.setSeries(info->series_);
+	if (info->shape_ != def_shape)
+		font.setShape(info->shape_);
+	if (info->color_ != LColor::none)
+		font.setColor(info->color_);
 }

@@ -18,33 +18,19 @@
 #endif
 
 #include "ControlRef.h"
-#include "ViewBase.h"
-#include "ButtonControllerBase.h"
-#include "Dialogs.h"
-#include "buffer.h"
 #include "lyxfunc.h"
 #include "bufferlist.h"
-#include "debug.h"
-
-#include "frontends/LyXView.h"
 
 #include "support/filetools.h" // MakeAbsPath, MakeDisplayPath
 
-#include <boost/bind.hpp>
-
-#include <algorithm>
-
 using std::vector;
-using std::find;
 
 extern BufferList bufferlist;
 
+
 ControlRef::ControlRef(LyXView & lv, Dialogs & d)
 	: ControlCommand(lv, d, LFUN_REF_INSERT)
-{
-	d_.showRef = boost::bind(&ControlRef::showInset, this, _1);
-	d_.createRef = boost::bind(&ControlRef::createInset, this, _1);
-}
+{}
 
 
 vector<string> const ControlRef::getLabelList(string const & name) const

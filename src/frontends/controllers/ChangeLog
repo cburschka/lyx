@@ -1,3 +1,7 @@
+2002-06-16  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* changes to simplify function setup, removal of a lot of includes.
+
 2002-06-12  Angus Leeming  <leeming@lyx.org>
 
 	* ControlParagraph.[Ch]: forward declare ParagraphParameters.
@@ -7,11 +11,11 @@
 	* ControlInset.tmpl: add missing header file, ButtonControllerBase.h.
 
 2002-06-11  Edwin Leuven  <leuven@fee.uva.nl>
- 
- 	* ControlParagraph.[Ch]: new paragraph controller
- 	* GUI.h: add new controller
- 	* Makefile.am: ditto
- 	
+
+	* ControlParagraph.[Ch]: new paragraph controller
+	* GUI.h: add new controller
+	* Makefile.am: ditto
+
 2002-06-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* GUI.h: do not include ButtonController.tmpl

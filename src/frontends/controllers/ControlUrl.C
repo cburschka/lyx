@@ -18,18 +18,8 @@
 #endif
 
 #include "ControlUrl.h"
-#include "ViewBase.h"
-#include "ButtonControllerBase.h"
-#include "Dialogs.h"
-#include "buffer.h"
 
-#include "frontends/LyXView.h"
-
-#include <boost/bind.hpp>
 
 ControlUrl::ControlUrl(LyXView & lv, Dialogs & d)
 	: ControlCommand(lv, d, LFUN_INSERT_URL)
-{
-	d_.showUrl = boost::bind(&ControlUrl::showInset, this, _1);
-	d_.createUrl = boost::bind(&ControlUrl::createInset, this, _1);
-}
+{}

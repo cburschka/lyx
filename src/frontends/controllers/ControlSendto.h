@@ -15,6 +15,8 @@
 #endif
 
 #include "ControlDialog_impl.h"
+#include "LString.h"
+
 #include <vector>
 
 class Format;

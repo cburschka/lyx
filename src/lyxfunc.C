@@ -204,13 +204,13 @@ void LyXFunc::moveCursorUpdate(bool flag, bool selecting)
 
 void LyXFunc::handleKeyFunc(kb_action action)
 {
-	char c = keyseq.getiso();
+	char c = keyseq.getLastKeyEncoded();
 
 	if (keyseq.length() > 1) {
 		c = 0;
 	}
 
-	owner->getIntl()->getTrans()
+	owner->getIntl()->getTransManager()
 		.deadkey(c, get_accent(action).accent, TEXT(false));
 	// Need to clear, in case the minibuffer calls these
 	// actions
@@ -222,32 +222,25 @@ void LyXFunc::handleKeyFunc(kb_action action)
 }
 
 
-void LyXFunc::processKeySym(KeySym keysym, key_modifier::state state)
+void LyXFunc::processKeySym(LyXKeySymPtr keysym,
+			    key_modifier::state state)
 {
 	string argument;
 
 	if (lyxerr.debugging(Debug::KEY)) {
-		char const * tmp = XKeysymToString(keysym);
-		string const stm = (tmp ? tmp : "");
 		lyxerr << "KeySym is "
-		       << stm
-		       << "["
-		       << keysym
+		       << keysym->getSymbolName()
 		       << endl;
 	}
 	// Do nothing if we have nothing (JMarc)
-	if (keysym == NoSymbol) {
+	if ( ! keysym->isOK() ) {
 		lyxerr[Debug::KEY] << "Empty kbd action (probably composing)"
 				   << endl;
 		return;
 	}
 
-	// Can we be sure that this will work for all X Window
-	// implementations? (Lgb)
-	// This code snippet makes lyx ignore some keys. Perhaps
-	// all of them should be explictly mentioned?
-	if ((keysym >= XK_Shift_L && keysym <= XK_Hyper_R)
-	    || keysym == XK_Mode_switch || keysym == 0x0) {
+	// This code snippet makes lyx ignore modifier keys.
+	if (keysym->isModifier()) {
 		return;
 	}
 
@@ -318,13 +311,11 @@ void LyXFunc::processKeySym(KeySym keysym, key_modifier::state state)
 
 	if (action == LFUN_SELFINSERT) {
 		// This is very X dependent.
-		unsigned int c = keysym;
+		char c = keysym->getISOEncoded();
 		string argument;
 
-		c = kb_keymap::getiso(c);
-
-		if (c > 0)
-			argument = static_cast<char>(c);
+		if (c != 0)
+			argument = c;
 
 		dispatch(LFUN_SELFINSERT, argument);
 		lyxerr[Debug::KEY] << "SelfInsert arg[`"
@@ -896,7 +887,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 #endif
 			if ((action == LFUN_UNKNOWN_ACTION)
 			    && argument.empty()) {
-				argument = keyseq.getiso();
+				argument = keyseq.getLastKeyEncoded();
 			}
 			// Undo/Redo is a bit tricky for insets.
 			if (action == LFUN_UNDO) {
@@ -1044,7 +1035,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 		}
 		bool fw = (action == LFUN_WORDFINDBACKWARD);
 		if (!searched_string.empty()) {
-			LyXFind(owner->view(), searched_string, fw);
+			lyxfind::LyXFind(owner->view(), searched_string, fw);
 		}
 //		owner->view()->showCursor();
 	}

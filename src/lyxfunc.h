@@ -14,10 +14,9 @@
 
 #include "frontends/mouse_state.h"
 #include "frontends/key_state.h"
+#include "frontends/LyXKeySym.h"
 
 #include <boost/signals/trackable.hpp>
-
-#include <X11/Xlib.h>
 
 class LyXView;
 class LyXText;
@@ -57,7 +56,7 @@ public:
 	void initMiniBuffer();
 
 	///
-	void processKeySym(KeySym key, key_modifier::state state);
+	void processKeySym(LyXKeySymPtr key, key_modifier::state state);
 
 	/// we need one internal which is called from inside LyXAction and
 	/// can contain the string argument.
@@ -81,7 +80,7 @@ public:
 	string const getMessage() const { return dispatch_buffer; }
 	/// Buffer to store result messages
 	string const getStatusMessage() const { return status_buffer; }
-	/// Handle a accented char keysequenze
+	/// Handle a accented char key sequence
 	void handleKeyFunc(kb_action action);
 
 private:

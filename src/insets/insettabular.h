@@ -147,7 +147,7 @@ public:
 	///
 	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	int docbook(Buffer const *, std::ostream &) const;
+	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
@@ -352,6 +352,6 @@ private:
 	///
 	bool in_update;
 	///
-	mutable bool in_reset_pos;
+	mutable int in_reset_pos;
 };
 #endif

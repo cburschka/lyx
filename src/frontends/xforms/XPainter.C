@@ -36,7 +36,7 @@ using std::endl;
 using std::max;
 
  
-XPainter::XPainter(WorkArea & xwa)
+XPainter::XPainter(XWorkArea & xwa)
 	: Painter(), owner_(xwa)
 {
 }

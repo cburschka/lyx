@@ -64,8 +64,6 @@ libmathed_la_SOURCES = \
 	math_fracinset.h \
 	math_fracbase.C \
 	math_fracbase.h \
-	math_funcliminset.C \
-	math_funcliminset.h \
 	math_gridinset.C \
 	math_gridinset.h \
 	math_hullinset.C \
@@ -92,12 +90,14 @@ libmathed_la_SOURCES = \
 	math_mathmlstream.h \
 	math_matrixinset.C \
 	math_matrixinset.h \
-	math_metricsinfo.h \
 	math_metricsinfo.C \
+	math_metricsinfo.h \
 	math_nestinset.C \
 	math_nestinset.h \
 	math_notinset.C \
 	math_notinset.h \
+	math_numberinset.C \
+	math_numberinset.h \
 	math_parser.C \
 	math_parser.h \
 	math_pos.C \
@@ -111,8 +111,6 @@ libmathed_la_SOURCES = \
 	math_sizeinset.h \
 	math_spaceinset.C \
 	math_spaceinset.h \
-	math_specialcharinset.C \
-	math_specialcharinset.h \
 	math_splitinset.C \
 	math_splitinset.h \
 	math_sqrtinset.C \

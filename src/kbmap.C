@@ -18,54 +18,20 @@
 #include "kbsequence.h"
 #include "debug.h"
 
-#include <X11/Xlib.h>
-
 using std::endl;
 
-// The only modifiers that we handle. We want to throw away things
-// like NumLock.
-enum { ModsMask = ShiftMask | ControlMask | Mod1Mask };
-
-
-string const kb_keymap::printKeysym(unsigned int key, key_modifier::state mod)
+string const kb_keymap::printKeysym(LyXKeySymPtr key,
+				    key_modifier::state mod)
 {
 	string buf;
 
-	char const * const s = XKeysymToString(key);
+	string const s = key->getSymbolName();
 
 	if (mod & key_modifier::shift) buf += "S-";
 	if (mod & key_modifier::ctrl) buf += "C-";
 	if (mod & key_modifier::alt) buf += "M-";
-	if (s) buf += s;
+	buf += s;
 	return buf;
-}
-
-
-char kb_keymap::getiso(unsigned int c)
-{
-	switch (c & 0x0000FF00) {
-		// latin 1 byte 3 = 0
-	case 0x00000000: break;
-		// latin 2 byte 3 = 1
-	case 0x00000100:
-		// latin 3 byte 3 = 2
-	case 0x00000200:
-		// latin 4 byte 3 = 3
-	case 0x00000300:
-		// cyrillic KOI8 & Co
-	case 0x00000600:
-		// greek
-	case 0x00000700:
-		// latin 8 byte 3 = 18 (0x12)
-	case 0x00001200:
-		// latin 9 byte 3 = 19 (0x13)
-	case 0x00001300:
-		c &= 0x000000FF;
-		break;
-	default:
-		c = 0;
-	}
-	return c;
 }
 
 string const kb_keymap::printKey(kb_key const & key) const
@@ -97,7 +63,7 @@ string::size_type kb_keymap::bind(string const & seq, int action)
 }
 
 
-int kb_keymap::lookup(unsigned int key,
+int kb_keymap::lookup(LyXKeySymPtr key,
 		      key_modifier::state mod, kb_sequence * seq) const
 {
 	if (table.empty()) {
@@ -112,7 +78,7 @@ int kb_keymap::lookup(unsigned int key,
 		key_modifier::state check =
 			static_cast<key_modifier::state>(mod & ~mask);
  
-		if (cit->code == key && cit->mod.first == check) {
+		if (*(cit->code) == *(key) && cit->mod.first == check) {
 			// match found
 			if (cit->table.get()) {
 				// this is a prefix key - set new map
@@ -148,15 +114,17 @@ string const kb_keymap::print() const
 
 void kb_keymap::defkey(kb_sequence * seq, int action, unsigned int r)
 {
-	unsigned int const code = seq->sequence[r];
-	if (code == NoSymbol) return;
+	LyXKeySymPtr code = seq->sequence[r];
+	if ( ! code->isOK() ) return;
 
 	key_modifier::state const mod1 = seq->modifiers[r].first;
 	key_modifier::state const mod2 = seq->modifiers[r].second;
 
 	// check if key is already there
 	for (Table::iterator it = table.begin(); it != table.end(); ++it) {
-		if (code == it->code && mod1 == it->mod.first && mod2 == it->mod.second) {
+		if (*(code) == *(it->code)
+		    && mod1 == it->mod.first
+		    && mod2 == it->mod.second) {
 			// overwrite binding
 			if (r + 1 == seq->length()) {
 				lyxerr[Debug::KBMAP]

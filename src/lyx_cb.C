@@ -28,7 +28,6 @@
 
 #include "frontends/Alert.h"
 #include "frontends/FileDialog.h"
-#include <X11/Xlib.h>
 
 #include "support/FileInfo.h"
 #include "support/filetools.h"

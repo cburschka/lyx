@@ -1,10 +1,37 @@
-2002-06-13  Juergen Spitzmueller <j.spitzmueller@gmx.de>
+2002-06-16  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
-	* FormRef.C: Add Tooltips
+	* changes to let the function setup happen in frontends
+	* guiapi.C: new file
 
-2002-06-18  Angus Leeming  <leeming@lyx.org>
+2002-06-16    <alstrup@diku.dk>
 
-	* forms/.cvsignore: ignore any generated files/dirs.
+	* xscreen.C (draw): After drawing, we wait for X with XSync..
+
+	* XWorkArea.[Ch]: Xforms implementation of GUII WorkArea.
+
+	* XPainter.[Ch]: Use XWorkArea instead of WorkArea.
+
+	* xscreen.[Ch]: Use XWorkArea instead of WorkArea.
+
+	* WorkAreaFactory.C: New file for GUII WorkArea.
+
+	* LyXScreenFactory.C: WorkArea GUIIized.
+
+2002-06-15  Lyx Development team  <larsbj@birdstep.com>
+
+	* LyXKeySymFactory.C: Added XForms implementation.
+
+	* XLyXKeySym.[Ch]: Added XForms implementation of the LyXKeySym
+	stuff.
+
+	* XWorkArea.[Ch]: Use LyXKeySym in signal interface for keypress.
+
+2002-06-14  Lyx Development team  <lyx@electronia>
+
+	* LyXScreenFactory.C: Implementation for XForms.
+
+	* xscreen.[Ch]: Added implementation of LyXScreen for XForms,
+	called XScreen (surprise!).
 
 2002-06-14  Angus Leeming  <leeming@lyx.org>
 
@@ -59,18 +86,18 @@
 	* xforms_helpers.[Ch]: removed scex, idex functions.
 
 	* Most other files: minor changes associated with the above.
-	
+
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* XWorkArea.h:
 	* XWorkArea.C: move scrolling logic into here
- 
+
 	* ColorHandler.h:
 	* ColorHandler.C:
 	* XPainter.h:
 	* XPainter.C: remove unused stuff, s/PainterBase/Painter/,
 	s/Painter/XPainter/
- 
+
 2002-06-12  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_gui.C (parse_init): exit isn't in namespace lyx_gui!
@@ -82,7 +109,7 @@
 
 2002-05-24  Martin Vermeer  <martin.vermeer@hut.fi>
 
-	* FormMathsDelim.C: fix delimiter pre-display rendering 
+	* FormMathsDelim.C: fix delimiter pre-display rendering
 	  mess-up bug (354)
 
 2002-06-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
@@ -93,7 +120,7 @@
 
 	* XFormsView.h:
 	* XFormsView.C: move init() back to LyXView
- 
+
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* GUIRunTime.C: remove in favour of ...
@@ -103,26 +130,26 @@
 
 	* XFormsView.h:
 	* XFormsView.C: change show() prototype
- 
+
 	* XPainter.C:
 	* xfont_loader.C: don't use GUIRunTime any more
- 
+
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
-	* ColorHandler.C: 
+	* ColorHandler.C:
 	* FontInfo.h:
 	* FormBase.C:
 	* FormBaseDeprecated.C:
 	* MathsSymbols.C:
 	* Menubar_pimpl.C: minor cleanups
- 
+
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* xformsGImage.C:
 	* FontInfo.h:
 	* FontInfo.C: some cleanup
- 
-	* XWorkArea.C: 
+
+	* XWorkArea.C:
 	* XFormsView.h:
 	* XFormsView.C: some minor cleanup, use of
 	  scoped_ptr
@@ -134,12 +161,12 @@
 
 	* XWorkArea.h:
 	* XWorkArea.C: use workHeight(), remove enter/leaveView
- 
+
 2002-06-11  John Levon  <moz@compsoc.man.ac.uk>
 
 	* XWorkArea.h:
 	* XWorkArea.C: remove belowMouse() and active()
- 
+
 2002-06-11  John Levon  <moz@compsoc.man.ac.uk>
 
 	* xfont_metrics.h:
@@ -147,11 +174,11 @@
 	* XPainter.C: X-specific metrics stuff moved into xforms/ only
 
 2002-06-11  Edwin Leuven  <leuven@fee.uva.nl>
- 
- 	* FormParagraph.[Ch]: moved to mvc
- 	* form_paragraph.[Ch]: idem
- 	* forms/form_paragraph.fd: idem
- 	* Dialogs.C: idem
+
+	* FormParagraph.[Ch]: moved to mvc
+	* form_paragraph.[Ch]: idem
+	* forms/form_paragraph.fd: idem
+	* Dialogs.C: idem
 
 2002-06-06  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
@@ -166,7 +193,7 @@
 	* xformsGImage.h: use FLIMAGE_H_LOCATION to include flimage.h.
 
 2002-06-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
- 
+
 	* FormMathsPanel.C: do not include ButtonController.tmpl
 	* FormPreferences.C: ditto
 	* xformsBC.C: ditto
@@ -190,11 +217,11 @@
 2002-06-04  John Levon  <moz@compsoc.man.ac.uk>
 
 	* xformsGImage.h: an xforms build fix
- 
+
 2002-06-02  Michael A. Koziarski  <michael@koziarski.com>
- 
+
 	* Tooltips.C: fix some sigc++ -> boost errors.
- 
+
 2002-06-02  John Levon  <moz@compsoc.man.ac.uk>
 
 	* GUIRunTime.C:
@@ -206,7 +233,7 @@
 
 2002-05-10  Herbert Voss  <voss@perce.de>
 
-	* FormInclude.C (input, update): disable load-button when 
+	* FormInclude.C (input, update): disable load-button when
 	"use verbatim" is enabled
 
 2002-05-30  Lars Gullik Bjønnes  <larsbj@birdstep.com>

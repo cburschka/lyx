@@ -19,23 +19,12 @@
 #endif
 
 #include "ControlBibitem.h"
-#include "ViewBase.h"
-#include "ButtonControllerBase.h"
-#include "Dialogs.h"
-#include "buffer.h"
 #include "BufferView.h"
 
-#include "frontends/LyXView.h"
-
-#include <boost/bind.hpp>
-
-#include <algorithm>
 
 ControlBibitem::ControlBibitem(LyXView & lv, Dialogs & d)
 	: ControlCommand(lv, d)
-{
-	d_.showBibitem = boost::bind(&ControlBibitem::showInset, this, _1);
-}
+{}
 
 
 void ControlBibitem::applyParamsToInset()

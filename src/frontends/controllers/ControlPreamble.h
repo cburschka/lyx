@@ -16,6 +16,8 @@
 
 #include "ControlDialog_impl.h"
 
+#include "LString.h"
+
 /** A controller for Preamble dialogs.
  */
 class ControlPreamble : public ControlDialogBD {

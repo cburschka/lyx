@@ -23,6 +23,7 @@ extern LyXAction lyxaction;
 
 
 Toolbar::Toolbar(LyXView * o, int x, int y, ToolbarDefaults const &tbd)
+	: last_textclass_(-1)
 {
 	pimpl_ = new Pimpl(o, x, y);
 
@@ -75,9 +76,17 @@ void Toolbar::setLayout(string const & layout)
 }
 
 
-void Toolbar::updateLayoutList(bool force)
+bool Toolbar::updateLayoutList(int textclass)
 {
-	pimpl_->updateLayoutList(force);
+	// update the layout display
+	if (last_textclass_ != textclass) {
+		pimpl_->updateLayoutList(true);
+		last_textclass_ = textclass;
+		return true;
+	} else {
+		pimpl_->updateLayoutList(false);
+		return false;
+	}
 }
 
 

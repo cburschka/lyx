@@ -12,10 +12,8 @@
 #pragma implementation
 #endif
 
-#include "ViewBase.h"
-#include "ButtonControllerBase.h"
 #include "ControlSendto.h"
-#include "Dialogs.h"
+#include "ViewBase.h"
 #include "frontends/LyXView.h"
 #include "BufferView.h"
 #include "buffer.h"
@@ -28,19 +26,14 @@
 #include "support/lstrings.h"
 #include "support/systemcall.h"
 
-#include <boost/bind.hpp>
-
-#include <fstream>
-
 using std::vector;
+
 
 ControlSendto::ControlSendto(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d),
 	  format_(0),
 	  command_(lyxrc.custom_export_command)
-{
-	d_.showSendto = boost::bind(&ControlSendto::show, this);
-}
+{}
 
 
 vector<Format const *> const ControlSendto::allFormats() const

@@ -13,14 +13,11 @@
 #endif
 
 #include "ControlForks.h"
-#include "ButtonControllerBase.h"
 #include "ViewBase.h"
 
 #include "BufferView.h"
 #include "frontends/LyXView.h"
 #include "lyxfunc.h"
-
-#include "frontends/Dialogs.h"
 
 #include "support/forkedcontr.h"
 #include "support/lstrings.h"
@@ -32,9 +29,7 @@ using std::vector;
 
 ControlForks::ControlForks(LyXView & lv, Dialogs & d)
 	: ControlDialogBI(lv, d)
-{
-	d_.showForks = boost::bind(&ControlForks::show, this);
-}
+{}
 
 
 vector<pid_t> const ControlForks::getPIDs() const

@@ -18,6 +18,16 @@
 
 class MathGridInset : public MathNestInset {
 
+	/// additional per-cell information
+	struct CellInfo {
+		///
+		CellInfo();
+		/// a dummy cell before a multicolumn cell
+		int dummy_;
+		/// special multi colums alignment
+		string align_;
+	};
+
 	/// additional per-row information
 	struct RowInfo {
 		///
@@ -61,6 +71,8 @@ class MathGridInset : public MathNestInset {
 	};
 
 public:
+	/// sets nrows and ncols to 1
+	MathGridInset();
 	/// constructor from columns description, creates one row
 	MathGridInset(char valign, string const & halign);
 	/// Note: columns first!
@@ -99,6 +111,10 @@ public:
 	const RowInfo & rowinfo(row_type row) const;
 	/// returns topmost row if passed (-1)
 	RowInfo & rowinfo(row_type row);
+	///
+	const CellInfo & cellinfo(idx_type idx) const { return cellinfo_[idx]; }
+	/// 
+	CellInfo & cellinfo(idx_type idx) { return cellinfo_[idx]; }
 	/// identifies GridInset
 	virtual MathGridInset * asGridInset() { return this; }
 
@@ -197,6 +213,8 @@ protected:
 	std::vector<RowInfo> rowinfo_;
 	/// column info
 	std::vector<ColInfo> colinfo_;
+	/// cell info
+	std::vector<CellInfo> cellinfo_;
 	///
 	char v_align_; // add approp. type
 };

@@ -259,10 +259,10 @@ int InsetFloat::latex(Buffer const * buf,
 }
 
 
-int InsetFloat::docbook(Buffer const * buf, ostream & os) const
+int InsetFloat::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 {
 	os << "<" << floatType_ << ">";
-	int const i = inset.docbook(buf, os);
+	int const i = inset.docbook(buf, os, mixcont);
 	os << "</" << floatType_ << ">";
 
 	return i;

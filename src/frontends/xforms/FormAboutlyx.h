@@ -50,4 +50,5 @@ private:
 	boost::scoped_ptr<FD_aboutlyx_license> license_;
 };
 
+
 #endif // FORMABOUTLYX_H

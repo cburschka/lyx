@@ -21,6 +21,8 @@
 
 #include "ControlDialog_impl.h"
 
+#include "LString.h"
+
 class PrinterParams;
 
 /** A controller for Print dialogs.

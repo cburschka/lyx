@@ -70,7 +70,7 @@ public:
 	///
 	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	int docbook(Buffer const *, std::ostream &) const;
+	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
 
 	/** Tell LyX what the latex features you need i.e. what latex packages
 	    you need to be included.

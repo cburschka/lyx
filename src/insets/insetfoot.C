@@ -79,10 +79,10 @@ int InsetFoot::latex(Buffer const * buf,
 }
 
 
-int InsetFoot::docbook(Buffer const * buf, ostream & os) const
+int InsetFoot::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 {
 	os << "<footnote>";
-	int const i = inset.docbook(buf, os);
+	int const i = inset.docbook(buf, os, mixcont);
 	os << "</footnote>";
 
 	return i;

@@ -185,10 +185,10 @@ void MathScriptInset::metrics(MathMetricsInfo & mi) const
 
 void MathScriptInset::metrics(MathInset const * nuc, MathMetricsInfo & mi) const
 {
-	MathScriptChanger dummy(mi.base);
-	MathNestInset::metrics(mi);
 	if (nuc)
 		nuc->metrics(mi);
+	MathNestInset::metrics(mi);
+	MathScriptChanger dummy(mi.base);
 	ascent_  = ascent2(nuc);
 	descent_ = descent2(nuc);
 	width_   = width2(nuc);
@@ -198,8 +198,23 @@ void MathScriptInset::metrics(MathInset const * nuc, MathMetricsInfo & mi) const
 void MathScriptInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "unexpected call to MathScriptInset::draw()\n";
-	MathScriptChanger dummy(pi.base);
 	draw(0, pi, x, y);
+}
+
+
+void MathScriptInset::draw(MathInset const * nuc, MathPainterInfo & pi,
+	int x, int y) const
+{
+	if (nuc)
+		nuc->draw(pi, x + dxx(nuc), y);
+	else if (editing())
+		drawStr(pi, font_, x + dxx(nuc), y, ".");
+
+	MathScriptChanger dummy(pi.base);
+	if (hasUp())
+		up().draw(pi, x + dx1(nuc), y - dy1(nuc));
+	if (hasDown())
+		down().draw(pi, x + dx0(nuc), y + dy0(nuc));
 }
 
 
@@ -221,22 +236,6 @@ void MathScriptInset::metricsT(MathInset const * nuc,
 	//ascent_  = ascent2(nuc);
 	//descent_ = descent2(nuc);
 	//width_   = width2(nuc);
-}
-
-
-void MathScriptInset::draw(MathInset const * nuc, MathPainterInfo & pi,
-	int x, int y) const
-{
-	MathScriptChanger dummy(pi.base);
-	if (nuc)
-		nuc->draw(pi, x + dxx(nuc), y);
-	else if (editing())
-		drawStr(pi, font_, x + dxx(nuc), y, ".");
-
-	if (hasUp())
-		up().draw(pi, x + dx1(nuc), y - dy1(nuc));
-	if (hasDown())
-		down().draw(pi, x + dx0(nuc), y + dy0(nuc));
 }
 
 

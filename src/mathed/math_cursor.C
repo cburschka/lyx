@@ -36,6 +36,7 @@
 #include "math_casesinset.h"
 #include "math_charinset.h"
 #include "math_deliminset.h"
+#include "math_extern.h"
 #include "math_factory.h"
 #include "math_hullinset.h"
 #include "math_iterator.h"
@@ -46,7 +47,6 @@
 #include "math_replace.h"
 #include "math_scriptinset.h"
 #include "math_spaceinset.h"
-#include "math_specialcharinset.h"
 #include "math_support.h"
 #include "math_unknowninset.h"
 
@@ -64,131 +64,15 @@ using std::ostringstream;
 using std::isalpha;
 
 
-namespace {
-
-struct Selection
-{
-	typedef MathInset::col_type col_type;
-	typedef MathInset::row_type row_type;
-	typedef MathInset::idx_type idx_type;
-
-	Selection()
-		: data_(1, 1)
-	{}
-
-	void region(MathCursorPos const & i1, MathCursorPos const & i2,
-		row_type & r1, row_type & r2, col_type & c1, col_type & c2)
-	{
-		MathInset * p = i1.par_;
-		c1 = p->col(i1.idx_);
-		c2 = p->col(i2.idx_);
-		if (c1 > c2)
-			swap(c1, c2);
-		r1 = p->row(i1.idx_);
-		r2 = p->row(i2.idx_);
-		if (r1 > r2)
-			swap(r1, r2);
-	}
-
-	void grab(MathCursor const & cursor)
-	{
-		MathCursorPos i1;
-		MathCursorPos i2;
-		cursor.getSelection(i1, i2);
-		// shouldn'tt we assert on i1.par_ == i2.par_?
-		if (i1.idx_ == i2.idx_) {
-			data_ = MathGridInset(1, 1);
-			data_.cell(0) = MathArray(i1.cell(), i1.pos_, i2.pos_);
-		} else {
-			row_type r1, r2;
-			col_type c1, c2;
-			region(i1, i2, r1, r2, c1, c2);
-			data_ = MathGridInset(c2 - c1 + 1, r2 - r1 + 1);
-			for (row_type row = 0; row < data_.nrows(); ++row)
-				for (col_type col = 0; col < data_.ncols(); ++col) {
-					idx_type i = i1.par_->index(row + r1, col + c1);
-					data_.cell(data_.index(row, col)) = i1.par_->cell(i);
-				}
-		}
-	}
-
-	void erase(MathCursor & cursor)
-	{
-		MathCursorPos i1;
-		MathCursorPos i2;
-		cursor.getSelection(i1, i2);
-		if (i1.idx_ == i2.idx_)
-			i1.cell().erase(i1.pos_, i2.pos_);
-		else {
-			MathInset * p = i1.par_;
-			row_type r1, r2;
-			col_type c1, c2;
-			region(i1, i2, r1, r2, c1, c2);
-			for (row_type row = r1; row <= r2; ++row)
-				for (col_type col = c1; col <= c2; ++col)
-					p->cell(p->index(row, col)).erase();
-		}
-		cursor.cursor() = i1;
-	}
-
-	void paste(MathCursor & cursor) const
-	{
-		if (data_.nargs() == 1) {
-			// single cell/part of cell
-			cursor.paste(data_.cell(0));
-		} else {
-			// mulitple cells
-			idx_type idx; // index of upper left cell
-			MathGridInset * p = cursor.enclosingGrid(idx);
-			col_type const numcols = min(data_.ncols(), p->ncols() - p->col(idx));
-			row_type const numrows = min(data_.nrows(), p->nrows() - p->row(idx));
-			for (row_type row = 0; row < numrows; ++row) {
-				for (col_type col = 0; col < numcols; ++col) {
-					idx_type i = p->index(row + p->row(idx), col + p->col(idx));
-					p->cell(i).push_back(data_.cell(data_.index(row, col)));
-				}
-				// append the left over horizontal cells to the last column
-				idx_type i = p->index(row + p->row(idx), p->ncols() - 1);
-				for (col_type col = numcols; col < data_.ncols(); ++col)
-					p->cell(i).push_back(data_.cell(data_.index(row, col)));
-			}
-			// append the left over vertical cells to the last _cell_
-			idx_type i = p->nargs() - 1;
-			for (row_type row = numrows; row < data_.nrows(); ++row)
-				for (col_type col = 0; col < data_.ncols(); ++col)
-					p->cell(i).push_back(data_.cell(data_.index(row, col)));
-		}
-	}
-
-	// glues selection to one cell
-	MathArray glue() const
-	{
-		MathArray ar;
-		for (unsigned i = 0; i < data_.nargs(); ++i)
-			ar.push_back(data_.cell(i));
-		return ar;
-	}
-
-	void clear()
-	{
-		data_ = MathGridInset(1, 1);
-	}
-
-	MathGridInset data_;
-};
-
-
-Selection theSelection;
-
-
-
-}
+// matheds own cut buffer
+MathGridInset theCutBuffer = MathGridInset(1, 1);
 
 
 MathCursor::MathCursor(InsetFormulaBase * formula, bool front)
 	:	formula_(formula), autocorrect_(false), selection_(false)
 {
 	front ? first() : last();
+	Anchor_ = Cursor_;
 }
 
 
@@ -218,7 +102,7 @@ void MathCursor::pushRight(MathAtom & t)
 bool MathCursor::popLeft()
 {
 	//cerr << "Leaving atom to the left\n";
-	if (Cursor_.size() <= 1)
+	if (depth() <= 1)
 		return false;
 	Cursor_.pop_back();
 	return true;
@@ -228,7 +112,7 @@ bool MathCursor::popLeft()
 bool MathCursor::popRight()
 {
 	//cerr << "Leaving atom "; par()->write(cerr, false); cerr << " right\n";
-	if (Cursor_.size() <= 1)
+	if (depth() <= 1)
 		return false;
 	Cursor_.pop_back();
 	posRight();
@@ -241,8 +125,8 @@ bool MathCursor::popRight()
 	void MathCursor::dump(char const * what) const
 	{
 		lyxerr << "MC: " << what << "\n";
-		lyxerr << " Cursor: " << Cursor_.size() << "\n";
-		for (unsigned i = 0; i < Cursor_.size(); ++i)
+		lyxerr << " Cursor: " << depth() << "\n";
+		for (unsigned i = 0; i < depth(); ++i)
 			lyxerr << "    i: " << i << " " << Cursor_[i] << "\n";
 		lyxerr << " Anchor: " << Anchor_.size() << "\n";
 		for (unsigned i = 0; i < Anchor_.size(); ++i)
@@ -256,7 +140,7 @@ bool MathCursor::popRight()
 
 bool MathCursor::isInside(MathInset const * p) const
 {
-	for (unsigned i = 0; i < Cursor_.size(); ++i)
+	for (unsigned i = 0; i < depth(); ++i)
 		if (Cursor_[i].par_ == p)
 			return true;
 	return false;
@@ -276,9 +160,9 @@ bool MathCursor::openable(MathAtom const & t, bool sel) const
 
 	if (sel) {
 		// we can't move into anything new during selection
-		if (Cursor_.size() == Anchor_.size())
+		if (depth() == Anchor_.size())
 			return false;
-		if (t.nucleus() != Anchor_[Cursor_.size()].par_)
+		if (t.nucleus() != Anchor_[depth()].par_)
 			return false;
 	}
 	return true;
@@ -454,28 +338,21 @@ void MathCursor::insert(char c)
 void MathCursor::insert(MathAtom const & t)
 {
 	macroModeClose();
-
-	if (selection_) {
-		if (t->nargs())
-			selCut();
-		else
-			selClearOrDel();
-	}
-
+	selClearOrDel();
 	plainInsert(t);
 }
 
 
 void MathCursor::niceInsert(MathAtom const & t)
 {
-	selCut();
-	insert(t); // inserting invalidates the pointer!
-	MathAtom & p = prevAtom();
+	macroModeClose();
+	MathGridInset safe = grabAndEraseSelection();
+	plainInsert(t);
 	// enter the new inset and move the contents of the selection if possible
-	if (p->isActive()) {
-		push(p);
-		par()->idxLast(idx(), pos());
-		selPaste();
+	if (t->isActive()) {
+		posLeft();
+		pushLeft(nextAtom());
+		paste(safe);
 	}
 }
 
@@ -484,7 +361,7 @@ void MathCursor::insert(MathArray const & ar)
 {
 	macroModeClose();
 	if (selection_)
-		selCut();
+		eraseSelection();
 
 	array().insert(pos(), ar);
 	pos() += ar.size();
@@ -499,6 +376,35 @@ void MathCursor::paste(MathArray const & ar)
 	pos() += ar.size();
 }
 
+
+void MathCursor::paste(MathGridInset const & data)
+{
+	if (data.nargs() == 1) {
+		// single cell/part of cell
+		paste(data.cell(0));
+	} else {
+		// mulitple cells
+		idx_type idx; // index of upper left cell
+		MathGridInset * p = enclosingGrid(idx);
+		col_type const numcols = min(data.ncols(), p->ncols() - p->col(idx));
+		row_type const numrows = min(data.nrows(), p->nrows() - p->row(idx));
+		for (row_type row = 0; row < numrows; ++row) {
+			for (col_type col = 0; col < numcols; ++col) {
+				idx_type i = p->index(row + p->row(idx), col + p->col(idx));
+				p->cell(i).push_back(data.cell(data.index(row, col)));
+			}
+			// append the left over horizontal cells to the last column
+			idx_type i = p->index(row + p->row(idx), p->ncols() - 1);
+			for (MathInset::col_type col = numcols; col < data.ncols(); ++col)
+				p->cell(i).push_back(data.cell(data.index(row, col)));
+		}
+		// append the left over vertical cells to the last _cell_
+		idx_type i = p->nargs() - 1;
+		for (row_type row = numrows; row < data.nrows(); ++row)
+			for (col_type col = 0; col < data.ncols(); ++col)
+				p->cell(i).push_back(data.cell(data.index(row, col)));
+	}
+}
 
 void MathCursor::backspace()
 {
@@ -641,7 +547,13 @@ void MathCursor::macroModeClose()
 
 string MathCursor::macroName() const
 {
-	return inMacroMode() ? inMacroMode()->name() : "";
+	return inMacroMode() ? inMacroMode()->name() : string();
+}
+
+
+void MathCursor::selClear()
+{
+	selection_ = false;
 }
 
 
@@ -649,8 +561,10 @@ void MathCursor::selCopy()
 {
 	dump("selCopy");
 	if (selection_) {
-		theSelection.grab(*this);
-		//selClear();
+		theCutBuffer = grabSelection();
+		selection_ = false;
+	} else {
+		theCutBuffer = MathGridInset(1, 1);
 	}
 }
 
@@ -658,13 +572,7 @@ void MathCursor::selCopy()
 void MathCursor::selCut()
 {
 	dump("selCut");
-	if (selection_) {
-		theSelection.grab(*this);
-		theSelection.erase(*this);
-		selClear();
-	} else {
-		theSelection.clear();
-	}
+	theCutBuffer = grabAndEraseSelection();
 }
 
 
@@ -672,10 +580,8 @@ void MathCursor::selDel()
 {
 	dump("selDel");
 	if (selection_) {
-		theSelection.erase(*this);
-		if (pos() > size())
-			pos() = size();
-		selClear();
+		eraseSelection();
+		selection_ = false;
 	}
 }
 
@@ -684,9 +590,9 @@ void MathCursor::selPaste()
 {
 	dump("selPaste");
 	selClearOrDel();
-	theSelection.paste(*this);
-	//theSelection.grab(*this);
-	selClear();
+	paste(theCutBuffer);
+	//grabSelection();
+	selection_ = false;
 }
 
 
@@ -694,8 +600,8 @@ void MathCursor::selHandle(bool sel)
 {
 	if (sel == selection_)
 		return;
-	//theSelection.clear();
-	Anchor_    = Cursor_;
+	//clear();
+	Anchor_ = Cursor_;
 	selection_ = sel;
 }
 
@@ -703,18 +609,10 @@ void MathCursor::selHandle(bool sel)
 void MathCursor::selStart()
 {
 	dump("selStart 1");
-	//theSelection.clear();
+	//clear();
 	Anchor_ = Cursor_;
 	selection_ = true;
 	dump("selStart 2");
-}
-
-
-void MathCursor::selClear()
-{
-	dump("selClear 1");
-	selection_ = false;
-	dump("selClear 2");
 }
 
 
@@ -723,18 +621,15 @@ void MathCursor::selClearOrDel()
 	if (lyxrc.auto_region_delete)
 		selDel();
 	else
-		selClear();
+		selection_ = false;
 }
 
 
 void MathCursor::selGet(MathArray & ar)
 {
 	dump("selGet");
-	if (!selection_)
-		return;
-
-	theSelection.grab(*this);
-	ar = theSelection.glue();
+	if (selection_)
+		ar = grabSelection().glue();
 }
 
 
@@ -790,10 +685,7 @@ void MathCursor::handleDelim(string const & l, string const & r)
 
 void MathCursor::handleNest(MathInset * p)
 {
-	if (selection_) {
-		selCut();
-		p->cell(0) = theSelection.glue();
-	}
+	p->cell(0) = grabAndEraseSelection().glue();
 	insert(MathAtom(p)); // this invalidates p!
 	pushRight(prevAtom());
 }
@@ -871,12 +763,24 @@ bool MathCursor::selection() const
 
 MathGridInset * MathCursor::enclosingGrid(MathCursor::idx_type & idx) const
 {
-	for (MathInset::difference_type i = Cursor_.size() - 1; i >= 0; --i) {
+	for (MathInset::difference_type i = depth() - 1; i >= 0; --i) {
 		MathGridInset * p = Cursor_[i].par_->asGridInset();
 		if (p) {
 			idx = Cursor_[i].idx_;
 			return p;
-			lyxerr << "found grid and idx: " << idx << "\n";
+		}
+	}
+	return 0;
+}
+
+
+MathHullInset * MathCursor::enclosingHull(MathCursor::idx_type & idx) const
+{
+	for (MathInset::difference_type i = depth() - 1; i >= 0; --i) {
+		MathHullInset * p = Cursor_[i].par_->asHullInset();
+		if (p) {
+			idx = Cursor_[i].idx_;
+			return p;
 		}
 	}
 	return 0;
@@ -885,7 +789,14 @@ MathGridInset * MathCursor::enclosingGrid(MathCursor::idx_type & idx) const
 
 void MathCursor::popToEnclosingGrid()
 {
-	while (Cursor_.size() && !Cursor_.back().par_->asGridInset())
+	while (depth() && !Cursor_.back().par_->asGridInset())
+		Cursor_.pop_back();
+}
+
+
+void MathCursor::popToEnclosingHull()
+{
+	while (depth() && !Cursor_.back().par_->asHullInset())
 		Cursor_.pop_back();
 }
 
@@ -962,7 +873,7 @@ void MathCursor::normalize()
 	// remove empty scripts if possible
 	if (1) {
 		for (pos_type i = 0; i < size(); ++i) {
-			MathScriptInset * p = array().at(i)->asScriptInset();
+			MathScriptInset * p = array()[i]->asScriptInset();
 			if (p) {
 				p->removeEmptyScripts();
 				//if (p->empty())
@@ -984,13 +895,17 @@ MathCursor::size_type MathCursor::size() const
 
 MathCursor::col_type MathCursor::hullCol() const
 {
-	return Cursor_[0].par_->asGridInset()->col(Cursor_[0].idx_);
+	idx_type idx = 0;
+	MathHullInset * p = enclosingHull(idx);
+ 	return p->col(idx);
 }
 
 
 MathCursor::row_type MathCursor::hullRow() const
 {
-	return Cursor_[0].par_->asGridInset()->row(Cursor_[0].idx_);
+	idx_type idx = 0;
+	MathHullInset * p = enclosingHull(idx);
+ 	return p->row(idx);
 }
 
 
@@ -1009,28 +924,28 @@ bool MathCursor::hasNextAtom() const
 MathAtom const & MathCursor::prevAtom() const
 {
 	lyx::Assert(pos() > 0);
-	return array().at(pos() - 1);
+	return array()[pos() - 1];
 }
 
 
 MathAtom & MathCursor::prevAtom()
 {
 	lyx::Assert(pos() > 0);
-	return array().at(pos() - 1);
+	return array()[pos() - 1];
 }
 
 
 MathAtom const & MathCursor::nextAtom() const
 {
 	lyx::Assert(pos() < size());
-	return array().at(pos());
+	return array()[pos()];
 }
 
 
 MathAtom & MathCursor::nextAtom()
 {
 	lyx::Assert(pos() < size());
-	return array().at(pos());
+	return array()[pos()];
 }
 
 
@@ -1043,8 +958,8 @@ MathArray & MathCursor::array() const
 		return dummy;
 	}
 
-	if (Cursor_.size() == 0) {
-		lyxerr << "############  Cursor_.size() == 0 not valid\n";
+	if (depth() == 0) {
+		lyxerr << "############  depth() == 0 not valid\n";
 		return dummy;
 	}
 
@@ -1056,8 +971,8 @@ MathXArray & MathCursor::xarray() const
 {
 	static MathXArray dummy;
 
-	if (Cursor_.size() == 0) {
-		lyxerr << "############  Cursor_.size() == 0 not valid\n";
+	if (depth() == 0) {
+		lyxerr << "############  depth() == 0 not valid\n";
 		return dummy;
 	}
 
@@ -1096,14 +1011,15 @@ void MathCursor::breakLine()
 	while (popRight())
 		;
 
-	MathHullInset * p = formula()->par()->asHullInset();
+	idx_type dummy;
+	MathHullInset * p = enclosingHull(dummy);
 	if (!p)
 		return;
 
 	if (p->getType() == LM_OT_SIMPLE || p->getType() == LM_OT_EQUATION) {
 		p->mutate(LM_OT_EQNARRAY);
-		idx() = 0;
-		pos() = size();
+		idx() = 1;
+		pos() = 0;
 	} else {
 		p->addRow(hullRow());
 
@@ -1158,14 +1074,14 @@ void MathCursor::getSelection(MathCursorPos & i1, MathCursorPos & i2) const
 
 MathCursorPos & MathCursor::cursor()
 {
-	lyx::Assert(Cursor_.size());
+	lyx::Assert(depth());
 	return Cursor_.back();
 }
 
 
 MathCursorPos const & MathCursor::cursor() const
 {
-	lyx::Assert(Cursor_.size());
+	lyx::Assert(depth());
 	return Cursor_.back();
 }
 
@@ -1301,6 +1217,22 @@ bool MathCursor::bruteFind
 }
 
 
+bool MathCursor::idxLineFirst()
+{
+	idx() -= idx() % par()->ncols();
+	pos() = 0;
+	return true;
+}
+
+
+bool MathCursor::idxLineLast()
+{
+	idx() -= idx() % par()->ncols();
+	idx() += par()->ncols() - 1;
+	pos() = size();
+	return true;
+}
+
 bool MathCursor::idxLeft()
 {
 	return par()->idxLeft(idx(), pos());
@@ -1320,7 +1252,7 @@ bool MathCursor::interpret(string const & s)
 		return true;
 
 	//lyxerr << "char: '" << s[0] << "'  int: " << int(s[0]) << endl;
-	//owner_->getIntl()->getTrans().TranslateAndInsert(s[0], lt);
+	//owner_->getIntl()->getTransManager().TranslateAndInsert(s[0], lt);
 	//lyxerr << "trans: '" << s[0] << "'  int: " << int(s[0]) << endl;
 
 	if (s.size() >= 5 && s.substr(0, 5) == "cases") {
@@ -1396,7 +1328,7 @@ bool MathCursor::script(bool up)
 	}
 
 	macroModeClose();
-	selCut();
+	MathGridInset safe = grabAndEraseSelection();
 	if (hasPrevAtom() && prevAtom()->asScriptInset()) {
 		prevAtom()->asScriptInset()->ensure(up);
 		pushRight(prevAtom());
@@ -1414,7 +1346,7 @@ bool MathCursor::script(bool up)
 		idx() = up;
 		pos() = 0;
 	}
-	selPaste();
+	paste(safe);
 	dump("1");
 	return true;
 }
@@ -1438,7 +1370,7 @@ bool MathCursor::interpret(char c)
 		if (p && 1 <= n && n <= p->numargs())
 			insert(MathAtom(new MathMacroArgument(c - '0')));
 		else {
-			insert(MathAtom(new MathSpecialCharInset('#')));
+			insert(createMathInset("#"));
 			interpret(c); // try again
 		}
 		return true;
@@ -1485,7 +1417,7 @@ bool MathCursor::interpret(char c)
 
 	// just clear selection on pressing the space par
 	if (selection_ && c == ' ') {
-		selClear();
+		selection_ = false;
 		return true;
 	}
 
@@ -1539,8 +1471,13 @@ bool MathCursor::interpret(char c)
 		return true;
 	}
 
-	if (c == '$' || c == '%') {
-		insert(MathAtom(new MathSpecialCharInset(c)));
+	if (c == '$') {
+		insert(createMathInset("$"));
+		return true;
+	}
+
+	if (c == '%') {
+		insert(createMathInset("%"));
 		return true;
 	}
 
@@ -1574,40 +1511,6 @@ bool MathCursor::interpret(char c)
 }
 
 
-
-MathCursorPos MathCursor::normalAnchor() const
-{
-	if (Anchor_.size() < Cursor_.size()) {
-		Anchor_ = Cursor_;
-		lyxerr << "unusual Anchor size\n";
-		dump("1");
-	}
-	//lyx::Assert(Anchor_.size() >= Cursor_.size());
-	// use Anchor on the same level as Cursor
-	MathCursorPos normal = Anchor_[Cursor_.size() - 1];
-	if (Cursor_.size() < Anchor_.size() && !(normal < cursor())) {
-		// anchor is behind cursor -> move anchor behind the inset
-		++normal.pos_;
-	}
-	return normal;
-}
-
-
-void MathCursor::stripFromLastEqualSign()
-{
-	// find position of last '=' in the array
-	MathArray & ar = cursor().cell();
-	MathArray::const_iterator et = ar.end();
-	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
-		if ((*it)->getChar() == '=')
-			et = it;
-
-	// delete everything behind this position
-	ar.erase(et - ar.begin(), ar.size());
-	pos() = ar.size();
-}
-
-
 void MathCursor::setSelection(cursor_type const & where, size_type n)
 {
 	selection_ = true;
@@ -1628,7 +1531,7 @@ string MathCursor::info() const
 {
 	ostringstream os;
 	os << "Math editor mode ";
-	for (int i = 0, n = Cursor_.size(); i < n; ++i) {
+	for (int i = 0, n = depth(); i < n; ++i) {
 		Cursor_[i].par_->infoize(os);
 		os << "  ";
 	}
@@ -1636,4 +1539,180 @@ string MathCursor::info() const
 	//	prevAtom()->infoize(os);
 	os << "                ";
 	return os.str().c_str(); // .c_str() needed for lyxstring
+}
+
+
+unsigned MathCursor::depth() const
+{
+	return Cursor_.size();
+}
+
+
+
+
+namespace {
+
+void region(MathCursorPos const & i1, MathCursorPos const & i2,
+	MathInset::row_type & r1, MathInset::row_type & r2,
+	MathInset::col_type & c1, MathInset::col_type & c2)
+{
+	MathInset * p = i1.par_;
+	c1 = p->col(i1.idx_);
+	c2 = p->col(i2.idx_);
+	if (c1 > c2)
+		swap(c1, c2);
+	r1 = p->row(i1.idx_);
+	r2 = p->row(i2.idx_);
+	if (r1 > r2)
+		swap(r1, r2);
+}
+
+}
+
+
+MathGridInset MathCursor::grabSelection() const
+{
+	if (!selection_)
+		return MathGridInset();
+	MathCursorPos i1;
+	MathCursorPos i2;
+	getSelection(i1, i2);
+	// shouldn't we assert on i1.par_ == i2.par_?
+	if (i1.idx_ == i2.idx_) {
+		MathGridInset data(1, 1);
+		data.cell(0) = MathArray(i1.cell(), i1.pos_, i2.pos_);
+		return data;
+	}
+	row_type r1, r2;
+	col_type c1, c2;
+	region(i1, i2, r1, r2, c1, c2);
+	MathGridInset data(c2 - c1 + 1, r2 - r1 + 1);
+	for (row_type row = 0; row < data.nrows(); ++row)
+		for (col_type col = 0; col < data.ncols(); ++col) {
+			idx_type i = i1.par_->index(row + r1, col + c1);
+			data.cell(data.index(row, col)) = i1.par_->cell(i);
+		}
+	return data;
+}
+
+
+void MathCursor::eraseSelection()
+{
+	MathCursorPos i1;
+	MathCursorPos i2;
+	getSelection(i1, i2);
+	if (i1.idx_ == i2.idx_)
+		i1.cell().erase(i1.pos_, i2.pos_);
+	else {
+		MathInset * p = i1.par_;
+		row_type r1, r2;
+		col_type c1, c2;
+		region(i1, i2, r1, r2, c1, c2);
+		for (row_type row = r1; row <= r2; ++row)
+			for (col_type col = c1; col <= c2; ++col)
+				p->cell(p->index(row, col)).erase();
+	}
+	cursor() = i1;
+}
+
+
+MathGridInset MathCursor::grabAndEraseSelection()
+{
+	if (!selection_)
+		return MathGridInset();
+	MathGridInset res = grabSelection();
+	eraseSelection();
+	selection_ = false;
+	return res;
+}
+
+
+MathCursorPos MathCursor::normalAnchor() const
+{
+	if (Anchor_.size() < depth()) {
+		Anchor_ = Cursor_;
+		lyxerr << "unusual Anchor size\n";
+	}
+	//lyx::Assert(Anchor_.size() >= cursor.depth());
+	// use Anchor on the same level as Cursor
+	MathCursorPos normal = Anchor_[depth() - 1];
+	if (depth() < Anchor_.size() && !(normal < cursor())) {
+		// anchor is behind cursor -> move anchor behind the inset
+		++normal.pos_;
+	}
+	return normal;
+}
+
+
+
+void MathCursor::handleExtern(const string & arg)
+{
+	string lang;
+	string extra;
+	istringstream iss(arg.c_str());
+	iss >> lang >> extra;
+	if (extra.empty())
+		extra = "noextra";
+	
+
+	if (selection()) {
+		MathArray ar;
+		selGet(ar);
+		lyxerr << "use selection: " << ar << "\n";
+		insert(pipeThroughExtern(lang, extra, ar));
+		return;
+	}
+
+	MathArray eq;
+	eq.push_back(MathAtom(new MathCharInset('=')));
+
+	popToEnclosingHull();
+
+	idx_type idx = 0;
+	MathHullInset * hull = enclosingHull(idx);
+	lyx::Assert(hull);
+	idxLineFirst();
+
+	if (hull->getType() == LM_OT_SIMPLE) {
+		MathArray::size_type pos = cursor().cell().find_last(eq);
+		MathArray ar;
+		if (pos == size()) {
+			ar = array();
+			lyxerr << "use whole cell: " << ar << "\n";
+		} else {
+			ar = MathArray(array(), pos + 1, size());
+			lyxerr << "use partial cell form pos: " << pos << "\n";
+		}
+		end();
+		insert(eq);
+		insert(pipeThroughExtern(lang, extra, ar));
+		return;
+	}
+	
+	if (hull->getType() == LM_OT_EQUATION) {
+		lyxerr << "use equation inset\n";
+		hull->mutate(LM_OT_EQNARRAY);
+		MathArray & ar = cursor().cell();
+		lyxerr << "use cell: " << ar << "\n";
+		idxRight();
+		cursor().cell() = eq;
+		idxRight();
+		cursor().cell() = pipeThroughExtern(lang, extra, ar);
+		idxLineLast();
+		return;
+	} 
+	
+	{
+		lyxerr << "use eqnarray\n";
+		idxLineLast();
+		MathArray ar = cursor().cell();
+		lyxerr << "use cell: " << ar << "\n";
+		breakLine();
+		idxRight();
+		cursor().cell() = eq;
+		idxRight();
+		cursor().cell() = pipeThroughExtern(lang, extra, ar);
+		idxLineLast();
+	}
+
 }

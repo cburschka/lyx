@@ -1212,19 +1212,26 @@ InsetText::localDispatch(BufferView * bv,
 				}
 				break;
 			case FINISHED_DOWN:
-				if ((result = moveDown(bv)) >= FINISHED) {
+			{
+				LyXText *lt = getLyXText(bv);
+				if (lt->cursor.irow()->next()) {
+					lt->setCursorFromCoordinates(
+						bv, lt->cursor.ix() + inset_x,
+						lt->cursor.iy() -
+						lt->cursor.irow()->baseline() +
+						lt->cursor.irow()->height() + 1);
+					lt->cursor.x_fix(lt->cursor.x());
 					updateLocal(bv, CURSOR, false);
+				} else {
 					bv->unlockInset(this);
 				}
+			}
 				break;
 			default:
 				result = DISPATCHED;
 				break;
 			}
 			the_locking_inset = 0;
-#ifdef WITH_WARNINGS
-#warning I changed this to always return Dispatched maybe it is wrong (20011001 Jug)
-#endif
 			updateLocal(bv, CURSOR, false);
 			return result;
 		}
@@ -1261,7 +1268,8 @@ InsetText::localDispatch(BufferView * bv,
 			}
 			lt->clearSelection();
 			for (string::size_type i = 0; i < arg.length(); ++i) {
-				bv->owner()->getIntl()->getTrans().TranslateAndInsert(arg[i], lt);
+				bv->owner()->getIntl()->getTransManager().
+					TranslateAndInsert(arg[i], lt);
 			}
 		}
 		lt->selection.cursor = lt->cursor;
@@ -1568,7 +1576,7 @@ int InsetText::ascii(Buffer const * buf, ostream & os, int linelen) const
 }
 
 
-int InsetText::docbook(Buffer const * buf, ostream & os) const
+int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 {
 	Paragraph * p = par;
 	unsigned int lines = 0;
@@ -1592,14 +1600,11 @@ int InsetText::docbook(Buffer const * buf, ostream & os) const
 		for (; depth > p->params().depth(); --depth) {
 			if (environment_inner[depth] != "!-- --") {
 				item_name = "listitem";
-				buf->sgmlCloseTag(os, command_depth + depth,
-					     item_name);
+				lines += buf->sgmlCloseTag(os, command_depth + depth, mixcont, item_name);
 				if (environment_inner[depth] == "varlistentry")
-					buf->sgmlCloseTag(os, depth+command_depth,
-						     environment_inner[depth]);
+					lines += buf->sgmlCloseTag(os, depth+command_depth, mixcont, environment_inner[depth]);
 			}
-			buf->sgmlCloseTag(os, depth + command_depth,
-				     environment_stack[depth]);
+			lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, environment_stack[depth]);
 			environment_stack[depth].erase();
 			environment_inner[depth].erase();
 		}
@@ -1609,16 +1614,12 @@ int InsetText::docbook(Buffer const * buf, ostream & os) const
 		   && !environment_stack[depth].empty()) {
 			if (environment_inner[depth] != "!-- --") {
 				item_name= "listitem";
-				buf->sgmlCloseTag(os, command_depth+depth,
-						  item_name);
+				lines += buf->sgmlCloseTag(os, command_depth+depth, mixcont, item_name);
 				if (environment_inner[depth] == "varlistentry")
-					buf->sgmlCloseTag(os,
-							  depth + command_depth,
-							  environment_inner[depth]);
+					lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, environment_inner[depth]);
 			}
 
-			buf->sgmlCloseTag(os, depth + command_depth,
-					  environment_stack[depth]);
+			lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, environment_stack[depth]);
 
 			environment_stack[depth].erase();
 			environment_inner[depth].erase();
@@ -1627,13 +1628,11 @@ int InsetText::docbook(Buffer const * buf, ostream & os) const
 		// Write opening SGML tags.
 		switch (style.latextype) {
 		case LATEX_PARAGRAPH:
-			buf->sgmlOpenTag(os, depth + command_depth,
-					 style.latexname());
+			lines += buf->sgmlOpenTag(os, depth + command_depth, mixcont, style.latexname());
 			break;
 
 		case LATEX_COMMAND:
-			buf->sgmlError(p, 0,
-				       _("Error : LatexType Command not allowed here.\n"));
+			buf->sgmlError(p, 0,  _("Error : LatexType Command not allowed here.\n"));
 			return -1;
 			break;
 
@@ -1651,18 +1650,13 @@ int InsetText::docbook(Buffer const * buf, ostream & os) const
 				}
 				environment_stack[depth] = style.latexname();
 				environment_inner[depth] = "!-- --";
-				buf->sgmlOpenTag(os, depth + command_depth,
-						 environment_stack[depth]);
+				lines += buf->sgmlOpenTag(os, depth + command_depth, mixcont, environment_stack[depth]);
 			} else {
 				if (environment_inner[depth] != "!-- --") {
 					item_name= "listitem";
-					buf->sgmlCloseTag(os,
-							  command_depth + depth,
-							  item_name);
+					lines += buf->sgmlCloseTag(os, command_depth + depth, mixcont, item_name);
 					if (environment_inner[depth] == "varlistentry")
-						buf->sgmlCloseTag(os,
-								  depth + command_depth,
-								  environment_inner[depth]);
+						lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, environment_inner[depth]);
 				}
 			}
 
@@ -1671,40 +1665,26 @@ int InsetText::docbook(Buffer const * buf, ostream & os) const
 					if (style.latexparam() == "CDATA")
 						os << "<![CDATA[";
 					else
-						buf->sgmlOpenTag(os, depth + command_depth,
-								 style.latexparam());
+					  lines += buf->sgmlOpenTag(os, depth + command_depth, mixcont, style.latexparam());
 				}
 				break;
 			}
 
 			desc_on = (style.labeltype == LABEL_MANUAL);
 
-			if (desc_on)
-				environment_inner[depth]= "varlistentry";
-			else
-				environment_inner[depth]= "listitem";
+			environment_inner[depth] = desc_on?"varlistentry":"listitem";
+			lines += buf->sgmlOpenTag(os, depth + 1 + command_depth, mixcont, environment_inner[depth]);
 
-			buf->sgmlOpenTag(os, depth + 1 + command_depth,
-					 environment_inner[depth]);
+			item_name = desc_on?"term":"para";
+			lines += buf->sgmlOpenTag(os, depth + 1 + command_depth, mixcont, item_name);
 
-			if (desc_on) {
-				item_name= "term";
-				buf->sgmlOpenTag(os, depth + 1 + command_depth,
-						 item_name);
-			} else {
-				item_name= "para";
-				buf->sgmlOpenTag(os, depth + 1 + command_depth,
-						 item_name);
-			}
 			break;
 		default:
-			buf->sgmlOpenTag(os, depth + command_depth,
-					 style.latexname());
+			lines += buf->sgmlOpenTag(os, depth + command_depth, mixcont, style.latexname());
 			break;
 		}
 
-		buf->simpleDocBookOnePar(os, p, desc_on,
-					 depth + 1 + command_depth);
+		buf->simpleDocBookOnePar(os, p, desc_on, depth + 1 + command_depth);
 		p = p->next();
 
 		string end_tag;
@@ -1715,20 +1695,19 @@ int InsetText::docbook(Buffer const * buf, ostream & os) const
 				if (style.latexparam() == "CDATA")
 					os << "]]>";
 				else
-					buf->sgmlCloseTag(os, depth + command_depth,
-							  style.latexparam());
+					lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, style.latexparam());
 			}
 			break;
 		case LATEX_ITEM_ENVIRONMENT:
 			if (desc_on == 1) break;
 			end_tag= "para";
-			buf->sgmlCloseTag(os, depth + 1 + command_depth, end_tag);
+			lines += buf->sgmlCloseTag(os, depth + 1 + command_depth, mixcont, end_tag);
 			break;
 		case LATEX_PARAGRAPH:
-			buf->sgmlCloseTag(os, depth + command_depth, style.latexname());
+			lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, style.latexname());
 			break;
 		default:
-			buf->sgmlCloseTag(os, depth + command_depth, style.latexname());
+			lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, style.latexname());
 			break;
 		}
 	}
@@ -1738,15 +1717,12 @@ int InsetText::docbook(Buffer const * buf, ostream & os) const
 		if (!environment_stack[depth].empty()) {
 			if (environment_inner[depth] != "!-- --") {
 				item_name = "listitem";
-				buf->sgmlCloseTag(os, command_depth + depth,
-						  item_name);
+				lines += buf->sgmlCloseTag(os, command_depth + depth, mixcont, item_name);
 			       if (environment_inner[depth] == "varlistentry")
-				       buf->sgmlCloseTag(os, depth + command_depth,
-							 environment_inner[depth]);
+				       lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, environment_inner[depth]);
 			}
 
-			buf->sgmlCloseTag(os, depth + command_depth,
-					  environment_stack[depth]);
+			lines += buf->sgmlCloseTag(os, depth + command_depth, mixcont, environment_stack[depth]);
 		}
 	}
 
@@ -2682,53 +2658,66 @@ void InsetText::toggleSelection(BufferView * bv, bool kill_selection)
 bool InsetText::searchForward(BufferView * bv, string const & str,
 			      bool cs, bool mw)
 {
+	bool clear = false;
+	if (!lt) {
+		lt = getLyXText(bv);
+		clear = true;
+	}
 	if (the_locking_inset) {
 		if (the_locking_inset->searchForward(bv, str, cs, mw))
 			return true;
-		bool clear = false;
-		if (!lt) {
-			lt = getLyXText(bv);
-			clear = true;
-		}
-		Paragraph * lpar = lt->cursor.par();
-		pos_type pos = lt->cursor.pos();
-		if (pos < lpar->size() - 1)
-			++pos;
-		else {
-			pos = 0;
-			lpar = lpar->next();
-		}
-		if (!lpar) {
-			if (clear)
-				lt = 0;
-			// we have to unlock ourself in this function by default!
-			bv->unlockInset(const_cast<InsetText *>(this));
-			return false;
-		}
-		lt->setCursor(bv, lpar, pos);
-		if (clear)
-			lt = 0;
+		lt->cursorRight(bv, true);
 	}
-	if (LyXFind(bv, str, true, true, cs , mw)) {
-		return true;
+	lyxfind::SearchResult result =
+		lyxfind::LyXFind(bv, lt, str, true, cs, mw);
+
+	if (result == lyxfind::SR_FOUND) {
+		LyXCursor cur = lt->cursor;
+		bv->unlockInset(bv->theLockingInset());
+		if (bv->lockInset(this))
+			locked = true;
+		lt->cursor = cur;
+		lt->setSelectionOverString(bv, str);
+		updateLocal(bv, SELECTION, false);
 	}
-	// we have to unlock ourself in this function by default!
-	bv->unlockInset(const_cast<InsetText *>(this));
-	return false;
+	if (clear)
+		lt = 0;
+	return (result != lyxfind::SR_NOT_FOUND);
 }
 
 bool InsetText::searchBackward(BufferView * bv, string const & str,
 			       bool cs, bool mw)
 {
-	if (the_locking_inset)
+	if (the_locking_inset) {
 		if (the_locking_inset->searchBackward(bv, str, cs, mw))
 			return true;
-	if (LyXFind(bv, str, false, true, cs, mw)) {
-		return true;
 	}
-	// we have to unlock ourself in this function by default!
-	bv->unlockInset(const_cast<InsetText *>(this));
-	return false;
+	bool clear = false;
+	if (!lt) {
+		lt = getLyXText(bv);
+		clear = true;
+	}
+	if (!locked) {
+		Paragraph * p = par;
+		while (p->next())
+			p = p->next();
+		lt->setCursor(bv, p, p->size());
+	}
+	lyxfind::SearchResult result =
+		lyxfind::LyXFind(bv, lt, str, false, cs, mw);
+
+	if (result == lyxfind::SR_FOUND) {
+		LyXCursor cur = lt->cursor;
+		bv->unlockInset(bv->theLockingInset());
+		if (bv->lockInset(this))
+			locked = true;
+		lt->cursor = cur;
+		lt->setSelectionOverString(bv, str);
+		updateLocal(bv, SELECTION, false);
+	}
+	if (clear)
+		lt = 0;
+	return (result != lyxfind::SR_NOT_FOUND);
 }
 
 

@@ -131,6 +131,7 @@ enum kb_action {
 	LFUN_INSERT_MATH,
 	LFUN_INSERT_MATRIX,
 	LFUN_GREEK,  // 110
+	LFUN_MATH,                      // Andre' 2002-06-14
 	LFUN_MATH_LIMITS,
 	LFUN_GREEK_TOGGLE,
 	LFUN_MATH_DELIM,                // Alejandro 180696

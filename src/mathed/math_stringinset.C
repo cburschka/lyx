@@ -14,10 +14,6 @@
 #include "debug.h"
 
 
-MathStringInset::MathStringInset()
-	: str_()
-{}
-
 MathStringInset::MathStringInset(string const & s)
 	: str_(s)
 {}

@@ -15,6 +15,8 @@
 #include "BufferView_pimpl.h"
 #include "frontends/WorkArea.h"
 #include "frontends/screen.h"
+#include "frontends/LyXScreenFactory.h"
+#include "frontends/WorkAreaFactory.h"
 #include "frontends/Dialogs.h"
 #include "frontends/Alert.h"
 #include "frontends/FileDialog.h"
@@ -117,25 +119,6 @@ namespace {
 
 const unsigned int saved_positions_num = 20;
 
-inline
-void waitForX()
-{
-	XSync(fl_get_display(), 0);
-}
-
-
-void SetXtermCursor(Window win)
-{
-	static Cursor cursor;
-	static bool cursor_undefined = true;
-	if (cursor_undefined) {
-		cursor = XCreateFontCursor(fl_get_display(), XC_xterm);
-		XFlush(fl_get_display());
-		cursor_undefined = false;
-	}
-	XDefineCursor(fl_get_display(), win, cursor);
-	XFlush(fl_get_display());
-}
 
 } // anon namespace
 
@@ -145,8 +128,8 @@ BufferView::Pimpl::Pimpl(BufferView * b, LyXView * o,
 	: bv_(b), owner_(o), buffer_(0), cursor_timeout(400),
 	  using_xterm_cursor(false)
 {
-	workarea_.reset(new WorkArea(xpos, ypos, width, height));
-	screen_.reset(new LScreen(workarea()));
+	workarea_.reset(WorkAreaFactory::create(xpos, ypos, width, height));
+	screen_.reset(LyXScreenFactory::create(workarea()));
  
 	// Setup the signals
 	workarea().scrollDocView.connect(boost::bind(&BufferView::Pimpl::scrollDocView, this, _1));
@@ -182,7 +165,7 @@ WorkArea & BufferView::Pimpl::workarea() const
 }
 
  
-LScreen & BufferView::Pimpl::screen() const
+LyXScreen & BufferView::Pimpl::screen() const
 {
 	return *screen_.get();
 }
@@ -408,7 +391,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 void BufferView::Pimpl::updateScreen()
 {
 	// Regenerate the screen.
-	screen().reset();
+	screen().redraw(bv_->text, bv_);
 }
 
 
@@ -435,7 +418,6 @@ void BufferView::Pimpl::scrollDocView(int value)
 	screen().draw(bv_->text, bv_, value);
 
 	if (!lyxrc.cursor_follows_scrollbar) {
-		waitForX();
 		return;
 	}
 
@@ -449,8 +431,6 @@ void BufferView::Pimpl::scrollDocView(int value)
 		vbt->setCursorFromCoordinates(bv_, 0, first);
 	else if (vbt->cursor.y() > last)
 		vbt->setCursorFromCoordinates(bv_, 0, last);
-
-	waitForX();
 }
 
 
@@ -470,7 +450,8 @@ int BufferView::Pimpl::scroll(long time)
 }
 
 
-void BufferView::Pimpl::workAreaKeyPress(KeySym key, key_modifier::state state)
+void BufferView::Pimpl::workAreaKeyPress(LyXKeySymPtr key,
+					 key_modifier::state state)
 {
 	bv_->owner()->getLyXFunc()->processKeySym(key, state);
 }
@@ -2545,7 +2526,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		LyXText * lt = bv_->getLyXText();
 
 		if (!lt->selection.set()) {
-			if (owner_->getIntl()->getTrans().backspace()) {
+			if (owner_->getIntl()->getTransManager().backspace()) {
 				lt->backspace(bv_);
 				lt->selection.cursor = lt->cursor;
 				update(lt,
@@ -2930,13 +2911,17 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			owner_->getLyXFunc()->handleKeyFunc(action);
 		} else {
 			owner_->getLyXFunc()->handleKeyFunc(action);
-			owner_->getIntl()->getTrans()
+			owner_->getIntl()->getTransManager()
 				.TranslateAndInsert(argument[0], bv_->getLyXText());
 			update(bv_->getLyXText(),
 			       BufferView::SELECT
 			       | BufferView::FITCUR
 			       | BufferView::CHANGE);
 		}
+		break;
+
+	case LFUN_MATH:
+		mathDispatch(bv_, argument);
 		break;
 
 	case LFUN_MATH_MACRO:
@@ -3174,7 +3159,8 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		string::const_iterator cit = argument.begin();
 		string::const_iterator end = argument.end();
 		for (; cit != end; ++cit) {
-			owner_->getIntl()->getTrans().TranslateAndInsert(*cit, lt);
+			owner_->getIntl()->getTransManager().
+				TranslateAndInsert(*cit, lt);
 		}
 
 		bv_->update(lt,

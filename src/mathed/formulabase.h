@@ -76,6 +76,8 @@ public:
 	///
 	virtual void hideInsetCursor(BufferView *);
 	///
+	virtual void fitInsetCursor(BufferView *) const;
+	///
 	virtual void getCursorPos(BufferView *, int &, int &) const;
 	///
 	virtual void toggleInsetSelection(BufferView * bv);
@@ -165,5 +167,7 @@ void mathDispatchGreek(BufferView *, string const &);
 void mathDispatchMathImportSelection(BufferView *, string const &);
 //
 void mathDispatch(BufferView *, kb_action, string const &);
+//
+void mathDispatch(BufferView *, string const &);
 
 #endif

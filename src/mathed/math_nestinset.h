@@ -76,6 +76,8 @@ public:
 	void replace(ReplaceData &);
 	/// do we contain a given pattern?
 	bool contains(MathArray const &);
+	/// glue everything to a single cell
+	MathArray glue() const;
 
 	/// debug helper
 	void dump() const;

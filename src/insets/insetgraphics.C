@@ -810,7 +810,7 @@ int InsetGraphics::linuxdoc(Buffer const *, ostream &) const
 // For explanation on inserting graphics into DocBook checkout:
 // http://linuxdoc.org/LDP/LDP-Author-Guide/inserting-pictures.html
 // See also the docbook guide at http://www.docbook.org/
-int InsetGraphics::docbook(Buffer const *, ostream & os) const
+int InsetGraphics::docbook(Buffer const *, ostream & os, bool mixcont) const
 {
 	// In DocBook v5.0, the graphic tag will be eliminated from DocBook, will
 	// need to switch to MediaObject. However, for now this is sufficient and

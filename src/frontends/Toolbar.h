@@ -55,8 +55,11 @@ public:
 
 	/// update the layout combox
 	void setLayout(string const & layout);
-	/// Populate the layout combox; re-do everything if force is true.
-	void updateLayoutList(bool force);
+	/** 
+	 * Populate the layout combox - returns whether we did a full 
+	 * update or not
+	 */
+	bool updateLayoutList(int textclass);
 	/// Drop down the layout list
 	void openLayoutList();
 	/// Erase the layout list
@@ -69,5 +72,10 @@ private:
 	friend struct Toolbar::Pimpl;
 	///
 	Pimpl * pimpl_;
+
+	/**
+	 * The last textclass layout list in the layout choice selector
+	 */
+	int last_textclass_;
 };
 #endif

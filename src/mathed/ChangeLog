@@ -1,3 +1,22 @@
+2002-06-16  André Pönitz <poenitz@gmx.net>
+
+	* math_factory.C:
+	* math_support.C: fix font fall-back
+
+	* math_specialcharinset.[Ch]:
+	* math_funcliminset.[Ch]: remove, it's now done by MathSymbolInset
+
+	* math_funcinset.[Ch]: remove, it's not used
+
+2002-06-16  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* math_extern.C: add using std::endl
+
+2002-06-15  LyX Development team <lyx@rilke>
+
+	* formula.[Ch]:
+	* macroformula.[Ch] (docbook): Added argument to care about the
+	pernicious mixed content.
 
 2002-05-30  André Pönitz <poenitz@gmx.net>
 

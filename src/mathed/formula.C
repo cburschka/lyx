@@ -33,7 +33,6 @@
 #include "frontends/Alert.h"
 #include "support/LOstream.h"
 #include "support/LAssert.h"
-#include "support/systemcall.h"
 #include "support/filetools.h" // LibFileSearch
 #include "frontends/LyXView.h"
 #include "frontends/Painter.h"
@@ -52,197 +51,6 @@ using std::endl;
 using std::vector;
 using std::getline;
 
-
-namespace {
-
-	string captureOutput(string const & cmd, string const & data)
-	{
-		string outfile = lyx::tempName(string(), "mathextern");
-		string full =  "echo '" + data + "' | (" + cmd + ") > " + outfile;
-		lyxerr << "calling: " << full << "\n";
-		Systemcall dummy;
-		dummy.startscript(Systemcall::Wait, full);
-		string out = GetFileContents(outfile);
-		lyx::unlink(outfile);
-		lyxerr << "result: '" << out << "'\n";
-		return out;
-	}
-
-
-	MathArray pipeThroughMaple(string const & extra, MathArray const & ar)
-	{
-		string header = "readlib(latex):\n";
-
-		// remove the \\it for variable names
-		//"#`latex/csname_font` := `\\it `:"
-		header +=
-			"`latex/csname_font` := ``:\n";
-
-		// export matrices in (...) instead of [...]
-		header +=
-			"`latex/latex/matrix` := "
-				"subs(`[`=`(`, `]`=`)`,"
-					"eval(`latex/latex/matrix`)):\n";
-
-		// replace \\cdots with proper '*'
-		header +=
-			"`latex/latex/*` := "
-				"subs(`\\,`=`\\cdot `,"
-					"eval(`latex/latex/*`)):\n";
-
-		// remove spurious \\noalign{\\medskip} in matrix output
-		header +=
-			"`latex/latex/matrix`:= "
-				"subs(`\\\\\\\\\\\\noalign{\\\\medskip}` = `\\\\\\\\`,"
-					"eval(`latex/latex/matrix`)):\n";
-
-		//"#`latex/latex/symbol` "
-		//	" := subs((\\'_\\' = \\'`\\_`\\',eval(`latex/latex/symbol`)): ";
-
-		string trailer = "quit;";
-		ostringstream os;
-		MapleStream ms(os);
-		ms << ar;
-		string expr = os.str().c_str();
-		lyxerr << "ar: '" << ar << "'\n";
-
-		for (int i = 0; i < 100; ++i) { // at most 100 attempts
-			// try to fix missing '*' the hard way by using mint
-			//
-			// ... > echo "1A;" | mint -i 1 -S -s -q
-			// on line     1: 1A;
-			//                 ^ syntax error -
-			//                   Probably missing an operator such as * p
-			//
-			lyxerr << "checking expr: '" << expr << "'\n";
-			string out = captureOutput("mint -i 1 -S -s -q -q", expr + ";");
-			if (out.empty())
-				break; // expression syntax is ok
-			istringstream is(out.c_str());
-			string line;
-			getline(is, line);
-			if (line.find("on line") != 0)
-				break; // error message not identified
-			getline(is, line);
-			string::size_type pos = line.find('^');
-			if (pos == string::npos || pos < 15)
-				break; // caret position not found
-			pos -= 15; // skip the "on line ..." part
-			if (expr[pos] == '*' || (pos > 0 && expr[pos - 1] == '*'))
-				break; // two '*' in a row are definitely bad
-			expr.insert(pos,  "*");
-		}
-
-		string full = "latex(" +  extra + '(' + expr + "));";
-		string out = captureOutput("maple -q", header + full + trailer);
-
-		// change \_ into _
-
-		//
-		MathArray res;
-		mathed_parse_cell(res, out);
-		return res;
-	}
-
-
-	MathArray pipeThroughOctave(string const &, MathArray const & ar)
-	{
-		ostringstream os;
-		OctaveStream vs(os);
-		vs << ar;
-		string expr = os.str().c_str();
-		string out;
-
-		for (int i = 0; i < 100; ++i) { // at most 100 attempts
-			//
-			// try to fix missing '*' the hard way
-			// parse error:
-			// >>> ([[1 2 3 ];[2 3 1 ];[3 1 2 ]])([[1 2 3 ];[2 3 1 ];[3 1 2 ]])
-			//                                   ^
-			//
-			lyxerr << "checking expr: '" << expr << "'\n";
-			out = captureOutput("octave -q 2>&1", expr);
-			lyxerr << "checking out: '" << out << "'\n";
-
-			// leave loop if expression syntax is probably ok
-			if (out.find("parse error:") == string::npos)
-				break;
-
-			// search line with single caret
-			istringstream is(out.c_str());
-			string line;
-			while (is) {
-				getline(is, line);
-				lyxerr << "skipping line: '" << line << "'\n";
-				if (line.find(">>> ") != string::npos)
-					break;
-			}
-
-			// found line with error, next line is the one with caret
-			getline(is, line);
-			string::size_type pos = line.find('^');
-			lyxerr << "caret line: '" << line << "'\n";
-			lyxerr << "found caret at pos: '" << pos << "'\n";
-			if (pos == string::npos || pos < 4)
-				break; // caret position not found
-			pos -= 4; // skip the ">>> " part
-			if (expr[pos] == '*')
-				break; // two '*' in a row are definitely bad
-			expr.insert(pos,  "*");
-		}
-
-		if (out.size() < 6)
-			return MathArray();
-
-		// remove 'ans = '
-		out = out.substr(6);
-
-		// parse output as matrix or single number
-		MathAtom at(new MathArrayInset("array", out));
-		MathArrayInset const * mat = at.nucleus()->asArrayInset();
-		MathArray res;
-		if (mat->ncols() == 1 && mat->nrows() == 1)
-			res.push_back(mat->cell(0));
-		else {
-			res.push_back(MathAtom(new MathDelimInset("(", ")")));
-			res.back()->cell(0).push_back(at);
-		}
-		return res;
-	}
-
-
-	MathArray pipeThroughExtern(string const & lang, string const & extra,
-		MathArray const & ar)
-	{
-		if (lang == "octave")
-			return pipeThroughOctave(extra, ar);
-
-		if (lang == "maple")
-			return pipeThroughMaple(extra, ar);
-
-		// create normalized expression
-		ostringstream os;
-		NormalStream ns(os);
-		os << "[" << extra << ' ';
-		ns << ar;
-		os << "]";
-		string data = os.str().c_str();
-
-		// search external script
-		string file = LibFileSearch("mathed", "extern_" + lang);
-		if (file.empty()) {
-			lyxerr << "converter to '" << lang << "' not found\n";
-			return MathArray();
-		}
-
-		// run external sript
-		string out = captureOutput(file, data);
-		MathArray res;
-		mathed_parse_cell(res, out);
-		return res;
-	}
-
-}
 
 
 InsetFormula::InsetFormula()
@@ -315,18 +123,23 @@ int InsetFormula::ascii(Buffer const *, ostream & os, int) const
 
 int InsetFormula::linuxdoc(Buffer const * buf, ostream & os) const
 {
-	return docbook(buf, os);
+	return docbook(buf, os, false);
 }
 
 
-int InsetFormula::docbook(Buffer const * buf, ostream & os) const
+int InsetFormula::docbook(Buffer const * buf, ostream & os, bool) const
 {
 	MathMLStream ms(os);
-	ms << MTag("equation") << MTag("alt");
+	ms << MTag("equation");
+	ms <<   MTag("alt");
+	ms <<    "<[CDATA[";
 	int res = ascii(buf, ms.os(), 0);
-	ms << ETag("alt") << MTag("math");
-	ms << par_.nucleus();
-	ms << ETag("math") << ETag("equation");
+	ms <<    "]]>";
+	ms <<   ETag("alt");
+	ms <<   MTag("math");
+	ms <<    par_.nucleus();
+	ms <<   ETag("math");
+	ms << ETag("equation");
 	return ms.line() + res;
 }
 
@@ -490,7 +303,8 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 		case LFUN_MATH_EXTERN:
 		{
 			bv->lockedInsetStoreUndo(Undo::EDIT);
-			handleExtern(arg);
+			if (mathcursor)
+				mathcursor->handleExtern(arg);
 			// re-compute inset dimension
 			metrics(bv);
 			updateLocal(bv, true);
@@ -502,7 +316,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			int x = 0;
 			int y = 0;
 			mathcursor->getPos(x, y);
-			if (hull()->getType() == LM_OT_SIMPLE)
+			if (getType() == LM_OT_SIMPLE)
 				hull()->mutate(LM_OT_EQUATION);
 			else
 				hull()->mutate(LM_OT_SIMPLE);
@@ -528,40 +342,9 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 }
 
 
-void InsetFormula::handleExtern(const string & arg)
-{
-	// where are we?
-	if (!mathcursor)
-		return;
-
-	string lang;
-	string extra;
-	istringstream iss(arg.c_str());
-	iss >> lang >> extra;
-	if (extra.empty())
-		extra = "noextra";
-
-	bool selected = mathcursor->selection();
-
-	MathArray ar;
-	if (selected) {
-		mathcursor->selGet(ar);
-		//lyxerr << "use selection: " << ar << "\n";
-	} else {
-		mathcursor->last();
-		mathcursor->stripFromLastEqualSign();
-		ar = mathcursor->cursor().cell();
-		mathcursor->insert('=');
-		//lyxerr << "use whole cell: " << ar << "\n";
-	}
-
-	mathcursor->insert(pipeThroughExtern(lang, extra, ar));
-}
-
-
 bool InsetFormula::display() const
 {
-	return hull()->getType() != LM_OT_SIMPLE;
+	return getType() != LM_OT_SIMPLE;
 }
 
 

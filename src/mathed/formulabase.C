@@ -110,7 +110,7 @@ void InsetFormulaBase::mutateToText()
 	string::const_iterator cit = str.begin();
 	string::const_iterator end = str.end();
 	for (; cit != end; ++cit)
-		view_->owner()->getIntl()->getTrans().TranslateAndInsert(*cit, lt);
+		view_->owner()->getIntl()->getTransManager().TranslateAndInsert(*cit, lt);
 
 	// remove ourselves
 	//view_->owner()->getLyXFunc()->dispatch(LFUN_ESCAPE);
@@ -205,8 +205,9 @@ void InsetFormulaBase::insetUnlock(BufferView * bv)
 }
 
 
-void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
+void InsetFormulaBase::getCursorPos(BufferView * bv, int & x, int & y) const
 {
+	metrics(bv);
 	mathcursor->getPos(x, y);
 	//x -= xo_;
 	y -= yo_;
@@ -265,6 +266,20 @@ void InsetFormulaBase::hideInsetCursor(BufferView * bv)
 }
 
 
+void InsetFormulaBase::fitInsetCursor(BufferView * bv) const
+{
+	if (!mathcursor)
+		return;
+	
+	int const asc = font_metrics::maxAscent(font_);
+	int const desc = font_metrics::maxDescent(font_);
+	int x, y;
+
+	getCursorPos(bv, x, y);
+	bv->fitLockedInsetCursor(x, y, asc, desc);
+}
+
+
 void InsetFormulaBase::toggleInsetSelection(BufferView * bv)
 {
 	if (mathcursor)
@@ -281,6 +296,8 @@ vector<string> const InsetFormulaBase::getLabelList() const
 void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
 {
 	metrics(bv);
+	if (mathcursor)
+		bv->fitCursor();
 	bv->updateInset(this, dirty);
 }
 
@@ -850,24 +867,24 @@ bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
 
 	for (MathIterator it = current; it != iend(par().nucleus()); ++it) {
 		if (it.cell().matchpart(ar, it.position().pos_)) {
+			bv->unlockInset(bv->theLockingInset());
+			if (!bv->lockInset(this)) {
+				lyxerr << "Cannot lock inset" << endl;
+				return false;
+			}
+			delete mathcursor;
+			mathcursor = new MathCursor(this, true);
+			metrics(bv);
 			mathcursor->setSelection(it.cursor(), ar.size());
 			current = it;
 			it.jump(ar.size());
-			// I guess some of the following can go
-			bv->toggleSelection(true);
-			hideInsetCursor(bv);
-			updateLocal(bv, true);
-			showInsetCursor(bv);
-			metrics(bv);
+			updateLocal(bv, false);
 			return true;
 		}
 	}
 
 	//lyxerr << "not found!\n";
 	lastformula = 0;
-	// we have to unlock ourself in this function by default!
-	// don't ask me why...
-	bv->unlockInset(this);
 	return false;
 }
 
@@ -1006,4 +1023,8 @@ void mathDispatchGreek(BufferView * bv, string const & arg)
 
 
 void mathDispatch(BufferView *, kb_action, string const &)
+{}
+
+
+void mathDispatch(BufferView *, string const &)
 {}

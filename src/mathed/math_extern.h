@@ -1,6 +1,8 @@
 #ifndef MATH_EXTERN_H
 #define MATH_EXTERN_H
 
+#include "LString.h"
+
 class NormalStream;
 class MapleStream;
 class MathMLStream;
@@ -16,5 +18,8 @@ void octavize(MathArray const &, OctaveStream &);
 
 bool extractNumber(MathArray const & ar, int & i);
 bool extractNumber(MathArray const & ar, double & i);
+
+MathArray pipeThroughExtern(string const & lang, string const & extra,
+	MathArray const & ar);
 
 #endif

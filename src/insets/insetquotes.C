@@ -325,7 +325,7 @@ int InsetQuotes::linuxdoc(Buffer const *, ostream & os) const
 }
 
 
-int InsetQuotes::docbook(Buffer const *, ostream & os) const
+int InsetQuotes::docbook(Buffer const *, ostream & os, bool) const
 {
 	if (times_ == DoubleQ) {
 		if (side_ == LeftQ)

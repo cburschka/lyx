@@ -39,15 +39,17 @@ using std::bind2nd;
 using std::remove_if;
 
 
-FormTabular::FormTabular(LyXView * lv, Dialogs * d)
-	: FormInset(lv, d, _("Tabular Layout")),
+FormTabular::FormTabular(LyXView & lv, Dialogs & d)
+	: FormInset(&lv, &d, _("Tabular Layout")),
 	  inset_(0), actCell_(-1), closing_(false)
 {
+#if 0
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
 	// storing a copy because we won't be disconnecting.
 	d->showTabular = boost::bind(&FormTabular::showInset, this, _1);
 	d->updateTabular = boost::bind(&FormTabular::updateInset, this, _1);
+#endif
 }
 
 

@@ -146,7 +146,7 @@ InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 	clearSelection();
 	need_update = INIT;
 	in_update = false;
-	in_reset_pos = false;
+	in_reset_pos = 0;
 	inset_x = 0;
 	inset_y = 0;
 }
@@ -166,7 +166,7 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf,
 	clearSelection();
 	need_update = INIT;
 	in_update = false;
-	in_reset_pos = false;
+	in_reset_pos = 0;
 	inset_x = 0;
 	inset_y = 0;
 }
@@ -603,6 +603,7 @@ void InsetTabular::insetUnlock(BufferView * bv)
 		the_locking_inset = 0;
 	}
 	hideInsetCursor(bv);
+	actcell = 0;
 	oldcell = -1;
 	locked = false;
 	if (scroll(false) || hasSelection()) {
@@ -626,15 +627,10 @@ void InsetTabular::updateLocal(BufferView * bv, UpdateCodes what,
 		what = FULL;
 	if (need_update < what) // only set this if it has greater update
 		need_update = what;
-#if 0 // maybe this should not be done!
-	if ((what == INIT) && hasSelection()) {
-		clearSelection();
-	}
-#endif
 	// Dirty Cast! (Lgb)
 	if (need_update != NONE) {
 		bv->updateInset(const_cast<InsetTabular *>(this), mark_dirty);
-		if (locked) // && (what != NONE))
+		if (locked)
 			resetPos(bv);
 	}
 }
@@ -1317,7 +1313,7 @@ int InsetTabular::linuxdoc(Buffer const * buf, ostream & os) const
 }
 
 
-int InsetTabular::docbook(Buffer const * buf, ostream & os) const
+int InsetTabular::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 {
 	int ret = 0;
 	Inset * master;
@@ -1329,12 +1325,16 @@ int InsetTabular::docbook(Buffer const * buf, ostream & os) const
 	    master = master->owner());
 
 	if (!master) {
-		os << "<informaltable>\n";
+		os << "<informaltable>";
+		if (mixcont)
+			os << endl;
 		ret++;
 	}
-	ret+= tabular->docBook(buf,os);
+	ret+= tabular->docbook(buf, os, mixcont);
 	if (!master) {
-		os << "</informaltable>\n";
+		os << "</informaltable>";
+		if (mixcont)
+			os << endl;
 		ret++;
 	}
 	return ret;
@@ -1526,7 +1526,7 @@ void InsetTabular::resetPos(BufferView * bv) const
 #warning This should be fixed in the right manner (20011128 Jug)
 #endif
 	// fast hack to fix infinite repaintings!
-	if (in_reset_pos)
+	if (in_reset_pos > 10)
 		return;
 
 	int cell = 0;
@@ -1547,7 +1547,7 @@ void InsetTabular::resetPos(BufferView * bv) const
 		return;
 	}
 	// we need this only from here on!!!
-	in_reset_pos = true;
+	++in_reset_pos;
 	static int const offset = ADD_TO_TABULAR_WIDTH + 2;
 	int new_x = getCellXPos(actcell);
 	int old_x = cursor_.x();
@@ -1598,7 +1598,7 @@ void InsetTabular::resetPos(BufferView * bv) const
 		bv->owner()->getDialogs()->updateTabular(inset);
 		oldcell = actcell;
 	}
-	in_reset_pos = false;
+	in_reset_pos = 0;
 }
 
 
@@ -2738,56 +2738,45 @@ void InsetTabular::toggleSelection(BufferView * bv, bool kill_selection)
 bool InsetTabular::searchForward(BufferView * bv, string const & str,
 				 bool cs, bool mw)
 {
-	nodraw(true);
 	if (the_locking_inset) {
 		if (the_locking_inset->searchForward(bv, str, cs, mw)) {
-			nodraw(false);
 			updateLocal(bv, CELL, false);
 			return true;
 		}
-		if (tabular->IsLastCell(actcell)) {
-			nodraw(false);
-			bv->unlockInset(const_cast<InsetTabular *>(this));
-			return false;
+	}
+	do {
+		InsetText * inset = tabular->GetCellInset(actcell);
+		if (inset->searchForward(bv, str, cs, mw)) {
+			updateLocal(bv, FULL, false);
+			return true;
 		}
 		++actcell;
-	}
-	// otherwise we have to lock the next inset and search there
-	UpdatableInset * inset =
-		static_cast<UpdatableInset*>(tabular->GetCellInset(actcell));
-	inset->edit(bv);
-	bool const ret = searchForward(bv, str, cs, mw);
-	nodraw(false);
-	updateLocal(bv, CELL, false);
-	return ret;
+	} while (!tabular->IsLastCell(actcell));
+	return false;
 }
 
 
 bool InsetTabular::searchBackward(BufferView * bv, string const & str,
 			       bool cs, bool mw)
 {
-	nodraw(true);
 	if (the_locking_inset) {
 		if (the_locking_inset->searchBackward(bv, str, cs, mw)) {
-			nodraw(false);
 			updateLocal(bv, CELL, false);
 			return true;
 		}
-		if (!actcell) { // we are already in the first cell
-			nodraw(false);
-			bv->unlockInset(const_cast<InsetTabular *>(this));
-			return false;
-		}
-		--actcell;
 	}
-	// otherwise we have to lock the next inset and search there
-	UpdatableInset * inset =
-		static_cast<UpdatableInset*>(tabular->GetCellInset(actcell));
-	inset->edit(bv, false);
-	bool const ret = searchBackward(bv, str, cs, mw);
-	nodraw(false);
-	updateLocal(bv, CELL, false);
-	return ret;
+	if (!locked)
+		actcell = tabular->GetNumberOfCells();
+
+	while (actcell) {
+		--actcell;
+		InsetText * inset = tabular->GetCellInset(actcell);
+		if (inset->searchBackward(bv, str, cs, mw)) {
+			updateLocal(bv, CELL, false);
+			return true;
+		}
+	}
+	return false;
 }
 
 

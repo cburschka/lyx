@@ -24,14 +24,14 @@
 
 
 class LyXFont;
-class WorkArea;
+class XWorkArea;
 
 /**
  * XPainter - a painter implementation for Xlib
  */
 class XPainter : public Painter {
 public:
-	XPainter(WorkArea &);
+	XPainter(XWorkArea &);
 	
 	/// return the width of the work area in pixels
 	virtual int paperWidth() const;
@@ -120,7 +120,7 @@ public:
  
 private:
 	/// our owner who we paint upon
-	WorkArea & owner_;
+	XWorkArea & owner_;
 };
 
 #endif // XPAINTER_H

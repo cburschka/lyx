@@ -8,14 +8,13 @@
 #pragma interface
 #endif
 
-/** Some cllection of chars with similar properties
-    \author André Pönitz
+/** Some collection of chars with similar properties
+ *  maily for math-extern
+ *  \author André Pönitz
  */
 
 class MathStringInset : public MathDimInset {
 public:
-	///
-	MathStringInset();
 	///
 	explicit MathStringInset(string const & s);
 	///
@@ -40,7 +39,7 @@ public:
 	///
 	void write(WriteStream & os) const;
 
-public:
+private:
 	/// the string
 	string str_;
 };

@@ -1,11 +1,47 @@
+2002-06-16  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* add a nother layer of inderection for calling gui specific
+	methods.
+	* guiapi.h: new file
+
+2002-06-16    <alstrup@diku.dk>
+
+	* WorkArea.C: New file for GUII.
+
+	* WorkAreaFactory.h: New file for GUII.
+
+	* WorkArea.h: GUII stuff.
+
+2002-06-15  Lyx Development team  <larsbj@birdstep.com>
+
+	* LyXKeySymFactory.h: Added GUII factory for LyXKeySyms.
+
+	* LyXKeySym.[Ch]: Made the LyXKeySym class GUII.
+
+	* LyXKeySym.[Ch]: new LyXKeySym class for representing a
+	keypress. For now, X11 dependent.
+
+	* Makefile.am: Added LyXKeySym.
+
+2002-06-14  Lyx Development team  <lyx@electronia>
+
+	* LyXScreenFactory.h: New factory for creating the screen
+	object in the super GUII way.
+
+	* screen.h: Made LyXScreen an abstract base class for the
+	screen object.
+
+	* LyXView.h: Moved last_textclass_ member to Toolbar.C where it
+	belongs.
+
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Painter.h:
 	* Painter.C: s/PainterBase/Painter, remove dead code
- 
+
 2002-06-12  Angus Leeming  <leeming@lyx.org>
 
-	* lyx_gui.h: remove trailing semi-colon after the brace closing 
+	* lyx_gui.h: remove trailing semi-colon after the brace closing
 	the namespace.
 
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
@@ -13,15 +49,15 @@
 	* LyXView.h: cleanup
 
 	* LyXView.C: move init() here from xforms/
- 
+
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* screen.h:
 	* screen.C: change topCursorVisible() prototype
- 
+
 2002-06-12  Angus Leeming  <leeming@lyx.org>
 
-	* font_metrics.h: remove trailing semi-colon after the brace closing 
+	* font_metrics.h: remove trailing semi-colon after the brace closing
 	the namespace.
 
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
@@ -29,34 +65,34 @@
 	* GUIRunTime.h: remove in favour of ...
 
 	* Makefile.am:
-	* lyx_gui.h: ... namespace for GUI start up 
- 
-	* LyXView.h: remove init(),show(),setPosition() 
- 
+	* lyx_gui.h: ... namespace for GUI start up
+
+	* LyXView.h: remove init(),show(),setPosition()
+
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Menubar.C:
 	* Timeout.h:
 	* Toolbar.C:
 	* LyXView.h:
-	* LyXView.C: some cleanup, prefer scoped_ptr 
- 
+	* LyXView.C: some cleanup, prefer scoped_ptr
+
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* screen.C:
 	* Painter.C: use workHeight()
 
 	* WorkArea.h: remove confusing duplicate unused code
- 
+
 2002-06-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* screen.h:
 	* screen.C: rename, add reset()
- 
+
 2002-06-11  John Levon  <moz@compsoc.man.ac.uk>
 
 	* font_metrics.h: move X-specific stuff out of namespace
- 
+
 2002-06-07  Angus Leeming  <leeming@lyx.org>
 
 	Fixes needed to compile with Compaq cxx 6.5.
@@ -68,7 +104,7 @@
 2002-05-31  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Alert.h: better variable name
- 
+
 2002-05-29  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* switch from SigC signals to boost::signals

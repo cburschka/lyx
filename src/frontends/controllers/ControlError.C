@@ -18,21 +18,12 @@
 #endif
 
 #include "ControlError.h"
-#include "ViewBase.h"
-#include "ButtonControllerBase.h"
-#include "Dialogs.h"
-#include "buffer.h"
 #include "insets/inseterror.h"
 
-#include "frontends/LyXView.h"
-
-#include <boost/bind.hpp>
 
 ControlError::ControlError(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetError, string>(lv, d)
-{
-	d_.showError = boost::bind(&ControlError::showInset, this, _1);
-}
+{}
 
 
 string const ControlError::getParams(InsetError const & inset)

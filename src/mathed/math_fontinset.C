@@ -33,25 +33,26 @@ void MathFontInset::metrics(MathMetricsInfo & mi) const
 {
 	MathFontSetChanger dummy(mi.base, name_.c_str());
 	xcell(0).metrics(mi);
-	width_   = xcell(0).width() + 6;
 	ascent_  = xcell(0).ascent();
-	descent_ = xcell(0).descent() + 3;
+	descent_ = xcell(0).descent() + 2;
+	width_   = xcell(0).width()   + 2;
 }
 
 
 void MathFontInset::draw(MathPainterInfo & pi, int x, int y) const
 {
 	//lyxerr << "MathFontInset::draw\n";
-	MathNestInset::draw(pi, x, y);
+	//MathNestInset::draw(pi, x, y);
 	MathFontSetChanger dummy(pi.base, name_.c_str());
-	xcell(0).draw(pi, x + 3, y);
-	int b = x + 1;
-	int t = x + width() - 1;
-	int d = y + descent();
-	pi.pain.line(b, d - 3, b, d, LColor::mathframe); 
-	pi.pain.line(t, d - 3, t, d, LColor::mathframe); 
-	pi.pain.line(b, d, b + 3, d, LColor::mathframe); 
-	pi.pain.line(t - 2, d, t, d, LColor::mathframe); 
+	xcell(0).draw(pi, x + 1, y);
+	if (editing()) {
+		int t = x + width() - 1;
+		int d = y + descent();
+		pi.pain.line(x, d - 3, x, d, LColor::mathframe); 
+		pi.pain.line(t, d - 3, t, d, LColor::mathframe); 
+		pi.pain.line(x, d, x + 3, d, LColor::mathframe); 
+		pi.pain.line(t - 2, d, t, d, LColor::mathframe); 
+	}
 }
 
 

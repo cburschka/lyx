@@ -99,7 +99,7 @@ public:
 	///
 	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	int docbook(Buffer const *, std::ostream &) const;
+	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
 	///
 	void validate(LaTeXFeatures &) const;
 

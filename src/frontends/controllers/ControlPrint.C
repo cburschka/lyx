@@ -12,17 +12,15 @@
  */
 
 #include <config.h>
-#include <utility>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
+#include "ControlPrint.h"
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
-#include "ControlPrint.h"
 #include "buffer.h"
-#include "Dialogs.h"
 #include "frontends/LyXView.h"
 #include "PrinterParams.h"
 #include "Liason.h"
@@ -32,18 +30,14 @@
 #include "BufferView.h"
 #include "support/LAssert.h"
 
-#include <boost/bind.hpp>
-
 using Liason::printBuffer;
 using Liason::getPrinterParams;
-using std::make_pair;
+
 
 ControlPrint::ControlPrint(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d),
 	  params_(0)
-{
-	d_.showPrint = boost::bind(&ControlPrint::show, this);
-}
+{}
 
 
 void ControlPrint::apply()

@@ -18,8 +18,6 @@
 #pragma implementation
 #endif
 
-#include "ViewBase.h"
-#include "ButtonControllerBase.h"
 #include "ControlGraphics.h"
 
 #include "helper_funcs.h"
@@ -42,13 +40,8 @@
 #include "support/filetools.h"
 #include "support/FileInfo.h"
 
-#include <boost/bind.hpp>
-
-#include <fstream>
-
 using std::pair;
 using std::make_pair;
-using std::ifstream;
 using std::vector;
 
 namespace {
@@ -103,9 +96,7 @@ string const xforms_pattern()
 
 ControlGraphics::ControlGraphics(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetGraphics, InsetGraphicsParams>(lv, d)
-{
-	d_.showGraphics = boost::bind(&ControlGraphics::showInset, this, _1);
-}
+{}
 
 
 InsetGraphicsParams const ControlGraphics::getParams(string const &)
@@ -209,6 +200,7 @@ size_t const rorigin_size = sizeof(rorigin_lyx_strs) / sizeof(char *);
 
 } // namespace anon
 
+
 vector<RotationOriginPair> getRotationOriginData()
 {
 	static vector<RotationOriginPair> data;
@@ -217,8 +209,8 @@ vector<RotationOriginPair> getRotationOriginData()
 
 	data.resize(rorigin_size);
 	for (lyx::size_type i = 0; i < rorigin_size; ++i) {
-		data[i] = std::make_pair(_(rorigin_gui_strs[i]),
-					 rorigin_lyx_strs[i]);
+		data[i] = make_pair(_(rorigin_gui_strs[i]),
+				    rorigin_lyx_strs[i]);
 	}
 
 	return data;

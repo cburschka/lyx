@@ -1713,7 +1713,7 @@ bool Buffer::readFile(LyXLex & lex, Paragraph * par)
 				} else if (file_format < 220) {
 					Alert::alert(_("ERROR!"),
 						     _("Old LyX file format found. "
-						       "User LyX 1.2.x to read this!"));
+						       "Use LyX 1.2.x to read this!"));
 					return false;
 				}
 			}
@@ -2749,21 +2749,35 @@ bool Buffer::isSGML() const
 }
 
 
-void Buffer::sgmlOpenTag(ostream & os, Paragraph::depth_type,
+int Buffer::sgmlOpenTag(ostream & os, Paragraph::depth_type depth, bool mixcont,
 			 string const & latexname) const
 {
-	if (!latexname.empty() && latexname != "!-- --")
-		//os << "<!-- " << depth << " -->" << "<" << latexname << ">";
-		os << "<" << latexname << ">";
+	if (!latexname.empty() && latexname != "!-- --") {
+		if (!mixcont)
+			os << string(" ",depth);
+ 		os << "<" << latexname << ">";
+	}
+
+	if (!mixcont)
+		os << endl;
+
+	return mixcont?0:1;
 }
 
 
-void Buffer::sgmlCloseTag(ostream & os, Paragraph::depth_type,
+int Buffer::sgmlCloseTag(ostream & os, Paragraph::depth_type depth, bool mixcont,
 			  string const & latexname) const
 {
-	if (!latexname.empty() && latexname != "!-- --")
-		//os << "<!-- " << depth << " -->" << "</" << latexname << ">\n";
+	if (!latexname.empty() && latexname != "!-- --") {
+		if (!mixcont)
+			os << endl << string(" ",depth);
 		os << "</" << latexname << ">";
+	}
+
+	if (!mixcont)
+		os << endl;
+
+	return mixcont?0:1;
 }
 
 
@@ -2803,12 +2817,12 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 		ofs << ">\n\n";
 
 		if (params.options.empty())
-			sgmlOpenTag(ofs, 0, top_element);
+			sgmlOpenTag(ofs, 0, false, top_element);
 		else {
 			string top = top_element;
 			top += " ";
 			top += params.options;
-			sgmlOpenTag(ofs, 0, top);
+			sgmlOpenTag(ofs, 0, false, top);
 		}
 	}
 
@@ -2830,7 +2844,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 			Inset::Code lyx_code = inset->lyxCode();
 			if (lyx_code == Inset::TOC_CODE) {
 				string const temp = "toc";
-				sgmlOpenTag(ofs, depth, temp);
+				sgmlOpenTag(ofs, depth, false, temp);
 
 				par = par->next();
 				continue;
@@ -2839,7 +2853,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 
 		// environment tag closing
 		for (; depth > par->params().depth(); --depth) {
-			sgmlCloseTag(ofs, depth, environment_stack[depth]);
+			sgmlCloseTag(ofs, depth, false, environment_stack[depth]);
 			environment_stack[depth].erase();
 		}
 
@@ -2848,14 +2862,14 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 		case LATEX_PARAGRAPH:
 			if (depth == par->params().depth()
 			   && !environment_stack[depth].empty()) {
-				sgmlCloseTag(ofs, depth, environment_stack[depth]);
+				sgmlCloseTag(ofs, depth, false, environment_stack[depth]);
 				environment_stack[depth].erase();
 				if (depth)
 					--depth;
 				else
 					ofs << "</p>";
 			}
-			sgmlOpenTag(ofs, depth, style.latexname());
+			sgmlOpenTag(ofs, depth, false, style.latexname());
 			break;
 
 		case LATEX_COMMAND:
@@ -2865,21 +2879,19 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 					    " LatexType Command.\n"));
 
 			if (!environment_stack[depth].empty()) {
-				sgmlCloseTag(ofs, depth,
-					     environment_stack[depth]);
+				sgmlCloseTag(ofs, depth, false, environment_stack[depth]);
 				ofs << "</p>";
 			}
 
 			environment_stack[depth].erase();
-			sgmlOpenTag(ofs, depth, style.latexname());
+			sgmlOpenTag(ofs, depth, false, style.latexname());
 			break;
 
 		case LATEX_ENVIRONMENT:
 		case LATEX_ITEM_ENVIRONMENT:
 			if (depth == par->params().depth()
 			    && environment_stack[depth] != style.latexname()) {
-				sgmlCloseTag(ofs, depth,
-					     environment_stack[depth]);
+				sgmlCloseTag(ofs, depth, false, environment_stack[depth]);
 				environment_stack[depth].erase();
 			}
 			if (depth < par->params().depth()) {
@@ -2888,9 +2900,9 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 			}
 			if (environment_stack[depth] != style.latexname()) {
 				if (depth == 0) {
-					sgmlOpenTag(ofs, depth, "p");
+					sgmlOpenTag(ofs, depth, false, "p");
 				}
-				sgmlOpenTag(ofs, depth, style.latexname());
+				sgmlOpenTag(ofs, depth, false, style.latexname());
 
 				if (environment_stack.size() == depth + 1)
 					environment_stack.push_back("!-- --");
@@ -2907,10 +2919,10 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 			else
 				item_name = "item";
 
-			sgmlOpenTag(ofs, depth + 1, item_name);
+			sgmlOpenTag(ofs, depth + 1, false, item_name);
 			break;
 		default:
-			sgmlOpenTag(ofs, depth, style.latexname());
+			sgmlOpenTag(ofs, depth, false, style.latexname());
 			break;
 		}
 
@@ -2929,18 +2941,18 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 				ofs << "]]>";
 			break;
 		default:
-			sgmlCloseTag(ofs, depth, style.latexname());
+			sgmlCloseTag(ofs, depth, false, style.latexname());
 			break;
 		}
 	}
 
 	// Close open tags
 	for (int i=depth; i >= 0; --i)
-		sgmlCloseTag(ofs, depth, environment_stack[i]);
+		sgmlCloseTag(ofs, depth, false, environment_stack[i]);
 
 	if (!body_only) {
 		ofs << "\n\n";
-		sgmlCloseTag(ofs, 0, top_element);
+		sgmlCloseTag(ofs, 0, false, top_element);
 	}
 
 	ofs.close();
@@ -3266,7 +3278,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		top += " ";
 		top += params.options;
 	}
-	sgmlOpenTag(ofs, 0, top);
+	sgmlOpenTag(ofs, 0, false, top);
 
 	ofs << "<!-- DocBook file was created by " << lyx_docversion
 	    << "\n  See http://www.lyx.org/ for more information -->\n";
@@ -3296,14 +3308,11 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		for (; depth > par->params().depth(); --depth) {
 			if (environment_inner[depth] != "!-- --") {
 				item_name = "listitem";
-				sgmlCloseTag(ofs, command_depth + depth,
-					     item_name);
+				sgmlCloseTag(ofs, command_depth + depth, false, item_name);
 				if (environment_inner[depth] == "varlistentry")
-					sgmlCloseTag(ofs, depth+command_depth,
-						     environment_inner[depth]);
+					sgmlCloseTag(ofs, depth+command_depth, false, environment_inner[depth]);
 			}
-			sgmlCloseTag(ofs, depth + command_depth,
-				     environment_stack[depth]);
+			sgmlCloseTag(ofs, depth + command_depth, false, environment_stack[depth]);
 			environment_stack[depth].erase();
 			environment_inner[depth].erase();
 		}
@@ -3313,16 +3322,12 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		   && !environment_stack[depth].empty()) {
 			if (environment_inner[depth] != "!-- --") {
 				item_name= "listitem";
-				sgmlCloseTag(ofs, command_depth+depth,
-					     item_name);
+				sgmlCloseTag(ofs, command_depth+depth, false, item_name);
 				if (environment_inner[depth] == "varlistentry")
-					sgmlCloseTag(ofs,
-						     depth + command_depth,
-						     environment_inner[depth]);
+					sgmlCloseTag(ofs, depth + command_depth, false, environment_inner[depth]);
 			}
 
-			sgmlCloseTag(ofs, depth + command_depth,
-				     environment_stack[depth]);
+			sgmlCloseTag(ofs, depth + command_depth, false, environment_stack[depth]);
 
 			environment_stack[depth].erase();
 			environment_inner[depth].erase();
@@ -3331,8 +3336,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		// Write opening SGML tags.
 		switch (style.latextype) {
 		case LATEX_PARAGRAPH:
-			sgmlOpenTag(ofs, depth + command_depth,
-				    style.latexname());
+			sgmlOpenTag(ofs, depth + command_depth, false, style.latexname());
 			break;
 
 		case LATEX_COMMAND:
@@ -3352,14 +3356,14 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 				if (cmd_depth < command_base) {
 					for (Paragraph::depth_type j = command_depth;
 					     j >= command_base; --j) {
-						sgmlCloseTag(ofs, j, command_stack[j]);
+						sgmlCloseTag(ofs, j, false, command_stack[j]);
 						ofs << endl;
 					}
 					command_depth = command_base = cmd_depth;
 				} else if (cmd_depth <= command_depth) {
 					for (int j = command_depth;
 					     j >= int(cmd_depth); --j) {
-						sgmlCloseTag(ofs, j, command_stack[j]);
+						sgmlCloseTag(ofs, j, false, command_stack[j]);
 						ofs << endl;
 					}
 					command_depth = cmd_depth;
@@ -3388,12 +3392,10 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 				}
 			}
 
-			sgmlOpenTag(ofs, depth + command_depth, command_name);
-			if (c_params.empty())
-				item_name = "title";
-			else
-				item_name = c_params;
-			sgmlOpenTag(ofs, depth + 1 + command_depth, item_name);
+			sgmlOpenTag(ofs, depth + command_depth, false, command_name);
+
+			item_name = c_params.empty()?"title":c_params;
+			sgmlOpenTag(ofs, depth + 1 + command_depth, false, item_name);
 			break;
 
 		case LATEX_ENVIRONMENT:
@@ -3410,18 +3412,13 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 				}
 				environment_stack[depth] = style.latexname();
 				environment_inner[depth] = "!-- --";
-				sgmlOpenTag(ofs, depth + command_depth,
-					    environment_stack[depth]);
+				sgmlOpenTag(ofs, depth + command_depth, false, environment_stack[depth]);
 			} else {
 				if (environment_inner[depth] != "!-- --") {
 					item_name= "listitem";
-					sgmlCloseTag(ofs,
-						     command_depth + depth,
-						     item_name);
+					sgmlCloseTag(ofs, command_depth + depth, false, item_name);
 					if (environment_inner[depth] == "varlistentry")
-						sgmlCloseTag(ofs,
-							     depth + command_depth,
-							     environment_inner[depth]);
+						sgmlCloseTag(ofs, depth + command_depth, false, environment_inner[depth]);
 				}
 			}
 
@@ -3430,35 +3427,21 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 					if (style.latexparam() == "CDATA")
 						ofs << "<![CDATA[";
 					else
-						sgmlOpenTag(ofs, depth + command_depth,
-							    style.latexparam());
+						sgmlOpenTag(ofs, depth + command_depth, false, style.latexparam());
 				}
 				break;
 			}
 
 			desc_on = (style.labeltype == LABEL_MANUAL);
 
-			if (desc_on)
-				environment_inner[depth]= "varlistentry";
-			else
-				environment_inner[depth]= "listitem";
+			environment_inner[depth] = desc_on?"varlistentry": "listitem";
+			sgmlOpenTag(ofs, depth + 1 + command_depth, false, environment_inner[depth]);
 
-			sgmlOpenTag(ofs, depth + 1 + command_depth,
-				    environment_inner[depth]);
-
-			if (desc_on) {
-				item_name= "term";
-				sgmlOpenTag(ofs, depth + 1 + command_depth,
-					    item_name);
-			} else {
-				item_name= "para";
-				sgmlOpenTag(ofs, depth + 1 + command_depth,
-					    item_name);
-			}
+			item_name = desc_on? "term": "para";
+			sgmlOpenTag(ofs, depth + 1 + command_depth, false, item_name);
 			break;
 		default:
-			sgmlOpenTag(ofs, depth + command_depth,
-				    style.latexname());
+			sgmlOpenTag(ofs, depth + command_depth, false, style.latexname());
 			break;
 		}
 
@@ -3469,31 +3452,27 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		// write closing SGML tags
 		switch (style.latextype) {
 		case LATEX_COMMAND:
-			if (c_params.empty())
-				end_tag = "title";
-			else
-				end_tag = c_params;
-			sgmlCloseTag(ofs, depth + command_depth, end_tag);
+			end_tag = c_params.empty()?"title":c_params;
+			sgmlCloseTag(ofs, depth + command_depth, false, end_tag);
 			break;
 		case LATEX_ENVIRONMENT:
 			if (!style.latexparam().empty()) {
 				if (style.latexparam() == "CDATA")
 					ofs << "]]>";
 				else
-					sgmlCloseTag(ofs, depth + command_depth,
-						     style.latexparam());
+					sgmlCloseTag(ofs, depth + command_depth, false, style.latexparam());
 			}
 			break;
 		case LATEX_ITEM_ENVIRONMENT:
 			if (desc_on == 1) break;
 			end_tag= "para";
-			sgmlCloseTag(ofs, depth + 1 + command_depth, end_tag);
+			sgmlCloseTag(ofs, depth + 1 + command_depth, false, end_tag);
 			break;
 		case LATEX_PARAGRAPH:
-			sgmlCloseTag(ofs, depth + command_depth, style.latexname());
+			sgmlCloseTag(ofs, depth + command_depth, false, style.latexname());
 			break;
 		default:
-			sgmlCloseTag(ofs, depth + command_depth, style.latexname());
+			sgmlCloseTag(ofs, depth + command_depth, false, style.latexname());
 			break;
 		}
 	}
@@ -3503,26 +3482,23 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 		if (!environment_stack[depth].empty()) {
 			if (environment_inner[depth] != "!-- --") {
 				item_name = "listitem";
-				sgmlCloseTag(ofs, command_depth + depth,
-					     item_name);
+				sgmlCloseTag(ofs, command_depth + depth, false, item_name);
 			       if (environment_inner[depth] == "varlistentry")
-				       sgmlCloseTag(ofs, depth + command_depth,
-						    environment_inner[depth]);
+				       sgmlCloseTag(ofs, depth + command_depth, false, environment_inner[depth]);
 			}
 
-			sgmlCloseTag(ofs, depth + command_depth,
-				     environment_stack[depth]);
+			sgmlCloseTag(ofs, depth + command_depth, false, environment_stack[depth]);
 		}
 	}
 
 	for (int j = command_depth; j >= 0 ; --j)
 		if (!command_stack[j].empty()) {
-			sgmlCloseTag(ofs, j, command_stack[j]);
+			sgmlCloseTag(ofs, j, false, command_stack[j]);
 			ofs << endl;
 		}
 
 	ofs << "\n\n";
-	sgmlCloseTag(ofs, 0, top_element);
+	sgmlCloseTag(ofs, 0, false, top_element);
 
 	ofs.close();
 	// How to check for successful close
@@ -3538,8 +3514,7 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 {
 	bool emph_flag = false;
 
-	LyXLayout const & style =
-		textclasslist[params.textclass][par->layout()];
+	LyXLayout const & style = textclasslist[params.textclass][par->layout()];
 
 	LyXFont font_old = style.labeltype == LABEL_MANUAL ? style.labelfont : style.font;
 
@@ -3577,7 +3552,7 @@ void Buffer::simpleDocBookOnePar(ostream & os,
 			if ( i || desc_on != 3) {
 				if(style.latexparam() == "CDATA")
 					os << "]]>";
-				inset->docbook(this, os);
+				inset->docbook(this, os, false);
 				if(style.latexparam() == "CDATA")
 					os << "<![CDATA[";
 			}

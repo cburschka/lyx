@@ -18,30 +18,16 @@
 #endif
 
 #include "ControlCitation.h"
-#include "ViewBase.h"
-#include "ButtonControllerBase.h"
-#include "buffer.h"
-#include "Dialogs.h"
 
-#include "frontends/LyXView.h"
-
-#include <boost/bind.hpp>
-
-#include <algorithm>
-
-using std::pair;
 using std::vector;
+using std::pair;
 
 vector<biblio::CiteStyle> ControlCitation::citeStyles_;
 
+
 ControlCitation::ControlCitation(LyXView & lv, Dialogs & d)
 	: ControlCommand(lv, d, LFUN_CITATION_INSERT)
-{
-	// These are permanent connections so we won't bother
-	// storing a copy because we won't be disconnecting.
-	d_.showCitation = boost::bind(&ControlCitation::showInset, this, _1);
-	d_.createCitation = boost::bind(&ControlCitation::createInset, this, _1);
-}
+{}
 
 
 void ControlCitation::clearDaughterParams()

@@ -13,11 +13,9 @@
 #pragma implementation
 #endif
 
-#include "ViewBase.h"
-#include "ButtonControllerBase.h"
 #include "ControlParagraph.h"
+#include "ViewBase.h"
 #include "ParagraphParameters.h"
-#include "Dialogs.h"
 #include "Liason.h"
 #include "LyXView.h"
 #include "BufferView.h"
@@ -27,16 +25,12 @@
 #include "lyxtextclasslist.h"
 #include "support/LAssert.h"
 
-#include <boost/bind.hpp>
-
 using Liason::setMinibuffer;
 
 
 ControlParagraph::ControlParagraph(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d), pp_(0), ininset_(false)
-{
-	d_.showParagraph = boost::bind(&ControlParagraph::show, this);
-}
+{}
 
 
 ControlParagraph::~ControlParagraph()
@@ -83,13 +77,13 @@ void ControlParagraph::apply()
 			   pp_->noindent());
 
 	// Actually apply these settings
-	lv_.view()->update(text, 
+	lv_.view()->update(text,
 			   BufferView::SELECT |
 			   BufferView::FITCUR |
 			   BufferView::CHANGE);
-	
+
 	lv_.buffer()->markDirty();
-	
+
 	setMinibuffer(&lv_, _("Paragraph layout set"));
 }
 
@@ -101,13 +95,13 @@ void ControlParagraph::setParams()
 
 	/// get paragraph
 	Paragraph const * par_ = lv_.view()->getLyXText()->cursor.par();
-	
+
 	/// Set the paragraph parameters
-        *pp_ = par_->params();
-	
+	*pp_ = par_->params();
+
 	/// this needs to be done separately
 	pp_->labelWidthString(par_->getLabelWidthString());
-	
+
 	/// alignment
 	LyXTextClass const & tclass =
 		textclasslist[lv_.view()->buffer()->params.textclass];
@@ -118,5 +112,5 @@ void ControlParagraph::setParams()
 	alignpos_ = tclass[par_->layout()].alignpossible;
 
 	/// is paragraph in inset
-        ininset_ = par_->inInset();
+	ininset_ = par_->inInset();
 }

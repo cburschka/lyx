@@ -17,8 +17,7 @@
 
 #include "LString.h"
 #include "frontends/key_state.h"
-
-#include <boost/shared_ptr.hpp>
+#include "frontends/LyXKeySym.h"
 
 #include <list>
 
@@ -31,6 +30,7 @@ public:
 	 * Bind a key sequence to an action.
 	 * @return 0 on success, or position in string seq where error
 	 * occurs.
+	 * See kb_sequence::parse for the syntax of the seq string
 	 */
 	string::size_type bind(string const & seq, int action);
 
@@ -44,7 +44,7 @@ public:
 	 * @param seq the current key sequence so far
 	 * @return the action / LFUN_PREFIX / LFUN_UNKNOWN_ACTION
 	 */
-	int lookup(unsigned int key,
+	int lookup(LyXKeySymPtr key,
 		   key_modifier::state mod, kb_sequence * seq) const;
 
 	/// Given an action, find all keybindings.
@@ -53,13 +53,11 @@ public:
 
 	/**
 	 * Returns a string of the given keysym, with modifiers.
-	 * @param key the key
+	 * @param key the key as a keysym
 	 * @param mod the modifiers
 	 */
-	static string const printKeysym(unsigned int key, key_modifier::state mod);
-
-	/// return the ISO value of a keysym
-	static char getiso(unsigned int i);
+	static string const printKeysym(LyXKeySymPtr key,
+					key_modifier::state mod);
 
 	typedef std::pair<key_modifier::state, key_modifier::state> modifier_pair;
 
@@ -67,7 +65,7 @@ private:
 	///
 	struct kb_key {
 		/// Keysym
-		unsigned int code;
+		LyXKeySymPtr code;
 
 		/// Modifier masks
 		modifier_pair mod;
@@ -78,7 +76,6 @@ private:
 		/// Action for !prefix keys
 		int action;
 	};
-
 
 	/**
 	 * Define an action for a key sequence.

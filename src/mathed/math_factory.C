@@ -9,7 +9,6 @@
 #include "math_decorationinset.h"
 #include "math_dotsinset.h"
 #include "math_fontinset.h"
-#include "math_funcliminset.h"
 #include "math_fracinset.h"
 #include "math_kerninset.h"
 #include "math_lefteqninset.h"
@@ -21,7 +20,6 @@
 #include "math_sizeinset.h"
 #include "math_spaceinset.h"
 #include "math_splitinset.h"
-#include "math_specialcharinset.h"
 #include "math_sqrtinset.h"
 #include "math_stackrelinset.h"
 #include "math_substackinset.h"
@@ -32,12 +30,12 @@
 #include "math_xymatrixinset.h"
 #include "math_xyarrowinset.h"
 
-
 #include "math_metricsinfo.h"
 #include "debug.h"
 #include "math_support.h"
 #include "Lsstream.h"
 #include "support/filetools.h" // LibFileSearch
+#include "frontends/font_loader.h"
 
 #include <map>
 #include <fstream>
@@ -52,9 +50,9 @@ WordList theWordList;
 
 struct key_type {
 	///
-	char const * name;
+	string name;
 	///
-	char const * inset;
+	string inset;
 	///
 	int id;
 };
@@ -63,44 +61,24 @@ struct key_type {
 key_type wordlist_array[] =
 {
 	{"!",  "space", 0},
-	{"#",  "special", 0},
-	{"$",  "special", 0},
-	{"%",  "special", 0},
-	{"&",  "special", 0},
 	{"(",  "begin", LM_OT_SIMPLE},
 	{")",  "end", LM_OT_SIMPLE},
 	{",",  "space", 1},
-	{".",  "special", 0},
 	{":",  "space", 2},
 	{";",  "space", 3},
-	{"Pr",  "funclim", 0},
 	{"[",  "begin", LM_OT_EQUATION},
 	{"]",  "end", LM_OT_EQUATION},
-	{"_",  "special", '_'},
 	{"acute",  "decoration", 0},
-	{"arccos",  "func", 0},
-	{"arcsin",  "func", 0},
-	{"arctan",  "func", 0},
-	{"arg",  "func", 0},
 	{"bar",  "decoration", 0},
 	{"begin",  "begin", 0},
 	{"bf",  "oldfont", 0},
-	{"bmod",  "func", 0},
 	{"breve",  "decoration", 0},
 	{"cal",  "oldfont", 0},
 	{"cdots",  "dots", 0},
 	{"check",  "decoration", 0},
-	{"cos",  "func", 0},
-	{"cosh",  "func", 0},
-	{"cot",  "func", 0},
-	{"coth",  "func", 0},
-	{"csc",  "func", 0},
 	{"ddot",  "decoration", 0},
 	{"dddot",  "decoration", 0},
 	{"ddots",  "dots", 0},
-	{"deg",  "func", 0},
-	{"det",  "funclim", 0},
-	{"dim",  "func", 0},
 	{"displaystyle",  "style", LM_ST_DISPLAY},
 	{"dot",  "decoration", 0},
 	{"dotsb",  "dots", 0},
@@ -109,25 +87,14 @@ key_type wordlist_array[] =
 	{"dotsm",  "dots", 0},
 	{"dotso",  "dots", 0},
 	{"end",  "end", 0},
-	{"exp",  "func", 0},
 	{"frak",  "font", 0},
-	{"gcd",  "funclim", 0},
 	{"grave",  "decoration", 0},
 	{"hat",  "decoration", 0},
-	{"hom",  "func", 0},
-	{"inf",  "funclim", 0},
 	{"it",  "oldfont", 0},
-	{"ker",  "func", 0},
 	{"label",  "label", 0},
 	{"ldots",  "dots", 0},
 	{"left",  "left", 0},
-	{"lg",  "func", 0},
-	{"lim",  "funclim", 0},
-	{"liminf",  "funclim", 0},
 	{"limits",  "limit", 1 },
-	{"limsup",  "funclim", 0},
-	{"ln",  "func", 0},
-	{"log",  "func", 0},
 	{"lyxbox",  "box", 0},
 	{"lyxnegspace",  "space", 6},
 	{"mathbb",  "font", 0},
@@ -140,9 +107,7 @@ key_type wordlist_array[] =
 	{"mathrm",  "font", 0},
 	{"mathsf",  "font", 0},
 	{"mathtt",  "font", 0},
-	{"max",  "funclim", 0},
 	{"mbox",  "box", 0},
-	{"min",  "funclim", 0},
 	{"newcommand",  "newcommand", 0 },
 	{"nolimits",  "limit", -1},
 	{"nonumber",  "nonum", 0},
@@ -158,12 +123,6 @@ key_type wordlist_array[] =
 	{"rm",  "oldfont", 0},
 	{"scriptscriptstyle",  "style", LM_ST_SCRIPTSCRIPT},
 	{"scriptstyle",  "style", LM_ST_SCRIPT},
-	{"sec",  "func", 0},
-	{"sin",  "func", 0},
-	{"sinh",  "func", 0},
-	{"sup",  "funclim", 0},
-	{"tan",  "func", 0},
-	{"tanh",  "func", 0},
 	{"textbf",  "font", 1},
 	{"textit",  "font", 1},
 	{"textmd",  "font", 1},
@@ -183,11 +142,28 @@ key_type wordlist_array[] =
 	{"vdots",  "dots", 0},
 	{"vec",  "decoration", 0},
 	{"widehat",  "decoration", 0},
-	{"widetilde",  "decoration", 0},
-	{"{",  "special", '{'},
-	{"}",  "special", '}'}
+	{"widetilde",  "decoration", 0}
 };
 
+
+bool math_font_available(string & name)
+{
+	LyXFont f;
+	augmentFont(f, name);
+
+	// Do we have the font proper?
+	if (fontloader.available(f))
+		return true;
+
+	// can we fake it?
+	if (name == "eufrak") {
+		name = "lyxfakefrak";
+		return true;
+	}
+
+	lyxerr << "font " << name << " not available and I can't fake it\n";
+	return false;
+}
 
 
 void readSymbols(string const & filename)
@@ -210,14 +186,24 @@ void readSymbols(string const & filename)
 			continue;
 
 		// tmp.inset _is_ the fontname here.
-		if (math_font_available(tmp.inset)) {
+		// create fallbacks if necessary
+		if (tmp.extra == "func" || tmp.extra == "funclim" || tmp.extra=="special") {
+			lyxerr[Debug::MATHED] << "symbol abuse for " << tmp.name << "\n";
+			tmp.draw = tmp.name;
+		} else if (math_font_available(tmp.inset)) {
+			lyxerr[Debug::MATHED] << "symbol available for " << tmp.name << "\n";
 			tmp.draw += char(charid);
-		} else {
+		} else if (fallbackid) {
 			if (tmp.inset == "cmex")
-				tmp.inset  = "lyxsymb";
+				tmp.inset  = "lyxsymbol";
 			else
-				tmp.inset  = "lyxboldsymb";
+				tmp.inset  = "lyxboldsymbol";
+			lyxerr[Debug::MATHED] << "symbol fallback for " << tmp.name << "\n";
 			tmp.draw += char(fallbackid); 
+		} else {
+			lyxerr[Debug::MATHED] << "faking " << tmp.name << "\n";
+			tmp.draw = tmp.name;
+			tmp.inset = "lyxredtext";
 		}
 
 		if (theWordList.find(tmp.name) != theWordList.end())
@@ -319,19 +305,7 @@ MathAtom createMathInset(string const & s)
 	latexkeys const * l = in_word_set(s);
 	if (l) {
 		string const & inset = l->inset;
-		lyxerr[Debug::MATHED] << " fount inset: '" << inset << "'\n";
-		if (inset == "funclim")
-			return MathAtom(new MathFuncLimInset(s));
-		if (inset == "special")
-			return MathAtom(new MathSpecialCharInset(s[0]));
-		if (inset == "lyxsym" ||
-				inset == "cmr" ||
-				inset == "cmsy" ||
-				inset == "cmm" ||
-				inset == "cmex" ||
-				inset == "msa" ||
-				inset == "msb")
-			return MathAtom(new MathSymbolInset(l));
+		lyxerr[Debug::MATHED] << " found inset: '" << inset << "'\n";
 		if (inset == "underset")
 			return MathAtom(new MathUndersetInset);
 		if (inset == "decoration")
@@ -348,10 +322,7 @@ MathAtom createMathInset(string const & s)
 			return MathAtom(new MathFontInset(l->name));
 		if (inset == "oldfont")
 			return MathAtom(new MathFontInset(l->name));
-		if (inset == "func")
-			return MathAtom(new MathUnknownInset(l->name, true, true));
-		
-		return MathAtom(new MathUnknownInset(l->name));
+		return MathAtom(new MathSymbolInset(l));
 	}
 
 	if (MathMacroTable::has(s))

@@ -15,6 +15,7 @@
 #include "frontends/Timeout.h"
 #include "frontends/key_state.h"
 #include "frontends/mouse_state.h"
+#include "frontends/LyXKeySym.h"
 #include "box.h"
 #include "insets/insetspecialchar.h"
 #include "support/types.h"
@@ -28,10 +29,7 @@
 
 class LyXView;
 class WorkArea;
-class LScreen;
-
-// FIXME: remove
-#include <X11/Xlib.h>
+class LyXScreen;
  
 ///
 struct BufferView::Pimpl : public boost::signals::trackable {
@@ -43,7 +41,7 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	/// return the work area for this bview
 	WorkArea & workarea() const;
 	/// return the screen for this bview
-	LScreen & screen() const;
+	LyXScreen & screen() const;
 	///
 	void buffer(Buffer *);
 	///
@@ -79,7 +77,8 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	/// wheel mouse scroll
 	int scroll(long time);
 	///
-	void workAreaKeyPress(KeySym key, key_modifier::state state);
+	void workAreaKeyPress(LyXKeySymPtr key,
+			      key_modifier::state state);
 	///
 	void workAreaMotionNotify(int x, int y, mouse_button::state state);
 	///
@@ -172,7 +171,7 @@ private:
 	///
 	Buffer * buffer_;
 	///
-	boost::scoped_ptr<LScreen> screen_;
+	boost::scoped_ptr<LyXScreen> screen_;
 	///
 	boost::scoped_ptr<WorkArea> workarea_;
 	///

@@ -31,8 +31,11 @@ struct FD_tabular_longtable;
  */
 class FormTabular : public FormInset {
 public:
+	friend void gui_ShowTabular(InsetTabular *, LyXView &, Dialogs &);
+	friend void gui_UpdateTabular(InsetTabular *, LyXView &, Dialogs &);
+
 	/// #FormTabular x(LyXFunc ..., Dialogs ...);#
-	FormTabular(LyXView *, Dialogs *);
+	FormTabular(LyXView &, Dialogs &);
 
 private:
 	/// Pointer to the actual instantiation of the ButtonController.

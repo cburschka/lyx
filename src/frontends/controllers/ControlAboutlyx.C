@@ -14,10 +14,7 @@
 #pragma implementation
 #endif
 
-#include "ViewBase.h"
-#include "ButtonControllerBase.h"
 #include "ControlAboutlyx.h"
-#include "Dialogs.h"
 #include "frontends/LyXView.h"
 #include "Lsstream.h"
 #include "BufferView.h"
@@ -25,17 +22,14 @@
 #include "support/filetools.h" // FileSearch
 #include "version.h"
 
-#include <boost/bind.hpp>
-
 // needed for the browser
 extern string system_lyxdir;
 extern string user_lyxdir;
 
+
 ControlAboutlyx::ControlAboutlyx(LyXView & lv, Dialogs & d)
 	: ControlDialogBI(lv, d)
-{
-	d_.showAboutlyx = boost::bind(&ControlAboutlyx::show, this);
-}
+{}
 
 
 stringstream & ControlAboutlyx::getCredits(stringstream & ss) const
@@ -65,20 +59,24 @@ stringstream & ControlAboutlyx::getCredits(stringstream & ss) const
 	return ss;
 }
 
+
 string const ControlAboutlyx::getCopyright() const
 {
 	return _("LyX is Copyright (C) 1995 by Matthias Ettrich,\n1995-2001 LyX Team");
 }
+
 
 string const ControlAboutlyx::getLicense() const
 {
 	return _("This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.");
 }
 
+
 string const ControlAboutlyx::getDisclaimer() const
 {
 	return _("LyX is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\nSee the GNU General Public License for more details.\nYou should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.");
 }
+
 
 string const ControlAboutlyx::getVersion() const
 {

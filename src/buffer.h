@@ -180,10 +180,10 @@ public:
 	void makeDocBookFile(string const & filename,
 			     bool nice, bool only_body = false);
 	/// Open SGML/XML tag.
-	void sgmlOpenTag(std::ostream & os, Paragraph::depth_type depth,
+	int sgmlOpenTag(std::ostream & os, Paragraph::depth_type depth, bool mixcont,
 		string const & latexname) const;
 	/// Closes SGML/XML tag.
-	void sgmlCloseTag(std::ostream & os, Paragraph::depth_type depth,
+	int sgmlCloseTag(std::ostream & os, Paragraph::depth_type depth, bool mixcont,
 		string const & latexname) const;
 	///
 	void sgmlError(Paragraph * par, int pos, string const & message) const;

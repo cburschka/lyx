@@ -297,7 +297,7 @@ public:
 	///
 	int latex(Buffer const *, std::ostream &, bool, bool) const;
 	///
-	int docBook(Buffer const * buf, std::ostream & os) const;
+	int docbook(Buffer const * buf, std::ostream & os, bool mixcont) const;
 	///
 	int ascii(Buffer const *, std::ostream &, int const depth,
 		  bool onlydata, unsigned char delim) const;

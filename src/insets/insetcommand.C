@@ -213,7 +213,7 @@ int InsetCommand::linuxdoc(Buffer const *, ostream &) const
 }
 
 
-int InsetCommand::docbook(Buffer const *, ostream &) const
+int InsetCommand::docbook(Buffer const *, ostream &, bool) const
 {
 	return 0;
 }

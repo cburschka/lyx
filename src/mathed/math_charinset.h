@@ -29,7 +29,9 @@ public:
 	///
 	void write(WriteStream & os) const;
 	///
-	void normalize(NormalStream &) const;
+	void normalize(NormalStream & ns) const;
+	///
+	void octavize(OctaveStream & os) const;
 	/// identifies Charinsets
 	MathCharInset const * asCharInset() const { return this; }
 	///

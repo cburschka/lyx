@@ -18,8 +18,6 @@
 #endif
 
 #include "ControlTexinfo.h"
-#include "ViewBase.h"
-#include "ButtonControllerBase.h"
 #include "Dialogs.h"
 #include "BufferView.h"
 #include "gettext.h"
@@ -32,16 +30,12 @@
 #include "support/path.h"
 #include "support/lstrings.h"
 
-#include <boost/bind.hpp>
-
 extern string user_lyxdir; // home of *Files.lst
 
 
 ControlTexinfo::ControlTexinfo(LyXView & lv, Dialogs & d)
 	: ControlDialogBI(lv, d)
-{
-	d_.showTexinfo = boost::bind(&ControlTexinfo::show, this);
-}
+{}
 
 
 // build filelists of all availabe bst/cls/sty-files. done through

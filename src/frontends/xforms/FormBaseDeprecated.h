@@ -57,6 +57,8 @@ public:
 
 	Tooltips & tooltips();
 
+	friend void gui_ShowDocument(LyXView &, Dialogs &);
+
 protected: // methods
 
 	/// Pointer to the actual instantiation of the ButtonController.

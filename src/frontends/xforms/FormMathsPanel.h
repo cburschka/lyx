@@ -37,6 +37,7 @@ struct FD_maths_panel;
  */
 class FormMathsPanel : public FormBaseBD {
 public:
+	friend void gui_ShowMathPanel(LyXView &, Dialogs &);
 	///
 	FormMathsPanel(LyXView *, Dialogs *);
 	///
@@ -96,7 +97,7 @@ class FormMathsSub : public FormBaseBD {
 public:
 	///
 	FormMathsSub(LyXView *, Dialogs *, FormMathsPanel const &,
-		     string const &, bool allowResize=true);
+		     string const &, bool allowResize = true);
 
 protected:
 	/// Pointer to the actual instantiation of the ButtonController.

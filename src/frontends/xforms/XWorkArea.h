@@ -15,59 +15,49 @@
 #pragma interface
 #endif
 
+#include "frontends/WorkArea.h"
 #include "XPainter.h"
-#include "frontends/mouse_state.h"
-#include "frontends/key_state.h"
-
-#include <boost/signals/signal0.hpp>
-#include <boost/signals/signal1.hpp>
-#include <boost/signals/signal2.hpp>
-#include <boost/signals/signal3.hpp>
 
 #include FORMS_H_LOCATION
-#include <utility>
 
 ///
-class WorkArea {
+class XWorkArea : public WorkArea {
 public:
 	///
-	WorkArea(int xpos, int ypos, int width, int height);
+	XWorkArea(int xpos, int ypos, int width, int height);
 	///
-	~WorkArea();
+	~XWorkArea();
 	///
-	Painter & getPainter() { return painter_; }
+	virtual Painter & getPainter() { return painter_; }
 	///
-	int workWidth() const { return work_area->w; }
+	virtual int workWidth() const { return work_area->w; }
 	///
-	int workHeight() const { return work_area->h; }
+	virtual int workHeight() const { return work_area->h; }
 	///
-	unsigned int width() const { return work_area->w + scrollbar->w; }
-	//unsigned int width() const { return backgroundbox->w + 15; }
+	virtual unsigned int width() const { return work_area->w + scrollbar->w; }
 	///
-	int xpos() const { return work_area->x; }
-	//int xpos() const { return backgroundbox->x; }
+	virtual int xpos() const { return work_area->x; }
 	///
-	int ypos() const { return work_area->y; }
-	//int ypos() const { return backgroundbox->y; }
+	virtual int ypos() const { return work_area->y; }
 	///
-	void resize(int xpos, int ypos, int width, int height);
+	virtual void resize(int xpos, int ypos, int width, int height);
 	///
-	void redraw() const {
+	virtual void redraw() const {
 		fl_redraw_object(work_area);
 		fl_redraw_object(scrollbar);
 	}
 	///
-	void setFocus() const;
+	virtual void setFocus() const;
 	///
 	Window getWin() const { return work_area->form->window; }
 	///
-	bool hasFocus() const { return work_area->focus; }
+	virtual bool hasFocus() const { return work_area->focus; }
 	///
-	bool visible() const { return work_area->form->visible; }
+	virtual bool visible() const { return work_area->form->visible; }
 	///
-	void greyOut() const;
+	virtual void greyOut() const;
         ///
-        void setScrollbarParams(int height, int pos, int line_height);
+	virtual void setScrollbarParams(int height, int pos, int line_height);
 	///
 	Pixmap getPixmap() const { return workareapixmap; }
 	/// xforms callback
@@ -78,36 +68,11 @@ public:
 	/// xforms callback from scrollbar
 	void scroll_cb();
 	/// a selection exists
-	void haveSelection(bool) const;
+	virtual void haveSelection(bool) const;
 	///
-	string const getClipboard() const;
+	virtual string const getClipboard() const;
 	///
-	void putClipboard(string const &) const;
-	// Signals
-	///
-	boost::signal0<void> workAreaExpose;
-	///
-	boost::signal1<void, int> scrollDocView;
-	///
-	boost::signal2<void, KeySym, key_modifier::state> workAreaKeyPress;
-	///
-	boost::signal3<void, int, int, mouse_button::state> workAreaButtonPress;
-	///
-	boost::signal3<void, int, int, mouse_button::state> workAreaButtonRelease;
-	///
-	boost::signal3<void, int, int, mouse_button::state> workAreaMotionNotify;
-	///
-	boost::signal0<void> workAreaFocus;
-	///
-	boost::signal0<void> workAreaUnfocus;
-	///
-	boost::signal3<void, int, int, mouse_button::state> workAreaDoubleClick;
-	///
-	boost::signal3<void, int, int, mouse_button::state> workAreaTripleClick;
-	/// emitted when an X client has requested our selection
-	boost::signal0<void> selectionRequested;
-	/// emitted when another X client has stolen our selection
-	boost::signal0<void> selectionLost;
+	virtual void putClipboard(string const &) const;
 
 	/// handles SelectionRequest X Event, to fill the clipboard
 	int event_cb(XEvent * xev);

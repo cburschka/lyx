@@ -61,7 +61,7 @@ public:
 	///
 	MathArray();
 	///
-	MathArray(MathArray const &, size_type from, size_type to);
+	MathArray(MathArray const & ar, size_type from, size_type to);
 	///
 	MathArray(iterator from, iterator to);
 
@@ -74,26 +74,26 @@ public:
 	///
 	void swap(MathArray &);
 
-	///
-	void insert(size_type pos, MathAtom const &);
-	///
-	void insert(size_type pos, MathArray const &);
+	/// inserts single atom at position pos
+	void insert(size_type pos, MathAtom const & at);
+	/// inserts multiple atoms at position pos
+	void insert(size_type pos, MathArray const & ar);
 
-	///
+	/// erase range from pos1 to pos2
 	void erase(iterator pos1, iterator pos2);
-	///
+	/// erase single atom
 	void erase(iterator pos);
-	///
+	/// erase range from pos1 to pos2
 	void erase(size_type pos1, size_type pos2);
-	///
+	/// erase single atom
 	void erase(size_type pos);
-	///
+	/// erase everythng
 	void erase();
 
 	///
-	void push_back(MathAtom const &);
+	void push_back(MathAtom const & at);
 	///
-	void push_back(MathArray const &);
+	void push_back(MathArray const & ar);
 	///
 	void pop_back();
 	///
@@ -109,22 +109,25 @@ public:
 	///
 	void dump2() const;
 	///
-	void substitute(MathMacro const &);
-	/// looks for exact match
-	bool match(MathArray const &) const;
-	/// looks for inclusion match starting at pos
-	bool matchpart(MathArray const &, pos_type pos) const;
-	/// looks for containment
-	bool contains(MathArray const &) const;
+	void substitute(MathMacro const & macro);
 	///
 	void replace(ReplaceData &);
 
+	/// looks for exact match
+	bool match(MathArray const & ar) const;
+	/// looks for inclusion match starting at pos
+	bool matchpart(MathArray const & ar, pos_type pos) const;
+	/// looks for containment, return == size mean not found
+	size_type find(MathArray const & ar) const;
+	/// looks for containment, return == size mean not found
+	size_type find_last(MathArray const & ar) const;
 	///
-	MathAtom & at(size_type pos);
-	///
-	MathAtom const & at(size_type pos) const;
-	///
-	void validate(LaTeXFeatures &) const;
+	bool contains(MathArray const & ar) const;
+
+	/// write acccess to single atom
+	MathAtom & operator[](size_type pos) { return at(pos); }
+	/// read access o single atom
+	MathAtom const & operator[](size_type pos) const { return at(pos); }
 	///
 	const_iterator begin() const;
 	///
@@ -134,7 +137,17 @@ public:
 	///
 	iterator end();
 
+	///
+	void validate(LaTeXFeatures &) const;
+
 private:
+	/// is this an exact match at this position?
+	bool find1(MathArray const & ar, size_type pos) const;
+	/// write acccess to single atom
+	MathAtom & at(size_type pos);
+	/// read access o single atom
+	MathAtom const & at(size_type pos) const;
+
 	/// Buffer
 	buffer_type bf_;
 };

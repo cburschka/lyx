@@ -29,13 +29,13 @@ void MathNotInset::normalize(NormalStream & os) const
 void MathNotInset::metrics(MathMetricsInfo & mi) const
 {
 	font_ = mi.base.font;
-	if (math_font_available("cmsy")) {
-		augmentFont(font_, "cmsy");
-		char_ = 54;
-	} else {
+//	if (math_font_available("cmsy")) {
+//		augmentFont(font_, "cmsy");
+//		char_ = 54;
+//	} else {
 		augmentFont(font_, "mathnormal");
 		char_ = '/';
-	}
+//	}
 	mathed_char_dim(font_, char_, ascent_, descent_, width_);
 	width_ = 0;
 }

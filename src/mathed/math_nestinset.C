@@ -145,11 +145,14 @@ void MathNestInset::dump() const
 }
 
 
-void MathNestInset::draw(MathPainterInfo & pi, int x, int y) const
+//void MathNestInset::draw(MathPainterInfo & pi, int x, int y) const
+void MathNestInset::draw(MathPainterInfo &, int, int) const
 {
+#if 0
 	if (lock_)
 		pi.pain.fillRectangle(x, y - ascent(), width(), height(),
 					LColor::mathlockbg);
+#endif
 }
 
 
@@ -208,4 +211,13 @@ void MathNestInset::lock(bool l)
 bool MathNestInset::isActive() const
 {
 	return nargs() > 0;
+}
+
+
+MathArray MathNestInset::glue() const
+{
+	MathArray ar;
+	for (unsigned i = 0; i < nargs(); ++i)
+		ar.push_back(cell(i));
+	return ar;
 }

@@ -20,11 +20,9 @@
 
 #include "ControlVCLog.h"
 #include "Lsstream.h"
-#include "ViewBase.h"
 #include "ButtonControllerBase.h"
 #include "buffer.h"
 #include "BufferView.h"
-#include "Dialogs.h"
 #include "lyxrc.h"
 #include "gettext.h"
 
@@ -32,17 +30,15 @@
 
 #include "support/lyxlib.h"
 
-#include <boost/bind.hpp>
-
 #include <fstream>
 
 using std::endl;
 
+
 ControlVCLog::ControlVCLog(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d)
-{
-	d_.showVCLogFile = boost::bind(&ControlVCLog::show, this);
-}
+{}
+
 
 string const ControlVCLog::getBufferFileName() const
 {

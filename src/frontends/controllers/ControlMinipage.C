@@ -18,29 +18,12 @@
 #endif
 
 #include "ControlMinipage.h"
-#include "ViewBase.h"
-#include "ButtonControllerBase.h"
-#include "Dialogs.h"
-#include "frontends/LyXView.h"
-#include "buffer.h"
 #include "BufferView.h"
-#include "helper_funcs.h"
-
-#include <boost/bind.hpp>
-
-using std::vector;
 
 
 ControlMinipage::ControlMinipage(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetMinipage, MinipageParams>(lv, d)
-{
-	d_.showMinipage = boost::bind(&ControlMinipage::showInset, this, _1);
-
-	// We could have an extra method updateInset that calls
-	// view().update() rather than view().show(), but I don't see why
-	// it is really needed.
-	d_.updateMinipage = boost::bind(&ControlMinipage::showInset, this, _1);
-}
+{}
 
 
 void ControlMinipage::applyParamsToInset()

@@ -26,7 +26,6 @@
 #include "language.h"
 
 #include "ViewBase.h"
-#include "ButtonControllerBase.h"
 #include "Dialogs.h"
 #include "Liason.h"
 
@@ -38,10 +37,6 @@
 #ifdef USE_PSPELL
 # include "sp_pspell.h"
 #endif
-
-#include "debug.h"
-
-#include <boost/bind.hpp>
 
 #include <sys/types.h> // needed by <sys/select.h> at least on freebsd
 
@@ -60,9 +55,7 @@ ControlSpellchecker::ControlSpellchecker(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d),
 	  rtl_(false), newval_(0.0), oldval_(0), newvalue_(0), count_(0),
 	  stop_(false), result_(SpellBase::ISP_OK), speller_(0)
-{
-	d_.showSpellchecker = boost::bind(&ControlSpellchecker::show, this);
-}
+{}
 
 
 void ControlSpellchecker::setParams()

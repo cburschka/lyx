@@ -18,6 +18,7 @@
 #include "LyXView.h"
 #include "lyxrc.h" // lyxrc.show_banner
 #include "version.h" // lyx_version
+#include "XLyXKeySym.h"
 
 #if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
 #include "lyxlookup.h"
@@ -123,33 +124,33 @@ key_modifier::state x_key_state(unsigned int state)
 
 
 extern "C" {
-	// Just a bunch of C wrappers around static members of WorkArea
+	// Just a bunch of C wrappers around static members of XWorkArea
 	static
-	void C_WorkArea_scroll_cb(FL_OBJECT * ob, long)
+	void C_XWorkArea_scroll_cb(FL_OBJECT * ob, long)
 	{
-		WorkArea * area = static_cast<WorkArea*>(ob->u_vdata);
+		XWorkArea * area = static_cast<XWorkArea*>(ob->u_vdata);
 		area->scroll_cb();
 	}
 
 
 	static
-	int C_WorkArea_work_area_handler(FL_OBJECT * ob, int event,
+	int C_XWorkArea_work_area_handler(FL_OBJECT * ob, int event,
 					 FL_Coord, FL_Coord,
 					 int key, void * xev)
 	{
-		return WorkArea::work_area_handler(ob, event,
+		return XWorkArea::work_area_handler(ob, event,
 						   0, 0, key, xev);
 	}
 
 	static
-	int C_WorkAreaEventCB(FL_FORM * form, void * xev) {
-		WorkArea * wa = static_cast<WorkArea*>(form->u_vdata);
+	int C_XWorkAreaEventCB(FL_FORM * form, void * xev) {
+		XWorkArea * wa = static_cast<XWorkArea*>(form->u_vdata);
 		return wa->event_cb(static_cast<XEvent*>(xev));
 	}
 }
 
 
-WorkArea::WorkArea(int x, int y, int w, int h)
+XWorkArea::XWorkArea(int x, int y, int w, int h)
 	: splash_(0), splash_text_(0), workareapixmap(0), painter_(*this)
 {
 	fl_freeze_all_forms();
@@ -207,7 +208,7 @@ WorkArea::WorkArea(int x, int y, int w, int h)
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthEastGravity, SouthEastGravity);
 	obj->u_vdata = this;
-	fl_set_object_callback(obj, C_WorkArea_scroll_cb, 0);
+	fl_set_object_callback(obj, C_XWorkArea_scroll_cb, 0);
 	fl_set_scrollbar_bounds(scrollbar, 0.0, 0.0);
 	fl_set_scrollbar_value(scrollbar, 0.0);
 	fl_set_scrollbar_size(scrollbar, scrollbar->h);
@@ -232,9 +233,9 @@ WorkArea::WorkArea(int x, int y, int w, int h)
 				      x + bw, y + bw,
 				      w - 15 - 2 * bw, // scrollbarwidth
 				      h - 2 * bw, "",
-				      C_WorkArea_work_area_handler);
+				      C_XWorkArea_work_area_handler);
 	obj->wantkey = FL_KEY_ALL;
-	obj->u_vdata = this; /* This is how we pass the WorkArea
+	obj->u_vdata = this; /* This is how we pass the XWorkArea
 				to the work_area_handler. */
 	fl_set_object_boxtype(obj,FL_DOWN_BOX);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
@@ -242,20 +243,20 @@ WorkArea::WorkArea(int x, int y, int w, int h)
 
 	/// X selection hook - xforms gets it wrong
 	fl_current_form->u_vdata = this;
-	fl_register_raw_callback(fl_current_form, FL_ALL_EVENT, C_WorkAreaEventCB);
+	fl_register_raw_callback(fl_current_form, FL_ALL_EVENT, C_XWorkAreaEventCB);
 
 	fl_unfreeze_all_forms();
 }
 
 
-WorkArea::~WorkArea()
+XWorkArea::~XWorkArea()
 {
 	if (workareapixmap)
 		XFreePixmap(fl_get_display(), workareapixmap);
 }
 
 
-void WorkArea::resize(int xpos, int ypos, int width, int height)
+void XWorkArea::resize(int xpos, int ypos, int width, int height)
 {
 	fl_freeze_all_forms();
 
@@ -297,7 +298,7 @@ void destroy_object(FL_OBJECT * obj)
 } // namespace anon
 
 
-void WorkArea::createPixmap(int width, int height)
+void XWorkArea::createPixmap(int width, int height)
 {
 	// Three calls to createPixmap are needed to draw the initial view
 	// of LyX. Any more and the splash is destroyed.
@@ -335,7 +336,7 @@ void WorkArea::createPixmap(int width, int height)
 }
 
 
-void WorkArea::greyOut() const
+void XWorkArea::greyOut() const
 {
 	if (!splash_) {
 		fl_winset(FL_ObjWin(work_area));
@@ -345,13 +346,13 @@ void WorkArea::greyOut() const
 }
 
 
-void WorkArea::setFocus() const
+void XWorkArea::setFocus() const
 {
 	fl_set_focus_object(work_area->form, work_area);
 }
 
 
-void WorkArea::setScrollbarParams(int height, int pos, int line_height)
+void XWorkArea::setScrollbarParams(int height, int pos, int line_height)
 {
 	// we need to cache this for scroll_cb
 	doc_height_ = height;
@@ -391,7 +392,7 @@ void WorkArea::setScrollbarParams(int height, int pos, int line_height)
 
 
 // callback for scrollbar slider
-void WorkArea::scroll_cb()
+void XWorkArea::scroll_cb()
 {
 	double const val = fl_get_scrollbar_value(scrollbar);
 	lyxerr[Debug::GUI] << "scroll: val: " << val << endl;
@@ -402,7 +403,7 @@ void WorkArea::scroll_cb()
 }
 
 
-int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
+int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 				FL_Coord, FL_Coord ,
 				int key, void * xev)
 {
@@ -411,7 +412,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 	static long scrollbar_value_old = -1;
 
 	XEvent * ev = static_cast<XEvent*>(xev);
-	WorkArea * area = static_cast<WorkArea*>(ob->u_vdata);
+	XWorkArea * area = static_cast<XWorkArea*>(ob->u_vdata);
 
 	if (!area) return 1;
 
@@ -477,15 +478,16 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 //		lyxerr << "We have " << num_keys << " keys in the returned buffer" << endl;
 //		lyxerr << "Our dummy string is " << dummy << endl;
 #endif
+		
 		if (lyxerr.debugging(Debug::KEY)) {
 			char const * tmp = XKeysymToString(key);
 			char const * tmp2 = XKeysymToString(keysym);
 			string const stm = (tmp ? tmp : "");
 			string const stm2 = (tmp2 ? tmp2 : "");
 
-			lyxerr[Debug::KEY] << "WorkArea: Key is `" << stm << "' ["
+			lyxerr[Debug::KEY] << "XWorkArea: Key is `" << stm << "' ["
 			       << key << "]" << endl;
-			lyxerr[Debug::KEY] << "WorkArea: Keysym is `" << stm2 << "' ["
+			lyxerr[Debug::KEY] << "XWorkArea: Keysym is `" << stm2 << "' ["
 			       << keysym << "]" << endl;
 		}
 
@@ -562,7 +564,11 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		last_key_pressed = xke->keycode;
 		last_state_pressed = ret_state;
 
-		area->workAreaKeyPress(ret_key, x_key_state(ret_state));
+		XLyXKeySym * xlk = new XLyXKeySym;
+		xlk->initFromKeySym(ret_key);
+		
+		area->workAreaKeyPress(LyXKeySymPtr(xlk),
+				       x_key_state(ret_state));
 	}
 	break;
 
@@ -637,7 +643,7 @@ extern "C" {
 } // namespace anon
 
 
-int WorkArea::event_cb(XEvent * xev)
+int XWorkArea::event_cb(XEvent * xev)
 {
 	int ret = 0;
 	switch (xev->type) {
@@ -654,7 +660,7 @@ int WorkArea::event_cb(XEvent * xev)
 }
 
 
-void WorkArea::haveSelection(bool yes) const
+void XWorkArea::haveSelection(bool yes) const
 {
 	if (!yes) {
 		XSetSelectionOwner(fl_get_display(), XA_PRIMARY, None, CurrentTime);
@@ -665,7 +671,7 @@ void WorkArea::haveSelection(bool yes) const
 }
 
 
-string const WorkArea::getClipboard() const
+string const XWorkArea::getClipboard() const
 {
 	clipboard_read = false;
 
@@ -686,7 +692,7 @@ string const WorkArea::getClipboard() const
 }
 
 
-void WorkArea::putClipboard(string const & s) const
+void XWorkArea::putClipboard(string const & s) const
 {
 	static string hold;
 	hold = s;

@@ -122,6 +122,12 @@ void MathCharInset::normalize(NormalStream & os) const
 }
 
 
+void MathCharInset::octavize(OctaveStream & os) const
+{
+	os << char_;
+}
+
+
 bool MathCharInset::isRelOp() const
 {
 	return char_ == '=' || char_ == '<' || char_ == '>';

@@ -2362,7 +2362,7 @@ int LyXTabular::docbookRow(Buffer const * buf, ostream & os, int row) const
 		}
 
 		os << ">";
-		ret += GetCellInset(cell)->docbook(buf, os);
+		ret += GetCellInset(cell)->docbook(buf, os, true);
 		os << "</entry>\n";
 		++cell;
 	}
@@ -2371,7 +2371,7 @@ int LyXTabular::docbookRow(Buffer const * buf, ostream & os, int row) const
 }
 
 
-int LyXTabular::docBook(Buffer const * buf, ostream & os) const
+int LyXTabular::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 {
 	int ret = 0;
 

@@ -54,7 +54,7 @@ public:
 	int ascii(Buffer const * buf, std::ostream & os, int linelen) const;
 	///
 	virtual
-	int docbook(Buffer const * buf, std::ostream & os) const;
+	int docbook(Buffer const * buf, std::ostream & os, bool mixcont) const;
 protected:
 private:
 };

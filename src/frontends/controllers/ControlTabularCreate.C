@@ -20,20 +20,16 @@
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
 #include "BufferView.h"
-#include "Dialogs.h"
 #include "lyxfunc.h"
 
 #include "frontends/LyXView.h"
 
 #include "support/lstrings.h"
 
-#include <boost/bind.hpp>
 
 ControlTabularCreate::ControlTabularCreate(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d)
-{
-	d_.showTabularCreate = boost::bind(&ControlTabularCreate::show, this);
-}
+{}
 
 
 ControlTabularCreate::rowsCols & ControlTabularCreate::params()

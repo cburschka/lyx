@@ -66,8 +66,6 @@ LyXView::~LyXView()
 
 void LyXView::init()
 {
-	// Set the textclass choice
-	invalidateLayoutChoice();
 	updateLayoutChoice();
 	updateMenubar();
 	
@@ -182,12 +180,6 @@ void LyXView::resetAutosaveTimer()
 }
 
 
-void LyXView::invalidateLayoutChoice()
-{
-	last_textclass_ = -1;
-}
-
-
 void LyXView::updateLayoutChoice()
 {
 	// don't show any layouts without a buffer
@@ -197,12 +189,8 @@ void LyXView::updateLayoutChoice()
 	}
 
 	// update the layout display
-	if (last_textclass_ != int(buffer()->params.textclass)) {
-		toolbar_->updateLayoutList(true);
-		last_textclass_ = int(buffer()->params.textclass);
-		current_layout = textclasslist[last_textclass_].defaultLayoutName();
-	} else {
-		toolbar_->updateLayoutList(false);
+	if (toolbar_->updateLayoutList(buffer()->params.textclass)) {
+		current_layout = textclasslist[buffer()->params.textclass].defaultLayoutName();
 	}
 
 	string const & layout =

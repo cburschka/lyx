@@ -2,9 +2,10 @@
 // information" from the unstructered layout-oriented stuff in an
 // MathArray.
 
-#include <algorithm>
+#include <config.h>
 
 #include "math_amsarrayinset.h"
+#include "math_arrayinset.h"
 #include "math_charinset.h"
 #include "math_deliminset.h"
 #include "math_diffinset.h"
@@ -13,17 +14,24 @@
 #include "math_fracinset.h"
 #include "math_matrixinset.h"
 #include "math_mathmlstream.h"
+#include "math_numberinset.h"
 #include "math_scriptinset.h"
 #include "math_stringinset.h"
 #include "math_symbolinset.h"
 #include "math_unknowninset.h"
+#include "math_parser.h"
 #include "Lsstream.h"
 #include "debug.h"
+#include "support/lyxlib.h"
+#include "support/systemcall.h"
+#include "support/filetools.h"
 
+#include <algorithm>
 
 using std::ostream;
 using std::istringstream;
 using std::find_if;
+using std::endl;
 
 
 ostream & operator<<(ostream & os, MathArray const & ar)
@@ -120,12 +128,13 @@ MathScriptInset const * asScript(MathArray::const_iterator it)
 
 // returns sequence of char with same code starting at it up to end
 // it might be less, though...
-MathArray::const_iterator charSequence(MathArray::const_iterator it,
-	MathArray::const_iterator end, string & s)
+string charSequence
+	(MathArray::const_iterator it, MathArray::const_iterator end)
 {
+	string s;
 	for (; it != end && (*it)->asCharInset(); ++it)
 		s += (*it)->getChar();
-	return it;
+	return s;
 }
 
 
@@ -133,18 +142,11 @@ void extractStrings(MathArray & ar)
 {
 	//lyxerr << "\nStrings from: " << ar << "\n";
 	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
-		MathArray::iterator it = ar.begin() + i;
-		if (!(*it)->asCharInset())
+		if (!ar[i]->asCharInset())
 			continue;
-
-		// create proper string inset
-		MathStringInset * p = new MathStringInset;
-		MathArray::const_iterator
-			jt = charSequence(it, ar.end(), p->str_);
-
-		// clean up
-		(*it).reset(p);
-		ar.erase(i + 1, jt - ar.begin());
+		string s = charSequence(ar.begin() + i, ar.end());
+		ar[i].reset(new MathStringInset(s));
+		ar.erase(i + 1, i + s.size());
 	}
 	//lyxerr << "\nStrings to: " << ar << "\n";
 }
@@ -201,20 +203,16 @@ bool extractString(MathInset * p, string & str)
 // convert this inset somehow to a number
 bool extractNumber(MathArray const & ar, int & i)
 {
-	string s;
-	charSequence(ar.begin(), ar.end(), s);
-	istringstream is(s.c_str());
+	istringstream is(charSequence(ar.begin(), ar.end()).c_str());
 	is >> i;
 	return is;
 }
 
 
-bool extractNumber(MathArray const & ar, double & i)
+bool extractNumber(MathArray const & ar, double & d)
 {
-	string s;
-	charSequence(ar.begin(), ar.end(), s);
-	istringstream is(s.c_str());
-	is >> i;
+	istringstream is(charSequence(ar.begin(), ar.end()).c_str());
+	is >> d;
 	return is;
 }
 
@@ -343,6 +341,49 @@ void extractExps(MathArray & ar)
 	}
 	//lyxerr << "\nExps to: " << ar << "\n";
 }
+
+
+//
+// search numbers
+//
+
+bool isDigitOrSimilar(char c)
+{
+	return ('0' <= c && c <= '9') || c == '.';
+}
+
+
+// returns sequence of digits
+string digitSequence
+	(MathArray::const_iterator it, MathArray::const_iterator end)
+{
+	string s;
+	for (; it != end && (*it)->asCharInset(); ++it) {
+		if (!isDigitOrSimilar((*it)->getChar()))
+			break;
+		s += (*it)->getChar();
+	}
+	return s;
+}
+
+
+void extractNumbers(MathArray & ar)
+{
+	//lyxerr << "\nNumbers from: " << ar << "\n";
+	for (MathArray::size_type i = 0; i < ar.size(); ++i) {
+		if (!ar[i]->asCharInset())
+			continue;
+		if (!isDigitOrSimilar(ar[i]->asCharInset()->getChar()))
+			continue;
+
+		string s = digitSequence(ar.begin() + i, ar.end());
+
+		ar[i].reset(new MathNumberInset(s));
+		ar.erase(i + 1, i + s.size());
+	}
+	//lyxerr << "\nNumbers to: " << ar << "\n";
+}
+
 
 
 //
@@ -660,7 +701,7 @@ void extractDiff(MathArray & ar)
 		MathArray::iterator jt = it + 1;
 		//int n = 1;
 		MathArray & numer = f->cell(0);
-		if (numer.size() > 1 && numer.at(1)->asScriptInset()) {
+		if (numer.size() > 1 && numer[1]->asScriptInset()) {
 			// this is something like  d^n f(x) / d... or  d^n / d...
 			// FIXME
 			//n = 1;
@@ -716,6 +757,7 @@ void extractDiff(MathArray & ar)
 void extractStructure(MathArray & ar)
 {
 	splitScripts(ar);
+	extractNumbers(ar);
 	extractMatrices(ar);
 	extractDelims(ar);
 	extractFunctions(ar);
@@ -812,4 +854,201 @@ void mathmlize(MathArray const & dat, MathMLStream & os)
 		}
 		os << ETag("mrow");
 	}
+}
+
+
+
+
+namespace {
+
+	string captureOutput(string const & cmd, string const & data)
+	{
+		string outfile = lyx::tempName(string(), "mathextern");
+		string full =  "echo '" + data + "' | (" + cmd + ") > " + outfile;
+		lyxerr << "calling: " << full << endl;
+		Systemcall dummy;
+		dummy.startscript(Systemcall::Wait, full);
+		string out = GetFileContents(outfile);
+		lyx::unlink(outfile);
+		lyxerr << "result: '" << out << "'" << endl;
+		return out;
+	}
+
+
+	MathArray pipeThroughMaple(string const & extra, MathArray const & ar)
+	{
+		string header = "readlib(latex):\n";
+
+		// remove the \\it for variable names
+		//"#`latex/csname_font` := `\\it `:"
+		header +=
+			"`latex/csname_font` := ``:\n";
+
+		// export matrices in (...) instead of [...]
+		header +=
+			"`latex/latex/matrix` := "
+				"subs(`[`=`(`, `]`=`)`,"
+					"eval(`latex/latex/matrix`)):\n";
+
+		// replace \\cdots with proper '*'
+		header +=
+			"`latex/latex/*` := "
+				"subs(`\\,`=`\\cdot `,"
+					"eval(`latex/latex/*`)):\n";
+
+		// remove spurious \\noalign{\\medskip} in matrix output
+		header +=
+			"`latex/latex/matrix`:= "
+				"subs(`\\\\\\\\\\\\noalign{\\\\medskip}` = `\\\\\\\\`,"
+					"eval(`latex/latex/matrix`)):\n";
+
+		//"#`latex/latex/symbol` "
+		//	" := subs((\\'_\\' = \\'`\\_`\\',eval(`latex/latex/symbol`)): ";
+
+		string trailer = "quit;";
+		ostringstream os;
+		MapleStream ms(os);
+		ms << ar;
+		string expr = os.str().c_str();
+		lyxerr << "ar: '" << ar << "'\n";
+
+		for (int i = 0; i < 100; ++i) { // at most 100 attempts
+			// try to fix missing '*' the hard way by using mint
+			//
+			// ... > echo "1A;" | mint -i 1 -S -s -q
+			// on line     1: 1A;
+			//                 ^ syntax error -
+			//                   Probably missing an operator such as * p
+			//
+			lyxerr << "checking expr: '" << expr << "'\n";
+			string out = captureOutput("mint -i 1 -S -s -q -q", expr + ";");
+			if (out.empty())
+				break; // expression syntax is ok
+			istringstream is(out.c_str());
+			string line;
+			getline(is, line);
+			if (line.find("on line") != 0)
+				break; // error message not identified
+			getline(is, line);
+			string::size_type pos = line.find('^');
+			if (pos == string::npos || pos < 15)
+				break; // caret position not found
+			pos -= 15; // skip the "on line ..." part
+			if (expr[pos] == '*' || (pos > 0 && expr[pos - 1] == '*'))
+				break; // two '*' in a row are definitely bad
+			expr.insert(pos,  "*");
+		}
+
+		string full = "latex(" +  extra + '(' + expr + "));";
+		string out = captureOutput("maple -q", header + full + trailer);
+
+		// change \_ into _
+
+		//
+		MathArray res;
+		mathed_parse_cell(res, out);
+		return res;
+	}
+
+
+	MathArray pipeThroughOctave(string const &, MathArray const & ar)
+	{
+		ostringstream os;
+		OctaveStream vs(os);
+		vs << ar;
+		string expr = os.str().c_str();
+		string out;
+
+		lyxerr << "pipe: ar: '" << ar << "'\n";
+		lyxerr << "pipe: expr: '" << expr << "'\n";
+
+		for (int i = 0; i < 100; ++i) { // at most 100 attempts
+			//
+			// try to fix missing '*' the hard way
+			// parse error:
+			// >>> ([[1 2 3 ];[2 3 1 ];[3 1 2 ]])([[1 2 3 ];[2 3 1 ];[3 1 2 ]])
+			//                                   ^
+			//
+			lyxerr << "checking expr: '" << expr << "'\n";
+			out = captureOutput("octave -q 2>&1", expr);
+			lyxerr << "checking out: '" << out << "'\n";
+
+			// leave loop if expression syntax is probably ok
+			if (out.find("parse error:") == string::npos)
+				break;
+
+			// search line with single caret
+			istringstream is(out.c_str());
+			string line;
+			while (is) {
+				getline(is, line);
+				lyxerr << "skipping line: '" << line << "'\n";
+				if (line.find(">>> ") != string::npos)
+					break;
+			}
+
+			// found line with error, next line is the one with caret
+			getline(is, line);
+			string::size_type pos = line.find('^');
+			lyxerr << "caret line: '" << line << "'\n";
+			lyxerr << "found caret at pos: '" << pos << "'\n";
+			if (pos == string::npos || pos < 4)
+				break; // caret position not found
+			pos -= 4; // skip the ">>> " part
+			if (expr[pos] == '*')
+				break; // two '*' in a row are definitely bad
+			expr.insert(pos,  "*");
+		}
+
+		if (out.size() < 6)
+			return MathArray();
+
+		// remove 'ans = '
+		out = out.substr(6);
+
+		// parse output as matrix or single number
+		MathAtom at(new MathArrayInset("array", out));
+		MathArrayInset const * mat = at.nucleus()->asArrayInset();
+		MathArray res;
+		if (mat->ncols() == 1 && mat->nrows() == 1)
+			res.push_back(mat->cell(0));
+		else {
+			res.push_back(MathAtom(new MathDelimInset("(", ")")));
+			res.back()->cell(0).push_back(at);
+		}
+		return res;
+	}
+
+}
+
+
+MathArray pipeThroughExtern(string const & lang, string const & extra,
+	MathArray const & ar)
+{
+	if (lang == "octave")
+		return pipeThroughOctave(extra, ar);
+
+	if (lang == "maple")
+		return pipeThroughMaple(extra, ar);
+
+	// create normalized expression
+	ostringstream os;
+	NormalStream ns(os);
+	os << "[" << extra << ' ';
+	ns << ar;
+	os << "]";
+	string data = os.str().c_str();
+
+	// search external script
+	string file = LibFileSearch("mathed", "extern_" + lang);
+	if (file.empty()) {
+		lyxerr << "converter to '" << lang << "' not found\n";
+		return MathArray();
+	}
+
+	// run external sript
+	string out = captureOutput(file, data);
+	MathArray res;
+	mathed_parse_cell(res, out);
+	return res;
 }

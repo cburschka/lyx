@@ -66,6 +66,8 @@ public:
 	///
 	void paste(MathArray const &);
 	///
+	void paste(MathGridInset const & data);
+	///
 	void erase();
 	///
 	void backspace();
@@ -105,9 +107,13 @@ public:
 	/// current inset
 	MathInset * par() const;
 	/// return the next enclosing grid inset and the cursor's index in it
-	MathGridInset * enclosingGrid(idx_type &) const;
-	/// return the next enclosing grid inset and the cursor's index in it
+	MathGridInset * enclosingGrid(idx_type & idx) const;
+	/// return the next enclosing hull inset and the cursor's index in it
+	MathHullInset * enclosingHull(idx_type & idx) const;
+	/// go up to enclosing grid
 	void popToEnclosingGrid();
+	/// go up to the hull inset
+	void popToEnclosingHull();
 	///
 	InsetFormulaBase * formula();
 	/// current offset in the current cell
@@ -229,6 +235,8 @@ public:
 	MathCursorPos & cursor();
 	/// reference to the last item of the path, i.e. "The Cursor"
 	MathCursorPos const & cursor() const;
+	/// how deep are we nested?
+	unsigned depth() const;
 
 	/// describe the situation
 	string info() const;
@@ -236,8 +244,6 @@ public:
 	void seldump(char const * str) const;
 	/// dump selection information for debugging
 	void dump(char const * str) const;
-	///
-	void stripFromLastEqualSign();
 	/// moves on
 	void setSelection(cursor_type const & where, size_type n);
 	///
@@ -248,23 +254,37 @@ public:
 	/// hack for reveal codes
 	void markInsert();
 	void markErase();
+	void handleExtern(string const & arg);
 
 	///
 	friend class Selection;
 
+
 private:
-	/// moves cursor position one cell to the left
-	bool posLeft();
-	/// moves cursor position one cell to the right
-	bool posRight();
 	/// moves cursor index one cell to the left
 	bool idxLeft();
 	/// moves cursor index one cell to the right
 	bool idxRight();
+	/// moves cursor to beginning first cell of current line
+	bool idxLineFirst();
+	/// moves cursor to end of last cell of current line
+	bool idxLineLast();
+	/// moves cursor position one cell to the left
+	bool posLeft();
+	/// moves cursor position one cell to the right
+	bool posRight();
 	/// moves position somehow up or down
 	bool goUpDown(bool up);
 	/// moves position into box
 	bool bruteFind(int xo, int yo, int xlow, int xhigh, int ylow, int yhigh);
+
+
+	/// grab grid marked by anchor and current cursor 
+	MathGridInset grabSelection() const;
+	/// erase the selected part and re-sets the cursor
+	void eraseSelection();
+	/// guess what
+	MathGridInset grabAndEraseSelection();
 
 	///
 	string macroName() const;
@@ -277,9 +297,9 @@ private:
 	/// write access to cursor cell index
 	idx_type & idx();
 
-	/// path of positions the cursor had to go if it were leving each inset
+	/// path of positions the cursor had to go if it were leaving each inset
 	cursor_type Cursor_;
-	/// path of positions the anchor had to go if it were leving each inset
+	/// path of positions the anchor had to go if it were leaving each inset
 	mutable cursor_type Anchor_;
 	/// pointer to enclsing LyX inset
 	InsetFormulaBase * formula_;

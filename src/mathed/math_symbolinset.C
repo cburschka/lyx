@@ -48,6 +48,7 @@ void MathSymbolInset::metrics(MathMetricsInfo & mi) const
 	//	<< "'\n";
 	MathFontSetChanger dummy(mi.base, sym_->inset.c_str());
 	mathed_string_dim(mi.base.font, sym_->draw, ascent_, descent_, width_);
+	// correct height for broken cmex font
 	if (sym_->inset == "cmex") {
 		h_ = 4 * descent_ / 5;
 		ascent_  += h_;
@@ -55,7 +56,11 @@ void MathSymbolInset::metrics(MathMetricsInfo & mi) const
 	}
 	if (isRelOp())
 		width_ += 6;
-	scriptable_ = (mi.base.style == LM_ST_DISPLAY && sym_->inset == "cmex");
+
+	scriptable_ = false;
+	if (mi.base.style == LM_ST_DISPLAY)
+		if (sym_->inset == "cmex" || sym_->extra == "funclim")
+			scriptable_ = true;
 }
 
 
@@ -86,7 +91,10 @@ bool MathSymbolInset::isScriptable() const
 
 bool MathSymbolInset::takesLimits() const
 {
-	return sym_->inset == "cmex" || sym_->inset == "lyxboldsymb";
+	return
+		sym_->inset == "cmex" ||
+		sym_->inset == "lyxboldsymb" ||
+		sym_->extra == "funclim";
 }
 
 

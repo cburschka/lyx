@@ -50,7 +50,7 @@ public:
 	void InitKeyMapper(bool on);
 
 	// Get the Translation Manager
-	TransManager & getTrans();
+	TransManager & getTransManager();
 
 	/// using primary or secondary keymap ?
 	Keymap keymap;
@@ -68,7 +68,7 @@ private:
 
 
 inline
-TransManager & Intl::getTrans()
+TransManager & Intl::getTransManager()
 {
 	return trans;
 }

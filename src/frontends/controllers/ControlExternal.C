@@ -19,35 +19,20 @@
 #pragma implementation
 #endif
 
-#include "BufferView.h"
-#include "ButtonControllerBase.h"
 #include "ControlExternal.h"
-#include "Dialogs.h"
-#include "Liason.h"
-#include "frontends/LyXView.h"
-#include "ViewBase.h"
-#include "buffer.h"
-#include "frontends/Alert.h"
+#include "BufferView.h"
 #include "gettext.h"
 #include "helper_funcs.h"
 #include "lyxrc.h"
 #include "support/filetools.h"
-#include "support/lstrings.h"
 
-#include <boost/scoped_ptr.hpp>
-#include <boost/bind.hpp>
-
-#include <utility>
 #include <vector>
 
-using std::make_pair;
 using std::vector;
 
 ControlExternal::ControlExternal(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetExternal, InsetExternal::Params>(lv, d)
-{
-	d_.showExternal = boost::bind(&ControlExternal::showInset, this, _1);
-}
+{}
 
 
 InsetExternal::Params const ControlExternal::getParams(string const &)

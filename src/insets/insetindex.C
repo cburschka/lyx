@@ -37,7 +37,7 @@ void InsetIndex::edit(BufferView * bv, bool)
 }
 
 
-int InsetIndex::docbook(Buffer const *, ostream & os) const
+int InsetIndex::docbook(Buffer const *, ostream & os, bool) const
 {
 	os << "<indexterm><primary>" << getContents()
 	   << "</primary></indexterm>";

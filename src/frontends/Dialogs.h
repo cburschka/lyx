@@ -24,8 +24,6 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/signal1.hpp>
-#include <boost/function.hpp>
-
 #include <vector>
 
 #ifdef __GNUG__
@@ -95,101 +93,101 @@ public:
 	   Put into some sort of alphabetical order */
 	//@{
 	///
-	boost::function<void> showAboutlyx;
+	void showAboutlyx();
 	/// show the key and label of a bibliography entry
-	boost::function<void, InsetCommand *> showBibitem;
+	void showBibitem(InsetCommand * ic);
 	/// show the bibtex dialog
-	boost::function<void, InsetCommand *> showBibtex;
+	void showBibtex(InsetCommand * ic);
 	///
-	boost::function<void> showCharacter;
+	void showCharacter();
 	/// connected to the character dialog also
-	boost::function<void> setUserFreeFont;
+	void setUserFreeFont();
 	///
-	boost::function<void, InsetCommand *> showCitation;
+	void showCitation(InsetCommand *);
 	///
-	boost::function<void, string const &> createCitation;
+	void createCitation(string const &);
 	///
-	boost::function<void> showDocument;
+	void showDocument();
 	///
-	boost::function<void, InsetError *> showError;
+	void showError(InsetError *);
 	/// show the external inset dialog
-	boost::function<void, InsetExternal *> showExternal;
+	void showExternal(InsetExternal *);
 	/// show the contents of a file.
-	boost::function<void, string const &> showFile;
+	void showFile(string const &);
 	/// show all forked child processes
-	boost::function<void> showForks;
+	void showForks();
 	///
-	boost::function<void, InsetGraphics *> showGraphics;
+	void showGraphics(InsetGraphics *);
 	/// show the details of a LyX file include inset
-	boost::function<void, InsetInclude *> showInclude;
+	void showInclude(InsetInclude *);
 	///
-	boost::function<void, InsetCommand *> showIndex;
+	void showIndex(InsetCommand *);
 	///
-	boost::function<void, string const &> createIndex;
+	void createIndex(string const &);
 	///
-	boost::function<void, InsetInfo *> showInfo;
+	void showInfo(InsetInfo *);
 	/// show the LaTeX log or build file
-	boost::function<void> showLogFile;
+	void showLogFile();
 	/// display the top-level maths panel
-	boost::function<void> showMathPanel;
+	void showMathPanel();
 	///
-	boost::function<void, InsetMinipage *> showMinipage;
+	void showMinipage(InsetMinipage *);
 	///
-	boost::function<void, InsetMinipage *> updateMinipage;
+	void updateMinipage(InsetMinipage *);
 	///
-	boost::function<void, InsetERT *> showERT;
+	void showERT(InsetERT *);
 	///
-	boost::function<void, InsetERT *> updateERT;
+	void updateERT(InsetERT *);
 	///
-	boost::function<void, InsetFloat *> showFloat;
+	void showFloat(InsetFloat *);
 	///
-	boost::function<void> showParagraph;
+	void showParagraph();
 	///
-	boost::signal0<void> updateParagraph;
+	void updateParagraph();
 	///
-	boost::function<void> showPreamble;
+	void showPreamble();
 	///
-	boost::function<void> showPreferences;
+	void showPreferences();
 	///
-	boost::function<void> showPrint;
+	void showPrint();
 	///
-	boost::function<void, InsetCommand *> showRef;
+	void showRef(InsetCommand *);
 	///
-	boost::function<void, string const &> createRef;
+	void createRef(string const &);
 	///
-	boost::function<void> showSearch;
+	void showSearch();
 	///
-	boost::function<void> showSendto;
+	void showSendto();
 	/// bring up the spellchecker
-	boost::function<void> showSpellchecker;
+	void showSpellchecker();
 	/// bring up the spellchecker tab in preferences
-	boost::function<void> showSpellcheckerPreferences;
+	void showSpellcheckerPreferences();
 	///
-	boost::function<void, InsetTabular *> showTabular;
+	void showTabular(InsetTabular *);
 	///
-	boost::function<void, InsetTabular *> updateTabular;
+	void updateTabular(InsetTabular *);
 	///
-	boost::function<void> showTabularCreate;
+	void showTabularCreate();
 	/// show the TexInfo
-	boost::function<void> showTexinfo;
+	void showTexinfo();
 	/// show the thesaurus dialog
-	boost::function<void, string const &> showThesaurus;
+	void showThesaurus(string const &);
 	///
-	boost::function<void, InsetCommand *> showTOC;
+	void showTOC(InsetCommand *);
 	///
-	boost::function<void, string const &> createTOC;
+	void createTOC(string const &);
 	///
-	boost::function<void, InsetCommand *> showUrl;
+	void showUrl(InsetCommand *);
 	///
-	boost::function<void, string const &> createUrl;
+	void createUrl(string const &);
 	/// show the version control log
-	boost::function<void> showVCLogFile;
+	void showVCLogFile();
 	//@}
 private:
 	/// Add a dialog to the vector of dialogs.
-	void add(DialogBase *);
+	//void add(DialogBase *);
 	/// the dialogs being managed
-	std::vector<db_ptr> dialogs_;
+	//std::vector<db_ptr> dialogs_;
 };
 
 #endif

@@ -41,7 +41,7 @@ public:
 	///
 	Inset::Code lyxCode() const;
 	///
-	int docbook(Buffer const *, std::ostream &) const;
+	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
 };
 
 

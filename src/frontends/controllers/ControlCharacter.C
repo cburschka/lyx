@@ -16,7 +16,6 @@
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
 #include "buffer.h"
-#include "Dialogs.h"
 #include "Liason.h"
 #include "bufferview_funcs.h" // ToggleAndShow
 #include "gettext.h"
@@ -25,21 +24,13 @@
 
 #include "frontends/LyXView.h"
 
-#include <boost/bind.hpp>
-
-#include <vector>
-
 using Liason::setMinibuffer;
-using std::vector;
 
 
 ControlCharacter::ControlCharacter(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d),
 	  font_(0), toggleall_(false)
-{
-	d_.showCharacter = boost::bind(&ControlCharacter::show, this);
-	d_.setUserFreeFont = boost::bind(&ControlCharacter::apply, this);
-}
+{}
 
 
 void ControlCharacter::setParams()

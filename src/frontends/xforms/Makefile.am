@@ -40,6 +40,8 @@ libxforms_la_SOURCES = \
 	xforms_resize.h \
 	$(XFORMSGIMAGE) xformsBC.C \
 	xformsBC.h \
+	xscreen.C \
+	xscreen.h \
 	Alert_pimpl.C \
 	Color.C \
 	Color.h \
@@ -141,6 +143,9 @@ libxforms_la_SOURCES = \
 	FormUrl.h \
 	FormVCLog.C \
 	FormVCLog.h \
+	guiapi.C \
+	LyXKeySymFactory.C \
+	LyXScreenFactory.C \
 	MathsSymbols.C \
 	MathsSymbols.h \
 	Menubar_pimpl.C \
@@ -153,8 +158,11 @@ libxforms_la_SOURCES = \
 	Toolbar_pimpl.h \
 	Tooltips.C \
 	Tooltips.h \
+	WorkAreaFactory.C \
 	XFormsView.C \
 	XFormsView.h \
+	XLyXKeySym.C \
+	XLyXKeySym.h \
 	XPainter.C \
 	XPainter.h \
 	XWorkArea.h \

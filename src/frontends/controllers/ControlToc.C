@@ -18,28 +18,20 @@
 #endif
 
 #include "ControlToc.h"
-#include "ViewBase.h"
-#include "ButtonControllerBase.h"
 #include "buffer.h"
 #include "Dialogs.h"
 #include "lyxfunc.h"
 #include "gettext.h"
 #include "BufferView.h"
 
-#include "frontends/LyXView.h"
-
 #include "support/lstrings.h" // tostr
-
-#include <boost/bind.hpp>
 
 using std::vector;
 
+
 ControlToc::ControlToc(LyXView & lv, Dialogs & d)
 	: ControlCommand(lv, d, LFUN_TOC_INSERT)
-{
-	d_.showTOC = boost::bind(&ControlToc::showInset, this, _1);
-	d_.createTOC = boost::bind(&ControlToc::createInset, this, _1);
-}
+{}
 
 
 void ControlToc::Goto(int const & id) const

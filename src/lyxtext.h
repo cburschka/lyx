@@ -83,7 +83,7 @@ public:
 	mutable LyXFont current_font;
 	/// the current font
 	mutable LyXFont real_current_font;
-	/// first visible pixel-row is set from LScreen!!!
+	/// first visible pixel-row is set from LyXScreen!!!
 	// unsigned is wrong here for text-insets!
 	int first_y;
 	///

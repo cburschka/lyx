@@ -9,19 +9,14 @@
  */
 
 #include <config.h>
-#include <utility>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
 #include "ControlInclude.h"
-#include "ViewBase.h"
-#include "ButtonControllerBase.h"
-#include "buffer.h"
 #include "Alert.h"
 #include "BufferView.h"
-#include "Dialogs.h"
 #include "lyxfunc.h"
 #include "gettext.h"
 #include "helper_funcs.h"
@@ -29,18 +24,14 @@
 
 #include "support/filetools.h"
 
-#include "frontends/LyXView.h"
-
-#include <boost/bind.hpp>
+#include <utility>
 
 using std::pair;
-using std::make_pair;
+
 
 ControlInclude::ControlInclude(LyXView & lv, Dialogs & d)
 	: ControlInset<InsetInclude, InsetInclude::Params>(lv, d)
-{
-	d_.showInclude = boost::bind(&ControlInclude::showInset, this, _1);
-}
+{}
 
 
 void ControlInclude::applyParamsToInset()

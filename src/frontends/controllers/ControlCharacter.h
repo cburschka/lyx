@@ -61,9 +61,9 @@ public:
 	///
 	bool getToggleAll() const;
 
-private:
 	/// Get changed parameters and Dispatch them to the kernel.
 	virtual void apply();
+private:
 	/// set the params before show or update.
 	virtual void setParams();
 

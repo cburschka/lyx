@@ -1,3 +1,39 @@
+2002-06-16    <alstrup@diku.dk>
+
+	* BufferView_pimpl.C (Pimpl): Use WorkAreaFactory.
+	Got rid of FORMS_H_LOCATION include. Now we are
+	GUII.
+
+2002-06-15  LyX Development team  <lyx@rilke>
+
+	* buffer.[Ch] (sgmlOpenTag):
+	(sgmlCloseTag): Added support for avoiding pernicious mixed
+	content. Return number of lines written.
+
+	(makeLinuxDocFile):
+	(makeDocBookFile): Fixed calls to sgml*Tag.
+	Simple white space clean.
+
+	(simpleDocBookOnePar): Simple white space clean.
+
+	* tabular.[Ch] (docBook): Renamed to docbook and got another
+	argument to related with the pernicious mixed content.
+
+	(docbookRow): Fixed calls for docbook inset method.
+
+2002-06-15  Lyx Development team  <larsbj@birdstep.com>
+
+	* lyxfunc.[Ch]: Use LyXKeySym instead of KeySym, 
+	so it's X11 independent.
+
+	* kb*.[Ch]: ditto.
+
+	* BufferView_pimpl.[Ch] (workAreaKeyPress): ditto.
+
+2002-06-15  Lyx Development team  <lyx@electronia>
+
+	* intl.h: Renamed getTrans to getTransManager.
+
 2002-06-14  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am: nuke forgotten stl_string_fwd.h.

@@ -19,11 +19,7 @@
 #pragma implementation
 #endif
 
-#include "ViewBase.h"
-#include "ButtonControllerBase.h"
 #include "ControlBibtex.h"
-#include "Dialogs.h"
-#include "buffer.h"
 #include "BufferView.h"
 #include "lyxrc.h"
 #include "helper_funcs.h"
@@ -31,18 +27,13 @@
 
 #include "frontends/LyXView.h"
 
-#include <boost/bind.hpp>
-
-#include <algorithm>
-
 using std::pair;
-using std::make_pair;
+
 
 ControlBibtex::ControlBibtex(LyXView & lv, Dialogs & d)
 	: ControlCommand(lv, d)
-{
-	d_.showBibtex = boost::bind(&ControlBibtex::showInset, this, _1);
-}
+{}
+
 
 void ControlBibtex::applyParamsToInset()
 {

@@ -15,12 +15,11 @@
 #endif
 
 #include "frontends/mouse_state.h"
+#include "frontends/LyXKeySymFactory.h"
 #include "kbsequence.h"
 #include "kbmap.h"
 #include "commandtags.h"
 #include "debug.h"
-
-#include <X11/Xlib.h>
 
 using std::make_pair;
 using std::vector;
@@ -29,25 +28,20 @@ using std::hex;
 using std::dec;
 
 
-// The only modifiers that we handle. We want to throw away things
-// like NumLock.
-enum { ModsMask = ShiftMask | ControlMask | Mod1Mask };
 
-
-int kb_sequence::addkey(unsigned int key, key_modifier::state mod, key_modifier::state nmod)
+int kb_sequence::addkey(LyXKeySymPtr key,
+			key_modifier::state mod, key_modifier::state nmod)
 {
 	// adding a key to a deleted sequence
 	// starts a new sequence
 	if (deleted_) {
 		deleted_ = false;
-		length_ = 0;
 		sequence.clear();
 		modifiers.clear();
 	}
 
 	modifiers.push_back(make_pair(mod, nmod));
 	sequence.push_back(key);
-	++length_;
 
 	if (curmap) {
 		return curmap->lookup(key, mod, this);
@@ -112,13 +106,13 @@ string::size_type kb_sequence::parse(string const & s)
 			for (; j < s.length() && s[j] != ' '; ++j)
 				tbuf += s[j];    // (!!!check bounds :-)
 
-			KeySym key = XStringToKeysym(tbuf.c_str());
-			if (key == NoSymbol) {
-				lyxerr[Debug::KBMAP]
-					<< "kbmap.C: No such keysym: "
-					<< tbuf << endl;
+			LyXKeySymPtr key(LyXKeySymFactory::create());
+			key->init(tbuf);
+			
+			if ( ! key->isOK() ) {
 				return j;
 			}
+
 			i = j;
 
 			addkey(key, mod, nmod);
@@ -127,7 +121,7 @@ string::size_type kb_sequence::parse(string const & s)
 	}
 
 	// empty sequence?
-	if (!length_)
+	if (sequence.size() == 0)
 		return 0;
 
 	// everything is fine
@@ -142,11 +136,13 @@ string const kb_sequence::print() const
 	//if (deleted_)
 	//	return buf;
 
-	for (vector<unsigned int>::size_type i = 0; i < length_; ++i) {
+	KeySequence::size_type i, length = sequence.size();
+	
+	for (i = 0; i < length; ++i) {
 		buf += kb_keymap::printKeysym(sequence[i], modifiers[i].first);
 
 		// append a blank
-		if (i + 1 < length_) {
+		if (i + 1 < length) {
 			buf += ' ';
 		}
 	}
@@ -175,23 +171,17 @@ void kb_sequence::mark_deleted()
 }
 
 
-unsigned int kb_sequence::getsym() const
+LyXKeySymPtr kb_sequence::getsym() const
 {
-	if (length_ == 0) return NoSymbol;
-	return sequence[length_ - 1];
+	if (sequence.size() == 0)
+		return LyXKeySymPtr(LyXKeySymFactory::create());
+	return sequence.back();
 }
 
 
-char kb_sequence::getiso() const
+char kb_sequence::getLastKeyEncoded() const
 {
-	unsigned int const c = getsym();
-
-	lyxerr[Debug::KBMAP] << "Raw keysym: "
-			     << hex << c << dec << endl;
-	lyxerr[Debug::KBMAP] << "byte 3: "
-			     << hex << (c & 0xff00) << dec
-			     << endl;
-	return kb_keymap::getiso(c);
+	return getsym()->getISOEncoded();
 }
 
 
@@ -203,6 +193,6 @@ void kb_sequence::reset()
 
 void kb_sequence::clear()
 {
-	length_ = 0;
+	sequence.clear();
 	reset();
 }

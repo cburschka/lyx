@@ -125,6 +125,22 @@ MathInset * MathHullInset::clone() const
 }
 
 
+bool MathHullInset::idxFirst(idx_type & idx, pos_type & pos) const
+{
+	idx = 0;
+	pos = 0;
+	return true;
+}
+
+
+bool MathHullInset::idxLast(idx_type & idx, pos_type & pos) const
+{
+	idx = nargs() - 1;
+	pos = cell(idx).size();
+	return true;
+}
+
+
 char MathHullInset::defaultColAlign(col_type col)
 {
 	switch (getType()) {

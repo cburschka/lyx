@@ -46,10 +46,12 @@ bool Correction::read(istream & is)
 	is >> s1 >> s2 >> s3;
 	if (!is)
 		return false;
+	if (s2.size() != 1)
+		return false;
 	MathArray ar1, ar3;
 	mathed_parse_cell(ar1, s1);
 	mathed_parse_cell(ar3, s3);
-	if (ar1.size() != 1  ||  s2.size() != 1  ||  ar3.size() !=1)
+	if (ar1.size() != 1 || ar3.size() != 1)
 		return false;
 	from1_ = ar1.front();
 	from2_ = s2[0];

@@ -80,7 +80,7 @@ int InsetTOC::linuxdoc(Buffer const *, ostream & os) const
 }
 
 
-int InsetTOC::docbook(Buffer const *, ostream & os) const
+int InsetTOC::docbook(Buffer const *, ostream & os, bool) const
 {
 	if (getCmdName() == "tableofcontents")
 		os << "<toc></toc>";

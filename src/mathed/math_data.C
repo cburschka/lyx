@@ -230,16 +230,10 @@ bool MathArray::matchpart(MathArray const & ar, pos_type pos) const
 void MathArray::replace(ReplaceData & rep)
 {
 	for (size_type i = 0; i < size(); ++i) {
-		iterator it = begin() + i;
-		const_iterator rt = rep.from.begin();
-		const_iterator et = rep.from.end();
-		for (const_iterator jt = it; jt != end() && rt != et; ++jt, ++rt)
-			if (!jt->nucleus()->match(rt->nucleus()))
-				break;
-		if (rt == et) {
+		if (find1(rep.from, i)) {
 			// match found
 			lyxerr << "match found!\n";
-			erase(it, it + rep.from.size());
+			erase(i, i + rep.from.size());
 			insert(i, rep.to);
 		}
 	}
@@ -249,22 +243,40 @@ void MathArray::replace(ReplaceData & rep)
 }
 
 
+bool MathArray::find1(MathArray const & ar, size_type pos) const
+{
+	//lyxerr << "finding '" << ar << "' in '" << *this << "'\n";
+	for (size_type i = 0, n = ar.size(); i < n; ++i)
+		if (!at(pos + i)->match(ar[i].nucleus()))
+			return false;
+	return true;
+}
+
+
+MathArray::size_type MathArray::find(MathArray const & ar) const
+{
+	for (int i = 0, last = size() - ar.size(); i < last; ++i)
+		if (find1(ar, i))
+			return i;
+	return size();
+}
+
+
+MathArray::size_type MathArray::find_last(MathArray const & ar) const
+{
+	for (int i = size() - ar.size(); i >= 0; --i) 
+		if (find1(ar, i))
+			return i;
+	return size();
+}
+
+
 bool MathArray::contains(MathArray const & ar) const
 {
-	for (size_type i = 0; i + ar.size() <= size(); ++i) {
-		const_iterator it = begin() + i;
-		const_iterator rt = ar.begin();
-		const_iterator et = ar.end();
-		for (const_iterator jt = it; rt != et; ++jt, ++rt)
-			if (!jt->nucleus()->match(rt->nucleus()))
-				break;
-		if (rt == et)
-			return true;
-	}
-
+	if (find(ar) != size())
+		return true;
 	for (const_iterator it = begin(); it != end(); ++it)
 		if (it->nucleus()->contains(ar))
 			return true;
-
 	return false;
 }

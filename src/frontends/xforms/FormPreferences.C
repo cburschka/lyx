@@ -70,8 +70,8 @@ Converters local_converters;
 } // namespace anon
 
 
-FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
-	: FormBaseBI(lv, d, _("Preferences"), false),
+FormPreferences::FormPreferences(LyXView & lv, Dialogs & d)
+	: FormBaseBI(&lv, &d, _("Preferences"), false),
 	  colors_(*this), converters_(*this), inputs_misc_(*this),
 	  formats_(*this), interface_(*this), language_(*this),
 	  lnf_misc_(*this), outputs_misc_(*this), paths_(*this),
@@ -80,8 +80,12 @@ FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
 	// storing a copy because we won't be disconnecting.
+#if 0
 	d->showPreferences = boost::bind(&FormPreferences::show, this);
+#endif
+#if 0
 	d->showSpellcheckerPreferences = boost::bind(&FormPreferences::showSpellPref, this);
+#endif
 }
 
 

@@ -414,7 +414,7 @@ int InsetERT::linuxdoc(Buffer const *, ostream & os) const
 }
 
 
-int InsetERT::docbook(Buffer const *, ostream & os) const
+int InsetERT::docbook(Buffer const *, ostream & os, bool) const
 {
 	Paragraph * par = inset.paragraph();
 	int lines = 0;

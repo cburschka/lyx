@@ -54,4 +54,3 @@ private:
 };
 
 #endif // CONTROLPARAGRAPH_H
-

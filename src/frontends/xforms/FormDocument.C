@@ -62,10 +62,12 @@ FormDocument::FormDocument(LyXView * lv, Dialogs * d)
 	  ActCell(0), Confirmed(0),
 	  current_bullet_panel(0), current_bullet_depth(0), fbullet(0)
 {
+#if 0
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
 	// storing a copy because we won't be disconnecting.
 	d->showDocument = boost::bind(&FormDocument::show, this);
+#endif
 }
 
 

@@ -55,7 +55,11 @@ public:
 
 	virtual ~LyXView();
 
-	/// FIXME: what is the requirement for this be to separate from the ctor ?
+	/** 
+	 * This is called after the concrete view has been created.
+	 * We have to have the toolbar and the other stuff created
+	 * before we can populate it with this call.
+	 */
 	void init();
 
 	/// start modal operation
@@ -111,7 +115,7 @@ public:
 	void messagePop();
 	/// show state (font etc.) in minibuffer
 	void showState();
-	
+
 	/// updates the title of the window
 	void updateWindowTitle();
 
@@ -138,9 +142,6 @@ protected:
 	/// called on timeout
 	void autoSave();
 
-	/// FIXME: GUII - toolbar property
-	void invalidateLayoutChoice();
-
 private:
 	/**
 	 * setWindowTitle - set title of window
@@ -153,15 +154,6 @@ private:
 	boost::scoped_ptr<LyXFunc> lyxfunc_;
 	/// dialogs for this view
 	boost::scoped_ptr<Dialogs> dialogs_;
-
-	/**
-	 * The last textclass layout list in the layout choice selector
-	 * This should probably be moved to the toolbar, but for now it's
-	 * here. (Asger)
-	 *
-	 * FIXME: GUII
-	 */
-	int last_textclass_;
 };
 
 #endif // LYXVIEW_H

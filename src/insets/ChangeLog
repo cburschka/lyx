@@ -1,3 +1,8 @@
+2002-06-15  LyX Development team <lyx@rilke>
+
+	* inset*.[Ch] (docbook): Added new argument to take the pernicious
+	mixed content. Small white spaces clean.
+
 2002-06-14  Angus Leeming  <leeming@lyx.org>
 
 	* inseetexternal.C: remove the using std::difftime declaration.

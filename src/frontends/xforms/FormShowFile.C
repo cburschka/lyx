@@ -19,6 +19,7 @@
 #include "gettext.h"
 #include FORMS_H_LOCATION
 
+
 FormShowFile::FormShowFile(ControlShowFile & c)
 	: FormCB<ControlShowFile, FormBrowser>(c, string())
 {}

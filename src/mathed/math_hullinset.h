@@ -75,6 +75,10 @@ public:
 	int defaultColSpace(col_type col);
 	///
 	char defaultColAlign(col_type col);
+	///
+	bool idxFirst(idx_type &, pos_type &) const;
+	///
+	bool idxLast(idx_type &, pos_type &) const;
 
 	///
 	MathInsetTypes getType() const;

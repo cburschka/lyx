@@ -4,9 +4,9 @@
 
 /*
 
-If someone desperately needs partial "structures" (such as a few cells of
-an array inset or similar) (s)he could uses the following hack as starting
-point to write some macros:
+If someone desperately needs partial "structures" (such as a few
+cells of an array inset or similar) (s)he could uses the
+following hack as starting point to write some macros:
 
   \newif\ifcomment
   \commentfalse
@@ -43,6 +43,7 @@ point to write some macros:
 #include "math_boxinset.h"
 #include "math_charinset.h"
 #include "math_deliminset.h"
+#include "math_extern.h"
 #include "math_factory.h"
 #include "math_kerninset.h"
 #include "math_macro.h"
@@ -53,7 +54,6 @@ point to write some macros:
 #include "math_sizeinset.h"
 #include "math_sqrtinset.h"
 #include "math_scriptinset.h"
-#include "math_specialcharinset.h"
 #include "math_sqrtinset.h"
 #include "math_support.h"
 #include "math_xyarrowinset.h"
@@ -75,6 +75,7 @@ using std::stack;
 using std::fill;
 using std::vector;
 using std::atoi;
+
 
 //#define FILEDEBUG
 
@@ -124,18 +125,16 @@ inline CatCode catcode(unsigned char c)
 
 
 enum {
-	FLAG_BRACE_LAST = 1 << 1,  //  last closing brace ends the parsing process
+	FLAG_BRACE_LAST = 1 << 1,  //  last closing brace ends the parsing
 	FLAG_RIGHT      = 1 << 2,  //  next \\right ends the parsing process
 	FLAG_END        = 1 << 3,  //  next \\end ends the parsing process
-	FLAG_BRACK_END  = 1 << 4,  //  next closing bracket ends the parsing process
-	FLAG_TEXTMODE        = 1 << 5,  //  we are in a box
+	FLAG_BRACK_END  = 1 << 4,  //  next closing bracket ends the parsing
+	FLAG_TEXTMODE   = 1 << 5,  //  we are in a box
 	FLAG_ITEM       = 1 << 6,  //  read a (possibly braced token)
-	FLAG_BLOCK      = 1 << 7,  //  next block ends the parsing process
-	FLAG_BLOCK2     = 1 << 8,  //  next block2 ends the parsing process
-	FLAG_LEAVE      = 1 << 9,  //  leave the loop at the end
-	FLAG_SIMPLE     = 1 << 10, //  next $ leaves the loop
-	FLAG_EQUATION   = 1 << 11, //  next \] leaves the loop
-	FLAG_SIMPLE2    = 1 << 12  //  next \) leaves the loop
+	FLAG_LEAVE      = 1 << 7,  //  leave the loop at the end
+	FLAG_SIMPLE     = 1 << 8,  //  next $ leaves the loop
+	FLAG_EQUATION   = 1 << 9,  //  next \] leaves the loop
+	FLAG_SIMPLE2    = 1 << 10  //  next \) leaves the loop
 };
 
 
@@ -719,7 +718,6 @@ void Parser::parse_into2(MathAtom & at, unsigned flags, bool numbered)
 
 void Parser::parse_into1(MathGridInset & grid, unsigned flags, bool numbered)
 {
-	bool panic  = false;
 	int  limits = 0;
 	MathGridInset::row_type cellrow = 0;
 	MathGridInset::col_type cellcol = 0;
@@ -754,21 +752,6 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags, bool numbered)
 
 			// handle only this single token, leave the loop if done
 			flags |= FLAG_LEAVE;
-		}
-
-		if (flags & FLAG_BLOCK) {
-			if (t.cat() == catAlign || t.isCR() || t.cs() == "end") {
-				putback();
-				return;
-			}
-		}
-
-		if (flags & FLAG_BLOCK2) {
-			if (t.cat() == catAlign || t.isCR() || t.cs() == "end"
-					|| t.cat() == catEnd) {
-				putback();
-				return;
-			}
 		}
 
 		//
@@ -873,8 +856,17 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags, bool numbered)
 			// ignore \\protect, will be re-added during output
 			;
 
-		else if (t.cs() == "end")
-			break;
+		else if (t.cs() == "end") {
+			if (flags & FLAG_END) {
+				// eat environment name
+				//string const name =
+				getArg('{', '}');
+				// FIXME: check that we ended the correct environment
+				return;
+			}
+			lyxerr << "found 'end' unexpectedly, cell: '" << cell << "'\n";
+			dump();
+		}
 
 		else if (t.cs() == ")")
 			break;
@@ -892,6 +884,39 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags, bool numbered)
 				grid.asHullInset()->numbered(cellrow, numbered);
 			cell = &grid.cell(grid.index(cellrow, cellcol));
 		}
+
+#if 1
+		else if (t.cs() == "multicolumn") {
+			// extract column count and insert dummy cells
+			MathArray count;
+			parse_into(count, FLAG_ITEM);
+			int cols = 1;
+			if (!extractNumber(count, cols)) {
+				lyxerr << " can't extract number of cells from " << count << "\n";
+			}
+			// resize the table if necessary
+			for (int i = 0; i < cols; ++i) {
+				++cellcol;
+				if (cellcol == grid.ncols()) { 
+					lyxerr << "adding column " << cellcol << "\n";
+					grid.addCol(cellcol - 1);
+				}
+				cell = &grid.cell(grid.index(cellrow, cellcol));
+				// mark this as dummy
+				grid.cellinfo(grid.index(cellrow, cellcol)).dummy_ = true;
+			}
+			// the last cell is the real thng, not a dummy
+			grid.cellinfo(grid.index(cellrow, cellcol)).dummy_ = false;
+
+			// read special alignment
+			MathArray align;
+			parse_into(align, FLAG_ITEM);
+			//grid.cellinfo(grid.index(cellrow, cellcol)).align_ = extractString(align);
+
+			// parse the remaining contents into the "real" cell
+			parse_into(*cell, FLAG_ITEM);
+		}
+#endif
 
 		else if (t.cs() == "limits")
 			limits = 1;
@@ -1085,15 +1110,6 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags, bool numbered)
 			flags &= ~FLAG_LEAVE;
 			break;
 		}
-	}
-
-	if (panic) {
-		lyxerr << " Math Panic, expect problems!\n";
-		//   Search for the end command.
-		Token t;
-		do {
-			t = getToken();
-		} while (good() && t.cs() != "end");
 	}
 }
 
