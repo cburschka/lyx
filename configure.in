@@ -112,16 +112,6 @@ dnl by testing these we check if it is ok to have
 dnl -lc and -lm as args to the compiler
 AC_CHECK_LIB(m, sin)
 AC_CHECK_LIB(c, fopen)
-AC_ARG_WITH(aiksaurus,
-  [  --without-aiksaurus     do not use the Aiksaurus library],
-  [lyx_use_aiksaurus=$withval])
-if test x$lyx_use_aiksaurus != xno; then
-AC_CHECK_LIB(Aiksaurus, main,
-	[AC_DEFINE(HAVE_LIBAIKSAURUS,,[Define this if you have the AikSaurus library])
-	 AIKSAURUS_LIBS="-lAiksaurus -lbz2"
-	],,"-lbz2")
-fi
-AC_SUBST(AIKSAURUS_LIBS)
 
 ### Add extra directories to check for libraries.
 LYX_WITH_DIR([extra-lib],[extra library directory],extra_lib, NONE)
@@ -149,6 +139,17 @@ if test x$lyx_use_liberty = xyes; then
   AC_CHECK_LIB(iberty,main)
 fi
 
+AC_ARG_WITH(aiksaurus,
+  [  --without-aiksaurus     do not use the Aiksaurus library],
+  [lyx_use_aiksaurus=$withval])
+if test x$lyx_use_aiksaurus != xno; then
+AC_CHECK_LIB(Aiksaurus, main,
+	[AC_DEFINE(HAVE_LIBAIKSAURUS,,[Define this if you have the AikSaurus library])
+	 AIKSAURUS_LIBS="-lAiksaurus -lbz2"
+	],,"-lbz2")
+fi
+AC_SUBST(AIKSAURUS_LIBS)
+ 
 ### Setup libtool
 AC_DISABLE_SHARED
 AC_LIBTOOL_WIN32_DLL
