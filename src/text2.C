@@ -1718,7 +1718,7 @@ void LyXText::cursorUp(bool selecting)
 		lyxerr << "y:" << y << " y0: " << y0_ << endl;
 		InsetOld * inset_hit = checkInsetHit(bv()->x_target(), y);
 		if (inset_hit && isHighlyEditableInset(inset_hit))
-			inset_hit->edit(bv(), x, y);
+			inset_hit->edit(bv(), bv()->x_target(), y);
 	}
 }
 
@@ -1734,7 +1734,7 @@ void LyXText::cursorDown(bool selecting)
 		y += y0_ - bv()->top_y();
 		InsetOld * inset_hit = checkInsetHit(bv()->x_target(), y);
 		if (inset_hit && isHighlyEditableInset(inset_hit))
-			inset_hit->edit(bv(), x, y);
+			inset_hit->edit(bv(), bv()->x_target(), y);
 	}
 }
 
