@@ -82,7 +82,7 @@ namespace {
 		string code = os.str().c_str();
 
 		// run external sript
-		string file = LibFileSearch(string(), "lyx2" + lang);
+		string file = LibFileSearch("mathed", "extern_" + lang);
 		if (file.empty()) {
 			lyxerr << "converter to '" << lang << "' not found\n";
 			return MathArray();
