@@ -1,3 +1,4 @@
+
 # Standard textclass definition file. Taken from initial LyX source code
 # Author : Matthias Ettrich <ettrich@informatik.uni-tuebingen.de>
 # Transposed by Pascal André <andre@via.ecp.fr>
@@ -112,3 +113,43 @@ Style Bibliography
   AlignPossible		Block, Left
   LabelType		Counter_EnumI
 End
+
+
+#
+# New environments (not active yet)
+#
+#Environment Itemize
+#	LaTeXHeader "\begin{itemize}"
+#	LaTeXFooter "\end{itemize}"
+#  LabelString		*
+#  Margin		Static
+#  LatexType		Item_Environment
+#  NextNoIndent		1
+#  LeftMargin		MMN
+#  LabelSep		xx
+#  ItemSep		0.2
+#  TopSep		0.7
+#  BottomSep		0.7
+#  ParSep		0.3
+#  Align			Block
+#  AlignPossible		Block, Left
+#  LabelType		Static
+#End
+
+#Environment Enumerate
+#  Margin		Static
+#  LatexType		Item_Environment
+#  LatexName		enumerate
+#  NextNoIndent		1
+#  LeftMargin		MMN
+#  LabelSep		xx
+#  ParSkip		0.0
+#  ItemSep		0.2
+#  TopSep		0.7
+#  BottomSep		0.7
+#  ParSep		0.3
+#  Align			Block
+#  AlignPossible		Block, Left
+#  LabelType		Counter_EnumI
+#End
+

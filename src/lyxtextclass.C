@@ -32,13 +32,19 @@ using std::ostream;
 namespace { // anon
 
 struct compare_name {
+
 	compare_name(string const & name)
-		: name_(name) {}
-	template <class C>
-	bool operator()(C & c) {
+		: name_(name)
+	{}
+
+	bool operator()(boost::shared_ptr<LyXLayout> const & c)
+	{
+		//lyxerr << "comparing '" << name_ << "' to '" << c->name() << "'\n";
 		return c->name() == name_;
 	}
+
 	string name_;
+
 };
 
 } // anon
@@ -107,7 +113,8 @@ enum TextClassTags {
 	TC_COUNTER,
 	TC_NOFLOAT,
 	TC_TITLELATEXNAME,
-	TC_TITLELATEXTYPE
+	TC_TITLELATEXTYPE,
+	TC_ENVIRONMENT
 };
 
 // Reads a textclass structure from file.
@@ -201,8 +208,7 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 				string const name = subst(lexrc.getString(),
 						    '_', ' ');
 				if (hasLayout(name)) {
-					LyXLayout * lay =
-						operator[](name).get();
+					LyXLayout * lay = operator[](name).get();
 					error = do_readStyle(lexrc, *lay);
 				} else {
 					LyXLayout lay;
@@ -216,6 +222,29 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 						// encounter.
 						defaultlayout_ = name;
 					}
+				}
+			}
+			else {
+				lexrc.printError("No name given for style: `$$Token'.");
+				error = true;
+			}
+			break;
+
+		case TC_ENVIRONMENT:
+			if (lexrc.next()) {
+				string const name = subst(lexrc.getString(),
+						    '_', ' ');
+				if (hasLayout(name)) {
+					LyXLayout * lay = operator[](name).get();
+					error = do_readStyle(lexrc, *lay);
+				} else {
+					LyXLayout lay;
+					lay.setName(name);
+					if (!(error = do_readStyle(lexrc, lay)))
+						envlist_.push_back
+							(boost::shared_ptr<LyXLayout>(new LyXLayout(lay)));
+					else
+						lexrc.printError("Problems reading environment: `$$Token'.");
 				}
 			}
 			else {
@@ -732,7 +761,7 @@ LyXLayout_ptr const & LyXTextClass::operator[](string const & n) const
 	lyx::Assert(!n.empty());
 
 	if (n.empty())
-		lyxerr << "Operator[] called with empty n" << endl;
+		lyxerr << "LyXTextClass::operator[] called with empty n" << endl;
 
 	string const name = (n.empty() ? defaultLayoutName() : n);
 
@@ -760,6 +789,28 @@ LyXLayout_ptr const & LyXTextClass::operator[](string const & n) const
 	lastLayoutIndex = std::distance(layoutlist_.begin(), cit);
 
 	return (*cit);
+}
+
+
+LyXLayout_ptr const & LyXTextClass::getEnv(string const & name) const
+{
+	lyx::Assert(!name.empty());
+
+	if (name.empty())
+		lyxerr << "LyXTextClass::getEnv() called with empty n" << endl;
+
+	LayoutList::const_iterator cit =
+		find_if(envlist_.begin(), envlist_.end(), compare_name(name));
+
+	if (cit == envlist_.end()) {
+		lyxerr << "We failed to find the environment '" << name
+		       << "' in the layout list. You MUST investigate!"
+		       << endl;
+		// we require the name to exist
+		lyx::Assert(false);
+	}
+
+	return *cit;
 }
 
 
