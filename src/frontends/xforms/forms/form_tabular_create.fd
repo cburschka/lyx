@@ -9,19 +9,19 @@ SnapGrid: 5
 
 =============== FORM ===============
 Name: form_tabular_create
-Width: 310
-Height: 130
+Width: 290
+Height: 100
 Number of Objects: 6
 
 --------------------
 class: FL_BOX
-type: UP_BOX
-box: 0 0 310 130
-boxtype: FL_UP_BOX
+type: FLAT_BOX
+box: 0 0 290 100
+boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
@@ -34,7 +34,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 10 90 90 30
+box: 5 70 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -43,16 +43,16 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: OK
 shortcut: ^M
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: button_ok
 callback: C_FormBaseOKCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 110 90 90 30
+box: 100 70 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -61,16 +61,16 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Apply|#A
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: button_apply
 callback: C_FormBaseApplyCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 210 90 90 30
+box: 195 70 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -79,16 +79,16 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Cancel|^[
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: button_close
 callback: C_FormBaseCancelCB
-argument: 
+argument: 0
 
 --------------------
 class: FL_VALSLIDER
 type: HOR_SLIDER
-box: 80 50 220 30
+box: 75 35 210 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_LEFT
@@ -97,16 +97,21 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Columns:
 shortcut: 
-resize: FL_RESIZE_X
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_ALL
+gravity: FL_West FL_East
 name: slider_columns
 callback: 
 argument: 
+	bounds: 1 50
+	precision: 0
+	value: 5
+	increment: 1 1
+	step: 1
 
 --------------------
 class: FL_VALSLIDER
 type: HOR_SLIDER
-box: 80 10 220 30
+box: 75 5 210 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_LEFT
@@ -115,11 +120,16 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Rows:
 shortcut: 
-resize: FL_RESIZE_X
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_ALL
+gravity: FL_West FL_East
 name: slider_rows
 callback: 
 argument: 
+	bounds: 1 50
+	precision: 0
+	value: 5
+	increment: 1 0
+	step: 1
 
 ==============================
 create_the_forms

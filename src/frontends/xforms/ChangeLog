@@ -1,3 +1,11 @@
+2003-02-28  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* FormTabularCreate.C: remove slider settings (now part of .fd file)
+	  and add tooltips.
+
+	* forms/form_tabular_create.fd: prettify; add slider settings and
+	  proper gravity.
+
 2003-03-05  Angus Leeming  <leeming@lyx.org>
 
 	* FormWrap.[Ch]:

@@ -16,6 +16,7 @@
 #include "ControlTabularCreate.h"
 #include "FormTabularCreate.h"
 #include "forms/form_tabular_create.h"
+#include "Tooltips.h"
 #include "support/lstrings.h"
 #include FORMS_H_LOCATION
 
@@ -34,17 +35,16 @@ void FormTabularCreate::build()
 {
 	dialog_.reset(build_tabular_create(this));
 
-	fl_set_slider_bounds(dialog_->slider_rows, 1, 50);
-	fl_set_slider_bounds(dialog_->slider_columns, 1, 50);
-	fl_set_slider_value(dialog_->slider_rows, 5);
-	fl_set_slider_value(dialog_->slider_columns, 5);
-	fl_set_slider_precision(dialog_->slider_rows, 0);
-	fl_set_slider_precision(dialog_->slider_columns, 0);
-
 	// Manage the ok, apply and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_close);
+
+	// set up the tooltips
+	string str = _("Number of columns in the tabular");
+	tooltips().init(dialog_->slider_columns, str);
+	str = _("Number of rows in the tabular");
+	tooltips().init(dialog_->slider_rows, str);
 }
 
 
