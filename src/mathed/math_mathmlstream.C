@@ -8,6 +8,7 @@
 
 
 using std::ostream;
+using std::strlen;
 
 
 MathMLStream::MathMLStream(ostream & os)

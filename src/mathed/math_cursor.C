@@ -60,6 +60,8 @@ using std::max;
 using std::swap;
 using std::vector;
 using std::ostringstream;
+using std::isalpha;
+
 
 namespace {
 

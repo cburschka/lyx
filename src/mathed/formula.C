@@ -42,6 +42,7 @@
 #include "math_support.h"
 #include "math_mathmlstream.h"
 #include "textpainter.h"
+#include "preview.h"
 
 using std::ostream;
 using std::ifstream;
@@ -365,6 +366,16 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 	}
 
 	par_->draw(pain, x, y);
+
+	// preview stuff
+#if 0
+	ostringstream os;
+	WriteStream wi(os, false, false);
+	par_->write(wi);
+	if (grfx::ImagePtr image = preview(os.str()))
+		pain.image(x, y, w, h, *image);
+#endif
+	
 	xx += par_->width();
 	xo_ = x;
 	yo_ = y;

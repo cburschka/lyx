@@ -13,6 +13,7 @@
 
 using std::max;
 using std::min;
+using std::abs;
 
 
 extern MathScriptInset const * asScript(MathArray::const_iterator it);

@@ -88,6 +88,7 @@ using std::endl;
 using std::stack;
 using std::fill;
 using std::vector;
+using std::atoi;
 
 //#define FILEDEBUG
 
@@ -488,7 +489,7 @@ void Parser::tokenize(string const & buffer)
 
 	char c;
 	while (is.get(c)) {
-		lyxerr << "reading c: " << c << "\n";
+		//lyxerr << "reading c: " << c << "\n";
 
 		switch (catcode(c)) {
 			case catNewline: {
