@@ -1,3 +1,8 @@
+2004-12-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* glade/Makefile.am: clean up a bit
+	* gimages/Makefile.am (dist_noinst_DATA): ditto
+
 2004-12-02  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* GTableCreate.C: use size_t-like types for cell, row and column
@@ -5,12 +10,12 @@
 
 2004-11-29  John Spray  <spray_john@users.sourceforge.net>
 
-	* GToolbar.C: Make layouts combobox not expand to full height 
+	* GToolbar.C: Make layouts combobox not expand to full height
 		of toolbar, it looks more like a combobox this way.
 
 2004-11-26  John Spray  <spray_john@users.sourceforge.net>
-	
-	* FileDialogPrivate.[Ch]: use Gtk::FileChooser, add 
+
+	* FileDialogPrivate.[Ch]: use Gtk::FileChooser, add
 		filtering.
 
 2004-11-25  John Spray  <spray_john@users.sourceforge.net>

@@ -1,9 +1,9 @@
-DISTCLEANFILES = *.orig *.rej *~ *.bak *.gladep
-MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
+include $(top_srcdir)/config/common.am
 
-GLADE_DIR = glade
+DISTCLEANFILES += *.gladep
 
-GLADE_FILES = \
+gladedir = $(pkgdatadir)/glade
+dist_glade_DATA = \
 	aboutlyx.glade \
 	character.glade \
 	mathDelim.glade \
@@ -13,17 +13,3 @@ GLADE_FILES = \
 	tableCreate.glade \
 	text.glade \
 	url.glade
-
-EXTRA_DIST = ${GLADE_FILES}
-
-gladeinstalldirs:
-	$(mkinstalldirs) $(DESTDIR)$(pkgdatadir)/${GLADE_DIR} ;
-
-install-data-local: gladeinstalldirs
-	files=`cd $(srcdir) ; echo $(GLADE_FILES)` ; \
-	for i in $${files} ; do \
-	   $(INSTALL_DATA) $(srcdir)/$$i $(DESTDIR)$(pkgdatadir)/${GLADE_DIR}/$$i ; \
-	done
-
-dist-hook:
-	cd $(distdir) ; rm -rf `find . -name \*CVS\*` ;
