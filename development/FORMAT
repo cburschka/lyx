@@ -1,6 +1,34 @@
 LyX file-format changes
 -----------------------
 
+2003-06-04  Angus Leeming  <leeming@lyx.org>
+
+	Format bumped to 224
+
+	* the storage of the external inset has been changed from
+
+		\begin_inset External XFig,"file.fig",""
+
+		\end_inset
+
+	to this
+
+		\begin_inset External
+			template XFig
+        		filename file.fig
+			display <display_type>
+			lyxscale <scale>
+
+		\end_inset 
+
+	throwing away the final arg (here "", more generally "<string>") that holds
+	the parameters variable.
+	Variables are output if present (filename) or different from the default
+	values (display, lyxscale).
+
+	Moreover, the RasterImage template has been scrapped. All RasterImage
+	external insets are now converted to Graphics insets.
+
 2003-05-20  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* Added new space insets:
