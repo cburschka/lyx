@@ -1,3 +1,8 @@
+1999-10-23  Asger Alstrup Nielsen  <alstrup@alstrup.galaxy.dk>
+
+	* Fixed the tth support. I messed up with the Emacs patch apply feature
+	and omitted the changes in lyxrc.C.
+
 1999-10-22  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/figinset.C (CallbackFig): Just changed the defines a bit.

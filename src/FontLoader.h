@@ -21,10 +21,11 @@
 class LString;
 class FontInfo;
 
-/** This class takes care of loading fonts. It uses FontInfo to make intelligent
-guesses about matching font size, and it tries different tags itself in order
-to match the font loading demands.  Later, I plan to extend this with support 
-for T1Lib, probably via a new class building on this. (Asger) */
+/** This class takes care of loading fonts. It uses FontInfo to make 
+intelligent guesses about matching font size, and it tries different tags 
+itself in order to match the font loading demands.  Later, I plan to extend 
+this with support for T1Lib, probably via a new class building on this. 
+(Asger) */
 class FontLoader {
 public:
 	///
