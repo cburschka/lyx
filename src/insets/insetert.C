@@ -231,6 +231,7 @@ void InsetERT::updateStatus(bool swap) const
 			status_ = swap ? Collapsed : Open;
 		else
 			status_ = swap ? Open : Collapsed;
+		setButtonLabel();
 	}
 }
 
@@ -406,6 +407,7 @@ InsetERT::priv_dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 
 	case LFUN_INSET_MODIFY: {
 		InsetERTMailer::string2params(cmd.argument, status_);
+		setButtonLabel();
 		bv->update();
 		return DispatchResult(true, true);
 	}
