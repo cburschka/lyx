@@ -123,13 +123,13 @@
 # You should include options. The default is autodetected: the programs 
 # checked are tth, latex2html and hevea, and the default command lines
 # used are:  
-#\html_command "tth -t '$$Fname'"
+#\html_command "tth -t < '$$FName' > '$$OutName'"
 #\html_command "latex2html -no_subdir -split 0 -show_section_numbers '$$FName'"
 #\html_command "hevea -s '$$FName'"
 # The variable name $$FName is replaced with the name of the .tex
 # file, and $$OutName is replaced with the name of the html file.
 # Example: use this to let math be italic with tth.
-#\html_command "tth -t -i $$FName"
+#\html_command "tth -t -i < '$$FName' > '$$OutName'"
 
 # If you want to pass extra flags to the LinuxDoc sgml scripts, insert them
 # here. 

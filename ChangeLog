@@ -1,3 +1,11 @@
+1999-11-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* config/lib_configure.m4,lib/configure,lib/lyxrc.example: update
+	from Kayvan to fix the tth invokation.
+
+	* development/lyx.spec.in: updates from Kayvan to reflect the
+	changes of file names.
+
 1999-11-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/text2.C (InsertStringB): use std::copy

@@ -247,7 +247,7 @@ esac
 # Search for a latex to html converter
 SEARCH_PROG([for an HTML converter], TOHTML, tth latex2html hevea)
 case $TOHTML in
-	tth) html_command="tth -t '\$\$Fname'";;
+	tth) html_command="tth -t < '\$\$FName' > '\$\$OutName'";;
  latex2html) html_command="latex2html -no_subdir -split 0 -show_section_numbers '\$\$FName'";;
       hevea) html_command="hevea -s '\$\$FName'";;
 esac
