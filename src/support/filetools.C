@@ -97,10 +97,11 @@ string QuoteName(string const & name)
 #ifdef WITH_WARNINGS
 #warning Add proper emx support here!
 #endif
-  	string qname = name;
-	while (qname.find("'") != string::npos) 
-		LSubstring(qname, "'") = "\\'";
-	return '\'' + qname + '\'';
+#ifndef __EMX__
+	return '\'' + name + '\'';
+#else
+	return name; 
+#endif
 }
 
 
@@ -333,7 +334,7 @@ bool PutEnv(string const & envstr)
         // this leaks, but what can we do about it?
         //   Is doing a getenv() and a free() of the older value 
         //   a good idea? (JMarc)
-        int retval = putenv((new string(envstr))->c_str());
+        int retval = putenv(const_cast<PUTENV_TYPE_ARG>((new string(envstr))->c_str()));
 #else
 #ifdef HAVE_SETENV 
         string varname;

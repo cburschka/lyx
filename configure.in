@@ -189,6 +189,9 @@ AC_CHECK_FUNCS(memmove memset strchr putenv setenv mkfifo)
 dnl Until this is fixed in autoconf we provide our own version
 LYX_FUNC_SELECT_ARGTYPES
 
+dnl check whether we have to work around solaris broken putenv()
+LYX_FUNC_PUTENV_ARGTYPE
+
 # SunOS 4.1.3 does not have strerror and atexit
 AC_REPLACE_FUNCS(strerror atexit)
 

@@ -4013,7 +4013,6 @@ void Buffer::Dispatch(int action, const string & argument)
 		case LFUN_EXPORT: 
 			MenuExport(this, argument);
 			break;
-			break;
 
 		default:
 			lyxerr << "A truly unknown func!" << endl;

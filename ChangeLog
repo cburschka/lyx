@@ -1,3 +1,20 @@
+1999-12-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/buffer.C (Dispatch): remove an extraneous break statement.
+
+	* acinclude.m4 (STL_STRING_FWD_H_LOCATION): add the comment for
+	config.h.in to the AC_DEFINE_UNQUOTED() call.
+	(LYX_FUNC_PUTENV_ARGTYPE): new macro. Checks whether putenv()
+	needs char * as argument (because Solaris 7 declares it like
+	that). 
+
+	* acconfig.h: remove placeholder for STL_STRING_FWD_H_LOCATION;
+	remove definition of BZERO.
+
+	* src/support/filetools.C (QuoteName): change to do simple
+	'quoting'. More work is necessary. Also changed to do nothing
+	under emx (needs fix too).
+
 1999-12-24  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/LRegex.C: include <regex.h> if HAVE_REGEX_H is

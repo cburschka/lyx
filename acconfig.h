@@ -36,12 +36,6 @@
 /* Define as 1 if you have the stpcopy function */
 #undef HAVE_STPCPY
 
-/* define this to the location of stl_string_fwd.h to be used with #include,
-  NOTE: Do not set it to <stl_string_fwd.h> as that will find the LyX
-  	supplied version of the header.
-  e.g. <../include/stl_string_fwd.h> or better yet use an absolute path */
-#undef STL_STRING_FWD_H_LOCATION
-
 /* define this to the location of xpm.h to be used with #include,
   e.g. <xpm.h> */
 #undef XPM_H_LOCATION
@@ -55,12 +49,6 @@
   usual prototypes.  */
 #ifdef __STRICT_ANSI__
 /**/#undef __STRICT_ANSI__
-#endif
-
-#ifdef HAVE_MEMSET
-#define BZERO(a,b)      memset(a,0,b)
-#else
-#define BZERO(a,b)      bzero(a,b)
 #endif
 
 #ifndef HAVE_STRCHR

@@ -608,6 +608,21 @@ if test "$ac_cv_sco" = yes; then
  test "x$GXX" = xyes && lyx_broken_headers=yes
 fi])
 
+dnl Usage: LYX_FUNC_PUTENV_ARGTYPE
+dnl Checks whether putenv() takes 'char const *' or 'char *' as
+dnl argument. This is needed because Solaris 7 (wrongly?) uses 'char *', 
+dnl while everybody else uses the former...
+AC_DEFUN(LYX_FUNC_PUTENV_ARGTYPE,
+[AC_MSG_CHECKING([type of argument for putenv()])
+ AC_CACHE_VAL(lyx_cv_func_putenv_arg,dnl
+  [AC_TRY_COMPILE(dnl
+[#include <cstdlib>
+extern int putenv(const char *);],,dnl
+   [lyx_cv_func_putenv_arg='char const *'],[lyx_cv_func_putenv_arg='char *'])])
+ AC_MSG_RESULT($lyx_cv_func_putenv_arg)
+ AC_DEFINE_UNQUOTED(PUTENV_TYPE_ARG,$lyx_cv_func_putenv_arg,dnl
+   [Define to the type of the argument of putenv(). Needed on Solaris 7.])])
+
 
 dnl Usage: LYX_WITH_DIR(dir-name,desc,dir-var-name,default-value, 
 dnl                       [default-yes-value])  
@@ -682,7 +697,6 @@ AC_DEFUN(AC_VALIDATE_CACHE_SYSTEM_TYPE, [
     ac_cv_build_system_type="$build"
     ac_cv_target_system_type="$target"
 ])
-
 
 dnl We use this until autoconf fixes its version.
 AC_DEFUN(LYX_FUNC_SELECT_ARGTYPES,
@@ -1138,7 +1152,11 @@ lyx_cv_path_stl_string_fwd_h=`(eval "$ac_cpp conftest.$ac_ext") 2>&5 | \
   grep 'stl_string_fwd.h'  2>/dev/null | \
   sed -e 's/.*\(".*stl_string_fwd.h"\).*/\1/' -e "1q"`
 rm -f conftest*])
-  AC_DEFINE_UNQUOTED(STL_STRING_FWD_H_LOCATION,$lyx_cv_path_stl_string_fwd_h)])
+  AC_DEFINE_UNQUOTED(STL_STRING_FWD_H_LOCATION,$lyx_cv_path_stl_string_fwd_h,
+[define this to the location of stl_string_fwd.h to be used with #include,
+  NOTE: Do not set it to <stl_string_fwd.h> as that will find the LyX
+  	supplied version of the header.
+  e.g. <../include/stl_string_fwd.h> or better yet use an absolute path])])
 ])
 
 
