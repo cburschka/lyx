@@ -15,13 +15,13 @@ INCLUDES = -I$(top_srcdir)/src/ \
 
 AM_CXXFLAGS = -DQT_CLEAN_NAMESPACE -DQT_GENUINE_STR
 
-#libqt2moc_la_SOURCES = FileDialog_private_moc.C \
-#	emptytable_moc.C \
-#	lengthcombo_moc.C \
-#	qttableview_moc.C \
-#	Qt2Base_moc.C
-
-nodist_libqt2moc_la_SOURCES = $(MOCDIALOGS)
+nodist_libqt2moc_la_SOURCES = \
+	$(MOCDIALOGS) \
+	FileDialog_private_moc.C \
+	emptytable_moc.C \
+	lengthcombo_moc.C \
+	qttableview_moc.C \
+	Qt2Base_moc.C
 
 libqt2moc.la: $(libqt2moc_la_OBJECTS) $(libqt2moc_la_DEPENDENCIES)
 

@@ -21,6 +21,8 @@
 #include "gettext.h"
 #include "helper_funcs.h"
 
+#include "support/lstrings.h"
+ 
 #include <qlistbox.h>
 #include <qpushbutton.h>
 #include <qcheckbox.h>
@@ -51,7 +53,7 @@ void QTexinfo::updateStyles(ControlTexinfo::texFileSuffix whichStyle)
 	bool const withFullPath = dialog_->path->isChecked();
 
 	string const str =  controller().getContents(whichStyle, withFullPath);
-	std::vector<string> flist = getVectorFromString(str,"\n");
+	std::vector<string> flist = getVectorFromString(str, "\n");
 
 	dialog_->fileList->clear();
 

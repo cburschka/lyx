@@ -123,3 +123,9 @@ Dialogs::Dialogs(LyXView * lv)
 	// dialogs by a simple connection here.
 	hideAll.connect(hideBufferDependent.slot());
 }
+
+ 
+bool Dialogs::tooltipsEnabled(void)
+{
+	return false; 
+} 

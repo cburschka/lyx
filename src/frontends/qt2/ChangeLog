@@ -1,3 +1,13 @@
+2002-04-16  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Dialogs.C: add tooltipsEnabled()
+
+	* QTeXInfo.C: include right header
+ 
+	* moc/Makefile.am: add back missing moc files
+
+	* xforms/Makefile.am: add missing FeedbackController
+ 
 2002-04-08  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* xforms/Makefile.am (link_files): use correct _SOURCES variable.

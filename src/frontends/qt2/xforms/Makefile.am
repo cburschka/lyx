@@ -21,6 +21,8 @@ nodist_libqt2xforms_la_SOURCES = \
 	Color.C \
 	DropDown.h \
 	DropDown.C \
+	FeedbackController.h \
+	FeedbackController.C \
 	FormBase.h \
 	FormBase.C \
 	FormBaseDeprecated.h \
