@@ -1067,6 +1067,31 @@ case "$host" in
 esac
 ])
 
+### Check for stl_string_fwd.h existence and location if it exists
+###
+### Three problems remain:
+###   1.  I don't check if $lyx_cv_extra_inc has a value before testing it.
+###   2.  I don't issue a warning/error if AC_CHECK_HEADERS finds it but I
+###       don't.  The warning should only need to be something like:
+###       "Can't find path to stl_string_fwd.h please define
+###        STL_STRING_FWD_H_LOCATION in src/config.h or supply the path
+###        using --with-extra-inc"
+###   3. Multiple extra include dirs? and I don't check --with-extra-prefix yet
+###
+AC_DEFUN(LYX_STL_STRING_FWD,
+[AC_CHECK_HEADERS(stl_string_fwd.h,[
+  lyx_cv_stl_string_fwd_h_location="<../include/stl_string_fwd.h>"
+  AC_CHECK_HEADER(../include/stl_string_fwd.h,[
+    ac_cv_header_stl_string_fwd_h=yes
+    lyx_cv_stl_string_fwd_h_location="<../include/stl_string_fwd.h>"],[
+  AC_CHECK_HEADER($lyx_cv_extra_inc/stl_string_fwd.h,[
+    ac_cv_header_stl_string_fwd_h=yes
+    lyx_cv_stl_string_fwd_h_location="<$lyx_cv_extra_inc/stl_string_fwd.h>"],[
+    ac_cv_header_stl_string_fwd_h=no])])
+  AC_DEFINE_UNQUOTED(STL_STRING_FWD_H_LOCATION,$lyx_cv_stl_string_fwd_h_location)])
+])
+
+
 # AC_LIBLTDL_CONVENIENCE[(dir)] - sets LIBLTDL to the link flags for
 # the libltdl convenience library, adds --enable-ltdl-convenience to
 # the configure arguments.  Note that LIBLTDL is not AC_SUBSTed, nor

@@ -1,3 +1,20 @@
+1999-12-15  Allan Rae  <rae@lyx.org>
+
+	* src/stl_string_fwd.h, src/Makefile.am (lyx_SOURCES):  added new
+	header that provides a wrapper around the very annoying SGI STL header
+ 	of the same name.
+
+	* src/support/lyxstring.C, src/LString.h:
+	removed old SGI-STL-compatability attempts.
+
+	* configure.in: Use LYX_STL_STRING_FWD.
+
+	* acinclude.m4 (LYX_STL_STRING_FWD), acconfig.h: Test if 
+	stl_string_fwd.h is around and try to determine it's location.
+  	Major improvement over previous SGI STL 3.2 compatability.
+	Three small problems remain with this function due to my zero
+	knowledge of autoconf.  JMarc and lgb see the comments in the code.
+
 1999-12-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/broken_const.h, config/hack-gcc, config/README: removed

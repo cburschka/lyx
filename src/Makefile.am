@@ -148,6 +148,7 @@ lyx_SOURCES = \
 	sp_form.h \
 	spellchecker.C \
 	spellchecker.h \
+	stl_string_fwd.h \
 	table.C \
 	table.h \
 	tex-accent.C \

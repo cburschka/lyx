@@ -153,7 +153,10 @@ AC_LANG_CPLUSPLUS
 # some standard header files
 AC_HEADER_DIRENT
 AC_HEADER_MAJOR
-AC_CHECK_HEADERS(sys/time.h sys/types.h sys/select.h stl_string_fwd.h)
+AC_CHECK_HEADERS(sys/time.h sys/types.h sys/select.h)
+
+# some annoying header files
+LYX_STL_STRING_FWD
 
 # some standard structures
 AC_HEADER_STAT

@@ -37,6 +37,12 @@
   e.g. <forms.h> */
 #undef FORMS_H_LOCATION
 
+/* define this to the location of stl_string_fwd.h to be used with #include,
+  NOTE: Do not set it to <stl_string_fwd.h> as that will find the LyX
+  	supplied version of the header.
+  e.g. <../include/stl_string_fwd.h> */
+#undef STL_STRING_FWD_H_LOCATION
+
 /* Define if your locale.h file contains LC_MESSAGES.  */
 #undef HAVE_LC_MESSAGES
 
