@@ -364,7 +364,7 @@ string const GetEnvPath(string const & name)
 #else
 	string const pathlist = os::slashify_path(GetEnv(name));
 #endif
-	return strip(pathlist, ';');
+	return strip(pathlist, ";");
 }
 
 
@@ -554,17 +554,17 @@ string const CreateLyXTmpDir(string const & deflt)
 }
 
 
-// FIXME: no need for separate method like this ... 
+// FIXME: no need for separate method like this ...
 int DestroyLyXTmpDir(string const & tmpdir)
 {
-	return DestroyTmpDir(tmpdir, true); 
+	return DestroyTmpDir(tmpdir, true);
 }
 
 
 // Creates directory. Returns true if succesfull
 bool createDirectory(string const & path, int permission)
 {
-	string temp(strip(os::slashify_path(path), '/'));
+	string temp(strip(os::slashify_path(path), "/"));
 
 	if (temp.empty()) {
 		Alert::alert(_("Internal error!"),
@@ -1022,7 +1022,7 @@ string const getExtFromContents(string const & filename)
 	if (filename.empty() || !IsFileReadable(filename))
 		return string();
 
-	
+
 	ifstream ifs(filename.c_str());
 	if (!ifs)
 		// Couldn't open file...
@@ -1139,7 +1139,7 @@ string const getExtFromContents(string const & filename)
 		else if (contains(str,"%!PS-Adobe")) {
 			// eps or ps
 			ifs >> str;
-			if (contains(str,"EPSF")) 
+			if (contains(str,"EPSF"))
 				format = "eps";
 			else
 			    format = "ps";
@@ -1352,10 +1352,10 @@ string const findtexfile(string const & fil, string const & /*format*/)
 	cmd_ret const c = RunCommand(kpsecmd);
 
 	lyxerr[Debug::LATEX] << "kpse status = " << c.first << "\n"
-		 << "kpse result = `" << strip(c.second, '\n')
+		 << "kpse result = `" << strip(c.second, "\n")
 		 << "'" << endl;
 	if (c.first != -1)
-		return os::internal_path(strip(strip(c.second, '\n'), '\r'));
+		return os::internal_path(strip(strip(c.second, "\n"), "\r"));
 	else
 		return string();
 }
@@ -1376,10 +1376,10 @@ void removeAutosaveFile(string const & filename)
 }
 
 
-void readBB_lyxerrMessage(string const & file, bool & zipped, 
-	string const & message) 
+void readBB_lyxerrMessage(string const & file, bool & zipped,
+	string const & message)
 {
-	lyxerr[Debug::GRAPHICS] << "[readBB_from_PSFile] " 
+	lyxerr[Debug::GRAPHICS] << "[readBB_from_PSFile] "
 		<< message << std::endl;
 	if (zipped)
 		lyx::unlink(file);
@@ -1401,7 +1401,7 @@ string const readBB_from_PSFile(string const & file)
 	string const format = getExtFromContents(file_);
 
 	if (format != "eps" && format != "ps") {
-		readBB_lyxerrMessage(file_, zipped,"no(e)ps-format"); 
+		readBB_lyxerrMessage(file_, zipped,"no(e)ps-format");
 		return string();
 	}
 

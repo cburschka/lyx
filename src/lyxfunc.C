@@ -684,7 +684,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 	if (action == LFUN_SEQUENCE) {
 		// argument contains ';'-terminated commands
 		const int ac = lyxaction.LookupFunc(token(argument, ';', 0));
-		flag = getStatus(ac); 
+		flag = getStatus(ac);
 	}
 
 	return flag;
@@ -1284,7 +1284,7 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 		owner->view()->setCursorFromRow(row);
 
 		owner->view()->center();
-		// see BufferView_pimpl::center() 
+		// see BufferView_pimpl::center()
 		owner->view()->updateScrollbar();
 	}
 	break;
@@ -1316,7 +1316,7 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 		owner->view_state_changed();
 
 		owner->view()->center();
-		// see BufferView_pimpl::center() 
+		// see BufferView_pimpl::center()
 		owner->view()->updateScrollbar();
 	}
 	break;
@@ -1531,18 +1531,18 @@ void LyXFunc::sendDispatchMessage(string const & msg, kb_action action, string c
 {
 	owner->updateMenubar();
 	owner->updateToolbar();
- 
+
 	if (action == LFUN_SELFINSERT || !verbose) {
 		lyxerr[Debug::ACTION] << "dispatch msg is " << msg << endl;
 		if (!msg.empty())
 			owner->message(msg);
 		return;
 	}
- 
+
 	string dispatch_msg(msg);
 	if (!dispatch_msg.empty())
 		dispatch_msg += " ";
- 
+
 	string comname = lyxaction.getActionName(action);
 
 	int pseudoaction = action;
@@ -1578,7 +1578,7 @@ void LyXFunc::sendDispatchMessage(string const & msg, kb_action action, string c
 		owner->message(dispatch_msg);
 }
 
- 
+
 void LyXFunc::setupLocalKeymap()
 {
 	keyseq.stdmap = keyseq.curmap = toplevel_keymap.get();
@@ -1863,6 +1863,6 @@ string const LyXFunc::view_status_message()
 
 	if (!owner->view()->available())
 		return _("Welcome to LyX!");
- 
+
 	return currentState(owner->view());
 }

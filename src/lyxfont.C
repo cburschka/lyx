@@ -571,8 +571,7 @@ string const LyXFont::stateText(BufferParams * params) const
 		ost << _("  Number ") << _(GUIMiscNames[number()]);
 
 	string buf(ost.str().c_str());
-	buf = strip(buf, ' ');
-	buf = strip(buf, ',');
+	buf = strip(buf, ", ");
 	return buf;
 }
 

@@ -34,7 +34,7 @@ public:
 
 	///
 	~XMiniBuffer();
-
+	
 	/// create drop down
 	void dd_init();
 

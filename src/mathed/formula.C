@@ -78,7 +78,7 @@ struct InsetFormula::PreviewImpl : public boost::signals::trackable {
 	 *  signal.
 	 */
 	void previewReady(grfx::PreviewImage const &);
-	
+
 	/// A helper method.
 	string const latexString() const;
 
@@ -102,8 +102,8 @@ InsetFormula::InsetFormula()
 
 
 InsetFormula::InsetFormula(InsetFormula const & other)
-	:	InsetFormulaBase(other),
-		par_(other.par_),
+	: InsetFormulaBase(other),
+	  par_(other.par_),
 	  preview_(new PreviewImpl(*this))
 {}
 

@@ -451,10 +451,10 @@ string const parseBibTeX(string data, string const & findkey)
 
 	// Clean-up.
 	// 1. Spaces
-	data = strip(data, ' ');
+	data = strip(data);
 	// 2. if there is no opening '{' then a closing '{' is probably cruft.
 	if (!contains(data, '{'))
-		data = strip(data, '}');
+		data = strip(data, "}");
 	// happens, when last keyword
 	string::size_type const idx =
 		!data.empty() ? data.find('=') : string::npos;
@@ -469,7 +469,7 @@ string const parseBibTeX(string data, string const & findkey)
 		return string();
 	} else {
 		// delete '=' and the following spaces
-		data = frontStrip(frontStrip(data,'='));
+		data = frontStrip(frontStrip(data, "="));
 		if (data.length() < 2) {
 			return data;	// not long enough to find delimiters
 		} else {
@@ -482,7 +482,7 @@ string const parseBibTeX(string data, string const & findkey)
 			} else {
 				// no {} and no "", pure data but with a
 				// possible ',' at the end
-				return strip(data,',');
+				return strip(data, ",");
 			}
 			string tmp = data.substr(keypos);
 			while (tmp.find('{') != string::npos &&

@@ -1,3 +1,19 @@
+2002-07-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* PrinterParams.h: remove extern containsOnly, and include
+	support/lstrings.h instead.
+
+	* LaTeX.C (scanAuxFile): modify because of strip changes
+	(deplog): ditto
+	* buffer.C (makeLaTeXFile): ditto
+	* bufferparams.C (writeFile): ditt
+	* lyxfont.C (stateText): ditto
+	* lyxserver.C (read_ready): ditto
+	* vc-backend.C (scanMaster): ditto
+
+	* BufferView_pimpl.h: ws changes
+
+	* BufferView_pimpl.C: inlude boost/signals/connection.hpp
 
 2002-07-26  André Pönitz <poenitz@gmx.net>
 
@@ -26,10 +42,10 @@
 2002-07-25  John Levon  <moz@compsoc.man.ac.uk>
 
 	* MenuBackend.C: using std::max
- 
+
 2002-07-25  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* MenuBackend.C (expandToc): 
+	* MenuBackend.C (expandToc):
 	(expandToc2): code moved from xforms menu frontend. It is now
 	generic and TOCs are transparent to menu frontends.
 
@@ -83,7 +99,7 @@
 	* LyXAction.C:
 	* commandtags.h:
 	* lyxfunc.C: remove LFUN_ADD_TO_TOOLBAR
- 
+
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* LyXAction.C:

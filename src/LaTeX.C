@@ -430,7 +430,7 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 	regex reg4("\\\\@input\\{([^}]+)\\}");
 
 	while (getline(ifs, token)) {
-		token = strip(token, '\r');
+		token = strip(token, "\r");
 		smatch sub;
 		if (regex_match(token, sub, reg1)) {
 			string data = sub[1];
@@ -679,7 +679,7 @@ void LaTeX::deplog(DepTable & head)
 		string foundfile;
 		string token;
 		getline(ifs, token);
-		token = strip(token, '\r');
+		token = strip(token, "\r");
 		if (token.empty()) continue;
 
 		smatch sub;

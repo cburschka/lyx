@@ -16,9 +16,6 @@
 #pragma interface
 #endif
 
-//#include <cstring>
-//#include <cctype>
-//#include <cctype>
 #include <vector>
 
 #include "Lsstream.h"
@@ -135,19 +132,10 @@ bool suffixIs(string const &, char const *);
 bool suffixIs(string const &, string const &);
 
 ///
-bool contains(char const * a, string const & b);
-
-///
-bool contains(string const & a, char const * b);
-
-///
 bool contains(string const & a, string const & b);
 
 ///
 bool contains(string const & a, char b);
-
-///
-bool contains(char const * a, char const * b);
 
 /// This should probably we rewritten to be more general.
 class contains_functor {
@@ -163,16 +151,7 @@ public:
 
 
 ///
-bool containsOnly(string const &, char const *);
-
-///
 bool containsOnly(string const &, string const &);
-
-///
-bool containsOnly(char const *, char const *);
-
-///
-bool containsOnly(char const *, string const &);
 
 /** Extracts a token from this string at the nth delim.
     Doesn't modify the original string. Similar to strtok.
@@ -215,24 +194,17 @@ string const subst(string const & a,
 
 /** Strips characters off the end of a string.
     \code
-    "abccc".strip('c') = "ab".
+    strip("abccc", "c") == "ab".
     \endcode
 */
-string const strip(string const & a, char c = ' ');
-
-/** Strips characters of the beginning of a string.
-    \code
-    "cccba".frontstrip('c') = "ba"
-    \endcode
-*/
-string const frontStrip(string const & a, char c = ' ');
+string const strip(string const & a, char const * p = " ");
 
 /** Strips characters off the beginning of a string.
     \code
-    "ababcdef".frontstrip("ab") = "cdef"
+    frontstrip("ababcdef", "ab") = "cdef"
     \endcode
 */
-string const frontStrip(string const & a, char const * p);
+string const frontStrip(string const & a, char const * p = " ");
 
 /** Splits the string by the first delim.
     Splits the string by the first appearance of delim.

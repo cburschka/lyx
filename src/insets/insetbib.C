@@ -152,10 +152,10 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 	// Style-Options
 	string style = getOptions(); // maybe empty! and with bibtotoc
 	string bibtotoc;
-	if (prefixIs(style,"bibtotoc")) {
+	if (prefixIs(style, "bibtotoc")) {
 		bibtotoc = "bibtotoc";
-		if (contains(style,',')) {
-			style = split(style,bibtotoc,',');
+		if (contains(style, ',')) {
+			style = split(style, bibtotoc, ',');
 		}
 	}
 
@@ -206,7 +206,7 @@ int InsetBibtex::latex(Buffer const * buffer, ostream & os,
 		db_out += ',';
 		db_in= split(db_in, adb,',');
 	}
-	db_out = strip(db_out, ',');
+	db_out = strip(db_out, ",");
 	os   << "\\bibliography{" << db_out << "}\n";
 	return 2;
 }
@@ -264,7 +264,7 @@ vector<pair<string, string> > const InsetBibtex::getKeys(Buffer const * buffer) 
 				    && !prefixIs(tmp, "@preamble")) {
 					linebuf = split(linebuf, tmp, ',');
 					tmp = frontStrip(tmp);
-					tmp = frontStrip(tmp,'\t');
+					tmp = frontStrip(tmp,"\t");
 					if (!tmp.empty()) {
 						keys.push_back(pair<string,string>(tmp,string()));
 					}

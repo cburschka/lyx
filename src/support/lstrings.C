@@ -120,7 +120,7 @@ bool isStrInt(string const & str)
 	if (str.empty()) return false;
 
 	// Remove leading and trailing white space chars.
-	string const tmpstr = frontStrip(strip(str, ' '), ' ');
+	string const tmpstr = frontStrip(strip(str));
 	if (tmpstr.empty()) return false;
 
 	string::const_iterator cit = tmpstr.begin();
@@ -138,7 +138,7 @@ bool isStrUnsignedInt(string const & str)
 	if (str.empty()) return false;
 
 	// Remove leading and trailing white space chars.
-	string const tmpstr = frontStrip(strip(str, ' '), ' ');
+	string const tmpstr = frontStrip(strip(str));
 	if (tmpstr.empty()) return false;
 
 	string::const_iterator cit = tmpstr.begin();
@@ -154,7 +154,7 @@ int strToInt(string const & str)
 {
 	if (isStrInt(str)) {
 		// Remove leading and trailing white space chars.
-		string const tmpstr = frontStrip(strip(str, ' '), ' ');
+		string const tmpstr = frontStrip(strip(str));
 		// Do the conversion proper.
 		return lyx::atoi(tmpstr);
 	} else {
@@ -167,7 +167,7 @@ unsigned int strToUnsignedInt(string const & str)
 {
 	if (isStrUnsignedInt(str)) {
 		// Remove leading and trailing white space chars.
-		string const tmpstr = frontStrip(strip(str, ' '), ' ');
+		string const tmpstr = frontStrip(strip(str));
 		// Do the conversion proper.
 		return lyx::atoi(tmpstr);
 	} else {
@@ -181,7 +181,7 @@ bool isStrDbl(string const & str)
 	if (str.empty()) return false;
 
 	// Remove leading and trailing white space chars.
-	string const tmpstr = frontStrip(strip(str, ' '), ' ');
+	string const tmpstr = frontStrip(strip(str));
 	if (tmpstr.empty()) return false;
 	//	if (1 < tmpstr.count('.')) return false;
 
@@ -210,7 +210,7 @@ double strToDbl(string const & str)
 {
 	if (isStrDbl(str)) {
 		// Remove leading and trailing white space chars.
-		string const tmpstr = frontStrip(strip(str, ' '), ' ');
+		string const tmpstr = frontStrip(strip(str));
 		// Do the conversion proper.
 		return ::atof(tmpstr.c_str());
 	} else {
@@ -371,22 +371,6 @@ bool suffixIs(string const & a, string const & suf)
 }
 
 
-bool contains(char const * a, string const & b)
-{
-	lyx::Assert(a);
-	string const at(a);
-	return contains(at, b);
-}
-
-
-bool contains(string const & a, char const * b)
-{
-	lyx::Assert(b);
-	string const bt(b);
-	return contains(a, bt);
-}
-
-
 bool contains(string const & a, string const & b)
 {
 	if (a.empty())
@@ -403,42 +387,9 @@ bool contains(string const & a, char b)
 }
 
 
-bool contains(char const * a, char const * b)
-{
-	lyx::Assert(a && b);
-	string const at(a);
-	string const bt(b);
-	return contains(at, bt);
-}
-
-
-bool containsOnly(string const & s, char const * cset)
-{
-	lyx::Assert(cset);
-
-	return s.find_first_not_of(cset) == string::npos;
-}
-
-
 bool containsOnly(string const & s, string const & cset)
 {
 	return s.find_first_not_of(cset) == string::npos;
-}
-
-
-bool containsOnly(char const * s, char const * cset)
-{
-	lyx::Assert(s && cset);
-
-	return string(s).find_first_not_of(cset) == string::npos;
-}
-
-
-bool containsOnly(char const * s, string const & cset)
-{
-	lyx::Assert(s);
-
-	return string(s).find_first_not_of(cset) == string::npos;
 }
 
 
@@ -543,23 +494,26 @@ string const subst(string const & a,
 }
 
 
-string const strip(string const & a, char c)
+string const strip(string const & a, char const * p)
 {
-	if (a.empty()) return a;
+	lyx::Assert(p);
+
+	if (a.empty() || !*p) return a;
 	string tmp(a);
-	string::size_type i = tmp.find_last_not_of(c);
+	string::size_type i = tmp.find_last_not_of(p);
 	if (i == a.length() - 1) return tmp; // no c's at end of a
 	if (i != string::npos)
 		tmp.erase(i + 1, string::npos);
 #if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)
+	// Ok This code is now suspect... (Lgb)
 	/// Needed for broken string::find_last_not_of
-	else if (tmp[0] != c) {
+	else if (tmp[0] != p[0]) {
 		if (a.length() == 1) return tmp;
 		tmp.erase(1, string::npos);
 	}
 #endif
 	else
-		tmp.erase(); // only c in the whole string
+		tmp.erase(); // only chars from p in the whole string
 	return tmp;
 }
 
@@ -571,17 +525,6 @@ string const frontStrip(string const & a, char const * p)
 	if (a.empty() || !*p) return a;
 	string tmp(a);
 	string::size_type i = tmp.find_first_not_of(p);
-	if (i > 0)
-		tmp.erase(0, i);
-	return tmp;
-}
-
-
-string const frontStrip(string const & a, char c)
-{
-	if (a.empty()) return a;
-	string tmp(a);
-	string::size_type i = tmp.find_first_not_of(c);
 	if (i > 0)
 		tmp.erase(0, i);
 	return tmp;

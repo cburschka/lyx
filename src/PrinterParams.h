@@ -18,8 +18,8 @@
 #include "lyxrc.h"
 
 #ifdef ENABLE_ASSERTIONS
+#include "support/lstrings.h"
 #include "support/LAssert.h"
-extern bool containsOnly(string const &, char const *);
 #endif
 
 

@@ -1,3 +1,17 @@
+2002-07-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* filetools.C (GetEnvPath): modify because of strip changes
+	(createDirectory): ditto
+	(findtexfile): ditto
+	* lstrings.[Ch] (isStrInt): ditto
+	(isStrUnsignedInt): ditto
+	(strToInt): ditto
+	(strToUnsignedInt): ditto
+	(isStrDbl): ditto
+	(contains): removed unneeded version of contains
+	(containsOnly): removed uneeded versions of containsOnly
+	(strip, frontStrip): removed unneded versions, changed argument types. 
+
 2002-07-22  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* filetools.C (RunCommand): Made public
@@ -5,7 +19,7 @@
 2002-07-22  John Levon  <moz@compsoc.man.ac.uk>
 
 	* limited_stack.h: fix comment, remove un-needed header
- 
+
 2002-07-21  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lstrings.h: correct comments for token and tokenPos
@@ -37,7 +51,7 @@
 	(IsSGMLFilename): use ascii_lowercase instead of lowercase
 
 	* lstrings.[Ch] (ascii_lowercase): new function
-	
+
 2002-07-16  André Pönitz <poenitz@gmx.net>
 
 	* FileInfo.Ch: remove unneeded code
@@ -46,7 +60,7 @@
 
 	* filetools.[C] (readExtFromContents): add support for
 	(x)fig format images
-		
+
 2002-06-26  André Pönitz <poenitz@gmx.net>
 
 	* filetools.[Ch]: small whitespace, more compact 'return' statement
@@ -60,7 +74,7 @@
 	* filetools.[C]: (readBB_from_PSFile) add a helperfunc
 	(readBB_lyxerrMessage) to get better lyxerr messages
 	(getExtFromContents) test epsi files in the right way
-		
+
 	* DestroxLyXTmpDir.C: changed to true, to delete the
 	temporary unzipped files, too.
 

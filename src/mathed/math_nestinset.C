@@ -12,6 +12,8 @@
 #include "graphics/PreviewLoader.h"
 #include "graphics/Previews.h"
 
+using std::vector;
+
 
 MathNestInset::MathNestInset(idx_type nargs)
 	: MathDimInset(), cells_(nargs), lock_(false)
@@ -212,10 +214,10 @@ void MathNestInset::drawMarkers(MathPainterInfo & pi, int x, int y) const
 		return;
 	int t = x + width() - 1;
 	int d = y + descent();
-	pi.pain.line(x, d - 3, x, d, LColor::mathframe); 
-	pi.pain.line(t, d - 3, t, d, LColor::mathframe); 
-	pi.pain.line(x, d, x + 3, d, LColor::mathframe); 
-	pi.pain.line(t - 2, d, t, d, LColor::mathframe); 
+	pi.pain.line(x, d - 3, x, d, LColor::mathframe);
+	pi.pain.line(t, d - 3, t, d, LColor::mathframe);
+	pi.pain.line(x, d, x + 3, d, LColor::mathframe);
+	pi.pain.line(t - 2, d, t, d, LColor::mathframe);
 }
 
 
@@ -223,13 +225,13 @@ void MathNestInset::drawMarkers2(MathPainterInfo & pi, int x, int y) const
 {
 	if (!editing())
 		return;
-	drawMarkers(pi, x, y);	
+	drawMarkers(pi, x, y);
 	int t = x + width() - 1;
 	int a = y - ascent();
-	pi.pain.line(x, a + 3, x, a, LColor::mathframe); 
-	pi.pain.line(t, a + 3, t, a, LColor::mathframe); 
-	pi.pain.line(x, a, x + 3, a, LColor::mathframe); 
-	pi.pain.line(t - 2, a, t, a, LColor::mathframe); 
+	pi.pain.line(x, a + 3, x, a, LColor::mathframe);
+	pi.pain.line(t, a + 3, t, a, LColor::mathframe);
+	pi.pain.line(x, a, x + 3, a, LColor::mathframe);
+	pi.pain.line(t - 2, a, t, a, LColor::mathframe);
 }
 
 

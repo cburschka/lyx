@@ -77,6 +77,7 @@
 #include "support/lyxfunctional.h"
 
 #include <boost/bind.hpp>
+#include <boost/signals/connection.hpp>
 
 #include <cstdio>
 #include <ctime>

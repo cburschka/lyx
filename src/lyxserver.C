@@ -270,7 +270,7 @@ void LyXComm::read_ready()
 	while ((status = read(infd, charbuf, CMDBUFLEN-1))) {
 		if (status > 0) {
 			charbuf[status]= '\0'; // turn it into a c string
-			lsbuf += strip(charbuf, '\r');
+			lsbuf += strip(charbuf, "\r");
 			// commit any commands read
 			while (lsbuf.find('\n') != string::npos) {
 				// split() grabs the entire string if
@@ -474,7 +474,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 
 			serv->func->dispatch(cmd + ' ' + arg);
 			string const rval = serv->func->getMessage();
-			
+
 			//modified june 1999 stefano@zool.su.se:
 			//all commands produce an INFO or ERROR message
 			//in the output pipe, even if they do not return

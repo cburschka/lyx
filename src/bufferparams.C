@@ -81,7 +81,7 @@ void BufferParams::writeFile(ostream & os) const
 	// then the the preamble
 	if (!preamble.empty()) {
 		// remove '\n' from the end of preamble
-		string const tmppreamble = strip(preamble, '\n');
+		string const tmppreamble = strip(preamble, "\n");
 		os << "\\begin_preamble\n"
 		   << tmppreamble
 		   << "\n\\end_preamble\n";

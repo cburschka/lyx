@@ -1,3 +1,9 @@
+2002-07-28  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insetbib.C (latex): modify because of strip changes
+	(getKeys): ditto
+	* insetnote.C (InsetNote): ditto
+
 2002-07-26  Juergen Vigna  <jug@sad.it>
 
 	* insettabular.C (searchForward): check for lastcell if we
@@ -12,13 +18,13 @@
 2002-07-25  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insetfloat.C (read, write): Allow default placement
- 	(floatPlacement_ is empty).
+	(floatPlacement_ is empty).
 
 2002-07-23  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* insetminipage.h (noFontChange): 
-	* insettabular.h (noFontChange): 
-	* insetfootlike.h (noFontChange): 
+	* insetminipage.h (noFontChange):
+	* insettabular.h (noFontChange):
+	* insetfootlike.h (noFontChange):
 	* insetfloat.h (noFontChange): return true
 
 	* inset.h (noFontChange): new method, defaulting to false
@@ -41,19 +47,19 @@
 
 	* insetgraphicsParams.h: do not include "lyxlex.h" and "buffer.h"
 
-	* insetquotes.C: 
-	* insetlatexaccent.C: 
-	* insetgraphics.C: 
-	* insetexternal.C: 
-	* insetert.C: 
+	* insetquotes.C:
+	* insetlatexaccent.C:
+	* insetgraphics.C:
+	* insetexternal.C:
+	* insetert.C:
 	* insetbib.C: #include "lyxlex.h"
 
-	* insetinclude.C: 
-	* insetfloat.C: 
-	* insetert.C: 
-	* insetbib.C: 
+	* insetinclude.C:
+	* insetfloat.C:
+	* insetert.C:
+	* insetbib.C:
 	* insettext.C: use BufferParams::getLyXTextClass
-	
+
 
 	* insetfloat.C (addToToc): new method. Add to toclist the entries
 	corresponding to Caption layouts
@@ -66,7 +72,7 @@
 
 2002-07-21  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* insettoc.C (ascii): 
+	* insettoc.C (ascii):
 	* insetfloatlist.C (ascii): change to use the new Toc functions
 	instead of stuff that was in Buffer
 
@@ -80,7 +86,7 @@
 	* insetgraphicsParams.C (as_grfxParams): use the new
 	keepLyXAspectRatio parameter. Note that this is an adaptation of a
 	1.2.0 patch, and I do not really know how to adapt it to the new
-	grfx::Cache world. Angus, please could you have a look? 
+	grfx::Cache world. Angus, please could you have a look?
 
 2002-05-01  Herbert Voss  <voss@lyx.org>
 
@@ -101,7 +107,7 @@
 2002-07-17  John Levon  <moz@compsoc.man.ac.uk>
 
 	* insettext.C: use view_state_changed, switchKeyMap
- 
+
 2002-07-17  Herbert Voss  <voss@perce.de>
 
 	* insetgraphics.C (prepareFile): keep the extension when
@@ -109,13 +115,13 @@
 
 2002-07-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
-	* insetcite.C (getNatbibLabel): 
+	* insetcite.C (getNatbibLabel):
 	* insetbib.C (getKeys): use ascii_lowercase instead of lowercase
 
 2002-07-15  John Levon  <moz@compsoc.man.ac.uk>
 
 	* insetgraphics.C: use ->isDrawable()
- 
+
 2002-07-12  Angus Leeming  <leeming@lyx.org>
 
 	* insetgraphics.C: use the new smart loading capabilities of the image
@@ -124,7 +130,7 @@
 2002-07-13  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insettabular.C (edit): Move into correct cell when entering a
-	tabular in 
+	tabular in
 
 	* insettext.C (unlockInsetInInset): Correct cursor behaviour for
 	RTL paragraphs.

@@ -37,15 +37,15 @@ LyXLength::LyXLength(double v, LyXLength::UNIT u)
 
 
 #ifndef NO_PEXTRA_REALLY
-// compatibility stuff < version 1.2.0pre and for 
+// compatibility stuff < version 1.2.0pre and for
 // "old" 1.2.0 files before the pre
 namespace {
-string const convertOldRelLength(string const & oldLength) 
+string const convertOldRelLength(string const & oldLength)
 {
 	// we can have only one or none of the following
 	if (oldLength.find("c%") != string::npos) {
 		return subst(oldLength,"c%","col%");
-		    
+
 	} else if (oldLength.find("t%") != string::npos) {
 		if (oldLength.find("text%") != string::npos ||
 		    oldLength.find("height%") != string::npos)

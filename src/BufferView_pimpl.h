@@ -30,7 +30,7 @@
 class LyXView;
 class WorkArea;
 class LyXScreen;
- 
+
 ///
 struct BufferView::Pimpl : public boost::signals::trackable {
 	///
@@ -133,11 +133,12 @@ private:
 	 */
 	Box insetDimensions(LyXText const & text, LyXCursor const & cursor) const;
 	/**
-	 * check if the given co-ordinates are inside an inset at the given cursor,
-	 * if one exists. If so, the inset is returned, and the co-ordinates are
-	 * made relative. Otherwise, 0 is returned.
+	 * check if the given co-ordinates are inside an inset at the
+	 * given cursor, if one exists. If so, the inset is returned,
+	 * and the co-ordinates are made relative. Otherwise, 0 is returned.
 	 */
-	Inset * checkInset(LyXText const & text, LyXCursor const & cursor, int & x, int & y) const;
+	Inset * checkInset(LyXText const & text, LyXCursor const & cursor,
+			   int & x, int & y) const;
 	///
 	friend class BufferView;
 	/// open and lock an updatable inset

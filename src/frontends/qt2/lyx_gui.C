@@ -8,21 +8,21 @@
  */
 
 #include <config.h>
- 
+
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/filetools.h"
 #include "debug.h"
 #include "gettext.h"
- 
+
 #include <fcntl.h>
 #include <boost/bind.hpp>
- 
+
 #include "lyx_gui.h"
 #include "lyx_main.h"
 #include "lyxrc.h"
 #include "lyxfont.h"
- 
+
 // FIXME: move this stuff out again
 #include "bufferlist.h"
 #include "lyxfunc.h"
@@ -34,14 +34,14 @@
 #include <boost/shared_ptr.hpp>
 #include <boost/function/function0.hpp>
 #include <boost/signals/signal1.hpp>
- 
+
 #include "QtView.h"
 #include "QLImage.h"
 #include "qfont_loader.h"
-#include "io_callback.h" 
- 
+#include "io_callback.h"
+
 #include <qapplication.h>
- 
+
 #ifndef CXX_GLOBAL_CSTD
 using std::exit;
 #endif
@@ -49,30 +49,30 @@ using std::exit;
 using std::vector;
 using std::hex;
 using std::endl;
- 
+
 extern BufferList bufferlist;
- 
+
 // FIXME: wrong place !
 LyXServer * lyxserver;
- 
+
 void lyx_gui::parse_init(int & argc, char * argv[])
 {
 	static QApplication a(argc, argv);
- 
+
 	using namespace grfx;
 
 	Image::newImage = boost::bind(&QLImage::newImage);
 	Image::loadableFormats = boost::bind(&QLImage::loadableFormats);
 }
- 
+
 
 void lyx_gui::parse_lyxrc()
 {
-	// FIXME !!!! 
+	// FIXME !!!!
 	lyxrc.dpi = 95;
 }
 
- 
+
 void lyx_gui::start(string const & batch, vector<string> files)
 {
 	// initial geometry
@@ -80,17 +80,17 @@ void lyx_gui::start(string const & batch, vector<string> files)
 	int ypos = -1;
 	unsigned int width = 690;
 	unsigned int height = 510;
- 
+
 	QtView view(width, height);
 	view.show(xpos, ypos, "LyX");
 	view.init();
 
 	Buffer * last = 0;
- 
+
 	// FIXME: some code below needs moving
 
 	lyxserver = new LyXServer(view.getLyXFunc(), lyxrc.lyxpipes);
- 
+
 	vector<string>::const_iterator cit = files.begin();
 	vector<string>::const_iterator end = files.end();
 	for (; cit != end; ++cit) {
@@ -111,18 +111,18 @@ void lyx_gui::start(string const & batch, vector<string> files)
 	}
 
 	qApp->exec();
-		 
+
 	// FIXME
 	delete lyxserver;
 }
- 
- 
+
+
 void lyx_gui::exit()
 {
 	qApp->exit(0);
 }
 
- 
+
 string const lyx_gui::hexname(LColor::color col)
 {
 	QColor color(lcolor.getX11Name(col).c_str());

@@ -44,7 +44,7 @@ namespace {
 // reload the bibkey list
 std::map<Buffer const *, bool> loading_buffer;
 
-string const getNatbibLabel(Buffer const * buffer, 
+string const getNatbibLabel(Buffer const * buffer,
 			    string const & citeType, string const & keyList,
 			    string const & before, string const & after,
 			    bool numerical)
@@ -66,7 +66,7 @@ string const getNatbibLabel(Buffer const * buffer,
 
 		InfoType::const_iterator bit  = bibkeys.begin();
 		InfoType::const_iterator bend = bibkeys.end();
-	
+
 		biblio::InfoMap infomap;
 		for (; bit != bend; ++bit) {
 			infomap[bit->first] = bit->second;
@@ -76,7 +76,7 @@ string const getNatbibLabel(Buffer const * buffer,
 
 		cached_keys[buffer] = infomap;
 	}
-	
+
 	biblio::InfoMap infomap = cached_keys[buffer];
 
 	// the natbib citation-styles
@@ -90,12 +90,12 @@ string const getNatbibLabel(Buffer const * buffer,
 
 	// We don't currently use the full or forceUCase fields.
 	// bool const forceUCase = citeType[0] == 'C';
-	bool const full = citeType[citeType.size()-1] == '*';
+	bool const full = citeType[citeType.size() - 1] == '*';
 
 	string const cite_type = full ?
-		ascii_lowercase(citeType.substr(0,citeType.size()-1)) :
+		ascii_lowercase(citeType.substr(0, citeType.size() - 1)) :
 		ascii_lowercase(citeType);
-	
+
 	string before_str;
 	if (!before.empty()) {
 		// In CITET and CITEALT mode, the "before" string is
@@ -106,7 +106,7 @@ string const getNatbibLabel(Buffer const * buffer,
 		if (cite_type == "citet" ||
 		    cite_type == "citealt" ||
 		    cite_type == "citep" ||
-		    cite_type == "citealp" || 
+		    cite_type == "citealp" ||
 		    cite_type == "citeyearpar")
 			before_str = before + ' ';
 	}
@@ -120,17 +120,18 @@ string const getNatbibLabel(Buffer const * buffer,
 	// One day, these might be tunable (as they are in BibTeX).
 	char const op  = '('; // opening parenthesis.
 	char const cp  = ')'; // closing parenthesis.
-	char const sep = ';'; // puctuation mark separating citation entries.
+	// puctuation mark separating citation entries.
+	char const * const sep = ";";
 
 	string const op_str(string(1, ' ')  + string(1, op));
 	string const cp_str(string(1, cp)   + string(1, ' '));
-	string const sep_str(string(1, sep) + string(1, ' '));
+	string const sep_str(string(sep) + " ");
 
 	string label;
 	vector<string> keys = getVectorFromString(keyList);
 	vector<string>::const_iterator it  = keys.begin();
 	vector<string>::const_iterator end = keys.end();
-    	for (; it != end; ++it) {
+	for (; it != end; ++it) {
 		// get the bibdata corresponding to the key
 		string const author(biblio::getAbbreviatedAuthor(infomap, *it));
 		string const year(biblio::getYear(infomap, *it));
@@ -176,7 +177,7 @@ string const getNatbibLabel(Buffer const * buffer,
 	if (!after_str.empty()) {
 		if (cite_type == "citet") {
 			// insert "after" before last ')'
-			label.insert(label.size()-1, after_str);
+			label.insert(label.size() - 1, after_str);
 		} else {
 			bool const add = !(numerical &&
 					   (cite_type == "citeauthor" ||
@@ -187,7 +188,7 @@ string const getNatbibLabel(Buffer const * buffer,
 	}
 
 	if (!before_str.empty() && (cite_type == "citep" ||
-				    cite_type == "citealp" || 
+				    cite_type == "citealp" ||
 				    cite_type == "citeyearpar")) {
 		label = before_str + label;
 	}
@@ -217,7 +218,7 @@ string const getBasicLabel(string const & keyList, string const & after)
 
 	if (!after.empty())
 		label += ", " + after;
-	
+
 	return "[" + label + "]";
 }
 
@@ -248,7 +249,7 @@ string const InsetCitation::generateLabel(Buffer const * buffer) const
 			else
 				cmd = "citet";
 		}
-		label = getNatbibLabel(buffer, cmd, getContents(), 
+		label = getNatbibLabel(buffer, cmd, getContents(),
 				       before, after,
 				       buffer->params.use_numerical_citations);
 	}
@@ -350,14 +351,24 @@ int InsetCitation::latex(Buffer const * buffer, ostream & os,
 		os << getCmdName();
 	else
 		os << "cite";
-	
+
+#warning What is this code supposed to do? (Lgb)
+
+#if 1
+	// The current strange code
+
 	string const before = string();
 	string const after  = getOptions();
 	if (!before.empty() && buffer->params.use_natbib)
 		os << "[" << before << "][" << after << "]";
 	else if (!after.empty())
 		os << "[" << after << "]";
-
+#else
+	// and the cleaned up equvalent, should it just be changed? (Lgb)
+	string const after  = getOptions();
+	if (!after.empty())
+		os << "[" << after << "]";
+#endif
 	string::const_iterator it  = getContents().begin();
 	string::const_iterator end = getContents().end();
 	// Paranoia check: make sure that there is no whitespace in here

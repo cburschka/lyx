@@ -2338,7 +2338,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 
 		string strOptions(options.str().c_str());
 		if (!strOptions.empty()) {
-			strOptions = strip(strOptions, ',');
+			strOptions = strip(strOptions, ",");
 			os << '[' << strOptions << ']';
 		}
 

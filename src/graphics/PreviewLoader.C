@@ -737,7 +737,7 @@ void setAscentFractions(vector<double> & ascent_fractions,
 
 		if (!ifs.good() ||
 		    page != "%%Page" ||
-		    !isStrUnsignedInt(strip(page_id, ':'))) {
+		    !isStrUnsignedInt(strip(page_id, ":"))) {
 			lyxerr[Debug::GRAPHICS] << "setAscentFractions("
 						<< metrics_file << ")\n"
 						<< "Error reading file!"

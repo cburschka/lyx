@@ -155,7 +155,7 @@ void lyx_gui::parse_init(int & argc, char * argv[])
 	XSetErrorHandler(LyX_XErrHandler);
 
 	lyxColorHandler.reset(new LyXColorHandler());
- 
+
 	using namespace grfx;
 
 #ifdef USE_XFORMS_IMAGE_LOADER
@@ -317,7 +317,7 @@ void lyx_gui::exit()
 	finished = true;
 }
 
- 
+
 string const lyx_gui::hexname(LColor::color col)
 {
 	string const name = lcolor.getX11Name(col);
@@ -367,7 +367,7 @@ namespace {
 extern "C"
 void C_read_callback(int, void * data)
 {
-	LyXComm * comm = static_cast<LyXComm *>(data); 
+	LyXComm * comm = static_cast<LyXComm *>(data);
 	comm->read_ready();
 }
 

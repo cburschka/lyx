@@ -679,8 +679,8 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		setEnabled(lyxview_->check_lyxaspectratio, 1);
 		setEnabled(lyxview_->input_lyxscale, 0);
 	} else if (ob == lyxview_->button_latex_values) {
-		if (contains(fl_get_choice_text(size_->choice_width),'%') || 
-			contains(fl_get_choice_text(size_->choice_height),'%'))
+		if (contains(fl_get_choice_text(size_->choice_width), '%') ||
+		    contains(fl_get_choice_text(size_->choice_height), '%'))
 			Alert::alert(_("Warning!"),
 				     _("The %-units are not allowed here."),
 				     _("Cannot use the values from LaTeX size!"));
