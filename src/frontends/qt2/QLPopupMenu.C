@@ -19,18 +19,18 @@
 #include "lyxfunc.h"
 #include "kbmap.h"
 #include "debug.h"
- 
+
 #include "QtView.h"
 
 #include "QLPopupMenu.h"
 
 #include <boost/scoped_ptr.hpp>
- 
+
 using std::pair;
 using std::make_pair;
- 
+
 extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
- 
+
 namespace {
 
 string const getLabel(MenuItem const & mi)
@@ -44,16 +44,16 @@ string const getLabel(MenuItem const & mi)
 	string::size_type pos = label.find(shortcut);
 	if (pos == string::npos)
 		return label;
-	label.insert(pos, "&");
- 
+	label.insert(pos, 1, '&');
+
 	if (mi.kind() == MenuItem::Command) {
 		// FIXME: backend should do this
 		string const accel(toplevel_keymap->findbinding(mi.action()));
-		
+
 		if (!accel.empty()) {
-			label += "\t" + accel.substr(1, accel.find(']') - 1);
+			label += '\t' + accel.substr(1, accel.find(']') - 1);
 		}
-		
+
 		lyxerr[Debug::GUI] << "Label: " << mi.label()
 				   << " Shortcut: " << mi.shortcut()
 				   << " Accel: " << accel << endl;

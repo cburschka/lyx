@@ -45,7 +45,7 @@ string::size_type kb_keymap::bind(string const & seq, int action)
 	if (lyxerr.debugging(Debug::KBMAP)) {
 		lyxerr << "BIND: Sequence `"
 		       << seq << "' Action `"
-		       << action << "'" << endl;
+		       << action << '\'' << endl;
 	}
 
 	kb_sequence k(0, 0);
@@ -77,7 +77,7 @@ int kb_keymap::lookup(LyXKeySymPtr key,
 		key_modifier::state mask(cit->mod.second);
 		key_modifier::state check =
 			static_cast<key_modifier::state>(mod & ~mask);
- 
+
 		if (*(cit->code) == *key && cit->mod.first == check) {
 			// match found
 			if (cit->table.get()) {
@@ -177,9 +177,9 @@ string const kb_keymap::findbinding(int act, string const & prefix) const
 			res += cit->table->findbinding(act,
 						       prefix
 						       + printKey((*cit))
-						       + " ");
+						       + ' ');
 		} else if (cit->action == act) {
-			res += "[";
+			res += '[';
 			res += prefix + printKey((*cit));
 			res += "] ";
 		}

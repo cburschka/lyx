@@ -88,7 +88,7 @@ void RCS::retrieve(string const & file)
 {
 	lyxerr[Debug::LYXVC] << "LyXVC::RCS: retrieve.\n\t" << file << endl;
 	VCS::doVCCommand("co -q -r \""
-			 + file + "\"",
+			 + file + '"',
 			 string());
 }
 
@@ -105,7 +105,7 @@ void RCS::scanMaster()
 	while (!read_enough && ifs >> token) {
 		lyxerr[Debug::LYXVC]
 			<< "LyXVC::scanMaster: current lex text: `"
-			<< token << "'" << endl;
+			<< token << '\'' << endl;
 
 		if (token.empty())
 			continue;
@@ -163,7 +163,7 @@ void RCS::registrer(string const & msg)
 	cmd += msg;
 	cmd += "\" \"";
 	cmd += OnlyFilename(owner_->fileName());
-	cmd += "\"";
+	cmd += '"';
 	doVCCommand(cmd, owner_->filePath());
 	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));
 }
@@ -172,7 +172,8 @@ void RCS::registrer(string const & msg)
 void RCS::checkIn(string const & msg)
 {
 	doVCCommand("ci -q -u -m\"" + msg + "\" \""
-		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filePath());
+		    + OnlyFilename(owner_->fileName()) + '"',
+		    owner_->filePath());
 	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));
 }
 
@@ -181,7 +182,8 @@ void RCS::checkOut()
 {
 	owner_->markClean();
 	doVCCommand("co -q -l \""
-		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filePath());
+		    + OnlyFilename(owner_->fileName()) + '"',
+		    owner_->filePath());
 	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));
 }
 
@@ -189,7 +191,8 @@ void RCS::checkOut()
 void RCS::revert()
 {
 	doVCCommand("co -f -u" + version() + " \""
-		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filePath());
+		    + OnlyFilename(owner_->fileName()) + '"',
+		    owner_->filePath());
 	// We ignore changes and just reload!
 	owner_->markClean();
 	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));
@@ -200,7 +203,7 @@ void RCS::undoLast()
 {
 	lyxerr[Debug::LYXVC] << "LyXVC: undoLast" << endl;
 	doVCCommand("rcs -o" + version() + " \""
-		    + OnlyFilename(owner_->fileName()) + "\"",
+		    + OnlyFilename(owner_->fileName()) + '"',
 		    owner_->filePath());
 }
 
@@ -208,7 +211,8 @@ void RCS::undoLast()
 void RCS::getLog(string const & tmpf)
 {
 	doVCCommand("rlog \""
-		    + OnlyFilename(owner_->fileName()) + "\" > " + tmpf, owner_->filePath());
+		    + OnlyFilename(owner_->fileName()) + "\" > "
+		    + tmpf, owner_->filePath());
 }
 
 
@@ -227,7 +231,7 @@ string const CVS::find_file(string const & file)
 	string const dir = OnlyPath(file) + "/CVS/Entries";
 	string const tmpf = "/" + OnlyFilename(file) + "/";
 	lyxerr[Debug::LYXVC] << "LyXVC: checking in `" << dir
-			     << "' for `" << tmpf << "'" << endl;
+			     << "' for `" << tmpf << '\'' << endl;
 	FileInfo const f(dir);
 	if (f.readable()) {
 		// Ok we are at least in a CVS dir. Parse the CVS/Entries
@@ -251,7 +255,7 @@ void CVS::scanMaster()
 	// Ok now we do the real scan...
 	ifstream ifs(master_.c_str());
 	string tmpf = "/" + OnlyFilename(file_) + "/";
-	lyxerr[Debug::LYXVC] << "\tlooking for `" << tmpf << "'" << endl;
+	lyxerr[Debug::LYXVC] << "\tlooking for `" << tmpf << '\'' << endl;
 	string line;
 	regex reg("/(.*)/(.*)/(.*)/(.*)/(.*)");
 	while (getline(ifs, line)) {
@@ -279,7 +283,7 @@ void CVS::scanMaster()
 			lyxerr[Debug::LYXVC]
 				<<  "Date in Entries: `" << file_date
 				<< "'\nModification date of file: `"
-				<< mod_date << "'" << endl;
+				<< mod_date << '\'' << endl;
 			if (file_date == mod_date) {
 				locker_ = "Unlocked";
 				vcstatus = UNLOCKED;
@@ -298,7 +302,8 @@ void CVS::scanMaster()
 void CVS::registrer(string const & msg)
 {
 	doVCCommand("cvs -q add -m \"" + msg + "\" \""
-		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filePath());
+		    + OnlyFilename(owner_->fileName()) + '"',
+		    owner_->filePath());
 	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));
 }
 
@@ -306,7 +311,7 @@ void CVS::registrer(string const & msg)
 void CVS::checkIn(string const & msg)
 {
 	doVCCommand("cvs -q commit -m \"" + msg + "\" \""
-		    + OnlyFilename(owner_->fileName()) + "\"",
+		    + OnlyFilename(owner_->fileName()) + '"',
 		    owner_->filePath());
 	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));
 }
@@ -325,7 +330,7 @@ void CVS::revert()
 	// gets the updated version from the repository.
 	string const fil = OnlyFilename(owner_->fileName());
 
-	doVCCommand("rm -f \"" + fil + "\"; cvs update \"" + fil + "\"",
+	doVCCommand("rm -f \"" + fil + "\"; cvs update \"" + fil + '"',
 		    owner_->filePath());
 	owner_->markClean();
 	owner_->getUser()->owner()->dispatch(FuncRequest(LFUN_MENURELOAD));

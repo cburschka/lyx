@@ -117,7 +117,7 @@ void Debug::showLevel(ostream & o, Debug::type level)
 			  << endl;
 #else
 			o << _("Debugging `") << errorTags[i].name << "' ("
-			  << _(errorTags[i].desc) << ")"
+			  << _(errorTags[i].desc) << ')'
 			  << endl;
 #endif
 		}

@@ -53,7 +53,7 @@ FileDialog::Result const FileDialog::save(string const & path, string const & ma
 	return open(path, mask, suggested);
 }
 
- 
+
 FileDialog::Result const FileDialog::open(string const & path, string const & mask, string const & suggested)
 {
 	string filter = mask;
@@ -67,7 +67,7 @@ FileDialog::Result const FileDialog::open(string const & path, string const & ma
 	}
 
 	lyxerr[Debug::GUI] << "filedialog open  with path \"" << path << "\", mask \""
-		<< filter << "\", suggested \"" << suggested << "\"" << endl;
+		<< filter << "\", suggested \"" << suggested << '"' << endl;
 
 	// no support for asynchronous selection yet
 

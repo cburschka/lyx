@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  *
@@ -406,7 +406,7 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 	int y1, int y2, int yo, int xo,
 	bool internal)
 {
-	lyxerr[Debug::GUI] << "screen: drawFromTo " << y1 << "-" << y2 << endl;
+	lyxerr[Debug::GUI] << "screen: drawFromTo " << y1 << '-' << y2 << endl;
 
 	int y_text = text->first_y + y1;
 

@@ -85,7 +85,7 @@ void QPreambleDialog::editClicked()
 
 	file.close();
 
-	editor += " " + filename;
+	editor += ' ' + filename;
 
 	Forkedcall call;
 

@@ -1062,7 +1062,7 @@ namespace {
 			//                   Probably missing an operator such as * p
 			//
 			lyxerr << "checking expr: '" << expr << "'\n";
-			string out = captureOutput("mint -i 1 -S -s -q -q", expr + ";");
+			string out = captureOutput("mint -i 1 -S -s -q -q", expr + ';');
 			if (out.empty())
 				break; // expression syntax is ok
 			istringstream is(out.c_str());
@@ -1077,7 +1077,7 @@ namespace {
 			pos -= 15; // skip the "on line ..." part
 			if (expr[pos] == '*' || (pos > 0 && expr[pos - 1] == '*'))
 				break; // two '*' in a row are definitely bad
-			expr.insert(pos,  "*");
+			expr.insert(pos, 1, '*');
 		}
 
 		string full = "latex(" +  extra + '(' + expr + "));";
@@ -1138,7 +1138,7 @@ namespace {
 			pos -= 4; // skip the ">>> " part
 			if (expr[pos] == '*')
 				break; // two '*' in a row are definitely bad
-			expr.insert(pos,  "*");
+			expr.insert(pos, 1, '*');
 		}
 
 		if (out.size() < 6)
@@ -1178,15 +1178,15 @@ MathArray pipeThroughExtern(string const & lang, string const & extra,
 	// create normalized expression
 	ostringstream os;
 	NormalStream ns(os);
-	os << "[" << extra << ' ';
+	os << '[' << extra << ' ';
 	ns << ar;
-	os << "]";
+	os << ']';
 	string data = STRCONV(os.str());
 
 	// search external script
 	string file = LibFileSearch("mathed", "extern_" + lang);
 	if (file.empty()) {
-		lyxerr << "converter to '" << lang << "' not found\n";
+		lyxerr << "converter to '" << lang << "' not found" << endl;
 		return MathArray();
 	}
 

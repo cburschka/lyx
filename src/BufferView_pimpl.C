@@ -154,7 +154,7 @@ Painter & BufferView::Pimpl::painter() const
 void BufferView::Pimpl::buffer(Buffer * b)
 {
 	lyxerr[Debug::INFO] << "Setting buffer in BufferView ("
-			    << b << ")" << endl;
+			    << b << ')' << endl;
 	if (buffer_) {
 		buffer_->delUser(bv_);
 
@@ -918,11 +918,11 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 {
 	lyxerr[Debug::ACTION] << "BufferView::Pimpl::Dispatch:"
-		<< " action[" << ev.action <<"]"
-		<< " arg[" << ev.argument << "]"
-		<< " x[" << ev.x << "]"
-		<< " y[" << ev.y << "]"
-		<< " button[" << ev.button() << "]"
+		<< " action[" << ev.action << ']'
+		<< " arg[" << ev.argument << ']'
+		<< " x[" << ev.x << ']'
+		<< " y[" << ev.y << ']'
+		<< " button[" << ev.button() << ']'
 		<< endl;
 
 	// e.g. Qt mouse press when no buffer

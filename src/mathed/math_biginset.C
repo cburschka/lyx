@@ -64,5 +64,5 @@ void MathBigInset::write(WriteStream & os) const
 
 void MathBigInset::normalize(NormalStream & os) const
 {
-	os << "[" << name_ << ' ' <<  delim_ << ']';
+	os << '[' << name_ << ' ' <<  delim_ << ']';
 }

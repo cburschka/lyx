@@ -119,7 +119,7 @@ void Menubar::Pimpl::makeMenubar(Menu const & menu)
 			continue;
 		}
 		string const label = i->label();
-		string const shortcut = "#" + i->shortcut();
+		string const shortcut = '#' + i->shortcut();
 		int const width = string_width(label);
 		obj = fl_add_button(FL_MENU_BUTTON,
 				    air + moffset, yloc,
@@ -228,7 +228,7 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 	}
 	lyxerr[Debug::GUI] << "max_width=" << max_width
 			   << ", widest_label=`" << widest_label
-			   << "'" << endl;
+			   << '\'' << endl;
 
 	// Compute where to put separators
 	vector<string> extra_labels(menu.size());
@@ -322,7 +322,7 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 					   << "\", binding \"" << accel
 					   << "\", shortcut \"" << shortcut
 					   << "\" (added to menu"
-					   << curmenuid << ")" << endl;
+					   << curmenuid << ')' << endl;
 			break;
 		}
 

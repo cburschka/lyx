@@ -52,7 +52,7 @@ void MathCasesInset::normalize(NormalStream & os) const
 {
 	os << "[cases ";
 	MathGridInset::normalize(os);
-	os << "]";
+	os << ']';
 }
 
 
@@ -60,7 +60,7 @@ void MathCasesInset::maplize(MapleStream & os) const
 {
 	os << "cases(";
 	MathGridInset::maplize(os);
-	os << ")";
+	os << ')';
 }
 
 

@@ -47,7 +47,7 @@ extern string current_layout;
 extern int bibitemMaxWidth(BufferView *, LyXFont const &);
 
 // the selection possible is needed, that only motion events are
-// used, where the bottom press event was on the drawing area too 
+// used, where the bottom press event was on the drawing area too
 bool selection_possible = false;
 
 
@@ -104,7 +104,7 @@ namespace {
 
 		Inset /*const*/ * inset = par.getInset(pos);
 
-		if (!isEditableInset(inset)) 
+		if (!isEditableInset(inset))
 			return 0;
 
 		// get inset dimensions
@@ -124,8 +124,9 @@ namespace {
 		);
 
 		if (!b.contained(x, y)) {
-			lyxerr[Debug::GUI] << "Missed inset at x,y " << x << "," << y
-				<< " box " << b << endl;
+			lyxerr[Debug::GUI] << "Missed inset at x,y "
+					   << x << ',' << y
+					   << " box " << b << endl;
 			return 0;
 		}
 
@@ -371,7 +372,7 @@ void specialChar(LyXText * lt, BufferView * bv, InsetSpecialChar::Kind kind)
 Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 {
 	lyxerr[Debug::ACTION] << "LyXFunc::dispatch: action[" << cmd.action
-			      <<"] arg[" << cmd.argument << "]" << endl;
+			      <<"] arg[" << cmd.argument << ']' << endl;
 
 	BufferView * bv = cmd.view();
 
@@ -561,8 +562,8 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_WORDSEL: {
 		update(bv, false);
-		LyXCursor cur1;	
-		LyXCursor cur2;	
+		LyXCursor cur1;
+		LyXCursor cur2;
 		getWord(cur1, cur2, WHOLE_WORD);
 		setCursor(bv, cur1.par(), cur1.pos());
 		bv->beforeChange(this);
@@ -1048,7 +1049,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		if (!is)
 			lyxerr << "SETXY: Could not parse coordinates in '"
 			       << cmd.argument << std::endl;
-		else 
+		else
 			setCursorFromCoordinates(bv, x, y);
 		break;
 	}
@@ -1290,7 +1291,8 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		// in some other local environment, but I would like to leave this here
 		// for the moment until I can remove this (Jug 20020418)
 		if (y_before < bv->text->cursor.y())
-			lyxerr << y_before << ":" << bv->text->cursor.y() << endl;
+			lyxerr << y_before << ':'
+			       << bv->text->cursor.y() << endl;
 	#endif
 		// This is to allow jumping over large insets
 		if (cursorrow == bv->text->cursor.row()) {
@@ -1421,7 +1423,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		// do nothing if we used the mouse wheel
 		if (!bv->buffer())
 			break;
-	
+
 		if (cmd.button() == mouse_button::button4
 		 || cmd.button() == mouse_button::button5)
 			break;
@@ -1599,7 +1601,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_INSET_WRAP:
 	case LFUN_TABULAR_INSERT:
 	case LFUN_INDEX_INSERT:
-	case LFUN_INDEX_PRINT: 
+	case LFUN_INDEX_PRINT:
 	case LFUN_PARENTINSERT:
 	case LFUN_TOC_INSERT:
 	{

@@ -19,7 +19,7 @@
 #include <fcntl.h>
 #include <cstdio>
 
-// FIXME: do we need any of this horrible gook ? 
+// FIXME: do we need any of this horrible gook ?
 #if TIME_WITH_SYS_TIME
 # include <sys/time.h>
 # include <ctime>
@@ -74,7 +74,7 @@ public:
 		     int * in, int * out)
 		: params(p), lang(l), pipein(in), pipeout(out) {}
 	///
-	virtual ForkedProcess * clone() const { 
+	virtual ForkedProcess * clone() const {
 		return new LaunchIspell(*this);
 	}
 	///
@@ -99,7 +99,7 @@ int LaunchIspell::start()
 
 
 int LaunchIspell::generateChild()
-{	
+{
 	isp_pid = fork();
 
 	if (isp_pid != 0) {
@@ -154,7 +154,7 @@ int LaunchIspell::generateChild()
 		string("-w").copy(tmp, 2); tmp[2] = '\0';
 		argv[argc++] = tmp;
 		// Put the escape chars in ""s
-		string tms = "\"" + lyxrc.isp_esc_chars + "\"";
+		string tms = '"' + lyxrc.isp_esc_chars + '"';
 		tmp = new char[tms.length() + 1];
 		tms.copy(tmp, tms.length()); tmp[tms.length()] = '\0';
 		argv[argc++] = tmp;
@@ -251,7 +251,7 @@ ISpell::ISpell(BufferParams const & params, string const & lang)
 	// Actually I used it to tell if it's truly Ispell or if it's
 	// aspell -- (kevinatk@home.com)
 	// But no code actually used the results for anything useful
-	// so I removed it again. Perhaps we can remove this code too. 
+	// so I removed it again. Perhaps we can remove this code too.
 	// - jbl
 	char buf[2048];
 	fd_set infds;
@@ -348,7 +348,7 @@ enum ISpell::Result ISpell::check(WordLangTuple const & word)
 	// FIXME Please rewrite to use string.
 
 	Result res;
- 
+
 	::fputs(word.word().c_str(), out);
 	::fputc('\n', out);
 

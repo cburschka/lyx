@@ -244,7 +244,7 @@ void XWorkArea::redraw(int width, int height)
 
 	if (lyxerr.debugging(Debug::WORKAREA)) {
 		lyxerr << "(Re)creating pixmap ("
-		       << width << 'x' << height << ")" << endl;
+		       << width << 'x' << height << ')' << endl;
 	}
 
 	if (workareapixmap) {
@@ -417,10 +417,10 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 			string const stm = (tmp ? tmp : "");
 			string const stm2 = (tmp2 ? tmp2 : "");
 
-			lyxerr[Debug::KEY] << "XWorkArea: Key is `" << stm << "' ["
-			       << key << "]" << endl;
-			lyxerr[Debug::KEY] << "XWorkArea: Keysym is `" << stm2 << "' ["
-			       << keysym << "]" << endl;
+			lyxerr[Debug::KEY] << "XWorkArea: Key is `" << stm
+					   << "' [" << key << ']' << endl;
+			lyxerr[Debug::KEY] << "XWorkArea: Keysym is `" << stm2
+					   << "' [" << keysym << ']' << endl;
 		}
 
 #if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))

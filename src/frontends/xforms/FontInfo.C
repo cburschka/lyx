@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Asger Alstrup
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -133,7 +133,7 @@ void FontInfo::query()
 		// We have matches. Run them through
 		for (int i = 0; i < matches; ++i) {
 			string name(list[i]);
-			lyxerr[Debug::FONT] << "match #" << i << " "
+			lyxerr[Debug::FONT] << "match #" << i << ' '
 					    << name << endl;
 			sizes[i] = lyx::atoi(token(name, '-', 7));
 			strings[i] = name;

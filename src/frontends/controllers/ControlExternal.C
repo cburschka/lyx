@@ -149,7 +149,7 @@ string const ControlExternal::Browse(string const & input) const
 		pattern = "*";
 
 	// FIXME: a temporary hack until the FileDialog interface is updated
-	pattern += "|";
+	pattern += '|';
 
 	std::pair<string, string> dir1(N_("Documents|#o#O"),
 				  string(lyxrc.document_path));

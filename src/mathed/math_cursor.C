@@ -136,14 +136,14 @@ bool MathCursor::popRight()
 #if FILEDEBUG
 	void MathCursor::dump(char const * what) const
 	{
-		lyxerr << "MC: " << what << "\n";
-		lyxerr << " Cursor: " << depth() << "\n";
+		lyxerr << "MC: " << what << endl;
+		lyxerr << " Cursor: " << depth() << endl;
 		for (unsigned i = 0; i < depth(); ++i)
-			lyxerr << "    i: " << i << " " << Cursor_[i] << "\n";
-		lyxerr << " Anchor: " << Anchor_.size() << "\n";
+			lyxerr << "    i: " << i << ' ' << Cursor_[i] << endl;
+		lyxerr << " Anchor: " << Anchor_.size() << endl;
 		for (unsigned i = 0; i < Anchor_.size(); ++i)
-			lyxerr << "    i: " << i << " " << Anchor_[i] << "\n";
-		lyxerr	<< " sel: " << selection_ << "\n";
+			lyxerr << "    i: " << i << ' ' << Anchor_[i] << endl;
+		lyxerr	<< " sel: " << selection_ << endl;
 	}
 #else
 	void MathCursor::dump(char const *) const {}
@@ -778,18 +778,19 @@ void MathCursor::normalize()
 {
 	if (idx() >= par()->nargs()) {
 		lyxerr << "this should not really happen - 1: "
-		       << idx() << " " << par()->nargs() << " in: " << par() << "\n";
+		       << idx() << ' ' << par()->nargs()
+		       << " in: " << par() << endl;
 		dump("error 2");
 	}
 	idx() = min(idx(), par()->nargs() - 1);
 
 	if (pos() > size()) {
 		lyxerr << "this should not really happen - 2: "
-			<< pos() << " " << size() <<  " in idx: " << idx()
-			<< " in atom: '";
+			<< pos() << ' ' << size() <<  " in idx: " << idx()
+		       << " in atom: '";
 		WriteStream wi(lyxerr, false, true);
 		par()->write(wi);
-		lyxerr << "\n";
+		lyxerr << endl;
 		dump("error 4");
 	}
 	pos() = min(pos(), size());
@@ -1346,7 +1347,7 @@ string MathCursor::grabSelection() const
 			data += "\\\\";
 		for (col_type col = c1; col <= c2; ++col) {
 			if (col > c1)
-				data += "&";
+				data += '&';
 			data += asString(i1.par_->cell(i1.par_->index(row, col)));
 		}
 	}

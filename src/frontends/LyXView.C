@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Lars Gullik Bjønnes
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -162,7 +162,7 @@ void LyXView::updateWindowTitle()
 			minimize_title = OnlyFilename(cur_title);
 			if (!buffer()->isClean()) {
 				maximize_title += _(" (changed)");
-				minimize_title += "*";
+				minimize_title += '*';
 			}
 			if (buffer()->isReadonly())
 				maximize_title += _(" (read only)");
@@ -181,5 +181,5 @@ void LyXView::dispatch(FuncRequest const & req)
 	// substitute the correct BufferView here
 	FuncRequest r = req;
 	r.setView(view().get());
-	getLyXFunc().dispatch(r); 
+	getLyXFunc().dispatch(r);
 }

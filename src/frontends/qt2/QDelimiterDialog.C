@@ -85,9 +85,9 @@ QDelimiterDialog::QDelimiterDialog(QMath * form)
 		leftIP->add(QPixmap(xpm.c_str()), delim[i], delim[i]);
 		rightIP->add(QPixmap(xpm.c_str()), delim[i], delim[i]);
 	}
- 
+
 	string empty_xpm(find_xpm("empty"));
- 
+
 	leftIP->add(QPixmap(empty_xpm.c_str()), "empty", "empty");
 	rightIP->add(QPixmap(empty_xpm.c_str()), "empty", "empty");
 	connect(leftIP, SIGNAL(button_clicked(string const &)), this, SLOT(ldelim_clicked(string const &)));
@@ -99,7 +99,7 @@ QDelimiterDialog::QDelimiterDialog(QMath * form)
 
 void QDelimiterDialog::insertClicked()
 {
-	form_->insertDelim(fix_name(left_) + " " + fix_name(right_));
+	form_->insertDelim(fix_name(left_) + ' ' + fix_name(right_));
 }
 
 

@@ -51,7 +51,7 @@ string const InsetUrl::getScreenLabel(Buffer const *) const
 		temp = _("HtmlUrl: ");
 
 	string url;
- 
+
 	if (!getOptions().empty())
 		url += getOptions();
 	else
@@ -81,16 +81,16 @@ int InsetUrl::latex(Buffer const *, ostream & os,
 int InsetUrl::ascii(Buffer const *, ostream & os, int) const
 {
 	if (getOptions().empty())
-		os << "[" << getContents() << "]";
+		os << '[' << getContents() << ']';
 	else
-		os << "[" << getContents() << "||" <<  getOptions() << "]";
+		os << '[' << getContents() << "||" <<  getOptions() << ']';
 	return 0;
 }
 
 
 int InsetUrl::linuxdoc(Buffer const *, ostream & os) const
 {
-	os << "<" << getCmdName()
+	os << '<' << getCmdName()
 	   << " url=\""  << getContents() << "\""
 	   << " name=\"" << getOptions() << "\">";
 

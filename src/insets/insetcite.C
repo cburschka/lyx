@@ -130,9 +130,9 @@ string const getNatbibLabel(Buffer const * buffer,
 	// puctuation mark separating citation entries.
 	char const * const sep = ";";
 
-	string const op_str(string(1, ' ')  + string(1, op));
-	string const cp_str(string(1, cp)   + string(1, ' '));
-	string const sep_str(string(sep) + " ");
+	string const op_str(' ' + string(1, op));
+	string const cp_str(string(1, cp) + ' ');
+	string const sep_str(string(sep) + ' ');
 
 	string label;
 	vector<string> keys = getVectorFromString(keyList);
@@ -214,7 +214,7 @@ string const getBasicLabel(string const & keyList, string const & after)
 
 	if (contains(keys, ",")) {
 		// Final comma allows while loop to cover all keys
-		keys = ltrim(split(keys, label, ',')) + ",";
+		keys = ltrim(split(keys, label, ',')) + ',';
 		while (contains(keys, ",")) {
 			string key;
 			keys = ltrim(split(keys, key, ','));
@@ -226,7 +226,7 @@ string const getBasicLabel(string const & keyList, string const & after)
 	if (!after.empty())
 		label += ", " + after;
 
-	return "[" + label + "]";
+	return '[' + label + ']';
 }
 
 } // anon namespace
@@ -375,14 +375,14 @@ int InsetCitation::latex(Buffer const * buffer, ostream & os,
 	string const before = string();
 	string const after  = getOptions();
 	if (!before.empty() && buffer->params.use_natbib)
-		os << "[" << before << "][" << after << "]";
+		os << '[' << before << "][" << after << ']';
 	else if (!after.empty())
-		os << "[" << after << "]";
+		os << '[' << after << ']';
 #else
 	// and the cleaned up equvalent, should it just be changed? (Lgb)
 	string const after  = getOptions();
 	if (!after.empty())
-		os << "[" << after << "]";
+		os << '[' << after << ']';
 #endif
 	string::const_iterator it  = getContents().begin();
 	string::const_iterator end = getContents().end();
@@ -396,7 +396,7 @@ int InsetCitation::latex(Buffer const * buffer, ostream & os,
 			content += *it;
 	}
 
-	os << "{" << content << "}";
+	os << '{' << content << '}';
 
 	return 0;
 }

@@ -4,7 +4,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Edwin Leuven
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -74,22 +74,22 @@ void FormCharacter::build()
 
 	// create a string of entries " entry1 | entry2 | entry3 | entry4 "
 	// with which to initialise the xforms choice object.
-	string choice = " " + getStringFromVector(getFirst(family), " | ") +" ";
+	string choice = ' ' + getStringFromVector(getFirst(family), " | ") + ' ';
 	fl_addto_choice(dialog_->choice_family, choice.c_str());
 
-	choice = " " + getStringFromVector(getFirst(series), " | ") + " ";
+	choice = ' ' + getStringFromVector(getFirst(series), " | ") + ' ';
 	fl_addto_choice(dialog_->choice_series, choice.c_str());
 
-	choice = " " + getStringFromVector(getFirst(shape), " | ") + " ";
+	choice = ' ' + getStringFromVector(getFirst(shape), " | ") + ' ';
 	fl_addto_choice(dialog_->choice_shape, choice.c_str());
 
-	choice = " " + getStringFromVector(getFirst(size), " | ") + " ";
+	choice = ' ' + getStringFromVector(getFirst(size), " | ") + ' ';
 	fl_addto_choice(dialog_->choice_size, choice.c_str());
 
-	choice = " " + getStringFromVector(getFirst(bar), " | ") + " ";
+	choice = ' ' + getStringFromVector(getFirst(bar), " | ") + ' ';
 	fl_addto_choice(dialog_->choice_bar, choice.c_str());
 
-	choice = " " + getStringFromVector(getFirst(color), " | ") + " ";
+	choice = ' ' + getStringFromVector(getFirst(color), " | ") + ' ';
 	fl_addto_choice(dialog_->choice_color, choice.c_str());
 
 	// xforms appears to need this to prevent a crash...

@@ -5,7 +5,7 @@
  *
  * \author Asger Alstrup
  * \author John Levon
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -51,7 +51,7 @@ void FormExternal::build()
 	dialog_.reset(build_external(this));
 
 	string const choice =
-		" " + getStringFromVector(controller().getTemplates(), " | ") + " ";
+		' ' + getStringFromVector(controller().getTemplates(), " | ") + ' ';
 	fl_addto_choice(dialog_->choice_template, choice.c_str());
 
 	fl_set_input_return (dialog_->input_filename,  FL_RETURN_CHANGED);

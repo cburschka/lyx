@@ -48,6 +48,6 @@ void ControlTabularCreate::apply()
 
 	view().apply();
 
-	string const val = tostr(params().first) + " " + tostr(params().second);
+	string const val = tostr(params().first) + ' ' + tostr(params().second);
 	lyxfunc().dispatch(FuncRequest(LFUN_TABULAR_INSERT, val));
 }

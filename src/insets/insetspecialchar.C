@@ -96,21 +96,21 @@ void InsetSpecialChar::draw(BufferView * bv, LyXFont const & f,
 	case HYPHENATION:
 	{
 		font.setColor(LColor::special);
-		pain.text(int(x), baseline, "-", font);
+		pain.text(int(x), baseline, '-', font);
 		x += width(bv, font);
 		break;
 	}
 	case LIGATURE_BREAK:
 	{
 		font.setColor(LColor::special);
-		pain.text(int(x), baseline, "|", font);
+		pain.text(int(x), baseline, '|', font);
 		x += width(bv, font);
 		break;
 	}
 	case END_OF_SENTENCE:
 	{
 		font.setColor(LColor::special);
-		pain.text(int(x), baseline, ".", font);
+		pain.text(int(x), baseline, '.', font);
 		x += width(bv, font);
 		break;
 	}
@@ -235,7 +235,7 @@ int InsetSpecialChar::latex(Buffer const *, ostream & os, bool /*fragile*/,
 		os << "\\lyxarrow{}";
 		break;
 	case PROTECTED_SEPARATOR:
-		os << (free_space ? " " : "~");
+		os << (free_space ? ' ' : '~');
 		break;
 	}
 	return 0;
@@ -249,7 +249,7 @@ int InsetSpecialChar::ascii(Buffer const *, ostream & os, int) const
 	case LIGATURE_BREAK:
 		break;
 	case END_OF_SENTENCE:
-		os << ".";
+		os << '.';
 		break;
 	case LDOTS:
 		os << "...";
@@ -258,7 +258,7 @@ int InsetSpecialChar::ascii(Buffer const *, ostream & os, int) const
 		os << "->";
 		break;
 	case PROTECTED_SEPARATOR:
-		os << " ";
+		os << ' ';
 		break;
 	}
 	return 0;
@@ -272,7 +272,7 @@ int InsetSpecialChar::linuxdoc(Buffer const *, ostream & os) const
 	case LIGATURE_BREAK:
 		break;
 	case END_OF_SENTENCE:
-		os << ".";
+		os << '.';
 		break;
 	case LDOTS:
 		os << "...";
@@ -295,7 +295,7 @@ int InsetSpecialChar::docbook(Buffer const *, ostream & os, bool) const
 	case LIGATURE_BREAK:
 		break;
 	case END_OF_SENTENCE:
-		os << ".";
+		os << '.';
 		break;
 	case LDOTS:
 		os << "...";

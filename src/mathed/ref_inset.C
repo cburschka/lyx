@@ -56,7 +56,7 @@ RefInset::dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 				return DISPATCHED;
 			}
 			break;
-		case LFUN_MOUSE_PRESS:	
+		case LFUN_MOUSE_PRESS:
 		case LFUN_MOUSE_MOTION:
 			// eat other mouse commands
 			return DISPATCHED;
@@ -97,7 +97,7 @@ void RefInset::validate(LaTeXFeatures & features) const
 
 int RefInset::ascii(std::ostream & os, int) const
 {
-	os << "[" << asString(cell(0)) << "]";
+	os << '[' << asString(cell(0)) << ']';
 	return 0;
 }
 

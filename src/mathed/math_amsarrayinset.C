@@ -82,16 +82,15 @@ void MathAMSArrayInset::draw(MathPainterInfo & pi, int x, int y) const
 
 void MathAMSArrayInset::write(WriteStream & os) const
 {
-	os << "\\begin{" << name_ << "}";
+	os << "\\begin{" << name_ << '}';
 	MathGridInset::write(os);
-	os << "\\end{" << name_ << "}";
+	os << "\\end{" << name_ << '}';
 }
 
 
 void MathAMSArrayInset::normalize(NormalStream & os) const
 {
-	os << "[" << name_ << " ";
+	os << '[' << name_ << ' ';
 	MathGridInset::normalize(os);
-	os << "]";
+	os << ']';
 }
-

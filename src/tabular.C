@@ -1206,8 +1206,8 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 	Init(buf->params, rows_arg, columns_arg);
 	l_getline(is, line);
 	if (!prefixIs(line, "<features")) {
-		lyxerr << "Wrong tabular format (expected <features ...> got" <<
-			line << ")" << endl;
+		lyxerr << "Wrong tabular format (expected <features ...> got"
+		       << line << ')' << endl;
 		return;
 	}
 	getTokenValue(line, "rotate", rotate);
@@ -1246,8 +1246,8 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 	for (int j = 0; j < columns_; ++j) {
 		l_getline(is,line);
 		if (!prefixIs(line,"<column")) {
-			lyxerr << "Wrong tabular format (expected <column ...> got" <<
-				line << ")" << endl;
+			lyxerr << "Wrong tabular format (expected <column ...> got"
+			       << line << ')' << endl;
 			return;
 		}
 		getTokenValue(line, "alignment", column_info[j].alignment);
@@ -1261,8 +1261,8 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 	for (int i = 0; i < rows_; ++i) {
 		l_getline(is, line);
 		if (!prefixIs(line, "<row")) {
-			lyxerr << "Wrong tabular format (expected <row ...> got" <<
-				line << ")" << endl;
+			lyxerr << "Wrong tabular format (expected <row ...> got"
+			       << line << ')' << endl;
 			return;
 		}
 		getTokenValue(line, "topline", row_info[i].top_line);
@@ -1275,8 +1275,8 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 		for (int j = 0; j < columns_; ++j) {
 			l_getline(is, line);
 			if (!prefixIs(line, "<cell")) {
-				lyxerr << "Wrong tabular format (expected <cell ...> got" <<
-					line << ")" << endl;
+				lyxerr << "Wrong tabular format (expected <cell ...> got"
+				       << line << ')' << endl;
 				return;
 			}
 			getTokenValue(line, "multicolumn", cell_info[i][j].multicolumn);
@@ -1296,15 +1296,15 @@ void LyXTabular::ReadNew(Buffer const * buf, istream & is,
 				l_getline(is, line);
 			}
 			if (!prefixIs(line, "</cell>")) {
-				lyxerr << "Wrong tabular format (expected </cell> got" <<
-					line << ")" << endl;
+				lyxerr << "Wrong tabular format (expected </cell> got"
+				       << line << ')' << endl;
 				return;
 			}
 		}
 		l_getline(is, line);
 		if (!prefixIs(line, "</row>")) {
-			lyxerr << "Wrong tabular format (expected </row> got" <<
-				line << ")" << endl;
+			lyxerr << "Wrong tabular format (expected </row> got"
+			       << line << ')' << endl;
 			return;
 		}
 	}
@@ -1997,16 +1997,18 @@ int LyXTabular::TeXCellPreamble(ostream & os, int cell) const
 			if (!GetPWidth(cell).zero()) {
 				switch (GetVAlignment(cell)) {
 				case LYX_VALIGN_TOP:
-					os << "p";
+					os << 'p';
 					break;
 				case LYX_VALIGN_CENTER:
-					os << "m";
+					os << 'm';
 					break;
 				case LYX_VALIGN_BOTTOM:
-					os << "b";
+					os << 'b';
 					break;
 				}
-				os << "{" << GetPWidth(cell).asLatexString() << '}';
+				os << '{'
+				   << GetPWidth(cell).asLatexString()
+				   << '}';
 			} else {
 				switch (GetAlignment(cell)) {
 				case LYX_ALIGN_LEFT:
@@ -2032,13 +2034,13 @@ int LyXTabular::TeXCellPreamble(ostream & os, int cell) const
 		os << "\\parbox[";
 		switch (GetVAlignment(cell)) {
 		case LYX_VALIGN_TOP:
-			os << "t";
+			os << 't';
 			break;
 		case LYX_VALIGN_CENTER:
-			os << "c";
+			os << 'c';
 			break;
 		case LYX_VALIGN_BOTTOM:
-			os << "b";
+			os << 'b';
 			break;
 		}
 		os << "]{" << GetPWidth(cell).asLatexString() << "}{";
@@ -2046,13 +2048,13 @@ int LyXTabular::TeXCellPreamble(ostream & os, int cell) const
 		os << "\\begin{minipage}[";
 		switch (GetVAlignment(cell)) {
 		case LYX_VALIGN_TOP:
-			os << "t";
+			os << 't';
 			break;
 		case LYX_VALIGN_CENTER:
-			os << "m";
+			os << 'm';
 			break;
 		case LYX_VALIGN_BOTTOM:
-			os << "b";
+			os << 'b';
 			break;
 		}
 		os << "]{" << GetPWidth(cell).asLatexString() << "}\n";
@@ -2068,7 +2070,7 @@ int LyXTabular::TeXCellPostamble(ostream & os, int cell) const
 
 	// usual cells
 	if (GetUsebox(cell) == BOX_PARBOX)
-		os << "}";
+		os << '}';
 	else if (GetUsebox(cell) == BOX_MINIPAGE) {
 		os << "%\n\\end{minipage}";
 		ret += 2;
@@ -2204,7 +2206,7 @@ int LyXTabular::TeXRow(ostream & os, int const i, Buffer const * buf,
 			os << "\\R{";
 		ret += inset->latex(buf, os, fragile, fp);
 		if (rtl)
-			os << "}";
+			os << '}';
 
 		ret += TeXCellPostamble(os, cell);
 		if (!IsLastCellInRow(cell)) { // not last cell in row
@@ -2255,19 +2257,19 @@ int LyXTabular::latex(Buffer const * buf,
 			    os << ">{\\centering}";
 			    break;
 			  }
-			  
+
 				switch (column_info[i].valignment) {
 				case LYX_VALIGN_TOP:
-					os << "p";
+					os << 'p';
 					break;
 				case LYX_VALIGN_CENTER:
-					os << "m";
+					os << 'm';
 					break;
 				case LYX_VALIGN_BOTTOM:
-					os << "b";
+					os << 'b';
 					break;
 			}
-				os << "{"
+				os << '{'
 				   << column_info[i].p_width.asLatexString()
 				   << '}';
 			} else {
@@ -2276,8 +2278,8 @@ int LyXTabular::latex(Buffer const * buf,
 					os << 'l';
 					break;
 				case LYX_ALIGN_RIGHT:
-				os << 'r';
-				break;
+					os << 'r';
+					break;
 				default:
 					os << 'c';
 					break;
@@ -2357,14 +2359,14 @@ int LyXTabular::docbookRow(Buffer const * buf, ostream & os, int row) const
 		case LYX_VALIGN_CENTER:
 			os << "middle";
 		}
-		os << "\"";
+		os << '"';
 
 		if (IsMultiColumn(cell)) {
 			os << " namest=\"col" << j << "\" ";
-			os << "nameend=\"col" << j + cells_in_multicolumn(cell) - 1<< "\"";
+			os << "nameend=\"col" << j + cells_in_multicolumn(cell) - 1<< '"';
 		}
 
-		os << ">";
+		os << '>';
 		ret += GetCellInset(cell)->docbook(buf, os, true);
 		os << "</entry>\n";
 		++cell;
@@ -2591,11 +2593,9 @@ int LyXTabular::asciiPrintCell(Buffer const * buf, ostream & os,
 		break;
 	}
 
-	for (unsigned int i = 0; i < len1; ++i)
-		os << " ";
-	os << sstr.str();
-	for (unsigned int i = 0; i < len2; ++i)
-		os << " ";
+	os << string(len1, ' ')
+	   << sstr.str()
+	   << string(len2, ' ');
 	if (RightLine(cell))
 		os << " |";
 	else
@@ -2735,7 +2735,7 @@ int LyXTabular::GetCellFromInset(Inset const * inset, int maybe_cell) const
 
 void LyXTabular::Validate(LaTeXFeatures & features) const
 {
-        features.require("NeedTabularnewline");
+	features.require("NeedTabularnewline");
 	if (IsLongTabular())
 		features.require("longtable");
 	if (NeedRotating())

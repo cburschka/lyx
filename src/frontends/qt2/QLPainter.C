@@ -142,7 +142,8 @@ Painter & QLPainter::rectangle(int x, int y,
 	line_style ls,
 	line_width lw)
 {
-	//lyxerr << "rectangle " << x<<","<<y << " " <<w<<","<<h<<endl;
+	//lyxerr << "rectangle " << x << ',' << y << ' '
+	//       << w << ',' << h << endl;
 	setPen(col, ls, lw).drawRect(x, y, w, h);
 	return *this;
 }
@@ -152,7 +153,8 @@ Painter & QLPainter::fillRectangle(int x, int y,
 	int w, int h,
 	LColor::color col)
 {
-	//lyxerr << "fillRectangle " << x<<","<<y << " " <<w<<","<<h<<endl;
+	//lyxerr << "fillRectangle " << x << ',' << y << ' '
+	//       << w << ',' << h << endl;
 	qp_->fillRect(x, y, w, h, QColor(lcolor.getX11Name(col).c_str()));
 	return *this;
 }
@@ -184,8 +186,8 @@ Painter & QLPainter::arc(int x, int y,
 	unsigned int w, unsigned int h,
 	int a1, int a2, LColor::color col)
 {
-	lyxerr[Debug::GUI] << "arc: " << x<<","<<y
-		<< " " << w<<","<<h << ", angles "
+	lyxerr[Debug::GUI] << "arc: " << x << ',' << y
+		<< ' ' << w << ',' << h << ", angles "
 		<< a1 << " - " << a2 << endl;
 	// LyX usings 1/64ths degree, Qt usings 1/16th
 	setPen(col).drawArc(x, y, w, h, a1 / 4, a2 / 4);

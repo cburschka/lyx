@@ -38,7 +38,7 @@ string const getLabel(string const & str) {
 	string::size_type pos = label.find(sc[1]);
 	if (pos == string::npos)
 		return label;
-	label.insert(pos, "&");
+	label.insert(pos, 1, '&');
 	return label;
 }
 

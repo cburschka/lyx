@@ -89,8 +89,8 @@ int openTag(ostream & os, Paragraph::depth_type depth,
 {
 	if (!latexname.empty() && latexname != "!-- --") {
 		if (!mixcont)
-			os << string(" ", depth);
-		os << "<" << latexname << ">";
+			os << string(depth, ' ');
+		os << '<' << latexname << '>';
 	}
 
 	if (!mixcont)
@@ -105,8 +105,8 @@ int closeTag(ostream & os, Paragraph::depth_type depth,
 {
 	if (!latexname.empty() && latexname != "!-- --") {
 		if (!mixcont)
-			os << endl << string(" ", depth);
-		os << "</" << latexname << ">";
+			os << endl << string(depth, ' ');
+		os << "</" << latexname << '>';
 	}
 
 	if (!mixcont)

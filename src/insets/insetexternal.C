@@ -122,15 +122,15 @@ void InsetExternal::read(Buffer const *, LyXLex & lex)
 	}
 
 	// Parse string format...
-	string::size_type const pos1 = format.find(",");
+	string::size_type const pos1 = format.find(',');
 	params_.templ = ExternalTemplateManager::get().getTemplateByName(format.substr(0, pos1));
 	string::size_type const pos2 = format.find("\",\"", pos1);
 	params_.filename = format.substr(pos1 + 2, pos2 - (pos1 + 2));
 	params_.parameters = format.substr(pos2 + 3, format.length() - (pos2 + 4));
 
 	lyxerr[Debug::INFO] << "InsetExternal::Read: " << params_.templ.lyxName
-			    << " " << params_.filename
-			    << " " << params_.parameters << endl;
+			    << ' ' << params_.filename
+			    << ' ' << params_.parameters << endl;
 }
 
 
@@ -224,7 +224,7 @@ void InsetExternal::executeCommand(string const & s,
 	Systemcall one;
 	if (lyxerr.debugging()) {
 		lyxerr << "Executing '" << s << "' in '"
-		       << buffer->filePath() << "'" << endl;
+		       << buffer->filePath() << '\'' << endl;
 	}
 	one.startscript(Systemcall::Wait, s);
 }

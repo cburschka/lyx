@@ -214,7 +214,7 @@ void LyXComm::endPipe(int & fd, string const & filename, bool write)
 	if (!write) {
 		lyx_gui::remove_read_callback(fd);
 	}
- 
+
 #ifdef __EMX__
 	APIRET rc;
 	int errnum;
@@ -281,14 +281,14 @@ void LyXComm::read_ready()
 				read_buffer_.erase();
 			}
 
-			// reset connection			
+			// reset connection
 			closeConnection();
 			openConnection();
 			break;
 
 		} else {
 			// errno == EAGAIN
-		  	// Nothing new has arrived, so now's the time
+			// Nothing new has arrived, so now's the time
 			// to tell the outside world if there's anything
 			// in the read buffer.
 			break;
@@ -384,7 +384,8 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 		if (compare(p, "LYXSRV:", 7) == 0) {
 			server_only = true;
 		} else if (0 != compare(p, "LYXCMD:", 7)) {
-			lyxerr << "LyXServer: Unknown request \"" << p << "\"" << endl;
+			lyxerr << "LyXServer: Unknown request \""
+			       << p << '"' << endl;
 			return;
 		}
 		p += 7;
@@ -460,7 +461,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 				}
 			} else {
 				lyxerr <<"LyXServer: Undefined server command "
-				       << cmd << "." << endl;
+				       << cmd << '.' << endl;
 			}
 			return;
 		}
@@ -486,7 +487,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 				buf = "ERROR:";
 			else
 				buf = "INFO:";
-			buf += client + ":" + cmd + ":" +  rval + "\n";
+			buf += client + ':' + cmd + ':' +  rval + '\n';
 			serv->pipes.send(buf);
 
 			// !!! we don't do any error checking -

@@ -1,3 +1,7 @@
+2002-11-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* XMiniBuffer.C (peek_event): add l10n on a string missing it.
+
 2002-11-26  Angus Leeming  <leeming@lyx.org>
 
 	* forms_gettext.[Ch] (scex, idex): ditch the #defines and rename the
@@ -22,7 +26,7 @@
 2002-11-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* FileDialog.C (save): actually return the result from
-	FileDialog::open 
+	FileDialog::open
 
 2002-11-26  Jürgen Spitzmüller  <juergen.sp@t-online.de>
 

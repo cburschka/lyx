@@ -165,8 +165,8 @@ void LyXTabular::ReadOld(Buffer const * buf, istream & is,
     Init(buf->params, rows_arg, columns_arg);
     l_getline(is, line);
     if (!prefixIs(line, "<Features ")) {
-	lyxerr << "Wrong tabular format (expected <Feture ...> got" <<
-	    line << ")" << endl;
+	lyxerr << "Wrong tabular format (expected <Feture ...> got"
+	       << line << ')' << endl;
 	return;
     }
     getTokenValue(line, "islongtable", is_long_tabular);
@@ -184,8 +184,8 @@ void LyXTabular::ReadOld(Buffer const * buf, istream & is,
     for (int i = 0; i < rows_; ++i) {
 	l_getline(is, line);
 	if (!prefixIs(line, "<Row ")) {
-	    lyxerr << "Wrong tabular format (expected <Row ...> got" <<
-		line << ")" << endl;
+	    lyxerr << "Wrong tabular format (expected <Row ...> got"
+		   << line << ')' << endl;
 	    return;
 	}
 	getTokenValue(line, "topline", row_info[i].top_line);
@@ -194,8 +194,8 @@ void LyXTabular::ReadOld(Buffer const * buf, istream & is,
 	for (int j = 0; j < columns_; ++j) {
 	    l_getline(is,line);
 	    if (!prefixIs(line,"<Column")) {
-		lyxerr << "Wrong tabular format (expected <Column ...> got" <<
-		    line << ")" << endl;
+		lyxerr << "Wrong tabular format (expected <Column ...> got"
+		       << line << ')' << endl;
 		return;
 	    }
 	    if (!i) {
@@ -208,8 +208,8 @@ void LyXTabular::ReadOld(Buffer const * buf, istream & is,
 	    }
 	    l_getline(is, line);
 	    if (!prefixIs(line, "<Cell")) {
-		lyxerr << "Wrong tabular format (expected <Cell ...> got" <<
-		    line << ")" << endl;
+		lyxerr << "Wrong tabular format (expected <Cell ...> got"
+		       << line << ')' << endl;
 		return;
 	    }
 	    getTokenValue(line, "multicolumn", cell_info[i][j].multicolumn);
@@ -229,21 +229,21 @@ void LyXTabular::ReadOld(Buffer const * buf, istream & is,
 		l_getline(is, line);
 	    }
 	    if (line != "</Cell>") {
-		lyxerr << "Wrong tabular format (expected </Cell> got" <<
-		    line << ")" << endl;
+		lyxerr << "Wrong tabular format (expected </Cell> got"
+		       << line << ')' << endl;
 		return;
 	    }
 	    l_getline(is, line);
 	    if (line != "</Column>") {
-		lyxerr << "Wrong tabular format (expected </Column> got" <<
-		    line << ")" << endl;
+		lyxerr << "Wrong tabular format (expected </Column> got"
+		       << line << ')' << endl;
 		return;
 	    }
 	}
 	l_getline(is, line);
 	if (line != "</Row>") {
-	    lyxerr << "Wrong tabular format (expected </Row> got" <<
-		line << ")" << endl;
+	    lyxerr << "Wrong tabular format (expected </Row> got"
+		   << line << ')' << endl;
 	    return;
 	}
     }

@@ -80,7 +80,7 @@ FileDialog::Result const FileDialog::save(string const & path,
 	return result;
 }
 
- 
+
 FileDialog::Result const FileDialog::open(string const & path,
 					    string const & mask,
 					    string const & suggested)

@@ -37,7 +37,7 @@ void MathNumberInset::draw(MathPainterInfo & pi, int x, int y) const
 
 void MathNumberInset::normalize(NormalStream & os) const
 {
-	os << "[number " << str_ << "]";
+	os << "[number " << str_ << ']';
 }
 
 

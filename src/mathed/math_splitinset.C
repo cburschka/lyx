@@ -36,7 +36,7 @@ void MathSplitInset::write(WriteStream & ws) const
 {
 	if (ws.fragile())
 		ws << "\\protect";
-	ws << "\\begin{" << name_ << "}";
+	ws << "\\begin{" << name_ << '}';
 	MathGridInset::write(ws);
 	if (ws.fragile())
 		ws << "\\protect";

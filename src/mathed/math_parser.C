@@ -207,9 +207,9 @@ private:
 ostream & operator<<(ostream & os, Token const & t)
 {
 	if (t.cs().size())
-		os << "\\" << t.cs();
+		os << '\\' << t.cs();
 	else
-		os << "[" << t.character() << "," << t.cat() << "]";
+		os << '[' << t.character() << ',' << t.cat() << ']';
 	return os;
 }
 

@@ -97,7 +97,7 @@ void InsetCaption::draw(BufferView * bv, LyXFont const & f,
 	string const label = frm.str();
 #else
 	// Generate the label
-	string const label = _(fl) + " " + num + ":";
+	string const label = _(fl) + ' ' + num + ':';
 #endif
 	Painter & pain = bv->painter();
 	int const w = font_metrics::width(label, f);

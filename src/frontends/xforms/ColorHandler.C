@@ -188,11 +188,11 @@ GC LyXColorHandler::getGCForeground(LColor::color c)
 		lyxerr << _("LyX: Couldn't allocate '") << s
 		       << _("' for ") << lcolor.getGUIName(c)
 		       << _(" with (r,g,b)=(")
-		       << xcol.red << "," << xcol.green << "," << xcol.blue
+		       << xcol.red << ',' << xcol.green << ',' << xcol.blue
 		       << _(").\n")
 		       << _("     Using closest allocated color with (r,g,b)=(")
-		       << cmap[closest_pixel].red << ","
-		       << cmap[closest_pixel].green << ","
+		       << cmap[closest_pixel].red << ','
+		       << cmap[closest_pixel].green << ','
 		       << cmap[closest_pixel].blue
 		       << _(") instead.\nPixel [")
 		       << closest_pixel << _("] is used.")

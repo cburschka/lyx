@@ -26,6 +26,9 @@
 #include "Alert.h"
 #include "Alert_pimpl.h"
 
+#include "BoostFormat.h"
+
+
 using std::pair;
 using std::make_pair;
 
@@ -33,20 +36,20 @@ using std::make_pair;
 void alert_pimpl(string const & s1, string const & s2, string const & s3)
 {
 	QMessageBox::warning(0, "LyX",
-			     (s1 + "\n" + "\n" + s2 + "\n" + s3).c_str());
+			     (s1 + '\n' + '\n' + s2 + '\n' + s3).c_str());
 }
 
 
 bool askQuestion_pimpl(string const & s1, string const & s2, string const & s3)
 {
-	return !(QMessageBox::information(0, "LyX", (s1 + "\n" + s2 + "\n" + s3).c_str(),
+	return !(QMessageBox::information(0, "LyX", (s1 + '\n' + s2 + '\n' + s3).c_str(),
 		_("&Yes"), _("&No"), 0, 1));
 }
 
 
 int askConfirmation_pimpl(string const & s1, string const & s2, string const & s3)
 {
-	return (QMessageBox::information(0, "LyX", (s1 + "\n" + s2 + "\n" + s3).c_str(),
+	return (QMessageBox::information(0, "LyX", (s1 + '\n' + s2 + '\n' + s3).c_str(),
 		_("&Yes"), _("&No"), _("&Cancel"), 0, 2)) + 1;
 }
 
@@ -54,12 +57,16 @@ int askConfirmation_pimpl(string const & s1, string const & s2, string const & s
 pair<bool, string> const
 askForText_pimpl(string const & msg, string const & dflt)
 {
-	string title = _("LyX: ");
-	title += msg;
-
+#if USE_BOOST_FORMAT
+	boost::format fmt(_("LyX: %1$s"));
+	fmt % msg;
+	string const title = fmt.str();
+#else
+	string const title = _("LyX: ") + msg;
+#endif
 	QAskForTextDialog d(0, title.c_str(), true);
 	// less than ideal !
-	d.askLA->setText((string("&") + msg).c_str());
+	d.askLA->setText(('&' + msg).c_str());
 	d.askLE->setText(dflt.c_str());
 	d.askLE->setFocus();
 	int ret = d.exec();

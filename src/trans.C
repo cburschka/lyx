@@ -123,7 +123,7 @@ int Trans::Load(LyXLex & lex)
 			if (lex.next(true)) {
 				if (lyxerr.debugging(Debug::KBMAP))
 					lyxerr << "key\t`" << lex.text()
-					       << "'" << endl;
+					       << '\'' << endl;
 			} else
 				return -1;
 
@@ -132,7 +132,7 @@ int Trans::Load(LyXLex & lex)
 			if (lex.next(true)) {
 				if (lyxerr.debugging(Debug::KBMAP))
 					lyxerr << "accent\t`" << lex.text()
-					       << "'" << endl;
+					       << '\'' << endl;
 			} else
 				return -1;
 
@@ -148,7 +148,7 @@ int Trans::Load(LyXLex & lex)
 			if (lex.next(true)) {
 				if (lyxerr.debugging(Debug::KBMAP))
 					lyxerr << "allowed\t`" << lex.text()
-					       << "'" << endl;
+					       << '\'' << endl;
 			} else
 				return -1;
 
@@ -222,7 +222,7 @@ int Trans::Load(LyXLex & lex)
 			if (lex.next(true)) {
 				key_from = lex.text()[0];
 				if (lyxerr.debugging(Debug::KBMAP))
-					lyxerr << "\t`" << lex.text() << "'"
+					lyxerr << "\t`" << lex.text() << '\''
 					       << endl;
 			} else
 				return -1;
@@ -231,7 +231,7 @@ int Trans::Load(LyXLex & lex)
 				string string_to = lex.text();
 				keymap_[key_from] = string_to;
 				if (lyxerr.debugging(Debug::KBMAP))
-					lyxerr << "\t`" << string_to << "'"
+					lyxerr << "\t`" << string_to << '\''
 					       << endl;
 			} else
 				return -1;
@@ -247,7 +247,7 @@ int Trans::Load(LyXLex & lex)
 				lyxerr << "KXMOD:\t" << lex.text() << endl;
 			if (lex.next(true)) {
 				if (lyxerr.debugging(Debug::KBMAP))
-					lyxerr << "\t`" << lex.text() << "'"
+					lyxerr << "\t`" << lex.text() << '\''
 					       << endl;
 				accent = getkeymod(lex.getString());
 			} else
@@ -255,7 +255,7 @@ int Trans::Load(LyXLex & lex)
 
 			if (lex.next(true)) {
 				if (lyxerr.debugging(Debug::KBMAP))
-					lyxerr << "\t`" << lex.text() << "'"
+					lyxerr << "\t`" << lex.text() << '\''
 					       << endl;
 				key = lex.text()[0];
 			} else
@@ -263,7 +263,7 @@ int Trans::Load(LyXLex & lex)
 
 			if (lex.next(true)) {
 				if (lyxerr.debugging(Debug::KBMAP))
-					lyxerr << "\t`" << lex.text() << "'"
+					lyxerr << "\t`" << lex.text() << '\''
 					       << endl;
 				str = lex.text();
 			} else
@@ -342,7 +342,7 @@ tex_accent getkeymod(string const & p)
 			lyxerr << "p = " << p
 			       << ", lyx_accent_table[" << i
 			       << "].name = `" << lyx_accent_table[i].name
-			       << "'" << endl;
+			       << '\'' << endl;
 
 		if (lyx_accent_table[i].name
 		     && contains(p, lyx_accent_table[i].name)) {

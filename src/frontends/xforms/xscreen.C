@@ -191,8 +191,8 @@ void XScreen::hideCursor()
 
 void XScreen::expose(int x, int y, int w, int h)
 {
-	lyxerr[Debug::GUI] << "expose " << w << "x" << h
-		<< "+" << x << "+" << y << endl;
+	lyxerr[Debug::GUI] << "expose " << w << 'x' << h
+		<< '+' << x << '+' << y << endl;
 	XCopyArea(fl_get_display(),
 		  owner_.getPixmap(),
 		  owner_.getWin(),

@@ -48,7 +48,7 @@ void MathSizeInset::write(WriteStream & os) const
 
 void MathSizeInset::normalize(NormalStream & os) const
 {
-	os << "[" << key_->name << ' ' << cell(0) << ']';
+	os << '[' << key_->name << ' ' << cell(0) << ']';
 }
 
 

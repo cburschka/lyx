@@ -172,7 +172,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 #if 1
 				is.getline(buff, sizeof(buff));
 				lyxerr[Debug::LYXLEX] << "Comment read: `" << c
-						      << buff << "'" << endl;
+						      << buff << '\'' << endl;
 #else
 				// unfortunately ignore is buggy (Lgb)
 				is.ignore(100, '\n');
@@ -288,7 +288,7 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 #if 1
 				is.getline(buff, sizeof(buff));
 				lyxerr[Debug::LYXLEX] << "Comment read: `" << c
-						      << buff << "'" << endl;
+						      << buff << '\'' << endl;
 #else
 				// but ignore is also still buggy (Lgb)
 				// This is fast (Lgb)
@@ -408,7 +408,7 @@ bool LyXLex::Pimpl::eatLine()
 		is.get(cc);
 		c = cc;
 		//lyxerr[Debug::LYXLEX] << "LyXLex::EatLine read char: `"
-		//		      << c << "'" << endl;
+		//		      << c << '\'' << endl;
 		if (c != '\r')
 			buff[i++] = c;
 	}

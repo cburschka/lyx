@@ -53,7 +53,7 @@ void MathXYMatrixInset::normalize(NormalStream & os) const
 {
 	os << "[xymatrix ";
 	MathGridInset::normalize(os);
-	os << "]";
+	os << ']';
 }
 
 
@@ -61,5 +61,5 @@ void MathXYMatrixInset::maplize(MapleStream & os) const
 {
 	os << "xymatrix(";
 	MathGridInset::maplize(os);
-	os << ")";
+	os << ')';
 }

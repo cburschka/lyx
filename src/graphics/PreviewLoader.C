@@ -257,7 +257,7 @@ struct IncrementedFileName {
 	StrPair const operator()(string const & snippet)
 	{
 		ostringstream os;
-		os << base_ << counter_++ << "." << to_format_;
+		os << base_ << counter_++ << '.' << to_format_;
 		string const file = STRCONV(os.str());
 
 		return make_pair(snippet, file);
@@ -475,8 +475,8 @@ void PreviewLoader::Impl::startLoading()
 
 	// The conversion command.
 	ostringstream cs;
-	cs << pconverter_->command << " " << latexfile << " "
-	   << int(font_scaling_factor_) << " " << pconverter_->to;
+	cs << pconverter_->command << ' ' << latexfile << ' '
+	   << int(font_scaling_factor_) << ' ' << pconverter_->to;
 
 	string const command = "sh " + LibScriptSearch(STRCONV(cs.str()));
 
@@ -591,7 +591,7 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 
 	os << "\\AtBeginDocument{\\AtBeginDvi{%\n"
 	   << "\\special{!userdict begin/bop-hook{//bop-hook exec\n"
-	   << "<" << fg << bg << ">{255 div}forall setrgbcolor\n"
+	   << '<' << fg << bg << ">{255 div}forall setrgbcolor\n"
 	   << "clippath fill setrgbcolor}bind def end}}}\n";
 }
 

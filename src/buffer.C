@@ -339,7 +339,7 @@ bool Buffer::readLyXformat2(LyXLex & lex, Paragraph * par)
 		if (token.empty()) continue;
 
 		lyxerr[Debug::PARSER] << "Handling token: `"
-				      << token << "'" << endl;
+				      << token << '\'' << endl;
 
 		the_end_read =
 			parseSingleLyXformat2Token(lex, par, first_par,
@@ -574,7 +574,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		if (layout->free_spacing || par->isFreeSpacing()) {
 			if (lex.isOK()) {
 				lex.next();
-				string next_token = lex.getString();
+				string const next_token = lex.getString();
 				if (next_token == "\\-") {
 					par->insertChar(pos, '-', font);
 				} else if (next_token == "~") {
@@ -957,7 +957,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		string const s = fmt.str();
 #else
 		string const s = _("Unknown token: ") + token
-			+ " " + lex.text() + "\n";
+			+ ' ' + lex.text() + '\n';
 #endif
 		// we can do this here this way because we're actually reading
 		// the buffer and don't care about LyXText right now.
@@ -1169,7 +1169,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, Paragraph * par)
 		if (token == "\\lyxformat") { // the first token _must_ be...
 			lex.eatLine();
 			string tmp_format = lex.getString();
-			//lyxerr << "LyX Format: `" << tmp_format << "'" << endl;
+			//lyxerr << "LyX Format: `" << tmp_format << '\'' << endl;
 			// if present remove ".," from string.
 			string::size_type dot = tmp_format.find_first_of(".,");
 			//lyxerr << "           dot found at " << dot << endl;
@@ -1201,10 +1201,11 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, Paragraph * par)
 						return false;
 					}
 					command += " -t"
-						+tostr(LYX_FORMAT)+" "
+						+tostr(LYX_FORMAT) + ' '
 						+ QuoteName(filename);
 					lyxerr[Debug::INFO] << "Running '"
-							    << command << "'" << endl;
+							    << command << '\''
+							    << endl;
 					cmd_ret const ret = RunCommand(command);
 					if (ret.first) {
 						Alert::alert(_("ERROR!"),
@@ -1525,7 +1526,7 @@ string const Buffer::asciiParagraph(Paragraph const & par,
 		default:
 		{
 			string const parlab = par.params().labelString();
-			buffer << parlab << " ";
+			buffer << parlab << ' ';
 			currlinelen += parlab.length() + 1;
 		}
 		break;
@@ -2140,7 +2141,8 @@ void Buffer::makeLaTeXFile(ostream & os,
 	texrow.newline();
 
 	lyxerr[Debug::INFO] << "Finished making latex file." << endl;
-	lyxerr[Debug::INFO] << "Row count was " << texrow.rows()-1 << "." << endl;
+	lyxerr[Debug::INFO] << "Row count was " << texrow.rows() - 1
+			    << '.' << endl;
 
 	// we want this to be true outside previews (for insetexternal)
 	niceFile = true;
@@ -2272,7 +2274,7 @@ void Buffer::makeLinuxDocFile(string const & fname, bool nice, bool body_only)
 			sgml::openTag(ofs, 0, false, top_element);
 		else {
 			string top = top_element;
-			top += " ";
+			top += ' ';
 			top += params.options;
 			sgml::openTag(ofs, 0, false, top);
 		}
@@ -2597,7 +2599,7 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 		while (!tag_state.empty() && tag_close) {
 			PAR_TAG k =  tag_state.top();
 			tag_state.pop();
-			os << "</" << tag_name(k) << ">";
+			os << "</" << tag_name(k) << '>';
 			if (tag_close & k)
 				reset(tag_close,k);
 			else
@@ -2607,13 +2609,13 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 		for(list< PAR_TAG >::const_iterator j = temp.begin();
 		    j != temp.end(); ++j) {
 			tag_state.push(*j);
-			os << "<" << tag_name(*j) << ">";
+			os << '<' << tag_name(*j) << '>';
 		}
 
 		for(list< PAR_TAG >::const_iterator j = tag_open.begin();
 		    j != tag_open.end(); ++j) {
 			tag_state.push(*j);
-			os << "<" << tag_name(*j) << ">";
+			os << '<' << tag_name(*j) << '>';
 		}
 
 		char c = par->getChar(i);
@@ -2656,7 +2658,7 @@ void Buffer::simpleLinuxDocOnePar(ostream & os,
 	}
 
 	while (!tag_state.empty()) {
-		os << "</" << tag_name(tag_state.top()) << ">";
+		os << "</" << tag_name(tag_state.top()) << '>';
 		tag_state.pop();
 	}
 
@@ -2729,10 +2731,10 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 	string top = top_element;
 	top += " lang=\"";
 	top += params.language->code();
-	top += "\"";
+	top += '"';
 
 	if (!params.options.empty()) {
-		top += " ";
+		top += ' ';
 		top += params.options;
 	}
 	sgml::openTag(ofs, 0, false, top);
@@ -2845,14 +2847,14 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 				if (lyx_code == Inset::LABEL_CODE) {
 					command_name += " id=\"";
 					command_name += (static_cast<InsetCommand *>(inset))->getContents();
-					command_name += "\"";
+					command_name += '"';
 					desc_on = 3;
 				}
 			}
 
 			sgml::openTag(ofs, depth + command_depth, false, command_name);
 
-			item_name = c_params.empty()?"title":c_params;
+			item_name = c_params.empty() ? "title" : c_params;
 			sgml::openTag(ofs, depth + 1 + command_depth, false, item_name);
 			break;
 
@@ -2928,7 +2930,7 @@ void Buffer::makeDocBookFile(string const & fname, bool nice, bool only_body)
 			break;
 		case LATEX_ITEM_ENVIRONMENT:
 			if (desc_on == 1) break;
-			end_tag= "para";
+			end_tag = "para";
 			sgml::closeTag(ofs, depth + 1 + command_depth, false, end_tag);
 			break;
 		case LATEX_PARAGRAPH:

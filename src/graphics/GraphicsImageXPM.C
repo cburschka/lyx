@@ -157,7 +157,7 @@ void ImageXPM::load(string const & filename)
 
 		lyxerr[Debug::GRAPHICS]
 			<< "Error reading XPM file '"
-			<< XpmGetErrorString(success) << "'"
+			<< XpmGetErrorString(success) << '\''
 			<< std::endl;
 	} else {
 		image_.reset(*xpm_image);
@@ -235,7 +235,7 @@ bool ImageXPM::setPixmap(Params const & params)
 
 	if (status != XpmSuccess) {
 		lyxerr << "Error creating pixmap from xpm_image '"
-		       << XpmGetErrorString(status) << "'"
+		       << XpmGetErrorString(status) << '\''
 		       << std::endl;
 		pixmap_status_ = PIXMAP_FAILED;
 		return false;
@@ -644,14 +644,14 @@ void mapcolor(char const * c_color, char ** g_color_ptr, char ** m_color_ptr)
 	int const gray = int((0.32 * r) + (0.5 * g) + (0.18 * b));
 
 	ostringstream gray_stream;
-	gray_stream << "#" << std::setbase(16) << std::setfill('0')
+	gray_stream << '#' << std::setbase(16) << std::setfill('0')
 		    << std::setw(2) << gray
 		    << std::setw(2) << gray
 		    << std::setw(2) << gray;
 
 	int const mono = (gray < 128) ? 0 : 255;
 	ostringstream mono_stream;
-	mono_stream << "#" << std::setbase(16) << std::setfill('0')
+	mono_stream << '#' << std::setbase(16) << std::setfill('0')
 		    << std::setw(2) << mono
 		    << std::setw(2) << mono
 		    << std::setw(2) << mono;

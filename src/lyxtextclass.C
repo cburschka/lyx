@@ -79,7 +79,7 @@ bool LyXTextClass::do_readStyle(LyXLex & lexrc, LyXLayout & lay)
 		lay.reslabelfont.realize(defaultfont());
 		return false; // no errors
 	}
-	lyxerr << "Error parsing style `" << lay.name() << "'" << endl;
+	lyxerr << "Error parsing style `" << lay.name() << '\'' << endl;
 	return true;
 }
 
@@ -228,7 +228,8 @@ bool LyXTextClass::Read(string const & filename, bool merge)
 				string const style = subst(lexrc.getString(),
 						     '_', ' ');
 				if (!delete_layout(style))
-					lyxerr << "Cannot delete style `" << style << "'" << endl;
+					lyxerr << "Cannot delete style `"
+					       << style << '\'' << endl;
 //					lexrc.printError("Cannot delete style"
 //							 " `$$Token'");
 			}
@@ -898,10 +899,10 @@ ostream & operator<<(ostream & os, LyXTextClass::PageSides p)
 {
 	switch (p) {
 	case LyXTextClass::OneSide:
-		os << "1";
+		os << '1';
 		break;
 	case LyXTextClass::TwoSides:
-		os << "2";
+		os << '2';
 		break;
 	}
 	return os;

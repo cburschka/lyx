@@ -148,11 +148,11 @@ string const InsetWrap::editMessage() const
 int InsetWrap::latex(Buffer const * buf,
 		      ostream & os, bool fragile, bool fp) const
 {
-	os << "\\begin{floating" << Type_ << "}";
+	os << "\\begin{floating" << Type_ << '}';
 	if (!Placement_.empty()) {
-		os << "[" << Placement_ << "]";
+		os << '[' << Placement_ << ']';
 	}
-	os  << "{" << width_.asLatexString() << "}%\n";
+	os  << '{' << width_.asLatexString() << "}%\n";
 
 	int const i = inset.latex(buf, os, fragile, fp);
 
@@ -163,9 +163,9 @@ int InsetWrap::latex(Buffer const * buf,
 
 int InsetWrap::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 {
-	os << "<" << Type_ << ">";
+	os << '<' << Type_ << '>';
 	int const i = inset.docbook(buf, os, mixcont);
-	os << "</" << Type_ << ">";
+	os << "</" << Type_ << '>';
 
 	return i;
 }
@@ -177,11 +177,12 @@ bool InsetWrap::insetAllowed(Inset::Code code) const
 	case FLOAT_CODE:
 	case FOOT_CODE:
 	case MARGIN_CODE:
-                return false;
+		return false;
 	default:
 		return InsetCollapsable::insetAllowed(code);
 	}
 }
+
 
 int InsetWrap::getMaxWidth(BufferView * bv, UpdatableInset const * inset)
 	const
@@ -191,8 +192,8 @@ int InsetWrap::getMaxWidth(BufferView * bv, UpdatableInset const * inset)
 		return -1;
 	}
 	if (!width_.zero()) {
-		int ww1 = latexTextWidth(bv);
-		int ww2 = InsetCollapsable::getMaxWidth(bv, inset);
+		int const ww1 = latexTextWidth(bv);
+		int const ww2 = InsetCollapsable::getMaxWidth(bv, inset);
 		if (ww2 > 0 && ww2 < ww1) {
 			return ww2;
 		}

@@ -133,7 +133,7 @@ void ControlPrint::apply()
 			+ tostr(pp.count_copies)
 			+ ' ';
 	}
-	
+
 	if (pp.reverse_order) {
 		command += lyxrc.print_reverse_flag + ' ';
 	}
@@ -199,17 +199,18 @@ void ControlPrint::apply()
 		// case 1: print to a file
 		command += lyxrc.print_to_file
 			+ QuoteName(MakeAbsPath(pp.file_name, path))
-			+ ' ' 
+			+ ' '
 			+ QuoteName(dviname);
 		res = one.startscript(Systemcall::DontWait, command);
 		break;
 	}
 
-	lyxerr[Debug::LATEX] << "ControlPrint::apply(): print command = \"" << command << "\"" << endl;
+	lyxerr[Debug::LATEX] << "ControlPrint::apply(): print command = \""
+			     << command << '"' << endl;
 
 	if (res != 0) {
 		Alert::alert(_("Error:"),
 			   _("Unable to print"),
 			   _("Check that your parameters are correct"));
-	}		
+	}
 }

@@ -14,7 +14,7 @@
 #include "ControlMath.h"
 #include "ViewBase.h"
 
-#include "debug.h" 
+#include "debug.h"
 #include "funcrequest.h"
 
 #include "frontends/LyXView.h"
@@ -259,7 +259,7 @@ char const * latex_ams_rel[] = {
 	"lessdot", "lll", "lessgtr", "gtreqless", "gtreqqless", "eqcirc",
 	"lesseqgtr", "lesseqqgtr", "doteqdot", "circeq", "triangleq", "thicksim",
 	"risingdotseq", "fallingdotseq", "backsim", "thickapprox", "supseteqq", "Supset",
-	"backsimeq", "subseteqq", "Subset","sqsupset", "succcurlyeq", "curlyeqsucc",
+	"backsimeq", "subseteqq", "Subset", "sqsupset", "succcurlyeq", "curlyeqsucc",
 	"sqsubset", "preccurlyeq", "curlyeqprec", "succsim", "succapprox", "vartriangleright",
 	"precsim", "precapprox", "vartriangleleft", "trianglerighteq", "Vdash", "shortmid",
 	"trianglelefteq", "vDash", "Vvdash", "shortparallel", "between", "pitchfork",
@@ -271,15 +271,15 @@ int const nr_latex_ams_rel = sizeof(latex_ams_rel) / sizeof(char const *);
 
 char const * latex_ams_nrel[] = {
 	"nless", "nleq", "nleqslant", "ngeqslant", "ngeqq", "gneq",
-	"nleqq", "lneq", "lneqq","gneqq", "gvertneqq", "gnsim",
+	"nleqq", "lneq", "lneqq", "gneqq", "gvertneqq", "gnsim",
 	"lvertneqq", "lnsim", "lnapprox", "gnapprox", "nsucc", "nsucceq",
 	"nprec", "npreceq", "precnsim","succnsim", "succnapprox", "ncong",
 	"precnapprox", "nsim", "nshortmid", "nshortparallel", "nparallel", "nvDash",
 
-	"nmid", "nvdash", "nvDash","nVDash", "ntriangleright", "ntrianglerighteq",
+	"nmid", "nvdash", "nvDash", "nVDash", "ntriangleright", "ntrianglerighteq",
 	"ntriangleleft", "ntrianglelefteq", "nsubseteq", "nsupseteq", "nsupseteqq", "supsetneq",
 	"subsetneq", "varsubsetneq", "subsetneqq", "varsupsetneq", "supsetneqq", "varsupsetneqq",
-	"varsubsetneqq", "ngtr", "ngeq","", "", ""
+	"varsubsetneqq", "ngtr", "ngeq", "", "", ""
 };
 
 int const nr_latex_ams_nrel = sizeof(latex_ams_nrel) / sizeof(char const *);
@@ -298,9 +298,12 @@ char const * latex_ams_ops[] = {
 
 int const nr_latex_ams_ops = sizeof(latex_ams_ops) / sizeof(char const *);
 
- 
+
 string const find_xpm(string const & name)
 {
+#warning Use a static table for this (Lgb)
+	// And get O(log n) lookup (Lgb)
+
 	string xpm_name = subst(name, ' ', '_');
 	if (xpm_name == "(") xpm_name = "lparen";
 	else if (xpm_name == ")") xpm_name = "rparen";
@@ -346,7 +349,7 @@ string const find_xpm(string const & name)
 	else if (xpm_name == "Xi") xpm_name = "xi2";
 
 	lyxerr[Debug::GUI] << "Looking for math XPM called \""
-		<< xpm_name << "\"" << std::endl; 
- 
+		<< xpm_name << '"' << std::endl;
+
 	return LibFileSearch("images/math/", xpm_name, "xpm");
 }

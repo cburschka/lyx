@@ -329,7 +329,7 @@ bool XformsColor::write(string const & filename)
 	   << "### file " << filename << "\n\n"
 	   << "### This file is written by LyX, if you want to make your own\n"
 	   << "### modifications you should do them from inside LyX and save\n"
-	   << "\n";
+	   << '\n';
 
 	for (int i = 0; i < xformCount; ++i) {
 		string const tag  = xformTags[i].tag;
@@ -338,8 +338,8 @@ bool XformsColor::write(string const & filename)
 
 		fl_getmcolor(colorID, &color.r, &color.g, &color.b);
 
-		os << tag << " "
-		   << color.r << " " << color.g << " " << color.b << "\n";
+		os << tag << ' '
+		   << color.r << ' ' << color.g << ' ' << color.b << '\n';
 	}
 
 	return true;

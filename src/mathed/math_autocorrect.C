@@ -67,21 +67,21 @@ bool Correction::read(istream & is)
 void Correction::write(ostream & os) const
 {
 	os << "from: '" << from1_ << "' and '" << from2_
-	   << "' to '" << to_ << "'" << endl;
+	   << "' to '" << to_ << '\'' << endl;
 }
 
 
 bool Correction::correct(MathAtom & at, char c) const
 {
 	//lyxerr[Debug::MATHED]
-	//	<< "trying to correct ar: " << at << " from: '" << from1_ << "'" << endl;
+	//	<< "trying to correct ar: " << at << " from: '" << from1_ << '\'' << endl;
 	if (from2_ != c)
 		return false;
 	if (!at->match(from1_))
 		return false;
 	lyxerr[Debug::MATHED]
 		<< "match found! subst in " << at
-		<< " from: '" << from1_ << "' to '" << to_ << "'" << endl;
+		<< " from: '" << from1_ << "' to '" << to_ << '\'' << endl;
 	at = to_;
 	return true;
 }
@@ -143,15 +143,15 @@ void initAutoCorrect()
 	ifstream is(file.c_str());
 	while (getline(is, line)) {
 		if (line.size() == 0 || line[0] == '#') {
-			//lyxerr[Debug::MATHED] << "ignoring line '" << line << "'" << endl;
+			//lyxerr[Debug::MATHED] << "ignoring line '" << line << '\'' << endl;
 			continue;
 		}
 		istringstream il(STRCONV(line));
 
-		//lyxerr[Debug::MATHED] << "line '" << line << "'" << endl;
+		//lyxerr[Debug::MATHED] << "line '" << line << '\'' << endl;
 		Correction corr;
 		if (corr.read(il)) {
-			//lyxerr[Debug::MATHED] << "parsed: '" << corr << "'" << endl;
+			//lyxerr[Debug::MATHED] << "parsed: '" << corr << '\'' << endl;
 			theCorrections.insert(corr);
 		}
 	}

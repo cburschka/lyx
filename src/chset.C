@@ -66,7 +66,7 @@ bool CharacterSet::loadFile(string const & fname)
 			string const str = STRCONV(sub.str(2));
 			if (lyxerr.debugging(Debug::KBMAP))
 				lyxerr << "Chardef: " << n
-				       << " to [" << str << "]" << endl;
+				       << " to [" << str << ']' << endl;
 			map_[str] = n;
 		}
 	}
@@ -77,7 +77,7 @@ bool CharacterSet::loadFile(string const & fname)
 
 pair<bool, int> const CharacterSet::encodeString(string const & str) const
 {
-	lyxerr[Debug::KBMAP] << "Checking if we know [" << str << "]" << endl;
+	lyxerr[Debug::KBMAP] << "Checking if we know [" << str << ']' << endl;
 	bool ret = false;
 	int val = 0;
 	Cdef::const_iterator cit = map_.find(str);
@@ -87,7 +87,7 @@ pair<bool, int> const CharacterSet::encodeString(string const & str) const
 	}
 	lyxerr[Debug::KBMAP] << "   "
 			     << (ret ? "yes we" : "no we don't")
-			     <<  " know [" << str << "]" << endl;
+			     <<  " know [" << str << ']' << endl;
 	return make_pair(ret, val);
 }
 

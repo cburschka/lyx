@@ -2028,7 +2028,7 @@ void LyXText::insertChar(BufferView * bview, char c)
 		// we would not get a rebreak!
 		row->fill(fill(bview, row, workWidth(bview)));
 	}
- 
+
 	if (c == Paragraph::META_INSET || row->fill() < 0) {
 		refresh_y = y;
 		refresh_row = row;
@@ -2395,7 +2395,7 @@ LyXText::selectNextWordToSpellcheck(BufferView * bview, float & value) const
 		WordLangTuple word = the_locking_inset->selectNextWordToSpellcheck(bview, value);
 		if (!word.word().empty()) {
 			value += float(cursor.y());
-			value /= float(height); 
+			value /= float(height);
 			return word;
 		}
 		// we have to go on checking so move cursor to the next char
@@ -3271,7 +3271,7 @@ int LyXText::drawLengthMarker(DrawRowParams & p, string const & prefix,
 	switch (vsp.kind()) {
 	case VSpace::LENGTH:
 	{
-		str = prefix + " (" + vsp.asLyXCommand() + ")";
+		str = prefix + " (" + vsp.asLyXCommand() + ')';
 		// adding or removing space
 		bool const added = !(vsp.length().len().value() < 0.0);
 		ty1 = added ? (start + arrow_size) : start;

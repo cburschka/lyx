@@ -473,10 +473,10 @@ void LaTeXFeatures::getFloatDefinitions(ostream & os) const
 			string const name = fl.name();
 			os << "\\floatstyle{" << style << "}\n"
 			   << "\\newfloat{" << type << "}{" << placement
-			   << "}{" << ext << "}";
+			   << "}{" << ext << '}';
 			if (!within.empty())
-				os << "[" << within << "]";
-			os << "\n"
+				os << '[' << within << ']';
+			os << '\n'
 			   << "\\floatname{" << type << "}{"
 			   << name << "}\n";
 

@@ -417,7 +417,7 @@ LaTeX::scanAuxFiles(string const & file)
 	result.push_back(scanAuxFile(file));
 
 	for (int i = 1; i < 1000; ++i) {
-		string file2 = ChangeExtension(file, "") + "." + tostr(i)
+		string file2 = ChangeExtension(file, "") + '.' + tostr(i)
 			+ ".aux";
 		FileInfo fi(file2);
 		if (!fi.exist())
@@ -473,7 +473,7 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 				data = split(data, database, ',');
 				database = ChangeExtension(database, "bib");
 				lyxerr[Debug::LATEX] << "Bibtex database: `"
-						     << database << "'" << endl;
+						     << database << '\'' << endl;
 				aux_info.databases.insert(database);
 			}
 		} else if (regex_match(STRCONV(token), sub, reg3)) {
@@ -482,7 +482,7 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 			// pass it to the helper
 			style = ChangeExtension(style, "bst");
 			lyxerr[Debug::LATEX] << "Bibtex style: `"
-					     << style << "'" << endl;
+					     << style << '\'' << endl;
 			aux_info.styles.insert(style);
 		} else if (regex_match(STRCONV(token), sub, reg4)) {
 			string const file2 = STRCONV(sub.str(1));
@@ -589,7 +589,7 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 					<< "We should rerun." << endl;
 				retval |= RERUN;
 			}
-		} else if (prefixIs(token, "(")) {
+		} else if (token[0] == '(') {
 			if (contains(token, "Rerun LaTeX") ||
 			    contains(token, "Rerun to get")) {
 				// Used by natbib

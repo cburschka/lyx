@@ -120,5 +120,5 @@ string const mathcircumflex_def =
 	"\\newcommand{\\mathcircumflex}[0]{\\mbox{\\^{}}}\n";
 
 string const tabularnewline_def =
-        "%% Because html converters don't know tabularnewline\n"
-        "\\providecommand{\\tabularnewline}{\\\\}\n";
+	"%% Because html converters don't know tabularnewline\n"
+	"\\providecommand{\\tabularnewline}{\\\\}\n";

@@ -261,11 +261,11 @@ string Counters::labelItem(string const & ctr,
 	CounterList::iterator it = counterList.find(ctr);
 	if (it == counterList.end()) {
 		lyxerr << "Counter does not exist." << endl;
-		return "";
+		return string();
 	}
 
 	if (!first) {
-		s << "." << value(ctr);
+		s << '.' << value(ctr);
 	} else {
 		if (numbertype == "sectioning" || numbertype == "appendix") {
 			if (numbertype == "appendix") {

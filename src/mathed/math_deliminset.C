@@ -36,7 +36,7 @@ string convertDelimToLatexName(string const & name)
 		return name;
 	if (name == "|")
 		return name;
-	return "\\" + name + " ";
+	return '\\' + name + ' ';
 }
 
 }
@@ -133,9 +133,9 @@ void MathDelimInset::maplize(MapleStream & os) const
 {
 	if (isAbs()) {
 		if (cell(0).size() == 1 && cell(0).front()->asMatrixInset())
-			os << "linalg[det](" << cell(0) << ")";
+			os << "linalg[det](" << cell(0) << ')';
 		else
-			os << "abs(" << cell(0) << ")";
+			os << "abs(" << cell(0) << ')';
 	}
 	else
 		os << left_ << cell(0) << right_;
@@ -145,9 +145,9 @@ void MathDelimInset::maximize(MaximaStream & os) const
 {
 	if (isAbs()) {
 		if (cell(0).size() == 1 && cell(0).front()->asMatrixInset())
-			os << "determinant(" << cell(0) << ")";
+			os << "determinant(" << cell(0) << ')';
 		else
-			os << "abs(" << cell(0) << ")";
+			os << "abs(" << cell(0) << ')';
 	}
 	else
 		os << left_ << cell(0) << right_;
@@ -177,7 +177,7 @@ void MathDelimInset::mathmlize(MathMLStream & os) const
 void MathDelimInset::octavize(OctaveStream & os) const
 {
 	if (isAbs())
-		os << "det(" << cell(0) << ")";
+		os << "det(" << cell(0) << ')';
 	else
 		os << left_ << cell(0) << right_;
 }

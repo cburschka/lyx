@@ -52,7 +52,7 @@ string const LyXGlueLength::asString() const
 	if (minus_.zero()) {
 		if (len_.unit() != plus_.unit())
 			buffer << unit_name[len_.unit()];
-		buffer << "+" << plus_.value();
+		buffer << '+' << plus_.value();
 		buffer << unit_name[plus_.unit()];
 		return STRCONV(buffer.str());
 	}
@@ -61,7 +61,7 @@ string const LyXGlueLength::asString() const
 	if (plus_.zero()) {
 		if (len_.unit() != minus_.unit())
 			buffer << unit_name[len_.unit()];
-		buffer << "-" << minus_.value();
+		buffer << '-' << minus_.value();
 		buffer << unit_name[minus_.unit()];
 		return STRCONV(buffer.str());
 	}
@@ -80,8 +80,8 @@ string const LyXGlueLength::asString() const
 	// this is so rare a case, why bother minimising units ?
 
 	buffer << unit_name[len_.unit()];
-	buffer << "+" << plus_.value() << unit_name[plus_.unit()];
-	buffer << "-" << minus_.value() << unit_name[minus_.unit()];
+	buffer << '+' << plus_.value() << unit_name[plus_.unit()];
+	buffer << '-' << minus_.value() << unit_name[minus_.unit()];
 
 	return STRCONV(buffer.str());
 }

@@ -123,7 +123,7 @@ void QCommandBuffer::complete()
 
 	if (comp.empty()) {
 		edit_->setText(new_input.c_str());
-	//	show_info_suffix(("[only completion]"), new_input + " ");
+	//	show_info_suffix(("[only completion]"), new_input + ' ');
 		return;
 	}
 
@@ -159,7 +159,7 @@ void QCommandBuffer::complete()
 
 void QCommandBuffer::complete_selected(QString const & str)
 {
-	edit_->setText(str + " ");
+	edit_->setText(str + ' ');
 	QWidget const * widget = static_cast<QWidget const *>(sender());
 	const_cast<QWidget *>(widget)->hide();
 }
@@ -196,7 +196,7 @@ void XMiniBuffer::show_info_suffix(string const & suffix, string const & input)
 {
 	stored_input_ = input;
 	info_suffix_shown_ = true;
-	set_input(input + " " + suffix);
+	set_input(input + ' ' + suffix);
 	suffix_timer_->start();
 }
 

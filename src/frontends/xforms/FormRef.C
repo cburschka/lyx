@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -119,7 +119,7 @@ void FormRef::update()
 		// create a string of entries " entry1 | entry2 | entry3 "
 		// with which to initialise the xforms choice object.
 		string const choice =
-			" " + getStringFromVector(buffers, " | ") + " ";
+			' ' + getStringFromVector(buffers, " | ") + ' ';
 
 		fl_clear_choice(dialog_->choice_document);
 		fl_addto_choice(dialog_->choice_document, choice.c_str());
@@ -154,7 +154,7 @@ void updateHighlight(FL_OBJECT * browser,
 		fl_select_browser_line(browser, i+1);
 	}
 }
- 
+
 } // namespace anon
 
 

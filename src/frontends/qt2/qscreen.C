@@ -148,8 +148,8 @@ void QScreen::repaint()
 
 void QScreen::expose(int x, int y, int w, int h)
 {
-	lyxerr[Debug::GUI] << "expose " << w << "x" << h
-		<< "+" << x << "+" << y << endl;
+	lyxerr[Debug::GUI] << "expose " << w << 'x' << h
+		<< '+' << x << '+' << y << endl;
 
 	owner_.getContent()->update(x, y, w, h);
 }

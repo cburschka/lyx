@@ -24,7 +24,7 @@ MathInset * MathBoxInset::clone() const
 
 void MathBoxInset::write(WriteStream & os) const
 {
-	os << "\\" << name_ << "{" << cell(0) << "}";
+	os << '\\' << name_ << '{' << cell(0) << '}';
 }
 
 

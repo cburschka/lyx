@@ -3,9 +3,9 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Baruch Even 
- * \author Herbert Voss 
- * \author Angus Leeming 
+ * \author Baruch Even
+ * \author Herbert Voss
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -248,7 +248,7 @@ void CacheItem::Impl::setStatus(ImageStatus new_status)
 void CacheItem::Impl::imageConverted(bool success)
 {
 	string const text = success ? "succeeded" : "failed";
-	lyxerr[Debug::GRAPHICS] << "Image conversion " << text << "." << endl;
+	lyxerr[Debug::GRAPHICS] << "Image conversion " << text << '.' << endl;
 
 	file_to_load_ = converter_.get() ?
 		converter_->convertedFile() : string();
@@ -290,7 +290,7 @@ void CacheItem::Impl::loadImage()
 void CacheItem::Impl::imageLoaded(bool success)
 {
 	string const text = success ? "succeeded" : "failed";
-	lyxerr[Debug::GRAPHICS] << "Image loading " << text << "." << endl;
+	lyxerr[Debug::GRAPHICS] << "Image loading " << text << '.' << endl;
 
 	// Clean up after loading.
 	if (zipped_)

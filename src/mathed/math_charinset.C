@@ -138,7 +138,7 @@ void MathCharInset::write(WriteStream & os) const
 
 void MathCharInset::normalize(NormalStream & os) const
 {
-	os << "[char " << char_ << " " << "mathalpha" << "]";
+	os << "[char " << char_ << ' ' << "mathalpha]";
 }
 
 

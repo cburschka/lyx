@@ -342,9 +342,9 @@ void AutoSave(BufferView * bv)
 
 	// create autosave filename
 	string fname = bv->buffer()->filePath();
-	fname += "#";
+	fname += '#';
 	fname += OnlyFilename(bv->buffer()->fileName());
-	fname += "#";
+	fname += '#';
 
 	AutoSaveBuffer autosave(*bv, fname);
 	autosave.start();
@@ -491,7 +491,7 @@ void MenuInsertLabel(BufferView * bv, string const & arg)
 		if (layout->latexname() == "theorem")
 			text = "thm"; // Create a correct prefix for prettyref
 
-		text += ":";
+		text += ':';
 		if (layout->latextype == LATEX_PARAGRAPH ||
 		    lyxrc.label_init_length < 0)
 			text.erase();

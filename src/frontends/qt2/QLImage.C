@@ -161,7 +161,7 @@ bool QLImage::setPixmap(Params const & params)
 	lyxerr[Debug::GRAPHICS] << "setPixmap()" << endl;
 
 	// FIXME: it's a fake kind of grayscale !
- 
+
 	switch (params.display) {
 		case GrayscaleDisplay:
 		case MonochromeDisplay: {
@@ -169,7 +169,7 @@ bool QLImage::setPixmap(Params const & params)
 			xformed_pixmap_.convertFromImage(i, QPixmap::Mono);
 			break;
 		}
- 
+
 		default:
 			break;
 	}
@@ -254,9 +254,10 @@ void QLImage::scale(Params const & params)
 	if (width == getWidth() && height == getHeight())
 		return;
 
-	lyxerr[Debug::GRAPHICS] << "resizing image to " << width << "(" <<
-		(double(width)/getWidth()) << ")," << height << "(" <<
-		(double(height)/getHeight()) << ")" << endl;
+	lyxerr[Debug::GRAPHICS] << "resizing image to " << width << '('
+				<< (double(width)/getWidth()) << "),"
+				<< height << '('
+				<< (double(height)/getHeight()) << ')' << endl;
 	QWMatrix m;
 	m.scale(double(width) / getWidth(), double(height) / getHeight());
 	xformed_pixmap_ = xformed_pixmap_.xForm(m);

@@ -45,11 +45,11 @@ void MathKernInset::draw(MathPainterInfo &, int, int) const
 
 void MathKernInset::write(WriteStream & os) const
 {
-	os << "\\kern" << wid_.asLatexString() << " ";
+	os << "\\kern" << wid_.asLatexString() << ' ';
 }
 
 
 void MathKernInset::normalize(NormalStream & os) const
 {
-	os << "[kern " << wid_.asLatexString() << "]";
+	os << "[kern " << wid_.asLatexString() << ']';
 }

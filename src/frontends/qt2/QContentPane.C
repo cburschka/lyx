@@ -142,8 +142,11 @@ void QContentPane::wheelEvent(QWheelEvent * e)
 void QContentPane::keyPressEvent(QKeyEvent * e)
 {
 	lyxerr[Debug::KEY] << "Press key " << e->key()
-		<< " text \"" << (e->text().isEmpty() ? "none" : e->text().latin1())
-		<< "\", ascii \"" << e->ascii() << "\"" << endl;
+			   << " text \""
+			   << (e->text().isEmpty() ?
+			       "none" :
+			       e->text().latin1())
+			   << "\", ascii \"" << e->ascii() << '"' << endl;
 	QLyXKeySym * sym = new QLyXKeySym();
 	sym->set(e);
 	wa_->workAreaKeyPress(LyXKeySymPtr(sym), q_key_state(e->state()));
@@ -196,8 +199,8 @@ void QContentPane::paintEvent(QPaintEvent * e)
 	QRect r(e->rect());
 
 	lyxerr[Debug::GUI] << "repainting " << r.x()
-		<< "," << r.y() << " " << r.width()
-		<< "," << r.height() << endl;
+		<< ',' << r.y() << ' ' << r.width()
+		<< ',' << r.height() << endl;
 	QPainter q(this);
 	q.drawPixmap(QPoint(r.x(), r.y()),
 		*pixmap_.get(), r);

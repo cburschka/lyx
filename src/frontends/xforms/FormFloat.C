@@ -32,7 +32,7 @@ enum {
 	HERE_DEFINITELY,
 	ALTERNATIVES
 };
- 
+
 } // namespace anon
 
 
@@ -99,24 +99,24 @@ void FormFloat::apply()
 	case ALTERNATIVES:
 		if (fl_get_button(dialog_->check_force)) {
 			// Ignore internal LaTeX rules
-			placement += "!";
+			placement += '!';
 		}
 		if (fl_get_button(dialog_->check_top)) {
 			// Top of page
-			placement += "t";
+			placement += 't';
 		}
 		if (fl_get_button(dialog_->check_bottom)) {
 			// Bottom of page
-			placement += "b";
+			placement += 'b';
 		}
 		if (fl_get_button(dialog_->check_page)) {
 			// Page of floats
-			placement += "p";
+			placement += 'p';
 		}
 		// ignore if wide is selected
 		if (!wide && fl_get_button(dialog_->check_here)) {
 			// Here, if possible
-			placement += "h";
+			placement += 'h';
 		}
 		if (placement == "!") {
 			// ignore placement if only force is selected.

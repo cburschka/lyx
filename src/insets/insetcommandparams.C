@@ -164,9 +164,9 @@ void InsetCommandParams::write(ostream & os) const
 string const InsetCommandParams::getCommand() const
 {
 	string s;
-	if (!getCmdName().empty()) s += "\\"+getCmdName();
-	if (!getOptions().empty()) s += "["+getOptions()+']';
-	s += "{"+getContents()+'}';
+	if (!getCmdName().empty()) s += '\\' + getCmdName();
+	if (!getOptions().empty()) s += '[' + getOptions() + ']';
+	s += '{' + getContents() + '}';
 	return s;
 }
 

@@ -84,7 +84,7 @@ void MathArrayInset::write(WriteStream & os) const
 {
 	if (os.fragile())
 		os << "\\protect";
-	os << "\\begin{" << name_ << "}";
+	os << "\\begin{" << name_ << '}';
 
 	if (v_align_ == 't' || v_align_ == 'b')
 		os << '[' << char(v_align_) << ']';
@@ -94,7 +94,7 @@ void MathArrayInset::write(WriteStream & os) const
 
 	if (os.fragile())
 		os << "\\protect";
-	os << "\\end{" << name_ << "}";
+	os << "\\end{" << name_ << '}';
 	// adding a \n here is bad if the array is the last item
 	// in an \eqnarray...
 }
@@ -102,9 +102,9 @@ void MathArrayInset::write(WriteStream & os) const
 
 void MathArrayInset::normalize(NormalStream & os) const
 {
-	os << "[" << name_ << " ";
+	os << '[' << name_ << ' ';
 	MathGridInset::normalize(os);
-	os << "]";
+	os << ']';
 }
 
 
@@ -112,5 +112,5 @@ void MathArrayInset::maplize(MapleStream & os) const
 {
 	os << "array(";
 	MathGridInset::maplize(os);
-	os << ")";
+	os << ')';
 }

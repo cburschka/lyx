@@ -1332,7 +1332,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 
 				// Doesn't work... yet.
 				ostringstream o;
-				//o << fl.name() << " " << buf->counters().value(fl.name()) << ":";
+				//o << fl.name() << ' ' << buf->counters().value(fl.name()) << ":";
 				o << fl.name() << " #:";
 				s = STRCONV(o.str());
 			} else {

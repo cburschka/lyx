@@ -336,7 +336,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 	// 2) In HOME directory.
 	string s = AddName(GetEnvPath("HOME"), buf->fileName());
 	s += ".emergency";
-	lyxerr << " " << s << endl;
+	lyxerr << ' ' << s << endl;
 	if (buf->writeFile(s)) {
 		buf->markClean();
 		lyxerr << _("  Save seems successful. Phew.") << endl;
@@ -350,7 +350,7 @@ void BufferList::emergencyWrite(Buffer * buf)
 	// drive letter on OS/2
 	s = AddName(MakeAbsPath("/tmp/"), buf->fileName());
 	s += ".emergency";
-	lyxerr << " " << s << endl;
+	lyxerr << ' ' << s << endl;
 	if (buf->writeFile(s)) {
 		buf->markClean();
 		lyxerr << _("  Save seems successful. Phew.") << endl;

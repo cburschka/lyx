@@ -109,9 +109,9 @@ InsetMinipage::~InsetMinipage()
 
 void InsetMinipage::write(Buffer const * buf, ostream & os) const
 {
-	os << getInsetName() << "\n"
-	   << "position " << pos_ << "\n"
-	   << "inner_position " << inner_pos_ << "\n"
+	os << getInsetName() << '\n'
+	   << "position " << pos_ << '\n'
+	   << "inner_position " << inner_pos_ << '\n'
 	   << "height \"" << height_.asString() << "\"\n"
 	   << "width \"" << width_.asString() << "\"\n";
 	InsetCollapsable::write(buf, os);
@@ -236,13 +236,13 @@ int InsetMinipage::latex(Buffer const * buf,
 	string s_pos;
 	switch (pos_) {
 	case top:
-		s_pos += "t";
+		s_pos += 't';
 		break;
 	case center:
-		s_pos += "c";
+		s_pos += 'c';
 		break;
 	case bottom:
-		s_pos += "b";
+		s_pos += 'b';
 		break;
 	}
 	os << "\\begin{minipage}[" << s_pos << "]{"

@@ -180,8 +180,8 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 		// We create a dummy command for ease of understanding of the
 		// list of forked processes.
 		// Note that 'sh ' is absolutely essential, or execvp will fail.
-		script_command_ = "sh " + script_file_ + " " +
-			OnlyFilename(from_file) + " " + to_format;
+		script_command_ = "sh " + script_file_ + ' ' +
+			OnlyFilename(from_file) + ' ' + to_format;
 	}
 	// All is ready to go
 	valid_process_ = true;

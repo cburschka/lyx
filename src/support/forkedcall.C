@@ -115,7 +115,7 @@ void ForkedProcess::emitSignal()
 
 
 // Wait for child process to finish.
-int ForkedProcess::runBlocking() 
+int ForkedProcess::runBlocking()
 {
 	retval_  = 0;
 	pid_ = generateChild();
@@ -149,7 +149,7 @@ int ForkedProcess::runNonBlocking()
 
 void ForkedProcess::kill(int tol)
 {
-	lyxerr << "ForkedProcess::kill(" << tol << ")" << std::endl;
+	lyxerr << "ForkedProcess::kill(" << tol << ')' << endl;
 	if (pid() == 0) {
 		lyxerr << "Can't kill non-existent process!" << endl;
 		return;

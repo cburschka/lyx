@@ -64,7 +64,7 @@ void MathFontOldInset::write(WriteStream & os) const
 
 void MathFontOldInset::normalize(NormalStream & os) const
 {
-	os << "[font " << key_->name << " " << cell(0) << "]";
+	os << "[font " << key_->name << ' ' << cell(0) << ']';
 }
 
 

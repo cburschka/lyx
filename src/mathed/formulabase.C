@@ -227,17 +227,17 @@ void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
 	x = mathcursor->targetX();
 	x -= xo_;
 	y -= yo_;
-	//lyxerr << "getCursorPos: " << x << " " << y << "\n";
+	//lyxerr << "getCursorPos: " << x << ' ' << y << endl;
 }
 
 
 void InsetFormulaBase::toggleInsetCursor(BufferView * bv)
 {
 	if (!mathcursor) {
-		lyxerr << "toggleInsetCursor impossible\n";
+		lyxerr << "toggleInsetCursor impossible" << endl;
 		return;
 	}
-	//lyxerr << "toggleInsetCursor: " << isCursorVisible() << "\n";
+	//lyxerr << "toggleInsetCursor: " << isCursorVisible() << endl;
 	if (isCursorVisible())
 		hideInsetCursor(bv);
 	else
@@ -248,7 +248,7 @@ void InsetFormulaBase::toggleInsetCursor(BufferView * bv)
 void InsetFormulaBase::showInsetCursor(BufferView * bv, bool)
 {
 	if (!mathcursor) {
-		lyxerr << "showInsetCursor impossible\n";
+		lyxerr << "showInsetCursor impossible" << endl;
 		return;
 	}
 	if (isCursorVisible())
@@ -258,7 +258,7 @@ void InsetFormulaBase::showInsetCursor(BufferView * bv, bool)
 	math_font_max_dim(font_, asc, des);
 	bv->showLockedInsetCursor(x, y - yo_, asc, des);
 	setCursorVisible(true);
-	//lyxerr << "showInsetCursor: " << x << " " << y << "\n";
+	//lyxerr << "showInsetCursor: " << x << ' ' << y << endl;
 }
 
 
@@ -270,7 +270,7 @@ void InsetFormulaBase::hideInsetCursor(BufferView * bv)
 		return;
 	bv->hideLockedInsetCursor();
 	setCursorVisible(false);
-	//lyxerr << "hideInsetCursor: \n";
+	//lyxerr << "hideInsetCursor: " << endl;
 }
 
 
@@ -282,7 +282,7 @@ void InsetFormulaBase::fitInsetCursor(BufferView * bv) const
 	math_font_max_dim(font_, asc, des);
 	getCursorPos(bv, x, y);
 	//y += yo_;
-	//lyxerr << "fitInsetCursor: x: " << x << " y: " << y << " yo: " << yo_ << "\n";
+	//lyxerr << "fitInsetCursor: x: " << x << " y: " << y << " yo: " << yo_ << endl;
 	bv->fitLockedInsetCursor(x, y, asc, des);
 }
 
@@ -315,7 +315,7 @@ Inset::RESULT InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 	hideInsetCursor(bv);
 	showInsetCursor(bv);
 	bv->updateInset(this, false);
-	//lyxerr << "lfunMouseRelease: buttons: " << cmd.button() << "\n";
+	//lyxerr << "lfunMouseRelease: buttons: " << cmd.button() << endl;
 
 	if (cmd.button() == mouse_button::button3) {
 		// try to dispatch to enclosed insets first
@@ -353,10 +353,10 @@ Inset::RESULT InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 Inset::RESULT InsetFormulaBase::lfunMousePress(FuncRequest const & cmd)
 {
 	BufferView * bv = cmd.view();
-	//lyxerr << "lfunMousePress: buttons: " << cmd.button() << "\n";
+	//lyxerr << "lfunMousePress: buttons: " << cmd.button() << endl;
 
 	if (!mathcursor || mathcursor->formula() != this) {
-		lyxerr << "re-create cursor\n";
+		lyxerr << "re-create cursor" << endl;
 		releaseMathCursor(bv);
 		mathcursor = new MathCursor(this, cmd.x == 0);
 		metrics(bv);
@@ -418,7 +418,7 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	//	<< " arg: '" << cmd.argument
 	//	<< " x: '" << cmd.x
 	//	<< " y: '" << cmd.y
-	//	<< "' button: " << cmd.button() << "\n";
+	//	<< "' button: " << cmd.button() << endl;
 
 	switch (cmd.action) {
 		case LFUN_MOUSE_PRESS:

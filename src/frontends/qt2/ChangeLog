@@ -1,9 +1,13 @@
+2002-11-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* Alert_pimpl.C (askForText_pimpl): use boost.format
+
 2002-11-26  John Levon  <levon@movementarian.org>
 
 	* QMathDialog.C:
 	* Toolbar_pimpl.h:
 	* Toolbar_pimpl.C: Qt is the Lord of Suck
- 
+
 2002-11-25  John Levon  <levon@movementarian.org>
 
 	* qscreen.C: use LColor::cursor properly
@@ -11,7 +15,7 @@
 	* QPrefs.C:
 	* ui/QPrefKeyboardModule.ui:
 	* ui/QPrefUIModule.ui: UI fixes
- 
+
 2002-11-25  Herbert Voss  <Herbert.Voss@alumni.TU-Berlin.DE>
 
 	* QVCLog.C (update_contents): fix USE_BOOST_FORMAT

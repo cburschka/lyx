@@ -1,6 +1,5 @@
-
 #ifdef __GNUG__
-#pragma implementation 
+#pragma implementation
 #endif
 
 #include "config.h"
@@ -52,7 +51,7 @@ void MathCursorPos::setPos(MathArray::pos_type pos)
 
 std::ostream & operator<<(std::ostream & os, MathCursorPos const & p)
 {
-	os << "(par: " << p.par_ << " idx: " << p.idx_ << " pos: " << p.pos_ << ")";
+	os << "(par: " << p.par_ << " idx: " << p.idx_ << " pos: " << p.pos_ << ')';
 	return os;
 }
 

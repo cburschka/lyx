@@ -326,7 +326,7 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 					       style.free_spacing);
 
 			if (close)
-				os << "}";
+				os << '}';
 
 			if (tmp) {
 				for (int j = 0; j < tmp; ++j) {

@@ -19,7 +19,7 @@
 class Paragraph;
 class Row;
 
-/** 
+/**
  * The cursor class describes the position of a cursor within a document.
  * Several cursors exist within LyX; for example, when locking an inset,
  * the position of the cursor in the containing inset is stored.
@@ -66,7 +66,7 @@ public:
 	 * blah blah blah blah blah blah
 	 *
 	 * When we move onto row 3, we would like to be vertically aligned
-	 * with where we were in row 1, despite the fact that row 2 is 
+	 * with where we were in row 1, despite the fact that row 2 is
 	 * shorter than x()
 	 */
 	int x_fix() const;
@@ -121,7 +121,7 @@ private:
 	bool boundary_;
 	/// the pixel x position
 	int x_;
-	/// the stored next-row x position 
+	/// the stored next-row x position
 	int ix_;
 	/// the cached x position
 	int x_fix_;
@@ -131,7 +131,7 @@ private:
 	int iy_;
 	/// the containing row
 	Row * row_;
-	/// the containing row for the next line 
+	/// the containing row for the next line
 	Row * irow_;
 };
 

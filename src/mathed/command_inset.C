@@ -43,10 +43,10 @@ CommandInset::dispatch(FuncRequest const & cmd, idx_type & idx, pos_type & pos)
 
 void CommandInset::write(WriteStream & os) const
 {
-	os << "\\" << name_.c_str();
+	os << '\\' << name_.c_str();
 	if (cell(1).size())
-		os << "[" << cell(1) << "]";
-	os << "{" << cell(0) << "}";
+		os << '[' << cell(1) << ']';
+	os << '{' << cell(0) << '}';
 }
 
 

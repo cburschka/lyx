@@ -5,7 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author unknown
- * \author John Levon 
+ * \author John Levon
  *
  * Full author contact details are available in file CREDITS
  */
@@ -64,10 +64,10 @@ public:
 
 	/// begin painting
 	virtual void start() {}
- 
+
 	/// end painting
 	virtual void end() {}
- 
+
 	/// return the width of the work area in pixels
 	virtual int paperWidth() const = 0;
 	/// return the height of the work area in pixels
@@ -102,13 +102,13 @@ public:
 		LColor::color = LColor::foreground,
 		line_style = line_solid,
 		line_width = line_thin) = 0;
-	
+
 	/// draw a filled rectangle
 	virtual Painter & fillRectangle(
 		int x, int y,
 		int w, int h,
 		LColor::color) = 0;
-	
+
 	/// draw a filled (irregular) polygon
 	virtual Painter & fillPolygon(
 		int const * xp,
@@ -127,7 +127,7 @@ public:
 	virtual Painter & point(
 		int x, int y,
 		LColor::color = LColor::foreground) = 0;
-	
+
 	/// draw a filled rectangle with the shape of a 3D button
 	virtual Painter & button(int x, int y,
 		int w, int h);
@@ -136,7 +136,7 @@ public:
 	virtual Painter & image(int x, int y,
 		int w, int h,
 		grfx::Image const & image) = 0;
-	
+
 	/// draw a string at position x, y (y is the baseline)
 	virtual Painter & text(int x, int y,
 		string const & str, LyXFont const & f) = 0;
@@ -172,11 +172,11 @@ public:
 
 protected:
 	/// check the font, and if set, draw an underline
-	void underline(LyXFont const & f, 
+	void underline(LyXFont const & f,
 		int x, int y, int width);
-	
+
 	/// draw a bevelled button border
-        Painter & buttonFrame(int x, int y, int w, int h);
+	Painter & buttonFrame(int x, int y, int w, int h);
 };
 
 #endif // PAINTER_H

@@ -78,7 +78,7 @@ Toolbar::Pimpl::toolbarItem::operator=(toolbarItem const & ti)
 	// If we already have an icon, release it.
 	// But we don't copy the icon from ti
 	kill_icon();
- 
+
 	action = ti.action;
 
 	return *this;
@@ -124,7 +124,7 @@ void Toolbar::Pimpl::update()
 
 		if (!p->icon)
 			continue;
- 
+
 		FuncStatus const status = owner_->getLyXFunc().getStatus(p->action);
 		if (status.onoff(true)) {
 			// I'd like to use a different color
@@ -250,7 +250,7 @@ void setPixmap(FL_OBJECT * obj, int action)
 {
 	string xpm_name;
 	FuncRequest ev = lyxaction.retrieveActionArg(action);
- 
+
 	string const name = lyxaction.getActionName(ev.action);
 	if (!ev.argument.empty())
 		xpm_name = subst(name + ' ' + ev.argument, ' ','_');
@@ -263,15 +263,15 @@ void setPixmap(FL_OBJECT * obj, int action)
 		string arg = ev.argument.substr(1);
 		fullname = LibFileSearch("images/math/", arg, "xpm");
 	}
- 
+
 	if (!fullname.empty()) {
 		lyxerr[Debug::GUI] << "Full icon name is `"
-				   << fullname << "'" << endl;
+				   << fullname << '\'' << endl;
 		fl_set_pixmapbutton_file(obj, fullname.c_str());
 		return;
 	}
 
-	lyxerr << "Unable to find icon `" << xpm_name << "'" << endl;
+	lyxerr << "Unable to find icon `" << xpm_name << '\'' << endl;
 	fullname = LibFileSearch("images", "unknown", "xpm");
 	if (!fullname.empty()) {
 		lyxerr[Debug::GUI] << "Using default `unknown' icon"
@@ -289,7 +289,7 @@ void Toolbar::Pimpl::add(int action)
 
 	toolbarItem item;
 	item.action = action;
- 
+
 	switch (action) {
 	case ToolbarDefaults::SEPARATOR:
 		xpos += sepspace;
@@ -340,6 +340,6 @@ void Toolbar::Pimpl::add(int action)
 		 */
 		break;
 	}
- 
+
 	toollist_.push_back(item);
 }

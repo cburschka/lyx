@@ -122,22 +122,22 @@ void QFloat::apply()
 	string placement;
 
 	if (dialog_->heredefinitelyCB->isChecked()) {
-		placement += "H";
+		placement += 'H';
 	} else {
 		if (dialog_->ignoreCB->isChecked()) {
-			placement += "!";
+			placement += '!';
 		}
 		if (dialog_->topCB->isChecked()) {
-			placement += "t";
+			placement += 't';
 		}
 		if (dialog_->bottomCB->isChecked()) {
-			placement += "b";
+			placement += 'b';
 		}
 		if (dialog_->pageCB->isChecked()) {
-			placement += "p";
+			placement += 'p';
 		}
 		if (dialog_->herepossiblyCB->isChecked()) {
-			placement += "h";
+			placement += 'h';
 		}
 	}
 	params.placement = placement;

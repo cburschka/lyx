@@ -196,7 +196,7 @@ string const currentState(BufferView * bv)
 		case Spacing::Other:
 			state << _("Other (")
 			      << text->cursor.par()->params().spacing().getValue()
-			      << ")";
+			      << ')';
 			break;
 		case Spacing::Default:
 			// should never happen, do nothing

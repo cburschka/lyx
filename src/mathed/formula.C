@@ -127,7 +127,7 @@ Inset * InsetFormula::clone(Buffer const &, bool) const
 void InsetFormula::write(Buffer const *, ostream & os) const
 {
 	WriteStream wi(os, false, false);
-	os << par_->fileInsetLabel() << " ";
+	os << par_->fileInsetLabel() << ' ';
 	par_->write(wi);
 }
 

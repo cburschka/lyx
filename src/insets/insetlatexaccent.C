@@ -211,7 +211,7 @@ void InsetLatexAccent::checkContents()
 			break;
 		}
 		//ic = (modtype == DOT_LESS_J ? 'j' : 'i');
-		lyxerr[Debug::KEY] << "Contents: [" << contents << "]"
+		lyxerr[Debug::KEY] << "Contents: [" << contents << ']'
 				   << ", ic: " << ic
 				   << ", top: " << plusasc
 				   << ", bot: " << plusdesc
@@ -251,7 +251,7 @@ void InsetLatexAccent::checkContents()
 		if (contents[++i] != '}' && contents[++i]) return;
 
 		// fine, the char is properly decoded now (hopefully)
-		lyxerr[Debug::KEY] << "Contents: [" << contents << "]"
+		lyxerr[Debug::KEY] << "Contents: [" << contents << ']'
 				   << ", ic: " << ic
 				   << ", top: " << plusasc
 				   << ", bot: " << plusdesc

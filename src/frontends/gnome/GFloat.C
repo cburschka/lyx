@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Michael Koziarski 
+ * \author Michael Koziarski
  *
  * Full author contact details are available in file CREDITS
  */
@@ -46,19 +46,19 @@ void GFloat::apply()
 {
 	string placement;
 	if (here_definitely()->get_active()) {
-		placement += "H";
+		placement += 'H';
 	} else {
 		if (top_of_page()->get_active()) {
-			placement += "t";
+			placement += 't';
 		}
 		if (bottom_of_page()->get_active()) {
-			placement += "b";
+			placement += 'b';
 		}
 		if (page_of_floats()->get_active()) {
-			placement += "p";
+			placement += 'p';
 		}
 		if (here_if_possible()->get_active()) {
-			placement += "h";
+			placement += 'h';
 		}
 	}
 	controller().params().placement = placement;
@@ -92,7 +92,7 @@ void GFloat::update()
 			here = true;
 		}
 	}
-	
+
 	top_of_page()->set_active(top);
 	page_of_floats()->set_active(page);
 	bottom_of_page()->set_active(bottom);
@@ -123,7 +123,7 @@ void GFloat::connect_signals()
 		);
 }
 
-void GFloat::disconnect_signals() 
+void GFloat::disconnect_signals()
 {
 	conn_top_.disconnect();
 	conn_bottom_.disconnect();
@@ -133,41 +133,41 @@ void GFloat::disconnect_signals()
 	conn_disable_.disconnect();
 }
 
-void GFloat::update_sensitive() 
+void GFloat::update_sensitive()
 {
-	if (here_definitely()->get_active()) 
+	if (here_definitely()->get_active())
 		other_options()->set_sensitive(false);
-	else 
+	else
 		other_options()->set_sensitive(true);
 
 }
 
-Gtk::HBox * GFloat::other_options() const 
+Gtk::HBox * GFloat::other_options() const
 {
-        return getWidget<Gtk::HBox>("r_other_options");
+	return getWidget<Gtk::HBox>("r_other_options");
 }
-Gtk::CheckButton * GFloat::page_of_floats() const 
+Gtk::CheckButton * GFloat::page_of_floats() const
 {
-        return getWidget<Gtk::CheckButton>("r_page_of_floats");
+	return getWidget<Gtk::CheckButton>("r_page_of_floats");
 }
-Gtk::CheckButton * GFloat::top_of_page() const 
+Gtk::CheckButton * GFloat::top_of_page() const
 {
-        return getWidget<Gtk::CheckButton>("r_top_of_page");
+	return getWidget<Gtk::CheckButton>("r_top_of_page");
 }
-Gtk::CheckButton * GFloat::bottom_of_page() const 
+Gtk::CheckButton * GFloat::bottom_of_page() const
 {
-        return getWidget<Gtk::CheckButton>("r_bottom_of_page");
+	return getWidget<Gtk::CheckButton>("r_bottom_of_page");
 }
-Gtk::CheckButton * GFloat::here_if_possible() const 
+Gtk::CheckButton * GFloat::here_if_possible() const
 {
-        return getWidget<Gtk::CheckButton>("r_here_if_possible");
+	return getWidget<Gtk::CheckButton>("r_here_if_possible");
 }
-Gtk::RadioButton * GFloat::here_definitely() const 
+Gtk::RadioButton * GFloat::here_definitely() const
 {
-        return getWidget<Gtk::RadioButton>("r_here_definitely");
+	return getWidget<Gtk::RadioButton>("r_here_definitely");
 }
 
-Gtk::Button * GFloat::close_btn() const 
+Gtk::Button * GFloat::close_btn() const
 {
-        return getWidget<Gtk::Button>("r_close_btn");
+	return getWidget<Gtk::Button>("r_close_btn");
 }

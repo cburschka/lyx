@@ -115,7 +115,7 @@ string const InsetBibKey::getBibLabel() const
 
 string const InsetBibKey::getScreenLabel(Buffer const *) const
 {
-	return getContents() + " [" + getBibLabel() + "]";
+	return getContents() + " [" + getBibLabel() + ']';
 }
 
 
@@ -303,7 +303,7 @@ bool InsetBibtex::addDatabase(string const & db)
 	string contents(getContents());
 	if (!contains(contents, db)) {
 		if (!contents.empty())
-			contents += ",";
+			contents += ',';
 		setContents(contents + db);
 		return true;
 	}

@@ -1138,26 +1138,26 @@ void LyXRC::output(ostream & os) const
 			os << "# Set to false to inhibit automatic replacement of\n"
 			   << "# the current selection.\n"
 			   << "\\auto_region_delete " << tostr(auto_region_delete)
-			   << "\n";
+			   << '\n';
 		}
 	case RC_AUTORESET_OPTIONS:
 		if (auto_reset_options != system_lyxrc.auto_reset_options) {
 			os << "# Set to false to inhibit automatic reset of\n"
 			   << "# the class options to defaults on class change.\n"
 			   << "\\auto_reset_options " << tostr(auto_reset_options)
-			   << "\n";
+			   << '\n';
 		}
 	case RC_AUTOSAVE:
 		if (autosave != system_lyxrc.autosave) {
 			os << "# The time interval between auto-saves in seconds.\n"
-			   << "\\autosave " << autosave << "\n";
+			   << "\\autosave " << autosave << '\n';
 		}
 	case RC_DISPLAY_GRAPHICS:
 		if (display_graphics != system_lyxrc.display_graphics) {
 			os << "# Display graphics within LyX\n"
 			   << "# monochrome|grayscale|color|none\n"
 			   << "\\display_graphics " << grfx::displayTranslator.find(display_graphics)
-			   << "\n";
+			   << '\n';
 		}
 
 	case RC_VIEWDVI_PAPEROPTION:
@@ -1202,7 +1202,7 @@ void LyXRC::output(ostream & os) const
 		}
 	case RC_KBMAP:
 		if (use_kbmap != system_lyxrc.use_kbmap) {
-			os << "\\kbmap " << tostr(use_kbmap) << "\n";
+			os << "\\kbmap " << tostr(use_kbmap) << '\n';
 		}
 	case RC_KBMAP_PRIMARY:
 		if (primary_kbmap != system_lyxrc.primary_kbmap) {
@@ -1225,30 +1225,30 @@ void LyXRC::output(ostream & os) const
 	case RC_LABEL_INIT_LENGTH:
 		if (label_init_length != system_lyxrc.label_init_length) {
 			os << "\\label_init_length " << label_init_length
-			   << "\n";
+			   << '\n';
 		}
 
 	case RC_SHOW_BANNER:
 		if (show_banner != system_lyxrc.show_banner) {
-			os << "\\show_banner " << tostr(show_banner) << "\n";
+			os << "\\show_banner " << tostr(show_banner) << '\n';
 		}
 
 	case RC_PREVIEW:
 		if (preview != system_lyxrc.preview) {
-			os << "\\preview " << tostr(preview) << "\n";
+			os << "\\preview " << tostr(preview) << '\n';
 		}
 
 	case RC_PREVIEW_HASHED_LABELS:
 		if (preview_hashed_labels !=
 		    system_lyxrc.preview_hashed_labels) {
 			os << "\\preview_hashed_labels "
-			   << tostr(preview_hashed_labels) << "\n";
+			   << tostr(preview_hashed_labels) << '\n';
 		}
 
 	case RC_PREVIEW_SCALE_FACTOR:
 		if (preview_scale_factor != system_lyxrc.preview_scale_factor) {
 			os << "\\preview_scale_factor "
-			   << preview_scale_factor << "\n";
+			   << preview_scale_factor << '\n';
 		}
 
 		os << "\n#\n"
@@ -1272,27 +1272,27 @@ void LyXRC::output(ostream & os) const
 		}
 	case RC_SCREEN_DPI:
 		if (dpi != system_lyxrc.dpi) {
-			os << "\\screen_dpi " << dpi << "\n";
+			os << "\\screen_dpi " << dpi << '\n';
 		}
 	case RC_SCREEN_ZOOM:
 		if (zoom != system_lyxrc.zoom) {
-			os << "\\screen_zoom " << zoom << "\n";
+			os << "\\screen_zoom " << zoom << '\n';
 		}
 	case RC_WHEEL_JUMP:
 		if (wheel_jump != system_lyxrc.wheel_jump) {
-			os << "\\wheel_jump " << wheel_jump << "\n";
+			os << "\\wheel_jump " << wheel_jump << '\n';
 		}
 	case RC_CURSOR_FOLLOWS_SCROLLBAR:
 		if (cursor_follows_scrollbar
 		    != system_lyxrc.cursor_follows_scrollbar) {
 			os << "\\cursor_follows_scrollbar "
-			   << tostr(cursor_follows_scrollbar) << "\n";
+			   << tostr(cursor_follows_scrollbar) << '\n';
 		}
 	case RC_DIALOGS_ICONIFY_WITH_MAIN:
 		if (dialogs_iconify_with_main
 		   != system_lyxrc.dialogs_iconify_with_main) {
 			os << "\\dialogs_iconify_with_main "
-			  <<  tostr(dialogs_iconify_with_main) << "\n";
+			  <<  tostr(dialogs_iconify_with_main) << '\n';
 		}
 	case RC_SCREEN_FONT_ROMAN:
 		if (roman_font_name != system_lyxrc.roman_font_name) {
@@ -1313,7 +1313,7 @@ void LyXRC::output(ostream & os) const
 		if (use_scalable_fonts != system_lyxrc.use_scalable_fonts) {
 			os << "\\screen_font_scalable "
 			   << tostr(use_scalable_fonts)
-			   << "\n";
+			   << '\n';
 		}
 	case RC_SCREEN_FONT_ENCODING:
 		if (font_norm != system_lyxrc.font_norm) {
@@ -1344,17 +1344,17 @@ void LyXRC::output(ostream & os) const
 			os.setf(ios::fixed);
 			os.precision(2);
 			os << "\\screen_font_sizes"
-			   << " " << font_sizes[LyXFont::SIZE_TINY]
-			   << " " << font_sizes[LyXFont::SIZE_SCRIPT]
-			   << " " << font_sizes[LyXFont::SIZE_FOOTNOTE]
-			   << " " << font_sizes[LyXFont::SIZE_SMALL]
-			   << " " << font_sizes[LyXFont::SIZE_NORMAL]
-			   << " " << font_sizes[LyXFont::SIZE_LARGE]
-			   << " " << font_sizes[LyXFont::SIZE_LARGER]
-			   << " " << font_sizes[LyXFont::SIZE_LARGEST]
-			   << " " << font_sizes[LyXFont::SIZE_HUGE]
-			   << " " << font_sizes[LyXFont::SIZE_HUGER]
-			   << "\n";
+			   << ' ' << font_sizes[LyXFont::SIZE_TINY]
+			   << ' ' << font_sizes[LyXFont::SIZE_SCRIPT]
+			   << ' ' << font_sizes[LyXFont::SIZE_FOOTNOTE]
+			   << ' ' << font_sizes[LyXFont::SIZE_SMALL]
+			   << ' ' << font_sizes[LyXFont::SIZE_NORMAL]
+			   << ' ' << font_sizes[LyXFont::SIZE_LARGE]
+			   << ' ' << font_sizes[LyXFont::SIZE_LARGER]
+			   << ' ' << font_sizes[LyXFont::SIZE_LARGEST]
+			   << ' ' << font_sizes[LyXFont::SIZE_HUGE]
+			   << ' ' << font_sizes[LyXFont::SIZE_HUGER]
+			   << '\n';
 		}
 
 		os << "\n#\n"
@@ -1385,7 +1385,7 @@ void LyXRC::output(ostream & os) const
 		if (print_adapt_output != system_lyxrc.print_adapt_output) {
 			os << "\\print_adapt_output "
 			   << tostr(print_adapt_output)
-			   << "\n";
+			   << '\n';
 		}
 	case RC_PRINT_COMMAND:
 		if (print_command != system_lyxrc.print_command) {
@@ -1512,12 +1512,12 @@ void LyXRC::output(ostream & os) const
 		}
 	case RC_NUMLASTFILES:
 		if (num_lastfiles != system_lyxrc.num_lastfiles) {
-			os << "\\num_lastfiles " << num_lastfiles << "\n";
+			os << "\\num_lastfiles " << num_lastfiles << '\n';
 		}
 	case RC_CHECKLASTFILES:
 		if (check_lastfiles != system_lyxrc.check_lastfiles) {
 			os << "\\check_lastfiles " << tostr(check_lastfiles)
-			   << "\n";
+			   << '\n';
 		}
 	case RC_TEMPLATEPATH:
 		if (template_path != system_lyxrc.template_path) {
@@ -1529,15 +1529,15 @@ void LyXRC::output(ostream & os) const
 		}
 	case RC_USETEMPDIR:
 		if (use_tempdir != system_lyxrc.use_tempdir) {
-			os << "\\use_tempdir " << tostr(use_tempdir) << "\n";
+			os << "\\use_tempdir " << tostr(use_tempdir) << '\n';
 		}
 	case RC_ASCII_LINELEN:
 		if (ascii_linelen != system_lyxrc.ascii_linelen) {
-			os << "\\ascii_linelen " << ascii_linelen << "\n";
+			os << "\\ascii_linelen " << ascii_linelen << '\n';
 		}
 	case RC_MAKE_BACKUP:
 		if (make_backup != system_lyxrc.make_backup) {
-			os << "\\make_backup " << tostr(make_backup) << "\n";
+			os << "\\make_backup " << tostr(make_backup) << '\n';
 		}
 	case RC_BACKUPDIR_PATH:
 		if (backupdir_path != system_lyxrc.backupdir_path) {
@@ -1560,7 +1560,7 @@ void LyXRC::output(ostream & os) const
 #ifdef USE_PSPELL
 	case RC_USE_PSPELL:
 		if (use_pspell != system_lyxrc.use_pspell) {
-			os << "\\use_pspell " << tostr(use_pspell) << "\n";
+			os << "\\use_pspell " << tostr(use_pspell) << '\n';
 		}
 #endif
 	case RC_SPELL_COMMAND:
@@ -1570,12 +1570,12 @@ void LyXRC::output(ostream & os) const
 	case RC_ACCEPT_COMPOUND:
 		if (isp_accept_compound != system_lyxrc.isp_accept_compound) {
 			os << "\\accept_compound " << tostr(isp_accept_compound)
-			   << "\n";
+			   << '\n';
 		}
 	case RC_USE_ALT_LANG:
 		if (isp_use_alt_lang != system_lyxrc.isp_use_alt_lang) {
 			os << "\\use_alt_language " << tostr(isp_use_alt_lang)
-			   << "\n";
+			   << '\n';
 		}
 	case RC_ALT_LANG:
 		if (isp_alt_lang != system_lyxrc.isp_alt_lang) {
@@ -1585,7 +1585,7 @@ void LyXRC::output(ostream & os) const
 	case RC_USE_ESC_CHARS:
 		if (isp_use_esc_chars != system_lyxrc.isp_use_esc_chars) {
 			os << "\\use_escape_chars " << tostr(isp_use_esc_chars)
-			   << "\n";
+			   << '\n';
 		}
 	case RC_ESC_CHARS:
 		if (isp_esc_chars != system_lyxrc.isp_esc_chars) {
@@ -1595,7 +1595,7 @@ void LyXRC::output(ostream & os) const
 		if (isp_use_pers_dict != system_lyxrc.isp_use_pers_dict) {
 			os << "\\use_personal_dictionary "
 			   << tostr(isp_use_pers_dict)
-			   << "\n";
+			   << '\n';
 		}
 	case RC_PERS_DICT:
 		if (isp_pers_dict != system_lyxrc.isp_pers_dict) {
@@ -1607,7 +1607,7 @@ void LyXRC::output(ostream & os) const
 		    != system_lyxrc.isp_use_input_encoding) {
 			os << "\\use_input_encoding "
 			   << tostr(isp_use_input_encoding)
-			   << "\n";
+			   << '\n';
 		}
 
 		os << "\n#\n"
@@ -1616,7 +1616,7 @@ void LyXRC::output(ostream & os) const
 
 	case RC_RTL_SUPPORT:
 		if (rtl_support != system_lyxrc.rtl_support) {
-			os << "\\rtl " << tostr(rtl_support) << "\n";
+			os << "\\rtl " << tostr(rtl_support) << '\n';
 		}
 	case RC_LANGUAGE_PACKAGE:
 		if (language_package != system_lyxrc.language_package) {
@@ -1659,18 +1659,18 @@ void LyXRC::output(ostream & os) const
 	case RC_LANGUAGE_AUTO_BEGIN:
 		if (language_auto_begin != system_lyxrc.language_auto_begin) {
 			os << "\\language_auto_begin "
-			   << tostr(language_auto_begin) << "\n";
+			   << tostr(language_auto_begin) << '\n';
 		}
 	case RC_LANGUAGE_AUTO_END:
 		if (language_auto_end != system_lyxrc.language_auto_end) {
 			os << "\\language_auto_end "
-			   << tostr(language_auto_end) << "\n";
+			   << tostr(language_auto_end) << '\n';
 		}
 	case RC_MARK_FOREIGN_LANGUAGE:
 		if (mark_foreign_language
 		    != system_lyxrc.mark_foreign_language) {
 			os << "\\mark_foreign_language " <<
-				tostr(mark_foreign_language) << "\n";
+				tostr(mark_foreign_language) << '\n';
 		}
 
 		os << "\n#\n"
@@ -1680,15 +1680,15 @@ void LyXRC::output(ostream & os) const
 	case RC_OVERRIDE_X_DEADKEYS:
 		if (override_x_deadkeys != system_lyxrc.override_x_deadkeys) {
 			os << "\\override_x_deadkeys "
-			   << tostr(override_x_deadkeys) << "\n";
+			   << tostr(override_x_deadkeys) << '\n';
 		}
 	case RC_AUTO_NUMBER:
 		if (auto_number != system_lyxrc.auto_number) {
-			os << "\\auto_number " << tostr(auto_number) << "\n";
+			os << "\\auto_number " << tostr(auto_number) << '\n';
 		}
 	case RC_DEFAULT_LANGUAGE:
 		if (default_language != system_lyxrc.default_language) {
-			os << "\\default_language " << default_language << "\n";
+			os << "\\default_language " << default_language << '\n';
 		}
 
 		os << "\n#\n"

@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -42,10 +42,10 @@ void FormToc::build()
 	dialog_.reset(build_toc(this));
 
 	vector<string> types = controller().getTypes();
-	
-	
+
+
 	string const choice =
-		" " + getStringFromVector(controller().getTypes(), " | ") + " ";
+		' ' + getStringFromVector(controller().getTypes(), " | ") + ' ';
 	fl_addto_choice(dialog_->choice_toc_type, choice.c_str());
 
 	// Manage the cancel/close button

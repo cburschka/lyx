@@ -123,7 +123,7 @@ void initSymbols()
 
 		// special case of pre-defined macros
 		if (line.size() > 8 && line.substr(0, 5) == "\\def\\") {
-			//lyxerr << "defining: '" << line << "'" << endl;
+			//lyxerr << "defining: '" << line << '\'' << endl;
 			istringstream is(STRCONV(line));
 			MathMacroTable::create(MathAtom(new MathMacroTemplate(is)));
 			continue;
@@ -137,7 +137,7 @@ void initSymbols()
 		else
 			is >> tmp.extra;
 		if (!is) {
-			lyxerr[Debug::MATHED] << "skipping line '" << line << "'" << endl;
+			lyxerr[Debug::MATHED] << "skipping line '" << line << '\'' << endl;
 			lyxerr[Debug::MATHED]
 				<< tmp.name << ' ' << tmp.inset << ' ' << tmp.extra << endl;
 			continue;
@@ -183,7 +183,7 @@ void initSymbols()
 			<< "  inset: " << tmp.inset
 			<< "  draw: " << int(tmp.draw.empty() ? 0 : tmp.draw[0])
 			<< "  extra: " << tmp.extra
-			<< "'" << endl;
+			<< '\'' << endl;
 	}
 	string tmp = "cmm";
 	string tmp2 = "cmsy";
@@ -216,12 +216,12 @@ latexkeys const * in_word_set(string const & str)
 MathAtom createMathInset(string const & s)
 {
 	lyxerr[Debug::MATHED] << "creating inset with name: '"
-			      << s << "'" << endl;;
+			      << s << '\'' << endl;;
 	latexkeys const * l = in_word_set(s);
 	if (l) {
 		string const & inset = l->inset;
 		lyxerr[Debug::MATHED] << " found inset: '" <<
-			inset << "'" << endl;
+			inset << '\'' << endl;
 		if (inset == "ref")
 			return MathAtom(new RefInset(l->name));
 		if (inset == "underset")
@@ -292,6 +292,6 @@ MathAtom createMathInset(string const & s)
 	if (MathMacroTable::has(s))
 		return MathAtom(new MathMacro(s));
 
-	//lyxerr[Debug::MATHED] << "creating inset 2 with name: '" << s << "'" << endl;
+	//lyxerr[Debug::MATHED] << "creating inset 2 with name: '" << s << '\'' << endl;
 	return MathAtom(new MathUnknownInset(s));
 }

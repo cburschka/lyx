@@ -182,15 +182,15 @@ void Paragraph::write(Buffer const * buf, ostream & os,
 	}
 
 	// First write the layout
-	os << "\n\\layout " << layout()->name() << "\n";
+	os << "\n\\layout " << layout()->name() << '\n';
 
 	// Maybe some vertical spaces.
 	if (params().spaceTop().kind() != VSpace::NONE)
 		os << "\\added_space_top "
-		   << params().spaceTop().asLyXCommand() << " ";
+		   << params().spaceTop().asLyXCommand() << ' ';
 	if (params().spaceBottom().kind() != VSpace::NONE)
 		os << "\\added_space_bottom "
-		   << params().spaceBottom().asLyXCommand() << " ";
+		   << params().spaceBottom().asLyXCommand() << ' ';
 
 	// Maybe the paragraph has special spacing
 	params().spacing().writeFile(os, true);
@@ -222,7 +222,8 @@ void Paragraph::write(Buffer const * buf, ostream & os,
 
 	// Do we have a manual left indent?
 	if (!params().leftIndent().zero())
-		os << "\\leftindent " << params().leftIndent().asString() << " ";
+		os << "\\leftindent " << params().leftIndent().asString()
+		   << ' ';
 
 	// Alignment?
 	if (params().align() != LYX_ALIGN_LAYOUT) {
@@ -233,7 +234,7 @@ void Paragraph::write(Buffer const * buf, ostream & os,
 		case LYX_ALIGN_CENTER: h = 3; break;
 		default: h = 0; break;
 		}
-		os << "\\align " << string_align[h] << " ";
+		os << "\\align " << string_align[h] << ' ';
 	}
 
 	// bibitem  ale970302
@@ -245,7 +246,7 @@ void Paragraph::write(Buffer const * buf, ostream & os,
 	int column = 0;
 	for (pos_type i = 0; i < size(); ++i) {
 		if (!i) {
-			os << "\n";
+			os << '\n';
 			column = 0;
 		}
 
@@ -293,12 +294,12 @@ void Paragraph::write(Buffer const * buf, ostream & os,
 				os << ".\n";
 				column = 0;
 			} else
-				os << ".";
+				os << '.';
 			break;
 		default:
 			if ((column > 70 && c == ' ')
 			    || column > 79) {
-				os << "\n";
+				os << '\n';
 				column = 0;
 			}
 			// this check is to amend a bug. LyX sometimes
@@ -984,7 +985,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 
 		if (!params().spacing().isDefault()
 			&& (!previous() || !previous()->hasSameLayout(this))) {
-			os << params().spacing().writeEnvirBegin() << "\n";
+			os << params().spacing().writeEnvirBegin() << '\n';
 			texrow.newline();
 		}
 
@@ -1052,7 +1053,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	    language->encoding() != previous_language->encoding()) {
 		os << "\\inputencoding{"
 		   << language->encoding()->LatexName()
-		   << "}" << endl;
+		   << "}\n";
 		texrow.newline();
 	}
 
@@ -1102,12 +1103,12 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 
 	if (style->resfont.size() != font.size() && next_ && !is_command) {
 		if (!need_par)
-			os << "{";
+			os << '{';
 		os << "\\" << font.latexSize() << " \\par}";
 	} else if (need_par) {
 		os << "\\par}";
 	} else if (is_command)
-		os << "}";
+		os << '}';
 
 	switch (style->latextype) {
 	case LATEX_ITEM_ENVIRONMENT:
@@ -1157,7 +1158,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 
 		if (!params().spacing().isDefault()
 			&& (!next_ || !next_->hasSameLayout(this))) {
-			os << params().spacing().writeEnvirEnd() << "\n";
+			os << params().spacing().writeEnvirEnd() << '\n';
 			texrow.newline();
 		}
 	}
@@ -1459,7 +1460,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 				running_font = basefont;
 				if (font.family() ==
 				    LyXFont::TYPEWRITER_FAMILY) {
-					os << "~";
+					os << '~';
 				}
 				if (moving_arg)
 					os << "\\protect ";

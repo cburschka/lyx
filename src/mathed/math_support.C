@@ -1,6 +1,5 @@
-
 #ifdef __GNUG__
-#pragma implementation 
+#pragma implementation
 #endif
 
 #include <config.h>
@@ -453,14 +452,14 @@ void mathed_draw_deco(MathPainterInfo & pi, int x, int y, int w, int h,
 			for (int j = 0; j < n; ++j) {
 				double xx = d[i++];
 				double yy = d[i++];
-//	     lyxerr << " " << xx << " " << yy << " ";
+//	     lyxerr << ' ' << xx << ' ' << yy << ' ';
 				if (code == 4)
 					sqmt.transform(xx, yy);
 				else
 					mt.transform(xx, yy);
 				xp[j] = int(x + xx + 0.5);
 				yp[j] = int(y + yy + 0.5);
-				//  lyxerr << "P[" << j " " << xx << " " << yy << " " << x << " " << y << "]";
+				//  lyxerr << "P[" << j ' ' << xx << ' ' << yy << ' ' << x << ' ' << y << ']';
 			}
 			pi.pain.lines(xp, yp, n, LColor::math);
 		}
@@ -524,7 +523,7 @@ struct fontinfo {
 
 LyXFont::FONT_FAMILY const inh_family = LyXFont::INHERIT_FAMILY;
 LyXFont::FONT_SERIES const inh_series = LyXFont::INHERIT_SERIES;
-LyXFont::FONT_SHAPE  const inh_shape  = LyXFont::INHERIT_SHAPE; 
+LyXFont::FONT_SHAPE  const inh_shape  = LyXFont::INHERIT_SHAPE;
 
 
 // mathnormal should be the first, otherwise the fallback further down
@@ -582,11 +581,11 @@ fontinfo fontinfos[] = {
 
 fontinfo * lookupFont(string const & name)
 {
-	//lyxerr << "searching font '" << name << "'\n"; 
+	//lyxerr << "searching font '" << name << "'\n";
 	int const n = sizeof(fontinfos) / sizeof(fontinfo);
 	for (int i = 0; i < n; ++i)
 		if (fontinfos[i].cmd_ == name) {
-			//lyxerr << "found '" << i << "'\n"; 
+			//lyxerr << "found '" << i << "'\n";
 			return fontinfos + i;
 		}
 	return 0;

@@ -35,7 +35,7 @@ MathXYMatrixInset const * MathXYArrowInset::targetMatrix() const
 
 MathArray const & MathXYArrowInset::targetCell() const
 {
-#if 0	
+#if 0
 	MathXYMatrixInset const * p = targetMatrix();
 	int x = 0;
 	int y = 0;
@@ -137,9 +137,9 @@ void MathXYArrowInset::write(WriteStream & os) const
 {
 	os << "\\ar";
 	if (cell(0).size())
-		os << "[" << cell(0) << "]";
+		os << '[' << cell(0) << ']';
 	if (cell(1).size())
-		os << (up_ ? "^" : "_") << "{" << cell(1) << "}";
+		os << (up_ ? '^' : '_') << '{' << cell(1) << '}';
 	os << " ";
 }
 
@@ -148,5 +148,5 @@ void MathXYArrowInset::normalize(NormalStream & os) const
 {
 	os << "[xyarrow ";
 	MathNestInset::normalize(os);
-	os << "]";
+	os << ']';
 }

@@ -379,7 +379,7 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, Buffer const * buf)
 			else if ((*fit)->name() == "textparagraph")
 				label = _("Ascii text as paragraphs");
 		if (!(*fit)->shortcut().empty())
-			label += "|" + (*fit)->shortcut();
+			label += '|' + (*fit)->shortcut();
 		int const action2 = lyxaction.
 			getPseudoAction(action,	(*fit)->name());
 		tomenu.add(MenuItem(MenuItem::Command, label, action2));
@@ -443,7 +443,7 @@ void expandToc2(Menu & tomenu, toc::Toc const & toc_list,
 			label += limit_string_length(toc_list[i].str);
 			if (toc_list[i].depth == depth
 			    && ++shortcut_count <= 9) {
-				label += "|" + tostr(shortcut_count);
+				label += '|' + tostr(shortcut_count);
 			}
 			tomenu.add(MenuItem(MenuItem::Command, label, action));
 		}

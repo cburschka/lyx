@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming 
+ * \author Angus Leeming
  * \author John Levon
  * \author Herbert Voss
  * \author Rob Lahaye
@@ -211,7 +211,7 @@ void FormBibtex::apply()
 	string const bibtotoc = addtotoc ? "bibtotoc" : "";
 	if (addtotoc && !bibstyle.empty()) {
 		// Both bibtotoc and style.
-		controller().params().setOptions(bibtotoc + "," + bibstyle);
+		controller().params().setOptions(bibtotoc + ',' + bibstyle);
 
 	} else {
 		// At least one of addtotoc and bibstyle is empty. No harm to output both!

@@ -367,18 +367,18 @@ void FormGraphics::apply()
 			bb = getLengthFromWidgets(bbox_->input_bb_x0,
 						  bbox_->choice_bb_units);
 
-		bb += " ";
+		bb += ' ';
 
 		if (getString(bbox_->input_bb_y0).empty())
-			bb += "0";
+			bb += '0';
 		else
 			bb += getLengthFromWidgets(bbox_->input_bb_y0,
 						  bbox_->choice_bb_units);
 
-		bb += " " + x1_str + " ";
+		bb += ' ' + x1_str + ' ';
 
 		if (getString(bbox_->input_bb_y1).empty())
-			bb += "0";
+			bb += '0';
 		else
 			bb += getLengthFromWidgets(bbox_->input_bb_y1,
 						   bbox_->choice_bb_units);

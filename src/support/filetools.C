@@ -122,8 +122,8 @@ string const MakeLatexName(string const & file)
 string const QuoteName(string const & name)
 {
 	return (os::shell() == os::UNIX) ?
-		"\'" + name + "\'":
-		"\"" + name + "\"";
+		'\'' + name + '\'':
+		'"' + name + '"';
 }
 
 
@@ -213,7 +213,7 @@ vector<string> const DirList(string const & dir, string const & ext)
 	// This is a non-error checking C/system implementation
 	string extension(ext);
 	if (!extension.empty() && extension[0] != '.')
-		extension.insert(0, ".");
+		extension.insert(0, 1, '.');
 	vector<string> dirlist;
 	DIR * dirp = ::opendir(dir.c_str());
 	if (!dirp) {
@@ -240,7 +240,7 @@ vector<string> const DirList(string const & dir, string const & ext)
 	*/
 	/* A C++ implementaion will look like this:
 	   string extension(ext);
-	   if (extension[0] != '.') extension.insert(0, ".");
+	   if (extension[0] != '.') extension.insert(0, 1, '.');
 	   vector<string> dirlist;
 	   directory_iterator dit("dir");
 	   while (dit != directory_iterator()) {
@@ -477,7 +477,7 @@ string const CreateTmpDir(string const & tempdir, string const & mask)
 {
 	lyxerr[Debug::FILES]
 		<< "CreateTmpDir: tempdir=`" << tempdir << "'\n"
-		<< "CreateTmpDir:    mask=`" << mask << "'" << endl;
+		<< "CreateTmpDir:    mask=`" << mask << '\'' << endl;
 
 	string const tmpfl(lyx::tempName(tempdir, mask));
 	// lyx::tempName actually creates a file to make sure that it
@@ -785,7 +785,7 @@ string const GetFileContents(string const & fname)
 			return STRCONV(ofs.str());
 		}
 	}
-	lyxerr << "LyX was not able to read file '" << fname << "'" << endl;
+	lyxerr << "LyX was not able to read file '" << fname << '\'' << endl;
 	return string();
 }
 
@@ -965,7 +965,7 @@ string const ChangeExtension(string const & oldname, string const & extension)
 	string ext;
 	// Make sure the extension starts with a dot
 	if (!extension.empty() && extension[0] != '.')
-		ext= "." + extension;
+		ext= '.' + extension;
 	else
 		ext = extension;
 
@@ -1353,9 +1353,9 @@ string const findtexfile(string const & fil, string const & /*format*/)
 
 	cmd_ret const c = RunCommand(kpsecmd);
 
-	lyxerr[Debug::LATEX] << "kpse status = " << c.first << "\n"
+	lyxerr[Debug::LATEX] << "kpse status = " << c.first << '\n'
 		 << "kpse result = `" << rtrim(c.second, "\n")
-		 << "'" << endl;
+		 << '\'' << endl;
 	if (c.first != -1)
 		return os::internal_path(rtrim(c.second, "\n\r"));
 	else

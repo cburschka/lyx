@@ -225,12 +225,12 @@ void DepTable::write(string const & f) const
 			// CRC value.
 			// The older one is effectively set to 0 upon re-load.
 			lyxerr << "Write dep: "
-			       << cit->first << " "
-			       << cit->second.crc_cur << " "
+			       << cit->first << ' '
+			       << cit->second.crc_cur << ' '
 			       << cit->second.mtime_cur << endl;
 		}
-		ofs << cit->first << " "
-		    << cit->second.crc_cur << " "
+		ofs << cit->first << ' '
+		    << cit->second.crc_cur << ' '
 		    << cit->second.mtime_cur << endl;
 	}
 }
@@ -247,8 +247,8 @@ void DepTable::read(string const & f)
 	while (ifs >> nome >> di.crc_cur >> di.mtime_cur) {
 		if (lyxerr.debugging(Debug::DEPEND)) {
 			lyxerr << "Read dep: "
-			       << nome << " "
-			       << di.crc_cur << " "
+			       << nome << ' '
+			       << di.crc_cur << ' '
 			       << di.mtime_cur << endl;
 		}
 		deplist[nome] = di;

@@ -136,7 +136,7 @@ LyX::LyX(int & argc, char * argv[])
 	// Execute batch commands if available
 	if (!batch_command.empty()) {
 		lyxerr[Debug::INIT] << "About to handle -x '"
-		       << batch_command << "'" << endl;
+		       << batch_command << '\'' << endl;
 
 		Buffer * last_loaded = 0;
 
@@ -886,7 +886,7 @@ int parse_import(string const & type, string const & file)
 		exit(1);
 	}
 
-	batch = "buffer-import " + type + " " + file;
+	batch = "buffer-import " + type + ' ' + file;
 	return 2;
 }
 

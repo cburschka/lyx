@@ -149,7 +149,7 @@ void QToc::updateToc(int newdepth)
 			<< ", previous sibling \""
 			<< (last ? last->text(0).latin1() : "0")
 			<< "\", parent \""
-			<< (parent ? parent->text(0).latin1() : "0") << "\""
+			<< (parent ? parent->text(0).latin1() : "0") << '"'
 			<< endl;
 		item->setText(0,iter->str.c_str());
 		item->setOpen(iter->depth < depth_);

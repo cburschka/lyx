@@ -9,9 +9,6 @@
 #include "textpainter.h"
 
 
-using std::max;
-
-
 MathInferInset::MathInferInset()
 	: MathGridInset(1, 1)
 {}
@@ -37,8 +34,6 @@ void MathInferInset::write(WriteStream & os) const
 {
 	os << "\\infer";
 	if (opt_.size())
-		os << "[" << opt_ << "]";
+		os << '[' << opt_ << ']';
 	MathGridInset::write(os);
 }
-
-

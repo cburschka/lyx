@@ -41,10 +41,10 @@ string const familyName(string const & name)
 	// "Surname, F."
 	// "FirstName Surname"
 	// "F. Surname"
-	string::size_type idx = fname.find(",");
+	string::size_type idx = fname.find(',');
 	if (idx != string::npos)
 		return ltrim(fname.substr(0, idx));
-	idx = fname.rfind(".");
+	idx = fname.rfind('.');
 	if (idx != string::npos)
 		fname = ltrim(fname.substr(idx + 1));
 	// test if we have a LaTeX Space in front
@@ -291,7 +291,7 @@ struct RegexMatch
 		string data = key;
 		InfoMap::const_iterator info = map_.find(key);
 		if (info != map_.end())
-			data += " " + info->second;
+			data += ' ' + info->second;
 
 		// Attempts to find a match for the current RE
 		// somewhere in data.
@@ -376,7 +376,7 @@ string const parseBibTeX(string data, string const & findkey)
 		// with a space
 		if (!dummy.empty()) {
 			if (!contains(dummy, "="))
-				data_ += (' ' + dummy);
+				data_ += ' ' + dummy;
 			else
 				data_ += dummy;
 		}
@@ -418,7 +418,7 @@ string const parseBibTeX(string data, string const & findkey)
 	keyvalue = dummy;
 	dummy = token(data, ',', Entries++);
 	while (!contains(dummy, '=') && !dummy.empty()) {
-		keyvalue += (',' + dummy);
+		keyvalue += ',' + dummy;
 		dummy = token(data, ',', Entries++);
 	}
 
@@ -551,7 +551,7 @@ string const getCiteCommand(CiteStyle command, bool full, bool forceUCase)
 	if (full) {
 		CiteStyle const * last = citeStylesFull + nCiteStylesFull;
 		if (std::find(citeStylesFull, last, command) != last)
-			cite += "*";
+			cite += '*';
 	}
 
 	if (forceUCase) {
@@ -629,7 +629,7 @@ getNumericalStrings(string const & key,
 			break;
 
 		case CITEYEARPAR:
-			str = "(" + year + ")";
+			str = '(' + year + ')';
 			break;
 		}
 
@@ -660,15 +660,15 @@ getAuthorYearStrings(string const & key,
 		switch (styles[i]) {
 		case CITE:
 		case CITET:
-			str = author + " (" + year + ")";
+			str = author + " (" + year + ')';
 			break;
 
 		case CITEP:
-			str = "(" + author + ", " + year + ")";
+			str = '(' + author + ", " + year + ')';
 			break;
 
 		case CITEALT:
-			str = author + " " + year ;
+			str = author + ' ' + year ;
 			break;
 
 		case CITEALP:
@@ -684,7 +684,7 @@ getAuthorYearStrings(string const & key,
 			break;
 
 		case CITEYEARPAR:
-			str = "(" + year + ")";
+			str = '(' + year + ')';
 			break;
 		}
 

@@ -28,7 +28,7 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
-#include "ControlMath.h" 
+#include "ControlMath.h"
 
 #include <boost/tuple/tuple.hpp>
 
@@ -49,7 +49,7 @@ QPixmap getIconPixmap(int action)
 	FuncRequest f = lyxaction.retrieveActionArg(action);
 
 	string fullname;
- 
+
 	if (f.action == LFUN_INSERT_MATH && !f.argument.empty()) {
 		fullname = find_xpm(f.argument.substr(1));
 	} else {
@@ -58,18 +58,18 @@ QPixmap getIconPixmap(int action)
 
 		if (!f.argument.empty())
 			xpm_name = subst(name + ' ' + f.argument, ' ','_');
- 
+
 		fullname = LibFileSearch("images", xpm_name, "xpm");
 	}
 
 
 	if (!fullname.empty()) {
 		lyxerr[Debug::GUI] << "Full icon name is `"
-				   << fullname << "'" << endl;
+				   << fullname << '\'' << endl;
 		return QPixmap(fullname.c_str());
 	}
 
-	lyxerr << "Unable to find icon `" << fullname << "'" << endl;
+	lyxerr << "Unable to find icon `" << fullname << '\'' << endl;
 	fullname = LibFileSearch("images", "unknown", "xpm");
 	if (!fullname.empty()) {
 		lyxerr[Debug::GUI] << "Using default `unknown' icon"

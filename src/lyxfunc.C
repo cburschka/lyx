@@ -179,7 +179,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 	cancel_meta_seq.reset();
 
 	int action = cancel_meta_seq.addkey(keysym, state);
-	lyxerr[Debug::KEY] << "action first set to [" << action << "]" << endl;
+	lyxerr[Debug::KEY] << "action first set to [" << action << ']' << endl;
 
 	// When not cancel or meta-fake, do the normal lookup.
 	// Note how the meta_fake Mod1 bit is OR-ed in and reset afterwards.
@@ -188,7 +188,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 		// remove Caps Lock and Mod2 as a modifiers
 		action = keyseq.addkey(keysym, (state | meta_fake_bit));
 		lyxerr[Debug::KEY] << "action now set to ["
-			<< action << "]" << endl;
+			<< action << ']' << endl;
 	}
 
 	// Dont remove this unless you know what you are doing.
@@ -202,7 +202,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 	if (lyxerr.debugging(Debug::KEY)) {
 		lyxerr << "Key [action="
 		       << action << "]["
-		       << keyseq.print() << "]"
+		       << keyseq.print() << ']'
 		       << endl;
 	}
 
@@ -221,7 +221,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 
 		lyxerr[Debug::KEY] << "Removing modifiers...\n"
 			<< "Action now set to ["
-			<< action << "]" << endl;
+			<< action << ']' << endl;
 
 		if (action == LFUN_UNKNOWN_ACTION) {
 			owner->message(_("Unknown function."));
@@ -674,9 +674,15 @@ void LyXFunc::dispatch(string const & s, bool verbose)
 	int const action = lyxaction.LookupFunc(s);
 
 	if (action == LFUN_UNKNOWN_ACTION) {
+#if USE_BOOST_FORMAT
+boost::format fmt(_("Unknown function (%1$s)"));
+fmt % s;
+owner->message(fmt.str());
+#else
 		string const msg = string(_("Unknown function ("))
-			+ s + ")";
+			+ s + ')';
 		owner->message(msg);
+#endif
 		return;
 	}
 
@@ -694,7 +700,7 @@ void LyXFunc::dispatch(int ac, bool verbose)
 void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 {
 	lyxerr[Debug::ACTION] << "LyXFunc::dispatch: action[" << ev.action
-			      <<"] arg[" << ev.argument << "]" << endl;
+			      <<"] arg[" << ev.argument << ']' << endl;
 
 	// we have not done anything wrong yet.
 	errorstat = false;
@@ -1283,7 +1289,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		Paragraph * par = owner->buffer()->getParFromID(id);
 		if (par == 0) {
 			lyxerr[Debug::INFO] << "No matching paragraph found! ["
-					    << id << "]" << endl;
+					    << id << ']' << endl;
 			break;
 		} else {
 			lyxerr[Debug::INFO] << "Paragraph " << par->id()
@@ -1533,7 +1539,7 @@ void LyXFunc::sendDispatchMessage(string const & msg, FuncRequest const & ev, bo
 
 	string dispatch_msg = msg;
 	if (!dispatch_msg.empty())
-		dispatch_msg += " ";
+		dispatch_msg += ' ';
 
 	string comname = lyxaction.getActionName(ev.action);
 
@@ -1547,7 +1553,7 @@ void LyXFunc::sendDispatchMessage(string const & msg, FuncRequest const & ev, bo
 		if (pseudoaction == LFUN_UNKNOWN_ACTION) {
 			pseudoaction = ev.action;
 		} else {
-			comname += " " + ev.argument;
+			comname += ' ' + ev.argument;
 			argsadded = true;
 		}
 	}
@@ -1557,12 +1563,12 @@ void LyXFunc::sendDispatchMessage(string const & msg, FuncRequest const & ev, bo
 	if (!shortcuts.empty()) {
 		comname += ": " + shortcuts;
 	} else if (!argsadded && !ev.argument.empty()) {
-		comname += " " + ev.argument;
+		comname += ' ' + ev.argument;
 	}
 
 	if (!comname.empty()) {
 		comname = rtrim(comname);
-		dispatch_msg += "(" + comname + ')';
+		dispatch_msg += '(' + comname + ')';
 	}
 
 	lyxerr[Debug::ACTION] << "verbose dispatch msg " << dispatch_msg << endl;
@@ -1761,7 +1767,7 @@ void LyXFunc::doImport(string const & argument)
 
 		string const extension = "*." + formats.extension(format)
 			+ "| " + formats.prettyName(format)
-			+ " (*." + formats.extension(format) + ")";
+			+ " (*." + formats.extension(format) + ')';
 
 		FileDialog::Result result = fileDlg.open(initpath,
 							   extension);

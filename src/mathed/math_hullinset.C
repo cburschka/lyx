@@ -362,18 +362,18 @@ void MathHullInset::header_write(WriteStream & os) const
 			os << "\\begin{" << type_ << star(n) << "}\n";
 
 	else if (type_ == "alignat" || type_ == "xalignat")
-		os << "\\begin{" << type_ << star(n) << "}"
-		  << "{" << static_cast<unsigned int>((ncols() + 1)/2) << "}\n";
+		os << "\\begin{" << type_ << star(n) << '}'
+		  << '{' << static_cast<unsigned int>((ncols() + 1)/2) << "}\n";
 
 	else if (type_ == "xxalignat")
-		os << "\\begin{" << type_ << "}"
-		  << "{" << static_cast<unsigned int>((ncols() + 1)/2) << "}\n";
+		os << "\\begin{" << type_ << '}'
+		  << '{' << static_cast<unsigned int>((ncols() + 1)/2) << "}\n";
 
 	else if (type_ == "multline" || type_ == "gather")
 		os << "\\begin{" << type_ << "}\n";
 
 	else
-		os << "\\begin{unknown" << star(n) << "}";
+		os << "\\begin{unknown" << star(n) << '}';
 }
 
 
@@ -401,7 +401,7 @@ void MathHullInset::footer_write(WriteStream & os) const
 		os << "\\end{" << type_ << "}\n";
 
 	else
-		os << "\\end{unknown" << star(n) << "}";
+		os << "\\end{unknown" << star(n) << '}';
 }
 
 
@@ -455,7 +455,7 @@ string MathHullInset::nicelabel(row_type row) const
 		return string();
 	if (label_[row].empty())
 		return string("(#)");
-	return "(" + label_[row] + ")";
+	return '(' + label_[row] + ')';
 }
 
 
@@ -626,7 +626,7 @@ string MathHullInset::eolString(row_type row, bool fragile) const
 	string res;
 	if (numberedType()) {
 		if (!label_[row].empty() && !nonum_[row])
-			res += "\\label{" + label_[row] + "}";
+			res += "\\label{" + label_[row] + '}';
 		if (nonum_[row])
 			res += "\\nonumber ";
 	}
@@ -644,7 +644,7 @@ void MathHullInset::write(WriteStream & os) const
 
 void MathHullInset::normalize(NormalStream & os) const
 {
-	os << "[formula " << type_ << " ";
+	os << "[formula " << type_ << ' ';
 	MathGridInset::normalize(os);
 	os << "] ";
 }

@@ -1704,10 +1704,10 @@ int InsetText::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 
 			desc_on = (style->labeltype == LABEL_MANUAL);
 
-			environment_inner[depth] = desc_on?"varlistentry":"listitem";
+			environment_inner[depth] = desc_on ? "varlistentry" : "listitem";
 			lines += sgml::openTag(os, depth + 1 + command_depth, mixcont, environment_inner[depth]);
 
-			item_name = desc_on?"term":"para";
+			item_name = desc_on ? "term" : "para";
 			lines += sgml::openTag(os, depth + 1 + command_depth, mixcont, item_name);
 
 			break;

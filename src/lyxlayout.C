@@ -121,7 +121,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 		{ "alignpossible",	LT_ALIGNPOSSIBLE },
 		{ "bottomsep",		LT_BOTTOMSEP },
 		{ "copystyle",          LT_COPYSTYLE },
-		{ "dependson", 		LT_DEPENDSON },
+		{ "dependson",		LT_DEPENDSON },
 		{ "end",		LT_END },
 		{ "endlabelstring",	LT_ENDLABELSTRING },
 		{ "endlabeltype",	LT_ENDLABELTYPE },
@@ -221,7 +221,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 					if (obsoleted_by().empty())
 						obsoleted_by_ = style;
 				} else {
-					lyxerr << "Cannot replace with unknown style `" << style << "'" << endl;
+					lyxerr << "Cannot replace with unknown style `" << style << '\'' << endl;
 
 					//lexrc.printError("Cannot replace with"
 					//		 " unknown style "
@@ -230,7 +230,7 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 			}
 			break;
 
-		case LT_DEPENDSON: 
+		case LT_DEPENDSON:
 			if (lexrc.next()) {
 				depends_on_ = lexrc.getString();
 			}
@@ -249,10 +249,10 @@ bool LyXLayout::Read (LyXLex & lexrc, LyXTextClass const & tclass)
 			break;
 
 		case LT_OPTARGS:
-			if (lexrc.next()) { 
+			if (lexrc.next()) {
 				optionalargs = lexrc.getInteger();
 			}
- 			break;
+			break;
 
 		case LT_NEED_PROTECT:
 			needprotect = lexrc.next() && lexrc.getInteger();

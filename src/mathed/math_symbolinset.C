@@ -1,6 +1,5 @@
-
 #ifdef __GNUG__
-#pragma implementation 
+#pragma implementation
 #endif
 
 #include <config.h>
@@ -117,7 +116,7 @@ void MathSymbolInset::validate(LaTeXFeatures & features) const
 
 void MathSymbolInset::normalize(NormalStream & os) const
 {
-	os << "[symbol " << name() << "]";
+	os << "[symbol " << name() << ']';
 }
 
 

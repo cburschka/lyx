@@ -43,7 +43,7 @@ void MathEnvInset::write(WriteStream & os) const
 
 void MathEnvInset::normalize(NormalStream & os) const
 {
-	os << "[env " << name_ << " " << cell(0) << ']';
+	os << "[env " << name_ << ' ' << cell(0) << ']';
 }
 
 

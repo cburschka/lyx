@@ -130,7 +130,7 @@ int XMiniBuffer::peek_event(FL_OBJECT * ob, int event,
 
 			if (comp.empty()) {
 				set_input(new_input);
-				show_info(("[only completion]"), new_input + " ");
+				show_info(_("[only completion]"), new_input + ' ');
 				break;
 			}
 
@@ -223,7 +223,7 @@ void XMiniBuffer::show_info(string const & info, string const & input, bool appe
 	stored_input_ = input;
 	info_shown_ = true;
 	if (append)
-		set_input(input + " " + info);
+		set_input(input + ' ' + info);
 	else
 		set_input(info);
 	info_timer_->start();
@@ -293,7 +293,7 @@ void XMiniBuffer::set_complete_input(string const & str)
 	if (!str.empty()) {
 		// add a space so the user can type
 		// an argument immediately
-		set_input(str + " ");
+		set_input(str + ' ');
 	}
 }
 

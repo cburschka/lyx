@@ -27,7 +27,7 @@ string verboseHLine(int n)
 	for (int i = 0; i < n; ++i)
 		res += "\\hline";
 	if (n)
-		res += " ";
+		res += ' ';
 	return res;
 }
 
@@ -177,7 +177,7 @@ MathGridInset::col_type MathGridInset::guessColumns(string const & hh) const
 	for (string::const_iterator it = hh.begin(); it != hh.end(); ++it)
 		if (*it == 'c' || *it == 'l' || *it == 'r')
 			++col;
-	// let's have at least one column, even if we did not recognize its 
+	// let's have at least one column, even if we did not recognize its
 	// alignment
 	if (col == 0)
 		col = 1;
@@ -518,7 +518,7 @@ string MathGridInset::eolString(row_type row, bool fragile) const
 	string eol;
 
 	if (!rowinfo_[row].crskip_.zero())
-		eol += "[" + rowinfo_[row].crskip_.asLatexString() + "]";
+		eol += '[' + rowinfo_[row].crskip_.asLatexString() + ']';
 
 	// make sure an upcoming '[' does not break anything
 	if (row + 1 < nrows()) {
@@ -1012,7 +1012,7 @@ MathInset::result_type MathGridInset::dispatch
 			if (idx > 0)
 				--idx;
 			pos = cell(idx).size();
-		
+
 			//mathcursor->normalize();
 			//updateLocal(bv, true);
 			return DISPATCHED_POP;
@@ -1058,7 +1058,7 @@ MathInset::result_type MathGridInset::dispatch
 				copyCol(col(idx));
 			else if (cmd.argument == "swap-column")
 				swapCol(col(idx));
-			else 
+			else
 				return UNDISPATCHED;
 			return DISPATCHED_POP;
 
@@ -1093,7 +1093,7 @@ MathInset::result_type MathGridInset::dispatch
 			return DISPATCHED_POP;
 		}
 
-		default:	
+		default:
 			return MathNestInset::dispatch(cmd, idx, pos);
 	}
 	return UNDISPATCHED;

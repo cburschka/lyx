@@ -37,7 +37,7 @@ void MathStringInset::draw(MathPainterInfo & pi, int x, int y) const
 
 void MathStringInset::normalize(NormalStream & os) const
 {
-	os << "[string " << str_ << ' ' << "mathalpha" << "]";
+	os << "[string " << str_ << ' ' << "mathalpha" << ']';
 }
 
 

@@ -71,7 +71,7 @@ void IconPalette::resizeEvent(QResizeEvent * e)
 	QWidget::resizeEvent(e);
 
 	lyxerr[Debug::GUI] << "resize panel to "
-		<< e->size().width() << "," << e->size().height() << endl;
+		<< e->size().width() << ',' << e->size().height() << endl;
 
 	int maxcol = e->size().width() / button_size;
 
@@ -84,7 +84,7 @@ void IconPalette::resizeEvent(QResizeEvent * e)
 		++rows;
 
 	lyxerr[Debug::GUI] << "Laying out " << buttons_.size() << " widgets in a "
-		<< cols << "x" << rows << " grid." << endl;
+		<< cols << 'x' << rows << " grid." << endl;
 
 	setUpdatesEnabled(false);
 

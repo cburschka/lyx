@@ -210,7 +210,7 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token)
 		bb.erase();
 		for (int i = 0; i < 4; ++i) {
 			if (i != 0)
-				bb += " ";
+				bb += ' ';
 			lex.next();
 			bb += lex.getString();
 		}
@@ -266,22 +266,22 @@ grfx::Params InsetGraphicsParams::as_grfxParams(string const & filepath) const
 			unsigned int const bb_orig_xl = strToInt(token(tmp, ' ', 0));
 			unsigned int const bb_orig_yb = strToInt(token(tmp, ' ', 1));
 
-			// new pars.bb values must be >= zero 
+			// new pars.bb values must be >= zero
 			if  (pars.bb.xl > bb_orig_xl)
 				pars.bb.xl -= bb_orig_xl;
 			else
 				pars.bb.xl = 0;
-			
+
 			if (pars.bb.xr > bb_orig_xl)
 				pars.bb.xr -= bb_orig_xl;
 			else
 				pars.bb.xr = 0;
-				
+
 			if (pars.bb.yb > bb_orig_yb)
 				pars.bb.yb -= bb_orig_yb;
 			else
 				pars.bb.yb = 0;
-				
+
 			if (pars.bb.yt > bb_orig_yb)
 				pars.bb.yt -= bb_orig_yb;
 			else
@@ -299,13 +299,13 @@ grfx::Params InsetGraphicsParams::as_grfxParams(string const & filepath) const
 			pars.bb.yt = 0;
 		}
 	}
-	
+
 	if (display == grfx::DefaultDisplay) {
 		pars.display = lyxrc.display_graphics;
 	} else {
 		pars.display = display;
 	}
-	
+
 	// Override the above if we're not using a gui
 	if (!lyxrc.use_gui) {
 		pars.display = grfx::NoDisplay;

@@ -241,7 +241,7 @@ int InsetFloat::latex(Buffer const * buf,
 	if (!floatPlacement_.empty()
 	    && floatPlacement_ != def_placement) {
 		placement = floatPlacement_;
-	} else if (floatPlacement_.empty() 
+	} else if (floatPlacement_.empty()
 		   && !buf_placement.empty()
 		   && buf_placement != def_placement) {
 		placement = buf_placement;
@@ -250,12 +250,12 @@ int InsetFloat::latex(Buffer const * buf,
 	// The \n is used to force \begin{<floatname>} to appear in a new line.
 	// The % is needed to prevent two consecutive \n chars in the case
 	// when the current output line is empty.
-	os << "%\n\\begin{" << tmptype << "}";
+	os << "%\n\\begin{" << tmptype << '}';
 	// We only output placement if different from the def_placement.
 	if (!placement.empty()) {
-		os << "[" << placement << "]";
+		os << '[' << placement << ']';
 	}
-	os << "\n";
+	os << '\n';
 
 	int const i = inset.latex(buf, os, fragile, fp);
 
@@ -269,9 +269,9 @@ int InsetFloat::latex(Buffer const * buf,
 
 int InsetFloat::docbook(Buffer const * buf, ostream & os, bool mixcont) const
 {
-	os << "<" << floatType_ << ">";
+	os << '<' << floatType_ << '>';
 	int const i = inset.docbook(buf, os, mixcont);
-	os << "</" << floatType_ << ">";
+	os << "</" << floatType_ << '>';
 
 	return i;
 }
@@ -326,7 +326,7 @@ void InsetFloat::wide(bool w, BufferParams const & bp)
 	lab += floatname(floatType_, bp);
 
 	if (wide_)
-		lab += "*";
+		lab += '*';
 
 	setLabel(lab);
 }
@@ -346,7 +346,7 @@ void InsetFloat::addToToc(toc::TocList & toclist, Buffer const * buf) const
 	// Find a caption layout in one of the (child inset's) pars
 	for (; pit != end; ++pit) {
 		Paragraph * tmp = *pit;
- 
+
 		if (tmp->layout()->name() == caplayout) {
 			string const str =
 				tostr(toclist[type()].size() + 1)

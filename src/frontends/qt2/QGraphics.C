@@ -109,7 +109,7 @@ int getItemNo(vector<string> v, string const & s) {
 		    find(v.begin(), v.end(), s);
 	return (cit != v.end()) ? int(cit - v.begin()) : 0;
 }
- 
+
 // returns the number of the unit in the array unit_name,
 // which is defined in lengthcommon.C
 int getUnitNo(char const * c[], string const & s) {
@@ -118,7 +118,7 @@ int getUnitNo(char const * c[], string const & s) {
 		++i;
 	return (i < num_units) ? i : 0;
 }
- 
+
 }
 
 
@@ -137,7 +137,7 @@ void QGraphics::update_contents()
 		dialog_->rtXunit->insertItem((*it).c_str(), -1);
 		dialog_->rtYunit->insertItem((*it).c_str(), -1);
 	}
-	
+
 	InsetGraphicsParams & igp = controller().params();
 
 	// set the right default unit
@@ -238,11 +238,11 @@ void QGraphics::update_contents()
 	//// the output section (width/height)
 	// set the length combo boxes
 	// only the width has the possibility for scale%. The original
-	// units are defined in lengthcommon.C 
+	// units are defined in lengthcommon.C
 	// 1. the width (a listttype)
 	dialog_->widthUnit->clear();
 	dialog_->widthUnit->insertItem(_("Scale%"));
-	for (int i = 0; i < num_units; i++) 
+	for (int i = 0; i < num_units; i++)
 		dialog_->widthUnit->insertItem(unit_name_gui[i], -1);
 
 	if (!lyx::float_equal(igp.scale, 0.0, 0.05)) {
@@ -274,7 +274,7 @@ void QGraphics::update_contents()
 	dialog_->angle->setText(tostr(igp.rotateAngle).c_str());
 
 	dialog_->origin->clear();
- 
+
 	using namespace frnt;
 	vector<RotationOriginPair> origindata = getRotationOriginData();
 	vector<string> const origin_lang = getFirst(origindata);
@@ -283,14 +283,14 @@ void QGraphics::update_contents()
 	for (vector<string>::const_iterator it = origin_lang.begin();
 	    it != origin_lang.end(); ++it)
 		dialog_->origin->insertItem((*it).c_str(), -1);
- 
+
 	if (!igp.rotateOrigin.empty())
 		dialog_->origin->setCurrentItem(
 			::getItemNo(origin_ltx, igp.rotateOrigin));
 	else
 		dialog_->origin->setCurrentItem(0);
 
-	//// latex section 
+	//// latex section
 	dialog_->latexoptions->setText(igp.special.c_str());
 }
 
@@ -309,8 +309,8 @@ void QGraphics::apply()
 		string lbY(dialog_->lbY->text());
 		string rtX(dialog_->rtX->text());
 		string rtY(dialog_->rtY->text());
-		int bb_sum = 
-			strToInt(lbX) + strToInt(lbY) + 
+		int bb_sum =
+			strToInt(lbX) + strToInt(lbY) +
 			strToInt(rtX) + strToInt(rtX);
 		if (bb_sum) {
 			if (lbX.empty())
@@ -319,15 +319,15 @@ void QGraphics::apply()
 				bb = lbX + dialog_->lbXunit->currentText().latin1() + ' ';
 			if (lbY.empty())
 				bb += "0 ";
-			else 
+			else
 				bb += (lbY + dialog_->lbYunit->currentText().latin1() + ' ');
 			if (rtX.empty())
 				bb += "0 ";
-			else 
+			else
 				bb += (rtX + dialog_->rtXunit->currentText().latin1() + ' ');
 			if (rtY.empty())
-				bb += "0";
-			else 
+				bb += '0';
+			else
 				bb += (rtY + dialog_->rtYunit->currentText().latin1());
 			igp.bb = bb;
 		}
@@ -352,17 +352,17 @@ void QGraphics::apply()
 	string value(dialog_->width->text());
 	if (dialog_->widthUnit->currentItem() > 0) {
 		// width/height combination
-		int const unitNo = getUnitNo(unit_name_gui, 
+		int const unitNo = getUnitNo(unit_name_gui,
 			string(dialog_->widthUnit->currentText()));
 		igp.width = LyXLength(value + unit_name_ltx[unitNo]);
-		igp.scale = 0.0; 
+		igp.scale = 0.0;
 	} else {
 		// scaling instead of a width
-		igp.scale = strToDbl(value); 
-		igp.width = LyXLength(); 
+		igp.scale = strToDbl(value);
+		igp.width = LyXLength();
 	}
 	value = string(dialog_->height->text());
-	int const unitNo = getUnitNo(unit_name_gui, 
+	int const unitNo = getUnitNo(unit_name_gui,
 		string(dialog_->heightUnit->currentText()));
 	igp.height = LyXLength(value + unit_name_ltx[unitNo]);
 
@@ -380,7 +380,7 @@ void QGraphics::apply()
 
 	// save the latex name for the origin. If it is the default
 	// then origin_ltx returns ""
-	igp.rotateOrigin = 
+	igp.rotateOrigin =
 		QGraphics::origin_ltx[dialog_->origin->currentItem()];
 
 	// more latex options

@@ -947,7 +947,7 @@ int LyXFont::latexWriteEndChanges(ostream & os, LyXFont const & base,
 	}
 
 	if (language() != base.language() && language() != next.language()) {
-		os << "}";
+		os << '}';
 		++count;
 	}
 

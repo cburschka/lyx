@@ -80,7 +80,7 @@ bool LyXTextClassList::Read ()
 	LyXLex lex(0, 0);
 	string real_file = LibFileSearch("", "textclass.lst");
 	lyxerr[Debug::TCLASS] << "Reading textclasses from `"
-			      << real_file << "'" << endl;
+			      << real_file << '\'' << endl;
 
 	if (real_file.empty()) {
 		lyxerr << "LyXTextClassList::Read: unable to find "

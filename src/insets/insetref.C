@@ -79,7 +79,7 @@ int InsetRef::latex(Buffer const *, ostream & os,
 
 int InsetRef::ascii(Buffer const *, ostream & os, int) const
 {
-	os << "[" << getContents() << "]";
+	os << '[' << getContents() << ']';
 	return 0;
 }
 

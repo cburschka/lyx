@@ -82,7 +82,7 @@ string os::external_path(string const & p) {
 	lyxerr[Debug::LATEX]
 		<< "<Win32 path correction> ["
 		<< p << "]->>["
-		<< dos_path << "]" << endl;
+		<< dos_path << ']' << endl;
 	return dos_path;
 }
 
@@ -98,7 +98,7 @@ string os::internal_path(string const &p) {
 	lyxerr[Debug::DEPEND]
 		<< "<Win32 path correction> ["
 		<< p << "]->>["
-		<< posix_path << "]" << endl;
+		<< posix_path << ']' << endl;
 	return posix_path;
 }
 

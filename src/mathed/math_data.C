@@ -113,7 +113,7 @@ void MathArray::dump() const
 {
 	NormalStream ns(lyxerr);
 	for (const_iterator it = begin(); it != end(); ++it)
-		ns << "<" << *it << ">";
+		ns << '<' << *it << '>';
 }
 
 
@@ -275,7 +275,7 @@ void MathArray::drawT(TextPainter & pain, int x, int y) const
 {
 	//if (drawn_ && x == xo_ && y == yo_)
 	//	return;
-	//lyxerr << "x: " << x << " y: " << y << " " << pain.workAreaHeight() << endl;
+	//lyxerr << "x: " << x << " y: " << y << ' ' << pain.workAreaHeight() << endl;
 	xo_    = x;
 	yo_    = y;
 	drawn_ = true;

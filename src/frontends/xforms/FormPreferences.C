@@ -117,12 +117,12 @@ void FormPreferences::redraw()
 }
 
 
-#if 0 
+#if 0
 void FormPreferences::ok()
 {
 	FormBaseDeprecated::ok();
 
-// FIXME !! 
+// FIXME !!
 	if (colors_.modifiedXformsPrefs) {
 		string const filename =
 			AddName(user_lyxdir, "preferences.xform");
@@ -131,7 +131,7 @@ void FormPreferences::ok()
 
 	lv_.dispatch(FuncRequest(LFUN_SAVEPREFERENCES));
 }
-#endif 
+#endif
 
 
 
@@ -269,9 +269,9 @@ void FormPreferences::apply()
 	// machines.
 
 	lyxerr << "apply in form !" << endl;
- 
+
 	LyXRC & rc(controller().rc());
- 
+
 	colors_.apply();
 	formats_.apply();    // Must be before converters_.apply()
 	converters_.apply();
@@ -325,7 +325,7 @@ ButtonPolicy::SMInput FormPreferences::input(FL_OBJECT * ob, long)
 	lyx::Assert(ob);
 
 	bool valid = true;
- 
+
 	// whatever checks you need to ensure the user hasn't entered
 	// some totally ridiculous value somewhere.  Change activate to suit.
 	// comments before each test describe what is _valid_
@@ -357,7 +357,7 @@ void FormPreferences::update()
 	if (!dialog_.get()) return;
 
 	LyXRC const & rc(controller().rc());
- 
+
 	// read lyxrc entries
 	colors_.update();
 	formats_.update();   // Must be before converters_.update()
@@ -907,7 +907,7 @@ string const FormPreferences::Colors::X11hexname(RGBColor const & col) const
 {
 	ostringstream ostr;
 
-	ostr << "#" << std::setbase(16) << setfill('0')
+	ostr << '#' << std::setbase(16) << setfill('0')
 	     << setw(2) << col.r
 	     << setw(2) << col.g
 	     << setw(2) << col.b;
@@ -1166,10 +1166,10 @@ void FormPreferences::Converters::UpdateChoices() const
 		if (!choice.empty())
 			choice += " | ";
 		else
-			choice += " ";
+			choice += ' ';
 		choice += cit->prettyname();
 	}
-	choice += " ";
+	choice += ' ';
 
 	fl_clear_choice(dialog_->choice_from);
 	fl_addto_choice(dialog_->choice_from, choice.c_str());

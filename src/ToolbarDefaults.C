@@ -118,7 +118,7 @@ void ToolbarDefaults::read(LyXLex & lex)
 				string const func = lex.getString();
 				lyxerr[Debug::PARSER]
 					<< "Toolbar::read TO_ADD func: `"
-					<< func << "'" << endl;
+					<< func << '\'' << endl;
 				add(func);
 			}
 			break;

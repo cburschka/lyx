@@ -275,8 +275,8 @@ void lyx_gui::start(string const & batch, vector<string> const & files)
 	if (ypos == -1)
 		ypos = (HeightOfScreen(s) - height) / 2;
 
-	lyxerr[Debug::GUI] << "Creating view: " << width << "x" << height
-		<< "+" << xpos << "+" << ypos << endl;
+	lyxerr[Debug::GUI] << "Creating view: " << width << 'x' << height
+			   << '+' << xpos << '+' << ypos << endl;
 
 	XFormsView view(width, height);
 	view.show(xpos, ypos, "LyX");
@@ -340,7 +340,7 @@ string const lyx_gui::hexname(LColor::color col)
 	if (XLookupColor(display, cmap, name.c_str(), &xcol, &ccol) == 0) {
 			lyxerr << "X can't find color \""
 			       << lcolor.getLyXName(col)
-			       << "\"" << endl;
+			       << '"' << endl;
 			return string();
 	}
 

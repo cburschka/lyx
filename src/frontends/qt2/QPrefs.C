@@ -17,7 +17,7 @@
 #include "support/lstrings.h"
 #include "Lsstream.h"
 #include <iomanip>
- 
+
 #include "ControlPrefs.h"
 #include "QPrefsDialog.h"
 #include "ui/QPrefAsciiModule.h"
@@ -45,17 +45,17 @@
 #include <qcheckbox.h>
 #include <qlineedit.h>
 #include <qspinbox.h>
-#include <qcombobox.h> 
+#include <qcombobox.h>
 #include <qlistbox.h>
 #include <qlabel.h>
 #include "qcoloritem.h"
- 
+
 using std::vector;
 using std::ostringstream;
 using std::setfill;
 using std::setw;
 using std::endl;
- 
+
 typedef Qt2CB<ControlPrefs, Qt2DB<QPrefsDialog> > base_class;
 
 
@@ -73,9 +73,9 @@ void QPrefs::build_dialog()
 	bc().setApply(dialog_->applyPB);
 	bc().setCancel(dialog_->closePB);
 	bc().setRestore(dialog_->restorePB);
- 
+
 	QPrefLanguageModule * langmod(dialog_->languageModule);
- 
+
 	langmod->defaultLanguageCO->clear();
 	// store the lang identifiers for later
 	vector<frnt::LanguagePair> const langs = frnt::getLanguageData(false);
@@ -93,40 +93,40 @@ void QPrefs::apply()
 {
 	LyXRC & rc(controller().rc());
 
-	// do something ... 
+	// do something ...
 
 	QPrefLanguageModule * langmod(dialog_->languageModule);
- 
+
 	// FIXME: remove rtl_support bool
 	rc.rtl_support = langmod->rtlCB->isChecked();
-	rc.mark_foreign_language = langmod->markForeignCB->isChecked(); 
-	rc.language_auto_begin = langmod->autoBeginCB->isChecked(); 
-	rc.language_auto_end = langmod->autoEndCB->isChecked(); 
+	rc.mark_foreign_language = langmod->markForeignCB->isChecked();
+	rc.language_auto_begin = langmod->autoBeginCB->isChecked();
+	rc.language_auto_end = langmod->autoEndCB->isChecked();
 	rc.language_use_babel = langmod->useBabelCB->isChecked();
 	rc.language_global_options = langmod->globalCB->isChecked();
 	rc.language_package = langmod->languagePackageED->text().latin1();
 	rc.language_command_begin = langmod->startCommandED->text().latin1();
 	rc.language_command_end = langmod->endCommandED->text().latin1();
-        rc.default_language = lang_[langmod->defaultLanguageCO->currentItem()];
+	rc.default_language = lang_[langmod->defaultLanguageCO->currentItem()];
 
-	QPrefUIModule * uimod(dialog_->uiModule); 
+	QPrefUIModule * uimod(dialog_->uiModule);
 
 	rc.ui_file = uimod->uiFileED->text().latin1();
 	rc.bind_file = uimod->bindFileED->text().latin1();
-	rc.cursor_follows_scrollbar = uimod->cursorFollowsCB->isChecked(); 
+	rc.cursor_follows_scrollbar = uimod->cursorFollowsCB->isChecked();
 	rc.wheel_jump = uimod->wheelMouseSB->value();
 	rc.autosave = uimod->autoSaveSB->value() * 60;
 	rc.make_backup = uimod->autoSaveCB->isChecked();
 	rc.num_lastfiles = uimod->lastfilesSB->value();
- 
- 
+
+
 	QPrefKeyboardModule * keymod(dialog_->keyboardModule);
 
-	// FIXME: can derive CB from the two EDs 
+	// FIXME: can derive CB from the two EDs
 	rc.use_kbmap = keymod->keymapCB->isChecked();
 	rc.primary_kbmap = keymod->firstKeymapED->text().latin1();
 	rc.secondary_kbmap = keymod->secondKeymapED->text().latin1();
- 
+
 
 	QPrefAsciiModule * ascmod(dialog_->asciiModule);
 
@@ -142,7 +142,7 @@ void QPrefs::apply()
 	QPrefLatexModule * latexmod(dialog_->latexModule);
 
 	rc.fontenc = latexmod->latexEncodingED->text().latin1();
-	rc.chktex_command = latexmod->latexChecktexED->text().latin1(); 
+	rc.chktex_command = latexmod->latexChecktexED->text().latin1();
 	rc.auto_reset_options = latexmod->latexAutoresetCB->isChecked();
 	rc.view_dvi_paper_option = latexmod->latexDviPaperED->text().latin1();
 	rc.default_papersize =
@@ -152,9 +152,9 @@ void QPrefs::apply()
 	QPrefDisplayModule * displaymod(dialog_->displayModule);
 
 	rc.preview = displaymod->previewCB->isChecked();
- 
+
 	grfx::DisplayType dtype(grfx::ColorDisplay);
- 
+
 	switch (displaymod->displayGraphicsCO->currentItem()) {
 		case 3:	dtype = grfx::NoDisplay; break;
 		case 2:	dtype = grfx::ColorDisplay; break;
@@ -162,7 +162,7 @@ void QPrefs::apply()
 		case 0: dtype = grfx::MonochromeDisplay; break;
 	}
 	rc.display_graphics = dtype;
- 
+
 #ifdef WITH_WARNINGS
 #warning FIXME!! The graphics cache no longer has a changeDisplay method.
 #endif
@@ -172,9 +172,9 @@ void QPrefs::apply()
 		gc.changeDisplay();
 	}
 #endif
-	 
+
 	QPrefPathsModule * pathsmod(dialog_->pathsModule);
- 
+
 	rc.document_path = pathsmod->workingDirED->text().latin1();
 	rc.template_path = pathsmod->templateDirED->text().latin1();
 	rc.backupdir_path = pathsmod->backupDirED->text().latin1();
@@ -190,14 +190,14 @@ void QPrefs::apply()
 		rc.isp_command = "ispell";
 	else
 		rc.isp_command = "aspell";
- 
+
 	// FIXME: remove isp_use_alt_lang
 	rc.isp_alt_lang = spellmod->altLanguageED->text().latin1();
-	rc.isp_use_alt_lang = !rc.isp_alt_lang.empty(); 
-	// FIXME: remove isp_use_esc_chars 
+	rc.isp_use_alt_lang = !rc.isp_alt_lang.empty();
+	// FIXME: remove isp_use_esc_chars
 	rc.isp_esc_chars = spellmod->escapeCharactersED->text().latin1();
 	rc.isp_use_esc_chars = !rc.isp_esc_chars.empty();
-	// FIXME: remove isp_use_pers_dict 
+	// FIXME: remove isp_use_pers_dict
 	rc.isp_pers_dict = spellmod->persDictionaryED->text().latin1();
 	rc.isp_use_pers_dict = !rc.isp_pers_dict.empty();
 	rc.isp_accept_compound = spellmod->compoundWordCB->isChecked();
@@ -230,7 +230,7 @@ void QPrefs::apply()
 	QPrefScreenFontsModule * fontmod(dialog_->screenfontsModule);
 
 	LyXRC const oldrc(rc);
- 
+
 	rc.roman_font_name = fontmod->screenRomanCO->currentText().latin1();
 	rc.sans_font_name = fontmod->screenSansCO->currentText().latin1();
 	rc.typewriter_font_name = fontmod->screenTypewriterCO->currentText().latin1();
@@ -254,12 +254,12 @@ void QPrefs::apply()
 		|| rc.zoom != oldrc.zoom || rc.dpi != oldrc.dpi) {
 		controller().updateScreenFonts();
 	}
- 
+
 	controller().setConverters(converters_);
-	controller().setFormats(formats_); 
+	controller().setFormats(formats_);
 
 	QPrefColorsModule * colmod(dialog_->colorsModule);
- 
+
 	unsigned int i;
 
 	for (i = 0; i < colmod->lyxObjectsLB->count(); ++i) {
@@ -267,12 +267,12 @@ void QPrefs::apply()
 		QColorItem * ci(static_cast<QColorItem*>(ib));
 
 		ostringstream ostr;
- 
-		ostr << "#" << std::setbase(16) << setfill('0')
+
+		ostr << '#' << std::setbase(16) << setfill('0')
 			<< setw(2) << ci->color().red()
 			<< setw(2) << ci->color().green()
 			<< setw(2) << ci->color().blue();
- 
+
 		string newhex(STRCONV(ostr.str()));
 
 		LColor::color col(dialog_->colors_[i]);
@@ -285,9 +285,9 @@ void QPrefs::apply()
 }
 
 
-// FIXME: move to helper_funcs.h 
+// FIXME: move to helper_funcs.h
 namespace {
- 
+
 template<class A>
 typename std::vector<A>::size_type
 findPos(std::vector<A> const & vec, A const & val)
@@ -306,12 +306,12 @@ void QPrefs::update_contents()
 	LyXRC const & rc(controller().rc());
 
 	QPrefLanguageModule * langmod(dialog_->languageModule);
- 
+
 	// FIXME: remove rtl_support bool
 	langmod->rtlCB->setChecked(rc.rtl_support);
-	langmod->markForeignCB->setChecked(rc.mark_foreign_language); 
-	langmod->autoBeginCB->setChecked(rc.language_auto_begin); 
-	langmod->autoEndCB->setChecked(rc.language_auto_end); 
+	langmod->markForeignCB->setChecked(rc.mark_foreign_language);
+	langmod->autoBeginCB->setChecked(rc.language_auto_begin);
+	langmod->autoEndCB->setChecked(rc.language_auto_end);
 	langmod->useBabelCB->setChecked(rc.language_use_babel);
 	langmod->globalCB->setChecked(rc.language_global_options);
 	langmod->languagePackageED->setText(rc.language_package.c_str());
@@ -321,11 +321,11 @@ void QPrefs::update_contents()
 	int const pos = int(findPos(lang_, rc.default_language));
 	langmod->defaultLanguageCO->setCurrentItem(pos);
 
-	QPrefUIModule * uimod(dialog_->uiModule); 
+	QPrefUIModule * uimod(dialog_->uiModule);
 
 	uimod->uiFileED->setText(rc.ui_file.c_str());
 	uimod->bindFileED->setText(rc.bind_file.c_str());
-	uimod->cursorFollowsCB->setChecked(rc.cursor_follows_scrollbar); 
+	uimod->cursorFollowsCB->setChecked(rc.cursor_follows_scrollbar);
 	uimod->wheelMouseSB->setValue(rc.wheel_jump);
 	// convert to minutes
 	int mins(rc.autosave / 60);
@@ -334,11 +334,11 @@ void QPrefs::update_contents()
 	uimod->autoSaveSB->setValue(mins);
 	uimod->autoSaveCB->setChecked(rc.make_backup);
 	uimod->lastfilesSB->setValue(rc.num_lastfiles);
- 
- 
+
+
 	QPrefKeyboardModule * keymod(dialog_->keyboardModule);
 
-	// FIXME: can derive CB from the two EDs 
+	// FIXME: can derive CB from the two EDs
 	keymod->keymapCB->setChecked(rc.use_kbmap);
 	// no idea why we need these. Fscking Qt.
 	keymod->firstKeymapED->setEnabled(rc.use_kbmap);
@@ -349,7 +349,7 @@ void QPrefs::update_contents()
 	keymod->secondKeymapLA->setEnabled(rc.use_kbmap);
 	keymod->firstKeymapED->setText(rc.primary_kbmap.c_str());
 	keymod->secondKeymapED->setText(rc.secondary_kbmap.c_str());
- 
+
 
 	QPrefAsciiModule * ascmod(dialog_->asciiModule);
 
@@ -365,7 +365,7 @@ void QPrefs::update_contents()
 	QPrefLatexModule * latexmod(dialog_->latexModule);
 
 	latexmod->latexEncodingED->setText(rc.fontenc.c_str());
-	latexmod->latexChecktexED->setText(rc.chktex_command.c_str()); 
+	latexmod->latexChecktexED->setText(rc.chktex_command.c_str());
 	latexmod->latexAutoresetCB->setChecked(rc.auto_reset_options);
 	latexmod->latexDviPaperED->setText(rc.view_dvi_paper_option.c_str());
 	latexmod->latexPaperSizeCO->setCurrentItem(rc.default_papersize);
@@ -374,9 +374,9 @@ void QPrefs::update_contents()
 	QPrefDisplayModule * displaymod(dialog_->displayModule);
 
 	displaymod->previewCB->setChecked(rc.preview);
- 
+
 	int item = 2;
- 
+
 	switch (rc.display_graphics) {
 		case grfx::NoDisplay:		item = 3; break;
 		case grfx::ColorDisplay:	item = 2; break;
@@ -384,10 +384,10 @@ void QPrefs::update_contents()
 		case grfx::MonochromeDisplay:	item = 0; break;
 	}
 	displaymod->displayGraphicsCO->setCurrentItem(item);
- 
+
 
 	QPrefPathsModule * pathsmod(dialog_->pathsModule);
- 
+
 	pathsmod->workingDirED->setText(rc.document_path.c_str());
 	pathsmod->templateDirED->setText(rc.template_path.c_str());
 	pathsmod->backupDirED->setText(rc.backupdir_path.c_str());
@@ -403,9 +403,9 @@ void QPrefs::update_contents()
 	spellmod->spellCommandCO->setCurrentItem(item);
 	// FIXME: remove isp_use_alt_lang
 	spellmod->altLanguageED->setText(rc.isp_alt_lang.c_str());
-	// FIXME: remove isp_use_esc_chars 
+	// FIXME: remove isp_use_esc_chars
 	spellmod->escapeCharactersED->setText(rc.isp_esc_chars.c_str());
-	// FIXME: remove isp_use_pers_dict 
+	// FIXME: remove isp_use_pers_dict
 	spellmod->persDictionaryED->setText(rc.isp_pers_dict.c_str());
 	spellmod->compoundWordCB->setChecked(rc.isp_accept_compound);
 	spellmod->inputEncodingCB->setChecked(rc.isp_use_input_encoding);
@@ -439,7 +439,7 @@ void QPrefs::update_contents()
 	QString roman(rc.roman_font_name.c_str());
 	QString sans(rc.sans_font_name.c_str());
 	QString typewriter(rc.typewriter_font_name.c_str());
- 
+
 	for (int i = 0; i < fontmod->screenRomanCO->count(); ++i) {
 		if (fontmod->screenRomanCO->text(i) == roman) {
 			fontmod->screenRomanCO->setCurrentItem(i);
@@ -465,7 +465,7 @@ void QPrefs::update_contents()
 	dialog_->select_roman(roman);
 	dialog_->select_sans(sans);
 	dialog_->select_typewriter(typewriter);
- 
+
 	fontmod->screenZoomSB->setValue(rc.zoom);
 	fontmod->screenDpiSB->setValue(int(rc.dpi));
 	fontmod->screenTinyED->setText(tostr(rc.font_sizes[LyXFont::SIZE_TINY]).c_str());
@@ -482,7 +482,7 @@ void QPrefs::update_contents()
 	formats_ = formats;
 
 	dialog_->updateFormats();
- 
+
 	converters_ = converters;
 
 	dialog_->updateConverters();

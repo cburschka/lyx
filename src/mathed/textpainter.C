@@ -1,6 +1,5 @@
-
 #ifdef __GNUG__
-#pragma implementation 
+#pragma implementation
 #endif
 
 #include "textpainter.h"
@@ -26,7 +25,7 @@ char TextPainter::at(int x, int y) const
 
 void TextPainter::draw(int x, int y, char const * str)
 {
-	//cerr << "drawing string '" << str << "' at " << x << "," << y << "\n";
+	//cerr << "drawing string '" << str << "' at " << x << ',' << y << endl;
 	for (int i = 0; *str && x + i < xmax_; ++i, ++str)
 		at(x + i, y) = *str;
 	//show();
@@ -49,7 +48,7 @@ void TextPainter::verticalLine(int x, int y, int n, char c)
 
 void TextPainter::draw(int x, int y, char c)
 {
-	//cerr << "drawing char '" << c << "' at " << x << "," << y << "\n";
+	//cerr << "drawing char '" << c << "' at " << x << ',' << y << endl;
 	at(x, y) = c;
 	//show();
 }
@@ -60,7 +59,7 @@ void TextPainter::show(std::ostream & os, int offset) const
 	os << '\n';
 	for (int j = 0; j <= ymax_; ++j) {
 		for (int i = 0; i < offset; ++i)
-			os << ' ';	
+			os << ' ';
 		for (int i = 0; i < xmax_; ++i)
 			os << at(i, j);
 		os << '\n';

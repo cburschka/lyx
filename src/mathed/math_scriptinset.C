@@ -319,7 +319,7 @@ bool MathScriptInset::idxUpDown(idx_type & idx, pos_type & pos, bool up,
 			return false;
 		// otherwise go to last base position
 		idx = 2;
-		pos = cell(2).size();	
+		pos = cell(2).size();
 	}
 
 	else if (idx == 0) {
@@ -327,14 +327,14 @@ bool MathScriptInset::idxUpDown(idx_type & idx, pos_type & pos, bool up,
 		if (!up)
 			return false;
 		idx = 2;
-		pos = cell(2).size();	
+		pos = cell(2).size();
 	}
-	
+
 	else {
 		// in nucleus
 		// don't go up/down unless in last position
 		if (pos != cell(2).size())
-			return false;	
+			return false;
 		// don't go up/down if there is no cell.
 		if (!has(up))
 			return false;
@@ -417,18 +417,18 @@ void MathScriptInset::mathematicize(MathematicaStream & os) const
 	bool u = hasUp() && up().size();
 
 	if (nuc().size()) {
-		if (d) 
+		if (d)
 			os << "Subscript[" << nuc();
 		else
 			os << nuc();
 	}
 
 	if (u)
-		os << "^(" << up() << ")";
+		os << "^(" << up() << ')';
 
 	if (nuc().size())
 		if (d)
-			os << "," << down() << "]"; 
+			os << ',' << down() << ']';
 }
 
 

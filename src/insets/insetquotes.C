@@ -176,9 +176,9 @@ string const InsetQuotes::dispString(Language const * loclang) const
 	// in french, spaces are added inside double quotes
 	if (times_ == DoubleQ && prefixIs(loclang->code(), "fr")) {
 		if (side_ == LeftQ)
-			disp += " ";
+			disp += ' ';
 		else
-			disp = " " + disp;
+			disp = ' ' + disp;
 	}
 
 	return disp;
@@ -314,14 +314,14 @@ int InsetQuotes::latex(Buffer const * buf, ostream & os,
 
 int InsetQuotes::ascii(Buffer const *, ostream & os, int) const
 {
-	os << "\"";
+	os << '"';
 	return 0;
 }
 
 
 int InsetQuotes::linuxdoc(Buffer const *, ostream & os) const
 {
-	os << "\"";
+	os << '"';
 	return 0;
 }
 

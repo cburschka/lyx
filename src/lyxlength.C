@@ -62,27 +62,27 @@ string const LyXLength::asLatexString() const
 	ostringstream buffer;
 	switch (unit_) {
 	case PTW:
-	    buffer << abs(static_cast<int>(val_/100)) << "."
+	    buffer << abs(static_cast<int>(val_/100)) << '.'
 		   << abs(static_cast<int>(val_)%100) << "\\textwidth";
 	    break;
 	case PCW:
-	    buffer << abs(static_cast<int>(val_/100)) << "."
+	    buffer << abs(static_cast<int>(val_/100)) << '.'
 		   << abs(static_cast<int>(val_)%100) << "\\columnwidth";
 	    break;
 	case PPW:
-	    buffer << abs(static_cast<int>(val_/100)) << "."
+	    buffer << abs(static_cast<int>(val_/100)) << '.'
 		   << abs(static_cast<int>(val_)%100) << "\\paperwidth";
 	    break;
 	case PLW:
-	    buffer << abs(static_cast<int>(val_/100)) << "."
+	    buffer << abs(static_cast<int>(val_/100)) << '.'
 		   << abs(static_cast<int>(val_)%100) << "\\linewidth";
 	    break;
 	case PPH:
-	    buffer << abs(static_cast<int>(val_/100)) << "."
+	    buffer << abs(static_cast<int>(val_/100)) << '.'
 		   << abs(static_cast<int>(val_)%100) << "\\paperheight";
 	    break;
 	case PTH:
-	    buffer << abs(static_cast<int>(val_/100)) << "."
+	    buffer << abs(static_cast<int>(val_/100)) << '.'
 		   << abs(static_cast<int>(val_)%100) << "\\textheight";
 	    break;
 	default:
