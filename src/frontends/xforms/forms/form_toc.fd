@@ -5,18 +5,19 @@ Internal Form Definition File
 
 Number of forms: 1
 Unit of measure: FL_COORD_PIXEL
+SnapGrid: 5
 
 =============== FORM ===============
 Name: form_toc
-Width: 420
-Height: 340
+Width: 375
+Height: 250
 Number of Objects: 5
 
 --------------------
 class: FL_BOX
-type: UP_BOX
-box: 0 0 420 340
-boxtype: FL_UP_BOX
+type: FLAT_BOX
+box: 0 0 375 250
+boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
@@ -33,7 +34,7 @@ argument:
 --------------------
 class: FL_BROWSER
 type: HOLD_BROWSER
-box: 10 10 400 280
+box: 5 5 365 205
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_BOTTOM
@@ -51,7 +52,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 200 300 100 30
+box: 185 220 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -61,7 +62,7 @@ lcol: FL_BLACK
 label: Update|#U
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_SouthEast FL_SouthEast
+gravity: FL_SouthWest FL_SouthWest
 name: button_update
 callback: C_FormBaseInputCB
 argument: 0
@@ -69,25 +70,25 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 60 300 130 30
+box: 60 220 120 25
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
+size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Type|#T
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_SouthEast FL_SouthEast
+gravity: FL_SouthWest FL_SouthWest
 name: choice_toc_type
 callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
 class: FL_BUTTON
-type: RETURN_BUTTON
-box: 310 300 100 30
+type: NORMAL_BUTTON
+box: 280 220 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -95,7 +96,7 @@ style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Close|^[^M
-shortcut:
+shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_close

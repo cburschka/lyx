@@ -67,24 +67,6 @@ void fillChoice(FD_citation * dialog, vector<string> vec)
 	setEnabled(dialog->choice_style, !vec.empty());
 	if (vec.empty())
 		return;
-
-	// The width of the choice varies with the contents.
-	// Ensure that it is centred in the frame.
-
-	int width = 0;
-	for (vector<string>::const_iterator it = vec.begin();
-	     it != vec.end(); ++it) {
-		width = max(width, string_width(*it));
-	}
-
-	int const dx =
-		max(5, int(0.5 * (dialog->frame_style->w - width)));
-
-	fl_set_object_geometry(dialog->choice_style,
-			       dialog->frame_style->x + dx,
-			       dialog->choice_style->y,
-			       width,
-			       dialog->choice_style->h);
 }
 
 
@@ -118,7 +100,7 @@ typedef FormCB<ControlCitation, FormDB<FD_citation> > base_class;
 
 
 FormCitation::FormCitation()
-	: base_class(_("Citation"), false)
+	: base_class(_("Citation"))
 {}
 
 

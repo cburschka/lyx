@@ -20,7 +20,10 @@
 #include "xformsBC.h"
 #include "xforms_resize.h"
 #include "Tooltips.h"
+
 #include "support/LAssert.h"
+#include "support/filetools.h" //  LibFileSearch
+
 #include FORMS_H_LOCATION
 
 extern "C" {
@@ -111,13 +114,34 @@ void FormBase::show()
 		if (!allow_resize_)
 			fl_set_form_maxsize(form(), minw_, minh_);
 
-		int const iconify = getController().IconifyWithMain() ?
-			FL_TRANSIENT : 0;
+		string const maximize_title = "LyX: " + title_;
+		int const iconify_policy = getController().IconifyWithMain() ?
+						FL_TRANSIENT : 0;
 
 		fl_show_form(form(),
 			     FL_PLACE_MOUSE | FL_FREE_SIZE,
-			     iconify,
-			     title_.c_str());
+			     iconify_policy,
+			     maximize_title.c_str());
+
+		if (iconify_policy == 0) {
+			// set title for minimized form
+			string const minimize_title = title_;
+			fl_winicontitle(form()->window, minimize_title.c_str());
+
+			//  assign an icon to form
+			string const iconname = LibFileSearch("images", "lyx", "xpm");
+			if (!iconname.empty()) {
+				unsigned int w, h;
+				Pixmap icon_mask;
+				Pixmap const icon_p = fl_read_pixmapfile(fl_root,
+							iconname.c_str(),
+							&w,
+							&h,
+							&icon_mask,
+							0, 0, 0); // this leaks
+                		fl_set_form_icon(form(), icon_p, icon_mask);
+        		}
+		}
 	}
 
 	tooltips().set();

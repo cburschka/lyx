@@ -36,7 +36,7 @@ typedef FormCB<ControlThesaurus, FormDB<FD_thesaurus> > base_class;
 
 
 FormThesaurus::FormThesaurus()
-	: base_class(_("LyX: Thesaurus"), false),
+	: base_class(_("Thesaurus"), false),
 	  clickline_(-1)
 {
 }

@@ -1,3 +1,27 @@
+2002-09-09  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* FormBase.C:
+	* FormBaseDeprecated.C: use "LyX: " prefix to dialog window title;
+	set minimized title (without "LyX: ") and its icon.
+
+	* FormSpellchecker.C:
+	* FormSearch.C:
+	* FormThesaurus.C: remove "LyX: " from dialog window title.
+
+	* FormRef.[Ch]: add proper switch for "Go to" button.
+
+	* FormBibitem.C:
+	* forms/form_bibitem.fd:
+	* FormCitation.C:
+	* forms/form_citation.fd:
+	* FormRef.C:
+	* forms/form_ref.fd:
+	* FormSpellchecker.[Ch]:
+	* forms/form_spellchecker.fd:
+	* forms/form_toc.fd:
+	* forms/form_url.fd: less bulky dialogs; use proper gravity and
+	resize policy; add few tooltips.
+
 2002-09-06  Alain Castera  <castera@in2p3.fr>
 
         * FormTabular.C: leave the horizontal alignment buttons alive 

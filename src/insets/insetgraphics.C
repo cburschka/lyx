@@ -684,7 +684,7 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 		 IsFileReadable(file_ + ".eps") ||	// original.eps
 		 IsFileReadable(file_ + ".ps"));	// original.ps
 	string const message = file_exists ?
-		string() : string("bb = 0 0 200 100, draft, type=eps]");
+		string() : string("bb = 0 0 200 100, draft, type=eps");
 	// if !message.empty() than there was no existing file
 	// "filename(.(e)ps)" found. In this case LaTeX
 	// draws only a rectangle with the above bb and the
@@ -709,11 +709,9 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 	lyxerr[Debug::GRAPHICS] << "\tOpts = " << opts << endl;
 
 	if (!opts.empty() && !message.empty())
-		before += ("[%\n" + opts + ',' + message);
-	else if (!message.empty())
-		before += ("[%\n" + message);
-	else if (!opts.empty())
-		before += ("[%\n" + opts + ']');
+		before += ("[%\n" + opts + ',' + message + ']');
+	else if (!opts.empty() || !message.empty())
+		before += ("[%\n" + opts + message + ']');
 
 	lyxerr[Debug::GRAPHICS]
 		<< "\tBefore = " << before

@@ -18,6 +18,7 @@
 #include "xformsBC.h"
 #include "ControlRef.h"
 #include "FormRef.h"
+#include "Tooltips.h"
 #include "forms/form_ref.h"
 #include "xforms_helpers.h"
 #include "insets/insetref.h"
@@ -43,7 +44,7 @@ void FormRef::build()
 	dialog_.reset(build_ref(this));
 
 	for (int i = 0; !InsetRef::types[i].latex_name.empty(); ++i)
-		fl_addto_choice(dialog_->choice_type,
+		fl_addto_choice(dialog_->choice_format,
 				_(InsetRef::types[i].gui_name.c_str()));
 
 	// Force the user to use the browser to change refs.
@@ -64,6 +65,18 @@ void FormRef::build()
 	bc().addReadOnly(dialog_->button_update);
 	bc().addReadOnly(dialog_->input_name);
 	bc().addReadOnly(dialog_->input_ref);
+
+	// set up the tooltips
+	string str = _("Select a document for references.");
+	tooltips().init(dialog_->choice_document, str);
+	str = _("Sort the references alphabetically.");
+	tooltips().init(dialog_->check_sort, str);
+	str = _("Go to selected reference.");
+	tooltips().init(dialog_->button_go, str);
+	str = _("Update the list of references.");
+	tooltips().init(dialog_->button_update, str);
+	str = _("Select format style of the reference.");
+	tooltips().init(dialog_->choice_format, str);
 }
 
 
@@ -73,11 +86,11 @@ void FormRef::update()
 		     controller().params().getContents().c_str());
 	fl_set_input(dialog_->input_name,
 		     controller().params().getOptions().c_str());
-	fl_set_choice(dialog_->choice_type,
+	fl_set_choice(dialog_->choice_format,
 		      InsetRef::getType(controller().params().getCmdName()) + 1);
 
 	at_ref_ = false;
-	fl_set_object_label(dialog_->button_go, _("Go to reference"));
+	switch_go_button();
 
 	// Name is irrelevant to LaTeX/Literate documents
 	if (controller().docType() == ControlRef::LATEX ||
@@ -90,33 +103,33 @@ void FormRef::update()
 	// type is irrelevant to LinuxDoc/DocBook.
 	if (controller().docType() == ControlRef::LINUXDOC ||
 	    controller().docType() == ControlRef::DOCBOOK) {
-		fl_set_choice(dialog_->choice_type, 1);
-		setEnabled(dialog_->choice_type, false);
+		fl_set_choice(dialog_->choice_format, 1);
+		setEnabled(dialog_->choice_format, false);
 	} else {
-		setEnabled(dialog_->choice_type, true);
+		setEnabled(dialog_->choice_format, true);
 	}
 
 	// Get the available buffers
 	vector<string> const buffers = controller().getBufferList();
-	vector<string> const choice_buffers =
-		getVector(dialog_->choice_buffer);
+	vector<string> const choice_documents =
+		getVector(dialog_->choice_document);
 
 	// If different from the current contents of the choice, then update it
-	if (buffers != choice_buffers) {
+	if (buffers != choice_documents) {
 		// create a string of entries " entry1 | entry2 | entry3 "
 		// with which to initialise the xforms choice object.
 		string const choice =
 			" " + getStringFromVector(buffers, " | ") + " ";
 
-		fl_clear_choice(dialog_->choice_buffer);
-		fl_addto_choice(dialog_->choice_buffer, choice.c_str());
+		fl_clear_choice(dialog_->choice_document);
+		fl_addto_choice(dialog_->choice_document, choice.c_str());
 
-		fl_set_choice(dialog_->choice_buffer,
+		fl_set_choice(dialog_->choice_document,
 			      controller().getBufferNum() + 1);
 	}
 
 	string const name = controller().
-		getBufferName(fl_get_choice(dialog_->choice_buffer) - 1);
+		getBufferName(fl_get_choice(dialog_->choice_document) - 1);
 	refs_ = controller().getLabelList(name);
 
 	updateBrowser(refs_);
@@ -171,7 +184,7 @@ void FormRef::updateBrowser(vector<string> const & akeys) const
 
 void FormRef::apply()
 {
-	int const type = fl_get_choice(dialog_->choice_type) - 1;
+	int const type = fl_get_choice(dialog_->choice_format) - 1;
 	controller().params().setCmdName(InsetRef::getName(type));
 
 	controller().params().setOptions(fl_get_input(dialog_->input_name));
@@ -192,12 +205,10 @@ ButtonPolicy::SMInput FormRef::input(FL_OBJECT * ob, long)
 		at_ref_ = !at_ref_;
 		if (at_ref_) {
 			controller().gotoRef(fl_get_input(dialog_->input_ref));
-			fl_set_object_label(dialog_->button_go, _("Go back"));
 		} else {
 			controller().gotoBookmark();
-			fl_set_object_label(dialog_->button_go,
-					    _("Go to reference"));
 		}
+		switch_go_button();
 
 	} else if (ob == dialog_->browser_refs) {
 
@@ -213,20 +224,20 @@ ButtonPolicy::SMInput FormRef::input(FL_OBJECT * ob, long)
 		if (at_ref_)
 			controller().gotoBookmark();
 		at_ref_ = false;
-		fl_set_object_label(dialog_->button_go, _("Go to reference"));
+		switch_go_button();
 
-		setEnabled(dialog_->choice_type,      true);
+		setEnabled(dialog_->choice_format, true);
 		setEnabled(dialog_->button_go, true);
 		fl_set_object_lcol(dialog_->input_ref, FL_BLACK);
 
 	} else if (ob == dialog_->button_update ||
 		   ob == dialog_->check_sort ||
-		   ob == dialog_->choice_buffer) {
+		   ob == dialog_->choice_document) {
 
 		if (ob == dialog_->button_update ||
-		    ob == dialog_->choice_buffer) {
+		    ob == dialog_->choice_document) {
 			string const name =
-				controller().getBufferName(fl_get_choice(dialog_->choice_buffer) - 1);
+				controller().getBufferName(fl_get_choice(dialog_->choice_document) - 1);
 			refs_ = controller().getLabelList(name);
 		}
 
@@ -234,9 +245,9 @@ ButtonPolicy::SMInput FormRef::input(FL_OBJECT * ob, long)
 		updateBrowser(refs_);
 		fl_unfreeze_form(form());
 
-	} else if (ob == dialog_->choice_type) {
+	} else if (ob == dialog_->choice_format) {
 
-		int const type = fl_get_choice(dialog_->choice_type) - 1;
+		int const type = fl_get_choice(dialog_->choice_format) - 1;
 		if (controller().params().getCmdName() ==
 		    InsetRef::getName(type)) {
 			activate = ButtonPolicy::SMI_NOOP;
@@ -244,4 +255,18 @@ ButtonPolicy::SMInput FormRef::input(FL_OBJECT * ob, long)
 	}
 
 	return activate;
+}
+
+
+void FormRef::switch_go_button()
+{
+	if (at_ref_) {
+		fl_set_object_label(dialog_->button_go, _("Go back"));
+		tooltips().init(dialog_->button_go, _("Go back to original place."));
+	} else {
+		fl_set_object_label(dialog_->button_go, _("Go to"));
+		tooltips().init(dialog_->button_go, _("Go to selected reference."));
+	}
+	fl_set_button_shortcut(dialog_->button_go, "#G", 1);
+	fl_show_object(dialog_->button_go);
 }

@@ -23,7 +23,7 @@
 typedef FormCB<ControlSearch, FormDB<FD_search> > base_class;
 
 FormSearch::FormSearch()
-	: base_class(_("LyX: Find and Replace"))
+	: base_class(_("Find and Replace"))
 {}
 
 

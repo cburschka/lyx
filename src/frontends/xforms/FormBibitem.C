@@ -17,6 +17,7 @@
 #include "xformsBC.h"
 #include "ControlBibitem.h"
 #include "FormBibitem.h"
+#include "Tooltips.h"
 #include "forms/form_bibitem.h"
 #include FORMS_H_LOCATION
 #include "gettext.h"
@@ -45,6 +46,12 @@ void FormBibitem::build()
 
 	bc().addReadOnly(dialog_->input_key);
 	bc().addReadOnly(dialog_->input_label);
+
+	// set up the tooltips
+	string str = _("Key used within LyX document.");
+	tooltips().init(dialog_->input_key, str);
+	str = _("Label used for final output.");
+	tooltips().init(dialog_->input_label, str);
 }
 
 

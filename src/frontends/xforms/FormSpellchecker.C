@@ -14,6 +14,7 @@
 #pragma implementation
 #endif
 
+#include "Tooltips.h"
 #include "xformsBC.h"
 #include "xforms_helpers.h"
 #include "ControlSpellchecker.h"
@@ -24,16 +25,13 @@
 typedef FormCB<ControlSpellchecker, FormDB<FD_spellchecker> > base_class;
 
 FormSpellchecker::FormSpellchecker()
-	: base_class(_("LyX: Spellchecker"), false)
+	: base_class(_("Spellchecker"))
 {}
 
 
 void FormSpellchecker::build()
 {
 	dialog_.reset(build_spellchecker(this));
-
-	fl_set_slider_bounds(dialog_->slider, 0.0, 100.0);
-	fl_set_slider_step(dialog_->slider, 1.0);
 
 	fl_set_browser_dblclick_callback(dialog_->browser,
 					 C_FormBaseInputCB, 2);
@@ -45,20 +43,36 @@ void FormSpellchecker::build()
 	bc().setCancel(dialog_->button_close);
 	bc().addReadOnly(dialog_->button_replace);
 	bc().addReadOnly(dialog_->button_accept);
-	bc().addReadOnly(dialog_->button_insert);
+	bc().addReadOnly(dialog_->button_add);
 	bc().addReadOnly(dialog_->button_ignore);
 	bc().addReadOnly(dialog_->button_start);
-	bc().addReadOnly(dialog_->button_stop);
 	bc().addReadOnly(dialog_->browser);
+
+	// set up the tooltips
+	string str = _("Type replacement for unknown word "
+			" or select from suggestions.");
+	tooltips().init(dialog_->input, str);
+	str = _("List of replacement suggestions from dictionary.");
+	tooltips().init(dialog_->browser, str);
+	str = _("Start the spellingchecker.");
+	tooltips().init(dialog_->button_start, str);
+	str = _("Replace unknown word.");
+	tooltips().init(dialog_->button_replace, str);
+	str = _("Ignore unknown word.");
+	tooltips().init(dialog_->button_ignore, str);
+	str = _("Accept unknown word as known in this session.");
+	tooltips().init(dialog_->button_accept, str);
+	str = _("Add unknown word to personal dictionary.");
+	tooltips().init(dialog_->button_add, str);
 }
 
 void FormSpellchecker::update()
 {
-	string const w;
-	fl_set_input(dialog_->input, w.c_str());
-	fl_set_object_label(dialog_->text, w.c_str());
+	fl_set_input(dialog_->input, "");
+	fl_set_object_label(dialog_->text, "");
 	fl_clear_browser(dialog_->browser);
 	fl_set_slider_value(dialog_->slider, 0);
+	start(true);
 }
 
 ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * obj, long val)
@@ -68,12 +82,10 @@ ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * obj, long val)
 		controller().replace(tmp);
 
 	} else if (obj == dialog_->button_start) {
-		controller().check();
-		stop(false);
-
-	} else if (obj == dialog_->button_stop) {
-		controller().stop();
-		stop(true);
+		if (start())
+			controller().check();
+		else
+			controller().stop();
 
 	} else if (obj == dialog_->button_ignore) {
 		controller().check();
@@ -81,7 +93,7 @@ ButtonPolicy::SMInput FormSpellchecker::input(FL_OBJECT * obj, long val)
 	} else if (obj == dialog_->button_accept) {
 		controller().ignoreAll();
 
-	} else if (obj == dialog_->button_insert) {
+	} else if (obj == dialog_->button_add) {
 		controller().insert();
 
 	} else if (obj == dialog_->browser) {
@@ -141,14 +153,31 @@ void FormSpellchecker::showMessage(const char * msg)
 	fl_show_message(msg, "", "");
 }
 
-void FormSpellchecker::stop(bool stop)
+bool FormSpellchecker::start(bool init)
 {
-	setEnabled(dialog_->button_start, stop);
-	setEnabled(dialog_->button_replace, !stop);
-	setEnabled(dialog_->button_ignore, !stop);
-	setEnabled(dialog_->button_accept, !stop);
-	setEnabled(dialog_->button_insert, !stop);
-	setEnabled(dialog_->button_stop, !stop);
-	setEnabled(dialog_->browser, !stop);
-	setEnabled(dialog_->input, !stop);
+	static bool running = false;
+
+	if (init) {
+		running = false;
+	} else {
+		running = !running;
+	}
+
+	fl_set_object_label(dialog_->button_start,
+			(running ? _("Stop") : _("Start")));	
+	fl_set_button_shortcut(dialog_->button_start, "#S", 1);
+	fl_show_object(dialog_->button_start);
+
+	string const str = (running ? _("Stop the spellingchecker.") :
+					_("Start the spellingchecker."));
+	tooltips().init(dialog_->button_start, str);
+
+	setEnabled(dialog_->button_replace, running);
+	setEnabled(dialog_->button_ignore, running);
+	setEnabled(dialog_->button_accept, running);
+	setEnabled(dialog_->button_add, running);
+	setEnabled(dialog_->browser, running);
+	setEnabled(dialog_->input, running);
+	
+	return running;
 }

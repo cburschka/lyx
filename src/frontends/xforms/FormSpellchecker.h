@@ -35,8 +35,8 @@ private:
 	///
 	void update();
 
-	/// enable/disable widgets when start/stop
-	void stop(bool);
+	/// enable/disable widgets when start/stop; return running status
+	bool start(bool init = false);
 
 	/// update progress bar, set suggestions, exit message
 	void partialUpdate(int);

@@ -39,6 +39,9 @@ private:
 
 	///
 	void updateBrowser(std::vector<string> const &) const;
+	
+	///
+	void switch_go_button();
 
 	///
 	bool at_ref_;
