@@ -65,6 +65,17 @@ int InsetCommand::docbook(Buffer const *, ostream &, bool) const
 
 dispatch_result InsetCommand::localDispatch(FuncRequest const & cmd)
 {
+	switch (cmd.action) {
+	case LFUN_CITATION_APPLY:
+	case LFUN_INDEX_APPLY:
+	case LFUN_REF_APPLY:
+	case LFUN_TOC_APPLY:
+	case LFUN_URL_APPLY:
+		break;
+	default:
+		return UNDISPATCHED;
+	}
+
 	InsetCommandParams p;
 	InsetCommandMailer::string2params(cmd.argument, p);
 	if (p.getCmdName().empty())

@@ -9,51 +9,43 @@
 #include <config.h>
 
 #include "BufferView_pimpl.h"
-#include "frontends/WorkArea.h"
-#include "frontends/screen.h"
-#include "frontends/LyXScreenFactory.h"
-#include "frontends/WorkAreaFactory.h"
-#include "frontends/Dialogs.h"
-#include "frontends/Alert.h"
-#include "frontends/FileDialog.h"
-#include "frontends/mouse_state.h"
+#include "bufferlist.h"
+#include "bufferview_funcs.h"
+#include "commandtags.h"
+#include "debug.h"
+#include "factory.h"
+#include "FloatList.h"
+#include "funcrequest.h"
+#include "gettext.h"
+#include "intl.h"
+#include "iterators.h"
+#include "lyx_cb.h" // added for Dispatch functions
+#include "lyx_main.h"
+#include "lyxfind.h"
+#include "lyxfunc.h"
 #include "lyxtext.h"
+#include "lyxrc.h"
 #include "lyxrow.h"
 #include "paragraph.h"
-#include "frontends/LyXView.h"
-#include "commandtags.h"
-#include "lyxfunc.h"
-#include "debug.h"
-#include "bufferview_funcs.h"
-#include "TextCache.h"
-#include "bufferlist.h"
-#include "lyxrc.h"
-#include "intl.h"
-// added for Dispatch functions
-#include "lyx_cb.h"
-#include "lyx_main.h"
-#include "FloatList.h"
-#include "gettext.h"
 #include "ParagraphParameters.h"
+#include "TextCache.h"
 #include "undo_funcs.h"
-#include "funcrequest.h"
-#include "iterators.h"
-#include "lyxfind.h"
 
-#include "insets/insetbibitem.h"
-#include "insets/insetbibtex.h"
-#include "insets/insetcite.h"
-#include "insets/insetert.h"
 #include "insets/insetfloatlist.h"
 #include "insets/insetgraphics.h"
 #include "insets/insetinclude.h"
-#include "insets/insetindex.h"
-#include "insets/insetlatexaccent.h"
-#include "insets/insetmarginal.h"
 #include "insets/insetref.h"
 #include "insets/insettext.h"
-#include "insets/insettoc.h"
-#include "insets/inseturl.h"
+
+#include "frontends/Alert.h"
+#include "frontends/Dialogs.h"
+#include "frontends/FileDialog.h"
+#include "frontends/LyXView.h"
+#include "frontends/LyXScreenFactory.h"
+#include "frontends/mouse_state.h"
+#include "frontends/screen.h"
+#include "frontends/WorkArea.h"
+#include "frontends/WorkAreaFactory.h"
 
 #include "mathed/formulabase.h"
 
@@ -969,8 +961,12 @@ void BufferView::Pimpl::trackChanges()
 }
 
 
-bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
+bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 {
+	// Make sure that the cached BufferView is correct.
+	FuncRequest ev = ev_in;
+	ev.setView(bv_);
+
 	lyxerr[Debug::ACTION] << "BufferView::Pimpl::Dispatch:"
 		<< " action[" << ev.action << ']'
 		<< " arg[" << ev.argument << ']'
@@ -1169,212 +1165,71 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	case LFUN_MATH_DISPLAY:          // Open or create a displayed math inset
 	case LFUN_MATH_MODE:             // Open or create an inlined math inset
 	case LFUN_GREEK:                 // Insert a single greek letter
-		mathDispatch(FuncRequest(bv_, ev.action, ev.argument));
+		mathDispatch(ev);
 		break;
 
-	case LFUN_BIBITEM_APPLY: {
-		InsetCommandParams params;
-		InsetCommandMailer::string2params(ev.argument, params);
-
-		InsetBase * base =
-			owner_->getDialogs().getOpenInset("bibitem");
-		InsetBibitem * inset = 0;
-		if (base) {
-			inset = dynamic_cast<InsetBibitem *>(base);
-			if (!inset)
-				break;
-			
-			if (params.getContents() !=
-			    inset->params().getContents()) {
-				bv_->ChangeCitationsIfUnique(
-					inset->params().getContents(),
-					params.getContents());
-			}
-			inset->setParams(params);
-		} else {
-			inset = new InsetBibitem(params);
-			if (!insertInset(inset)) {
-				delete inset;
-				break;
-			}
-		}
-		updateInset(inset, true);
-
-		// We need to do a redraw because the maximum
-		// InsetBibitem width could have changed
-#warning please check you mean repaint() not update(),
-#warning and whether the repaint() is needed at all
-		bv_->repaint();
-		bv_->fitCursor();
-	}
-	break;
-
-	case LFUN_BIBTEX_APPLY: {
-		InsetCommandParams params;
-		InsetCommandMailer::string2params(ev.argument, params);
-
-		InsetBase * base =
-			owner_->getDialogs().getOpenInset("bibtex");
-		InsetBibtex * inset = 0;
-		if (base) {
-			inset = dynamic_cast<InsetBibtex *>(base);
-			if (!inset)
-				break;
-
-			if (params.getContents() !=
-			    inset->params().getContents()) {
-				bv_->ChangeCitationsIfUnique(
-					inset->params().getContents(),
-					params.getContents());
-			}
-			inset->setParams(params);
-		} else {
-			inset = new InsetBibtex(params);
-			if (!insertInset(inset)) {
-				delete inset;
-				break;
-			}
-		}
-		updateInset(inset, true);
-	}
-	break;
-
-	case LFUN_CITATION_APPLY: {
-		InsetCommandParams params;
-		InsetCommandMailer::string2params(ev.argument, params);
-
-		InsetBase * base =
-			owner_->getDialogs().getOpenInset("citation");
-		InsetCitation * inset = 0;
-		if (base) {
-			inset = dynamic_cast<InsetCitation *>(base);
-			if (!inset)
-				break;
-
-			inset->setParams(params);
-		} else {
-			inset = new InsetCitation(params);
-			if (!insertInset(inset)) {
-				delete inset;
-				break;
-			} else {
-				inset->setLoadingBuffer(bv_->buffer(), false);
-			}
- 		}
-		updateInset(inset, true);
-	}
-	break;
-
-	case LFUN_ERT_APPLY: {
-		InsetBase * base = owner_->getDialogs().getOpenInset("ert");
-		InsetERT * inset = 0;
-		if (base) {
-			inset = dynamic_cast<InsetERT *>(base);
-			if (!inset)
-				break;
-		} else {
-			inset = new InsetERT(bv_->buffer()->params);
-			if (!insertInset(inset)) {
-				delete inset;
-				break;
-			}
+	case LFUN_BIBITEM_APPLY:
+	case LFUN_BIBTEX_APPLY:
+	case LFUN_CITATION_APPLY:
+	case LFUN_ERT_APPLY:
+	case LFUN_INDEX_APPLY:
+	case LFUN_REF_APPLY:
+	case LFUN_TOC_APPLY:
+	case LFUN_URL_APPLY: {
+		string name;
+		switch (ev.action) {
+		case LFUN_BIBITEM_APPLY:
+			name = "bibitem";
+			break;
+		case LFUN_BIBTEX_APPLY:
+			name = "bibtex";
+			break;
+		case LFUN_CITATION_APPLY:
+			name = "citation";
+			break;
+		case LFUN_ERT_APPLY:
+			name = "ert";
+			break;
+		case LFUN_INDEX_APPLY:
+			name = "index";
+			break;
+		case LFUN_REF_APPLY:
+			name = "ref";
+			break;
+		case LFUN_TOC_APPLY:
+			name = "toc";
+			break;
+		case LFUN_URL_APPLY:
+			name = "url";
+			break;
+		default:
+			break;
 		}
 
-		InsetERT::ERTStatus status;
-		InsetERTMailer::string2params(ev.argument, status);
-
-		inset->status(bv_, status);
-		updateInset(inset, true);
-	}
-	break;
-
-	case LFUN_INDEX_APPLY: {
-		InsetCommandParams params;
-		InsetCommandMailer::string2params(ev.argument, params);
-
-		InsetBase * base = owner_->getDialogs().getOpenInset("index");
-		InsetIndex * inset = 0;
-		if (base) {
-			inset = dynamic_cast<InsetIndex *>(base);
-			if (!inset)
-				break;
-
-			inset->setParams(params);
-		} else {
-			InsetIndex * inset = new InsetIndex(params);
-			if (!insertInset(inset)) {
-				delete inset;
-				break;
-			}
-		}
-		updateInset(inset, true);
-	}
-	break;
-
-	case LFUN_REF_APPLY: {
-		dispatch_result result = UNDISPATCHED;
-		InsetBase * base = owner_->getDialogs().getOpenInset("ref");
+		InsetBase * base = owner_->getDialogs().getOpenInset(name);
 		Inset * inset = 0;
 		if (base) {
 			// This works both for 'original' and 'mathed' insets.
-			result = base->localDispatch(ev);
+			// Note that the localDispatch performs updateInset
+			// also.
+			base->localDispatch(ev);
 		} else {
-			InsetCommandParams params;
-			InsetCommandMailer::string2params(ev.argument, params);
-
-			inset = new InsetRef(params, *buffer_);
-			if (!insertInset(inset)) {
+			inset = createInset(ev);
+			if (inset && insertInset(inset)) {
+				updateInset(inset, true);
+			} else {
 				delete inset;
-				result = UNDISPATCHED;
-			}
-			updateInset(inset, true);
-		}
-	}
-	break;
-
-	case LFUN_TOC_APPLY: {
-		InsetCommandParams params;
-		InsetCommandMailer::string2params(ev.argument, params);
-
-		InsetBase * base = owner_->getDialogs().getOpenInset("toc");
-		InsetTOC * inset = 0;
-		if (base) {
-			InsetTOC * inset = dynamic_cast<InsetTOC *>(base);
-			if (!inset)
-				break;
-
-			inset->setParams(params);
-		} else {
-			InsetTOC * inset = new InsetTOC(params);
-			if (!insertInset(inset)) {
-				delete inset;
-				break;
 			}
 		}
-		updateInset(inset, true);
-	}
-	break;
 
-	case LFUN_URL_APPLY: {
-		InsetCommandParams params;
-		InsetCommandMailer::string2params(ev.argument, params);
-
-		InsetBase * base = owner_->getDialogs().getOpenInset("url");
-		InsetUrl * inset = 0;
-		if (base) {
-			inset = dynamic_cast<InsetUrl *>(base);
-			if (!inset)
-				break;
-
-			inset->setParams(params);
-		} else {
-			InsetUrl * inset = new InsetUrl(params);
-			if (!insertInset(inset)) {
-				delete inset;
-				break;
-			}
+		if (ev.action == LFUN_BIBITEM_APPLY) {
+			// We need to do a redraw because the maximum
+			// InsetBibitem width could have changed
+#warning please check you mean repaint() not update(),
+#warning and whether the repaint() is needed at all
+			bv_->repaint();
+			bv_->fitCursor();
 		}
-		updateInset(inset, true);
 	}
 	break;
 

@@ -132,11 +132,18 @@ int RefInset::docbook(std::ostream & os, bool) const
 
 dispatch_result RefInset::localDispatch(FuncRequest const & cmd)
 {
+	if (cmd.action != LFUN_REF_APPLY)
+		return UNDISPATCHED;
+
 	MathArray ar;
 	if (!string2RefInset(cmd.argument, ar))
 		return UNDISPATCHED;
 
 	*this = *ar[0].nucleus()->asRefInset();
+// 	if (cmd.view())
+//                 // This does not compile because updateInset expects
+//                 // an Inset* and 'this' isn't.
+// 		cmd.view()->updateInset(this, true);
 	return DISPATCHED;
 }
 

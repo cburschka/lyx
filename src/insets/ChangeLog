@@ -1,3 +1,15 @@
+2003-02-26  Angus Leeming  <leeming@lyx.org>
+
+	* insetbibitem.[Ch] (localDispatch):
+	* insetbibtex.[Ch] (localDispatch):
+	new method. Modify inset on receipt of LFUN_XYZ_APPLY.
+
+	* insetcommand.C (localDispatch):
+	act only on receipt of LFUN_XYZ_APPLY.
+
+	* insetert.C (localDispatch): reformat.
+	add LFUN_XYZ_APPLY to the switch.
+
 2003-02-26  John Levon  <levon@movementarian.org>
 
 	* insettext.C: use RowPainter

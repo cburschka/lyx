@@ -450,24 +450,37 @@ Inset::RESULT InsetERT::localDispatch(FuncRequest const & cmd)
 	}
 
 	switch (cmd.action) {
-		case LFUN_MOUSE_PRESS:
-			lfunMousePress(cmd);
-			return DISPATCHED;
+	case LFUN_ERT_APPLY: {
+		if (!bv)
+			return UNDISPATCHED;
 
-		case LFUN_MOUSE_MOTION:
-			lfunMouseMotion(cmd);
-			return DISPATCHED;
+		InsetERT::ERTStatus status_;
+		InsetERTMailer::string2params(cmd.argument, status_);
 
-		case LFUN_MOUSE_RELEASE:
-			lfunMouseRelease(cmd);
-			return DISPATCHED;
+		status(bv, status_);
+		bv->updateInset(this, true);
+		return DISPATCHED;
+	}
+	break;
+		
+	case LFUN_MOUSE_PRESS:
+		lfunMousePress(cmd);
+		return DISPATCHED;
 
-		case LFUN_LAYOUT:
-			bv->owner()->setLayout(inset.paragraph()->layout()->name());
-			break;
+	case LFUN_MOUSE_MOTION:
+		lfunMouseMotion(cmd);
+		return DISPATCHED;
 
-		default:
-			result = InsetCollapsable::localDispatch(cmd);
+	case LFUN_MOUSE_RELEASE:
+		lfunMouseRelease(cmd);
+		return DISPATCHED;
+
+	case LFUN_LAYOUT:
+		bv->owner()->setLayout(inset.paragraph()->layout()->name());
+		break;
+
+	default:
+		result = InsetCollapsable::localDispatch(cmd);
 	}
 
 	switch (cmd.action) {

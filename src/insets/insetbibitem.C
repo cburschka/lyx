@@ -12,6 +12,7 @@
 #include "insetbibitem.h"
 #include "buffer.h"
 #include "BufferView.h"
+#include "funcrequest.h"
 #include "lyxlex.h"
 
 #include "frontends/font_metrics.h"
@@ -45,6 +46,29 @@ Inset * InsetBibitem::clone(Buffer const &, bool) const
 	InsetBibitem * b = new InsetBibitem(params());
 	b->setCounter(counter);
 	return b;
+}
+
+
+dispatch_result InsetBibitem::localDispatch(FuncRequest const & cmd)
+{
+	if (cmd.action != LFUN_BIBITEM_APPLY)
+		return UNDISPATCHED;
+
+	InsetCommandParams p;
+	InsetCommandMailer::string2params(cmd.argument, p);
+	if (p.getCmdName().empty())
+		return UNDISPATCHED;
+
+	if (view() && p.getContents() != params().getContents()) {
+		view()->ChangeCitationsIfUnique(params().getContents(),
+						p.getContents());
+	}
+
+	setParams(p);
+	if (view())
+		view()->updateInset(this, true);
+
+	return DISPATCHED;
 }
 
 

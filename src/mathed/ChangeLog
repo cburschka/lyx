@@ -1,5 +1,9 @@
 2003-02-26  Angus Leeming  <leeming@lyx.org>
 
+	* ref_inset.C (localDispatch): act only on receipt of LFUN_REF_APPLY.
+
+2003-02-26  Angus Leeming  <leeming@lyx.org>
+
 	* formula.C (draw): cache the BufferView* using cache not
 	PreviewImpl::setView
 

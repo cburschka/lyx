@@ -12,7 +12,9 @@
 
 #include "insetbibtex.h"
 #include "buffer.h"
+#include "BufferView.h"
 #include "debug.h"
+#include "funcrequest.h"
 #include "gettext.h"
 
 #include "support/filetools.h"
@@ -43,6 +45,28 @@ InsetBibtex::~InsetBibtex()
 	mailer.hideDialog();
 }
 
+
+dispatch_result InsetBibtex::localDispatch(FuncRequest const & cmd)
+{
+	if (cmd.action != LFUN_BIBTEX_APPLY)
+		return UNDISPATCHED;
+
+	InsetCommandParams p;
+	InsetCommandMailer::string2params(cmd.argument, p);
+	if (p.getCmdName().empty())
+		return UNDISPATCHED;
+
+	if (view() && p.getContents() != params().getContents()) {
+		view()->ChangeCitationsIfUnique(params().getContents(),
+						p.getContents());
+	}
+
+	setParams(p);
+	if (view())
+		view()->updateInset(this, true);
+
+	return DISPATCHED;
+}
 
 string const InsetBibtex::getScreenLabel(Buffer const *) const
 {

@@ -30,6 +30,8 @@ public:
 	Inset * clone(Buffer const &, bool same_id = false) const {
 		return new InsetBibtex(params(), same_id);
 	}
+	/// small wrapper for the time being
+	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///
 	string const getScreenLabel(Buffer const *) const;
 	///
