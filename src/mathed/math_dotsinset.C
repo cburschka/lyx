@@ -50,13 +50,7 @@ void MathDotsInset::draw(MathPainterInfo & pain, int x, int y) const
 }
 
 
-void MathDotsInset::write(WriteStream & os) const
+string MathDotsInset::name() const
 {
-	os << '\\' << key_->name << ' ';
-}
-
-
-void MathDotsInset::normalize(NormalStream & os) const
-{
-	os << "[" << key_->name << "] ";
+	return key_->name;
 }

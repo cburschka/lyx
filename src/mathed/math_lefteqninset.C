@@ -3,7 +3,6 @@
 #endif
 
 #include "math_lefteqninset.h"
-#include "math_mathmlstream.h"
 #include "math_support.h"
 
 
@@ -34,13 +33,7 @@ void MathLefteqnInset::draw(MathPainterInfo & pain, int x, int y) const
 }
 
 
-void MathLefteqnInset::write(WriteStream & os) const
+string MathLefteqnInset::name() const
 {
-	os << "\\lefteqn{" << cell(0) << '}';
-}
-
-
-void MathLefteqnInset::normalize(NormalStream & os) const
-{
-	os << "[lefteqn " << cell(0) << ']';
+	return "lefteqn";
 }

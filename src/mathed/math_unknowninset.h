@@ -44,8 +44,6 @@ public:
 	///
 	void octavize(OctaveStream &) const;
 	///
-	void write(WriteStream &) const;
-	///
 	void finalize();
 	///
 	bool final() const;

@@ -36,9 +36,9 @@ void MathExFuncInset::draw(MathPainterInfo & pi, int x, int y) const
 }
 
 
-void MathExFuncInset::normalize(NormalStream & os) const
+string MathExFuncInset::name() const
 {
-	os << '[' << name_ << ' ' << cell(0) << ']';
+	return name_;
 }
 
 
@@ -88,10 +88,4 @@ void MathExFuncInset::mathmlize(MathMLStream & os) const
 void MathExFuncInset::octavize(OctaveStream & os) const
 {
 	os << name_ << '(' << cell(0) << ')';
-}
-
-
-void MathExFuncInset::write(WriteStream & os) const
-{
-	os << '\\' << name_ << '{' << cell(0) << '}';
 }

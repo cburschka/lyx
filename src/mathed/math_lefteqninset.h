@@ -17,12 +17,10 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void draw(MathPainterInfo &, int x, int y) const;
+	string name() const;
 	///
-	void write(WriteStream & os) const;
+	void metrics(MathMetricsInfo & mi) const;
 	///
-	void normalize(NormalStream &) const;
-	///
-	void metrics(MathMetricsInfo & st) const;
+	void draw(MathPainterInfo & pi, int x, int y) const;
 };
 #endif

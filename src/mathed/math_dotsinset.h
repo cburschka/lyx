@@ -18,13 +18,11 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void draw(MathPainterInfo &, int x, int y) const;
+	void metrics(MathMetricsInfo & mi) const;
 	///
-	void write(WriteStream & os) const;
+	void draw(MathPainterInfo & pi, int x, int y) const;
 	///
-	void normalize(NormalStream &) const;
-	///
-	void metrics(MathMetricsInfo & st) const;
+	string name() const;
 protected:
 	/// cache for the thing's heigth
 	mutable int dh_;

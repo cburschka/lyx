@@ -40,12 +40,6 @@ bool MathUnknownInset::match(MathInset * p) const
 }
 
 
-void MathUnknownInset::write(WriteStream & os) const
-{
-	os << "\\" << name_ << ' ';
-}
-
-
 void MathUnknownInset::normalize(NormalStream & os) const
 {
 	os << "[unknown " << name_ << ']';

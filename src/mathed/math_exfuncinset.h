@@ -16,12 +16,12 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	void metrics(MathMetricsInfo & st) const;
+	void metrics(MathMetricsInfo & mi) const;
 	///
-	void draw(MathPainterInfo &, int x, int y) const;
+	void draw(MathPainterInfo & pi, int x, int y) const;
+	///
+	string name() const;
 
-	///
-	void normalize(NormalStream &) const;
 	///
 	void maplize(MapleStream &) const;
 	///
@@ -30,8 +30,6 @@ public:
 	void mathmlize(MathMLStream &) const;
 	///
 	void octavize(OctaveStream &) const;
-	///
-	void write(WriteStream & os) const;
 
 private:
 	///

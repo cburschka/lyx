@@ -1332,7 +1332,7 @@ bool MathCursor::interpret(char c)
 	// handle macroMode
 	if (inMacroMode()) {
 		string name = macroName();
-		//lyxerr << "interpret name: '" << name << "'\n";
+		lyxerr << "interpret name: '" << name << "'\n";
 
 		if (name.empty() && c == '\\') {
 			backspace();
@@ -1341,7 +1341,7 @@ bool MathCursor::interpret(char c)
 		}
 
 		if (isalpha(c)) {
-			inMacroMode()->name() += c;
+			inMacroMode()->setName(inMacroMode()->name() + c);
 			return true;
 		}
 

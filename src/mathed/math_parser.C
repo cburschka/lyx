@@ -844,8 +844,6 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 		else if (t.cs() == "sqrt") {
 			MathArray ar;
 			parse(ar, FLAG_OPTION, mathmode);
-			lyxerr << "read option: " << ar << endl;
-			dump();
 			if (ar.size()) {
 				cell->push_back(MathAtom(new MathRootInset));
 				cell->back()->cell(0) = ar;

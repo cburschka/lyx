@@ -166,15 +166,6 @@ void MathInset::getPos(idx_type, pos_type, int & x, int & y) const
 }
 
 
-void MathInset::normalize(NormalStream & os) const
-{
-	os << "[unknown ";
-	WriteStream wi(os.os(), false, true);
-	write(wi);
-	os << "] ";
-}
-
-
 void MathInset::dump() const
 {
 	lyxerr << "---------------------------------------------\n";
@@ -226,9 +217,15 @@ void MathInset::drawT(TextPainter &, int, int) const
 
 
 
-void MathInset::write(WriteStream &) const
+void MathInset::write(WriteStream & os) const
 {
-	lyxerr << "MathInset::write() called directly!\n";
+	os << '\\' << name().c_str() << ' ';
+}
+
+
+void MathInset::normalize(NormalStream & os) const
+{
+	os << '[' << name().c_str() << "] ";
 }
 
 
