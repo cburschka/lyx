@@ -1,3 +1,7 @@
+2002-03-05  Juergen Vigna  <jug@sad.it>
+
+	* CutAndPaste.C (pasteSelection): fix the depth level on paste.
+
 2002-03-04  Juergen Vigna  <jug@sad.it>
 
 	* lyx_cb.C (getContentsOfAsciiFile): new helper function.

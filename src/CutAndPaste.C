@@ -14,9 +14,11 @@
 #endif
 
 #include "CutAndPaste.h"
+//#include "debug.h"
 #include "BufferView.h"
 #include "buffer.h"
 #include "paragraph.h"
+#include "ParagraphParameters.h"
 #include "lyxcursor.h"
 #include "gettext.h"
 #include "iterators.h"
@@ -270,7 +272,26 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		// now remove all out of the buffer which is NOT allowed in the
 		// new environment and set also another font if that is required
 		tmpbuf = buf;
+		int depth_delta = (*par)->params().depth() - tmpbuf->params().depth();
+		// temporary set *par as previous of tmpbuf as we might have to realize
+		// the font.
+		tmpbuf->previous(*par);
+		Paragraph::depth_type max_depth = (*par)->getMaxDepthAfter(current_view->buffer());
 		while(tmpbuf) {
+			// if we have a negative jump so that the depth would go below
+			// 0 depth then we have to redo the delta to this new max depth
+			// level so that subsequent paragraphs are aligned correctly to
+			// this paragraph at level 0.
+			if ((static_cast<int>(tmpbuf->params().depth()) + depth_delta) < 0)
+				depth_delta = 0;
+			// set the right depth so that we are not too deep or shallow.
+			tmpbuf->params().depth(tmpbuf->params().depth() + depth_delta);
+			if (tmpbuf->params().depth() > max_depth)
+				tmpbuf->params().depth(max_depth);
+			// only set this from the 2nd on as the 2nd depends for maxDepth
+			// still on *par
+			if (tmpbuf->previous() != (*par))
+				max_depth = tmpbuf->getMaxDepthAfter(current_view->buffer());
 			// set the inset owner of this paragraph
 			tmpbuf->setInsetOwner((*par)->inInset());
 			for(pos_type i = 0; i < tmpbuf->size(); ++i) {
@@ -291,10 +312,12 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 			}
 			tmpbuf = tmpbuf->next();
 		}
+		// now reset it to 0
+		buf->previous(0);
 		
 		// make sure there is no class difference
 		SwitchLayoutsBetweenClasses(textclass, tc, buf,
-					    current_view->buffer()->params);
+		                            current_view->buffer()->params);
 		
 		// make the buf exactly the same layout than
 		// the cursor paragraph
@@ -311,7 +334,7 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		// if necessary
 		if (((*par)->size() > pos) || !(*par)->next()) {
 			(*par)->breakParagraphConservative(current_view->buffer()->params,
-							   pos);
+			                                   pos);
 			paste_the_end = true;
 		}
 		// set the end for redoing later
