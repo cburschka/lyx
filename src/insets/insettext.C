@@ -143,18 +143,7 @@ auto_ptr<InsetBase> InsetText::clone() const
 void InsetText::write(Buffer const & buf, ostream & os) const
 {
 	os << "Text\n";
-	writeParagraphData(buf, os);
-}
-
-
-void InsetText::writeParagraphData(Buffer const & buf, ostream & os) const
-{
-	ParagraphList::const_iterator it = paragraphs().begin();
-	ParagraphList::const_iterator end = paragraphs().end();
-	Paragraph::depth_type dth = 0;
-	for (; it != end; ++it) {
-		it->write(buf, os, buf.params(), dth);
-	}
+	text_.write(buf, os);
 }
 
 

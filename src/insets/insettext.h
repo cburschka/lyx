@@ -97,8 +97,6 @@ public:
 		     bool toggleall = false,
 		     bool selectall = false);
 	///
-	void writeParagraphData(Buffer const &, std::ostream &) const;
-	///
 	void setText(std::string const &, LyXFont const &);
 	///
 	void setAutoBreakRows(bool);

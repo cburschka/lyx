@@ -1757,3 +1757,13 @@ void LyXText::getWord(LyXCursor & from, LyXCursor & to, word_location const loc)
 		to.pos(to.pos() + 1);
 	}
 }
+
+
+void LyXText::write(Buffer const & buf, std::ostream & os) const
+{
+	ParagraphList::const_iterator pit = paragraphs().begin();
+	ParagraphList::const_iterator end = paragraphs().end();
+	Paragraph::depth_type dth = 0;
+	for (; pit != end; ++pit)
+		pit->write(buf, os, buf.params(), dth);
+}

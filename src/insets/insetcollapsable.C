@@ -79,7 +79,7 @@ bool InsetCollapsable::insertInset(BufferView * bv, InsetOld * in)
 void InsetCollapsable::write(Buffer const & buf, ostream & os) const
 {
 	os << "collapsed " << (status_ == Collapsed ? "true" : "false") << "\n";
-	inset.writeParagraphData(buf, os);
+	inset.text_.write(buf, os);
 }
 
 

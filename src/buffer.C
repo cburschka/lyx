@@ -839,19 +839,13 @@ bool Buffer::do_writeFile(ostream & ofs) const
 	    << " created this file. For more info see http://www.lyx.org/\n"
 	    << "\\lyxformat " << LYX_FORMAT << "\n";
 
-	// now write out the buffer paramters.
+	// now write out the buffer parameters.
 	params().writeFile(ofs);
 
 	ofs << "\\end_header\n";
 
-	Paragraph::depth_type depth = 0;
-
-	// this will write out all the paragraphs
-	// using recursive descent.
-	ParagraphList::const_iterator pit = paragraphs().begin();
-	ParagraphList::const_iterator pend = paragraphs().end();
-	for (; pit != pend; ++pit)
-		pit->write(*this, ofs, params(), depth);
+	// write the text
+	text().write(*this, ofs);
 
 	// Write marker that shows file is complete
 	ofs << "\n\\end_document" << endl;

@@ -52,7 +52,7 @@ InsetCaption::InsetCaption(BufferParams const & bp)
 void InsetCaption::write(Buffer const & buf, ostream & os) const
 {
 	os << "Caption\n";
-	writeParagraphData(buf, os);
+	text_.write(buf, os);
 }
 
 

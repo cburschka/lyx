@@ -25,6 +25,8 @@
 
 #include "insets/inset.h"
 
+#include <iosfwd>
+
 class Buffer;
 class BufferParams;
 class BufferView;
@@ -389,6 +391,8 @@ public:
 	///
 	bool checkAndActivateInset(bool front);
 
+	///
+	void write(Buffer const & buf, std::ostream & os) const;
 
 public:
 	///
