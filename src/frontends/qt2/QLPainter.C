@@ -261,7 +261,7 @@ Painter & QLPainter::text(int x, int y,
 	for (size_t i = 0; i < ls; ++i)
 		str[i] = QChar(encoding->ucs(s[i]));
 	// HACK: QT3 refuses to show single compose characters
-	if (ls = 1 && str[0].unicode() >= 0x05b0 && str[0].unicode() <= 0x05c2)
+	if (ls == 1 && str[0].unicode() >= 0x05b0 && str[0].unicode() <= 0x05c2)
 		str = ' ' + str;
 #else
 	for (size_t i = 0; i < ls; ++i)
