@@ -2796,7 +2796,7 @@ void LyXText::backspace(BufferView * bview)
 		    && cursor.par()->getAlign() == tmppar->getAlign()) {
 			removeParagraph(tmprow);
 			removeRow(tmprow);
-			cursor.par()->pasteParagraph(bview->buffer()->params);
+			pasteParagraph(bview->buffer()->params, cursor.par());
 
 			if (!cursor.pos() || !cursor.par()->isSeparator(cursor.pos() - 1))
 				; //cursor.par()->insertChar(cursor.pos(), ' ');

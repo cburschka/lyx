@@ -273,11 +273,6 @@ public:
 	///
 	bool isWord(lyx::pos_type pos) const;
 
-	/** paste this paragraph with the next one
-	    be carefull, this doesent make any check at all
-	*/
-	void pasteParagraph(BufferParams const &);
-
 	/// returns -1 if inset not found
 	int getPositionOfInset(Inset const * inset) const;
 

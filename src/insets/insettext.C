@@ -37,6 +37,7 @@
 #include "trans_mgr.h"
 #include "undo_funcs.h"
 #include "WordLangTuple.h"
+#include "paragraph_funcs.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
@@ -2729,7 +2730,7 @@ void InsetText::collapseParagraphs(BufferView * bv) const
 					llt->selection.end.pos() + paragraphs.begin()->size());
 			}
 		}
-		paragraphs.begin()->pasteParagraph(bparams);
+		pasteParagraph(bparams, &*paragraphs.begin());
 	}
 	reinitLyXText();
 }
@@ -2771,7 +2772,7 @@ void InsetText::appendParagraphs(BufferParams const & bparams,
 	// paste it!
 	lastbuffer->next(buf);
 	buf->previous(lastbuffer);
-	lastbuffer->pasteParagraph(bparams);
+	pasteParagraph(bparams, lastbuffer);
 
 	reinitLyXText();
 }

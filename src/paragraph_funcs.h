@@ -1,11 +1,11 @@
 // -*- C++ -*-
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team. 
+ *           Copyright 1995-2001 The LyX Team.
  *
  * ====================================================== */
 
@@ -30,14 +30,14 @@ void breakParagraphConservative(BufferParams const & bparams,
 				Paragraph *,
 				lyx::pos_type pos);
 
-#if 0
 /** Paste this paragraph with the next one.
     Be carefull, this doesent make any check at all.
-*/ 
+*/
 void pasteParagraph(BufferParams const & bparams,
 		    Paragraph *);
 
 
+#if 0
 /// for the environments
 Paragraph * depthHook(Paragraph * par, Paragraph::depth_type depth);
 

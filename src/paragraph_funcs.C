@@ -1,10 +1,10 @@
 /* This file is part of
- * ====================================================== 
- * 
+ * ======================================================
+ *
  *           LyX, The Document Processor
- * 	 
+ *
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team. 
+ *           Copyright 1995-2001 The LyX Team.
  *
  * ====================================================== */
 
@@ -33,10 +33,10 @@ void breakParagraph(BufferParams const & bparams,
 	tmp->layout(bparams.getLyXTextClass().defaultLayout());
 	// remember to set the inset_owner
 	tmp->setInsetOwner(par->inInset());
-	
+
 	// this is an idea for a more userfriendly layout handling, I will
 	// see what the users say
-	
+
 	// layout stays the same with latex-environments
 	if (flag) {
 		tmp->layout(par->layout());
@@ -44,22 +44,22 @@ void breakParagraph(BufferParams const & bparams,
 	}
 
 	bool isempty = (par->layout()->keepempty && par->empty());
-	
+
 	if (!isempty && (par->size() > pos || par->empty() || flag == 2)) {
 		tmp->layout(par->layout());
 		tmp->params().align(par->params().align());
 		tmp->setLabelWidthString(par->params().labelWidthString());
-		
+
 		tmp->params().lineBottom(par->params().lineBottom());
 		par->params().lineBottom(false);
 		tmp->params().pagebreakBottom(par->params().pagebreakBottom());
 		par->params().pagebreakBottom(false);
 		tmp->params().spaceBottom(par->params().spaceBottom());
 		par->params().spaceBottom(VSpace(VSpace::NONE));
-		
+
 		tmp->params().depth(par->params().depth());
 		tmp->params().noindent(par->params().noindent());
-		
+
 		// copy everything behind the break-position
 		// to the new paragraph
 		pos_type pos_end = par->size() - 1;
@@ -74,7 +74,7 @@ void breakParagraph(BufferParams const & bparams,
 			par->erase(i);
 		}
 	}
-	
+
 	// just an idea of me
 	if (!pos) {
 		tmp->params().lineTop(par->params().lineTop());
@@ -86,7 +86,7 @@ void breakParagraph(BufferParams const & bparams,
 		par->params().clear();
 
 		par->layout(bparams.getLyXTextClass().defaultLayout());
-		
+
 		// layout stays the same with latex-environments
 		if (flag) {
 			par->layout(tmp->layout());
@@ -117,7 +117,7 @@ void breakParagraphConservative(BufferParams const & bparams,
 			if (tmp->insertFromMinibuffer(j - pos))
 				++j;
 		}
-		
+
 		for (pos_type k = pos_end; k >= pos; --k) {
 			par->erase(k);
 		}
@@ -125,7 +125,6 @@ void breakParagraphConservative(BufferParams const & bparams,
 }
 
 
-#if 0
 // Be carefull, this does not make any check at all.
 // This method has wrong name, it combined this par with the next par.
 // In that sense it is the reverse of break paragraph. (Lgb)
@@ -158,6 +157,7 @@ void pasteParagraph(BufferParams const & bparams,
 }
 
 
+#if 0
 Paragraph * depthHook(Paragraph * par, Paragraph::depth_type depth)
 {
 	Paragraph * newpar = par;
@@ -176,7 +176,7 @@ Paragraph * depthHook(Paragraph * par, Paragraph::depth_type depth)
 }
 
 
-Paragraph * outerHook(Paragraph * par) 
+Paragraph * outerHook(Paragraph * par)
 {
 	if (!par->getDepth())
 		return 0;

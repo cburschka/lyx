@@ -765,37 +765,6 @@ bool Paragraph::hasSameLayout(Paragraph const * par) const
 }
 
 
-// Be carefull, this does not make any check at all.
-// This method has wrong name, it combined this par with the next par.
-// In that sense it is the reverse of break paragraph. (Lgb)
-void Paragraph::pasteParagraph(BufferParams const & bparams)
-{
-	// copy the next paragraph to this one
-	Paragraph * the_next = next();
-
-	// first the DTP-stuff
-	params().lineBottom(the_next->params().lineBottom());
-	params().spaceBottom(the_next->params().spaceBottom());
-	params().pagebreakBottom(the_next->params().pagebreakBottom());
-
-	pos_type pos_end = the_next->pimpl_->size() - 1;
-	pos_type pos_insert = size();
-
-	// ok, now copy the paragraph
-	for (pos_type i = 0, j = 0; i <= pos_end; ++i) {
-		the_next->cutIntoMinibuffer(bparams, i);
-		if (insertFromMinibuffer(pos_insert + j))
-			++j;
-	}
-
-	// delete the next paragraph
-	Paragraph * ppar = the_next->previous_;
-	Paragraph * npar = the_next->next_;
-	delete the_next;
-	ppar->next(npar);
-}
-
-
 int Paragraph::getEndLabel() const
 {
 	Paragraph const * par = this;

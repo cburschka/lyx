@@ -382,8 +382,8 @@ void LyXText::removeParagraph(Row * row) const
 void LyXText::insertParagraph(BufferView * bview, Paragraph * par,
 			      Row * row) const
 {
-	// insert a new row, starting at position 0 
-	insertRow(row, par, 0); 
+	// insert a new row, starting at position 0
+	insertRow(row, par, 0);
 
 	// set the counters
 	setCounter(bview->buffer(), par);
@@ -1362,7 +1362,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 				s = o.str();
 			} else {
 				// par->SetLayout(0);
-				// s = layout->labelstring; 
+				// s = layout->labelstring;
 				s = (par->getParLanguage(buf->params)->lang() == "hebrew")
 					? " :תועמשמ רסח" : "Senseless: ";
 			}
@@ -1370,7 +1370,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 		par->params().labelString(s);
 
 		// reset the enumeration counter. They are always resetted
-		// when there is any other layout between 
+		// when there is any other layout between
 		for (int i = par->enumdepth + 1; i < 4; i++) {
 			buf->counters().set(buf->counters().enums[i], 0);
 		}
