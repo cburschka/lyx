@@ -1,3 +1,8 @@
+2002-04-29  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* buffer.C (parseSingleLyXformat2Token): Fix reading of old format 
+	minipages: use col% instead of p%, and also use the current font.
+
 2002-04-28  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* BufferView_pimpl.C (Dispatch): Check that float type exists when 
