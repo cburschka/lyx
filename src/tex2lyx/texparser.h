@@ -137,7 +137,7 @@ public:
 	///
 	int lineno_;
 	///
-	vector<Token> tokens_;
+	std::vector<Token> tokens_;
 	///
 	unsigned pos_;
 };

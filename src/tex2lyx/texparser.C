@@ -1,6 +1,6 @@
 
 #include "texparser.h"
-#include "Lsstream.h"
+#include <iostream>
 
 using std::cerr;
 using std::endl;
