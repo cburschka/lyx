@@ -26,7 +26,7 @@ extern char * latex_mathspace[];
 typedef FormCB<ControlMathSub, FormDB<FD_maths_space> > base_class;
 
 FormMathsSpace::FormMathsSpace()
-	: base_class(_("Maths Spacing"), false),
+	: base_class(_("Math Spacing"), false),
 	  space_(-1)
 {}
 

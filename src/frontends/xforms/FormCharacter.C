@@ -37,7 +37,7 @@ using namespace frnt;
 typedef FormController<ControlCharacter, FormView<FD_character> > base_class;
 
 FormCharacter::FormCharacter(Dialog & parent)
-	: base_class(parent, _("Character Layout"), false)
+	: base_class(parent, _("Text Style"), false)
 {}
 
 

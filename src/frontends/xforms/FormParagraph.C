@@ -64,7 +64,7 @@ void setWidgetsFromVSpace(VSpace const & space,
 typedef FormController<ControlParagraph, FormView<FD_paragraph> > base_class;
 
 FormParagraph::FormParagraph(Dialog & parent)
-	: base_class(parent, _("Paragraph Layout"))
+	: base_class(parent, _("Paragraph Settings"))
 {}
 
 

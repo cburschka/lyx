@@ -30,7 +30,7 @@
 typedef FormCB<ControlPrint, FormDB<FD_print> > base_class;
 
 FormPrint::FormPrint()
-	: base_class(_("Print"))
+	: base_class(_("Print Document"))
 {}
 
 

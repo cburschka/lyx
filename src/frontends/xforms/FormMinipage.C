@@ -24,7 +24,7 @@
 typedef FormController<ControlMinipage, FormView<FD_minipage> > base_class;
 
 FormMinipage::FormMinipage(Dialog & parent)
-	: base_class(parent, _("Minipage Options"))
+	: base_class(parent, _("Minipage Settings"))
 {}
 
 

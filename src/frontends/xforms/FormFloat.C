@@ -37,7 +37,7 @@ enum {
 typedef FormController<ControlFloat, FormView<FD_float> > base_class;
 
 FormFloat::FormFloat(Dialog & parent)
-	: base_class(parent, _("Float Options"))
+	: base_class(parent, _("Float Settings"))
 {}
 
 

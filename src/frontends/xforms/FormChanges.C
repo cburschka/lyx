@@ -21,7 +21,7 @@
 typedef FormController<ControlChanges, FormView<FD_changes> > base_class;
 
 FormChanges::FormChanges(Dialog & parent)
-	: base_class(parent, _("Merge changes"))
+	: base_class(parent, _("Merge Changes"))
 {}
 
 

@@ -28,7 +28,7 @@ using std::endl;
 typedef FormCB<ControlSpellchecker, FormDB<FD_spellchecker> > base_class;
 
 FormSpellchecker::FormSpellchecker()
-	: base_class(_("Spellchecker"))
+	: base_class(_("Spell-check Document"))
 {}
 
 

@@ -31,7 +31,7 @@ using std::find_if;
 typedef FormCB<ControlForks, FormDB<FD_forks> > base_class;
 
 FormForks::FormForks()
-	: base_class(_("Child processes"))
+	: base_class(_("Child Processes"))
 {}
 
 

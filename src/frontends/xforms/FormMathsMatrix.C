@@ -57,7 +57,7 @@ extern "C" {
 typedef FormCB<ControlMathSub, FormDB<FD_maths_matrix> > base_class;
 
 FormMathsMatrix::FormMathsMatrix()
-	: base_class(_("Maths Matrix"), false)
+	: base_class(_("Math Matrix"), false)
 {}
 
 

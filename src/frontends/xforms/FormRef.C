@@ -31,7 +31,7 @@ using std::vector;
 typedef FormController<ControlRef, FormView<FD_ref> > base_class;
 
 FormRef::FormRef(Dialog & parent)
-	: base_class(parent, _("Reference")),
+	: base_class(parent, _("Cross-reference")),
 	  at_ref_(false)
 {}
 

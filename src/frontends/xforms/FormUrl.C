@@ -21,7 +21,7 @@
 typedef  FormController<ControlCommand, FormView<FD_url> > base_class;
 
 FormUrl::FormUrl(Dialog & parent)
-	: base_class(parent, _("Url"))
+	: base_class(parent, _("URL"))
 {}
 
 

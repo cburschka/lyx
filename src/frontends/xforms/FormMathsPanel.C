@@ -62,7 +62,7 @@
 typedef FormCB<ControlMath, FormDB<FD_maths_panel> > base_class;
 
 FormMathsPanel::FormMathsPanel()
-	: base_class(_("Maths Panel"))
+	: base_class(_("Math Panel"))
 {}
 
 

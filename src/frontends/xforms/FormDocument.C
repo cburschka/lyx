@@ -62,7 +62,7 @@ bool const scalableTabfolders = true;
 typedef FormCB<ControlDocument, FormDB<FD_document> > base_class;
 
 FormDocument::FormDocument()
-	: base_class(_("Document Layout"), scalableTabfolders),
+	: base_class(_("Document Settings"), scalableTabfolders),
 	  ActCell(0), Confirmed(0),
 	  current_bullet_panel(0), current_bullet_depth(0), fbullet(0)
 {}

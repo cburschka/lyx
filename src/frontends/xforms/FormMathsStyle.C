@@ -40,7 +40,7 @@ kb_action latex_mathfontcmds[] = {
 typedef FormCB<ControlMathSub, FormDB<FD_maths_style> > base_class;
 
 FormMathsStyle::FormMathsStyle()
-	: base_class(_("Maths Styles & Fonts"), false),
+	: base_class(_("Math Styles & Fonts"), false),
 	  style_(-1)
 {}
 

@@ -29,7 +29,7 @@
 typedef FormController<ControlInclude, FormView<FD_include> > base_class;
 
 FormInclude::FormInclude(Dialog & parent)
-	: base_class(parent, _("Include file"))
+	: base_class(parent, _("Child Document"))
 {}
 
 

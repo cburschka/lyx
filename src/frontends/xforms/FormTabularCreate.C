@@ -27,7 +27,7 @@ using std::make_pair;
 typedef FormController<ControlTabularCreate, FormView<FD_tabular_create> > base_class;
 
 FormTabularCreate::FormTabularCreate(Dialog & parent)
-	: base_class(parent, _("Insert Tabular"))
+	: base_class(parent, _("Insert Table"))
 {}
 
 

@@ -52,7 +52,7 @@ using std::endl;
 typedef FormCB<ControlMathSub, FormDB<FD_maths_delim> > base_class;
 
 FormMathsDelim::FormMathsDelim()
-	: base_class(_("Maths Delimiters"), false)
+	: base_class(_("Math Delimiters"), false)
 {}
 
 

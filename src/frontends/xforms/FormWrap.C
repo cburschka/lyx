@@ -27,7 +27,7 @@
 typedef FormController<ControlWrap, FormView<FD_wrap> > base_class;
 
 FormWrap::FormWrap(Dialog & parent)
-	: base_class(parent, _("Wrap Options"))
+	: base_class(parent, _("Text Wrap Settings"))
 {}
 
 

@@ -27,7 +27,7 @@
 typedef FormController<ControlExternal, FormView<FD_external> > base_class;
 
 FormExternal::FormExternal(Dialog & parent)
-	: base_class(parent, _("Edit external file"))
+	: base_class(parent, _("External Material"))
 {}
 
 

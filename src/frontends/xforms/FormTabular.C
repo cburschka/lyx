@@ -49,7 +49,7 @@ bool const scalableTabfolders = true;
 typedef FormController<ControlTabular, FormView<FD_tabular> > base_class;
 
 FormTabular::FormTabular(Dialog & parent)
-	: base_class(parent, _("Edit table settings"), scalableTabfolders),
+	: base_class(parent, _("Table Settings"), scalableTabfolders),
 	closing_(false), actCell_(-1)
 {
 }
@@ -127,7 +127,7 @@ void FormTabular::build()
 		fl_set_tabfolder_autofit(dialog_->tabfolder, FL_FIT);
 
 	// Stack tabs
-	fl_addto_tabfolder(dialog_->tabfolder, _("Tabular"),
+	fl_addto_tabfolder(dialog_->tabfolder, _("Table"),
 			   tabular_options_->form);
 	fl_addto_tabfolder(dialog_->tabfolder, _("Column/Row"),
 			   column_options_->form);
