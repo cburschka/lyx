@@ -243,9 +243,12 @@ void InsetFormulaBase::toggleInsetCursor(BufferView * bv)
 
 void InsetFormulaBase::showInsetCursor(BufferView * bv, bool)
 {
+	if (!mathcursor) {
+		lyxerr << "showInsetCursor impossible\n";
+		return;
+	}
 	if (isCursorVisible())
 		return;
-	fitInsetCursor(bv);
 	int x, y, asc, des;
 	mathcursor->getPos(x, y);
 	math_font_max_dim(font_, asc, des);
@@ -257,6 +260,8 @@ void InsetFormulaBase::showInsetCursor(BufferView * bv, bool)
 
 void InsetFormulaBase::hideInsetCursor(BufferView * bv)
 {
+	if (!mathcursor)
+		return;
 	if (!isCursorVisible())
 		return;
 	bv->hideLockedInsetCursor();
