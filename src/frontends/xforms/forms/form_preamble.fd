@@ -33,7 +33,7 @@ argument:
 
 --------------------
 class: FL_BUTTON
-type: RETURN_BUTTON
+type: NORMAL_BUTTON
 box: 5 295 90 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
@@ -42,7 +42,7 @@ style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: OK
-shortcut: ^M
+shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_ok
