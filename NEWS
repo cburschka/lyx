@@ -116,6 +116,112 @@ Other changes include:
 
 - A thesaurus facility (English only)
 
+What's new in LyX version 1.1.6fix4?
+------------------------------------
+
+LyX 1.1.6fix4 is a bugfix release.
+
+New features:
+
+- add support for latin3, latin4 and latin9 encodings
+
+- change the encoding for estonian from latin4 to latin1, since it
+  appears to be more suitable.
+
+- add support for ae fonts (emulation of T1 encoding with OT1 fonts).
+  This is useful for creating pdf files in T1 encoding
+
+- add support for dvipdfm
+
+- when passing a file name as argument from command line, the
+  extension `.lyx' is added if necessary
+
+- insert error insets in the documents when there have been unknown
+  tokens in the file
+
+- new class `kluwer'; update to hollywood class
+
+- the class encts has been renamed to entcs (stupid typo!) and
+  slightly updated
+
+- updates to the introduction document and the italian user guide
+
+- updates to the russian, finnish and hebrew localisations
+
+
+What's new in LyX version 1.1.6fix3?
+------------------------------------
+
+LyX 1.1.6fix3 is a bugfix release.
+
+New features:
+
+- documentation has been updated to remove errors due to interface
+  change 
+
+- new italian user guide; updated french localisation of menus and
+  documentation; new dutch translations of some examples
+
+- the `history' and `revert' functionalities have been implemented in CVS
+  support 
+
+- it is now possible to enter directly characters in an encoding
+  different from latin1 (providing one is using a correct screen font)
+
+- new encts class for Elsevier Science's Electronic Notes in
+  Theoretical Computer Science 
+
+- new cv class for writing curriculum vitae
+
+- new extarticle, extreport, extbook and extletter classes, which are
+  versions of the normal classes with more font sizes available
+
+- the aapaper class has been complemented with a aa class for the A&A
+  LaTeX document class version 5.0, which is slightly incompatible
+  with the older version
+
+
+What's new in LyX version 1.1.6fix2?
+------------------------------------
+
+LyX 1.1.6fix2 is a bugfix release.
+
+New features:
+
+- add language support in docbook; better support for verbatim text.
+
+- the --with-lyx-suffix flag introduced in 1.1.6fix1 has been renamed
+  to --with-version-suffix; it can now be used without argument (to
+  install as lyx-1.1.6fix2)
+
+- many translations updated; big french documentation overhaul; german
+  documentation update.
+
+- preliminary Thai support; new serbo-croatian support
+
+
+What's new in LyX version 1.1.6fix1?
+------------------------------------
+
+LyX 1.1.6fix1 is a bugfix release.
+
+New features:
+
+- updated documentation for version 1.1.6; new french documentation
+  translations; updated danish translation of the interface.
+
+- better support for ukrainian language
+
+- non working --with-lyxname configure option has been replaced by
+  working --with-lyx-suffix.
+
+- in default cua bindings, change C-k from font-noun to
+  line-delete-forward. 
+
+- Add the prefix "key-" to the default keys for bibliography insets.
+
+- Show both key and label of a bibliography inset.
+
 
 What's new in LyX version 1.1.6?
 --------------------------------
