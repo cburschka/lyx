@@ -30,6 +30,7 @@ protected slots:
 	virtual void change_WUnit();
 	virtual void browse_clicked();
 	virtual void getBB_clicked();
+	virtual void edit_clicked();
 protected:
 	virtual void closeEvent(QCloseEvent * e);
 private:

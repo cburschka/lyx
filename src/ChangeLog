@@ -1,3 +1,8 @@
+2004-04-12  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* format.[Ch]: add editor to Format
+	* lyxrc.[Ch]: merge RC_FORMAT and RC_VIEWER. Add editor to Format
+	* LyXAction.C, lfuns.h, lyxfunc.C: add lfun LFUN_GRAPHICS_EDIT
 
 2004-04-08  André Pönitz  <poenitz@gmx.net>
 

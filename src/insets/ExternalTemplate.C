@@ -101,7 +101,6 @@ public:
 		    << "\tHelpTextEnd\n"
 		    << "\tInputFormat " << et.inputFormat << '\n'
 		    << "\tFileFilter " << et.fileRegExp << '\n'
-		    << "\tEditCommand " << et.editCommand << '\n'
 		    << "\tAutomaticProduction " << et.automaticProduction << '\n';
 
 		typedef vector<TransformID> IDs;
@@ -298,7 +297,6 @@ void Template::readTemplate(LyXLex & lex)
 		TO_HELPTEXT,
 		TO_INPUTFORMAT,
 		TO_FILTER,
-		TO_EDITCMD,
 		TO_AUTOMATIC,
 		TO_TRANSFORM,
 		TO_FORMAT,
@@ -307,7 +305,6 @@ void Template::readTemplate(LyXLex & lex)
 
 	keyword_item templateoptiontags[] = {
 		{ "automaticproduction", TO_AUTOMATIC },
-		{ "editcommand", TO_EDITCMD },
 		{ "filefilter", TO_FILTER },
 		{ "format", TO_FORMAT },
 		{ "guiname", TO_GUINAME },
@@ -338,11 +335,6 @@ void Template::readTemplate(LyXLex & lex)
 		case TO_FILTER:
 			lex.next(true);
 			fileRegExp = lex.getString();
-			break;
-
-		case TO_EDITCMD:
-			lex.next(true);
-			editCommand = lex.getString();
 			break;
 
 		case TO_AUTOMATIC:

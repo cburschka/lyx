@@ -996,6 +996,7 @@ void FormPreferences::Formats::build()
 
 	fl_set_input_return(dialog_->input_format, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_viewer, FL_RETURN_CHANGED);
+	fl_set_input_return(dialog_->input_editor, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_shrtcut, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_gui_name, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->input_extension, FL_RETURN_CHANGED);
@@ -1010,6 +1011,7 @@ void FormPreferences::Formats::build()
 	setPrehandler(dialog_->button_add);
 	setPrehandler(dialog_->input_extension);
 	setPrehandler(dialog_->input_viewer);
+	setPrehandler(dialog_->input_editor);
 	setPrehandler(dialog_->input_shrtcut);
 }
 
@@ -1035,6 +1037,9 @@ FormPreferences::Formats::feedback(FL_OBJECT const * const ob) const
 
 	if (ob == dialog_->input_viewer)
 		return  _("The command used to launch the viewer application.");
+
+	if (ob == dialog_->input_editor)
+		return  _("The command used to launch the editor application.");
 
 	if (ob == dialog_->button_delete)
 		return  _("Remove the current format from the list of available "
@@ -1062,7 +1067,8 @@ bool FormPreferences::Formats::input(FL_OBJECT const * const ob)
 	    || ob == dialog_->input_gui_name
 	    || ob == dialog_->input_shrtcut
 	    || ob == dialog_->input_extension
-	    || ob == dialog_->input_viewer)
+	    || ob == dialog_->input_viewer
+	    || ob == dialog_->input_editor)
 		return Input();
 
 	if (ob == dialog_->button_add)
@@ -1109,11 +1115,11 @@ bool FormPreferences::Formats::Add()
 	string const extension = fl_get_input(dialog_->input_extension);
 	string const shortcut =  fl_get_input(dialog_->input_shrtcut);
 	string const viewer =  fl_get_input(dialog_->input_viewer);
+	string const editor =  fl_get_input(dialog_->input_editor);
 
 	Format const * old = formats().getFormat(name);
 	string const old_prettyname = old ? old->prettyname() : string();
-	formats().add(name, extension, prettyname, shortcut);
-	formats().setViewer(name, viewer);
+	formats().add(name, extension, prettyname, shortcut, viewer, editor);
 	if (!old || prettyname != old_prettyname) {
 		UpdateBrowser();
 		if (old)
@@ -1140,6 +1146,7 @@ bool FormPreferences::Formats::Browser()
 	fl_set_input(dialog_->input_shrtcut, f.shortcut().c_str());
 	fl_set_input(dialog_->input_extension, f.extension().c_str());
 	fl_set_input(dialog_->input_viewer, f.viewer().c_str());
+	fl_set_input(dialog_->input_editor, f.editor().c_str());
 
 	fl_set_object_label(dialog_->button_add,
 			    idex(_("Modify|#M")).c_str());

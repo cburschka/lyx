@@ -19,6 +19,7 @@
 #include "buffer.h"
 #include "converter.h"
 #include "debug.h"
+#include "format.h"
 
 #include "support/filetools.h"
 #include "support/forkedcall.h"
@@ -51,23 +52,9 @@ Template const * getTemplatePtr(InsetExternalParams const & params)
 
 void editExternal(InsetExternalParams const & params, Buffer const & buffer)
 {
-	Template const * const et_ptr = getTemplatePtr(params);
-	if (!et_ptr)
-		return;
-	Template const & et = *et_ptr;
-
-	if (et.editCommand.empty())
-		return;
-
-	string const command = doSubstitution(params, buffer, et.editCommand);
-
-	support::Path p(buffer.filePath());
-	support::Forkedcall call;
-	if (lyxerr.debugging(Debug::EXTERNAL)) {
-		lyxerr << "Executing '" << command << "' in '"
-		       << buffer.filePath() << '\'' << endl;
-	}
-	call.startscript(support::Forkedcall::DontWait, command);
+	string const file_with_path = params.filename.absFilename();
+	formats.edit(buffer, file_with_path,
+	             support::getExtFromContents(file_with_path));
 }
 
 

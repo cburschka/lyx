@@ -51,6 +51,8 @@ public:
 	bool bbChanged;
 	/// test if file exist
 	bool isFilenameValid(std::string const & fname) const;
+	/// edit file
+	void editGraphics();
 
 private:
 	///

@@ -237,6 +237,20 @@ fi
 test $latex_to_dvi != "none" && latex_to_dvi="$latex_to_dvi \$\$i"
 test $latex_to_pdf != "none" && latex_to_pdf="$latex_to_pdf \$\$i"
 
+SEARCH_PROG([for a TGIF viewer and editor], TGIF_EDITOR, tgif)
+TGIF_VIEWER="$TGIF_EDITOR"
+
+SEARCH_PROG([for a FIG viewer and editor], FIG_EDITOR, xfig)
+FIG_VIEWER="$FIG_EDITOR"
+
+SEARCH_PROG([for a FEN viewer and editor], FEN_EDITOR, xboard)
+test "$FEN" = "xboard" && FEN_EDITOR="xboard -lpf \$\$i -mode EditPosition"
+FEN_VIEWER="$FEN_EDITOR"
+
+SEARCH_PROG([for a raster image viewer], RASTERIMAGE_VIEWER, xv kview gimp)
+
+SEARCH_PROG([for a raster image editor], RASTERIMAGE_EDITOR, gimp)
+
 # Search for an installed reLyX or a ready-to-install one
 save_PATH=${PATH}
 PATH=${PATH}:./reLyX/
@@ -492,113 +506,102 @@ cat >$outfile <<EOF
 # want to customize LyX, make a copy of the file LYXDIR/lyxrc as
 # ~/.lyx/lyxrc and edit this file instead. Any setting in lyxrc will
 # override the values given here.
-\\Format asciichess asc "ASCII (chess output)" ""
-\\Format asciiimage asc "ASCII (image)" ""
-\\Format asciixfig  asc "ASCII (xfig output)" ""
-\\Format agr      agr	GRACE		""
-\\Format bmp      bmp	BMP		""
-\\Format date     ""    "date command"  ""
-\\Format dateout  "tmp" "date (output)" ""
-\\Format docbook  sgml	DocBook		B
-\\Format dvi	  dvi	DVI		D
-\\Format eps	  eps	EPS		""
-\\Format fax	  ""	Fax		""
-\\Format fen      fen   FEN             ""
-\\Format fig	  fig	XFig		""
-\\Format gif	  gif	GIF		""
-\\Format html	  html	HTML		H
-\\Format jpg	  jpg	JPG		""
-\\Format latex	  tex	LaTeX		L
-\\Format linuxdoc sgml	LinuxDoc	x
-\\Format lyx      lyx	LyX		""
-\\Format lyxpreview	lyxpreview	"LyX Preview"		""
-\\Format literate nw	NoWeb		N
-\\Format pbm	  pbm	PBM		""
-\\Format pdf	  pdf  "PDF (ps2pdf)"	P
-\\Format pdf2	  pdf  "PDF (pdflatex)"	F
-\\Format pdf3	  pdf  "PDF (dvipdfm)"	m
-\\Format pdftex   pdftex_t PDFTEX       ""
-\\Format pgm	  pgm	PGM		""
-\\Format png	  png	PNG		""
-\\Format ppm	  ppm	PPM		""
-\\Format program  ""	Program		""
-\\Format ps	  ps	Postscript	t
-\\Format pstex    pstex_t PSTEX         ""
-\\Format text	  txt	ASCII		A
-\\Format textparagraph txt ASCII(paragraphs)	""
-\\Format tgif     obj	TGIF		""
-\\Format tiff     tif	TIFF		""
-\\Format word	  doc	Word		W
-\\Format xbm	  xbm	XBM		""
-\\Format xpm	  xpm	XPM		""
+\\Format asciichess asc    "ASCII (chess output)"  "" ""	""
+\\Format asciiimage asc    "ASCII (image)"         "" ""	""
+\\Format asciixfig  asc    "ASCII (xfig output)"   "" ""	""
+\\Format agr        agr     GRACE                  "" ""	""
+\\Format bmp        bmp     BMP                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
+\\Format date       ""     "date command"          "" ""	""
+\\Format dateout    tmp    "date (output)"         "" ""	""
+\\Format docbook    sgml    DocBook                B  ""	""
+\\Format dvi        dvi     DVI                    D  "$DVI_VIEWER"	""
+\\Format eps        eps     EPS                    "" "$EPS_VIEWER"	""
+\\Format fax        ""      Fax                    "" ""	""
+\\Format fen        fen     FEN                    "" "$FEN_VIEWER"	"$FEN_EDITOR"
+\\Format fig        fig     XFig                   "" "$FIG_VIEWER"	"$FIG_EDITOR"
+\\Format gif        gif     GIF                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
+\\Format html       html    HTML                   H  "$HTML_VIEWER"	""
+\\Format jpg        jpg     JPG                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
+\\Format latex      tex     LaTeX                  L  ""	""
+\\Format linuxdoc   sgml    LinuxDoc               x  ""	""
+\\Format lyx        lyx     LyX                    "" ""	""
+\\Format lyxpreview lyxpreview "LyX Preview"       "" ""	""
+\\Format literate   nw      NoWeb                  N  ""	""
+\\Format pbm        pbm     PBM                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
+\\Format pdf        pdf    "PDF (ps2pdf)"          P  "$PDF_VIEWER"	""
+\\Format pdf2       pdf    "PDF (pdflatex)"        F  "$PDF_VIEWER"	""
+\\Format pdf3       pdf    "PDF (dvipdfm)"         m  "$PDF_VIEWER"	""
+\\Format pdftex     pdftex_t PDFTEX                "" ""	""
+\\Format pgm        pgm     PGM                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
+\\Format png        png     PNG                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
+\\Format ppm        ppm     PPM                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
+\\Format program    ""      Program                "" ""	""
+\\Format ps         ps      Postscript             t  "$PS_VIEWER"	""
+\\Format pstex      pstex_t PSTEX                  "" ""	""
+\\Format text       txt     ASCII                  A  ""	""
+\\Format textparagraph txt "ASCII (paragraphs)"    "" ""	""
+\\Format tgif       obj     TGIF                   "" "$TGIF_VIEWER"	"$TGIF_EDITOR"
+\\Format tiff       tif     TIFF                   "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
+\\Format word       doc     Word                   W  ""	""
+\\Format xbm        xbm     XBM                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
+\\Format xpm        xpm     XPM                    "" "$RASTERIMAGE_VIEWER"	"$RASTERIMAGE_EDITOR"
 
-\\converter date dateout "date +%d-%m-%Y > \$\$o" ""
-\\converter docbook dvi "$docbook_to_dvi_command" ""
-\\converter docbook html "$docbook_to_html_command" ""
-\\converter dvi pdf3 "$dvi_to_pdf_command" ""
-\\converter dvi ps "$dvi_to_ps_command" ""
-\\converter fen asciichess "python \$\$s/fen2ascii.py \$\$i \$\$o" ""
-\\converter fig pdftex "sh \$\$s/fig2pdftex.sh \$\$i \$\$o" ""
-\\converter fig pstex  "sh \$\$s/fig2pstex.sh \$\$i \$\$o" ""
-\\converter html latex "$html_to_latex_command" ""
-\\converter latex html "$latex_to_html_command" "originaldir,needaux"
-\\converter latex dvi "$latex_to_dvi" "latex"
-\\converter latex lyx "$tex_to_lyx_command" ""
-\\converter latex pdf2 "$latex_to_pdf" "latex"
-\\converter linuxdoc dvi "$linuxdoc_to_dvi_command" ""
-\\converter linuxdoc html "$linuxdoc_to_html_command" ""
-\\converter linuxdoc latex "$linuxdoc_to_latex_command" ""
-\\converter linuxdoc lyx "$linuxdoc_to_lyx_command" ""
-\\converter literate latex "$literate_to_tex_command" ""
-\\converter literate lyx "$literate_to_lyx_command" ""
-\\converter lyxpreview ppm "$lyxpreview_to_bitmap_command" ""
-\\converter ps fax "$fax_command" ""
-\\converter ps pdf "$ps_to_pdf_command" ""
-\\converter word latex "$word_to_latex_command" ""
-
-\\viewer dvi "$DVI_VIEWER"
-\\viewer html "$HTML_VIEWER"
-\\viewer pdf "$PDF_VIEWER"
-\\viewer pdf2 "$PDF_VIEWER"
-\\viewer pdf3 "$PDF_VIEWER"
-\\viewer ps "$PS_VIEWER"
-\\viewer eps "$EPS_VIEWER"
-
-$rc_entries
-\\font_encoding "$chk_fontenc"
+\\converter date       dateout    "date +%d-%m-%Y > \$\$o"	""
+\\converter docbook    dvi        "$docbook_to_dvi_command"	""
+\\converter docbook    html       "$docbook_to_html_command"	""
+\\converter dvi        pdf3       "$dvi_to_pdf_command"	""
+\\converter dvi        ps         "$dvi_to_ps_command"	""
+\\converter fen        asciichess "python \$\$s/fen2ascii.py \$\$i \$\$o"	""
+\\converter fig        pdftex     "sh \$\$s/fig2pdftex.sh \$\$i \$\$o"	""
+\\converter fig        pstex      "sh \$\$s/fig2pstex.sh \$\$i \$\$o"	""
+\\converter html       latex      "$html_to_latex_command"	""
+\\converter latex      html       "$latex_to_html_command"	"originaldir,needaux"
+\\converter latex      dvi        "$latex_to_dvi"	"latex"
+\\converter latex      lyx        "$tex_to_lyx_command"	""
+\\converter latex      pdf2       "$latex_to_pdf"	"latex"
+\\converter linuxdoc   dvi        "$linuxdoc_to_dvi_command"	""
+\\converter linuxdoc   html       "$linuxdoc_to_html_command"	""
+\\converter linuxdoc   latex      "$linuxdoc_to_latex_command"	""
+\\converter linuxdoc   lyx        "$linuxdoc_to_lyx_command"	""
+\\converter literate   latex      "$literate_to_tex_command"	""
+\\converter literate   lyx        "$literate_to_lyx_command"	""
+\\converter lyxpreview ppm        "$lyxpreview_to_bitmap_command"	""
+\\converter ps         fax        "$fax_command"	""
+\\converter ps         pdf        "$ps_to_pdf_command"	""
+\\converter word       latex      "$word_to_latex_command"	""
 EOF
 
 ### the graphic converter part with the predefined ones
-#### Search for tne nonstandard converting progs
+#### Search for the nonstandard converting progs
 #
 SEARCH_PROG([for an FIG -> EPS/PPM converter], FIG2DEV, fig2dev)
 if test "$FIG2DEV" = "fig2dev"; then
 cat >>$outfile <<EOF
-\\converter fig eps "fig2dev -L eps \$\$i \$\$o" ""
-\\converter fig ppm "fig2dev -L ppm \$\$i \$\$o" ""
-\\converter fig png "fig2dev -L png \$\$i \$\$o" ""
+\\converter fig        eps        "fig2dev -L eps \$\$i \$\$o" ""
+\\converter fig        ppm        "fig2dev -L ppm \$\$i \$\$o" ""
+\\converter fig        png        "fig2dev -L png \$\$i \$\$o" ""
 EOF
 fi
 
 SEARCH_PROG([for an TIFF -> PS converter], TIFF2PS, tiff2ps)
 if test "$TIFF2PS" = "tiff2ps"; then
 cat >>$outfile <<EOF
-\\converter tiff eps "tiff2ps \$\$i > \$\$o" ""
+\\converter tiff        eps         "tiff2ps \$\$i > \$\$o" ""
 EOF
 fi
 
 SEARCH_PROG([for an TGIF -> EPS/PPM converter], TGIF, tgif)
 if test "$TGIF" = "tgif"; then
 cat >>$outfile <<EOF
-\\converter tgif eps "tgif -stdout -print -color -eps \$\$i > \$\$o" ""
-\\converter tgif png "tgif -stdout -print -color -xpm \$\$i | xpmtoppm | pnmtopng > \$\$o" ""
+\\converter tgif       eps        "tgif -stdout -print -color -eps \$\$i > \$\$o" ""
+\\converter tgif       pdf        "tgif -stdout -print -color -pdf \$\$i > \$\$o" ""
 EOF
 fi
 
 SEARCH_PROG([for an EPS -> PDF converter], EPSTOPDF, epstopdf)
 if test "$EPSTOPDF" = "epstopdf"; then
 cat >>$outfile <<EOF
-\\converter eps pdf "epstopdf --outfile=\$\$o \$\$i" ""
+\\converter eps        pdf        "epstopdf --outfile=\$\$o \$\$i" ""
 EOF
 fi
 
@@ -606,12 +609,18 @@ fi
 SEARCH_PROG([for a Grace -> Image converter], GRACE, gracebat)
 if test "$GRACE" = "gracebat"; then
 cat >>$outfile <<EOF
-\\converter agr eps "gracebat -hardcopy -printfile \$\$o -hdevice EPS \$\$i 2>/dev/null" ""
-\\converter agr png "gracebat -hardcopy -printfile \$\$o -hdevice PNG \$\$i 2>/dev/null" ""
-\\converter agr jpg "gracebat -hardcopy -printfile \$\$o -hdevice JPEG \$\$i 2>/dev/null" ""
-\\converter agr ppm "gracebat -hardcopy -printfile \$\$o -hdevice PNM \$\$i 2>/dev/null" ""
+\\converter agr        eps        "gracebat -hardcopy -printfile \$\$o -hdevice EPS \$\$i 2>/dev/null" ""
+\\converter agr        png        "gracebat -hardcopy -printfile \$\$o -hdevice PNG \$\$i 2>/dev/null" ""
+\\converter agr        jpg        "gracebat -hardcopy -printfile \$\$o -hdevice JPEG \$\$i 2>/dev/null" ""
+\\converter agr        ppm        "gracebat -hardcopy -printfile \$\$o -hdevice PNM \$\$i 2>/dev/null" ""
 EOF
 fi
+
+cat >>$outfile <<EOF
+
+$rc_entries
+\\font_encoding "$chk_fontenc"
+EOF
 
 ######## X FONTS
 # create a fonts.dir file to make X fonts available to LyX

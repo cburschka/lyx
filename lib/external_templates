@@ -38,11 +38,9 @@ Template RasterImage
 	GuiName "Bitmap: $$AbsOrRelPathParent$$Basename"
 	HelpText
 		A bitmap file.
-		This template uses Gimp for editing.
 	HelpTextEnd
 	InputFormat "*"
 	FileFilter "*.{gif,png,jpg,bmp,pbm,ppm,tga,tif,xpm,xbm}"
-	EditCommand "gimp $$Absname"
 	AutomaticProduction true
 	Transform Rotate
 	Transform Resize
@@ -90,11 +88,9 @@ Template XFig
 	GuiName "XFig: $$AbsOrRelPathParent$$Basename"
 	HelpText
 		An XFig figure.
-		This template uses XFig for editing.
 	HelpTextEnd
 	InputFormat fig
 	FileFilter "*.fig"
-	EditCommand "xfig $$Absname"
 	AutomaticProduction true
 	Transform Rotate
 	Transform Resize
@@ -157,7 +153,6 @@ Template ChessDiagram
 	HelpTextEnd
 	InputFormat fen
 	FileFilter "*.fen"
-	EditCommand "xboard -lpf $$Absname -mode EditPosition"
 	AutomaticProduction true
 	Format LaTeX
 		Product "\\loadgame{$$AbsOrRelPathMaster$$Basename}\\showboard"

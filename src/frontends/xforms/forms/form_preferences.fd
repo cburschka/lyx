@@ -1705,13 +1705,13 @@ argument:
 =============== FORM ===============
 Name: form_preferences_formats
 Width: 450
-Height: 360
-Number of Objects: 9
+Height: 400
+Number of Objects: 10
 
 --------------------
 class: FL_BOX
 type: FLAT_BOX
-box: 0 0 450 360
+box: 0 0 450 400
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1835,9 +1835,27 @@ callback: C_FormDialogView_InputCB
 argument: 0
 
 --------------------
+class: FL_INPUT
+type: NORMAL_INPUT
+box: 280 230 150 30
+boxtype: FL_DOWN_BOX
+colors: FL_COL1 FL_MCOL
+alignment: FL_ALIGN_LEFT
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Editor:|#i
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: input_editor
+callback: C_FormDialogView_InputCB
+argument: 0
+
+--------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 240 270 90 30
+box: 240 300 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -1855,7 +1873,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 340 270 90 30
+box: 340 300 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER

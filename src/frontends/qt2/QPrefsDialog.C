@@ -381,6 +381,7 @@ void QPrefsDialog::switch_format(int nr)
 	fileformatsModule->extensionED->setText(toqstr(f.extension()));
 	fileformatsModule->shortcutED->setText(toqstr(f.shortcut()));
 	fileformatsModule->viewerED->setText(toqstr(f.viewer()));
+	fileformatsModule->editorED->setText(toqstr(f.editor()));
 	fileformatsModule->formatRemovePB->setEnabled(
 		!form_->converters().formatIsUsed(f.name()));
 }
@@ -407,10 +408,10 @@ void QPrefsDialog::modify_format()
 	string const extension = fromqstr(fileformatsModule->extensionED->text());
 	string const shortcut = fromqstr(fileformatsModule->shortcutED->text());
 	string const viewer = fromqstr(fileformatsModule->viewerED->text());
+	string const editor = fromqstr(fileformatsModule->editorED->text());
 
-	form_->formats().add(name, extension, prettyname, shortcut);
+	form_->formats().add(name, extension, prettyname, shortcut, viewer, editor);
 	form_->formats().sort();
-	form_->formats().setViewer(name, viewer);
 
 	fileformatsModule->formatsLB->setUpdatesEnabled(false);
 	updateFormats();

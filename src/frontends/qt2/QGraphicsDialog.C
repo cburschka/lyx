@@ -39,6 +39,8 @@ QGraphicsDialog::QGraphicsDialog(QGraphics * form)
 		form, SLOT(slotClose()));
 	connect(restorePB, SIGNAL(clicked()),
 		form, SLOT(slotRestore()));
+	connect(editPB, SIGNAL(clicked()),
+		this, SLOT(edit_clicked()));
 }
 
 
@@ -92,4 +94,10 @@ void QGraphicsDialog::browse_clicked()
 void QGraphicsDialog::getBB_clicked()
 {
 	form_->getBB();
+}
+
+
+void QGraphicsDialog::edit_clicked()
+{
+	form_->controller().editGraphics();
 }

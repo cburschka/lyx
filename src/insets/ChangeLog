@@ -1,3 +1,11 @@
+2004-04-12  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* ExternalTemplate.[Ch]: remove editCommand
+	* ExternalSupport.C (editExternal): use formats.edit() instead of
+	the removed editCommand template parameter
+	* insetgraphics.C (priv_dispatch): handle LFUN_GRAPHICS_EDIT
+	* insetgraphics.[Ch] (editGraphics): new method
+
 2004-04-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* insetinclude.C (validate): set/reset features.buffer_ when

@@ -190,6 +190,14 @@ void InsetGraphics::statusChanged() const
 void InsetGraphics::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 {
 	switch (cmd.action) {
+        case LFUN_GRAPHICS_EDIT: {
+		Buffer const & buffer = *cur.bv().buffer();
+		InsetGraphicsParams p;
+		InsetGraphicsMailer::string2params(cmd.argument, buffer, p);
+		editGraphics(p, buffer);
+		break;
+	}
+
 	case LFUN_INSET_MODIFY: {
 		Buffer const & buffer = cur.buffer();
 		InsetGraphicsParams p;
@@ -689,6 +697,13 @@ bool InsetGraphics::setParams(InsetGraphicsParams const & p)
 InsetGraphicsParams const & InsetGraphics::params() const
 {
 	return params_;
+}
+
+
+void InsetGraphics::editGraphics(InsetGraphicsParams const & p, Buffer const & buffer) const
+{
+	string const file_with_path = p.filename.absFilename();
+	formats.edit(buffer, file_with_path, getExtFromContents(file_with_path));
 }
 
 

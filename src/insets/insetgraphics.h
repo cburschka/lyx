@@ -79,6 +79,8 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	void edit(LCursor & cur, bool left);
+	///
+	void editGraphics(InsetGraphicsParams const &, Buffer const &) const;
 protected:
 	///
 	void priv_dispatch(LCursor & cur, FuncRequest & cmd);

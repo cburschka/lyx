@@ -27,6 +27,7 @@
 using lyx::support::bformat;
 using lyx::support::compare_ascii_no_case;
 using lyx::support::contains;
+using lyx::support::MakeDisplayPath;
 using lyx::support::OnlyFilename;
 using lyx::support::OnlyPath;
 using lyx::support::Path;
@@ -70,8 +71,8 @@ bool operator<(Format const & a, Format const & b)
 }
 
 Format::Format(string const & n, string const & e, string const & p,
-	       string const & s, string const & v)
-	: name_(n), extension_(e), prettyname_(p),shortcut_(s), viewer_(v)
+	       string const & s, string const & v, string const & ed)
+	: name_(n), extension_(e), prettyname_(p), shortcut_(s), viewer_(v), editor_(ed)
 {}
 
 
@@ -124,23 +125,22 @@ int Formats::getNumber(string const & name) const
 void Formats::add(string const & name)
 {
 	if (!getFormat(name))
-		add(name, name, name, string());
+		add(name, name, name, string(), string(), string());
 }
 
 
 void Formats::add(string const & name, string const & extension,
-		  string const & prettyname, string const & shortcut)
+                  string const & prettyname, string const & shortcut,
+                  string const & viewer, string const & editor)
 {
 	FormatList::iterator it =
 		find_if(formatlist.begin(), formatlist.end(),
 			FormatNamesEqual(name));
 	if (it == formatlist.end())
 		formatlist.push_back(Format(name, extension, prettyname,
-					    shortcut, ""));
-	else {
-		string viewer = it->viewer();
-		*it = Format(name, extension, prettyname, shortcut, viewer);
-	}
+					    shortcut, viewer, editor));
+	else
+		*it = Format(name, extension, prettyname, shortcut, viewer, editor);
 }
 
 
@@ -172,7 +172,7 @@ void Formats::setViewer(string const & name, string const & command)
 
 
 bool Formats::view(Buffer const & buffer, string const & filename,
-		   string const & format_name) const
+                   string const & format_name) const
 {
 	if (filename.empty())
 		return false;
@@ -183,7 +183,7 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 		format = getFormat(format->parentFormat());
 	if (!format || format->viewer().empty()) {
 // I believe this is the wrong place to show alerts, it should be done by
-// the caller (this should be "utility" code
+// the caller (this should be "utility" code)
 		Alert::error(_("Cannot view file"),
 			bformat(_("No information for viewing %1$s"),
 				prettyName(format_name)));
@@ -220,7 +220,52 @@ bool Formats::view(Buffer const & buffer, string const & filename,
 	if (res) {
 		Alert::error(_("Cannot view file"),
 			     bformat(_("An error occurred whilst running %1$s"),
-			       command.substr(0, 50)));
+			       MakeDisplayPath(command, 50)));
+		return false;
+	}
+	return true;
+}
+
+
+bool Formats::edit(Buffer const & buffer, string const & filename,
+		         string const & format_name) const
+{
+	if (filename.empty())
+		return false;
+
+	Format const * format = getFormat(format_name);
+	if (format && format->editor().empty() &&
+	    format->isChildFormat())
+		format = getFormat(format->parentFormat());
+	if (!format || format->editor().empty()) {
+// I believe this is the wrong place to show alerts, it should be done by
+// the caller (this should be "utility" code)
+		Alert::error(_("Cannot edit file"),
+			bformat(_("No information for editing %1$s"),
+				prettyName(format_name)));
+		return false;
+	}
+
+	string command = format->editor();
+
+	if (!contains(command, token_from))
+		command += ' ' + token_from;
+
+	command = subst(command, token_from,
+			QuoteName(OnlyFilename(filename)));
+	command = subst(command, token_path, QuoteName(OnlyPath(filename)));
+	command = subst(command, token_socket, QuoteName(lyxsocket->address()));
+	lyxerr[Debug::FILES] << "Executing command: " << command << std::endl;
+	buffer.message(_("Executing command: ") + command);
+
+	Path p(OnlyPath(filename));
+	Systemcall one;
+	int const res = one.startscript(Systemcall::DontWait, command);
+
+	if (res) {
+		Alert::error(_("Cannot edit file"),
+			     bformat(_("An error occurred whilst running %1$s"),
+			       MakeDisplayPath(command, 50)));
 		return false;
 	}
 	return true;

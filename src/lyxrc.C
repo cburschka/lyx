@@ -161,6 +161,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\user_email", LyXRC::RC_USER_EMAIL },
 	{ "\\user_name", LyXRC::RC_USER_NAME },
 	{ "\\view_dvi_paper_option", LyXRC::RC_VIEWDVI_PAPEROPTION },
+	// compatibility with versions older than 1.4.0 only
 	{ "\\viewer" ,LyXRC::RC_VIEWER},
 	{ "\\wheel_jump", LyXRC::RC_WHEEL_JUMP }
 };
@@ -979,6 +980,7 @@ int LyXRC::read(LyXLex & lexrc)
 			}
 			break;
 		}
+		// compatibility with versions older than 1.4.0 only
 		case RC_VIEWER: {
 			string format, command;
 			if (lexrc.next()) {
@@ -1006,6 +1008,29 @@ int LyXRC::read(LyXLex & lexrc)
 			if (lexrc.next()) {
 				shortcut = lexrc.getString();
 			}
+			string viewer, editor;
+			// Hack to ensure compatibility with versions older
+			// than 1.4.0
+			int le = lexrc.lex();
+			if (le != LyXLex::LEX_FEOF && le != LyXLex::LEX_UNDEF) {
+				viewer = lexrc.getString();
+				if (le == LyXLex::LEX_DATA) {
+					if (token(viewer, ' ', 0) == "none")
+						viewer.erase();
+					if (lexrc.next()) {
+						editor = lexrc.getString();
+						if (token(editor, ' ', 0) == "none")
+							editor.erase();
+					}
+				} else {
+					// We have got a known token.
+					// Therefore this is an old style
+					// format definition without
+					// viewer and editor.
+					lexrc.pushToken(viewer);
+					viewer.erase();
+				}
+			}
 			if (prettyname.empty()) {
 				if (converters.formatIsUsed(format)) {
 					lyxerr << "Can't delete format "
@@ -1015,7 +1040,7 @@ int LyXRC::read(LyXLex & lexrc)
 				}
 			} else {
 				formats.add(format, extension, prettyname,
-					    shortcut);
+					    shortcut, viewer, editor);
 			}
 			break;
 		}
@@ -1801,7 +1826,7 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 		   << "#\n\n";
 
 	case RC_FORMAT:
-		// Look for deleted formats
+		// New/modifed formats
 		for (Formats::const_iterator cit = formats.begin();
 		     cit != formats.end(); ++cit) {
 			Format const * format =
@@ -1809,29 +1834,25 @@ void LyXRC::write(ostream & os, bool ignore_system_lyxrc) const
 			if (!format ||
 			    format->extension() != cit->extension() ||
 			    format->prettyname() != cit->prettyname() ||
-			    format->shortcut() != cit->shortcut())
+			    format->shortcut() != cit->shortcut() ||
+			    format->viewer() != cit->viewer() ||
+			    format->editor() != cit->editor())
 				os << "\\format \"" << cit->name() << "\" \""
 				   << cit->extension() << "\" \""
 				   << cit->prettyname() << "\" \""
-				   << cit->shortcut() << "\"\n";
+				   << cit->shortcut() << "\" \""
+				   << cit->viewer() << "\" \""
+				   << cit->editor() << "\"\n";
 		}
 
-		// New/modifed formats
+		// Look for deleted formats
 		for (Formats::const_iterator cit = system_formats.begin();
 		     cit != system_formats.end(); ++cit)
 			if (!formats.getFormat(cit->name()))
 				os << "\\format \"" << cit->name()
-				   << "\" \"\" \"\" \"\"\n";
+				   << "\" \"\" \"\" \"\" \"\" \"\"\n";
 	case RC_VIEWER:
-		for (Formats::const_iterator cit = formats.begin();
-		     cit != formats.end(); ++cit) {
-			Format const * format =
-				system_formats.getFormat(cit->name());
-			if ((!format || format->viewer() != cit->viewer()) &&
-			    (format || !cit->viewer().empty()))
-				os << "\\viewer \"" << cit->name() << "\" \""
-				   << cit->viewer() << "\"\n";
-		}
+		// Ignore it
 
 		os << "\n#\n"
 		   << "# CONVERTERS SECTION ##########################\n"

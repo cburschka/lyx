@@ -54,8 +54,6 @@ struct Template {
 	std::string inputFormat;
 	/// A file extension regular expression for the file browser
 	std::string fileRegExp;
-	/// What command should be executed to edit the file?
-	std::string editCommand;
 	/// Should we do automatic production of the output?
 	bool automaticProduction;
 	/// A collection of transforms that we can use to transform the data.

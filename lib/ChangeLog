@@ -1,3 +1,9 @@
+2004-04-12  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* configure.m4: merge \viewer and \format. Add editor to \format
+	* configure.m4: check for more viewers and editors
+	* external_templates: remove EditCommand
+
 2004-04-06  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* external_templates: use some new variables instead of $$Basename

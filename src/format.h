@@ -21,7 +21,7 @@ class Format {
 public:
 	///
 	Format(std::string const & n, std::string const & e, std::string const & p,
-	       std::string const & s, std::string const & v);
+	       std::string const & s, std::string const & v, std::string const & ed);
 	///
 	bool dummy() const;
 	///
@@ -52,6 +52,10 @@ public:
 	void setViewer(std::string const & v) {
 		viewer_ = v;
 	}
+	///
+	std::string const & editor() const {
+		return editor_;
+	}
 private:
 	std::string name_;
 	///
@@ -62,6 +66,8 @@ private:
 	std::string shortcut_;
 	///
 	std::string viewer_;
+	///
+	std::string editor_;
 };
 
 
@@ -86,7 +92,8 @@ public:
 	void add(std::string const & name);
 	///
 	void add(std::string const & name, std::string const & extension,
-		 std::string const & prettyname, std::string const & shortcut);
+	         std::string const & prettyname, std::string const & shortcut,
+	         std::string const & viewer, std::string const & editor);
 	///
 	void erase(std::string const & name);
 	///
@@ -95,6 +102,9 @@ public:
 	void setViewer(std::string const & name, std::string const & command);
 	///
 	bool view(Buffer const & buffer, std::string const & filename,
+		  std::string const & format_name) const;
+	///
+	bool edit(Buffer const & buffer, std::string const & filename,
 		  std::string const & format_name) const;
 	///
 	std::string const prettyName(std::string const & name) const;

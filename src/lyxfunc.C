@@ -483,6 +483,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_SET_COLOR:
 	case LFUN_MESSAGE:
 	case LFUN_EXTERNAL_EDIT:
+	case LFUN_GRAPHICS_EDIT:
 	case LFUN_ALL_INSETS_TOGGLE:
 	case LFUN_LANGUAGE_BUFFER:
 	case LFUN_TEXTCLASS_APPLY:
@@ -1257,6 +1258,12 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 		case LFUN_EXTERNAL_EDIT: {
 			FuncRequest fr(action, argument);
 			InsetExternal().dispatch(view()->cursor(), fr);
+			break;
+		}
+
+		case LFUN_GRAPHICS_EDIT: {
+			FuncRequest fr(action, argument);
+			InsetGraphics().dispatch(view()->cursor(), fr);
 			break;
 		}
 

@@ -571,8 +571,12 @@ void FormGraphics::updateBB(string const & filename, string const & bb_inset)
 
 ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 {
+	ButtonPolicy::SMInput activate = ButtonPolicy::SMI_VALID;
+
 	// the file section
 	if (ob == file_->button_browse) {
+		activate = ButtonPolicy::SMI_NOOP;
+
 		// Get the filename from the dialog
 		string const in_name = getString(file_->input_filename);
 		string const out_name = controller().browse(in_name);
@@ -642,7 +646,11 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		setEnabled(extra_->input_subcaption,
 			   fl_get_button(extra_->check_subcaption));
 
+	} else if (ob == file_->button_edit) {
+		activate = ButtonPolicy::SMI_NOOP;
+		controller().editGraphics();
 	}
 
-	return ButtonPolicy::SMI_VALID;
+
+	return activate;
 }
