@@ -68,6 +68,15 @@ void MathXArray::metrics(MathMetricsInfo & mi) const
 	}
 	//lyxerr << "MathXArray::metrics(): '" << ascent_ << " "
 	//	<< descent_ << " " << width_ << "'\n";
+
+
+	//
+	// re-break paragraph
+	//
+	if (mi.base.restrictwidth) {
+		width_ = mi.base.textwidth;
+		lyxerr << "restricting width to " << width_ << " pixel\n";
+	}
 }
 
 
@@ -109,6 +118,12 @@ void MathXArray::draw(MathPainterInfo & pi, int x, int y) const
 			p->draw(pi, x, y);
 			x += p->width();
 		}
+	}
+
+	//
+	// re-break paragraph
+	//
+	if (pi.base.restrictwidth) {
 	}
 }
 

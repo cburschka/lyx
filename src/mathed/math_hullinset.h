@@ -115,25 +115,4 @@ private:
 	std::vector<string> label_;
 };
 
-
-class MathParInset : public MathHullInset {
-public:
-	///
-	MathParInset();
-	///
-	MathParInset * asParInset() { return this; }
-	///
-	void metrics(MathMetricsInfo & mi) const;
-	///
-	void draw(MathPainterInfo &, int x, int y) const;
-	///
-	void infoize(std::ostream & os) const;
-	///
-	void write(WriteStream & os) const;
-private:
-	///
-	void rebreak();
-};
-
-
 #endif

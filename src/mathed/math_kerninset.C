@@ -34,15 +34,9 @@ MathInset * MathKernInset::clone() const
 
 void MathKernInset::metrics(MathMetricsInfo & /*mi*/) const
 {
-#ifdef WITH_WARNINGS
-#warning fix this once the interface to LyXLength has improved
-#endif
-	// this uses the numerical valu in pixels, even if the unit is cm or ex!
-	width_   = static_cast<int>(wid_.value());
-	width_   = (width_*static_cast<int>(lyxrc.zoom))/150;
+	width_   = wid_.inBP();
 	ascent_  = 0;
 	descent_ = 0;
-	//cerr << "handling kern of width " << wid_.value() << "\n";
 }
 
 

@@ -1384,6 +1384,8 @@ bool MathCursor::inMathMode() const
 		return false;
 	if (par()->asFboxInset())
 		return false;
+	if (par()->asParboxInset())
+		return false;
 	if (par()->asParInset())
 		return false;
 	return true;

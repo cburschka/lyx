@@ -50,6 +50,8 @@ following hack as starting point to write some macros:
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
 #include "math_hullinset.h"
+#include "math_parboxinset.h"
+#include "math_parinset.h"
 #include "math_rootinset.h"
 #include "math_sizeinset.h"
 #include "math_sqrtinset.h"
@@ -125,13 +127,14 @@ enum {
 	FLAG_BRACE_LAST = 1 << 1,  //  last closing brace ends the parsing
 	FLAG_RIGHT      = 1 << 2,  //  next \\right ends the parsing process
 	FLAG_END        = 1 << 3,  //  next \\end ends the parsing process
-	FLAG_BRACK_END  = 1 << 4,  //  next closing bracket ends the parsing
+	FLAG_BRACK_LAST = 1 << 4,  //  next closing bracket ends the parsing
 	FLAG_TEXTMODE   = 1 << 5,  //  we are in a box
 	FLAG_ITEM       = 1 << 6,  //  read a (possibly braced token)
 	FLAG_LEAVE      = 1 << 7,  //  leave the loop at the end
 	FLAG_SIMPLE     = 1 << 8,  //  next $ leaves the loop
 	FLAG_EQUATION   = 1 << 9,  //  next \] leaves the loop
-	FLAG_SIMPLE2    = 1 << 10  //  next \) leaves the loop
+	FLAG_SIMPLE2    = 1 << 10, //  next \) leaves the loop
+	FLAG_OPTION     = 1 << 11  //  read [...] style option
 };
 
 
@@ -648,6 +651,19 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 			flags |= FLAG_LEAVE;
 		}
 
+
+		if (flags & FLAG_OPTION) {
+			if (t.cat() == catOther && t.character() == '[') {
+				// skip the bracket and collect everything to the clsing bracket
+				flags |= FLAG_BRACK_LAST;
+				continue;
+			}
+
+			// no option found, put back token and we are done
+			putback();
+			return;
+		}
+
 		//
 		// cat codes
 		//
@@ -734,7 +750,7 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 			limits = 0;
 		}
 
-		else if (t.character() == ']' && (flags & FLAG_BRACK_END))
+		else if (t.character() == ']' && (flags & FLAG_BRACK_LAST))
 			return;
 
 		else if (t.cat() == catOther)
@@ -846,13 +862,13 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 		}
 
 		else if (t.cs() == "sqrt") {
-			char c = getChar();
-			if (c == '[') {
+			MathArray ar;
+			parse_into(ar, FLAG_OPTION, mathmode);
+			if (ar.size()) {
 				cell->push_back(MathAtom(new MathRootInset));
-				parse_into(cell->back()->cell(0), FLAG_BRACK_END, mathmode);
+				cell->back()->cell(0) = ar;
 				parse_into(cell->back()->cell(1), FLAG_ITEM, mathmode);
 			} else {
-				putback();
 				cell->push_back(MathAtom(new MathSqrtInset));
 				parse_into(cell->back()->cell(0), FLAG_ITEM, mathmode);
 			}
@@ -860,11 +876,7 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 
 		else if (t.cs() == "ref") {
 			cell->push_back(MathAtom(new RefInset));
-			char c = getChar();
-			if (c == '[') 
-				parse_into(cell->back()->cell(1), FLAG_BRACK_END, mathmode);
-			else 
-				putback();
+			parse_into(cell->back()->cell(1), FLAG_OPTION, mathmode);
 			parse_into(cell->back()->cell(0), FLAG_ITEM, mathmode);
 		}
 
@@ -1009,16 +1021,8 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 		// Disabled
 		else if (1 && t.cs() == "ar") {
 			MathXYArrowInset * p = new MathXYArrowInset;
-
 			// try to read target
-			char c = getChar();
-			if (c == '[') {
-				parse_into(p->cell(0), FLAG_BRACK_END, mathmode);
-				//lyxerr << "read target: " << p->cell(0) << "\n";
-			} else {
-				putback();
-			}
-
+			parse_into(p->cell(0), FLAG_OTPTION, mathmode);
 			// try to read label
 			if (nextToken().cat() == catSuper || nextToken().cat() == catSub) {
 				p->up_ = nextToken().cat() == catSuper;
@@ -1050,7 +1054,7 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 					return;
 				}
 
-				else if (l->inset == "box") {
+				else if (l->inset == "mbox") {
 					// switch to text mode
 					cell->push_back(createMathInset(t.cs()));
 					parse_into(cell->back()->cell(0), FLAG_ITEM, mathmode);
@@ -1060,6 +1064,17 @@ void Parser::parse_into1(MathGridInset & grid, unsigned flags,
 					cell->push_back(createMathInset(t.cs()));
 					parse_into(cell->back()->cell(0), flags, mathmode);
 					return;
+				}
+
+				else if (l->inset == "parbox") {
+					// read optional positioning and width
+					MathArray pos, width;
+					parse_into(pos, FLAG_OPTION, false);
+					parse_into(width, FLAG_ITEM, false);
+					cell->push_back(createMathInset(t.cs()));
+					parse_into(cell->back()->cell(0), FLAG_ITEM, false);
+					cell->back()->asParboxInset()->setPosition(asString(pos));
+					cell->back()->asParboxInset()->setWidth(asString(width));
 				}
 
 				else {
@@ -1108,20 +1123,19 @@ void mathed_parse_cell(MathArray & ar, istream & is)
 bool mathed_parse_macro(string & name, string const & str)
 {
 	istringstream is(str.c_str());
-	Parser parser(is);
-	return parser.parse_macro(name);
+	return Parser(is).parse_macro(name);
 }
+
 
 bool mathed_parse_macro(string & name, istream & is)
 {
-	Parser parser(is);
-	return parser.parse_macro(name);
+	return Parser(is).parse_macro(name);
 }
+
 
 bool mathed_parse_macro(string & name, LyXLex & lex)
 {
-	Parser parser(lex);
-	return parser.parse_macro(name);
+	return Parser(lex).parse_macro(name);
 }
 
 
@@ -1129,18 +1143,17 @@ bool mathed_parse_macro(string & name, LyXLex & lex)
 bool mathed_parse_normal(MathAtom & t, string const & str)
 {
 	istringstream is(str.c_str());
-	Parser parser(is);
-	return parser.parse_normal(t);
+	return Parser(is).parse_normal(t);
 }
+
 
 bool mathed_parse_normal(MathAtom & t, istream & is)
 {
-	Parser parser(is);
-	return parser.parse_normal(t);
+	return Parser(is).parse_normal(t);
 }
+
 
 bool mathed_parse_normal(MathAtom & t, LyXLex & lex)
 {
-	Parser parser(lex);
-	return parser.parse_normal(t);
+	return Parser(lex).parse_normal(t);
 }

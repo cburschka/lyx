@@ -34,7 +34,7 @@ void MathFontInset::metrics(MathMetricsInfo & mi) const
 	MathFontSetChanger dummy(mi.base, name_.c_str());
 	xcell(0).metrics(mi);
 	ascent_  = xcell(0).ascent();
-	descent_ = xcell(0).descent() + 2;
+	descent_ = xcell(0).descent() + 1;
 	width_   = xcell(0).width()   + 2;
 }
 

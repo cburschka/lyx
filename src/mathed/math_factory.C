@@ -17,6 +17,7 @@
 #include "math_macrotable.h"
 #include "math_macroarg.h"
 #include "math_notinset.h"
+#include "math_parboxinset.h"
 #include "math_rootinset.h"
 #include "math_sizeinset.h"
 #include "math_spaceinset.h"
@@ -99,7 +100,6 @@ key_type wordlist_array[] =
 	{"ldots",  "dots", ""},
 	{"left",  "left", ""},
 	{"limits",  "limit", ""},
-	{"lyxbox",  "box", ""},
 	{"lyxnegspace",  "space", ""},
 	{"lyxposspace",  "space", ""},
 	{"mathbb",  "font", ""},
@@ -113,7 +113,7 @@ key_type wordlist_array[] =
 	{"mathsf",  "font", ""},
 	{"mathtt",  "font", ""},
 	{"matrix",  "matrix", ""},
-	{"mbox",  "box", ""},
+	{"mbox",  "mbox", ""},
 	{"newcommand",  "newcommand", ""},
 	{"nolimits",  "limit", ""},
 	{"nonumber",  "nonum", ""},
@@ -123,6 +123,7 @@ key_type wordlist_array[] =
 	{"overrightarrow",  "decoration", ""},
 	{"overleftrightarrow", "decoration", ""},
 	{"pageref",  "ref", ""},
+	{"parbox",  "parbox", ""},
 	{"pmatrix",  "matrix", ""},
 	{"prettyref",  "ref", ""},
 	{"protect",  "protect", ""},
@@ -135,6 +136,7 @@ key_type wordlist_array[] =
 	{"scriptstyle",  "style", ""},
 	{"text",    "font", "mathtext"},
 	{"textbf",  "font", "mathtext"},
+	{"textipa", "font", "mathtext"},
 	{"textit",  "font", "mathtext"},
 	{"textmd",  "font", "mathtext"},
 	{"textrm",  "font", "mathtext"},
@@ -328,8 +330,10 @@ MathAtom createMathInset(string const & s)
 			return MathAtom(new MathSpaceInset(l->name));
 		if (inset == "dots")
 			return MathAtom(new MathDotsInset(l->name));
-		if (inset == "box")
+		if (inset == "mbox")
 			return MathAtom(new MathBoxInset(l->name));
+		if (inset == "parbox")
+			return MathAtom(new MathParboxInset);
 		if (inset == "fbox")
 			return MathAtom(new MathFboxInset);
 		if (inset == "style")

@@ -566,6 +566,9 @@ fontinfo fontinfos[] = {
 	{"texttt", LyXFont::TYPEWRITER_FAMILY, inh_series, inh_shape, LColor::black},
 	{"textup", inh_family, inh_series, LyXFont::UP_SHAPE, LColor::black},
 
+	// TIPA support
+	{"textipa",   inh_family, inh_series, inh_shape, LColor::black},
+
 	{"lyxtex", inh_family, inh_series, inh_shape, LColor::latex},
 	{"lyxsymbol", LyXFont::SYMBOL_FAMILY, inh_series, inh_shape, LColor::math},
 	{"lyxboldsymbol",

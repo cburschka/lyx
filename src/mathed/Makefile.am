@@ -97,6 +97,10 @@ libmathed_la_SOURCES = \
 	math_notinset.h \
 	math_numberinset.C \
 	math_numberinset.h \
+	math_parboxinset.C \
+	math_parboxinset.h \
+	math_parinset.C \
+	math_parinset.h \
 	math_parser.C \
 	math_parser.h \
 	math_pos.C \

@@ -3,12 +3,14 @@
 
 #include "math_metricsinfo.h"
 #include "math_support.h"
+#include "debug.h"
 #include "frontends/Painter.h"
 
 
 
 MathMetricsBase::MathMetricsBase()
-	: font(), style(LM_ST_TEXT), fontname("mathnormal")
+	: font(), style(LM_ST_TEXT), fontname("mathnormal"),
+	  restrictwidth(false), textwidth(0)
 {}
 
 
@@ -143,6 +145,21 @@ MathFontSetChanger::MathFontSetChanger(MathMetricsBase & mb, char const * name)
 }
 
 MathFontSetChanger::~MathFontSetChanger()
+{
+	orig_ = save_;
+}
+
+
+MathWidthChanger::MathWidthChanger(MathMetricsBase & mb, int w)
+	:	MathChanger<MathMetricsBase>(mb)
+{
+	save_ = mb;	
+	mb.restrictwidth = true;
+	mb.textwidth     = w;
+}
+
+
+MathWidthChanger::~MathWidthChanger()
 {
 	orig_ = save_;
 }

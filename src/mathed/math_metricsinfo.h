@@ -32,6 +32,10 @@ struct MathMetricsBase {
 	MathStyles style;
 	///
 	string fontname;
+	/// if this is set...
+	bool restrictwidth;
+	/// ... this is valid
+	int textwidth;
 };
 
 
@@ -129,6 +133,15 @@ struct MathShapeChanger : public MathChanger<LyXFont, LyXFont::FONT_SHAPE> {
 	MathShapeChanger(LyXFont & font, LyXFont::FONT_SHAPE shape);
 	///
 	~MathShapeChanger();
+};
+
+
+struct MathWidthChanger : public MathChanger<MathMetricsBase>
+{
+	///
+	MathWidthChanger(MathMetricsBase & mb, int width);
+	///
+	~MathWidthChanger();
 };
 
 
