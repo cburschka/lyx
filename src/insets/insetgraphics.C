@@ -536,47 +536,37 @@ string const InsetGraphics::prepareFile(Buffer const *buf) const
 	//
 	// first check if file is viewed in LyX. First local
 	// than global
-	if ((params.display == InsetGraphicsParams::NONE) || 
-	    ((params.display == InsetGraphicsParams::DEFAULT) &&
-	    (lyxrc.display_graphics == "no"))) {
-		lyxerr << "InsetGraphics::no converting of: " << params.filename << "\n";
-		return params.filename;
-	}
 	// if it's a zipped one, than let LaTeX do the rest!!!
-	if (zippedFile(params.filename)) {
-	    lyxerr << "InsetGraphics::prepareFilter(zippedFile): return " 
+	if ((zippedFile(params.filename) && params.noUnzip) || buf->niceFile) {
+	    lyxerr << "don't unzip file or export latex" 
 		    << params.filename << endl;
 	    return params.filename;
 	}
+	string filename_ = params.filename;
+	if (zippedFile(filename_))
+	    filename_ = unzipFile(filename_);
 	// now we have unzipped files
 	// Get the extension (format) of the original file.
 	// we handle it like a virtual one, so we can have
 	// different extensions with the same type.
-	string const extension = getExtFromContents(params.filename);
-	// Are we creating a PDF or a PS file?
-	// (Should actually mean, are we usind latex or pdflatex).
+	string const extension = getExtFromContents(filename_);
+	// are we usind latex ((e)ps) or pdflatex (pdf,jpg,png)
 	string const image_target = decideOutputImageFormat(extension);
-	if (extension == image_target)
-		return params.filename;
-	if (!IsFileReadable(params.filename)) {
+	if (extension == image_target)		// :-)
+		return filename_;
+	if (!IsFileReadable(filename_)) {	// :-(
 		Alert::alert(_("File") + params.filename,
 			   _("isn't readable or doesn't exists!"));
-		return params.filename;
+		return filename_;
 	}
 	string outfile;
-	if (!buf->niceFile) {
-		string const temp = AddName(buf->tmppath, params.filename);
-		lyxerr << "temp = " << temp << "\n";
-		outfile = RemoveExtension(temp);
-	} else {
-		string const path = buf->filePath();
-		string const relname = MakeRelPath(params.filename, path);
-		outfile = RemoveExtension(relname);
-	}
+	string const temp = AddName(buf->tmppath, filename_);
+	outfile = RemoveExtension(temp);
+	lyxerr << "tempname = " << temp << "\n";
 	lyxerr << "buf::tmppath = " << buf->tmppath << "\n";
-	lyxerr << "filename = " << params.filename << "\n";
+	lyxerr << "filename_ = " << filename_ << "\n";
 	lyxerr << "outfile = " << outfile << endl;
-	converters.convert(buf, params.filename, outfile, extension, image_target);
+	converters.convert(buf, filename_, outfile, extension, image_target);
 	return outfile;
 }
 
@@ -592,6 +582,7 @@ int InsetGraphics::latex(Buffer const *buf, ostream & os,
 		return 1; // One end of line marker added to the stream.
 	}
 	// Keep count of newlines that we issued.
+#warning the newlines=0 were in the original code. where is the sense? (Herbert)
 	int newlines = 0;
 	// This variables collect all the latex code that should be before and
 	// after the actual includegraphics command.
