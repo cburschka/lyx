@@ -361,10 +361,6 @@ int mkstemp(char*);
 #include "support/os2_defines.h"
 #endif
 
-#if defined(__CYGWIN__) || defined(__CYGWIN32__)
-#include "support/nt_defines.h"
-#endif
-
 #if defined(HAVE_OSTREAM) && defined(HAVE_LOCALE) && defined(HAVE_SSTREAM)
 #define USE_BOOST_FORMAT 1
 #else

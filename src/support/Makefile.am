@@ -51,7 +51,6 @@ libsupport_la_SOURCES = \
 	lyxtime.h \
 	lyxsum.C \
 	mkdir.C \
-	nt_defines.h \
 	os.C \
 	os.h \
 	os2_defines.h \
