@@ -187,7 +187,7 @@ void Menubar::Pimpl::callback(int action)
   // Dispatch action OR record action to local variable (see connectWidgetToAction)
   if (!ignore_action_) {
       Pimpl::update();
-      owner_->getLyXFunc()->Dispatch(action);
+      owner_->getLyXFunc()->dispatch(action);
   } else
       action_ = action;
 }
@@ -203,7 +203,7 @@ void Menubar::Pimpl::callbackToc(Buffer::TocItem tg)
   owner_->view()->update(BufferView::SELECT|BufferView::FITCUR);
 #endif
 
-  owner_->getLyXFunc()->Dispatch(LFUN_GOTO_PARAGRAPH, tg.str);
+  owner_->getLyXFunc()->dispatch(LFUN_GOTO_PARAGRAPH, tg.str);
 }
 
 void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::Info> & Menus, string rootpath)
