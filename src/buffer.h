@@ -321,7 +321,7 @@ public:
 	TexRow texrow;
 	/// Buffer-wide counter array
 	Counters & counters() const;
-	
+
 private:
 	/// is save needed
 	mutable bool lyx_clean;
@@ -357,7 +357,7 @@ private:
 
 	/// The pointer is const although its contents may not be
 	boost::scoped_ptr<Counters> const ctrs;
-	
+
 public:
 	///
 	class inset_iterator {
@@ -369,15 +369,15 @@ public:
 		typedef Inset & reference;
 		typedef ParagraphList::iterator base_type;
 
- 		///
- 		inset_iterator();
- 		///
- 		inset_iterator(base_type p, base_type e);
- 		///
- 		inset_iterator(base_type p, lyx::pos_type pos, base_type e);
+		///
+		inset_iterator();
+		///
+		inset_iterator(base_type p, base_type e);
+		///
+		inset_iterator(base_type p, lyx::pos_type pos, base_type e);
 
- 		/// prefix ++
- 		inset_iterator & operator++();
+		/// prefix ++
+		inset_iterator & operator++();
 		/// postfix ++
 		inset_iterator operator++(int);
 		///
@@ -433,4 +433,9 @@ public:
 	Inset * getInsetFromID(int id_arg) const;
 };
 
+bool operator==(Buffer::inset_iterator const & iter1,
+		Buffer::inset_iterator const & iter2);
+
+bool operator!=(Buffer::inset_iterator const & iter1,
+		Buffer::inset_iterator const & iter2);
 #endif
