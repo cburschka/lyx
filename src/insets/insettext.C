@@ -86,7 +86,7 @@ InsetText::~InsetText()
 }
 
 
-InsetText * InsetText::Clone() const
+Inset * InsetText::Clone() const
 {
     InsetText * t = new InsetText(*this, buffer);
     return t;
@@ -813,7 +813,6 @@ UpdatableInset::RESULT InsetText::LocalDispatch(BufferView * bv,
 	      selection_start = selection_end = actpos;
 	  }
           return DISPATCHED;
-          break;
       default:
           result = UNDISPATCHED;
           break;
@@ -978,7 +977,7 @@ int InsetText::BeginningOfMainBody(LyXParagraph * par) const
 }
 
 
-void InsetText::GetCursorPos(int & x, int & y)
+void InsetText::GetCursorPos(int & x, int & y) const
 {
     x = cx;
     y = cy;

@@ -36,7 +36,7 @@ public:
     ///
     ~InsetERT() {}
     ///
-    InsetERT * Clone() const;
+    Inset * Clone() const;
     ///
     //    void Read(LyXLex &);
     ///

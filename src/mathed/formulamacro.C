@@ -146,7 +146,7 @@ int InsetFormulaMacro::width(Painter & pain, LyXFont const & f) const
 
 
 void InsetFormulaMacro::draw(Painter & pain, LyXFont const & f,
-			     int baseline, float & x)
+			     int baseline, float & x) const
 {
 	LyXFont font(f);
 	tmacro->update();

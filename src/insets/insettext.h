@@ -42,7 +42,7 @@ public:
     ///
     ~InsetText();
     ///
-    InsetText * Clone() const;
+    Inset * Clone() const;
     ///
     void Read(LyXLex &);
     ///
@@ -92,7 +92,7 @@ public:
     ///
     Inset::Code LyxCode() const { return Inset::TEXT_CODE; }
     ///
-    void GetCursorPos(int & x, int & y);
+    void GetCursorPos(int & x, int & y) const;
     ///
     int InsetInInsetY();
     ///

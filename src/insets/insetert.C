@@ -28,7 +28,7 @@ InsetERT::InsetERT(Buffer * bf)
 }
 
 
-InsetERT * InsetERT::Clone() const
+Inset * InsetERT::Clone() const
 {
     InsetERT * result = new InsetERT(buffer);
     return result;

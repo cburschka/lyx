@@ -1,3 +1,17 @@
+2000-02-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/insets/insettext.C (LocalDispatch): remove extra break
+	statement. 
+
+	* src/insets/insetert.[Ch] (Clone): change return value to Inset*
+	* src/insets/insettext.[Ch] (Clone): change return value to Inset*
+
+	* src/mathed/formulamacro.[Ch] (draw): add missing const qualifier
+	* src/insets/insettext.[Ch] (GetCursorPos): ditto
+
+	* src/insets/insetbib.h: move InsetBibkey::Holder and
+	InsetCitation::Holder in public space.
+
 2000-02-25  Lars Gullik Bjønnes <larsbj@lyx.org>
 
 	* src/insets/insettext.h: small change to get the new files from

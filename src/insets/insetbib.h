@@ -42,13 +42,13 @@ public:
 	unsigned char Editable() const {
 		return 1;
 	}
-private:
 	///
 	struct Holder {
 		InsetCitation * inset;
 		BufferView * view;
 	};
 
+private:
 	///
 	Holder holder;
 };
@@ -89,15 +89,15 @@ public:
         void setCounter(int);
         ///
         int  getCounter() const { return counter; }
-
- private:
-	///
-        int counter;
 	///
 	struct Holder {
 		InsetBibKey * inset;
 		BufferView * view;
 	};
+
+ private:
+	///
+        int counter;
 
 	///
 	Holder holder;
