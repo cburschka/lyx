@@ -493,23 +493,6 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 	pos_type point = end;
 	pos_type i = pos;
 	for ( ; i < end; ++i, ++fi) {
-		if (pit->isNewline(i)) {
-			point = i + 1;
-			break;
-		}
-		// Break before...
-		if (i + 1 < end) {
-			if (pit->isInset(i + 1) && pit->getInset(i + 1)->display()) {
-				point = i + 1;
-				break;
-			}
-			// ...and after.
-			if (pit->isInset(i) && pit->getInset(i)->display()) {
-				point = i + 1;
-				break;
-			}
-		}
-
 		char const c = pit->getChar(i);
 
 		{
@@ -544,6 +527,23 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 			break;
 		}
 
+		if (pit->isNewline(i)) {
+			point = i + 1;
+			break;
+		}
+		// Break before...
+		if (i + 1 < end) {
+			if (pit->isInset(i + 1) && pit->getInset(i + 1)->display()) {
+				point = i + 1;
+				break;
+			}
+			// ...and after.
+			if (pit->isInset(i) && pit->getInset(i)->display()) {
+				point = i + 1;
+				break;
+			}
+		}
+		
 		if (!pit->isInset(i) || pit->getInset(i)->isChar()) {
 			// some insets are line separators too
 			if (pit->isLineSeparator(i)) {
@@ -554,10 +554,9 @@ void LyXText::rowBreakPoint(ParagraphList::iterator pit, Row & row) const
 		}
 	}
 
-	if (i == end && x < width) {
-		// maybe found one, but the par is short enough.
+	// maybe found one, but the par is short enough.
+	if (i == end && x < width)
 		point = end;
-	}
 
 	// manual labels cannot be broken in LaTeX. But we
 	// want to make our on-screen rendering of footnotes

@@ -1,11 +1,6 @@
 2004-03-01  Alfredo Braunstein  <abraunst@lyx.org>
 
-	* lyxtext.h:
-	* text.C:
-	* text2.C:
-	* rowpainter.C:
-	* BufferView_pimpl.C: rename textwidth -> maxwidth, 
-	prepareToPrint -> computeRowMetrics and remove textWidth accessor.
+	* text.C (rowBreakPoint): fix breaking before displayed insets
 
 2004-03-01  André Pönitz  <poenitz@gmx.net>
 
@@ -22,6 +17,15 @@
 	* text.C:
 	* text2.C:
 	* text3.C: adjust
+
+2004-03-01  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* lyxtext.h:
+	* text.C:
+	* text2.C:
+	* rowpainter.C:
+	* BufferView_pimpl.C: rename textwidth -> maxwidth, 
+	prepareToPrint -> computeRowMetrics and remove textWidth accessor.
 
 2004-03-01  Alfredo Braunstein  <abraunst@lyx.org>
 
