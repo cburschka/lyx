@@ -1,3 +1,8 @@
+2003-10-01  Vitaly Lipatov <lav@vl3143.spb.edu>
+
+	* FileDialog.C: use fromqstr in a few places to enable the dialog to
+	read non-latin filenames.
+
 2003-06-13  John Levon  <levon@movementarian.org>
 
 	* qfont_loader.C: handle Qt 3.2 beta1's "xft" raw name
