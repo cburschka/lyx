@@ -1,3 +1,10 @@
+2004-11-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* configure.m4: add copier for pstex_t and pdftex_t files
+	* external_templates: (Template XFig): correct referenced files
+	* scripts/tex_copy.py: new
+	* Makefile.am: add scripts/tex_copy.py
+
 2004-10-30  José Matos  <jamatos@lyx.org>
 
 	* db_stdclasses.inc:

@@ -1,3 +1,10 @@
+2004-11-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
+
+	* exporter.C (copyFile): use the mover instead of support::copy()
+	* exporter.C (Export): pass format and latex name to copyFile()
+	* exporter.h (addExternalFile): document
+	* mover.[Ch] (do_copy, do_rename): new methods with 3 arguments
+
 2004-10-31  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* text.C (leftMargin): do not indent paragraphs in charstyle insets.

@@ -66,15 +66,24 @@ public:
 	 *  with this method.
 	 *  Then the exporter mechanism copies them to the right place, asks
 	 *  for confirmation before overwriting existing files etc.
+	 * \param format     format that references the given file
+	 * \param sourceName source file name. Needs to be absolute
+	 * \param exportName resulting file name. Can be either absolute
+	 *                   or relative to the exported document.
 	 */
-	void addExternalFile(std::string const &, std::string const &,
-	                     std::string const &);
-	/// add a referenced file for one format.
-	/// The final name is the source file name without path
-	void addExternalFile(std::string const &, std::string const &);
-	/// get referenced files for one format
+	void addExternalFile(std::string const & format,
+	                     std::string const & sourceName,
+	                     std::string const & exportName);
+	/** add a referenced file for one format.
+	 *  The final name is the source file name without path.
+	 * \param format     format that references the given file
+	 * \param sourceName source file name. Needs to be absolute
+	 */
+	void addExternalFile(std::string const & format,
+	                     std::string const & sourceName);
+	/// get referenced files for \p format
 	std::vector<ExportedFile> const
-	externalFiles(std::string const &) const;
+	externalFiles(std::string const & format) const;
 private:
 	typedef std::map<std::string, std::vector<ExportedFile> > FileMap;
 	/** Files that are referenced by the export result in the

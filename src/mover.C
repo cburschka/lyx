@@ -26,38 +26,43 @@ Movers movers;
 Movers system_movers;
 
 
-bool Mover::do_copy(string const & from, string const & to) const
+bool Mover::do_copy(string const & from, string const & to,
+                    string const &) const
 {
 	return support::copy(from, to);
 }
 
 
-bool Mover::do_rename(string const & from, string const & to) const
+bool Mover::do_rename(string const & from, string const & to,
+                      string const &) const
 {
 	return support::rename(from, to);
 }
 
 
-bool SpecialisedMover::do_copy(string const & from, string const & to) const
+bool SpecialisedMover::do_copy(string const & from, string const & to,
+                               string const & latex) const
 {
 	if (command_.empty())
-		return Mover::do_copy(from, to);
+		return Mover::do_copy(from, to, latex);
 
 	string command = support::LibScriptSearch(command_);
 	command = support::subst(command, "$$i", from);
 	command = support::subst(command, "$$o", to);
+	command = support::subst(command, "$$l", latex);
 
 	support::Systemcall one;
 	return one.startscript(support::Systemcall::Wait, command) == 0;
 }
 
 
-bool SpecialisedMover::do_rename(string const & from, string const & to) const
+bool SpecialisedMover::do_rename(string const & from, string const & to,
+                                 string const & latex) const
 {
 	if (command_.empty())
-		return Mover::do_rename(from, to);
+		return Mover::do_rename(from, to, latex);
 
-	if (!do_copy(from, to))
+	if (!do_copy(from, to, latex))
 		return false;
 	return support::unlink(from) == 0;
 }

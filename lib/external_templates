@@ -121,9 +121,9 @@ Template XFig
 		Requirement "graphicx"
 		# Preamble WarnNotFound
 		# Preamble InputOrWarn
-		ReferencedFile latex "$$AbsPath$$Basename.pstex_t"
-		ReferencedFile latex "$$AbsPath$$Basename.pstex"
-		ReferencedFile dvi   "$$AbsPath$$Basename.pstex"
+		ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.pstex_t"
+		ReferencedFile latex "$$AbsPath$$Basename.eps"
+		ReferencedFile dvi   "$$AbsPath$$Basename.eps"
 	FormatEnd
 	Format PDFLaTeX
 		TransformCommand Rotate RotationLatexCommand
@@ -134,8 +134,8 @@ Template XFig
 		Requirement "graphicx"
 		# Preamble WarnNotFound
 		# Preamble InputOrWarn
-		ReferencedFile latex "$$AbsPath$$Basename.pdftex_t"
-		ReferencedFile latex "$$AbsPath$$Basename.pdftex"
+		ReferencedFile latex "$$AbsOrRelPathMaster$$Basename.pdftex_t"
+		ReferencedFile latex "$$AbsPath$$Basename.pdf"
 	FormatEnd
 	Format Ascii
 		Product "$$Contents(\"$$AbsPath$$Basename.asc\")"

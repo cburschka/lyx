@@ -25,29 +25,67 @@ public:
 	virtual ~Mover() {}
 
 	/** Copy file @c from to @c to.
+	 *  This version should be used to copy files from the original
+	 *  location to the temporary directory, since @c to and @c latex
+	 *  would be equal in this case.
 	 *  \returns true if successful.
 	 */
 	bool
 	copy(std::string const & from, std::string const & to) const
 	{
-		return do_copy(from, to);
+		return do_copy(from, to, to);
+	}
+
+	/** Copy file @c from to @c to.
+	 *  \see SpecialisedMover::SpecialisedMover() for an explanation of
+	 *  @c latex.
+	 *  This version should be used to copy files from the temporary
+	 *  directory to the export location, since @c to and @c latex may
+	 *  not be equal in this case.
+	 *  \returns true if successful.
+	 */
+	bool
+	copy(std::string const & from, std::string const & to,
+	     std::string const & latex) const
+	{
+		return do_copy(from, to, latex);
 	}
 
 	/** Rename file @c from as @c to.
+	 *  This version should be used to move files from the original
+	 *  location to the temporary directory, since @c to and @c latex
+	 *  would be equal in this case.
 	 *  \returns true if successful.
 	 */
 	bool
 	rename(std::string const & from, std::string const & to) const
 	{
-		return do_rename(from, to);
+		return do_rename(from, to, to);
+	}
+
+	/** Rename file @c from as @c to.
+	 *  \see SpecialisedMover::SpecialisedMover() for an explanation of
+	 *  @c latex.
+	 *  This version should be used to move files from the temporary
+	 *  directory to the export location, since @c to and @c latex may
+	 *  not be equal in this case.
+	 *  \returns true if successful.
+	 */
+	bool
+	rename(std::string const & from, std::string const & to,
+	       std::string const & latex) const
+	{
+		return do_rename(from, to, latex);
 	}
 
 protected:
 	virtual bool
-	do_copy(std::string const & from, std::string const & to) const;
+	do_copy(std::string const & from, std::string const & to,
+	        std::string const &) const;
 
 	virtual bool
-	do_rename(std::string const & from, std::string const & to) const;
+	do_rename(std::string const & from, std::string const & to,
+	          std::string const &) const;
 };
 
 
@@ -66,11 +104,19 @@ struct SpecialisedMover : public Mover
 
 	/** @c command should be of the form
 	 *  <code>
-	 *      sh $$s/copy_fig.sh $$i $$o
+	 *      sh $$s/copy_fig.sh $$i $$o $$l
 	 *  </code>
 	 *  where $$s is a placeholder for the lyx script directory,
 	 *        $$i is a placeholder for the name of the file to be moved,
-	 *        $$o is a placeholder for the name of the file after moving.
+	 *        $$o is a placeholder for the name of the file after moving,
+	 *        $$l is a placeholder for the name of the file after moving,
+	 *        suitable as argument to a latex include command. This is
+	 *        either an absolute filename or relative to the master
+	 *        document.
+	 *        $$o and $$l can only differ if the file is copied from the
+	 *        temporary directory to the export location. If it is copied
+	 *        from the original location to the temporary directory, they
+	 *        are the same, so $$l may be ommitted in this case.
 	 */
 	SpecialisedMover(std::string const & command)
 		: command_(command) {}
@@ -80,10 +126,12 @@ struct SpecialisedMover : public Mover
 
 private:
 	virtual bool
-	do_copy(std::string const & from, std::string const & to) const;
+	do_copy(std::string const & from, std::string const & to,
+	        std::string const & latex) const;
 
 	virtual bool
-	do_rename(std::string const & from, std::string const & to) const;
+	do_rename(std::string const & from, std::string const & to,
+	          std::string const & latex) const;
 
 	std::string command_;
 };

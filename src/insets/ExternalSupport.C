@@ -196,11 +196,12 @@ void updateExternal(InsetExternalParams const & params,
 	// of include files
 	Buffer const * m_buffer = buffer.getMasterBuffer();
 
-	if (external_in_tmpdir && !abs_from_file.empty()) {
-		// We are running stuff through LaTeX
-		string const temp_file =
-			support::MakeAbsPath(params.filename.mangledFilename(),
-					     m_buffer->temppath());
+	// We copy the source file to the temp dir and do the conversion
+	// there if necessary
+	string const temp_file =
+		support::MakeAbsPath(params.filename.mangledFilename(),
+				     m_buffer->temppath());
+	if (!abs_from_file.empty()) {
 		unsigned long const from_checksum = support::sum(abs_from_file);
 		unsigned long const temp_checksum = support::sum(temp_file);
 
@@ -214,20 +215,17 @@ void updateExternal(InsetExternalParams const & params,
 				return; // FAILURE
 			}
 		}
-
-		abs_from_file = temp_file;
 	}
 
+	// the generated file (always in the temp dir)
 	string const to_file = doSubstitution(params, buffer,
 					      outputFormat.updateResult,
-	                                      external_in_tmpdir);
-
+	                                      true);
 	string const abs_to_file =
-		support::MakeAbsPath(to_file, external_in_tmpdir
-			? m_buffer->temppath()
-			: buffer.filePath());
+		support::MakeAbsPath(to_file, m_buffer->temppath());
 
-	// record the referenced files for the exporter
+	// Record the referenced files for the exporter.
+	// The exporter will copy them to the export dir.
 	typedef Template::Format::FileMap FileMap;
 	FileMap::const_iterator rit  = outputFormat.referencedFiles.begin();
 	FileMap::const_iterator rend = outputFormat.referencedFiles.end();
@@ -235,22 +233,27 @@ void updateExternal(InsetExternalParams const & params,
 		vector<string>::const_iterator fit  = rit->second.begin();
 		vector<string>::const_iterator fend = rit->second.end();
 		for (; fit != fend; ++fit) {
+			string const source = support::MakeAbsPath(
+					doSubstitution(params, buffer, *fit,
+					               true),
+					m_buffer->temppath());
 			string const file = doSubstitution(params, buffer,
 			                                   *fit,
 			                                   external_in_tmpdir);
-			exportdata.addExternalFile(rit->first, file);
+			// if file is a relative name, it is interpreted
+			// relative to the master document.
+			exportdata.addExternalFile(rit->first, source, file);
 		}
 	}
 
 	// Do we need to perform the conversion?
 	// Yes if to_file does not exist or if from_file is newer than to_file
-	if (support::compare_timestamps(abs_from_file, abs_to_file) < 0)
+	if (support::compare_timestamps(temp_file, abs_to_file) < 0)
 		return; // SUCCESS
-
 	string const to_file_base =
 		support::ChangeExtension(to_file, string());
 	/* bool const success = */
-		converters.convert(&buffer, abs_from_file, to_file_base,
+		converters.convert(&buffer, temp_file, to_file_base,
 				   from_format, to_format);
 	// return success
 }

@@ -25,6 +25,7 @@
 #include "format.h"
 #include "gettext.h"
 #include "lyxrc.h"
+#include "mover.h"
 #include "output_plaintext.h"
 #include "outputparams.h"
 #include "frontends/Alert.h"
@@ -38,6 +39,7 @@ using lyx::support::AddName;
 using lyx::support::bformat;
 using lyx::support::ChangeExtension;
 using lyx::support::contains;
+using lyx::support::getFormatFromContents;
 using lyx::support::MakeAbsPath;
 using lyx::support::MakeDisplayPath;
 using lyx::support::OnlyFilename;
@@ -92,8 +94,9 @@ enum CopyStatus {
  *            overwriting files anymore.
  *  - CANCEL  if the export should be cancelled
  */
-CopyStatus copyFile(string const & sourceFile, string const & destFile,
-		    bool force)
+CopyStatus copyFile(string const & format,
+                    string const & sourceFile, string const & destFile,
+                    string const & latexFile, bool force)
 {
 	CopyStatus ret = force ? FORCE : SUCCESS;
 
@@ -117,7 +120,8 @@ CopyStatus copyFile(string const & sourceFile, string const & destFile,
 		}
 	}
 
-	if (!lyx::support::copy(sourceFile, destFile))
+	Mover const & mover = movers(format);
+	if (!mover.copy(sourceFile, destFile, latexFile))
 		Alert::error(_("Couldn't copy file"),
 		             bformat(_("Copying %1$s to %2$s failed."),
 		                     MakeDisplayPath(sourceFile),
@@ -203,15 +207,18 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 		string const dest = OnlyPath(result_file);
 		CopyStatus status = SUCCESS;
 		for (vector<ExportedFile>::const_iterator it = files.begin();
-				it != files.end() && status != CANCEL; ++it)
-			status = copyFile(it->sourceName,
+				it != files.end() && status != CANCEL; ++it) {
+			string const fmt = getFormatFromContents(it->sourceName);
+			status = copyFile(fmt, it->sourceName,
 			                  MakeAbsPath(it->exportName, dest),
-			                  status == FORCE);
+			                  it->exportName, status == FORCE);
+		}
 		if (status == CANCEL) {
 			buffer->message(_("Document export cancelled."));
 		} else {
 			// Finally copy the main file
-			status = copyFile(tmp_result_file, result_file,
+			status = copyFile(format, tmp_result_file,
+			                  result_file, result_file,
 			                  status == FORCE);
 			buffer->message(bformat(_("Document exported as %1$s"
 			                          "to file `%2$s'"),

@@ -587,8 +587,6 @@ cat >$outfile <<EOF
 \\converter ps         fax        "$fax_command"	""
 \\converter ps         pdf        "$ps_to_pdf_command"	""
 \\converter word       latex      "$word_to_latex_command"	""
-
-\\copier    fig        "sh \$\$s/fig_copy.sh \$\$i \$\$o"
 EOF
 
 ### the graphic converter part with the predefined ones
@@ -637,6 +635,10 @@ EOF
 fi
 
 cat >>$outfile <<EOF
+
+\\copier    fig        "sh \$\$s/fig_copy.sh \$\$i \$\$o"
+\\copier    pstex      "python \$\$s/tex_copy.py \$\$i \$\$o \$\$l"
+\\copier    pdftex     "python \$\$s/tex_copy.py \$\$i \$\$o \$\$l"
 
 $rc_entries
 \\font_encoding "$chk_fontenc"
