@@ -1,3 +1,8 @@
+2002-07-10  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxinclude.m4 (LYX_PROG_CXX): add -Wno-non-template-friend for
+	gcc 2.95.x.
+
 2002-06-20  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyxinclude.m4: add -Wno-non-template-friend
