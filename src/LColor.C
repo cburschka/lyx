@@ -229,6 +229,21 @@ bool LColor::setColor(LColor::color col, string const & x11name)
 }
 
 
+bool LColor::setColor(string const & lyxname, string const &x11name)
+{
+	string const lcname = ascii_lowercase(lyxname);
+	if (pimpl_->transform.find(lcname) == pimpl_->transform.end()) {
+		lyxerr[Debug::GUI] 
+			<< "LColor::setColor: Unknown color \"" 
+		       << lyxname << '"' << endl;
+		addColor(static_cast<color>(pimpl_->infotab.size()), lcname);
+	}
+
+	return setColor(static_cast<LColor::color>(pimpl_->transform[lcname]),
+			x11name);
+}
+
+
 LColor::color LColor::getFromGUIName(string const & guiname) const
 {
 	Pimpl::InfoTab::const_iterator it = pimpl_->infotab.begin();
@@ -254,7 +269,7 @@ LColor::color LColor::getFromLyXName(string const & lyxname) const
 	if (pimpl_->transform.find(lcname) == pimpl_->transform.end()) {
 		lyxerr << "LColor::getFromLyXName: Unknown color \"" 
 		       << lyxname << '"' << endl;
-		addColor(static_cast<color>(pimpl_->infotab.size()), lcname);
+		return none;
 	}
 
 	return static_cast<LColor::color>(pimpl_->transform[lcname]);

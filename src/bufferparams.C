@@ -352,7 +352,8 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 				// Update also the LColor table:
 				if (color == "none")
 					color = lcolor.getX11Name(LColor::background);
-				lcolor.setColor(lcolor.getFromLyXName(branch), color);
+				lcolor.setColor(branch, color);
+
 			}
 		}
 	} else if (token == "\\author") {

@@ -198,6 +198,12 @@ public:
 	 */
 	bool setColor(LColor::color col, std::string const & x11name);
 
+	/** set the given LyX color to the color defined by the X11
+	 *  name given \returns true if successful. A new color entry
+	 *  is created if the color is unknown
+	 */
+	bool setColor(std::string const & lyxname, std::string const & x11name);
+
 	/// Get the GUI name of \c color.
 	std::string const getGUIName(LColor::color c) const;
 
