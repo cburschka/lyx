@@ -249,7 +249,7 @@ Painter & QLPainter::text(int x, int y,
 	char const * s, size_t ls,
 	LyXFont const & f)
 {
-	setPen(f.color());
+	setPen(f.realColor());
 
 	Encoding const * encoding = f.language()->encoding();
 	if (f.isSymbolFont())
