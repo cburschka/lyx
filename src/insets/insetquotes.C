@@ -27,7 +27,6 @@
 // Quotes. Used for the various quotes. German, English, French,
 // Danish, Polish, all either double or single.
 
-extern LyXRC * lyxrc;
 extern BufferView * current_view;
 
 // codes used to read/write quotes to LyX files
@@ -149,7 +148,7 @@ string InsetQuotes::DispString() const
 	if (times == InsetQuotes::DoubleQ)
 		disp += disp;
 
- 	if (lyxrc->font_norm == "iso8859-1") 
+ 	if (lyxrc.font_norm == "iso8859-1") 
 		if (disp == "<<")
 			disp = '«';
 		else if (disp == ">>")
@@ -231,7 +230,7 @@ int InsetQuotes::Latex(ostream & os, signed char /*fragile*/, bool) const
 	int quoteind = quote_index[side][language];
 	string qstr;
 	
-	if (lyxrc->fontenc == "T1") {
+	if (lyxrc.fontenc == "T1") {
 		qstr = latex_quote_t1[times][quoteind];
 	}
 	else if (doclang == "default") {
@@ -293,7 +292,7 @@ void InsetQuotes::Validate(LaTeXFeatures & features) const
 	char type = quote_char[quote_index[side][language]];
 
 	if (current_view->buffer()->GetLanguage() == "default" 
-	    && lyxrc->fontenc != "T1") {
+	    && lyxrc.fontenc != "T1") {
 		if (times == InsetQuotes::SingleQ) 
 			switch (type) {
 			case ',': features.quotesinglbase = true; break;

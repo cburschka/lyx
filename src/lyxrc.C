@@ -40,8 +40,9 @@ using std::ios;
 extern string background_color;
 extern char selection_color[];
 extern bool cursor_follows_scrollbar;
-extern kb_keymap * toplevel_keymap;
 extern LyXAction lyxaction;
+extern kb_keymap * toplevel_keymap;
+
 
 enum LyXRCTags {
 	RC_BEGINTOOLBAR = 1,
@@ -251,16 +252,14 @@ keyword_item lyxrcTags[] = {
 /* Let the range depend of the size of lyxrcTags.  Alejandro 240596 */
 static const int lyxrcCount = sizeof(lyxrcTags) / sizeof(keyword_item);
 
-// Should this be moved inside LyXAction? 
-static inline
-int bindKey(char const * seq, int action)
-{ 
-	return toplevel_keymap->bind(seq, action); 
+
+LyXRC::LyXRC() 
+{
+	setDefaults();
 }
 
 
-LyXRC::LyXRC()
-{
+void LyXRC::setDefaults() {
 	// Get printer from the environment. If fail, use default "",
 	// assuming that everything is set up correctly.
 	printer = GetEnv("PRINTER");
@@ -348,7 +347,7 @@ LyXRC::LyXRC()
 	language_command_end = false;
 	language_command_rtl = "\\sethebrew";
 	language_command_ltr = "\\unsethebrew";
-	defaultKeyBindings();
+
 	///
 	date_insert_format = "%A, %e %B %Y";
 	show_banner = true;
@@ -421,7 +420,7 @@ int LyXRC::read(string const & filename)
 		case RC_BEGINTOOLBAR:
 			// this toolbar should be changed to be a completely
 			// non gui toolbar. (Lgb)
-			toolbar.read(lexrc);
+			toolbardefaults.read(lexrc);
 			break;
 			
 		case RC_KBMAP:
@@ -845,7 +844,8 @@ int LyXRC::read(string const & filename)
 					       << cmd << "' Action `"
 					       << action << '\'' << endl;
 				}
-				res = bindKey(seq.c_str(), action);
+				res = toplevel_keymap->bind(seq.c_str(),
+							    action);
 				if (res != 0) {
 					lexrc.printError(
 						"Invalid key sequence `"
@@ -1295,68 +1295,71 @@ void LyXRC::output(ostream & os) const
 /// define the default key bindings for LyX.
 void LyXRC::defaultKeyBindings()
 {
-	bindKey("Right",   LFUN_RIGHT);
-	bindKey("Left",    LFUN_LEFT);
-	bindKey("Up",      LFUN_UP);
-	bindKey("Down",    LFUN_DOWN);
+	bindings["Right"] =   LFUN_RIGHT;
+	bindings["Left"] =    LFUN_LEFT;
+	bindings["Up"] =      LFUN_UP;
+	bindings["Down"] =    LFUN_DOWN;
 	
-	bindKey("Tab",  LFUN_TAB);
+	bindings["Tab"] =  LFUN_TAB;
 	
-	bindKey("Home",    LFUN_HOME);
-	bindKey("End",     LFUN_END);
-	bindKey("Prior",   LFUN_PRIOR);
-	bindKey("Next",    LFUN_NEXT);
+	bindings["Home"] =    LFUN_HOME;
+	bindings["End"] =     LFUN_END;
+	bindings["Prior"] =   LFUN_PRIOR;
+	bindings["Next"] =    LFUN_NEXT;
 	
-	bindKey("Return",  LFUN_BREAKPARAGRAPH);
-	bindKey("~C-~S-~M-nobreakspace", LFUN_PROTECTEDSPACE);
+	bindings["Return"] =  LFUN_BREAKPARAGRAPH;
+	bindings["~C-~S-~M-nobreakspace"] = LFUN_PROTECTEDSPACE;
 	
-	bindKey("Delete",  LFUN_DELETE);
-	bindKey("BackSpace",    LFUN_BACKSPACE);
+	bindings["Delete"] =  LFUN_DELETE;
+	bindings["BackSpace"] =    LFUN_BACKSPACE;
 	// bindKeyings for transparent handling of deadkeys
 	// The keysyms are gotten from XFree86 X11R6
-	bindKey("~C-~S-~M-dead_acute",           LFUN_ACUTE);
-	bindKey("~C-~S-~M-dead_breve",           LFUN_BREVE);
-	bindKey("~C-~S-~M-dead_caron",           LFUN_CARON);
-	bindKey("~C-~S-~M-dead_cedilla",         LFUN_CEDILLA);
-	bindKey("~C-~S-~M-dead_abovering",          LFUN_CIRCLE);
-	bindKey("~C-~S-~M-dead_circumflex",      LFUN_CIRCUMFLEX);
-	bindKey("~C-~S-~M-dead_abovedot",             LFUN_DOT);
-	bindKey("~C-~S-~M-dead_grave",           LFUN_GRAVE);
-	bindKey("~C-~S-~M-dead_doubleacute",     LFUN_HUNG_UMLAUT);
-	bindKey("~C-~S-~M-dead_macron",          LFUN_MACRON);
+	bindings["~C-~S-~M-dead_acute"] =           LFUN_ACUTE;
+	bindings["~C-~S-~M-dead_breve"] =           LFUN_BREVE;
+	bindings["~C-~S-~M-dead_caron"] =           LFUN_CARON;
+	bindings["~C-~S-~M-dead_cedilla"] =         LFUN_CEDILLA;
+	bindings["~C-~S-~M-dead_abovering"] =          LFUN_CIRCLE;
+	bindings["~C-~S-~M-dead_circumflex"] =      LFUN_CIRCUMFLEX;
+	bindings["~C-~S-~M-dead_abovedot"] =             LFUN_DOT;
+	bindings["~C-~S-~M-dead_grave"] =           LFUN_GRAVE;
+	bindings["~C-~S-~M-dead_doubleacute"] =     LFUN_HUNG_UMLAUT;
+	bindings["~C-~S-~M-dead_macron"] =          LFUN_MACRON;
 	// nothing with this name
-	// bindKey("~C-~S-~M-dead_special_caron",   LFUN_SPECIAL_CARON);
-	bindKey("~C-~S-~M-dead_tilde",           LFUN_TILDE);
-	bindKey("~C-~S-~M-dead_diaeresis",       LFUN_UMLAUT);
+	// bindings["~C-~S-~M-dead_special_caron"] =   LFUN_SPECIAL_CARON;
+	bindings["~C-~S-~M-dead_tilde"] =           LFUN_TILDE;
+	bindings["~C-~S-~M-dead_diaeresis"] =       LFUN_UMLAUT;
 	// nothing with this name either...
-	//bindKey("~C-~S-~M-dead_underbar",        LFUN_UNDERBAR);
-	bindKey("~C-~S-~M-dead_belowdot",        LFUN_UNDERDOT);
-	bindKey("~C-~S-~M-dead_tie",             LFUN_TIE);
-	bindKey("~C-~S-~M-dead_ogonek",           LFUN_OGONEK);
+	//bindings["~C-~S-~M-dead_underbar"] =        LFUN_UNDERBAR;
+	bindings["~C-~S-~M-dead_belowdot"] =        LFUN_UNDERDOT;
+	bindings["~C-~S-~M-dead_tie"] =             LFUN_TIE;
+	bindings["~C-~S-~M-dead_ogonek"] =           LFUN_OGONEK;
 	
 	// bindings to utilize the use of the numeric keypad
 	// e.g. Num Lock set
-	bindKey("KP_0",        LFUN_SELFINSERT);
-	bindKey("KP_Decimal",  LFUN_SELFINSERT);
-	bindKey("KP_Enter",    LFUN_SELFINSERT);
-	bindKey("KP_1",        LFUN_SELFINSERT);
-	bindKey("KP_2",        LFUN_SELFINSERT);
-	bindKey("KP_3",        LFUN_SELFINSERT);
-	bindKey("KP_4",        LFUN_SELFINSERT);
-	bindKey("KP_5",        LFUN_SELFINSERT);
-	bindKey("KP_6",        LFUN_SELFINSERT);
-	bindKey("KP_Add",      LFUN_SELFINSERT);
-	bindKey("KP_7",        LFUN_SELFINSERT);
-	bindKey("KP_8",        LFUN_SELFINSERT);
-	bindKey("KP_9",        LFUN_SELFINSERT);
-	bindKey("KP_Divide",   LFUN_SELFINSERT);
-	bindKey("KP_Multiply", LFUN_SELFINSERT);
-	bindKey("KP_Subtract", LFUN_SELFINSERT);
+	bindings["KP_0"] =        LFUN_SELFINSERT;
+	bindings["KP_Decimal"] =  LFUN_SELFINSERT;
+	bindings["KP_Enter"] =    LFUN_SELFINSERT;
+	bindings["KP_1"] =        LFUN_SELFINSERT;
+	bindings["KP_2"] =        LFUN_SELFINSERT;
+	bindings["KP_3"] =        LFUN_SELFINSERT;
+	bindings["KP_4"] =        LFUN_SELFINSERT;
+	bindings["KP_5"] =        LFUN_SELFINSERT;
+	bindings["KP_6"] =        LFUN_SELFINSERT;
+	bindings["KP_Add"] =      LFUN_SELFINSERT;
+	bindings["KP_7"] =        LFUN_SELFINSERT;
+	bindings["KP_8"] =        LFUN_SELFINSERT;
+	bindings["KP_9"] =        LFUN_SELFINSERT;
+	bindings["KP_Divide"] =   LFUN_SELFINSERT;
+	bindings["KP_Multiply"] = LFUN_SELFINSERT;
+	bindings["KP_Subtract"] = LFUN_SELFINSERT;
 	
 	/* Most self-insert keys are handled in the 'default:' section of
 	 * WorkAreaKeyPress - so we don't have to define them all.
 	 * However keys explicit decleared as self-insert are
 	 * handled seperatly (LFUN_SELFINSERT.) Lgb. */
 	
-        bindKey("C-Tab",  LFUN_TABINSERT);  // ale970515
+        bindings["C-Tab"] =  LFUN_TABINSERT;  // ale970515
 }
+
+// The global instance
+LyXRC lyxrc;

@@ -41,7 +41,6 @@ string user_lyxdir;	// Default $HOME/.lyx
 DebugStream lyxerr;
 
 LastFiles * lastfiles;
-LyXRC * lyxrc;
 
 // This is the global bufferlist object
 BufferList bufferlist;
@@ -66,9 +65,11 @@ LyX::LyX(int * argc, char * argv[])
 
 	// Global bindings (this must be done as early as possible.) (Lgb)
 	toplevel_keymap = new kb_keymap;
-
-	lyxerr[Debug::INIT] << "Initializing lyxrc" << endl;
-	lyxrc = new LyXRC;
+	// Fill the toplevel_keymap with some defaults
+	for (LyXRC::Bindings::const_iterator cit = lyxrc.bindings.begin();
+	     cit != lyxrc.bindings.end(); ++cit) {
+		toplevel_keymap->bind((*cit).first.c_str(), (*cit).second);
+	}
 
 	// Make the GUI object, and let it take care of the
 	// command line arguments that concerns it.
@@ -323,21 +324,21 @@ void LyX::init(int */*argc*/, char **argv)
 	//
 
 	// Default template path: system_dir/templates
-	if (lyxrc->template_path.empty()){
-		lyxrc->template_path = AddPath(system_lyxdir, "templates");
+	if (lyxrc.template_path.empty()){
+		lyxrc.template_path = AddPath(system_lyxdir, "templates");
 	}
    
 	// Default lastfiles file: $HOME/.lyx/lastfiles
-	if (lyxrc->lastfiles.empty()){
-		lyxrc->lastfiles = AddName(user_lyxdir, "lastfiles");
+	if (lyxrc.lastfiles.empty()){
+		lyxrc.lastfiles = AddName(user_lyxdir, "lastfiles");
 	}
 
 	// Calculate screen dpi as average of x-DPI and y-DPI:
 	Screen * scr = DefaultScreenOfDisplay(fl_get_display());
-	lyxrc->dpi = ((HeightOfScreen(scr)* 25.4 / HeightMMOfScreen(scr)) +
+	lyxrc.dpi = ((HeightOfScreen(scr)* 25.4 / HeightMMOfScreen(scr)) +
 		      (WidthOfScreen(scr)* 25.4 / WidthMMOfScreen(scr))) / 2;
 	lyxerr[Debug::INFO] << "DPI setting detected to be "
-		       << lyxrc->dpi + 0.5 << endl;
+		       << lyxrc.dpi + 0.5 << endl;
 
 	//
 	// Read configuration files
@@ -348,25 +349,25 @@ void LyX::init(int */*argc*/, char **argv)
 
 	// Ensure that we have really read a bind file, so that LyX is
 	// usable.
-	if (!lyxrc->hasBindFile)
-		lyxrc->ReadBindFile();
+	if (!lyxrc.hasBindFile)
+		lyxrc.ReadBindFile();
 
 	if (lyxerr.debugging(Debug::LYXRC)) {
-		lyxrc->print();
+		lyxrc.print();
 	}
 
 	// Create temp directory	
-	system_tempdir = CreateLyXTmpDir(lyxrc->tempdir_path);
+	system_tempdir = CreateLyXTmpDir(lyxrc.tempdir_path);
 	if (lyxerr.debugging(Debug::INIT)) {
 		lyxerr << "LyX tmp dir: `" << system_tempdir << '\'' << endl;
 	}
 
 	// load the lastfiles mini-database
 	lyxerr[Debug::INIT] << "Reading lastfiles `"
-			    << lyxrc->lastfiles << "'..." << endl; 
-	lastfiles = new LastFiles(lyxrc->lastfiles, 
-				  lyxrc->check_lastfiles,
-				  lyxrc->num_lastfiles);
+			    << lyxrc.lastfiles << "'..." << endl; 
+	lastfiles = new LastFiles(lyxrc.lastfiles, 
+				  lyxrc.check_lastfiles,
+				  lyxrc.num_lastfiles);
 
 	// start up the lyxserver. (is this a bit early?) (Lgb)
 	// 0.12 this will be way to early, we need the GUI to be initialized
@@ -427,7 +428,7 @@ void LyX::ReadRcFile(string const & name)
 	if (!lyxrc_path.empty()){
 	        lyxerr[Debug::INIT] << "Found " << name
 				    << " in " << lyxrc_path << endl;
-		if (lyxrc->read(lyxrc_path) < 0) { 
+		if (lyxrc.read(lyxrc_path) < 0) { 
 		        WriteAlert(_("LyX Warning!"), 
 				   _("Error while reading ")+lyxrc_path+".",
 				   _("Using built-in defaults."));

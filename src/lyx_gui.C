@@ -228,16 +228,16 @@ void LyXGUI::init()
 
 	create_forms();
 
-	if (lyxrc->font_norm_menu.empty())
-		lyxrc->font_norm_menu = lyxrc->font_norm;
+	if (lyxrc.font_norm_menu.empty())
+		lyxrc.font_norm_menu = lyxrc.font_norm;
 	// Set the font name for popups and menus
-        string menufontname = lyxrc->menu_font_name 
+        string menufontname = lyxrc.menu_font_name 
 		               + "-*-*-*-?-*-*-*-*-"  
-		               + lyxrc->font_norm_menu;
+		               + lyxrc.font_norm_menu;
 		// "?" means "scale that font"
-        string popupfontname = lyxrc->popup_font_name 
+        string popupfontname = lyxrc.popup_font_name 
 		               + "-*-*-*-?-*-*-*-*-"  
-		               + lyxrc->font_norm_menu;
+		               + lyxrc.font_norm_menu;
 
         if (fl_set_font_name(FL_BOLD_STYLE, menufontname.c_str()) < 0)
                 lyxerr << "Could not set menu font to "
@@ -261,21 +261,21 @@ void LyXGUI::init()
 
 	// the print form
 	fl_set_input(fd_form_print->input_printer, 
-		     lyxrc->printer.c_str());	
+		     lyxrc.printer.c_str());	
         
 	// the sendto form
-        if (!lyxrc->custom_export_command.empty())
+        if (!lyxrc.custom_export_command.empty())
                 fl_set_input(fd_form_sendto->input_cmd,
-                             lyxrc->custom_export_command.c_str());
-	if (lyxrc->custom_export_format == "lyx")
+                             lyxrc.custom_export_command.c_str());
+	if (lyxrc.custom_export_format == "lyx")
 		fl_set_button(fd_form_sendto->radio_ftype_lyx, 1);
-	else if (lyxrc->custom_export_format == "tex")
+	else if (lyxrc.custom_export_format == "tex")
 		fl_set_button(fd_form_sendto->radio_ftype_latex, 1);
-	else if (lyxrc->custom_export_format == "dvi")
+	else if (lyxrc.custom_export_format == "dvi")
 		fl_set_button(fd_form_sendto->radio_ftype_dvi, 1);
-	else if (lyxrc->custom_export_format == "ps")
+	else if (lyxrc.custom_export_format == "ps")
 		fl_set_button(fd_form_sendto->radio_ftype_ps, 1);
-        else if (lyxrc->custom_export_format == "ascii")
+        else if (lyxrc.custom_export_format == "ascii")
                 fl_set_button(fd_form_sendto->radio_ftype_ascii, 1);
 
 	// Update parameters.
@@ -286,7 +286,7 @@ void LyXGUI::init()
 
 	// in 0.12 the initialisation of the LyXServer must be done here
 	// 0.13 it should be moved again...
-	lyxserver = new LyXServer(lyxViews->getLyXFunc(), lyxrc->lyxpipes);
+	lyxserver = new LyXServer(lyxViews->getLyXFunc(), lyxrc.lyxpipes);
 }
 
 
@@ -303,7 +303,7 @@ void LyXGUI::create_forms()
 	//
 
 	// the title form
-	if (lyxrc->show_banner) {
+	if (lyxrc.show_banner) {
 		fd_form_title = create_form_form_title();
 		fl_set_form_dblbuffer(fd_form_title->form_title, 1); // use dbl buffer
 		fl_set_form_atclose(fd_form_title->form_title, CancelCloseBoxCB, 0);
@@ -572,7 +572,7 @@ void LyXGUI::create_forms()
 	// Did we get a valid position?
 	if (xpos>= 0 && ypos>= 0) {
 		lyxViews->setPosition(xpos, ypos);
-		if (lyxrc->show_banner) {
+		if (lyxrc.show_banner) {
 			// show the title form in the middle of the main form
 			fl_set_form_position(fd_form_title->form_title,
 					     abs(xpos + (width/2) - (370 / 2)),
@@ -584,7 +584,7 @@ void LyXGUI::create_forms()
 			main_placement = FL_PLACE_POSITION;
 	}
 	lyxViews->show(main_placement, FL_FULLBORDER, "LyX");
-	if (lyxrc->show_banner) {
+	if (lyxrc.show_banner) {
 		fl_show_form(fd_form_title->form_title, 
 			     title_placement, FL_NOBORDER, 
 			     _("LyX Banner"));

@@ -62,7 +62,7 @@ public:
 	/**@name Constructors and destructor */
 	//@{
 	///
-	Buffer(string const & file, LyXRC * lyxrc = 0, bool b = false);
+	Buffer(string const & file, bool b = false);
 	
 	///
 	~Buffer();

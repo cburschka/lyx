@@ -21,10 +21,10 @@
 #include "include_form.h"
 #include "support/FileInfo.h"
 #include "layout.h"
+#include "lyxfunc.h"
 
 extern BufferView * current_view;
 
-extern LyXRC * lyxrc;
 extern BufferList bufferlist;
 
 
@@ -107,7 +107,7 @@ extern "C" void include_cb(FL_OBJECT *, long arg)
                 else
                         ext = "*.lyx";
 		// launches dialog
-		fileDlg.SetButton(0, _("Documents"), lyxrc->document_path);
+		fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
     
 		// Use by default the master's path
 		string filename = fileDlg.Select(_("Select Child Document"),

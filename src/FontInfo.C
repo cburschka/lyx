@@ -22,7 +22,6 @@
 #include "lyxrc.h"	// lyxrc.use_scalable_fonts
 #include "support/lstrings.h"
 
-extern LyXRC * lyxrc;
 
 /// Load font close to this size
 string FontInfo::getFontname(int size)
@@ -46,7 +45,7 @@ string FontInfo::getFontname(int size)
 		}
 	}
 
-	if (scalable && lyxrc->use_scalable_fonts) {
+	if (scalable && lyxrc.use_scalable_fonts) {
 		// We can use scalable
 		string font = resize(strings[scaleindex], size);
 		lyxerr[Debug::FONT] << "Using scalable font to get\n"

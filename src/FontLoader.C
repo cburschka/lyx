@@ -22,10 +22,10 @@
 #include "FontInfo.h"
 #include "debug.h"
 #include "lyxrc.h"	// lyxrc.font_*
-extern LyXRC * lyxrc;
 #include "BufferView.h"
 #include "LyXView.h"
 #include "minibuffer.h"
+
 extern BufferView * current_view;
 
 // Initialize font loader
@@ -103,7 +103,7 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 	string ffamily;
 	string fseries;
 	string fshape;
-	string norm = lyxrc->font_norm;
+	string norm = lyxrc.font_norm;
 	string fontname;
 
 	FontInfo * fi = new FontInfo();
@@ -114,21 +114,21 @@ void FontLoader::getFontinfo(LyXFont::FONT_FAMILY family,
 		switch (family) {
 		case LyXFont::ROMAN_FAMILY:
 			switch (cfam) {
-			case 0: ffamily = lyxrc->roman_font_name; break;
+			case 0: ffamily = lyxrc.roman_font_name; break;
 			case 1: ffamily = "-*-times";
 			default: cfam = 100;
 			}
 			break;
 		case LyXFont::SANS_FAMILY:
 			switch (cfam) {
-			case 0: ffamily = lyxrc->sans_font_name; break;
+			case 0: ffamily = lyxrc.sans_font_name; break;
 			case 1: ffamily = "-*-helvetica";
 			default: cfam = 100;
 			}
 			break;
 		case LyXFont::TYPEWRITER_FAMILY:
 			switch (cfam) {
-			case 0: ffamily = lyxrc->typewriter_font_name; break;
+			case 0: ffamily = lyxrc.typewriter_font_name; break;
 			case 1: ffamily = "-*-courier";
 			default: cfam = 100;
 			}
@@ -204,8 +204,8 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 				LyXFont::FONT_SIZE size)
 {
 	getFontinfo(family, series, shape);
-	int fsize = int( (lyxrc->font_sizes[size] * lyxrc->dpi * 
-			  (lyxrc->zoom/100.0) ) / 72.27 + 0.5 );
+	int fsize = int( (lyxrc.font_sizes[size] * lyxrc.dpi * 
+			  (lyxrc.zoom/100.0) ) / 72.27 + 0.5 );
 
 	string font = fontinfo[family][series][shape]->getFontname(fsize);
 

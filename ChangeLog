@@ -1,3 +1,33 @@
+2000-03-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/bufferparams.C (readLanguage): now takes "default" into
+	consideration.
+
+	* src/lyx_main.C (LyX): remove the setup of lyxrc. (new)
+	also initialize the toplevel_keymap with the default bindings from
+	lyxrc. 
+	
+	* src/buffer.C (Buffer): remove lyxrc from the parameters.
+
+	* all files using lyxrc: have lyxrc as a real variable and not a
+	pointer. remove all extern LyXRC * lyxrc. The equiv to this is
+	done in lyxrc.h.
+	
+	* src/lyxrc.C: remove double call to defaultKeyBindings
+
+	* src/toolbar.[Ch]: Let the ToolbarDefaults handle the reading of
+	toolbar defauls using lyxlex. Remove enums, structs, functions
+	related to this. 
+
+	* src/lyxrc.h: use ToolbarDefaults instead of Toolbar for storing
+	toolbar defaults. Also store default keybindings in a map.
+
+	* src/ToolbarDefaults.[Ch]: New file. This class is used for
+	storing the toolbar defaults without any xforms dependencies. 
+
+	* src/insets/figinset.C: patch posted to list by Andre Poenitz
+	applied. Changed to use iterators.
+	
 2000-03-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/text2.C (DeleteEmptyParagraphMechanism): small fix posted to

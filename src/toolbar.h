@@ -4,8 +4,9 @@
  * 
  *           LyX, The Document Processor
  *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-2000 The LyX Team.
  *
- *           This file is Copyright 1996-1999
+ *           This file is Copyright 1996-2000
  *           Lars Gullik Bjønnes
  *
  * ====================================================== */
@@ -19,7 +20,6 @@
 
 #include FORMS_H_LOCATION
 #include "lyxfunc.h"
-#include "lyxlex.h"
 #include "combox.h"
 
 /** The LyX toolbar class
@@ -30,21 +30,7 @@
 class Toolbar {
 public:
 	///
-	Toolbar(Toolbar const &, LyXView * o, int x, int y);
-
-	///
-	Toolbar()
-	{
-		owner = 0;
-		sxpos = 0;
-		sypos = 0;
-#if FL_REVISION < 89
-		bubble_timer = 0;
-#endif
-		combox = 0;
-		reset();
-		init(); // set default toolbar.
-	}
+	Toolbar(LyXView * o, int x, int y);
 
 	///
 	~Toolbar() {
@@ -67,10 +53,6 @@ public:
 	///
 	Combox * combox;
 
-	///
-	void read(LyXLex &);
-	/// sets up the default toolbar
-	void init();
 	/// (re)sets the toolbar
 	void set(bool doingmain = false);
 

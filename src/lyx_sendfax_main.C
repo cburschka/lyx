@@ -62,10 +62,10 @@ bool send_fax(string const &fname, string const &sendcmd)
 
     /* init Phone-Book */
     string phone_book_name;
-    if (lyxrc->phone_book.empty()) {
+    if (lyxrc.phone_book.empty()) {
         phone_book_name = "phonebook";
     } else
-        phone_book_name = lyxrc->phone_book;
+        phone_book_name = lyxrc.phone_book;
     phone_book= FileSearch(user_lyxdir, phone_book_name);
     if (phone_book.empty()) 
         phone_book = AddName(user_lyxdir, phone_book_name);

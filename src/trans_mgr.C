@@ -16,7 +16,6 @@
 #include "lyxrc.h"
 #include "support/lstrings.h"
 
-extern LyXRC * lyxrc;
 extern string DoAccent(string const &, tex_accent);
 extern string DoAccent(char, tex_accent);
 extern BufferView * current_view;
@@ -305,7 +304,7 @@ void TransManager::insert(string str, LyXText * text)
 	// Is false to speak about "only if" the current encoding will
 	// almost always be equal to font_norm.
 	pair<bool, int> enc = chset_.encodeString(str);
-	if (chset_.getName() != lyxrc->font_norm || 
+	if (chset_.getName() != lyxrc.font_norm || 
 	    !enc.first) {
 		// Could not find an encoding
 		InsetLatexAccent ins(str);

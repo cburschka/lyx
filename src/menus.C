@@ -407,15 +407,15 @@ void Menus::ScreenOptions()
 
 	// this is not very nice....
 	fl_set_input(fd_form_screen->input_roman, 
-		     lyxrc->roman_font_name.c_str());
+		     lyxrc.roman_font_name.c_str());
 	fl_set_input(fd_form_screen->input_sans, 
-		     lyxrc->sans_font_name.c_str());
+		     lyxrc.sans_font_name.c_str());
 	fl_set_input(fd_form_screen->input_typewriter,
-		     lyxrc->typewriter_font_name.c_str());
+		     lyxrc.typewriter_font_name.c_str());
 	fl_set_input(fd_form_screen->input_font_norm, 
-		     lyxrc->font_norm.c_str());
+		     lyxrc.font_norm.c_str());
 	char tmpstring[10];
-	sprintf(tmpstring, "%d", lyxrc->zoom);
+	sprintf(tmpstring, "%d", lyxrc.zoom);
 	fl_set_input(fd_form_screen->intinput_size, tmpstring);
 	if (fd_form_screen->form_screen->visible) {
 		fl_raise_form(fd_form_screen->form_screen);
@@ -546,12 +546,12 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 	// These commands are disabled when the corresponding programs
 	// are not installed. I simply grey them out, since I do not
 	// want to change their number (JMarc)
-	bool hasLaTeX = lyxrc->latex_command != "none";
+	bool hasLaTeX = lyxrc.latex_command != "none";
 
-	if (!hasLaTeX || lyxrc->view_dvi_command == "none") 
+	if (!hasLaTeX || lyxrc.view_dvi_command == "none") 
 		fl_setpup_mode(FileMenu, 8, FL_PUP_GREY);
 	
-	if (!hasLaTeX || lyxrc->view_ps_command == "none") 
+	if (!hasLaTeX || lyxrc.view_ps_command == "none") 
 		fl_setpup_mode(FileMenu, 9, FL_PUP_GREY);
 	
 	if (!hasLaTeX) {
@@ -559,16 +559,16 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 		fl_setpup_mode(FileMenu, 11, FL_PUP_GREY);
 	} 
 
-        if (lyxrc->literate_command == "none" || ! Literate) 
+        if (lyxrc.literate_command == "none" || ! Literate) 
 		fl_setpup_mode(FileMenu, 12, FL_PUP_GREY);
 
-	if (!hasLaTeX || lyxrc->print_command == "none") 
+	if (!hasLaTeX || lyxrc.print_command == "none") 
 		fl_setpup_mode(FileMenu, 13, FL_PUP_GREY);
 
-	if (!hasLaTeX || lyxrc->fax_command == "none") 
+	if (!hasLaTeX || lyxrc.fax_command == "none") 
 		fl_setpup_mode(FileMenu, 14, FL_PUP_GREY);
 
-	bool hasReLyX = lyxrc->relyx_command != "none";
+	bool hasReLyX = lyxrc.relyx_command != "none";
 	if (!hasReLyX) {
 		// Disable import LaTeX and Noweb
 		fl_setpup_mode(SubFileImport, 30, FL_PUP_GREY);
@@ -581,7 +581,7 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 		fl_setpup_mode(SubFileExport, 42, FL_PUP_GREY);
 	}
 
-	if (lyxrc->html_command == "none") {
+	if (lyxrc.html_command == "none") {
 		// Disable export HTML
 		fl_setpup_mode(SubFileExport, 44, FL_PUP_GREY);
 	}
@@ -713,7 +713,7 @@ void Menus::ShowFileMenu2(FL_OBJECT * ob, long)
 	fl_setpup_shortcut(SubFileImport, 17, scex(_("FIM|Pp#p#P")));
 	fl_setpup_shortcut(SubFileImport, 18, scex(_("FIM|Nn#n#N")));
 
-	bool hasReLyX = lyxrc->relyx_command != "none";
+	bool hasReLyX = lyxrc.relyx_command != "none";
 	if (!hasReLyX) {
 		// Disable import LaTeX and Noweb
 		fl_setpup_mode(SubFileImport, 15, FL_PUP_GREY);
@@ -1016,9 +1016,9 @@ void Menus::ShowEditMenu(FL_OBJECT * ob, long)
 		fl_setpup_mode(EditMenu, 1, FL_PUP_GREY);
 	if(tmpbuffer->redostack.empty())
 		fl_setpup_mode(EditMenu, 2, FL_PUP_GREY);
-	if(lyxrc->isp_command == "none") 
+	if(lyxrc.isp_command == "none") 
 		fl_setpup_mode(EditMenu, 11, FL_PUP_GREY);
-	if(lyxrc->chktex_command == "none") 
+	if(lyxrc.chktex_command == "none") 
 		fl_setpup_mode(EditMenu, 12, FL_PUP_GREY);
 
 	if (tmpbuffer->isReadonly()) {
@@ -1523,7 +1523,7 @@ void Menus::ShowOptionsMenu(FL_OBJECT * ob, long)
 	fl_setpup_shortcut(OptionsMenu, 4, scex(_("OM|Ll#l#L")));
 	fl_setpup_shortcut(OptionsMenu, 5, scex(_("OM|Rr#r#R")));
 
-	if(lyxrc->isp_command == "none") 
+	if(lyxrc.isp_command == "none") 
 		fl_setpup_mode(OptionsMenu, 2, FL_PUP_GREY);
 
 	fl_setpup_position(

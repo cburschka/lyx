@@ -55,6 +55,8 @@ lyx_SOURCES = \
 	TableLayout.C \
 	TextCache.C \
 	TextCache.h \
+	ToolbarDefaults.C \
+	ToolbarDefaults.h \
 	UpdateInset.C \
 	UpdateInset.h \
 	WorkArea.C \
@@ -194,7 +196,7 @@ lyx_SOURCES = \
 lyx_main.o: lyx_main.C lyx_main.h config.h version.h lyx_gui.h \
 	lyx_gui_misc.h lyxrc.h support/path.h support/filetools.h \
 	bufferlist.h debug.h support/FileInfo.h lastfiles.h intl.h \
-	lyxserver.h layout.h gettext.h kbmap.h
+	lyxserver.h layout.h gettext.h kbmap.h 
 	$(CXXCOMPILE) -DLYX_DIR=\"$(pkgdatadir)\" \
 	  -DTOP_SRCDIR=\"$(top_srcdir)\" -c $(top_srcdir)/src/lyx_main.C
 

@@ -26,10 +26,10 @@ void ShowLatexLog()
 	if (!filename.empty()) {
 		fname = ChangeExtension(filename, ".log", true);
 		bname = ChangeExtension(filename,
-					lyxrc->literate_extension + ".out", 
+					lyxrc.literate_extension + ".out", 
 					true);
 		path = OnlyPath(filename);
-		if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
+		if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 			path = current_view->buffer()->tmppath;
 		}
 		FileInfo f_fi(path + fname), b_fi(path + bname);

@@ -25,7 +25,6 @@
 #include "lyxrc.h"
 #include "language.h"
 
-extern LyXRC * lyxrc;
 
 BufferParams::BufferParams()
 {
@@ -199,10 +198,7 @@ void BufferParams::readLanguage(LyXLex & lex)
 	if (!lex.next()) return;
 	
 	string tmptok = lex.GetString();
-#if 0
-	string test;
-	int n = 0;
-#endif
+
 	// check if tmptok is part of tex_babel in tex-defs.h
 	Languages::iterator lit = languages.find(tmptok);
 	if (lit != languages.end()) {
@@ -211,30 +207,13 @@ void BufferParams::readLanguage(LyXLex & lex)
 		return;
 	}
 	// not found
-	lyxerr << "Warning: language `"
-	       << tmptok << "' not recognized!\n"
-	       << "         Setting language to `default'."
-	       << endl;
 	language = "default";
-	
-#if 0	
-	while (true) {
-		test = tex_babel[n++];
-		
-		if (test == tmptok) {
-			language = tmptok;
-			break;
-		}
-		else if (test.empty()) {
-			lyxerr << "Warning: language `"
-			       << tmptok << "' not recognized!\n"
-			       << "         Setting language to `default'."
-			       << endl;
-			language = "default";
-			break;	 
-		}      
+	if (tmptok != "default") {
+		lyxerr << "Warning: language `"
+		       << tmptok << "' not recognized!\n"
+		       << "         Setting language to `default'."
+		       << endl;
 	}
-#endif
 }
 
 
@@ -269,7 +248,7 @@ void BufferParams::readGraphicsDriver(LyXLex & lex)
 
 LyXDirection BufferParams::getDocumentDirection() const
 {
-	return (lyxrc->rtl_support &&
+	return (lyxrc.rtl_support &&
 		(language == "hebrew" || language == "arabic"))
 		? LYX_DIR_RIGHT_TO_LEFT : LYX_DIR_LEFT_TO_RIGHT;
 }

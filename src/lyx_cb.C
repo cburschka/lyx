@@ -274,7 +274,7 @@ void SetUpdateTimer(float time)
 void MenuWrite(Buffer * buffer)
 {
 	XFlush(fl_display);
-	if (!buffer->save(lyxrc->make_backup)) {
+	if (!buffer->save(lyxrc.make_backup)) {
 		string fname = buffer->fileName();
 		string s = MakeAbsPath(fname);
 		if (AskQuestion(_("Save failed. Rename and try again?"),
@@ -301,8 +301,8 @@ void MenuWriteAs(Buffer * buffer)
 	LyXFileDlg fileDlg;
 
 	ProhibitInput();
-	fileDlg.SetButton(0, _("Documents"), lyxrc->document_path);
-	fileDlg.SetButton(1, _("Templates"), lyxrc->template_path);
+	fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
+	fileDlg.SetButton(1, _("Templates"), lyxrc.template_path);
 
 	if (!IsLyXFilename(fname))
 		fname += ".lyx";
@@ -463,7 +463,7 @@ int MakeLaTeXOutput(Buffer * buffer)
 	//	return 1;
 	int ret = 0;
 	string path = OnlyPath(buffer->fileName());
-	if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
+	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = buffer->tmppath;
 	}
 	if (!buffer->isDviClean()) {
@@ -496,7 +496,7 @@ bool RunScript(Buffer * buffer, bool wait,
 				       ".dvi", true);
 
 	path = OnlyPath(name);
-	if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
+	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = buffer->tmppath;
 	}
 	Path p(path);
@@ -581,7 +581,7 @@ bool CreatePostscript(Buffer * buffer, bool wait = false)
 	// Wrong type
 	char real_papersize = buffer->params.papersize;
 	if (real_papersize == BufferParams::PAPER_DEFAULT)
-		real_papersize = lyxrc->default_papersize;
+		real_papersize = lyxrc.default_papersize;
 
 	switch (real_papersize) {
 	case BufferParams::PAPER_USLETTER:
@@ -610,16 +610,16 @@ bool CreatePostscript(Buffer * buffer, bool wait = false)
 	}
 
 	// Make postscript file.
-	string command = lyxrc->dvi_to_ps_command + ' ' + lyxrc->print_to_file + ' ';
+	string command = lyxrc.dvi_to_ps_command + ' ' + lyxrc.print_to_file + ' ';
 	command += QuoteName(psname);
 	if (buffer->params.use_geometry
 	    && buffer->params.papersize2 == BufferParams::VM_PAPER_CUSTOM
-	    && !lyxrc->print_paper_dimension_flag.empty()
+	    && !lyxrc.print_paper_dimension_flag.empty()
 	    && !buffer->params.paperwidth.empty()
 	    && !buffer->params.paperheight.empty()) {
 		// using a custom papersize
 		command += ' ';
-		command += lyxrc->print_paper_dimension_flag + ' ';
+		command += lyxrc.print_paper_dimension_flag + ' ';
 		command += buffer->params.paperwidth + ',';
 		command += buffer->params.paperheight;
 	} else if (!paper.empty()
@@ -628,15 +628,15 @@ bool CreatePostscript(Buffer * buffer, bool wait = false)
 		// dvips won't accept -t letter -t landscape.  In all other
 		// cases, include the paper size explicitly.
 		command += ' ';
-		command += lyxrc->print_paper_flag + ' ' + paper;
+		command += lyxrc.print_paper_flag + ' ' + paper;
 	}
 	if (buffer->params.orientation == BufferParams::ORIENTATION_LANDSCAPE) {
 		command += ' ';
-		command += lyxrc->print_landscape_flag;
+		command += lyxrc.print_landscape_flag;
 	}
 	// push directorypath, if necessary 
         string path = OnlyPath(buffer->fileName());
-        if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)){
+        if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)){
 		path = buffer->tmppath;
         }
         Path p(path);
@@ -665,11 +665,11 @@ bool PreviewPostscript(Buffer * buffer)
 				     ".ps_tmp", true);
 	// push directorypath, if necessary 
         string path = OnlyPath(buffer->fileName());
-        if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)){
+        if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)){
 		path = buffer->tmppath;
         }
         Path p(path);
-	bool ret = RunScript(buffer, false, lyxrc->view_ps_command, ps);
+	bool ret = RunScript(buffer, false, lyxrc.view_ps_command, ps);
 	AllowInput();
 	return ret;
 }
@@ -689,16 +689,16 @@ void MenuFax(Buffer * buffer)
 	// Send fax
 	string ps = ChangeExtension (buffer->fileName(), ".ps_tmp", true);
 	string path = OnlyPath (buffer->fileName());
-	if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
+	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = buffer->tmppath;
 	}
 	Path p(path);
-	if (!lyxrc->fax_program.empty()) {
-                string help2 = subst(lyxrc->fax_program, "$$FName", ps);
+	if (!lyxrc.fax_program.empty()) {
+                string help2 = subst(lyxrc.fax_program, "$$FName", ps);
                 help2 += " &";
                 Systemcalls one(Systemcalls::System, help2);
 	} else
-		send_fax(ps, lyxrc->fax_command);
+		send_fax(ps, lyxrc.fax_command);
 }
 
 
@@ -709,12 +709,12 @@ bool PreviewDVI(Buffer * buffer)
 	//if (!bv->text)
 	//	return false;
 
-	string paper = lyxrc->view_dvi_paper_option;
+	string paper = lyxrc.view_dvi_paper_option;
 	if (!paper.empty()) {
 		// wrong type
 		char real_papersize = buffer->params.papersize;
 		if (real_papersize == BufferParams::PAPER_DEFAULT)
-			real_papersize = lyxrc->default_papersize;
+			real_papersize = lyxrc.default_papersize;
   
 		switch (real_papersize) {
 		case BufferParams::PAPER_USLETTER:
@@ -757,12 +757,12 @@ bool PreviewDVI(Buffer * buffer)
         }
         // push directorypath, if necessary 
 	string path = OnlyPath(buffer->fileName());
-	if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
+	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = buffer->tmppath;
 	}
 	Path p(path);
         // Run dvi-viewer
-	string command = lyxrc->view_dvi_command + " " + paper;
+	string command = lyxrc.view_dvi_command + " " + paper;
 	bool ret = RunScript(buffer, false, command);
 	return ret;
 }
@@ -886,7 +886,7 @@ void MenuMakeAscii(Buffer * buffer)
 		return;
 	}
 	
-	buffer->writeFileAscii(s, lyxrc->ascii_linelen);
+	buffer->writeFileAscii(s, lyxrc.ascii_linelen);
 	
 	buffer->getUser()->owner()->getMiniBuffer()->Set(_("Ascii file saved as"), MakeDisplayPath(s));
 }
@@ -899,7 +899,7 @@ void MenuPrint(Buffer * buffer)
 	//	return;
 
 	string input_file = ChangeExtension(buffer->fileName(),
-					    lyxrc->print_file_extension,
+					    lyxrc.print_file_extension,
 					    true);
 	fl_set_input(fd_form_print->input_file, input_file.c_str());
 	
@@ -926,7 +926,7 @@ void MenuMakeHTML(Buffer * buffer)
 	// anything.
 	string result = ChangeExtension(file, ".html", false);
 	string infile = buffer->getLatexName(false);
-	string tmp = lyxrc->html_command;
+	string tmp = lyxrc.html_command;
 	tmp = subst(tmp, "$$FName", infile);
 	tmp = subst(tmp, "$$OutName", result);
 	Systemcalls one;
@@ -966,10 +966,10 @@ void MenuExport(Buffer * buffer, string const & extyp)
 		// is achieved by temporarily disabling use of
 		// temp directory. As a side-effect, we get
 		// *.log and *.aux files also. (Asger)
-		bool flag = lyxrc->use_tempdir;
-		lyxrc->use_tempdir = false;
+		bool flag = lyxrc.use_tempdir;
+		lyxrc.use_tempdir = false;
 		MenuRunLaTeX(buffer);
-		lyxrc->use_tempdir = flag;
+		lyxrc.use_tempdir = flag;
 	}
 	// postscript
 	else if (extyp == "postscript") {
@@ -1004,7 +1004,7 @@ void QuitLyX()
 	if (!bufferlist.QwriteAll())
 		return;
 
-	lastfiles->writeFile(lyxrc->lastfiles);
+	lastfiles->writeFile(lyxrc.lastfiles);
 
 	// Set a flag that we do quitting from the program,
 	// so no refreshes are necessary.
@@ -1300,7 +1300,7 @@ int RunLinuxDoc(int flag, string const & filename)
 	/* generate a path-less extension name */
 	name = ChangeExtension (filename, ".sgml", true);
 	path = OnlyPath (filename);
-	if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
+	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = current_view->buffer()->tmppath;
 	}
 	Path p(path);
@@ -1331,7 +1331,7 @@ int RunLinuxDoc(int flag, string const & filename)
 	case -1: /* Import file */
 		current_view->owner()->getMiniBuffer()->Set(_("Importing LinuxDoc SGML file `"), 
 				MakeDisplayPath(filename), "'...");
-		s2 = "sgml2lyx " + lyxrc->sgml_extra_options + ' ' 
+		s2 = "sgml2lyx " + lyxrc.sgml_extra_options + ' ' 
 			+ name;
 		if (one.startscript(Systemcalls::System, s2)) 
 			errorcode = 1;
@@ -1339,14 +1339,14 @@ int RunLinuxDoc(int flag, string const & filename)
 	case 0: /* TeX output asked */
 		current_view->owner()->getMiniBuffer()->Set(_("Converting LinuxDoc SGML to TeX file..."));
 		s2 = "sgml2latex " + add_flags + " -o tex "
-			+ lyxrc->sgml_extra_options + ' ' + name;
+			+ lyxrc.sgml_extra_options + ' ' + name;
 		if (one.startscript(Systemcalls::System, s2)) 
 			errorcode = 1;
 		break;
 	case 1: /* dvi output asked */
 		current_view->owner()->getMiniBuffer()->Set(_("Converting LinuxDoc SGML to dvi file..."));
 		s2 = "sgml2latex " + add_flags + " -o dvi "
-			+ lyxrc->sgml_extra_options + ' ' + name;
+			+ lyxrc.sgml_extra_options + ' ' + name;
 		if (one.startscript(Systemcalls::System, s2)) {
 			errorcode = 1;
 		} else
@@ -1372,7 +1372,7 @@ int RunDocBook(int flag, string const & filename)
 	/* generate a path-less extension name */
 	string name = ChangeExtension (filename, ".sgml", true);
 	string path = OnlyPath (filename);
-	if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
+	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = current_view->buffer()->tmppath;
 	}
 	Path p(path);
@@ -2321,7 +2321,7 @@ void Free()
 extern "C" void TimerCB(FL_OBJECT *, long)
 {
 	// only if the form still exists
-	if (lyxrc->show_banner && fd_form_title->form_title != 0) {
+	if (lyxrc.show_banner && fd_form_title->form_title != 0) {
 		if (fd_form_title->form_title->visible) {
 			fl_hide_form(fd_form_title->form_title);
 		}
@@ -2634,7 +2634,7 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
    
 	if (!current_view->available())
 		return;
-	if (lyxrc->rtl_support) {
+	if (lyxrc.rtl_support) {
 		current_view->text->SetCursor(current_view->text->cursor.par,
 					      current_view->text->cursor.pos);
 		current_view->setState();
@@ -2981,9 +2981,9 @@ extern "C" void PrintApplyCB(FL_OBJECT *, long)
 
 	string pageflag;
 	if (fl_get_button(fd_form_print->radio_even_pages))
-		pageflag = lyxrc->print_evenpage_flag + ' ';
+		pageflag = lyxrc.print_evenpage_flag + ' ';
 	else if (fl_get_button(fd_form_print->radio_odd_pages))
-		pageflag = lyxrc->print_oddpage_flag + ' ';
+		pageflag = lyxrc.print_oddpage_flag + ' ';
 
 // Changes by Stephan Witt (stephan.witt@beusen.de), 19-Jan-99
 // User may give a page (range) list
@@ -3002,13 +3002,13 @@ extern "C" void PrintApplyCB(FL_OBJECT *, long)
 			return;
 		}
 		if (piece.find('-') == string::npos) { // not found
-			pageflag += lyxrc->print_pagerange_flag + piece + '-' + piece + ' ' ;
+			pageflag += lyxrc.print_pagerange_flag + piece + '-' + piece + ' ' ;
 		} else if (suffixIs(piece, "-") ) { // missing last page
-			pageflag += lyxrc->print_pagerange_flag + piece + "1000 ";
+			pageflag += lyxrc.print_pagerange_flag + piece + "1000 ";
 		} else if (prefixIs(piece, "-") ) { // missing first page
-			pageflag += lyxrc->print_pagerange_flag + '1' + piece + ' ' ;
+			pageflag += lyxrc.print_pagerange_flag + '1' + piece + ' ' ;
 		} else {
-			pageflag += lyxrc->print_pagerange_flag + piece + ' ' ;
+			pageflag += lyxrc.print_pagerange_flag + piece + ' ' ;
 		}
 	}
    
@@ -3020,39 +3020,39 @@ extern "C" void PrintApplyCB(FL_OBJECT *, long)
 			return;
 		}
 		if (fl_get_button(fd_form_print->do_unsorted))
-			pageflag += lyxrc->print_copies_flag;
+			pageflag += lyxrc.print_copies_flag;
 		else
-			pageflag += lyxrc->print_collcopies_flag;
+			pageflag += lyxrc.print_collcopies_flag;
 		pageflag += " " + copies + ' ' ;
 	}
 
 	string reverseflag;
 	if (fl_get_button(fd_form_print->radio_order_reverse))
-		reverseflag = lyxrc->print_reverse_flag + ' ';
+		reverseflag = lyxrc.print_reverse_flag + ' ';
    
 	string orientationflag;
 	if (buffer->params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
-		orientationflag = lyxrc->print_landscape_flag + ' ';
+		orientationflag = lyxrc.print_landscape_flag + ' ';
    
 	string ps_file = fl_get_input(fd_form_print->input_file);
 	string printer = strip(fl_get_input(fd_form_print->input_printer));
 
 	string printerflag;
-	if (lyxrc->print_adapt_output // printer name should be passed to dvips
+	if (lyxrc.print_adapt_output // printer name should be passed to dvips
 	    && ! printer.empty()) // a printer name has been given
-		printerflag = lyxrc->print_to_printer + printer + ' ';
+		printerflag = lyxrc.print_to_printer + printer + ' ';
      
 	string extraflags;
-	if (!lyxrc->print_extra_options.empty())
-		extraflags = lyxrc->print_extra_options + ' ';
+	if (!lyxrc.print_extra_options.empty())
+		extraflags = lyxrc.print_extra_options + ' ';
 
-	string command = lyxrc->print_command + ' ' 
+	string command = lyxrc.print_command + ' ' 
 		+ printerflag + pageflag + reverseflag 
 		+ orientationflag + extraflags;
  
 	char real_papersize = buffer->params.papersize;
 	if (real_papersize == BufferParams::PAPER_DEFAULT)
-		real_papersize = lyxrc->default_papersize;
+		real_papersize = lyxrc.default_papersize;
 	
         string paper;
 	switch (real_papersize) {
@@ -3083,39 +3083,39 @@ extern "C" void PrintApplyCB(FL_OBJECT *, long)
 
 	if (buffer->params.use_geometry
 	    && buffer->params.papersize2 == BufferParams::VM_PAPER_CUSTOM
-	    && !lyxrc->print_paper_dimension_flag.empty()
+	    && !lyxrc.print_paper_dimension_flag.empty()
 	    && !buffer->params.paperwidth.empty()
 	    && !buffer->params.paperheight.empty()) {
 		// using a custom papersize
 		command += ' ';
-		command += lyxrc->print_paper_dimension_flag + ' ';
+		command += lyxrc.print_paper_dimension_flag + ' ';
 		command += buffer->params.paperwidth + ',';
 		command += buffer->params.paperheight + ' ';
-	} else if (!lyxrc->print_paper_flag.empty()
+	} else if (!lyxrc.print_paper_flag.empty()
 		   && !paper.empty()
 		   && (real_papersize != BufferParams::PAPER_USLETTER ||
 		       buffer->params.orientation == BufferParams::ORIENTATION_PORTRAIT)) {
-		command += " " + lyxrc->print_paper_flag + " " + paper + " ";
+		command += " " + lyxrc.print_paper_flag + " " + paper + " ";
 	}
 	if (fl_get_button(fd_form_print->radio_file))
-		command += lyxrc->print_to_file 
+		command += lyxrc.print_to_file 
 			+ QuoteName(MakeAbsPath(ps_file, path));
-	else if (!lyxrc->print_spool_command.empty())
-		command += lyxrc->print_to_file 
+	else if (!lyxrc.print_spool_command.empty())
+		command += lyxrc.print_to_file 
 			+ QuoteName(ps_file);
 	
 	// push directorypath, if necessary 
-        if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)){
+        if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)){
 		path = buffer->tmppath;
         }
         Path p(path);
 
 	bool result;
-	if (!lyxrc->print_spool_command.empty() && 
+	if (!lyxrc.print_spool_command.empty() && 
 	    !fl_get_button(fd_form_print->radio_file)) {
-	    	string command2 = lyxrc->print_spool_command + ' ';
+	    	string command2 = lyxrc.print_spool_command + ' ';
 		if (!printer.empty())
-			command2 += lyxrc->print_spool_printerprefix 
+			command2 += lyxrc.print_spool_printerprefix 
 				+ printer;
 		// First run dvips and, if succesful, then spool command
 		if ((result = RunScript(buffer, true, command))) {
@@ -3226,11 +3226,11 @@ extern "C" void FigureOKCB(FL_OBJECT * ob, long data)
 
 extern "C" void ScreenApplyCB(FL_OBJECT *, long)
 {
-	lyxrc->roman_font_name = fl_get_input(fd_form_screen->input_roman);
-	lyxrc->sans_font_name = fl_get_input(fd_form_screen->input_sans);
-	lyxrc->typewriter_font_name = fl_get_input(fd_form_screen->input_typewriter);
-	lyxrc->font_norm = fl_get_input(fd_form_screen->input_font_norm);
-	lyxrc->zoom = atoi(fl_get_input(fd_form_screen->intinput_size));
+	lyxrc.roman_font_name = fl_get_input(fd_form_screen->input_roman);
+	lyxrc.sans_font_name = fl_get_input(fd_form_screen->input_sans);
+	lyxrc.typewriter_font_name = fl_get_input(fd_form_screen->input_typewriter);
+	lyxrc.font_norm = fl_get_input(fd_form_screen->input_font_norm);
+	lyxrc.zoom = atoi(fl_get_input(fd_form_screen->intinput_size));
 	fontloader.update();
    
 	// All buffers will need resize
@@ -3283,7 +3283,7 @@ void Reconfigure(BufferView * bv)
 			AddName(system_lyxdir, "configure"));
 	p.pop();
 	bv->owner()->getMiniBuffer()->Set(_("Reloading configuration..."));
-	lyxrc->read(LibFileSearch(string(), "lyxrc.defaults"));
+	lyxrc.read(LibFileSearch(string(), "lyxrc.defaults"));
 	WriteAlert(_("The system has been reconfigured."), 
 		   _("You need to restart LyX to make use of any"),
 		   _("updated document class specifications."));

@@ -32,8 +32,6 @@ extern string system_tempdir;
 extern LastFiles * lastfiles; /* we should hopefully be able to move this
 			      * inside the LyX class */
 
-extern LyXRC * lyxrc;
-
 
 /**
   This is the main LyX object it encapsulates most of the other objects.

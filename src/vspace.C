@@ -23,7 +23,6 @@
 #include "BufferView.h"
 #include "support/lstrings.h"
 
-extern LyXRC * lyxrc;
 
 /*  length units
  */
@@ -539,10 +538,10 @@ int VSpace::inPixels(BufferView * bv) const
 	int height = bv->text->DefaultHeight(); // [pixels]
 
 	// Zoom factor specified by user in percent
-	float const zoom = lyxrc->zoom / 100.0; // [percent]
+	float const zoom = lyxrc.zoom / 100.0; // [percent]
 
 	// DPI setting for monitor: pixels/inch
-	float const dpi = lyxrc->dpi; // screen resolution [pixels/inch]
+	float const dpi = lyxrc.dpi; // screen resolution [pixels/inch]
 
 	// We want the result in pixels
 	float result, value;

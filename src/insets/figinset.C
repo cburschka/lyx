@@ -2,8 +2,6 @@
  *	figinset.C - part of LyX project
  */
 
-extern long int background_pixels;
-
 /*  Rework of path-handling (Matthias 04.07.1996 )
  * ------------------------------------------------
  *   figinsets keep an absolute path to the eps-file.
@@ -42,10 +40,13 @@ extern long int background_pixels;
 #include <queue>
 #include <list>
 #include <algorithm>
+#include <vector>
+
 using std::ofstream;
 using std::ifstream;
 using std::queue;
 using std::list;
+using std::vector;
 using std::find;
 using std::flush;
 
@@ -74,12 +75,6 @@ extern void ProhibitInput();
 extern void AllowInput();
 
 static float const DEG2PI = 57.295779513;
-static int const figallocchunk = 32;
-
-static int figinsref = 0;	/* number of figures */
-static int figarrsize = 0;	/* current max number of figures */
-static int bmpinsref = 0;	/* number of bitmaps */
-static int bmparrsize = 0;	/* current max number of bitmaps */
 
 struct queue_element {
 	float rx, ry;          // resolution x and y
@@ -89,8 +84,10 @@ struct queue_element {
 
 static int const MAXGS = 3;			/* maximum 3 gs's at a time */
 
-static Figref ** figures;	/* all the figures */
-static figdata ** bitmaps;	/* all the bitmaps */
+typedef vector<Figref *> figures_type;
+typedef vector<figdata *> bitmaps_type;
+static figures_type figures; // all figures
+static bitmaps_type bitmaps; // all bitmaps
 
 static queue<queue_element> gsqueue; // queue for ghostscripting
 
@@ -130,6 +127,7 @@ static
 GC local_gc_copy;
 
 
+static
 void addpidwait(int pid)
 {
 	// adds pid to pid wait list
@@ -146,7 +144,7 @@ void addpidwait(int pid)
 }
 
 
-extern "C"
+extern "C" // static
 int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 		   XEvent * ev, void *)
 {
@@ -161,10 +159,13 @@ int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 
 	// just kill gs, that way it will work for sure
 	// This loop looks like S**T so it probably is...
-	for (int i = 0; i < bmpinsref; ++i)
-		if ((long)bitmaps[i]->bitmap == (long)e->data.l[1]) {
+	//for (bitmaps_type::size_type i = 0; i < bitmaps.size(); ++i)
+	for (bitmaps_type::iterator it = bitmaps.begin();
+	     it != bitmaps.end(); ++it)
+		if (static_cast<long>((*it)->bitmap) ==
+		    static_cast<long>(e->data.l[1])) {
 			// found the one
-			figdata * p = bitmaps[i];
+			figdata * p = (*it);
 			p->gsdone = true;
 
 			// first update p->bitmap, if necessary
@@ -172,13 +173,12 @@ int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 			    && p->flags > (1|8) && gs_color && p->wid) {
 				// query current colormap and re-render
 				// the pixmap with proper colors
-				//XColor * cmap;
 				XWindowAttributes wa;
 				register XImage * im;
 				int i;
 				int y;
 				int wid1;
-				int spc1 = gs_spc-1;
+				int spc1 = gs_spc - 1;
 				int spc2 = gs_spc * gs_spc;
 				int wid = p->wid;
 				int forkstat;
@@ -382,13 +382,12 @@ void AllocGrays(int num)
 }
 
 
+static
 void InitFigures()
 {
-	bmparrsize = figarrsize = figallocchunk;
-	typedef Figref * Figref_p;
-	figures = new Figref_p[figallocchunk];
-	typedef figdata * figdata_p;
-	bitmaps = new figdata_p[figallocchunk];
+	// if bitmaps and figures are not empty we will leak mem
+	figures.clear();
+	bitmaps.clear();
 
 	unsigned int k;
 	for (unsigned int i = 0; i < 256; ++i) {
@@ -431,28 +430,17 @@ void InitFigures()
 }
 
 
+static
 void DoneFigures()
 {
-	delete[] figures;
-	delete[] bitmaps;
-	figarrsize = 0;
-	bmparrsize = 0;
-
+	// if bitmaps and figures are not empty we will leak mem
+	bitmaps.clear();
+	figures.clear();
+	
 	lyxerr.debug() << "Unregistering figures..." << endl;
 
 	fl_remove_canvas_handler(figinset_canvas, ClientMessage,
 				 GhostscriptMsg);
-}
-
-
-int FindBmpIndex(figdata * tmpdata)
-{
-	int i = 0;
-	while (i < bmpinsref) {
-		if (bitmaps[i] == tmpdata) return i;
-		++i;
-	}
-	return i;
 }
 
 
@@ -473,13 +461,8 @@ void freefigdata(figdata * tmpdata)
 	}
 
 	if (tmpdata->bitmap) XFreePixmap(fl_display, tmpdata->bitmap);
+	bitmaps.erase(find(bitmaps.begin(), bitmaps.end(), tmpdata));
 	delete tmpdata;
-	int i = FindBmpIndex(tmpdata);
-	--bmpinsref;
-	while (i < bmpinsref) {
-		bitmaps[i] = bitmaps[i + 1];
-		++i;
-	}
 }
 
 
@@ -670,8 +653,8 @@ void runqueue()
 				       << ", pid: " << getpid() << endl;
 			}
 
-			int err = execlp(lyxrc->ps_command.c_str(), 
-					 lyxrc->ps_command.c_str(), 
+			int err = execlp(lyxrc.ps_command.c_str(), 
+					 lyxrc.ps_command.c_str(), 
 					 "-sDEVICE=x11",
 					 "-dNOPAUSE", "-dQUIET",
 					 "-dSAFER", 
@@ -682,7 +665,7 @@ void runqueue()
 			lyxerr << "Error executing ghostscript. "
 			       << "Code: " << err << endl;
 			lyxerr.debug() << "Cmd: " 
-				       << lyxrc->ps_command
+				       << lyxrc.ps_command
 				       << " -sDEVICE=x11 "
 				       << tbuf << ' '
 				       << p->data->fname << endl;
@@ -728,30 +711,16 @@ figdata * getfigdata(int wid, int hgh, string const & fname,
 
 	if (fname.empty()) return 0;
 
-	int i = 0;
-	while (i < bmpinsref) {
-		if (bitmaps[i]->wid == wid && bitmaps[i]->hgh == hgh &&
-		    bitmaps[i]->flags == flags && bitmaps[i]->fname == fname &&
-		    bitmaps[i]->angle == angle) {
-			bitmaps[i]->ref++;
-			return bitmaps[i];
+	for (bitmaps_type::iterator it = bitmaps.begin();
+	     it != bitmaps.end(); ++it) {
+		if ((*it)->wid == wid && (*it)->hgh == hgh &&
+		    (*it)->flags == flags && (*it)->fname == fname &&
+		    (*it)->angle == angle) {
+			(*it)->ref++;
+			return (*it);
 		}
-		++i;
-	}
-	/* not found -> create new record or return 0 if no record */
-	++bmpinsref;
-	if (bmpinsref > bmparrsize) {
-		// allocate more space
-		bmparrsize += figallocchunk;
-		typedef figdata * figdata_p;
-		figdata ** tmp = new figdata_p[bmparrsize];
-		memcpy(tmp, bitmaps,
-		       sizeof(figdata*) * (bmparrsize - figallocchunk));
-		delete[] bitmaps;
-		bitmaps = tmp;
 	}
 	figdata * p = new figdata;
-	bitmaps[bmpinsref-1] = p;
 	p->wid = wid;
 	p->hgh = hgh;
 	p->raw_wid = raw_wid;
@@ -759,6 +728,7 @@ figdata * getfigdata(int wid, int hgh, string const & fname,
 	p->angle = angle;
 	p->fname = fname;
 	p->flags = flags;
+	bitmaps.push_back(p);
 	XWindowAttributes wa;
 	XGetWindowAttributes(fl_display, fl_get_canvas_id(
 		figinset_canvas), &wa);
@@ -801,30 +771,33 @@ void getbitmap(figdata * p)
 static
 void makeupdatelist(figdata * p)
 {
-	for (int i = 0; i < figinsref; ++i)
-		if (figures[i]->data == p) {
+	for(figures_type::iterator it = figures.begin();
+	    it != figures.end(); ++it)
+		if ((*it)->data == p) {
 			if (lyxerr.debugging()) {
 				lyxerr << "Updating inset "
-				       << figures[i]->inset
+				       << (*it)->inset
 				       << endl;
 			}
 			// add inset figures[i]->inset into to_update list
-			current_view->pushIntoUpdateList(figures[i]->inset);
+			current_view->pushIntoUpdateList((*it)->inset);
 		}
 }
 
 
+// this func is only "called" in spellchecker.C
 void sigchldchecker(pid_t pid, int * status)
 {
 	lyxerr.debug() << "Got pid = " << pid << endl;
 	bool pid_handled = false;
-	for (int i = bmpinsref - 1; i >= 0; --i) {
-		if (bitmaps[i]->reading && pid == bitmaps[i]->gspid) {
+	for (bitmaps_type::iterator it = bitmaps.begin();
+	     it != bitmaps.end(); ++it) {
+		if ((*it)->reading && pid == (*it)->gspid) {
 			lyxerr.debug() << "Found pid in bitmaps" << endl;
 			// now read the file and remove it from disk
-			figdata * p = bitmaps[i];
+			figdata * p = (*it);
 			p->reading = false;
-			if (bitmaps[i]->gsdone) *status = 0;
+			if ((*it)->gsdone) *status = 0;
 			if (*status == 0) {
 				lyxerr.debug() << "GS [" << pid
 					       << "] exit OK." << endl;
@@ -849,7 +822,7 @@ void sigchldchecker(pid_t pid, int * status)
 				p->gspid = -1;
 				p->broken = true;
 			}
-			makeupdatelist(bitmaps[i]);
+			makeupdatelist((*it));
 			--gsrunning;
 			runqueue();
 			pid_handled = true;
@@ -900,49 +873,28 @@ static
 void getbitmaps()
 {
 	bitmap_waiting = false;
-	for (int i = 0; i < bmpinsref; ++i)
-		if (bitmaps[i]->gspid > 0 && !bitmaps[i]->reading)
-			getbitmap(bitmaps[i]);
+	for (bitmaps_type::iterator it = bitmaps.begin();
+	     it != bitmaps.end(); ++it)
+		if ((*it)->gspid > 0 && !(*it)->reading)
+			getbitmap((*it));
 }
 
 
 static
 void RegisterFigure(InsetFig * fi)
 {
-	if (figinsref == 0) InitFigures();
+	if (figures.empty()) InitFigures();
 	fi->form = 0;
-	++figinsref;
-	if (figinsref > figarrsize) {
-		// allocate more space
-		figarrsize += figallocchunk;
-		typedef Figref * Figref_p;
-		Figref ** tmp = new Figref_p[figarrsize];
-		memcpy(tmp, figures,
-		       sizeof(Figref*) * (figarrsize-figallocchunk));
-		delete[] figures;
-		figures = tmp;
-	}
 	Figref * tmpfig = new Figref;
 	tmpfig->data = 0;
 	tmpfig->inset = fi;
-	figures[figinsref-1] = tmpfig;
+	figures.push_back(tmpfig);
 	fi->figure = tmpfig;
 
 	if (lyxerr.debugging()) {
 		lyxerr << "Register Figure: buffer:["
 		       << current_view->buffer() << "]" << endl;
 	}
-}
-
-
-int FindFigIndex(Figref * tmpfig)
-{
-	int i = 0;
-	while (i < figinsref) {
-		if (figures[i] == tmpfig) return i;
-		++i;
-	}
-	return i;
 }
 
 
@@ -966,15 +918,10 @@ void UnregisterFigure(InsetFig * fi)
 		tmpfig->inset->form = 0;
 #endif
 	}
-	int i = FindFigIndex(tmpfig);
-	--figinsref;
-	while (i < figinsref) {
-		figures[i] = figures[i+1];
-		++i;
-	}
+	figures.erase(find(figures.begin(), figures.end(), tmpfig));
 	delete tmpfig;
 
-	if (figinsref == 0) DoneFigures();
+	if (figures.empty()) DoneFigures();
 }
 
 
@@ -1072,7 +1019,7 @@ void InsetFig::draw(Painter & pain, LyXFont const & f,
 		} else 
 			if (fname.empty()) msg = _("[no file]");
 			else if ((flags & 3) == 0) msg = _("[not displayed]");
-			else if (lyxrc->ps_command.empty()) msg = _("[no ghostscript]");
+			else if (lyxrc.ps_command.empty()) msg = _("[no ghostscript]");
 		
 		if (!msg) msg = _("[unknown error]");
 		
@@ -1293,7 +1240,7 @@ Inset * InsetFig::Clone() const
 	tmp->pswid = pswid;
 	tmp->pshgh = pshgh;
 	tmp->fname = fname;
-	if (!fname.empty() && (flags & 3) && !lyxrc->ps_command.empty()) { 
+	if (!fname.empty() && (flags & 3) && !lyxrc.ps_command.empty()) { 
 		// do not display if there is
 		// "do not display" chosen (Matthias 260696)
 		tmp->figure->data = getfigdata(wid, hgh, fname, psx, psy,
@@ -1654,7 +1601,7 @@ void InsetFig::Recompute()
 
 		// get new data
 		if (!fname.empty() && (flags & 3)
-		    && !lyxrc->ps_command.empty()) {
+		    && !lyxrc.ps_command.empty()) {
 			// do not display if there is "do not display"
 			// chosen (Matthias 260696)
 			figure->data = getfigdata(wid, hgh, fname,
@@ -2063,8 +2010,8 @@ void InsetFig::Preview(char const * p)
 	string buf2 = MakeAbsPath(p, buf1);
 	
 	lyxerr << "Error during rendering "
-	       << execlp(lyxrc->view_pspic_command.c_str(),
-			 lyxrc->view_pspic_command.c_str(),
+	       << execlp(lyxrc.view_pspic_command.c_str(),
+			 lyxrc.view_pspic_command.c_str(),
 			 buf2.c_str(), 0)
 	       << endl;
 	_exit(0);
@@ -2146,14 +2093,15 @@ void GraphicsCB(FL_OBJECT * obj, long arg)
 	}
 
 	/* find inset we were reacting to */
-	for (int i = 0; i < figinsref; ++i)
-		if (figures[i]->inset->form && figures[i]->inset->form->Figure
+	for (figures_type::iterator it = figures.begin();
+	     it != figures.end(); ++it)
+		if ((*it)->inset->form && (*it)->inset->form->Figure
 		    == obj->form) {
-	    
 			if (lyxerr.debugging()) {
-				lyxerr << "Calling back figure " << i << endl;
+				lyxerr << "Calling back figure "
+				       << (*it) << endl;
 			}
-			figures[i]->inset->CallbackFig(arg);
+			(*it)->inset->CallbackFig(arg);
 			return;
 		}
 }
@@ -2161,13 +2109,14 @@ void GraphicsCB(FL_OBJECT * obj, long arg)
 
 void HideFiguresPopups()
 {
-	for (int i = 0; i < figinsref; ++i)
-		if (figures[i]->inset->form 
-		    && figures[i]->inset->form->Figure->visible) {
+	for (figures_type::iterator it = figures.begin();
+	     it != figures.end(); ++it)
+		if ((*it)->inset->form 
+		    && (*it)->inset->form->Figure->visible) {
 			if (lyxerr.debugging()) {
-				lyxerr << "Hiding figure " << i << endl;
+				lyxerr << "Hiding figure " << (*it) << endl;
 			}
 			// hide and free the form
-			figures[i]->inset->CallbackFig(9);
+			(*it)->inset->CallbackFig(9);
 		}
 }

@@ -116,7 +116,7 @@ extern int tex_code_break_column;
 extern void FreeUpdateTimer();
 
 
-Buffer::Buffer(string const & file, LyXRC * lyxrc, bool ronly)
+Buffer::Buffer(string const & file, bool ronly)
 {
 	lyxerr[Debug::INFO] << "Buffer::Buffer()" << endl;
 	filename = file;
@@ -130,7 +130,7 @@ Buffer::Buffer(string const & file, LyXRC * lyxrc, bool ronly)
 	read_only = ronly;
 	users = 0;
 	lyxvc.buffer(this);
-	if (read_only || (lyxrc && lyxrc->use_tempdir)) {
+	if (read_only || (lyxrc.use_tempdir)) {
 		tmppath = CreateBufferTmpDir();
 	} else tmppath.clear();
 }
@@ -1339,8 +1339,8 @@ void Buffer::writeFileAscii(string const & fname, int linelen)
 		/* It might be a table */ 
 		if (par->table){
 #if 0
-			if (!lyxrc->ascii_roff_command.empty() &&
-                            lyxrc->ascii_roff_command != "none") {
+			if (!lyxrc.ascii_roff_command.empty() &&
+                            lyxrc.ascii_roff_command != "none") {
 				RoffAsciiTable(ofs, par);
 				par = par->next;
 				continue;
@@ -1586,7 +1586,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 	
 	niceFile = nice; // this will be used by Insetincludes.
 
-	tex_code_break_column = lyxrc->ascii_linelen;
+	tex_code_break_column = lyxrc.ascii_linelen;
 
         LyXTextClass const & tclass =
 		textclasslist.TextClass(params.textclass);
@@ -1707,7 +1707,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 		if (params.language != "default") {
 			if (params.language == "hebrew")
 				options += "english,";
-			else if (lyxrc->rtl_support)
+			else if (lyxrc.rtl_support)
 				options += "hebrew,";
 			options += params.language + ',';
 		}
@@ -1734,8 +1734,8 @@ void Buffer::makeLaTeXFile(string const & fname,
 			texrow.newline();
 		}
 		// this one is not per buffer
-		if (lyxrc->fontenc != "default") {
-			ofs << "\\usepackage[" << lyxrc->fontenc
+		if (lyxrc.fontenc != "default") {
+			ofs << "\\usepackage[" << lyxrc.fontenc
 			    << "]{fontenc}\n";
 			texrow.newline();
 		}
@@ -1806,7 +1806,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 				break;
 			default:
 				// default papersize ie BufferParams::VM_PAPER_DEFAULT
-				switch (lyxrc->default_papersize) {
+				switch (lyxrc.default_papersize) {
 				case BufferParams::PAPER_DEFAULT: // keep compiler happy
 				case BufferParams::PAPER_USLETTER:
 					ofs << ",letterpaper";
@@ -1866,7 +1866,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 		// We try to load babel late, in case it interferes
 		// with other packages.
 		if (params.language != "default") {
-			ofs << lyxrc->language_package;
+			ofs << lyxrc.language_package;
 			texrow.newline();
 		}
 
@@ -1991,9 +1991,9 @@ void Buffer::makeLaTeXFile(string const & fname,
 		texrow.newline();
 	} // only_body
 	lyxerr.debug() << "preamble finished, now the body." << endl;
-	if (lyxrc->language_command_begin &&
+	if (lyxrc.language_command_begin &&
 	    params.getDocumentDirection() == LYX_DIR_RIGHT_TO_LEFT)
-		ofs << lyxrc->language_command_rtl;
+		ofs << lyxrc.language_command_rtl;
 	
 	bool was_title = false;
 	bool already_title = false;
@@ -2085,9 +2085,9 @@ void Buffer::makeLaTeXFile(string const & fname,
 		texrow.newline();
 	}
 
-	if (lyxrc->language_command_end &&
+	if (lyxrc.language_command_end &&
 	    params.getDocumentDirection() == LYX_DIR_RIGHT_TO_LEFT)
-		ofs << lyxrc->language_command_ltr;
+		ofs << lyxrc.language_command_ltr;
 
 	if (!only_body) {
 		ofs << "\\end{document}\n";
@@ -2106,7 +2106,7 @@ void Buffer::makeLaTeXFile(string const & fname,
 	// if we are in batchmode or not (within mathed_write()
 	// in math_write.C) so we must set it to a non-zero
 	// value when we leave otherwise we save incorrect .lyx files.
-	tex_code_break_column = lyxrc->ascii_linelen;
+	tex_code_break_column = lyxrc.ascii_linelen;
 
 	ofs.close();
 	if (ofs.fail()) {
@@ -2525,7 +2525,7 @@ void linux_doc_line_break(ostream & os, unsigned int & colcount,
 			  const unsigned int newcol)
 {
 	colcount += newcol;
-	if (colcount > lyxrc->ascii_linelen) {
+	if (colcount > lyxrc.ascii_linelen) {
 		os << "\n";
 		colcount = newcol; // assume write after this call
 	}
@@ -2703,9 +2703,9 @@ void Buffer::SimpleLinuxDocOnePar(ostream & os, LyXParagraph * par,
 		font1 = font2;
 	}
 
-	if (lyxrc->language_command_end &&
+	if (lyxrc.language_command_end &&
 	    params.getDocumentDirection() == LYX_DIR_RIGHT_TO_LEFT)
-		os << lyxrc->language_command_ltr;
+		os << lyxrc.language_command_ltr;
 
 	/* needed if there is an optional argument but no contents */
 	if (main_body > 0 && main_body == par->size()) {
@@ -3178,7 +3178,7 @@ int Buffer::runLaTeX()
 	string path = OnlyPath(filename);
 
 	string org_path = path;
-	if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
+	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = tmppath;	 
 	}
 
@@ -3194,8 +3194,8 @@ int Buffer::runLaTeX()
 
 	// do the LaTex run(s)
 	TeXErrors terr;
-	string latex_command = lyxrc->pdf_mode ?
-		lyxrc->pdflatex_command : lyxrc->latex_command;
+	string latex_command = lyxrc.pdf_mode ?
+		lyxrc.pdflatex_command : lyxrc.latex_command;
 	LaTeX latex(latex_command, name, filepath);
 	int res = latex.run(terr,
 			    users->owner()->getMiniBuffer()); // running latex
@@ -3241,12 +3241,12 @@ int Buffer::runLiterate()
 	string name = getLatexName();
         // get Literate-Filename
         string lit_name = ChangeExtension (getLatexName(), 
-					   lyxrc->literate_extension, true);
+					   lyxrc.literate_extension, true);
 
 	string path = OnlyPath(filename);
 
 	string org_path = path;
-	if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
+	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = tmppath;	 
 	}
 
@@ -3262,12 +3262,12 @@ int Buffer::runLiterate()
 		markDviDirty();
 	}
 
-	string latex_command = lyxrc->pdf_mode ?
-		lyxrc->pdflatex_command : lyxrc->latex_command;
+	string latex_command = lyxrc.pdf_mode ?
+		lyxrc.pdflatex_command : lyxrc.latex_command;
         Literate literate(latex_command, name, filepath, 
 			  lit_name,
-			  lyxrc->literate_command, lyxrc->literate_error_filter,
-			  lyxrc->build_command, lyxrc->build_error_filter);
+			  lyxrc.literate_command, lyxrc.literate_error_filter,
+			  lyxrc.build_command, lyxrc.build_error_filter);
 	TeXErrors terr;
 	int res = literate.weave(terr, users->owner()->getMiniBuffer());
 
@@ -3312,12 +3312,12 @@ int Buffer::buildProgram()
         string name = getLatexName();
         // get Literate-Filename
         string lit_name = ChangeExtension(getLatexName(), 
-					  lyxrc->literate_extension, true);
+					  lyxrc.literate_extension, true);
  
         string path = OnlyPath(filename);
  
         string org_path = path;
-        if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
+        if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
                 path = tmppath;  
         }
  
@@ -3333,12 +3333,12 @@ int Buffer::buildProgram()
                 markNwDirty();
         }
 
-	string latex_command = lyxrc->pdf_mode ?
-		lyxrc->pdflatex_command : lyxrc->latex_command;
+	string latex_command = lyxrc.pdf_mode ?
+		lyxrc.pdflatex_command : lyxrc.latex_command;
         Literate literate(latex_command, name, filepath, 
 			  lit_name,
-			  lyxrc->literate_command, lyxrc->literate_error_filter,
-			  lyxrc->build_command, lyxrc->build_error_filter);
+			  lyxrc.literate_command, lyxrc.literate_error_filter,
+			  lyxrc.build_command, lyxrc.build_error_filter);
         TeXErrors terr;
         int res = literate.build(terr, users->owner()->getMiniBuffer());
  
@@ -3386,7 +3386,7 @@ int Buffer::runChktex()
 	string path = OnlyPath(filename);
 
 	string org_path = path;
-	if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
+	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = tmppath;	 
 	}
 
@@ -3403,7 +3403,7 @@ int Buffer::runChktex()
 	}
 
 	TeXErrors terr;
-	Chktex chktex(lyxrc->chktex_command, name, filepath);
+	Chktex chktex(lyxrc.chktex_command, name, filepath);
 	int res = chktex.run(terr); // run chktex
 
 	if (res == -1) {
@@ -3539,7 +3539,7 @@ void Buffer::RoffAsciiTable(ostream & os, LyXParagraph * par)
 	}
 	par->table->RoffEndOfCell(ofs, cell);
 	ofs.close();
-	string cmd = lyxrc->ascii_roff_command + " >" + fname2;
+	string cmd = lyxrc.ascii_roff_command + " >" + fname2;
 	cmd = subst(cmd, "$$FName", fname1);
 	Systemcalls one(Systemcalls::System, cmd);
 	if (!(lyxerr.debugging(Debug::ROFF))) {
@@ -3580,7 +3580,7 @@ void Buffer::RoffAsciiTable(ostream & os, LyXParagraph * par)
 /// changed Heinrich Bauer, 23/03/98
 bool Buffer::isDviClean() const
 {
-  if (lyxrc->use_tempdir)
+  if (lyxrc.use_tempdir)
     return dvi_clean_tmpd;
   else
     return dvi_clean_orgd;
@@ -3590,7 +3590,7 @@ bool Buffer::isDviClean() const
 /// changed Heinrich Bauer, 23/03/98
 void Buffer::markDviClean()
 {
-  if (lyxrc->use_tempdir)
+  if (lyxrc.use_tempdir)
     dvi_clean_tmpd = true;
   else
     dvi_clean_orgd = true;
@@ -3600,7 +3600,7 @@ void Buffer::markDviClean()
 /// changed Heinrich Bauer, 23/03/98
 void Buffer::markDviDirty()
 {
-  if (lyxrc->use_tempdir)
+  if (lyxrc.use_tempdir)
     dvi_clean_tmpd = false;
   else
     dvi_clean_orgd = false;

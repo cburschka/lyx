@@ -52,7 +52,6 @@ using std::for_each;
 using std::find_if;
 
 extern BufferList bufferlist;
-extern LyXRC * lyxrc;
 
 void sigchldhandler(pid_t pid, int * status);
 
@@ -1399,7 +1398,7 @@ void BufferView::smallUpdate(signed char f)
 
 void BufferView::setState()
 {
-	if (!lyxrc->rtl_support)
+	if (!lyxrc.rtl_support)
 		return;
 	
 	if (text->real_current_font.getFontDirection()

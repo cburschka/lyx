@@ -117,8 +117,8 @@ extern "C" void C_LyXView_AutosaveTimerCB(FL_OBJECT * ob, long data)
 /// Reset autosave timer
 void LyXView::resetAutosaveTimer()
 {
-	if (lyxrc->autosave)
-		fl_set_timer(_form_main->timer_autosave, lyxrc->autosave);
+	if (lyxrc.autosave)
+		fl_set_timer(_form_main->timer_autosave, lyxrc.autosave);
 }
 
 
@@ -185,7 +185,7 @@ void LyXView::create_form_form_main(int width, int height)
 	// TOOLBAR
 	//
 
-	toolbar = new Toolbar(lyxrc->toolbar, this, air, 30 + air + bw);
+	toolbar = new Toolbar(this, air, 30 + air + bw);
 
 	// Setup the toolbar
 	toolbar->set(true);
@@ -257,15 +257,15 @@ void LyXView::init()
 	UpdateDocumentClassChoice();
 	
 	// Start autosave timer
-	if (lyxrc->autosave)
-		fl_set_timer(_form_main->timer_autosave, lyxrc->autosave);
+	if (lyxrc.autosave)
+		fl_set_timer(_form_main->timer_autosave, lyxrc.autosave);
 	
 	
 	// Install the raw callback for keyboard events 
 	fl_register_raw_callback(_form,
 				 KeyPressMask,
 				 C_LyXView_KeyPressMask_raw_callback);
-        intl->InitKeyMapper(lyxrc->use_kbmap);
+        intl->InitKeyMapper(lyxrc.use_kbmap);
 }
 
 

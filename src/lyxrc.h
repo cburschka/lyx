@@ -5,7 +5,7 @@
  *           LyX, The Document Processor
  * 	 
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-1999 The LyX Team.
+ *           Copyright 1995-2000 The LyX Team.
  *
  * ====================================================== */
 
@@ -16,14 +16,19 @@
 #pragma interface
 #endif
 
-#include "toolbar.h"
+#include <map>
+
+#include "ToolbarDefaults.h"
 #include "bufferparams.h"
+
+using std::map;
 
 /// This contains the runtime configuration of LyX
 class LyXRC {
 public:
-	///
 	LyXRC();
+	///
+	void setDefaults();
 	///
 	int read (string const & filename);
 	///
@@ -37,7 +42,7 @@ public:
 	///
 	int ReadBindFile(string const & name = "cua");
 	///
-	Toolbar toolbar;
+	ToolbarDefaults toolbardefaults;
 	///
 	string printer;
 	///
@@ -218,9 +223,15 @@ public:
 	bool rtl_support;
 	///
 	bool show_banner;
+	///
+	typedef map<string, int> Bindings;
+	///
+	Bindings bindings;
 private:
 	///
 	void defaultKeyBindings();
 };
+
+extern LyXRC lyxrc;
 
 #endif

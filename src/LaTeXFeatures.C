@@ -23,7 +23,6 @@
 #include "bufferparams.h"
 #include "layout.h"
 
-extern LyXRC * lyxrc;
 
 LaTeXFeatures::LaTeXFeatures(int n)
 	: layout(n, false)

@@ -33,6 +33,7 @@ using std::max;
 #include "LyXView.h"
 #include "support/lstrings.h"
 #include "debug.h"
+#include "lyxfunc.h"
 
 #include "formula.h"
 
@@ -301,7 +302,7 @@ extern "C" void math_cb(FL_OBJECT* ob, long data)
    }
   
    if (s)  {
-      if (current_view->available() && lyxrc->display_shortcuts) {
+      if (current_view->available() && lyxrc.display_shortcuts) {
 	  current_view->owner()->getMiniBuffer()->Set("Inserting symbol ", s);
       }
       current_view->owner()->getLyXFunc()->Dispatch(LFUN_INSERT_MATH, s);

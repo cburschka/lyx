@@ -30,18 +30,17 @@
 #include "support/lstrings.h"
 #include "language.h"
 
-extern LyXRC * lyxrc;
 
 // a wrapper around the callback static member.
 extern "C" void C_Intl_DispatchCallback(FL_OBJECT * ob, long code);
 
 
 Intl::Intl()
-	: prim_lang(lyxrc->primary_kbmap), 
-	sec_lang(lyxrc->secondary_kbmap),
+	: prim_lang(lyxrc.primary_kbmap), 
+	sec_lang(lyxrc.secondary_kbmap),
 	trans(new TransManager)
 {
-	keymapon = lyxrc->use_kbmap;
+	keymapon = lyxrc.use_kbmap;
 	chsetcode = 0;
 	primarykeymap = false;
 	curkeymap = 0;
@@ -275,7 +274,7 @@ void Intl::InitKeyMapper(bool on)
 
 	fl_hide_object(fd_form_keymap->KeymapErr);
 	fl_hide_object(fd_form_keymap->ChsetErr);
-	fl_set_input(fd_form_keymap->Charset, lyxrc->font_norm.c_str());
+	fl_set_input(fd_form_keymap->Charset, lyxrc.font_norm.c_str());
 
 	// Adds two comboxes to the keyboard map
 	fl_addto_form(fd_form_keymap->KeyMap);
@@ -326,7 +325,7 @@ void Intl::InitKeyMapper(bool on)
 	if (keymapon)
 		Keymap(23); // turn primary on
 
-	trans->setCharset(lyxrc->font_norm.c_str());
+	trans->setCharset(lyxrc.font_norm.c_str());
 }
 
 

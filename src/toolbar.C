@@ -30,6 +30,7 @@
 #include "LyXView.h"
 #include "LyXAction.h"
 #include "support/lstrings.h"
+#include "lyxrc.h"
 
 #ifdef TWO_COLOR_ICONS
 #include "cut_bw.xpm"
@@ -99,26 +100,7 @@ extern char const ** get_pixmap_from_symbol(char const * arg, int, int);
 extern LyXAction lyxaction;
 
 
-enum _tooltags {
-	TO_ADD = 1,
-	TO_ENDTOOLBAR,
-        TO_SEPARATOR,
-        TO_LAYOUTS,
-        TO_NEWLINE,
-	TO_LAST
-};
-
-
-struct keyword_item toolTags[TO_LAST - 1] = {
-	{ "\\add", TO_ADD },
-	{ "\\end_toolbar", TO_ENDTOOLBAR },
-        { "\\layouts", TO_LAYOUTS },
-        { "\\newline", TO_NEWLINE },
-        { "\\separator", TO_SEPARATOR }
-};
-
-
-Toolbar::Toolbar(Toolbar const &rct, LyXView *o, int x, int y)
+Toolbar::Toolbar(LyXView * o, int x, int y)
 	: owner(o), sxpos(x), sypos(y)
 {
 	combox = 0;
@@ -127,13 +109,13 @@ Toolbar::Toolbar(Toolbar const &rct, LyXView *o, int x, int y)
 #endif
 	reset();
 
-	// extracts the toolbar struct form rct.
-	toolbarItem * tmplist = rct.toollist;
-	while (tmplist != 0) {
-		add(tmplist->action);
+	// extracts the default toolbar actions from LyXRC
+	for (ToolbarDefaults::const_iterator cit =
+		     lyxrc.toolbardefaults.begin();
+	     cit != lyxrc.toolbardefaults.end(); ++cit) {
+		add((*cit));
 		lyxerr[Debug::TOOLBAR] << "tool action: "
-				       << tmplist->action << endl;
-		tmplist= tmplist->next;
+				       << (*cit) << endl;
 	}
 }
 
@@ -245,40 +227,6 @@ int Toolbar::get_toolbar_func(string const & func)
                 } else action = 0;
 	}
 	return action;
-}
-
-
-void Toolbar::init()
-{
-	add(TOOL_LAYOUTS);
-	add(LFUN_MENUOPEN);
-	//add(LFUN_CLOSEBUFFER);
-	add(LFUN_MENUWRITE);
-	add(LFUN_MENUPRINT);
-	add(TOOL_SEPARATOR);
-
-	add(LFUN_CUT);
-	add(LFUN_COPY);
-	add(LFUN_PASTE);
-	add(TOOL_SEPARATOR);
-	
-	add(LFUN_EMPH);
-	add(LFUN_NOUN);
-	add(LFUN_FREE);
-	add(TOOL_SEPARATOR);
-	
-	add(LFUN_FOOTMELT);
-	add(LFUN_MARGINMELT);
-	add(LFUN_DEPTH);
-	add(TOOL_SEPARATOR);
-
-	add(LFUN_TEX);
-        add(LFUN_MATH_MODE);
-	add(TOOL_SEPARATOR);
-
-	add(LFUN_FIGURE);
-	add(LFUN_TABLE);
-	//add(LFUN_MELT);
 }
 
 
@@ -524,19 +472,6 @@ void Toolbar::add(int action, bool doclean)
 }
 
 
-void Toolbar::add(string const & func, bool doclean)
-{
-	int tf = lyxaction.LookupFunc(func.c_str());
-
-	if (tf == -1){
-		lyxerr << "Toolbar::add: no LyX command called`"
-		       << func << "'exists!" << endl; 
-	} else {
-		add(tf, doclean);
-	}
-}
-
-
 void Toolbar::clean()
 {
 	toolbarItem * tmp = 0;
@@ -586,60 +521,14 @@ void Toolbar::push(int nth)
 }
 
 
-void Toolbar::read(LyXLex & lex)
+void Toolbar::add(string const & func, bool doclean)
 {
-	//consistency check
-	if (lex.GetString() != "\\begin_toolbar")
-		lyxerr << "Toolbar::read: ERROR wrong token:`"
-		       << lex.GetString() << '\'' << endl;
+	int tf = lyxaction.LookupFunc(func);
 
-	clean();
-	string func;
-	bool quit = false;
-	
-	lex.pushTable(toolTags, TO_LAST - 1);
-
-	if (lyxerr.debugging(Debug::PARSER))
-		lex.printTable(lyxerr);
-	
-	while (lex.IsOK() && !quit) {
-		
-		lyxerr[Debug::TOOLBAR] << "Toolbar::read: current lex text: `"
-				       << lex.GetString() << '\'' << endl;
-
-		switch(lex.lex()) {
-		case TO_ADD:
-			if (lex.EatLine()) {
-				func = lex.GetString();
-				lyxerr[Debug::TOOLBAR]
-					<< "Toolbar::read TO_ADD func: `"
-					<< func << "'" << endl;
-				add(func);
-			}
-			break;
-		   
-		case TO_SEPARATOR:
-			add(TOOL_SEPARATOR);
-			break;
-		   
-		case TO_LAYOUTS:
-			add(TOOL_LAYOUTS);
-			break;
-		   
-		case TO_NEWLINE:
-			add(TOOL_NEWLINE);
-			break;
-			
-		case TO_ENDTOOLBAR:
-			// should not set automatically
-			//set();
-			quit = true;
-			break;
-		default:
-			lex.printError("Toolbar::read: "
-				       "Unknown toolbar tag: `$$Token'");
-			break;
-		}
+	if (tf == -1) {
+		lyxerr << "Toolbar::add: no LyX command called`"
+		       << func << "'exists!" << endl; 
+	} else {
+		add(tf, doclean);
 	}
-	lex.popTable();
 }

@@ -27,9 +27,9 @@ void MenuSendto()
 
     // do this only if the command is empty
     if (!fl_get_input(fd_form_sendto->input_cmd) &&
-        !lyxrc->custom_export_command.empty())
+        !lyxrc.custom_export_command.empty())
         fl_set_input(fd_form_sendto->input_cmd,
-                     lyxrc->custom_export_command.c_str());
+                     lyxrc.custom_export_command.c_str());
     if (fd_form_sendto->form_sendto->visible) {
         fl_raise_form(fd_form_sendto->form_sendto);
     } else {  
@@ -87,7 +87,7 @@ void SendtoApplyCB(FL_OBJECT *, long)
     command += " &"; // execute in background
     // push directorypath, if necessary 
     string path = OnlyPath(buffer->fileName());
-    if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)){
+    if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)){
         path = buffer->tmppath;
     }
     Path p(path);
@@ -100,7 +100,7 @@ void SendtoApplyCB(FL_OBJECT *, long)
         buffer->makeLaTeXFile(fname, path, false);
     // create the .txt file in tmp_dir if this filetype is requested
     if (fl_get_button(fd_form_sendto->radio_ftype_ascii))
-        buffer->writeFileAscii(fname, lyxrc->ascii_linelen);
+        buffer->writeFileAscii(fname, lyxrc.ascii_linelen);
     Systemcalls one(Systemcalls::System, command);    
 }
 

@@ -49,7 +49,6 @@
 #include "debug.h"
 #include "support/lstrings.h"
 
-extern LyXRC * lyxrc;
 
 // Spellchecker status
 enum {
@@ -107,13 +106,13 @@ struct isp_result {
 void SpellOptionsUpdate() 
 {
 	// Alternate language
-	if (lyxrc->isp_alt_lang.empty()) {
-		lyxrc->isp_use_alt_lang = false;
+	if (lyxrc.isp_alt_lang.empty()) {
+		lyxrc.isp_use_alt_lang = false;
 	} else {
 		fl_set_input(fd_form_spell_options->altlang_input,
-			     lyxrc->isp_alt_lang.c_str());
+			     lyxrc.isp_alt_lang.c_str());
 	}
-	if (lyxrc->isp_use_alt_lang) {
+	if (lyxrc.isp_use_alt_lang) {
 		fl_set_button(fd_form_spell_options->buflang, 0);
 		fl_set_button(fd_form_spell_options->altlang, 1);
 	} else {
@@ -122,53 +121,53 @@ void SpellOptionsUpdate()
 	}  
 
 	// Personal dictionary
-	if (lyxrc->isp_pers_dict.empty()) {
-		lyxrc->isp_use_pers_dict = false;
+	if (lyxrc.isp_pers_dict.empty()) {
+		lyxrc.isp_use_pers_dict = false;
 	} else {
 		fl_set_input(fd_form_spell_options->perdict_input,
-			     lyxrc->isp_pers_dict.c_str());
+			     lyxrc.isp_pers_dict.c_str());
 	}
 	fl_set_button(fd_form_spell_options->perdict,
-		      lyxrc->isp_use_pers_dict ? 1:0);
+		      lyxrc.isp_use_pers_dict ? 1:0);
 
 	// Escape chars
-	if (lyxrc->isp_esc_chars.empty()) {
-		lyxrc->isp_use_esc_chars = false;
+	if (lyxrc.isp_esc_chars.empty()) {
+		lyxrc.isp_use_esc_chars = false;
 	} else {
 		fl_set_input(fd_form_spell_options->esc_chars_input,
-			     lyxrc->isp_esc_chars.c_str());
+			     lyxrc.isp_esc_chars.c_str());
 	}
 	fl_set_button(fd_form_spell_options->esc_chars,
-		      lyxrc->isp_use_esc_chars ? 1:0);
+		      lyxrc.isp_use_esc_chars ? 1:0);
 
 	// Options
 	fl_set_button(fd_form_spell_options->compounds,
-		      lyxrc->isp_accept_compound ? 1 : 0);
+		      lyxrc.isp_accept_compound ? 1 : 0);
 	fl_set_button(fd_form_spell_options->inpenc,
-		      lyxrc->isp_use_input_encoding ? 1 : 0);
+		      lyxrc.isp_use_input_encoding ? 1 : 0);
 }
 
 // Update spellchecker options
 void SpellOptionsApplyCB(FL_OBJECT *, long)
 {
 	// Build new status from form data
-	lyxrc->isp_use_alt_lang = 
+	lyxrc.isp_use_alt_lang = 
 		fl_get_button(fd_form_spell_options->altlang);
-	lyxrc->isp_use_pers_dict = 
+	lyxrc.isp_use_pers_dict = 
 		fl_get_button(fd_form_spell_options->perdict);
-	lyxrc->isp_accept_compound = 
+	lyxrc.isp_accept_compound = 
 		fl_get_button(fd_form_spell_options->compounds);
-	lyxrc->isp_use_esc_chars = 
+	lyxrc.isp_use_esc_chars = 
 		fl_get_button(fd_form_spell_options->esc_chars);
-	lyxrc->isp_use_input_encoding = 
+	lyxrc.isp_use_input_encoding = 
 		fl_get_button(fd_form_spell_options->inpenc);
 
 	// Update strings with data from input fields
-	lyxrc->isp_alt_lang = 
+	lyxrc.isp_alt_lang = 
 		fl_get_input(fd_form_spell_options->altlang_input);
-	lyxrc->isp_pers_dict = 
+	lyxrc.isp_pers_dict = 
 		fl_get_input(fd_form_spell_options->perdict_input);
-	lyxrc->isp_esc_chars = 
+	lyxrc.isp_esc_chars = 
 		fl_get_input(fd_form_spell_options->esc_chars_input);
 
 	// Update form
@@ -271,9 +270,9 @@ void create_ispell_pipe(BufferParams const & params, string const & lang)
 		close(pipeout[1]);
 
 		argc = 0;
-		char * tmp = new char[lyxrc->isp_command.length() + 1];
-		lyxrc->isp_command.copy(tmp, lyxrc->isp_command.length());
-		tmp[lyxrc->isp_command.length()] = '\0';
+		char * tmp = new char[lyxrc.isp_command.length() + 1];
+		lyxrc.isp_command.copy(tmp, lyxrc.isp_command.length());
+		tmp[lyxrc.isp_command.length()] = '\0';
 		argv[argc++] = tmp;
 		tmp = new char[3];
 		string("-a").copy(tmp, 2); tmp[2] = '\0'; // pipe mode
@@ -288,7 +287,7 @@ void create_ispell_pipe(BufferParams const & params, string const & lang)
 			argv[argc++] = tmp;
 		}
 
-		if (lyxrc->isp_accept_compound) {
+		if (lyxrc.isp_accept_compound) {
 			// Consider run-together words as legal compounds
 			tmp = new char[3];
 			string("-C").copy(tmp, 2); tmp[2] = '\0';
@@ -300,30 +299,30 @@ void create_ispell_pipe(BufferParams const & params, string const & lang)
 			string("-B").copy(tmp, 2); tmp[2] = '\0';
 			argv[argc++] = tmp; 
 		}
-		if (lyxrc->isp_use_esc_chars) {
+		if (lyxrc.isp_use_esc_chars) {
 			// Specify additional characters that
 			// can be part of a word
 			tmp = new char[3];
 			string("-w").copy(tmp, 2); tmp[2] = '\0';
 			argv[argc++] = tmp; 
 			// Put the escape chars in ""s
-			string tms = "\"" + lyxrc->isp_esc_chars + "\"";
+			string tms = "\"" + lyxrc.isp_esc_chars + "\"";
 			tmp = new char[tms.length() + 1];
 			tms.copy(tmp, tms.length()); tmp[tms.length()] = '\0';
 			argv[argc++] = tmp;
 		}
-		if (lyxrc->isp_use_pers_dict) {
+		if (lyxrc.isp_use_pers_dict) {
 			// Specify an alternate personal dictionary
 			tmp = new char[3];
 			string("-p").copy(tmp, 2);
 			tmp[2]= '\0';
 			argv[argc++] = tmp;
-			tmp = new char[lyxrc->isp_pers_dict.length() + 1];
-			lyxrc->isp_pers_dict.copy(tmp, lyxrc->isp_pers_dict.length());
-			tmp[lyxrc->isp_pers_dict.length()] = '\0';
+			tmp = new char[lyxrc.isp_pers_dict.length() + 1];
+			lyxrc.isp_pers_dict.copy(tmp, lyxrc.isp_pers_dict.length());
+			tmp[lyxrc.isp_pers_dict.length()] = '\0';
 			argv[argc++] = tmp;
 		}
-		if (lyxrc->isp_use_input_encoding &&
+		if (lyxrc.isp_use_input_encoding &&
         	    params.inputenc != "default") {
 			tmp = new char[3];
 			string("-T").copy(tmp, 2); tmp[2] = '\0';
@@ -641,7 +640,7 @@ bool RunSpellChecker(BufferView * bv)
 	int i, newvalue;
 	FL_OBJECT * obj;
 
-	string tmp = (lyxrc->isp_use_alt_lang) ? lyxrc->isp_alt_lang : bv->buffer()->GetLanguage();
+	string tmp = (lyxrc.isp_use_alt_lang) ? lyxrc.isp_alt_lang : bv->buffer()->GetLanguage();
 
 	int oldval = 0;  /* used for updating slider only when needed */
 	float newval = 0.0;

@@ -334,34 +334,34 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 
 	// I would really like to avoid having this switch and rather try to
 	// encode this in the function itself.
-        static bool noLaTeX = lyxrc->latex_command == "none";
+        static bool noLaTeX = lyxrc.latex_command == "none";
         bool disable = false;
         switch (action) {
 	case LFUN_PREVIEW:
-		disable = noLaTeX || lyxrc->view_dvi_command == "none";
+		disable = noLaTeX || lyxrc.view_dvi_command == "none";
 		break;	
 	case LFUN_PREVIEWPS: 
-		disable = noLaTeX || lyxrc->view_ps_command == "none";
+		disable = noLaTeX || lyxrc.view_ps_command == "none";
 		break;
 	case LFUN_RUNLATEX:
 	case LFUN_RUNDVIPS:
 		disable = noLaTeX;
 		break;
 	case LFUN_MENUPRINT:
-		disable = noLaTeX || lyxrc->print_command == "none";
+		disable = noLaTeX || lyxrc.print_command == "none";
 		break;
 	case LFUN_FAX:
-		disable = noLaTeX || lyxrc->fax_command == "none"; 
+		disable = noLaTeX || lyxrc.fax_command == "none"; 
 		break;
 	case LFUN_IMPORT:
 		if (argument == "latex")
-			disable = lyxrc->relyx_command == "none";
+			disable = lyxrc.relyx_command == "none";
 		break;
 	case LFUN_EXPORT:
 		if (argument == "dvi" || argument == "postscript")
 			disable = noLaTeX;
 		if (argument == "html")
-			disable = lyxrc->html_command == "none";
+			disable = lyxrc.html_command == "none";
 		break;
 	case LFUN_UNDO:
 		disable = buf->undostack.empty();
@@ -370,10 +370,10 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 		disable = buf->redostack.empty();
 		break;
 	case LFUN_SPELLCHECK:
-		disable = lyxrc->isp_command == "none";
+		disable = lyxrc.isp_command == "none";
 		break;
 	case LFUN_RUNCHKTEX:
-		disable = lyxrc->chktex_command == "none";
+		disable = lyxrc.chktex_command == "none";
 		break;
 	case LFUN_LAYOUT_TABLE:
 		disable = ! owner->view()->text->cursor.par->table;
@@ -463,7 +463,7 @@ string LyXFunc::Dispatch(int ac,
 
 	commandshortcut.clear();
 	
-	if (lyxrc->display_shortcuts && show_sc) {
+	if (lyxrc.display_shortcuts && show_sc) {
 		if (action != LFUN_SELFINSERT) {
 			// Put name of command and list of shortcuts
 			// for it in minibuffer
@@ -1295,7 +1295,7 @@ string LyXFunc::Dispatch(int ac,
 		break; // RVDK_PATCH_5
 		
 	case LFUN_SPELLCHECK:
-		if (lyxrc->isp_command != "none")
+		if (lyxrc.isp_command != "none")
 			ShowSpellChecker(owner->view());
 		break; // RVDK_PATCH_5
 		
@@ -2480,7 +2480,7 @@ string LyXFunc::Dispatch(int ac,
 		if (!argument.empty())
 			arg = argument;
 		else if (arg.empty())
-			arg = lyxrc->date_insert_format;
+			arg = lyxrc.date_insert_format;
 		datetmp_len = (int) strftime(datetmp, 32, arg.c_str(), now_tm);
 		for (int i = 0; i < datetmp_len; i++) {
 			owner->view()->text->InsertChar(datetmp[i]);
@@ -2495,7 +2495,7 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_SAVEPREFERENCES:
 	{
 		Path p(user_lyxdir);
-		lyxrc->write("preferences");
+		lyxrc.write("preferences");
 	}
 	break;
 	
@@ -2521,7 +2521,7 @@ string LyXFunc::Dispatch(int ac,
 			 * "auto_region_delete", which defaults to
 			 * true (on). */
 		
-			if ( lyxrc->auto_region_delete ) {
+			if ( lyxrc.auto_region_delete ) {
 				if (owner->view()->text->selection){
 					owner->view()->text->CutSelection(false);
 					owner->view()->update(-1);
@@ -2589,7 +2589,7 @@ void LyXFunc::setupLocalKeymap()
 
 void LyXFunc::MenuNew(bool fromTemplate)
 {
-	string fname, initpath = lyxrc->document_path;
+	string fname, initpath = lyxrc.document_path;
 	LyXFileDlg fileDlg;
 
 	if (owner->view()->available()) {
@@ -2600,8 +2600,8 @@ void LyXFunc::MenuNew(bool fromTemplate)
 	}
 
 	ProhibitInput();
-	fileDlg.SetButton(0, _("Documents"), lyxrc->document_path);
-	fileDlg.SetButton(1, _("Templates"), lyxrc->template_path);
+	fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
+	fileDlg.SetButton(1, _("Templates"), lyxrc.template_path);
 	fname = fileDlg.Select(_("Enter Filename for new document"), 
 			       initpath, "*.lyx", _("newfile"));
  	AllowInput();
@@ -2664,7 +2664,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 	if (fromTemplate) {
 		ProhibitInput();
 		fname = fileDlg.Select(_("Choose template"),
-				       lyxrc->template_path,
+				       lyxrc.template_path,
 				       "*.lyx");
                 templname = fname;
 		AllowInput();
@@ -2678,7 +2678,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 
 void LyXFunc::MenuOpen()
 {
-	string initpath = lyxrc->document_path;
+	string initpath = lyxrc.document_path;
 	LyXFileDlg fileDlg;
   
 	if (owner->view()->available()) {
@@ -2690,7 +2690,7 @@ void LyXFunc::MenuOpen()
 
 	// launches dialog
 	ProhibitInput();
-	fileDlg.SetButton(0, _("Documents"), lyxrc->document_path);
+	fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
 	fileDlg.SetButton(1, _("Examples"), 
 			  AddPath(system_lyxdir, "examples"));
 	string filename = fileDlg.Select(_("Select Document to Open"),
@@ -2727,7 +2727,7 @@ void LyXFunc::MenuOpen()
 
 void LyXFunc::doImportASCII(bool linorpar)
 {
-	string initpath = lyxrc->document_path;
+	string initpath = lyxrc.document_path;
 	LyXFileDlg fileDlg;
   
 	if (owner->view()->available()) {
@@ -2739,7 +2739,7 @@ void LyXFunc::doImportASCII(bool linorpar)
 
 	// launches dialog
 	ProhibitInput();
-	fileDlg.SetButton(0, _("Documents"), lyxrc->document_path);
+	fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
 	fileDlg.SetButton(1, _("Examples"), 
 			  AddPath(system_lyxdir, "examples"));
 	string filename = fileDlg.Select(_("Select ASCII file to Import"),
@@ -2800,7 +2800,7 @@ void LyXFunc::doImportASCII(bool linorpar)
 
 void LyXFunc::doImportLaTeX(bool isnoweb)
 {
-	string initpath = lyxrc->document_path;
+	string initpath = lyxrc.document_path;
 	LyXFileDlg fileDlg;
   
 	if (owner->view()->available()) {
@@ -2812,7 +2812,7 @@ void LyXFunc::doImportLaTeX(bool isnoweb)
 
 	// launches dialog
 	ProhibitInput();
-	fileDlg.SetButton(0, _("Documents"), lyxrc->document_path);
+	fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
 	fileDlg.SetButton(1, _("Examples"), 
 			  AddPath(system_lyxdir, "examples"));
 	string filename;
@@ -2901,7 +2901,7 @@ void LyXFunc::MenuInsertLyXFile(string const & filen)
 
 	if (filename.empty()) {
 		// Launch a file browser
-		string initpath = lyxrc->document_path;
+		string initpath = lyxrc.document_path;
 		LyXFileDlg fileDlg;
 
 		if (owner->view()->available()) {
@@ -2913,7 +2913,7 @@ void LyXFunc::MenuInsertLyXFile(string const & filen)
 
 		// launches dialog
 		ProhibitInput();
-		fileDlg.SetButton(0, _("Documents"), lyxrc->document_path);
+		fileDlg.SetButton(0, _("Documents"), lyxrc.document_path);
 		fileDlg.SetButton(1, _("Examples"), 
 				  AddPath(system_lyxdir, "examples"));
 		filename = fileDlg.Select(_("Select Document to Insert"),

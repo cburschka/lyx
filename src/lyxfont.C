@@ -25,7 +25,6 @@
 #include "FontLoader.h"
 #include "support/lstrings.h"
 
-extern LyXRC * lyxrc;
 
 // The global fontloader
 FontLoader fontloader;
@@ -1035,7 +1034,7 @@ bool LyXFont::equalExceptLatex(LyXFont const & f) const
 
 LyXDirection LyXFont::getFontDirection() const
 {
-	if (lyxrc->rtl_support 
+	if (lyxrc.rtl_support 
 	    && direction() == LyXFont::RTL_DIR
 	    && latex() != LyXFont::ON)
 		return LYX_DIR_RIGHT_TO_LEFT;

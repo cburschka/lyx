@@ -42,7 +42,7 @@ public:
 	///
 	void release(Buffer * buf);
 	///
-	Buffer * newBuffer(string const & s, LyXRC *, bool = false);
+	Buffer * newBuffer(string const & s, bool = false);
 	///
 	Container::iterator begin() { return container.begin(); }
 	///

@@ -59,11 +59,9 @@ void BufferStorage::release(Buffer * buf)
 }
 
 
-Buffer * BufferStorage::newBuffer(string const & s,
-				  LyXRC * lyxrc,
-				  bool ronly)
+Buffer * BufferStorage::newBuffer(string const & s, bool ronly)
 {
-	Buffer * tmpbuf = new Buffer(s, lyxrc, ronly);
+	Buffer * tmpbuf = new Buffer(s, ronly);
 	tmpbuf->params.useClassDefaults();
 	lyxerr.debug() << "Assigning to buffer "
 		       << container.size() << endl;
@@ -115,7 +113,7 @@ bool BufferList::QwriteAll()
 		}
 	}
         if (askMoreConfirmation &&
-            lyxrc->exit_confirmation &&
+            lyxrc.exit_confirmation &&
             !AskQuestion(_("Some documents were not saved:"),
                          unsaved, _("Exit anyway?"))) {
                 return false;
@@ -158,7 +156,7 @@ bool BufferList::close(Buffer * buf)
 				       MakeDisplayPath(buf->fileName(), 50),
 				       _("Save document?"))){
 		case 1: // Yes
-			if (buf->save(lyxrc->make_backup)) {
+			if (buf->save(lyxrc.make_backup)) {
 				lastfiles->newFile(buf->fileName());
 			} else {
 				AllowInput();
@@ -289,7 +287,7 @@ void BufferList::emergencyWriteAll()
 
 Buffer * BufferList::readFile(string const & s, bool ronly)
 {
-	Buffer * b = bstore.newBuffer(s, lyxrc, ronly);
+	Buffer * b = bstore.newBuffer(s, ronly);
 
 	string ts = s;
 	string e = OnlyPath(s);
@@ -389,7 +387,7 @@ Buffer * BufferList::getBuffer(string const & s)
 Buffer * BufferList::newFile(string const & name, string tname)
 {
 	// get a free buffer
-	Buffer * b = bstore.newBuffer(name, lyxrc);
+	Buffer * b = bstore.newBuffer(name);
 
 	// use defaults.lyx as a default template if it exists.
 	if (tname.empty()) {

@@ -20,7 +20,6 @@
 #include "support/lstrings.h"
 #include "Painter.h"
 
-extern LyXRC * lyxrc;
 
 /* LatexAccent. Proper handling of accented characters */
 /* This part is done by Ivan Schreter, schreter@ccsun.tuke.sk */
@@ -355,7 +354,7 @@ bool InsetLatexAccent::DisplayISO8859_9(Painter & pain, LyXFont const & font,
 void InsetLatexAccent::draw(Painter & pain, LyXFont const & font,
 			    int baseline, float & x) const
 {
-	if (lyxrc->font_norm == "iso8859-9")
+	if (lyxrc.font_norm == "iso8859-9")
 		if (DisplayISO8859_9(pain, font, baseline, x))	
 			return;
 	

@@ -122,12 +122,14 @@ public:
 
 	/// various flags
 	int flags;
-	bool subfigure : 1;
+	///
+	bool subfigure;
 	/// figure reference
 	Figref * figure;
 	/// temporary flags
 	int pflags;
-	bool psubfigure : 1;
+	///
+	bool psubfigure;
 private:
 
 	///

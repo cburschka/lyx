@@ -25,7 +25,6 @@ using std::ifstream;
 #include "support/syscall.h"
 #include "bufferlist.h"
 
-extern LyXRC * lyxrc;
 extern BufferList bufferlist;
 
 /*
@@ -35,7 +34,7 @@ extern BufferList bufferlist;
 Buffer * ImportNoweb::run()
 {
 	// run reLyX -n
-	string tmp = lyxrc->relyx_command + " -n -c " +
+	string tmp = lyxrc.relyx_command + " -n -c " +
 					documentclass() + " -f " + file;
         Systemcalls one;
 	Buffer * buf = 0;

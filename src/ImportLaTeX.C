@@ -23,7 +23,6 @@
 #include "support/filetools.h"
 #include "bufferlist.h"
 
-extern LyXRC * lyxrc;
 extern BufferList bufferlist;
 
 /*
@@ -39,7 +38,7 @@ ImportLaTeX::ImportLaTeX(string const & file)
 Buffer * ImportLaTeX::run()
 {
 	// run reLyX
-	string tmp = lyxrc->relyx_command + " -f " + file;
+	string tmp = lyxrc.relyx_command + " -f " + file;
         Systemcalls one;
 	Buffer * buf = 0;
 	int result = one.startscript(Systemcalls::System, tmp);

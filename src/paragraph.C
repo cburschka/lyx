@@ -40,7 +40,6 @@ int tex_code_break_column = 72;  // needs non-zero initialization. set later.
 // this is a bad idea, but how can LyXParagraph find its buffer to get
 // parameters? (JMarc)
 extern BufferView * current_view;
-extern LyXRC * lyxrc;
 
 
 // ale970405
@@ -1955,9 +1954,9 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 		current_view->buffer()->params.getDocumentDirection();
 	if (direction != global_direction) {
 		if (direction == LYX_DIR_LEFT_TO_RIGHT)
-			os << lyxrc->language_command_ltr << '\n';
+			os << lyxrc.language_command_ltr << '\n';
 		else
-			os << lyxrc->language_command_rtl << '\n';
+			os << lyxrc.language_command_rtl << '\n';
 		texrow.newline();
 	}
 	
@@ -2020,9 +2019,9 @@ LyXParagraph * LyXParagraph::TeXOnePar(ostream & os, TexRow & texrow,
 
 	if (direction != global_direction)
 		if (direction == LYX_DIR_LEFT_TO_RIGHT)
-			os << '\n' << lyxrc->language_command_rtl;
+			os << '\n' << lyxrc.language_command_rtl;
 		else
-			os << '\n' << lyxrc->language_command_ltr;
+			os << '\n' << lyxrc.language_command_ltr;
 	
 	switch (style.latextype) {
 	case LATEX_ITEM_ENVIRONMENT:
@@ -3093,7 +3092,7 @@ void LyXParagraph::SimpleTeXSpecialChars(ostream & os, TexRow & texrow,
 
 			case '|': case '<': case '>':
 				// In T1 encoding, these characters exist
-				if (lyxrc->fontenc == "T1") {
+				if (lyxrc.fontenc == "T1") {
 					os << c;
 					//... but we should avoid ligatures
 					if ((c == '>' || c == '<')
@@ -3794,9 +3793,9 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
  	LyXDirection direction = getParDirection();
  	if (direction != par_direction) {
  		if (direction == LYX_DIR_LEFT_TO_RIGHT)
- 			os << lyxrc->language_command_ltr << '\n';
+ 			os << lyxrc.language_command_ltr << '\n';
  		else
- 			os << lyxrc->language_command_rtl << '\n';
+ 			os << lyxrc.language_command_rtl << '\n';
  		texrow.newline();
  	}
 
@@ -4074,7 +4073,7 @@ bool LyXParagraph::IsLetter(LyXParagraph::size_type pos) const
 	if( c == '\0')
 		return false;
 	// We want to pass the ' and escape chars to ispell
-	string extra = lyxrc->isp_esc_chars + '\'';
+	string extra = lyxrc.isp_esc_chars + '\'';
 	char ch[2];
 	ch[0] = c;
 	ch[1] = 0;
@@ -4090,7 +4089,7 @@ bool LyXParagraph::IsWord(size_type pos ) const
 
 LyXDirection LyXParagraph::getParDirection() const
 {
-	if (!lyxrc->rtl_support || table)
+	if (!lyxrc.rtl_support || table)
 		return LYX_DIR_LEFT_TO_RIGHT;
 
 	if (size() > 0)
@@ -4104,7 +4103,7 @@ LyXDirection LyXParagraph::getParDirection() const
 LyXDirection
 LyXParagraph::getLetterDirection(LyXParagraph::size_type pos) const
 {
-	if (!lyxrc->rtl_support)
+	if (!lyxrc.rtl_support)
 		return LYX_DIR_LEFT_TO_RIGHT;
 
 	LyXDirection direction = getFont(pos).getFontDirection();

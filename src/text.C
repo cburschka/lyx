@@ -37,7 +37,6 @@ using std::min;
 
 static const int LYX_PAPER_MARGIN = 20;
 
-extern LyXRC * lyxrc;
 
 // ale070405
 extern int bibitemMaxWidth(Painter &, LyXFont const &);
@@ -172,7 +171,7 @@ int LyXText::SingleWidth(LyXParagraph * par,
 
 	// The most common case is handled first (Asger)
 	if (IsPrintable(c)) {
-		if (lyxrc->rtl_support && lyxrc->font_norm == "iso8859-6.8x")
+		if (lyxrc.rtl_support && lyxrc.font_norm == "iso8859-6.8x")
 			c = TransformChar(c, par, pos);
 		return font.width(c);
 
@@ -247,7 +246,7 @@ LyXParagraph::size_type LyXText::RowLast(Row const * row) const
 void LyXText::ComputeBidiTables(Row * row) const
 {
 
-	if (!lyxrc->rtl_support) {
+	if (!lyxrc.rtl_support) {
 		bidi_start = -1;
 		return;
 	}
@@ -506,7 +505,7 @@ void LyXText::draw(Row const * row,
 	// So IMHO we should go with the easier and clearer implementation.
 	// And even if 1024 is a large number here it might overflow, string
 	// will only overflow if the machine is out of memory...
-	bool do_transform = (lyxrc->rtl_support && lyxrc->font_norm == "iso8859-6.8x");
+	bool do_transform = (lyxrc.rtl_support && lyxrc.font_norm == "iso8859-6.8x");
 	if (do_transform)
 		c = TransformChar(c, row->par, pos);
 	static string textstring;
