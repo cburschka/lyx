@@ -199,7 +199,7 @@ bool IsStringInText(Paragraph * par, pos_type pos,
 	while (((pos + i) < par->size())
 	       && (string::size_type(i) < size)
 	       && (cs ? (str[i] == par->getChar(pos + i))
-	           : (toupper(str[i]) == toupper(par->getChar(pos + i)))))
+	           : (uppercase(str[i]) == uppercase(par->getChar(pos + i)))))
 	{
 		++i;
 	}
@@ -225,7 +225,6 @@ SearchResult SearchForward(BufferView * bv, LyXText * text, string const & str,
 	Paragraph * par = text->cursor.par();
 	pos_type pos = text->cursor.pos();
 	Paragraph * prev_par = par;
-	pos_type prev_pos;
 	UpdatableInset * inset;
 
 	while (par && !IsStringInText(par, pos, str, cs, mw)) {
@@ -245,8 +244,6 @@ SearchResult SearchForward(BufferView * bv, LyXText * text, string const & str,
  
 		if (pos >= par->size()) {
 			prev_par = par;
-			// consider 0-sized empty pars
-			prev_pos = std::min(pos, par->size());
 			par = par->next();
 			pos = 0;
 		}
@@ -258,7 +255,7 @@ SearchResult SearchForward(BufferView * bv, LyXText * text, string const & str,
 	} else {
 		// make sure we end up at the end of the text,
 		// not the start point of the last search
-		text->setCursor(bv, prev_par, prev_pos);
+               text->setCursor(bv, prev_par, prev_par->size());
 		return SR_NOT_FOUND;
 	}
 }
@@ -274,13 +271,11 @@ SearchResult SearchBackward(BufferView * bv, LyXText * text,
 	Paragraph * par = text->cursor.par();
 	pos_type pos = text->cursor.pos();
 	Paragraph * prev_par = par;
-	pos_type prev_pos = pos;
 
 	do {
 		if (pos > 0)
 			--pos;
 		else {
-			prev_pos = pos;
 			prev_par = par;
 			// We skip empty paragraphs (Asger)
 			do {
@@ -308,7 +303,7 @@ SearchResult SearchBackward(BufferView * bv, LyXText * text,
 		return SR_FOUND;
 	} else {
 		// go to the last part of the unsuccessful search
-		text->setCursor(bv, prev_par, prev_pos);
+               text->setCursor(bv, prev_par, 0);
 		return SR_NOT_FOUND;
 	}
 }

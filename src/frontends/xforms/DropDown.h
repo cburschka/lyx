@@ -9,8 +9,6 @@
 #ifndef DROPDOWN_H
 #define DROPDOWN_H
  
-#include <config.h>
- 
 #include "LyXView.h"
 #include <sigc++/signal_system.h> 
 #include "LString.h"

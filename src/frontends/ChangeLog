@@ -1,6 +1,12 @@
+2001-12-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* Timeout.h: 
+	* FileDialog.h: do not include <config.h> in header files.
+
 2001-12-12  Angus Leeming  <a.leeming@ic.ac.uk>
 
-	* Alert.h: remove spurious semi-colon at the end of the namespace scope.
+	* Alert.h: remove spurious semi-colon at the end of the namespace
+	scope. 
 
 2001-11-22  John Levon  <moz@compsoc.man.ac.uk>
 

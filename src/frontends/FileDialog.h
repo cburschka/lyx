@@ -15,7 +15,6 @@
 #pragma interface
 #endif
 
-#include <config.h>
 #include <utility>
 
 #include "commandtags.h"

@@ -137,7 +137,7 @@ unsigned char LyXText::transformChar(unsigned char c, Paragraph * par,
 			pos_type pos) const
 {
 	if (!Encodings::is_arabic(c))
-		if (lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 && isdigit(c))
+		if (lyxrc.font_norm_type == LyXRC::ISO_8859_6_8 && IsDigit(c))
 			return c + (0xb0 - '0');
 		else
 			return c;
@@ -1785,7 +1785,7 @@ void LyXText::insertChar(BufferView * bview, char c)
 		static string const number_seperators = ".,:";
 
 		if (current_font.number() == LyXFont::ON) {
-			if (!isdigit(c) && !contains(number_operators, c) &&
+			if (!IsDigit(c) && !contains(number_operators, c) &&
 			    !(contains(number_seperators, c) &&
 			      cursor.pos() >= 1 &&
 			      cursor.pos() < cursor.par()->size() &&
@@ -1797,7 +1797,7 @@ void LyXText::insertChar(BufferView * bview, char c)
 				      cursor.pos() - 1).number() == LyXFont::ON)
 			    )
 				number(bview); // Set current_font.number to OFF
-		} else if (isdigit(c) &&
+		} else if (IsDigit(c) &&
 			   real_current_font.isVisibleRightToLeft()) {
 			number(bview); // Set current_font.number to ON
 
@@ -3501,7 +3501,6 @@ void LyXText::paintLastRow(DrawRowParams & p)
 		y_bottom -= asc;
 	}
 
-	pos_type const last = rowLastPrintable(p.row);
 	bool const is_rtl = p.row->par()->isRightToLeftPar(p.bv->buffer()->params);
 	int const endlabel = par->getEndLabel(buffer->params);
  

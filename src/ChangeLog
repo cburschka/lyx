@@ -1,3 +1,27 @@
+2001-12-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* Thesaurus.C: always include <config.h> in sources.
+
+	* Painter.h: 
+	* lyxlookup.h: 
+	* box.h: do not include <config.h> in header files
+
+	* text.C (paintLastRow): remove unused variable
+
+	* text.C (transformChar): 
+	(insertChar): 
+	* tabular-old.C (getTokenValue): use IsDigit instead of isdigit.
+
+	* Painter.C (text): 
+	* font.C (width): rewrite to use uppercase() instead of
+	islower/toupper. 
+
+	* lyxfind.C (IsStringInText): use uppercase instead of toupper.
+
+2001-12-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* lyxfind.C: clean up of find failure position change
+
 2001-12-20  Juergen Vigna  <jug@sad.it>
 
 	* Makefile.am (lyx_SOURCES): added tabular_funcs.[hC].
@@ -11,6 +35,7 @@
 	* tabular_funcs.[hC]: added and moved here all not classfunctions
 	of LyXTabular.
 
+>>>>>>> 1.472
 2001-12-19  Juergen Vigna  <jug@sad.it>
 
 	* tabular.[Ch]: better support for longtabular options (not finished
@@ -22,6 +47,7 @@
 	the last character to compute the size of *_BOX. This makes more
 	sense and avoids a crash with empty paragraphs.
 	Use Painter::rectangle to draw EMPTY_BOX.
+
 2001-12-19  Juergen Vigna  <jug@sad.it>
 
 	* undo_funcs.C (textHandleUndo): fixed setting of inset_owner of

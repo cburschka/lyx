@@ -16,7 +16,6 @@
 #endif
 
 #include <vector>
-#include <config.h>
 
 #include "LString.h"
 #include "Thesaurus.h"

@@ -6,6 +6,8 @@
  * \author John Levon
  */
 
+#include <config.h>
+
 #include "Thesaurus.h"
 
 Thesaurus thesaurus; 

@@ -15,7 +15,6 @@
 #ifndef LYXLOOKUP_H
 #define LYXLOOKUP_H
 
-#include <config.h>
 #include <X11/Xlib.h>
 
 /// Initialize the compose key handling

@@ -10,8 +10,6 @@
 #ifndef TIMEOUTPIMPL_H
 #define TIMEOUTPIMPL_H
 
-#include <config.h>
-
 #include "frontends/Timeout.h"
 
 #include <sigc++/signal_system.h>

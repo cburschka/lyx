@@ -14,6 +14,7 @@
 #pragma implementation
 #endif
 
+#include "support/lstrings.h"
 #include "font.h"
 #include "FontLoader.h"
 #include "lyxrc.h"
@@ -22,7 +23,6 @@
 
 #include <boost/smart_ptr.hpp>
 
-#include <cctype>
 
 namespace {
 
@@ -136,14 +136,11 @@ int lyxfont::width(char const * s, size_t n, LyXFont const & f)
 	} else {
 		// emulate smallcaps since X doesn't support this
 		unsigned int result = 0;
-		char c;
 		LyXFont smallfont(f);
 		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
 		for (size_t i = 0; i < n; ++i) {
-			c = s[i];
-			// when islower is a macro, the cast is needed (JMarc)
-			if (islower(static_cast<unsigned char>(c))) {
-				c = toupper(c);
+			char const c = uppercase(s[i]);
+			if (c != s[i]) {
 				result += ::XTextWidth(getXFontstruct(smallfont), &c, 1);
 			} else {
 				result += ::XTextWidth(getXFontstruct(f), &c, 1);
@@ -179,8 +176,13 @@ int lyxfont::width(XChar2b const * s, int n, LyXFont const & f)
 		LyXFont smallfont(f);
 		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
 		for (int i = 0; i < n; ++i) {
-			if (s[i].byte1 == 0 && islower(s[i].byte2)) {
-				c.byte2 = toupper(s[i].byte2);
+			if (s[i].byte1)
+				c = s[i];
+			else {
+				c.byte1 = s[i].byte1;
+				c.byte2 = uppercase(s[i].byte2);
+			}
+			if (c.byte2 != s[i].byte2) {
 				result += ::XTextWidth16(getXFontstruct(smallfont), &c, 1);
 			} else {
 				result += ::XTextWidth16(getXFontstruct(f), &s[i], 1);

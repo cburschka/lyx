@@ -1,3 +1,12 @@
+2001-12-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* DropDown.C: always include <config.h> in sources.
+
+	* xforms_helpers.h: 
+	* FormFiledialog.h: 
+	* Timeout_pimpl.h: 
+	* DropDown.h: do not include <config.h> in headers
+
 2001-12-20  Juergen Vigna  <jug@sad.it>
 
 	* FormTabular.C (update): final LT-h/f support modifications.

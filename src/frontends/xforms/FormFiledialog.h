@@ -18,8 +18,6 @@
 #pragma interface
 #endif
 
-#include <config.h>
-
 #include "LString.h"
 #include FORMS_H_LOCATION
 #include "form_filedialog.h"

@@ -12,8 +12,6 @@
 #ifndef GRAPHICSCACHEITEM_H
 #define GRAPHICSCACHEITEM_H
 
-#include <config.h>
-
 #ifdef __GNUG__
 #pragma interface
 #endif

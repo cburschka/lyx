@@ -13,7 +13,6 @@
 #define LYXIMAGE_H
 
 // We need it to know what version to use.
-#include <config.h>
 
 #ifndef X_DISPLAY_MISSING
 	#include "LyXImage_X.h"

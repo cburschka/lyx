@@ -7,8 +7,6 @@
 #pragma interface
 #endif
 
-#include <config.h>
- 
 #include FORMS_H_LOCATION
  
 #include "Color.h"

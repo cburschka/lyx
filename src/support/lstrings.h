@@ -17,7 +17,7 @@
 #endif
 
 //#include <cstring>
-#include <cctype>
+//#include <cctype>
 
 #include "Lsstream.h"
 

@@ -9,10 +9,6 @@
 #ifndef BOX_H
 #define BOX_H
 
-#include <config.h>
- 
-#include "debug.h" 
- 
 /**
  * A simple class representing rectangular regions.
  * It is expected that the box be constructed in

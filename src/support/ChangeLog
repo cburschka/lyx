@@ -1,3 +1,7 @@
+2001-12-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lstrings.h: do not include <cctype>
+
 2001-12-12  Ben Stanley  <bds02@uow.edu.au>
 
 	* lyxsum.C: portability fix for mmap patch

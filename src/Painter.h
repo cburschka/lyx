@@ -15,7 +15,6 @@
 #pragma interface
 #endif
 
-#include <config.h>
 #include "LString.h"
 
 // This is only included to provide stuff for the non-public sections

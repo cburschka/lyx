@@ -1,3 +1,7 @@
+2001-12-19  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* GraphicsCacheItem.h: do not include <config.h> in header files
+
 2001-09-21  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ImageLoaderXPM.C (runImageLoader): If the pixmap contains a

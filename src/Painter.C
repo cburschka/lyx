@@ -224,17 +224,16 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 		smallfont.decSize().decSize().setShape(LyXFont::UP_SHAPE);
 		int tmpx = x;
 		for (size_t i = 0; i < ls; ++i) {
-			char c = s[i];
-			if (islower(static_cast<unsigned char>(c))) {
-				c = toupper(c);
+			char const c = uppercase(s[i]);
+			if (c != s[i]) {
 				lyxfont::XSetFont(display, gc, smallfont);
-				XDrawString(display, owner.getPixmap(),
-					    gc, tmpx, y, &c, 1);
+				XDrawString(display, owner.getPixmap(), gc,
+					    tmpx, y, &c, 1);
 				tmpx += lyxfont::XTextWidth(smallfont, &c, 1);
 			} else {
 				lyxfont::XSetFont(display, gc, f);
-				XDrawString(display, owner.getPixmap(),
-					    gc, tmpx, y, &c, 1);
+				XDrawString(display, owner.getPixmap(), gc,
+					    tmpx, y, &c, 1);
 				tmpx += lyxfont::XTextWidth(f, &c, 1);
 			}
 		}
@@ -261,17 +260,22 @@ PainterBase & Painter::text(int x, int y, XChar2b const * s, int ls,
 		static XChar2b c;
 		int tmpx = x;
 		for (int i = 0; i < ls; ++i) {
-			if (s[i].byte1 == 0 && islower(s[i].byte2)) {
-				c.byte2 = toupper(s[i].byte2);
+			if (s[i].byte1)
+				c = s[i];
+			else {
+				c.byte1 = s[i].byte1;
+				c.byte2 = uppercase(s[i].byte2);
+			}
+			if (c.byte2 != s[i].byte2) {
 				lyxfont::XSetFont(display, gc, smallfont);
-				XDrawString16(display, owner.getPixmap(),
-					    gc, tmpx, y, &c, 1);
+				XDrawString16(display, owner.getPixmap(), gc,
+					      tmpx, y, &c, 1);
 				tmpx += lyxfont::XTextWidth16(smallfont, &c, 1);
 			} else {
 				lyxfont::XSetFont(display, gc, f);
-				XDrawString16(display, owner.getPixmap(),
-					    gc, tmpx, y, &s[i], 1);
-				tmpx += lyxfont::XTextWidth16(f, const_cast<XChar2b *>(&s[i]), 1);
+				XDrawString16(display, owner.getPixmap(), gc,
+					      tmpx, y, &c, 1);
+				tmpx += lyxfont::XTextWidth16(f, &c, 1);
 			}
 		}
 	}

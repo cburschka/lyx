@@ -6,6 +6,8 @@
  * \author John Levon <moz@compsoc.man.ac.uk>
  */
 
+#include <config.h>
+
 #include "DropDown.h"
 
 #include <iostream>

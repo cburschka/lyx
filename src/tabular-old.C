@@ -15,6 +15,7 @@
 #include "tabular.h"
 #include "debug.h"
 #include "support/lstrings.h"
+#include "support/textutils.h"
 
 using std::istream;
 using std::getline;
@@ -59,12 +60,12 @@ bool getTokenValue(string const & str, char const * token, int & num)
     pos += strlen(token) + 1;
     ch = str[pos];
     if ((ch != '"') && (ch != '\'')) { // only read till next space
-	if (!isdigit(ch))
+	if (!IsDigit(ch))
 	    return false;
 	ret += ch;
     }
     ++pos;
-    while ((pos < str.length() - 1) && isdigit(str[pos]))
+    while ((pos < str.length() - 1) && IsDigit(str[pos]))
 	ret += str[pos++];
 
     num = strToInt(ret);
@@ -112,12 +113,12 @@ bool getTokenValue(string const & str, char const * token, bool & flag)
     pos += strlen(token) + 1;
     ch = str[pos];
     if ((ch != '"') && (ch != '\'')) { // only read till next space
-	if (!isdigit(ch))
+	if (!IsDigit(ch))
 	    return false;
 	ret += ch;
     }
     ++pos;
-    while ((pos < str.length() - 1) && isdigit(str[pos]))
+    while ((pos < str.length() - 1) && IsDigit(str[pos]))
 	ret += str[pos++];
 
     flag = strToInt(ret);

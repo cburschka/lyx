@@ -11,8 +11,6 @@
 #define THESAURUS_H
  
 #include <vector>
-
-#include <config.h>
  
 #include "LString.h"
 #ifdef HAVE_LIBAIKSAURUS
