@@ -31,6 +31,8 @@ public:
 	friend class QCitationDialog;
 	///
 	QCitation(Dialog &);
+protected:
+	virtual bool isValid();
 private:
 
 	/// Set the Params variable for the Controller.

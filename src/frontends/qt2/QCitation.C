@@ -19,6 +19,7 @@
 
 #include "bufferparams.h"
 
+#include "controllers/ButtonController.h"
 #include "controllers/ControlCitation.h"
 
 #include "support/lstrings.h"
@@ -212,6 +213,8 @@ void QCitation::update_contents()
 	// the bool prevents that this is also done after "apply"
 	if (open_find_)
 		dialog_->openFind();
+
+	bc().valid(isValid());
 }
 
 
@@ -228,6 +231,13 @@ void QCitation::updateBrowser(QListBox * browser,
 			browser->insertItem(toqstr(key));
 	}
 }
+
+
+bool QCitation::isValid()
+{
+	return dialog_->selectedLB->count() > 0;
+}
+
 
 } // namespace frontend
 } // namespace lyx
