@@ -66,18 +66,11 @@ bool IsMacro(short tok, int id)
 static int const MAX_STACK_ITEMS = 32;
 
 struct MathStackXIter {
-	int i, imax;
-	MathedXIter * item;
+	std::vector<MathedXIter> item;
+	int i;
 
-	MathStackXIter(int n = MAX_STACK_ITEMS): imax(n) {
-		item = new MathedXIter[imax];
-		i = 0;
-	}
-
-	MathStackXIter(MathStackXIter & stk);
-
-	~MathStackXIter() {
-		delete[] item;
+	MathStackXIter(int n = MAX_STACK_ITEMS)
+		: item(n), i(0) {
 	}
 
 	MathedXIter * push() {
@@ -85,8 +78,7 @@ struct MathStackXIter {
 	}
 
 	MathedXIter * pop() {
-		--i;
-		return &item[i - 1];
+		return &item[--i];
 	}
 
 	MathedXIter * Item(int idx) {
@@ -107,20 +99,8 @@ struct MathStackXIter {
 
 	int Level() { return i; }
 
-} mathstk, *selstk = 0;
+} mathstk, selstk;
 
-
-MathStackXIter::MathStackXIter(MathStackXIter & stk)
-{
-	imax = stk.imax;
-	item = new MathedXIter[imax];
-	i = stk.i;
-	for (int k = 0; k < i; ++k) {
-		item[k].SetData(stk.item[k].getPar());
-		item[k].GoBegin();
-		item[k].goPosAbs(stk.item[k].getPos());
-	}
-}
 
 
 /***----------------  Mathed Cursor  ---------------------------***/
@@ -351,7 +331,8 @@ void MathedCursor::SetPos(int x, int y)
 		if (!cursor->Next() && !Pop())
 			break;
 	}
-	if (x-xp < cursor->GetX()-x) cursor->ipop();
+	if (x - xp < cursor->GetX() - x)
+		cursor->ipop();
 	cursor->Adjust();
 }
 
@@ -962,8 +943,8 @@ void MathedCursor::SelStart()
 	lyxerr[Debug::MATHED] << "Starting sel " << endl;
 	if (!anchor) {
 		selpos = cursor->getPos();
-		selstk = new MathStackXIter(mathstk);
-		anchor = selstk->Item(-1);
+		selstk = mathstk;
+		anchor = selstk.Item(-1);
 		anchor->SetData(cursor->getPar());
 		anchor->GoBegin();
 		anchor->goPosAbs(selpos);
@@ -976,8 +957,6 @@ void MathedCursor::SelClear()
 {
 	lyxerr[Debug::MATHED] << "Clearing sel " << endl;
 	selection = false;
-	delete selstk;
-	selstk = 0;
 	anchor = 0;
 }
 
@@ -986,21 +965,21 @@ void MathedCursor::SelClear()
 // Anchor position must be at the same level that stack.
 void MathedCursor::SelBalance()
 {
-	int d = mathstk.Level() - selstk->Level();
+	int d = mathstk.Level() - selstk.Level();
 
 	// If unbalanced, balance them
 	while (d != 0) {
 		if (d < 0) {
-			// lyxerr << "b[" << mathstk.Level() << " " << selstk->Level
+			// lyxerr << "b[" << mathstk.Level() << " " << selstk.Level
 			//  << " " << anchor->GetX() << " " << cursor->GetX() << "]";
-			anchor = selstk->pop();
+			anchor = selstk.pop();
 			if (anchor->GetX() >= cursor->GetX())
 			anchor->Next();
 		} else {
-			// lyxerr <<"a[" << mathstk.Level() << " " << selstk->Level() <<"]";
+			// lyxerr <<"a[" << mathstk.Level() << " " << selstk.Level() <<"]";
 			Pop();
 		}
-		d = mathstk.Level() - selstk->Level();
+		d = mathstk.Level() - selstk.Level();
 	}
 
 	// Once balanced the levels, check that they are at the same paragraph

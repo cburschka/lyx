@@ -123,16 +123,8 @@ void MathedXIter::Clean(int pos2)
 				delete inset;
 			continue;
 		} 
-		if (IsCR()) {
-			if (crow_) {
-				MathedRowContainer::iterator r = crow_;
-				++r;
-				if (r) {
-					crow_.st_->next_ = r.st_->next_;
-					delete r.st_;
-				}	   
-			}
-		}
+		if (IsCR() && crow_)
+			container().erase(crow_);
 		Next();
 	}    
 	ipop();
@@ -216,14 +208,16 @@ string const MathedXIter::GetString() const
 bool MathedXIter::Next()
 {  
 //    lyxerr << "Ne[" << pos << "]";
-	if (!OK()) return false;
+	if (!OK())
+		return false;
 	int w = 0;
 //   lyxerr << "xt ";
 	if (IsInset()) {
 		MathedInset * px = GetInset();
 		w = px->Width();
 		if (px->GetType() == LM_OT_SCRIPT) {
-			if (w > sw_) sw_ = w;
+			if (w > sw_)
+				sw_ = w;
 			w = 0;
 		} else
 			sx_ = (px->GetLimits()) ? w : 0;
@@ -240,7 +234,7 @@ bool MathedXIter::Next()
 			} else
 				if (c == LM_TC_CR && p_) {
 					x_ = 0;
-					if (crow_ && crow_.st_->next_) {
+					if (crow_ && !crow_.is_last()) {
 						++crow_;
 						y_ = crow_->getBaseline();
 						w = crow_->getTab(0);
@@ -291,7 +285,8 @@ void MathedXIter::Adjust()
 {
 	int posx = pos;
 	GoBegin();
-	while (posx > pos && OK()) Next();  
+	while (posx > pos && OK())
+		Next();  
 }
 
 
@@ -408,16 +403,12 @@ void MathedXIter::delRow()
 			line_empty = false;
 		}
 	} while (Next());
+
 	int const p1 = getPos();
 	ipop();
 	
 	if (line_empty) {
-		
-		MathedRowContainer::iterator r( crow_.st_->next_ );
-		if (r) {
-			crow_.st_->next_ = r.st_->next_;
-			delete r.st_;
-		}
+		container().erase(crow_);	
 		join(p1);
 		Delete();
 	} else
@@ -551,7 +542,8 @@ void MathedXIter::IMetrics(int pos2, int & width, int & ascent, int & descent)
 					<< cx << ']' << endl;
 				break;
 			}
-		if (pos < pos2)  Next();
+		if (pos < pos2)
+			Next();
 	}
 	width = x_ - x1;
 }

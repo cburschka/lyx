@@ -1,3 +1,11 @@
+2001-03-09  André Pönitz  <poenitz@htwm.de>
+	* math_cursor.C: use std::vector<> in MathStackXIter
+		change selstk from a pointer to the "real thing"
+
+	* math_rowst.h: new MathedRowContainer::erase method
+
+	* math_xiter.C: use MathedRowContainer::erase
+
 2001-03-08  André Pönitz  <poenitz@htwm.de>
 	* math_rowst.h: give MathedRowContainer an 'insert' method. 
 

@@ -174,6 +174,16 @@ struct MathedRowContainer {
 		}
 	}
 
+	void erase(iterator & it) {
+		Assert(it.st_);
+		MathedRowSt * r = it.st_->next_;
+    if (r) {
+      it.st_->next_ = r->next_;
+      delete r;
+    }
+	}
+
+
 	///
 	MathedRowSt * data_;
 
