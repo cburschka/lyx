@@ -64,9 +64,11 @@ namespace {
 
 typedef pair<string, string> StrPair;
 
-typedef list<string> PendingStore;
+// A list of alll snippets to be converted to previews
+typedef list<string> PendingSnippets;
 
-typedef vector<StrPair> InProgressStore;
+// Each item in the vector is a pair<snippet, image file name>.
+typedef vector<StrPair> BitmapFile;
 
 
 double setFontScalingFactor(Buffer &);
@@ -95,7 +97,7 @@ struct InProgress {
 	InProgress() : pid(0) {}
 	///
 	InProgress(string const & filename_base,
-		   PendingStore const & pending,
+		   PendingSnippets const & pending,
 		   string const & to_format);
 	/// Remove any files left lying around and kill the forked process. 
 	void stop() const;
@@ -104,10 +106,13 @@ struct InProgress {
 	pid_t pid;
 	///
 	string metrics_file;
-	/// Each item in the vector is a pair<snippet, image file name>.
-	InProgressStore snippets;
+	///
+	BitmapFile snippets;
 };
 
+typedef map<string, InProgress>  InProgressProcesses;
+
+typedef InProgressProcesses::value_type InProgressProcess;
 
 } // namespace anon
 
@@ -136,7 +141,7 @@ private:
 	///
 	void dumpPreamble(ostream &) const;
 	///
-	void dumpData(ostream &, InProgressStore const &) const;
+	void dumpData(ostream &, BitmapFile const &) const;
 
 	/** cache_ allows easy retrieval of already-generated images
 	 *  using the LaTeX snippet as the identifier.
@@ -150,15 +155,13 @@ private:
 	/** pending_ stores the LaTeX snippets in anticipation of them being
 	 *  sent to the converter.
 	 */
-	PendingStore pending_;
+	PendingSnippets pending_;
 
 	/** in_progress_ stores all forked processes so that we can proceed
 	 *  thereafter.
 	    The map uses the conversion commands as its identifiers.
 	 */
-	typedef map<string, InProgress> InProgressMap;
-	///
-	InProgressMap in_progress_;
+	InProgressProcesses in_progress_;
 
 	///
 	PreviewLoader & parent_;
@@ -223,27 +226,44 @@ void PreviewLoader::startLoading()
 
 namespace {
 
+struct IncrementedFileName {
+	IncrementedFileName(string const & to_format,
+			    string const & filename_base)
+		: to_format_(to_format), base_(filename_base), counter_(1)
+	{}
+
+	StrPair const operator()(string const & snippet)
+	{
+		ostringstream os;
+		os << base_
+		   << setfill('0') << setw(3) << counter_++
+		   << "." << to_format_;
+
+		string const file = os.str().c_str();
+
+		return make_pair(snippet, file);
+	}
+
+private:
+	string const & to_format_;
+	string const & base_;
+	int counter_;
+};
+
+	
 InProgress::InProgress(string const & filename_base,
-		       PendingStore const & pending,
+		       PendingSnippets const & pending,
 		       string const & to_format)
 	: pid(0),
 	  metrics_file(filename_base + ".metrics"),
 	  snippets(pending.size())
 {
-	InProgressStore::iterator sit = snippets.begin();
-	PendingStore::const_iterator pit  = pending.begin();
-	PendingStore::const_iterator pend = pending.end();
+	PendingSnippets::const_iterator pit  = pending.begin();
+	PendingSnippets::const_iterator pend = pending.end();
+	BitmapFile::iterator sit = snippets.begin();
 
-	int counter = 1; // file numbers start at 1
-	for (; pit != pend; ++pit, ++sit, ++counter) {
-		ostringstream os;
-		os << filename_base
-		   << setfill('0') << setw(3) << counter
-		   << "." << to_format;
-		string const file = os.str().c_str();
-
-		*sit = make_pair(*pit, file);
-	}
+	std::transform(pit, pend, sit,
+		       IncrementedFileName(to_format, filename_base));
 }
 
 
@@ -255,8 +275,8 @@ void InProgress::stop() const
 	if (!metrics_file.empty())
 		lyx::unlink(metrics_file);
 
-	InProgressStore::const_iterator vit  = snippets.begin();
-	InProgressStore::const_iterator vend = snippets.end();
+	BitmapFile::const_iterator vit  = snippets.begin();
+	BitmapFile::const_iterator vend = snippets.end();
 	for (; vit != vend; ++vit) {
 		if (!vit->second.empty())
 			lyx::unlink(vit->second);
@@ -283,8 +303,8 @@ PreviewLoader::Impl::Impl(PreviewLoader & p, Buffer const & b)
 
 PreviewLoader::Impl::~Impl()
 {
-	InProgressMap::iterator ipit  = in_progress_.begin();
-	InProgressMap::iterator ipend = in_progress_.end();
+	InProgressProcesses::iterator ipit  = in_progress_.begin();
+	InProgressProcesses::iterator ipend = in_progress_.end();
 
 	for (; ipit != ipend; ++ipit) {
 		ipit->second.stop();
@@ -300,6 +320,25 @@ PreviewLoader::Impl::preview(string const & latex_snippet) const
 }
 
 
+namespace {
+
+struct FindSnippet {
+	FindSnippet(string const & s) : snippet_(s) {}
+	bool operator()(InProgressProcess const & process)
+	{
+		BitmapFile const & snippets = process.second.snippets;
+		BitmapFile::const_iterator it  = snippets.begin();
+		BitmapFile::const_iterator end = snippets.end();
+		it = find_if(it, end, FindFirst(snippet_));
+		return it != end;
+	}
+
+private:
+	string const & snippet_;
+};
+
+} // namespace anon
+
 PreviewLoader::Status
 PreviewLoader::Impl::status(string const & latex_snippet) const
 {
@@ -307,25 +346,19 @@ PreviewLoader::Impl::status(string const & latex_snippet) const
 	if (cit != cache_.end())
 		return Ready;
 
-	PendingStore::const_iterator pit  = pending_.begin();
-	PendingStore::const_iterator pend = pending_.end();
-	pit = find(pit, pend, latex_snippet);
+	PendingSnippets::const_iterator pit  = pending_.begin();
+	PendingSnippets::const_iterator pend = pending_.end();
 
+	pit = find(pit, pend, latex_snippet);
 	if (pit != pend)
 		return InQueue;
 
-	InProgressMap::const_iterator ipit  = in_progress_.begin();
-	InProgressMap::const_iterator ipend = in_progress_.end();
+	InProgressProcesses::const_iterator ipit  = in_progress_.begin();
+	InProgressProcesses::const_iterator ipend = in_progress_.end();
 
-	for (; ipit != ipend; ++ipit) {
-		InProgressStore const & snippets = ipit->second.snippets;
-		InProgressStore::const_iterator sit  = snippets.begin();
-		InProgressStore::const_iterator send = snippets.end();
-		sit = find_if(sit, send, FindFirst(latex_snippet));
-
-		if (sit != send)
-			return Processing;
-	}
+	ipit = find_if(ipit, ipend, FindSnippet(latex_snippet));
+	if (ipit != ipend)
+		return Processing;
 
 	return NotFound;
 }
@@ -340,37 +373,47 @@ void PreviewLoader::Impl::add(string const & latex_snippet)
 }
 
 
+namespace {
+
+struct EraseSnippet {
+	EraseSnippet(string const & s) : snippet_(s) {}
+	void operator()(InProgressProcess & process)
+	{
+		BitmapFile & snippets = process.second.snippets;
+		BitmapFile::iterator it  = snippets.begin();
+		BitmapFile::iterator end = snippets.end();
+
+		it = find_if(it, end, FindFirst(snippet_));
+		if (it != end)
+			snippets.erase(it, it+1);
+	}
+
+private:
+	string const & snippet_;
+};
+
+} // namespace anon
+
+
 void PreviewLoader::Impl::remove(string const & latex_snippet)
 {
 	Cache::iterator cit = cache_.find(latex_snippet);
 	if (cit != cache_.end())
 		cache_.erase(cit);
 
-	PendingStore::iterator pit  = pending_.begin();
-	PendingStore::iterator pend = pending_.end();
-	pit = find(pit, pend, latex_snippet);
+	PendingSnippets::iterator pit  = pending_.begin();
+	PendingSnippets::iterator pend = pending_.end();
 
-	if (pit != pend) {
-		PendingStore::iterator first = pit++;
-		pending_.erase(first, pit);
-	}
+	pending_.erase(std::remove(pit, pend, latex_snippet), pend);
 
-	InProgressMap::iterator ipit  = in_progress_.begin();
-	InProgressMap::iterator ipend = in_progress_.end();
+	InProgressProcesses::iterator ipit  = in_progress_.begin();
+	InProgressProcesses::iterator ipend = in_progress_.end();
 
-	while (ipit != ipend) {
-		InProgressMap::iterator curr = ipit;
-		++ipit;
+	std::for_each(ipit, ipend, EraseSnippet(latex_snippet));
 
-		InProgressStore & snippets = curr->second.snippets;
-		InProgressStore::iterator sit  = snippets.begin();
-		InProgressStore::iterator send = snippets.end();
-		sit = find_if(sit, send, FindFirst(latex_snippet));
-
-		if (sit != send)
-			snippets.erase(sit, sit+1);
-
-		if (snippets.empty())
+	for (; ipit != ipend; ++ipit) {
+		InProgressProcesses::iterator curr = ipit++;
+		if (curr->second.snippets.empty())
 			in_progress_.erase(curr);
 	}
 }
@@ -445,7 +488,7 @@ void PreviewLoader::Impl::finishedGenerating(string const & command,
 		return;
 
 	// Paranoia check!
-	InProgressMap::iterator git = in_progress_.find(command);
+	InProgressProcesses::iterator git = in_progress_.find(command);
 	if (git == in_progress_.end()) {
 		lyxerr << "PreviewLoader::finishedGenerating(): unable to find "
 			"data for\n"
@@ -459,8 +502,8 @@ void PreviewLoader::Impl::finishedGenerating(string const & command,
 
 	// Add these newly generated bitmap files to the cache and
 	// start loading them into LyX.
-	InProgressStore::const_iterator it  = git->second.snippets.begin();
-	InProgressStore::const_iterator end = git->second.snippets.end();
+	BitmapFile::const_iterator it  = git->second.snippets.begin();
+	BitmapFile::const_iterator end = git->second.snippets.end();
 
 	std::list<PreviewImagePtr> newimages;
 
@@ -532,13 +575,13 @@ void PreviewLoader::Impl::dumpPreamble(ostream & os) const
 
 
 void PreviewLoader::Impl::dumpData(ostream & os,
-				   InProgressStore const & vec) const
+				   BitmapFile const & vec) const
 {
 	if (vec.empty())
 		return;
 
-	InProgressStore::const_iterator it  = vec.begin();
-	InProgressStore::const_iterator end = vec.end();
+	BitmapFile::const_iterator it  = vec.begin();
+	BitmapFile::const_iterator end = vec.end();
 
 	for (; it != end; ++it) {
 		os << "\\begin{preview}\n"

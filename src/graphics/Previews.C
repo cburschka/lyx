@@ -43,7 +43,7 @@ struct Previews::Impl {
 	///
 	typedef boost::shared_ptr<PreviewLoader> PreviewLoaderPtr;
 	///
-	typedef std::map<Buffer *, PreviewLoaderPtr> CacheType;
+	typedef std::map<Buffer const *, PreviewLoaderPtr> CacheType;
 	///
 	CacheType cache;
 };
@@ -58,7 +58,7 @@ Previews::~Previews()
 {}
 
 
-PreviewLoader & Previews::loader(Buffer * buffer)
+PreviewLoader & Previews::loader(Buffer const * buffer)
 {
 	lyx::Assert(buffer);
 
@@ -69,12 +69,12 @@ PreviewLoader & Previews::loader(Buffer * buffer)
 		pimpl_->cache[buffer] = ptr;
 		return *ptr.get();
 	}
-	
+
 	return *it->second.get();
 }
 
 
-void Previews::removeLoader(Buffer * buffer)
+void Previews::removeLoader(Buffer const * buffer)
 {
 	if (!buffer)
 		return;
@@ -86,15 +86,12 @@ void Previews::removeLoader(Buffer * buffer)
 }
 
 
-void Previews::generateBufferPreviews(Buffer * buffer)
+void Previews::generateBufferPreviews(Buffer const & buffer)
 {
-	if (!buffer || !lyxrc.preview)
-		return;
+	PreviewLoader & ploader = loader(&buffer);
 
-	PreviewLoader & ploader = loader(buffer);
-
-	Buffer::inset_iterator it  = buffer->inset_const_iterator_begin();
-	Buffer::inset_iterator end = buffer->inset_const_iterator_end();
+	Buffer::inset_iterator it  = buffer.inset_const_iterator_begin();
+	Buffer::inset_iterator end = buffer.inset_const_iterator_end();
 
 	for (; it != end; ++it) {
 		if ((*it)->lyxCode() == Inset::MATH_CODE) {

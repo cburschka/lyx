@@ -1,3 +1,11 @@
+2002-07-16  Angus Leeming  <leeming@lyx.org>
+
+	* PreviewLoader.C: greater use of STL algorithms.
+
+	* Previews.[Ch]: use const in more places.
+	(generateBufferPreviews): now takes a Buffer const & argument, not a
+	pointer.
+ 
 2002-07-15  John Levon  <moz@compsoc.man.ac.uk>
 
 	* GraphicsImage.h: remove getPixmap/X, add isDrawable()

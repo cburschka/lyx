@@ -40,19 +40,19 @@ public:
 	 *  We assert that (buffer != 0) but do not pass a Buffer &
 	 *  so that insets do not need to #include buffer.h
 	 */
-	PreviewLoader & loader(Buffer * buffer);
+	PreviewLoader & loader(Buffer const * buffer);
 
 	/** Called from the Buffer d-tor.
 	 *  If (buffer == 0), does nothing.
 	 */
-	void removeLoader(Buffer * buffer);
+	void removeLoader(Buffer const * buffer);
 
 	/** For a particular buffer, initiate the generation of previews
 	 *  for each and every snippetof LaTeX that's of interest with
 	 *  a single forked process.
 	 *  If (buffer == 0), does nothing.
 	 */
-	void generateBufferPreviews(Buffer * buffer);
+	void generateBufferPreviews(Buffer const & buffer);
 
 private:
 	/** Make the c-tor, d-tor private so we can control how many objects
