@@ -510,7 +510,7 @@ cat >$outfile <<EOF
 \\Format ps	  ps	Postscript	t
 \\Format program  ""	Program		""
 \\Format sgi      sgi	SGI		""
-\\Format tgif     tgif	TGIF		""
+\\Format tgif     obj	TGIF		""
 \\Format tiff     tif	TIFF		""
 \\Format xbm      xbm   XBM             ""
 \\Format xpm      xpm   XPM             ""
