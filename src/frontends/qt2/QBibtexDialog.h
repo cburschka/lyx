@@ -27,6 +27,7 @@ public:
 protected slots:
 	virtual void change_adaptor();
 	virtual void browsePressed();
+	virtual void browseBibPressed();
 	virtual void addPressed();
 	virtual void deletePressed();
 	virtual void styleChanged(const QString &);

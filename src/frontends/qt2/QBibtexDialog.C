@@ -24,6 +24,7 @@
 #include <qwidget.h>
 #include <qpushbutton.h>
 #include <qcombobox.h>
+#include <qlineedit.h>
 #include <qlistbox.h>
 #include <qcheckbox.h>
 #include <qfiledialog.h>
@@ -53,7 +54,7 @@ void QBibtexDialog::change_adaptor()
 
 void QBibtexDialog::browsePressed()
 {
-	QString file =
+	QString const file =
 		QFileDialog::getOpenFileName(QString::null,
 					     _("BibTeX style files (*.bst)"),
 					     this,
@@ -66,15 +67,15 @@ void QBibtexDialog::browsePressed()
 	}
 }
 
-void QBibtexDialog::addPressed()
+void QBibtexDialog::browseBibPressed()
 {
-	QString file = QFileDialog::getOpenFileName(QString::null,
+	QString const file = QFileDialog::getOpenFileName(QString::null,
 		_("BibTeX database files (*.bib)"), this, 0, _("Select a BibTeX database to add"));
 	if (!file.isNull()) {
 		string const f = ChangeExtension(file.latin1(), "");
 		bool present = false;
-		for(unsigned int i = 0; i!=databaseLB->count(); i++) {
-			if (databaseLB->text(i).latin1()==f)
+		for(unsigned int i = 0; i != databaseLB->count(); ++i) {
+			if (databaseLB->text(i).latin1() == f)
 				present = true;
 
 		}
@@ -85,6 +86,23 @@ void QBibtexDialog::addPressed()
 	}
 }
 
+void QBibtexDialog::addPressed()
+{
+	QString const file = addBibED->text();
+	if (!file.isNull()) {
+		string const f = ChangeExtension(file.latin1(), "");
+		bool present = false;
+		for(unsigned int i = 0; i != databaseLB->count(); ++i) {
+			if (databaseLB->text(i).latin1() == f)
+				present = true;
+
+		}
+		if (!present) {
+			databaseLB->insertItem(f.c_str());
+			form_->changed();
+		}
+	}
+}
 
 void QBibtexDialog::deletePressed()
 {
