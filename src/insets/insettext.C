@@ -1190,7 +1190,7 @@ InsetText::localDispatch(BufferView * bv,
 			}
 		}
 		lt->selection.cursor = lt->cursor;
-		updwhat = CURSOR_PAR;
+		updwhat = CURSOR | CURSOR_PAR;
 		updflag = true;
 		result = DISPATCHED_NOUPDATE;
 		break;
