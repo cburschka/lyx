@@ -68,6 +68,10 @@ else
 	echo `which $GNUM4`
 fi
 
+# Delete old cache directories.
+# automake will stop if their contents was created by an earlier version.
+rm -rf autom4te.cache lib/reLyX/autom4te.cache
+
 # Generate acinclude.m4
 echo -n "Generate acinclude.m4... "
 rm -f acinclude.m4
