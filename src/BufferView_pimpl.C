@@ -3,6 +3,7 @@
 #include <ctime>
 #include <unistd.h>
 #include <sys/wait.h>
+#include <locale.h>
 
 #ifdef __GNUG__
 #pragma implementation
