@@ -40,8 +40,6 @@ Menuset
 	Item "New...|N" "buffer-new"
 	Item "New from template...|t" "buffer-new-template"
 	Item "Open...|O" "buffer-open"
-	Submenu "Import|m" "fileimport"
-        Submenu "Insert|I" "fileinsert"
 	Separator
 	Item "Close|C" "buffer-close"
 	Item "Save|S" "buffer-write"
@@ -49,8 +47,11 @@ Menuset
 	Item "Revert to saved|R" "buffer-reload"
 	Submenu "Version control|V" "file_vc"
 	Separator
-	Item "Print...|P" "buffer-print"
+	Submenu "Import|m" "fileimport"
+        Submenu "Insert|I" "fileinsert"
+	Separator
 	Submenu "Export|E" "exportfile"
+	Item "Print...|P" "buffer-print"
 	Separator
 	Item "Exit|x" "lyx-quit"
 	Separator
@@ -103,16 +104,17 @@ Menuset
 	Item "Cut|C" "cut"
 	Item "Copy|o" "copy"
 	Item "Paste|P" "paste"
+	Submenu "Paste external selection|x" "edit_paste"
+        Separator
 	Item "Find & Replace...|F" "find-replace"
-	Submenu "Paste external selection|s" "edit_paste"
         Separator
 	Submenu "Floats & Insets|I" "edit_floats"
 	Submenu "Tabular|T" "edit_tabular"
 	Item "Spellchecker...|S" "spellchecker"
 	Item "Check TeX|h" "buffer-chktex"
         Separator
-	Item "Reconfigure|R" "reconfigure"
-	Item "Preferences...|P" "dialog-preferences"
+	Item "Preferences...|e" "dialog-preferences"
+	Item "Reconfigure|g" "reconfigure"
     End
 
     Menu "edit_paste"
@@ -138,7 +140,7 @@ Menuset
 	Separator
 	Item "V.Align Top|o" "tabular-feature valign-top"
 	Item "V.Align Center|n" "tabular-feature valign-center"
-	Item "V.Align Bottom|v" "tabular-feature valign-bottom"
+	Item "V.Align Bottom|V" "tabular-feature valign-bottom"
 	Separator
 	Item "Append Row|A" "tabular-feature append-row"
 	Item "Append Column|u" "tabular-feature append-column"
@@ -154,24 +156,23 @@ Menuset
 	Item "Math text|M" "math-mode"
 	Item "Math Display|D" "math-display"
 	Item "Math Panel...|P" "math-panel"
-        Submenu "Math elements|e" "insert-math"
         Separator
 	Submenu "Special character|S" "insert_special"
-	Item "Citation reference...|i" "citation-insert"
+	Item "Citation reference...|C" "citation-insert"
 	Item "Cross reference...|r" "reference-insert"
 	Item "Label...|L" "label-insert"
 	Item "Footnote|F" "footnote-insert"
-	Item "Marginal note|M" "marginpar-insert"
-	Item "Index entry...|d" "index-insert"
+	Item "Marginal note|n" "marginpar-insert"
+	Item "Index entry...|x" "index-insert"
 	Item "Index entry of last word|w" "index-insert-last"
 	Item "URL...|U" "url-insert"
-	Item "Note...|N" "note-insert"
+	Item "Note...|o" "note-insert"
 	Separator
 	Item "Figure...|g" "figure-insert"
 	Item "Tabular...|T" "dialog-tabular-insert"
 	Submenu "Floats|a" "insert_floats"
         Separator
-	Submenu "Lists & TOC|T" "insert_toc"
+	Submenu "Lists & TOC|i" "insert_toc"
     End
 
     Menu "insert_floats"
@@ -181,15 +182,6 @@ Menuset
 	Item "Wide table float|d" "buffer-float-insert wide-tab"
 	Separator
 	Item "Algorithm float|A" "buffer-float-insert algorithm"
-    End
-
-    Menu "insert-math"
-	Item "Fraction|F" "math-insert frac"
-	Item "Square root|S" "math-insert sqrt"
-	Item "Exponent|E" "math-insert ^"
-	Item "Index|x" "math-insert -"
-	Item "Sum|u" "math-insert sum"
-	Item "Integral|I" "math-insert int"
     End
 
     Menu "insert_toc"
@@ -219,7 +211,7 @@ Menuset
 	Item "Character...|C" "layout-character"
 	Item "Paragraph...|P" "layout-paragraph"
 	Item "Document...|D" "layout-document"
-	OptItem "Tabular...|a" "layout-tabular"
+	OptItem "Tabular...|T" "layout-tabular"
 	Separator
 	Item "Emphasize Style|E" "font-emph"
 	Item "Noun Style|N" "font-noun"
@@ -227,8 +219,8 @@ Menuset
 	Item "TeX Style|X" "tex-mode"
         Separator
 	Item "Change environment depth|v" "depth-increment"
-	Item "LaTeX preamble...|a" "layout-preamble"
-	Item "Start of Appendix|x" "appendix"
+	Item "LaTeX preamble...|L" "layout-preamble"
+	Item "Toggle Appendix|A" "appendix"
 	Separator
 	Item "Save layout as default|S" "layout-save-default"
     End
@@ -242,8 +234,8 @@ Menuset
 	OptItem "Build program|B" "build-program"
         Submenu "Update|U" "update"
         Separator
-	Item "LaTeX log file|w" "latex-view-log"
-	Item "Table of Contents|b" "toc-view"
+	Item "LaTeX log file|L" "latex-view-log"
+	Item "Table of Contents|T" "toc-view"
     End
 
     Menu "update"
