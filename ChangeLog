@@ -1,5 +1,10 @@
 2000-01-21  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/insets/figinset.C: get rid of struct pidwaitpit, use a
+	std::list<int> instead.
+	(addpidwait): reflect move to std::list<int>
+	(sigchldchecker): ditto
+
 	* src/bmtable.c (fl_set_bmtable_file): have arguments in the X r5
 	version also. 
 

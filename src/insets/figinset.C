@@ -41,9 +41,13 @@ extern long int background_pixels;
 #include <cmath>
 #include <fstream>
 #include <queue>
+#include <list>
+#include <algorithm>
 using std::ofstream;
 using std::ifstream;
 using std::queue;
+using std::list;
+using std::find;
 
 #include "figinset.h"
 #include "lyx.h"
@@ -95,11 +99,6 @@ struct queue_element {
 	figdata * data;	       // we are doing it for this data
 };
 
-struct pidwait {
-	int pid;		/* pid to wait for */
-	pidwait * next;	/* next */
-};
-
 static int const MAXGS = 3;			/* maximum 3 gs's at a time */
 
 static Figref ** figures;	/* all the figures */
@@ -120,26 +119,22 @@ static int gs_spc;			// shades per color
 static bool gs_gray;			// is grayscale?
 static int gs_allcolors;		// number of all colors
 
-static pidwait * pw = 0;		// pid wait list
-
+static list<int> pidwaitlist; // pid wait list
 
 extern Colormap color_map;
 
 void addpidwait(int pid)
 {
 	// adds pid to pid wait list
-	register pidwait * p = new pidwait;
-
-	p->pid = pid;
-	p->next = pw;
-	pw = p;
+	pidwaitlist.push_back(pid);
 
 	if (lyxerr.debugging()) {
-		lyxerr << "Pids to wait for: " << p->pid << endl;
-		while (p->next) {
-			p = p->next;
-			lyxerr << p->pid << endl;
+		lyxerr << "Pids to wait for: \n";
+		for (list<int>::const_iterator cit = pidwaitlist.begin();
+		     cit != pidwaitlist.end(); ++cit) {
+			lyxerr << (*cit) << '\n';
 		}
+		lyxerr << flush;
 	}
 }
 
@@ -198,15 +193,15 @@ extern "C" int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 						<< "Cannot fork, using slow "
 						"method for pixmap translation." << endl;
 					tmpdisp = fl_display;
-				} else if (forkstat > 0) {
+				} else if (forkstat > 0) { // parent
 					// register child
 					if (lyxerr.debugging()) {
 						lyxerr << "Spawned child "
 						       << forkstat << endl;
 					}
 					addpidwait(forkstat);
-					break; // in parent process
-				} else {
+					break;
+				} else {  // child
 					tmpdisp = XOpenDisplay(XDisplayName(0));
 					XFlush(tmpdisp);
 				}
@@ -887,23 +882,15 @@ void sigchldchecker(pid_t pid, int * status)
 	}
 	if (!pid_handled) {
 		lyxerr.debug() << "Checking pid in pidwait" << endl;
-		pidwait * p = pw, * prev = 0;
-		while (p) {
-			if (pid == p->pid) {
-				lyxerr.debug() << "Found pid in pidwait" << endl;
-				lyxerr.debug() << "Caught child pid of recompute routine " << pid << endl;
-				if (prev)
-					prev->next = p->next;
-				else
-					pw = p->next;
-				delete p;
-				break;
-			}
-			prev = p;
-			p = p->next;
+		list<int>::iterator it = find(pidwaitlist.begin(),
+					      pidwaitlist.end(), pid);
+		if (it != pidwaitlist.end()) {
+			lyxerr.debug() << "Found pid in pidwait\n"
+				       << "Caught child pid of recompute "
+				"routine" << pid << endl;
+			pidwaitlist.erase(it);
 		}
 	}
-
 	if (pid == -1) {
 		lyxerr.debug() << "waitpid error" << endl;
 		switch (errno) {
