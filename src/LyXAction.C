@@ -363,6 +363,7 @@ void LyXAction::init()
 		{ LFUN_WORDRIGHTSEL, "word-forward-select", "", ReadOnly },
 		{ LFUN_LOWCASE_WORD, "word-lowcase", "", Noop },
 		{ LFUN_UPCASE_WORD, "word-upcase", "", Noop },
+		{ LFUN_INSERT_DATE, "insert-date", "", Noop },
 		{ LFUN_NOACTION, "", "", Noop }
 	};
 

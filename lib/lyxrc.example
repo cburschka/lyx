@@ -564,3 +564,10 @@
 # words with international letters in them. There have been reports that this
 # does not work with all dictionaries, so this is disabled by default.
 #\use_input_encoding true
+
+# DEFAULT FORMAT STRING FOR THE date-insert COMMAND
+#
+# This accepts the normal strftime formats have a look at man strftime
+# for nowing exactly what the formats are for and how to use them.
+#
+#\insert_date_format "%A, %B %d %Y"

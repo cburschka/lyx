@@ -197,6 +197,8 @@ public:
 	string secondary_kbmap;
 	///
 	string lyxpipes;
+	///
+	string insert_date_format;
 
 private:
 	///

@@ -9,6 +9,8 @@
  * ====================================================== */
 
 #include <config.h>
+#include <time.h>
+#include <locale.h>
 
 #include <cstdlib>
 #include <cctype>
@@ -2345,6 +2347,32 @@ string LyXFunc::Dispatch(int ac,
 			argument = split(argument, first, ';');
 			Dispatch(first);
 		}
+	}
+	break;
+
+	case LFUN_INSERT_DATE:  // jdblair: insert-date cmd
+	{
+		char datetmp[32];
+		int datetmp_len;
+		time_t now_time_t;
+		struct tm *now_tm;
+		static string arg;
+		
+		now_time_t = time(NULL);
+		now_tm = localtime(&now_time_t);
+		(void)setlocale(LC_TIME, "");
+		if (!argument.empty())
+			arg = argument;
+		else if (arg.empty())
+			arg = lyxrc->insert_date_format;
+		datetmp_len = (int) strftime(datetmp, 32, arg.c_str(), now_tm);
+		for (int i = 0; i < datetmp_len; i++) {
+			owner->view()->text->InsertChar(datetmp[i]);
+			owner->view()->smallUpdate(1);
+		}
+		SetUpdateTimer();
+		owner->view()->text->sel_cursor = owner->view()->text->cursor;
+		moveCursorUpdate(false);
 	}
 	break;
 
