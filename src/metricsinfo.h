@@ -56,7 +56,7 @@ struct MetricsBase {
 
 
 //
-// This contains a Metricsbase and Information that's only relevant during
+// This contains a MetricsBase and information that's only relevant during
 // the first phase of the two-phase draw
 //
 struct MetricsInfo {
@@ -71,7 +71,7 @@ struct MetricsInfo {
 
 
 //
-// This contains a Metricsbase and Information that's only relevant during
+// This contains a MetricsBase and information that's only relevant during
 // the second phase of the two-phase draw
 //
 struct PainterInfo {
@@ -84,8 +84,6 @@ struct PainterInfo {
 	MetricsBase base;
 	///
 	Painter & pain;
-	/// width of current item
-	int width;
 };
 
 
