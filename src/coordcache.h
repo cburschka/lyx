@@ -9,6 +9,11 @@
 
 #include <map>
 
+
+// All positions cached in this cache are only valid between subsequent
+// updated. (x,y) == (0,0) is the upper left screen corner, x increases
+// to the right, y increases downwords.
+
 void lyxbreaker(void const * data, const char * hint, int size);
 
 struct Point {
