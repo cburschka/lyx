@@ -170,7 +170,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.2.0cvs\n"
 "POT-Creation-Date: 2003-12-16 14:01+0100\n"
-"PO-Revision-Date: 2001-06-23 02:56+01:00\n"
+"PO-Revision-Date: 2003-12-16 14:47+0100\n"
 "Last-Translator:  Adrien Rebollo <adrien.rebollo@wanadoo.fr>\n"
 "Language-Team: lyxfr <http://perso.wanadoo.fr/adrien.rebollo/lyxfr/lyxfr."
 "html>\n"
@@ -1855,7 +1855,6 @@ msgstr "Tableau Long|#T"
 
 #: ../src/frontends/xforms/forms/form_tabular.fd:284
 #: ../src/frontends/xforms/forms/form_tabular.fd:1200
-#, fuzzy
 msgid "Rotate 90 deg|#9"
 msgstr "Rotation 90°|#9"
 
@@ -3283,9 +3282,8 @@ msgid "Set math font"
 msgstr "Police mathématique"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:213
-#, fuzzy
 msgid "Insert fraction"
-msgstr "Insérer une fraction (\frac)"
+msgstr "Insérer une fraction"
 
 #: ../src/frontends/qt2/ui/QMathDialogBase.ui:239
 msgid "Toggle between display mode"
@@ -4519,7 +4517,6 @@ msgid "Width unit"
 msgstr "Unité de largeur"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:354
-#, fuzzy
 msgid "Fixed width of the column"
 msgstr "Largeur fixe de la colonne"
 
@@ -4528,7 +4525,6 @@ msgid "Vertical alignment for fixed width columns"
 msgstr "Alignement vertical pour les colonnes de largeur fixe"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:411
-#, fuzzy
 msgid "Rotate 90 deg"
 msgstr "Rotation 90°"
 
@@ -4537,7 +4533,6 @@ msgid "&Rotate Table"
 msgstr "Tourner &Tableau"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:438
-#, fuzzy
 msgid "Rotate the table by 90 deg"
 msgstr "Tourne le tableau de 90°"
 
@@ -4546,7 +4541,6 @@ msgid "Rotate &Cell"
 msgstr "Tourner &Case"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:453
-#, fuzzy
 msgid "Rotate this cell by 90 deg"
 msgstr "Tourne cette case de 90°"
 
@@ -8634,17 +8628,15 @@ msgid "Can't load textclass "
 msgstr "Impossible de charger la classe "
 
 #: src/buffer.C:656
-#, fuzzy, c-format
+#, c-format
 msgid "The document uses a missing TeX class \"%1$s\"."
 msgstr "Le document utilise une classe inconnue « %1$s »."
 
 #: src/buffer.C:657 src/buffer.C:663
-#, fuzzy
 msgid "LyX will not be able to produce output."
 msgstr "LyX ne sera pas à même de produire correctement une sortie."
 
 #: src/buffer.C:661
-#, fuzzy
 msgid "The document uses a missing TeX class "
 msgstr "Le document utilise une classe inconnue "
 
@@ -9651,14 +9643,12 @@ msgid ",,text''"
 msgstr ",,texte''"
 
 #: src/frontends/qt2/QDocument.C:92
-#, fuzzy
 msgid "<<text>>"
-msgstr "texte"
+msgstr "«texte»"
 
 #: src/frontends/qt2/QDocument.C:93
-#, fuzzy
 msgid ">>text<<"
-msgstr "texte"
+msgstr "»texte«"
 
 #: src/frontends/qt2/QDocument.C:105
 msgid "US letter"
@@ -10385,7 +10375,6 @@ msgid " None | Small Margins | Very small Margins | Very wide Margins "
 msgstr " Rien | Petites marges | Très petites marges | Très grandes marges "
 
 #: src/frontends/xforms/FormDocument.C:293
-#, fuzzy
 msgid " ``text'' | ''text'' | ,,text`` | ,,text'' | <<text>> | >>text<< "
 msgstr " ``texte'' | ''texte'' | ,,texte`` | ,,texte'' | «texte» | »texte« "
 
