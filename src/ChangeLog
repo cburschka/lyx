@@ -1,13 +1,17 @@
+2002-03-25  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxvc.C: reorder includes.
+
 2002-03-25  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView_pimpl.C (updateScrollbar): update on buffer switch
 	  properly
- 
+
 2002-03-19  John Levon  <moz@compsoc.man.ac.uk>
 
 	* CutAndPaste.C: change layouts earlier on paste
 	  to avoid crashing when calling getFont()
- 
+
 2002-03-22  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* PrinterParams.h: #include "lyxrc.h" and remove that bloody

@@ -33,8 +33,11 @@ EXTRA_DIST = config.h.in stamp-h.in cheaders ext_l10n.h version.C.in \
 	counters.h
 
 INCLUDES = $(SIGC_CFLAGS) $(BOOST_INCLUDES) $(PSPELL_INCLUDES)
+
 localedir = $(datadir)/locale
+
 BUILT_SOURCES = version.C
+
 lyx_SOURCES = \
 	BufferView.C \
 	BufferView.h \

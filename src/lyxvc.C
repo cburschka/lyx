@@ -4,19 +4,21 @@
 #pragma implementation
 #endif
 
-#include <unistd.h>
-
-#include "frontends/Alert.h"
 #include "lyxvc.h"
 #include "vc-backend.h"
 #include "debug.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "gettext.h"
-#include "support/filetools.h"
-#include "support/lyxlib.h"
 #include "LyXView.h"
 #include "lyxfunc.h"
+
+#include "frontends/Alert.h"
+
+#include "support/filetools.h"
+#include "support/lyxlib.h"
+
+#include <unistd.h>
 
 using std::endl;
 using std::pair;
