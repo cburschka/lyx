@@ -41,6 +41,9 @@ What's new
 - Fix crash when reading equations containing more columns than allowed 
   [bug 1542].
 
+- Make sure that the amsmath package is used in LaTeX output when
+  using some over and under arrows in equations.
+
 - Fix output of mathbb and mathcal symbols via the math panel
   (xforms only) [bug 1214].
 

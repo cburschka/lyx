@@ -1,5 +1,6 @@
 #include <config.h>
 
+#include "LaTeXFeatures.h"
 #include "math_decorationinset.h"
 #include "math_support.h"
 #include "math_parser.h"
@@ -71,6 +72,16 @@ bool MathDecorationInset::wide() const
 }
 
 
+bool MathDecorationInset::ams() const
+{
+	return	
+			key_->name == "overleftrightarrow" ||
+			key_->name == "underleftarrow" ||
+			key_->name == "underrightarrow" ||
+			key_->name == "underleftrightarrow";
+}
+
+
 void MathDecorationInset::metrics(MathMetricsInfo & mi) const
 {
 	cell(0).metrics(mi);
@@ -98,6 +109,13 @@ void MathDecorationInset::draw(MathPainterInfo & pi, int x, int y) const
 	else
 		mathed_draw_deco(pi, x + 1 + (width() - dw_) / 2, y + dy_, dw_, dh_, key_->name);
 	drawMarkers(pi, x, y);
+}
+
+
+void MathDecorationInset::validate(LaTeXFeatures & features) const
+{
+	if (ams())
+		features.require("amsmath");
 }
 
 

@@ -26,6 +26,8 @@ public:
 	///
 	void metrics(MathMetricsInfo & mi) const;
 	///
+	void validate(LaTeXFeatures & features) const;
+	///
 	void normalize(NormalStream & os) const;
 	///
 	void infoize(std::ostream & os) const;
@@ -39,6 +41,8 @@ private:
 	bool protect() const;
 	/// is it a wide decoration?
 	bool wide() const;
+	/// does this need the amsmath package?
+	bool ams() const;
 
 	///
 	latexkeys const * key_;

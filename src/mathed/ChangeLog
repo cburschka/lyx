@@ -1,3 +1,8 @@
+2005-01-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_decorationinset.C (ams, validate): new methods. Require
+	amsmath when using AMS-LaTeX over and under arrows.
+
 2004-12-22  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_parser.C (addRow, addCol): new, try to add a row or column to
