@@ -12,6 +12,7 @@
 
 #include "insetfloatlist.h"
 #include "FloatList.h"
+#include "metricsinfo.h"
 #include "LaTeXFeatures.h"
 #include "lyxlex.h"
 #include "BufferView.h"
@@ -94,6 +95,21 @@ void InsetFloatList::read(Buffer const * buf, LyXLex & lex)
 		lex.printError("Missing \\end_inset at this point. "
 			       "Read: `$$Token'");
 	}
+}
+
+
+void InsetFloatList::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	InsetCommand::metrics(mi, dim);
+	center_indent_ = (mi.base.textwidth - dim.wid) / 2;
+	dim.wid = mi.base.textwidth;
+	dim_ = dim;
+}
+
+
+void InsetFloatList::draw(PainterInfo & pi, int x, int y) const
+{
+	InsetCommand::draw(pi, x + center_indent_, y);
 }
 
 

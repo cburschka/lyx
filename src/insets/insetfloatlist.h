@@ -30,13 +30,15 @@ public:
 		return std::auto_ptr<InsetBase>(new InsetFloatList(getCmdName()));
 	}
 	///
+	void metrics(MetricsInfo &, Dimension &) const;
+	///
+	void draw(PainterInfo & pi, int x, int y) const;
+	///
 	dispatch_result localDispatch(FuncRequest const & cmd);
 	///
 	string const getScreenLabel(Buffer const *) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
-	///
-	bool display() const { return true; }
 	///
 	InsetOld::Code lyxCode() const;
 	///
@@ -54,6 +56,9 @@ public:
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
 	///
 	void validate(LaTeXFeatures & features) const;
+private:
+	///
+	mutable unsigned int center_indent_;
 };
 
 #endif

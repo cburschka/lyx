@@ -247,7 +247,7 @@ void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 
 int InsetText::textWidth() const
 {
-	return textwidth_;
+		return textwidth_;
 }
 
 
@@ -663,6 +663,7 @@ InsetOld::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			if (!checkAndActivateInset(bv, cmd.x, tmp_y, mouse_button::none)) {
 				text_.setCursorFromCoordinates(cmd.x - drawTextXOffset,
 									cmd.y + dim_.asc);
+				text_.cursor.x(text_.cursor.x());
 				text_.cursor.x_fix(text_.cursor.x());
 			}
 		}

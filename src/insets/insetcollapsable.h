@@ -66,8 +66,6 @@ public:
 	///
 	void insetUnlock(BufferView *);
 	///
-	bool needFullRow() const { return isOpen(); }
-	///
 	bool lockInsetInInset(BufferView *, UpdatableInset *);
 	///
 	bool unlockInsetInInset(BufferView *, UpdatableInset *,

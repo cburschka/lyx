@@ -544,7 +544,7 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 }
 
 
-void LyXText::redoParagraphInternal(ParagraphList::iterator pit)
+int LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 {
 	RowList::iterator rit = pit->rows.begin();
 	RowList::iterator end = pit->rows.end();
@@ -571,26 +571,35 @@ void LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 		pit->rows.push_back(row);
 	}
 
-	// set height and fill of rows
+	int par_width = 0;
+	// set height and fill and width of rows
+	int const ww = workWidth();
 	for (rit = pit->rows.begin(); rit != end; ++rit) {
-		rit->fill(fill(pit, rit, workWidth()));
+		int const f = fill(pit, rit, ww);
+		int const w = ww - f;
+		par_width = std::max(par_width, w);
+		rit->fill(f);
+		rit->width(w);
 		prepareToPrint(pit, rit);
 		setHeightOfRow(pit, rit);
 		height += rit->height();
 	}
 
 	//lyxerr << "redoParagraph: " << pit->rows.size() << " rows\n";
+	return par_width;
 }
 
 
-// rebreaks all paragraphs between the specified pars
-// This function is needed after SetLayout and SetFont etc.
-void LyXText::redoParagraphs(ParagraphList::iterator start,
+int LyXText::redoParagraphs(ParagraphList::iterator start,
   ParagraphList::iterator end)
 {
-	for ( ; start != end; ++start)
-		redoParagraphInternal(start);
+	int pars_width = 0;
+	for ( ; start != end; ++start) {
+		int par_width = redoParagraphInternal(start);
+		pars_width = std::max(par_width, pars_width);	
+	}
 	updateRowPositions();
+	return pars_width;
 }
 
 
@@ -620,7 +629,7 @@ void LyXText::metrics(MetricsInfo & mi, Dimension & dim)
 	///height = 0;
 
 	//anchor_y_ = 0;
-	redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());
+	width = redoParagraphs(ownerParagraphs().begin(), ownerParagraphs().end());
 
 	// final dimension
 	dim.asc = firstRow()->ascent_of_text();
@@ -1356,16 +1365,6 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 	// same paragraph and there is a previous row then put the cursor on
 	// the end of the previous row
 	cur.iy(y + row->baseline());
-	if (row != pit->rows.begin()
-	    && pos
-	    && pos < pit->size()
-	    && pit->getChar(pos) == Paragraph::META_INSET) {
-		InsetOld * ins = pit->getInset(pos);
-		if (ins && (ins->needFullRow() || ins->display())) {
-			--row;
-			y -= row->height();
-		}
-	}
 
 	// y is now the beginning of the cursor row
 	y += row->baseline();
@@ -1632,33 +1631,6 @@ void LyXText::setCursorFromCoordinates(int x, int y)
 }
 
 
-namespace {
-
-	/**
-	 * return true if the cursor given is at the end of a row,
-	 * and the next row is filled by an inset that spans an entire
-	 * row.
-	 */
-	bool beforeFullRowInset(LyXText & lt, LyXCursor const & cur)
-	{
-		RowList::iterator row = lt.getRow(cur);
-		RowList::iterator next = boost::next(row);
-
-		if (next == cur.par()->rows.end() || next->pos() != cur.pos())
-			return false;
-
-		if (cur.pos() == cur.par()->size() || !cur.par()->isInset(cur.pos()))
-			return false;
-
-		InsetOld const * inset = cur.par()->getInset(cur.pos());
-		if (inset->needFullRow() || inset->display())
-			return true;
-
-		return false;
-	}
-}
-
-
 void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 {
 	// Get the row first.
@@ -1673,17 +1645,9 @@ void LyXText::setCursorFromCoordinates(LyXCursor & cur, int x, int y)
 	cur.x(x);
 	cur.y(y + rit->baseline());
 
-	if (beforeFullRowInset(*this, cur)) {
-		pos_type const last = lastPrintablePos(*pit, rit);
-		RowList::iterator next_rit = rit;
-		ParagraphList::iterator next_pit = pit;
-		nextRow(next_pit, next_rit);
-		cur.ix(int(getCursorX(pit, next_rit, cur.pos(), last, bound)));
-		cur.iy(y + rit->height() + next_rit->baseline());
-	} else {
-		cur.iy(cur.y());
-		cur.ix(cur.x());
-	}
+	cur.iy(cur.y());
+	cur.ix(cur.x());
+
 	cur.boundary(bound);
 }
 

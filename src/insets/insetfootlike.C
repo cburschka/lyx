@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "insetfootlike.h"
+#include "metricsinfo.h"
 #include "lyxfont.h"
 #include "buffer.h"
 #include "lyxtext.h"
@@ -39,6 +40,15 @@ InsetFootlike::InsetFootlike(InsetFootlike const & in)
 	font.decSize();
 	font.setColor(LColor::collapsable);
 	setLabelFont(font);
+}
+
+
+void InsetFootlike::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+		InsetCollapsable::metrics(mi, dim);
+		if (isOpen()) 
+			dim.wid = mi.base.textwidth;
+		dim_ = dim;
 }
 
 

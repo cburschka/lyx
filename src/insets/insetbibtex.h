@@ -26,6 +26,10 @@ public:
 	~InsetBibtex();
 	///
 	std::auto_ptr<InsetBase> clone() const;
+	///
+	void metrics(MetricsInfo &, Dimension &) const;
+	///
+	void draw(PainterInfo & pi, int x, int y) const;
 	/// small wrapper for the time being
 	virtual dispatch_result localDispatch(FuncRequest const & cmd);
 	///
@@ -46,8 +50,9 @@ public:
 	bool addDatabase(string const &);
 	///
 	bool delDatabase(string const &);
+private:
 	///
-	bool display() const { return true; }
+	mutable unsigned int center_indent_;
 };
 
 #endif // INSET_BIBTEX_H

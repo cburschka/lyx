@@ -54,10 +54,6 @@ public:
 	///
 	void setButtonLabel();
 	///
-	void metrics(MetricsInfo & mi, Dimension & dim) const;
-	///
-	void draw(PainterInfo & pi, int x, int y) const;
-	///
 	bool showInsetDialog(BufferView *) const;
 	///
  	dispatch_result localDispatch(FuncRequest const &);

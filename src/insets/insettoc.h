@@ -14,6 +14,7 @@
 
 
 #include "insetcommand.h"
+#include "metricsinfo.h"
 
 /** Used to insert table of contents
  */
@@ -28,13 +29,15 @@ public:
 		return std::auto_ptr<InsetBase>(new InsetTOC(params()));
 	}
 	///
+	void metrics(MetricsInfo &, Dimension &) const;
+	///
+	void draw(PainterInfo & pi, int x, int y) const;
+	///
 	dispatch_result localDispatch(FuncRequest const & cmd);
 	///
 	string const getScreenLabel(Buffer const *) const;
 	///
 	EDITABLE editable() const { return IS_EDITABLE; }
-	///
-	bool display() const { return true; }
 	///
 	InsetOld::Code lyxCode() const;
 	///
@@ -43,6 +46,9 @@ public:
 	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
 	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
+private:
+	///
+	mutable unsigned int center_indent_;
 };
 
 #endif

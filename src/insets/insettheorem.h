@@ -29,12 +29,17 @@ public:
 	///
 	Inset::Code lyxCode() const { return Inset::THEOREM_CODE; }
 	///
-	bool display() const { return true; }
+	void metrics(MetricsInfo &, Dimension &) const;
+	///
+	void draw(PainterInfo & pi, int x, int y) const;
 	///
 	int latex(Buffer const *, std::ostream &,
 		  LatexRunParams const &) const;
 	///
 	string const editMessage() const;
+private:
+	///
+	mutable unsigned int center_indent_;
 };
 
 #endif

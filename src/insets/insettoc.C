@@ -54,6 +54,21 @@ InsetOld::Code InsetTOC::lyxCode() const
 }
 
 
+void InsetTOC::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	InsetCommand::metrics(mi, dim);
+	center_indent_ = (mi.base.textwidth - dim.wid) / 2;
+	dim.wid = mi.base.textwidth;
+	dim_ = dim;
+}
+
+
+void InsetTOC::draw(PainterInfo & pi, int x, int y) const
+{
+	InsetCommand::draw(pi, x + center_indent_, y);
+}
+
+
 dispatch_result InsetTOC::localDispatch(FuncRequest const & cmd)
 {
 	switch (cmd.action) {

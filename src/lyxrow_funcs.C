@@ -64,23 +64,6 @@ pos_type lastPos(Paragraph const & par, RowList::iterator rit)
 }
 
 
-namespace {
-
-bool nextRowIsAllInset(Paragraph const & par, pos_type last)
-{
-	if (last + 1 >= par.size())
-		return false;
-
-	if (!par.isInset(last + 1))
-		return false;
-
-	InsetOld const * i = par.getInset(last + 1);
-	return i->needFullRow() || i->display();
-}
-
-} // anon namespace
-
-
 pos_type lastPrintablePos(Paragraph const & par, RowList::iterator rit)
 {
 	pos_type const last = lastPos(par, rit);
@@ -88,9 +71,6 @@ pos_type lastPrintablePos(Paragraph const & par, RowList::iterator rit)
 	// if this row is an end of par, just act like lastPos()
 	if (isParEnd(par, rit))
 		return last;
-
-	if (!nextRowIsAllInset(par, last) && par.isSeparator(last))
-		return last - 1;
 
 	return last;
 }

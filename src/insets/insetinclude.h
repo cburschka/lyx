@@ -102,9 +102,6 @@ public:
 	///
 	void validate(LaTeXFeatures &) const;
 
-	/// take up a whole row if we're not type INPUT
-	bool display() const;
-
 	/// return true if the file is or got loaded.
 	bool loadIfNeeded() const;
 
@@ -135,6 +132,7 @@ private:
 	/// cache
 	mutable bool set_label_;
 	mutable ButtonRenderer button_;
+	mutable unsigned int center_indent_;
 };
 
 

@@ -12,6 +12,7 @@
 
 #include "insetert.h"
 #include "insettext.h"
+#include "metricsinfo.h"
 
 #include "buffer.h"
 #include "BufferView.h"
@@ -555,6 +556,10 @@ void InsetERT::metrics(MetricsInfo & mi, Dimension & dim) const
 		inset.metrics(mi, dim);
 	else
 		InsetCollapsable::metrics(mi, dim);
+	// Make it stand out on its own as it is code, not part of running
+	// text:
+	if (isOpen() && !inlined())
+		dim.wid = mi.base.textwidth;
 	dim_ = dim;
 }
 

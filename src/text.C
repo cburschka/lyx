@@ -69,6 +69,8 @@ extern int const CHANGEBAR_MARGIN = 10;
 /// left margin
 extern int const LEFT_MARGIN = PAPER_MARGIN + CHANGEBAR_MARGIN;
 
+
+
 int bibitemMaxWidth(BufferView *, LyXFont const &);
 
 
@@ -443,15 +445,7 @@ bool LyXText::isBoundary(Buffer const * buf, Paragraph const & par,
 
 
 int LyXText::leftMargin(ParagraphList::iterator pit, Row const & row) const
-{	
-	InsetOld * ins;
-
-	if (row.pos() < pit->size())
-		if (pit->getChar(row.pos()) == Paragraph::META_INSET &&
-		    (ins = pit->getInset(row.pos())) &&
-		    (ins->needFullRow() || ins->display()))
-			return LEFT_MARGIN;
-
+{
 	LyXTextClass const & tclass =
 		bv()->buffer()->params.getLyXTextClass();
 	LyXLayout_ptr const & layout = pit->layout();
@@ -628,14 +622,6 @@ int LyXText::leftMargin(ParagraphList::iterator pit, Row const & row) const
 int LyXText::rightMargin(ParagraphList::iterator pit,
 	Buffer const & buf, Row const & row) const
 {
-	InsetOld * ins;
-
-	if (row.pos() < pit->size())
-		if ((pit->getChar(row.pos()) == Paragraph::META_INSET) &&
-		    (ins = pit->getInset(row.pos())) &&
-		    (ins->needFullRow() || ins->display()))
-			return PAPER_MARGIN;
-
 	LyXTextClass const & tclass = buf.params.getLyXTextClass();
 	LyXLayout_ptr const & layout = pit->layout();
 
@@ -683,7 +669,8 @@ pos_type LyXText::rowBreakPoint(ParagraphList::iterator pit,
 	Row const & row) const
 {
 	// maximum pixel width of a row.
-	int width = workWidth() - rightMargin(pit, *bv()->buffer(), row);
+	int width = workWidth() 
+		- rightMargin(pit, *bv()->buffer(), row);
 
 	// inset->textWidth() returns -1 via workWidth(),
 	// but why ?
@@ -712,7 +699,6 @@ pos_type LyXText::rowBreakPoint(ParagraphList::iterator pit,
 
 	// pixel width since last breakpoint
 	int chunkwidth = 0;
-	bool fullrow = false;
 
 	pos_type i = pos;
 
@@ -751,14 +737,12 @@ pos_type LyXText::rowBreakPoint(ParagraphList::iterator pit,
 		chunkwidth += thiswidth;
 
 		InsetOld * in = pit->isInset(i) ? pit->getInset(i) : 0;
-		fullrow = in && (in->display() || in->needFullRow());
 
 		// break before a character that will fall off
 		// the right of the row
 		if (x >= width) {
-			// if no break before or we are at an inset
-			// that will take up a row, break here
-			if (point == last || fullrow || chunkwidth >= (width - left)) {
+			// if no break before, break here
+			if (point == last || chunkwidth >= (width - left)) {
 				if (pos < i)
 					point = i - 1;
 				else
@@ -776,24 +760,7 @@ pos_type LyXText::rowBreakPoint(ParagraphList::iterator pit,
 			continue;
 		}
 
-		if (!fullrow)
-			continue;
-
-		// full row insets start at a new row
-		if (i == pos) {
-			if (pos < last - 1) {
-				point = i;
-				if (pit->isLineSeparator(i + 1))
-					++point;
-			} else {
-				// to avoid extra rows
-				point = last;
-			}
-		} else {
-			point = i - 1;
-		}
-
-		return point;
+		continue;
 	}
 
 	if (point == last && x >= width) {
@@ -808,7 +775,7 @@ pos_type LyXText::rowBreakPoint(ParagraphList::iterator pit,
 	// manual labels cannot be broken in LaTeX. But we
 	// want to make our on-screen rendering of footnotes
 	// etc. still break
-	if (!fullrow && body_pos && point < body_pos)
+	if (body_pos && point < body_pos)
 		point = body_pos - 1;
 
 	return point;
@@ -1502,15 +1469,7 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 		} else {
 			align = pit->params().align();
 		}
-
-		// center displayed insets
 		InsetOld * inset = 0;
-		if (rit->pos() < pit->size()
-		    && pit->isInset(rit->pos())
-		    && (inset = pit->getInset(rit->pos()))
-		    && (inset->display())) // || (inset->scroll() < 0)))
-		    align = (inset->lyxCode() == InsetOld::MATHMACRO_CODE)
-			? LYX_ALIGN_BLOCK : LYX_ALIGN_CENTER;
 		// ERT insets should always be LEFT ALIGNED on screen
 		inset = pit->inInset();
 		if (inset && inset->owner() &&
@@ -1521,18 +1480,15 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 
 		switch (align) {
 	    case LYX_ALIGN_BLOCK:
-	    {
+	 	{
 			int const ns = numberOfSeparators(*pit, rit);
-			RowList::iterator next_row = boost::next(rit);
+			RowList::iterator next_row = boost::next(rit);	 
 			if (ns
 				&& next_row != pit->rows.end()
-				&& !pit->isNewline(next_row->pos() - 1)
-			  && !(pit->isInset(next_row->pos())
-				     && pit->getInset(next_row->pos())
-				     && pit->getInset(next_row->pos())->display())
+				&& !pit->isNewline(next_row->pos() - 1)			
 				) {
-				fill_separator = w / ns;
-			} else if (is_rtl) {
+					fill_separator = w / ns;	
+			} else if (is_rtl) {	
 				x += w;
 			}
 			break;

@@ -15,6 +15,7 @@
 #include "Lsstream.h"
 
 #include "insetnote.h"
+#include "metricsinfo.h"
 #include "gettext.h"
 #include "lyxfont.h"
 #include "language.h"
@@ -110,6 +111,18 @@ void InsetNote::setButtonLabel()
 }
 
 
+void InsetNote::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	InsetCollapsable::metrics(mi, dim);
+	// Contrary to Greyedout, these cannot be construed as part of the
+	// running text: make them stand on their own
+	if (params_.type == "Note" || params_.type == "Comment")
+		if (!collapsed_)
+			dim.wid = mi.base.textwidth;
+	dim_ = dim;
+}
+
+
 bool InsetNote::showInsetDialog(BufferView * bv) const
 {
 	InsetNoteMailer("note", const_cast<InsetNote &>(*this)).showDialog(bv);
@@ -172,11 +185,11 @@ int InsetNote::latex(Buffer const * buf, ostream & os,
 
 	if (pt == "Comment") {
 		os << "%\n\\end{comment}\n";
-		i += 3;
+		i += 4;
 	} else if (pt == "Greyedout") {
 		os << "%\n\\end{lyxgreyedout}\n";
-		i += 2;
-	}
+		i += 4;
+	} 
 	return i;
 }
 

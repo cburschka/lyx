@@ -59,13 +59,18 @@ public:
 	///
 	EDITABLE editable() const { return NOT_EDITABLE; }
 	///
-	bool display() const { return true; }
-	///
 	InsetOld::Code lyxCode() const;
 	///
 	string const getScreenLabel(Buffer const *) const;
 	///
-	virtual bool needFullRow() const { return true; }
+	//virtual bool needFullRow() const { return true; }
+	///
+	void metrics(MetricsInfo &, Dimension &) const; 
+	///
+	void draw(PainterInfo & pi, int x, int y) const;
+private:
+	///
+	mutable unsigned int center_indent_;
 };
 
 #endif

@@ -11,6 +11,7 @@
 
 
 #include "insetindex.h"
+#include "metricsinfo.h"
 #include "BufferView.h"
 #include "funcrequest.h"
 #include "frontends/LyXView.h"
@@ -41,6 +42,21 @@ InsetIndex::~InsetIndex()
 string const InsetIndex::getScreenLabel(Buffer const *) const
 {
 	return _("Idx");
+}
+
+
+void InsetPrintIndex::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	InsetCommand::metrics(mi, dim);
+	center_indent_ = (mi.base.textwidth - dim.wid) / 2;
+	dim.wid = mi.base.textwidth;
+	dim_ = dim;
+}
+
+
+void InsetPrintIndex::draw(PainterInfo & pi, int x, int y) const
+{
+		    InsetCommand::draw(pi, x + center_indent_, y);
 }
 
 

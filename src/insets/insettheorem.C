@@ -12,6 +12,7 @@
 
 
 #include "insettheorem.h"
+#include "metricsinfo.h"
 #include "gettext.h"
 #include "lyxfont.h"
 #include "BufferView.h"
@@ -62,6 +63,20 @@ InsetBase * InsetTheorem::clone() const
 
 	result->collapsed_ = collapsed_;
 	return result;
+}
+
+void InsetTheorem::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	InsetCollapsable::metrics(mi, dim);
+	center_indent_ = (mi.base.textwidth - dim.wid) / 2;
+	dim.wid = mi.base.textwidth;
+	dim_ = dim;
+}
+
+
+void InsetTOC::draw(PainterInfo & pi, int x, int y) const
+{
+	InsetCollapsable::draw(pi, x + center_indent_, y);
 }
 
 

@@ -504,16 +504,15 @@ void BufferView::Pimpl::scrollDocView(int value)
 	if (!lyxrc.cursor_follows_scrollbar)
 		return;
 
-	LyXText * vbt = bv_->text;
-
 	int const height = defaultRowHeight();
-	int const first = static_cast<int>((bv_->text->top_y() + height));
-	int const last = static_cast<int>((bv_->text->top_y() + workarea().workHeight() - height));
+	int const first = int((bv_->text->top_y() + height));
+	int const last = int((bv_->text->top_y() + workarea().workHeight() - height));
 
-	if (vbt->cursor.y() < first)
-		vbt->setCursorFromCoordinates(0, first);
-	else if (vbt->cursor.y() > last)
-		vbt->setCursorFromCoordinates(0, last);
+	LyXText * text = bv_->text;
+	if (text->cursor.y() < first)
+		text->setCursorFromCoordinates(0, first);
+	else if (text->cursor.y() > last)
+		text->setCursorFromCoordinates(0, last);
 
 	owner_->updateLayoutChoice();
 }

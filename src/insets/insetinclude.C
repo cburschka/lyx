@@ -242,12 +242,6 @@ void InsetInclude::read(Buffer const *, LyXLex & lex)
 }
 
 
-bool InsetInclude::display() const
-{
-	return !(params_.flag == INPUT);
-}
-
-
 string const InsetInclude::getScreenLabel(Buffer const *) const
 {
 	string temp;
@@ -530,6 +524,11 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 		}
 		button_.metrics(mi, dim);
 	}
+	if (params_.flag == INPUT)
+		center_indent_ = 0;
+	else
+		center_indent_ = (mi.base.textwidth - dim.wid) / 2;
+	dim.wid = mi.base.textwidth;
 	dim_ = dim;
 }
 
@@ -538,14 +537,14 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 {
 	cache(pi.base.bv);
 	if (!preview_->previewReady()) {
-		button_.draw(pi, x, y);
+		button_.draw(pi, x + center_indent_, y);
 		return;
 	}
 
 	if (!preview_->monitoring())
 		preview_->startMonitoring();
 
-	pi.pain.image(x, y - dim_.asc, dim_.wid, dim_.height(),
+	pi.pain.image(x + center_indent_, y - dim_.asc, dim_.wid, dim_.height(),
 			    *(preview_->pimage()->image()));
 }
 

@@ -127,7 +127,7 @@ public:
 	void setFont(LyXFont const &, bool toggleall = false);
 
 	/// rebreaks all paragaphs between the given pars.
-	void redoParagraphs(ParagraphList::iterator begin,
+	int redoParagraphs(ParagraphList::iterator begin,
 			    ParagraphList::iterator end);
 	/// rebreaks the given par
 	void redoParagraph(ParagraphList::iterator pit);
@@ -135,8 +135,8 @@ public:
 	/// rebreaks the cursor par
 	void redoParagraph();
 private:
-	/// rebreaks the given par
-	void redoParagraphInternal(ParagraphList::iterator pit);
+	/// rebreaks the given par, return max row width
+	int redoParagraphInternal(ParagraphList::iterator pit);
 public:
 
 	///

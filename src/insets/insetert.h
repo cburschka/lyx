@@ -80,9 +80,7 @@ public:
 	///
 	bool checkInsertChar(LyXFont &);
 	///
-	// this are needed here because of the label/inlined functionallity
-	///
-	bool needFullRow() const { return status_ == Open; }
+	// these are needed here because of the label/inlined functionallity
 	///
 	bool isOpen() const { return status_ == Open || status_ == Inlined; }
 	///

@@ -109,19 +109,6 @@ void InsetBranch::setButtonLabel()
 }
 
 
-void InsetBranch::metrics(MetricsInfo & mi, Dimension & dim) const
-{
-	InsetCollapsable::metrics(mi, dim);
-	dim_ = dim;
-}
-
-
-void InsetBranch::draw(PainterInfo & pi, int x, int y) const
-{
-	InsetCollapsable::draw(pi, x, y);
-}
-
-
 bool InsetBranch::showInsetDialog(BufferView * bv) const
 {
 	InsetBranchMailer("branch", const_cast<InsetBranch &>(*this)).showDialog(bv);

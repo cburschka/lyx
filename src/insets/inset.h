@@ -198,14 +198,6 @@ public:
 	/// returns true to override begin and end inset in file
 	virtual bool directWrite() const;
 
-	/// Returns true if the inset should be centered alone
-	virtual bool display() const { return false; }
-	/// Changes the display state of the inset
-	virtual void display(bool) {}
-	///
-	/// returns true if this inset needs a row on it's own
-	///
-	virtual bool needFullRow() const { return false; }
 	///
 	void setInsetName(string const & s) { name_ = s; }
 	///

@@ -78,8 +78,6 @@ public:
 	string const editMessage() const;
 	///
 	bool insetAllowed(InsetOld::Code) const;
-	///
-	bool needFullRow() const { return false; }
 	/** returns true if, when outputing LaTeX, font changes should
 	    be closed before generating this inset. This is needed for
 	    insets that may contain several paragraphs */

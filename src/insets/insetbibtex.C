@@ -11,6 +11,7 @@
 #include <config.h>
 
 #include "insetbibtex.h"
+#include "metricsinfo.h"
 #include "buffer.h"
 #include "BufferView.h"
 #include "debug.h"
@@ -51,6 +52,20 @@ InsetBibtex::~InsetBibtex()
 std::auto_ptr<InsetBase> InsetBibtex::clone() const
 {
 	return std::auto_ptr<InsetBase>(new InsetBibtex(*this));
+}
+
+void InsetBibtex::metrics(MetricsInfo & mi, Dimension & dim) const
+{
+	InsetCommand::metrics(mi, dim);
+	center_indent_ = (mi.base.textwidth - dim.wid) / 2;
+	dim.wid = mi.base.textwidth;
+	dim_ = dim;
+}
+
+
+void InsetBibtex::draw(PainterInfo & pi, int x, int y) const
+{
+	InsetCommand::draw(pi, x + center_indent_, y);
 }
 
 
