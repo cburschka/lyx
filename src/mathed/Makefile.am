@@ -68,8 +68,6 @@ libmathed_la_SOURCES = \
 	math_updowninset.h \
 	math_utils.C \
 	math_utils.h \
-	matriz.C \
-	matriz.h \
 	support.C \
 	support.h \
 	symbol_def.h

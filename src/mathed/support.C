@@ -8,7 +8,6 @@
 #include "math_defs.h"
 #include "math_parser.h"
 #include "Painter.h"
-#include "matriz.h"
 #include "symbol_def.h"
 #include "debug.h"
 #include "math_utils.h"
@@ -17,6 +16,94 @@ using std::sort;
 using std::lower_bound;
 using std::endl;
 using std::max;
+
+///
+/// rotating things
+///
+
+///
+class Matrix {
+public:
+	///
+	typedef float matriz_data[2][2];
+	///
+	Matrix();
+	///
+	void rota(int);
+	///
+	void escala(float, float);
+	///
+	void transf(float, float, float &, float &);
+private:
+	///
+	matriz_data m_;
+	///
+	void matmat(matriz_data & a);
+	///
+	static matriz_data const MATIDEN;
+};
+
+
+#define mateq(m1, m2)  memcpy(m1, m2, sizeof(matriz_data))
+
+
+Matrix::matriz_data const Matrix::MATIDEN = { {1, 0}, {0, 1}};
+
+
+Matrix::Matrix()
+{
+	mateq(m_, MATIDEN);
+}
+
+
+void Matrix::rota(int code)
+{
+	matriz_data r;
+	mateq(r, MATIDEN);
+	float const cs = (code & 1) ? 0 : (1 - code);
+	float const sn = (code & 1) ? (2 - code) : 0;
+	r[0][0] = cs;
+	r[0][1] = sn;
+	r[1][0] = -r[0][1];
+	r[1][1] = r[0][0];
+	matmat(r);
+}
+
+
+void Matrix::escala(float x, float y)
+{
+	matriz_data s;
+	mateq(s, MATIDEN);
+	s[0][0] = x;
+	s[1][1] = y;
+	matmat(s);
+}
+
+
+void Matrix::matmat(matriz_data & a)
+{
+	matriz_data c;
+	c[0][0] = a[0][0] * m_[0][0] + a[0][1] * m_[1][0];
+	c[1][0] = a[1][0] * m_[0][0] + a[1][1] * m_[1][0];
+	c[0][1] = a[0][0] * m_[0][1] + a[0][1] * m_[1][1];
+	c[1][1] = a[1][0] * m_[0][1] + a[1][1] * m_[1][1];
+	mateq(m_, c);
+}
+
+
+void Matrix::transf(float xp, float yp, float & x, float & y)
+{
+	x = m_[0][0] * xp + m_[0][1] * yp;
+	y = m_[1][0] * xp + m_[1][1] * yp;
+}
+
+
+
+
+
+
+
+
 
 extern LyXFont WhichFont(short type, int size);
 
@@ -205,59 +292,65 @@ float const tilde[] = {
 };
 
 
+struct math_deco_struct {
+	int code;
+	float const * data;
+	int angle;
+};
+
 math_deco_struct math_deco_table[] = {   
 	// Decorations
-	{ LM_widehat, &angle[0], 3 },
-	{ LM_widetilde, &tilde[0], 0 },
-	{ LM_underline, &hline[0], 0 },
-	{ LM_overline, &hline[0], 0 },
-	{ LM_underbrace, &brace[0], 1 },
-	{ LM_overbrace,  &brace[0], 3 },
-	{ LM_overleftarrow, &arrow[0], 1 },
-	{ LM_overightarrow, &arrow[0], 3 },
+	{ LM_widehat,       &angle[0],   3 },
+	{ LM_widetilde,     &tilde[0],   0 },
+	{ LM_underline,     &hline[0],   0 },
+	{ LM_overline,      &hline[0],   0 },
+	{ LM_underbrace,    &brace[0],   1 },
+	{ LM_overbrace,     &brace[0],   3 },
+	{ LM_overleftarrow, &arrow[0],   1 },
+	{ LM_overightarrow, &arrow[0],   3 },
 	
 	// Delimiters
-	{ '(', &parenth[0], 0 },
-	{ ')', &parenth[0], 2 },
-	{ '{', &brace[0], 0 },
-	{ '}', &brace[0], 2 },
-	{ '[', &brack[0], 0 },
-	{ ']', &brack[0], 2 },
-	{ '|', &vert[0], 0 },
-	{ '/', &slash[0], 0 },
-	{ LM_Vert, &Vert[0], 0 },
-	{ LM_backslash, &slash[0], 1 },
-	{ LM_langle, &angle[0], 0 },
-	{ LM_lceil, &corner[0], 0 }, 
-	{ LM_lfloor, &corner[0], 1 },  
-	{ LM_rangle, &angle[0], 2 }, 
-	{ LM_rceil, &corner[0], 3 }, 
-	{ LM_rfloor, &corner[0], 2 },
-	{ LM_downarrow, &arrow[0], 2 },
-	{ LM_Downarrow, &Arrow[0], 2 }, 
-	{ LM_uparrow, &arrow[0], 0 },
-	{ LM_Uparrow, &Arrow[0], 0 },
-	{ LM_updownarrow, &udarrow[0], 0 },
-	{ LM_Updownarrow, &Udarrow[0], 0 },	 
+	{ '(',              &parenth[0], 0 },
+	{ ')',              &parenth[0], 2 },
+	{ '{',              &brace[0],   0 },
+	{ '}',              &brace[0],   2 },
+	{ '[',              &brack[0],   0 },
+	{ ']',              &brack[0],   2 },
+	{ '|',              &vert[0],    0 },
+	{ '/',              &slash[0],   0 },
+	{ LM_Vert,          &Vert[0],    0 },
+	{ LM_backslash,     &slash[0],   1 },
+	{ LM_langle,        &angle[0],   0 },
+	{ LM_lceil,         &corner[0],  0 }, 
+	{ LM_lfloor,        &corner[0],  1 },  
+	{ LM_rangle,        &angle[0],   2 }, 
+	{ LM_rceil,         &corner[0],  3 }, 
+	{ LM_rfloor,        &corner[0],  2 },
+	{ LM_downarrow,     &arrow[0],   2 },
+	{ LM_Downarrow,     &Arrow[0],   2 }, 
+	{ LM_uparrow,       &arrow[0],   0 },
+	{ LM_Uparrow,       &Arrow[0],   0 },
+	{ LM_updownarrow,   &udarrow[0], 0 },
+	{ LM_Updownarrow,   &Udarrow[0], 0 },	 
 	
 	// Accents   
-	{ LM_ddot, &hline2[0], 0 },
-	{ LM_hat, &angle[0], 3 },
-	{ LM_grave, &slash[0], 1 },
-	{ LM_acute, &slash[0], 0 },
-	{ LM_tilde, &tilde[0], 0 },
-	{ LM_bar, &hline[0], 0 },
-	{ LM_dot, &hlinesmall[0], 0 },
-	{ LM_check, &angle[0], 1 },
-	{ LM_breve, &parenth[0], 1 },
-	{ LM_vec, &arrow[0], 3 },
-	{ LM_not, &slash[0], 0 },  
-	
-	// Dots
-	{ LM_ldots, &hline3[0], 0 }, 
-	{ LM_cdots, &hline3[0], 0 },
-	{ LM_vdots, &hline3[0], 1 },
-	{ LM_ddots, &dline3[0], 0 }
+	{ LM_ddot,          &hline2[0],  0 },
+	{ LM_hat,           &angle[0],   3 },
+	{ LM_grave,         &slash[0],   1 },
+	{ LM_acute,         &slash[0],   0 },
+	{ LM_tilde,         &tilde[0],   0 },
+	{ LM_bar,           &hline[0],   0 },
+	{ LM_dot,           &hlinesmall[0], 0 },
+	{ LM_check,         &angle[0],   1 },
+	{ LM_breve,         &parenth[0], 1 },
+	{ LM_vec,           &arrow[0],   3 },
+	{ LM_not,           &slash[0],   0 },  
+	                    
+	// Dots             
+	{ LM_ldots,         &hline3[0],  0 }, 
+	{ LM_cdots,         &hline3[0],  0 },
+	{ LM_vdots,         &hline3[0],  1 },
+	{ LM_ddots,         &dline3[0],  0 }
 };
 
 
@@ -374,34 +467,34 @@ LyXFont mathed_get_font(short type, int size)
 }
 
 
+namespace {
+
+math_deco_struct const * search_deco(int code)
+{
+	math_deco_struct search_elem = { code, 0, 0 };
+	
+	math_deco_struct const * res =
+		lower_bound(math_deco_table,
+			    math_deco_table + math_deco_table_size,
+			    search_elem, math_deco_compare());
+	if (res != math_deco_table + math_deco_table_size &&
+	    res->code == code)
+		return res;
+	return 0;
+}
+
+}
+
 void mathed_draw_deco(Painter & pain, int x, int y, int w, int h, int code)
 {
-	Matriz mt;
-	Matriz sqmt;
+	Matrix mt;
+	Matrix sqmt;
 	float xx;
 	float yy;
 	float x2;
 	float y2;
 	int i = 0;
 	
-#if USE_EXCEPTIONS
-	math_deco_struct mds;
-	try {
-		mds = search_deco(code);
-	}
-	catch (deco_not_found) {
-		// Should this ever happen?
-		lyxerr << "Deco was not found. Programming error?" << endl;
-		return;
-	}
-	
-	int const r = mds.angle;
-	float const * d = mds.data;
-	
-	if (h > 70 && (mds.code == int('(')
-		       || mds.code == int(')')))
-		d = parenthHigh;
-#else
 	math_deco_struct const * mds = search_deco(code);
 	if (!mds) {
 		// Should this ever happen?
@@ -409,14 +502,11 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h, int code)
 		return;
 	}
 	
-	
 	int const r = mds->angle;
 	float const * d = mds->data;
 	
-	if (h > 70 && (mds->code == int('(')
-		       || mds->code == int(')')))
+	if (h > 70 && (mds->code == int('(') || mds->code == int(')')))
 		d = parenthHigh;
-#endif
 	
 	mt.rota(r);
 	mt.escala(w, h);
@@ -468,20 +558,6 @@ void mathed_draw_deco(Painter & pain, int x, int y, int w, int h, int code)
 	} while (code);
 }
 
-
-math_deco_struct const * search_deco(int code)
-{
-	math_deco_struct search_elem = { code, 0, 0 };
-	
-	math_deco_struct const * res =
-		lower_bound(math_deco_table,
-			    math_deco_table + math_deco_table_size,
-			    search_elem, math_deco_compare());
-	if (res != math_deco_table + math_deco_table_size &&
-	    res->code == code)
-		return res;
-	return 0;
-}
 
 
 bool MathIsInset(short x)

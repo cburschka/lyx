@@ -93,16 +93,16 @@ const unsigned char LM_TK_CLOSE = '}';
 
 enum {
 	FLAG_BRACE      = 1 << 0,  //  A { needed              //}
-	FLAG_BRACE_LAST = 1 << 3,  //  // { Last } ends the parsing process
-	FLAG_RIGHT      = 1 << 5,  //  Next right ends the parsing process
-	FLAG_END        = 1 << 6,  //  Next end ends the parsing process
-	FLAG_BRACE_FONT = 1 << 7,  //  // { Next } closes a font
-	FLAG_BRACK_END  = 1 << 9,  //  // [ Next ] ends the parsing process
-	FLAG_AMPERSAND  = 1 << 10, //  Next & ends the parsing process
-	FLAG_NEWLINE    = 1 << 11, //  Next \\ ends the parsing process
-	FLAG_ITEM       = 1 << 12, //  read a (possibly braced token)
-	FLAG_LEAVE      = 1 << 13, //  marker for leaving the 
-	FLAG_OPTARG     = 1 << 14  //  reads an argument in []
+	FLAG_BRACE_LAST = 1 << 1,  //  // { Last } ends the parsing process
+	FLAG_RIGHT      = 1 << 2,  //  Next right ends the parsing process
+	FLAG_END        = 1 << 3,  //  Next end ends the parsing process
+	FLAG_BRACE_FONT = 1 << 4,  //  // { Next } closes a font
+	FLAG_BRACK_END  = 1 << 5,  //  // [ Next ] ends the parsing process
+	FLAG_AMPERSAND  = 1 << 6,  //  Next & ends the parsing process
+	FLAG_NEWLINE    = 1 << 7,  //  Next \\ ends the parsing process
+	FLAG_ITEM       = 1 << 8,  //  read a (possibly braced token)
+	FLAG_LEAVE      = 1 << 9,  //  marker for leaving the 
+	FLAG_OPTARG     = 1 << 10  //  reads an argument in []
 };
 
 ///
@@ -630,7 +630,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 		
 		case LM_TK_SYM:
 			if (yylval.l->id < 256) {
-				MathTextCodes tc = MathIsBOPS(yylval.l->id) ? LM_TC_BOPS: LM_TC_SYMB;
+				MathTextCodes tc = MathIsBOPS(yylval.l->id) ? LM_TC_BOPS : LM_TC_SYMB;
 				array.push_back(yylval.l->id, tc);
 			} else 
 				array.push_back(new MathFuncInset(yylval.l->name));

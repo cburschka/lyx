@@ -14,12 +14,6 @@ class Painter;
 class MathArray;
 class MathMatrixInset;
 
-struct math_deco_struct {
-	int code;
-	float const * data;
-	int angle;
-};
-
 extern char const * math_font_name[];
 extern char const * latex_mathspace[];
 
@@ -37,8 +31,6 @@ int mathed_string_height(short type, int size, string const & s,
   int & asc, int & des);
 int mathed_string_width(short type, int size, string const & s);
 
-math_deco_struct const * search_deco(int code);
-
 bool MathIsInset(short x);
 bool MathIsAlphaFont(short x);
 bool MathIsBOPS(short x);
@@ -50,4 +42,5 @@ void drawStr(Painter & pain, short type, int siz,
 	int x, int y, string const & s);
 void drawChar(Painter & pain, short type, int siz,
 	int x, int y, char c);
+
 #endif
