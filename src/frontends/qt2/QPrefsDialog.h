@@ -16,9 +16,12 @@
 #pragma interface
 #endif
 
+#include "LColor.h"
+ 
 #include "ui/QPrefsDialogBase.h"
 
 #include <map>
+#include <vector>
  
 class QPrefs;
 class QListViewItem;
@@ -65,6 +68,8 @@ public slots:
 	void modify_converter();
 	void remove_converter();
  
+	void change_color();
+ 
 protected:
 	void closeEvent(QCloseEvent * e);
  
@@ -73,6 +78,8 @@ private:
 
 	PaneMap pane_map_;
 
+	std::vector<LColor::color> colors_;
+ 
 	QPrefAsciiModule * asciiModule;
 	QPrefDateModule * dateModule;
 	QPrefKeyboardModule * keyboardModule;
@@ -89,7 +96,6 @@ private:
 	QPrefUIModule * uiModule;
 
 	QPrefs * form_;
-
 };
 
 #endif // PREFSDIALOG_H

@@ -71,6 +71,8 @@ libqt2_la_SOURCES = \
 	lengthcombo.C \
 	lengthcombo.h \
 	lyx_gui.C \
+	qcoloritem.h \
+	qcoloritem.C \
 	qfont_loader.h \
 	qfont_loader.C \
 	qfont_metrics.C \

@@ -47,6 +47,9 @@
 #include <qlineedit.h>
 #include <qcheckbox.h>
 #include <qcombobox.h>
+#include <qcolordialog.h>
+#include <qcolor.h>
+#include "qcoloritem.h"
 
 using std::map;
 using std::endl;
@@ -153,6 +156,31 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	// Qt sucks
 	resize(minimumSize());
 
+	// FIXME: put in controller 
+	for (int i = 0; i < LColor::ignore; ++i) {
+		LColor::color lc = static_cast<LColor::color>(i);
+		if (lc == LColor::none
+			|| lc == LColor::black
+			|| lc == LColor::white
+			|| lc == LColor::red
+			|| lc == LColor::green
+			|| lc == LColor::blue
+			|| lc == LColor::cyan
+			|| lc == LColor::magenta
+			|| lc == LColor::yellow
+			|| lc == LColor::inherit
+			|| lc == LColor::ignore) continue;
+
+		colors_.push_back(lc);
+		string const x11name(lcolor.getX11Name(lc));
+		string const guiname(lcolor.getGUIName(lc));
+		QColorItem * ci(new QColorItem(QColor(x11name.c_str()), guiname.c_str()));
+		colorsModule->lyxObjectsLB->insertItem(ci);
+	}
+
+	connect(colorsModule->colorChangePB, SIGNAL(clicked()), this, SLOT(change_color()));
+	connect(colorsModule->lyxObjectsLB, SIGNAL(selected(int)), this, SLOT(change_color()));
+ 
 	connect(fileformatsModule->formatNewPB, SIGNAL(clicked()), this, SLOT(new_format()));
 	connect(fileformatsModule->formatRemovePB, SIGNAL(clicked()), this, SLOT(remove_format()));
 	connect(fileformatsModule->formatModifyPB, SIGNAL(clicked()), this, SLOT(modify_format()));
@@ -165,8 +193,6 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
  
 	// Qt really sucks. This is as ugly as it looks, but the alternative
 	// means having to derive every module == bloat
- 
-	// FIXME: connect colors objs
  
 	connect(convertersModule->converterNewPB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
 	connect(convertersModule->converterRemovePB, SIGNAL(clicked()), this, SLOT(change_adaptor()));
@@ -424,4 +450,20 @@ void QPrefsDialog::remove_format()
 	form_->formats_.erase(form_->formats_.get(nr).name());
 	updateFormats();
 	updateConverters();
+}
+
+
+void QPrefsDialog::change_color()
+{
+	QListBox * lb(colorsModule->lyxObjectsLB);
+	if (lb->currentItem() < 0)
+		return;
+	QListBoxItem * ib(lb->item(lb->currentItem()));
+	QColorItem * ci(static_cast<QColorItem*>(ib));
+	QColor c(QColorDialog::getColor(ci->color()));
+	if (c.isValid()) {
+		ci->color(c);
+		lb->update();
+		change_adaptor();
+	}
 }

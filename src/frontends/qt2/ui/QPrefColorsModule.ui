@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>301</width>
+            <width>297</width>
             <height>259</height>
         </rect>
     </property>
@@ -62,12 +62,6 @@
                 </widget>
                 <widget>
                     <class>QListBox</class>
-                    <item>
-                        <property>
-                            <name>text</name>
-                            <string>New Item</string>
-                        </property>
-                    </item>
                     <property stdset="1">
                         <name>name</name>
                         <cstring>lyxObjectsLB</cstring>

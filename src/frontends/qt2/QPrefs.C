@@ -15,6 +15,8 @@
 #endif
 
 #include "support/lstrings.h"
+#include "Lsstream.h"
+#include <iomanip>
  
 #include "ControlPrefs.h"
 #include "QPrefsDialog.h"
@@ -37,6 +39,7 @@
 #include "lyxrc.h"
 #include "frnt_lang.h"
 #include "helper_funcs.h"
+#include "debug.h"
 
 #include <qpushbutton.h>
 #include <qcheckbox.h>
@@ -44,8 +47,13 @@
 #include <qspinbox.h>
 #include <qcombobox.h> 
 #include <qlistbox.h>
+#include "qcoloritem.h"
  
 using std::vector;
+using std::ostringstream;
+using std::setfill;
+using std::setw;
+using std::endl;
  
 typedef Qt2CB<ControlPrefs, Qt2DB<QPrefsDialog> > base_class;
 
@@ -249,7 +257,30 @@ void QPrefs::apply()
 	controller().setConverters(converters_);
 	controller().setFormats(formats_); 
 
-	// FIXME: controller().setColor(lc, hexname) 
+	QPrefColorsModule * colmod(dialog_->colorsModule);
+ 
+	unsigned int i;
+
+	for (i = 0; i < colmod->lyxObjectsLB->count(); ++i) {
+		QListBoxItem * ib(colmod->lyxObjectsLB->item(i));
+		QColorItem * ci(static_cast<QColorItem*>(ib));
+
+		ostringstream ostr;
+ 
+		ostr << "#" << std::setbase(16) << setfill('0')
+			<< setw(2) << ci->color().red()
+			<< setw(2) << ci->color().green()
+			<< setw(2) << ci->color().blue();
+ 
+		string newhex(STRCONV(ostr.str()));
+
+		LColor::color col(dialog_->colors_[i]);
+
+		// FIXME: dubious, but it's what xforms does
+		if (lcolor.getX11Name(col) != newhex) {
+			controller().setColor(col, newhex);
+		}
+	}
 }
 
 
@@ -420,7 +451,4 @@ void QPrefs::update_contents()
 	converters_ = converters;
 
 	dialog_->updateConverters();
- 
- 
-	// FIXME: populate colors
 }

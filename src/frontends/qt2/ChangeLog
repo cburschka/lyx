@@ -1,5 +1,15 @@
 2002-11-17  John Levon  <levon@movementarian.org>
 
+	* Makefile.am:
+	* qcoloritem.h:
+	* qcoloritem.C:
+	* ui/QPrefColorsModule.ui:
+	* QPrefs.C:
+	* QPrefsDialog.h:
+	* QPrefsDialog.C: implement colors. We're done !
+ 
+2002-11-17  John Levon  <levon@movementarian.org>
+
 	* FileDialog.C:  split into open/save so open
 	  no longer says "Save" !
  
