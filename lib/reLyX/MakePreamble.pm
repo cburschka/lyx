@@ -243,6 +243,7 @@ sub translate_preamble {
     if($Latex_Preamble =~ s/\\usepackage\[(.*)\]\{inputenc\}\s*//) {
 	$LyX_Preamble .= "\\inputencoding $1\n";
     }
+    $Latex_Preamble =~ s/\\usepackage\[.*\]\{fontenc\}\s*//;
 
     ## Deal with several \usepackage{} cases
     my %Usepackage_Table = (
@@ -267,8 +268,16 @@ sub translate_preamble {
 	"a4"		=> "\\paperpackage a4wide",
 
 	"graphics"	=> "\\graphics default",
-	"rotating"	=> ""
+	"rotating"	=> "",
+	"makeidx"	=> "\\makeindex"
     );
+
+    ## Babel with arguments specifing language
+    if($Latex_Preamble =~ s/\\usepackage\[(.*)\]\{babel\}\s*//) {
+	my @languages = split(',',$1);
+	my $lang = pop @languages;
+	$LyX_Preamble .= "\\language $lang\n";
+    }
 
     my $up;
     foreach $up (keys %Usepackage_Table) {
@@ -342,7 +351,9 @@ sub translate_preamble {
     if ($write_preamble) {
 	$Latex_Preamble =~ s/^\s*//;
 	print "LaTeX preamble, consists of:\n$Latex_Preamble" if $debug_on;
-	$Latex_Preamble = "\\begin_preamble\n$Latex_Preamble\\end_preamble\n";
+	if($Latex_Preamble) {
+	    $Latex_Preamble = "\\begin_preamble\n$Latex_Preamble\\end_preamble\n";
+	}
 	print "End of LaTeX preamble\n" if $debug_on;
     } else {
         $Latex_Preamble = ""; #just comments, whitespace. Ignore them
