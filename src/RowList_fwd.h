@@ -12,10 +12,10 @@
 #ifndef ROW_LIST_FWD_H
 #define ROW_LIST_FWD_H
 
-#include <vector>
+#include <list>
 
 class Row;
 
-typedef std::vector<Row> RowList;
+typedef std::list<Row> RowList;
 
 #endif
