@@ -1,5 +1,9 @@
 2003-07-01  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* os_win32.C: put namespace os in lyx::support.
+
+	* lstrings.C (bformat): call Assert from correct namespace.
+
 	* introduce namespace lyx::support
 
 2003-06-30  André Pönitz  <poenitz@gmx.net>
