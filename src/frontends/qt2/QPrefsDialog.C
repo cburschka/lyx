@@ -59,18 +59,19 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 		form, SLOT(slotClose()));
 	connect(restorePB, SIGNAL(clicked()),
 		form, SLOT(slotRestore()));
- 
+
 	prefsLV->setSorting(-1);
- 
+
 	// OK, Qt is REALLY broken. We have to hard
 	// code the menu structure here.
 
-	QListViewItem * adv(new QListViewItem(prefsLV, _("Advanced settings")));
-	adv->setSelectable(false);
-	QListViewItem * lan(new QListViewItem(prefsLV, _("Language settings")));
-	lan->setSelectable(false);
 	QListViewItem * lnf(new QListViewItem(prefsLV, _("Look and feel")));
-	lnf->setSelectable(false); 
+	lnf->setSelectable(false);
+	lnf->setOpen(true);
+	QListViewItem * lan(new QListViewItem(prefsLV, lnf, _("Language settings")));
+	lan->setSelectable(false);
+	QListViewItem * adv(new QListViewItem(prefsLV, lan, _("Advanced settings")));
+	adv->setSelectable(false);
 
 	asciiModule = new QPrefAsciiModule(prefsWS);
 	dateModule = new QPrefDateModule(prefsWS);
@@ -103,28 +104,28 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	prefsWS->addWidget(languageModule, 12);
 	prefsWS->addWidget(printerModule, 13);
 	prefsWS->addWidget(uiModule, 14);
- 
+
 	QListViewItem * i;
 
 	// advanced settings
- 
+
 	i = new QListViewItem(adv, _("Converters"));
 	pane_map_[i] = convertersModule;
 	i = new QListViewItem(adv, i, _("File formats"));
 	pane_map_[i] = fileformatsModule;
 	// language settings
- 
+
 	i = new QListViewItem(lan, _("Language"));
 	pane_map_[i] = languageModule;
 	i = new QListViewItem(lan, i, _("Spellchecker"));
 	pane_map_[i] = spellcheckerModule;
- 
+
 	// UI
- 
+
 	i = new QListViewItem(lnf, _("User interface"));
 	pane_map_[i] = uiModule;
 	prefsLV->setCurrentItem(i);
- 
+
 	i = new QListViewItem(lnf, i, _("Screen fonts"));
 	pane_map_[i] = screenfontsModule;
 	i = new QListViewItem(lnf, i, _("Colors"));
@@ -133,9 +134,9 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	pane_map_[i] = displayModule;
 	i = new QListViewItem(lnf, i, _("Miscellaneous")); // YUCK !
 	pane_map_[i] = lnfmiscModule;
- 
+
 	// rag bag of crap
- 
+
 	i = new QListViewItem(prefsLV, lan, _("Ascii"));
 	pane_map_[i] = asciiModule;
 	i = new QListViewItem(prefsLV, i, _("Date"));
@@ -148,8 +149,11 @@ QPrefsDialog::QPrefsDialog(QPrefs * form)
 	pane_map_[i] = pathsModule;
 	i = new QListViewItem(prefsLV, i, _("Printer"));
 	pane_map_[i] = printerModule;
- 
+
 	prefsLV->setMinimumSize(prefsLV->sizeHint());
+
+	// Qt sucks
+	resize(minimumSize());
 }
 
 
