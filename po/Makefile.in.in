@@ -206,15 +206,18 @@ ${srcdir}/POTFILES.in: $(POTFILE_IN_DEPS)
 
 
 l10n_pots: xforms_l10n.pot qt_l10n.pot layouts_l10n.pot languages_l10n.pot default_ui_l10n.pot
-	cat xforms_l10n.pot qt_l10n.pot layouts_l10n.pot languages_l10n.pot default_ui_l10n.pot | \
-	msguniq -o $(PACKAGE).po
+	cat xforms_l10n.pot qt_l10n.pot layouts_l10n.pot languages_l10n.pot default_ui_l10n.pot > lyxtmp.pot && \
+	msguniq -o $(PACKAGE).po lyxtmp.pot
 
 xforms_l10n.pot: $(top_srcdir)/src/frontends/xforms/forms/*.fd
 	awk ' \
 	     BEGIN { \
+		     print "#, fuzzy"; \
 		     print "msgid \"\""; \
 		     print "msgstr \"\""; \
 		     print "\"Content-Type: text/plain; charset=ISO-8859-1\\n\""; \
+		     print "\"Content-Transfer-Encoding: 8bit\\n\""; \
+		     print "\n"; \
 	     } \
 	     /label: / { \
 		     if (NF > 1) { \
@@ -228,16 +231,15 @@ xforms_l10n.pot: $(top_srcdir)/src/frontends/xforms/forms/*.fd
 qt_l10n.pot: $(top_srcdir)/src/frontends/qt2/ui/*.ui
 	awk ' \
 	     /<string>/ { \
-	             if (NF > 1) { \
-		             line=$$0; \
-		             sub(/.*<string>/, "", line); \
-		             sub(/<\/string>.*/, "", line); \
-		             gsub(/&amp;/, "\\&", line); \
-		             gsub(/&lt;/, "<", line); \
-		             gsub(/&gt;/, ">", line); \
-	                     printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n",\
-			     FILENAME, FNR, line); \
-		     } \
+	             line=$$0; \
+	             sub(/.*<string>/, "", line); \
+	             sub(/<\/string>.*/, "", line); \
+	             gsub(/&amp;/, "\\&", line); \
+	             gsub(/&lt;/, "<", line); \
+	             gsub(/&gt;/, ">", line); \
+		     if (length(line) > 0) \
+                             printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n",\
+		     FILENAME, FNR, line); \
 	     }' \
 	`find $(top_srcdir)/src/frontends/qt2/ui -name \*.ui` > $@
 
