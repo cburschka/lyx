@@ -32,6 +32,7 @@ using SigC::Object;
 #endif 
 
 class Dialogs;
+class LyXImage;
 
 ///
 #ifdef SIGC_CXX_NAMESPACES
@@ -102,13 +103,15 @@ public:
 	Signal0 <void> hide;
 private:
 	/// Update the inset after parameter change.
-	void updateInset();
+	void updateInset() const;
+	/// Get the status message, depends on the image loading status.
+	char const * statusMessage() const;
 
 	/// The graphics cache handle.
-	GraphicsCacheItem * cacheHandle;
+	mutable GraphicsCacheItem * cacheHandle;
 
 	/// The pixmap
-	mutable Pixmap pixmap;
+	mutable LyXImage * pixmap;
 	/// is the pixmap initialized?
 	mutable bool pixmapInitialized;
 

@@ -20,13 +20,17 @@
 
 #include "LString.h"
 #include "X11/Xlib.h"
-#include <boost/utility.hpp>
+#include "boost/utility.hpp"
+
+class LyXImage;
 
 /** Renderer is a base class that is used to take an image format, and
-    render it into a Pixmap in order to be able to display it later on
-    in LyX. Essentially it's job is to load an image format and create
-    a Pixmap from it. It also needs to do various transforms on the
-    image, like Rotation, Resize and color reduction.
+ *  render it into a Pixmap in order to be able to display it later on
+ *  in LyX. Essentially it's job is to load an image format and create
+ *  a Pixmap from it. It also needs to do various transforms on the
+ *  image, like Rotation, Resize and color reduction.
+ *  
+ *  @Author Baruch Even, <baruch.even@writeme.com>
  */
 class Renderer : public noncopyable {
 public:
@@ -42,7 +46,7 @@ public:
 	virtual bool renderImage() = 0;
 
 	/// Get the last rendered pixmap.
-	Pixmap getPixmap() const;
+	LyXImage * getPixmap() const;
 
 	/// Get the width of the pixmap.
 	unsigned int getWidth() const;
@@ -55,7 +59,7 @@ protected:
 	virtual bool isImageFormatOK(string const & filename) const = 0;
 
 	/// Set the pixmap.
-	void setPixmap(Pixmap pixmap, unsigned int width, unsigned int height);
+	void setPixmap(LyXImage * pixmap, unsigned int width, unsigned int height);
 	///
 	string const & getFilename() const;
 
@@ -66,7 +70,7 @@ private:
 	/// The filename of the image file that we are responsible for.
 	string filename_;
 	/// The last rendered pixmap.
-	Pixmap pixmap_;
+	LyXImage * pixmap_;
 	/// The width of the rendered pixmap.
 	unsigned int width_;
 	/// The height of the rendered pixmap.

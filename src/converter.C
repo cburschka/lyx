@@ -263,7 +263,7 @@ Converter::GetReachable(string const & from, bool only_viewable)
 }
 
 
-bool Converter::Convert(Buffer * buffer, string const & from_file,
+bool Converter::Convert(Buffer const * buffer, string const & from_file,
 			string const & to_file, string const & using_format,
 			string * view_file)
 {

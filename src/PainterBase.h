@@ -20,6 +20,7 @@
 
 class WorkArea;
 class LyXFont;
+class LyXImage;
 
 /** A painter class to encapsulate all graphics parameters and operations
    
@@ -146,9 +147,7 @@ public:
 	
 	
 	// For the figure inset
-	// This can't be part of the base since we don't know what window
-	// system we will be useing, or if are going to use pixmaps at all.
-	//virtual PainterBase & pixmap(int x, int y, Pixmap bitmap)=0;
+	virtual PainterBase & image(int x, int y, int w, int h, LyXImage const * image) = 0;
 
 	
 	/// Draw a string at position x, y (y is the baseline)

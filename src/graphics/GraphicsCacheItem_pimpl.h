@@ -30,14 +30,7 @@
 using SigC::Signal0;
 #endif
 
-/* (Baruch Even 2000-08-05)
- * This has a major drawback: it is only designed for X servers, no easy
- * porting to non X-server based platform is offered right now, this is done
- * in order to get a first version out of the door.
- *
- * Later versions should consider how to do this with more platform 
- * independence, this will probably involve changing the Painter class too.
- */
+class LyXImage;
 
 /// A GraphicsCache item holder.
 class GraphicsCacheItem_pimpl {
@@ -52,7 +45,7 @@ public:
 	int getWidth() const;
 
 	/// Return a pixmap that can be displayed on X server.
-	Pixmap getImage() const; 
+	LyXImage * getImage() const; 
 
 	typedef GraphicsCacheItem::ImageStatus ImageStatus;
 	
@@ -88,7 +81,7 @@ private:
 	/// Is the pixmap loaded?
 	ImageStatus imageStatus_;
 	/// The image pixmap
-	Pixmap pixmap_;
+	LyXImage * pixmap_;
 	/// The rendering object.
 	Renderer * renderer;
 

@@ -1,3 +1,73 @@
+2000-10-12  Juergen Vigna  <jug@sad.it>
+
+	* development/Code_rules/Rules: fixed some typos.
+
+2000-10-09  Baruch Even  <baruch.even@writeme.com>
+
+	* src/filedlg.C (GroupCache::find): de-inlined the function, makes
+	compiling on egcs 1.1.2 possible.
+	
+	* src/filedlg.C (comp_direntry::operator() ): ditto.
+
+2000-08-31  Baruch Even  <baruch.even@writeme.com>
+
+	* src/lyx_cb.[hC] (ShowMessage): Result of the const-ificiation of the 
+	Buffer parameter.
+
+	* src/frontends/xforms/FormGraphics.C: Changed the dialog to be
+	transient it now only gets freed when the object is destructed.
+
+2000-08-24  Baruch Even  <baruch.even@writeme.com>
+
+	* src/frontends/FormGraphics.h:
+	* src/frontends/FormGraphics.C: Changed to use ButtonController and
+	ButtonPolicies.
+
+2000-08-20  Baruch Even  <baruch.even@writeme.com>
+
+	* src/insets/insetgraphics.C:
+	(draw): Added messages to the drawn rectangle to report status.
+	(updateInset): Disabled the use of the inline graphics,
+	(draw): ditto.
+
+2000-08-17  Baruch Even  <baruch.even@writeme.com>
+
+	* src/frontends/support: Directory added for the support of GUII LyX.
+
+	* src/frontends/support/LyXImage.h:	
+	* src/frontends/support/LyXImage.C:  Base class for GUII holding of
+	images.
+
+	* src/frontends/support/LyXImage_X.h:
+	* src/frontends/support/LyXImage_X.C: Implementation of the Xlib
+	version of LyXImage, this uses the Xlib Pixmap.
+
+	* src/PainterBase.h:
+	* src/PainterBase.C:
+	* src/Painter.h:
+	* src/Painter.C: Added a new method image() to draw LyXImage-s, a GUII 
+	replacement	to Pixmap.
+
+	* src/insets/insetgraphics.h:
+	* src/insets/insetgraphics.C:
+	* src/graphics/GraphicsCacheItem.h:
+	* src/graphics/GraphicsCacheItem.C:
+	* src/graphics/GraphicsCacheItem_pimpl.h:
+	* src/graphics/GraphicsCacheItem_pimpl.C: Changed to use LyXImage
+	instead  of Pixmap.
+
+	* src/graphics/GraphicsCacheItem.h:
+	* src/graphics/GraphicsCacheItem.C: Added the Clone() method to create 
+	another copy of the object.
+
+	* src/insets/insetgraphics.C (Clone): Changed to create a second copy
+	of cacheHandle, this fixed a bug that sent LyX crashing.
+
+	* src/graphics/XPM_Renderer.h:
+	* src/graphics/XPM_Renderer.C:
+	* src/graphics/EPS_Renderer.h:
+	* src/graphics/EPS_Renderer.C: Changed to Unix LF from DOS CRLF.
+
 2000-10-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/lyxfunc.C (processKeySym): only handle the

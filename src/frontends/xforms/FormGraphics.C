@@ -56,9 +56,16 @@ FormGraphics::FormGraphics(LyXView * lv, Dialogs * d)
 		// The buttons c-tor values are the number of buttons we use
 		// This is only to reduce memory waste.
 		widthButtons(5), heightButtons(4), displayButtons(4),
+		bc_(new ButtonController
+			(new NoRepeatedApplyReadOnlyPolicy, _("Cancel"), _("Close") )
+		),
 		ih_(0), h_(0), u_(0),
 		last_image_path(".")
 {
+	Assert(lv_ != 0);
+	Assert(d   != 0);
+	Assert(bc_ != 0);
+	
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
 	// storing a copy because we won't be disconnecting.
@@ -69,6 +76,9 @@ FormGraphics::FormGraphics(LyXView * lv, Dialogs * d)
 FormGraphics::~FormGraphics()
 {
 	free();
+	
+	// Free the button controller.
+	delete bc_;
 }
 
 
@@ -76,8 +86,10 @@ void FormGraphics::build()
 {
 	dialog_ = build_graphics();
 	Assert(dialog_ != 0);
-	if (!dialog_)
+	if (!dialog_) {
+		lyxerr << "ERROR: Failed to create the Graphics Inset dialog." << endl;
 		return ;
+	}
 
 	// This is the place to add settings of the dialog that did not go
 	// to the .fd file.
@@ -145,6 +157,12 @@ void FormGraphics::build()
 	// Connect a signal to hide the window when the window manager orders it.
 	fl_set_form_atclose(dialog_->form,
 	                    C_FormGraphicsWMHideCB, 0);
+
+	bc_->setOK(dialog_->button_ok);
+	bc_->setApply(dialog_->button_apply);
+	bc_->setCancel(dialog_->button_cancel);
+	bc_->setUndoAll(0);
+	bc_->refresh();
 }
 
 void FormGraphics::show()
@@ -165,7 +183,7 @@ void FormGraphics::show()
 		// Otherwise (invisible), show it.
 		fl_show_form(dialog_->form,
 		             FL_PLACE_MOUSE,
-		             FL_FULLBORDER,
+		             FL_TRANSIENT,
 		             _("Graphics"));
 
 		// And connect the signals 'updateBufferDependent',
@@ -211,9 +229,6 @@ void FormGraphics::hide()
 		// Forget the inset.
 		inset_ = 0;
 	}
-	// Most of the time, the dialog is not needed anymore, we'll free it
-	// now to save memory.
-	free();
 }
 
 
@@ -224,6 +239,7 @@ void FormGraphics::free()
 	heightButtons.reset();
 	displayButtons.reset();
 
+	
 	// Free the form.
 	delete dialog_;
 	dialog_ = 0;
@@ -311,10 +327,10 @@ void FormGraphics::update()
 	              igp.inlineFigure);
 
 	// Now make sure that the buttons are set correctly.
-	input();
+	checkInput();
 }
 
-void FormGraphics::input()
+bool FormGraphics::checkInput()
 {
 	// Put verifications that the dialog shows some sane values,
 	// if not disallow clicking on ok/apply.
@@ -358,19 +374,7 @@ void FormGraphics::input()
 		inputOK = false;
 	}
 
-
-	// Now set the buttons to the correct state.
-	if (inputOK && ! lv_->buffer()->isReadonly()) {
-		fl_activate_object(dialog_->button_ok);
-		fl_activate_object(dialog_->button_apply);
-		fl_set_object_lcol(dialog_->button_ok, FL_BLACK);
-		fl_set_object_lcol(dialog_->button_apply, FL_BLACK);
-	} else {
-		fl_deactivate_object(dialog_->button_ok);
-		fl_deactivate_object(dialog_->button_apply);
-		fl_set_object_lcol(dialog_->button_ok, FL_INACTIVE);
-		fl_set_object_lcol(dialog_->button_apply, FL_INACTIVE);
-	}
+	return inputOK;
 }
 
 
@@ -436,7 +440,7 @@ void FormGraphics::browse()
 		// The above set input doesn't cause an input event so we do
 		// it manually. Otherwise the user needs to cause an input event
 		// to get the ok/apply buttons to be activated.
-		input();
+		checkInput();
 	}
 
 }
@@ -447,6 +451,9 @@ int FormGraphics::WMHideCB(FL_FORM * form, void *)
 	// window manager is used to close the dialog.
 	FormGraphics * pre = static_cast < FormGraphics* > (form->u_vdata);
 	pre->hide();
+
+	pre->bc_->hide();
+	
 	return FL_CANCEL;
 }
 
@@ -456,18 +463,24 @@ void FormGraphics::OKCB(FL_OBJECT * ob, long)
 	FormGraphics * pre = static_cast < FormGraphics* > (ob->form->u_vdata);
 	pre->apply();
 	pre->hide();
+	
+	pre->bc_->ok();
 }
 
 void FormGraphics::ApplyCB(FL_OBJECT * ob, long)
 {
 	FormGraphics * pre = static_cast < FormGraphics* > (ob->form->u_vdata);
 	pre->apply();
+	
+	pre->bc_->apply();
 }
 
 void FormGraphics::CancelCB(FL_OBJECT * ob, long)
 {
 	FormGraphics * pre = static_cast < FormGraphics* > (ob->form->u_vdata);
 	pre->hide();
+	
+	pre->bc_->cancel();
 }
 
 void FormGraphics::BrowseCB(FL_OBJECT * ob, long)
@@ -488,6 +501,6 @@ void FormGraphics::AdvancedOptionsCB(FL_OBJECT * /* ob */, long)
 void FormGraphics::InputCB(FL_OBJECT * ob, long)
 {
 	FormGraphics * pre = static_cast < FormGraphics* > (ob->form->u_vdata);
-	pre->input();
+	pre->bc_->valid(pre->checkInput());
 }
 

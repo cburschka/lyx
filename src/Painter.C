@@ -33,6 +33,8 @@
 #include "lyxrc.h"
 #include "encoding.h"
 
+#include "frontends/support/LyXImage.h"
+
 using std::endl;
 using std::max;
 
@@ -235,7 +237,6 @@ PainterBase & Painter::segments(int const * x1, int const * y1,
 	return *this;
 }
 
-
 PainterBase & Painter::pixmap(int x, int y, int w, int h, Pixmap bitmap)
 {
 	if (lyxerr.debugging(Debug::GUI)) {
@@ -244,7 +245,7 @@ PainterBase & Painter::pixmap(int x, int y, int w, int h, Pixmap bitmap)
 				"workarea::workhandler\n";
 		lyxerr << "Painter drawable: " << owner.getPixmap() << endl;
 	}
-	
+
 	XGCValues val;
 	val.function = GXcopy;
 	GC gc = XCreateGC(display, owner.getPixmap(),
@@ -253,6 +254,13 @@ PainterBase & Painter::pixmap(int x, int y, int w, int h, Pixmap bitmap)
 		  0, 0, w, h, x, y);
 	XFreeGC(display, gc);
 	return *this;
+}
+
+PainterBase & Painter::image(int x, int y, int w, int h, LyXImage const * image)
+{
+	Pixmap bitmap = image->getPixmap();
+
+	return pixmap(x, y, w, h, bitmap);
 }
 
 

@@ -77,7 +77,10 @@ public:
 	PainterBase & fillRectangle(int x, int y, int w, int h,
 				    LColor::color = LColor::background);
 	
-	/// For the figure inset
+	/// For the graphics inset.
+	PainterBase & image(int x, int y, int w, int h, LyXImage const * image);
+	
+	/// For the figinset
 	PainterBase & pixmap(int x, int y, int w, int h, Pixmap bitmap);
 	
 	/// Draw a string at position x, y (y is the baseline)

@@ -22,6 +22,7 @@
 #include "GraphicsCacheItem.h"
 #include "GraphicsCacheItem_pimpl.h"
 
+#include "frontends/support/LyXImage.h"
 #include "graphics/XPM_Renderer.h"
 #include "graphics/EPS_Renderer.h"
 #include "support/filetools.h"
@@ -43,7 +44,6 @@ GraphicsCacheItem_pimpl::~GraphicsCacheItem_pimpl()
 	if (imageStatus_ == GraphicsCacheItem::Loaded) {
 		XFreePixmap(fl_get_display(), pixmap_);
 	}
-
 	delete renderer;
 }
 

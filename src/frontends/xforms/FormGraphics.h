@@ -10,8 +10,6 @@
  *           Copyright 1995 Matthias Ettrich
  *           Copyright 1995-2000 The LyX Team.
  *
- *           This file Copyright 2000
- *           Baruch Even
  * ======================================================
  */
 
@@ -22,19 +20,23 @@
 #include "frontends/DialogBase.h"
 #include "RadioButtonGroup.h"
 #include <boost/utility.hpp>
+#include "ButtonController.h"
+#include "ButtonPolicies.h"
 
 #ifdef __GNUG__
 #pragma interface
 #endif 
 
+// Forward declarations for classes we use only as pointers.
 class Dialogs;
-// same arguement as in Dialogs.h s/LyX/UI/
 class LyXView;
 class InsetGraphics;
 
 struct FD_form_graphics;
 
 /** This class provides an XForms implementation of the FormGraphics Dialog.
+ *
+ *  @Author Baruch Even <baruch.even@writeme.com>
  */
 class FormGraphics: public DialogBase, public noncopyable {
 public:
@@ -91,7 +93,7 @@ private:
 	/// Apply the changes to the inset.
 	void apply();
 	/// Verify that the input is correct. If not disable ok/apply buttons.
-	void input();
+	bool checkInput();
 	/// Open the file browse dialog to select an image file.
 	void browse();
 
@@ -125,6 +127,8 @@ private:
 	RadioButtonGroup heightButtons;
 	///
 	RadioButtonGroup displayButtons;
+	/// Controls the actions of the buttons.
+	ButtonController * bc_;
 
 	/// Inset Hide connection, connected to the calling inset hide signal.
 	Connection ih_;

@@ -116,14 +116,7 @@ void UserCache::add(uid_t ID) const
 class GroupCache {
 public:
 	/// seeks group name from group ID
-	string const & find(gid_t ID) const {
-		Groups::const_iterator cit = groups.find(ID);
-		if (cit == groups.end()) {
-			add(ID);
-			return groups[ID];
-		}
-		return (*cit).second;
-	}
+	string const & find(gid_t ID) const ;
 private:
 	///
 	void add(gid_t ID) const;
@@ -133,6 +126,15 @@ private:
 	mutable Groups groups;
 };
 
+	string const & GroupCache::find(gid_t ID) const 
+	{
+		Groups::const_iterator cit = groups.find(ID);
+		if (cit == groups.end()) {
+			add(ID);
+			return groups[ID];
+		}
+		return (*cit).second;
+	}
 void GroupCache::add(gid_t ID) const 
 {
 	string pszNewName;
@@ -161,6 +163,9 @@ extern "C" int C_LyXFileDlg_CancelCB(FL_FORM *, void *);
 class comp_direntry {
 public:
 	int operator()(LyXDirEntry const & r1,
+		       LyXDirEntry const & r2) const ;
+};
+	int comp_direntry::operator()(LyXDirEntry const & r1,
 		       LyXDirEntry const & r2) const {
 		bool r1d = suffixIs(r1.pszName, '/');
 		bool r2d = suffixIs(r2.pszName, '/');
@@ -168,7 +173,6 @@ public:
 		if (!r1d && r2d) return 0;
 		return r1.pszName < r2.pszName;
 	}
-};
 
 
 // *** LyXFileDlg class implementation

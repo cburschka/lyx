@@ -37,7 +37,7 @@ using SigC::Signal0;
  */
 
 class GraphicsCacheItem_pimpl;
-
+class LyXImage;
 
 /// A GraphicsCache item holder.
 class GraphicsCacheItem {
@@ -56,7 +56,7 @@ public:
 	int getWidth() const; 
 
 	/// Return a pixmap that can be displayed on X server.
-	Pixmap getImage() const; 
+	LyXImage * getImage() const; 
 	///
 	enum ImageStatus {
 		///
@@ -65,6 +65,8 @@ public:
 		ErrorConverting,
 		///
 		ErrorReading,
+		///
+		UnknownError,
 		///
 		Loaded
 	};
@@ -77,6 +79,9 @@ public:
 	*/
 	void imageConverted(int retval);
 
+	/// Create another copy of the object.
+	GraphicsCacheItem * Clone() const;
+	
 private:
 	/// Private c-tor so that only GraphicsCache can create an instance.
 	GraphicsCacheItem();

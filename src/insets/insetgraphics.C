@@ -15,8 +15,16 @@ How to use it for now:
 
 /*
 Immediate tasks:
-    * Add the GraphicsCache and FormatTranslator in order to get inline
-        viewing of the figures.
+	* Make the inline viewing work, there is a preliminary work going on,
+		need to finish it up.
+
+	* Polishing tasks:
+		* Add messages in the empty rectangle to say how are we doing.
+			- Implemented, needs testing.
+		* Clean up GraphicsCacheItem(_pimpl)
+    	* Pop up a dialog if the widget version is higher than what we accept.
+		* Prepare code to read FigInset insets to upgrade upwards
+		* Provide sed/awk/C code to downgrade from InsetGraphics to FigInset.
         
 */
 
@@ -30,8 +38,11 @@ Known BUGS:
        by the file dialog we normally get an absolute path and this may not be 
        what the user meant.
     * Bug in FileDlg class (src/filedlg.[hC]) when selecting a file and then
-        pressing ok, it counts as if no real selection done. Apparently it
+        pressing ok, it counts as if no real selection done. Apparently
         when choosing a file it doesn't update the select file input line.
+	* Inline viewing is still not completely operational, in fact it is no 
+		disabled. To enable it enable the define:
+		INSETGRAPHICS_INLINE_VIEW
  
 Current PROBLEMS:
     
@@ -43,17 +54,12 @@ Current PROBLEMS:
         graphicx package docs it appears that it takes quite a bit of memory
         on the side of TeXing.
 	
-	* How do we handle the inline viewing? we may need to show the same image
-		in several formats (color, monochrome, grayscale) or even in different
-		sizes, not to mention rotations!
-		
 TODO Basics:
  
     * Add support for more features so that it will be better than insetfig.
         * Keep aspect ratio radio button
  
-    * Create the GraphicsCache and FormatTranslator
-    * Add inline viewing of image.
+    * Work on inline viewing of image.
  
 TODO Before initial production release:
     * Replace insetfig everywhere
@@ -63,7 +69,6 @@ TODO Before initial production release:
             // INSET_GRAPHICS: remove this when InsetFig is thrown.
           And act upon them.
  
-    * Pop up a dialog if the widget version is higher than what we accept.
     * Finish the basic To-do list.
     * Extract the general logic of the dialog in order to allow easier porting
         to Gnome/KDE, and put the general logic in frontends and the inherited
@@ -80,12 +85,14 @@ TODO Extended features:
     * Add a way to roll the image file into the file format.
     * When loading if the image is not found in the expected place, try
        to find it in the clipart, or in the same directory with the image.
-    * If the dialog had no real change from previous time, do not mark document
-        as changed.
     * Keep a tab on the image file, if it changes, update the lyx view.
 	* The image choosing dialog could show thumbnails of the image formats
 		it knows of, thus selection based on the image instead of based on
 		filename.
+	* Add support for the 'picins' package.
+	* Add support for the 'picinpar' package.
+	* Improve support for 'subfigure' - Allow to set the various options
+		that are possible.
  */
 
 /* NOTES:
@@ -133,8 +140,6 @@ TODO Extended features:
  * PLAN:
  *  Finish basic support:
  *      Inline image viewing
- *      Get into lyx-devel as an unactivated inset for the benefit of those
- *          who really need it.
  *
  *  Do Release quality support:
  *      Allow to change display depth
@@ -168,19 +173,23 @@ TODO Extended features:
 #include "LyXView.h"
 #include "buffer.h"
 #include "BufferView.h"
+#include "converter.h"
+#include "frontends/support/LyXImage.h"
 #include "Painter.h"
 #include "lyx_gui_misc.h"
 #include "filedlg.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "lyxtext.h"
-
+#include "font.h" // For the lyxfont class.
+#include <algorithm> // For the std::max
+ 
 #include "debug.h"
 
 
 using std::ostream;
 using std::endl;
-
+using std::max;
 
 // Initialize only those variables that do not have a constructor.
 InsetGraphics::InsetGraphics()
@@ -189,13 +198,47 @@ InsetGraphics::InsetGraphics()
 	, keepaspectratio(false), scale(0.0), clip(false), draft(false)
 	, cacheHandle(0)
 #endif 
-	: cacheHandle(0), pixmapInitialized(false)
+	: cacheHandle(0), pixmap(0), pixmapInitialized(false)
 {}
 
 InsetGraphics::~InsetGraphics()
 {
 	// Emits the hide signal to the dialog connected (if any)
 	hide();
+}
+
+char const *
+InsetGraphics::statusMessage() const
+{
+	char const * msg = 0;
+
+#ifdef INSETGRAPHICS_INLINE_VIEW		
+	switch (status) {
+	case GraphicsCacheItem::UnknownError:
+		msg = _("Unknown Error");
+		break;
+
+	case GraphicsCacheItem::Loading:
+		msg = _("Loading...");
+		break;
+
+	case GraphicsCacheItem::ErrorReading:
+		msg = _("Error reading");
+		break;
+
+	case GraphicsCacheItem::ErrorConverting:
+		msg = _("Error converting");
+		break;
+
+	case GraphicsCacheItem::Loaded:
+		// No message to write.
+		break;
+	}
+#else
+	msg = _("Inline view disabled");
+#endif
+
+	return msg;
 }
 
 int InsetGraphics::ascent(BufferView *, LyXFont const &) const
@@ -214,12 +257,16 @@ int InsetGraphics::descent(BufferView *, LyXFont const &) const
 }
 
 
-int InsetGraphics::width(BufferView *, LyXFont const &) const
+int InsetGraphics::width(BufferView *, LyXFont const & font) const
 {
 	if (pixmapInitialized)
 		return cacheHandle->getWidth();
-	else
-		return 50;
+	else {
+		char const * msg = statusMessage();
+		int font_width = lyxfont::width(msg, font);
+		
+		return max(50, font_width + 15);
+	}
 }
 
 
@@ -236,22 +283,45 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 	// we draw just a rectangle.
 	if (pixmapInitialized) {
 
-		paint.pixmap(int(x) + 2, baseline - lascent,
+		paint.image(int(x) + 2, baseline - lascent,
 		             lwidth - 4, lascent + ldescent,
 		             pixmap);
 	} else {
-		paint.rectangle(int(x) + 2, baseline - lascent,
-		                lwidth - 4,
-		                lascent + ldescent);
-
+#ifdef INSETGRAPHICS_INLINE_VIEW		
+		// Get the image status, default to unknown error.
+		GraphicsCacheItem::ImageStatus status = GraphicsCacheItem::UnknownError;
+		if (cacheHandle)
+			status = cacheHandle->getImageStatus();
+		
 		// Check if the image is now ready.
-		if (cacheHandle &&
-		        (cacheHandle->getImageStatus() == GraphicsCacheItem::Loaded)) {
+		if (status == GraphicsCacheItem::Loaded) {
+			// It is, get it and inform the world.
 			pixmap = cacheHandle->getImage();
 			pixmapInitialized = true;
 
 			// Tell BufferView we need to be updated!
 			bv->text->status = LyXText::CHANGED_IN_DRAW;
+			return;
+		}
+#endif
+
+		char const * msg = statusMessage();
+		
+		paint.rectangle(int(x) + 2, baseline - lascent,
+		                lwidth - 4,
+		                lascent + ldescent);
+
+		if (msg) {
+			// Print the message.
+			LyXFont msgFont(font);
+			msgFont.setFamily(LyXFont::SANS_FAMILY);
+			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
+			string const justname = OnlyFilename (params.filename);
+			paint.text(int(x + 8), baseline - lyxfont::maxAscent(msgFont) - 4,
+				  justname, msgFont);
+
+			msgFont.setSize(LyXFont::SIZE_TINY);
+			paint.text(int(x + 8), baseline - 4, msg, strlen(msg), msgFont);
 		}
 	}
 
@@ -585,8 +655,12 @@ int InsetGraphics::Latex(Buffer const *buf, ostream & os,
 	}
 
 	// How do we decide to what format should we export?
-	//    cacheHandle->>export(ImageType::EPS);
-	//    cacheHandle->>export(ImageType::PNG);
+	const string empty_string = string();
+	const string eps_outfile = ChangeExtension(params.filename, "eps");
+	const string png_outfile = ChangeExtension(params.filename, "png");
+
+	Converter::Convert(buf, params.filename, eps_outfile, empty_string);
+	Converter::Convert(buf, params.filename, png_outfile, empty_string);
 
 	return 1;
 }
@@ -627,10 +701,11 @@ void InsetGraphics::Validate(LaTeXFeatures & features) const
 
 // Update the inset after parameters changed (read from file or changed in
 // dialog.
-void InsetGraphics::updateInset()
+void InsetGraphics::updateInset() const
 {
 	// If file changed...
 
+#ifdef INSETGRAPHICS_INLINE_VIEW	
 	GraphicsCache * gc = GraphicsCache::getInstance();
 	GraphicsCacheItem * temp = 0;
 
@@ -640,6 +715,9 @@ void InsetGraphics::updateInset()
 
 	delete cacheHandle;
 	cacheHandle = temp;
+#else
+	cacheHandle = 0;
+#endif
 }
 
 bool InsetGraphics::setParams(InsetGraphicsParams const & params)
@@ -667,7 +745,10 @@ Inset * InsetGraphics::Clone(Buffer const &) const
 {
 	InsetGraphics * newInset = new InsetGraphics;
 
-	newInset->cacheHandle = cacheHandle;
+	if (cacheHandle)
+		newInset->cacheHandle = cacheHandle->Clone();
+	else
+		newInset->cacheHandle = 0;
 	newInset->pixmap = pixmap;
 	newInset->pixmapInitialized = pixmapInitialized;
 

@@ -97,7 +97,7 @@ in C++.
   aimed especially at loops.
 
 	Container::iterator end = large.end();
-	for (Container::iterator it = large.begin(), it != end; ++it) {
+	for (Container::iterator it = large.begin(); it != end; ++it) {
 		...;
 	}
 	-NOT-
@@ -139,8 +139,8 @@ different types of exceptions safety: (These are taken from Herb
 Sutters book[ExC++]
 
 "
-1. Basic guarantee: Even in te presence of exceptions thrown by T or
-other exceptions, Stack objects don't leak resources.
+1. Basic guarantee: Even in the presence of exceptions thrown by T or
+	other exceptions, Stack objects don't leak resources.
 	Note that this also implies that the container will be
 	destructible and usable even if an exception is thrown wile
 	performing some container operation. However, if an exception
@@ -149,7 +149,7 @@ other exceptions, Stack objects don't leak resources.
 	basic guarantee can work safely in some settings.
 
 2. Strong guarantee: If an operation terminates because of an
-exception, program state will remain uncanged.
+	exception, program state will remain uncanged.
 	This always implies commit-or-rollback samantics, including
 	that no references or iterators into the container be
 	invalidated if an operation fails. For example, if a Stack
@@ -161,29 +161,29 @@ exception, program state will remain uncanged.
 	exception-safe standard library adaption at:
 	http://www.metabyte.com/~fbp/stl/eg_contract.html 
 
-	Probably te most interesting point here is tat wen you
+	Probably the most interesting point here is that when you
 	implement the basic guarantee, the strong guarantee often
 	comes for free. For example, in our Stack implementation,
 	alost everything we did was needed to satisfy just the basic
-	guarantee -- and wath's presented above very nearly satisfires
+	guarantee -- and what's presented above very nearly satisfires
 	the strong guarantee, with little of no extra work. Not half
 	bad, considering all the trouble we went to.
 
-	In addition to tese two guarantees, there is one more
+	In addition to these two guarantees, there is one more
 	guarantee that certain functions must provide in order to make
 	overall exception safety possible: 
 
-3. Nothrow guarantee: Te function will not emit an exception under any
-   circumstances.
+3. Nothrow guarantee: The function will not emit an exception under any
+   	circumstances.
 	Overall exception safety isn't possible unless certain
 	functions are guaranteed not to throw. In particualr, we've
-	seen that this is true for destructors; later in tis
+	seen that this is true for destructors; later in this
 	miniseries, we'll see that it's also needed in certain helper
 	functions, such as Swap(). 
 "
 
 For all cases where we might be able to write exception safe functions
-without using try,throw or catch we should do so. In particular we
+without using try, throw or catch we should do so. In particular we
 should look over all destructors to ensure that they are as exception
 safe at possible.
 
@@ -256,7 +256,7 @@ Formatting
 
   - Long variables are named like thisLongVariableName.
 
-  New types are capitalized, so this goes for typedefs,classes,structs
+  New types are capitalized, so this goes for typedefs, classes, structs
   and enums.
 
 * Formatting
@@ -288,7 +288,7 @@ Formatting
   - Use this order for the access sections of your class: public,
     protected, private. The public section is interesting for every
     user of the class. The private section is only of interest for the
-    implementors of the class (you). [Obvously not true since this is
+    implementors of the class (you). [Obviously not true since this is
     for developers, and we do not want one developer only to be able to
     read and understand the implementation of class internals. Lgb]
   

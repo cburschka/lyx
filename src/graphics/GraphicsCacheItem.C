@@ -18,6 +18,7 @@
 #include "graphics/GraphicsCache.h"
 #include "graphics/GraphicsCacheItem.h"
 #include "graphics/GraphicsCacheItem_pimpl.h"
+#include "frontends/support/LyXImage.h"
 
 
 GraphicsCacheItem::GraphicsCacheItem()
@@ -63,6 +64,11 @@ GraphicsCacheItem::operator=(GraphicsCacheItem const & gci)
 	return *this;
 }
 
+GraphicsCacheItem *
+GraphicsCacheItem::Clone() const
+{
+	return new GraphicsCacheItem(*this);
+}
 
 void
 GraphicsCacheItem::copy(GraphicsCacheItem const & gci)
@@ -78,7 +84,12 @@ GraphicsCacheItem::destroy()
 	if (pimpl) {
 		--(pimpl->refCount);
 		if (pimpl->refCount == 0) {
-			delete pimpl;
+			{   // We are deleting the pimpl but we want to mark it deleted
+				// even before it is deleted.
+				GraphicsCacheItem_pimpl * temp = pimpl;
+				pimpl = 0;
+				delete temp; 
+			}
 			GraphicsCache * gc = GraphicsCache::getInstance();
 			gc->removeFile(filename_);
 		}
@@ -97,6 +108,5 @@ GraphicsCacheItem::getHeight() const { return pimpl->height_; }
 int 
 GraphicsCacheItem::getWidth() const { return pimpl->width_; }
 
-
-Pixmap 
+LyXImage * 
 GraphicsCacheItem::getImage() const { return pimpl->pixmap_; }

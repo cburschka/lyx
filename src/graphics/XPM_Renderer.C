@@ -15,6 +15,7 @@
 
 #include <config.h>
 #include "XPM_Renderer.h"
+#include "frontends/support/LyXImage.h"
 
 #include FORMS_H_LOCATION
 #include XPM_H_LOCATION
@@ -62,7 +63,7 @@ bool XPM_Renderer::renderImage()
 	// This should have been set by the XpmReadFileToPixmap call!
 	Assert(attrib.valuemask & XpmSize);
 
-	setPixmap(pixmap, attrib.width, attrib.height);
+	setPixmap(new LyXImage(pixmap), attrib.width, attrib.height);
 
 	XpmFreeAttributes(&attrib);
 
@@ -72,7 +73,7 @@ bool XPM_Renderer::renderImage()
 
 bool XPM_Renderer::isImageFormatOK(string const & filename) const
 {
-	std::ifstream is(filename.c_str());
+	std::ifstream is(filename.c_str(), ios::in);
 
 	// The signature of the file without the spaces.
 	static const char str[] = "/*XPM*/";

@@ -108,7 +108,7 @@ public:
 		     bool only_viewable = false);
 	///
 	static
-	bool Convert(Buffer * buffer, string const & from_file,
+	bool Convert(Buffer const * buffer, string const & from_file,
 		     string const & to_file, string const & using_format,
 		     string * view_file = 0);
 	///
