@@ -36,16 +36,25 @@ bool textUndo(BufferView * bv)
 		finishUndo();
 		if (!undo_frozen) {
 			Paragraph * first = bv->buffer()->getParFromID(undo->number_of_before_par);
-			if (!first)
+			if (first && first->next())
+				first = first->next();
+			else if (!first)
 				first = firstUndoParagraph(bv, undo->number_of_inset_id);
 			if (first) {
 				bv->buffer()->redostack.push(
 					createUndo(bv, undo->kind, first,
-						   bv->buffer()->getParFromID(undo->number_of_behind_par)));
+					           bv->buffer()->getParFromID(undo->number_of_behind_par)));
 			}
 		}
 	}
-	return textHandleUndo(bv, undo);
+	// now we can unlock the inset for saftey because the inset pointer could
+	// be changed during the undo-function. Anyway if needed we have to lock
+	// the right inset/position if this is requested.
+	freezeUndo();
+	bv->unlockInset(bv->theLockingInset());
+	bool ret = textHandleUndo(bv, undo);
+	unFreezeUndo();
+	return ret;
 }
 
 
@@ -58,7 +67,9 @@ bool textRedo(BufferView * bv)
 		finishUndo();
 		if (!undo_frozen) {
 			Paragraph * first = bv->buffer()->getParFromID(undo->number_of_before_par);
-			if (!first)
+			if (first && first->next())
+				first = first->next();
+			else if (!first)
 				first = firstUndoParagraph(bv, undo->number_of_inset_id);
 			if (first) {
 				bv->buffer()->undostack.push(
@@ -67,7 +78,14 @@ bool textRedo(BufferView * bv)
 			}
 		}
 	}
-	return textHandleUndo(bv, undo);
+	// now we can unlock the inset for saftey because the inset pointer could
+	// be changed during the undo-function. Anyway if needed we have to lock
+	// the right inset/position if this is requested.
+	freezeUndo();
+	bv->unlockInset(bv->theLockingInset());
+	bool ret = textHandleUndo(bv, undo);
+	unFreezeUndo();
+	return ret;
 }
 
 
@@ -82,7 +100,6 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
 			bv->buffer()->getParFromID(undo->number_of_behind_par); 
 		Paragraph * tmppar;
 		Paragraph * tmppar2;
-		Paragraph * endpar;
 		Paragraph * tmppar5;
 
 		// if there's no before take the beginning
@@ -159,38 +176,51 @@ bool textHandleUndo(BufferView * bv, Undo * undo)
     
 		// Set the cursor for redoing
 		if (before) {
-			bv->text->setCursorIntern(bv, before, 0);
+			Inset * it = before->inInset();
+			if (it)
+				it->getLyXText(bv)->setCursorIntern(bv, before, 0);
+			else
+				bv->text->setCursorIntern(bv, before, 0);
 		}
 
+		Paragraph * endpar = 0;
 		// calculate the endpar for redoing the paragraphs.
-		if (behind) {
-				endpar = behind->next();
-		} else
-			endpar = behind;
+		if (behind)
+			endpar = behind->next();
     
 		tmppar = bv->buffer()->getParFromID(undo->number_of_cursor_par);
 		UpdatableInset* it = static_cast<UpdatableInset*>(tmppar3->inInset());
 		if (it) {
 			it->getLyXText(bv)->redoParagraphs(bv, it->getLyXText(bv)->cursor,
 			                                   endpar);
+			LyXFont font;
+			it->update(bv, font, false);
+			// we now would have to rebreak the whole paragraph the undo-par
+			// was in. How we do it here is not really true. We would have to
+			// save this information in the undo-struct and then we could do
+			// the right rebreak. Here we only handle the case where this
+			// was in the actual paragraph, which not always is true.
+			bv->text->redoParagraphs(bv, bv->text->cursor,
+									 bv->text->cursor.par());
 			if (tmppar){
+				it = static_cast<UpdatableInset*>(tmppar->inInset());
+				it->edit(bv);
 				it->getLyXText(bv)->setCursorIntern(bv, tmppar, undo->cursor_pos);
 				it->getLyXText(bv)->updateCounters(bv, it->getLyXText(bv)->cursor.row());
 			}
-			LyXFont font;
-			it->update(bv, font, false);
-#ifdef THIS_DOES_NOT_WORK
-			// we need this anyway as also if the undo was
-			// inside an inset we have to redo the
-			// paragraph breaking
-			bv->text->redoParagraphs(bv, bv->text->cursor,
-						 bv->text->cursor.par());
-#endif
+			bv->text->setCursorIntern(bv, bv->text->cursor.par(),
+									  bv->text->cursor.pos());
 		} else {
 			bv->text->redoParagraphs(bv, bv->text->cursor, endpar);
 			if (tmppar) {
-				bv->text->setCursorIntern(bv, tmppar, undo->cursor_pos);
-				bv->text->updateCounters(bv, bv->text->cursor.row());
+				LyXText * t;
+				Inset * it = tmppar->inInset();
+				if (it)
+					t = it->getLyXText(bv);
+				else
+					t = bv->text;
+				t->setCursorIntern(bv, tmppar, undo->cursor_pos);
+				t->updateCounters(bv, t->cursor.row());
 			}
 		}
 		result = true;
@@ -226,9 +256,10 @@ void unFreezeUndo()
 void setUndo(BufferView * bv, Undo::undo_kind kind,
              Paragraph const * first, Paragraph const * behind)
 {
-	if (!undo_frozen)
+	if (!undo_frozen) {
 		bv->buffer()->undostack.push(createUndo(bv, kind, first, behind));
-	bv->buffer()->redostack.clear();
+		bv->buffer()->redostack.clear();
+	}
 }
 
 
@@ -287,10 +318,10 @@ Undo * createUndo(BufferView * bv, Undo::undo_kind kind,
 	}
 	if (start && end && (start != end->next()) &&
 	    ((before_number != behind_number) ||
-		 ((before_number < 0) && (behind_number < 0)))) {
+		 ((before_number < 0) && (behind_number < 0))))
+	{
 		Paragraph * tmppar = start;
 		Paragraph * tmppar2 = new Paragraph(*tmppar, true);
-		tmppar2->id(tmppar->id());
 		
 		// a memory optimization: Just store the layout information
 		// when only edit
@@ -302,8 +333,7 @@ Undo * createUndo(BufferView * bv, Undo::undo_kind kind,
   
 		while (tmppar != end && tmppar->next()) {
 			tmppar = tmppar->next();
-			tmppar2->next(new Paragraph(*tmppar, false));
-			tmppar2->next()->id(tmppar->id());
+			tmppar2->next(new Paragraph(*tmppar, true));
 			// a memory optimization: Just store the layout
 			// information when only edit
 			if (kind == Undo::EDIT) {
@@ -330,9 +360,8 @@ Undo * createUndo(BufferView * bv, Undo::undo_kind kind,
 
 void setCursorParUndo(BufferView * bv)
 {
-	setUndo(bv, Undo::FINISH,
-	        bv->text->cursor.par(),
-			bv->text->cursor.par()->next());
+	setUndo(bv, Undo::FINISH, bv->text->cursor.par(),
+	        bv->text->cursor.par()->next());
 }
 
 
@@ -340,7 +369,7 @@ Paragraph * firstUndoParagraph(BufferView * bv, int inset_id)
 {
 	Inset * inset = bv->buffer()->getInsetFromID(inset_id);
 	if (inset) {
-		Paragraph * result = inset->firstParagraph();
+		Paragraph * result = inset->getFirstParagraph(0);
 		if (result)
 			return result;
 	}

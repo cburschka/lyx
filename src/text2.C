@@ -862,8 +862,9 @@ void LyXText::redoParagraphs(BufferView * bview, LyXCursor const & cur,
 
 	if (!tmprow->previous()) {
 		// a trick/hack for UNDO
-		// Can somebody please tell me _why_ this solves
-		// anything. (Lgb)
+		// This is needed because in an UNDO/REDO we could have changed
+		// the firstParagrah() so the paragraph inside the row is NOT
+		// my really first par anymore. Got it Lars ;) (Jug 20011206)
 		first_phys_par = firstParagraph();
 	} else {
 		first_phys_par = tmprow->par();
@@ -886,7 +887,7 @@ void LyXText::redoParagraphs(BufferView * bview, LyXCursor const & cur,
 		tmppar = tmprow->next()->par();
 	else
 		tmppar = 0;
-	while (tmppar != endpar) {
+	while (tmprow->next() && tmppar != endpar) {
 		removeRow(tmprow->next());
 		if (tmprow->next()) {
 			tmppar = tmprow->next()->par();
@@ -2185,8 +2186,7 @@ void LyXText::setCursor(BufferView *bview, LyXCursor & cur, Paragraph * par,
 
 
 void LyXText::setCursorIntern(BufferView * bview, Paragraph * par,
-			      pos_type pos,
-			      bool setfont, bool boundary) const
+                              pos_type pos, bool setfont, bool boundary) const
 {
 	InsetText * it = static_cast<InsetText *>(par->inInset());
 	if (it) {
@@ -2205,8 +2205,7 @@ void LyXText::setCursorIntern(BufferView * bview, Paragraph * par,
 			// I moved the lyxerr stuff in here so we can see if
 			// this is actually really needed and where!
 			// (Jug)
-			it->getLyXText(bview)->setCursorIntern(bview, par, pos, setfont,
-			                                       boundary);
+			// it->getLyXText(bview)->setCursorIntern(bview, par, pos, setfont, boundary);
 			return;
 		}
 	}

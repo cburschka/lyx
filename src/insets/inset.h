@@ -464,7 +464,7 @@ public:
 		{ return false; }
 	///
 	virtual bool unlockInsetInInset(BufferView *, UpdatableInset *,
-					bool /*lr*/ = false)
+	                                bool /*lr*/ = false)
 		{ return false; }
 	///  An updatable inset could handle lyx editing commands
 	virtual RESULT localDispatch(BufferView *, kb_action, string const &);

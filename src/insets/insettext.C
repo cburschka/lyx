@@ -780,6 +780,17 @@ void InsetText::insetUnlock(BufferView * bv)
 		lt = 0;
 }
 
+void InsetText::lockInset(BufferView * bv, UpdatableInset * inset)
+{
+	the_locking_inset = inset;
+	inset_x = cx(bv) - top_x + drawTextXOffset;
+	inset_y = cy(bv) + drawTextYOffset;
+	inset_pos = cpos(bv);
+	inset_par = cpar(bv);
+	inset_boundary = cboundary(bv);
+	updateLocal(bv, CURSOR, false);
+}
+
 
 bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 {
@@ -787,15 +798,32 @@ bool InsetText::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 			      << inset << "): ";
 	if (!inset)
 		return false;
+	if (!the_locking_inset) {
+		Paragraph * p = par;
+		int const id = inset->id();
+		while(p) {
+			Paragraph::inset_iterator it =
+				p->inset_iterator_begin();
+			Paragraph::inset_iterator const end =
+				p->inset_iterator_end();
+			for (; it != end; ++it) {
+				if ((*it) == inset) {
+					getLyXText(bv)->setCursorIntern(bv, p, it.getPos());
+					lockInset(bv, inset);
+					return true;
+				}
+				if ((*it)->getInsetFromID(id)) {
+					lockInset(bv, static_cast<UpdatableInset *>(*it));
+					return the_locking_inset->lockInsetInInset(bv, inset);
+				}
+			}
+			p = p->next();
+		}
+		return false;
+	}
 	if (inset == cpar(bv)->getInset(cpos(bv))) {
 		lyxerr[Debug::INSETS] << "OK" << endl;
-		the_locking_inset = inset;
-		inset_x = cx(bv) - top_x + drawTextXOffset;
-		inset_y = cy(bv) + drawTextYOffset;
-		inset_pos = cpos(bv);
-		inset_par = cpar(bv);
-		inset_boundary = cboundary(bv);
-		updateLocal(bv, CURSOR, false);
+		lockInset(bv, inset);
 		return true;
 	} else if (the_locking_inset && (the_locking_inset == inset)) {
 		if (cpar(bv) == inset_par && cpos(bv) == inset_pos) {
@@ -2388,19 +2416,11 @@ Paragraph * InsetText::paragraph() const
 
 void InsetText::paragraph(Paragraph * p)
 {
-	// first we have to delete the old contents otherwise we'll have a
-	// memory leak! But there check that we don't delete the paragraphs
-	// the new par is refering to (could happen in LyXText::EmptyParagrapM...)
-	// well don't do deletes at all if we come from there. Really stupid
-	// thing! (Jug 20011205)
-	if (par->next() != p) {
-		the_locking_inset = 0;
-		while (par && par != p) {
-			Paragraph * tmp = par->next();
-			delete par;
-			par = tmp;
-		}
-	}
+	// GENERAL COMMENT: We don't have to free the old paragraphs as the
+	// caller of this function has to take care of it. This IS important
+	// as we could have to insert a paragraph before this one and just
+	// link the actual to a new ones next and set it with this function
+	// and are done!
 	par = p;
 	// set ourself as owner for all the paragraphs inserted!
 	Paragraph * np = par;

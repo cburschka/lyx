@@ -1,3 +1,16 @@
+2001-12-13  Juergen Vigna  <jug@sad.it>
+
+	* undo_funcs.C (textRedo/Undo): fixed as the first paragraph was
+	actually sometimes the before-paragraph.
+	(setUndo): don't clear the redostack if we're not actually undoing!
+
+2001-12-06  Juergen Vigna  <jug@sad.it>
+
+	* undo_funcs.C (textHandleUndo): well after John's hint I got here
+	and fixed redoing of main paragraph, so we can use it now ;)
+
+	* text2.C (redoParagraphs): fixed a crash when having only 1 row!
+
 2001-12-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* undo_funcs.C (textHandleUndo): undo undo leak fix below, as per

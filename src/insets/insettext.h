@@ -250,6 +250,8 @@ protected:
 	///
 	void updateLocal(BufferView *, int what, bool mark_dirty) const;
 	///
+	void lockInset(BufferView *, UpdatableInset *);
+	///
 	mutable int drawTextXOffset;
 	///
 	mutable int drawTextYOffset;

@@ -249,10 +249,12 @@ void BufferView::menuUndo()
 
 void BufferView::menuRedo()
 {
+#if 0 // this should not be here (Jug 20011206)
 	if (theLockingInset()) {
 		owner()->message(_("Redo not yet supported in math mode"));
 		return;
-	}    
+	}
+#endif
    
 	if (available()) {
 		owner()->message(_("Redo"));
@@ -398,16 +400,46 @@ void BufferView::replaceWord(string const & replacestring)
 
 bool BufferView::lockInset(UpdatableInset * inset)
 {
+	if (!inset)
+		return false;
 	// don't relock if we're already locked
 	if (theLockingInset() == inset)
 		return true;
-	if (!theLockingInset() && inset) {
-		theLockingInset(inset);
-		return true;
-	} else if (inset) {
-	    return theLockingInset()->lockInsetInInset(this, inset);
+	if (!theLockingInset()) {
+		// first check if it's the inset under the cursor we want lock
+		// should be most of the time
+		char const c = text->cursor.par()->getChar(text->cursor.pos());
+		if (c == Paragraph::META_INSET) {
+			Inset * in = text->cursor.par()->getInset(text->cursor.pos());
+			if (inset == in) {
+				theLockingInset(inset);
+				return true;
+			}
+		}
+		// Then do a deep look of the inset and lock the right one
+		Paragraph * par = buffer()->paragraph;
+		int const id = inset->id();
+		while(par) {
+			Paragraph::inset_iterator it =
+				par->inset_iterator_begin();
+			Paragraph::inset_iterator const end =
+				par->inset_iterator_end();
+			for (; it != end; ++it) {
+				if ((*it) == inset) {
+					theLockingInset(inset);
+					return true;
+				}
+				if ((*it)->getInsetFromID(id)) {
+					text->setCursorIntern(this, par, it.getPos());
+					theLockingInset(static_cast<UpdatableInset *>(*it));
+					return theLockingInset()->lockInsetInInset(this, inset);
+				}
+			}
+			par = par->next();
+		}
+		return false;
 	}
-	return false;
+	return theLockingInset()->lockInsetInInset(this, inset);
 }
 
 
@@ -461,6 +493,8 @@ void BufferView::fitLockedInsetCursor(int x, int y, int asc, int desc)
 
 int BufferView::unlockInset(UpdatableInset * inset)
 {
+	if (!inset)
+		return 0;
 	if (inset && theLockingInset() == inset) {
 		inset->insetUnlock(this);
 		theLockingInset(0);

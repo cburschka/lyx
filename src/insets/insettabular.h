@@ -269,11 +269,17 @@ private:
 	void removeTabularRow();
 	///
 	bool hasSelection() const {
-		return sel_cell_start != sel_cell_end;
+		return has_selection;
 	}
 	///
 	void clearSelection() const {
-	sel_cell_start = sel_cell_end = 0;
+		sel_cell_start = sel_cell_end = 0;
+		has_selection = false;
+	}
+	void setSelection(int start, int end) const {
+		sel_cell_start = start;
+		sel_cell_end = end;
+		has_selection = true;
 	}
 	///
 	bool activateCellInset(BufferView *, int x = 0, int y = 0,
@@ -316,9 +322,11 @@ private:
 	mutable unsigned int inset_x;
 	///
 	mutable unsigned int inset_y;
-	///
+	/// true if a set of cells are selected
+	mutable bool has_selection;
+	/// the starting cell selection nr
 	mutable int sel_cell_start;
-	///
+	/// the ending cell selection nr
 	mutable int sel_cell_end;
 	///
 	mutable int actcell;

@@ -83,7 +83,7 @@ public:
 	bool lockInsetInInset(BufferView *, UpdatableInset *);
 	///
 	bool unlockInsetInInset(BufferView *, UpdatableInset *,
-				bool lr = false);
+	                        bool lr = false);
 	///
 	bool updateInsetInInset(BufferView *, Inset *);
 	///

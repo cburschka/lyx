@@ -813,50 +813,10 @@ string const LyXFunc::dispatch(int ac,
 			}
 			// Undo/Redo is a bit tricky for insets.
 			if (action == LFUN_UNDO) {
-#ifdef RETHINK_THIS_FOR_NOW_WE_LEAVE_ALL_UNLOCKED
-				int slx;
-				int sly;
-				UpdatableInset * inset = 
-					owner->view()->theLockingInset()->getLockingInset();
-				int inset_id = inset->id();
-				inset->getCursorPos(owner->view(), slx, sly);
-				owner->view()->unlockInset(inset);
-#else
-				owner->view()->unlockInset(owner->view()->theLockingInset());
-#endif
 				owner->view()->menuUndo();
-#ifdef RETHINK_THIS_FOR_NOW_WE_LEAVE_ALL_UNLOCKED
-#if 0
-				if (TEXT()->cursor.par()->
-				    isInset(TEXT()->cursor.pos())) {
-					inset = static_cast<UpdatableInset*>(
-						TEXT()->cursor.par()->
-						getInset(TEXT()->
-							 cursor.pos()));
-				} else {
-					inset = 0;
-				}
-#else
-				inset = static_cast<UpdatableInset *>(owner->view()->buffer()->getInsetFromID(inset_id));
-#endif
-				if (inset)
-					inset->edit(owner->view(),slx,sly,0);
-#endif
 				return string();
 			} else if (action == LFUN_REDO) {
-				int slx;
-				int sly;
-				UpdatableInset * inset = owner->view()->
-					theLockingInset();
-				inset->getCursorPos(owner->view(), slx, sly);
-				owner->view()->unlockInset(inset);
 				owner->view()->menuRedo();
-				inset = static_cast<UpdatableInset*>(
-					TEXT()->cursor.par()->
-					getInset(TEXT()->
-						 cursor.pos()));
-				if (inset)
-					inset->edit(owner->view(),slx,sly,0); 
 				return string();
 			} else if (((result=owner->view()->theLockingInset()->
 			             localDispatch(owner->view(), action, argument)) ==

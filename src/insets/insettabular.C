@@ -134,7 +134,7 @@ InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 	// for now make it always display as display() inset
 	// just for test!!!
 	the_locking_inset = 0;
-	locked = no_selection = false;
+	locked = false;
 	oldcell = -1;
 	actrow = actcell = 0;
 	clearSelection();
@@ -150,10 +150,10 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf,
 {
 	tabular.reset(new LyXTabular(this, *(tab.tabular), same_id));
 	the_locking_inset = 0;
-	locked = no_selection = false;
+	locked = false;
 	oldcell = -1;
 	actrow = actcell = 0;
-	sel_cell_start = sel_cell_end = 0;
+	clearSelection();
 	need_update = INIT;
 	in_update = false;
 	in_reset_pos = false;
@@ -296,11 +296,11 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 				cx = nx + tabular->GetBeginningOfTextInCell(cell);
 				if (first_visible_cell < 0)
 					first_visible_cell = cell;
-				if (hasSelection())
+				if (hasSelection()) {
 					drawCellSelection(pain, nx, baseline, i, j, cell);
+				}
 				
-				tabular->GetCellInset(cell)->draw(bv, font, baseline, cx,
-												  cleared);
+				tabular->GetCellInset(cell)->draw(bv, font, baseline, cx, cleared);
 				drawCellLines(pain, nx, baseline, i, cell);
 				nx += tabular->GetWidthOfColumn(cell);
 				++cell;
@@ -448,6 +448,7 @@ void InsetTabular::drawCellLines(Painter & pain, int x, int baseline,
 void InsetTabular::drawCellSelection(Painter & pain, int x, int baseline,
 				     int row, int column, int cell) const
 {
+	lyx::Assert(hasSelection());
 	int cs = tabular->column_of_cell(sel_cell_start);
 	int ce = tabular->column_of_cell(sel_cell_end);
 	if (cs > ce) {
@@ -534,7 +535,7 @@ void InsetTabular::edit(BufferView * bv, int x, int y, unsigned int button)
 	inset_x = 0;
 	inset_y = 0;
 	setPos(bv, x, y);
-	sel_cell_start = sel_cell_end = actcell;
+	clearSelection();
 	finishUndo();
 	if (insetHit(bv, x, y) && (button != 3)) {
 		activateCellInsetAbs(bv, x, y, button);
@@ -558,7 +559,7 @@ void InsetTabular::edit(BufferView * bv, bool front)
 		actcell = 0;
 	else
 		actcell = tabular->GetNumberOfCells() - 1;
-	sel_cell_start = sel_cell_end = actcell;
+	clearSelection();
 	resetPos(bv);
 	finishUndo();
 }
@@ -571,11 +572,10 @@ void InsetTabular::insetUnlock(BufferView * bv)
 		the_locking_inset = 0;
 	}
 	hideInsetCursor(bv);
-	no_selection = false;
 	oldcell = -1;
 	locked = false;
 	if (scroll(false) || hasSelection()) {
-		sel_cell_start = sel_cell_end = 0;
+		clearSelection();
 		if (scroll(false)) {
 			scroll(bv, 0.0F);
 		}
@@ -593,8 +593,9 @@ void InsetTabular::updateLocal(BufferView * bv, UpdateCodes what,
 	}
 	if (need_update < what) // only set this if it has greater update
 		need_update = what;
-	if ((what == INIT) && hasSelection())
+	if ((what == INIT) && hasSelection()) {
 		clearSelection();
+	}
 	// Dirty Cast! (Lgb)
 	if (need_update != NONE) {
 		bv->updateInset(const_cast<InsetTabular *>(this), mark_dirty);
@@ -616,6 +617,26 @@ bool InsetTabular::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 		the_locking_inset = tabular->GetCellInset(actcell);
 		resetPos(bv);
 		return true;
+	} else if (!the_locking_inset) {
+		int const n = tabular->GetNumberOfCells();
+		int const id = inset->id();
+		for (int i = 0; i < n; ++i) {
+			InsetText * in = tabular->GetCellInset(i);
+			if (inset == in) {
+				actcell = i;
+				the_locking_inset = in;
+				locked = true;
+				resetPos(bv);
+				return true;
+			}
+			if (in->getInsetFromID(id)) {
+				actcell = i;
+				the_locking_inset = in;
+				locked = true;
+				resetPos(bv);
+				return the_locking_inset->lockInsetInInset(bv, inset);
+			}
+		}
 	} else if (the_locking_inset && (the_locking_inset == inset)) {
 		lyxerr[Debug::INSETTEXT] << "OK" << endl;
 		resetPos(bv);
@@ -716,8 +737,6 @@ void InsetTabular::insetButtonPress(BufferView * bv, int x, int y, int button)
 		updateLocal(bv, SELECTION, false);
 	}
 
-	no_selection = false;
-
 	int const ocell = actcell;
 	int const orow = actrow;
 
@@ -725,7 +744,7 @@ void InsetTabular::insetButtonPress(BufferView * bv, int x, int y, int button)
 	setPos(bv, x, y);
 	if (actrow != orow)
 		updateLocal(bv, NONE, false);
-	sel_cell_start = sel_cell_end = actcell;
+	clearSelection();
 	if (button == 3) {
 		if ((ocell != actcell) && the_locking_inset) {
 			the_locking_inset->insetUnlock(bv);
@@ -783,7 +802,6 @@ void InsetTabular::insetButtonRelease(BufferView * bv,
 						      button);
 		return;
 	}
-	no_selection = false;
 }
 
 
@@ -796,17 +814,18 @@ void InsetTabular::insetMotionNotify(BufferView * bv, int x, int y, int button)
 						     button);
 		return;
 	}
-	if (!no_selection) {
-		hideInsetCursor(bv);
-		int const old_cell = actcell;
-		
-		setPos(bv, x, y);
-		sel_cell_end = actcell;
-		if (sel_cell_end != old_cell)
-			updateLocal(bv, SELECTION, false);
-		showInsetCursor(bv);
+ 
+	hideInsetCursor(bv);
+//	int const old_cell = actcell;
+	
+	setPos(bv, x, y);
+	if (!hasSelection()) {
+		setSelection(actcell, actcell);
+	} else {
+		setSelection(sel_cell_start, actcell);
 	}
-	no_selection = false;
+	updateLocal(bv, SELECTION, false);
+	showInsetCursor(bv);
 }
 
 
@@ -826,7 +845,6 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 	// We need to save the value of the_locking_inset as the call to 
 	// the_locking_inset->LocalDispatch might unlock it.
 	old_locking_inset = the_locking_inset;
-	no_selection = false;
 	UpdatableInset::RESULT result =
 		UpdatableInset::localDispatch(bv, action, arg);
 	if (result == DISPATCHED || result == DISPATCHED_NOUPDATE) {
@@ -852,7 +870,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 				moveNextCell(bv, old_locking_inset != 0);
 			else
 				movePrevCell(bv, old_locking_inset != 0);
-			sel_cell_start = sel_cell_end = actcell;
+			clearSelection();
 			if (hs)
 				updateLocal(bv, SELECTION, false);
 			if (!the_locking_inset) {
@@ -895,65 +913,96 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 	result=DISPATCHED;
 	switch (action) {
 		// --- Cursor Movements ----------------------------------
-	case LFUN_RIGHTSEL:
-		if (tabular->IsLastCellInRow(actcell))
+	case LFUN_RIGHTSEL: {
+		int const start = hasSelection() ? sel_cell_start : actcell;
+		if (tabular->IsLastCellInRow(actcell)) {
+			setSelection(start, actcell);
 			break;
-		moveRight(bv, false);
-		sel_cell_end = actcell;
+		}
+		
+		int end = actcell;
+		// if we are starting a selection, only select
+		// the current cell at the beginning
+		if (hasSelection()) {
+			moveRight(bv, false);
+			end = actcell;
+		}
+		setSelection(start, end);
 		updateLocal(bv, SELECTION, false);
 		break;
+	}
 	case LFUN_RIGHT:
 		result = moveRight(bv);
-		sel_cell_start = sel_cell_end = actcell;
+		clearSelection();
 		if (hs)
 			updateLocal(bv, SELECTION, false);
 		break;
-	case LFUN_LEFTSEL:
-		if (tabular->IsFirstCellInRow(actcell))
+	case LFUN_LEFTSEL: {
+		int const start = hasSelection() ? sel_cell_start : actcell;
+		if (tabular->IsFirstCellInRow(actcell)) {
+			setSelection(start, actcell);
 			break;
-		moveLeft(bv, false);
-		sel_cell_end = actcell;
+		}
+ 
+		int end = actcell;
+		// if we are starting a selection, only select
+		// the current cell at the beginning
+		if (hasSelection()) { 
+			moveLeft(bv, false);
+			end = actcell;
+		}
+		setSelection(start, end);
 		updateLocal(bv, SELECTION, false);
 		break;
+	}
 	case LFUN_LEFT:
 		result = moveLeft(bv);
-		sel_cell_start = sel_cell_end = actcell;
+		clearSelection();
 		if (hs)
 			updateLocal(bv, SELECTION, false);
 		break;
-	case LFUN_DOWNSEL:
-	{
+	case LFUN_DOWNSEL: {
+		int const start = hasSelection() ? sel_cell_start : actcell;
 		int const ocell = actcell;
-		moveDown(bv, false);
+		// if we are starting a selection, only select
+		// the current cell at the beginning
+		if (hasSelection()) { 
+			moveDown(bv, false);
+		}
 		if ((ocell == sel_cell_end) ||
 		    (tabular->column_of_cell(ocell)>tabular->column_of_cell(actcell)))
-			sel_cell_end = tabular->GetCellBelow(sel_cell_end);
+			setSelection(start, tabular->GetCellBelow(sel_cell_end));
 		else
-			sel_cell_end = tabular->GetLastCellBelow(sel_cell_end);
+			setSelection(start, tabular->GetLastCellBelow(sel_cell_end));
 		updateLocal(bv, SELECTION, false);
 	}
 	break;
 	case LFUN_DOWN:
 		result = moveDown(bv, old_locking_inset != 0);
-		sel_cell_start = sel_cell_end = actcell;
-		if (hs)
+		clearSelection();
+		if (hs) {
 			updateLocal(bv, SELECTION, false);
+		}
 		break;
-	case LFUN_UPSEL:
-	{
+	case LFUN_UPSEL: {
+		int const start = hasSelection() ? sel_cell_start : actcell;
 		int const ocell = actcell;
-		moveUp(bv, false);
+		// if we are starting a selection, only select
+		// the current cell at the beginning
+		if (hasSelection()) {
+			moveUp(bv, false);
+		}
 		if ((ocell == sel_cell_end) ||
 		    (tabular->column_of_cell(ocell)>tabular->column_of_cell(actcell)))
-			sel_cell_end = tabular->GetCellAbove(sel_cell_end);
+			setSelection(start, tabular->GetCellAbove(sel_cell_end));
 		else
-			sel_cell_end = tabular->GetLastCellAbove(sel_cell_end);
+			setSelection(start, tabular->GetLastCellAbove(sel_cell_end));
 		updateLocal(bv, SELECTION, false);
 	}
 	break;
 	case LFUN_UP:
 		result = moveUp(bv, old_locking_inset != 0);
-		sel_cell_start = sel_cell_end = actcell;
+		clearSelection();
 		if (hs)
 			updateLocal(bv, SELECTION, false);
 		break;
@@ -1575,8 +1624,7 @@ void InsetTabular::setFont(BufferView * bv, LyXFont const & font, bool tall,
                            bool selectall)
 {
 	if (selectall) {
-		sel_cell_start = 0;
-		sel_cell_end = tabular->GetNumberOfCells() - 1;
+		setSelection(0, tabular->GetNumberOfCells() - 1);
 	}
 	if (hasSelection()) {
 		setUndo(bv, Undo::EDIT,
@@ -1876,7 +1924,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		}
 		tabular->SetMultiColumn(s_start, s_end - s_start + 1);
 		actcell = s_start;
-		sel_cell_end = sel_cell_start;
+		clearSelection();
 		updateLocal(bv, INIT, true);
 		break;
 	}
@@ -2480,17 +2528,22 @@ bool InsetTabular::doClearArea() const
 
 void InsetTabular::getSelection(int & srow, int & erow, int & scol, int & ecol) const
 {
-		srow = tabular->row_of_cell(sel_cell_start);
-		erow = tabular->row_of_cell(sel_cell_end);
-		if (srow > erow)
-			swap(srow, erow);
+	int const start = hasSelection() ? sel_cell_start : actcell;
+	int const end = hasSelection() ? sel_cell_end : actcell;
+ 
+	srow = tabular->row_of_cell(start);
+	erow = tabular->row_of_cell(end);
+	if (srow > erow) {
+		swap(srow, erow);
+	}
 
-		scol = tabular->column_of_cell(sel_cell_start);
-		ecol = tabular->column_of_cell(sel_cell_end);
-		if (scol > ecol)
-			swap(scol, ecol);
-		else
-			ecol = tabular->right_column_of_cell(sel_cell_end);
+	scol = tabular->column_of_cell(start);
+	ecol = tabular->column_of_cell(end);
+	if (scol > ecol) {
+		swap(scol, ecol);
+	} else {
+		ecol = tabular->right_column_of_cell(end);
+	}
 }
 
 
