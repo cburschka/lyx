@@ -1248,7 +1248,7 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 		// a section, or between the items of a itemize or enumerate
 		// environment
 		if (!firstpit->params().pagebreakBottom()
-		    && rit->par()->next()) {
+		    && boost::next(rit->par()) != ownerParagraphs().end()) {
 			ParagraphList::iterator nextpit = boost::next(rit->par());
 			ParagraphList::iterator comparepit = rit->par();
 			float usual = 0;
@@ -1485,7 +1485,7 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 			cursor.par()->applyLayout(tclass.defaultLayout());
 		else
 			// set to standard-layout
-			cursor.par()->next()->applyLayout(tclass.defaultLayout());
+			boost::next(cursor.par())->applyLayout(tclass.defaultLayout());
 	}
 
 	// if the cursor is at the beginning of a row without prior newline,
@@ -1522,17 +1522,18 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 	// When ::breakParagraph is called from within an inset we must
 	// ensure that the correct ParagraphList is used. Today that is not
 	// the case and the Buffer::paragraphs is used. Not good. (Lgb)
-	while (!cursor.par()->next()->empty()
-	  && cursor.par()->next()->isNewline(0))
-	   cursor.par()->next()->erase(0);
+	ParagraphList::iterator next_par = boost::next(cursor.par());
 
-	insertParagraph(cursor.par()->next(), boost::next(cursor.row()));
+	while (!next_par->empty() && next_par->isNewline(0))
+		next_par->erase(0);
+
+	insertParagraph(next_par, boost::next(cursor.row()));
 	updateCounters();
 
 	// This check is necessary. Otherwise the new empty paragraph will
 	// be deleted automatically. And it is more friendly for the user!
 	if (cursor.pos() || isempty)
-		setCursor(boost::next(cursor.par()), 0);
+		setCursor(next_par, 0);
 	else
 		setCursor(cursor.par(), 0);
 
@@ -1955,8 +1956,8 @@ void LyXText::cursorRightOneWord()
 	// CHECK See comment on top of text.C
 
 	if (tmpcursor.pos() == tmpcursor.par()->size()
-	    && tmpcursor.par()->next()) {
-			tmpcursor.par(tmpcursor.par()->next());
+	    && boost::next(tmpcursor.par()) != ownerParagraphs().end()) {
+			tmpcursor.par(boost::next(tmpcursor.par()));
 			tmpcursor.pos(0);
 	} else {
 		int steps = 0;
@@ -2133,7 +2134,7 @@ void LyXText::rejectChange()
 		startc.par()->rejectChange(startc.pos(), endc.pos());
 		finishUndo();
 		clearSelection();
-		redoParagraphs(startc, startc.par()->next());
+		redoParagraphs(startc, boost::next(startc.par()));
 		setCursorIntern(startc.par(), 0);
 	}
 #warning handle multi par selection
@@ -2154,9 +2155,9 @@ LyXText::selectNextWordToSpellcheck(float & value)
 		}
 		// we have to go on checking so move cursor to the next char
 		if (cursor.pos() == cursor.par()->size()) {
-			if (!cursor.par()->next())
+			if (boost::next(cursor.par()) == ownerParagraphs().end())
 				return word;
-			cursor.par(cursor.par()->next());
+			cursor.par(boost::next(cursor.par()));
 			cursor.pos(0);
 		} else
 			cursor.pos(cursor.pos() + 1);

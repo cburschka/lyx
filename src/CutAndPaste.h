@@ -21,7 +21,7 @@ class LyXTextClass;
 namespace CutAndPaste {
 
 /// realcut == false is we actually want a delete
-bool cutSelection(Paragraph * startpar, Paragraph ** endpar,
+bool cutSelection(Paragraph * startpar, Paragraph * endpar,
 		  int start, int & end, lyx::textclass_type tc,
 		  bool doclear = false, bool realcut = true);
 

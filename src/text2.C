@@ -389,19 +389,22 @@ LyXText::setLayout(LyXCursor & cur, LyXCursor & sstart_cur,
 		   LyXCursor & send_cur,
 		   string const & layout)
 {
-	Paragraph * endpar = send_cur.par()->next();
-	Paragraph * undoendpar = endpar;
+	ParagraphList::iterator endpit = boost::next(send_cur.par());
+	ParagraphList::iterator undoendpit = endpit;
 
-	if (endpar && endpar->getDepth()) {
-		while (endpar && endpar->getDepth()) {
-			endpar = endpar->next();
-			undoendpar = endpar;
+	if (endpit != ownerParagraphs().end() &&
+	    endpit->getDepth()) {
+		while (endpit != ownerParagraphs().end() &&
+		       endpit->getDepth()) {
+			++endpit;
+			undoendpit = endpit;
 		}
-	} else if (endpar) {
-		endpar = endpar->next(); // because of parindents etc.
+	} else if (endpit != ownerParagraphs().end()) {
+		// because of parindents etc.
+		++endpit;
 	}
 
-	setUndo(bv(), Undo::EDIT, &*sstart_cur.par(), undoendpar);
+	setUndo(bv(), Undo::EDIT, &*sstart_cur.par(), &*undoendpit);
 
 	// ok we have a selection. This is always between sstart_cur
 	// and sel_end cursor
@@ -428,7 +431,7 @@ LyXText::setLayout(LyXCursor & cur, LyXCursor & sstart_cur,
 		++pit;
 	} while (pit != epit);
 
-	return endpar;
+	return endpit;
 }
 
 
@@ -591,12 +594,12 @@ void LyXText::setFont(LyXFont const & font, bool toggleall)
 			cursor.pos(cursor.pos() + 1);
 		} else {
 			cursor.pos(0);
-			cursor.par(cursor.par()->next());
+			cursor.par(boost::next(cursor.par()));
 		}
 	}
 	unFreezeUndo();
 
-	redoParagraphs(selection.start, selection.end.par()->next());
+	redoParagraphs(selection.start, boost::next(selection.end.par()));
 
 	// we have to reset the selection, because the
 	// geometry could have changed, but we keep
@@ -830,7 +833,7 @@ string const LyXText::selectionAsString(Buffer const * buffer,
 #warning FIXME Why isnt ParagraphList::iterator used here?
 	// as loop variable.
 	LyXCursor tmpcur(selection.start);
-	tmpcur.par(tmpcur.par()->next());
+	tmpcur.par(boost::next(tmpcur.par()));
 	while (tmpcur.par() != endpit) {
 		result += tmpcur.par()->asString(buffer, 0,
 						 tmpcur.par()->size(),
@@ -1339,51 +1342,53 @@ void LyXText::cutSelection(bool doclear, bool realcut)
 	// and selection.end
 
 	// make sure that the depth behind the selection are restored, too
-	Paragraph * endpar = selection.end.par()->next();
-	Paragraph * undoendpar = endpar;
+	ParagraphList::iterator endpit = boost::next(selection.end.par());
+	ParagraphList::iterator undoendpit = endpit;
 
-	if (endpar && endpar->getDepth()) {
-		while (endpar && endpar->getDepth()) {
-			endpar = endpar->next();
-			undoendpar = endpar;
+	if (endpit != ownerParagraphs().end() &&
+	    endpit->getDepth()) {
+		while (endpit != ownerParagraphs().end() &&
+		       endpit->getDepth()) {
+			++endpit;
+			undoendpit = endpit;
 		}
-	} else if (endpar) {
-		endpar = endpar->next(); // because of parindents etc.
+	} else if (endpit != ownerParagraphs().end()) {
+		// because of parindents etc.
+		++endpit;
 	}
 
-	setUndo(bv(), Undo::DELETE,
-		&*selection.start.par(), undoendpar);
+	setUndo(bv(), Undo::DELETE, &*selection.start.par(), &*undoendpit);
 
 	// there are two cases: cut only within one paragraph or
 	// more than one paragraph
 	if (selection.start.par() == selection.end.par()) {
 		// only within one paragraph
-		endpar = &*selection.end.par();
+		endpit = selection.end.par();
 		int pos = selection.end.pos();
-		CutAndPaste::cutSelection(&*selection.start.par(), &endpar,
+		CutAndPaste::cutSelection(&*selection.start.par(), &*endpit,
 					  selection.start.pos(), pos,
 					  bv()->buffer()->params.textclass,
 					  doclear, realcut);
 		selection.end.pos(pos);
 	} else {
-		endpar = &*selection.end.par();
+		endpit = selection.end.par();
 		int pos = selection.end.pos();
-		CutAndPaste::cutSelection(&*selection.start.par(), &endpar,
+		CutAndPaste::cutSelection(&*selection.start.par(), &*endpit,
 					  selection.start.pos(), pos,
 					  bv()->buffer()->params.textclass,
 					  doclear, realcut);
-		cursor.par(endpar);
-		selection.end.par(endpar);
+		cursor.par(endpit);
+		selection.end.par(endpit);
 		selection.end.pos(pos);
 		cursor.pos(selection.end.pos());
 	}
-	endpar = endpar->next();
+	++endpit;
 
 	// sometimes necessary
 	if (doclear)
 		selection.start.par()->stripLeadingSpaces();
 
-	redoParagraphs(selection.start, endpar);
+	redoParagraphs(selection.start, endpit);
 
 	// cutSelection can invalidate the cursor so we need to set
 	// it anew. (Lgb)
@@ -2076,8 +2081,8 @@ void LyXText::cursorRight(bool internal)
 		if (!internal &&
 		    isBoundary(bv()->buffer(), *cursor.par(), cursor.pos()))
 			setCursor(cursor.par(), cursor.pos(), true, true);
-	} else if (cursor.par()->next())
-		setCursor(cursor.par()->next(), 0);
+	} else if (boost::next(cursor.par()) != ownerParagraphs().end())
+		setCursor(boost::next(cursor.par()), 0);
 }
 
 
@@ -2142,8 +2147,8 @@ void LyXText::cursorUpParagraph()
 
 void LyXText::cursorDownParagraph()
 {
-	if (cursor.par()->next()) {
-		setCursor(cursor.par()->next(), 0);
+	if (boost::next(cursor.par()) != ownerParagraphs().end()) {
+		setCursor(boost::next(cursor.par()), 0);
 	} else {
 		setCursor(cursor.par(), cursor.par()->size());
 	}
@@ -2219,7 +2224,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 		    && old_cursor.par()->isLineSeparator(old_cursor.pos())
 		    && old_cursor.par()->isLineSeparator(old_cursor.pos() - 1)) {
 			old_cursor.par()->erase(old_cursor.pos() - 1);
-			redoParagraphs(old_cursor, old_cursor.par()->next());
+			redoParagraphs(old_cursor, boost::next(old_cursor.par()));
 
 #ifdef WITH_WARNINGS
 #warning This will not work anymore when we have multiple views of the same buffer
@@ -2273,12 +2278,14 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 			const_cast<LyXText *>(this)->postPaint(old_cursor.y() - old_cursor.row()->baseline() - prevrow->height());
 			tmpcursor = cursor;
 			cursor = old_cursor; // that undo can restore the right cursor position
-			Paragraph * endpar = old_cursor.par()->next();
-			while (endpar && endpar->getDepth()) {
-				endpar = endpar->next();
+			#warning FIXME. --end() iterator is usable here
+			ParagraphList::iterator endpit = boost::next(old_cursor.par());
+			while (endpit != ownerParagraphs().end() &&
+			       endpit->getDepth()) {
+				++endpit;
 			}
 
-			setUndo(bv(), Undo::DELETE, &*old_cursor.par(), endpar);
+			setUndo(bv(), Undo::DELETE, &*old_cursor.par(), &*endpit);
 			cursor = tmpcursor;
 
 			// delete old row
@@ -2306,12 +2313,14 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 
 			tmpcursor = cursor;
 			cursor = old_cursor; // that undo can restore the right cursor position
-			Paragraph * endpar = old_cursor.par()->next();
-			while (endpar && endpar->getDepth()) {
-				endpar = endpar->next();
+#warning FIXME. --end() iterator is usable here
+			ParagraphList::iterator endpit = boost::next(old_cursor.par());
+			while (endpit != ownerParagraphs().end() &&
+			       endpit->getDepth()) {
+				++endpit;
 			}
 
-			setUndo(bv(), Undo::DELETE, &*old_cursor.par(), endpar);
+			setUndo(bv(), Undo::DELETE, &*old_cursor.par(), &*endpit);
 			cursor = tmpcursor;
 
 			// delete old row
@@ -2344,8 +2353,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LyXCursor const & old_cursor)
 	}
 	if (!deleted) {
 		if (old_cursor.par()->stripLeadingSpaces()) {
-			redoParagraphs(old_cursor,
-				       old_cursor.par()->next());
+			redoParagraphs(old_cursor, boost::next(old_cursor.par()));
 			// correct cursor y
 			setCursorIntern(cursor.par(), cursor.pos());
 			selection.cursor = cursor;

@@ -1,5 +1,10 @@
 2003-04-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* text.C, text2.C: exchange all usage of Paragraph::next with
+	boost::next(ParagraphList::iterator)
+
+	* CutAndPaste.C (cutSelection): change 2. arg to a Paragraph*
+
 	* text2.C (cursorTop): simplify implementation
 	(cursorBottom): ditto
 	(setParagraph): use ParagraphList::iterator

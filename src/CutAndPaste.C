@@ -62,7 +62,7 @@ textclass_type textclass = 0;
 } // namespace anon
 
 
-bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
+bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph * endpar,
 			       int start, int & end, textclass_type tc,
 			       bool doclear, bool realcut)
 {
@@ -70,10 +70,10 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 		return false;
 
 	if (realcut) {
-		copySelection(startpar, *endpar, start, end, tc);
+		copySelection(startpar, endpar, start, end, tc);
 	}
 
-	if (!endpar || startpar == *endpar) {
+	if (!endpar || startpar == endpar) {
 		if (startpar->erase(start, end)) {
 			// Some chars were erased, go to start to be safe
 			end = start;
@@ -85,7 +85,7 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 
 	// clear end/begin fragments of the first/last par in selection
 	actually_erased |= (startpar)->erase(start, startpar->size());
-	if ((*endpar)->erase(0, end)) {
+	if (endpar->erase(0, end)) {
 		actually_erased = true;
 		end = 0;
 	}
@@ -102,7 +102,7 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 		Paragraph * next = pit->next();
 
 		// "erase" the contents of the par
-		if (pit != *endpar) {
+		if (pit != endpar) {
 			actually_erased |= pit->erase(0, pit->size());
 
 			// remove the par if it's now empty
@@ -116,7 +116,7 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 			}
 		}
 
-		if (pit == *endpar)
+		if (pit == endpar)
 			break;
 
 		pit = next;
@@ -152,7 +152,7 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 		// the insets paragraphs, and not the buffers. (Lgb)
 		mergeParagraph(buffer->params, buffer->paragraphs, startpar);
 		// this because endpar gets deleted here!
-		(*endpar) = startpar;
+		endpar = startpar;
 	}
 
 	return true;
