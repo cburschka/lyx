@@ -15,6 +15,8 @@
 #ifndef FL_FREEBROWSER_H
 #define FL_FREEBROWSER_H
 
+#include "lyx_forms.h"
+
 #if defined(__cplusplus)
 extern "C"
 {

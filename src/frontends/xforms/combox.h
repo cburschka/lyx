@@ -14,6 +14,8 @@
 #ifndef FL_COMBOX_H
 #define FL_COMBOX_H
 
+#include "lyx_forms.h"
+
 #if defined(__cplusplus)
 extern "C"
 {
