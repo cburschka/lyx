@@ -26,22 +26,26 @@ void MathDotsInset::metrics(MathMetricsInfo const & mi) const
 	LyXFont font;
 	whichFont(font, LM_TC_VAR, mi);
 	mathed_char_dim(font, 'M', ascent_, descent_, width_);
-	switch (name_[0]) {
-		case 'l': dh_ = 0; break;
-		case 'c': dh_ = ascent_ / 2; break;
-		case 'v': width_ /= 2;
-		case 'd': dh_ = ascent_; break;
-	}
+	if (name_ == "ldots" || name_ == "dotsm") 
+		dh_ = 0;
+	else if (name_ == "cdots" || name_ == "dotsb"
+			|| name_ == "dotsm" || name_ == "dotsi")
+		dh_ = ascent_ / 2;
+	else if (name_ == "dotsc")
+		dh_ = ascent_ / 4;
+	else if (name_ == "vdots")
+		width_ /= 2;
+	else if (name_ == "ddots")
+		dh_ = ascent_;
 }
 
 
 void MathDotsInset::draw(Painter & pain, int x, int y) const
 {
 	mathed_draw_deco(pain, x + 2, y - dh_, width_ - 2, ascent_, name_);
-	char const c = name_[0];
-	if (c == 'v' || c == 'd')
+	if (name_ == "vdots" || name_ == "ddots")
 		++x;
-	if (c != 'v')
+	if (name_ != "vdots")
 		--y;
 	mathed_draw_deco(pain, x + 2, y - dh_, width_ - 2, ascent_, name_);
 }

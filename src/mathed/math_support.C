@@ -524,7 +524,12 @@ named_deco_struct deco_table[] = {
 	{"ldots",          hline3,     0 },
 	{"cdots",          hline3,     0 },
 	{"vdots",          hline3,     1 },
-	{"ddots",          dline3,     0 }
+	{"ddots",          dline3,     0 },
+	{"dotsb",          hline3,     0 },
+	{"dotsc",          hline3,     0 },
+	{"dotsi",          hline3,     0 },
+	{"dotsm",          hline3,     0 },
+	{"dotso",          hline3,     0 }
 };
 
 
