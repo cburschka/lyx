@@ -1,6 +1,12 @@
 LyX file-format changes
 -----------------------
 
+2003-12-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* format incremented to 229.
+	* Minipages cannot be read anymore. All minipage insets will
+	be converted to frameless box insets between 228->229.
+
 2003-12-15  Angus Leeming  <leeming@lyx.org>
 
 	* format incremented to 228.
