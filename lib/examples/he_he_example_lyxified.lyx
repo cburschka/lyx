@@ -1,0 +1,289 @@
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
+\textclass article
+\language hebrew
+\inputencoding auto
+\fontscheme default
+\graphics dvips
+\paperfontsize 12
+\spacing single 
+\papersize letterpaper
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle plain
+
+\layout Title
+
+זו הכותרת של המסמך
+\layout Author
+
+מאת יהושע ליקס
+\layout Date
+
+
+\numeric on 
+18
+\numeric off 
+ ליולי 
+\numeric on 
+1971
+\layout Standard
+
+
+\begin_inset LatexCommand \tableofcontents{}
+
+\end_inset 
+
+
+\layout Section
+
+פילוסופיה בסיסית
+\layout Standard
+
+הפילוסופיה הבסיסית של ליקס היא שאתה צריך לדאוג אודות התוכן של מה שאתה כותב
+ ולא הצורה.
+\layout Subsection
+
+איך ליקס עושה את זה
+\layout Standard
+
+ליקס משתמשת ב- 
+\lang english
+LaTeX
+\lang hebrew
+, מערכת להכנת מסמכים שתוכננה על ידי לסלי למפורט ב- 
+\numeric on 
+1985
+\numeric off 
+.
+ היא, בתורה, בנויה מעל שפת מחשב יעודית בשם 
+\lang english
+TeX
+\lang hebrew
+ שנוצרה על ידי דונלד קנות ב- 
+\numeric on 
+1984
+\numeric off 
+.
+ 
+\lang english
+LaTeX
+\lang hebrew
+ בנוה מסביב לפילוסופיה דומה לזו של ליקס.
+ לסלי למפורט אמר פעם )ראה הפניה 
+\begin_inset LatexCommand \cite{lamport}
+
+\end_inset 
+
+(
+\layout Quote
+
+
+\begin_inset Quotes eld
+\end_inset 
+
+המטרה של טיפוגרפיה היא לעזור לקורא להבין את הרעיונות של הסופר.
+ מסמך קל לקריאה הוא מסמך שהמבנה הויזואלי שלו משקף את המבנה הלוגי שלו.
+ ציטוטים ותוכניות מחשב, שהם אלמנטים לוגיים נפרדים, צריכים להיות מופרדים
+ ויזואלית זה מזה...
+ מכיוון ש- 
+\lang english
+LaTeX
+\lang hebrew
+ לא יכולה להבין את הפרוזה שלך, אתה חיב לציין במפורש את המבנה הלוגי על ידי
+ הקלדת פקודות מיוחדות...
+ בזמן כתיבת המסמך, אתה צריך להתעסק במבנה הלוגי שלו, ולא באיך הוא נראה.
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Subsection
+
+למה ליקס יותר טובה
+\layout Standard
+
+
+\begin_inset LatexCommand \label{sec:lyxbetter}
+
+\end_inset 
+
+ליקס פונה להרבה יותר משתמשים מאשר 
+\lang english
+LaTeX
+\lang hebrew
+.
+ היא קלה יותר ללימוד בצורה משמעותית, כי, בניגוד ל- 
+\lang english
+LaTeX
+\lang hebrew
+, שהיא שפת מחשב לכל דבר, ליקס היא כמו מעבדי תמלילים 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\lang english
+What you see is what you get
+\lang hebrew
+
+\begin_inset Quotes erd
+\end_inset 
+
+ חוץ מהמילה האחרונה: ליקס דוגלת ב- 
+\begin_inset Quotes eld
+\end_inset 
+
+
+\lang english
+What you see is what you mean
+\lang hebrew
+
+\begin_inset Quotes erd
+\end_inset 
+
+.
+ כך היא מסוגלת לשלב בין הנוחות של מעבדי תמלילים והכוח של 
+\lang english
+LaTeX
+\lang hebrew
+.
+ מה אפשר לבקש יותר? פורמט הקבצים אינו תלוי במערכת שאתה עובד עליה, והכי טוב,
+ היא תוכנה חופשית.
+\layout Section
+
+תכונותיה של ליקס
+\layout Standard
+
+לליקס תכונות רבות שמקלות על כתיבת מסמכים
+\begin_inset Foot
+collapsed true
+
+\layout Standard
+
+אחרי הכל, למה שמישהו ירצה להשתמש בה אחרת?
+\end_inset 
+
+ אני 
+\series bold 
+מאוד נרגש
+\series default 
+ לדון בהם.
+ הנה רשימה חלקית.
+\layout Itemize
+
+ליקס דואגת לשולי המסמך ולמספור הערות שוליים.
+\layout Itemize
+
+בליקס קל לכתוב ולערוך נוסחאות מתמטיות.
+\layout Standard
+
+אם אתה מעוניין בדיון פילוסופי למה ליקס עדיפה על הרבה מעבדי תמלילים, ראה
+ סעיף 
+\begin_inset LatexCommand \ref{sec:lyxbetter}
+
+\end_inset 
+
+, בעמוד 
+\begin_inset LatexCommand \pageref{sec:lyxbetter}
+
+\end_inset 
+
+.
+\layout Section
+
+נסיונות פתטיים להשתמש בתכונות נוספות של ליקס
+\layout Standard
+
+שלשום כתבתי תוכנית מחשב.
+ והרי היא לפניכם
+\layout LyX-Code
+
+
+\lang english
+5 REMARK MY AWESOME PROGRAM
+\layout LyX-Code
+
+
+\lang english
+10 PRINT 
+\begin_inset Quotes eld
+\end_inset 
+
+I'M AWESOME!
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout LyX-Code
+
+
+\lang english
+20 GOTO 10
+\layout Standard
+
+זה היה יותר מדי מדעי בשבילי, אז כתבתי את החמשיר הבא
+\layout Verse
+
+ליקס פשוט גדול
+\newline 
+מעבד תמלילים כל יכול
+\newline 
+איתו לא תפול!
+\layout Section
+
+ענייני מתמטיקה
+\layout Standard
+
+הנוסחא האהובה עלי היא לפתרון משוואה ריבועית.
+ אם 
+\begin_inset Formula $ax^{2}+bx+c=0$
+\end_inset 
+
+ )משוואה 
+\numeric on 
+1
+\numeric off 
+(, אזי 
+\begin_inset Formula $x=\frac{-b\pm \sqrt{b^{2}-4ac}}{2a}$
+\end_inset 
+
+ )משוואה 
+\numeric on 
+2
+\numeric off 
+(.
+\layout Standard
+
+משוואה אהובה אפילו יותר עומדת בבסיס החשבון הדיפרנציאלי: 
+\begin_inset Formula $f'(x)\equiv \lim _{\Delta x\rightarrow 0}\frac{f(x+\Delta x)-f(x)}{\Delta x}$
+\end_inset 
+
+ )משוואה 
+\numeric on 
+3
+\numeric off 
+(.
+\layout Bibliography
+\bibitem {lamport}
+
+
+\lang english
+Lamport, Leslie.
+ 
+\emph on 
+LaTeX: A Document Preparation System.
+
+\emph default 
+ Addison-Wesley, Reading, Massachusetts, second edition, 1994.
+\the_end
