@@ -41,13 +41,15 @@ ldots             dots        none
 vdots             dots        none
 
 # font changes
+# name           "font"       math/text family  series  shape  color
+# mathnormal should stay the first
+mathnormal        font        mathmode  inherit  medium   up  math
 frak              font        mathmode
 mathbb            font        mathmode
 mathbf            font        mathmode
 mathcal           font        mathmode
 mathfrak          font        mathmode
 mathit            font        mathmode
-mathnormal        font        mathmode
 mathrm            font        mathmode
 mathsf            font        mathmode
 mathtt            font        mathmode
@@ -69,6 +71,7 @@ rm                oldfont     none
 tt                oldfont     none
                               
 # matrix environments
+Bmatrix           matrix      none
 Vmatrix           matrix      none
 bmatrix           matrix      none
 matrix            matrix      none

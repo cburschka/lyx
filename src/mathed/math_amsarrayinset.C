@@ -33,6 +33,8 @@ char const * MathAMSArrayInset::name_left() const
 {
 	if (name_ == "bmatrix")
 		return "[";
+	if (name_ == "Bmatrix")
+		return "{";
 	if (name_ == "vmatrix")
 		return "|";
 	if (name_ == "Vmatrix")
@@ -47,6 +49,8 @@ char const * MathAMSArrayInset::name_right() const
 {
 	if (name_ == "bmatrix")
 		return "]";
+	if (name_ == "Bmatrix")
+		return "}";
 	if (name_ == "vmatrix")
 		return "|";
 	if (name_ == "Vmatrix")
