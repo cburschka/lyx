@@ -778,10 +778,10 @@ bool FormDocument::class_apply()
 
 void FormDocument::paper_apply(BufferParams & params)
 {
-	params.papersize2 = char(fl_get_choice(paper_->choice_papersize)-1);
+	params.papersize2 = char(fl_get_choice(paper_->choice_papersize) - 1);
 
 	params.paperpackage =
-		char(fl_get_choice(paper_->choice_paperpackage)-1);
+		char(fl_get_choice(paper_->choice_paperpackage) - 1);
 
 	// set params.papersize from params.papersize2 and params.paperpackage
 	params.setPaperStuff();
@@ -905,7 +905,7 @@ bool FormDocument::options_apply(BufferParams & params)
 	params.use_amsmath = fl_get_button(options_->check_use_amsmath);
 	params.use_natbib  = fl_get_button(options_->check_use_natbib);
 	params.use_numerical_citations  =
-		fl_get_choice(options_->choice_citation_format)-1;
+		fl_get_choice(options_->choice_citation_format) - 1;
 
 	int tmpchar = int(fl_get_counter_value(options_->counter_secnumdepth));
 	if (params.secnumdepth != tmpchar)

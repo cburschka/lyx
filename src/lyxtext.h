@@ -508,16 +508,17 @@ private:
 	  Lgb has learned that 'char' is a lousy type for non-characters
 	  */
 	string copylayouttype;
+
 	/** inserts a new row behind the specified row, increments
 	    the touched counters */
 	void insertRow(Row * row, Paragraph * par, lyx::pos_type pos) const;
-	/** removes the row and reset the touched counters */
+	/// removes the row and reset the touched counters 
 	void removeRow(Row * row) const;
 
-	/** remove all following rows of the paragraph of the specified row. */
+	/// remove all following rows of the paragraph of the specified row.
 	void removeParagraph(Row * row) const;
 
-	/** insert the specified paragraph behind the specified row */
+	/// insert the specified paragraph behind the specified row 
 	void insertParagraph(BufferView *,
 			     Paragraph * par, Row * row) const;
 

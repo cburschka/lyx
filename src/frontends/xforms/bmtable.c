@@ -54,8 +54,8 @@ FL_OBJECT * fl_create_bmtable(int type, FL_Coord x, FL_Coord y,
    ob->boxtype = FL_BMTABLE_BOXTYPE;
    ob->spec = fl_calloc(1, sizeof(BMTABLE_SPEC));
    ((BMTABLE_SPEC *)ob->spec)->pix = 0;
-   ((BMTABLE_SPEC *)ob->spec)->bdata= 0;
-   ((BMTABLE_SPEC *)ob->spec)->mousebut= -1;
+   ((BMTABLE_SPEC *)ob->spec)->bdata = 0;
+   ((BMTABLE_SPEC *)ob->spec)->mousebut = -1;
    return ob;
 }
 
@@ -86,12 +86,12 @@ static void draw_bitmaptable(FL_OBJECT *ob)
 	fl_drw_box(ob->boxtype, ob->x, ob->y, ob->w, ob->h, ob->col1, ob->bw);
 	if (lx) {
 		i = FL_abs(ob->bw);
-		xx = ob->x+ sp->dx*lx + i;
-		yy = ob->y+ (sp->ny-1)*sp->dy+i;
-		ww = ob->x+ob->w - xx - i;
-		hh = ob->y+ob->h-yy-i;
+		xx = ob->x + sp->dx * lx + i;
+		yy = ob->y + (sp->ny - 1) * sp->dy + i;
+		ww = ob->x + ob->w - xx - i;
+		hh = ob->y + ob->h - yy - i;
 		fl_drw_frame(FL_DOWN_FRAME, xx, yy, ww, hh, ob->col1, ob->bw);
-		fl_rectf(xx, yy, ww+i, hh+i, ob->col1);
+		fl_rectf(xx, yy, ww + i, hh + i, ob->col1);
 	}
     
 	/* draw the background bitmap */
@@ -155,10 +155,10 @@ static void draw_bitmaptable(FL_OBJECT *ob)
 		for (xx= ob->x; xx<= mx; xx+= sp->dx)  {
 			if (ob->boxtype!= FL_FLAT_BOX && (xx == ob->x || xx>mx-sp->dx))
 				continue;
-			if (lx>0 && xx>= ob->x+lx*sp->dx)
-				hh = (sp->ny-1)*sp->dy;
+			if (lx>0 && xx>= ob->x + lx * sp->dx)
+				hh = (sp->ny - 1) * sp->dy;
 			fl_diagline(xx, ob->y, 1, hh, FL_RIGHT_BCOL);
-			fl_diagline(xx+1, ob->y+1, 1, hh-2, FL_LEFT_BCOL);
+			fl_diagline(xx+1, ob->y + 1, 1, hh - 2, FL_LEFT_BCOL);
 		}	 
 	}  
    
