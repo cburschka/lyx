@@ -1,3 +1,8 @@
+2002-03-28  Herbert Voss  <voss@lyx.org>
+
+	* lyxlength.C: compatibility stuff for < 1.1.6fix4 and 
+	"old" 1.2.0 files which use c%, l%, p% t% instead of text%, ...
+
 2002-04-02  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyx_main.C (init): use environment variable LYX_DIR_12x instead

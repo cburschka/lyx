@@ -18,6 +18,8 @@
 #include "lengthcommon.h"
 #include "lyxrc.h"
 
+#include "support/lstrings.h"
+
 #include "Lsstream.h"
 
 #include <cstdlib>
@@ -33,12 +35,48 @@ LyXLength::LyXLength(double v, LyXLength::UNIT u)
 {}
 
 
+#ifndef NO_PEXTRA_REALLY
+// compatibility stuff < version 1.2.0pre and for 
+// "old" 1.2.0 files before the pre
+namespace {
+string const convertOldRelLength(string const & oldLength) 
+{
+	// we can have only one or none of the following
+	if (oldLength.find("c%") != string::npos) {
+		return subst(oldLength,"c%","col%");
+		    
+	} else if (oldLength.find("t%") != string::npos) {
+		if (oldLength.find("text%") != string::npos)
+		    return oldLength;
+		else
+		    return subst(oldLength,"t%","text%");
+
+	} else if (oldLength.find("l%") != string::npos) {
+		if (oldLength.find("col%") != string::npos)
+		    return oldLength;
+		else
+		    return subst(oldLength,"l%","line%");
+
+	} else if (oldLength.find("p%") != string::npos)
+		return subst(oldLength,"p%","page%");
+
+	return oldLength;
+}
+} // end anon
+#endif
+
 LyXLength::LyXLength(string const & data)
 	: val_(0), unit_(LyXLength::PT)
 {
 	LyXLength tmp;
 
+#ifndef NO_PEXTRA_REALLY
+	// this is needed for 1.1.x minipages with width like %t
+	if (!isValidLength (convertOldRelLength(data), &tmp))
+#else
 	if (!isValidLength (data, &tmp))
+#endif
+		if (!isValidLength (convertOldRelLength(data), &tmp))
 		return; // should raise an exception
 
 	val_  = tmp.val_;
