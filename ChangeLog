@@ -1,3 +1,8 @@
+2001-09-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/insets/insetquotes.C (InsetQuotes): when trying to decide
+	the side of the quote, choose `left' only after a space or '('
+
 2001-09-11  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/buffer.C (SimpleLinuxDocOnePar): Remove extra character

@@ -79,7 +79,7 @@ InsetQuotes::InsetQuotes(char c, BufferParams const & params)
 {
 	// Decide whether left or right 
 	switch (c) {
-	case ' ': case '(': case '{': case '[': case '-': case ':':
+	case ' ': case '(': 
 	case LyXParagraph::META_HFILL:
 	case LyXParagraph::META_NEWLINE: 
 		side = InsetQuotes::LeftQ;   // left quote 
