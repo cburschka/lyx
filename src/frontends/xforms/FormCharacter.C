@@ -33,7 +33,7 @@ using Liason::setMinibuffer;
 FormCharacter::FormCharacter(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("Character Layout"),
 		     new NoRepeatedApplyReadOnlyPolicy),
-	dialog_(0), combo_language2(0)
+	dialog_(0), combo_language2_(0)
 {
    // let the popup be shown
    // This is a permanent connection so we won't bother
@@ -46,9 +46,9 @@ FormCharacter::FormCharacter(LyXView * lv, Dialogs * d)
 
 FormCharacter::~FormCharacter()
 {
-   delete dialog_;
-   delete combo_language2;
-   
+	// This must be done before the deletion of the dialog.
+	delete combo_language2_;
+	delete dialog_;
 }
 
 
@@ -58,6 +58,7 @@ FL_FORM * FormCharacter::form() const
      return dialog_->form;
    return 0;
 }
+
 
 void FormCharacter::build()
 {
@@ -93,20 +94,18 @@ void FormCharacter::build()
    // insert default language box manually
    fl_addto_form(dialog_->form);
    FL_OBJECT * ob = dialog_->choice_language;
-   combo_language2 = new Combox(FL_COMBOX_DROPLIST);
-   combo_language2->add(ob->x, ob->y, ob->w, ob->h, 250);
-   combo_language2->shortcut("#L", 1);
+   combo_language2_ = new Combox(FL_COMBOX_DROPLIST);
+   combo_language2_->add(ob->x, ob->y, ob->w, ob->h, 250);
+   combo_language2_->shortcut("#L", 1);
    fl_end_form();
 
    // build up the combox entries
-   combo_language2->addline(_("No change"));
-   combo_language2->addline(_("Reset"));
+   combo_language2_->addline(_("No change"));
+   combo_language2_->addline(_("Reset"));
    for (Languages::const_iterator cit = languages.begin(); 
 	cit != languages.end(); ++cit) {
-	combo_language2->addto((*cit).second.lang());
+	combo_language2_->addto((*cit).second.lang());
    }
-
-   
 }
 
 
@@ -195,13 +194,13 @@ void FormCharacter::apply()
       case 11: font.setColor(LColor::inherit); break;
    }
    
-   int const choice = combo_language2->get();
+   int const choice = combo_language2_->get();
    if (choice == 1)
      font.setLanguage(ignore_language);
    else if (choice == 2)
      font.setLanguage(lv_->buffer()->params.language);
    else
-     font.setLanguage(languages.getLanguage(combo_language2->getline()));
+     font.setLanguage(languages.getLanguage(combo_language2_->getline()));
 
    
    bool toggleall = fl_get_button(dialog_->check_toggle_all);
@@ -219,5 +218,3 @@ void FormCharacter::update()
    
     bc_.readOnly(lv_->buffer()->isReadonly());
 }
-
-

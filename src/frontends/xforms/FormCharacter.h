@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /** 
  * \file FormCharacter.h
  * Copyright 2001 The LyX Team.
@@ -50,9 +51,9 @@ private:
    FD_form_character * build_character();
 	
    /// Real GUI implementation.
-   FD_form_character  * dialog_;
+   FD_form_character * dialog_;
    
-   Combox * combo_language2;
+   Combox * combo_language2_;
 };
 
 #endif
