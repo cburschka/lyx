@@ -83,4 +83,32 @@ private:
 	Row * previous_;
 };
 
+
+inline
+LyXParagraph * Row::par()
+{
+	return par_;
+}
+
+
+inline
+LyXParagraph * Row::par() const
+{
+	return par_;
+}
+
+
+inline
+unsigned short Row::height() const
+{
+	return height_;
+}
+
+
+inline
+Row * Row::next() const
+{
+	return next_;
+}
+
 #endif

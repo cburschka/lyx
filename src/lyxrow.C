@@ -29,18 +29,6 @@ void Row::par(LyXParagraph * p)
 }
 
 
-LyXParagraph * Row::par()
-{
-	return par_;
-}
-
-
-LyXParagraph * Row::par() const
-{
-	return par_;
-}
-
-
 void Row::pos(LyXParagraph::size_type p)
 {
 	pos_ = p;
@@ -68,12 +56,6 @@ int Row::fill() const
 void Row::height(unsigned short h)
 {
 	height_ = h;
-}
-
-
-unsigned short Row::height() const
-{
-	return height_;
 }
 
 
@@ -116,12 +98,6 @@ unsigned int Row::baseline() const
 void Row::next(Row * r)
 {
 	next_ = r;
-}
-
-
-Row * Row::next() const
-{
-	return next_;
 }
 
 

@@ -156,52 +156,38 @@ bool LyXFont::FontBits::operator!=(LyXFont::FontBits const & fb1) const
 
 
 LyXFont::LyXFont()
-{
-	bits = sane;
-	lang = default_language;
-}
+	: bits(sane), lang(default_language)
+{}
 
 
 LyXFont::LyXFont(LyXFont::FONT_INIT1)
-{
-	bits = inherit;
-	lang = default_language;
-}
+	: bits(inherit), lang(default_language)
+{}
 
 
 LyXFont::LyXFont(LyXFont::FONT_INIT2)
-{
-	bits = ignore;
-	lang = ignore_language;
-}
+	: bits(ignore), lang(ignore_language)
+{}
 
 
 LyXFont::LyXFont(LyXFont::FONT_INIT3)
-{
-	bits = sane;
-	lang = default_language;
-}
+	: bits(sane), lang(default_language)
+{}
 
 
 LyXFont::LyXFont(LyXFont::FONT_INIT1, Language const * l)
-{
-	bits = inherit;
-	lang = l;
-}
+	: bits(inherit), lang(l)
+{}
 
 
 LyXFont::LyXFont(LyXFont::FONT_INIT2, Language const * l)
-{
-	bits = ignore;
-	lang = l;
-}
+	: bits(ignore), lang(l)
+{}
 
 
 LyXFont::LyXFont(LyXFont::FONT_INIT3, Language const * l)
-{
-	bits = sane;
-	lang = l;
-}
+	: bits(sane), lang(l)
+{}
 
 
 LyXFont::FONT_FAMILY LyXFont::family() const 
@@ -216,21 +202,9 @@ LyXFont::FONT_SERIES LyXFont::series() const
 }
 
 
-LyXFont::FONT_SHAPE LyXFont::shape() const
-{
-	return bits.shape;
-}
-
-
 LyXFont::FONT_SIZE LyXFont::size() const
 {
 	return bits.size;
-}
-
-
-LyXFont::FONT_MISC_STATE LyXFont::emph() const
-{
-	return bits.emph;
 }
 
 

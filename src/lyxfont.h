@@ -368,6 +368,21 @@ private:
 					 LyXFont::FONT_MISC_STATE org);
 };
 
+
+inline
+LyXFont::FONT_SHAPE LyXFont::shape() const
+{
+	return bits.shape;
+}
+
+
+inline
+LyXFont::FONT_MISC_STATE LyXFont::emph() const
+{
+	return bits.emph;
+}
+
+
 ///
 std::ostream & operator<<(std::ostream &, LyXFont::FONT_MISC_STATE);
 
