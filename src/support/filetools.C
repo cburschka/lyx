@@ -1349,8 +1349,8 @@ string const copyFileToDir(string const & path, string const & file_in)
 	// Replace '.' in the file name with '_'
 	file_out = subst(file_out, ".", "_");
 	// Append a unique ID
-	static int id;
-	file_out += '_' + tostr(id++);
+// 	static int id;
+// 	file_out += '_' + tostr(id++);
 	// Add the extension back on
 	file_out = ChangeExtension(file_out, GetExtension(file_in));
 	// Put this file in the buffer's temp dir
