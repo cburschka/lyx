@@ -1,6 +1,12 @@
+2003-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* dispatchresult.h: add a val setter
+
+	* cursor.C (dispatch): use a tempvar for data_[i]
+
 2003-11-04  Alfredo Braunstein  <abraunst@libero.it>
 
-	* PosIterator.[Ch]: compile fix 
+	* PosIterator.[Ch]: compile fix
 
 2003-11-04  Alfredo Braunstein  <abraunst@libero.it>
 
