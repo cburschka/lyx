@@ -698,7 +698,7 @@ openo              wasy         108   0 x        x
 inve               wasy          85   0 x        x
 
 #mho               wasy          48    0  mathord x
-Join               wasy          49    0  mathrel x
+#Join              wasy          49    0  mathrel x
 Box                wasy          50    0  mathord x
 Diamond            wasy          51    0  mathord x
 leadsto            wasy          59    0  mathrel x
@@ -796,7 +796,7 @@ iffont msa
 \def\dasharrow{\dashrightarrow}
 endif
 iffont msb
-\def\Join{\ltimes\kern-12mu\rtimes}
+\def\Join{\ltimes\kern-18.5mu\rtimes}
 endif
 \def\mathcircumflex{\mbox{\^{}}}
 
