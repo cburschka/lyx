@@ -7,7 +7,7 @@ Group: X11/Editors
 Url: http://www.lyx.org/
 Packager: Kayvan A. Sylvan <kayvan@sylvan.com>
 Source: ftp://ftp.lyx.org/pub/lyx/stable/lyx-%{PACKAGE_VERSION}.tar.gz
-BuildRoot: /var/tmp/rpm/lyx-root
+BuildRoot: %{_tmppath}/%{name}-root
 Icon: lyx.xpm
 Prefix: /usr
 Requires: xforms >= 0.88, tetex-xdvi, tetex, tetex-latex
@@ -36,13 +36,15 @@ and let the computer take care of the rest.
 %build
 unset LINGUAS || true
 CXXFLAGS="$RPM_OPT_FLAGS" CFLAGS="$RPM_OPT_FLAGS" \
-./configure --prefix=/usr --without-warnings --with-included-string
+./configure --prefix=%{_prefix} --mandir=%{_mandir} \
+	--bindir=%{_bindir} --datadir=%{_datadir} \
+	--without-warnings --with-included-string
 # The following check is to ensure that lyx RPMs generated on RH 6.X machines
 # with gcc-2.95 still run against older Redhat OS/compiler combinations.
 # It will eventually be ripped out.
 if [ -r /usr/lib/libstdc++-libc6.1-1.so.2 ]
 then
-	make CXX=gcc LYX_LIBS='/usr/lib/libstdc++-libc6.1-1.so.2 -lforms -lXpm'
+	make CXX=g++ LYX_LIBS='/usr/lib/libstdc++-libc6.1-1.so.2 -lforms -lXpm'
 else
 	make
 fi
@@ -52,21 +54,21 @@ fi
 unset LINGUAS || true
 rm -rf ${RPM_BUILD_ROOT}
 install -d -m 755 ${RPM_BUILD_ROOT}
-make prefix=${RPM_BUILD_ROOT}/usr install
-gzip -f9 ${RPM_BUILD_ROOT}/usr/man/man?/*
+make DESTDIR=${RPM_BUILD_ROOT} install
+gzip -f9 ${RPM_BUILD_ROOT}%{_mandir}/man?/*
 
 #
-# Set up the lyx-specific class files where TeX can see then
+# Set up the lyx-specific class files where TeX can see them
 #
-TEXMF=/usr/share/texmf
+TEXMF=%{_datadir}/texmf
 mkdir -p ${RPM_BUILD_ROOT}${TEXMF}/tex/latex
-mv ${RPM_BUILD_ROOT}/usr/share/lyx/tex \
+mv ${RPM_BUILD_ROOT}%{_datadir}/lyx/tex \
       ${RPM_BUILD_ROOT}/${TEXMF}/tex/latex/lyx
 
 #
 # Miscellaneous files
 #
-cp -a lib/images/lyx.xpm ${RPM_BUILD_ROOT}/usr/share/lyx/images/
+cp -a lib/images/lyx.xpm ${RPM_BUILD_ROOT}%{_datadir}/lyx/images/
 cp lib/reLyX/README README.reLyX
 
 %clean
@@ -85,14 +87,14 @@ fi
 # Now configure LyX
 #
 echo "Configuring LyX for your system..."
-cd $RPM_INSTALL_PREFIX/share/lyx
+cd %{_datadir}/lyx
 ./configure --srcdir
 
 # Fix reLyX perl program if the prefix is non-standard
-if [ "$RPM_INSTALL_PREFIX" != "/usr" ]
+if [ "%{_prefix}" != "/usr" ]
 then
-    perl -pi -e "s!/usr/share/lyx!$RPM_INSTALL_PREFIX/share/lyx!" \
-        ${RPM_INSTALL_PREFIX}/bin/reLyX
+    perl -pi -e "s!/usr/share/lyx!%{_datadir}/lyx!" \
+        %{_bindir}/reLyX
 fi
 
 %postun
@@ -101,11 +103,12 @@ fi
 texhash
 
 %files
-%attr(-,root,root) %doc ABOUT-NLS ANNOUNCE COPYING 
-%attr(-,root,root) %doc README UPGRADING ChangeLog NEWS
-%attr(-,root,root) %doc lib/CREDITS README.reLyX
-%attr(-,root,root) /usr/bin/*
-%attr(-,root,root) /usr/man/*
-%attr(-,root,root) /usr/share/locale/*/LC_MESSAGES/*
-%attr(-,root,root) /usr/share/lyx
-%attr(-,root,root) /usr/share/texmf/tex/latex/lyx
+%attr(-,root,root)
+%doc ABOUT-NLS ANNOUNCE COPYING 
+%doc README UPGRADING ChangeLog NEWS
+%doc lib/CREDITS README.reLyX
+%{_bindir}/*
+%{_mandir}/man?/*
+%{_datadir}/locale/*/LC_MESSAGES/*
+%{_datadir}/%{name}
+%{_datadir}/texmf/tex/latex/%{name}
