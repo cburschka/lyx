@@ -79,6 +79,81 @@ bool operator!=(RowList::iterator const & i1,
 }
 
 
+////////// The RowList::const_iterator
+
+RowList::const_iterator::const_iterator()
+	: ptr(0)
+{}
+
+
+RowList::const_iterator::const_iterator(Row * p)
+	: ptr(p)
+{}
+
+
+RowList::const_iterator::const_reference
+RowList::const_iterator::operator*()
+{
+	return *ptr;
+}
+
+
+RowList::const_iterator::const_pointer
+RowList::const_iterator::operator->()
+{
+	return ptr;
+}
+
+
+RowList::const_iterator &
+RowList::const_iterator::operator++()
+{
+	ptr = ptr->next();
+	return *this;
+}
+
+
+RowList::const_iterator
+RowList::const_iterator::operator++(int)
+{
+	const_iterator tmp = *this;
+	++*this;
+	return tmp;
+}
+
+
+RowList::const_iterator &
+RowList::const_iterator::operator--()
+{
+	ptr = ptr->previous();
+	return *this;
+}
+
+
+RowList::const_iterator
+RowList::const_iterator::operator--(int)
+{
+	const_iterator tmp = *this;
+	--*this;
+	return tmp;
+}
+
+
+bool operator==(RowList::const_iterator const & i1,
+		RowList::const_iterator const & i2)
+{
+	return &(*const_cast<RowList::const_iterator&>(i1))
+	    == &(*const_cast<RowList::const_iterator&>(i2));
+}
+
+
+bool operator!=(RowList::const_iterator const & i1,
+		RowList::const_iterator const & i2)
+{
+	return !(i1 == i2);
+}
+
+
 ////////// The RowList proper
 RowList::RowList()
 	: rowlist(0)
@@ -144,9 +219,9 @@ RowList::iterator RowList::begin()
 }
 
 
-RowList::iterator RowList::begin() const
+RowList::const_iterator RowList::begin() const
 {
-	return iterator(rowlist);
+	return const_iterator(rowlist);
 }
 
 
@@ -156,9 +231,9 @@ RowList::iterator RowList::end()
 }
 
 
-RowList::iterator RowList::end() const
+RowList::const_iterator RowList::end() const
 {
-	return iterator();
+	return const_iterator();
 }
 
 
@@ -189,12 +264,6 @@ Row & RowList::back()
 	while (tmp->next())
 		tmp = tmp->next();
 	return *tmp;
-}
-
-
-void RowList::set(Row * p)
-{
-	rowlist = p;
 }
 
 

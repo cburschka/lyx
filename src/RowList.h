@@ -44,6 +44,39 @@ public:
 		Row * ptr;
 	};
 	///
+	class const_iterator {
+	public:
+		///
+		typedef std::bidirectional_iterator_tag iterator_category;
+		///
+		typedef Row * value_type;
+		///
+		typedef ptrdiff_t difference_type;
+		///
+		typedef Row const * const_pointer;
+		///
+		typedef Row const & const_reference;
+		///
+		const_iterator();
+		///
+		const_iterator(value_type);
+		///
+		const_reference operator*();
+		///
+		const_pointer operator->();
+		///
+		const_iterator & operator++();
+		///
+		const_iterator operator++(int);
+		///
+		const_iterator & operator--();
+		///
+		const_iterator operator--(int);
+	private:
+		///
+		Row * ptr;
+	};
+	///
 	RowList();
 	///
 	iterator insert(iterator it, Row * row);
@@ -54,13 +87,11 @@ public:
 	///
 	iterator begin();
 	///
-	iterator begin() const;
+	const_iterator begin() const;
 	///
 	iterator end();
 	///
-	iterator end() const;
-	///
-	void set(Row *);
+	const_iterator end() const;
 	///
 	void push_back(Row *);
 	///
@@ -86,5 +117,12 @@ bool operator==(RowList::iterator const & i1,
 ///
 bool operator!=(RowList::iterator const & i1,
 		RowList::iterator const & i2);
+
+///
+bool operator==(RowList::const_iterator const & i1,
+		RowList::const_iterator const & i2);
+///
+bool operator!=(RowList::const_iterator const & i1,
+		RowList::const_iterator const & i2);
 
 #endif

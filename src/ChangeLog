@@ -1,5 +1,22 @@
 2003-03-31  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* text2.C (redoParagraphs): adjust
+	(updateCounters): adjust
+	(checkParagraph): adjust
+	(getColumnNearX): adjust and reformat a bit.
+
+	* text.C (top_y): adjust
+	(workWidth): adjust
+	(leftMargin): adjust
+	(prepareToPrint): adjust
+	(getRow): adjust
+	(getRowNearY): adjust
+
+	* lyxtext.h: make rowlist_ mutable.
+
+	* RowList.h: add const_iterator
+	* RowList.C: adjust for RowList::const_iterator.
+
 	* text2.C (getCursorX): make it take a RowList::iterator as arg,
 	adjust.
 

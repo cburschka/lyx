@@ -74,13 +74,13 @@ BufferView * LyXText::bv() const
 
 int LyXText::top_y() const
 {
-	if (anchor_row_ == rows().end())
+	if (anchor_row_ == rowlist_.end())
 		return 0;
 
 	int y = 0;
 
-	RowList::iterator rit = rows().begin();
-	RowList::iterator end = rows().end();
+	RowList::iterator rit = rowlist_.begin();
+	RowList::iterator end = rowlist_.end();
 	for (; rit != end && rit != anchor_row_; ++rit) {
 		y += rit->height();
 	}
@@ -154,7 +154,7 @@ int LyXText::workWidth(Inset * inset) const
 		int dummy_y;
 		RowList::iterator row = getRow(par, pos, dummy_y);
 		RowList::iterator frow = row;
-		RowList::iterator beg = rows().begin();
+		RowList::iterator beg = rowlist_.begin();
 
 		while (frow != beg && frow->par() == boost::prior(frow)->par())
 			--frow;
@@ -632,12 +632,12 @@ int LyXText::leftMargin(RowList::iterator rit) const
 
 		// find the first row of this paragraph
 		RowList::iterator tmprit = rit;
-		while (tmprit != rows().begin()
+		while (tmprit != rowlist_.begin()
 		       && boost::prior(tmprit)->par() == rit->par())
 			--tmprit;
 
 		int minfill = tmprit->fill();
-		while (boost::next(tmprit) != rows().end() &&
+		while (boost::next(tmprit) != rowlist_.end() &&
 		       boost::next(tmprit)->par() == rit->par()) {
 			++tmprit;
 			if (tmprit->fill() < minfill)
@@ -907,7 +907,7 @@ LyXText::rowBreakPoint(Row const & row) const
 
 
 // returns the minimum space a row needs on the screen in pixel
-int LyXText::fill(Row & row, int paper_width) const
+int LyXText::fill(Row & row, int paper_width)
 {
 	if (paper_width < 0)
 		return 0;
@@ -1892,13 +1892,15 @@ void LyXText::prepareToPrint(RowList::iterator rit, float & x,
 
 		switch (align) {
 	    case LYX_ALIGN_BLOCK:
+	    {
 			ns = rit->numberOfSeparators();
-			if (ns && boost::next(rit) != rows().end() &&
-			    boost::next(rit)->par() == rit->par() &&
-			    !(boost::next(rit)->par()->isNewline(boost::next(rit)->pos() - 1))
-			    && !(boost::next(rit)->par()->isInset(boost::next(rit)->pos())
-				 && boost::next(rit)->par()->getInset(boost::next(rit)->pos())
-				 && boost::next(rit)->par()->getInset(boost::next(rit)->pos())->display())
+			RowList::iterator next_row = boost::next(rit);
+			if (ns && next_row != rowlist_.end() &&
+			    next_row->par() == rit->par() &&
+			    !(next_row->par()->isNewline(next_row->pos() - 1))
+			    && !(next_row->par()->isInset(next_row->pos()) &&
+				 next_row->par()->getInset(next_row->pos()) &&
+				 next_row->par()->getInset(next_row->pos())->display())
 				)
 			{
 				fill_separator = w / ns;
@@ -1906,6 +1908,7 @@ void LyXText::prepareToPrint(RowList::iterator rit, float & x,
 				x += w;
 			}
 			break;
+	    }
 	    case LYX_ALIGN_RIGHT:
 			x += w;
 			break;
@@ -2783,11 +2786,11 @@ LyXText::getRow(Paragraph * par, pos_type pos, int & y) const
 	y = 0;
 
 	if (rows().empty())
-		return rows().end();
+		return rowlist_.end();
 
 	// find the first row of the specified paragraph
-	RowList::iterator rit = rows().begin();
-	RowList::iterator end = rows().end();
+	RowList::iterator rit = rowlist_.begin();
+	RowList::iterator end = rowlist_.end();
 	while (boost::next(rit) != end && rit->par() != par) {
 		y += rit->height();
 		++rit;
@@ -2811,17 +2814,16 @@ RowList::iterator LyXText::getRowNearY(int & y) const
 	// If possible we should optimize this method. (Lgb)
 	int tmpy = 0;
 
-	RowList::iterator rit = rows().begin();
-	RowList::iterator end = rows().end();
+	RowList::iterator rit = rowlist_.begin();
+	RowList::iterator end = rowlist_.end();
 
 	while (rit != end && boost::next(rit) != end && tmpy + rit->height() <= y) {
 		tmpy += rit->height();
 		++rit;
 	}
 
-	y = tmpy;   // return the real y
-
-	//lyxerr << "returned y = " << y << endl;
+	// return the real y
+	y = tmpy;
 
 	return rit;
 }

@@ -239,7 +239,7 @@ public:
 	 x is set to the real beginning of this column
 	 */
 	lyx::pos_type getColumnNearX(RowList::iterator rit,
-					    int & x, bool & boundary) const;
+				     int & x, bool & boundary) const;
 
 	/** returns a pointer to a specified row. y is set to the beginning
 	 of the row
@@ -490,7 +490,7 @@ public:
 	bool bidi_InRange(lyx::pos_type pos) const;
 private:
 	///
-	RowList rowlist_;
+	mutable RowList rowlist_;
 	///
 	void cursorLeftOneWord(LyXCursor &);
 

@@ -750,7 +750,7 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 		setHeightOfRow(prevrow);
 		const_cast<LyXText *>(this)->postPaint(y - prevrow->height());
 	} else {
-		setHeightOfRow(&*rows().begin());
+		setHeightOfRow(rows().begin());
 		const_cast<LyXText *>(this)->postPaint(0);
 	}
 
@@ -1289,7 +1289,7 @@ void LyXText::updateCounters()
 		string const & newLabel = par->params().labelString();
 
 		if (oldLabel.empty() && !newLabel.empty()) {
-			removeParagraph(&*rowit);
+			removeParagraph(rowit);
 			appendParagraph(rowit);
 		}
 
@@ -1575,7 +1575,7 @@ void LyXText::checkParagraph(Paragraph * par, pos_type pos)
 			y -= boost::prior(row)->height();
 			postPaint(y);
 
-			breakAgain(&*boost::prior(row));
+			breakAgain(boost::prior(row));
 
 			// set the cursor again. Otherwise
 			// dangling pointers are possible
@@ -1946,15 +1946,16 @@ LyXText::getColumnNearX(RowList::iterator rit, int & x,
 		vc = last + 1;
 
 	boundary = false;
-	bool const lastrow = lyxrc.rtl_support // This is not needed, but gives
-					 // some speedup if rtl_support=false
-		&& (boost::next(rit) == rows().end() ||
-		    boost::next(rit)->par() != rit->par());
+	// This (rtl_support test) is not needed, but gives
+	// some speedup if rtl_support=false
+	bool const lastrow = lyxrc.rtl_support &&
+		(boost::next(rit) == rowlist_.end() ||
+		 boost::next(rit)->par() != rit->par());
+	// If lastrow is false, we don't need to compute
+	// the value of rtl.
 	bool const rtl = (lastrow)
 		? rit->par()->isRightToLeftPar(bv()->buffer()->params)
-		: false; // If lastrow is false, we don't need to compute
-			 // the value of rtl.
-
+		: false;
 	if (lastrow &&
 		 ((rtl &&  left_side && vc == rit->pos() && x < tmpx - 5) ||
 		   (!rtl && !left_side && vc == last + 1   && x > tmpx + 5)))
