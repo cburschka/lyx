@@ -267,8 +267,6 @@ public:
 	virtual Inset * getInsetFromID(int /*id*/) const { return 0; }
 	/// if this insets owns paragraphs (f.ex. InsetText) then it
 	/// should return it's very first one!
-	virtual Paragraph * firstParagraph() const { return 0; }
-	///
 	virtual Paragraph * getFirstParagraph(int /*num*/) const { return 0; }
 	///
 	virtual bool haveParagraphs() const {

@@ -2382,16 +2382,6 @@ void InsetText::clearInset(BufferView * bv, int start_x, int baseline) const
 }
 
 
-Paragraph * InsetText::firstParagraph() const
-{
-	Paragraph * result;
-	if (the_locking_inset)
-		if ((result = the_locking_inset->firstParagraph()))
-			return result;
-	return &*(paragraphs.begin());
-}
-
-
 Paragraph * InsetText::getFirstParagraph(int i) const
 {
 	return (i == 0) ? &*(paragraphs.begin()) : 0;

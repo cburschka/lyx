@@ -2522,14 +2522,6 @@ void InsetTabular::getSelection(int & srow, int & erow,
 }
 
 
-Paragraph * InsetTabular::firstParagraph() const
-{
-	if (the_locking_inset)
-		return the_locking_inset->firstParagraph();
-	return 0;
-}
-
-
 Paragraph * InsetTabular::getFirstParagraph(int i) const
 {
 	return (i < tabular->GetNumberOfCells())

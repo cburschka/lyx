@@ -142,8 +142,6 @@ public:
 	///
 	Inset * getInsetFromID(int id) const;
 	///
-	Paragraph * firstParagraph() const;
-	///
 	Paragraph * getFirstParagraph(int) const;
 	///
 	LyXCursor const & cursor(BufferView *) const;

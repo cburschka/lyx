@@ -571,12 +571,6 @@ int InsetCollapsable::scroll(bool recursive) const
 }
 
 
-Paragraph * InsetCollapsable::firstParagraph() const
-{
-	return inset.firstParagraph();
-}
-
-
 Paragraph * InsetCollapsable::getFirstParagraph(int i) const
 {
 	return inset.getFirstParagraph(i);
