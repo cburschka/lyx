@@ -1,3 +1,26 @@
+2000-11-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/frontends/xforms/FormPreferences.C (ok): use AddName().
+
+	* src/frontends/xforms/Dialogs.C: add "using" directive.
+
+2000-11-13  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/filedlg.C (Select): highlight suggested file in browser, if
+	it is present.
+
+	* src/frontends/xforms/FormPreferences.[Ch]: re-written so that
+	each tab folder is encapsulated in its own class.
+	The Language keymaps are now chosen using a text input and a
+	browser button, rather than a Combox.
+	All the browser buttons are now functional, although LyXFileDlg
+	still needs to be modified to make it straighhtforward to return a
+	directory if that is what is desired.
+
+	* src/frontends/xforms/forms/form_preferences.fd: use text input
+	and browse button to input the Language keymaps. Add a few
+	callbacks for the browse buttons.
+
 2000-11-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/tempname.C (tempName): small changes to make it

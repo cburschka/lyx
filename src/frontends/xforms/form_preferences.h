@@ -114,14 +114,16 @@ struct FD_form_language {
 	FL_OBJECT *input_package;
 	FL_OBJECT *choice_default_lang;
 	FL_OBJECT *check_use_kbmap;
-	FL_OBJECT *choice_kbmap_1;
-	FL_OBJECT *choice_kbmap_2;
 	FL_OBJECT *check_rtl_support;
 	FL_OBJECT *check_mark_foreign;
 	FL_OBJECT *check_auto_begin;
 	FL_OBJECT *check_auto_end;
 	FL_OBJECT *input_command_begin;
 	FL_OBJECT *input_command_end;
+	FL_OBJECT *input_kbmap1;
+	FL_OBJECT *input_kbmap2;
+	FL_OBJECT *button_kbmap1_browse;
+	FL_OBJECT *button_kbmap2_browse;
 };
 struct FD_form_colors {
 	~FD_form_colors();
@@ -216,10 +218,10 @@ struct FD_form_paths {
 
 	FL_FORM *form;
 	FL_OBJECT *input_default_path;
-	FL_OBJECT *button_document_browse;
+	FL_OBJECT *button_default_path_browse;
 	FL_OBJECT *counter_lastfiles;
 	FL_OBJECT *input_template_path;
-	FL_OBJECT *button_template_browse;
+	FL_OBJECT *button_template_path_browse;
 	FL_OBJECT *check_last_files;
 	FL_OBJECT *button_temp_dir_browse;
 	FL_OBJECT *input_lastfiles;

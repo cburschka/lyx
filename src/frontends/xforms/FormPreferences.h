@@ -57,8 +57,6 @@ public:
 	///
 	~FormPreferences();
 	///
-	static void ComboLanguageCB(int, void *, Combox *);
-	///
 	static int FeedbackCB(FL_OBJECT *, int,
 			      FL_Coord, FL_Coord, int, void *);
 
@@ -85,186 +83,8 @@ private:
 	///
 	virtual FL_FORM * form() const;
 
-	/** Folder specific apply functions.
+	/** Helper functions available to the various tab folders.
 	 */
-	
-	///
-	void applyColors(); // not const as modifies modifiedXformPrefs.
-	///
-	void applyConverters() const;
-	///
-	void applyFormats() const;
-	///
-	void applyInputsMisc() const;
-	///
-	void applyInterface() const;
-	///
-	void applyLanguage(); // not const because calls updateLanguage!
-	///
-	void applyLnFmisc() const;
-	///
-	void applyOutputsMisc() const;
-	///
-	void applyPaths(); // not const because calls updatePaths!
-	///
-	void applyPrinter() const;
-	///
-	void applyScreenFonts() const;
-	///
-	void applySpellChecker(); // not const because calls updateSpellChecker!
-
-	/** Folder specific build functions.
-	 */
-	
-	///
-	void buildColors();
-	///
-	void buildConverters();
-	///
-	void buildFormats();
-	///
-	void buildInputsMisc();
-	///
-	void buildInterface();
-	///
-	void buildLanguage();
-	///
-	void buildLnFmisc();
-	///
-	void buildOutputsMisc();
-	///
-	void buildPaths();
-	///
-	void buildPrinter();
-	///
-	void buildScreenFonts();
-	///
-	void buildSpellchecker();
-
-	/** Folder specific feedback functions.
-	 */
-	
-	///
-	string const feedbackColors(FL_OBJECT const * const) const;
-	///
-	string const feedbackConverters(FL_OBJECT const * const) const;
-	///
-	string const feedbackFormats( FL_OBJECT const * const ) const;
-	///
-	string const feedbackInputsMisc(FL_OBJECT const * const) const;
-	///
-	string const feedbackInterface(FL_OBJECT const * const) const;
-	///
-	string const feedbackLanguage(FL_OBJECT const * const) const;
-	///
-	string const feedbackLnFmisc(FL_OBJECT const * const) const;
-	///
-	string const feedbackOutputsMisc(FL_OBJECT const * const) const;
-	///
-	string const feedbackPaths(FL_OBJECT const * const) const;
-	///
-	string const feedbackPrinter(FL_OBJECT const * const) const;
-	///
-	string const feedbackScreenFonts(FL_OBJECT const * const) const;
-	///
-	string const feedbackSpellChecker(FL_OBJECT const * const) const;
-
-	/** Folder specific input functions. Not all folders require one.
-	 */
-	
-	///
-	bool inputColors(FL_OBJECT const * const);
-	///
-	bool inputConverters( FL_OBJECT const * const );
-	///
-	bool inputFormats( FL_OBJECT const * const );
-	///
-	bool inputLanguage(FL_OBJECT const * const);
-	///
-	bool inputPaths(FL_OBJECT const * const);
-	///
-	bool inputScreenFonts();
-	///
-	bool inputSpellChecker(FL_OBJECT const * const);
-
-	/** Folder specific update functions.
-	 */
-	
-	///
-	void updateColors();
-	///
-	void updateConverters();
-	///
-	void updateFormats();
-	///
-	void updateInputsMisc();
-	///
-	void updateInterface();
-	///
-	void updateLanguage();
-	///
-	void updateLnFmisc();
-	///
-	void updateOutputsMisc();
-	///
-	void updatePaths();
-	///
-	void updatePrinter();
-	///
-	void updateScreenFonts();
-	///
-	void updateSpellChecker();
-
-	/** Some helper functions for specific folders.
-	 */
-	
-	///
-	void ColorsAdjustVal( int, int, double ) const;
-	///
-	bool ColorsBrowserLyX() const;
-	///
-	bool ColorsBrowserX11() const;
-	///
-	bool ColorsBrowseDatabase() const;
-	///
-	bool ColorsDatabase() const;
-	///
-	void ColorsLoadBrowserLyX();
-	///
-	bool ColorsLoadBrowserX11(string const &) const;
-	///
-	bool ColorsModify() const;
-	///
-	bool ColorsRGB() const;
-	///
-	int ColorsSearchEntry(RGBColor const &) const;
-
-	///
-	bool ConvertersAdd();
-	///
-	bool ConvertersBrowser();
-	///
-	void ConvertersUpdateBrowser();
-	///
-	bool ConvertersDelete();
-	///
-	bool ConvertersInput();
-	///
-	string const ConverterGetFrom() const;
-	///
-	string const ConverterGetTo() const;
-	///
-	void ConvertersUpdateChoices() const;
-
-	bool FormatsAdd();
-	///
-	bool FormatsBrowser();
-	///
-	void FormatsUpdateBrowser();
-	///
-	bool FormatsDelete();
-	///
-	bool FormatsInput();
 
 	///
 	bool WriteableDir( string const & );
@@ -272,12 +92,34 @@ private:
 	bool ReadableDir( string const & );
 	///
 	bool WriteableFile( string const &, string const & = string() );
-
+	///
+	bool ReadableFile( string const &, string const & = string() );
 	///
 	void setPreHandler( FL_OBJECT * ) const;
 	///
 	void printWarning( string const & );
 
+	/** title: filedlg title, pattern: *.ps etc
+	    extra buttons on filedlg: dir1 = (name, dir), dir2 = (name, dir)
+	 */
+	
+	///
+	bool browse( FL_OBJECT * input,
+		     string const & title, string const & pattern, 
+		     std::pair<string,string> const & dir1 =
+		     	std::pair<string,string>(),
+		     std::pair<string,string> const & dir2 =
+		     	std::pair<string,string>() );
+	/// called from browse()
+	string const browseFile( string const & filename,
+				 string const & title, string const & pattern, 
+				 std::pair<string,string> const & dir1,
+				 std::pair<string,string> const & dir2 ) const;
+
+	/** Flag whether a warning has been posted to the text window.
+	    If so, don't redraw the window when the mouse leaves an object. */
+	bool warningPosted;
+	
 	/// Type definitions from the fdesign produced header file.
 	FD_form_preferences * build_preferences();
 	///
@@ -309,62 +151,445 @@ private:
 
 	/// Real GUI implementation.
 	FD_form_preferences * dialog_;
-	/// Converters tabfolder
-	FD_form_outer_tab * converters_tab_;
 	/// reLyX and other import/input stuff
 	FD_form_outer_tab * inputs_tab_;
 	/// HCI configuration
 	FD_form_outer_tab * look_n_feel_tab_;
+	/// Converters tabfolder
+	FD_form_outer_tab * converters_tab_;
 	/// Outputs tabfolder
 	FD_form_outer_tab * outputs_tab_;
 	/// Spellchecker, language stuff, etc
 	FD_form_outer_tab * usage_tab_;
-	///
-	FD_form_colors * colors_;
-	///
-	FD_form_converters * converters_;
-	///
-	FD_form_formats * formats_;
-	///
-	FD_form_inputs_misc * inputs_misc_;
-	///
-	FD_form_interface * interface_;
-	///
-	FD_form_language * language_;
-	///
-	FD_form_lnf_misc * lnf_misc_;
-	///
-	FD_form_outputs_misc * outputs_misc_;
-	///
-	FD_form_paths * paths_;
-	///
-	FD_form_printer * printer_;
-	///
-	FD_form_screen_fonts * screen_fonts_;
-	///
-	FD_form_spellchecker * spellchecker_;
-	///
-	Combox * combo_default_lang;
-	///
-	Combox * combo_kbmap_1;
-	///
-	Combox * combo_kbmap_2;
 
-	/// A vector of RGB colors and associated name.
-	static std::vector<X11Color> colorDB;
-	/// A vector of xform RGB colors and associated name.
-	static std::vector<XformColor> xformColorDB;
-	/** A collection of kmap files.
-	    First entry is the file name, full path.
-	    Second entry is the shorthand, as appears in the fl_choice.
-	    Eg, system_lyxdir/kbd/american2.kmap, american2
-	*/
-	static std::pair<std::vector<string>, std::vector<string> > dirlist;
-	/** Flag whether a warning has been posted to the text window.
-	    If so, don't redraw the window when the mouse leaves an object. */
-	bool warningPosted;
-	/// Flag whether Xforms colors have been changed since last file save.
-	bool modifiedXformPrefs;
+	/** Each tab folder is encapsulated in its own class.
+	 */
+
+	class Colors {
+	public:
+		///
+		Colors( FormPreferences & p ) : parent_(p), dialog_(0) {}
+		///
+		~Colors();
+		///
+		FD_form_colors const * dialog() { return dialog_; }
+		///
+		void apply(); // not const as modifies modifiedXformPrefs.
+		///
+		void build();
+		///
+		string const feedback(FL_OBJECT const * const) const;
+		///
+		bool input(FL_OBJECT const * const);
+		///
+		void update();
+		/// Flag whether Xforms colors have changed since last file save
+		bool modifiedXformPrefs;
+
+	private:
+		///
+		void AdjustVal( int, int, double ) const;
+		///
+		bool BrowserLyX() const;
+		///
+		bool BrowserX11() const;
+		///
+		bool Database();
+		///
+		void LoadBrowserLyX();
+		///
+		bool LoadBrowserX11(string const &) const;
+		///
+		bool Modify() const;
+		///
+		bool RGB() const;
+		///
+		int SearchEntry(RGBColor const &) const;
+
+		///
+		FormPreferences & parent_;
+		///
+		FD_form_colors * dialog_;
+		/// A vector of RGB colors and associated name.
+		static std::vector<X11Color> colorDB;
+		/// A vector of xform RGB colors and associated name.
+		static std::vector<XformColor> xformColorDB;
+	};
+	///
+	friend class Colors;
+
+	///
+	class Converters {
+	public:
+		///
+		Converters( FormPreferences &  p ) : parent_(p), dialog_(0) {}
+		///
+		~Converters();
+		///
+		FD_form_converters const * dialog() { return dialog_; }
+		///
+		void apply() const;
+		///
+		void build();
+		///
+		string const feedback(FL_OBJECT const * const) const;
+		///
+		bool input( FL_OBJECT const * const );
+		///
+		void update();
+		///
+		void UpdateBrowser();
+		///
+		void UpdateChoices() const;
+
+	private:
+		///
+		bool Add();
+		///
+		bool Browser();
+		///
+		bool Delete();
+		///
+		bool Input();
+		///
+		string const GetFrom() const;
+		///
+		string const GetTo() const;
+
+		///
+		FormPreferences & parent_;
+		///
+		FD_form_converters * dialog_;
+	};
+	///
+	friend class Converters;
+
+	///
+	class Formats {
+	public:
+		///
+		Formats( FormPreferences &  p ) : parent_(p), dialog_(0) {}
+		///
+		~Formats();
+		///
+		FD_form_formats const * dialog() { return dialog_; }
+		///
+		void apply() const;
+		///
+		void build();
+		///
+		string const feedback(FL_OBJECT const * const) const;
+		///
+		bool input( FL_OBJECT const * const );
+		///
+		void update();
+
+	private:
+		///
+		bool Add();
+		///
+		bool Browser();
+		///
+		void UpdateBrowser();
+		///
+		bool Delete();
+		///
+		bool Input();
+
+		///
+		FormPreferences & parent_;
+		///
+		FD_form_formats * dialog_;
+	};
+	///
+	friend class Formats;
+
+	///
+	class InputsMisc {
+	public:
+		///
+		InputsMisc( FormPreferences &  p ) : parent_(p), dialog_(0) {}
+		///
+		~InputsMisc();
+		///
+		FD_form_inputs_misc const * dialog() { return dialog_; }
+		///
+		void apply() const;
+		///
+		void build();
+		///
+		string const feedback(FL_OBJECT const * const) const;
+		///
+		void update();
+
+	private:
+		///
+		FormPreferences & parent_;
+		///
+		FD_form_inputs_misc * dialog_;
+	};
+	///
+	friend class InputsMisc;
+	
+	///
+	class Interface {
+	public:
+		///
+		Interface( FormPreferences &  p ) : parent_(p), dialog_(0) {}
+		///
+		~Interface();
+		///
+		FD_form_interface const * dialog() { return dialog_; }
+		///
+		void apply() const;
+		///
+		void build();
+		///
+		string const feedback(FL_OBJECT const * const) const;
+		///
+		bool input( FL_OBJECT const * const );
+		///
+		void update();
+
+	private:
+		///
+		FormPreferences & parent_;
+		///
+		FD_form_interface * dialog_;
+	};
+	///
+	friend class Interface;
+
+	///
+	class Language {
+	public:
+		///
+		Language( FormPreferences &  p )
+			: parent_(p), dialog_(0), combo_default_lang(0) {}
+		///
+		~Language();
+		///
+		FD_form_language const * dialog() { return dialog_; }
+		///
+		void apply(); // not const because calls update()
+		///
+		void build();
+		///
+		string const feedback(FL_OBJECT const * const) const;
+		///
+		bool input( FL_OBJECT const * const );
+		///
+		void update();
+		///
+		static void ComboCB(int, void *, Combox *);
+
+	private:
+		///
+		FormPreferences & parent_;
+		///
+		FD_form_language * dialog_;
+		///
+		Combox * combo_default_lang;
+	};
+	///
+	friend class Language;
+	
+	///
+	class LnFmisc {
+	public:
+		///
+		LnFmisc( FormPreferences &  p ) : parent_(p), dialog_(0) {}
+		///
+		~LnFmisc();
+		///
+		FD_form_lnf_misc const * dialog() { return dialog_; }
+		///
+		void apply() const;
+		///
+		void build();
+		///
+		string const feedback(FL_OBJECT const * const) const;
+		///
+		void update();
+
+	private:
+		///
+		FormPreferences & parent_;
+		///
+		FD_form_lnf_misc * dialog_;
+	};
+	///
+	friend class LnFmisc;
+
+	///
+	class OutputsMisc {
+	public:
+		///
+		OutputsMisc( FormPreferences &  p ) : parent_(p), dialog_(0) {}
+		///
+		~OutputsMisc();
+		///
+		FD_form_outputs_misc const * dialog() { return dialog_; }
+		///
+		void apply() const;
+		///
+		void build();
+		///
+		string const feedback(FL_OBJECT const * const) const;
+		///
+		void update();
+
+	private:
+		///
+		FormPreferences & parent_;
+		///
+		FD_form_outputs_misc * dialog_;
+	};
+	///
+	friend class OutputsMisc;
+
+	///
+	class Paths {
+	public:
+		///
+		Paths( FormPreferences &  p ) : parent_(p), dialog_(0) {}
+		///
+		~Paths();
+		///
+		FD_form_paths const * dialog() { return dialog_; }
+		///
+		void apply();
+		///
+		void build();
+		///
+		string const feedback(FL_OBJECT const * const) const;
+		///
+		bool input(FL_OBJECT const * const);
+		///
+		void update();
+
+	private:
+		///
+		FormPreferences & parent_;
+		///
+		FD_form_paths * dialog_;
+	};
+	///
+	friend class Paths;
+
+	///
+	class Printer {
+	public:
+		///
+		Printer( FormPreferences &  p ) : parent_(p), dialog_(0) {}
+		///
+		~Printer();
+		///
+		FD_form_printer const * dialog() { return dialog_; }
+		///
+		void apply() const;
+		///
+		void build();
+		///
+		string const feedback(FL_OBJECT const * const) const;
+		///
+		void update();
+
+	private:
+		///
+		FormPreferences & parent_;
+		///
+		FD_form_printer * dialog_;
+	};
+	///
+	friend class Printer;
+
+	///
+	class ScreenFonts {
+	public:
+		///
+		ScreenFonts( FormPreferences &  p ) : parent_(p), dialog_(0) {}
+		///
+		~ScreenFonts();
+		///
+		FD_form_screen_fonts const * dialog() { return dialog_; }
+		///
+		void apply() const;
+		///
+		void build();
+		///
+		string const feedback(FL_OBJECT const * const) const;
+		///
+		bool input();
+		///
+		void update();
+
+	private:
+		///
+		FormPreferences & parent_;
+		///
+		FD_form_screen_fonts * dialog_;
+	};
+	///
+	friend class ScreenFonts;
+
+	///
+	class SpellChecker {
+	public:
+		///
+		SpellChecker( FormPreferences &  p ) : parent_(p), dialog_(0) {}
+		///
+		~SpellChecker();
+		///
+		FD_form_spellchecker const * dialog() { return dialog_; }
+		///
+		void apply(); // not const because calls update()!
+		///
+		void build();
+		///
+		string const feedback(FL_OBJECT const * const) const;
+		///
+		bool input(FL_OBJECT const * const);
+		///
+		void update();
+
+	private:
+		///
+		FormPreferences & parent_;
+		///
+		FD_form_spellchecker * dialog_;
+	};
+	///
+	friend class SpellChecker;
+
+	
+	/** The tab folders.
+	 */
+	
+	///
+	Colors colors_;
+	///
+	Converters converters_;
+	///
+	Formats formats_;
+	///
+	InputsMisc inputs_misc_;
+	///
+	Interface interface_;
+	///
+	Language language_;
+	///
+	LnFmisc lnf_misc_;
+	///
+	OutputsMisc outputs_misc_;
+	///
+	Paths paths_;
+	///
+	Printer printer_;
+	///
+	ScreenFonts screen_fonts_;
+	///
+	SpellChecker spellchecker_;
 };
 
 #endif

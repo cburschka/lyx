@@ -32,6 +32,8 @@
 #pragma implementation
 #endif
 
+using std::endl;
+
 // temporary till ported
 extern void ShowCredits();
 

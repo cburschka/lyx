@@ -20,6 +20,7 @@
 #include <algorithm>
 
 using std::map;
+using std::max;
 using std::sort;
 
 #include "lyx_gui_misc.h" // CancelCloseCB
@@ -634,7 +635,7 @@ bool LyXFileDlg::HandleOK()
 			return true;
 		}
 	}
-	
+
 	// Emulate a doubleclick
 	return HandleDoubleClick();
 }
@@ -672,7 +673,7 @@ void LyXFileDlg::Force(bool cancel)
 
 // Select: launches dialog and returns selected file
 string const LyXFileDlg::Select(string const & title, string const & path, 
-			  string const & mask, string const & suggested)
+				string const & mask, string const & suggested)
 {
 	// handles new mask and path
 	bool isOk = true;
@@ -685,10 +686,25 @@ string const LyXFileDlg::Select(string const & title, string const & path,
 		isOk = false;
 	}
 	if (!isOk) Reread();
-	else {
-		fl_select_browser_line(pFileDlgForm->List, 1);
-		fl_set_browser_topline(pFileDlgForm->List, 1);
+
+	// highlight the suggested file in the browser, if it exists.
+	int sel = 0;
+	string filename = OnlyFilename(suggested);
+	if( !filename.empty() ) {
+		for( int i = 0; 
+		     i < fl_get_browser_maxline(pFileDlgForm->List); ++i ) {
+			string s = fl_get_browser_line(pFileDlgForm->List, i+1);
+			s = strip(frontStrip(s));
+			if( s == filename ) {
+				sel = i+1;
+				break;
+			}
+		}
 	}
+	
+	if( sel != 0 ) fl_select_browser_line(pFileDlgForm->List, sel);
+	int top = max(sel - 5, 1);
+	fl_set_browser_topline(pFileDlgForm->List, top);
 
 	// checks whether dialog can be started
 	if (pCurrentDlg) return string();
