@@ -1134,8 +1134,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 			 * true (on). */
 #if 0
 			// This should not be needed here and is also WRONG!
-			setUndo(bv, Undo::INSERT,
-				lt->cursor.par(), boost::next(lt->cursor.par()));
+			setUndo(bv, Undo::INSERT, lt->cursor.par());
 #endif
 			bv->switchKeyMap();
 			if (lyxrc.auto_region_delete) {
@@ -1853,7 +1852,7 @@ void InsetText::setFont(BufferView * bv, LyXFont const & font, bool toggleall,
 		clear = true;
 	}
 	if (lt->selection.set()) {
-		setUndo(bv, Undo::EDIT, lt->cursor.par(), boost::next(lt->cursor.par()));
+		setUndo(bv, Undo::EDIT, lt->cursor.par());
 	}
 	if (selectall)
 		selectAll(bv);

@@ -18,24 +18,23 @@ class BufferView;
 class Paragraph;
 
 /// returns false if no undo possible
-extern bool textUndo(BufferView *);
+bool textUndo(BufferView *);
 /// returns false if no redo possible
-extern bool textRedo(BufferView *);
+bool textRedo(BufferView *);
 /// makes sure the next operation will be stored
-extern void finishUndo();
+void finishUndo();
 /// Whilst undo is frozen, all actions do not get added
 /// to the undo stack
-extern void freezeUndo();
+void freezeUndo();
 /// Track undos again
-extern void unFreezeUndo();
+void unFreezeUndo();
 /// FIXME
-extern void setUndo(BufferView *, Undo::undo_kind kind,
-		    ParagraphList::iterator first, ParagraphList::iterator behind);
+void setUndo(BufferView *, Undo::undo_kind kind,
+		    ParagraphList::iterator first, ParagraphList::iterator last);
+void setUndo(BufferView *, Undo::undo_kind kind,
+		    ParagraphList::iterator first);
 /// FIXME
-extern void setRedo(BufferView *, Undo::undo_kind kind,
-		    ParagraphList::iterator first, ParagraphList::iterator behind);
-/// FIXME
-extern void setCursorParUndo(BufferView *);
+void setCursorParUndo(BufferView *);
 
 /// Are we avoiding tracking undos currently ?
 extern bool undo_frozen;

@@ -2203,8 +2203,8 @@ Inset * Buffer::getInsetFromID(int id_arg) const
 ParIterator Buffer::getParFromID(int id) const
 {
 #warning FIXME: const correctness! (Andre)
-	ParIterator it(const_cast<Buffer*>(this)->par_iterator_begin());
-	ParIterator end(const_cast<Buffer*>(this)->par_iterator_end());
+	ParIterator it = const_cast<Buffer*>(this)->par_iterator_begin();
+	ParIterator end = const_cast<Buffer*>(this)->par_iterator_end();
 
 #warning FIXME, perhaps this func should return a ParIterator? (Lgb)
 	if (id < 0) {

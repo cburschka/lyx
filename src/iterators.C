@@ -161,6 +161,12 @@ size_t ParIterator::size() const
 }
 
 
+ParagraphList & ParIterator::plist() const
+{
+	return *const_cast<ParagraphList*>(pimpl_->positions.top().plist);
+}
+
+
 bool operator==(ParIterator const & iter1, ParIterator const & iter2)
 {
 	return iter1.pimpl_->positions == iter2.pimpl_->positions;

@@ -1,3 +1,13 @@
+2003-05-23  André Pönitz  <poenitz@gmx.net>
+
+	* BufferView.C:
+	* BufferView_pimpl.C:
+	* buffer.C:
+	* buffer.h:
+	* lyxfunc.C:
+	* undo_funcs.C: setUndo reworked
+
+	* iterators.[Ch]: add access to topmost ParagraphList
 
 2003-05-23  Alfredo Braunstein  <abraunst@libero.it>
 

@@ -33,6 +33,8 @@ public:
 	///
 	ParagraphList::iterator operator->() const;
 	///
+	ParagraphList & plist() const;
+	///
 	size_t size() const;
 	///
 	friend
