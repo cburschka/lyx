@@ -1,3 +1,8 @@
+2004-04-08  Angus Leeming  <leeming@lyx.org>
+
+	* lyxrc.C (read): don't try to set the color of none, inherit, ignore
+	thereby squashing an unnecessary warning.
+
 2004-04-01  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* LaTeXFeatures.[Ch]: change buffer_ to a pointer and add accessor

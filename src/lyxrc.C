@@ -786,7 +786,13 @@ int LyXRC::read(LyXLex & lexrc)
 				break;
 			}
 
-			LColor::color col = lcolor.getFromLyXName(lyx_name);
+			LColor::color const col = 
+				lcolor.getFromLyXName(lyx_name);
+			if (col == LColor::none || 
+			    col == LColor::inherit ||
+			    col == LColor::ignore)
+				break;
+
 			if (!lcolor.setColor(col, x11_name)) {
 				lyxerr << "Bad lyxrc set_color for "
 					<< lyx_name << endl;
