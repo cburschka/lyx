@@ -172,6 +172,7 @@ triangle           cmsy         52   0 mathord  x
 forall             cmsy         56  34 mathord  x
 exists             cmsy         57  36 mathord  x
 neg                cmsy         58 216 mathord  x
+lnot               cmsy         58 216 mathord  x
 flat               cmm          91   0 mathord  x
 natural            cmm          92   0 mathord  x
 sharp              cmm          93  35 mathord  x
@@ -200,7 +201,9 @@ triangleright      cmm          46   0 mathbin  x
 bigtriangleup      cmsy         52   0 mathbin  x
 bigtriangledown    cmsy         53   0 mathbin  x
 wedge              cmsy         94 217 mathbin  x
+land               cmsy         94 217 mathbin  x
 vee                cmsy         95 218 mathbin  x
+lor                cmsy         95 218 mathbin  x
 cap                cmsy         92 199 mathbin  x
 cup                cmsy         91 200 mathbin  x
 ddagger            cmsy        122   0 mathbin  x
@@ -242,7 +245,9 @@ Leftrightarrow     cmsy         44 219 mathrel  x
 Leftarrow          cmsy         40 220 mathrel  x
 Rightarrow         cmsy         41 222 mathrel  x
 leq                cmsy        183 163 mathrel  x
+le                 cmsy        183 163 mathrel  x
 geq                cmsy        184 179 mathrel  x
+ge                 cmsy        184 179 mathrel  x
 succ               cmsy        194   0 mathrel  x
 prec               cmsy        193   0 mathrel  x
 approx             cmsy        188 187 mathrel  x
@@ -254,11 +259,14 @@ supseteq           cmsy        182 202 mathrel  x
 subseteq           cmsy        181 205 mathrel  x
 in                 cmsy         50 206 mathrel  x
 ni                 cmsy         51  39 mathrel  x
+owns               cmsy         51  39 mathrel  x
 gg                 cmsy        192   0 mathrel  x
 ll                 cmsy        191   0 mathrel  x
 leftrightarrow     cmsy         36 171 mathrel  x
 leftarrow          cmsy         32 172 mathrel  x
+gets               cmsy         32 172 mathrel  x
 rightarrow         cmsy         33 174 mathrel  x
+to                 cmsy         33 174 mathrel  x
 mapstochar         cmsy         55   0 mathrel  x
 sim                cmsy        187 126 mathrel  x
 simeq              cmsy         39   0 mathrel  x
@@ -279,6 +287,7 @@ colon              cmr          58  58 mathpunct  x
 arrowvert          cmsy        106   0 mathord  x
 Arrowvert          cmsy        107   0 mathord  x
 Vert               cmsy        107   0 mathord  x
+|                  cmsy        107   0 mathord  x
 vert               cmsy        106   0 mathord  x
 uparrow            cmsy         34 173 mathrel  x
 downarrow          cmsy         35 175 mathrel  x
@@ -424,7 +433,9 @@ supseteqq          msa         107   0 mathrel  x
 bumpeq             msa         108   0 mathrel  x
 Bumpeq             msa         109   0 mathrel  x
 lll                msa         110   0 mathrel  x
+llltr              msa         110   0 mathrel  x
 ggg                msa         111   0 mathrel  x
+gggtr              msa         111   0 mathrel  x
 circledS           msa         115   0 mathord  x
 pitchfork          msa         116   0 mathrel  x
 dotplus            msa         117   0 mathbin  x
@@ -528,6 +539,7 @@ hslash             msb         125   0 mathord  x
 backepsilon        msb         127   0 mathrel  x
                                
 neq                x             0 185 mathrel  x
+ne                 x             0 185 mathrel  x
 textdegree         x             0 176 mathord  x
 cong               x             0  64 mathrel  x
 surd               x             0 214 mathord  x
