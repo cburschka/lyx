@@ -85,7 +85,7 @@ int ControlRef::getBufferNum() const
 		find(buffers.begin(), buffers.end(), name);
 	if (cit == buffers.end())
 		return 0;
-	return cit - buffers.begin();
+	return int(cit - buffers.begin());
 }
 
 string const ControlRef::getBufferName(int num) const
