@@ -1,6 +1,6 @@
-#LyX 1.3 created this file. For more info see http://www.lyx.org/
-\lyxformat 221
-\textclass scrlettr2
+#LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
+\lyxformat 225
+\textclass scrlttr2
 \begin_preamble
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Here you can modify the layout of your letter
@@ -80,64 +80,90 @@
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
+\tracking_changes 0
+\end_header
 
-\layout Name
+\begin_layout Name
 
 The LyX Developers Team
-\layout SenderAddress
+\end_layout
+
+\begin_layout SenderAddress
 
 140 Map Road
 \newline 
 CVS City
-\layout Telephone
+\end_layout
+
+\begin_layout Telephone
 
 0011/222
 \begin_inset ERT
 status Collapsed
 
-\layout Standard
+\begin_layout Standard
 
 \backslash 
 ,
+\end_layout
+
 \end_inset 
 
 333
-\layout E-Mail
+\end_layout
+
+\begin_layout E-Mail
 
 lyx-users@lists.lyx.org
-\layout URL
+\end_layout
+
+\begin_layout URL
 
 www.lyx.org
-\layout Backaddress
+\end_layout
+
+\begin_layout Backaddress
 
 The LyX Developers Team
 \newline 
 140 Map Road
 \newline 
 CVS City
-\layout Signature
+\end_layout
+
+\begin_layout Signature
 
 The LyX Team
-\layout Subject
+\end_layout
+
+\begin_layout Subject
 
 New KOMA letter layout 
-\layout Place
+\end_layout
+
+\begin_layout Place
 
 The Internet
-\layout Date
+\end_layout
+
+\begin_layout Date
 
 
 \begin_inset ERT
 status Collapsed
 
-\layout Standard
+\begin_layout Standard
 
 \backslash 
 today
+\end_layout
+
 \end_inset 
 
 
-\layout Address
+\end_layout
+
+\begin_layout Address
 
 Mr X.
  Ample
@@ -145,11 +171,15 @@ Mr X.
 666 Sesame Street
 \newline 
 12345 Nowhere
-\layout Opening
+\end_layout
+
+\begin_layout Opening
 
 Dear Mr.
  Ample,
-\layout Standard
+\end_layout
+
+\begin_layout Standard
 
 This template illustrates the use of the new scrlttr2 class (introduced
  with KOMA-script v.
@@ -166,7 +196,7 @@ Preamble
 \begin_inset Foot
 collapsed true
 
-\layout Standard
+\begin_layout Standard
 
 
 \begin_inset LatexCommand \url{http://www.ctan.org/tex-archive/macros/latex/contrib/supported/koma-script/scrguien.pdf}
@@ -174,27 +204,39 @@ collapsed true
 \end_inset 
 
 
+\end_layout
+
 \end_inset 
 
  for a detailed description.
-\layout Closing
+\end_layout
+
+\begin_layout Closing
 
 Have fun with it,
-\layout PS
+\end_layout
+
+\begin_layout PS
 
 P.
 \begin_inset ERT
 status Collapsed
 
-\layout Standard
+\begin_layout Standard
 
 \backslash 
 ,
+\end_layout
+
 \end_inset 
 
 S.: The blue colored items have to be before the address, the magenta colored
  after it.
-\layout CC
+\end_layout
+
+\begin_layout CC
 
 The LyX Users
-\the_end
+\end_layout
+
+\end_document
