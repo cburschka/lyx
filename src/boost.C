@@ -12,6 +12,7 @@
 
 #include "lyx_main.h"
 #include "debug.h"
+#include "support/lyxlib.h"
 
 #include <boost/assert.hpp>
 
@@ -51,7 +52,7 @@ void assertion_failed(char const * expr, char const * function,
 	lyxerr << "Assertion triggered in " << function << " by \"" <<
 		expr << " in file " << file << ":" << line << endl;
 	emergencyCleanup();
-	assert(false);
+	lyx::support::abort();
 }
 
 

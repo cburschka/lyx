@@ -1,3 +1,8 @@
+2003-09-10  Rob Lahaye  <lahaye@snu.ac.kr>
+
+	* boost.C (assertion_failed): use lyx::support::abort instead of
+	assert.
+
 2003-09-10  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am (lyx_SOURCES): replace ParagraphList.h and RowList.h with their
@@ -19,14 +24,14 @@
 
 	* buffer.[Ch]: Add an Impl class and move Buffer's member
 	variables into it. As a result move several header files out of
-	buffer.h. 
+	buffer.h.
 
 	Add header files to lots of .C files all over the tree as a result.
 
 2003-09-09  Angus Leeming  <leeming@lyx.org>
 
 	* buffer.[Ch]: make Buffer's member variables private. Add
-	accessor functions. 
+	accessor functions.
 
 	Lots of changes all over the tree as a result.
 
