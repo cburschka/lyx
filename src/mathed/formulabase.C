@@ -613,7 +613,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		break;
 
 	case LFUN_MATH_MODE:
-		if (mathcursor->inMathMode()) {
+		if (mathcursor->currentMode()) {
 			handleFont(bv, arg, "textrm");
 		} else {
 			mathcursor->niceInsert(MathAtom(new MathHullInset("simple")));

@@ -49,16 +49,13 @@ inclusion in the "real LyX insets" FormulaInset and FormulaMacroInset.
 
 class MathArrayInset;
 class MathAMSArrayInset;
-class MathBoxInset;
 class MathCharInset;
 class MathDelimInset;
-class MathFboxInset;
 class MathGridInset;
 class MathFracInset;
 class MathHullInset;
 class MathMatrixInset;
 class MathNestInset;
-class MathParInset;
 class MathParboxInset;
 class MathScriptInset;
 class MathStringInset;
@@ -196,12 +193,9 @@ public:
 	/// identifies certain types of insets
 	virtual MathAMSArrayInset      * asAMSArrayInset()      { return 0; }
 	virtual MathArrayInset         * asArrayInset()         { return 0; }
-	virtual MathBoxInset           * asBoxInset()           { return 0; }
-	virtual MathBoxInset const     * asBoxInset() const     { return 0; }
 	virtual MathCharInset const    * asCharInset() const    { return 0; }
 	virtual MathDelimInset         * asDelimInset()         { return 0; }
 	virtual MathDelimInset const   * asDelimInset() const   { return 0; }
-	virtual MathFboxInset          * asFboxInset()          { return 0; }
 	virtual MathFracInset          * asFracInset()          { return 0; }
 	virtual MathGridInset          * asGridInset()          { return 0; }
 	virtual MathHullInset          * asHullInset()          { return 0; }
@@ -209,7 +203,6 @@ public:
 	virtual MathMacroTemplate      * asMacroTemplate()      { return 0; }
 	virtual MathMatrixInset const  * asMatrixInset() const  { return 0; }
 	virtual MathNestInset          * asNestInset()          { return 0; }
-	virtual MathParInset           * asParInset()           { return 0; }
 	virtual MathParboxInset        * asParboxInset()        { return 0; }
 	virtual MathScriptInset        * asScriptInset()        { return 0; }
 	virtual MathScriptInset const  * asScriptInset() const  { return 0; }
@@ -227,6 +220,9 @@ public:
 	virtual bool isActive() const { return nargs() > 0; }
 	/// is the a relational operator (used for splitting equations)
 	virtual bool isRelOp() const { return false; }
+	/// -1: text mode, 1: math mode, 0 undecided
+	enum mode_type {UNDECIDED_MODE, TEXT_MODE, MATH_MODE};
+	virtual mode_type currentMode() const { return UNDECIDED_MODE; }
 	/// will this get written as a single block in {..}
 	virtual bool extraBraces() const { return false; }
 

@@ -94,18 +94,19 @@ MathHullInset::MathHullInset(string const & type)
 	setDefaults();
 }
 
-/*
-MathHullInset::MathHullInset(string const & type, MathGridInset const & grid)
-	: MathGridInset(grid), type_(type), nonum_(1), label_(1)
-{
-	setDefaults();
-}
-*/
-
 
 MathInset * MathHullInset::clone() const
 {
 	return new MathHullInset(*this);
+}
+
+
+MathInset::mode_type MathHullInset::currentMode() const
+{
+	if (type_ == "none")
+		return UNDECIDED_MODE;
+	// definitely math mode ...
+	return MATH_MODE;
 }
 
 

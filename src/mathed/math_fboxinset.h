@@ -20,7 +20,7 @@ public:
 	///
 	MathInset * clone() const;
 	///
-	MathFboxInset * asFboxInset() { return this; }
+	mode_type currentMode() const { return TEXT_MODE; }
 	///
 	void metrics(MathMetricsInfo & mi) const;
 	///

@@ -20,15 +20,11 @@ public:
 	///
 	MathInset * clone() const;
 	///
+	mode_type currentMode() const { return TEXT_MODE; }
+	///
 	void metrics(MathMetricsInfo & mi) const;
 	///
 	void draw(MathPainterInfo & pi, int x, int y) const;
-	/// identifies BoxInsets
-	MathBoxInset * asBoxInset() { return this; }
-	/// identifies BoxInsets
-	MathBoxInset const * asBoxInset() const { return this; }
-	///
-	void rebreak();
 	///
 	void write(WriteStream & os) const;
 	///

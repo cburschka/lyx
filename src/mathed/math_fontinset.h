@@ -20,6 +20,8 @@ public:
 	explicit MathFontInset(latexkeys const * key);
 	///
 	MathInset * clone() const;
+	/// are we in math mode, text mode, or unsure?
+	mode_type currentMode() const;
 	///
 	void metrics(MathMetricsInfo & mi) const;
 	///

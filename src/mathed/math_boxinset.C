@@ -36,12 +36,6 @@ void MathBoxInset::normalize(NormalStream & os) const
 }
 
 
-void MathBoxInset::rebreak()
-{
-	//lyxerr << "trying to rebreak...\n";
-}
-
-
 void MathBoxInset::metrics(MathMetricsInfo & mi) const
 {
 	MathFontSetChanger dummy(mi.base, "textnormal");

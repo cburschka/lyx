@@ -21,9 +21,9 @@ public:
 	///
 	explicit MathHullInset(string const & type);
 	///
-	MathHullInset(string const & type, MathGridInset const & grid);
-	///
 	MathInset * clone() const;
+	///
+	mode_type currentMode() const;
 	///
 	void metrics(MathMetricsInfo & mi) const;
 	///

@@ -138,8 +138,8 @@ public:
 	MathUnknownInset * inMacroMode() const;
 	/// are we currently typing '#1' or '#2' or...?
 	bool inMacroArgMode() const;
-	/// are we in an mbox?
-	bool inMathMode() const;
+	/// are we in math mode (1), text mode (-1) or unsure?
+	MathInset::mode_type currentMode() const;
 
 	// Local selection methods
 	///

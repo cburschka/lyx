@@ -29,6 +29,12 @@ MathInset * MathFontInset::clone() const
 }
 
 
+MathInset::mode_type MathFontInset::currentMode() const
+{
+	return key_->extra == "mathmode" ? MATH_MODE : TEXT_MODE;
+}
+
+
 void MathFontInset::metrics(MathMetricsInfo & mi) const
 {
 	MathFontSetChanger dummy(mi.base, key_->name.c_str());

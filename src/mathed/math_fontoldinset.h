@@ -20,6 +20,8 @@ public:
 	explicit MathFontOldInset(latexkeys const * key);
 	///
 	MathInset * clone() const;
+	/// we are in text mode.
+	mode_type currentMode() const { return TEXT_MODE; }
 	/// we write extra braces in any case...
 	bool extraBraces() const { return true; }
 	///

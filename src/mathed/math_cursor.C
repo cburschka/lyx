@@ -32,12 +32,10 @@
 #include "math_autocorrect.h"
 #include "math_arrayinset.h"
 #include "math_braceinset.h"
-#include "math_boxinset.h"
 #include "math_casesinset.h"
 #include "math_charinset.h"
 #include "math_extern.h"
 #include "math_factory.h"
-#include "math_fboxinset.h"
 #include "math_hullinset.h"
 #include "math_iterator.h"
 #include "math_macroarg.h"
@@ -855,17 +853,6 @@ void MathCursor::touch()
 
 void MathCursor::normalize()
 {
-#if 0
-	// rebreak
-	{
-		MathIterator it = ibegin(formula()->par().nucleus());
-		MathIterator et = iend(formula()->par().nucleus());
-		for (; it != et; ++it)
-			if (it.par()->asBoxInset())
-				it.par()->asBoxInset()->rebreak();
-	}
-#endif
-
 	if (idx() >= par()->nargs()) {
 		lyxerr << "this should not really happen - 1: "
 		       << idx() << " " << par()->nargs() << "\n";
@@ -1366,20 +1353,6 @@ bool MathCursor::script(bool up)
 }
 
 
-bool MathCursor::inMathMode() const
-{
-	if (par()->asBoxInset())
-		return false;
-	if (par()->asFboxInset())
-		return false;
-	if (par()->asParboxInset())
-		return false;
-	if (par()->asParInset())
-		return false;
-	return true;
-}
-
-
 bool MathCursor::interpret(char c)
 {
 	//lyxerr << "interpret 2: '" << c << "'\n";
@@ -1451,16 +1424,6 @@ bool MathCursor::interpret(char c)
 
 	selClearOrDel();
 
-	if (!inMathMode()) {
-		// suppress direct insertion of two spaces in a row
-		// the still allows typing  '<space>a<space>' and deleting the 'a', but
-		// it is better than nothing...
-		if (c == ' ' && hasPrevAtom() && prevAtom()->getChar() == ' ')
-			return true;
-		insert(c);
-		return true;
-	}
-
 	if (c == '\\') {
 		//lyxerr << "starting with macro\n";
 		insert(MathAtom(new MathUnknownInset("\\", false)));
@@ -1468,6 +1431,15 @@ bool MathCursor::interpret(char c)
 	}
 
 	if (c == ' ') {
+		if (currentMode() == MathInset::TEXT_MODE) {
+			// insert spaces in text mode,
+			// but suppress direct insertion of two spaces in a row
+			// the still allows typing  '<space>a<space>' and deleting the 'a', but
+			// it is better than nothing...
+			if (!hasPrevAtom() || prevAtom()->getChar() != ' ')
+				insert(c);
+			return true;
+		}
 		if (hasPrevAtom() && prevAtom()->asSpaceInset()) {
 			prevAtom()->asSpaceInset()->incSpace();
 			return true;
@@ -1770,4 +1742,15 @@ int MathCursor::dispatch(string const & cmd)
 			return res;
 	}
 	return 0;
+}
+
+
+MathInset::mode_type MathCursor::currentMode() const
+{
+	for (int i = Cursor_.size() - 1; i >= 0; --i) {
+		MathInset::mode_type res = Cursor_[i].par_->currentMode();
+		if (res != MathInset::UNDECIDED_MODE)
+			return res;
+	}
+	return MathInset::UNDECIDED_MODE;
 }
