@@ -16,9 +16,9 @@ MetricsBase::MetricsBase()
 
 
 
-MetricsBase::MetricsBase(BufferView * b, LyXFont const & f)
+MetricsBase::MetricsBase(BufferView * b, LyXFont const & f, int w)
 	: bv(b), font(f), style(LM_ST_TEXT), fontname("mathnormal"),
-	  restrictwidth(false), textwidth(0)
+	  restrictwidth(false), textwidth(w)
 {}
 
 
@@ -27,8 +27,8 @@ MetricsInfo::MetricsInfo()
 {}
 
 
-MetricsInfo::MetricsInfo(BufferView * bv, LyXFont const & font)
-	: base(bv, font)
+MetricsInfo::MetricsInfo(BufferView * bv, LyXFont const & font, int textwidth)
+	: base(bv, font, textwidth)
 {}
 
 

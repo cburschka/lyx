@@ -47,6 +47,7 @@ void InsetCommand::metrics(MetricsInfo & mi, Dimension & dim) const
 			       editable() != NOT_EDITABLE);
 	}
 	button_.metrics(mi, dim);
+	dim_ = dim;
 }
 
 

@@ -189,6 +189,7 @@ void InsetQuotes::metrics(MetricsInfo & mi, Dimension & dim) const
 		else
 			dim.wid += font_metrics::width(',', font);
 	}
+	dim_ = dim;
 }
 
 

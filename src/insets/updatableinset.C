@@ -73,21 +73,18 @@ void UpdatableInset::scroll(BufferView * bv, float s) const
 	int const workW = bv->workWidth();
 	int const tmp_top_x = top_x - scx;
 
-	if (tmp_top_x > 0 &&
-	    (tmp_top_x + width(bv, font)) < workW)
+	if (tmp_top_x > 0 && tmp_top_x + width() < workW)
 		return;
 	if (s > 0 && top_x > 0)
 		return;
-
-	// int mx_scx=abs((width(bv,font) - bv->workWidth())/2);
-	//int const save_scx = scx;
 
 	scx = int(s * workW / 2);
 	// if (!display())
 	// scx += 20;
 
-	if ((tmp_top_x + scx + width(bv, font)) < (workW / 2)) {
-		scx += (workW / 2) - (tmp_top_x + scx + width(bv, font));
+#warning metrics?
+	if (tmp_top_x + scx + width() < workW / 2) {
+		scx += workW / 2 - (tmp_top_x + scx + width());
 	}
 }
 
@@ -102,11 +99,11 @@ void UpdatableInset::scroll(BufferView * bv, int offset) const
 		else
 			scx += offset;
 	} else {
-		LyXFont const font;
-		if (!scx && (top_x + width(bv, font)) < (bv->workWidth() - 20))
+#warning metrics?
+		if (!scx && top_x + width() < bv->workWidth() - 20)
 			return;
-		if ((top_x - scx + offset + width(bv, font)) < (bv->workWidth() - 20)) {
-			scx = bv->workWidth() - width(bv, font) - top_x + scx - 20;
+		if (top_x - scx + offset + width() < bv->workWidth() - 20) {
+			scx += bv->workWidth() - width() - top_x - 20;
 		} else {
 			scx += offset;
 		}
@@ -141,7 +138,7 @@ int UpdatableInset::getMaxWidth(BufferView * bv, UpdatableInset const *) const
 	int w;
 
 	if (owner()) {
-		w = static_cast<UpdatableInset *>(owner())->getMaxWidth(bv, this);
+		w = owner()->getMaxWidth(bv, this);
 	} else {
 		w = bv->text->workWidth(this);
 	}

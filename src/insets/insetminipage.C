@@ -24,6 +24,7 @@
 #include "lyxlex.h"
 #include "lyxtext.h"
 #include "Lsstream.h"
+#include "metricsinfo.h"
 
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
@@ -220,7 +221,9 @@ void InsetMinipage::metrics(MetricsInfo & mi, Dimension & dim) const
 		dimension_collapsed(dim);
 	else {
 		Dimension d;
-		InsetCollapsable::metrics(mi, d);
+		MetricsInfo m = mi;
+		m.base.textwidth = params_.width.inPixels(mi.base.textwidth);
+		InsetCollapsable::metrics(m, d);
 		switch (params_.pos) {
 		case top:
 			dim.asc = d.asc;
@@ -237,6 +240,7 @@ void InsetMinipage::metrics(MetricsInfo & mi, Dimension & dim) const
 		}
 		dim.wid = d.wid;
 	}
+	dim_ = dim;
 }
 
 
@@ -347,7 +351,7 @@ void InsetMinipageMailer::string2params(string const & in,
 		return;
 
 	istringstream data(STRCONV(in));
-	LyXLex lex(0,0);
+	LyXLex lex(0, 0);
 	lex.setStream(data);
 
 	if (lex.isOK()) {

@@ -129,13 +129,15 @@ int InsetCollapsable::height_collapsed() const
 
 void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	//lyxerr << "InsetCollapsable::metrics:  width: " << mi.base.textwidth << "\n";
 	dimension_collapsed(dim);
-	if (collapsed_)
-		return;
-	Dimension insetdim;
-	inset.metrics(mi, insetdim);
-	dim.des += insetdim.height() + TEXT_TO_BOTTOM_OFFSET;
-	dim.wid = max(dim.wid, insetdim.wid);
+	if (!collapsed_) {
+		Dimension insetdim;
+		inset.metrics(mi, insetdim);
+		dim.des += insetdim.height() + TEXT_TO_BOTTOM_OFFSET;
+		dim.wid = max(dim.wid, insetdim.wid);
+	}
+	dim_ = dim;
 }
 
 
@@ -156,7 +158,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y, bool inlined) const
 	Dimension dim_collapsed;
 	dimension_collapsed(dim_collapsed);
 
-	int const aa    = ascent(pi.base.bv, pi.base.font);
+	int const aa    = ascent();
 	button_length   = dim_collapsed.width();
 	button_top_y    = -aa;
 	button_bottom_y = -aa + dim_collapsed.height();
@@ -180,8 +182,7 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y, bool inlined) const
 		inset.draw(pi, x, y);
 	} else {
 		draw_collapsed(pi, old_x, bl);
-		int const yy = bl + dim_collapsed.descent()
-			+ inset.ascent(pi.base.bv, pi.base.font);
+		int const yy = bl + dim_collapsed.descent() + inset.ascent();
 		inset.draw(pi, x, yy);
 	}
 }
@@ -221,10 +222,8 @@ void InsetCollapsable::insetUnlock(BufferView * bv)
 
 FuncRequest InsetCollapsable::adjustCommand(FuncRequest const & cmd)
 {
-	LyXFont font(LyXFont::ALL_SANE);
 	FuncRequest cmd1 = cmd;
-	cmd1.y = ascent(cmd.view(), font) + cmd.y -
-	    (height_collapsed() + inset.ascent(cmd.view(), font));
+	cmd1.y = ascent() + cmd.y - (height_collapsed() + inset.ascent());
 	return cmd1;
 }
 
@@ -341,9 +340,7 @@ Inset::RESULT InsetCollapsable::localDispatch(FuncRequest const & cmd)
 				if (cmd.y <= button_bottom_y) {
 					cmd1.y = 0;
 				} else {
-					LyXFont font(LyXFont::ALL_SANE);
-					cmd1.y = ascent(bv, font) + cmd.y -
-						(height_collapsed() + inset.ascent(bv, font));
+					cmd1.y = ascent() + cmd.y - (height_collapsed() + inset.ascent());
 				}
 				inset.localDispatch(cmd);
 			}
@@ -465,8 +462,7 @@ void InsetCollapsable::deleteLyXText(BufferView * bv, bool recursive) const
 void InsetCollapsable::resizeLyXText(BufferView * bv, bool force) const
 {
 	inset.resizeLyXText(bv, force);
-	LyXFont font(LyXFont::ALL_SANE);
-	oldWidth = width(bv, font);
+	oldWidth = width();
 }
 
 

@@ -328,8 +328,6 @@ private:
 	///
 	mutable bool locked;
 	///
-	mutable Dimension dim_;
-	///
 	mutable int top_y;
 	///
 	ParagraphList::iterator inset_par;
@@ -371,5 +369,7 @@ public:
 	void reinitLyXText() const;
 	///
 	mutable LyXText text_;
+	///
+	mutable int textwidth_;
 };
 #endif

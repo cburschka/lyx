@@ -115,15 +115,15 @@ namespace {
 
 		LyXFont const & font = text.getFont(bv->buffer(), par, pos);
 
-		int const width = inset->width(bv, font);
+		int const width = inset->width();
 		int const inset_x = font.isVisibleRightToLeft()
 			? (cur.ix() - width) : cur.ix();
 
 		Box b(
 			inset_x + inset->scroll(),
 			inset_x + width,
-			cur.iy() - inset->ascent(bv, font),
-			cur.iy() + inset->descent(bv, font)
+			cur.iy() - inset->ascent(),
+			cur.iy() + inset->descent()
 		);
 
 		if (!b.contained(x, y)) {
@@ -1297,7 +1297,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			LyXCursor cursor = bv->text->cursor;
 			LyXFont font = bv->text->getFont(bv->buffer(),
 							 cursor.par(), cursor.pos());
-			int width = tli->width(bv, font);
+			int width = tli->width();
 			int inset_x = font.isVisibleRightToLeft()
 				? cursor.ix() - width : cursor.ix();
 			int start_x = inset_x + tli->scroll();

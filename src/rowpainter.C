@@ -74,7 +74,7 @@ private:
 	void paintChangeBar();
 	void paintFirst();
 	void paintLast();
-	void paintForeignMark(float const orig_x, LyXFont const & orig_font);
+	void paintForeignMark(int orig_x, LyXFont const & orig_font);
 	void paintHebrewComposeChar(lyx::pos_type & vpos);
 	void paintArabicComposeChar(lyx::pos_type & vpos);
 	void paintChars(lyx::pos_type & vpos, bool hebrew, bool arabic);
@@ -118,12 +118,12 @@ private:
 	// Looks ugly - is
 	int xo_;
 	int yo_;
-	float x_;
+	int x_;
 	int y_;
 	int width_;
-	float separator_;
-	float hfill_;
-	float label_hfill_;
+	int separator_;
+	int hfill_;
+	int label_hfill_;
 };
 
 RowPainter::RowPainter(BufferView const & bv, LyXText const & text,
@@ -178,11 +178,15 @@ void RowPainter::paintInset(pos_type const pos)
 
 	Assert(inset);
 
+	MetricsInfo mi(perv(bv_), getFont(pos), text_.workWidth());
+	Dimension dim; 
+	inset->metrics(mi, dim);
+
 	PainterInfo pi(perv(bv_));
 	pi.base.font = getFont(pos);
-	int const w = inset->width(perv(bv_), pi.base.font);
+#warning metrics?
 	inset->draw(pi, int(x_), yo_ + row_->baseline());
-	x_ += w;
+	x_ += dim.wid;
 }
 
 
@@ -310,7 +314,7 @@ void RowPainter::paintChars(pos_type & vpos, bool hebrew, bool arabic)
 }
 
 
-void RowPainter::paintForeignMark(float const orig_x, LyXFont const & orig_font)
+void RowPainter::paintForeignMark(int orig_x, LyXFont const & orig_font)
 {
 	if (!lyxrc.mark_foreign_language)
 		return;
@@ -330,7 +334,7 @@ void RowPainter::paintFromPos(pos_type & vpos)
 
 	LyXFont const & orig_font = getFont(pos);
 
-	float const orig_x = x_;
+	int const orig_x = x_;
 
 	char const c = pit_->getChar(pos);
 
@@ -430,11 +434,11 @@ void RowPainter::paintSelection()
 
 	pos_type const body_pos = pit_->beginningOfBody();
 	pos_type const last = lastPrintablePos(text_, row_);
-	float tmpx = x_;
+	int tmpx = x_;
 
 	for (pos_type vpos = row_->pos(); vpos <= last; ++vpos)  {
 		pos_type pos = text_.vis2log(vpos);
-		float const old_tmpx = tmpx;
+		int const old_tmpx = tmpx;
 		if (body_pos > 0 && pos == body_pos - 1) {
 			LyXLayout_ptr const & layout = pit_->layout();
 			LyXFont const lfont = getLabelFont();
@@ -714,7 +718,7 @@ void RowPainter::paintFirst()
 
 		y_top += asc;
 
-		int const w = (text_.isInInset() ? text_.inset_owner->width(perv(bv_), font) : ww);
+		int const w = (text_.isInInset() ? text_.inset_owner->width() : ww);
 		int const xp = static_cast<int>(text_.isInInset() ? xo_ : 0);
 		pain_.line(xp, yo_ + y_top, xp + w, yo_ + y_top,
 			LColor::topline, Painter::line_solid,
@@ -733,7 +737,7 @@ void RowPainter::paintFirst()
 
 		LyXFont font = getLabelFont();
 		if (!pit_->getLabelstring().empty()) {
-			float x = x_;
+			int x = x_;
 			string const str = pit_->getLabelstring();
 
 			// this is special code for the chapter layout. This is
@@ -757,7 +761,7 @@ void RowPainter::paintFirst()
 							font_metrics::width(str, font);
 					}
 
-					pain_.text(int(x),
+					pain_.text(x,
 						yo_ + row_->baseline() -
 						row_->ascent_of_text() - maxdesc,
 						str, font);
@@ -771,7 +775,7 @@ void RowPainter::paintFirst()
 						- font_metrics::width(str, font);
 				}
 
-				pain_.text(int(x), yo_ + row_->baseline(), str, font);
+				pain_.text(x, yo_ + row_->baseline(), str, font);
 			}
 		}
 
@@ -795,7 +799,7 @@ void RowPainter::paintFirst()
 				int(font_metrics::maxDescent(font) * layout->spacing.getValue() * spacing_val
 				+ (layout->labelbottomsep * defaultRowHeight()));
 
-			float x = x_;
+			int x = x_;
 			if (layout->labeltype == LABEL_CENTERED_TOP_ENVIRONMENT) {
 				x = ((is_rtl ? leftMargin() : x_)
 					 + ww - text_.rightMargin(*bv_.buffer(), *row_)) / 2;
@@ -804,7 +808,7 @@ void RowPainter::paintFirst()
 				x = ww - leftMargin() -
 					font_metrics::width(str, font);
 			}
-			pain_.text(int(x), yo_ + row_->baseline()
+			pain_.text(x, yo_ + row_->baseline()
 				  - row_->ascent_of_text() - maxdesc,
 				  str, font);
 		}
@@ -842,7 +846,7 @@ void RowPainter::paintLast()
 
 		y_bottom -= asc;
 
-		int const w = (text_.isInInset() ? text_.inset_owner->width(perv(bv_), font) : ww);
+		int const w = text_.isInInset() ? text_.inset_owner->width() : ww;
 		int const xp = static_cast<int>(text_.isInInset() ? xo_ : 0);
 		int const y = yo_ + y_bottom;
 		pain_.line(xp, y, xp + w, y, LColor::topline, Painter::line_solid,
@@ -879,7 +883,7 @@ void RowPainter::paintLast()
 		LyXFont font = getLabelFont();
 		string const & str = pit_->layout()->endlabelstring();
 		int const x = is_rtl ?
-			int(x_) - font_metrics::width(str, font)
+			x_ - font_metrics::width(str, font)
 			: ww - text_.rightMargin(*bv_.buffer(), *row_) - row_->fill();
 		pain_.text(x, yo_ + row_->baseline(), str, font);
 		break;
@@ -904,7 +908,7 @@ void RowPainter::paintText()
 
 	bool running_strikeout = false;
 	bool is_struckout = false;
-	float last_strikeout_x = 0.0;
+	int last_strikeout_x = 0;
 
 	pos_type vpos = row_->pos();
 	while (vpos <= last) {
@@ -938,7 +942,7 @@ void RowPainter::paintText()
 		if (running_strikeout && (highly_editable_inset || !is_struckout)) {
 			int const middle = yo_ + row_->top_of_text()
 				+ ((row_->baseline() - row_->top_of_text()) / 2);
-			pain_.line(int(last_strikeout_x), middle, int(x_), middle,
+			pain_.line(last_strikeout_x, middle, x_, middle,
 				LColor::strikeout, Painter::line_solid, Painter::line_thin);
 			running_strikeout = false;
 		}
@@ -957,28 +961,25 @@ void RowPainter::paintText()
 			int const y0 = yo_ + row_->baseline();
 			int const y1 = y0 - defaultRowHeight() / 2;
 
-			pain_.line(int(x_), y1, int(x_), y0,
+			pain_.line(x_, y1, x_, y0,
 				     LColor::added_space);
 
 			if (hfillExpansion(text_, row_, pos)) {
 				int const y2 = (y0 + y1) / 2;
 
 				if (pos >= body_pos) {
-					pain_.line(int(x_), y2,
-						  int(x_ + hfill_), y2,
+					pain_.line(x_, y2, x_ + hfill_, y2,
 						  LColor::added_space,
 						  Painter::line_onoffdash);
 					x_ += hfill_;
 				} else {
-					pain_.line(int(x_), y2,
-						  int(x_ + label_hfill_), y2,
+					pain_.line(x_, y2,
+						  x_ + label_hfill_, y2,
 						  LColor::added_space,
 						  Painter::line_onoffdash);
 					x_ += label_hfill_;
 				}
-				pain_.line(int(x_), y1,
-					     int(x_), y0,
-					     LColor::added_space);
+				pain_.line(x_, y1, x_, y0, LColor::added_space);
 			}
 			x_ += 2;
 			++vpos;
@@ -996,7 +997,7 @@ void RowPainter::paintText()
 	if (running_strikeout) {
 		int const middle = yo_ + row_->top_of_text()
 			+ ((row_->baseline() - row_->top_of_text()) / 2);
-		pain_.line(int(last_strikeout_x), middle, int(x_), middle,
+		pain_.line(last_strikeout_x, middle, x_, middle,
 			LColor::strikeout, Painter::line_solid, Painter::line_thin);
 		running_strikeout = false;
 	}
@@ -1059,7 +1060,7 @@ int getLengthMarkerHeight(BufferView const & bv, VSpace const & vsp)
 		return 0;
 
 	int const arrow_size = 4;
-	int const space_size = int(vsp.inPixels(bv));
+	int const space_size = vsp.inPixels(bv);
 
 	LyXFont font;
 	font.decSize();

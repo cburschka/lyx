@@ -142,28 +142,19 @@ int Inset::latexTextWidth(BufferView * bv) const
 }
 
 
-int Inset::ascent(BufferView * bv, LyXFont const & font) const
+int Inset::ascent() const
 {
-	Dimension dim;
-	MetricsInfo mi(bv, font);
-	metrics(mi, dim);
-	return dim.ascent();
+	return dim_.asc;
 }
 
 
-int Inset::descent(BufferView * bv, LyXFont const & font) const
+int Inset::descent() const
 {
-	Dimension dim;
-	MetricsInfo mi(bv, font);
-	metrics(mi, dim);
-	return dim.descent();
+	return dim_.des;
 }
 
 
-int Inset::width(BufferView * bv, LyXFont const & font) const
+int Inset::width() const
 {
-	Dimension dim;
-	MetricsInfo mi(bv, font);
-	metrics(mi, dim);
-	return dim.width();
+	return dim_.wid;
 }

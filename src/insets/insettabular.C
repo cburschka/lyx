@@ -263,33 +263,18 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 		Assert(0);
 	}
 		
-	calculate_dimensions_of_cells(mi.base.bv);
-	//lyxerr << "InsetTabular::metrics, bv: " << mi.base.bv << endl;
-	for (int i = 0; i < tabular.getNumberOfCells(); ++i) {
-		LyXTabular::cellstruct * ci =  tabular.cellinfo_of_cell(i);
-		int col = tabular.column_of_cell(i);
-		InsetText & cell = ci->inset;
-		cell.text_.bv_owner = mi.base.bv;
-		int wid = tabular.column_info[col].p_width.inPixels(mi.base.textwidth);
-		//lyxerr << " " << i << " - " << ci->width_of_cell << " - "
-		//	<< tabular.column_info[col].width_of_column << " -  "
-		//	<< wid << "  ";
-		MetricsInfo m = mi;
-		m.base.textwidth = wid;
-		Dimension d;
-		cell.metrics(m, d);
-	}
-	//lyxerr << endl;
+	calculate_dimensions_of_cells(mi);
 			
 	dim.asc = tabular.getAscentOfRow(0);
 	dim.des = tabular.getHeightOfTabular() - tabular.getAscentOfRow(0) + 1;
 	dim.wid = tabular.getWidthOfTabular() + 2 * ADD_TO_TABULAR_WIDTH;
+	dim_ = dim;
 }
 
 
 void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 {
-	lyxerr << "InsetTabular::draw: " << x << " " << y << "\n";
+	//lyxerr << "InsetTabular::draw: " << x << " " << y << "\n";
 	if (nodraw()) {
 		need_update = FULL;
 		return;
@@ -454,9 +439,6 @@ void InsetTabular::insetUnlock(BufferView * bv)
 void InsetTabular::updateLocal(BufferView * bv, UpdateCodes what) const
 {
 	lyxerr << "InsetTabular::updateLocal: " << what << "\n";
-	if (what == INIT) {
-		calculate_dimensions_of_cells(bv);
-	}
 	if (!locked && what == CELL)
 		what = FULL;
 	if (need_update < what) // only set this if it has greater update
@@ -1246,30 +1228,31 @@ void InsetTabular::validate(LaTeXFeatures & features) const
 }
 
 
-void InsetTabular::calculate_dimensions_of_cells(BufferView * bv) const
+void InsetTabular::calculate_dimensions_of_cells(MetricsInfo & mi) const
 {
-	// FIXME: since InsetText ignores this anyway, it doesn't
-	// matter what we pass it. Ugly
-	LyXFont font;
-
+#if 1
 	// if we have a locking_inset we should have to check only this cell for
-	// change so I'll try this to have a boost, but who knows ;)
+	// change so I'll try this to have a boost, but who knows ;) (Jug?)
+	// This is _really_ important (André)
 	if (need_update != INIT &&
 	    the_locking_inset == tabular.getCellInset(actcell)) {
 		int maxAsc = 0;
 		int maxDesc = 0;
-		for(int i = 0; i < tabular.columns(); ++i) {
+		for (int j = 0; j < tabular.columns(); ++j) {
 			Dimension dim;
-			MetricsInfo mi(bv, font);
-			tabular.getCellInset(actrow, i)->metrics(mi, dim);
-			maxAsc = max(dim.asc, maxAsc);
+			MetricsInfo m = mi;
+			m.base.textwidth =
+				tabular.column_info[j].p_width.inPixels(mi.base.textwidth);
+			tabular.getCellInset(actrow, j)->metrics(m, dim);
+			maxAsc  = max(dim.asc, maxAsc);
 			maxDesc = max(dim.des, maxDesc);
 		}
-		tabular.setWidthOfCell(actcell, the_locking_inset->width(bv, font));
+		tabular.setWidthOfCell(actcell, the_locking_inset->width());
 		tabular.setAscentOfRow(actrow, maxAsc + ADD_TO_HEIGHT);
 		tabular.setDescentOfRow(actrow, maxDesc + ADD_TO_HEIGHT);
 		return;
 	}
+#endif
 
 	int cell = -1;
 	bool changed = false;
@@ -1281,17 +1264,19 @@ void InsetTabular::calculate_dimensions_of_cells(BufferView * bv) const
 				continue;
 			++cell;
 			Dimension dim;
-			MetricsInfo mi(bv, font);
-			tabular.getCellInset(cell)->metrics(mi, dim);
-			maxAsc = max(maxAsc, dim.asc);
+			MetricsInfo m = mi;
+			m.base.textwidth =
+				tabular.column_info[j].p_width.inPixels(mi.base.textwidth);
+			tabular.getCellInset(cell)->metrics(m, dim);
+			maxAsc  = max(maxAsc, dim.asc);
 			maxDesc = max(maxDesc, dim.des);
 			changed = tabular.setWidthOfCell(cell, dim.wid) || changed;
 		}
 		changed = tabular.setAscentOfRow(i, maxAsc + ADD_TO_HEIGHT) || changed;
 		changed = tabular.setDescentOfRow(i, maxDesc + ADD_TO_HEIGHT) || changed;
 	}
-	if (changed)
-		tabular.reinit();
+	//if (changed)
+	//	tabular.reinit();
 }
 
 
@@ -2051,15 +2036,15 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 }
 
 
-bool InsetTabular::activateCellInset(BufferView * bv, int x, int y, mouse_button::state button,
-				     bool behind)
+bool InsetTabular::activateCellInset(BufferView * bv, int x, int y,
+	mouse_button::state button, bool behind)
 {
 	UpdatableInset * inset =
 		static_cast<UpdatableInset*>(tabular.getCellInset(actcell));
-	LyXFont font(LyXFont::ALL_SANE);
 	if (behind) {
-		x = inset->x() + inset->width(bv, font);
-		y = inset->descent(bv, font);
+#warning metrics?
+		x = inset->x() + inset->width();
+		y = inset->descent();
 	}
 	//inset_x = cursor.x() - top_x + tabular.getBeginningOfTextInCell(actcell);
 	//inset_y = cursor.y();
@@ -2083,8 +2068,8 @@ bool InsetTabular::activateCellInsetAbs(BufferView * bv, int x, int y,
 
 bool InsetTabular::insetHit(BufferView *, int x, int) const
 {
-	return (x + top_x)
-		> (cursor_.x() + tabular.getBeginningOfTextInCell(actcell));
+	return x + top_x
+		> cursor_.x() + tabular.getBeginningOfTextInCell(actcell);
 }
 
 

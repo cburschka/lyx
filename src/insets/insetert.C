@@ -297,9 +297,9 @@ bool InsetERT::lfunMouseRelease(FuncRequest const & cmd)
 	    (cmd.y >= button_top_y) && (cmd.y <= button_bottom_y)) {
 		updateStatus(bv, true);
 	} else {
-		LyXFont font(LyXFont::ALL_SANE);
 		FuncRequest cmd1 = cmd;
-		cmd1.y = ascent(bv, font) + cmd.y - inset.ascent(bv, font);
+#warning metrics?
+		cmd1.y = ascent() + cmd.y - inset.ascent();
 
 		// inlined is special - the text appears above
 		// button_bottom_y
@@ -554,6 +554,7 @@ void InsetERT::metrics(MetricsInfo & mi, Dimension & dim) const
 		inset.metrics(mi, dim);
 	else
 		InsetCollapsable::metrics(mi, dim);
+	dim_ = dim;
 }
 
 

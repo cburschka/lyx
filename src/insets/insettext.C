@@ -152,12 +152,14 @@ InsetText & InsetText::operator=(InsetText const & it)
 void InsetText::init(InsetText const * ins)
 {
 	if (ins) {
+		textwidth_ = ins->textwidth_;
 		text_.bv_owner = ins->text_.bv_owner;
 		setParagraphData(ins->paragraphs);
 		autoBreakRows = ins->autoBreakRows;
 		drawFrame_ = ins->drawFrame_;
 		frame_color = ins->frame_color;
 	} else {
+		textwidth_ = 0; // unbounded
 		drawFrame_ = NEVER;
 		frame_color = LColor::insetframe;
 		autoBreakRows = false;
@@ -274,7 +276,10 @@ void InsetText::read(Buffer const * buf, LyXLex & lex)
 
 void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	//lyxerr << "InsetText::metrics:  width: " << mi.base.textwidth << "\n";
+	//lyxerr << "InsetText::metrics: " << getInsetName()
+	//	<< " width: " << mi.base.textwidth << "\n";
+	if (mi.base.textwidth)
+		textwidth_ = mi.base.textwidth;
 	BufferView * bv = mi.base.bv;
 	setViewCache(bv);
 	text_.rebuild(mi.base.textwidth);
@@ -288,6 +293,7 @@ void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 
 int InsetText::textWidth(BufferView * bv, bool fordraw) const
 {
+/*
 	int w = autoBreakRows ? getMaxWidth(bv, this) : -1;
 
 	if (fordraw)
@@ -298,6 +304,10 @@ int InsetText::textWidth(BufferView * bv, bool fordraw) const
 		return -1;
 
 	return w - 2 * TEXT_TO_INSET_OFFSET;
+	lyxerr << "InsetText::textWidth: " << getInsetName()
+		<< " " << textwidth_ << endl;
+*/
+	return textwidth_;
 }
 
 
@@ -1866,7 +1876,7 @@ int InsetText::cx(BufferView * bv) const
 		LyXFont font = text_.getFont(bv->buffer(), text_.cursor.par(),
 					    text_.cursor.pos());
 		if (font.isVisibleRightToLeft())
-			x -= the_locking_inset->width(bv, font);
+			x -= the_locking_inset->width();
 	}
 	return x;
 }
@@ -1879,7 +1889,7 @@ int InsetText::cix(BufferView * bv) const
 		LyXFont font = text_.getFont(bv->buffer(), text_.cursor.par(),
 					    text_.cursor.pos());
 		if (font.isVisibleRightToLeft())
-			x -= the_locking_inset->width(bv, font);
+			x -= the_locking_inset->width();
 	}
 	return x;
 }

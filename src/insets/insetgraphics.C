@@ -204,6 +204,7 @@ dispatch_result InsetGraphics::localDispatch(FuncRequest const & cmd)
 void InsetGraphics::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	graphic_->metrics(mi, dim);
+	dim_ = dim;
 }
 
 

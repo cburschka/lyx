@@ -1,4 +1,23 @@
 
+2003-07-18  André Pönitz  <poenitz@gmx.net>
+
+	* inset.[Ch]:
+	* insetbibitem.C:
+	* insetcollapsable.C:
+	* insetcommand.C:
+	* insetert.C:
+	* insetexternal.C:
+	* insetgraphics.[Ch]:
+	* insetlatexaccent.[Ch]:
+	* insetminipage.C:
+	* insetnewline.C:
+	* insetquotes.C:
+	* insetspace.C:
+	* insetspecialchar.C:
+	* insettabular.[Ch]:
+	* insettext.[Ch]:
+	* updatableinset.C: two-phase-drawing for InsetText & InsetTabular
+
 2003-07-17  André Pönitz  <poenitz@gmx.net>
 
 	* insetcollapsable.C:

@@ -28,7 +28,7 @@ struct MetricsBase {
 	///
 	MetricsBase();
 	///
-	MetricsBase(BufferView * bv, LyXFont const & font);
+	MetricsBase(BufferView * bv, LyXFont const & font, int textwidth);
 
 	/// the current view
 	BufferView * bv;
@@ -53,7 +53,7 @@ struct MetricsInfo {
 	///
 	MetricsInfo();
 	///
-	MetricsInfo(BufferView * bv, LyXFont const & font);
+	MetricsInfo(BufferView * bv, LyXFont const & font, int textwidth);
 
 	///
 	MetricsBase base;

@@ -322,13 +322,12 @@ int LyXText::singleWidth(ParagraphList::iterator pit,
 			// should be changed! (Jug 20011204)
 			//tmpinset->update(bv());
 			Dimension dim;
-			MetricsInfo mi;
-			mi.base.bv = bv();
-			mi.base.font = font;
+			MetricsInfo mi(bv(), font, workWidth());
 			tmpinset->metrics(mi, dim);
-#endif
-			//return tmpinset->width(bv(), font);
 			return dim.wid;
+#else 
+			return tmpinset->width();
+#endif
 		}
 		return 0;
 	}
@@ -1084,18 +1083,20 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 				tmpfont = getFont(bv()->buffer(), pit, pos);
 				tmpinset = pit->getInset(pos);
 				if (tmpinset) {
-#if 1 // this is needed for deep update on initialitation
+#if 0 // this is needed for deep update on initialitation
 #warning inset->update FIXME
 					//tmpinset->update(bv());
 					Dimension dim;
-					MetricsInfo mi;
-					mi.base.bv = bv();
-					mi.base.font = tmpfont;
+					MetricsInfo mi(bv(), tmpfont, workWidth());
 					tmpinset->metrics(mi, dim);
-#endif
 					maxwidth += dim.wid;
 					maxasc = max(maxasc, dim.asc);
 					maxdesc = max(maxdesc, dim.des);
+#else
+					maxwidth += tmpinset->width();
+					maxasc = max(maxasc, tmpinset->ascent());
+					maxdesc = max(maxdesc, tmpinset->descent());
+#endif
 				}
 			} else {
 				maxwidth += singleWidth(pit, pos);
@@ -1317,9 +1318,9 @@ void LyXText::setHeightOfRow(RowList::iterator rit)
 
 	rit->top_of_text(rit->baseline() - font_metrics::maxAscent(font));
 
-	float x = 0;
+	int x = 0;
 	if (layout->margintype != MARGIN_RIGHT_ADDRESS_BOX) {
-		float dummy;
+		int dummy;
 		// this IS needed
 		rit->width(maxwidth);
 		prepareToPrint(rit, x, dummy, dummy, dummy, false);
@@ -1826,13 +1827,13 @@ void LyXText::charInserted()
 }
 
 
-void LyXText::prepareToPrint(RowList::iterator rit, float & x,
-			     float & fill_separator,
-			     float & fill_hfill,
-			     float & fill_label_hfill,
+void LyXText::prepareToPrint(RowList::iterator rit, int & x,
+			     int & fill_separator,
+			     int & fill_hfill,
+			     int & fill_label_hfill,
 			     bool bidi) const
 {
-	float w = rit->fill();
+	int w = rit->fill();
 	fill_hfill = 0;
 	fill_label_hfill = 0;
 	fill_separator = 0;
@@ -1842,12 +1843,10 @@ void LyXText::prepareToPrint(RowList::iterator rit, float & x,
 
 	bool const is_rtl =
 		pit->isRightToLeftPar(bv()->buffer()->params);
-	if (is_rtl) {
-		x = (workWidth() > 0)
-			? rightMargin(*bv()->buffer(), *rit) : 0;
-	} else
-		x = (workWidth() > 0)
-			? leftMargin(*rit) : 0;
+	if (is_rtl)
+		x = workWidth() > 0 ? rightMargin(*bv()->buffer(), *rit) : 0;
+	else
+		x = workWidth() > 0 ? leftMargin(*rit) : 0;
 
 	// is there a manual margin with a manual label
 	LyXLayout_ptr const & layout = pit->layout();
@@ -1855,7 +1854,7 @@ void LyXText::prepareToPrint(RowList::iterator rit, float & x,
 	if (layout->margintype == MARGIN_MANUAL
 	    && layout->labeltype == LABEL_MANUAL) {
 		/// We might have real hfills in the label part
-		float nlh = numberOfLabelHfills(*this, rit);
+		int nlh = numberOfLabelHfills(*this, rit);
 
 		// A manual label par (e.g. List) has an auto-hfill
 		// between the label text and the body of the
@@ -1866,12 +1865,12 @@ void LyXText::prepareToPrint(RowList::iterator rit, float & x,
 			++nlh;
 
 		if (nlh && !pit->getLabelWidthString().empty()) {
-			fill_label_hfill = labelFill(*rit) / nlh;
+			fill_label_hfill = int(labelFill(*rit) / nlh);
 		}
 	}
 
 	// are there any hfills in the row?
-	float const nh = numberOfHfills(*this, rit);
+	int const nh = numberOfHfills(*this, rit);
 
 	if (nh) {
 		if (w > 0)
@@ -1879,7 +1878,7 @@ void LyXText::prepareToPrint(RowList::iterator rit, float & x,
 	// we don't have to look at the alignment if it is ALIGN_LEFT and
 	// if the row is already larger then the permitted width as then
 	// we force the LEFT_ALIGN'edness!
-	} else if (static_cast<int>(rit->width()) < workWidth()) {
+	} else if (int(rit->width()) < workWidth()) {
 		// is it block, flushleft or flushright?
 		// set x how you need it
 		int align;
@@ -1908,7 +1907,7 @@ void LyXText::prepareToPrint(RowList::iterator rit, float & x,
 		switch (align) {
 	    case LYX_ALIGN_BLOCK:
 	    {
-			float const ns = numberOfSeparators(*this, rit);
+			int const ns = numberOfSeparators(*this, rit);
 			RowList::iterator next_row = boost::next(rit);
 			ParagraphList::iterator next_pit = next_row->par();
 
@@ -2661,6 +2660,7 @@ LyXText::getRow(ParagraphList::iterator pit, pos_type pos) const
 	return rit;
 }
 
+
 // returns pointer to a specified row
 RowList::iterator
 LyXText::getRow(ParagraphList::iterator pit, pos_type pos, int & y) const
@@ -2689,6 +2689,7 @@ LyXText::getRow(ParagraphList::iterator pit, pos_type pos, int & y) const
 
 	return rit;
 }
+
 
 // returns pointer to some fancy row 'below' specified row
 RowList::iterator LyXText::cursorIRow() const

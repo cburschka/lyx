@@ -44,6 +44,7 @@ void InsetNewline::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.asc = font_metrics::maxAscent(font);
 	dim.des = font_metrics::maxDescent(font);
 	dim.wid = font_metrics::width('n', font);
+	dim_ = dim;
 }
 
 

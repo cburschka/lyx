@@ -170,6 +170,7 @@ dispatch_result InsetExternal::localDispatch(FuncRequest const & cmd)
 void InsetExternal::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	renderer_->metrics(mi, dim);
+	dim_ = dim;
 }
 
 

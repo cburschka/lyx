@@ -1615,10 +1615,10 @@ float LyXText::getCursorX(RowList::iterator rit,
 			  pos_type pos, pos_type last, bool boundary) const
 {
 	pos_type cursor_vpos = 0;
-	float x;
-	float fill_separator;
-	float fill_hfill;
-	float fill_label_hfill;
+	int x;
+	int fill_separator;
+	int fill_hfill;
+	int fill_label_hfill;
 	// This call HAS to be here because of the BidiTables!!!
 	prepareToPrint(rit, x, fill_separator, fill_hfill,
 		       fill_label_hfill);
@@ -1752,13 +1752,12 @@ void LyXText::setCurrentFont()
 pos_type
 LyXText::getColumnNearX(RowList::iterator rit, int & x, bool & boundary) const
 {
-	float tmpx = 0.0;
-	float fill_separator;
-	float fill_hfill;
-	float fill_label_hfill;
+	int tmpx = 0;
+	int fill_separator;
+	int fill_hfill;
+	int fill_label_hfill;
 
-	prepareToPrint(rit, tmpx, fill_separator,
-		       fill_hfill, fill_label_hfill);
+	prepareToPrint(rit, tmpx, fill_separator, fill_hfill, fill_label_hfill);
 
 	pos_type vc = rit->pos();
 	pos_type last = lastPrintablePos(*this, rit);
@@ -1870,7 +1869,8 @@ void LyXText::setCursorFromCoordinates(int x, int y)
 
 	setCursorFromCoordinates(cursor, x, y);
 	setCurrentFont();
-	deleteEmptyParagraphMechanism(old_cursor);
+#warning DEPM disabled, otherwise crash when entering new table
+	//deleteEmptyParagraphMechanism(old_cursor);
 }
 
 

@@ -133,7 +133,6 @@ private:
 	boost::scoped_ptr<PreviewImpl> const preview_;
 
 	/// cache
-	mutable Dimension dim_;
 	mutable bool set_label_;
 	mutable ButtonRenderer button_;
 };

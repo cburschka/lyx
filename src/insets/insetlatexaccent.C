@@ -404,7 +404,8 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 			// closer to the top of the dot-less 'i' or 'j'.
 			char tmpic = ic; // store the ic when we
 			ic = 'x';        // calculates the ascent of
-			int asc = ascent(bv, font); // the dot-less version (here: 'x')
+#warning metrics?
+			int asc = ascent(); // the dot-less version (here: 'x')
 			ic = tmpic;      // set the orig ic back
 			y = baseline - asc; // update to new y coord.
 		}
@@ -473,7 +474,7 @@ void InsetLatexAccent::draw(PainterInfo & pi, int x, int baseline) const
 
 		case CIRCLE:     // circle
 		{
-			LyXFont tmpf(font);
+			LyXFont tmpf = font;
 			tmpf.decSize().decSize();
 			pi.pain.text(int(x2 - (font_metrics::rbearing(0xB0, tmpf) - font_metrics::lbearing(0xB0, tmpf)) / 2.0),
 				  int(baseline - font_metrics::ascent(ic, font) - font_metrics::descent(0xB0, tmpf) - (font_metrics::ascent(0xB0, tmpf) + font_metrics::descent(0xB0, tmpf)) / 3.0),

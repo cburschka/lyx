@@ -129,8 +129,6 @@ private:
 	bool  plusdesc;
 	/// international char
 	mutable char  ic;
-	///
-	mutable Dimension dim_;
 };
 
 

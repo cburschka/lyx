@@ -56,6 +56,7 @@ void InsetSpecialChar::metrics(MetricsInfo & mi, Dimension & dim) const
 	dim.wid = font_metrics::width(s, font);
 	if (kind_ == HYPHENATION && dim.wid > 5)
 		dim.wid -= 2; // to make it look shorter
+	dim_ = dim;
 }
 
 

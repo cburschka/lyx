@@ -17,6 +17,7 @@
 
 #include "LColor.h"
 #include "insetbase.h"
+#include "dimension.h"
 #include "support/types.h"
 
 #include <vector>
@@ -157,11 +158,11 @@ public:
 	///
 	Inset(Inset const & in);
 	///
-	int ascent(BufferView *, LyXFont const &) const;
+	int ascent() const;
 	///
-	int descent(BufferView *, LyXFont const &) const;
+	int descent() const;
 	///
-	int width(BufferView *, LyXFont const &) const;
+	int width() const;
 	/// what appears in the minibuffer when opening
 	virtual string const editMessage() const;
 	///
@@ -331,6 +332,8 @@ protected:
 	unsigned int id_;
 	///
 	static unsigned int inset_id;
+	///
+	mutable Dimension dim_;
 
 private:
 	///
