@@ -1,0 +1,33 @@
+#!/bin/sh
+
+LYXDIR=`pwd`
+LYX_XFONTS=$LYXDIR/fonts
+
+if [ ! -d $LYX_XFONTS ]; then
+    mkdir $LYX_XFONTS || exit
+
+fi
+
+rm -f $LYX_XFONTS/fonts.dir $LYX_XFONTS/fonts.scale
+
+
+for file in `sed -e 's/^\(.*\.pf[ab]\) .*$/\1/' < fonts-xlfd`; do
+    filepath=`kpsewhich $file`
+
+    if [ $? -eq 0 ]; then
+        if [ ! -e $LYX_XFONTS/$file ]; then
+
+            ln -s $filepath $LYX_XFONTS/$file
+        fi
+
+        echo `grep -e $file fonts-xlfd` >> $LYX_XFONTS/fonts.scale
+        echo "$file found."
+
+    fi
+done
+
+awk "/\.pf/ { nlines++ }\
+END { print nlines }" < $LYX_XFONTS/fonts.scale > $LYX_XFONTS/fonts.dir
+
+cat $LYX_XFONTS/fonts.scale >> $LYX_XFONTS/fonts.dir
+cp $LYX_XFONTS/fonts.dir $LYX_XFONTS/fonts.scale
