@@ -1,3 +1,12 @@
+2004-07-24  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* math_macrotable.C (expand): n is now size_t
+
+	* math_macroarg.h (number): return size_t
+	(number_): make it a size_t
+
+	* math_macroarg.[Ch] (MathMacroArgument): take size_t as arg
+
 2004-05-28  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* Makefile.am (EXTRA_DIST): add formulamacro.C

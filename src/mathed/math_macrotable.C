@@ -29,6 +29,7 @@ using std::map;
 using std::pair;
 using std::string;
 using std::vector;
+using std::size_t;
 
 
 MacroData::MacroData()
@@ -54,7 +55,7 @@ void MacroData::expand(vector<MathArray> const & args, MathArray & to) const
 			continue;
 		//it.cell().erase(it.pos());
 		//it.cell().insert(it.pos(), it.nextInset()->asMathInset()
-		int n = static_cast<MathMacroArgument*>(it.nextInset())->number();
+		size_t n = static_cast<MathMacroArgument*>(it.nextInset())->number();
 		if (n <= args.size()) {
 			it.cell().erase(it.pos());
 			it.cell().insert(it.pos(), args[n - 1]);
@@ -63,7 +64,6 @@ void MacroData::expand(vector<MathArray> const & args, MathArray & to) const
 	//lyxerr << "MathData::expand: res: " << inset.cell(0) << endl;
 	to = inset.cell(0);
 }
-
 
 
 // The global table.

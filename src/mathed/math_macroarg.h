@@ -20,7 +20,7 @@
 class MathMacroArgument : public MathDimInset {
 public:
 	///
-	explicit MathMacroArgument(int);
+	explicit MathMacroArgument(std::size_t);
 	///
 	std::auto_ptr<InsetBase> clone() const;
 	///
@@ -28,7 +28,7 @@ public:
 	///
 	void draw(PainterInfo &, int x, int y) const;
 	///
-	int number() const { return number_; }
+	std::size_t number() const { return number_; }
 	///
 	InsetBase::Code lyxCode() const { return MATHMACROARG_CODE; }
 
@@ -39,7 +39,7 @@ public:
 
 private:
 	/// A number between 1 and 9
-	int number_;
+	std::size_t number_;
 	///
 	char str_[3];
 };

@@ -19,9 +19,10 @@
 
 using std::endl;
 using std::auto_ptr;
+using std::size_t;
 
 
-MathMacroArgument::MathMacroArgument(int n)
+MathMacroArgument::MathMacroArgument(size_t n)
 	: number_(n)
 {
 	if (n < 1 || n > 9) {
