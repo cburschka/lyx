@@ -97,15 +97,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 		t->setCursorIntern(firstUndoParagraph(bv, num), 0);
 	}
 
-	// Replace the paragraphs with the undo informations.
-	Paragraph * undopar     = undo.pars.empty() ? 0 : undo.pars.front();
-	Paragraph * lastundopar = undo.pars.empty() ? 0 : undo.pars.back();
-
-	// Get last undo par and set the right(new) inset-owner of the
-	// paragraph if there is any. This is not needed if we don't
-	// have a paragraph before because then in is automatically
-	// done in the function which assigns the first paragraph to
-	// an InsetText. (Jug)
+	// Set the right(new) inset-owner of the paragraph if there is any. 
 	if (!undo.pars.empty()) {
 		Inset * in = 0;
 		if (before)
@@ -116,10 +108,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			undo.pars[i]->setInsetOwner(in);
 	}
 
-	// Otherwise the undo destructor would
-	// delete the paragraph.
-	undo.pars.resize(0);
-
+	// Replace the paragraphs with the undo informations.
 	vector<Paragraph *> deletelist;
 
 	// Now add old paragraphs to be deleted.
@@ -129,7 +118,7 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 			deletepar = before->next();
 		else
 			deletepar = firstUndoParagraph(bv, undo.number_of_inset_id);
-		Paragraph * tmppar2 = undopar;
+		Paragraph * tmppar2 = undo.pars.front();
 		while (deletepar && deletepar != behind) {
 			deletelist.push_back(deletepar);
 			Paragraph * tmppar = deletepar;
@@ -151,13 +140,14 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 	// the LyXText works!!!
 
 	// Thread the end of the undo onto the par in front if any.
-	if (lastundopar) {
-		lastundopar->next(behind);
+	if (!undo.pars.empty()) {
+		undo.pars.back()->next(behind);
 		if (behind)
-			behind->previous(lastundopar);
+			behind->previous(undo.pars.back());
 	}
 
 	// Put the new stuff in the list if there is one.
+	Paragraph * undopar     = undo.pars.empty() ? 0 : undo.pars.front();
 	if (undopar) {
 		undopar->previous(before);
 		if (before)
@@ -275,6 +265,9 @@ bool textHandleUndo(BufferView * bv, Undo & undo)
 		(*pit)->next(0);
 		delete (*pit);
 	}
+
+	// Otherwise the undo destructor would delete the paragraphs
+	undo.pars.resize(0);
 
 	finishUndo();
 	bv->text->postPaint(0);
