@@ -1,5 +1,12 @@
 2001-07-30  Baruch Even  <baruch@lyx.org>
 
+	* insetgraphics.C (decideOutputImageFormat): when doing postscript output
+	convert PNG/GIF/JPG to EPS, assume the rest are EPS already. 
+
+	HACKY! Will need to add an EPS detection routine like old InsetFig does!
+
+2001-07-30  Baruch Even  <baruch@lyx.org>
+
 	* insetgraphics.C: Added EPSI to be an alias of EPS.
 
 2001-07-29  Baruch Even  <baruch@lyx.org>

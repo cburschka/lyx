@@ -528,9 +528,11 @@ string decideOutputImageFormat(string const & in_fmt)
 	}
 
 	// If it's postscript, we always do eps.
-	if (in_fmt == "eps" || in_fmt == "epsi")
-		return in_fmt; // eps & epsi are both eps, but different extension.
-	return "eps";
+	// Garst has many eps files with various extensions, we just assume
+	// whatever goes in (except those we know to be otherwise) is eps
+	if (in_fmt == "gif" || in_fmt == "png" || in_fmt == "jpg")
+		return "eps";
+	return in_fmt;
 }
 
 } // Anon. namespace
