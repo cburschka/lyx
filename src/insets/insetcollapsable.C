@@ -226,6 +226,8 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 	inset.draw(bv, f, 
 			   bl + descent_collapsed() + inset.ascent(bv, f),
 			   x, cleared);
+	if (x < (top_x + button_length + TEXT_TO_INSET_OFFSET))
+		x = top_x + button_length + TEXT_TO_INSET_OFFSET;
 }
 
 

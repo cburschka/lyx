@@ -1,3 +1,23 @@
+2001-08-08  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (setPos): fixed wrong actrow < rows() check.
+
+	* insettext.C (insetUnlock): remove double-space on inset unlock.
+
+	* insetcollapsable.C (draw): fix returned x when label > inset-width.
+
+	* insettabular.C (update): fixed cursor positon after an insert.
+	(insetAllowed): do not allow to insert insets when not inside the
+	inset!
+	(draw): clear below an inset too as it could have changed height.
+
+	* inset.C (getMaxWidth): fixed width for inset in inset.
+
+	* insettext.C (update): small fix.
+
+	* insettabular.C (tabularFeatures): added selection support to
+	DELETE_ROW/DELETE_COLUMN.
+
 2001-08-07  Juergen Vigna  <jug@sad.it>
 
 	* inset.C (getMaxWidth): recoded and all it's implementations!

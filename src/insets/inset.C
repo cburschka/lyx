@@ -320,11 +320,6 @@ int UpdatableInset::getMaxWidth(BufferView * bv, UpdatableInset const *) const
 	if (w < 0) {
 		return -1;
 	}
-	if (owner()) {
-		if (topx_set) // this makes only sense if we have a top_x
-			w = w - top_x + owner()->x();
-		return w;
-	}
 	// check for margins left/right and extra right margin "const 5"
 	if ((w - ((2 * TEXT_TO_INSET_OFFSET) + 5)) >= 0)
 		w -= (2 * TEXT_TO_INSET_OFFSET) + 5;
@@ -333,6 +328,9 @@ int UpdatableInset::getMaxWidth(BufferView * bv, UpdatableInset const *) const
 			w = 10; // minimum I require!!!
 		} else {
 			w -= top_x;
+			if (owner()) {
+				w += owner()->x();
+			}
 		}
 	} else if (w < 10) {
 		w = 10;

@@ -2038,8 +2038,8 @@ bool LyXText::updateInset(BufferView * bview, Inset * inset)
 
 
 void LyXText::setCursor(BufferView * bview, Paragraph * par,
-			Paragraph::size_type pos, 
-			bool setfont, bool boundary) const
+                        Paragraph::size_type pos, 
+                        bool setfont, bool boundary) const
 {
 	LyXCursor old_cursor = cursor;
 	setCursorIntern(bview, par, pos, setfont, boundary);

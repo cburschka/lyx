@@ -1,3 +1,12 @@
+2001-08-08  Juergen Vigna  <jug@sad.it>
+
+	* tabular.C (SetWidthOfCell): fixed special case where the width
+	was not updated!
+	(LeftLine): handle '|' in align_special.
+	(RightLine): ditto
+	(LeftAlreadyDrawed): ditto
+	(SetWidthOfCell): ditto
+
 2001-08-07  Juergen Vigna  <jug@sad.it>
 
 	* lyx_main.C (readUIFile): fixed some forgotten lowercase!

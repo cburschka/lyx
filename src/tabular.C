@@ -16,6 +16,9 @@
 #pragma implementation
 #endif
 
+// temporary until verified (08/08/2001 Jug)
+#define SPECIAL_COLUM_HANDLING 1
+
 #include <algorithm>
 #include <cstdlib>
 
@@ -435,17 +438,43 @@ bool LyXTabular::BottomLine(int cell, bool onlycolumn) const
 
 bool LyXTabular::LeftLine(int cell, bool onlycolumn) const
 {
-	if (!onlycolumn && IsMultiColumn(cell))
+	if (!onlycolumn && IsMultiColumn(cell)) {
+#ifdef SPECIAL_COLUM_HANDLING
+		if (cellinfo_of_cell(cell)->align_special.empty())
+			return cellinfo_of_cell(cell)->left_line;
+		return prefixIs(frontStrip(cellinfo_of_cell(cell)->align_special), "|");
+#else
 		return cellinfo_of_cell(cell)->left_line;
+#endif
+	}
+#ifdef SPECIAL_COLUM_HANDLING
+	if (column_info[column_of_cell(cell)].align_special.empty())
+		return column_info[column_of_cell(cell)].left_line;
+	return prefixIs(frontStrip(column_info[column_of_cell(cell)].align_special), "|");
+#else
 	return column_info[column_of_cell(cell)].left_line;
+#endif
 }
 
 
 bool LyXTabular::RightLine(int cell, bool onlycolumn) const
 {
-	if (!onlycolumn && IsMultiColumn(cell))
+	if (!onlycolumn && IsMultiColumn(cell)) {
+#ifdef SPECIAL_COLUM_HANDLING
+		if (cellinfo_of_cell(cell)->align_special.empty())
+			return cellinfo_of_cell(cell)->right_line;
+		return suffixIs(strip(cellinfo_of_cell(cell)->align_special), "|");
+#else
 		return cellinfo_of_cell(cell)->right_line;
+#endif
+	}
+#ifdef SPECIAL_COLUM_HANDLING
+	if (column_info[column_of_cell(cell)].align_special.empty())
+		return column_info[right_column_of_cell(cell)].right_line;
+	return suffixIs(strip(column_info[column_of_cell(cell)].align_special), "|");
+#else
 	return column_info[right_column_of_cell(cell)].right_line;
+#endif
 }
 
 
@@ -478,7 +507,11 @@ bool LyXTabular::LeftAlreadyDrawed(int cell) const
 				LyXTabular::CELL_PART_OF_MULTICOLUMN));
 		if (GetAdditionalWidth(cell_info[row][column].cellno))
 			return false;
+#ifdef SPECIAL_COLUM_HANDLING
 		return column_info[column].right_line;
+#else
+		return RightLine(cell_info[row][column].cellno, true);
+#endif
 	}
 	return false;
 }
@@ -527,11 +560,14 @@ int LyXTabular::GetAdditionalWidth(int cell) const
 	// internally already set in SetWidthOfCell
 	// used to get it back in text.C
 	int const col = right_column_of_cell(cell);
-	if (col < columns_ - 1 && column_info[col].right_line &&
-		column_info[col+1].left_line)
+	int const row = row_of_cell(cell);
+	if (col < columns_ - 1 && RightLine(cell, true) &&
+		LeftLine(cell_info[row][col+1].cellno, true)) // column_info[col+1].left_line)
+	{
 		return WIDTH_OF_LINE;
-	else
+	} else {
 		return 0;
+	}
 }
 
 
@@ -608,17 +644,28 @@ bool LyXTabular::SetWidthOfCell(int cell, int new_width)
 	int const column1 = column_of_cell(cell);
 	bool tmp = false;
 	int width = 0;
+	int add_width = 0;
 
-	if (GetWidthOfCell(cell) == (new_width+2*WIDTH_OF_LINE))
+#ifdef SPECIAL_COLUM_HANDLING
+	if (RightLine(cell_info[row][column1].cellno, true) &&
+		(column1 < columns_-1) &&
+		LeftLine(cell_info[row][column1+1].cellno, true))
+#else
+	if (column_info[column1].right_line && (column1 < columns_-1) &&
+		column_info[column1+1].left_line) // additional width
+#endif
+	{
+		// additional width
+		add_width = WIDTH_OF_LINE;
+	}
+	if (GetWidthOfCell(cell) == (new_width+2*WIDTH_OF_LINE+add_width)) {
 		return false;
+	}
 	if (IsMultiColumn(cell, true)) {
 		tmp = SetWidthOfMulticolCell(cell, new_width);
 	} else {
-		width = (new_width + 2*WIDTH_OF_LINE);
+		width = (new_width + 2*WIDTH_OF_LINE + add_width);
 		cell_info[row][column1].width_of_cell = width;
-		if (column_info[column1].right_line && (column1 < columns_-1) &&
-			column_info[column1+1].left_line) // additional width
-			cell_info[row][column1].width_of_cell += WIDTH_OF_LINE;
 		tmp = calculate_width_of_column_NMC(column1);
 	}
 	if (tmp) {
@@ -2100,40 +2147,42 @@ int LyXTabular::Latex(Buffer const * buf,
 	else
 		os << "\\begin{tabular}{";
 	for (int i = 0; i < columns_; ++i) {
-		if (column_info[i].left_line)
-			os << '|';
 		if (!column_info[i].align_special.empty()) {
 			os << column_info[i].align_special;
-		} else if (!column_info[i].p_width.empty()) {
-			switch (column_info[i].valignment) {
-			case LYX_VALIGN_TOP:
-				os << "p";
-				break;
-			case LYX_VALIGN_CENTER:
-				os << "m";
-				break;
-			case LYX_VALIGN_BOTTOM:
-				os << "b";
-				break;
+		} else { 
+			if (column_info[i].left_line)
+				os << '|';
+			if (!column_info[i].p_width.empty()) {
+				switch (column_info[i].valignment) {
+				case LYX_VALIGN_TOP:
+					os << "p";
+					break;
+				case LYX_VALIGN_CENTER:
+					os << "m";
+					break;
+				case LYX_VALIGN_BOTTOM:
+					os << "b";
+					break;
 			}
-			os << "{"
-			   << column_info[i].p_width
-			   << '}';
-		} else {
-			switch (column_info[i].alignment) {
-			case LYX_ALIGN_LEFT:
-				os << 'l';
-				break;
-			case LYX_ALIGN_RIGHT:
+				os << "{"
+				   << column_info[i].p_width
+				   << '}';
+			} else {
+				switch (column_info[i].alignment) {
+				case LYX_ALIGN_LEFT:
+					os << 'l';
+					break;
+				case LYX_ALIGN_RIGHT:
 				os << 'r';
 				break;
-			default:
-				os << 'c';
-				break;
+				default:
+					os << 'c';
+					break;
+				}
 			}
+			if (column_info[i].right_line)
+				os << '|';
 		}
-		if (column_info[i].right_line)
-			os << '|';
 	}
 	os << "}\n";
 	++ret;

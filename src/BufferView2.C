@@ -407,7 +407,7 @@ bool BufferView::lockInset(UpdatableInset * inset)
 
 void BufferView::showLockedInsetCursor(int x, int y, int asc, int desc)
 {
-	if (theLockingInset() && available()) {
+	if (available() && theLockingInset()) {
 		LyXCursor cursor = text->cursor;
 		if ((cursor.pos() - 1 >= 0) &&
 		    (cursor.par()->getChar(cursor.pos() - 1) ==
@@ -415,7 +415,7 @@ void BufferView::showLockedInsetCursor(int x, int y, int asc, int desc)
 		    (cursor.par()->getInset(cursor.pos() - 1) ==
 		     theLockingInset()->getLockingInset()))
 			text->setCursor(this, cursor,
-					cursor.par(), cursor.pos() - 1);
+			                cursor.par(), cursor.pos() - 1);
 		LyXScreen::Cursor_Shape shape = LyXScreen::BAR_SHAPE;
 		LyXText * txt = getLyXText();
 		if (theLockingInset()->getLockingInset()->lyxCode() ==

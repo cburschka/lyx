@@ -249,7 +249,8 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 		x += static_cast<float>(scroll());
 #endif
 	if (!cleared && ((need_update == INIT) || (need_update == FULL) ||
-			 (top_x != int(x)) || (top_baseline != baseline))) {
+	                 (top_x != int(x)) || (top_baseline != baseline)))
+	{
 		int h = ascent(bv, font) + descent(bv, font);
 		int const tx = display() || !owner() ? 0 : top_x;
 		int w =  tx ? width(bv, font) : pain.paperWidth();
@@ -314,11 +315,12 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 			Inset * inset = tabular->GetCellInset(cell);
 			for (i = 0;
 			     inset != the_locking_inset && i < tabular->rows();
-			     ++i) {
+			     ++i)
+			{
 				for (j = 0;
-				     inset != the_locking_inset
-					     && j < tabular->columns();
-				     ++j) {
+				     inset != the_locking_inset && j < tabular->columns();
+				     ++j)
+				{
 					if (tabular->IsPartOfMultiColumn(i, j))
 						continue;
 					nx += tabular->GetWidthOfColumn(cell);
@@ -355,14 +357,9 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 		}
 		float dx = nx + tabular->GetBeginningOfTextInCell(cell);
 		float cx = dx;
-		//cx = dx = nx + tabular->GetBeginningOfTextInCell(cell);
 		tabular->GetCellInset(cell)->draw(bv, font, baseline, dx, false);
-#if 0
-		if (bv->text->status == LyXText::CHANGED_IN_DRAW)
-			return;
-#endif
 		// clear only if we didn't have a change
-		if (need_update == CELL) {
+		if (bv->text->status() != LyXText::CHANGED_IN_DRAW) {
 			// clear before the inset
 			pain.fillRectangle(
 				nx + 1,
@@ -381,6 +378,18 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 				tabular->GetAdditionalWidth(cell) - 1,
 				tabular->GetAscentOfRow(i) +
 				tabular->GetDescentOfRow(i) - 1,
+				backgroundColor());
+			// clear below the inset
+			pain.fillRectangle(
+				nx + 1,
+				baseline + the_locking_inset->descent(bv, font) + 1,
+				tabular->GetWidthOfColumn(cell) -
+				tabular->GetAdditionalWidth(cell) - 1,
+				tabular->GetAscentOfRow(i) +
+				tabular->GetDescentOfRow(i) -
+				the_locking_inset->ascent(bv, font) -
+				the_locking_inset->descent(bv, font) -
+				TEXT_TO_INSET_OFFSET - 1,
 				backgroundColor());
 		}
 	}
@@ -461,15 +470,18 @@ void InsetTabular::drawCellSelection(Painter & pain, int x, int baseline,
 void InsetTabular::update(BufferView * bv, LyXFont const & font, bool reinit)
 {
 	if (in_update) {
-		if (reinit && owner()) {
-			owner()->update(bv, font, true);
+		if (reinit) {
+			resetPos(bv);
+			if (owner())
+				owner()->update(bv, font, true);
 		}
 		return;
 	}
 	in_update = true;
 	if (reinit) {
 		need_update = INIT;
-		calculate_dimensions_of_cells(bv, font, true);
+		if (calculate_dimensions_of_cells(bv, font, true))
+			resetPos(bv);
 		if (owner())
 			owner()->update(bv, font, true);
 		in_update = false;
@@ -596,14 +608,10 @@ bool InsetTabular::lockInsetInInset(BufferView * bv, UpdatableInset * inset)
 		lyxerr[Debug::INSETS] << "OK" << endl;
 		the_locking_inset = tabular->GetCellInset(actcell);
 		resetPos(bv);
-		inset_x = cursor_.x() - top_x + tabular->GetBeginningOfTextInCell(actcell);
-		inset_y = cursor_.y();
 		return true;
 	} else if (the_locking_inset && (the_locking_inset == inset)) {
 		lyxerr[Debug::INSETS] << "OK" << endl;
 		resetPos(bv);
-		inset_x = cursor_.x() - top_x + tabular->GetBeginningOfTextInCell(actcell);
-		inset_y = cursor_.y();
 	} else if (the_locking_inset) {
 		lyxerr[Debug::INSETS] << "MAYBE" << endl;
 		return the_locking_inset->lockInsetInInset(bv, inset);
@@ -1156,8 +1164,8 @@ void InsetTabular::validate(LaTeXFeatures & features) const
 
 
 bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv,
-						 LyXFont const & font,
-						 bool reinit) const
+                                                 LyXFont const & font,
+                                                 bool reinit) const
 {
 	int cell = -1;
 	int maxAsc = 0;
@@ -1180,9 +1188,6 @@ bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv,
 		changed = tabular->SetDescentOfRow(actrow, maxDesc + ADD_TO_HEIGHT) || changed;
 		return changed;
 	}
-#if 0
-	cur_cell = -1;
-#endif
 	for (int i = 0; i < tabular->rows(); ++i) {
 		maxAsc = 0;
 		maxDesc = 0;
@@ -1281,7 +1286,7 @@ void InsetTabular::setPos(BufferView * bv, int x, int y) const
 	int ly = tabular->GetDescentOfRow(actrow);
 
 	// first search the right row
-	while((ly < y) && (actrow < tabular->rows())) {
+	while((ly < y) && ((actrow+1) < tabular->rows())) {
 		cursor_.y(cursor_.y() + tabular->GetDescentOfRow(actrow) +
 				 tabular->GetAscentOfRow(actrow + 1) +
 				 tabular->GetAdditionalHeight(actrow + 1));
@@ -1293,22 +1298,10 @@ void InsetTabular::setPos(BufferView * bv, int x, int y) const
 	// now search the right column
 	int lx = tabular->GetWidthOfColumn(actcell) -
 		tabular->GetAdditionalWidth(actcell);
-#if 0
-#ifdef WITH_WARNINGS
-#warning Jürgen, can you rewrite this to _not_ use the sequencing operator. (Lgb)
-#endif
-	for (; !tabular->IsLastCellInRow(actcell) && (lx < x);
-	     ++actcell,lx += tabular->GetWidthOfColumn(actcell) +
-		     tabular->GetAdditionalWidth(actcell - 1));
-#else
-	// Jürgen, you should check that this is correct. (Lgb)
-#warning Jürgen, please check. (Lgb)
 	for (; !tabular->IsLastCellInRow(actcell) && lx < x; ++actcell) {
 		lx += tabular->GetWidthOfColumn(actcell + 1)
 			+ tabular->GetAdditionalWidth(actcell);
 	}
-	
-#endif
 	cursor_.x(lx - tabular->GetWidthOfColumn(actcell) + top_x + 2);
 	resetPos(bv);
 }
@@ -1383,6 +1376,10 @@ void InsetTabular::resetPos(BufferView * bv) const
 		   (top_x + tabular->GetWidthOfTabular()) > (bv->workWidth() - 20)) {
 		scroll(bv, old_x - cursor_.x());
 		updateLocal(bv, FULL, false);
+	}
+	if (the_locking_inset) {
+		inset_x = cursor_.x() - top_x + tabular->GetBeginningOfTextInCell(actcell);
+		inset_y = cursor_.y();
 	}
 	if ((!the_locking_inset ||
 	     !the_locking_inset->getFirstLockingInsetOfType(TABULAR_CODE)) &&
@@ -1592,8 +1589,8 @@ bool InsetTabular::tabularFeatures(BufferView * bv, string const & what)
 
 
 void InsetTabular::tabularFeatures(BufferView * bv,
-				   LyXTabular::Feature feature,
-				   string const & value)
+                                   LyXTabular::Feature feature,
+                                   string const & value)
 {
 	int sel_col_start;
 	int sel_col_end;
@@ -1675,6 +1672,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 	case LyXTabular::SET_SPECIAL_COLUMN:
 	case LyXTabular::SET_SPECIAL_MULTI:
 		tabular->SetAlignSpecial(actcell,value,feature);
+		updateLocal(bv, FULL, true);
 		break;
 	case LyXTabular::APPEND_ROW:
 		// append the row into the tabular
@@ -1691,19 +1689,23 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		break;
 	case LyXTabular::DELETE_ROW:
 		unlockInsetInInset(bv, the_locking_inset);
-		tabular->DeleteRow(tabular->row_of_cell(actcell));
-		if ((row+1) > tabular->rows())
-			--row;
-		actcell = tabular->GetCellNumber(row, column);
+		for(int i = sel_row_start; i <= sel_row_end; ++i) {
+			tabular->DeleteRow(sel_row_start);
+		}
+		if ((sel_row_start) > tabular->rows())
+			--sel_row_start;
+		actcell = tabular->GetCellNumber(sel_row_start, column);
 		clearSelection();
 		updateLocal(bv, INIT, true);
 		break;
 	case LyXTabular::DELETE_COLUMN:
 		unlockInsetInInset(bv, the_locking_inset);
-		tabular->DeleteColumn(tabular->column_of_cell(actcell));
-		if ((column+1) > tabular->columns())
-			--column;
-		actcell = tabular->GetCellNumber(row, column);
+		for(int i = sel_col_start; i <= sel_col_end; ++i) {
+			tabular->DeleteColumn(sel_col_start);
+		}
+		if ((sel_col_start+1) > tabular->columns())
+			--sel_col_start;
+		actcell = tabular->GetCellNumber(row, sel_col_start);
 		clearSelection();
 		updateLocal(bv, INIT, true);
 		break;
@@ -2595,4 +2597,12 @@ bool InsetTabular::searchBackward(BufferView * bv, string const & str,
 #else
 	return searchBackward(bv, str, cs, mw);
 #endif
+}
+
+
+bool InsetTabular::insetAllowed(Inset::Code code) const
+{
+	if (the_locking_inset)
+		return the_locking_inset->insetAllowed(code);
+	return false;
 }

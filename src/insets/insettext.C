@@ -515,6 +515,7 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 {
 	if (in_update) {
 		if (reinit && owner()) {
+			reinitLyXText();
 			owner()->update(bv, font, true);
 		}
 		return;
@@ -522,11 +523,7 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 	in_update = true;
 	if (reinit || need_update == INIT) {
 		need_update |= FULL;
-#if 0
-		resizeLyXText(bv);
-#else
 		reinitLyXText();
-#endif
 		if (owner())
 			owner()->update(bv, font, true);
 		in_update = false;
@@ -743,6 +740,8 @@ void InsetText::insetUnlock(BufferView * bv)
 		                       ->cursor.par()->getLayout());
 	} else
 		bv->owner()->setLayout(bv->text->cursor.par()->getLayout());
+	// hack for deleteEmptyParMech
+	lt->setCursor(bv, par, 0);
 	updateLocal(bv, code, false);
 	if (clear)
 		lt = 0;

@@ -125,9 +125,7 @@ public:
 	///
 	bool insertInset(BufferView *, Inset *);
 	///
-	bool insetAllowed(Inset::Code) const {
-		return the_locking_inset != 0;
-	}
+	bool insetAllowed(Inset::Code code) const;
 	///
 	bool isTextInset() const { return true; }
 	///
