@@ -152,7 +152,6 @@ void UpdatableInset::draw(BufferView *, LyXFont const &,
 void UpdatableInset::SetFont(BufferView *, LyXFont const &, bool )
 {}
 
-
 void UpdatableInset::scroll(BufferView * bv, float s) const
 {
 	LyXFont font;
@@ -181,7 +180,8 @@ void UpdatableInset::scroll(BufferView * bv, float s) const
 	if ((tmp_top_x + scx + width(bv, font)) < (workW / 2)) {
 		scx += (workW / 2) - (tmp_top_x + scx + width(bv, font));
 	}
-	// bv->updateInset(const_cast<UpdatableInset *>(this), false);
+	
+//	bv->updateInset(const_cast<UpdatableInset *>(this), false);
 }
 
 void UpdatableInset::scroll(BufferView * bv, int offset) const
@@ -204,7 +204,7 @@ void UpdatableInset::scroll(BufferView * bv, int offset) const
 			scx += offset;
 		}
 	}
-	// bv->updateInset(const_cast<UpdatableInset *>(this), false);
+//	bv->updateInset(const_cast<UpdatableInset *>(this), false);
 }
 
 

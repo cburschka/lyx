@@ -100,18 +100,19 @@ void InsetText::init(InsetText const * ins)
 	drawTextXOffset = 0;
 	drawTextYOffset = 0;
 	autoBreakRows = false;
-	drawFrame = NEVER;
+	drawFrame_ = NEVER;
 	xpos = 0.0;
 	if (ins) {
-	SetParagraphData(ins->par);
-	autoBreakRows = ins->autoBreakRows;
-	drawFrame = ins->drawFrame;
+		SetParagraphData(ins->par);
+		autoBreakRows = ins->autoBreakRows;
+		drawFrame_ = ins->drawFrame_;
 	}
 	par->SetInsetOwner(this);
 	frame_color = LColor::insetframe;
 	locked = false;
 	old_par = 0;
 	last_drawn_width = -1;
+	frame_is_visible = false;
 }
 
 
@@ -298,28 +299,31 @@ int InsetText::textWidth(BufferView * bv) const
 
 
 void InsetText::draw(BufferView * bv, LyXFont const & f,
-			 int baseline, float & x, bool cleared) const
+                     int baseline, float & x, bool cleared) const
 {
+	if (nodraw())
+		return;
+
 	Painter & pain = bv->painter();
 
 	// no draw is necessary !!!
-	if ((drawFrame == LOCKED) && !locked && !par->size()) {
-		if (!cleared && (need_update & CLEAR_FRAME)) {
-			pain.rectangle(top_x + 1, baseline - insetAscent + 1,
-				       width(bv, f) - 1,
-				       insetAscent + insetDescent - 1,
-				       LColor::background);
-		}
+	if ((drawFrame_ == LOCKED) && !locked && !par->size()) {
 		top_x = int(x);
 		top_baseline = baseline;
 		x += width(bv, f);
+		if (!cleared && (need_update & CLEAR_FRAME))
+			clearFrame(pain, cleared);
 		need_update = NONE;
 		return;
 	}
 
 	xpos = x;
+#if 0
 	UpdatableInset::draw(bv, f, baseline, x, cleared);
-
+#else
+	if (!owner())
+		x += (float)scroll();
+#endif
 	// update insetWidth and insetHeight with dummy calls
 	(void)ascent(bv, f);
 	(void)descent(bv, f);
@@ -327,8 +331,9 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 
 	// if top_x differs we have a rule down and we don't have to clear anything
 	if (!cleared && (top_x == int(x)) &&
-	    ((need_update == INIT) || (need_update == FULL) || (top_baseline != baseline) ||
-		 (last_drawn_width!=insetWidth))) {
+		((need_update&(INIT|FULL)) || (top_baseline!=baseline) ||
+		 (last_drawn_width!=insetWidth)))
+	{
 		int w =  insetWidth;
 		int h = insetAscent + insetDescent;
 		int ty = baseline - insetAscent;
@@ -349,11 +354,14 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		return;
 
 	if (top_x != int(x)) {
-		need_update = INIT;
+		need_update |= INIT;
 		top_x = int(x);
 		bv->text->status = LyXText::CHANGED_IN_DRAW;
 		return;
 	}
+
+//	lyxerr << "InsetText::draw[" << this << "](" << need_update << ":" << int(x) << ":" << top_x << ")\n";
+
 	if (cleared || (last_drawn_width != insetWidth)) {
 		need_update |= FULL;
 		last_drawn_width = insetWidth;
@@ -369,6 +377,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		inset_y = cy(bv) + drawTextYOffset;
 	}
 	if (!cleared && (need_update == CURSOR) && !TEXT(bv)->selection) {
+		drawFrame(pain, cleared);
 		x += width(bv, f);
 		need_update = NONE;
 		return;
@@ -376,6 +385,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	x += TEXT_TO_INSET_OFFSET;
 
 #warning Jürgen, why is this a block of its own? (Lgb)
+#warning because you told me to define variables only in local contest (Jug)!
 	{
 	int y = 0;
 	Row * row = TEXT(bv)->GetRowNearY(y);
@@ -391,7 +401,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	if (y_offset < 0)
 		y_offset = y;
 	TEXT(bv)->first = first;
-	if (cleared) { // (need_update&FULL) || (need_update&INIT)
+	if (cleared) {
 		int yf = y_offset;
 		y = 0;
 		while ((row != 0) && (yf < ph)) {
@@ -424,30 +434,46 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	TEXT(bv)->refresh_y = 0;
 	TEXT(bv)->status = LyXText::UNCHANGED;
 	if ((need_update != CURSOR_PAR) &&
-		((drawFrame == ALWAYS) || ((drawFrame == LOCKED) && locked)))
-	{
-		pain.rectangle(top_x + 1, baseline - insetAscent + 1,
-			       width(bv, f) - 1,
-			       insetAscent + insetDescent - 1,
-			       frame_color);
-	} else if (need_update & CLEAR_FRAME) {
-		pain.rectangle(top_x + 1, baseline - insetAscent + 1,
-			       width(bv, f) - 1,
-			       insetAscent + insetDescent - 1,
-			       LColor::background);
-	}
+		((drawFrame_ == ALWAYS) || ((drawFrame_ == LOCKED) && locked)))
+		drawFrame(pain, cleared);
+	else if (need_update & CLEAR_FRAME)
+		clearFrame(pain, cleared);
 	x += width(bv, f) - TEXT_TO_INSET_OFFSET;
 	if (bv->text->status==LyXText::CHANGED_IN_DRAW) {
-		need_update = INIT;
+		need_update |= INIT;
 	} else if (need_update != INIT)
 		need_update = NONE;
 }
 
 
+void InsetText::drawFrame(Painter & pain, bool cleared) const
+{
+	if (!frame_is_visible || cleared) {
+		pain.rectangle(top_x + 1, top_baseline - insetAscent + 1,
+		               insetWidth - 1, insetAscent + insetDescent - 1,
+		               frame_color);
+		frame_is_visible = true;
+	}
+}
+
+
+void InsetText::clearFrame(Painter & pain, bool cleared) const
+{
+	if (frame_is_visible) {
+		if (!cleared) {
+			pain.rectangle(top_x + 1, top_baseline - insetAscent + 1,
+			               insetWidth - 1, insetAscent + insetDescent - 1,
+			               LColor::background);
+		}
+		frame_is_visible = false;
+	}
+}
+
+
 void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 {
-	if (reinit) {  // && (need_update != CURSOR)) {
-		need_update = INIT;
+	if (reinit) {
+		need_update |= INIT;
 		resizeLyXText(bv);
 		if (owner())
 			owner()->update(bv, font, true);
@@ -458,47 +484,39 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 		inset_y = cy(bv) + drawTextYOffset;
 		the_locking_inset->update(bv, font, reinit);
 	}
+#if 0
 	if (need_update == INIT) {
 		resizeLyXText(bv);
-		need_update = FULL;
+		need_update |= FULL;
 	}
-	int oldw = insetWidth;
-#if 1
-	insetWidth = TEXT(bv)->width + (2 * TEXT_TO_INSET_OFFSET);
-	// max(textWidth(bv->painter()),
-	// static_cast<int>(TEXT(bv)->width) + drawTextXOffset) +
-	// (2 * TEXT_TO_INSET_OFFSET);
-#else
-	insetWidth = textWidth(bv);
-	if (insetWidth < 0)
-		insetWidth = static_cast<int>(TEXT(bv)->width);
 #endif
+	int oldw = insetWidth;
+	insetWidth = TEXT(bv)->width + (2 * TEXT_TO_INSET_OFFSET);
 	if (oldw != insetWidth) {
-//	    printf("TW(%p): %d-%d-%d-%d\n",this,insetWidth, oldw,
-//		   textWidth(bv->painter()),static_cast<int>(TEXT(bv)->width));
 		resizeLyXText(bv);
-		need_update = FULL;
-		update(bv, font, reinit);
+		need_update |= FULL;
+//		update(bv, font, reinit);
 		return;
 	}
-	if ((need_update == CURSOR_PAR) && (TEXT(bv)->status == LyXText::UNCHANGED) &&
+	if ((need_update&CURSOR_PAR) && (TEXT(bv)->status==LyXText::UNCHANGED) &&
 		the_locking_inset)
 	{
 		TEXT(bv)->UpdateInset(bv, the_locking_inset);
 	}
 	
 	if (TEXT(bv)->status == LyXText::NEED_MORE_REFRESH)
-		need_update = FULL;
-
+		need_update |= FULL;
+#if 0
 	int y_temp = 0;
 	Row * row = TEXT(bv)->GetRowNearY(y_temp);
 	insetAscent = row->ascent_of_text() + TEXT_TO_INSET_OFFSET;
 	insetDescent = TEXT(bv)->height - row->ascent_of_text() +
 		TEXT_TO_INSET_OFFSET;
+#endif
 }
 
 
-void InsetText::SetUpdateStatus(BufferView * bv, int what)
+void InsetText::SetUpdateStatus(BufferView * bv, int what) const
 {
 	need_update |= what;
 	if (TEXT(bv)->status == LyXText::NEED_MORE_REFRESH)
@@ -554,7 +572,7 @@ void InsetText::Edit(BufferView * bv, int x, int y, unsigned int button)
 	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	bv->text->FinishUndo();
 	ShowInsetCursor(bv);
-	UpdateLocal(bv, FULL, false);
+	UpdateLocal(bv, CURSOR, false);
 
 	// If the inset is empty set the language of the current font to the
 	// language to the surronding text.
@@ -640,7 +658,10 @@ bool InsetText::UnlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 		if (lr)
 			moveRight(bv, false);
 		old_par = 0; // force layout setting
-		UpdateLocal(bv, CURSOR_PAR, false);
+		if (scroll())
+			scroll(bv, 0.0F);
+		else
+			UpdateLocal(bv, CURSOR, false);
 		return true;
 	}
 	return the_locking_inset->UnlockInsetInInset(bv, inset, lr);
@@ -1514,7 +1535,7 @@ bool InsetText::checkAndActivateInset(BufferView * bv, bool behind)
 		inset->Edit(bv, x, y, 0);
 		if (!the_locking_inset)
 			return false;
-		UpdateLocal(bv, CURSOR_PAR, false);
+		UpdateLocal(bv, CURSOR, false);
 		return true;
 	}
 	return false;
@@ -1540,7 +1561,7 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 		inset->Edit(bv, x - inset_x, y - inset_y, button);
 		if (!the_locking_inset)
 			return false;
-		UpdateLocal(bv, CURSOR_PAR, false);
+		UpdateLocal(bv, CURSOR, false);
 		return true;
 	}
 	return false;
@@ -1637,8 +1658,8 @@ void InsetText::SetAutoBreakRows(bool flag)
 
 void InsetText::SetDrawFrame(BufferView * bv, DrawFrame how)
 {
-	if (how != drawFrame) {
-		drawFrame = how;
+	if (how != drawFrame_) {
+		drawFrame_ = how;
 		if (bv)
 			UpdateLocal(bv, DRAW_FRAME, false);
 	}
@@ -1841,3 +1862,31 @@ void InsetText::removeNewlines()
 		}
 	}
 }
+
+bool InsetText::nodraw() const
+{
+	if (the_locking_inset)
+		return the_locking_inset->nodraw();
+	return UpdatableInset::nodraw();
+}
+
+int InsetText::scroll(bool recursive) const
+{
+	int sx = UpdatableInset::scroll(false);
+
+	if (recursive && the_locking_inset)
+		sx += the_locking_inset->scroll(recursive);
+
+	return sx;
+}
+
+bool InsetText::doClearArea() const
+{
+	return !locked || (need_update & (FULL|INIT));
+}
+/* Emacs:
+ * Local variables:
+ * tab-width: 4
+ * End:
+ * vi:set tabstop=4:
+ */

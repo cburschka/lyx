@@ -187,8 +187,8 @@ enum LyXRCTags {
 	string ps_command;
 	/// option for telling the dvi viewer about the paper size
 	string view_dvi_paper_option;
-        /// default paper size for local xdvi/dvips/ghostview/whatever
-        BufferParams::PAPER_SIZE default_papersize;
+	/// default paper size for local xdvi/dvips/ghostview/whatever
+	BufferParams::PAPER_SIZE default_papersize;
 	/// command to run chktex incl. options
 	string chktex_command;
 	///

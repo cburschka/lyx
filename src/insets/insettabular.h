@@ -101,7 +101,7 @@ public:
 	///
 	void Edit(BufferView *, int x, int y, unsigned int);
 	///
-	bool doClearArea() const { return !locked; };
+	bool doClearArea() const;
 	///
 	void InsetUnlock(BufferView *);
 	///
@@ -178,6 +178,20 @@ public:
 	LyXFunc::func_status getStatus(string const & argument) const;
 	///
 	std::vector<string> const getLabelList() const;
+	///
+	void nodraw(bool b) {
+		UpdatableInset::nodraw(b);
+	}
+	bool nodraw() const;
+	///
+	int scroll(bool recursive=true) const;
+	void scroll(BufferView *bv, float sx) const {
+		UpdatableInset::scroll(bv, sx);
+	}
+	void scroll(BufferView *bv, int offset) const {
+		UpdatableInset::scroll(bv, offset);
+	}
+
 	//
 	// Public structures and variables
 	///
@@ -282,8 +296,6 @@ private:
 	mutable int first_visible_cell;
 	///
 	bool no_selection;
-	///
-	bool no_draw;
 	///
 	mutable bool locked;
 	///

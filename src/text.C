@@ -1159,7 +1159,7 @@ LyXText::NextBreakPoint(BufferView * bview, Row const * row, int width) const
 int LyXText::Fill(BufferView * bview, Row * row, int paper_width) const
 {
 	if (paper_width < 0)
-		return 0;
+		return 20;
 
 	int w;
 	// get the pure distance
@@ -1204,6 +1204,8 @@ int LyXText::Fill(BufferView * bview, Row * row, int paper_width) const
 	}
 	
 	int const fill = paper_width - w - RightMargin(bview->buffer(), row);
+	if (fill < 0)
+		return 0;
 	return fill;
 }
 
@@ -1414,7 +1416,7 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
 		   tmpfont = GetFont(bview->buffer(), row_ptr->par(), pos);
 		   tmpinset = row_ptr->par()->GetInset(pos);
 		   if (tmpinset) {
-			   tmpinset->update(bview, tmpfont);
+//			   tmpinset->update(bview, tmpfont);
 			   asc = tmpinset->ascent(bview, tmpfont);
 			   desc = tmpinset->descent(bview, tmpfont);
 			   maxwidth += tmpinset->width(bview, tmpfont);

@@ -550,7 +550,7 @@ string const LyXFunc::Dispatch(int ac,
 	}
     
 	selection_possible = false;
-	
+
 	if (owner->view()->available())
 		owner->view()->hideCursor();
 

@@ -169,9 +169,12 @@ void InsetCollapsable::draw_collapsed(Painter & pain, LyXFont const &,
 }
 
 
-void InsetCollapsable::draw(BufferView * bv, LyXFont const & f, 
-			    int baseline, float & x, bool cleared) const
+void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
+                            int baseline, float & x, bool cleared) const
 {
+	if (nodraw())
+		return;
+
 	Painter & pain = bv->painter();
 
 	button_length = widthCollapsed;
@@ -185,10 +188,26 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 		return;
 	}
 
+	float old_x = x;
+
+#if 0
+	UpdatableInset::draw(bv, f, baseline, x, cleared);
+#else
+	if (!owner())
+		x += (float)scroll();
+#endif
 	if (!cleared && (inset.need_update == InsetText::FULL ||
 			 inset.need_update == InsetText::INIT ||
 			 top_x != int(x) ||
-			 top_baseline != baseline)) {
+			 top_baseline != baseline))
+	{
+#if 1
+		// we don't need anymore to clear here we just have to tell
+		// the underlying LyXText that it should do the RowClear!
+		inset.SetUpdateStatus(bv, InsetText::FULL);
+		bv->text->status = LyXText::CHANGED_IN_DRAW;
+		return;
+#else
 		int w =  owner() ? width(bv, f) : pain.paperWidth();
 		int h = ascent(bv, f) + descent(bv, f);
 		int const tx = (needFullRow() && !owner()) ? 0 : int(x);
@@ -202,15 +221,15 @@ void InsetCollapsable::draw(BufferView * bv, LyXFont const & f,
 			h += (baseline - ascent(bv, f));
 		pain.fillRectangle(tx, ty - 1, w, h + 2);
 		cleared = true;
+#endif
 	}
 
 	top_x = int(x);
 	top_baseline = baseline;
 
-	float dummy = x;
 	int const bl = baseline - ascent(bv, f) + ascent_collapsed(pain, f);
 
-	draw_collapsed(pain, f, bl, dummy);
+	draw_collapsed(pain, f, bl, old_x);
 	inset.draw(bv, f, 
 		   bl + descent_collapsed(pain, f) + inset.ascent(bv, f),
 		   x, cleared);
@@ -251,6 +270,8 @@ void InsetCollapsable::InsetUnlock(BufferView * bv)
 		collapsed = true;
 	}
 	inset.InsetUnlock(bv);
+	if (scroll())
+		scroll(bv, 0.0F);
 	bv->updateInset(this, false);
 }
 
@@ -381,7 +402,8 @@ bool InsetCollapsable::UnlockInsetInInset(BufferView * bv, UpdatableInset * in,
 		bv->unlockInset(this);
 		return true;
 	}
-	return inset.UnlockInsetInInset(bv, in, lr);
+	bool ret = inset.UnlockInsetInInset(bv, in, lr);
+	return ret;
 }
 
 
@@ -471,4 +493,19 @@ void InsetCollapsable::resizeLyXText(BufferView * bv) const
 std::vector<string> const InsetCollapsable::getLabelList() const
 {
 	return inset.getLabelList();
+}
+
+bool InsetCollapsable::nodraw() const
+{
+	return inset.nodraw();
+}
+
+int InsetCollapsable::scroll(bool recursive) const
+{
+	int sx = UpdatableInset::scroll(false);
+
+	if (recursive)
+		sx += inset.scroll(recursive);
+
+	return sx;
 }
