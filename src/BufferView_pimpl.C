@@ -1426,9 +1426,13 @@ void BufferView::Pimpl::moveCursorUpdate(bool selecting)
 		lt->setSelection(bv_);
 		if (lt->bv_owner)
 			toggleToggle();
+		else
+			updateInset(lt->inset_owner, false);
 	}
-	update(lt, BufferView::SELECT|BufferView::FITCUR);
-	showCursor();
+	if (lt->bv_owner) {
+		update(lt, BufferView::SELECT|BufferView::FITCUR);
+		showCursor();
+	}
 	
 	/* ---> Everytime the cursor is moved, show the current font state. */
 	// should this too me moved out of this func?
@@ -2255,7 +2259,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	case LFUN_ENDSEL:
 	{
 		LyXText * lt = bv_->getLyXText();
-		
+
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		lt->cursorEnd(bv_);
 		finishUndo();

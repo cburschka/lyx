@@ -3,6 +3,7 @@
 	* BufferView_pimpl.C (cursorPrevious): remove old cruft which is
 	plainly wrong.
 	(resizeCurrentBuffer): force also the insets to resize themselfes.
+	(moveCursorUpdate): fixed up for InsetText.
 
 2002-03-08  Angus Leeming  <a.leeming@ic.ac.uk>
 
