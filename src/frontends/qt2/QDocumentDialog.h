@@ -41,13 +41,15 @@ public:
 	QDocumentDialog(QDocument *);
 	~QDocumentDialog();
 
-	void updateFontsize(string const & , string const &);
-	void updatePagestyle(string const & , string const &);
+	void updateFontsize(string const &, string const &);
+	void updatePagestyle(string const &, string const &);
+ 
 public slots:
 	void setTitle(int);
 	void change_adaptor();
 	void saveDefaultClicked();
 	void useDefaultsClicked();
+
 protected slots:
 	void setLSpacing(int);
 	void setMargins(int);
@@ -56,8 +58,10 @@ protected slots:
 	void setSkip(int);
 	void enableSkip(bool);
 	void classChanged();
+ 
 protected:
-    void closeEvent(QCloseEvent * e);
+	void closeEvent(QCloseEvent * e);
+ 
 private:
 	enum Module {
 		LAYOUT,

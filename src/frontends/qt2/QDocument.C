@@ -285,6 +285,7 @@ void QDocument::apply()
 	}
 	default:
 		// DocumentDefskipCB assures that this never happens
+		// so Assert then !!!  - jbl
 		params.setDefSkip(VSpace(VSpace::MEDSKIP));
 		break;
 	}
@@ -334,46 +335,42 @@ void QDocument::apply()
 	}
 	params.paperpackage = char(margin);
 
+	MarginsModuleBase const * m(dialog_->marginsModule);
+ 
 	params.leftmargin =
-		LyXLength(dialog_->marginsModule->innerLE->text().toDouble(),
-			  dialog_->marginsModule->innerUnit->currentLengthItem()
+		LyXLength(m->innerLE->text().toDouble(),
+			  m->innerUnit->currentLengthItem()
 			  ).asString();
 
 	params.topmargin =
-		LyXLength(dialog_->marginsModule->topLE->text().toDouble(),
-			  dialog_->marginsModule->topUnit->currentLengthItem()
+		LyXLength(m->topLE->text().toDouble(),
+			  m->topUnit->currentLengthItem()
 			  ).asString();
-
 
 	params.rightmargin =
-		LyXLength(dialog_->marginsModule->outerLE->text().toDouble(),
-			  dialog_->marginsModule->outerUnit->currentLengthItem()
+		LyXLength(m->outerLE->text().toDouble(),
+			  m->outerUnit->currentLengthItem()
 			  ).asString();
-
 
 	params.bottommargin =
-		LyXLength(dialog_->marginsModule->bottomLE->text().toDouble(),
-			  dialog_->marginsModule->bottomUnit->currentLengthItem()
+		LyXLength(m->bottomLE->text().toDouble(),
+			  m->bottomUnit->currentLengthItem()
 			  ).asString();
-
 
 	params.headheight =
-		LyXLength(dialog_->marginsModule->headheightLE->text().toDouble(),
-			  dialog_->marginsModule->headheightUnit->currentLengthItem()
+		LyXLength(m->headheightLE->text().toDouble(),
+			  m->headheightUnit->currentLengthItem()
 			  ).asString();
-
 
 	params.headsep =
-		LyXLength(dialog_->marginsModule->headsepLE->text().toDouble(),
-			  dialog_->marginsModule->headsepUnit->currentLengthItem()
+		LyXLength(m->headsepLE->text().toDouble(),
+			  m->headsepUnit->currentLengthItem()
 			  ).asString();
-
 
 	params.footskip =
-		LyXLength(dialog_->marginsModule->footskipLE->text().toDouble(),
-			  dialog_->marginsModule->footskipUnit->currentLengthItem()
+		LyXLength(m->footskipLE->text().toDouble(),
+			  m->footskipUnit->currentLengthItem()
 			  ).asString();
-
 }
 
 
@@ -452,7 +449,6 @@ void QDocument::update_contents()
 	dialog_->bulletsModule->bulletsize4CO->setCurrentItem(
 		params.user_defined_bullets[3].getSize() + 1);
 	
-	
 	// packages
 	QStringList enc;
 	enc <<  "default" << "auto" << "latin1" << "latin2" << "latin3" <<
@@ -481,6 +477,9 @@ void QDocument::update_contents()
 	dialog_->packagesModule->amsCB->setChecked(
 		params.use_amsmath);
 
+	// FIXME: this is wrong
+	// QComboBox::setCurrentItem: (lspacingCO) Index 4 out of range
+ 
 	dialog_->packagesModule->lspacingCO->
 		setCurrentItem(params.spacing.getSpace());
 	if (params.spacing.getSpace() == Spacing::Other) {
@@ -581,49 +580,38 @@ void QDocument::update_contents()
 		tostr(LyXLength(params.paperheight).value()).c_str());
 
 	// margins
+ 
+	MarginsModuleBase * m(dialog_->marginsModule);
+ 
 	int item = params.paperpackage;
 	if (params.use_geometry) {
 		item = 1;
 	} else if (item > 0) {
 		item = item + 1;
 	}
-	dialog_->marginsModule->marginCO->setCurrentItem(item);
+	m->marginCO->setCurrentItem(item);
 	dialog_->setCustomMargins(item);
 
-	dialog_->marginsModule->topUnit->setCurrentItem(
-		LyXLength(params.topmargin).unit());
-	dialog_->marginsModule->topLE->setText(
-		tostr(LyXLength(params.topmargin).value()).c_str());
+	m->topUnit->setCurrentItem(LyXLength(params.topmargin).unit());
+	m->topLE->setText(tostr(LyXLength(params.topmargin).value()).c_str());
 
-	dialog_->marginsModule->bottomUnit->setCurrentItem(
-		LyXLength(params.bottommargin).unit());
-	dialog_->marginsModule->bottomLE->setText(
-		tostr(LyXLength(params.bottommargin).value()).c_str());
+	m->bottomUnit->setCurrentItem(LyXLength(params.bottommargin).unit());
+	m->bottomLE->setText(tostr(LyXLength(params.bottommargin).value()).c_str());
 
-	dialog_->marginsModule->innerUnit->setCurrentItem(
-		LyXLength(params.leftmargin).unit());
-	dialog_->marginsModule->innerLE->setText(
-		tostr(LyXLength(params.leftmargin).value()).c_str());
+	m->innerUnit->setCurrentItem(LyXLength(params.leftmargin).unit());
+	m->innerLE->setText(tostr(LyXLength(params.leftmargin).value()).c_str());
 
-	dialog_->marginsModule->outerUnit->setCurrentItem(
-		LyXLength(params.rightmargin).unit());
-	dialog_->marginsModule->outerLE->setText(
-		tostr(LyXLength(params.rightmargin).value()).c_str());
+	m->outerUnit->setCurrentItem(LyXLength(params.rightmargin).unit());
+	m->outerLE->setText(tostr(LyXLength(params.rightmargin).value()).c_str());
 
-	dialog_->marginsModule->headheightUnit->setCurrentItem(
-		LyXLength(params.headheight).unit());
-	dialog_->marginsModule->headheightLE->setText(
-		tostr(LyXLength(params.headheight).value()).c_str());
+	m->headheightUnit->setCurrentItem(LyXLength(params.headheight).unit());
+	m->headheightLE->setText(tostr(LyXLength(params.headheight).value()).c_str());
 
-	dialog_->marginsModule->headsepUnit->setCurrentItem(
-		LyXLength(params.headsep).unit());
-	dialog_->marginsModule->headsepLE->setText(
-		tostr(LyXLength(params.headsep).value()).c_str());
+	m->headsepUnit->setCurrentItem(LyXLength(params.headsep).unit());
+	m->headsepLE->setText(tostr(LyXLength(params.headsep).value()).c_str());
 
-	dialog_->marginsModule->footskipUnit->setCurrentItem(
-		LyXLength(params.footskip).unit());
-	dialog_->marginsModule->footskipLE->setText(
-		tostr(LyXLength(params.footskip).value()).c_str());
+	m->footskipUnit->setCurrentItem(LyXLength(params.footskip).unit());
+	m->footskipLE->setText(tostr(LyXLength(params.footskip).value()).c_str());
 }
 
 
@@ -634,6 +622,7 @@ void QDocument::saveDocDefault()
 	controller().saveAsDefault();
 }
 
+
 void QDocument::useClassDefaults()
 {
 	BufferParams & params = controller().params();
@@ -642,4 +631,3 @@ void QDocument::useClassDefaults()
 	params.useClassDefaults();
 	update_contents();
 }
-

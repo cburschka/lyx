@@ -19,7 +19,6 @@
 
 #include "Qt2Base.h"
 #include "Qt2BC.h"
-//#include "QtLyXView.h"
 
 #include <boost/scoped_ptr.hpp>
 
@@ -30,9 +29,9 @@ class QDocument
 	: public Qt2CB<ControlDocument, Qt2DB<QDocumentDialog> >
 {
 public:
-	///
+
 	friend class QDocumentDialog;
-	///
+
 	QDocument();
 private:
 	/// Apply changes
@@ -45,9 +44,9 @@ private:
 	void saveDocDefault();
 	/// reset to default params
 	void useClassDefaults();
-	///
+ 
+	/// FIXME
 	std::vector<string> lang_;
 };
-
 
 #endif // QDOCUMENT_H
