@@ -68,6 +68,7 @@
 #include "support/syscall.h"
 #include "support/lstrings.h"
 #include "support/path.h"
+#include "support/lyxfunctional.h"
 #include "debug.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
@@ -1207,17 +1208,21 @@ string const LyXFunc::Dispatch(int ac,
 		break;
         }
 
-	case LFUN_HELP_VERSION: 
+	case LFUN_HELP_VERSION: {
 		ProhibitInput(owner->view());
-		fl_show_message((string(_("LyX Version ")) + LYX_VERSION 
-				 + _(" of ") + LYX_RELEASE).c_str(),
+		string msg(_("LyX Version "));
+		msg += LYX_VERSION;
+		msg += " of ";
+		msg += LYX_RELEASE;
+		fl_show_message(msg.c_str(),
 				(_("Library directory: ")
 				 + MakeDisplayPath(system_lyxdir)).c_str(),
 				(_("User directory: ") 
 				 + MakeDisplayPath(user_lyxdir)).c_str());
 		AllowInput(owner->view());
 		break;
-
+	}
+	
 		// --- version control -------------------------------
 	case LFUN_VC_REGISTER:
 	{
@@ -2432,7 +2437,7 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_GOTOFILEROW:
 	{
 	        char file_name[100];
-		int  row;
+		int row;
 		::sscanf(argument.c_str(), " %s %d", file_name, &row);
 
 		// Must replace extension of the file to be .lyx and get full path
@@ -3052,8 +3057,10 @@ string const LyXFunc::Dispatch(int ac,
 			}
 		}
 	} else {
-		owner->getMiniBuffer()->Set(string(_(res.c_str()))
-					    + " " + commandshortcut);
+		string msg(_(res));
+		msg += " ";
+		msg += commandshortcut;
+		owner->getMiniBuffer()->Set(msg);
 	}
 
 	return res;
@@ -3069,7 +3076,8 @@ void LyXFunc::setupLocalKeymap()
 
 void LyXFunc::MenuNew(bool fromTemplate)
 {
-	string fname, initpath = lyxrc.document_path;
+	string fname;
+	string initpath = lyxrc.document_path;
 	LyXFileDlg fileDlg;
 
 	if (owner->view()->available()) {
@@ -3132,7 +3140,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 				// loads document
 				owner->getMiniBuffer()->Set(_("Opening document"), 
 							    MakeDisplayPath(s), "...");
-				XFlush(fl_display);
+				XFlush(fl_get_display());
 				owner->view()->buffer(
 					bufferlist.loadLyXFile(s));
 				owner->getMiniBuffer()->Set(_("Document"),
@@ -3482,13 +3490,12 @@ Inset * LyXFunc::getInsetByCode(Inset::Code code)
 {
 	LyXCursor cursor = owner->view()->text->cursor;
 	Buffer * buffer = owner->view()->buffer();
-	for (Buffer::inset_iterator it = Buffer::inset_iterator(cursor.par(),
-								cursor.pos());
-	     it != buffer->inset_iterator_end(); ++it) {
-		if ((*it)->LyxCode() == code)
-			return *it;
-	}
-	return 0;
+	Buffer::inset_iterator it =
+		find_if(Buffer::inset_iterator(cursor.par(),
+					       cursor.pos()),
+			buffer->inset_iterator_end(),
+			compare_memfun(&Inset::LyxCode, code));
+	return it != buffer->inset_iterator_end() ? (*it) : 0;
 }
 
 

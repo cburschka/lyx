@@ -50,7 +50,7 @@ using std::reverse;
 int tex_code_break_column = 72;  // needs non-zero initialization. set later.
 // this is a bad idea, but how can LyXParagraph find its buffer to get
 // parameters? (JMarc)
-extern BufferView * current_view;
+
 extern string bibitemWidest(Buffer const *);
 
 // this is a minibuffer
@@ -58,6 +58,8 @@ static char minibuffer_char;
 static LyXFont minibuffer_font;
 static Inset * minibuffer_inset;
 
+
+extern BufferView * current_view;
 
 // Initialization of the counter for the paragraph id's,
 // declared in lyxparagraph.h

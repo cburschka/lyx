@@ -42,8 +42,6 @@ using std::vector;
 
 static int const WIDTH_OF_LINE = 5;
 
-extern BufferView * current_view;
-
 /// Define a few methods for the inner structs
 
 LyXTabular::cellstruct::cellstruct() 
@@ -1303,10 +1301,20 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 	    string s1;
 	    string s2;
 	    is >> a >> b >> c;
+#if 1
 	    char ch; // skip '"'
 	    is >> ch;
+#else
+	    // ignore is buggy but we will use it later (Lgb)
+	    is.ignore(); // skip '"'
+#endif    
 	    getline(is, s1, '"');
+#if 1
 	    is >> ch; // skip '"'
+#else
+	    // ignore is buggy but we will use it later (Lgb)
+	    is.ignore(); // skip '"'
+#endif
 	    getline(is, s2, '"');
 	    column_info[i].alignment = static_cast<LyXAlignment>(a);
 	    column_info[i].left_line = b;
@@ -1319,10 +1327,20 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 		string s1;
 		string s2;
 		is >> a >> b >> c >> d >> e >> f >> g;
+#if 1
 		char ch;
 		is >> ch; // skip '"'
+#else
+		// ignore is buggy but we will use it later (Lgb)
+		is.ignore(); // skip '"'
+#endif
 		getline(is, s1, '"');
+#if 1
 		is >> ch; // skip '"'
+#else
+		// ignore is buggy but we will use it later (Lgb)
+		is.ignore(); // skip '"'
+#endif
 		getline(is, s2, '"');
 		cell_info[i][j].multicolumn = static_cast<char>(a);
 		cell_info[i][j].alignment = static_cast<LyXAlignment>(b);
@@ -2362,18 +2380,17 @@ int LyXTabular::AsciiPrintCell(Buffer const * buf, ostream & os,
 	break;
     }
 
-    unsigned int i;
-    for(i=0; i < len1; ++i)
+    for(unsigned int i = 0; i < len1; ++i)
 	os << " ";
     os << sstr.str();
-    for(i=0; i < len2; ++i)
+    for(unsigned int i = 0; i < len2; ++i)
 	os << " ";
     if (RightLine(cell))
 	os << " |";
     else
 	os << "  ";
 
-    return ret * 0;
+    return ret * 0; // eh? (Lgb)
 }
 
 
@@ -2395,7 +2412,7 @@ int LyXTabular::Ascii(Buffer const * buf, ostream & os) const
 	    if (IsMultiColumn(cell, true))
 		continue;
 	    ostringstream sstr;
-	    (void)GetCellInset(cell)->Ascii(buf, sstr, 0);
+	    GetCellInset(cell)->Ascii(buf, sstr, 0);
 	    if (clen[j] < sstr.str().length())
 		clen[j] = sstr.str().length();
 	}
@@ -2407,13 +2424,13 @@ int LyXTabular::Ascii(Buffer const * buf, ostream & os) const
 	    if (!IsMultiColumn(cell, true) || IsPartOfMultiColumn(i, j))
 		continue;
 	    ostringstream sstr;
-	    (void)GetCellInset(cell)->Ascii(buf, sstr, 0);
-	    int len = (int)sstr.str().length();
-	    int n = cells_in_multicolumn(cell);
-	    for (int k = j; (len > 0) && (k < (j+n-1)); ++k)
+	    GetCellInset(cell)->Ascii(buf, sstr, 0);
+	    string::size_type len = sstr.str().length();
+	    int const n = cells_in_multicolumn(cell);
+	    for (int k = j; (len > 0) && (k < (j + n - 1)); ++k)
 		len -= clen[k];
-	    if (len > (int)clen[j+n-1])
-		clen[j+n-1] = len;
+	    if (len > clen[j + n - 1])
+		clen[j + n - 1] = len;
 	}
     }
     cell = 0;
@@ -2428,6 +2445,7 @@ int LyXTabular::Ascii(Buffer const * buf, ostream & os) const
 	os << endl;
 	AsciiBottomHLine(os, i, clen);
     }
+    return ret;
 }
 
 

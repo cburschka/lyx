@@ -32,14 +32,14 @@ static
 GC createGC()
 {
 	XGCValues val;
-	val.foreground = BlackPixel(fl_display, 
-				    DefaultScreen(fl_display));
+	val.foreground = BlackPixel(fl_get_display(), 
+				    DefaultScreen(fl_get_display()));
 	
 	val.function=GXcopy;
 	val.graphics_exposures = false;
 	val.line_style = LineSolid;
 	val.line_width = 0;
-	return XCreateGC(fl_display, RootWindow(fl_display, 0), 
+	return XCreateGC(fl_get_display(), RootWindow(fl_get_display(), 0), 
 			 GCForeground | GCFunction | GCGraphicsExposures
 			 | GCLineWidth | GCLineStyle , &val);
 }
@@ -75,7 +75,7 @@ void LyXScreen::Redraw(LyXText * text)
 
 void LyXScreen::expose(int x, int y, int exp_width, int exp_height)
 {
-	XCopyArea(fl_display,
+	XCopyArea(fl_get_display(),
 		  owner.getPixmap(),
 		  owner.getWin(),
 		  gc_copy,
@@ -156,7 +156,7 @@ void LyXScreen::Draw(LyXText * text, unsigned int y)
 	    && (old_first - y) < owner.height()) {
 		if (text->first < old_first) {
 			DrawFromTo(text, 0, old_first - text->first);
-			XCopyArea (fl_display,
+			XCopyArea (fl_get_display(),
 				   owner.getWin(),
 				   owner.getWin(),
 				   gc_copy,
@@ -175,7 +175,7 @@ void LyXScreen::Draw(LyXText * text, unsigned int y)
 			DrawFromTo(text,
 				   owner.height() + old_first - text->first,
 				   owner.height());
-			XCopyArea (fl_display,
+			XCopyArea (fl_get_display(),
 				   owner.getWin(),
 				   owner.getWin(),
 				   gc_copy,
@@ -251,7 +251,7 @@ void LyXScreen::ShowManualCursor(LyXText const * text, int x, int y,
 	y2 = max(y2, y1);
 	
 	if (cursor_pixmap){
-		XFreePixmap(fl_display, cursor_pixmap);
+		XFreePixmap(fl_get_display(), cursor_pixmap);
 		cursor_pixmap = 0;
 	}
 
@@ -275,12 +275,12 @@ void LyXScreen::ShowManualCursor(LyXText const * text, int x, int y,
 		}
 
 		cursor_pixmap = 
-			XCreatePixmap (fl_display,
+			XCreatePixmap (fl_get_display(),
 				       fl_root,
 				       cursor_pixmap_w,
 				       cursor_pixmap_h,
 				       fl_get_visual_depth());
-		XCopyArea (fl_display,
+		XCopyArea (fl_get_display(),
 			   owner.getWin(),
 			   cursor_pixmap,
 			   gc_copy,
@@ -289,7 +289,7 @@ void LyXScreen::ShowManualCursor(LyXText const * text, int x, int y,
 			   cursor_pixmap_w,
 			   cursor_pixmap_h,
 			   0, 0);
-		XDrawLine(fl_display,
+		XDrawLine(fl_get_display(),
 			  owner.getWin(),
 			  gc_copy,
 			  x + owner.xpos(),
@@ -302,7 +302,7 @@ void LyXScreen::ShowManualCursor(LyXText const * text, int x, int y,
 		case L_SHAPE:
 		case REVERSED_L_SHAPE:
 			int rectangle_h = (cursor_pixmap_h+10)/20;
-			XFillRectangle(fl_display,
+			XFillRectangle(fl_get_display(),
 				       owner.getWin(),
 				       gc_copy,
 				       cursor_pixmap_x + owner.xpos(),
@@ -321,7 +321,7 @@ void LyXScreen::HideCursor()
 	if (!cursor_visible) return;
 
 	if (cursor_pixmap){
-		XCopyArea (fl_display, 
+		XCopyArea (fl_get_display(), 
 			   cursor_pixmap,
 			   owner.getWin(),
 			   gc_copy,

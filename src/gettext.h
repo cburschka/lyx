@@ -32,6 +32,8 @@
 
 #ifdef ENABLE_NLS
 
+#include "LString.h"
+
 #  if HAVE_GETTEXT
 #    include <libintl.h>      // use the header already in the system *EK*
 #    ifdef HAVE_LOCALE_H
@@ -41,7 +43,11 @@
 #    include "../intl/libintl.h"
 #  endif
 
-#  define _(str) gettext(str)
+char const * _(char const *);
+
+string const _(string const &);
+
+//#  define _(str) gettext(str)
 #  define N_(str) (str)              // for detecting static strings
 
 #  ifdef HAVE_LC_MESSAGES
@@ -55,6 +61,8 @@
 #else
 ///
 #  define _(str) (str)
+///
+#  define S_(str) (str)
 ///
 #  define N_(str) (str)
 ///

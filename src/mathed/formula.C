@@ -583,7 +583,7 @@ void InsetFormula::ToggleInsetSelection(BufferView * bv)
     //int n;
     //XPoint * p = 
     //mathcursor->SelGetArea(n);
-//    XFillPolygon(fl_display, pm, LyXGetSelectionGC(), p, n, Nonconvex, CoordModeOrigin);
+//    XFillPolygon(fl_get_display(), pm, LyXGetSelectionGC(), p, n, Nonconvex, CoordModeOrigin);
 //    x -= par->xo; 
 //    y -= par->yo;
 
@@ -781,8 +781,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
       result = DISPATCHED_NOUPDATE;
       break;
     case LFUN_DELETE_LINE_FORWARD:
-	    //current_view->lockedInsetStoreUndo(Undo::INSERT);
-	    bv->lockedInsetStoreUndo(Undo::DELETE);
+      bv->lockedInsetStoreUndo(Undo::DELETE);
       mathcursor->DelLine();
       UpdateLocal(bv);
       break;
@@ -812,8 +811,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
        }
       
     case LFUN_DELETE:
-	    //current_view->lockedInsetStoreUndo(Undo::INSERT);
-	    bv->lockedInsetStoreUndo(Undo::DELETE);
+      bv->lockedInsetStoreUndo(Undo::DELETE);
       mathcursor->Delete();       
       bv->updateInset(this, true);
       break;    
@@ -995,7 +993,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
 	
        if (arg.empty())
 	       break;
-       strncpy(arg2, arg.c_str(), 40); arg2[39]= '\0';
+       ::strncpy(arg2, arg.c_str(), 40); arg2[39]= '\0';
        int n = sscanf(arg2, "%s %s", lf, rg);
        lf[39] = '\0'; rg[39] = '\0';
 
@@ -1069,8 +1067,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
     }
     
     case LFUN_MATH_DISPLAY:
-	    //current_view->lockedInsetStoreUndo(Undo::INSERT);
-	    bv->lockedInsetStoreUndo(Undo::EDIT);
+      bv->lockedInsetStoreUndo(Undo::EDIT);
       display(!disp_flag);
       UpdateLocal(bv);
       break;

@@ -526,7 +526,7 @@ char const ** pixmapFromBitmapData(char const * s, int wx, int hx)
 	}
 	int ww = w/dw, hh = h/dh, x, y;
    
-	XImage * xima = XCreateImage(fl_display, 0, 1, XYBitmap, 0, 
+	XImage * xima = XCreateImage(fl_get_display(), 0, 1, XYBitmap, 0, 
 				    const_cast<char*>(reinterpret_cast<char const *>(bdata)), w, h, 8, 0);
 	xima->byte_order = LSBFirst;
 	xima->bitmap_bit_order = LSBFirst;
@@ -535,7 +535,7 @@ char const ** pixmapFromBitmapData(char const * s, int wx, int hx)
 	if (ww > wx) ww = wx;
 	if (hh > hx) hh = hx;
 	XImage * sbima = XSubImage(xima, x, y, ww, hh);
-	XpmCreateDataFromImage(fl_display, const_cast<char***>(&data), sbima, sbima, 0);
+	XpmCreateDataFromImage(fl_get_display(), const_cast<char***>(&data), sbima, sbima, 0);
 	
 	// Dirty hack to get blue symbols quickly
 	char * sx = const_cast<char*>(strstr(data[2], "FFFFFFFF"));

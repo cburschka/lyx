@@ -232,7 +232,7 @@ kb_keymap::~kb_keymap()
 {
 	// This could be done by a destructor in kb_key.
 	Table::iterator end = table.end();
-	for(Table::iterator it = table.begin(); it != end; ++it) {
+	for (Table::iterator it = table.begin(); it != end; ++it) {
 		delete (*it).table;
 	}
 }
@@ -253,7 +253,7 @@ string const kb_keymap::findbinding(int act) const
 	if (table.empty()) return res;
 
 	Table::const_iterator end = table.end();
-	for(Table::const_iterator cit = table.begin();
+	for (Table::const_iterator cit = table.begin();
 	    cit != end; ++cit) {
 		if ((*cit).table) {
 			string suffix = (*cit).table->findbinding(act);
@@ -265,7 +265,9 @@ string const kb_keymap::findbinding(int act) const
 					+ suffix + "] ";
 			}
 		} else if ((*cit).action == act) {
-			res += "[" + keyname((*cit)) + "] ";
+			res += "[";
+			res += keyname((*cit));
+			res += "] ";
 		}
 	}
 	return res;

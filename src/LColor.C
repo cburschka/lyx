@@ -123,7 +123,7 @@ string const LColor::getGUIName(LColor::color c) const
 {
 	InfoTab::const_iterator ici = infotab.find(c);
 	if (ici != infotab.end())
-		return _((*ici).second.guiname.c_str());
+		return _((*ici).second.guiname);
 
 	return "none";
 }

@@ -14,7 +14,6 @@
 #include <config.h>
 
 #include <algorithm>
-//#include <cctype>
 #include "support/lstrings.h"
 #include "support/LAssert.h"
 #include "debug.h"
@@ -37,16 +36,16 @@ extern kb_keymap * toplevel_keymap;
 extern LyXAction lyxaction;
 
 // Some constants
-const int MENU_LABEL_SIZE = FL_NORMAL_SIZE;
-const int mheight = 30;
-const int mbheight= 22;
+static const int MENU_LABEL_SIZE = FL_NORMAL_SIZE;
+static const int mheight = 30;
+static const int mbheight= 22;
 // where to place the menubar?
-const int yloc = (mheight - mbheight)/2; //air + bw;
-const int mbadd = 20; // menu button add (to width)
+static const int yloc = (mheight - mbheight)/2; //air + bw;
+static const int mbadd = 20; // menu button add (to width)
 // Some space between buttons on the menubar 
-const int air = 2;
-char const * menu_tabstop = "aa";
-char const * default_tabstop = "aaaaaaaa";
+static const int air = 2;
+static char const * menu_tabstop = "aa";
+static char const * default_tabstop = "aaaaaaaa";
 
 //Defined later, used in makeMenubar().
 extern "C"
@@ -186,7 +185,7 @@ string limit_string_length(string const & str)
 	string::size_type const max_item_length = 45;
 
 	if (str.size() > max_item_length)
-		return str.substr(0, max_item_length-3) + "...";
+		return str.substr(0, max_item_length - 3) + "...";
 	else
 		return str;
 }
@@ -303,11 +302,11 @@ void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 				fl_addtopup(menu2, label.c_str());
 			}
 			if (j == max_nonempty) {
-				string label = _(MenuNames[j-1]);
+				string label = _(MenuNames[j - 1]);
 				label += "%l";
 				fl_addtopup(menu, label.c_str(), menu2);
 			} else
-				fl_addtopup(menu, _(MenuNames[j-1]), menu2);
+				fl_addtopup(menu, _(MenuNames[j - 1]), menu2);
 		}
 
 	// Handle normal TOC
@@ -569,7 +568,8 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 			string shortcut = item.shortcut();
 			if (!shortcut.empty()) {
 				shortcut += lowercase(shortcut[0]);
-				fl_addtopup(menu, (label + "%h").c_str(),
+				label += "%h";
+				fl_addtopup(menu, label.c_str(),
 					    submenu, shortcut.c_str());
 			}
 			else {

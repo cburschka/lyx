@@ -135,7 +135,7 @@ void Intl::KeyMapPrim()
 	fl_set_button(fd_form_keymap->KeyOnBtn2, 0);
 
 	/* read text from choice */
-	int i = Language->get();
+	int const i = Language->get();
 
 	string p;
 	if (i == otherkeymap)
@@ -166,7 +166,7 @@ void Intl::KeyMapSec()
 	fl_set_button(fd_form_keymap->KeyOnBtn2, 1);
 
 	/* read text from choice */
-	int i = Language2->get();
+	int const i = Language2->get();
 
 	string p;
 	if (i == otherkeymap)
@@ -291,7 +291,7 @@ void Intl::InitKeyMapper(bool on)
 	Language2->addto(_("other..."));
 	otherkeymap = n + 1;
 	if (!Language->select_text(prim_lang)) {
-		Language->select(n+1);
+		Language->select(n + 1);
 		fl_set_input(fd_form_keymap->OtherKeymap, prim_lang.c_str());
 	}
 	else 

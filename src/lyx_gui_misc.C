@@ -397,7 +397,7 @@ void WarnReadonly(string const & file)
 /// Get the dpi setting of the current screen
 float getScreenDPI()
 {
-	Screen * scr = DefaultScreenOfDisplay(fl_get_display());
+	Screen * scr = ScreenOfDisplay(fl_get_display(), fl_screen); //DefaultScreen(fl_get_display());
 	return ((HeightOfScreen(scr) * 25.4 / HeightMMOfScreen(scr)) +
 		(WidthOfScreen(scr) * 25.4 / WidthMMOfScreen(scr))) / 2;
 }

@@ -514,6 +514,8 @@ int LyXAction::getPseudoAction(kb_action action, string const & arg) const
 // perhaps a pair<kb_action, string> should be returned?
 kb_action LyXAction::retrieveActionArg(int pseudo, string & arg) const
 {
+	arg.erase(); // clear it to be sure.
+	
 	pseudo_map::const_iterator pit = lyx_pseudo_map.find(pseudo);
 
 	if (pit != lyx_pseudo_map.end()) {
@@ -601,16 +603,17 @@ string const LyXAction::getActionName(int action) const
 	string arg;
 	if (isPseudoAction(action)) {
 		ac = retrieveActionArg(action, arg);
-		arg = " " +arg;
-	} 
-	else
+		arg.insert(0, " ");
+	} else
 		ac = static_cast<kb_action>(action);
 
 	info_map::const_iterator iit = lyx_info_map.find(ac);
 
-	if (iit != lyx_info_map.end())
-		return (*iit).second.name + arg;
-	else 
+	if (iit != lyx_info_map.end()) {
+		string ret((*iit).second.name);
+		ret += arg;
+		return ret;
+	} else 
 		return string();
 }
 

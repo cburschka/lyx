@@ -408,7 +408,7 @@ string const LyXFont::stateText(BufferParams * params) const
 	if (bits == inherit)
 		ost << _("Default") << ", ";
 	if (!params || (language() != params->language))
-		ost << _("Language: ") << _(language()->display().c_str()) << ", ";
+		ost << _("Language: ") << _(language()->display()) << ", ";
 	if (number() != OFF)
 		ost << _("  Number ") << _(GUIMiscNames[number()]);
 

@@ -647,7 +647,7 @@ public:
 		///
 		Inset * operator*() { return (*it).inset; }
 		///
-		size_type getPos() {return (*it).pos; }
+		size_type getPos() const {return (*it).pos; }
 		///
 		bool operator==(inset_iterator const & iter) const {
 			return it == iter.it;

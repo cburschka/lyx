@@ -59,7 +59,6 @@ int compare_no_case(string const & s, string const & s2)
 
 int compare_no_case(string const & s, string const & s2, unsigned int len)
 {
-//#warning verify this func please
 	string::const_iterator p = s.begin();
 	string::const_iterator p2 = s2.begin();
 	unsigned int i = 0;
@@ -169,16 +168,17 @@ char uppercase(char c)
 string const lowercase(string const & a)
 {
 	string tmp(a);
-//#ifdef __GLIBCPP__
+#if 1
 	string::iterator result = tmp.begin();
 	string::iterator end = tmp.end();
 	for (string::iterator first = tmp.begin();
 	     first != end; ++first, ++result) {
 		*result = lowercase(*first);
 	}
-//#else
-//	transform(tmp.begin(), tmp.end(), tmp.begin(), tolower);
-//#endif
+#else
+	// We want to use this one. (Lgb)
+	transform(tmp.begin(), tmp.end(), tmp.begin(), tolower);
+#endif
 	return tmp;
 }
 
@@ -186,16 +186,17 @@ string const lowercase(string const & a)
 string const uppercase(string const & a)
 {
 	string tmp(a);
-//#ifdef __GLIBCPP__
+#if 1
 	string::iterator result = tmp.begin();
 	string::iterator end = tmp.end();
 	for (string::iterator first = tmp.begin();
 	     first != end; ++first, ++result) {
 		*result = uppercase(*first);
 	}
-//#else
-//	transform(tmp.begin(), tmp.end(), tmp.begin(), toupper);
-//#endif
+#else
+	// We want to use this one. (Lgb)
+	transform(tmp.begin(), tmp.end(), tmp.begin(), toupper);
+#endif
 	return tmp;
 }
 

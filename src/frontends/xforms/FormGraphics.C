@@ -424,10 +424,10 @@ string FormGraphics::browseFile(string const & filename)
 void FormGraphics::browse()
 {
 	// Get the filename from the dialog
-	string filename = fl_get_input(dialog_->input_filename);
+	string const filename = fl_get_input(dialog_->input_filename);
 
 	// Show the file browser dialog
-	string new_filename = browseFile(filename);
+	string const new_filename = browseFile(filename);
 
 	// Save the filename to the dialog
 	if (new_filename != filename && ! new_filename.empty()) {

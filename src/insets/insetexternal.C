@@ -137,7 +137,6 @@ void InsetExternal::browseCB(FL_OBJECT * ob, long)
 
 	bool error = false;
 	do {
-		//	ProhibitInput(current_view);
 		if (once) {
 			p = fileDlg.Select(_("External inset file"),
 					   current_path,
@@ -146,7 +145,6 @@ void InsetExternal::browseCB(FL_OBJECT * ob, long)
 			p = fileDlg.Select(_("External inset file"), buf,
 					   regexp, string());
 		}
-		//	AllowInput(current_view);
 
 		if (p.empty()) return;
 

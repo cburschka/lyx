@@ -112,7 +112,7 @@ void InsetText::init(InsetText const * ins)
 
 InsetText::~InsetText()
 {
-    for(Cache::const_iterator cit=cache.begin(); cit != cache.end(); ++cit)
+    for(Cache::const_iterator cit = cache.begin(); cit != cache.end(); ++cit)
 	delete (*cit).second;
 //	deleteLyXText((*cit).first);
     LyXParagraph * p = par->next;

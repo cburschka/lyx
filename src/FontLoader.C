@@ -81,7 +81,7 @@ void FontLoader::unload()
 				}
 				for (int i4 = 0; i4<10; i4++) {
 					if (fontstruct[i1][i2][i3][i4]) {
-						XFreeFont(fl_display, fontstruct[i1][i2][i3][i4]);
+						XFreeFont(fl_get_display(), fontstruct[i1][i2][i3][i4]);
 						fontstruct[i1][i2][i3][i4] = 0;
 					}
 				}
@@ -244,14 +244,14 @@ XFontStruct * FontLoader::doLoad(LyXFont::FONT_FAMILY family,
 
 	current_view->owner()->getMiniBuffer()->Store();
 	current_view->owner()->getMiniBuffer()->Set(_("Loading font into X-Server..."));
-	fs = XLoadQueryFont(fl_display, font.c_str());
+	fs = XLoadQueryFont(fl_get_display(), font.c_str());
 	
 	if (fs == 0) {
 		if (font == "fixed") {
 			lyxerr << "We're doomed. Can't get 'fixed' font." << endl;
 		} else {
 			lyxerr << "Could not get font. Using 'fixed'." << endl;
-			fs = XLoadQueryFont(fl_display, "fixed");
+			fs = XLoadQueryFont(fl_get_display(), "fixed");
 		}
 	} else if (lyxerr.debugging(Debug::FONT)) {
 		// Tell user the font matching

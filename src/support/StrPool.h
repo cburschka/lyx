@@ -34,4 +34,6 @@ private:
         Pool pool_;
 };
 
+//extern StrPool strPool;
+
 #endif

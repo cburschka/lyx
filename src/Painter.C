@@ -39,7 +39,7 @@ using std::max;
 Painter::Painter(WorkArea & wa)
 	: PainterBase(wa)
 {
-	display = fl_display;
+	display = fl_get_display();
 }
 
 
@@ -275,13 +275,14 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 	if (lyxrc.font_norm_type == LyXRC::ISO_10646_1) {
 		XChar2b * xs = new XChar2b[ls];
 		Encoding const * encoding = f.language()->encoding();
-		LyXFont const * font = &f; 
+		//LyXFont const * font = &f;
+		LyXFont font(f);
 		if (f.family() == LyXFont::SYMBOL_FAMILY) {
 #ifdef USE_UNICODE_FOR_SYMBOLS
-			LyXFont font2 = f;
-			font2.setFamily(LyXFont::ROMAN_FAMILY);
-			font2.setShape(LyXFont::UP_SHAPE);
-			font = &font2;
+			//LyXFont font2 = f;
+			font.setFamily(LyXFont::ROMAN_FAMILY);
+			font.setShape(LyXFont::UP_SHAPE);
+			//font = &font2;
 #endif
 			encoding = encodings.symbol_encoding();
 		}
@@ -290,7 +291,7 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 			xs[i].byte1 = c >> 8;
 			xs[i].byte2 = c & 0xff;
 		}
-		text(x , y, xs, ls, *font);
+		text(x , y, xs, ls, font);
 		delete[] xs;
 		return *this;
 	}

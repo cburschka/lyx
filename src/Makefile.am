@@ -125,6 +125,7 @@ lyx_SOURCES = \
 	font.h \
 	form1.C \
 	form1.h \
+	gettext.C \
 	gettext.h \
 	include_form.h \
 	intl.C \

@@ -18,45 +18,7 @@
 #include <functional>
 
 #include "support/LAssert.h"
-
-// Functors used in the template.
-
-///
-template<typename T1, typename T2>
-class equal_1st_in_pair {
-public:
-	///
-	equal_1st_in_pair(T1 const & value) : value_(value) {}
-	///
-	typedef std::pair<T1, T2> pair_type;
-	///
-	bool operator() (pair_type const & p) const {
-		return p.first == value_;
-	}
-private:
-	///
-	T1 const & value_;
-};
-
-
-///
-template<typename T1, typename T2>
-class equal_2nd_in_pair {
-public:
-	///
-	equal_2nd_in_pair(T2 const & value) : value_(value) {}
-	///
-	typedef std::pair<T1, T2> pair_type;
-	///
-	bool operator() (pair_type const & p) const {
-		return p.second == value_;
-	}
-private:
-	///
-	T2 const & value_;
-};
-
-
+#include "support/lyxfunctional.h"
 /** This class template is used to translate between two elements, specifically
     it was worked out to translate between an enum and strings when reading
     the lyx file.

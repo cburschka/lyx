@@ -61,12 +61,12 @@ void SetXtermCursor(Window win)
 	static Cursor cursor;
 	static bool cursor_undefined = true;
 	if (cursor_undefined){
-		cursor = XCreateFontCursor(fl_display, XC_xterm);
-		XFlush(fl_display);
+		cursor = XCreateFontCursor(fl_get_display(), XC_xterm);
+		XFlush(fl_get_display());
 		cursor_undefined = false;
 	}
-	XDefineCursor(fl_display, win, cursor);
-	XFlush(fl_display);
+	XDefineCursor(fl_get_display(), win, cursor);
+	XFlush(fl_get_display());
 }
 
 
@@ -704,7 +704,7 @@ void BufferView::Pimpl::enterView()
 void BufferView::Pimpl::leaveView()
 {
 	if (using_xterm_cursor) {
-		XUndefineCursor(fl_display, workarea_->getWin());
+		XUndefineCursor(fl_get_display(), workarea_->getWin());
 		using_xterm_cursor = false;
 	}
 }

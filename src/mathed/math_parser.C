@@ -419,8 +419,6 @@ LyxArrayBase * mathed_parse(unsigned flags, LyxArrayBase * array,
 	  string const name(&yytext[1]);
 	  
 	  // ugly trick to be removed soon (lyx3)
-	  //char c; yyis->get(c);
-	  //yyis->putback(c);
 	  char const c = yyis->peek();
 	  if (c == '[') {
 	      LexGetArg('[');

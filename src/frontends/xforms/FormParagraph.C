@@ -364,12 +364,12 @@ void FormParagraph::general_update()
     case VSpace::LENGTH:
 	fl_set_choice (general_->choice_space_above, 7);
 #ifndef NEW_INSETS
-	fl_set_input  (general_->input_space_above, 
-		       text->cursor.par()->FirstPhysicalPar()->
-		       added_space_top.length().asString().c_str());
+	fl_set_input(general_->input_space_above, 
+		     text->cursor.par()->FirstPhysicalPar()->
+		     added_space_top.length().asString().c_str());
 #else
-	fl_set_input  (general_->input_space_above, text->cursor.par()->
-		       added_space_top.length().asString().c_str());
+	fl_set_input(general_->input_space_above, text->cursor.par()->
+		     added_space_top.length().asString().c_str());
 #endif
 	break;
     }
@@ -407,9 +407,9 @@ void FormParagraph::general_update()
     case VSpace::LENGTH:
 	fl_set_choice (general_->choice_space_below, 7);
 #ifndef NEW_INSETS
-	fl_set_input  (general_->input_space_below, 
-		       text->cursor.par()->FirstPhysicalPar()->
-		       added_space_bottom.length().asString().c_str());
+	fl_set_input(general_->input_space_below, 
+		     text->cursor.par()->FirstPhysicalPar()->
+		     added_space_bottom.length().asString().c_str());
 	break;
     }
     fl_set_button(general_->check_space_below,
@@ -703,7 +703,7 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
 	fl_set_object_lcol(extra_->input_pextra_width, FL_INACTIVE);
 	fl_activate_object(extra_->input_pextra_widthp);
 	fl_set_object_lcol(extra_->input_pextra_widthp, FL_BLACK);
-	if ((atoi(s2.c_str()) < 0 ) || (atoi(s2.c_str()) > 100)) {
+	if ((lyx::atoi(s2) < 0 ) || (lyx::atoi(s2) > 100)) {
 	    ret = false;
 	    fl_set_object_label(dialog_->text_warning,
 			_("Warning: Invalid percent value (0-100)"));

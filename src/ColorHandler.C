@@ -26,7 +26,7 @@ using std::endl;
 
 LyXColorHandler::LyXColorHandler() 
 {
-	display = fl_display;
+	display = fl_get_display();
 	drawable = XCreatePixmap(display, fl_root, 10, 10,
 				 fl_get_visual_depth());
 	

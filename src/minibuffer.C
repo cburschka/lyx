@@ -185,7 +185,7 @@ void MiniBuffer::Set(string const& s1, string const& s2,
 
 	if (!the_buffer->focus) {
 		fl_set_input(the_buffer, ntext.c_str());
-		XFlush(fl_display);
+		XFlush(fl_get_display());
 		text = ntext;
 	}
 }
@@ -237,7 +237,7 @@ void MiniBuffer::Init()
 
 	fl_set_input(the_buffer, text.c_str());
 	setTimer(0);
-	XFlush(fl_display);
+	XFlush(fl_get_display());
 }
 
 

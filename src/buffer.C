@@ -84,6 +84,7 @@
 #include "support/syscall.h"
 #include "support/lyxlib.h"
 #include "support/FileInfo.h"
+#include "support/lyxmanip.h"
 #include "lyxtext.h"
 #include "gettext.h"
 #include "language.h"
@@ -1047,13 +1048,12 @@ bool Buffer::readFile(LyXLex & lex, LyXParagraph * par)
 			format = lex.GetFloat();
 			if (format > 1) {
 				if (LYX_FORMAT - format > 0.05) {
-					
-					printf(_("Warning: need lyxformat %.2f but found %.2f\n"),
-					       LYX_FORMAT, format);
+					lyxerr << fmt(_("Warning: need lyxformat %.2f but found %.2f"),
+						      LYX_FORMAT, format) << endl;
 				}
 				if (format - LYX_FORMAT > 0.05) {
-					printf(_("ERROR: need lyxformat %.2f but found %.2f\n"),
-					       LYX_FORMAT, format);
+					lyxerr << fmt(_("ERROR: need lyxformat %.2f but found %.2f"),
+						      LYX_FORMAT, format) << endl;
 				}
 				bool the_end = readLyXformat2(lex, par);
 				// Formats >= 2.13 support "\the_end" marker
@@ -1889,9 +1889,8 @@ void Buffer::makeLaTeXFile(string const & fname,
 					encodings.insert((*it)->encoding()->LatexName());
 
 			ofs << "\\usepackage[";
-			for (set<string>::const_iterator it = encodings.begin();
-			     it != encodings.end(); ++it)
-				ofs << *it << ",";
+			copy(encodings.begin(), encodings.end(),
+			     ostream_iterator<string>(ofs, ","));
 			ofs << doc_encoding << "]{inputenc}\n";
 			texrow.newline();
 		} else if (params.inputenc != "default") {
@@ -2669,7 +2668,9 @@ void Buffer::DocBookHandleFootnote(ostream & os, LyXParagraph * & par,
 void Buffer::push_tag(ostream & os, string const & tag,
 		      int & pos, char stack[5][3])
 {
+#ifdef WITH_WARNINGS
 #warning Use a real stack! (Lgb)
+#endif
 	// pop all previous tags
 	for (int j = pos; j >= 0; --j)
 		os << "</" << stack[j] << ">";

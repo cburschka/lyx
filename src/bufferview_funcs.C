@@ -165,21 +165,21 @@ void ProhibitInput(BufferView * bv)
 	static bool cursor_undefined = true;
    
 	if (cursor_undefined){
-		cursor = XCreateFontCursor(fl_display, XC_watch);
-		XFlush(fl_display);
+		cursor = XCreateFontCursor(fl_get_display(), XC_watch);
+		XFlush(fl_get_display());
 		cursor_undefined = false;
 	}
    
 	/* set the cursor to the watch for all forms and the canvas */ 
-	XDefineCursor(fl_display, bv->owner()->getForm()->window, 
+	XDefineCursor(fl_get_display(), bv->owner()->getForm()->window, 
 		      cursor);
 
 	if (fd_form_character->form_character->visible)
-		XDefineCursor(fl_display,
+		XDefineCursor(fl_get_display(),
 			      fd_form_character->form_character->window,
 			      cursor);
 
-	XFlush(fl_display);
+	XFlush(fl_get_display());
 	fl_deactivate_all_forms();
 }
 
@@ -188,13 +188,13 @@ void AllowInput(BufferView * bv)
 {
 	/* reset the cursor from the watch for all forms and the canvas */
    
-	XUndefineCursor(fl_display, bv->owner()->getForm()->window);
+	XUndefineCursor(fl_get_display(), bv->owner()->getForm()->window);
 
 	if (fd_form_character->form_character->visible)
-		XUndefineCursor(fl_display,
+		XUndefineCursor(fl_get_display(),
 				fd_form_character->form_character->window);
 
-	XFlush(fl_display);
+	XFlush(fl_get_display());
 	fl_activate_all_forms();
 }
 

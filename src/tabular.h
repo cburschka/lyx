@@ -168,13 +168,13 @@ public:
     LyXTabular * Clone(InsetTabular *);
     
     /// Returns true if there is a topline, returns false if not
-    bool TopLine(int cell, bool onlycolumn=false) const;
+    bool TopLine(int cell, bool onlycolumn = false) const;
     /// Returns true if there is a topline, returns false if not
-    bool BottomLine(int cell, bool onlycolumn=false) const;
+    bool BottomLine(int cell, bool onlycolumn = false) const;
     /// Returns true if there is a topline, returns false if not
-    bool LeftLine(int cell, bool onlycolumn=false) const;
+    bool LeftLine(int cell, bool onlycolumn = false) const;
     /// Returns true if there is a topline, returns false if not
-    bool RightLine(int cell, bool onlycolumn=false) const;
+    bool RightLine(int cell, bool onlycolumn = false) const;
     
     ///
     bool TopAlreadyDrawed(int cell) const;
@@ -493,7 +493,7 @@ private: //////////////////////////////////////////////////////////////////
     ///
     void Reinit();
     ///
-    void set_row_column_number_info(bool oldformat=false);
+    void set_row_column_number_info(bool oldformat = false);
     /// Returns true if a complete update is necessary, otherwise false
     bool SetWidthOfMulticolCell(int cell, int new_width);
     ///

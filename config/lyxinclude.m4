@@ -205,6 +205,7 @@ dnl Check the version of g++
 	case $gxx_version in
 	    2.95.*) ;;
 	    2.96*) ;;
+	    2.97*) ;;
 	    *2.91*) ;;
 	    *) CXXFLAGS="$CXXFLAGS -pedantic";;
         esac

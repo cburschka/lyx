@@ -78,7 +78,6 @@ FL_resource res[] =
 extern "C"
 int LyX_XErrHandler(Display * display, XErrorEvent * xeev)
 {
-//#warning Please see if you can trigger this!
 	// emergency save
 	if (!bufferlist.empty())
 		bufferlist.emergencyWriteAll();
@@ -131,25 +130,25 @@ LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
 	
 	// If width is not set by geometry, check it against monitor width
 	if ( !(geometryBitmask & 4) ) {
-		Screen * scr = DefaultScreenOfDisplay(fl_get_display());
+		Screen * scr = ScreenOfDisplay(fl_get_display(), fl_screen); //DefaultScreen(fl_get_display());
 		if (WidthOfScreen(scr) - 8 < width)
 			width = WidthOfScreen(scr) - 8;
 	}
 
 	// If height is not set by geometry, check it against monitor height
 	if ( !(geometryBitmask & 8) ) {
-		Screen * scr = DefaultScreenOfDisplay(fl_get_display());
+		Screen * scr = ScreenOfDisplay(fl_get_display(), fl_screen); //DefaultScreen(fl_get_display());
 		if (HeightOfScreen(scr) - 24 < height)
 			height = HeightOfScreen(scr) - 24;
 	}
 
 	// Recalculate xpos if it's negative
 	if (geometryBitmask & 16)
-		xpos += WidthOfScreen(DefaultScreenOfDisplay(fl_get_display())) - width;
+		xpos += WidthOfScreen(ScreenOfDisplay(fl_get_display(), fl_screen)) - width; //DefaultScreen(fl_get_display())) - width;
 
 	// Recalculate ypos if it's negative
 	if (geometryBitmask & 32)
-		ypos += HeightOfScreen(DefaultScreenOfDisplay(fl_get_display())) - height;
+		ypos += HeightOfScreen(ScreenOfDisplay(fl_get_display(), fl_screen)) - height; //DefaultScreen(fl_get_display())) - height;
 
 	// Initialize the LyXColorHandler
 	lyxColorHandler = new LyXColorHandler;
@@ -333,7 +332,7 @@ void LyXGUI::create_forms()
 #ifdef DO_USE_DEFAULT_LANGUAGE
 	    if ((*cit).second.lang() != "default")
 #endif
-		combo_language2->addto((*cit).second.lang().c_str());
+		combo_language2->addto((*cit).second.lang());
 	}
 	combo_language2->select_text(_("No change"));
 

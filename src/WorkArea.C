@@ -140,7 +140,7 @@ WorkArea::WorkArea(BufferView * o, int xpos, int ypos, int width, int height)
 WorkArea::~WorkArea()
 {
 	if (workareapixmap)
-		XFreePixmap(fl_display, workareapixmap);
+		XFreePixmap(fl_get_display(), workareapixmap);
 }
 
 
@@ -205,14 +205,14 @@ void WorkArea::createPixmap(int width, int height)
 	cur_height = height;
 
 	if (workareapixmap)
-		XFreePixmap(fl_display, workareapixmap);
+		XFreePixmap(fl_get_display(), workareapixmap);
 
 	if (lyxerr.debugging(Debug::GUI))
 		lyxerr << "Creating pixmap ("
 		       << width << 'x' << height << ")" << endl;
 	
-	workareapixmap = XCreatePixmap(fl_display,
-				       RootWindow(fl_display, 0),
+	workareapixmap = XCreatePixmap(fl_get_display(),
+				       RootWindow(fl_get_display(), 0),
 				       width,
 				       height, 
 				       fl_get_visual_depth());

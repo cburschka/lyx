@@ -210,7 +210,7 @@ void LyXView::show(int place, int border, string const & title)
 {
 	fl_show_form(form_, place, border, title.c_str());
 	minibuffer->Init();
-	InitLyXLookup(fl_display, form_->window);
+	InitLyXLookup(fl_get_display(), form_->window);
 }
 
 

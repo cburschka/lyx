@@ -180,7 +180,7 @@ void ShowMessage(Buffer const * buf,
 // should be moved to lyxfunc.C
 bool MenuWrite(Buffer * buffer)
 {
-	XFlush(fl_display);
+	XFlush(fl_get_display());
 	if (!buffer->save()) {
 		string fname = buffer->fileName();
 		string s = MakeAbsPath(fname);
@@ -732,7 +732,7 @@ LyXFont const UserFreeFont(BufferParams const & params)
 	case 11: font.setColor(LColor::inherit); break;
 	}
 
-	int choice = combo_language2->get();
+	int const choice = combo_language2->get();
 	if (choice == 1)
 		font.setLanguage(ignore_language);
 	else if (choice == 2)

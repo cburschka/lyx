@@ -120,7 +120,7 @@ public:
 
 	///
 	void emergencyWriteAll();
-
+	
 	/** Close buffer.
 	    @param buf the buffer that should be closed
 	    @return #false# if operation was canceled
@@ -139,7 +139,7 @@ public:
 	/// returns a pointer to the buffer with the given name.
 	Buffer * getBuffer(string const &);
 	/// returns a pointer to the buffer with the given number.
-	Buffer * getBuffer(int);
+	Buffer * getBuffer(unsigned int);
 
 private:
 	///
@@ -147,6 +147,8 @@ private:
 	
 	///
 	list_state state_;
+	///
+	void emergencyWrite(Buffer * buf);
 };
 
 #endif

@@ -84,7 +84,7 @@ bool Exporter::Preview(Buffer * buffer, string const & format0)
 
 bool Exporter::IsExportable(Buffer const * buffer, string const & format)
 {
-#warning This is not efficient (Dekel)
+	// This is not efficient (Dekel)
 	vector<pair<string, string> > const v = GetExportableFormats(buffer);
 	for (vector<pair<string, string> >::const_iterator it = v.begin();
 	     it != v.end(); ++it) {
@@ -95,6 +95,7 @@ bool Exporter::IsExportable(Buffer const * buffer, string const & format)
 	}
 	return false;
 }
+
 
 vector<pair<string, string> > const
 Exporter::GetExportableFormats(Buffer const * buffer)

@@ -449,6 +449,7 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	// lyxserver = new LyXServer;
 }
 
+
 // These are the default bindings known to LyX
 void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 {
@@ -498,6 +499,7 @@ void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 	kbmap->bind("S-Tab", LFUN_SHIFT_TAB);  // jug20000522
 }
 
+
 // LyX can optionally take over the handling of deadkeys
 void LyX::deadKeyBindings(kb_keymap * kbmap)
 {
@@ -523,7 +525,6 @@ void LyX::deadKeyBindings(kb_keymap * kbmap)
 	kbmap->bind("~C-~S-~M-dead_tie", LFUN_TIE);
 	kbmap->bind("~C-~S-~M-dead_ogonek", LFUN_OGONEK);
 }
-
 
 
 // This one is not allowed to use anything on the main form, since that
@@ -680,6 +681,7 @@ void LyX::ReadEncodingsFile(string const & name)
 
 
 // Set debugging level and report result to user
+static
 void setDebuggingLevel(string const & dbgLevel)
 {
 	lyxerr << _("Setting debug level to ") <<  dbgLevel << endl;
@@ -689,6 +691,7 @@ void setDebuggingLevel(string const & dbgLevel)
 
 
 // Give command line help
+static
 void commandLineHelp()
 {
 	lyxerr << "LyX " LYX_VERSION << " of " LYX_RELEASE << endl;
@@ -704,6 +707,7 @@ void commandLineHelp()
                   "                  Type `lyx -dbg' to see the list of features\n"
 		  "Check the LyX man page for more options.") << endl;
 }
+
 
 bool LyX::easyParse(int * argc, char * argv[])
 {

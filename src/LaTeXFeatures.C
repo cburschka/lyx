@@ -342,7 +342,8 @@ string const LaTeXFeatures::getIncludedFiles()
 {
 	string sgmlpreamble;
 	FileMap::const_iterator end = IncludedFiles.end();
-	for(FileMap::const_iterator fi=IncludedFiles.begin(); fi != end; ++fi)
+	for (FileMap::const_iterator fi = IncludedFiles.begin();
+	     fi != end; ++fi)
 		sgmlpreamble += "\n<!entity " + fi->first
 			+ " system \"" + fi->second + "\">";
 

@@ -98,12 +98,12 @@ void draw_bitmaptable(FL_OBJECT *ob)
 	/* draw the background bitmap */
 	if (sp->bdata)  {
 		if (!sp->pix) {
-			sp->pix = XCreatePixmapFromBitmapData(fl_display, fl_winget(), 
+			sp->pix = XCreatePixmapFromBitmapData(fl_get_display(), fl_winget(), 
 							      (char*)sp->bdata,
 							       sp->bw, sp->bh,
 					fl_get_flcolor(ob->lcol), fl_get_flcolor(ob->col1),
-							       /*DefaultDepth(fl_display, DefaultScreen(fl_display))*/ fl_state[fl_get_vclass()].depth);
-			XFlush(fl_display);
+							       /*DefaultDepth(fl_get_display(), DefaultScreen(fl_get_display()))*/ fl_state[fl_get_vclass()].depth);
+			XFlush(fl_get_display());
 		}
 	}
 	if (sp->pix) {
@@ -129,12 +129,12 @@ void draw_bitmaptable(FL_OBJECT *ob)
       
 		i = FL_abs(ob->bw);
 		j = hh - ((lx) ? sp->dy+2*i: 0);
-		XCopyArea(fl_display, sp->pix, fl_winget(), gc, xx, yy, ww, j, mx, my);
-		XFlush(fl_display);
+		XCopyArea(fl_get_display(), sp->pix, fl_winget(), gc, xx, yy, ww, j, mx, my);
+		XFlush(fl_get_display());
 		if (lx) {
-			XCopyArea(fl_display, sp->pix, fl_winget(), gc, xx,
+			XCopyArea(fl_get_display(), sp->pix, fl_winget(), gc, xx,
 					  yy+j, lx*sp->dx-2*i, hh-j, mx, my+j);
-			XFlush(fl_display);
+			XFlush(fl_get_display());
 		}
 	}
    
@@ -216,8 +216,8 @@ int handle_bitmaptable(FL_OBJECT * ob, int event, FL_Coord mx,
 		return 1;
     case FL_FREEMEM:
 	    if (sp->pix) {
-		    XFreePixmap(fl_display, sp->pix);
-		    XFlush(fl_display);
+		    XFreePixmap(fl_get_display(), sp->pix);
+		    XFlush(fl_get_display());
 	    }
 		fl_free(((BMTABLE_SPEC*)ob->spec));      
 		break;
@@ -273,14 +273,14 @@ void fl_set_bmtable_pixmap_data(FL_OBJECT * ob, int nx, int ny,
 		dumb_attributes.colormap = fl_state[fl_get_vclass()].colormap;
 		dumb_attributes.closeness = 30000;
 		dumb_attributes.valuemask = XpmColormap | XpmCloseness;
-		if (XCreatePixmapFromData(fl_display, fl_winget(), pdata,
+		if (XCreatePixmapFromData(fl_get_display(), fl_winget(), pdata,
 		                          &(sp->pix), &dummy_shapemask,
 	        	                  &dumb_attributes) == XpmSuccess) {
 			sp->bw = dumb_attributes.width;
 			sp->bh = dumb_attributes.height;
 			XpmFreeAttributes(&dumb_attributes);
 			if (dummy_shapemask) {
-				XFreePixmap(fl_display, dummy_shapemask);
+				XFreePixmap(fl_get_display(), dummy_shapemask);
 			}
 		}
 	}
@@ -301,7 +301,7 @@ void fl_set_bmtable_file(FL_OBJECT * ob, int nx, int ny, char const * filename)
    if(XReadBitmapFileData(filename, &bw, &bh,
 			  &bdata, &xh, &yh) == BitmapSuccess)
      fl_set_bmtable_data(ob, nx, ny, bw, bh, bdata);
-   XFlush(fl_display);
+   XFlush(fl_get_display());
 }
 
 #else
@@ -337,17 +337,17 @@ void fl_set_bmtable_pixmap_file(FL_OBJECT *ob, int nx, int ny, char const *filen
 		dumb_attributes.closeness = 30000;
 		dumb_attributes.valuemask = XpmColormap | XpmCloseness;
    
-		if (XReadPixmapFile(fl_display, fl_winget(), (char *)filename,
+		if (XReadPixmapFile(fl_get_display(), fl_winget(), (char *)filename,
 		                    &(sp->pix), &dummy_shapemask,
 	        	            &dumb_attributes) == XpmSuccess) {
 			sp->bw = dumb_attributes.width;
 			sp->bh = dumb_attributes.height;
 			XpmFreeAttributes(&dumb_attributes);
 			if (dummy_shapemask) {
-				XFreePixmap(fl_display, dummy_shapemask);
+				XFreePixmap(fl_get_display(), dummy_shapemask);
 			}
 		}
-		/* XFlush(fl_display); */
+		/* XFlush(fl_get_display()); */
 	}
 }
 
@@ -445,8 +445,8 @@ void fl_draw_bmtable_item(FL_OBJECT * ob, int i, Drawable d, int xx, int yy)
       y = (i/sp->nx)*sp->dy + FL_abs(ob->bw);
       w = sp->dx-2*FL_abs(ob->bw);
       h = sp->dy-2*FL_abs(ob->bw);	 
-      XCopyArea(fl_display, sp->pix, d, gc, x, y, w, h, xx, yy);
-      XFlush(fl_display);
+      XCopyArea(fl_get_display(), sp->pix, d, gc, x, y, w, h, xx, yy);
+      XFlush(fl_get_display());
    }
 }
 
@@ -457,8 +457,8 @@ void fl_free_bmtable_bitmap(FL_OBJECT * ob)
 
   /* dump the temporary pixmap */
   if (sp && sp->pix) { 
-    XFreePixmap(fl_display, sp->pix);
-    XFlush(fl_display);
+    XFreePixmap(fl_get_display(), sp->pix);
+    XFlush(fl_get_display());
     sp->pix = 0;
   }
 
@@ -477,8 +477,8 @@ void fl_free_bmtable_pixmap(FL_OBJECT *ob)
 
   /* dump the temporary pixmap */
   if (sp && sp->pix) { 
-    XFreePixmap(fl_display, sp->pix);
-    XFlush(fl_display);
+    XFreePixmap(fl_get_display(), sp->pix);
+    XFlush(fl_get_display());
     sp->pix = 0;
   }
 }

@@ -25,6 +25,7 @@
 #include "bufferlist.h"
 #include "exporter.h"
 #include "support/filetools.h"
+#include "support/lyxfunctional.h"
 
 extern LyXAction lyxaction;
 extern LastFiles * lastfiles; 
@@ -95,7 +96,7 @@ Menu & Menu::read(LyXLex & lex)
 		md_last
 	};
 
-	struct keyword_item menutags[md_last-1] = {
+	struct keyword_item menutags[md_last - 1] = {
 		{ "documents", md_documents },
 		{ "end", md_endmenu },
 		{ "exportformats", md_exportformats },
@@ -124,11 +125,9 @@ Menu & Menu::read(LyXLex & lex)
 			// fallback to md_item
 		case md_item: {
 			lex.next();
-			char * tmp = ::strdup(lex.GetString().c_str());
-			string name = _(tmp);
-			free(tmp);
+			string name = _(lex.GetString());
 			lex.next();
-			string command = lex.GetString();
+			string const command = lex.GetString();
 			add(MenuItem(MenuItem::Command, name, 
 				     command, optional));
 			optional = false;
@@ -169,9 +168,7 @@ Menu & Menu::read(LyXLex & lex)
 
 		case md_submenu: {
 			lex.next();
-			char * tmp = ::strdup(lex.GetString().c_str());
-			string mlabel = _(tmp);
-			free(tmp);
+			string mlabel = _(lex.GetString());
 			lex.next();
 			string mname = lex.GetString();
 			add(MenuItem(MenuItem::Submenu, mlabel, mname));
@@ -192,7 +189,8 @@ Menu & Menu::read(LyXLex & lex)
 	return *this;
 }
 
-void Menu::expand(Menu & tomenu, Buffer *buf) const
+
+void Menu::expand(Menu & tomenu, Buffer * buf) const
 {
 	for (const_iterator cit = begin();
 	     cit != end() ; ++cit) {
@@ -269,6 +267,7 @@ void Menu::expand(Menu & tomenu, Buffer *buf) const
 		}
 	}
 }
+
 
 void MenuBackend::read(LyXLex & lex)
 {
@@ -400,36 +399,24 @@ void MenuBackend::add(Menu const & menu)
 
 bool MenuBackend::hasMenu(string const & name) const
 {
-	const_iterator mend = end();
-	for (const_iterator cit = begin(); cit != mend; ++cit) {
-		if ((*cit).name() == name)
-			return true;
-	}
-	return false;
+	return find_if(begin(), end(),
+		       compare_memfun(&Menu::name, name)) != end();
 }
 
 
 Menu const & MenuBackend::getMenu(string const & name) const
 {
-	const_iterator mend = end();
-	for (const_iterator cit = begin(); cit != mend; ++cit) {
-		if ((*cit).name() == name)
-			return (*cit);
-	}
-	Assert(false); // we actually require the name to exist.
-	return menulist_.front();
+	const_iterator cit = find_if(begin(), end(),
+				     compare_memfun(&Menu::name, name));
+	Assert(cit != end());
+	return (*cit);
 }
 
 
 Menu & MenuBackend::getMenu(string const & name)
 {
-	MenuList::iterator end = menulist_.end();
-	for (MenuList::iterator cit = menulist_.begin(); 
-	     cit != end; ++cit) {
-		if ((*cit).name() == name)
-			return (*cit);
-	}
-	Assert(false); // we actually require the name to exist.
-	return menulist_.front();
+	MenuList::iterator it = find_if(menulist_.begin(), menulist_.end(),
+					compare_memfun(&Menu::name, name));
+	Assert(it != menulist_.end());
+	return (*it);
 }
-

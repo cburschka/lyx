@@ -413,6 +413,13 @@ public:
 	///
 	class inset_iterator {
 	public:
+		typedef input_iterator_tag iterator_category;
+		typedef Inset value_type;
+		typedef ptrdiff_t difference_type;
+		typedef Inset * pointer;
+		typedef Inset & reference;
+		
+		
 		///
 		inset_iterator() : par(0) /*, it(0)*/ {}
 		//
@@ -423,7 +430,7 @@ public:
 		inset_iterator(LyXParagraph * paragraph,
 			       LyXParagraph::size_type pos);
 		///
-		inset_iterator & operator++() {
+		inset_iterator & operator++() { // prefix ++
 			if (par) {
 				++it;
 				if (it == par->inset_iterator_end()) {
@@ -434,11 +441,24 @@ public:
 			return *this;
 		}
 		///
-		Inset * operator*() {return *it; }
+		inset_iterator operator++(int) { // postfix ++
+			inset_iterator tmp(par, it.getPos());
+			if (par) {
+				++it;
+				if (it == par->inset_iterator_end()) {
+					par = par->next;
+					SetParagraph();
+				}
+			}
+			return tmp;
+		}
+		///
+		Inset * operator*() { return *it; }
+		
 		///
 		LyXParagraph * getPar() { return par; }
 		///
-		LyXParagraph::size_type getPos() {return it.getPos(); }
+		LyXParagraph::size_type getPos() const { return it.getPos(); }
 		///
 		friend
 		bool operator==(inset_iterator const & iter1,

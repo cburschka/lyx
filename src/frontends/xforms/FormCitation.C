@@ -115,7 +115,7 @@ void FormCitation::update()
 	bool bibPresent = ( bibkeys.size() > 0 );
 	setSize( size, bibPresent );
 
-	fl_set_input( dialog_->textAftr, params.getOptions().c_str() );
+	fl_set_input( dialog_->textAftr, params.getOptions().c_str());
 }
 
 
@@ -125,7 +125,7 @@ void FormCitation::updateBrowser( FL_OBJECT * browser,
 	fl_clear_browser( browser );
 
 	for( unsigned int i = 0; i < keys.size(); ++i )
-		fl_add_browser_line( browser, keys[i].c_str() );
+		fl_add_browser_line( browser, keys[i].c_str());
 }
 
 
@@ -305,7 +305,7 @@ bool FormCitation::input( FL_OBJECT *, long data )
 		// the selected bibBrsr key
 		fl_clear_browser( dialog_->infoBrsr );
 		fl_add_browser_line( dialog_->infoBrsr,
-				     bibkeysInfo[sel-1].c_str() );
+				     bibkeysInfo[sel - 1].c_str() );
 
 		// Highlight the selected bibBrsr key in citeBrsr if present
 		vector<string>::iterator it =

@@ -41,7 +41,7 @@ GraphicsCacheItem_pimpl::GraphicsCacheItem_pimpl()
 GraphicsCacheItem_pimpl::~GraphicsCacheItem_pimpl()
 {
 	if (imageStatus_ == GraphicsCacheItem::Loaded) {
-		XFreePixmap(fl_display, pixmap_);
+		XFreePixmap(fl_get_display(), pixmap_);
 	}
 
 	delete renderer;

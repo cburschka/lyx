@@ -38,6 +38,7 @@ libsupport_la_SOURCES = \
 	date.C \
 	filetools.C \
 	filetools.h \
+	fmt.C \
 	getUserName.C \
 	getcwd.C \
 	kill.C \
@@ -45,6 +46,7 @@ libsupport_la_SOURCES = \
 	lstrings.h \
 	lxtl.h \
 	lyxalgo.h \
+	lyxfunctional.h \
 	lyxlib.h \
 	lyxmanip.h \
 	$(LYXSTRING) lyxsum.C \

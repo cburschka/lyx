@@ -146,7 +146,7 @@ void FormDocument::build()
     for (LyXTextClassList::const_iterator cit = textclasslist.begin();
 	 cit != textclasslist.end(); ++cit)
     {
-	combo_doc_class->addto((*cit).description().c_str());
+	combo_doc_class->addto((*cit).description());
     }
 #else
     fl_clear_choice(class_->choice_doc_class);
@@ -207,7 +207,7 @@ void FormDocument::build()
 #endif
     for(Languages::const_iterator cit = languages.begin();
 	cit != languages.end(); ++cit) {
-	combo_language->addto((*cit).second.lang().c_str());
+	combo_language->addto((*cit).second.lang());
     }
 
     fl_addto_choice(language_->choice_quotes_language,
@@ -391,9 +391,9 @@ bool FormDocument::class_apply()
 	params.pagestyle = fl_get_choice_text(class_->choice_doc_pagestyle);
 
 #ifdef USE_CLASS_COMBO   
-	unsigned int new_class = combo_doc_class->get() - 1;
+	unsigned int const new_class = combo_doc_class->get() - 1;
 #else
-	unsigned int new_class = fl_get_choice(class_->choice_doc_class) - 1;
+	unsigned int const new_class = fl_get_choice(class_->choice_doc_class) - 1;
 #endif
 	if (params.textclass != new_class) {
 		// try to load new_class
@@ -621,7 +621,7 @@ void FormDocument::class_update(BufferParams const & params)
 
 #ifdef USE_CLASS_COMBO
     combo_doc_class->select_text(
-	textclasslist.DescOfClass(params.textclass).c_str());
+	textclasslist.DescOfClass(params.textclass));
 #else	
     fl_set_choice_text(class_->choice_doc_class, 
 		       textclasslist.DescOfClass(params.textclass).c_str());
@@ -712,7 +712,7 @@ void FormDocument::language_update(BufferParams const & params)
     if (!language_)
         return;
 
-    combo_language->select_text(params.language->lang().c_str());
+    combo_language->select_text(params.language->lang());
     fl_set_choice_text(language_->choice_inputenc, params.inputenc.c_str());
     fl_set_choice(language_->choice_quotes_language, params.quotes_language + 1);
     fl_set_button(language_->radio_single, 0);
@@ -1024,7 +1024,7 @@ void FormDocument::BulletPanel(FL_OBJECT * /*ob*/, State cb)
 	}
 	new_panel += ".xpm";
 	fl_set_bmtable_pixmap_file(bullets_->bmtable_bullet_panel, 6, 6,
-				   LibFileSearch("images", new_panel.c_str()).c_str());
+				   LibFileSearch("images", new_panel).c_str());
 	fl_redraw_object(bullets_->bmtable_bullet_panel);
 	fl_unfreeze_form(bullets_->form);
     }
@@ -1055,15 +1055,13 @@ void FormDocument::CheckChoiceClass(FL_OBJECT * ob, long)
 	ob = class_->choice_doc_class;
 
     ProhibitInput(lv_->view());
-    int tc;
-    string tct;
 
 #ifdef USE_CLASS_COMBO
-    tc = combo_doc_class->get() - 1;
-    tct = combo_doc_class->getline();
+    int tc = combo_doc_class->get() - 1;
+    string tct = combo_doc_class->getline();
 #else
-    tc = fl_get_choice(ob) - 1;
-    tct = fl_get_choice_text(ob);
+    int tc = fl_get_choice(ob) - 1;
+    string tct = fl_get_choice_text(ob);
 #endif
     if (textclasslist.Load(tc)) {
 	if (AskQuestion(_("Should I set some parameters to"), tct,

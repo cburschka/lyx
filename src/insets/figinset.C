@@ -74,6 +74,7 @@ using std::find;
 using std::flush;
 using std::endl;
 using std::ostringstream;
+using std::copy;
 
 extern BufferView * current_view;
 extern FL_OBJECT * figinset_canvas;
@@ -113,14 +114,14 @@ static
 GC createGC()
 {
 	XGCValues val;
-	val.foreground = BlackPixel(fl_display, 
-				    DefaultScreen(fl_display));
+	val.foreground = BlackPixel(fl_get_display(), 
+				    DefaultScreen(fl_get_display()));
 	
 	val.function=GXcopy;
 	val.graphics_exposures = false;
 	val.line_style = LineSolid;
 	val.line_width = 0;
-	return XCreateGC(fl_display, RootWindow(fl_display, 0), 
+	return XCreateGC(fl_get_display(), RootWindow(fl_get_display(), 0), 
 			 GCForeground | GCFunction | GCGraphicsExposures
 			 | GCLineWidth | GCLineStyle , &val);
 }
@@ -137,10 +138,8 @@ void addpidwait(int pid)
 
 	if (lyxerr.debugging()) {
 		lyxerr << "Pids to wait for: \n";
-		for (list<int>::const_iterator cit = pidwaitlist.begin();
-		     cit != pidwaitlist.end(); ++cit) {
-			lyxerr << (*cit) << '\n';
-		}
+		copy(pidwaitlist.begin(), pidwaitlist.end(),
+		     ostream_iterator<int>(lyxerr, "\n"));
 		lyxerr << flush;
 	}
 }
@@ -200,11 +199,11 @@ int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 				Display * tmpdisp;
 				GC gc = local_gc_copy;
 
-				XGetWindowAttributes(fl_display,
+				XGetWindowAttributes(fl_get_display(),
 						     fl_get_canvas_id(
 							     figinset_canvas),
 						     &wa);
-				XFlush(fl_display);
+				XFlush(fl_get_display());
 				if (lyxerr.debugging()) {
 					lyxerr << "Starting image translation "
 					       << p->bitmap << " "
@@ -219,7 +218,7 @@ int GhostscriptMsg(FL_OBJECT *, Window, int, int,
 					lyxerr.debug()
 						<< "Cannot fork, using slow "
 						"method for pixmap translation." << endl;
-					tmpdisp = fl_display;
+					tmpdisp = fl_get_display();
 				} else if (forkstat > 0) { // parent
 					// register child
 					if (lyxerr.debugging()) {
@@ -318,9 +317,9 @@ void AllocColors(int num)
 		xcol.green = short(65535 * ((i / num) % num) / (num - 1));
 		xcol.blue = short(65535 * (i % num) / (num - 1));
 		xcol.flags = DoRed | DoGreen | DoBlue;
-		if (!XAllocColor(fl_display,
+		if (!XAllocColor(fl_get_display(),
 				 fl_state[fl_get_vclass()].colormap, &xcol)) {
-			if (i) XFreeColors(fl_display,
+			if (i) XFreeColors(fl_get_display(),
 					   fl_state[fl_get_vclass()].colormap,
 					   gs_pixels, i, 0);
 			if(lyxerr.debugging()) {
@@ -356,9 +355,9 @@ void AllocGrays(int num)
 	for (int i = 0; i < num; ++i) {
 		xcol.red = xcol.green = xcol.blue = short(65535 * i / (num - 1));
 		xcol.flags = DoRed | DoGreen | DoBlue;
-		if (!XAllocColor(fl_display,
+		if (!XAllocColor(fl_get_display(),
 				 fl_state[fl_get_vclass()].colormap, &xcol)) {
-			if (i) XFreeColors(fl_display,
+			if (i) XFreeColors(fl_get_display(),
 					   fl_state[fl_get_vclass()].colormap,
 					   gs_pixels, i, 0);
 			if (lyxerr.debugging()) {
@@ -391,8 +390,8 @@ void InitFigures()
 
 		local_gc_copy = createGC();
 
-		Visual * vi = DefaultVisual(fl_display,
-					    DefaultScreen(fl_display));
+		Visual * vi = DefaultVisual(fl_get_display(),
+					    DefaultScreen(fl_get_display()));
 		if (lyxerr.debugging()) {
 			printf("Visual ID: %ld, class: %d, bprgb: %d, mapsz: %d\n", 
 			       vi->visualid, vi->c_class, 
@@ -445,7 +444,7 @@ void freefigdata(figdata * tmpdata)
 		kill_gs(pid, SIGKILL);
 	}
 
-	if (tmpdata->bitmap) XFreePixmap(fl_display, tmpdata->bitmap);
+	if (tmpdata->bitmap) XFreePixmap(fl_get_display(), tmpdata->bitmap);
 	bitmaps.erase(find(bitmaps.begin(), bitmaps.end(), tmpdata));
 	delete tmpdata;
 }
@@ -732,12 +731,12 @@ figdata * getfigdata(int wid, int hgh, string const & fname,
 	p->flags = flags;
 	bitmaps.push_back(p);
 	XWindowAttributes wa;
-	XGetWindowAttributes(fl_display, fl_get_canvas_id(
+	XGetWindowAttributes(fl_get_display(), fl_get_canvas_id(
 		figinset_canvas), &wa);
 
 	if (lyxerr.debugging()) {
-		lyxerr << "Create pixmap disp:" << fl_display
-		       << " scr:" << DefaultScreen(fl_display)
+		lyxerr << "Create pixmap disp:" << fl_get_display()
+		       << " scr:" << DefaultScreen(fl_get_display())
 		       << " w:" << wid
 		       << " h:" << hgh
 		       << " depth:" << wa.depth << endl;
@@ -748,7 +747,7 @@ figdata * getfigdata(int wid, int hgh, string const & fname,
 	p->broken = false;
 	p->gspid = -1;
 	if (flags) {
-		p->bitmap = XCreatePixmap(fl_display, fl_get_canvas_id(
+		p->bitmap = XCreatePixmap(fl_get_display(), fl_get_canvas_id(
 			figinset_canvas), wid, hgh, wa.depth);
 		p->gsdone = false;
 		// initialize reading of .eps file with correct sizes and stuff
@@ -995,7 +994,7 @@ void InsetFig::draw(BufferView * bv, LyXFont const & f,
 				       wid + 1, hgh + 1);
 		
 	} else {
-		char * msg = 0;
+		char const * msg = 0;
 		string lfname = fname;
 		if (!fname.empty() && GetExtension(fname).empty())
 		    lfname += ".eps";

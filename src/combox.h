@@ -69,10 +69,10 @@ public:
 	void addto(string const &);
 	
 	/// Returns the selected item
-	int get();
+	int get() const;
    
 	/// Returns a pointer to the selected line of text
-	string const getline();
+	string const getline() const;
    
 	///  Select an arbitrary item
 	void select(int);
@@ -83,7 +83,7 @@ public:
 	void clear();
 
 	/// Is the combox cleared (empty)
-	bool empty() { return is_empty; }
+	bool empty() const { return is_empty; }
 	
 	/// Remove the objects from the form they are in. 
 	void remove();
@@ -209,14 +209,14 @@ void Combox::setpost(FL_COMBO_PRE_POST cb)
 
 
 inline
-int Combox::get()
+int Combox::get() const
 {
    return sel;
 }
 
 
 inline
-string const Combox::getline()
+string const Combox::getline() const
 {
     if (type == FL_COMBOX_INPUT) 
       return fl_get_input(label);

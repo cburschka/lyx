@@ -15,6 +15,7 @@
 #include <config.h>
 #include "StrPool.h"
 
+
 StrPool::~StrPool()
 {
         for (Pool::const_iterator cit = pool_.begin(); 
@@ -23,6 +24,11 @@ StrPool::~StrPool()
         }
 }
 
+/* One interesting thing here would be to store the strings in a map,
+   so that one string is only stored once. This would make things a
+   bit slower, but memory requirements would be lower in the long run.
+   I expect that it would be fast enough anyway. (Lgb)
+*/
 char const * StrPool::add(string const & str)
 {
 	int s = str.length();
@@ -32,4 +38,6 @@ char const * StrPool::add(string const & str)
         pool_.push_back(buf);
         return buf;
 }
+
+//StrPool strPool;
 

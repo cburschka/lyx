@@ -109,13 +109,14 @@ int lyxfont::width(char const * s, size_t n, LyXFont const & f)
 	if (lyxrc.font_norm_type == LyXRC::ISO_10646_1) {
 		XChar2b * xs = new XChar2b[n];
 		Encoding const * encoding = f.language()->encoding();
-		LyXFont const * font = &f; 
+		//LyXFont const * font = &f;
+		LyXFont font(f);
 		if (f.family() == LyXFont::SYMBOL_FAMILY) {
 #ifdef USE_UNICODE_FOR_SYMBOLS
-			LyXFont font2 = f;
-			font2.setFamily(LyXFont::ROMAN_FAMILY);
-			font2.setShape(LyXFont::UP_SHAPE);
-			font = &font2;
+			//LyXFont font2 = f;
+			font.setFamily(LyXFont::ROMAN_FAMILY);
+			font.setShape(LyXFont::UP_SHAPE);
+			//font = &font2;
 #endif
 			encoding = encodings.symbol_encoding();
 		}
@@ -124,7 +125,7 @@ int lyxfont::width(char const * s, size_t n, LyXFont const & f)
 			xs[i].byte1 = c >> 8;
 			xs[i].byte2 = c & 0xff;
                 }
-		int result = width(xs, n, *font);
+		int result = width(xs, n, font);
 		delete[] xs;
 		return result;
 	}

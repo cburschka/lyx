@@ -284,9 +284,9 @@ void  TransManager::TranslateAndInsert(char c, LyXText * text)
 
 void TransManager::insertVerbatim(string const & str, LyXText * text)
 {	
-	int const l = str.length();
+	string::size_type const l = str.length();
 	
-	for (int i = 0; i < l; ++i){
+	for (string::size_type i = 0; i < l; ++i) {
 		if (str[i] == '\"' 
 		    && text->GetFont(current_view->buffer(),text->cursor.par(),
 				     text->cursor.pos()).latex() == LyXFont::OFF

@@ -220,14 +220,15 @@ void Toolbar::Pimpl::updateLayoutList(bool force)
 		for (LyXTextClass::const_iterator cit = tc.begin();
 		     cit != end; ++cit) {
 			if ((*cit).obsoleted_by().empty())
-				combox->addline(_((*cit).name().c_str()));
+				combox->addline(_((*cit).name()));
 			else
-				combox->addline(("@N" + string(_((*cit).name().c_str()))).c_str());
+				combox->addline("@N" + _((*cit).name()));
 		}
 	}
 	// we need to do this.
 	combox->Redraw();
 }
+
 
 void Toolbar::Pimpl::clearLayoutList()
 {
@@ -237,11 +238,13 @@ void Toolbar::Pimpl::clearLayoutList()
 	}
 }
 
+
 void Toolbar::Pimpl::openLayoutList()
 {
 	if (combox)
 		combox->Show();
 }
+
 
 static
 void ToolbarCB(FL_OBJECT * ob, long ac)
@@ -259,6 +262,7 @@ extern "C" void C_Toolbar_ToolbarCB(FL_OBJECT * ob, long data)
 {
 	ToolbarCB(ob, data);
 }
+
 
 #if 0
 // What are we supposed to do with that??

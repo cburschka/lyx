@@ -148,9 +148,15 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 			c = cc;
 			if (c == '#') {
 				// Read rest of line (fast :-)
+				// That is not fast... (Lgb)
+#if 1
 				is.getline(buff, sizeof(buff));
 				lyxerr[Debug::LYXLEX] << "Comment read: `" << c
 						      << buff << "'" << endl;
+#else
+				// unfortunately is ignore buggy (Lgb)
+				is.ignore(100, '\n');
+#endif
 				++lineno;
 				continue;
 			}
@@ -258,9 +264,16 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 			
 			if (c == '#') {
 				// Read rest of line (fast :-)
+				// That is still not fast... (Lgb)
+#if 1
 				is.getline(buff, sizeof(buff));
 				lyxerr[Debug::LYXLEX] << "Comment read: `" << c
 						      << buff << "'" << endl;
+#else
+				// but ignore is also still buggy (Lgb)
+				// This is fast (Lgb)
+				is.ignore(100, '\n');
+#endif
 				++lineno;
 				continue;
 			}

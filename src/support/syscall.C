@@ -232,7 +232,7 @@ int Systemcalls::startscript(Starttype how, string const & what,
 int SimulateTimer;
 void back(string cmd, int retval)
 {
-	printf("Done: %s gave %d\n", cmd.c_str(), retval);
+	::printf("Done: %s gave %d\n", cmd.c_str(), retval);
 	SimulateTimer = 0;
 }
 

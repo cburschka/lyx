@@ -1,3 +1,137 @@
+2000-10-11  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/translator.h: move helper template clsses to
+	lyxfunctional.h, inlcude 2support/lyxfunctional.h"
+
+	* src/support/lyxmanip.h: add delaration of fmt
+
+	* src/support/lyxfunctional.h: new file
+	(class_fun_t): new template class
+	(class_fun): helper template function
+	(back_insert_fun_iterator): new template class
+	(back_inserter_fun): helper template function
+	(compare_memfun_t): new template class
+	(compare_memfun): helper template function
+	(equal_1st_in_pair): moved here from translator
+	(equal_2nd_in_pair): moved here from translatro
+
+	* src/support/fmt.C: new file
+	(fmt): new func, can be used for a printf substute when still
+	using iostreams ex. lyxerr << fmg("Hello %s", "Jürgen") << endl;
+
+	* src/support/StrPool.C: add some comment
+
+	* src/support/Makefile.am (libsupport_la_SOURCES): add fmt.C and
+	lyxfunctional.h
+
+	* src/insets/figinset.C (addpidwait): use std::copy with
+	ostream_iterator to fill the pidwaitlist
+
+	* src/graphics/XPM_Renderer.C (renderImage): use ScreenOfDisplay
+
+	* src/frontends/xforms/Toolbar_pimpl.C (updateLayoutList): remove
+	c_str() 
+
+	* src/frontends/xforms/Menubar_pimpl.C: make several file scope
+	variables static
+
+	* src/frontends/xforms/FormParagraph.C (input): use lyx::atoi
+
+	* src/frontends/xforms/FormDocument.C (build): remove c_str()
+	(class_update): ditto
+	(BulletPanel): ditto
+	(CheckChoiceClass): move initialization of tc and tct
+
+	* src/tabular.C: remove current_view
+	(OldFormatRead): similar to right below [istream::ignore]
+
+	* src/lyxlex_pimpl.C (next): add code for faster skipping of
+	chars, unfortunately this is buggy on gcc 2.95.2, so currently
+	unused [istream::ignore]
+
+	* src/lyxfunc.C: include "support/lyxfunctional.h"
+	(getInsetByCode): use std::find_if and compare_memfun
+
+	* src/lyxfont.C (stateText): remove c_str()
+
+	* src/lyx_main.C (setDebuggingLevel): make static
+	(commandLineHelp): make static
+
+	* src/lyx_gui_misc.C (getScreenDPI): use ScreenOfDisplay to get
+	Screen* together with fl_get_display() and fl_screen
+
+	* src/lyx_gui.C (LyXGUI): use ScreenOfDisplay to get Screen*
+	togheter with fl_get_display() and fl_screen
+	(create_forms): remove c_str()
+
+	* src/layout.C: include "support/lyxfunctional.h"
+	(hasLayout): use std::find_if and compare_memfun
+	(GetLayout): use std::find_if and comapre_memfun
+	(delete_layout): use std::remove_if and compare_memfun
+	(NumberOfClass): use std:.find_if and compare_memfun
+
+	* src/gettext.h: change for the new functions
+
+	* src/gettext.C: new file, make _(char const * str) and _(string
+	const & str) real functions.
+
+	* src/font.C (width): rewrite slightly to avoid one extra variable
+
+	* src/debug.C: initialize Debug::ANY here
+
+	* src/commandtags.h: update number comments
+
+	* src/combox.h (get): make const func
+	(empty): make const
+	(getline): make const
+
+	* src/combox.C (input_cb): handle case where fl_get_input can
+	return NULL
+
+	* src/bufferlist.C: add <functional>, "support/lyxmanip.h",
+	"support/lyxfunctional.h", remove currentview variable.
+	(resize): use std::for_each with std::mem_fun
+	(getFileNames): use std::copy with back_inserter_fun
+	(getBuffer): change arg type to unsigned int
+	(emergencyWriteAll): call emergencyWrite with std::for_each and
+	class_fun.
+	(emergencyWrite): new method, the for loop in emergencyWriteAll
+	has been unrolled.
+	(exists): use std::find_if with compare_memfun
+	(getBuffer): use std::find_if and compare_memfun
+
+	* src/buffer.h: add typedefs for iterator_category, value_type
+	difference_type, pointer and reference for inset_iterator
+	add postfix ++ for inset_iterator
+	make isnet_iterator::getPos() const
+
+	* src/buffer.C: added support/lyxmanip.h
+	(readFile): use lyxerr << fmt instead of printf
+	(makeLaTeXFile): use std::copy to write out encodings
+	
+
+	* src/Painter.C (text): rewrite slightly to avoid extra font variable
+
+	* src/MenuBackend.C (read): remove c_str(), as well as strdup and
+	free and the char * temp.
+	(hasMenu): use std::find_if and compare_memfun
+	(getMenu): ditto
+
+	* src/Makefile.am (lyx_SOURCES): added gettext.C
+
+	* src/LyXAction.C (retrieveActionArg): clear the arg, use
+	string::insert small change to avoid temporary
+
+	* src/LColor.C (getGUIName): remove c_str()
+
+	* several files: change all occurances of fl_display to
+	fl_get_display() 
+
+	* config/lyxinclude.m4 (LYX_PROG_CXX): add a 2.97 clause so
+	that -pedantid is not used for gcc 2.97 (cvs gcc)
+
+	* boost/Makefile.am: begin slowly to prepare for a real boost lib
+
 2000-10-11  Allan Rae  <rae@lyx.org>
 
 	* src/frontends/xforms/FormPreferences.C (input): template path must be

@@ -19,12 +19,15 @@
 #include <config.h>
 
 #include <algorithm>
+#include <functional>
 
 #include "bufferlist.h"
 #include "lyx_main.h"
 #include "minibuffer.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
+#include "support/lyxmanip.h"
+#include "support/lyxfunctional.h"
 #include "lyx_gui_misc.h"
 #include "lastfiles.h"
 #include "debug.h"
@@ -36,8 +39,6 @@
 #include "LyXView.h"
 #include "vc-backend.h"
 #include "TextCache.h"
-
-extern BufferView * current_view; // called too many times in this file...
 
 using std::vector;
 using std::find;
@@ -95,7 +96,7 @@ bool BufferList::QwriteAll()
 {
         bool askMoreConfirmation = false;
         string unsaved;
-	for(BufferStorage::iterator it = bstore.begin();
+	for (BufferStorage::iterator it = bstore.begin();
 	    it != bstore.end(); ++it) {
 		if (!(*it)->isLyxClean()) {
 			string fname;
@@ -160,10 +161,7 @@ void BufferList::closeAll()
 
 void BufferList::resize()
 {
-	for(BufferStorage::iterator it = bstore.begin();
-	    it != bstore.end(); ++it) {
-		(*it)->resize();
-	}
+	for_each(bstore.begin(), bstore.end(), mem_fun(&Buffer::resize));
 }
 
 
@@ -223,10 +221,8 @@ bool BufferList::close(Buffer * buf)
 vector<string> const BufferList::getFileNames() const
 {
 	vector<string> nvec;
-	for(BufferStorage::const_iterator cit = bstore.begin();
-	    cit != bstore.end(); ++cit) {
-		nvec.push_back((*cit)->fileName());
-	}
+	std::copy(bstore.begin(), bstore.end(),
+		  back_inserter_fun(nvec, &Buffer::fileName));
 	return nvec;
 }
 
@@ -238,7 +234,7 @@ Buffer * BufferList::first()
 }
 
 
-Buffer * BufferList::getBuffer(int choice)
+Buffer * BufferList::getBuffer(unsigned int choice)
 {
 	if (choice >= bstore.size()) return 0;
 	return bstore[choice];
@@ -248,8 +244,8 @@ Buffer * BufferList::getBuffer(int choice)
 int BufferList::unlockInset(UpdatableInset * inset)
 {
 	if (!inset) return 1;
-	for(BufferStorage::iterator it = bstore.begin();
-	    it != bstore.end(); ++it) {
+	for (BufferStorage::iterator it = bstore.begin();
+	     it != bstore.end(); ++it) {
 		if ((*it)->getUser()
 		    && (*it)->getUser()->theLockingInset() == inset) {
 			(*it)->getUser()->insetUnlock();
@@ -262,8 +258,8 @@ int BufferList::unlockInset(UpdatableInset * inset)
 
 void BufferList::updateIncludedTeXfiles(string const & mastertmpdir)
 {
-	for(BufferStorage::iterator it = bstore.begin();
-	    it != bstore.end(); ++it) {
+	for (BufferStorage::iterator it = bstore.begin();
+	     it != bstore.end(); ++it) {
 		if (!(*it)->isDepClean(mastertmpdir)) {
 			string writefile = mastertmpdir;
 			writefile += '/';
@@ -278,60 +274,107 @@ void BufferList::updateIncludedTeXfiles(string const & mastertmpdir)
 
 void BufferList::emergencyWriteAll()
 {
-	for (BufferStorage::iterator it = bstore.begin();
-	     it != bstore.end(); ++it) {
-		if (!(*it)->isLyxClean()) {
-			bool madeit = false;
-			
-			lyxerr <<_("lyx: Attempting to save"
-				   " document ");
-			if ((*it)->isUnnamed())
-			    lyxerr << OnlyFilename((*it)->fileName());
-			else
-			    lyxerr << (*it)->fileName();
-			lyxerr << _(" as...") << endl;
-			
-			for (int i = 0; i < 3 && !madeit; ++i) {
-				string s;
-				
-				// We try to save three places:
-				// 1) Same place as document.
-				// 2) In HOME directory.
-				// 3) In "/tmp" directory.
-				if (i == 0) {
-					if ((*it)->isUnnamed())
-						continue;
-					s = (*it)->fileName();
-				} else if (i == 1) {
-					s = AddName(GetEnvPath("HOME"),
-						    (*it)->fileName());
-				} else {
-					// MakeAbsPath to prepend the current
-					// drive letter on OS/2
-					s = AddName(MakeAbsPath("/tmp/"),
-						    (*it)->fileName());
-				}
-				s += ".emergency";
-				
-				lyxerr << "  " << i + 1 << ") " << s << endl;
-				
-				if ((*it)->writeFile(s, true)) {
-					(*it)->markLyxClean();
-					lyxerr << _("  Save seems successful. "
-						    "Phew.") << endl;
-					madeit = true;
-				} else if (i != 2) {
-					lyxerr << _("  Save failed! Trying...")
-					       << endl;
-				} else {
-					lyxerr << _("  Save failed! Bummer. "
-						    "Document is lost.")
-					       << endl;
-				}
-			}
+	for_each(bstore.begin(), bstore.end(),
+		 class_fun(*this, &BufferList::emergencyWrite));
+}
+
+
+void BufferList::emergencyWrite(Buffer * buf) 
+{
+	// No need to save if the buffer has not changed.
+	if (buf->isLyxClean()) return;
+	
+	lyxerr << fmt(_("lyx: Attempting to save document %s as..."),
+		      buf->isUnnamed() ? OnlyFilename(buf->fileName()).c_str()
+		      : buf->fileName().c_str()) << endl;
+	
+	//if (buf->isUnnamed())
+	//	lyxerr << OnlyFilename(buf->fileName());
+	//else
+	//	lyxerr << buf->fileName();
+	//lyxerr << _(" as...") << endl;
+	
+	// Let's unroll this loop (Lgb)
+#if 0
+	bool madeit = false;
+	
+	for (int i = 0; i < 3 && !madeit; ++i) {
+		string s;
+		
+		// We try to save three places:
+		// 1) Same place as document.
+		// 2) In HOME directory.
+		// 3) In "/tmp" directory.
+		if (i == 0) {
+			if (buf->isUnnamed())
+				continue;
+			s = buf->fileName();
+		} else if (i == 1) {
+			s = AddName(GetEnvPath("HOME"), buf->fileName());
+		} else {
+			// MakeAbsPath to prepend the current
+			// drive letter on OS/2
+			s = AddName(MakeAbsPath("/tmp/"), buf->fileName());
+		}
+		s += ".emergency";
+		
+		lyxerr << "  " << i + 1 << ") " << s << endl;
+		
+		if (buf->writeFile(s, true)) {
+			buf->markLyxClean();
+			lyxerr << _("  Save seems successful. Phew.") << endl;
+			madeit = true;
+		} else if (i != 2) {
+			lyxerr << _("  Save failed! Trying...") << endl;
+		} else {
+			lyxerr << _("  Save failed! Bummer. Document is lost.")
+			       << endl;
 		}
 	}
+#else
+	// We try to save three places:
+
+	// 1) Same place as document. Unless it is an unnamed doc.
+	if (!buf->isUnnamed()) {
+		string s = buf->fileName();
+		s += ".emergency";
+		lyxerr << "  " << s << endl;
+		if (buf->writeFile(s, true)) {
+			buf->markLyxClean();
+			lyxerr << _("  Save seems successful. Phew.") << endl;
+			return;
+		} else {
+			lyxerr << _("  Save failed! Trying...") << endl;
+		}
+	}
+	
+	// 2) In HOME directory.
+	string s = AddName(GetEnvPath("HOME"), buf->fileName());
+	s += ".emergency";
+	lyxerr << " " << s << endl;
+	if (buf->writeFile(s, true)) {
+		buf->markLyxClean();
+		lyxerr << _("  Save seems successful. Phew.") << endl;
+		return;
+	}
+	
+	lyxerr << _("  Save failed! Trying...") << endl;
+	
+	// 3) In "/tmp" directory.
+	// MakeAbsPath to prepend the current
+	// drive letter on OS/2
+	s = AddName(MakeAbsPath("/tmp/"), buf->fileName());
+	s += ".emergency";
+	lyxerr << " " << s << endl;
+	if (buf->writeFile(s, true)) {
+		buf->markLyxClean();
+		lyxerr << _("  Save seems successful. Phew.") << endl;
+		return;
+	}
+	lyxerr << _("  Save failed! Bummer. Document is lost.") << endl;
+#endif
 }
+
 
 
 Buffer * BufferList::readFile(string const & s, bool ronly)
@@ -405,12 +448,8 @@ Buffer * BufferList::readFile(string const & s, bool ronly)
 
 bool BufferList::exists(string const & s) const
 {
-	for (BufferStorage::const_iterator cit = bstore.begin();
-	     cit != bstore.end(); ++cit) {
-		if ((*cit)->fileName() == s)
-			return true;
-	}
-	return false;
+	return find_if(bstore.begin(), bstore.end(),
+		       compare_memfun(&Buffer::fileName, s)) != bstore.end();
 }
 
 
@@ -424,12 +463,10 @@ bool BufferList::isLoaded(Buffer const * b) const
 
 Buffer * BufferList::getBuffer(string const & s)
 {
-	for(BufferStorage::iterator it = bstore.begin();
-	    it != bstore.end(); ++it) {
-		if ((*it)->fileName() == s)
-			return (*it);
-	}
-	return 0;
+	BufferStorage::iterator it =
+		find_if(bstore.begin(), bstore.end(),
+			compare_memfun(&Buffer::fileName, s));
+	return it != bstore.end() ? (*it) : 0;
 }
 
 

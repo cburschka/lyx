@@ -48,7 +48,8 @@ extern "C" void C_Combox_input_cb(FL_OBJECT *ob, long);
 extern "C" void C_Combox_combo_cb(FL_OBJECT *ob, long data) ;
 extern "C" int C_Combox_peek_event(FL_FORM * form, void *xev);
 
-Combox::Combox(combox_type t): type(t)
+Combox::Combox(combox_type t)
+	: type(t)
 {
    browser = button = 0;
    callback = 0;
@@ -246,8 +247,8 @@ void Combox::Show()
 	if (_pre) _pre();
 	
 	int tmp;
-	XGetInputFocus(fl_display, &save_window, &tmp); //BUG-Fix Dietmar
-	XFlush(fl_display);
+	XGetInputFocus(fl_get_display(), &save_window, &tmp); //BUG-Fix Dietmar
+	XFlush(fl_get_display());
 	if (button && type != FL_COMBOX_NORMAL) {
 		fl_set_object_label(button, "@2<-");	      
 		fl_redraw_object(button);
@@ -259,11 +260,11 @@ void Combox::Show()
 		fl_set_browser_topline(browser, sel);
 		fl_select_browser_line(browser, sel);
 	}
-	XGrabPointer(fl_display, form->window, false,
+	XGrabPointer(fl_get_display(), form->window, false,
 		     ButtonPressMask | ButtonReleaseMask | PointerMotionMask,
 		     GrabModeAsync, GrabModeAsync,
 		     0, 0, 0);
-	XFlush(fl_display);
+	XFlush(fl_get_display());
 }
 
 void Combox::Hide(int who)
@@ -278,15 +279,15 @@ void Combox::Hide(int who)
 					    fl_get_browser_line(browser, sel));		
 //	        if (callback) callback(sel, cb_arg);
 	}
-        XUngrabPointer(fl_display, 0);
-	XFlush(fl_display);
+        XUngrabPointer(fl_get_display(), 0);
+	XFlush(fl_get_display());
 	if (!who && browser && label && callback)
 	    callback(sel, cb_arg, this);
         if (form) {
 		fl_hide_form(form);
-		XSetInputFocus(fl_display, save_window,
+		XSetInputFocus(fl_get_display(), save_window,
 			       RevertToParent, CurrentTime); // BUG-FIX-Dietmar
-		XFlush(fl_display);
+		XFlush(fl_get_display());
         }
 	if (button) {
 	        if (type != FL_COMBOX_NORMAL){
@@ -313,15 +314,17 @@ void Combox::deactivate()
 	if (label) fl_deactivate_object(label);
 }
 
+
 void Combox::input_cb(FL_OBJECT * ob, long)
 {
 	Combox * combo = static_cast<Combox*>(ob->u_vdata);
 
 	char const * text = fl_get_input(ob);
 
-	combo->addto(text);
+	combo->addto(text ? text : string());
 	combo->is_empty = false;
 }
+
 
 extern "C" void C_Combox_input_cb(FL_OBJECT * ob, long data)
 {
@@ -335,11 +338,11 @@ void Combox::combo_cb(FL_OBJECT * ob, long data)
 	switch (data) {
 	case 0:
 	{  
-		int i = combo->get();
+		int const i = combo->get();
 		switch (fl_get_button_numb(ob)) {
 		case 2: 
 		{
-			combo->select(--i); 
+			combo->select(i - 1); 
 			if (combo->callback)
 				combo->callback(combo->sel,
 						combo->cb_arg, combo);
@@ -347,7 +350,7 @@ void Combox::combo_cb(FL_OBJECT * ob, long data)
 		}
 		case 3: 
 		{
-			combo->select(++i);  
+			combo->select(i + 1);  
 			if (combo->callback)
 				combo->callback(combo->sel,
 						combo->cb_arg, combo);
@@ -392,7 +395,7 @@ int Combox::peek_event(FL_FORM * form, void * xev)
 	KeySym keysym_return;
 	num_bytes = XLookupString(&static_cast<XEvent*>(xev)->xkey, s_r, 10, 
 				  &keysym_return, 0);
-	XFlush(fl_display);
+	XFlush(fl_get_display());
 	switch (keysym_return) {
 	case XK_Down:
 		if (fl_get_browser(combo->browser) <

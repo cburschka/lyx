@@ -24,6 +24,7 @@
 #include "debug.h"
 #include "gettext.h"
 #include "support/LAssert.h"
+#include "support/lyxfunctional.h"
 
 using std::pair;
 using std::make_pair;
@@ -1142,49 +1143,43 @@ void LyXTextClass::readClassOptions(LyXLex & lexrc)
 
 bool LyXTextClass::hasLayout(string const & name) const
 {
-	for (LayoutList::const_iterator cit = layoutlist.begin();
-	     cit != layoutlist.end(); ++cit) {
-		if ((*cit).name() == name)
-			return true;
-	}
-	return false;
+	return find_if(layoutlist.begin(), layoutlist.end(),
+		       compare_memfun(&LyXLayout::name, name))
+		!= layoutlist.end();
 }
 
 
 LyXLayout const & LyXTextClass::GetLayout (string const & name) const
 {
-	for (LayoutList::const_iterator cit = layoutlist.begin();
-	     cit != layoutlist.end(); ++cit) {
-		if ((*cit).name() == name)
-			return (*cit);
-	}
-	Assert(false); // we actually require the name to exist.
-	return layoutlist.front();
+	LayoutList::const_iterator cit =
+		find_if(layoutlist.begin(),
+			layoutlist.end(),
+			compare_memfun(&LyXLayout::name, name));
+	Assert(cit != layoutlist.end()); // we require the name to exist
+	return (*cit);
 }
 
 
 LyXLayout & LyXTextClass::GetLayout(string const & name)
 {
-	for (LayoutList::iterator it = layoutlist.begin();
-	     it != layoutlist.end(); ++it) {
-		if ((*it).name() == name)
-			return (*it);
-	}
-	Assert(false); // we actually require the name to exist.
-	return layoutlist.front();
+	LayoutList::iterator it =
+		find_if(layoutlist.begin(),
+			layoutlist.end(),
+			compare_memfun(&LyXLayout::name, name));
+	Assert(it != layoutlist.end()); // we require the name to exist
+	return (*it);
 }
 
 
-bool LyXTextClass::delete_layout (string const & name)
+bool LyXTextClass::delete_layout(string const & name)
 {
-	for(LayoutList::iterator it = layoutlist.begin();
-	    it != layoutlist.end(); ++it) {
-		if ((*it).name() == name) {
-			layoutlist.erase(it);
-			return true;
-		}
-	}
-	return false;
+	LayoutList::iterator it =
+		remove_if(layoutlist.begin(), layoutlist.end(),
+			  compare_memfun(&LyXLayout::name, name));
+	LayoutList::iterator end = layoutlist.end();
+	bool const ret = (it != end);
+	layoutlist.erase(it, end);
+	return ret;
 }
 
 
@@ -1194,7 +1189,7 @@ void LyXTextClass::load()
 	if (loaded) return;
 
 	// Read style-file
-	string real_file = LibFileSearch("layouts", name_, "layout");
+	string const real_file = LibFileSearch("layouts", name_, "layout");
 
 	if (Read(real_file)) {
 		lyxerr << "Error reading `"
@@ -1213,13 +1208,12 @@ void LyXTextClass::load()
 pair<bool, LyXTextClassList::size_type> const
 LyXTextClassList::NumberOfClass(string const & textclass) const
 {
-	for (ClassList::const_iterator cit = classlist.begin();
-	     cit != classlist.end(); ++cit) {
-		if ((*cit).name() == textclass)
-			return make_pair(true,
-					 size_type(cit - classlist.begin()));
-	}
-	return make_pair(false, size_type(0));
+	ClassList::const_iterator cit =
+		find_if(classlist.begin(), classlist.end(),
+			compare_memfun(&LyXTextClass::name, textclass));
+	return cit != classlist.end() ?
+		make_pair(true, size_type(cit - classlist.begin())) :
+		make_pair(false, size_type(0));
 }
 
 
