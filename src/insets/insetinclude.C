@@ -177,46 +177,50 @@ InsetInclude::Params const & InsetInclude::params() const
 }
 
 
-bool InsetInclude::Params::operator==(Params const & o) const
-{
-	return cparams == o.cparams && flag == o.flag &&
-	    masterFilename_ == o.masterFilename_;
-}
+namespace {
+
+/// the type of inclusion
+enum Types {
+	INCLUDE = 0,
+	VERB = 1,
+	INPUT = 2,
+	VERBAST = 3
+};
 
 
-bool InsetInclude::Params::operator!=(Params const & o) const
+Types type(InsetInclude::Params const & params)
 {
-	return !(*this == o);
+	string const command_name = params.cparams.getCmdName();
+
+	if (command_name == "input")
+		return INPUT;
+	if  (command_name == "verbatiminput")
+		return VERB;
+	if  (command_name == "verbatiminput*")
+		return VERBAST;
+	return INCLUDE;
 }
+ 
+
+bool isVerbatim(InsetInclude::Params const & params)
+{
+	string const command_name = params.cparams.getCmdName();
+	return command_name == "verbatiminput" ||
+		command_name == "verbatiminput*";
+}
+
+} // namespace anon
 
 
 void InsetInclude::set(Params const & p)
 {
 	params_ = p;
 
-	string command;
-
-	switch (params_.flag) {
-		case INCLUDE:
-			command="include";
-			break;
-		case VERB:
-			command="verbatiminput";
-			break;
-		case INPUT:
-			command="input";
-			break;
-		case VERBAST:
-			command="verbatiminput*";
-			break;
-	}
-
-	params_.cparams.setCmdName(command);
-
 	if (preview_->monitoring())
 		preview_->stopMonitoring();
 
-	if (lyx::graphics::PreviewedInset::activated() && params_.flag == INPUT)
+	if (lyx::graphics::PreviewedInset::activated() &&
+	    type(params_) == INPUT)
 		preview_->generatePreview();
 }
 
@@ -253,17 +257,6 @@ void InsetInclude::read(Buffer const &, LyXLex & lex)
 void InsetInclude::read(LyXLex & lex)
 {
 	params_.cparams.read(lex);
-
-	if (params_.cparams.getCmdName() == "include")
-		params_.flag = INCLUDE;
-	else if (params_.cparams.getCmdName() == "input")
-		params_.flag = INPUT;
-	/* FIXME: is this logic necessary now ? */
-	else if (contains(params_.cparams.getCmdName(), "verbatim")) {
-		params_.flag = VERB;
-		if (params_.cparams.getCmdName() == "verbatiminput*")
-			params_.flag = VERBAST;
-	}
 }
 
 
@@ -271,7 +264,7 @@ string const InsetInclude::getScreenLabel(Buffer const &) const
 {
 	string temp;
 
-	switch (params_.flag) {
+	switch (type(params_)) {
 		case INPUT: temp += _("Input"); break;
 		case VERB: temp += _("Verbatim Input"); break;
 		case VERBAST: temp += _("Verbatim Input*"); break;
@@ -304,7 +297,7 @@ string const InsetInclude::getMasterFilename() const
 
 bool InsetInclude::loadIfNeeded() const
 {
-	if (isVerbatim())
+	if (isVerbatim(params_))
 		return false;
 
 	if (!IsLyXFilename(getFileName()))
@@ -367,9 +360,9 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 				   runparams, false);
 	}
 
-	if (isVerbatim()) {
+	if (isVerbatim(params_)) {
 		os << '\\' << params_.cparams.getCmdName() << '{' << incfile << '}';
-	} else if (params_.flag == INPUT) {
+	} else if (type(params_) == INPUT) {
 		// \input wants file with extension (default is .tex)
 		if (!IsLyXFilename(getFileName())) {
 			os << '\\' << params_.cparams.getCmdName() << '{' << incfile << '}';
@@ -392,7 +385,7 @@ int InsetInclude::latex(Buffer const & buffer, ostream & os,
 
 int InsetInclude::ascii(Buffer const &, ostream & os, int) const
 {
-	if (isVerbatim())
+	if (isVerbatim(params_))
 		os << GetFileContents(getFileName());
 	return 0;
 }
@@ -426,7 +419,7 @@ int InsetInclude::linuxdoc(Buffer const & buffer, ostream & os) const
 		tmp->makeLinuxDocFile(writefile, buffer.niceFile(), true);
 	}
 
-	if (isVerbatim()) {
+	if (isVerbatim(params_)) {
 		os << "<![CDATA["
 		   << GetFileContents(getFileName())
 		   << "]]>";
@@ -465,7 +458,7 @@ int InsetInclude::docbook(Buffer const & buffer, ostream & os,
 		tmp->makeDocBookFile(writefile, buffer.niceFile(), true);
 	}
 
-	if (isVerbatim()) {
+	if (isVerbatim(params_)) {
 		os << "<inlinegraphic fileref=\""
 		   << '&' << include_label << ';'
 		   << "\" format=\"linespecific\">";
@@ -478,15 +471,12 @@ int InsetInclude::docbook(Buffer const & buffer, ostream & os,
 
 void InsetInclude::validate(LaTeXFeatures & features) const
 {
-
 	string incfile(params_.cparams.getContents());
 	string writefile;
 
-	Buffer const * buffer_ptr = bufferlist.getBuffer(getMasterFilename());
-	BOOST_ASSERT(buffer_ptr);
-	Buffer const & b = *buffer_ptr;
+	Buffer const & b = features.buffer();
 
-	if (!b.temppath().empty() && !b.niceFile() && !isVerbatim()) {
+	if (!b.temppath().empty() && !b.niceFile() && !isVerbatim(params_)) {
 		incfile = subst(incfile, '/','@');
 		writefile = AddName(b.temppath(), incfile);
 	} else
@@ -497,7 +487,7 @@ void InsetInclude::validate(LaTeXFeatures & features) const
 
 	features.includeFile(include_label, writefile);
 
-	if (isVerbatim())
+	if (isVerbatim(params_))
 		features.require("verbatim");
 
 	// Here we must do the fun stuff...
@@ -550,8 +540,8 @@ void InsetInclude::metrics(MetricsInfo & mi, Dimension & dim) const
 		}
 		button_.metrics(mi, dim);
 	}
-	int center_indent = (params_.flag == INPUT ? 0 :
-		(mi.base.textwidth - dim.wid) / 2);
+	int center_indent = type(params_) == INPUT ?
+		0 : (mi.base.textwidth - dim.wid) / 2;
 	Box b(center_indent, center_indent + dim.wid, -dim.asc, dim.des);
 	button_.setBox(b);
 
@@ -594,7 +584,7 @@ void InsetInclude::addPreview(lyx::graphics::PreviewLoader & ploader) const
 
 bool InsetInclude::PreviewImpl::previewWanted() const
 {
-	return parent().params_.flag == InsetInclude::INPUT &&
+	return type(parent().params_) == INPUT &&
 		parent().params_.cparams.preview() &&
 		IsFileReadable(parent().getFileName());
 }

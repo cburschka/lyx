@@ -56,24 +56,28 @@ void QInclude::update_contents()
 	dialog_->previewCB->setChecked(false);
 	dialog_->previewCB->setEnabled(false);
 
-	switch (params.flag) {
-		case InsetInclude::INPUT:
-			dialog_->typeCO->setCurrentItem(0);
-			dialog_->previewCB->setEnabled(true);
-			dialog_->previewCB->setChecked(params.cparams.preview());
-			break;
+	string cmdname = controller().params().cparams.getCmdName();
+	if (cmdname != "include" &&
+	    cmdname != "verbatiminput" &&
+	    cmdname != "verbatiminput*")
+		cmdname = "input";
 
-		case InsetInclude::INCLUDE:
-			dialog_->typeCO->setCurrentItem(1);
-			break;
+	if (cmdname == "input") {
+		dialog_->typeCO->setCurrentItem(0);
+		dialog_->previewCB->setEnabled(true);
+		dialog_->previewCB->setChecked(params.cparams.preview());
+		
+	} else if (cmdname == "include") {
+		dialog_->typeCO->setCurrentItem(1);
 
-		case InsetInclude::VERBAST:
-			dialog_->visiblespaceCB->setChecked(true);
-			/* fall through */
-		case InsetInclude::VERB:
-			dialog_->typeCO->setCurrentItem(2);
-			dialog_->visiblespaceCB->setEnabled(true);
-			break;
+	} else if (cmdname == "verbatiminput*") {
+		dialog_->typeCO->setCurrentItem(2);
+		dialog_->visiblespaceCB->setEnabled(true);
+		dialog_->visiblespaceCB->setChecked(true);
+
+	} else if (cmdname == "verbatiminput") {
+		dialog_->typeCO->setCurrentItem(2);
+		dialog_->visiblespaceCB->setEnabled(true);
 	}
 }
 
@@ -87,14 +91,14 @@ void QInclude::apply()
 
 	int const item = dialog_->typeCO->currentItem();
 	if (item == 0)
-		params.flag = InsetInclude::INPUT;
+		params.cparams.setCmdName("input");
 	else if (item == 1)
-		params.flag = InsetInclude::INCLUDE;
+		params.cparams.setCmdName("include");
 	else {
 		if (dialog_->visiblespaceCB->isChecked())
-			params.flag = InsetInclude::VERBAST;
+			params.cparams.setCmdName("verbatiminput*");
 		else
-			params.flag = InsetInclude::VERB;
+			params.cparams.setCmdName("verbatiminput");
 	}
 	controller().setParams(params);
 }

@@ -1,5 +1,10 @@
 2003-09-18  Angus Leeming  <leeming@lyx.org>
 
+	* FormInclude.C (apply): No need to set InsetInclude::Params::flag;
+	the variable has been removed. Instead, set the command name directly.
+
+2003-09-18  Angus Leeming  <leeming@lyx.org>
+
 	* Color.C:
 	* Color.h:
 	* ColorHandler.C:

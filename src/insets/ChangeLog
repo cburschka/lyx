@@ -1,5 +1,12 @@
 2003-09-18  Angus Leeming  <leeming@lyx.org>
 
+	* insetinclude.[Ch]: remove Params::operator==, operator!= as they're
+	redundant baggage from yesteryear.
+	Remove Params::flag as it is redundant; the info is present in
+	getCmdName.
+
+2003-09-18  Angus Leeming  <leeming@lyx.org>
+
 	* insetinclude.C (latexString): add a Buffer const & arg.
 
 2003-09-18  Angus Leeming  <leeming@lyx.org>

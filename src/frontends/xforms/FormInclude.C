@@ -117,23 +117,18 @@ void FormInclude::apply()
 	InsetInclude::Params params = controller().params();
 
 	params.cparams.preview(fl_get_button(dialog_->check_preview));
-
-	string const file = fl_get_input(dialog_->input_filename);
-	if (controller().fileExists(file))
-		params.cparams.setContents(file);
-	else
-		params.cparams.setContents("");
+	params.cparams.setContents(getString(dialog_->input_filename));
 
 	ControlInclude::Type const type = ControlInclude::Type(type_.get());
 	if (type == ControlInclude::INPUT)
-		params.flag = InsetInclude::INPUT;
+		params.cparams.setCmdName("input");
 	else if (type == ControlInclude::INCLUDE)
-		params.flag = InsetInclude::INCLUDE;
+		params.cparams.setCmdName("include");
 	else if (type == ControlInclude::VERBATIM) {
 		if (fl_get_button(dialog_->check_visiblespace))
-			params.flag = InsetInclude::VERBAST;
+			params.cparams.setCmdName("verbatiminput*");
 		else
-			params.flag = InsetInclude::VERB;
+			params.cparams.setCmdName("verbatiminput");
 	}
 
 	controller().setParams(params);
@@ -145,7 +140,7 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 	ButtonPolicy::SMInput action = ButtonPolicy::SMI_VALID;
 
 	if (ob == dialog_->button_browse) {
-		string const in_name = fl_get_input(dialog_->input_filename);
+		string const in_name = getString(dialog_->input_filename);
 		fl_freeze_form(form());
 		ControlInclude::Type const type = ControlInclude::Type(type_.get());
 		string const out_name = controller().Browse(in_name, type);
@@ -153,7 +148,7 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 		fl_unfreeze_form(form());
 
 	} else if (ob == dialog_->button_load) {
-		string const in_name = fl_get_input(dialog_->input_filename);
+		string const in_name = getString(dialog_->input_filename);
 		if (!rtrim(in_name).empty() && controller().fileExists(in_name)) {
 			dialog().OKButton();
 			controller().load(rtrim(in_name));
@@ -171,7 +166,7 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 		setEnabled(dialog_->button_load, true);
 
 	} else if (ob == dialog_->input_filename) {
-		string const in_name = fl_get_input(dialog_->input_filename);
+		string const in_name = getString(dialog_->input_filename);
 		if (rtrim(in_name).empty())
 			action = ButtonPolicy::SMI_INVALID;
 	}

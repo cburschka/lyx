@@ -26,29 +26,14 @@ struct LaTeXFeatures;
 /// for including tex/lyx files
 class InsetInclude: public InsetOld {
 public:
-	/// the type of inclusion
-	enum Flags {
-		INCLUDE = 0, //<
-		VERB = 1, //<
-		INPUT = 2, //<
-		VERBAST = 3 //<
-	};
-
 	struct Params {
 		Params(InsetCommandParams const & cp = InsetCommandParams("input"),
-		       Flags f = INPUT,
 		       string const & name = string())
-			: cparams(cp), flag(f),
+			: cparams(cp),
 			  masterFilename_(name) {}
 
 		InsetCommandParams cparams;
-		Flags flag;
 		string masterFilename_;
-
-		///
-		bool operator==(Params const &) const;
-		///
-		bool operator!=(Params const &) const;
 	};
 
 	///
@@ -117,8 +102,6 @@ private:
 	void read(LyXLex &);
 	/// get the text displayed on the button
 	string const getScreenLabel(Buffer const &) const;
-	/// is this a verbatim include ?
-	bool isVerbatim() const;
 	/// get the filename of the master buffer
 	string const getMasterFilename() const;
 	/// get the included file name
@@ -140,11 +123,6 @@ private:
 	mutable ButtonRenderer button_;
 };
 
-
-inline bool InsetInclude::isVerbatim() const
-{
-	return params_.flag == VERB || params_.flag == VERBAST;
-}
 
 #include "mailinset.h"
 
