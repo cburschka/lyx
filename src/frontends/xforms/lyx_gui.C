@@ -377,3 +377,9 @@ void lyx_gui::set_read_callback(int fd, LyXComm * comm)
 {
 	fl_add_io_callback(fd, FL_READ, C_read_callback, comm);
 }
+
+
+void lyx_gui::remove_read_callback(int fd)
+{
+	fl_remove_io_callback(fd, FL_READ, C_read_callback);
+}

@@ -65,6 +65,11 @@ namespace lyx_gui {
 	 * add a callback for I/O read notification
 	 */
 	void set_read_callback(int fd, LyXComm * comm);
+
+	/**
+	 * remove a I/O read callback
+	 */
+	void remove_read_callback(int fd);
 }
 
 #endif // LYX_GUI_H

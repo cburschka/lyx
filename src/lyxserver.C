@@ -99,7 +99,7 @@ void LyXComm::openConnection()
 		return;
 
 	if ((outfd = startPipe(outPipeName(), true)) == -1) {
-		endPipe(infd, inPipeName());
+		endPipe(infd, inPipeName(), false);
 		return;
 	}
 
@@ -132,8 +132,8 @@ void LyXComm::closeConnection()
 		return;
 	}
 
-	endPipe(infd, inPipeName());
-	endPipe(outfd, outPipeName());
+	endPipe(infd, inPipeName(), false);
+	endPipe(outfd, outPipeName(), true);
 
 	ready = false;
 }
@@ -207,11 +207,15 @@ int LyXComm::startPipe(string const & filename, bool write)
 }
 
 
-void LyXComm::endPipe(int & fd, string const & filename)
+void LyXComm::endPipe(int & fd, string const & filename, bool write)
 {
 	if (fd < 0)
 		return;
 
+	if (!write) {
+		lyx_gui::remove_read_callback(fd);
+	}
+ 
 #ifdef __EMX__
 	APIRET rc;
 	int errnum;
@@ -245,8 +249,8 @@ void LyXComm::endPipe(int & fd, string const & filename)
 void LyXComm::emergencyCleanup()
 {
 	if (!pipename.empty()) {
-		endPipe(infd, inPipeName());
-		endPipe(outfd, outPipeName());
+		endPipe(infd, inPipeName(), false);
+		endPipe(outfd, outPipeName(), true);
 	}
 }
 
