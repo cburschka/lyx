@@ -1,3 +1,12 @@
+2003-01-12  Edwin Leuven  <e.leuven@uva.nl>
+
+	* ui/QPreambleDialog.ui:
+	* QPreamble.[Ch]:
+        * QPreambleDialog.[Ch]:
+	* Dialogs.C:
+	* Dialogs_impl.h:
+	* Makefile.dialogs: Remove preamble dialog
+
 2003-01-12  Alfredo Braunstein <abraunst@libero.it>
 
 	* QSpellcheckerDialog.C (spellcheck,update_contents): enable/disable 

@@ -36,7 +36,6 @@
 #include "ControlLog.h"
 #include "ControlMinipage.h"
 #include "ControlParagraph.h"
-#include "ControlPreamble.h"
 #include "ControlPrefs.h"
 #include "ControlPrint.h"
 #include "ControlRef.h"
@@ -89,8 +88,6 @@
 #include "QMinipageDialog.h"
 #include "QParagraph.h"
 #include "QParagraphDialog.h"
-#include "QPreamble.h"
-#include "QPreambleDialog.h"
 #include "QPrefs.h"
 #include "QPrefsDialog.h"
 #include "QPrint.h"
@@ -182,9 +179,6 @@ MinipageDialog;
 typedef GUI<ControlParagraph, QParagraph, OkApplyCancelReadOnlyPolicy, Qt2BC>
 ParagraphDialog;
 
-typedef GUI<ControlPreamble, QPreamble, NoRepeatedApplyReadOnlyPolicy, Qt2BC>
-PreambleDialog;
-
 typedef GUI<ControlPrefs, QPrefs, OkApplyCancelPolicy, Qt2BC>
 PrefsDialog;
 
@@ -250,7 +244,6 @@ struct Dialogs::Impl {
 	LogFileDialog       logfile;
 	MinipageDialog      minipage;
 	ParagraphDialog     paragraph;
-	PreambleDialog      preamble;
 	PrefsDialog         prefs;
 	PrintDialog         print;
 	RefDialog           ref;
