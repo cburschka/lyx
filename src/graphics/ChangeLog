@@ -1,3 +1,8 @@
+2003-01-13  Angus Leeming  <leeming@lyx.org>
+
+	* GraphicsCacheItem.C (findTargetFormat): define the default conversion
+	format to be PPM not XPM.
+
 2002-12-17  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* Makefile.am (EXTRA_DIST): remove variable 

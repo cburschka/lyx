@@ -343,9 +343,9 @@ string const findTargetFormat(string const & from)
 				<< " to " << *it << std::endl;
 	}
 
-	// Failed! so we have to try to convert it to XPM format
+	// Failed! so we have to try to convert it to PPM format
 	// with the standard converter
-	return string("xpm");
+	return string("ppm");
 }
 
 } // anon namespace
