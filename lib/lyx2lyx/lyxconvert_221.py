@@ -24,9 +24,15 @@ def convert_spaces(lines):
     for i in range(len(lines)):
         lines[i] = string.replace(lines[i],"\\SpecialChar ~","\\InsetSpace ~")
 
+def convert_bibtex(lines):
+    for i in range(len(lines)):
+        lines[i] = string.replace(lines[i],"\\begin_inset LatexCommand \\BibTeX",
+                                  "\\begin_inset LatexCommand \\bibtex")
+
 def convert(header, body):
     add_end(header)
     convert_spaces(body)
+    convert_bibtex(body)
 
 if __name__ == "__main__":
     pass
