@@ -1,3 +1,10 @@
+2003-02-15  John Levon  <levon@movementarian.org>
+
+	* ui/QSpellcheckerDialogBase.ui: make "Accept" be "Ignore All"
+
+	* QSpellchecker.C: default to the first suggestion in replace
+	  combo
+
 2003-02-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* QLPopupMenu.C (populate): adapt to menubackend change. In

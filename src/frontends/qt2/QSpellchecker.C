@@ -120,7 +120,11 @@ void QSpellchecker::partialUpdate(int id)
 			dialog_->suggestionsLB->insertItem(toqstr(w));
 		}
 
-		dialog_->suggestionChanged(dialog_->wordED->text());
+		if (dialog_->suggestionsLB->count() == 0) {
+			dialog_->suggestionChanged(dialog_->wordED->text());
+		} else {
+			dialog_->suggestionChanged(dialog_->suggestionsLB->text(0));
+		}
 	}
 		break;
 
