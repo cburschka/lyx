@@ -29,7 +29,7 @@ void MathSizeInset::draw(Painter & pain, int x, int y) const
 void MathSizeInset::metrics(MathMetricsInfo const & st) const
 {
 	size_ = st;
-	size_.size = MathStyles(key_->id);
+	size_.style = MathStyles(key_->id);
 	xcell(0).metrics(size_);
 	ascent_   = xcell(0).ascent_;
 	descent_  = xcell(0).descent_;

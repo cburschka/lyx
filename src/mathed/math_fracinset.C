@@ -22,7 +22,7 @@ MathInset * MathFracInset::clone() const
 void MathFracInset::metrics(MathMetricsInfo const & st) const
 {
 	size_    = st;
-	size_.size = smallerStyleFrac(size_.size);
+	smallerStyleFrac(size_);
 	xcell(0).metrics(size_);
 	xcell(1).metrics(size_);
 	width_   = std::max(xcell(0).width(), xcell(1).width()) + 4; 

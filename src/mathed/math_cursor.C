@@ -915,12 +915,6 @@ void MathCursor::pullArg(bool goright)
 }
 
 
-MathStyles MathCursor::style() const
-{
-	return xarray().style();
-}
-
-
 void MathCursor::normalize() const
 {
 #ifdef WITH_WARNINGS

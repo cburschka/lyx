@@ -43,7 +43,7 @@ void MathMacroArgument::metrics(MathMetricsInfo const & st) const
 		ascent_  = xcell(0).ascent();
 		descent_ = xcell(0).descent();
 	} else
-		mathed_string_dim(LM_TC_TEX, size_.size, str_, ascent_, descent_, width_);
+		mathed_string_dim(LM_TC_TEX, size_, str_, ascent_, descent_, width_);
 }
 
 
@@ -52,7 +52,7 @@ void MathMacroArgument::draw(Painter & pain, int x, int y) const
 	if (expanded_)
 		xcell(0).draw(pain, x, y);
 	else
-		drawStr(pain, LM_TC_TEX, size_.size, x, y, str_);
+		drawStr(pain, LM_TC_TEX, size_, x, y, str_);
 }
 
 

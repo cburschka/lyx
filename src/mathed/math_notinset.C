@@ -32,9 +32,9 @@ void MathNotInset::metrics(MathMetricsInfo const & st) const
 {
 	size_ = st;
 	if (math_font_available(LM_TC_CMSY))
-		mathed_char_dim(LM_TC_CMSY, size(), 54, ascent_, descent_, width_);
+		mathed_char_dim(LM_TC_CMSY, size_, 54, ascent_, descent_, width_);
 	else
-		mathed_char_dim(LM_TC_VAR, size(), '/', ascent_, descent_, width_);
+		mathed_char_dim(LM_TC_VAR, size_, '/', ascent_, descent_, width_);
 	width_ = 0;
 }
 
@@ -45,7 +45,7 @@ void MathNotInset::draw(Painter & pain, int x, int y) const
 	yo(y);
 
 	if (math_font_available(LM_TC_CMSY))
-		drawChar(pain, LM_TC_CMSY, size(), x, y, 54);
+		drawChar(pain, LM_TC_CMSY, size_, x, y, 54);
 	else
-		drawChar(pain, LM_TC_VAR, size(), x, y, '/');
+		drawChar(pain, LM_TC_VAR, size_, x, y, '/');
 }

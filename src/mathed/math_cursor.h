@@ -195,8 +195,6 @@ public:
 	///
 	row_type row() const;
 
-	///
-	MathStyles style() const;
 	/// Make sure cursor position is valid
 	void normalize() const;
 

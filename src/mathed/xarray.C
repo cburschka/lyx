@@ -14,20 +14,20 @@
 
 
 MathXArray::MathXArray()
-	: width_(0), ascent_(0), descent_(0), xo_(0), yo_(0), style_(LM_ST_TEXT)
+	: width_(0), ascent_(0), descent_(0), xo_(0), yo_(0), size_()
 {}
 
 
 void MathXArray::metrics(MathMetricsInfo const & st) const
 {
-	style_ = st.size;
-	mathed_char_dim(LM_TC_VAR, style_, 'I', ascent_, descent_, width_);
+	size_ = st;
+	mathed_char_dim(LM_TC_VAR, st, 'I', ascent_, descent_, width_);
 
 	if (data_.empty()) 
 		return;
 
-	math_font_max_dim(LM_TC_TEXTRM, style_, ascent_, descent_);	
-	width_   = 0;
+	math_font_max_dim(LM_TC_TEXTRM, st, ascent_, descent_);	
+	width_ = 0;
 
 	//lyxerr << "MathXArray::metrics(): '" << data_ << "'\n";
 	

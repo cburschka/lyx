@@ -90,7 +90,7 @@ void MathDecorationInset::draw(Painter & pain, int x, int y) const
 	if (wide()) 
 		mathed_draw_deco(pain, x, y + dy_, width_, dh_, name_);
 	else {
-		int w = 2 + mathed_char_width(LM_TC_VAR, size(), 'x'); 
+		int w = 2 + mathed_char_width(LM_TC_VAR, size_, 'x'); 
 		mathed_draw_deco(pain, x + (width_ - w) / 2, y + dy_, w, dh_, name_);
 	}
 }

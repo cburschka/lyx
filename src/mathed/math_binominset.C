@@ -30,10 +30,10 @@ int MathBinomInset::dw() const
 
 void MathBinomInset::metrics(MathMetricsInfo const & st) const
 {
-	MathMetricsInfo m = st;
-	m.size   = smallerStyleFrac(m.size);
-	xcell(0).metrics(m);
-	xcell(1).metrics(m);
+	size_ = st;
+	smallerStyleFrac(size_);
+	xcell(0).metrics(size_);
+	xcell(1).metrics(size_);
 	ascent_  = xcell(0).height() + 4 + 5;
 	descent_ = xcell(1).height() + 4 - 5; 
 	width_   = std::max(xcell(0).width(), xcell(1).width()) + 2 * dw() + 4; 

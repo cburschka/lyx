@@ -20,7 +20,7 @@ MathInset * MathStackrelInset::clone() const
 void MathStackrelInset::metrics(MathMetricsInfo const & st) const
 {
 	size_    = st;
-	size_.size = smallerStyleFrac(size_.size);
+	smallerStyleFrac(size_);
 	xcell(0).metrics(size_);
 	xcell(1).metrics(st);
 	width_   = std::max(xcell(0).width(), xcell(1).width()) + 4; 

@@ -29,6 +29,7 @@
 #endif
 
 #include "xarray.h"
+#include "math_defs.h"
 
 /** Abstract base class for all math objects.
     A math insets is for use of the math editor only, it isn't a
@@ -49,27 +50,6 @@ class MathMacroTemplate;
 
 class LaTeXFeatures;
 class Buffer;
-class BufferView;
-class LyXFont;
-
-
-struct MathMetricsInfo {
-	///
-	MathMetricsInfo()
-		: view(0), font(0), size(LM_ST_TEXT)
-	{}
-	///
-	MathMetricsInfo(BufferView * v, LyXFont const * f, MathStyles s)
-		: view(v), font(f), size(s)
-	{}
-
-	///
-	BufferView * view;
-	///
-	LyXFont const * font;
-	///
-	MathStyles size;
-};
 
 
 struct MathWriteInfo {
@@ -144,8 +124,6 @@ public:
 	virtual int width() const { return 2; }
 	///
 	virtual int height() const;
-	///
-	virtual MathStyles size() const;
 
 	/// Where should we go when we press the up cursor key?
 	virtual bool idxUp(idx_type & idx, pos_type & pos) const;
@@ -271,10 +249,6 @@ public:
 	/// identifies things that can get \limits or \nolimits
 	virtual bool takesLimits() const { return false; }
 
-	///
-	virtual void push_back(MathInset *);
-	///
-	virtual void push_back(unsigned char c, MathTextCodes code);
 	///
 	virtual void dump() const;
 

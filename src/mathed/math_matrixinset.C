@@ -143,7 +143,7 @@ int MathMatrixInset::defaultColSpace(col_type col)
 void MathMatrixInset::metrics(MathMetricsInfo const & st) const
 {
 	size_ = st;
-	size_.size = (getType() == LM_OT_SIMPLE) ? LM_ST_TEXT : LM_ST_DISPLAY;
+	size_.style = (getType() == LM_OT_SIMPLE) ? LM_ST_TEXT : LM_ST_DISPLAY;
 
 	// let the cells adjust themselves
 	MathGridInset::metrics(size_);
@@ -156,7 +156,7 @@ void MathMatrixInset::metrics(MathMetricsInfo const & st) const
 	if (numberedType()) {
 		int l = 0;
 		for (row_type row = 0; row < nrows(); ++row)
-			l = std::max(l, mathed_string_width(LM_TC_BF, size(), nicelabel(row)));
+			l = std::max(l, mathed_string_width(LM_TC_BF, size_, nicelabel(row)));
 
 		if (l)
 			width_ += 30 + l;
@@ -165,7 +165,7 @@ void MathMatrixInset::metrics(MathMetricsInfo const & st) const
 	// make it at least as high as the current font
 	int asc = 0;
 	int des = 0;
-	math_font_max_dim(LM_TC_TEXTRM, LM_ST_TEXT, asc, des);
+	math_font_max_dim(LM_TC_TEXTRM, size_, asc, des);
 	ascent_  = std::max(ascent_,  asc);
 	descent_ = std::max(descent_, des);
 }
@@ -179,10 +179,10 @@ void MathMatrixInset::draw(Painter & pain, int x, int y) const
 	MathGridInset::draw(pain, x, y);
 
 	if (numberedType()) {
-		int xx = x + colinfo_.back().offset_ + colinfo_.back().width_ + 20;
+		int const xx = x + colinfo_.back().offset_ + colinfo_.back().width_ + 20;
 		for (row_type row = 0; row < nrows(); ++row) {
-			int yy = y + rowinfo_[row].offset_;
-			drawStr(pain, LM_TC_BF, size(), xx, yy, nicelabel(row));
+			int const yy = y + rowinfo_[row].offset_;
+			drawStr(pain, LM_TC_BF, size_, xx, yy, nicelabel(row));
 		}
 	}
 }

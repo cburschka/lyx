@@ -5,7 +5,7 @@
 
 #include <iosfwd>
 #include "array.h"
-#include "math_defs.h"
+#include "math_metricsinfo.h"
 
 #ifdef __GNUG__
 #pragma interface
@@ -45,8 +45,6 @@ public:
 	int height() const { return ascent_ + descent_; }
 	///
 	int width() const { return width_; }
-	///
-	MathStyles style() const { return style_; }
 
 	///
 	const_iterator begin() const { return data_.begin(); }
@@ -67,7 +65,7 @@ public:
 	///
 	mutable int yo_;
 	///
-	mutable MathStyles style_;
+	mutable MathMetricsInfo size_;
 };
 
 std::ostream & operator<<(std::ostream & os, MathXArray const & ar);

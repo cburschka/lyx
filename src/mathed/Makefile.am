@@ -68,6 +68,8 @@ libmathed_la_SOURCES = \
 	math_macrotable.h \
 	math_matrixinset.C \
 	math_matrixinset.h \
+	math_metricsinfo.h \
+	math_metricsinfo.C \
 	math_nestinset.C \
 	math_nestinset.h \
 	math_notinset.C \

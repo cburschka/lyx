@@ -65,7 +65,7 @@ void MathDelimInset::metrics(MathMetricsInfo const & st) const
 	xcell(0).metrics(st);
 	size_    = st;
 	int a, d, w;
-	mathed_char_dim(LM_TC_VAR, size_.size,'I', a, d, w);
+	mathed_char_dim(LM_TC_VAR, size_, 'I', a, d, w);
 	int h0   = (a + d) / 2;
 	int a0   = std::max(xcell(0).ascent(), a)   - h0;
 	int d0   = std::max(xcell(0).descent(), d)  + h0;

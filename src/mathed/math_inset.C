@@ -42,12 +42,6 @@ int MathInset::height() const
 }
 
 
-MathStyles MathInset::size() const
-{
-	return size_.size;
-}
-
-
 std::ostream & operator<<(std::ostream & os, MathInset const & inset)
 {
 	MathWriteInfo wi(0, os, false);
@@ -223,18 +217,6 @@ void MathInset::dump() const
 	MathWriteInfo wi(0, lyxerr, false);
 	write(wi);
 	lyxerr << "\n---------------------------------------------\n";
-}
-
-
-void MathInset::push_back(unsigned char, MathTextCodes)
-{
-	lyxerr << "can't push without a cell\n";
-}
-
-
-void MathInset::push_back(MathInset *)
-{
-	lyxerr << "can't push without a cell\n";
 }
 
 

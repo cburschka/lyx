@@ -100,7 +100,7 @@ int MathScriptInset::dy1(MathInset const * nuc) const
 		asc += na + 2;
 	else 
 		asc = std::max(asc, na);
-	asc = std::max(asc, mathed_char_ascent(LM_TC_VAR, LM_ST_TEXT, 'I'));
+	asc = std::max(asc, mathed_char_ascent(LM_TC_VAR, size_, 'I'));
 	return asc;
 }
 
@@ -162,21 +162,21 @@ int MathScriptInset::nwid(MathInset const * nuc) const
 {
 	return nuc ?
 		nuc->width() :
-		mathed_char_width(LM_TC_TEX, LM_ST_TEXT, '.');
+		mathed_char_width(LM_TC_TEX, size_, '.');
 }
 
 
 int MathScriptInset::nasc(MathInset const * nuc) const
 {
 	return nuc ? nuc->ascent()
-		: mathed_char_ascent(LM_TC_VAR, LM_ST_TEXT, 'I');
+		: mathed_char_ascent(LM_TC_VAR, size_, 'I');
 }
 
 
 int MathScriptInset::ndes(MathInset const * nuc) const
 {
 	return nuc ? nuc->descent()
-		: mathed_char_descent(LM_TC_VAR, LM_ST_TEXT, 'I');
+		: mathed_char_descent(LM_TC_VAR, size_, 'I');
 }
 
 
@@ -211,12 +211,15 @@ void MathScriptInset::draw(MathInset const * nuc, Painter & pain,
 {  
 	xo(x);
 	yo(y);
+
 	if (nuc)
 		nuc->draw(pain, x + dxx(nuc), y);
 	else
-		drawStr(pain, LM_TC_TEX, LM_ST_TEXT, x + dxx(nuc), y, ".");
+		drawStr(pain, LM_TC_TEX, size_, x + dxx(nuc), y, ".");
+
 	if (hasUp())
 		up().draw(pain, x + dx1(nuc), y - dy1(nuc));
+
 	if (hasDown())
 		down().draw(pain, x + dx0(nuc), y + dy0(nuc));
 }

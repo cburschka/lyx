@@ -123,6 +123,8 @@ void InsetFormulaBase::metrics(BufferView * bv, LyXFont const * f) const
 		view_ = bv;
 	if (f)
 		font_ = f;
+	if (f)
+		lyxerr << "fontsize: " << f->size() << "\n";
 	MathMetricsInfo mi(view_, font_, display() ? LM_ST_DISPLAY : LM_ST_TEXT);
 	par()->metrics(mi);
 }
@@ -194,9 +196,10 @@ void InsetFormulaBase::toggleInsetCursor(BufferView * bv)
 		//x -= par()->xo();
 		y -= par()->yo();
 		y -= 3;
-		int asc;
-		int des;
-		math_font_max_dim(LM_TC_TEXTRM, LM_ST_TEXT, asc, des);
+		int asc = 0;
+		int des = 0;
+		MathMetricsInfo mi(bv, font_, LM_ST_TEXT);
+		math_font_max_dim(LM_TC_TEXTRM, mi, asc, des);
 		bv->showLockedInsetCursor(x, y, asc, des);
 	}
 
@@ -213,9 +216,10 @@ void InsetFormulaBase::showInsetCursor(BufferView * bv, bool)
 			mathcursor->getPos(x, y);
 			x -= par()->xo();
 			y -= par()->yo();
-			int asc;
-			int des;
-			math_font_max_dim(LM_TC_TEXTRM, LM_ST_TEXT, asc, des);
+			int asc = 0;
+			int des = 0;
+			MathMetricsInfo mi(bv, font_, LM_ST_TEXT);
+			math_font_max_dim(LM_TC_TEXTRM, mi, asc, des);
 			bv->fitLockedInsetCursor(x, y, asc, des);
 		}
 		toggleInsetCursor(bv);
