@@ -1,8 +1,8 @@
 
 2004-10-23  André Pönitz  <poenitz@gmx.net>
 
-	* insettabular.C (cutSelection): fix cursor position after cutting
-		selection.
+	* insettabular.C (cutSelection, tabularFereatures):
+	  fix cursor position after cutting selection or table rows
 
 2004-10-18  Andreas Vox  <vox@isp.uni-luebeck.de>
 

@@ -402,7 +402,7 @@ InsetBase * InsetTabular::editXY(LCursor & cur, int x, int y) const
 	cur.selection() = false;
 	cur.push(const_cast<InsetTabular&>(*this));
 	return setPos(cur, x, y);
-	//int xx = cursorx_ - xo() + tabular.getBeginningOfTextInCell(actcell);
+	//int xx = cursorx_ - xo() + tabular.getBeginningOfTextInCell(cur.idx());
 }
 
 
@@ -532,17 +532,15 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_NEXT: {
 		//if (hasSelection())
 		//	cur.selection() = false;
-		int actcell = cur.idx();
-		int actcol = tabular.column_of_cell(actcell);
-		int column = actcol;
+		int const col = tabular.column_of_cell(cur.idx());
 		if (cur.bv().top_y() + cur.bv().painter().paperHeight()
 				< yo() + tabular.getHeightOfTabular())
 		{
 			cur.bv().scrollDocView(
 				cur.bv().top_y() + cur.bv().painter().paperHeight());
-			cur.idx() = tabular.getCellBelow(first_visible_cell) + column;
+			cur.idx() = tabular.getCellBelow(first_visible_cell) + col;
 		} else {
-			cur.idx() = tabular.getFirstCellInRow(tabular.rows() - 1) + column;
+			cur.idx() = tabular.getFirstCellInRow(tabular.rows() - 1) + col;
 		}
 		resetPos(cur);
 		break;
@@ -551,16 +549,16 @@ void InsetTabular::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 	case LFUN_PRIOR: {
 		//if (hasSelection())
 		//	cur.selection() = false;
-		int column = tabular.column_of_cell(cur.idx());
+		int const col = tabular.column_of_cell(cur.idx());
 		if (yo() < 0) {
 			cur.bv().scrollDocView(
 				cur.bv().top_y() - cur.bv().painter().paperHeight());
 			if (yo() > 0)
-				cur.idx() = column;
+				cur.idx() = col;
 			else
-				cur.idx() = tabular.getCellBelow(first_visible_cell) + column;
+				cur.idx() = tabular.getCellBelow(first_visible_cell) + col;
 		} else {
-			cur.idx() = column;
+			cur.idx() = col;
 		}
 		resetPos(cur);
 		break;
@@ -706,7 +704,6 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 {
 	switch (cmd.action) {
 	case LFUN_TABULAR_FEATURE: {
-		int actcell = cur.idx();
 		int action = LyXTabular::LAST_ACTION;
 		int i = 0;
 		for (; tabularFeature[i].action != LyXTabular::LAST_ACTION; ++i) {
@@ -748,75 +745,75 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 			return true;
 
 		case LyXTabular::MULTICOLUMN:
-			status.setOnOff(tabular.isMultiColumn(actcell));
+			status.setOnOff(tabular.isMultiColumn(cur.idx()));
 			break;
 
 		case LyXTabular::M_TOGGLE_LINE_TOP:
 			flag = false;
 		case LyXTabular::TOGGLE_LINE_TOP:
-			status.setOnOff(tabular.topLine(actcell, flag));
+			status.setOnOff(tabular.topLine(cur.idx(), flag));
 			break;
 
 		case LyXTabular::M_TOGGLE_LINE_BOTTOM:
 			flag = false;
 		case LyXTabular::TOGGLE_LINE_BOTTOM:
-			status.setOnOff(tabular.bottomLine(actcell, flag));
+			status.setOnOff(tabular.bottomLine(cur.idx(), flag));
 			break;
 
 		case LyXTabular::M_TOGGLE_LINE_LEFT:
 			flag = false;
 		case LyXTabular::TOGGLE_LINE_LEFT:
-			status.setOnOff(tabular.leftLine(actcell, flag));
+			status.setOnOff(tabular.leftLine(cur.idx(), flag));
 			break;
 
 		case LyXTabular::M_TOGGLE_LINE_RIGHT:
 			flag = false;
 		case LyXTabular::TOGGLE_LINE_RIGHT:
-			status.setOnOff(tabular.rightLine(actcell, flag));
+			status.setOnOff(tabular.rightLine(cur.idx(), flag));
 			break;
 
 		case LyXTabular::M_ALIGN_LEFT:
 			flag = false;
 		case LyXTabular::ALIGN_LEFT:
-			status.setOnOff(tabular.getAlignment(actcell, flag) == LYX_ALIGN_LEFT);
+			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_LEFT);
 			break;
 
 		case LyXTabular::M_ALIGN_RIGHT:
 			flag = false;
 		case LyXTabular::ALIGN_RIGHT:
-			status.setOnOff(tabular.getAlignment(actcell, flag) == LYX_ALIGN_RIGHT);
+			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_RIGHT);
 			break;
 
 		case LyXTabular::M_ALIGN_CENTER:
 			flag = false;
 		case LyXTabular::ALIGN_CENTER:
-			status.setOnOff(tabular.getAlignment(actcell, flag) == LYX_ALIGN_CENTER);
+			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_CENTER);
 			break;
 
 		case LyXTabular::ALIGN_BLOCK:
-			status.enabled(!tabular.getPWidth(actcell).zero());
-			status.setOnOff(tabular.getAlignment(actcell, flag) == LYX_ALIGN_BLOCK);
+			status.enabled(!tabular.getPWidth(cur.idx()).zero());
+			status.setOnOff(tabular.getAlignment(cur.idx(), flag) == LYX_ALIGN_BLOCK);
 			break;
 
 		case LyXTabular::M_VALIGN_TOP:
 			flag = false;
 		case LyXTabular::VALIGN_TOP:
 			status.setOnOff(
-				tabular.getVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_TOP);
+				tabular.getVAlignment(cur.idx(), flag) == LyXTabular::LYX_VALIGN_TOP);
 			break;
 
 		case LyXTabular::M_VALIGN_BOTTOM:
 			flag = false;
 		case LyXTabular::VALIGN_BOTTOM:
 			status.setOnOff(
-				tabular.getVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_BOTTOM);
+				tabular.getVAlignment(cur.idx(), flag) == LyXTabular::LYX_VALIGN_BOTTOM);
 			break;
 
 		case LyXTabular::M_VALIGN_MIDDLE:
 			flag = false;
 		case LyXTabular::VALIGN_MIDDLE:
 			status.setOnOff(
-				tabular.getVAlignment(actcell, flag) == LyXTabular::LYX_VALIGN_MIDDLE);
+				tabular.getVAlignment(cur.idx(), flag) == LyXTabular::LYX_VALIGN_MIDDLE);
 			break;
 
 		case LyXTabular::SET_LONGTABULAR:
@@ -836,15 +833,15 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 			break;
 
 		case LyXTabular::SET_ROTATE_CELL:
-			status.setOnOff(tabular.getRotateCell(actcell));
+			status.setOnOff(tabular.getRotateCell(cur.idx()));
 			break;
 
 		case LyXTabular::UNSET_ROTATE_CELL:
-			status.setOnOff(!tabular.getRotateCell(actcell));
+			status.setOnOff(!tabular.getRotateCell(cur.idx()));
 			break;
 
 		case LyXTabular::SET_USEBOX:
-			status.setOnOff(strToInt(argument) == tabular.getUsebox(actcell));
+			status.setOnOff(strToInt(argument) == tabular.getUsebox(cur.idx()));
 			break;
 
 		case LyXTabular::SET_LTFIRSTHEAD:
@@ -998,22 +995,20 @@ int InsetTabular::getCellXPos(int cell) const
 void InsetTabular::resetPos(LCursor & cur) const
 {
 	BufferView & bv = cur.bv();
-	int actcell = cur.idx();
-	int actcol = tabular.column_of_cell(actcell);
-
+	int const actcol = tabular.column_of_cell(cur.idx());
 	int const offset = ADD_TO_TABULAR_WIDTH + 2;
-	int new_x = getCellXPos(actcell) + offset;
-	int old_x = cursorx_;
+	int const new_x = getCellXPos(cur.idx()) + offset;
+	int const old_x = cursorx_;
+	int const col_width = tabular.getWidthOfColumn(cur.idx());
 	cursorx_ = new_x;
-//    cursor.x(getCellXPos(actcell) + offset);
+//    cursor.x(getCellXPos(cur.idx()) + offset);
 	if (actcol < tabular.columns() - 1 && scroll(false) &&
 		tabular.getWidthOfTabular() < bv.workWidth()-20)
 	{
 		scroll(bv, 0.0F);
 	} else if (cursorx_ - offset > 20 &&
-		   cursorx_ - offset + tabular.getWidthOfColumn(actcell)
-		   > bv.workWidth() - 20) {
-		scroll(bv, - tabular.getWidthOfColumn(actcell) - 20);
+		   cursorx_ - offset + col_width > bv.workWidth() - 20) {
+		scroll(bv, - col_width - 20);
 	} else if (cursorx_ - offset < 20) {
 		scroll(bv, 20 - cursorx_ + offset);
 	} else if (scroll() && xo() > 20 &&
@@ -1131,7 +1126,6 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 	LyXTabular::Feature feature, string const & value)
 {
 	BufferView & bv = cur.bv();
-	int actcell = cur.idx();
 	int sel_col_start;
 	int sel_col_end;
 	int sel_row_start;
@@ -1183,8 +1177,8 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 	recordUndo(cur, Undo::ATOMIC);
 
 	getSelection(cur, sel_row_start, sel_row_end, sel_col_start, sel_col_end);
-	int row =  tabular.row_of_cell(actcell);
-	int column = tabular.column_of_cell(actcell);
+	int row = tabular.row_of_cell(cur.idx());
+	int column = tabular.column_of_cell(cur.idx());
 	bool flag = true;
 	LyXTabular::ltType ltt;
 
@@ -1192,34 +1186,34 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 
 	case LyXTabular::SET_PWIDTH: {
 		LyXLength const len(value);
-		tabular.setColumnPWidth(actcell, len);
+		tabular.setColumnPWidth(cur.idx(), len);
 		if (len.zero()
-		    && tabular.getAlignment(actcell, true) == LYX_ALIGN_BLOCK)
+		    && tabular.getAlignment(cur.idx(), true) == LYX_ALIGN_BLOCK)
 			tabularFeatures(cur, LyXTabular::ALIGN_CENTER, string());
 		else if (!len.zero()
-			 && tabular.getAlignment(actcell, true) != LYX_ALIGN_BLOCK)
+			 && tabular.getAlignment(cur.idx(), true) != LYX_ALIGN_BLOCK)
 			tabularFeatures(cur, LyXTabular::ALIGN_BLOCK, string());
 		break;
 	}
 
 	case LyXTabular::SET_MPWIDTH:
-		tabular.setMColumnPWidth(actcell, LyXLength(value));
+		tabular.setMColumnPWidth(cur.idx(), LyXLength(value));
 		break;
 
 	case LyXTabular::SET_SPECIAL_COLUMN:
 	case LyXTabular::SET_SPECIAL_MULTI:
-		tabular.setAlignSpecial(actcell,value,feature);
+		tabular.setAlignSpecial(cur.idx(),value,feature);
 		break;
 
 	case LyXTabular::APPEND_ROW:
 		// append the row into the tabular
-		tabular.appendRow(bv.buffer()->params(), actcell);
+		tabular.appendRow(bv.buffer()->params(), cur.idx());
 		break;
 
 	case LyXTabular::APPEND_COLUMN:
 		// append the column into the tabular
-		tabular.appendColumn(bv.buffer()->params(), actcell);
-		actcell = tabular.getCellNumber(row, column);
+		tabular.appendColumn(bv.buffer()->params(), cur.idx());
+		cur.idx() = tabular.getCellNumber(row, column);
 		break;
 
 	case LyXTabular::DELETE_ROW:
@@ -1227,7 +1221,8 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 			tabular.deleteRow(sel_row_start);
 		if (sel_row_start >= tabular.rows())
 			--sel_row_start;
-		actcell = tabular.getCellNumber(sel_row_start, column);
+		cur.idx() = tabular.getCellNumber(sel_row_start, column);
+		cur.pos() = 0;
 		cur.selection() = false;
 		break;
 
@@ -1236,14 +1231,15 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 			tabular.deleteColumn(sel_col_start);
 		if (sel_col_start >= tabular.columns())
 			--sel_col_start;
-		actcell = tabular.getCellNumber(row, sel_col_start);
+		cur.idx() = tabular.getCellNumber(row, sel_col_start);
+		cur.pos() = 0;
 		cur.selection() = false;
 		break;
 
 	case LyXTabular::M_TOGGLE_LINE_TOP:
 		flag = false;
 	case LyXTabular::TOGGLE_LINE_TOP: {
-		bool lineSet = !tabular.topLine(actcell, flag);
+		bool lineSet = !tabular.topLine(cur.idx(), flag);
 		for (int i = sel_row_start; i <= sel_row_end; ++i)
 			for (int j = sel_col_start; j <= sel_col_end; ++j)
 				tabular.setTopLine(
@@ -1255,7 +1251,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 	case LyXTabular::M_TOGGLE_LINE_BOTTOM:
 		flag = false;
 	case LyXTabular::TOGGLE_LINE_BOTTOM: {
-		bool lineSet = !tabular.bottomLine(actcell, flag);
+		bool lineSet = !tabular.bottomLine(cur.idx(), flag);
 		for (int i = sel_row_start; i <= sel_row_end; ++i)
 			for (int j = sel_col_start; j <= sel_col_end; ++j)
 				tabular.setBottomLine(
@@ -1268,7 +1264,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 	case LyXTabular::M_TOGGLE_LINE_LEFT:
 		flag = false;
 	case LyXTabular::TOGGLE_LINE_LEFT: {
-		bool lineSet = !tabular.leftLine(actcell, flag);
+		bool lineSet = !tabular.leftLine(cur.idx(), flag);
 		for (int i = sel_row_start; i <= sel_row_end; ++i)
 			for (int j = sel_col_start; j <= sel_col_end; ++j)
 				tabular.setLeftLine(
@@ -1281,7 +1277,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 	case LyXTabular::M_TOGGLE_LINE_RIGHT:
 		flag = false;
 	case LyXTabular::TOGGLE_LINE_RIGHT: {
-		bool lineSet = !tabular.rightLine(actcell, flag);
+		bool lineSet = !tabular.rightLine(cur.idx(), flag);
 		for (int i = sel_row_start; i <= sel_row_end; ++i)
 			for (int j = sel_col_start; j <= sel_col_end; ++j)
 				tabular.setRightLine(
@@ -1334,10 +1330,10 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 		// just multicol for one Single Cell
 		if (!hasSelection()) {
 			// check whether we are completly in a multicol
-			if (tabular.isMultiColumn(actcell))
-				tabular.unsetMultiColumn(actcell);
+			if (tabular.isMultiColumn(cur.idx()))
+				tabular.unsetMultiColumn(cur.idx());
 			else
-				tabular.setMultiColumn(bv.buffer(), actcell, 1);
+				tabular.setMultiColumn(bv.buffer(), cur.idx(), 1);
 			break;
 		}
 		// we have a selection so this means we just add all this
@@ -1353,7 +1349,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 			s_end = sel_cell_end;
 		}
 		tabular.setMultiColumn(bv.buffer(), s_start, s_end - s_start + 1);
-		actcell = s_start;
+		cur.idx() = s_start;
 #endif
 		cur.selection() = false;
 		break;
@@ -1402,7 +1398,7 @@ void InsetTabular::tabularFeatures(LCursor & cur,
 
 	case LyXTabular::SET_USEBOX: {
 		LyXTabular::BoxType val = LyXTabular::BoxType(strToInt(value));
-		if (val == tabular.getUsebox(actcell))
+		if (val == tabular.getUsebox(cur.idx()))
 			val = LyXTabular::BOX_NONE;
 		for (int i = sel_row_start; i <= sel_row_end; ++i)
 			for (int j = sel_col_start; j <= sel_col_end; ++j)
@@ -1519,9 +1515,8 @@ bool InsetTabular::pasteSelection(LCursor & cur)
 {
 	if (!paste_tabular)
 		return false;
-	int actcell = cur.idx();
-	int actcol = tabular.column_of_cell(actcell);
-	int actrow = tabular.row_of_cell(actcell);
+	int actcol = tabular.column_of_cell(cur.idx());
+	int actrow = tabular.row_of_cell(cur.idx());
 	for (int r1 = 0, r2 = actrow;
 	     r1 < paste_tabular->rows() && r2 < tabular.rows();
 	     ++r1, ++r2) {
@@ -1649,10 +1644,6 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 	string::size_type len = buf.length();
 	string::size_type p = 0;
 
-	int actcell = bv.cursor().idx();
-	int actcol = tabular.column_of_cell(actcell);
-	int actrow = tabular.row_of_cell(actcell);
-
 	while (p < len && (p = buf.find_first_of("\t\n", p)) != string::npos) {
 		switch (buf[p]) {
 		case '\t':
@@ -1679,9 +1670,9 @@ bool InsetTabular::insertAsciiString(BufferView & bv, string const & buf,
 		cols = 0;
 	} else {
 		loctab = &tabular;
-		cell = actcell;
-		ocol = actcol;
-		row = actrow;
+		cell = bv.cursor().idx();
+		ocol = tabular.column_of_cell(cell);
+		row = tabular.row_of_cell(cell);
 	}
 
 	string::size_type op = 0;
