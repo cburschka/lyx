@@ -3,7 +3,7 @@
 # Dansk oversættelse af LyX
 # Copyright (C) 1997-2003 LyX Team
 # Asger Alstrup <alstrup@diku.dk>, 1997-1999.
-# Claus Hindsgaul <claus_h@image.dk>, 2000-2003, 2004.
+# Claus Hindsgaul <claus_h@image.dk>, 2000-2005.
 # Reviewed by Ole Laursen <olau@hardworking.dk>, 2002.
 #
 msgid ""
@@ -11,13 +11,13 @@ msgstr ""
 "Project-Id-Version: da\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2005-03-07 12:50+0100\n"
-"PO-Revision-Date: 2004-09-10 16:36+0200\n"
+"PO-Revision-Date: 2005-02-23 19:14+0100\n"
 "Last-Translator: Claus Hindsgaul <claus_h@image.dk>\n"
 "Language-Team: Danish <dansk@klid.dk>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=ISO-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: KBabel 1.3.1\n"
+"X-Generator: KBabel 1.9.1\n"
 "Plural-Forms:  nplurals=2; plural=(n != 1);\n"
 
 #: ../src/frontends/xforms/forms/form_aboutlyx.fd:44
@@ -968,7 +968,7 @@ msgstr "Linjeafstand:|#a"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:332
 msgid "Maximum label width:|#M"
-msgstr "Maksimal mærkatbredde:|#M"
+msgstr "Maksimal mærkebredde:|#M"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:350
 msgid "No Indent|#d"
@@ -1392,9 +1392,8 @@ msgid "LyXServer pipe:|#S"
 msgstr "LyXServer-rør:|#L"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2496
-#, fuzzy
 msgid "PATH prefix:|#T"
-msgstr "Type:|#T"
+msgstr "Stitilføjelse:|#t"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:2538
 msgid "Date format:|#f"
@@ -1510,7 +1509,7 @@ msgstr "Nulstil automatisk klasseindstillinger ved ændring|#u"
 
 #: ../src/frontends/xforms/forms/form_preferences.fd:3130
 msgid "Use Cygwin Paths|#s"
-msgstr ""
+msgstr "Brug Cygwin-stier|#C"
 
 #: ../src/frontends/xforms/forms/form_print.fd:44
 #: ../src/frontends/qt2/ui/QPrintDialogBase.ui:45
@@ -1572,9 +1571,8 @@ msgid "Name:|#N"
 msgstr "Navn:|#N"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:207
-#, fuzzy
 msgid "Label:|#e"
-msgstr "Referencemærke:|#m"
+msgstr "Mærke:|#M"
 
 #: ../src/frontends/xforms/forms/form_ref.fd:243
 msgid "Go to|#G"
@@ -2229,14 +2227,13 @@ msgstr "Litteraturliste-nøgler:|#ø"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:114
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:176
-#, fuzzy
 msgid "&Label:"
-msgstr "&Mærkat"
+msgstr "&Mærke:"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:122
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:140
 msgid "The label as it appears in the document"
-msgstr "Mærkatet, som det vil se ud i dokumentet"
+msgstr "Mærket, som det vil se ud i dokumentet"
 
 #: ../src/frontends/qt2/ui/QBibitemDialogBase.ui:189
 #: ../src/frontends/qt2/ui/QCharacterDialogBase.ui:486
@@ -3429,11 +3426,11 @@ msgstr "&Linjer && Sideskift"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:521
 msgid "Label Width"
-msgstr "Mærkatbredde"
+msgstr "Mærkebredde"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:540
 msgid "Lo&ngest label"
-msgstr "Læ&ngste mærkat"
+msgstr "Læ&ngste mærke"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:564
 msgid "L&ines"
@@ -3551,11 +3548,11 @@ msgstr "Æ&ndr"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:22
 msgid "Cygwin Paths"
-msgstr ""
+msgstr "Cygwin-stier"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:66
 msgid "&Use Cygwin-style paths"
-msgstr ""
+msgstr "&Brug stier på Cygwin-formen"
 
 #: ../src/frontends/qt2/ui/QPrefCygwinPathModule.ui:74
 #: src/frontends/xforms/FormPreferences.C:2016
@@ -3565,6 +3562,10 @@ msgid ""
 "MikTeX. Note, however, that you'll need to write shell script wrappers for "
 "all your converters."
 msgstr ""
+"Vælg dette hvis LyX skal angive stier på Cygwin-formen frem for Windows-"
+"formen. Dette er nyttigt hvis du bruger Cygwins teTeX i stedet for Windows-"
+"udgaven MikTeX. Bemærk dog at du så skal skrive skalskript-omslag (\"wrappers"
+"\") til alle dine konvertere."
 
 #: ../src/frontends/qt2/ui/QPrefDateModule.ui:22
 msgid "Date Format"
@@ -3783,7 +3784,7 @@ msgstr "Ly&X-serverdatakanal:"
 
 #: ../src/frontends/qt2/ui/QPrefPathsModule.ui:250
 msgid "&PATH prefix:"
-msgstr ""
+msgstr "&Stitilføjelse:"
 
 #: ../src/frontends/qt2/ui/QPrefPrinterModule.ui:22
 msgid "Printer settings"
@@ -4099,27 +4100,24 @@ msgid "Cross Reference"
 msgstr "Krydshenvisning"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:71
-#, fuzzy
 msgid "Update the label list"
-msgstr "Opdatér stillisten"
+msgstr "Opdatér mærkelisten"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:89 src/frontends/qt2/QRef.C:125
 msgid "&Goto"
 msgstr "&Spring til"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:93
-#, fuzzy
 msgid "Move the document cursor to label"
-msgstr "Flyt dokumentets markør til reference"
+msgstr "Flyt dokumentets markør til mærke"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:106
 msgid "Sort"
 msgstr "Sortér"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:110
-#, fuzzy
 msgid "Sort labels in alphabetical order"
-msgstr "Sortér referencer i alfabetisk rækkefølge"
+msgstr "Sortér mærker i alfabetisk rækkefølge"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:125
 msgid "<reference>"
@@ -4156,14 +4154,12 @@ msgid "&Name:"
 msgstr "&Navn:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:321
-#, fuzzy
 msgid "Available labels in selected document:"
-msgstr "Tilgængelige referencer i det valgte dokument:"
+msgstr "Tilgængelige mærker i det valgte dokument:"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:343
-#, fuzzy
 msgid "Available labels"
-msgstr "Tilgængelige skabeloner"
+msgstr "Tilgængelige mærker"
 
 #: ../src/frontends/qt2/ui/QRefDialogBase.ui:354
 msgid "&Document:"
@@ -5141,19 +5137,16 @@ msgid "NoteToEditor"
 msgstr "NoteTilRedaktør"
 
 #: ../lib/layouts/aastex.layout:121 ../lib/layouts/aastex.layout:541
-#, fuzzy
 msgid "Facility"
-msgstr "Fakta"
+msgstr "Facilitet"
 
 #: ../lib/layouts/aastex.layout:123 ../lib/layouts/aastex.layout:567
-#, fuzzy
 msgid "Objectname"
-msgstr "Oktav"
+msgstr "Objektnavn"
 
 #: ../lib/layouts/aastex.layout:125 ../lib/layouts/aastex.layout:594
-#, fuzzy
 msgid "Dataset"
-msgstr "Dato"
+msgstr "Datasæt"
 
 #: ../lib/layouts/aastex.layout:526
 msgid "FigCaption"
@@ -6513,9 +6506,8 @@ msgid "Norsk"
 msgstr "Norsk"
 
 #: ../lib/languages:45
-#, fuzzy
 msgid "Nynorsk"
-msgstr "Norsk"
+msgstr "Nynorsk"
 
 #: ../lib/languages:46
 msgid "Polish"
@@ -9137,9 +9129,8 @@ msgid " and "
 msgstr " og "
 
 #: src/frontends/controllers/biblio.C:109
-#, fuzzy
 msgid " et al."
-msgstr "et al."
+msgstr " et al."
 
 #: src/frontends/controllers/biblio.C:148
 msgid "No year"
@@ -9729,7 +9720,7 @@ msgstr "Gå tilbage"
 #: src/frontends/qt2/QRef.C:127
 #, fuzzy
 msgid "Go to label"
-msgstr "Læ&ngste mærkat"
+msgstr "Gå til valgte mærke."
 
 #: src/frontends/qt2/QSearch.C:30 src/frontends/xforms/FormSearch.C:25
 msgid "Find and Replace"
@@ -9977,9 +9968,8 @@ msgid "Add citation of the selected bibliography entry."
 msgstr "Oplysninger om den valgte indgang"
 
 #: src/frontends/xforms/FormCitation.C:165
-#, fuzzy
 msgid "Delete citation of the selected bibliography entry."
-msgstr "Oplysninger om den valgte indgang"
+msgstr ""
 
 #: src/frontends/xforms/FormCitation.C:168
 msgid "Move the selected entry upwards (in the current list)."
@@ -10528,7 +10518,6 @@ msgid "Convert \"to\" this format"
 msgstr "Konvertér \"til\" dette format"
 
 #: src/frontends/xforms/FormPreferences.C:995
-#, fuzzy
 msgid ""
 "The conversion command. $$i is the input file name, $$b is the file name "
 "without its extension and $$o is the name of the output file. $$s can be "
@@ -10536,7 +10525,7 @@ msgid ""
 msgstr ""
 "Konverteringsprogrammet. $$i er inddata-filnavnet. $$b er filnavnet uden sin "
 "filendelse og $$o er navnet på resultat-filen. $$s kan bruges til at angive "
-"stien til LyX's egen samling af konverteringsskripter."
+"stien til LyX's egen understøttelsesmappe."
 
 #: src/frontends/xforms/FormPreferences.C:1001
 msgid ""
@@ -10738,24 +10727,20 @@ msgstr "Udskriver siderne i omvendt rækkefølge."
 
 #. set up the tooltips
 #: src/frontends/xforms/FormRef.C:66
-#, fuzzy
 msgid "Select a document for labels."
-msgstr "Vælg dokument til referencer."
+msgstr "Vælg dokument til mærker."
 
 #: src/frontends/xforms/FormRef.C:68
-#, fuzzy
 msgid "Sort the labels alphabetically."
-msgstr "Sortér referencer i alfabetisk rækkefølge"
+msgstr "Sortér mærker i alfabetisk rækkefølge."
 
 #: src/frontends/xforms/FormRef.C:70 src/frontends/xforms/FormRef.C:279
-#, fuzzy
 msgid "Go to selected label."
-msgstr "Gå til valgte reference."
+msgstr "Gå til valgte mærke."
 
 #: src/frontends/xforms/FormRef.C:72
-#, fuzzy
 msgid "Update the list of labels."
-msgstr "Opdatér referencelisten."
+msgstr "Opdatér mærkelisten."
 
 #: src/frontends/xforms/FormRef.C:74
 #, fuzzy
@@ -11639,45 +11624,48 @@ msgid ""
 "%1$s. Make sure that this\n"
 "path exists and is writable and try again."
 msgstr ""
+"Kunne ikke oprette en midlertidig mappe i\n"
+"%1$s. Sørg for at denne\n"
+"sti eksisterer og at der kan skrives til den, og forsøg igen."
 
 #: src/lyx_main.C:387
-#, fuzzy
 msgid "Could not create a temporary directory in\n"
-msgstr "Fejl: Kunne ikke oprette midlertidig mappe:"
+msgstr "Kunne ikke oprette midlertidig mappe i\n"
 
 #: src/lyx_main.C:389
 msgid ""
 ". Make sure that this\n"
 "path exists and is writable and try again."
 msgstr ""
+". Sørg for at denne\n"
+"sti eksisterer og at der kan skrive til den, og prøv igen."
 
 #: src/lyx_main.C:393
-#, fuzzy
 msgid "Could not create temporary directory"
-msgstr "Fejl: Kunne ikke oprette midlertidig mappe:"
+msgstr "Kunne ikke oprette midlertidig mappe"
 
 #: src/lyx_main.C:539
-#, fuzzy
 msgid "You have specified a non-existent user LyX directory."
-msgstr "Du har angivet en ugyldig LyX-mappe."
+msgstr "Du har angivet en ugyldig bruger-LyX-mappe."
 
 #: src/lyx_main.C:540
 msgid "It is needed to keep your own configuration."
 msgstr "Det behøves for at tage vare på din personlige opsætning."
 
 #: src/lyx_main.C:541
-#, fuzzy
 msgid "Should I try to set it up for you? I'll exit if \"No\"."
-msgstr "Skal jeg prøve at sætte det op for dig (anbefales)?"
+msgstr ""
+"Skal jeg prøve at sætte det op for dig? Jeg fil afslutte, hvis du svarer "
+"\"Nej\"."
 
 #: src/lyx_main.C:542
 msgid "No user LyX directory. Exiting."
-msgstr ""
+msgstr "Ingen bruger-LyX-mappe. Afslutter."
 
 #: src/lyx_main.C:547
-#, fuzzy, c-format
+#, c-format
 msgid "LyX: Creating directory %1$s"
-msgstr "LyX: Opretter mappen "
+msgstr "LyX: Opretter mappen %1$s"
 
 #: src/lyx_main.C:551
 msgid "LyX: Creating directory "
@@ -11685,9 +11673,8 @@ msgstr "LyX: Opretter mappen "
 
 #. Failed, so let's exit.
 #: src/lyx_main.C:558
-#, fuzzy
 msgid "Failed to create directory. Exiting."
-msgstr "Kald af createDirectory med ugyldigt navn"
+msgstr "Kunne ikke oprette mappe. Afslutter."
 
 #: src/lyx_main.C:577 src/lyx_main.C:581
 msgid "LyX Warning!"
@@ -12492,6 +12479,8 @@ msgid ""
 "Specify those directories which should be prepended to the PATH environment "
 "variable. Use the OS native format."
 msgstr ""
+"Angiv de mapper, der skal indsættes først i PATH-miljøvariablen. Benyt dit "
+"operativsystems standardformat."
 
 #: src/lyxtextclasslist.C:88
 msgid "LyX wasn't able to find its layout descriptions!"
@@ -12625,11 +12614,11 @@ msgstr "Kunne ikke slette automatisk gemt fil!"
 #, c-format
 msgid ""
 "Unable to determine the path to the LyX binary from the command line %1%"
-msgstr ""
+msgstr "Kunne ikke afgøre stien til LyX-programmet fra kommandolinjen %1%"
 
 #: src/support/package.C:379
 msgid "Unable to determine the path to the LyX binary from the command line "
-msgstr ""
+msgstr "Kunne ikke afgøre stien til LyX-programmet fra kommandolinjen "
 
 #: src/support/package.C:505
 #, c-format
@@ -12639,17 +12628,22 @@ msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
 msgstr ""
+"Kunne ikke afgøre systemmappen efter at have gennemsøgt\n"
+"\t%1%\n"
+"Prøv kommandoenlinjetilvalget  '-sysdir' eller sæt miljøvariablen "
+"LYX_DIR_13x til LyX-systemmapen, der indeholder `chkconfig.ltx'."
 
 #: src/support/package.C:515
 msgid "Unable to determine the system directory having searched\n"
-msgstr ""
+msgstr "Kunne ikke afgøre systemmappen efter at have gennemsøgt\n"
 
 #: src/support/package.C:518
-#, fuzzy
 msgid ""
 "Try the '-sysdir' command line parameter or set the environment variable "
 "LYX_DIR_13x to the LyX system directory containing the file `chkconfig.ltx'."
-msgstr "sæt skal-variablen LYX_DIR_13x til LyX-systemmappen "
+msgstr ""
+"Prøv kommandoenlinjetilvalget  '-sysdir' eller sæt miljøvariablen "
+"LYX_DIR_13x til LyX-systemmapen, der indeholder `chkconfig.ltx'."
 
 #: src/support/package.C:601
 #, c-format
@@ -12657,25 +12651,25 @@ msgid ""
 "Invalid %1% switch.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
+"Ugyldigt %1%-tilvalg.\n"
+"Mappen %2% indeholder ikke %3%."
 
 #: src/support/package.C:606 src/support/package.C:641
 #: src/support/package.C:669
-#, fuzzy
 msgid "Invalid "
-msgstr "Ugyldig længde!"
+msgstr "Ugyldig "
 
 #: src/support/package.C:607
 msgid " switch.\n"
-msgstr ""
+msgstr "-tilvalg.\n"
 
 #: src/support/package.C:608 src/support/package.C:643
-#, fuzzy
 msgid "Directory "
-msgstr "Mappe:|#K"
+msgstr "Mappen "
 
 #: src/support/package.C:609 src/support/package.C:644
 msgid " does not contain "
-msgstr ""
+msgstr " indeholder ikke "
 
 #: src/support/package.C:636
 #, c-format
@@ -12683,11 +12677,12 @@ msgid ""
 "Invalid %1% environment variable.\n"
 "Directory %2% does not contain %3%."
 msgstr ""
+"Ugyldig %1%-miljøvariabel.\n"
+"Mappen %2% indeholder ikke %3%."
 
 #: src/support/package.C:642 src/support/package.C:670
-#, fuzzy
 msgid " environment variable.\n"
-msgstr "LYX_DIR_13x skal-variabel er ugyldig."
+msgstr " miljøvariabel.\n"
 
 #: src/support/package.C:664
 #, c-format
@@ -12695,11 +12690,12 @@ msgid ""
 "Invalid %1% environment variable.\n"
 "%2% is not a directory."
 msgstr ""
+"Ugyldig %1%-miljøvariabel.\n"
+"%2% er ikke en mappe."
 
 #: src/support/package.C:671
-#, fuzzy
 msgid " is not a directory."
-msgstr "Der kræves en fil, ikke en mappe."
+msgstr " er ikke en mappe "
 
 #: src/tabular.C:1346
 msgid "Warning:"
@@ -12807,14 +12803,14 @@ msgstr "LyX-funktionen 'layout' skal bruge et parameter."
 #~ msgid "@->"
 #~ msgstr "@->"
 
-#~ msgid "Reference:|#e"
-#~ msgstr "Reference:|#R"
-
 #~ msgid "Cite &Style:"
 #~ msgstr "Citat-&stil:"
 
 #~ msgid "The citation key"
 #~ msgstr "Litteraturhenvisningsnøgle"
+
+#~ msgid "&Label"
+#~ msgstr "&Mærke"
 
 #~ msgid "Bibtex"
 #~ msgstr "Bibtex"
@@ -12836,15 +12832,6 @@ msgstr "LyX-funktionen 'layout' skal bruge et parameter."
 
 #~ msgid "&File"
 #~ msgstr "&Fil"
-
-#~ msgid "Update the reference list"
-#~ msgstr "Opdatér referencelisten"
-
-#~ msgid "&Reference:"
-#~ msgstr "&Reference:"
-
-#~ msgid "Available references"
-#~ msgstr "Tilgængelige referencer"
 
 #~ msgid "&Type"
 #~ msgstr "&Type"
@@ -12926,6 +12913,18 @@ msgstr "LyX-funktionen 'layout' skal bruge et parameter."
 
 #~ msgid "Url"
 #~ msgstr "Url"
+
+#~ msgid "Reference:|#e"
+#~ msgstr "Reference:|#R"
+
+#~ msgid "Update the reference list"
+#~ msgstr "Opdatér referencelisten"
+
+#~ msgid "&Reference:"
+#~ msgstr "&Reference:"
+
+#~ msgid "Available references"
+#~ msgstr "Tilgængelige referencer"
 
 #~ msgid "Warning: could not determine path of binary."
 #~ msgstr "Advarsel: Kunne ikke bestemme stien til programmet."
