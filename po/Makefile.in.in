@@ -266,7 +266,8 @@ $(srcdir)/languages_l10n.pot: $(top_srcdir)/lib/languages
                 next; \
             } \
 	    { \
-                lang=$$3; \
+                match($$0,"\"[^\"]*\""); \
+                lang=substr($$0,RSTART,RLENGTH); \
 	        gsub(/\"/, "", lang); \
 	        printf("#: %s:%d\nmsgid \"%s\"\nmsgstr \"\"\n\n", \
                        FILENAME, FNR, lang); \
