@@ -331,6 +331,10 @@ void FormDocument::build()
 			   options_->form);
 	fbullet = fl_addto_tabfolder(dialog_->tabfolder,_("Bullets"),
 				     bullets_->form);
+
+	// work-around xforms bug re update of folder->x, folder->y coords.
+	setPrehandler(dialog_->tabfolder);
+
 	if ((XpmVersion < 4) || (XpmVersion == 4 && XpmRevision < 7)) {
 		lyxerr << _("Your version of libXpm is older than 4.7.\n"
 			    "The `bullet' tab of the document dialog "

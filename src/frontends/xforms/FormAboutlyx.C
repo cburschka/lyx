@@ -68,6 +68,9 @@ void FormAboutlyx::build()
 	fl_addto_tabfolder(dialog_->tabfolder,_("Credits"),
 			   credits_->form);
 
+	// work-around xforms bug re update of folder->x, folder->y coords.
+	setPrehandler(dialog_->tabfolder);
+
 	// Manage the cancel/close button
 	bc().setCancel(dialog_->button_close);
 }

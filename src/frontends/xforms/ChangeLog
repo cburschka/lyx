@@ -1,5 +1,22 @@
 2002-10-03  Angus Leeming  <leeming@lyx.org>
 
+	* FeedbackController.C (PrehandlerCB): re-compute the folder->x,
+	folder->y coords of a tabfolder when the mouse enters the folder.
+	This works around an xforms bug that manifests itslf as tooltips
+	appearing in their original position after the dialog has been
+	moved aside.
+
+	* FormAboutlyx.C (build):
+	* FormDocument.C (build):
+	* FormGraphics.C (build):
+	* FormPreferences.C (build):
+	* FormTabular.C (build): set the prehandler for tabfolders.
+
+	* form_graphics.fd: move the edge of the tabfolder in by 5 pixels
+	to ensure that the tabfolder prehandler is called.
+
+2002-10-03  Angus Leeming  <leeming@lyx.org>
+
 	* lyx_gui.C (start): ev.xany.type is of type 'int' so print it as a
 	decimal not a hexadecimal.
 

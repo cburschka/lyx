@@ -233,6 +233,9 @@ void FormGraphics::build()
 	fl_addto_tabfolder(dialog_->tabfolder, _("Bounding Box"), bbox_->form);
 	fl_addto_tabfolder(dialog_->tabfolder, _("Extra"), extra_->form);
 
+	// work-around xforms bug re update of folder->x, folder->y coords.
+	setPrehandler(dialog_->tabfolder);
+
 	// set the right default unit
 	switch (lyxrc.default_papersize) {
 	case BufferParams::PAPER_DEFAULT: break;

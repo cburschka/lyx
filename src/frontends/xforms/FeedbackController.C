@@ -73,10 +73,26 @@ void FeedbackController::MessageCB(FL_OBJECT * ob, int event)
 
 void FeedbackController::PrehandlerCB(FL_OBJECT * ob, int event, int key)
 {
-	if (event == FL_PUSH && key == 2 && ob->objclass == FL_INPUT) {
+	lyx::Assert(ob);
+
+	if (ob->objclass == FL_INPUT && event == FL_PUSH && key == 2) {
 		// Trigger an input event when pasting in an xforms input object
 		// using the middle mouse button.
 		InputCB(ob, 0);
+		
+	// This is very odd:
+	// event == FL_LEAVE when the mouse enters the folder and
+	// event == FL_ENTER are it leaves!
+	} else if (ob->objclass == FL_TABFOLDER && event == FL_LEAVE) {
+		// This prehandler is used to work-around an xforms bug.
+		// It updates the form->x, form->y coords of the active
+		// tabfolder when the mouse enters.
+		FL_FORM * const form = fl_get_active_folder(ob);
+		Window win = fl_prepare_form_window(form, 0, 0, "Folder");
+		if (win) {
+			FL_Coord w, h;
+			fl_get_wingeometry(win, &(form->x), &(form->y), &w, &h);
+		}
 
 	} else if (message_widget_ &&
 		   (event == FL_ENTER || event == FL_LEAVE)) {

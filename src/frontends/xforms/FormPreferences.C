@@ -249,6 +249,13 @@ void FormPreferences::build()
 	fl_addto_tabfolder(lang_opts_tab_->tabfolder_inner,
 			   _("Language"),
 			   language_.dialog()->form);
+
+	// work-around xforms bug re update of folder->x, folder->y coords.
+	setPrehandler(look_n_feel_tab_->tabfolder_inner);
+	setPrehandler(converters_tab_->tabfolder_inner);
+	setPrehandler(inputs_tab_->tabfolder_inner);
+	setPrehandler(outputs_tab_->tabfolder_inner);
+	setPrehandler(lang_opts_tab_->tabfolder_inner);
 }
 
 

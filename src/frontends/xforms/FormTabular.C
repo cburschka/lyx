@@ -145,6 +145,9 @@ void FormTabular::build()
 	fl_addto_tabfolder(dialog_->tabfolder, _("LongTable"),
 			   longtable_options_->form);
 
+	// work-around xforms bug re update of folder->x, folder->y coords.
+	setPrehandler(dialog_->tabfolder);
+
 	// Create the contents of the unit choices
 	// Don't include the "%" terms...
 	vector<string> units_vec = getLatexUnits();
