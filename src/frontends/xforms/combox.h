@@ -42,9 +42,9 @@ typedef enum {
 /** A function to create a combox widget.
  *  \param type is, as yet, unused. there is only one type of combox.
  *  \param x the x coordinate of the upper left hand corner of the widget,
- *  relative to the parent form'd origin.
+ *  relative to the parent form's origin.
  *  \param y the y coordinate of the upper left hand corner of the widget,
- *  relative to the parent form'd origin.
+ *  relative to the parent form's origin.
  *  \param w the widget's width
  *  \param h the widget's height
  *  \param label the widget's label as it appears on the GUI.
@@ -114,4 +114,4 @@ fl_hide_combox_browser(FL_OBJECT * ob);
 }
 #endif
 
-#endif /* not FL_COMBOX_H */
+#endif /* NOT FL_COMBOX_H */

@@ -1,5 +1,9 @@
 2004-01-02  Angus Leeming  <leeming@lyx.org>
 
+	* combox.h: correct a couple of spelling mistakes in the comments.
+
+2004-01-02  Angus Leeming  <leeming@lyx.org>
+
 	* FormFiledialog.C (globMatch): prevent crash when using an invalid
 	glob.
 	(getRegex): renamed as glob2regex.
