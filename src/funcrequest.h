@@ -53,6 +53,9 @@ public:
 	/// output an error message
 	void errorMessage(string const & msg) const;
 
+	/// argument parsing, extract argument i as string
+	string getArg(int i) const;
+
 private:
 	/// the BufferView we are talking to
 	BufferView * view_;

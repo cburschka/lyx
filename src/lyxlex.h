@@ -49,7 +49,7 @@ public:
 	/// return true if able to open file, else false
 	bool setFile(string const & filename);
 	///
-	void setStream(std::istream & i);
+	void setStream(std::istream & is);
 	///
 	std::istream & getStream();
 	/// Danger! Don't use it unless you know what you are doing.

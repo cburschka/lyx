@@ -113,12 +113,10 @@ int LyXLex::lex()
 
 int LyXLex::getInteger() const
 {
-	if (isStrInt(pimpl_->getString())) {
+	if (isStrInt(pimpl_->getString()))
 		return strToInt(pimpl_->getString());
-	} else {
-		pimpl_->printError("Bad integer `$$Token'");
-		return -1;
-	}
+	pimpl_->printError("Bad integer `$$Token'");
+	return -1;
 }
 
 
@@ -130,10 +128,8 @@ float LyXLex::getFloat() const
 	string str = subst(pimpl_->getString(), ",", ".");
 	if (isStrDbl(str))
 		return strToDbl(str);
-	else {
-		pimpl_->printError("Bad float `$$Token'");
-		return -1;
-	}
+	pimpl_->printError("Bad float `$$Token'");
+	return -1;
 }
 
 

@@ -219,29 +219,31 @@ InsetGraphics::~InsetGraphics()
 
 string const InsetGraphics::statusMessage() const
 {
+	using namespace grfx;
+
 	switch (cache_->loader.status()) {
-	case grfx::WaitingToLoad:
-		return _("Not shown.");
-	case grfx::Loading:
-		return _("Loading...");
-	case grfx::Converting:
-		return _("Converting to loadable format...");
-	case grfx::Loaded:
-		return _("Loaded into memory. Must now generate pixmap.");
-	case grfx::ScalingEtc:
-		return _("Scaling etc...");
-	case grfx::Ready:
-		return _("Ready to display");
-	case grfx::ErrorNoFile:
-		return _("No file found!");
-	case grfx::ErrorConverting:
-		return _("Error converting to loadable format");
-	case grfx::ErrorLoading:
-		return _("Error loading file into memory");
-	case grfx::ErrorGeneratingPixmap:
-		return _("Error generating the pixmap");
-	case grfx::ErrorUnknown:
-		return _("No image");
+		case WaitingToLoad:
+			return _("Not shown.");
+		case Loading:
+			return _("Loading...");
+		case Converting:
+			return _("Converting to loadable format...");
+		case Loaded:
+			return _("Loaded into memory. Must now generate pixmap.");
+		case ScalingEtc:
+			return _("Scaling etc...");
+		case Ready:
+			return _("Ready to display");
+		case ErrorNoFile:
+			return _("No file found!");
+		case ErrorConverting:
+			return _("Error converting to loadable format");
+		case ErrorLoading:
+			return _("Error loading file into memory");
+		case ErrorGeneratingPixmap:
+			return _("Error generating the pixmap");
+		case ErrorUnknown:
+			return _("No image");
 	}
 	return string();
 }
@@ -275,27 +277,26 @@ int InsetGraphics::width(BufferView *, LyXFont const & font) const
 {
 	if (imageIsDrawable())
 		return cache_->loader.image()->getWidth() + 2 * TEXT_TO_INSET_OFFSET;
-	else {
-		int font_width = 0;
 
-		LyXFont msgFont(font);
-		msgFont.setFamily(LyXFont::SANS_FAMILY);
+	int font_width = 0;
 
-		string const justname = OnlyFilename (params().filename);
-		if (!justname.empty()) {
-			msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
-			font_width = font_metrics::width(justname, msgFont);
-		}
+	LyXFont msgFont(font);
+	msgFont.setFamily(LyXFont::SANS_FAMILY);
 
-		string const msg = statusMessage();
-		if (!msg.empty()) {
-			msgFont.setSize(LyXFont::SIZE_TINY);
-			int const msg_width = font_metrics::width(msg, msgFont);
-			font_width = std::max(font_width, msg_width);
-		}
-
-		return std::max(50, font_width + 15);
+	string const justname = OnlyFilename (params().filename);
+	if (!justname.empty()) {
+		msgFont.setSize(LyXFont::SIZE_FOOTNOTE);
+		font_width = font_metrics::width(justname, msgFont);
 	}
+
+	string const msg = statusMessage();
+	if (!msg.empty()) {
+		msgFont.setSize(LyXFont::SIZE_TINY);
+		int const msg_width = font_metrics::width(msg, msgFont);
+		font_width = std::max(font_width, msg_width);
+	}
+
+	return std::max(50, font_width + 15);
 }
 
 
@@ -326,9 +327,8 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 	// This is not a nice thing to do and should be fixed properly somehow.
 	// But I still don't know the best way to go. So let's do this like this
 	// for now (Jug 20020311)
-	if (lascent != oasc) {
+	if (lascent != oasc)
 		return;
-	}
 
 	// Make sure now that x is updated upon exit from this routine
 	int old_x = int(x);
@@ -336,8 +336,8 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 
 	grfx::Params const & gparams = params().as_grfxParams();
 
-	if (gparams.display != grfx::NoDisplay
-		&& cache_->loader.status() == grfx::WaitingToLoad)
+	if (gparams.display != grfx::NoDisplay &&
+			cache_->loader.status() == grfx::WaitingToLoad)
 		cache_->loader.startLoading();
 
 	if (!cache_->loader.monitoring())
@@ -551,7 +551,7 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 
 	// temp_file will contain the file for LaTeX to act on if, for example,
 	// we move it to a temp dir or uncompress it.
-	string temp_file(orig_file);
+	string temp_file = orig_file;
 
 	if (zipped) {
 		// Uncompress the file if necessary.
@@ -585,11 +585,9 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 		// No conversion is needed. LaTeX can handle the
 		// graphic file as is.
 		// This is true even if the orig_file is compressed.
-		if (formats.getFormat(to)->extension() == GetExtension(orig_file)) {
+		if (formats.getFormat(to)->extension() == GetExtension(orig_file))
 			return RemoveExtension(orig_file_with_path);
-		} else {
-			return orig_file_with_path;
-		}
+		return orig_file_with_path;
 	} 
 
 	// We're going to be running the exported buffer through the LaTeX
@@ -638,8 +636,7 @@ string const InsetGraphics::prepareFile(Buffer const * buf) const
 			// graphic file as is.
 			if (formats.getFormat(to)->extension() == GetExtension(orig_file)) 
 				return RemoveExtension(temp_file);
-			else 
-				return temp_file;
+			return temp_file;
 		}
 	}
 	

@@ -13,6 +13,11 @@
 #include "lyxfunc.h" // only for setMessage()
 #include "frontends/LyXView.h"
 #include "debug.h"
+#include "Lsstream.h"
+
+
+using std::vector;
+using std::getline;
 
 
 FuncRequest::FuncRequest()
@@ -97,4 +102,30 @@ void FuncRequest::errorMessage(string const & msg) const
 		view_->owner()->getLyXFunc().setErrorMessage(msg);
 	else
 		lyxerr  << "Dropping error message '" << msg << "'\n";
+}
+
+
+void split(vector<string> & args, string str)
+{
+	istringstream is(str);
+	while (is) {
+		char c;
+		string s;
+		is >> c;
+		if (c == '"') 
+			getline(is, s, '"');
+		else {
+			is.putback(c);
+			is >> s;
+		}
+		args.push_back(s);
+	}
+}
+
+
+string FuncRequest::getArg(int i) const
+{
+	vector<string> args;
+	split(args, argument);
+	return i < args.size() ? args[i] : string();
 }

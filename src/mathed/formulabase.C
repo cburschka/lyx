@@ -675,7 +675,7 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		//bv->owner()->message(_("math text mode toggled"));
 		break;
 
-	case LFUN_MATH_SIZE:
+	case LFUN_MATH_SIZE: 
 #if 0
 		if (!arg.empty()) {
 			bv->lockedInsetStoreUndo(Undo::EDIT);
