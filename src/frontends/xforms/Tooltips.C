@@ -120,9 +120,9 @@ Tooltips::Tooltips()
 	static bool first = true;
 	if (first) {
 		first = false;
-		Dialogs::toggleTooltips.connect(slot(&Tooltips::toggleEnabled));
+		Dialogs::toggleTooltips.connect(boost::bind(&Tooltips::toggleEnabled));
 	}
-	toggled.connect(slot(this, &Tooltips::set));
+	toggled.connect(boost::bind(&Tooltips::set, this));
 }
 
 
