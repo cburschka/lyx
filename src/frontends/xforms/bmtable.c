@@ -28,16 +28,16 @@ extern "C"
 {
 #endif
 
-typedef struct   {
-  int nx, ny;   /**< Dimensions of the table */
-  int dx, dy;   /**< Size of each item */
-   int bx, by;   /**< Bitmap's position */
-   int bw, bh;   /**< Bitmap dimensions */
-   unsigned char const * bdata;  /**< Bitmap data */
-   int maxi;     /**< Number of items */
-   int i;        /**< Current position */
-   int mousebut; /**< mouse button pushed */
-   Pixmap pix;   /**< Pixmap from data (temporal) */
+typedef struct	 {
+	int nx, ny;	/**< Dimensions of the table */
+	int dx, dy;	/**< Size of each item */
+	int bx, by;	 /**< Bitmap's position */
+	int bw, bh;	 /**< Bitmap dimensions */
+	unsigned char const * bdata;	 /**< Bitmap data */
+	int maxi;	 /**< Number of items */
+	int i;	 /**< Current position */
+	int mousebut; /**< mouse button pushed */
+	Pixmap pix;	 /**< Pixmap from data (temporal) */
 } BMTABLE_SPEC;
 
 
@@ -48,27 +48,27 @@ int handle_bitmaptable(FL_OBJECT * ob, int event, FL_Coord mx,
 FL_OBJECT * fl_create_bmtable(int type, FL_Coord x, FL_Coord y,
 			      FL_Coord w, FL_Coord h, char const * label)
 {
-   FL_OBJECT * ob;
+	FL_OBJECT * ob;
 
-   ob = fl_make_object(FL_BMTABLE, type, x, y, w, h, label, handle_bitmaptable);
-   ob->boxtype = FL_BMTABLE_BOXTYPE;
-   ob->spec = fl_calloc(1, sizeof(BMTABLE_SPEC));
-   ((BMTABLE_SPEC *)ob->spec)->pix = 0;
-   ((BMTABLE_SPEC *)ob->spec)->bdata = 0;
-   ((BMTABLE_SPEC *)ob->spec)->mousebut = -1;
-   return ob;
+	ob = fl_make_object(FL_BMTABLE, type, x, y, w, h, label, handle_bitmaptable);
+	ob->boxtype = FL_BMTABLE_BOXTYPE;
+	ob->spec = fl_calloc(1, sizeof(BMTABLE_SPEC));
+	((BMTABLE_SPEC *)ob->spec)->pix = 0;
+	((BMTABLE_SPEC *)ob->spec)->bdata = 0;
+	((BMTABLE_SPEC *)ob->spec)->mousebut = -1;
+	return ob;
 }
 
 
 FL_OBJECT *fl_add_bmtable(int type, FL_Coord x, FL_Coord y,
-			      FL_Coord w, FL_Coord h, char const *label)
+			  FL_Coord w, FL_Coord h, char const *label)
 {
-   FL_OBJECT *ob;
+	FL_OBJECT *ob;
 
-   ob = fl_create_bmtable(type, x, y, w, h, label);
-   fl_add_object(fl_current_form, ob);
+	ob = fl_create_bmtable(type, x, y, w, h, label);
+	fl_add_object(fl_current_form, ob);
 
-   return ob;
+	return ob;
 }
 
 
@@ -95,13 +95,13 @@ static void draw_bitmaptable(FL_OBJECT *ob)
 	}
 
 	/* draw the background bitmap */
-	if (sp->bdata)  {
+	if (sp->bdata)	{
 		if (!sp->pix) {
 			sp->pix = XCreatePixmapFromBitmapData(fl_get_display(), fl_winget(),
 							      (char*)sp->bdata,
-							       sp->bw, sp->bh,
-					fl_get_flcolor(ob->lcol), fl_get_flcolor(ob->col1),
-							       /*DefaultDepth(fl_get_display(), DefaultScreen(fl_get_display()))*/ fl_state[fl_get_vclass()].depth);
+							      sp->bw, sp->bh,
+							      fl_get_flcolor(ob->lcol), fl_get_flcolor(ob->col1),
+							      /*DefaultDepth(fl_get_display(), DefaultScreen(fl_get_display()))*/ fl_state[fl_get_vclass()].depth);
 			XFlush(fl_get_display());
 		}
 	}
@@ -110,14 +110,14 @@ static void draw_bitmaptable(FL_OBJECT *ob)
 		if (sp->bx < FL_abs(ob->bw) + 1) {
 			xx = FL_abs(ob->bw) - sp->bx + 1;
 			mx = ob->x + FL_abs(ob->bw) + 1;
-		} else  {
+		} else	{
 			xx = 0;
 			mx = ob->x + sp->bx;
 		}
 		if (sp->by < FL_abs(ob->bw) + 1)  {
 			yy = FL_abs(ob->bw) - sp->by + 1;
 			my = ob->y + FL_abs(ob->bw) + 1;
-		} else   {
+		} else	 {
 			yy = 0;
 			my = ob->y + sp->by;
 		}
@@ -132,14 +132,14 @@ static void draw_bitmaptable(FL_OBJECT *ob)
 		XFlush(fl_get_display());
 		if (lx) {
 			XCopyArea(fl_get_display(), sp->pix, fl_winget(), gc, xx,
-					  yy+j, lx*sp->dx-2*i, hh-j, mx, my+j);
+				  yy+j, lx*sp->dx-2*i, hh-j, mx, my+j);
 			XFlush(fl_get_display());
 		}
 	}
 
 
 	/* draw the grid if type > FLAT */
-	if (ob->type > FL_BMTABLE_FLAT)  {
+	if (ob->type > FL_BMTABLE_FLAT)	 {
 		mx = ob->x + ob->w;
 		my = ob->y + ob->h;
 		ww = ob->w;
@@ -176,23 +176,23 @@ static void draw_bitmaptable(FL_OBJECT *ob)
 
 
 int handle_bitmaptable(FL_OBJECT * ob, int event, FL_Coord mx,
-				  FL_Coord my, int key, void * xev)
+		       FL_Coord my, int key, void * xev)
 {
 	int i, j;
 	BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
 
-	switch (event)  {
-    case FL_DRAW:
+	switch (event)	{
+	case FL_DRAW:
 		draw_bitmaptable(ob);
 		break;
-    case FL_MOUSE:
-		if (!ob->belowmouse) {    /* This never happens. Why? */
+	case FL_MOUSE:
+		if (!ob->belowmouse) {	  /* This never happens. Why? */
 			sp->i = -1;
 			fl_redraw_object(ob);
 			break;
 		}
 		i = (mx - ob->x)/sp->dx;  j = (my - ob->y)/sp->dy;
-		if (i>= 0 && i< sp->nx && j>= 0 && j< sp->ny)   {
+		if (i>= 0 && i< sp->nx && j>= 0 && j< sp->ny)	{
 			i += j*sp->nx;
 			if (i >= sp->maxi) i = -1;
 			if (sp->i !=  i)  {
@@ -201,23 +201,23 @@ int handle_bitmaptable(FL_OBJECT * ob, int event, FL_Coord mx,
 			}
 		}
 		break;
-    case FL_PUSH:
+	case FL_PUSH:
 		sp->mousebut = key;
 		i = (mx - ob->x)/sp->dx + ((my - ob->y)/sp->dy)*sp->nx;
 		if (0 <= i && i < sp->maxi)  {
-			sp->i =  i;
+			sp->i =	 i;
 			fl_redraw_object(ob);
 		} else
-			sp->i =  -1;
+			sp->i =	 -1;
 		break;
-    case FL_RELEASE:
+	case FL_RELEASE:
 		fl_redraw_object(ob);
 		return 1;
-    case FL_FREEMEM:
-	    if (sp->pix) {
-		    XFreePixmap(fl_get_display(), sp->pix);
-		    XFlush(fl_get_display());
-	    }
+	case FL_FREEMEM:
+		if (sp->pix) {
+			XFreePixmap(fl_get_display(), sp->pix);
+			XFlush(fl_get_display());
+		}
 		fl_free(((BMTABLE_SPEC*)ob->spec));
 		break;
 	}
@@ -234,27 +234,27 @@ int handle_bitmaptable(FL_OBJECT * ob, int event, FL_Coord mx,
  * The user could change these later. See below.
  */
 void fl_set_bmtable_data(FL_OBJECT * ob, int nx, int ny, int bw, int bh,
-			unsigned char const * bdata)
+			 unsigned char const * bdata)
 {
-   BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
-   if (sp) {
-     sp->nx = nx;
-     sp->ny = ny;
-     sp->bx = FL_abs(ob->bw);
-     sp->by = FL_abs(ob->bw);
-     sp->dx = ob->w/nx;
-     sp->dy = ob->h/ny;
-     sp->i = -1;
-     sp->maxi = sp->nx * sp->ny;
-     sp->bw = bw;
-     sp->bh = bh;
-     sp->bdata = bdata;
-   }
+	BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
+	if (sp) {
+		sp->nx = nx;
+		sp->ny = ny;
+		sp->bx = FL_abs(ob->bw);
+		sp->by = FL_abs(ob->bw);
+		sp->dx = ob->w/nx;
+		sp->dy = ob->h/ny;
+		sp->i = -1;
+		sp->maxi = sp->nx * sp->ny;
+		sp->bw = bw;
+		sp->bh = bh;
+		sp->bdata = bdata;
+	}
 }
 
 
 void fl_set_bmtable_pixmap_data(FL_OBJECT * ob, int nx, int ny,
-			char ** pdata)
+				char ** pdata)
 {
 	BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
 	if (sp) {
@@ -273,8 +273,8 @@ void fl_set_bmtable_pixmap_data(FL_OBJECT * ob, int nx, int ny,
 		dumb_attributes.closeness = 30000;
 		dumb_attributes.valuemask = XpmColormap | XpmCloseness;
 		if (XCreatePixmapFromData(fl_get_display(), fl_winget(), pdata,
-		                          &(sp->pix), &dummy_shapemask,
-	        	                  &dumb_attributes) == XpmSuccess) {
+					  &(sp->pix), &dummy_shapemask,
+					  &dumb_attributes) == XpmSuccess) {
 			sp->bw = dumb_attributes.width;
 			sp->bh = dumb_attributes.height;
 			XpmFreeAttributes(&dumb_attributes);
@@ -293,24 +293,24 @@ void fl_set_bmtable_pixmap_data(FL_OBJECT * ob, int nx, int ny,
 
 void fl_set_bmtable_file(FL_OBJECT * ob, int nx, int ny, char const * filename)
 {
-   int xh;
-   int yh;
-   unsigned int bw;
-   unsigned int bh;
-   unsigned char * bdata;
+	int xh;
+	int yh;
+	unsigned int bw;
+	unsigned int bh;
+	unsigned char * bdata;
 
-   if (XReadBitmapFileData(filename, &bw, &bh,
-			  &bdata, &xh, &yh) == BitmapSuccess)
-     fl_set_bmtable_data(ob, nx, ny, bw, bh, bdata);
-   XFlush(fl_get_display());
+	if (XReadBitmapFileData(filename, &bw, &bh,
+				&bdata, &xh, &yh) == BitmapSuccess)
+		fl_set_bmtable_data(ob, nx, ny, bw, bh, bdata);
+	XFlush(fl_get_display());
 }
 
 #else
 
 void fl_set_bmtable_file(FL_OBJECT * ob, int nx, int ny, char const * filename)
 {
-  fprintf(stderr, "Set bmtable file: Sorry, I need X11 release 6 to do "
-	   "work!\n");
+	fprintf(stderr, "Set bmtable file: Sorry, I need X11 release 6 to do "
+		"work!\n");
 }
 
 #endif
@@ -319,7 +319,7 @@ void fl_set_bmtable_file(FL_OBJECT * ob, int nx, int ny, char const * filename)
 
 void fl_set_bmtable_pixmap_file(FL_OBJECT *ob, int nx, int ny, char const *filename)
 {
-  /* extern Colormap color_map; */
+	/* extern Colormap color_map; */
 	BMTABLE_SPEC *sp = (BMTABLE_SPEC *)ob->spec;
 	if (sp) {
 		Pixmap dummy_shapemask = 0;
@@ -339,8 +339,8 @@ void fl_set_bmtable_pixmap_file(FL_OBJECT *ob, int nx, int ny, char const *filen
 		dumb_attributes.valuemask = XpmColormap | XpmCloseness;
 
 		if (XReadPixmapFile(fl_get_display(), fl_winget(), (char *)filename,
-		                    &(sp->pix), &dummy_shapemask,
-	        	            &dumb_attributes) == XpmSuccess) {
+				    &(sp->pix), &dummy_shapemask,
+				    &dumb_attributes) == XpmSuccess) {
 			sp->bw = dumb_attributes.width;
 			sp->bh = dumb_attributes.height;
 			XpmFreeAttributes(&dumb_attributes);
@@ -359,13 +359,13 @@ void fl_set_bmtable_pixmap_file(FL_OBJECT *ob, int nx, int ny, char const *filen
  */
 void fl_set_bmtable_adjust(FL_OBJECT *ob, int px, int py, int dx, int dy)
 {
-   BMTABLE_SPEC *sp = (BMTABLE_SPEC *)ob->spec;
-   if (sp) {
-     sp->bx += px;
-     sp->by += py;
-     sp->dx += dx;
-     sp->dy += dy;
-   }
+	BMTABLE_SPEC *sp = (BMTABLE_SPEC *)ob->spec;
+	if (sp) {
+		sp->bx += px;
+		sp->by += py;
+		sp->dx += dx;
+		sp->dy += dy;
+	}
 }
 
 /*
@@ -373,10 +373,10 @@ void fl_set_bmtable_adjust(FL_OBJECT *ob, int px, int py, int dx, int dy)
  */
 int fl_get_bmtable(FL_OBJECT *ob)
 {
-   if ((BMTABLE_SPEC *)ob->spec)
-     return  ((BMTABLE_SPEC *)ob->spec)->i;
-   else
-     return 0;
+	if ((BMTABLE_SPEC *)ob->spec)
+		return  ((BMTABLE_SPEC *)ob->spec)->i;
+	else
+		return 0;
 }
 
 
@@ -385,106 +385,106 @@ int fl_get_bmtable(FL_OBJECT *ob)
  */
 void fl_set_bmtable_maxitems(FL_OBJECT * ob, int i)
 {
-   if (i > 0 && (BMTABLE_SPEC *)ob->spec)
-     ((BMTABLE_SPEC *)ob->spec)->maxi = i;
+	if (i > 0 && (BMTABLE_SPEC *)ob->spec)
+		((BMTABLE_SPEC *)ob->spec)->maxi = i;
 }
 
 
 int fl_get_bmtable_maxitems(FL_OBJECT * ob)
 {
-   if ((BMTABLE_SPEC *)ob->spec)
-     return  ((BMTABLE_SPEC *)ob->spec)->maxi;
-   else
-     return 0;
+	if ((BMTABLE_SPEC *)ob->spec)
+		return  ((BMTABLE_SPEC *)ob->spec)->maxi;
+	else
+		return 0;
 }
 
 
 void fl_replace_bmtable_item(FL_OBJECT * ob, int id, int cw, int ch, char * data)
 {
-   fprintf(stderr, "Replace bmtable item: Sorry, not yet implemented!\n");
+	fprintf(stderr, "Replace bmtable item: Sorry, not yet implemented!\n");
 }
 
 
 void fl_get_bmtable_item(FL_OBJECT * ob, int id, int * cw, int * ch, char * data)
 {
-   fprintf(stderr, "Get bmtable item: Sorry, not yet implemented!\n");
+	fprintf(stderr, "Get bmtable item: Sorry, not yet implemented!\n");
 }
 
 void fl_set_bmtable(FL_OBJECT * ob, int pushed, int pos)
 {
-   if ((BMTABLE_SPEC *)ob->spec)
-     ((BMTABLE_SPEC *)ob->spec)->i = (pushed) ? pos: -1;
+	if ((BMTABLE_SPEC *)ob->spec)
+		((BMTABLE_SPEC *)ob->spec)->i = (pushed) ? pos: -1;
 }
 
 
 int fl_get_bmtable_numb(FL_OBJECT *ob)
 {
-   if ((BMTABLE_SPEC *)ob->spec)
-     return ((BMTABLE_SPEC *)ob->spec)->mousebut;
-   else
-     return 0;
+	if ((BMTABLE_SPEC *)ob->spec)
+		return ((BMTABLE_SPEC *)ob->spec)->mousebut;
+	else
+		return 0;
 }
 
 
 Pixmap fl_get_bmtable_pixmap(FL_OBJECT * ob)
 {
-   if ((BMTABLE_SPEC *)ob->spec)
-     return ((BMTABLE_SPEC *)ob->spec)->pix;
-   else
-     return 0;
+	if ((BMTABLE_SPEC *)ob->spec)
+		return ((BMTABLE_SPEC *)ob->spec)->pix;
+	else
+		return 0;
 }
 
 
 void fl_draw_bmtable_item(FL_OBJECT * ob, int i, Drawable d, int xx, int yy)
 {
-   int x;
-   int y;
-   int w;
-   int h;
-   GC gc = fl_state[fl_get_vclass()].gc[0];
-   BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
+	int x;
+	int y;
+	int w;
+	int h;
+	GC gc = fl_state[fl_get_vclass()].gc[0];
+	BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
 
-   if (sp && sp->pix) {
-      x = (i % sp->nx)*sp->dx + FL_abs(ob->bw);
-      y = (i/sp->nx)*sp->dy + FL_abs(ob->bw);
-      w = sp->dx-2*FL_abs(ob->bw);
-      h = sp->dy-2*FL_abs(ob->bw);
-      XCopyArea(fl_get_display(), sp->pix, d, gc, x, y, w, h, xx, yy);
-      XFlush(fl_get_display());
-   }
+	if (sp && sp->pix) {
+		x = (i % sp->nx)*sp->dx + FL_abs(ob->bw);
+		y = (i/sp->nx)*sp->dy + FL_abs(ob->bw);
+		w = sp->dx-2*FL_abs(ob->bw);
+		h = sp->dy-2*FL_abs(ob->bw);
+		XCopyArea(fl_get_display(), sp->pix, d, gc, x, y, w, h, xx, yy);
+		XFlush(fl_get_display());
+	}
 }
 
 /* Free the current bitmap and pixmap in preparation for installing a new one */
 void fl_free_bmtable_bitmap(FL_OBJECT * ob)
 {
-  BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
+	BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
 
-  /* dump the temporary pixmap */
-  if (sp && sp->pix) {
-    XFreePixmap(fl_get_display(), sp->pix);
-    XFlush(fl_get_display());
-    sp->pix = 0;
-  }
+	/* dump the temporary pixmap */
+	if (sp && sp->pix) {
+		XFreePixmap(fl_get_display(), sp->pix);
+		XFlush(fl_get_display());
+		sp->pix = 0;
+	}
 
-  /* and free the space taken by bdata etc. */
-  if (sp && sp->bdata) {
-    fl_free((void*)sp->bdata);
-    sp->bdata = 0;
-  }
+	/* and free the space taken by bdata etc. */
+	if (sp && sp->bdata) {
+		fl_free((void*)sp->bdata);
+		sp->bdata = 0;
+	}
 }
 
 /* Free the current pixmap in preparation for installing a new one */
 /* This is needed when using data instead of files to set bitmaps  */
 void fl_free_bmtable_pixmap(FL_OBJECT *ob)
 {
-  BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
+	BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
 
-  /* dump the temporary pixmap */
-  if (sp && sp->pix) {
-    XFreePixmap(fl_get_display(), sp->pix);
-    XFlush(fl_get_display());
-    sp->pix = 0;
-  }
+	/* dump the temporary pixmap */
+	if (sp && sp->pix) {
+		XFreePixmap(fl_get_display(), sp->pix);
+		XFlush(fl_get_display());
+		sp->pix = 0;
+	}
 }
 
 #if defined(__cplusplus)
