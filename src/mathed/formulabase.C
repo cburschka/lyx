@@ -418,7 +418,8 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 			//lyxerr << "Mouse single press\n";
 			return lfunMousePress(cmd);
 		case LFUN_MOUSE_MOTION:
-			//return lfunMouseMotion(cmd);
+			//lyxerr << "Mouse motion\n";
+			return lfunMouseMotion(cmd);
 		case LFUN_MOUSE_RELEASE:
 			//lyxerr << "Mouse single release\n";
 			return lfunMouseRelease(cmd);
