@@ -30,11 +30,11 @@ public:
 	///
 	void validate(LaTeXFeatures & features) const;
 	///
-	void maplize(MapleStream &) const;
+	void maple(MapleStream &) const;
 	///
-	void mathematicize(MathematicaStream &) const;
+	void mathematica(MathematicaStream &) const;
 	///
-	void octavize(OctaveStream &) const;
+	void octave(OctaveStream &) const;
 	///
 	void write(WriteStream & os) const;
 private:

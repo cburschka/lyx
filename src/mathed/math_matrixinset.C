@@ -28,7 +28,7 @@ void MathMatrixInset::normalize(NormalStream & os) const
 }
 
 
-void MathMatrixInset::maplize(MapleStream & os) const
+void MathMatrixInset::maple(MapleStream & os) const
 {
 	os << "matrix(" << int(nrows()) << ',' << int(ncols()) << ",[";
 	for (idx_type idx = 0; idx < nargs(); ++idx) {
@@ -40,7 +40,7 @@ void MathMatrixInset::maplize(MapleStream & os) const
 }
 
 
-void MathMatrixInset::maximize(MaximaStream & os) const
+void MathMatrixInset::maxima(MaximaStream & os) const
 {
 	os << "matrix(";
 	for (row_type row = 0; row < nrows(); ++row) {
@@ -64,7 +64,7 @@ void MathMatrixInset::mathmlize(MathMLStream & os) const
 }
 
 
-void MathMatrixInset::octavize(OctaveStream & os) const
+void MathMatrixInset::octave(OctaveStream & os) const
 {
 	os << '[';
 	for (row_type row = 0; row < nrows(); ++row) {

@@ -30,7 +30,7 @@ public:
 	///
 	void normalize(NormalStream & ns) const;
 	///
-	void octavize(OctaveStream & os) const;
+	void octave(OctaveStream & os) const;
 	/// identifies Charinsets
 	MathCharInset const * asCharInset() const { return this; }
 	///

@@ -207,28 +207,28 @@ void MathInset::normalize(NormalStream & os) const
 }
 
 
-void MathInset::octavize(OctaveStream & os) const
+void MathInset::octave(OctaveStream & os) const
 {
 	NormalStream ns(os.os());
 	normalize(ns);
 }
 
 
-void MathInset::maplize(MapleStream & os) const
+void MathInset::maple(MapleStream & os) const
 {
 	NormalStream ns(os.os());
 	normalize(ns);
 }
 
 
-void MathInset::maximize(MaximaStream & os) const
+void MathInset::maxima(MaximaStream & os) const
 {
 	MapleStream ns(os.os());
-	maplize(ns);
+	maple(ns);
 }
 
 
-void MathInset::mathematicize(MathematicaStream & os) const
+void MathInset::mathematica(MathematicaStream & os) const
 {
 	NormalStream ns(os.os());
 	normalize(ns);

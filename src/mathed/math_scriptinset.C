@@ -399,7 +399,7 @@ void MathScriptInset::normalize(NormalStream & os) const
 }
 
 
-void MathScriptInset::maplize(MapleStream & os) const
+void MathScriptInset::maple(MapleStream & os) const
 {
 	if (nuc().size())
 		os << nuc();
@@ -410,7 +410,7 @@ void MathScriptInset::maplize(MapleStream & os) const
 }
 
 
-void MathScriptInset::mathematicize(MathematicaStream & os) const
+void MathScriptInset::mathematica(MathematicaStream & os) const
 {
 	bool d = hasDown() && down().size();
 	bool u = hasUp() && up().size();
@@ -457,7 +457,7 @@ void MathScriptInset::mathmlize( MathMLStream & os) const
 }
 
 
-void MathScriptInset::octavize(OctaveStream & os) const
+void MathScriptInset::octave(OctaveStream & os) const
 {
 	if (nuc().size())
 		os << nuc();

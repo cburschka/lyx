@@ -53,10 +53,10 @@ void MathCasesInset::normalize(NormalStream & os) const
 }
 
 
-void MathCasesInset::maplize(MapleStream & os) const
+void MathCasesInset::maple(MapleStream & os) const
 {
 	os << "cases(";
-	MathGridInset::maplize(os);
+	MathGridInset::maple(os);
 	os << ')';
 }
 

@@ -38,13 +38,13 @@ void MathNumberInset::normalize(NormalStream & os) const
 }
 
 
-void MathNumberInset::maplize(MapleStream & os) const
+void MathNumberInset::maple(MapleStream & os) const
 {
 	os << str_;
 }
 
 
-void MathNumberInset::octavize(OctaveStream & os) const
+void MathNumberInset::octave(OctaveStream & os) const
 {
 	os << str_;
 }

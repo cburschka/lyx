@@ -93,18 +93,18 @@ void MathSpaceInset::validate(LaTeXFeatures & features) const
 }
 
 
-void MathSpaceInset::maplize(MapleStream & os) const
+void MathSpaceInset::maple(MapleStream & os) const
 {
 	os << ' ';
 }
 
-void MathSpaceInset::mathematicize(MathematicaStream & os) const
+void MathSpaceInset::mathematica(MathematicaStream & os) const
 {
 	os << ' ';
 }
 
 
-void MathSpaceInset::octavize(OctaveStream & os) const
+void MathSpaceInset::octave(OctaveStream & os) const
 {
 	os << ' ';
 }

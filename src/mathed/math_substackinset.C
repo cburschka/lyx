@@ -44,9 +44,9 @@ void MathSubstackInset::normalize(NormalStream & os) const
 }
 
 
-void MathSubstackInset::maplize(MapleStream & os) const
+void MathSubstackInset::maple(MapleStream & os) const
 {
 	os << "substack(";
-	MathGridInset::maplize(os);
+	MathGridInset::maple(os);
 	os << ')';
 }

@@ -62,11 +62,11 @@ public:
 	bool match(MathAtom const &) const { return false; }
 
 	///
-	void maplize(MapleStream &) const;
+	void maple(MapleStream &) const;
 	///
 	void mathmlize(MathMLStream &) const;
 	///
-	void octavize(OctaveStream &) const;
+	void octave(OctaveStream &) const;
 	///
 	void infoize(std::ostream &) const;
 	///

@@ -15,11 +15,11 @@ class MathArray;
 
 void write(MathArray const &, WriteStream &);
 void normalize(MathArray const &, NormalStream &);
-void maplize(MathArray const &, MapleStream &);
-void maximize(MathArray const &, MaximaStream &);
-void mathematicize(MathArray const &, MathematicaStream &);
+void maple(MathArray const &, MapleStream &);
+void maxima(MathArray const &, MaximaStream &);
+void mathematica(MathArray const &, MathematicaStream &);
 void mathmlize(MathArray const &, MathMLStream &);
-void octavize(MathArray const &, OctaveStream &);
+void octave(MathArray const &, OctaveStream &);
 
 bool extractNumber(MathArray const & ar, int & i);
 bool extractNumber(MathArray const & ar, double & i);

@@ -126,7 +126,7 @@ bool MathDelimInset::isAbs() const
 }
 
 
-void MathDelimInset::maplize(MapleStream & os) const
+void MathDelimInset::maple(MapleStream & os) const
 {
 	if (isAbs()) {
 		if (cell(0).size() == 1 && cell(0).front()->asMatrixInset())
@@ -138,7 +138,7 @@ void MathDelimInset::maplize(MapleStream & os) const
 		os << left_ << cell(0) << right_;
 }
 
-void MathDelimInset::maximize(MaximaStream & os) const
+void MathDelimInset::maxima(MaximaStream & os) const
 {
 	if (isAbs()) {
 		if (cell(0).size() == 1 && cell(0).front()->asMatrixInset())
@@ -151,7 +151,7 @@ void MathDelimInset::maximize(MaximaStream & os) const
 }
 
 
-void MathDelimInset::mathematicize(MathematicaStream & os) const
+void MathDelimInset::mathematica(MathematicaStream & os) const
 {
 	if (isAbs()) {
 		if (cell(0).size() == 1 && cell(0).front()->asMatrixInset())
@@ -171,7 +171,7 @@ void MathDelimInset::mathmlize(MathMLStream & os) const
 }
 
 
-void MathDelimInset::octavize(OctaveStream & os) const
+void MathDelimInset::octave(OctaveStream & os) const
 {
 	if (isAbs())
 		os << "det(" << cell(0) << ')';

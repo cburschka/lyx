@@ -24,15 +24,15 @@ public:
 	string name() const;
 
 	///
-	void maplize(MapleStream &) const;
+	void maple(MapleStream &) const;
 	///
-	void maximize(MaximaStream &) const;
+	void maxima(MaximaStream &) const;
 	///
-	void mathematicize(MathematicaStream &) const;
+	void mathematica(MathematicaStream &) const;
 	///
 	void mathmlize(MathMLStream &) const;
 	///
-	void octavize(OctaveStream &) const;
+	void octave(OctaveStream &) const;
 
 private:
 	///

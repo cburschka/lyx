@@ -117,7 +117,7 @@ void MathSymbolInset::normalize(NormalStream & os) const
 }
 
 
-void MathSymbolInset::maplize(MapleStream & os) const
+void MathSymbolInset::maple(MapleStream & os) const
 {
 	if (name() == "cdot")
 		os << '*';
@@ -127,7 +127,7 @@ void MathSymbolInset::maplize(MapleStream & os) const
 		os << name();
 }
 
-void MathSymbolInset::maximize(MaximaStream & os) const
+void MathSymbolInset::maxima(MaximaStream & os) const
 {
 	if (name() == "cdot")
 		os << '*';
@@ -138,7 +138,7 @@ void MathSymbolInset::maximize(MaximaStream & os) const
 }
 
 
-void MathSymbolInset::mathematicize(MathematicaStream & os) const
+void MathSymbolInset::mathematica(MathematicaStream & os) const
 {
 	if ( name() == "pi")    { os << "Pi"; return;}
 	if ( name() == "infty") { os << "Infinity"; return;}
@@ -173,7 +173,7 @@ void MathSymbolInset::mathmlize(MathMLStream & os) const
 }
 
 
-void MathSymbolInset::octavize(OctaveStream & os) const
+void MathSymbolInset::octave(OctaveStream & os) const
 {
 	if (name() == "cdot")
 		os << '*';

@@ -270,15 +270,15 @@ public:
 	/// write normalized content
 	virtual void normalize(NormalStream &) const;
 	/// write content as something readable by Maple
-	virtual void maplize(MapleStream &) const;
+	virtual void maple(MapleStream &) const;
 	/// write content as something readable by Maxima
-	virtual void maximize(MaximaStream &) const;
+	virtual void maxima(MaximaStream &) const;
 	/// write content as something readable by Mathematica
-	virtual void mathematicize(MathematicaStream &) const;
+	virtual void mathematica(MathematicaStream &) const;
 	/// write content as something resembling MathML
 	virtual void mathmlize(MathMLStream &) const;
 	/// write content as something readable by Octave
-	virtual void octavize(OctaveStream &) const;
+	virtual void octave(OctaveStream &) const;
 	/// describe content if cursor inside
 	virtual void infoize(std::ostream &) const {}
 	/// describe content if cursor behind

@@ -35,13 +35,13 @@ public:
 	/// write normalized content
 	void normalize(NormalStream &) const;
 	/// write content as something readable by Maple
-	void maplize(MapleStream &) const;
+	void maple(MapleStream &) const;
 	/// write content as something readable by Mathematica
-	void mathematicize(MathematicaStream &) const;
+	void mathematica(MathematicaStream &) const;
 	/// write content as something resembling MathML
 	void mathmlize(MathMLStream &) const;
 	/// write content as something readable by Octave
-	void octavize(OctaveStream &) const;
+	void octave(OctaveStream &) const;
 	/// move cursor left
 	bool idxLeft(idx_type &, pos_type &) const;
 	/// move cursor right

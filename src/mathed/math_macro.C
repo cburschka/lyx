@@ -194,10 +194,10 @@ void MathMacro::validate(LaTeXFeatures & features) const
 }
 
 
-void MathMacro::maplize(MapleStream & os) const
+void MathMacro::maple(MapleStream & os) const
 {
 	updateExpansion();
-	::maplize(expanded_, os);
+	::maple(expanded_, os);
 }
 
 
@@ -208,10 +208,10 @@ void MathMacro::mathmlize(MathMLStream & os) const
 }
 
 
-void MathMacro::octavize(OctaveStream & os) const
+void MathMacro::octave(OctaveStream & os) const
 {
 	updateExpansion();
-	::octavize(expanded_, os);
+	::octave(expanded_, os);
 }
 
 

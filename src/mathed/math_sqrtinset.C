@@ -72,18 +72,18 @@ void MathSqrtInset::normalize(NormalStream & os) const
 	os << "[sqrt " << cell(0) << ']';
 }
 
-void MathSqrtInset::maplize(MapleStream & os) const
+void MathSqrtInset::maple(MapleStream & os) const
 {
 	os << "sqrt(" << cell(0) << ')';
 }
 
-void MathSqrtInset::mathematicize(MathematicaStream & os) const
+void MathSqrtInset::mathematica(MathematicaStream & os) const
 {
 	os << "Sqrt[" << cell(0) << ']';
 }
 
 
-void MathSqrtInset::octavize(OctaveStream & os) const
+void MathSqrtInset::octave(OctaveStream & os) const
 {
 	os << "sqrt(" << cell(0) << ')';
 }

@@ -43,7 +43,7 @@ string MathExFuncInset::name() const
 }
 
 
-void MathExFuncInset::maplize(MapleStream & os) const
+void MathExFuncInset::maple(MapleStream & os) const
 {
 	if (name_ == "det")
 		os << "linalg[det](" << cell(0) << ')';
@@ -52,7 +52,7 @@ void MathExFuncInset::maplize(MapleStream & os) const
 }
 
 
-void MathExFuncInset::maximize(MaximaStream & os) const
+void MathExFuncInset::maxima(MaximaStream & os) const
 {
 	if (name_ == "det")
 		os << "determinant(" << cell(0) << ')';
@@ -83,7 +83,7 @@ string asMathematicaName(string const & name)
 }
 
 
-void MathExFuncInset::mathematicize(MathematicaStream & os) const
+void MathExFuncInset::mathematica(MathematicaStream & os) const
 {
 	os << asMathematicaName(name_) << '[' << cell(0) << ']';
 }
@@ -95,7 +95,7 @@ void MathExFuncInset::mathmlize(MathMLStream & os) const
 }
 
 
-void MathExFuncInset::octavize(OctaveStream & os) const
+void MathExFuncInset::octave(OctaveStream & os) const
 {
 	os << name_ << '(' << cell(0) << ')';
 }

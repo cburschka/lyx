@@ -60,7 +60,7 @@ void MathExIntInset::draw(MathPainterInfo &, int, int) const
 }
 
 
-void MathExIntInset::maplize(MapleStream & os) const
+void MathExIntInset::maple(MapleStream & os) const
 {
 	os << symbol_ << '(';
 	if (cell(0).size())
@@ -74,7 +74,7 @@ void MathExIntInset::maplize(MapleStream & os) const
 }
 
 
-void MathExIntInset::maximize(MaximaStream & os) const
+void MathExIntInset::maxima(MaximaStream & os) const
 {
 	if ( symbol_ == "int" )
 		os << "integrate(";
@@ -91,7 +91,7 @@ void MathExIntInset::maximize(MaximaStream & os) const
 		os << cell(1) << ')';
 }
 
-void MathExIntInset::mathematicize(MathematicaStream & os) const
+void MathExIntInset::mathematica(MathematicaStream & os) const
 {
 	if ( symbol_ == "int" )
 		os << "Integrate[";

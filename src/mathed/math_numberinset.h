@@ -30,9 +30,9 @@ public:
 	///
 	void normalize(NormalStream &) const;
 	///
-	void octavize(OctaveStream &) const;
+	void octave(OctaveStream &) const;
 	///
-	void maplize(MapleStream &) const;
+	void maple(MapleStream &) const;
 	///
 	void mathmlize(MathMLStream &) const;
 	///

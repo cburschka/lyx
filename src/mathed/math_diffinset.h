@@ -24,9 +24,9 @@ public:
 	///
 	void normalize(NormalStream &) const;
 	///
-	void maplize(MapleStream &) const;
+	void maple(MapleStream &) const;
 	///
-	void mathematicize(MathematicaStream &) const;
+	void mathematica(MathematicaStream &) const;
 	///
 	void mathmlize(MathMLStream &) const;
 	///

@@ -139,7 +139,7 @@ void MathCharInset::normalize(NormalStream & os) const
 }
 
 
-void MathCharInset::octavize(OctaveStream & os) const
+void MathCharInset::octave(OctaveStream & os) const
 {
 	os << char_;
 }

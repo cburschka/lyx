@@ -820,39 +820,39 @@ void normalize(MathArray const & ar, NormalStream & os)
 }
 
 
-void octavize(MathArray const & dat, OctaveStream & os)
+void octave(MathArray const & dat, OctaveStream & os)
 {
 	MathArray ar = dat;
 	extractStructure(ar);
 	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
-		(*it)->octavize(os);
+		(*it)->octave(os);
 }
 
 
-void maplize(MathArray const & dat, MapleStream & os)
+void maple(MathArray const & dat, MapleStream & os)
 {
 	MathArray ar = dat;
 	extractStructure(ar);
 	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
-		(*it)->maplize(os);
+		(*it)->maple(os);
 }
 
 
-void maximize(MathArray const & dat, MaximaStream & os)
+void maxima(MathArray const & dat, MaximaStream & os)
 {
 	MathArray ar = dat;
 	extractStructure(ar);
 	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
-		(*it)->maximize(os);
+		(*it)->maxima(os);
 }
 
 
-void mathematicize(MathArray const & dat, MathematicaStream & os)
+void mathematica(MathArray const & dat, MathematicaStream & os)
 {
 	MathArray ar = dat;
 	extractStructure(ar);
 	for (MathArray::const_iterator it = ar.begin(); it != ar.end(); ++it)
-		(*it)->mathematicize(os);
+		(*it)->mathematica(os);
 }
 
 

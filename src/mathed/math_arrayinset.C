@@ -105,9 +105,9 @@ void MathArrayInset::normalize(NormalStream & os) const
 }
 
 
-void MathArrayInset::maplize(MapleStream & os) const
+void MathArrayInset::maple(MapleStream & os) const
 {
 	os << "array(";
-	MathGridInset::maplize(os);
+	MathGridInset::maple(os);
 	os << ')';
 }

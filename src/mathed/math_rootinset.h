@@ -44,9 +44,9 @@ public:
 	///
 	void mathmlize(MathMLStream &) const;
 	///
-	void maplize(MapleStream &) const;
+	void maple(MapleStream &) const;
 	///
-	void octavize(OctaveStream &) const;
+	void octave(OctaveStream &) const;
 };
 
 #endif

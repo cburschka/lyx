@@ -44,7 +44,7 @@ void MathDiffInset::draw(MathPainterInfo &, int, int) const
 }
 
 
-void MathDiffInset::maplize(MapleStream & os) const
+void MathDiffInset::maple(MapleStream & os) const
 {
 	os << "diff(";
 	for (idx_type idx = 0; idx < nargs(); ++idx) {
@@ -56,7 +56,7 @@ void MathDiffInset::maplize(MapleStream & os) const
 }
 
 
-void MathDiffInset::mathematicize(MathematicaStream & os) const
+void MathDiffInset::mathematica(MathematicaStream & os) const
 {
 	os << "Dt[";
 	for (idx_type idx = 0; idx < nargs(); ++idx) {

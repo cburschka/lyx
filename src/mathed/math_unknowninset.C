@@ -70,12 +70,12 @@ bool MathUnknownInset::final() const
 }
 
 
-void MathUnknownInset::maplize(MapleStream & os) const
+void MathUnknownInset::maple(MapleStream & os) const
 {
 	os << name_;
 }
 
-void MathUnknownInset::mathematicize(MathematicaStream & os) const
+void MathUnknownInset::mathematica(MathematicaStream & os) const
 {
 	os << name_;
 }
@@ -87,7 +87,7 @@ void MathUnknownInset::mathmlize(MathMLStream & os) const
 }
 
 
-void MathUnknownInset::octavize(OctaveStream & os) const
+void MathUnknownInset::octave(OctaveStream & os) const
 {
 	os << name_;
 }

@@ -40,13 +40,13 @@ void MathLimInset::draw(MathPainterInfo &, int, int) const
 }
 
 
-void MathLimInset::maplize(MapleStream & os) const
+void MathLimInset::maple(MapleStream & os) const
 {
 	os << "limit(" << cell(0) << ',' << cell(1) << '=' << cell(2) << ')';
 }
 
 
-void MathLimInset::mathematicize(MathematicaStream & os) const
+void MathLimInset::mathematica(MathematicaStream & os) const
 {
 	os << "Lim[" << cell(0) << ',' << cell(1) << ',' << cell(2) << ']';
 }

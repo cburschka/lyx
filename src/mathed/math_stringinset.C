@@ -38,7 +38,7 @@ void MathStringInset::normalize(NormalStream & os) const
 }
 
 
-void MathStringInset::maplize(MapleStream & os) const
+void MathStringInset::maple(MapleStream & os) const
 {
 	if (/*code_ != LM_TC_VAR ||*/ str_.size() <= 1) {
 		os << ' ' << str_ << ' ';
@@ -52,13 +52,13 @@ void MathStringInset::maplize(MapleStream & os) const
 }
 
 
-void MathStringInset::mathematicize(MathematicaStream & os) const
+void MathStringInset::mathematica(MathematicaStream & os) const
 {
 	os << ' ' << str_ << ' ';
 }
 
 
-void MathStringInset::octavize(OctaveStream & os) const
+void MathStringInset::octave(OctaveStream & os) const
 {
 	if (/*code_ != LM_TC_VAR ||*/ str_.size() <= 1) {
 		os << ' ' << str_ << ' ';

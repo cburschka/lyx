@@ -59,17 +59,17 @@ void MathCommentInset::write(WriteStream & os) const
 }
 
 
-void MathCommentInset::maplize(MapleStream & os) const
+void MathCommentInset::maple(MapleStream & os) const
 {
 	os << '#' << cell(0) << "\n";
 }
 
 
-void MathCommentInset::mathematicize(MathematicaStream &) const
+void MathCommentInset::mathematica(MathematicaStream &) const
 {}
 
 
-void MathCommentInset::octavize(OctaveStream &) const
+void MathCommentInset::octave(OctaveStream &) const
 {}
 
 

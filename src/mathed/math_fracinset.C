@@ -89,19 +89,19 @@ string MathFracInset::name() const
 }
 
 
-void MathFracInset::maplize(MapleStream & os) const
+void MathFracInset::maple(MapleStream & os) const
 {
 	os << '(' << cell(0) << ")/(" << cell(1) << ')';
 }
 
 
-void MathFracInset::mathematicize(MathematicaStream & os) const
+void MathFracInset::mathematica(MathematicaStream & os) const
 {
 	os << '(' << cell(0) << ")/(" << cell(1) << ')';
 }
 
 
-void MathFracInset::octavize(OctaveStream & os) const
+void MathFracInset::octave(OctaveStream & os) const
 {
 	os << '(' << cell(0) << ")/(" << cell(1) << ')';
 }

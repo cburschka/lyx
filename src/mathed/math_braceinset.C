@@ -62,13 +62,13 @@ void MathBraceInset::normalize(NormalStream & os) const
 }
 
 
-void MathBraceInset::maplize(MapleStream & os) const
+void MathBraceInset::maple(MapleStream & os) const
 {
 	os << cell(0);
 }
 
 
-void MathBraceInset::octavize(OctaveStream & os) const
+void MathBraceInset::octave(OctaveStream & os) const
 {
 	os << cell(0);
 }
@@ -80,7 +80,7 @@ void MathBraceInset::mathmlize(MathMLStream & os) const
 }
 
 
-void MathBraceInset::mathematicize(MathematicaStream & os) const
+void MathBraceInset::mathematica(MathematicaStream & os) const
 {
 	os << cell(0);
 }

@@ -175,14 +175,14 @@ void MathMLStream::cr()
 
 MapleStream & operator<<(MapleStream & ms, MathAtom const & at)
 {
-	at->maplize(ms);
+	at->maple(ms);
 	return ms;
 }
 
 
 MapleStream & operator<<(MapleStream & ms, MathArray const & ar)
 {
-	maplize(ar, ms);
+	maple(ar, ms);
 	return ms;
 }
 
@@ -213,14 +213,14 @@ MapleStream & operator<<(MapleStream & ms, int i)
 
 MaximaStream & operator<<(MaximaStream & ms, MathAtom const & at)
 {
-	at->maximize(ms);
+	at->maxima(ms);
 	return ms;
 }
 
 
 MaximaStream & operator<<(MaximaStream & ms, MathArray const & ar)
 {
-	maximize(ar, ms);
+	maxima(ar, ms);
 	return ms;
 }
 
@@ -251,14 +251,14 @@ MaximaStream & operator<<(MaximaStream & ms, int i)
 
 MathematicaStream & operator<<(MathematicaStream & ms, MathAtom const & at)
 {
-	at->mathematicize(ms);
+	at->mathematica(ms);
 	return ms;
 }
 
 
 MathematicaStream & operator<<(MathematicaStream & ms, MathArray const & ar)
 {
-	mathematicize(ar, ms);
+	mathematica(ar, ms);
 	return ms;
 }
 
@@ -290,14 +290,14 @@ MathematicaStream & operator<<(MathematicaStream & ms, int i)
 
 OctaveStream & operator<<(OctaveStream & ns, MathAtom const & at)
 {
-	at->octavize(ns);
+	at->octave(ns);
 	return ns;
 }
 
 
 OctaveStream & operator<<(OctaveStream & ns, MathArray const & ar)
 {
-	octavize(ar, ns);
+	octave(ar, ns);
 	return ns;
 }
 

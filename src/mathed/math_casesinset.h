@@ -22,7 +22,7 @@ public:
 	///
 	void normalize(NormalStream &) const;
 	///
-	void maplize(MapleStream &) const;
+	void maple(MapleStream &) const;
 	///
 	void write(WriteStream & os) const;
 };
