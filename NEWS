@@ -8,72 +8,73 @@ versioning scheme: next major version will be 1.3.0, and 1.2.x will
 be just incremental fixes (like the fix series used to be for 1.1.5
 and 1.1.6). 
 
-Switch to the so-called 'new' insets:
+In the 1.2.0 verison, we switched to the so-called 'new' insets:
 
-- floats, footnotes and margin notes are now real insets
+- Floats, footnotes and margin notes are now real insets
 
-- most problems with the new table inset of 1.1.6 have been resolved
+- Most problems with the new table inset of 1.1.6 have been resolved
   (memory consumption, spell-checking, search and replace...)
 
 - TeX mode has been superseded by the 666 (aka ERT) inset, which is
   foldable
 
-- new graphics inset with support for hassle-free inclusion of various
+- New graphics inset with support for hassle-free inclusion of various
   image formats (GIF, JPEG, PNG and EPS by default).
 
-- new minipage inset
+- New minipage inset
 
-- notes inset can now contain arbitrary LyX constructs
-
-- new ligature break special character, useful for words like
-  shelfful, or many german words
+- Notes inset can now contain arbitrary LyX constructs
 
 The math editor has been mostly rewritten (and thus may have many new
 bugs :). Most of the changes should not be visible for the user,
 except:
 
-- improvements to the parser
+- Improvements to the parser
 
-- improvements to math text mode
+- Improvements to math text mode
 
-- (better) support for nested macros 
+- (Better) support for nested macros 
 
-- (better) support for \limits/\nolimits
+- (Better) support for \limits/\nolimits
 
-- enable size changes to arrays after creation (add/delete rows/columns)
+- Enable size changes to arrays after creation (add/delete rows/columns)
 
-- support for amsmath align environment
+- Support for amsmath align environment
 
-- support for changing font on a selection
+- Support for changing font on a selection
 
 Most of the popups have been rewritten in the GUI-I framework:
-
-- [...]
 
 - The citation dialog citation dialog has a search facility, with
   support for regular expressions.
 
-- the kde frontend has been dropped in favor of a new qt2 frontend.
+- The kde frontend has been dropped in favor of a new qt2 frontend.
   Note that only the xforms front is really operational as of this
   version. 
 
 Other changes include:
 
-- support for natbib for bibliography citations
+- New ligature break special character, useful for words like
+  shelfful, or many german words
 
-- support for parsing preamble when converting LaTeX files
+- Support for natbib for bibliography citations
 
-- updated documentation
+- Support for parsing preamble when converting LaTeX files. Along 
+  with changes in the LaTeX production of alignment options, this 
+  improves round-trip work where you export a LyX document as 
+  LaTeX, and later reimport it from LaTeX.
 
-- support for setting bookmarks and jumping to them
+- Updated documentation
+
+- Support for setting bookmarks and jumping to them
 
 - It is possible to cycle between a label and its references.
 
-- preliminary support for multiple bibliographies
+- Preliminary support for multiple bibliographies
 
-- babel can be disabled when using the default language.
+- Babel can be disabled when using the default language
 
-- a thesaurus facility (English only)
+- A thesaurus facility (English only)
 
 
 What's new in LyX version 1.1.6?
