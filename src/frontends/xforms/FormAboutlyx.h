@@ -14,7 +14,7 @@
 #define FORMABOUTLYX_H
 
 
-#include "FormBase.h"
+#include "FormDialogView.h"
 
 #include <boost/scoped_ptr.hpp>
 
@@ -26,10 +26,11 @@ struct FD_aboutlyx_license;
 
 /** This class provides an XForms implementation of the FormAboutlyx Dialog.
  */
-class FormAboutlyx : public FormCB<ControlAboutlyx, FormDB<FD_aboutlyx> > {
+class FormAboutlyx
+	: public FormController<ControlAboutlyx, FormView<FD_aboutlyx> > {
 public:
 	///
-	FormAboutlyx();
+	FormAboutlyx(Dialog &);
 
 private:
 	/// not needed.

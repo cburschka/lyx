@@ -13,36 +13,34 @@
 #ifndef CONTROLABOUTLYX_H
 #define CONTROLABOUTLYX_H
 
-
-#include "ControlDialog_impl.h"
-#include "LString.h"
-
+#include "Dialog.h"
 #include <iosfwd>
 
 /** A controller for the About LyX dialogs.
  */
-class ControlAboutlyx : public ControlDialogBI {
+class ControlAboutlyx : public Dialog::Controller {
 public:
 	///
-	ControlAboutlyx(LyXView &, Dialogs &);
+	ControlAboutlyx(Dialog &);
+	///
+	virtual void initialiseParams(string const &) {}
+	///
+	virtual void clearParams() {}
+	///
+	virtual void dispatchParams() {}
+	///
+	virtual bool isBufferDependent() const { return false; }
 
 	///
 	void getCredits(std::ostream &) const;
-
 	///
 	string const getCopyright() const;
-
 	///
 	string const getLicense() const;
-
 	///
 	string const getDisclaimer() const;
-
 	///
 	string const getVersion() const;
-private:
-	/// not needed.
-	virtual void apply() {}
 };
 
 #endif // CONTROLABOUTLYX_H

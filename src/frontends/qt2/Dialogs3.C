@@ -13,6 +13,7 @@
 #include "Dialogs.h"
 #include "Dialog.h"
 
+#include "ControlAboutlyx.h"
 #include "ControlBibtex.h"
 #include "ControlCitation.h"
 #include "ControlError.h"
@@ -28,6 +29,8 @@
 #include "ControlToc.h"
 #include "ControlWrap.h"
 
+#include "QAbout.h"
+#include "QAboutDialog.h"
 #include "QBibitem.h"
 #include "QBibitemDialog.h"
 #include "QBibtex.h"
@@ -86,7 +89,7 @@ typedef ButtonController<NoRepeatedApplyReadOnlyPolicy, Qt2BC>
 
 namespace {
 
-char const * const dialognames[] = { "bibitem", "bibtex", "citation",
+char const * const dialognames[] = { "about", "bibitem", "bibtex", "citation",
 				     "error", "ert", "external", "float",
 				     "graphics", "include", "index", "label",
 				     "minipage", "ref", "tabular",
@@ -122,7 +125,11 @@ Dialog * Dialogs::build(string const & name)
 
 	Dialog * dialog = new Dialog(lyxview_, name);
 
-	if (name == "bibitem") {
+	if (name == "about") {
+		dialog->setController(new ControlAboutlyx(*dialog));
+		dialog->setView(new QAbout(*dialog));
+		dialog->setButtonController(new OkCancelBC);
+	} else if (name == "bibitem") {
 		dialog->setController(new ControlCommand(*dialog, name));
 		dialog->setView(new QBibitem(*dialog));
 		dialog->setButtonController(new OkCancelReadOnlyBC);

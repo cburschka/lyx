@@ -1,7 +1,14 @@
 2003-03-09  Angus Leeming  <leeming@lyx.org>
 
+	* Dialogs.h: remove showAboutlyx.
+	* guiapi.[Ch]: remove gui_showAboutlyx.
+
+	* Dialogs.[Ch] (show): new method for non-inset dialogs.
+
+2003-03-09  Angus Leeming  <leeming@lyx.org>
+
 	* Dialogs.h: remove showTabularCreate.
-	* guiapi.[Ch]: remove gui_updateTabularCreate.
+	* guiapi.[Ch]: remove gui_showTabularCreate.
 
 2003-03-09  Angus Leeming  <leeming@lyx.org>
 

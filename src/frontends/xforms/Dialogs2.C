@@ -15,12 +15,6 @@
 #include "Dialogs_impl.h"
 
 
-void Dialogs::showAboutlyx()
-{
-	pimpl_->aboutlyx.controller().show();
-}
-
-
 void Dialogs::showMergeChanges()
 {
 	pimpl_->changes.controller().show();

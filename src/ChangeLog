@@ -1,5 +1,10 @@
 2003-03-09  Angus Leeming  <leeming@lyx.org>
 
+	* lyxfunc.C (dispatch): call Dialogs::show("about") rather
+	than Dialogs::showAboutlyx().
+
+2003-03-09  Angus Leeming  <leeming@lyx.org>
+
 	* factory.C (createInset): call Dialogs::show("tabularcreate") rather
 	than Dialogs::showTabularCreate().
 

@@ -21,12 +21,6 @@ void gui_show_dialog(Dialogs * d, char const * name, char const * data)
 	d->show(name, data, 0);
 }
 		
-void gui_ShowAboutlyx(Dialogs & d)
-{
-	d.showAboutlyx();
-}
-
-
 void gui_ShowCharacter(Dialogs & d)
 {
 	d.showCharacter();

@@ -1126,7 +1126,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 #endif
 #endif
 	case LFUN_HELP_ABOUTLYX:
-		owner->getDialogs().showAboutlyx();
+		owner->getDialogs().show("about");
 		break;
 
 	case LFUN_HELP_TEXINFO:

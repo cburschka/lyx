@@ -24,10 +24,10 @@
 #include FORMS_H_LOCATION
 
 
-typedef FormCB<ControlAboutlyx, FormDB<FD_aboutlyx> > base_class;
+typedef FormController<ControlAboutlyx, FormView<FD_aboutlyx> > base_class;
 
-FormAboutlyx::FormAboutlyx()
-	: base_class(_("About LyX"), false)
+FormAboutlyx::FormAboutlyx(Dialog & parent)
+	: base_class(parent, _("About LyX"), false)
 {}
 
 

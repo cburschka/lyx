@@ -13,16 +13,17 @@
 #define FORMABOUT_H
 
 
-#include "Qt2Base.h"
+#include "QDialogView.h"
+
 
 class QAboutDialog;
 class ControlAboutlyx;
 
 class QAbout
-	: public Qt2CB<ControlAboutlyx, Qt2DB<QAboutDialog> >
+	: public QController<ControlAboutlyx, QView<QAboutDialog> >
 {
 public:
-	QAbout();
+	QAbout(Dialog &);
 private:
 	/// not needed
 	virtual void apply() {}

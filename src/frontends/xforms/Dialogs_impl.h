@@ -18,10 +18,6 @@
 #include "xformsBC.h"
 #include "combox.h"
 
-#include "ControlAboutlyx.h"
-#include "FormAboutlyx.h"
-#include "forms/form_aboutlyx.h"
-
 #include "FormBrowser.h"
 #include "forms/form_browser.h"
 
@@ -92,9 +88,6 @@
 #include "ControlVCLog.h"
 #include "FormVCLog.h"
 
-typedef GUI<ControlAboutlyx, FormAboutlyx, OkCancelPolicy, xformsBC>
-AboutlyxDialog;
-
 typedef GUI<ControlChanges, FormChanges, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 ChangesDialog;
 
@@ -151,7 +144,6 @@ VCLogFileDialog;
 struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
 
-	AboutlyxDialog      aboutlyx;
 	ChangesDialog       changes;
         CharacterDialog     character;
 	DocumentDialog      document;

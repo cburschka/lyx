@@ -125,7 +125,7 @@ Inset * createInset(FuncRequest const & cmd)
 			::sscanf(cmd.argument.c_str(),"%d%d", &r, &c);
 			return new InsetTabular(*bv->buffer(), r, c);
 		}
-		bv->owner()->getDialogs().show("tabularcreate", string(), 0);
+		bv->owner()->getDialogs().show("tabularcreate");
 		return 0;
 
 	case LFUN_INSET_CAPTION:

@@ -29,8 +29,8 @@ extern string system_lyxdir;
 extern string user_lyxdir;
 
 
-ControlAboutlyx::ControlAboutlyx(LyXView & lv, Dialogs & d)
-	: ControlDialogBI(lv, d)
+ControlAboutlyx::ControlAboutlyx(Dialog & parent)
+	: Dialog::Controller(parent)
 {}
 
 

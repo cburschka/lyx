@@ -29,11 +29,11 @@
 
 using std::getline;
 
-typedef Qt2CB<ControlAboutlyx, Qt2DB<QAboutDialog> > base_class;
+typedef QController<ControlAboutlyx, QView<QAboutDialog> > base_class;
 
 
-QAbout::QAbout()
-	: base_class(qt_("About LyX"))
+QAbout::QAbout(Dialog & parent)
+	: base_class(parent, qt_("About LyX"))
 {
 }
 

@@ -75,6 +75,16 @@ Dialog * Dialogs::find(string const & name)
 }
 
 
+void Dialogs::show(string const & name)
+{
+	Dialog * dialog = find(name);
+	if (!dialog)
+		return;
+
+	dialog->show();
+}
+
+
 void Dialogs::show(string const & name, string const & data, InsetBase * inset)
 {
 	Dialog * dialog = find(name);
