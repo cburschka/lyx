@@ -1004,7 +1004,7 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 
 	int tmp_x = cmd.x - drawTextXOffset;
 	int tmp_y = cmd.y + insetAscent - getLyXText(bv)->first_y;
-	Inset * inset = bv->checkInsetHit(getLyXText(bv), tmp_x, tmp_y);
+	Inset * inset = getLyXText(bv)->checkInsetHit(bv, tmp_x, tmp_y);
 
 	hideInsetCursor(bv);
 	if (the_locking_inset) {
@@ -1113,7 +1113,7 @@ bool InsetText::lfunMouseRelease(FuncRequest const & cmd)
 
 	int tmp_x = cmd.x - drawTextXOffset;
 	int tmp_y = cmd.y + insetAscent - getLyXText(bv)->first_y;
-	Inset * inset = bv->checkInsetHit(getLyXText(bv), tmp_x, tmp_y);
+	Inset * inset = getLyXText(bv)->checkInsetHit(bv, tmp_x, tmp_y);
 	bool ret = false;
 	if (inset) {
 		if (isHighlyEditableInset(inset))
@@ -2050,7 +2050,7 @@ bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 	x -= drawTextXOffset;
 	int dummyx = x;
 	int dummyy = y + insetAscent;
-	Inset * inset = bv->checkInsetHit(getLyXText(bv), dummyx, dummyy);
+	Inset * inset = getLyXText(bv)->checkInsetHit(bv, dummyx, dummyy);
 	// we only do the edit() call if the inset was hit by the mouse
 	// or if it is a highly editable inset. So we should call this
 	// function from our own edit with button < 0.

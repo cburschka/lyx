@@ -23,6 +23,7 @@
 #include "gettext.h"
 #include "factory.h"
 #include "intl.h"
+#include "box.h"
 #include "language.h"
 #include "support/lstrings.h"
 #include "frontends/LyXView.h"
@@ -87,6 +88,80 @@ namespace {
 		bv->owner()->view_state_changed();
 	}
 
+	// check if the given co-ordinates are inside an inset at the
+	// given cursor, if one exists. If so, the inset is returned,
+	// and the co-ordinates are made relative. Otherwise, 0 is returned.
+	Inset * checkInset(BufferView * bv, LyXText const & text, int & x, int & y)
+	{
+		LyXCursor const & cursor = text.cursor;
+		lyx::pos_type const pos = cursor.pos();
+		Paragraph /*const*/ & par = *cursor.par();
+
+		if (pos >= par.size() || !par.isInset(pos))
+			return 0;
+
+		Inset /*const*/ * inset = par.getInset(pos);
+
+		if (!isEditableInset(inset)) 
+			return 0;
+
+		// get inset dimensions
+		lyx::Assert(par.getInset(pos));
+
+		LyXFont const & font = text.getFont(bv->buffer(), &par, pos);
+
+		int const width = inset->width(bv, font);
+		int const inset_x = font.isVisibleRightToLeft()
+			? (cursor.ix() - width) : cursor.ix();
+
+		Box b(
+			inset_x + inset->scroll(),
+			inset_x + width,
+			cursor.iy() - inset->ascent(bv, font),
+			cursor.iy() + inset->descent(bv, font));
+
+		if (!b.contained(x, y)) {
+			lyxerr[Debug::GUI] << "Missed inset at x,y " << x << "," << y
+				<< " box " << b << endl;
+			return 0;
+		}
+
+		text.setCursor(bv, &par, pos, true);
+
+		x -= b.x1;
+		// The origin of an inset is on the baseline
+		y -= text.cursor.iy();
+
+		return inset;
+	}
+
+} // anon namespace
+
+
+Inset * LyXText::checkInsetHit(BufferView * bv, int & x, int & y) const
+{
+	int y_tmp = y + first_y;
+
+	LyXCursor cursor;
+	setCursorFromCoordinates(bv, cursor, x, y_tmp);
+
+	Inset * inset = checkInset(bv, *this, x, y_tmp);
+	if (inset) {
+		y = y_tmp;
+		return inset;
+	}
+
+	// look at previous position
+	if (cursor.pos() == 0)
+		return 0;
+
+	// move back one
+	setCursor(bv, cursor, cursor.par(), cursor.pos() - 1, true);
+
+	inset = checkInset(bv, *this, x, y_tmp);
+	if (inset)
+		y = y_tmp;
+	return inset;
 }
 
 
@@ -1231,16 +1306,15 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	#endif
 		// This is to allow jumping over large insets
 		if (cursorrow == bv->text->cursor.row()) {
-			if (cmd.y >= int(bv->workarea().workHeight())) {
+			if (cmd.y >= int(bv->workarea().workHeight()))
 				bv->text->cursorDown(bv, false);
-			} else if (cmd.y < 0) {
+			else if (cmd.y < 0)
 				bv->text->cursorUp(bv, false);
-			}
 		}
 
+		// Maybe an empty line was deleted
 		if (!bv->text->selection.set())
-			bv->update(bv->text, BufferView::UPDATE); // Maybe an empty line was deleted
-
+			bv->update(bv->text, BufferView::UPDATE);
 		bv->text->setSelection(bv);
 		bv->screen().toggleToggle(bv->text, bv);
 		bv->fitCursor();
@@ -1269,7 +1343,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 		int x = cmd.x;
 		int y = cmd.y;
-		Inset * inset_hit = bv->checkInsetHit(bv->text, x, y);
+		Inset * inset_hit = bv->text->checkInsetHit(bv, x, y);
 
 		// Middle button press pastes if we have a selection
 		// We do this here as if the selection was inside an inset
@@ -1369,7 +1443,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		// inset, inset_hit is 0, and inset_x == x, inset_y == y.
 		int x = cmd.x;
 		int y = cmd.y;
-		Inset * inset_hit = bv->checkInsetHit(bv->text, x, y);
+		Inset * inset_hit = bv->text->checkInsetHit(bv, x, y);
 
 		if (bv->theLockingInset()) {
 			// We are in inset locking mode.

@@ -62,12 +62,6 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	void updateScrollbar();
 	///
 	void scrollDocView(int value);
-	/**
-	 * Returns an inset if inset was hit, or 0 if not.
-	 *
-	 * If hit, the coordinates are changed relative to the inset.
-	 */
-	Inset * checkInsetHit(LyXText *, int & x, int & y);
 	/// wheel mouse scroll
 	int scroll(long time);
 	///

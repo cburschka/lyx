@@ -41,7 +41,6 @@
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
 #include "funcrequest.h"
-#include "box.h"
 
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
@@ -103,71 +102,6 @@ boost::signals::connection kpresscon;
 boost::signals::connection selectioncon;
 boost::signals::connection lostcon;
 
-
-	/**
-	 * Return the on-screen dimensions of the inset at the cursor.
-	 * Pre-condition: the cursor must be at an inset.
-	 */
-Box insetDimensions(BufferView * bv, LyXText const & text,
-				       LyXCursor const & cursor)
-{
-	Paragraph /*const*/ & par = *cursor.par();
-	pos_type const pos = cursor.pos();
-
-	lyx::Assert(par.getInset(pos));
-
-	Inset const & inset(*par.getInset(pos));
-
-	LyXFont const & font = text.getFont(bv->buffer(), &par, pos);
-
-	int const width = inset.width(bv, font);
-	int const inset_x = font.isVisibleRightToLeft()
-		? (cursor.ix() - width) : cursor.ix();
-
-	return Box(
-		inset_x + inset.scroll(),
-		inset_x + width,
-		cursor.iy() - inset.ascent(bv, font),
-		cursor.iy() + inset.descent(bv, font));
-}
-
-
-/**
- * check if the given co-ordinates are inside an inset at the
- * given cursor, if one exists. If so, the inset is returned,
- * and the co-ordinates are made relative. Otherwise, 0 is returned.
- */
-Inset * checkInset(BufferView * bv, LyXText const & text,
-				      LyXCursor const & cursor, int & x, int & y)
-{
-	pos_type const pos = cursor.pos();
-	Paragraph /*const*/ & par(*cursor.par());
-
-	if (pos >= par.size() || !par.isInset(pos)) {
-		return 0;
-	}
-
-	Inset /*const*/ * inset = par.getInset(pos);
-
-	if (!isEditableInset(inset)) 
-		return 0;
-
-	Box b = insetDimensions(bv, text, cursor);
-
-	if (!b.contained(x, y)) {
-		lyxerr[Debug::GUI] << "Missed inset at x,y " << x << "," << y
-			<< " box " << b << endl;
-		return 0;
-	}
-
-	text.setCursor(bv, &par, pos, true);
-
-	x -= b.x1;
-	// The origin of an inset is on the baseline
-	y -= text.cursor.iy();
-
-	return inset;
-}
 
 } // anon namespace
 
@@ -511,37 +445,6 @@ void BufferView::Pimpl::selectionLost()
 		showCursor();
 		bv_->text->xsel_cache.set(false);
 	}
-}
-
-
-
-Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y)
-{
-	int y_tmp = y + text->first_y;
-
-	LyXCursor cursor;
-	text->setCursorFromCoordinates(bv_, cursor, x, y_tmp);
-
-	Inset * inset = checkInset(bv_, *text, cursor, x, y_tmp);
-
-	if (inset) {
-		y = y_tmp;
-		return inset;
-	}
-
-	// look at previous position
-	if (cursor.pos() == 0) {
-		return 0;
-	}
-
-	// move back one
-	text->setCursor(bv_, cursor, cursor.par(), cursor.pos() - 1, true);
-
-	inset = checkInset(bv_, *text, cursor, x, y_tmp);
-	if (inset) {
-		y = y_tmp;
-	}
-	return inset;
 }
 
 

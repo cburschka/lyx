@@ -78,8 +78,6 @@ public:
 	///
 	void updateScrollbar();
 	///
-	Inset * checkInsetHit(LyXText *, int & x, int & y);
-	///
 	void redoCurrentBuffer();
 	///
 	bool available() const;

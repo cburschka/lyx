@@ -110,12 +110,6 @@ void BufferView::scrollDocView(int value)
 }
 
 
-Inset * BufferView::checkInsetHit(LyXText * text, int & x, int & y)
-{
-	return pimpl_->checkInsetHit(text, x, y);
-}
-
-
 void BufferView::redoCurrentBuffer()
 {
 	pimpl_->redoCurrentBuffer();

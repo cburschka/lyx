@@ -624,6 +624,12 @@ public:
 	void updateCounters(BufferView *) const;
 	/// 
 	void update(BufferView * bv, bool changed = true);
+	/**
+	 * Returns an inset if inset was hit, or 0 if not.
+	 * If hit, the coordinates are changed relative to the inset.
+	 */
+	Inset * checkInsetHit(BufferView * bv, int & x, int & y) const;
+
 private:
 	///
 	void setCounter(Buffer const *, Paragraph * par) const;
