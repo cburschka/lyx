@@ -1,3 +1,10 @@
+2003-05-30  Angus Leeming  <leeming@lyx.org>
+
+	* xforms.m4 (LYX_CHECK_XFORMS_IMAGE_LOADER): clean-up instigated by
+	Rob Lahaye to ensure that the configure test succeeds with
+	xforms 1.0.2 and, moreover, that this will not break the final
+	linking step under cygwin.
+
 2003-07-15  Angus Leeming  <leeming@lyx.org>
 
 	* lyxinclude.m4: Do not pass the -Winline option to gcc.

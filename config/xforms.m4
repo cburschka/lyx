@@ -68,17 +68,21 @@ AC_LANG_C
 
 dnl The image headers were split out of forms.h in xforms version 1.0.
 AC_CHECK_HEADERS(flimage.h X11/flimage.h, break,,[#include $lyx_cv_forms_h_location])
-AC_SEARCH_LIBS(flimage_dup, flimage,
-  [if test "$ac_cv_search_flimage_dup" != "none required" ; then
-     XFORMS_IMAGE_LIB="-lflimage"
-     LIBS="$XFORMS_IMAGE_LIB $LIBS"
-  fi])
 
 dnl Only enable native loading of jpeg images if the jpeg library is installed.
+dnl This test comes before that of flimage itself to ensure that the necessary
+dnl libraries are linked into the "flimage_dup" test program below.
+XFORMS_IMAGE_LIB=""
 AC_CHECK_LIB(jpeg, jpeg_read_header,
   [lyx_use_jpeg_image_loader=yes
-   XFORMS_IMAGE_LIB="$XFORMS_IMAGE_LIB -ljpeg"
-   LIBS="$LIBS -ljpeg"])
+   XFORMS_IMAGE_LIB="-ljpeg"
+   LIBS="-ljpeg $LIBS"])
+
+AC_SEARCH_LIBS(flimage_dup, flimage,
+  [if test "$ac_cv_search_flimage_dup" != "none required" ; then
+     XFORMS_IMAGE_LIB="-lflimage $XFORMS_IMAGE_LIB"
+  fi])
+
 AC_SUBST(XFORMS_IMAGE_LIB)
 
 if test $lyx_use_jpeg_image_loader = yes ; then
