@@ -10,6 +10,8 @@
 #ifndef CONTROLCREDITS_H
 #define CONTROLCREDITS_H
 
+#include "Lsstream.h"
+
 #ifdef __GNUG__
 #pragma interface
 #endif
