@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>411</width>
-            <height>250</height>
+            <width>400</width>
+            <height>214</height>
         </rect>
     </property>
     <property stdset="1">
@@ -230,7 +230,7 @@
                 </spacer>
             </hbox>
         </widget>
-        <widget row="4"  column="0"  rowspan="1"  colspan="3" >
+        <widget row="3"  column="0"  rowspan="1"  colspan="3" >
             <class>QButtonGroup</class>
             <property stdset="1">
                 <name>name</name>
@@ -244,56 +244,69 @@
                 <name>title</name>
                 <string>Label Width</string>
             </property>
-            <widget>
-                <class>QLabel</class>
+            <grid>
                 <property stdset="1">
-                    <name>name</name>
-                    <cstring>TextLabel2</cstring>
-                </property>
-                <property stdset="1">
-                    <name>geometry</name>
-                    <rect>
-                        <x>11</x>
-                        <y>26</y>
-                        <width>84</width>
-                        <height>30</height>
-                    </rect>
+                    <name>margin</name>
+                    <number>11</number>
                 </property>
                 <property stdset="1">
-                    <name>text</name>
-                    <string>Lo&amp;ngest label</string>
+                    <name>spacing</name>
+                    <number>6</number>
                 </property>
-                <property>
-                    <name>buddy</name>
-                    <cstring>labelWidth</cstring>
-                </property>
-                <property>
-                    <name>toolTip</name>
-                    <string>This text defines the width of the paragraph label</string>
-                </property>
-            </widget>
-            <widget>
-                <class>QLineEdit</class>
-                <property stdset="1">
-                    <name>name</name>
-                    <cstring>labelWidth</cstring>
-                </property>
-                <property stdset="1">
-                    <name>geometry</name>
-                    <rect>
-                        <x>101</x>
-                        <y>26</y>
-                        <width>275</width>
-                        <height>30</height>
-                    </rect>
-                </property>
-                <property>
-                    <name>toolTip</name>
-                    <string>This text defines the width of the paragraph label</string>
-                </property>
-            </widget>
+                <widget row="0"  column="1" >
+                    <class>QLineEdit</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>labelWidth</cstring>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>This text defines the width of the paragraph label</string>
+                    </property>
+                </widget>
+                <widget row="0"  column="0" >
+                    <class>QLabel</class>
+                    <property stdset="1">
+                        <name>name</name>
+                        <cstring>TextLabel2</cstring>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>Lo&amp;ngest label</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>labelWidth</cstring>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>This text defines the width of the paragraph label</string>
+                    </property>
+                </widget>
+            </grid>
         </widget>
-        <widget row="6"  column="0"  rowspan="1"  colspan="3" >
+        <spacer row="4"  column="2" >
+            <property>
+                <name>name</name>
+                <cstring>Spacer5</cstring>
+            </property>
+            <property stdset="1">
+                <name>orientation</name>
+                <enum>Vertical</enum>
+            </property>
+            <property stdset="1">
+                <name>sizeType</name>
+                <enum>Expanding</enum>
+            </property>
+            <property>
+                <name>sizeHint</name>
+                <size>
+                    <width>20</width>
+                    <height>20</height>
+                </size>
+            </property>
+        </spacer>
+        <widget row="5"  column="0"  rowspan="1"  colspan="3" >
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
@@ -398,10 +411,44 @@
     </grid>
 </widget>
 <connections>
+    <connection>
+        <sender>align</sender>
+        <signal>activated(int)</signal>
+        <receiver>QParagraphDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>linespacing</sender>
+        <signal>activated(int)</signal>
+        <receiver>QParagraphDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>linespacing</sender>
+        <signal>activated(int)</signal>
+        <receiver>QParagraphDialogBase</receiver>
+        <slot>enableLinespacingValue(int)</slot>
+    </connection>
+    <connection>
+        <sender>linespacingValue</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QParagraphDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>indentCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>QParagraphDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
+        <sender>labelWidth</sender>
+        <signal>textChanged(const QString&amp;)</signal>
+        <receiver>QParagraphDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
     <slot access="protected">change_adaptor()</slot>
     <slot access="protected">enableLinespacingValue(int)</slot>
-    <slot access="protected">enableAbove(int)</slot>
-    <slot access="protected">enableBelow(int)</slot>
 </connections>
 <tabstops>
     <tabstop>restorePB</tabstop>
