@@ -42,9 +42,6 @@ private:
 	/// Build the dialog
 	virtual void build();
 
-	///
-	virtual FL_FORM * form() const;
-
 	/// Fdesign generated method
 	FD_form_aboutlyx * build_aboutlyx();
 	///
@@ -55,8 +52,6 @@ private:
 	FD_form_tab_license * build_tab_license();
 
 	/// Real GUI implementation.
-	boost::scoped_ptr<FD_form_aboutlyx> dialog_;
-	///
 	boost::scoped_ptr<FD_form_tab_version> version_;
 	///
 	boost::scoped_ptr<FD_form_tab_credits> credits_;

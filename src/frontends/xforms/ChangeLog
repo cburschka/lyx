@@ -1,3 +1,8 @@
+2002-01-28  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormAboutlyx.[Ch]: Removed redundant form() method and
+	dialog_ variable. They replicate that in the parent FormDB.
+
 2002-01-28  Martin Vermeer <martin.vermeer@hut.fi>
 
 	* FormMathsDeco[hC]:

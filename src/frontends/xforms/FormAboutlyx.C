@@ -28,11 +28,6 @@ FormAboutlyx::FormAboutlyx(ControlAboutlyx & c)
 	: base_class(c, _("About LyX"), false)
 {}
 
-FL_FORM * FormAboutlyx::form() const
-{
-    if (dialog_.get()) return dialog_->form;
-    return 0;
-}
 
 void FormAboutlyx::build()
 {
