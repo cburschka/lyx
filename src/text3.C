@@ -1318,7 +1318,11 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	case LFUN_MATH_IMPORT_SELECTION:
 	case LFUN_MATH_MODE:
-		mathDispatch(cur, cmd, false);
+		if (cmd.argument == "on")
+			// don't pass "on" as argument
+			mathDispatch(cur, FuncRequest(LFUN_MATH_MODE), false);
+		else
+			mathDispatch(cur, cmd, false);
 		break;
 
 	case LFUN_MATH_MACRO:
