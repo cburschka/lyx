@@ -317,7 +317,8 @@ notify us.
 
   o On Tru64 Unix, you may have to compile with
     --with-included-string to work around a Tru64 linker limitation
-    (the STL string template creates names which may be too long).
+    (the STL string template creates names which may be too long). We
+    also had reports that it helps with gcc 2.95.2 on solaris 2.6. 
 
   o On Tru64 Unix with cxx, you may have a compilation error in
     lyx_main.C if you have GNU gettext installed. This is due to a bug
