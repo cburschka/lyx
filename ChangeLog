@@ -1,3 +1,8 @@
+2000-07-11  Juergen Vigna  <jug@sad.it>
+
+	* src/screen.C (ToggleSelection): fixed toggle selection bug as
+	the bool param should not be last.
+
 2000-07-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* sigc++/configure.in: fix bug in threading-related code (Yes, I

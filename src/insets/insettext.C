@@ -296,7 +296,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
     } else {
 	locked = false;
 	if (need_update == CURSOR) {
-	    bv->screen()->ToggleSelection(TEXT(bv), y, x, true);
+	    bv->screen()->ToggleSelection(TEXT(bv), true, y, x);
 	    TEXT(bv)->ClearSelection();
 	    TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	}

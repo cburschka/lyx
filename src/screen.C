@@ -425,8 +425,8 @@ void LyXScreen::Update(LyXText * text, int y_offset, int x_offset)
 }
 
 
-void LyXScreen::ToggleSelection(LyXText * text,  int y_offset, int x_offset,
-				bool kill_selection)
+void LyXScreen::ToggleSelection(LyXText * text,  bool kill_selection,
+				int y_offset, int x_offset)
 {
 	// only if there is a selection
 	if (!text->selection) return;
