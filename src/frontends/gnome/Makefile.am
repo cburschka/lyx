@@ -16,7 +16,9 @@ libgnome_la_SOURCES = \
 	Menubar_pimpl.C \
 	Menubar_pimpl.h \
 	Toolbar_pimpl.C \
-	Toolbar_pimpl.h
+	Toolbar_pimpl.h \
+	mainapp.C \
+	mainapp.h
 
 # These still have to be added. Sooner or later. ARRae-20000411
 #	GUI_defaults.C \

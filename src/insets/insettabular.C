@@ -244,6 +244,8 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
     }
     top_x = int(x);
     top_baseline = baseline;
+    if (bv->text->status == LyXText::CHANGED_IN_DRAW)
+	return;
     bool dodraw;
     x += ADD_TO_TABULAR_WIDTH;
     if (cleared || (need_update == FULL) || (need_update == CELL)) {
@@ -258,20 +260,34 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 		if (hasSelection())
 		    DrawCellSelection(pain, nx, baseline, i, j, cell);
 		if (dodraw && !cleared && locked && the_locking_inset) {
-		    if (the_locking_inset == tabular->GetCellInset(cell))
-#warning Reminder make this better! (Jug)
-			if (need_update == CELL) // clear this cell
-			    pain.fillRectangle(cx,
-					       baseline -
-					       tabular->GetAscentOfRow(i),
-					       tabular->GetWidthOfColumn(cell),
-					       tabular->GetAscentOfRow(i) +
-					       tabular->GetDescentOfRow(i));
-			tabular->GetCellInset(cell)->draw(bv, font,
-							  baseline, cx,
-							  need_update==CELL);
-			if (need_update == CELL)
-			    DrawCellLines(pain, nx, baseline, i, cell);
+		    if (the_locking_inset == tabular->GetCellInset(cell)) {
+			LyXText::text_status st = bv->text->status;
+			do {
+			    bv->text->status = st;
+			    if (need_update == CELL) {
+				// clear before the inset
+				pain.fillRectangle(
+				    nx+1,
+				    baseline - tabular->GetAscentOfRow(i)+1,
+				    cx - nx - 1,
+				    tabular->GetAscentOfRow(i) +
+				    tabular->GetDescentOfRow(i) - 1);
+				// clear behind the inset
+				pain.fillRectangle(
+				    cx + the_locking_inset->width(bv,font) + 1,
+				    baseline - tabular->GetAscentOfRow(i)+1,
+				    tabular->GetWidthOfColumn(cell) -
+				    tabular->GetBeginningOfTextInCell(cell) -
+				    the_locking_inset->width(bv,font) - 1,
+				    tabular->GetAscentOfRow(i) +
+				    tabular->GetDescentOfRow(i) - 1);
+			    }
+			    tabular->GetCellInset(cell)->draw(
+				bv, font, baseline, cx, false);
+//			    if (need_update == CELL)
+//				DrawCellLines(pain, nx, baseline, i, cell);
+			} while(bv->text->status == LyXText::CHANGED_IN_DRAW);
+		    }
 		} else if (dodraw) {
 		    tabular->GetCellInset(cell)->draw(bv, font, baseline, cx,
 						      cleared);

@@ -242,6 +242,20 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 {
     Painter & pain = bv->painter();
 
+    // no draw is necessary !!!
+    if ((drawFrame == LOCKED) && !locked && !par->size()) {
+	if (!cleared && (need_update == CLEAR_FRAME)) {
+	    pain.rectangle(top_x, baseline - insetAscent, insetWidth,
+			   insetAscent + insetDescent,
+			   LColor::background);
+	}
+	top_x = int(x);
+	top_baseline = baseline;
+	x += width(bv, f);
+	need_update = NONE;
+	return;
+    }
+
     xpos = x;
     UpdatableInset::draw(bv, f, baseline, x, cleared);
 
@@ -251,8 +265,10 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 	int h = insetAscent + insetDescent;
 	int ty = baseline - insetAscent;
 	
-	if (ty < 0)
+	if (ty < 0) {
+	    h += ty;
 	    ty = 0;
+	}
 	if ((ty + h) > pain.paperHeight())
 	    h = pain.paperHeight();
 	if ((top_x + drawTextXOffset + w) > pain.paperWidth())
@@ -318,7 +334,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 			   insetAscent + insetDescent,
 			   LColor::background);
     }
-    x += insetWidth - TEXT_TO_INSET_OFFSET;
+    x += width(bv, f) - 1;
     if (bv->text->status==LyXText::CHANGED_IN_DRAW)
 	need_update = INIT;
     else if (need_update != INIT)

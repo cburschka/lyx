@@ -16,6 +16,8 @@
 #endif
 #ifdef GTKGUI
 #    include <gnome--/main.h>
+#    include "frontends/gnome/mainapp.h"
+GLyxAppWin * mainAppWin;
 #endif
 
 #include FORMS_H_LOCATION
@@ -70,7 +72,9 @@ int main(int argc, char * argv[])
 	KApplication a( argc, argv );
 #endif
 #ifdef GTKGUI
-	Gnome::Main  a(PACKAGE,VERSION,argc, argv );
+	Gnome::Main  a(PACKAGE,VERSION,1,argv); //argc, argv );
+	GLyxAppWin   appWin;
+	mainAppWin = &appWin;
 #endif
 	
 	// lyx_localedir is used by gettext_init() is we have

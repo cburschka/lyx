@@ -59,6 +59,9 @@ public:
 			   string const & menuname, 
 			   std::vector<int> & smn, StrPool & strpool);
 
+        /// update the state of the menuitems
+        void update() { }
+
 private:
 	///
 	FL_OBJECT * frame_;

@@ -3,7 +3,7 @@ DISTCLEANFILES= *.orig *.rej *~ *.bak core
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 SUBDIRS = @FRONTEND@
 ETAGS_ARGS = --lang=c++
-INCLUDES = -I${srcdir}/.. -I${srcdir}/@FRONTEND@
+INCLUDES = ${FRONTEND_INCLUDES} -I${srcdir}/.. -I${srcdir}/@FRONTEND@ ${SIGC_CFLAGS}
 LIBS =
 noinst_LTLIBRARIES = libfrontends.la
 libfrontends_la_SOURCES=\

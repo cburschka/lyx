@@ -70,6 +70,7 @@ LyXView::LyXView(int width, int height)
 
 	// Make sure the buttons are disabled if needed.
 	toolbar->update();
+	menubar->update();
 
 	dialogs_ = new Dialogs(this);
 	// temporary until all dialogs moved into Dialogs.
@@ -138,6 +139,7 @@ void LyXView::setLayout(int layout)
 void LyXView::updateToolbar()
 {
 	toolbar->update();
+	menubar->update();
 }
 
 
@@ -484,4 +486,5 @@ void LyXView::showState()
 {
 	getMiniBuffer()->Set(CurrentState(view()));
 	getToolbar()->update();
+	menubar->update();
 }

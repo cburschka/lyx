@@ -36,16 +36,16 @@ public:
 	void set(string const &);
 	/// Opens a top-level submenu given its name
 	void openByName(string const &);
+	/// update the state of the menuitems
+	void update();
 
 
 	//I disable this temporarily until I find a nice way to make it work
 	//with compaq cxx. (Jean-Marc)
 	// Is this a new comment? (Lgb)
 	struct Pimpl;
-	///
 	friend struct Pimpl;
 private:
-	///
 	Pimpl * pimpl_;
 };
 #endif

@@ -44,3 +44,8 @@ void Menubar::openByName(string const & name)
 {
 	pimpl_->openByName(name);
 }
+
+void Menubar::update()
+{
+	pimpl_->update();
+}
