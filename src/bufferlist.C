@@ -36,6 +36,7 @@
 #include "lyx_cb.h"
 #include "gettext.h"
 #include "LyXView.h"
+#include "vc-backend.h"
 
 extern BufferView * current_view;
 extern int RunLinuxDoc(int, string const &);
@@ -596,7 +597,13 @@ Buffer * BufferList::loadLyXFile(string const & filename, bool tolastfiles)
 		if (LyXVC::file_not_found_hook(s)) {
 			// Ask if the file should be checked out for
 			// viewing/editing, if so: load it.
-			lyxerr << "Do you want to checkout?" << endl;
+		        if (AskQuestion(_("Do you want to retrive file under version control?"))) {
+				// How can we know _how_ to do the checkout?
+				// With the current VC support it has to be,
+				// a RCS file since CVS do not have special ,v files.
+				RCS::retrive(s);
+				return loadLyXFile(filename, tolastfiles);
+			}
 		}
 		if (AskQuestion(_("Cannot open specified file:"), 
 				MakeDisplayPath(s, 50),

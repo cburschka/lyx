@@ -17,9 +17,6 @@
 #include <config.h>
 
 #include <cctype>
-#include <fstream>
-using std::fstream;
-using std::ios;
 
 #include <utility>
 using std::make_pair;
@@ -157,15 +154,12 @@ bool IsFileReadable (string const & path)
 //	 -1 error (doesn't exist, no access, anything else) 
 int IsFileWriteable (string const & path)
 {
-	fstream fs(path.c_str(), ios::out|ios::ate);
-	if (!fs) {
-		fs.open(path.c_str(), ios::in|ios::ate);
-		if (fs)
-			return 0;
-		else
-			return -1;
-	}
-	return 1;
+	FileInfo fi(path);
+	if (fi.access(FileInfo::wperm|FileInfo::rperm)) // read-write
+		return 1;
+	if (fi.readable()) // read-only
+		return 0;
+	return -1; // everything else.
 }
 
 

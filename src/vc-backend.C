@@ -18,11 +18,11 @@ using std::ifstream;
 #include "lyxfunc.h"
 
 
-int VCS::doVCCommand(string const & cmd)
+int VCS::doVCCommand(string const & cmd, string const & path)
 {
 	lyxerr[Debug::LYXVC] << "doVCCommand: " << cmd << endl;
         Systemcalls one;
-	Path p(owner_->filepath);
+	Path p(path);
 	int ret = one.startscript(Systemcalls::System, cmd);
 	return ret;
 }
@@ -60,6 +60,15 @@ string RCS::find_file(string const & file)
 		}
 	}
 	return string();
+}
+
+
+void RCS::retrive(string const & file)
+{
+	lyxerr[Debug::LYXVC] << "LyXVC::RCS: retrive.\n\t" << file << endl;
+	VCS::doVCCommand("co -q -r \""
+			 + file + "\"",
+			 string());
 }
 
 
@@ -133,7 +142,7 @@ void RCS::registrer(string const & msg)
 	cmd += "\" \"";
 	cmd += OnlyFilename(owner_->fileName());
 	cmd += "\"";
-	doVCCommand(cmd);
+	doVCCommand(cmd, owner_->filepath);
 	owner_->getUser()->owner()->getLyXFunc()->Dispatch("buffer-reload");
 }
 
@@ -141,7 +150,7 @@ void RCS::registrer(string const & msg)
 void RCS::checkIn(string const & msg)
 {
 	doVCCommand("ci -q -u -m\"" + msg + "\" \""
-		    + OnlyFilename(owner_->fileName()) + "\"");
+		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filepath);
 	owner_->getUser()->owner()->getLyXFunc()->Dispatch("buffer-reload");
 }
 
@@ -150,7 +159,7 @@ void RCS::checkOut()
 {
 	owner_->markLyxClean();
 	doVCCommand("co -q -l \""
-		    + OnlyFilename(owner_->fileName()) + "\"");
+		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filepath);
 	owner_->getUser()->owner()->getLyXFunc()->Dispatch("buffer-reload");
 }
 
@@ -158,7 +167,7 @@ void RCS::checkOut()
 void RCS::revert()
 {
 	doVCCommand("co -f -u" + version() + " \""
-		    + OnlyFilename(owner_->fileName()) + "\"");
+		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filepath);
 	// We ignore changes and just reload!
 	owner_->markLyxClean();
 	owner_->getUser()->owner()
@@ -170,14 +179,14 @@ void RCS::undoLast()
 {
 	lyxerr[Debug::LYXVC] << "LyXVC: undoLast" << endl;
 	doVCCommand("rcs -o" + version() + " \""
-		    + OnlyFilename(owner_->fileName()) + "\"");
+		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filepath);
 }
 
 
 void RCS::getLog(string const & tmpf)
 {
 	doVCCommand("rlog \""
-		    + OnlyFilename(owner_->fileName()) + "\" > " + tmpf);
+		    + OnlyFilename(owner_->fileName()) + "\" > " + tmpf, owner_->filepath);
 }
 
 
@@ -263,7 +272,7 @@ void CVS::scanMaster()
 void CVS::registrer(string const & msg)
 {
 	doVCCommand("cvs -q add -m \"" + msg + "\" \""
-		    + OnlyFilename(owner_->fileName()) + "\"");
+		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filepath);
 	owner_->getUser()->owner()->getLyXFunc()->Dispatch("buffer-reload");
 }
 
@@ -271,7 +280,7 @@ void CVS::registrer(string const & msg)
 void CVS::checkIn(string const & msg)
 {
 	doVCCommand("cvs -q commit -m \"" + msg + "\" \""
-		    + OnlyFilename(owner_->fileName()) + "\"");
+		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filepath);
 	owner_->getUser()->owner()->getLyXFunc()->Dispatch("buffer-reload");
 }
 

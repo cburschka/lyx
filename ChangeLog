@@ -1,3 +1,17 @@
+2000-01-11  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/vc-backend.C (doVCCommand): change to be static and take one
+	more parameter: the path to chdir too be fore executing the command.
+	(retrive): new function equiv to "co -r"
+
+	* src/bufferlist.C (loadLyXFile): implement the missing parts if
+	file_not_found_hook is true.
+
+	* src/lyxvc.C (file_not_found_hook): implement file_not_found_hook.
+
+	* src/support/filetools.C (IsFileWriteable): use FileInfo to check
+	if a file is readwrite,readonly...anything else.
+
 2000-01-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/lyx_cb.C (MakeLaTeXOutput): name change from MakeDVIOutput

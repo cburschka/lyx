@@ -50,7 +50,7 @@ public:
 	VCStatus stat() const { return vcstat; }
 protected:
 	///
-	int doVCCommand(string const &);
+	static int doVCCommand(string const &, string const &);
 
 	/** The master VC file. For RCS this is *,v or RCS/ *,v. master should
 	    have full path.
@@ -79,6 +79,8 @@ public:
 	RCS(string const & m);
 	///
 	static string find_file(string const & file);
+	///
+	static void retrive(string const & file);
 	///
 	virtual void scanMaster();
 	///

@@ -59,9 +59,13 @@ bool LyXVC::file_found_hook(string const & fn)
 }
 
 
-bool LyXVC::file_not_found_hook(string const &)
+bool LyXVC::file_not_found_hook(string const & fn)
 {
-	// file is not under any VCS.
+	// Check if file is under RCS
+	if (!RCS::find_file(fn).empty())
+		return true;
+	if (!CVS::find_file(fn).empty())
+		return true;
 	return false;
 }
 
