@@ -1,5 +1,10 @@
 2002-05-02  Herbert Voss  <voss@perce.de>
 
+	* FormBibtex.C (apply): a change from a style to an empty one
+	(which is valid) wasn't saved
+
+2002-05-02  Herbert Voss  <voss@perce.de>
+
 	* FormGraphics.C (input): do not read bb new when it was changed
 
 2002-04-30  Rob Lahaye <lahaye@users.sourceforge.net>

@@ -192,8 +192,6 @@ void FormBibtex::apply()
 		// bibtotoc and no style
 		controller().params().setOptions("bibtotoc");
 
-	} else if (!bibstyle.empty()) {
-		// only style
+	} else	// all other cases
 		controller().params().setOptions(bibstyle);
-	}
 }
