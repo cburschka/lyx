@@ -51,6 +51,10 @@ void QPrint::update_contents()
 {
 	PrinterParams & pp = controller().params();
 
+	// only reset params if a different buffer
+	if (!pp.file_name.empty() && pp.file_name == dialog_->fileED->text().latin1())
+		return;
+ 
 	dialog_->printerED->setText(pp.printer_name.c_str());
 	dialog_->fileED->setText(pp.file_name.c_str());
 
