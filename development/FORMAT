@@ -1,5 +1,38 @@
 LyX file-format changes
 -----------------------
+2003-10-07  Martin Vermeer  <martin.vermeer@hut.fi>
+
+	* Added box inset. File format:
+
+	\begin_inset Ovalbox            Boxed/Frameless/ovalbox/Ovalbox
+	                                    /Shadowbox/Doublebox
+	position "b"                    t/c/b
+	hor_pos "c"                     l/c/r/s
+	has_inner_box 1                 1/0
+	inner_pos "b"                   t/c/b/s
+	use_parbox 0                    1/0
+	width "100col%"                 unit+width-string
+	special "none"                  none/height/depth
+	                                    /totalheight/width
+	height "1in"                    unit+width-string
+	height_special "totalheight"    none/height/depth
+	                                    /totalheight/width
+	collapsed false                 true/false
+
+	\begin_layout Standard
+
+	<box contents>
+	\end_layout
+
+	\end_inset
+
+	This box (Frameless, has_inner_box=1, use_parbox=0) replaces 
+	the pre-existing Minipage inset. Parameters translate as follows:
+	position                        0/1/2   -> t/c/b
+	inner_position                  0/1/2/3 -> inner_pos c/t/b/s
+	height                          same
+	width                           same
+	collapsed                       same
 
 2003-08-19  Michael Schmitt  <michael.schmitt@teststep.org>
 
