@@ -103,6 +103,8 @@ QMathDialog::QMathDialog(QMath * form)
 	connect(symbolsWS, SIGNAL(aboutToShow(int)), this, SLOT(showingPanel(int)));
  
 	QPopupMenu * m = new QPopupMenu(spacePB);
+	m->setCaption(_("LyX: Insert space"));
+	m->insertTearOffHandle();
 	m->insertItem(_("Thin space	\\,"), 1); 
 	m->insertItem(_("Medium space	\\:"), 2); 
 	m->insertItem(_("Thick space	\\;"), 3); 
@@ -113,6 +115,8 @@ QMathDialog::QMathDialog(QMath * form)
 	spacePB->setPopup(m);
 
 	m = new QPopupMenu(sqrtPB);
+	m->setCaption(_("LyX: Insert root"));
+	m->insertTearOffHandle();
 	m->insertItem(_("Square root	\\sqrt"), 1);
 	m->insertItem(_("Cube root	\\root"), 2);
 	m->insertItem(_("Other root	\\root"), 3);
@@ -120,6 +124,8 @@ QMathDialog::QMathDialog(QMath * form)
 	sqrtPB->setPopup(m);
 
 	m = new QPopupMenu(stylePB);
+	m->setCaption(_("LyX: Set math style"));
+	m->insertTearOffHandle();
 	m->insertItem(_("Display style	\\displaystyle"), 1);
 	m->insertItem(_("Normal text style	\\textstyle"), 2);
 	m->insertItem(_("Script (small) style	\\scriptstyle"), 3);
@@ -128,6 +134,8 @@ QMathDialog::QMathDialog(QMath * form)
 	stylePB->setPopup(m);
 
 	m = new QPopupMenu(fontPB);
+	m->setCaption(_("LyX: Set math font"));
+	m->insertTearOffHandle();
 	m->insertItem(_("Roman	\\mathrm"), 1);
 	m->insertItem(_("Bold	\\mathbf"), 2);
 	m->insertItem(_("San serif	\\mathsf"), 3);
