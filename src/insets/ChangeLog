@@ -1,3 +1,12 @@
+2004-03-27  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* insettext.C (draw): handle the responsability of adding the
+	ouside offset to collapsable. Clean code a bit.
+
+	* insetcollapsable.[Ch] (metrics, draw): handle the derivation
+	from insettext correctly, solve a couple of off-by-one drawing
+	bugs
+
 2004-03-25  Angus Leeming  <leeming@lyx.org>
 
 	* insetcaption.C (draw): squash warning about unused variable.

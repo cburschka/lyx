@@ -119,6 +119,8 @@ private:
 	mutable CollapseStatus status_;
 	/// a substatus of the Open status, determined automatically in metrics
 	mutable bool openinlined_;
+	///
+	mutable Dimension textdim_;
 };
 
 #endif

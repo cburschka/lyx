@@ -119,24 +119,28 @@ void InsetCollapsable::dimension_collapsed(Dimension & dim) const
 
 void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 {
+	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
 	if (status_ == Inlined) {
 		InsetText::metrics(mi, dim);
 	} else {
 		dimension_collapsed(dim);
 		if (status_ == Open) {
-			Dimension insetdim;
-			InsetText::metrics(mi, insetdim);
-			openinlined_ = (insetdim.wid + dim.wid <= mi.base.textwidth);
+			InsetText::metrics(mi, textdim_);
+			openinlined_ = (textdim_.wid + dim.wid <= mi.base.textwidth);
 			if (openinlined_) {
-				dim.wid += insetdim.wid;
-				dim.des = max(dim.des, insetdim.des);
-				dim.asc = max(dim.asc, insetdim.asc);
+				dim.wid += textdim_.wid;
+				dim.des = max(dim.des, textdim_.des);
+				dim.asc = max(dim.asc, textdim_.asc);
 			} else {
-				dim.des += insetdim.height() + TEXT_TO_BOTTOM_OFFSET;
-				dim.wid = max(dim.wid, insetdim.wid);
+				dim.des += textdim_.height() + TEXT_TO_BOTTOM_OFFSET;
+				dim.wid = max(dim.wid, textdim_.wid);
 			}
 		}
 	}
+	dim.asc += TEXT_TO_INSET_OFFSET;
+	dim.des += TEXT_TO_INSET_OFFSET;
+	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
+	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
 	dim_ = dim;
 }
 
@@ -149,7 +153,8 @@ void InsetCollapsable::draw_collapsed(PainterInfo & pi, int x, int y) const
 
 void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 {
-	setPosCache(pi, x, y);
+	x += TEXT_TO_INSET_OFFSET;
+	y += TEXT_TO_INSET_OFFSET;
 
 	if (status_ == Inlined) {
 		InsetText::draw(pi, x, y);
@@ -162,15 +167,17 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		button_dim.y1 = y - aa + pi.base.bv->top_y();
 		button_dim.y2 = y - aa + pi.base.bv->top_y() + dimc.height();
 
-		draw_collapsed(pi, x, y);
+		draw_collapsed(pi, x, y - aa + dimc.asc);
 		if (status_ == Open) {
-			x += scroll();
 			if (openinlined_)
-				InsetText::draw(pi, x + dimc.width(), y - aa + InsetText::ascent());
+				InsetText::draw(pi, x + dimc.width(),
+						y - aa + textdim_.asc);
 			else 
-				InsetText::draw(pi, x, y - aa + dimc.height() + InsetText::ascent());
+				InsetText::draw(pi, x, dimc.height()
+						+ y - aa + textdim_.asc);
 		}
 	}
+	setPosCache(pi, x, y);
 }
 
 

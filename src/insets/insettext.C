@@ -174,12 +174,7 @@ void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	//lyxerr << "InsetText::metrics: width: " << mi.base.textwidth << endl;
 	setViewCache(mi.base.bv);
-	mi.base.textwidth -= 2 * TEXT_TO_INSET_OFFSET;
 	text_.metrics(mi, dim);
-	dim.asc += TEXT_TO_INSET_OFFSET;
-	dim.des += TEXT_TO_INSET_OFFSET;
-	dim.wid += 2 * TEXT_TO_INSET_OFFSET;
-	mi.base.textwidth += 2 * TEXT_TO_INSET_OFFSET;
 	dim_ = dim;
 	font_ = mi.base.font;
 	text_.font_ = mi.base.font;
@@ -192,21 +187,20 @@ void InsetText::draw(PainterInfo & pi, int x, int y) const
 	// update our idea of where we are
 	setPosCache(pi, x, y);
 
-	// repaint the background if needed
-	x += TEXT_TO_INSET_OFFSET;
-	if (backgroundColor() != LColor::background)
-		clearInset(pi.pain, x, y);
-
 	BufferView * bv = pi.base.bv;
 	bv->hideCursor();
 
 	x += scroll();
-	y += bv->top_y() - text_.ascent();
+	y -= text_.ascent();
 
-	text_.draw(pi, x, y);
+	// repaint the background if needed
+	if (backgroundColor() != LColor::background)
+		clearInset(pi.pain, x, y);
+
+	text_.draw(pi, x, y + bv->top_y());
 
 	if (drawFrame_ == ALWAYS || drawFrame_ == LOCKED)
-		drawFrame(pi.pain, xo_, yo_ - bv->top_y());
+		drawFrame(pi.pain, x, y);
 }
 
 
@@ -218,11 +212,17 @@ void InsetText::drawSelection(PainterInfo & pi, int x, int y) const
 
 void InsetText::drawFrame(Painter & pain, int x, int y) const
 {
-	int const frame_x = x + TEXT_TO_INSET_OFFSET / 2;
-	int const frame_y = y - dim_.asc + TEXT_TO_INSET_OFFSET / 2;
-	int const frame_w = text_.width();
-	int const frame_h = text_.height();
-	pain.rectangle(frame_x, frame_y, frame_w, frame_h, frameColor());
+	int const w = text_.width();
+	int const h = text_.height();
+	pain.rectangle(x, y, w, h, frameColor());
+}
+
+
+void InsetText::clearInset(Painter & pain, int x, int y) const
+{
+	int const w = text_.width();
+	int const h = text_.height();
+	pain.fillRectangle(x, y, w, h, backgroundColor());
 }
 
 
@@ -474,24 +474,6 @@ void InsetText::removeNewlines()
 		for (int i = 0; i < it->size(); ++i)
 			if (it->isNewline(i))
 				it->erase(i);
-}
-
-
-void InsetText::clearInset(Painter & pain, int x, int y) const
-{
-	int w = dim_.wid;
-	int h = dim_.asc + dim_.des;
-	int ty = y - dim_.asc;
-
-	if (ty < 0) {
-		h += ty;
-		ty = 0;
-	}
-	if (ty + h > pain.paperHeight())
-		h = pain.paperHeight();
-	if (xo_ + w > pain.paperWidth())
-		w = pain.paperWidth();
-	pain.fillRectangle(x + 1, ty + 1, w - 3, h - 1, backgroundColor());
 }
 
 
