@@ -52,7 +52,7 @@ void InsetSpecialChar::dimension(BufferView *, LyXFont const & font,
 		case MENU_SEPARATOR:      s = " x ";   break;
 		case PROTECTED_SEPARATOR: s = "x";     break;
 	}
-	dim.w = font_metrics::width('x', font);
+	dim.w = font_metrics::width(s, font);
 	if (kind_ == HYPHENATION && dim.w > 5)
 		dim.w -= 2; // to make it look shorter
 }
