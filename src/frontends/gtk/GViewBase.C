@@ -102,6 +102,13 @@ void GViewBase::setRestore(Gtk::Button * restore)
 }
 
 
+void GViewBase::setTitle(std::string const & title)
+{
+	Dialog::View::setTitle(title);
+	window()->set_title(title);
+}
+
+
 bool GViewBase::readOnly() const
 {
 	return kernel().isBufferReadonly();

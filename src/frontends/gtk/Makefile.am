@@ -26,6 +26,8 @@ libgtk_la_SOURCES = \
 	GBC.h \
 	GCharacter.C \
 	GCharacter.h \
+	GErrorList.C \
+	GErrorList.h \
 	GLyXKeySym.C \
 	GLyXKeySym.h \
 	GMathDelim.C \
@@ -104,7 +106,6 @@ xforms_objects = \
 	../xforms/FormColorpicker.lo \
 	../xforms/FormDialogView.lo \
 	../xforms/FormDocument.lo \
-	../xforms/FormErrorList.lo \
 	../xforms/FormERT.lo \
 	../xforms/FormExternal.lo \
 	../xforms/FormFloat.lo \
