@@ -24,6 +24,10 @@
 
 #include <algorithm>
 
+#ifdef HAVE_LOCALE
+#include <locale>
+#endif
+
 #ifdef __GNUG__
 #pragma implementation "buffer.h"
 #endif
@@ -1085,7 +1089,7 @@ bool Buffer::readFile(LyXLex & lex, LyXParagraph * par)
 		lex.next();
 		token = lex.GetString();
 		if (token == "\\lyxformat") { // the first token _must_ be...
-			lex.next();
+			lex.EatLine();
 			format = lex.GetFloat();
 			if (format > 1) {
 				if (LYX_FORMAT - format > 0.05) {
@@ -1259,6 +1263,12 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 				     fname);
 		return false;
 	}
+
+#ifdef HAVE_LOCALE
+	// Use the standard "C" locale for file output.
+	ofs.imbue(locale::classic());
+#endif
+	
 	// The top of the file should not be written by params.
 
 	// write out a comment in the top of the file
@@ -1266,8 +1276,14 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 	    << " created this file. For more info see http://www.lyx.org/\n";
 	ofs.setf(ios::showpoint|ios::fixed);
 	ofs.precision(2);
+#ifndef HAVE_LOCALE
+	char dummy_format[512];
+	sprintf(dummy_format, "%.2f", LYX_FORMAT);
+	ofs << "\\lyxformat " <<  dummy_format << "\n";
+#else
 	ofs << "\\lyxformat " << setw(4) <<  LYX_FORMAT << "\n";
-
+#endif
+	
 	// now write out the buffer paramters.
 	params.writeFile(ofs);
 

@@ -1,5 +1,20 @@
 2000-10-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/lyxlex.C (GetFloat): rewrite to use strToDbl() and
+	understand ',' instead of '.'.
+	(GetInteger): rewrite to use strToInt().
+
+	* src/buffer.C (readFile): make sure that the whole version number
+	is read after \lyxformat (even when it contains a comma)
+
+	* lib/layouts/revtex4.layout: update from Amir Karger.
+
+	* lib/layouts/amsart.layout: include lyxmacros.inc, so that
+	LyX-Code is defined.
+	* lib/layouts/amsbook.layout: ditto.
+
+	* src/main.C (main): set locale LC_NUMERIC to "C".
+
 	* src/support/lstrings.[Ch]: add isStrDbl and StrToDbl that I
 	forgot earlier :(
 

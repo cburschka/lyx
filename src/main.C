@@ -66,6 +66,7 @@ int main(int argc, char * argv[])
 	
 	// initialize for internationalized version *EK*
 	locale_init();
+	setlocale(LC_NUMERIC, "C");
 	gettext_init();
 
 #ifdef __EMX__
