@@ -10,6 +10,8 @@ CXXLINK = $(LD) -r -o $(noinst_PROGRAMS)
 insets_o_SOURCES = \
 	figinset.C \
 	figinset.h \
+	form_url.C \
+	form_url.h \
 	inset.C \
 	insetbib.C \
 	insetbib.h \

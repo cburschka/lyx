@@ -766,10 +766,16 @@ string LyXFunc::Dispatch(int ac,
 		if (fd_form_toc->form_toc->visible) {
 			fl_raise_form(fd_form_toc->form_toc);
 		} else {
+			static int ow = -1, oh;
 			fl_show_form(fd_form_toc->form_toc,
 				     FL_PLACE_MOUSE |
 				     FL_FREE_SIZE, FL_FULLBORDER,
 				     _("Table of Contents"));
+			if (ow < 0) {
+				ow = fd_form_toc->form_toc->w;
+				oh = fd_form_toc->form_toc->h;
+			}
+			fl_set_form_minsize(fd_form_toc->form_toc, ow, oh);
 		}
 		break;
 		

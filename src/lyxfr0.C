@@ -85,6 +85,8 @@ LyXFindReplace0::LyXFindReplace0()
 
 void LyXFindReplace0::StartSearch()
 {
+	static int ow = -1, oh;
+
 	FD_form_search *fd_fs = fd_form_search;
 
 	if (fd_fs->form_search->visible) {
@@ -93,6 +95,11 @@ void LyXFindReplace0::StartSearch()
 		fl_show_form(fd_fs->form_search,
 			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
 			     _("Find & Replace"));	// RVDK_PATCH_5
+		if (ow < 0) {
+			ow = fd_form_search->form_search->w;
+			oh = fd_form_search->form_search->h;
+		}
+		fl_set_form_minsize(fd_form_search->form_search, ow, oh);
 	}
 	ReInitFromForm();
 }

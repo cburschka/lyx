@@ -329,6 +329,8 @@ extern "C" void C_LyXVC_logUpdate(FL_OBJECT *ob, long data)
 
 void LyXVC::viewLog(string const & fil)
 {
+	static int ow = -1, oh;
+
 	if (!browser) {
 		FL_OBJECT *obj;
 		browser = (FD_LaTeXLog *) fl_calloc(1, sizeof(*browser));
@@ -358,6 +360,11 @@ void LyXVC::viewLog(string const & fil)
 		fl_show_form(browser->LaTeXLog,
 			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
 			     _("RCS History"));
+		if (ow < 0) {
+			ow = browser->LaTeXLog->w;
+			oh = browser->LaTeXLog->h;
+		}
+		fl_set_form_minsize(browser->LaTeXLog, ow, oh);
 	}
 }
 

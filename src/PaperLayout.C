@@ -176,8 +176,7 @@ void MenuLayoutPaper()
 			fl_raise_form(fd_form_paper->form_paper);
 		} else {
 			fl_show_form(fd_form_paper->form_paper,
-				     FL_PLACE_MOUSE
-				     | FL_FREE_SIZE,FL_FULLBORDER,
+				     FL_PLACE_MOUSE, FL_FULLBORDER,
 				     _("Paper Layout"));
 		}
 	}

@@ -270,8 +270,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Roman Font|#R
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_X
+gravity: FL_NorthWest FL_NoGravity
 name: input_roman
 callback: 
 argument: 
@@ -288,8 +288,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Sans Serif Font|#S
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_X
+gravity: FL_NorthWest FL_NoGravity
 name: input_sans
 callback: 
 argument: 
@@ -306,8 +306,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Typewriter Font|#T
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_X
+gravity: FL_NorthWest FL_NoGravity
 name: input_typewriter
 callback: 
 argument: 
@@ -324,8 +324,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Font Norm|#N
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_X
+gravity: FL_NorthWest FL_NoGravity
 name: input_font_norm
 callback: 
 argument: 
@@ -342,8 +342,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Font Zoom|#Z
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_X
+gravity: FL_NorthWest FL_NoGravity
 name: intinput_size
 callback: 
 argument: 
@@ -360,8 +360,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: OK
 shortcut: ^M
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: 
 callback: ScreenOKCB
 argument: 0
@@ -378,8 +378,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Apply|#A
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: 
 callback: ScreenApplyCB
 argument: 0
@@ -396,8 +396,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Cancel|^[
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: 
 callback: ScreenCancelCB
 argument: 0

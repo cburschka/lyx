@@ -139,7 +139,7 @@ lcol: FL_BLACK
 label: 
 shortcut: 
 resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+gravity: FL_NorthWest FL_SouthEast
 name: browser_latexlog
 callback: 
 argument: 
@@ -156,8 +156,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Close
 shortcut: ^M
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: 
 callback: LatexLogClose
 argument: 0
@@ -174,8 +174,8 @@ size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Update|#Uu
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_SouthEast FL_SouthEast
 name: 
 callback: LatexLogUpdate
 argument: 0

@@ -396,6 +396,8 @@ void Menus::create_menus(int air)
 
 void Menus::ScreenOptions()
 {
+	static int ow = -1, oh;
+
 	// this is not very nice....
 	fl_set_input(fd_form_screen->input_roman, 
 		     lyxrc->roman_font_name.c_str());
@@ -414,6 +416,11 @@ void Menus::ScreenOptions()
 		fl_show_form(fd_form_screen->form_screen,
 			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
 			     _("Screen Options"));
+		if (ow < 0) {
+			ow = fd_form_screen->form_screen->w;
+			oh = fd_form_screen->form_screen->h;
+		}
+		fl_set_form_minsize(fd_form_screen->form_screen, ow, oh);
 	}
 }
 

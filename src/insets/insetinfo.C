@@ -178,6 +178,8 @@ extern "C" void C_InsetInfo_CloseInfoCB(FL_OBJECT *, long data)
 
 void InsetInfo::Edit(int, int)
 {
+	static int ow = -1, oh;
+
 	if(current_view->currentBuffer()->isReadonly())
 		WarnReadonly();
 	
@@ -190,7 +192,7 @@ void InsetInfo::Edit(int, int)
 		fl_set_object_gravity(obj, NorthWestGravity, SouthEastGravity);
 		obj = fl_add_button(FL_NORMAL_BUTTON,130,140,120,30,idex(_("Close|#C^[")));
 		fl_set_object_resize(obj, FL_RESIZE_NONE);
-		fl_set_object_gravity(obj, SouthWestGravity, SouthEastGravity);
+		fl_set_object_gravity(obj, SouthEastGravity, SouthEastGravity);
 		fl_set_object_callback(obj, C_InsetInfo_CloseInfoCB, (long)this);
 		fl_set_object_shortcut(obj, scex(_("Close|#C^[")), (long)this);
 		fl_end_form();
@@ -200,8 +202,13 @@ void InsetInfo::Edit(int, int)
 	if (form->visible) {
 		fl_raise_form(form);
 	} else {
-		fl_show_form(form,FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER, 
+		fl_show_form(form,FL_PLACE_MOUSE | FL_FREE_SIZE,FL_FULLBORDER, 
 			     _("Note"));
+		if (ow < 0) {
+			ow = form->w;
+			oh = form->h;
+		}
+		fl_set_form_minsize(form, ow, oh);
 	}
 }
 

@@ -422,6 +422,9 @@ void LyXGUI::create_forms()
 	fl_addto_choice(fd_form_character->choice_color, 
 			_(" No change %l| No color | Black | White | Red | Green "
 			"| Blue | Cyan | Magenta | Yellow %l| Reset "));
+	fl_set_form_minsize(fd_form_character->form_character,
+			    fd_form_character->form_character->w,
+			    fd_form_character->form_character->h);
 
 	// the document form
 	fd_form_document = create_form_form_document();
@@ -470,6 +473,9 @@ void LyXGUI::create_forms()
 			_(" Smallskip | Medskip | Bigskip | Length "));
 	fl_set_input_return(fd_form_document->input_default_skip,
 			    FL_RETURN_ALWAYS);
+	fl_set_form_minsize(fd_form_document->form_document,
+			    fd_form_document->form_document->w,
+			    fd_form_document->form_document->h);
 
         // the paper form
 	fd_form_paper = create_form_form_paper();

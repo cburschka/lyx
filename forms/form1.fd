@@ -249,7 +249,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -687,7 +687,7 @@ argument: 2
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -867,7 +867,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -975,7 +975,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -1542,8 +1542,8 @@ size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
 label: 
 shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
+resize: FL_RESIZE_NONE
+gravity: FL_NorthEast FL_NorthEast
 name: 
 callback: 
 argument: 
@@ -1579,7 +1579,7 @@ lcol: FL_BLACK
 label: Replace with|#W
 shortcut: 
 resize: FL_RESIZE_X
-gravity: FL_West FL_East
+gravity: FL_NorthWest FL_NorthEast
 name: input_replace
 callback: 
 argument: 
@@ -1594,7 +1594,7 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: @>|#F
+label:  >|#F
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
@@ -1612,7 +1612,7 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: @<|#B
+label:  <|#B
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
@@ -1651,7 +1651,7 @@ lcol: FL_BLACK
 label: Close|^[
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_SouthWest FL_SouthWest
+gravity: FL_SouthEast FL_SouthEast
 name: 
 callback: SearchCancelCB
 argument: 0
@@ -1669,7 +1669,7 @@ lcol: FL_BLACK
 label: Case sensitive|#s#S
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_SouthEast FL_SouthEast
+gravity: FL_NorthEast FL_NorthEast
 name: btnCaseSensitive
 callback: 
 argument: 0
@@ -1687,7 +1687,7 @@ lcol: FL_BLACK
 label: Match word|#M#m
 shortcut: 
 resize: FL_RESIZE_NONE
-gravity: FL_SouthEast FL_SouthEast
+gravity: FL_NorthEast FL_NorthEast
 name: btnMatchWord
 callback: 
 argument: 0

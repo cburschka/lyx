@@ -135,10 +135,7 @@ FD_Figure *create_form_Figure(void)
     fl_set_object_callback(obj,GraphicsCB,2);
 
   fdui->HeightGrp = fl_bgn_group();
-  // xgettext:no-c-format	
-  fdui->page2 = obj = fl_add_checkbutton(FL_RADIO_BUTTON,110,130,110,30,idex(_("% of Page|#g")));
-    // xgettext:no-c-format
-    fl_set_button_shortcut(obj,scex(_("% of Page|#g")),1);
+  fdui->page2 = obj = fl_add_checkbutton(FL_RADIO_BUTTON,110,130,110,30,idex(_("% of Page|#g")));fl_set_button_shortcut(obj,scex(_("% of Page|#g")),1);
     fl_set_object_lsize(obj,FL_NORMAL_SIZE);
     fl_set_object_callback(obj,GraphicsCB,23);
   fdui->Default2 = obj = fl_add_checkbutton(FL_RADIO_BUTTON,110,70,80,30,idex(_("Default|#t")));fl_set_button_shortcut(obj,scex(_("Default|#t")),1);
@@ -195,16 +192,10 @@ FD_Figure *create_form_Figure(void)
   fdui->in1 = obj = fl_add_checkbutton(FL_RADIO_BUTTON,10,110,80,30,idex(_("inches|#n")));fl_set_button_shortcut(obj,scex(_("inches|#n")),1);
     fl_set_object_lsize(obj,FL_NORMAL_SIZE);
     fl_set_object_callback(obj,GraphicsCB,12);
-  // xgettext:no-c-format
-  fdui->page1 = obj = fl_add_checkbutton(FL_RADIO_BUTTON,10,130,110,30,idex(_("% of Page|#P")));
-    // xgettext:no-c-format
-    fl_set_button_shortcut(obj,scex(_("% of Page|#P")),1);
+  fdui->page1 = obj = fl_add_checkbutton(FL_RADIO_BUTTON,10,130,110,30,idex(_("% of Page|#P")));fl_set_button_shortcut(obj,scex(_("% of Page|#P")),1);
     fl_set_object_lsize(obj,FL_NORMAL_SIZE);
     fl_set_object_callback(obj,GraphicsCB,13);
-  // xgettext:no-c-format
-  fdui->column1 = obj = fl_add_checkbutton(FL_RADIO_BUTTON,10,150,110,30,idex(_("% of Column|#o")));
-    // xgettext:no-c-format
-    fl_set_button_shortcut(obj,scex(_("% of Column|#o")),1);
+  fdui->column1 = obj = fl_add_checkbutton(FL_RADIO_BUTTON,10,150,110,30,idex(_("% of Column|#o")));fl_set_button_shortcut(obj,scex(_("% of Column|#o")),1);
     fl_set_object_lsize(obj,FL_NORMAL_SIZE);
     fl_set_object_callback(obj,GraphicsCB,14);
   fl_end_group();
@@ -320,13 +311,14 @@ FD_form_search *create_form_form_search(void)
   fdui->form_search = fl_bgn_form(FL_NO_BOX, 440, 160);
   obj = fl_add_box(FL_UP_BOX,0,0,440,160,"");
   obj = fl_add_frame(FL_ENGRAVED_FRAME,300,10,130,80,"");
+    fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
   fdui->input_search = obj = fl_add_input(FL_NORMAL_INPUT,110,10,180,30,idex(_("Find|#n")));fl_set_button_shortcut(obj,scex(_("Find|#n")),1);
     fl_set_object_lsize(obj,FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
   fdui->input_replace = obj = fl_add_input(FL_NORMAL_INPUT,110,40,180,30,idex(_("Replace with|#W")));fl_set_button_shortcut(obj,scex(_("Replace with|#W")),1);
     fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_West, FL_East);
+    fl_set_object_gravity(obj, FL_NorthWest, FL_NorthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
   obj = fl_add_button(FL_NORMAL_BUTTON,200,80,90,30,idex(_("@>|#F")));fl_set_button_shortcut(obj,scex(_("@>|#F")),1);
     fl_set_object_lsize(obj,FL_NORMAL_SIZE);
@@ -342,12 +334,12 @@ FD_form_search *create_form_form_search(void)
     fl_set_object_callback(obj,SearchReplaceCB,0);
   obj = fl_add_button(FL_NORMAL_BUTTON,350,120,80,30,idex(_("Close|^[")));fl_set_button_shortcut(obj,scex(_("Close|^[")),1);
     fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);
+    fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj,SearchCancelCB,0);
   fdui->btnCaseSensitive = obj = fl_add_checkbutton(FL_PUSH_BUTTON,300,20,150,30,idex(_("Case sensitive|#s#S")));fl_set_button_shortcut(obj,scex(_("Case sensitive|#s#S")),1);
-    fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
+    fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
   fdui->btnMatchWord = obj = fl_add_checkbutton(FL_PUSH_BUTTON,300,50,150,30,idex(_("Match word|#M#m")));fl_set_button_shortcut(obj,scex(_("Match word|#M#m")),1);
-    fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
+    fl_set_object_gravity(obj, FL_NorthEast, FL_NorthEast);
   fdui->replaceall_button = obj = fl_add_button(FL_NORMAL_BUTTON,200,120,90,30,idex(_("Replace All|#A#a")));fl_set_button_shortcut(obj,scex(_("Replace All|#A#a")),1);
     fl_set_object_lsize(obj,FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);

@@ -966,7 +966,7 @@ void MenuPrint(Buffer *buffer)
 	} 
 	else {
 		fl_show_form(fd_form_print->form_print,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
+			     FL_PLACE_MOUSE, FL_FULLBORDER,
 			     _("Print"));
 	}
 }
@@ -1147,6 +1147,8 @@ void InsertAsciiFile(string const & f, bool asParagraph)
 
 void MenuShowTableOfContents()
 {
+	static int ow = -1, oh;
+
 	TocUpdateCB(0, 0);
 	if (fd_form_toc->form_toc->visible) {
 		fl_raise_form(fd_form_toc->form_toc);
@@ -1154,6 +1156,11 @@ void MenuShowTableOfContents()
 		fl_show_form(fd_form_toc->form_toc,
 			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
 			     _("Table Of Contents"));
+		if (ow < 0) {
+			ow = fd_form_toc->form_toc->w;
+			oh = fd_form_toc->form_toc->h;
+		}
+		fl_set_form_minsize(fd_form_toc->form_toc,ow,oh);
 	}
 }
 
@@ -1176,6 +1183,8 @@ void MenuInsertLabel(const char *arg)
 
 void MenuInsertRef()
 {
+	static int ow = -1, oh;
+
 	RefUpdateCB(0, 0);
 	if (fd_form_ref->form_ref->visible) {
 		fl_raise_form(fd_form_ref->form_ref);
@@ -1183,9 +1192,11 @@ void MenuInsertRef()
 		fl_show_form(fd_form_ref->form_ref,
 			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
 			     _("Insert Reference"));
-		fl_set_form_minsize(fd_form_ref->form_ref,
-				    fd_form_ref->form_ref->w,
-				    fd_form_ref->form_ref->h);
+		if (ow < 0) {
+			ow = fd_form_ref->form_ref->w;
+			oh = fd_form_ref->form_ref->h;
+		}
+		fl_set_form_minsize(fd_form_ref->form_ref,ow,oh);
 	}
 }
 
@@ -1460,12 +1471,19 @@ void AllFloats(char flag, char figmar)
 
 void MenuLayoutCharacter()
 {
+	static int ow = -1, oh;
+
 	if (fd_form_character->form_character->visible) {
 		fl_raise_form(fd_form_character->form_character);
 	} else {
 		fl_show_form(fd_form_character->form_character,
 			     FL_PLACE_MOUSE | FL_FREE_SIZE,FL_FULLBORDER,
 			     _("Character Style"));
+		if (ow < 0) {
+			ow = fd_form_character->form_character->w;
+			oh = fd_form_character->form_character->h;
+		}
+		fl_set_form_minsize(fd_form_character->form_character,ow,oh);
 	}
 }
 
@@ -1667,7 +1685,7 @@ void MenuLayoutParagraph()
 			fl_raise_form(fd_form_paragraph->form_paragraph);
 		} else {
 			fl_show_form(fd_form_paragraph->form_paragraph,
-				     FL_PLACE_MOUSE | FL_FREE_SIZE,FL_FULLBORDER,
+				     FL_PLACE_MOUSE, FL_FULLBORDER,
 				     _("Paragraph Environment"));
 		}
 	}
@@ -1918,8 +1936,7 @@ void MenuLayoutDocument()
 			fl_raise_form(fd_form_document->form_document);
 		} else {
 			fl_show_form(fd_form_document->form_document,
-				     FL_PLACE_MOUSE | FL_FREE_SIZE,
-				     FL_FULLBORDER,
+				     FL_PLACE_MOUSE, FL_FULLBORDER,
 				     _("Document Layout"));
 		}
 	}
@@ -1957,8 +1974,7 @@ void MenuLayoutQuotes()
 			fl_raise_form(fd_form_quotes->form_quotes);
 		} else {
 			fl_show_form(fd_form_quotes->form_quotes,
-				     FL_PLACE_MOUSE | FL_FREE_SIZE,
-				     FL_FULLBORDER,
+				     FL_PLACE_MOUSE, FL_FULLBORDER,
 				     _("Quotes"));
 		}
 	}
@@ -1997,6 +2013,8 @@ bool UpdateLayoutPreamble()
 
 void MenuLayoutPreamble()
 {
+	static int ow = -1, oh;
+
 	if (UpdateLayoutPreamble()) {
 		if (fd_form_preamble->form_preamble->visible) {
 			fl_raise_form(fd_form_preamble->form_preamble);
@@ -2005,6 +2023,12 @@ void MenuLayoutPreamble()
 				     FL_PLACE_MOUSE | FL_FREE_SIZE,
 				     FL_FULLBORDER,
 				     _("LaTeX Preamble"));
+			if (ow < 0) {
+				ow = fd_form_preamble->form_preamble->w;
+				oh = fd_form_preamble->form_preamble->h;
+			}
+			fl_set_form_minsize(fd_form_preamble->form_preamble,
+					    ow,oh);
 		}
 	}
 }
@@ -2338,7 +2362,7 @@ extern "C" void TableCB(FL_OBJECT *, long)
 		fl_raise_form(fd_form_table->form_table);
 	} else {
 		fl_show_form(fd_form_table->form_table,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
+			     FL_PLACE_MOUSE, FL_FULLBORDER,
 			     _("Insert Table"));
 	}
 }
@@ -3542,7 +3566,7 @@ void LaTeXOptions()
 		fl_raise_form(fd_latex_options->LaTeXOptions);
 	} else {
 		fl_show_form(fd_latex_options->LaTeXOptions,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
+			     FL_PLACE_MOUSE, FL_FULLBORDER,
 			     _("LaTeX Options"));
 	}
 }

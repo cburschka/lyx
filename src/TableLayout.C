@@ -227,12 +227,20 @@ bool UpdateLayoutTable(int flag)
 
 void OpenLayoutTableExtra()
 {
+    static int ow = -1, oh;
+
     if (fd_form_table_extra->form_table_extra->visible) {
         fl_raise_form(fd_form_table_extra->form_table_extra);
     } else {
         fl_show_form(fd_form_table_extra->form_table_extra,
                      FL_PLACE_MOUSE | FL_FREE_SIZE,FL_FULLBORDER,
                      _("Table Extra Form"));
+		if (ow < 0) {
+			ow = fd_form_table_extra->form_table_extra->w;
+			oh = fd_form_table_extra->form_table_extra->h;
+		}
+		fl_set_form_minsize(fd_form_table_extra->form_table_extra,
+				    ow,oh);
     }
 }
 
@@ -244,7 +252,7 @@ void MenuLayoutTable(int flag)
         }
         else {
             fl_show_form(fd_form_table_options->form_table_options,
-                         FL_PLACE_MOUSE | FL_FREE_SIZE,FL_FULLBORDER,
+                         FL_PLACE_MOUSE, FL_FULLBORDER,
                          _("Table Layout"));
         }
     }

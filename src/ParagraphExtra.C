@@ -156,7 +156,7 @@ void ParagraphExtraOpen(FL_OBJECT *, long)
             fl_raise_form(fd_form_paragraph_extra->form_paragraph_extra);
         } else {
             fl_show_form(fd_form_paragraph_extra->form_paragraph_extra,
-                         FL_PLACE_MOUSE | FL_FREE_SIZE,FL_FULLBORDER,
+                         FL_PLACE_MOUSE, FL_FULLBORDER,
                          _("ParagraphExtra Layout"));
         }
     }

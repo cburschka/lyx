@@ -23,6 +23,8 @@ extern bool MenuRunDvips(Buffer *buffer, bool wait);
 
 void MenuSendto()
 {
+    static int ow = -1, oh;
+
     // do this only if the command is empty
     if (!fl_get_input(fd_form_sendto->input_cmd) &&
         !lyxrc->custom_export_command.empty())
@@ -34,6 +36,11 @@ void MenuSendto()
         fl_show_form(fd_form_sendto->form_sendto,
                      FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
                      _("Send Document to Command"));
+	if (ow < 0) {
+		ow = fd_form_sendto->form_sendto->w;
+		oh = fd_form_sendto->form_sendto->h;
+	}
+	fl_set_form_minsize(fd_form_sendto->form_sendto, ow, oh);
     }
 }
 

@@ -20,6 +20,7 @@ void ShowLatexLog()
 {
 	string filename, fname, bname, path;
 	bool use_build = false;
+	static int ow = -1, oh;
 
 	filename = current_view->currentBuffer()->getFileName();
 	if (!filename.empty()) {
@@ -50,6 +51,11 @@ void ShowLatexLog()
 		fl_show_form(fd_latex_log->LaTeXLog,
 			     FL_PLACE_MOUSE | FL_FREE_SIZE,FL_FULLBORDER,
 			     use_build ? _("Build Program Log") : _("LaTeX Log"));
+		if (ow < 0) {
+			ow = fd_latex_log->LaTeXLog->w;
+			oh = fd_latex_log->LaTeXLog->h;
+		}
+		fl_set_form_minsize(fd_latex_log->LaTeXLog, ow, oh);
 	}
 }
 

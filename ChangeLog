@@ -1,3 +1,37 @@
+1999-10-25  Juergen Vigna  <jug@sad.it>
+
+	* forms/form1.fd +
+	* forms/layout_forms.fd +
+	* forms/latexoptions.fd +
+	* lyx.fd: changed for various form resize issues
+
+	* src/mathed/math_panel.C +
+	* src/insets/inseterror.C +
+	* src/insets/insetinfo.C +
+	* src/insets/inseturl.C +
+	* src/insets/inseturl.h +
+	* src/LaTeXLog.C +
+	* src/LyXSendto.C +
+	* src/PaperLayout.C +
+	* src/ParagraphExtra.C +
+	* src/TableLayout.C +
+	* src/form1.C +
+	* src/layout_forms.C +
+	* src/lyx.C +
+	* src/lyx_cb.C +
+	* src/lyx_gui.C +
+	* src/lyxfr0.C +
+	* src/lyxfunc.C +
+	* src/lyxvc.C +
+	* src/menus.C: fixed various resize issues. So now forms can be
+	resized savely or not be resized at all.
+	
+	* forms/form_url.fd +
+	* src/insets/form_url.[Ch]: added because it's cleaner and easier
+	to modify IMO.
+
+	* src/insets/Makefile.am: added files form_url.[Ch]
+	
 1999-10-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* INSTALL: it is now possible to compile LyX with digital C++ 6.1

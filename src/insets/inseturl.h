@@ -17,6 +17,7 @@
 
 #include "insetcommand.h"
 #include "buffer.h"
+#include "form_url.h"
 
 struct LaTeXFeatures;
 
@@ -33,7 +34,7 @@ public:
 	};
 	
 	///
-	InsetUrl(): InsetCommand("url"), form(0) { flag = InsetUrl::URL; }
+	InsetUrl(): InsetCommand("url"), fd_form_url(0) { flag = InsetUrl::URL; }
 	///
 	InsetUrl(string const &);
 	///
@@ -80,13 +81,7 @@ private:
 	///
         Url_Flags flag;
 	///
-        FL_FORM *form;
-	///
-	FL_OBJECT *url_name;
-	///
-	FL_OBJECT *name_name;
-	///
-	FL_OBJECT *radio_html;
+        FD_form_url *fd_form_url;
 };
 
 #endif

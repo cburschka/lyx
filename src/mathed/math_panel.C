@@ -339,7 +339,7 @@ void show_symbols_form(LyXFunc *lf)
     if (fd_panel->panel->visible) {
 	fl_raise_form(fd_panel->panel);
     } else {
-      fl_show_form(fd_panel->panel, FL_PLACE_MOUSE | FL_FREE_SIZE,
+      fl_show_form(fd_panel->panel, FL_PLACE_MOUSE,
 		   FL_FULLBORDER, _("Math Panel"));
     }
 }

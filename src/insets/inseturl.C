@@ -18,7 +18,7 @@ extern BufferView *current_view;
 extern void UpdateInset(Inset* inset, bool mark_dirty = true);
 
 InsetUrl::InsetUrl(string const & cmd)
-	: form(0)
+	: fd_form_url(0)
 {
 	scanCommand(cmd);
 	if (getCmdName() == "url")
@@ -29,7 +29,7 @@ InsetUrl::InsetUrl(string const & cmd)
 
 
 InsetUrl::InsetUrl(InsetCommand const &inscmd)
-	: form(0)
+	: fd_form_url(0)
 {
 	setCmdName(inscmd.getCmdName());
 	setContents(inscmd.getContents());
@@ -43,7 +43,7 @@ InsetUrl::InsetUrl(InsetCommand const &inscmd)
 
 InsetUrl::InsetUrl(string const &ins_name,string const &ins_cont,
 		   string const &ins_opt)
-	: form(0)
+	: fd_form_url(0)
 {
 	setCmdName(ins_name);
 	setContents(ins_cont);
@@ -57,10 +57,10 @@ InsetUrl::InsetUrl(string const &ins_name,string const &ins_cont,
 
 InsetUrl::~InsetUrl()
 {
-	if (form) {
-		fl_hide_form(form);
-		fl_free_form(form);
-		form = 0;
+	if (fd_form_url) {
+		fl_hide_form(fd_form_url->form_url);
+		fl_free_form(fd_form_url->form_url);
+		fd_form_url = 0;
 	}
 }
 
@@ -68,10 +68,10 @@ InsetUrl::~InsetUrl()
 void InsetUrl::CloseUrlCB(FL_OBJECT *ob, long)
 {
 	InsetUrl *inset = (InsetUrl*) ob->u_vdata;
-	string url = fl_get_input(inset->url_name);
-	string name = fl_get_input(inset->name_name);
+	string url = fl_get_input(inset->fd_form_url->url_name);
+	string name = fl_get_input(inset->fd_form_url->name_name);
 	string cmdname;
-	if (fl_get_button(inset->radio_html))
+	if (fl_get_button(inset->fd_form_url->radio_html))
 		cmdname = "htmlurl";
 	else
 		cmdname = "url";
@@ -93,9 +93,9 @@ void InsetUrl::CloseUrlCB(FL_OBJECT *ob, long)
 		UpdateInset(inset);
 	}
 	
-	if (inset->form) {
-		fl_hide_form(inset->form);
-		inset->form = 0;
+	if (inset->fd_form_url) {
+		fl_hide_form(inset->fd_form_url->form_url);
+		inset->fd_form_url = 0;
 	}
 }
 
@@ -106,43 +106,38 @@ extern "C" void C_InsetUrl_CloseUrlCB(FL_OBJECT *ob, long)
 
 void InsetUrl::Edit(int, int)
 {
+	static int ow = -1, oh;
+
 	if(current_view->currentBuffer()->isReadonly())
 		WarnReadonly();
 
-	if (!form) {
-		FL_OBJECT *obj;
-		form = fl_bgn_form(FL_NO_BOX, 530, 170);
-		obj = fl_add_box(FL_UP_BOX,0,0,530,170,"");
-		url_name = obj = fl_add_input(FL_NORMAL_INPUT,50,30,460,30,idex(_("Url|#U")));
-		fl_set_button_shortcut(obj,scex(_("Url|#U")),1);
-		name_name = obj = fl_add_input(FL_NORMAL_INPUT,50,80,460,30,idex(_("Name|#N")));
-		fl_set_button_shortcut(obj,scex(_("Name|#N")),1);
-		obj = fl_add_button(FL_RETURN_BUTTON,360,130,100,30,idex(_("Close|#C^[^M")));
-		fl_set_button_shortcut(obj,scex(_("Close|#C^[^M")),1);
-		obj->u_vdata = this;
-		fl_set_object_callback(obj,C_InsetUrl_CloseUrlCB,0);
-		radio_html = obj = fl_add_checkbutton(FL_PUSH_BUTTON,50,130,240,30,idex(_("HTML type|#H")));
-		fl_set_button_shortcut(obj,scex(_("HTML type|#H")),1);
-		fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-		fl_end_form();
-		fl_set_form_atclose(form, CancelCloseBoxCB, 0);
+	if (!fd_form_url) {
+		fd_form_url = create_form_form_url();
+		fd_form_url->button_close->u_vdata = this;
+		fl_set_form_atclose(fd_form_url->form_url,CancelCloseBoxCB, 0);
 	}
-	fl_set_input(url_name, getContents().c_str());
-	fl_set_input(name_name, getOptions().c_str());
+	fl_set_input(fd_form_url->url_name, getContents().c_str());
+	fl_set_input(fd_form_url->name_name, getOptions().c_str());
 	switch(flag) {
 	case InsetUrl::URL:
-		fl_set_button(radio_html, 0);
+		fl_set_button(fd_form_url->radio_html, 0);
 		break;
 	case InsetUrl::HTML_URL:
-		fl_set_button(radio_html, 1);
+		fl_set_button(fd_form_url->radio_html, 1);
 		break;
 	}
 	
-	if (form->visible) {
-		fl_raise_form(form);
+	if (fd_form_url->form_url->visible) {
+		fl_raise_form(fd_form_url->form_url);
 	} else {
-		fl_show_form(form, FL_PLACE_MOUSE,
+		fl_show_form(fd_form_url->form_url,
+			     FL_PLACE_MOUSE | FL_FREE_SIZE,
 			     FL_FULLBORDER, _("Insert Url"));
+		if (ow < 0) {
+			ow = fd_form_url->form_url->w;
+			oh = fd_form_url->form_url->h;
+		}
+		fl_set_form_minsize(fd_form_url->form_url, ow, oh);
 	}
 }
 
