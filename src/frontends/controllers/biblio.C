@@ -266,7 +266,7 @@ string const getYear(InfoMap const & map, string const & key)
 struct compareNoCase: public std::binary_function<string, string, bool>
 {
 	bool operator()(string const & s1, string const & s2) const {
-		return compare_no_case(s1, s2) < 0;
+		return compare_ascii_no_case(s1, s2) < 0;
 	}
 };
 
@@ -424,9 +424,9 @@ string const parseBibTeX(string data, string const & findkey)
 	do {
 		dummy = token(data, ',', Entries++);
 		if (!dummy.empty()) {
-			found = contains(lowercase(dummy), findkey);
+			found = contains(ascii_lowercase(dummy), findkey);
 			if (findkey == "title" &&
-				contains(lowercase(dummy), "booktitle"))
+				contains(ascii_lowercase(dummy), "booktitle"))
 				found = false;
 		}
 	} while (!found && !dummy.empty());

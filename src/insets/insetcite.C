@@ -93,8 +93,8 @@ string const getNatbibLabel(Buffer const * buffer,
 	bool const full = citeType[citeType.size()-1] == '*';
 
 	string const cite_type = full ?
-		lowercase(citeType.substr(0,citeType.size()-1)) :
-		lowercase(citeType);
+		ascii_lowercase(citeType.substr(0,citeType.size()-1)) :
+		ascii_lowercase(citeType);
 	
 	string before_str;
 	if (!before.empty()) {

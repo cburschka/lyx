@@ -85,13 +85,13 @@ extern string system_packageList;
 
 bool IsLyXFilename(string const & filename)
 {
-	return suffixIs(lowercase(filename), ".lyx");
+	return suffixIs(ascii_lowercase(filename), ".lyx");
 }
 
 
 bool IsSGMLFilename(string const & filename)
 {
-	return suffixIs(lowercase(filename), ".sgml");
+	return suffixIs(ascii_lowercase(filename), ".sgml");
 }
 
 

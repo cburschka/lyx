@@ -95,6 +95,12 @@ unsigned int ImageXPM::getHeight() const
 }
 
 
+bool ImageXPM::isDrawable() const
+{
+	return pixmap_;
+}
+
+ 
 Pixmap ImageXPM::getPixmap() const
 {
 	if (!pixmap_status_ == PIXMAP_SUCCESS)
@@ -207,7 +213,7 @@ bool ImageXPM::setPixmap(Params const & params)
 	// some image magick versions use this
 	xpm_col[1].name = 0;
 	xpm_col[1].value = "opaque";
-	xpm_col[1].pixel = lyxColorHandler->colorPixel(LColor::white);
+	xpm_col[1].pixel = lyxColorHandler->colorPixel(LColor::black);
 
 	attrib.numsymbols = 2;
 	attrib.colorsymbols = xpm_col;
@@ -552,7 +558,7 @@ unsigned int ImageXPM::Data::color_none_id() const
 	XpmColor * table = colorTable_.get();
 	for (size_t i = 0; i < ncolors_; ++i) {
 		char const * const color = table[i].c_color;
-		if (color && lowercase(color) == "none")
+		if (color && ascii_lowercase(color) == "none")
 			return uint(i);
 	}
 	return 0;
@@ -699,7 +705,7 @@ bool contains_color_none(XpmImage const & image)
 {
 	for (size_t i = 0; i < image.ncolors; ++i) {
 		char const * const color = image.colorTable[i].c_color;
-		if (color && lowercase(color) == "none")
+		if (color && ascii_lowercase(color) == "none")
 			return true;
 	}
 	return false;

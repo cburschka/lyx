@@ -80,7 +80,7 @@ Debug::type Debug::value(string const & val)
 	string v(val);
 	while (!v.empty()) {
 		string::size_type st = v.find(',');
-		string tmp(lowercase(v.substr(0, st)));
+		string tmp(ascii_lowercase(v.substr(0, st)));
 		if (tmp.empty())
 			break;
 		// Is it a number?

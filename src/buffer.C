@@ -548,7 +548,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			layoutname = tclass.defaultLayoutName();
 		}
 #ifndef NO_COMPABILITY
-		if (compare_no_case(layoutname, "latex") == 0) {
+		if (compare_ascii_no_case(layoutname, "latex") == 0) {
 			ert_comp.active = true;
 			ert_comp.fromlayout = true;
 			ert_comp.font = font;
@@ -569,7 +569,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #ifdef USE_CAPTION
 		// The is the compability reading of layout caption.
 		// It can be removed in LyX version 1.3.0. (Lgb)
-		if (compare_no_case(layoutname, "caption") == 0) {
+		if (compare_ascii_no_case(layoutname, "caption") == 0) {
 			// We expect that the par we are now working on is
 			// really inside a InsetText inside a InsetFloat.
 			// We also know that captions can only be
@@ -1581,7 +1581,7 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 
 		// This strange command allows LyX to recognize "natbib" style
 		// citations: citet, citep, Citet etc.
-		if (compare_no_case(cmdName, "cite", 4) == 0) {
+		if (compare_ascii_no_case(cmdName.substr(0,4), "cite") == 0) {
 			inset = new InsetCitation(inscmd);
 		} else if (cmdName == "bibitem") {
 			lex.printError("Wrong place for bibitem");
@@ -1958,22 +1958,22 @@ string const Buffer::asciiParagraph(Paragraph const * par,
 	if (compare_no_case(tmp, "itemize") == 0) {
 		ltype = 1;
 		ltype_depth = depth + 1;
-	} else if (compare_no_case(tmp, "enumerate") == 0) {
+	} else if (compare_ascii_no_case(tmp, "enumerate") == 0) {
 		ltype = 2;
 		ltype_depth = depth + 1;
-	} else if (contains(lowercase(tmp), "ection")) {
+	} else if (contains(ascii_lowercase(tmp), "ection")) {
 		ltype = 3;
 		ltype_depth = depth + 1;
-	} else if (contains(lowercase(tmp), "aragraph")) {
+	} else if (contains(ascii_lowercase(tmp), "aragraph")) {
 		ltype = 4;
 		ltype_depth = depth + 1;
-	} else if (compare_no_case(tmp, "description") == 0) {
+	} else if (compare_ascii_no_case(tmp, "description") == 0) {
 		ltype = 5;
 		ltype_depth = depth + 1;
-	} else if (compare_no_case(tmp, "abstract") == 0) {
+	} else if (compare_ascii_no_case(tmp, "abstract") == 0) {
 		ltype = 6;
 		ltype_depth = 0;
-	} else if (compare_no_case(tmp, "bibliography") == 0) {
+	} else if (compare_ascii_no_case(tmp, "bibliography") == 0) {
 		ltype = 7;
 		ltype_depth = 0;
 	} else {

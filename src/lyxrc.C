@@ -501,7 +501,7 @@ int LyXRC::read(string const & filename)
 		case RC_DEFAULT_PAPERSIZE:
 			if (lexrc.next()) {
 				string const size =
-					lowercase(lexrc.getString());
+					ascii_lowercase(lexrc.getString());
 				if (size == "usletter")
 					default_papersize =
 						BufferParams::PAPER_USLETTER;
@@ -2001,10 +2001,6 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		break;
 
 	case RC_FORMAT:
-		break;
-
-	case RC_NEW_ASK_FILENAME:
-		str = _("This sets the behaviour if you want to be asked for a filename when creating a new document or wait until you save it and be asked then.");
 		break;
 
 	case RC_DEFAULT_LANGUAGE:

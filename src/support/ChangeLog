@@ -1,4 +1,10 @@
+2002-07-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* filetools.C (IsLyXFilename):
+	(IsSGMLFilename): use ascii_lowercase instead of lowercase
+
+	* lstrings.[Ch] (ascii_lowercase): new function
+	
 2002-07-16  André Pönitz <poenitz@gmx.net>
 
 	* FileInfo.Ch: remove unneeded code

@@ -605,8 +605,6 @@ string const unique_filename(string const bufferpath)
 
 Converter const * setConverter()
 {
-	Converter const * converter = 0;
-
 	string const from = "lyxpreview";
 
 	Formats::FormatList::const_iterator it  = formats.begin();

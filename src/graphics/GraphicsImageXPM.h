@@ -48,6 +48,8 @@ public:
 	/// Get the image height
 	unsigned int getHeight() const;
 
+	bool isDrawable() const;
+
 	/** Load the image file into memory.
 	 *  In this case (ImageXPM), the process is blocking.
 	 */

@@ -1,3 +1,15 @@
+2002-07-16  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* PreviewLoader.C (setConverter): remove unused variable
+
+	* GraphicsImageXPM.C (isDrawable): implement
+	(setPixmap): the opaque color is black, not white
+
+2002-07-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* GraphicsImageXPM.C (color_none_id):
+	(contains_color_none): use ascii_lowercase instead of lowercase
+
 2002-07-16  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewLoader.C: greater use of STL algorithms.
@@ -280,6 +292,7 @@
 	pretty temperamemtal at the moment.
 
 2002-04-16  Rob Lahaye  <lahaye@users.sourceforge.net>
+
 	* GraphicsImageXPM.C: fix clipping for boundingbox y-coordinates
 
 2002-04-08  Angus Leeming  <a.leeming@ic.ac.uk>

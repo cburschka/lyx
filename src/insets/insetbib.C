@@ -259,7 +259,7 @@ vector<pair<string, string> > const InsetBibtex::getKeys(Buffer const * buffer) 
 				linebuf = subst(linebuf, '{', '(');
 				string tmp;
 				linebuf = split(linebuf, tmp, '(');
-				tmp = lowercase(tmp);
+				tmp = ascii_lowercase(tmp);
 				if (!prefixIs(tmp, "@string")
 				    && !prefixIs(tmp, "@preamble")) {
 					linebuf = split(linebuf, tmp, ',');
