@@ -1,13 +1,13 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file paragraph_funcs.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Lars Gullik Bjønnes
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifndef PARAGRAPH_FUNCS_H
 #define PARAGRAPH_FUNCS_H
@@ -49,4 +49,4 @@ bool isFirstInSequence(Paragraph * par);
 int getEndLabel(Paragraph * para, BufferParams const & bparams);
 #endif
 
-#endif
+#endif // PARAGRAPH_FUNCS_H

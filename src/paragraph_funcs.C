@@ -1,12 +1,12 @@
-/* This file is part of
- * ======================================================
+/**
+ * \file paragraph_funcs.C
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author Lars Gullik Bjønnes
  *
- *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #include <config.h>
 
@@ -43,7 +43,7 @@ void breakParagraph(BufferParams const & bparams,
 		tmp->setLabelWidthString(par->params().labelWidthString());
 	}
 
-	bool isempty = (par->layout()->keepempty && par->empty());
+	bool const isempty = (par->layout()->keepempty && par->empty());
 
 	if (!isempty && (par->size() > pos || par->empty() || flag == 2)) {
 		tmp->layout(par->layout());
@@ -75,24 +75,24 @@ void breakParagraph(BufferParams const & bparams,
 		}
 	}
 
-	// just an idea of me
-	if (!pos) {
-		tmp->params().lineTop(par->params().lineTop());
-		tmp->params().pagebreakTop(par->params().pagebreakTop());
-		tmp->params().spaceTop(par->params().spaceTop());
-		tmp->bibkey = par->bibkey;
+	if (pos)
+		return;
+ 
+	tmp->params().lineTop(par->params().lineTop());
+	tmp->params().pagebreakTop(par->params().pagebreakTop());
+	tmp->params().spaceTop(par->params().spaceTop());
+	tmp->bibkey = par->bibkey;
 
-		par->bibkey = 0;
-		par->params().clear();
+	par->bibkey = 0;
+	par->params().clear();
 
-		par->layout(bparams.getLyXTextClass().defaultLayout());
+	par->layout(bparams.getLyXTextClass().defaultLayout());
 
-		// layout stays the same with latex-environments
-		if (flag) {
-			par->layout(tmp->layout());
-			par->setLabelWidthString(tmp->params().labelWidthString());
-			par->params().depth(tmp->params().depth());
-		}
+	// layout stays the same with latex-environments
+	if (flag) {
+		par->layout(tmp->layout());
+		par->setLabelWidthString(tmp->params().labelWidthString());
+		par->params().depth(tmp->params().depth());
 	}
 }
 

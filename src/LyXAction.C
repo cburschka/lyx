@@ -536,10 +536,10 @@ string const LyXAction::getActionName(int action) const
 	if (!ev.argument.empty())
 		ev.argument.insert(0, " ");
 
-	info_map::const_iterator iit = lyx_info_map.find(ev.action);
+	info_map::const_iterator const it = lyx_info_map.find(ev.action);
 
-	if (iit != lyx_info_map.end())
-		return iit->second.name + ev.argument;
+	if (it != lyx_info_map.end())
+		return it->second.name + ev.argument;
 	return string();
 }
 

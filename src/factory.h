@@ -1,12 +1,13 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
+/**
+ * \file factory.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
  *
- *           LyX, The Document Processor
+ * \author André Pönitz
  *
- *           Copyright 2002 The LyX Team.
- *
- * ====================================================== */
+ * Full author contact details are available in file CREDITS
+ */
 
 #ifndef FACTORY_H
 #define FACTORY_H
