@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>459</width>
+            <width>451</width>
             <height>408</height>
         </rect>
     </property>
@@ -670,6 +670,10 @@
                                                 <vsizetype>1</vsizetype>
                                             </sizepolicy>
                                         </property>
+                                        <property>
+                                            <name>toolTip</name>
+                                            <string>Set borders of the current (selected) cell(s)</string>
+                                        </property>
                                     </widget>
                                 </grid>
                             </widget>
@@ -702,11 +706,11 @@
                                 </property>
                                 <property stdset="1">
                                     <name>text</name>
-                                    <string>&amp;Default</string>
+                                    <string>&amp;Set</string>
                                 </property>
                                 <property>
                                     <name>toolTip</name>
-                                    <string>Set all borders</string>
+                                    <string>Set all borders of the current (selected) cell(s)</string>
                                 </property>
                             </widget>
                             <widget row="1"  column="0" >
@@ -721,7 +725,7 @@
                                 </property>
                                 <property>
                                     <name>toolTip</name>
-                                    <string>Unset all borders</string>
+                                    <string>Unset all borders of the current (selected) cell(s)</string>
                                 </property>
                             </widget>
                         </grid>
