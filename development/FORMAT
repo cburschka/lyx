@@ -15,3 +15,22 @@ The LyX file now contains:
  \end_inset 
 
 Earlier versions of LyX just swallow this extra token silently.
+
+2002-08-12  Angus Leeming  <leeming@lyx.org>
+
+The 1.2.0 InsetGraphicsParams "size_type" and "lyxsize_type" have been
+renamed as "size_kind" and "lyxsize_kind" respectively.
+
+ \begin_inset Graphics FormatVersion 1
+ 	filename file.eps
+ 	display default
+-	size_kind original
++	size_type original
+ 	width 7cm
+ 	rotateOrigin center
+-	lyxsize_kind original
++	lyxsize_type original
+	lyxwidth 4cm
+
+ \end_inset 
+

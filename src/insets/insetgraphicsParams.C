@@ -197,6 +197,22 @@ string const getSizeKindStr(InsetGraphicsParams::sizeKind sK_in)
 	return "original";
 }	
 
+// compatibility-stuff 1.20->1.3.0
+InsetGraphicsParams::sizeKind getSizeKind(int type)
+{
+	switch (type) {
+	case 1:
+		return InsetGraphicsParams::WH;
+
+	case 2:
+		return InsetGraphicsParams::SCALE;
+
+	case 0:
+	default:
+		return InsetGraphicsParams::DEFAULT_SIZE;
+	}
+}
+
 } //anon
 
 
@@ -282,17 +298,7 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token)
 	// compatibility-stuff 1.20->1.3.0
 	} else if (token == "size_type") {
 		lex.next();
-		switch (lex.getInteger()) {
-		case 0:
-			size_kind = DEFAULT_SIZE;
-			break;
-		case 1:
-			size_kind = WH;
-			break;
-		case 2:
-			size_kind = SCALE;
-			break;
-		}
+		size_kind = getSizeKind(lex.getInteger());
 	} else if (token == "width") {
 		lex.next();
 		width = LyXLength(lex.getString());
@@ -315,6 +321,10 @@ bool InsetGraphicsParams::Read(LyXLex & lex, string const & token)
 	} else if (token == "lyxsize_kind") {
 		lex.next();
 		lyxsize_kind = getSizeKind(lex.getString());
+	// compatibility-stuff 1.20->1.3.0
+	} else if (token == "lyxsize_type") {
+		lex.next();
+		lyxsize_kind = getSizeKind(lex.getInteger());
 	} else if (token == "lyxwidth") {
 		lex.next();
 		lyxwidth = LyXLength(lex.getString());
