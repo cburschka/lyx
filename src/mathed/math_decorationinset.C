@@ -51,6 +51,8 @@ bool MathDecorationInset::protect() const
 bool MathDecorationInset::wide() const
 {
 	return
+			name_ == "overline" ||
+			name_ == "underline" ||
 			name_ == "overbrace" ||
 			name_ == "underbrace" ||
 			name_ == "overleftarrow" ||

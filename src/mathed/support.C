@@ -355,7 +355,7 @@ double const slash[] = {
 
 
 double const hline[] = {
-	1, 0.05, 0.5, 0.95, 0.5,
+	1, 0.00, 0.5, 1.0, 0.5,
 	0
 };
 
