@@ -94,6 +94,9 @@ What's new
 - fix bug where opening the tabular dialog would mark the document as 
   changed [bug #849, Qt only]
 
+- fix bug where it was impossible to set space above/below a paragraph
+  to Fill [Qt only]
+
 - duplicate 'A' shortcut in spellchecker dialog fixed [bug #884, Qt
   only]
 
@@ -111,7 +114,8 @@ What's new
 
 - apply in External Material dialog works now  [Qt only]
 
-- search checkboxes are not disabled for read-only documents [bug #937, Qt only]
+- search checkboxes are not disabled for read-only documents [bug
+  #937, Qt only]
 
 - fix various problems with paper size selection [bug #844 and #866]
 
@@ -124,6 +128,8 @@ What's new
   consistency reasons and to resolve a translation conflict
 
 - revert is now disabled for an unchanged or unsaved document [bug #783]
+
+- add support for 1.1.x Info insets to lyx2lyx
 
 - fix a lyx2lyx bug that rejected csv2lyx files as badly formed
 
