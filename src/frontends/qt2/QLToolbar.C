@@ -1,10 +1,11 @@
 /**
- * \file qt2/Toolbar_pimpl.C
+ * \file qt2/QLToolbar.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
  * \author Lars Gullik Bjønnes
  * \author John Levon
+ * \author Jean-Marc Lasgouttes
  *
  * Full author contact details are available in file CREDITS
  */
@@ -28,7 +29,7 @@
 #include <boost/tuple/tuple.hpp>
 
 #include "QtView.h"
-#include "Toolbar_pimpl.h"
+#include "QLToolbar.h"
 
 #include <qtoolbar.h>
 #include <qcombobox.h>
@@ -45,20 +46,15 @@ public:
 };
 
 
-Toolbar::Pimpl::Pimpl(LyXView * o, int, int)
+QLToolbar::QLToolbar(LyXView * o)
 	: owner_(static_cast<QtView *>(o)),
-	combo_(0)
+	  combo_(0)
 {
 	proxy_.reset(new ToolbarProxy(*this));
 }
 
 
-Toolbar::Pimpl::~Pimpl()
-{
-}
-
-
-void Toolbar::Pimpl::displayToolbar(ToolbarBackend::Toolbar const & tb, bool show)
+void QLToolbar::displayToolbar(ToolbarBackend::Toolbar const & tb, bool show)
 {
 	QToolBar * qtb = toolbars_[tb.name];
 	if (show) {
@@ -69,7 +65,7 @@ void Toolbar::Pimpl::displayToolbar(ToolbarBackend::Toolbar const & tb, bool sho
 }
 
 
-void Toolbar::Pimpl::update()
+void QLToolbar::update()
 {
 	ButtonMap::const_iterator p = map_.begin();
 	ButtonMap::const_iterator end = map_.end();
@@ -95,7 +91,7 @@ void Toolbar::Pimpl::update()
 }
 
 
-void Toolbar::Pimpl::button_selected(QToolButton * button)
+void QLToolbar::button_selected(QToolButton * button)
 {
 	ButtonMap::const_iterator cit = map_.find(button);
 
@@ -108,7 +104,7 @@ void Toolbar::Pimpl::button_selected(QToolButton * button)
 }
 
 
-void Toolbar::Pimpl::changed_layout(string const & sel)
+void QLToolbar::changed_layout(string const & sel)
 {
 	owner_->centralWidget()->setFocus();
 
@@ -124,12 +120,12 @@ void Toolbar::Pimpl::changed_layout(string const & sel)
 			return;
 		}
 	}
-	lyxerr << "ERROR (Toolbar::Pimpl::layoutSelected): layout not found!"
+	lyxerr << "ERROR (QLToolbar::layoutSelected): layout not found!"
 	       << endl;
 }
 
 
-void Toolbar::Pimpl::setLayout(string const & layout)
+void QLToolbar::setLayout(string const & layout)
 {
 	if (!combo_)
 		return;
@@ -155,13 +151,9 @@ void Toolbar::Pimpl::setLayout(string const & layout)
 }
 
 
-void Toolbar::Pimpl::updateLayoutList(bool force)
+void QLToolbar::updateLayoutList()
 {
 	if (!combo_)
-		return;
-
-	// if we don't need an update, don't ...
-	if (combo_->count() && !force)
 		return;
 
 	LyXTextClass const & tc =
@@ -189,7 +181,7 @@ void Toolbar::Pimpl::updateLayoutList(bool force)
 }
 
 
-void Toolbar::Pimpl::clearLayoutList()
+void QLToolbar::clearLayoutList()
 {
 	if (!combo_)
 		return;
@@ -198,7 +190,7 @@ void Toolbar::Pimpl::clearLayoutList()
 }
 
 
-void Toolbar::Pimpl::openLayoutList()
+void QLToolbar::openLayoutList()
 {
 	if (!combo_)
 		return;
@@ -225,7 +217,7 @@ QMainWindow::ToolBarDock getPosition(ToolbarBackend::Flags const & flags)
 };
 
 
-void Toolbar::Pimpl::add(ToolbarBackend::Toolbar const & tb)
+void QLToolbar::add(ToolbarBackend::Toolbar const & tb)
 {
 	QToolBar * qtb = new QToolBar(qt_(tb.name), owner_, getPosition(tb.flags));
 	// give visual separation between adjacent toolbars
@@ -242,7 +234,7 @@ void Toolbar::Pimpl::add(ToolbarBackend::Toolbar const & tb)
 }
 
 
-void Toolbar::Pimpl::add(QToolBar * tb, int action, string const & tooltip)
+void QLToolbar::add(QToolBar * tb, int action, string const & tooltip)
 {
 	switch (action) {
 	case ToolbarBackend::SEPARATOR:

@@ -14,9 +14,9 @@
 
 
 #include "LString.h"
+#include "ToolbarBackend.h"
 
 class LyXView;
-
 
 /**
  * The LyX GUI independent toolbar class
@@ -26,33 +26,43 @@ class LyXView;
 class Toolbar {
 public:
 	///
-	Toolbar(LyXView * o, int x, int y);
+	Toolbar();
 
-	///
-	~Toolbar();
+	/// 
+	virtual ~Toolbar();
+
+	/// Initialize toolbar from backend
+ 	void init();
 
 	/// update the state of the toolbars
 	void update(bool in_math, bool in_table);
 
 	/// update the layout combox
-	void setLayout(string const & layout);
+	virtual void setLayout(string const & layout) = 0;
 	/**
 	 * Populate the layout combox - returns whether we did a full
 	 * update or not
 	 */
 	bool updateLayoutList(int textclass);
 	/// Drop down the layout list
-	void openLayoutList();
+	virtual void openLayoutList() = 0;
 	/// Erase the layout list
-	void clearLayoutList();
+	virtual void clearLayoutList() = 0;
 
-	/// Compaq cxx 6.5 requires this to be public
-	struct Pimpl;
 private:
-	///
-	friend struct Toolbar::Pimpl;
-	///
-	Pimpl * pimpl_;
+
+	virtual void add(ToolbarBackend::Toolbar const & tb) = 0;
+
+	/// update the state of the icons
+	virtual void update() = 0;
+
+	/// show or hide a toolbar
+	virtual void displayToolbar(ToolbarBackend::Toolbar const & tb, 
+				    bool show) = 0;
+
+	/// Populate the layout combox.
+	virtual void updateLayoutList() = 0;
+
 
 	/**
 	 * The last textclass layout list in the layout choice selector

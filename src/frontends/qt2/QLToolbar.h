@@ -5,16 +5,16 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Lars Gullik Bjønnes
+ * \author John Levon
+ * \author Jean-Marc Lasgouttes
  *
  * Full author contact details are available in file CREDITS
  */
 
-#ifndef TOOLBAR_PIMPL_H
-#define TOOLBAR_PIMPL_H
-
+#ifndef QLTOOLBAR__H
+#define QLTOOLBAR_H
 
 #include "frontends/Toolbar.h"
-#include "ToolbarBackend.h"
 
 #include "qt_helpers.h"
 
@@ -30,13 +30,11 @@ class QToolBar;
 class QLComboBox;
 class ToolbarProxy;
 
-struct Toolbar::Pimpl {
+class QLToolbar : public Toolbar {
 public:
 	friend class ToolbarProxy;
 
-	Pimpl(LyXView * o, int x, int y);
-
-	~Pimpl();
+	QLToolbar(LyXView * o);
 
 	/// add a new toolbar
 	void add(ToolbarBackend::Toolbar const & tb);
@@ -52,8 +50,8 @@ public:
 
 	/// select the right layout in the combox
 	void setLayout(string const & layout);
-	/// Populate the layout combox; re-do everything if force is true.
-	void updateLayoutList(bool force);
+	/// Populate the layout combox.
+	void updateLayoutList();
 	/// Drop down the layout list
 	void openLayoutList();
 	/// Erase the layout list
@@ -81,7 +79,7 @@ private:
 class ToolbarProxy : public QObject {
 	Q_OBJECT
 public:
-	ToolbarProxy(Toolbar::Pimpl & owner)
+	ToolbarProxy(QLToolbar & owner)
 		: owner_(owner) {}
 public slots:
 
@@ -96,7 +94,7 @@ public slots:
 		);
 	}
 private:
-	Toolbar::Pimpl & owner_;
+	QLToolbar & owner_;
 };
 
 #endif

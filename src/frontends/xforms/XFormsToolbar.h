@@ -1,16 +1,17 @@
 // -*- C++ -*-
 /**
- * \file xforms/Toolbar_pimpl.h
+ * \file xforms/XFormsToolbar.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
  * \author Lars Gullik Bjønnes
+ * \author Jean-Marc Lasgouttes
  *
  * Full author contact details are available in file CREDITS
  */
 
-#ifndef TOOLBAR_PIMPL_H
-#define TOOLBAR_PIMPL_H
+#ifndef XFORMSTOOLBAR_H
+#define XFROMSTOOLBAR_H
 
 #include <vector>
 #include "forms_fwd.h"
@@ -18,18 +19,18 @@
 #include "frontends/Toolbar.h"
 #include "ToolbarBackend.h"
 
-
 class XFormsView;
 class Tooltips;
 
 /** The LyX xforms toolbar class
  */
-struct Toolbar::Pimpl {
+class XFormsToolbar : public Toolbar {
 public:
 	/// create an empty toolbar
-	Pimpl(LyXView * o, int x, int y);
+	XFormsToolbar(LyXView * o, int x, int y);
 
-	~Pimpl();
+	///
+	~XFormsToolbar();
 
 	/// add a new toolbar
 	void add(ToolbarBackend::Toolbar const & tb);
@@ -45,8 +46,8 @@ public:
 
 	/// select the right layout in the combox
 	void setLayout(string const & layout);
-	/// Populate the layout combox; re-do everything if force is true.
-	void updateLayoutList(bool force);
+	/// Populate the layout combox.
+	void updateLayoutList();
 	/// Drop down the layout list
 	void openLayoutList();
 	/// Erase the layout list
@@ -88,4 +89,4 @@ public:
 	int ypos;
 };
 
-#endif // TOOLBAR_PIMPL_H
+#endif 

@@ -155,8 +155,8 @@ libxforms_la_SOURCES = \
 	Menubar_pimpl.h \
 	RadioButtonGroup.C \
 	RadioButtonGroup.h \
-	Toolbar_pimpl.C \
-	Toolbar_pimpl.h \
+	XFormsToolbar.C \
+	XFormsToolbar.h \
 	Tooltips.C \
 	Tooltips.h \
 	WorkAreaFactory.C \

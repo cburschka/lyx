@@ -1,9 +1,10 @@
 /**
- * \file xforms/Toolbar_pimpl.C
+ * \file xforms/XFormsToolbar.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
  * \author Lars Gullik Bjønnes
+ * \author Jean-Marc Lasgouttes
  *
  * Full author contact details are available in file CREDITS
  */
@@ -13,7 +14,7 @@
 #include <config.h>
 
 
-#include "Toolbar_pimpl.h"
+#include "XFormsToolbar.h"
 #include "debug.h"
 #include "XFormsView.h"
 #include "lyxfunc.h"
@@ -40,12 +41,12 @@ const int sepspace = 6; // extra space
 const int buttonwidth = 30; // the standard button width
 const int height = 30; // the height of all items in the toolbar
 
-Toolbar::Pimpl::toolbarItem::toolbarItem()
+XFormsToolbar::toolbarItem::toolbarItem()
 	: action(LFUN_NOACTION), icon(0)
 {}
 
 
-Toolbar::Pimpl::toolbarItem::~toolbarItem()
+XFormsToolbar::toolbarItem::~toolbarItem()
 {
 	// Lars said here that ~XFormsView() dealt with the icons.
 	// This is not true. But enabling this causes crashes,
@@ -57,12 +58,12 @@ Toolbar::Pimpl::toolbarItem::~toolbarItem()
 
 /// Display toolbar, not implemented. But moved out of line so that
 /// linking will work properly.
-void Toolbar::Pimpl::displayToolbar(ToolbarBackend::Toolbar const & /*tb*/,
+void XFormsToolbar::displayToolbar(ToolbarBackend::Toolbar const & /*tb*/,
 				    bool /*show*/)
 {}
 
 
-void Toolbar::Pimpl::toolbarItem::kill_icon()
+void XFormsToolbar::toolbarItem::kill_icon()
 {
 	if (icon) {
 		fl_delete_object(icon);
@@ -72,8 +73,8 @@ void Toolbar::Pimpl::toolbarItem::kill_icon()
 }
 
 
-Toolbar::Pimpl::toolbarItem &
-Toolbar::Pimpl::toolbarItem::operator=(toolbarItem const & ti)
+XFormsToolbar::toolbarItem &
+XFormsToolbar::toolbarItem::operator=(toolbarItem const & ti)
 {
 	if (this == &ti)
 		return *this;
@@ -89,14 +90,14 @@ Toolbar::Pimpl::toolbarItem::operator=(toolbarItem const & ti)
 
 
 
-Toolbar::Pimpl::Pimpl(LyXView * o, int x, int y)
+XFormsToolbar::XFormsToolbar(LyXView * o, int x, int y)
 	: owner_(static_cast<XFormsView *>(o)), combox_(0), xpos(x), ypos(y)
 {
 	tooltip_ = new Tooltips();
 }
 
 
-Toolbar::Pimpl::~Pimpl()
+XFormsToolbar::~XFormsToolbar()
 {
 	fl_freeze_form(owner_->getForm());
 
@@ -109,7 +110,7 @@ Toolbar::Pimpl::~Pimpl()
 }
 
 
-void Toolbar::Pimpl::update()
+void XFormsToolbar::update()
 {
 	ToolbarList::const_iterator p = toollist_.begin();
 	ToolbarList::const_iterator end = toollist_.end();
@@ -156,14 +157,14 @@ void C_layoutSelectedCB(FL_OBJECT * ob, long)
 {
 	if (!ob || !ob->u_vdata)
 		return;
-	Toolbar::Pimpl * ptr = static_cast<Toolbar::Pimpl *>(ob->u_vdata);
+	XFormsToolbar * ptr = static_cast<XFormsToolbar *>(ob->u_vdata);
 	ptr->layoutSelected();
 }
 
 } // namespace anon
 
 
-void Toolbar::Pimpl::layoutSelected()
+void XFormsToolbar::layoutSelected()
 {
 	if (!combox_)
 		return;
@@ -180,12 +181,12 @@ void Toolbar::Pimpl::layoutSelected()
 			return;
 		}
 	}
-	lyxerr << "ERROR (Toolbar::Pimpl::layoutSelected): layout not found!"
+	lyxerr << "ERROR (XFormsToolbar::layoutSelected): layout not found!"
 	       << endl;
 }
 
 
-void Toolbar::Pimpl::setLayout(string const & layout)
+void XFormsToolbar::setLayout(string const & layout)
 {
 	if (!combox_)
 		return;
@@ -204,32 +205,29 @@ void Toolbar::Pimpl::setLayout(string const & layout)
 }
 
 
-void Toolbar::Pimpl::updateLayoutList(bool force)
+void XFormsToolbar::updateLayoutList()
 {
 	if (!combox_)
 		return;
 
-	// If textclass is different, we need to update the list
-	if (fl_get_combox_maxitems(combox_) == 0 || force) {
-		fl_clear_combox(combox_);
-		LyXTextClass const & tc =
-			owner_->buffer()->params.getLyXTextClass();
-		LyXTextClass::const_iterator end = tc.end();
-		for (LyXTextClass::const_iterator cit = tc.begin();
-		     cit != end; ++cit) {
-			// ignore obsolete entries
-			if ((*cit)->obsoleted_by().empty()) {
-				string const & name = _((*cit)->name());
-				fl_addto_combox(combox_, name.c_str());
-			}
+	fl_clear_combox(combox_);
+	LyXTextClass const & tc = owner_->buffer()->params.getLyXTextClass();
+	LyXTextClass::const_iterator end = tc.end();
+	for (LyXTextClass::const_iterator cit = tc.begin();
+	     cit != end; ++cit) {
+		// ignore obsolete entries
+		if ((*cit)->obsoleted_by().empty()) {
+			string const & name = _((*cit)->name());
+			fl_addto_combox(combox_, name.c_str());
 		}
 	}
+
 	// we need to do this.
 	fl_redraw_object(combox_);
 }
 
 
-void Toolbar::Pimpl::clearLayoutList()
+void XFormsToolbar::clearLayoutList()
 {
 	if (!combox_)
 		return;
@@ -239,7 +237,7 @@ void Toolbar::Pimpl::clearLayoutList()
 }
 
 
-void Toolbar::Pimpl::openLayoutList()
+void XFormsToolbar::openLayoutList()
 {
 	if (!combox_)
 		return;
@@ -270,7 +268,7 @@ void C_Toolbar_ToolbarCB(FL_OBJECT * ob, long data)
 } // namespace anon
 
 
-void Toolbar::Pimpl::add(ToolbarBackend::Toolbar const & tb)
+void XFormsToolbar::add(ToolbarBackend::Toolbar const & tb)
 {
 	// we can only handle one toolbar
 	if (!toollist_.empty())
@@ -283,7 +281,7 @@ void Toolbar::Pimpl::add(ToolbarBackend::Toolbar const & tb)
 }
 
 
-void Toolbar::Pimpl::add(int action, string const & tooltip)
+void XFormsToolbar::add(int action, string const & tooltip)
 {
 	toolbarItem item;
 	item.action = action;
