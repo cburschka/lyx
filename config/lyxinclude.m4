@@ -206,14 +206,13 @@ if test x$GXX = xyes; then
     CXXFLAGS="$ac_save_CXXFLAGS"
   else
     case $gxx_version in
-      2.95.1)  CXXFLAGS="$lyx_opt -fpermissive -fno-rtti -fno-exceptions";;
-      2.95.2)  CXXFLAGS="$lyx_opt -fno-rtti -fno-exceptions";;
-      2.95.*)  CXXFLAGS="$lyx_opt -fno-exceptions";;
-      2.96*)  CXXFLAGS="$lyx_opt -fno-exceptions";;
-      3.0*)    CXXFLAGS="$lyx_opt -fno-rtti -fno-exceptions";;
-      3.1*)    CXXFLAGS="$lyx_opt -fno-rtti -fno-exceptions";;
-      *2.91.*) CXXFLAGS="$lyx_opt -fno-rtti -fno-exceptions";;
-      *)       CXXFLAGS="$lyx_opt -fno-rtti -fno-exceptions";;
+      2.95.1)  CXXFLAGS="$lyx_opt -fpermissive";;
+      2.95.2)  CXXFLAGS="$lyx_opt";;
+      2.95.*)  CXXFLAGS="$lyx_opt";;
+      2.96*)  CXXFLAGS="$lyx_opt";;
+      3.0*)    CXXFLAGS="$lyx_opt";;
+      3.1*)    CXXFLAGS="$lyx_opt";;
+      *)       CXXFLAGS="$lyx_opt";;
     esac
     if test x$enable_debug = xyes ; then
 	CXXFLAGS="-g $CXXFLAGS"
@@ -229,8 +228,6 @@ if test x$GXX = xyes; then
       case $gxx_version in
 	  2.95.*) ;;
 	  2.96*) ;;
-	  2.97*) ;;
-	  *2.91*) ;;
 	  *) ;;
       esac
     fi
