@@ -1,5 +1,9 @@
 2003-03-28  John Levon  <levon@movementarian.org>
 
+	* insetfloat.C: reset label on INSET_MODIFY
+
+2003-03-28  John Levon  <levon@movementarian.org>
+
 	* insetgraphicsParams.C: read subcaptionText as a whole line
 	(bug 656)
 
