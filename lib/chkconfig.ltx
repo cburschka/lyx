@@ -59,9 +59,9 @@
 %   the variable chk_<name>.  
 %%%
 \newcommand{\prefix}{+} % the character used by grep to filter 'good' output
-\newcommand{\AddLayout}[3][\default]{
+\newcommand{\AddLayout}[4][\default]{
   \def\default{#2}
-  \immediate\write\layouts{"#2"   "#1"   "#3"}}
+  \immediate\write\layouts{"#2"   "#1"   "#3"   "#4"}}
 \newcommand{\AddVariable}[2]{
   \immediate\write\sed{s!@chk_#1@!#2!g}
   \immediate\write\vars{chk_#1='#2'}}
@@ -107,15 +107,17 @@
 }
 \newcommand{\DeclareLaTeXClass}[2][\default]{
   \TestItem[#1]{\layoutname}{document class}{cls}
-           {\AddLayout[\firstelement]{\layoutname}{#2}}{}
+           {\AddLayout[\firstelement]{\layoutname}{#2}{true}}
+           {\AddLayout[\firstelement]{\layoutname}{#2}{false}}
   \expandafter\endinput
 }
 \newcommand{\DeclareLinuxDocClass}[2][\default]{
   \message{^^J\prefix checking for linuxdoc class \layoutname... }
   \@ifundefined{haslinuxdoc}
-    {\message{no^^J}}
+    {\message{no^^J}  
+     \AddLayout[#1]{\layoutname}{#2}{false}}
     {\message{yes^^J}
-     \AddLayout[#1]{\layoutname}{#2}}
+     \AddLayout[#1]{\layoutname}{#2}{true}}
   \expandafter\endinput
 }
 % Only for compatibility. Will be removed later.
@@ -124,9 +126,10 @@
 \newcommand{\DeclareDocBookClass}[2][\default]{
   \message{^^J\prefix checking for docbook\space\space class \layoutname... }
   \@ifundefined{hasdocbook}
-    {\message{no^^J}}
+    {\message{no^^J}
+     \AddLayout[#1]{\layoutname}{#2}{false}}
     {\message{yes^^J}
-     \AddLayout[#1]{\layoutname}{#2}}
+     \AddLayout[#1]{\layoutname}{#2}{true}}
   \expandafter\endinput
 }
 

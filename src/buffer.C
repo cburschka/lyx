@@ -650,6 +650,19 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 #endif
 			params.textclass = 0;
 		}
+		if (!params.getLyXTextClass().isTeXClassAvailable()) {
+#if USE_BOOST_FORMAT
+			Alert::alert(_("Textclass error"),
+				boost::io::str(boost::format(_("The document uses a missing TeX class \"%1$s\".")) % lex.getString()),
+				_("LyX will not be able to produce output."));
+#else
+			Alert::alert(
+				_("Textclass error"),
+				_("The document uses a missing TeX class ")
+				+ lex.getString(),
+				_("LyX will not be able to produce output."));
+#endif
+		}
 	} else if (token == "\\options") {
 		lex.eatLine();
 		params.options = lex.getString();

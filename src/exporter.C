@@ -169,7 +169,8 @@ string const Exporter::BufferFormat(Buffer const * buffer)
 vector<string> const Exporter::Backends(Buffer const * buffer)
 {
 	vector<string> v;
-	v.push_back(BufferFormat(buffer));
+	if (buffer->params.getLyXTextClass().isTeXClassAvailable())
+		v.push_back(BufferFormat(buffer));
 	v.push_back("text");
 	return v;
 }

@@ -145,7 +145,11 @@ void FormDocument::build()
 	fl_end_form();
 	for (LyXTextClassList::const_iterator cit = textclasslist.begin();
 	     cit != textclasslist.end(); ++cit) {
-		combo_doc_class->addto(cit->description());
+		if (cit->isTeXClassAvailable()) {
+			combo_doc_class->addto(cit->description());
+		} else {
+			combo_doc_class->addto("Unavailable: " + cit->description());
+		}
 	}
 
 	fl_addto_choice(class_->choice_doc_spacing,
@@ -852,7 +856,7 @@ void FormDocument::UpdateClassParams(BufferParams const & params)
 
 	LyXTextClass const & tclass = textclasslist[params.textclass];
 
-	combo_doc_class->select(tclass.description());
+	combo_doc_class->select(params.textclass + 1);
 	fl_clear_choice(class_->choice_doc_fontsize);
 	fl_addto_choice(class_->choice_doc_fontsize, "default");
 	fl_addto_choice(class_->choice_doc_fontsize,

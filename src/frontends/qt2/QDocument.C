@@ -115,7 +115,12 @@ void QDocument::build_dialog()
 	// layout
 	for (LyXTextClassList::const_iterator cit = textclasslist.begin();
 	     cit != textclasslist.end(); ++cit) {
-		dialog_->layoutModule->classCO->insertItem(toqstr(cit->description()));
+		if (cit->isTeXClassAvailable()) {
+			dialog_->layoutModule->classCO->insertItem(toqstr(cit->description()));
+                } else {
+			dialog_->layoutModule->classCO->insertItem(toqstr("Unavailable: " +
+									  cit->description()));
+		}
 	}
 
 	for (int n = 0; tex_fonts[n][0]; ++n) {
@@ -467,13 +472,7 @@ void QDocument::update_contents()
 
 
 	// layout
-	for (int n = 0; n<dialog_->layoutModule->classCO->count(); ++n) {
-		if (dialog_->layoutModule->classCO->text(n) ==
-		    toqstr(controller().textClass().description())) {
-			dialog_->layoutModule->classCO->setCurrentItem(n);
-			break;
-		}
-	}
+	dialog_->layoutModule->classCO->setCurrentItem(params.textclass);
 
 	dialog_->updateFontsize(controller().textClass().opt_fontsize(),
 				params.fontsize);

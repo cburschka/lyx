@@ -69,7 +69,9 @@ LyXTextClassList::operator[](textclass_type textclass) const
 class less_textclass_desc {
 public:
 	int operator()(LyXTextClass const & tc1, LyXTextClass const & tc2) {
-		return tc1.description() < tc2.description();
+		return (tc1.isTeXClassAvailable() && !tc2.isTeXClassAvailable()) ||
+		       (tc1.isTeXClassAvailable() == tc2.isTeXClassAvailable() &&
+		        tc1.description() < tc2.description());
 	}
 };
 
@@ -130,13 +132,17 @@ bool LyXTextClassList::Read ()
 				if (lex.next()) {
 					string const desc = lex.getString();
 					lyxerr[Debug::TCLASS] << "Desc: " << desc << endl;
-					// This code is run when we have
-					// fname, clname and desc
-					LyXTextClass tmpl(fname, clname, desc);
-					if (lyxerr.debugging(Debug::TCLASS)) {
-						tmpl.load();
+					if (lex.next()) {
+						bool avail = lex.getBool();
+						lyxerr[Debug::TCLASS] << "Avail: " << avail << endl;
+						// This code is run when we have
+						// fname, clname, desc, and avail
+						LyXTextClass tmpl(fname, clname, desc, avail);
+						if (lyxerr.debugging(Debug::TCLASS)) {
+							tmpl.load();
+						}
+						classlist_.push_back(tmpl);
 					}
-					classlist_.push_back(tmpl);
 				}
 			}
 		}

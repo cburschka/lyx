@@ -49,9 +49,9 @@ struct compare_name {
 
 
 LyXTextClass::LyXTextClass(string const & fn, string const & cln,
-			   string const & desc)
+			   string const & desc, bool texClassAvail )
 	: name_(fn), latexname_(cln), description_(desc),
-	  floatlist_(new FloatList), ctrs_(new Counters)
+	  floatlist_(new FloatList), ctrs_(new Counters), texClassAvail_(texClassAvail)
 {
 	outputType_ = LATEX;
 	columns_ = 1;
@@ -67,6 +67,11 @@ LyXTextClass::LyXTextClass(string const & fn, string const & cln,
 	titletype_ = TITLE_COMMAND_AFTER;
 	titlename_ = "maketitle";
 	loaded = false;
+}
+
+
+bool LyXTextClass::isTeXClassAvailable() const {
+	return texClassAvail_;
 }
 
 
