@@ -1241,9 +1241,8 @@ InsetOld::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		if (!isInInset() && bv->theLockingInset())
 			break;
 		if (cmd.button() == mouse_button::button1) {
-			if (!isInInset()) {
+			if (!isInInset())
 				bv->screen().toggleSelection(this, bv);
-			}
 			cursorHome();
 			selection.cursor = cursor;
 			cursorEnd();

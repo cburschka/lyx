@@ -2497,13 +2497,6 @@ void InsetTabular::selectSelectedWord(BufferView * bv)
 }
 
 
-void InsetTabular::toggleSelection(BufferView * bv, bool kill_selection)
-{
-	if (the_locking_inset)
-		the_locking_inset->toggleSelection(bv, kill_selection);
-}
-
-
 void InsetTabular::markErased()
 {
 	for (int cell = 0; cell < tabular.getNumberOfCells(); ++cell)

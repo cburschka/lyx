@@ -820,8 +820,6 @@ void BufferView::Pimpl::insetUnlock()
 
 void BufferView::Pimpl::toggleSelection(bool b)
 {
-	if (bv_->theLockingInset())
-		bv_->theLockingInset()->toggleSelection(bv_, b);
 	screen().toggleSelection(bv_->text, bv_, b);
 }
 

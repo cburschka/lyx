@@ -197,8 +197,6 @@ public:
 	selectNextWordToSpellcheck(BufferView *, float & value) const;
 	///
 	void selectSelectedWord(BufferView *);
-	///
-	void toggleSelection(BufferView *, bool kill_selection);
 
 	/// mark as erased for change tracking
 	void markErased() { clear(true); };

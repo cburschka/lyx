@@ -2130,30 +2130,6 @@ void InsetText::selectSelectedWord(BufferView * bv)
 }
 
 
-void InsetText::toggleSelection(BufferView * bv, bool kill_selection)
-{
-	if (the_locking_inset)
-		the_locking_inset->toggleSelection(bv, kill_selection);
-
-	int x = top_x + TEXT_TO_INSET_OFFSET;
-
-	RowList::iterator rit = text_.rows().begin();
-	RowList::iterator end = text_.rows().end();
-	int y_offset = top_baseline - rit->ascent_of_text();
-	int y = y_offset;
-	while (rit != end && y + rit->height() <= 0) {
-		y += rit->height();
-		++rit;
-	}
-	if (y_offset < 0)
-		y_offset = y;
-
-	if (need_update & SELECTION)
-		need_update = NONE;
-	bv->screen().toggleSelection(&text_, bv, kill_selection, y_offset, x);
-}
-
-
 bool InsetText::nextChange(BufferView * bv, lyx::pos_type & length)
 {
 	if (the_locking_inset) {

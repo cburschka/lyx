@@ -152,10 +152,6 @@ public:
 	void selectSelectedWord(BufferView * bv) {
 		inset.selectSelectedWord(bv);
 	}
-	///
-	void toggleSelection(BufferView * bv, bool kill_selection) {
-		inset.toggleSelection(bv, kill_selection);
-	}
 
 	void markErased();
 
