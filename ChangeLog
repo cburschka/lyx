@@ -1,5 +1,15 @@
 1999-10-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* po/*.po: merged with lyx.pot becuase of make distcheck
+	
+	* lib/Makefile.am (dist-hook): added dist-hook so that
+	documentation files will be included when doing a make
+	dist/distdir/distcheck. Requires cvs export -r HEAD lyxdoc to run.
+	(pkgdata_SCRIPTS): added configure.cmd for now, we can use som
+	conditional later.
+	more: tried to make install do the right thing, exclude CVS dirs
+	etc.
+
 	* src/LaTeXLog.C (ShowLatexLog): reordered som statements so that
 	Path would fit in more nicely.
 
