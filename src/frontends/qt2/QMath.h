@@ -40,6 +40,9 @@ public:
 	/// insert a matrix
 	void insertMatrix();
  
+	/// insert delim
+	void insertDelim(string const & str);
+ 
 	/// add a subscript
 	void subscript();
 

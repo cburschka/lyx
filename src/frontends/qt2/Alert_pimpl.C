@@ -48,7 +48,7 @@ pair<bool, string> const askForText_pimpl(string const & msg, string const & dfl
 	string title = _("LyX: ");
 	title += msg;
 
-	QAskForTextDialog d(0, msg.c_str(), true);
+	QAskForTextDialog d(0, title.c_str(), true);
 	// less than ideal !
 	d.askLA->setText((string("&") + msg).c_str());
 	d.askLE->setText(dflt.c_str());

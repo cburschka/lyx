@@ -88,6 +88,12 @@ void QMath::insertMatrix()
 }
 
  
+void QMath::insertDelim(string const & str)
+{
+	current_view->owner()->dispatch(FuncRequest(LFUN_MATH_DELIM, str));
+}
+
+ 
 void QMath::toggleDisplay()
 {
 	current_view->owner()->dispatch(FuncRequest(LFUN_MATH_DISPLAY));

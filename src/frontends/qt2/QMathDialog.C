@@ -17,6 +17,7 @@
 
 #include "ControlMath.h"
 #include "iconpalette.h"
+#include "QDelimiterDialog.h"
  
 #include <qapplication.h>
 #include <qwidgetstack.h>
@@ -190,6 +191,9 @@ void QMathDialog::fracClicked()
 
 void QMathDialog::delimiterClicked()
 {
+	// FIXME: leak 
+	QDelimiterDialog * d = new QDelimiterDialog(form_);
+	d->show();
 }
 
  

@@ -42,6 +42,7 @@ DIALOGSOURCES = \
 	QCharacter.C QCharacterDialog.C \
 	QCitation.h QCitationDialog.h \
 	QCitation.C QCitationDialog.C \
+	QDelimiterDialog.h QDelimiterDialog.C \
 	QError.h QErrorDialog.h \
 	QError.C QErrorDialog.C \
 	QERT.h QERTDialog.h \
@@ -95,6 +96,7 @@ MOCDIALOGS = \
 	QBibtexDialog_moc.C \
 	QCharacterDialog_moc.C \
 	QCitationDialog_moc.C \
+	QDelimiterDialog_moc.C \
 	QErrorDialog_moc.C \
 	QERTDialog_moc.C \
 	QExternalDialog_moc.C \
@@ -132,6 +134,8 @@ UIDIALOGS = \
 	QCharacterDialogBase.C \
 	QCitationDialogBase.h \
 	QCitationDialogBase.C \
+	QDelimiterDialogBase.h \
+	QDelimiterDialogBase.C \
 	QErrorDialogBase.C \
 	QErrorDialogBase.h \
 	QERTDialogBase.C \
@@ -186,6 +190,7 @@ UIMOCDIALOGS = \
 	QBibtexDialogBase_moc.C \
 	QCharacterDialogBase_moc.C \
 	QCitationDialogBase_moc.C \
+	QDelimiterDialogBase_moc.C \
 	QErrorDialogBase_moc.C \
 	QERTDialogBase_moc.C \
 	QExternalDialogBase_moc.C \
