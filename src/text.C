@@ -793,14 +793,20 @@ LyXText::rowBreakPoint(Row const & row) const
 
 		char const c = pit->getChar(i);
 
-		int thiswidth = singleWidth(pit, i, c);
+		int thiswidth;
 
 		// add the auto-hfill from label end to the body
 		if (body_pos && i == body_pos) {
-			thiswidth += font_metrics::width(layout->labelsep,
-				    getLabelFont(bv()->buffer(), pit));
+			thiswidth = font_metrics::width(layout->labelsep,
+				getLabelFont(bv()->buffer(), pit));
 			if (pit->isLineSeparator(i - 1))
 				thiswidth -= singleWidth(pit, i - 1);
+			int left_margin = labelEnd(row);
+			if (thiswidth + x < left_margin)
+				thiswidth = left_margin - x;
+			thiswidth += singleWidth(pit, i, c);
+		} else {
+			thiswidth = singleWidth(pit, i, c);
 		}
 
 		x += thiswidth;
@@ -918,6 +924,20 @@ int LyXText::fill(RowList::iterator row, int paper_width) const
 	}
 
 	int const fill = paper_width - w - rightMargin(*bv()->buffer(), *row);
+
+	// If this case happens, it means that our calculation
+	// of the widths of the chars when we do rowBreakPoint()
+	// went wrong for some reason. Typically in list bodies.
+	// Things just about hobble on anyway, though you'll end
+	// up with a "fill_separator" less than zero, which corresponds
+	// to inter-word spacing being too small. Hopefully this problem
+	// will die when the label hacks die.
+	if (lyxerr.debugging() && fill < 0) {
+		lyxerr[Debug::GUI] << "Eek, fill() was < 0: " << fill
+			<< " w " << w << " paper_width " << paper_width
+			<< " right margin " << rightMargin(*bv()->buffer(), *row) << endl;
+	}
+
 	return fill;
 }
 

@@ -1,5 +1,13 @@
 2003-04-11  John Levon  <levon@movementarian.org>
 
+	* text.C (rowBreakPoint): reintroduce the labelEnd
+	checks, code copied from the row fill stuff. Deep voodoo.
+
+	* text.C (fill): add a comment and debugging for the
+	next poor soul.
+
+2003-04-11  John Levon  <levon@movementarian.org>
+
 	* text.C: make sure fullrow insets get wrapped to the next line,
 	even when they're in a manual label
 
