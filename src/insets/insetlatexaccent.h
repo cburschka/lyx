@@ -27,7 +27,7 @@
   it also can handle other special characters (e.g. Hstroke)
   Initiated by Ivan Schreter, later modified by Lgb.
   */
-class InsetLatexAccent: public Inset {
+class InsetLatexAccent : public Inset {
 public:
 	///
 	InsetLatexAccent(); 
@@ -63,7 +63,7 @@ public:
 	///
 	bool DirectWrite() const;
 	///
-	InsetLatexAccent * Clone() const;
+	Inset * Clone() const;
 	///
 	Inset::Code LyxCode()const;
 	///

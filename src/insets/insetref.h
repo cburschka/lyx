@@ -41,7 +41,7 @@ public:
 	///
 	~InsetRef();
         ///
-        InsetRef * Clone() const {
+        Inset * Clone() const {
 		return new InsetRef (getCommand(), master);
 	}
 	///

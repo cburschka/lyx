@@ -55,7 +55,7 @@ public:
 	///
 	virtual int DocBook(string & file);
 	///
-	InsetCommand * Clone() const;
+	Inset * Clone() const;
 	///  
 	Inset::Code LyxCode() const
 	{

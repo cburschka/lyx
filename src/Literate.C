@@ -13,6 +13,7 @@
 #ifdef __GNUG__
 #pragma implementation
 #endif
+#include <fstream>
 
 #include "support/filetools.h"
 #include "LaTeX.h"
@@ -26,6 +27,8 @@
 #include "bufferlist.h"
 #include "minibuffer.h"
 #include "gettext.h"
+
+using std::ifstream;
 
 extern BufferList bufferlist;
 

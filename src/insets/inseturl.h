@@ -23,7 +23,7 @@ struct LaTeXFeatures;
 
 /** The url inset  
  */
-class InsetUrl: public InsetCommand {
+class InsetUrl : public InsetCommand {
 public:
         ///
         enum Url_Flags {
@@ -34,7 +34,7 @@ public:
 	};
 	
 	///
-	InsetUrl(): InsetCommand("url"), fd_form_url(0) {
+	InsetUrl() : InsetCommand("url"), fd_form_url(0) {
 		flag = InsetUrl::URL;
 	}
 	///
@@ -46,7 +46,7 @@ public:
 	///
 	~InsetUrl();
         ///
-        InsetUrl * Clone() const { return new InsetUrl(getCommand()); }
+        Inset * Clone() const { return new InsetUrl(getCommand()); }
 	///
 	Inset::Code LyxCode() const { return Inset::URL_CODE; }
 	///

@@ -4,8 +4,8 @@
   (C)1996 by Ivan Schreter
   */
 
-#ifndef _FIGINSET_H
-#define _FIGINSET_H
+#ifndef FIGINSET_H
+#define FIGINSET_H
 
 #include "form1.h"
 #include "buffer.h"
@@ -24,30 +24,30 @@ public:
 	///
 	~InsetFig();
 	///
-	int Ascent(LyXFont const &font) const;
+	int Ascent(LyXFont const & font) const;
 	///
-	int Descent(LyXFont const &font) const;
+	int Descent(LyXFont const & font) const;
 	///
-	int Width(LyXFont const &font) const;
+	int Width(LyXFont const & font) const;
 	///
-	void Draw(LyXFont font, LyXScreen &scr, int baseline, float &x);
+	void Draw(LyXFont font, LyXScreen & scr, int baseline, float & x);
 	///
-	void Write(FILE *file);
+	void Write(FILE * file);
 	///
-	void Read(LyXLex &lex);
+	void Read(LyXLex & lex);
 	///
-	int Latex(FILE *file, signed char fragile);
+	int Latex(FILE * file, signed char fragile);
 	///
-	int Latex(string &file, signed char fragile);
+	int Latex(string & file, signed char fragile);
 	///
-	int Linuxdoc(string &file);
+	int Linuxdoc(string & file);
 	///
-	int DocBook(string &file);
+	int DocBook(string & file);
 	/// Updates needed features for this inset.
-	void Validate(LaTeXFeatures &features) const;
+	void Validate(LaTeXFeatures & features) const;
 
 	/// what appears in the minibuffer when opening
-	char const* EditMessage() {return "Opened figure";}
+	char const * EditMessage() { return "Opened figure"; }
 	///
 	void Edit(int, int);
 	///
@@ -57,16 +57,16 @@ public:
 	///
 	Inset::Code LyxCode() const;
 	///
-	InsetFig * Clone() const;
+	Inset * Clone() const;
 	///
 	void CallbackFig(long arg);
 	///
-	void Preview(char const *p);
+	void Preview(char const * p);
 	/// browse for file
 	void BrowseFile();
 
 	/// form for user input
-	FD_Figure *form;
+	FD_Figure * form;
 	/// width and height in pixels on screen
 	int wid, hgh;
 	/// width and height in postscript units (1/72 inch)
@@ -124,14 +124,14 @@ public:
 	int flags;
 	bool subfigure : 1;
 	/// figure reference
-	Figref *figure;
+	Figref * figure;
 	/// temporary flags
 	int pflags;
 	bool psubfigure : 1;
 private:
 
 	///
-	Buffer *owner;
+	Buffer * owner;
 	/// restore values on the form
 	void RestoreForm();
 	/// recompute screen params
@@ -177,9 +177,9 @@ struct figdata {
 ///
 struct Figref {
 	/// figure data (image)
-	figdata *data;
+	figdata * data;
 	/// inset of this figure
-	InsetFig *inset;
+	InsetFig * inset;
 };
 
 #endif

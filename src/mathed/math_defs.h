@@ -328,7 +328,7 @@ class MathParInset: public MathedInset  {
     ///
     virtual ~MathParInset();
     ///
-    virtual MathParInset * Clone();
+    virtual MathedInset * Clone();
 
     /// Draw the object on a drawable
     virtual void Draw(int x, int baseline);
@@ -482,7 +482,7 @@ class MathMatrixInset: public MathParInset {
     ///
     MathMatrixInset(MathMatrixInset *);
     ///
-    MathMatrixInset * Clone();
+    MathedInset * Clone();
     ///
     virtual ~MathMatrixInset();
     ///

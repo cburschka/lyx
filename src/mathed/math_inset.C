@@ -52,8 +52,8 @@ MathedInset::MathedInset(MathedInset * inset)
 }
 
 
-MathFuncInset::MathFuncInset(char const * nm, short ot, short st):
-    MathedInset("", ot, st)
+MathFuncInset::MathFuncInset(char const * nm, short ot, short st)
+	: MathedInset("", ot, st)
 {
    ln = 0;
    lims = (GetType() == LM_OT_FUNCLIM);
@@ -66,31 +66,26 @@ MathFuncInset::MathFuncInset(char const * nm, short ot, short st):
     }
 }
 
-MathFuncInset * MathFuncInset::Clone()
+
+MathedInset * MathFuncInset::Clone()
 {
-#if 0
-   MathedInset *l = new MathFuncInset(name, GetType(), GetStyle());
-   return l;
-#endif
    return new MathFuncInset(name, GetType(), GetStyle());
 }
 
-MathSpaceInset::MathSpaceInset(int sp, short ot, short st):
-    MathedInset("", ot, st), space(sp)
-{
-}
 
-MathSpaceInset * MathSpaceInset::Clone()
+MathSpaceInset::MathSpaceInset(int sp, short ot, short st)
+	: MathedInset("", ot, st), space(sp)
+{}
+
+
+MathedInset * MathSpaceInset::Clone()
 {
-#if 0
-   MathedInset *l = new MathSpaceInset(space, GetType(), GetStyle());
-   return l;
-#endif
    return new MathSpaceInset(space, GetType(), GetStyle());
 }
 
-MathParInset::MathParInset(short st, char const * nm, short ot):
-   MathedInset(nm, ot, st)
+
+MathParInset::MathParInset(short st, char const * nm, short ot)
+	: MathedInset(nm, ot, st)
 {
     array = 0;
     ascent = 8;
@@ -101,7 +96,9 @@ MathParInset::MathParInset(short st, char const * nm, short ot):
       flag |= LMPF_SCRIPT;
 }
 
-MathParInset::MathParInset(MathParInset * p): MathedInset(p)
+
+MathParInset::MathParInset(MathParInset * p)
+	: MathedInset(p)
 {
     flag = p->flag;
     p->setArgumentIdx(0);
@@ -120,12 +117,8 @@ MathParInset::~MathParInset()
 }
 
 
-MathParInset * MathParInset::Clone()
+MathedInset * MathParInset::Clone()
 {
-#if 0
-   MathParInset * p = new MathParInset(this);
-   return p;
-#endif
    return new MathParInset(this);
 }
 
@@ -148,12 +141,11 @@ void MathParInset::SetData(LyxArrayBase * a)
 }
 
 
-MathSqrtInset::MathSqrtInset(short st): MathParInset(st, "sqrt", LM_OT_SQRT)
-{    
-}
+MathSqrtInset::MathSqrtInset(short st)
+	: MathParInset(st, "sqrt", LM_OT_SQRT) {}
 
 
-MathSqrtInset * MathSqrtInset::Clone()
+MathedInset * MathSqrtInset::Clone()
 {   
    MathSqrtInset * p = new MathSqrtInset(GetStyle());
    MathedIter it(array);
@@ -164,16 +156,18 @@ MathSqrtInset * MathSqrtInset::Clone()
 
 bool MathSqrtInset::Inside(int x, int y) 
 {
-    return (x>= xo-hmax && x<= xo+width-hmax && y<= yo+descent && y>= yo-ascent);
+	return x >= xo - hmax
+		&& x <= xo + width - hmax
+		&& y <= yo + descent
+		&& y >= yo - ascent;
 }
 
 
-MathDelimInset::MathDelimInset(int l, int r, short st): 
-  MathParInset(st, "", LM_OT_DELIM), left(l), right(r)
-{
-}
+MathDelimInset::MathDelimInset(int l, int r, short st)
+	: MathParInset(st, "", LM_OT_DELIM), left(l), right(r) {}
 
-MathDelimInset * MathDelimInset::Clone()
+
+MathedInset * MathDelimInset::Clone()
 {   
    MathDelimInset * p = new MathDelimInset(left, right, GetStyle());
    MathedIter it(array);
@@ -182,13 +176,14 @@ MathDelimInset * MathDelimInset::Clone()
 }
 
 
-MathDecorationInset::MathDecorationInset(int d, short st): 
-  MathParInset(st, "", LM_OT_DECO), deco(d)
+MathDecorationInset::MathDecorationInset(int d, short st)
+	: MathParInset(st, "", LM_OT_DECO), deco(d)
 {
    upper = (deco!= LM_underline && deco!= LM_underbrace);
 }
 
-MathDecorationInset * MathDecorationInset::Clone()
+
+MathedInset * MathDecorationInset::Clone()
 {   
    MathDecorationInset * p = new MathDecorationInset(deco, GetStyle());
    MathedIter it(array);
@@ -196,7 +191,9 @@ MathDecorationInset * MathDecorationInset::Clone()
    return p;
 }
 
-MathFracInset::MathFracInset(short ot): MathParInset(LM_ST_TEXT, "frac", ot)
+
+MathFracInset::MathFracInset(short ot)
+	: MathParInset(LM_ST_TEXT, "frac", ot)
 {
 	
     den = new MathParInset(LM_ST_TEXT); // this leaks
@@ -208,12 +205,14 @@ MathFracInset::MathFracInset(short ot): MathParInset(LM_ST_TEXT, "frac", ot)
     }
 }
 
+
 MathFracInset::~MathFracInset()
 {
     delete den;
 }
 
-MathFracInset * MathFracInset::Clone()
+
+MathedInset * MathFracInset::Clone()
 {   
     MathFracInset * p = new MathFracInset(GetType());
     MathedIter itn(array);
@@ -223,6 +222,7 @@ MathFracInset * MathFracInset::Clone()
     p->dh = dh;
    return p;
 }
+
 
 bool MathFracInset::setArgumentIdx(int i)
 {
@@ -238,14 +238,18 @@ void MathFracInset::SetStyle(short st)
 {
     MathParInset::SetStyle(st);
     dh = 0;
-    den->SetStyle((size == LM_ST_DISPLAY) ? (short)LM_ST_TEXT: size);
+    den->SetStyle((size == LM_ST_DISPLAY) ?
+		  static_cast<short>(LM_ST_TEXT)
+		  : size);
 }
+
 
 void MathFracInset::SetData(LyxArrayBase * n, LyxArrayBase * d)
 {
    den->SetData(d);
    MathParInset::SetData(n);
 }
+
 
 void MathFracInset::SetData(LyxArrayBase * d)
 {
@@ -256,6 +260,7 @@ void MathFracInset::SetData(LyxArrayBase * d)
    }
 }
 
+
 void MathFracInset::GetXY(int & x, int & y) const
 {  
    if (idx == 0)
@@ -263,7 +268,8 @@ void MathFracInset::GetXY(int & x, int & y) const
    else
      den->GetXY(x, y);
 }
-   
+
+
 LyxArrayBase * MathFracInset::GetData()
 {
    if (idx == 0)
@@ -275,10 +281,11 @@ LyxArrayBase * MathFracInset::GetData()
 
 bool MathFracInset::Inside(int x, int y) 
 {
-    int xx = xo - (width-w0)/2;
+    int xx = xo - (width - w0) / 2;
     
-    return (x>= xx && x<= xx+width && y<= yo+descent && y>= yo-ascent);
+    return x >= xx && x <= xx + width && y <= yo + descent && y >= yo - ascent;
 }
+
 
 void MathFracInset::SetFocus(int /*x*/, int y)
 {  
@@ -287,49 +294,49 @@ void MathFracInset::SetFocus(int /*x*/, int y)
 }
 
 
-MathMatrixInset::MathMatrixInset(int m, int n, short st): 
-   MathParInset(st, "array", LM_OT_MATRIX), nc(m)
+MathMatrixInset::MathMatrixInset(int m, int n, short st)
+	: MathParInset(st, "array", LM_OT_MATRIX), nc(m)
 {
     ws = new int[nc]; 
     v_align = 0;
-    h_align = new char[nc+1];
-    for (int i = 0; i < nc; i++) h_align[i] = 'c'; 
+    h_align = new char[nc + 1];
+    for (int i = 0; i < nc; ++i) h_align[i] = 'c'; 
     h_align[nc] = '\0';
     nr = 0;
     row = 0;
     flag = 15;
-    if (n>0) {
+    if (n > 0) {
 	    row = new MathedRowSt(nc+1);
 	MathedXIter it(this);
-	for (int j = 1; j < n; j++) it.addRow();
+	for (int j = 1; j < n; ++j) it.addRow();
 	nr = n;
-	if (nr == 1 && nc>1) {
-	    for (int j = 0; j < nc - 1; j++) 
+	if (nr == 1 && nc > 1) {
+	    for (int j = 0; j < nc - 1; ++j) 
 	      it.Insert('T', LM_TC_TAB);
 	}
-    } else if (n<0) {
-	    row = new MathedRowSt(nc+1);
+    } else if (n < 0) {
+	    row = new MathedRowSt(nc + 1);
 	nr = 1;
     }
 }
 
 
-MathMatrixInset::MathMatrixInset(MathMatrixInset * mt): 
-   MathParInset(mt->GetStyle(), mt->GetName(), mt->GetType())
+MathMatrixInset::MathMatrixInset(MathMatrixInset * mt)
+	: MathParInset(mt->GetStyle(), mt->GetName(), mt->GetType())
 {
-    nr = 0;
+	nr = 0;
     nc = mt->nc;
     ws = new int[nc];
-    h_align = new char[nc+1];
+    h_align = new char[nc + 1];
     strcpy(h_align, mt->GetAlign(&v_align));
-    MathedIter it;   
+    MathedIter it;
     it.SetData(mt->GetData());
     array = it.Copy();
     if (mt->row != 0) {
-	MathedRowSt *r, *ro= 0, *mrow = mt->row;
-	mrow = mt->row;
+	MathedRowSt * r, * ro= 0, * mrow = mt->row;
+	//mrow = mt->row; // This must be redundant...
 	while (mrow) {
-	    r = new MathedRowSt(nc+1);
+	    r = new MathedRowSt(nc + 1);
 	    r->numbered = mrow->numbered;
 	    if (mrow->label) 
 	      r->label = strnew(mrow->label);
@@ -339,7 +346,7 @@ MathMatrixInset::MathMatrixInset(MathMatrixInset * mt):
 	      ro->next = r;
 	    mrow = mrow->next;
 	    ro = r;
-	    nr++;
+	    ++nr;
 	} 
     } else         
       row = 0;
@@ -359,13 +366,14 @@ MathMatrixInset::~MathMatrixInset()
     }
 }
 
-MathMatrixInset * MathMatrixInset::Clone()
-{   
-    MathMatrixInset * mt = new MathMatrixInset(this);
-    return mt;
+
+MathedInset * MathMatrixInset::Clone()
+{
+    return new MathMatrixInset(this);
 }
 
-void MathMatrixInset::SetAlign(char vv, char const* hh)
+
+void MathMatrixInset::SetAlign(char vv, char const * hh)
 {
    v_align = vv;
    strncpy(h_align, hh, nc);
@@ -377,29 +385,29 @@ void MathMatrixInset::SetData(LyxArrayBase * a)
 {
     if (!a) return;
     MathedIter it(a);
-    int nn = nc-1;
+    int nn = nc - 1;
     nr = 1;
     // count tabs per row
     while (it.OK()) {
 	if (it.IsTab()) {
-	    if (nn<0) { 
+	    if (nn < 0) { 
 		it.Delete();
 		continue;
 	    } else {
 //	      it.Next();
-		nn--;
+		--nn;
 	    }
 	}
 	if (it.IsCR()) {
-	    while (nn>0) {
+	    while (nn > 0) {
 		it.Insert(' ', LM_TC_TAB);
-		nn--;
+		--nn;
 	    }
-	    nn = nc-1;
-	    nr++;
+	    nn = nc - 1;
+	    ++nr;
 	}
 	it.Next();
-    }  
+    }
     it.Reset();
 
     // Automatically inserts tabs around bops
@@ -413,10 +421,11 @@ void MathMatrixInset::Draw(int x, int baseline)
     MathParInset::Draw(x, baseline);
 }                
 
+
 void MathMatrixInset::Metrics()
 {
-    int i, /*cy,*/ hl, h= 0;
-    MathedRowSt *cprow= 0, *cxrow;
+    int i, hl, h= 0;
+    MathedRowSt * cprow= 0, * cxrow;
 
     if (!row) {
 //	lyxerr << " MIDA ";
@@ -427,14 +436,14 @@ void MathMatrixInset::Metrics()
     // Clean the arrays      
     cxrow = row;
     while (cxrow) {   
-	for (i= 0; i<= nc; i++) cxrow->w[i] = 0;
+	for (i = 0; i <= nc; ++i) cxrow->w[i] = 0;
 	cxrow = cxrow->next;
     }
     
     // Basic metrics
     MathParInset::Metrics();
 	    
-    if (nc<= 1 && !row->next) {
+    if (nc <= 1 && !row->next) {
 	row->asc = ascent;
 	row->desc = descent;
     }
@@ -442,7 +451,7 @@ void MathMatrixInset::Metrics()
     // Vertical positions of each row
     cxrow = row;     
     while (cxrow) {
-	for (i= 0; i<nc; i++) {
+	for (i = 0; i < nc; ++i) {
 	    if (cxrow == row || ws[i]<cxrow->w[i]) ws[i]= cxrow->w[i];
 	    if (cxrow->next == 0 && ws[i] == 0) ws[i] = df_width;
 	}
@@ -461,7 +470,7 @@ void MathMatrixInset::Metrics()
     switch (v_align) {
      case 't': ascent = row->y; break;
      case 'b': ascent = h - hl; break;
-     default:  ascent = (row->next) ? h/2: h - hl; break;
+     default:  ascent = (row->next) ? h / 2: h - hl; break;
     }
     descent = h - ascent + 2;
     
@@ -470,10 +479,10 @@ void MathMatrixInset::Metrics()
     cxrow = row;
     width = MATH_COLSEP;
     while (cxrow) {   
-	int rg= MATH_COLSEP, ww, lf= 0, *w = cxrow->w;
-	for (i= 0; i<nc; i++) {
+	int rg = MATH_COLSEP, ww, lf = 0, * w = cxrow->w;
+	for (i = 0; i < nc; ++i) {
 	    bool isvoid = false;
-	    if (w[i]<= 0) {
+	    if (w[i] <= 0) {
 		w[i] = df_width;
 		isvoid = true;
 	    }
@@ -493,16 +502,17 @@ void MathMatrixInset::Metrics()
     }
 }
 
-MathAccentInset::MathAccentInset(byte cx, MathedTextCodes f, int cd, short st): 
-  MathedInset("", LM_OT_ACCENT, st), c(cx), fn(f), code(cd)
+
+MathAccentInset::MathAccentInset(byte cx, MathedTextCodes f, int cd, short st)
+	: MathedInset("", LM_OT_ACCENT, st), c(cx), fn(f), code(cd)
 {
     inset = 0;
 }
 
-MathAccentInset::MathAccentInset(MathedInset *ins, int cd, short st):
-  MathedInset("", LM_OT_ACCENT, st), c(0), fn(LM_TC_MIN), code(cd), inset(ins)
-{
-}
+
+MathAccentInset::MathAccentInset(MathedInset *ins, int cd, short st)
+	: MathedInset("", LM_OT_ACCENT, st),
+	  c(0), fn(LM_TC_MIN), code(cd), inset(ins) {}
 
 
 MathAccentInset::~MathAccentInset()
@@ -511,7 +521,8 @@ MathAccentInset::~MathAccentInset()
       delete inset;
 }
 
-MathAccentInset * MathAccentInset::Clone()
+
+MathedInset * MathAccentInset::Clone()
 {   
     MathAccentInset * p;
     
@@ -524,32 +535,24 @@ MathAccentInset * MathAccentInset::Clone()
 }
 
 
-MathBigopInset::MathBigopInset(char const* nam, int id, short st): 
-  MathedInset(nam, LM_OT_BIGOP, st), sym(id)
+MathBigopInset::MathBigopInset(char const* nam, int id, short st)
+	: MathedInset(nam, LM_OT_BIGOP, st), sym(id)
 {
    lims = -1;
 }
 
-MathBigopInset * MathBigopInset::Clone()
+
+MathedInset * MathBigopInset::Clone()
 {
-#if 0
-   MathBigopInset* p = new MathBigopInset(name, sym, GetStyle());
-   return p;
-#endif
    return new MathBigopInset(name, sym, GetStyle());
 }
- 
-MathDotsInset::MathDotsInset(char const * nam, int id, short st):
-  MathedInset(nam, LM_OT_DOTS, st), code(id)
-{
-}
 
-MathDotsInset * MathDotsInset::Clone()
+
+MathDotsInset::MathDotsInset(char const * nam, int id, short st)
+	: MathedInset(nam, LM_OT_DOTS, st), code(id) {}
+
+
+MathedInset * MathDotsInset::Clone()
 {
-#if 0
-   MathDotsInset* p = new MathDotsInset(name, code, GetStyle());
-   return p;
-#endif
    return new MathDotsInset(name, code, GetStyle());
 }     
-

@@ -184,7 +184,7 @@ int InsetSpecialChar::DocBook(string & file)
 }
 
 
-InsetSpecialChar * InsetSpecialChar::Clone() const
+Inset * InsetSpecialChar::Clone() const
 {
 	return new InsetSpecialChar(kind);
 }

@@ -17,6 +17,7 @@
 #include <config.h>
 
 #include <cctype>
+#include <pair.h>
 
 #ifdef __GNUG__
 #pragma implementation "filetools.h"
@@ -47,6 +48,8 @@
 #  include <ndir.h>
 # endif
 #endif
+
+using std::make_pair;
 
 extern string system_lyxdir;
 extern string build_lyxdir;
@@ -961,4 +964,52 @@ bool LyXReadLink(string const & File, string & Link)
 	LinkBuffer[nRead] = 0;
 	Link = LinkBuffer;
 	return true;
+}
+
+
+typedef pair<int, string> cmdret;
+static cmdret do_popen(string const & cmd)
+{
+	// One question is if we should use popen or
+	// create our own popen based on fork, exec, pipe
+	// of course the best would be to have a
+	// pstream (process stream), with the
+	// variants ipstream, opstream and
+	FILE * inf = popen(cmd.c_str(), "r");
+	string ret;
+	int c = fgetc(inf);
+	while (c != EOF) {
+		ret += static_cast<char>(c);
+		c = fgetc(inf);
+	}
+	int pret = pclose(inf);
+	return make_pair(pret, ret);
+}
+
+
+string findtexfile(string const & fil, string const & format)
+{
+	/* There is no problem to extend this function too use other
+	   methods to look for files. It could be setup to look
+	   in environment paths and also if wanted as a last resort
+	   to a recursive find. One of the easier extensions would
+	   perhaps be to use the LyX file lookup methods. But! I am
+	   going to implement this until I see some demand for it.
+	   Lgb
+	*/
+	
+        // If fil is a file with absolute path we just return it
+        if (AbsolutePath(fil)) return fil;
+	
+        // Check in the current dir.
+        if (FileInfo(OnlyFilename(fil)).exist())
+		return OnlyFilename(fil);
+	
+        // No we try to find it using kpsewhich.
+        string kpsecmd = "kpsewhich --format= " + format + " " + OnlyFilename(fil);
+        cmdret c = do_popen(kpsecmd);
+	
+        lyxerr << "kpse status = " << c.first << "\n"
+               << "kpse result = `" << strip(c.second, '\n') << "'" << endl;
+        return c.first != -1 ? strip(c.second, '\n') : string();
 }

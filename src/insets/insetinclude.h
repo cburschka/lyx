@@ -37,7 +37,7 @@ public:
 	///
 	~InsetInclude();
         ///
-        InsetInclude * Clone() const;
+        Inset * Clone() const;
 	///
 	Inset::Code LyxCode() const { return Inset::INCLUDE_CODE; }
 	/// This is 1 if the childs have labels, 0 otherwise

@@ -82,8 +82,9 @@ LyXParagraph::LyXParagraph()
 /* this konstruktor inserts the new paragraph in a list */ 
 LyXParagraph::LyXParagraph(LyXParagraph * par)
 {
-#warning we also need a reserve here
-#warning this would be a nice place to shrink par
+	text.reserve(500);
+	par->text.resize(par->text.size());
+
 	for (int i = 0; i < 10; ++i) setCounter(i, 0);
 	appendix = false;
 	enumdepth = 0;

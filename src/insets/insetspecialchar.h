@@ -21,7 +21,7 @@
 struct LaTeXFeatures;
 
 ///  Used to insert special chars
-class InsetSpecialChar: public Inset {
+class InsetSpecialChar : public Inset {
 public:
 
 	/// The different kinds of special chars we support
@@ -61,7 +61,7 @@ public:
 	///
 	int DocBook(string & file);
 	///
-	InsetSpecialChar * Clone() const;
+	Inset * Clone() const;
 	///  
 	Inset::Code LyxCode() const
 	{

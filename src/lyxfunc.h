@@ -29,7 +29,6 @@ public:
 		ToggleOn = 4,
 		ToggleOff = 8
 	};
-	
 	///
 	LyXFunc(LyXView *);
     
@@ -166,6 +165,12 @@ inline
 void LyXFunc::setHintMessage(bool hm) 
 { 
 	show_sc = hm;
+}
+
+inline
+void operator|=(LyXFunc::func_status & fs, LyXFunc::func_status f)
+{
+	fs = static_cast<LyXFunc::func_status>(fs | f);
 }
 
 #endif

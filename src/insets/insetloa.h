@@ -23,21 +23,19 @@
 
 /** Used to insert table of algorithms
  */
-class InsetLOA: public InsetCommand {
+class InsetLOA : public InsetCommand {
 public:
 	///
-	InsetLOA(): InsetCommand("listofalgorithms") {}
+	InsetLOA() : InsetCommand("listofalgorithms") {}
 	///
-	InsetLOA(Buffer * b): InsetCommand("listofalgorithms"), owner(b) {}
+	InsetLOA(Buffer * b) : InsetCommand("listofalgorithms"), owner(b) {}
         ///
 	void Validate(LaTeXFeatures & features) const;
         ///
-        InsetLOA * Clone() const { return new InsetLOA(owner); }
+        Inset * Clone() const { return new InsetLOA(owner); }
     	///
 	string getScreenLabel() const { return _("List of Algorithms"); }
 
-	
-	//void Edit(int, int);
         ///
 	unsigned char Editable() const {
 		return 0; // not yet

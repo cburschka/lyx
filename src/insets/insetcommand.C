@@ -195,7 +195,7 @@ int InsetCommand::DocBook(string &/*file*/)
 }
 
 
-InsetCommand * InsetCommand::Clone() const
+Inset * InsetCommand::Clone() const
 {
 	return new InsetCommand(command, contents, options);
 }

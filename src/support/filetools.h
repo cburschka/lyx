@@ -286,4 +286,7 @@ string ReplaceEnvironmentPath(string const & path);
    Return True if succesfull, False other wise */
 bool LyXReadLink(string const & file, string & Link);
 
+/* Uses kpsewhich to find tex files */
+string findtexfile(string const & fil, string const & format);
+
 #endif

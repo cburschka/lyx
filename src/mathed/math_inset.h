@@ -38,11 +38,12 @@
 class MathFuncInset: public MathedInset  {
 public:
 	///
-   MathFuncInset(char const * nm, short ot= LM_OT_FUNC, short st= LM_ST_TEXT);
+   MathFuncInset(char const * nm,
+		 short ot = LM_OT_FUNC, short st = LM_ST_TEXT);
 	///
    ~MathFuncInset();
 	///
-   MathFuncInset * Clone();
+   MathedInset * Clone();
 	///
    void Draw(int, int);
 	///
@@ -67,13 +68,13 @@ protected:
 class MathAccentInset: public MathedInset {
  public:
 	///
-   MathAccentInset(byte, MathedTextCodes, int, short st= LM_ST_TEXT);
+   MathAccentInset(byte, MathedTextCodes, int, short st = LM_ST_TEXT);
 	///
-   MathAccentInset(MathedInset *, int, short st= LM_ST_TEXT);
+   MathAccentInset(MathedInset *, int, short st = LM_ST_TEXT);
 	///
    ~MathAccentInset();
 	///
-   MathAccentInset * Clone();
+   MathedInset * Clone();
 	///
    void Draw(int, int);
 	///
@@ -103,17 +104,17 @@ class MathAccentInset: public MathedInset {
 class MathDotsInset: public MathedInset {
  public:
 	///
-   MathDotsInset(char const *, int, short st= LM_ST_TEXT);
+   MathDotsInset(char const *, int, short st = LM_ST_TEXT);
 	///
    ~MathDotsInset() {}
 	///
-   MathDotsInset * Clone();
+   MathedInset * Clone();
 	///
    void Draw(int, int);
 	///
    void Write(FILE * file);
 	///
-   void Write(string &file);
+   void Write(string & file);
 	///
    void Metrics();
  protected:
@@ -130,7 +131,7 @@ class MathSpaceInset: public MathedInset  {
 	///
    ~MathSpaceInset() {}
 	///
-   MathSpaceInset * Clone();
+   MathedInset * Clone();
 	///
   void Draw(int, int);
 	///
@@ -157,7 +158,7 @@ class MathBigopInset: public MathedInset {
 	///
    ~MathBigopInset() {}
 	///
-   MathBigopInset * Clone();
+   MathedInset * Clone();
 	///
    void Draw(int, int);
 	///
@@ -184,17 +185,17 @@ class MathBigopInset: public MathedInset {
 class MathSqrtInset: public MathParInset {
  public:
     ///
-    MathSqrtInset(short st= LM_ST_TEXT);
+    MathSqrtInset(short st = LM_ST_TEXT);
     ///
     ~MathSqrtInset() {}
     ///
-    MathSqrtInset * Clone();
+    MathedInset * Clone();
     ///
     void Draw(int x, int baseline);
     ///
-    void Write(FILE *file);
+    void Write(FILE * file);
     ///
-    void Write(string &file);
+    void Write(string & file);
     ///
     void Metrics();
     ///
@@ -210,11 +211,11 @@ class MathSqrtInset: public MathParInset {
 class MathFracInset: public MathParInset {
  public:
 	///
-    MathFracInset(short ot= LM_OT_FRAC);
+    MathFracInset(short ot = LM_OT_FRAC);
 	///
     ~MathFracInset();
 	///
-    MathFracInset * Clone();
+    MathedInset * Clone();
 	///
     void Draw(int x, int baseline);
 	///
@@ -260,11 +261,11 @@ class MathFracInset: public MathParInset {
 class MathDelimInset: public MathParInset {
  public:
 	///
-   MathDelimInset(int, int, short st= LM_ST_TEXT);
+   MathDelimInset(int, int, short st = LM_ST_TEXT);
 	///
    ~MathDelimInset() {}
 	///
-   MathDelimInset * Clone();
+   MathedInset * Clone();
 	///
    void Draw(int, int);
 	///
@@ -285,11 +286,11 @@ class MathDelimInset: public MathParInset {
 class MathDecorationInset: public MathParInset {
  public:
 	///
-   MathDecorationInset(int, short st= LM_ST_TEXT);
+   MathDecorationInset(int, short st = LM_ST_TEXT);
 	///
    ~MathDecorationInset() {}
 	///
-   MathDecorationInset * Clone();
+   MathedInset * Clone();
 	///
    void Draw(int, int);
 	///
@@ -319,17 +320,20 @@ MathFuncInset::~MathFuncInset()
     if (fname && GetType() == LM_OT_UNDEF) delete[] fname;
 }
 
+
 inline
 bool MathFuncInset::GetLimits() const 
 {  
    return bool(lims && (GetStyle() == LM_ST_DISPLAY)); 
 } 
 
+
 inline
 void MathFuncInset::Write(FILE * file)
 {
    fprintf(file, "\\%s ", name);
 }
+
 
 inline
 void MathFuncInset::Write(string & file)
@@ -338,6 +342,7 @@ void MathFuncInset::Write(string & file)
    file += name;
    file += ' ';
 }
+
 
 inline
 void MathSpaceInset::Metrics()
@@ -349,12 +354,14 @@ void MathSpaceInset::Metrics()
    ascent = 4; descent = 0;
 }
 
+
 inline
 void MathSpaceInset::SetSpace(int sp)
 { 
    space = sp;
    Metrics();
 }    
+
 
 inline
 bool MathBigopInset::GetLimits() const 
@@ -368,11 +375,13 @@ bool MathBigopInset::GetLimits() const
     return lims > 0;
 } 
 
+
 inline
 void MathBigopInset::SetLimits(bool ls) 
 {  
     lims = ls ? 1 : 0; 
 } 
+
 
 inline
 bool MathDecorationInset::GetLimits() const

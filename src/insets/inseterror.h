@@ -62,7 +62,7 @@ public:
 	///
 	unsigned char Editable() const;
 	///
-	InsetError * Clone() const;
+	Inset * Clone() const;
 	///
 	Inset::Code LyxCode() const { return Inset::NO_CODE; }
 	/// We don't want "begin" and "end inset" in lyx-file

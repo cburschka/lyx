@@ -24,10 +24,6 @@
 #include <vector>
 using std::vector;
 
-#include <fstream>
-using std::ifstream;
-using std::ofstream;
-
 class MiniBuffer;
 
 ///

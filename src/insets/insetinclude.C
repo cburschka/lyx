@@ -210,7 +210,7 @@ InsetInclude::~InsetInclude()
 	}
 }
 
-InsetInclude * InsetInclude::Clone() const
+Inset * InsetInclude::Clone() const
 { 
 	InsetInclude * ii = new InsetInclude (contents, master); 
 	ii->setNoLoad(isNoLoad());

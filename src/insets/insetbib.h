@@ -32,7 +32,7 @@ public:
         ///
 	~InsetCitation();
         ///
-        InsetCitation * Clone() const {
+        Inset * Clone() const {
 		return new InsetCitation(contents, options);
 	}
     	///
@@ -62,7 +62,7 @@ public:
 	///
 	~InsetBibKey();
 	///
-        InsetBibKey * Clone() const { return new InsetBibKey(this); }
+        Inset * Clone() const { return new InsetBibKey(this); }
 	/// Currently \bibitem is used as a LyX2.x command, so we need this method.
         void Write(FILE *);
 	///
@@ -98,7 +98,7 @@ public:
 	InsetBibtex(string const & dbase, string const & style,
 		    Buffer *);
         ///
-	InsetBibtex * Clone() const {
+	Inset * Clone() const {
 		return new InsetBibtex(contents, options, 0);
 	}
 	///  

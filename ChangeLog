@@ -1,3 +1,52 @@
+1999-11-24  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* several files: white-space changes.
+
+	* src/mathed/formula.C: removed IsAlpha and IsDigit
+
+	* src/insets/insetbib.C (getKeys): use findtexfile to look for the
+	.bib file. use a ifstream instead of FilePtr when parsing the .bib
+	file for keys.
+
+	* src/insets/figinset.C (GetPSSizes): don't break when
+	"EndComments" is seen. But break when a boundingbox is read.
+
+	* all classes inherited from Inset: return value of Clone
+	changed back to Inset *.
+
+	* all classes inherited form MathInset: return value of Clone
+	changed back to MathedInset *.
+	
+	* src/insets/figinset.C (runqueue): use a ofstream to output the
+	gs/ps file. Might need some setpresicion or setw. However I can
+	see no problem with the current code.
+	(runqueue): use sleep instead of the alarm/signal code. I just
+	can't see the difference.
+
+	* src/paragraph.C (LyXParagraph): reserve space in the new
+	paragraph and resize the inserted paragraph to just fit.
+
+	* src/lyxfunc.h (operator|=): added operator for func_status.
+
+	* src/lyxfunc.C (MenuNew): use FileInfo instead of FilePtr to
+	check for readable file.
+
+	* src/lyx_cb.C (MenuMakeLaTeX): use FileInfo instead of FilePtr to
+	check for readable file.
+	(MenuMakeLinuxDoc): ditto
+	(MenuMakeDocBook): ditto
+	(MenuMakeAscii): ditto
+	(InsertAsciiFile): split the test for openable and readable
+
+	* src/bmtable.C (draw_bitmaptable): use
+	fl_state[fl_get_vclass()].depth instead of DefualtScreen.
+
+	* src/LaTeX.C, src/support/filetools.[Ch]: moved do_popen and
+	findtexfile from LaTeX to filetools.
+	
+	* src/ImportNoweb.C (documentclass): rewrote to use ifstream
+	instead of FilePtr. Needs to be verified by a literate user.
+
 1999-11-23  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/mathed/formula.[Ch] (GetCursorPos): add a missing 'const'.

@@ -23,9 +23,6 @@
 
 #include "formula.h"
 
-
-
-
 class MathMacroTemplate;
 
 
@@ -35,49 +32,47 @@ public:
 	///
 	InsetFormulaMacro();
 	///
-	InsetFormulaMacro(string name, int na= 0, bool env= false);
+	InsetFormulaMacro(string name, int na = 0, bool env = false);
 	///
 	~InsetFormulaMacro();
 	///
-	int Ascent(LyXFont const &font) const;
+	int Ascent(LyXFont const & font) const;
 	///
-	int Descent(LyXFont const &font) const;
+	int Descent(LyXFont const & font) const;
 	///
-	int Width(LyXFont const &font) const;
+	int Width(LyXFont const & font) const;
 	///
-	void Draw(LyXFont font, LyXScreen &scr, int baseline, float &x);
+	void Draw(LyXFont font, LyXScreen & scr, int baseline, float & x);
 	///
-	void Read(LyXLex &lex);
+	void Read(LyXLex & lex);
         ///
-	void Write(FILE *file);
+	void Write(FILE * file);
 	///
-//	void Read(LyXLex &lex);
+	int Latex(FILE * file, signed char fragile);
 	///
-	int Latex(FILE *file, signed char fragile);
+	int Latex(string & file, signed char fragile);
 	///
-	int Latex(string &file, signed char fragile);
+	int Linuxdoc(string & file);
 	///
-	int Linuxdoc(string &file);
+	int DocBook(string & file);
 	///
-	int DocBook(string &file);
-	///
-	InsetFormulaMacro * Clone() const;
+	Inset * Clone() const;
 
 	/// what appears in the minibuffer when opening
-	char const* EditMessage() {return "Math macro editor mode";}
+	char const * EditMessage() {return "Math macro editor mode";}
 	///
 	void Edit(int x, int y);
 	///
 	void InsetUnlock();
    
-	bool LocalDispatch(int, char const*);
+	bool LocalDispatch(int, char const *);
    
 protected:
 	void UpdateLocal();
 private:
         bool opened;
         string name; 
-        class MathMacroTemplate* tmacro;
+        class MathMacroTemplate * tmacro;
 
 };
 

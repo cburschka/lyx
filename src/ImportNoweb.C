@@ -17,10 +17,11 @@
 #pragma implementation
 #endif
 
+#include <fstream>
+
 #include "ImportNoweb.h"
 #include "lyxrc.h"
 #include "support/syscall.h"
-#include "support/filetools.h"
 #include "bufferlist.h"
 
 extern LyXRC * lyxrc;
@@ -46,30 +47,28 @@ Buffer * ImportNoweb::run()
 	return buf;
 }
 
+
 // Provide the literate documentclass by parsing the file.
-//
 string ImportNoweb::documentclass()
 {
 	string result = "literate-article"; // Default
 
-	FilePtr inputfile(file, FilePtr::read);	
-	if (!inputfile()) return "nofile"; // Should not happen!
+#warning If you use literate programming you should verify that this works
+	// This method has been rewritten to use ifstream, but since I
+	// don't use literate programming myself I am unable to check
+	// this correclty. (Lgb)
+	ifstream ifs(file.c_str());
 
-	char buf[BUFSIZE], *p, *q;
-
-	while(!feof(inputfile())) {
-		(void)fgets(buf, BUFSIZE, inputfile());
-		if ((p = strstr(buf, "\\documentclass"))) {
-			while ((*p) && (*p != '{'))
-				p++;
-			q = p++;
-			while ((*q) && (*q != '}'))
-				q++;
-			*q = '\0';
-			result = p;
-			result = "literate-" + result;
+	if (!ifs) return "nofile"; // Should not happen!
+	string line;
+	while (getline(ifs, line)) {
+		int p = line.find("\\documentclass");
+		if (p != string::npos) {
+			p = line.find('{', p);
+			int q = line.find('}', p);
+			result = "literate-" + line.substr(p, q - p);
+			break;
 		}
 	}
-
 	return result;
 }

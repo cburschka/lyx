@@ -172,7 +172,7 @@ public:
 class UpdatableInset: public Inset {
 public:
 	///
-	virtual ~UpdatableInset() {}
+	//virtual ~UpdatableInset() {}
 	///
 	virtual unsigned char Editable() const;
    

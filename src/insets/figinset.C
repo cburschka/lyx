@@ -39,6 +39,7 @@ extern long int background_pixels;
 #include <cstdlib>
 #include <cctype>
 #include <cmath>
+#include <fstream>
 
 #include "form1.h"
 #include "figinset.h"
@@ -438,19 +439,19 @@ int FindBmpIndex(figdata *tmpdata)
 
 static void chpixmap(Pixmap, int, int)
 {
+#if 0
 	Display * tempdisp = XOpenDisplay(XDisplayName(0));
 
 	// here read the pixmap and change all colors to those we
 	// have allocated
 
 	XCloseDisplay(tempdisp);
+#endif
 }
 
 
 static void freefigdata(figdata *tmpdata)
 {
-	int i;
-
 	tmpdata->ref--;
 	if (tmpdata->ref) return;
 
@@ -468,7 +469,7 @@ static void freefigdata(figdata *tmpdata)
 
 	if (tmpdata->bitmap) XFreePixmap(fl_display, tmpdata->bitmap);
 	delete tmpdata;
-	i = FindBmpIndex(tmpdata);
+	int i = FindBmpIndex(tmpdata);
 	--bmpinsref;
 	while (i < bmpinsref) {
 		bitmaps[i] = bitmaps[i+1];
@@ -488,10 +489,8 @@ static void runqueue()
 	}
 	
 	while (gsrunning < MAXGS) {
-		queue *p;
-		int pid;
 		char tbuf[384], tbuf2[80];
-		Atom *prop;
+		Atom * prop;
 		int nprop, i;
 
 		if (!gsqueue) {
@@ -502,18 +501,19 @@ static void runqueue()
 			}
 			return;
 		}
-		p = gsqueue;
+		queue * p = gsqueue;
 
 		if (!p->data) {
 			delete p;
 			continue;
 		}
 
-		pid = fork();
+		int pid = fork();
 		
 		if (pid == -1) {
 			if (lyxerr.debugging()) {
-				lyxerr << "GS start error! Cannot fork." << endl;
+				lyxerr << "GS start error! Cannot fork."
+				       << endl;
 			}
 			p->data->broken = true;
 			p->data->reading = false;
@@ -528,26 +528,22 @@ static void runqueue()
 			sprintf(tbuf, "%s/~lyxgs%d.ps", system_tempdir.c_str(),
 				int(getpid()));
 			
-			FilePtr	f(tbuf, FilePtr::write);
-			fprintf(f, "gsave clippath pathbbox grestore\n"
-				"4 dict begin\n"
-				"/ury exch def /urx exch def /lly exch def " 
+			ofstream ofs(tbuf);
+			ofs << "gsave clippath pathbbox grestore\n"
+			    << "4 dict begin\n"
+			    << "/ury exch def /urx exch def /lly exch def "
 				"/llx exch def\n"
-				"%g %g translate\n"
-				"%g rotate\n"
-				"%g %g translate\n"
-				"%g %g scale\n"
-				"%d %d translate\nend\n",
-				p->data->wid / 2.0, p->data->hgh / 2.0,
-				p->data->angle,
-				- (p->data->raw_wid / 2.0), -(p->data->raw_hgh / 2.0),
-				p->rx / 72.0, p->ry / 72.0,
-				-p->ofsx, -p->ofsy
-				);
+			    << p->data->wid / 2.0 << " "
+			    << p->data->hgh / 2.0 << " translate\n"
+			    << p->data->angle << " rotate\n"
+			    << -(p->data->raw_wid / 2.0) << " "
+			    << -(p->data->raw_hgh / 2.0) << " translate\n"
+			    << p->rx / 72.0 << " " << p->ry / 72.0
+			    << " scale\n"
+			    << -p->ofsx << " " << -p->ofsy << " translate\n"
+			    << "end" << endl;
+			ofs.close(); // Don't remove this.
 
-			// DON'T EVER remove this!!
-			f.close(); // was this all? (Lgb)
-			
 			// gs process - set ghostview environment first
 			sprintf(tbuf2, "GHOSTVIEW=%ld %ld", fl_get_canvas_id(
 				figinset_canvas), p->data->bitmap);
@@ -597,6 +593,7 @@ static void runqueue()
 					       << "] GHOSTVIEW property"
 						" found. Waiting." << endl;
 				}
+#if 0
 #ifdef WITH_WARNINGS
 #warning What is this doing? (wouldn't a sleep(1); work too?')
 #endif
@@ -604,6 +601,9 @@ static void runqueue()
 				alarmed = false;
 				signal(SIGALRM, waitalarm);
 				while (!alarmed) pause();
+#else
+				sleep(1);
+#endif
 			}
 
 			XChangeProperty(tempdisp, 
@@ -1296,7 +1296,7 @@ void InsetFig::Edit(int, int)
 }
 
 
-InsetFig * InsetFig::Clone() const
+Inset * InsetFig::Clone() const
 {
 	InsetFig * tmp = new InsetFig(100, 100, owner);
 
@@ -1717,9 +1717,10 @@ void InsetFig::Recompute()
 
 void InsetFig::GetPSSizes()
 {
+#warning rewrite this method to use ifstream
 	/* get %%BoundingBox: from postscript file */
 	int lastchar, c;
-	char *p = 0;
+	char * p = 0;
 	
 	/* defaults to associated size
 	 * ..just in case the PS-file is not readable (Henner, 24-Aug-97) 
@@ -1730,7 +1731,7 @@ void InsetFig::GetPSSizes()
 	pshgh = hgh;
 
 	if (fname.empty()) return;
-	
+
 	FilePtr f(fname, FilePtr::read);
 
 	if (!f()) return;	// file not found !!!!
@@ -1752,7 +1753,9 @@ void InsetFig::GetPSSizes()
 		if (c == '%' && lastchar == '%') {
 			p = NextToken(f);
 			if (!p) break;
-			if (strcmp(p, "EndComments") == 0) break;
+			// we should not use this, with it we cannot
+			// discover bounding box and end of file.
+			//if (strcmp(p, "EndComments") == 0) break;
 			if (strcmp(p, "BoundingBox:") == 0) {
 				float fpsx, fpsy, fpswid, fpshgh;
 				if (fscanf(f, "%f %f %f %f", &fpsx, &fpsy,
@@ -1769,8 +1772,8 @@ void InsetFig::GetPSSizes()
 					       << psy << ' '
 					       << pswid << ' '
 					       << pshgh << endl;
-					break;
 				}
+				break;
 			}
 			c = 0;
 			delete[] p;

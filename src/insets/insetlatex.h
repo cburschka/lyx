@@ -24,7 +24,7 @@
   delete/backspace operations. This is used when you insert a LaTeX
   figure (done as "\input "), but you still have to type the filename
   yourself after the inset. */
-class InsetLatex: public Inset {
+class InsetLatex : public Inset {
 public:
 	///
 	InsetLatex();
@@ -55,7 +55,7 @@ public:
 	///
 	bool Deletable() const;
 	///
-	InsetLatex * Clone() const;
+	Inset * Clone() const;
 	///
 	Inset::Code LyxCode() const;
 private:

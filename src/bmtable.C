@@ -92,7 +92,7 @@ static void draw_bitmaptable(FL_OBJECT *ob)
 					reinterpret_cast<char*>(sp->bdata),
 							       sp->bw, sp->bh,
 					fl_get_flcolor(ob->lcol), fl_get_flcolor(ob->col1),
-					DefaultDepth(fl_display, DefaultScreen(fl_display)));
+							       /*DefaultDepth(fl_display, DefaultScreen(fl_display))*/ fl_state[fl_get_vclass()].depth);
 			XFlush(fl_display);
 		}
 	}

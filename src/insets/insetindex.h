@@ -29,13 +29,13 @@ struct LaTeXFeatures;
 class InsetIndex: public InsetCommand {
 public:
 	///
-	InsetIndex(): InsetCommand("index") {;}
+	InsetIndex() : InsetCommand("index") {}
 	///
 	InsetIndex(string const & key);
 	///
 	~InsetIndex();
 	///
-	InsetIndex * Clone() const { return new InsetIndex(contents);}
+	Inset * Clone() const { return new InsetIndex(contents);}
 	///
 	void Edit(int, int);
 	///
@@ -48,7 +48,7 @@ public:
 };
 
 
-class InsetPrintIndex: public InsetCommand {
+class InsetPrintIndex : public InsetCommand {
 public:
 	///
 	InsetPrintIndex();
@@ -64,6 +64,7 @@ public:
 	unsigned char Editable() const{
 		return 1;
 	}
+	/// WHY is clone missing? (Lgb)
 	///
 	bool display() const { return true; }
 	///

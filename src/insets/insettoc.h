@@ -23,14 +23,14 @@
 
 /** Used to insert table of contents
  */
-class InsetTOC: public InsetCommand {
+class InsetTOC : public InsetCommand {
 public:
 	///
-	InsetTOC(): InsetCommand("tableofcontents") {}
+	InsetTOC() : InsetCommand("tableofcontents") {}
 	///
-	InsetTOC(Buffer * b): InsetCommand("tableofcontents"), owner(b) {}
+	InsetTOC(Buffer * b) : InsetCommand("tableofcontents"), owner(b) {}
         ///
-        InsetTOC * Clone() const { return new InsetTOC(owner); }
+        Inset * Clone() const { return new InsetTOC(owner); }
     	///
 	string getScreenLabel() const { return _("Table of Contents"); }
 	/// On edit, we open the TOC pop-up

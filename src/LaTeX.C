@@ -16,6 +16,7 @@
 #ifdef __GNUG__
 #pragma implementation
 #endif
+#include <fstream>
 
 #include "support/filetools.h"
 #include "LaTeX.h"
@@ -29,7 +30,7 @@
 #include "minibuffer.h"
 #include "gettext.h"
 
-using std::make_pair;
+using std::ifstream;
 
 // TODO: in no particular order
 // - get rid of the extern BufferList and the call to
@@ -310,43 +311,6 @@ bool LaTeX::runMakeIndex(string const &file)
 }
 
 
-typedef pair<int, string> cmdret;
-static cmdret do_popen(string const & cmd)
-{
-	// One question is if we should use popen or
-	// create our own popen based on fork, exec, pipe
-	// of course the best would be to have a
-	// pstream (process stream), with the
-	// variants ipstream, opstream and
-	FILE * inf = popen(cmd.c_str(), "r");
-	string ret;
-	int c = fgetc(inf);
-	while (c != EOF) {
-		ret += static_cast<char>(c);
-		c = fgetc(inf);
-	}
-	int pret = pclose(inf);
-	return make_pair(pret, ret);
-}
-
-
-static string findtexfile(string const & fil, string const & format)
-{
-	// If fil is a file with absolute path we just return it
-	if (AbsolutePath(fil)) return fil;
-
-	// Check in the current dir.
-	if (FileInfo(OnlyFilename(fil)).exist())
-	  return OnlyFilename(fil);
-	
-	// No we try to find it using kpsewhich.
-	string kpsecmd = "kpsewhich --format= " + format + " " + fil;
-	cmdret c = do_popen(kpsecmd);
-
-	lyxerr << "kpse status = " << c.first << "\n"
-	       << "kpse result = `" << strip(c.second, '\n') << "'" << endl;
-	return c.first == 0 ? strip(c.second, '\n') : string();
-}
 
 
 bool LaTeX::runBibTeX(string const & file, DepTable & dep)

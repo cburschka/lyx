@@ -1,6 +1,7 @@
 
 #include <config.h>
 
+#include <fstream>
 #include <cstdlib>
 
 #ifdef __GNUG__
@@ -342,6 +343,7 @@ int InsetBibtex::Latex(string &file, signed char /*fragile*/)
 	return 2;
 }
 
+
 // This method returns a comma separated list of Bibtex entries
 string InsetBibtex::getKeys()
 {
@@ -350,63 +352,45 @@ string InsetBibtex::getKeys()
 	if (!owner) {
 		owner = current_view->buffer();
 	}
-
-	// We need to create absolute path names for bibliographies
-	// First look for bib-file in same directory as document,
-	// then in all directories listed in environment variable 
-	// BIBINPUTS
-	string bibfiles, linebuf, tmp, keys;
-	bibfiles = getContents();
-	bibfiles= split(bibfiles, tmp, ',');
+	
+	string tmp, keys;
+	string bibfiles = getContents();
+	bibfiles = split(bibfiles, tmp, ',');
 	while(!tmp.empty()) {
-		if (IsFileReadable(MakeAbsPath(tmp, owner->filepath)+".bib"))
-			tmp = MakeAbsPath(tmp, owner->filepath)+".bib";
-		else {
-			tmp = FileOpenSearch(GetEnvPath("BIBINPUTS"), tmp, "bib");
-			if (tmp.empty())
-				tmp = FileOpenSearch(GetEnvPath("BIBINPUT"),
-						     tmp, "bib");
-		}
+		string fil = findtexfile(ChangeExtension(tmp, "bib", false),
+					 "bib");
+		lyxerr << "Bibfile: " << fil << endl;
 		// If we didn't find a matching file name just fail silently
-		if (!tmp.empty()) {
-      
-			// This is a _very_ simple parser for Bibtex database files.
-			// All it does is to look for lines starting in @ and not
- 			// being @preamble and @string entries.
+		if (!fil.empty()) {
+			// This is a _very_ simple parser for Bibtex database
+			// files. All it does is to look for lines starting
+			// in @ and not being @preamble and @string entries.
 			// It does NOT do any syntax checking!
-			FilePtr file(tmp, FilePtr::read);
- 			char c;
-
-			// On some systems where feof() is a macro,
-			// the () after file is needed (JMarc)
-			while (! feof(file())) {
-				c = fgetc(file);
-
-				// At end of each line check if line begins with '@'
-				if ( c == '\n') {
-					if (prefixIs(linebuf, "@") ) {
-						linebuf = subst(linebuf,
-								'{', '(');
+			ifstream ifs(fil.c_str());
+			string linebuf;
+			while (getline(ifs, linebuf)) {
+				if (prefixIs(linebuf, "@")) {
+					linebuf = subst(linebuf, '{', '(');
+					linebuf = split(linebuf, tmp, '(');
+					tmp = lowercase(tmp);
+					if (!prefixIs(tmp, "@string")
+					    && !prefixIs(tmp, "@preamble")) {
 						linebuf = split(linebuf,
-								tmp,'(');
-						tmp = lowercase(tmp);
-	    					if (!prefixIs(tmp, "@string") && !prefixIs(tmp, "@preamble") ) {
-							linebuf = split(linebuf, tmp,',');
-							if (!tmp.empty())
-								keys += strip(tmp) + ", ";
+								tmp, ',');
+						if (!tmp.empty()) {
+							keys += strip(tmp);
+							keys += ", ";
 						}
 					}
-					linebuf.clear();
-				} else {
-					linebuf += c;
 				}
 			}
 		}
 		// Get next file name
-    		bibfiles= split(bibfiles, tmp, ',');
+    		bibfiles = split(bibfiles, tmp, ',');
 	}
   	return keys;
 }
+
 
 // BibTeX should have its own dialog. This is provisional.
 void InsetBibtex::Edit(int, int)

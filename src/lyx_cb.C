@@ -820,8 +820,8 @@ void MenuMakeLaTeX(Buffer * buffer)
 						buffer->getFileName(),
 						".tex", false));
 
-		FilePtr myfile(s, FilePtr::read);
-		if (myfile() &&
+		FileInfo fi(s);
+		if (fi.readable() &&
 		    !AskQuestion(_("File already exists:"), 
 				MakeDisplayPath(s, 50),
 				_("Do you want to overwrite the file?"))) {
@@ -857,8 +857,8 @@ void MenuMakeLinuxDoc(Buffer *buffer)
 		string s = ChangeExtension (buffer->getFileName(), 
 					     ".sgml", false);
 
-		FilePtr myfile(s, FilePtr::read);
-		if (myfile() &&
+		FileInfo fi(s);
+		if (fi.readable() &&
 		    !AskQuestion(_("File already exists:"), 
 				MakeDisplayPath(s, 50),
 				_("Do you want to overwrite the file?"))) {
@@ -890,8 +890,8 @@ void MenuMakeDocBook(Buffer *buffer)
 		string s = ChangeExtension (buffer->getFileName(), 
 					     ".sgml", false);
 
-		FilePtr myfile(s, FilePtr::read);
-		if (myfile() &&
+		FileInfo fi(s);
+		if (fi.readable() &&
 		    !AskQuestion(_("File already exists:"), 
 				MakeDisplayPath(s, 50),
 				_("Do you want to overwrite the file?"))) {
@@ -917,8 +917,8 @@ void MenuMakeAscii(Buffer *buffer)
 		string s = ChangeExtension (buffer->getFileName(),
 					     ".txt", false);
 
-		FilePtr myfile(s, FilePtr::read);
-		if (myfile() &&
+		FileInfo fi(s);
+		if (fi.readable() &&
 		    !AskQuestion(_("File already exists:"), 
 				MakeDisplayPath(s, 50),
 				_("Do you want to overwrite the file?"))) {
@@ -1086,7 +1086,6 @@ Buffer * NewLyxFile(string const & filename)
 void InsertAsciiFile(string const & f, bool asParagraph)
 {
 	string fname = f;
-	LyXParagraph *tmppar;
 	LyXFileDlg fileDlg;
  
 	if (!current_view->getScreen()) return;
@@ -1101,15 +1100,20 @@ void InsertAsciiFile(string const & f, bool asParagraph)
 	}
 
 	FileInfo fi(fname);
-	FilePtr myfile(fname, FilePtr::read);
 
-	if (!fi.exist() || !fi.readable() || !myfile()) {
-		WriteFSAlert(_("Error! Cannot open specified file:"),
+	if (!fi.readable()) {
+		WriteFSAlert(_("Error! Specified file is unreadable: "),
 			     MakeDisplayPath(fname, 50));
 		return;
 	}
-	
-	tmppar = new LyXParagraph;
+
+	FilePtr myfile(fname, FilePtr::read);
+	if (!myfile()) {
+		WriteFSAlert(_("Error! Cannot open specified file: "),
+			     MakeDisplayPath(fname, 50));
+		return;
+	}
+	LyXParagraph * tmppar = new LyXParagraph;
 	tmppar->readSimpleWholeFile(myfile);
 	
 	// set the end of the string

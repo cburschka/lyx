@@ -24,22 +24,22 @@
   Useful to load a parent document from a child document and to
   share parent's properties between preambleless children. 
  */
-class InsetParent: public InsetCommand {
+class InsetParent : public InsetCommand {
 public:
 	/// Non-standard LyX macro
-	InsetParent(): InsetCommand("lyxparent") { }
+	InsetParent() : InsetCommand("lyxparent") {}
 	///
-        InsetParent(string fn, Buffer * owner= 0);
-	///
-        ~InsetParent() {}
+        InsetParent(string fn, Buffer * owner = 0);
 	/// 
 	int Latex(FILE * file, signed char fragile);
 	///
 	int Latex(string & file, signed char fragile);
         ///
-        InsetParent * Clone() const { return new InsetParent(getContents()); }
+        Inset * Clone() const { return new InsetParent(getContents()); }
     	///
-	string getScreenLabel() const { return string(_("Parent:"))+getContents(); }
+	string getScreenLabel() const {
+		return string(_("Parent:")) + getContents();
+	}
         ///
 	void Edit(int, int);
         ///

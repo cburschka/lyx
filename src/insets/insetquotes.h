@@ -69,8 +69,6 @@ public:
 	InsetQuotes(string const & str = "eld");
 	/// Create the right quote inset after character c
 	InsetQuotes(char c, BufferParams const & params);
-	///
-	~InsetQuotes() {}; //nothing to do
 
 	///
 	int Ascent(LyXFont const & font) const;
@@ -97,7 +95,7 @@ public:
 	///
 	void Validate(LaTeXFeatures &) const;
 	///
-	InsetQuotes * Clone() const;
+	Inset * Clone() const;
 	///
 	Inset::Code LyxCode() const;
 private:

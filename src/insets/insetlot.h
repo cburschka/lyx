@@ -23,18 +23,17 @@
 
 /** Used to insert table of contents
  */
-class InsetLOT: public InsetCommand {
+class InsetLOT : public InsetCommand {
 public:
 	///
-	InsetLOT(): InsetCommand("listoftables") {}
+	InsetLOT() : InsetCommand("listoftables") {}
 	///
-	InsetLOT(Buffer * b): InsetCommand("listoftables"), owner(b) {}
+	InsetLOT(Buffer * b) : InsetCommand("listoftables"), owner(b) {}
         ///
-        InsetLOT * Clone() const { return new InsetLOT(owner); }
+        Inset * Clone() const { return new InsetLOT(owner); }
     	///
 	string getScreenLabel() const { return _("List of Tables"); }
         
-	//void Edit(int, int);
         ///
 	unsigned char Editable() const {
 		return 0; // not yet

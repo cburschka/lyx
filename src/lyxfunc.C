@@ -421,7 +421,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 		box = LyXFunc::OK;
 		break;
 	}
-	flag = func_status(flag | box);
+	flag |= box;
 
 
 	return flag;
@@ -2580,8 +2580,8 @@ void LyXFunc::MenuNew(bool fromTemplate)
         
 	// Check whether the file already exists
 	if (IsLyXFilename(s)) {
-		FilePtr myfile(s, FilePtr::read);
-		if (myfile() &&
+		FileInfo fi(s);
+		if (fi.readable() &&
 		    AskQuestion(_("File already exists:"), 
 				MakeDisplayPath(s, 50),
 				_("Do you want to open the document?"))) {

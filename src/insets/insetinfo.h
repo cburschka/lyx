@@ -28,7 +28,7 @@
   in a yellow box. Currently, the Read-function is a terrible hack. 
   Some day in the distant future, this will hopefully be obsoleted by 
   a true comment-environment. */
-class InsetInfo: public Inset {
+class InsetInfo : public Inset {
 public:
 	///
 	InsetInfo();
@@ -65,7 +65,7 @@ public:
 	///
 	Inset::Code LyxCode() const;
 	///
-	InsetInfo * Clone() const;
+	Inset * Clone() const;
 	///
 	static void CloseInfoCB(FL_OBJECT *, long data);
 private:

@@ -13,6 +13,7 @@
 
 #include <config.h>
 
+#include <fstream>
 #include <cstdlib> // atoi
 
 #ifdef __GNUG__
@@ -29,6 +30,8 @@
 #include "support/syscontr.h"
 #include "support/path.h"
 #include "gettext.h"
+
+using std::ifstream;
 
 /*
  * CLASS Chktex
@@ -56,7 +59,7 @@ int Chktex::run(TeXErrors &terr)
 }
 
 
-int Chktex::scanLogFile(TeXErrors &terr)
+int Chktex::scanLogFile(TeXErrors & terr)
 {
 	string token;
 	int retval = 0;

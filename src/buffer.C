@@ -219,9 +219,9 @@ bool Buffer::insertLyXFile(string const & filen)
 	// check if file exist
 	FileInfo fi(filename);
 
-	if (!fi.exist() || !fi.readable()) {
+	if (!fi.readable()) {
 		WriteAlert(_("Error!"),
-			   _("Cannot open specified file:"),
+			   _("Specified file is unreadable: "),
 			   MakeDisplayPath(filename, 50));
 		return false;
 	}
@@ -231,7 +231,7 @@ bool Buffer::insertLyXFile(string const & filen)
 	FilePtr myfile(filename, FilePtr::read);
 	if (!myfile()) {
 		WriteAlert(_("Error!"),
-			   _("Cannot open specified file:"),
+			   _("Cannot open specified file: "),
 			   MakeDisplayPath(filename, 50));
 		return false;
 	}
@@ -1236,46 +1236,28 @@ bool Buffer::writeFile(string const & filename, bool flag)
 void Buffer::writeFileAscii(string const & filename, int linelen) 
 {
 	FilePtr	file(filename, FilePtr::write);
-	LyXFont
-		font1, font2;
+	LyXFont font1, font2;
 	Inset * inset;
-	LyXParagraph * par = paragraph;
-	char
-		c,
-		footnoteflag = 0,
-		depth = 0;
-
-	string
-		fname1,
-		tmp;
-
+	char c, footnoteflag = 0, depth = 0;
+	string tmp;
 	LyXParagraph::size_type i;
-	int
-		j, h,
-		ltype = 0,
-		ltype_depth = 0,
-		noparbreak = 0,
-		islatex = 0,
-		* clen = 0,
-		actcell = 0,
-		actpos = 0,
-		cell = 0,
-	        cells = 0,
+	int j, h, ltype = 0, ltype_depth = 0,
+		* clen = 0, actcell = 0, actpos = 0, cell = 0, cells = 0,
 	        currlinelen = 0;
-	long
-		fpos = 0;
-	bool
-		ref_printed = false;
+	long fpos = 0;
+	bool ref_printed = false;
    
    
 	if (!file()) {
 		WriteFSAlert(_("Error: Cannot write file:"), filename);
 		return;
 	}
-	fname1 = TmpFileName();
+	
+	string fname1 = TmpFileName();
+	LyXParagraph * par = paragraph;
 	while (par) {
-		noparbreak = 0;
-		islatex = 0;
+		int noparbreak = 0;
+		int islatex = 0;
 		if (par->footnoteflag != LyXParagraph::NO_FOOTNOTE ||
 		    !par->previous ||
 		    par->previous->footnoteflag == LyXParagraph::NO_FOOTNOTE){
@@ -1366,7 +1348,7 @@ void Buffer::writeFileAscii(string const & filename, int linelen)
                         actcell = 0;
 			cells = par->table->columns;
 			clen = new int [cells];
-			memset(clen, 0, sizeof(int)*cells);
+			memset(clen, 0, sizeof(int) * cells);
 			for (i = 0, j = 0, h = 1; i < par->size(); ++i, ++h) {
 				c = par->GetChar(i);
 				if (c == LyXParagraph::META_INSET) {

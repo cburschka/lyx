@@ -20,14 +20,14 @@
 #include "LString.h"
 
 ///
-class InsetLabel: public InsetCommand {
+class InsetLabel : public InsetCommand {
 public:
 	///
 	InsetLabel(string const & cmd);
 	///
 	InsetLabel() : InsetCommand("label") {}
 	///
-	InsetLabel * Clone() const;
+	Inset * Clone() const;
 	///
 	Inset::Code LyxCode() const { return Inset::LABEL_CODE; }
 	///
