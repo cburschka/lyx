@@ -258,6 +258,8 @@ private:
 	std::queue<int> Q;
 	///
 	int BFS_init(string const & start, bool clear_visited = true);
+	///
+	bool Move(string const & from, string const & to, bool copy);
 };
 
 extern Formats formats;

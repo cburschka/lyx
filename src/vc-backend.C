@@ -26,7 +26,7 @@ int VCS::doVCCommand(string const & cmd, string const & path)
 	lyxerr[Debug::LYXVC] << "doVCCommand: " << cmd << endl;
         Systemcalls one;
 	Path p(path);
-	int ret = one.startscript(Systemcalls::System, cmd);
+	int const ret = one.startscript(Systemcalls::System, cmd);
 	return ret;
 }
 
@@ -205,12 +205,11 @@ string const CVS::find_file(string const & file)
 {
 	// First we look for the CVS/Entries in the same dir
 	// where we have file.
-	string dir = OnlyPath(file);
-	string tmpf = "/" + OnlyFilename(file) + "/";
-	dir += "/CVS/Entries";
+	string const dir = OnlyPath(file) + "/CVS/Entries";
+	string const tmpf = "/" + OnlyFilename(file) + "/";
 	lyxerr[Debug::LYXVC] << "LyXVC: checking in `" << dir
 			     << "' for `" << tmpf << "'" << endl;
-	FileInfo f(dir);
+	FileInfo const f(dir);
 	if (f.readable()) {
 		// Ok we are at least in a CVS dir. Parse the CVS/Entries
 		// and see if we can find this file. We do a fast and

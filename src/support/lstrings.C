@@ -258,7 +258,7 @@ bool prefixIs(string const & a, string const & pre)
 	string::size_type const prelen = pre.length();
 	string::size_type const alen = a.length();
 	
-	if (prelen < alen || a.empty())
+	if (prelen > alen || a.empty())
 		return false;
 	else {
 #if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)

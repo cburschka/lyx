@@ -1,3 +1,29 @@
+2000-12-09  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/converter.C (Move): New method. Used to move file or files
+	from temp dir to the output dir. (this fixes the bug that
+	exporting linuxdoc/docbook document to html would not move all
+	html file from temp directory).
+
+	* src/support/filetools.C (DirList): Fixed.
+
+	* src/lstrings.C (prefixIs): Fixed (how nobody noticed it before??).
+
+2000-12-08  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/converter.C (Add): Remove $$i when setting latex_command.
+
+	* src/text.C (IsBoundary): Return false when pos = 0.
+	
+2000-12-08  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* lib/kbd/hebrew.kmap: Add Hebrew points (nikud).
+
+2000-12-07  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/frontends/xforms/FormDocument.C (checkMarginValues): you don't
+	need to empty the fields to turn off use of the geometry package!
+
 2000-12-07  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* src/lyxparagraph.h, src/paragraph.C (CopyIntoMinibuffer): pass a

@@ -833,6 +833,7 @@ void FormDocument::checkReadOnly()
 
 void FormDocument::checkMarginValues()
 {
+#if 0
     int const allEmpty = (!strlen(fl_get_input(paper_->input_top_margin)) &&
 		!strlen(fl_get_input(paper_->input_bottom_margin)) &&
 		!strlen(fl_get_input(paper_->input_left_margin)) &&
@@ -844,7 +845,9 @@ void FormDocument::checkMarginValues()
 		!strlen(fl_get_input(paper_->input_custom_height)));
     if (!allEmpty)
 	fl_set_button(paper_->push_use_geometry, 1);
+#endif
 }
+
 
 bool FormDocument::CheckDocumentInput(FL_OBJECT * ob, long)
 {

@@ -344,11 +344,11 @@ void LyXText::ComputeBidiTables(Buffer const * buf, Row * row) const
 bool LyXText::IsBoundary(Buffer const * buf, LyXParagraph * par,
 			 LyXParagraph::size_type pos) const
 {
-	if (!lyxrc.rtl_support)
-		return false;    // This is just for speedup
+	if (!lyxrc.rtl_support || pos == 0)
+		return false;
 
 	if (!bidi_InRange(pos - 1)) {
-		lyxerr << "LyXText::IsBoundary This shouldn't happen\n";
+		lyxerr << "LyXText::IsBoundary This shouldn't happen." << endl;
 		return false;
 	}
 

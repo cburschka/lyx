@@ -314,7 +314,7 @@ void Converters::Add(string const & from, string const & to,
 	converter.ReadFlags();
 	
 	if (converter.latex && (latex_command.empty() || to == "dvi"))
-		latex_command = command;
+		latex_command = subst(command, token_from, "");
 	// If we have both latex & pdflatex, we set latex_command to latex.
 	// The latex_command is used to update the .aux file when running
 	// a converter that uses it.
@@ -540,10 +540,7 @@ bool Converters::Convert(Buffer const * buffer,
 				  formats.Extension(to_format));
 
 	if (from_format == to_format)
-		if (from_file != to_file)
-			return lyx::rename(from_file, to_file);
-		else
-			return true;
+		return Move(from_file, to_file, false);
 
 	EdgePath edgepath = GetPath(from_format, to_format);
 	if (edgepath.empty()) {
@@ -665,20 +662,43 @@ bool Converters::Convert(Buffer const * buffer,
 				return false;
 			}
 		}
-	} else if (outfile != to_file) {
-		bool moved = (conv.latex)
-			? lyx::copy(outfile, to_file)
-			: lyx::rename(outfile, to_file);
-		if (!moved) {
-			WriteAlert(_("Error while trying to move file:"),
-				   outfile, _("to ") + to_file);
-			return false;
-		}
-	}
-
-        return true;
+		return true;
+	} else 
+		return Move(outfile, to_file, conv.latex);
 }
 
+// If from = /path/file.ext and to = /path2/file2.ext2 then this method 
+// moves each /path/file*.ext file to /path2/file2*.ext2'
+bool Converters::Move(string const & from, string const & to, bool copy)
+{
+	if (from == to)
+		return true;
+
+	bool no_errors = true;
+	string path = OnlyPath(from);
+	string base = OnlyFilename(ChangeExtension(from, ""));
+	string to_base = ChangeExtension(to, "");
+	string to_extension = GetExtension(to);
+
+	vector<string> files = DirList(OnlyPath(from), GetExtension(from));
+	for (vector<string>::const_iterator it = files.begin();
+	     it != files.end(); ++it)
+		if (prefixIs(*it, base)) {
+			string from2 = path + *it;
+			string to2 = to_base + (*it).substr(base.length());
+			to2 = ChangeExtension(to2, to_extension);
+			lyxerr << "moving " << from2 << " to " << to2 << endl;
+			bool moved = (copy)
+				? lyx::copy(from2, to2)
+				: lyx::rename(from2, to2);
+			if (!moved && no_errors) {
+				WriteAlert(_("Error while trying to move file:"),
+					   from2, _("to ") + to2);
+				no_errors = false;
+			}
+		}
+	return no_errors;
+}
 
 bool Converters::Convert(Buffer const * buffer,
 			string const & from_file, string const & to_file_base,
@@ -690,6 +710,7 @@ bool Converters::Convert(Buffer const * buffer,
 }
 
 
+
 void Converters::BuildGraph()
 {
 	vertices = vector<Vertex>(formats.size());
@@ -697,8 +718,8 @@ void Converters::BuildGraph()
 
 	for (ConverterList::iterator it = converterlist.begin();
 	     it != converterlist.end(); ++it) {
-		int s = formats.GetNumber(it->from);
-		int t = formats.GetNumber(it->to);
+		int const s = formats.GetNumber(it->from);
+		int const t = formats.GetNumber(it->to);
 		vertices[t].in_vertices.push_back(s);
 		vertices[s].out_vertices.push_back(t);
 		vertices[s].out_edges.push_back(it - converterlist.begin());
