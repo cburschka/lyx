@@ -18,52 +18,29 @@
 #include <qpushbutton.h>
 #include <qspinbox.h>
 #include "emptytable.h"
-#include <qpainter.h>
-#include <qtableview.h>
-#include <qtooltip.h>
 
-QTabularCreateDialog::QTabularCreateDialog(QTabularCreate * form, QWidget * parent,  const char * name, bool modal, WFlags fl)
-	 : QTabularCreateDialogBase(parent, name, modal, fl), 
+QTabularCreateDialog::QTabularCreateDialog(QTabularCreate * form)
+	: QTabularCreateDialogBase(0, 0, false, 0),
 	form_(form)
 {
-	setCaption(name);
 	table->setMinimumSize(100,100);
-	rows->setValue(5);
-	columns->setValue(5);
-	QToolTip::add(table, _("Drag with left mouse button to resize"));
+	rowsSB->setValue(5);
+	columnsSB->setValue(5);
+
+	connect(okPB, SIGNAL(clicked()),
+		form_, SLOT(slotOK()));
+	connect(closePB, SIGNAL(clicked()),
+		form_, SLOT(slotClose()));
 }
 
  
-QTabularCreateDialog::~QTabularCreateDialog()
+void QTabularCreateDialog::columnsChanged(int nr_cols)
 {
-	 // no need to delete child widgets, Qt does it all for us
-}
- 
-
-void QTabularCreateDialog::insert_tabular()
-{
-	form_->apply((rows->text()).toInt(), (columns->text()).toInt());
-	form_->close();
-	hide();
-}
- 
-
-void QTabularCreateDialog::cancel_adaptor()
-{
-	form_->close();
-	hide();
-}
-
- 
-void QTabularCreateDialog::colsChanged(int nr_cols)
-{
-	if (nr_cols != (columns->text()).toInt())
-		columns->setValue(nr_cols);
+	form_->changed();
 }
 
  
 void QTabularCreateDialog::rowsChanged(int nr_rows)
 {
-	if (nr_rows != (rows->text()).toInt()) 
-		rows->setValue(nr_rows);
+	form_->changed();
 }

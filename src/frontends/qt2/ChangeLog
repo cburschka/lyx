@@ -1,5 +1,16 @@
 2001-08-28  John Levon  <moz@compsoc.man.ac.uk>
 
+	* Dialogs.C:
+	* QTabularCreate.[Ch]:
+	* QTabularCreate.h:
+	* QTabularCreateDialog.C:
+	* QTabularCreateDialog.h:
+	* ui/Makefile.am:
+	* ui/QTabularCreateDialog.ui: bring back
+	tabcreate
+ 
+2001-08-28  John Levon  <moz@compsoc.man.ac.uk>
+
 	* ui/QCharacterDialog.ui:
 	* ui/QThesaurusDialog.ui: fix tab order
 

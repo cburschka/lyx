@@ -24,6 +24,7 @@
 #include "QIncludeDialog.h" 
 #include "QIndexDialog.h"
 #include "QRefDialog.h"
+#include "QTabularCreateDialog.h"
 #include "QThesaurusDialog.h"
 #include "QURLDialog.h"
  
@@ -67,6 +68,7 @@
 #include "controllers/ControlIndex.h"
 #include "controllers/ControlRef.h"
 #include "controllers/ControlSplash.h"
+#include "controllers/ControlTabularCreate.h"
 #include "controllers/ControlThesaurus.h"
 #include "controllers/ControlUrl.h" 
 #if 0
@@ -81,7 +83,6 @@
 #include "controllers/ControlRef.h"
 #include "controllers/ControlSearch.h"
 #include "controllers/ControlSpellchecker.h"
-#include "controllers/ControlTabularCreate.h"
 #include "controllers/ControlToc.h"
 #include "controllers/ControlVCLog.h"
 #endif
@@ -109,6 +110,7 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUIInclude<QInclude, Qt2BC>(*lv, *this)); 
 	add(new GUIIndex<QIndex, Qt2BC>(*lv, *this));
 	add(new GUIRef<QRef, Qt2BC>(*lv, *this));
+	add(new GUITabularCreate<QTabularCreate, Qt2BC>(*lv, *this));
 	add(new GUIThesaurus<QThesaurus, Qt2BC>(*lv, *this)); 
 	add(new GUIUrl<QURL, Qt2BC>(*lv, *this));
 

@@ -9,6 +9,7 @@
 
 #ifndef QTABULARCREATEDIALOG_H
 #define QTABULARCREATEDIALOG_H
+ 
 #include "ui/QTabularCreateDialogBase.h"
 
 class QTabularCreate;
@@ -17,13 +18,10 @@ class QTabularCreateDialog : public QTabularCreateDialogBase
 { Q_OBJECT
 
 public:
-	QTabularCreateDialog(QTabularCreate * form, QWidget * parent = 0, const char * name = 0, bool modal = FALSE, WFlags fl = 0);
-	~QTabularCreateDialog();
+	QTabularCreateDialog(QTabularCreate * form);
 
 protected slots:
-	void insert_tabular();
-	void cancel_adaptor();
-	virtual void colsChanged(int);
+	virtual void columnsChanged(int);
 	virtual void rowsChanged(int);
    
 private:

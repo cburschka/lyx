@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>245</width>
-            <height>235</height>
+            <width>281</width>
+            <height>311</height>
         </rect>
     </property>
     <property stdset="1">
@@ -23,7 +23,7 @@
     </property>
     <property stdset="1">
         <name>caption</name>
-        <string>Form1</string>
+        <string>Insert table</string>
     </property>
     <vbox>
         <property stdset="1">
@@ -57,14 +57,22 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>Rows:</string>
+                        <string>&amp;Rows:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>rowsSB</cstring>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Number of rows</string>
                     </property>
                 </widget>
                 <widget>
                     <class>QSpinBox</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>rows</cstring>
+                        <cstring>rowsSB</cstring>
                     </property>
                     <property stdset="1">
                         <name>minValue</name>
@@ -73,6 +81,14 @@
                     <property stdset="1">
                         <name>maxValue</name>
                         <number>511</number>
+                    </property>
+                    <property stdset="1">
+                        <name>buttonSymbols</name>
+                        <enum>PlusMinus</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Number of rows</string>
                     </property>
                 </widget>
                 <widget>
@@ -83,14 +99,22 @@
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>Columns:</string>
+                        <string>&amp;Columns:</string>
+                    </property>
+                    <property>
+                        <name>buddy</name>
+                        <cstring>columnsSB</cstring>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Number of columns</string>
                     </property>
                 </widget>
                 <widget>
                     <class>QSpinBox</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>columns</cstring>
+                        <cstring>columnsSB</cstring>
                     </property>
                     <property stdset="1">
                         <name>minValue</name>
@@ -99,6 +123,14 @@
                     <property stdset="1">
                         <name>maxValue</name>
                         <number>511</number>
+                    </property>
+                    <property stdset="1">
+                        <name>buttonSymbols</name>
+                        <enum>PlusMinus</enum>
+                    </property>
+                    <property>
+                        <name>toolTip</name>
+                        <string>Number of columns</string>
                     </property>
                 </widget>
                 <spacer>
@@ -129,6 +161,10 @@
             <property stdset="1">
                 <name>name</name>
                 <cstring>table</cstring>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>Resize this to the correct table dimensions</string>
             </property>
         </widget>
         <widget>
@@ -171,22 +207,22 @@
                     <class>QPushButton</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>insertPB</cstring>
+                        <cstring>okPB</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>&amp;Insert</string>
+                        <string>&amp;OK</string>
                     </property>
                 </widget>
                 <widget>
                     <class>QPushButton</class>
                     <property stdset="1">
                         <name>name</name>
-                        <cstring>cancelPB</cstring>
+                        <cstring>closePB</cstring>
                     </property>
                     <property stdset="1">
                         <name>text</name>
-                        <string>&amp;Cancel</string>
+                        <string>Close</string>
                     </property>
                 </widget>
             </hbox>
@@ -196,7 +232,7 @@
 <customwidgets>
     <customwidget>
         <class>EmptyTable</class>
-        <header location="local">../emptytable.h</header>
+        <header location="local">emptytable.h</header>
         <sizehint>
             <width>-1</width>
             <height>-1</height>
@@ -223,40 +259,40 @@
     <connection>
         <sender>table</sender>
         <signal>rowsChanged(int)</signal>
-        <receiver>rows</receiver>
+        <receiver>rowsSB</receiver>
         <slot>setValue(int)</slot>
     </connection>
     <connection>
         <sender>table</sender>
         <signal>colsChanged(int)</signal>
-        <receiver>columns</receiver>
+        <receiver>columnsSB</receiver>
         <slot>setValue(int)</slot>
     </connection>
     <connection>
-        <sender>rows</sender>
+        <sender>rowsSB</sender>
         <signal>valueChanged(int)</signal>
         <receiver>table</receiver>
         <slot>setNumberRows(int)</slot>
     </connection>
     <connection>
-        <sender>columns</sender>
+        <sender>columnsSB</sender>
         <signal>valueChanged(int)</signal>
         <receiver>table</receiver>
         <slot>setNumberColumns(int)</slot>
     </connection>
     <connection>
-        <sender>insertPB</sender>
-        <signal>clicked()</signal>
+        <sender>rowsSB</sender>
+        <signal>valueChanged(int)</signal>
         <receiver>QTabularCreateDialogBase</receiver>
-        <slot>insert_tabular()</slot>
+        <slot>rowsChanged(int)</slot>
     </connection>
     <connection>
-        <sender>cancelPB</sender>
-        <signal>clicked()</signal>
+        <sender>columnsSB</sender>
+        <signal>valueChanged(int)</signal>
         <receiver>QTabularCreateDialogBase</receiver>
-        <slot>cancel_adaptor()</slot>
+        <slot>columnsChanged(int)</slot>
     </connection>
-    <slot access="protected">insert_tabular()</slot>
-    <slot access="protected">cancel_adaptor()</slot>
+    <slot access="public">columnsChanged(int)</slot>
+    <slot access="public">rowsChanged(int)</slot>
 </connections>
 </UI>

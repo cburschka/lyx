@@ -10,43 +10,32 @@
 #ifndef QTABULARCREATE_H
 #define QTABULARCREATE_H
 
-#include "DialogBase.h"
-#include "LString.h"
-#include "boost/utility.hpp"
+#ifdef __GNUG__
+#pragma interface
+#endif
 
-class Dialogs;
-class LyXView; 
+#include "Qt2Base.h"
+
+class ControlTabularCreate;
 class QTabularCreateDialog;
 
-class QTabularCreate : public DialogBase {
-public: 
-	QTabularCreate(LyXView *, Dialogs *);
-	~QTabularCreate();
+///
+class QTabularCreate
+	: public Qt2CB<ControlTabularCreate, Qt2DB<QTabularCreateDialog> > 
+{
+public:
+	///
+	friend class QTabularCreateDialog;
+	///
+	QTabularCreate(ControlTabularCreate &);
 
-	/// create the table 
-	void apply(int rows, int cols);
-	/// close the connections
-	void close();
- 
 private:
-	/// Create the dialog if necessary, update it and display it.
-	void show();
-	/// Hide the dialog.
-	void hide();
- 
-	/// Real GUI implementation.
-	QTabularCreateDialog * dialog_;
-
-	/// the LyXView we belong to
-	LyXView * lv_;
- 
-	/** Which Dialogs do we belong to?
-	    Used so we can get at the signals we have to connect to.
-	*/
-	Dialogs * d_;
-	
-	/// Hide connection.
-	SigC::Connection h_;
+	/// Apply changes
+	virtual void apply();
+	/// update
+	virtual void update_contents() {};
+	/// build the dialog
+	virtual void build_dialog();
 };
 
 #endif // QTABULARCREATE_H

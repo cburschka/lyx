@@ -3,7 +3,7 @@ DISTCLEANFILES= *.orig *.rej *~ *.bak core
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libqt2ui.la
 BOOST_INCLUDES = -I$(top_srcdir)/boost
-INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
+INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ -I$(top_srcdir)/src/frontends/qt2/ \
 	${SIGC_CFLAGS} ${FRONTEND_INCLUDES} $(BOOST_INCLUDES) \
 	-I$(top_srcdir)/src/frontends/controllers
 DEFINES += -DQT_CLEAN_NAMESPACE
