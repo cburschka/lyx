@@ -20,14 +20,14 @@
 #include "LString.h"
 #include "undo.h"
 #include "support/limited_stack.h"
- 
+
 #include "lyxvc.h"
 #include "bufferparams.h"
 #include "texrow.h"
 #include "paragraph.h"
 
 #include <boost/shared_ptr.hpp>
- 
+
 class BufferView;
 class LyXRC;
 class TeXErrors;
@@ -302,10 +302,10 @@ public:
 
 	/// Does this mean that this is buffer local?
 	limited_stack<boost::shared_ptr<Undo> > undostack;
-	
-	/// Does this mean that this is buffer local? 
+
+	/// Does this mean that this is buffer local?
 	limited_stack<boost::shared_ptr<Undo> > redostack;
-	
+
 	///
 	BufferParams params;
 

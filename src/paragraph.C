@@ -231,11 +231,11 @@ void Paragraph::writeFile(Buffer const * buf, ostream & os,
 	// Noindent?
 	if (params().noindent())
 		os << "\\noindent ";
-	
+
 	// Do we have a manual left indent?
 	if (!params().leftIndent().zero())
 		os << "\\leftindent " << params().leftIndent().asString() << " ";
-	
+
 	// Alignment?
 	if (params().align() != LYX_ALIGN_LAYOUT) {
 		int h = 0;
@@ -892,7 +892,7 @@ void Paragraph::breakParagraph(BufferParams const & bparams,
 	}
 
 	bool isempty = (textclasslist[bparams.textclass][layout()].keepempty &&
-	                !size());
+			!size());
 	if (!isempty && (size() > pos || !size() || flag == 2)) {
 		tmp->layout(layout());
 		tmp->params().align(params().align());
@@ -1220,7 +1220,7 @@ Paragraph::InsetIterator(pos_type pos)
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it) {
-		if (it->pos == pos)
+		if (it->pos >= pos)
 			break;
 	}
 
@@ -1704,7 +1704,7 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 				}
 				if (moving_arg)
 					os << "\\protect ";
- 
+
 				os << "\\\\\n";
 			}
 			texrow.newline();
@@ -1851,7 +1851,7 @@ Paragraph * Paragraph::TeXEnvironment(Buffer const * buf,
 			texrow.newline();
 		}
 	}
-	
+
 	bool leftindent_open = false;
 	if (!params().leftIndent().zero()) {
 		os << "\\begin{LyXParagraphLeftIndent}{" <<
@@ -1916,7 +1916,7 @@ Paragraph * Paragraph::TeXEnvironment(Buffer const * buf,
 		os << "\\end{LyXParagraphLeftIndent}\n";
 		texrow.newline();
 	}
-	
+
 	lyxerr[Debug::LATEX] << "TeXEnvironment...done " << par << endl;
 	return par;  // ale970302
 }

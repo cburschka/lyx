@@ -1,3 +1,9 @@
+2002-06-10  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* sp_spell.C: fdopen is not part of the C++ standard.
+
+	* paragraph.C (InsetIterator): use >= instead of ==
+
 2002-06-07  Angus Leeming  <leeming@lyx.org>
 
 	Fixes needed to compile with Compaq cxx 6.5.
@@ -20,7 +26,7 @@
 	* tabular-old.C:
 	* tabular.C:
 	Add a using std::abs declaration.
-	
+
 	* kbmap.h (modifier_pair):
 	* paragraph.h (InsetTable, InsetList):
 	* lyxfont.h (FontBits):
@@ -42,8 +48,8 @@
 2002-06-05  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* xtl/*: get rid of xtl, which is not in use anyway
-	
-	* LyXAction.C (init): 
+
+	* LyXAction.C (init):
 	* commandtags.h: remove BUFFER_PRINT and BUFFER_PARAMS_GET, which
 	were unimplemented xtl experimentation
 
@@ -54,11 +60,11 @@
 2002-06-03  John Levon  <moz@compsoc.man.ac.uk>
 
 	* converter.C: constify a bit
- 
+
 2002-06-02  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_gui.C: check xforms version correctly
- 
+
 2002-04-30  Herbert Voss  <voss@lyx.org>
 
 	* buffer.C (parseSingleLyXformat2Token): fix bug with ignored
@@ -68,42 +74,42 @@
 
 	* lyxvc.C: fix bug 416 (make sure buffer is saved before
 	  attempt to register it with a VCS)
- 
+
 2002-05-30  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* lyx_main.C (init): honor variables LYX_DIR_13x and
-	LYX_USERDIR_13x 
+	LYX_USERDIR_13x
 
 2002-05-30  John Levon  <moz@compsoc.man.ac.uk>
 
-	* buffer.h: 
+	* buffer.h:
 	* buffer.C:
 	* lyx_main.C: fix a crash on bad command line,
 	  and give a useful exit status on error
 
 	* lyxfunc.C (doImport): allow -i lyx to work
-  
+
 2002-03-30  André Pönitz <poenitz@gmx.net>
 
-	* lyxfunc.C: mathed font changes 
+	* lyxfunc.C: mathed font changes
 
 2002-05-30  John Levon  <moz@compsoc.man.ac.uk>
 
-	* LaTeX.C: 
+	* LaTeX.C:
 	* importer.h:
 	* importer.C:
 	* lyx_sty.h:
-	* lyx_sty.C: 
-	* lyxlex.C: 
-	* lyxrow.h: 
-	* lyxtext.h: 
-	* paragraph.h: 
-	* paragraph.C: 
+	* lyx_sty.C:
+	* lyxlex.C:
+	* lyxrow.h:
+	* lyxtext.h:
+	* paragraph.h:
+	* paragraph.C:
 	* texrow.h:
-	* texrow.C: 
+	* texrow.C:
 	* text.C:
 	* trans_mgr.h: srcdocs, and some minor cleanups
- 
+
 2002-05-29  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* paragraph_pimpl.C (isTextAt): rewrite to be much faster (do not

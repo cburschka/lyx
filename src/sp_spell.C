@@ -21,7 +21,7 @@
 #include <sys/wait.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include <stdio.h>
+#include <cstdio>
 
 #if TIME_WITH_SYS_TIME
 # include <sys/time.h>
@@ -54,7 +54,6 @@
 #include "sp_ispell.h"
 
 #ifndef CXX_GLOBAL_CSTD
-using std::fdopen;
 using std::strcpy;
 using std::strlen;
 using std::strpbrk;

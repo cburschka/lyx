@@ -1,13 +1,10 @@
 // -*- C++ -*-
-/* This file is part of
- * ======================================================
- *
- *           LyX, The Document Processor
- *
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-2001 The LyX Team.
- *
- * ====================================================== */
+/**
+ *  \file paragraph.h
+ *  Copyright 1995 Matthias Ettrich
+ *  Copyright 2002 the LyX Team
+ *  Read the file COPYING
+ */
 
 #ifndef PARAGRAPH_H
 #define PARAGRAPH_H
@@ -400,7 +397,7 @@ public:
 	inset_iterator inset_iterator_begin();
 	///
 	inset_iterator inset_iterator_end();
-	///
+	/// returns inset iterator of the first inset at or after pos.
 	inset_iterator InsetIterator(lyx::pos_type pos);
 
 private:
