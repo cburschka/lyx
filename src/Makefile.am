@@ -89,6 +89,7 @@ lyx_SOURCES = \
 	ToolbarDefaults.C \
 	ToolbarDefaults.h \
 	WordLangTuple.h \
+	boost.C \
 	box.h \
 	box.C \
 	broken_headers.h \

@@ -141,7 +141,7 @@ void Paragraph::Pimpl::insertChar(pos_type pos, value_type c,
 
 	// Update the insets
 	owner_->insetlist.increasePosAfterPos(pos);
-	
+
 	owner_->setFont(pos, font);
 }
 
@@ -158,7 +158,7 @@ void Paragraph::Pimpl::insertInset(pos_type pos,
 	// Add a new entry in the insetlist.
 	owner_->insetlist.insert(inset, pos);
 	inset->parOwner(owner_);
-	
+
 	if (inset_owner)
 		inset->setOwner(inset_owner);
 }

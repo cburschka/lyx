@@ -485,7 +485,7 @@ namespace boost {
       struct get_arg8_type<true, Traits>
       {
         typedef typename Traits::arg8_type type;
-        };
+      };
 
       template<bool GetIt, typename Traits> 
       struct get_arg9_type
@@ -667,20 +667,20 @@ namespace boost {
 #endif // ndef BOOST_FUNCTION_NO_DEPRECATED
         typedef typename decoder::Allocator Allocator;
 #else
-		typedef InR R;
-		typedef InT1 T1;
-		typedef InT2 T2;
-		typedef InT3 T3;
-		typedef InT4 T4;
-		typedef InT5 T5;
-		typedef InT6 T6;
-		typedef InT7 T7;
-		typedef InT8 T8;
-		typedef InT9 T9;
-		typedef InT10 T10;
-		typedef InPolicy Policy;
-		typedef InMixin Mixin;
-		typedef InAllocator Allocator;
+        typedef InR R;
+        typedef InT1 T1;
+        typedef InT2 T2;
+        typedef InT3 T3;
+        typedef InT4 T4;
+        typedef InT5 T5;
+        typedef InT6 T6;
+        typedef InT7 T7;
+        typedef InT8 T8;
+        typedef InT9 T9;
+        typedef InT10 T10;
+        typedef InPolicy Policy;
+        typedef InMixin Mixin;
+        typedef InAllocator Allocator;
 #endif // def BOOST_NO_TEMPLATE_PARTIAL_SPECIALIZATION
 
         typedef typename real_get_function_impl<
@@ -855,14 +855,14 @@ namespace boost {
 #ifndef BOOST_FUNCTION_NO_DEPRECATED
     template<typename Functor>
     BOOST_FUNCTION_DEPRECATED_PRE 
-    void set(Functor BOOST_FUNCTION_TARGET_FIX(const &) f)
+        void set(Functor BOOST_FUNCTION_TARGET_FIX(const &) f) 
     {
       BOOST_FUNCTION_DEPRECATED_INNER
       self_type(f).swap(*this);
     }
 
     BOOST_FUNCTION_DEPRECATED_PRE
-    void set(const base_type& f)
+    void set(const base_type& f) 
     {
       BOOST_FUNCTION_DEPRECATED_INNER
       self_type(f).swap(*this);

@@ -10,7 +10,7 @@
 //
 // This software is provided "as is" without express or implied warranty,
 // and with no claim as to its suitability for any purpose.
-
+ 
 // For more information, see http://www.boost.org
 
 #ifndef BOOST_SIGNALS_CONNECTION_HPP
@@ -32,31 +32,31 @@ namespace boost {
       // Represents an object that has been bound as part of a slot, and how
       // to notify that object of a disconnect
       struct bound_object {
-	void* obj;
-	void* data;
-	void (*disconnect)(void*, void*);
+        void* obj;
+        void* data;
+        void (*disconnect)(void*, void*);
 
-	bool operator==(const bound_object& other) const
-	  { return obj == other.obj && data == other.data; }
-	bool operator<(const bound_object& other) const
-	  { return obj < other.obj; }
+        bool operator==(const bound_object& other) const
+          { return obj == other.obj && data == other.data; }
+        bool operator<(const bound_object& other) const 
+          { return obj < other.obj; }
       };
-
+      
       // Describes the connection between a signal and the objects that are
       // bound for a specific slot. Enables notification of the signal and the
       // slots when a disconnect is requested.
       struct basic_connection {
-	void* signal;
-	void* signal_data;
-	void (*signal_disconnect)(void*, void*);
-
-	std::list<bound_object> bound_objects;
+        void* signal;
+        void* signal_data;
+        void (*signal_disconnect)(void*, void*);
+        
+        std::list<bound_object> bound_objects;
       };
     } // end namespace detail
 
     // The user may freely pass around the "connection" object and terminate
     // the connection at any time using disconnect().
-    class connection :
+    class connection : 
       private less_than_comparable1<connection>,
       private equality_comparable1<connection>
     {
@@ -116,7 +116,7 @@ namespace boost {
 
       connection release();
 
-      void swap(scoped_connection&);
+      inline void swap(scoped_connection&);
 
       scoped_connection& operator=(const connection&);
       scoped_connection& operator=(const scoped_connection&);
@@ -131,24 +131,24 @@ namespace boost {
     }
 
     inline connection::connection(const connection& other) :
-      con(other.con), controlling_connection(other.controlling_connection)
+      con(other.con), controlling_connection(other.controlling_connection) 
     {
     }
 
     inline connection::~connection()
     {
       if (controlling_connection) {
-	disconnect();
+        disconnect();
       }
     }
 
-    inline void
+    inline void 
     connection::reset(BOOST_SIGNALS_NAMESPACE::detail::basic_connection* new_con)
     {
       con.reset(new_con);
     }
 
-    inline void
+    inline void 
     connection::add_bound_object(const BOOST_SIGNALS_NAMESPACE::detail::bound_object& b)
     {
       assert(con.get() != 0);
@@ -166,7 +166,7 @@ namespace boost {
     }
 
     inline connection& connection::operator=(const connection& other)
-    {
+    { 
       connection(other).swap(*this);
       return *this;
     }
@@ -188,7 +188,7 @@ namespace boost {
     {
     }
 
-    inline
+    inline 
     scoped_connection::scoped_connection(const scoped_connection& other) :
       connection(other),
       released(other.released)
@@ -198,7 +198,7 @@ namespace boost {
     inline scoped_connection::~scoped_connection()
     {
       if (!released) {
-	this->disconnect();
+        this->disconnect();
       }
     }
 
@@ -221,14 +221,14 @@ namespace boost {
       c1.swap(c2);
     }
 
-    inline scoped_connection&
+    inline scoped_connection& 
     scoped_connection::operator=(const connection& other)
     {
       scoped_connection(other).swap(*this);
       return *this;
     }
 
-    inline scoped_connection&
+    inline scoped_connection& 
     scoped_connection::operator=(const scoped_connection& other)
     {
       scoped_connection(other).swap(*this);
@@ -237,52 +237,52 @@ namespace boost {
 
     namespace detail {
       struct connection_slot_pair {
-	connection first;
-	any second;
+        connection first;
+        any second;
 
-	connection_slot_pair() {}
+        connection_slot_pair() {}
 
-	connection_slot_pair(const connection& c, const any& a)
-	  : first(c), second(a)
-	{
-	}
+        connection_slot_pair(const connection& c, const any& a) 
+          : first(c), second(a) 
+        {
+        }
 
-	// Dummys to allow explicit instantiation to work
-	bool operator==(const connection_slot_pair&) const { return false; }
-	bool operator<(const connection_slot_pair&) const { return false;}
+        // Dummys to allow explicit instantiation to work
+        bool operator==(const connection_slot_pair&) const { return false; }
+        bool operator<(const connection_slot_pair&) const { return false;} 
       };
-
+      
       // Determines if the underlying connection is disconnected
       struct is_disconnected {
-	typedef std::pair<const any, connection_slot_pair> argument_type;
-	typedef bool result_type;
+        typedef std::pair<const any, connection_slot_pair> argument_type;
+        typedef bool result_type;
 
-	inline bool operator()(const argument_type& c) const
-	{
-	  return !c.second.first.connected();
-	}
+        inline bool operator()(const argument_type& c) const
+        {
+          return !c.second.first.connected();
+        }
       };
 
       // Autodisconnects the bound object when it is destroyed unless the
       // release method is invoked.
       class auto_disconnect_bound_object {
       public:
-	auto_disconnect_bound_object(const bound_object& b) :
-	  binding(b), auto_disconnect(true)
-	{
-	}
+        auto_disconnect_bound_object(const bound_object& b) : 
+          binding(b), auto_disconnect(true)
+        {
+        }
 
-	~auto_disconnect_bound_object()
-	{
-	  if (auto_disconnect)
-	    binding.disconnect(binding.obj, binding.data);
-	}
+        ~auto_disconnect_bound_object()
+        {
+          if (auto_disconnect)
+            binding.disconnect(binding.obj, binding.data);
+        }
 
-	void release() { auto_disconnect = false; }
+        void release() { auto_disconnect = false; }
 
       private:
-	bound_object binding;
-	bool auto_disconnect;
+        bound_object binding;
+        bool auto_disconnect;
       };
     } // end namespace detail
   } // end namespace BOOST_SIGNALS_NAMESPACE

@@ -54,7 +54,7 @@ namespace boost {
                                  SlotFunction>
       {
         typedef function_traits<Signature> traits;
-    
+
       public:
         typedef signal0<typename traits::result_type,
                         Combiner,
@@ -72,7 +72,7 @@ namespace boost {
                                  SlotFunction>
       {
         typedef function_traits<Signature> traits;
-    
+
       public:
         typedef signal1<typename traits::result_type,
                         typename traits::arg1_type,
@@ -89,7 +89,7 @@ namespace boost {
                typename SlotFunction>
       class real_get_signal_impl<2, Signature, Combiner, Group, GroupCompare,
                                  SlotFunction>
-        {
+      {
         typedef function_traits<Signature> traits;
 
       public:
@@ -109,7 +109,7 @@ namespace boost {
                typename SlotFunction>
       class real_get_signal_impl<3, Signature, Combiner, Group, GroupCompare,
                                  SlotFunction>
-        {
+      {
         typedef function_traits<Signature> traits;
 
       public:
@@ -130,7 +130,7 @@ namespace boost {
                typename SlotFunction>
       class real_get_signal_impl<4, Signature, Combiner, Group, GroupCompare,
                                  SlotFunction>
-        {
+      {
         typedef function_traits<Signature> traits;
 
       public:
@@ -152,7 +152,7 @@ namespace boost {
                typename SlotFunction>
       class real_get_signal_impl<5, Signature, Combiner, Group, GroupCompare,
                                  SlotFunction>
-        {
+      {
         typedef function_traits<Signature> traits;
 
       public:
@@ -175,7 +175,7 @@ namespace boost {
                typename SlotFunction>
       class real_get_signal_impl<6, Signature, Combiner, Group, GroupCompare,
                                  SlotFunction>
-        {
+      {
         typedef function_traits<Signature> traits;
 
       public:
@@ -199,7 +199,7 @@ namespace boost {
                typename SlotFunction>
       class real_get_signal_impl<7, Signature, Combiner, Group, GroupCompare,
                                  SlotFunction>
-        {
+      {
         typedef function_traits<Signature> traits;
 
       public:
@@ -224,7 +224,7 @@ namespace boost {
                typename SlotFunction>
       class real_get_signal_impl<8, Signature, Combiner, Group, GroupCompare,
                                  SlotFunction>
-        {
+      {
         typedef function_traits<Signature> traits;
 
       public:
@@ -250,7 +250,7 @@ namespace boost {
                typename SlotFunction>
       class real_get_signal_impl<9, Signature, Combiner, Group, GroupCompare,
                                  SlotFunction>
-        {
+      {
         typedef function_traits<Signature> traits;
 
       public:
@@ -277,7 +277,7 @@ namespace boost {
                typename SlotFunction>
       class real_get_signal_impl<10, Signature, Combiner, Group, GroupCompare,
                                  SlotFunction>
-        {
+      {
         typedef function_traits<Signature> traits;
 
       public:
@@ -310,7 +310,7 @@ namespace boost {
                                     Group,
                                     GroupCompare,
                                     SlotFunction>
-        {
+      {
       };
 
     } // end namespace detail
@@ -340,7 +340,7 @@ namespace boost {
                        GroupCompare,
                        SlotFunction>::type base_type;
 
-    public:
+  public:
     explicit signal(const Combiner& combiner = Combiner(),
                     const GroupCompare& group_compare = GroupCompare()) :
       base_type(combiner, group_compare)

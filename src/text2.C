@@ -1353,7 +1353,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 					= floatList.getType(static_cast<InsetFloat*>(in)->type());
 
 				buf->counters().step(fl.name());
-				
+
 				// Doesn't work... yet.
 				ostringstream o;
 				//o << fl.name() << " " << buf->counters().value(fl.name()) << ":";
@@ -1382,7 +1382,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 void LyXText::updateCounters(BufferView * bview) const
 {
 	Paragraph * par;
-	
+
 	Row * row = firstrow;
 	par = row->par();
 
@@ -1390,7 +1390,7 @@ void LyXText::updateCounters(BufferView * bview) const
 	while (par) {
 		while (row->par() != par)
 			row = row->next();
-		
+
 		setCounter(bview->buffer(), par);
 
 		// now check for the headline layouts. remember that they
