@@ -2,6 +2,13 @@
 
 	* external_templates: Scrap the RasterImage format.
 
+	* scripts/fig2pstex.py:
+	* scripts/pic2ascii.py:
+	* scripts/pic2png_eps.py:
+	* scripts/general_command_wrapper.py:
+	* scripts/pic2png_eps.sh:
+	* scripts/fig2png.py: removed.
+
 2003-06-04  Angus Leeming  <leeming@lyx.org>
 
 	* lyx2lyx/lyx2lyx: bump the output format to 224.
