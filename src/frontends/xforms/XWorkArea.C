@@ -578,14 +578,6 @@ int XWorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		break;
 #endif
 
-	case FL_FOCUS:
-		lyxerr[Debug::WORKAREA] << "Workarea event: FOCUS" << endl;
-		area->workAreaFocus();
-		break;
-	case FL_UNFOCUS:
-		lyxerr[Debug::WORKAREA] << "Workarea event: UNFOCUS" << endl;
-		area->workAreaUnfocus();
-		break;
 	case FL_ENTER:
 		lyxerr[Debug::WORKAREA] << "Workarea event: ENTER" << endl;
 		break;

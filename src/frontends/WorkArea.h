@@ -74,10 +74,6 @@ public:
 	///
 	boost::signal3<void, int, int, mouse_button::state> workAreaMotionNotify;
 	///
-	boost::signal0<void> workAreaFocus;
-	///
-	boost::signal0<void> workAreaUnfocus;
-	///
 	boost::signal3<void, int, int, mouse_button::state> workAreaDoubleClick;
 	///
 	boost::signal3<void, int, int, mouse_button::state> workAreaTripleClick;

@@ -42,10 +42,6 @@ protected:
 	void paintEvent(QPaintEvent * e);
 	/// widget has been resized
 	void resizeEvent(QResizeEvent * e);
-	/// keyboard focus in this widget
-	void focusInEvent(QFocusEvent * e);
-	/// keyboard focus lost
-	void focusOutEvent(QFocusEvent * e);
  
 	/// mouse button press
 	void mousePressEvent(QMouseEvent * e);

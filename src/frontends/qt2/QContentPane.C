@@ -122,18 +122,6 @@ void QContentPane::keyPressEvent(QKeyEvent * e)
 }
 
  
-void QContentPane::focusInEvent(QFocusEvent *)
-{
-	wa_->workAreaFocus();
-}
- 
-
-void QContentPane::focusOutEvent(QFocusEvent *)
-{
-	wa_->workAreaUnfocus();
-}
-
-
 void QContentPane::mouseDoubleClickEvent(QMouseEvent * e)
 {
 	wa_->workAreaDoubleClick(e->x(), e->y(), q_button_state(e->state()));
