@@ -28,20 +28,64 @@
 #include "support/filetools.h"
 #include "support/package.h"
 
+#include <sstream>
+
 using std::string;
 using std::vector;
 
 namespace lyx {
 namespace frontend {
 
+string const getLengthFromWidgets(Gtk::Adjustment const & adj, Gtk::ComboBoxText const & combo)
+{
+	std::ostringstream os;
+	os << adj.get_value();
+	os << combo.get_active_text();
+	return os.str();
+}
+
+
+void setWidgetsFromLength(Gtk::Adjustment & adj, Gtk::ComboBoxText & combo, LyXLength const & length)
+{
+	adj.set_value(length.value());
+
+	string unit = stringFromUnit(length.unit());
+	if (unit.empty())
+		unit = getDefaultUnit();
+
+	comboBoxTextSet(combo,unit);
+}
+
+
+void populateUnitCombo(Gtk::ComboBoxText & combo, bool const userelative)
+{
+	vector<string> units = buildLengthUnitList(userelative);
+
+	vector<string>::const_iterator it = units.begin();
+	vector<string>::const_iterator end = units.end();
+	for(; it != end; ++it)
+		combo.append_text(*it);
+}
+
+
+int comboBoxTextSet(Gtk::ComboBoxText & combo, Glib::ustring target)
+{
+	int const children = combo.get_model()->children().size();
+	for (int i = 0; i < children; i++) {
+		combo.set_active(i);
+		if (combo.get_active_text() == target)
+			return 0;
+	}
+	return -1;
+}
+
+
 Gtk::BuiltinStockID getGTKStockIcon(FuncRequest const & func)
 {
 	switch (func.action) {
-
 		case LFUN_MENUWRITE: return Gtk::Stock::SAVE;
 		case LFUN_MENUNEW: return Gtk::Stock::NEW;
 		case LFUN_WRITEAS: return Gtk::Stock::SAVE_AS;
-
 		case LFUN_CENTER: return Gtk::Stock::JUSTIFY_CENTER;
 		case LFUN_TOCVIEW: return Gtk::Stock::INDEX;
 		case LFUN_CLOSEBUFFER: return Gtk::Stock::CLOSE;
@@ -93,7 +137,7 @@ string const getDefaultUnit()
 void unitsComboFromLength(Gtk::ComboBox * combo,
                            Gtk::TreeModelColumn<Glib::ustring> const & stringcol,
                            LyXLength const & len,
-                           std::string defunit)
+                           std::string const & defunit)
 {
 	string unit = stringFromUnit(len.unit());
 	if (unit.empty())
@@ -115,23 +159,19 @@ void unitsComboFromLength(Gtk::ComboBox * combo,
 }
 
 
-vector<string> const buildLengthUnitList()
+vector<string> const buildLengthUnitList(bool const userelative)
 {
-	vector<string> data(unit_name_gui, unit_name_gui + num_units);
-
-	return data;
-}
-
-
-vector<string> const buildLengthNoRelUnitList()
-{
+	//vector<string> data(unit_name_gui, unit_name_gui + num_units);
 	vector<string> data;
-	for (int i = 0; i < num_units; ++i) {
-		string str(unit_name_gui[i]);
-		if (str.find("%") == string::npos)
-			data.push_back(unit_name_gui[i]);
+	if (userelative) {
+		data = vector<string>(unit_name_gui, unit_name_gui + num_units);
+	} else {
+		for (int i = 0; i < num_units; ++i) {
+			string str(unit_name_gui[i]);
+			if (str.find("%") == string::npos)
+				data.push_back(unit_name_gui[i]);
+		}
 	}
-
 	return data;
 }
 

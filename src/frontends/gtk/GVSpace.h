@@ -29,17 +29,11 @@ private:
 	virtual void doBuild();
 	virtual void update();
 
-	void PopulateComboBox(Gtk::ComboBox * combo,
-				  std::vector<std::string> const & strings);
-
 	void onSpacingComboChanged();
-
-	Gtk::TreeModelColumn<Glib::ustring> stringcol_;
-	Gtk::TreeModel::ColumnRecord cols_;
 
 	Gtk::ComboBox * spacingcombo_;
 	Gtk::SpinButton * valuespin_;
-	Gtk::ComboBox * valueunitscombo_;
+	Gtk::ComboBoxText valueunitscombo_;
 	Gtk::CheckButton * protectcheck_;
 };
 

@@ -1,3 +1,11 @@
+2005-03-10  John Spray  <spray_john@users.sf.net>
+
+	* GGraphics, GVSpace, GBox: update to use new ghelpers functions
+	* ghelpers: add getLengthFromWidgets, setWidgetsFromLength,
+	comboBoxTextSet, populateUnitCombo.  Remove buildLengthNoRelUnitList.
+	* GDocument.[Ch], Makefile.am, Dialogs.C: start work on document
+	dialog.
+
 2005-03-04  John Spray  <spray_john@users.sf.net>
 
 	* GToolbar.C: remember existing selection when update()ing 

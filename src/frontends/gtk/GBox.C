@@ -115,7 +115,7 @@ void GBox::doBuild()
 	//widthunitscombo_ is populated in setSpecial
 
 	box_gui_tokens_special_length(ids_spec_, gui_names_spec_);
-	vector<string> heightunits = buildLengthUnitList();
+	vector<string> heightunits = buildLengthUnitList(true);
 	// Append special entries, skipping the first item "None"
 	heightunits.insert(heightunits.end(),
 		++gui_names_spec_.begin(), gui_names_spec_.end());
@@ -220,7 +220,7 @@ void GBox::setSpecial(bool ibox)
 
 	unsigned int const initselection = widthunitscombo_->get_active_row_number();
 	widthunitsstore_->clear();
-	vector<string> normalunits = buildLengthUnitList();
+	vector<string> normalunits = buildLengthUnitList(true);
 	if (ibox) {
 		vector<string>::const_iterator it = normalunits.begin();
 		vector<string>::const_iterator end = normalunits.end();

@@ -8,6 +8,7 @@ dist_glade_DATA = \
 	box.glade \
 	changes.glade \
 	character.glade \
+	document.glade
 	errors.glade \
 	ERT.glade \
 	float.glade \

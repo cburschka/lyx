@@ -67,7 +67,7 @@
 #include "GChanges.h"
 #include "GCharacter.h"
 #include "FormCitation.h"
-#include "FormDocument.h"
+#include "GDocument.h"
 #include "GErrorList.h"
 #include "GERT.h"
 #include "FormExternal.h"
@@ -217,9 +217,10 @@ Dialogs::DialogPtr Dialogs::build(string const & name)
 		dialog->setView(new FormCitation(*dialog));
 		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
 	} else if (name == "document") {
+		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlDocument(*dialog));
-		dialog->setView(new FormDocument(*dialog));
-		dialog->bc().bp(new NoRepeatedApplyReadOnlyPolicy);
+		dialog->setView(new GDocument(*dialog));
+		dialog->bc().bp(new OkApplyCancelReadOnlyPolicy);
 	} else if (name == "errorlist") {
 		dialog->bc().view(new GBC(dialog->bc()));
 		dialog->setController(new ControlErrorList(*dialog));

@@ -65,8 +65,8 @@ private:
 	Gtk::SpinButton * widthspin_;
 	Gtk::SpinButton * heightspin_;
 	Gtk::CheckButton * aspectcheck_;
-	Gtk::ComboBox * widthunitscombo_;
-	Gtk::ComboBox * heightunitscombo_;
+	Gtk::ComboBoxText widthunitscombo_;
+	Gtk::ComboBoxText heightunitscombo_;
 	Gtk::RadioButton * setscalingradio_;
 	Gtk::RadioButton * setsizeradio_;
 

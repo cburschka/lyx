@@ -33,6 +33,8 @@ libgtk_la_SOURCES = \
 	GChanges.h \
 	GCharacter.C \
 	GCharacter.h \
+	GDocument.C \
+	GDocument.h \
 	GErrorList.C \
 	GErrorList.h \
 	GERT.C \
@@ -130,7 +132,6 @@ xforms_objects = \
 	../xforms/FormCitation.lo \
 	../xforms/FormColorpicker.lo \
 	../xforms/FormDialogView.lo \
-	../xforms/FormDocument.lo \
 	../xforms/FormExternal.lo \
 	../xforms/FormMathsBitmap.lo \
 	../xforms/FormMathsDelim.lo \
