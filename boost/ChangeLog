@@ -1,3 +1,7 @@
+2003-10-07  Angus Leeming  <leeming@lyx.org>
+
+	* boost/any.hpp: change the throw to boost::throw_exception.
+
 2003-09-26  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* boost/test/detail/nullstream.hpp: new file
