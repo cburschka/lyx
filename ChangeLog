@@ -1,4 +1,17 @@
+2002-08-08  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* autogen.sh (autoversion): add handling of different autoconf
+	versions.
+
+	* .cvsignore: add acconfig.m4, autom4te-2.53.cache, configure.in
+	and configure.ac
+
+	* acconfig.m4: move from here...
+	* config/acconfig.m4 ...to here
+
+	* configure.in: more from here...
+	* config/configure.in: ...to here
+	
 2002-07-30  André Poenitz <poenitz@gmx.de>
 
 	* INSTALL: fix location of GNU gettext package
@@ -21,18 +34,18 @@
 	of HAVE_LIBSM and XPM_H_LOCATION
 
 	* INSTALL: remove documentation for --with-broken-headers and
-	--with-liberty 
+	--with-liberty
 
 	* configure.in: do not invoke LYX_SCO, LYX_HPUX, LYX_SUNOS4,
 	AC_STRUCT_ST_BLKSIZE, AC_STRUCT_ST_BLOCKS, AC_STRUCT_ST_RDEV;
 	remove --with-broken-headers option; do not test for strerror and
-	atexit 
+	atexit
 	(VERSION_INFO): add EOF at the end
 
 2002-07-14  John Levon  <moz@compsoc.man.ac.uk>
 
 	* configure.in: remove xforms from qt
- 
+
 2002-07-04  Kayvan A. Sylvan  <kayvan@sylvan.com>
 
 	* configure.in (LYX_USE_FRONTEND): The order of libraries is
@@ -75,7 +88,7 @@
 	* INSTALL:
 	* configure.in: remove attempt to link against libiberty. It
 	is morally wrong, and potentially dangerous.
- 
+
 2002-06-07  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* configure.in: move the test for xpm/xforms out of the frontends

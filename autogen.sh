@@ -1,9 +1,33 @@
 #!/bin/sh
 
+# Discover what version of autoconf we are using.
+autoversion=`autoconf --version | head -n 1`
+
+case $autoversion in
+    *2.13)
+	echo "2.13"
+	cp config/acconfig.h .
+	cp config/configure.in .
+	cp config/relyx_configure.in lib/reLyX/configure.in
+	;;
+    *2.53)
+	echo "2.53"
+	cp config/configure.ac .
+	cp config/relyx_configure.ac lib/reLyX/configure.ac
+	;;
+    *)
+	echo "You are running a version of autoconf that"
+	echo "we do not support."
+	echo "LyX only supports autoconf 2.13 and 2.53."
+	exit
+	;;
+esac
+
+
 ACLOCAL=aclocal
-AUTOHEADER=autoheader
+AUTOHEADER="autoheader -W none -W obsolete"
 AUTOMAKE="automake -a -c --foreign"
-AUTOCONF=autoconf
+AUTOCONF="autoconf -W none -W obsolete"
 GNUM4=
 
 ACINCLUDE_FILES="lyxinclude.m4 libtool.m4 codeset.m4 gettext.m4 glibc21.m4 iconv.m4 isc-posix.m4 lcmessage.m4 progtest.m4 xforms.m4 qt2.m4 gtk--.m4 gnome--.m4 gnome.m4 pspell.m4 pkg.m4"

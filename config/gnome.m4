@@ -1,7 +1,7 @@
 # aclocal-include.m4
-# 
+#
 # This macro adds the name macrodir to the set of directories
-# that `aclocal' searches for macros.  
+# that `aclocal' searches for macros.
 
 # serial 1
 
@@ -18,7 +18,7 @@ dnl GNOME_COMPILE_WARNINGS
 dnl Turn on many useful compiler warnings
 dnl For now, only works on GCC
 AC_DEFUN([GNOME_COMPILE_WARNINGS],[
-  AC_ARG_ENABLE(compile-warnings, 
+  AC_ARG_ENABLE(compile-warnings,
     [  --enable-compile-warnings=[no/minimum/yes]	Turn on compiler warnings.],,enable_compile_warnings=minimum)
 
   AC_MSG_CHECKING(what warning flags to pass to the C compiler)
@@ -48,7 +48,7 @@ AC_DEFUN([GNOME_COMPILE_WARNINGS],[
 dnl For C++, do basically the same thing.
 
 AC_DEFUN([GNOME_CXX_WARNINGS],[
-  AC_ARG_ENABLE(cxx-warnings, 
+  AC_ARG_ENABLE(cxx-warnings,
     [  --enable-cxx-warnings=[no/minimum/yes]	Turn on compiler warnings.],,enable_cxx_warnings=minimum)
 
   AC_MSG_CHECKING(what warning flags to pass to the C++ compiler)
@@ -80,7 +80,7 @@ dnl =============
 dnl
 dnl - Determine which version of curses is installed on your system
 dnl   and set the -I/-L/-l compiler entries and add a few preprocessor
-dnl   symbols 
+dnl   symbols
 dnl - Do an AC_SUBST on the CURSES_INCLUDEDIR and CURSES_LIBS so that
 dnl   @CURSES_INCLUDEDIR@ and @CURSES_LIBS@ will be available in
 dnl   Makefile.in's
@@ -90,7 +90,7 @@ dnl   CURSES_INCLUDEDIR - contains -I's and possibly -DRENAMED_CURSES if
 dnl                       an ncurses.h that's been renamed to curses.h
 dnl                       is found.
 dnl   CURSES_LIBS       - sets -L and -l's appropriately
-dnl   CFLAGS            - if --with-sco, add -D_SVID3 
+dnl   CFLAGS            - if --with-sco, add -D_SVID3
 dnl   has_curses        - exports result of tests to rest of configure
 dnl
 dnl Usage:
@@ -114,7 +114,7 @@ dnl - call AM_CONDITIONAL(HAS_CURSES, test "$has_curses" = true) from
 dnl   configure.in
 dnl - your Makefile.am can look something like this
 dnl   -----------------------------------------------
-dnl   INCLUDES= blah blah blah $(CURSES_INCLUDEDIR) 
+dnl   INCLUDES= blah blah blah $(CURSES_INCLUDEDIR)
 dnl   if HAS_CURSES
 dnl   CURSES_TARGETS=name_of_curses_prog
 dnl   endif
@@ -132,25 +132,25 @@ dnl
 dnl /*=== Curses version detection defines ===*/
 dnl /* Found some version of curses that we're going to use */
 dnl #undef HAS_CURSES
-dnl    
+dnl
 dnl /* Use SunOS SysV curses? */
 dnl #undef USE_SUNOS_CURSES
-dnl 
+dnl
 dnl /* Use old BSD curses - not used right now */
 dnl #undef USE_BSD_CURSES
-dnl 
+dnl
 dnl /* Use SystemV curses? */
 dnl #undef USE_SYSV_CURSES
-dnl 
+dnl
 dnl /* Use Ncurses? */
 dnl #undef USE_NCURSES
-dnl 
+dnl
 dnl /* If you Curses does not have color define this one */
 dnl #undef NO_COLOR_CURSES
-dnl 
+dnl
 dnl /* Define if you want to turn on SCO-specific code */
 dnl #undef SCO_FLAVOR
-dnl 
+dnl
 dnl /* Set to reflect version of ncurses *
 dnl  *   0 = version 1.*
 dnl  *   1 = version 1.9.9g
@@ -158,7 +158,7 @@ dnl  *   2 = version 4.0/4.1 */
 dnl #undef NCURSES_970530
 dnl
 dnl /*=== End new stuff for acconfig.h ===*/
-dnl 
+dnl
 
 
 AC_DEFUN(AC_CHECK_CURSES,[
@@ -174,7 +174,7 @@ AC_DEFUN(AC_CHECK_CURSES,[
 	AC_ARG_WITH(sco,
 	  [  --with-sco              Use this to turn on SCO-specific code],[
 	  if test x$withval = xyes; then
-		AC_DEFINE(SCO_FLAVOR)
+		AC_DEFINE(SCO_FLAVOR, 1, [dummy])
 		CFLAGS="$CFLAGS -D_SVID3"
 	  fi
 	])
@@ -210,8 +210,8 @@ AC_DEFUN(AC_CHECK_CURSES,[
 		CURSES_INCLUDEDIR="-I$withval/include"
 		search_ncurses=false
 		screen_manager="ncurses"
-		AC_DEFINE(USE_NCURSES)
-		AC_DEFINE(HAS_CURSES)
+		AC_DEFINE(USE_NCURSES, 1, [dummy])
+		AC_DEFINE(HAS_CURSES, 1, [dummy])
 		has_curses=true
 	  fi
 	)
@@ -229,11 +229,11 @@ AC_DEFUN(AC_USE_SUNOS_CURSES, [
 	search_ncurses=false
 	screen_manager="SunOS 4.x /usr/5include curses"
 	AC_MSG_RESULT(Using SunOS 4.x /usr/5include curses)
-	AC_DEFINE(USE_SUNOS_CURSES)
-	AC_DEFINE(HAS_CURSES)
+	AC_DEFINE(USE_SUNOS_CURSES, 1, [dummy])
+	AC_DEFINE(HAS_CURSES, 1, [dummy])
 	has_curses=true
-	AC_DEFINE(NO_COLOR_CURSES)
-	AC_DEFINE(USE_SYSV_CURSES)
+	AC_DEFINE(NO_COLOR_CURSES, 1, [dummy])
+	AC_DEFINE(USE_SYSV_CURSES, 1, [dummy])
 	CURSES_INCLUDEDIR="-I/usr/5include"
 	CURSES_LIBS="/usr/5lib/libcurses.a /usr/5lib/libtermcap.a"
 	AC_MSG_RESULT(Please note that some screen refreshs may fail)
@@ -243,18 +243,18 @@ AC_DEFUN(AC_USE_OSF1_CURSES, [
        AC_MSG_RESULT(Using OSF1 curses)
        search_ncurses=false
        screen_manager="OSF1 curses"
-       AC_DEFINE(HAS_CURSES)
+       AC_DEFINE(HAS_CURSES, 1, [dummy])
        has_curses=true
-       AC_DEFINE(NO_COLOR_CURSES)
-       AC_DEFINE(USE_SYSV_CURSES)
+       AC_DEFINE(NO_COLOR_CURSES, 1 [dummy])
+       AC_DEFINE(USE_SYSV_CURSES, 1, [dummy])
        CURSES_LIBS="-lcurses"
 ])
 
 AC_DEFUN(AC_USE_SYSV_CURSES, [
 	AC_MSG_RESULT(Using SysV curses)
-	AC_DEFINE(HAS_CURSES)
+	AC_DEFINE(HAS_CURSES, 1, [dummy])
 	has_curses=true
-	AC_DEFINE(USE_SYSV_CURSES)
+	AC_DEFINE(USE_SYSV_CURSES, 1, [dummy])
 	search_ncurses=false
 	screen_manager="SysV/curses"
 	CURSES_LIBS="-lcurses"
@@ -262,7 +262,7 @@ AC_DEFUN(AC_USE_SYSV_CURSES, [
 
 dnl AC_ARG_WITH(bsd-curses,
 dnl [--with-bsd-curses         Used to compile with bsd curses, not very fancy],
-dnl 	search_ncurses=false
+dnl	search_ncurses=false
 dnl	screen_manager="Ultrix/cursesX"
 dnl	if test $system = ULTRIX
 dnl	then
@@ -272,32 +272,32 @@ dnl	    THIS_CURSES=curses
 dnl	fi
 dnl
 dnl	CURSES_LIBS="-l$THIS_CURSES -ltermcap"
-dnl	AC_DEFINE(HAS_CURSES)
+dnl	AC_DEFINE(HAS_CURSES, 1, [dummy])
 dnl	has_curses=true
-dnl	AC_DEFINE(USE_BSD_CURSES)
+dnl	AC_DEFINE(USE_BSD_CURSES, 1, [dummy])
 dnl	AC_MSG_RESULT(Please note that some screen refreshs may fail)
 dnl	AC_WARN(Use of the bsdcurses extension has some)
 dnl	AC_WARN(display/input problems.)
 dnl	AC_WARN(Reconsider using xcurses)
 dnl)
 
-	
+
 dnl
 dnl Parameters: directory filename cureses_LIBS curses_INCLUDEDIR nicename
 dnl
 AC_DEFUN(AC_NCURSES, [
     if $search_ncurses
     then
-        if test -f $1/$2
+	if test -f $1/$2
 	then
 	    AC_MSG_RESULT(Found ncurses on $1/$2)
- 	    CURSES_LIBS="$3"
+	    CURSES_LIBS="$3"
 	    CURSES_INCLUDEDIR="$4"
 	    search_ncurses=false
 	    screen_manager=$5
-            AC_DEFINE(HAS_CURSES)
-            has_curses=true
-	    AC_DEFINE(USE_NCURSES)
+	    AC_DEFINE(HAS_CURSES, 1, [dummy])
+	    has_curses=true
+	    AC_DEFINE(USE_NCURSES, 1, [dummy])
 	fi
     fi
 ])
@@ -317,9 +317,9 @@ AC_DEFUN(AC_SEARCH_NCURSES, [
     dnl
     dnl We couldn't find ncurses, try SysV curses
     dnl
-    if $search_ncurses 
+    if $search_ncurses
     then
-        AC_EGREP_HEADER(init_color, /usr/include/curses.h,
+	AC_EGREP_HEADER(init_color, /usr/include/curses.h,
 	    AC_USE_SYSV_CURSES)
 	AC_EGREP_CPP(USE_NCURSES,[
 #include <curses.h>
@@ -329,11 +329,11 @@ USE_NCURSES
 #endif
 ],[
 	CURSES_INCLUDEDIR="$CURSES_INCLUDEDIR -DRENAMED_NCURSES"
-        AC_DEFINE(HAS_CURSES)
+	AC_DEFINE(HAS_CURSES, 1, [dummy])
 	has_curses=true
-        AC_DEFINE(USE_NCURSES)
-        search_ncurses=false
-        screen_manager="ncurses installed as curses"
+	AC_DEFINE(USE_NCURSES, 1, [dummy])
+	search_ncurses=false
+	screen_manager="ncurses installed as curses"
 ])
     fi
 
@@ -347,9 +347,9 @@ USE_NCURSES
 	if test -f /usr/5include/curses.h
 	then
 	    AC_USE_SUNOS_CURSES
-        fi
+	fi
     else
-        # check for ncurses version, to properly ifdef mouse-fix
+	# check for ncurses version, to properly ifdef mouse-fix
 	AC_MSG_CHECKING(for ncurses version)
 	ncurses_version=unknown
 cat > conftest.$ac_ext <<EOF
@@ -363,26 +363,26 @@ cat > conftest.$ac_ext <<EOF
 #undef VERSION
 VERSION:NCURSES_VERSION
 EOF
-        if (eval "$ac_cpp conftest.$ac_ext") 2>&AC_FD_CC |
+	if (eval "$ac_cpp conftest.$ac_ext") 2>&AC_FD_CC |
   egrep "VERSION:" >conftest.out 2>&1; then
 changequote(,)dnl
-            ncurses_version=`cat conftest.out|sed -e 's/^[^"]*"//' -e 's/".*//'`
+	    ncurses_version=`cat conftest.out|sed -e 's/^[^"]*"//' -e 's/".*//'`
 changequote([,])dnl
 	fi
 	rm -rf conftest*
-        AC_MSG_RESULT($ncurses_version)
+	AC_MSG_RESULT($ncurses_version)
 	case "$ncurses_version" in
 changequote(,)dnl
 	4.[01])
 changequote([,])dnl
-            AC_DEFINE(NCURSES_970530,2)
-            ;;
+	    AC_DEFINE(NCURSES_970530, 2, [dummy])
+	    ;;
 	1.9.9g)
-            AC_DEFINE(NCURSES_970530,1)
-            ;;
+	    AC_DEFINE(NCURSES_970530, 1, [dummy])
+	    ;;
 	1*)
-            AC_DEFINE(NCURSES_970530,0)
-            ;;
+	    AC_DEFINE(NCURSES_970530, 0, [dummy])
+	    ;;
 	esac
     fi
 ])
@@ -404,26 +404,26 @@ dnl Test for Bonobo, and define BONOBO_CFLAGS and BONOBO_LIBS
 dnl
 AC_DEFUN([AM_PATH_BONOBO],
 [
-dnl 
+dnl
 dnl Get the cflags and libraries from the gnome-config script
 dnl
 AC_ARG_WITH(bonobo-prefix,[  --with-bonobo-prefix=PFX   Prefix where Bonobo is installed (optional)],
-            bonobo_prefix="$withval", bonobo_prefix="")
+	    bonobo_prefix="$withval", bonobo_prefix="")
 AC_ARG_WITH(bonobo-exec-prefix,[  --with-bonobo-exec-prefix=PFX Exec prefix where Bonobo is installed (optional)],
-            bonobo_exec_prefix="$withval", bonobo_exec_prefix="")
+	    bonobo_exec_prefix="$withval", bonobo_exec_prefix="")
 AC_ARG_ENABLE(bonobotest, [  --disable-bonobotest       Do not try to compile and run a test Bonobo program],
 		    , enable_bonobotest=yes)
 
   if test x$bonobo_exec_prefix != x ; then
      bonobo_args="$bonobo_args --exec-prefix=$bonobo_exec_prefix"
      if test x${GNOME_CONFIG+set} != xset ; then
-        GNOME_CONFIG=$bonobo_exec_prefix/bin/gnome-config
+	GNOME_CONFIG=$bonobo_exec_prefix/bin/gnome-config
      fi
   fi
   if test x$bonobo_prefix != x ; then
      bonobo_args="$bonobo_args --prefix=$bonobo_prefix"
      if test x${GNOME_CONFIG+set} != xset ; then
-        GNOME_CONFIG=$bonobo_prefix/bin/gnome-config
+	GNOME_CONFIG=$bonobo_prefix/bin/gnome-config
      fi
   fi
 
@@ -438,11 +438,11 @@ AC_ARG_ENABLE(bonobotest, [  --disable-bonobotest       Do not try to compile an
     BONOBO_LIBS=`$GNOME_CONFIG $bonoboconf_args --libs bonobo`
 
     bonobo_major_version=`$GNOME_CONFIG $bonobo_args --version | \
-           sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
+	   sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
     bonobo_minor_version=`$GNOME_CONFIG $bonobo_args --version | \
-           sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\2/'`
+	   sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\2/'`
     bonobo_micro_version=`$GNOME_CONFIG $bonobo_config_args --version | \
-           sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`
+	   sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`
     if test "x$enable_bonobotest" = "xyes" ; then
       ac_save_CFLAGS="$CFLAGS"
       ac_save_LIBS="$LIBS"
@@ -463,7 +463,7 @@ static char*
 my_strdup (char *str)
 {
   char *new_str;
-  
+
   if (str)
     {
       new_str = malloc ((strlen (str) + 1) * sizeof(char));
@@ -471,7 +471,7 @@ my_strdup (char *str)
     }
   else
     new_str = NULL;
-  
+
   return new_str;
 }
 
@@ -492,7 +492,7 @@ int main ()
   fi
   if test "x$no_bonobo" = x ; then
      AC_MSG_RESULT(yes)
-     ifelse([$2], , :, [$2])     
+     ifelse([$2], , :, [$2])
   else
      AC_MSG_RESULT(no)
      if test "$GNOME_CONFIG" = "no" ; then
@@ -502,30 +502,30 @@ int main ()
        echo "*** full path to gnome-config."
      else
        if test -f conf.bonobotest ; then
-        :
+	:
        else
-          echo "*** Could not run BONOBO test program, checking why..."
-          CFLAGS="$CFLAGS $BONOBO_CFLAGS"
-          LIBS="$LIBS $BONOBO_LIBS"
-          AC_TRY_LINK([
+	  echo "*** Could not run BONOBO test program, checking why..."
+	  CFLAGS="$CFLAGS $BONOBO_CFLAGS"
+	  LIBS="$LIBS $BONOBO_LIBS"
+	  AC_TRY_LINK([
 #include <stdio.h>
 #include <bonobo/gnome-object.h>
 ],      [ return 0; ],
-        [ echo "*** The test program compiled, but did not run. This usually means"
-          echo "*** that the run-time linker is not finding BONOBO or finding the wrong"
-          echo "*** version of BONOBO. If it is not finding BONOBO, you'll need to set your"
-          echo "*** LD_LIBRARY_PATH environment variable, or edit /etc/ld.so.conf to point"
-          echo "*** to the installed location  Also, make sure you have run ldconfig if that"
-          echo "*** is required on your system"
+	[ echo "*** The test program compiled, but did not run. This usually means"
+	  echo "*** that the run-time linker is not finding BONOBO or finding the wrong"
+	  echo "*** version of BONOBO. If it is not finding BONOBO, you'll need to set your"
+	  echo "*** LD_LIBRARY_PATH environment variable, or edit /etc/ld.so.conf to point"
+	  echo "*** to the installed location  Also, make sure you have run ldconfig if that"
+	  echo "*** is required on your system"
 	  echo "***"
-          echo "*** If you have an old version installed, it is best to remove it, although"
-          echo "*** you may also be able to get things to work by modifying LD_LIBRARY_PATH"],
-        [ echo "*** The test program failed to compile or link. See the file config.log for the"
-          echo "*** exact error that occured. This usually means BONOBO was incorrectly installed"
-          echo "*** or that you have moved BONOBO since it was installed. In the latter case, you"
-          echo "*** may want to edit the gnome-config script: $GNOME_CONFIG" ])
-          CFLAGS="$ac_save_CFLAGS"
-          LIBS="$ac_save_LIBS"
+	  echo "*** If you have an old version installed, it is best to remove it, although"
+	  echo "*** you may also be able to get things to work by modifying LD_LIBRARY_PATH"],
+	[ echo "*** The test program failed to compile or link. See the file config.log for the"
+	  echo "*** exact error that occured. This usually means BONOBO was incorrectly installed"
+	  echo "*** or that you have moved BONOBO since it was installed. In the latter case, you"
+	  echo "*** may want to edit the gnome-config script: $GNOME_CONFIG" ])
+	  CFLAGS="$ac_save_CFLAGS"
+	  LIBS="$ac_save_LIBS"
        fi
      fi
      BONOBO_CFLAGS=""
@@ -542,7 +542,7 @@ AC_DEFUN([BONOBO_CHECK], [
 ])
 
 # gnome-common.m4
-# 
+#
 # This only for packages that are not in the GNOME CVS tree.
 
 dnl GNOME_COMMON_INIT
@@ -562,7 +562,7 @@ dnl checks that are needed for the diskusage applet.
 dnl
 
 AC_DEFUN([GNOME_FILEUTILS_CHECKS],
-[	
+[
 AC_CHECK_HEADERS(fcntl.h sys/param.h sys/statfs.h sys/fstyp.h \
 mnttab.h mntent.h sys/statvfs.h sys/vfs.h sys/mount.h \
 sys/filsys.h sys/fs_types.h sys/fs/s5param.h)
@@ -624,7 +624,7 @@ yes
 AC_MSG_RESULT($fu_cv_sys_mounted_cray_listmntent)
 if test $fu_cv_sys_mounted_cray_listmntent = yes; then
 list_mounted_fs=found
-AC_DEFINE(MOUNTED_LISTMNTENT)
+AC_DEFINE(MOUNTED_LISTMNTENT, 1, [dummy])
 fi
 fi
 
@@ -643,7 +643,7 @@ AC_CACHE_VAL(fu_cv_sys_mounted_getmntent1,
 AC_MSG_RESULT($fu_cv_sys_mounted_getmntent1)
 if test $fu_cv_sys_mounted_getmntent1 = yes; then
 list_mounted_fs=found
-AC_DEFINE(MOUNTED_GETMNTENT1)
+AC_DEFINE(MOUNTED_GETMNTENT1, 1, [dummy])
 fi
 fi
 
@@ -657,7 +657,7 @@ fu_cv_sys_mounted_getmntent2=no)])
 AC_MSG_RESULT($fu_cv_sys_mounted_getmntent2)
 if test $fu_cv_sys_mounted_getmntent2 = yes; then
 list_mounted_fs=found
-AC_DEFINE(MOUNTED_GETMNTENT2)
+AC_DEFINE(MOUNTED_GETMNTENT2, 1, [dummy])
 fi
 fi
 
@@ -682,7 +682,7 @@ fu_cv_sys_mounted_getsstat=no)])
 AC_MSG_RESULT($fu_cv_sys_mounted_getsstat)
 if test $fu_cv_sys_mounted_getsstat = yes; then
 list_mounted_fs=found
-AC_DEFINE(MOUNTED_GETFSSTAT)
+AC_DEFINE(MOUNTED_GETFSSTAT, 1, [dummy])
 fi
 fi
 
@@ -696,7 +696,7 @@ fu_cv_sys_mounted_vmount=no)])
 AC_MSG_RESULT($fu_cv_sys_mounted_vmount)
 if test $fu_cv_sys_mounted_vmount = yes; then
 list_mounted_fs=found
-AC_DEFINE(MOUNTED_VMOUNT)
+AC_DEFINE(MOUNTED_VMOUNT, 1, [dummy])
 fi
 fi
 
@@ -713,7 +713,7 @@ fu_cv_sys_mounted_fread_fstyp=no)])
 AC_MSG_RESULT($fu_cv_sys_mounted_fread_fstyp)
 if test $fu_cv_sys_mounted_fread_fstyp = yes; then
 list_mounted_fs=found
-AC_DEFINE(MOUNTED_FREAD_FSTYP)
+AC_DEFINE(MOUNTED_FREAD_FSTYP, 1, [dummy])
 fi
 fi
 
@@ -734,7 +734,7 @@ test -n "$ok" \
 AC_MSG_RESULT($fu_cv_sys_mounted_getmntinfo)
 if test $fu_cv_sys_mounted_getmntinfo = yes; then
 list_mounted_fs=found
-AC_DEFINE(MOUNTED_GETMNTINFO)
+AC_DEFINE(MOUNTED_GETMNTINFO, 1, [dummy])
 fi
 fi
 
@@ -752,7 +752,7 @@ fu_cv_sys_mounted_getmnt=no)])
 AC_MSG_RESULT($fu_cv_sys_mounted_getmnt)
 if test $fu_cv_sys_mounted_getmnt = yes; then
 list_mounted_fs=found
-AC_DEFINE(MOUNTED_GETMNT)
+AC_DEFINE(MOUNTED_GETMNT, 1, [dummy])
 fi
 fi
 
@@ -766,7 +766,7 @@ fu_cv_sys_mounted_fread=no)])
 AC_MSG_RESULT($fu_cv_sys_mounted_fread)
 if test $fu_cv_sys_mounted_fread = yes; then
 list_mounted_fs=found
-AC_DEFINE(MOUNTED_FREAD)
+AC_DEFINE(MOUNTED_FREAD, 1, [dummy])
 fi
 fi
 
@@ -795,7 +795,7 @@ fu_cv_sys_stat_statvfs=yes,
 fu_cv_sys_stat_statvfs=no)])
 if test $fu_cv_sys_stat_statvfs = yes; then
 space=yes
-AC_DEFINE(STAT_STATVFS)
+AC_DEFINE(STAT_STATVFS, 1, [dummy])
 fi
 fi
 
@@ -819,7 +819,7 @@ fu_cv_sys_stat_statfs3_osf1=no)])
 AC_MSG_RESULT($fu_cv_sys_stat_statfs3_osf1)
 if test $fu_cv_sys_stat_statfs3_osf1 = yes; then
 space=yes
-AC_DEFINE(STAT_STATFS3_OSF1)
+AC_DEFINE(STAT_STATFS3_OSF1, 1, [dummy])
 fi
 fi
 
@@ -850,7 +850,7 @@ fu_cv_sys_stat_statfs2_bsize=no)])
 AC_MSG_RESULT($fu_cv_sys_stat_statfs2_bsize)
 if test $fu_cv_sys_stat_statfs2_bsize = yes; then
 space=yes
-AC_DEFINE(STAT_STATFS2_BSIZE)
+AC_DEFINE(STAT_STATFS2_BSIZE, 1, [dummy])
 fi
 fi
 
@@ -871,7 +871,7 @@ fu_cv_sys_stat_statfs4=no)])
 AC_MSG_RESULT($fu_cv_sys_stat_statfs4)
 if test $fu_cv_sys_stat_statfs4 = yes; then
 space=yes
-AC_DEFINE(STAT_STATFS4)
+AC_DEFINE(STAT_STATFS4, 1, [dummy])
 fi
 fi
 
@@ -899,7 +899,7 @@ fu_cv_sys_stat_statfs2_fsize=no)])
 AC_MSG_RESULT($fu_cv_sys_stat_statfs2_fsize)
 if test $fu_cv_sys_stat_statfs2_fsize = yes; then
 space=yes
-AC_DEFINE(STAT_STATFS2_FSIZE)
+AC_DEFINE(STAT_STATFS2_FSIZE, 1, [dummy])
 fi
 fi
 
@@ -930,14 +930,14 @@ fu_cv_sys_stat_fs_data=no)])
 AC_MSG_RESULT($fu_cv_sys_stat_fs_data)
 if test $fu_cv_sys_stat_fs_data = yes; then
 space=yes
-AC_DEFINE(STAT_STATFS2_FS_DATA)
+AC_DEFINE(STAT_STATFS2_FS_DATA, 1, [dummy])
 fi
 fi
 
 if test $space = no; then
 # SVR2
 AC_TRY_CPP([#include <sys/filsys.h>],
-AC_DEFINE(STAT_READ_FILSYS) space=yes)
+AC_DEFINE(STAT_READ_FILSYS, 1, [dummy]) space=yes)
 fi
 
 if test -n "$list_mounted_fs" && test $space != no; then
@@ -962,12 +962,12 @@ fu_cv_sys_truncating_statfs=yes,
 fu_cv_sys_truncating_statfs=no,
 )])
 if test $fu_cv_sys_truncating_statfs = yes; then
-AC_DEFINE(STATFS_TRUNCATES_BLOCK_COUNTS)
+AC_DEFINE(STATFS_TRUNCATES_BLOCK_COUNTS, 1, [dummy])
 fi
 AC_MSG_RESULT($fu_cv_sys_truncating_statfs)
 
 AC_CHECKING(for AFS)
-test -d /afs && AC_DEFINE(AFS)
+test -d /afs && AC_DEFINE(AFS, 1, [dummy])
 ])
 AC_DEFUN([GNOME_GHTTP_CHECK],[
 	AC_REQUIRE([GNOME_INIT_HOOK])
@@ -976,9 +976,9 @@ AC_DEFUN([GNOME_GHTTP_CHECK],[
 	  AC_CHECK_LIB(socket,connect,
 		GHTTP_LIB="-lsocket $GHTTP_LIB",,$GHTTP_LIB)])
 	AC_CHECK_FUNC(gethostbyname,,[
- 	  AC_CHECK_LIB(nsl,gethostbyname,
+	  AC_CHECK_LIB(nsl,gethostbyname,
 		GHTTP_LIB="-lnsl $GHTTP_LIB",,$GHTTP_LIB)])
-	AC_CHECK_LIB(ghttp, ghttp_request_new, 
+	AC_CHECK_LIB(ghttp, ghttp_request_new,
 		GHTTP_LIB="-lghttp $GHTTP_LIB",GHTTP_LIB="",-L$gnome_prefix $GHTTP_LIB)
 	AC_SUBST(GHTTP_LIB)
 	AC_PROVIDE([GNOME_GHTTP_CHECK])
@@ -1009,9 +1009,9 @@ AC_DEFUN([GNOME_GNORBA_HOOK],[
 		AC_SUBST(GNORBA_CFLAGS)
 		AC_SUBST(GNORBA_LIBS)
 	else
-	    	if test x$2 = xfailure; then
+		if test x$2 = xfailure; then
 			AC_MSG_ERROR(gnorba library not installed or installation problem)
-	    	fi
+		fi
 	fi
 ])
 
@@ -1062,7 +1062,7 @@ AC_DEFUN([GNOME_CHECK_GUILE],
 
 	    if test "x$cross_compiling" = "xyes" ; then
 		name_build_guile="$target_alias-build-guile"
-	    else	
+	    else
 		name_build_guile="build-guile"
 	    fi
 
@@ -1071,7 +1071,7 @@ AC_DEFUN([GNOME_CHECK_GUILE],
 	    if test "x$BUILD_GUILE" = "xyes"; then
 		AC_MSG_CHECKING(whether $name_build_guile works)
 		if test x`$name_build_guile --version >/dev/null 2>&1 || \
-	 	    echo no` = xno; then
+		    echo no` = xno; then
 		    BUILD_GUILE=no
 		fi
 		AC_MSG_RESULT($BUILD_GUILE)
@@ -1114,7 +1114,7 @@ AC_DEFUN([GNOME_CHECK_GUILE],
 		scm_boot_guile(0,NULL,NULL,NULL);
 	],[
 		ac_cv_guile_found=yes
-		AC_DEFINE(HAVE_GUILE)
+		AC_DEFINE(HAVE_GUILE, 1, [dummy])
 	],[
 		ac_cv_guile_found=no
 	])
@@ -1165,7 +1165,7 @@ changequote([,]), [#include <sys/types.h>
 ], ac_cv_type_$1=yes, ac_cv_type_$1=no)])dnl
 AC_MSG_RESULT($ac_cv_type_$1)
 if test $ac_cv_type_$1 = no; then
-  AC_DEFINE($1, $2)
+  AC_DEFINE($1, $2, [dummy])
 fi
 ])
 
@@ -1186,11 +1186,11 @@ dnl
 dnl GNOME_LIBGTOP_HOOK (minversion, script-if-libgtop-enabled, failflag)
 dnl
 dnl if failflag is "fail" then GNOME_LIBGTOP_HOOK will abort if LibGTop
-dnl is not found. 
+dnl is not found.
 dnl
 
 AC_DEFUN([GNOME_LIBGTOP_HOOK],
-[	
+[
 	AC_REQUIRE([GNOME_LIBGTOP_TYPES])
 
 	AC_SUBST(LIBGTOP_LIBDIR)
@@ -1288,10 +1288,10 @@ AC_DEFUN([GNOME_LIBGTOP_HOOK],
 	    sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\2/'`
 	  libgtop_micro_version=`$LIBGTOP_CONFIG --version | \
 	    sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`
-	  if test $libgtop_major_version != $min_libgtop_major ; then 
+	  if test $libgtop_major_version != $min_libgtop_major ; then
 	    no_libgtop=mismatch
-	  else 
- 	    test $libgtop_minor_version -lt $min_libgtop_minor && no_libgtop=yes
+	  else
+	    test $libgtop_minor_version -lt $min_libgtop_minor && no_libgtop=yes
 	    if test $libgtop_minor_version = $min_libgtop_minor ; then
 	      test $libgtop_micro_version -lt $min_libgtop_micro && no_libgtop=yes
 	    fi
@@ -1299,13 +1299,13 @@ AC_DEFUN([GNOME_LIBGTOP_HOOK],
 	  . $configfile
 	fi
 	if test x$no_libgtop = x ; then
-	  AC_DEFINE(HAVE_LIBGTOP)
-	  AC_DEFINE_UNQUOTED(LIBGTOP_VERSION, "$LIBGTOP_VERSION")
-	  AC_DEFINE_UNQUOTED(LIBGTOP_VERSION_CODE, $LIBGTOP_VERSION_CODE)
-	  AC_DEFINE_UNQUOTED(LIBGTOP_MAJOR_VERSION, $LIBGTOP_MAJOR_VERSION)
-	  AC_DEFINE_UNQUOTED(LIBGTOP_MINOR_VERSION, $LIBGTOP_MINOR_VERSION)
-	  AC_DEFINE_UNQUOTED(LIBGTOP_MICRO_VERSION, $LIBGTOP_MICRO_VERSION)
-	  AC_DEFINE_UNQUOTED(LIBGTOP_SERVER_VERSION, $LIBGTOP_SERVER_VERSION)
+	  AC_DEFINE(HAVE_LIBGTOP, 1, [dummy])
+	  AC_DEFINE_UNQUOTED(LIBGTOP_VERSION, "$LIBGTOP_VERSION", [dummy])
+	  AC_DEFINE_UNQUOTED(LIBGTOP_VERSION_CODE, $LIBGTOP_VERSION_CODE, [dummy])
+	  AC_DEFINE_UNQUOTED(LIBGTOP_MAJOR_VERSION, $LIBGTOP_MAJOR_VERSION, [dummy])
+	  AC_DEFINE_UNQUOTED(LIBGTOP_MINOR_VERSION, $LIBGTOP_MINOR_VERSION, [dummy])
+	  AC_DEFINE_UNQUOTED(LIBGTOP_MICRO_VERSION, $LIBGTOP_MICRO_VERSION, [dummy])
+	  AC_DEFINE_UNQUOTED(LIBGTOP_SERVER_VERSION, $LIBGTOP_SERVER_VERSION, [dummy]
 	  AC_MSG_RESULT(yes)
 	  dnl Note that an empty true branch is not valid sh syntax.
 	  ifelse([$2], [], :, [$2])
@@ -1344,7 +1344,7 @@ AC_DEFUN([GNOME_LIBGTOP_DOCU],
 
 	if test -f "$helpdir/C/topic.dat" ; then
 	  have_libgtop_docu=yes
-	  AC_DEFINE(HAVE_LIBGTOP_DOCU)
+	  AC_DEFINE(HAVE_LIBGTOP_DOCU, 1, [dummy])
 	else
 	  have_libgtop_docu=no
 	fi
@@ -1373,8 +1373,8 @@ dnl FIXME: extend list of possible names of ObjC compilers.
     AC_CHECK_LIB(rt,sched_yield,
       OBJC_LIBS="$OBJC_LIBS -lrt",[
       AC_CHECK_LIB(posix4,sched_yield,
-        OBJC_LIBS="$OBJC_LIBS -lposix4",, 
-        $OBJC_LIBS)],
+	OBJC_LIBS="$OBJC_LIBS -lposix4",,
+	$OBJC_LIBS)],
       $OBJC_LIBS)])
   AC_SUBST(OBJC_LIBS)
 
@@ -1403,7 +1403,7 @@ EOF
       rm -f conftest*
 
       if test $result -eq 0; then
-        ac_cv_prog_objc_works=yes
+	ac_cv_prog_objc_works=yes
       fi
     else
       ac_cv_prog_objc_works=no
@@ -1428,7 +1428,7 @@ AC_DEFUN([GNOME_INIT_OBJC],
 	    AC_MSG_WARN(Could not find the obGnomeConf.sh file that is generated by gnome-objc install)
 	    ac_cv_have_gnome_objc=no
 	fi
-	
+
 	dnl Add a conditional on whether or not we have gnome-objc
 	AM_CONDITIONAL(HAVE_GNOME_OBJC, test x$ac_cv_have_gnome_objc = xyes)
 	HAVE_GNOME_OBJC=$ac_cv_have_gnome_objc
@@ -1461,9 +1461,9 @@ AC_DEFUN([GNOME_ORBIT_HOOK],[
 		AC_SUBST(ORBIT_CFLAGS)
 		AC_SUBST(ORBIT_LIBS)
 	else
-    		if test x$2 = xfailure; then
+		if test x$2 = xfailure; then
 			AC_MSG_ERROR(ORBit not installed or installation problem)
-    		fi
+		fi
 	fi
 ])
 
@@ -1481,26 +1481,26 @@ dnl AM_PATH_GNOME_PRINT([MINIMUM-VERSION, [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUN
 dnl Test for GNOME-PRINT, and define GNOME_PRINT_CFLAGS and GNOME_PRINT_LIBS
 dnl
 AC_DEFUN(AM_PATH_GNOME_PRINT,
-[dnl 
+[dnl
 dnl Get the cflags and libraries from the gnome-config script
 dnl
 AC_ARG_WITH(gnome-print-prefix,[  --with-gnome-print-prefix=PFX   Prefix where GNOME-PRINT is installed (optional)],
-            gnome_print_prefix="$withval", gnome_print_prefix="")
+	    gnome_print_prefix="$withval", gnome_print_prefix="")
 AC_ARG_WITH(gnome-print-exec-prefix,[  --with-gnome-print-exec-prefix=PFX Exec prefix where GNOME-PRINT is installed (optional)],
-            gnome_print_exec_prefix="$withval", gnome_print_exec_prefix="")
+	    gnome_print_exec_prefix="$withval", gnome_print_exec_prefix="")
 AC_ARG_ENABLE(gnome-printtest, [  --disable-gnome-printtest       Do not try to compile and run a test GNOME-PRINT program],
 		    , enable_gnome_printtest=yes)
 
   if test x$gnome_print_exec_prefix != x ; then
      gnome_print_args="$gnome_print_args --exec-prefix=$gnome_print_exec_prefix"
      if test x${GNOME_CONFIG+set} != xset ; then
-        GNOME_CONFIG=$gnome_print_exec_prefix/bin/gnome-config
+	GNOME_CONFIG=$gnome_print_exec_prefix/bin/gnome-config
      fi
   fi
   if test x$gnome_print_prefix != x ; then
      gnome_print_args="$gnome_print_args --prefix=$gnome_print_prefix"
      if test x${GNOME_CONFIG+set} != xset ; then
-        GNOME_CONFIG=$gnome_print_prefix/bin/gnome-config
+	GNOME_CONFIG=$gnome_print_prefix/bin/gnome-config
      fi
   fi
 
@@ -1515,11 +1515,11 @@ AC_ARG_ENABLE(gnome-printtest, [  --disable-gnome-printtest       Do not try to 
     GNOME_PRINT_LIBS=`$GNOME_CONFIG $gnome_printconf_args --libs print`
 
     gnome_print_major_version=`$GNOME_CONFIG $gnome_print_args --version | \
-           sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
+	   sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
     gnome_print_minor_version=`$GNOME_CONFIG $gnome_print_args --version | \
-           sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\2/'`
+	   sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\2/'`
     gnome_print_micro_version=`$GNOME_CONFIG $gnome_print_config_args --version | \
-           sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`
+	   sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`
     if test "x$enable_gnome_printtest" = "xyes" ; then
       ac_save_CFLAGS="$CFLAGS"
       ac_save_LIBS="$LIBS"
@@ -1540,7 +1540,7 @@ static char*
 my_strdup (char *str)
 {
   char *new_str;
-  
+
   if (str)
     {
       new_str = malloc ((strlen (str) + 1) * sizeof(char));
@@ -1548,7 +1548,7 @@ my_strdup (char *str)
     }
   else
     new_str = NULL;
-  
+
   return new_str;
 }
 
@@ -1593,7 +1593,7 @@ int main ()
   fi
   if test "x$no_gnome_print" = x ; then
      AC_MSG_RESULT(yes)
-     ifelse([$2], , :, [$2])     
+     ifelse([$2], , :, [$2])
   else
      AC_MSG_RESULT(no)
      if test "$GNOME_CONFIG" = "no" ; then
@@ -1603,30 +1603,30 @@ int main ()
        echo "*** full path to gnome-config."
      else
        if test -f conf.gnome_printtest ; then
-        :
+	:
        else
-          echo "*** Could not run GNOME-PRINT test program, checking why..."
-          CFLAGS="$CFLAGS $GNOME_PRINT_CFLAGS"
-          LIBS="$LIBS $GNOME_PRINT_LIBS"
-          AC_TRY_LINK([
+	  echo "*** Could not run GNOME-PRINT test program, checking why..."
+	  CFLAGS="$CFLAGS $GNOME_PRINT_CFLAGS"
+	  LIBS="$LIBS $GNOME_PRINT_LIBS"
+	  AC_TRY_LINK([
 #include <stdio.h>
 #include <libgnomeprint/gnome-print.h>
 ],      [ return 0; ],
-        [ echo "*** The test program compiled, but did not run. This usually means"
-          echo "*** that the run-time linker is not finding GNOME-PRINT or finding the wrong"
-          echo "*** version of GNOME-PRINT. If it is not finding GNOME-PRINT, you'll need to set your"
-          echo "*** LD_LIBRARY_PATH environment variable, or edit /etc/ld.so.conf to point"
-          echo "*** to the installed location  Also, make sure you have run ldconfig if that"
-          echo "*** is required on your system"
+	[ echo "*** The test program compiled, but did not run. This usually means"
+	  echo "*** that the run-time linker is not finding GNOME-PRINT or finding the wrong"
+	  echo "*** version of GNOME-PRINT. If it is not finding GNOME-PRINT, you'll need to set your"
+	  echo "*** LD_LIBRARY_PATH environment variable, or edit /etc/ld.so.conf to point"
+	  echo "*** to the installed location  Also, make sure you have run ldconfig if that"
+	  echo "*** is required on your system"
 	  echo "***"
-          echo "*** If you have an old version installed, it is best to remove it, although"
-          echo "*** you may also be able to get things to work by modifying LD_LIBRARY_PATH"],
-        [ echo "*** The test program failed to compile or link. See the file config.log for the"
-          echo "*** exact error that occured. This usually means GNOME-PRINT was incorrectly installed"
-          echo "*** or that you have moved GNOME-PRINT since it was installed. In the latter case, you"
-          echo "*** may want to edit the gnome-config script: $GNOME_CONFIG" ])
-          CFLAGS="$ac_save_CFLAGS"
-          LIBS="$ac_save_LIBS"
+	  echo "*** If you have an old version installed, it is best to remove it, although"
+	  echo "*** you may also be able to get things to work by modifying LD_LIBRARY_PATH"],
+	[ echo "*** The test program failed to compile or link. See the file config.log for the"
+	  echo "*** exact error that occured. This usually means GNOME-PRINT was incorrectly installed"
+	  echo "*** or that you have moved GNOME-PRINT since it was installed. In the latter case, you"
+	  echo "*** may want to edit the gnome-config script: $GNOME_CONFIG" ])
+	  CFLAGS="$ac_save_CFLAGS"
+	  LIBS="$ac_save_LIBS"
        fi
      fi
      GNOME_PRINT_CFLAGS=""
@@ -1660,7 +1660,7 @@ AC_DEFUN([GNOME_PTHREAD_CHECK],[
 dnl GNOME_SUPPORT_CHECKS
 dnl    Check for various support functions needed by the standard
 dnl    Gnome libraries.  Sets LIBOBJS, might define some macros.
-dnl    This should only be used when building the Gnome libs; 
+dnl    This should only be used when building the Gnome libs;
 dnl    Gnome clients should not need this macro.
 AC_DEFUN([GNOME_SUPPORT_CHECKS],[
   # we need an `awk' to build `gnomesupport.h'
@@ -1688,7 +1688,7 @@ AC_DEFUN([GNOME_SUPPORT_CHECKS],[
     if eval "test \"`echo '$gnome_cv_var_'$v`\" = yes"; then
       AC_MSG_RESULT(yes)
       n=HAVE_`echo $v | tr 'abcdefghijklmnopqrstuvwxyz' 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'`
-      AC_DEFINE_UNQUOTED($n)
+      AC_DEFINE_UNQUOTED($n, 1, [dummy])
     else
       AC_MSG_RESULT(no)
     fi
@@ -1701,7 +1701,7 @@ AC_DEFUN([GNOME_SUPPORT_CHECKS],[
 
   # to include `error.c' error.c has some HAVE_* checks
   AC_CHECK_FUNCS(vprintf doprnt strerror_r)
-  AM_FUNC_ERROR_AT_LINE
+  AC_FUNC_ERROR_AT_LINE
 
   # This is required if we declare setreuid () and setregid ().
   AC_TYPE_UID_T
@@ -1739,7 +1739,7 @@ AC_DEFUN([GNOME_UNDELFS_CHECKS], [
   then
     if test x$ac_cv_header_linux_ext2_fs_h = xyes
     then
-      AC_DEFINE(USE_EXT2FSLIB)
+      AC_DEFINE(USE_EXT2FSLIB, 1, [dummy])
       ext2fs_undel=yes
       EXT2FS_UNDEL_LIBS="-lext2fs -lcom_err"
     fi
@@ -1770,7 +1770,7 @@ AC_DEFUN([GNOME_WITH_VFS],[
       AC_CHECK_LIB($lib, socket, [
 	  LIBS="$LIBS -l$lib"
 	  have_socket=yes
-	  AC_DEFINE(HAVE_SOCKET)
+	  AC_DEFINE(HAVE_SOCKET, 1, [dummy])
 	  break])
     done
   fi
@@ -1791,7 +1791,7 @@ AC_DEFUN([GNOME_WITH_VFS],[
       AC_CHECK_FUNCS(pmap_set, , [
 	 AC_CHECK_LIB(rpc, pmap_set, [
 	   LIBS="-lrpc $LIBS"
-	  AC_DEFINE(HAVE_PMAP_SET)
+	  AC_DEFINE(HAVE_PMAP_SET, 1, [dummy])
 	  ])])
       AC_CHECK_FUNCS(pmap_getport pmap_getmaps rresvport)
       dnl add for source routing support setsockopt
@@ -1806,17 +1806,17 @@ AC_DEFUN([GNOME_WITH_VFS],[
   smbfs=""
   SAMBAFILES=""
   AC_ARG_WITH(samba,
-  	  [--with-samba	            Support smb virtual file system],[
-  	  if test "x$withval != xno"; then
-  		  AC_DEFINE(WITH_SMBFS)
-	          vfs_flags="$vfs_flags, smbfs"
+	  [--with-samba	            Support smb virtual file system],[
+	  if test "x$withval != xno"; then
+		  AC_DEFINE(WITH_SMBFS, 1, [dummy])
+		  vfs_flags="$vfs_flags, smbfs"
 		  smbfs="smbfs.o"
 		  SAMBAFILES="\$(SAMBAFILES)"
-  	  fi
+	  fi
   ])
   AC_SUBST(smbfs)
   AC_SUBST(SAMBAFILES)
-  
+
   dnl
   dnl The termnet support
   dnl
@@ -1824,15 +1824,15 @@ AC_DEFUN([GNOME_WITH_VFS],[
   AC_ARG_WITH(termnet,
 	  [--with-termnet             If you want a termified net support],[
 	  if test x$withval = xyes; then
-		  AC_DEFINE(USE_TERMNET)
-		  termnet=true		
+		  AC_DEFINE(USE_TERMNET, 1, [dummy])
+		  termnet=true
 	  fi
   ])
 
   TERMNET=""
-  AC_DEFINE(USE_VFS)
+  AC_DEFINE(USE_VFS, 1, [dummy])
   if $use_net_code; then
-     AC_DEFINE(USE_NETCODE)
+     AC_DEFINE(USE_NETCODE, [dummy])
   fi
   mcserv=
   if test $have_socket = yes; then
@@ -1857,9 +1857,9 @@ AC_DEFUN([GNOME_VFS_CHECKS],[
 		use_vfs=$withval
 	)
 	case $use_vfs in
-		yes) 	GNOME_WITH_VFS;;
-		no) 	use_vfs=no;;
-		*)   	use_vfs=no;;
+		yes)	GNOME_WITH_VFS;;
+		no)	use_vfs=no;;
+		*)	use_vfs=no;;
 			dnl Should we issue a warning?
 	esac
 ])
@@ -1888,17 +1888,17 @@ AC_DEFUN([GNOME_X_CHECKS],
 	dnl
 	dnl Use CPPFLAGS instead of CFLAGS because AC_CHECK_HEADERS uses
 	dnl CPPFLAGS, not CFLAGS
-        CPPFLAGS="$CPPFLAGS $GTK_CFLAGS"
+	CPPFLAGS="$CPPFLAGS $GTK_CFLAGS"
 
-        saved_ldflags="$LDFLAGS"
-        LDFLAGS="$LDFLAGS $GTK_LIBS"
+	saved_ldflags="$LDFLAGS"
+	LDFLAGS="$LDFLAGS $GTK_LIBS"
 
 	gnome_cv_passdown_x_libs="$GTK_LIBS"
 	gnome_cv_passdown_X_LIBS="$GTK_LIBS"
 	gnome_cv_passdown_X_CFLAGS="$GTK_CFLAGS"
 	gnome_cv_passdown_GTK_LIBS="$GTK_LIBS"
 
-        LDFLAGS="$saved_ldflags $GTK_LIBS"
+	LDFLAGS="$saved_ldflags $GTK_LIBS"
 
 dnl We are requiring GTK >= 1.1.1, which means this will be fine anyhow.
 	USE_DEVGTK=true
@@ -1923,7 +1923,7 @@ dnl	AC_MSG_RESULT("$dev_gtk")
 	 *)
 	    dnl Assume that if we have -lSM then we also have -lICE.
 	    AC_CHECK_LIB(SM, SmcSaveYourselfDone,
-	        [GTK_LIBS="-lSM -lICE $GTK_LIBS"],GNOME_HAVE_SM=false,
+		[GTK_LIBS="-lSM -lICE $GTK_LIBS"],GNOME_HAVE_SM=false,
 		$x_libs -lICE)
 	    ;;
 	esac
@@ -1933,7 +1933,7 @@ dnl	AC_MSG_RESULT("$dev_gtk")
 	fi
 
 	if test "$GNOME_HAVE_SM" = true; then
-	   AC_DEFINE(HAVE_LIBSM)
+	   AC_DEFINE(HAVE_LIBSM, 1, [dummy])
 	fi
 
 	XPM_LIBS=""
@@ -1941,7 +1941,7 @@ dnl	AC_MSG_RESULT("$dev_gtk")
 	AC_SUBST(XPM_LIBS)
 
 	AC_REQUIRE([GNOME_PTHREAD_CHECK])
-        LDFLAGS="$saved_ldflags"
+	LDFLAGS="$saved_ldflags"
 
 	AC_PROVIDE([GNOME_X_CHECKS])
 ])
@@ -1949,7 +1949,7 @@ dnl
 dnl GNOME_XML_HOOK (script-if-xml-found, failflag)
 dnl
 dnl If failflag is "failure", script aborts due to lack of XML
-dnl 
+dnl
 dnl Check for availability of the libxml library
 dnl the XML parser uses libz if available too
 dnl
@@ -1965,7 +1965,7 @@ AC_DEFUN([GNOME_XML_HOOK],[
 		$1
 		GNOME_XML_LIB=`$GNOME_CONFIG --libs xml`
 	], [
-		if test x$2 = xfailure; then 
+		if test x$2 = xfailure; then
 			AC_MSG_ERROR(Could not link sample xml program)
 		fi
 	], `$GNOME_CONFIG --libs xml`)
@@ -1979,7 +1979,7 @@ dnl
 dnl GNOME_INIT_HOOK (script-if-gnome-enabled, [failflag], [additional-inits])
 dnl
 dnl if failflag is "fail" then GNOME_INIT_HOOK will abort if gnomeConf.sh
-dnl is not found. 
+dnl is not found.
 dnl
 
 AC_DEFUN([GNOME_INIT_HOOK],[
@@ -1995,7 +1995,7 @@ AC_DEFUN([GNOME_INIT_HOOK],[
 	[  --with-gnome-includes   Specify location of GNOME headers],[
 	CFLAGS="$CFLAGS -I$withval"
 	])
-	
+
 	AC_ARG_WITH(gnome-libs,
 	[  --with-gnome-libs       Specify location of GNOME libs],[
 	LDFLAGS="$LDFLAGS -L$withval"
@@ -2005,20 +2005,20 @@ AC_DEFUN([GNOME_INIT_HOOK],[
 	AC_ARG_WITH(gnome,
 	[  --with-gnome            Specify prefix for GNOME files],
 		if test x$withval = xyes; then
-	    		want_gnome=yes
-	    		dnl Note that an empty true branch is not
+			want_gnome=yes
+			dnl Note that an empty true branch is not
 			dnl valid sh syntax.
-	    		ifelse([$1], [], :, [$1])
-        	else
-	    		if test "x$withval" = xno; then
-	        		want_gnome=no
-	    		else
-	        		want_gnome=yes
-	    			LDFLAGS="$LDFLAGS -L$withval/lib"
-	    			CFLAGS="$CFLAGS -I$withval/include"
-	    			gnome_prefix=$withval/lib
-	    		fi
-  		fi,
+			ifelse([$1], [], :, [$1])
+		else
+			if test "x$withval" = xno; then
+				want_gnome=no
+			else
+				want_gnome=yes
+				LDFLAGS="$LDFLAGS -L$withval/lib"
+				CFLAGS="$CFLAGS -I$withval/include"
+				gnome_prefix=$withval/lib
+			fi
+		fi,
 		want_gnome=yes)
 
 	if test "x$want_gnome" = xyes; then
@@ -2029,54 +2029,54 @@ AC_DEFUN([GNOME_INIT_HOOK],[
 	    else
 	      AC_MSG_CHECKING(if $GNOME_CONFIG works)
 	      if $GNOME_CONFIG --libs-only-l gnome >/dev/null 2>&1; then
-	        AC_MSG_RESULT(yes)
-	        GNOME_GNORBA_HOOK([],$2)
-	        GNOME_LIBS="`$GNOME_CONFIG --libs-only-l gnome`"
-	        GNOMEUI_LIBS="`$GNOME_CONFIG --libs-only-l gnomeui`"
-	        GNOMEGNORBA_LIBS="`$GNOME_CONFIG --libs-only-l gnorba gnomeui`"
-	        GTKXMHTML_LIBS="`$GNOME_CONFIG --libs-only-l gtkxmhtml`"
+		AC_MSG_RESULT(yes)
+		GNOME_GNORBA_HOOK([],$2)
+		GNOME_LIBS="`$GNOME_CONFIG --libs-only-l gnome`"
+		GNOMEUI_LIBS="`$GNOME_CONFIG --libs-only-l gnomeui`"
+		GNOMEGNORBA_LIBS="`$GNOME_CONFIG --libs-only-l gnorba gnomeui`"
+		GTKXMHTML_LIBS="`$GNOME_CONFIG --libs-only-l gtkxmhtml`"
 		ZVT_LIBS="`$GNOME_CONFIG --libs-only-l zvt`"
-	        GNOME_LIBDIR="`$GNOME_CONFIG --libs-only-L gnorba gnomeui`"
-	        GNOME_INCLUDEDIR="`$GNOME_CONFIG --cflags gnorba gnomeui`"
-                $1
+		GNOME_LIBDIR="`$GNOME_CONFIG --libs-only-L gnorba gnomeui`"
+		GNOME_INCLUDEDIR="`$GNOME_CONFIG --cflags gnorba gnomeui`"
+		$1
 	      else
-	        AC_MSG_RESULT(no)
-	        no_gnome_config="yes"
-              fi
-            fi
+		AC_MSG_RESULT(no)
+		no_gnome_config="yes"
+	      fi
+	    fi
 
 	    if test x$exec_prefix = xNONE; then
-	        if test x$prefix = xNONE; then
+		if test x$prefix = xNONE; then
 		    gnome_prefix=$ac_default_prefix/lib
-	        else
- 		    gnome_prefix=$prefix/lib
-	        fi
+		else
+		    gnome_prefix=$prefix/lib
+		fi
 	    else
-	        gnome_prefix=`eval echo \`echo $libdir\``
+		gnome_prefix=`eval echo \`echo $libdir\``
 	    fi
-	
+
 	    if test "$no_gnome_config" = "yes"; then
-              AC_MSG_CHECKING(for gnomeConf.sh file in $gnome_prefix)
+	      AC_MSG_CHECKING(for gnomeConf.sh file in $gnome_prefix)
 	      if test -f $gnome_prefix/gnomeConf.sh; then
-	        AC_MSG_RESULT(found)
-	        echo "loading gnome configuration from" \
+		AC_MSG_RESULT(found)
+		echo "loading gnome configuration from" \
 		     "$gnome_prefix/gnomeConf.sh"
-	        . $gnome_prefix/gnomeConf.sh
-	        $1
+		. $gnome_prefix/gnomeConf.sh
+		$1
 	      else
-	        AC_MSG_RESULT(not found)
- 	        if test x$2 = xfail; then
-	          AC_MSG_ERROR(Could not find the gnomeConf.sh file that is generated by gnome-libs install)
- 	        fi
+		AC_MSG_RESULT(not found)
+		if test x$2 = xfail; then
+		  AC_MSG_ERROR(Could not find the gnomeConf.sh file that is generated by gnome-libs install)
+		fi
 	      fi
-            fi
+	    fi
 	fi
 
 	if test -n "$3"; then
 	  n="$3"
 	  for i in $n; do
 	    AC_MSG_CHECKING(extra library \"$i\")
-	    case $i in 
+	    case $i in
 	      applets)
 		AC_SUBST(GNOME_APPLETS_LIBS)
 		GNOME_APPLETS_LIBS=`$GNOME_CONFIG --libs-only-l applets`
@@ -2134,7 +2134,7 @@ static char*
 my_strdup (char *str)
 {
   char *new_str;
-  
+
   if (str)
     {
       new_str = malloc ((strlen (str) + 1) * sizeof(char));
@@ -2142,15 +2142,15 @@ my_strdup (char *str)
     }
   else
     new_str = NULL;
-  
+
   return new_str;
 }
 
-int 
+int
 main ()
 {
   char  *tmp_version;
-  
+
   int    major;
   int    minor;
 
@@ -2201,7 +2201,7 @@ main ()
     exit (0);
 }
 ],[
-AC_DEFINE(HAVE_STRUCT_LINGER)
+AC_DEFINE(HAVE_STRUCT_LINGER, 1, [dummy])
 av_struct_linger=yes
 ],[
 av_struct_linger=no
@@ -2237,7 +2237,7 @@ if eval "test \"`echo '$gcc_cv_decl_needed_'$1`\" = yes"; then
   AC_MSG_RESULT(yes)
   gcc_need_declarations="$gcc_need_declarations $1"
   gcc_tr_decl=NEED_DECLARATION_`echo $1 | tr 'abcdefghijklmnopqrstuvwxyz' 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'`
-  AC_DEFINE_UNQUOTED($gcc_tr_decl)
+  AC_DEFINE_UNQUOTED($gcc_tr_decl, 1, [dummy])
 else
   AC_MSG_RESULT(no)
 fi
@@ -2259,35 +2259,35 @@ dnl AM_PATH_GTK([MINIMUM-VERSION, [ACTION-IF-FOUND [, ACTION-IF-NOT-FOUND [, MOD
 dnl Test for GTK, and define GTK_CFLAGS and GTK_LIBS
 dnl
 AC_DEFUN(AM_PATH_GTK,
-[dnl 
+[dnl
 dnl Get the cflags and libraries from the gtk-config script
 dnl
 AC_ARG_WITH(gtk-prefix,[  --with-gtk-prefix=PFX   Prefix where GTK is installed (optional)],
-            gtk_config_prefix="$withval", gtk_config_prefix="")
+	    gtk_config_prefix="$withval", gtk_config_prefix="")
 AC_ARG_WITH(gtk-exec-prefix,[  --with-gtk-exec-prefix=PFX Exec prefix where GTK is installed (optional)],
-            gtk_config_exec_prefix="$withval", gtk_config_exec_prefix="")
+	    gtk_config_exec_prefix="$withval", gtk_config_exec_prefix="")
 AC_ARG_ENABLE(gtktest, [  --disable-gtktest       Do not try to compile and run a test GTK program],
 		    , enable_gtktest=yes)
 
   for module in . $4
   do
       case "$module" in
-         gthread) 
-             gtk_config_args="$gtk_config_args gthread"
-         ;;
+	 gthread)
+	     gtk_config_args="$gtk_config_args gthread"
+	 ;;
       esac
   done
 
   if test x$gtk_config_exec_prefix != x ; then
      gtk_config_args="$gtk_config_args --exec-prefix=$gtk_config_exec_prefix"
      if test x${GTK_CONFIG+set} != xset ; then
-        GTK_CONFIG=$gtk_config_exec_prefix/bin/gtk-config
+	GTK_CONFIG=$gtk_config_exec_prefix/bin/gtk-config
      fi
   fi
   if test x$gtk_config_prefix != x ; then
      gtk_config_args="$gtk_config_args --prefix=$gtk_config_prefix"
      if test x${GTK_CONFIG+set} != xset ; then
-        GTK_CONFIG=$gtk_config_prefix/bin/gtk-config
+	GTK_CONFIG=$gtk_config_prefix/bin/gtk-config
      fi
   fi
 
@@ -2301,11 +2301,11 @@ AC_ARG_ENABLE(gtktest, [  --disable-gtktest       Do not try to compile and run 
     GTK_CFLAGS=`$GTK_CONFIG $gtk_config_args --cflags`
     GTK_LIBS=`$GTK_CONFIG $gtk_config_args --libs`
     gtk_config_major_version=`$GTK_CONFIG $gtk_config_args --version | \
-           sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
+	   sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\1/'`
     gtk_config_minor_version=`$GTK_CONFIG $gtk_config_args --version | \
-           sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\2/'`
+	   sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\2/'`
     gtk_config_micro_version=`$GTK_CONFIG $gtk_config_args --version | \
-           sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`
+	   sed 's/\([[0-9]]*\).\([[0-9]]*\).\([[0-9]]*\)/\3/'`
     if test "x$enable_gtktest" = "xyes" ; then
       ac_save_CFLAGS="$CFLAGS"
       ac_save_LIBS="$LIBS"
@@ -2321,7 +2321,7 @@ dnl
 #include <stdio.h>
 #include <stdlib.h>
 
-int 
+int
 main ()
 {
   int major, minor, micro;
@@ -2340,9 +2340,9 @@ main ()
       (gtk_minor_version != $gtk_config_minor_version) ||
       (gtk_micro_version != $gtk_config_micro_version))
     {
-      printf("\n*** 'gtk-config --version' returned %d.%d.%d, but GTK+ (%d.%d.%d)\n", 
-             $gtk_config_major_version, $gtk_config_minor_version, $gtk_config_micro_version,
-             gtk_major_version, gtk_minor_version, gtk_micro_version);
+      printf("\n*** 'gtk-config --version' returned %d.%d.%d, but GTK+ (%d.%d.%d)\n",
+	     $gtk_config_major_version, $gtk_config_minor_version, $gtk_config_micro_version,
+	     gtk_major_version, gtk_minor_version, gtk_micro_version);
       printf ("*** was found! If gtk-config was correct, then it is best\n");
       printf ("*** to remove the old version of GTK+. You may also be able to fix the error\n");
       printf("*** by modifying your LD_LIBRARY_PATH enviroment variable, or by editing\n");
@@ -2351,11 +2351,11 @@ main ()
       printf("*** If gtk-config was wrong, set the environment variable GTK_CONFIG\n");
       printf("*** to point to the correct copy of gtk-config, and remove the file config.cache\n");
       printf("*** before re-running configure\n");
-    } 
+    }
 #if defined (GTK_MAJOR_VERSION) && defined (GTK_MINOR_VERSION) && defined (GTK_MICRO_VERSION)
   else if ((gtk_major_version != GTK_MAJOR_VERSION) ||
 	   (gtk_minor_version != GTK_MINOR_VERSION) ||
-           (gtk_micro_version != GTK_MICRO_VERSION))
+	   (gtk_micro_version != GTK_MICRO_VERSION))
     {
       printf("*** GTK+ header files (version %d.%d.%d) do not match\n",
 	     GTK_MAJOR_VERSION, GTK_MINOR_VERSION, GTK_MICRO_VERSION);
@@ -2366,26 +2366,26 @@ main ()
   else
     {
       if ((gtk_major_version > major) ||
-        ((gtk_major_version == major) && (gtk_minor_version > minor)) ||
-        ((gtk_major_version == major) && (gtk_minor_version == minor) && (gtk_micro_version >= micro)))
+	((gtk_major_version == major) && (gtk_minor_version > minor)) ||
+	((gtk_major_version == major) && (gtk_minor_version == minor) && (gtk_micro_version >= micro)))
       {
-        return 0;
+	return 0;
        }
      else
       {
-        printf("\n*** An old version of GTK+ (%d.%d.%d) was found.\n",
-               gtk_major_version, gtk_minor_version, gtk_micro_version);
-        printf("*** You need a version of GTK+ newer than %d.%d.%d. The latest version of\n",
+	printf("\n*** An old version of GTK+ (%d.%d.%d) was found.\n",
+	       gtk_major_version, gtk_minor_version, gtk_micro_version);
+	printf("*** You need a version of GTK+ newer than %d.%d.%d. The latest version of\n",
 	       major, minor, micro);
-        printf("*** GTK+ is always available from ftp://ftp.gtk.org.\n");
-        printf("***\n");
-        printf("*** If you have already installed a sufficiently new version, this error\n");
-        printf("*** probably means that the wrong copy of the gtk-config shell script is\n");
-        printf("*** being found. The easiest way to fix this is to remove the old version\n");
-        printf("*** of GTK+, but you can also set the GTK_CONFIG environment to point to the\n");
-        printf("*** correct copy of gtk-config. (In this case, you will have to\n");
-        printf("*** modify your LD_LIBRARY_PATH enviroment variable, or edit /etc/ld.so.conf\n");
-        printf("*** so that the correct libraries are found at run-time))\n");
+	printf("*** GTK+ is always available from ftp://ftp.gtk.org.\n");
+	printf("***\n");
+	printf("*** If you have already installed a sufficiently new version, this error\n");
+	printf("*** probably means that the wrong copy of the gtk-config shell script is\n");
+	printf("*** being found. The easiest way to fix this is to remove the old version\n");
+	printf("*** of GTK+, but you can also set the GTK_CONFIG environment to point to the\n");
+	printf("*** correct copy of gtk-config. (In this case, you will have to\n");
+	printf("*** modify your LD_LIBRARY_PATH enviroment variable, or edit /etc/ld.so.conf\n");
+	printf("*** so that the correct libraries are found at run-time))\n");
       }
     }
   return 1;
@@ -2397,7 +2397,7 @@ main ()
   fi
   if test "x$no_gtk" = x ; then
      AC_MSG_RESULT(yes)
-     ifelse([$2], , :, [$2])     
+     ifelse([$2], , :, [$2])
   else
      AC_MSG_RESULT(no)
      if test "$GTK_CONFIG" = "no" ; then
@@ -2407,35 +2407,35 @@ main ()
        echo "*** full path to gtk-config."
      else
        if test -f conf.gtktest ; then
-        :
+	:
        else
-          echo "*** Could not run GTK test program, checking why..."
-          CFLAGS="$CFLAGS $GTK_CFLAGS"
-          LIBS="$LIBS $GTK_LIBS"
-          AC_TRY_LINK([
+	  echo "*** Could not run GTK test program, checking why..."
+	  CFLAGS="$CFLAGS $GTK_CFLAGS"
+	  LIBS="$LIBS $GTK_LIBS"
+	  AC_TRY_LINK([
 #include <gtk/gtk.h>
 #include <stdio.h>
 ],      [ return ((gtk_major_version) || (gtk_minor_version) || (gtk_micro_version)); ],
-        [ echo "*** The test program compiled, but did not run. This usually means"
-          echo "*** that the run-time linker is not finding GTK or finding the wrong"
-          echo "*** version of GTK. If it is not finding GTK, you'll need to set your"
-          echo "*** LD_LIBRARY_PATH environment variable, or edit /etc/ld.so.conf to point"
-          echo "*** to the installed location  Also, make sure you have run ldconfig if that"
-          echo "*** is required on your system"
+	[ echo "*** The test program compiled, but did not run. This usually means"
+	  echo "*** that the run-time linker is not finding GTK or finding the wrong"
+	  echo "*** version of GTK. If it is not finding GTK, you'll need to set your"
+	  echo "*** LD_LIBRARY_PATH environment variable, or edit /etc/ld.so.conf to point"
+	  echo "*** to the installed location  Also, make sure you have run ldconfig if that"
+	  echo "*** is required on your system"
 	  echo "***"
-          echo "*** If you have an old version installed, it is best to remove it, although"
-          echo "*** you may also be able to get things to work by modifying LD_LIBRARY_PATH"
-          echo "***"
-          echo "*** If you have a RedHat 5.0 system, you should remove the GTK package that"
-          echo "*** came with the system with the command"
-          echo "***"
-          echo "***    rpm --erase --nodeps gtk gtk-devel" ],
-        [ echo "*** The test program failed to compile or link. See the file config.log for the"
-          echo "*** exact error that occured. This usually means GTK was incorrectly installed"
-          echo "*** or that you have moved GTK since it was installed. In the latter case, you"
-          echo "*** may want to edit the gtk-config script: $GTK_CONFIG" ])
-          CFLAGS="$ac_save_CFLAGS"
-          LIBS="$ac_save_LIBS"
+	  echo "*** If you have an old version installed, it is best to remove it, although"
+	  echo "*** you may also be able to get things to work by modifying LD_LIBRARY_PATH"
+	  echo "***"
+	  echo "*** If you have a RedHat 5.0 system, you should remove the GTK package that"
+	  echo "*** came with the system with the command"
+	  echo "***"
+	  echo "***    rpm --erase --nodeps gtk gtk-devel" ],
+	[ echo "*** The test program failed to compile or link. See the file config.log for the"
+	  echo "*** exact error that occured. This usually means GTK was incorrectly installed"
+	  echo "*** or that you have moved GTK since it was installed. In the latter case, you"
+	  echo "*** may want to edit the gtk-config script: $GTK_CONFIG" ])
+	  CFLAGS="$ac_save_CFLAGS"
+	  LIBS="$ac_save_LIBS"
        fi
      fi
      GTK_CFLAGS=""

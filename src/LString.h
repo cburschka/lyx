@@ -12,8 +12,10 @@
 #ifndef LSTRING_H
 #define LSTRING_H
 
+#if 0
 #ifndef _CONFIG_H
 #error The <config.h> header should always be included before LString.h
+#endif
 #endif
 
 #ifndef USE_INCLUDED_STRING

@@ -1,0 +1,43 @@
+dnl Process with autoconf to generate configure script   -*- sh -*-
+AC_INIT(reLyX.in)
+AC_PREREQ(2.53)
+AC_CONFIG_AUX_DIR(../../config)
+
+dnl PACKAGE=reLyX
+dnl Do this to install in $datadir/lyx/reLyX instead of $datadir/reLyX/reLyX
+
+AC_ARG_WITH(version-suffix,
+  [  --with-version-suffix[=<version>]  install lyx files as lyx<version>],
+  [lyxname="lyx$withval"
+   program_suffix=$withval],
+  [lyxname=lyx])
+
+dnl must make a macro that gets the reLyX version
+VERSION=2.0
+AM_INIT_AUTOMAKE($lyxname, $VERSION)
+
+# if reLyX has already been generated in this directory, delete it first
+test -x reLyX && rm -f reLyX
+# fix the value of the prefixes.
+test "x$prefix" = xNONE && prefix=$ac_default_prefix
+test "x$exec_prefix" = xNONE && exec_prefix='${prefix}'
+
+# we need to expand ${datadir} to put it into the reLyX wrapper.
+LYX_DIR=`eval "echo \`eval \"echo ${datadir}/${PACKAGE}\"\`"`
+AC_SUBST(LYX_DIR)
+
+# Work around a problem in automake 1.4: when invoking install-strip,
+# INSTALL_PROGRAM is changed to 'install -s', and since
+# INSTALL_SCRIPT==INSTALL_PROGRAM, we get errors with fileutils-4.0
+# which returns an error condition when stripping fails.
+INSTALL_SCRIPT='${INSTALL}'
+
+dnl Checks for programs.
+AC_PROG_INSTALL
+RELYX_CHECK_PERL
+
+dnl Finish the work
+AC_CONFIG_FILES(Makefile reLyX noweb2lyx, chmod 755 reLyX noweb2lyx)
+AC_OUTPUT
+
+RELYX_CHECK_ERRORS

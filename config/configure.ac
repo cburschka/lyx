@@ -1,0 +1,329 @@
+dnl Process with autoconf to generate configure script   -*- sh -*-
+
+AC_INIT(lyx,1.3.0cvs,lyx-devel@lists.lyx.org)
+AC_PREREQ(2.53)
+AC_CONFIG_SRCDIR(src/main.C)
+AM_CONFIG_HEADER([src/config.h])
+
+AC_CONFIG_AUX_DIR(config)
+
+PACKAGE=lyx${program_suffix}
+VERSION="1.3.0cvs"
+LYX_CHECK_VERSION
+
+AC_CANONICAL_TARGET
+# AC_VALIDATE_CACHE_SYSTEM_TYPE
+
+LYX_VERSION_SUFFIX
+
+AM_INIT_AUTOMAKE($lyxname, $VERSION)
+
+# The list of languages known to LyX
+# This is needed by GNU gettext
+ALL_LINGUAS="bg ca cs da de es eu fi fr he hu it nl no pl pt ro ru sk sl sv tr wa"
+
+# fix the value of the prefixes.
+test "x$prefix" = xNONE && prefix=$ac_default_prefix
+test "x$exec_prefix" = xNONE && exec_prefix='${prefix}'
+
+### Set the execute permissions of the various scripts correctly
+for file in config/install-sh config/mkinstalldirs lib/configure ; do
+  chmod 755 ${srcdir}/${file}
+done
+
+### Check for programs
+AC_PROG_MAKE_SET
+AC_PROG_INSTALL
+#AC_PROG_RANLIB
+AC_CHECK_PROG(KPSEWHICH, kpsewhich, kpsewhich, :)
+if test "x$KPSEWHICH" = xkpsewhich ; then
+    AC_DEFINE(HAVE_KPSEWHICH, 1,
+    [Define this if you have the kpsewhich program working on your system.])
+fi
+AC_CHECK_PROGS(M4, gm4 gnum4 m4, m4)
+
+# Work around a problem in automake 1.4: when invoking install-strip,
+# INSTALL_PROGRAM is changed to 'install -s', and since
+# INSTALL_SCRIPT==INSTALL_PROGRAM, we get errors with fileutils-4.0
+# which returns an error condition when stripping fails.
+INSTALL_SCRIPT='${INSTALL}'
+
+### we will also need a C compiler to compile GNU gettext
+AC_PROG_CC
+
+### check for special systems
+AC_ISC_POSIX
+AC_AIX
+
+### Check for program extensions (.exe or nothing)
+# AC_EXEEXT
+
+### check which frontend we want to use
+LYX_USE_FRONTEND
+
+#old gnome stuff removed by Michael Koziarski 25-05-2002
+
+### Check for a C++ compiler
+LYX_PROG_CXX
+### Some checks on what the C++ compiler can(not) do
+AC_LANG_CPLUSPLUS
+dnl we do not need that currently (and probably all our supported
+dnl compiler allow that)
+dnl LYX_CXX_PARTIAL
+LYX_CXX_EXPLICIT
+LYX_CXX_STL_STRING
+LYX_CXX_GOOD_STD_STRING
+LYX_CXX_CHEADERS
+LYX_CXX_GLOBAL_CSTD
+LYX_STD_COUNT
+dnl we disable rtti for now
+dnl LYX_CXX_RTTI
+AC_CHECK_HEADERS(ostream istream sstream locale limits)
+LYX_CXX_STL_MODERN_STREAMS
+
+### and now some special lyx flags.
+AC_ARG_ENABLE(assertions,
+  [  --enable-assertions     add runtime sanity checks in the program],,
+  [if test $lyx_devel_version = yes -o $lyx_prerelease = yes ; then
+	enable_assertions=yes;
+    else
+	enable_assertions=no;
+    fi;])
+if test "x$enable_assertions" = xyes ; then
+   lyx_flags="$lyx_flags assertions"
+   AC_DEFINE(ENABLE_ASSERTIONS,1,
+    [Define if you want assertions to be enabled in the code])
+fi
+
+### Library Files
+dnl by testing these we check if it is ok to have
+dnl -lc and -lm as args to the compiler
+AC_CHECK_LIB(m, sin)
+AC_CHECK_LIB(c, fopen)
+
+### Add extra directories to check for libraries.
+LYX_WITH_DIR([extra-lib],[extra library directory],extra_lib, NONE)
+LYX_LOOP_DIR($lyx_cv_extra_lib,LYX_ADD_LIB_DIR(lyx_ldflags,$dir))
+test ! x"$lyx_ldflags" = x && LDFLAGS="$lyx_ldflags $LDFLAGS"
+
+### Add extra directories to check for include files.
+LYX_WITH_DIR([extra-inc],[extra include directory],extra_inc, NONE)
+LYX_LOOP_DIR($lyx_cv_extra_inc,LYX_ADD_INC_DIR(lyx_cppflags,$dir))
+test ! x"$lyx_cppflags" = x && CPPFLAGS="$lyx_cppflags $CPPFLAGS"
+
+### Add both includes and libraries
+LYX_WITH_DIR([extra-prefix],[extra lib+include directory],extra_prefix, NONE, ${prefix})
+LYX_LOOP_DIR($lyx_cv_extra_prefix,[
+LYX_ADD_INC_DIR(CPPFLAGS,$dir/include)
+  LYX_ADD_LIB_DIR(LDFLAGS,$dir/lib)])
+
+AC_ARG_WITH(aiksaurus,
+  [  --without-aiksaurus     do not use the Aiksaurus library],
+  [lyx_use_aiksaurus=$withval])
+if test x$lyx_use_aiksaurus != xno; then
+AC_CHECK_LIB(Aiksaurus, main,
+	[AC_DEFINE(HAVE_LIBAIKSAURUS,1,[Define this if you have the AikSaurus library])
+	 AIKSAURUS_LIBS="-lAiksaurus -lbz2"
+	],,"-lbz2")
+fi
+AC_SUBST(AIKSAURUS_LIBS)
+
+### Setup libtool
+AC_DISABLE_SHARED
+AC_LIBTOOL_WIN32_DLL
+#AM_PROG_LIBTOOL
+LYX_PROG_LIBTOOL
+
+### Check if we want pspell libraries
+CHECK_WITH_PSPELL
+
+### Check for X libraries
+# The real thing.
+AC_PATH_XTRA
+LIBS="$X_PRE_LIBS $LIBS $X_LIBS -lX11 $X_EXTRA_LIBS"
+# Since solaris X headers use int as implicit return type and modern
+# gcc's do not like that, let's use -isystem instead of -I.
+# We should test for gcc version and see whether it supports -isystem,
+# but since at least gcc 2.6.x supports it and it is still too old for
+# us, it seems we are safe.
+if test -n "$GXX" ; then
+  X_CFLAGS=`echo ${X_CFLAGS} | sed -e 's/-I/-isystem /'`
+fi
+CPPFLAGS="$CPPFLAGS $X_CFLAGS"
+
+## Check whether X is new enough to handle the input method stuff
+AC_CHECK_FUNCS(XOpenIM)
+
+### check which frontend we want to use
+# We have to check for xforms anyway
+LYX_PATH_XPM
+LYX_PATH_XFORMS
+
+#LYX_USE_FRONTEND
+dnl The code below is not in a macro, because this would cause big
+dnl problems with the AC_REQUIRE contained in KDE_DO_IT_ALL.
+case "$lyx_use_frontend" in
+  xforms)
+  # for now don't set it for xforms as this is always entered
+	FRONTEND="xforms"
+	FRONTEND_GUILIB="xforms/*.lo xforms/forms/*.lo"
+	FRONTEND_INCLUDES="-I\$(srcdir)/xforms"
+	case "$host" in
+	  *cygwin)
+	    FRONTEND_LIBS="@XFORMS_LIB@ @XFORMS_IMAGE_LIB@ @XPM_LIB@"
+	    ;;
+	  *)
+	    FRONTEND_LIBS="@XFORMS_IMAGE_LIB@ @XFORMS_LIB@ @XPM_LIB@"
+	    ;;
+	esac
+	FRONTEND_INFO="    libXpm version:               ${XPM_VERSION}\n\
+    libforms version:             ${XFORMS_VERSION}\n"
+	;;
+  gnome)
+    PKG_CHECK_MODULES(GNOME_FRONTEND, gtkmm-2.0 libglademm-2.0)
+    AC_SUBST(GNOME_FRONTEND_CFLAGS)
+    AC_SUBST(GNOME_FRONTEND_LIBS)
+
+    FRONTEND="xforms gnome"
+    FRONTEND_GUILIB="gnome/*.lo"
+    FRONTEND_LDFLAGS="${GNOME_FRONTEND_LIBS}"
+    FRONTEND_INCLUDES="-I\${srcdir}/gnome -I\${srcdir}/xforms ${GNOME_FRONTEND_CFLAGS} "
+    FRONTEND_LIBS="@XPM_LIB@ @XFORMS_LIB@ ${GNOME_FRONTEND_LIBS}";;
+  qt2)
+    QT2_DO_IT_ALL
+    FRONTEND="qt2"
+    FRONTEND_GUILIB="qt2/*.lo qt2/ui/*.lo qt2/moc/*.lo qt2/ui/moc/*.lo"
+    FRONTEND_LDFLAGS="\$(QT2_LDFLAGS)"
+    FRONTEND_INCLUDES="-I\${srcdir}/qt2 \$(QT2_INCLUDES)"
+    FRONTEND_LIBS="\$(QT2_LIBS)";;
+  *)
+    LYX_ERROR(Unknown frontend $lyx_use_frontend);;
+esac
+
+### Check for xforms and xpm (only if X has been found).
+if test "$have_x" = no ; then
+LYX_ERROR(dnl
+[Cannot find X window libraries and/or headers. Check your installation.
+   If you use a Linux system, check that you have installed
+   the development tools.])
+fi
+
+### Check whether the xforms library has a viable image loader
+### For now, run this test always so config.h is unchanged by a change in
+### frontend
+LYX_USE_XFORMS_IMAGE_LOADER
+
+### Setup GNU gettext
+dnl GNU gettext is written in C
+AC_LANG_C
+# Some tests that may be useful for gettext
+AC_C_CONST
+AC_C_INLINE
+# Do the real setup now
+AM_GNU_GETTEXT
+# a hack for those who try to change LyX, but do not have gettext installed
+case  "${XGETTEXT}" in
+ *:) XGETTEXT='cp ${srcdir}/lyx.pot ./${PACKAGE}.po ; :'
+esac
+
+AC_SUBST(LINGUAS)
+
+AC_LANG_CPLUSPLUS
+
+# some standard header files
+AC_HEADER_DIRENT
+AC_HEADER_MAJOR
+AC_CHECK_HEADERS(sys/time.h sys/types.h sys/select.h strings.h locale.h)
+
+# some standard structures
+AC_HEADER_STAT
+AC_HEADER_TIME
+
+# some standard types
+AC_TYPE_MODE_T
+AC_TYPE_OFF_T
+AC_TYPE_PID_T
+AC_TYPE_SIGNAL
+AC_TYPE_SIZE_T
+AC_TYPE_UID_T
+
+AC_CHECK_FUNCS(snprintf vsnprintf)
+LYX_CHECK_DECL(snprintf, stdio.h)
+LYX_CHECK_DECL(vsnprintf, stdio.h)
+LYX_CHECK_DECL(istreambuf_iterator, iterator)
+
+dnl This is a slight hack: the tests generated by autoconf 2.52 do not
+dnl work correctly because of some conflict with stdlib.h with g++ 2.96
+dnl We aim to remove this eventually, since we should test as much as
+dnl possible with the compiler which will use the functions (JMarc)
+AC_LANG_C
+AC_CHECK_FUNCS(memmove memset strchr putenv setenv mkfifo mkstemp mktemp)
+AC_LANG_CPLUSPLUS
+
+dnl Until this is fixed in autoconf we provide our own version
+LYX_FUNC_SELECT_ARGTYPES
+
+dnl check whether we have to work around solaris broken putenv()
+LYX_FUNC_PUTENV_ARGTYPE
+
+
+LYX_CHECK_DECL_HDRS(mkstemp,[unistd.h stdlib.h])
+
+### Some information on what just happened
+real_bindir=`eval "echo \`eval \"echo ${bindir}\"\`"`
+real_datadir=`eval "echo \`eval \"echo ${datadir}/${PACKAGE}\"\`"`
+VERSION_INFO="Configuration\n\
+  Host type:                      ${host}\n\
+  Special build flags:           ${lyx_flags}\n\
+  C   Compiler:                   ${CC}\n\
+  C   Compiler flags:             ${CFLAGS}\n\
+  C++ Compiler:                   ${CXX} ${CXX_VERSION}\n\
+  C++ Compiler flags:             ${CXXFLAGS}\n\
+  Linker flags:                   ${LDFLAGS}\n\
+  Frontend:                       ${lyx_use_frontend}\n\
+${FRONTEND_INFO}\
+  LyX binary dir:                 ${real_bindir}\n\
+  LyX files dir:                  ${real_datadir}\n"
+
+
+AC_SUBST(VERSION_INFO)
+
+### Finish the work.
+AC_CONFIG_SUBDIRS(lib lib/reLyX)
+AC_CONFIG_FILES([Makefile \
+       boost/Makefile \
+       boost/libs/Makefile \
+       boost/libs/regex/Makefile \
+       boost/libs/regex/src/Makefile \
+       boost/libs/signals/Makefile \
+       boost/libs/signals/src/Makefile \
+       config/Makefile \
+       development/lyx.spec \
+       lib/Makefile \
+       intl/Makefile \
+       po/Makefile.in \
+       sourcedoc/Doxyfile \
+       src/Makefile \
+       src/version.C \
+       src/mathed/Makefile \
+       src/graphics/Makefile \
+       src/insets/Makefile \
+       src/support/Makefile \
+       src/frontends/Makefile \
+       src/frontends/controllers/Makefile \
+       src/frontends/xforms/Makefile \
+       src/frontends/xforms/forms/Makefile \
+       src/frontends/qt2/Makefile \
+       src/frontends/qt2/moc/Makefile \
+       src/frontends/qt2/ui/Makefile \
+       src/frontends/qt2/ui/moc/Makefile \
+       src/frontends/gnome/Makefile \
+])
+AC_OUTPUT
+# show version information
+echo
+printf "$VERSION_INFO"
+echo
+
+# Display a final warning if there has been a LYX_ERROR
+LYX_CHECK_ERRORS

@@ -646,7 +646,7 @@ lyx_path_header_path=`(eval "$ac_cpp conftest.$ac_ext") 2>&5 | \
   sed -e 's/.*\(".*$1"\).*/\1/' -e "1q"`
 eval "lyx_cv_path2_${ac_safe}=\$lyx_path_header_path"
 rm -f conftest*])
-  AC_DEFINE_UNQUOTED($ac_tr_safe, $lyx_path_header_path)])
+  AC_DEFINE_UNQUOTED($ac_tr_safe, $lyx_path_header_path, [dummy])])
 ])
 ### end of LYX_PATH_HEADER
 
@@ -745,7 +745,7 @@ tr_hdr=`echo $2 | tr . _`
 AC_CACHE_VAL([lyx_cv_declare_${tr_hdr}_$1],
 [AC_EGREP_HEADER($1, $2, [eval "lyx_cv_declare_${tr_hdr}_$1=yes"], [eval "lyx_cv_declare_${tr_hdr}_$1=no"])])
 if eval "test \"\${lyx_cv_declare_${tr_hdr}_$1}\" = \"yes\""; then
-	AC_DEFINE_UNQUOTED(HAVE_DECL_${tr_func})
+	AC_DEFINE_UNQUOTED(HAVE_DECL_${tr_func},1,[dummy])
 	AC_MSG_RESULT(yes)
 else
 	AC_MSG_RESULT(no)
