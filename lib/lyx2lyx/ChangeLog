@@ -1,3 +1,10 @@
+2004-10-09  José Matos  <jamatos@lyx.org>
+
+	* LyX.py: add support for format 237, fix variables type,
+	new function formats_list().
+	* lyx2lyx: print list of available formats on request.
+	* lyx_1_4.py: add support for 237, reorganize directory functions.
+
 2004-09-29  José Matos  <jamatos@lyx.org>
 
 	* lyx_1_4.py (get_end_format): simplify index.

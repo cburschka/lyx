@@ -29,82 +29,82 @@ from string import replace, split, find, strip, join
 ##
 # Remove \color default
 #
-def remove_color_default(lines):
+def remove_color_default(file):
     i = 0
     while 1:
-        i = find_token(lines, "\\color default", i)
+        i = find_token(file.body, "\\color default", i)
         if i == -1:
             return
-        lines[i] = replace(lines[i], "\\color default",
+        file.body[i] = replace(file.body[i], "\\color default",
                            "\\color inherit")
 
 
 ##
 # Add \end_header
 #
-def add_end_header(header):
-    header.append("\\end_header");
+def add_end_header(file):
+    file.header.append("\\end_header");
 
 
-def rm_end_header(lines):
-    i = find_token(lines, "\\end_header", 0)
+def rm_end_header(file):
+    i = find_token(file.header, "\\end_header", 0)
     if i == -1:
         return
-    del lines[i]
+    del file.header[i]
 
 
 ##
 # \SpecialChar ~ -> \InsetSpace ~
 #
-def convert_spaces(lines):
-    for i in range(len(lines)):
-        lines[i] = replace(lines[i],"\\SpecialChar ~","\\InsetSpace ~")
+def convert_spaces(file):
+    for i in range(len(file.body)):
+        file.body[i] = replace(file.body[i],"\\SpecialChar ~","\\InsetSpace ~")
 
 
-def revert_spaces(lines):
-    for i in range(len(lines)):
-        lines[i] = replace(lines[i],"\\InsetSpace ~", "\\SpecialChar ~")
+def revert_spaces(file):
+    for i in range(len(file.body)):
+        file.body[i] = replace(file.body[i],"\\InsetSpace ~", "\\SpecialChar ~")
 
 
 ##
 # BibTeX changes
 #
-def convert_bibtex(lines):
-    for i in range(len(lines)):
-        lines[i] = replace(lines[i],"\\begin_inset LatexCommand \\BibTeX",
+def convert_bibtex(file):
+    for i in range(len(file.body)):
+        file.body[i] = replace(file.body[i],"\\begin_inset LatexCommand \\BibTeX",
                                   "\\begin_inset LatexCommand \\bibtex")
 
 
-def revert_bibtex(lines):
-    for i in range(len(lines)):
-        lines[i] = replace(lines[i], "\\begin_inset LatexCommand \\bibtex",
+def revert_bibtex(file):
+    for i in range(len(file.body)):
+        file.body[i] = replace(file.body[i], "\\begin_inset LatexCommand \\bibtex",
                                   "\\begin_inset LatexCommand \\BibTeX")
 
 
 ##
 # Remove \lyxparent
 #
-def remove_insetparent(lines):
+def remove_insetparent(file):
     i = 0
     while 1:
-        i = find_token(lines, "\\begin_inset LatexCommand \\lyxparent", i)
+        i = find_token(file.body, "\\begin_inset LatexCommand \\lyxparent", i)
         if i == -1:
             break
-        del lines[i:i+3]
+        del file.body[i:i+3]
 
 
 ##
 #  Inset External
 #
-def convert_external(lines):
+def convert_external(file):
     external_rexp = re.compile(r'\\begin_inset External ([^,]*),"([^"]*)",')
     external_header = "\\begin_inset External"
     i = 0
     while 1:
-        i = find_token(lines, external_header, i)
+        i = find_token(file.body, external_header, i)
         if i == -1:
             break
-        look = external_rexp.search(lines[i])
+        look = external_rexp.search(file.body[i])
         args = ['','']
         if look:
             args[0] = look.group(1)
@@ -116,7 +116,7 @@ def convert_external(lines):
             top = "\\begin_inset Graphics"
             if args[1]:
                 filename = "\tfilename " + args[1]
-            lines[i:i+1] = [top, filename]
+            file.body[i:i+1] = [top, filename]
             i = i + 1
         else:
             # Convert the old External Inset format to the new.
@@ -124,66 +124,66 @@ def convert_external(lines):
             template = "\ttemplate " + args[0]
             if args[1]:
                 filename = "\tfilename " + args[1]
-                lines[i:i+1] = [top, template, filename]
+                file.body[i:i+1] = [top, template, filename]
                 i = i + 2
             else:
-                lines[i:i+1] = [top, template]
+                file.body[i:i+1] = [top, template]
                 i = i + 1
 
 
-def revert_external_1(lines):
+def revert_external_1(file):
     external_header = "\\begin_inset External"
     i = 0
     while 1:
-        i = find_token(lines, external_header, i)
+        i = find_token(file.body, external_header, i)
         if i == -1:
             break
 
-        template = split(lines[i+1])
+        template = split(file.body[i+1])
         template.reverse()
-        del lines[i+1]
+        del file.body[i+1]
 
-        filename = split(lines[i+1])
+        filename = split(file.body[i+1])
         filename.reverse()
-        del lines[i+1]
+        del file.body[i+1]
 
-        params = split(lines[i+1])
+        params = split(file.body[i+1])
         params.reverse()
-        if lines[i+1]: del lines[i+1]
+        if file.body[i+1]: del file.body[i+1]
 
-        lines[i] = lines[i] + " " + template[0]+ ', "' + filename[0] + '", " '+ join(params[1:]) + '"'
+        file.body[i] = file.body[i] + " " + template[0]+ ', "' + filename[0] + '", " '+ join(params[1:]) + '"'
         i = i + 1
 
 
-def revert_external_2(lines):
+def revert_external_2(file):
     draft_token = '\tdraft'
     i = 0
     while 1:
-        i = find_token(lines, '\\begin_inset External', i)
+        i = find_token(file.body, '\\begin_inset External', i)
         if i == -1:
             break
-        j = find_end_of_inset(lines, i + 1)
+        j = find_end_of_inset(file.body, i + 1)
         if j == -1:
             #this should not happen
             break
-        k = find_token(lines, draft_token, i+1, j-1)
-        if (k != -1 and len(draft_token) == len(lines[k])):
-            del lines[k]
+        k = find_token(file.body, draft_token, i+1, j-1)
+        if (k != -1 and len(draft_token) == len(file.body[k])):
+            del file.body[k]
         i = j + 1
 
 
 ##
 # Comment
 #
-def convert_comment(lines):
+def convert_comment(file):
     i = 0
     comment = "\\layout Comment"
     while 1:
-        i = find_token(lines, comment, i)
+        i = find_token(file.body, comment, i)
         if i == -1:
             return
 
-        lines[i:i+1] = ["\\layout Standard","","",
+        file.body[i:i+1] = ["\\layout Standard","","",
                         "\\begin_inset Comment",
                         "collapsed true","",
                         "\\layout Standard"]
@@ -191,70 +191,70 @@ def convert_comment(lines):
 
         while 1:
                 old_i = i
-            	i = find_token(lines, "\\layout", i)
+            	i = find_token(file.body, "\\layout", i)
                 if i == -1:
-                    i = len(lines) - 1
-                    lines[i:i] = ["\\end_inset","",""]
+                    i = len(file.body) - 1
+                    file.body[i:i] = ["\\end_inset","",""]
                     return
 
-                j = find_token(lines, '\\begin_deeper', old_i, i)
+                j = find_token(file.body, '\\begin_deeper', old_i, i)
                 if j == -1: j = i + 1
-                k = find_token(lines, '\\begin_inset', old_i, i)
+                k = find_token(file.body, '\\begin_inset', old_i, i)
                 if k == -1: k = i + 1
 
                 if j < i and j < k:
                     i = j
-                    del lines[i]
-                    i = find_end_of( lines, i, "\\begin_deeper","\\end_deeper")
+                    del file.body[i]
+                    i = find_end_of( file.body, i, "\\begin_deeper","\\end_deeper")
                     if i == -1:
                         #This case should not happen
                         #but if this happens deal with it greacefully adding
                         #the missing \end_deeper.
-                        i = len(lines) - 1
-                        lines[i:i] = ["\end_deeper",""]
+                        i = len(file.body) - 1
+                        file.body[i:i] = ["\end_deeper",""]
                         return
                     else:
-                        del lines[i]
+                        del file.body[i]
                         continue
 
                 if k < i:
                     i = k
-                    i = find_end_of( lines, i, "\\begin_inset","\\end_inset")
+                    i = find_end_of( file.body, i, "\\begin_inset","\\end_inset")
                     if i == -1:
                         #This case should not happen
                         #but if this happens deal with it greacefully adding
                         #the missing \end_inset.
-                        i = len(lines) - 1
-                        lines[i:i] = ["\\end_inset","","","\\end_inset","",""]
+                        i = len(file.body) - 1
+                        file.body[i:i] = ["\\end_inset","","","\\end_inset","",""]
                         return
                     else:
                         i = i + 1
                         continue
 
-                if find(lines[i], comment) == -1:
-                    lines[i:i] = ["\\end_inset"]
+                if find(file.body[i], comment) == -1:
+                    file.body[i:i] = ["\\end_inset"]
                     i = i + 1
                     break
-                lines[i:i+1] = ["\\layout Standard"]
+                file.body[i:i+1] = ["\\layout Standard"]
                 i = i + 1
 
 
-def revert_comment(lines):
+def revert_comment(file):
     i = 0
     while 1:
-        i = find_tokens(lines, ["\\begin_inset Comment", "\\begin_inset Greyedout"], i)
+        i = find_tokens(file.body, ["\\begin_inset Comment", "\\begin_inset Greyedout"], i)
 
         if i == -1:
             return
-        lines[i] = "\\begin_inset Note"
+        file.body[i] = "\\begin_inset Note"
         i = i + 1
 
 
 ##
 # Add \end_layout
 #
-def add_end_layout(lines):
-    i = find_token(lines, '\\layout', 0)
+def add_end_layout(file):
+    i = find_token(file.body, '\\layout', 0)
 
     if i == -1:
         return
@@ -263,10 +263,10 @@ def add_end_layout(lines):
     struct_stack = ["\\layout"]
 
     while 1:
-        i = find_tokens(lines, ["\\begin_inset", "\\end_inset", "\\layout",
+        i = find_tokens(file.body, ["\\begin_inset", "\\end_inset", "\\layout",
                                 "\\begin_deeper", "\\end_deeper", "\\the_end"], i)
 
-        token = split(lines[i])[0]
+        token = split(file.body[i])[0]
 
         if token == "\\begin_inset":
             struct_stack.append(token)
@@ -276,8 +276,8 @@ def add_end_layout(lines):
         if token == "\\end_inset":
             tail = struct_stack.pop()
             if tail == "\\layout":
-                lines.insert(i,"")
-                lines.insert(i,"\\end_layout")
+                file.body.insert(i,"")
+                file.body.insert(i,"\\end_layout")
                 i = i + 2
                 #Check if it is the correct tag
                 struct_stack.pop()
@@ -287,8 +287,8 @@ def add_end_layout(lines):
         if token == "\\layout":
             tail = struct_stack.pop()
             if tail == token:
-                lines.insert(i,"")
-                lines.insert(i,"\\end_layout")
+                file.body.insert(i,"")
+                file.body.insert(i,"\\end_layout")
                 i = i + 3
             else:
                 struct_stack.append(tail)
@@ -297,153 +297,154 @@ def add_end_layout(lines):
             continue
 
         if token == "\\begin_deeper":
-            lines.insert(i,"")
-            lines.insert(i,"\\end_layout")
+            file.body.insert(i,"")
+            file.body.insert(i,"\\end_layout")
             i = i + 3
             struct_stack.append(token)
             continue
 
         if token == "\\end_deeper":
             if struct_stack[-1] == '\\layout':
-                lines.insert(i, '\\end_layout')
+                file.body.insert(i, '\\end_layout')
                 i = i + 1
                 struct_stack.pop()
             i = i + 1
             continue
 
         #case \end_document
-        lines.insert(i, "")
-        lines.insert(i, "\\end_layout")
+        file.body.insert(i, "")
+        file.body.insert(i, "\\end_layout")
         return
 
 
-def rm_end_layout(lines):
+def rm_end_layout(file):
     i = 0
     while 1:
-        i = find_token(lines, '\\end_layout', i)
+        i = find_token(file.body, '\\end_layout', i)
 
         if i == -1:
             return
 
-        del lines[i]
+        del file.body[i]
 
 
 ##
 # Handle change tracking keywords
 #
-def insert_tracking_changes(lines):
-    i = find_token(lines, "\\tracking_changes", 0)
+def insert_tracking_changes(file):
+    i = find_token(file.header, "\\tracking_changes", 0)
     if i == -1:
-        lines.append("\\tracking_changes 0")
+        file.header.append("\\tracking_changes 0")
 
-def rm_tracking_changes(lines):
-    i = find_token(lines, "\\author", 0)
+
+def rm_tracking_changes(file):
+    i = find_token(file.header, "\\author", 0)
     if i != -1:
-        del lines[i]
+        del file.header[i]
 
-    i = find_token(lines, "\\tracking_changes", 0)
+    i = find_token(file.header, "\\tracking_changes", 0)
     if i == -1:
         return
-    del lines[i]
+    del file.header[i]
 
 
-def rm_body_changes(lines):
+def rm_body_changes(file):
     i = 0
     while 1:
-        i = find_token(lines, "\\change_", i)
+        i = find_token(file.body, "\\change_", i)
         if i == -1:
             return
 
-        del lines[i]
+        del file.body[i]
 
 
 ##
 # \layout -> \begin_layout
 #
-def layout2begin_layout(lines):
+def layout2begin_layout(file):
     i = 0
     while 1:
-        i = find_token(lines, '\\layout', i)
+        i = find_token(file.body, '\\layout', i)
         if i == -1:
             return
 
-        lines[i] = replace(lines[i], '\\layout', '\\begin_layout')
+        file.body[i] = replace(file.body[i], '\\layout', '\\begin_layout')
         i = i + 1
 
 
-def begin_layout2layout(lines):
+def begin_layout2layout(file):
     i = 0
     while 1:
-        i = find_token(lines, '\\begin_layout', i)
+        i = find_token(file.body, '\\begin_layout', i)
         if i == -1:
             return
 
-        lines[i] = replace(lines[i], '\\begin_layout', '\\layout')
+        file.body[i] = replace(file.body[i], '\\begin_layout', '\\layout')
         i = i + 1
 
 
 ##
 # valignment="center" -> valignment="middle"
 #
-def convert_valignment_middle(lines, start, end):
+def convert_valignment_middle(body, start, end):
     for i in range(start, end):
-        if re.search('^<(column|cell) .*valignment="center".*>$', lines[i]):
-            lines[i] = replace(lines[i], 'valignment="center"', 'valignment="middle"')
+        if re.search('^<(column|cell) .*valignment="center".*>$', body[i]):
+            body[i] = replace(body[i], 'valignment="center"', 'valignment="middle"')
 
 
-def convert_table_valignment_middle(lines):
+def convert_table_valignment_middle(file):
     i = 0
     while 1:
-        i = find_token(lines, '\\begin_inset  Tabular', i)
+        i = find_token(file.body, '\\begin_inset  Tabular', i)
         if i == -1:
             return
-        j = find_end_of_inset(lines, i + 1)
+        j = find_end_of_inset(file.body, i + 1)
         if j == -1:
             #this should not happen
-            convert_valignment_middle(lines, i + 1, len(lines))
+            convert_valignment_middle(file.body, i + 1, len(file.body))
             return
-        convert_valignment_middle(lines, i + 1, j)
+        convert_valignment_middle(file.body, i + 1, j)
         i = j + 1
 
 
-def revert_table_valignment_middle(lines, start, end):
+def revert_table_valignment_middle(body, start, end):
     for i in range(start, end):
-        if re.search('^<(column|cell) .*valignment="middle".*>$', lines[i]):
-            lines[i] = replace(lines[i], 'valignment="middle"', 'valignment="center"')
+        if re.search('^<(column|cell) .*valignment="middle".*>$', body[i]):
+            body[i] = replace(body[i], 'valignment="middle"', 'valignment="center"')
 
 
-def revert_valignment_middle(lines):
+def revert_valignment_middle(file):
     i = 0
     while 1:
-        i = find_token(lines, '\\begin_inset  Tabular', i)
+        i = find_token(file.body, '\\begin_inset  Tabular', i)
         if i == -1:
             return
-        j = find_end_of_inset(lines, i + 1)
+        j = find_end_of_inset(file.body, i + 1)
         if j == -1:
             #this should not happen
-            revert_table_valignment_middle(lines, i + 1, len(lines))
+            revert_table_valignment_middle(file.body, i + 1, len(file.body))
             return
-        revert_table_valignment_middle(lines, i + 1, j)
+        revert_table_valignment_middle(file.body, i + 1, j)
         i = j + 1
 
 
 ##
 #  \the_end -> \end_document
 #
-def convert_end_document(lines):
-    i = find_token(lines, "\\the_end", 0)
+def convert_end_document(file):
+    i = find_token(file.body, "\\the_end", 0)
     if i == -1:
-        lines.append("\\end_document")
+        file.body.append("\\end_document")
         return
-    lines[i] = "\\end_document"
+    file.body[i] = "\\end_document"
 
 
-def revert_end_document(lines):
-    i = find_token(lines, "\\end_document", 0)
+def revert_end_document(file):
+    i = find_token(file.body, "\\end_document", 0)
     if i == -1:
-        lines.append("\\the_end")
+        file.body.append("\\the_end")
         return
-    lines[i] = "\\the_end"
+    file.body[i] = "\\the_end"
 
 
 ##
@@ -476,43 +477,43 @@ def revert_end_document(lines):
 #\newpage
 #
 #\end_layout
-def convert_breaks(lines):    
+def convert_breaks(file):    
     i = 0
     while 1:
-        i = find_token(lines, "\\begin_layout", i)
+        i = find_token(file.body, "\\begin_layout", i)
         if i == -1:
             return
         i = i + 1
-        line_top   = find(lines[i],"\\line_top")
-        line_bot   = find(lines[i],"\\line_bottom")
-        pb_top     = find(lines[i],"\\pagebreak_top")
-        pb_bot     = find(lines[i],"\\pagebreak_bottom")
-        vspace_top = find(lines[i],"\\added_space_top")
-        vspace_bot = find(lines[i],"\\added_space_bottom")
+        line_top   = find(file.body[i],"\\line_top")
+        line_bot   = find(file.body[i],"\\line_bottom")
+        pb_top     = find(file.body[i],"\\pagebreak_top")
+        pb_bot     = find(file.body[i],"\\pagebreak_bottom")
+        vspace_top = find(file.body[i],"\\added_space_top")
+        vspace_bot = find(file.body[i],"\\added_space_bottom")
 
         if line_top == -1 and line_bot == -1 and pb_bot == -1 and pb_top == -1 and vspace_top == -1 and vspace_bot == -1:
             continue
 
         for tag in "\\line_top", "\\line_bottom", "\\pagebreak_top", "\\pagebreak_bottom":
-            lines[i] = replace(lines[i], tag, "")
+            file.body[i] = replace(file.body[i], tag, "")
 
         if vspace_top != -1:
             # the position could be change because of the removal of other
             # paragraph properties above
-            vspace_top = find(lines[i],"\\added_space_top")
-            tmp_list = split(lines[i][vspace_top:])
+            vspace_top = find(file.body[i],"\\added_space_top")
+            tmp_list = split(file.body[i][vspace_top:])
             vspace_top_value = tmp_list[1]
-            lines[i] = lines[i][:vspace_top] + join(tmp_list[2:])
+            file.body[i] = file.body[i][:vspace_top] + join(tmp_list[2:])
 
         if vspace_bot != -1:
             # the position could be change because of the removal of other
             # paragraph properties above
-            vspace_bot = find(lines[i],"\\added_space_bottom")
-            tmp_list = split(lines[i][vspace_bot:])
+            vspace_bot = find(file.body[i],"\\added_space_bottom")
+            tmp_list = split(file.body[i][vspace_bot:])
             vspace_bot_value = tmp_list[1]
-            lines[i] = lines[i][:vspace_bot] + join(tmp_list[2:])
+            file.body[i] = file.body[i][:vspace_bot] + join(tmp_list[2:])
 
-        lines[i] = strip(lines[i])
+        file.body[i] = strip(file.body[i])
         i = i + 1
 
         #  Create an empty paragraph for line and page break that belong
@@ -533,11 +534,11 @@ def convert_breaks(lines):
             paragraph_above.extend(['\\end_layout',''])
 
             #inset new paragraph above the current paragraph
-            lines[i-2:i-2] = paragraph_above
+            file.body[i-2:i-2] = paragraph_above
             i = i + len(paragraph_above)
 
         # Ensure that nested style are converted later.
-        k = find_end_of(lines, i, "\\begin_layout", "\\end_layout")
+        k = find_end_of(file.body, i, "\\begin_layout", "\\end_layout")
 
         if k == -1:
             return
@@ -558,44 +559,44 @@ def convert_breaks(lines):
             paragraph_bellow.extend(['\\end_layout',''])
 
             #inset new paragraph above the current paragraph
-            lines[k + 1: k + 1] = paragraph_bellow
+            file.body[k + 1: k + 1] = paragraph_bellow
 
 
 ##
 #  Notes
 #
-def convert_note(lines):
+def convert_note(file):
     i = 0
     while 1:
-        i = find_tokens(lines, ["\\begin_inset Note",
+        i = find_tokens(file.body, ["\\begin_inset Note",
                                 "\\begin_inset Comment",
                                 "\\begin_inset Greyedout"], i)
         if i == -1:
             break
 
-        lines[i] = lines[i][0:13] + 'Note ' + lines[i][13:]
+        file.body[i] = file.body[i][0:13] + 'Note ' + file.body[i][13:]
         i = i + 1
 
 
-def revert_note(lines):
+def revert_note(file):
     note_header = "\\begin_inset Note "
     i = 0
     while 1:
-        i = find_token(lines, note_header, i)
+        i = find_token(file.body, note_header, i)
         if i == -1:
             break
 
-        lines[i] = "\\begin_inset " + lines[i][len(note_header):]
+        file.body[i] = "\\begin_inset " + file.body[i][len(note_header):]
         i = i + 1
 
 
 ##
 # Box
 #
-def convert_box(lines):
+def convert_box(file):
     i = 0
     while 1:
-        i = find_tokens(lines, ["\\begin_inset Boxed",
+        i = find_tokens(file.body, ["\\begin_inset Boxed",
                                 "\\begin_inset Doublebox",
                                 "\\begin_inset Frameless",
                                 "\\begin_inset ovalbox",
@@ -604,29 +605,29 @@ def convert_box(lines):
         if i == -1:
             break
 
-        lines[i] = lines[i][0:13] + 'Box ' + lines[i][13:]
+        file.body[i] = file.body[i][0:13] + 'Box ' + file.body[i][13:]
         i = i + 1
 
 
-def revert_box(lines):
+def revert_box(file):
     box_header = "\\begin_inset Box "
     i = 0
     while 1:
-        i = find_token(lines, box_header, i)
+        i = find_token(file.body, box_header, i)
         if i == -1:
             break
 
-        lines[i] = "\\begin_inset " + lines[i][len(box_header):]
+        file.body[i] = "\\begin_inset " + file.body[i][len(box_header):]
         i = i + 1
 
 
 ##
 # Collapse
 #
-def convert_collapsable(lines, opt):
+def convert_collapsable(file):
     i = 0
     while 1:
-        i = find_tokens(lines, ["\\begin_inset Box",
+        i = find_tokens(file.body, ["\\begin_inset Box",
                                 "\\begin_inset Branch",
                                 "\\begin_inset CharStyle",
                                 "\\begin_inset Float",
@@ -643,24 +644,24 @@ def convert_collapsable(lines, opt):
         # (_always_ present) then break with a warning message
         i = i + 1
         while 1:
-            if (lines[i] == "collapsed false"):
-                lines[i] = "status open"
+            if (file.body[i] == "collapsed false"):
+                file.body[i] = "status open"
                 break
-            elif (lines[i] == "collapsed true"):
-                lines[i] = "status collapsed"
+            elif (file.body[i] == "collapsed true"):
+                file.body[i] = "status collapsed"
                 break
-            elif (lines[i][:13] == "\\begin_layout"):
-                opt.warning("Malformed LyX file.")
+            elif (file.body[i][:13] == "\\begin_layout"):
+                file.warning("Malformed LyX file.")
                 break
             i = i + 1
 
         i = i + 1
 
 
-def revert_collapsable(lines, opt):
+def revert_collapsable(file):
     i = 0
     while 1:
-        i = find_tokens(lines, ["\\begin_inset Box",
+        i = find_tokens(file.body, ["\\begin_inset Box",
                                 "\\begin_inset Branch",
                                 "\\begin_inset CharStyle",
                                 "\\begin_inset Float",
@@ -677,15 +678,15 @@ def revert_collapsable(lines, opt):
         # (_always_ present) then break with a warning message
         i = i + 1
         while 1:
-            if (lines[i] == "status open"):
-                lines[i] = "collapsed false"
+            if (file.body[i] == "status open"):
+                file.body[i] = "collapsed false"
                 break
-            elif (lines[i] == "status collapsed" or
-                  lines[i] == "status inlined"):
-                lines[i] = "collapsed true"
+            elif (file.body[i] == "status collapsed" or
+                  file.body[i] == "status inlined"):
+                file.body[i] = "collapsed true"
                 break
-            elif (lines[i][:13] == "\\begin_layout"):
-                opt.warning("Malformed LyX file.")
+            elif (file.body[i][:13] == "\\begin_layout"):
+                file.warning("Malformed LyX file.")
                 break
             i = i + 1
 
@@ -695,10 +696,10 @@ def revert_collapsable(lines, opt):
 ##
 #  ERT
 #
-def convert_ert(lines, opt):
+def convert_ert(file):
     i = 0
     while 1:
-        i = find_token(lines, "\\begin_inset ERT", i)
+        i = find_token(file.body, "\\begin_inset ERT", i)
         if i == -1:
             break
 
@@ -707,27 +708,27 @@ def convert_ert(lines, opt):
         # (_always_ present) then break with a warning message
         i = i + 1
         while 1:
-            if (lines[i] == "status Open"):
-                lines[i] = "status open"
+            if (file.body[i] == "status Open"):
+                file.body[i] = "status open"
                 break
-            elif (lines[i] == "status Collapsed"):
-                lines[i] = "status collapsed"
+            elif (file.body[i] == "status Collapsed"):
+                file.body[i] = "status collapsed"
                 break
-            elif (lines[i] == "status Inlined"):
-                lines[i] = "status inlined"
+            elif (file.body[i] == "status Inlined"):
+                file.body[i] = "status inlined"
                 break
-            elif (lines[i][:13] == "\\begin_layout"):
-                opt.warning("Malformed LyX file.")
+            elif (file.body[i][:13] == "\\begin_layout"):
+                file.warning("Malformed LyX file.")
                 break
             i = i + 1
 
         i = i + 1
 
 
-def revert_ert(lines, opt):
+def revert_ert(file):
     i = 0
     while 1:
-        i = find_token(lines, "\\begin_inset ERT", i)
+        i = find_token(file.body, "\\begin_inset ERT", i)
         if i == -1:
             break
 
@@ -736,17 +737,17 @@ def revert_ert(lines, opt):
         # (_always_ present) then break with a warning message
         i = i + 1
         while 1:
-            if (lines[i] == "status open"):
-                lines[i] = "status Open"
+            if (file.body[i] == "status open"):
+                file.body[i] = "status Open"
                 break
-            elif (lines[i] == "status collapsed"):
-                lines[i] = "status Collapsed"
+            elif (file.body[i] == "status collapsed"):
+                file.body[i] = "status Collapsed"
                 break
-            elif (lines[i] == "status inlined"):
-                lines[i] = "status Inlined"
+            elif (file.body[i] == "status inlined"):
+                file.body[i] = "status Inlined"
                 break
-            elif (lines[i][:13] == "\\begin_layout"):
-                opt.warning("Malformed LyX file.")
+            elif (file.body[i][:13] == "\\begin_layout"):
+                file.warning("Malformed LyX file.")
                 break
             i = i + 1
 
@@ -756,7 +757,7 @@ def revert_ert(lines, opt):
 ##
 # Minipages
 #
-def convert_minipage(lines):
+def convert_minipage(file):
     """ Convert minipages to the box inset.
     We try to use the same order of arguments as lyx does.
     """
@@ -765,119 +766,119 @@ def convert_minipage(lines):
 
     i = 0
     while 1:
-        i = find_token(lines, "\\begin_inset Minipage", i)
+        i = find_token(file.body, "\\begin_inset Minipage", i)
         if i == -1:
             return
 
-        lines[i] = "\\begin_inset Box Frameless"
+        file.body[i] = "\\begin_inset Box Frameless"
         i = i + 1
 
         # convert old to new position using the pos list
-        if lines[i][:8] == "position":
-            lines[i] = 'position "%s"' % pos[int(lines[i][9])]
+        if file.body[i][:8] == "position":
+            file.body[i] = 'position "%s"' % pos[int(file.body[i][9])]
         else:
-            lines.insert(i, 'position "%s"' % pos[0])
+            file.body.insert(i, 'position "%s"' % pos[0])
         i = i + 1
 
-        lines.insert(i, 'hor_pos "c"')
+        file.body.insert(i, 'hor_pos "c"')
         i = i + 1
-        lines.insert(i, 'has_inner_box 1')
+        file.body.insert(i, 'has_inner_box 1')
         i = i + 1
 
         # convert the inner_position
-        if lines[i][:14] == "inner_position":
-            lines[i] = 'inner_pos "%s"' %  inner_pos[int(lines[i][15])]
+        if file.body[i][:14] == "inner_position":
+            file.body[i] = 'inner_pos "%s"' %  inner_pos[int(file.body[i][15])]
         else:
-            lines.insert('inner_pos "%s"' % inner_pos[0])
+            file.body.insert('inner_pos "%s"' % inner_pos[0])
         i = i + 1
 
         # We need this since the new file format has a height and width
         # in a different order.
-        if lines[i][:6] == "height":
-            height = lines[i][6:]
+        if file.body[i][:6] == "height":
+            height = file.body[i][6:]
             # test for default value of 221 and convert it accordingly
             if height == ' "0pt"':
                 height = ' "1pt"'
-            del lines[i]
+            del file.body[i]
         else:
             height = ' "1pt"'
 
-        if lines[i][:5] == "width":
-            width = lines[i][5:]
-            del lines[i]
+        if file.body[i][:5] == "width":
+            width = file.body[i][5:]
+            del file.body[i]
         else:
             width = ' "0"'
 
-        if lines[i][:9] == "collapsed":
-            if lines[i][9:] == "true":
+        if file.body[i][:9] == "collapsed":
+            if file.body[i][9:] == "true":
 		status = "collapsed"
             else:
 		status = "open"
-            del lines[i]
+            del file.body[i]
         else:
 	    status = "collapsed"
 
-        lines.insert(i, 'use_parbox 0')
+        file.body.insert(i, 'use_parbox 0')
         i = i + 1
-        lines.insert(i, 'width' + width)
+        file.body.insert(i, 'width' + width)
         i = i + 1
-        lines.insert(i, 'special "none"')
+        file.body.insert(i, 'special "none"')
         i = i + 1
-        lines.insert(i, 'height' + height)
+        file.body.insert(i, 'height' + height)
         i = i + 1
-        lines.insert(i, 'height_special "totalheight"')
+        file.body.insert(i, 'height_special "totalheight"')
         i = i + 1
-        lines.insert(i, 'status ' + status)
+        file.body.insert(i, 'status ' + status)
         i = i + 1
 
 
 # -------------------------------------------------------------------------------------------
 # Convert backslashes into valid ERT code, append the converted text to
-# lines[i] and return the (maybe incremented) line index i
-def convert_ertbackslash(lines, i, ert):
+# file.body[i] and return the (maybe incremented) line index i
+def convert_ertbackslash(body, i, ert):
     for c in ert:
 	if c == '\\':
-	    lines[i] = lines[i] + '\\backslash '
+	    body[i] = body[i] + '\\backslash '
 	    i = i + 1
-	    lines.insert(i, '')
+	    body.insert(i, '')
 	else:
-	    lines[i] = lines[i] + c
+	    body[i] = body[i] + c
     return i
 
 
-def convert_vspace(header, lines, opt):
+def convert_vspace(file):
 
     # Get default spaceamount
-    i = find_token(header, '\\defskip', 0)
+    i = find_token(file.header, '\\defskip', 0)
     if i == -1:
 	defskipamount = 'medskip'
     else:
-	defskipamount = split(header[i])[1]
+	defskipamount = split(file.header[i])[1]
 
     # Convert the insets
     i = 0
     while 1:
-        i = find_token(lines, '\\begin_inset VSpace', i)
+        i = find_token(file.body, '\\begin_inset VSpace', i)
         if i == -1:
             return
-	spaceamount = split(lines[i])[2]
+	spaceamount = split(file.body[i])[2]
 
 	# Are we at the beginning or end of a paragraph?
 	paragraph_start = 1
-	start = get_paragraph(lines, i) + 1
+	start = get_paragraph(file.body, i) + 1
 	for k in range(start, i):
-	    if is_nonempty_line(lines[k]):
+	    if is_nonempty_line(file.body[k]):
 		paragraph_start = 0
 		break
 	paragraph_end = 1
-	j = find_end_of_inset(lines, i)
+	j = find_end_of_inset(file.body, i)
 	if j == -1:
-	    opt.warning("Malformed LyX file: Missing '\\end_inset'.")
+	    file.warning("Malformed LyX file: Missing '\\end_inset'.")
 	    i = i + 1
 	    continue
-	end = get_next_paragraph(lines, i)
+	end = get_next_paragraph(file.body, i)
 	for k in range(j + 1, end):
-	    if is_nonempty_line(lines[k]):
+	    if is_nonempty_line(file.body[k]):
 		paragraph_end = 0
 		break
 
@@ -886,16 +887,16 @@ def convert_vspace(header, lines, opt):
 	if ((paragraph_start and not paragraph_end) or
 	    (paragraph_end   and not paragraph_start)):
 	    # The order is important: del and insert invalidate some indices
-	    del lines[j]
-	    del lines[i]
+	    del file.body[j]
+	    del file.body[i]
 	    if paragraph_start:
-		lines.insert(start, '\\added_space_top ' + spaceamount + ' ')
+		file.body.insert(start, '\\added_space_top ' + spaceamount + ' ')
 	    else:
-		lines.insert(start, '\\added_space_bottom ' + spaceamount + ' ')
+		file.body.insert(start, '\\added_space_bottom ' + spaceamount + ' ')
 	    continue
 
 	# Convert to ERT
-	lines[i:i+1] = ['\\begin_inset ERT', 'status Collapsed', '',
+	file.body[i:i+1] = ['\\begin_inset ERT', 'status Collapsed', '',
 	                '\\layout Standard', '', '\\backslash ']
 	i = i + 6
 	if spaceamount[-1] == '*':
@@ -922,20 +923,20 @@ def convert_vspace(header, lines, opt):
 	# Finally output the LaTeX code
 	if (spaceamount == 'smallskip' or spaceamount == 'medskip' or
 	    spaceamount == 'bigskip'   or spaceamount == 'vfill'):
-	    lines.insert(i, spaceamount)
+	    file.body.insert(i, spaceamount)
 	else :
 	    if keep:
-		lines.insert(i, 'vspace*{')
+		file.body.insert(i, 'vspace*{')
 	    else:
-		lines.insert(i, 'vspace{')
-	    i = convert_ertbackslash(lines, i, spaceamount)
-            lines[i] =  lines[i] + '}'
+		file.body.insert(i, 'vspace{')
+	    i = convert_ertbackslash(file.body, i, spaceamount)
+            file.body[i] =  file.body[i] + '}'
         i = i + 1
 
 
-# Convert a LyX length into valid ERT code and append it to lines[i]
+# Convert a LyX length into valid ERT code and append it to body[i]
 # Return the (maybe incremented) line index i
-def convert_ertlen(lines, i, len, special):
+def convert_ertlen(body, i, len, special):
     units = {"text%":"\\textwidth", "col%":"\\columnwidth",
              "page%":"\\pagewidth", "line%":"\\linewidth",
              "theight%":"\\textheight", "pheight%":"\\pageheight"}
@@ -950,8 +951,8 @@ def convert_ertlen(lines, i, len, special):
 	    len = '%f' % (len2value(len) / 100) + units[unit]
 	    break
 
-    # Convert backslashes and insert the converted length into lines
-    return convert_ertbackslash(lines, i, len)
+    # Convert backslashes and insert the converted length into body
+    return convert_ertbackslash(body, i, len)
 
 
 # Return the value of len without the unit in numerical form
@@ -963,20 +964,20 @@ def len2value(len):
     return 1.0
 
 
-def convert_frameless_box(lines, opt):
+def convert_frameless_box(file):
     pos = ['t', 'c', 'b']
     inner_pos = ['c', 't', 'b', 's']
     i = 0
     while 1:
-        i = find_token(lines, '\\begin_inset Frameless', i)
+        i = find_token(file.body, '\\begin_inset Frameless', i)
         if i == -1:
             return
-	j = find_end_of_inset(lines, i)
+	j = find_end_of_inset(file.body, i)
 	if j == -1:
-	    opt.warning("Malformed LyX file: Missing '\\end_inset'.")
+	    file.warning("Malformed LyX file: Missing '\\end_inset'.")
 	    i = i + 1
 	    continue
-	del lines[i]
+	del file.body[i]
 
 	# Gather parameters
 	params = {'position':'0', 'hor_pos':'c', 'has_inner_box':'1',
@@ -984,7 +985,7 @@ def convert_frameless_box(lines, opt):
 	          'special':'none', 'height':'1in',
 	          'height_special':'totalheight', 'collapsed':'false'}
 	for key in params.keys():
-	    value = replace(get_value(lines, key, i, j), '"', '')
+	    value = replace(get_value(file.body, key, i, j), '"', '')
 	    if value != "":
 		if key == 'position':
 		    # convert new to old position: 'position "t"' -> 0
@@ -998,7 +999,7 @@ def convert_frameless_box(lines, opt):
 			params[key] = value
 		else:
 		    params[key] = value
-		j = del_token(lines, key, i, j)
+		j = del_token(file.body, key, i, j)
 	i = i + 1
 
 	# Convert to minipage or ERT?
@@ -1021,39 +1022,39 @@ def convert_frameless_box(lines, opt):
 		params['collapsed'] = 'Collapsed'
 	    else:
 		params['collapsed'] = 'Open'
-	    lines[i : i] = ['\\begin_inset ERT', 'status ' + params['collapsed'],
+	    file.body[i : i] = ['\\begin_inset ERT', 'status ' + params['collapsed'],
 	                    '', '\\layout Standard', '', '\\backslash ']
 	    i = i + 6
 	    if params['use_parbox'] == '1':
-		lines.insert(i, 'parbox')
+		file.body.insert(i, 'parbox')
 	    else:
-		lines.insert(i, 'begin{minipage}')
-	    lines[i] = lines[i] + '[' + pos[params['position']] + ']['
-	    i = convert_ertlen(lines, i, params['height'], params['height_special'])
-	    lines[i] = lines[i] + '][' + inner_pos[params['inner_pos']] + ']{'
-	    i = convert_ertlen(lines, i, params['width'], params['special'])
+		file.body.insert(i, 'begin{minipage}')
+	    file.body[i] = file.body[i] + '[' + pos[params['position']] + ']['
+	    i = convert_ertlen(file.body, i, params['height'], params['height_special'])
+	    file.body[i] = file.body[i] + '][' + inner_pos[params['inner_pos']] + ']{'
+	    i = convert_ertlen(file.body, i, params['width'], params['special'])
             if params['use_parbox'] == '1':
-                lines[i] = lines[i] + '}{'
+                file.body[i] = file.body[i] + '}{'
             else:
-                lines[i] = lines[i] + '}'
+                file.body[i] = file.body[i] + '}'
 	    i = i + 1
-	    lines[i:i] = ['', '\\end_inset']
+	    file.body[i:i] = ['', '\\end_inset']
 	    i = i + 2
-	    j = find_end_of_inset(lines, i)
+	    j = find_end_of_inset(file.body, i)
 	    if j == -1:
-		opt.warning("Malformed LyX file: Missing '\\end_inset'.")
+		file.warning("Malformed LyX file: Missing '\\end_inset'.")
 		break
-            lines[j-1:j-1] = ['\\begin_inset ERT', 'status ' + params['collapsed'],
+            file.body[j-1:j-1] = ['\\begin_inset ERT', 'status ' + params['collapsed'],
 	                       '', '\\layout Standard', '']
 	    j = j + 4
 	    if params['use_parbox'] == '1':
-		lines.insert(j, '}')
+		file.body.insert(j, '}')
 	    else:
-		lines[j:j] = ['\\backslash ', 'end{minipage}']
+		file.body[j:j] = ['\\backslash ', 'end{minipage}']
 	else:
 
 	    # Convert to minipage
-	    lines[i:i] = ['\\begin_inset Minipage',
+	    file.body[i:i] = ['\\begin_inset Minipage',
 	                  'position %d' % params['position'],
 			  'inner_position %d' % params['inner_pos'],
 			  'height "' + params['height'] + '"',
@@ -1065,55 +1066,55 @@ def convert_frameless_box(lines, opt):
 # Convert jurabib
 #
 
-def convert_jurabib(header, opt):
-    i = find_token(header, '\\use_numerical_citations', 0)
+def convert_jurabib(file):
+    i = find_token(file.header, '\\use_numerical_citations', 0)
     if i == -1:
-        opt.warning("Malformed lyx file: Missing '\\use_numerical_citations'.")
+        file.warning("Malformed lyx file: Missing '\\use_numerical_citations'.")
         return
-    header.insert(i + 1, '\\use_jurabib 0')
+    file.header.insert(i + 1, '\\use_jurabib 0')
 
 
-def revert_jurabib(header, opt):
-    i = find_token(header, '\\use_jurabib', 0)
+def revert_jurabib(file):
+    i = find_token(file.header, '\\use_jurabib', 0)
     if i == -1:
-        opt.warning("Malformed lyx file: Missing '\\use_jurabib'.")
+        file.warning("Malformed lyx file: Missing '\\use_jurabib'.")
         return
-    if get_value(header, '\\use_jurabib', 0) != "0":
-        opt.warning("Conversion of '\\use_jurabib = 1' not yet implemented.")
+    if get_value(file.header, '\\use_jurabib', 0) != "0":
+        file.warning("Conversion of '\\use_jurabib = 1' not yet implemented.")
         # Don't remove '\\use_jurabib' so that people will get warnings by lyx
         return
-    del header[i]
+    del file.header[i]
 
 ##
 # Convert bibtopic
 #
 
-def convert_bibtopic(header, opt):
-    i = find_token(header, '\\use_jurabib', 0)
+def convert_bibtopic(file):
+    i = find_token(file.header, '\\use_jurabib', 0)
     if i == -1:
-        opt.warning("Malformed lyx file: Missing '\\use_jurabib'.")
+        file.warning("Malformed lyx file: Missing '\\use_jurabib'.")
         return
-    header.insert(i + 1, '\\use_bibtopic 0')
+    file.header.insert(i + 1, '\\use_bibtopic 0')
 
 
-def revert_bibtopic(header, opt):
-    i = find_token(header, '\\use_bibtopic', 0)
+def revert_bibtopic(file):
+    i = find_token(file.header, '\\use_bibtopic', 0)
     if i == -1:
-        opt.warning("Malformed lyx file: Missing '\\use_bibtopic'.")
+        file.warning("Malformed lyx file: Missing '\\use_bibtopic'.")
         return
-    if get_value(header, '\\use_bibtopic', 0) != "0":
-        opt.warning("Conversion of '\\use_bibtopic = 1' not yet implemented.")
+    if get_value(file.header, '\\use_bibtopic', 0) != "0":
+        file.warning("Conversion of '\\use_bibtopic = 1' not yet implemented.")
         # Don't remove '\\use_jurabib' so that people will get warnings by lyx
-    del header[i]
+    del file.header[i]
 
 ##
 # Sideway Floats
 #
 
-def convert_float(lines, opt):
+def convert_float(file):
     i = 0
     while 1:
-        i = find_token(lines, '\\begin_inset Float', i)
+        i = find_token(file.body, '\\begin_inset Float', i)
         if i == -1:
             return
         # Seach for a line starting 'wide'
@@ -1121,57 +1122,57 @@ def convert_float(lines, opt):
         # (_always_ present) then break with a warning message
         i = i + 1
         while 1:
-            if (lines[i][:4] == "wide"):
-                lines.insert(i + 1, 'sideways false')
+            if (file.body[i][:4] == "wide"):
+                file.body.insert(i + 1, 'sideways false')
                 break
-            elif (lines[i][:13] == "\\begin_layout"):
-                opt.warning("Malformed lyx file.")
+            elif (file.body[i][:13] == "\\begin_layout"):
+                file.warning("Malformed lyx file.")
                 break
             i = i + 1
         i = i + 1
 
 
-def revert_float(lines, opt):
+def revert_float(file):
     i = 0
     while 1:
-        i = find_token(lines, '\\begin_inset Float', i)
+        i = find_token(file.body, '\\begin_inset Float', i)
         if i == -1:
             return
-        j = find_end_of_inset(lines, i)
+        j = find_end_of_inset(file.body, i)
         if j == -1:
-            opt.warning("Malformed lyx file: Missing '\\end_inset'.")
+            file.warning("Malformed lyx file: Missing '\\end_inset'.")
             i = i + 1
             continue
-        if get_value(lines, 'sideways', i, j) != "false":
-            opt.warning("Conversion of 'sideways true' not yet implemented.")
+        if get_value(file.body, 'sideways', i, j) != "false":
+            file.warning("Conversion of 'sideways true' not yet implemented.")
             # Don't remove 'sideways' so that people will get warnings by lyx
             i = i + 1
             continue
-        del_token(lines, 'sideways', i, j)
+        del_token(file.body, 'sideways', i, j)
         i = i + 1
 
 
-def convert_graphics(lines, opt):
+def convert_graphics(file):
     """ Add extension to filenames of insetgraphics if necessary.
     """
     i = 0
     while 1:
-        i = find_token(lines, "\\begin_inset Graphics", i)
+        i = find_token(file.body, "\\begin_inset Graphics", i)
         if i == -1:
             return
 
-	j = find_token2(lines, "filename", i)
+	j = find_token2(file.body, "filename", i)
         if j == -1:
             return
         i = i + 1
-	filename = split(lines[j])[1]
-	absname = os.path.normpath(os.path.join(opt.dir, filename))
-	if opt.input == stdin and not os.path.isabs(filename):
+	filename = split(file.body[j])[1]
+	absname = os.path.normpath(os.path.join(file.dir, filename))
+	if file.input == stdin and not os.path.isabs(filename):
 	    # We don't know the directory and cannot check the file.
 	    # We could use a heuristic and take the current directory,
 	    # and we could try to find out if filename has an extension,
 	    # but that would be just guesses and could be wrong.
-	    opt.warning("""Warning: Can not determine whether file
+	    file.warning("""Warning: Can not determine whether file
          %s
          needs an extension when reading from standard input.
          You may need to correct the file manually or run
@@ -1181,47 +1182,47 @@ def convert_graphics(lines, opt):
 	if access(absname, F_OK):
 	    continue
 	if access(absname + ".ps", F_OK):
-	    lines[j] = replace(lines[j], filename, filename + ".ps")
+	    file.body[j] = replace(file.body[j], filename, filename + ".ps")
 	    continue
 	if access(absname + ".eps", F_OK):
-	    lines[j] = replace(lines[j], filename, filename + ".eps")
+	    file.body[j] = replace(file.body[j], filename, filename + ".eps")
 
 
 ##
 # Convert firstname and surname from styles -> char styles
 #
-def convert_names(lines, opt):
+def convert_names(file):
     """ Convert in the docbook backend from firstname and surname style
     to charstyles.
     """
-    if opt.backend != "docbook":
+    if file.backend != "docbook":
         return
 
     i = 0
 
     while 1:
-        i = find_token(lines, "\\begin_layout Author", i)
+        i = find_token(file.body, "\\begin_layout Author", i)
         if i == -1:
             return
 
         i = i + 1
-        while lines[i] == "":
+        while file.body[i] == "":
             i = i + 1
 
-        if lines[i][:11] != "\\end_layout" or lines[i+2][:13] != "\\begin_deeper":
+        if file.body[i][:11] != "\\end_layout" or file.body[i+2][:13] != "\\begin_deeper":
             i = i + 1
             continue
 
         k = i
-        i = find_end_of( lines, i+3, "\\begin_deeper","\\end_deeper")
+        i = find_end_of( file.body, i+3, "\\begin_deeper","\\end_deeper")
         if i == -1:
             # something is really wrong, abort
-            opt.warning("Missing \\end_deeper, after style Author.")
-            opt.warning("Aborted attempt to parse FirstName and Surname.")
+            file.warning("Missing \\end_deeper, after style Author.")
+            file.warning("Aborted attempt to parse FirstName and Surname.")
             return
         firstname, surname = "", ""
 
-        name = lines[k:i]
+        name = file.body[k:i]
 
         j = find_token(name, "\\begin_layout FirstName", 0)
         if j != -1:
@@ -1238,9 +1239,9 @@ def convert_names(lines, opt):
                 j = j + 1
 
         # delete name
-        del lines[k+2:i+1]
+        del file.body[k+2:i+1]
 
-        lines[k-1:k-1] = ["", "",
+        file.body[k-1:k-1] = ["", "",
                           "\\begin_inset CharStyle Firstname",
                           "status inlined",
                           "",
@@ -1264,11 +1265,11 @@ def convert_names(lines, opt):
                           ""]
 
 
-def revert_names(lines, opt):
+def revert_names(file):
     """ Revert in the docbook backend from firstname and surname char style
     to styles.
     """
-    if opt.backend != "docbook":
+    if file.backend != "docbook":
         return
 
 
@@ -1277,25 +1278,25 @@ def revert_names(lines, opt):
 #    \use_numerical_citations 0     ->   where <style> is one of
 #    \use_jurabib 0                      "basic", "natbib_authoryear",
 #                                        "natbib_numerical" or "jurabib"
-def convert_cite_engine(header, opt):
-    a = find_token(header, "\\use_natbib", 0)
+def convert_cite_engine(file):
+    a = find_token(file.header, "\\use_natbib", 0)
     if a == -1:
-        opt.warning("Malformed lyx file: Missing '\\use_natbib'.")
+        file.warning("Malformed lyx file: Missing '\\use_natbib'.")
         return
 
-    b = find_token(header, "\\use_numerical_citations", 0)
+    b = find_token(file.header, "\\use_numerical_citations", 0)
     if b == -1 or b != a+1:
-        opt.warning("Malformed lyx file: Missing '\\use_numerical_citations'.")
+        file.warning("Malformed lyx file: Missing '\\use_numerical_citations'.")
         return
 
-    c = find_token(header, "\\use_jurabib", 0)
+    c = find_token(file.header, "\\use_jurabib", 0)
     if c == -1 or c != b+1:
-        opt.warning("Malformed lyx file: Missing '\\use_jurabib'.")
+        file.warning("Malformed lyx file: Missing '\\use_jurabib'.")
         return
 
-    use_natbib = int(split(header[a])[1])
-    use_numerical_citations = int(split(header[b])[1])
-    use_jurabib = int(split(header[c])[1])
+    use_natbib = int(split(file.header[a])[1])
+    use_numerical_citations = int(split(file.header[b])[1])
+    use_jurabib = int(split(file.header[c])[1])
 
     cite_engine = "basic"
     if use_natbib:
@@ -1306,17 +1307,17 @@ def convert_cite_engine(header, opt):
     elif use_jurabib:
         cite_engine = "jurabib"
 
-    del header[a:c+1]
-    header.insert(a, "\\cite_engine " + cite_engine)
+    del file.header[a:c+1]
+    file.header.insert(a, "\\cite_engine " + cite_engine)
 
 
-def revert_cite_engine(header, opt):
-    i = find_token(header, "\\cite_engine", 0)
+def revert_cite_engine(file):
+    i = find_token(file.header, "\\cite_engine", 0)
     if i == -1:
-        opt.warning("Malformed lyx file: Missing '\\cite_engine'.")
+        file.warning("Malformed lyx file: Missing '\\cite_engine'.")
         return
 
-    cite_engine = split(header[i])[1]
+    cite_engine = split(file.header[i])[1]
 
     use_natbib = '0'
     use_numerical = '0'
@@ -1329,79 +1330,79 @@ def revert_cite_engine(header, opt):
     elif cite_engine == "jurabib":
         use_jurabib = '1'
 
-    del header[i]
-    header.insert(i, "\\use_jurabib " + use_jurabib)
-    header.insert(i, "\\use_numerical_citations " + use_numerical)
-    header.insert(i, "\\use_natbib " + use_natbib)
+    del file.header[i]
+    file.header.insert(i, "\\use_jurabib " + use_jurabib)
+    file.header.insert(i, "\\use_numerical_citations " + use_numerical)
+    file.header.insert(i, "\\use_natbib " + use_natbib)
 
 
 ##
 # Paper package
 #
-def convert_paperpackage(header, opt):
-    i = find_token(header, "\\paperpackage", 0)
+def convert_paperpackage(file):
+    i = find_token(file.header, "\\paperpackage", 0)
     if i == -1:
-        opt.warning("Malformed lyx file: Missing '\\paperpackage'.")
+        file.warning("Malformed lyx file: Missing '\\paperpackage'.")
         return
 
     packages = {'a4':'none', 'a4wide':'a4', 'widemarginsa4':'a4wide'}
-    paperpackage = split(header[i])[1]
-    header[i] = replace(header[i], paperpackage, packages[paperpackage])
+    paperpackage = split(file.header[i])[1]
+    file.header[i] = replace(file.header[i], paperpackage, packages[paperpackage])
 
 
-def revert_paperpackage(header, opt):
-    i = find_token(header, "\\paperpackage", 0)
+def revert_paperpackage(file):
+    i = find_token(file.header, "\\paperpackage", 0)
     if i == -1:
-        opt.warning("Malformed lyx file: Missing '\\paperpackage'.")
+        file.warning("Malformed lyx file: Missing '\\paperpackage'.")
         return
 
     packages = {'none':'a4', 'a4':'a4wide', 'a4wide':'widemarginsa4',
                 'widemarginsa4':''}
-    paperpackage = split(header[i])[1]
-    header[i] = replace(header[i], paperpackage, packages[paperpackage])
+    paperpackage = split(file.header[i])[1]
+    file.header[i] = replace(file.header[i], paperpackage, packages[paperpackage])
 
 
 ##
 # Bullets
 #
-def convert_bullets(header, opt):
+def convert_bullets(file):
     i = 0
     while 1:
-        i = find_token(header, "\\bullet", i)
+        i = find_token(file.header, "\\bullet", i)
         if i == -1:
             return
-        if header[i][:12] == '\\bulletLaTeX':
-            header[i] = header[i] + ' ' + strip(header[i+1])
+        if file.header[i][:12] == '\\bulletLaTeX':
+            file.header[i] = file.header[i] + ' ' + strip(file.header[i+1])
             n = 3
         else:
-            header[i] = header[i] + ' ' + strip(header[i+1]) +\
-                        ' ' + strip(header[i+2]) + ' ' + strip(header[i+3])
+            file.header[i] = file.header[i] + ' ' + strip(file.header[i+1]) +\
+                        ' ' + strip(file.header[i+2]) + ' ' + strip(file.header[i+3])
             n = 5
-        del header[i+1:i + n]
+        del file.header[i+1:i + n]
         i = i + 1
 
 
-def revert_bullets(header, opt):
+def revert_bullets(file):
     i = 0
     while 1:
-        i = find_token(header, "\\bullet", i)
+        i = find_token(file.header, "\\bullet", i)
         if i == -1:
             return
-        if header[i][:12] == '\\bulletLaTeX':
-            n = find(header[i], '"')
+        if file.header[i][:12] == '\\bulletLaTeX':
+            n = find(file.header[i], '"')
             if n == -1:
-                opt.warning("Malformed header.")
+                file.warning("Malformed header.")
                 return
             else:
-                header[i:i+1] = [header[i][:n-1],'\t' + header[i][n:], '\\end_bullet']
+                file.header[i:i+1] = [file.header[i][:n-1],'\t' + file.header[i][n:], '\\end_bullet']
             i = i + 3
         else:
-            frag = split(header[i])
+            frag = split(file.header[i])
             if len(frag) != 5:
-                opt.warning("Malformed header.")
+                file.warning("Malformed header.")
                 return
             else:
-                header[i:i+1] = [frag[0] + ' ' + frag[1],
+                file.header[i:i+1] = [frag[0] + ' ' + frag[1],
                                  '\t' + frag[2],
                                  '\t' + frag[3],
                                  '\t' + frag[4],
@@ -1412,248 +1413,166 @@ def revert_bullets(header, opt):
 ##
 # \begin_header and \begin_document
 #
-def add_begin_header(header, opt):
-    i = find_token(header, '\\lyxformat', 0)
-    header.insert(i+1, '\\begin_header')
-    header.insert(i+1, '\\begin_document')
+def add_begin_header(file):
+    i = find_token(file.header, '\\lyxformat', 0)
+    file.header.insert(i+1, '\\begin_header')
+    file.header.insert(i+1, '\\begin_document')
 
 
-def remove_begin_header(header, opt):
-    i = find_token(header, "\\begin_document", 0)
+def remove_begin_header(file):
+    i = find_token(file.header, "\\begin_document", 0)
     if i != -1:
-        del header[i]
-    i = find_token(header, "\\begin_header", 0)
+        del file.header[i]
+    i = find_token(file.header, "\\begin_header", 0)
     if i != -1:
-        del header[i]
+        del file.header[i]
 
 
 ##
-# \begin_body and \end_body
+# \begin_file.body and \end_file.body
 #
-def add_begin_body(body, opt):
-    body.insert(0, '\\begin_body')
-    body.insert(1, '')
-    i = find_token(body, "\\end_document", 0)
-    body.insert(i, '\\end_body')
+def add_begin_body(file):
+    file.body.insert(0, '\\begin_body')
+    file.body.insert(1, '')
+    i = find_token(file.body, "\\end_document", 0)
+    file.body.insert(i, '\\end_body')
 
-def remove_begin_body(body, opt):
-    i = find_token(body, "\\begin_body", 0)
+def remove_begin_body(file):
+    i = find_token(file.body, "\\begin_body", 0)
     if i != -1:
-        del body[i]
-        if not body[i]:
-            del body[i]
-    i = find_token(body, "\\end_body", 0)
+        del file.body[i]
+        if not file.body[i]:
+            del file.body[i]
+    i = find_token(file.body, "\\end_body", 0)
     if i != -1:
-        del body[i]
+        del file.body[i]
 
 
 ##
 # \papersize
 #
-def normalize_papersize(header):
-    i = find_token(header, '\\papersize', 0)
+def normalize_papersize(file):
+    i = find_token(file.header, '\\papersize', 0)
     if i == -1:
         return
 
-    tmp = split(header[i])
+    tmp = split(file.header[i])
     if tmp[1] == "Default":
-        header[i] = '\\papersize default'
+        file.header[i] = '\\papersize default'
         return
     if tmp[1] == "Custom":
-        header[i] = '\\papersize custom'
+        file.header[i] = '\\papersize custom'
 
 
-def denormalize_papersize(header):
-    i = find_token(header, '\\papersize', 0)
+def denormalize_papersize(file):
+    i = find_token(file.header, '\\papersize', 0)
     if i == -1:
         return
 
-    tmp = split(header[i])
+    tmp = split(file.header[i])
     if tmp[1] == "custom":
-        header[i] = '\\papersize Custom'
+        file.header[i] = '\\papersize Custom'
 
 
 ##
 # Strip spaces at end of command line
 #
-def strip_end_space(body):
-    for i in range(len(body)):
-        if body[i][:1] == '\\':
-            body[i] = strip(body[i])
+def strip_end_space(file):
+    for i in range(len(file.body)):
+        if file.body[i][:1] == '\\':
+            file.body[i] = strip(file.body[i])
 
+
+##
+# Use boolean values for \use_geometry, \use_bibtopic and \tracking_changes
+#
+def use_x_boolean(file):
+    bin2bool = {'0': 'false', '1': 'true'}
+    for use in '\\use_geometry', '\\use_bibtopic', '\\tracking_changes':
+        i = find_token(file.header, use, 0)
+        if i == -1:
+            continue
+        decompose = split(file.header[i])
+        file.header[i] = decompose[0] + ' ' + bin2bool[decompose[1]]
+
+
+def use_x_binary(file):
+    bool2bin = {'false': '0', 'true': '1'}
+    for use in '\\use_geometry', '\\use_bibtopic', '\\tracking_changes':
+        i = find_token(file.header, use, 0)
+        if i == -1:
+            continue
+        decompose = split(file.header[i])
+        file.header[i] = decompose[0] + ' ' + bool2bin[decompose[1]]
 
 ##
 # Convertion hub
 #
 def convert(file):
-    if file.format < 223:
-        insert_tracking_changes(file.header)
-        add_end_header(file.header)
-        remove_color_default(file.body)
-	convert_spaces(file.body)
-	convert_bibtex(file.body)
-	remove_insetparent(file.body)
-	file.format = 223
-    if file.end_format == file.format: return
+    table = { 223 : [insert_tracking_changes, add_end_header, remove_color_default,
+                     convert_spaces, convert_bibtex, remove_insetparent],
+              224 : [convert_external, convert_comment],
+              225 : [add_end_layout, layout2begin_layout, convert_end_document,
+                     convert_table_valignment_middle, convert_breaks],
+              226 : [convert_note],
+              227 : [convert_box],
+              228 : [convert_collapsable, convert_ert],
+              229 : [convert_minipage],
+              230 : [convert_jurabib],
+              231 : [convert_float],
+              232 : [convert_bibtopic],
+              233 : [convert_graphics, convert_names],
+              234 : [convert_cite_engine],
+              235 : [convert_paperpackage],
+              236 : [convert_bullets, add_begin_header, add_begin_body,
+                     normalize_papersize, strip_end_space],
+              237 : [use_x_boolean]}
 
-    if file.format < 224:
-	convert_external(file.body)
-	convert_comment(file.body)
-	file.format = 224
-    if file.end_format == file.format: return
+    chain = table.keys()
+    chain.sort()
 
-    if file.format < 225:
-	add_end_layout(file.body)
-	layout2begin_layout(file.body)
-	convert_end_document(file.body)
-	convert_table_valignment_middle(file.body)
-	convert_breaks(file.body)
-	file.format = 225
-    if file.end_format == file.format: return
+    for version in chain:
+        if file.format >= version:
+            continue
+        for convert in table[version]:
+            convert(file)
+        file.format = version
+        if file.end_format == file.format:
+            return
 
-    if file.format < 226:
-	convert_note(file.body)
-	file.format = 226
-    if file.end_format == file.format: return
-
-    if file.format < 227:
-	convert_box(file.body)
-	file.format = 227
-    if file.end_format == file.format: return
-
-    if file.format < 228:
-	convert_collapsable(file.body, file)
-	convert_ert(file.body, file)
-	file.format = 228
-    if file.end_format == file.format: return
-
-    if file.format < 229:
-	convert_minipage(file.body)
-	file.format = 229
-    if file.end_format == file.format: return
-
-    if file.format < 230:
-        convert_jurabib(file.header, file)
-	file.format = 230
-    if file.end_format == file.format: return
-
-    if file.format < 231:
-        convert_float(file.body, file)
-	file.format = 231
-    if file.end_format == file.format: return
-
-    if file.format < 232:
-        convert_bibtopic(file.header, file)
-	file.format = 232
-    if file.end_format == file.format: return
-
-    if file.format < 233:
-        convert_graphics(file.body, file)
-        convert_names(file.body, file)
-	file.format = 233
-    if file.end_format == file.format: return
-
-    if file.format < 234:
-        convert_cite_engine(file.header, file)
-	file.format = 234
-    if file.end_format == file.format: return
-
-    if file.format < 235:
-        convert_paperpackage(file.header, file)
-	file.format = 235
-    if file.end_format == file.format: return
-
-    if file.format < 236:
-        convert_bullets(file.header, file)
-        add_begin_header(file.header, file)
-        add_begin_body(file.body, file)
-        normalize_papersize(file.header)
-        strip_end_space(file.body)
-        file.format = 236
-
+        
 def revert(file):
-    if file.format > 235:
-        denormalize_papersize(file.header)
-        remove_begin_body(file.body, file)
-        remove_begin_header(file.header, file)
-        revert_bullets(file.header, file)
-        file.format = 235
-    if file.end_format == file.format: return
+    table = { 236: [use_x_binary],
+              235: [denormalize_papersize, remove_begin_body,remove_begin_header,
+                    revert_bullets],
+              234: [revert_paperpackage],
+              233: [revert_cite_engine],
+              232: [revert_names],
+              231: [revert_bibtopic],
+              230: [revert_float],
+              229: [revert_jurabib],
+              228: [],
+              227: [revert_collapsable, revert_ert],
+              226: [revert_box, revert_external_2],
+              225: [revert_note],
+              224: [rm_end_layout, begin_layout2layout, revert_end_document,
+                    revert_valignment_middle, convert_vspace, convert_frameless_box],
+              223: [revert_external_2, revert_comment],
+              221: [rm_end_header, revert_spaces, revert_bibtex,
+                    rm_tracking_changes, rm_body_changes]}
 
-    if file.format > 234:
-        revert_paperpackage(file.header, file)
-	file.format = 234
-    if file.end_format == file.format: return
+    chain = table.keys()
+    chain.sort()
+    chain.reverse()
 
-    if file.format > 233:
-        revert_cite_engine(file.header, file)
-	file.format = 233
-    if file.end_format == file.format: return
-
-    if file.format > 232:
-        revert_names(file.body, file)
-	file.format = 232
-    if file.end_format == file.format: return
-
-    if file.format > 231:
-        revert_bibtopic(file.header, file)
-	file.format = 231
-    if file.end_format == file.format: return
-
-    if file.format > 230:
-        revert_float(file.body, file)
-	file.format = 230
-    if file.end_format == file.format: return
-
-    if file.format > 229:
-        revert_jurabib(file.header, file)
-	file.format = 229
-    if file.end_format == file.format: return
-
-    if file.format > 228:
-	file.format = 228
-    if file.end_format == file.format: return
-
-    if file.format > 227:
-	revert_collapsable(file.body, file)
-	revert_ert(file.body, file)
-	file.format = 227
-    if file.end_format == file.format: return
-
-    if file.format > 226:
-	revert_box(file.body)
-	revert_external_2(file.body)
-	file.format = 226
-    if file.end_format == file.format: return
-
-    if file.format > 225:
-	revert_note(file.body)
-	file.format = 225
-    if file.end_format == file.format: return
-
-    if file.format > 224:
-	rm_end_layout(file.body)
-	begin_layout2layout(file.body)
-	revert_end_document(file.body)
-	revert_valignment_middle(file.body)
-	convert_vspace(file.header, file.body, file)
-	convert_frameless_box(file.body, file)
-    if file.end_format == file.format: return
-
-    if file.format > 223:
-	revert_external_2(file.body)
-	revert_comment(file.body)
-	file.format = 223
-    if file.end_format == file.format: return
-
-    if file.format > 221:
-	rm_end_header(file.header)
-	revert_spaces(file.body)
-	revert_bibtex(file.body)
-	rm_tracking_changes(file.header)
-	rm_body_changes(file.body)
-	file.format = 221
-
+    for version in chain:
+        if file.format <= version:
+            continue
+        for convert in table[version]:
+            convert(file)
+        file.format = version
+        if file.end_format == file.format:
+            return
 
 if __name__ == "__main__":
     pass

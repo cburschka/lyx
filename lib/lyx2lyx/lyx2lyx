@@ -59,7 +59,7 @@ def parse_options(argv):
         if o in ("-q", "--quiet"):
             debug = 0
         if o in ("-l", "--list"):
-            # list available formats
+            print LyX.formats_list()
             sys.exit()
         if o in ("-o", "--output"):
             output = a

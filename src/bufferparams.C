@@ -38,6 +38,7 @@
 #include "frontends/Alert.h"
 
 #include "support/lyxalgo.h" // for lyx::count
+#include "support/tostr.h"
 #include "support/translator.h"
 
 #include <boost/array.hpp>
@@ -609,10 +610,10 @@ void BufferParams::writeFile(ostream & os) const
 
 	os << "\\papersize " << string_papersize[papersize2]
 	   << "\n\\paperpackage " << string_paperpackages[paperpackage]
-	   << "\n\\use_geometry " << use_geometry
+	   << "\n\\use_geometry " << tostr(use_geometry)
 	   << "\n\\use_amsmath " << use_amsmath
 	   << "\n\\cite_engine " << citeenginetranslator().find(cite_engine)
-	   << "\n\\use_bibtopic " << use_bibtopic
+	   << "\n\\use_bibtopic " << tostr(use_bibtopic)
 	   << "\n\\paperorientation " << string_orientation[orientation]
 	   << '\n';
 
@@ -681,7 +682,7 @@ void BufferParams::writeFile(ostream & os) const
 		}
 	}
 
-	os << "\\tracking_changes " << tracking_changes << "\n";
+	os << "\\tracking_changes " << tostr(tracking_changes) << "\n";
 
 	if (tracking_changes) {
 		AuthorList::Authors::const_iterator it = pimpl_->authorlist.begin();

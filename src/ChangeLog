@@ -1,6 +1,11 @@
+2004-10-09  José Matos  <jamatos@lyx.org>
+
+	* buffer.C: format up to 237.
+	* bufferparams.C (write): use tostr to convert booleans to strings.
+	
 2004-10-08  Martin Vermeer  <martin.vermeer@hut.fi>
 
-	lyxrc.C: add to tooltip about using xindy to prefs (xforms)
+	* lyxrc.C: add to tooltip about using xindy to prefs (xforms)
 
 2004-10-07  Martin Vermeer  <martin.vermeer@hut.fi>
 

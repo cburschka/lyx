@@ -31,8 +31,6 @@ default_debug_level = 2
 format_re = re.compile(r"(\d)[\.,]?(\d\d)")
 fileformat = re.compile(r"\\lyxformat\s*(\S*)")
 original_version = re.compile(r"\#LyX (\S*)")
-lst_ft = [210, 215, 216, 217, 218, 220, 221, 223, 224, 225, 226, 227, 228, 229, 
-          230, 231, 232, 233, 234, 235, 236]
 
 format_relation = [("0_10",  [210], ["0.10.7","0.10"]),
                    ("0_12",  [215], ["0.12","0.12.1","0.12"]),
@@ -43,8 +41,17 @@ format_relation = [("0_10",  [210], ["0.10.7","0.10"]),
                    ("1_1_6", [217], ["1.1.6","1.1.6fix1","1.1.6fix2","1.1"]),
                    ("1_1_6fix3", [218], ["1.1.6fix3","1.1.6fix4","1.1"]),
                    ("1_2", [220], ["1.2.0","1.2.1","1.2.3","1.2.4","1.2"]),
-                   ("1_3", [221], ["1.3.0","1.3.1","1.3.2","1.3.3","1.3.4","1.3"]),
-                   ("1_4", [223,224,225,226,227,228,229,230,231,232,233,234,235, 236], ["1.4.0cvs","1.4"])]
+                   ("1_3", [221], ["1.3.0","1.3.1","1.3.2","1.3.3","1.3.4","1.3.5","1.3"]),
+                   ("1_4", range(223,238), ["1.4.0cvs","1.4"])]
+
+
+def formats_list():
+    formats = []
+    for version in format_relation:
+        for format in version[1]:
+            if format not in formats:
+                formats.append(format)
+    return formats
 
 
 def get_end_format():
@@ -65,7 +72,7 @@ def get_backend(textclass):
 class FileInfo:
     """This class carries all the information of the LyX file."""
     def __init__(self, end_format = 0, input = "", output = "", error = "", debug = default_debug_level):
-        if input:
+        if input and input != '-':
             self.input = self.open(input)
         else:
             self.input = sys.stdin
@@ -175,7 +182,7 @@ class FileInfo:
         else:
             self.error(str(format) + ": " + "Invalid LyX file.")
 
-        if format in lst_ft:
+        if format in formats_list():
             return format
 
         self.error(str(format) + ": " + "Format not supported.")
@@ -207,10 +214,10 @@ class FileInfo:
 
 
     def set_format(self):
-        if int(self.format) <= 217:
+        if self.format <= 217:
             format = str(float(format)/100)
         else:
-            format = self.format
+            format = str(self.format)
         i = find_token(self.header, "\\lyxformat", 0)
         self.header[i] = "\\lyxformat %s" % format
 
