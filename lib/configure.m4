@@ -430,62 +430,75 @@ cat >$outfile <<EOF
 # want to customize LyX, make a copy of the file LYXDIR/lyxrc as
 # ~/.lyx/lyxrc and edit this file instead. Any setting in lyxrc will
 # override the values given here.
-\\Format text	  txt	ASCII		A
-\\Format textparagraph txt ASCII(paragraphs)	""
-\\Format docbook  sgml	DocBook		B
+\\Format asciichess asc "ASCII (chess output)" ""
+\\Format asciiimage asc "ASCII (image)" ""
+\\Format asciixfig  asc "ASCII (xfig output)" ""
+\\Format agr      agr	GRACE		""
 \\Format bmp      bmp	BMP		""
+\\Format date     ""    "date command"  ""
+\\Format dateout  ""    "date (output)" ""
+\\Format docbook  sgml	DocBook		B
 \\Format dvi	  dvi	DVI		D
 \\Format eps	  eps	EPS		""
 \\Format fax	  ""	Fax		""
+\\Format fen      fen   FEN             ""
 \\Format fig	  fig	XFig		""
-\\Format agr      agr	GRACE		""
-\\Format html	  html	HTML		H
 \\Format gif	  gif	GIF		""
+\\Format html	  html	HTML		H
 \\Format jpg	  jpg	JPG		""
 \\Format latex	  tex	LaTeX		L
 \\Format linuxdoc sgml	LinuxDoc	x
 \\Format lyx      lyx	LyX		""
+\\Format lyxpreview	lyxpreview	"LyX Preview"		""
 \\Format literate nw	NoWeb		N
+\\Format pbm	  pbm	PBM		""
 \\Format pdf	  pdf	PDF		P
 \\Format pdf2	  pdf  "PDF (pdflatex)"	F
 \\Format pdf3	  pdf  "PDF (dvipdfm)"	m
+\\Format pdftex   pdftex_t PDFTEX       ""
+\\Format pgm	  pgm	PGM		""
 \\Format png	  png	PNG		""
 \\Format ppm	  ppm	PPM		""
-\\Format pgm	  pgm	PGM		""
-\\Format pbm	  pbm	PBM		""
-\\Format ps	  ps	Postscript	t
 \\Format program  ""	Program		""
+\\Format ps	  ps	Postscript	t
+\\Format pstex    pstex_t PSTEX         ""
+\\Format text	  txt	ASCII		A
+\\Format textparagraph txt ASCII(paragraphs)	""
 \\Format tgif     obj	TGIF		""
 \\Format tiff     tif	TIFF		""
 \\Format word	  doc	Word		W
 \\Format xbm	  xbm	XBM		""
 \\Format xpm	  xpm	XPM		""
-\\Format lyxpreview	lyxpreview	"LyX Preview"		""
 
-\\converter latex dvi "$latex_to_dvi" "latex"
-\\converter latex pdf2 "$latex_to_pdf" "latex"
-\\converter latex html "$latex_to_html_command" "originaldir,needaux"
-\\converter literate latex "$literate_to_tex_command" ""
-\\converter dvi pdf3 "$dvi_to_pdf_command" ""
-\\converter dvi ps "$dvi_to_ps_command" ""
-\\converter ps pdf "$ps_to_pdf_command" ""
-\\converter ps fax "$fax_command" ""
-\\converter linuxdoc lyx "$linuxdoc_to_lyx_command" ""
-\\converter linuxdoc latex "$linuxdoc_to_latex_command" ""
-\\converter linuxdoc dvi "$linuxdoc_to_dvi_command" ""
-\\converter linuxdoc html "$linuxdoc_to_html_command" ""
+\\converter date dateout "date +%d-%m-%Y > \$\$o" ""
 \\converter docbook dvi "$docbook_to_dvi_command" ""
 \\converter docbook html "$docbook_to_html_command" ""
-\\converter lyxpreview ppm "$lyxpreview_to_bitmap_command" ""
-
-\\converter latex lyx "$tex_to_lyx_command" ""
-\\converter literate lyx "$literate_to_lyx_command" ""
+\\converter dvi pdf3 "$dvi_to_pdf_command" ""
+\\converter dvi ps "$dvi_to_ps_command" ""
+\\converter fen asciichess "python \$\$s/fen2ascii.py \$\$i \$\$o" ""
+\\converter fig pdftex "sh \$\$s/fig2pdftex.sh \$\$i \$\$o" ""
+\\converter fig pstex  "sh \$\$s/fig2pstex.sh \$\$i \$\$o" ""
 \\converter html latex "$html_to_latex_command" ""
+\\converter latex html "$latex_to_html_command" "originaldir,needaux"
+\\converter latex dvi "$latex_to_dvi" "latex"
+\\converter latex lyx "$tex_to_lyx_command" ""
+\\converter latex pdf2 "$latex_to_pdf" "latex"
+\\converter linuxdoc dvi "$linuxdoc_to_dvi_command" ""
+\\converter linuxdoc html "$linuxdoc_to_html_command" ""
+\\converter linuxdoc latex "$linuxdoc_to_latex_command" ""
+\\converter linuxdoc lyx "$linuxdoc_to_lyx_command" ""
+\\converter literate latex "$literate_to_tex_command" ""
+\\converter literate lyx "$literate_to_lyx_command" ""
+\\converter lyxpreview ppm "$lyxpreview_to_bitmap_command" ""
+\\converter ps fax "$fax_command" ""
+\\converter ps pdf "$ps_to_pdf_command" ""
 \\converter word latex "$word_to_latex_command" ""
 
 \\viewer dvi "$DVI_VIEWER"
 \\viewer html "$HTML_VIEWER"
 \\viewer pdf "$PDF_VIEWER"
+\\viewer pdf2 "$PDF_VIEWER"
+\\viewer pdf3 "$PDF_VIEWER"
 \\viewer ps "$GHOSTVIEW -swap"
 \\viewer eps "$GHOSTVIEW"
 
@@ -501,6 +514,7 @@ if test "$FIG2DEV" = "fig2dev"; then
 cat >>$outfile <<EOF
 \\converter fig eps "fig2dev -L eps \$\$i \$\$o" ""
 \\converter fig ppm "fig2dev -L ppm \$\$i \$\$o" ""
+\\converter fig png "fig2dev -L png \$\$i \$\$o" ""
 EOF
 fi
 

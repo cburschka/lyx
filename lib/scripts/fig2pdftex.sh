@@ -22,12 +22,17 @@
 # a PDF file ${base}.pdf and place the text in a LaTeX file
 # ${base}.pdftex_t for typesetting by pdflatex itself.
 modern_xfig() {
-    input=$1.fig
-    pdftex=$1.pdf
-    pdftex_t=$1.pdftex_t
+    echo modern_xfig
+
+    # Can we find fig2dev?
+    type fig2dev > /dev/null || exit 1
+
+    input=$1
+    pdftex_t=$2
+    pdftex=$3.pdf
 
     fig2dev -Lpdftex ${input} ${pdftex}
-    fig2dev -Lpdftex_t -p$1 ${input} ${pdftex_t}
+    fig2dev -Lpdftex_t -p${outbase} ${input} ${pdftex_t}
 
     exit 0;
 }
@@ -35,13 +40,20 @@ modern_xfig() {
 # Older versions of xfig cannot do this, so we emulate the behaviour using
 # pstex and pstex_t output.
 legacy_xfig() {
-    input=$1.fig
-    pstex=$1.pstex
-    png=$1.png
-    pdftex_t=$1.pdftex_t
+    echo legacy_xfig
+
+    # Can we find fig2dev, eps2eos or gs?
+    type fig2dev > /dev/null || exit 1
+    type eps2eps > /dev/null || exit 1
+    type gs > /dev/null || exit 1
+
+    input=$1
+    pdftex_t=$2
+    png=$3.png
+    pstex=$3.pstex
 
     fig2dev -Lpstex ${input} ${pstex}
-    fig2dev -Lpstex_t -p$1 ${input} ${pdftex_t}
+    fig2dev -Lpstex_t -p${outbase} ${input} ${pdftex_t}
 
     # Convert the ${pstex} EPS file (free of "special" text) to PDF format
     # using gs.
@@ -73,29 +85,42 @@ legacy_xfig() {
 # The main logic of the script is below.
 # All it does is ascertain which of the two functions above to call.
 
-# We expect a single arg, the name of the input file.
-test $# -eq 1 || exit 1
+# We expect two args, the names of the input and output files.
+test $# -eq 2 || exit 1
 
-# Remove the .fig extension
-input=`basename $1`
-base=`echo ${input} | sed 's/\.fig$//'`
+input=$1
+output=$2
+
+# Strip the extension from ${output}
+outbase=`echo ${output} | sed 's/[.][^.]*$//'`
 
 # Ascertain whether fig2dev is "modern enough".
 # Here "modern" means "fig2dev Version 3.2 Patchlevel 4"
 version_info=`fig2dev -h | sed '/^fig2dev/! d'`
 # If no line begins "fig2dev" then default to legacy_xfig
-test "x${version_info}" = "x" && legacy_xfig ${base}
+test "x${version_info}" = "x" && {
+    legacy_xfig ${input} ${output} ${outbase}
+}
 
 version=`echo ${version_info} | cut -d' ' -f3`
 patchlevel=`echo ${version_info} | cut -d' ' -f5`
 # If we cannot extract the version of patchlevel info
 # then default to legacy_xfig
-test "x${version}" = "x" -o "x${patchlevel}" = "x" && legacy_xfig ${base}
-echo ${version} ${patchlevel} | grep '[0-9]!' -o && legacy_xfig ${base}
+test "x${version}" = "x" -o "x${patchlevel}" = "x" && {
+    legacy_xfig ${input} ${output} ${outbase}
+}
+echo ${version} ${patchlevel} | grep '[0-9]!' -o && {
+    legacy_xfig ${input} ${output} ${outbase}
+}
 
-# So, is it am old version?
-test ${version} != "3.2" -o ${patchlevel} -lt 4 && legacy_xfig ${base}
+# So, is it an old version?
+test ${version} != "3.2" -o ${patchlevel} -lt 4 && {
+    legacy_xfig ${input} ${output} ${outbase}
+}
 # I guess not ;-)
-modern_xfig ${base}
+
+# Commented out for now to test legacy_xfig...
+#modern_xfig ${input} ${output} ${outbase}
+legacy_xfig ${input} ${output} ${outbase}
 
 # The end
