@@ -1215,7 +1215,7 @@ dispatch_result LyXText::dispatch(FuncRequest const & cmd)
 		if (bv->theLockingInset()) {
 			InsetOld * tli = bv->theLockingInset();
 			LyXCursor cursor = bv->text->cursor;
-			LyXFont font = bv->text->getFont(cursorPar(), cursor.pos());
+			LyXFont font = bv->text->getFont(bv->text->cursorPar(), cursor.pos());
 			int width = tli->width();
 			int inset_x = font.isVisibleRightToLeft()
 				? cursor.x() - width : cursor.x();
