@@ -38,7 +38,6 @@
 #include "frontends/mouse_state.h"
 #include "Lsstream.h"
 #include "math_arrayinset.h"
-#include "math_boxinset.h"
 #include "math_charinset.h"
 #include "math_cursor.h"
 #include "math_factory.h"
@@ -54,6 +53,8 @@
 #include "frontends/Dialogs.h"
 #include "intl.h"
 #include "../insets/insetcommand.h"
+
+#include "ref_inset.h"
 
 using std::endl;
 using std::ostream;

@@ -31,6 +31,8 @@
 #include "math_xymatrixinset.h"
 #include "math_xyarrowinset.h"
 
+#include "ref_inset.h"
+
 #include "math_metricsinfo.h"
 #include "debug.h"
 #include "math_support.h"

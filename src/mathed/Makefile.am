@@ -140,4 +140,10 @@ libmathed_la_SOURCES = \
 	math_xyarrowinset.C \
 	math_xyarrowinset.h \
 	math_xymatrixinset.C \
-	math_xymatrixinset.h
+	math_xymatrixinset.h \
+	button_inset.C \
+	button_inset.h \
+	command_inset.h \
+	command_inset.C \
+	ref_inset.h \
+	ref_inset.C

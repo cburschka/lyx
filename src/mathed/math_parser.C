@@ -58,6 +58,8 @@ following hack as starting point to write some macros:
 #include "math_support.h"
 #include "math_xyarrowinset.h"
 
+#include "ref_inset.h"
+
 #include "lyxlex.h"
 #include "debug.h"
 #include "support/LAssert.h"
