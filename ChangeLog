@@ -1,5 +1,8 @@
 2001-09-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* src/tabular.C (l_getline): actually fix reading of tables in
+	MS-DOS format
+
 	* lib/layouts/entcs.layout: renamed from encts.layout (stupid typo!);
 	restrict font size to `11pt'
 
