@@ -100,6 +100,10 @@ public:
 	/// rebreaks the cursor par
 	void redoParagraph(LCursor & cur);
 
+	/// returns pos in given par at given x coord
+	pos_type x2pos(par_type pit, int row, int x) const;
+	int pos2x(par_type pit, pos_type pos) const;
+
 	///
 	void toggleFree(LCursor & cur, LyXFont const &, bool toggleall = false);
 
