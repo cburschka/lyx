@@ -93,7 +93,7 @@ VSpace setVSpaceFromWidgets(int spacing,
 			    LengthCombo * unit,
 			    bool keep)
 {
-	VSpace space = VSpace(VSpace::DEFSKIP);
+	VSpace space;
 
 	switch (spacing) {
 	case 0:
@@ -157,7 +157,7 @@ void QVSpace::apply()
 	// spacing
 	// If a vspace choice is "Length" but there's no text in
 	// the input field, do not insert a vspace at all.
-	if (dialog_->spacingCO->currentItem() == 6
+	if (dialog_->spacingCO->currentItem() == 5
 	    && dialog_->valueLE->text().isEmpty())
 		return;
 

@@ -75,7 +75,7 @@ VSpace const setVSpaceFromWidgets(FL_OBJECT * choice_type,
 		     input_length  && input_length->objclass  == FL_INPUT &&
 		     choice_length && choice_length->objclass == FL_CHOICE);
 
-	VSpace space = VSpace(VSpace::DEFSKIP);
+	VSpace space;
 
 	switch (fl_get_choice(choice_type)) {
 	case 1:
