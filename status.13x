@@ -30,7 +30,8 @@ What's new
   Extended manual; french documentation and examples update; german
   documentation update; small tweaks to the english documentation
 
-- completely new italian localization; french localization update
+- completely new italian localization; french, german and slovenian
+  localization updates
 
 ** Bug fixes
 
@@ -56,6 +57,8 @@ What's new
 - when inserting a float or a note over a selection, make sure that
   the insets and font changes in the selection are correctly kept
   (note however that doing this now modifies the clipboard)
+
+- clean-up properly after completed graphics conversion processes.
 
 - work around a Qt 3.1.2 bug with the environment combo box [bug #1136]
 
@@ -97,5 +100,3 @@ What's new
 - fix compilation with new development versions of xforms
 
 - fix compilation with AikSaurus 1.0
-
-- clean-up properly after completed graphics conversion processes.

@@ -22,7 +22,6 @@
 #   edit                 -> bearbeiten
 #   extension            -> (Datei-)endung
 #   extra ...            -> Zusatz-... / Extra (im Ausnahmefall)
-#   find                 -> finden / suchen (bei find&replace)
 #   float                -> Gleitobjekt
 #   font                 -> Schrift
 #   graphics             -> Grafik (Einzahl!)
@@ -57,7 +56,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: LyX 1.3.0\n"
 "POT-Creation-Date: 2003-09-12 15:24+0200\n"
-"PO-Revision-Date: 2003-04-30 02:00+0100\n"
+"PO-Revision-Date: 2003-09-13 15:00+0100\n"
 "Last-Translator: Michael Schmitt <Michael.Schmitt@teststep.org>\n"
 "Language-Team: German <de@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -83,7 +82,7 @@ msgstr "Schließen|^["
 #: ../src/frontends/xforms/forms/form_graphics.fd:44
 #: ../src/frontends/xforms/forms/form_tabular.fd:44
 msgid "Tabbed folder"
-msgstr ""
+msgstr "Gestaffelter Ordner"
 
 #: ../src/frontends/xforms/forms/form_bibitem.fd:44
 msgid "Key:|#K"
@@ -720,7 +719,7 @@ msgstr "Dokument-Standard|#D"
 
 #: ../src/frontends/xforms/forms/form_forks.fd:43
 msgid "Forked child processes:|#F"
-msgstr "Unterprozesse:|#U"
+msgstr "Gestartete Unterprozesse:|#U"
 
 #: ../src/frontends/xforms/forms/form_forks.fd:61
 msgid "Kill processes:|#K"
@@ -794,7 +793,7 @@ msgstr "Auf Box zuschneiden|#z"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:578
 msgid "Get from file|#G"
-msgstr "Lese Werte aus Datei|#L"
+msgstr "Lese aus Datei|#L"
 
 #: ../src/frontends/xforms/forms/form_graphics.fd:620
 #: ../src/frontends/qt2/ui/QGraphicsDialogBase.ui:481
@@ -1671,7 +1670,7 @@ msgstr "Gehe zu|#G"
 
 #: ../src/frontends/xforms/forms/form_search.fd:44
 msgid "Find:|#F"
-msgstr "Suche:|#S"
+msgstr "Finden:|#F"
 
 #: ../src/frontends/xforms/forms/form_search.fd:62
 msgid "Replace with:|#w"
@@ -1696,7 +1695,7 @@ msgstr "Alles ersetzen|#A"
 
 #: ../src/frontends/xforms/forms/form_search.fd:188
 msgid "Search backwards|#S"
-msgstr "Rückwärts suchen|#R"
+msgstr "Rückwärts suchen|#S"
 
 #: ../src/frontends/xforms/forms/form_sendto.fd:43
 msgid "Export format:|#E"
@@ -3468,30 +3467,30 @@ msgstr "Keine"
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:296
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:345
 msgid "DefSkip"
-msgstr "Standard-Abstand"
+msgstr "Standard"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:302
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:351
 #: src/frontends/qt2/QDocument.C:131
 msgid "SmallSkip"
-msgstr "Kleiner Abstand"
+msgstr "Klein"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:308
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:357
 #: src/frontends/qt2/QDocument.C:132
 msgid "MedSkip"
-msgstr "Mittlerer Abstand"
+msgstr "Mittel"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:314
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:363
 #: src/frontends/qt2/QDocument.C:133
 msgid "BigSkip"
-msgstr "Großer Abstand"
+msgstr "Groß"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:320
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:369
 msgid "VFill"
-msgstr "Variabler Abstand"
+msgstr "Variabel"
 
 #: ../src/frontends/qt2/ui/QParagraphDialogBase.ui:457
 msgid "Below paragraph"
@@ -4231,7 +4230,7 @@ msgstr "Suchen und Ersetzen"
 
 #: ../src/frontends/qt2/ui/QSearchDialogBase.ui:51
 msgid "&Find:"
-msgstr "&Suche:"
+msgstr "&Finden:"
 
 #: ../src/frontends/qt2/ui/QSearchDialogBase.ui:108
 msgid "Replace &with:"
@@ -4249,7 +4248,7 @@ msgstr "Nur ganze &Wörter"
 
 #: ../src/frontends/qt2/ui/QSearchDialogBase.ui:250
 msgid "Find &Next"
-msgstr "&Nächstes suchen"
+msgstr "&Nächstes finden"
 
 #: ../src/frontends/qt2/ui/QSearchDialogBase.ui:269
 #: ../src/frontends/qt2/ui/QSpellcheckerDialogBase.ui:60
@@ -4427,7 +4426,6 @@ msgid "Width unit"
 msgstr "Einheit der Breite"
 
 #: ../src/frontends/qt2/ui/QTabularDialogBase.ui:354
-#, fuzzy
 msgid "Fixed width of the column"
 msgstr "Feste Breite der Spalte"
 
@@ -5485,35 +5483,35 @@ msgstr "VORHANG"
 #: ../lib/layouts/broadway.layout:216 ../lib/layouts/egs.layout:261
 #: ../lib/layouts/hollywood.layout:311 ../lib/layouts/lyxmacros.inc:101
 msgid "Right_Address"
-msgstr ""
+msgstr "Rechte_Adresse"
 
 #: ../lib/layouts/chess.layout:38
 msgid "Mainline"
-msgstr ""
+msgstr "Hauptvariante"
 
 #: ../lib/layouts/chess.layout:64
 msgid "Variation"
-msgstr ""
+msgstr "Variante"
 
 #: ../lib/layouts/chess.layout:74
 msgid "SubVariation"
-msgstr ""
+msgstr "Untervariante"
 
 #: ../lib/layouts/chess.layout:83
 msgid "SubVariation2"
-msgstr ""
+msgstr "Untervariante2"
 
 #: ../lib/layouts/chess.layout:92
 msgid "SubVariation3"
-msgstr ""
+msgstr "Untervariante3"
 
 #: ../lib/layouts/chess.layout:101
 msgid "SubVariation4"
-msgstr ""
+msgstr "Untervariante4"
 
 #: ../lib/layouts/chess.layout:110
 msgid "SubVariation5"
-msgstr ""
+msgstr "Untervariante5"
 
 #: ../lib/layouts/chess.layout:120
 msgid "HideMoves"
@@ -5533,7 +5531,7 @@ msgstr ""
 
 #: ../lib/layouts/chess.layout:176
 msgid "Arrow"
-msgstr ""
+msgstr "Pfeil"
 
 #: ../lib/layouts/chess.layout:187
 msgid "KnightMove"
@@ -6592,7 +6590,7 @@ msgstr "Externe Auswahl einfügen|u"
 
 #: ../lib/ui/default.ui:73
 msgid "Find & Replace...|F"
-msgstr "Suchen & Ersetzen...|S"
+msgstr "Finden & Ersetzen...|F"
 
 #: ../lib/ui/default.ui:74
 msgid "Tabular|T"
@@ -6876,7 +6874,7 @@ msgstr "Randnotiz|R"
 
 #: ../lib/ui/default.ui:202
 msgid "Short Title"
-msgstr "Kurztitel"
+msgstr "Kurztitel|K"
 
 #: ../lib/ui/default.ui:203
 msgid "Index Entry...|I"
@@ -7212,7 +7210,7 @@ msgstr "Gehe zu Lesezeichen 3|3"
 
 #: ../lib/ui/default.ui:368
 msgid "Tooltips|o"
-msgstr ""
+msgstr "Tooltips|o"
 
 #: ../lib/ui/default.ui:370
 msgid "Introduction|I"
@@ -8808,11 +8806,11 @@ msgstr "Grundlinie links"
 
 #: src/frontends/controllers/ControlGraphics.C:158
 msgid "Top center"
-msgstr "Oben Mitte"
+msgstr "Oben zentriert"
 
 #: src/frontends/controllers/ControlGraphics.C:158
 msgid "Bottom center"
-msgstr "Unten Mitte"
+msgstr "Unten zentriert"
 
 #: src/frontends/controllers/ControlGraphics.C:158
 msgid "Center baseline"
@@ -9188,7 +9186,7 @@ msgstr "LyX: Trennzeichen"
 
 #: src/frontends/qt2/QDocument.C:57
 msgid "Document Settings"
-msgstr "Einstellungen Dokument"
+msgstr "Dokument-Einstellungen"
 
 #. biblio
 #: src/frontends/qt2/QDocument.C:69
@@ -9460,11 +9458,11 @@ msgstr "Schreibmaschine\t\\mathtt"
 
 #: src/frontends/qt2/QMathDialog.C:157
 msgid "Blackboard\t\\mathbb"
-msgstr ""
+msgstr "Blackboard\t\\mathbb"
 
 #: src/frontends/qt2/QMathDialog.C:158
 msgid "Fraktur\t\\mathfrak"
-msgstr ""
+msgstr "Fraktur\t\\mathfrak"
 
 #: src/frontends/qt2/QMathDialog.C:159
 msgid "Calligraphic\t\\mathcal"
@@ -10648,12 +10646,12 @@ msgstr "Gehe zu"
 
 #: src/frontends/xforms/FormSearch.C:29
 msgid "Find and Replace"
-msgstr "Suchen und Ersetzen"
+msgstr "Finden und Ersetzen"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormSearch.C:46
 msgid "Enter the string you want to find."
-msgstr "Geben Sie die Zeichenkette ein, die Sie suchen möchten."
+msgstr "Geben Sie die Zeichenkette ein, die Sie finden möchten."
 
 #: src/frontends/xforms/FormSearch.C:48
 msgid "Enter the replacement string."
@@ -11222,7 +11220,7 @@ msgstr " unbekannt"
 
 #: src/insets/insettext.C:1540 src/text3.C:912
 msgid "Unknown spacing argument: "
-msgstr "Unbekannter Abstand: "
+msgstr "Unbekanntes Abstandsargument: "
 
 #: src/insets/insettext.C:1659
 msgid "Error: LatexType Command not allowed here.\n"
@@ -11259,10 +11257,12 @@ msgstr "Wrap-Einfügung geöffnet"
 #: src/ispell.C:201 src/ispell.C:208 src/ispell.C:217
 msgid "Can't create pipe for spellchecker."
 msgstr ""
+"Es kann keine Weiterleitung für die Rechtschreibprüfung erzeugt werden."
 
 #: src/ispell.C:222 src/ispell.C:227 src/ispell.C:232
 msgid "Can't open pipe for spellchecker."
 msgstr ""
+"Die Weiterleitung für die Rechtschreibprüfung kann nicht geöffnet werden."
 
 #: src/ispell.C:241
 msgid ""
@@ -12061,7 +12061,7 @@ msgid ""
 msgstr ""
 "Der DPI-Wert (Dots Per inch - Punkte je Zoll) ihres Monitors wird von LyX "
 "selbsttätig ermittelt.  Scheitert dies, können Sie hier den korrekten Wert "
-"eingeben."
+"vorgeben."
 
 #: src/lyxrc.C:1913
 #, no-c-format
@@ -12677,15 +12677,3 @@ msgstr "Marke gesetzt"
 #: src/text3.C:1112
 msgid "LyX function 'layout' needs an argument."
 msgstr "Die LyX-Funktion 'layout' benötigt ein Argument."
-
-#~ msgid "Files (*)"
-#~ msgstr "Dateien (*)"
-
-#~ msgid "The document uses a missing TeX class \"%1$s\"."
-#~ msgstr "Das Dokument verwendet die fehlende TeX-Klasse \"%1$s\"."
-
-#~ msgid "LyX will not be able to produce output."
-#~ msgstr "LyX wird das Dokument nicht ausgeben können."
-
-#~ msgid "The document uses a missing TeX class "
-#~ msgstr "Das Dokument verwendet die fehlende TeX-Klasse "
