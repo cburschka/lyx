@@ -1,5 +1,10 @@
 2002-09-07  John Levon  <levon@movementarian.org>
 
+	* qfont_metrics.C: revert accurate per-char metrics
+	  because LyX is broken
+ 
+2002-09-07  John Levon  <levon@movementarian.org>
+
 	* qfont_loader.h:
 	* qfont_loader.C: add debug
  

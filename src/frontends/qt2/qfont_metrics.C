@@ -43,17 +43,29 @@ int maxDescent(LyXFont const & f)
 }
 
 
-int ascent(char c, LyXFont const & f)
+int ascent(char /*c*/, LyXFont const & f)
 {
+// LyX is broken - returning accurate metrics breaks mathed
+// because the cursor extends outside of its region.
+// http://marc.theaimsgroup.com/?l=lyx-devel&m=103060206211300&w=2 
+#if 0
 	QRect r = metrics(f).boundingRect(c);
 	return abs(r.top());
+#endif
+	return metrics(f).ascent();
 }
 
 
-int descent(char c, LyXFont const & f)
+int descent(char /*c*/, LyXFont const & f)
 {
+// LyX is broken - returning accurate metrics breaks mathed
+// because the cursor extends outside of its region.
+// http://marc.theaimsgroup.com/?l=lyx-devel&m=103060206211300&w=2 
+#if 0
 	QRect r = metrics(f).boundingRect(c);
 	return abs(r.bottom());
+#endif
+	return metrics(f).descent();
 }
 
 
