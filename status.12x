@@ -1,4 +1,12 @@
 -*- text -*-
+
+This file describes what has been done in the preparation of LyX
+1.2.1.
+All comments are welcome.
+
+You can find a list of bugs pending for 1.2.1 at URL
+http://bugzilla.lyx.org/buglist.cgi?bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&&target_milestone=1.2.1
+
 I'd be glad if some of you could take the time to check it out (or fix
 a bug or two if you are feeling adventurous). Let me recall that all
 these fixes have been checked in the branch BRANCH-1_2_X, which you
@@ -28,6 +36,8 @@ What's new
   layout dialog
 
 - re-read correctly graphics insets when file name contains a comma
+
+- fix drawing problems for collapsed ERT insets
 
 - disable 'Load' button of 'include file' dialog for verbatim include
 
