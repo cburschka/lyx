@@ -76,6 +76,19 @@ InsetMinipage::InsetMinipage()
 }
 
 
+InsetMinipage::InsetMinipage(InsetMinipage const & in, bool same_id)
+	: InsetCollapsable(in, same_id),
+	  pos_(in.pos_), inner_pos_(in.inner_pos_),
+	  height_(in.height_), width_(in.width_)
+{}
+
+
+Inset * InsetMinipage::clone(Buffer const &, bool same_id) const
+{
+	return new InsetMinipage(*const_cast<InsetMinipage *>(this), same_id);
+}
+
+
 InsetMinipage::~InsetMinipage()
 {
 	hideDialog();
@@ -151,44 +164,9 @@ void InsetMinipage::read(Buffer const * buf, LyXLex & lex)
 				   << endl;
 		}
 	}
-#ifdef WITH_WARNINGS
-#warning Remove me before final 1.2.0 (Jug)
-#warning Can we please remove this as soon as possible? (Lgb)
-#endif
-	// this is only for compatibility to the intermediate format and should
-	// vanish till the final 1.2.0!
-	if (lex.IsOK()) {
-		if (token.empty()) {
-			lex.next();
-			token = lex.GetString();
-		}
-		if (token == "widthp") {
-			lex.next();
-			// only do this if the width_-string was not already set!
-			if (width_.empty())
-				width_ = lex.GetString() + "%";
-			token = string();
-		}
-	}
 	if (!token.empty())
 		lex.pushToken(token);
 	InsetCollapsable::read(buf, lex);
-}
-
-
-Inset * InsetMinipage::clone(Buffer const &, bool same_id) const
-{
-	InsetMinipage * result = new InsetMinipage;
-	result->inset.init(&inset, same_id);
-	
-	result->collapsed_ = collapsed_;
-	result->pos_ = pos_;
-	result->inner_pos_ = inner_pos_;
-	result->height_ = height_;
-	result->width_ = width_;
-	if (same_id)
-		result->id_ = id_;
-	return result;
 }
 
 

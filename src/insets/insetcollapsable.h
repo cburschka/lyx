@@ -44,6 +44,10 @@ public:
 	/// inset is initially collapsed if bool = true
 	InsetCollapsable(bool = false);
 	///
+	InsetCollapsable(InsetCollapsable const & in, bool same_id = false);
+	///
+	Inset * clone(Buffer const &, bool same_id = false) const;
+	
 	void read(Buffer const *, LyXLex &);
 	///
 	void write(Buffer const *, std::ostream &) const;

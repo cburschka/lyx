@@ -180,8 +180,7 @@ string const InsetCommandParams::getCommand() const
 
 InsetCommand::InsetCommand(InsetCommandParams const & p, bool)
 	: p_( p.getCmdName(), p.getContents(), p.getOptions() )
-{
-}
+{}
 
 
 void InsetCommand::setParams(InsetCommandParams const & p )

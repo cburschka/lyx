@@ -28,8 +28,6 @@ public:
 	/// constructor with initial contents
 	InsetNote(Buffer const *, string const & contents, bool collapsed);
 	///
-	virtual Inset * clone(Buffer const &, bool) const;
-	///
 	virtual string const editMessage() const;
 	///
 	virtual Inset::Code lyxCode() const { return Inset::IGNORE_CODE; }

@@ -141,7 +141,7 @@ InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
 
 InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf,
 						   bool same_id)
-	: buffer(&buf)
+	: UpdatableInset(tab, same_id), buffer(&buf)
 {
 	tabular.reset(new LyXTabular(this, *(tab.tabular)));
 	the_locking_inset = 0;
@@ -150,8 +150,6 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf,
 	actrow = actcell = 0;
 	sel_cell_start = sel_cell_end = 0;
 	need_update = INIT;
-	if (same_id)
-		id_ = tab.id_;
 }
 
 

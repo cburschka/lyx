@@ -58,19 +58,7 @@ InsetNote::InsetNote(Buffer const * buf, string const & contents,
 	Paragraph * par = inset.paragraph();
 	Paragraph::size_type pos = 0;
 	buf->insertStringAsLines(par, pos, LyXFont(LyXFont::ALL_INHERIT), 
-				 strip(contents, '\n'));
-}
-
-
-Inset * InsetNote::clone(Buffer const &, bool same_id) const
-{
-	InsetNote * result = new InsetNote;
-	result->inset.init(&inset, same_id);
-
-	result->collapsed_ = collapsed_;
-	if (same_id)
-		result->id_ = id_;
-	return result;
+	                         strip(contents, '\n'));
 }
 
 

@@ -169,7 +169,7 @@ bool LyXFont::FontBits::operator!=(LyXFont::FontBits const & fb1) const
 
 
 LyXFont::LyXFont(LyXFont::FONT_INIT1)
-	: bits(inherit), lang(default_language)
+	: bits(inherit), lang(ignore_language)
 {}
 
 

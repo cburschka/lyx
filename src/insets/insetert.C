@@ -20,6 +20,8 @@
 #include "insets/insettext.h"
 #include "support/LOstream.h"
 #include "lyx_gui_misc.h"
+#include "BufferView.h"
+#include "LyXView.h"
 
 using std::ostream;
 
@@ -34,9 +36,9 @@ void InsetERT::init()
 #else
 	labelfont.setColor(LColor::latex);
 #endif
-	setAutoCollapse(false);
 	setInsetName("ERT");
 }
+
 
 InsetERT::InsetERT() : InsetCollapsable()
 {
@@ -44,18 +46,29 @@ InsetERT::InsetERT() : InsetCollapsable()
 }
 
 
+#if 0
+InsetERT::InsetERT(InsetERT const & in, bool same_id)
+	: InsetCollapsable(in, same_id)
+{
+}
+#endif
+
+
 InsetERT::InsetERT(string const & contents, bool collapsed)
 	: InsetCollapsable(collapsed)
 {
-	init();
-
-	LyXFont const font(LyXFont::ALL_INHERIT);
+	LyXFont font(LyXFont::ALL_INHERIT);
+	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
+	font.setColor(LColor::latex);
 	string::const_iterator cit = contents.begin();
 	string::const_iterator end = contents.end();
 	Paragraph::size_type pos = 0;
 	for (; cit != end; ++cit) {
 		inset.paragraph()->insertChar(pos++, *cit, font);
 	}
+	// the init has to be after the initialization of the paragraph
+	// because of the label settings (draw_label for ert insets).
+	init();
 }
 
 
@@ -63,18 +76,6 @@ void InsetERT::write(Buffer const * buf, ostream & os) const
 {
 	os << getInsetName() << "\n";
 	InsetCollapsable::write(buf, os);
-}
-
-
-Inset * InsetERT::clone(Buffer const &, bool same_id) const
-{
-	InsetERT * result = new InsetERT;
-	result->inset.init(&inset, same_id);
-	
-	result->collapsed_ = collapsed_;
-	if (same_id)
-		result->id_ = id_;
-	return result;
 }
 
 
@@ -107,7 +108,12 @@ void InsetERT::edit(BufferView * bv, int x, int y, unsigned int button)
 #ifndef NO_LATEX
 	LyXFont font(LyXFont::ALL_SANE);
 	font.setLatex (LyXFont::ON);
+#else
+	LyXFont font(LyXFont::ALL_INHERIT);
+	font.setFamily(LyXFont::TYPEWRITER_FAMILY);
+	font.setColor(LColor::latex);
 #endif
+	inset.setFont(bv, font);
 }
 
 
@@ -157,4 +163,37 @@ int InsetERT::linuxdoc(Buffer const *, std::ostream &) const
 int InsetERT::docBook(Buffer const *, std::ostream &) const
 {
 	return 0;
+}
+
+
+UpdatableInset::RESULT
+InsetERT::localDispatch(BufferView * bv, kb_action action, string const & arg)
+{
+	UpdatableInset::RESULT result = DISPATCHED_NOUPDATE;
+	
+	switch(action) {
+	case LFUN_LAYOUT:
+		bv->owner()->setLayout(inset.paragraph()->getLayout());
+		break;
+	default:
+		result = InsetCollapsable::localDispatch(bv, action, arg);
+	}
+	switch(action) {
+	case LFUN_BREAKPARAGRAPH:
+	case LFUN_BREAKPARAGRAPHKEEPLAYOUT: {
+#ifndef NO_LATEX
+		LyXFont font(LyXFont::ALL_SANE);
+		font.setLatex (LyXFont::ON);
+#else
+		LyXFont font(LyXFont::ALL_INHERIT);
+		font.setFamily(LyXFont::TYPEWRITER_FAMILY);
+		font.setColor(LColor::latex);
+#endif
+		inset.setFont(bv, font);
+	}
+		break;
+	default:
+		break;
+	}
+	return result;
 }

@@ -1,3 +1,9 @@
+2001-07-24  Juergen Vigna  <jug@sad.it>
+
+	* text.C (draw): honor the ignore_language.
+
+	* lyxfont.C (LyXFont): set language to ignore_language in FONT_INIT1.
+
 2001-07-24  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxfunc.C (getStatus): BREAKLINE does _not_ insert a special

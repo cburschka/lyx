@@ -129,8 +129,10 @@ public:
 	};
 	
 	///
-	Inset() : top_x(0), top_baseline(0), scx(0), id_(inset_id++), owner_(0), background_color_(LColor::inherit) {}
-	/// Virtual base destructor
+	Inset();
+	///
+	Inset(Inset const & in, bool same_id = false);
+	///
 	virtual ~Inset() {}
 	///
 	virtual int ascent(BufferView *, LyXFont const &) const = 0;
@@ -352,7 +354,9 @@ public:
 	}
 
 	///
-	UpdatableInset() : cursor_visible_(false), block_drawing_(false) {}
+	UpdatableInset();
+	///
+	UpdatableInset(UpdatableInset const & in, bool same_id = false);
 
 	///
 	virtual EDITABLE editable() const;

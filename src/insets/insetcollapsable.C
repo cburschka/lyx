@@ -36,17 +36,35 @@ using std::max;
 InsetCollapsable::InsetCollapsable(bool collapsed)
 	: UpdatableInset(), collapsed_(collapsed), 
 	  button_length(0), button_top_y(0), button_bottom_y(0),
-	  label("Label"), draw_label(label), autocollapse(true), 
+	  label("Label"), draw_label(label), autocollapse(false), 
 	  oldWidth(0), need_update(FULL),
 	  inlined(false), change_label_with_text(false)
-	  
-
 {
 	inset.setOwner(this);
 	inset.setAutoBreakRows(true);
 	inset.setDrawFrame(0, InsetText::ALWAYS);
 	inset.setFrameColor(0, LColor::collapsableframe);
 	setInsetName("Collapsable");
+}
+
+
+InsetCollapsable::InsetCollapsable(InsetCollapsable const & in, bool same_id)
+	: UpdatableInset(in, same_id), collapsed_(in.collapsed_), 
+	  framecolor(in.framecolor), labelfont(in.labelfont),
+	  button_length(0), button_top_y(0), button_bottom_y(0),
+	  label(in.label), draw_label(label), autocollapse(in.autocollapse), 
+	  oldWidth(0), need_update(FULL),
+	  inlined(in.inlined), change_label_with_text(in.change_label_with_text)
+{
+	inset.init(&(in.inset), same_id);
+	inset.setOwner(this);
+}
+
+
+Inset * InsetCollapsable::clone(Buffer const &, bool same_id) const
+{
+	return new InsetCollapsable(*const_cast<InsetCollapsable *>(this),
+								same_id);
 }
 
 
@@ -266,16 +284,20 @@ void InsetCollapsable::edit(BufferView * bv, int xp, int yp,
 		if (!bv->lockInset(this))
 			return;
 		bv->updateInset(this, false);
-		inset.edit(bv, 0, 0, button);
+		inset.edit(bv);
 	} else {
 		if (!bv->lockInset(this))
 			return;
-		LyXFont font(LyXFont::ALL_SANE);
-		int yy = ascent(bv, font) + yp -
-		    (ascent_collapsed(bv->painter()) +
-		     descent_collapsed(bv->painter()) +
-		     inset.ascent(bv, font));
-		inset.edit(bv, xp, yy, button);
+		if (yp <= button_bottom_y) {
+			inset.edit(bv);
+		} else {
+			LyXFont font(LyXFont::ALL_SANE);
+			int yy = ascent(bv, font) + yp -
+				(ascent_collapsed(bv->painter()) +
+				 descent_collapsed(bv->painter()) +
+				 inset.ascent(bv, font));
+			inset.edit(bv, xp, yy, button);
+		}
 	}
 }
 
@@ -360,7 +382,7 @@ void InsetCollapsable::insetButtonRelease(BufferView * bv,
 			bv->unlockInset(this);
 			bv->updateInset(this, false);
 		}
-	} else if (!collapsed_ && (y > button_top_y)) {
+	} else if (!collapsed_ && (y > button_bottom_y)) {
 		LyXFont font(LyXFont::ALL_SANE);
 		int yy = ascent(bv, font) + y -
 		    (ascent_collapsed(bv->painter()) +
@@ -374,7 +396,7 @@ void InsetCollapsable::insetButtonRelease(BufferView * bv,
 void InsetCollapsable::insetMotionNotify(BufferView * bv,
 					 int x, int y, int state)
 {
-	if (x > button_bottom_y) {
+	if (y > button_bottom_y) {
 		LyXFont font(LyXFont::ALL_SANE);
 		int yy = ascent(bv, font) + y -
 		    (ascent_collapsed(bv->painter()) +
@@ -622,7 +644,7 @@ void InsetCollapsable::setLabel(string const & l, bool flag)
 string InsetCollapsable::get_new_label() const
 {
 	string la;
-	Paragraph::size_type const max_length = 10;
+	Paragraph::size_type const max_length = 15;
 
 	int n = std::min(max_length, inset.paragraph()->size());
 	int i,j;

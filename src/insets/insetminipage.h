@@ -41,13 +41,15 @@ public:
 	///
 	InsetMinipage();
 	///
+	InsetMinipage(InsetMinipage const &, bool same_id = false);
+	///
 	~InsetMinipage();
 	///
 	void write(Buffer const * buf, std::ostream & os) const;
 	///
 	void read(Buffer const * buf, LyXLex & lex);
 	///
-	virtual Inset * clone(Buffer const &, bool same_id = false) const;
+	Inset * clone(Buffer const &, bool same_id = false) const;
 	///
 	int ascent(BufferView *, LyXFont const &) const;
 	///

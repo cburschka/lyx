@@ -32,18 +32,6 @@ InsetMarginal::InsetMarginal()
 }
 
 
-Inset * InsetMarginal::clone(Buffer const &, bool same_id) const
-{
-	InsetMarginal * result = new InsetMarginal;
-	result->inset.init(&inset, same_id);
-	
-	result->collapsed_ = collapsed_;
-	if (same_id)
-		result->id_ = id_;
-	return result;
-}
-
-
 string const InsetMarginal::editMessage() const
 {
 	return _("Opened Marginal Note Inset");

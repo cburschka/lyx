@@ -32,32 +32,33 @@ public:
 	///
 	InsetERT(string const & contents, bool collapsed);
 	///
-	virtual void write(Buffer const * buf, std::ostream & os) const;
+	void write(Buffer const * buf, std::ostream & os) const;
 	///
-	virtual Inset * clone(Buffer const &, bool same_id = false) const;
+	string const editMessage() const;
 	///
-	virtual string const editMessage() const;
+	bool insertInset(BufferView *, Inset *);
 	///
-	virtual bool insertInset(BufferView *, Inset *);
+	bool insetAllowed(Inset::Code) const { return false; }
 	///
-	virtual bool insetAllowed(Inset::Code) const { return false; }
-	///
-	virtual void setFont(BufferView *, LyXFont const &,
+	void setFont(BufferView *, LyXFont const &,
 	                     bool toggleall = false, bool selectall = false);
 	///
-	virtual void edit(BufferView *, int, int, unsigned int);
+	void edit(BufferView *, int, int, unsigned int);
 	///
-	virtual void edit(BufferView * bv, bool front = true);
+	void edit(BufferView * bv, bool front = true);
 	///
-	virtual int latex(Buffer const *, std::ostream &, bool fragile,
+	int latex(Buffer const *, std::ostream &, bool fragile,
 	                  bool free_spc) const;
 	///
-	virtual int ascii(Buffer const *,
+	int ascii(Buffer const *,
 	                  std::ostream &, int linelen = 0) const;
 	///
-	virtual int linuxdoc(Buffer const *, std::ostream &) const;
+	int linuxdoc(Buffer const *, std::ostream &) const;
 	///
-	virtual int docBook(Buffer const *, std::ostream &) const;
+	int docBook(Buffer const *, std::ostream &) const;
+	///
+	UpdatableInset::RESULT localDispatch(BufferView *, kb_action,
+	                                     string const &);
 private:
 	///
 	void init();

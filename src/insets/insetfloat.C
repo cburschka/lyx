@@ -107,10 +107,15 @@ InsetFloat::InsetFloat(string const & type)
 	font.decSize();
 	font.setColor(LColor::collapsable);
 	setLabelFont(font);
-	setAutoCollapse(false);
 	floatType_ = type;
 	setInsetName(type);
 }
+
+
+InsetFloat::InsetFloat(InsetFloat const & in, bool same_id)
+	: InsetCollapsable(in, same_id), floatType_(in.floatType_),
+	  floatPlacement_(in.floatPlacement_), wide_(in.wide_)
+{}
 
 
 void InsetFloat::write(Buffer const * buf, ostream & os) const
@@ -173,13 +178,7 @@ void InsetFloat::validate(LaTeXFeatures & features) const
 
 Inset * InsetFloat::clone(Buffer const &, bool same_id) const
 {
-	InsetFloat * result = new InsetFloat(floatType_);
-	result->inset.init(&inset, same_id);
-
-	result->collapsed_ = collapsed_;
-	if (same_id)
-		result->id_ = id_;
-	return result;
+	return new InsetFloat(*const_cast<InsetFloat *>(this), same_id);
 }
 
 

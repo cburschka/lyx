@@ -153,15 +153,16 @@ void InsetText::init(InsetText const * ins, bool same_id)
 	autoBreakRows = false;
 	drawFrame_ = NEVER;
 	xpos = 0.0;
+	frame_color = LColor::insetframe;
 	if (ins) {
 		setParagraphData(ins->par);
 		autoBreakRows = ins->autoBreakRows;
 		drawFrame_ = ins->drawFrame_;
+		frame_color = ins->frame_color;
 		if (same_id)
 			id_ = ins->id_;
 	}
 	par->setInsetOwner(this);
-	frame_color = LColor::insetframe;
 	locked = false;
 	old_par = 0;
 	last_drawn_width = -1;
@@ -204,8 +205,7 @@ void InsetText::clear()
 
 Inset * InsetText::clone(Buffer const &, bool same_id) const
 {
-	InsetText * t = new InsetText(*this, same_id);
-	return t;
+	return  new InsetText(*this, same_id);
 }
 
 

@@ -32,18 +32,6 @@ InsetFoot::InsetFoot()
 }
 
 
-Inset * InsetFoot::clone(Buffer const &, bool same_id) const
-{
-	InsetFoot * result = new InsetFoot;
-	result->inset.init(&inset, same_id);
-
-	result->collapsed_ = collapsed_;
-	if (same_id)
-		result->id_ = id_;
-	return result;
-}
-
-
 string const InsetFoot::editMessage() const
 {
 	return _("Opened Footnote Inset");

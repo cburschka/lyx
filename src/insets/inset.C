@@ -33,6 +33,23 @@ using std::endl;
 // Initialization of the counter for the inset id's,
 unsigned int Inset::inset_id = 0;
 
+Inset::Inset()
+	: top_x(0), top_baseline(0), scx(0), id_(inset_id++), owner_(0),
+	  background_color_(LColor::inherit)
+{}
+
+
+Inset::Inset(Inset const & in, bool same_id)
+	: top_x(0), top_baseline(0), scx(0), owner_(0), name(in.name),
+	  background_color_(in.background_color_)
+{
+	if (same_id)
+		id_ = in.id();
+	else
+		id_ = inset_id++;
+}
+
+
 bool Inset::deletable() const
 {
 	return true;
@@ -119,6 +136,16 @@ void Inset::id(int id_arg)
 }
 
 // some stuff for inset locking
+
+UpdatableInset::UpdatableInset()
+	: Inset(), cursor_visible_(false), block_drawing_(false)
+{}
+
+
+UpdatableInset::UpdatableInset(UpdatableInset const & in, bool same_id)
+	: Inset(in, same_id), cursor_visible_(false), block_drawing_(false)
+{}
+
 
 void UpdatableInset::insetButtonPress(BufferView *, int x, int y, int button)
 {

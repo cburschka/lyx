@@ -361,8 +361,8 @@ bool LyXText::isBoundary(Buffer const * buf, Paragraph * par,
 
 
 void LyXText::draw(BufferView * bview, Row const * row,
-		   Paragraph::size_type & vpos,
-		   int offset, float & x, bool cleared)
+                   Paragraph::size_type & vpos,
+                   int offset, float & x, bool cleared)
 {
 	Painter & pain = bview->painter();
 	
@@ -448,10 +448,10 @@ void LyXText::draw(BufferView * bview, Row const * row,
 		++vpos;
 
 		if (lyxrc.mark_foreign_language &&
+			font.language() != ignore_language &&
 		    font.language() != bview->buffer()->params.language) {
 			int const y = offset + row->height() - 1;
-			pain.line(int(tmpx), y, int(x), y,
-				  LColor::language);
+			pain.line(int(tmpx), y, int(x), y, LColor::language);
 		}
 
 		return;

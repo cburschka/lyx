@@ -33,9 +33,8 @@ int InsetBibKey::key_counter = 0;
 const string key_prefix = "key-";
 
 InsetBibKey::InsetBibKey(InsetCommandParams const & p)
-	: InsetCommand(p)
+	: InsetCommand(p), counter(1)
 {
-	counter = 1;
 	if (getContents().empty())
 		setContents(key_prefix + tostr(++key_counter));
 }

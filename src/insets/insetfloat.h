@@ -28,6 +28,8 @@ public:
 	///
 	InsetFloat(string const &);
 	///
+	InsetFloat(InsetFloat const &, bool same_id = false);
+	///
 	void write(Buffer const * buf, std::ostream & os) const;
 	///
 	void read(Buffer const * buf, LyXLex & lex);

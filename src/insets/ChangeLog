@@ -1,3 +1,21 @@
+2001-07-24  Juergen Vigna  <jug@sad.it>
+
+	* insetert.C (InsetERT): put init after the paragraph initialization,
+	as otherwise we don't set the draw_label right.
+
+	* insetcollapsable.C (insetMotionNotify): fixed opening/closing the
+	insets with the mouse without having strange selections.
+	(edit): if the inset was collapsed and we open it here then put the
+	cursor always at the beginning of the inset.
+	(get_new_label): 15 instead of 10 max chars in the label.
+
+	* insetert.C (localDispatch): added and handle various stuff we
+	need to handle here (font setting on paragraph break, not permitted
+	layout setting, etc.).
+
+	* inset.h: added default copy-consturctor and implemented this in
+	various insets with the change to use this in the clone function!
+
 2001-07-24  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* insetminipage.C (InsetMinipage): set background color to red :)

@@ -57,18 +57,6 @@ void InsetList::write(Buffer const * buf, ostream & os) const
 }
 
 
-Inset * InsetList::clone(Buffer const &, bool same_id) const
-{
-	InsetList * result = new InsetList;
-	result->inset.init(&inset, same_id);
-	
-	result->collapsed_ = collapsed_;
-	if (same_id)
-		result->id_ = id_;
-	return result;
-}
-
-
 string const InsetList::editMessage() const
 {
 	return _("Opened List Inset");
