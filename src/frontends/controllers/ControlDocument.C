@@ -71,6 +71,7 @@ void dispatch_bufferparams(Kernel const & kernel, BufferParams const & bp,
 			   kb_action lfun)
 {
 	ostringstream ss;
+	ss << "\\begin_header\n";
 	bp.writeFile(ss);
 	ss << "\\end_header\n";
 	kernel.dispatch(FuncRequest(lfun, ss.str()));
