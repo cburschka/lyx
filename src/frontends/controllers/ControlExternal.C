@@ -163,7 +163,7 @@ string const ControlExternal::Browse(string const & input) const
 	// FIXME: a temporary hack until the FileDialog interface is updated
 	pattern += "|";
 
-	pair<string, string> dir1(N_("Documents|#o#O"),
+	std::pair<string, string> dir1(N_("Documents|#o#O"),
 				  string(lyxrc.document_path));
 
 	return browseRelFile(&lv_, input, bufpath, title, pattern, dir1);
