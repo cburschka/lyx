@@ -1224,7 +1224,6 @@ bool MathCursor::interpret(string const & s)
 bool MathCursor::script(bool up)
 {
 	macroModeClose();
-	lyxerr << "script 2: '" << up << "'\n";
 	selCut();
 	if (hasPrevAtom() && prevAtom()->asScriptInset()) {
 		prevAtom()->asScriptInset()->ensure(up);
@@ -1251,11 +1250,7 @@ bool MathCursor::script(bool up)
 
 bool MathCursor::interpret(char c)
 {
-
-	lyxerr << "interpret 2: '" << c << "'\n";
-
-	// Removed super/subscript handling from here  to ::script -MV
-
+	//lyxerr << "interpret 2: '" << c << "'\n";
 	// handle macroMode
 	if (inMacroMode()) {
 		string name = macroName();
