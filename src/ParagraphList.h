@@ -46,6 +46,8 @@ public:
 	///
 	ParagraphList();
 	///
+	iterator insert(iterator it, Paragraph * par);
+	///
 	void clear();
 	///
 	void erase(iterator it);

@@ -21,13 +21,13 @@ class Paragraph;
 class TexRow;
 
 ///
-void breakParagraph(BufferParams const & bparams,
+void breakParagraph(Buffer * buf,
 		    ParagraphList::iterator par,
 		    lyx::pos_type pos,
 		    int flag);
 
 ///
-void breakParagraphConservative(BufferParams const & bparams,
+void breakParagraphConservative(Buffer * buf,
 				ParagraphList::iterator par,
 				lyx::pos_type pos);
 

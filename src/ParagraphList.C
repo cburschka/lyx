@@ -85,6 +85,18 @@ ParagraphList::ParagraphList()
 {}
 
 
+ParagraphList::iterator
+ParagraphList::insert(ParagraphList::iterator it, Paragraph * par)
+{
+	Paragraph * prev = it->previous();
+	par->next(&*it);
+	par->previous(prev);
+	prev->next(par);
+	it->previous(par);
+	return iterator(par);
+}
+
+
 void ParagraphList::clear()
 {
 	while (parlist) {

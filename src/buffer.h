@@ -112,7 +112,7 @@ public:
 					LyXFont &);
 	///
 	void insertStringAsLines(Paragraph *&, lyx::pos_type &,
-				 LyXFont const &, string const &) const;
+				 LyXFont const &, string const &);
 	///
 	Paragraph * getParFromID(int id) const;
 private:

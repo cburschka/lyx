@@ -29,13 +29,17 @@ using lyx::pos_type;
 using std::endl;
 using std::ostream;
 
-void breakParagraph(BufferParams const & bparams,
+void breakParagraph(Buffer * buf,
 		    ParagraphList::iterator par,
 		    pos_type pos,
 		    int flag)
 {
+	BufferParams const & bparams = buf->params;
+
 	// create a new paragraph, and insert into the list
-	Paragraph * tmp = new Paragraph(&*par);
+	ParagraphList::iterator tmp = buf->paragraphs.insert(boost::next(par),
+							     new Paragraph);
+
 	// without doing that we get a crash when typing <Return> at the
 	// end of a paragraph
 	tmp->layout(bparams.getLyXTextClass().defaultLayout());
@@ -126,12 +130,15 @@ void breakParagraph(BufferParams const & bparams,
 }
 
 
-void breakParagraphConservative(BufferParams const & bparams,
+void breakParagraphConservative(Buffer * buf,
 				ParagraphList::iterator par,
 				pos_type pos)
 {
+	BufferParams const & bparams = buf->params;
+
 	// create a new paragraph
-	Paragraph * tmp = new Paragraph(&*par);
+	ParagraphList::iterator tmp = buf->paragraphs.insert(boost::next(par),
+							     new Paragraph);
 	tmp->makeSameLayout(&*par);
 
 	// When can pos > Last()?

@@ -1015,7 +1015,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 
 // needed to insert the selection
 void Buffer::insertStringAsLines(Paragraph *& par, pos_type & pos,
-				 LyXFont const & fn,string const & str) const
+				 LyXFont const & fn,string const & str)
 {
 	LyXLayout_ptr const & layout = par->layout();
 
@@ -1030,7 +1030,7 @@ void Buffer::insertStringAsLines(Paragraph *& par, pos_type & pos,
 	    cit != str.end(); ++cit) {
 		if (*cit == '\n') {
 			if (autobreakrows && (!par->empty() || layout->keepempty)) {
-				breakParagraph(params, par, pos,
+				breakParagraph(this, par, pos,
 					       layout->isEnvironment());
 				par = par->next();
 				pos = 0;

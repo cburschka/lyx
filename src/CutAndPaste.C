@@ -361,7 +361,7 @@ bool CutAndPaste::pasteSelection(Paragraph ** par, Paragraph ** endpar,
 		// if necessary
 		if (((*par)->size() > pos) || !(*par)->next()) {
 			breakParagraphConservative(
-				current_view->buffer()->params, *par, pos);
+				current_view->buffer(), *par, pos);
 			paste_the_end = true;
 		}
 		// set the end for redoing later

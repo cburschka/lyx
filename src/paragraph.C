@@ -80,6 +80,7 @@ Paragraph::Paragraph()
 
 #ifndef NO_NEXT
 // This constructor inserts the new paragraph in a list.
+// It is placed after par.
 Paragraph::Paragraph(Paragraph * par)
 	: pimpl_(new Paragraph::Pimpl(this))
 {
