@@ -132,7 +132,7 @@ void QParagraph::apply()
 	// SPACING ABOVE
 	// If a vspace kind is "Length" but there's no text in
 	// the input field, reset the kind to "None".
-	if (dialog_->spacingAbove->currentItem() == 5
+	if (dialog_->spacingAbove->currentItem() == 6
 	    && dialog_->valueAbove->text().isEmpty())
 		dialog_->spacingAbove->setCurrentItem(0);
 
@@ -145,7 +145,7 @@ void QParagraph::apply()
 	params.spaceTop(space_top);
 
 	// SPACING BELOW
-	if (dialog_->spacingBelow->currentItem() == 5
+	if (dialog_->spacingBelow->currentItem() == 6
 	    && dialog_->valueBelow->text().isEmpty())
 		dialog_->spacingBelow->setCurrentItem(0);
 
