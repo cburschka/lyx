@@ -14,10 +14,12 @@
 #pragma implementation
 #endif
 
-#include "Dialogs.h"
+#include "gettext.h"
 
+#include "Dialogs.h"
 #include "gnomeBC.h"
 
+#include "ControlSplash.h"
 #include "ControlBibitem.h"
 #include "ControlBibtex.h"
 #include "ControlCharacter.h"

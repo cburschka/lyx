@@ -45,7 +45,7 @@ void GnomeBase::loadXML() const
 
 	if (file.empty()) {
 		lyxerr << "Cannot find glade file. Aborting." << std::endl;
-		Assert(true);
+		lyx::Assert(true);
 	}
 	
 	lyxerr[Debug::GUI] << "Glade file to open is " << file << '\n';
