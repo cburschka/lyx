@@ -55,7 +55,7 @@ const char * known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 
 
 const char * known_math_envs[] = {"equation", "eqnarray", "eqnarray*",
-"align", 0};
+"align", "align*", 0};
 
 
 // some ugly stuff
@@ -187,6 +187,7 @@ bool is_heading(string const & name)
 bool is_latex_command(string const & name)
 {
 	return
+ 		name == "ref" ||
  		name == "cite" ||
  		name == "label" ||
  		name == "index" ||
@@ -276,7 +277,7 @@ void handle_package(string const & name, string const & options)
 }
 
 
-void handle_table(Parser & p, ostream & os)
+void handle_table(Parser &, ostream &)
 {
 	// \begin{table} has been read
 	//parse(end
@@ -554,8 +555,10 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 				p.verbatimItem(); // swallow next arg
 				handle_table(p, os);
 				parse(p, os, FLAG_END, mode);
-			} else {
+			} else if (mode == MATH_MODE) {
 				os << "\\begin{" << name << "}";
+				parse(p, os, FLAG_END, mode);
+			} else {
 				parse(p, os, FLAG_END, mode);
 			}
 		}
@@ -568,21 +571,20 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 					p.error("\\end{" + name + "} does not match \\begin{"
 						+ curr_env() + "}");
 				active_environments.pop();
-				if (name == "document" || name == "abstract")
-					;
-				else if (name == "table")
-					;
-				else if (name == "thebibliography")
-					;
-				else if (is_math_env(name)) {
+				if (is_math_env(name)) {
 					end_inset(os);	
 					os << "\\end{" << name << "}";
-				} else
+				} else if (mode == MATH_MODE) {
 					os << "\\end{" << name << "}";
+				} else
+					;
 				return;
 			}
 			p.error("found 'end' unexpectedly");
 		}
+
+		else if (t.cs() == "item")
+			handle_par(os);
 
 		else if (t.cs() == ")") {
 			if (flags & FLAG_SIMPLE2)
@@ -681,10 +683,10 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			os << '}';
 		}
 
-		else if (t.cs() == "emph" && mode == TEXT_MODE) {
-			os << "\n\\emph on\n";
+		else if ((t.cs() == "emph" || t.cs() == "noun") && mode == TEXT_MODE) {
+			os << "\n\\" << t.cs() << " on\n";
 			parse(p, os, FLAG_ITEM, mode);
-			os << "\n\\emph default\n";
+			os << "\n\\" << t.cs() << " default\n";
 		}
 
 		else if (is_latex_command(t.cs()) && mode == TEXT_MODE) {
@@ -703,8 +705,33 @@ void parse(Parser & p, ostream & os, unsigned flags, mode_type mode)
 			os << '{' << p.getArg('{','}') << '}' << "\n\n";
 		}
 
-		else
-			(in_preamble ? h_preamble : os) << t.asInput();
+		else if (t.cs() == "textasciitilde")
+			os << '~';
+
+		else if (t.cs() == "_" && mode == TEXT_MODE)
+			os << '_';
+
+		else if (t.cs() == "&" && mode == TEXT_MODE)
+			os << '&';
+
+		else {
+			if (mode == MATH_MODE)
+				os << t.asInput();
+			else if (in_preamble)
+				h_preamble << t.asInput();
+			else {
+				// heuristic: read up to next non-nested space
+				string s = t.asInput();
+				string z = p.verbatimItem();
+				while (p.good() && z != " " && z.size()) {
+					//cerr << "read: " << z << endl;
+					s += z;
+					z = p.verbatimItem();
+				}
+				cerr << "found ERT: " << s << endl;
+				handle_ert(os, s + ' ');
+			}
+		}
 
 		if (flags & FLAG_LEAVE) {
 			flags &= ~FLAG_LEAVE;

@@ -302,9 +302,11 @@ string Parser::verbatimOption()
 
 string Parser::verbatimItem()
 {
-	string res;
+	if (!good())
+		error("stream bad");
 	if (nextToken().cat() == catBegin) {
-		Token t = getToken();
+		Token t = getToken(); // skip brace
+		string res;
 		for (Token t = getToken(); t.cat() != catEnd && good(); t = getToken()) {
 			if (t.cat() == catBegin) {
 				putback();
@@ -313,6 +315,8 @@ string Parser::verbatimItem()
 			else
 				res += t.asInput();
 		}
+		return res;
 	}
-	return res;
+	return getToken().asInput();
 }
+
