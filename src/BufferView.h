@@ -136,7 +136,7 @@ public:
 	///
 	void paste();
 	///
-	void cut();
+	void cut(bool realcut = true);
 	///
 	void copy();
 	///

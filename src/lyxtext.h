@@ -397,7 +397,7 @@ public:
 	/// 
 	void toggleInset(BufferView *);
 	///
-	void cutSelection(BufferView *, bool = true);
+	void cutSelection(BufferView *, bool doclear = true, bool realcut = true);
 	///
 	void copySelection(BufferView *);
 	///

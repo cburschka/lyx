@@ -295,12 +295,12 @@ void BufferView::copy()
 }
 
 
-void BufferView::cut()
+void BufferView::cut(bool realcut)
 {
 	if (available()) {
 		hideCursor();
 		update(text, BufferView::SELECT|BufferView::FITCUR);
-		text->cutSelection(this);
+		text->cutSelection(this, true, realcut);
 		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		owner()->message(_("Cut"));
 	}

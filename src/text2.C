@@ -1663,7 +1663,7 @@ void LyXText::pasteEnvironmentType(BufferView * bview)
 }
 
 
-void LyXText::cutSelection(BufferView * bview, bool doclear)
+void LyXText::cutSelection(BufferView * bview, bool doclear, bool realcut)
 {
 	// Stuff what we got on the clipboard. Even if there is no selection.
 
@@ -1705,15 +1705,17 @@ void LyXText::cutSelection(BufferView * bview, bool doclear)
 		endpar = selection.end.par();
 		int pos = selection.end.pos();
 		CutAndPaste::cutSelection(selection.start.par(), &endpar,
-					  selection.start.pos(), pos,
-					  bview->buffer()->params.textclass, doclear);
+		                          selection.start.pos(), pos,
+		                          bview->buffer()->params.textclass, doclear,
+		                          realcut);
 		selection.end.pos(pos);
 	} else {
 		endpar = selection.end.par();
 		int pos = selection.end.pos();
 		CutAndPaste::cutSelection(selection.start.par(), &endpar,
-					  selection.start.pos(), pos,
-					  bview->buffer()->params.textclass, doclear);
+		                          selection.start.pos(), pos,
+		                          bview->buffer()->params.textclass, doclear,
+								  realcut);
 		cursor.par(endpar);
 		selection.end.par(endpar);
 		selection.end.pos(pos);
@@ -1845,7 +1847,7 @@ void LyXText::replaceSelectionWithString(BufferView * bview,
 	}
 	
 	// Cut the selection
-	cutSelection(bview);
+	cutSelection(bview, true, false);
 
 	unFreezeUndo();
 }
@@ -2138,18 +2140,23 @@ void LyXText::setCursorIntern(BufferView * bview, Paragraph * par,
 {
 	InsetText * it = static_cast<InsetText *>(par->inInset());
 	if (it) {
-		lyxerr << "InsetText   is " << it << endl;
-		lyxerr << "inset_owner is " << inset_owner << endl;
 		if (it != inset_owner) {
+			lyxerr << "InsetText   is " << it << endl;
+			lyxerr << "inset_owner is " << inset_owner << endl;
 #warning I belive this code is wrong. (Lgb)
 #warning Jürgen, have a look at this. (Lgb)
+#warning Hmmm, I guess you are right but we
+#warning should verify when this is needed
 			// Jürgen, would you like to have a look?
 			// I guess we need to move the outer cursor
 			// and open and lock the inset (bla bla bla)
 			// stuff I don't know... so can you have a look?
 			// (Lgb)
+			// I moved the lyxerr stuff in here so we can see if this
+			// is actually really needed and where!
+			// (Jug)
 			it->getLyXText(bview)->setCursorIntern(bview, par, pos, setfont,
-							       boundary);
+			                                       boundary);
 			return;
 		}
 	}

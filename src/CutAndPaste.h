@@ -25,7 +25,8 @@ public:
 	///
 	static
 	bool cutSelection(Paragraph * startpar, Paragraph ** endpar,
-                      int start, int & end, char tc, bool doclear = false);
+                      int start, int & end, char tc, bool doclear = false,
+					  bool realcut = true);
 	///
 	static
 	bool copySelection(Paragraph * startpar, Paragraph * endpar,

@@ -1,5 +1,16 @@
 2001-08-08  Juergen Vigna  <jug@sad.it>
 
+	* BufferView_pimpl.C (Dispatch): use a non-cut-buffer cut on DELTE
+	BACKSPACE type functions.
+
+	* CutAndPaste.C (cutSelection): added a bool so that the stuff actually
+	is only cutted from the document but not put in the cut-buffer, where
+	still the old stuff should be.
+
+	* text2.C (cutSelection): added bool to pass to CutAndPaste::cutSelection.
+
+	* BufferView2.C (cut): added a bool to pass to LyXText::cutSelection.
+
 	* tabular.C (SetWidthOfCell): fixed special case where the width
 	was not updated!
 	(LeftLine): handle '|' in align_special.

@@ -73,44 +73,50 @@ void DeleteBuffer()
 
 
 bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
-			       int start, int & end, char tc, bool doclear)
+                               int start, int & end, char tc, bool doclear,
+							   bool realcut)
 {
 	if (!startpar || (start > startpar->size()))
 		return false;
 	
-	DeleteBuffer();
+	if (realcut)
+		DeleteBuffer();
 	
 	textclass = tc;
 	
-	if (!(*endpar) ||
-	    startpar == (*endpar)) {
+	if (!(*endpar) || startpar == (*endpar)) {
 		// only within one paragraph
-		buf = new Paragraph;
+		if (realcut)
+			buf = new Paragraph;
 		Paragraph::size_type i = start;
 		if (end > startpar->size())
 			end = startpar->size();
 		for (; i < end; ++i) {
-			startpar->copyIntoMinibuffer(*current_view->buffer(),
-						     start);
+			if (realcut)
+				startpar->copyIntoMinibuffer(*current_view->buffer(),
+				                             start);
 			startpar->erase(start);
-			
-			buf->insertFromMinibuffer(buf->size());
+			if (realcut)
+				buf->insertFromMinibuffer(buf->size());
 		}
 		end = start - 1;
 	} else {
 		// more than one paragraph
 		(*endpar)->breakParagraphConservative(current_view->buffer()->params,
-						      end);
+		                                      end);
 		*endpar = (*endpar)->next();
 		end = 0;
 		
 		startpar->breakParagraphConservative(current_view->buffer()->params,
-						     start);
+		                                     start);
 		
 		// store the selection
-		buf = startpar->next();
-		
-		buf->previous(0);
+		if (realcut) {
+			buf = startpar->next();
+			buf->previous(0);
+		} else {
+			startpar->next()->previous(0);
+		}
 		(*endpar)->previous()->next(0);
 		
 		// cut the selection
@@ -119,7 +125,8 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 		(*endpar)->previous(startpar);
 		
 		// the cut selection should begin with standard layout
-		buf->clear(); 
+		if (realcut)
+			buf->clear(); 
 		
 		// paste the paragraphs again, if possible
 		if (doclear)

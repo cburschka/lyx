@@ -2353,7 +2353,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			// just comment out the line below...
 			showCursor();
 		} else {
-			bv_->cut();
+			bv_->cut(false);
 		}
 		moveCursorUpdate(false);
 		owner_->showState();
@@ -2409,7 +2409,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 				       | BufferView::CHANGE);
 			}
 		} else {
-			bv_->cut();
+			bv_->cut(false);
 		}
 	}
 	break;
@@ -2496,7 +2496,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 				showCursor();
 			}
 		} else {
-			bv_->cut();
+			bv_->cut(false);
 		}
 		owner_->showState();
 		setState();
@@ -2536,7 +2536,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 				       | BufferView::CHANGE);
 			}
 		} else
-			bv_->cut();
+			bv_->cut(false);
 	}
 	break;
 
@@ -3103,7 +3103,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		
 		if (lyxrc.auto_region_delete) {
 			if (lt->selection.set()) {
-				lt->cutSelection(bv_, false);
+				lt->cutSelection(bv_, false, false);
 				bv_->update(lt,
 					    BufferView::SELECT
 					    | BufferView::FITCUR

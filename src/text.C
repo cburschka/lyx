@@ -2400,10 +2400,10 @@ void LyXText::deleteWordForward(BufferView * bview)
 		setCursor(bview, tmpcursor, tmpcursor.par(), tmpcursor.pos());
 		selection.cursor = cursor;
 		cursor = tmpcursor;
-		setSelection(bview); 
+		setSelection(bview);
 		
 		/* -----> Great, CutSelection() gets rid of multiple spaces. */
-		cutSelection(bview);
+		cutSelection(bview, true, false);
 	}
 }
 
@@ -2422,7 +2422,7 @@ void LyXText::deleteWordBackward(BufferView * bview)
 	       selection.cursor = cursor;
 	       cursor = tmpcursor;
 	       setSelection(bview);
-	       cutSelection(bview);
+	       cutSelection(bview, true, false);
        }
 }
 
@@ -2448,7 +2448,7 @@ void LyXText::deleteLineForward(BufferView * bview)
 		if (!selection.set()) {
 			deleteWordForward(bview);
 		} else {
-			cutSelection(bview);
+			cutSelection(bview, true, false);
 		}
 	}
 }
@@ -2576,7 +2576,9 @@ void LyXText::Delete(BufferView * bview)
 	if ((cursor.par()->previous() ? cursor.par()->previous()->id() : 0)
 	    == old_cur_par_prev_id
 	    && cursor.par()->id() != old_cur_par_id)
+	{
 		return; // delete-empty-paragraph-mechanism has done it
+	}
 
 	// if you had success make a backspace
 	if (old_cursor.par() != cursor.par() || old_cursor.pos() != cursor.pos()) {
@@ -2639,8 +2641,7 @@ void LyXText::backspace(BufferView * bview)
 
 		if (cursor.par()->previous()) {
 			setUndo(bview, Undo::DELETE,
-				cursor.par()->previous(),
-				cursor.par()->next());
+			        cursor.par()->previous(), cursor.par()->next());
 		}
 		
   		Paragraph * tmppar = cursor.par();
@@ -2653,8 +2654,8 @@ void LyXText::backspace(BufferView * bview)
 		if (cursor.par()->previous()) { 
 			// steps into the above paragraph.
 			setCursorIntern(bview, cursor.par()->previous(),
-					cursor.par()->previous()->size(),
-					false);
+			                cursor.par()->previous()->size(),
+			                false);
 		}
 
 		/* Pasting is not allowed, if the paragraphs have different
@@ -2670,8 +2671,8 @@ void LyXText::backspace(BufferView * bview)
 		if (cursor.par() != tmppar
 		    && (cursor.par()->getLayout() == tmppar->getLayout()
 			|| tmppar->getLayout() == 0 /*standard*/)
-		    && cursor.par()->getAlign() == tmppar->getAlign()) {
-
+		    && cursor.par()->getAlign() == tmppar->getAlign())
+		{
 			removeParagraph(tmprow);
 			removeRow(tmprow);
 			cursor.par()->pasteParagraph(bview->buffer()->params);
@@ -2708,13 +2709,13 @@ void LyXText::backspace(BufferView * bview)
 		/* this is the code for a normal backspace, not pasting
 		 * any paragraphs */ 
 		setUndo(bview, Undo::DELETE,
-			cursor.par(), cursor.par()->next()); 
+		        cursor.par(), cursor.par()->next()); 
 		// We used to do cursorLeftIntern() here, but it is
 		// not a good idea since it triggers the auto-delete
 		// mechanism. So we do a cursorLeftIntern()-lite,
 		// without the dreaded mechanism. (JMarc)
 		setCursorIntern(bview, cursor.par(), cursor.pos()- 1,
-				false, cursor.boundary());
+		                false, cursor.boundary());
 		
 		// some insets are undeletable here
 		if (cursor.par()->getChar(cursor.pos()) == Paragraph::META_INSET) {
@@ -2738,8 +2739,8 @@ void LyXText::backspace(BufferView * bview)
 		if (cursor.pos() < rowLast(row) ||
 		    !cursor.par()->isLineSeparator(cursor.pos())) {
 			row->fill(row->fill() + singleWidth(bview,
-							    cursor.par(),
-							    cursor.pos()));
+			                                    cursor.par(),
+			                                    cursor.pos()));
 		}
 		
 		/* some special code when deleting a newline. This is similar
