@@ -1419,7 +1419,7 @@ void MathCursor::interpret(char c)
 		}
 
 		if (name == "\\" && c == '\\') {
-			backspac/();
+			backspace();
 			interpret("\\backslash");
 			return;
 		}
