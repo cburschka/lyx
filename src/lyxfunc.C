@@ -1370,7 +1370,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			data = InsetERTMailer::params2string(name,
 							     InsetERT::Open);
 		}
-                owner->getDialogs().show(name, data, 0);
+		owner->getDialogs().show(name, data, 0);
 	}
 	break;
 
@@ -1423,7 +1423,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		break;
 
 	case LFUN_DIALOG_DISCONNECT_INSET:
-                owner->getDialogs().disconnect(argument);
+		owner->getDialogs().disconnect(argument);
 		break;
 
 	case LFUN_CHILDOPEN:

@@ -298,7 +298,7 @@ private:
 
 	/// need to regenerate .tex ?
 	DepClean dep_clean_;
- 
+
 	/// the author list
 	AuthorList authorlist;
 

@@ -13,31 +13,31 @@
 #include "author.h"
 
 #include "debug.h"
- 
-#include "support/LAssert.h" 
+
+#include "support/LAssert.h"
 #include "support/LOstream.h"
 #include "support/LIstream.h"
 #include "support/lstrings.h"
- 
+
 using std::endl;
- 
+
 namespace {
 	int cur_id;
 }
- 
- 
+
+
 bool operator==(Author const & l, Author const & r)
 {
 	return l.name() == r.name() && l.email() == r.email();
 }
- 
+
 
 std::ostream & operator<<(std::ostream & os, Author const & a)
 {
 	os << "\"" << a.name() << "\" " << a.email();
 	return os;
 }
- 
+
 std::istream & operator>>(std::istream & is, Author & a)
 {
 	string s;
@@ -47,33 +47,33 @@ std::istream & operator>>(std::istream & is, Author & a)
 	lyxerr << "Read name " << a.name_ << " email " << a.email_ << endl;
 	return is;
 }
- 
- 
+
+
 int AuthorList::record(Author const & a)
 {
 	Authors::const_iterator it(authors_.begin());
 	Authors::const_iterator itend(authors_.end());
- 
+
 	for (;  it != itend; ++it) {
 		if (it->second == a)
 			return it->first;
- 	}
- 
+	}
+
 	lyxerr[Debug::CHANGES] << "Adding author " << a << endl;
-	 
+
 	authors_[cur_id++] = a;
 	return cur_id - 1;
 }
- 
+
 
 void AuthorList::record(int id, Author const & a)
 {
 	lyx::Assert(id < authors_.size());
- 
+
 	authors_[id] = a;
 }
 
- 
+
 Author const & AuthorList::get(int id)
 {
 	Authors::const_iterator it(authors_.find(id));
@@ -81,12 +81,12 @@ Author const & AuthorList::get(int id)
 	return it->second;
 }
 
- 
+
 AuthorList::Authors::const_iterator AuthorList::begin() const
 {
 	return authors_.begin();
 }
- 
+
 
 AuthorList::Authors::const_iterator AuthorList::end() const
 {

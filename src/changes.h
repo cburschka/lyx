@@ -29,19 +29,19 @@ struct Change {
 	Change(Type t = UNCHANGED, int a = 0, lyx::time_type ct = 0)
 		: type(t), author(a), changetime(ct) {}
 
-	Type type; 
+	Type type;
 
 	int author;
 
-	lyx::time_type changetime; 
+	lyx::time_type changetime;
 };
- 
+
 bool operator==(Change const & l, Change const & r);
 bool operator!=(Change const & l, Change const & r);
- 
+
 class Changes {
 public:
-		
+
 	Changes(Change::Type type);
 
 	~Changes();
@@ -52,10 +52,10 @@ public:
 	void reset(Change::Type type) {
 		empty_type_ = type;
 	}
- 
+
 	/// set the position to the given change
 	void set(Change change, lyx::pos_type pos);
- 
+
 	/// set the position to the given change
 	void set(Change::Type, lyx::pos_type pos);
 
@@ -79,7 +79,7 @@ public:
 
 	/// return true if there is a deleted or unchanged range contained
 	bool isChangeEdited(lyx::pos_type start, lyx::pos_type end) const;
- 
+
 	/// remove the given entry
 	void erase(lyx::pos_type pos);
 
@@ -90,7 +90,7 @@ public:
 	/// output .lyx file format for transitions between changes
 	static void lyxMarkChange(std::ostream & os, int & column,
 		lyx::time_type curtime, Change const & old, Change const & change);
- 
+
 private:
 	struct Range {
 		Range(lyx::pos_type s, lyx::pos_type e)
@@ -110,35 +110,35 @@ private:
 
 		// do the ranges intersect ?
 		bool intersects(Range const & r) const;
- 
+
 		lyx::pos_type start;
 		lyx::pos_type end;
 	};
- 
+
 	friend bool operator==(Range const & r1, Range const & r2);
 	friend bool operator!=(Range const & r1, Range const & r2);
- 
+
 	struct ChangeRange {
 		ChangeRange(lyx::pos_type s, lyx::pos_type e, Change c)
 			: range(Range(s, e)), change(c) {}
 		Range range;
 		Change change;
 	};
- 
-	typedef std::vector<ChangeRange> ChangeTable; 
+
+	typedef std::vector<ChangeRange> ChangeTable;
 
 	/// our table of changes
 	ChangeTable table_;
- 
+
 	/// change type for an empty paragraph
 	Change::Type empty_type_;
- 
+
 	/// handle a delete
 	void del(Change change, ChangeTable::size_type pos);
 
 	/// handle an add
 	void add(Change change, ChangeTable::size_type pos);
- 
+
 	/// merge neighbouring ranges
 	void merge();
 

@@ -44,7 +44,7 @@ public:
 
 	/// delete a buffer
 	void release(Buffer * b);
- 
+
 	/// Close all open buffers.
 	void closeAll();
 
@@ -91,7 +91,7 @@ private:
 		       string & unsaved_list);
 
 	typedef std::vector<Buffer *> BufferStorage;
- 
+
 	/// storage of all buffers
 	BufferStorage bstore;
 

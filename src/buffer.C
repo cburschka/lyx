@@ -162,7 +162,7 @@ Buffer::Buffer(string const & file, bool ronly)
 	}
 
 	// set initial author
-	authorlist.record(Author(lyxrc.user_name, lyxrc.user_email)); 
+	authorlist.record(Author(lyxrc.user_name, lyxrc.user_email));
 }
 
 
@@ -396,7 +396,7 @@ namespace {
 	// but this code is too b0rken to admit of a better solution yet
 	Change current_change;
 };
- 
+
 
 bool
 Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
@@ -772,7 +772,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 		istringstream ss(lex.getString());
 		Author a;
 		ss >> a;
-		int aid(authorlist.record(a)); 
+		int aid(authorlist.record(a));
 		lyxerr << "aid is " << aid << endl;
 		lyxerr << "listed aid is " << author_ids.size() << endl;
 		author_ids.push_back(authorlist.record(a));
@@ -1400,7 +1400,7 @@ bool Buffer::writeFile(string const & fname) const
 			ofs << "\\author " << it->second << "\n";
 		}
 	}
- 
+
 	Paragraph::depth_type depth = 0;
 
 	// this will write out all the paragraphs
@@ -2813,7 +2813,7 @@ void Buffer::validate(LaTeXFeatures & features) const
 		features.require("dvipost");
 		features.require("color");
 	}
- 
+
 	// AMS Style is at document level
 	if (params.use_amsmath || tclass.provides(LyXTextClass::amsmath))
 		features.require("amsmath");
@@ -3014,7 +3014,7 @@ Paragraph * Buffer::getParFromID(int id) const
 {
 	if (id < 0)
 		return 0;
- 
+
 	// why should we allow < 0 ??
 	//lyx::Assert(id >= 0);
 

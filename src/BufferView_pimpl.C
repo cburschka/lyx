@@ -165,9 +165,9 @@ void BufferView::Pimpl::buffer(Buffer * b)
 	// set current buffer
 	buffer_ = b;
 
-	// if we're quitting lyx, don't bother updating stuff 
+	// if we're quitting lyx, don't bother updating stuff
 	if (quitting)
-		return; 
+		return;
 
 	// if we are closing the buffer, use the first buffer as current
 	if (!buffer_) {
@@ -261,7 +261,7 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	bool mark_set  = false;
 
 	owner_->busy(true);
- 
+
 	owner_->message(_("Formatting document..."));
 
 	if (bv_->text) {
@@ -621,14 +621,14 @@ bool BufferView::Pimpl::available() const
 
 Change const BufferView::Pimpl::getCurrentChange()
 {
-	if (!bv_->buffer()->params.tracking_changes) 
+	if (!bv_->buffer()->params.tracking_changes)
 		return Change(Change::UNCHANGED);
 
 	LyXText * t(bv_->getLyXText());
- 
+
 	if (!t->selection.set())
 		return Change(Change::UNCHANGED);
- 
+
 	LyXCursor const & cur(t->selection.start);
 	return cur.par()->lookupChangeFull(cur.pos());
 }
@@ -941,7 +941,7 @@ void BufferView::Pimpl::trackChanges()
 	} else {
 		bv_->update(bv_->text, BufferView::SELECT | BufferView::FITCUR);
 		bv_->text->setCursor(bv_, &(*buf->paragraphs.begin()), 0);
-#warning changes FIXME 
+#warning changes FIXME
 		//moveCursorUpdate(false);
 
 		bool found = lyxfind::findNextChange(bv_);
@@ -956,7 +956,7 @@ void BufferView::Pimpl::trackChanges()
 		}
 		buf->params.tracking_changes = false;
 	}
- 
+
 	buf->redostack.clear();
 }
 
@@ -1256,15 +1256,15 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 	case LFUN_TRACK_CHANGES:
 		trackChanges();
 		break;
- 
+
 	case LFUN_MERGE_CHANGES:
 		owner_->getDialogs().showMergeChanges();
 		break;
- 
+
 	case LFUN_ACCEPT_ALL_CHANGES: {
 		bv_->update(bv_->text, BufferView::SELECT | BufferView::FITCUR);
 		bv_->text->setCursor(bv_, &(*bv_->buffer()->paragraphs.begin()), 0);
-#warning FIXME changes 
+#warning FIXME changes
 		//moveCursorUpdate(false);
 
 		while (lyxfind::findNextChange(bv_)) {
@@ -1274,11 +1274,11 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 			BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
 		break;
 	}
- 
+
 	case LFUN_REJECT_ALL_CHANGES: {
 		bv_->update(bv_->text, BufferView::SELECT | BufferView::FITCUR);
 		bv_->text->setCursor(bv_, &(*bv_->buffer()->paragraphs.begin()), 0);
-#warning FIXME changes 
+#warning FIXME changes
 		//moveCursorUpdate(false);
 
 		while (lyxfind::findNextChange(bv_)) {
@@ -1288,7 +1288,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 			BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
 		break;
 	}
- 
+
 	case LFUN_ACCEPT_CHANGE: {
 		bv_->getLyXText()->acceptChange(bv_);
 		update(bv_->text,
@@ -1302,7 +1302,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev_in)
 			BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
 		break;
 	}
- 
+
 	case LFUN_UNKNOWN_ACTION:
 		ev.errorMessage(N_("Unknown function!"));
 		break;
