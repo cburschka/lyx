@@ -1362,8 +1362,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 }
 
 
-// Updates all counters BEHIND the row. Changed paragraphs
-// with a dynamic left margin will be rebroken.
+// Updates all counters. Paragraphs with changed label string will be rebroken
 void LyXText::updateCounters(BufferView * bview) const
 {
 	Paragraph * par;
@@ -1378,18 +1377,17 @@ void LyXText::updateCounters(BufferView * bview) const
 		while (row->par() != par)
 			row = row->next();
 
+		string const oldLabel = par->params().labelString();
+
 		setCounter(bview->buffer(), par);
 
-		// now check for the headline layouts. remember that they
-		// have a dynamic left margin
-		LyXLayout_ptr const & layout = par->layout();
+		string const & newLabel = par->params().labelString();
 
-		if (layout->margintype == MARGIN_DYNAMIC
-		    || layout->labeltype == LABEL_SENSITIVE) {
-			// Rebreak the paragraph
+		if (oldLabel.empty() && !newLabel.empty()) {
 			removeParagraph(row);
 			appendParagraph(bview, row);
 		}
+
 		par = par->next();
 	}
 }

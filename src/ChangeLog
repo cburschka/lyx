@@ -1,3 +1,7 @@
+2002-11-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* text2.C (updateCounters): fix bug 668
+
 2002-11-04  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* text3.C (dispatch): Do not make the buffer dirty when moving the
