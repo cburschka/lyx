@@ -25,6 +25,7 @@
 
 #include "support/filetools.h"
 
+namespace graphics = lyx::graphics;
 
 using lyx::support::AbsolutePath;
 using lyx::support::OnlyFilename;
@@ -51,7 +52,7 @@ RenderBase * RenderGraphic::clone() const
 }
 
 
-void RenderGraphic::update(lyx::graphics::Params const & params)
+void RenderGraphic::update(graphics::Params const & params)
 {
 	params_ = params;
 
@@ -78,47 +79,51 @@ boost::signals::connection RenderGraphic::connect(slot_type const & slot) const
 }
 
 
-string const RenderGraphic::statusMessage() const
+namespace {
+ 
+string const statusMessage(graphics::ImageStatus status)
 {
-	switch (loader_.status()) {
-		case lyx::graphics::WaitingToLoad:
-			return _("Not shown.");
-		case lyx::graphics::Loading:
-			return _("Loading...");
-		case lyx::graphics::Converting:
-			return _("Converting to loadable format...");
-		case lyx::graphics::Loaded:
-			return _("Loaded into memory. Must now generate pixmap.");
-		case lyx::graphics::ScalingEtc:
-			return _("Scaling etc...");
-		case lyx::graphics::Ready:
-			return _("Ready to display");
-		case lyx::graphics::ErrorNoFile:
-			return _("No file found!");
-		case lyx::graphics::ErrorConverting:
-			return _("Error converting to loadable format");
-		case lyx::graphics::ErrorLoading:
-			return _("Error loading file into memory");
-		case lyx::graphics::ErrorGeneratingPixmap:
-			return _("Error generating the pixmap");
-		case lyx::graphics::ErrorUnknown:
-			return _("No image");
+	switch (status) {
+	case graphics::WaitingToLoad:
+		return _("Not shown.");
+	case graphics::Loading:
+		return _("Loading...");
+	case graphics::Converting:
+		return _("Converting to loadable format...");
+	case graphics::Loaded:
+		return _("Loaded into memory. Must now generate pixmap.");
+	case graphics::ScalingEtc:
+		return _("Scaling etc...");
+	case graphics::Ready:
+		return _("Ready to display");
+	case graphics::ErrorNoFile:
+		return _("No file found!");
+	case graphics::ErrorConverting:
+		return _("Error converting to loadable format");
+	case graphics::ErrorLoading:
+		return _("Error loading file into memory");
+	case graphics::ErrorGeneratingPixmap:
+		return _("Error generating the pixmap");
+	case graphics::ErrorUnknown:
+		return _("No image");
 	}
 	return string();
 }
 
 
-bool RenderGraphic::readyToDisplay() const
+bool readyToDisplay(graphics::Loader const & loader)
 {
-	if (!loader_.image() || loader_.status() != lyx::graphics::Ready)
+	if (!loader.image() || loader.status() != graphics::Ready)
 		return false;
-	return loader_.image()->isDrawable();
+	return loader.image()->isDrawable();
 }
+
+} // namespace anon
 
 
 void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 {
-	bool image_ready = readyToDisplay();
+	bool image_ready = readyToDisplay(loader_);
 
 	dim.asc = image_ready ? loader_.image()->getHeight() : 50;
 	dim.des = 0;
@@ -138,7 +143,7 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 			font_width = font_metrics::width(justname, msgFont);
 		}
 
-		string const msg = statusMessage();
+		string const msg = statusMessage(loader_.status());
 		if (!msg.empty()) {
 			msgFont.setSize(LyXFont::SIZE_TINY);
 			font_width = std::max(font_width,
@@ -154,18 +159,18 @@ void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 {
-	if (params_.display != lyx::graphics::NoDisplay &&
-	    loader_.status() == lyx::graphics::WaitingToLoad)
+	if (params_.display != graphics::NoDisplay &&
+	    loader_.status() == graphics::WaitingToLoad)
 		loader_.startLoading();
 
-	if (params_.display != lyx::graphics::NoDisplay &&
+	if (params_.display != graphics::NoDisplay &&
 	    !loader_.monitoring())
 		loader_.startMonitoring();
 
 	// This will draw the graphics. If the graphics has not been loaded yet,
 	// we draw just a rectangle.
 
-	if (readyToDisplay()) {
+	if (readyToDisplay(loader_)) {
 		pi.pain.image(x + InsetOld::TEXT_TO_INSET_OFFSET,
 			      y - dim_.asc,
 			      dim_.wid - 2 * InsetOld::TEXT_TO_INSET_OFFSET,
@@ -192,7 +197,7 @@ void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 		}
 
 		// Print the message.
-		string const msg = statusMessage();
+		string const msg = statusMessage(loader_.status());
 		if (!msg.empty()) {
 			msgFont.setSize(LyXFont::SIZE_TINY);
 			pi.pain.text(x + InsetOld::TEXT_TO_INSET_OFFSET + 6,

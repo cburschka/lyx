@@ -1,5 +1,10 @@
 2003-10-22  Angus Leeming  <leeming@lyx.org>
 
+	* render_graphic.[Ch] (statusMessage, readyToDisplay): move out of the
+	class and into an anonymous namespace.
+
+2003-10-22  Angus Leeming  <leeming@lyx.org>
+
 	* insetcommand.h: remove the display method.
 
 	* insetbibtex.h:

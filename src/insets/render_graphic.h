@@ -48,12 +48,6 @@ private:
 	/// Not implemented.
 	RenderGraphic & operator=(RenderGraphic const &);
 
-	/// The message to display instead of the graphic itself.
-	std::string const statusMessage() const;
-
-	/// Is the image ready to draw, or should we display a message instead?
-	bool readyToDisplay() const;
-
 	/// The stored data.
 	lyx::graphics::Loader loader_;
 	lyx::graphics::Params params_;
