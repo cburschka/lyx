@@ -19,6 +19,21 @@ What's new
 
 ** Updates
 
+- selecting a word by double clicking now sets the X clipboard (like
+  when dragging the mouse)
+
+- in hebrew language, the key " now inserts a typewriter quote (since
+  other quotes do not make sense in hebrew)
+
+- Insert>Lists & TOC>Bibtex Reference uses style 'plain' by default
 
 ** Bug fixes
+
+- fix bug with citation keys that contain spaces
+
+- fix the thesaurus dialog so that it can be closed with the Escape key
+
+- fix drawing problem when a line of text contains both left-to-right
+  and right-to-left text
+
 
