@@ -13,7 +13,6 @@
 #define LYX_LIB_H
 
 #include "LString.h"
-#include <sys/types.h>
 
 // Where can I put this?  I found the occurence of the same code
 // three/four times. Don't you think it better to use a macro definition
@@ -48,7 +47,7 @@ namespace lyx {
 	///
 	void abort();
         ///
-        int mkdir(string const & pathname, mode_t mode);
+        int mkdir(string const & pathname, unsigned long int mode);
 	///
 	int putenv(char const * str);
         ///

@@ -9,7 +9,7 @@
 
 #include "lyxlib.h"
 
-int lyx::mkdir(string const & pathname, mode_t mode)
+int lyx::mkdir(string const & pathname, unsigned long int mode)
 {
-	return ::mkdir(pathname.c_str(), mode);
+	return ::mkdir(pathname.c_str(), mode_t(mode));
 }

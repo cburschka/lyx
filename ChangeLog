@@ -1,3 +1,12 @@
+2000-10-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/support/lyxlib.h: changed second argument of mkdir to
+	unsigned long int (unsigned int would probably have been enough,
+	but...). Removed <sys/types.h> header.
+	* src/support/mkdir.C (mkdir): ditto.
+
+	* NEWS: update.
+
 2000-10-19  Juergen Vigna  <jug@sad.it>
 
 	* src/lyxfunc.C (MenuNew): small fix (form John)
@@ -12,7 +21,7 @@
 2000-10-18  Juergen Vigna  <jug@sad.it>
 
 	* src/text2.C (ClearSelection): if we clear the selection we need
-	more refresh so set the status aprpriate
+	more refresh so set the status apropriately
 
 	* src/insets/insettext.C (draw): hopefully finally fixed draw
 	problems!
@@ -23,6 +32,7 @@
 	so that variables are localized.
 
 2000-10-18  Angus Leeming <a.leeming@ic.ac.uk>
+
        * src/support/lstrings.C (lowercase, uppercase):
        use explicit casts to remove compiler warnings.
 

@@ -51,12 +51,26 @@ Other major changes in 1.1.6 include:
   images in your document. It will even do an approximate ascii
   rendering when you do Ascii export if you have gifscii installed.
 
-- the code which converts from LyX format to anything else (for
-  viewing or exporting purpose) has been rewritten. In particular, the
-  PDF format is now supported [Dekel, details?]
+- The code which converts from LyX format to anything else (for
+  viewing or exporting purposes) has been rewritten. In particular, the
+  PDF format is now supported. In fact it's now possible to add
+  new export formats without recompiling LyX by specifying external
+  programs or scripts in lyxrc settings (note that the old export lyxrc
+  settings no longer work).
 
-- included files work now with docbook and linuxdoc.
-  New layout docbook-book.
+- LyX can do command line exports without opening any GUI components.
+
+- The multilingual support was improved. It is now possible to use in a
+  document languages with different encodings, e.g. German (iso8859-1) and
+  Czech (iso8859-2). Such a document can be viewed on screen using an
+  iso10646-1 (Unicode) font. However, it is (currently) not possible to
+  have differently encoded languages in the same paragraph.
+  The languages and the encodings are defined in text files.
+
+- Improved support for Hebrew and Arabic (already present in 1.1.5fix2).
+
+- included files work now with docbook and linuxdoc; new layout
+  docbook-book.
 
 And finally, there have been a lot of smaller changes, which are
 mentioned here for your information
