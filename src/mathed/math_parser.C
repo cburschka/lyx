@@ -68,6 +68,7 @@ enum lexcode_enum {
 	LexSpace,
 	LexNewLine,
 	LexOther,
+	LexMath,
 	LexSelf
 };
 
@@ -171,6 +172,7 @@ void lexInit()
 	lexcode['\n'] = LexNewLine;
 	lexcode['%'] = LexComment;
 	lexcode['#'] = LexArgument;
+	lexcode['$'] = LexMath;
 	lexcode['+'] = lexcode['-'] = lexcode['*'] = lexcode['/']
 		= lexcode['<'] = lexcode['>'] = lexcode['='] = LexBOP;
 	
@@ -265,6 +267,9 @@ int yylex()
 		} else if (lexcode[c] == LexBOP) {
 			yylval.i = c;
 			return LM_TK_BOP;
+		} else if (lexcode[c] == LexMath) {
+			yylval.i = 0;
+			return LM_TK_MATH;
 		} else if (lexcode[c] == LexSelf) {
 			return c;
 		} else if (lexcode[c] == LexArgument) {
@@ -429,10 +434,12 @@ MathInset * mathed_parse()
 			break;
 		}
 
+		case LM_TK_MATH:
 		case LM_TK_BEGIN: {
 			int i = yylval.i;
-			//lyxerr[Debug::MATHED] << "reading math environment " << i << " "
-			//	<< latex_mathenv[i].name << "\n";
+			lyxerr[Debug::MATHED]
+				<< "reading math environment " << i << " "
+				<< latex_mathenv[i].name << "\n";
 
 			MathInsetTypes typ = latex_mathenv[i].typ;
 			p = new MathMatrixInset(typ);
@@ -475,7 +482,8 @@ MathInset * mathed_parse()
 				}
 
 				default: 
-					lyxerr[Debug::MATHED] << "1: unknown math environment: " << typ << "\n";
+					lyxerr[Debug::MATHED]
+						<< "1: unknown math environment: " << typ << "\n";
 			}
 
 			p->setName(latex_mathenv[i].basename);
@@ -484,7 +492,8 @@ MathInset * mathed_parse()
 		}
 		
 		default:
-			lyxerr[Debug::MATHED] << "2 unknown math environment: " << t << "\n";
+			lyxerr[Debug::MATHED]
+				<< "2 unknown math environment: " << t << "\n";
 	}
 
 	return p;
@@ -628,6 +637,9 @@ void mathed_parse(MathArray & array, unsigned flags)
 				<< "found newline unexpectedly, array: '" << array << "'\n";
 			break;
 		
+		case LM_TK_PROTECT: 
+			break;
+
 		case LM_TK_BIGSYM:  
 		case LM_TK_SYM:
 		case LM_TK_FUNCLIM:
@@ -750,6 +762,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 				array.push_back(new MathFuncInset(yytext));
 			break;
 		
+		case LM_TK_MATH:
 		case LM_TK_END:
 			--plevel;
 			return;

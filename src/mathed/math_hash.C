@@ -206,6 +206,7 @@ latexkeys const wordlist[] =
 	{"prime",  LM_TK_SYM, LM_prime, LMB_NONE},
 	{"prod",  LM_TK_BIGSYM, LM_prod, LMB_NONE},
 	{"propto",  LM_TK_SYM, LM_propto, LMB_RELATION},
+	{"protect",  LM_TK_PROTECT, 0, LMB_RELATION},
 	{"psi",  LM_TK_SYM, LM_psi, LMB_NONE},
 	{"qquad",  LM_TK_SPACE, LM_qquad, LMB_NONE},
 	{"quad",  LM_TK_SPACE, LM_quad, LMB_NONE},

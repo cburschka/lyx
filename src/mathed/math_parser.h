@@ -82,6 +82,8 @@ enum MathTokenEnum
 	///
 	LM_TK_LIMIT,
 	///
+	LM_TK_PROTECT,
+	///
 	LM_TK_STY,
 	///
 	LM_TK_MACRO,
@@ -91,6 +93,8 @@ enum MathTokenEnum
 	LM_TK_ARGUMENT, 
 	///
 	LM_TK_NEWCOMMAND,
+	///
+	LM_TK_MATH,
 	///
 	LM_TK_STACK
 };
