@@ -89,6 +89,7 @@ private:
 	///
 	void ScrollDownOnePage(long /*time*/);
 
+public:
 	/// A callback for the up arrow in the scrollbar.
 	static void UpCB(FL_OBJECT *ob, long);
 
@@ -98,10 +99,13 @@ private:
 	/// A callback for the down arrow in the scrollbar.
 	static void DownCB(FL_OBJECT *ob, long);
 
+	///
+	static void CursorToggleCB(FL_OBJECT *ob, long);
 	/** Work area free object handler
 	 */
 	static int work_area_handler(FL_OBJECT *, int event,
 				     FL_Coord, FL_Coord, int key, void *xev);
+private:
 	///
 	int WorkAreaMotionNotify(FL_OBJECT *ob,
 				 Window win,
@@ -121,8 +125,6 @@ private:
 				  Window win,
 				  int w, int h,
 				  XEvent *ev, void *d);
-	///
-	static void CursorToggleCB(FL_OBJECT *ob, long);
 	///
 	LyXView *_owner;
 	///

@@ -79,6 +79,10 @@ int	mkfifo( char *__path, mode_t __mode ) {
 
 extern LyXAction lyxaction;
 
+// C wrapper
+extern "C" void C_LyXComm_callback(int fd, void *v);
+
+
 // LyXComm class
  
  // Open pipes
@@ -148,7 +152,7 @@ void LyXComm::openConnection() {
 		       << strerror(errno) << endl;
 		return;
 	}
-	fl_add_io_callback(infd, FL_READ, callback, (void*)this);
+	fl_add_io_callback(infd, FL_READ, C_LyXComm_callback, (void*)this);
  
 	// --- prepare output pipe ---------------------------------------
  
@@ -234,7 +238,7 @@ void LyXComm::closeConnection() {
 	}
  
 	if(infd > -1) {
-		fl_remove_io_callback(infd, FL_READ, callback);
+		fl_remove_io_callback(infd, FL_READ, C_LyXComm_callback);
  
 		string tmp = pipename + ".in";
 #ifdef __EMX__		// Notify the operating system.
@@ -346,6 +350,12 @@ void LyXComm::callback(int fd, void *v)
 	c->openConnection();
 	errno=0;
 }
+
+extern "C" void C_LyXComm_callback(int fd, void *v)
+{
+	LyXComm::callback(fd, v);
+}
+
  
 void LyXComm::send(string const & msg) {
 	if (msg.empty()) {

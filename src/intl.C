@@ -31,6 +31,9 @@
 
 extern LyXRC* lyxrc;
 
+// a wrapper around the callback static member.
+extern "C" void C_Intl_DispatchCallback(FL_OBJECT *ob,long code);
+
 
 Intl::Intl()
 	: prim_lang(lyxrc->primary_kbmap), 
@@ -225,6 +228,10 @@ void Intl::DispatchCallback(FL_OBJECT *ob,long code)
 	if (itl!=0) itl->Keymap(code);
 }
 
+extern "C" void C_Intl_DispatchCallback(FL_OBJECT *ob,long code)
+{
+	Intl::DispatchCallback(ob,code);
+}
 
 void Intl::InitKeyMapper(bool on)
 	/* initialize key mapper */
@@ -253,13 +260,19 @@ void Intl::InitKeyMapper(bool on)
 		fd_form_keymap->KeyOnBtn2->u_vdata=(void *)this;
 
 	// add the callbacks.
-	fl_set_object_callback(fd_form_keymap->AcceptChset,DispatchCallback,27);
-	fl_set_object_callback(fd_form_keymap->Charset,DispatchCallback,26);
-	fl_set_object_callback(fd_form_keymap->Accept,DispatchCallback,0);
+	fl_set_object_callback(fd_form_keymap->AcceptChset,
+			       C_Intl_DispatchCallback,27);
+	fl_set_object_callback(fd_form_keymap->Charset,
+			       C_Intl_DispatchCallback,26);
+	fl_set_object_callback(fd_form_keymap->Accept,
+			       C_Intl_DispatchCallback,0);
 
-	fl_set_object_callback(fd_form_keymap->KeyOnBtn,DispatchCallback,23);
-	fl_set_object_callback(fd_form_keymap->KeyOffBtn,DispatchCallback,3);
-	fl_set_object_callback(fd_form_keymap->KeyOnBtn2,DispatchCallback,43);
+	fl_set_object_callback(fd_form_keymap->KeyOnBtn,
+			       C_Intl_DispatchCallback,23);
+	fl_set_object_callback(fd_form_keymap->KeyOffBtn,
+			       C_Intl_DispatchCallback,3);
+	fl_set_object_callback(fd_form_keymap->KeyOnBtn2,
+			       C_Intl_DispatchCallback,43);
 	
 	// Make sure pressing the close box does not kill LyX. (RvdK)
 	fl_set_form_atclose(fd_form_keymap->KeyMap, CancelCloseBoxCB, 0);

@@ -53,15 +53,16 @@ public:
 
 	/// Send message
 	void send(string const &);
+
+	/// We receive messages via XForms through this callback
+	static void callback(int fd, void *v);
+
 private:
 	/// Open pipes
 	void openConnection();
 	
 	/// Close pipes
 	void closeConnection();
-
-	/// We receive messages via XForms through this callback
-	static void callback(int fd, void *v);
 
 	/// This is -1 if not open
 	int infd;

@@ -87,6 +87,11 @@ public:
 
 	/// Returns the userid of the person who has locked the doc.
 	string const getLocker() const;
+
+	///
+	static void logClose(FL_OBJECT*, long);
+	///
+	static void logUpdate(FL_OBJECT*, long);
 protected:
 private:
 	///
@@ -133,10 +138,6 @@ private:
 	///
 	FD_LaTeXLog *browser; // FD_LaTeXLog is just a browser with a
 	// close button. Unfortunately we can not use the standard callbacks.
-	///
-	static void logClose(FL_OBJECT*, long);
-	///
-	static void logUpdate(FL_OBJECT*, long);
 };
 
 #endif

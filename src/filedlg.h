@@ -84,9 +84,10 @@ private:
 	string pszName;
 	string pszDisplayed;
 	string pszLsEntry;
+	LyXDirEntry() {};
+public:
 	/// compares two LyXDirEntry objects content (used by qsort)
 	static int ldeCompProc(const LyXDirEntry *r1, const LyXDirEntry *r2);
-	LyXDirEntry() {};
 };
 
 
@@ -112,6 +113,8 @@ public:
 	static void FileDlgCB(FL_OBJECT *, long);
 	/// Callback for double click in list
 	static void DoubleClickCB(FL_OBJECT *, long);
+	/// Handle Cancel CB from WM close
+	static int CancelCB(FL_FORM *, void *);
 private:
 	// data
 	static FD_FileDlg *pFileDlgForm;
@@ -148,8 +151,6 @@ private:
 	bool HandleDoubleClick();
 	/// Handle OK button call
 	bool HandleOK();
-	/// Handle Cancel CB from WM close
-	static int CancelCB(FL_FORM *, void *);
 	/// Simulates a click on OK/Cancel
 	void Force(bool);
 };

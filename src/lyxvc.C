@@ -308,11 +308,22 @@ void LyXVC::logClose(FL_OBJECT *obj, long)
 	fl_hide_form(This->browser->LaTeXLog);
 }
 
+// and, hack over hack, here is a C wrapper :)
+extern "C" void C_LyXVC_logClose(FL_OBJECT *ob, long data)
+{
+	LyXVC::logClose(ob, data);
+}
+
 
 void LyXVC::logUpdate(FL_OBJECT *obj, long)
 {
 	LyXVC *This = (LyXVC*)obj->form->u_vdata;
 	This->showLog();
+}
+
+extern "C" void C_LyXVC_logUpdate(FL_OBJECT *ob, long data)
+{
+	LyXVC::logUpdate(ob, data);
 }
 
 
@@ -328,12 +339,12 @@ void LyXVC::viewLog(string const & fil)
 		browser->browser_latexlog = fl_add_browser(FL_NORMAL_BROWSER, 10, 10, 450, 320, "");
 		obj = fl_add_button(FL_RETURN_BUTTON, 270, 340, 90, 30, _("Close"));
 		fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-		fl_set_object_callback(obj, logClose, 0);
+		fl_set_object_callback(obj, C_LyXVC_logClose, 0);
 		obj = fl_add_button(FL_NORMAL_BUTTON,370,340,90,30,
 				    idex(_("Update|#Uu")));
 		fl_set_button_shortcut(obj,scex(_("Update|#Uu")),1);
 		fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-		fl_set_object_callback(obj,logUpdate,0);
+		fl_set_object_callback(obj, C_LyXVC_logUpdate,0);
 		fl_end_form();
 		fl_set_form_atclose(browser->LaTeXLog, CancelCloseBoxCB, 0);
 	}

@@ -64,6 +64,54 @@ extern void ToggleFloat();
 extern void AllFloats(char flag, char figmar);
 extern void LaTeXOptions();
 
+// A bunch of wrappers
+
+extern "C" void C_Menus_ShowFileMenu(FL_OBJECT *ob, long data)
+{
+	Menus::ShowFileMenu(ob, data);
+}
+
+extern "C" void C_Menus_ShowFileMenu2(FL_OBJECT *ob, long data)
+{
+	Menus::ShowFileMenu2(ob, data);
+}
+
+extern "C" void C_Menus_ShowEditMenu(FL_OBJECT *ob, long data)
+{
+	Menus::ShowEditMenu(ob, data);
+}
+
+extern "C" void C_Menus_ShowLayoutMenu(FL_OBJECT *ob, long data)
+{
+	Menus::ShowLayoutMenu(ob, data);
+}
+
+extern "C" void C_Menus_ShowInsertMenu(FL_OBJECT *ob, long data)
+{
+	Menus::ShowInsertMenu(ob, data);
+}
+
+extern "C" void C_Menus_ShowMathMenu(FL_OBJECT *ob, long data)
+{
+	Menus::ShowMathMenu(ob, data);
+}
+
+extern "C" void C_Menus_ShowOptionsMenu(FL_OBJECT *ob, long data)
+{
+	Menus::ShowOptionsMenu(ob, data);
+}
+
+extern "C" void C_Menus_ShowBufferMenu(FL_OBJECT *ob, long data)
+{
+	Menus::ShowBufferMenu(ob, data);
+}
+
+extern "C" void C_Menus_ShowHelpMenu(FL_OBJECT *ob, long data)
+{
+	Menus::ShowHelpMenu(ob, data);
+}
+
+
 Menus::Menus(LyXView *view,int air)
 	: _view(view)
 {	
@@ -167,7 +215,7 @@ void Menus::create_menus(int air)
 			      mbheight,_("File"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#F")), 1);
-	fl_set_object_callback(obj,ShowFileMenu, 0);
+	fl_set_object_callback(obj,C_Menus_ShowFileMenu, 0);
 	obj->u_ldata = (long)this;
 	
 	// Edit menu button
@@ -181,7 +229,7 @@ void Menus::create_menus(int air)
 			      mbheight,_("Edit"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#E")),1);
-	fl_set_object_callback(obj,ShowEditMenu,0);
+	fl_set_object_callback(obj,C_Menus_ShowEditMenu,0);
 	obj->u_ldata = (long) this;
 	
 	// Layout menu button
@@ -195,7 +243,7 @@ void Menus::create_menus(int air)
 					  mbheight,_("Layout"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#L")), 1);
-	fl_set_object_callback(obj,ShowLayoutMenu,0);
+	fl_set_object_callback(obj,C_Menus_ShowLayoutMenu,0);
 	obj->u_ldata = (long) this;
 	
 	// Insert menu button button
@@ -209,7 +257,7 @@ void Menus::create_menus(int air)
 			      mbheight,_("Insert"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#I")), 1);
-	fl_set_object_callback(obj,ShowInsertMenu,0);
+	fl_set_object_callback(obj,C_Menus_ShowInsertMenu,0);
 	obj->u_ldata = (long) this;
 	
 	// Math menu button
@@ -223,7 +271,7 @@ void Menus::create_menus(int air)
 			      mbheight,_("Math"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#M")), 1);
-	fl_set_object_callback(obj,ShowMathMenu,0);
+	fl_set_object_callback(obj,C_Menus_ShowMathMenu,0);
 	obj->u_ldata = (long) this;
 	
 	// Options menu button
@@ -237,7 +285,7 @@ void Menus::create_menus(int air)
 			      mbheight,_("Options"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#O")), 1);
-	fl_set_object_callback(obj,ShowOptionsMenu, 0);
+	fl_set_object_callback(obj,C_Menus_ShowOptionsMenu, 0);
 	obj->u_ldata = (long) this;
 
 	// Documents menu button
@@ -251,7 +299,7 @@ void Menus::create_menus(int air)
 			      mbheight,_("Documents"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#D")), 1);
-	fl_set_object_callback(obj,ShowBufferMenu,0);
+	fl_set_object_callback(obj,C_Menus_ShowBufferMenu,0);
 	obj->u_ldata = (long) this;
 	
 	// Help menu button
@@ -265,7 +313,7 @@ void Menus::create_menus(int air)
 			      mbheight,_("Help"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#H")), 1);
-	fl_set_object_callback(obj,ShowHelpMenu,0);
+	fl_set_object_callback(obj,C_Menus_ShowHelpMenu,0);
 	obj->u_ldata = (long) this;
 	
 	fl_end_group();
@@ -298,7 +346,7 @@ void Menus::create_menus(int air)
 			      mbheight,_("File"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#F")), 1);
-	fl_set_object_callback(obj,ShowFileMenu2, 0);
+	fl_set_object_callback(obj,C_Menus_ShowFileMenu2, 0);
 	obj->u_ldata = (long)this;
 	
 	// Options menu button
@@ -312,7 +360,7 @@ void Menus::create_menus(int air)
 			      mbheight,_("Options"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#O")), 1);
-	fl_set_object_callback(obj,ShowOptionsMenu, 0);
+	fl_set_object_callback(obj,C_Menus_ShowOptionsMenu, 0);
 	obj->u_ldata = (long) this;
 
 	// Help menu button
@@ -326,7 +374,7 @@ void Menus::create_menus(int air)
 			      mbheight,_("Help"));
 	moffset += obj->w + air;
 	fl_set_object_shortcut(obj, scex(_("MB|#H")), 1);
-	fl_set_object_callback(obj,ShowHelpMenu,0);
+	fl_set_object_callback(obj,C_Menus_ShowHelpMenu,0);
 	obj->u_ldata = (long) this;
 	
 	fl_end_group();

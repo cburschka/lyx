@@ -1,5 +1,12 @@
 1999-10-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* INSTALL: it is now possible to compile LyX with digital C++ 6.1
+	(and presumably 6.2).
+
+	* src/{BufferView,LyXView,combox,filedlg,intl,lyxserver,lyxvc,
+	menus,minibuffer,toolbar}.{C,h}: added C_xxx wrappers around
+	remaining static member callbacks. 
+
 	* src/lyxfunc.C (Dispatch): Use _() instead of N_() fot minibuffer
 	messages. 
 

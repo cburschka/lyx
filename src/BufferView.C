@@ -364,6 +364,29 @@ void BufferView::gotoError()
 		_buffer->text->cursor;
 }
 
+// Just a bunch of C wrappers around static members of BufferView
+extern "C" void C_BufferView_UpCB(FL_OBJECT *ob, long buf) {
+	BufferView::UpCB(ob,buf);
+}
+
+extern "C" void C_BufferView_DownCB(FL_OBJECT *ob, long buf) {
+	BufferView::DownCB(ob,buf);
+}
+
+extern "C" void C_BufferView_ScrollCB(FL_OBJECT *ob, long buf) {
+	BufferView::ScrollCB(ob,buf);
+}
+
+extern "C" void C_BufferView_CursorToggleCB(FL_OBJECT *ob, long buf) {
+	BufferView::CursorToggleCB(ob,buf);
+}
+
+extern "C" int C_BufferView_work_area_handler(FL_OBJECT *ob, int event,
+					      FL_Coord, FL_Coord, 
+					      int key, void *xev) {
+	return BufferView::work_area_handler(ob, event, 0, 0, key, xev);
+}
+
 
 void BufferView::create_view(int xpos, int ypos, int width, int height)
 {
@@ -392,7 +415,7 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 				      xpos +bw, ypos+bw,
 				      width-15-2*bw /* scrollbarwidth */,
 				      height-2*bw,"",
-				      work_area_handler);
+				      C_BufferView_work_area_handler);
 	obj->wantkey = FL_KEY_TAB;
 	obj->u_vdata = this; /* This is how we pass the BufferView
 				       to the work_area_handler. */
@@ -418,7 +441,7 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 	fl_set_object_color(obj,FL_MCOL,FL_BLUE);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj,NorthEastGravity, NorthEastGravity);
-	fl_set_object_callback(obj,UpCB,(long)this);
+	fl_set_object_callback(obj,C_BufferView_UpCB,(long)this);
 	fl_set_pixmapbutton_data(obj, up_xpm);
 
 #if FL_REVISION >85
@@ -436,7 +459,7 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 	fl_set_object_boxtype(obj, FL_UP_BOX);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthEastGravity, SouthEastGravity);
-	fl_set_object_callback(obj,ScrollCB,(long)this);
+	fl_set_object_callback(obj,C_BufferView_ScrollCB,(long)this);
 	
 	// down - scrollbar button
 #if FL_REVISION > 85
@@ -452,7 +475,7 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 	fl_set_object_color(obj,FL_MCOL,FL_BLUE);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, SouthEastGravity, SouthEastGravity);
-	fl_set_object_callback(obj,DownCB,(long)this);
+	fl_set_object_callback(obj,C_BufferView_DownCB,(long)this);
 	fl_set_pixmapbutton_data(obj, down_xpm);
 	fl_set_border_width(-bw);
 
@@ -468,7 +491,7 @@ void BufferView::create_view(int xpos, int ypos, int width, int height)
 	// timer_cursor
 	timer_cursor = obj = fl_add_timer(FL_HIDDEN_TIMER,
 					  0,0,0,0,"Timer");
-	fl_set_object_callback(obj,CursorToggleCB,0);
+	fl_set_object_callback(obj,C_BufferView_CursorToggleCB,0);
 	obj->u_vdata = this;
 }
 

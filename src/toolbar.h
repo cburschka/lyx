@@ -86,6 +86,14 @@ public:
 	/// deactivates the toolbar
         void deactivate();
 
+	///
+	static void ToolbarCB(FL_OBJECT*, long);
+	///
+	static void BubbleTimerCB(FL_OBJECT *, long);
+	///
+	static int BubblePost(FL_OBJECT *ob, int event,
+			      FL_Coord mx, FL_Coord my, int key, void *xev);
+
 private:
 	///
 	struct toolbarItem
@@ -147,13 +155,6 @@ private:
 	char **getPixmap(kb_action, string const & arg=string());
 	/// removes all toolbar buttons from the toolbar.
 	void clean();
-	///
-	static void ToolbarCB(FL_OBJECT*, long);
-	///
-	static void BubbleTimerCB(FL_OBJECT *, long);
-	///
-	static int BubblePost(FL_OBJECT *ob, int event,
-			      FL_Coord mx, FL_Coord my, int key, void *xev);
 
 	/** more...
 	 */

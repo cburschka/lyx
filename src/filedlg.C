@@ -75,6 +75,12 @@ static const long ONE_HOUR_SEC = 60L * 60L;
 // global instance (user cache root)
 UserCache lyxUserCache = UserCache(string(),0,0);
 
+// some "C" wrappers around callbacks
+extern "C" void C_LyXFileDlg_FileDlgCB(FL_OBJECT *, long lArgument);
+extern "C" void C_LyXFileDlg_DoubleClickCB(FL_OBJECT *, long);
+extern "C" int C_LyXFileDlg_CancelCB(FL_FORM *, void *);
+extern "C" int C_LyXDirEntryC_ldeCompProc(const void* r1, 
+					  const void* r2);
 
 // Add: creates a new user entry
 UserCache * UserCache::Add(uid_t ID)
@@ -194,6 +200,13 @@ int LyXDirEntry::ldeCompProc(const LyXDirEntry * r1,
 	if (r1d && !r2d) return -1;
 	if (!r1d && r2d) return 1;
 	return r1->pszName.compare(r2->pszName);
+}
+
+extern "C" int C_LyXDirEntry_ldeCompProc(const void * r1, 
+					 const void * r2)
+{
+	return LyXDirEntry::ldeCompProc((const LyXDirEntry *)r1,
+					(const LyXDirEntry *)r2);
 }
 
 // *** LyXFileDlg class implementation
@@ -361,7 +374,7 @@ void LyXFileDlg::Reread()
 
 	// Sort the names
 	qsort(pCurrentNames, iNumNames, sizeof(LyXDirEntry), 
-	      (int (*)(const void *, const void *))LyXDirEntry::ldeCompProc);
+	      C_LyXDirEntry_ldeCompProc);
 
 	// Add them to directory box
 	for (i = 0; i < iNumNames; ++i) {
@@ -412,27 +425,28 @@ LyXFileDlg::LyXFileDlg()
 		pFileDlgForm = create_form_FileDlg();
 		// Set callbacks. This means that we don't need a patch file
 		fl_set_object_callback(pFileDlgForm->DirBox,
-				       LyXFileDlg::FileDlgCB,0);
+				       C_LyXFileDlg_FileDlgCB,0);
 		fl_set_object_callback(pFileDlgForm->PatBox,
-				       LyXFileDlg::FileDlgCB,1);
+				       C_LyXFileDlg_FileDlgCB,1);
 		fl_set_object_callback(pFileDlgForm->List,
-				       LyXFileDlg::FileDlgCB,2);
+				       C_LyXFileDlg_FileDlgCB,2);
 		fl_set_object_callback(pFileDlgForm->Filename,
-				       LyXFileDlg::FileDlgCB,3);
+				       C_LyXFileDlg_FileDlgCB,3);
 		fl_set_object_callback(pFileDlgForm->Rescan,
-				       LyXFileDlg::FileDlgCB,10);
+				       C_LyXFileDlg_FileDlgCB,10);
 		fl_set_object_callback(pFileDlgForm->Home,
-				       LyXFileDlg::FileDlgCB,11);
+				       C_LyXFileDlg_FileDlgCB,11);
 		fl_set_object_callback(pFileDlgForm->User1,
-				       LyXFileDlg::FileDlgCB,12);
+				       C_LyXFileDlg_FileDlgCB,12);
 		fl_set_object_callback(pFileDlgForm->User2,
-				       LyXFileDlg::FileDlgCB,13);
+				       C_LyXFileDlg_FileDlgCB,13);
 		
 		// Make sure pressing the close box doesn't crash LyX. (RvdK)
-		fl_set_form_atclose(pFileDlgForm->FileDlg, CancelCB, 0);
+		fl_set_form_atclose(pFileDlgForm->FileDlg, 
+				    C_LyXFileDlg_CancelCB, 0);
 	   	// Register doubleclick callback
 		fl_set_browser_dblclick_callback(pFileDlgForm->List,
-						 DoubleClickCB,0);
+						 C_LyXFileDlg_DoubleClickCB,0);
 	}
 	fl_hide_object(pFileDlgForm->User1);
 	fl_hide_object(pFileDlgForm->User2);
@@ -559,6 +573,11 @@ void LyXFileDlg::FileDlgCB(FL_OBJECT *, long lArgument)
 	}
 }
 
+extern "C" void C_LyXFileDlg_FileDlgCB(FL_OBJECT *ob, long data) 
+{
+	LyXFileDlg::FileDlgCB(ob, data);
+}
+
 
 // Handle callback from list
 void LyXFileDlg::HandleListHit()
@@ -581,6 +600,10 @@ void LyXFileDlg::DoubleClickCB(FL_OBJECT *, long)
 		pCurrentDlg->Force(false);
 }
 
+extern "C" void C_LyXFileDlg_DoubleClickCB(FL_OBJECT *ob, long data)
+{
+	LyXFileDlg::DoubleClickCB(ob, data);
+}
 
 // Handle double click from list
 bool LyXFileDlg::HandleDoubleClick()
@@ -685,6 +708,10 @@ int LyXFileDlg::CancelCB(FL_FORM *, void *)
   	return FL_IGNORE;
 }
 
+extern "C" int C_LyXFileDlg_CancelCB(FL_FORM *fl, void *xev)
+{
+	return LyXFileDlg::CancelCB(fl, xev);
+}
 
 // Simulates a click on OK/Cancel
 void LyXFileDlg::Force(bool cancel)

@@ -51,6 +51,13 @@ public:
 	void Activate();
 	///
 	void Deactivate();
+	///
+	static void ExecutingCB(FL_OBJECT *ob, long);
+	///
+	static void TimerCB(FL_OBJECT *ob, long);
+	///
+        static int  peek_event(FL_OBJECT *, int, FL_Coord, FL_Coord,
+			       int, void *);
 private:
 	///
 	LyXView *owner;
@@ -60,13 +67,6 @@ private:
 	string text_stored;
 	///
 	FL_OBJECT *add(int, FL_Coord, FL_Coord, FL_Coord, FL_Coord);
-	///
-	static void ExecutingCB(FL_OBJECT *ob, long);
-	///
-	static void TimerCB(FL_OBJECT *ob, long);
-	///
-        static int  peek_event(FL_OBJECT *, int, FL_Coord, FL_Coord,
-			       int, void *);
         ///
 	FL_OBJECT *timer;
 	///

@@ -107,6 +107,12 @@ public:
 	void Redraw();
 	///
 	void Show();
+	///
+	static void combo_cb(FL_OBJECT *, long);
+	///
+	static void input_cb(FL_OBJECT *, long);
+	///
+        static int  peek_event(FL_FORM *, void *);
  protected:
         /// At least Hide should not be public
 	void Hide(int who = 0);
@@ -121,12 +127,6 @@ public:
 	int sel;
 	///
 	bool is_empty;
-	///
-	static void combo_cb(FL_OBJECT *, long);
-	///
-	static void input_cb(FL_OBJECT *, long);
-	///
-        static int  peek_event(FL_FORM *, void *);
 	///
 	FL_COMBO_CB callback;
 	///

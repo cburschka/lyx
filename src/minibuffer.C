@@ -36,6 +36,10 @@ void MiniBuffer::TimerCB(FL_OBJECT *, long tmp)
 	obj->Init();
 }
 
+extern "C" void C_MiniBuffer_TimerCB(FL_OBJECT *ob, long data)
+{
+	MiniBuffer::TimerCB(ob, data);
+}
 
 void MiniBuffer::ExecutingCB(FL_OBJECT *ob, long)
 {
@@ -72,6 +76,67 @@ void MiniBuffer::ExecutingCB(FL_OBJECT *ob, long)
 	return ;
 }
 
+extern "C" void C_MiniBuffer_ExecutingCB(FL_OBJECT *ob, long data)
+{
+	MiniBuffer::TimerCB(ob, data);
+}
+
+// This is not as dirty as it seems, the hidden buttons removed by this
+// function were just kludges for an uncomplete keyboard callback (ale)
+int MiniBuffer::peek_event(FL_OBJECT *ob, int event, FL_Coord, FL_Coord,
+			   int key, void */*xev*/)
+{
+	MiniBuffer *mini = (MiniBuffer*)ob->u_vdata;
+	
+	if (event==FL_KEYBOARD){
+		switch (key) {
+		case XK_Down:
+			mini->history_idx++;
+			if (!mini->getHistory().empty()) {
+				fl_set_input(ob, mini->getHistory().c_str());
+			} else
+				mini->history_idx--;
+			return 1; 
+		case XK_Up:
+			if (mini->history_idx > 0) mini->history_idx--;
+			fl_set_input(ob, mini->getHistory().c_str());
+			return 1; 
+		case 9:
+		case XK_Tab:
+		{
+			// complete or increment the command
+			const char *s = lyxaction.getApproxFuncName(fl_get_input(ob));
+			if (s && s[0])
+				fl_set_input(ob, s);
+			return 1; 
+		}
+		case 27:
+		case XK_Escape:
+			// Abort
+			fl_set_focus_object(mini->owner->getForm(),
+					    mini->owner->currentView()->getWorkArea());
+			mini->Init();
+			return 1; 
+		case 13:
+		case XK_Return:
+			// Execute a command. 
+			mini->cur_cmd = string(fl_get_input(ob));
+			ExecutingCB(ob, 0);
+			return 1;
+		default:
+			return 0;
+		}
+	}
+	return 0;
+}
+
+extern "C" int C_MiniBuffer_peek_event(FL_OBJECT *ob, int event, 
+				       FL_Coord, FL_Coord,
+				       int key, void *xev)
+{
+	return MiniBuffer::peek_event(ob,event,0,0,key,xev);
+}
+
 
 void MiniBuffer::ExecCommand()
 {
@@ -92,16 +157,16 @@ FL_OBJECT *MiniBuffer::add(int type, FL_Coord x, FL_Coord y,
         fl_set_object_gravity(obj, SouthWestGravity, SouthEastGravity);
         fl_set_object_color(obj,FL_MCOL,FL_MCOL);
         fl_set_object_lsize(obj,FL_NORMAL_SIZE);
-	fl_set_object_callback(obj,ExecutingCB, 0);
+	fl_set_object_callback(obj,C_MiniBuffer_ExecutingCB, 0);
 
 	// To intercept Up, Down, Table for history
-        fl_set_object_prehandler(obj, peek_event);
+        fl_set_object_prehandler(obj, C_MiniBuffer_peek_event);
         obj->u_vdata = (void*)this;
         obj->wantkey = FL_KEY_TAB;
 	
 	// timer
 	timer = fl_add_timer(FL_HIDDEN_TIMER, 0,0,0,0, "Timer");
-	fl_set_object_callback(timer, TimerCB, (long)this);
+	fl_set_object_callback(timer, C_MiniBuffer_TimerCB, (long)this);
 	fl_set_input(the_buffer, text.c_str());
 
 	return obj;
@@ -202,53 +267,4 @@ void MiniBuffer::Deactivate()
 	fl_deactivate_object(the_buffer);
 }
 
-
-// This is not as dirty as it seems, the hidden buttons removed by this
-// function were just kludges for an uncomplete keyboard callback (ale)
-int MiniBuffer::peek_event(FL_OBJECT *ob, int event, FL_Coord, FL_Coord,
-			   int key, void */*xev*/)
-{
-	MiniBuffer *mini = (MiniBuffer*)ob->u_vdata;
-	
-	if (event==FL_KEYBOARD){
-		switch (key) {
-		case XK_Down:
-			mini->history_idx++;
-			if (!mini->getHistory().empty()) {
-				fl_set_input(ob, mini->getHistory().c_str());
-			} else
-				mini->history_idx--;
-			return 1; 
-		case XK_Up:
-			if (mini->history_idx > 0) mini->history_idx--;
-			fl_set_input(ob, mini->getHistory().c_str());
-			return 1; 
-		case 9:
-		case XK_Tab:
-		{
-			// complete or increment the command
-			const char *s = lyxaction.getApproxFuncName(fl_get_input(ob));
-			if (s && s[0])
-				fl_set_input(ob, s);
-			return 1; 
-		}
-		case 27:
-		case XK_Escape:
-			// Abort
-			fl_set_focus_object(mini->owner->getForm(),
-					    mini->owner->currentView()->getWorkArea());
-			mini->Init();
-			return 1; 
-		case 13:
-		case XK_Return:
-			// Execute a command. 
-			mini->cur_cmd = string(fl_get_input(ob));
-			ExecutingCB(ob, 0);
-			return 1;
-		default:
-			return 0;
-		}
-	}
-	return 0;
-}
 

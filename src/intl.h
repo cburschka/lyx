@@ -64,6 +64,8 @@ public:
 	bool keymapon;
 	///
 	char *chsetcode;
+	///
+	static void DispatchCallback(FL_OBJECT*,long);
 private:
 	///
 	//int SelectCharset(char const *code);
@@ -75,8 +77,6 @@ private:
 	static void LCombo2(int i, void *); // callback
 	///
 	void Keymap(long code);
-	///
-	static void DispatchCallback(FL_OBJECT*,long);
 	///
 	bool primarykeymap;
 	///

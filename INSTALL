@@ -278,6 +278,16 @@ notify us.
     will be solved if you use --with-included-gettext when configuring
     LyX.
 
+  o It is possible to compile lyx with Digital Unix cxx compiler
+    version 6.1 (and presumably compaq C++ 6.2 on both Tru64 unix and
+    linux/alpha, when this will be available), provided one uses
+	CXX=cxx
+	CXXFLAGS='-ptr /tmp/lyx_cxx_repository -std strict_ansi -g -O'
+
+    Note that this will not work when compiling directly from the cvs
+    repository, due to the tricks used by automake for dependencies. Ask
+    Jean-Marc.Lasgouttes@inria.fr for a workaround.
+
   o On Digital Unix with cxx, you may have a compilation error in
     lyx_main.C if you have GNU gettext installed. This is due to a bug
     in gettext. To solve this, you can either (1) configure with
@@ -380,9 +390,4 @@ Warning: Linking some objects which contain exception information sections
 
 
     You can safely ignore it. 
-
-  o Configure fails to work with cxx V5.0-3 on Digital Unix
-    V3.2c.  This is due to a bug in this particular version of cxx. 
-    Contact Achim Bohnet <ach@rosat.mpe-garching.mpg.de> for more
-    details concerning this problem.
 

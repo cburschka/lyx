@@ -119,11 +119,9 @@ private:
 	void invalidateLayoutChoice();
 	///
 	void UpdateDocumentClassChoice();
+public:
  	///
  	static int KeyPressMask_raw_callback(FL_FORM *, void *xev);
-	/// makes the main form.
-	FD_form_main *create_form_form_main(int width, int height);
-
 	/** This callback is run when a close event is sent from the
 	  window manager. */
 	static int atCloseMainFormCB(FL_FORM *, void *);
@@ -131,6 +129,9 @@ private:
 	static void AutosaveTimerCB(FL_OBJECT *, long);
 	/// A callback
 	static void UpdateTimerCB(FL_OBJECT *, long);
+private:
+	/// makes the main form.
+	FD_form_main *create_form_form_main(int width, int height);
 	/// A pointer to the form.	
 	FD_form_main *_form_main;
 	/// A pointer to the form.	

@@ -35,20 +35,6 @@ public:
 	void hideMenus();
 	///
 	void openByName(string const &menuName);
-private:
-	///
-	void create_menus(int air);
-	///
-	void ScreenOptions();
-	///
-	void showCopyright();
-	///
-	void showLicense();
-	///
-	void MenuDocu(string const & docname);
-	///
-	void handleBufferMenu(int choice);
-	
 	///
 	static void ShowFileMenu(FL_OBJECT *ob, long);
 	///
@@ -67,6 +53,20 @@ private:
 	static void ShowBufferMenu(FL_OBJECT *ob, long);
 	///
 	static void ShowHelpMenu(FL_OBJECT *ob, long);
+private:
+	///
+	void create_menus(int air);
+	///
+	void ScreenOptions();
+	///
+	void showCopyright();
+	///
+	void showLicense();
+	///
+	void MenuDocu(string const & docname);
+	///
+	void handleBufferMenu(int choice);
+	
 	/// 
 	BufferView *currentView();
 	///

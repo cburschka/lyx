@@ -40,6 +40,12 @@
 
 #include "debug.h"
 
+// These are C wrappers around static members of Combox, used as
+// callbacks for xforms.
+extern "C" void C_Combox_input_cb(FL_OBJECT *ob, long);
+extern "C" void C_Combox_combo_cb(FL_OBJECT *ob, long data) ;
+extern "C" int C_Combox_peek_event(FL_FORM * form, void *xev);
+
 Combox::Combox(combox_type t): type(t)
 {
    browser = button = 0;
@@ -156,13 +162,13 @@ void Combox::add(int x, int y, int w, int hmin, int hmax)
 					     x+w-22,y,22,hmin,"@2->");
 		fl_set_object_color(obj,FL_MCOL, FL_MCOL);
 		fl_set_object_dblbuffer(obj, 1);
-		fl_set_object_callback(obj,combo_cb,0);
+		fl_set_object_callback(obj,C_Combox_combo_cb,0);
 	        label = obj = fl_add_button(FL_NORMAL_TEXT,x,y,w-22,hmin,"");
 		fl_set_object_boxtype(obj,FL_DOWN_BOX);
 		fl_set_object_color(obj,FL_MCOL,FL_BLACK);
 		fl_set_object_lalign(obj,FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
 		fl_set_object_dblbuffer(obj, 1);
-		fl_set_object_callback(obj,combo_cb,0);
+		fl_set_object_callback(obj,C_Combox_combo_cb,0);
 		break;
 	}
 	case FL_COMBOX_NORMAL:
@@ -170,7 +176,7 @@ void Combox::add(int x, int y, int w, int hmin, int hmax)
 		button = obj = fl_add_button(FL_NORMAL_BUTTON,x,y,w,hmin,"");
 		fl_set_object_color(obj,FL_MCOL, FL_MCOL);
 		fl_set_object_boxtype(obj,FL_DOWN_BOX);
-		fl_set_object_callback(obj,combo_cb,0);
+		fl_set_object_callback(obj,C_Combox_combo_cb,0);
 		fl_set_object_color(obj,FL_MCOL,FL_BLACK);
 		label = button;
 		break;
@@ -180,11 +186,11 @@ void Combox::add(int x, int y, int w, int hmin, int hmax)
 		button = obj = fl_add_button(FL_NORMAL_BUTTON,
 					     x+w-22,y,22,hmin,"@2->");
 		fl_set_object_color(obj,FL_MCOL, FL_MCOL);
-		fl_set_object_callback(obj,combo_cb,0);
+		fl_set_object_callback(obj,C_Combox_combo_cb,0);
 		label = obj = fl_add_input(FL_NORMAL_INPUT,x,y,w-22,hmin,"");
 		fl_set_object_boxtype(obj,FL_DOWN_BOX);
 		fl_set_object_return(obj, FL_RETURN_END_CHANGED);
-		fl_set_object_callback(obj,input_cb,0);
+		fl_set_object_callback(obj,C_Combox_input_cb,0);
 		//fl_set_object_color(obj,FL_MCOL,FL_BLACK);
 		//fl_set_object_lalign(obj,FL_ALIGN_CENTER|FL_ALIGN_INSIDE);
 		break;
@@ -208,11 +214,13 @@ void Combox::add(int x, int y, int w, int hmin, int hmax)
 	fl_set_object_boxtype(obj,FL_UP_BOX);
 	fl_set_object_color(obj,FL_MCOL, FL_YELLOW);
 	fl_set_object_gravity(obj, NorthWestGravity, NorthWestGravity);
-	fl_set_object_callback(obj,combo_cb,2);
+	fl_set_object_callback(obj,C_Combox_combo_cb,2);
 	fl_end_form();
 	browser->u_vdata = (void*)this;
 	form->u_vdata = browser;
-	fl_register_raw_callback(form, ButtonPressMask|KeyPressMask,peek_event);
+	fl_register_raw_callback(form, 
+				 ButtonPressMask|KeyPressMask,
+				 C_Combox_peek_event);
 
 	// And revert to adding to the old form (Asger)
 	fl_addto_form(current_form);
@@ -309,6 +317,11 @@ void Combox::input_cb(FL_OBJECT *ob, long)
 	combo->is_empty = false;
 }
 
+extern "C" void C_Combox_input_cb(FL_OBJECT *ob, long data)
+{
+  Combox::input_cb(ob, data);
+}
+
 
 void Combox::combo_cb(FL_OBJECT *ob, long data)
 {
@@ -342,6 +355,11 @@ void Combox::combo_cb(FL_OBJECT *ob, long data)
 		combo->Hide();
 		break;
 	}
+}
+
+extern "C" void C_Combox_combo_cb(FL_OBJECT *ob, long data) 
+{
+	Combox::combo_cb(ob,data);
 }
 
 
@@ -416,6 +434,11 @@ int Combox::peek_event(FL_FORM * form, void *xev)
 	return 0;  
 }
 	
+extern "C" int C_Combox_peek_event(FL_FORM * form, void *xev)
+{
+	return Combox::peek_event(form, xev);
+}
+
 
 #ifdef TESTCOMBO
 typedef struct {

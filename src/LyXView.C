@@ -46,11 +46,12 @@ int current_layout = 0;
 // This is very temporary
 BufferView *current_view;
 
+extern "C" int C_LyXView_atCloseMainFormCB(FL_FORM *, void *);
 
 LyXView::LyXView(int width, int height)
 {
 	fd_form_main = create_form_form_main(width,height);
-	fl_set_form_atclose(_form, atCloseMainFormCB, 0);
+	fl_set_form_atclose(_form, C_LyXView_atCloseMainFormCB, 0);
 	lyxerr.debug() << "Initializing LyXFunc" << endl;
 	lyxfunc = new LyXFunc(this);
 	intl = new Intl;
@@ -91,12 +92,23 @@ void LyXView::UpdateTimerCB(FL_OBJECT *ob, long)
 	updatetimer = 0;
 }
 
+// Wrapper for the above
+extern "C" void C_LyXView_UpdateTimerCB(FL_OBJECT *ob, long data) {
+	LyXView::UpdateTimerCB(ob,data);
+}
+
+
 
 // Callback for autosave timer
 void LyXView::AutosaveTimerCB(FL_OBJECT *, long)
 {
 	lyxerr.debug() << "Running AutoSave()" << endl;
 	AutoSave();
+}
+
+// Wrapper for the above
+extern "C" void C_LyXView_AutosaveTimerCB(FL_OBJECT *ob, long data) {
+	LyXView::AutosaveTimerCB(ob, data);
 }
 
 
@@ -113,6 +125,11 @@ int LyXView::atCloseMainFormCB(FL_FORM *, void *)
 {
 	QuitLyX();
 	return FL_IGNORE;
+}
+
+// Wrapper for the above
+extern "C" int C_LyXView_atCloseMainFormCB(FL_FORM *form, void *p) {
+	return LyXView::atCloseMainFormCB(form,p);
 }
 
 
@@ -198,12 +215,12 @@ FD_form_main *LyXView::create_form_form_main(int width, int height)
 	// timer_autosave
 	fdui->timer_autosave = obj = fl_add_timer(FL_HIDDEN_TIMER,
 						  0,0,0,0,"Timer");
-	fl_set_object_callback(obj,AutosaveTimerCB,0);
+	fl_set_object_callback(obj,C_LyXView_AutosaveTimerCB,0);
 	
 	// timer_update
 	fdui->timer_update = obj = fl_add_timer(FL_HIDDEN_TIMER,
 						0,0,0,0,"Timer");
-	fl_set_object_callback(obj,UpdateTimerCB,0);
+	fl_set_object_callback(obj,C_LyXView_UpdateTimerCB,0);
 	obj->u_vdata = (void*) this;
 
 	//
@@ -231,6 +248,7 @@ FD_form_main *LyXView::create_form_form_main(int width, int height)
 	return fdui;
 }
 
+extern "C" int C_LyXView_KeyPressMask_raw_callback(FL_FORM *fl, void *xev);
 
 void LyXView::init()
 {
@@ -247,7 +265,7 @@ void LyXView::init()
 	// Install the raw callback for keyboard events 
 	fl_register_raw_callback(_form,
 				 KeyPressMask,
-				 KeyPressMask_raw_callback);
+				 C_LyXView_KeyPressMask_raw_callback);
         intl->InitKeyMapper(lyxrc->use_kbmap);
 }
 
@@ -333,6 +351,11 @@ int LyXView::KeyPressMask_raw_callback(FL_FORM *fl, void *xev)
 	return retval;
 }
 
+// wrapper for the above
+extern "C" int C_LyXView_KeyPressMask_raw_callback(FL_FORM *fl, void *xev)
+{
+	return LyXView::KeyPressMask_raw_callback(fl, xev);
+}
 
 // Updates the title of the window with the filename of the current document
 void LyXView::updateWindowTitle() {

@@ -136,13 +136,18 @@ Toolbar::Toolbar(Toolbar const &rct, LyXView *o, int x, int y)
 
 
 // timer-cb for bubble-help (Matthias)
-void Toolbar::BubbleTimerCB(FL_OBJECT *, long data){
+void Toolbar::BubbleTimerCB(FL_OBJECT *, long data)
+{
 	FL_OBJECT* ob = (FL_OBJECT*) data;
 	char* help = (char*) ob->u_vdata;
 	fl_show_oneliner(help, ob->form->x + ob->x,
 			 ob->form->y + ob->y + ob->h);
 }
 
+extern "C" void C_Toolbar_BubbleTimerCB(FL_OBJECT *ob, long data)
+{
+	Toolbar::BubbleTimerCB(ob, data);
+}
 
 // post_handler for bubble-help (Matthias)
 int Toolbar::BubblePost(FL_OBJECT *ob, int event,
@@ -153,7 +158,7 @@ int Toolbar::BubblePost(FL_OBJECT *ob, int event,
 	
 	if(event == FL_ENTER && !help.empty()){
 		fl_set_object_callback(t->bubble_timer,
-				       BubbleTimerCB, (long) ob);
+				       C_Toolbar_BubbleTimerCB, (long) ob);
 		fl_set_timer(t->bubble_timer, 1);
 	}
 	else if(event != FL_MOTION){
@@ -163,6 +168,12 @@ int Toolbar::BubblePost(FL_OBJECT *ob, int event,
 	return 0;
 }
 
+extern "C" int C_Toolbar_BubblePost(FL_OBJECT *ob, int event,
+				   FL_Coord /*mx*/, FL_Coord /*my*/, 
+				   int key, void *xev)
+{
+	return Toolbar::BubblePost(ob,event,0,0,key,xev);
+}
 
 void Toolbar::activate()
 {
@@ -201,6 +212,10 @@ void Toolbar::ToolbarCB(FL_OBJECT *ob, long ac)
 		lyxerr[Debug::TOOLBAR] << res << endl;
 }
 
+extern "C" void C_Toolbar_ToolbarCB(FL_OBJECT *ob, long data)
+{
+	Toolbar::ToolbarCB(ob, data);
+}
 
 int Toolbar::get_toolbar_func(string const & func)
 {
@@ -305,7 +320,7 @@ void Toolbar::set(bool doingmain)
 			  fl_set_object_gravity(obj,
 						NorthWestGravity,
 						NorthWestGravity);
-			  fl_set_object_callback(obj,ToolbarCB,
+			  fl_set_object_callback(obj,C_Toolbar_ToolbarCB,
 						 (long)item->action);
 #if FL_REVISION >85
 			  // Remove the blue feedback rectangle
@@ -318,7 +333,7 @@ void Toolbar::set(bool doingmain)
 			  // belongs too. (Lgb)
 			  obj->u_ldata = (long) this;
 			  
-			  fl_set_object_posthandler(obj, BubblePost);
+			  fl_set_object_posthandler(obj, C_Toolbar_BubblePost);
 
 			  fl_set_pixmapbutton_data(obj,item->pixmap);
 			  item = item->next;
