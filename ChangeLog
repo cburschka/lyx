@@ -1,5 +1,11 @@
 2000-01-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* lib/examples/ItemizeBullets.lyx: update from Tino Meinen. 
+	* lib/examples/nl_voorbeeld_ruw.lyx: ditto.
+	* lib/examples/nl_voorbeeld_verlyxt.lyx: ditto.
+	* lib/examples/nl_opsommingstekens.lyx: new translation from Tino
+	Meinen.
+	
 	* src/mathed/math_defs.h (MathedRowSt): make sure that all
 	members of the struct are correctly initialized to 0 (detected by
 	purify) 

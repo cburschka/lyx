@@ -1,16 +1,17 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
+#This file was created by <Tino Meinen tino@direct.a2000.nl> Mon Jan  3 16:48:14 2000
+#LyX 1.0 (C) 1995-1999 Matthias Ettrich and the LyX Team
 \lyxformat 2.15
 \textclass article
 \begin_preamble
 \usepackage{latexsym,pifont,amssymb}
 \end_preamble
-\language default
+\language dutch
 \inputencoding default
 \fontscheme default
 \graphics default
 \paperfontsize 10
 \spacing single 
-\papersize Default
+\papersize a4paper
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
@@ -43,41 +44,37 @@
 
 \layout Section*
 
-Introduction
+Inleiding
 \layout Standard
 
-You'll see pretty quickly that bullet settings can be quite complex if you
- want them to be.
- Don't be frightened, most settings are just a mouse click or two away.
+Je zult snel genoeg ondervinden dat de instellingen voor opsommingstekens
+ behoorlijk complex kunnen zijn als je dat wilt.
+ Laat het je echter niet afschrikken; gewoonlijk is met enkele muisklikken
+ alles in te stellen.
 \layout Itemize
-
 
 \emph on 
 itemize
 \emph default 
- is the standard environment for bullet lists
+ is de standaard voor een lijst met opsommingen
 \begin_deeper 
 \layout Itemize
 
-it has its own counter that limits it to 4 levels
+het heeft zijn eigen teller die tot 4 niveaus diep gaat
 \begin_deeper 
 \layout Itemize
 
-each level can have its own bullet shape
+elk niveau kan zijn eigen opsommingsteken hebben
 \begin_deeper 
 \layout Itemize
 
-LyX however displays all bullets as an `*'
+LyX laat echter in alle gevallen een `*' zien
 \end_deeper 
 \end_deeper 
 \end_deeper 
 \layout Itemize
 
-Also note that LyX does 
-\emph on 
-not
-\emph default 
- check the environment depths for you
+Merk op dat LyX *NIET* de diepte van het niveau voor je controleert
 \begin_deeper 
 \begin_deeper 
 \begin_deeper 
@@ -85,7 +82,9 @@ not
 \begin_deeper 
 \layout Itemize
 
-Other than to enforce the LaTeX depth limit of 6 for all lists.
+Behalve dan dat hij voor alle lijsten, een door LaTeX opgelegde limiet van
+ 6 hanteert voor de diepte van het niveau.
+
 \end_deeper 
 \end_deeper 
 \end_deeper 
@@ -93,51 +92,60 @@ Other than to enforce the LaTeX depth limit of 6 for all lists.
 \end_deeper 
 \layout Standard
 
-Are there any other restrictions?
+Zijn er nog andere beperkingen?
 \layout Standard
 
-Yes.
- The bullet selection support will allow you to set the bullets used across
- the entire document only.
- If you want to customise each paragraph you'll have to do that manually.
+Ja.
+ De ondersteuning voor de keuze van opsommingstekens geeft je slechts de
+ mogelijkheid om deze tekens voor het gehele document vast te leggen.
+ Als je de instellingen voor elke paragraaf verschillend wil hebben, zul
+ je dat handmatig moeten aanpassen.
+
 \layout Standard
 
-You can access the popup via the 
-\family sans 
+Je kunt de instellingen bereiken via het 
 \bar under 
 L
 \bar default 
-ayout\SpecialChar \menuseparator
-
+ayout->
 \bar under 
 D
 \bar default 
 ocument\SpecialChar \ldots{}
+ menu en door op de knop 
+\begin_inset Quotes eld
+\end_inset 
 
-\family default 
- menu and select the 
-\family sans 
 \bar under 
 B
 \bar default 
 ullet Shapes
-\family default 
- button.
- Try it now.
+\begin_inset Quotes erd
+\end_inset 
+
+ te drukken.
+ Probeer het nu maar.
 \layout Section*
 
-Bullet Tables:
+Tabellen met opsommingstekens:
 \layout Standard
 
-The following tables are those used to generate the bullet panels in the
- 
-\family sans 
-Itemize Bullet Selection
-\family default 
- popup.
+Hieronder staan de tabellen die worden gebruikt om de tabelpanelen te genereren
+ in het 
+\begin_inset Quotes eld
+\end_inset 
+
+\bar under 
+B
+\bar default 
+ullet Shapes
+\begin_inset Quotes erd
+\end_inset 
+
+ popup-scherm.
 \layout Subsection*
 
-Standard
+Standaard
 \layout Standard
 \added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
 multicol5
@@ -190,7 +198,6 @@ multicol5
 0 8 1 1 0 0 0 "" ""
 0 8 1 1 0 0 0 "" ""
 0 8 1 1 0 0 0 "" ""
-
 
 \latex latex 
 
@@ -510,7 +517,7 @@ Maths (AMS
 
 American Mathematical Society
 \end_float 
--symbols) 
+-symbolen) 
 \layout Standard
 \added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
 multicol5
@@ -563,7 +570,6 @@ multicol5
 0 8 1 1 0 0 0 "" ""
 0 8 1 1 0 0 0 "" ""
 0 8 1 1 0 0 0 "" ""
-
 
 \latex latex 
 
@@ -859,28 +865,19 @@ Ding 1 (PSNFSS
 \begin_float footnote 
 \layout Standard
 
-NFSS is the New Font Selecting Scheme of LaTeX2e (basically, what changed
- the font commands from 
-\family typewriter 
-{
+NFSS staat voor New Font Selecting Scheme dat in LaTeX2e wordt gebruikt.
+ In feite veranderde het de font commando's van {
 \backslash 
-bf \SpecialChar \ldots{}
-}
-\family default 
- to 
-\family typewriter 
-
+bf ...} in 
 \backslash 
-textbf{\SpecialChar \ldots{}
-}
-\family default 
-, although the real changes are inside the guts).
- PS stands for PostScript®.
- PSNFSS is a set of LaTeX files which provide NFSS support for the basic
- set of 35 PS fonts present in many postscript printers.
- 
+textbf{...}, alhoewel de echte veranderingen inwendig waren.
+ PS staat voor PostScript.
+ PSNFSS is een verzameling LaTeX bestanden die NFSS ondersteuning geven
+ voor de basisset van 35 PostScript fonts die in veel PostScript printers
+ te vinden zijn.
+ Is dat duidelijk? Nog vragen?
 \end_float 
- Fonts - Zapf Dingbats and Symbols)
+ Fonts - Zapf Dingbats en Symbolen)
 \layout Standard
 \added_space_top 0.3cm \added_space_bottom 0.3cm \align center \LyXTable
 multicol5
@@ -933,7 +930,6 @@ multicol5
 0 8 1 1 0 0 0 "" ""
 0 8 1 1 0 0 0 "" ""
 0 8 1 1 0 0 0 "" ""
-
 
 \latex latex 
 
@@ -1211,7 +1207,6 @@ multicol5
 0 8 1 1 0 0 0 "" ""
 0 8 1 1 0 0 0 "" ""
 
-
 \latex latex 
 
 \backslash 
@@ -1416,7 +1411,6 @@ multicol5
 0 8 1 1 0 0 0 "" ""
 0 8 1 1 0 0 0 "" ""
 
-
 \latex latex 
 
 \backslash 
@@ -1620,7 +1614,6 @@ multicol5
 0 8 1 1 0 0 0 "" ""
 0 8 1 1 0 0 0 "" ""
 0 8 1 1 0 0 0 "" ""
-
 
 \latex latex 
 
