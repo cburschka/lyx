@@ -255,7 +255,7 @@ void LyX::init(bool gui)
 	if (file.isLink()) {
 		lyxerr[Debug::INIT] << "binary is a link" << endl;
 		string link;
-		if (LyXReadLink(fullbinname, link)) {
+		if (LyXReadLink(fullbinname, link, true)) {
 			// Path of binary/../share/name of binary/
 			searchpath += NormalizePath(AddPath(binpath,
 							    "../share/")
@@ -279,7 +279,7 @@ void LyX::init(bool gui)
 			lyxerr << " directory " << fullbinpath
 			       << " is a link" << endl;
 			string link;
-			if (LyXReadLink(fullbinpath, link)) {
+			if (LyXReadLink(fullbinpath, link, true)) {
 				fullbinpath = link;
 				binpath = MakeAbsPath(OnlyPath(fullbinpath));
 			}

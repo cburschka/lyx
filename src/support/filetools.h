@@ -195,9 +195,10 @@ string const GetFileContents(string const & fname);
 */
 string const ReplaceEnvironmentPath(string const & path);
 
-/* Set Link to the path file points to as a symbolic link.
+/* Set \c link to the path \c file points to as a symbolic link.
+   If \c resolve is true, then \c link is an absolute path
    Returns true if successful */
-bool LyXReadLink(string const & file, string & Link);
+bool LyXReadLink(string const & file, string & link, bool resolve = false);
 
 /// Uses kpsewhich to find tex files
 string const findtexfile(string const & fil, string const & format);

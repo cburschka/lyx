@@ -1269,16 +1269,19 @@ MakeDisplayPath (string const & path, unsigned int threshold)
 }
 
 
-bool LyXReadLink(string const & File, string & Link)
+bool LyXReadLink(string const & file, string & link, bool resolve)
 {
-	char LinkBuffer[512];
+	char linkbuffer[512];
 	// Should be PATH_MAX but that needs autconf support
-	int const nRead = ::readlink(File.c_str(),
-				     LinkBuffer, sizeof(LinkBuffer) - 1);
+	int const nRead = ::readlink(file.c_str(),
+				     linkbuffer, sizeof(linkbuffer) - 1);
 	if (nRead <= 0)
 		return false;
-	LinkBuffer[nRead] = '\0'; // terminator
-	Link = LinkBuffer;
+	linkbuffer[nRead] = '\0'; // terminator
+	if (resolve)
+		link = MakeAbsPath(linkbuffer, OnlyPath(file));
+	else
+		link = linkbuffer;
 	return true;
 }
 
