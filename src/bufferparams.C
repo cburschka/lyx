@@ -177,7 +177,8 @@ void BufferParams::writeFile(ostream & os) const
 }
 
 
-void BufferParams::useClassDefaults() {
+void BufferParams::useClassDefaults()
+{
 	LyXTextClass const & tclass = textclasslist.TextClass(textclass);
 
 	sides = tclass.sides();
@@ -186,6 +187,19 @@ void BufferParams::useClassDefaults() {
 	options = tclass.options();
 	secnumdepth = tclass.secnumdepth();
 	tocdepth = tclass.tocdepth();
+}
+
+
+bool BufferParams::hasClassDefaults() const
+{
+	LyXTextClass const & tclass = textclasslist.TextClass(textclass);
+	
+	return (sides == tclass.sides()
+		&& columns == tclass.columns()
+		&& pagestyle == tclass.pagestyle()
+		&& options == tclass.options()
+		&& secnumdepth == tclass.secnumdepth()
+		&& tocdepth == tclass.tocdepth());
 }
 
 

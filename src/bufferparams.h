@@ -114,6 +114,9 @@ public:
 	void useClassDefaults();
 
 	///
+	bool hasClassDefaults() const;
+
+	///
 	VSpace const & getDefSkip() const { return defskip; }
 
 	///

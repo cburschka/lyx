@@ -1,3 +1,8 @@
+2001-09-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* bufferparams.C (hasClassDefaults): new method. Returns true if
+	the buffer parameters correspond to known class defaults
+
 2001-09-17  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* XFormsView.C (show): set minimum size to the main window.
