@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: LyX-1.1.6-fix3\n"
-"POT-Creation-Date: 2002-12-19 18:57+0100\n"
+"POT-Creation-Date: 2003-01-12 20:46+0100\n"
 "PO-Revision-Date: 2002-12-19 18:59+0100\n"
 "Last-Translator: Zdenko Podobný <zdpo@mailbox.sk>\n"
 "Language-Team: Slovak <sk-i18n@linux.sk>\n"
@@ -45,6 +45,7 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_include.fd:79
 #: ../src/frontends/xforms/forms/form_index.fd:79
 #: ../src/frontends/xforms/forms/form_maths_delim.fd:116
+#: ../src/frontends/xforms/forms/form_maths_matrix.fd:122
 #: ../src/frontends/xforms/forms/form_minipage.fd:241
 #: ../src/frontends/xforms/forms/form_paragraph.fd:386
 #: ../src/frontends/xforms/forms/form_preamble.fd:44
@@ -132,7 +133,7 @@ msgstr "Polo¾ka literatúry"
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:170
 #, fuzzy
-msgid "Styles|#y"
+msgid "Styles:|#y"
 msgstr "©týl:  "
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:188
@@ -254,17 +255,17 @@ msgstr "Toto nie je nikdy vypnuté"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:44
 #, fuzzy
-msgid "Inset keys|#I"
+msgid "Inset keys:|#I"
 msgstr "Vlo¾i»|I"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:62
 #, fuzzy
-msgid "Bibliography keys|#k"
+msgid "Bibliography keys:|#k"
 msgstr "Polo¾ka literatúry"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:80
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:418 src/lyxvc.C:131
-msgid "Info"
+#, fuzzy
+msgid "Info:"
 msgstr "Informácia"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:116
@@ -460,7 +461,7 @@ msgstr "©týl strany:|#©"
 
 #: ../src/frontends/xforms/forms/form_document.fd:866
 #, fuzzy
-msgid "Spacing|#g"
+msgid "Spacing:|#g"
 msgstr "Medzera"
 
 #: ../src/frontends/xforms/forms/form_document.fd:884
@@ -536,17 +537,18 @@ msgstr "Umiestnenie objektov:|#U"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1401
 #, fuzzy
-msgid "Section number depth"
+msgid "Section number depth:"
 msgstr "Håbka vnorenia oddielov"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1423
 #, fuzzy
-msgid "Table of contents depth"
+msgid "Table of contents depth:"
 msgstr "Obsah"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1445
-msgid "PS Driver|#S"
-msgstr ""
+#, fuzzy
+msgid "PS Driver:|#S"
+msgstr "Váha|#V"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1463
 #, fuzzy
@@ -559,7 +561,7 @@ msgstr ""
 
 #: ../src/frontends/xforms/forms/form_document.fd:1499
 #, fuzzy
-msgid "Citation style|#i"
+msgid "Citation style:|#i"
 msgstr "Citácia"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1541
@@ -969,11 +971,6 @@ msgstr "Vertikálne zarovnávanie|#V"
 msgid "Horizontal align|#H"
 msgstr "Horizontálne zarovnávanie|#H"
 
-#: ../src/frontends/xforms/forms/form_maths_matrix.fd:122
-#, fuzzy
-msgid "OK  "
-msgstr "OK"
-
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:44
 #: ../src/frontends/xforms/forms/form_maths_space.fd:170
 #: ../src/frontends/xforms/forms/form_maths_style.fd:80
@@ -1173,7 +1170,7 @@ msgid "Line spacing:|#s"
 msgstr "Medzera"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:332
-msgid "Maximum  label width:|#M"
+msgid "Maximum label width:|#M"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:350
@@ -1877,12 +1874,12 @@ msgstr "&Dole"
 
 #: ../src/frontends/xforms/forms/form_search.fd:44
 #, fuzzy
-msgid "Find|#F"
+msgid "Find:|#F"
 msgstr "Súbor|S"
 
 #: ../src/frontends/xforms/forms/form_search.fd:62
 #, fuzzy
-msgid "Replace with|#w"
+msgid "Replace with:|#w"
 msgstr "Nahradi» s|#s"
 
 #: ../src/frontends/xforms/forms/form_search.fd:80
@@ -2594,7 +2591,7 @@ msgstr "Autorské práva"
 #: ../src/frontends/qt2/ui/QURLDialog.ui:171
 #: ../src/frontends/qt2/ui/QVCLogDialog.ui:107
 #: ../src/frontends/qt2/ui/QWrapDialog.ui:318
-#: ../src/frontends/qt2/ui/QPrefsDialog.ui:121
+#: ../src/frontends/qt2/ui/QPrefsDialog.ui:133
 msgid "&Close"
 msgstr "&Zavrie»"
 
@@ -2754,7 +2751,7 @@ msgstr "Upravi» nastavenia"
 #: ../src/frontends/qt2/ui/QIndexDialog.ui:143
 #: ../src/frontends/qt2/ui/QSendtoDialog.ui:120
 #: src/frontends/controllers/ButtonController.h:72 src/LyXAction.C:152
-#: src/lyxfunc.C:934
+#: src/lyxfunc.C:942
 msgid "Cancel"
 msgstr "Zru¹i»"
 
@@ -2887,7 +2884,7 @@ msgstr ""
 #: ../src/frontends/qt2/ui/QPreambleDialog.ui:130
 #: ../src/frontends/qt2/ui/QSendtoDialog.ui:109
 #: ../src/frontends/qt2/ui/QWrapDialog.ui:299
-#: ../src/frontends/qt2/ui/QPrefsDialog.ui:110
+#: ../src/frontends/qt2/ui/QPrefsDialog.ui:118
 msgid "&Apply"
 msgstr "&Pou¾i»"
 
@@ -2986,6 +2983,10 @@ msgstr "Aktuálne zvolené kµúèe"
 #, fuzzy
 msgid "Selected"
 msgstr "Zvoµte "
+
+#: ../src/frontends/qt2/ui/QCitationDialog.ui:418 src/lyxvc.C:131
+msgid "Info"
+msgstr "Informácia"
 
 #: ../src/frontends/qt2/ui/QCitationDialog.ui:441
 #, fuzzy
@@ -3655,7 +3656,7 @@ msgstr "Funkcie"
 
 #: ../src/frontends/qt2/ui/QMathDialog.ui:410
 #, fuzzy
-msgid "Selection a function or operator to insert"
+msgid "Select a function or operator to insert"
 msgstr "Zvoµte dokument na vlo¾enie"
 
 #: ../src/frontends/qt2/ui/QMathDialog.ui:462
@@ -5440,12 +5441,12 @@ msgid "&Maximum last files :"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefsDialog.ui:29
-#: ../src/frontends/qt2/ui/QPrefsDialog.ui:162
+#: ../src/frontends/qt2/ui/QPrefsDialog.ui:178
 #: src/frontends/xforms/FormPreferences.C:97
 msgid "Preferences"
 msgstr "Nastavenia"
 
-#: ../src/frontends/qt2/ui/QPrefsDialog.ui:99
+#: ../src/frontends/qt2/ui/QPrefsDialog.ui:103
 #, fuzzy
 msgid "&Save"
 msgstr "Ulo¾i»"
@@ -5608,6 +5609,7 @@ msgstr ""
 #: ../lib/layouts/revtex4.layout:45 ../lib/layouts/scrclass.inc:68
 #: ../lib/layouts/siamltex.layout:38 ../lib/layouts/spie.layout:23
 #: ../lib/layouts/stdsections.inc:63 ../lib/layouts/svjour.inc:41
+#: ../lib/layouts/aguplus.inc:24
 msgid "Section"
 msgstr "Oddiel"
 
@@ -5623,6 +5625,7 @@ msgstr "Oddiel"
 #: ../lib/layouts/revtex.layout:55 ../lib/layouts/revtex4.layout:58
 #: ../lib/layouts/scrclass.inc:75 ../lib/layouts/siamltex.layout:56
 #: ../lib/layouts/stdsections.inc:88 ../lib/layouts/svjour.inc:51
+#: ../lib/layouts/aguplus.inc:36
 msgid "Subsection"
 msgstr "Pododdiel"
 
@@ -5642,12 +5645,13 @@ msgstr "Podpododdiel"
 
 #: ../lib/layouts/IEEEtran.layout:327 ../lib/layouts/egs.layout:686
 #: ../lib/layouts/siamltex.layout:78 ../lib/layouts/spie.layout:33
-#: ../lib/layouts/stdstarsections.inc:29
+#: ../lib/layouts/stdstarsections.inc:29 ../lib/layouts/aguplus.inc:30
 msgid "Section*"
 msgstr "Oddiel*"
 
 #: ../lib/layouts/IEEEtran.layout:338 ../lib/layouts/egs.layout:709
 #: ../lib/layouts/siamltex.layout:84 ../lib/layouts/stdstarsections.inc:38
+#: ../lib/layouts/aguplus.inc:42
 msgid "Subsection*"
 msgstr "Pododdiel*"
 
@@ -5657,11 +5661,11 @@ msgid "Subsubsection*"
 msgstr "Podpododdiel*"
 
 #: ../lib/layouts/IEEEtran.layout:358 ../lib/layouts/apa.layout:74
-#: ../lib/layouts/db_stdstruct.inc:11 ../lib/layouts/foils.layout:160
-#: ../lib/layouts/heb-article.layout:20 ../lib/layouts/linuxdoc.layout:344
-#: ../lib/layouts/paper.layout:132 ../lib/layouts/scrclass.inc:222
-#: ../lib/layouts/siamltex.layout:134 ../lib/layouts/spie.layout:74
-#: src/buffer.C:1504
+#: ../lib/layouts/cl2emult.layout:82 ../lib/layouts/db_stdstruct.inc:11
+#: ../lib/layouts/foils.layout:160 ../lib/layouts/heb-article.layout:20
+#: ../lib/layouts/linuxdoc.layout:344 ../lib/layouts/paper.layout:132
+#: ../lib/layouts/scrclass.inc:222 ../lib/layouts/siamltex.layout:134
+#: ../lib/layouts/spie.layout:74 src/buffer.C:1504
 msgid "Abstract"
 msgstr "Výòatok"
 
@@ -5683,7 +5687,7 @@ msgstr "Kµúèové slová"
 #: ../lib/layouts/scrbook.layout:13 ../lib/layouts/scrclass.inc:229
 #: ../lib/layouts/scrreprt.layout:10 ../lib/layouts/siamltex.layout:171
 #: ../lib/layouts/stdstruct.inc:43 ../lib/layouts/svjour.inc:353
-#: src/frontends/qt2/QDocumentDialog.C:73
+#: ../lib/layouts/aguplus.inc:158 src/frontends/qt2/QDocumentDialog.C:73
 msgid "Bibliography"
 msgstr "Bibliografia"
 
@@ -5779,15 +5783,16 @@ msgstr "Podnadpis"
 #: ../lib/layouts/aapaper.layout:69 ../lib/layouts/aapaper.layout:156
 #: ../lib/layouts/aastex.layout:86 ../lib/layouts/aastex.layout:194
 #: ../lib/layouts/amsdefs.inc:88 ../lib/layouts/apa.layout:116
-#: ../lib/layouts/broadway.layout:203 ../lib/layouts/db_stdtitle.inc:18
-#: ../lib/layouts/egs.layout:336 ../lib/layouts/entcs.layout:22
-#: ../lib/layouts/foils.layout:146 ../lib/layouts/hollywood.layout:323
-#: ../lib/layouts/kluwer.layout:157 ../lib/layouts/linuxdoc.layout:294
-#: ../lib/layouts/llncs.layout:192 ../lib/layouts/ltugboat.layout:172
-#: ../lib/layouts/paper.layout:121 ../lib/layouts/revtex.layout:114
-#: ../lib/layouts/revtex4.layout:130 ../lib/layouts/scrclass.inc:158
-#: ../lib/layouts/siamltex.layout:119 ../lib/layouts/stdtitle.inc:33
-#: ../lib/layouts/svjour.inc:197 ../lib/layouts/svprobth.layout:57
+#: ../lib/layouts/broadway.layout:203 ../lib/layouts/cl2emult.layout:59
+#: ../lib/layouts/db_stdtitle.inc:18 ../lib/layouts/egs.layout:336
+#: ../lib/layouts/entcs.layout:22 ../lib/layouts/foils.layout:146
+#: ../lib/layouts/hollywood.layout:323 ../lib/layouts/kluwer.layout:157
+#: ../lib/layouts/linuxdoc.layout:294 ../lib/layouts/llncs.layout:192
+#: ../lib/layouts/ltugboat.layout:172 ../lib/layouts/paper.layout:121
+#: ../lib/layouts/revtex.layout:114 ../lib/layouts/revtex4.layout:130
+#: ../lib/layouts/scrclass.inc:158 ../lib/layouts/siamltex.layout:119
+#: ../lib/layouts/stdtitle.inc:33 ../lib/layouts/svjour.inc:197
+#: ../lib/layouts/svprobth.layout:57
 msgid "Author"
 msgstr "Autor"
 
@@ -5863,6 +5868,7 @@ msgstr "LaTeX"
 #: ../lib/layouts/revtex.layout:73 ../lib/layouts/revtex4.layout:76
 #: ../lib/layouts/scrclass.inc:89 ../lib/layouts/siamltex.layout:68
 #: ../lib/layouts/stdsections.inc:138 ../lib/layouts/svjour.inc:70
+#: ../lib/layouts/aguplus.inc:49
 msgid "Paragraph"
 msgstr "Odstavec"
 
@@ -6123,7 +6129,7 @@ msgstr "Hlásateµ"
 
 #: ../lib/layouts/broadway.layout:130 ../lib/layouts/hollywood.layout:161
 #, fuzzy
-msgid "Parenthetical  "
+msgid "Parenthetical"
 msgstr "Matica"
 
 #: ../lib/layouts/broadway.layout:164
@@ -6197,19 +6203,10 @@ msgstr "chyba"
 msgid "KnightMove"
 msgstr ""
 
-#: ../lib/layouts/cl2emult.layout:59
-msgid "Author            "
-msgstr ""
-
-#: ../lib/layouts/cl2emult.layout:71
-#, fuzzy
-msgid "Institute         "
+#: ../lib/layouts/cl2emult.layout:71 ../lib/layouts/llncs.layout:232
+#: ../lib/layouts/svjour.inc:229
+msgid "Institute"
 msgstr "In¹titút"
-
-#: ../lib/layouts/cl2emult.layout:82
-#, fuzzy
-msgid "Abstract          "
-msgstr "Výòatok"
 
 #: ../lib/layouts/cv.layout:57
 msgid "SubSection"
@@ -6220,10 +6217,12 @@ msgid "Topic"
 msgstr "Námet"
 
 #: ../lib/layouts/cv.layout:104 ../lib/layouts/foils.layout:200
+#: ../lib/layouts/aguplus.inc:68
 msgid "Left_Header"
 msgstr "¥avá_Hlavièka"
 
 #: ../lib/layouts/cv.layout:123 ../lib/layouts/foils.layout:208
+#: ../lib/layouts/aguplus.inc:94
 msgid "Right_Header"
 msgstr "Pravá_Hlavièka"
 
@@ -6374,11 +6373,11 @@ msgstr ""
 msgid "FirstAuthor"
 msgstr "Prvá_Autor"
 
-#: ../lib/layouts/egs.layout:468
+#: ../lib/layouts/egs.layout:468 ../lib/layouts/aguplus.inc:101
 msgid "Received"
 msgstr "Prijaté"
 
-#: ../lib/layouts/egs.layout:494
+#: ../lib/layouts/egs.layout:494 ../lib/layouts/aguplus.inc:115
 msgid "Accepted"
 msgstr "Prípustný"
 
@@ -6615,8 +6614,9 @@ msgid "EXT."
 msgstr ""
 
 #: ../lib/layouts/hollywood.layout:189
-msgid "Continuing  "
-msgstr ""
+#, fuzzy
+msgid "Continuing"
+msgstr "Podmienka"
 
 #: ../lib/layouts/hollywood.layout:231
 msgid "Transition"
@@ -6681,10 +6681,6 @@ msgstr ""
 #: ../lib/layouts/llncs.layout:224
 msgid "TOC_Author"
 msgstr "Obsah_Autor"
-
-#: ../lib/layouts/llncs.layout:232 ../lib/layouts/svjour.inc:229
-msgid "Institute"
-msgstr "In¹titút"
 
 #: ../lib/layouts/llncs.layout:410 ../lib/layouts/svjour.inc:476
 msgid "Property"
@@ -6867,6 +6863,7 @@ msgid "ProgressContents"
 msgstr ""
 
 #: ../lib/layouts/siamltex.layout:96 ../lib/layouts/stdstarsections.inc:56
+#: ../lib/layouts/aguplus.inc:54
 msgid "Paragraph*"
 msgstr "Odstavec*"
 
@@ -6925,6 +6922,45 @@ msgstr "Separáty"
 #, fuzzy
 msgid " Keywords"
 msgstr "Kµúèové slová"
+
+#: ../lib/layouts/aguplus.inc:108
+#, fuzzy
+msgid "Revised"
+msgstr "Obnovi»"
+
+#: ../lib/layouts/aguplus.inc:122
+msgid "CCC"
+msgstr ""
+
+#: ../lib/layouts/aguplus.inc:135
+#, fuzzy
+msgid "PaperId"
+msgstr "Papier"
+
+#: ../lib/layouts/aguplus.inc:142
+#, fuzzy
+msgid "AuthorAddr"
+msgstr "Autor"
+
+#: ../lib/layouts/aguplus.inc:149
+#, fuzzy
+msgid "SlugComment"
+msgstr "Komentár"
+
+#: ../lib/layouts/aguplus.inc:172
+#, fuzzy
+msgid "Plate"
+msgstr "Miesto"
+
+#: ../lib/layouts/aguplus.inc:182
+#, fuzzy
+msgid "Planotable"
+msgstr "Umiestnenie_Tabuµky"
+
+#: ../lib/layouts/aguplus.inc:193
+#, fuzzy
+msgid "Table_Caption"
+msgstr "Názov"
 
 #: ../lib/languages:2
 msgid "Afrikaans"
@@ -7116,11 +7152,11 @@ msgstr ""
 msgid "Welsh"
 msgstr "Walesky"
 
-#: ../lib/ui/default.ui:7 src/MenuBackend.C:683
+#: ../lib/ui/default.ui:7 src/MenuBackend.C:682
 msgid "File|F"
 msgstr "Súbor|S"
 
-#: ../lib/ui/default.ui:8 src/MenuBackend.C:684
+#: ../lib/ui/default.ui:8 src/MenuBackend.C:683
 msgid "Edit|E"
 msgstr "Upravi»|E"
 
@@ -7140,7 +7176,7 @@ msgstr "Prezeranie|P"
 msgid "Navigate|N"
 msgstr "Navigácia|N"
 
-#: ../lib/ui/default.ui:13 src/MenuBackend.C:686
+#: ../lib/ui/default.ui:13 src/MenuBackend.C:685
 msgid "Documents|D"
 msgstr "Dokumenty|D"
 
@@ -7157,7 +7193,7 @@ msgstr "Nový...|N"
 msgid "New from Template...|T"
 msgstr "Nový zo ¹ablóny...|b"
 
-#: ../lib/ui/default.ui:24 src/MenuBackend.C:656
+#: ../lib/ui/default.ui:24 src/MenuBackend.C:655
 msgid "Open...|O"
 msgstr "Otvori»...|O"
 
@@ -7182,7 +7218,7 @@ msgstr "Registrova»|R"
 msgid "Version Control|V"
 msgstr "Kontrola verzie|K"
 
-#: ../lib/ui/default.ui:32 src/MenuBackend.C:657
+#: ../lib/ui/default.ui:32 src/MenuBackend.C:656
 msgid "Import|I"
 msgstr "Importova»|I"
 
@@ -8190,28 +8226,29 @@ msgstr "Chyba: Nemô¾em zapísa» súbor:"
 msgid "Error: Cannot open file: "
 msgstr "Chyba: Nemô¾em otvori» súbor: "
 
-#: src/buffer.C:2243 src/buffer.C:2699
+#: src/buffer.C:2243 src/buffer.C:2698
 msgid "LYX_ERROR:"
 msgstr "LYX_CHYBA: "
 
-#: src/buffer.C:2243 src/buffer.C:2699
+#: src/buffer.C:2243 src/buffer.C:2698
 msgid "Cannot write file"
 msgstr "Nemô¾em zapísa» súbor"
 
-#: src/buffer.C:2331 src/buffer.C:2805
-msgid "Error : Wrong depth for LatexType Command.\n"
+#: src/buffer.C:2331 src/buffer.C:2804
+#, fuzzy
+msgid "Error: Wrong depth for LatexType Command.\n"
 msgstr "Chyba: Nesprávne vnorenie príkazov LaTeXu.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3081
+#: src/buffer.C:3079
 msgid "Running chktex..."
 msgstr "chktex pracuje..."
 
-#: src/buffer.C:3094
+#: src/buffer.C:3092
 msgid "chktex did not work!"
 msgstr "chktex nefunguje!"
 
-#: src/buffer.C:3095
+#: src/buffer.C:3093
 msgid "Could not run with file:"
 msgstr "Nemô¾em pracova» so súborom:"
 
@@ -8276,7 +8313,7 @@ msgstr "Chcete rad¹ej túto pou¾i»?"
 msgid "Unable to open template"
 msgstr "Nie je mo¾né otvori» ¹ablónu"
 
-#: src/bufferlist.C:518 src/lyxfunc.C:1811
+#: src/bufferlist.C:518 src/lyxfunc.C:1819
 msgid "Document is already open:"
 msgstr "Dokument je u¾ otvorený:"
 
@@ -8402,12 +8439,12 @@ msgstr "Zvoµte dokument na vlo¾enie"
 #: src/frontends/controllers/ControlExternal.C:154
 #: src/frontends/controllers/ControlGraphics.C:93
 #: src/frontends/controllers/ControlInclude.C:70 src/lyx_cb.C:110
-#: src/lyxfunc.C:1635 src/lyxfunc.C:1674 src/lyxfunc.C:1779
+#: src/lyxfunc.C:1643 src/lyxfunc.C:1682 src/lyxfunc.C:1787
 #, fuzzy
 msgid "Documents|#o#O"
 msgstr "Dokumenty|D"
 
-#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1676 src/lyxfunc.C:1781
+#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1684 src/lyxfunc.C:1789
 #, fuzzy
 msgid "Examples|#E#e"
 msgstr "Príklady"
@@ -8416,8 +8453,8 @@ msgstr "Príklady"
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr ""
 
-#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1690 src/lyxfunc.C:1798
-#: src/lyxfunc.C:1825
+#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1698 src/lyxfunc.C:1718
+#: src/lyxfunc.C:1806 src/lyxfunc.C:1833 src/lyxfunc.C:1843
 msgid "Canceled."
 msgstr "Zru¹ené."
 
@@ -8440,7 +8477,7 @@ msgstr ""
 msgid "Document %1$s inserted."
 msgstr "Dokument exportovaný ako "
 
-#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1735
+#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1743
 #, fuzzy
 msgid "Document "
 msgstr "Dokument"
@@ -8733,7 +8770,8 @@ msgid "No information for exporting to "
 msgstr "Nie sú ¾iadne informácie pre export do"
 
 #: src/exporter.C:89
-msgid "Cannot run latex."
+#, fuzzy
+msgid "Cannot run LaTeX."
 msgstr "Nemô¾em spusti» latex"
 
 #: src/exporter.C:90
@@ -9294,12 +9332,12 @@ msgstr "LyX: Url"
 msgid "LyX: "
 msgstr "LyX: Url"
 
-#: src/frontends/qt2/FileDialog.C:60
+#: src/frontends/qt2/FileDialog.C:61
 #, fuzzy
 msgid "All files (*)"
 msgstr " do súboru `"
 
-#: src/frontends/qt2/FileDialog.C:90
+#: src/frontends/qt2/FileDialog.C:91
 msgid "*|All files"
 msgstr ""
 
@@ -9757,7 +9795,7 @@ msgstr "Písmo obrazovky"
 
 #. output
 #: src/frontends/qt2/QPrefsDialog.C:142
-msgid "Ascii"
+msgid "ASCII"
 msgstr ""
 
 #: src/frontends/qt2/QPrefsDialog.C:144
@@ -9805,7 +9843,7 @@ msgstr ""
 
 #: src/frontends/qt2/QPrefsDialog.C:572
 #, fuzzy
-msgid "Selection a documents directory"
+msgid "Select a document directory"
 msgstr "Zvoµte dokument na vlo¾enie"
 
 #: src/frontends/qt2/QPrefsDialog.C:580
@@ -9859,6 +9897,11 @@ msgstr "Nastavenie LaTeXu|L"
 #, fuzzy
 msgid "Table of contents"
 msgstr "Obsah"
+
+#: src/frontends/qt2/QtView.C:147
+#, fuzzy
+msgid "LyX"
+msgstr "LyX: Url"
 
 #: src/frontends/qt2/QVCLog.C:35
 msgid "VCLog"
@@ -10434,7 +10477,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormGraphics.C:259
 msgid ""
-"Add any additional latex option, which is defined in the graphicx-package "
+"Add any additional LaTeX option, which is defined in the graphicx-package "
 "and not mentioned in the gui's tabfolders."
 msgstr ""
 
@@ -10994,7 +11037,7 @@ msgstr "Skrátenýnadpis"
 
 #. set up the tooltips
 #: src/frontends/xforms/FormSpellchecker.C:60
-msgid "Type replacement for unknown word  or select from suggestions."
+msgid "Type replacement for unknown word or select from suggestions."
 msgstr ""
 
 #: src/frontends/xforms/FormSpellchecker.C:63
@@ -11062,13 +11105,13 @@ msgstr "Bunka"
 msgid "LongTable"
 msgstr "Dlhá tabuµka"
 
-#: src/frontends/xforms/FormTabular.C:517
+#: src/frontends/xforms/FormTabular.C:521
 #, fuzzy
 msgid "Wrong Cursor position, updated window"
 msgstr "Varovanie: zlá poloha kurzoru, obnovené okno"
 
-#: src/frontends/xforms/FormTabular.C:538
-#: src/frontends/xforms/FormTabular.C:556
+#: src/frontends/xforms/FormTabular.C:542
+#: src/frontends/xforms/FormTabular.C:560
 #, fuzzy
 msgid "Invalid Length (valid example: 10mm)"
 msgstr "Varovanie: Neplatná då¾ka (platný je napríklad: 10mm)"
@@ -11151,11 +11194,13 @@ msgid "Forces float to the right in the paragraph."
 msgstr ""
 
 #: src/frontends/xforms/input_validators.C:126
-msgid "ERROR!  Unable to print!"
+#, fuzzy
+msgid "ERROR! Unable to print!"
 msgstr "Chyba!  Nemô¾em tlaèi»!"
 
 #: src/frontends/xforms/input_validators.C:127
-msgid "Check 'range of pages'!"
+#, fuzzy
+msgid "Check `range of pages'!"
 msgstr "Skontrolujte 'rozsah strán'!"
 
 #: src/frontends/xforms/xforms_helpers.C:356
@@ -11233,7 +11278,7 @@ msgstr "Importujem"
 msgid "Importing "
 msgstr "Importujem"
 
-#: src/importer.C:47 src/lyxfunc.C:979 src/lyxfunc.C:1142 src/lyxfunc.C:1723
+#: src/importer.C:47 src/lyxfunc.C:987 src/lyxfunc.C:1150 src/lyxfunc.C:1731
 msgid "..."
 msgstr ""
 
@@ -11292,7 +11337,7 @@ msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr ""
 
 #: src/insets/insetert.C:250 src/insets/insettabular.C:2092
-#: src/insets/insettext.C:1423
+#: src/insets/insettext.C:1413
 msgid "Sorry."
 msgstr "¥utujem."
 
@@ -11434,7 +11479,7 @@ msgstr "Doslovný vstup"
 msgid "Idx"
 msgstr "Idx"
 
-#: src/insets/insetlabel.C:47 src/mathed/math_hullinset.C:796
+#: src/insets/insetlabel.C:47 src/mathed/math_hullinset.C:799
 msgid "Enter label:"
 msgstr "Vlo¾i» znaèku:"
 
@@ -11545,29 +11590,29 @@ msgstr "Viacståpcové bunky mô¾u by» iba horizontálne."
 msgid "Opened Text Inset"
 msgstr "Otvorený text prílohy"
 
-#: src/insets/insettext.C:1421
+#: src/insets/insettext.C:1411
 msgid "Impossible operation"
 msgstr "Nemo¾ná operácia"
 
-#: src/insets/insettext.C:1422
+#: src/insets/insettext.C:1412
 msgid "Cannot include more than one paragraph!"
 msgstr "Nemô¾em zahrnú»viac ako jeden odstavec!"
 
-#: src/insets/insettext.C:1497 src/text3.C:1098
+#: src/insets/insettext.C:1487 src/text3.C:1104
 msgid "Layout "
 msgstr "Formát "
 
-#: src/insets/insettext.C:1497 src/text3.C:1099
+#: src/insets/insettext.C:1487 src/text3.C:1105
 msgid " not known"
 msgstr " neznámy"
 
-#: src/insets/insettext.C:1550 src/text3.C:880
+#: src/insets/insettext.C:1540 src/text3.C:886
 msgid "Unknown spacing argument: "
 msgstr "Neznámy parameter riadkovania: "
 
-#: src/insets/insettext.C:1669
+#: src/insets/insettext.C:1659
 #, fuzzy
-msgid "Error : LatexType Command not allowed here.\n"
+msgid "Error: LatexType Command not allowed here.\n"
 msgstr "Chyba: Nesprávne vnorenie príkazov LaTeXu.\n"
 
 #: src/insets/insettheorem.C:39
@@ -11676,8 +11721,8 @@ msgstr "Výber"
 
 #: src/LColor.C:62
 #, fuzzy
-msgid "latex text"
-msgstr "latex príloha"
+msgid "LaTeX text"
+msgstr "LaTeXový_Nadpis"
 
 #: src/LColor.C:63
 msgid "previewed snippet"
@@ -11921,7 +11966,8 @@ msgid "Select previous char"
 msgstr "Vybra» predchádzajúci znak"
 
 #: src/LyXAction.C:109
-msgid "Insert bibtex"
+#, fuzzy
+msgid "Insert BibTeX"
 msgstr "Vlo¾enie bibtexu"
 
 #: src/LyXAction.C:120
@@ -12008,11 +12054,11 @@ msgstr "Vlo¾enie citácie"
 msgid "Execute command"
 msgstr "Vykonanie príkazu"
 
-#: src/LyXAction.C:165 src/MenuBackend.C:674 src/text3.C:1021
+#: src/LyXAction.C:165 src/MenuBackend.C:673 src/text3.C:1027
 msgid "Copy"
 msgstr "Kopírova»"
 
-#: src/LyXAction.C:166 src/MenuBackend.C:673 src/text3.C:1016
+#: src/LyXAction.C:166 src/MenuBackend.C:672 src/text3.C:1022
 msgid "Cut"
 msgstr "Vystrihnú»"
 
@@ -12301,7 +12347,7 @@ msgstr "Prejs» o jeden odstavec hore"
 msgid "Select previous paragraph"
 msgstr "Zvoli» predchádzajúci odstavec"
 
-#: src/LyXAction.C:323 src/MenuBackend.C:675 src/text3.C:998
+#: src/LyXAction.C:323 src/MenuBackend.C:674 src/text3.C:1004
 msgid "Paste"
 msgstr "Vlo¾i»"
 
@@ -12400,12 +12446,12 @@ msgstr "(Ak ne, tak dokument nie je ulo¾ený.)"
 msgid "Choose a filename to save document as"
 msgstr "Vlo¾te názov súboru, pod ktorým sa má dokument ulo¾i»"
 
-#: src/lyx_cb.C:112 src/lyxfunc.C:1637
+#: src/lyx_cb.C:112 src/lyxfunc.C:1645
 #, fuzzy
 msgid "Templates|#T#t"
 msgstr "©ablóna|#¹"
 
-#: src/lyx_cb.C:120 src/lyxfunc.C:1642
+#: src/lyx_cb.C:120 src/lyxfunc.C:1650
 msgid "*.lyx|LyX Documents (*.lyx)"
 msgstr ""
 
@@ -12515,7 +12561,7 @@ msgstr "Chyba ¹pecifikovaný súbor je neèitateµný: "
 msgid "Error! Cannot open specified file: "
 msgstr "Chyba! Nemô¾em otvori» ¹pecifikovaný súbor:"
 
-#: src/lyx_cb.C:511 src/mathed/math_hullinset.C:795
+#: src/lyx_cb.C:511 src/mathed/math_hullinset.C:798
 msgid "Enter new label to insert:"
 msgstr "Vlo¾i» novú znaèku:"
 
@@ -12627,171 +12673,166 @@ msgstr " Èíslo"
 msgid "  Number "
 msgstr " Èíslo"
 
-#: src/lyxfunc.C:236
+#: src/lyxfunc.C:242
 #, fuzzy
 msgid "Unknown function."
 msgstr "Neznáma akcia"
 
-#: src/lyxfunc.C:270
+#: src/lyxfunc.C:275
 msgid "Nothing to do"
 msgstr "Nie je èo robi»."
 
-#: src/lyxfunc.C:286
+#: src/lyxfunc.C:291
 msgid "Unknown action"
 msgstr "Neznáma akcia"
 
 #. the default error message if we disable the command
-#: src/lyxfunc.C:291
+#: src/lyxfunc.C:296
 #, fuzzy
 msgid "Command disabled"
 msgstr "Ukonèovací príkaz|#U"
 
 #. no
-#: src/lyxfunc.C:303
+#: src/lyxfunc.C:308
 msgid "Document is read-only"
 msgstr "Dokument je iba na èítanie"
 
 #. no
-#: src/lyxfunc.C:308
+#: src/lyxfunc.C:313
 msgid "Command not allowed without any document open"
 msgstr "Príkaz nie je povolený pokiaµ nie je otvorený dokument"
 
-#: src/lyxfunc.C:694
+#: src/lyxfunc.C:702
 #, fuzzy, c-format
 msgid "Unknown function (%1$s)"
 msgstr "Neznáma akcia"
 
-#: src/lyxfunc.C:698
+#: src/lyxfunc.C:706
 #, fuzzy
 msgid "Unknown function ("
 msgstr "Neznáma akcia"
 
-#: src/lyxfunc.C:974
+#: src/lyxfunc.C:982
 #, fuzzy, c-format
 msgid "Saving document %1$s..."
 msgstr "Ukladám dokument"
 
-#: src/lyxfunc.C:977
+#: src/lyxfunc.C:985
 #, fuzzy
 msgid "Saving document "
 msgstr "Ukladám dokument"
 
-#: src/lyxfunc.C:983
+#: src/lyxfunc.C:991
 #, fuzzy
 msgid " done."
 msgstr "Prejs» dole"
 
-#: src/lyxfunc.C:1125 src/mathed/formulabase.C:1036
+#: src/lyxfunc.C:1133 src/mathed/formulabase.C:1036
 msgid "Missing argument"
 msgstr "Chýbajúci parameter"
 
-#: src/lyxfunc.C:1138
+#: src/lyxfunc.C:1146
 #, fuzzy, c-format
 msgid "Opening help file %1$s..."
 msgstr "Otváram súbor s Pomocníkom"
 
-#: src/lyxfunc.C:1141
+#: src/lyxfunc.C:1149
 #, fuzzy
 msgid "Opening help file "
 msgstr "Otváram súbor s Pomocníkom"
 
-#: src/lyxfunc.C:1347
+#: src/lyxfunc.C:1355
 msgid "This is only allowed in math mode!"
 msgstr "Toto je povolené len v matematickom re¾ime!"
 
-#: src/lyxfunc.C:1389
+#: src/lyxfunc.C:1397
 msgid "Opening child document "
 msgstr "Otváram podriadený dokument "
 
-#: src/lyxfunc.C:1463
+#: src/lyxfunc.C:1471
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1477
+#: src/lyxfunc.C:1485
 #, fuzzy, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr "\" farbu -  nie je definovaná alebo ju nie je mo¾né predefinova»"
 
-#: src/lyxfunc.C:1482
+#: src/lyxfunc.C:1490
 msgid "Set-color "
 msgstr ""
 
-#: src/lyxfunc.C:1483
+#: src/lyxfunc.C:1491
 #, fuzzy
 msgid " failed - color is undefined or may not be redefined"
 msgstr "\" farbu -  nie je definovaná alebo ju nie je mo¾né predefinova»"
 
-#: src/lyxfunc.C:1633
+#: src/lyxfunc.C:1641
 #, fuzzy
 msgid "Select template file"
 msgstr "Zvoµte názov výstupu"
 
-#: src/lyxfunc.C:1672
+#: src/lyxfunc.C:1680
 #, fuzzy
 msgid "Select document to open"
 msgstr "Zvoµte dokument pre otvorenie"
 
-#: src/lyxfunc.C:1708
+#: src/lyxfunc.C:1716
 #, fuzzy
 msgid "No such file"
 msgstr "Posledné súbory"
 
-#: src/lyxfunc.C:1709
+#: src/lyxfunc.C:1717
 #, fuzzy
 msgid "Start a new document with this filename ?"
 msgstr "Vytvori» nový dokument s týmto názvom?"
 
-#: src/lyxfunc.C:1710 src/lyxfunc.C:1835
-#, fuzzy
-msgid "Canceled"
-msgstr "Zru¹ené."
-
-#: src/lyxfunc.C:1721
+#: src/lyxfunc.C:1729
 #, fuzzy, c-format
 msgid "Opening document %1$s..."
 msgstr "Otváram dokument"
 
-#: src/lyxfunc.C:1723
+#: src/lyxfunc.C:1731
 #, fuzzy
 msgid "Opening document "
 msgstr "Otváram podriadený dokument "
 
-#: src/lyxfunc.C:1733
+#: src/lyxfunc.C:1741
 #, fuzzy, c-format
 msgid "Document %1$s opened."
 msgstr "®iadny dokument nie je otvorený!"
 
-#: src/lyxfunc.C:1735
+#: src/lyxfunc.C:1743
 #, fuzzy
 msgid " opened."
 msgstr "Prejs» dole"
 
-#: src/lyxfunc.C:1739
+#: src/lyxfunc.C:1747
 #, fuzzy, c-format
 msgid "Could not open document %1$s"
 msgstr "Dokument sa nedá otvori»"
 
-#: src/lyxfunc.C:1742
+#: src/lyxfunc.C:1750
 #, fuzzy
 msgid "Could not open document "
 msgstr "Dokument sa nedá otvori»"
 
-#: src/lyxfunc.C:1769
+#: src/lyxfunc.C:1777
 #, fuzzy, c-format
 msgid "Select %1$s file to import"
 msgstr "Zvoµte dokument na vlo¾enie"
 
-#: src/lyxfunc.C:1773
+#: src/lyxfunc.C:1781
 #, fuzzy
 msgid "Select "
 msgstr "Zvoµte "
 
-#: src/lyxfunc.C:1774
+#: src/lyxfunc.C:1782
 #, fuzzy
 msgid " file to import"
 msgstr "Zvoµte dokument na vlo¾enie"
 
-#: src/lyxfunc.C:1813
+#: src/lyxfunc.C:1821
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -12799,15 +12840,15 @@ msgstr ""
 "Chcete teraz zavrie» tento dokument?\n"
 "('Nie' iba prepne do otvorenej verzie)"
 
-#: src/lyxfunc.C:1833
+#: src/lyxfunc.C:1841
 msgid "A document by the name"
 msgstr "Dokument s menom"
 
-#: src/lyxfunc.C:1834
+#: src/lyxfunc.C:1842
 msgid "already exists. Overwrite?"
 msgstr "u¾ existuje. Prepísa»?"
 
-#: src/lyxfunc.C:1906
+#: src/lyxfunc.C:1914
 msgid "Welcome to LyX!"
 msgstr "Vitajte v LyXe!"
 
@@ -13186,15 +13227,16 @@ msgstr ""
 "automatického ukladania."
 
 #: src/lyxrc.C:1950
+#, fuzzy
 msgid ""
-"The default path for your documents.  An empty value selects the directory "
+"The default path for your documents. An empty value selects the directory "
 "LyX was started from."
-msgstr ""
+msgstr "Cesta, ktorú vám LyX ponúkne, pri voµbe ¹ablóny."
 
 #: src/lyxrc.C:1954
 #, fuzzy
 msgid ""
-"The path that LyX will set when offering to choose a template.  An empty "
+"The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
 msgstr "Cesta, ktorú vám LyX ponúkne, pri voµbe ¹ablóny."
 
@@ -13252,8 +13294,9 @@ msgstr ""
 "hµada» v globálnych alebo lokálnych bind prieèinkoch."
 
 #: src/lyxrc.C:1986
+#, fuzzy
 msgid ""
-"The  UI (user interface) file. Can either specify an absolute path, or LyX "
+"The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
 msgstr ""
 "UI (u¾ívateµské rozhranie) súbor. Mô¾ete pou¾i» absolútnu cestu, alebo LyX "
@@ -13269,9 +13312,10 @@ msgstr ""
 "americkej klávesnici."
 
 #: src/lyxrc.C:1996
+#, fuzzy
 msgid ""
 "Use to define an external program to render tables in the ASCII output. E.g. "
-"\"groff -t -Tlatin1 $$FName\"  where $$FName is the input file. If \"none\" "
+"\"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"none\" "
 "is specified, an internal routine is used."
 msgstr ""
 "Pou¾ite toto na definovanie externého príkazu na vytvorenie tabuliek v ASCII "
@@ -13403,8 +13447,9 @@ msgstr ""
 "jazyk dokumentu."
 
 #: src/lyxrc.C:2086
+#, fuzzy
 msgid ""
-"The latex command for loading the language package. E.g. \"\\usepackage"
+"The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 "Príkaz latexu pre naèítanie jazykového balíka. Napr. \"\\usepackage{babel}"
@@ -13436,8 +13481,9 @@ msgid ""
 msgstr "Zvoµte, ak príkaz pre zmenu jazyku je potrebný na konci dokumentu."
 
 #: src/lyxrc.C:2106
+#, fuzzy
 msgid ""
-"The latex command for changing from the language of the document to another "
+"The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
 "name of the second language."
 msgstr ""
@@ -13445,11 +13491,13 @@ msgstr ""
 "\\selectlanguage{$$lang} kde $$lang je nahradené názvom druhého jazyka."
 
 #: src/lyxrc.C:2110
-msgid "The latex command for changing back to the language of the document."
+#, fuzzy
+msgid "The LaTeX command for changing back to the language of the document."
 msgstr "Latexovský príkaz pre návrat k pôvodnému jazyku dokumentu."
 
 #: src/lyxrc.C:2114
-msgid "The latex command for local changing of the language."
+#, fuzzy
+msgid "The LaTeX command for local changing of the language."
 msgstr "Latexovský príkaz pre lokálnu zmenu jazyka."
 
 #: src/lyxrc.C:2119
@@ -13597,35 +13645,37 @@ msgid "No Documents Open!"
 msgstr "®iadny dokument nie je otvorený!"
 
 #: src/MenuBackend.C:378
-msgid "Ascii text as lines"
+#, fuzzy
+msgid "ASCII text as lines"
 msgstr "Ascii text ako riadky"
 
 #: src/MenuBackend.C:380
-msgid "Ascii text as paragraphs"
+#, fuzzy
+msgid "ASCII text as paragraphs"
 msgstr "Ascii text ako odstavce"
 
-#: src/MenuBackend.C:518
+#: src/MenuBackend.C:517
 #, fuzzy
 msgid "No Table of contents"
 msgstr "Bez obsahu%i"
 
-#: src/MenuBackend.C:655
+#: src/MenuBackend.C:654
 msgid "New...|N"
 msgstr "Nový...|N"
 
-#: src/MenuBackend.C:658
+#: src/MenuBackend.C:657
 msgid "Quit|Q"
 msgstr "Koniec|K"
 
-#: src/MenuBackend.C:666
+#: src/MenuBackend.C:665
 msgid "LaTeX...|L"
 msgstr "LaTeX...|L"
 
-#: src/MenuBackend.C:668
+#: src/MenuBackend.C:667
 msgid "LinuxDoc...|L"
 msgstr "LinuxDoc...|L"
 
-#: src/MenuBackend.C:676
+#: src/MenuBackend.C:675
 msgid "Emphasize"
 msgstr "Zvýrazni»"
 
@@ -13708,35 +13758,37 @@ msgstr ""
 msgid "No more insets"
 msgstr "U¾ nie je viac poznámok"
 
-#: src/text3.C:941
+#: src/text3.C:947
 msgid "Mark off"
 msgstr "Znaèka vypnutá"
 
-#: src/text3.C:949
+#: src/text3.C:955
 msgid "Mark on"
 msgstr "Znaèka zapnutá"
 
-#: src/text3.C:956
+#: src/text3.C:962
 msgid "Mark removed"
 msgstr "Znaèka odstránená"
 
-#: src/text3.C:960
+#: src/text3.C:966
 msgid "Mark set"
 msgstr "Znaèka nastavená"
 
-#: src/text3.C:1080
+#: src/text3.C:1086
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
 
 #: src/text.C:1924
+#, fuzzy
 msgid ""
-"You cannot insert a space at the beginning of a paragraph.  Please read the "
+"You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
 "Nemô¾ete vlo¾i» na zaèiatok odstavca medzeru.Preèítajte si prosím Príruèku."
 
 #: src/text.C:1926
-msgid "You cannot type two spaces this way.  Please read the Tutorial."
+#, fuzzy
+msgid "You cannot type two spaces this way. Please read the Tutorial."
 msgstr ""
 "Nemô¾ete takýmto spôsobom vlo¾i» dve medzery. Preèítajte si prosím Príruèku."
 
@@ -13762,3 +13814,23 @@ msgstr "Zalomenie strany (dole)"
 #, fuzzy
 msgid "Space below"
 msgstr "Medzera &pod"
+
+#, fuzzy
+#~ msgid "OK  "
+#~ msgstr "OK"
+
+#, fuzzy
+#~ msgid "Institute         "
+#~ msgstr "In¹titút"
+
+#, fuzzy
+#~ msgid "Abstract          "
+#~ msgstr "Výòatok"
+
+#, fuzzy
+#~ msgid "latex text"
+#~ msgstr "latex príloha"
+
+#, fuzzy
+#~ msgid "Canceled"
+#~ msgstr "Zru¹ené."

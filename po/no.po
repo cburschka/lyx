@@ -5,8 +5,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: lyx 1.3.0\n"
-"POT-Creation-Date: 2002-12-19 18:57+0100\n"
-"PO-Revision-Date: 2002-12-19 18:59+0100\n"
+"POT-Creation-Date: 2003-01-12 20:46+0100\n"
+"PO-Revision-Date: 2003-01-12 15:09+0100\n"
 "Last-Translator: Lars Gullik Bjønnes <larsbj@lyx.org>\n"
 "Language-Team: norsk <no@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -44,6 +44,7 @@ msgstr ""
 #: ../src/frontends/xforms/forms/form_include.fd:79
 #: ../src/frontends/xforms/forms/form_index.fd:79
 #: ../src/frontends/xforms/forms/form_maths_delim.fd:116
+#: ../src/frontends/xforms/forms/form_maths_matrix.fd:122
 #: ../src/frontends/xforms/forms/form_minipage.fd:241
 #: ../src/frontends/xforms/forms/form_paragraph.fd:386
 #: ../src/frontends/xforms/forms/form_preamble.fd:44
@@ -124,7 +125,7 @@ msgid "Add bibliography to TOC|#T"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:170
-msgid "Styles|#y"
+msgid "Styles:|#y"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_bibtex.fd:188
@@ -229,17 +230,16 @@ msgid "These are always toggled"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_citation.fd:44
-msgid "Inset keys|#I"
+msgid "Inset keys:|#I"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_citation.fd:62
-msgid "Bibliography keys|#k"
+msgid "Bibliography keys:|#k"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_citation.fd:80
-#: ../src/frontends/qt2/ui/QCitationDialog.ui:418 src/lyxvc.C:131
-msgid "Info"
-msgstr "Info"
+msgid "Info:"
+msgstr "Info:"
 
 #: ../src/frontends/xforms/forms/form_citation.fd:116
 #: ../src/frontends/xforms/forms/form_forks.fd:115
@@ -408,8 +408,8 @@ msgid "Page style:|#P"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_document.fd:866
-msgid "Spacing|#g"
-msgstr ""
+msgid "Spacing:|#g"
+msgstr "Linjeavstand:|#L"
 
 #: ../src/frontends/xforms/forms/form_document.fd:884
 msgid "Extra Options:|#X"
@@ -472,15 +472,15 @@ msgid "Float Placement:|#L"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_document.fd:1401
-msgid "Section number depth"
+msgid "Section number depth:"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_document.fd:1423
-msgid "Table of contents depth"
-msgstr ""
+msgid "Table of contents depth:"
+msgstr "Innholdsfortegnelsesdybde:"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1445
-msgid "PS Driver|#S"
+msgid "PS Driver:|#S"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_document.fd:1463
@@ -492,8 +492,8 @@ msgid "Use Natbib|#N"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_document.fd:1499
-msgid "Citation style|#i"
-msgstr ""
+msgid "Citation style:|#i"
+msgstr "Siteringsstil:|#i"
 
 #: ../src/frontends/xforms/forms/form_document.fd:1541
 msgid "Bullet depth"
@@ -847,10 +847,6 @@ msgstr ""
 msgid "Horizontal align|#H"
 msgstr ""
 
-#: ../src/frontends/xforms/forms/form_maths_matrix.fd:122
-msgid "OK  "
-msgstr ""
-
 #: ../src/frontends/xforms/forms/form_maths_panel.fd:44
 #: ../src/frontends/xforms/forms/form_maths_space.fd:170
 #: ../src/frontends/xforms/forms/form_maths_style.fd:80
@@ -1029,7 +1025,7 @@ msgid "Line spacing:|#s"
 msgstr "Linjeavstand:|#s"
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:332
-msgid "Maximum  label width:|#M"
+msgid "Maximum label width:|#M"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_paragraph.fd:350
@@ -1631,21 +1627,21 @@ msgid "Go to|#G"
 msgstr ""
 
 #: ../src/frontends/xforms/forms/form_search.fd:44
-msgid "Find|#F"
-msgstr ""
+msgid "Find:|#F"
+msgstr "Finn:|#F"
 
 #: ../src/frontends/xforms/forms/form_search.fd:62
-msgid "Replace with|#w"
-msgstr ""
+msgid "Replace with:|#w"
+msgstr "Erstatt med:|#m"
 
 #: ../src/frontends/xforms/forms/form_search.fd:80
 msgid "Find next"
-msgstr ""
+msgstr "Finn neste"
 
 #: ../src/frontends/xforms/forms/form_search.fd:98
 #: ../src/frontends/xforms/forms/form_spellchecker.fd:224
 msgid "Replace|#R"
-msgstr ""
+msgstr "Erstatt|#E"
 
 #: ../src/frontends/xforms/forms/form_search.fd:152
 msgid "Match word|#M"
@@ -2243,7 +2239,7 @@ msgstr ""
 #: ../src/frontends/qt2/ui/QURLDialog.ui:171
 #: ../src/frontends/qt2/ui/QVCLogDialog.ui:107
 #: ../src/frontends/qt2/ui/QWrapDialog.ui:318
-#: ../src/frontends/qt2/ui/QPrefsDialog.ui:121
+#: ../src/frontends/qt2/ui/QPrefsDialog.ui:133
 msgid "&Close"
 msgstr "&Lukk"
 
@@ -2386,7 +2382,7 @@ msgstr ""
 #: ../src/frontends/qt2/ui/QIndexDialog.ui:143
 #: ../src/frontends/qt2/ui/QSendtoDialog.ui:120
 #: src/frontends/controllers/ButtonController.h:72 src/LyXAction.C:152
-#: src/lyxfunc.C:934
+#: src/lyxfunc.C:942
 msgid "Cancel"
 msgstr "Avbryt"
 
@@ -2502,7 +2498,7 @@ msgstr "Bruk endringer automatisk"
 #: ../src/frontends/qt2/ui/QPreambleDialog.ui:130
 #: ../src/frontends/qt2/ui/QSendtoDialog.ui:109
 #: ../src/frontends/qt2/ui/QWrapDialog.ui:299
-#: ../src/frontends/qt2/ui/QPrefsDialog.ui:110
+#: ../src/frontends/qt2/ui/QPrefsDialog.ui:118
 msgid "&Apply"
 msgstr "&Bruk"
 
@@ -2590,6 +2586,10 @@ msgstr ""
 #: ../src/frontends/qt2/ui/QCitationDialog.ui:386
 msgid "Selected"
 msgstr "Valgt"
+
+#: ../src/frontends/qt2/ui/QCitationDialog.ui:418 src/lyxvc.C:131
+msgid "Info"
+msgstr "Info"
 
 #: ../src/frontends/qt2/ui/QCitationDialog.ui:441
 msgid "Citation entry"
@@ -3175,8 +3175,8 @@ msgid "&Functions"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QMathDialog.ui:410
-msgid "Selection a function or operator to insert"
-msgstr ""
+msgid "Select a function or operator to insert"
+msgstr "Velg en funksjon eller operator som skal settes inn"
 
 #: ../src/frontends/qt2/ui/QMathDialog.ui:462
 msgid "Symbols"
@@ -4688,12 +4688,12 @@ msgid "&Maximum last files :"
 msgstr ""
 
 #: ../src/frontends/qt2/ui/QPrefsDialog.ui:29
-#: ../src/frontends/qt2/ui/QPrefsDialog.ui:162
+#: ../src/frontends/qt2/ui/QPrefsDialog.ui:178
 #: src/frontends/xforms/FormPreferences.C:97
 msgid "Preferences"
 msgstr "Preferanser"
 
-#: ../src/frontends/qt2/ui/QPrefsDialog.ui:99
+#: ../src/frontends/qt2/ui/QPrefsDialog.ui:103
 msgid "&Save"
 msgstr ""
 
@@ -4855,6 +4855,7 @@ msgstr ""
 #: ../lib/layouts/revtex4.layout:45 ../lib/layouts/scrclass.inc:68
 #: ../lib/layouts/siamltex.layout:38 ../lib/layouts/spie.layout:23
 #: ../lib/layouts/stdsections.inc:63 ../lib/layouts/svjour.inc:41
+#: ../lib/layouts/aguplus.inc:24
 msgid "Section"
 msgstr "Seksjon"
 
@@ -4870,6 +4871,7 @@ msgstr "Seksjon"
 #: ../lib/layouts/revtex.layout:55 ../lib/layouts/revtex4.layout:58
 #: ../lib/layouts/scrclass.inc:75 ../lib/layouts/siamltex.layout:56
 #: ../lib/layouts/stdsections.inc:88 ../lib/layouts/svjour.inc:51
+#: ../lib/layouts/aguplus.inc:36
 msgid "Subsection"
 msgstr "Underseksjon"
 
@@ -4889,12 +4891,13 @@ msgstr ""
 
 #: ../lib/layouts/IEEEtran.layout:327 ../lib/layouts/egs.layout:686
 #: ../lib/layouts/siamltex.layout:78 ../lib/layouts/spie.layout:33
-#: ../lib/layouts/stdstarsections.inc:29
+#: ../lib/layouts/stdstarsections.inc:29 ../lib/layouts/aguplus.inc:30
 msgid "Section*"
 msgstr ""
 
 #: ../lib/layouts/IEEEtran.layout:338 ../lib/layouts/egs.layout:709
 #: ../lib/layouts/siamltex.layout:84 ../lib/layouts/stdstarsections.inc:38
+#: ../lib/layouts/aguplus.inc:42
 msgid "Subsection*"
 msgstr "Underseksjon*"
 
@@ -4904,11 +4907,11 @@ msgid "Subsubsection*"
 msgstr ""
 
 #: ../lib/layouts/IEEEtran.layout:358 ../lib/layouts/apa.layout:74
-#: ../lib/layouts/db_stdstruct.inc:11 ../lib/layouts/foils.layout:160
-#: ../lib/layouts/heb-article.layout:20 ../lib/layouts/linuxdoc.layout:344
-#: ../lib/layouts/paper.layout:132 ../lib/layouts/scrclass.inc:222
-#: ../lib/layouts/siamltex.layout:134 ../lib/layouts/spie.layout:74
-#: src/buffer.C:1504
+#: ../lib/layouts/cl2emult.layout:82 ../lib/layouts/db_stdstruct.inc:11
+#: ../lib/layouts/foils.layout:160 ../lib/layouts/heb-article.layout:20
+#: ../lib/layouts/linuxdoc.layout:344 ../lib/layouts/paper.layout:132
+#: ../lib/layouts/scrclass.inc:222 ../lib/layouts/siamltex.layout:134
+#: ../lib/layouts/spie.layout:74 src/buffer.C:1504
 msgid "Abstract"
 msgstr "Sammendrag"
 
@@ -4930,7 +4933,7 @@ msgstr "Nøkkelord"
 #: ../lib/layouts/scrbook.layout:13 ../lib/layouts/scrclass.inc:229
 #: ../lib/layouts/scrreprt.layout:10 ../lib/layouts/siamltex.layout:171
 #: ../lib/layouts/stdstruct.inc:43 ../lib/layouts/svjour.inc:353
-#: src/frontends/qt2/QDocumentDialog.C:73
+#: ../lib/layouts/aguplus.inc:158 src/frontends/qt2/QDocumentDialog.C:73
 msgid "Bibliography"
 msgstr ""
 
@@ -5026,15 +5029,16 @@ msgstr "Undertittel"
 #: ../lib/layouts/aapaper.layout:69 ../lib/layouts/aapaper.layout:156
 #: ../lib/layouts/aastex.layout:86 ../lib/layouts/aastex.layout:194
 #: ../lib/layouts/amsdefs.inc:88 ../lib/layouts/apa.layout:116
-#: ../lib/layouts/broadway.layout:203 ../lib/layouts/db_stdtitle.inc:18
-#: ../lib/layouts/egs.layout:336 ../lib/layouts/entcs.layout:22
-#: ../lib/layouts/foils.layout:146 ../lib/layouts/hollywood.layout:323
-#: ../lib/layouts/kluwer.layout:157 ../lib/layouts/linuxdoc.layout:294
-#: ../lib/layouts/llncs.layout:192 ../lib/layouts/ltugboat.layout:172
-#: ../lib/layouts/paper.layout:121 ../lib/layouts/revtex.layout:114
-#: ../lib/layouts/revtex4.layout:130 ../lib/layouts/scrclass.inc:158
-#: ../lib/layouts/siamltex.layout:119 ../lib/layouts/stdtitle.inc:33
-#: ../lib/layouts/svjour.inc:197 ../lib/layouts/svprobth.layout:57
+#: ../lib/layouts/broadway.layout:203 ../lib/layouts/cl2emult.layout:59
+#: ../lib/layouts/db_stdtitle.inc:18 ../lib/layouts/egs.layout:336
+#: ../lib/layouts/entcs.layout:22 ../lib/layouts/foils.layout:146
+#: ../lib/layouts/hollywood.layout:323 ../lib/layouts/kluwer.layout:157
+#: ../lib/layouts/linuxdoc.layout:294 ../lib/layouts/llncs.layout:192
+#: ../lib/layouts/ltugboat.layout:172 ../lib/layouts/paper.layout:121
+#: ../lib/layouts/revtex.layout:114 ../lib/layouts/revtex4.layout:130
+#: ../lib/layouts/scrclass.inc:158 ../lib/layouts/siamltex.layout:119
+#: ../lib/layouts/stdtitle.inc:33 ../lib/layouts/svjour.inc:197
+#: ../lib/layouts/svprobth.layout:57
 msgid "Author"
 msgstr "Forfatter"
 
@@ -5109,6 +5113,7 @@ msgstr "LaTeX"
 #: ../lib/layouts/revtex.layout:73 ../lib/layouts/revtex4.layout:76
 #: ../lib/layouts/scrclass.inc:89 ../lib/layouts/siamltex.layout:68
 #: ../lib/layouts/stdsections.inc:138 ../lib/layouts/svjour.inc:70
+#: ../lib/layouts/aguplus.inc:49
 msgid "Paragraph"
 msgstr "Avsnitt"
 
@@ -5367,7 +5372,7 @@ msgid "Speaker"
 msgstr ""
 
 #: ../lib/layouts/broadway.layout:130 ../lib/layouts/hollywood.layout:161
-msgid "Parenthetical  "
+msgid "Parenthetical"
 msgstr ""
 
 #: ../lib/layouts/broadway.layout:164
@@ -5431,17 +5436,10 @@ msgstr "Pilspiss"
 msgid "KnightMove"
 msgstr ""
 
-#: ../lib/layouts/cl2emult.layout:59
-msgid "Author            "
-msgstr ""
-
-#: ../lib/layouts/cl2emult.layout:71
-msgid "Institute         "
-msgstr ""
-
-#: ../lib/layouts/cl2emult.layout:82
-msgid "Abstract          "
-msgstr ""
+#: ../lib/layouts/cl2emult.layout:71 ../lib/layouts/llncs.layout:232
+#: ../lib/layouts/svjour.inc:229
+msgid "Institute"
+msgstr "Institutt"
 
 #: ../lib/layouts/cv.layout:57
 msgid "SubSection"
@@ -5452,10 +5450,12 @@ msgid "Topic"
 msgstr "Sak"
 
 #: ../lib/layouts/cv.layout:104 ../lib/layouts/foils.layout:200
+#: ../lib/layouts/aguplus.inc:68
 msgid "Left_Header"
 msgstr ""
 
 #: ../lib/layouts/cv.layout:123 ../lib/layouts/foils.layout:208
+#: ../lib/layouts/aguplus.inc:94
 msgid "Right_Header"
 msgstr ""
 
@@ -5603,11 +5603,11 @@ msgstr ""
 msgid "FirstAuthor"
 msgstr ""
 
-#: ../lib/layouts/egs.layout:468
+#: ../lib/layouts/egs.layout:468 ../lib/layouts/aguplus.inc:101
 msgid "Received"
 msgstr "Mottatt"
 
-#: ../lib/layouts/egs.layout:494
+#: ../lib/layouts/egs.layout:494 ../lib/layouts/aguplus.inc:115
 msgid "Accepted"
 msgstr "Akseptert"
 
@@ -5841,7 +5841,7 @@ msgid "EXT."
 msgstr ""
 
 #: ../lib/layouts/hollywood.layout:189
-msgid "Continuing  "
+msgid "Continuing"
 msgstr ""
 
 #: ../lib/layouts/hollywood.layout:231
@@ -5903,10 +5903,6 @@ msgstr ""
 #: ../lib/layouts/llncs.layout:224
 msgid "TOC_Author"
 msgstr ""
-
-#: ../lib/layouts/llncs.layout:232 ../lib/layouts/svjour.inc:229
-msgid "Institute"
-msgstr "Institutt"
 
 #: ../lib/layouts/llncs.layout:410 ../lib/layouts/svjour.inc:476
 msgid "Property"
@@ -6089,6 +6085,7 @@ msgid "ProgressContents"
 msgstr ""
 
 #: ../lib/layouts/siamltex.layout:96 ../lib/layouts/stdstarsections.inc:56
+#: ../lib/layouts/aguplus.inc:54
 msgid "Paragraph*"
 msgstr "Avsnitt*"
 
@@ -6142,6 +6139,38 @@ msgstr ""
 
 #: ../lib/layouts/svjour.inc:295
 msgid " Keywords"
+msgstr ""
+
+#: ../lib/layouts/aguplus.inc:108
+msgid "Revised"
+msgstr "Revidert"
+
+#: ../lib/layouts/aguplus.inc:122
+msgid "CCC"
+msgstr ""
+
+#: ../lib/layouts/aguplus.inc:135
+msgid "PaperId"
+msgstr ""
+
+#: ../lib/layouts/aguplus.inc:142
+msgid "AuthorAddr"
+msgstr ""
+
+#: ../lib/layouts/aguplus.inc:149
+msgid "SlugComment"
+msgstr ""
+
+#: ../lib/layouts/aguplus.inc:172
+msgid "Plate"
+msgstr ""
+
+#: ../lib/layouts/aguplus.inc:182
+msgid "Planotable"
+msgstr ""
+
+#: ../lib/layouts/aguplus.inc:193
+msgid "Table_Caption"
 msgstr ""
 
 #: ../lib/languages:2
@@ -6332,11 +6361,11 @@ msgstr ""
 msgid "Welsh"
 msgstr "Walisisk"
 
-#: ../lib/ui/default.ui:7 src/MenuBackend.C:683
+#: ../lib/ui/default.ui:7 src/MenuBackend.C:682
 msgid "File|F"
 msgstr "Fil|F"
 
-#: ../lib/ui/default.ui:8 src/MenuBackend.C:684
+#: ../lib/ui/default.ui:8 src/MenuBackend.C:683
 msgid "Edit|E"
 msgstr "Rediger|R"
 
@@ -6356,7 +6385,7 @@ msgstr "Vis|V"
 msgid "Navigate|N"
 msgstr "Naviger|N"
 
-#: ../lib/ui/default.ui:13 src/MenuBackend.C:686
+#: ../lib/ui/default.ui:13 src/MenuBackend.C:685
 msgid "Documents|D"
 msgstr "Dokumenter|D"
 
@@ -6372,7 +6401,7 @@ msgstr "Ny|N"
 msgid "New from Template...|T"
 msgstr "Ny med mal...|m"
 
-#: ../lib/ui/default.ui:24 src/MenuBackend.C:656
+#: ../lib/ui/default.ui:24 src/MenuBackend.C:655
 msgid "Open...|O"
 msgstr "Åpne...|p"
 
@@ -6396,7 +6425,7 @@ msgstr ""
 msgid "Version Control|V"
 msgstr "Versjonskontroll|V"
 
-#: ../lib/ui/default.ui:32 src/MenuBackend.C:657
+#: ../lib/ui/default.ui:32 src/MenuBackend.C:656
 msgid "Import|I"
 msgstr "Importer|I"
 
@@ -7320,28 +7349,28 @@ msgstr "Feil: Kan ikke skrive filen:"
 msgid "Error: Cannot open file: "
 msgstr "Feil: Kan ikke åpne filen: "
 
-#: src/buffer.C:2243 src/buffer.C:2699
+#: src/buffer.C:2243 src/buffer.C:2698
 msgid "LYX_ERROR:"
 msgstr "LYX_FEIL:"
 
-#: src/buffer.C:2243 src/buffer.C:2699
+#: src/buffer.C:2243 src/buffer.C:2698
 msgid "Cannot write file"
 msgstr "Kan ikke skrive fil"
 
-#: src/buffer.C:2331 src/buffer.C:2805
-msgid "Error : Wrong depth for LatexType Command.\n"
+#: src/buffer.C:2331 src/buffer.C:2804
+msgid "Error: Wrong depth for LatexType Command.\n"
 msgstr "Feil: Gal dybde for LaTeXType-kommando.\n"
 
 #. path to LaTeX file
-#: src/buffer.C:3081
+#: src/buffer.C:3079
 msgid "Running chktex..."
 msgstr "Kjører chktex..."
 
-#: src/buffer.C:3094
+#: src/buffer.C:3092
 msgid "chktex did not work!"
 msgstr "chktex fungerte ikke!"
 
-#: src/buffer.C:3095
+#: src/buffer.C:3093
 msgid "Could not run with file:"
 msgstr "Kunne ikke kjøre filen:"
 
@@ -7404,7 +7433,7 @@ msgstr "Les den isteden?"
 msgid "Unable to open template"
 msgstr "Kan ikke åpne mal"
 
-#: src/bufferlist.C:518 src/lyxfunc.C:1811
+#: src/bufferlist.C:518 src/lyxfunc.C:1819
 msgid "Document is already open:"
 msgstr "Dokumentet er allerede åpent:"
 
@@ -7526,11 +7555,11 @@ msgstr "Velg LyX dokument som skal settes inn"
 #: src/frontends/controllers/ControlExternal.C:154
 #: src/frontends/controllers/ControlGraphics.C:93
 #: src/frontends/controllers/ControlInclude.C:70 src/lyx_cb.C:110
-#: src/lyxfunc.C:1635 src/lyxfunc.C:1674 src/lyxfunc.C:1779
+#: src/lyxfunc.C:1643 src/lyxfunc.C:1682 src/lyxfunc.C:1787
 msgid "Documents|#o#O"
 msgstr "Dokumenter|#o#O"
 
-#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1676 src/lyxfunc.C:1781
+#: src/BufferView_pimpl.C:865 src/lyxfunc.C:1684 src/lyxfunc.C:1789
 msgid "Examples|#E#e"
 msgstr "Eksempler|#E#e"
 
@@ -7538,8 +7567,8 @@ msgstr "Eksempler|#E#e"
 msgid "*.lyx| LyX Documents (*.lyx)"
 msgstr "*.lyx| LyX Dokumenter (*.lyx)"
 
-#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1690 src/lyxfunc.C:1798
-#: src/lyxfunc.C:1825
+#: src/BufferView_pimpl.C:879 src/lyxfunc.C:1698 src/lyxfunc.C:1718
+#: src/lyxfunc.C:1806 src/lyxfunc.C:1833 src/lyxfunc.C:1843
 msgid "Canceled."
 msgstr "Avbrutt."
 
@@ -7561,7 +7590,7 @@ msgstr " ..."
 msgid "Document %1$s inserted."
 msgstr "Satt inn document %1$s."
 
-#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1735
+#: src/BufferView_pimpl.C:903 src/lyxfunc.C:1743
 msgid "Document "
 msgstr "Dokumentet "
 
@@ -7846,8 +7875,8 @@ msgid "No information for exporting to "
 msgstr "Ingen informasjon om ekportering til "
 
 #: src/exporter.C:89
-msgid "Cannot run latex."
-msgstr "Kan ikke kjøre latex."
+msgid "Cannot run LaTeX."
+msgstr "Kan ikke kjøre LaTex."
 
 #: src/exporter.C:90
 msgid "The path to the lyx file cannot contain spaces."
@@ -8338,11 +8367,11 @@ msgstr "LyX: %1$s"
 msgid "LyX: "
 msgstr "LyX: "
 
-#: src/frontends/qt2/FileDialog.C:60
+#: src/frontends/qt2/FileDialog.C:61
 msgid "All files (*)"
 msgstr "Alle filer (*)"
 
-#: src/frontends/qt2/FileDialog.C:90
+#: src/frontends/qt2/FileDialog.C:91
 msgid "*|All files"
 msgstr ""
 
@@ -8375,14 +8404,12 @@ msgid "Select a BibTeX database to add"
 msgstr ""
 
 #: src/frontends/qt2/QCommandBuffer.C:74
-#, fuzzy
 msgid "Previous command"
-msgstr "Utfør kommando"
+msgstr "Forrige kommando"
 
 #: src/frontends/qt2/QCommandBuffer.C:75
-#, fuzzy
 msgid "Next command"
-msgstr "Utfør kommando"
+msgstr "Neste kommando"
 
 #: src/frontends/qt2/QDelimiterDialog.C:81
 msgid "LyX: Delimiters"
@@ -8540,19 +8567,16 @@ msgid "LaTeX Preamble"
 msgstr ""
 
 #: src/frontends/qt2/QDocumentDialog.C:344
-#, fuzzy
 msgid "Small margins"
-msgstr "Kapiteler"
+msgstr ""
 
 #: src/frontends/qt2/QDocumentDialog.C:345
-#, fuzzy
 msgid "Very small margins"
-msgstr "Veldig store marger"
+msgstr ""
 
 #: src/frontends/qt2/QDocumentDialog.C:346
-#, fuzzy
 msgid "Very wide margins"
-msgstr "Veldig store marger"
+msgstr ""
 
 #: src/frontends/qt2/QERT.C:31
 msgid "LaTeX ERT"
@@ -8754,8 +8778,8 @@ msgstr "Skjermfonter"
 
 #. output
 #: src/frontends/qt2/QPrefsDialog.C:142
-msgid "Ascii"
-msgstr "Ascii"
+msgid "ASCII"
+msgstr ""
 
 #: src/frontends/qt2/QPrefsDialog.C:144
 msgid "Date format"
@@ -8797,7 +8821,7 @@ msgid "Select a backups directory"
 msgstr ""
 
 #: src/frontends/qt2/QPrefsDialog.C:572
-msgid "Selection a documents directory"
+msgid "Select a document directory"
 msgstr ""
 
 #: src/frontends/qt2/QPrefsDialog.C:580
@@ -8843,6 +8867,10 @@ msgstr ""
 #: src/frontends/qt2/QToc.C:42
 msgid "Table of contents"
 msgstr "Innholdsfortegnelse"
+
+#: src/frontends/qt2/QtView.C:147
+msgid "LyX"
+msgstr "LyX"
 
 #: src/frontends/qt2/QVCLog.C:35
 msgid "VCLog"
@@ -9393,7 +9421,7 @@ msgstr ""
 
 #: src/frontends/xforms/FormGraphics.C:259
 msgid ""
-"Add any additional latex option, which is defined in the graphicx-package "
+"Add any additional LaTeX option, which is defined in the graphicx-package "
 "and not mentioned in the gui's tabfolders."
 msgstr ""
 
@@ -9892,7 +9920,7 @@ msgstr ""
 
 #. set up the tooltips
 #: src/frontends/xforms/FormSpellchecker.C:60
-msgid "Type replacement for unknown word  or select from suggestions."
+msgid "Type replacement for unknown word or select from suggestions."
 msgstr ""
 
 #: src/frontends/xforms/FormSpellchecker.C:63
@@ -9952,12 +9980,12 @@ msgstr "Celle"
 msgid "LongTable"
 msgstr ""
 
-#: src/frontends/xforms/FormTabular.C:517
+#: src/frontends/xforms/FormTabular.C:521
 msgid "Wrong Cursor position, updated window"
 msgstr ""
 
-#: src/frontends/xforms/FormTabular.C:538
-#: src/frontends/xforms/FormTabular.C:556
+#: src/frontends/xforms/FormTabular.C:542
+#: src/frontends/xforms/FormTabular.C:560
 msgid "Invalid Length (valid example: 10mm)"
 msgstr ""
 
@@ -10037,11 +10065,11 @@ msgid "Forces float to the right in the paragraph."
 msgstr ""
 
 #: src/frontends/xforms/input_validators.C:126
-msgid "ERROR!  Unable to print!"
-msgstr "Feil! Kan ikke lese skrive ut!"
+msgid "ERROR! Unable to print!"
+msgstr "Feil! Kan ikke skrive ut!"
 
 #: src/frontends/xforms/input_validators.C:127
-msgid "Check 'range of pages'!"
+msgid "Check `range of pages'!"
 msgstr ""
 
 #: src/frontends/xforms/xforms_helpers.C:356
@@ -10118,7 +10146,7 @@ msgstr "Importerer %1$s..."
 msgid "Importing "
 msgstr "Importerer "
 
-#: src/importer.C:47 src/lyxfunc.C:979 src/lyxfunc.C:1142 src/lyxfunc.C:1723
+#: src/importer.C:47 src/lyxfunc.C:987 src/lyxfunc.C:1150 src/lyxfunc.C:1731
 msgid "..."
 msgstr "..."
 
@@ -10173,7 +10201,7 @@ msgid "Not permitted to change font-types inside ERT-insets!"
 msgstr "Det er ikke tillatt å endre font i en ERT!"
 
 #: src/insets/insetert.C:250 src/insets/insettabular.C:2092
-#: src/insets/insettext.C:1423
+#: src/insets/insettext.C:1413
 msgid "Sorry."
 msgstr "Beklager."
 
@@ -10300,7 +10328,7 @@ msgstr ""
 msgid "Idx"
 msgstr ""
 
-#: src/insets/insetlabel.C:47 src/mathed/math_hullinset.C:796
+#: src/insets/insetlabel.C:47 src/mathed/math_hullinset.C:799
 msgid "Enter label:"
 msgstr "Sett inn referanse merke:"
 
@@ -10401,29 +10429,29 @@ msgstr "Multikolonner kan bare være horisontale."
 msgid "Opened Text Inset"
 msgstr "Åpnet text inset"
 
-#: src/insets/insettext.C:1421
+#: src/insets/insettext.C:1411
 msgid "Impossible operation"
 msgstr "Umulig operasjon"
 
-#: src/insets/insettext.C:1422
+#: src/insets/insettext.C:1412
 msgid "Cannot include more than one paragraph!"
 msgstr "Kan ikke inkludere mer enn ett avsnitt!"
 
-#: src/insets/insettext.C:1497 src/text3.C:1098
+#: src/insets/insettext.C:1487 src/text3.C:1104
 msgid "Layout "
 msgstr "Stil "
 
-#: src/insets/insettext.C:1497 src/text3.C:1099
+#: src/insets/insettext.C:1487 src/text3.C:1105
 msgid " not known"
 msgstr " ukjent"
 
-#: src/insets/insettext.C:1550 src/text3.C:880
+#: src/insets/insettext.C:1540 src/text3.C:886
 msgid "Unknown spacing argument: "
 msgstr "Ukjent argument til linjeavstand: "
 
-#: src/insets/insettext.C:1669
-msgid "Error : LatexType Command not allowed here.\n"
-msgstr ""
+#: src/insets/insettext.C:1659
+msgid "Error: LatexType Command not allowed here.\n"
+msgstr "Feil: Gal dybde for LatexType-kommando.\n"
 
 #: src/insets/insettheorem.C:39
 msgid "theorem"
@@ -10527,8 +10555,8 @@ msgid "selection"
 msgstr "merket"
 
 #: src/LColor.C:62
-msgid "latex text"
-msgstr ""
+msgid "LaTeX text"
+msgstr "LaTeX tekst"
 
 #: src/LColor.C:63
 msgid "previewed snippet"
@@ -10755,7 +10783,7 @@ msgid "Select previous char"
 msgstr "Merk forrige bokstav"
 
 #: src/LyXAction.C:109
-msgid "Insert bibtex"
+msgid "Insert BibTeX"
 msgstr "Sett inn BibTeX"
 
 #: src/LyXAction.C:120
@@ -10842,11 +10870,11 @@ msgstr "Sett inn sitat"
 msgid "Execute command"
 msgstr "Utfør kommando"
 
-#: src/LyXAction.C:165 src/MenuBackend.C:674 src/text3.C:1021
+#: src/LyXAction.C:165 src/MenuBackend.C:673 src/text3.C:1027
 msgid "Copy"
 msgstr "Kopier"
 
-#: src/LyXAction.C:166 src/MenuBackend.C:673 src/text3.C:1016
+#: src/LyXAction.C:166 src/MenuBackend.C:672 src/text3.C:1022
 msgid "Cut"
 msgstr "Klipp"
 
@@ -11122,7 +11150,7 @@ msgstr "Gå ett avsnitt opp"
 msgid "Select previous paragraph"
 msgstr "Merk forrige avsnitt"
 
-#: src/LyXAction.C:323 src/MenuBackend.C:675 src/text3.C:998
+#: src/LyXAction.C:323 src/MenuBackend.C:674 src/text3.C:1004
 msgid "Paste"
 msgstr "Lim inn"
 
@@ -11218,11 +11246,11 @@ msgstr "(Hvis ikke blir ikke dokumentet lagret)"
 msgid "Choose a filename to save document as"
 msgstr ""
 
-#: src/lyx_cb.C:112 src/lyxfunc.C:1637
+#: src/lyx_cb.C:112 src/lyxfunc.C:1645
 msgid "Templates|#T#t"
 msgstr ""
 
-#: src/lyx_cb.C:120 src/lyxfunc.C:1642
+#: src/lyx_cb.C:120 src/lyxfunc.C:1650
 msgid "*.lyx|LyX Documents (*.lyx)"
 msgstr "*.lyx|LyX dokumenter (*.lyx)"
 
@@ -11327,7 +11355,7 @@ msgstr "Feil! Den spesifiserte filen kan ikke åpnes: "
 msgid "Error! Cannot open specified file: "
 msgstr "Feil! Kan ikke åpne spesifisert fil: "
 
-#: src/lyx_cb.C:511 src/mathed/math_hullinset.C:795
+#: src/lyx_cb.C:511 src/mathed/math_hullinset.C:798
 msgid "Enter new label to insert:"
 msgstr "Skriv inn referansemerke som skal settes inn:"
 
@@ -11434,154 +11462,150 @@ msgstr ""
 msgid "  Number "
 msgstr ""
 
-#: src/lyxfunc.C:236
+#: src/lyxfunc.C:242
 msgid "Unknown function."
 msgstr ""
 
-#: src/lyxfunc.C:270
+#: src/lyxfunc.C:275
 msgid "Nothing to do"
 msgstr "Ingenting å utføre"
 
-#: src/lyxfunc.C:286
+#: src/lyxfunc.C:291
 msgid "Unknown action"
 msgstr "Ukjent operasjon"
 
 #. the default error message if we disable the command
-#: src/lyxfunc.C:291
+#: src/lyxfunc.C:296
 msgid "Command disabled"
 msgstr ""
 
 #. no
-#: src/lyxfunc.C:303
+#: src/lyxfunc.C:308
 msgid "Document is read-only"
 msgstr "Dokumentet er ikke skrivbart."
 
 #. no
-#: src/lyxfunc.C:308
+#: src/lyxfunc.C:313
 msgid "Command not allowed without any document open"
 msgstr "Kommandoen er ikke lov uten åpne dokumenter"
 
-#: src/lyxfunc.C:694
+#: src/lyxfunc.C:702
 #, c-format
 msgid "Unknown function (%1$s)"
 msgstr "Ukjent funksjon (%1$s)"
 
-#: src/lyxfunc.C:698
+#: src/lyxfunc.C:706
 msgid "Unknown function ("
 msgstr ""
 
-#: src/lyxfunc.C:974
+#: src/lyxfunc.C:982
 #, c-format
 msgid "Saving document %1$s..."
 msgstr "Lagrer dokument %1$s..."
 
-#: src/lyxfunc.C:977
+#: src/lyxfunc.C:985
 msgid "Saving document "
 msgstr "Lagrer dokument "
 
-#: src/lyxfunc.C:983
+#: src/lyxfunc.C:991
 msgid " done."
 msgstr "ferdig."
 
-#: src/lyxfunc.C:1125 src/mathed/formulabase.C:1036
+#: src/lyxfunc.C:1133 src/mathed/formulabase.C:1036
 msgid "Missing argument"
 msgstr "Mangler argument"
 
-#: src/lyxfunc.C:1138
+#: src/lyxfunc.C:1146
 #, c-format
 msgid "Opening help file %1$s..."
 msgstr "Åpner hjelpefil %1$s..."
 
-#: src/lyxfunc.C:1141
+#: src/lyxfunc.C:1149
 msgid "Opening help file "
 msgstr "Åpner hjelpefil "
 
-#: src/lyxfunc.C:1347
+#: src/lyxfunc.C:1355
 msgid "This is only allowed in math mode!"
 msgstr "Dette er bare tillatt i mattemodus!"
 
-#: src/lyxfunc.C:1389
+#: src/lyxfunc.C:1397
 msgid "Opening child document "
 msgstr "Åpner subdokument "
 
-#: src/lyxfunc.C:1463
+#: src/lyxfunc.C:1471
 msgid "Syntax: set-color <lyx_name> <x11_name>"
 msgstr ""
 
-#: src/lyxfunc.C:1477
+#: src/lyxfunc.C:1485
 #, c-format
 msgid "Set-color \"%1$s\" failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1482
+#: src/lyxfunc.C:1490
 msgid "Set-color "
 msgstr ""
 
-#: src/lyxfunc.C:1483
+#: src/lyxfunc.C:1491
 msgid " failed - color is undefined or may not be redefined"
 msgstr ""
 
-#: src/lyxfunc.C:1633
+#: src/lyxfunc.C:1641
 msgid "Select template file"
 msgstr ""
 
-#: src/lyxfunc.C:1672
+#: src/lyxfunc.C:1680
 msgid "Select document to open"
 msgstr ""
 
-#: src/lyxfunc.C:1708
+#: src/lyxfunc.C:1716
 msgid "No such file"
 msgstr "Ingen slik fil"
 
-#: src/lyxfunc.C:1709
+#: src/lyxfunc.C:1717
 msgid "Start a new document with this filename ?"
 msgstr "Begynne ett nytt dokument med dette navnet?"
 
-#: src/lyxfunc.C:1710 src/lyxfunc.C:1835
-msgid "Canceled"
-msgstr ""
-
-#: src/lyxfunc.C:1721
+#: src/lyxfunc.C:1729
 #, c-format
 msgid "Opening document %1$s..."
 msgstr "Åpner dokument %1$s...\""
 
-#: src/lyxfunc.C:1723
+#: src/lyxfunc.C:1731
 msgid "Opening document "
 msgstr "Åpner dokument "
 
-#: src/lyxfunc.C:1733
+#: src/lyxfunc.C:1741
 #, c-format
 msgid "Document %1$s opened."
 msgstr "Dokument %1$s åpnet."
 
-#: src/lyxfunc.C:1735
+#: src/lyxfunc.C:1743
 msgid " opened."
 msgstr " åpnet."
 
-#: src/lyxfunc.C:1739
+#: src/lyxfunc.C:1747
 #, c-format
 msgid "Could not open document %1$s"
 msgstr "Kunne ikke åpne dokumentet %1$s"
 
-#: src/lyxfunc.C:1742
+#: src/lyxfunc.C:1750
 msgid "Could not open document "
 msgstr "Kunne ikke åpne dokumentet "
 
-#: src/lyxfunc.C:1769
+#: src/lyxfunc.C:1777
 #, c-format
 msgid "Select %1$s file to import"
 msgstr "Velg %1$s fil som skal importeres"
 
-#: src/lyxfunc.C:1773
+#: src/lyxfunc.C:1781
 msgid "Select "
 msgstr "Velg "
 
-#: src/lyxfunc.C:1774
+#: src/lyxfunc.C:1782
 msgid " file to import"
 msgstr " fil som skal importeres"
 
-#: src/lyxfunc.C:1813
+#: src/lyxfunc.C:1821
 msgid ""
 "Do you want to close that document now?\n"
 "('No' will just switch to the open version)"
@@ -11589,15 +11613,15 @@ msgstr ""
 "Ønsker du å lukke det dokumentet nå?\n"
 "('Nei' vil bare bytte til den versjonen som er åpnet)"
 
-#: src/lyxfunc.C:1833
+#: src/lyxfunc.C:1841
 msgid "A document by the name"
 msgstr "Ett annet dokument med navnet"
 
-#: src/lyxfunc.C:1834
+#: src/lyxfunc.C:1842
 msgid "already exists. Overwrite?"
 msgstr "finnes allerede. Overskrive?"
 
-#: src/lyxfunc.C:1906
+#: src/lyxfunc.C:1914
 msgid "Welcome to LyX!"
 msgstr "Velkommen til LyX!"
 
@@ -11922,13 +11946,13 @@ msgstr ""
 
 #: src/lyxrc.C:1950
 msgid ""
-"The default path for your documents.  An empty value selects the directory "
+"The default path for your documents. An empty value selects the directory "
 "LyX was started from."
 msgstr ""
 
 #: src/lyxrc.C:1954
 msgid ""
-"The path that LyX will set when offering to choose a template.  An empty "
+"The path that LyX will set when offering to choose a template. An empty "
 "value selects the directory LyX was started from."
 msgstr ""
 
@@ -11974,7 +11998,7 @@ msgstr ""
 
 #: src/lyxrc.C:1986
 msgid ""
-"The  UI (user interface) file. Can either specify an absolute path, or LyX "
+"The UI (user interface) file. Can either specify an absolute path, or LyX "
 "will look in its global and local ui/ directories."
 msgstr ""
 
@@ -11987,7 +12011,7 @@ msgstr ""
 #: src/lyxrc.C:1996
 msgid ""
 "Use to define an external program to render tables in the ASCII output. E.g. "
-"\"groff -t -Tlatin1 $$FName\"  where $$FName is the input file. If \"none\" "
+"\"groff -t -Tlatin1 $$FName\" where $$FName is the input file. If \"none\" "
 "is specified, an internal routine is used."
 msgstr ""
 
@@ -12097,7 +12121,7 @@ msgstr ""
 
 #: src/lyxrc.C:2086
 msgid ""
-"The latex command for loading the language package. E.g. \"\\usepackage"
+"The LaTeX command for loading the language package. E.g. \"\\usepackage"
 "{babel}\", \"\\usepackage{omega}\"."
 msgstr ""
 
@@ -12126,17 +12150,17 @@ msgstr ""
 
 #: src/lyxrc.C:2106
 msgid ""
-"The latex command for changing from the language of the document to another "
+"The LaTeX command for changing from the language of the document to another "
 "language. E.g. \\selectlanguage{$$lang} where $$lang is substituted by the "
 "name of the second language."
 msgstr ""
 
 #: src/lyxrc.C:2110
-msgid "The latex command for changing back to the language of the document."
+msgid "The LaTeX command for changing back to the language of the document."
 msgstr ""
 
 #: src/lyxrc.C:2114
-msgid "The latex command for local changing of the language."
+msgid "The LaTeX command for local changing of the language."
 msgstr ""
 
 #: src/lyxrc.C:2119
@@ -12276,34 +12300,34 @@ msgid "No Documents Open!"
 msgstr "Ingen åpne dokumenter!"
 
 #: src/MenuBackend.C:378
-msgid "Ascii text as lines"
-msgstr "Ascii tekst som linjer"
+msgid "ASCII text as lines"
+msgstr "ASCII tekst som linjer"
 
 #: src/MenuBackend.C:380
-msgid "Ascii text as paragraphs"
-msgstr "Ascii tekst som avsnitt"
+msgid "ASCII text as paragraphs"
+msgstr "ASCII tekst som avsnitt"
 
-#: src/MenuBackend.C:518
+#: src/MenuBackend.C:517
 msgid "No Table of contents"
 msgstr ""
 
-#: src/MenuBackend.C:655
+#: src/MenuBackend.C:654
 msgid "New...|N"
 msgstr "Ny...|N"
 
-#: src/MenuBackend.C:658
+#: src/MenuBackend.C:657
 msgid "Quit|Q"
 msgstr "Avslutt|A"
 
-#: src/MenuBackend.C:666
+#: src/MenuBackend.C:665
 msgid "LaTeX...|L"
 msgstr "LaTeX...|L"
 
-#: src/MenuBackend.C:668
+#: src/MenuBackend.C:667
 msgid "LinuxDoc...|L"
 msgstr "LinuxDoc...|L"
 
-#: src/MenuBackend.C:676
+#: src/MenuBackend.C:675
 msgid "Emphasize"
 msgstr "Uthevet"
 
@@ -12383,37 +12407,35 @@ msgstr ""
 msgid "No more insets"
 msgstr "Ingen flere insets"
 
-#: src/text3.C:941
+#: src/text3.C:947
 msgid "Mark off"
 msgstr "Merke slått av"
 
-#: src/text3.C:949
+#: src/text3.C:955
 msgid "Mark on"
 msgstr "Merke på"
 
-#: src/text3.C:956
+#: src/text3.C:962
 msgid "Mark removed"
 msgstr "Fjernet merke"
 
-#: src/text3.C:960
+#: src/text3.C:966
 msgid "Mark set"
 msgstr "Merke satt"
 
-#: src/text3.C:1080
+#: src/text3.C:1086
 msgid "LyX function 'layout' needs an argument."
 msgstr ""
 
 #: src/text.C:1924
 msgid ""
-"You cannot insert a space at the beginning of a paragraph.  Please read the "
+"You cannot insert a space at the beginning of a paragraph. Please read the "
 "Tutorial."
 msgstr ""
-"Du kan ikke sette inn et mellomrom i begynnelsen av et avsnitt. Les "
-"'Tutorial'."
 
 #: src/text.C:1926
-msgid "You cannot type two spaces this way.  Please read the Tutorial."
-msgstr "Det er ikke mulig å bruke to mellomrom pe denne meten. Les 'Tutorial.'"
+msgid "You cannot type two spaces this way. Please read the Tutorial."
+msgstr "Det er ikke mulig å bruke to mellomrom på denne meten. Les 'Tutorial.'"
 
 #: src/text.C:3284
 msgid " (vertical fill)"
