@@ -295,6 +295,20 @@ void LyXScreen::greyOut()
 		workarea().workWidth(),
 		workarea().workHeight(),
 		LColor::bottomarea);
+
+/* FIXME: pending GUIIzation / cleanup of graphics cache
+We should be using :
+
+	static GImage splash(LibFileSearch(...)); 
+	workarea().getPainter().image(splash);
+
+or similar.
+*/
+#if 0
+	// Add a splash screen to the centre of the work area
+	string const splash_file = (lyxrc.show_banner) ?
+		LibFileSearch("images", "banner", "xpm") : string();
+#endif 
 }
 
 

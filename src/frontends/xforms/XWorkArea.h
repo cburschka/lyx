@@ -75,10 +75,6 @@ private:
 	FL_OBJECT * work_area;
 	///
 	FL_OBJECT * scrollbar;
-	///
-	mutable FL_OBJECT * splash_;
-	///
-	mutable FL_OBJECT * splash_text_;
 	/// The pixmap overlay on the workarea
 	Pixmap workareapixmap;
 	///

@@ -16,9 +16,8 @@
 #include "XWorkArea.h"
 #include "debug.h"
 #include "LyXView.h"
-#include "lyxrc.h" // lyxrc.show_banner
-#include "version.h" // lyx_version
 #include "XLyXKeySym.h"
+#include "ColorHandler.h"
 
 #if FL_VERSION < 1 && (FL_REVISION < 89 || (FL_REVISION == 89 && FL_FIXLEVEL < 5))
 #include "lyxlookup.h"
@@ -151,14 +150,12 @@ extern "C" {
 
 
 XWorkArea::XWorkArea(int x, int y, int w, int h)
-	: splash_(0), splash_text_(0), workareapixmap(0), painter_(*this)
+	: workareapixmap(0), painter_(*this)
 {
 	fl_freeze_all_forms();
 
-	//
 	FL_OBJECT * obj;
 
-	// a box
 	if (lyxerr.debugging(Debug::WORKAREA))
 		lyxerr << "\tbackground box: +"
 		       << x << '+' << y << ' '
@@ -169,37 +166,6 @@ XWorkArea::XWorkArea(int x, int y, int w, int h)
 					 h, "");
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthWestGravity, SouthEastGravity);
-
-	// Add a splash screen to the centre of the work area
-	string const splash_file = (lyxrc.show_banner) ?
-		LibFileSearch("images", "banner", "xpm") : string();
-
-	if (!splash_file.empty()) {
-		int const splash_w = 425;
-		int const splash_h = 290;
-		int const splash_x = x + (w - 15 - splash_w) / 2;
-		int const splash_y = y + (h - splash_h) / 2;
-		splash_ = obj =
-			fl_add_pixmapbutton(FL_NORMAL_BUTTON,
-					    splash_x, splash_y,
-					    splash_w, splash_h, "");
-		fl_set_pixmapbutton_file(obj, splash_file.c_str());
-		fl_set_pixmapbutton_focus_outline(obj, 3);
-		fl_set_object_boxtype(obj, FL_NO_BOX);
-
-		int const text_x = splash_x + 260;
-		int const text_y = splash_y + 255;
-		splash_text_ = obj =
-			fl_add_text(FL_NORMAL_TEXT, text_x, text_y, 160, 16,
-				    lyx_version);
-		fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-		fl_mapcolor(FL_FREE_COL2, 0x2b, 0x47, 0x82);
-		fl_mapcolor(FL_FREE_COL3, 0xe1, 0xd2, 0x9b);
-		fl_set_object_color(obj, FL_FREE_COL2, FL_FREE_COL2);
-		fl_set_object_lcol(obj, FL_FREE_COL3);
-		fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-		fl_set_object_lstyle(obj, FL_BOLD_STYLE);
-	}
 
 	scrollbar = obj = fl_add_scrollbar(FL_VERT_SCROLLBAR,
 					   x + w - 15,
@@ -213,30 +179,28 @@ XWorkArea::XWorkArea(int x, int y, int w, int h)
 	fl_set_scrollbar_value(scrollbar, 0.0);
 	fl_set_scrollbar_size(scrollbar, scrollbar->h);
 	
-	///
-	/// The free object
-
 	int const bw = int(abs(fl_get_border_width()));
  
 	// Create the workarea pixmap
 	createPixmap(w - 15 - 2 * bw, h - 2 * bw);
 
-	// We add this object as late as possible to avoit problems
-	// with drawing.
 	if (lyxerr.debugging(Debug::WORKAREA))
 		lyxerr << "\tfree object: +"
 		       << x + bw << '+' << y + bw << ' '
 		       << w - 15 - 2 * bw << 'x'
 		       << h - 2 * bw << endl;
 
+	// We add this object as late as possible to avoid problems
+	// with drawing.
+	// FIXME: like ??
 	work_area = obj = fl_add_free(FL_ALL_FREE,
 				      x + bw, y + bw,
-				      w - 15 - 2 * bw, // scrollbarwidth
+				      w - 15 - 2 * bw,
 				      h - 2 * bw, "",
 				      C_XWorkArea_work_area_handler);
 	obj->wantkey = FL_KEY_ALL;
-	obj->u_vdata = this; /* This is how we pass the XWorkArea
-				to the work_area_handler. */
+	obj->u_vdata = this;
+ 
 	fl_set_object_boxtype(obj,FL_DOWN_BOX);
 	fl_set_object_resize(obj, FL_RESIZE_ALL);
 	fl_set_object_gravity(obj, NorthWestGravity, SouthEastGravity);
@@ -273,16 +237,6 @@ void destroy_object(FL_OBJECT * obj)
 
 void XWorkArea::createPixmap(int width, int height)
 {
-	// Three calls to createPixmap are needed to draw the initial view
-	// of LyX. Any more and the splash is destroyed.
-	static int counter = 0;
-	if (++counter == 4) {
-		destroy_object(splash_);
-		splash_ = 0;
-		destroy_object(splash_text_);
-		splash_text_ = 0;
-	}
-
 	static int cur_width = -1;
 	static int cur_height = -1;
 
