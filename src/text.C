@@ -609,7 +609,7 @@ int LyXText::rightMargin(Paragraph const & par,
 
 	return PAPER_MARGIN
 		+ font_metrics::signedWidth(tclass.rightmargin(),
-				       tclass.defaultfont());
+				       tclass.defaultfont())
 		+ font_metrics::signedWidth(layout->rightmargin,
 				       tclass.defaultfont())
 		* 4 / (par.getDepth() + 4);

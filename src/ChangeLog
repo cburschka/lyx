@@ -1,3 +1,10 @@
+2003-10-20  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* text.C (rightMargin): remove spurious semicolon
+
+	* lengthcommon.C: add empty unit_name* entries for UNIT_NONE (bug
+	1415)
+
 2003-10-18  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* text3.C: fix one crash due to wrong cursor def
