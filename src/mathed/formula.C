@@ -48,9 +48,9 @@ private:
 	///
 	string const latexString() const;
 	///
-	InsetFormula & parent() const
+	InsetFormula const & parent() const
 	{
-		return *static_cast<InsetFormula*>(inset());
+		return dynamic_cast<InsetFormula const &>(inset());
 	}
 };
 

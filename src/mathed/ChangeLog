@@ -1,5 +1,9 @@
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
+	* formula.C (PreviewImpl::parent): return a const reference.
+
+2003-09-16  Angus Leeming  <leeming@lyx.org>
+
 	* formula.C:
 	* formulamacro.C:
 	add #include "LColor.h".

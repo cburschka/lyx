@@ -35,6 +35,11 @@ bool PreviewedInset::activated()
 }
 
 
+PreviewedInset::PreviewedInset(InsetOld & inset)
+	: inset_(inset), pimage_(0)
+{}
+
+
 BufferView * PreviewedInset::view() const
 {
 	return inset_.view();
@@ -121,7 +126,7 @@ void PreviewedInset::imageReady(PreviewImage const & pimage) const
 	pimage_ = &pimage;
 
 	if (view())
-		view()->updateInset(inset());
+		view()->updateInset(&inset());
 }
 
 } // namespace graphics

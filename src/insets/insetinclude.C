@@ -74,8 +74,8 @@ public:
 	///
 	string const latexString() const;
 	///
-	InsetInclude & parent() const {
-		return *static_cast<InsetInclude*>(inset());
+	InsetInclude const & parent() const {
+		return dynamic_cast<InsetInclude const &>(inset());
 	}
 
 	///

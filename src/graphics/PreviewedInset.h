@@ -9,7 +9,7 @@
  * Full author contact details are available in file CREDITS.
  *
  * lyx::graphics::PreviewedInset is an abstract base class that can help
- * insets to generate previews. The daughter class must instantiate three small
+ * insets to generate previews. The daughter class must instantiate two small
  * methods. The Inset would own an instance of this daughter class.
  */
 
@@ -35,9 +35,7 @@ public:
 	static bool activated();
 
 	///
-	PreviewedInset(InsetOld & inset) : inset_(inset), pimage_(0) {}
-	///
-	virtual ~PreviewedInset() {}
+	PreviewedInset(InsetOld & inset);
 
 	/** Find the PreviewLoader, add a LaTeX snippet to it and
 	 *  start the loading process.
@@ -58,11 +56,13 @@ public:
 	bool previewReady() const;
 
 	/// If !previewReady() returns 0.
-	PreviewImage const * pimage() const { return pimage_; }
+	PreviewImage const * pimage() const;
 
 protected:
+	///
+	virtual ~PreviewedInset() {}
 	/// Allow the daughter classes to cast up to the parent inset.
-	InsetOld * inset() const { return &inset_; }
+	InsetOld const & inset() const;
 	///
 	BufferView * view() const;
 
@@ -85,6 +85,20 @@ private:
 	///
 	boost::signals::connection connection_;
 };
+
+
+inline
+PreviewImage const * PreviewedInset::pimage() const
+{
+	return pimage_;
+}
+
+
+inline
+InsetOld const & PreviewedInset::inset() const
+{
+	return inset_;
+}
 
 } // namespace graphics
 } // namespace lyx

@@ -1,5 +1,11 @@
 2003-09-16  Angus Leeming  <leeming@lyx.org>
 
+	* PreviewedInset.[Ch] (c-tor) move out of line.
+	(d-tor): make private.
+	(inset): return a const reference rather than a non-const pointer.
+
+2003-09-16  Angus Leeming  <leeming@lyx.org>
+
 	* GraphicsImage.h: separate interface from implementation. Make all the
 	pure virtual functions private.
 
