@@ -113,7 +113,7 @@ void FormRef::showStageError(string const & mess)
 
       // packing dialog to main window
       dialog_ = alig;
-      mainAppWin->add_action(*dialog_, N_(" Reference "));
+      mainAppWin->add_action(*dialog_, _(" Reference "));
 
       // setting focus
       gtk_widget_grab_focus (GTK_WIDGET(b_cancel->gtkobj()));
@@ -182,7 +182,7 @@ void FormRef::showStageSelect()
       
       // packing dialog to main window
       dialog_ = mbox;
-      mainAppWin->add_action(*dialog_, N_(" Reference: Select reference "), true);
+      mainAppWin->add_action(*dialog_, _(" Reference: Select reference "), true);
 
       // setting focus
       GTK_WIDGET_SET_FLAGS (GTK_WIDGET(b_ok->gtkobj()), GTK_CAN_DEFAULT);
@@ -251,27 +251,27 @@ void FormRef::showStageAction()
       Gtk::Menu * menu = manage( new Gtk::Menu() );
       Gtk::MenuItem * e;
       
-      e = manage( new Gtk::MenuItem(N_("Ref")) );
+      e = manage( new Gtk::MenuItem(_("Ref")) );
       e->activate.connect(bind<Type>(slot(this, &FormRef::changeType), REF));
       e->show();
       menu->append( *e );
 
-      e = manage( new Gtk::MenuItem(N_("Page")) );
+      e = manage( new Gtk::MenuItem(_("Page")) );
       e->activate.connect(bind<Type>(slot(this, &FormRef::changeType), PAGEREF));
       e->show();
       menu->append( *e );
 
-      e = manage( new Gtk::MenuItem(N_("TextRef")) );
+      e = manage( new Gtk::MenuItem(_("TextRef")) );
       e->activate.connect(bind<Type>(slot(this, &FormRef::changeType), VREF));
       e->show();
       menu->append( *e );
 
-      e = manage( new Gtk::MenuItem(N_("TextPage")) );
+      e = manage( new Gtk::MenuItem(_("TextPage")) );
       e->activate.connect(bind<Type>(slot(this, &FormRef::changeType), VPAGEREF));
       e->show();
       menu->append( *e );
 
-      e = manage( new Gtk::MenuItem(N_("PrettyRef")) );
+      e = manage( new Gtk::MenuItem(_("PrettyRef")) );
       e->activate.connect(bind<Type>(slot(this, &FormRef::changeType), PRETTYREF));
       e->show();
       menu->append( *e );
@@ -297,8 +297,8 @@ void FormRef::showStageAction()
       bbox->children().push_back(Element(*b_ok, false, false));
       bbox->children().push_back(Element(*b_cancel, false, false));
       
-      table->attach( *manage( new Gtk::Label(N_("Type:")) ), 0, 1, 0, 1, 0, 0 );
-      table->attach( *manage( new Gtk::Label(N_("Name:")) ), 0, 1, 1, 2, 0, 0 );
+      table->attach( *manage( new Gtk::Label(_("Type:")) ), 0, 1, 0, 1, 0, 0 );
+      table->attach( *manage( new Gtk::Label(_("Name:")) ), 0, 1, 1, 2, 0, 0 );
       table->attach( *choice_, 1, 2, 0, 1 );
       table->attach( *name_, 1, 2, 1, 2 );
 
@@ -308,7 +308,7 @@ void FormRef::showStageAction()
 
       // packing dialog to main window
       dialog_ = mbox;
-      mainAppWin->add_action(*dialog_, string(N_(" Reference: ")) + params.getContents() + string(" "));
+      mainAppWin->add_action(*dialog_, string(_(" Reference: ")) + params.getContents() + string(" "));
 
       // setting focus
       GTK_WIDGET_SET_FLAGS (GTK_WIDGET(b_cancel->gtkobj()), GTK_CAN_DEFAULT);
@@ -327,6 +327,11 @@ void FormRef::showStageAction()
       u_ = d_->updateBufferDependent.connect(slot(this, &FormRef::update));
       h_ = d_->hideBufferDependent.connect(slot(this, &FormRef::hide));
     }
+}
+
+void FormRef::update(bool buffchanged)
+{
+  if (buffchanged) hide();
 }
 
 void FormRef::hide()

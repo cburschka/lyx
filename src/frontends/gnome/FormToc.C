@@ -97,19 +97,19 @@ void FormToc::show()
 
       choice_->get_menu()->items().clear();
       
-      e = manage( new Gtk::MenuItem(N_("Table of Contents")) );
+      e = manage( new Gtk::MenuItem(_("Table of Contents")) );
       e->activate.connect(bind<Buffer::TocType>(slot(this, &FormToc::changeList), Buffer::TOC_TOC));
       choice_->get_menu()->append( *e );
 
-      e = manage( new Gtk::MenuItem(N_("List of Figures")) );
+      e = manage( new Gtk::MenuItem(_("List of Figures")) );
       e->activate.connect(bind<Buffer::TocType>(slot(this, &FormToc::changeList), Buffer::TOC_LOF));
       choice_->get_menu()->append( *e );
 
-      e = manage( new Gtk::MenuItem(N_("List of Tables")) );
+      e = manage( new Gtk::MenuItem(_("List of Tables")) );
       e->activate.connect(bind<Buffer::TocType>(slot(this, &FormToc::changeList), Buffer::TOC_LOT));
       choice_->get_menu()->append( *e );
 
-      e = manage( new Gtk::MenuItem(N_("List of Algorithms")) );
+      e = manage( new Gtk::MenuItem(_("List of Algorithms")) );
       e->activate.connect(bind<Buffer::TocType>(slot(this, &FormToc::changeList), Buffer::TOC_LOA));
       choice_->get_menu()->append( *e );
 
@@ -117,7 +117,7 @@ void FormToc::show()
       b_refresh = Gtk::wrap( GTK_BUTTON( lookup_widget(pd, "button_refresh") ) );
       b_close   = Gtk::wrap( GTK_BUTTON( lookup_widget(pd, "button_close") ) );
       
-      b_refresh->clicked.connect(slot(this, &FormToc::update));
+      b_refresh->clicked.connect(bind<bool>(slot(this, &FormToc::update),false));
       b_close->clicked.connect(dialog_->destroy.slot());
       dialog_->destroy.connect(slot(this, &FormToc::free));
 
@@ -145,7 +145,7 @@ void FormToc::update(bool)
   if (dialog_ != NULL &&
       !lv_->view()->available())
     {
-      wintitle = N_( "*** No Document ***");
+      wintitle = _( "*** No Document ***");
       dialog_->set_title(wintitle);
       list_->items().clear();
 
@@ -164,25 +164,25 @@ void FormToc::update(bool)
       if( params.getCmdName() == "tableofcontents" )
 	{
 	  type = Buffer::TOC_TOC;
-	  wintitle = N_("Table of Contents");
+	  wintitle = _("Table of Contents");
 	  selection = 0;
 	}
       else if( params.getCmdName() == "listoffigures" )
 	{
 	  type = Buffer::TOC_LOF;
-	  wintitle = N_("List of Figures");
+	  wintitle = _("List of Figures");
 	  selection = 1;
 	}
       else if( params.getCmdName() == "listofalgorithms" )
 	{
 	  type = Buffer::TOC_LOA;
-	  wintitle = N_("List of Algorithms");
+	  wintitle = _("List of Algorithms");
 	  selection = 3;
 	}
       else
 	{
 	  type = Buffer::TOC_LOT;
-	  wintitle = N_("List of Tables");
+	  wintitle = _("List of Tables");
 	  selection = 2;
 	}
 

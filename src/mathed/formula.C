@@ -1090,7 +1090,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
 
     //------- dummy actions
     case LFUN_EXEC_COMMAND:
-       bv->owner()->getMiniBuffer()->ExecCommand(); 
+       bv->owner()->getMiniBuffer()->PrepareForCommand(); 
        break;
        
     default:

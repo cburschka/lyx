@@ -16,6 +16,7 @@
 #endif
 
 #include <vector>
+#include "gettext.h"
 #include "LString.h"
 #include <gnome--/app.h>
 #include "frontends/Menubar.h"
@@ -90,8 +91,6 @@ protected:
   };
   /// populate lists
   void updateList(vector<Buffer::TocItem> *, vector<ListsHolder> *);
-  /// Add to "Menus" the list of exportable/viewable formats
-  void add_formats(vector<Gnome::UI::Info> & Menus, kb_action action, bool viewable);
   
 private:
   /// 

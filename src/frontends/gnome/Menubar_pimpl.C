@@ -116,7 +116,7 @@ void Menubar::Pimpl::updateList(vector<Buffer::TocItem> * toclist, vector<ListsH
       string label;
 
       menu.push_back(Gnome::UI::Item(Gnome::UI::Icon(GNOME_STOCK_MENU_REFRESH),
-				     N_("Refresh"), slot(this, &Menubar::Pimpl::updateAllLists)));
+				     _("Refresh"), slot(this, &Menubar::Pimpl::updateAllLists)));
 
       if (toclist->size() > max_number_of_items)
 	composeTocUIInfo(menu, *toclist, toclist->begin(), 0);
@@ -146,7 +146,7 @@ Menubar::Pimpl::composeTocUIInfo(vector<Gnome::UI::Info> & menu,
 				 vector<Buffer::TocItem>::const_iterator begin,
 				 int mylevel)
 {
-  string label = N_("<No Name>");
+  string label = _("<No Name>");
 
   vector<Buffer::TocItem>::const_iterator end = toclist.end();
   vector<Buffer::TocItem>::const_iterator it;
@@ -210,7 +210,8 @@ void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::I
       return;
     }
 
-  Menu menu = menubackend_->getMenu(menu_name);
+  Menu menu = Menu();
+  menubackend_->getMenu(menu_name).expand(menu, owner_->buffer());
 
   for (Menu::const_iterator i = menu.begin(); i != menu.end(); ++i)
     {
@@ -333,43 +334,6 @@ void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::I
 	break;
       }
 
-      case MenuItem::Lastfiles: {
-	int ii = 1;
-	for (LastFiles::const_iterator cit = lastfiles->begin();
-	     cit != lastfiles->end() && ii < 10; ++cit, ++ii)
-	  {
-	    int action = lyxaction.getPseudoAction(LFUN_FILE_OPEN, (*cit));
-	    string label = tostr(ii) + ". " + MakeDisplayPath((*cit),30);
-
-	    path = rootpath + label;
-	    label = "_" + label;
-	    
-	    Menus.push_back(Gnome::UI::Item(label,
-					    bind<int>(slot(this, &Menubar::Pimpl::callback), action),
-					    label));
-	  }
-	break;
-      }
-      
-      case MenuItem::Documents: {
-	std::vector<string> names = bufferlist.getFileNames();
-
-	for (std::vector<string>::const_iterator cit = names.begin();
-	     cit != names.end() ; ++cit)
-	  {
-	    int action = lyxaction.getPseudoAction(LFUN_SWITCHBUFFER, *cit);
-	    string label = MakeDisplayPath(*cit, 30);
-
-	    path = rootpath + label;
-	    
-	    Menus.push_back(Gnome::UI::Item(label,
-					    bind<int>(slot(this, &Menubar::Pimpl::callback), action),
-					    label));
-	    
-	  }
-	break;
-      }
-
       case MenuItem::Toc: {
 	ListsHolder t;
 	t.path = path;
@@ -377,40 +341,16 @@ void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::I
 	break;
       }
       
-      case MenuItem::ViewFormats: {
-	add_formats(Menus, LFUN_PREVIEW, true);
-	break;
-      }
-	
-      case MenuItem::UpdateFormats: {
-	add_formats(Menus, LFUN_UPDATE, true);
-	break;  
-      }
-	
-      case MenuItem::ExportFormats: {
-	add_formats(Menus, LFUN_EXPORT, false);
-	break;
-      }
+      case MenuItem::Documents: 
+      case MenuItem::Lastfiles: 
+      case MenuItem::ViewFormats:
+      case MenuItem::UpdateFormats:
+      case MenuItem::ExportFormats:
+			lyxerr << "Menubar::Pimpl::create_submenu: "
+			  "this should not happen" << endl;
+			break;
       }
     }
-}
-
-void Menubar::Pimpl::add_formats(vector<Gnome::UI::Info> & Menus, kb_action action, bool viewable)
-{
-  vector<pair<string,string> > names = 
-    viewable
-    ? Exporter::GetViewableFormats(owner_->buffer())
-    : Exporter::GetExportableFormats(owner_->buffer());
-  
-  for (vector<pair<string,string> >::const_iterator cit = names.begin();
-       cit != names.end() ; ++cit) {
-    int action2 = lyxaction.getPseudoAction(action, (*cit).first);
-    string label = (*cit).second;
-
-    Menus.push_back(Gnome::UI::Item(label,
-				    bind<int>(slot(this, &Menubar::Pimpl::callback), action2),
-				    label));
-  }
 }
 
 void Menubar::Pimpl::connectWidgetToAction(GnomeUIInfo * guinfo)

@@ -45,8 +45,8 @@ private:
   /// Slot launching dialog to an existing inset
   void showInset( InsetCommand * const );
 
-  /// The following three methods do nothing in this implementation
-  virtual void update(bool = false) { }
+  virtual void update(bool = false);
+  /// The following two methods do nothing in this implementation
   virtual void apply() { }
   void show() { }
 

@@ -12,6 +12,7 @@
  */
 
 #include <config.h>
+#include "gettext.h"
 #include "Dialogs.h"
 #include "FormCopyright.h"
 
@@ -42,9 +43,9 @@ void FormCopyright::show()
 		vector<string> authors; //null. Authors are not listed in LyX copyright dialogbox.
 		
 		dialog_ = new Gnome::About(PACKAGE, VERSION,
-					   "(C) 1995 by Matthias Ettrich, \n1995-2000 LyX Team",
+					   _("(C) 1995 by Matthias Ettrich, \n1995-2000 LyX Team"),
 					   authors,
-					   "This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.\nLyX is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc.,  675 Mass Ave, Cambridge, MA 02139, USA.",
+					   _("This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.\nLyX is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc.,  675 Mass Ave, Cambridge, MA 02139, USA."),
 					   NULL);
 		
 		// it should be disconnected before deleting dialog_ in FormCopyright::hide()

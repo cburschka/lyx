@@ -86,7 +86,7 @@ void FormError::show()
       
       // packing dialog to main window
       dialog_ = mbox;
-      mainAppWin->add_action(*dialog_, N_(" Error "));
+      mainAppWin->add_action(*dialog_, _(" Error "));
 
       // setting focus
       GTK_WIDGET_SET_FLAGS (GTK_WIDGET(b_close->gtkobj()), GTK_CAN_DEFAULT);
@@ -101,9 +101,10 @@ void FormError::show()
       h_ = d_->hideBufferDependent.connect(slot(this, &FormError::hide));
     }
 }
-      
-void FormError::update(bool)
+
+void FormError::update(bool buffchanged)
 {
+  if (buffchanged) hide();
 }
 
 void FormError::hide()

@@ -126,7 +126,11 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, FL_Coord, FL_Coord,
 		default:
 			return 0;
 		}
-	}
+	} else if (event == FL_PUSH) {
+		// This actually clears the buffer.
+		mini->PrepareForCommand();
+ 	}
+
 	return 0;
 }
 
@@ -138,7 +142,7 @@ extern "C" int C_MiniBuffer_peek_event(FL_OBJECT * ob, int event,
 }
 
 
-void MiniBuffer::ExecCommand()
+void MiniBuffer::PrepareForCommand()
 {
 	text.erase();
 	fl_set_input(the_buffer, "");

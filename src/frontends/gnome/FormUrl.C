@@ -88,7 +88,7 @@ void FormUrl::show()
 
       url_ = manage( new Gnome::Entry() );
       name_ = manage( new Gnome::Entry() );
-      html_type_ = manage( new Gtk::CheckButton(N_("HTML type")) );
+      html_type_ = manage( new Gtk::CheckButton(_("HTML type")) );
       
       b_ok = Gtk::wrap( GTK_BUTTON( gnome_stock_button(GNOME_STOCK_BUTTON_OK) ) );
       b_cancel = Gtk::wrap( GTK_BUTTON( gnome_stock_button(GNOME_STOCK_BUTTON_CANCEL) ) );
@@ -114,9 +114,9 @@ void FormUrl::show()
       bbox->children().push_back(Element(*b_ok, false, false));
       bbox->children().push_back(Element(*b_cancel, false, false));
       
-      label = manage( new Gtk::Label(N_("URL")) );
+      label = manage( new Gtk::Label(_("URL")) );
       table->attach( *label, 0, 1, 0, 1, 0, 0 );
-      label = manage( new Gtk::Label(N_("Name")) );
+      label = manage( new Gtk::Label(_("Name")) );
       table->attach( *label, 0, 1, 1, 2, 0, 0 );
       table->attach( *url_, 1, 2, 0, 1 );
       table->attach( *name_, 1, 2, 1, 2 );
@@ -128,7 +128,7 @@ void FormUrl::show()
       
       // packing dialog to main window
       dialog_ = mbox;
-      mainAppWin->add_action(*dialog_, N_(" URL "));
+      mainAppWin->add_action(*dialog_, _(" URL "));
 
       // setting focus
       GTK_WIDGET_SET_FLAGS (GTK_WIDGET(url_->get_entry()->gtkobj()), GTK_CAN_DEFAULT);
@@ -152,11 +152,12 @@ void FormUrl::show()
 
 void FormUrl::update(bool switched)
 {
-  if (switched) {
+  if (switched)
+    {
       hide();
       return;
-  }
-
+    }
+  
   if (dialog_ != NULL &&
       lv_->view()->available())
     {

@@ -86,7 +86,7 @@ void FormIndex::show()
     {
       using namespace Gtk::Box_Helpers;
       
-      Gtk::Label * label = manage( new Gtk::Label(N_("Keyword")) );
+      Gtk::Label * label = manage( new Gtk::Label(_("Keyword")) );
       Gtk::Box * mbox = manage( new Gtk::HBox() );
       Gtk::ButtonBox * bbox = manage( new Gtk::HButtonBox() );
       Gtk::Separator * sep = manage( new Gtk::VSeparator() );
@@ -116,7 +116,7 @@ void FormIndex::show()
 
       // packing dialog to main window
       dialog_ = mbox;
-      mainAppWin->add_action(*dialog_, N_(" Index "));
+      mainAppWin->add_action(*dialog_, _(" Index "));
 
       // setting focus
       GTK_WIDGET_SET_FLAGS (GTK_WIDGET(keyword_->get_entry()->gtkobj()), GTK_CAN_DEFAULT);
@@ -137,26 +137,27 @@ void FormIndex::show()
       update();  // make sure its up-to-date
     }
 }
-      
+
 void FormIndex::update(bool switched)
 {
-  if (switched) {
+  if (switched)
+    {
       hide();
       return;
-  }
-
+    }
+  
   if (dialog_ != NULL &&
       lv_->view()->available())
     {
       keyword_->get_entry()->set_text(params.getContents().c_str());
-  
+      
       bool sens = (!(lv_->buffer()->isReadonly()));
-
+      
       keyword_->set_sensitive(sens);
       b_ok->set_sensitive(sens);
     }
 }
-
+      
 void FormIndex::hide()
 {
   if (dialog_!=NULL) mainAppWin->remove_action();

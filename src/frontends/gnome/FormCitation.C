@@ -94,9 +94,6 @@ void FormCitation::showInset( InsetCommand * const inset )
   inset_ = inset;
   ih_ = inset_->hide.connect(slot(this, &FormCitation::hide));
 
-#ifdef WITH_WARNINGS
-#warning This connection to update will do nothing!
-#endif
   u_ = d_->updateBufferDependent.connect(slot(this, &FormCitation::update));
   h_ = d_->hideBufferDependent.connect(slot(this, &FormCitation::hide));
   
@@ -111,7 +108,7 @@ void FormCitation::createInset( string const & arg )
 {
   if( dialog_!=NULL ) return;
   
-  u_ = d_->updateBufferDependent.connect(slot(this, &FormCitation::update));
+  u_ = d_->updateBufferDependent.connect(slot(this, &FormCitation::update)); 
   h_ = d_->hideBufferDependent.connect(slot(this, &FormCitation::hide));
   
   params.setFromString( arg );
@@ -371,8 +368,8 @@ void FormCitation::showStageAction()
       Gtk::Alignment * mbox = manage( new Gtk::Alignment(0.5, 0.5, 0, 0) );
       Gtk::ButtonBox * bbox = manage( new Gtk::HButtonBox() );
 
-      string const addlabel = N_("_Add new citation");
-      string const editlabel = N_("_Edit/remove citation(s)");
+      string const addlabel = _("_Add new citation");
+      string const editlabel = _("_Edit/remove citation(s)");
 
       Gnome::PixButton * b_add  = manage(new Gnome::PixButton(addlabel, GNOME_STOCK_PIXMAP_NEW));
       Gnome::PixButton * b_edit = manage(new Gnome::PixButton(editlabel, GNOME_STOCK_PIXMAP_PROPERTIES));
@@ -397,7 +394,7 @@ void FormCitation::showStageAction()
       
       // packing dialog to main window
       dialog_ = mbox;
-      mainAppWin->add_action(*dialog_, N_(" Citation: Select action "), false, accel);
+      mainAppWin->add_action(*dialog_, _(" Citation: Select action "), false, accel);
 
       initWidgets();
       
@@ -451,9 +448,9 @@ void FormCitation::showStageSearch()
       
       search_text_ = manage( new Gnome::Entry() );
       
-      button_regexp_ = manage( new Gtk::CheckButton(N_("Use Regular Expression")) );
+      button_regexp_ = manage( new Gtk::CheckButton(_("Use Regular Expression")) );
 
-      b_ok = manage( new Gtk::Button(N_("Search")) );
+      b_ok = manage( new Gtk::Button(_("Search")) );
       b_cancel = Gtk::wrap( GTK_BUTTON( gnome_stock_button(GNOME_STOCK_BUTTON_CANCEL) ) );
       
       // set up spacing
@@ -471,7 +468,7 @@ void FormCitation::showStageSearch()
 
       // packing dialog to main window
       dialog_ = mbox;
-      mainAppWin->add_action(*dialog_, N_(" Insert Citation: Enter keyword(s) or regular expression "));
+      mainAppWin->add_action(*dialog_, _(" Insert Citation: Enter keyword(s) or regular expression "));
 
       initWidgets();
       
@@ -527,11 +524,11 @@ void FormCitation::showStageSelect()
       // constructing CList
       vector<string> colnames;
       colnames.push_back("INVISIBLE");
-      colnames.push_back(N_("Key"));
-      colnames.push_back(N_("Author(s)"));
-      colnames.push_back(N_("Title"));
-      colnames.push_back(N_("Year"));
-      colnames.push_back(N_("Journal"));
+      colnames.push_back(_("Key"));
+      colnames.push_back(_("Author(s)"));
+      colnames.push_back(_("Title"));
+      colnames.push_back(_("Year"));
+      colnames.push_back(_("Journal"));
       clist_bib_ = manage( new Gtk::CList(colnames) );
 
       bbox->set_layout(GTK_BUTTONBOX_END);
@@ -549,7 +546,7 @@ void FormCitation::showStageSelect()
       bbox->children().push_back(Element(*b_ok, false, false));
       bbox->children().push_back(Element(*b_cancel, false, false));
 
-      tbox->children().push_back(Element(*manage(new Gtk::Label(N_("Text after"))), false, false));
+      tbox->children().push_back(Element(*manage(new Gtk::Label(_("Text after"))), false, false));
       tbox->children().push_back(Element(*text_after_, true, true));
       tbox->children().push_back(Element(*manage(new Gtk::VSeparator()), false, false));
       tbox->children().push_back(Element(*bbox, false, false));
@@ -560,7 +557,7 @@ void FormCitation::showStageSelect()
       
       // packing dialog to main window
       dialog_ = mbox;
-      mainAppWin->add_action(*dialog_, N_(" Insert Citation: Select citation "), true);
+      mainAppWin->add_action(*dialog_, _(" Insert Citation: Select citation "), true);
 
       initWidgets();
       
@@ -607,9 +604,9 @@ void FormCitation::showStageEdit()
       
       text_after_ = manage( new Gnome::Entry() );
       
-      button_unselect_ = manage( new Gnome::PixButton( N_("_Remove"), GNOME_STOCK_PIXMAP_TRASH ) );
-      button_up_ = manage( new Gnome::PixButton( N_("_Up"), GNOME_STOCK_PIXMAP_UP ) );
-      button_down_ = manage( new Gnome::PixButton( N_("_Down"), GNOME_STOCK_PIXMAP_DOWN ) );
+      button_unselect_ = manage( new Gnome::PixButton( _("_Remove"), GNOME_STOCK_PIXMAP_TRASH ) );
+      button_up_ = manage( new Gnome::PixButton( _("_Up"), GNOME_STOCK_PIXMAP_UP ) );
+      button_down_ = manage( new Gnome::PixButton( _("_Down"), GNOME_STOCK_PIXMAP_DOWN ) );
 
       b_ok = Gtk::wrap( GTK_BUTTON( gnome_stock_button(GNOME_STOCK_BUTTON_OK) ) );
       b_cancel = Gtk::wrap( GTK_BUTTON( gnome_stock_button(GNOME_STOCK_BUTTON_CANCEL) ) );
@@ -639,7 +636,7 @@ void FormCitation::showStageEdit()
       t2box->children().push_back(Element(*sw, true, true));
       t2box->children().push_back(Element(*actbbox, false, false));
 
-      tbox->children().push_back(Element(*manage(new Gtk::Label(N_("Text after"))), false, false));
+      tbox->children().push_back(Element(*manage(new Gtk::Label(_("Text after"))), false, false));
       tbox->children().push_back(Element(*text_after_, true, true));
       tbox->children().push_back(Element(*manage(new Gtk::VSeparator()), false, false));
       tbox->children().push_back(Element(*bbox, false, false));
@@ -657,7 +654,7 @@ void FormCitation::showStageEdit()
 
       // packing dialog to main window
       dialog_ = mbox;
-      mainAppWin->add_action(*dialog_, N_(" Citation: Edit "), true, accel);
+      mainAppWin->add_action(*dialog_, _(" Citation: Edit "), true, accel);
 
       initWidgets();
 
@@ -729,6 +726,13 @@ void FormCitation::updateButtons()
     }
 }
 
+
+void FormCitation::update(bool buffchanged)
+{
+  if (buffchanged) hide();
+}
+
+
 void FormCitation::selectionToggled(gint            row,
 				    gint            ,//column,
 				    GdkEvent        * ,//event,
@@ -749,7 +753,7 @@ void FormCitation::selectionToggled(gint            row,
 	  if (keyfound)
 	    info_->show_string(info);
 	  else
-	    info_->show_string(N_("--- No such key in the database ---"));
+	    info_->show_string(_("--- No such key in the database ---"));
 	}
       else
 	{

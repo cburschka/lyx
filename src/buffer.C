@@ -1238,9 +1238,31 @@ bool Buffer::writeFile(string const & fname, bool flag) const
 
 	// Write marker that shows file is complete
 	ofs << "\n\\the_end" << endl;
+
 	ofs.close();
+
 	// how to check if close went ok?
-	return true;
+	// Following is an attempt... (BE 20001011)
+	
+	// good() returns false if any error occured, including some
+	//        formatting error.
+	// bad()  returns true if something bad happened in the buffer,
+	//        which should include file system full errors.
+
+	bool status = true;
+	if (!ofs.good()) {
+		status = false;
+#if 0
+		if (ofs.bad()) {
+			lyxerr << "Buffer::writeFile: BAD ERROR!" << endl;
+		} else {
+			lyxerr << "Buffer::writeFile: NOT SO BAD ERROR!"
+			       << endl;
+		}
+#endif
+	}
+	
+	return status;
 }
 
 

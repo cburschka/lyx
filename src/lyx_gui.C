@@ -325,8 +325,8 @@ void LyXGUI::create_forms()
 	lyxerr[Debug::INIT] << "Initializing form_character...done" << endl;
 
 	// build up the combox entries
-	combo_language2->addto(_("No change"));
-	combo_language2->addto(_("Reset"));
+	combo_language2->addline(_("No change"));
+	combo_language2->addline(_("Reset"));
 	for(Languages::const_iterator cit = languages.begin();
 	    cit != languages.end(); ++cit) {
 #ifdef DO_USE_DEFAULT_LANGUAGE
@@ -334,7 +334,6 @@ void LyXGUI::create_forms()
 #endif
 		combo_language2->addto((*cit).second.lang());
 	}
-	combo_language2->select_text(_("No change"));
 
 	// the preamble form
 	fd_form_preamble = create_form_form_preamble();
