@@ -14,7 +14,12 @@ MathMacroTemplate::MathMacroTemplate()
 
 MathMacroTemplate::MathMacroTemplate(string const & nm, int numargs)
 	: MathNestInset(1), numargs_(numargs), name_(nm)
-{}
+{
+	if (numargs_ < 1 || numargs_ > 9) {
+		lyxerr << "MathMacroTemplate::MathMacroTemplate: wrong # of arguments: "
+			<< numargs_ << std::endl;
+	}
+}
 
 
 MathInset * MathMacroTemplate::clone() const
