@@ -22,13 +22,15 @@ using std::min;
 
 Row::Row()
 	: pos_(0), end_(0), fill_(0), height_(0), width_(0), y_(0),
-	  ascent_of_text_(0), baseline_(0)
+	  ascent_of_text_(0), baseline_(0),
+	  x_(0), fill_separator_(0), fill_hfill_(0), fill_label_hfill_(0)
 {}
 
 
 Row::Row(pos_type pos)
 	: pos_(pos), end_(0), fill_(0), height_(0), width_(0), y_(0),
-	  ascent_of_text_(0), baseline_(0)
+	  ascent_of_text_(0), baseline_(0),
+	  x_(0), fill_separator_(0), fill_hfill_(0), fill_label_hfill_(0)
 {}
 
 
@@ -137,6 +139,54 @@ void Row::baseline(unsigned int b)
 unsigned int Row::baseline() const
 {
 	return baseline_;
+}
+
+
+float Row::x() const
+{
+	return x_;
+}
+
+
+void Row::x(float f)
+{
+	x_ = f;
+}
+
+
+float Row::fill_separator() const
+{
+	return fill_separator_;
+}
+
+
+void Row::fill_separator(float f)
+{
+	fill_separator_ = f;
+}
+
+
+float Row::fill_hfill() const
+{
+	return fill_hfill_;
+}
+
+
+void Row::fill_hfill(float f)
+{
+	fill_hfill_ = f;
+}
+
+
+float Row::fill_label_hfill() const
+{
+	return fill_label_hfill_;
+}
+
+
+void Row::fill_label_hfill(float f)
+{
+	fill_label_hfill_ = f;
 }
 
 

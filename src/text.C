@@ -721,6 +721,10 @@ pos_type LyXText::rowBreakPoint(ParagraphList::iterator pit,
 		}
 
 		char const c = pit->getChar(i);
+		if (i > endPosOfFontSpan) {
+			font = getFont(pit, i);
+			endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
+		}
 
 		int thiswidth;
 
@@ -1230,10 +1234,13 @@ void LyXText::setHeightOfRow(ParagraphList::iterator pit, RowList::iterator rit)
 
 	double x = 0;
 	if (layout->margintype != MARGIN_RIGHT_ADDRESS_BOX) {
+#warning needed?
+#if 0
 		// this IS needed
 		rit->width(maxwidth);
 		double dummy;
 		prepareToPrint(pit, rit, x, dummy, dummy, dummy, false);
+#endif
 	}
 	rit->width(int(maxwidth + x));
 	if (inset_owner) {
@@ -1449,7 +1456,7 @@ void LyXText::insertChar(char c)
 
 void LyXText::charInserted()
 {
-	// Here we could call FinishUndo for every 20 characters inserted.
+	// Here we could call finishUndo for every 20 characters inserted.
 	// This is from my experience how emacs does it. (Lgb)
 	static unsigned int counter;
 	if (counter < 20) {
@@ -1462,17 +1469,13 @@ void LyXText::charInserted()
 
 
 void LyXText::prepareToPrint(ParagraphList::iterator pit,
-           RowList::iterator rit, double & x,
-			     double & fill_separator,
-			     double & fill_hfill,
-			     double & fill_label_hfill,
-			     bool bidi) const
+           RowList::iterator const rit) const
 {
 	double w = rit->fill();
-	fill_hfill = 0;
-	fill_label_hfill = 0;
-	fill_separator = 0;
-	fill_label_hfill = 0;
+	double fill_hfill = 0;
+	double fill_label_hfill = 0;
+	double fill_separator = 0;
+	double x = 0;
 
 	bool const is_rtl =
 		pit->isRightToLeftPar(bv()->buffer()->params);
@@ -1563,8 +1566,6 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 			break;
 		}
 	}
-	if (!bidi)
-		return;
 
 	computeBidiTables(pit, bv()->buffer(), rit);
 	if (is_rtl) {
@@ -1572,13 +1573,18 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 		pos_type last = lastPos(*pit, rit);
 
 		if (body_pos > 0 &&
-		    (body_pos - 1 > last ||
-		     !pit->isLineSeparator(body_pos - 1))) {
+				(body_pos - 1 > last ||
+				 !pit->isLineSeparator(body_pos - 1))) {
 			x += font_metrics::width(layout->labelsep, getLabelFont(pit));
 			if (body_pos - 1 <= last)
 				x += fill_label_hfill;
 		}
 	}
+
+	rit->fill_hfill(fill_hfill);
+	rit->fill_label_hfill(fill_label_hfill);
+	rit->fill_separator(fill_separator);
+	rit->x(x);
 }
 
 

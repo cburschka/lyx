@@ -566,6 +566,7 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 	// set height and fill of rows
 	for (rit = pit->rows.begin(); rit != end; ++rit) {
 		rit->fill(fill(pit, rit, workWidth()));
+		prepareToPrint(pit, rit);
 		setHeightOfRow(pit, rit);
 	}
 
@@ -1404,16 +1405,12 @@ void LyXText::setCursor(LyXCursor & cur, ParagraphList::iterator pit,
 float LyXText::getCursorX(ParagraphList::iterator pit, RowList::iterator rit,
 			  pos_type pos, pos_type last, bool boundary) const
 {
-	pos_type cursor_vpos = 0;
-	double x;
-	double fill_separator;
-	double fill_hfill;
-	double fill_label_hfill;
-	// This call HAS to be here because of the BidiTables!!!
-	prepareToPrint(pit, rit, x, fill_separator, fill_hfill,
-		       fill_label_hfill);
-
-	pos_type const rit_pos = rit->pos();
+	pos_type cursor_vpos    = 0;
+	double x                = rit->x();
+	double fill_separator   = rit->fill_separator();
+	double fill_hfill       = rit->fill_hfill();
+	double fill_label_hfill = rit->fill_label_hfill();
+	pos_type const rit_pos  = rit->pos();
 
 	if (last < rit_pos)
 		cursor_vpos = rit_pos;
@@ -1513,12 +1510,10 @@ void LyXText::setCurrentFont()
 pos_type LyXText::getColumnNearX(ParagraphList::iterator pit,
 	RowList::iterator rit, int & x, bool & boundary) const
 {
-	double tmpx = 0;
-	double fill_separator;
-	double fill_hfill;
-	double fill_label_hfill;
-
-	prepareToPrint(pit, rit, tmpx, fill_separator, fill_hfill, fill_label_hfill);
+	double tmpx             = rit->x();
+	double fill_separator   = rit->fill_separator();
+	double fill_hfill       = rit->fill_hfill();
+	double fill_label_hfill = rit->fill_label_hfill();
 
 	pos_type vc = rit->pos();
 	pos_type last = lastPrintablePos(*pit, rit);

@@ -1,6 +1,15 @@
 
 2003-08-22  André Pönitz  <poenitz@gmx.net>
 
+	* lyxrow.[Ch]: add x_ and *fill_ members
+
+	* lyxtext.h: 
+	* text.C:
+	* rowpainter.C:
+	* text2.C: adjust/remove prepareToPrint() calls
+
+2003-08-22  André Pönitz  <poenitz@gmx.net>
+
 	* lyxrow.[Ch]: add  end_ member
 
 	* lyxrow_funcs.C: use LyXRow::end_
@@ -11,6 +20,7 @@
 	* text2.C: adjust LyXText::singleWidth() calls
 
 	* text.C (redoParagraph): simplify row breaking logic
+
 
 2003-08-19  André Pönitz  <poenitz@gmx.net>
 

@@ -1002,11 +1002,11 @@ void RowPainter::paintText()
 
 void RowPainter::paint()
 {
-	width_ = text_.workWidth();
-
-	// FIXME: must be a cleaner way here. Aren't these calculations
-	// belonging to row metrics ?
-	text_.prepareToPrint(pit_, row_, x_, separator_, hfill_, label_hfill_);
+	width_       = text_.workWidth();
+	x_           = row_->x();
+	separator_   = row_->fill_separator();
+	hfill_       = row_->fill_hfill();
+	label_hfill_ = row_->fill_label_hfill();
 
 	// FIXME: what is this fixing ?
 	if (text_.isInInset() && x_ < 0)

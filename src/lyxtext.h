@@ -425,13 +425,8 @@ public:
 
 	/** this calculates the specified parameters. needed when setting
 	 * the cursor and when creating a visible row */
-	void prepareToPrint(
-	        ParagraphList::iterator pit,
-	        RowList::iterator row, double & x,
-			    double & fill_separator,
-			    double & fill_hfill,
-			    double & fill_label_hfill,
-			    bool bidi = true) const;
+	void prepareToPrint(ParagraphList::iterator pit,
+	        RowList::iterator row) const;
 
 private:
 	///

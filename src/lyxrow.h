@@ -62,6 +62,22 @@ public:
 	unsigned int y() const;
 	/// cache the y position
 	void y(unsigned int newy);
+	///
+	float x() const;
+	///
+	void x(float);
+	///
+	float fill_separator() const;
+	///
+	void fill_separator(float);
+	///
+	float fill_hfill() const;
+	///
+	void fill_hfill(float);
+	///
+	float fill_label_hfill() const;
+	///
+	void fill_label_hfill(float);
 	/// current debugging only
 	void dump(const char * = "") const;
 private:
@@ -84,6 +100,14 @@ private:
 	unsigned int top_of_text_;
 	///
 	unsigned int baseline_;
+	/// offet from left border
+	float x_;
+	///
+	float fill_separator_;
+	///
+	float fill_hfill_;
+	///
+	float fill_label_hfill_;
 };
 
 #endif
