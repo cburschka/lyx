@@ -7,11 +7,11 @@
 
 
 Columns            1
-Sides                 2
-SecNumDepth   2
+Sides              2
+SecNumDepth        2
 TocDepth           2
 DefaultStyle       Standard
-PageStyle           Headings
+PageStyle          Headings
 
 
 ClassOptions
@@ -39,6 +39,36 @@ Input stdfloats.inc
 Input numreport.inc
 Input stdsections.inc
 Input stdstarsections.inc
+
+
+Style Chapter
+	OptionalArgs         2
+End
+
+
+Style Section
+	OptionalArgs         2
+End
+
+
+Style Subsection
+	OptionalArgs         2
+End
+
+
+Style Subsubsection
+	OptionalArgs         2
+End
+
+
+Style Paragraph
+	OptionalArgs         2
+End
+
+
+Style Subparagraph
+	OptionalArgs         2
+End
 
 
 Style Chapterprecis
