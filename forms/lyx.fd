@@ -93,7 +93,7 @@ argument:
 --------------------
 class: FL_BEGIN_GROUP
 type: 0
-box: 0 0 0 0
+box: 0 10 10 0
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_CENTER
@@ -625,7 +625,7 @@ lcol: FL_BLACK
 label: Name|#N
 shortcut: 
 resize: FL_RESIZE_X
-gravity: FL_NorthWest FL_SouthEast
+gravity: FL_SouthWest FL_SouthEast
 name: ref_name
 callback: 
 argument: 

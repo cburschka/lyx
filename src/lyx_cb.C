@@ -1183,6 +1183,9 @@ void MenuInsertRef()
 		fl_show_form(fd_form_ref->form_ref,
 			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_FULLBORDER,
 			     _("Insert Reference"));
+		fl_set_form_minsize(fd_form_ref->form_ref,
+				    fd_form_ref->form_ref->w,
+				    fd_form_ref->form_ref->h);
 	}
 }
 

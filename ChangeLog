@@ -1,3 +1,15 @@
+1999-10-22  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/figinset.C (CallbackFig): Just changed the defines a bit.
+
+	* src/lyx_cb.C (MenuInsertRef) + 
+	* src/lyx_gui.C (create_forms): Inserted fl_set_form_minsize so that
+	the form cannot be resized under it limits (fixes a segfault)
+	
+	* src/lyx.C (create_form_form_ref) +
+	* forms/lyx.fd: Changed Gravity on name input field so that it is
+ 	resized correctly.
+
 1999-10-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* configure.in: use LYX_CXX_STL_MODERN_STREAMS; check for headers

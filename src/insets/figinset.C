@@ -980,8 +980,7 @@ static void UnregisterFigure(InsetFig *fi)
 		}
 #if FL_REVISION == 89
 #warning Reactivate this free_form calls
-#endif
-#if FL_REVISION != 89
+#else
 		fl_free_form(tmpfig->inset->form->Figure);
 		free(tmpfig->inset->form);
 		tmpfig->inset->form = 0;
@@ -1931,8 +1930,7 @@ void InsetFig::CallbackFig(long arg)
 				fl_hide_form(form->Figure);
 #if FL_REVISION == 89
 #warning Reactivate this free_form calls
-#endif
-#if FL_REVISION != 89
+#else
 				fl_free_form(form->Figure);
 				free(form);
 				form = 0;
@@ -1949,8 +1947,7 @@ void InsetFig::CallbackFig(long arg)
 		fl_hide_form(form->Figure);
 #if FL_REVISION == 89
 #warning Reactivate this free_form calls
-#endif
-#if FL_REVISION != 89
+#else
 		fl_free_form(form->Figure);
 		free(form);
 		form = 0;

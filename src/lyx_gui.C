@@ -575,6 +575,8 @@ void LyXGUI::create_forms()
 	// the ref form
 	fd_form_ref = create_form_form_ref();
 	fl_set_form_atclose(fd_form_ref->form_ref, CancelCloseBoxCB, 0);
+	fl_set_form_minsize(fd_form_ref->form_ref, fd_form_ref->form_ref->w,
+			    fd_form_ref->form_ref->h);
 
 	// the latex options form
 	fd_latex_options = create_form_LaTeXOptions();

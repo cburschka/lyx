@@ -156,7 +156,7 @@ FD_form_ref *create_form_form_ref(void)
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthWest);
     fl_set_object_callback(obj,RefSelectCB,2);
   fdui->ref_name = obj = fl_add_input(FL_NORMAL_INPUT,80,160,200,30,idex(_("Name|#N")));fl_set_button_shortcut(obj,scex(_("Name|#N")),1);
-    fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
+    fl_set_object_gravity(obj, FL_SouthWest, FL_SouthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
   fl_end_form();
 
