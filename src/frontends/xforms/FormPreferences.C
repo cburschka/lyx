@@ -30,8 +30,8 @@ using SigC::slot;
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	: FormBaseBI(lv, d, _("Preferences"), new PreferencesPolicy),
 	  dialog_(0), outputs_tab_(0), look_n_feel_tab_(0), inputs_tab_(0),
-	  lnf_general_(0), screen_fonts_(0), interface_(0),
-	  printer_(0), paths_(0), outputs_general_(0)
+	  spellchecker_tab_(0), lnf_general_(0), screen_fonts_(0),
+	  interface_(0), printer_(0), paths_(0), outputs_general_(0)
 {
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
@@ -46,6 +46,7 @@ FormPreferences::~FormPreferences()
 	delete look_n_feel_tab_;
 	delete inputs_tab_;
 	delete outputs_tab_;
+	delete spellchecker_tab_;
 	delete lnf_general_;
 	delete screen_fonts_;
 	delete interface_;
@@ -87,6 +88,7 @@ void FormPreferences::build()
 	outputs_tab_ = build_outer_tab();
 	look_n_feel_tab_ = build_outer_tab();
 	inputs_tab_  = build_outer_tab();
+	spellchecker_tab_ = build_spellchecker();
 
 	// build actual tabfolder contents
 	// these will become nested tabfolders
@@ -159,6 +161,20 @@ void FormPreferences::build()
 	// outputs general
 	fl_set_counter_return(outputs_general_->counter_line_len,
 			      FL_RETURN_CHANGED);
+	fl_set_input_return(outputs_general_->input_tex_encoding,
+			    FL_RETURN_CHANGED);
+	fl_addto_choice(outputs_general_->choice_default_papersize,
+			_(" default | US letter | legal | executive | A3 | A4 | A5 | B5 "));
+
+	// spell checker
+	fl_addto_choice(spellchecker_tab_->choice_spell_command,
+			_(" none | ispell | aspell "));
+	fl_set_input_return(spellchecker_tab_->input_alt_lang,
+			    FL_RETURN_CHANGED);
+	fl_set_input_return(spellchecker_tab_->input_escape_chars,
+			    FL_RETURN_CHANGED);
+	fl_set_input_return(spellchecker_tab_->input_personal_dict,
+			    FL_RETURN_CHANGED);
 
 	// Now add them to the tabfolder
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
@@ -170,6 +186,9 @@ void FormPreferences::build()
 	fl_addto_tabfolder(dialog_->tabfolder_prefs,
 			   _("Outputs"),
 			   outputs_tab_->form);
+	fl_addto_tabfolder(dialog_->tabfolder_prefs,
+			   _("Spell checker"),
+			   spellchecker_tab_->form);
 
 	// now build the nested tabfolders
 	// Starting with look and feel
@@ -207,6 +226,7 @@ void FormPreferences::build()
 	fl_deactivate_object(paths_->button_lastfiles_browse);
 	fl_deactivate_object(paths_->button_backup_path_browse);
 	fl_deactivate_object(paths_->button_serverpipe_browse);
+	fl_deactivate_object(spellchecker_tab_->button_personal_dict);
 	fl_set_object_lcol(interface_->button_bind_file_browse, FL_INACTIVE);
 	fl_set_object_lcol(interface_->button_ui_file_browse, FL_INACTIVE);
 	fl_set_object_lcol(paths_->button_document_browse, FL_INACTIVE);
@@ -215,6 +235,7 @@ void FormPreferences::build()
 	fl_set_object_lcol(paths_->button_lastfiles_browse, FL_INACTIVE);
 	fl_set_object_lcol(paths_->button_backup_path_browse, FL_INACTIVE);
 	fl_set_object_lcol(paths_->button_serverpipe_browse, FL_INACTIVE);
+	fl_set_object_lcol(spellchecker_tab_->button_personal_dict, FL_INACTIVE);
 }
 
 
@@ -369,138 +390,261 @@ void FormPreferences::apply()
 	// outputs general
 	lyxrc.ascii_linelen = static_cast<unsigned int>
 		(fl_get_counter_value(outputs_general_->counter_line_len));
+	lyxrc.fontenc = fl_get_input(outputs_general_->input_tex_encoding);
+
+	int choice =
+		fl_get_choice(outputs_general_->choice_default_papersize) - 1;
+	lyxrc.default_papersize = static_cast<BufferParams::PAPER_SIZE>(choice);
+
+	applySpellChecker();
+}
+
+
+void FormPreferences::applySpellChecker()
+{
+
+	string choice = "none";
+	switch(fl_get_choice(spellchecker_tab_->choice_spell_command)) {
+	case 1:
+		choice = "none";
+		break;
+	case 2:
+		choice = "ispell";
+		break;
+	case 3:
+		choice = "aspell";
+		break;
+	default:
+		break;
+	}
+	lyxrc.isp_command = choice;
+
+	// If spell checker == "none", all other input set to off.
+	if( fl_get_choice(spellchecker_tab_->choice_spell_command) == 1 ) {
+		lyxrc.isp_use_alt_lang = false;
+		lyxrc.isp_alt_lang.erase();
+
+		lyxrc.isp_use_esc_chars = false;
+		lyxrc.isp_esc_chars.erase();
+
+		lyxrc.isp_use_pers_dict = false;
+		lyxrc.isp_pers_dict.erase();
+
+		lyxrc.isp_accept_compound = false;
+		lyxrc.isp_use_input_encoding = false;
+	} else {
+		int button = fl_get_button(spellchecker_tab_->check_alt_lang);
+		choice = fl_get_input(spellchecker_tab_->input_alt_lang);
+		if( button && choice.empty() ) button = 0;
+		if( !button ) choice.erase();
+
+		lyxrc.isp_use_alt_lang = static_cast<bool>(button);
+		lyxrc.isp_alt_lang = choice;
+
+		button = fl_get_button(spellchecker_tab_->check_escape_chars);
+		choice = fl_get_input(spellchecker_tab_->input_escape_chars);
+		if( button && choice.empty() ) button = 0;
+		if( !button ) choice.erase();
+	
+		lyxrc.isp_use_esc_chars = static_cast<bool>(button);
+		lyxrc.isp_esc_chars = choice;
+
+		button = fl_get_button(spellchecker_tab_->check_personal_dict);
+		choice = fl_get_input(spellchecker_tab_->input_personal_dict);
+		if( button && choice.empty() ) button = 0;
+		if( !button ) choice.erase();
+
+		lyxrc.isp_use_pers_dict = static_cast<bool>(button);
+		lyxrc.isp_pers_dict = choice;
+
+		button = fl_get_button(spellchecker_tab_->check_compound_words);
+		lyxrc.isp_accept_compound = static_cast<bool>(button);
+
+		button = fl_get_button(spellchecker_tab_->check_input_enc);
+		lyxrc.isp_use_input_encoding = static_cast<bool>(button);
+	}
+	
+	updateSpellChecker();
 }
 
 
 void FormPreferences::update()
 {
-	if (dialog_) {
-		// read lyxrc entries
-		// Lnf_General tab
-		fl_set_button(lnf_general_->check_banner,
-			      lyxrc.show_banner);
-		fl_set_button(lnf_general_->check_auto_region_delete,
-			      lyxrc.auto_region_delete);
-		fl_set_button(lnf_general_->check_exit_confirm,
-			      lyxrc.exit_confirmation);
-		fl_set_button(lnf_general_->check_display_shortcuts,
-			      lyxrc.display_shortcuts);
-		fl_set_button(lnf_general_->check_ask_new_file,
-			      lyxrc.new_ask_filename);
-		fl_set_button(lnf_general_->check_cursor_follows_scrollbar,
-			      lyxrc.cursor_follows_scrollbar);
-		fl_set_counter_value(lnf_general_->counter_autosave,
-				     lyxrc.autosave);
-		fl_set_counter_value(lnf_general_->counter_wm_jump,
-				     lyxrc.wheel_jump);
-		// Screen fonts
-		fl_set_input(screen_fonts_->input_roman,
-			     lyxrc.roman_font_name.c_str());
-		fl_set_input(screen_fonts_->input_sans,
-			     lyxrc.sans_font_name.c_str());
-		fl_set_input(screen_fonts_->input_typewriter,
-			     lyxrc.typewriter_font_name.c_str());
-		fl_set_input(screen_fonts_->input_screen_encoding,
-			     lyxrc.font_norm.c_str());
-		fl_set_button(screen_fonts_->check_scalable,
-			     lyxrc.use_scalable_fonts);
-		fl_set_counter_value(screen_fonts_->counter_zoom,
+	if (!dialog_) return;
+    
+	// read lyxrc entries
+	// Lnf_General tab
+	fl_set_button(lnf_general_->check_banner,
+		      lyxrc.show_banner);
+	fl_set_button(lnf_general_->check_auto_region_delete,
+		      lyxrc.auto_region_delete);
+	fl_set_button(lnf_general_->check_exit_confirm,
+		      lyxrc.exit_confirmation);
+	fl_set_button(lnf_general_->check_display_shortcuts,
+		      lyxrc.display_shortcuts);
+	fl_set_button(lnf_general_->check_ask_new_file,
+		      lyxrc.new_ask_filename);
+	fl_set_button(lnf_general_->check_cursor_follows_scrollbar,
+		      lyxrc.cursor_follows_scrollbar);
+	fl_set_counter_value(lnf_general_->counter_autosave,
+			     lyxrc.autosave);
+	fl_set_counter_value(lnf_general_->counter_wm_jump,
+			     lyxrc.wheel_jump);
+	// Screen fonts
+	fl_set_input(screen_fonts_->input_roman,
+		     lyxrc.roman_font_name.c_str());
+	fl_set_input(screen_fonts_->input_sans,
+		     lyxrc.sans_font_name.c_str());
+	fl_set_input(screen_fonts_->input_typewriter,
+		     lyxrc.typewriter_font_name.c_str());
+	fl_set_input(screen_fonts_->input_screen_encoding,
+		     lyxrc.font_norm.c_str());
+	fl_set_button(screen_fonts_->check_scalable,
+		      lyxrc.use_scalable_fonts);
+	fl_set_counter_value(screen_fonts_->counter_zoom,
 			     lyxrc.zoom);
-		fl_set_input(screen_fonts_->input_tiny,
-			     tostr(lyxrc.font_sizes[LyXFont::SIZE_TINY]).c_str());
-		fl_set_input(screen_fonts_->input_script,
-			     tostr(lyxrc.font_sizes[LyXFont::SIZE_SCRIPT]).c_str());
-		fl_set_input(screen_fonts_->input_footnote,
-			     tostr(lyxrc.font_sizes[LyXFont::SIZE_FOOTNOTE]).c_str());
-		fl_set_input(screen_fonts_->input_small,
-			     tostr(lyxrc.font_sizes[LyXFont::SIZE_SMALL]).c_str());
-		fl_set_input(screen_fonts_->input_normal,
-			     tostr(lyxrc.font_sizes[LyXFont::SIZE_NORMAL]).c_str());
-		fl_set_input(screen_fonts_->input_large,
-			     tostr(lyxrc.font_sizes[LyXFont::SIZE_LARGE]).c_str());
-		fl_set_input(screen_fonts_->input_larger,
-			     tostr(lyxrc.font_sizes[LyXFont::SIZE_LARGER]).c_str());
-		fl_set_input(screen_fonts_->input_largest,
-			     tostr(lyxrc.font_sizes[LyXFont::SIZE_LARGEST]).c_str());
-		fl_set_input(screen_fonts_->input_huge,
-			     tostr(lyxrc.font_sizes[LyXFont::SIZE_HUGE]).c_str());
-		fl_set_input(screen_fonts_->input_huger,
-			     tostr(lyxrc.font_sizes[LyXFont::SIZE_HUGER]).c_str());
-		// interface
-		fl_set_input(interface_->input_popup_font,
-			     lyxrc.popup_font_name.c_str());
-		fl_set_input(interface_->input_menu_font,
-			     lyxrc.menu_font_name.c_str());
-		fl_set_input(interface_->input_popup_encoding,
-			     lyxrc.font_norm_menu.c_str());
-		fl_set_input(interface_->input_bind_file,
-			     lyxrc.bind_file.c_str());
-		fl_set_input(interface_->input_ui_file,
-			     lyxrc.ui_file.c_str());
-		fl_set_button(interface_->check_override_x_dead_keys,
-			      lyxrc.override_x_deadkeys);
-		// printer
-		fl_set_button(printer_->check_adapt_output,
-			      lyxrc.print_adapt_output);
-		fl_set_input(printer_->input_command,
-			     lyxrc.print_command.c_str());
-		fl_set_input(printer_->input_page_range,
-			     lyxrc.print_pagerange_flag.c_str());
-		fl_set_input(printer_->input_copies,
-			     lyxrc.print_copies_flag.c_str());
-		fl_set_input(printer_->input_reverse,
-			      lyxrc.print_reverse_flag.c_str());
-		fl_set_input(printer_->input_to_printer,
-			     lyxrc.print_to_printer.c_str());
-		fl_set_input(printer_->input_file_extension,
-			     lyxrc.print_file_extension.c_str());
-		fl_set_input(printer_->input_spool_command,
-			     lyxrc.print_spool_command.c_str());
-		fl_set_input(printer_->input_paper_type,
-			     lyxrc.print_paper_flag.c_str());
-		fl_set_input(printer_->input_even_pages,
-			     lyxrc.print_evenpage_flag.c_str());
-		fl_set_input(printer_->input_odd_pages,
-			     lyxrc.print_oddpage_flag.c_str());
-		fl_set_input(printer_->input_collated,
-			     lyxrc.print_collcopies_flag.c_str());
-		fl_set_input(printer_->input_landscape,
-			     lyxrc.print_landscape_flag.c_str());
-		fl_set_input(printer_->input_to_file,
-			     lyxrc.print_to_file.c_str());
-		fl_set_input(printer_->input_extra_options,
-			     lyxrc.print_extra_options.c_str());
-		fl_set_input(printer_->input_spool_prefix,
-			     lyxrc.print_spool_printerprefix.c_str());
-		fl_set_input(printer_->input_paper_size,
-			     lyxrc.print_paper_dimension_flag.c_str());
-		fl_set_input(printer_->input_name,
-			     lyxrc.printer.c_str());
-		// paths
-		fl_set_input(paths_->input_default_path,
-			     lyxrc.document_path.c_str());
-		fl_set_input(paths_->input_template_path,
-			     lyxrc.template_path.c_str());
-		fl_set_input(paths_->input_temp_dir,
-			     lyxrc.tempdir_path.c_str());
-		fl_set_input(paths_->input_lastfiles,
-			     lyxrc.lastfiles.c_str());
-		fl_set_input(paths_->input_backup_path,
-			     lyxrc.backupdir_path.c_str());
-		fl_set_button(paths_->check_use_temp_dir,
-			      lyxrc.use_tempdir);
-		fl_set_button(paths_->check_last_files,
-			      lyxrc.check_lastfiles);		
-		fl_set_button(paths_->check_make_backups,
-			      lyxrc.make_backup);
-		fl_set_counter_value(paths_->counter_lastfiles,
-				     lyxrc.num_lastfiles);
-		fl_set_input(paths_->input_serverpipe, lyxrc.lyxpipes.c_str());
-		// outputs general
-		fl_set_counter_value(outputs_general_->counter_line_len,
-				     lyxrc.ascii_linelen);
+	fl_set_input(screen_fonts_->input_tiny,
+		     tostr(lyxrc.font_sizes[LyXFont::SIZE_TINY]).c_str());
+	fl_set_input(screen_fonts_->input_script,
+		     tostr(lyxrc.font_sizes[LyXFont::SIZE_SCRIPT]).c_str());
+	fl_set_input(screen_fonts_->input_footnote,
+		     tostr(lyxrc.font_sizes[LyXFont::SIZE_FOOTNOTE]).c_str());
+	fl_set_input(screen_fonts_->input_small,
+		     tostr(lyxrc.font_sizes[LyXFont::SIZE_SMALL]).c_str());
+	fl_set_input(screen_fonts_->input_normal,
+		     tostr(lyxrc.font_sizes[LyXFont::SIZE_NORMAL]).c_str());
+	fl_set_input(screen_fonts_->input_large,
+		     tostr(lyxrc.font_sizes[LyXFont::SIZE_LARGE]).c_str());
+	fl_set_input(screen_fonts_->input_larger,
+		     tostr(lyxrc.font_sizes[LyXFont::SIZE_LARGER]).c_str());
+	fl_set_input(screen_fonts_->input_largest,
+		     tostr(lyxrc.font_sizes[LyXFont::SIZE_LARGEST]).c_str());
+	fl_set_input(screen_fonts_->input_huge,
+		     tostr(lyxrc.font_sizes[LyXFont::SIZE_HUGE]).c_str());
+	fl_set_input(screen_fonts_->input_huger,
+		     tostr(lyxrc.font_sizes[LyXFont::SIZE_HUGER]).c_str());
+	// interface
+	fl_set_input(interface_->input_popup_font,
+		     lyxrc.popup_font_name.c_str());
+	fl_set_input(interface_->input_menu_font,
+		     lyxrc.menu_font_name.c_str());
+	fl_set_input(interface_->input_popup_encoding,
+		     lyxrc.font_norm_menu.c_str());
+	fl_set_input(interface_->input_bind_file,
+		     lyxrc.bind_file.c_str());
+	fl_set_input(interface_->input_ui_file,
+		     lyxrc.ui_file.c_str());
+	fl_set_button(interface_->check_override_x_dead_keys,
+		      lyxrc.override_x_deadkeys);
+	// printer
+	fl_set_button(printer_->check_adapt_output,
+		      lyxrc.print_adapt_output);
+	fl_set_input(printer_->input_command,
+		     lyxrc.print_command.c_str());
+	fl_set_input(printer_->input_page_range,
+		     lyxrc.print_pagerange_flag.c_str());
+	fl_set_input(printer_->input_copies,
+		     lyxrc.print_copies_flag.c_str());
+	fl_set_input(printer_->input_reverse,
+		     lyxrc.print_reverse_flag.c_str());
+	fl_set_input(printer_->input_to_printer,
+		     lyxrc.print_to_printer.c_str());
+	fl_set_input(printer_->input_file_extension,
+		     lyxrc.print_file_extension.c_str());
+	fl_set_input(printer_->input_spool_command,
+		     lyxrc.print_spool_command.c_str());
+	fl_set_input(printer_->input_paper_type,
+		     lyxrc.print_paper_flag.c_str());
+	fl_set_input(printer_->input_even_pages,
+		     lyxrc.print_evenpage_flag.c_str());
+	fl_set_input(printer_->input_odd_pages,
+		     lyxrc.print_oddpage_flag.c_str());
+	fl_set_input(printer_->input_collated,
+		     lyxrc.print_collcopies_flag.c_str());
+	fl_set_input(printer_->input_landscape,
+		     lyxrc.print_landscape_flag.c_str());
+	fl_set_input(printer_->input_to_file,
+		     lyxrc.print_to_file.c_str());
+	fl_set_input(printer_->input_extra_options,
+		     lyxrc.print_extra_options.c_str());
+	fl_set_input(printer_->input_spool_prefix,
+		     lyxrc.print_spool_printerprefix.c_str());
+	fl_set_input(printer_->input_paper_size,
+		     lyxrc.print_paper_dimension_flag.c_str());
+	fl_set_input(printer_->input_name,
+		     lyxrc.printer.c_str());
+	// paths
+	fl_set_input(paths_->input_default_path,
+		     lyxrc.document_path.c_str());
+	fl_set_input(paths_->input_template_path,
+		     lyxrc.template_path.c_str());
+	fl_set_input(paths_->input_temp_dir,
+		     lyxrc.tempdir_path.c_str());
+	fl_set_input(paths_->input_lastfiles,
+		     lyxrc.lastfiles.c_str());
+	fl_set_input(paths_->input_backup_path,
+		     lyxrc.backupdir_path.c_str());
+	fl_set_button(paths_->check_use_temp_dir,
+		      lyxrc.use_tempdir);
+	fl_set_button(paths_->check_last_files,
+		      lyxrc.check_lastfiles);		
+	fl_set_button(paths_->check_make_backups,
+		      lyxrc.make_backup);
+	fl_set_counter_value(paths_->counter_lastfiles,
+			     lyxrc.num_lastfiles);
+	fl_set_input(paths_->input_serverpipe, lyxrc.lyxpipes.c_str());
+	// outputs general
+	fl_set_counter_value(outputs_general_->counter_line_len,
+			     lyxrc.ascii_linelen);
+	fl_set_input(outputs_general_->input_tex_encoding,
+		     lyxrc.fontenc.c_str());
+	fl_set_choice(outputs_general_->choice_default_papersize,
+		      lyxrc.default_papersize+1);
 
-	}
+	updateSpellChecker();
+}
+
+
+void FormPreferences::updateSpellChecker()
+{
+	int choice = 1;
+	if( lyxrc.isp_command == "none" )
+		choice = 1;
+	else if( lyxrc.isp_command == "ispell" )
+		choice = 2;
+	else if( lyxrc.isp_command == "aspell" )
+		choice = 3;
+	fl_set_choice(spellchecker_tab_->choice_spell_command, choice);
+	
+	string str = string();
+	if( lyxrc.isp_use_alt_lang ) str = lyxrc.isp_alt_lang;
+
+	fl_set_button(spellchecker_tab_->check_alt_lang,
+		      lyxrc.isp_use_alt_lang);
+	fl_set_input(spellchecker_tab_->input_alt_lang, str.c_str());
+	
+	str = string();
+	if( lyxrc.isp_use_esc_chars ) str = lyxrc.isp_esc_chars;
+
+	fl_set_button(spellchecker_tab_->check_escape_chars,
+		      lyxrc.isp_use_esc_chars);
+	fl_set_input(spellchecker_tab_->input_escape_chars, str.c_str());
+
+	str = string();
+	if( lyxrc.isp_use_pers_dict ) str = lyxrc.isp_pers_dict;
+
+	fl_set_button(spellchecker_tab_->check_personal_dict,
+		      lyxrc.isp_use_pers_dict);
+	fl_set_input(spellchecker_tab_->input_personal_dict, str.c_str());
+
+	fl_set_button(spellchecker_tab_->check_compound_words,
+		      lyxrc.isp_accept_compound);
+	fl_set_button(spellchecker_tab_->check_input_enc,
+		      lyxrc.isp_use_input_encoding);
+
+	// Activate/Deactivate the input fields dependent on the state of the
+	// buttons.
+	inputSpellChecker();
 }
 
 
@@ -629,7 +773,67 @@ bool FormPreferences::input(FL_OBJECT *, long)
 		lyxerr[Debug::GUI] << "Preferences: Sizes are wrong\n";
 	}
 
+	if( ! inputSpellChecker() )
+		activate = false;
+
 	return activate;
+}
+
+
+bool FormPreferences::inputSpellChecker()
+{
+	// Allow/dissallow input
+
+	// If spell checker == "none", disable all input.
+	if( fl_get_choice(spellchecker_tab_->choice_spell_command) == 1 ) {
+		fl_deactivate_object( spellchecker_tab_->check_alt_lang );
+		fl_deactivate_object( spellchecker_tab_->input_alt_lang );
+		fl_deactivate_object( spellchecker_tab_->check_escape_chars );
+		fl_deactivate_object( spellchecker_tab_->input_escape_chars );
+		fl_deactivate_object( spellchecker_tab_->check_personal_dict );
+		fl_deactivate_object( spellchecker_tab_->input_personal_dict );
+		fl_deactivate_object( spellchecker_tab_->check_compound_words );
+		fl_deactivate_object( spellchecker_tab_->check_input_enc );
+		return true;
+	} else {
+		fl_activate_object( spellchecker_tab_->check_alt_lang );
+		fl_activate_object( spellchecker_tab_->check_escape_chars );
+		fl_activate_object( spellchecker_tab_->check_personal_dict );
+		fl_activate_object( spellchecker_tab_->check_compound_words );
+		fl_activate_object( spellchecker_tab_->check_input_enc );
+	}
+	
+	if( fl_get_button(spellchecker_tab_->check_alt_lang) ) {
+		fl_activate_object(spellchecker_tab_->input_alt_lang);
+		fl_set_object_lcol(spellchecker_tab_->input_alt_lang,
+				   FL_BLACK);
+	} else {
+		fl_deactivate_object(spellchecker_tab_->input_alt_lang);
+		fl_set_object_lcol(spellchecker_tab_->input_alt_lang,
+				   FL_INACTIVE);
+	}
+
+	if( fl_get_button(spellchecker_tab_->check_escape_chars) ) {
+		fl_activate_object(spellchecker_tab_->input_escape_chars);
+		fl_set_object_lcol(spellchecker_tab_->input_escape_chars,
+				   FL_BLACK);
+	} else {
+		fl_deactivate_object(spellchecker_tab_->input_escape_chars);
+		fl_set_object_lcol(spellchecker_tab_->input_escape_chars,
+				   FL_INACTIVE);
+	}
+
+	if( fl_get_button(spellchecker_tab_->check_personal_dict) ) {
+		fl_activate_object(spellchecker_tab_->input_personal_dict);
+		fl_set_object_lcol(spellchecker_tab_->input_personal_dict,
+				   FL_BLACK);
+	} else {
+		fl_deactivate_object(spellchecker_tab_->input_personal_dict);
+		fl_set_object_lcol(spellchecker_tab_->input_personal_dict,
+				   FL_INACTIVE);
+	}
+
+	return true; // all input is valid!
 }
 
 

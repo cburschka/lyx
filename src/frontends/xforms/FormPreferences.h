@@ -34,6 +34,7 @@ struct FD_form_printer;
 struct FD_form_paths;
 struct FD_form_outer_tab;
 struct FD_form_outputs_general;
+struct FD_form_spellchecker;
 
 /** This class provides an XForms implementation of the FormPreferences Dialog.
     The preferences dialog allows users to set/save their preferences.
@@ -62,6 +63,12 @@ private:
 	///
 	virtual FL_FORM * form() const;
 	///
+	void applySpellChecker();
+	///
+	void updateSpellChecker();
+	///
+	bool inputSpellChecker();
+	///
 	FD_form_preferences * build_preferences();
 	///
 	FD_form_outer_tab * build_outer_tab();
@@ -77,6 +84,8 @@ private:
 	FD_form_paths * build_paths();
 	///
 	FD_form_outputs_general * build_outputs_general();
+	///
+	FD_form_spellchecker * build_spellchecker();
 
 	/// Real GUI implementation.
 	FD_form_preferences * dialog_;
@@ -86,6 +95,8 @@ private:
 	FD_form_outer_tab * look_n_feel_tab_;
 	/// reLyX and other import/input stuff
 	FD_form_outer_tab * inputs_tab_;
+	///
+	FD_form_spellchecker * spellchecker_tab_;
 	///
 	FD_form_lnf_general * lnf_general_;
 	///

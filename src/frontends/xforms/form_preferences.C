@@ -449,6 +449,68 @@ FD_form_outputs_general * FormPreferences::build_outputs_general()
     fl_set_counter_bounds(obj, 0, 120);
     fl_set_counter_value(obj, 75);
     fl_set_counter_step(obj, 1, 1);
+  fdui->input_tex_encoding = obj = fl_add_input(FL_NORMAL_INPUT, 216, 95, 200, 30, _("TeX encoding"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->choice_default_papersize = obj = fl_add_choice(FL_NORMAL_CHOICE, 217, 142, 199, 29, _("Default paper size"));
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+  fl_end_form();
+
+  fdui->form->fdui = fdui;
+
+  return fdui;
+}
+/*---------------------------------------*/
+
+FD_form_spellchecker::~FD_form_spellchecker()
+{
+  if( form->visible ) fl_hide_form( form );
+  fl_free_form( form );
+}
+
+
+FD_form_spellchecker * FormPreferences::build_spellchecker()
+{
+  FL_OBJECT *obj;
+  FD_form_spellchecker *fdui = new FD_form_spellchecker;
+
+  fdui->form = fl_bgn_form(FL_NO_BOX, 450, 320);
+  fdui->form->u_vdata = this;
+  obj = fl_add_box(FL_FLAT_BOX, 0, 0, 450, 320, "");
+  fdui->choice_spell_command = obj = fl_add_choice(FL_NORMAL_CHOICE, 141, 47, 171, 34, _("Spell command"));
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_TOP);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->check_alt_lang = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 208, 100, 30, 30, _("Use alternative language"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->input_alt_lang = obj = fl_add_input(FL_NORMAL_INPUT, 239, 100, 170, 30, "");
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->check_escape_chars = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 208, 130, 30, 30, _("Use escape characters"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->input_escape_chars = obj = fl_add_input(FL_NORMAL_INPUT, 239, 130, 170, 30, "");
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->check_personal_dict = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 208, 160, 30, 30, _("Use personal dictionary"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->input_personal_dict = obj = fl_add_input(FL_NORMAL_INPUT, 239, 160, 170, 30, "");
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->button_personal_dict = obj = fl_add_button(FL_NORMAL_BUTTON, 239, 190, 89, 30, _("Browse..."));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->check_compound_words = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 130, 230, 30, 30, _("Accept compound words"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->check_input_enc = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 130, 260, 30, 30, _("Use input encoding"));
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_RIGHT);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

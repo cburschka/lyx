@@ -23,6 +23,8 @@ extern  "C" void C_FormBaseRestoreCB(FL_OBJECT *, long);
 
 extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
+
 
 /**** Forms and Objects ****/
 struct FD_form_lnf_general {
@@ -138,6 +140,23 @@ struct FD_form_outputs_general {
 
 	FL_FORM *form;
 	FL_OBJECT *counter_line_len;
+	FL_OBJECT *input_tex_encoding;
+	FL_OBJECT *choice_default_papersize;
+};
+struct FD_form_spellchecker {
+	~FD_form_spellchecker();
+
+	FL_FORM *form;
+	FL_OBJECT *choice_spell_command;
+	FL_OBJECT *check_alt_lang;
+	FL_OBJECT *input_alt_lang;
+	FL_OBJECT *check_escape_chars;
+	FL_OBJECT *input_escape_chars;
+	FL_OBJECT *check_personal_dict;
+	FL_OBJECT *input_personal_dict;
+	FL_OBJECT *button_personal_dict;
+	FL_OBJECT *check_compound_words;
+	FL_OBJECT *check_input_enc;
 };
 
 #endif /* FD_form_lnf_general_h_ */
