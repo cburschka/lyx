@@ -67,7 +67,8 @@ string const convert_brace_glob(string const & glob)
 
 vector<string> const glob(string const & pattern, int flags)
 {
-	glob_t glob_buffer = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+	glob_t glob_buffer;
+	glob_buffer.gl_offs = 0;	
 	glob(pattern.c_str(), flags, 0, &glob_buffer);
 	vector<string> const matches(glob_buffer.gl_pathv,
 				     glob_buffer.gl_pathv +
