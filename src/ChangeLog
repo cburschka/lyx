@@ -1,10 +1,14 @@
+2002-04-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* ShareContainer.h: add a couple of missing typenames.
+
 2002-04-02  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* lyxrc.C (getDescription): use _() correctly rather than N_().
 
 2002-03-28  Herbert Voss  <voss@lyx.org>
 
-	* lyxlength.C: compatibility stuff for < 1.1.6fix4 and 
+	* lyxlength.C: compatibility stuff for < 1.1.6fix4 and
 	"old" 1.2.0 files which use c%, l%, p% t% instead of text%, ...
 
 2002-04-02  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
@@ -50,7 +54,7 @@
 2002-03-27  Herbert Voss  <voss@lyx.org>
 
 	* lengthcommon.C: change c%, l%, p% t% to col%, line%, page%
-	and text% 
+	and text%
 
 2002-03-27  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 

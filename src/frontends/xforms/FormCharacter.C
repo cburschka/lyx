@@ -143,7 +143,8 @@ namespace {
 template<class A>
 typename vector<A>::size_type findPos(vector<A> const & vec, A const & val)
 {
-	vector<A>::const_iterator it = find(vec.begin(), vec.end(), val);
+	typename vector<A>::const_iterator it =
+		find(vec.begin(), vec.end(), val);
 	if (it == vec.end())
 		return 0;
 	return it - vec.begin();

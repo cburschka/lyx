@@ -27,9 +27,9 @@ public:
 	value_type
 	get(Share const & ps) const {
 		// First see if we already have this ps in the container
-		Params::iterator it = std::find_if(params.begin(),
-						   params.end(),
-						   isEqual(ps));
+		typename Params::iterator it = std::find_if(params.begin(),
+							    params.end(),
+							    isEqual(ps));
 		value_type tmp;
 		if (it == params.end()) {
 			// ok we don't have it so we should
@@ -73,9 +73,9 @@ private:
 	    optimizaton.
 	*/
 	void clean() const {
-		Params::iterator it = std::remove_if(params.begin(),
-						     params.end(),
-						     isUnique());
+		typename Params::iterator it = std::remove_if(params.begin(),
+							      params.end(),
+							      isUnique());
 		params.erase(it, params.end());
 	}
 
