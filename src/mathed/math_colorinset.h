@@ -19,7 +19,7 @@
 class MathColorInset : public MathNestInset {
 public:
 	///
-	MathColorInset();
+	explicit MathColorInset(bool oldstyle);
 	///
 	std::auto_ptr<InsetBase> clone() const;
 	///
@@ -39,6 +39,8 @@ public:
 private:
 	/// width of '[' in current font
 	mutable int w_;
+	///
+	bool oldstyle_;
 };
 
 #endif

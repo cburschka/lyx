@@ -311,7 +311,9 @@ MathAtom createMathInset(string const & s)
 	if (s == "boldsymbol")
 		return MathAtom(new MathBoldsymbolInset);
 	if (s == "color")
-		return MathAtom(new MathColorInset);
+		return MathAtom(new MathColorInset(true));
+	if (s == "textcolor")
+		return MathAtom(new MathColorInset(false));
 	if (s == "dfrac")
 		return MathAtom(new MathDfracInset);
 

@@ -23,8 +23,8 @@
 using std::auto_ptr;
 
 
-MathColorInset::MathColorInset()
-	: MathNestInset(2)
+MathColorInset::MathColorInset(bool oldstyle)
+	: MathNestInset(2), oldstyle_(oldstyle)
 {}
 
 
@@ -80,7 +80,10 @@ void MathColorInset::validate(LaTeXFeatures & features) const
 
 void MathColorInset::write(WriteStream & os) const
 {
-	os << "{\\color" << '{' << cell(0) << '}' << cell(1) << '}';
+	if (oldstyle_)
+		os << "{\\color" << '{' << cell(0) << '}' << cell(1) << '}';
+	else 
+		os << "\\textcolor" << '{' << cell(0) << "}{" << cell(1) << '}';
 }
 
 
