@@ -88,3 +88,5 @@ What's new
 
 - fix compilation problem (missing <wchar.h>) on some BSD systems
   (including Mac OS X)
+
+- fix link problems with gcc on and non-GNU linkers
