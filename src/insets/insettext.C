@@ -676,7 +676,7 @@ void InsetText::edit(BufferView * bv, int x, int y, unsigned int button)
 		font.setLanguage(bv->getParentLanguage(this));
 		setFont(bv, font, false);
 	}
-	showInsetCursor(bv);
+//	showInsetCursor(bv);
 	if (clear)
 		lt = 0;
 	
@@ -725,7 +725,7 @@ void InsetText::edit(BufferView * bv, bool front)
 		font.setLanguage(bv->getParentLanguage(this));
 		setFont(bv, font, false);
 	}
-	showInsetCursor(bv);
+//	showInsetCursor(bv);
 	if (clear)
 		lt = 0;
 	int code = CURSOR;
@@ -1440,9 +1440,7 @@ InsetText::localDispatch(BufferView * bv,
 		setFont(bv, font, false);
 	}
 
-	if (result < FINISHED) {
-		showInsetCursor(bv);
-	} else
+	if (result >= FINISHED)
 		bv->unlockInset(this);
 	return result;
 }

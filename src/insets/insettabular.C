@@ -694,7 +694,7 @@ bool InsetTabular::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 			scroll(bv, 0.0F);
 #endif
 		updateLocal(bv, CELL, false);
-		showInsetCursor(bv, false);
+//		showInsetCursor(bv, false);
 		return true;
 	}
 	if (the_locking_inset->unlockInsetInInset(bv, inset, lr)) {
@@ -1276,7 +1276,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 	}
 	if (result < FINISHED) {
 		if (!the_locking_inset) {
-			showInsetCursor(bv);
+//			showInsetCursor(bv);
 		}
 	} else
 		bv->unlockInset(this);
