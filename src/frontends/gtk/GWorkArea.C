@@ -24,6 +24,38 @@
 ColorCache colorCache;
 
 
+ColorCache::~ColorCache()
+{
+	clear();
+}
+
+
+Gdk::Color * ColorCache::getColor(EnumLColor clr)
+{
+	MapIt it = cache_.find(clr);
+	return it == cache_.end() ? 0 : it->second;
+}
+
+
+XftColor * ColorCache::getXftColor(EnumLColor clr)
+{
+	MapIt2 it = cache2_.find(clr);
+	return it == cache2_.end() ? 0 : it->second;
+}
+
+
+void ColorCache::cacheColor(EnumLColor clr, Gdk::Color * gclr)
+{
+	cache_[clr] = gclr;
+}
+
+
+void ColorCache::cacheXftColor(EnumLColor clr, XftColor * xclr)
+{
+	cache2_[clr] = xclr;
+}
+
+
 void ColorCache::clear()
 {
 	MapIt it = cache_.begin();
@@ -156,6 +188,79 @@ GWorkArea::GWorkArea(int width, int height)
 GWorkArea::~GWorkArea()
 {
 	g_object_unref(imContext_);
+}
+
+
+Painter & GWorkArea::getPainter()
+{
+	return painter_;
+}
+
+
+int GWorkArea::workWidth() const
+{
+	return workArea_.get_width();
+}
+
+
+int GWorkArea::workHeight() const
+{
+	return workArea_.get_height();
+}
+
+
+int GWorkArea::xpos() const
+{
+	return 0;
+}
+
+
+int GWorkArea::ypos() const
+{
+	return 0;
+}
+
+
+Glib::RefPtr<Gdk::Window> GWorkArea::getWindow()
+{
+	return workArea_.get_window();
+}
+
+
+Display * GWorkArea::getDisplay() const
+{
+	return GDK_WINDOW_XDISPLAY(
+		const_cast<GdkWindow*>(workArea_.get_window()->gobj()));
+}
+
+
+Glib::RefPtr<Gdk::Pixmap> GWorkArea::getPixmap()
+{
+	return workAreaPixmap_;
+}
+
+
+Glib::RefPtr<Gdk::GC> GWorkArea::getGC()
+{
+	return workAreaGC_;
+}
+
+
+Glib::RefPtr<Gdk::Colormap> GWorkArea::getColormap()
+{
+	return workArea_.get_colormap();
+}
+
+
+XftDraw * GWorkArea::getXftDraw()
+{
+	return draw_;
+}
+
+
+ColorHandler & GWorkArea::getColorHandler()
+{
+	return colorHandler_;
 }
 
 

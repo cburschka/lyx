@@ -39,7 +39,7 @@ public:
 
 protected:
 	/// get the work area
-	virtual WorkArea & workarea() const { return owner_; }
+	virtual WorkArea & workarea() const;
 
 	/// Copies specified area of pixmap to screen
 	virtual void expose(int x, int y, int w, int h);

@@ -12,10 +12,12 @@
 #ifndef GWORKAREA_H
 #define GWORKAREA_H
 
-#include <gdk/gdkx.h>
-#include "frontends/WorkArea.h"
 #include "GPainter.h"
+#include <gdk/gdkx.h>
 #include <gtk/gtk.h>
+
+#include "frontends/WorkArea.h"
+
 #include <X11/Xft/Xft.h>
 
 class EnumLColor;
@@ -27,25 +29,11 @@ class ColorCache
 	typedef std::map<EnumLColor, XftColor *> Map2;
 	typedef Map2::iterator MapIt2;
 public:
-	~ColorCache() { clear(); }
-	Gdk::Color * getColor(EnumLColor clr)
-	{
-		MapIt it = cache_.find(clr);
-		return it == cache_.end() ? 0 : it->second;
-	}
-	XftColor * getXftColor(EnumLColor clr)
-	{
-		MapIt2 it = cache2_.find(clr);
-		return it == cache2_.end() ? 0 : it->second;
-	}
-	void cacheColor(EnumLColor clr, Gdk::Color * gclr)
-	{
-		cache_[clr] = gclr;
-	}
-	void cacheXftColor(EnumLColor clr, XftColor * xclr)
-	{
-		cache2_[clr] = xclr;
-	}
+	~ColorCache();
+	Gdk::Color * getColor(EnumLColor);
+	XftColor * getXftColor(EnumLColor);
+	void cacheColor(EnumLColor, Gdk::Color *);
+	void cacheXftColor(EnumLColor, XftColor *);
 	void clear();
 private:
 	Map cache_;
@@ -64,32 +52,30 @@ private:
 	GWorkArea & owner_;
 };
 
+
 class GWorkArea : public WorkArea, public SigC::Object
 {
 public:
 	GWorkArea(int width, int height);
 	~GWorkArea();
 
-	virtual Painter & getPainter() { return painter_; }
+	virtual Painter & getPainter();
 	///
-	virtual int workWidth() const { return workArea_.get_width(); }
+	virtual int workWidth() const;
 	///
-	virtual int workHeight() const { return workArea_.get_height(); }
+	virtual int workHeight() const;
 	/// return x position of window
-	int xpos() const { return 0; }
+	int xpos() const;
 	/// return y position of window
-	int ypos() const { return 0; }
+	int ypos() const;
 	///
-	Glib::RefPtr<Gdk::Window> getWindow() { return workArea_.get_window(); }
-	Display * getDisplay() const
-	{ return GDK_WINDOW_XDISPLAY(
-		const_cast<GdkWindow*>(workArea_.get_window()->gobj())); }
-	Glib::RefPtr<Gdk::Pixmap> getPixmap() { return workAreaPixmap_; }
-	Glib::RefPtr<Gdk::GC> getGC() { return workAreaGC_; }
-	Glib::RefPtr<Gdk::Colormap> getColormap()
-	{ return workArea_.get_colormap(); }
-	XftDraw * getXftDraw() { return draw_; }
-	ColorHandler & getColorHandler() { return colorHandler_; }
+	Glib::RefPtr<Gdk::Window> getWindow();
+	Display * getDisplay() const;
+	Glib::RefPtr<Gdk::Pixmap> getPixmap();
+	Glib::RefPtr<Gdk::GC> getGC();
+	Glib::RefPtr<Gdk::Colormap> getColormap();
+	XftDraw * getXftDraw();
+	ColorHandler & getColorHandler();
 
 	virtual void setScrollbarParams(int height, int pos, int line_height);
 	/// a selection exists

@@ -49,6 +49,12 @@ GScreen::~GScreen()
 }
 
 
+WorkArea & GScreen::workarea() const
+{
+	return owner_;
+}
+
+
 void GScreen::setCursorColor(Glib::RefPtr<Gdk::GC> gc)
 {
 	Gdk::Color * clr = owner_.getColorHandler().
