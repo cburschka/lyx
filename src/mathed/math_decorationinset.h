@@ -8,13 +8,13 @@
 #pragma interface
 #endif
 
-/** Decorations over (below) a math object
+/** Decorations and accents over (below) a math object
     \author Alejandro Aguilar Sierra
  */
 class MathDecorationInset : public MathInset {
 public:
 	///
-	explicit MathDecorationInset(int);
+	MathDecorationInset(string const & name, int);
 	///
 	MathInset * clone() const;
 	///
@@ -23,6 +23,8 @@ public:
 	void Write(std::ostream &, bool fragile) const;
 	///
 	void Metrics(MathStyles st, int asc = 0, int des = 0);
+	///
+	void WriteNormal(ostream & os) const;
 private:
 	///
 	int deco_;

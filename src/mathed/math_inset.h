@@ -171,8 +171,6 @@ public:
 	bool covers(int x, int y) const;
 	/// Identifies ScriptInsets
 	virtual bool isUpDownInset() const { return false; }
-	/// Identifies AccentInsets
-	virtual bool isAccentInset() const { return false; }
 	/// Identifies BigopInsets
 	virtual bool isBigopInset() const { return false; }
 	///

@@ -77,10 +77,10 @@ void handleFont(BufferView * bv, MathTextCodes t)
 	mathcursor->handleFont(t);
 }
 
-void handleAccent(BufferView * bv, int code)
+void handleAccent(BufferView * bv, string const & name, int code)
 {
 	bv->lockedInsetStoreUndo(Undo::EDIT);
-	mathcursor->handleAccent(code);
+	mathcursor->handleAccent(name, code);
 }
 
 void handleDelim(BufferView * bv, int l, int r)
@@ -636,16 +636,16 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 		// --- accented characters ------------------------------
 
-	case LFUN_UMLAUT:     handleAccent(bv, LM_ddot); break;
-	case LFUN_CIRCUMFLEX: handleAccent(bv, LM_hat); break;
-	case LFUN_GRAVE:      handleAccent(bv, LM_grave); break;
-	case LFUN_ACUTE:      handleAccent(bv, LM_acute); break;
-	case LFUN_TILDE:      handleAccent(bv, LM_tilde); break;
-	case LFUN_MACRON:     handleAccent(bv, LM_bar); break;
-	case LFUN_DOT:        handleAccent(bv, LM_dot); break;
-	case LFUN_CARON:      handleAccent(bv, LM_check); break;
-	case LFUN_BREVE:      handleAccent(bv, LM_breve); break;
-	case LFUN_VECTOR:     handleAccent(bv, LM_vec); break;
+	case LFUN_UMLAUT:     handleAccent(bv, "ddot", LM_ddot); break;
+	case LFUN_CIRCUMFLEX: handleAccent(bv, "hat", LM_hat); break;
+	case LFUN_GRAVE:      handleAccent(bv, "grave", LM_grave); break;
+	case LFUN_ACUTE:      handleAccent(bv, "acute", LM_acute); break;
+	case LFUN_TILDE:      handleAccent(bv, "tilde", LM_tilde); break;
+	case LFUN_MACRON:     handleAccent(bv, "bar", LM_bar); break;
+	case LFUN_DOT:        handleAccent(bv, "dot", LM_dot); break;
+	case LFUN_CARON:      handleAccent(bv, "check", LM_check); break;
+	case LFUN_BREVE:      handleAccent(bv, "breve", LM_breve); break;
+	case LFUN_VECTOR:     handleAccent(bv, "vec", LM_vec); break;
 
 		// Greek mode
 	case LFUN_GREEK:
@@ -724,7 +724,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		int ilt = '(';
 		int irt = '.';
 		static const string vdelim("(){}[]./|");
-		lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'\n";
+		//lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'\n";
 
 		if (arg.empty())
 			break;
@@ -733,8 +733,8 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		string lt;
 		string rt;
 		is >> lt >> rt;
-		lyxerr << "formulabase::LFUN_MATH_DELIM, lt: '" << lt << "'\n";
-		lyxerr << "formulabase::LFUN_MATH_DELIM, rt: '" << rt << "'\n";
+		//lyxerr << "formulabase::LFUN_MATH_DELIM, lt: '" << lt << "'\n";
+		//lyxerr << "formulabase::LFUN_MATH_DELIM, rt: '" << rt << "'\n";
 
 		if (lt.size() > 1) {
 			latexkeys const * l = in_word_set(lt);

@@ -11,7 +11,7 @@
 #include "math_macrotemplate.h"
 #include "math_parser.h"
 #include "array.h"
-#include "math_accentinset.h"
+#include "math_decorationinset.h"
 #include "math_deliminset.h"
 #include "math_fracinset.h"
 #include "math_inset.h"
@@ -94,7 +94,7 @@ void MathMacroTable::builtinMacros()
 	// This macro doesn't have arguments
 	{
 		MathMacroTemplate * t = new MathMacroTemplate("notin", 0);
-		MathAccentInset * p = new MathAccentInset(LM_not);
+		MathDecorationInset * p = new MathDecorationInset("not", LM_not);
 		p->cell(0).push_back(LM_in, LM_TC_BOPS);
 		t->push_back(p);
 		insertTemplate(t);
@@ -113,7 +113,7 @@ void MathMacroTable::builtinMacros()
 
 	{
 		MathMacroTemplate * t = new MathMacroTemplate("emptyset", 0);
-		MathAccentInset * p = new MathAccentInset(LM_not);
+		MathDecorationInset * p = new MathDecorationInset("not", LM_not);
 		p->cell(0).push_back('O', LM_TC_VAR);
 		t->push_back(p);
 		insertTemplate(t);

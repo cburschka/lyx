@@ -159,7 +159,7 @@ void MathUpDownInset::Metrics(MathStyles st, int asc, int des)
 	// we assume that asc, des, wid are the metrics of the item in front
 	// of this MathScriptInset
 	width_   = std::max(xcell(0).width(), xcell(1).width());
-	ascent_  = up()   ? xcell(0).height() + 9 : 0;
+	ascent_  = up()   ? xcell(0).height() + asc : 0;
 	descent_ = down() ? xcell(1).height() : 0;
 	dy0_     = - asc  - xcell(0).descent();
 	dy1_     =   des + xcell(1).ascent();

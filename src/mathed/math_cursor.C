@@ -43,7 +43,6 @@
 #include "math_decorationinset.h"
 #include "math_dotsinset.h"
 #include "math_deliminset.h"
-#include "math_accentinset.h"
 #include "math_macrotemplate.h"
 #include "math_sqrtinset.h"
 #include "math_scriptinset.h"
@@ -66,12 +65,11 @@ bool IsMacro(short tok, int id)
 	return tok != LM_TK_STACK &&
 	       tok != LM_TK_FRAC &&
 	       tok != LM_TK_SQRT &&
-	       tok != LM_TK_WIDE &&
+	       tok != LM_TK_DECORATION &&
 	       tok != LM_TK_SPACE &&
 	       tok != LM_TK_DOTS &&
 	       tok != LM_TK_FUNCLIM &&
 	       tok != LM_TK_BIGSYM &&
-	       tok != LM_TK_ACCENT &&
 	       !(tok == LM_TK_SYM && id < 255);
 }
 
@@ -638,8 +636,8 @@ in_word_set(s) << " \n";
 				p = new MathSqrtInset;
 				break;
 
-			case LM_TK_WIDE:
-				p = new MathDecorationInset(l->id);
+			case LM_TK_DECORATION:
+				p = new MathDecorationInset(l->name, l->id);
 				break;
 
 			case  LM_TK_FUNCLIM:
@@ -652,10 +650,6 @@ in_word_set(s) << " \n";
 
 			case LM_TK_DOTS:
 				p = new MathDotsInset(l->name, l->id);
-				break;
-
-			case LM_TK_ACCENT:
-				p = new MathAccentInset(l->id);
 				break;
 
 			case LM_TK_MACRO:
@@ -884,14 +878,15 @@ void MathCursor::handleFont(MathTextCodes t)
 }
 
 
-void MathCursor::handleAccent(int code)
+void MathCursor::handleAccent(string const & name, int code)
 {
-	MathAccentInset * p = new MathAccentInset(code);
+	MathDecorationInset * p = new MathDecorationInset(name, code);
 	if (selection) {
 		SelCut();
 		p->cell(0) = selarray;
 	}
 	insert(p);
+	push(p, true);
 }
 
 void MathCursor::handleDelim(int l, int r)
@@ -902,6 +897,7 @@ void MathCursor::handleDelim(int l, int r)
 		p->cell(0) = selarray;
 	}
 	insert(p);
+	push(p, true);
 }
 
 

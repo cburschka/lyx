@@ -22,8 +22,6 @@ libmathed_la_SOURCES = \
 	macro_support.h \
 	math_arrayinset.C \
 	math_arrayinset.h \
-	math_accentinset.C \
-	math_accentinset.h \
 	math_bigopinset.C \
 	math_bigopinset.h \
 	math_cursor.C \

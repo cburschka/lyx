@@ -63,9 +63,7 @@ enum MathTokenEnum
 	///
 	LM_TK_RIGHT,
 	///
-	LM_TK_ACCENT,
-	///
-	LM_TK_WIDE,
+	LM_TK_DECORATION,
 	///
 	LM_TK_FUNC,
 	///
