@@ -211,7 +211,7 @@ void QParagraph::apply()
 	params.pagebreakTop(dialog_->pagebreakAbove->isChecked());
 	params.pagebreakBottom(dialog_->pagebreakBelow->isChecked());
 	// label width
-	params.labelWidthString(string(dialog_->labelWidth->text()));
+	params.labelWidthString(dialog_->labelWidth->text().latin1());
 	// indendation
 	params.noindent(dialog_->noindent->isChecked());
 
