@@ -1,3 +1,8 @@
+2003-10-01  Vitaly Lipatov <lav@vl3143.spb.edu>
+
+       * FileDialog.C: use fromqstr in a few places to enable the dialog to
+       read non-latin filenames.
+
 2003-10-01  Angus Leeming  <leeming@lyx.org>
 
 	* QExternal.C (helpText): changes due to the introduction of

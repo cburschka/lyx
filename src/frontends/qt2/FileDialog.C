@@ -65,7 +65,7 @@ FileDialog::Result const FileDialog::save(string const & path,
 	int res = dlg.exec();
 	lyxerr[Debug::GUI] << "result " << res << endl;
 	if (res == QDialog::Accepted)
-		result.second = string(dlg.selectedFile().data());
+		result.second = fromqstr(dlg.selectedFile());
 	dlg.hide();
 	return result;
 }
@@ -93,7 +93,7 @@ FileDialog::Result const FileDialog::open(string const & path,
 	int res = dlg.exec();
 	lyxerr[Debug::GUI] << "result " << res << endl;
 	if (res == QDialog::Accepted)
-		result.second = string(dlg.selectedFile().data());
+		result.second = fromqstr(dlg.selectedFile());
 	dlg.hide();
 	return result;
 }
@@ -119,7 +119,7 @@ FileDialog::Result const FileDialog::opendir(string const & path,
 	int res = dlg.exec();
 	lyxerr[Debug::GUI] << "result " << res << endl;
 	if (res == QDialog::Accepted)
-		result.second = string(dlg.selectedFile().data());
+		result.second = fromqstr(dlg.selectedFile());
 	dlg.hide();
 	return result;
 }
