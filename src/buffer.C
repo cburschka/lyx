@@ -1176,7 +1176,7 @@ bool Buffer::readFile(LyXLex & lex, Paragraph * par)
 						   _("Old LyX file format found. "
 						     "Use LyX 0.10.x to read this!"));
 					return false;
-				} else if (file_format < 220) {
+				} else {
 					string const command = "lyx2lyx "
 						+ QuoteName(filename_);
 					cmd_ret const ret = RunCommand(command);
