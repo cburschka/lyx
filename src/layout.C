@@ -1327,7 +1327,8 @@ LyXTextClassList::NumberOfClass(string const & textclass) const
 	for (ClassList::const_iterator cit = classlist.begin();
 	     cit != classlist.end(); ++cit) {
 		if ((*cit).name() == textclass)
-			return make_pair(true, cit - classlist.begin());
+			return make_pair(true,
+					 size_type(cit - classlist.begin()));
 	}
 	return make_pair(false, size_type(0));
 }
@@ -1356,8 +1357,8 @@ LyXTextClassList::NumberOfLayout(LyXTextClassList::size_type textclass,
 			return make_pair(true, i);
 	}
 	if (name == "dummy")
-		return make_pair(true, LYX_DUMMY_LAYOUT);
-	return make_pair(false, LyXTextClass::LayoutList::size_type(0)); // not found
+		return make_pair(true, LyXTextClassList::size_type(LYX_DUMMY_LAYOUT));
+	return make_pair(false, LyXTextClass::size_type(0)); // not found
 }
 
 

@@ -629,7 +629,8 @@ bool MathedXIter::Next()
 //       lyxerr <<"LNX " << pos << endl;
 //       if (sw>0 && GetChar()!= LM_TC_UP && GetChar()!= LM_TC_DOWN) {
 //	   w = (sx>sw) ? 0: sw-sx;
-      if ((sw > 0 || sx > 0) && GetChar() != LM_TC_UP && GetChar() != LM_TC_DOWN) {
+      if ((sw > 0 || sx > 0)
+	  && GetChar() != LM_TC_UP && GetChar() != LM_TC_DOWN) {
 	  if (sw > 0)
 	    w = (sx > sw) ? 0 : sw - sx;
 	  sx = sw = 0;

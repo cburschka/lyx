@@ -3207,7 +3207,7 @@ void LyXText::SetCursorIntern(LyXParagraph * par,
 			      LyXParagraph::size_type pos, bool setfont) const
 {
 	SetCursor(cursor, par, pos);
-#warning Remove this when verified working (Jug 20000413)
+// #warning Remove this when verified working (Jug 20000413)
 #if 0
 	// correct the cursor position if impossible
 	if (pos > par->Last()){

@@ -6,6 +6,9 @@
 #include "LString.h"
 
 struct Language {
+	Language() : RightToLeft(false) {}
+	Language(string const & l, string const & d, bool rtl)
+		: lang(l), display(d), RightToLeft(rtl) {}
 	string lang;
 	string display;
 	bool RightToLeft;

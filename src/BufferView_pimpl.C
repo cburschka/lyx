@@ -469,7 +469,7 @@ int BufferView::Pimpl::scrollDown(long time)
 	if (!screen) return 0;
    
 	double value= workarea->getScrollbarValue();
-	pair<double, double> p = workarea->getScrollbarBounds();
+	pair<float, float> p = workarea->getScrollbarBounds();
 	double max = p.second;
 	
 	if (value == max) return 0;

@@ -430,8 +430,8 @@ void InsetFormula::draw(Painter & pain, LyXFont const & f,
 	x += float(width(pain, font));
 	
 	if (par->GetType() == LM_OT_PARN || par->GetType() == LM_OT_MPARN) {
-		LyXFont font = WhichFont(LM_TC_BF, par->size);
-		font.setLatex(LyXFont::OFF);
+		LyXFont wfont = WhichFont(LM_TC_BF, par->size);
+		wfont.setLatex(LyXFont::OFF);
 		
 		if (par->GetType() == LM_OT_PARN) {
 			string str;
@@ -439,7 +439,7 @@ void InsetFormula::draw(Painter & pain, LyXFont const & f,
 				str = string("(") + label + ")";
 			else
 				str = string("(#)");
-			pain.text(int(x + 20), baseline, str, font);
+			pain.text(int(x + 20), baseline, str, wfont);
 		} else if (par->GetType() == LM_OT_MPARN) {
 			MathMatrixInset * mt =
 				static_cast<MathMatrixInset*>(par);
@@ -453,7 +453,7 @@ void InsetFormula::draw(Painter & pain, LyXFont const & f,
 						str = string("(") + crow->getLabel() + ")";
 					else
 						str = "(#)";
-					pain.text(int(x + 20), y, str, font);
+					pain.text(int(x + 20), y, str, wfont);
 				}
 				crow = crow->getNext();
 			}
@@ -1025,9 +1025,9 @@ InsetFormula::LocalDispatch(BufferView * bv,
        string lb = arg;
        if (lb.empty()) {
 	  pair<bool, string>
-		result = askForText(_("Enter new label to insert:"));
-	  if (result.first) {
-	     lb = result.second;
+		res = askForText(_("Enter new label to insert:"));
+	  if (res.first) {
+	     lb = res.second;
 	  }
        }
        if (!lb.empty() && lb[0] > ' ') {

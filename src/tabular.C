@@ -268,10 +268,10 @@ void LyXTabular::AppendRow(int /* cell */)
 
 void LyXTabular::DeleteRow(int row)
 {
-    row_info.erase(&row_info[row]);
-    cell_info.erase(&cell_info[row]);
-    --rows_;
-    Reinit();
+	row_info.erase(row_info.begin() + row); //&row_info[row]);
+	cell_info.erase(cell_info.begin() + row); //&cell_info[row]);
+	--rows_;
+	Reinit();
 }
 
 
@@ -1352,7 +1352,7 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 	    row = row_of_cell(cell);
 	    if (cont_row_info[row]) {
 		DeleteRow(row);
-		cont_row_info.erase(&cont_row_info[row]);
+		cont_row_info.erase(cont_row_info.begin() + row); //&cont_row_info[row]);
 		while(!IsFirstCellInRow(--cell));
 	    } else {
 		inset = GetCellInset(cell);

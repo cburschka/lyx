@@ -390,13 +390,12 @@ int AskConfirmation(string const & s1, string const & s2, string const & s3)
 // Asks for a text
 pair<bool, string> askForText(string const & msg, string const & dflt)
 {
-	char const * tmp;
 	fl_set_resource("flInput.cancel.label", idex(_("Cancel|^[")));
 	fl_set_resource("flInput.ok.label", idex(_("OK|#O")));
 	fl_set_resource("flInput.clear.label", idex(_("Clear|#e")));
-	tmp = fl_show_input(msg.c_str(), dflt.c_str());
+	char const * tmp = fl_show_input(msg.c_str(), dflt.c_str());
 	if (tmp != 0)
-	  return make_pair<bool, string>(true, tmp);
+	  return make_pair<bool, string>(true, string(tmp));
 	else
 	  return make_pair<bool, string>(false, string());
 }

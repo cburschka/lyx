@@ -513,6 +513,7 @@ void LyXFileDlg::FileDlgCB(FL_OBJECT *, long lArgument)
 	}
 }
 
+
 extern "C" void C_LyXFileDlg_FileDlgCB(FL_OBJECT * ob, long data) 
 {
 	LyXFileDlg::FileDlgCB(ob, data);

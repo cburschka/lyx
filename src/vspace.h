@@ -73,9 +73,6 @@ public:
 	LyXLength::UNIT unit() const { return uni; };
 	//@}
 
-	///
-        bool operator== (LyXLength const &) const;
-
 	/// conversion
 	virtual string asString() const;
 	///
@@ -93,6 +90,15 @@ protected:
 	///
 	LyXLength::UNIT uni;
 };
+
+
+inline
+bool operator==(LyXLength const & l1, LyXLength const & l2)
+{
+	return l1.value() == l2.value()
+		&& l1.unit() == l2.unit();
+}
+	
 
 extern LyXLength::UNIT unitFromString (string const & data);
 extern bool isValidLength(string const & data, LyXLength * result);
@@ -135,9 +141,6 @@ public:
 	LyXLength::UNIT minusUnit() const { return minus_uni; };
 	//@}
 
-	///
-        bool operator == (LyXGlueLength const &) const;
-
 	/// conversion
 	virtual string asString() const;
 	///
@@ -155,6 +158,20 @@ protected:
 	///
 	LyXLength::UNIT plus_uni, minus_uni;
 };
+
+///
+inline
+bool operator==(LyXGlueLength const & l1, LyXGlueLength const & l2)
+{
+	return l1.value() == l2.value()
+		&& l1.unit() == l2.unit()
+		&& l1.plusValue() == l2.plusValue()
+		&& l1.plusUnit() == l2.plusUnit()
+		&& l1.minusValue() == l2.minusValue()
+		&& l1.minusUnit() == l2.minusUnit();
+}
+
+
 
 extern bool isValidGlueLength(string const & data, LyXGlueLength * result);
 

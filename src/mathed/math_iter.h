@@ -166,7 +166,7 @@ class MathedIter {
 class MathedXIter: public MathedIter {
  public:
     ///
-    MathedXIter(): MathedIter() { x = y = size = 0;  p = 0; crow = 0; }
+    MathedXIter() : MathedIter(), sx(0), sw(0) { x = y = size = 0;  p = 0; crow = 0; }
     ///
     MathedXIter(MathParInset*);
     ///

@@ -289,13 +289,6 @@ LyXLength::LyXLength(string const & data)
 }
 
 
-bool LyXLength::operator== (LyXLength const & other) const
-{
-	return (val == other.val &&
-		uni == other.uni);
-}
-
-
 string LyXLength::asString() const
 {
 #ifdef HAVE_SSTREAM
@@ -328,17 +321,6 @@ LyXGlueLength::LyXGlueLength (string const & data)
 		minus_val = tmp.minus_val;
 		minus_uni = tmp.minus_uni;
 	}
-}
-
-
-bool LyXGlueLength::operator== (LyXGlueLength const & other) const
-{
-	return (val == other.val && 
-		uni == other.uni &&
-		plus_val  == other.plus_val &&
-		plus_uni  == other.plus_uni &&
-		minus_val == other.minus_val &&
-		minus_uni == other.minus_uni);
 }
 
 
