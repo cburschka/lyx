@@ -57,9 +57,7 @@ void QMinipage::apply()
 	if (string(dialog_->widthED->text().latin1()).empty())
 		unit = LyXLength::UNIT_NONE;
 
-	LyXLength len(value, unit);
- 
-	controller().params().pageWidth = len.asString();
+	controller().params().pageWidth = LyXLength(value, unit);
 
 	switch (dialog_->valignCO->currentItem()) {
 	case 0:
@@ -87,7 +85,7 @@ namespace {
  
 void QMinipage::update_contents()
 {
-	LyXLength len(controller().params().pageWidth.c_str());
+	LyXLength len(controller().params().pageWidth);
 	dialog_->widthED->setText(numtostr(len.value()).c_str());
 	dialog_->unitsLC->setCurrentItem(len.unit());
 	lyxerr << "width " << numtostr(len.value()).c_str() << " units " << len.unit() << std::endl;
