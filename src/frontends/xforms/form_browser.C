@@ -27,10 +27,14 @@ FD_form_browser * FormBrowser::build_browser()
   obj = fl_add_box(FL_UP_BOX, 0, 0, 470, 380, "");
   fdui->browser = obj = fl_add_browser(FL_NORMAL_BROWSER, 10, 10, 450, 320, "");
     fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
-  fdui->button_close = obj = fl_add_button(FL_RETURN_BUTTON, 370, 340, 90, 30, _("Close"));
+  {
+    char const * const dummy = N_("Close|^[^M");
+    fdui->button_close = obj = fl_add_button(FL_NORMAL_BUTTON, 370, 340, 90, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseOKCB, 0);
+    fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
   {
     char const * const dummy = N_("Update|#Uu");
     fdui->button_update = obj = fl_add_button(FL_NORMAL_BUTTON, 270, 340, 90, 30, idex(_(dummy)));

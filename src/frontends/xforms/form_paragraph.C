@@ -314,7 +314,7 @@ FD_form_tabbed_paragraph * FormParagraph::build_tabbed_paragraph()
   fdui->tabbed_folder = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 10, 10, 490, 270, _("Tabbed folder"));
     fl_set_object_resize(obj, FL_RESIZE_ALL);
   {
-    char const * const dummy = N_("Cancel|C#C^[");
+    char const * const dummy = N_("Cancel|^[");
     fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 400, 310, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }

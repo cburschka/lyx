@@ -50,7 +50,7 @@ argument:
 
 --------------------
 class: FL_BUTTON
-type: RETURN_BUTTON
+type: NORMAL_BUTTON
 box: 370 340 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
@@ -58,12 +58,12 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Close
-shortcut: ^M
+label: Close|^[^M
+shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_close
-callback: C_FormBaseOKCB
+callback: C_FormBaseCancelCB
 argument: 0
 
 --------------------

@@ -40,8 +40,8 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Keyword
-shortcut: Keyword|#K
+label: Keyword|#K
+shortcut:
 resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: input_key
@@ -112,7 +112,7 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Cancel|#C^[
+label: Cancel|^[
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast

@@ -28,7 +28,7 @@ FD_form_error * FormError::build_error()
   fdui->message = obj = fl_add_box(FL_FRAME_BOX, 10, 10, 380, 180, "");
     fl_set_object_gravity(obj, FL_NorthWest, FL_SouthEast);
   {
-    char const * const dummy = N_("Close|#C^[^M");
+    char const * const dummy = N_("Close|^[^M");
     fdui->button_cancel = obj = fl_add_button(FL_RETURN_BUTTON, 135, 200, 130, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }

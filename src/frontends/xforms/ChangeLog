@@ -1,3 +1,26 @@
+2001-02-14  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormBrowser.C: used OkCancelPolicy for ButtonController rather than
+	IgnorantPolicy.
+
+	* forms/form_browser.fd:
+	* forms/form_copyright.fd:
+	* forms/form_error.fd:
+	* forms/form_tabular.fd:
+	* forms/form_toc.fd:
+	Consistent shortcuts for Close button: Esc and Return only.
+
+	* forms/form_citation.fd:
+	* forms/form_document.fd:
+	* forms/form_index.fd:
+	* forms/form_paragraph.fd:
+	* forms/form_preferences.fd:
+	* forms/form_print.fd:
+	* forms/form_ref.fd:
+	* forms/form_tabular_create.fd:
+	* forms/form_url.fd:
+	Consistent shortcut for Cancel button: Esc only.
+
 2001-02-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Dialogs.C: new Splash. Include, Bibitem/tex

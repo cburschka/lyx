@@ -24,7 +24,7 @@ using SigC::slot;
 #endif
 
 FormBrowser::FormBrowser(LyXView * lv, Dialogs * d, const string & name)
-	: FormBaseBD(lv, d, name, new IgnorantPolicy),
+	: FormBaseBD(lv, d, name, new OkCancelPolicy),
 	  dialog_(0)
 {
 }
@@ -43,7 +43,7 @@ void FormBrowser::build()
 	minh_ = form()->h;
 
 	// Manage the close button
-	bc_.setOK(dialog_->button_close);
+	bc_.setCancel(dialog_->button_close);
 	bc_.refresh();
 }
 

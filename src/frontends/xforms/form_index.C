@@ -25,8 +25,11 @@ FD_form_index * FormIndex::build_index()
   fdui->form = fl_bgn_form(FL_NO_BOX, 520, 100);
   fdui->form->u_vdata = this;
   obj = fl_add_box(FL_UP_BOX, 0, 0, 520, 100, "");
-  fdui->input_key = obj = fl_add_input(FL_NORMAL_INPUT, 90, 10, 420, 30, _("Keyword"));
-    fl_set_input_shortcut(obj, scex(_("Keyword|#K")), 1);
+  {
+    char const * const dummy = N_("Keyword|#K");
+    fdui->input_key = obj = fl_add_input(FL_NORMAL_INPUT, 90, 10, 420, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_resize(obj, FL_RESIZE_X);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
@@ -50,7 +53,7 @@ FD_form_index * FormIndex::build_index()
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
   {
-    char const * const dummy = N_("Cancel|#C^[");
+    char const * const dummy = N_("Cancel|^[");
     fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 410, 60, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }

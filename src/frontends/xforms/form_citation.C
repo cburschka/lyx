@@ -107,7 +107,7 @@ FD_form_citation * FormCitation::build_citation()
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
   {
-    char const * const dummy = N_("Cancel|#C^[");
+    char const * const dummy = N_("Cancel|^[");
     fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 330, 630, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
