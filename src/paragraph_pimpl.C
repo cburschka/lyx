@@ -28,12 +28,24 @@ using lyx::pos_type;
 extern int tex_code_break_column;
 
 
+// Initialize static member.
+ShareContainer<LyXFont> Paragraph::Pimpl::FontTable::container;
 // Initialization of the counter for the paragraph id's,
 unsigned int Paragraph::Pimpl::paragraph_id = 0;
 
-// Initialize static member.
-ShareContainer<LyXFont> Paragraph::Pimpl::FontTable::container;
-
+namespace {
+ 
+string special_phrases[][2] = {
+	{ "LyX", "\\LyX{}" },
+	{ "TeX", "\\TeX{}" },
+	{ "LaTeX2e", "\\LaTeXe{}" },
+	{ "LaTeX", "\\LaTeX{}" },
+	};
+ 
+size_t phrases_nr = sizeof(special_phrases)/sizeof(special_phrases[0]);
+ 
+} // namespace anon
+ 
 
 Paragraph::Pimpl::Pimpl(Paragraph * owner)
 	: owner_(owner)
@@ -243,12 +255,15 @@ void Paragraph::Pimpl::simpleTeXBlanks(std::ostream & os, TexRow & texrow,
 }
 
 
-bool Paragraph::Pimpl::isTextAt(string const & str, pos_type pos)
+bool Paragraph::Pimpl::isTextAt(BufferParams const & bp, LyXFont & font,
+				string const & str, pos_type pos)
 {
-	for (int i=0; i < str.length(); ++i) {
-		if (pos + i >= size())
+	for (string::size_type i = 0; i < str.length(); ++i) {
+		if (pos + static_cast<pos_type>(i) >= size())
 			return false;
 		if (str[i] != getChar(pos + i))
+			return false;
+		if (owner_->getFont(bp, pos + i) != font)
 			return false;
 	}
 	return true;
@@ -460,25 +475,25 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const * buf,
 				}
 				break;
 			}
-				
-			if (isTextAt("LyX", i)) {
-				os << "\\LyX{}";
-				i += 2;
-				column += 5;
-			} else if (isTextAt("TeX", i)) {
-				os << "\\TeX{}";
-				i += 2;
-				column += 5;
-			} else if (isTextAt("LaTeX2e", i)) {
-				os << "\\LaTeXe{}";
-				i += 6;
-				column += 8;
-			} else if (isTextAt("LaTeX", i)) {
-				os << "\\LaTeX{}";
-				i += 4;
-				column += 7;
-			// do we really try to print out '\0' ?
-			} else if (c != '\0') {
+		
+			// LyX, LaTeX etc.
+ 
+			// FIXME: if we have "LaTeX" with a font change in the middle (before
+			// the 'T', then the "TeX" part is still special cased. Really we
+			// should only operate this on "words" for some definition of word
+ 
+			size_t pnr = 0;
+ 
+			for (; pnr < phrases_nr; ++pnr) {
+				if (isTextAt(bparams, font, special_phrases[pnr][0], i)) {
+					os << special_phrases[pnr][1];
+					i += special_phrases[pnr][0].length() - 1;
+					column += special_phrases[pnr][1].length() - 1;
+					break;
+				}
+			}
+
+			if (pnr == phrases_nr && c != '\0') {
 				os << c;
 			}
 			break;
