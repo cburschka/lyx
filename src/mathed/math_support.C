@@ -219,9 +219,9 @@ LyXFont const & whichFontBase(MathTextCodes type)
 }
 
 
-LyXFont whichFont(MathTextCodes type, MathMetricsInfo const & size)
+void whichFont(LyXFont & f, MathTextCodes type, MathMetricsInfo const & size)
 {
-	LyXFont f = whichFontBase(type);
+	f = whichFontBase(type);
 	// use actual size
 	f.setSize(size.font.size());
 
@@ -257,8 +257,6 @@ LyXFont whichFont(MathTextCodes type, MathMetricsInfo const & size)
 
 	if (type == LM_TC_TEX)
 		f.setColor(LColor::latex);
-
-	return f;
 }
 
 } // namespace
@@ -558,7 +556,8 @@ deco_struct const * search_deco(string const & name)
 void mathed_char_dim(MathTextCodes type, MathMetricsInfo const & size,
 	unsigned char c, int & asc, int & des, int & wid)
 {
-	LyXFont const font = whichFont(type, size);
+	LyXFont font;
+	whichFont(font, type, size);
 	des = lyxfont::descent(c, font);
 	asc = lyxfont::ascent(c, font);
 	wid = mathed_char_width(type, size, c);
@@ -568,7 +567,8 @@ void mathed_char_dim(MathTextCodes type, MathMetricsInfo const & size,
 int mathed_char_height(MathTextCodes type, MathMetricsInfo const & size,
 	unsigned char c, int & asc, int & des)
 {
-	LyXFont const font = whichFont(type, size);
+	LyXFont font;
+	whichFont(font, type, size);
 	des = lyxfont::descent(c, font);
 	asc = lyxfont::ascent(c, font);
 	return asc + des;
@@ -587,7 +587,8 @@ int mathed_char_height(MathTextCodes type, MathMetricsInfo const & size,
 int mathed_char_ascent(MathTextCodes type, MathMetricsInfo const & size,
 	unsigned char c)
 {
-	LyXFont const font = whichFont(type, size);
+	LyXFont font;
+	whichFont(font, type, size);
 	return lyxfont::ascent(c, font);
 }
 
@@ -595,7 +596,8 @@ int mathed_char_ascent(MathTextCodes type, MathMetricsInfo const & size,
 int mathed_char_descent(MathTextCodes type, MathMetricsInfo const & size,
 	unsigned char c)
 {
-	LyXFont const font = whichFont(type, size);
+	LyXFont font;
+	whichFont(font, type, size);
 	return lyxfont::descent(c, font);
 }
 
@@ -603,7 +605,8 @@ int mathed_char_descent(MathTextCodes type, MathMetricsInfo const & size,
 int mathed_char_width(MathTextCodes type, MathMetricsInfo const & size,
 	unsigned char c)
 {
-	LyXFont const font = whichFont(type, size);
+	LyXFont font;
+	whichFont(font, type, size);
 	if (isBinaryOp(c, type))
 		return lyxfont::width(c, font) + 2 * lyxfont::width(' ', font);
 	else
@@ -622,7 +625,8 @@ void mathed_string_dim(MathTextCodes type, MathMetricsInfo const & size,
 int mathed_string_height(MathTextCodes type, MathMetricsInfo const & size,
 	string const & s, int & asc, int & des)
 {
-	LyXFont const font = whichFont(type, size);
+	LyXFont font;
+	whichFont(font, type, size);
 	asc = des = 0;
 	for (string::const_iterator it = s.begin(); it != s.end(); ++it) {
 		des = max(des, lyxfont::descent(*it, font));
@@ -635,14 +639,17 @@ int mathed_string_height(MathTextCodes type, MathMetricsInfo const & size,
 int mathed_string_width(MathTextCodes type, MathMetricsInfo const & size,
 	string const & s)
 {
-	return lyxfont::width(s, whichFont(type, size));
+	LyXFont font;
+	whichFont(font, type, size);
+	return lyxfont::width(s, font);
 }
 
 
 int mathed_string_ascent(MathTextCodes type, MathMetricsInfo const & size,
 	string const & s)
 {
-	LyXFont const font = whichFont(type, size);
+	LyXFont font;
+	whichFont(font, type, size);
 	int asc = 0;
 	for (string::const_iterator it = s.begin(); it != s.end(); ++it)
 		asc = max(asc, lyxfont::ascent(*it, font));
@@ -653,7 +660,8 @@ int mathed_string_ascent(MathTextCodes type, MathMetricsInfo const & size,
 int mathed_string_descent(MathTextCodes type, MathMetricsInfo const & size,
 	string const & s)
 {
-	LyXFont const font = whichFont(type, size);
+	LyXFont font;
+	whichFont(font, type, size);
 	int des = 0;
 	for (string::const_iterator it = s.begin(); it != s.end(); ++it)
 		des = max(des, lyxfont::descent(*it, font));
@@ -739,14 +747,16 @@ void mathed_draw_framebox(Painter & pain, int x, int y, MathInset const * p)
 
 
 // In the future maybe we use a better fonts renderer
-void drawStr(Painter & pain, MathTextCodes type, MathMetricsInfo const & siz,
-	int x, int y, string const & s)
+void drawStr(Painter & pain, MathTextCodes type, MathMetricsInfo const & size,
+	int x, int y, string const & str)
 {
-	pain.text(x, y, s, whichFont(type, siz));
+	LyXFont font;
+	whichFont(font, type, size);
+	pain.text(x, y, str, font);
 }
 
 
-void drawChar(Painter & pain, MathTextCodes type, MathMetricsInfo const & siz,
+void drawChar(Painter & pain, MathTextCodes type, MathMetricsInfo const & size,
 	int x, int y, char c)
 {
 	string s;
@@ -755,7 +765,7 @@ void drawChar(Painter & pain, MathTextCodes type, MathMetricsInfo const & siz,
 	s += c;
 	if (isBinaryOp(c, type))
 		s += ' ';
-	drawStr(pain, type, siz, x, y, s);
+	drawStr(pain, type, size, x, y, s);
 }
 
 
@@ -781,10 +791,11 @@ void smallerStyleFrac(MathMetricsInfo & st)
 }
 
 
-void math_font_max_dim(MathTextCodes code, MathMetricsInfo const & siz,
+void math_font_max_dim(MathTextCodes code, MathMetricsInfo const & size,
 	int & asc, int & des)
 {
-	LyXFont font = whichFont(code, siz);
+	LyXFont font;
+	whichFont(font, code, size);
 	asc = lyxfont::maxAscent(font);
 	des = lyxfont::maxDescent(font);
 }
