@@ -237,9 +237,21 @@ bool LCursor::getStatus(FuncRequest const & cmd, FuncStatus & status)
 	bool res = false;
 	for ( ; size(); pop()) {
 		//lyxerr << "\nLCursor::getStatus: cmd: " << cmd << endl << *this << endl;
-		BOOST_ASSERT(pos() <= lastpos());
-		BOOST_ASSERT(idx() <= lastidx());
-		BOOST_ASSERT(par() <= lastpar());
+		if (idx() > lastidx()) {
+			lyxerr << "wrong idx " << idx() << ", max is " << lastidx()
+				<< ". Trying to correct this."  << endl;
+			idx() = lastidx();
+		}
+		if (par() > lastpar()) {
+			lyxerr << "wrong par " << par() << ", max is " << lastpar() 
+				<< ". Trying to correct this."  << endl;
+			par() = lastpar();
+		}
+		if (pos() > lastpos()) {
+			lyxerr << "wrong pos " << pos() << ", max is " << lastpos() 
+				<< ". Trying to correct this."  << endl;
+			pos() = lastpos();
+		}
 
 		// The inset's getStatus() will return 'true' if it made
 		// a definitive decision on whether it want to handle the

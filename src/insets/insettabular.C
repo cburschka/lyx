@@ -1559,6 +1559,10 @@ void InsetTabular::cutSelection(LCursor & cur)
 	for (int i = rs; i <= re; ++i)
 		for (int j = cs; j <= ce; ++j)
 			cell(tabular.getCellNumber(i, j)).clear(track);
+
+	// cursor position might be invalid now
+	cur.pos() = cur.lastpos();
+	cur.clearSelection();
 }
 
 
