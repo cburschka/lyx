@@ -20,69 +20,66 @@ nodist_libqt2ui_la_SOURCES = $(UIDIALOGS)
 
 libqt2ui.la: $(libqt2ui_la_OBJECTS) $(libqt2ui_la_DEPENDENCIES)
 
-# a pattern to change tr() to _()
-
-SED = sed
-SEDREPLACETR = s,[^A-Za-z]tr[ ]*(,_(,g
-SEDREMOVEEMPTY = s,_[ ]*([ ]*""[ ]*),"",g
+# Use _() for localization instead of tr() or trUtf8()
+UICFLAGS=-tr _
 
 QAskForTextDialog.h: QAskForTextDialog.ui
-	$(UIC) $< -o $@
+	$(UIC) $(UICFLAGS) $< -o $@
 QAskForTextDialog.C: QAskForTextDialog.h QAskForTextDialog.ui
-	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+	$(UIC) $(UICFLAGS) -impl $^ -o $@
 
 ClassModuleBase.h: ClassModuleBase.ui
-	$(UIC) $< -o $@
+	$(UIC) $(UICFLAGS) $< -o $@
 ClassModuleBase.C: ClassModuleBase.h ClassModuleBase.ui
-	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+	$(UIC) $(UICFLAGS) -impl $^ -o $@
 
 BulletsModuleBase.h: BulletsModuleBase.ui
-	$(UIC) $< -o $@
+	$(UIC) $(UICFLAGS) $< -o $@
 BulletsModuleBase.C: BulletsModuleBase.h BulletsModuleBase.ui
-	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+	$(UIC) $(UICFLAGS) -impl $^ -o $@
 
 PackagesModuleBase.h: PackagesModuleBase.ui
-	$(UIC) $< -o $@
+	$(UIC) $(UICFLAGS) $< -o $@
 PackagesModuleBase.C: PackagesModuleBase.h PackagesModuleBase.ui
-	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+	$(UIC) $(UICFLAGS) -impl $^ -o $@
 
 PaperModuleBase.h: PaperModuleBase.ui
-	$(UIC) $< -o $@
+	$(UIC) $(UICFLAGS) $< -o $@
 PaperModuleBase.C: PaperModuleBase.h PaperModuleBase.ui
-	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+	$(UIC) $(UICFLAGS) -impl $^ -o $@
 
 MarginsModuleBase.h: MarginsModuleBase.ui
-	$(UIC) $< -o $@
+	$(UIC) $(UICFLAGS) $< -o $@
 MarginsModuleBase.C: MarginsModuleBase.h MarginsModuleBase.ui
-	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+	$(UIC) $(UICFLAGS) -impl $^ -o $@
 
 LanguageModuleBase.h: LanguageModuleBase.ui
-	$(UIC) $< -o $@
+	$(UIC) $(UICFLAGS) $< -o $@
 LanguageModuleBase.C: LanguageModuleBase.h LanguageModuleBase.ui
-	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+	$(UIC) $(UICFLAGS) -impl $^ -o $@
 
 NumberingModuleBase.h: NumberingModuleBase.ui
-	$(UIC) $< -o $@
+	$(UIC) $(UICFLAGS) $< -o $@
 NumberingModuleBase.C: NumberingModuleBase.h NumberingModuleBase.ui
-	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+	$(UIC) $(UICFLAGS) -impl $^ -o $@
 
 BiblioModuleBase.h: BiblioModuleBase.ui
-	$(UIC) $< -o $@
+	$(UIC) $(UICFLAGS) $< -o $@
 BiblioModuleBase.C: BiblioModuleBase.h BiblioModuleBase.ui
-	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+	$(UIC) $(UICFLAGS) -impl $^ -o $@
 
 PreambleModuleBase.h: PreambleModuleBase.ui
-	$(UIC) $< -o $@
+	$(UIC) $(UICFLAGS) $< -o $@
 PreambleModuleBase.C: PreambleModuleBase.h PreambleModuleBase.ui
-	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+	$(UIC) $(UICFLAGS) -impl $^ -o $@
 
 
 %Module.h: %Module.ui
-	$(UIC) $< -o $@
+	$(UIC) $(UICFLAGS) $< -o $@
 %Module.C: %Module.h %Module.ui
-	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+	$(UIC) $(UICFLAGS) -impl $^ -o $@
 
 %Base.h: %.ui
-	$(UIC) $< -o $@
+	$(UIC) $(UICFLAGS) $< -o $@
 %Base.C: %Base.h %.ui
-	$(UIC) -impl $^ | $(SED) '$(SEDREPLACETR);$(SEDREMOVEEMPTY)' > $@
+	$(UIC) $(UICFLAGS) -impl $^ -o $@

@@ -1,5 +1,9 @@
 2002-12-08  John Levon  <levon@movementarian.org>
 
+	* ui/Makefile.am: use uic -tr; fix by Pauli Virtanen
+ 
+2002-12-08  John Levon  <levon@movementarian.org>
+
 	* ui/QExternalDialog.ui: connect Edit button; fix by
 	Alfredo Braunstein
 
