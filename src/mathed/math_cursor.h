@@ -216,10 +216,6 @@ public:
 	///
 	MathXArray & xarray() const;
 
-	/// returns the first position of the (normalized) selection
-	MathCursorPos firstSelectionPos() const;
-	/// returns the last position of the (normalized) selection
-	MathCursorPos lastSelectionPos() const;
 	/// returns the selection
 	void getSelection(MathCursorPos &, MathCursorPos &) const;
 	/// returns the normalized anchor of the selection

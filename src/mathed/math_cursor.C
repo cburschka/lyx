@@ -606,7 +606,6 @@ void MathCursor::setSize(MathStyles size)
 }
 
 
-
 void MathCursor::interpret(string const & s)
 {
 	//lyxerr << "interpret: '" << s << "'\n";
@@ -1224,20 +1223,6 @@ char MathCursor::halign() const
 }
 
 
-MathCursorPos MathCursor::firstSelectionPos() const
-{
-	MathCursorPos anc = normalAnchor();
-	return anc < cursor() ? anc : cursor(); 
-}
-
-
-MathCursorPos MathCursor::lastSelectionPos() const
-{
-	MathCursorPos anc = normalAnchor();
-	return anc < cursor() ? cursor() : anc; 
-}
-
-
 void MathCursor::getSelection(MathCursorPos & i1, MathCursorPos & i2) const
 {
 	MathCursorPos anc = normalAnchor();
@@ -1316,8 +1301,6 @@ MathCursorPos MathCursor::normalAnchor() const
 		// anchor is behind cursor -> move anchor behind the inset
 		++normal.pos_;
 	}
-	//lyxerr << "normalizing: from " << Anchor_[Anchor_.size() - 1] << " to "
-	//	<< normal << "\n";
 	return normal;
 }
 
