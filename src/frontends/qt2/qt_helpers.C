@@ -142,10 +142,9 @@ QString const qt_(string const & str)
 
 string const fromqstr(QString const & str)
 {
-	QTextCodec * codec = QTextCodec::codecForLocale();
-	QCString tmpstr = codec->fromUnicode(str);
-	char const * tmpcstr = tmpstr;
-	return tmpcstr;
+	QTextCodec const * const codec = QTextCodec::codecForLocale();
+	QCString const tmpstr = codec->fromUnicode(str);
+	return tmpstr.isEmpty() ? string() : string(tmpstr);
 }
 
 
