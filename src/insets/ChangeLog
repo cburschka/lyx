@@ -1,3 +1,8 @@
+2001-08-13  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (tabularFeatures): fixed fix where deleting the
+	last row didn't get the right actcell!
+
 2001-08-11  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* insettext.C (localDispatch): Change language only when the inset 

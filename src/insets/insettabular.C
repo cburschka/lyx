@@ -1692,7 +1692,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		for(int i = sel_row_start; i <= sel_row_end; ++i) {
 			tabular->DeleteRow(sel_row_start);
 		}
-		if ((sel_row_start) > tabular->rows())
+		if (sel_row_start >= tabular->rows())
 			--sel_row_start;
 		actcell = tabular->GetCellNumber(sel_row_start, column);
 		clearSelection();
@@ -1703,7 +1703,7 @@ void InsetTabular::tabularFeatures(BufferView * bv,
 		for(int i = sel_col_start; i <= sel_col_end; ++i) {
 			tabular->DeleteColumn(sel_col_start);
 		}
-		if ((sel_col_start+1) > tabular->columns())
+		if (sel_col_start >= tabular->columns())
 			--sel_col_start;
 		actcell = tabular->GetCellNumber(row, sel_col_start);
 		clearSelection();
