@@ -19,6 +19,7 @@ What's new
 
 ** Updates
 
+- updated italian User Guide
 
 ** Bug fixes
 
@@ -30,5 +31,8 @@ What's new
 
 - fix functions word-find-forward and word-find-backward, which
   meaning was inverted
+
+- when the lyx binary was actually a symbolic link, LyX printed
+  annoying debug messages on console; they are debug messages now
 
 - fix an installation issue with solaris

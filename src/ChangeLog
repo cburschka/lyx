@@ -1,3 +1,8 @@
+2002-12-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyx_main.C (init): make annoying error message a debug message
+	(bug #780)
+
 2002-10-25  Angus Leeming  <leeming@lyx.org>
 
 	* lyx_cb.C (AutoSave): move out child process into new class
