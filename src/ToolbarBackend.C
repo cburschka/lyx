@@ -26,6 +26,7 @@
 
 using std::endl;
 using std::vector;
+using std::make_pair;
 
 ToolbarBackend toolbarbackend;
 

@@ -84,6 +84,7 @@ TODO
 #include "support/lyxalgo.h" // lyx::count
 #include "support/lyxlib.h" // float_equal
 #include "support/path.h"
+#include "support/tostr.h"
 #include "support/systemcall.h"
 #include "support/os.h"
 
@@ -120,12 +121,7 @@ string const RemoveExtension(string const & filename)
 string const uniqueID()
 {
 	static unsigned int seed = 1000;
-
-	ostringstream ost;
-	ost << "graph" << ++seed;
-
-	// Needed if we use lyxstring.
-	return STRCONV(ost.str());
+	return "graph" + tostr(++seed);
 }
 
 
@@ -891,7 +887,7 @@ void InsetGraphicsMailer::string2params(string const & in,
 	if (in.empty())
 		return;
 
-	istringstream data(in);
+	istringstream data(STRCONV(in));
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
@@ -917,6 +913,5 @@ InsetGraphicsMailer::params2string(InsetGraphicsParams const & params)
 	data << name_ << ' ';
 	params.Write(data);
 	data << "\\end_inset\n";
-
-	return data.str();
+	return STRCONV(data.str());
 }

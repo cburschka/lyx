@@ -65,7 +65,6 @@ following hack as starting point to write some macros:
 #include "Lsstream.h"
 #include "debug.h"
 #include "support/LAssert.h"
-#include "support/lstrings.h"
 
 #include <cctype>
 #include <algorithm>

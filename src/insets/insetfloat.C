@@ -23,6 +23,7 @@
 #include "gettext.h"
 #include "iterators.h"
 #include "LaTeXFeatures.h"
+#include "Lsstream.h"
 #include "lyxfont.h"
 #include "lyxlex.h"
 #include "lyxtext.h"
@@ -37,6 +38,7 @@
 
 using std::ostream;
 using std::endl;
+
 
 // With this inset it will be possible to support the latex package
 // float.sty, and I am sure that with this and some additional support
@@ -400,7 +402,7 @@ void InsetFloatMailer::string2params(string const & in,
 	if (in.empty())
 		return;
 	
-	istringstream data(in);
+	istringstream data(STRCONV(in));
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
@@ -426,12 +428,10 @@ void InsetFloatMailer::string2params(string const & in,
 }
 
 
-string const
-InsetFloatMailer::params2string(InsetFloatParams const & params)
+string const InsetFloatMailer::params2string(InsetFloatParams const & params)
 {
 	ostringstream data;
 	data << name_ << ' ';
 	params.write(data);
-
-	return data.str();
+	return STRCONV(data.str());
 }

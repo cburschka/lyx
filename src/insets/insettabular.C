@@ -2868,7 +2868,7 @@ string const InsetTabularMailer::inset2string() const
 
 int InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 {
-	istringstream data(in);
+	istringstream data(STRCONV(in));
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
@@ -2916,8 +2916,7 @@ int InsetTabularMailer::string2params(string const & in, InsetTabular & inset)
 }
 
 
-string const
-InsetTabularMailer::params2string(InsetTabular const & inset)
+string const InsetTabularMailer::params2string(InsetTabular const & inset)
 {
 	BufferView * const bv = inset.view();
 	Buffer const * const buffer = bv ? bv->buffer() : 0;
@@ -2928,6 +2927,5 @@ InsetTabularMailer::params2string(InsetTabular const & inset)
 	data << name_ << " \\active_cell " << inset.getActCell() << '\n';
 	inset.write(buffer, data);
 	data << "\\end_inset\n";
-
-	return data.str();
+	return STRCONV(data.str());
 }

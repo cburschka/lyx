@@ -10,9 +10,8 @@
  * Full author contact details are available in file CREDITS
  */
 
-#ifndef InsetFloat_H
-#define InsetFloat_H
-
+#ifndef INSETFLOAT_H
+#define INSETFLOAT_H
 
 #include "insetcollapsable.h"
 #include "toc.h"

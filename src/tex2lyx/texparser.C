@@ -13,7 +13,6 @@ using std::ios;
 using std::istream;
 using std::istringstream;
 using std::ostream;
-using std::string;
 using std::vector;
 
 
@@ -127,7 +126,7 @@ Parser::Parser(istream & is)
 Parser::Parser(string const & s)
 	: lineno_(0), pos_(0)
 {
-	istringstream is(s);
+	istringstream is(STRCONV(s));
 	tokenize(is);
 }
 

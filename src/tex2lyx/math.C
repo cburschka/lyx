@@ -10,13 +10,11 @@
 #include "tex2lyx.h"
 
 #include <iostream>
-#include <string>
 #include <vector>
 
 using std::cerr;
 using std::endl;
 using std::ostream;
-using std::string;
 using std::vector;
 
 

@@ -24,7 +24,6 @@
 #include "support/lyxfunctional.h"
 
 
-
 namespace {
 
 string const token_from("$$i");

@@ -1405,7 +1405,7 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 			cur_value = pit->params().spacing().getValue();
 		}
 
-		istringstream istr(ev.argument.c_str());
+		istringstream istr(STRCONV(ev.argument));
 		string tmp;
 		istr >> tmp;
 		Spacing::Space new_spacing = cur_spacing;

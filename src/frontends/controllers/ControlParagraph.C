@@ -28,7 +28,7 @@ ControlParagraph::ControlParagraph(Dialog & parent)
 
 bool ControlParagraph::initialiseParams(string const & data)
 {
-	istringstream is(data);
+	istringstream is(STRCONV(data));
 	LyXLex lex(0,0);
 	lex.setStream(is);
 
@@ -118,7 +118,7 @@ void ControlParagraph::dispatchParams()
 {
 	ostringstream data;
 	params().write(data);
-	FuncRequest const fr(LFUN_PARAGRAPH_APPLY, data.str());
+	FuncRequest const fr(LFUN_PARAGRAPH_APPLY, STRCONV(data.str()));
 	kernel().dispatch(fr);
 }
 

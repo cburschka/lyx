@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "FormDialogView.h"
 
 #include "Dialog.h"
@@ -323,7 +322,7 @@ void FormDialogView::postMessage(string const & message)
 		boost::format(_("WARNING! %1$s")) :
 		boost::format("%1$s");
 
-	string const str = formatted(boost::io::str(fmter % message),
+	string const str = formatted(STRCONV(boost::io::str(fmter % message)),
 				     width, FL_NORMAL_SIZE);
 #else
 	string const tmp = warning_posted_ ?

@@ -12,6 +12,8 @@
 #include <config.h>
 
 #include "biblio.h"
+
+#include "Lsstream.h"
 #include "gettext.h" // for _()
 #include "helper_funcs.h"
 #include "Lsstream.h"
@@ -25,6 +27,7 @@
 #include <algorithm>
 
 using std::vector;
+
 
 namespace biblio {
 
@@ -78,6 +81,7 @@ string const getAbbreviatedAuthor(InfoMap const & map, string const & key)
 	}
 
 	string author = parseBibTeX(data, "author");
+
 	if (author.empty())
 		author = parseBibTeX(data, "editor");
 
@@ -252,9 +256,7 @@ string const escape_special_chars(string const & expr)
 	// The '$' must be prefixed with the escape character '\' for
 	// boost to treat it as a literal.
 	// Thus, to prefix a matched expression with '\', we use:
-	string const fmt("\\\\$&");
-
-	return reg.Merge(expr, fmt);
+	return STRCONV(reg.Merge(STRCONV(expr), "\\\\$&"));
 }
 
 
@@ -265,7 +267,7 @@ struct RegexMatch
 	// re and icase are used to construct an instance of boost::RegEx.
 	// if icase is true, then matching is insensitive to case
 	RegexMatch(InfoMap const & m, string const & re, bool icase)
-		: map_(m), regex_(re, icase) {}
+		: map_(m), regex_(STRCONV(re), icase) {}
 
 	bool operator()(string const & key) {
 		if (!validRE())
@@ -280,7 +282,7 @@ struct RegexMatch
 
 		// Attempts to find a match for the current RE
 		// somewhere in data.
-		return regex_.Search(data);
+		return regex_.Search(STRCONV(data));
 	}
 
 	bool validRE() const { return regex_.error_code() == 0; }

@@ -25,9 +25,7 @@ using std::istringstream;
 using std::ostream;
 using std::ostringstream;
 using std::stringstream;
-using std::string;
 using std::vector;
-
 
 
 void handle_comment(Parser & p)
@@ -65,7 +63,7 @@ string const trim(string const & a, char const * p)
 void split(string const & s, vector<string> & result, char delim)
 {
 	//cerr << "split 1: '" << s << "'\n";
-	istringstream is(s);
+	istringstream is(STRCONV(s));
 	string t;
 	while (getline(is, t, delim))
 		result.push_back(t);
@@ -81,7 +79,7 @@ string join(vector<string> const & input, char const * delim)
 			os << delim;
 		os << input[i];
 	}
-	return os.str();
+	return STRCONV(os.str());
 }
 
 

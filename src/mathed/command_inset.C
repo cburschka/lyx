@@ -51,8 +51,7 @@ string const CommandInset::createDialogStr(string const & name) const
 	WriteStream wsdata(data);
 	write(wsdata);
 	wsdata << "\n\\end_inset\n\n";
-
-	return data.str();
+	return STRCONV(data.str());
 }
 
 

@@ -5,6 +5,8 @@
 2003-05-12  André Pönitz  <poenitz@gmx.net>
 
 	* lstrings.[Ch]: bformat() as wrapper around boost::format
+	
+	* lyxstring.h: enable templatized constructor
 
 2003-05-06  Lars Gullik Bjønnes  <larsbj@gullik.net>
 

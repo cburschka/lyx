@@ -34,7 +34,7 @@ public:
 		data << name() << " active_cell " << 0 << '\n';
 		WriteStream ws(data);
 		inset_.write(ws);
-		return data.str();
+		return STRCONV(data.str());
 	}
 
 protected:
@@ -1075,7 +1075,7 @@ dispatch_result MathGridInset::dispatch
 
 		case LFUN_TABULAR_FEATURE: {
 			//lyxerr << "handling tabular-feature " << cmd.argument << "\n";
-			istringstream is(cmd.argument);
+			istringstream is(STRCONV(cmd.argument));
 			string s;
 			is >> s;
 			if (s == "valign-top")

@@ -43,6 +43,7 @@ using std::pair;
 #endif
 bool use_babel;
 
+
 BufferParams::BufferParams()
 	// Initialize textclass to point to article. if `first' is
 	// true in the returned pair, then `second' is the textclass
@@ -195,7 +196,7 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		tracking_changes = lex.getInteger();
 	} else if (token == "\\author") {
 		lex.nextToken();
-		istringstream ss(lex.getString());
+		istringstream ss(STRCONV(lex.getString()));
 		Author a;
 		ss >> a;
 		author_map.push_back(authorlist.record(a));

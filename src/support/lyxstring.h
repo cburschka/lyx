@@ -161,7 +161,7 @@ public:
 	/// lyxstring(5, 'n') -> "nnnnn"
 	lyxstring(size_type n, value_type c);
 
-#if 1
+#if 0
 	///
 	lyxstring(const_iterator first, const_iterator last);
 #else
@@ -169,7 +169,7 @@ public:
 	template<class InputIterator>
 	lyxstring::lyxstring(InputIterator begin, InputIterator end) {
 		while (begin != end) {
-			push_back((*begin));
+			push_back(*begin);
 			++begin;
 		}
 	}

@@ -16,6 +16,7 @@
 #include "BufferView.h"
 #include "funcrequest.h"
 #include "lyxrc.h"
+#include "Lsstream.h"
 #include "debug.h"
 #include "bufferparams.h"
 #include "buffer.h"
@@ -877,7 +878,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		if (cur_spacing == Spacing::Other)
 			cur_value = pit->params().spacing().getValue();
 
-		istringstream is(cmd.argument.c_str());
+		istringstream is(STRCONV(cmd.argument));
 		string tmp;
 		is >> tmp;
 		Spacing::Space new_spacing = cur_spacing;
@@ -1062,7 +1063,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_SETXY: {
 		int x = 0;
 		int y = 0;
-		istringstream is(cmd.argument.c_str());
+		istringstream is(STRCONV(cmd.argument));
 		is >> x >> y;
 		if (!is)
 			lyxerr << "SETXY: Could not parse coordinates in '"

@@ -18,6 +18,7 @@
 #include "funcrequest.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
+#include "Lsstream.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
 #include "Lsstream.h"
@@ -38,7 +39,6 @@
 #include <boost/bind.hpp>
 
 #include <cstdlib>
-
 
 using std::ostream;
 using std::endl;
@@ -82,12 +82,7 @@ namespace {
 string const uniqueID()
 {
 	static unsigned int seed = 1000;
-
-	ostringstream ost;
-	ost << "file" << ++seed;
-
-	// Needed if we use lyxstring.
-	return STRCONV(ost.str());
+	return "file" + tostr(++seed);
 }
 
 } // namespace anon
@@ -646,7 +641,7 @@ void InsetIncludeMailer::string2params(string const & in,
 	if (in.empty())
 		return;
 	
-	istringstream data(in);
+	istringstream data(STRCONV(in));
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
@@ -683,6 +678,5 @@ InsetIncludeMailer::params2string(InsetInclude::Params const & params)
 	data << name_ << ' ';
 	inset.write(0, data);
 	data << "\\end_inset\n";
-
-	return data.str();
+	return STRCONV(data.str());
 }

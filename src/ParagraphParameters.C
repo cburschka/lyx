@@ -7,6 +7,7 @@
 
 #include "buffer.h"
 #include "BufferView.h"
+#include "Lsstream.h"
 #include "gettext.h"
 #include "paragraph.h"
 #include "lyxtext.h"
@@ -420,7 +421,7 @@ void ParagraphParameters::write(ostream & os) const
 
 void setParagraphParams(BufferView & bv, string const & data)
 {
-	istringstream is(data);
+	istringstream is(STRCONV(data));
 	LyXLex lex(0,0);
 	lex.setStream(is);
 
@@ -471,5 +472,5 @@ void params2string(Paragraph const & par, string & data)
 	/// is paragraph in inset
 	os << "\\ininset " << par.inInset() << '\n';
 
-	data = os.str();
+	data = STRCONV(os.str());
 }

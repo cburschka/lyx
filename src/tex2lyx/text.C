@@ -11,7 +11,6 @@
 
 #include <iostream>
 #include <map>
-#include <string>
 #include <vector>
 
 using std::cerr;
@@ -19,7 +18,6 @@ using std::endl;
 using std::map;
 using std::ostream;
 using std::ostringstream;
-using std::string;
 using std::vector;
 
 
@@ -599,7 +597,7 @@ void parse_text(Parser & p, ostream & os, unsigned flags, bool outer)
 			ss << "\\fancyhead";
 			ss << p.getOpt();
 			ss << '{' << p.verbatim_item() << "}\n";
-			handle_ert(os, ss.str());
+			handle_ert(os, STRCONV(ss.str()));
 		}
 
 		else {
@@ -631,7 +629,7 @@ string parse_text(Parser & p, unsigned flags, const bool outer)
 {
 	ostringstream os;
 	parse_text(p, os, flags, outer);
-	return os.str();
+	return STRCONV(os.str());
 }
 
 

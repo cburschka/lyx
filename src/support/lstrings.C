@@ -14,6 +14,7 @@
 #include "LString.h"
 #include "lstrings.h"
 #include "LAssert.h"
+#include "Lsstream.h"
 #include "debug.h"
 #include "BoostFormat.h"
 
@@ -481,7 +482,7 @@ string const subst(string const & a,
 string const subst(string const & a,
 		   string const & oldstr, string const & newstr)
 {
-	string lstr(a);
+	string lstr = a;
 	string::size_type i = 0;
 	string::size_type const olen = oldstr.length();
 	while ((i = lstr.find(oldstr, i)) != string::npos) {
@@ -581,7 +582,7 @@ string const rsplit(string const & a, string & piece, char delim)
 	if (i != string::npos) { // delimiter was found
 		piece = a.substr(0, i);
 		tmp = a.substr(i + 1);
-	} else { // delimter was not found
+	} else { // delimiter was not found
 		piece.erase();
 	}
 	return tmp;

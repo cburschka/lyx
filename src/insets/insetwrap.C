@@ -20,6 +20,7 @@
 #include "FloatList.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
+#include "Lsstream.h"
 #include "lyxfont.h"
 #include "lyxlex.h"
 #include "lyxtext.h"
@@ -34,11 +35,13 @@
 using std::ostream;
 using std::endl;
 
+
 namespace {
 
 // this should not be hardcoded, but be part of the definition
 // of the float (JMarc)
 string const caplayout("Caption");
+
 string floatname(string const & type, BufferParams const & bp)
 {
 	FloatList const & floats = bp.getLyXTextClass().floats();
@@ -305,7 +308,7 @@ void InsetWrapMailer::string2params(string const & in,
 	if (in.empty())
 		return;
 	
-	istringstream data(in);
+	istringstream data(STRCONV(in));
 	LyXLex lex(0,0);
 	lex.setStream(data);
 
@@ -331,12 +334,10 @@ void InsetWrapMailer::string2params(string const & in,
 }
 
 
-string const
-InsetWrapMailer::params2string(InsetWrapParams const & params)
+string const InsetWrapMailer::params2string(InsetWrapParams const & params)
 {
 	ostringstream data;
 	data << name_ << ' ';
 	params.write(data);
-
-	return data.str();
+	return STRCONV(data.str());
 }

@@ -12,7 +12,6 @@
 #include <cctype>
 #include <fstream>
 #include <iostream>
-#include <string>
 #include <vector>
 
 using std::cerr;
@@ -20,7 +19,6 @@ using std::endl;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
-using std::string;
 using std::vector;
 
 #include "mathed/math_gridinfo.h"
@@ -29,7 +27,7 @@ namespace {
 
 int string2int(string const & s, int deflt = 0)
 {
-	istringstream is(s);
+	istringstream is(STRCONV(s));
 	int i = deflt;
 	is >> i;
 	return i;
@@ -53,7 +51,7 @@ string read_hlines(Parser & p)
 	};
 	//cerr << "read_hlines(), read: '" << os.str() << "'\n";
 	//cerr << "read_hlines(), next token: " << p.next_token() << "\n";
-	return os.str();
+	return STRCONV(os.str());
 }
 
 
@@ -285,7 +283,7 @@ void handle_tabular(Parser & p, ostream & os)
 	ostringstream ss;
 	ss << read_hlines(p) << HLINE; // handle initial hlines
 	parse_table(p, ss, FLAG_END);
-	split(ss.str(), lines, LINE);
+	split(STRCONV(ss.str()), lines, LINE);
 
 	vector< vector<CellInfo> > cellinfo(lines.size());
 	vector<RowInfo> rowinfo(lines.size());
