@@ -483,7 +483,7 @@ void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 	// e.g. Num Lock set
 	kbmap->bind("KP_0", LFUN_SELFINSERT);
 	kbmap->bind("KP_Decimal", LFUN_SELFINSERT);
-	kbmap->bind("KP_Enter", LFUN_SELFINSERT);
+	kbmap->bind("KP_Enter", LFUN_BREAKPARAGRAPH);
 	kbmap->bind("KP_1", LFUN_SELFINSERT);
 	kbmap->bind("KP_2", LFUN_SELFINSERT);
 	kbmap->bind("KP_3", LFUN_SELFINSERT);

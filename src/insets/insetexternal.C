@@ -325,8 +325,25 @@ void InsetExternal::Write(Buffer const *, std::ostream & os) const
 
 void InsetExternal::Read(Buffer const *, LyXLex & lex)
 {
-	lex.EatLine();
-	string const format = lex.GetString();
+	string format;
+	string token;
+
+	// Read inset data from lex and store in format
+	if (lex.EatLine()) {
+		format = lex.GetString();
+	} else
+		lex.printError("InsetExternal: Parse error: `$$Token'");
+	while (lex.IsOK()) {
+		lex.nextToken();
+		token = lex.GetString();
+		if (token == "\\end_inset")
+			break;
+	}
+	if (token != "\\end_inset") {
+		lex.printError("Missing \\end_inset at this point. "
+			       "Read: `$$Token'");
+	}
+
 	string::size_type const pos1 = format.find(",");
 	templatename = format.substr(0, pos1);
 	string::size_type const pos2 = format.find("\",\"", pos1);

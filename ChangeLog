@@ -1,3 +1,14 @@
+2001-05-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/insets/insetexternal.C (Read): the reading of external
+	insets now checks for \end_inset and removes it form the input
+	stream.
+
+	* src/lyx_main.C (defaultKeyBindings): change default binding of
+	KP_Enter. 
+
+	* lib/bind/xemacs.bind: add ~S to a binding using asciitilde
+
 2001-05-27  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/LaTeX.C (deplog): Make sure that the main .tex file is in the
