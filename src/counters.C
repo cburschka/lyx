@@ -95,6 +95,7 @@ Counters::Counters()
 	// Float counters:
 	newCounter("figure");
 	newCounter("table");
+	newCounter("algorithm");
 }
 
 

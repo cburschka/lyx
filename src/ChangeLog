@@ -1,5 +1,7 @@
 2002-09-05  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* counters.C (Counters): add missing algorithm counter.
+
 	* text2.C (setCounter): lookup the counter with layouts latexname
 	instead of by section number.
 	(setCounter): use a hackish way to lookup the correct enum
