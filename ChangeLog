@@ -1,3 +1,8 @@
+2001-05-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/Lsstream.h: include LString.h before the sstream headers to
+	fix problem with gcc 2.95.3 and lyxstring
+
 2000-04-19  Allan Rae  <rae@lyx.org>
 
 	* sigc++/: updated to libsigc++-1.0.3.  This should hopefully fix some

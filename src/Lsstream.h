@@ -12,6 +12,10 @@
 #ifndef LSSTREAM_H
 #define LSSTREAM_H 
 
+// Since we will include a string header anyway, we'd better do it
+// right now so that <string> is not loaded before lyxstring.h. (JMarc)
+#include "LString.h"
+
 #ifdef HAVE_SSTREAM
 #include <sstream>
 #else
