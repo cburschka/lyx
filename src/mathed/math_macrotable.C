@@ -14,7 +14,6 @@
 #include "math_fracinset.h"
 #include "debug.h"
 
-using std::endl;
 
 MathArray mathed_parse_cell(string const &);
 
@@ -28,20 +27,8 @@ void MathMacroTable::dump()
 	table_type::const_iterator it;
 	for (it = macro_table.begin(); it != macro_table.end(); ++it)
 		lyxerr << it->first << " [" << it->second->nargs() << "] : "
-			<< it->second << endl;
-	lyxerr << "------------------------------------------" << endl;;
-}
-
-
-void MathMacroTable::updateTemplate(MathMacroTemplate * par)
-{
-	table_type::iterator pos = macro_table.find(par->name());
-
-	if (pos == macro_table.end())
-		lyxerr << "MathMacroTable::updateTemplate: no template with name '"
-		       << par->name() << "' available." << endl;
-	else
-		pos->second = par;
+			<< it->second << "\n";
+	lyxerr << "------------------------------------------\n";
 }
 
 
@@ -59,7 +46,7 @@ MathMacroTemplate & MathMacroTable::provideTemplate(string const & name)
 
 	if (pos == macro_table.end()) {
 		lyxerr << "MathMacroTable::provideTemplate: no template with name '"
-		       << name << "' available." << endl;
+		       << name << "' available.\n";
 	}
 		
 	return *pos->second;
@@ -72,6 +59,9 @@ void MathMacroTable::createTemplate
 	MathMacroTemplate * t = new MathMacroTemplate(name, na);
 	t->cell(0) = mathed_parse_cell(text);
 	insertTemplate(t);
+#ifdef WITH_WARNINGS
+#warning who frees this?
+#endif
 }
 
 
@@ -96,7 +86,7 @@ void MathMacroTable::builtinMacros()
 		return;	
 
 	built = true;
-	//lyxerr[Debug::MATHED] << "Building macros" << endl;
+	//lyxerr[Debug::MATHED] << "Building macros\n";
    
 	createTemplate("emptyset",     0, "\\not0");
 	createTemplate("ge",           0, "\\geq");

@@ -50,10 +50,6 @@ extern char const * latex_mathenv[];
 extern MathCursor * mathcursor;
 
 
-// quite a hack i know. Should be done with return values...
-int number_of_newlines = 0;
-
-
 InsetFormula::InsetFormula()
 	: InsetFormulaBase(new MathMatrixInset)
 {}
@@ -315,6 +311,7 @@ MathMatrixInset * InsetFormula::par() const
 {
 	return static_cast<MathMatrixInset *>(par_);
 }
+
 
 void InsetFormula::par(MathInset * p)
 { 

@@ -71,6 +71,8 @@ public:
 	///
 	explicit MathCursor(InsetFormulaBase *);
 	///
+	~MathCursor();
+	///
 	void insert(char, MathTextCodes t = LM_TC_MIN);
 	///
 	void insert(MathInset *);

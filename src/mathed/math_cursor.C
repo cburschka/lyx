@@ -132,6 +132,11 @@ MathCursor::MathCursor(InsetFormulaBase * formula)
 }
 
 
+MathCursor::~MathCursor()
+{
+	delete imacro_;
+}
+
 void MathCursor::push(MathInset * par, bool first)
 {
 	MathCursorPos p;

@@ -96,6 +96,7 @@ int InsetFormulaMacro::docBook(ostream & os) const
 void InsetFormulaMacro::read(LyXLex & lex)
 {
 	// Awful hack...
+	delete par_;
 	par_ = mathed_parse(lex);
 	MathMacroTable::insertTemplate(tmacro());
 	par_->metrics(LM_ST_TEXT);

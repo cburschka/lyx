@@ -81,7 +81,7 @@ char const * latex_special_chars = "#$%&_{}";
 
 namespace {
 
-void mathed_parse(MathArray & array, unsigned flags);
+void mathed_parse_into(MathArray & array, unsigned flags);
 
 unsigned char getuchar(std::istream * is)
 {
@@ -399,8 +399,8 @@ void mathed_parse_lines(MathInset * inset, int col, bool numbered, bool outmost)
 		// reading a row
 		int idx = p->nargs() - p->ncols();
 		for (int i = 0; i < col - 1; ++i, ++idx)
-			mathed_parse(p->cell(idx), FLAG_AMPERSAND);
-		mathed_parse(p->cell(idx), FLAG_NEWLINE | FLAG_END);
+			mathed_parse_into(p->cell(idx), FLAG_AMPERSAND);
+		mathed_parse_into(p->cell(idx), FLAG_NEWLINE | FLAG_END);
 
 		if (outmost) {
 			MathMatrixInset * m = static_cast<MathMatrixInset *>(p);
@@ -433,7 +433,7 @@ MathInset * mathed_parse()
 			string arg  = lexArg('[');
 			int    narg = arg.empty() ? 0 : atoi(arg.c_str()); 
 			p = new MathMacroTemplate(name, narg);
-			mathed_parse(p->cell(0), FLAG_BRACE | FLAG_BRACE_LAST);
+			mathed_parse_into(p->cell(0), FLAG_BRACE | FLAG_BRACE_LAST);
 			//lyxerr[Debug::MATHED] << "LM_TK_NEWCOMMAND: name: "
 			//	<< name << " nargs: " << narg << "\n";
 			break;
@@ -454,7 +454,7 @@ MathInset * mathed_parse()
 				case LM_OT_SIMPLE: {
 					curr_num   = latex_mathenv[i].numbered;
 					curr_label = string();
-					mathed_parse(m->cell(0), 0);
+					mathed_parse_into(m->cell(0), 0);
 					m->numbered(0, curr_num);
 					m->label(0, curr_label);
 					break;
@@ -463,7 +463,7 @@ MathInset * mathed_parse()
 				case LM_OT_EQUATION: {
 					curr_num   = latex_mathenv[i].numbered;
 					curr_label = string();
-					mathed_parse(m->cell(0), FLAG_END);
+					mathed_parse_into(m->cell(0), FLAG_END);
 					m->numbered(0, curr_num);
 					m->label(0, curr_label);
 					break;
@@ -508,13 +508,13 @@ MathInset * mathed_parse()
 void handle_frac(MathArray & array, string const & name)
 {
 	MathFracInset * p = new MathFracInset(name);
-	mathed_parse(p->cell(0), FLAG_ITEM);
-	mathed_parse(p->cell(1), FLAG_ITEM);
+	mathed_parse_into(p->cell(0), FLAG_ITEM);
+	mathed_parse_into(p->cell(1), FLAG_ITEM);
 	array.push_back(p);
 }
 
 
-void mathed_parse(MathArray & array, unsigned flags)
+void mathed_parse_into(MathArray & array, unsigned flags)
 {
 	static int plevel = -1;
 
@@ -609,12 +609,12 @@ void mathed_parse(MathArray & array, unsigned flags)
 			break;
 		
 		case '^':
-			mathed_parse(
+			mathed_parse_into(
 				lastScriptInset(array, true, false, limits)->cell(0), FLAG_ITEM);
 			break;
 		
 		case '_':
-			mathed_parse(
+			mathed_parse_into(
 				lastScriptInset(array, false, true, limits)->cell(1), FLAG_ITEM);
 			break;
 		
@@ -683,12 +683,12 @@ void mathed_parse(MathArray & array, unsigned flags)
 			unsigned char c = getuchar(yyis);
 			if (c == '[') {
 				array.push_back(new MathRootInset);
-				mathed_parse(array.back_inset()->cell(0), FLAG_BRACK_END);
-				mathed_parse(array.back_inset()->cell(1), FLAG_ITEM);
+				mathed_parse_into(array.back_inset()->cell(0), FLAG_BRACK_END);
+				mathed_parse_into(array.back_inset()->cell(1), FLAG_ITEM);
 			} else {
 				yyis->putback(c);
 				array.push_back(new MathSqrtInset);
-				mathed_parse(array.back_inset()->cell(0), FLAG_ITEM);
+				mathed_parse_into(array.back_inset()->cell(0), FLAG_ITEM);
 			}
 			break;
 		}
@@ -702,7 +702,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 				ld = yylval.i;
 
 			MathArray ar;
-			mathed_parse(ar, FLAG_RIGHT);
+			mathed_parse_into(ar, FLAG_RIGHT);
 
 			int rd = yylex();
 			if (rd == LM_TK_SYM)
@@ -736,7 +736,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 			//MathArray tmp = array;
 			//MathSizeInset * p = new MathSizeInset(MathStyles(yylval.l->id));
 			//array.push_back(p);
-			//mathed_parse(p->cell(0), FLAG_BRACE_FONT);
+			//mathed_parse_into(p->cell(0), FLAG_BRACE_FONT);
 			break; 
 		}
 
@@ -744,7 +744,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 		case LM_TK_DECORATION:
 		{  
 			MathDecorationInset * p = new MathDecorationInset(yylval.l);
-			mathed_parse(p->cell(0), FLAG_ITEM);
+			mathed_parse_into(p->cell(0), FLAG_ITEM);
 			array.push_back(p);
 			break;
 		}
@@ -761,7 +761,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 			if (MathMacroTable::hasTemplate(yytext)) {
 				MathMacro * m = MathMacroTable::cloneTemplate(yytext);
 				for (int i = 0; i < m->nargs(); ++i) 
-					mathed_parse(m->cell(i), FLAG_ITEM);
+					mathed_parse_into(m->cell(i), FLAG_ITEM);
 				array.push_back(m);
 				m->metrics(LM_ST_TEXT);
 			} else
@@ -838,7 +838,7 @@ MathArray mathed_parse_cell(string const & str)
 	yyis     = &is;
 	yylineno = 0;
 	MathArray ar;
-	mathed_parse(ar, 0);
+	mathed_parse_into(ar, 0);
 	return ar;
 }
 
