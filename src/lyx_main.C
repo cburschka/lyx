@@ -497,6 +497,15 @@ void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 	kbmap->bind("KP_Divide", LFUN_SELFINSERT);
 	kbmap->bind("KP_Multiply", LFUN_SELFINSERT);
 	kbmap->bind("KP_Subtract", LFUN_SELFINSERT);
+	kbmap->bind("KP_Right", LFUN_RIGHT);
+	kbmap->bind("KP_Left", LFUN_LEFT);
+	kbmap->bind("KP_Up", LFUN_UP);
+	kbmap->bind("KP_Down", LFUN_DOWN);
+	kbmap->bind("KP_Home", LFUN_HOME);
+	kbmap->bind("KP_End", LFUN_END);
+	kbmap->bind("KP_Prior", LFUN_PRIOR);
+	kbmap->bind("KP_Next", LFUN_NEXT);
+	
 	
 	/* Most self-insert keys are handled in the 'default:' section of
 	 * WorkAreaKeyPress - so we don't have to define them all.
