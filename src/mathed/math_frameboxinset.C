@@ -37,7 +37,7 @@ void MathFrameboxInset::draw(PainterInfo & pi, int x, int y) const
 {
 	FontSetChanger dummy(pi.base, "textnormal");
 	pi.pain.rectangle(x + 1, y - ascent() + 1, width() - 2, height() - 2,
-			LColor::black);
+			LColor::foreground);
 	x += 5;
 
 	drawStrBlack(pi, x, y, "[");

@@ -45,7 +45,7 @@ void MathFboxInset::metrics(MetricsInfo & mi) const
 void MathFboxInset::draw(PainterInfo & pi, int x, int y) const
 {
 	pi.pain.rectangle(x + 1, y - ascent() + 1, width() - 2, height() - 2,
-			LColor::black);
+			LColor::foreground);
 	if (key_->name == "fbox") {
 		FontSetChanger dummy(pi.base, "textnormal");
 		cell(0).draw(pi, x + 5, y);

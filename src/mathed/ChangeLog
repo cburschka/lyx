@@ -1,3 +1,8 @@
+2003-04-14  Angus Leeming  <leeming@lyx.org>
+
+	* math_fboxinset.C:
+	* math_frameboxinset.C: s/\(LColor::\)black/\1foreground/
+
 2003-04-02  John Levon  <levon@movementarian.org>
 
 	* formulabase.C:
