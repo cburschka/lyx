@@ -33,6 +33,8 @@ libinsets_la_SOURCES = \
 	insetexternal.h \
 	insetfloat.h \
 	insetfloat.C \
+	insetfloatlist.C \
+	insetfloatlist.h \
 	insetfoot.C \
 	insetfoot.h \
 	insetfootlike.C \

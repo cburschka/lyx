@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /* This file is part of
  * ====================================================== 
  *
@@ -43,7 +44,7 @@ namespace toc
 {
     /** Given the cmdName of the TOC param, returns the type used
 	by ControlToc::getContents() */
-	string getType(string const & cmdName);
+	string const getType(string const & cmdName);
 
 } // namespace toc
 

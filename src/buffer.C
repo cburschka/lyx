@@ -77,6 +77,7 @@
 #include "insets/insettabular.h"
 #include "insets/insettheorem.h"
 #include "insets/insetcaption.h"
+#include "insets/insetfloatlist.h"
 #include "support/filetools.h"
 #include "support/path.h"
 #include "LaTeX.h"
@@ -1181,40 +1182,44 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 		InsetCommandParams inscmd;
 		inscmd.Read(lex);
 
-		if (inscmd.getCmdName() == "cite") {
+		string const cmdName = inscmd.getCmdName();
+		
+		if (cmdName == "cite") {
 			inset = new InsetCitation(inscmd);
-		} else if (inscmd.getCmdName() == "bibitem") {
+		} else if (cmdName == "bibitem") {
 			lex.printError("Wrong place for bibitem");
 			inset = new InsetBibKey(inscmd);
-		} else if (inscmd.getCmdName() == "BibTeX") {
+		} else if (cmdName == "BibTeX") {
 			inset = new InsetBibtex(inscmd);
-		} else if (inscmd.getCmdName() == "index") {
+		} else if (cmdName == "index") {
 			inset = new InsetIndex(inscmd);
-		} else if (inscmd.getCmdName() == "include") {
+		} else if (cmdName == "include") {
 			inset = new InsetInclude(inscmd, *this);
-		} else if (inscmd.getCmdName() == "label") {
+		} else if (cmdName == "label") {
 			inset = new InsetLabel(inscmd);
-		} else if (inscmd.getCmdName() == "url"
-			   || inscmd.getCmdName() == "htmlurl") {
+		} else if (cmdName == "url"
+			   || cmdName == "htmlurl") {
 			inset = new InsetUrl(inscmd);
-		} else if (inscmd.getCmdName() == "ref"
-			   || inscmd.getCmdName() == "pageref"
-			   || inscmd.getCmdName() == "vref"
-			   || inscmd.getCmdName() == "vpageref"
-			   || inscmd.getCmdName() == "prettyref") {
+		} else if (cmdName == "ref"
+			   || cmdName == "pageref"
+			   || cmdName == "vref"
+			   || cmdName == "vpageref"
+			   || cmdName == "prettyref") {
 			if (!inscmd.getOptions().empty()
 			    || !inscmd.getContents().empty()) {
 				inset = new InsetRef(inscmd, *this);
 			}
-		} else if (inscmd.getCmdName() == "tableofcontents"
-			   || inscmd.getCmdName() == "listofalgorithms"
-			   || inscmd.getCmdName() == "listoffigures"
-			   || inscmd.getCmdName() == "listoftables"
-			   || inscmd.getCmdName() == "listof{algorithm}{List of Algorithms}") {
+		} else if (cmdName == "tableofcontents") {
 			inset = new InsetTOC(inscmd);
-		} else if (inscmd.getCmdName() == "printindex") {
+		} else if (cmdName == "listofalgorithms") {
+			inset = new InsetFloatList("algorithm");
+		} else if (cmdName == "listoffigures") {
+			inset = new InsetFloatList("figure");
+		} else if (cmdName == "listoftables") {
+			inset = new InsetFloatList("table");
+		} else if (cmdName == "printindex") {
 			inset = new InsetPrintIndex(inscmd);
-		} else if (inscmd.getCmdName() == "lyxparent") {
+		} else if (cmdName == "lyxparent") {
 			inset = new InsetParent(inscmd, *this);
 		}
 	} else {
@@ -1257,6 +1262,8 @@ void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
 			inset = new InsetCaption;
 		} else if (tmptok == "GRAPHICS") {
 			inset = new InsetGraphics;
+		} else if (tmptok == "FloatList") {
+			inset = new InsetFloatList;
 		}
 		
 		if (inset) inset->Read(this, lex);
@@ -3362,54 +3369,54 @@ Buffer::Lists const Buffer::getLists() const
 		.NumberOfLayout(params.textclass, "Caption");
 
 	while (par) {
-			char const labeltype =
-				textclasslist.Style(params.textclass, 
-						    par->GetLayout()).labeltype;
-      
-			if (labeltype >= LABEL_COUNTER_CHAPTER
-			    && labeltype <= LABEL_COUNTER_CHAPTER + params.tocdepth) {
+		char const labeltype =
+			textclasslist.Style(params.textclass, 
+					    par->GetLayout()).labeltype;
+		
+		if (labeltype >= LABEL_COUNTER_CHAPTER
+		    && labeltype <= LABEL_COUNTER_CHAPTER + params.tocdepth) {
 				// insert this into the table of contents
-				SingleList & item = l["TOC"];
-				int depth = max(0,
-						labeltype - 
-						textclasslist.TextClass(params.textclass).maxcounter());
-				item.push_back(TocItem(par, depth, par->String(this, true)));
-			}
-			// For each paragrph, traverse its insets and look for
-			// FLOAT_CODE
+			SingleList & item = l["TOC"];
+			int depth = max(0,
+					labeltype - 
+					textclasslist.TextClass(params.textclass).maxcounter());
+			item.push_back(TocItem(par, depth, par->String(this, true)));
+		}
+		// For each paragrph, traverse its insets and look for
+		// FLOAT_CODE
+		
+		if (found) {
+			LyXParagraph::inset_iterator it =
+				par->inset_iterator_begin();
+			LyXParagraph::inset_iterator end =
+				par->inset_iterator_end();
 			
-			if (found) {
-				LyXParagraph::inset_iterator it =
-					par->inset_iterator_begin();
-				LyXParagraph::inset_iterator end =
-					par->inset_iterator_end();
-
-				for (; it != end; ++it) {
-					if ((*it)->LyxCode() == Inset::FLOAT_CODE) {
-						InsetFloat * il =
-							static_cast<InsetFloat*>(*it);
-						
-						string const type = il->type();
-						
-						// Now find the caption in the float...
-						// We now tranverse the paragraphs of
-						// the inset...
-						LyXParagraph * tmp = il->inset.par;
-						while (tmp) {
-							if (tmp->layout == cap) {
-								SingleList & item = l[type];
-								string const str =
-									tostr(item.size()+1) + ". " + tmp->String(this, false);
-								item.push_back(TocItem(tmp, 0 , str));
-							}
-							tmp = tmp->next();
+			for (; it != end; ++it) {
+				if ((*it)->LyxCode() == Inset::FLOAT_CODE) {
+					InsetFloat * il =
+						static_cast<InsetFloat*>(*it);
+					
+					string const type = il->type();
+					
+					// Now find the caption in the float...
+					// We now tranverse the paragraphs of
+					// the inset...
+					LyXParagraph * tmp = il->inset.par;
+					while (tmp) {
+						if (tmp->layout == cap) {
+							SingleList & item = l[type];
+							string const str =
+								tostr(item.size()+1) + ". " + tmp->String(this, false);
+							item.push_back(TocItem(tmp, 0 , str));
 						}
+						tmp = tmp->next();
 					}
 				}
-			} else {
-				lyxerr << "caption not found" << endl;
 			}
-			
+		} else {
+			lyxerr << "caption not found" << endl;
+		}
+		
 		par = par->next();
 	}
 	return l;

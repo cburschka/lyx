@@ -53,6 +53,7 @@
 #include "insets/insettabular.h"
 #include "insets/insettheorem.h"
 #include "insets/insetcaption.h"
+#include "insets/insetfloatlist.h"
 #include "mathed/formulamacro.h"
 #include "gettext.h"
 
@@ -1428,21 +1429,9 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		break;
 
 	case LFUN_TOC_INSERT:
-	case LFUN_LOA_INSERT:
-	case LFUN_LOF_INSERT:
-	case LFUN_LOT_INSERT:
 	{
 		InsetCommandParams p;
-		
-		if (action == LFUN_TOC_INSERT )
-			p.setCmdName("tableofcontents");
-		else if (action == LFUN_LOA_INSERT )
-			p.setCmdName("listof{algorithm}{List of Algorithms}");
-		else if (action == LFUN_LOF_INSERT )
-			p.setCmdName("listoffigures");
-		else
-			p.setCmdName("listoftables");
-
+		p.setCmdName("tableofcontents");
 		Inset * inset = new InsetTOC(p);
 		if (!bv_->insertInset(inset, "Standard", true))
 			delete inset;
@@ -2868,6 +2857,15 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 	}
 	break; 
 
+	case LFUN_FLOAT_LIST:
+	{
+		// We should check the argument for validity. (Lgb)
+		Inset * inset = new InsetFloatList(argument);
+		if (!bv_->insertInset(inset, "Standard", true))
+			delete inset;
+	}
+	break;
+	
 	case LFUN_INSERT_NOTE:
 		bv_->insertNote();
 		break;

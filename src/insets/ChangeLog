@@ -1,3 +1,16 @@
+2001-05-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* lyxinset.h: remve LOF_CODE, LOT_CODE, LOA_CODE, add
+	FLOAT_LIST_CODE, renumber code list.
+
+	* insettoc.C (getScreenLabel): remove support for float lists
+	(LyxCode): ditto
+	(Ascii): ditto
+
+	* insetfloatlist.[Ch]: new files
+
+	* Makefile.am (libinsets_la_SOURCES): add insetfloatlist.[Ch]
+
 2001-04-27  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* insettabular.C (LocalDispatch):

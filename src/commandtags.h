@@ -144,9 +144,6 @@ enum kb_action {
 	LFUN_MATH_EXTERN,  // Andre' 20010424
 	LFUN_MATH_PANEL,
 	LFUN_FIGURE,
-#if 0
-	LFUN_MELT,
-#endif
 	LFUN_DELETE_WORD_FORWARD,
 	LFUN_DELETE_WORD_BACKWARD,
 	LFUN_DELETE_LINE_FORWARD,
@@ -208,9 +205,7 @@ enum kb_action {
 	LFUN_CHILD_INSERT,               // Ale 970521
 	LFUN_CHILDOPEN,                 // Ale 970528
 	LFUN_TOC_INSERT,                // Lgb 97-05-27
-	LFUN_LOA_INSERT,                // Bernhard 97-08-07
-	LFUN_LOF_INSERT,                // Lgb 97-05-27
-	LFUN_LOT_INSERT,                // Lgb 97-05-27
+	LFUN_FLOAT_LIST,                // Lgb 20010503
 	LFUN_READ_ONLY_TOGGLE,          // Lgb 97-05-27    
 	LFUN_BIBDB_ADD,                 // Ale 970530   
 	LFUN_BIBDB_DEL,                 // Ale 970530

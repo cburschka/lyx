@@ -201,19 +201,12 @@ Menuset
     End
 
     Menu "insert_floats"
-	Item "Figure|F" "float-insert figure"
-	Item "Table|T" "float-insert table"
-	Item "Wide Figure|W" "float-insert wide-fig"
-	Item "Wide Table|d" "float-insert wide-tab"
-	Separator
-	Item "Algorithm|A" "float-insert algorithm"
+	FloatInsert
     End
 
     Menu "insert_toc"
 	Item "Table of Contents|C" "toc-insert"
-	Item "List of Figures|F" "lof-insert"
-	Item "List of Tables|T" "lot-insert"
-	Item "List of Algorithms|A" "loa-insert"
+	FloatListInsert
 	Item "Index List|I" "index-print"
 	Item "BibTeX Reference...|B" "bibtex-insert"
     End

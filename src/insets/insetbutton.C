@@ -18,6 +18,7 @@
 #include "debug.h"
 #include "BufferView.h"
 #include "Painter.h"
+#include "support/LAssert.h"
 
 using std::ostream;
 using std::endl;
@@ -25,11 +26,15 @@ using std::endl;
 
 int InsetButton::ascent(BufferView * bv, LyXFont const &) const
 {
+	lyx::Assert(bv);
+	
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	
-	int width, ascent, descent;
-        string s = getScreenLabel();
+	int width;
+	int ascent;
+	int descent;
+        string const s = getScreenLabel();
 	
         if (Editable()) {
 		bv->painter().buttonText(0, 0, s, font,
@@ -45,11 +50,15 @@ int InsetButton::ascent(BufferView * bv, LyXFont const &) const
 
 int InsetButton::descent(BufferView * bv, LyXFont const &) const
 {
+	lyx::Assert(bv);
+	
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	
-	int width, ascent, descent;
-        string s = getScreenLabel();
+	int width;
+	int ascent;
+	int descent;
+        string const s = getScreenLabel();
 	
         if (Editable()) {
 		bv->painter().buttonText(0, 0, s, font,
@@ -65,13 +74,15 @@ int InsetButton::descent(BufferView * bv, LyXFont const &) const
 
 int InsetButton::width(BufferView * bv, LyXFont const &) const
 {
+	lyx::Assert(bv);
+
 	LyXFont font(LyXFont::ALL_SANE);
 	font.decSize();
 	
-	int width, ascent, descent;
-        string s = getScreenLabel();
-	//if (!bv)
-	//	int(s.length());
+	int width;
+	int ascent;
+	int descent;
+        string const s = getScreenLabel();
 	
         if (Editable()) {
 		bv->painter().buttonText(0, 0, s, font,
@@ -88,18 +99,20 @@ int InsetButton::width(BufferView * bv, LyXFont const &) const
 void InsetButton::draw(BufferView * bv, LyXFont const &,
 			int baseline, float & x, bool) const
 {
+	lyx::Assert(bv);
+	
 	Painter & pain = bv->painter();
 	// Draw it as a box with the LaTeX text
 	LyXFont font(LyXFont::ALL_SANE);
 	font.setColor(LColor::command).decSize();
 
 	int width;
-	string s = getScreenLabel();
+	string const s = getScreenLabel();
 
 	if (Editable()) {
-		pain.buttonText(int(x)+2, baseline, s, font, true, width);
+		pain.buttonText(int(x) + 2, baseline, s, font, true, width);
 	} else {
-		pain.rectText(int(x)+2, baseline, s, font,
+		pain.rectText(int(x) + 2, baseline, s, font,
 			      LColor::commandbg, LColor::commandframe,
 			      true, width);
 	}

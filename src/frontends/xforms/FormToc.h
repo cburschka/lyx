@@ -1,3 +1,4 @@
+// -*- C++ -*-
 /* This file is part of
  * ====================================================== 
  *
@@ -30,7 +31,6 @@ class FormToc : public FormCB<ControlToc, FormDB<FD_form_toc> > {
 public:
 	///
 	FormToc(ControlToc &);
-
 private:
 	/// not needed
 	virtual void apply() {}

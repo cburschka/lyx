@@ -84,6 +84,7 @@ bool Importer::Import(LyXView * lv, string const & filename,
 	return true;
 }
 
+
 #if 0
 bool Importer::IsImportable(string const & format)
 {
@@ -95,6 +96,7 @@ bool Importer::IsImportable(string const & format)
 	return false;
 }
 #endif
+
 
 vector<Format const *> const Importer::GetImportableFormats()
 {

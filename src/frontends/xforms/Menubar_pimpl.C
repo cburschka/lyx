@@ -3,9 +3,9 @@
 * 
 *           LyX, The Document Processor
 * 	 
-*           Copyright (C) 1999 The LyX Team.
+*           Copyright 1999-2001 The LyX Team.
 *
-*======================================================*/
+* ======================================================*/
 
 #include <config.h>
 
@@ -15,18 +15,19 @@
 #pragma implementation
 #endif
 
-#include "support/lstrings.h"
-#include "support/LAssert.h"
-#include "debug.h"
+#include "Menubar_pimpl.h"
+#include "MenuBackend.h"
 #include "LyXAction.h"
 #include "kbmap.h"
 #include "buffer.h"
 #include "Dialogs.h"
 #include "LyXView.h"
 #include "lyxfunc.h"
-#include "MenuBackend.h"
-#include "Menubar_pimpl.h"
+#include "FloatList.h"
+#include "support/lstrings.h"
+#include "support/LAssert.h"
 #include "gettext.h"
+#include "debug.h"
 
 using std::endl;
 using std::vector;
@@ -41,21 +42,21 @@ extern LyXAction lyxaction;
 namespace {
 
 // Some constants
-const int MENU_LABEL_SIZE = FL_NORMAL_SIZE;
-const int mheight = 30;
-const int mbheight= 22;
+int const MENU_LABEL_SIZE = FL_NORMAL_SIZE;
+int const mheight = 30;
+int const mbheight= 22;
 // where to place the menubar?
-const int yloc = (mheight - mbheight)/2; //air + bw;
-const int mbadd = 20; // menu button add (to width)
+int const yloc = (mheight - mbheight)/2; //air + bw;
+int const mbadd = 20; // menu button add (to width)
 // Some space between buttons on the menubar 
-const int air = 2;
+int const air = 2;
 char const * menu_tabstop = "aa";
 char const * default_tabstop = "aaaaaaaa";
 // We do not want to mix position values in a menu (like the index of
 // a submenu) with the action numbers which convey actual information.
 // Therefore we offset all the action values by an arbitrary large
 // constant. 
-const int action_offset = 1000;
+int const action_offset = 1000;
 
 // This is used a few times below.
 inline
@@ -94,7 +95,7 @@ Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mb)
 }
 
 
-void Menubar::Pimpl::makeMenubar(Menu const &menu)
+void Menubar::Pimpl::makeMenubar(Menu const & menu)
 {
 	FL_FORM * form = owner_->getForm(); 
 	int moffset = 0;
@@ -106,17 +107,18 @@ void Menubar::Pimpl::makeMenubar(Menu const &menu)
 	fl_set_object_gravity(frame, NorthWestGravity, 
 			      NorthEastGravity);
 
-	for (Menu::const_iterator i = menu.begin(); 
-	     i != menu.end(); ++i) {
+	Menu::const_iterator i = menu.begin();
+	Menu::const_iterator end = menu.end();
+	for (; i != end; ++i) {
 		FL_OBJECT * obj;
 		if (i->kind() != MenuItem::Submenu) {
 			lyxerr << "ERROR: Menubar::Pimpl::createMenubar:"
 				" only submenus can appear in a menubar";
 			break;
 		}
-		string label = i->label();
-		string shortcut = "#" + i->shortcut();
-		int width = string_width(label);
+		string const label = i->label();
+		string const shortcut = "#" + i->shortcut();
+		int const width = string_width(label);
 		obj = fl_add_button(FL_MENU_BUTTON,
 				    air + moffset, yloc,
 				    width + mbadd,
@@ -133,13 +135,14 @@ void Menubar::Pimpl::makeMenubar(Menu const &menu)
 		fl_set_object_shortcut(obj, shortcut.c_str(), 1);
 		fl_set_object_callback(obj, C_Menubar_Pimpl_MenuCallback, 1);
 
-		boost::shared_ptr<ItemInfo> iteminfo(new ItemInfo(this, 
-						   new MenuItem(*i), obj));
+		boost::shared_ptr<ItemInfo>
+			iteminfo(new ItemInfo(this, new MenuItem(*i), obj));
 		buttonlist_.push_back(iteminfo);
 		obj->u_vdata = iteminfo.get();
 	}
 
 }
+
 
 void Menubar::Pimpl::set(string const & menu_name) 
 {
@@ -168,11 +171,11 @@ void Menubar::Pimpl::set(string const & menu_name)
 		current_group_ = mbit->second;
 		lyxerr[Debug::GUI] << "Menubar::Pimpl::set: Menubar set."
 				   << endl;
-	}
-	else
+	} else
 		lyxerr [Debug::GUI] << "Menubar::Pimpl::set: Nothing to do."
 				    << endl;
 } 
+
 
 void Menubar::Pimpl::openByName(string const & name)
 {
@@ -319,67 +322,14 @@ void add_toc2(int menu, string const & extra_label,
 void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 			     vector<int> & smn, Window win)
 {
-#if 0
-	//xgettext:no-c-format
-	static char const * MenuNames[3] = { N_("List of Figures%m"),
-	//xgettext:no-c-format
-					     N_("List of Tables%m"),
-	//xgettext:no-c-format
-					     N_("List of Algorithms%m") };
-
-	vector<vector<Buffer::TocItem> > toc_list =
-		owner_->buffer()->getTocList();
-
-	// Handle LOF/LOT/LOA
-	int max_nonempty = 0;
-	for (int i = 1; i <= 3; ++i)
-		if (!toc_list[i].empty())
-			max_nonempty = i;
-
-	for (int j = 1; j <= 3; ++j)
-		if (!toc_list[j].empty()) {
-			int menu2 = get_new_submenu(smn, win);
-			for (size_type i = 0; i < toc_list[j].size(); ++i) {
-				if (i > max_number_of_items) {
-					fl_addtopup(menu2, ". . .%d");
-					break;
-				}
-				int const action = lyxaction.
-					getPseudoAction(LFUN_GOTO_PARAGRAPH,
-							tostr(toc_list[j][i].par->id()));
-				string label = fixlabel(toc_list[j][i].str);
-				label = limit_string_length(label);
-				label += "%x" + tostr(action + action_offset);
-				fl_addtopup(menu2, label.c_str());
-			}
-			if (j == max_nonempty) {
-				string label = _(MenuNames[j - 1]);
-				label += "%l";
-				fl_addtopup(menu, label.c_str(), menu2);
-			} else
-				fl_addtopup(menu, _(MenuNames[j - 1]), menu2);
-		}
-
-	// Handle normal TOC
-	if (max_nonempty == 0 && toc_list[0].empty()) {
-		fl_addtopup(menu, (_("No Table of Contents%i")
-				   + extra_label).c_str());
-		return;
-	}
-
-	add_toc2(menu, extra_label, smn, win,
-		 toc_list[0], 0, toc_list[0].size(), 0);
-#else
-#ifdef WITH_WARNINGS
-#warning Fix Me! (Lgb)
-#endif
 	Buffer::Lists toc_list = owner_->buffer()->getLists();
 	Buffer::Lists::const_iterator cit = toc_list.begin();
 	Buffer::Lists::const_iterator end = toc_list.end();
 	for (; cit != end; ++cit) {
 		// Handle this elsewhere
 		if (cit->first == "TOC") continue;
-		
+
+		// All the rest is for floats
 		int menu2 = get_new_submenu(smn, win);
 		Buffer::SingleList::const_iterator ccit = cit->second.begin();
 		Buffer::SingleList::const_iterator eend = cit->second.end();
@@ -393,7 +343,7 @@ void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 			label += "%x" + tostr(action + action_offset);
 			fl_addtopup(menu2, label.c_str());
 		}
-		string const m = cit->first + "%m";
+		string const m = floatList[cit->first]->second.name() + "%m";
 		fl_addtopup(menu, m.c_str(), menu2);
 	}
 	
@@ -408,9 +358,8 @@ void Menubar::Pimpl::add_toc(int menu, string const & extra_label,
 		add_toc2(menu, extra_label, smn, win,
 			 cit->second, 0, cit->second.size(), 0);
 	}
-	
-#endif
 }
+
 
 int Menubar::Pimpl::create_submenu(Window win, LyXView * view, 
 				   string const & menu_name, 
@@ -421,10 +370,10 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 		       << menu_name << "'" << endl;
 		return -1;
 	}
-	Menu md = Menu();
+	Menu md;
 	menubackend_->getMenu(menu_name).expand(md, owner_->buffer());
 
-	int menu = get_new_submenu(smn, win);
+	int const menu = get_new_submenu(smn, win);
 	fl_setpup_softedge(menu, true);
 	fl_setpup_bw(menu, -1);
 	lyxerr[Debug::GUI] << "Adding menu " << menu 
@@ -438,8 +387,8 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 	for (Menu::const_iterator i = md.begin(); i != end; ++i) {
 		MenuItem const & item = (*i);
 		if (item.kind() == MenuItem::Command) {
-			string label = item.label() + '\t';
-			int width = string_width(label);
+			string const label = item.label() + '\t';
+			int const width = string_width(label);
 			if (width > max_width) {
 				max_width = width;
 				widest_label = label;
@@ -538,8 +487,7 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 				label += "%h";
 				fl_addtopup(menu, label.c_str(),
 					    submenu, shortcut.c_str());
-			}
-			else {
+			} else {
 				fl_addtopup(menu, label.c_str(), submenu);
 			}
 			break;
@@ -560,6 +508,8 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 		case MenuItem::UpdateFormats:
 		case MenuItem::ExportFormats:
 		case MenuItem::ImportFormats:
+		case MenuItem::FloatListInsert:
+		case MenuItem::FloatInsert:
 			lyxerr << "Menubar::Pimpl::create_submenu: "
 				"this should not happen" << endl;
 			break;

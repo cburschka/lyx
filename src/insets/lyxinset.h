@@ -45,71 +45,67 @@ public:
 		///
 		TOC_CODE,  // do these insets really need a code? (ale)
 		///
-		LOF_CODE, // 2
-		///
-		LOT_CODE,
-		///
-		LOA_CODE,
-		///
-		QUOTE_CODE, // 5
+		QUOTE_CODE,
 		///
 		MARK_CODE,
 		///
-		REF_CODE,
+		REF_CODE, // 5
 		///
 		URL_CODE,
 		///
 		HTMLURL_CODE,
 		///
-		SEPARATOR_CODE, // 10
+		SEPARATOR_CODE,
 		///
 		ENDING_CODE,
 		///
-		LABEL_CODE,
+		LABEL_CODE, // 10
 		///
 		IGNORE_CODE,
 		///
 		ACCENT_CODE,
 		///
-		MATH_CODE, // 15
+		MATH_CODE,
 		///
 		INDEX_CODE,
 		///
-		INCLUDE_CODE,
+		INCLUDE_CODE, // 15
 		///
 		GRAPHICS_CODE,
 		///
 		PARENT_CODE,
 		///
-		BIBTEX_CODE, // 20
+		BIBTEX_CODE,
 		///
 		TEXT_CODE,
 		///
-		ERT_CODE,
+		ERT_CODE, // 20
 		///
 		FOOT_CODE,
 		///
 		MARGIN_CODE,
 		///
-		FLOAT_CODE, // 25
+		FLOAT_CODE,
 		///
 		MINIPAGE_CODE,
 		///
-		SPECIALCHAR_CODE,
+		SPECIALCHAR_CODE, // 25
 		///
 		TABULAR_CODE,
 		///
 		EXTERNAL_CODE,
 		///
-		THEOREM_CODE, // 30
+		THEOREM_CODE,
 		///
 		CAPTION_CODE,
 		///
-		MATHMACRO_CODE,
+		MATHMACRO_CODE, // 30
 		///
 		ERROR_CODE,
 		///
-		CITE_CODE
+		CITE_CODE,
+		///
+		FLOAT_LIST_CODE
 	};
 
 	///
@@ -130,7 +126,7 @@ public:
 	
 	///
 	Inset() : top_x(0), top_baseline(0), scx(0), owner_(0) {}
-	///
+	/// Virtual base destructor
 	virtual ~Inset() {}
 	///
 	virtual int ascent(BufferView *, LyXFont const &) const = 0;

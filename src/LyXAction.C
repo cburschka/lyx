@@ -272,18 +272,6 @@ void LyXAction::init()
 		{ LFUN_ENDSEL, "line-end-select",
 		  N_("Select to end of line"), ReadOnly },
 		{ LFUN_INSET_LIST, "list-insert", "", Noop },
-		{ LFUN_LOA_INSERT, "loa-insert",
-		  N_("Insert list of algorithms"), Noop },
-		{ LFUN_LOAVIEW, "loa-view",
-		  N_("View list of algorithms"), ReadOnly },
-		{ LFUN_LOF_INSERT, "lof-insert",
-		  N_("Insert list of figures"), Noop },
-		{ LFUN_LOFVIEW, "lof-view",
-		  N_("View list of figures"), ReadOnly },
-		{ LFUN_LOT_INSERT, "lot-insert",
-		  N_("Insert list of tables"), Noop },
-		{ LFUN_LOTVIEW, "lot-view",
-		  N_("View list of tables"), ReadOnly },
 		{ LFUN_QUIT, "lyx-quit", N_("Exit"), NoBuffer },
 		{ LFUN_INSET_MARGINAL, "marginalnote-insert",
 		  N_("Insert Marginalnote"), Noop },
@@ -418,6 +406,7 @@ void LyXAction::init()
 		  N_("Pop old message and show it in the minibuffer"),
 		  NoBuffer },
 		{ LFUN_TRANSPOSE_CHARS, "chars-transpose", "", Noop },
+		{ LFUN_FLOAT_LIST, "float-list", "Insert a float list", Noop },
 		{ LFUN_NOACTION, "", "", Noop }
 	};
 

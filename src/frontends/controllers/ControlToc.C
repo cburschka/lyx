@@ -92,7 +92,7 @@ Buffer::SingleList const ControlToc::getContents(string const & type) const
 namespace toc 
 {
 
-string getType(string const & cmdName)
+string const getType(string const & cmdName)
 {
 	string type;
 
@@ -101,16 +101,7 @@ string getType(string const & cmdName)
 	if (cmdName == "tableofcontents" )
 		type = "TOC";
 
-	else if (cmdName == "listofalgorithms" )
-		type = "algorithm";
-
-	else if (cmdName == "listoffigures" )
-		type = "figure";
-
-	else
-		type = "table";
-
-	return type;
+	return cmdName;
 }
  
 } // namespace toc 

@@ -55,7 +55,13 @@ public:
 		ExportFormats,
 		/** This is a list of importable formats
 		    typically for the File->Export menu. */
-		ImportFormats
+		ImportFormats,
+		/** This is the list of floats that we can
+		    insert a list for. */
+		FloatListInsert,
+		/** This is the list of floats that we can
+		    insert. */
+		FloatInsert
 	};
 	/// Create a Command type MenuItem
 	MenuItem(Kind kind, 

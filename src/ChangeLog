@@ -1,3 +1,34 @@
+2001-05-04  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* minibuffer.C (peek_event): temporarily reduce the functionality
+	of the minibuffer (to allow args on lfuns)
+
+	* commandtags.h: remove LFUN_LOA_INSERT, LFUN_LOF_INSERT,
+	LFUN_LOT_INSERT. add LFUN_FLOAT_LIST
+
+	* buffer.C (readInset): add compability reading of old float
+	lists, add reading of new style float list.
+	(readInset): avoid reevaluation of inscmd.getCmdName()
+	(getLists): reindent
+
+	* MenuBackend.C (MenuItem): implement parsing of
+	md_floatlistinsert and md_floatinsert.
+	(expand::LastFiles): move initalizaton of iterators out of loop,
+	avoid reevaluation.
+	(expand::Documents): introduce typdedef vector<string> Strings,
+	and use it. 
+	(expand::ExportFormats): introduce typedef vector<Format const *>
+	Formats, and use it.
+	(expand): implement FloatListInsert and FloatInsert.
+
+	* LyXAction.C (init): remove entries for LFUN_LOA_INSERT,
+	LFUN_LOA_VIEW, LFUN_LOF_INSERT, LFUN_LOFVIEW, LFUN_LOT_INSERT,
+	LFUN_LOTVIEW. Add entry for LFUN_FLOAT_LIST
+
+	* BufferView_pimpl.C (Dispatch::LFUN_TOC_INSERT): remvoe the float
+	handling. 
+	(Dispatch::LFUN_FLOAT_LIST): implement
+
 2001-04-28  Kayvan A. Sylvan  <kayvan@sylvan.com>
  
  	* LaTeX.C (run): Fix problem with --export code.

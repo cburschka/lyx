@@ -174,6 +174,10 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 		case 13:
 		case XK_Return:
 		{
+#if 0
+			// This will go in again in a little while
+			// we need to be able to declare what types
+			// of argumetns LFUN's should have first. (Lgb)
 			// First check for match
 			vector<string>::const_iterator cit =
 				std::find(completion_.begin(),
@@ -185,12 +189,15 @@ int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 				string const tmp = input + _(" [no match]");
 				fl_set_input(ob, tmp.c_str());
 			} else {
+#endif
 				// Return the inputted string
 				deactivate();
 				owner_->view()->focus(true);
 				history_->push_back(input);
 				stringReady.emit(input);
+# if 0
 			}
+#endif
 			return 1;
 		}
 		case XK_space:

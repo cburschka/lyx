@@ -4,18 +4,17 @@
  *           LyX, The Document Processor
  *
  *           Copyright 1995 Matthias Ettrich
- *           Copyright 1995-2000 The LyX Team.
+ *           Copyright 1995-2001 The LyX Team.
  *
  *
  * ====================================================== */
+
+#include <config.h>
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
 
-#include <config.h>
-#include <memory>
-#include "support/LAssert.h"
 #include "MenuBackend.h"
 #include "lyxlex.h"
 #include "LyXAction.h"
@@ -26,6 +25,8 @@
 #include "converter.h"
 #include "exporter.h"
 #include "importer.h"
+#include "FloatList.h"
+#include "support/LAssert.h"
 #include "support/filetools.h"
 #include "support/lyxfunctional.h"
 
@@ -56,6 +57,8 @@ MenuItem::MenuItem(Kind kind, string const & label,
 	case UpdateFormats:
 	case ExportFormats:
 	case ImportFormats:
+	case FloatListInsert:
+	case FloatInsert:
 		break;
 	case Command:
 		action_ = lyxaction.LookupFunc(command);
@@ -97,6 +100,8 @@ Menu & Menu::read(LyXLex & lex)
 		md_toc,
 		md_updateformats,
 		md_viewformats,
+		md_floatlistinsert,
+		md_floatinsert,
 		md_last
 	};
 
@@ -104,6 +109,8 @@ Menu & Menu::read(LyXLex & lex)
 		{ "documents", md_documents },
 		{ "end", md_endmenu },
 		{ "exportformats", md_exportformats },
+		{ "floatinsert", md_floatinsert },
+		{ "floatlistinsert", md_floatlistinsert },
 		{ "importformats", md_importformats },
 		{ "item", md_item },
 		{ "lastfiles", md_lastfiles },
@@ -129,7 +136,7 @@ Menu & Menu::read(LyXLex & lex)
 			// fallback to md_item
 		case md_item: {
 			lex.next();
-			string name = _(lex.GetString());
+			string const name = _(lex.GetString());
 			lex.next();
 			string const command = lex.GetString();
 			add(MenuItem(MenuItem::Command, name, 
@@ -170,6 +177,14 @@ Menu & Menu::read(LyXLex & lex)
 			add(MenuItem(MenuItem::ImportFormats));
 			break;
 
+		case md_floatlistinsert:
+			add(MenuItem(MenuItem::FloatListInsert));
+			break;
+
+		case md_floatinsert:
+			add(MenuItem(MenuItem::FloatInsert));
+			break;
+			
 		case md_submenu: {
 			lex.next();
 			string mlabel = _(lex.GetString());
@@ -239,9 +254,10 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 		switch ((*cit).kind()) {
 		case MenuItem::Lastfiles: {
 			int ii = 1;
-			for (LastFiles::const_iterator lfit = lastfiles->begin();
-			     lfit != lastfiles->end() && ii < 10;
-			     ++lfit, ++ii) {
+			LastFiles::const_iterator lfit = lastfiles->begin();
+			LastFiles::const_iterator end = lastfiles->end();
+			
+			for (; lfit != end && ii < 10; ++lfit, ++ii) {
 				string const label = tostr(ii) + ". "
 					+ MakeDisplayPath((*lfit), 30)
 					+ '|' + tostr(ii);
@@ -255,7 +271,9 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 		break;
 		
 		case MenuItem::Documents: {
-			vector<string> const names = bufferlist.getFileNames();
+			typedef vector<string> Strings;
+			
+			Strings const names = bufferlist.getFileNames();
 			
 			if (names.empty()) {
 				tomenu.add(MenuItem(MenuItem::Command,
@@ -264,10 +282,12 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 				break;
 			}
 
-			for (vector<string>::const_iterator docit = names.begin();
-			     docit != names.end() ; ++docit) {
-				int const action =
-					lyxaction.getPseudoAction(LFUN_SWITCHBUFFER, *docit);
+			Strings::const_iterator docit = names.begin();
+			Strings::const_iterator end = names.end();
+			for (; docit != end ; ++docit) {
+				int const action = lyxaction
+					.getPseudoAction(LFUN_SWITCHBUFFER,
+							 *docit);
 				string const label =
 					MakeDisplayPath(*docit, 30);
 				tomenu.add(MenuItem(MenuItem::Command,
@@ -280,7 +300,10 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 		case MenuItem::ViewFormats:
 		case MenuItem::UpdateFormats:
 		case MenuItem::ExportFormats: {
-			vector<Format const *> formats;
+			typedef vector<Format const *> Formats;
+			
+			Formats formats;
+			
 			kb_action action;
 			switch ((*cit).kind()) {
 			case MenuItem::ImportFormats:
@@ -301,8 +324,10 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 			}
 			sort(formats.begin(), formats.end(), compare_format());
 
-			for (vector<Format const *>::const_iterator fit = formats.begin();
-			     fit != formats.end() ; ++fit) {
+			Formats::const_iterator fit = formats.begin();
+			Formats::const_iterator end = formats.end();
+			
+			for (; fit != end ; ++fit) {
 				if ((*fit)->dummy())
 					continue;
 				string label = (*fit)->prettyname();
@@ -314,13 +339,45 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 				if (!(*fit)->shortcut().empty())
 					label += "|" + (*fit)->shortcut();
 				int const action2 = lyxaction.
-					getPseudoAction(action, (*fit)->name());
+					getPseudoAction(action,
+							(*fit)->name());
 				tomenu.add(MenuItem(MenuItem::Command,
 						    label, action2));
 			}
 		}
 		break;
-			
+
+		case MenuItem::FloatListInsert:
+		{
+			FloatList::const_iterator cit = floatList.begin();
+			FloatList::const_iterator end = floatList.end();
+			for (; cit != end; ++cit) {
+				int const action =  lyxaction
+					.getPseudoAction(LFUN_FLOAT_LIST,
+							 cit->second.type());
+				string label = "List of ";
+				label += cit->second.name();
+				tomenu.add(MenuItem(MenuItem::Command,
+						    label, action));
+			}
+		}
+		break;
+
+		case MenuItem::FloatInsert:
+		{
+			FloatList::const_iterator cit = floatList.begin();
+			FloatList::const_iterator end = floatList.end();
+			for (; cit != end; ++cit) {
+				int const action = lyxaction
+					.getPseudoAction(LFUN_INSET_FLOAT,
+							 cit->second.type());
+				string const label = cit->second.name();
+				tomenu.add(MenuItem(MenuItem::Command,
+						    label, action));
+			}
+		}
+		break;
+		
 		default:
 			tomenu.add(*cit);
 		}
@@ -330,6 +387,7 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 	if (lyxerr.debugging(Debug::GUI))
 		checkShortcuts();
 }
+
 
 bool Menu::hasSubmenu(string const & name) const
 {

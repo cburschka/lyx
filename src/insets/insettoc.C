@@ -20,12 +20,7 @@ string const InsetTOC::getScreenLabel() const
 	
 	if (cmdname == "tableofcontents")
 		return _("Table of Contents");
-	else if (cmdname == "listof{algorithm}{List of Algorithms}")
-		return _("List of Algorithms");
-	else if (cmdname == "listoffigures")
-		return _("List of Figures");
-	else
-		return _("List of Tables");
+	return _("Unknown toc list");
 }
 
 
@@ -34,12 +29,7 @@ Inset::Code InsetTOC::LyxCode() const
 	string const cmdname(getCmdName());
 	if (cmdname == "tableofcontents")
 		return Inset::TOC_CODE;
-	else if (cmdname == "listof{algorithm}{List of Algorithms}")
-		return Inset::LOA_CODE;
-	else if (cmdname == "listoffigures")
-		return Inset::LOF_CODE; 
-	else
-		return Inset::LOT_CODE;
+	return Inset::NO_CODE;
 }
 
 
@@ -53,39 +43,10 @@ int InsetTOC::Ascii(Buffer const * buffer, std::ostream & os, int) const
 {
 	os << getScreenLabel() << "\n\n";
 
-#if 0
-	Buffer::TocType type;
-	string cmdname = getCmdName();
-	if (cmdname == "tableofcontents")
-		type = Buffer::TOC_TOC;
-	else if (cmdname == "listof{algorithm}{List of Algorithms}")
-		type = Buffer::TOC_LOA;
-	else if (cmdname == "listoffigures")
-		type = Buffer::TOC_LOF; 
-	else
-		type = Buffer::TOC_LOT;
-
-	vector<vector<Buffer::TocItem> > const toc_list =
-                buffer->getTocList();
-	vector<Buffer::TocItem> const & toc = toc_list[type];
-	for (vector<Buffer::TocItem>::const_iterator it = toc.begin();
-	     it != toc.end(); ++it)
-		os << string(4 * it->depth, ' ') << it->str << endl;
-#else
-#ifdef WITH_WARNINGS
-#warning Fix Me! (Lgb)
-#endif
 	string type;
 	string const cmdname = getCmdName();
 	if (cmdname == "tableofcontents")
 		type = "TOC";
-	else if (cmdname == "listof{algorithm}{List of Algorithms}")
-		type = "LOA";
-	else if (cmdname == "listoffigures")
-		type = "LOF";
-	else 
-		type = "LOT";
-
 	Buffer::Lists const toc_list = buffer->getLists();
 	Buffer::Lists::const_iterator cit =
 		toc_list.find(type);
@@ -96,7 +57,7 @@ int InsetTOC::Ascii(Buffer const * buffer, std::ostream & os, int) const
 			os << string(4 * ccit->depth, ' ')
 			   << ccit->str << "\n";
 	}
-#endif
+
 	os << "\n";
 	return 0;
 }

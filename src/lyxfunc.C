@@ -456,10 +456,6 @@ LyXFunc::func_status LyXFunc::getStatus(int ac,
 		break;
 
 	case LFUN_INSERTFOOTNOTE:
-#if 0
-	case LFUN_FOOTMELT:
-	case LFUN_MARGINMELT:
-#endif
 		// Disable insertion of floats in a tabular.
 		disable = false;
 		if (owner->view()->theLockingInset()) {
@@ -918,21 +914,26 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_TOCVIEW:
+#if 0
 	case LFUN_LOFVIEW:
 	case LFUN_LOTVIEW:
 	case LFUN_LOAVIEW:
+#endif
 	{
 		InsetCommandParams p;
-		
+
+#if 0
 		if (action == LFUN_TOCVIEW)
+#endif
 			p.setCmdName("tableofcontents");
+#if 0
 		else if (action == LFUN_LOAVIEW )
 			p.setCmdName("listof{algorithm}{List of Algorithms}");
 		else if (action == LFUN_LOFVIEW)
 			p.setCmdName("listoffigures");
 		else
 			p.setCmdName("listoftables");
-
+#endif
 		owner->getDialogs()->createTOC(p.getAsString());
 		break;
 	}	
