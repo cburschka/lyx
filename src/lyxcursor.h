@@ -16,7 +16,7 @@
 
 struct Row;
 
-/** All these variavles should be explained. Matthias?
+/** All these variables should be explained. Matthias?
  */
 struct LyXCursor {
 	///

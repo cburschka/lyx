@@ -173,53 +173,36 @@
 \newcommand{\TheTitle}{}
 \newcommand{\Title}[1]{\renewcommand{\TheTitle}{#1}}
 
-\newenvironment{dialogue}%
+\newcommand{\dialogue}[1]%
 {\raggedright
-\begin{list}{}{%
-	\setlength{\leftmargin}{.5in}
-	\setlength{\rightmargin}{.5in}
-\setlength{\parsep}{0mm}
-\setlength{\topsep}{0mm}}
-\item[] \ignorespaces}
-{\unskip \end{list}}%
+\hspace{1in}
+\parbox{4in}{#1}
+}
 
-\newenvironment{narrative}%
-{\raggedright
-\filbreak
-\fontshape{it}\selectfont{}
-\begin{list}{}{%
-	\setlength{\leftmargin}{0in}
-	\setlength{\rightmargin}{0in}
-\setlength{\parsep}{2mm}
-\setlength{\topsep}{2mm}}
-\item[] \ignorespaces}
-{\unskip \end{list}}
-
-\newenvironment{speaker}%
+\newcommand{\narrative}[1]%
 {\filbreak
-\begin{center}{}{%
-\center
-\setlength{\parsep}{0mm}
-\setlength{\topsep}{2mm}}
-\vspace{-24bp}
-\item[] \ignorespaces}
-{\unskip \end{center}}
+\raggedright{#1}
+}
 
-\newenvironment{parenthetical}%
-{\fontshape{it}\selectfont{}
-\begin{center}{}{%
-\center
-\vspace{-30bp}
-\setlength{\parsep}{0mm}
-\setlength{\topsep}{0mm}}
-	\item[](\ignorespaces}
-{\unskip )\end{center}}
+\newcommand{\speaker}[1]%
+{\filbreak
+\vspace{12pt}
+\hspace{2.25in}{#1}
+\vspace{6pt}
+}
+
+\newcommand{\parenthetical}[1]%
+{\raggedright
+\hspace{1.75in}
+\parbox{3in}{(#1)}
+\vspace{6pt}}
+
 \newcounter{actctr}
 \newcounter{scenectr}[actctr]
 \renewcommand{\theactctr}{\Roman{actctr}}
 \renewcommand{\thescenectr}{\arabic{scenectr}}
-\providecommand{\atrise}{\par\raggedright AT RISE: }%
-\providecommand{\scenestar}{\filbreak\par\centering SCENE }%
+\providecommand{\atrise}[1]{\par\raggedright AT RISE: #1 }%
+\providecommand{\scenestar}[1]{\filbreak\par\centering SCENE #1 }%
 \providecommand{\scene}{%
 \filbreak\par\stepcounter{scenectr}\centering SCENE \thescenectr}%
 \providecommand{\act}{%

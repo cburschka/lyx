@@ -1,3 +1,25 @@
+2000-05-22  Garst R. Reese  <reese@isn.net>
+
+	* layouts/hollywood.layout, broadway.layout : move Dialogue to top
+	 of list, change all references to Environment to Command
+	* tex/hollywood.cls : rewrite environments as commands, add 
+	\uppercase to interiorshot and exteriorshot to force uppecase.
+	* tex/broadway.cls : rewrite environments as commands. Tweak
+	whitespace.
+
+2000-05-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/menus.C (Add_to_toc_menu): fix the code which limits the
+	size of items: use a constant intead of the hardcoded 40, and more
+	importantly do not remove the %m and %x tags added at the end.
+	(Add_to_refs_menu): use vector::size_type instead of
+	unsigned int as basic types for the variables. _Please_ do not
+	assume that size_t is equal to unsigned int. On an alpha, this is
+	unsigned long, which is _not_ the same.
+
+	* src/language.C (initL): remove language "hungarian", since it
+	seems that "magyar" is better.
+
 2000-05-22  Juergen Vigna  <jug@sad.it>
 
 	* src/CutAndPaste.C: hopefully fixed memory the problem defenitively!
@@ -29,9 +51,7 @@
 2000-05-19  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/commandtags.h
-		
 	* src/LyXAction.C
-	
 	* src/lyxfunc.C (Dispatch): Added LFUN_LOFVIEW, LFUN_LOTVIEW
 	and LFUN_LOAVIEW
 	

@@ -69,7 +69,11 @@ void LangInit::initL()
 	{ "german", N_("German"), false },
 	{ "greek", N_("Greek"), false },
 	{ "hebrew", N_("Hebrew"), true },
-	{ "hungarian", N_("Hungarian"), false },
+	/* According to Zrubecz Laszlo <zrubi@k2.jozsef.kando.hu>,
+	   "magyar" is better. I kept it here in case we want
+	   to  provide aliasing of languages. (JMarc) 
+	*/
+	//{ "hungarian", N_("Hungarian"), false },
 	{ "irish", N_("Irish"), false },
 	{ "italian", N_("Italian"), false },
 	{ "lsorbian", N_("Lsorbian"), false },

@@ -15,6 +15,10 @@
 \DeclareOption{letterpaper}
    {\setlength\paperheight {11in}%
     \setlength\paperwidth  {8.5in}}
+\DeclareFontFamily{OT1}{pcr}{\hyphenchar\font=-1}
+\DeclareFontShape{OT1}{pcr}{m}{n}{<12>  pcrr7t}{}
+\DeclareFontFamily{T1}{pcr}{\hyphenchar\font=-1}
+\DeclareFontShape{T1}{pcr}{m}{n}{<12> pcrr8t}{}
 \DeclareOption{12pt}{\renewcommand\@ptsize{0}}
 \DeclareOption{12pt}{\renewcommand\@ptsize{1}}
 \DeclareOption{12pt}{\renewcommand\@ptsize{2}}
@@ -176,50 +180,38 @@
   % hyphenation, but I do not remember how.
   % That's good because we -do not- want any hyphenation.
   \sloppy
-\newcommand{\fadein}{\filbreak\raggedright\par FADE IN: }%
+\newcommand{\fadein}[1]{\filbreak\raggedright\par FADE IN: \uppercase{#1}}%
 \newcommand{\fadeout}{\filbreak\raggedright\par FADE OUT }%
-\newcommand{\interiorshot}{\filbreak\raggedright\par INT. }%
-\newcommand{\exteriorshot}{\filbreak\raggedright\par EXT. }%
-\newenvironment{dialogue}%
+\newcommand{\interiorshot}[1]{\filbreak\raggedright\par INT. \uppercase{#1}}%
+\newcommand{\exteriorshot}[1]{\filbreak\raggedright\par EXT. \uppercase{#1}}%
+
+\newcommand{\dialogue}[1]%
 {\raggedright
-\begin{list}{}{%
-	\setlength{\leftmargin}{1.2in}
-	\setlength{\rightmargin}{1.2in}
-\setlength{\parsep}{0mm}
-\setlength{\topsep}{0mm}}
-\item[] \ignorespaces}
-{\unskip \end{list}}
+\hspace{1in}
+\parbox{4in}{#1}
+\vspace{6pt}
+}
 
-\newenvironment{narrative}%
+\newcommand{\narrative}[1]%
 {\filbreak
-\raggedright
-\begin{list}{}{%
-\leftmargin \rightmargin
-\setlength{\parsep}{2mm}
-\setlength{\topsep}{2mm}}
-\item[] \ignorespaces}
-{\unskip \end{list}}
+\vspace{6pt}
+\raggedright{#1}
+\vspace{6pt}
+}
 
-\newenvironment{speaker}%
+
+\newcommand{\speaker}[1]%
 {\filbreak
-\begin{list}{}{%
-	\setlength{\leftmargin}{2.5in}
-\setlength{\partopsep}{4mm}
-\setlength{\parsep}{0mm}
-\setlength{\topsep}{0mm}}
-\item[] \ignorespaces}
-{\unskip \end{list}}
+\vspace{12pt}
+\hspace{2.25in}{#1}
+\vspace{6pt}
+}
 
-\newenvironment{parenthetical}%
-{\begin{list}{}{%
-	\setlength{\leftmargin}{2in}
-\setlength{\parsep}{0mm}
-\setlength{\topsep}{0mm}}
-	\item[](\ignorespaces}
-{\unskip)\end{list}}
-
-
-
+\newcommand{\parenthetical}[1]%
+{\raggedright
+\hspace{1.75in}
+\parbox{3in}{(#1)}
+\vspace{6pt}}
 
 \endinput
 %%

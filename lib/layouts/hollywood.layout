@@ -35,23 +35,26 @@ DefaultFont
 EndFont
 
 
-# Standard style definition (I kept this one to provide a general case)
-Style Standard
+# Dialogue style definition. Actor dialog
+Style Dialogue
   Margin                Static
-  LatexType             Paragraph
-  LatexName             dummy
-  ParIndent             ""
-  ParSkip               0.4
+  LatexType             Command
+  LatexName             dialogue
+  LeftMargin            MMMMMMMMMMMM
+  RightMargin		MMMMMMMMMMMM
+  ParSkip               0.0
+  TopSep		0.0
+  BottomSep		0.0
   Align                 Left
-  AlignPossible         Block, Left, Right, Center
-  Labeltype             No_Label
+  AlignPossible         Left
+  LabelType             No_Label
 End
 
 
 # Narrative description of Scene
 Style Narrative
   Margin                Static
-  LatexType             Environment
+  LatexType             Command
   LatexName             narrative
   ParIndent             ""
   ParSkip               0.8
@@ -111,7 +114,7 @@ End
 # Speaker style definition, identifies speaker  ALL CAPS
 Style Speaker
   Margin                Static
-  LatexType             Environment
+  LatexType             Command
   LatexName             speaker
   LeftMargin            MMMMMMMMMMMMMMMMMMMMMM
   ParSkip               0.0
@@ -126,7 +129,7 @@ End
 # The ( and ) will automatically appear on screen, so don't type any.
 Style Parenthetical  
   Margin                Static
-  LatexType             Environment
+  LatexType             Command
   LatexName             parenthetical
   LeftMargin            MMMMMMMMMMMMMMMMM
   TopSep		0.0
@@ -149,20 +152,6 @@ EndFont
 
 End
 
-# Dialogue style definition. Actor dialog
-Style Dialogue
-  Margin                Static
-  LatexType             Environment
-  LatexName             dialogue
-  LeftMargin            MMMMMMMMMMMM
-  RightMargin		MMMMMMMMMMMM
-  ParSkip               0.0
-  TopSep		0.0
-  BottomSep		0.0
-  Align                 Left
-  AlignPossible         Left
-  LabelType             No_Label
-End
 
 # Transition style definition ALL CAPS
 Style Transition
@@ -188,9 +177,20 @@ Style FADE_OUT:
   AlignPossible         Left
   KeepEmpty		1
   LabelType             Static
-  LabelString		"FADE OUT: "
+  LabelString		"FADE OUT"
 End
 
+# Standard style definition (I kept this one to provide a general case)
+Style Standard
+  Margin                Static
+  LatexType             Paragraph
+  LatexName             dummy
+  ParIndent             ""
+  ParSkip               0.4
+  Align                 Left
+  AlignPossible         Block, Left, Right, Center
+  Labeltype             No_Label
+End
 
 
 
