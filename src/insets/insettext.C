@@ -284,21 +284,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		((need_update&(INIT|FULL)) || (top_baseline!=baseline) ||
 		 (last_drawn_width!=insetWidth)))
 	{
-		int w =  insetWidth;
-		int h = insetAscent + insetDescent;
-		int ty = baseline - insetAscent;
-	
-		if (ty < 0) {
-			h += ty;
-			ty = 0;
-		}
-		if ((ty + h) > pain.paperHeight())
-			h = pain.paperHeight();
-		if ((top_x + drawTextXOffset + w) > pain.paperWidth())
-			w = pain.paperWidth();
-		pain.fillRectangle(top_x+drawTextXOffset, ty, w, h);
-		cleared = true;
-		need_update = FULL;
+		clearInset(pain, baseline, cleared);
 	}
 	if (cleared)
 		frame_is_visible = false;
@@ -315,7 +301,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 		}
 		top_x = int(x);
 #if 1
-		cleared = true;
+		clearInset(pain, baseline, cleared);
 #else
 		return;
 #endif
@@ -1394,6 +1380,10 @@ std::vector<string> const InsetText::getLabelList() const
 void InsetText::SetFont(BufferView * bv, LyXFont const & font, bool toggleall,
                         bool selectall)
 {
+	if (the_locking_inset) {
+		the_locking_inset->SetFont(bv, font, toggleall, selectall);
+		return;
+	}
 	if (TEXT(bv)->selection.set()) {
 		bv->text->SetUndo(bv->buffer(), Undo::EDIT,
 				  bv->text->cursor.par()->previous(),
@@ -1761,6 +1751,24 @@ void InsetText::clearSelection(BufferView * bv)
 	TEXT(bv)->ClearSelection(bv);
 }
 
+void InsetText::clearInset(Painter & pain, int baseline, bool & cleared) const
+{
+	int w =  insetWidth;
+	int h = insetAscent + insetDescent;
+	int ty = baseline - insetAscent;
+	
+	if (ty < 0) {
+		h += ty;
+		ty = 0;
+	}
+	if ((ty + h) > pain.paperHeight())
+		h = pain.paperHeight();
+	if ((top_x + drawTextXOffset + w) > pain.paperWidth())
+		w = pain.paperWidth();
+	pain.fillRectangle(top_x+drawTextXOffset, ty, w, h);
+	cleared = true;
+	need_update = FULL;
+}
 /* Emacs:
  * Local variables:
  * tab-width: 4

@@ -577,10 +577,12 @@ bool InsetTabular::UnlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 	if (the_locking_inset == inset) {
 		the_locking_inset->InsetUnlock(bv);
 		the_locking_inset = 0;
+#warning fix scrolling when cellinset has requested a scroll (Jug)!!!
+#if 0
 		if (scroll(false))
 			scroll(bv, 0.0F);
-		else
-			UpdateLocal(bv, CELL, false);
+#endif
+		UpdateLocal(bv, CELL, false);
 		ShowInsetCursor(bv, false);
 		return true;
 	}
@@ -782,7 +784,7 @@ InsetTabular::LocalDispatch(BufferView * bv,
 	case LFUN_SHIFT_TAB:
 	case LFUN_TAB:
 	{
-		if (GetFirstLockingInsetOfType(Inset::TABULAR_CODE))
+		if (GetFirstLockingInsetOfType(Inset::TABULAR_CODE) != this)
 			break;
 		HideInsetCursor(bv);
 		if (the_locking_inset) {
@@ -1282,11 +1284,14 @@ void InsetTabular::resetPos(BufferView * bv) const
 	new_x += offset;
 	cursor.x(new_x);
 //    cursor.x(getCellXPos(actcell) + offset);
-	if (scroll(false) && (tabular->GetWidthOfTabular() < bv->workWidth()-20)) {
+	if ((actcol < tabular->columns()-1) && scroll(false) &&
+		(tabular->GetWidthOfTabular() < bv->workWidth()-20))
+	{
 		scroll(bv, 0.0F);
 		UpdateLocal(bv, FULL, false);
 	} else if (the_locking_inset &&
-		 (tabular->GetWidthOfColumn(actcell) > bv->workWidth()-20)) {
+		 (tabular->GetWidthOfColumn(actcell) > bv->workWidth()-20))
+	{
 		int xx = cursor.x() - offset + bv->text->GetRealCursorX(bv);
 		if (xx > (bv->workWidth()-20)) {
 			scroll(bv, -(xx - bv->workWidth() + 60));

@@ -1,3 +1,16 @@
+2001-06-01  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (resetPos): small hack so that scroll is not set to
+	0 when we are in the last column of a tabular. This is a problem we
+	have because of constats 20 offset on both directions, so this can
+	cause on the limit an endless loop.
+
+	* insettext.C (SetFont): forgot that we can have locking insets ;)
+
+2001-05-31  Juergen Vigna  <jug@sad.it>
+
+	* insettabular.C (LocalDispatch): small fix for LFUN_TAB.
+
 2001-05-31  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* figinset.C: add using std:: directive for the C functions which

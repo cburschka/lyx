@@ -710,7 +710,10 @@ string const LyXFunc::Dispatch(int ac,
 					}
 					return string();
 				case LFUN_DOWN:
-					TEXT()->CursorDown(owner->view());
+					if (TEXT()->cursor.row()->next())
+						TEXT()->CursorDown(owner->view());
+					else
+						TEXT()->CursorRight(owner->view());
 					moveCursorUpdate(true, false);
 					owner->showState();
 					return string();
@@ -794,7 +797,7 @@ string const LyXFunc::Dispatch(int ac,
 		
 	case LFUN_PREFIX:
 	{
-		if (owner->view()->available()) {
+		if (owner->view()->available() && !owner->view()->theLockingInset()) {
 			owner->view()->update(TEXT(),
 					      BufferView::SELECT|BufferView::FITCUR);
 		}

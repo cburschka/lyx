@@ -275,6 +275,7 @@ private:
 	void drawFrame(Painter &, bool cleared) const;
 	void clearFrame(Painter &, bool cleared) const;
 	///
+	void clearInset(Painter &, int baseline, bool & cleared) const;
 	
 	/* Private structures and variables */
 	///

@@ -1,3 +1,14 @@
+2001-06-01  Juergen Vigna  <jug@sad.it>
+
+	* lyxfunc.C (Dispatch): LFUN_PREFIX don't call the update if we're
+	inside a LockingInset (is the update needed at all?).
+
+2001-05-31  Juergen Vigna  <jug@sad.it>
+
+	* BufferView_pimpl.C (Dispatch): we need a new instanze of cursor
+	here not the old one otherwise how should we compare it afterwards
+	if it's the same!
+
 2001-06-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lyxfont.C: 

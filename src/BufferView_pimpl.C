@@ -1835,7 +1835,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		if (!lt->selection.mark())
 			beforeChange(lt);
 		update(lt, BufferView::SELECT|BufferView::FITCUR);
-		LyXCursor const & cur = lt->cursor;
+		LyXCursor const cur = lt->cursor;
 		if (!is_rtl)
 			lt->CursorLeft(bv_, false);
 		if ((is_rtl || cur != lt->cursor) && // only if really moved!
