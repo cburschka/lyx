@@ -12,20 +12,21 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "ControlTabular.h"
+#include "QTabular.h"
+#include "QTabularDialog.h"
+#include "Qt2BC.h"
+
+#include "lengthcombo.h"
 #include "qt_helpers.h"
+
+#include "controllers/ButtonController.h"
+#include "controllers/ControlTabular.h"
+
 #include "support/tostr.h"
 
-#include "QTabularDialog.h"
-#include "QTabular.h"
-#include "Qt2BC.h"
-#include "ButtonController.h"
-
-#include <qpushbutton.h>
-#include <qlineedit.h>
 #include <qcheckbox.h>
-#include "lengthcombo.h"
+#include <qlineedit.h>
+#include <qpushbutton.h>
 #include "qsetborder.h"
 
 using std::string;

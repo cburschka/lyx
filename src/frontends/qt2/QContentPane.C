@@ -10,15 +10,18 @@
 
 #include <config.h>
 
-#include <boost/bind.hpp>
-
+// Qt defines a macro 'signals' that clashes with a boost namespace.
+// All is well if the namespace is visible first.
 #include "QWorkArea.h"
+
 #include "QContentPane.h"
 #include "QLyXKeySym.h"
 
+#include <qapplication.h>
 #include <qpainter.h>
 #include <qtimer.h>
-#include <qapplication.h>
+
+#include <boost/bind.hpp>
 
 namespace {
 

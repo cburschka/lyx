@@ -12,12 +12,11 @@
 
 #include <config.h>
 
-
-#include "ControlTabular.h"
-
-#include "QTabular.h"
 #include "QTabularDialog.h"
+#include "QTabular.h"
 #include "qt_helpers.h"
+
+#include "controllers/ControlTabular.h"
 
 #include <qcheckbox.h>
 #include <qpushbutton.h>

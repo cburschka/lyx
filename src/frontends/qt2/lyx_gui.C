@@ -11,37 +11,38 @@
 
 #include <config.h>
 
-
-#include "support/lstrings.h"
-#include "support/os.h"
-#include "qt_helpers.h"
-
 #include "lyx_gui.h"
-#include "funcrequest.h"
-#include "graphics/LoaderQueue.h"
 
 // FIXME: move this stuff out again
 #include "bufferlist.h"
+#include "BufferView.h"
+#include "funcrequest.h"
+#include "LColor.h"
 #include "lyx_main.h"
 #include "LyXAction.h"
 #include "lyxfunc.h"
 #include "lyxrc.h"
 #include "lyxserver.h"
 #include "lyxsocket.h"
-#include "BufferView.h"
-#include "LColor.h"
 
-// Dear Lord, deliver us from Evil,
-// aka the Qt headers
+#include "graphics/LoaderQueue.h"
+
+#include "support/lstrings.h"
+#include "support/os.h"
+
+// Dear Lord, deliver us from Evil, aka the Qt headers
+// Qt defines a macro 'signals' that clashes with a boost namespace.
+// All is well if the namespace is visible first.
 #include <boost/signals/signal1.hpp>
 #include <boost/bind.hpp>
 
 #include "QtView.h"
-#include "QLImage.h"
-#include "qfont_loader.h"
 #include "io_callback.h"
-#include "socket_callback.h"
 #include "lcolorcache.h"
+#include "qfont_loader.h"
+#include "QLImage.h"
+#include "qt_helpers.h"
+#include "socket_callback.h"
 
 #ifdef Q_WS_MACX
 #include <Carbon/Carbon.h>

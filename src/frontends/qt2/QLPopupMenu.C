@@ -10,15 +10,17 @@
 
 #include <config.h>
 
-
-#include "support/lstrings.h"
-#include "MenuBackend.h"
-
+// Qt defines a macro 'signals' that clashes with a boost namespace.
+// All is well if the namespace is visible first.
 #include "QtView.h"
 
-#include "QLMenubar.h"
 #include "QLPopupMenu.h"
+#include "QLMenubar.h"
 #include "qt_helpers.h"
+
+#include "MenuBackend.h"
+
+#include "support/lstrings.h"
 
 using std::distance;
 using std::make_pair;

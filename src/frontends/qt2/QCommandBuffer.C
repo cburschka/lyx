@@ -10,13 +10,17 @@
 
 #include <config.h>
 
-#include "support/filetools.h"
-#include "controllers/ControlCommandBuffer.h"
-#include "qt_helpers.h"
-
+// Qt defines a macro 'signals' that clashes with a boost namespace.
+// All is well if the namespace is visible first.
 #include "QtView.h"
+
 #include "QCommandBuffer.h"
 #include "QCommandEdit.h"
+#include "qt_helpers.h"
+
+#include "controllers/ControlCommandBuffer.h"
+
+#include "support/filetools.h"
 
 #include <qlistbox.h>
 #include <qlayout.h>

@@ -10,15 +10,6 @@
 
 #include <config.h>
 
-#include "bufferparams.h"
-#include "debug.h"
-#include "gettext.h"
-#include "lyxrc.h"
-
-#include "controllers/ControlDocument.h"
-
-#include "support/lstrings.h"
-
 #include "QDocument.h"
 #include "QDocumentDialog.h"
 
@@ -26,6 +17,14 @@
 #include "lengthcombo.h"
 #include "panelstack.h"
 #include "qt_helpers.h"
+
+#include "bufferparams.h"
+#include "gettext.h"
+#include "lyxrc.h"
+
+#include "controllers/ControlDocument.h"
+
+#include "support/lstrings.h"
 
 #include <qlabel.h>
 #include <qmultilineedit.h>

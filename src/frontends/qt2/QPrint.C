@@ -11,14 +11,14 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "PrinterParams.h"
-#include "ControlPrint.h"
-#include "qt_helpers.h"
-
 #include "QPrint.h"
 #include "QLPrintDialog.h"
 #include "Qt2BC.h"
+#include "qt_helpers.h"
+
+#include "PrinterParams.h"
+
+#include "controllers/ControlPrint.h"
 
 #include <qlineedit.h>
 #include <qcheckbox.h>

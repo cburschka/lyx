@@ -11,12 +11,11 @@
 
 #include <config.h>
 
+#include "BulletsModule.h"
+#include "QBrowseBox.h"
 #include "qt_helpers.h"
 
 #include "support/filetools.h"
-
-#include "QBrowseBox.h"
-#include "BulletsModule.h"
 
 #include <qinputdialog.h>
 #include <qpopupmenu.h>

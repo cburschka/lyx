@@ -10,26 +10,25 @@
 
 #include <config.h>
 
-#include "controllers/ControlDocument.h"
-
-#include "bufferparams.h"
-#include "debug.h"
-#include "language.h"
-#include "helper_funcs.h" // getSecond()
-#include "frnt_lang.h"
-#include "gettext.h"
-#include "lyxrc.h" // defaultUnit
-#include "tex-strings.h" // tex_graphics
-#include "support/tostr.h"
-#include "support/lstrings.h"
-#include "lyxtextclasslist.h"
-#include "floatplacement.h"
-
 #include "QDocument.h"
 #include "QDocumentDialog.h"
 #include "Qt2BC.h"
-
 #include "qt_helpers.h"
+
+#include "bufferparams.h"
+#include "floatplacement.h"
+#include "gettext.h"
+#include "helper_funcs.h" // getSecond()
+#include "language.h"
+#include "lyxrc.h" // defaultUnit
+#include "lyxtextclasslist.h"
+#include "tex-strings.h" // tex_graphics
+
+#include "support/tostr.h"
+#include "support/lstrings.h"
+
+#include "controllers/ControlDocument.h"
+#include "controllers/frnt_lang.h"
 
 #include <qpushbutton.h>
 #include <qmultilineedit.h>

@@ -10,11 +10,11 @@
 
 #include <config.h>
 
-#include "QURL.h"
 #include "QURLDialog.h"
+#include "QURL.h"
 
-#include <qpushbutton.h>
 #include <qlineedit.h>
+#include <qpushbutton.h>
 
 namespace lyx {
 namespace frontend {

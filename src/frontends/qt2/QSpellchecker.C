@@ -10,14 +10,12 @@
 
 #include <config.h>
 
-#include "debug.h"
-
-#include "controllers/ControlSpellchecker.h"
-
-#include "QSpellcheckerDialog.h"
 #include "QSpellchecker.h"
+#include "QSpellcheckerDialog.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
+
+#include "controllers/ControlSpellchecker.h"
 
 #include <qprogressbar.h>
 #include <qlineedit.h>

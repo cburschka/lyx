@@ -10,8 +10,9 @@
 
 #include <config.h>
 
-#include "debug.h"
 #include "qtTimeout.h"
+
+#include "debug.h"
 
 
 Timeout::Timeout(unsigned int msec, Type t)

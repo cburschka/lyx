@@ -10,10 +10,11 @@
 
 #include <config.h>
 
-#include "Qt2BC.h"
-#include "ButtonController.h"
-#include "qt_helpers.h"
 #include "QDialogView.h"
+#include "Qt2BC.h"
+#include "qt_helpers.h"
+
+#include "controllers/ButtonController.h"
 
 namespace lyx {
 namespace frontend {

@@ -10,17 +10,16 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "QTexinfoDialog.h"
 #include "QTexinfo.h"
+#include "QTexinfoDialog.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
 
 #include "support/filetools.h"
 
+#include <qcheckbox.h>
 #include <qlistbox.h>
 #include <qpushbutton.h>
-#include <qcheckbox.h>
 
 using lyx::support::OnlyFilename;
 

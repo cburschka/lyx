@@ -11,10 +11,10 @@
 
 #include <config.h>
 
-
+// Qt defines a macro 'signals' that clashes with a boost namespace.
 #include "lyxserver.h"
-#include "io_callback.h"
 
+#include "io_callback.h"
 
 io_callback::io_callback(int fd, LyXComm * comm)
 	: comm_(comm)

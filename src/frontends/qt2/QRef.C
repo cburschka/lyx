@@ -11,13 +11,14 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "ControlRef.h"
-#include "insets/insetref.h"
-
 #include "QRef.h"
 #include "QRefDialog.h"
 #include "Qt2BC.h"
+#include "qt_helpers.h"
+
+#include "controllers/ControlRef.h"
+
+#include "insets/insetref.h"
 
 #include <qlineedit.h>
 #include <qcheckbox.h>
@@ -26,7 +27,6 @@
 #include <qpushbutton.h>
 #include <qtooltip.h>
 
-#include "qt_helpers.h"
 
 using std::vector;
 using std::string;

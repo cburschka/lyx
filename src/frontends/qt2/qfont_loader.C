@@ -11,13 +11,17 @@
 
 #include <config.h>
 
-#include "debug.h"
 #include "qfont_loader.h"
 #include "qt_helpers.h"
+
+#include "debug.h"
 #include "lyxrc.h"
 
-#include "support/lstrings.h"
 #include "frontends/lyx_gui.h"
+
+#include "support/filetools.h"
+#include "support/lstrings.h"
+#include "support/systemcall.h"
 
 #include <qfontinfo.h>
 
@@ -28,8 +32,6 @@
 #include <X11/Xlib.h>
 #include <algorithm>
 #endif
-#include "support/systemcall.h"
-#include "support/filetools.h"
 
 using lyx::support::contains;
 using lyx::support::LibFileSearch;

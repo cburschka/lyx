@@ -10,18 +10,18 @@
 
 #include <config.h>
 
-
-#include "qt_helpers.h"
-
-#include "ControlMath.h"
-#include "QMath.h"
 #include "QDelimiterDialog.h"
 
 #include "iconpalette.h"
+#include "QMath.h"
+#include "qt_helpers.h"
+
+#include "controllers/ControlMath.h"
 
 #include <qlabel.h>
 #include <qpixmap.h>
 #include <qcheckbox.h>
+
 
 using std::string;
 

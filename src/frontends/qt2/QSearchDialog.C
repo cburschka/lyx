@@ -10,15 +10,16 @@
 
 #include <config.h>
 
-#include "ControlSearch.h"
 #include "QSearchDialog.h"
 #include "QSearch.h"
 #include "qt_helpers.h"
 
-#include <qpushbutton.h>
-#include <qcombobox.h>
+#include "controllers/ControlSearch.h"
+
 #include <qcheckbox.h>
+#include <qcombobox.h>
 #include <qlineedit.h>
+#include <qpushbutton.h>
 
 using std::string;
 

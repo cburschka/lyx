@@ -10,13 +10,12 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "qt_helpers.h"
-
-#include "ControlErrorList.h"
 #include "QErrorList.h"
 #include "QErrorListDialog.h"
 #include "Qt2BC.h"
+#include "qt_helpers.h"
+
+#include "controllers/ControlErrorList.h"
 
 #include <qlistbox.h>
 #include <qtextbrowser.h>

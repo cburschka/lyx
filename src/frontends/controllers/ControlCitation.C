@@ -14,6 +14,7 @@
 
 #include "buffer.h"
 #include "bufferparams.h"
+#include "debug.h" // temporary
 
 
 using std::string;
@@ -33,6 +34,7 @@ ControlCitation::ControlCitation(Dialog & d)
 
 bool ControlCitation::initialiseParams(string const & data)
 {
+	lyxerr << "ControlCitation::initialiseParams\n\t" << data << std::endl;
 	ControlCommand::initialiseParams(data);
 
 	vector<pair<string, string> > blist;

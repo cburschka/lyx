@@ -11,13 +11,13 @@
 
 #include <config.h>
 
-#include "QRef.h"
 #include "QRefDialog.h"
+#include "QRef.h"
 
-#include <qpushbutton.h>
-#include <qlineedit.h>
 #include <qcombobox.h>
+#include <qlineedit.h>
 #include <qlistbox.h>
+#include <qpushbutton.h>
 
 namespace lyx {
 namespace frontend {

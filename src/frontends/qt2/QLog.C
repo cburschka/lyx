@@ -10,14 +10,13 @@
 
 #include <config.h>
 
+#include "QLog.h"
+#include "QLogDialog.h"
+#include "qt_helpers.h"
+
 #include "controllers/ControlLog.h"
 
 #include "support/std_sstream.h"
-
-#include "QLog.h"
-#include "QLogDialog.h"
-
-#include "qt_helpers.h"
 
 #include <qtextview.h>
 #include <qpushbutton.h>

@@ -11,7 +11,8 @@
 
 #include <config.h>
 
-#include "debug.h"
+// Qt defines a macro 'signals' that clashes with a boost namespace.
+// All is well if the namespace is visible first.
 #include "lengthcommon.h"
 #include "lyxrc.h"
 

@@ -10,13 +10,12 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "ControlInclude.h"
-#include "qt_helpers.h"
-
 #include "QIncludeDialog.h"
 #include "QInclude.h"
 #include "Qt2BC.h"
+#include "qt_helpers.h"
+
+#include "controllers/ControlInclude.h"
 
 #include <qlineedit.h>
 #include <qpushbutton.h>

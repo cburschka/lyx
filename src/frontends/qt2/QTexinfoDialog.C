@@ -13,9 +13,9 @@
 #include "QTexinfoDialog.h"
 #include "QTexinfo.h"
 
+#include <qcombobox.h>
 #include <qlistbox.h>
 #include <qpushbutton.h>
-#include <qcombobox.h>
 
 using std::vector;
 using std::string;

@@ -11,8 +11,8 @@
 
 #include <config.h>
 
-#include "QTabularCreate.h"
 #include "QTabularCreateDialog.h"
+#include "QTabularCreate.h"
 
 #include <qpushbutton.h>
 #include <qspinbox.h>

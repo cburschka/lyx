@@ -10,15 +10,15 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "ControlERT.h"
+#include "QERT.h"
+#include "QERTDialog.h"
+#include "Qt2BC.h"
+
+#include "controllers/ControlERT.h"
 
 #include <qradiobutton.h>
 #include <qpushbutton.h>
 
-#include "QERTDialog.h"
-#include "QERT.h"
-#include "Qt2BC.h"
 
 namespace lyx {
 namespace frontend {

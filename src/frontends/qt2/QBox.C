@@ -12,21 +12,24 @@
 
 #include <config.h>
 
-#include "debug.h"
 #include "QBox.h"
-#include "ControlBox.h"
+
+#include "lengthcombo.h"
 #include "QBoxDialog.h"
 #include "qt_helpers.h"
+#include "Qt2BC.h"
+
+#include "lengthcommon.h"
+#include "lyxrc.h" // to set the default length values
+
+#include "controllers/ControlBox.h"
 #include "controllers/helper_funcs.h"
+
+#include "insets/insetbox.h"
+
 #include "support/lstrings.h"
 #include "support/tostr.h"
 
-#include "Qt2BC.h"
-#include "lyxrc.h" // to set the default length values
-#include "insets/insetbox.h"
-
-#include "lengthcombo.h"
-#include "lengthcommon.h"
 #include <qpushbutton.h>
 #include <qlineedit.h>
 #include <qcombobox.h>

@@ -10,10 +10,10 @@
 
 #include <config.h>
 
-#include "debug.h"
-
 #include "iconpalette.h"
 #include "qt_helpers.h"
+
+#include "debug.h"
 
 #include <qlayout.h>
 #include <qpushbutton.h>

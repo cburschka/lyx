@@ -10,19 +10,21 @@
 
 #include <config.h>
 
-#include "debug.h"
 #include "QWorkArea.h"
-#include "LColor.h"
-#include "qt_helpers.h"
+
 #include "lcolorcache.h"
+#include "qt_helpers.h"
+
+#include "debug.h"
 #include "funcrequest.h"
+#include "LColor.h"
 
 #include <qapplication.h>
-#include <qdragobject.h>
-#include <qpainter.h>
-#include <qmainwindow.h>
-#include <qlayout.h>
 #include <qclipboard.h>
+#include <qdragobject.h>
+#include <qlayout.h>
+#include <qmainwindow.h>
+#include <qpainter.h>
 
 #ifdef Q_WS_X11
 #include <X11/Xlib.h>

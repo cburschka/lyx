@@ -11,11 +11,17 @@
 
 #include <config.h>
 
-#include "bufferparams.h"
-#include "debug.h"
-#include "ui/QCitationFindDialogBase.h"
-#include "QCitationDialog.h"
 #include "QCitation.h"
+#include "QCitationDialog.h"
+#include "ui/QCitationFindDialogBase.h"
+#include "Qt2BC.h"
+#include "qt_helpers.h"
+
+#include "bufferparams.h"
+
+#include "controllers/ControlCitation.h"
+
+#include "support/lstrings.h"
 
 #include <qcheckbox.h>
 #include <qcombobox.h>
@@ -24,11 +30,6 @@
 #include <qmultilineedit.h>
 #include <qpushbutton.h>
 #include <qlabel.h>
-
-#include "Qt2BC.h"
-#include "ControlCitation.h"
-#include "qt_helpers.h"
-#include "support/lstrings.h"
 
 using std::find;
 using std::string;

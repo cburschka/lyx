@@ -11,6 +11,8 @@
 
 #include <config.h>
 
+// Qt defines a macro 'signals' that clashes with a boost namespace.
+// All is well if the namespace is visible first.
 #include "insets/ExternalTemplate.h"
 
 #include "controllers/ButtonController.h"

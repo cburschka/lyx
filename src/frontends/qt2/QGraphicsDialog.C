@@ -11,17 +11,19 @@
 
 #include <config.h>
 
-#include "ControlGraphics.h"
-#include "debug.h"
+#include "QGraphicsDialog.h"
+#include "QGraphics.h"
+
+#include "lengthcombo.h"
 #include "qt_helpers.h"
+
+#include "debug.h"
+
+#include "controllers/ControlGraphics.h"
 
 #include <qpushbutton.h>
 #include <qlineedit.h>
 
-#include "lengthcombo.h"
-
-#include "QGraphicsDialog.h"
-#include "QGraphics.h"
 
 using std::string;
 

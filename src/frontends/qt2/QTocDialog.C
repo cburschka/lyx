@@ -10,9 +10,8 @@
 
 #include <config.h>
 
-
-#include "QToc.h"
 #include "QTocDialog.h"
+#include "QToc.h"
 #include "qt_helpers.h"
 
 #include <qlistview.h>

@@ -10,12 +10,12 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "ControlThesaurus.h"
-#include "QThesaurusDialog.h"
 #include "QThesaurus.h"
+#include "QThesaurusDialog.h"
 #include "Qt2BC.h"
 #include "qt_helpers.h"
+
+#include "controllers/ControlThesaurus.h"
 
 #include <qlineedit.h>
 #include <qpushbutton.h>

@@ -10,18 +10,17 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "ControlCommand.h"
-#include "qt_helpers.h"
-
 #include "QURL.h"
 #include "QURLDialog.h"
 #include "Qt2BC.h"
-#include "ButtonController.h"
+#include "qt_helpers.h"
+
+#include "controllers/ButtonController.h"
+#include "controllers/ControlCommand.h"
 
 #include <qcheckbox.h>
-#include <qpushbutton.h>
 #include <qlineedit.h>
+#include <qpushbutton.h>
 
 using std::string;
 

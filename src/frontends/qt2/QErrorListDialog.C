@@ -10,8 +10,8 @@
 
 #include <config.h>
 
-#include "QErrorList.h"
 #include "QErrorListDialog.h"
+#include "QErrorList.h"
 
 #include <qlistbox.h>
 #include <qpushbutton.h>

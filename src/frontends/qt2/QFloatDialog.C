@@ -10,12 +10,12 @@
 
 #include <config.h>
 
+#include "QFloatDialog.h"
+#include "QFloat.h"
 #include "floatplacement.h"
 
 #include <qpushbutton.h>
 
-#include "QFloatDialog.h"
-#include "QFloat.h"
 
 namespace lyx {
 namespace frontend {

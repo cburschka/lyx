@@ -10,16 +10,16 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "ControlCommand.h"
+#include "QBibitem.h"
+#include "QBibitemDialog.h"
+#include "Qt2BC.h"
 #include "qt_helpers.h"
+
+#include "controllers/ControlCommand.h"
 
 #include <qlineedit.h>
 #include <qpushbutton.h>
 
-#include "QBibitemDialog.h"
-#include "QBibitem.h"
-#include "Qt2BC.h"
 
 namespace lyx {
 namespace frontend {

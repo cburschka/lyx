@@ -10,13 +10,13 @@
 
 #include <config.h>
 
+#include "QBrowseBox.h"
+
 #include <qpixmap.h>
 #include <qpainter.h>
 #include <qapplication.h>
 #include <qdrawutil.h>
 #include <qstyle.h>
-
-#include "QBrowseBox.h"
 
 #include <cmath>
 

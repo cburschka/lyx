@@ -10,15 +10,13 @@
 
 #include <config.h>
 
-
-#include "qt_helpers.h"
-
-#include "ControlMath.h"
-
 #include "QMathDialog.h"
 #include "QMath.h"
 
 #include "iconpalette.h"
+#include "qt_helpers.h"
+
+#include "controllers/ControlMath.h"
 
 #include <qwidgetstack.h>
 #include <qcombobox.h>

@@ -15,13 +15,14 @@
 #include "QDialogView.h"
 #include <vector>
 
+class Converters;
 class Formats;
 
 namespace lyx {
 namespace frontend {
 
 class QPrefsDialog;
-class Controllers;
+class ControlPrefs;
 
 class QPrefs
 	: public QController<ControlPrefs, QView<QPrefsDialog> >

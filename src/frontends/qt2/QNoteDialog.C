@@ -10,8 +10,8 @@
 
 #include <config.h>
 
-#include "QNote.h"
 #include "QNoteDialog.h"
+#include "QNote.h"
 
 #include <qpushbutton.h>
 

@@ -10,14 +10,15 @@
 
 #include <config.h>
 
-#include "QBox.h"
 #include "QBoxDialog.h"
-#include "qt_helpers.h"
 
 #include "lengthcombo.h"
+#include "QBox.h"
+#include "qt_helpers.h"
+
 #include <qcombobox.h>
-#include <qpushbutton.h>
 #include <qlineedit.h>
+#include <qpushbutton.h>
 
 namespace lyx {
 namespace frontend {

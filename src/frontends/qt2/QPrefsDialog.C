@@ -11,10 +11,12 @@
 #include <config.h>
 #include "qt_helpers.h"
 
-#include "ControlPrefs.h"
+#include "QPrefsDialog.h"
 #include "QPrefs.h"
 
-#include "QPrefsDialog.h"
+#include "panelstack.h"
+#include "qcoloritem.h"
+#include "qfontexample.h"
 
 #include "ui/QPrefAsciiModule.h"
 #include "ui/QPrefDateModule.h"
@@ -35,16 +37,15 @@
 #include "gettext.h"
 #include "LColor.h"
 
-#include "panelstack.h"
-#include <qpushbutton.h>
-#include <qspinbox.h>
-#include <qlineedit.h>
+#include "controllers/ControlPrefs.h"
+
 #include <qcheckbox.h>
+#include <qcolordialog.h>
 #include <qcombobox.h>
 #include <qfontdatabase.h>
-#include <qcolordialog.h>
-#include "qcoloritem.h"
-#include "qfontexample.h"
+#include <qlineedit.h>
+#include <qpushbutton.h>
+#include <qspinbox.h>
 
 using std::string;
 

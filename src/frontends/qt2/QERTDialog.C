@@ -10,8 +10,8 @@
 
 #include <config.h>
 
-#include "QERT.h"
 #include "QERTDialog.h"
+#include "QERT.h"
 
 #include <qpushbutton.h>
 

@@ -10,19 +10,20 @@
 
 #include <config.h>
 
+#include "QMathMatrixDialog.h"
+#include "QMath.h"
+
+#include "emptytable.h"
 #include "qt_helpers.h"
 
-#include "support/std_sstream.h"
-#include "ControlMath.h"
+#include "controllers/ControlMath.h"
 
-#include "QMath.h"
-#include "QMathMatrixDialog.h"
+#include "support/std_sstream.h"
 
 #include <qcombobox.h>
 #include <qlineedit.h>
 #include <qpushbutton.h>
 #include <qspinbox.h>
-#include "emptytable.h"
 
 using std::ostringstream;
 using std::string;

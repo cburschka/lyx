@@ -13,9 +13,9 @@
 #include "QSpellcheckerDialog.h"
 #include "QSpellchecker.h"
 
-#include <qpushbutton.h>
-#include <qlistbox.h>
 #include <qcombobox.h>
+#include <qlistbox.h>
+#include <qpushbutton.h>
 
 namespace lyx {
 namespace frontend {

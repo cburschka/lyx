@@ -11,19 +11,17 @@
 
 #include <config.h>
 
-#include "debug.h"
 #include "QCharacter.h"
 #include "ControlCharacter.h"
 #include "QCharacterDialog.h"
 #include "Qt2BC.h"
-
 #include "qt_helpers.h"
+
+#include "LColor.h"
 
 #include <qpushbutton.h>
 #include <qcheckbox.h>
 #include <qcombobox.h>
-
-#include "LColor.h"
 
 using std::vector;
 

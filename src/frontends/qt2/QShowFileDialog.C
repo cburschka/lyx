@@ -10,8 +10,8 @@
 
 #include <config.h>
 
-#include "QShowFile.h"
 #include "QShowFileDialog.h"
+#include "QShowFile.h"
 
 #include <qpushbutton.h>
 

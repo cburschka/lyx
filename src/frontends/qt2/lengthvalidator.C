@@ -12,10 +12,9 @@
 #include <config.h>
 
 #include "lengthvalidator.h"
+#include "qt_helpers.h"
 
 #include "support/lstrings.h"
-
-#include "qt_helpers.h"
 
 #include <qwidget.h>
 

@@ -13,12 +13,14 @@
 #include "Alert_pimpl.h"
 #include "Alert.h"
 
+#include "ui/QAskForTextDialog.h"
+#include "qt_helpers.h"
+
+#include "gettext.h"
+
 #include <qmessagebox.h>
 #include <qlabel.h>
 #include <qlineedit.h>
-#include "ui/QAskForTextDialog.h"
-#include "qt_helpers.h"
-#include "gettext.h"
 
 #include <algorithm>
 

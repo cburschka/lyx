@@ -10,17 +10,18 @@
 
 #include <config.h>
 
-#include "Qt2BC.h"
-#include "ControlSendto.h"
-#include "QSendtoDialog.h"
 #include "QSendto.h"
+#include "QSendtoDialog.h"
+#include "Qt2BC.h"
+#include "qt_helpers.h"
+
+#include "format.h"
+
+#include "controllers/ControlSendto.h"
 
 #include <qcombobox.h>
 #include <qlistbox.h>
 #include <qpushbutton.h>
-
-#include "qt_helpers.h"
-#include "format.h"
 
 using std::vector;
 using std::string;

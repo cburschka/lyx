@@ -10,9 +10,10 @@
 
 #include <config.h>
 
-#include "debug.h"
 #include "QWorkArea.h"
 #include "qscreen.h"
+
+#include "debug.h"
 #include "LColor.h"
 
 #include <qapplication.h>

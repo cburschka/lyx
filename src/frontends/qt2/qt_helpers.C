@@ -11,12 +11,13 @@
 
 #include <config.h>
 
-#include "support/tostr.h"
-#include "support/lstrings.h"
-#include "gettext.h"
+#include "lengthcombo.h"
 #include "qt_helpers.h"
 
-#include "lengthcombo.h"
+#include "gettext.h"
+
+#include "support/lstrings.h"
+#include "support/tostr.h"
 
 #include <qlineedit.h>
 #include <qtextcodec.h>

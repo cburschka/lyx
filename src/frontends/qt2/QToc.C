@@ -10,19 +10,20 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include <stack>
-
-#include "qt_helpers.h"
-
-#include "ControlToc.h"
 #include "QToc.h"
 #include "QTocDialog.h"
 #include "Qt2BC.h"
+#include "qt_helpers.h"
 
+#include "debug.h"
+
+#include "controllers/ControlToc.h"
+
+#include <qcombobox.h>
 #include <qlistview.h>
 #include <qpushbutton.h>
-#include <qcombobox.h>
+
+#include <stack>
 
 using std::endl;
 

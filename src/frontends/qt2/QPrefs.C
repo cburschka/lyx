@@ -10,14 +10,13 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "support/lstrings.h"
-#include "support/tostr.h"
-#include "support/std_sstream.h"
-#include <iomanip>
-
-#include "ControlPrefs.h"
+#include "QPrefs.h"
 #include "QPrefsDialog.h"
+
+#include "lcolorcache.h"
+#include "Qt2BC.h"
+#include "qt_helpers.h"
+
 #include "ui/QPrefAsciiModule.h"
 #include "ui/QPrefDateModule.h"
 #include "ui/QPrefKeyboardModule.h"
@@ -31,26 +30,32 @@
 #include "ui/QPrefPrinterModule.h"
 #include "ui/QPrefUIModule.h"
 #include "ui/QPrefIdentityModule.h"
-#include "lyx_gui.h"
-#include "QPrefs.h"
-#include "Qt2BC.h"
+
+#include "debug.h"
+#include "LColor.h"
 #include "lyxfont.h"
-#include "frnt_lang.h"
-#include "helper_funcs.h"
-#include "qt_helpers.h"
-#include "lcolorcache.h"
+
+#include "support/lstrings.h"
+#include "support/tostr.h"
+#include "support/std_sstream.h"
+
+#include "controllers/ControlPrefs.h"
+#include "controllers/frnt_lang.h"
+#include "controllers/helper_funcs.h"
+
+#include "frontends/lyx_gui.h"
+
+#include <qcheckbox.h>
+#include "qcoloritem.h"
+#include <qcombobox.h>
+#include <qlabel.h>
+#include <qlineedit.h>
+#include <qpushbutton.h>
+#include <qspinbox.h>
 
 #include <boost/tuple/tuple.hpp>
 
-#include <qpushbutton.h>
-#include <qcheckbox.h>
-#include <qlineedit.h>
-#include <qspinbox.h>
-#include <qcombobox.h>
-#include <qlabel.h>
-#include "qcoloritem.h"
-
-#include "LColor.h"
+#include <iomanip>
 
 using lyx::support::compare_no_case;
 using lyx::support::strToDbl;

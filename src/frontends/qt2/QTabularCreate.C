@@ -10,11 +10,11 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "ControlTabularCreate.h"
 #include "QTabularCreateDialog.h"
 #include "QTabularCreate.h"
 #include "Qt2BC.h"
+
+#include "controllers/ControlTabularCreate.h"
 
 #include <qspinbox.h>
 #include <qpushbutton.h>

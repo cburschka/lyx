@@ -10,8 +10,8 @@
 
 #include <config.h>
 
-#include "QWrap.h"
 #include "QWrapDialog.h"
+#include "QWrap.h"
 
 #include <qpushbutton.h>
 

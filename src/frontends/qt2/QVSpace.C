@@ -15,17 +15,19 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "ControlVSpace.h"
 #include "QVSpace.h"
 #include "QVSpaceDialog.h"
 #include "Qt2BC.h"
-#include "lyxrc.h" // to set the default length values
-#include "qt_helpers.h"
-#include "helper_funcs.h"
 
+#include "lengthcombo.h"
+#include "qt_helpers.h"
+
+#include "lyxrc.h" // to set the default length values
 #include "Spacing.h"
 #include "vspace.h"
+
+#include "controllers/ControlVSpace.h"
+#include "controllers/helper_funcs.h"
 
 #include "support/lstrings.h"
 #include "support/tostr.h"
@@ -34,7 +36,6 @@
 #include <qlineedit.h>
 #include <qcheckbox.h>
 #include <qpushbutton.h>
-#include "lengthcombo.h"
 
 
 using std::string;

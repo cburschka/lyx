@@ -10,12 +10,12 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "ControlFloat.h"
-#include "QFloatDialog.h"
 #include "QFloat.h"
+#include "QFloatDialog.h"
 #include "Qt2BC.h"
 #include "floatplacement.h"
+
+#include "controllers/ControlFloat.h"
 
 #include "insets/insetfloat.h"
 

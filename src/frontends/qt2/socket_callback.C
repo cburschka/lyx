@@ -12,7 +12,6 @@
 
 #include <config.h>
 
-
 #include "lyxsocket.h"
 #include "socket_callback.h"
 
@@ -36,6 +35,7 @@ void socket_callback::server_received()
 {
 	server_->serverCallback();
 }
+
 
 void socket_callback::data_received()
 {

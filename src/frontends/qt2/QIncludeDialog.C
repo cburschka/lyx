@@ -10,12 +10,13 @@
 
 #include <config.h>
 
+#include "QIncludeDialog.h"
+#include "QInclude.h"
+
 #include <qpushbutton.h>
 #include <qcheckbox.h>
 #include <qlineedit.h>
 
-#include "QIncludeDialog.h"
-#include "QInclude.h"
 
 namespace lyx {
 namespace frontend {

@@ -12,23 +12,22 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "support/lstrings.h"
-
-#include "ControlBibtex.h"
+#include "QBibtex.h"
+#include "QBibtexDialog.h"
+#include "ui/QBibtexAddDialogBase.h"
+#include "Qt2BC.h"
 #include "qt_helpers.h"
 
+#include "controllers/ControlBibtex.h"
+
 #include "support/filetools.h" // ChangeExtension
+#include "support/lstrings.h"
 
 #include <qcombobox.h>
 #include <qpushbutton.h>
 #include <qlistbox.h>
 #include <qcheckbox.h>
 
-#include "ui/QBibtexAddDialogBase.h"
-#include "QBibtexDialog.h"
-#include "QBibtex.h"
-#include "Qt2BC.h"
 
 using lyx::support::ChangeExtension;
 using lyx::support::contains;

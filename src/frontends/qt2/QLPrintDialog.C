@@ -11,10 +11,9 @@
 
 #include <config.h>
 
-#include "qt_helpers.h"
-
-#include "QPrint.h"
 #include "QLPrintDialog.h"
+#include "QPrint.h"
+#include "qt_helpers.h"
 
 #include <qfiledialog.h>
 #include <qcheckbox.h>

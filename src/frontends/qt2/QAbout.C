@@ -10,20 +10,20 @@
 
 #include <config.h>
 
-#include "debug.h"
+#include "QAbout.h"
+#include "QAboutDialog.h"
+#include "Qt2BC.h"
+#include "qt_helpers.h"
+
+#include "controllers/ButtonController.h"
+#include "controllers/ControlAboutlyx.h"
+
 #include "support/lstrings.h"
 #include "support/std_sstream.h"
-#include "qt_helpers.h"
-#include "ButtonController.h"
-#include "ControlAboutlyx.h"
 
 #include <qlabel.h>
 #include <qpushbutton.h>
 #include <qtextview.h>
-
-#include "QAboutDialog.h"
-#include "Qt2BC.h"
-#include "QAbout.h"
 
 using lyx::support::prefixIs;
 

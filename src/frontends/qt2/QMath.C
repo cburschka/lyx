@@ -10,11 +10,12 @@
 
 #include <config.h>
 
-#include "gettext.h"
+#include "QMath.h"
 #include "QMathDialog.h"
 #include "QMathMatrixDialog.h"
 #include "QDelimiterDialog.h"
-#include "QMath.h"
+
+#include "gettext.h"
 
 namespace lyx {
 namespace frontend {

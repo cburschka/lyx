@@ -12,28 +12,30 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "ControlGraphics.h"
+#include "QGraphics.h"
+
+#include "lengthcombo.h"
+#include "QGraphicsDialog.h"
+#include "Qt2BC.h"
+#include "qt_helpers.h"
+
+#include "lengthcommon.h"
+#include "lyxrc.h"
+
+#include "controllers/ControlGraphics.h"
 #include "controllers/helper_funcs.h"
+
+#include "insets/insetgraphicsParams.h"
+
 #include "support/lstrings.h"
 #include "support/tostr.h"
 #include "support/lyxlib.h"
-#include "insets/insetgraphicsParams.h"
-
-#include "lyxrc.h"
-#include "lengthcombo.h"
-#include "qt_helpers.h"
-#include "lengthcommon.h"
 
 #include <qlineedit.h>
 #include <qpushbutton.h>
 #include <qcheckbox.h>
 #include <qgroupbox.h>
 #include <qlabel.h>
-
-#include "QGraphicsDialog.h"
-#include "QGraphics.h"
-#include "Qt2BC.h"
 
 #include <cmath>
 

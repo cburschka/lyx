@@ -11,10 +11,13 @@
 
 #include <config.h>
 
-#include "font_metrics.h"
+#include "frontends/font_metrics.h"
 #include "frontends/lyx_gui.h"
+
 #include "qfont_loader.h"
+
 #include "language.h"
+
 
 using std::string;
 

@@ -10,16 +10,17 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "ControlNote.h"
+#include "QNote.h"
+#include "QNoteDialog.h"
+#include "Qt2BC.h"
+
+#include "controllers/ControlNote.h"
+
 #include "insets/insetnote.h"
 
 #include <qradiobutton.h>
 #include <qpushbutton.h>
 
-#include "QNoteDialog.h"
-#include "QNote.h"
-#include "Qt2BC.h"
 
 using std::string;
 

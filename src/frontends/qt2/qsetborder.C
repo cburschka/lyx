@@ -11,8 +11,8 @@
 
 #include <config.h>
 
-#include <qpainter.h>
 #include "qsetborder.h"
+#include <qpainter.h>
 
 
 QSetBorder::QSetBorder(QWidget * parent, char const * name, WFlags fl)

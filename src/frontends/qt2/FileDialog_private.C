@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "FileDialog_private.h"
 #include "qt_helpers.h"
 

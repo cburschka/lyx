@@ -10,21 +10,22 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "qt_helpers.h"
-#include "support/tostr.h"
-#include "support/lstrings.h"
-#include "ControlWrap.h"
-
 #include "QWrap.h"
 #include "QWrapDialog.h"
 #include "Qt2BC.h"
+
 #include "lengthcombo.h"
+#include "qt_helpers.h"
+
+#include "controllers/ControlWrap.h"
 
 #include "insets/insetwrap.h"
 
-#include <qpushbutton.h>
+#include "support/tostr.h"
+#include "support/lstrings.h"
+
 #include <qlineedit.h>
+#include <qpushbutton.h>
 
 using lyx::support::strToDbl;
 

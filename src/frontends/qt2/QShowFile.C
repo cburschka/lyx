@@ -10,13 +10,12 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "ControlShowFile.h"
-#include "qt_helpers.h"
-
 #include "QShowFile.h"
 #include "QShowFileDialog.h"
 #include "Qt2BC.h"
+#include "qt_helpers.h"
+
+#include "controllers/ControlShowFile.h"
 
 #include <qtextview.h>
 #include <qpushbutton.h>

@@ -14,8 +14,8 @@
 #include "QParagraphDialog.h"
 #include "QParagraph.h"
 
-#include <qlineedit.h>
 #include <qcombobox.h>
+#include <qlineedit.h>
 #include <qpushbutton.h>
 #include <qvalidator.h>
 #include <qwhatsthis.h>

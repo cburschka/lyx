@@ -10,16 +10,15 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "ControlChanges.h"
+#include "QChanges.h"
+#include "QChangesDialog.h"
+#include "Qt2BC.h"
 #include "qt_helpers.h"
+
+#include "controllers/ControlChanges.h"
 
 #include <qpushbutton.h>
 #include <qtextview.h>
-
-#include "QChangesDialog.h"
-#include "QChanges.h"
-#include "Qt2BC.h"
 
 
 using std::string;

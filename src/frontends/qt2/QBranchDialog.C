@@ -10,8 +10,8 @@
 
 #include <config.h>
 
-#include "QBranch.h"
 #include "QBranchDialog.h"
+#include "QBranch.h"
 
 #include <qpushbutton.h>
 

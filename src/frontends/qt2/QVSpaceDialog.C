@@ -15,13 +15,14 @@
 #include "QVSpaceDialog.h"
 #include "QVSpace.h"
 
-#include <qlineedit.h>
+#include "lengthcombo.h"
+#include "qt_helpers.h"
+
 #include <qcombobox.h>
+#include <qlineedit.h>
 #include <qpushbutton.h>
 #include <qvalidator.h>
-#include "lengthcombo.h"
 
-#include "qt_helpers.h"
 
 namespace lyx {
 namespace frontend {

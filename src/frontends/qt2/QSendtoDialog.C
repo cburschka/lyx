@@ -10,10 +10,11 @@
 
 #include <config.h>
 
-#include <qpushbutton.h>
-
 #include "QSendtoDialog.h"
 #include "QSendto.h"
+
+#include <qpushbutton.h>
+
 
 namespace lyx {
 namespace frontend {

@@ -11,16 +11,17 @@
 #include <config.h>
 
 #include "QLPainter.h"
-#include "font_metrics.h"
+
+#include "QWorkArea.h"
+#include "QLImage.h"
+#include "lcolorcache.h"
+#include "qfont_loader.h"
+
 #include "debug.h"
 #include "language.h"
 #include "LColor.h"
 
-#include "QWorkArea.h"
-#include "qfont_loader.h"
-#include "QLImage.h"
-#include "lcolorcache.h"
-
+#include "frontends/font_metrics.h"
 
 #include <qpainter.h>
 

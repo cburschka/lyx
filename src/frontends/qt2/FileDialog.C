@@ -8,18 +8,17 @@
  * Full author contact details are available in file CREDITS.
  */
 
-
 #include <config.h>
 
 #include "frontends/FileDialog.h"
+
+#include "FileDialog_private.h"
+#include "qt_helpers.h"
 
 #include "debug.h"
 #include "gettext.h"
 
 #include "support/globbing.h"
-
-#include "FileDialog_private.h"
-#include "qt_helpers.h"
 
 
 using lyx::support::FileFilterList;

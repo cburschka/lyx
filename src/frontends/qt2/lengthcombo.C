@@ -11,7 +11,6 @@
 
 #include <config.h>
 
-
 #include "lengthcombo.h"
 
 #include "lengthcommon.h"

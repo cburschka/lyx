@@ -10,17 +10,16 @@
 
 #include <config.h>
 
-#include "debug.h"
+#include "QBranch.h"
+#include "QBranchDialog.h"
+#include "Qt2BC.h"
+#include "qt_helpers.h"
+
 #include "BranchList.h"
 
 #include "controllers/ControlBranch.h"
 
 #include "insets/insetbranch.h"
-
-#include "QBranch.h"
-#include "QBranchDialog.h"
-#include "Qt2BC.h"
-#include "qt_helpers.h"
 
 #include <qcombobox.h>
 #include <qpushbutton.h>

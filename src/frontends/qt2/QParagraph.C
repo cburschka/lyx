@@ -10,23 +10,24 @@
 
 #include <config.h>
 
-#include "debug.h"
-#include "ControlParagraph.h"
 #include "QParagraph.h"
 #include "QParagraphDialog.h"
 #include "Qt2BC.h"
-#include "ParagraphParameters.h"
 #include "qt_helpers.h"
-#include "helper_funcs.h"
 
+#include "ParagraphParameters.h"
 #include "Spacing.h"
+
+#include "controllers/ControlParagraph.h"
+#include "controllers/helper_funcs.h"
+
 #include "support/tostr.h"
 
+#include <qbuttongroup.h>
+#include <qcheckbox.h>
 #include <qcombobox.h>
 #include <qlineedit.h>
-#include <qcheckbox.h>
 #include <qpushbutton.h>
-#include <qbuttongroup.h>
 
 
 using std::string;

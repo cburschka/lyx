@@ -12,9 +12,13 @@
 
 #include <config.h>
 
+#include "QCitationDialog.h"
+#include "ui/QCitationFindDialogBase.h"
+#include "QCitation.h"
 #include "qt_helpers.h"
+
 #include "controllers/ControlCitation.h"
-#include "ButtonController.h"
+#include "controllers/ButtonController.h"
 
 #include <qcheckbox.h>
 #include <qlineedit.h>
@@ -22,9 +26,6 @@
 #include <qmultilineedit.h>
 #include <qpushbutton.h>
 
-#include "ui/QCitationFindDialogBase.h"
-#include "QCitationDialog.h"
-#include "QCitation.h"
 
 using std::vector;
 using std::string;
