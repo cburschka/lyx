@@ -15,6 +15,8 @@
 #include "lyxlength.h"
 #include <qvalidator.h>
 
+class QWidget;
+
 
 class Q_EXPORT LengthValidator : public QValidator
 {

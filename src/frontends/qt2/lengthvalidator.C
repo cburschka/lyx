@@ -17,6 +17,8 @@
 
 #include "qt_helpers.h"
 
+#include <qwidget.h>
+
 
 using lyx::support::isStrDbl;
 using std::string;

@@ -1,3 +1,7 @@
+2003-12-10  Angus Leeming  <leeming@lyx.org>
+
+	* lengthvalidator.[Ch]: make <qwidget.h> visible to the class.
+
 2003-12-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* lengthvalidator.[Ch] (LengthValidator): change the constructor to
