@@ -45,7 +45,8 @@ Template XFig
 		An XFig figure.
 		In the parameters box, you can provide
 		optional parameters for fig2dev in the
-		case of LaTeX export.
+		case of LaTeX export. E.g., -m .69 to
+		reduce the size.
 		For Ascii export, you can provide a
 		number that specifies the width of an
 		Ascii approximation of the figure.
