@@ -29,7 +29,6 @@ class InsetFormulaBase;
 class BufferView;
 class MathPainterInfo;
 class MathUnknownInset;
-class Selection;
 
 /**
 

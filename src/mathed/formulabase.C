@@ -321,6 +321,7 @@ Inset::RESULT InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 	if (cmd.button() == mouse_button::button1) {
 		// try to dispatch to enclosed insets first
 		mathcursor->dispatch(cmd);
+		cmd.view()->stuffClipboard(mathcursor->grabSelection());
 		// try to set the cursor
 		//delete mathcursor;
 		//mathcursor = new MathCursor(this, x == 0);
@@ -797,6 +798,7 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		fitInsetCursor(bv);
 		showInsetCursor(bv);
 		revealCodes(bv);
+		cmd.view()->stuffClipboard(mathcursor->grabSelection());
 	} else {
 		releaseMathCursor(bv);
 		bv->unlockInset(this);

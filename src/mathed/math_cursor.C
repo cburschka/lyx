@@ -415,13 +415,14 @@ void MathCursor::paste(string const & data)
 void MathCursor::backspace()
 {
 	autocorrect_ = false;
-	if (pos() == 0) {
-		pullArg();
-		return;
-	}
 
 	if (selection_) {
 		selDel();
+		return;
+	}
+
+	if (pos() == 0) {
+		pullArg();
 		return;
 	}
 
