@@ -124,6 +124,6 @@ private:
 };
 
 // A helper function that pushes the cursor out of the inset.
-void getOutOfInset(LCursor & cur, InsetBase const & in);
+void leaveInset(LCursor & cur, InsetBase const & in);
 
 #endif

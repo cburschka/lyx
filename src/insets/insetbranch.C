@@ -149,7 +149,7 @@ void InsetBranch::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			setStatus(Open);
 		else if (cmd.argument == "close") {
 			setStatus(Collapsed);
-			getOutOfInset(cur, *this);
+			leaveInset(cur, *this);
 
 		// The branch inset specialises its behaviour on "toggle".
 		} else if (cmd.argument == "toggle"
@@ -164,7 +164,7 @@ void InsetBranch::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			} else {
 				if (status() != Collapsed) {
 					setStatus(Collapsed);
-					getOutOfInset(cur, *this);
+					leaveInset(cur, *this);
 				} else
 					cur.undispatched();
 			}

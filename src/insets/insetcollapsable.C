@@ -39,7 +39,7 @@ using std::min;
 using std::ostream;
 
 
-void getOutOfInset(LCursor & cur, InsetBase const & in)
+void leaveInset(LCursor & cur, InsetBase const & in)
 {
 	for (unsigned int i = 0; i != cur.size(); ++i) {
 		if (&cur[i].inset() == &in) {
@@ -315,12 +315,12 @@ void InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest & cmd)
 			setStatus(Open);
 		else if (cmd.argument == "close") {
 			setStatus(Collapsed);
-			getOutOfInset(cur, *this);
+			leaveInset(cur, *this);
 		} else if (cmd.argument == "toggle"
 			   || cmd.argument.empty()) {
 			if (isOpen()) {
 				setStatus(Collapsed);
-				getOutOfInset(cur, *this);
+				leaveInset(cur, *this);
 			} else
 				setStatus(Open);
 		}
