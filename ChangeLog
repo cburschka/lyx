@@ -1,3 +1,8 @@
+2000-12-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/lyxfunc.C (processKeySym): discover the correct argument if
+	the action is LFUN_SELFINSERT
+
 2000-12-18  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/mathed/math_cursor.C (Interpret) Suppress a debug message

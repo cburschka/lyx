@@ -270,7 +270,17 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 			// so we`ll skip the dispatch.
 			return 0;
 		}
+	} else if (action == LFUN_SELFINSERT) {
+		// We must set the argument to the char looked up by
+		// XKeysymToString
+		char const * tmp = XKeysymToString(keysym);
+		// if (!argument.empty()) {
+		argument = tmp ? tmp : "";
+		// }
+		lyxerr[Debug::KEY] << "SelfInsert arg["
+				   << argument << "]" << endl;
 	}
+	
 
         bool tmp_sc = show_sc;
 	show_sc = false;
