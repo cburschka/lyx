@@ -278,7 +278,7 @@ void MathScriptInset::writeNormal(MathInset const * nuc, ostream & os) const
 	if (u && d) {
 		os << "[sup [sub " << osb.str() << " ";
 		down().data_.writeNormal(os);
-		os << "]";
+		os << "] ";
 		up().data_.writeNormal(os);
 		os << ']';
 	} else if (u) {

@@ -724,8 +724,18 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		}
 
 		else if (t.cat() == catBegin) {
-			array.push_back(MathAtom(new MathBraceInset));
-			parse_into(array.back()->cell(0), FLAG_BRACE_LAST);
+			MathArray ar;
+			parse_into(ar, FLAG_BRACE_LAST);
+#ifndef WITH_WARNINGS
+#warning this might be wrong in general!
+#endif
+			// ignore braces around simple items
+			if (ar.size() == 1 || (ar.size() == 2 && ar.back()->asScriptInset())) {
+				array.push_back(ar);
+			} else {
+				array.push_back(MathAtom(new MathBraceInset));
+				array.back()->cell(0).swap(ar);
+			}
 		}
 
 		else if (t.cat() == catEnd) {
