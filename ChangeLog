@@ -1,3 +1,10 @@
+2000-11-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/frontends/xforms/Toolbar_pimpl.C: do not crash if mathed has
+	not returned a pixmap for "math-insert".
+
+	* src/LyXAction.C (init): sort the entries a bit.
+
 2000-11-03  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettabular.h: added fixed number to update codes so

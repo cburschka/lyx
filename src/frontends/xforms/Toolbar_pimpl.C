@@ -306,12 +306,16 @@ void setPixmap(FL_OBJECT * obj, int action, int buttonwidth, int height) {
 	}
 
 	if (act == LFUN_INSERT_MATH && !arg.empty()) {
-		lyxerr[Debug::GUI] << "Using mathed-provided icon" << endl;
 		char const ** pixmap = get_pixmap_from_symbol(arg.c_str(),
 							buttonwidth,
 							height);
-		fl_set_pixmapbutton_data(obj, const_cast<char **>(pixmap));
-		return;
+		if (pixmap) {
+			lyxerr[Debug::GUI] << "Using mathed-provided icon"
+					   << endl;
+			fl_set_pixmapbutton_data(obj,
+						 const_cast<char **>(pixmap));
+			return;
+		}
 	}
 	
 	lyxerr << "Unable to find icon `" << xpm_name << "'" << endl;
