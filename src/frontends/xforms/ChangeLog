@@ -1,5 +1,8 @@
 2004-11-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* RadioButtonGroup.C (set): use bind, equal_to instead of
+	equal_2nd_in_pair 
+
 	* xformsImage.C (loadableFormats): use bind, equal_to instead of
 	compare_memfun
 

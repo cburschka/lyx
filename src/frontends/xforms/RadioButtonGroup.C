@@ -17,13 +17,15 @@
 
 #include "debug.h"
 
-#include "support/lyxfunctional.h"
-
 #include "lyx_forms.h"
 
 #include <boost/assert.hpp>
+#include <boost/bind.hpp>
+
+using boost::bind;
 
 using std::endl;
+using std::equal_to;
 
 namespace lyx {
 namespace frontend {
@@ -43,7 +45,9 @@ void RadioButtonGroup::set(size_type value) const
 {
 	ButtonValueMap::const_iterator it =
 		find_if(map.begin(), map.end(),
-			lyx::equal_2nd_in_pair<ButtonValuePair>(value));
+			bind(equal_to<size_type>(),
+			     bind(&ButtonValuePair::second, _1),
+			     value));
 
 	if (it != map.end()) {
 		fl_set_button(it->first, 1);

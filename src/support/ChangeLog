@@ -1,9 +1,15 @@
 2004-11-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* translator.h: use bind, equal_to instead of equal_1st_in_pair
+	and equal_2nd_in_pair
+
+	* Makefile.am (libsupport_la_SOURCES): remove lyxfunctional.h
+	* lyxfunctional.h: delete file
+
 	* lyxfunctional.h: delete compare_memfun and helper classes
 
 	* forkedcontr.C (find_pid): use bind, equal_to instead of
-	compare_memfun 
+	compare_memfun
 
 	* lyxfunctional.h: delete back_inserter_fun functions and helper
 	classes.

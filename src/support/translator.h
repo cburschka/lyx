@@ -13,13 +13,13 @@
 #define TRANSLATOR_H
 
 #include <boost/assert.hpp>
+#include <boost/bind.hpp>
 
 #include <vector>
 #include <utility>
 #include <algorithm>
 #include <functional>
 
-#include "support/lyxfunctional.h"
 /**
  * This class template is used to translate between two elements, specifically
  * it was worked out to translate between an enum and strings when reading
@@ -62,7 +62,9 @@ public:
 		// For explanation see the next find() function.
 		typename Map::const_iterator it =
 			std::find_if(map.begin(), map.end(),
-				     lyx::equal_1st_in_pair<MapPair>(first)
+				     boost::bind(std::equal_to<T1>(),
+						 boost::bind(&MapPair::first, _1),
+						 first)
 				);
 
 		if (it != map.end()) {
@@ -89,7 +91,9 @@ public:
 		// equal_to(select2nd(pair) , second)
 		typename Map::const_iterator it =
 			std::find_if(map.begin(), map.end(),
-				     lyx::equal_2nd_in_pair<MapPair>(second)
+				     boost::bind(std::equal_to<T2>(),
+						 boost::bind(&MapPair::second, _1),
+						 second)
 				);
 
 		if (it != map.end())

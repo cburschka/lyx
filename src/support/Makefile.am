@@ -46,7 +46,6 @@ libsupport_la_SOURCES = \
 	lstrings.C \
 	lstrings.h \
 	lyxalgo.h \
-	lyxfunctional.h \
 	lyxlib.h \
 	lyxmanip.h \
 	lyxtime.C \
