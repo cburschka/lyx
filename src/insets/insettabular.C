@@ -23,6 +23,7 @@
 
 #include "buffer.h"
 #include "commandtags.h"
+#include "debug.h"
 #include "LaTeXFeatures.h"
 #include "Painter.h"
 #include "font.h"

@@ -10,7 +10,7 @@
 #ifndef COMMANDTAGS_H
 #define COMMANDTAGS_H
 
-#include "debug.h"
+#include <iosfwd>
 
 /** These are all the lyxfunctions (as enums).
  */

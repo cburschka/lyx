@@ -1,3 +1,9 @@
+2000-07-19  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* src/commandtags.h: do not include "debug.h" which does not
+	belong there. #include it in some other places because of this
+	change. 
+
 2000-07-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/insets/insetcaption.C: add a couple "using" directives.

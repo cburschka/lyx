@@ -10,6 +10,7 @@
 #include "inseturl.h"
 #include "LString.h"
 #include "commandtags.h"
+#include "debug.h"
 #include "gettext.h"
 #include "LaTeXFeatures.h"
 #include "lyx_gui_misc.h" // CancelCloseBoxCB

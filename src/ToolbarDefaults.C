@@ -3,6 +3,7 @@
 #include "ToolbarDefaults.h"
 #include "LyXAction.h"
 #include "toolbar.h"
+#include "debug.h"
 
 using std::endl;
 

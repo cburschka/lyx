@@ -14,6 +14,12 @@
 
 #include <config.h>
 
+#ifdef HAVE_SSTREAM
+#include <sstream>
+#else
+#include <strstream>
+#endif
+
 #include FORMS_H_LOCATION
 
 #include "lyx_gui_misc.h" 

@@ -7,6 +7,7 @@
 #include "gettext.h"
 #include "insettoc.h"
 #include "commandtags.h"
+#include "debug.h"
 #include "lyxfunc.h"
 #include "LyXView.h"
 #include "BufferView.h"
