@@ -321,30 +321,28 @@ void LyXScreen::toggleSelection(LyXText * text, BufferView * bv,
 				int yo, int xo)
 {
 	// only if there is a selection
-	if (!text->selection.set()) return;
+	if (!text->selection.set())
+		return;
 
 	int const bottom = min(
-		max(static_cast<int>(text->selection.end.y()
+		max(int(text->selection.end.y()
 				     - text->getRow(text->selection.end)->baseline()
 				     + text->getRow(text->selection.end)->height()),
 		    text->top_y()),
-		static_cast<int>(text->top_y() + workarea().workHeight()));
+		int(text->top_y() + workarea().workHeight()));
 	int const top = min(
-		max(static_cast<int>(text->selection.start.y() -
+		max(int(text->selection.start.y() -
 				     text->getRow(text->selection.start)->baseline()),
 		    text->top_y()),
-		static_cast<int>(text->top_y() + workarea().workHeight()));
+		int(text->top_y() + workarea().workHeight()));
 
 	if (kill_selection)
 		text->selection.set(false);
 
 	workarea().getPainter().start();
 
-	drawFromTo(text, bv, top - text->top_y(), bottom - text->top_y(),
-		   yo, xo);
-	expose(0, top - text->top_y(),
-	       workarea().workWidth(),
-	       bottom - text->top_y() - (top - text->top_y()));
+	drawFromTo(text, bv, top - text->top_y(), bottom - text->top_y(), yo, xo);
+	expose(0, top - text->top_y(), workarea().workWidth(), bottom - top);
 
 	workarea().getPainter().end();
 }

@@ -860,7 +860,7 @@ pos_type LyXText::rowBreakPoint(Row const & row) const
 		chunkwidth += thiswidth;
 
 		InsetOld * in = pit->isInset(i) ? pit->getInset(i) : 0;
-		fullrow = (in && (in->display() || in->needFullRow()));
+		fullrow = in && (in->display() || in->needFullRow());
 
 		// break before a character that will fall off
 		// the right of the row
@@ -971,7 +971,7 @@ int LyXText::fill(RowList::iterator row, int paper_width) const
 						font = getFont(pit, i);
 						endPosOfFontSpan = pit->getEndPosOfFontSpan(i);
 					}
-					if (! font.language()->RightToLeft()) {
+					if (!font.language()->RightToLeft()) {
 						w += font_metrics::width(c, font);
 					} else {
 						// Fall-back to the normal case

@@ -404,8 +404,7 @@ LyXFont const Paragraph::getFontSettings(BufferParams const & bparams,
 }
 
 
-lyx::pos_type
-Paragraph::getEndPosOfFontSpan(lyx::pos_type pos) const
+lyx::pos_type Paragraph::getEndPosOfFontSpan(lyx::pos_type pos) const
 {
 	Assert(pos <= size());
 
