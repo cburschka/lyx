@@ -1,11 +1,11 @@
 #
 # Key definition file for Czech national keyboard for LyX - hope it's OK
 #
-# (c)1995 by Ivan Schreter, schreter@ccsun.tuke.sk
+# (c)1995 by Ivan Schreter, schreter@kdk.sk
 #
 
 \kmod = acute aceilnorsuyzACEILNORSUYZ	# acute is on '='
-\kmod + caron cdelnrstzCDELNRSTY	# caron is on Shift-'='
+\kmod + caron cdelnrstzCDELNRSTZ	# caron is on Shift-'='
 \kmap ~ ;
 \kmap 1 +		# map numbers to Czech letters and
 \kmap ! 1		# Shift-numbers to numbers
@@ -50,11 +50,10 @@
 \kxmod caron L "\\q{L}"
 \kxmod caron d "\\q{d}"
 \kxmod acute i "\\'{\\i}"	# use only root of i for i acute
-# Switch Z and Y as on the standard Czech professional keyboard
-\kmap Z Y
-\kmap Y Z
-\kmap z y
-\kmap y z
+\kxmod caron y "\\v{z}"		# switch from QWERTY to QWERTZ
 \kxmod caron Y "\\v{Z}"
-\kxmod caron y "\\v{z}"
-
+\kmap z y
+\kmap Z Y
+\kmap y z
+\kmap Y Z
+\kmap | '
