@@ -142,10 +142,8 @@ void FontInfo::query()
 					scaleindex = i;
 				}
 				scalable = true;
-			};
-			// Ignore bogus matches of scalable fonts.
-			if (sizes[i] > 0 &&
-			    lyx::atoi(token(name, '-', 12)) == 0)
+			} else if (lyx::atoi(token(name, '-', 12)) == 0)
+				// Ignore bogus matches of scalable fonts.
 				sizes[i] = 0;
 		};
 		XFreeFontNames(list);
