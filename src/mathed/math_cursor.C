@@ -1374,13 +1374,13 @@ void MathCursor::interpret(char c)
 		static char const greekl[][26] =
 			{"alpha", "beta", "chi", "delta", "epsilon", "phi",
 			 "gamma", "eta", "iota", "epsilon", "kappa", "lambda", "mu",
-			 "nu", "omikron", "pi", "vartheta", "rho", "sigma",
+			 "nu", "omega", "pi", "vartheta", "rho", "sigma",
 			 "tau", "upsilon", "theta", "omega", "xi", "varphi", "zeta"};
 		static char const greeku[][26] =
-			{"Alpha", "Beta", "chi", "Delta", "varepsilon", "Phi",
-			 "Gamma", "Eta", "Iota", "Epsilon", "Kappa", "Lambda", "Mu",
-			 "Nu", "Omikron", "Pi", "vartheta", "varrho", "Sigma", "varsigma",
-			 "Upsilon", "Theta", "Omega", "Xi", "Varphi", "Zeta"};
+			{"alpha", "beta", "chi", "Delta", "varepsilon", "Phi",
+			 "Gamma", "varepsilon", "varepsilon", "epsilon", "kappa", "Lambda", "mu",
+			 "Nu", "Omega", "Pi", "vartheta", "varrho", "Sigma", "varsigma",
+			 "Upsilon", "Theta", "Omega", "Xi", "Varphi", "zeta"};
 	
 		latexkeys const * l = 0;	
 		if ('a' <= c && c <= 'z')

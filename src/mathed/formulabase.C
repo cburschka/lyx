@@ -758,9 +758,11 @@ void mathDispatchInsertMatrix(BufferView * bv, string const & arg)
 void mathDispatchInsertMath(BufferView * bv, string const & arg)
 {
 	if (bv->available()) {
-		if (arg.size() && arg[0] == '\\')
-			openNewInset(bv, new InsetFormula(arg));
-		else
+		if (arg.size() && arg[0] == '\\') {
+			InsetFormula * f = new InsetFormula(arg);
+			if (!bv->insertInset(f))
+				delete f;
+		} else
 			mathDispatchMathMode(bv, arg);
 	}
 }
