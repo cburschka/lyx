@@ -1100,7 +1100,7 @@ bool MathHullInset::getStatus(LCursor & cur, FuncRequest const & cmd,
 			|| s == "copy-row"))
 			return false;
 		if ((type_ == "eqnarray")
-		    && (s == "appen-column"
+		    && (s == "append-column"
 			|| s == "delete-column"))
 			return false;
 		return MathGridInset::getStatus(cur, cmd, flag);
