@@ -27,6 +27,9 @@ What's new
 
 - work around a Qt 3.1.2 bug with the environment combo box [bug #1136]
 
+- fix bug where browsing for files in graphics inset would always
+  return an absolute path [bug #1028, Qt only]
+
 - do not write in preference file the colors which are still at their
   default value [bug #1069, Qt only]
 
@@ -36,3 +39,5 @@ What's new
 - add missing c_str.sed file in the distribution
 
 - hopefully really fix problems with patch requiring aclocal-1.6
+
+- fix compilation on HP-UX 11.x
