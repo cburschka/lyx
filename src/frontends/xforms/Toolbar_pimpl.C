@@ -35,8 +35,6 @@
 #include "support/filetools.h"
 #include "support/lstrings.h"
 
-#include <boost/tuple/tuple.hpp>
- 
 using std::endl;
 
 // some constants
@@ -47,8 +45,7 @@ const int height = 30; // the height of all items in the toolbar
 
 Toolbar::Pimpl::toolbarItem::toolbarItem()
 	: action(LFUN_NOACTION), icon(0)
-{
-}
+{}
 
 
 Toolbar::Pimpl::toolbarItem::~toolbarItem()
