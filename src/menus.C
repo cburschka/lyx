@@ -529,7 +529,7 @@ void Menus::ShowFileMenu(FL_OBJECT *ob, long)
 		string tmp;
 		string tmp2;
 		string relbuf = MakeDisplayPath(filname,30);
-		tmp += ii;
+		tmp += tostr(ii);
 		tmp2 = tmp;
 		tmp += ". " + relbuf;
 		tmp2 += string("#") + tostr(ii);
@@ -667,7 +667,7 @@ void Menus::ShowFileMenu2(FL_OBJECT *ob, long)
 		string tmp;
 		string tmp2;
 		string relbuf = MakeDisplayPath(filname,30);
-		tmp += ii;
+		tmp += tostr(ii);
 		tmp2 = tmp;
 		tmp += ". " + relbuf;
 		tmp2 += string("#") + tostr(ii);

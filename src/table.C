@@ -1414,7 +1414,7 @@ int LyXTable::RoffEndOfCell(FILE* file, int cell)
     return ret;
 }
 
-const char *LyXTable::getDocBookAlign(int cell, bool isColumn=false)
+const char *LyXTable::getDocBookAlign(int cell, bool isColumn)
 {
     int i;
     if (isColumn)
