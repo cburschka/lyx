@@ -31,6 +31,10 @@ public:
 	///
 	void draw(Painter &, int x, int y) const;
 	///
+	void metrics(TextMetricsInfo const & st) const;
+	///
+	void draw(TextPainter &, int x, int y) const;
+	///
 	string label(row_type row) const;
 	///
 	void label(row_type row, string const & label);

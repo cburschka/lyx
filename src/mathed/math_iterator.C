@@ -104,12 +104,14 @@ void MathIterator::operator++()
 		return;
 	}
 
-	// otherwise move on one cell if possible
-	if (top.idx_ + 1 < top.par_->nargs()) {
+	// otherwise try to move on one cell if possible
+	while (top.idx_ + 1 < top.par_->nargs()) {
 		// idx() == nargs() is _not_ valid!
 		++top.idx_;
-		top.pos_ = 0;
-		return;
+		if (top.par_->validCell(top.idx_)) {
+			top.pos_ = 0;
+			return;
+		}
 	}
 
 	// otherwise leave array, move on one position

@@ -99,8 +99,6 @@ public:
 	/// the virtual base destructor
 	virtual ~MathInset() {}
 
-	/// draw the object
-	virtual void draw(Painter &, int x, int y) const;
 	/// reproduce itself
 	virtual MathInset * clone() const = 0;
 	/// substitutes macro arguments if necessary
@@ -108,6 +106,13 @@ public:
 	/// compute the size of the object, sets ascend_, descend_ and width_
 	// updates the (xo,yo)-caches of all contained cells
 	virtual void metrics(MathMetricsInfo const & st) const;
+	/// draw the object
+	virtual void draw(Painter &, int x, int y) const;
+	/// the ascent of the inset above the baseline
+	/// compute the size of the object for text based drawing
+	virtual void metrics(TextMetricsInfo const & st) const;
+	/// draw the object as text
+	virtual void draw(TextPainter &, int x, int y) const;
 	/// the ascent of the inset above the baseline
 	virtual int ascent() const { return 1; }
 	/// the descent of the inset below the baseline
@@ -175,6 +180,8 @@ public:
 	virtual int cellXOffset(idx_type) const { return 0; }
 	/// any additional y-offset when drawing a cell?
 	virtual int cellYOffset(idx_type) const { return 0; }
+	/// can we enter this cell?
+	virtual bool validCell(idx_type) const { return true; }
 
 	/// identifies certain types of insets
 	virtual MathArrayInset         * asArrayInset()         { return 0; }

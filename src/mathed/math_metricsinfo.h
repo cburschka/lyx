@@ -1,7 +1,8 @@
-#ifndef MATH_METRICSINFO
-#define MATH_METRICSINFO
+#ifndef MATH_METRICSINFO_H
+#define MATH_METRICSINFO_H
 
 #include "lyxfont.h"
+#include "textpainter.h"
 
 class BufferView;
 class MathNestInset;
@@ -36,6 +37,17 @@ struct MathMetricsInfo {
 	LyXFont font;
 	///
 	MathStyles style;
+	/// used to pass some info down
+	MathNestInset const * inset;
+	///
+	int idx;
+};
+
+
+struct TextMetricsInfo {
+	///
+	TextMetricsInfo()
+		{}
 	/// used to pass some info down
 	MathNestInset const * inset;
 	///

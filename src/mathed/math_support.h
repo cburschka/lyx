@@ -7,6 +7,7 @@
 #include "LString.h"
 
 class Painter;
+class TextPainter;
 class latexkeys;
 class MathMetricsInfo;
 class MathInset;
@@ -44,6 +45,11 @@ int mathed_string_descent(MathTextCodes type, MathMetricsInfo const & size,
 void drawStr(Painter & pain, MathTextCodes type, MathMetricsInfo const & siz,
 	int x, int y, string const & s);
 void drawChar(Painter & pain, MathTextCodes type, MathMetricsInfo const & siz,
+	int x, int y, char c);
+
+void drawStr(TextPainter & p, MathTextCodes type, MathMetricsInfo const & siz,
+	int x, int y, string const & s);
+void drawChar(TextPainter & p, MathTextCodes type, MathMetricsInfo const & siz,
 	int x, int y, char c);
 
 void math_font_max_dim(MathTextCodes code, MathMetricsInfo const & siz,

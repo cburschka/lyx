@@ -206,6 +206,19 @@ void MathInset::draw(Painter &, int, int) const
 }
 
 
+void MathInset::metrics(TextMetricsInfo const & mi) const
+{
+	lyxerr << "MathInset::metrics(Text) called directly!\n";
+}
+
+
+void MathInset::draw(TextPainter &, int, int) const
+{
+	lyxerr << "MathInset::draw(Text) called directly!\n";
+}
+
+
+
 void MathInset::write(WriteStream &) const
 {
 	lyxerr << "MathInset::write() called directly!\n";

@@ -7,6 +7,7 @@
 #include "math_scriptinset.h"
 #include "math_support.h"
 #include "Painter.h"
+#include "textpainter.h"
 #include "debug.h"
 
 
@@ -95,6 +96,62 @@ void MathXArray::draw(Painter & pain, int x, int y) const
 		pain.rectangle(x, y - ascent_, width_, height(), LColor::mathline);
 		return;
 	}
+
+	for (; it != et; ++it) {
+		MathInset const * p = it->nucleus();
+		MathScriptInset const * q = (it + 1 == et) ? 0 : asScript(it);
+		if (q) {
+			q->draw(p, pain, x, y);
+			x += q->width2(p);
+			++it;
+		} else {
+			p->draw(pain, x, y);
+			x += p->width();
+		}
+	}
+}
+
+
+void MathXArray::metrics(TextMetricsInfo const & mi) const
+{
+	//if (clean_)
+	//	return;
+
+	ascent_  = 0;
+	descent_ = 0;
+	width_   = 0;
+
+	for (const_iterator it = begin(); it != end(); ++it) {
+		MathInset const * p = it->nucleus();
+		MathScriptInset const * q = (it + 1 == end()) ? 0 : asScript(it);
+		if (q) {
+			q->metrics(p, mi);
+			ascent_  = max(ascent_,  q->ascent2(p));
+			descent_ = max(descent_, q->descent2(p));
+			width_  += q->width2(p);	
+			++it;
+		} else {
+			p->metrics(mi);
+			ascent_  = max(ascent_,  p->ascent());
+			descent_ = max(descent_, p->descent());
+			width_  += p->width();	
+		}
+	}
+}
+
+
+void MathXArray::draw(TextPainter & pain, int x, int y) const
+{
+	//if (drawn_ && x == xo_ && y == yo_)
+	//	return;
+
+	//lyxerr << "x: " << x << " y: " << y << " " << pain.workAreaHeight() << endl;
+
+	xo_    = x;
+	yo_    = y;
+	drawn_ = true;
+
+	const_iterator it = begin(), et = end();
 
 	for (; it != et; ++it) {
 		MathInset const * p = it->nucleus();

@@ -199,6 +199,20 @@ void MathHullInset::draw(Painter & pain, int x, int y) const
 }
 
 
+void MathHullInset::metrics(TextMetricsInfo const & mi) const
+{
+	ascent_  = 1;
+	descent_ = 0;
+	width_   = normalName(objtype_).size();
+}
+
+
+void MathHullInset::draw(TextPainter & pain, int x, int y) const
+{
+	pain.draw(x, y, normalName(objtype_).c_str());
+}
+
+
 string MathHullInset::label(row_type row) const
 {
 	row_type n = nrows();

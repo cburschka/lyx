@@ -28,11 +28,19 @@ public:
 	void metrics(MathMetricsInfo const & st) const;
 	///
 	void draw(Painter &, int x, int y) const;
+	///
+	void metrics(TextMetricsInfo const & st) const;
+	///
+	void draw(TextPainter &, int x, int y) const;
 
 	///
 	void metrics(MathInset const * nuc, MathMetricsInfo const & st) const;
 	///
 	void draw(MathInset const * nuc, Painter &, int x, int y) const;
+	///
+	void metrics(MathInset const * nuc, TextMetricsInfo const & st) const;
+	///
+	void draw(MathInset const * nuc, TextPainter &, int x, int y) const;
 	///
 	int ascent2(MathInset const * nuc) const;
 	///
@@ -44,6 +52,8 @@ public:
 	bool idxLeft(idx_type &, pos_type &) const;
 	///
 	bool idxRight(idx_type &, pos_type &) const;
+	/// can we enter this cell?
+	bool validCell(idx_type i) const { return script_[i]; }
 
 	/// identifies scriptinsets
 	MathScriptInset const * asScriptInset() const;

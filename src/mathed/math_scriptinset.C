@@ -201,6 +201,24 @@ void MathScriptInset::metrics(MathInset const * nuc,
 }
 
 
+void MathScriptInset::metrics(TextMetricsInfo const & mi) const
+{	
+	metrics(0, mi);
+}
+
+
+void MathScriptInset::metrics(MathInset const * nuc,
+	TextMetricsInfo const & mi) const
+{	
+	MathNestInset::metrics(mi_);
+	if (nuc)
+		nuc->metrics(mi);
+	//ascent_  = ascent2(nuc);
+	//descent_ = descent2(nuc);
+	//width_   = width2(nuc);
+}
+
+
 void MathScriptInset::draw(Painter & pain, int x, int y) const
 {  
 	//lyxerr << "unexpected call to MathScriptInset::draw()\n";
@@ -213,7 +231,7 @@ void MathScriptInset::draw(MathInset const * nuc, Painter & pain,
 {  
 	if (nuc)
 		nuc->draw(pain, x + dxx(nuc), y);
-	else if (editing())
+	else // if (editing())
 		drawStr(pain, LM_TC_TEX, mi_, x + dxx(nuc), y, ".");
 
 	if (hasUp())
@@ -222,6 +240,25 @@ void MathScriptInset::draw(MathInset const * nuc, Painter & pain,
 	if (hasDown())
 		down().draw(pain, x + dx0(nuc), y + dy0(nuc));
 }
+
+void MathScriptInset::draw(TextPainter & pain, int x, int y) const
+{  
+	//lyxerr << "unexpected call to MathScriptInset::draw()\n";
+	draw(0, pain, x, y);
+}
+
+
+void MathScriptInset::draw(MathInset const * nuc, TextPainter & pain,
+	int x, int y) const
+{  
+	if (nuc)
+		nuc->draw(pain, x + dxx(nuc), y);
+	if (hasUp())
+		up().draw(pain, x + dx1(nuc), y - dy1(nuc));
+	if (hasDown())
+		down().draw(pain, x + dx0(nuc), y + dy0(nuc));
+}
+
 
 
 bool MathScriptInset::hasLimits(MathInset const * nuc) const
@@ -251,8 +288,10 @@ bool MathScriptInset::hasLimits(MathInset const * nuc) const
 void MathScriptInset::removeEmptyScripts()
 {
 	for (int i = 0; i <= 1; ++i)
-		if (script_[i] && !cell(i).size())
+		if (script_[i] && cell(i).size() == 0) {
+			cell(i).clear();
 			script_[i] = false;
+		}
 }
 
 

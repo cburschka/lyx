@@ -203,14 +203,9 @@ void MathCursor::pushRight(MathAtom & t)
 
 bool MathCursor::popLeft()
 {
-	//cerr << "Leaving atom "; par()->write(cerr, false); cerr << " left\n";
+	//cerr << "Leaving atom to the left\n";
 	if (Cursor_.size() <= 1)
 		return false;
-	if (par()->asScriptInset()) {
-		par()->asScriptInset()->removeEmptyScripts();
-		if (par()->asScriptInset()->empty())
-			plainErase();
-	}
 	Cursor_.pop_back();
 	return true;
 }
@@ -221,11 +216,6 @@ bool MathCursor::popRight()
 	//cerr << "Leaving atom "; par()->write(cerr, false); cerr << " right\n";
 	if (Cursor_.size() <= 1)
 		return false;
-	if (par()->asScriptInset()) {
-		par()->asScriptInset()->removeEmptyScripts();
-		if (par()->asScriptInset()->empty())
-			plainErase();
-	}
 	Cursor_.pop_back();
 	posRight();
 	return true;
@@ -973,6 +963,19 @@ void MathCursor::normalize()
 		lyxerr << "\n";
 		dump("error 4");
 	}
+	pos() = min(pos(), size());
+
+	// remove empty scripts if possible
+	for (pos_type i = 0; i < size(); ++i) {
+		MathScriptInset * p = array().at(i)->asScriptInset();
+		if (p) {
+			p->removeEmptyScripts();
+			if (p->empty())
+				array().erase(i);
+		}
+	}
+
+	// fix again position
 	pos() = min(pos(), size());
 }
 

@@ -13,6 +13,7 @@
 #endif
 
 class Painter;
+class TextPainter;
 
 
 /** This class extends a MathArray by drawing routines and caches for
@@ -32,6 +33,10 @@ public:
 	void metrics(MathMetricsInfo const & st) const;
 	/// redraw cell using cache metrics information
 	void draw(Painter & pain, int x, int y) const;
+	/// rebuild cached metrics information
+	void metrics(TextMetricsInfo const & st) const;
+	/// redraw cell using cache metrics information
+	void draw(TextPainter & pain, int x, int y) const;
 	/// mark cell for re-drawing
 	void touch() const;
 

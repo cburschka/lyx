@@ -47,6 +47,7 @@
 #include "math_pos.h"
 #include "math_spaceinset.h"
 #include "undo_funcs.h"
+#include "textpainter.h"
 #include "frontends/Dialogs.h"
 #include "intl.h"
 
@@ -460,6 +461,12 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		break;
 
 	case LFUN_TAB:
+		if (0) {
+			TextMetricsInfo mi;
+			par()->metrics(mi);
+			TextPainter tpain(par()->width(), par()->height());
+			par()->draw(tpain, 0, par()->ascent());
+		}
 		mathcursor->idxNext();
 		updateLocal(bv, false);
 		break;
