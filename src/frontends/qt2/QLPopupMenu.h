@@ -15,8 +15,11 @@
 
 #include <qpopupmenu.h>
 
+#include "funcrequest.h"
+
 #include "support/std_string.h"
 
+#include <vector>
 #include <utility>
 
 class MenuBackend;
@@ -43,12 +46,19 @@ public:
 public slots:
 	/// populate the toplevel menu and all children
 	void showing();
+	///
+	void fire(int);
 private:
 	/// our owning menubar
 	QLMenubar * owner_;
 
 	/// the name of this menu
 	string name_;
+
+	///
+	typedef std::vector<FuncRequest> Funcs;
+	///
+	Funcs funcs_;
 };
 
 #endif // QLPOPUPMENU_H

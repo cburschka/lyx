@@ -264,14 +264,8 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 				   << argument << "']" << endl;
 		}
 	} else {
-		dispatch(action);
+		dispatch(FuncRequest(kb_action(action)));
 	}
-}
-
-
-FuncStatus LyXFunc::getStatus(int ac) const
-{
-	return getStatus(lyxaction.retrieveActionArg(ac));
 }
 
 
@@ -809,7 +803,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	// solution, we consider only the first action of the sequence
 	if (ev.action == LFUN_SEQUENCE) {
 		// argument contains ';'-terminated commands
-		flag = getStatus(lyxaction.LookupFunc(token(ev.argument, ';', 0)));
+		flag = getStatus(FuncRequest(lyxaction.LookupFunc(token(ev.argument, ';', 0))));
 	}
 
 	return flag;
@@ -825,14 +819,9 @@ void LyXFunc::dispatch(string const & s, bool verbose)
 		return;
 	}
 
-	dispatch(action, verbose);
+	dispatch(FuncRequest(kb_action(action)), verbose);
 }
 
-
-void LyXFunc::dispatch(int ac, bool verbose)
-{
-	dispatch(lyxaction.retrieveActionArg(ac), verbose);
-}
 
 namespace {
 	bool ensureBufferClean(BufferView * bv) {
@@ -1093,7 +1082,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		meta_fake_bit = key_modifier::none;
 		if (view()->available())
 			// cancel any selection
-			dispatch(LFUN_MARK_OFF);
+			dispatch(FuncRequest(LFUN_MARK_OFF));
 		setMessage(N_("Cancel"));
 		break;
 
@@ -1715,22 +1704,16 @@ void LyXFunc::sendDispatchMessage(string const & msg, FuncRequest const & ev, bo
 
 	string comname = lyxaction.getActionName(ev.action);
 
-	int pseudoaction = ev.action;
 	bool argsadded = false;
 
 	if (!ev.argument.empty()) {
-		// the pseudoaction is useful for the bindings
-		pseudoaction = lyxaction.searchActionArg(ev.action, ev.argument);
-
-		if (pseudoaction == LFUN_UNKNOWN_ACTION) {
-			pseudoaction = ev.action;
-		} else {
+		if (ev.action != LFUN_UNKNOWN_ACTION) {
 			comname += ' ' + ev.argument;
 			argsadded = true;
 		}
 	}
 
-	string const shortcuts = toplevel_keymap->findbinding(pseudoaction);
+	string const shortcuts = toplevel_keymap->findbinding(ev.action);
 
 	if (!shortcuts.empty()) {
 		comname += ": " + shortcuts;

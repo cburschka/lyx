@@ -47,10 +47,9 @@ void TocItem::goTo(LyXView & lv_) const
 }
 
 
-int TocItem::action() const
+FuncRequest TocItem::action() const
 {
-	return lyxaction.getPseudoAction(LFUN_GOTO_PARAGRAPH,
-					 tostr(id_));
+	return FuncRequest(LFUN_GOTO_PARAGRAPH, tostr(id_));
 }
 
 

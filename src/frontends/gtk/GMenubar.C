@@ -137,7 +137,7 @@ bool GMenubar::submenuDisabled(MenuItem const * item)
 		case MenuItem::Command:
 		{
 			FuncStatus const flag =
-				view_->getLyXFunc().getStatus(i->action());
+				view_->getLyXFunc().getStatus(i->func());
 			if (!flag.disabled())
 				return false;
 			break;
@@ -180,7 +180,7 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 		case MenuItem::Command:
 		{
 			FuncStatus const flag =
-				view_->getLyXFunc().getStatus(i->action());
+				view_->getLyXFunc().getStatus(i->func());
 			bool on, off;
 			on = flag.onoff(true);
 			off = flag.onoff(false);
@@ -224,5 +224,5 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 void GMenubar::onCommandActivate(MenuItem const * item,
 				       Gtk::MenuItem * /*gitem*/)
 {
-	view_->getLyXFunc().dispatch(item->action(), true);
+	view_->getLyXFunc().dispatch(item->func(), true);
 }

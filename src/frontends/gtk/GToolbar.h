@@ -17,6 +17,7 @@
 #include "ToolbarBackend.h"
 #include "support/std_string.h"
 
+
 class GToolbar : public Toolbar, public SigC::Object
 {
 public:
@@ -29,8 +30,7 @@ public:
 
 	/// add a new button to the toolbar.
 	void add(Gtk::Toolbar * toolbar,
-		 int action,
-		 string const & tooltip);
+		 ToolbarBackend::Item const & item);
 
 	/// display toolbar, not implemented
 	void displayToolbar(ToolbarBackend::Toolbar const & tb, bool show);
@@ -50,7 +50,7 @@ public:
 	/// Erase the layout list
 	void clearLayoutList();
 private:
-	void onButtonClicked(int action);
+	void onButtonClicked(FuncRequest);
 	void onLayoutSelected();
 	Gtk::VBox vbox_;
 	std::vector<Gtk::Toolbar*> toolbars_;

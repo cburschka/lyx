@@ -36,7 +36,7 @@ public:
 	void add(ToolbarBackend::Toolbar const & tb);
 
 	/// add an item to a toolbar
-	void add(int action, string const & tooltip);
+	void add(FuncRequest const &, string const & tooltip);
 
 	/// display toolbar, not implemented
 	void displayToolbar(ToolbarBackend::Toolbar const & tb, bool show);
@@ -67,11 +67,15 @@ public:
 		/// deallocate icon
 		void kill_icon();
 
-		/// lyx action number
-		int action;
+		/// lyx action
+		FuncRequest func;
 		/// icon for this item
 		FL_OBJECT * icon;
 	};
+
+	typedef std::vector<FuncRequest> Funcs;
+
+	Funcs funcs;
 
 	typedef std::vector<toolbarItem> ToolbarList;
 

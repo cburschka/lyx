@@ -13,13 +13,14 @@
 #ifndef MENUBACKEND_H
 #define MENUBACKEND_H
 
+#include "FuncStatus.h"
+#include "funcrequest.h"
+
 #include "support/std_string.h"
 
 #include <boost/shared_ptr.hpp>
 
 #include <vector>
-
-#include "FuncStatus.h"
 
 class LyXLex;
 class LyXView;
@@ -68,14 +69,17 @@ public:
 		/** Available branches in document */
 		Branches
 	};
-	/// Create a Command type MenuItem
-	MenuItem(Kind kind,
-		 string const & label = string(),
-		 string const & command = string(),
-		 bool optional = false);
+
+	explicit MenuItem(Kind kind);
+
 	MenuItem(Kind kind,
 		 string const & label,
-		 int action,
+		 string const & command = string(),
+		 bool optional = false);
+
+	MenuItem(Kind kind,
+		 string const & label,
+		 FuncRequest const & func,
 		 bool optional = false);
 
 	/// This one is just to please boost::shared_ptr<>
@@ -89,7 +93,7 @@ public:
 	/// The kind of entry
 	Kind kind() const { return kind_; }
 	/// the action (if relevant)
-	int action() const { return action_; }
+	FuncRequest const & func() const { return func_; }
 	/// returns true if the entry should be ommited when disabled
 	bool optional() const { return optional_; }
 	/// returns the status of the lfun associated with this entry
@@ -116,7 +120,7 @@ private:
 	///
 	string label_;
 	///
-	int action_;
+	FuncRequest func_;
 	///
 	string submenuname_;
 	///

@@ -49,9 +49,6 @@ public:
 	/// Dispatch via a string argument
 	void dispatch(string const & s, bool verbose = false);
 
-	/// Dispatch via a pseudo action, also displaying shortcut/command name
-	void dispatch(int ac, bool verbose = false);
-
 	/// return the status bar state string
 	string const view_status_message();
 
@@ -60,9 +57,6 @@ public:
 	///
 	void processKeySym(LyXKeySymPtr key, key_modifier::state state);
 
-	/// we need one internal which is called from inside LyXAction and
-	/// can contain the string argument.
-	FuncStatus getStatus(int ac) const;
 	///
 	FuncStatus getStatus(FuncRequest const & action) const;
 

@@ -127,7 +127,7 @@ void split(vector<string> & args, string str)
 }
 
 
-string FuncRequest::getArg(int i) const
+string FuncRequest::getArg(unsigned int i) const
 {
 	vector<string> args;
 	split(args, argument);

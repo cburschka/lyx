@@ -57,7 +57,7 @@ public:
 	void errorMessage(string const & msg) const;
 
 	/// argument parsing, extract argument i as string
-	string getArg(int i) const;
+	string getArg(unsigned int i) const;
 
 private:
 	/// the BufferView we are talking to

@@ -81,7 +81,7 @@ void GToolbar::add(ToolbarBackend::Toolbar const & tb)
 	ToolbarBackend::item_iterator it = tb.items.begin();
 	ToolbarBackend::item_iterator end = tb.items.end();
 	for (; it != end; ++it)
-		add(toolbar, it->first, it->second);
+		add(toolbar, *it);
 	toolbar->set_toolbar_style(Gtk::TOOLBAR_ICONS);
 	toolbar->show();
 	vbox_.children().push_back(
@@ -92,10 +92,11 @@ void GToolbar::add(ToolbarBackend::Toolbar const & tb)
 
 
 void GToolbar::add(Gtk::Toolbar * toolbar,
-			 int action,
-			 string const & tooltip)
+		   ToolbarBackend::Item const & item)
 {
-	switch (action) {
+	FuncRequest const & func = item.first;
+	string const & tooltip = item.second;
+	switch (func.action) {
 	case ToolbarBackend::SEPARATOR:
 		toolbar->tools().push_back(Gtk::Toolbar_Helpers::Space());
 		break;
@@ -109,20 +110,20 @@ void GToolbar::add(Gtk::Toolbar * toolbar,
 			Gtk::Toolbar_Helpers::Element(combo_));
 		toolbar->tools().back().get_widget()->set_data(
 			gToolData,
-			reinterpret_cast<void*>(LFUN_LAYOUT));
+			reinterpret_cast<void*>(&const_cast<ToolbarBackend::Item&>(item)));
 		break;
 	}
 	default:
 	{
 		Glib::ustring xpmName =
-			Glib::locale_to_utf8(toolbarbackend.getIcon(action));
+			Glib::locale_to_utf8(toolbarbackend.getIcon(func));
 		Glib::ustring tip = Glib::locale_to_utf8(tooltip);
 		if (xpmName.size() == 0) {
 			toolbar->tools().push_back(
 				Gtk::Toolbar_Helpers::ButtonElem(
 					"",
 					SigC::bind(SigC::slot(*this, &GToolbar::onButtonClicked),
-						   action),
+						   FuncRequest(func)),
 					tip));
 		} else {
 			Gtk::Image * image =
@@ -133,21 +134,21 @@ void GToolbar::add(Gtk::Toolbar * toolbar,
 					"",
 					*image,
 					SigC::bind(SigC::slot(*this, &GToolbar::onButtonClicked),
-						   action),
+						   FuncRequest(func)),
 					tip));
 		}
 		toolbar->tools().back().get_content()->set_data(
 			gToolData,
-			reinterpret_cast<void*>(action));
+			reinterpret_cast<void*>(&const_cast<ToolbarBackend::Item&>(item)));
 		break;
 	}
 	}
 }
 
 
-void GToolbar::onButtonClicked(int action)
+void GToolbar::onButtonClicked(FuncRequest func)
 {
-	view_->getLyXFunc().dispatch(action, true);
+	view_->getLyXFunc().dispatch(func, true);
 }
 
 
@@ -202,10 +203,11 @@ void GToolbar::update()
 			default:
 				widget = it->get_content();
 			}
-			int action = reinterpret_cast<int>(
+			ToolbarBackend::Item * item =
+			reinterpret_cast<ToolbarBackend::Item*>(
 				widget->get_data(gToolData));
 			FuncStatus const status = view_->
-				getLyXFunc().getStatus(action);
+				getLyXFunc().getStatus(item->first);
 			bool sensitive = !status.disabled();
 			widget->set_sensitive(sensitive);
 			if (it->get_type() != Gtk::TOOLBAR_CHILD_BUTTON)

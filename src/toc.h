@@ -22,6 +22,7 @@
 class Buffer;
 class LyXView;
 class Paragraph;
+class FuncRequest;
 
 /** Nice functions and objects to handle TOCs
  */
@@ -37,7 +38,7 @@ struct TocItem {
 	/// set cursor in LyXView to this TocItem
 	void goTo(LyXView & lv_) const;
 	/// the action corresponding to the goTo above
-	int action() const;
+	FuncRequest action() const;
 	/// Paragraph ID containing this item
 	int id_;
 	/// nesting depth

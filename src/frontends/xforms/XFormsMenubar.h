@@ -12,6 +12,7 @@
 #ifndef XFORMSMENUBAR_H
 #define XFORMSMENUBAR_H
 
+#include "funcrequest.h"
 #include "frontends/Menubar.h"
 
 #include <boost/shared_ptr.hpp>
@@ -22,6 +23,7 @@
 #include "support/std_string.h"
 #include <vector>
 
+
 class LyXView;
 class XFormsView;
 class Menu;
@@ -30,6 +32,8 @@ class MenuBackend;
 
 class XFormsMenubar : public Menubar {
 public:
+	///
+	typedef std::vector<FuncRequest> Funcs;
 	///
 	XFormsMenubar(LyXView *, MenuBackend const &);
 	///
@@ -53,7 +57,8 @@ private:
 			    std::vector<int> & smn, Window win);
 	///
 	int create_submenu(Window win, XFormsView * view,
-			   Menu const & menu, std::vector<int> & smn);
+			   Menu const & menu,
+			   std::vector<int> & smn, Funcs & funcs);
 
 	//
 	void makeMenubar(Menu const & menu);

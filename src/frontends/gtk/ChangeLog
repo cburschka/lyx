@@ -1,5 +1,14 @@
 2003-09-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* GToolbar.C (add): Make it take a ToobarBackend::Item as arg,
+	adjust.
+	(onButtonClicked): take a FuncRequest
+	(update): adjust
+
+	* GMenubar.C (submenuDisabled): pass FuncRequest to getStatus.
+	(onSubMenuActivate): ditto
+	(onCommandActivate): pass MenuItem::func to dispatch
+
 	* LyXKeySymFactory.C (create): fix new bug
 
 	* GView.C (GView): fix new bug

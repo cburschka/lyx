@@ -44,12 +44,6 @@ public:
 	typedef std::map<string, kb_action> func_map;
 	/// type for map between an action and its info
 	typedef std::map<kb_action, func_info> info_map;
-	/// type for a map between a pseudo-action and its stored action/arg
-	typedef std::map<unsigned int, FuncRequest> pseudo_map;
-	/// map from argument to pseudo-action
-	typedef std::map<string, unsigned int> arg_item;
-	/// map from an action to all its dependent pseudo-actions
-	typedef std::map<kb_action, arg_item> arg_map;
 
 	/// possible "permissions" for an action
 	enum func_attrib {
@@ -66,19 +60,7 @@ public:
 	 * If you include arguments in func_name, a new pseudoaction
 	 * will be created if needed.
 	 */
-	int LookupFunc(string const & func_name);
-
-	/// Returns a pseudo-action given an action and its argument.
-	int getPseudoAction(kb_action action, string const & arg);
-
-	/**
-	 * Given a pseudo-action, return the real action and
-	 * associated argument
-	 */
-	FuncRequest retrieveActionArg(int pseudo) const;
-
-	/// Search for an existent pseudoaction, return -1 if it doesn't exist.
-	int searchActionArg(kb_action action, string const & arg) const;
+	kb_action LookupFunc(string const & func_name);
 
 	/// Return the name (and argument) associated with the given (pseudo) action
 	string const getActionName(int action) const;
@@ -114,18 +96,6 @@ private:
 	 * command attributes (ro)
 	 */
 	info_map lyx_info_map;
-
-	/**
-	 * A mapping from the automatically created pseudo action number
-	 * to the real action and its argument.
-	 */
-	pseudo_map lyx_pseudo_map;
-
-	/**
-	 * A (multi) mapping from the lyx action to all the generated
-	 * pseudofuncs and the arguments the action should use.
-	 */
-	arg_map lyx_arg_map;
 };
 
 /// singleton instance

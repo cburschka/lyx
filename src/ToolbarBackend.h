@@ -13,11 +13,14 @@
 #ifndef TOOLBAR_BACKEND_H
 #define TOOLBAR_BACKEND_H
 
+#include "funcrequest.h"
+
 #include <vector>
 
 #include "support/std_string.h"
 
 class LyXLex;
+
 
 ///
 class ToolbarBackend {
@@ -33,10 +36,10 @@ public:
 	};
 
 	/// action, tooltip
-	typedef std::pair<int, string> Item;
+	typedef std::pair<FuncRequest, string> Item;
 
 	/// the toolbar items
-	typedef std::vector<std::pair<int, string> > Items;
+	typedef std::vector<Item> Items;
 
 	/// toolbar flags
 	enum Flags {
@@ -82,14 +85,12 @@ public:
 	void readToolbars(LyXLex &);
 
 	/// return a full path of an XPM for the given action
-	static string const getIcon(int action);
+	static string const getIcon(FuncRequest const &);
 
 private:
 	/// add the given lfun with tooltip if relevant
-	void add(Toolbar & tb, int, string const & tooltip = string());
-
-	/// add the given lfun with tooltip if relevant
-	void add(Toolbar & tb, string const &, string const & tooltip);
+	void add(Toolbar & tb, FuncRequest const &,
+		 string const & tooltip = string());
 
 	/// all the toolbars
 	Toolbars toolbars;

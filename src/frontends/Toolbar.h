@@ -32,7 +32,7 @@ public:
 	virtual ~Toolbar();
 
 	/// Initialize toolbar from backend
- 	void init();
+	void init();
 
 	/// update the state of the toolbars
 	void update(bool in_math, bool in_table);

@@ -1,5 +1,42 @@
 2003-09-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* toc.C (action): return a FuncRequest, simplify
+
+	* lyxfunc.C (processKeySym): adjust
+	(getStatus): delete version that takes an int.
+	(getStatus): adjust
+	(dispatch): delete version that takes action as int
+	(dispatch): adjust
+	(sendDispatchMessage): simplify and adjust
+
+	* funcrequest.C (getArg): take unsigned int as arg
+
+	* ToolbarBackend.C (read): adjust
+	(add): delete version that takes func as a string.
+	(getIton): take a FuncRequest as arg
+
+	* MenuBackend.h (MenuItem): store a FuncRequest instead of an int
+	action.
+
+	* MenuBackend.C (MenuItem): add a new construct that only takes a
+	Kind, simplify the constructor use for submenus.
+	(add): adjust
+	(expandLastfiles): adjust
+	(expandDocuments): adjust
+	(expandFormats): adjust
+	(expandFloatListInsert): adjust
+	(expandFloatInsert): adjust
+	(expandToc2,expandToc,expandPasteRecent,expandBranches): adjust
+
+	* LyXAction.h: remove typdefs pseudo_map, arg_item and arg_map.
+	Remove class variables lyx_pseudo_map and lyx_arg_map
+
+	* LyXAction.C (searchActionArg): delete function
+	(getPseudoAction): delete function
+	(retrieveActionArg): delete function
+	(LookupFunc): make it return kb_action, simplify.
+	(getActionName): simplify
+
 	* factory.C (createInset): fix new bug
 
 2003-09-19  Angus Leeming  <leeming@lyx.org>

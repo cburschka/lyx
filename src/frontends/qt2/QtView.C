@@ -129,9 +129,9 @@ void QtView::update_view_state()
 }
 
 
-void QtView::activated(int id)
+void QtView::activated(FuncRequest const & func)
 {
-	getLyXFunc().dispatch(id, true);
+	getLyXFunc().dispatch(func, true);
 }
 
 

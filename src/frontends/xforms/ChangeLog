@@ -1,5 +1,11 @@
 2003-09-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* XFormsToolbar.C: adjust
+
+	* XFormsMenubar.C (create_submenu): change to update a cache of
+	FuncRequest for the MenuItems.
+	(MenuCallback): adjust
+
 	* lyx_gui.C (parse_init): fix new bug
 
 	* XFormsToolbar.C (XFormsToolbar): fix new bug

@@ -89,24 +89,43 @@ void ToolbarBackend::read(LyXLex & lex)
 			if (lex.next(true)) {
 				string const tooltip = _(lex.getString());
 				lex.next(true);
-				string const func = lex.getString();
+				string const func_arg = lex.getString();
 				lyxerr[Debug::PARSER]
 					<< "ToolbarBackend::read TO_ADD func: `"
-					<< func << '\'' << endl;
-				add(tb, func, tooltip);
+					<< func_arg << '\'' << endl;
+				// Split func_arg in function and arg.
+				string::size_type sp = func_arg.find(' ');
+				if (sp != string::npos) {
+
+					string const func =
+						func_arg.substr(0, sp);
+					string const arg =
+					     func_arg.substr(sp + 1,
+							     string::npos);
+
+					kb_action const tf =
+						lyxaction.LookupFunc(func);
+
+					add(tb, FuncRequest(tf, arg), tooltip);
+				} else {
+					kb_action const tf = lyxaction.LookupFunc(func_arg);
+					add(tb, FuncRequest(tf), tooltip);
+
+				}
+
 			}
 			break;
 
 		case TO_MINIBUFFER:
-			add(tb, MINIBUFFER);
+			add(tb, FuncRequest(kb_action(MINIBUFFER)));
 			break;
 
 		case TO_SEPARATOR:
-			add(tb, SEPARATOR);
+			add(tb, FuncRequest(kb_action(SEPARATOR)));
 			break;
 
 		case TO_LAYOUTS:
-			add(tb, LAYOUTS);
+			add(tb, FuncRequest(kb_action(LAYOUTS)));
 			break;
 
 		case TO_ENDTOOLBAR:
@@ -193,29 +212,16 @@ void ToolbarBackend::readToolbars(LyXLex & lex)
 }
 
 
-void ToolbarBackend::add(Toolbar & tb, int action, string const & tooltip)
+void ToolbarBackend::add(Toolbar & tb,
+			 FuncRequest const & func, string const & tooltip)
 {
-	tb.items.push_back(make_pair(action, tooltip));
+	tb.items.push_back(make_pair(func, tooltip));
 }
 
 
-void ToolbarBackend::add(Toolbar & tb, string const & func, string const & tooltip)
-{
-	int const tf = lyxaction.LookupFunc(func);
-
-	if (tf == -1) {
-		lyxerr << "ToolbarBackend::add: no LyX command called `"
-		       << func << "' exists!" << endl;
-	} else {
-		add(tb, tf, tooltip);
-	}
-}
-
-
-string const ToolbarBackend::getIcon(int action)
+string const ToolbarBackend::getIcon(FuncRequest const & f)
 {
 	string fullname;
-	FuncRequest f = lyxaction.retrieveActionArg(action);
 
 	if (f.action == LFUN_INSERT_MATH) {
 		if (!f.argument.empty())
@@ -245,6 +251,6 @@ string const ToolbarBackend::getIcon(int action)
 
 	lyxerr[Debug::GUI] << "Cannot find icon for command \""
 			   << lyxaction.getActionName(f.action)
-			   << ' ' << f.argument << '"' << endl;
+			   << '(' << f.argument << ")\"" << endl;
 	return LibFileSearch("images", "unknown", "xpm");
 }

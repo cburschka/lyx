@@ -41,7 +41,7 @@ public:
 	void add(ToolbarBackend::Toolbar const & tb);
 
 	/// add an item to a toolbar
-	void add(QToolBar * tb, int action, string const & tooltip);
+	void add(QToolBar * tb, FuncRequest const &, string const & tooltip);
 
 	/// show or hide a toolbar
 	void displayToolbar(ToolbarBackend::Toolbar const & tb, bool show);
@@ -70,7 +70,7 @@ private:
 
 	QLComboBox * combo_;
 
-	typedef std::map<QToolButton *, int> ButtonMap;
+	typedef std::map<QToolButton *, FuncRequest> ButtonMap;
 
 	ButtonMap map_;
 };

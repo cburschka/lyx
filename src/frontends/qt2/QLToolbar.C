@@ -62,17 +62,17 @@ void QLToolbar::update()
 
 	for (; p != end; ++p) {
 		QToolButton * button = p->first;
-		int action = p->second;
+		FuncRequest const & func = p->second;
 
 		FuncStatus const status =
-			owner_->getLyXFunc().getStatus(action);
+			owner_->getLyXFunc().getStatus(func);
 
 		button->setToggleButton(true);
 		button->setOn(status.onoff(true));
 		button->setEnabled(!status.disabled());
 	}
 
-	bool const enable = !owner_->getLyXFunc().getStatus(LFUN_LAYOUT).disabled();
+	bool const enable = !owner_->getLyXFunc().getStatus(FuncRequest(LFUN_LAYOUT)).disabled();
 
 	// Workaround for Qt bug where setEnabled(true) closes
 	// the popup
@@ -225,9 +225,10 @@ void QLToolbar::add(ToolbarBackend::Toolbar const & tb)
 }
 
 
-void QLToolbar::add(QToolBar * tb, int action, string const & tooltip)
+void QLToolbar::add(QToolBar * tb,
+		    FuncRequest const & func, string const & tooltip)
 {
-	switch (action) {
+	switch (func.action) {
 	case ToolbarBackend::SEPARATOR:
 		tb->addSeparator();
 		break;
@@ -247,14 +248,14 @@ void QLToolbar::add(QToolBar * tb, int action, string const & tooltip)
 		tb->setHorizontalStretchable(true);
 		break;
 	default: {
-		if (owner_->getLyXFunc().getStatus(action).unknown())
+		if (owner_->getLyXFunc().getStatus(func).unknown())
 			break;
-		QPixmap p = QPixmap(toolbarbackend.getIcon(action).c_str());
+		QPixmap p = QPixmap(toolbarbackend.getIcon(func).c_str());
 		QToolButton * button =
 			new QToolButton(p, toqstr(tooltip), "",
 			proxy_.get(), SLOT(button_selected()), tb);
 
-		map_[button] = action;
+		map_[button] = func;
 		break;
 	}
 	}

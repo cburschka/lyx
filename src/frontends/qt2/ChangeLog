@@ -1,5 +1,18 @@
 2003-09-21  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* QtView.C (activated): change to take a FuncRequest, not a slot
+	anymore. 
+
+	* QLToolbar.C (update): adjust
+	(add): change to take a FuncRequest
+
+	* QLPopupMenu.C (createMenu): constify id
+	(QLPopupMenu): connect to local class func fire instead of to
+	QtView::activated.
+	(fire): new class function
+	(populate): change to store a cache of FuncRequest for the menu
+	items, adjust
+
 	* QContentPane.C (keyPressEvent): fix new bug
 
 	* LyXKeySymFactory.C (create): fix new bug

@@ -66,45 +66,23 @@ extern boost::scoped_ptr<kb_keymap> toplevel_keymap;
 MenuBackend menubackend;
 
 
-MenuItem::MenuItem(Kind kind, string const & label,
-		   string const & command, bool optional)
-	: kind_(kind), label_(label), optional_(optional)
-{
-	switch (kind) {
-	case Separator:
-	case Documents:
-	case Lastfiles:
-	case Toc:
-	case ViewFormats:
-	case UpdateFormats:
-	case ExportFormats:
-	case ImportFormats:
-	case FloatListInsert:
-	case FloatInsert:
-	case PasteRecent:
-	case Branches:
-		break;
-	case Command:
-		action_ = lyxaction.LookupFunc(command);
+MenuItem::MenuItem(Kind kind)
+	: kind_(kind), optional_(false)
+{}
 
-		if (action_ == LFUN_UNKNOWN_ACTION) {
-			lyxerr << "MenuItem(): LyX command `"
-			       << command << "' does not exist." << endl;
-		}
-		if (optional_)
-			lyxerr[Debug::GUI] << "Optional item "
-					   << command << endl;
-		break;
-	case Submenu:
-		submenuname_ = command;
-		break;
-	}
+
+MenuItem::MenuItem(Kind kind, string const & label,
+		   string const & submenu, bool optional)
+	: kind_(kind), label_(label),
+	  submenuname_(submenu), optional_(optional)
+{
+	BOOST_ASSERT(kind == Submenu);
 }
 
 
-MenuItem::MenuItem(Kind kind, string const & label, int action, bool optional)
-	: kind_(kind), label_(label), action_(action), submenuname_(),
-	  optional_(optional)
+MenuItem::MenuItem(Kind kind, string const & label,
+		   FuncRequest const & func, bool optional)
+	: kind_(kind), label_(label), func_(func), optional_(optional)
 {}
 
 
@@ -129,6 +107,7 @@ string const MenuItem::shortcut() const
 	return token(label_, '|', 1);
 }
 
+
 string const MenuItem::binding() const
 {
 	if (kind_ != Command)
@@ -136,7 +115,7 @@ string const MenuItem::binding() const
 
 	// Get the keys bound to this action, but keep only the
 	// first one later
-	string bindings = toplevel_keymap->findbinding(action_);
+	string bindings = toplevel_keymap->findbinding(func_.action);
 
 	if (!bindings.empty()) {
 		return bindings.substr(1, bindings.find(']') - 1);
@@ -156,7 +135,7 @@ Menu & Menu::add(MenuItem const & i, LyXView const * view)
 	case MenuItem::Command:
 	{
 		FuncStatus status =
-			view->getLyXFunc().getStatus(i.action());
+			view->getLyXFunc().getStatus(i.func());
 		if (status.unknown()
 		    || (status.disabled() && i.optional()))
 			break;
@@ -259,8 +238,20 @@ Menu & Menu::read(LyXLex & lex)
 			string const name = _(lex.getString());
 			lex.next(true);
 			string const command = lex.getString();
-			add(MenuItem(MenuItem::Command, name,
-				     command, optional));
+			string::size_type sp = command.find(' ');
+			if (sp != string::npos) {
+				string const cmd = command.substr(0, sp);
+				string const arg =command.substr(sp + 1,
+								 string::npos);
+				kb_action act = lyxaction.LookupFunc(cmd);
+				add(MenuItem(MenuItem::Command, name,
+					     FuncRequest(act, arg), optional));
+			} else {
+				kb_action act = lyxaction.LookupFunc(command);
+				add(MenuItem(MenuItem::Command, name,
+					     FuncRequest(act), optional));
+			}
+
 			optional = false;
 			break;
 		}
@@ -398,10 +389,7 @@ void expandLastfiles(Menu & tomenu, LyXView const * view)
 		string const label = tostr(ii) + ". "
 			+ MakeDisplayPath((*lfit), 30)
 			+ '|' + tostr(ii);
-		int const action = lyxaction.
-			getPseudoAction(LFUN_FILE_OPEN,
-					(*lfit));
-		tomenu.add(MenuItem(MenuItem::Command, label, action), view);
+		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_FILE_OPEN, (*lfit))), view);
 	}
 }
 
@@ -412,7 +400,7 @@ void expandDocuments(Menu & tomenu, LyXView const * view)
 
 	if (names.empty()) {
 		tomenu.add(MenuItem(MenuItem::Command, _("No Documents Open!"),
-				    LFUN_NOACTION), view);
+				    FuncRequest(LFUN_NOACTION)), view);
 		return;
 	}
 
@@ -420,12 +408,10 @@ void expandDocuments(Menu & tomenu, LyXView const * view)
 	Strings::const_iterator docit = names.begin();
 	Strings::const_iterator end = names.end();
 	for (; docit != end; ++docit, ++ii) {
-		int const action =
-			lyxaction.getPseudoAction(LFUN_SWITCHBUFFER, *docit);
 		string label = MakeDisplayPath(*docit, 20);
 		if (ii < 10)
 			label = tostr(ii) + ". " + label + '|' + tostr(ii);
-		tomenu.add(MenuItem(MenuItem::Command, label, action), view);
+		tomenu.add(MenuItem(MenuItem::Command, label, FuncRequest(LFUN_SWITCHBUFFER, *docit)), view);
 	}
 }
 
@@ -434,7 +420,8 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, LyXView const * view)
 {
 	if (!view->buffer() && kind != MenuItem::ImportFormats) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    _("No Documents Open!"), LFUN_NOACTION),
+				    _("No Documents Open!"),
+				    FuncRequest(LFUN_NOACTION)),
 				    view);
 		return;
 	}
@@ -483,9 +470,9 @@ void expandFormats(MenuItem::Kind kind, Menu & tomenu, LyXView const * view)
 		}
 		if (!(*fit)->shortcut().empty())
 			label += '|' + (*fit)->shortcut();
-		int const action2 = lyxaction.
-			getPseudoAction(action,	(*fit)->name());
-		tomenu.add(MenuItem(MenuItem::Command, label, action2),
+
+		tomenu.add(MenuItem(MenuItem::Command, label,
+				    FuncRequest(action, (*fit)->name())),
 			   view);
 	}
 }
@@ -495,7 +482,8 @@ void expandFloatListInsert(Menu & tomenu, LyXView const * view)
 {
 	if (!view->buffer()) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    _("No Documents Open!"), LFUN_NOACTION),
+				    _("No Documents Open!"),
+				    FuncRequest(LFUN_NOACTION)),
 			   view);
 		return;
 	}
@@ -505,10 +493,10 @@ void expandFloatListInsert(Menu & tomenu, LyXView const * view)
 	FloatList::const_iterator cit = floats.begin();
 	FloatList::const_iterator end = floats.end();
 	for (; cit != end; ++cit) {
-		int const action =  lyxaction
-			.getPseudoAction(LFUN_FLOAT_LIST, cit->second.type());
 		tomenu.add(MenuItem(MenuItem::Command,
-				    _(cit->second.listName()), action),
+				    _(cit->second.listName()),
+				    FuncRequest(LFUN_FLOAT_LIST,
+						cit->second.type())),
 			   view);
 	}
 }
@@ -518,7 +506,8 @@ void expandFloatInsert(Menu & tomenu, LyXView const * view)
 {
 	if (!view->buffer()) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    _("No Documents Open!"), LFUN_NOACTION),
+				    _("No Documents Open!"),
+				    FuncRequest(LFUN_NOACTION)),
 			   view);
 		return;
 	}
@@ -529,11 +518,10 @@ void expandFloatInsert(Menu & tomenu, LyXView const * view)
 	FloatList::const_iterator end = floats.end();
 	for (; cit != end; ++cit) {
 		// normal float
-		int const action =
-			lyxaction.getPseudoAction(LFUN_INSET_FLOAT,
-						  cit->second.type());
 		string const label = _(cit->second.name());
-		tomenu.add(MenuItem(MenuItem::Command, label, action),
+		tomenu.add(MenuItem(MenuItem::Command, label,
+				    FuncRequest(LFUN_INSET_FLOAT,
+						cit->second.type())),
 			   view);
 	}
 }
@@ -549,14 +537,14 @@ void expandToc2(Menu & tomenu,
 	int shortcut_count = 0;
 	if (to - from <= max_number_of_items) {
 		for (lyx::toc::Toc::size_type i = from; i < to; ++i) {
-			int const action = toc_list[i].action();
 			string label(4 * max(0, toc_list[i].depth - depth),' ');
 			label += limit_string_length(toc_list[i].str);
 			if (toc_list[i].depth == depth
 			    && ++shortcut_count <= 9) {
 				label += '|' + tostr(shortcut_count);
 			}
-			tomenu.add(MenuItem(MenuItem::Command, label, action));
+			tomenu.add(MenuItem(MenuItem::Command, label,
+					    FuncRequest(toc_list[i].action())));
 		}
 	} else {
 		lyx::toc::Toc::size_type pos = from;
@@ -566,7 +554,6 @@ void expandToc2(Menu & tomenu,
 			       toc_list[new_pos].depth > depth)
 				++new_pos;
 
-			int const action = toc_list[pos].action();
 			string label(4 * max(0, toc_list[pos].depth - depth), ' ');
 			label += limit_string_length(toc_list[pos].str);
 			if (toc_list[pos].depth == depth &&
@@ -575,7 +562,7 @@ void expandToc2(Menu & tomenu,
 
 			if (new_pos == pos + 1) {
 				tomenu.add(MenuItem(MenuItem::Command,
-						    label, action));
+						    label, FuncRequest(toc_list[pos].action())));
 			} else {
 				MenuItem item(MenuItem::Submenu, label);
 				item.submenu(new Menu);
@@ -598,7 +585,8 @@ void expandToc(Menu & tomenu, LyXView const * view)
 
 	if (!view->buffer()) {
 		tomenu.add(MenuItem(MenuItem::Command,
-				    _("No Documents Open!"), LFUN_NOACTION),
+				    _("No Documents Open!"),
+				    FuncRequest(LFUN_NOACTION)),
 			   view);
 		return;
 	}
@@ -618,7 +606,8 @@ void expandToc(Menu & tomenu, LyXView const * view)
 		for (; ccit != eend; ++ccit) {
 			string const label = limit_string_length(ccit->str);
 			menu->add(MenuItem(MenuItem::Command,
-					   label, ccit->action()));
+					   label,
+					   FuncRequest(ccit->action())));
 		}
 		string const & floatName = cit->first;
 		// Is the _(...) really needed here? (Lgb)
@@ -651,9 +640,8 @@ void expandPasteRecent(Menu & tomenu, LyXView const * view)
 	vector<string>::const_iterator end = selL.end();
 
 	for (unsigned int index = 0; cit != end; ++cit, ++index) {
-		int const action = lyxaction.getPseudoAction(LFUN_PASTE,
-							     tostr(index));
-		tomenu.add(MenuItem(MenuItem::Command, *cit, action));
+		tomenu.add(MenuItem(MenuItem::Command, *cit,
+				    FuncRequest(LFUN_PASTE, tostr(index))));
 	}
 }
 
@@ -670,12 +658,11 @@ void expandBranches(Menu & tomenu, LyXView const * view)
 
 	for (int ii = 1; cit != end; ++cit, ++ii) {
 		string label = cit->getBranch();
-		int const action = lyxaction.
-			getPseudoAction(LFUN_INSERT_BRANCH,
-					(cit->getBranch()));
 		if (ii < 10)
 			label = tostr(ii) + ". " + label + "|" + tostr(ii);
-		tomenu.add(MenuItem(MenuItem::Command, label, action), view);
+		tomenu.add(MenuItem(MenuItem::Command, label,
+				    FuncRequest(LFUN_INSERT_BRANCH,
+						cit->getBranch())), view);
 	}
 }
 

@@ -344,83 +344,8 @@ LyXAction::LyXAction()
 }
 
 
-int LyXAction::searchActionArg(kb_action action, string const & arg) const
-{
-	arg_map::const_iterator pit = lyx_arg_map.find(action);
-
-	if (pit == lyx_arg_map.end()) {
-		lyxerr[Debug::ACTION] << "Action " << action
-				      << " does not have any pseudo actions."
-				      << endl;
-		return LFUN_UNKNOWN_ACTION;
-	}
-
-	arg_item::const_iterator aci = pit->second.find(arg);
-
-	if (aci == pit->second.end()) {
-		lyxerr[Debug::ACTION]
-			<< "Action " << action
-			<< "does not have any pseudoactions with arg "
-			<< arg << endl;
-		return LFUN_UNKNOWN_ACTION;
-	}
-
-	lyxerr[Debug::ACTION] << "Pseudoaction exists["
-			      << action << '|'
-			      << arg << "] = " << aci->second << endl;
-
-	return aci->second;
-}
-
-
-int LyXAction::getPseudoAction(kb_action action, string const & arg)
-{
-	int const psdaction = searchActionArg(action, arg);
-
-	if (isPseudoAction(psdaction)) return psdaction;
-
-	static unsigned int pseudo_counter = LFUN_LASTACTION;
-
-	// Create new pseudo action.
-	lyx_pseudo_map[++pseudo_counter] = FuncRequest(0, action, arg);
-
-	// First ensure that the action is in lyx_arg_map;
-	lyx_arg_map[action];
-	// get the arg_item map
-	arg_map::iterator ami = lyx_arg_map.find(action);
-	// put the new pseudo function in it
-	ami->second[arg] = pseudo_counter;
-
-	lyxerr[Debug::ACTION] << "Creating new pseudoaction "
-			      << pseudo_counter << " for [" << action
-			      << '|' << arg << "]\n";
-
-	return pseudo_counter;
-}
-
-
-FuncRequest LyXAction::retrieveActionArg(int pseudo) const
-{
-	if (!isPseudoAction(pseudo))
-		return FuncRequest(static_cast<kb_action>(pseudo));
-
-	pseudo_map::const_iterator pit = lyx_pseudo_map.find(pseudo);
-
-	if (pit != lyx_pseudo_map.end()) {
-		lyxerr[Debug::ACTION] << "Found the pseudoaction: ["
-				      << pit->second.action << '|'
-				      << pit->second.argument << "]" << endl;
-		return pit->second;
-	} else {
-		lyxerr << "Lyx Error: Unrecognized pseudo-action "
-			<< pseudo << endl;
-		return FuncRequest(LFUN_UNKNOWN_ACTION);
-	}
-}
-
-
 // Returns an action tag from a string.
-int LyXAction::LookupFunc(string const & func)
+kb_action LyXAction::LookupFunc(string const & func)
 {
 	string const func2 = trim(func);
 	if (func2.empty()) return LFUN_NOACTION;
@@ -433,25 +358,15 @@ int LyXAction::LookupFunc(string const & func)
 
 	func_map::const_iterator fit = lyx_func_map.find(actstr);
 
-	if (!argstr.empty() && fit != lyx_func_map.end()) {
-		// might be pseudo (or create one)
-		return getPseudoAction(fit->second, argstr);
-	}
-
 	return fit != lyx_func_map.end() ? fit->second : LFUN_UNKNOWN_ACTION;
 }
 
 
 string const LyXAction::getActionName(int action) const
 {
-	FuncRequest ev = retrieveActionArg(action);
-	if (!ev.argument.empty())
-		ev.argument.insert(string::size_type(0), 1, ' ');
-
-	info_map::const_iterator const it = lyx_info_map.find(ev.action);
-
+	info_map::const_iterator const it = lyx_info_map.find(kb_action(action));
 	if (it != lyx_info_map.end())
-		return it->second.name + ev.argument;
+		return it->second.name;
 	return string();
 }
 

@@ -22,6 +22,7 @@
 #include <qtimer.h>
 
 class QCommandBuffer;
+class FuncRequest;
 
 /**
  * QtView - Qt implementation of LyXView
@@ -51,10 +52,10 @@ public:
 	/// add the command buffer
 	void addCommandBuffer(QWidget * parent);
 
-public slots:
 	/// menu item has been selected
-	void activated(int id);
+	void activated(FuncRequest const &);
 
+public slots:
 	/// idle timeout
 	void update_view_state_qt();
 protected:

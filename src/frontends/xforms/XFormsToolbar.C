@@ -40,7 +40,7 @@ const int buttonwidth = 30; // the standard button width
 const int height = 30; // the height of all items in the toolbar
 
 XFormsToolbar::toolbarItem::toolbarItem()
-	: action(LFUN_NOACTION), icon(0)
+	: icon(0)
 {}
 
 
@@ -81,7 +81,7 @@ XFormsToolbar::toolbarItem::operator=(toolbarItem const & ti)
 	// But we don't copy the icon from ti
 	kill_icon();
 
-	action = ti.action;
+	func = ti.func;
 
 	return *this;
 }
@@ -113,10 +113,10 @@ void XFormsToolbar::update()
 	ToolbarList::const_iterator p = toollist_.begin();
 	ToolbarList::const_iterator end = toollist_.end();
 	for (; p != end; ++p) {
-		if (p->action == ToolbarBackend::LAYOUTS && combox_) {
+		if (p->func.action == int(ToolbarBackend::LAYOUTS) && combox_) {
 			LyXFunc const & lf = owner_->getLyXFunc();
 			bool const disable =
-				lf.getStatus(LFUN_LAYOUT).disabled();
+				lf.getStatus(FuncRequest(LFUN_LAYOUT)).disabled();
 			setEnabled(combox_, !disable);
 			continue;
 		}
@@ -124,7 +124,7 @@ void XFormsToolbar::update()
 		if (!p->icon)
 			continue;
 
-		FuncStatus const status = owner_->getLyXFunc().getStatus(p->action);
+		FuncStatus const status = owner_->getLyXFunc().getStatus(p->func);
 		if (status.onoff(true)) {
 			// I'd like to use a different color
 			// here, but then the problem is to
@@ -249,9 +249,12 @@ namespace {
 
 void ToolbarCB(FL_OBJECT * ob, long ac)
 {
-	XFormsView * owner = static_cast<XFormsView *>(ob->u_vdata);
+	if (!ob || !ob->u_vdata)
+		return;
 
-	owner->getLyXFunc().dispatch(int(ac), true);
+	XFormsToolbar * ptr = static_cast<XFormsToolbar *>(ob->u_vdata);
+	XFormsView * owner = ptr->owner_;
+	owner->getLyXFunc().dispatch(ptr->funcs[ac], true);
 }
 
 
@@ -273,6 +276,8 @@ void XFormsToolbar::add(ToolbarBackend::Toolbar const & tb)
 	if (!toollist_.empty())
 		return;
 
+	funcs.clear();
+
 	ToolbarBackend::item_iterator it = tb.items.begin();
 	ToolbarBackend::item_iterator end = tb.items.end();
 	for (; it != end; ++it)
@@ -280,12 +285,12 @@ void XFormsToolbar::add(ToolbarBackend::Toolbar const & tb)
 }
 
 
-void XFormsToolbar::add(int action, string const & tooltip)
+void XFormsToolbar::add(FuncRequest const & func, string const & tooltip)
 {
 	toolbarItem item;
-	item.action = action;
+	item.func = func;
 
-	switch (action) {
+	switch (func.action) {
 	case ToolbarBackend::SEPARATOR:
 		xpos += sepspace;
 		break;
@@ -322,17 +327,19 @@ void XFormsToolbar::add(int action, string const & tooltip)
 		fl_set_object_gravity(obj,
 				      NorthWestGravity,
 				      NorthWestGravity);
-		fl_set_object_callback(obj, C_Toolbar_ToolbarCB,
-				       static_cast<long>(action));
+
+		Funcs::iterator fit = funcs.insert(funcs.end(), func);
+		int const index = std::distance(funcs.begin(), fit);
+		fl_set_object_callback(obj, C_Toolbar_ToolbarCB, index);
 		// Remove the blue feedback rectangle
 		fl_set_pixmapbutton_focus_outline(obj, 0);
 
 		tooltip_->init(obj, tooltip);
 
 		// The view that this object belongs to.
-		obj->u_vdata = owner_;
+		obj->u_vdata = this;
 
-		string const xpm = toolbarbackend.getIcon(action);
+		string const xpm = toolbarbackend.getIcon(func);
 		fl_set_pixmapbutton_file(obj, xpm.c_str());
 
 		// we must remember to update the positions

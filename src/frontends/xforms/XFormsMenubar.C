@@ -192,9 +192,10 @@ string const fixlabel(string const & str)
 
 
 int XFormsMenubar::create_submenu(Window win, XFormsView * view,
-				   Menu const & menu, vector<int> & smn)
+				  Menu const & menu,
+				  vector<int> & smn, Funcs & funcs)
 {
-	const int menuid = get_new_submenu(smn, win);
+	int const menuid = get_new_submenu(smn, win);
 	lyxerr[Debug::GUI] << "XFormsMenubar::create_submenu: creating "
 			   << menu.name() << " as menuid=" << menuid << endl;
 
@@ -226,7 +227,7 @@ int XFormsMenubar::create_submenu(Window win, XFormsView * view,
 		++count;
 		// add a More... submenu if the menu is too long (but
 		// not just for one extra entry!)
-		if (count > max_number_of_items && (i+1) != end) {
+		if (count > max_number_of_items && (i + 1) != end) {
 			int tmpmenuid = get_new_submenu(smn, win);
 			lyxerr[Debug::GUI] << "Too many items, creating "
 					   << "new menu " << tmpmenuid << endl;
@@ -258,7 +259,7 @@ int XFormsMenubar::create_submenu(Window win, XFormsView * view,
 			}
 
 			// Is there a separator after the item?
-			if ((i+1) != end
+			if ((i + 1) != end
 			    && (i + 1)->kind() == MenuItem::Separator)
 				label += "%l";
 
@@ -282,7 +283,7 @@ int XFormsMenubar::create_submenu(Window win, XFormsView * view,
 				// create the submenu
 				submenuid =
 					create_submenu(win, view,
-						       *item.submenu(), smn);
+						       *item.submenu(), smn, funcs);
 				if (submenuid == -1)
 					return -1;
 				label += "%x" + tostr(smn.size());
@@ -292,10 +293,16 @@ int XFormsMenubar::create_submenu(Window win, XFormsView * view,
 					<< "), ";
 			} else {
 				// Add the action
-				label += "%x" + tostr(item.action()
-						      + action_offset);
+				Funcs::iterator fit =
+					funcs.insert(funcs.end(), item.func());
+				int const action_count =
+					std::distance(funcs.begin(), fit);
+
+				label += "%x" + tostr(action_count + action_offset);
 				lyxerr[Debug::GUI] << "Action: \""
-						   << item.action() << "\", ";
+						   << item.func().action
+						   << "(" << item.func().argument
+						   << ")\", ";
 			}
 
 			// Add everything to the menu
@@ -353,9 +360,10 @@ void XFormsMenubar::MenuCallback(FL_OBJECT * ob, long button)
 	Menu tomenu;
 	Menu const frommenu = menubackend_->getMenu(item->submenuname());
 	menubackend_->expand(frommenu, tomenu, view);
+	Funcs funcs;
 	vector<int> submenus;
 	int menu = iteminfo->menubar_->create_submenu(FL_ObjWin(ob), view,
-						    tomenu, submenus);
+						    tomenu, submenus, funcs);
 	if (menu != -1) {
 		// place popup
 		fl_setpup_position(view->getForm()->x + ob->x,
@@ -370,8 +378,8 @@ void XFormsMenubar::MenuCallback(FL_OBJECT * ob, long button)
 
 		// If the action value is too low, then it is not a
 		// valid action, but something else.
-		if (choice >= action_offset + 1) {
-			view->getLyXFunc().dispatch(choice - action_offset, true);
+		if (choice >= action_offset) {
+			view->getLyXFunc().dispatch(funcs[choice - action_offset], true);
 		} else {
 			lyxerr[Debug::GUI]
 				<< "MenuCallback: ignoring bogus action "

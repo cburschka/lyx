@@ -61,7 +61,7 @@ createMenu(QMenuData * parent, MenuItem const * item, QLMenubar * owner,
 {
 	// FIXME: leaks ??
 	QLPopupMenu * pm = new QLPopupMenu(owner, item->submenuname(), is_toplevel);
-	int id = parent->insertItem(toqstr(getLabel(*item)), pm);
+	int const id = parent->insertItem(toqstr(getLabel(*item)), pm);
 	return make_pair(id, pm);
 }
 
@@ -73,12 +73,20 @@ QLPopupMenu::QLPopupMenu(QLMenubar * owner,
 	if (toplevel)
 		connect(this, SIGNAL(aboutToShow()), this, SLOT(showing()));
 	connect(this, SIGNAL(activated(int)),
-		owner_->view(), SLOT(activated(int)));
+		this, SLOT(fire(int)));
+}
+
+
+void QLPopupMenu::fire(int index)
+{
+	owner_->view()->activated(funcs_[index]);
 }
 
 
 void QLPopupMenu::populate(Menu * menu)
 {
+	funcs_.clear();
+
 	Menu::const_iterator m = menu->begin();
 	Menu::const_iterator end = menu->end();
 	for (; m != end; ++m) {
@@ -92,9 +100,13 @@ void QLPopupMenu::populate(Menu * menu)
 		} else {
 			FuncStatus const status = m->status();
 
-			insertItem(toqstr(getLabel(*m)), m->action());
-			setItemEnabled(m->action(), !status.disabled());
-			setItemChecked(m->action(), status.onoff(true));
+			Funcs::iterator fit =
+				funcs_.insert(funcs_.end(), m->func());
+			int const index = std::distance(funcs_.begin(), fit);
+
+			insertItem(toqstr(getLabel(*m)), index);
+			setItemEnabled(index, !status.disabled());
+			setItemChecked(index, status.onoff(true));
 		}
 	}
 }
