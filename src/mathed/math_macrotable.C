@@ -98,7 +98,7 @@ void MathMacroTable::builtinMacros()
 	createTemplate("to",           0, "\\rightarrow");
 #ifdef WITH_WARNINGS
 #warning 9em looks like too much but it is somehow working on screen..
-#endif WITH_WARNINGS
+#endif
 	createTemplate("ll",           0, "<\\kern-9em<");
 	createTemplate("gg",           0, ">\\kern-9em>");
 	//createTemplate("lint",       4, "\\int_#1^#2#3 d#4");
