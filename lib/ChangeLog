@@ -15,6 +15,9 @@
 	* reLyX/Text/TeX.pm: fix the $macro regex so that it recognises
 	that \) is a valid token but that \)* is a token and a '*'.
 
+	* reLyX/syntax.default: no need to translate symbols that mathed
+	can handle natively.
+
 2003-02-04  Joao Luis Meloni Assirati  <assirati@fma.if.usp.br>
 
 	* images/math/rbracket.xpm: new file.

@@ -616,26 +616,11 @@ titlepage
 \end{reLyXre}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% There are some math commands which LyX doesn't support. If there's an
-% equivalent command that it *does* support, then we might as well
-% translate it.
-%    While copying things in math mode, reLyX will replace anything of the
-% following commands with (exactly) whatever text is in braces, so, e.g.,
-% $x\sb{a}$ will be converted to $x_{a}$ in the LyX file.
-%    In most cases, this simply avoids "evil red text" in math mode, but
-% in a couple cases, it actually fixes things (e.g. '\ ')
-%    Tokens to replace should be "normal" tokens, backslash followed by a
-% nonletter or one or more letters. (Token may also have * at the end.)
+% Keep bugging André until he adds 'support' for these in mathed,
+% meaning that they can be removed from here.
 
 \begin{reLyXmt}
 \sb    {_}
 \sp    {^}
-\|     {\Vert}
-\vert  {|}
-\      {\,\,}    % That's '\ ', same length (6/18 quad) as two '\,' tokens
-\to    {\rightarrow}
-\gets  {\leftarrow}
-\le    {\leq}
-\ge    {\geq}
 \ensuremath   {}  % If it's in math mode, \ensuremath is unnec.
 \end{reLyXmt}
