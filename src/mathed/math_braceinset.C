@@ -65,6 +65,30 @@ void MathBraceInset::normalize(NormalStream & os) const
 }
 
 
+void MathBraceInset::maplize(MapleStream & os) const
+{
+	os << cell(0);
+}
+
+
+void MathBraceInset::octavize(OctaveStream & os) const
+{
+	os << cell(0);
+}
+
+
+void MathBraceInset::mathmlize(MathMLStream & os) const
+{
+	os << MTag("mrow") << cell(0) << ETag("mrow");
+}
+
+
+void MathBraceInset::mathematicize(MathematicaStream & os) const
+{
+	os << cell(0);
+}
+
+
 void MathBraceInset::infoize(std::ostream & os) const
 {
 	os << "Nested Block: ";

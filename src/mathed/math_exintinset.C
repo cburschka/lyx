@@ -74,6 +74,7 @@ void MathExIntInset::maplize(MapleStream & os) const
 	os << ')';
 }
 
+
 void MathExIntInset::mathematicize(MathematicaStream & os) const
 {
 	if ( symbol_ == "int" ) 

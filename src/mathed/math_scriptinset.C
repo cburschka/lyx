@@ -368,9 +368,11 @@ void MathScriptInset::normalize(NormalStream & os) const
 	bool d = hasDown() && down().size();
 	bool u = hasUp() && up().size();
 
-	if (u)
+	if (u && d)
+		os << "[subsup ";
+	else if (u)
 		os << "[sup ";
-	if (d)
+	else if (d)
 		os << "[sub ";
 
 	if (nuc().size())
@@ -378,9 +380,11 @@ void MathScriptInset::normalize(NormalStream & os) const
 	else
 		os << "[par]";
 
-	if (d)
+	if (u && d)
+		os << down().data() << ' ' << up().data() << ']';
+	else if (d)
 		os << down().data() << ']';
-	if (u)
+	else if (u)
 		os << up().data() << ']';
 }
 

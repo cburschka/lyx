@@ -23,13 +23,21 @@ public:
 	/// we write extra braces in any case...
 	bool extraBraces() const { return true; }
 	///
+	void metrics(MathMetricsInfo & mi) const;
+	///
 	void draw(MathPainterInfo &, int x, int y) const;
 	///
 	void write(WriteStream & os) const;
 	/// write normalized content
 	void normalize(NormalStream & ns) const;
 	///
-	void metrics(MathMetricsInfo & mi) const;
+	void maplize(MapleStream &) const;
+	///
+	void mathematicize(MathematicaStream &) const;
+	///
+	void octavize(OctaveStream &) const;
+	///
+	void mathmlize(MathMLStream &) const;
 	///
 	void infoize(std::ostream & os) const;
 

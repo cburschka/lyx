@@ -498,6 +498,17 @@ bool testIntSymbol(MathInset * p)
 }
 
 
+bool testIntegral(MathInset * p)
+{
+	return
+	 testIntSymbol(p) ||
+		( p->asScriptInset() 
+		  && p->asScriptInset()->nuc().size()
+			&& testIntSymbol(p->asScriptInset()->nuc().back().nucleus()) );
+}
+
+
+
 bool testIntDiff(MathInset * p)
 {
 	return testString(p, "d");
@@ -516,40 +527,27 @@ void extractIntegrals(MathArray & ar)
 	for (MathArray::size_type i = 0; i + 1 < ar.size(); ++i) {
 		MathArray::iterator it = ar.begin() + i;
 
-		// is this a integral name?
-		if (!testIntSymbol(it->nucleus()))
-			continue;
-
 		// search 'd'
 		MathArray::iterator jt =
-			endNestSearch(it, ar.end(), testIntSymbol, testIntDiff);
+			endNestSearch(it, ar.end(), testIntegral, testIntDiff);
 
 		// something sensible found?
 		if (jt == ar.end())
 			continue;
 
-		// create a proper inset as replacement
-		MathExIntInset * p = new MathExIntInset("int");
-
-		// collect subscript if any
-		MathArray::iterator st = it + 1;
-		if (st != ar.end())
-			if (MathScriptInset * sub = (*st)->asScriptInset())
-				if (sub->hasDown()) {
-					p->cell(2) = sub->down().data();
-					++st;
-				}
-
-		// collect superscript if any
-		if (st != ar.end())
-			if (MathScriptInset * sup = (*st)->asScriptInset())
-				if (sup->hasUp()) {
-					p->cell(3) = sup->up().data();
-					++st;
-				}
+		// is this a integral name?
+		if (!testIntegral(it->nucleus()))
+			continue;
 
 		// core ist part from behind the scripts to the 'd'
-		p->cell(0) = MathArray(st, jt);
+		MathExIntInset * p = new MathExIntInset("int");
+
+		// handle scripts if available
+		if (!testIntSymbol(it->nucleus())) {
+			p->cell(2) = it->nucleus()->asScriptInset()->down().data();
+			p->cell(3) = it->nucleus()->asScriptInset()->up().data();
+		}
+		p->cell(0) = MathArray(it + 1, jt);
 
 		// use the "thing" behind the 'd' as differential
 		MathArray::iterator tt = extractArgument(p->cell(1), jt + 1, ar.end());
@@ -573,6 +571,21 @@ bool testEqualSign(MathAtom const & at)
 }
 
 
+bool testSumSymbol(MathInset * p)
+{
+	return testSymbol(p, "sum");
+}
+
+
+bool testSum(MathInset * p)
+{
+	return
+	 testSumSymbol(p) ||
+		( p->asScriptInset() 
+		  && p->asScriptInset()->nuc().size()
+			&& testSumSymbol(p->asScriptInset()->nuc().back().nucleus()) );
+}
+
 
 // replace '\sum' ['_^'] f(x) sequences by a real MathExIntInset
 // assume 'extractDelims' ran before
@@ -587,43 +600,36 @@ void extractSums(MathArray & ar)
 		MathArray::iterator it = ar.begin() + i;
 
 		// is this a sum name?
-		if (!testSymbol(it->nucleus(), "sum"))
+		if (!testSum(it->nucleus()))
 			continue;
 
 		// create a proper inset as replacement
 		MathExIntInset * p = new MathExIntInset("sum");
 
 		// collect lower bound and summation index
-		MathArray::iterator st = it + 1;
-		if (st != ar.end())
-			if (MathScriptInset * sub = (*st)->asScriptInset())
-				if (sub->hasDown()) {
-					// try to figure out the summation index from the subscript
-					MathArray & ar = sub->down().data();
-					MathArray::iterator it =
-						find_if(ar.begin(), ar.end(), &testEqualSign);
-					if (it != ar.end()) {
-						// we found a '=', use everything in front of that as index,
-						// and everything behind as lower index
-						p->cell(1) = MathArray(ar.begin(), it);
-						p->cell(2) = MathArray(it + 1, ar.end());
-					} else {
-						// use everything as summation index, don't use scripts.
-						p->cell(1) = ar;
-					}
-					++st;
-				}
+		MathScriptInset * sub = (*it)->asScriptInset();
+		if (sub && sub->hasDown()) {
+			// try to figure out the summation index from the subscript
+			MathArray & ar = sub->down().data();
+			MathArray::iterator xt =
+				find_if(ar.begin(), ar.end(), &testEqualSign);
+			if (xt != ar.end()) {
+				// we found a '=', use everything in front of that as index,
+				// and everything behind as lower index
+				p->cell(1) = MathArray(ar.begin(), xt);
+				p->cell(2) = MathArray(xt + 1, ar.end());
+			} else {
+				// use everything as summation index, don't use scripts.
+				p->cell(1) = ar;
+			}
+		}
 
 		// collect upper bound
-		if (st != ar.end())
-			if (MathScriptInset * sup = (*st)->asScriptInset())
-				if (sup->hasUp()) {
-					p->cell(3) = sup->up().data();
-					++st;
-				}
+		if (sub && sub->hasUp())
+			p->cell(3) = sub->up().data();
 
-		// use some  behind the script as core
-		MathArray::iterator tt = extractArgument(p->cell(0), st, ar.end());
+		// use something  behind the script as core
+		MathArray::iterator tt = extractArgument(p->cell(0), it + 1, ar.end());
 
 		// cleanup
 		ar.erase(it + 1, tt);
@@ -809,14 +815,14 @@ void extractLims(MathArray & ar)
 
 void extractStructure(MathArray & ar)
 {
+	extractIntegrals(ar);
+	extractSums(ar);
 	splitScripts(ar);
 	extractNumbers(ar);
 	extractMatrices(ar);
 	extractDelims(ar);
 	extractFunctions(ar);
 	extractDets(ar);
-	extractIntegrals(ar);
-	extractSums(ar);
 	extractDiff(ar);
 	extractExps(ar);
 	extractLims(ar);
