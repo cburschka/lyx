@@ -16,6 +16,7 @@
 #include <fstream>
 
 #include "Lsstream.h"
+#include "support/LAssert.h"
 
 #ifdef __GNUG__
 #pragma implementation
@@ -641,10 +642,11 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		result = UNDISPATCHED;
 	}
 
+	lyx::Assert(mathcursor);
 	//mathcursor->normalize();
 
-	if (was_macro != mathcursor->inMacroMode()
-				&& action >= 0 && action != LFUN_BACKSPACE) 
+	if (//was_macro != mathcursor->inMacroMode() &&
+				action >= 0 && action != LFUN_BACKSPACE) 
   		updateLocal(bv, true);
 	
 	if (mathcursor->selection() || was_selection)

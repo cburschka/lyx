@@ -132,9 +132,10 @@ MathCursor::MathCursor(InsetFormulaBase * formula, bool left)
 
 void MathCursor::push(MathAtom & t)
 {
-	//cerr << "Entering atom "; t->write(cerr, false); cerr << " left\n";
 	MathCursorPos p;
 	p.par_ = &t;
+	p.idx_ = 0;
+	p.pos_ = 0;
 	Cursor_.push_back(p);
 }
 
@@ -937,7 +938,10 @@ void MathCursor::normalize() const
 
 	if (pos() > size()) {
 		lyxerr << "this should not really happen - 2: "
-		       << pos() << " " << size() << "\n";
+			<< pos() << " " << size() <<  " in idx: " << it->idx()
+			<< " in atom: '";
+		it->par()->write(lyxerr, false);
+		lyxerr << "\n";
 		dump("error 4");
 	}
 	it->pos() = min(pos(), size());
@@ -1321,17 +1325,22 @@ void MathCursor::interpret(char c)
 		if (hasPrevAtom() && prevAtom()->asScriptInset()) {
 			prevAtom()->asScriptInset()->ensure(up);
 			pushRight(prevAtom());
+			idx() = up;
 			pos() = size();
 		} else if (hasNextAtom() && nextAtom()->asScriptInset()) {
 			nextAtom()->asScriptInset()->ensure(up);
 			pushLeft(nextAtom());
+			idx() = up;
 			pos() = 0;
 		} else {
 			plainInsert(MathAtom(new MathScriptInset(up)));
+			prevAtom()->asScriptInset()->ensure(up);
 			pushRight(prevAtom());
+			idx() = up;
+			pos() = 0;
 		}
-		idx() = up;
 		selPaste();
+		dump("1");
 		return;
 	}
 
@@ -1393,7 +1402,6 @@ void MathCursor::interpret(char c)
 		else
 			insert(c, LM_TC_VAR);
 
-#warning greek insert problem? look here!
 		if (lastcode_ == LM_TC_GREEK1)
 			lastcode_ = LM_TC_VAR;
 		return;	

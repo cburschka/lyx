@@ -41,6 +41,11 @@ public:
 	int width(MathInset const * nucleus) const;
 
 	///
+	bool idxLeft(MathInset::idx_type &, MathInset::pos_type &) const;
+	///
+	bool idxRight(MathInset::idx_type &, MathInset::pos_type &) const;
+
+	///
 	MathScriptInset const * asScriptInset() const;
 	///
 	MathScriptInset * asScriptInset();

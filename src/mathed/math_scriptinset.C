@@ -294,3 +294,19 @@ bool MathScriptInset::hasDown() const
 {
 	return script_[0];
 }
+
+
+bool MathScriptInset::idxRight(MathInset::idx_type &,
+				 MathInset::pos_type &) const
+{
+	return false;
+}
+
+
+bool MathScriptInset::idxLeft(MathInset::idx_type &,
+				MathInset::pos_type &) const
+{
+	return false;
+}
+
+
