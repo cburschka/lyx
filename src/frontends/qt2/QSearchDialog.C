@@ -23,6 +23,10 @@ QSearchDialog::QSearchDialog(QSearch * form)
 {
 	connect(closePB, SIGNAL(clicked()),
 		form_, SLOT(slotClose()));
+	findCO->setDuplicatesEnabled(false); 
+	findCO->setInsertionPolicy(QComboBox::AtTop); 
+	replaceCO->setDuplicatesEnabled(false); 
+	replaceCO->setInsertionPolicy(QComboBox::AtTop); 
 }
 
 
@@ -54,6 +58,7 @@ void QSearchDialog::findClicked()
 		caseCB->isChecked(),
 		wordsCB->isChecked(),
 		backwardsCB->isChecked());
+	findCO->insertItem(findCO->currentText());
 }
 
 
@@ -65,6 +70,7 @@ void QSearchDialog::replaceClicked()
 		caseCB->isChecked(),
 		wordsCB->isChecked(),
 		false);
+	replaceCO->insertItem(replaceCO->currentText());
 }
 
 
