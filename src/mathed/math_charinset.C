@@ -4,8 +4,6 @@
 #pragma implementation
 #endif
 
-#include <cctype>
-
 #include "math_charinset.h"
 #include "LColor.h"
 #include "Painter.h"
@@ -17,9 +15,13 @@
 #include "LaTeXFeatures.h"
 #include "textpainter.h"
 
+#include <cctype>
+#include <cstring>
+
 
 using std::ostream;
 using std::endl;
+using std::strchr;
 
 
 bool isBinaryOp(char c, MathTextCodes type)

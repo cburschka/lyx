@@ -48,6 +48,7 @@
 #include "math_support.h"
 
 #include <algorithm>
+#include <cctype>
 
 #define FILEDEBUG 0
 
