@@ -21,14 +21,14 @@ LSubstring::LSubstring(string & s, size_type i, size_type l)
 }
 
 
-LSubstring::LSubstring(string & s, string & s2)
+LSubstring::LSubstring(string & s, string const & s2)
 	: ps(&s), n(s2.length())
 {
 	pos = s.find(s2);
 }
 
 
-LSubstring::LSubstring(string & s, char * p)
+LSubstring::LSubstring(string & s, string::value_type const * p)
 	: ps(&s)
 {
 	n = strlen(p);
@@ -36,7 +36,7 @@ LSubstring::LSubstring(string & s, char * p)
 }
 
 
-LSubstring::LSubstring(string & s, LRegex & r)
+LSubstring::LSubstring(string & s, LRegex const & r)
 	: ps(&s)
 {
 	LRegex::MatchPair res = r.first_match(s);
@@ -82,13 +82,3 @@ LSubstring::operator string() const
 {
 	return string(*ps, pos, n); // copy from *ps
 }
-
-
-#if 0
-LSubstring::operator char const * () const
-{
-	static string tr;
-	tr.assign(*ps, pos, n);
-	return tr.c_str();
-}
-#endif

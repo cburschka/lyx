@@ -119,7 +119,7 @@ static void LexInitCodes()
    lexcode['%'] = LexComment;
    lexcode['#'] = LexArgument;
    lexcode['+'] = lexcode['-'] = lexcode['*'] = lexcode['/'] = 
-   lexcode['<'] = lexcode['>'] = lexcode['= '] = LexBOP;
+   lexcode['<'] = lexcode['>'] = lexcode['='] = LexBOP;
    
    lexcode['!'] = lexcode[','] = lexcode[':'] = lexcode[';'] = LexMathSpace;
    lexcode['('] = lexcode[')'] = lexcode['|'] = lexcode['.'] = lexcode['?'] = LexOther; 

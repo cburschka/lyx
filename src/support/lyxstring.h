@@ -449,6 +449,9 @@ public:
 	///
 	lyxstring & replace(iterator i, iterator i2, iterator j, iterator j2);
 
+	///
+	void swap(lyxstring & str);
+	
 	/// Erase n chars from position i.
 	lyxstring & erase(size_type i = 0, size_type n = npos);
 
@@ -598,6 +601,8 @@ lyxstring operator+(char const * a, lyxstring const & b);
 lyxstring operator+(lyxstring::value_type a, lyxstring const & b);
 lyxstring operator+(lyxstring const & a, lyxstring::value_type const * b);
 lyxstring operator+(lyxstring const & a, lyxstring::value_type b);
+
+void swap(lyxstring & s1, lyxstring & s2);
 
 istream & operator>>(istream &, lyxstring &);
 ostream & operator<<(ostream &, lyxstring const &);

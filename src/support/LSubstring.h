@@ -31,11 +31,11 @@ public:
 	///
 	LSubstring(string & s, size_type i, size_type n);
 	///
-	LSubstring(string & s, string & s2);
+	LSubstring(string & s, string const & s2);
 	///
-	LSubstring(string & s, string::value_type * p);
+	LSubstring(string & s, string::value_type const * p);
 	///
-	LSubstring(string & s, LRegex & r);
+	LSubstring(string & s, LRegex const & r);
 	///
 	LSubstring & operator=(string const &);
 	///
@@ -46,10 +46,6 @@ public:
 	LSubstring & operator=(string::value_type);
 	///
 	operator string() const;
-#if 0
-	///
-	operator char const * () const;
-#endif
 private:
 	///
 	string * ps;

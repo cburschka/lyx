@@ -1345,6 +1345,15 @@ lyxstring & lyxstring::replace(iterator i, iterator i2,
 }
 
 
+void lyxstring::swap(lyxstring & str)
+{
+	if (rep == str.rep) return;
+	Srep * tmp = str.rep;
+	str.rep = rep;
+	rep = tmp;
+}
+
+
 lyxstring & lyxstring::erase(size_type i, size_type n)
 {
 	Assert(i <= rep->sz); // STD!
@@ -1666,6 +1675,13 @@ lyxstring operator+(lyxstring const & a, lyxstring::value_type b)
 	tmp += b;
 	return tmp;
 }
+
+
+void swap(lyxstring & str1, lyxstring & str2)
+{
+	str1.swap(str2);
+}
+
 
 #include <iostream>
 
