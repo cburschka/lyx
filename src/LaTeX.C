@@ -521,8 +521,20 @@ int LaTeX::scanLogFile(TeXErrors & terr)
 				}
 			} else if (contains(token, "run BibTeX")) {
 				retval |= UNDEF_CIT;
-			} else if (contains(token, "Rerun LaTeX.")) {
-				// at least longtable.sty might use this.
+			} else if (contains(token, "Rerun LaTeX") ||
+				   contains(token, "Rerun to get")) {
+				// at least longtable.sty and bibtopic.sty
+				// might use this.
+				lyxerr[Debug::LATEX]
+					<< "We should rerun." << endl;
+				retval |= RERUN;
+			}
+		} else if (prefixIs(token, "(")) {
+			if (contains(token, "Rerun LaTeX") ||
+			    contains(token, "Rerun to get")) {
+				// Used by natbib
+				lyxerr[Debug::LATEX]
+					<< "We should rerun." << endl;
 				retval |= RERUN;
 			}
 		} else if (prefixIs(token, "! ")) {
