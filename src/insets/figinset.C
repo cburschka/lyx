@@ -1060,6 +1060,9 @@ void InsetFig::draw(BufferView * bv, LyXFont const & f,
 		
 	} else {
 		char * msg = 0;
+		string lfname = fname;
+		if (GetExtension(fname).empty())
+		    lfname += ".eps";
 		// draw frame
 		pain.rectangle(int(x), baseline - hgh - 1, wid + 1, hgh + 1);
 
@@ -1069,7 +1072,7 @@ void InsetFig::draw(BufferView * bv, LyXFont const & f,
 		} 
 		else if (fname.empty()) 
 			msg = _("[no file]");
-		else if (!IsFileReadable(fname))
+		else if (!IsFileReadable(lfname))
 			msg = _("[bad file name]");
 		else if ((flags & 3) == 0) 
 			msg = _("[not displayed]");
@@ -1483,10 +1486,14 @@ void InsetFig::Recompute()
 	int frame_wid = int(ceil(fabs(cos_a * pswid) + fabs(sin_a * pshgh)));
 	int frame_hgh= int(ceil(fabs(cos_a * pshgh) + fabs(sin_a * pswid)));
 
+	string lfname = fname;
+	if (GetExtension(fname).empty())
+	    lfname += ".eps";
+
 	/* now recompute wid and hgh, and if that is changed, set changed */
 	/* this depends on chosen size of the picture and its bbox */
 	// This will be redone in 0.13 ... (hen)
-	if (!fname.empty() && IsFileReadable(fname)) {
+	if (!lfname.empty() && IsFileReadable(lfname)) {
 		// say, total width is 595 pts, as A4 in TeX, thats in 1/72" */
 
 		newx = frame_wid;
@@ -1565,11 +1572,11 @@ void InsetFig::Recompute()
 		figdata * pf = figure->data;
 
 		// get new data
-		if (!fname.empty() && IsFileReadable(fname) && (flags & 3)
+		if (!lfname.empty() && IsFileReadable(lfname) && (flags & 3)
 		    && !lyxrc.ps_command.empty()) {
 			// do not display if there is "do not display"
 			// chosen (Matthias 260696)
-			figure->data = getfigdata(wid, hgh, fname,
+			figure->data = getfigdata(wid, hgh, lfname,
 						  psx, psy, pswid, pshgh,
 						  raw_wid, raw_hgh,
 						  angle, flags & (3|8));
@@ -1963,8 +1970,11 @@ void InsetFig::Preview(char const * p)
   		return;		// parent process
   	}
 
+	string tfname = p;
+	if (GetExtension(tfname).empty())
+	    tfname += ".eps";
 	string buf1 = OnlyPath(owner->fileName());
-	string buf2 = MakeAbsPath(p, buf1);
+	string buf2 = MakeAbsPath(tfname, buf1);
 	
 	lyxerr << "Error during rendering "
 	       << execlp(lyxrc.view_pspic_command.c_str(),

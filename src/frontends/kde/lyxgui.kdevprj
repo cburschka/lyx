@@ -1,4 +1,9 @@
 # KDE Config File
+[formcopyright.C]
+install_location=
+dist=true
+install=false
+type=SOURCE
 [Workspace_1]
 openfiles=Untitled.h,Untitled.cpp,
 show_outputview=true
@@ -6,20 +11,19 @@ show_treeview=true
 header_file=Untitled.h
 cpp_file=Untitled.cpp
 browser_file=file:/usr/doc/qt1x-devel-1.45/qlistbox.html
-[formcopyright.C]
-install_location=
-dist=true
-install=false
-type=SOURCE
 [Config for BinMakefileAm]
 ldflags=
-bin_program=lyxgui
 cxxflags=-O0 -g3 -Wall
+bin_program=lyxgui
 [formcopyright.h]
 install_location=
 dist=true
 install=false
 type=HEADER
+[dlg/Makefile.am]
+files=dlg/formcopyrightdialog.kdevdlg,dlg/form_document.kdevdlg,
+type=static_library
+sub_dirs=
 [dlg/form_document.kdevdlg]
 widget_files=
 data_file=
@@ -32,10 +36,6 @@ cpp_file=
 install=false
 is_toplevel_dialog=true
 type=KDEV_DIALOG
-[dlg/Makefile.am]
-files=dlg/formcopyrightdialog.kdevdlg,dlg/form_document.kdevdlg,
-sub_dirs=
-type=static_library
 [LFV Groups]
 Dialogs=*.kdevdlg,
 GNU=
@@ -71,13 +71,13 @@ type=KDEV_DIALOG
 [General]
 makefiles=Makefile.am,dlg/Makefile.am,
 version_control=None
-project_type=normal_empty
 author=Jürgen Vigna
+project_type=normal_empty
 sub_dir=dlg/
 lfv_open_groups=Headers,Sources,Dialogs,
 workspace=1
-project_name=LyxGUI
 version=0.1
+project_name=LyxGUI
 email=jug@sad.it
 kdevprj_version=1.0beta2
 [formcopyrightdialog.C]
@@ -90,24 +90,24 @@ install_location=
 dist=true
 install=false
 type=SOURCE
+[Makefile.am]
+files=lyxgui.kdevprj,FormCopyright.h,FormCopyright.C,formcopyrightdialog.h,formcopyrightdialog.C,formcopyrightdialogdata.C,
+sub_dirs=dlg,
+type=prog_main
+sub_dirs=dlg<,dlg,
+type=normal
 [lyxgui.kdevprj]
 install_location=
 dist=true
 install=false
 type=DATA
-[Makefile.am]
-files=lyxgui.kdevprj,FormCopyright.h,FormCopyright.C,formcopyrightdialog.h,formcopyrightdialog.C,formcopyrightdialogdata.C,
-type=normal
-sub_dirs=dlg<,dlg,
-type=prog_main
-sub_dirs=dlg,
-[formcopyrightdialog.h]
-install_location=
-dist=true
-install=false
-type=HEADER
 [formcopyrightdialogdata.C]
 install_location=
 dist=true
 install=false
 type=SOURCE
+[formcopyrightdialog.h]
+install_location=
+dist=true
+install=false
+type=HEADER
