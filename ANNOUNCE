@@ -44,12 +44,12 @@ available at
 	ftp://ftp.lyx.org/pub/lyx/bin/1.3.0
  
 If you find what you think is a bug in LyX 1.3.0, you may either
-e-mail the LyX user's mailing list (lyx-users@lists.lyx.org), or open
+e-mail the LyX developers' mailing list (lyx-devel@lists.lyx.org), or open
 a bug report at http://bugzilla.lyx.org
 
 If you're having trouble using the new version of LyX, or have a question,
-first check out http://www.lyx.org/help/, and e-mail the LyX user's list if you
-can't find an answer there.  
+first check out http://www.lyx.org/help/, and e-mail the LyX users' list 
+(lyx-users@lists.lyx.org) if you can't find an answer there.  
 
 Enjoy!
 
@@ -66,10 +66,6 @@ either Qt 2.x or 3.x and is mostly feature complete. Note that some
 of the dialogs are slightly different in design, but are generally
 functionally equivalent.
 
-Note that if Qt is using Xft2/fontconfig, you may need to install the
-latex-ttf-fonts package on ftp://ftp.lyx.org/ to get maths symbols
-displayed properly.
-
 ** Xforms frontend
 
 The advent of the Qt frontend does not mean that the historical xforms
@@ -83,6 +79,8 @@ General Public License), and the availability of the source means that
 many bugs that have been plaguing LyX have been fixed in xforms. You
 are advised to upgrade to xforms 1.0 to enjoy all these new fixes. 
 In fact, LyX 1.3.0 no longer supports versions of xforms older than 0.89.5.
+Moreover, support for xforms older than 1.0 will be removed in the next
+release. You have been warned ;-)
 
 In most cases the dialogs have been designed to make it impossible to input 
 invalid parameters. The exception to this rule is the input of length data. 

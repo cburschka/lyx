@@ -53,7 +53,7 @@ provides version information on the build of LyX.
 sets system directory. Normally not needed.
 .TP
 .BI \-userdir " directory"
-sets user directory. Needed if you want to use LyX with different lyxrc 
+sets user directory. Needed if you want to use LyX with different lyxrc
 settings.
 .TP
 .BI \-dbg " feature[,feature...]"
@@ -83,7 +83,7 @@ window; see \fIX(1)\fR.
 specifies the server to connect to.
 .TP
 .BI \-bw " borderwidth"
-specifies the border width to use to built-in objects. 
+specifies the border width to use to built-in objects.
 .TP
 .BI \-visual " visualName"
 requests a visual by name such as TrueColor etc. By default the
@@ -96,8 +96,8 @@ requests a specific depth. Try "\fB-depth\fR best" or "\fB-depth\fR
 .TP
 .BI \-debug " level"
 generates some info about the state of the
-.B XForms. 
-where 
+.B XForms.
+where
 .I level
 is an integer between 1-5 and controls the amount of
 information to output. Depending on the options used
@@ -106,7 +106,7 @@ when the
 was built, a level more than 3 might not be available.
 .TP
 .B \-sync
-runs the application in synchronous mode with debug level set to 4. 
+runs the application in synchronous mode with debug level set to 4.
 .TP
 .B \-private
 requests a private colormap for the application.
@@ -122,7 +122,7 @@ requests a standard colormap.
 .TP
 .B \-name " newname"
 specifies the application name under which resources are to be
-obtained, rather than the default executable file name. 
+obtained, rather than the default executable file name.
 .SH ENVIRONMENT
 .TP
 .B LYX_DIR_13x
@@ -137,14 +137,14 @@ The system directory is determined by searching for the file
 .br
 3) Maybe <path of binary>/TOP_SRCDIR/lib
 .br
-4) <path of binary>/../share/<name of binary>/ 
+4) <path of binary>/../share/<name of binary>/
 .br
 5) hardcoded lyx_dir (usually /usr/local/share/lyx on UNIX and %X11ROOT%\\XFree86\\lib\\X11\\lyx on OS/2 with XFree)
 .TP
 .B LYX_USERDIR_13x
 can be used to specify which user directory to use.
 .PP
-The user directory is, in order of precedence: 
+The user directory is, in order of precedence:
 .br
 1) -userdir command line parameter
 .br
@@ -160,9 +160,9 @@ strings in other languages.
 .nf
 .ta \w'\fILIBDIR\fR/lyxrc.in  'u
 ~/.lyx/preferences      Personal configuration file
-~/.lyx/lyxrc.defaults   Personal autodetected configuration file 
+~/.lyx/lyxrc.defaults   Personal autodetected configuration file
 \fILIBDIR\fR/lyxrc      System wide configuration file
-\fILIBDIR\fR/lyxrc.defaults System wide autodetected configuration file 
+\fILIBDIR\fR/lyxrc.defaults System wide autodetected configuration file
 \fILIBDIR\fR/configure  Updates \fBLyX\fR if config has changed
 \fILIBDIR\fR/bind/      Keybindings
 \fILIBDIR\fR/clipart/   Clipart pictures

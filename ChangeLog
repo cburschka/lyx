@@ -1,3 +1,21 @@
+2003-02-06  Angus Leeming  <leeming@lyx.org>
+
+	* ANNOUNCE: email the devel list with bugs. Move fontconfig stuff to
+	install.
+
+	* INSTALL: a chunk on using fontconfig with the Qt frontend.
+
+	* ABOUT-NLS:
+	* ANNOUNCE:
+	* COPYING:
+	* INSTALL:
+	* lyx.man:
+	* NEWS:
+	* README:
+	* README.OS2:
+	* README.Win32:
+	* UPGRADING: whitespace
+
 2003-02-04  Angus Leeming  <leeming@lyx.org>
 
 	* Makefile.am: allow lyx.xpm to be found when making rpmdist in
@@ -5,8 +23,8 @@
 
 2003-02-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* ANNOUNCE: 
-	* INSTALL: 
+	* ANNOUNCE:
+	* INSTALL:
 	* README: mention that all qt 3.x should work (not only 3.0.x).
 
 	* INSTALL: mention python 1.5.2.

@@ -3,16 +3,16 @@ Preamble: LyX version scheme
 	In September of 1999 the LyX Team decided that we could no
 	longer successfully use the two strand development process
 	like the Linux kernel. The idea was to to switch to a
-	development model similar to that used by Fetchmail where 
+	development model similar to that used by Fetchmail where
 	we would make only small stable changes between releases
 	and release more often.  This lead to the 1.1.x series of LyX
-	releases during which the inhards of the program were rewritten 
+	releases during which the inhards of the program were rewritten
 	to make use of the C++ Standard Library features, establish
 	the foundations of GUI/system independence, and generally
 	clean up the data structures used in the core of LyX.
 
 	As of April 2002, this transition phase is completed and we
-	feel it is time to switch to (yet) another version scheme. 
+	feel it is time to switch to (yet) another version scheme.
 	This new series will be in a state of continual advancement.
 	Note the word "advancement" and not "development." Development
 	will be occurring in branches of CVS and once the
@@ -21,13 +21,13 @@ Preamble: LyX version scheme
 
 	LyX still uses a continuous numbering scheme in which odd or
 	even numbering is not significant. Instead a number '1.x.y'
-	indicates stable release '1.x', fix level 'y'. Prereleases 
+	indicates stable release '1.x', fix level 'y'. Prereleases
 	are labeled with a "pre" suffix. Thus there are three possible
 	file names:
 
 	   lyx-1.2.0.tar.gz       -- stable release
 	   lyx-1.2.2.tar.gz       -- second maintenance release of the
-	                             1.2.0 stable release 
+	                             1.2.0 stable release
 	   lyx-1.2.0pre1.tar.gz   -- potentially unstable test release
 
 	The maintenance releases are designed primarily to fix bugs. The
@@ -48,16 +48,16 @@ What is LyX?
 	software.
 
 	You can read more about this concept in the documentation,
-	which you'll find under the Help menu.  If you plan to use LyX, 
-	you really should read about it to be able to make the best of 
+	which you'll find under the Help menu.  If you plan to use LyX,
+	you really should read about it to be able to make the best of
 	it.
 
 What is LyX not?
 
 	LyX is not just another word processor that claims to be a
 	Desktop Publishing program.  It's a more modern way of
-	creating documents that look much nicer, but without wasting 
-	time with layout-fiddling.  For these reasons you might need 
+	creating documents that look much nicer, but without wasting
+	time with layout-fiddling.  For these reasons you might need
 	little time to get used to the differences.
 	If you are looking for a free Desktop Publishing program for
 	Unix, you will be disappointed.
@@ -91,7 +91,7 @@ How do I install a binary distribution of LyX?
 How do I upgrade from an earlier LyX version?
 
 	Read the file UPGRADING for info on this subject.
-	If you are upgrading from version 0.12.0 or later, you don't 
+	If you are upgrading from version 0.12.0 or later, you don't
 	need to do anything special.
 
 What do I need to compile LyX from the source distribution?
@@ -195,15 +195,15 @@ How do I submit a bug report?
 	list, or use the LyX bug tracker at http://bugzilla.lyx.org/.
 	Don't forget to mention which version you are having problems with!
 
-How can I participate in the development of LyX? 
+How can I participate in the development of LyX?
 
 	Any help with the development of LyX is greatly appreciated--
 	after all LyX wouldn't be what it is today without the help
 	of volunteers. We need your help!
 
-	If you want to work on LyX, you should contact the developer's 
-	mailing list for discussion on how to do your stuff.  LyX is being 
-	cleaned up, and therefore it's important to follow some rules. 
+	If you want to work on LyX, you should contact the developer's
+	mailing list for discussion on how to do your stuff.  LyX is being
+	cleaned up, and therefore it's important to follow some rules.
 	Read about those rules in development/Code_rules/.
 
 	If you don't know C++, there are many other ways to contribute.
@@ -211,7 +211,7 @@ How can I participate in the development of LyX?
 	documentation or menus/error messages, or by writing a new keymap.
 	Write a new textclass.  Work on reLyX (Perl). Find bugs (but please
 	read the list of known bugs first). Contribute money. Or just offer
-	feature suggestions (but please read the online TODO list first).  
+	feature suggestions (but please read the online TODO list first).
 
 Thank you for trying LyX, and we appreciate your feedback in the mailing
 lists.

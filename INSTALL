@@ -17,7 +17,7 @@ These four steps will compile, test and install LyX:
 
 	4) make install
 	   will install it. You can use "make install-strip" instead
-           if you want a smaller binary. 
+           if you want a smaller binary.
 
 
 Note for CVS checkouts
@@ -29,7 +29,7 @@ type "./autogen.sh" to build the needed configuration
 files and proceed as stated below.
 
 You will also probably need GNU m4 (perhaps installed as gm4).
- 
+
 Requirements
 ------------
 
@@ -52,10 +52,10 @@ Both an Xforms and Xpm libraries should be installed to compile LyX.
 It is imperative that you have the correct versions of these
 libraries, and their associated header files.
 
-The xforms library has been very recently updated to version 1.0. 
-This version has been released under the LGPL (Lesser General Public 
-License), and the availability of the source means that many bugs that 
-have been plaguing LyX have been fixed in xforms. You are advised to 
+The xforms library has been very recently updated to version 1.0.
+This version has been released under the LGPL (Lesser General Public
+License), and the availability of the source means that many bugs that
+have been plaguing LyX have been fixed in xforms. You are advised to
 upgrade to xforms 1.0 to enjoy all these new fixes.
 In fact, LyX 1.3.0 no longer supports versions of xforms older than 0.89.5.
 
@@ -66,7 +66,7 @@ You can get the source from
 
 If you use a rpm-based linux distribution, such as RedHat or Mandrake,
 we recommend that you grab a version of xforms from
-	ftp://ftp.lyx.org/pub/lyx/contrib 
+	ftp://ftp.lyx.org/pub/lyx/contrib
 Look for the xforms-1.0-release.src.rpm or the binary libforms*.i386.rpm.
 
 In addition, you must have libXpm version 4.7 or newer.
@@ -77,6 +77,21 @@ LyX has been tested with both Qt 2.x and 3.x libraries. The only special
 point to make is that you must ensure that both LyX and the Qt libraries
 are compiled with the same C++ compiler.
 
+Note that if Qt is using Xft2/fontconfig, you may need to install the
+latex-ttf-fonts package, tobe found on ftp://ftp.lyx.org/ to get maths
+symbols displayed properly. To find out, type:
+	ldd `which lyx` | grep fontconfig
+at the console. Both RH8 and Debian unstable distributions are known
+to use fontconfig.
+
+If, however, your version of Qt does not use fontconfig, then the
+/usr/local/share/lyx/xfonts directory (or equivalent) should be added to
+the font path. This is done automatically by LyX if LyX is run on
+the local machine, and the X server supports Postscript fonts. If, however,
+you're running LyX remotely, then you'll have to do this step yourself.
+'man xset' is your friend.
+
+* Other things to note
 
 If you make modifications to files in src/ (for example by applying a
 patch), you will need to have the GNU gettext package installed, due
@@ -89,8 +104,8 @@ much on it.
 
 To use the thesaurus, you will need to install libAikSaurus, available
 from:
-    http://aiken.clan11.com/aiksaurus/ 
- 
+    http://aiken.clan11.com/aiksaurus/
+
 The two following programs should be available at configuration time:
 
   o Perl (at least 5.002) is needed for the reLyX script. reLyX will
@@ -98,7 +113,7 @@ The two following programs should be available at configuration time:
     variable PERL is set to point to some program, this value will be
     used, even if the program does no exist (this can be useful if
     the machine on which LyX is built is not the one where it will
-    run). 
+    run).
 
   o LaTeX2e should be correctly setup for the user you are logged in
     as. Otherwise, LyX will not be able to run a number of tests. Note
@@ -112,9 +127,9 @@ called automatically when opening a file).
 Creating the Makefile
 ---------------------
 
-LyX can be configured using GNU autoconf utility which attempts to guess 
-the configuration needed to suit your system.  The standard way to use it 
-is described in the file INSTALL.autoconf.  In most cases you will be able 
+LyX can be configured using GNU autoconf utility which attempts to guess
+the configuration needed to suit your system.  The standard way to use it
+is described in the file INSTALL.autoconf.  In most cases you will be able
 to create the Makefile by typing
 
   ./configure
@@ -123,7 +138,7 @@ For more complicated cases, LyX configure takes the following specific
 flags:
 
   o --with-extra-lib=DIRECTORY that specifies the path where LyX will find
-    extra libraries (Xpm, xforms) it needs.  Defaults to NONE (i.e. search 
+    extra libraries (Xpm, xforms) it needs.  Defaults to NONE (i.e. search
     in standard places).  You can specify several directories, separated
     by colons.
 
@@ -153,8 +168,8 @@ flags:
 
   o --disable-optimization - you can use this to disable compiler
     optimization of LyX. The compile may be much quicker with some
-    compilers, but LyX will run more slowly. 
- 
+    compilers, but LyX will run more slowly.
+
   o --enable-debug will add debug information to your binary. This
     requires a lot more disk space, but is a must if you want to try to
     debug problems in LyX. The default is to have debug information
@@ -164,7 +179,7 @@ There are also flags to control the internationalization support in
 LyX:
 
   o --disable-nls suppresses all internationalization support,
-    yielding a somewhat smaller code. 
+    yielding a somewhat smaller code.
 
   o --with-included-gettext forces the use of the included GNU gettext
     library, although you might have another one installed.
@@ -174,7 +189,7 @@ LyX:
     care.
 
   o You can also set the environment variable LINGUAS to a list of
-    language in case ou do not want to install all the translation 
+    language in case ou do not want to install all the translation
     files. For example, if you are only interested in German and
     Finnish, you can type (with sh or bash)
         export LINGUAS='de fi'
@@ -185,9 +200,9 @@ Moreover, the following generic configure flags may be useful:
   o --prefix=DIRECTORY specifies the root directory to use for
     installation. [defaults to /usr/local]
 
-  o --datadir=DIRECTORY gives the directory where all extra LyX 
+  o --datadir=DIRECTORY gives the directory where all extra LyX
     files (lyxrc example, documentation, templates and layouts
-    definitions) will be installed. 
+    definitions) will be installed.
     [defaults to ${prefix}/share/lyx${program_suffix}]
 
   o --bindir=DIRECTORY gives the directory where the lyx binary
@@ -198,19 +213,19 @@ Moreover, the following generic configure flags may be useful:
 
 Note that the --with-extra-* commands are not really robust when it
 comes to use of relative paths.  If you really want to use a relative path
-here, you can prepend it with "`pwd`/". 
+here, you can prepend it with "`pwd`/".
 
-If you do not like the default compile flags used (-g -O2 on gcc), you can 
+If you do not like the default compile flags used (-g -O2 on gcc), you can
 set CXXFLAGS variable to other values as follows:
 
   o CXXFLAGS='-O2' (sh, bash)
   o setenv CXXFLAGS '-O2' (csh, tcsh)
 
-Similarly, if you want to force the use of some specific compiler, you can 
+Similarly, if you want to force the use of some specific compiler, you can
 give a value to the CXX variable.
 
-If you encounter problems, please read the section 'Problems' at the end of 
-this file. 
+If you encounter problems, please read the section 'Problems' at the end of
+this file.
 
 In particular, the following options could be useful in some desperate
 cases:
@@ -222,12 +237,12 @@ cases:
   o --enable-assertions that make the compiler generate run-time
     code which checks that some variables have sane values. Opposite
     is --disable-assertions.  By default, this flag is on for
-    development versions only. 
+    development versions only.
 
   o --without-latex-config that disables the automatic detection of your
     latex configuration.  This detection is automatically disabled if
     latex cannot be found.  If you find that you have to use this
-    flag, please report it as a bug. 
+    flag, please report it as a bug.
 
 
 Compiling and installing LyX
@@ -278,23 +293,23 @@ Preparing a binary distribution for the use of others
   o Compile LyX with the right compiler switches for your
     architecture. Make sure you use the --without-latex-config switch
     of configure, since others might not be interested by your
-    configuration :-) 
+    configuration :-)
 
   o Create a file README.bin describing your distribution and
-    referring to *you* if problems arise. As a model, you can use the 
+    referring to *you* if problems arise. As a model, you can use the
     file development/tools/README.bin.example, which can be a good
-    starting point. 
+    starting point.
 
   o Type `make bindist'. This will create a file
-    lyx-1.xx.yy-bin.tar.gz. Rename it to reflect you architecture 
+    lyx-1.xx.yy-bin.tar.gz. Rename it to reflect you architecture
     and the peculiarities of your build (e.g. static vs. dynamic).
 
-  o Check that everything is correct by unpacking the distribution 
-    in some private place and running it. In particular, check the 
+  o Check that everything is correct by unpacking the distribution
+    in some private place and running it. In particular, check the
     output of `ldd lyx' to know which libraries are really needed.
 
   o Upload your binary file to ftp.devel.lyx.org:/pub/incoming, and
-    notify larsbj@lyx.org.  
+    notify larsbj@lyx.org.
 
 
 Problems
@@ -306,11 +321,11 @@ architectures. If you find that some of this hints are wrong, please
 notify us.
 
   o If you have problems indicating that configure cannot find a part of
-    the xforms or Xpm library, use the --with-extra-lib and --with-extra-inc 
-    options of configure to specify where these libraries reside.  
+    the xforms or Xpm library, use the --with-extra-lib and --with-extra-inc
+    options of configure to specify where these libraries reside.
 
   o Configure will seemingly fail to find xpm.h and forms.h on linux
-    if the kernel headers are not available. Two cases are possible: 
+    if the kernel headers are not available. Two cases are possible:
 
       - you have not installed the kernel sources. Then you should
         install them or at least the kernel-headers package (or
@@ -319,12 +334,12 @@ notify us.
       - you have the sources, but you did a 'make mrproper' in the
 	kernel directory (this  this removes some symbolic links that
 	are needed for compilation). A 'make symlinks' in linux kernel
-	sources fixes that. 
+	sources fixes that.
 
   o if you are using RedHat Linux 7.x, you must make sure you have the
     latest updated gcc and related packages installed (at least -85),
     or LyX will not compile or will be mis-compiled.
- 
+
   o if you get an error message when compiling LyX that looks like this :
 
     ../../src/minibuffer.h:17: using directive `Object' introduced
@@ -352,7 +367,7 @@ notify us.
     cxx V6.2 will compile LyX out of the box.
     cxx V6.3-020 is also known to work, although there is a bug in
     /usr/include/cxx/deque that will break compilation in FormPreferences.C.
-    Compaq are investigating, but a patch that works /now/ is: 
+    Compaq are investigating, but a patch that works /now/ is:
 
 --- /usr/include/cxx/deque_safe Mon Mar  4 21:09:50 2002
 +++ /usr/include/cxx/deque      Mon Mar  4 21:09:00 2002
