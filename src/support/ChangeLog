@@ -1,3 +1,8 @@
+2005-01-16  Angus Leeming  <leeming@lyx.org>
+
+	* filetools.C (createLyXTmpDir): add some missing brackets to the
+	if-block. OS/2 users will be happier.
+
 2005-01-02  Kayvan Sylvan  <kayvan@sylvan.com>
 
 	* os_win32.C (external_path): Check the new cygwin_path_fix_ bool
