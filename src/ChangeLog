@@ -1,5 +1,9 @@
 2004-03-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
+	* buffer.C: increment file format to 232.
+	* LaTeXFeatures.C: add bibtopic package.
+	* bufferparams.[Ch]: param \use_bibtopic.
+	
 	* lyxrc.[Ch]: add lyxrc bibtex_command
 	* LaTeX.C: use rc.bibtex_command instead of hardcoded string.
 	

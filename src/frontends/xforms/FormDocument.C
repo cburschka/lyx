@@ -70,6 +70,11 @@ bool const scalableTabfolders = false;
 bool const scalableTabfolders = true;
 #endif
 
+enum {
+	DEFCITE,
+	NATBIB,
+	JURABIB
+};
 
 } // namespace anon
 
@@ -298,17 +303,28 @@ void FormDocument::build()
 	bcview().addReadOnly(options_->counter_secnumdepth);
 	bcview().addReadOnly(options_->counter_tocdepth);
 	bcview().addReadOnly(options_->choice_ams_math);
-	bcview().addReadOnly(options_->check_use_natbib);
-	bcview().addReadOnly(options_->check_use_jurabib);
+	bcview().addReadOnly(options_->radio_use_defcite);
+	bcview().addReadOnly(options_->radio_use_jurabib);
+	bcview().addReadOnly(options_->radio_use_natbib);
+	bcview().addReadOnly(options_->check_bibtopic);
 	bcview().addReadOnly(options_->choice_citation_format);
 	bcview().addReadOnly(options_->input_float_placement);
 	bcview().addReadOnly(options_->choice_postscript_driver);
 	
+	// add cite style radio buttons
+	citestyle_.init(options_->radio_use_defcite,   DEFCITE);
+	citestyle_.init(options_->radio_use_natbib,  NATBIB);
+	citestyle_.init(options_->radio_use_jurabib,  JURABIB);
+	
 	// set up the tooltips for optionss form
-	string str = _("Use the natbib styles for natural sciences and arts");
-	tooltips().init(options_->check_use_natbib, str);
+	string str = _("Use LaTeX's default citation style");
+	tooltips().init(options_->radio_use_defcite, str);
+	str = _("Use the natbib styles for natural sciences and arts");
+	tooltips().init(options_->radio_use_natbib, str);
 	str = _("Use the jurabib styles for law and humanities");
-	tooltips().init(options_->check_use_jurabib, str);
+	tooltips().init(options_->radio_use_jurabib, str);
+	str = _("Select this if you want to split your bibliography into sections");
+	tooltips().init(options_->check_bibtopic, str);
 
 	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(options_->input_float_placement);
@@ -514,17 +530,11 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 			fl_set_choice_text(class_->choice_skip_units,
 					   default_unit.c_str());
 
-	} else if (ob == options_->check_use_natbib) {
+	} else if (ob == options_->radio_use_jurabib || 
+		   ob == options_->radio_use_defcite || 
+		   ob == options_->radio_use_natbib) {
 		setEnabled(options_->choice_citation_format,
-			   fl_get_button(options_->check_use_natbib));
-		if (fl_get_button(options_->check_use_natbib))
-			fl_set_button(options_->check_use_jurabib, 0);
-			   
-	} else if (ob == options_->check_use_jurabib) {
-		if (fl_get_button(options_->check_use_jurabib))
-			fl_set_button(options_->check_use_natbib, 0);
-		setEnabled(options_->choice_citation_format,
-			   fl_get_button(options_->check_use_natbib));
+			   fl_get_button(options_->radio_use_natbib));
 
 	} else if (ob == branch_->browser_all_branches ||
 			ob == branch_->browser_selection ||
@@ -1013,10 +1023,11 @@ bool FormDocument::options_apply(BufferParams & params)
 	params.graphicsDriver = getString(options_->choice_postscript_driver);
 	params.use_amsmath = static_cast<BufferParams::AMS>(
 		fl_get_choice(options_->choice_ams_math) - 1);
-	params.use_natbib  = fl_get_button(options_->check_use_natbib);
+	params.use_natbib  = fl_get_button(options_->radio_use_natbib);
 	params.use_numerical_citations  =
 		fl_get_choice(options_->choice_citation_format) - 1;
-	params.use_jurabib  = fl_get_button(options_->check_use_jurabib);
+	params.use_jurabib  = fl_get_button(options_->radio_use_jurabib);
+	params.use_bibtopic  = fl_get_button(options_->check_bibtopic);
 
 	int tmpchar = int(fl_get_counter_value(options_->counter_secnumdepth));
 	if (params.secnumdepth != tmpchar)
@@ -1182,11 +1193,12 @@ void FormDocument::options_update(BufferParams const & params)
 	fl_set_choice_text(options_->choice_postscript_driver,
 			   params.graphicsDriver.c_str());
 	fl_set_choice(options_->choice_ams_math, params.use_amsmath + 1);
-	fl_set_button(options_->check_use_natbib,  params.use_natbib);
+	fl_set_button(options_->radio_use_natbib,  params.use_natbib);
 	fl_set_choice(options_->choice_citation_format,
 		      int(params.use_numerical_citations)+1);
 	setEnabled(options_->choice_citation_format, params.use_natbib);
-	fl_set_button(options_->check_use_jurabib,  params.use_jurabib);
+	fl_set_button(options_->radio_use_jurabib,  params.use_jurabib);
+	fl_set_button(options_->check_bibtopic,  params.use_bibtopic);
 	fl_set_counter_value(options_->counter_secnumdepth, params.secnumdepth);
 	fl_set_counter_value(options_->counter_tocdepth, params.tocdepth);
 	if (!params.float_placement.empty())

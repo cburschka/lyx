@@ -1260,7 +1260,7 @@ argument: 0
 Name: form_document_options
 Width: 395
 Height: 315
-Number of Objects: 10
+Number of Objects: 12
 
 --------------------
 class: FL_BOX
@@ -1283,7 +1283,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 185 15 120 25
+box: 185 10 120 25
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -1301,7 +1301,7 @@ argument: 0
 --------------------
 class: FL_COUNTER
 type: SIMPLE_COUNTER
-box: 185 55 80 25
+box: 185 40 80 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_LEFT
@@ -1323,7 +1323,7 @@ argument: 0
 --------------------
 class: FL_COUNTER
 type: SIMPLE_COUNTER
-box: 185 90 80 25
+box: 185 70 80 25
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_BLUE
 alignment: FL_ALIGN_LEFT
@@ -1345,7 +1345,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 185 125 140 25
+box: 185 100 140 25
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -1361,30 +1361,30 @@ callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
-class: FL_CHECKBUTTON
-type: PUSH_BUTTON
-box: 35 205 140 25
+class: FL_ROUND3DBUTTON
+type: RADIO_BUTTON
+box: 25 205 140 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Use Natbib|#N
+label: Natbib|#N
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: check_use_natbib
+name: radio_use_natbib
 callback: C_FormBaseInputCB
 argument: 0
 
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 185 235 140 25
+box: 235 230 140 25
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
-alignment: FL_ALIGN_LEFT
+alignment: FL_ALIGN_TOP_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
@@ -1399,7 +1399,7 @@ argument: 0
 --------------------
 class: FL_CHOICE
 type: NORMAL_CHOICE
-box: 185 155 140 25
+box: 185 130 140 25
 boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
@@ -1417,7 +1417,7 @@ argument: 0
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 15 190 370 110
+box: 15 170 370 95
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -1433,20 +1433,56 @@ callback:
 argument: 
 
 --------------------
-class: FL_CHECKBUTTON
-type: PUSH_BUTTON
-box: 35 265 140 25
+class: FL_ROUND3DBUTTON
+type: RADIO_BUTTON
+box: 25 230 140 25
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Use Jurabib|#J
+label: Jurabib|#J
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
-name: check_use_jurabib
+name: radio_use_jurabib
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_ROUND3DBUTTON
+type: RADIO_BUTTON
+box: 25 180 155 25
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Default (numerical)|#D
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: radio_use_defcite
+callback: C_FormBaseInputCB
+argument: 0
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 15 270 255 25
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Sectioned bibliography|#e
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_bibtopic
 callback: C_FormBaseInputCB
 argument: 0
 

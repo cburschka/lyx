@@ -1,6 +1,27 @@
 LyX file-format changes
 -----------------------
 
+
+2004-03-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* format incremented to 232.
+	
+	* Support for bibtopic (sectioned bibliographies).
+	  - bufferparam \use_bibtopic [1|0]
+	  - the bibtex inset has a second argument for bibtopic's
+	    btPrint{Cited|NotCited|All} command:
+	    < 231:
+	    \begin_inset LatexCommand \bibtex[<style>]{<database>}
+	    now:
+	    \begin_inset LatexCommand \bibtex[<style>][<btPrintX>]{<database>}
+	  Forwards, there's nothing to be done. Backwards, \usepackage[dot]{bibtopic}
+	  has to be inserted to the preamble. Instead of the bibtex inset, the LaTeX
+	  \bibliographystyle{<style>}
+	  \begin{btSect}{<database>}
+	  \<btprintX>
+	  \end{btSect}
+	  has to be inserted.
+
 2004-03-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* format incremented to 231.

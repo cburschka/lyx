@@ -45,6 +45,8 @@ public:
 	/// build filelists of all availabe bib/bst/cls/sty-files. done through
 	/// kpsewhich and an external script, saved in *Files.lst
 	void rescanBibStyles() const;
+	/// do we use bibtopic (for sectioned bibliography)?
+	bool usingBibtopic() const;
 };
 
 

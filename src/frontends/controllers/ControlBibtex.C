@@ -14,6 +14,9 @@
 
 #include "ControlBibtex.h"
 
+#include "buffer.h"
+#include "bufferparams.h"
+
 #include "lyxrc.h"
 #include "helper_funcs.h"
 #include "tex_helpers.h"
@@ -85,4 +88,10 @@ void ControlBibtex::getBibFiles(vector<string> & data) const
 void ControlBibtex::rescanBibStyles() const
 {
 	rescanTexStyles();
+}
+
+
+bool ControlBibtex::usingBibtopic() const
+{
+    return kernel().buffer().params().use_bibtopic;
 }

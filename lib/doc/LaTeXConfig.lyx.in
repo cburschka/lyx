@@ -1,5 +1,5 @@
 #LyX 1.4.0cvs created this file. For more info see http://www.lyx.org/
-\lyxformat 230
+\lyxformat 232
 \textclass article
 \language english
 \inputencoding default
@@ -14,6 +14,7 @@
 \use_natbib 0
 \use_numerical_citations 0
 \use_jurabib 0
+\use_bibtopic 0
 \paperorientation portrait
 \secnumdepth 2
 \tocdepth 3
@@ -2414,6 +2415,32 @@ index of algorithms
 
 \begin_layout Subsection
 
+bibtopic
+\end_layout
+
+\begin_layout Description
+
+Found: @chk_bibtopic@
+\end_layout
+
+\begin_layout Description
+
+CTAN: 
+\family typewriter 
+macros/latex/contrib/bibtopic/
+\end_layout
+
+\begin_layout Description
+
+Notes: The package 
+\family sans 
+bibtopic
+\family default 
+ is used to split BibTeX created bibliographies into sections.
+\end_layout
+
+\begin_layout Subsection
+
 fancyhdr
 \end_layout
 
@@ -2513,15 +2540,13 @@ jura
 bib
 \family default 
  
-\color None
+\color none
 (
 \begin_inset LatexCommand \url{http://www.jurabib.org}
 
 \end_inset 
 
-)
-\color default
- can be used as an alternative to 
+) can be used as an alternative to 
 \family sans 
 natbib
 \family default 

@@ -306,6 +306,12 @@ string const LaTeXFeatures::getPackages() const
 		}
 		packages << "]{natbib}\n";
 	}
+	
+	// bibtopic -- the dot provides the aux file naming which
+	// LyX can detect.
+	if (isRequired("bibtopic")) {
+		packages << "\\usepackage[dot]{bibtopic}\n";
+	}
 
 	return packages.str();
 }

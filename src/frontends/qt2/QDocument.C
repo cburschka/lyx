@@ -194,6 +194,8 @@ void QDocument::apply()
 		dialog_->biblioModule->citeStyleCO->currentItem();
 	params.use_jurabib =
 		dialog_->biblioModule->citeJurabibRB->isChecked();
+	params.use_bibtopic =
+		dialog_->biblioModule->bibtopicCB->isChecked();
 
 	// language & quotes
 	if (dialog_->langModule->defaultencodingCB->isChecked()) {
@@ -440,7 +442,7 @@ void QDocument::update_contents()
 	dialog_->preambleModule->preambleMLE->setText(preamble);
 
 	// biblio
-	dialog_->biblioModule->citeNatbibRB->setChecked(
+	dialog_->biblioModule->citeDefaultRB->setChecked(
 		!params.use_natbib && !params.use_jurabib);
 	dialog_->biblioModule->citeNatbibRB->setChecked(
 		params.use_natbib);
@@ -448,6 +450,8 @@ void QDocument::update_contents()
 		params.use_numerical_citations ? 1 : 0);
 	dialog_->biblioModule->citeJurabibRB->setChecked(
 		params.use_jurabib);
+	dialog_->biblioModule->bibtopicCB->setChecked(
+		params.use_bibtopic);
 
 	// language & quotes
 	int const pos = int(findPos(lang_,

@@ -5,6 +5,7 @@
  *
  * \author John Levon
  * \author Herbert Voß
+ * \author Jürgen Spitzmüller
  *
  * Full author contact details are available in file CREDITS.
  */
@@ -64,6 +65,8 @@ void QBibtex::build_dialog()
 
 void QBibtex::update_contents()
 {
+	bool bibtopic = controller().usingBibtopic();
+
 	dialog_->databaseLB->clear();
 
 	string bibs(controller().params().getContents());
@@ -90,18 +93,31 @@ void QBibtex::update_contents()
 	string bibstyle(controller().params().getOptions());
 
 	// bibtotoc exists?
-	if (prefixIs(bibstyle, bibtotoc)) {
-		dialog_->bibtocCB->setChecked(true);
-
+	if (prefixIs(bibstyle, bibtotoc)){
 		// bibstyle exists?
 		if (contains(bibstyle,','))
 			bibstyle = split(bibstyle, bibtotoc, ',');
 		else
 			bibstyle.erase();
-	} else
+	}
+
+	if (prefixIs(bibstyle, bibtotoc) && !bibtopic)
+		dialog_->bibtocCB->setChecked(true);
+	else
 		dialog_->bibtocCB->setChecked(false);
 
-
+	dialog_->bibtocCB->setEnabled(!bibtopic);
+	
+	string btprint(controller().params().getSecOptions());
+	int btp = 0;
+	if (btprint == "btPrintNotCited")
+		btp = 1;
+	else if (btprint == "btPrintAll")
+		btp = 2;
+	
+	dialog_->btPrintCO->setCurrentItem(btp);
+	dialog_->btPrintCO->setEnabled(bibtopic);
+		
 	dialog_->styleCB->clear();
 
 	int item_nr(-1);
@@ -152,6 +168,27 @@ void QBibtex::apply()
 		// command!
 		controller().params().setOptions(bibstyle);
 	}
+	
+	// bibtopic allows three kinds of sections:
+	// 1. sections that include all cited references of the database(s)
+	// 2. sections that include all uncited references of the database(s)
+	// 3. sections that include all references of the database(s), cited or not
+	int btp = dialog_->btPrintCO->currentItem();
+	
+	switch (btp) {
+	case 0:
+		controller().params().setSecOptions("btPrintCited");
+		break;
+	case 1:
+		controller().params().setSecOptions("btPrintNotCited");
+		break;
+	case 2:
+		controller().params().setSecOptions("btPrintAll");
+		break;
+	}
+	
+	if (!controller().usingBibtopic())
+		controller().params().setSecOptions("");
 }
 
 

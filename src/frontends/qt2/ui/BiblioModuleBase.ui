@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>426</width>
+            <width>418</width>
             <height>376</height>
         </rect>
     </property>
@@ -150,7 +150,7 @@
                 </widget>
             </grid>
         </widget>
-        <spacer row="1"  column="0" >
+        <spacer row="2"  column="0" >
             <property>
                 <name>name</name>
                 <cstring>Spacer2</cstring>
@@ -171,6 +171,21 @@
                 </size>
             </property>
         </spacer>
+        <widget row="1"  column="0" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>bibtopicCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>S&amp;ectioned bibliography</string>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>Select this if you want to split your bibliography into sections</string>
+            </property>
+        </widget>
     </grid>
 </widget>
 <connections>

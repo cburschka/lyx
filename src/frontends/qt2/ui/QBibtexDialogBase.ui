@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>306</width>
-            <height>279</height>
+            <width>298</width>
+            <height>313</height>
         </rect>
     </property>
     <property stdset="1">
@@ -34,7 +34,7 @@
             <name>spacing</name>
             <number>6</number>
         </property>
-        <widget row="4"  column="0" >
+        <widget row="4"  column="0"  rowspan="1"  colspan="2" >
             <class>QLabel</class>
             <property stdset="1">
                 <name>name</name>
@@ -60,7 +60,7 @@
                 <string>The BibTeX style</string>
             </property>
         </widget>
-        <widget row="7"  column="0"  rowspan="1"  colspan="2" >
+        <widget row="8"  column="0"  rowspan="1"  colspan="3" >
             <class>QLayoutWidget</class>
             <property stdset="1">
                 <name>name</name>
@@ -132,7 +132,7 @@
                 </widget>
             </hbox>
         </widget>
-        <widget row="0"  column="0"  rowspan="1"  colspan="2" >
+        <widget row="0"  column="0"  rowspan="1"  colspan="3" >
             <class>QLabel</class>
             <property stdset="1">
                 <name>name</name>
@@ -165,7 +165,7 @@
                 <name>vAlign</name>
             </property>
         </widget>
-        <widget row="1"  column="0"  rowspan="3"  colspan="1" >
+        <widget row="1"  column="0"  rowspan="3"  colspan="2" >
             <class>QListBox</class>
             <property stdset="1">
                 <name>name</name>
@@ -180,7 +180,7 @@
                 <string>Selected BibTeX databases</string>
             </property>
         </widget>
-        <widget row="1"  column="1" >
+        <widget row="1"  column="2" >
             <class>QPushButton</class>
             <property stdset="1">
                 <name>name</name>
@@ -195,7 +195,7 @@
                 <string>Add a BibTeX database file</string>
             </property>
         </widget>
-        <widget row="2"  column="1" >
+        <widget row="2"  column="2" >
             <class>QPushButton</class>
             <property stdset="1">
                 <name>name</name>
@@ -210,7 +210,7 @@
                 <string>Remove the selected database</string>
             </property>
         </widget>
-        <spacer row="3"  column="1" >
+        <spacer row="3"  column="2"  rowspan="2"  colspan="1" >
             <property>
                 <name>name</name>
                 <cstring>Spacer5</cstring>
@@ -231,7 +231,7 @@
                 </size>
             </property>
         </spacer>
-        <widget row="5"  column="0" >
+        <widget row="5"  column="0"  rowspan="1"  colspan="2" >
             <class>QComboBox</class>
             <property stdset="1">
                 <name>name</name>
@@ -254,7 +254,7 @@
                 <string>Chose a style file</string>
             </property>
         </widget>
-        <widget row="5"  column="1" >
+        <widget row="5"  column="2" >
             <class>QPushButton</class>
             <property stdset="1">
                 <name>name</name>
@@ -273,22 +273,7 @@
                 <string>Choose a style file</string>
             </property>
         </widget>
-        <widget row="6"  column="0" >
-            <class>QCheckBox</class>
-            <property stdset="1">
-                <name>name</name>
-                <cstring>bibtocCB</cstring>
-            </property>
-            <property stdset="1">
-                <name>text</name>
-                <string>Add bibliography to &amp;TOC</string>
-            </property>
-            <property>
-                <name>toolTip</name>
-                <string>Add bibliography to the table of contents</string>
-            </property>
-        </widget>
-        <spacer row="6"  column="1" >
+        <spacer row="6"  column="2"  rowspan="2"  colspan="1" >
             <property>
                 <name>name</name>
                 <cstring>Spacer6</cstring>
@@ -309,6 +294,76 @@
                 </size>
             </property>
         </spacer>
+        <widget row="6"  column="1" >
+            <class>QComboBox</class>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>all cited references</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>all uncited references</string>
+                </property>
+            </item>
+            <item>
+                <property>
+                    <name>text</name>
+                    <string>all references</string>
+                </property>
+            </item>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>btPrintCO</cstring>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>This bibliography section contains...</string>
+            </property>
+        </widget>
+        <widget row="6"  column="0" >
+            <class>QLabel</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>btPrintLA</cstring>
+            </property>
+            <property stdset="1">
+                <name>sizePolicy</name>
+                <sizepolicy>
+                    <hsizetype>1</hsizetype>
+                    <vsizetype>0</vsizetype>
+                </sizepolicy>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>C&amp;ontent:</string>
+            </property>
+            <property>
+                <name>buddy</name>
+                <cstring>styleCB</cstring>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>This bibliography section contains...</string>
+            </property>
+        </widget>
+        <widget row="7"  column="0"  rowspan="1"  colspan="2" >
+            <class>QCheckBox</class>
+            <property stdset="1">
+                <name>name</name>
+                <cstring>bibtocCB</cstring>
+            </property>
+            <property stdset="1">
+                <name>text</name>
+                <string>Add bibliography to &amp;TOC</string>
+            </property>
+            <property>
+                <name>toolTip</name>
+                <string>Add bibliography to the table of contents</string>
+            </property>
+        </widget>
     </grid>
 </widget>
 <connections>
@@ -343,6 +398,12 @@
         <slot>change_adaptor()</slot>
     </connection>
     <connection>
+        <sender>btPrintCO</sender>
+        <signal>activated(int)</signal>
+        <receiver>QBibtexDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
+    <connection>
         <sender>addBibPB</sender>
         <signal>clicked()</signal>
         <receiver>QBibtexDialogBase</receiver>
@@ -361,6 +422,7 @@
     <tabstop>styleCB</tabstop>
     <tabstop>stylePB</tabstop>
     <tabstop>bibtocCB</tabstop>
+    <tabstop>btPrintCO</tabstop>
     <tabstop>okPB</tabstop>
     <tabstop>closePB</tabstop>
 </tabstops>

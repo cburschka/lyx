@@ -44,6 +44,8 @@ public:
 	bool addDatabase(std::string const &);
 	///
 	bool delDatabase(std::string const &);
+	///
+	void validate(LaTeXFeatures &) const;
 protected:
 	///
 	virtual void priv_dispatch(LCursor & cur, FuncRequest & cmd);

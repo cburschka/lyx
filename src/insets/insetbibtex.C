@@ -17,6 +17,7 @@
 #include "dispatchresult.h"
 #include "debug.h"
 #include "funcrequest.h"
+#include "LaTeXFeatures.h"
 #include "gettext.h"
 #include "metricsinfo.h"
 #include "outputparams.h"
@@ -93,13 +94,34 @@ string const InsetBibtex::getScreenLabel(Buffer const &) const
 int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 		       OutputParams const & runparams) const
 {
-	// changing the sequence of the commands
+	// the sequence of the commands:
 	// 1. \bibliographystyle{style}
 	// 2. \addcontentsline{...} - if option bibtotoc set
 	// 3. \bibliography{database}
+	// and with bibtopic:
+	// 1. \bibliographystyle{style}
+	// 2. \begin{btSect}{database}
+	// 3. \btPrint{Cited|NotCited|All}
+	// 4. \end{btSect}
+	
+	// the database string
 	string adb;
 	string db_in = getContents();
 	db_in = split(db_in, adb, ',');
+	// If we generate in a temp dir, we might need to give an
+	// absolute path there. This is a bit complicated since we can
+	// have a comma-separated list of bibliographies
+	string db_out;
+	while (!adb.empty()) {
+		if (!runparams.nice &&
+		    IsFileReadable(MakeAbsPath(adb, buffer.filePath())+".bib"))
+			 adb = os::external_path(MakeAbsPath(adb, 
+			 	buffer.filePath()));
+		db_out += adb;
+		db_out += ',';
+		db_in = split(db_in, adb,',');
+	}
+	db_out = rtrim(db_out, ",");
 
 	// Style-Options
 	string style = getOptions(); // maybe empty! and with bibtotoc
@@ -110,18 +132,33 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 			style = split(style, bibtotoc, ',');
 		}
 	}
+	
+	// line count
+	int i = 0;
 
 	if (!runparams.nice
 	    && IsFileReadable(MakeAbsPath(style, buffer.filePath()) + ".bst")) {
 		style = MakeAbsPath(style, buffer.filePath());
 	}
 
-	if (!style.empty()) { // we want no \biblio...{}
+	if (!style.empty()) {
 		os << "\\bibliographystyle{" << style << "}\n";
+		i += 1;
+	}
+	
+	if (buffer.params().use_bibtopic){
+		os << "\\begin{btSect}{" << db_out << "}\n";
+		string btprint = getSecOptions();
+		if (btprint.empty())
+			// default
+			btprint = "btPrintCited";
+		os << "\\" << btprint << "\n"
+		   << "\\end{btSect}\n";
+		i += 3;
 	}
 
 	// bibtotoc-Option
-	if (!bibtotoc.empty()) {
+	if (!bibtotoc.empty() && !buffer.params().use_bibtopic) {
 		// maybe a problem when a textclass has no "art" as
 		// part of its name, because it's than book.
 		// For the "official" lyx-layouts it's no problem to support
@@ -145,22 +182,12 @@ int InsetBibtex::latex(Buffer const & buffer, ostream & os,
 		}
 	}
 
-	// database
-	// If we generate in a temp dir, we might need to give an
-	// absolute path there. This is a bit complicated since we can
-	// have a comma-separated list of bibliographies
-	string db_out;
-	while (!adb.empty()) {
-		if (!runparams.nice &&
-		    IsFileReadable(MakeAbsPath(adb, buffer.filePath())+".bib"))
-			 adb = os::external_path(MakeAbsPath(adb, buffer.filePath()));
-		db_out += adb;
-		db_out += ',';
-		db_in = split(db_in, adb,',');
+	if (!buffer.params().use_bibtopic){
+		os << "\\bibliography{" << db_out << "}\n";
+		i += 1;
 	}
-	db_out = rtrim(db_out, ",");
-	os << "\\bibliography{" << db_out << "}\n";
-	return 2;
+	
+	return i;
 }
 
 
@@ -256,3 +283,11 @@ bool InsetBibtex::delDatabase(string const & db)
 	}
 	return true;
 }
+
+
+void InsetBibtex::validate(LaTeXFeatures & features) const
+{
+	if (features.bufferParams().use_bibtopic)
+		features.require("bibtopic");
+}
+

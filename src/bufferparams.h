@@ -184,6 +184,8 @@ public:
 	bool use_numerical_citations;
 	///
 	bool use_jurabib;
+	///
+	bool use_bibtopic;
 	/// revision tracking for this buffer ?
 	bool tracking_changes;
 	/// Time ago we agreed that this was a buffer property [ale990407]

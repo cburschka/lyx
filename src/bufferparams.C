@@ -116,6 +116,7 @@ BufferParams::BufferParams()
 	use_natbib = false;
 	use_numerical_citations = false;
 	use_jurabib = false;
+	use_bibtopic = false;
 	tracking_changes = false;
 	secnumdepth = 3;
 	tocdepth = 3;
@@ -325,6 +326,9 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 	} else if (token == "\\use_jurabib") {
 		lex.nextToken();
 		use_jurabib = lex.getInteger();
+	} else if (token == "\\use_bibtopic") {
+		lex.nextToken();
+		use_bibtopic = lex.getInteger();
 	} else if (token == "\\tracking_changes") {
 		lex.nextToken();
 		tracking_changes = lex.getInteger();
@@ -543,6 +547,7 @@ void BufferParams::writeFile(ostream & os) const
 	   << "\n\\use_natbib " << use_natbib
 	   << "\n\\use_numerical_citations " << use_numerical_citations
 	   << "\n\\use_jurabib " << use_jurabib
+	    << "\n\\use_bibtopic " << use_bibtopic
 	   << "\n\\paperorientation " << string_orientation[orientation]
 	   << '\n';
 

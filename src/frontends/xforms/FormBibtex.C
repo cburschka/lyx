@@ -66,6 +66,7 @@ void FormBibtex::build()
 	bcview().addReadOnly(dialog_->button_rescan);
 	bcview().addReadOnly(dialog_->input_style);
 	bcview().addReadOnly(dialog_->check_bibtotoc);
+	bcview().addReadOnly(dialog_->choice_btprint);
 
 	// trigger an input event for cut&paste with middle mouse button.
 	setPrehandler(dialog_->input_database);
@@ -77,6 +78,11 @@ void FormBibtex::build()
 	// callback for double click in browser
 	fl_set_browser_dblclick_callback(dialog_->browser_styles,
 					 C_FormDialogView_InputCB, 2);
+					 
+	fl_addto_choice(dialog_->choice_btprint,
+			_(" all cited references "
+			  "| all uncited references "
+			  "| all references ").c_str());
 
 	// set up the tooltips
 	string str = _("The database you want to cite from. Insert it "
@@ -107,6 +113,9 @@ void FormBibtex::build()
 		"the styles which are in directories where TeX finds them "
 		"are listed!");
 	tooltips().init(dialog_->button_rescan, str);
+	
+	str = _("The bibliography section contains...");
+	tooltips().init(dialog_->choice_btprint, str);
 }
 
 
@@ -177,8 +186,10 @@ void FormBibtex::update()
 	string bibtotoc = "bibtotoc";
 	string bibstyle = controller().params().getOptions();
 
+	bool const bibtopic = controller().usingBibtopic();
 	bool const bibtotoc_exists = prefixIs(bibstyle, bibtotoc);
-	fl_set_button(dialog_->check_bibtotoc, bibtotoc_exists);
+	fl_set_button(dialog_->check_bibtotoc, bibtotoc_exists && !bibtopic);
+	setEnabled(dialog_->check_bibtotoc, !bibtopic);
 	if (bibtotoc_exists) {
 		if (contains(bibstyle, ',')) { // bibstyle exists?
 			bibstyle = split(bibstyle, bibtotoc, ',');
@@ -187,6 +198,16 @@ void FormBibtex::update()
 		}
 	}
 	fl_set_input(dialog_->input_style, bibstyle.c_str());
+	
+	string btprint = controller().params().getSecOptions();
+	int btp = 1;
+	if (btprint == "btPrintNotCited")
+		btp = 2;
+	else if (btprint == "btPrintAll")
+		btp = 3;
+	
+	fl_set_choice(dialog_->choice_btprint, btp);
+	setEnabled(dialog_->choice_btprint, bibtopic);
 
 	vector<string> styles;
 	controller().getBibStyles(styles);
@@ -219,6 +240,7 @@ void FormBibtex::apply()
 		// no database -> no bibtex-command and no options!
 		controller().params().setContents("");
 		controller().params().setOptions("");
+		controller().params().setSecOptions("");
 		return;
 	}
 
@@ -238,7 +260,30 @@ void FormBibtex::apply()
 		controller().params().setOptions(bibtotoc + ',' + bibstyle);
 
 	} else {
-		// At least one of addtotoc and bibstyle is empty. No harm to output both!
+		// At least one of addtotoc and bibstyle is empty. 
+		// No harm to output both!
 		controller().params().setOptions(bibtotoc + bibstyle);
 	}
+	
+	// bibtopic allows three kinds of sections:
+	// 1. sections that include all cited references of the database(s)
+	// 2. sec. that include all uncited references of the database(s)
+	// 3. sec. that include all references of the database(s), cited or not
+	if (controller().usingBibtopic()){
+		int btp = fl_get_choice(dialog_->choice_btprint);
+		switch (btp) {
+		case 1:
+			controller().params().setSecOptions("btPrintCited");
+			break;
+		case 2:
+			controller().params().setSecOptions("btPrintNotCited");
+			break;
+		case 3:
+			controller().params().setSecOptions("btPrintAll");
+			break;
+		}
+	}
+	
+	else
+		controller().params().setSecOptions("");
 }
