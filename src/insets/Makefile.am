@@ -1,11 +1,11 @@
 AUTOMAKE_OPTIONS = foreign
 MAINTAINERCLEANFILES = Makefile.in
-noinst_LTLIBRARIES = libinsets.o
+noinst_LTLIBRARIES = libinsets.la
 LIBS =
 ETAGS_ARGS = --c++
 INCLUDES = -I${srcdir}/../ 
 
-libinsets_o_SOURCES = \
+libinsets_la_SOURCES = \
 	figinset.C \
 	figinset.h \
 	form_url.C \

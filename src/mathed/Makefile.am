@@ -1,11 +1,11 @@
 AUTOMAKE_OPTIONS = foreign 1.4
 MAINTAINERCLEANFILES = Makefile.in
-noinst_LTLIBRARIES = libmathed.o
+noinst_LTLIBRARIES = libmathed.la
 LIBS=
 ETAGS_ARGS = --c++
 INCLUDES = -I${top_srcdir}/images -I${srcdir}/../ 
 
-libmathed_o_SOURCES = array.h \
+libmathed_la_SOURCES = array.h \
 	formula.C \
 	formula.h \
 	formulamacro.C \

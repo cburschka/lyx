@@ -1,3 +1,11 @@
+2000-01-11  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/mathed/Makefile.am (noinst_LTLIBRARIES): use .la
+
+	* src/insets/Makefile.am (noinst_LTLIBRARIES): use .la
+
+	* src/Makefile.am (lyx_DEPENDENCIES): switch back to .la libs
+
 2000-01-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/paragraph.C (BreakParagraph): do not reserve space on text
