@@ -235,9 +235,9 @@ bool BufferView::isSavedPosition(unsigned int i)
 }
 
 
-void BufferView::update(UpdateCodes f)
+void BufferView::update(LyXText * text, UpdateCodes f)
 {
-	pimpl_->update(f);
+	pimpl_->update(text, f);
 }
 
 

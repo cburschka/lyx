@@ -134,13 +134,14 @@ LyXFunc::LyXFunc(LyXView * o)
 // a moveCursorUpdate to some of the functions that updated the cursor, but
 // that did not show its new position.
 inline
-void LyXFunc::moveCursorUpdate(bool selecting)
+void LyXFunc::moveCursorUpdate(LyXText * text, bool selecting)
 {
-	if (selecting || owner->view()->text->mark_set) {
-		owner->view()->text->SetSelection();
-		owner->view()->toggleToggle();
+	if (selecting || text->mark_set) {
+		text->SetSelection();
+		if (text->bv_owner)
+		    owner->view()->toggleToggle();
 	}
-	owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+	owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 	owner->view()->showCursor();
 	
 	/* ---> Everytime the cursor is moved, show the current font state. */
@@ -179,7 +180,7 @@ int LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 			if (tli == tli->GetLockingInset()) {
 				owner->view()->unlockInset(tli);
 				owner->view()->text->CursorRight(owner->view());
-				moveCursorUpdate(false);
+				moveCursorUpdate(owner->view()->text, false);
 				owner->showState();
 			} else {
 				tli->UnlockInsetInInset(owner->view(),
@@ -648,20 +649,20 @@ string const LyXFunc::Dispatch(int ac,
 				case LFUN_RIGHT:
 					if (!owner->view()->text->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
 						owner->view()->text->CursorRight(owner->view());
-						moveCursorUpdate(false);
+						moveCursorUpdate(owner->view()->text, false);
 						owner->showState();
 					}
 					return string();
 				case LFUN_LEFT: 
 					if (owner->view()->text->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
 						owner->view()->text->CursorRight(owner->view());
-						moveCursorUpdate(false);
+						moveCursorUpdate(owner->view()->text, false);
 						owner->showState();
 					}
 					return string();
 				case LFUN_DOWN:
 					owner->view()->text->CursorDown(owner->view());
-					moveCursorUpdate(false);
+					moveCursorUpdate(owner->view()->text, false);
 					owner->showState();
 					return string();
 				default:
@@ -693,7 +694,7 @@ string const LyXFunc::Dispatch(int ac,
 		     ltCur->SearchForward(owner->view(), searched_string))) {
 
 			// ??? What is that ???
-			owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+			owner->view()->update(ltCur, BufferView::SELECT|BufferView::FITCUR);
 
 			// ??? Needed ???
 			// clear the selection (if there is any) 
@@ -704,7 +705,7 @@ string const LyXFunc::Dispatch(int ac,
 			if (action == LFUN_WORDFINDFORWARD ) 
 				owner->view()->text->CursorRightOneWord(owner->view());
 			owner->view()->text->FinishUndo();
-			moveCursorUpdate(false);
+			moveCursorUpdate(owner->view()->text, false);
 
 			// ??? Needed ???
 			// set the new selection 
@@ -720,7 +721,8 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_PREFIX:
 	{
 		if (owner->view()->available()) {
-			owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+			owner->view()->update(owner->view()->text,
+					      BufferView::SELECT|BufferView::FITCUR);
 		}
 		string buf;
 		keyseq.print(buf, true);
@@ -766,8 +768,8 @@ string const LyXFunc::Dispatch(int ac,
 		
 	case LFUN_APPENDIX:
 		if (owner->view()->available()) {
-			owner->view()->text->toggleAppendix(owner->view());
-			owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+			text->toggleAppendix(owner->view());
+			owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		}
 		break;
 
@@ -1270,11 +1272,13 @@ string const LyXFunc::Dispatch(int ac,
 		if (current_layout != layout.second) {
 			owner->view()->hideCursor();
 			current_layout = layout.second;
-			owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+			owner->view()->update(owner->view()->text,
+					      BufferView::SELECT|BufferView::FITCUR);
 			owner->view()->text->
 				SetLayout(owner->view(), layout.second);
 			owner->setLayout(layout.second);
-			owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+			owner->view()->update(owner->view()->text,
+					      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 			owner->view()->setState();
 		}
 	}
@@ -1379,28 +1383,28 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 		
 	case LFUN_UPCASE_WORD:
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->ChangeWordCase(owner->view(), LyXText::text_uppercase);
 		if (text->inset_owner)
 		    owner->view()->updateInset(text->inset_owner, true);
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		break;
 		
 	case LFUN_LOWCASE_WORD:
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->ChangeWordCase(owner->view(), LyXText::text_lowercase);
 		if (text->inset_owner)
 		    owner->view()->updateInset(text->inset_owner, true);
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		break;
 		
 	case LFUN_CAPITALIZE_WORD:
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->ChangeWordCase(owner->view(),
 				     LyXText::text_capitalization);
 		if (text->inset_owner)
 		    owner->view()->updateInset(text->inset_owner, true);
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		break;
 		
 	case LFUN_INSERT_LABEL:
@@ -1469,7 +1473,7 @@ string const LyXFunc::Dispatch(int ac,
 		bool is_rtl = tmptext->cursor.par()->isRightToLeftPar(owner->buffer()->params);
 		if (!tmptext->mark_set)
 			owner->view()->beforeChange();
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(owner->view()->text, BufferView::SELECT|BufferView::FITCUR);
 		if (is_rtl)
 			tmptext->CursorLeft(owner->view(), false);
 		if (tmptext->cursor.pos() < tmptext->cursor.par()->Last()
@@ -1493,7 +1497,7 @@ string const LyXFunc::Dispatch(int ac,
 		if (!is_rtl)
 			tmptext->CursorRight(owner->view(), false);
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(false);
+		moveCursorUpdate(owner->view()->text, false);
 		owner->showState();
 	}
 	break;
@@ -1505,7 +1509,7 @@ string const LyXFunc::Dispatch(int ac,
 		LyXText * txt = owner->view()->text;
 		bool is_rtl = txt->cursor.par()->isRightToLeftPar(owner->buffer()->params);
 		if (!txt->mark_set) owner->view()->beforeChange();
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(owner->view()->text, BufferView::SELECT|BufferView::FITCUR);
 		LyXCursor cur = txt->cursor;
 		if (!is_rtl)
 			txt->CursorLeft(owner->view(), false);
@@ -1534,93 +1538,99 @@ string const LyXFunc::Dispatch(int ac,
 			txt->CursorRight(owner->view(), false);
 
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(false);
+		moveCursorUpdate(owner->view()->text, false);
 		owner->showState();
 	}
 	break;
 		
 	case LFUN_UP:
-		if (!owner->view()->text->mark_set) owner->view()->beforeChange();
-		owner->view()->update(BufferView::UPDATE);
+		if (!owner->view()->text->mark_set)
+			owner->view()->beforeChange();
+		owner->view()->update(owner->view()->text, BufferView::UPDATE);
 		owner->view()->text->CursorUp(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(false);
+		moveCursorUpdate(owner->view()->text, false);
 		owner->showState();
 		break;
 		
 	case LFUN_DOWN:
 		if (!owner->view()->text->mark_set)
 			owner->view()->beforeChange();
-		owner->view()->update(BufferView::UPDATE);
+		owner->view()->update(owner->view()->text, BufferView::UPDATE);
 		owner->view()->text->CursorDown(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(false);
+		moveCursorUpdate(owner->view()->text, false);
 		owner->showState();
 		break;
 
 	case LFUN_UP_PARAGRAPH:
 		if (!owner->view()->text->mark_set)
 			owner->view()->beforeChange();
-		owner->view()->update(BufferView::UPDATE);
+		owner->view()->update(owner->view()->text, BufferView::UPDATE);
 		owner->view()->text->CursorUpParagraph(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(false);
+		moveCursorUpdate(owner->view()->text, false);
 		owner->showState();
 		break;
 		
 	case LFUN_DOWN_PARAGRAPH:
 		if (!owner->view()->text->mark_set)
 			owner->view()->beforeChange();
-		owner->view()->update(BufferView::UPDATE);
+		owner->view()->update(owner->view()->text, BufferView::UPDATE);
 		owner->view()->text->CursorDownParagraph(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(false);
+		moveCursorUpdate(owner->view()->text, false);
 		owner->showState();
 		break;
 		
 	case LFUN_PRIOR:
 		if (!text->mark_set)
 		    owner->view()->beforeChange();
-		owner->view()->update(BufferView::UPDATE);
+		owner->view()->update(owner->view()->text, BufferView::UPDATE);
 		owner->view()->cursorPrevious(text);
 		owner->view()->text->FinishUndo();
+#if 0
 		if (text->inset_owner)
 		    owner->view()->updateInset(text->inset_owner, false);
 		else
-		    moveCursorUpdate(false);
+#endif
+		    moveCursorUpdate(text, false);
 		owner->showState();
 		break;
 		
 	case LFUN_NEXT:
 		if (!text->mark_set)
 			owner->view()->beforeChange();
-		owner->view()->update(BufferView::UPDATE);
+		owner->view()->update(owner->view()->text, BufferView::UPDATE);
 		owner->view()->cursorNext(text);
 		owner->view()->text->FinishUndo();
+#if 0
 		if (text->inset_owner)
 		    owner->view()->updateInset(text->inset_owner, false);
 		else
-		    moveCursorUpdate(false);
+#endif
+		    moveCursorUpdate(text, false);
 		owner->showState();
 		break;
 		
 	case LFUN_HOME:
 		if (!owner->view()->text->mark_set)
 			owner->view()->beforeChange();
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(owner->view()->text, BufferView::SELECT|BufferView::FITCUR);
 		owner->view()->text->CursorHome(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(false);
+		moveCursorUpdate(owner->view()->text, false);
 		owner->showState();
 		break;
 		
 	case LFUN_END:
 		if (!owner->view()->text->mark_set)
 			owner->view()->beforeChange();
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(owner->view()->text,
+				      BufferView::SELECT|BufferView::FITCUR);
 		owner->view()->text->CursorEnd(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(false);
+		moveCursorUpdate(owner->view()->text, false);
 		owner->showState();
 		break;
 		
@@ -1628,192 +1638,239 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_TAB:
 		if (!owner->view()->text->mark_set)
 			owner->view()->beforeChange();
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(owner->view()->text,
+				      BufferView::SELECT|BufferView::FITCUR);
 		owner->view()->text->CursorTab(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(false);
+		moveCursorUpdate(owner->view()->text, false);
 		owner->showState();
 		break;
 		
 	case LFUN_WORDRIGHT:
 		if (!text->mark_set)
 			owner->view()->beforeChange();
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		if (text->cursor.par()->isRightToLeftPar(owner->buffer()->params))
 			text->CursorLeftOneWord(owner->view());
 		else
 			text->CursorRightOneWord(owner->view());
 		owner->view()->text->FinishUndo();
+#if 0
 		if (text->inset_owner)
 		    owner->view()->updateInset(text->inset_owner, true);
-		moveCursorUpdate(false);
+#endif
+		moveCursorUpdate(text, false);
 		owner->showState();
 		break;
 		
 	case LFUN_WORDLEFT:
 		if (!text->mark_set)
 			owner->view()->beforeChange();
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		if (text->cursor.par()->isRightToLeftPar(owner->buffer()->params))
 			text->CursorRightOneWord(owner->view());
 		else
 			text->CursorLeftOneWord(owner->view());
 		owner->view()->text->FinishUndo();
+#if 0
 		if (text->inset_owner)
 		    owner->view()->updateInset(text->inset_owner, true);
-		moveCursorUpdate(false);
+#endif
+		moveCursorUpdate(text, false);
 		owner->showState();
 		break;
 		
 	case LFUN_BEGINNINGBUF:
 		if (!owner->view()->text->mark_set)
 			owner->view()->beforeChange();
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(owner->view()->text,
+				      BufferView::SELECT|BufferView::FITCUR);
 		owner->view()->text->CursorTop(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(false);
+		moveCursorUpdate(owner->view()->text, false);
 		owner->showState();
 		break;
 		
 	case LFUN_ENDBUF:
 		if (!owner->view()->text->mark_set)
 			owner->view()->beforeChange();
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(owner->view()->text,
+				      BufferView::SELECT|BufferView::FITCUR);
 		owner->view()->text->CursorBottom(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(false);
+		moveCursorUpdate(owner->view()->text, false);
 		owner->showState();
 		break;
 
       
 		/* cursor selection ---------------------------- */
 	case LFUN_RIGHTSEL:
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(owner->view()->text,
+				      BufferView::SELECT|BufferView::FITCUR);
 		if (owner->view()->text->cursor.par()->isRightToLeftPar(owner->buffer()->params))
 			owner->view()->text->CursorLeft(owner->view());
 		else
 			owner->view()->text->CursorRight(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(true);
+		moveCursorUpdate(owner->view()->text, true);
 		owner->showState();
 		break;
 		
 	case LFUN_LEFTSEL:
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(owner->view()->text,
+				      BufferView::SELECT|BufferView::FITCUR);
 		if (owner->view()->text->cursor.par()->isRightToLeftPar(owner->buffer()->params))
 			owner->view()->text->CursorRight(owner->view());
 		else
 			owner->view()->text->CursorLeft(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(true);
+		moveCursorUpdate(owner->view()->text, true);
 		owner->showState();
 		break;
 		
 	case LFUN_UPSEL:
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(owner->view()->text,
+				      BufferView::SELECT|BufferView::FITCUR);
 		owner->view()->text->CursorUp(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(true);
+		moveCursorUpdate(owner->view()->text, true);
 		owner->showState();
 		break;
 		
 	case LFUN_DOWNSEL:
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(owner->view()->text,
+				      BufferView::SELECT|BufferView::FITCUR);
 		owner->view()->text->CursorDown(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(true);
+		moveCursorUpdate(owner->view()->text, true);
 		owner->showState();
 		break;
 
 	case LFUN_UP_PARAGRAPHSEL:
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(owner->view()->text,
+				      BufferView::SELECT|BufferView::FITCUR);
 		owner->view()->text->CursorUpParagraph(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(true);
+		moveCursorUpdate(owner->view()->text, true);
 		owner->showState();
 		break;
 		
 	case LFUN_DOWN_PARAGRAPHSEL:
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(owner->view()->text,
+				      BufferView::SELECT|BufferView::FITCUR);
 		owner->view()->text->CursorDownParagraph(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(true);
+		moveCursorUpdate(owner->view()->text, true);
 		owner->showState();
 		break;
 		
 	case LFUN_PRIORSEL:
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		owner->view()->cursorPrevious(text);
 		owner->view()->text->FinishUndo();
-		if (text->inset_owner)
+#if 0
+		if (text->inset_owner) {
+		    text->SetSelection();
 		    owner->view()->updateInset(text->inset_owner, false);
-		else
-		    moveCursorUpdate(true);
+		} else
+#endif
+		    moveCursorUpdate(text, true);
 		owner->showState();
 		break;
 		
 	case LFUN_NEXTSEL:
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		owner->view()->cursorNext(text);
 		owner->view()->text->FinishUndo();
+#if 0
 		if (text->inset_owner)
 		    owner->view()->updateInset(text->inset_owner, false);
 		else
-		    moveCursorUpdate(true);
+#endif
+		    moveCursorUpdate(text, true);
 		owner->showState();
 		break;
 		
 	case LFUN_HOMESEL:
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
-		owner->view()->text->CursorHome(owner->view());
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
+		text->CursorHome(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(true);
+#if 0
+		if (text->inset_owner) {
+		    text->SetSelection();
+		    owner->view()->updateInset(text->inset_owner, false);
+		} else
+#endif
+		    moveCursorUpdate(text, true);
 		owner->showState();
 		break;
 		
 	case LFUN_ENDSEL:
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
-		owner->view()->text->CursorEnd(owner->view());
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
+		text->CursorEnd(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(true);
+#if 0
+		if (text->inset_owner) {
+		    text->SetSelection();
+		    owner->view()->updateInset(text->inset_owner, false);
+		} else
+#endif
+		    moveCursorUpdate(text, true);
 		owner->showState();
 		break;
 		
 	case LFUN_WORDRIGHTSEL:
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
-		if (owner->view()->text->cursor.par()->isRightToLeftPar(owner->buffer()->params))
-			owner->view()->text->CursorLeftOneWord(owner->view());
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
+		if (text->cursor.par()->isRightToLeftPar(owner->buffer()->params))
+			text->CursorLeftOneWord(owner->view());
 		else
-			owner->view()->text->CursorRightOneWord(owner->view());
+			text->CursorRightOneWord(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(true);
+#if 0
+		if (text->inset_owner) {
+		    text->SetSelection();
+		    owner->view()->updateInset(text->inset_owner, false);
+		} else
+#endif
+		    moveCursorUpdate(text, true);
 		owner->showState();
 		break;
 		
 	case LFUN_WORDLEFTSEL:
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		if (owner->view()->text->cursor.par()->isRightToLeftPar(owner->buffer()->params))
-			owner->view()->text->CursorRightOneWord(owner->view());
+			text->CursorRightOneWord(owner->view());
 		else
-			owner->view()->text->CursorLeftOneWord(owner->view());
+			text->CursorLeftOneWord(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(true);
+#if 0
+		if (text->inset_owner) {
+		    text->SetSelection();
+		    owner->view()->updateInset(text->inset_owner, false);
+		} else
+#endif
+		    moveCursorUpdate(text, true);
 		owner->showState();
 		break;
 		
 	case LFUN_BEGINNINGBUFSEL:
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		if (text->inset_owner)
+		    break;
+		owner->view()->update(owner->view()->text, BufferView::SELECT|BufferView::FITCUR);
 		owner->view()->text->CursorTop(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(true);
+		moveCursorUpdate(owner->view()->text, true);
 		owner->showState();
 		break;
 		
 	case LFUN_ENDBUFSEL:
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		if (text->inset_owner)
+		    break;
+		owner->view()->update(owner->view()->text,
+				      BufferView::SELECT|BufferView::FITCUR);
 		owner->view()->text->CursorBottom(owner->view());
 		owner->view()->text->FinishUndo();
-		moveCursorUpdate(true);
+		moveCursorUpdate(owner->view()->text, true);
 		owner->showState();
 		break;
 
@@ -1821,40 +1878,43 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_BREAKLINE:
 		owner->view()->beforeChange();
 		owner->view()->text->InsertChar(owner->view(), LyXParagraph::META_NEWLINE);
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		moveCursorUpdate(false);
+		owner->view()->update(owner->view()->text,
+				      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		moveCursorUpdate(owner->view()->text, false);
 		break;
 		
 	case LFUN_PROTECTEDSPACE:
 	{
 		LyXLayout const & style =
 			textclasslist.Style(owner->view()->buffer()->params.textclass,
-					    owner->view()->text->cursor.par()->GetLayout());
+					    text->cursor.par()->GetLayout());
 
 		if (style.free_spacing) {
-			owner->view()->text->InsertChar(owner->view(), ' ');
-			owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+			text->InsertChar(owner->view(), ' ');
+			owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		} else {
-			owner->view()->protectedBlank();
+			owner->view()->protectedBlank(text);
 		}
-		moveCursorUpdate(false);
+		moveCursorUpdate(text, false);
 	}
 	break;
 		
 	case LFUN_SETMARK:
 		if (text->mark_set) {
 			owner->view()->beforeChange();
-			owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+			owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 			setMessage(N_("Mark removed"));
 		} else {
 			owner->view()->beforeChange();
 			text->mark_set = 1;
-			owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+			owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 			setMessage(N_("Mark set"));
 		}
 		text->sel_cursor = text->cursor;
+#if 0
 		if (text->inset_owner)
 		    owner->view()->updateInset(text->inset_owner, true);
+#endif
 		break;
 		
 	case LFUN_DELETE:
@@ -1862,14 +1922,15 @@ string const LyXFunc::Dispatch(int ac,
 			owner->view()->text->Delete(owner->view());
 			owner->view()->text->sel_cursor = 
 				owner->view()->text->cursor;
-			owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+			owner->view()->update(owner->view()->text,
+					      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 			// It is possible to make it a lot faster still
 			// just comment out the line below...
 			owner->view()->showCursor();
 		} else {
 			owner->view()->cut();
 		}
-		moveCursorUpdate(false);
+		moveCursorUpdate(owner->view()->text, false);
 		owner->showState();
 		owner->view()->setState();
 		break;
@@ -1898,19 +1959,22 @@ string const LyXFunc::Dispatch(int ac,
 						 cursor.par()->align, 
 						 cursor.par()->labelwidthstring, 0);
 					owner->view()->text->CursorLeft(owner->view());
-					owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+					owner->view()->update(owner->view()->text, 
+							      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 				} else {
 					owner->view()->text->CursorLeft(owner->view());
 					owner->view()->text->Delete(owner->view());
 					owner->view()->text->sel_cursor = 
 						owner->view()->text->cursor;
-					owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+					owner->view()->update(owner->view()->text,
+							      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 				}
 			} else {
 				owner->view()->text->Delete(owner->view());
 				owner->view()->text->sel_cursor = 
 					owner->view()->text->cursor;
-				owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+				owner->view()->update(owner->view()->text,
+						      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 			}
 		} else {
 			owner->view()->cut();
@@ -1920,69 +1984,76 @@ string const LyXFunc::Dispatch(int ac,
 
 	/* -------> Delete word forward. */
 	case LFUN_DELETE_WORD_FORWARD:
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->DeleteWordForward(owner->view());
+#if 0
 		if (text->inset_owner)
 		    owner->view()->updateInset(text->inset_owner, true);
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		moveCursorUpdate(false);
+#endif
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		moveCursorUpdate(text, false);
 		owner->showState();
 		break;
 
 		/* -------> Delete word backward. */
 	case LFUN_DELETE_WORD_BACKWARD:
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->DeleteWordBackward(owner->view());
+#if 0
 		if (text->inset_owner)
 		    owner->view()->updateInset(text->inset_owner, true);
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		moveCursorUpdate(false);
+#endif
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		moveCursorUpdate(text, false);
 		owner->showState();
 		break;
 		
 		/* -------> Kill to end of line. */
 	case LFUN_DELETE_LINE_FORWARD:
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->DeleteLineForward(owner->view());
+#if 0
 		if (text->inset_owner)
 		    owner->view()->updateInset(text->inset_owner, true);
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		moveCursorUpdate(false);
+#endif
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		moveCursorUpdate(text, false);
 		break;
 		
 		/* -------> Set mark off. */
 	case LFUN_MARK_OFF:
 		owner->view()->beforeChange();
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->sel_cursor = text->cursor;
 		setMessage(N_("Mark off"));
+#if 0
 		if (text->inset_owner)
 		    owner->view()->updateInset(text->inset_owner, true);
+#endif
 		break;
 
 		/* -------> Set mark on. */
 	case LFUN_MARK_ON:
 		owner->view()->beforeChange();
-		owner->view()->text->mark_set = 1;
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR);
+		text->mark_set = 1;
+		owner->view()->update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->sel_cursor = text->cursor;
+#if 0
 		if (text->inset_owner)
 		    owner->view()->updateInset(text->inset_owner, true);
+#endif
 		setMessage(N_("Mark on"));
 		break;
 		
 	case LFUN_BACKSPACE:
 	{
 		if (!owner->view()->text->selection) {
-#if 0
-			if (owner->getIntl()->getTrans()->backspace()) {
-#else
 			if (owner->getIntl()->getTrans().backspace()) {
-#endif
 				owner->view()->text->Backspace(owner->view());
 				owner->view()->text->sel_cursor = 
 					owner->view()->text->cursor;
-				owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+				owner->view()->update(owner->view()->text,
+						      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 				// It is possible to make it a lot faster still
 				// just comment out the line below...
 				owner->view()->showCursor();
@@ -2014,12 +2085,14 @@ string const LyXFunc::Dispatch(int ac,
 					 VSpace(VSpace::NONE), cursor.par()->added_space_bottom,
 					 cursor.par()->align, 
 					 cursor.par()->labelwidthstring, 0);
-				owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+				owner->view()->update(owner->view()->text,
+						      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 			} else {
 				owner->view()->text->Backspace(owner->view());
 				owner->view()->text->sel_cursor 
 					= cursor;
-				owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+				owner->view()->update(owner->view()->text,
+						      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 			}
 		} else
 			owner->view()->cut();
@@ -2030,7 +2103,8 @@ string const LyXFunc::Dispatch(int ac,
 	{
 		owner->view()->beforeChange();
 		owner->view()->text->BreakParagraph(owner->view(), 0);
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		owner->view()->update(owner->view()->text,
+				      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		owner->view()->text->sel_cursor = 
 			owner->view()->text->cursor;
 		owner->view()->setState();
@@ -2042,7 +2116,8 @@ string const LyXFunc::Dispatch(int ac,
 	{
 		owner->view()->beforeChange();
 		owner->view()->text->BreakParagraph(owner->view(), 1);
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		owner->view()->update(owner->view()->text,
+				      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		owner->view()->text->sel_cursor = 
 			owner->view()->text->cursor;
 		owner->view()->setState();
@@ -2078,7 +2153,8 @@ string const LyXFunc::Dispatch(int ac,
 			//owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		}
 
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		owner->view()->update(owner->view()->text,
+				      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		owner->view()->text->sel_cursor = cursor;
 		owner->view()->setState();
 		owner->showState();
@@ -2125,7 +2201,8 @@ string const LyXFunc::Dispatch(int ac,
 		if (cur_spacing != new_spacing || cur_value != new_value) {
 			par->spacing.set(new_spacing, new_value);
 			owner->view()->text->RedoParagraph(owner->view());
-			owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+			owner->view()->update(owner->view()->text,
+					      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		}
 	}
 	break;
@@ -2133,8 +2210,9 @@ string const LyXFunc::Dispatch(int ac,
 	case LFUN_QUOTE:
 		owner->view()->beforeChange();
 		owner->view()->text->InsertChar(owner->view(), '\"');  // This " matches the single quote in the code
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-                moveCursorUpdate(false);
+		owner->view()->update(owner->view()->text,
+				      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+                moveCursorUpdate(owner->view()->text, false);
 		break;
 
 	case LFUN_HTMLURL:
@@ -2442,15 +2520,9 @@ string const LyXFunc::Dispatch(int ac,
 		if (keyseq.length == -1 && keyseq.getiso() != 0) 
 			c = keyseq.getiso();
 
-#if 0
-		owner->getIntl()->getTrans()->
-			deadkey(c, get_accent(action).accent, 
-				owner->view()->text);
-#else
 		owner->getIntl()->getTrans()
 			.deadkey(c, get_accent(action).accent, 
 				owner->view()->text);
-#endif
 		
 		// Need to reset, in case the minibuffer calls these
 		// actions
@@ -2458,7 +2530,8 @@ string const LyXFunc::Dispatch(int ac,
 		keyseq.length = 0;
 		
 		// copied verbatim from do_accent_char
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		owner->view()->update(owner->view()->text,
+				      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 
 		owner->view()->text->sel_cursor = 
 			owner->view()->text->cursor;
@@ -2821,7 +2894,8 @@ string const LyXFunc::Dispatch(int ac,
 			break;
 		}
 		owner->view()->text->InsertFootnoteEnvironment(owner->view(), kind);
-		owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		owner->view()->update(owner->view()->text,
+				      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		owner->view()->setState();
 	}
 	break;
@@ -2853,11 +2927,12 @@ string const LyXFunc::Dispatch(int ac,
 			owner->view()->text->InsertChar(owner->view(), argument[i]);
 			// This needs to be in the loop, or else we
 			// won't break lines correctly. (Asger)
-			owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+			owner->view()->update(owner->view()->text,
+					      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		}
 		owner->view()->text->sel_cursor = 
 			owner->view()->text->cursor;
-		moveCursorUpdate(false);
+		moveCursorUpdate(owner->view()->text, false);
 
 		// real_current_font.number can change so we need to 
 		// update the minibuffer
@@ -2894,11 +2969,12 @@ string const LyXFunc::Dispatch(int ac,
 			::strftime(datetmp, 32, arg.c_str(), now_tm);
 		for (int i = 0; i < datetmp_len; i++) {
 			owner->view()->text->InsertChar(owner->view(), datetmp[i]);
-			owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+			owner->view()->update(owner->view()->text,
+					      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		}
 
 		owner->view()->text->sel_cursor = owner->view()->text->cursor;
-		moveCursorUpdate(false);
+		moveCursorUpdate(owner->view()->text, false);
 	}
 	break;
 
@@ -2976,7 +3052,8 @@ string const LyXFunc::Dispatch(int ac,
 			if (lyxrc.auto_region_delete) {
 				if (owner->view()->text->selection){
 					owner->view()->text->CutSelection(owner->view(), false);
-					owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+					owner->view()->update(owner->view()->text,
+							      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 				}
 			}
 			
@@ -3000,11 +3077,12 @@ string const LyXFunc::Dispatch(int ac,
 #endif
 			}
 
-			owner->view()->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+			owner->view()->update(owner->view()->text,
+					      BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 
 			owner->view()->text->sel_cursor = 
 				owner->view()->text->cursor;
-			moveCursorUpdate(false);
+			moveCursorUpdate(owner->view()->text, false);
 
 			// real_current_font.number can change so we need to
 			// update the minibuffer

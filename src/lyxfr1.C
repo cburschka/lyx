@@ -129,7 +129,7 @@ void LyXFindReplace::SearchReplaceCB()
 	string const replacestring = SF.ReplaceString();
 
 	bv->hideCursor();
-	bv->update(BufferView::SELECT|BufferView::FITCUR);
+	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
 
 	LyXText * ltCur = bv->text;	
 	if (ltCur->selection) {
@@ -139,7 +139,7 @@ void LyXFindReplace::SearchReplaceCB()
 			ReplaceSelectionWithString(bv, replacestring);
 		bv->text->
 			SetSelectionOverString(bv, replacestring);
-		bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
 	
 	// jump to next match:
@@ -176,13 +176,13 @@ void LyXFindReplace::SearchReplaceAllCB()
 	do {
 		ltCur = bv->text;	
 		if (ltCur->selection) {
-			bv->update(BufferView::SELECT|BufferView::FITCUR);
+			bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
 			bv->toggleSelection(false);
 			bv->text->
 				ReplaceSelectionWithString(bv, replacestring);
 			bv->text->
 				SetSelectionOverString(bv, replacestring);
-			bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE); 
+			bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE); 
 			++replace_count;
 		}
 	} while (SearchCB(true));
@@ -211,7 +211,7 @@ bool LyXFindReplace::SearchCB(bool fForward)
 		return false;
    
 	bv->hideCursor();
-	bv->update(BufferView::SELECT|BufferView::FITCUR);
+	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
 	LyXText * ltCur = bv->text;
 	if (ltCur->selection) 
 		ltCur->cursor = fForward ? ltCur->sel_end_cursor :
@@ -222,7 +222,7 @@ bool LyXFindReplace::SearchCB(bool fForward)
    
 	if (!SF.ValidSearchData() ||
 	    (fForward ? SearchForward(bv):SearchBackward(bv))) {
-		bv->update(BufferView::SELECT|BufferView::FITCUR);
+		bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
 
 		// clear the selection (if there is any) 
 		bv->toggleSelection();

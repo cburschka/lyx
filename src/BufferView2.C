@@ -219,15 +219,15 @@ bool BufferView::insertInset(Inset * inset, string const & lout,
 	
 	beforeChange();
 	if (!lout.empty()) {
-		update(BufferView::SELECT|BufferView::FITCUR);
+		update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->BreakParagraph(this);
-		update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		
 		if (text->cursor.par()->Last()) {
 			text->CursorLeft(this);
 			
 			text->BreakParagraph(this);
-			update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+			update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		}
 
 		pair<bool, LyXTextClass::size_type> lres =
@@ -250,13 +250,13 @@ bool BufferView::insertInset(Inset * inset, string const & lout,
 				   LYX_ALIGN_LAYOUT, 
 				   string(),
 				   0);
-		update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		
 		text->current_font.setLatex(LyXFont::OFF);
 	}
 	
 	text->InsertInset(this, inset);
-	update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+	update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 
 	text->UnFreezeUndo();
 	return true;
@@ -296,7 +296,7 @@ bool BufferView::gotoLabel(string const & label)
 			beforeChange();
 			text->SetCursor(this, it.getPar(), it.getPos());
 			text->sel_cursor = text->cursor;
-			update(BufferView::SELECT|BufferView::FITCUR);
+			update(text, BufferView::SELECT|BufferView::FITCUR);
 			return true;
 		}
 	}
@@ -409,9 +409,9 @@ void BufferView::openStuff()
 		owner()->getMiniBuffer()->Set(_("Open/Close..."));
 		hideCursor();
 		beforeChange();
-		update(BufferView::SELECT|BufferView::FITCUR);
+		update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->OpenStuff(this);
-		update(BufferView::SELECT|BufferView::FITCUR);
+		update(text, BufferView::SELECT|BufferView::FITCUR);
 		setState();
 	}
 }
@@ -423,9 +423,9 @@ void BufferView::toggleFloat()
 		owner()->getMiniBuffer()->Set(_("Open/Close..."));
 		hideCursor();
 		beforeChange();
-		update(BufferView::SELECT|BufferView::FITCUR);
+		update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->ToggleFootnote(this);
-		update(BufferView::SELECT|BufferView::FITCUR);
+		update(text, BufferView::SELECT|BufferView::FITCUR);
 		setState();
 	}
 }
@@ -437,11 +437,11 @@ void BufferView::menuUndo()
 		owner()->getMiniBuffer()->Set(_("Undo"));
 		hideCursor();
 		beforeChange();
-		update(BufferView::SELECT|BufferView::FITCUR);
+		update(text, BufferView::SELECT|BufferView::FITCUR);
 		if (!text->TextUndo(this))
 			owner()->getMiniBuffer()->Set(_("No further undo information"));
 		else
-			update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+			update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		setState();
 	}
 }
@@ -458,11 +458,11 @@ void BufferView::menuRedo()
 		owner()->getMiniBuffer()->Set(_("Redo"));
 		hideCursor();
 		beforeChange();
-		update(BufferView::SELECT|BufferView::FITCUR);
+		update(text, BufferView::SELECT|BufferView::FITCUR);
 		if (!text->TextRedo(this))
 			owner()->getMiniBuffer()->Set(_("No further redo information"));
 		else
-			update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+			update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		setState();
 	}
 }
@@ -472,7 +472,7 @@ void BufferView::hyphenationPoint()
 {
 	if (available()) {
 		hideCursor();
-		update(BufferView::SELECT|BufferView::FITCUR);
+		update(text, BufferView::SELECT|BufferView::FITCUR);
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::HYPHENATION);
 		insertInset(new_inset);
@@ -484,7 +484,7 @@ void BufferView::ldots()
 {
 	if (available())  {
 		hideCursor();
-		update(BufferView::SELECT|BufferView::FITCUR);
+		update(text, BufferView::SELECT|BufferView::FITCUR);
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::LDOTS);
 		insertInset(new_inset);
@@ -496,7 +496,7 @@ void BufferView::endOfSentenceDot()
 {
 	if (available()) {
 		hideCursor();
-		update(BufferView::SELECT|BufferView::FITCUR);
+		update(text, BufferView::SELECT|BufferView::FITCUR);
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::END_OF_SENTENCE);
 		insertInset(new_inset);
@@ -508,7 +508,7 @@ void BufferView::menuSeparator()
 {
 	if (available()) {
 		hideCursor();
-		update(BufferView::SELECT|BufferView::FITCUR);
+		update(text, BufferView::SELECT|BufferView::FITCUR);
 		InsetSpecialChar * new_inset = 
 			new InsetSpecialChar(InsetSpecialChar::MENU_SEPARATOR);
 		insertInset(new_inset);
@@ -520,21 +520,24 @@ void BufferView::newline()
 {
 	if (available()) {
 		hideCursor();
-		update(BufferView::SELECT|BufferView::FITCUR);
+		update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->InsertChar(this, LyXParagraph::META_NEWLINE);
-		update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
 }
 
 
-void BufferView::protectedBlank()
+void BufferView::protectedBlank(LyXText * lt)
 {
 	if (available()) {
 		hideCursor();
-		update(BufferView::SELECT|BufferView::FITCUR);
+		update(lt, BufferView::SELECT|BufferView::FITCUR);
 		InsetSpecialChar * new_inset =
 			new InsetSpecialChar(InsetSpecialChar::PROTECTED_SEPARATOR);
-		insertInset(new_inset);
+		if (!insertInset(new_inset))
+			delete new_inset;
+		else
+			updateInset(new_inset, true);
 	}
 }
 
@@ -543,9 +546,9 @@ void BufferView::hfill()
 {
 	if (available()) {
 		hideCursor();
-		update(BufferView::SELECT|BufferView::FITCUR);
+		update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->InsertChar(this, LyXParagraph::META_HFILL);
-		update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
 }
 
@@ -556,7 +559,7 @@ void BufferView::copyEnvironment()
 		// clear the selection, even if mark_set
 		toggleSelection();
 		text->ClearSelection();
-		update(BufferView::SELECT|BufferView::FITCUR);
+		update(text, BufferView::SELECT|BufferView::FITCUR);
 		owner()->getMiniBuffer()->Set(_("Paragraph environment type copied"));
 	}
 }
@@ -567,7 +570,7 @@ void BufferView::pasteEnvironment()
 	if (available()) {
 		text->pasteEnvironmentType(this);
 		owner()->getMiniBuffer()->Set(_("Paragraph environment type set"));
-		update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
 }
 
@@ -579,7 +582,7 @@ void BufferView::copy()
 		// clear the selection, even if mark_set
 		toggleSelection();
 		text->ClearSelection();
-		update(BufferView::SELECT|BufferView::FITCUR);
+		update(text, BufferView::SELECT|BufferView::FITCUR);
 		owner()->getMiniBuffer()->Set(_("Copy"));
 	}
 }
@@ -588,9 +591,9 @@ void BufferView::cut()
 {
 	if (available()) {
 		hideCursor();
-		update(BufferView::SELECT|BufferView::FITCUR);
+		update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->CutSelection(this);
-		update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		owner()->getMiniBuffer()->Set(_("Cut"));
 	}
 }
@@ -605,16 +608,16 @@ void BufferView::paste()
 	// clear the selection
 	toggleSelection();
 	text->ClearSelection();
-	update(BufferView::SELECT|BufferView::FITCUR);
+	update(text, BufferView::SELECT|BufferView::FITCUR);
 	
 	// paste
 	text->PasteSelection(this);
-	update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+	update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	
 	// clear the selection 
 	toggleSelection();
 	text->ClearSelection();
-	update(BufferView::SELECT|BufferView::FITCUR);
+	update(text, BufferView::SELECT|BufferView::FITCUR);
 }
 
 
@@ -625,7 +628,7 @@ void BufferView::gotoInset(std::vector<Inset::Code> const & codes,
    
 	hideCursor();
 	beforeChange();
-	update(BufferView::SELECT|BufferView::FITCUR);
+	update(text, BufferView::SELECT|BufferView::FITCUR);
 
 	string contents;
 	if (same_content &&
@@ -651,7 +654,7 @@ void BufferView::gotoInset(std::vector<Inset::Code> const & codes,
 				owner()->getMiniBuffer()->Set(_("No more insets"));
 			}
 	}
-	update(BufferView::SELECT|BufferView::FITCUR);
+	update(text, BufferView::SELECT|BufferView::FITCUR);
 	text->sel_cursor = text->cursor;
 }
 
@@ -695,7 +698,7 @@ void BufferView::selectLastWord()
 	beforeChange();
 	text->SelectSelectedWord(this);
 	toggleSelection(false);
-	update(BufferView::SELECT|BufferView::FITCUR);
+	update(text, BufferView::SELECT|BufferView::FITCUR);
 }
 
 
@@ -707,7 +710,7 @@ void BufferView::endOfSpellCheck()
 	beforeChange();
 	text->SelectSelectedWord(this);
 	text->ClearSelection();
-	update(BufferView::SELECT|BufferView::FITCUR);
+	update(text, BufferView::SELECT|BufferView::FITCUR);
 }
 
 
@@ -716,11 +719,11 @@ void BufferView::replaceWord(string const & replacestring)
 	if (!available()) return;
 
 	hideCursor();
-	update(BufferView::SELECT|BufferView::FITCUR);
+	update(text, BufferView::SELECT|BufferView::FITCUR);
    
 	/* clear the selection (if there is any) */ 
 	toggleSelection(false);
-	update(BufferView::SELECT|BufferView::FITCUR);
+	update(text, BufferView::SELECT|BufferView::FITCUR);
    
 	/* clear the selection (if there is any) */ 
 	toggleSelection(false);
@@ -732,7 +735,7 @@ void BufferView::replaceWord(string const & replacestring)
 	for (string::size_type i = 0; i < replacestring.length() + 1; ++i) {
 		text->CursorLeft(this);
 	}
-	update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+	update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 }
 // End of spellchecker stuff
 
@@ -869,12 +872,12 @@ void BufferView::updateInset(Inset * inset, bool mark_dirty)
 	// then check the current buffer
 	if (available()) {
 		hideCursor();
-		update(BufferView::UPDATE);
+		update(text, BufferView::UPDATE);
 		if (text->UpdateInset(this, inset)) {
 			if (mark_dirty)
-				update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+				update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 			else 
-				update(SELECT);
+				update(text, SELECT);
 			return;
 		}
 	}

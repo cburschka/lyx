@@ -142,8 +142,8 @@ void FormParagraph::apply()
     general_apply();
     extra_apply();
 
-    lv_->view()->update(BufferView::SELECT | BufferView::FITCUR |
-			BufferView::CHANGE);
+    lv_->view()->update(lv_->view()->text, 
+			BufferView::SELECT | BufferView::FITCUR | BufferView::CHANGE);
     lv_->buffer()->markDirty();
     setMinibuffer(lv_, _("Paragraph layout set"));
 }

@@ -38,9 +38,9 @@ void Foot(BufferView * bv)
 	bv->owner()->getMiniBuffer()
 		->Set(_("Inserting Footnote..."));
 	bv->hideCursor();
-	bv->update(BufferView::SELECT|BufferView::FITCUR);
+	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
 	bv->text->InsertFootnoteEnvironment(bv, LyXParagraph::FOOTNOTE);
-	bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 }
 #endif
 
@@ -75,9 +75,9 @@ void Margin(BufferView * bv)
 	if (bv->available()) {
 		bv->owner()->getMiniBuffer()->Set(_("Inserting margin note..."));
 		bv->hideCursor();
-		bv->update(BufferView::SELECT|BufferView::FITCUR);
+		bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
 		bv->text->InsertFootnoteEnvironment(bv, LyXParagraph::MARGIN);
-		bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
 }
 #endif
@@ -109,9 +109,9 @@ void Melt(BufferView * bv)
 	bv->owner()->getMiniBuffer()->Set(_("Melt"));
 	bv->hideCursor();
 	bv->beforeChange();
-	bv->update(BufferView::SELECT|BufferView::FITCUR);
+	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
 	bv->text->MeltFootnoteEnvironment(bv);
-	bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 }
 #endif
 
@@ -133,14 +133,14 @@ void changeDepth(BufferView * bv, LyXText * text, int decInc)
 	    return;
 	
 	bv->hideCursor();
-	bv->update(BufferView::SELECT|BufferView::FITCUR);
+	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR);
 	if (decInc >= 0)
 		text->IncDepth(bv);
 	else
 		text->DecDepth(bv);
 	if (text->inset_owner)
 	    bv->updateInset((Inset *)text->inset_owner, true);
-	bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	bv->owner()->getMiniBuffer()
 		->Set(_("Changed environment depth"
 			" (in possible range, maybe not)"));
@@ -306,18 +306,16 @@ string const CurrentState(BufferView * bv)
 void ToggleAndShow(BufferView * bv, LyXFont const & font)
 {
 	if (bv->available()) { 
+		LyXText * text = bv->getLyXText();
+
 		bv->hideCursor();
-		bv->update(BufferView::SELECT|BufferView::FITCUR);
-		if (bv->theLockingInset())
-			bv->theLockingInset()->SetFont(bv, font, toggleall);
-		else
-			bv->text->ToggleFree(bv, font, toggleall);
-		bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		bv->update(text, BufferView::SELECT|BufferView::FITCUR);
+		text->ToggleFree(bv, font, toggleall);
+		bv->update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 
 		if (font.language() != ignore_language ||
 		    font.latex() != LyXFont::IGNORE ||
 		    font.number() != LyXFont::IGNORE) {
-			LyXText * text = bv->getLyXText();
 			LyXCursor & cursor = text->cursor;
 			text->ComputeBidiTables(bv->buffer(), cursor.row());
 			if (cursor.boundary() != 

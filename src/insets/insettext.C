@@ -450,6 +450,11 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool reinit)
 	TEXT_TO_INSET_OFFSET;
 }
 
+void InsetText::SetUpdateStatus(UpdateCodes what)
+{
+    if (what > need_update)
+	need_update = what;
+}
 
 void InsetText::UpdateLocal(BufferView * bv, UpdateCodes what, bool mark_dirty)
 {
@@ -1334,9 +1339,11 @@ bool InsetText::InsertInset(BufferView * bv, Inset * inset)
     inset->setOwner(this);
     HideInsetCursor(bv);
     TEXT(bv)->InsertInset(bv, inset);
+#if 0
     if ((cpar(bv)->GetChar(cpos(bv)) != LyXParagraph::META_INSET) ||
 	(cpar(bv)->GetInset(cpos(bv)) != inset))
 	TEXT(bv)->CursorLeft(bv);
+#endif
     TEXT(bv)->selection = 0;
     bv->fitCursor(TEXT(bv));
     UpdateLocal(bv, CURSOR_PAR, true);

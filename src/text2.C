@@ -1119,6 +1119,8 @@ bool LyXText::FullRebreak(BufferView * bview)
 // need the selection cursor:
 void LyXText::SetSelection()
 {
+	const bool lsel = selection;
+
 	if (!selection) {
 		last_sel_cursor = sel_cursor;
 		sel_start_cursor = sel_cursor;
@@ -1164,6 +1166,9 @@ void LyXText::SetSelection()
 	if (sel_start_cursor.par() == sel_end_cursor.par() && 
 	    sel_start_cursor.pos() == sel_end_cursor.pos())
 		selection = false;
+
+	if (inset_owner && (selection || lsel))
+		inset_owner->SetUpdateStatus(InsetText::SELECTION);
 }
 
 
@@ -1298,6 +1303,8 @@ void LyXText::ToggleFree(BufferView * bview,
 		SetCursor(bview, cursor.par(), cursor.pos());
 		sel_cursor = cursor;
 	}
+	if (inset_owner)
+		inset_owner->SetUpdateStatus(InsetText::CURSOR_PAR);
 }
 
 

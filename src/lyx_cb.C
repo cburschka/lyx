@@ -510,7 +510,7 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 		bv->text->InsertStringA(bv, tmpstr);
 	else
 		bv->text->InsertStringB(bv, tmpstr);
-	bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+	bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 }
 
 
@@ -878,20 +878,20 @@ void FigureApplyCB(FL_OBJECT *, long)
 	}
 	
 	current_view->hideCursor();
-	current_view->update(BufferView::SELECT|BufferView::FITCUR);
+	current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR);
 	current_view->beforeChange();
       
 	current_view->text->SetCursorParUndo(current_view->buffer()); 
 	current_view->text->FreezeUndo();
 
 	current_view->text->BreakParagraph(current_view);
-	current_view->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+	current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
       
 	if (current_view->text->cursor.par()->Last()) {
 		current_view->text->CursorLeft(current_view);
 	 
 		current_view->text->BreakParagraph(current_view);
-		current_view->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+		current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 	}
 
 	// The standard layout should always be numer 0;
@@ -922,12 +922,12 @@ void FigureApplyCB(FL_OBJECT *, long)
 	}
 #endif
 	
-	current_view->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+	current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
       
 	Inset * new_inset = new InsetFig(100, 100, *buffer);
 	current_view->insertInset(new_inset);
 	new_inset->Edit(current_view, 0, 0, 0);
-	current_view->update(BufferView::SELECT|BufferView::FITCUR);
+	current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR);
 	current_view->owner()->getMiniBuffer()->Set(_("Figure inserted"));
 	current_view->text->UnFreezeUndo();
 	current_view->setState();

@@ -40,23 +40,25 @@ class LyXScreen;
 class InsetText : public UpdatableInset {
 public:
     ///
+    /// numbers need because of test if codeA < codeB
+    ///
     enum UpdateCodes {
 	///
 	NONE = 0,
 	///
-	INIT,
+	CURSOR = 1,
 	///
-	FULL,
+	CLEAR_FRAME = 2,
 	///
-	CURSOR_PAR,
+	DRAW_FRAME = 3,
 	///
-	CURSOR,
+	SELECTION = 4,
 	///
-	SELECTION,
+	CURSOR_PAR = 5,
 	///
-	DRAW_FRAME,
+	FULL = 6,
 	///
-	CLEAR_FRAME
+	INIT = 7
     };
     ///
     enum DrawFrame {
@@ -96,6 +98,8 @@ public:
     void draw(BufferView *, LyXFont const &, int , float &, bool) const;
     ///
     void update(BufferView *, LyXFont const &, bool =false);
+    ///
+    void SetUpdateStatus(UpdateCodes);
     ///
     string const EditMessage() const;
     ///

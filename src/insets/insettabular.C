@@ -126,6 +126,7 @@ InsetTabular::InsetTabular(Buffer const & buf, int rows, int columns)
     actrow = actcell = 0;
     clearSelection();
     need_update = INIT;
+    no_draw = false;
 }
 
 
@@ -140,6 +141,7 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer const & buf)
     actrow = actcell = 0;
     sel_cell_start = sel_cell_end = 0;
     need_update = INIT;
+    no_draw = false;
 }
 
 
@@ -214,6 +216,9 @@ int InsetTabular::width(BufferView *, LyXFont const &) const
 void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 			float & x, bool cleared) const
 {
+    if (no_draw)
+	return;
+
     Painter & pain = bv->painter();
     int i, j;
     int nx;
@@ -311,33 +316,6 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 	    lyxerr[Debug::INSETS] << "ERROR this shouldn't happen\n";
 	    return;
 	}
-//	LyXText::text_status st = bv->text->status;
-#if 0
-	do {
-	    float cx = nx + tabular->GetBeginningOfTextInCell(cell);
-	    bv->text->status = st;
-	    if (need_update == CELL) {
-		// clear before the inset
-		pain.fillRectangle(
-		    nx + 1,
-		    baseline - tabular->GetAscentOfRow(i) + 1,
-		    int(cx - nx - 1),
-		    tabular->GetAscentOfRow(i) +
-		    tabular->GetDescentOfRow(i) - 1);
-		// clear behind the inset
-		pain.fillRectangle(
-		    int(cx + the_locking_inset->width(bv,font) + 1),
-		    baseline - tabular->GetAscentOfRow(i) + 1,
-		    tabular->GetWidthOfColumn(cell) -
-		    tabular->GetBeginningOfTextInCell(cell) -
-		    the_locking_inset->width(bv,font) -
-		    tabular->GetAdditionalWidth(cell) - 1,
-		    tabular->GetAscentOfRow(i) +
-		    tabular->GetDescentOfRow(i) - 1);
-	    }
-	    tabular->GetCellInset(cell)->draw(bv,font,baseline, cx, false);
-	} while(bv->text->status == LyXText::CHANGED_IN_DRAW);
-#else
 	float dx;
 	float cx;
 	cx = dx = nx + tabular->GetBeginningOfTextInCell(cell);
@@ -364,7 +342,6 @@ void InsetTabular::draw(BufferView * bv, LyXFont const & font, int baseline,
 		tabular->GetAscentOfRow(i) +
 		tabular->GetDescentOfRow(i) - 1);
 	}
-#endif
     }
     x -= ADD_TO_TABULAR_WIDTH;
     x += width(bv, font);
@@ -567,8 +544,8 @@ bool InsetTabular::UnlockInsetInInset(BufferView * bv, UpdatableInset * inset,
     if (the_locking_inset == inset) {
         the_locking_inset->InsetUnlock(bv);
         the_locking_inset = 0;
-	ShowInsetCursor(bv, false);
 	UpdateLocal(bv, CELL, false);
+	ShowInsetCursor(bv, false);
         return true;
     }
     if (the_locking_inset->UnlockInsetInInset(bv, inset, lr)) {
@@ -979,18 +956,20 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 	result = UNDISPATCHED;
 	if (the_locking_inset)
 	    break;
+	no_draw = true;
 	if (ActivateCellInset(bv)) {
 	    result=the_locking_inset->LocalDispatch(bv, action, arg);
-	    if (result == DISPATCHED_NOUPDATE)
-		return result;
-	    else if (result == DISPATCHED) {
-		the_locking_inset->ToggleInsetCursor(bv);
-		UpdateLocal(bv, CELL, false);
-		the_locking_inset->ToggleInsetCursor(bv);
-		return result;
-	    } else {
-		result = UNDISPATCHED;
+	    if ((result == UNDISPATCHED) || (result == FINISHED)) {
+		UnlockInsetInInset(bv, the_locking_inset);
+		no_draw = false;
+		the_locking_inset = 0;
+		return UNDISPATCHED;
 	    }
+	    no_draw = false;
+	    the_locking_inset->ToggleInsetCursor(bv);
+	    UpdateLocal(bv, CELL, false);
+	    the_locking_inset->ToggleInsetCursor(bv);
+	    return result;
 	}
 	break;
     }
@@ -1599,10 +1578,7 @@ void InsetTabular::TabularFeatures(BufferView * bv,
 	    for (j = sel_col_start; j <= sel_col_end; ++j)
 		tabular->SetAlignment(tabular->GetCellNumber(i, j), setAlign,
 				      flag);
-	if (hasSelection())
-	    UpdateLocal(bv, INIT, true);
-	else
-	    UpdateLocal(bv, CELL, true);
+	UpdateLocal(bv, INIT, true);
 	break;
     case LyXTabular::M_VALIGN_TOP:
     case LyXTabular::M_VALIGN_BOTTOM:
@@ -1615,10 +1591,7 @@ void InsetTabular::TabularFeatures(BufferView * bv,
 	    for (j = sel_col_start; j <= sel_col_end; ++j)
 		tabular->SetVAlignment(tabular->GetCellNumber(i, j),
 				       setVAlign, flag);
-	if (hasSelection())
-	    UpdateLocal(bv, INIT, true);
-	else
-	    UpdateLocal(bv, CELL, true);
+	UpdateLocal(bv, INIT, true);
 	break;
     case LyXTabular::MULTICOLUMN:
     {

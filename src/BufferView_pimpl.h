@@ -43,7 +43,7 @@ struct BufferView::Pimpl : public Object {
 	///
 	void update();
 	//
-	void update(BufferView::UpdateCodes);
+	void update(LyXText *, BufferView::UpdateCodes);
   	/// Update pixmap of screen
 	void updateScreen();
 	///

@@ -274,6 +274,8 @@ private:
     ///
     bool no_selection;
     ///
+    bool no_draw;
+    ///
     mutable bool locked;
     ///
     mutable UpdateCodes need_update;

@@ -94,7 +94,7 @@ private:
 	///
 	unsigned meta_fake_bit;
 	///
-	void moveCursorUpdate(bool selecting = false);
+	void moveCursorUpdate(LyXText *, bool selecting = false);
 	///
 	void setupLocalKeymap();
         ///

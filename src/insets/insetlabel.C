@@ -60,7 +60,7 @@ void InsetLabel::Edit(BufferView * bv, int, int, unsigned int)
 				bv->redraw();
 				bv->fitCursor(getLyXText(bv));
 			} else
-				bv->update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+				bv->update(bv->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 		}
 	}
 }

@@ -21,6 +21,7 @@
 #include "TextCache.h"
 #include "bufferlist.h"
 #include "insets/insetbib.h"
+#include "insets/insettext.h"
 #include "lyx_gui_misc.h"
 #include "lyxrc.h"
 #include "intl.h"
@@ -198,7 +199,7 @@ void BufferView::Pimpl::buffer(Buffer * b)
 void BufferView::Pimpl::resize(int xpos, int ypos, int width, int height)
 {
 	workarea_->resize(xpos, ypos, width, height);
-	update(SELECT);
+	update(bv_->text, SELECT);
 	redraw();
 }
 
@@ -519,7 +520,7 @@ void BufferView::Pimpl::workAreaMotionNotify(int x, int y, unsigned int state)
 	bv_->text->SetCursorFromCoordinates(bv_, x, y + bv_->text->first);
       
 	if (!bv_->text->selection)
-		update(BufferView::UPDATE); // Maybe an empty line was deleted
+		update(bv_->text, BufferView::UPDATE); // Maybe an empty line was deleted
       
 	bv_->text->SetSelection();
 	screen_->ToggleToggle(bv_->text, bv_);
@@ -636,34 +637,48 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 void BufferView::Pimpl::doubleClick(int /*x*/, int /*y*/, unsigned int button) 
 {
 	// select a word
-	if (buffer_ && !bv_->theLockingInset()) {
-		if (screen_ && button == 1) {
-			screen_->HideCursor();
-			screen_->ToggleSelection(bv_->text, bv_);
-			bv_->text->SelectWord(bv_);
-			screen_->ToggleSelection(bv_->text, bv_, false);
-			/* This will fit the cursor on the screen
-			 * if necessary */
-			update(BufferView::SELECT|BufferView::FITCUR);
-		}
-	}   
+	if (!buffer_)
+	    return;
+
+	LyXText * text = bv_->getLyXText();
+
+	if (text->bv_owner && bv_->theLockingInset())
+	    return;
+
+	if (screen_ && button == 1) {
+	    screen_->HideCursor();
+	    screen_->ToggleSelection(text, bv_);
+	    text->SelectWord(bv_);
+	    screen_->ToggleSelection(text, bv_, false);
+	    /* This will fit the cursor on the screen
+	     * if necessary */
+	    update(text, BufferView::SELECT|BufferView::FITCUR);
+	}
 }
 
 
 void BufferView::Pimpl::tripleClick(int /*x*/, int /*y*/, unsigned int button)
 {
 	// select a line
-	if (buffer_ && screen_ && !bv_->theLockingInset() && (button == 1)) {
+	if (buffer_)
+		return;
+
+	LyXText * text = bv_->getLyXText();
+
+	if (text->bv_owner && bv_->theLockingInset())
+	    return;
+
+	if (screen_ && (button == 1)) {
 		screen_->HideCursor();
-		screen_->ToggleSelection(bv_->text, bv_);
-		bv_->text->CursorHome(bv_);
-		bv_->text->sel_cursor = bv_->text->cursor;
-		bv_->text->CursorEnd(bv_);
-		bv_->text->SetSelection();
-		screen_->ToggleSelection(bv_->text, bv_, false);
+		screen_->ToggleSelection(text, bv_);
+		text->CursorHome(bv_);
+		text->sel_cursor = text->cursor;
+		text->CursorEnd(bv_);
+		text->SetSelection();
+		screen_->ToggleSelection(text, bv_, false);
 		/* This will fit the cursor on the screen
 		 * if necessary */
-		update(BufferView::SELECT|BufferView::FITCUR);
+		update(text, BufferView::SELECT|BufferView::FITCUR);
 	}
 }
 
@@ -1004,20 +1019,23 @@ void BufferView::Pimpl::update()
 // update(1)  -> update(1 + 2 + 4) -> update(7) -> update(SELECT|FITCUR|CHANGE)
 // update(3)  -> update(1)         -> update(1) -> update(SELECT)
 
-void BufferView::Pimpl::update(BufferView::UpdateCodes f)
+void BufferView::Pimpl::update(LyXText * text, BufferView::UpdateCodes f)
 {
 	owner_->updateLayoutChoice();
 
-	if (!bv_->text->selection && (f & SELECT)) {
-		bv_->text->sel_cursor = bv_->text->cursor;
+	if (!text->selection && (f & SELECT)) {
+		text->sel_cursor = text->cursor;
 	}
 
-	bv_->text->FullRebreak(bv_);
+	text->FullRebreak(bv_);
 
-	update();
+	if (text->inset_owner)
+	    bv_->updateInset(text->inset_owner, true);
+	else
+	    update();
 
 	if ((f & FITCUR)) {
-		fitCursor(bv_->text);
+		fitCursor(text);
       	}
 
 	if ((f & CHANGE)) {
@@ -1164,7 +1182,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 
 	bv_->text->SetCursor(bv_, par,
 			     min(par->Last(), saved_positions[i].par_pos));
-	update(BufferView::SELECT|BufferView::FITCUR);
+	update(bv_->text, BufferView::SELECT|BufferView::FITCUR);
 	if (i > 0)
 		owner_->getMiniBuffer()->Set(_("Moved to bookmark ") + tostr(i));
 }
@@ -1287,7 +1305,7 @@ void BufferView::Pimpl::center()
 	} else {
 		screen_->Draw(bv_->text, bv_, 0);
 	}
-	update(BufferView::SELECT|BufferView::FITCUR);
+	update(bv_->text, BufferView::SELECT|BufferView::FITCUR);
 	redraw();
 }
 
@@ -1308,7 +1326,7 @@ void BufferView::Pimpl::pasteClipboard(bool asPara)
 	} else {
 		bv_->text->InsertStringA(bv_, clip);
 	}
-	update(BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
+	update(bv_->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
 }
 
 

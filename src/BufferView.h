@@ -68,7 +68,7 @@ public:
 	///
 	void update();
 	//
-	void update(UpdateCodes uc);
+	void update(LyXText *, UpdateCodes uc);
 	///
 	void updateScrollbar();
 	///
@@ -154,7 +154,7 @@ public:
 	///
 	void hfill();
 	///
-	void protectedBlank();
+	void protectedBlank(LyXText *);
 	///
 	void newline();
 	///

@@ -1,3 +1,26 @@
+2001-02-13  Juergen Vigna  <jug@sad.it>
+
+	* lyxfunc.C (Dispatch): fixed protected blank problem.
+	* BufferView2.C (protectedBlank): added LyxText * parameter.
+
+	* tabular.C (AppendRow): forgot to set row_info of newly added row.
+	(AppendColumn): same as above for column_info.
+
+	* lyxfunc.C (Dispatch): supported some more functions in InsetText.
+	(moveCursorUpdate): use a LyXText param for support of InsetText.
+
+	* BufferView_pimpl.C (doubleClick): added support for InsetText.
+	(tripleClick): ditto
+
+	* lyxfunc.C (LFUN_APPENDIX): changed to use "text" pointer.
+
+	* BufferView_pimpl.C (update): added LyXText param to honor insets.
+
+	* bufferview_funcs.C (ToggleAndShow): fixed for text in insets.
+
+	* text2.C (SetSelection): set correct update status if inset_owner
+	(ToggleFree): ditto
+
 2001-02-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* tabular.C: remove some commented code.
