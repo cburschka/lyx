@@ -142,7 +142,7 @@ int InsetFormula::latex(Buffer const *, ostream & os, bool fragile, bool) const
 
 int InsetFormula::ascii(Buffer const *, ostream & os, int) const
 {
-	if (display()) {
+	if (0 && display()) {
 		TextMetricsInfo mi;
 		par()->metricsT(mi);
 		TextPainter tpain(par()->width(), par()->height());
