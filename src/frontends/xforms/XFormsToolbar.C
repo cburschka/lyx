@@ -35,6 +35,9 @@
 
 #include <boost/bind.hpp>
 
+#include <sstream>
+#include <vector>
+
 using lyx::frontend::Box;
 using lyx::frontend::BoxList;
 
@@ -43,6 +46,7 @@ using lyx::support::compare_ascii_no_case;
 using std::distance;
 using std::endl;
 using std::string;
+using std::vector;
 
 
 // some constants
@@ -79,9 +83,8 @@ XFormsToolbar::toolbarItem::toolbarItem()
 	: icon(0),
 	  unused_pixmap(0),
 	  active_pixmap(0),
-	  active_mask(0),
 	  inactive_pixmap(0),
-	  inactive_mask(0)
+	  mask(0)
 {}
 
 
@@ -99,9 +102,8 @@ void XFormsToolbar::toolbarItem::kill_icon()
 
 	unused_pixmap = 0;
 	active_pixmap = 0;
-	active_mask = 0;
 	inactive_pixmap = 0;
-	inactive_mask = 0;
+	mask = 0;
 	icon = 0;
 }
 
@@ -128,19 +130,21 @@ void XFormsToolbar::toolbarItem::generateInactivePixmaps()
 		return;
 
 	// Store the existing (active) pixmap.
-	fl_get_pixmap_pixmap(icon, &active_pixmap, &active_mask);
+	fl_get_pixmap_pixmap(icon, &active_pixmap, &mask);
 
-	if (active_pixmap == 0 || active_mask == 0)
+	if (active_pixmap == 0 || mask == 0)
 		return;
 
-	// Create an XpmImage of this (active) pixmap. It's this that
-	// we're going to manipulate.
-	XpmImage xpm_image;
-	XpmCreateXpmImageFromPixmap(fl_get_display(),
-				    active_pixmap,
-				    active_mask,
-				    &xpm_image,
-				    0);
+	// Ascertain the width and height of the pixmap.
+	Display * display = fl_get_display();
+	unsigned int width;
+	unsigned int height;
+	unsigned int uidummy;
+	int idummy;
+	Window win;
+
+        XGetGeometry(display, active_pixmap, &win, &idummy, &idummy,
+                     &width, &height, &uidummy, &uidummy);
 
 	// Produce a darker shade of the button background as the
 	// inactive color. Note the 'hsv.v - 0.2'.
@@ -150,32 +154,39 @@ void XFormsToolbar::toolbarItem::generateInactivePixmaps()
 	hsv.v = std::max(0.0, hsv.v - 0.2);
 	string const inactive_color = X11hexname(RGBColor(hsv));
 
-	// Set all color table entries in xpm_image that aren't
-	// "none" to inactive_color
-	for (uint i = 0; i != xpm_image.ncolors; ++i) {
-		XpmColor & ct = xpm_image.colorTable[i];
-		if (ct.c_color &&
-		    compare_ascii_no_case("none", ct.c_color) == 0)
-			continue;
+	// Generate an XPM dataset for a uniformly-colored pixmap with
+	// the same dimensions as active_pixmap.
 
-		// Note that this is a c-struct, so use c memory funcs.
-		if (ct.c_color)
-			free(ct.c_color);
-		ct.c_color = (char *)malloc(inactive_color.size() + 1);
-		strcpy(ct.c_color, inactive_color.c_str());
-	}
+	// The data set has the form:
+	// "<width> <height> <ncolors> <chars per pixel>",
+	// "o c <inactive_color>",
+	// "oooooooooooooooo", // <width> 'o' chars.
+	// repeated <height> times.
 
-	// Generate pixmaps of this modified xpm_image.
-	Screen * screen = ScreenOfDisplay(fl_get_display(), fl_screen);
+	std::ostringstream line1_ss;
+	line1_ss << width << ' ' << height << " 1 1";
+	string const line1 = line1_ss.str();
+	string const line2 = "o c " + inactive_color;
+	string const data(width, 'o');
+	vector<char *> inactive_data(height + 2,
+				     const_cast<char *>(data.c_str()));
+	inactive_data[0] = const_cast<char *>(line1.c_str());
+	inactive_data[1] = const_cast<char *>(line2.c_str());
 
-	XpmCreatePixmapFromXpmImage(fl_get_display(),
-				    XRootWindowOfScreen(screen),
-				    &xpm_image,
-				    &inactive_pixmap,
-				    &inactive_mask,
-				    0);
+	char ** raw_inactive_data =
+		const_cast<char **>(&*inactive_data.begin());
 
-	XpmFreeXpmImage(&xpm_image);
+	// Generate a pixmap of this data set.
+	// Together with 'mask' above, this is sufficient to display
+	// an inactive version of our active_pixmap.
+	Screen * screen = ScreenOfDisplay(display, fl_screen);
+
+	XpmCreatePixmapFromData(fl_get_display(),
+				XRootWindowOfScreen(screen),
+				raw_inactive_data,
+				&inactive_pixmap,
+				0,
+				0);
 }
 
 
@@ -389,13 +400,13 @@ void XFormsToolbar::update()
 			fl_activate_object(p->icon);
 			fl_set_pixmap_pixmap(p->icon,
 					     p->active_pixmap,
-					     p->active_mask);
+					     p->mask);
 			p->unused_pixmap = p->inactive_pixmap;
 		} else {
 			fl_deactivate_object(p->icon);
 			fl_set_pixmap_pixmap(p->icon,
 					     p->inactive_pixmap,
-					     p->inactive_mask);
+					     p->mask);
 			p->unused_pixmap = p->active_pixmap;
 		}
 	}

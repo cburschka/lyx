@@ -88,9 +88,8 @@ public:
 		///
 		Pixmap unused_pixmap;
 		Pixmap active_pixmap;
-		Pixmap active_mask;
 		Pixmap inactive_pixmap;
-		Pixmap inactive_mask;
+		Pixmap mask;
 	};
 
 	///
