@@ -670,7 +670,7 @@ string const latexify(string const str)
 			break;
 
 		case ('\\'):
-			out << "$\backslash$";
+			out << "\textbackslash ";
 			break;
 
 		default:

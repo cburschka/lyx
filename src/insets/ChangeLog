@@ -1,5 +1,10 @@
 2002-03-26  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* insetgraphicsParams.C (latexify): use \textbackslash in preference to
+	$\backslash$.
+
+2002-03-26  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* insetgraphicsParams.C (Read): revert Herbert's fix and apply the
 	proper fix to the graphics cache.
 	(latex): "really" nice output if the file is not found ;-)
