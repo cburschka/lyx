@@ -1,3 +1,8 @@
+2005-01-03  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* math_decorationinset.C (ams, validate): new methods. Require
+	amsmath when using AMS-LaTeX over and under arrows.
+
 2005-01-04  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* math_nestinset.C: reintroduce LFUN_{SUB|SUPER}SCRIPT.
