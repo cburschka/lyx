@@ -35,6 +35,7 @@
 
 #include "debug.h" // for lyxerr
 
+using std::endl;
 
 ControlPrint::ControlPrint(LyXView & lv, Dialogs & d)
 	: ControlDialogBD(lv, d),
