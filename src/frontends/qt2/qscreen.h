@@ -37,22 +37,6 @@ public:
 	 */
 	virtual void draw(LyXText *, BufferView *, unsigned int y);
 
-	/**
-	 * showManualCursor - display the caret on the work area
-	 * @param text the lyx text containing the cursor
-	 * @param x the x position of the cursor
-	 * @param y the y position of the row's baseline
-	 * @param asc ascent of the row
-	 * @param desc descent of the row
-	 * @param shape the current shape
-	 */
-	virtual void showManualCursor(LyXText const *, int x, int y,
-			      int asc, int desc,
-			      Cursor_Shape shape);
-
-	/// unpaint the cursor painted by showManualCursor()
-	virtual void hideCursor();
-
 protected:
 	/// get the work area
 	virtual WorkArea & workarea() const { return owner_; }
@@ -63,11 +47,16 @@ protected:
 	/// copies specified area of pixmap to screen
 	virtual void expose(int x, int y, int exp_width, int exp_height);
 
+	/// paint the cursor and store the background
+	virtual void showCursor(int x, int y, int h, Cursor_Shape shape);
+
+	/// hide the cursor
+	virtual void removeCursor();
+
 private:
 	/// our owning widget
 	QWorkArea & owner_;
 
-	/// the mini-pixmap used for backing store for the blinking cursor
 	boost::scoped_ptr<QPixmap> nocursor_pixmap_;
 
 	//@{ the cursor pixmap position/size

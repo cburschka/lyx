@@ -26,12 +26,12 @@
 // some stuff for inset locking
 
 UpdatableInset::UpdatableInset()
-	: Inset(), cursor_visible_(false), block_drawing_(false)
+	: Inset(), block_drawing_(false)
 {}
 
 
 UpdatableInset::UpdatableInset(UpdatableInset const & in, bool same_id)
-	: Inset(in, same_id), cursor_visible_(false), block_drawing_(false)
+	: Inset(in, same_id), block_drawing_(false)
 {}
 
 
@@ -46,18 +46,6 @@ Inset::EDITABLE UpdatableInset::editable() const
 {
 	return HIGHLY_EDITABLE;
 }
-
-
-void UpdatableInset::toggleInsetCursor(BufferView *)
-{}
-
-
-void UpdatableInset::showInsetCursor(BufferView *, bool)
-{}
-
-
-void UpdatableInset::hideInsetCursor(BufferView *)
-{}
 
 
 void UpdatableInset::fitInsetCursor(BufferView *) const

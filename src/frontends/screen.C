@@ -25,6 +25,8 @@
 #include "language.h"
 #include "debug.h"
 #include "rowpainter.h"
+#include "insets/updatableinset.h"
+#include "mathed/formulabase.h"
 
 // Splash screen-specific stuff
 #include "lyxfont.h"
@@ -126,33 +128,89 @@ LyXScreen::~LyXScreen()
 {
 }
 
-// FIXME: GUII these cursor methods need to decide
-// whether the workarea is focused or not
 
-void LyXScreen::showCursor(LyXText const * text, BufferView const * bv)
+void LyXScreen::showCursor(BufferView & bv)
 {
 	if (cursor_visible_)
 		return;
 
-	workarea().getPainter().start();
+	if (!bv.available())
+		return;
 
 	Cursor_Shape shape = BAR_SHAPE;
-	BufferParams const & bp(bv->buffer()->params);
-	LyXFont const & realfont(text->real_current_font);
 
-	if (realfont.language() != bp.language
-		|| realfont.isVisibleRightToLeft()
-		!= bp.language->RightToLeft()) {
-		shape = (realfont.isVisibleRightToLeft())
-			? REVERSED_L_SHAPE : L_SHAPE;
+	LyXText const & text = *bv.getLyXText();
+	LyXFont const & realfont(text.real_current_font);
+	BufferParams const & bp(bv.buffer()->params);
+	bool const samelang = realfont.language() == bp.language;
+	bool const isrtl = realfont.isVisibleRightToLeft();
+
+	if (!samelang || isrtl != bp.language->RightToLeft()) {
+		shape = L_SHAPE;
+		if (isrtl)
+			shape = REVERSED_L_SHAPE;
 	}
 
-	showManualCursor(text, text->cursor.x(), text->cursor.y(),
-		font_metrics::maxAscent(realfont),
-		font_metrics::maxDescent(realfont),
-		shape);
+	int ascent = font_metrics::maxAscent(realfont);
+	int descent = font_metrics::maxDescent(realfont);
+	int h = ascent + descent;
+	int x = 0;
+	int y = 0;
+	int const top_y = bv.text->top_y();
 
-	workarea().getPainter().end();
+	if (bv.theLockingInset()) {
+		// Would be nice to clean this up to make some understandable sense...
+		UpdatableInset * inset = bv.theLockingInset();
+		inset->getCursor(bv, x, y);
+
+		// Non-obvious. The reason we have to have these
+		// extra checks is that the ->getCursor() calls rely
+		// on the inset's own knowledge of its screen position.
+		// If we scroll up or down in a big enough increment, the
+		// inset->draw() is not called: this doesn't update
+		// inset.top_baseline, so getCursor() returns an old value.
+		// Ugly as you like.
+		int bx, by;
+		inset->getCursorPos(&bv, bx, by);
+		by += inset->insetInInsetY() + bv.text->cursor.iy();
+		if (by < top_y)
+			return;
+		if (by > top_y + workarea().workHeight())
+			return;
+	} else {
+		x = bv.text->cursor.x();
+		y = bv.text->cursor.y();
+		y -= top_y;
+	}
+
+	y -= ascent;
+
+	// if it doesn't fit entirely on the screen, don't try to show it
+	if (y < 0 || y + h > workarea().workHeight())
+		return;
+
+	showCursor(x, y, h, shape);
+
+	cursor_visible_ = true;
+}
+
+
+void LyXScreen::hideCursor()
+{
+	if (!cursor_visible_)
+		return;
+
+	removeCursor();
+	cursor_visible_ = false;
+}
+
+
+void LyXScreen::toggleCursor(BufferView & bv)
+{
+	if (cursor_visible_)
+		hideCursor();
+	else
+		showCursor(bv);
 }
 
 
@@ -178,15 +236,6 @@ bool LyXScreen::fitManualCursor(BufferView * bv, LyXText * text,
 	}
 
 	return false;
-}
-
-
-void LyXScreen::cursorToggle(BufferView * bv) const
-{
-	if (cursor_visible_)
-		bv->hideCursor();
-	else
-		bv->showCursor();
 }
 
 
@@ -365,11 +414,6 @@ void LyXScreen::redraw(LyXText * text, BufferView * bv)
 	expose(0, 0, workarea().workWidth(), workarea().workHeight());
 
 	workarea().getPainter().end();
-
-	if (cursor_visible_) {
-		cursor_visible_ = false;
-		bv->showCursor();
-	}
 }
 
 
@@ -421,6 +465,8 @@ void LyXScreen::drawFromTo(LyXText * text, BufferView * bv,
 	int y = y_text - topy;
 	// y1 is now the real beginning of row on the screen
 
+	hideCursor();
+
 	RowList::iterator const rend = text->rows().end();
 	while (rit != rend && y < y2) {
 		RowPainter rp(*bv, *text, rit);
@@ -449,6 +495,8 @@ void LyXScreen::drawOneRow(LyXText * text, BufferView * bv,
 
 	if (y - row->height() > workarea().workHeight())
 		return;
+
+	hideCursor();
 
 	RowPainter rp(*bv, *text, row);
 	rp.paint(y, xo, y + text->top_y());

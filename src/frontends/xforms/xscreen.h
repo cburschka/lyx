@@ -34,12 +34,6 @@ public:
 
 	/// Sets the cursor color to LColor::cursor.
 	virtual	void setCursorColor();
-	///
-	virtual void hideCursor();
-	///
-	virtual void showManualCursor(LyXText const *, int x, int y,
-			      int asc, int desc,
-			      Cursor_Shape shape);
 
 	/** Draws the screen form textposition y. Uses as much of
 	    the already printed pixmap as possible */
@@ -52,21 +46,27 @@ protected:
 	/// Copies specified area of pixmap to screen
 	virtual void expose(int x, int y, int w, int h);
 
+	/// paint the cursor and store the background
+	virtual void showCursor(int x, int y, int h, Cursor_Shape shape);
+
+	/// hide the cursor
+	virtual void removeCursor();
+
 private:
 	/// our owning widget
 	XWorkArea & owner_;
 
-	///
-	Pixmap cursor_pixmap;
-	///
-	int cursor_pixmap_x;
-	///
-	int cursor_pixmap_y;
-	///
-	int cursor_pixmap_w;
-	///
-	int cursor_pixmap_h;
-	///
+	/// backing pixmap for cursor
+	Pixmap nocursor_pixmap_;
+	/// x of backing pixmap
+	int cursor_x_;
+	/// y of backing pixmap
+	int cursor_y_;
+	/// width of backing pixmap
+	int cursor_w_;
+	/// height of backing pixmap
+	int cursor_h_;
+	/// cursor cs
 	GC gc_copy;
 };
 

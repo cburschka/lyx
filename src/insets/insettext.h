@@ -130,16 +130,12 @@ public:
 	void validate(LaTeXFeatures & features) const;
 	///
 	Inset::Code lyxCode() const { return Inset::TEXT_CODE; }
-	///
+	/// FIXME, document
 	void getCursorPos(BufferView *, int & x, int & y) const;
+	/// Get the absolute document x,y of the cursor
+	virtual void getCursor(BufferView &, int &, int &) const;
 	///
 	int insetInInsetY() const;
-	///
-	void toggleInsetCursor(BufferView *);
-	///
-	void showInsetCursor(BufferView *, bool show = true);
-	///
-	void hideInsetCursor(BufferView *);
 	///
 	void fitInsetCursor(BufferView *) const;
 	///

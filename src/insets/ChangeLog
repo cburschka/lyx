@@ -1,3 +1,16 @@
+2003-05-03  John Levon  <levon@movementarian.org>
+
+	* insetcollapsable.h:
+	* insetcollapsable.C:
+	* insettabular.h:
+	* insettabular.C:
+	* insettext.h:
+	* insettext.C:
+	* updatableinset.h:
+	* updatableinset.C: remove cursor_visible_, showInsetCursor(),
+	hideInsetCursor(), toggleInsetCursor(), isCursorVisible(). Add
+	getCursor(). Remove explicit cursor hides.
+
 2003-05-02 André Pönitz <poenitz@gmx.net>
 
 	* insettext.C: remove unneeded &*

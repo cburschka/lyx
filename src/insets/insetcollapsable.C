@@ -491,27 +491,15 @@ void InsetCollapsable::validate(LaTeXFeatures & features) const
 }
 
 
+void InsetCollapsable::getCursor(BufferView & bv, int & x, int & y) const
+{
+	inset.getCursor(bv, x, y);
+}
+
+
 void InsetCollapsable::getCursorPos(BufferView * bv, int & x, int & y) const
 {
 	inset.getCursorPos(bv, x , y);
-}
-
-
-void InsetCollapsable::toggleInsetCursor(BufferView * bv)
-{
-	inset.toggleInsetCursor(bv);
-}
-
-
-void InsetCollapsable::showInsetCursor(BufferView * bv, bool show)
-{
-	inset.showInsetCursor(bv, show);
-}
-
-
-void InsetCollapsable::hideInsetCursor(BufferView * bv)
-{
-	inset.hideInsetCursor(bv);
 }
 
 

@@ -58,15 +58,11 @@ public:
 	virtual EDITABLE editable() const;
 
 	///
-	virtual void toggleInsetCursor(BufferView *);
-	///
-	virtual void showInsetCursor(BufferView *, bool show = true);
-	///
-	virtual void hideInsetCursor(BufferView *);
-	///
 	virtual void fitInsetCursor(BufferView *) const;
-	///
+	/// FIXME
 	virtual void getCursorPos(BufferView *, int &, int &) const {}
+	/// Get the absolute document x,y of the cursor
+	virtual void getCursor(BufferView &, int &, int &) const = 0;
 	///
 	virtual void insetUnlock(BufferView *);
 	///
@@ -99,8 +95,6 @@ public:
 		{ return false; }
 	///  An updatable inset could handle lyx editing commands
 	virtual RESULT localDispatch(FuncRequest const & cmd);
-	///
-	bool isCursorVisible() const { return cursor_visible_; }
 	///
 	virtual int getMaxWidth(BufferView * bv, UpdatableInset const *) const;
 	///
@@ -143,22 +137,12 @@ public:
 				    bool = true, bool = false);
 
 protected:
-	///
-	void toggleCursorVisible() const {
-		cursor_visible_ = !cursor_visible_;
-	}
-	///
-	void setCursorVisible(bool b) const {
-		cursor_visible_ = b;
-	}
 	/// scrolls to absolute position in bufferview-workwidth * sx units
 	void scroll(BufferView *, float sx) const;
 	/// scrolls offset pixels
 	void scroll(BufferView *, int offset) const;
 
 private:
-	///
-	mutable bool cursor_visible_;
 	///
 	mutable bool block_drawing_;
 };

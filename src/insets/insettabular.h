@@ -144,10 +144,10 @@ public:
 	void validate(LaTeXFeatures & features) const;
 	///
 	Inset::Code lyxCode() const { return Inset::TABULAR_CODE; }
-	///
+	/// FIXME, document
 	void getCursorPos(BufferView *, int & x, int & y) const;
-	///
-	void toggleInsetCursor(BufferView *);
+	/// Get the absolute document x,y of the cursor
+	virtual void getCursor(BufferView &, int &, int &) const;
 	///
 	bool tabularFeatures(BufferView * bv, string const & what);
 	///
@@ -258,10 +258,6 @@ private:
 	///
 	void drawCellSelection(Painter &, int x, int baseline,
 			       int row, int column, int cell) const;
-	///
-	void showInsetCursor(BufferView *, bool show=true);
-	///
-	void hideInsetCursor(BufferView *);
 	///
 	void fitInsetCursor(BufferView *) const;
 	///

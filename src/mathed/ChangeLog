@@ -1,3 +1,12 @@
+2003-05-03  John Levon  <levon@movementarian.org>
+
+	* formula.C:
+	* formulabase.C:
+	* formulabase.h:
+	* formulamacro.C:
+	* math_cursor.C: remove showInsetCursor(),
+	isCursorVisible(), hideInsetCursor(), toggleInsetCursor(),
+	explicit cursor hides. Add getCursor()
 
 2003-05-02  André Pönitz <poenitz@gmx.net>
 

@@ -242,8 +242,6 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 	xx += w;
 	xo_ = x;
 	yo_ = y;
-
-	setCursorVisible(false);
 }
 
 

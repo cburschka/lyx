@@ -223,18 +223,6 @@ int BufferView::workWidth() const
 }
 
 
-void BufferView::showCursor()
-{
-	pimpl_->showCursor();
-}
-
-
-void BufferView::hideCursor()
-{
-	pimpl_->hideCursor();
-}
-
-
 void BufferView::toggleSelection(bool b)
 {
 	pimpl_->toggleSelection(b);
@@ -585,7 +573,6 @@ void BufferView::undo()
 		return;
 
 	owner()->message(_("Undo"));
-	hideCursor();
 	beforeChange(text);
 	update(text, BufferView::SELECT);
 	if (!textUndo(this))
@@ -602,7 +589,6 @@ void BufferView::redo()
 		return;
 
 	owner()->message(_("Redo"));
-	hideCursor();
 	beforeChange(text);
 	update(text, BufferView::SELECT);
 	if (!textRedo(this))
@@ -631,7 +617,6 @@ void BufferView::selectLastWord()
 		return;
 
 	LyXCursor cur = text->selection.cursor;
-	hideCursor();
 	beforeChange(text);
 	text->selection.cursor = cur;
 	text->selectSelectedWord();
@@ -644,7 +629,6 @@ void BufferView::endOfSpellCheck()
 {
 	if (!available()) return;
 
-	hideCursor();
 	beforeChange(text);
 	text->selectSelectedWord();
 	text->clearSelection();
@@ -658,7 +642,6 @@ void BufferView::replaceWord(string const & replacestring)
 		return;
 
 	LyXText * tt = getLyXText();
-	hideCursor();
 	update(tt, BufferView::SELECT);
 
 	// clear the selection (if there is any)
@@ -729,44 +712,6 @@ bool BufferView::lockInset(UpdatableInset * inset)
 }
 
 
-void BufferView::showLockedInsetCursor(int x, int y, int asc, int desc)
-{
-	if (available() && theLockingInset() && !theLockingInset()->nodraw()) {
-		LyXCursor cursor = text->cursor;
-		Inset * locking_inset = theLockingInset()->getLockingInset();
-
-		if ((cursor.pos() - 1 >= 0) &&
-		    cursor.par()->isInset(cursor.pos() - 1) &&
-		    (cursor.par()->getInset(cursor.pos() - 1) ==
-		     locking_inset))
-			text->setCursor(cursor,
-					cursor.par(), cursor.pos() - 1);
-		LyXScreen::Cursor_Shape shape = LyXScreen::BAR_SHAPE;
-		LyXText * txt = getLyXText();
-		if (locking_inset->isTextInset() &&
-		    locking_inset->lyxCode() != Inset::ERT_CODE &&
-		    (txt->real_current_font.language() !=
-		     buffer()->params.language
-		     || txt->real_current_font.isVisibleRightToLeft()
-		     != buffer()->params.language->RightToLeft()))
-			shape = (txt->real_current_font.isVisibleRightToLeft())
-				? LyXScreen::REVERSED_L_SHAPE
-				: LyXScreen::L_SHAPE;
-		y += cursor.iy() + theLockingInset()->insetInInsetY();
-		screen().showManualCursor(text, x, y, asc, desc,
-						  shape);
-	}
-}
-
-
-void BufferView::hideLockedInsetCursor()
-{
-	if (theLockingInset() && available()) {
-		screen().hideCursor();
-	}
-}
-
-
 bool BufferView::fitLockedInsetCursor(int x, int y, int asc, int desc)
 {
 	if (theLockingInset() && available()) {
@@ -777,6 +722,12 @@ bool BufferView::fitLockedInsetCursor(int x, int y, int asc, int desc)
 		}
 	}
 	return false;
+}
+
+
+void BufferView::hideCursor()
+{
+	screen().hideCursor();
 }
 
 

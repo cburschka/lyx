@@ -92,7 +92,6 @@ int LyXReplace(BufferView * bv,
 		if (!bv->theLockingInset() ||
 			((text != bv->text) &&
 			 (text->inset_owner == text->inset_owner->getLockingInset()))) {
-			bv->hideCursor();
 			bv->update(text, BufferView::SELECT);
 			bv->toggleSelection(false);
 			text->replaceSelectionWithString(replacestr);
@@ -119,7 +118,6 @@ bool LyXFind(BufferView * bv,
 	if (!bv->available() || searchstr.empty())
 		return false;
 
-	bv->hideCursor();
 	bv->update(bv->getLyXText(), BufferView::SELECT);
 
 	if (bv->theLockingInset()) {
@@ -374,7 +372,6 @@ bool findNextChange(BufferView * bv)
 	if (!bv->available())
 		return false;
 
-	bv->hideCursor();
 	bv->update(bv->getLyXText(), BufferView::SELECT);
 
 	pos_type length;

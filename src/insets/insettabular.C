@@ -499,7 +499,6 @@ void InsetTabular::insetUnlock(BufferView * bv)
 		updateLocal(bv, CELL);
 		the_locking_inset = 0;
 	}
-	hideInsetCursor(bv);
 	actcell = 0;
 	oldcell = -1;
 	locked = false;
@@ -590,7 +589,6 @@ bool InsetTabular::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 		updateLocal(bv, CELL);
 		// this has to be here otherwise we don't redraw the cell!
 		the_locking_inset = 0;
-//		showInsetCursor(bv, false);
 		return true;
 	}
 	if (the_locking_inset->unlockInsetInInset(bv, inset, lr)) {
@@ -672,7 +670,6 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 	int const orow = actrow;
 	BufferView * bv = cmd.view();
 
-	hideInsetCursor(bv);
 	if (!locked) {
 		locked = true;
 		the_locking_inset = 0;
@@ -690,7 +687,6 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 			updateLocal(bv, CELL);
 			the_locking_inset = 0;
 		}
-		showInsetCursor(bv);
 		return;
 	}
 #endif
@@ -730,7 +726,6 @@ void InsetTabular::lfunMousePress(FuncRequest const & cmd)
 		the_locking_inset->localDispatch(cmd1);
 		return;
 	}
-	showInsetCursor(bv);
 }
 
 
@@ -763,7 +758,6 @@ void InsetTabular::lfunMouseMotion(FuncRequest const & cmd)
 	}
 
 	BufferView * bv = cmd.view();
-	hideInsetCursor(bv);
 	int const old_cell = actcell;
 
 	setPos(bv, cmd.x, cmd.y);
@@ -774,7 +768,6 @@ void InsetTabular::lfunMouseMotion(FuncRequest const & cmd)
 		setSelection(sel_cell_start, actcell);
 		updateLocal(bv, SELECTION);
 	}
-	showInsetCursor(bv);
 }
 
 
@@ -814,7 +807,6 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 
 		case LFUN_CELL_BACKWARD:
 		case LFUN_CELL_FORWARD:
-			hideInsetCursor(bv);
 			unlockInsetInInset(bv, the_locking_inset);
 			if (cmd.action == LFUN_CELL_FORWARD)
 				moveNextCell(bv, old_locking_inset != 0);
@@ -824,7 +816,6 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 			if (hs)
 				updateLocal(bv, SELECTION);
 			if (!the_locking_inset) {
-				showInsetCursor(bv);
 				return DISPATCHED_NOUPDATE;
 			}
 			return result;
@@ -842,15 +833,11 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 			int sc = scroll();
 			resetPos(bv);
 			if (sc != scroll()) { // inset has been scrolled
-				the_locking_inset->toggleInsetCursor(bv);
 				updateLocal(bv, FULL);
-				the_locking_inset->toggleInsetCursor(bv);
 			}
 			return result;
 		} else if (result == DISPATCHED) {
-			the_locking_inset->toggleInsetCursor(bv);
 			updateLocal(bv, CELL);
-			the_locking_inset->toggleInsetCursor(bv);
 			return result;
 		} else if (result == FINISHED_UP) {
 			action = LFUN_UP;
@@ -868,7 +855,6 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 		}
 	}
 
-	hideInsetCursor(bv);
 	result = DISPATCHED;
 	switch (action) {
 		// --- Cursor Movements ----------------------------------
@@ -1216,8 +1202,6 @@ Inset::RESULT InsetTabular::localDispatch(FuncRequest const & cmd)
 		if (!the_locking_inset) {
 			if (bv->fitCursor())
 				updateLocal(bv, FULL);
-			if (locked)
-				showInsetCursor(bv);
 		}
 	} else
 		bv->unlockInset(this);
@@ -1336,6 +1320,26 @@ bool InsetTabular::calculate_dimensions_of_cells(BufferView * bv, bool reinit) c
 }
 
 
+void InsetTabular::getCursor(BufferView & bv, int & x, int & y) const
+{
+	if (the_locking_inset) {
+		the_locking_inset->getCursor(bv, x, y);
+		return;
+	}
+
+	x = cursor_.x();
+	y = cursor_.y() + InsetTabular::y();
+
+	// Fun stuff
+	int desc = tabular->GetDescentOfRow(actrow);
+	y += desc;
+	int ascdesc = tabular->GetAscentOfRow(actrow) + desc;
+	y -= ascdesc / 2;
+	y += ADD_TO_HEIGHT * 2;
+	y += TEXT_TO_INSET_OFFSET;
+}
+
+
 void InsetTabular::getCursorPos(BufferView * bv, int & x, int & y) const
 {
 	if (the_locking_inset) {
@@ -1344,57 +1348,6 @@ void InsetTabular::getCursorPos(BufferView * bv, int & x, int & y) const
 	}
 	x = cursor_.x() - top_x;
 	y = cursor_.y();
-}
-
-
-void InsetTabular::toggleInsetCursor(BufferView * bv)
-{
-	if (nodraw()) {
-		if (isCursorVisible())
-			bv->hideLockedInsetCursor();
-		return;
-	}
-	if (the_locking_inset) {
-		the_locking_inset->toggleInsetCursor(bv);
-		return;
-	}
-
-	LyXFont font; // = the_locking_inset->GetFont(par, cursor.pos);
-
-	int const asc = font_metrics::maxAscent(font);
-	int const desc = font_metrics::maxDescent(font);
-
-	if (isCursorVisible())
-		bv->hideLockedInsetCursor();
-	else
-		bv->showLockedInsetCursor(cursor_.x(), cursor_.y(), asc, desc);
-	toggleCursorVisible();
-}
-
-
-void InsetTabular::showInsetCursor(BufferView * bv, bool show)
-{
-	if (nodraw())
-		return;
-	if (!isCursorVisible()) {
-		LyXFont font; // = GetFont(par, cursor.pos);
-
-		int const asc = font_metrics::maxAscent(font);
-		int const desc = font_metrics::maxDescent(font);
-		bv->fitLockedInsetCursor(cursor_.x(), cursor_.y(), asc, desc);
-		if (show)
-			bv->showLockedInsetCursor(cursor_.x(), cursor_.y(), asc, desc);
-		setCursorVisible(true);
-	}
-}
-
-
-void InsetTabular::hideInsetCursor(BufferView * bv)
-{
-	if (isCursorVisible()) {
-		bv->hideLockedInsetCursor();
-		setCursorVisible(false);
-	}
 }
 
 

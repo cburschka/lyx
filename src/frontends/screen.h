@@ -34,16 +34,6 @@ class BufferView;
  */
 class LyXScreen {
 public:
-	/// types of cursor in work area
-	enum Cursor_Shape {
-		/// normal I-beam
-		BAR_SHAPE,
-		/// L-shape for locked insets of a different language
-		L_SHAPE,
-		/// reverse L-shape for RTL text
-		REVERSED_L_SHAPE
-	};
-
 	LyXScreen();
 
 	virtual ~LyXScreen();
@@ -55,22 +45,6 @@ public:
 	 * Uses as much of the already printed pixmap as possible
 	 */
 	virtual void draw(LyXText *, BufferView *, unsigned int y) = 0;
-
-	/**
-	 * showManualCursor - display the cursor on the work area
-	 * @param text the lyx text containing the cursor
-	 * @param x the x position of the cursor
-	 * @param y the y position of the row's baseline
-	 * @param asc ascent of the row
-	 * @param desc descent of the row
-	 * @param shape the current shape
-	 */
-	virtual void showManualCursor(LyXText const *, int x, int y,
-			      int asc, int desc,
-			      Cursor_Shape shape) = 0;
-
-	/// unpaint the cursor painted by showManualCursor()
-	virtual void hideCursor() = 0;
 
 	/**
 	 * fit the cursor onto the visible work area, scrolling if necessary
@@ -88,9 +62,6 @@ public:
 
 	/// redraw the screen, without using existing pixmap
 	virtual void redraw(LyXText *, BufferView *);
-
-	/// draw the cursor if it's not already shown
-	virtual void showCursor(LyXText const *, BufferView const *);
 
 	/**
 	 * topCursorVisible - get a new "top" to make the cursor visible
@@ -113,9 +84,6 @@ public:
 	 */
 	virtual bool fitCursor(LyXText *, BufferView *);
 
-	/// show the cursor if it's not, and vice versa
-	virtual void cursorToggle(BufferView *) const;
-
 	/**
 	 * update - update part of the screen rendering
 	 * @param bv the bufferview
@@ -129,6 +97,15 @@ public:
 	 * we only update the current row.
 	 */
 	virtual void update(BufferView & bv, int yo = 0, int xo = 0);
+
+	/// hide the visible cursor, if it is visible
+	void hideCursor();
+	
+	/// show the cursor if it is not visible
+	void showCursor(BufferView & bv);
+
+	/// toggle the cursor's visibility
+	void toggleCursor(BufferView & bv);
 
 	/// FIXME
 	virtual void toggleSelection(LyXText *, BufferView *, bool = true,
@@ -145,6 +122,22 @@ protected:
 	/// get the work area
 	virtual WorkArea & workarea() const = 0;
 
+	/// types of cursor in work area
+	enum Cursor_Shape {
+		/// normal I-beam
+		BAR_SHAPE,
+		/// L-shape for locked insets of a different language
+		L_SHAPE,
+		/// reverse L-shape for RTL text
+		REVERSED_L_SHAPE
+	};
+
+	/// paint the cursor and store the background
+	virtual void showCursor(int x, int y, int h, Cursor_Shape shape) = 0;
+
+	/// hide the cursor
+	virtual void removeCursor() = 0;
+
 	/// y1 and y2 are coordinates of the screen
 	void drawFromTo(LyXText *, BufferView *, int y1, int y2,
 	                int y_offset = 0, int x_offset = 0);
@@ -154,12 +147,12 @@ protected:
 			RowList::iterator row,
 			int y_text, int y_offset = 0, int x_offset = 0);
 
-	/// is the blinking cursor currently drawn
-	bool cursor_visible_;
-
 private:
 	/// grey out (no buffer)
 	void greyOut();
+
+	/// is the cursor currently displayed
+	bool cursor_visible_;
 
 	/// is the screen displaying text or the splash screen?
 	bool greyed_out_;

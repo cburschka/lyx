@@ -208,6 +208,12 @@ void InsetFormulaBase::insetUnlock(BufferView * bv)
 }
 
 
+void InsetFormulaBase::getCursor(BufferView &, int & x, int & y) const
+{
+	mathcursor->getPos(x, y);
+}
+
+
 void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
 {
 	// calling metrics here destroys the cached xo,yo positions e.g. in
@@ -223,49 +229,6 @@ void InsetFormulaBase::getCursorPos(BufferView *, int & x, int & y) const
 	x -= xo_;
 	y -= yo_;
 	//lyxerr << "getCursorPos: " << x << ' ' << y << endl;
-}
-
-
-void InsetFormulaBase::toggleInsetCursor(BufferView * bv)
-{
-	if (!mathcursor) {
-		lyxerr[Debug::MATHED] << "toggleInsetCursor impossible" << endl;
-		return;
-	}
-	//lyxerr << "toggleInsetCursor: " << isCursorVisible() << endl;
-	if (isCursorVisible())
-		hideInsetCursor(bv);
-	else
-		showInsetCursor(bv);
-}
-
-
-void InsetFormulaBase::showInsetCursor(BufferView * bv, bool)
-{
-	if (!mathcursor) {
-		lyxerr << "showInsetCursor impossible" << endl;
-		return;
-	}
-	if (isCursorVisible())
-		return;
-	int x, y, asc, des;
-	mathcursor->getPos(x, y);
-	math_font_max_dim(font_, asc, des);
-	bv->showLockedInsetCursor(x, y - yo_, asc, des);
-	setCursorVisible(true);
-	//lyxerr << "showInsetCursor: " << x << ' ' << y << endl;
-}
-
-
-void InsetFormulaBase::hideInsetCursor(BufferView * bv)
-{
-	if (!mathcursor)
-		return;
-	if (!isCursorVisible())
-		return;
-	bv->hideLockedInsetCursor();
-	setCursorVisible(false);
-	//lyxerr << "hideInsetCursor: " << endl;
 }
 
 
@@ -301,8 +264,6 @@ dispatch_result InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 		return UNDISPATCHED;
 
 	BufferView * bv = cmd.view();
-	hideInsetCursor(bv);
-	showInsetCursor(bv);
 	bv->updateInset(this);
 	//lyxerr << "lfunMouseRelease: buttons: " << cmd.button() << endl;
 
@@ -394,9 +355,7 @@ dispatch_result InsetFormulaBase::lfunMouseMotion(FuncRequest const & cmd)
 		mathcursor->selStart();
 
 	BufferView * bv = cmd.view();
-	hideInsetCursor(bv);
 	mathcursor->setPos(cmd.x + xo_, cmd.y + yo_);
-	showInsetCursor(bv);
 	bv->updateInset(this);
 	return DISPATCHED;
 }
@@ -439,8 +398,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	bool sel           = false;
 	bool was_macro     = mathcursor->inMacroMode();
 	bool was_selection = mathcursor->selection();
-
-	hideInsetCursor(bv);
 
 	mathcursor->normalize();
 	mathcursor->touch();
@@ -805,7 +762,6 @@ dispatch_result InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	if (result == DISPATCHED || result == DISPATCHED_NOUPDATE ||
 	    result == UNDISPATCHED) {
 		fitInsetCursor(bv);
-		showInsetCursor(bv);
 		revealCodes(bv);
 		cmd.view()->stuffClipboard(mathcursor->grabSelection());
 	} else {

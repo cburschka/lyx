@@ -89,10 +89,6 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	void insetUnlock();
 	///
-	void showCursor();
-	///
-	void hideCursor();
-	///
 	void toggleSelection(bool = true);
 	///
 	void toggleToggle();

@@ -68,11 +68,8 @@ namespace {
 		}
 		if (!lt->isInInset()) {
 			bv->update(lt, BufferView::SELECT);
-			bv->showCursor();
 		} else if (bv->text->refreshStatus() != LyXText::REFRESH_NONE) {
-			bv->theLockingInset()->hideInsetCursor(bv);
 			bv->update(BufferView::SELECT);
-			bv->showCursor();
 		}
 
 		if (!lt->selection.set())
@@ -203,7 +200,6 @@ bool LyXText::gotoNextInset(vector<Inset::Code> const & codes,
 void LyXText::gotoInset(vector<Inset::Code> const & codes,
 			bool same_content)
 {
-	bv()->hideCursor();
 	bv()->beforeChange(this);
 	update();
 
@@ -365,7 +361,6 @@ namespace {
 
 void specialChar(LyXText * lt, BufferView * bv, InsetSpecialChar::Kind kind)
 {
-	bv->hideCursor();
 	lt->update();
 	InsetSpecialChar * new_inset = new InsetSpecialChar(kind);
 	if (!bv->insertInset(new_inset))
@@ -733,7 +728,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			update();
 			// It is possible to make it a lot faster still
 			// just comment out the line below...
-			bv->showCursor();
 		} else {
 			update();
 			cutSelection(bv, true);
@@ -791,7 +785,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 				update();
 				// It is possible to make it a lot faster still
 				// just comment out the line below...
-				bv->showCursor();
 			}
 		} else {
 			update();
@@ -924,7 +917,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_INSET_TOGGLE:
-		bv->hideCursor();
 		bv->beforeChange(this);
 		update();
 		toggleInset();
@@ -1024,7 +1016,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 	case LFUN_PASTE:
 		cmd.message(_("Paste"));
-		bv->hideCursor();
 		// clear the selection
 		bv->toggleSelection();
 		clearSelection();
@@ -1036,7 +1027,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		break;
 
 	case LFUN_CUT:
-		bv->hideCursor();
 		update();
 		cutSelection(bv, true);
 		update();
@@ -1142,7 +1132,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			}
 		}
 		if (change_layout) {
-			bv->hideCursor();
 			current_layout = layout;
 			update();
 			setLayout(layout);
@@ -1156,7 +1145,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_PASTESELECTION: {
 		if (!bv->buffer())
 			break;
-		bv->hideCursor();
 		// this was originally a beforeChange(bv->text), i.e
 		// the outermost LyXText!
 		bv->beforeChange(this);
@@ -1200,7 +1188,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		else
 			c = pit->getChar(pos - 1);
 
-		bv->hideCursor();
 		LyXLayout_ptr const & style = pit->layout();
 
 		if (style->pass_thru ||
@@ -1240,7 +1227,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			break;
 		if (cmd.button() == mouse_button::button1) {
 			if (!isInInset()) {
-				bv->screen().hideCursor();
 				bv->screen().toggleSelection(this, bv);
 			}
 			cursorHome();
@@ -1261,7 +1247,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			break;
 		if (cmd.button() == mouse_button::button1) {
 			if (!isInInset()) {
-				bv->screen().hideCursor();
 				bv->screen().toggleSelection(this, bv);
 				selectWord(LyXText::WHOLE_WORD_STRICT);
 				bv->screen().toggleSelection(this, bv, false);
@@ -1308,8 +1293,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 			break;
 		}
 
-		bv->screen().hideCursor();
-
 		RowList::iterator cursorrow = bv->text->cursor.row();
 		bv->text->setCursorFromCoordinates(cmd.x, cmd.y + bv->text->top_y());
 	#if 0
@@ -1335,7 +1318,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 		bv->text->setSelection();
 		bv->screen().toggleToggle(bv->text, bv);
 		bv->fitCursor();
-		bv->showCursor();
 		break;
 	}
 
@@ -1389,7 +1371,6 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 
 		if (!inset_hit)
 			selection_possible = true;
-		bv->screen().hideCursor();
 
 		// Clear the selection
 		bv->screen().toggleSelection(bv->text, bv);

@@ -125,7 +125,6 @@ void LyXFunc::moveCursorUpdate(bool flag, bool selecting)
 		    view()->toggleToggle();
 	}
 	view()->update(TEXT(flag), BufferView::SELECT);
-	view()->showCursor();
 
 	view()->switchKeyMap();
 }
@@ -815,9 +814,6 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 
 	selection_possible = false;
 
-	if (view()->available())
-		view()->hideCursor();
-
 	string argument = ev.argument;
 	kb_action action = ev.action;
 
@@ -830,6 +826,9 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		setErrorMessage(getStatusMessage());
 		goto exit_with_message;
 	}
+
+	if (view()->available())
+		view()->hideCursor();
 
 	if (view()->available() && view()->theLockingInset()) {
 		Inset::RESULT result;
@@ -991,7 +990,6 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		if (!searched_string.empty()) {
 			lyxfind::LyXFind(view(), searched_string, fw);
 		}
-//		view()->showCursor();
 	}
 	break;
 

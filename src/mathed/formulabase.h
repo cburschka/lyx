@@ -63,15 +63,11 @@ public:
 	///
 	virtual void edit(BufferView *, bool front = true);
 	///
-	virtual void toggleInsetCursor(BufferView *);
-	///
-	virtual void showInsetCursor(BufferView *, bool show = true);
-	///
-	virtual void hideInsetCursor(BufferView *);
-	///
 	virtual void fitInsetCursor(BufferView *) const;
-	///
+	/// FIXME
 	virtual void getCursorPos(BufferView *, int &, int &) const;
+	/// get the absolute document x,y of the cursor
+	virtual void getCursor(BufferView & bv, int & x, int & y) const;
 	///
 	virtual void toggleInsetSelection(BufferView * bv);
 	///

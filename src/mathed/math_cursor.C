@@ -1499,7 +1499,6 @@ void releaseMathCursor(BufferView * bv)
 {
 	if (mathcursor) {
 		InsetFormulaBase * f =  mathcursor->formula();
-		f->hideInsetCursor(bv);
 		delete mathcursor;
 		mathcursor = 0;
 		f->insetUnlock(bv);

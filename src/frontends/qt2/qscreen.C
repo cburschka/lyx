@@ -52,90 +52,6 @@ QScreen::~QScreen()
 }
 
 
-void QScreen::showManualCursor(LyXText const * text, int x, int y,
-				 int asc, int desc, Cursor_Shape shape)
-{
-	if (!qApp->focusWidget())
-		return;
-
-	int const y1 = max(y - text->top_y() - asc, 0);
-	int const y_tmp = min(y - text->top_y() + desc, owner_.height());
-
-	// secure against very strange situations
-	// which would be when .... ?
-	int const y2 = max(y_tmp, y1);
-
-	if (y2 > 0 && y1 < owner_.height()) {
-		cursor_h_ = y2 - y1 + 1;
-		cursor_y_ = y1;
-
-		switch (shape) {
-		case BAR_SHAPE:
-			cursor_w_ = 1;
-			cursor_x_ = x;
-			break;
-		case L_SHAPE:
-			cursor_w_ = cursor_h_ / 3;
-			cursor_x_ = x;
-			break;
-		case REVERSED_L_SHAPE:
-			cursor_w_ = cursor_h_ / 3;
-			cursor_x_ = x - cursor_w_ + 1;
-			break;
-		}
-
-		if (!nocursor_pixmap_.get()
-			|| cursor_w_ != nocursor_pixmap_->width()
-			|| cursor_h_ != nocursor_pixmap_->height()) {
-			nocursor_pixmap_.reset(new QPixmap(cursor_w_, cursor_h_));
-		}
-
-		owner_.getPainter().start();
-
-		// save old area
-		bitBlt(nocursor_pixmap_.get(), 0, 0, owner_.getPixmap(),
-			cursor_x_, cursor_y_, cursor_w_, cursor_h_);
-
-		owner_.getPainter().line(x, y1, x, y2, LColor::cursor);
-		switch (shape) {
-		case BAR_SHAPE:
-			break;
-		case L_SHAPE:
-		case REVERSED_L_SHAPE:
-			int const rectangle_h = (cursor_h_ + 10) / 20;
-			owner_.getPainter().fillRectangle(
-				cursor_x_, y2 - rectangle_h + 1,
-				cursor_w_ - 1, rectangle_h, LColor::cursor);
-			break;
-		}
-
-		owner_.getPainter().end();
-
-		owner_.getContent()->repaint(
-			cursor_x_, cursor_y_,
-			cursor_w_, cursor_h_);
-
-	}
-	cursor_visible_ = true;
-}
-
-
-void QScreen::hideCursor()
-{
-	if (!cursor_visible_)
-		return;
-
-	bitBlt(owner_.getPixmap(), cursor_x_, cursor_y_,
-		nocursor_pixmap_.get(), 0, 0, cursor_w_, cursor_h_);
-
-	owner_.getContent()->repaint(
-		cursor_x_, cursor_y_,
-		cursor_w_, cursor_h_);
-
-	cursor_visible_ = false;
-}
-
-
 void QScreen::repaint()
 {
 	QWidget * content(owner_.getContent());
@@ -157,8 +73,6 @@ void QScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 	QPixmap * p(owner_.getPixmap());
 
 	owner_.getPainter().start();
-
-	if (cursor_visible_) hideCursor();
 
 	int const old_first = text->top_y();
 	text->top_y(y);
@@ -187,4 +101,73 @@ void QScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 	}
 
 	owner_.getPainter().end();
+}
+
+
+void QScreen::showCursor(int x, int y, int h, Cursor_Shape shape)
+{
+	cursor_x_ = x;
+	cursor_y_ = y;
+	cursor_h_ = h;
+
+	switch (shape) {
+		case BAR_SHAPE:
+			cursor_w_ = 1;
+			break;
+		case L_SHAPE:
+			cursor_w_ = cursor_h_ / 3;
+			break;
+		case REVERSED_L_SHAPE:
+			cursor_w_ = cursor_h_ / 3;
+			cursor_x_ = x - cursor_w_ + 1;
+			break;
+	}
+
+	if (!nocursor_pixmap_.get()
+		|| cursor_w_ != nocursor_pixmap_->width()
+		|| cursor_h_ != nocursor_pixmap_->height()) {
+		nocursor_pixmap_.reset(new QPixmap(cursor_w_, cursor_h_));
+	}
+
+	// save old area
+	bitBlt(nocursor_pixmap_.get(), 0, 0, owner_.getPixmap(),
+		cursor_x_, cursor_y_, cursor_w_, cursor_h_);
+
+	if (!qApp->focusWidget())
+		return;
+
+	Painter & pain(owner_.getPainter());
+	pain.start();
+	pain.line(x, y, x, y + h - 1, LColor::cursor);
+
+	switch (shape) {
+		case BAR_SHAPE:
+			break;
+		case REVERSED_L_SHAPE:
+		case L_SHAPE:
+			pain.line(cursor_x_, y + h - 1, cursor_x_ + cursor_w_ - 1,
+				y + h - 1, LColor::cursor);
+			break;
+	}
+
+	pain.end();
+
+	owner_.getContent()->repaint(
+		cursor_x_, cursor_y_,
+		cursor_w_, cursor_h_);
+}
+
+
+void QScreen::removeCursor()
+{
+	// before first showCursor
+	if (!nocursor_pixmap_.get())
+		return;
+
+	bitBlt(owner_.getPixmap(), cursor_x_, cursor_y_,
+		nocursor_pixmap_.get(), 0, 0, cursor_w_, cursor_h_);
+
+	owner_.getContent()->repaint(
+		cursor_x_, cursor_y_,
+		cursor_w_, cursor_h_);
 }

@@ -167,14 +167,6 @@ public:
 	/// Inserts a lyx file at cursor position. return false if it fails
 	bool insertLyXFile(string const & file);
 
-	/// show the user cursor
-	void showCursor();
-	/// hide the user cursor
-	void hideCursor();
-	/// FIXME
-	void showLockedInsetCursor(int x, int y, int asc, int desc);
-	/// FIXME
-	void hideLockedInsetCursor();
 	/// FIXME
 	bool fitLockedInsetCursor(int x, int y, int asc, int desc);
 	/// FIXME
@@ -183,6 +175,9 @@ public:
 	void toggleSelection(bool = true);
 	/// FIXME: my word !
 	void toggleToggle();
+
+	/// hide the cursor if it is visible
+	void hideCursor();
 
 	/// center the document view around the cursor
 	void center();

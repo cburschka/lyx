@@ -377,6 +377,8 @@ void BufferView::Pimpl::scrollDocView(int value)
 	if (!buffer_)
 		return;
 
+	screen().hideCursor();
+
 	screen().draw(bv_->text, bv_, value);
 
 	if (!lyxrc.cursor_follows_scrollbar)
@@ -424,6 +426,18 @@ void BufferView::Pimpl::workAreaKeyPress(LyXKeySymPtr key,
 					 key_modifier::state state)
 {
 	bv_->owner()->getLyXFunc().processKeySym(key, state);
+
+	/* This is perhaps a bit of a hack. When we move
+	 * around, or type, it's nice to be able to see
+	 * the cursor immediately after the keypress. So
+	 * we reset the toggle timeout and force the visibility
+	 * of the cursor. Note we cannot do this inside
+	 * dispatch() itself, because that's called recursively.
+	 */
+	if (available()) {
+		cursor_timeout.restart();
+		screen().showCursor(*bv_);
+	}
 }
 
 
@@ -456,10 +470,9 @@ void BufferView::Pimpl::selectionRequested()
 void BufferView::Pimpl::selectionLost()
 {
 	if (available()) {
-		hideCursor();
+		screen().hideCursor();
 		toggleSelection();
 		bv_->getLyXText()->clearSelection();
-		showCursor();
 		bv_->text->xsel_cache.set(false);
 	}
 }
@@ -565,11 +578,7 @@ void BufferView::Pimpl::cursorToggle()
 		return;
 	}
 
-	if (!bv_->theLockingInset()) {
-		screen().cursorToggle(bv_);
-	} else {
-		bv_->theLockingInset()->toggleInsetCursor(bv_);
-	}
+	screen().toggleCursor(*bv_);
 
 	cursor_timeout.restart();
 }
@@ -695,22 +704,6 @@ void BufferView::Pimpl::insetUnlock()
 		bv_->theLockingInset(0);
 		finishUndo();
 	}
-}
-
-
-void BufferView::Pimpl::showCursor()
-{
-	if (bv_->theLockingInset())
-		bv_->theLockingInset()->showInsetCursor(bv_);
-	else
-		screen().showCursor(bv_->text, bv_);
-}
-
-
-void BufferView::Pimpl::hideCursor()
-{
-	if (!bv_->theLockingInset())
-		screen().hideCursor();
 }
 
 
@@ -935,7 +928,13 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & ev_in)
 	if (!available())
 		return false;
 
+	screen().hideCursor();
+
 	bool const res = dispatch(ev_in);
+
+	// see workAreaKeyPress
+	cursor_timeout.restart();
+	screen().showCursor(*bv_);
 
 	// FIXME: we should skip these when selecting
 	bv_->owner()->updateLayoutChoice();
@@ -1367,7 +1366,6 @@ void BufferView::Pimpl::updateInset(Inset * inset)
 	Inset * tl_inset = inset;
 	while (tl_inset->owner())
 		tl_inset = tl_inset->owner();
-	hideCursor();
 	if (tl_inset == inset) {
 		update(BufferView::UPDATE);
 		if (bv_->text->updateInset(inset)) {

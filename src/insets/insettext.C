@@ -419,6 +419,9 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
 
 	int yf = y_offset + first;
 	y = 0;
+
+	bv->hideCursor();
+
 	while ((rowit != end) && (yf < ph)) {
 		RowPainter rp(*bv, *lt, rowit);
 		rp.paint(y + y_offset + first, int(x), y + lt->top_y());
@@ -643,7 +646,6 @@ void InsetText::edit(BufferView * bv, int x, int y, mouse_button::state button)
 	if (drawFrame_ == LOCKED)
 		code = CURSOR|DRAW_FRAME;
 	updateLocal(bv, code, false);
-	showInsetCursor(bv);
 
 	// Tell the paragraph dialog that we've entered an insettext.
 	bv->dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
@@ -696,7 +698,6 @@ void InsetText::edit(BufferView * bv, bool front)
 	if (drawFrame_ == LOCKED)
 		code = CURSOR|DRAW_FRAME;
 	updateLocal(bv, code, false);
-	showInsetCursor(bv);
 }
 
 
@@ -707,7 +708,6 @@ void InsetText::insetUnlock(BufferView * bv)
 		the_locking_inset = 0;
 		updateLocal(bv, CURSOR_PAR, false);
 	}
-	hideInsetCursor(bv);
 	no_selection = true;
 	locked = false;
 	int code = NONE;
@@ -932,7 +932,6 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 	int tmp_y = cmd.y + insetAscent - getLyXText(bv)->top_y();
 	Inset * inset = getLyXText(bv)->checkInsetHit(tmp_x, tmp_y);
 
-	hideInsetCursor(bv);
 	if (the_locking_inset) {
 		if (the_locking_inset == inset) {
 			the_locking_inset->localDispatch(cmd1);
@@ -1007,7 +1006,6 @@ void InsetText::lfunMousePress(FuncRequest const & cmd)
 	} else {
 		getLyXText(bv)->clearSelection();
 	}
-	showInsetCursor(bv);
 }
 
 
@@ -1072,7 +1070,6 @@ void InsetText::lfunMouseMotion(FuncRequest const & cmd)
 		lt = getLyXText(bv);
 		clear = true;
 	}
-	hideInsetCursor(bv);
 	LyXCursor cur = lt->cursor;
 	lt->setCursorFromCoordinates
 		(cmd.x - drawTextXOffset, cmd.y + insetAscent);
@@ -1090,7 +1087,6 @@ void InsetText::lfunMouseMotion(FuncRequest const & cmd)
 	if (flag) {
 		updateLocal(bv, SELECTION, false);
 	}
-	showInsetCursor(bv);
 }
 
 
@@ -1157,7 +1153,6 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & ev)
 			return result;
 		}
 	}
-	hideInsetCursor(bv);
 	bool clear = false;
 	if (!lt) {
 		lt = getLyXText(bv);
@@ -1689,6 +1684,17 @@ void InsetText::validate(LaTeXFeatures & features) const
 }
 
 
+void InsetText::getCursor(BufferView & bv, int & x, int & y) const
+{
+	if (the_locking_inset) {
+		the_locking_inset->getCursor(bv, x, y);
+		return;
+	}
+	x = cx(&bv);
+	y = cy(&bv) + InsetText::y();
+}
+
+
 void InsetText::getCursorPos(BufferView * bv, int & x, int & y) const
 {
 	if (the_locking_inset) {
@@ -1706,58 +1712,6 @@ int InsetText::insetInInsetY() const
 		return 0;
 
 	return (inset_y + the_locking_inset->insetInInsetY());
-}
-
-
-void InsetText::toggleInsetCursor(BufferView * bv)
-{
-	if (the_locking_inset) {
-		the_locking_inset->toggleInsetCursor(bv);
-		return;
-	}
-
-	LyXFont const font(getLyXText(bv)->getFont(bv->buffer(), cpar(bv), cpos(bv)));
-
-	int const asc = font_metrics::maxAscent(font);
-	int const desc = font_metrics::maxDescent(font);
-
-	if (isCursorVisible())
-		bv->hideLockedInsetCursor();
-	else
-		bv->showLockedInsetCursor(cx(bv), cy(bv), asc, desc);
-	toggleCursorVisible();
-}
-
-
-void InsetText::showInsetCursor(BufferView * bv, bool show)
-{
-	if (the_locking_inset) {
-		the_locking_inset->showInsetCursor(bv, show);
-		return;
-	}
-	if (!isCursorVisible()) {
-		LyXFont const font =
-			getLyXText(bv)->getFont(bv->buffer(), cpar(bv), cpos(bv));
-
-		int const asc = font_metrics::maxAscent(font);
-		int const desc = font_metrics::maxDescent(font);
-
-		bv->fitLockedInsetCursor(cx(bv), cy(bv), asc, desc);
-		if (show)
-			bv->showLockedInsetCursor(cx(bv), cy(bv), asc, desc);
-		setCursorVisible(true);
-	}
-}
-
-
-void InsetText::hideInsetCursor(BufferView * bv)
-{
-	if (isCursorVisible()) {
-		bv->hideLockedInsetCursor();
-		setCursorVisible(false);
-	}
-	if (the_locking_inset)
-		the_locking_inset->hideInsetCursor(bv);
 }
 
 
@@ -1863,7 +1817,6 @@ bool InsetText::insertInset(BufferView * bv, Inset * inset)
 		return false;
 	}
 	inset->setOwner(this);
-	hideInsetCursor(bv);
 	getLyXText(bv)->insertInset(inset);
 	bv->fitCursor();
 	updateLocal(bv, CURSOR_PAR|CURSOR, true);

@@ -201,6 +201,4 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 	xx += w + 2;
 	xo_ = x;
 	yo_ = y;
-
-	setCursorVisible(false);
 }

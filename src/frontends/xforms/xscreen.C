@@ -55,15 +55,9 @@ GC createGC()
 
 
 XScreen::XScreen(XWorkArea & o)
-	: LyXScreen(), owner_(o)
+	: LyXScreen(), owner_(o), nocursor_pixmap_(0),
+	cursor_x_(0), cursor_y_(0), cursor_w_(0), cursor_h_(0)
 {
-	// the cursor isnt yet visible
-	cursor_pixmap = 0;
-	cursor_pixmap_x = 0;
-	cursor_pixmap_y = 0;
-	cursor_pixmap_w = 0;
-	cursor_pixmap_h = 0;
-
 	// We need this GC
 	gc_copy = createGC();
 }
@@ -89,100 +83,77 @@ void XScreen::setCursorColor()
 }
 
 
-void XScreen::showManualCursor(LyXText const * text, int x, int y,
-				 int asc, int desc, Cursor_Shape shape)
+void XScreen::showCursor(int x, int y, int h, Cursor_Shape shape)
 {
-	// Update the cursor color.
+	// Update the cursor color. (a little slow dooing it like this ??)
 	setCursorColor();
 
-	int const y1 = max(y - text->top_y() - asc, 0);
-	int const y_tmp = min(y - text->top_y() + desc,
-			      static_cast<int>(owner_.workHeight()));
+	cursor_x_ = x;
+	cursor_y_ = y;
+	cursor_h_ = h;
 
-	// Secure against very strange situations
-	int const y2 = max(y_tmp, y1);
-
-	if (cursor_pixmap) {
-		XFreePixmap(fl_get_display(), cursor_pixmap);
-		cursor_pixmap = 0;
-	}
-
-	if (y2 > 0 && y1 < int(owner_.workHeight())) {
-		cursor_pixmap_h = y2 - y1 + 1;
-		cursor_pixmap_y = y1;
-
-		switch (shape) {
+	switch (shape) {
 		case BAR_SHAPE:
-			cursor_pixmap_w = 1;
-			cursor_pixmap_x = x;
+			cursor_w_ = 1;
 			break;
 		case L_SHAPE:
-			cursor_pixmap_w = cursor_pixmap_h/3;
-			cursor_pixmap_x = x;
+			cursor_w_ = cursor_h_ / 3;
 			break;
 		case REVERSED_L_SHAPE:
-			cursor_pixmap_w = cursor_pixmap_h/3;
-			cursor_pixmap_x = x - cursor_pixmap_w + 1;
+			cursor_w_ = cursor_h_ / 3;
+			cursor_x_ = x - cursor_w_ + 1;
 			break;
-		}
+	}
 
-		cursor_pixmap =
-			XCreatePixmap (fl_get_display(),
-				       fl_root,
-				       cursor_pixmap_w,
-				       cursor_pixmap_h,
-				       fl_get_visual_depth());
-		XCopyArea (fl_get_display(),
-			   owner_.getWin(),
-			   cursor_pixmap,
-			   gc_copy,
-			   owner_.xpos() + cursor_pixmap_x,
-			   owner_.ypos() + cursor_pixmap_y,
-			   cursor_pixmap_w,
-			   cursor_pixmap_h,
-			   0, 0);
-		XDrawLine(fl_get_display(),
-			  owner_.getWin(),
-			  gc_copy,
-			  x + owner_.xpos(),
-			  y1 + owner_.ypos(),
-			  x + owner_.xpos(),
-			  y2 + owner_.ypos());
-		switch (shape) {
+	if (nocursor_pixmap_) {
+		XFreePixmap(fl_get_display(), nocursor_pixmap_);
+		nocursor_pixmap_ = 0;
+	}
+	nocursor_pixmap_ = XCreatePixmap(fl_get_display(),
+		fl_root, cursor_w_, cursor_h_, fl_get_visual_depth());
+
+	// save old area
+	XCopyArea(fl_get_display(),
+		owner_.getWin(), nocursor_pixmap_, gc_copy,
+		owner_.xpos() + cursor_x_,
+		owner_.ypos() + cursor_y_,
+		cursor_w_, cursor_h_, 0, 0);
+
+// xforms equivalent needed here
+#if 0
+	if (!qApp->focusWidget())
+		return;
+#endif
+
+	XDrawLine(fl_get_display(), owner_.getWin(), gc_copy,
+		owner_.xpos() + x, owner_.ypos() + y,
+		owner_.xpos() + x, owner_.ypos() + y + h - 1);
+
+	switch (shape) {
 		case BAR_SHAPE:
 			break;
-		case L_SHAPE:
 		case REVERSED_L_SHAPE:
-			int const rectangle_h = (cursor_pixmap_h + 10) / 20;
-			XFillRectangle(fl_get_display(),
-				       owner_.getWin(),
-				       gc_copy,
-				       cursor_pixmap_x + owner_.xpos(),
-				       y2 - rectangle_h + 1 + owner_.ypos(),
-				       cursor_pixmap_w - 1, rectangle_h);
+		case L_SHAPE:
+			XDrawLine(fl_get_display(), owner_.getWin(), gc_copy,
+				owner_.xpos() + cursor_x_,
+				owner_.ypos() + y + h - 1,
+				owner_.xpos() + cursor_x_ + cursor_w_ - 1,
+				owner_.ypos() + y + h - 1);
 			break;
-		}
-
 	}
-	cursor_visible_ = true;
 }
 
 
-void XScreen::hideCursor()
+void XScreen::removeCursor()
 {
-	if (!cursor_visible_) return;
+	// before first showCursor
+	if (!nocursor_pixmap_)
+		return;
 
-	if (cursor_pixmap) {
-		XCopyArea (fl_get_display(),
-			   cursor_pixmap,
-			   owner_.getWin(),
-			   gc_copy,
-			   0, 0,
-			   cursor_pixmap_w, cursor_pixmap_h,
-			   cursor_pixmap_x + owner_.xpos(),
-			   cursor_pixmap_y + owner_.ypos());
-	}
-	cursor_visible_ = false;
+	XCopyArea(fl_get_display(), nocursor_pixmap_, owner_.getWin(),
+		gc_copy, 0, 0, cursor_w_, cursor_h_,
+		owner_.xpos() + cursor_x_,
+		owner_.ypos() + cursor_y_);
 }
 
 
@@ -202,9 +173,6 @@ void XScreen::expose(int x, int y, int w, int h)
 
 void XScreen::draw(LyXText * text, BufferView * bv, unsigned int y)
 {
-	if (cursor_visible_)
-		hideCursor();
-
 	int const old_first = text->top_y();
 	text->top_y(y);
 

@@ -2109,8 +2109,6 @@ void LyXText::acceptChange()
 	if (!selection.set() && cursor.par()->size())
 		return;
 
-	bv()->hideCursor();
-
 	if (selection.start.par() == selection.end.par()) {
 		LyXCursor & startc = selection.start;
 		LyXCursor & endc = selection.end;
@@ -2129,8 +2127,6 @@ void LyXText::rejectChange()
 {
 	if (!selection.set() && cursor.par()->size())
 		return;
-
-	bv()->hideCursor();
 
 	if (selection.start.par() == selection.end.par()) {
 		LyXCursor & startc = selection.start;

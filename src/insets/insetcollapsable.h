@@ -97,14 +97,10 @@ public:
 	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
 	///
 	void validate(LaTeXFeatures & features) const;
-	///
+	/// FIXME, document
 	void getCursorPos(BufferView *, int & x, int & y) const;
-	///
-	void toggleInsetCursor(BufferView *);
-	///
-	void showInsetCursor(BufferView *, bool show = true);
-	///
-	void hideInsetCursor(BufferView *);
+	/// Get the absolute document x,y of the cursor
+	virtual void getCursor(BufferView &, int &, int &) const;
 	///
 	void fitInsetCursor(BufferView * bv) const {
 		inset.fitInsetCursor(bv);
