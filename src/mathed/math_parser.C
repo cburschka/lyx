@@ -1048,11 +1048,16 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 
 		else if (t.cs() == "left") {
 			skipSpaces();
-			string l = getToken().asString();
+			Token const & tl = getToken();
+			// \| and \Vert are equivalent, and MathDelimInset
+			// can't handle \|
+			// FIXME: fix this in MathDelimInset itself!
+			string const l = tl.cs() == "|" ? "Vert" : tl.asString();
 			MathArray ar;
 			parse(ar, FLAG_RIGHT, mode);
 			skipSpaces();
-			string r = getToken().asString();
+			Token const & tr = getToken();
+			string const r = tr.cs() == "|" ? "Vert" : tr.asString();
 			cell->push_back(MathAtom(new MathDelimInset(l, r, ar)));
 		}
 
@@ -1083,8 +1088,8 @@ void Parser::parse1(MathGridInset & grid, unsigned flags,
 			}
 
 			else if (name == "split" || name == "cases" ||
-					 name == "gathered" || name == "aligned" ||
-				   name == "alignedat") {
+			         name == "gathered" || name == "aligned" ||
+			         name == "alignedat") {
 				cell->push_back(createMathInset(name));
 				parse2(cell->back(), FLAG_END, mode, false);
 			}
