@@ -77,7 +77,7 @@ bool panel_initialised[nr_panels];
 
 
 QMathDialog::QMathDialog(QMath * form)
-	: QMathDialogBase(0, 0, false, 0),
+	: QMathDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
 	form_(form)
 {
 	// enlarge the symbols ComboBox (no scrollbar)

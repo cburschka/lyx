@@ -42,7 +42,7 @@ void uniqueInsert(QComboBox * box, QString const & text)
 
 
 QSearchDialog::QSearchDialog(QSearch * form)
-	: QSearchDialogBase(0, 0, false, 0),
+	: QSearchDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
 	form_(form)
 {
 	connect(closePB, SIGNAL(clicked()),

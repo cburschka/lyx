@@ -19,7 +19,7 @@ namespace lyx {
 namespace frontend {
 
 QERTDialog::QERTDialog(QERT * form)
-	: QERTDialogBase(0, 0, false, 0),
+	: QERTDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
 	form_(form)
 {
 	connect(okPB, SIGNAL(clicked()),

@@ -20,7 +20,7 @@ namespace lyx {
 namespace frontend {
 
 QCharacterDialog::QCharacterDialog(QCharacter * form)
-	: QCharacterDialogBase(0, 0, false, 0),
+	: QCharacterDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
 	form_(form)
 {
 	connect(okPB, SIGNAL(clicked()),

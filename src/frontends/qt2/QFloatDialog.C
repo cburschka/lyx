@@ -21,7 +21,7 @@ namespace lyx {
 namespace frontend {
 
 QFloatDialog::QFloatDialog(QFloat * form)
-	: QFloatDialogBase(0, 0, false, 0),
+	: QFloatDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
 	form_(form)
 {
 	connect(restorePB, SIGNAL(clicked()),

@@ -32,7 +32,7 @@ namespace lyx {
 namespace frontend {
 
 QBibtexDialog::QBibtexDialog(QBibtex * form)
-	: QBibtexDialogBase(0, 0, false, 0),
+	: QBibtexDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
 	form_(form)
 {
 	connect(okPB, SIGNAL(clicked()),

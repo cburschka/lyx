@@ -53,7 +53,7 @@ namespace lyx {
 namespace frontend {
 
 QPrefsDialog::QPrefsDialog(QPrefs * form)
-	: QPrefsDialogBase(0, 0, false, 0), form_(form)
+	: QPrefsDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0), form_(form)
 {
 	connect(savePB, SIGNAL(clicked()),
 		form, SLOT(slotOK()));

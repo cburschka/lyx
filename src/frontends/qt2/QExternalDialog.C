@@ -57,7 +57,7 @@ LengthValidator * unsignedLengthValidator(QLineEdit * ed)
 
 
 QExternalDialog::QExternalDialog(QExternal * form)
-	: QExternalDialogBase(0, 0, false, 0),
+	: QExternalDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
 	  form_(form)
 {
 	connect(okPB, SIGNAL(clicked()),

@@ -20,7 +20,7 @@ namespace lyx {
 namespace frontend {
 
 QURLDialog::QURLDialog(QURL * form)
-	: QURLDialogBase(0, 0, false, 0),
+	: QURLDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
 	form_(form)
 {
 	connect(okPB, SIGNAL(clicked()),

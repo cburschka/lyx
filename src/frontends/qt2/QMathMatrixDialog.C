@@ -40,7 +40,7 @@ char v_align_c[] = "tcb";
 
 
 QMathMatrixDialog::QMathMatrixDialog(QMathMatrix * form)
-	: QMathMatrixDialogBase(0, 0, false, 0),
+	: QMathMatrixDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
 	form_(form)
 {
 	setCaption(qt_("LyX: Insert Matrix"));

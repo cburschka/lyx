@@ -20,7 +20,7 @@ namespace lyx {
 namespace frontend {
 
 QLogDialog::QLogDialog(QLog * form)
-	: QLogDialogBase(0, 0, false, 0),
+	: QLogDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
 	form_(form)
 {
 	connect(closePB, SIGNAL(clicked()),

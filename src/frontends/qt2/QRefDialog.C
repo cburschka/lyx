@@ -23,7 +23,7 @@ namespace lyx {
 namespace frontend {
 
 QRefDialog::QRefDialog(QRef * form)
-	: QRefDialogBase(0, 0, false, 0),
+	: QRefDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
 	form_(form)
 {
 	connect(okPB, SIGNAL(clicked()),

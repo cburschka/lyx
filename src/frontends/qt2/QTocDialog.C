@@ -21,7 +21,7 @@ namespace lyx {
 namespace frontend {
 
 QTocDialog::QTocDialog(QToc * form)
-	: QTocDialogBase(0, 0, false, 0),
+	: QTocDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
 	form_(form)
 {
 	// disable sorting

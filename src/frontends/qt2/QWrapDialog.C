@@ -20,7 +20,7 @@ namespace frontend {
 
 
 QWrapDialog::QWrapDialog(QWrap * form)
-	: QWrapDialogBase(0, 0, false, 0),
+	: QWrapDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
 	form_(form)
 {
 	connect(restorePB, SIGNAL(clicked()),

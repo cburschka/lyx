@@ -20,7 +20,7 @@ namespace lyx {
 namespace frontend {
 
 QChangesDialog::QChangesDialog(QChanges * form)
-	: QChangesDialogBase(0, 0, false, 0),
+	: QChangesDialogBase(qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), 0, false, 0),
 	form_(form)
 {
 	connect(closePB, SIGNAL(clicked()),
