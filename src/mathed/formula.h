@@ -47,7 +47,7 @@ public:
 	///
 	int width(Painter &, LyXFont const &) const;
 	///
-	void draw(Painter &, LyXFont const &, int baseline, float & x) const;
+	void draw(BufferView *,LyXFont const &, int baseline, float & x) const;
 	///
 	void Write(Buffer const *, std::ostream &) const;
 	///
@@ -88,7 +88,7 @@ public:
 	///
 	void HideInsetCursor(BufferView *);
 	///
-	void GetCursorPos(int &, int &) const;
+	void GetCursorPos(BufferView *, int &, int &) const;
 	///
 	void ToggleInsetSelection(BufferView * bv);
 	///

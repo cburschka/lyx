@@ -399,7 +399,8 @@ void LyXGUI::create_forms()
 
 	// "default" is not part of the languages array any more.
 	combo_language->addto("default");
-	combo_language2->addto("No change");
+	combo_language2->addto(_("No change"));
+	combo_language2->addto(_("Reset"));
 	for(Languages::const_iterator cit = languages.begin();
 	    cit != languages.end(); ++cit) {
 		combo_language->addto((*cit).second.lang().c_str());

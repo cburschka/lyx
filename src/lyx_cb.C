@@ -1910,7 +1910,7 @@ void MenuLayoutSave()
 
 // This is both GUI and LyXFont dependent. Don't know where to put it. (Asger)
 // Well, it's mostly GUI dependent, so I guess it will stay here. (Asger)
-LyXFont UserFreeFont()
+LyXFont UserFreeFont(BufferParams const & params)
 {
 	LyXFont font(LyXFont::ALL_IGNORE);
 
@@ -1992,18 +1992,16 @@ LyXFont UserFreeFont()
 	case 11: font.setColor(LColor::inherit); break;
 	}
 
- 	string language = combo_language2->getline();
- 	Languages::iterator lit = languages.find(language);
- 	if (lit != languages.end()) 
- 		font.setLanguage(&(*lit).second);
- 	else
- 		font.setLanguage(ignore_language);
-
+	int choice = combo_language2->get();
+	if (choice == 1)
+		font.setLanguage(ignore_language);
+	else if (choice == 2)
+		font.setLanguage(params.language_info);
+	else
+		font.setLanguage(&languages[combo_language2->getline()]);
 
 	return font; 
 }
-
-
 
 
 /* callbacks for form form_title */
@@ -2168,7 +2166,7 @@ extern "C" void CharacterApplyCB(FL_OBJECT *, long)
 	// we set toggleall locally here, since it should be true for
 	// all other uses of ToggleAndShow() (JMarc)
 	toggleall = fl_get_button(fd_form_character->check_toggle_all);
-	ToggleAndShow(current_view, UserFreeFont());
+	ToggleAndShow(current_view, UserFreeFont(current_view->buffer()->params));
 	current_view->setState();
 	toggleall = true;
 }

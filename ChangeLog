@@ -1,3 +1,8 @@
+2000-06-22  Juergen Vigna  <jug@sad.it>
+
+	* src/mathed/formulamacro.[Ch]:
+	* src/mathed/formula.[Ch]: changed prototype of draw() and GetCursorPos
+
 2000-06-21  Juergen Vigna  <jug@sad.it>
 
 	* src/text.C (GetVisibleRow): look if I should clear the area or not
@@ -7,6 +12,14 @@
 	modified draw(Painter &, ...) to draw(BufferView *, ...)
 
 	* src/text2.C (UpdateInset): return bool insted of int
+
+2000-06-20  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/lyx_gui.C (create_forms): Add "Reset" option to the language 
+	combox in the character popup
+
+	* src/lyx_cb.C (UserFreeFont): Add argument to the method:
+	BufferParams const & params
 
 2000-06-20  Juergen Vigna  <jug@sad.it>
 

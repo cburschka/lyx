@@ -403,9 +403,10 @@ int InsetFormula::width(Painter &, LyXFont const & f) const
 }
 
 
-void InsetFormula::draw(Painter & pain, LyXFont const & f,
+void InsetFormula::draw(BufferView * bv, LyXFont const & f,
 			int baseline, float & x) const
 {
+	Painter & pain = bv->painter();
 	// Seems commenting out solves a problem.
 	LyXFont font = mathed_get_font(LM_TC_TEXTRM, LM_ST_TEXT);
 	font.setSize(f.size());
@@ -507,7 +508,7 @@ void InsetFormula::InsertSymbol(BufferView * bv, char const * s)
 }
 
    
-void InsetFormula::GetCursorPos(int& x, int& y) const
+void InsetFormula::GetCursorPos(BufferView *, int& x, int& y) const
 {
     mathcursor->GetPos(x, y);
     x -= par->xo; 

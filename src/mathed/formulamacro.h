@@ -43,7 +43,7 @@ public:
 	///
 	int width(Painter &, LyXFont const &) const;
 	///
-	void draw(Painter &, LyXFont const &, int baseline, float & x) const;
+	void draw(BufferView *,LyXFont const &, int baseline, float & x) const;
 	///
 	void Read(Buffer const *, LyXLex & lex);
         ///
