@@ -441,15 +441,15 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
     case LM_TK_ALPHA:
       {
 	 if (accent) {
-	     data.Insert(doAccent(yylval.i, varcode));
+	     data.insertInset(doAccent(yylval.i, varcode), LM_TC_INSET);
 	 } else
-	    data.Insert (yylval.i, varcode);  //LM_TC_VAR);
+	    data.insert(yylval.i, varcode);  //LM_TC_VAR);
 	 break;
       }
     case LM_TK_ARGUMENT:
       {
 	  if (macro) {
-	      data.Insert(macro->getMacroPar(yylval.i-1), LM_TC_INSET);
+	      data.insertInset(macro->getMacroPar(yylval.i-1), LM_TC_INSET);
 	  } 
 	  break;
       } 
@@ -474,15 +474,15 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
       }
     case LM_TK_SPECIAL:
       {	  
-	  data.Insert (yylval.i, LM_TC_SPECIAL);
+	  data.insert(yylval.i, LM_TC_SPECIAL);
 	  break;
       }
     case LM_TK_STR:
       {	  
 	  if (accent) {
-	    data.Insert(doAccent(yylval.i, LM_TC_CONST));
+	    data.insertInset(doAccent(yylval.i, LM_TC_CONST), LM_TC_INSET);
 	  } else
-	    data.Insert (yylval.i, LM_TC_CONST);
+	    data.insert(yylval.i, LM_TC_CONST);
 	  break;
       }
     case LM_TK_OPEN:
@@ -500,7 +500,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	if (flags & FLAG_BRACE)
 	  flags &= ~FLAG_BRACE;
 	 else {
-	    data.Insert ('{', LM_TC_TEX);
+	    data.insert('{', LM_TC_TEX);
 	 }
 	break;
       }
@@ -526,7 +526,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	    --plevel;
 	    return array;
 	 } else {
-	    data.Insert ('}', LM_TC_TEX);
+	    data.insert('}', LM_TC_TEX);
 	 }
 	 break;
       }
@@ -543,7 +543,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	   }	   
 //	   if (arg) strcpy(arg, yytext);
 	} else
-	  data.Insert ('[');
+	  data.insert('[', LM_TC_CONST);
 	break;
       }
     case ']':
@@ -552,7 +552,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	      --plevel;
 	      return array;
 	  } else
-	    data.Insert (']');
+	    data.insert(']', LM_TC_CONST);
 	break;
       }
 
@@ -562,7 +562,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	 MathedArray * ar = mathed_parse(FLAG_BRACE_OPT|FLAG_BRACE_LAST, 0);
 	 p->setData(ar);
 //	 lyxerr << "UP[" << p->GetStyle() << "]" << endl;
-	 data.Insert (p, LM_TC_UP);
+	 data.insertInset(p, LM_TC_UP);
 	 break;
       }
     case '_':
@@ -570,7 +570,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	 MathParInset * p = new MathParInset(size, "", LM_OT_SCRIPT);
 	 MathedArray * ar = mathed_parse(FLAG_BRACE_OPT|FLAG_BRACE_LAST, 0);
 	 p->setData(ar);
-	 data.Insert (p, LM_TC_DOWN);
+	 data.insertInset(p, LM_TC_DOWN);
 	 break;
       }
 
@@ -587,7 +587,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
       {
 	 if ((flags & FLAG_END) && mt && data.getCol()<mt->GetColumns() - 1) {
 	     data.setNumCols(mt->GetColumns());
-	     data.Insert('T', LM_TC_TAB);
+	     data.insert('T', LM_TC_TAB);
 	 } else 
 	    mathPrintError("Unexpected tab");
 	 // debug info. [made that conditional -JMarc]
@@ -603,7 +603,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 			  crow->setNext(new MathedRowSt(mt->GetColumns() + 1)); // this leaks
 		      crow = crow->getNext();
 		  }
-		  data.Insert('K', LM_TC_CR);
+		  data.insert('K', LM_TC_CR);
 	      } else 
 		mathPrintError("Unexpected newline");
 	  }
@@ -612,7 +612,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
     case LM_TK_BIGSYM:  
       {
 	 binset = new MathBigopInset(yylval.l->name, yylval.l->id);
-	 data.Insert(binset);	
+	 data.insertInset(binset, LM_TC_INSET);	
 	 break;
       }
     case LM_TK_SYM:
@@ -620,24 +620,28 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	 if (yylval.l->id < 256) {
 	    MathedTextCodes tc = MathIsBOPS(yylval.l->id) ? LM_TC_BOPS: LM_TC_SYMB;
 	    if (accent) {
-		data.Insert(doAccent(yylval.l->id, tc));
+		data.insertInset(doAccent(yylval.l->id, tc), LM_TC_INSET);
 	    } else
-	    data.Insert(yylval.l->id, tc);
+	    data.insert(yylval.l->id, tc);
 	 } else {
 	    MathFuncInset * bg = new MathFuncInset(yylval.l->name);
 	     if (accent) {
-		     data.Insert(doAccent(bg));
-	     } else
-	     data.Insert(bg, true);	
+		     data.insertInset(doAccent(bg), LM_TC_INSET);
+	     } else {
+#warning This is suspisious! (Lgb)
+		     // it should not take a bool as second arg (Lgb)
+		     data.insertInset(bg, true);
+	     }
+	     
 	 }
 	 break;
       }
     case LM_TK_BOP:
       {
 	 if (accent) {
-		 data.Insert(doAccent(yylval.i, LM_TC_BOP));
+		 data.insertInset(doAccent(yylval.i, LM_TC_BOP), LM_TC_INSET);
 	  } else
-	    data.Insert(yylval.i, LM_TC_BOP);
+	    data.insert(yylval.i, LM_TC_BOP);
 	 break;
       }
     case LM_TK_STY:
@@ -651,14 +655,14 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
       {
 	 if (yylval.i >= 0) {
 	    MathSpaceInset * sp = new MathSpaceInset(yylval.i);
-	    data.Insert(sp);
+	    data.insertInset(sp, LM_TC_INSET);
 	 }
 	 break;
       }	   
     case LM_TK_DOTS:
       {
 	 MathDotsInset * p = new MathDotsInset(yylval.l->name, yylval.l->id);
-	 data.Insert(p);
+	 data.insertInset(p, LM_TC_INSET);
 	 break;
       }
     case LM_TK_STACK:
@@ -669,7 +673,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	 MathedArray * num = mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST);
 	 MathedArray * den = mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST);
 	 fc->SetData(num, den);
-	 data.Insert(fc, LM_TC_ACTIVE_INSET);
+	 data.insertInset(fc, LM_TC_ACTIVE_INSET);
 	 break;
       }
     case LM_TK_SQRT:
@@ -688,7 +692,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	     rt = new MathSqrtInset(size);
 	 }
 	 rt->setData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST, 0, &rt));
-	 data.Insert(rt, LM_TC_ACTIVE_INSET);
+	 data.insertInset(rt, LM_TC_ACTIVE_INSET);
 	 break;
       }
        
@@ -705,7 +709,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	   rgd = (rgd == LM_TK_SYM) ? yylval.l->id: yylval.i;	 
 	 MathDelimInset * dl = new MathDelimInset(lfd, rgd);
 	 dl->setData(a);
-	 data.Insert(dl, LM_TC_ACTIVE_INSET);
+	 data.insertInset(dl, LM_TC_ACTIVE_INSET);
 //	 lyxerr << "RL[" << lfd << " " << rgd << "]";
   	 break;
       }
@@ -733,7 +737,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	 MathDecorationInset * sq = new MathDecorationInset(yylval.l->id,
 							    size);
 	 sq->setData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST));
-	 data.Insert(sq, LM_TC_ACTIVE_INSET);
+	 data.insertInset(sq, LM_TC_ACTIVE_INSET);
 	 break;
       }
       
@@ -751,16 +755,19 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
     case LM_TK_PMOD:
     case LM_TK_FUNC:
       {
+#warning This must leak. (Lgb)
+	      // if (accent) this must leak... (Lgb)
 	  MathedInset * bg = new MathFuncInset(yylval.l->name); 
 	  if (accent) {
-	      data.Insert(t);
+	      data.insert(t, LM_TC_CONST);
 	  } else
-	    data.Insert(bg);
+	    data.insertInset(bg, LM_TC_INSET);
 	  break;
       }
     case LM_TK_FUNCLIM:
       {
-	 data.Insert(new MathFuncInset(yylval.l->name, LM_OT_FUNCLIM));
+	 data.insertInset(new MathFuncInset(yylval.l->name, LM_OT_FUNCLIM),
+			  LM_TC_INSET);
 	 break;
       }
     case LM_TK_UNDEF:
@@ -770,18 +777,18 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	 MathMacroTable::mathMTable.getMacro(yylval.s);
        if (p) {
 	   if (accent) 
-	     data.Insert(doAccent(p), p->getTCode());
+	     data.insertInset(doAccent(p), p->getTCode());
 	   else
-	     data.Insert(p, p->getTCode());
+	     data.insertInset(p, p->getTCode());
 	   for (int i = 0; p->setArgumentIdx(i); ++i)
 	     p->setData(mathed_parse(FLAG_BRACE|FLAG_BRACE_LAST));
        }
        else {
 	   MathedInset * q = new MathFuncInset(yylval.s, LM_OT_UNDEF);
 	   if (accent) {
-		   data.Insert(doAccent(q));
+		   data.insertInset(doAccent(q), LM_TC_INSET);
 	   } else {
-	       data.Insert(q);
+	       data.insertInset(q, LM_TC_INSET);
 	   }
        }
 	 break;
@@ -814,7 +821,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	    int const nc = parse_align(ar, ar2);
 	    MathParInset * mm = new MathMatrixInset(nc, 0);
 	    mm->SetAlign(ar2[0], ar);
-       	    data.Insert(mm, LM_TC_ACTIVE_INSET);
+       	    data.insertInset(mm, LM_TC_ACTIVE_INSET);
             mathed_parse(FLAG_END, mm->GetData(), &mm);
 	 } else if (is_eqn_type(yylval.i)) {
 	     if (plevel!= 0) {
@@ -864,7 +871,7 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	     MathMacro * p = 
 	       MathMacroTable::mathMTable.getMacro(yytext.data());
 	     if (p) {
-		 data.Insert(p, p->getTCode());
+		 data.insertInset(p, p->getTCode());
 		 p->setArgumentIdx(0);
 		 mathed_parse(FLAG_END, p->GetData(), reinterpret_cast<MathParInset**>(&p));
 //		 for (int i = 0; p->setArgumentIdx(i); ++i)
@@ -882,9 +889,9 @@ MathedArray * mathed_parse(unsigned flags = 0, MathedArray * array = 0,
 	 
 	  if (p) {
 	      if (accent) {
-		data.Insert(doAccent(p));
+		data.insertInset(doAccent(p), LM_TC_INSET);
 	      } else
-		data.Insert(p, static_cast<MathMacro*>(p)->getTCode());
+		data.insertInset(p, static_cast<MathMacro*>(p)->getTCode());
 	  }
 	  break;
       }

@@ -22,7 +22,7 @@ public:
 	///
 	MathParInset * getPar() const;
 	///
-	bool Next();
+	virtual bool Next();
 	///
 	bool Prev();
 	///
@@ -76,34 +76,38 @@ public:
 	void Clean(int pos2);
 	///
 	MathedRowSt * adjustVerticalSt();
+	///
+	virtual void ipush();
+	///
+	virtual void ipop();
+	///
+	MathedRowSt * currentRow() {
+		return crow_;
+	}
+	
 private:
 	/// This function is not recursive, as MathPar::Metrics is
 	void IMetrics(int, int &, int &, int &);
 	/// Font size (display, text, script, script2) 
-	int size;
+	int size_;
 	/// current position
-	mutable int x;
+	mutable int x_;
 	///
-	int y;
+	int y_;
 	///
-	MathParInset * p;
+	MathParInset * p_;
 	
 	// Limits auxiliary variables
 	/// Position and max width of a script
-	int sx;
+	int sx_;
 	///
-	int sw;
+	int sw_;
 	/// true= center, false= left align (default)
-	bool limits;
-	///
-	void ipush();
-	///
-	void ipop();
-protected:
+	bool limits_;
 	/// 
-	MathedRowSt * crow;
+	MathedRowSt * crow_;
 	
 	///
-	friend class MathedCursor;
+	//friend class MathedCursor;
 };
 #endif

@@ -9,31 +9,45 @@
 
 using std::endl;
 
+string MathedXIter::error_label = "$mathed-error$";
+
 MathedXIter::MathedXIter()
-	: MathedIter(), sx(0), sw(0)
+	: MathedIter(), size_(0), x_(0), y_(0), p_(0), sx_(0), sw_(0),
+	  crow_(0)
 {
-	x = y = size = 0;
-	p = 0;
-	crow = 0;
+	// should limits_ be initialized?
 }
+
+
+MathedXIter::MathedXIter(MathParInset * pp)
+	: x_(0), y_(0), p_(pp), sx_(0), sw_(0), limits_(false)
+{ 
+	if (p_) 
+		SetData(p_);
+	else {
+		crow_ = 0;
+		size_ = 0;
+	}
+}
+
 
 
 MathParInset * MathedXIter::getPar() const
 {
-	return p;
+	return p_;
 }
 
 
 void MathedXIter::GetPos(int & xx, int & yy) const
 { 
-	if (p) 
-		p->GetXY(xx, yy);
+	if (p_) 
+		p_->GetXY(xx, yy);
 	else {
 		xx = 0;
 		yy = 0;
 	}        
-	xx += x;
-	yy += y;
+	xx += x_;
+	yy += y_;
 }
 
 
@@ -57,25 +71,24 @@ int MathedXIter::GetY() const
 
 void MathedXIter::GetIncPos(int & xx, int & yy) const
 { 
-	xx = x;
-	yy = y; 
+	xx = x_;
+	yy = y_; 
 }
 
 
 void MathedXIter::getAD(int & a, int & d) const
 { 
-	if (crow) {
-		a = crow->ascent();
-		d = crow->descent();
+	if (crow_) {
+		a = crow_->ascent();
+		d = crow_->descent();
 	} else 
-		if (p) {
-			a = p->Ascent();
-			d = p->Descent();
+		if (p_) {
+			a = p_->Ascent();
+			d = p_->Descent();
 		} else {
 			a = d = 0;
 		}
 }
-
 
 
 void MathedXIter::Clean(int pos2)
@@ -106,10 +119,10 @@ void MathedXIter::Clean(int pos2)
 			continue;
 		} 
 		if (IsCR()) {
-			if (crow) {
-				MathedRowSt * r = crow->getNext();
+			if (crow_) {
+				MathedRowSt * r = crow_->getNext();
 				if (r) {
-					crow->setNext(r->getNext());
+					crow_->setNext(r->getNext());
 					delete r;
 				}	   
 			}
@@ -154,15 +167,15 @@ void MathedXIter::Merge(MathedArray * a0)
 	// Complete rows
 	while (pos < pos2 && OK()) {
 		if (IsCR()) {
-			if (p && p->Permit(LMPF_ALLOW_CR)) {
-				MathedRowSt * r = new MathedRowSt(ncols+1);
-				if (crow) {
-					r->setNext(crow->getNext());
-					crow->setNext(r);
+			if (p_ && p_->Permit(LMPF_ALLOW_CR)) {
+				MathedRowSt * r = new MathedRowSt(ncols + 1);
+				if (crow_) {
+					r->setNext(crow_->getNext());
+					crow_->setNext(r);
 				} else {
 					r->setNext(0);
 				}
-				crow = r;
+				crow_ = r;
 			} else {
 				Delete();
 				--pos2;
@@ -179,52 +192,35 @@ void MathedXIter::Merge(MathedArray * a0)
 }
 
 
-
-
-MathedXIter::MathedXIter(MathParInset * pp)
-	: p(pp) 
-{ 
-	x = y = 0;
-	sx = sw = 0;   
-	limits = false;
-	if (p) 
-		SetData(p);
-	else {
-		crow = 0;
-		size = 0;
-	}
-}
-
-
 void MathedXIter::SetData(MathParInset * pp)
 {
-	p = pp;
-	x = y = 0;
-	array = p->GetData();
-	ncols = p->GetColumns();
-	crow = p->getRowSt();
-	if (p->Permit(LMPF_ALLOW_CR))
+	p_ = pp;
+	x_ = y_ = 0;
+	array = p_->GetData();
+	ncols = p_->GetColumns();
+	crow_ = p_->getRowSt();
+	if (p_->Permit(LMPF_ALLOW_CR))
 		flags |= MthIF_CR;
-	if (p->Permit(LMPF_ALLOW_TAB))
+	if (p_->Permit(LMPF_ALLOW_TAB))
 		flags |= MthIF_Tabs;
 	
-	if (crow) {
-		x = crow->getTab(0);
-		y = crow->getBaseline();
+	if (crow_) {
+		x_ = crow_->getTab(0);
+		y_ = crow_->getBaseline();
 	} 
 	if (!array) {
 		array = new MathedArray; // this leaks
-		p->setData(array);
+		p_->setData(array);
 	}
-	size = p->GetStyle();
+	size_ = p_->GetStyle();
 	Reset();
 }
 
 
 string const MathedXIter::GetString() const
 {
-	string s = MathedIter::GetString();
-	x += mathed_string_width(fcode(), size, s);
+	string const s = MathedIter::GetString();
+	x_ += mathed_string_width(fcode(), size_, s);
 	return s;
 }
 
@@ -239,27 +235,27 @@ bool MathedXIter::Next()
 		MathedInset * px = GetInset();
 		w = px->Width();
 		if (px->GetType() == LM_OT_SCRIPT) {
-			if (w > sw) sw = w;
+			if (w > sw_) sw_ = w;
 			w = 0;
 		} else
-			sx = (px->GetLimits()) ? w : 0;
+			sx_ = (px->GetLimits()) ? w : 0;
 	} else {  
 		byte c = GetChar();
 		if (c >= ' ') {
 //	  lyxerr << "WD[" << fcode << " " << size << " " << c << endl;
-			w = mathed_char_width(fcode(), size, c);
+			w = mathed_char_width(fcode(), size_, c);
 		} else
-			if (c == LM_TC_TAB && p) {
+			if (c == LM_TC_TAB && p_) {
 //	 w = p->GetTab(col + 1);
-				w = (crow) ? crow->getTab(col + 1) : 0;
+				w = (crow_) ? crow_->getTab(col + 1) : 0;
 				//lyxerr << "WW[" << w << "]";
 			} else
-				if (c == LM_TC_CR && p) {
-					x = 0;
-					if (crow && crow->getNext()) {
-						crow = crow->getNext();
-						y = crow->getBaseline();
-						w = crow->getTab(0);
+				if (c == LM_TC_CR && p_) {
+					x_ = 0;
+					if (crow_ && crow_->getNext()) {
+						crow_ = crow_->getNext();
+						y_ = crow_->getBaseline();
+						w = crow_->getTab(0);
 					}
 //	  lyxerr << "WW[" << col " " << row << "|" << w << "]";
 				} else 
@@ -269,13 +265,13 @@ bool MathedXIter::Next()
 //       lyxerr <<"LNX " << pos << endl;
 //       if (sw>0 && GetChar()!= LM_TC_UP && GetChar()!= LM_TC_DOWN) {
 //	   w = (sx>sw) ? 0: sw-sx;
-		if ((sw > 0 || sx > 0)
+		if ((sw_ > 0 || sx_ > 0)
 		    && GetChar() != LM_TC_UP && GetChar() != LM_TC_DOWN) {
-			if (sw > 0)
-				w = (sx > sw) ? 0 : sw - sx;
-			sx = sw = 0;
+			if (sw_ > 0)
+				w = (sx_ > sw_) ? 0 : sw_ - sx_;
+			sx_ = sw_ = 0;
 		}
-		x += w;
+		x_ += w;
 		return true;
 	} else
 		return false;
@@ -285,13 +281,13 @@ bool MathedXIter::Next()
 void MathedXIter::GoBegin()
 {
 	Reset();
-	x = y = 0;   
-	sw = sx = 0;
-	if (p) {
-		crow = p->getRowSt();
-		if (crow) {
-			x = crow->getTab(0);
-			y = crow->getBaseline();
+	x_ = y_ = 0;   
+	sw_ = sx_ = 0;
+	if (p_) {
+		crow_ = p_->getRowSt();
+		if (crow_) {
+			x_ = crow_->getTab(0);
+			y_ = crow_->getBaseline();
 		}
 	}
 }
@@ -342,12 +338,12 @@ void MathedXIter::goNextColumn()
 bool MathedXIter::Up()
 {
 	if (row == 0) return false;
-	int xp = x;
+	int xp = x_;
 	int rowp = row;
 	int colp = col;
 	GoBegin();
 	while (row < rowp - 1) Next();
-	while (x < xp && OK() && !IsCR()) {
+	while (x_ < xp && OK() && !IsCR()) {
 		ipush();
 		Next();
 	}
@@ -360,7 +356,7 @@ bool MathedXIter::Up()
 
 bool MathedXIter::Down()
 {
-	int xp = x;
+	int xp = x_;
 	int colp= col;
 	// int rowp = row
 	
@@ -368,11 +364,11 @@ bool MathedXIter::Down()
 	if (res) {
 		Next();
 		ipush();
-		while (x < xp && OK()) {
+		while (x_ < xp && OK()) {
 			ipush();
 			Next();
 		}
-		if (col > colp || (stck.col == colp && stck.x <= xp && x > xp))
+		if (col > colp || (stck.col == colp && stck.x <= xp && x_ > xp))
 			ipop();
 		return true;
 	}
@@ -380,10 +376,9 @@ bool MathedXIter::Down()
 }
 
 
-
 void MathedXIter::addRow()
 {
-	if (!crow) {
+	if (!crow_) {
 		lyxerr[Debug::MATHED] << "MathErr: Attempt to insert new"
 			" line in a subparagraph. " << this << endl;
 		
@@ -391,18 +386,18 @@ void MathedXIter::addRow()
 	}
 	// Create new item for the structure    
 	MathedRowSt * r = new MathedRowSt(ncols + 1);
-	if (crow) {
-		r->setNext(crow->getNext());
-		crow->setNext(r);
+	if (crow_) {
+		r->setNext(crow_->getNext());
+		crow_->setNext(r);
 	} else {
-		crow = r;
+		crow_ = r;
 		r->setNext(0);
 	}    
 	// Fill missed tabs in current row
 	while (col < ncols - 1) 
-		Insert('T', LM_TC_TAB); 
+		insert('T', LM_TC_TAB); 
 	//newline
-	Insert('K', LM_TC_CR);
+	insert('K', LM_TC_CR);
 	
 	ipush();
 	if (!IsCR())
@@ -410,14 +405,14 @@ void MathedXIter::addRow()
 	
 	// Fill missed tabs in new row
 	while (col < ncols - 1) 
-		Insert('T', LM_TC_TAB);
+		insert('T', LM_TC_TAB);
 	ipop();
 }
 
 
 void MathedXIter::delRow()
 {
-	if (!crow) {
+	if (!crow_) {
 		lyxerr[Debug::MATHED] << "MathErr: Attempt to delete a line in a subparagraph." << endl;
 		return;
 	}
@@ -436,9 +431,9 @@ void MathedXIter::delRow()
 	
 	if (line_empty) {
 		
-		MathedRowSt * r = crow->getNext();
+		MathedRowSt * r = crow_->getNext();
 		if (r) {
-			crow->setNext(r->getNext());
+			crow_->setNext(r->getNext());
 			delete r;
 		}
 		join(p1);
@@ -453,21 +448,21 @@ void MathedXIter::delRow()
 void MathedXIter::ipush()
 { 
 	MathedIter::ipush();
-	stck.x = x;
-	stck.y = y;
+	stck.x = x_;
+	stck.y = y_;
 }
 
 
 void MathedXIter::ipop()
 { 
 	MathedIter::ipop();
-	x = stck.x;
-	y = stck.y;
-	if (p) {
-		crow = p->getRowSt();
-		if (crow)
+	x_ = stck.x;
+	y_ = stck.y;
+	if (p_) {
+		crow_ = p_->getRowSt();
+		if (crow_)
 			for (int i = 0; i < row; ++i)
-				crow = crow->getNext();
+				crow_ = crow_->getNext();
 	}
 }
 
@@ -478,11 +473,12 @@ void MathedXIter::fitCoord(int /*xx*/, int yy)
 	int yo = 0;
 	
 	GoBegin();
-	if (p)
-		p->GetXY(xo, yo);
+	if (p_)
+		p_->GetXY(xo, yo);
 	// first fit vertically
-	while (crow && OK()) {
-		if (yy >= yo + y - crow->ascent() && yy <= yo + y + crow->descent()) 
+	while (crow_ && OK()) {
+		if (yy >= yo + y_ - crow_->ascent()
+		    && yy <= yo + y_ + crow_->descent()) 
 			break;
 		goNextCode(LM_TC_CR);
 		Next();
@@ -494,8 +490,8 @@ void MathedXIter::fitCoord(int /*xx*/, int yy)
 
 void MathedXIter::setTab(int tx, int tab)
 {
-	if (crow && tab <= ncols) {
-		crow->setTab(tab, tx);
+	if (crow_ && tab <= ncols) {
+		crow_->setTab(tab, tx);
 	} else
 		lyxerr << "MathErr: No tabs allowed here" << endl;
 }
@@ -503,13 +499,13 @@ void MathedXIter::setTab(int tx, int tab)
 
 void MathedXIter::subMetrics(int a, int d)
 {
-	if (!crow) {
+	if (!crow_) {
 		lyxerr[Debug::MATHED]
 			<< "MathErr: Attempt to submetric a subparagraph." << endl;
 		return;
 	}
-	crow->ascent(a);
-	crow->descent(d);
+	crow_->ascent(a);
+	crow_->descent(d);
 }
 
 
@@ -526,11 +522,11 @@ void MathedXIter::IMetrics(int pos2, int & width, int & ascent, int & descent)
 	if (!array) return;
 	if (array->empty()) return;
 //    if  (pos2 > array->last) return;
-	x1 = x; 
+	x1 = x_; 
 	while (pos < pos2) {
 		cx = GetChar();
 		if (cx >= ' ') {
-			mathed_char_height(fcode(), size, cx, asc, des);
+			mathed_char_height(fcode(), size_, cx, asc, des);
 			if (asc > ascent) ascent = asc;
 			if (des > descent) descent = des;
 			limit = false;
@@ -538,19 +534,19 @@ void MathedXIter::IMetrics(int pos2, int & width, int & ascent, int & descent)
 			if (MathIsInset(cx)) {
 				MathedInset * pp = GetInset();
 				if (cx == LM_TC_UP) {
-					if (!asc && p) {
+					if (!asc && p_) {
 						int xx;
 						int yy;
-						p->GetXY(xx, yy);
+						p_->GetXY(xx, yy);
 						static_cast<MathParInset*>(pp)->GetXY(xx, asc);
 						asc = yy - asc;
 					}
-					asc += ((limits) ? pp->Height() + 4 : pp->Ascent());
+					asc += ((limits_) ? pp->Height() + 4 : pp->Ascent());
 				} else if (cx == LM_TC_DOWN) {
-					if (!des && p) {
+					if (!des && p_) {
 						int xx;
 						int yy;
-						p->GetXY(xx, yy);
+						p_->GetXY(xx, yy);
 						static_cast<MathParInset*>(pp)->GetXY(xx, des);
 						if (des - pp->Height() < yy && !asc)
 							asc = yy - (des - pp->Height());
@@ -575,14 +571,14 @@ void MathedXIter::IMetrics(int pos2, int & width, int & ascent, int & descent)
 			}
 		if (pos < pos2)  Next();
 	}
-	width = x - x1;
+	width = x_ - x1;
 }
 
 
 bool MathedXIter::setNumbered(bool numb)
 {  
-	if (crow) {
-		crow->setNumbered(numb);
+	if (crow_) {
+		crow_->setNumbered(numb);
 		return true;
 	}
 	
@@ -592,8 +588,8 @@ bool MathedXIter::setNumbered(bool numb)
 
 bool MathedXIter::setLabel(string const & label)
 {  
-	if (crow) {
-		crow->setLabel(label);
+	if (crow_) {
+		crow_->setLabel(label);
 		return true;
 	}
 	
@@ -604,20 +600,20 @@ bool MathedXIter::setLabel(string const & label)
 MathedRowSt * MathedXIter::adjustVerticalSt()
 {
 	GoBegin();
-	if (!crow) {
+	if (!crow_) {
 //	lyxerr << " CRW" << ncols << " ";
-		crow = new MathedRowSt(ncols + 1); // this leaks
+		crow_ = new MathedRowSt(ncols + 1); // this leaks
 	}
-//    lyxerr<< " CRW[" << crow << "] ";
-	MathedRowSt * mrow = crow;
+//    lyxerr<< " CRW[" << crow_ << "] ";
+	MathedRowSt * mrow = crow_;
 	while (OK()) {
 		if (IsCR()) {
 			if (col >= ncols) ncols = col + 1; 
 			MathedRowSt * r = new MathedRowSt(ncols + 1); // this leaks
-//	    r->next = crow->next;
-			crow->setNext(r);
-			crow = r;
-//	    lyxerr << " CX[" << crow << "]";
+//	    r->next = crow_->next;
+			crow_->setNext(r);
+			crow_ = r;
+//	    lyxerr << " CX[" << crow_ << "]";
 		}   
 		Next();	
 	}
@@ -625,10 +621,9 @@ MathedRowSt * MathedXIter::adjustVerticalSt()
 }
 
 
-string const &  MathedXIter::getLabel() const
+string const & MathedXIter::getLabel() const
 {
-	return crow ? crow->getLabel() : error_label;
+	return crow_ ? crow_->getLabel() : error_label;
 }
 
 
-string MathedXIter::error_label = "$mathed-error$";

@@ -1,4 +1,14 @@
+2001-02-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* math_xiter.h: move ipush and ipop to public, add _ on private
+	variables, move protected var to private, remove friend.
+
+	* math_cursor.C (insertInset): rename method from Insert also
+	remove default arg val. Call the public methods of xiter instead
+	of private variables.
+
+	* changes to several files beacuse of the above.
+	
 2001-02-14  André Pönitz  <poenitz@htwm.de>
 
 	* math_iter.[Ch]: hide fcode_

@@ -945,7 +945,7 @@ InsetFormula::LocalDispatch(BufferView * bv, int action, string const & arg)
 		if (mathcursor && p) {
 			if (k > 2 && int(strlen(s)) > m)
 				p->SetAlign(s[0], &s[1]);
-			mathcursor->Insert(p, LM_TC_ACTIVE_INSET);
+			mathcursor->insertInset(p, LM_TC_ACTIVE_INSET);
 			UpdateLocal(bv);
 		}
 		break;
@@ -993,7 +993,7 @@ InsetFormula::LocalDispatch(BufferView * bv, int action, string const & arg)
 		}
 
 		MathDelimInset * p = new MathDelimInset(ilf, irg);
-		mathcursor->Insert(p, LM_TC_ACTIVE_INSET);
+		mathcursor->insertInset(p, LM_TC_ACTIVE_INSET);
 		UpdateLocal(bv);
 		break;
 	}
@@ -1001,7 +1001,7 @@ InsetFormula::LocalDispatch(BufferView * bv, int action, string const & arg)
 	case LFUN_PROTECTEDSPACE:
 		bv->lockedInsetStoreUndo(Undo::INSERT);
 		sp = new MathSpaceInset(1);
-		mathcursor->Insert(sp);
+		mathcursor->insertInset(sp, LM_TC_INSET);
 		space_on = true;
 		UpdateLocal(bv);
 		break;

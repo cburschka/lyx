@@ -211,8 +211,8 @@ InsetFormulaMacro::LocalDispatch(BufferView * bv,
 	if (action == LFUN_MATH_MACROARG) {
 		int i = lyx::atoi(arg) - 1;
 		if (i >= 0 && i < tmacro->getNoArgs()) {
-			mathcursor->Insert(tmacro->getMacroPar(i),
-					   LM_TC_INSET);
+			mathcursor->insertInset(tmacro->getMacroPar(i),
+						 LM_TC_INSET);
 			InsetFormula::UpdateLocal(bv);
 		}
 	

@@ -62,7 +62,8 @@ void MathMacroTable::builtinMacros()
 	addTemplate(m);
 	MathedArray * array = new MathedArray; // this leaks
 	iter.SetData(array);
-	iter.Insert(new MathAccentInset(LM_in, LM_TC_BOPS, LM_not)); // this leaks
+	iter.insertInset(new MathAccentInset(LM_in, LM_TC_BOPS, LM_not),
+			 LM_TC_INSET); // this leaks
 	m->setData(array);
     
 	// These two are only while we are still with LyX 2.x
@@ -70,14 +71,15 @@ void MathMacroTable::builtinMacros()
 	addTemplate(m);
 	array = new MathedArray; // this leaks
 	iter.SetData(array);
-	iter.Insert(new MathAccentInset('O', LM_TC_RM, LM_not)); // this leaks
+	iter.insertInset(new MathAccentInset('O', LM_TC_RM, LM_not),
+			 LM_TC_INSET); // this leaks
 	m->setData(array);
     
 	m = new MathMacroTemplate("perp"); // this leaks
 	addTemplate(m);
 	array = new MathedArray; // this leaks
 	iter.SetData(array);
-	iter.Insert(LM_bot, LM_TC_BOP);
+	iter.insert(LM_bot, LM_TC_BOP);
 	m->setData(array);
 
 	// binom has two arguments
@@ -87,18 +89,18 @@ void MathMacroTable::builtinMacros()
 	m->setData(array);
 	iter.SetData(array);
 	inset = new MathDelimInset('(', ')');
-	iter.Insert(inset, LM_TC_ACTIVE_INSET);
+	iter.insertInset(inset, LM_TC_ACTIVE_INSET);
 	array = new MathedArray; 
 	iter.SetData(array);
 	MathFracInset * frac = new MathFracInset(LM_OT_ATOP);
-	iter.Insert(frac, LM_TC_ACTIVE_INSET);
+	iter.insertInset(frac, LM_TC_ACTIVE_INSET);
 	inset->setData(array);
 	array = new MathedArray;
 	array2 = new MathedArray;  
 	iter.SetData(array);
-	iter.Insert(m->getMacroPar(0));
+	iter.insertInset(m->getMacroPar(0), LM_TC_INSET);
 	iter.SetData(array2);
-	iter.Insert(m->getMacroPar(1));
+	iter.insertInset(m->getMacroPar(1), LM_TC_INSET);
 	frac->SetData(array, array2);
 
 /*

@@ -21,7 +21,7 @@ MathMatrixInset::MathMatrixInset(int m, int n, short st)
 		nr_ = n;
 		if (nr_ == 1 && nc_ > 1) {
 			for (int j = 0; j < nc_ - 1; ++j) 
-				it.Insert('T', LM_TC_TAB);
+				it.insert('T', LM_TC_TAB);
 		}
 	} else if (n < 0) {
 		row_ = new MathedRowSt(nc_ + 1);
@@ -105,7 +105,7 @@ void MathMatrixInset::setData(MathedArray * a)
 		}
 		if (it.IsCR()) {
 			while (nn > 0) {
-				it.Insert(' ', LM_TC_TAB);
+				it.insert(' ', LM_TC_TAB);
 				--nn;
 			}
 			nn = nc_ - 1;

@@ -84,8 +84,15 @@ public:
 #endif
 	///
 	void raw_pointer_copy(MathedInset ** p, int pos) const;
+#if 0
+	///
+	void insertInset(int pos, MathedInset * p, int type);
+	///
+	MathedInset * getInset(int pos);
+#else
 	///
 	void raw_pointer_insert(void * p, int pos, int len);
+#endif
 	///
 	void strange_copy(MathedArray * dest, int dpos, int spos, int len);
 	///
@@ -102,6 +109,23 @@ public:
 private:
 	/// Buffer
 	buffer_type bf_;
+#if 0
+	///
+	struct InsetTable {
+		///
+		int pos;
+		///
+		MathedInset * inset;
+		///
+		InsetTable(int p, MathedInset * i)
+			: pos(p), inset(i) {}
+		
+	};
+	/// 
+	typedef std::vector<InsetTable> InsetList;
+	/// The list of insets in this array.
+	InsetList insetList_;
+#endif
 	/// Last position inserted.
 	int last_;
 };

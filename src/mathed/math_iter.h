@@ -83,13 +83,13 @@ public:
 	///
 	bool IsCR() const;
 	///
-	virtual void Reset();
+	void Reset();
 	///
-	virtual void Insert(byte, MathedTextCodes c = LM_TC_CONST);
+	void insert(byte, MathedTextCodes c);
 	///
-	virtual void Insert(MathedInset *, int t = LM_TC_INSET);
+	void insertInset(MathedInset *, int t);
 	///
-	virtual bool Delete();
+	bool Delete();
 	///
 	virtual bool Next();
 	/// Check consistency of tabs and newlines
@@ -157,10 +157,4 @@ protected:
 	/// Recover previous state
 	virtual void ipop();
 };
-
-///
-//#define MX_WAS_SUB   1
-///
-//#define MX_WAS_SUPER 2
-
 #endif

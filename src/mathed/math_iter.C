@@ -188,7 +188,7 @@ void MathedIter::goPosAbs(int p)
 }
 
 
-void MathedIter::Insert(byte c, MathedTextCodes t)
+void MathedIter::insert(byte c, MathedTextCodes t)
 {
 	if (c < ' ')
 		return;
@@ -311,8 +311,16 @@ void MathedIter::join(int pos2)
 }
 
 
-void MathedIter::Insert(MathedInset * p, int type)
+void MathedIter::insertInset(MathedInset * p, int type)
 {
+#if 0
+	if (!MathIsInset(type))
+		type = LM_TC_INSET;
+
+	array->insertInset(pos, p, type);
+	++pos;
+	fcode(-1);
+#else
 	int const shift = SizeInset;
 
 	if (!MathIsInset(type))
@@ -326,6 +334,7 @@ void MathedIter::Insert(MathedInset * p, int type)
 	(*array)[pos - 1] = type;
 	(*array)[array->last()] = '\0';
 	fcode(-1);
+#endif
 }
 
 
@@ -462,13 +471,13 @@ void MathedIter::checkTabs()
 		}
 
 		if (IsCR() && col < ncols - 2) 
-			Insert(' ', LM_TC_TAB);
+			insert(' ', LM_TC_TAB);
 
 		MathedIter::Next();
 	}
 
 	if (col < ncols - 2)
-		Insert(' ', LM_TC_TAB);
+		insert(' ', LM_TC_TAB);
 	
 	ipop();
 }

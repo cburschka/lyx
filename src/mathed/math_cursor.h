@@ -39,7 +39,7 @@ public:
 	///
 	void Insert(byte, MathedTextCodes t = LM_TC_MIN);
 	///
-	void Insert(MathedInset *, int t = LM_TC_INSET);
+	void insertInset(MathedInset *, int t);
 	///
 	void Home();
 	///

@@ -120,10 +120,35 @@ void MathedArray::raw_pointer_copy(MathedInset ** p, int pos) const
 }
 
 
+#if 0
+void MathedArray::insertInset(int pos, MathedInset * p, int type)
+{
+	//bf_.insert(pos, type);
+	InsetTable tmp(pos, p);
+	insetList_.push_back(tmp);
+}
+
+
+MathedInset * MathedArray::getInset(int pos) 
+{
+	InsetList::const_iterator cit = insetList_.begin();
+	InsetList::const_iterator end = insetList_.end();
+	for (; cit != end; ++cit) {
+		if ((*cit).pos == pos)
+			return (*cit).inset;
+	}
+	// not found
+	return 0;
+	// We would really like to throw an exception instead... (Lgb)
+	// throw inset_not_found();
+}
+
+#else
 void MathedArray::raw_pointer_insert(void * p, int pos, int len)
 {
 	my_memcpy(&bf_[pos], &p, len);
 }
+#endif
 
 
 void MathedArray::strange_copy(MathedArray * dest, int dpos,
