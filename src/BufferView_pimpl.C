@@ -62,6 +62,7 @@
 #include "mathed/formulabase.h"
 
 #include "support/filetools.h"
+#include "support/globbing.h"
 #include "support/path_defines.h"
 #include "support/tostr.h"
 
@@ -73,6 +74,7 @@ using lyx::pos_type;
 
 using lyx::support::AddPath;
 using lyx::support::bformat;
+using lyx::support::FileFilterList;
 using lyx::support::FileSearch;
 using lyx::support::IsDirWriteable;
 using lyx::support::MakeDisplayPath;
@@ -806,7 +808,8 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 
 		FileDialog::Result result =
 			fileDlg.open(initpath,
-				       _("*.lyx| LyX Documents (*.lyx)"));
+				     FileFilterList(_("LyX Documents (*.lyx)")),
+				     string());
 
 		if (result.first == FileDialog::Later)
 			return;

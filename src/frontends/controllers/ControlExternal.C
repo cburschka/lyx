@@ -28,10 +28,12 @@
 #include "insets/ExternalTemplate.h"
 
 #include "support/filetools.h"
+#include "support/globbing.h"
 #include "support/tostr.h"
 
 namespace external = lyx::external;
 
+using lyx::support::FileFilterList;
 using lyx::support::MakeAbsPath;
 using lyx::support::readBB_from_PSFile;
 
@@ -135,23 +137,27 @@ external::Template ControlExternal::getTemplate(int i) const
 }
 
 
-string const ControlExternal::Browse(string const & input) const
+string const ControlExternal::browse(string const & input,
+				     string const & template_name) const
 {
 	string const title =  _("Select external file");
 
 	string const bufpath = kernel().bufferFilepath();
 
 	/// Determine the template file extension
-	string pattern = "*";
+	external::TemplateManager const & etm =
+		external::TemplateManager::get();
 	external::Template const * const et_ptr =
-		external::getTemplatePtr(params());
-	if (et_ptr)
-		pattern = et_ptr->fileRegExp;
+		etm.getTemplateByName(template_name);
+
+	FileFilterList const filter = et_ptr ?
+		FileFilterList(et_ptr->fileRegExp) :
+		FileFilterList();
 
 	std::pair<string, string> dir1(N_("Documents|#o#O"),
-				  string(lyxrc.document_path));
+				       string(lyxrc.document_path));
 
-	return browseRelFile(input, bufpath, title, pattern, false, dir1);
+	return browseRelFile(input, bufpath, title, filter, false, dir1);
 }
 
 

@@ -629,7 +629,12 @@ ButtonPolicy::SMInput FormExternal::input(FL_OBJECT * ob, long)
 	} else if (ob == file_->button_browse) {
 
 		string const in_name  = fl_get_input(file_->input_file);
-		string const out_name = controller().Browse(in_name);
+
+		int const choice = fl_get_choice(file_->choice_template) - 1;
+		string const template_name =
+			controller().getTemplate(choice).lyxName;
+		string const out_name =
+			controller().browse(in_name, template_name);
 		fl_set_input(file_->input_file, out_name.c_str());
 
 	} else if (ob == file_->button_edit) {

@@ -118,7 +118,7 @@ void QInclude::browse()
 	else
 		type = ControlInclude::VERBATIM;
 
-	string const & name = controller().Browse(fromqstr(dialog_->filenameED->text()), type);
+	string const & name = controller().browse(fromqstr(dialog_->filenameED->text()), type);
 	if (!name.empty())
 		dialog_->filenameED->setText(toqstr(name));
 }

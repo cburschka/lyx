@@ -145,7 +145,7 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 		string const in_name = getString(dialog_->input_filename);
 		fl_freeze_form(form());
 		ControlInclude::Type const type = ControlInclude::Type(type_.get());
-		string const out_name = controller().Browse(in_name, type);
+		string const out_name = controller().browse(in_name, type);
 		fl_set_input(dialog_->input_filename, out_name.c_str());
 		fl_unfreeze_form(form());
 

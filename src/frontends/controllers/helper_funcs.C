@@ -19,7 +19,9 @@
 #include "frontends/FileDialog.h"
 
 #include "support/filetools.h" // OnlyPath, OnlyFilename
+#include "support/globbing.h"
 
+using lyx::support::FileFilterList;
 using lyx::support::MakeAbsPath;
 using lyx::support::MakeRelPath;
 using lyx::support::OnlyFilename;
@@ -33,7 +35,7 @@ using std::string;
 
 string const browseFile(string const & filename,
 			string const & title,
-			string const & pattern,
+			FileFilterList const & filters,
 			bool save,
 			pair<string,string> const & dir1,
 			pair<string,string> const & dir2)
@@ -48,10 +50,10 @@ string const browseFile(string const & filename,
 
 	while (true) {
 		if (save)
-			result = fileDlg.save(lastPath, pattern,
+			result = fileDlg.save(lastPath, filters,
 				OnlyFilename(filename));
 		else
-			result = fileDlg.open(lastPath, pattern,
+			result = fileDlg.open(lastPath, filters,
 				OnlyFilename(filename));
 
 		if (result.second.empty())
@@ -73,16 +75,16 @@ string const browseFile(string const & filename,
 
 
 string const browseRelFile(string const & filename,
-			string const & refpath,
-			string const & title,
-			string const & pattern,
-			bool save,
-			pair<string,string> const & dir1,
-			pair<string,string> const & dir2)
+			   string const & refpath,
+			   string const & title,
+			   FileFilterList const & filters,
+			   bool save,
+			   pair<string,string> const & dir1,
+			   pair<string,string> const & dir2)
 {
 	string const fname = MakeAbsPath(filename, refpath);
 
-	string const outname = browseFile(fname, title, pattern, save,
+	string const outname = browseFile(fname, title, filters, save,
 					  dir1, dir2);
 	string const reloutname = MakeRelPath(outname, refpath);
 	if (prefixIs(reloutname, "../"))

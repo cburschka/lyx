@@ -11,6 +11,8 @@
 
 #include <config.h>
 
+#include "insets/ExternalTemplate.h"
+
 #include "controllers/ButtonController.h"
 #include "controllers/ControlExternal.h"
 
@@ -124,8 +126,12 @@ void QExternalDialog::bbChanged()
 
 void QExternalDialog::browseClicked()
 {
+	int const choice =  externalCO->currentItem();
+	string const template_name =
+		form_->controller().getTemplate(choice).lyxName;
 	string const str =
-		form_->controller().Browse(fromqstr(fileED->text()));
+		form_->controller().browse(fromqstr(fileED->text()),
+					   template_name);
 	fileED->setText(toqstr(str));
 	form_->changed();
 }

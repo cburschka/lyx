@@ -44,7 +44,7 @@ public:
 	InsetGraphicsParams const & params() const { return *params_.get(); }
 
 	/// Browse for a file
-	std::string const Browse(std::string const &);
+	std::string const browse(std::string const &) const;
 	/// Read the Bounding Box from a eps or ps-file
 	std::string const readBB(std::string const & file);
 	/// Control the bb

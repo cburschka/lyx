@@ -50,7 +50,7 @@ public:
 	void setParams(InsetCommandParams const &);
 
 	/// Browse for a file
-	std::string const Browse(std::string const &, Type);
+	std::string const browse(std::string const &, Type) const;
 
 	/// load a file
 	void load(std::string const & file);

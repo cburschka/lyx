@@ -185,7 +185,7 @@ ButtonPolicy::SMInput FormPrint::input(FL_OBJECT * ob, long)
 	if (ob == dialog_->button_browse) {
 		// Get the filename from the dialog
 		string const in_name = getString(dialog_->input_file);
-		string const out_name = controller().Browse(in_name);
+		string const out_name = controller().browse(in_name);
 
 		// Save the filename to the dialog
 		if (out_name != in_name && !out_name.empty()) {

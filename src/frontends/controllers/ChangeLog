@@ -1,3 +1,17 @@
+2004-01-08  Angus Leeming  <leeming@lyx.org>
+
+	* ControlBibtex.[Ch] (browse):
+	* ControlExternal.[Ch] (browse):
+	* ControlGraphics.[Ch] (browse):
+	* ControlInclude.[Ch] (browse):
+	* ControlPrefs.[Ch] (browsebind, browseUI, browsekbmap,
+	browsedict, browse, browsedir):
+	* ControlPrint.[Ch] (browse):
+	FileFilterList change to the browseFile, browseRelFile functions.
+
+	* helper_funcs.[Ch] (browseFile, browseRelFile):
+	FileFilterList change to the FileDialog open and save functions.
+
 2004-01-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* ControlSendto.C (allFormats): use the unique-erase idom and

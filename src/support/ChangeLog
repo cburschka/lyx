@@ -1,3 +1,8 @@
+2004-01-08  Angus Leeming  <leeming@lyx.org>
+
+	* globbing.[Ch]: add a new class FileFilterList to parse a Qt-style
+	list of available file filters and generate the corresponding vector.
+
 2003-12-14  Ronald Florence <ron@18james.com>
 
 	* tostr.[hC]: added tostr(long unsigned int i).

@@ -36,6 +36,7 @@
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/forkedcall.h"
+#include "support/globbing.h"
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/path.h"
@@ -48,6 +49,7 @@
 using lyx::support::AddName;
 using lyx::support::bformat;
 using lyx::support::destroyDir;
+using lyx::support::FileFilterList;
 using lyx::support::FileInfo;
 using lyx::support::ForkedProcess;
 using lyx::support::IsLyXFilename;
@@ -128,10 +130,12 @@ bool WriteAs(Buffer * buffer, string const & filename)
 		if (!IsLyXFilename(fname))
 			fname += ".lyx";
 
+		FileFilterList const filter (_("LyX Documents (*.lyx)"));
+
 		FileDialog::Result result =
 			fileDlg.save(OnlyPath(fname),
-				       _("*.lyx| LyX Documents (*.lyx)"),
-				       OnlyFilename(fname));
+				     filter,
+				     OnlyFilename(fname));
 
 		if (result.first == FileDialog::Later)
 			return false;
@@ -372,7 +376,9 @@ string getContentsOfAsciiFile(BufferView * bv, string const & f, bool asParagrap
 		FileDialog fileDlg(_("Select file to insert"),
 			(asParagraph) ? LFUN_FILE_INSERT_ASCII_PARA : LFUN_FILE_INSERT_ASCII);
 
-		FileDialog::Result result = fileDlg.open(bv->owner()->buffer()->filePath());
+		FileDialog::Result result =
+			fileDlg.open(bv->owner()->buffer()->filePath(),
+				     FileFilterList(), string());
 
 		if (result.first == FileDialog::Later)
 			return string();

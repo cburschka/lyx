@@ -24,9 +24,11 @@
 #include "insets/insetinclude.h"
 
 #include "support/filetools.h"
+#include "support/globbing.h"
 
 #include <utility>
 
+using lyx::support::FileFilterList;
 using lyx::support::IsFileReadable;
 using lyx::support::MakeAbsPath;
 using lyx::support::OnlyPath;
@@ -66,23 +68,18 @@ void ControlInclude::setParams(InsetCommandParams const & params)
 }
 
 
-string const ControlInclude::Browse(string const & in_name, Type in_type)
+string const ControlInclude::browse(string const & in_name, Type in_type) const
 {
 	string const title = _("Select document to include");
 
 	// input TeX, verbatim, or LyX file ?
-	string pattern;
+	FileFilterList filters;
 	switch (in_type) {
-	case INPUT:
-	    pattern = _("*.(tex|lyx)| LaTeX/LyX Documents (*.tex *.lyx)");
-	    break;
-
-	case VERBATIM:
-	    pattern = _("*| All files (*)");
-	    break;
-
 	case INCLUDE:
-	    pattern = _("*.(tex|lyx)| LaTeX/LyX Documents (*.tex *.lyx)");
+	case INPUT:
+	    filters = FileFilterList(_("LaTeX/LyX Documents (*.tex *.lyx)"));
+	    break;
+	case VERBATIM:
 	    break;
 	}
 
@@ -91,7 +88,8 @@ string const ControlInclude::Browse(string const & in_name, Type in_type)
 
 	string const docpath = OnlyPath(kernel().buffer().fileName());
 
-	return browseRelFile(in_name, docpath, title, pattern, false, dir1);
+	return browseRelFile(in_name, docpath, title,
+			     filters, false, dir1);
 }
 
 

@@ -16,9 +16,11 @@
 #include "debug.h"
 #include "gettext.h"
 
+#include "support/globbing.h"
 #include "support/lstrings.h"
 
 using lyx::support::rsplit;
+using lyx::support::FileFilterList;
 
 using std::endl;
 using std::string;
@@ -40,9 +42,11 @@ FileDialog::~FileDialog()
 }
 
 
-FileDialog::Result const FileDialog::save(string const & path, string const & mask, string const & suggested)
+FileDialog::Result const FileDialog::save(string const & path,
+					  FileFilterList const & filters,
+					  string const & suggested)
 {
-	return open(path, mask, suggested);
+	return open(path, filters, suggested);
 }
 
 
@@ -62,21 +66,20 @@ FileDialog::Result const FileDialog::opendir(string const & path, string const &
 }
 
 
-FileDialog::Result const FileDialog::open(string const & path, string const & mask, string const & suggested)
+FileDialog::Result const FileDialog::open(string const & path,
+					  FileFilterList const & filters,
+					  string const & suggested)
 {
-	string filter = mask;
-	if (filter.empty())
-		filter = "*";
-
-	lyxerr[Debug::GUI] << "filedialog open  with path \"" << path << "\", mask \""
-		<< filter << "\", suggested \"" << suggested << '"' << endl;
+	lyxerr[Debug::GUI] << "filedialog open  with path \"" << path
+			   << "\", mask \"" << filters.str(false)
+			   << "\", suggested \"" << suggested << '"' << endl;
 
 	// no support for asynchronous selection yet
 
 	FileDialog::Result result;
 
 	result.first = FileDialog::Chosen;
-	result.second = private_->Select(title_, path, filter, suggested);
+	result.second = private_->Select(title_, path, filters, suggested);
 
 	return result;
 }

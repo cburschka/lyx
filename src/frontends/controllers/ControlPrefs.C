@@ -27,11 +27,13 @@
 #include "frontends/LyXView.h"
 
 #include "support/filetools.h"
+#include "support/globbing.h"
 #include "support/path_defines.h"
 
 #include <utility>
 
 using lyx::support::AddName;
+using lyx::support::FileFilterList;
 using lyx::support::system_lyxdir;
 using lyx::support::user_lyxdir;
 
@@ -66,7 +68,7 @@ void ControlPrefs::apply()
 }
 
 
-string const ControlPrefs::browsebind(string const & file)
+string const ControlPrefs::browsebind(string const & file) const
 {
 	string dir  = AddName(system_lyxdir(), "bind");
 	// FIXME: stupid name
@@ -78,11 +80,12 @@ string const ControlPrefs::browsebind(string const & file)
 	name = _("User Bind|#U#u");
 	pair<string,string> dir2(name, dir);
 
-	return browseFile(file, _("Choose bind file"), "*.bind", false, dir1, dir2);
+	return browseFile(file, _("Choose bind file"),
+			  FileFilterList("*.bind"), false, dir1, dir2);
 }
 
 
-string const ControlPrefs::browseUI(string const & file)
+string const ControlPrefs::browseUI(string const & file) const
 {
 	string dir  = AddName(system_lyxdir(), "ui");
 	// FIXME: stupid name
@@ -94,33 +97,38 @@ string const ControlPrefs::browseUI(string const & file)
 	name = _("User UI|#U#u");
 	pair<string,string> dir2(name, dir);
 
-	return browseFile(file, _("Choose UI file"), "*.ui", false, dir1, dir2);
+	return browseFile(file, _("Choose UI file"),
+			  FileFilterList("*.ui"), false, dir1, dir2);
 }
 
 
-string const ControlPrefs::browsekbmap(string const & file)
+string const ControlPrefs::browsekbmap(string const & file) const
 {
 	string const dir = AddName(system_lyxdir(), "kbd");
 	string const name = _("Key maps|#K#k");
 	pair<string, string> dir1(name, dir);
 
-	return browseFile(file, _("Choose keyboard map"), "*.kmap", false, dir1);
+	return browseFile(file, _("Choose keyboard map"),
+			  FileFilterList("*.kmap"), false, dir1);
 }
 
 
-string const ControlPrefs::browsedict(string const & file)
+string const ControlPrefs::browsedict(string const & file) const
 {
-	return browseFile(file, _("Choose personal dictionary"), "*.ispell");
+	return browseFile(file, _("Choose personal dictionary"),
+			  FileFilterList("*.ispell"));
 }
 
 
-string const ControlPrefs::browse(string const & file, string const & title)
+string const ControlPrefs::browse(string const & file,
+				  string const & title) const
 {
-	return browseFile(file, title, "*", true);
+	return browseFile(file, title, FileFilterList(), true);
 }
 
 
-string const ControlPrefs::browsedir(string const & path, string const & title)
+string const ControlPrefs::browsedir(string const & path,
+				     string const & title) const
 {
 	return browseDir(path, title);
 }

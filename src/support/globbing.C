@@ -8,15 +8,22 @@
  * Full author contact details are available in file CREDITS.
  */
 
+#include <config.h>
+
 #include "globbing.h"
 
+#include "gettext.h"
+
+#include "lstrings.h"
 #include "path.h"
+#include "std_sstream.h"
 
 #include <boost/regex.hpp>
 #include <boost/tokenizer.hpp>
 
 #include "glob.h"
 
+using std::ostringstream;
 using std::string;
 using std::vector;
 
@@ -68,7 +75,7 @@ string const convert_brace_glob(string const & glob)
 vector<string> const glob(string const & pattern, int flags)
 {
 	glob_t glob_buffer;
-	glob_buffer.gl_offs = 0;	
+	glob_buffer.gl_offs = 0;
 	glob(pattern.c_str(), flags, 0, &glob_buffer);
 	vector<string> const matches(glob_buffer.gl_pathv,
 				     glob_buffer.gl_pathv +
@@ -86,13 +93,13 @@ vector<string> const expand_globs(string const & mask,
 
 	// Given "<glob> <glob> ... *.{abc,def} <glob>", expand to
 	//       "<glob> <glob> ... *.abc *.def <glob>"
-	string const expanded_glob = convert_brace_glob(mask);
+	string const converted_glob = convert_brace_glob(mask);
 
 	Path p(directory);
 
 	// Split into individual globs and then call 'glob' on each one.
 	vector<string> matches;
-	Tokenizer const tokens(expanded_glob, separator);
+	Tokenizer const tokens(converted_glob, separator);
 	Tokenizer::const_iterator it = tokens.begin();
 	Tokenizer::const_iterator const end = tokens.end();
 	for (; it != end; ++it) {
@@ -100,6 +107,77 @@ vector<string> const expand_globs(string const & mask,
 		matches.insert(matches.end(), tmp.begin(), tmp.end());
 	}
 	return matches;
+}
+
+
+FileFilterList::FileFilterList(string const & qt_style_filter)
+{
+	string const filter = qt_style_filter.empty() ?
+		_("All files (*)") : qt_style_filter;
+
+	// Split data such as "TeX documents (*.tex);;LyX Documents (*.lyx)"
+	// into individual filters.
+	static boost::regex const separator_re(";;");
+
+	string::const_iterator it = filter.begin();
+	string::const_iterator const end = filter.end();
+	while (true) {
+		boost::match_results<string::const_iterator> what;
+
+		if (!boost::regex_search(it, end, what, separator_re)) {
+			parse_filter(string(it, end));
+			break;
+		}
+
+		// Everything from the start of the input to
+		// the start of the match.
+		parse_filter(string(what[-1].first, what[-1].second));
+
+		// Increment the iterator to the end of the match.
+		it += std::distance(it, what[0].second);
+	}
+}
+
+
+void FileFilterList::parse_filter(string const & filter)
+{
+	// Matches "TeX documents (*.tex)",
+	// storing "TeX documents " as group 1 and "*.tex" as group 2.
+	static boost::regex const filter_re("([^(]*)\\(([^)]+)\\) *$");
+
+	boost::match_results<string::const_iterator> what;
+	if (!boost::regex_search(filter, what, filter_re)) {
+		// Just a glob, no description.
+		filters_.push_back(Filter(string(), trim(filter)));
+	} else {
+		string const desc = string(what[1].first, what[1].second);
+		string const globs = string(what[2].first, what[2].second);
+		filters_.push_back(Filter(trim(desc), trim(globs)));
+	}
+}
+
+
+string const FileFilterList::str(bool expand) const
+{
+	ostringstream ss;
+
+	vector<Filter>::const_iterator const begin = filters_.begin();
+	vector<Filter>::const_iterator const end = filters_.end();
+	vector<Filter>::const_iterator it = begin;
+	for (; it != end; ++it) {
+		string const globs = expand ?
+			convert_brace_glob(it->globs()) : it->globs();
+		if (it != begin)
+			ss << ";;";
+		bool const has_description = !it->description().empty();
+		if (has_description)
+			ss << it->description() << " (";
+		ss << globs;
+		if (has_description)
+			ss << ')';
+	}
+
+	return ss.str();
 }
 
 } // namespace support

@@ -27,7 +27,7 @@ public:
 	ControlPrint(LyXView &, Dialogs &);
 
 	/// Browse for a file
-	std::string const Browse(std::string const &);
+	std::string const browse(std::string const &) const;
 	///
 	PrinterParams & params() const;
 private:

@@ -1,3 +1,10 @@
+2004-01-08  Angus Leeming  <leeming@lyx.org>
+
+	* BufferView_pimpl.C (MenuInsertLyXFile):
+	* lyx_cb.C (WriteAs, getContentsOfAsciiFile):
+	* lyxfunc.C (menuNew, open, doImport): 
+	FileFilterList change to the FileDialog open and save functions.
+
 2004-01-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* ShareContainer.h: make isEqual and isUnique adaptable

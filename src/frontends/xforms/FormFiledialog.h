@@ -45,6 +45,15 @@ public:
 
 class FD_filedialog;
 
+namespace lyx {
+namespace support {
+
+class FileFilterList;
+
+} // namespace support
+} // namespace lyx
+
+
 class FileDialog::Private : public boost::signals::trackable {
 public:
 	///
@@ -58,10 +67,10 @@ public:
 	/// gets last dialog directory
 	std::string const GetDirectory() const;
 	/// launches dialog and returns selected file
-	std::string const Select(std::string const & pszTitle = std::string(),
-		       std::string const & pszPath = std::string(),
-		       std::string const & pszMask = std::string(),
-		       std::string const & pszSuggested = std::string());
+	std::string const Select(std::string const & pszTitle,
+				 std::string const & pszPath,
+				 lyx::support::FileFilterList const & filters,
+				 std::string const & pszSuggested);
 	/// launches dialog and returns selected directory
 	std::string const SelectDir(std::string const & pszTitle = std::string(),
 		       std::string const & pszPath = std::string(),
@@ -118,7 +127,8 @@ private:
 	/// sets dialog current directory
 	void SetDirectory(std::string const & pszPath);
 	/// sets dialog file mask
-	void SetMask(std::string const & pszNewMask);
+	void SetFilters(std::string const & filters);
+	void SetFilters(lyx::support::FileFilterList const & filters);
 	/// sets dialog information line
 	void SetInfoLine(std::string const & pszLine);
 	/// handle dialog during file selection

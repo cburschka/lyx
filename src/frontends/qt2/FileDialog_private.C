@@ -20,7 +20,6 @@
 #include <qapplication.h>
 #include <qtoolbutton.h>
 
-using lyx::support::convert_brace_glob;
 using lyx::support::split;
 
 using std::string;
@@ -44,10 +43,12 @@ string const getLabel(string const & str) {
 } // namespace anon
 
 
-LyXFileDialog::LyXFileDialog(string const & p, string const & m,
+LyXFileDialog::LyXFileDialog(string const & p,
+			     lyx::support::FileFilterList const & filters,
 			     string const & t,
-		FileDialog::Button const & b1, FileDialog::Button const & b2)
-	: QFileDialog(toqstr(p), toqstr(convert_brace_glob(m)),
+			     FileDialog::Button const & b1,
+			     FileDialog::Button const & b2)
+	: QFileDialog(toqstr(p), toqstr(filters.str(true)),
 		      qApp->focusWidget() ? qApp->focusWidget() : qApp->mainWidget(), toqstr(t), true),
 	  b1_(0), b2_(0)
 {

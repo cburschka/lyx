@@ -58,6 +58,7 @@
 using lyx::support::AbsolutePath;
 using lyx::support::AddName;
 using lyx::support::ExpandPath;
+using lyx::support::FileFilterList;
 using lyx::support::FileInfo;
 using lyx::support::getcwd;
 using lyx::support::GetEnvPath;
@@ -394,13 +395,16 @@ void FileDialog::Private::SetDirectory(string const & path)
 }
 
 
-// SetMask: sets dialog file mask
-void FileDialog::Private::SetMask(string const & newmask)
+void FileDialog::Private::SetFilters(string const & mask)
 {
-	mask_ = trim(newmask);
-	if (mask_.empty())
-		mask_ = "*";
+	SetFilters(FileFilterList(mask));
+}
 
+
+void FileDialog::Private::SetFilters(FileFilterList const & filters)
+{
+	// Just take the first one for now.
+	mask_ = filters.filters()[0].globs();
 	fl_set_input(file_dlg_form_->PatBox, mask_.c_str());
 }
 
@@ -416,7 +420,6 @@ void FileDialog::Private::SetInfoLine(string const & line)
 FileDialog::Private::Private()
 {
 	directory_ = MakeAbsPath(string("."));
-	mask_ = "*";
 
 	// Creates form if necessary.
 	if (!file_dlg_form_) {
@@ -552,7 +555,7 @@ void FileDialog::Private::FileDlgCB(FL_OBJECT *, long arg)
 		break;
 
 	case 1: // get mask
-		current_dlg_->SetMask(fl_get_input(file_dlg_form_->PatBox));
+		current_dlg_->SetFilters(fl_get_input(file_dlg_form_->PatBox));
 		current_dlg_->Reread();
 		break;
 
@@ -562,25 +565,25 @@ void FileDialog::Private::FileDlgCB(FL_OBJECT *, long arg)
 
 	case 10: // rescan
 		current_dlg_->SetDirectory(fl_get_input(file_dlg_form_->DirBox));
-		current_dlg_->SetMask(fl_get_input(file_dlg_form_->PatBox));
+		current_dlg_->SetFilters(fl_get_input(file_dlg_form_->PatBox));
 		current_dlg_->Reread();
 		break;
 
 	case 11: // home
 		current_dlg_->SetDirectory(GetEnvPath("HOME"));
-		current_dlg_->SetMask(fl_get_input(file_dlg_form_->PatBox));
+		current_dlg_->SetFilters(fl_get_input(file_dlg_form_->PatBox));
 		current_dlg_->Reread();
 		break;
 
 	case 12: // user button 1
 		current_dlg_->SetDirectory(current_dlg_->user_path1_);
-		current_dlg_->SetMask(fl_get_input(file_dlg_form_->PatBox));
+		current_dlg_->SetFilters(fl_get_input(file_dlg_form_->PatBox));
 		current_dlg_->Reread();
 		break;
 
 	case 13: // user button 2
 		current_dlg_->SetDirectory(current_dlg_->user_path2_);
-		current_dlg_->SetMask(fl_get_input(file_dlg_form_->PatBox));
+		current_dlg_->SetFilters(fl_get_input(file_dlg_form_->PatBox));
 		current_dlg_->Reread();
 		break;
 
@@ -666,7 +669,7 @@ bool FileDialog::Private::HandleOK()
 	// mask was changed
 	string tmp = fl_get_input(file_dlg_form_->PatBox);
 	if (tmp != mask_) {
-		SetMask(tmp);
+		SetFilters(tmp);
 		Reread();
 		return false;
 	}
@@ -724,21 +727,13 @@ void FileDialog::Private::Force(bool cancel)
 // Select: launches dialog and returns selected file
 string const FileDialog::Private::Select(string const & title,
 					 string const & path,
-					 string const & mask,
+					 FileFilterList const & filters,
 					 string const & suggested)
 {
 	// handles new mask and path
-	bool isOk = true;
-	if (!mask.empty()) {
-		SetMask(mask);
-		isOk = false;
-	}
-	if (!path.empty()) {
-		SetDirectory(path);
-		isOk = false;
-	}
-	if (!isOk)
-		Reread();
+	SetFilters(filters);
+	SetDirectory(path);
+	Reread();
 
 	// highlight the suggested file in the browser, if it exists.
 	int sel = 0;
@@ -782,7 +777,7 @@ string const FileDialog::Private::Select(string const & title,
 		     FL_PLACE_MOUSE | FL_FREE_SIZE, 0,
 		     title.c_str());
 
-	isOk = RunDialog();
+	bool const isOk = RunDialog();
 
 	fl_hide_form(file_dlg_form_->form);
 	fl_activate_all_forms();
@@ -805,7 +800,7 @@ string const FileDialog::Private::SelectDir(string const & title,
 					 string const & path,
 					 string const & suggested)
 {
-	SetMask("*/");
+	SetFilters("*/");
 	// handles new path
 	bool isOk = true;
 	if (!path.empty()) {

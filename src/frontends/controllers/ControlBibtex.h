@@ -18,6 +18,15 @@
 #include <vector>
 
 
+namespace lyx {
+namespace support {
+
+class FileFilterList;
+
+} // namespace support
+} // namespace lyx
+
+
 /** A controller for Bibtex dialogs.
  */
 class ControlBibtex : public ControlCommand {
@@ -26,7 +35,9 @@ public:
 	ControlBibtex(Dialog &);
 
 	/// Browse for a file
-	std::string const Browse(std::string const &, std::string const &, std::string const &);
+	std::string const browse(std::string const & in_name,
+				 std::string const & title,
+				 lyx::support::FileFilterList const & filters) const;
 	/// get the list of bst files
 	void getBibStyles(std::vector<std::string> & data) const;
 	/// get the list of bib files

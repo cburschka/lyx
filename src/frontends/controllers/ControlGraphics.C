@@ -27,11 +27,13 @@
 
 #include "support/FileInfo.h"
 #include "support/filetools.h"
+#include "support/globbing.h"
 #include "support/path_defines.h"
 #include "support/tostr.h"
 #include "support/types.h"
 
 using lyx::support::AddName;
+using lyx::support::FileFilterList;
 using lyx::support::FileInfo;
 using lyx::support::IsFileReadable;
 using lyx::support::MakeAbsPath;
@@ -74,7 +76,7 @@ void ControlGraphics::dispatchParams()
 }
 
 
-string const ControlGraphics::Browse(string const & in_name)
+string const ControlGraphics::browse(string const & in_name) const
 {
 	string const title = _("Select graphics file");
 
@@ -88,7 +90,9 @@ string const ControlGraphics::Browse(string const & in_name)
 	pair<string, string> dir2(_("Documents|#o#O"), string(lyxrc.document_path));
 	// Show the file browser dialog
 	return browseRelFile(in_name, kernel().bufferFilepath(),
-			     title, "*.*", false, dir1, dir2);
+			     title,
+			     FileFilterList(),
+			     false, dir1, dir2);
 }
 
 

@@ -34,16 +34,18 @@ public:
 	LyXRC const & rc() const { return rc_; }
 
 	/// various file pickers
-	std::string const browsebind(std::string const & file);
-	std::string const browseUI(std::string const & file);
-	std::string const browsekbmap(std::string const & file);
-	std::string const browsedict(std::string const & file);
+	std::string const browsebind(std::string const & file) const;
+	std::string const browseUI(std::string const & file) const;
+	std::string const browsekbmap(std::string const & file) const;
+	std::string const browsedict(std::string const & file) const;
 
 	/// general browse
-	std::string const browse(std::string const & file, std::string const & title);
+	std::string const browse(std::string const & file,
+				 std::string const & title) const;
 
 	/// browse directory
-	std::string const browsedir(std::string const & path, std::string const & title);
+	std::string const browsedir(std::string const & path,
+				    std::string const & title) const;
 
 	/// redraw widgets (for xforms color change)
 	void redrawGUI();

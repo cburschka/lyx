@@ -12,10 +12,17 @@
 #ifndef HELPERFUNCS_H
 #define HELPERFUNCS_H
 
+#include <boost/bind.hpp>
 #include <utility>
 #include <vector>
 #include <string>
 
+
+namespace lyx {
+namespace support {
+class FileFilterList;
+} // namespace support
+} // namespace lyx
 
 /** Launch a file dialog and return the chosen file.
     filename: a suggested filename.
@@ -26,7 +33,7 @@
 std::string const
 browseFile(std::string const & filename,
 	   std::string const & title,
-	   std::string const & pattern,
+	   lyx::support::FileFilterList const & filters,
 	   bool save = false,
 	   std::pair<std::string,std::string> const & dir1 =
 	   std::make_pair(std::string(), std::string()),
@@ -44,7 +51,7 @@ std::string const
 browseRelFile(std::string const & filename,
 	      std::string const & refpath,
 	      std::string const & title,
-	      std::string const & pattern,
+	      lyx::support::FileFilterList const & filters,
 	      bool save = false,
 	      std::pair<std::string,std::string> const & dir1 =
 	      std::make_pair(std::string(), std::string()),
@@ -73,44 +80,24 @@ std::vector<std::string> const getLatexUnits();
 /** Functions to extract vectors of the first and second elems from a
     vector<pair<A,B> >
 */
-
-namespace detail {
-
-template<class Pair>
-struct firster {
-	typedef typename Pair::first_type first_type;
-	first_type const & operator()(Pair const & p) { return p.first; }
-};
-
-template<class Pair>
-struct seconder {
-	typedef typename Pair::second_type second_type;
-	second_type const & operator()(Pair const & p) { return p.second; }
-};
-
-} // namespace detail
-
-///
 template<class Pair>
 std::vector<typename Pair::first_type> const
 getFirst(std::vector<Pair> const & pr)
 {
 	std::vector<typename Pair::first_type> tmp(pr.size());
 	std::transform(pr.begin(), pr.end(), tmp.begin(),
-		       detail::firster<Pair>());
+		       boost::bind(&Pair::first, _1));
 	return tmp;
 }
 
-///
 template<class Pair>
 std::vector<typename Pair::second_type> const
 getSecond(std::vector<Pair> const & pr)
 {
 	std::vector<typename Pair::second_type> tmp(pr.size());
 	std::transform(pr.begin(), pr.end(), tmp.begin(),
-		       detail::seconder<Pair>());
+		       boost::bind(&Pair::second, _1));
 	return tmp;
 }
 
-
-#endif // HELPERFUNCS_H
+#endif // NOT HELPERFUNCS_H

@@ -26,6 +26,7 @@
 
 #include "support/tostr.h"
 #include "support/filetools.h"
+#include "support/globbing.h"
 #include "support/path.h"
 #include "support/systemcall.h"
 
@@ -33,6 +34,7 @@
 
 using lyx::support::bformat;
 using lyx::support::ChangeExtension;
+using lyx::support::FileFilterList;
 using lyx::support::IsDirWriteable;
 using lyx::support::MakeAbsPath;
 using lyx::support::MakeDisplayPath;
@@ -80,14 +82,12 @@ void ControlPrint::clearParams()
 }
 
 
-string const ControlPrint::Browse(string const & in_name)
+string const ControlPrint::browse(string const & in_name) const
 {
-	string const title = _("Print to file");
-	string const pattern = "*.ps";
-
-	// Show the file browser dialog
-	return browseRelFile(in_name, buffer()->filePath(),
-			     title, pattern, true);
+	return browseRelFile(in_name, buffer().filePath(),
+			     _("Print to file"),
+			     FileFilterList("PostScript files (*.ps)"),
+			     true);
 }
 
 

@@ -1,3 +1,16 @@
+2004-01-08  Angus Leeming  <leeming@lyx.org>
+
+	* FileDialog.C (open, save):
+	* FormFileDialog:
+	the file filter mask is now passed as a FileFilterList rather than
+	as a string.
+
+	* QExternalDialog.C (browseClicked):
+	* QGraphicsDialog.C (browse_clicked):
+	* QInclude.C (browse): 
+	changes doe to the name change controller().Browse() to
+	controller().browse().
+
 2004-01-07  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* FormForks.C: make FindPID adaptable and constify operator()

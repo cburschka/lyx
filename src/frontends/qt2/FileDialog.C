@@ -11,13 +11,21 @@
 
 #include <config.h>
 
-#include "debug.h"
 #include "frontends/FileDialog.h"
-#include "FileDialog_private.h"
-#include "qt_helpers.h"
+
+#include "debug.h"
 #include "gettext.h"
 
+#include "support/globbing.h"
+
+#include "FileDialog_private.h"
+#include "qt_helpers.h"
+
+
+using lyx::support::FileFilterList;
+
 using std::endl;
+using std::string;
 
 
 struct FileDialog::Private {
@@ -26,7 +34,7 @@ struct FileDialog::Private {
 };
 
 
-FileDialog::FileDialog(std::string const & t,
+FileDialog::FileDialog(string const & t,
 		       kb_action s, Button b1, Button b2)
 	: private_(new FileDialog::Private), title_(t), success_(s)
 {
@@ -41,17 +49,13 @@ FileDialog::~FileDialog()
 }
 
 
-FileDialog::Result const FileDialog::save(std::string const & path,
-					    std::string const & mask,
-					    std::string const & suggested)
+FileDialog::Result const FileDialog::save(string const & path,
+					  FileFilterList const & filters,
+					  string const & suggested)
 {
-	std::string filter(mask);
-	if (mask.empty())
-		filter = _("All files (*)");
-
-	LyXFileDialog dlg(path, filter, title_, private_->b1, private_->b2);
+	LyXFileDialog dlg(path, filters, title_, private_->b1, private_->b2);
 	lyxerr[Debug::GUI] << "Select with path \"" << path
-			   << "\", mask \"" << filter
+			   << "\", mask \"" << filters.str(false)
 			   << "\", suggested \"" << suggested << endl;
 
 	dlg.setMode(QFileDialog::AnyFile);
@@ -71,17 +75,13 @@ FileDialog::Result const FileDialog::save(std::string const & path,
 }
 
 
-FileDialog::Result const FileDialog::open(std::string const & path,
-					    std::string const & mask,
-					    std::string const & suggested)
+FileDialog::Result const FileDialog::open(string const & path,
+					  FileFilterList const & filters,
+					  string const & suggested)
 {
-	std::string filter(mask);
-	if (mask.empty())
-		filter = _("All files (*)");
-
-	LyXFileDialog dlg(path, filter, title_, private_->b1, private_->b2);
+	LyXFileDialog dlg(path, filters, title_, private_->b1, private_->b2);
 	lyxerr[Debug::GUI] << "Select with path \"" << path
-			   << "\", mask \"" << filter
+			   << "\", mask \"" << filters.str(false)
 			   << "\", suggested \"" << suggested << endl;
 
 	if (!suggested.empty())
@@ -99,10 +99,10 @@ FileDialog::Result const FileDialog::open(std::string const & path,
 }
 
 
-FileDialog::Result const FileDialog::opendir(std::string const & path,
-					    std::string const & suggested)
+FileDialog::Result const FileDialog::opendir(string const & path,
+					    string const & suggested)
 {
-	std::string filter = _("Directories");
+	FileFilterList const filter(_("Directories"));
 
 	LyXFileDialog dlg(path, filter, title_, private_->b1, private_->b2);
 	lyxerr[Debug::GUI] << "Select with path \"" << path

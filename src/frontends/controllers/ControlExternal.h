@@ -28,10 +28,8 @@ class InsetExternalParams;
 
 namespace lyx {
 namespace external {
-
 class Template;
 class RotationDataType;
-
 } // namespace external
 } // namespace lyx
 
@@ -63,7 +61,8 @@ public:
 	///
 	lyx::external::Template getTemplate(int) const;
 	///
-	std::string const Browse(std::string const &) const;
+	std::string const browse(std::string const & input_file,
+				 std::string const & tempalate_name) const;
 
 	/// Read the Bounding Box from a eps or ps-file
 	std::string const readBB(std::string const & file);

@@ -22,6 +22,7 @@
 #include "xformsBC.h"
 
 #include "support/filetools.h"
+#include "support/globbing.h"
 #include "support/lstrings.h"
 #include "support/lyxalgo.h"
 
@@ -30,6 +31,7 @@
 using lyx::support::ChangeExtension;
 using lyx::support::compare;
 using lyx::support::contains;
+using lyx::support::FileFilterList;
 using lyx::support::getStringFromVector;
 using lyx::support::getVectorFromString;
 using lyx::support::OnlyFilename;
@@ -113,10 +115,11 @@ ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long ob_value)
 	if (ob == dialog_->button_database_browse) {
 		// When browsing, take the first file only
 		string const in_name = getString(dialog_->input_database);
+		FileFilterList const
+			filter(_("*.bib| BibTeX Databases (*.bib)"));
 		string out_name =
-			controller().Browse("",
-				_("Select Database"),
-				_("*.bib| BibTeX Databases (*.bib)"));
+			controller().browse("", _("Select Database"),
+					    filter);
 		if (!out_name.empty()) {
 			// add the database to any existing ones
 			if (!in_name.empty())
@@ -127,9 +130,10 @@ ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long ob_value)
 
 	} else if (ob == dialog_->button_style_browse) {
 		string const in_name = getString(dialog_->input_style);
-		string const style = controller().Browse(in_name,
-					_("Select BibTeX-Style"),
-					_("*.bst| BibTeX Styles (*.bst)"));
+		FileFilterList const
+			filter(_("*.bst| BibTeX Styles (*.bst)"));
+		string const style = controller()
+			.browse(in_name, _("Select BibTeX-Style"), filter);
 		if (!style.empty()) {
 			fl_set_input(dialog_->input_style, style.c_str());
 		}

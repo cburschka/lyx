@@ -19,6 +19,16 @@
 #include <string>
 
 
+namespace lyx {
+namespace support {
+
+class FileFilterList;
+
+} // namespace support
+} // namespace lyx
+
+
+
 /**
  * \class FileDialog
  * \brief GUI-I definition of file dialog interface
@@ -57,44 +67,23 @@ public:
 
 	~FileDialog();
 
-	/**
-	 * Choose a file for opening, starting in directory \param
-	 * path, with the file selection \param mask. The \param mask
-	 * string is of the form :
-	 *
-	 * <glob to match> | <description>
-	 *
-	 * for example, "*.ps | PostScript files (*.ps)".
-	 *
-	 * FIXME: should support multiple lines of these for different file types.
-	 */
-	Result const open(std::string const & path = std::string(),
-		std::string const & mask = std::string(),
-		std::string const & suggested = std::string());
+	/// Choose a file for opening, starting in directory \c path.
+	Result const open(std::string const & path,
+			  lyx::support::FileFilterList const & filters,
+			  std::string const & suggested);
 
-	/**
-	 * Choose a directory, starting in directory \param
-	 * path.
-	 */
+	/// Choose a directory, starting in directory \c path.
 	Result const opendir(std::string const & path = std::string(),
-		std::string const & suggested = std::string());
+			     std::string const & suggested = std::string());
 
-	/**
-	 * Choose a file for saving, starting in directory \param
-	 * path, with the file selection \param mask. The \param mask
-	 * string is of the form :
-	 *
-	 * <glob to match> | <description>
-	 *
-	 * for example, "*.ps | PostScript files (*.ps)".
-	 */
-	Result const save(std::string const & path = std::string(),
-		std::string const & mask = std::string(),
-		std::string const & suggested = std::string());
+	/// Choose a file for saving, starting in directory \c  path.
+	Result const save(std::string const & path,
+			  lyx::support::FileFilterList const & filters,
+			  std::string const & suggested);
 
-
-	/* This *has* to be public because there is no way to specify extern "C" functions
-	 * as friends of Private implementation for the xforms implementation ... grr
+	/* This *has* to be public because there is no way to specify
+	 * extern "C" functions as friends of Private implementation for
+	 * the xforms implementation ... grr
 	 */
 	class Private;
 	friend class Private;

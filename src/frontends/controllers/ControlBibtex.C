@@ -20,7 +20,9 @@
 #include "gettext.h"
 
 #include "support/filetools.h"
+#include "support/globbing.h"
 
+using lyx::support::FileFilterList;
 using lyx::support::OnlyFilename;
 
 using std::pair;
@@ -33,14 +35,14 @@ ControlBibtex::ControlBibtex(Dialog & d)
 {}
 
 
-string const ControlBibtex::Browse(string const & in_name,
+string const ControlBibtex::browse(string const & in_name,
 				   string const & title,
-				   string const & pattern)
+				   FileFilterList const & filters) const
 {
 	pair<string, string> dir1(_("Documents|#o#O"),
 				  string(lyxrc.document_path));
 	return browseRelFile(in_name, kernel().bufferFilepath(),
-			     title, pattern, false, dir1);
+			     title, filters, false, dir1);
 }
 
 

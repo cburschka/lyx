@@ -574,7 +574,7 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 	if (ob == file_->button_browse) {
 		// Get the filename from the dialog
 		string const in_name = getString(file_->input_filename);
-		string const out_name = controller().Browse(in_name);
+		string const out_name = controller().browse(in_name);
 		lyxerr[Debug::GRAPHICS]
 			<< "[FormGraphics]out_name: " << out_name << endl;
 		if (out_name != in_name && !out_name.empty()) {

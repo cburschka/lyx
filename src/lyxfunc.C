@@ -77,6 +77,7 @@
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/forkedcontr.h"
+#include "support/globbing.h"
 #include "support/path.h"
 #include "support/path_defines.h"
 #include "support/tostr.h"
@@ -93,6 +94,7 @@ using lyx::support::AddName;
 using lyx::support::AddPath;
 using lyx::support::bformat;
 using lyx::support::ChangeExtension;
+using lyx::support::FileFilterList;
 using lyx::support::FileInfo;
 using lyx::support::FileSearch;
 using lyx::support::ForkedcallsController;
@@ -1569,7 +1571,8 @@ void LyXFunc::menuNew(string const & name, bool fromTemplate)
 
 		FileDialog::Result result =
 			fileDlg.open(lyxrc.template_path,
-				       _("*.lyx| LyX Documents (*.lyx)"));
+				     FileFilterList(_("LyX Documents (*.lyx)")),
+				     string());
 
 		if (result.first == FileDialog::Later)
 			return;
@@ -1605,7 +1608,8 @@ void LyXFunc::open(string const & fname)
 
 		FileDialog::Result result =
 			fileDlg.open(initpath,
-				       _("*.lyx| LyX Documents (*.lyx)"));
+				     FileFilterList(_("LyX Documents (*.lyx)")),
+				     string());
 
 		if (result.first == FileDialog::Later)
 			return;
@@ -1678,12 +1682,13 @@ void LyXFunc::doImport(string const & argument)
 			make_pair(string(_("Examples|#E#e")),
 				  string(AddPath(system_lyxdir(), "examples"))));
 
-		string const extension = "*." + formats.extension(format)
-			+ "| " + formats.prettyName(format)
+		string const filter = formats.prettyName(format)
 			+ " (*." + formats.extension(format) + ')';
 
-		FileDialog::Result result = fileDlg.open(initpath,
-							   extension);
+		FileDialog::Result result =
+			fileDlg.open(initpath,
+				     FileFilterList(filter),
+				     string());
 
 		if (result.first == FileDialog::Later)
 			return;
