@@ -53,19 +53,19 @@ int quote_index[2][6] = {
 
 // Corresponding LaTeX code, for double and single quotes.
 char const * const latex_quote_t1[2][5] =
-{ { "\\quotesinglbase{}",  "'", "`",
+{ { "\\quotesinglbase ",  "'", "`",
     "\\guilsinglleft{}", "\\guilsinglright{}" },
   { ",,", "''", "``", "<<", ">>" } };
 
 char const * const latex_quote_ot1[2][5] =
-{ { "\\quotesinglbase{}",  "'", "`",
+{ { "\\quotesinglbase ",  "'", "`",
     "\\guilsinglleft{}", "\\guilsinglright{}" },
-  { "\\quotedblbase{}", "''", "``",
+  { "\\quotedblbase ", "''", "``",
     "\\guillemotleft{}", "\\guillemotright{}" } };
 
 char const * const latex_quote_babel[2][5] =
-{ { "\\glq{}",  "'", "`", "\\flq{}", "\\frq{}" },
-  { "\\glqq{}", "''", "``", "\\flqq{}", "\\frqq{}" } };
+{ { "\\glq ",  "'", "`", "\\flq{}", "\\frq{}" },
+  { "\\glqq ", "''", "``", "\\flqq{}", "\\frqq{}" } };
 
 } // namespace anon
 
