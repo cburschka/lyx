@@ -672,7 +672,7 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 	if (tmprit == rows().begin()) {
 		// A trick/hack for UNDO.
 		// This is needed because in an UNDO/REDO we could have
-		// changed the ownerParagrah() so the paragraph inside
+		// changed the ownerParagraph() so the paragraph inside
 		// the row is NOT my really first par anymore.
 		// Got it Lars ;) (Jug 20011206)
 		first_phys_pit = ownerParagraphs().begin();
@@ -709,10 +709,10 @@ void LyXText::redoParagraphs(LyXCursor const & cur,
 	}
 	if (prevrit != rows().end()) {
 		setHeightOfRow(prevrit);
-		const_cast<LyXText *>(this)->postPaint(y - prevrit->height());
+		postPaint(y - prevrit->height());
 	} else {
 		setHeightOfRow(rows().begin());
-		const_cast<LyXText *>(this)->postPaint(0);
+		postPaint(0);
 	}
 	if (tmprit != rows().end())
 		setHeightOfRow(tmprit);
