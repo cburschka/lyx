@@ -111,7 +111,7 @@ void FontInfo::query()
 		return;
 
 	if (pattern.empty()) {
-		lyxerr << "Can not use empty font name for font query."
+		lyxerr << "Cannot use empty font name for font query."
 		       << endl;
 		queried = true;
 		return;

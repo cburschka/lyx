@@ -45,7 +45,7 @@ bool Exporter::Export(Buffer * buffer, string const & format,
 			}
 		}
 		if (backend_format.empty()) {
-			WriteAlert(_("Can not export file"),
+			WriteAlert(_("Cannot export file"),
 				   _("No information for exporting to ")
 				   + formats.prettyName(format));
 			return false;

@@ -58,7 +58,7 @@ bool Importer::Import(LyXView * lv, string const & filename,
 			}
 		}
 		if (loader_format.empty()) {
-			WriteAlert(_("Can not import file"),
+			WriteAlert(_("Cannot import file"),
 				   _("No information for importing from ")
 				   + formats.prettyName(format));
 			return false;

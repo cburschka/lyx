@@ -168,7 +168,7 @@ bool Formats::view(Buffer const * buffer, string const & filename,
 	    format->isChildFormat())
 		format = getFormat(format->parentFormat());
 	if (!format || format->viewer().empty()) {
-		WriteAlert(_("Can not view file"),
+		WriteAlert(_("Cannot view file"),
 			   _("No information for viewing ")
 			   + prettyName(format_name));
 			   return false;
@@ -198,7 +198,7 @@ bool Formats::view(Buffer const * buffer, string const & filename,
 	int const res = one.startscript(Systemcalls::SystemDontWait, command);
 
 	if (res) {
-		WriteAlert(_("Can not view file"),
+		WriteAlert(_("Cannot view file"),
 			   _("Error while executing"),
 			   command.substr(0, 50));
 		return false;
@@ -574,7 +574,7 @@ bool Converters::convert(Buffer const * buffer,
 
 	EdgePath edgepath = getPath(from_format, to_format);
 	if (edgepath.empty()) {
-		WriteAlert(_("Can not convert file"),
+		WriteAlert(_("Cannot convert file"),
 			   _("No information for converting from ")
 			   + formats.prettyName(from_format) + _(" to ")
 			   + formats.prettyName(to_format));
@@ -668,7 +668,7 @@ bool Converters::convert(Buffer const * buffer,
 					WriteAlert(_("There were errors during the Build process."),
 						   _("You should try to fix them."));
 				else
-					WriteAlert(_("Can not convert file"),
+					WriteAlert(_("Cannot convert file"),
 						   "Error while executing",
 						   command.substr(0, 50));
 				return false;
