@@ -16,7 +16,7 @@
 #include "lyxfind.h"
 
 #include "buffer.h"
-#include "cursor_slice.h"
+#include "cursor.h"
 #include "BufferView.h"
 #include "debug.h"
 #include "iterators.h"
@@ -391,7 +391,7 @@ int replace(BufferView * bv,
 
 	text->replaceSelectionWithString(replacestr);
 	text->setSelectionRange(replacestr.length());
-	bv->cursor() = fw ? bv->selEnd() : bv->selStart();
+	bv->cursor().current() = fw ? bv->cursor().selEnd() : bv->cursor().selStart();
 	bv->buffer()->markDirty();
 	find(bv, searchstr, cs, mw, fw);
 	bv->update();

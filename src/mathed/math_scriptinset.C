@@ -16,16 +16,17 @@
 #include "math_support.h"
 #include "math_symbolinset.h"
 #include "dispatchresult.h"
+#include "cursor.h"
 #include "debug.h"
 #include "funcrequest.h"
 
 #include <boost/assert.hpp>
 
-
 using std::string;
 using std::max;
 using std::auto_ptr;
 using std::endl;
+
 
 
 MathScriptInset::MathScriptInset()
@@ -512,7 +513,7 @@ void MathScriptInset::notifyCursorLeaves(idx_type idx)
 
 
 DispatchResult
-MathScriptInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+MathScriptInset::priv_dispatch(LCursor & bv, FuncRequest const & cmd)
 {
 	if (cmd.action == LFUN_MATH_LIMITS) {
 		if (!cmd.argument.empty()) {

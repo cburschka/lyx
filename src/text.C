@@ -833,7 +833,7 @@ void LyXText::breakParagraph(ParagraphList & paragraphs, char keep_layout)
 // convenience function
 void LyXText::redoParagraph()
 {
-	bv()->clearSelection();
+	bv()->cursor().clearSelection();
 	redoParagraph(cursorPar());
 	setCursorIntern(cursor().par(), cursor().pos());
 }
@@ -1104,9 +1104,9 @@ void LyXText::selectWord(word_location loc)
 		setCursor(from.par(), from.pos());
 	if (to == from)
 		return;
-	bv()->resetAnchor();
+	bv()->cursor().resetAnchor();
 	setCursor(to.par(), to.pos());
-	bv()->setSelection();
+	bv()->cursor().setSelection();
 }
 
 
@@ -1114,26 +1114,26 @@ void LyXText::selectWord(word_location loc)
 // selection is currently set
 bool LyXText::selectWordWhenUnderCursor(word_location loc)
 {
-	if (!bv()->selection().set()) {
-		selectWord(loc);
-		return bv()->selection().set();
-	}
-	return false;
+	if (bv()->cursor().selection())
+		return false;
+	selectWord(loc);
+	return bv()->cursor().selection();
 }
 
 
 void LyXText::acceptChange()
 {
-	if (!bv()->selection().set() && cursorPar()->size())
+	LCursor & cur = bv()->cursor();
+	if (!cur.selection() && cursorPar()->size())
 		return;
 
-	if (bv()->selStart().par() == bv()->selEnd().par()) {
-		CursorSlice const & startc = bv()->selStart();
-		CursorSlice const & endc = bv()->selEnd();
+	if (cur.selStart().par() == cur.par()) {
+		CursorSlice const & startc = cur.selStart();
+		CursorSlice const & endc = cur.selEnd();
 		recordUndo(Undo::INSERT, this, startc.par());
 		getPar(startc)->acceptChange(startc.pos(), endc.pos());
 		finishUndo();
-		bv()->clearSelection();
+		cur.clearSelection();
 		redoParagraph(getPar(startc));
 		setCursorIntern(startc.par(), 0);
 	}
@@ -1143,16 +1143,17 @@ void LyXText::acceptChange()
 
 void LyXText::rejectChange()
 {
-	if (!bv()->selection().set() && cursorPar()->size())
+	LCursor & cur = bv()->cursor();
+	if (!cur.selection() && cursorPar()->size())
 		return;
 
-	if (bv()->selStart().par() == bv()->selEnd().par()) {
-		CursorSlice const & startc = bv()->selStart();
-		CursorSlice const & endc = bv()->selEnd();
+	if (cur.selStart().par() == cur.selEnd().par()) {
+		CursorSlice const & startc = cur.selStart();
+		CursorSlice const & endc = cur.selEnd();
 		recordUndo(Undo::INSERT, this, startc.par());
 		getPar(startc)->rejectChange(startc.pos(), endc.pos());
 		finishUndo();
-		bv()->clearSelection();
+		cur.clearSelection();
 		redoParagraph(getPar(startc));
 		setCursorIntern(startc.par(), 0);
 	}
@@ -1163,16 +1164,17 @@ void LyXText::rejectChange()
 // Delete from cursor up to the end of the current or next word.
 void LyXText::deleteWordForward()
 {
+	LCursor & cur = bv()->cursor();
 	if (cursorPar()->empty())
-		cursorRight(bv());
+		cursorRight(true);
 	else {
 		CursorSlice tmpcursor = cursor();
-		bv()->selection().set(true); // to avoid deletion
+		cur.selection() = true; // to avoid deletion
 		cursorRightOneWord();
 		setCursor(tmpcursor, tmpcursor.par(), tmpcursor.pos());
-		bv()->resetAnchor();
+		cur.resetAnchor();
 		cursor() = tmpcursor;
-		bv()->setSelection();
+		cur.setSelection();
 		cutSelection(true, false);
 	}
 }
@@ -1181,16 +1183,17 @@ void LyXText::deleteWordForward()
 // Delete from cursor to start of current or prior word.
 void LyXText::deleteWordBackward()
 {
+	LCursor & cur = bv()->cursor();
 	if (cursorPar()->empty())
-		cursorLeft(bv());
+		cursorLeft(true);
 	else {
 		CursorSlice tmpcursor = cursor();
-		bv()->selection().set(true); // to avoid deletion
+		cur.selection() = true; // to avoid deletion
 		cursorLeftOneWord();
 		setCursor(tmpcursor, tmpcursor.par(), tmpcursor.pos());
-		bv()->resetAnchor();
+		cur.resetAnchor();
 		cursor() = tmpcursor;
-		bv()->setSelection();
+		cur.setSelection();
 		cutSelection(true, false);
 	}
 }
@@ -1199,19 +1202,20 @@ void LyXText::deleteWordBackward()
 // Kill to end of line.
 void LyXText::deleteLineForward()
 {
+	LCursor & cur = bv()->cursor();
 	if (cursorPar()->empty()) {
 		// Paragraph is empty, so we just go to the right
-		cursorRight(bv());
+		cursorRight(true);
 	} else {
 		CursorSlice tmpcursor = cursor();
-		bv()->selection().set(true); // to avoid deletion
+		cur.selection() = true; // to avoid deletion
 		cursorEnd();
 		setCursor(tmpcursor, tmpcursor.par(), tmpcursor.pos());
-		bv()->resetAnchor();
+		cur.resetAnchor();
 		cursor() = tmpcursor;
-		bv()->setSelection();
+		cur.setSelection();
 		// What is this test for ??? (JMarc)
-		if (!bv()->selection().set())
+		if (!cur.selection())
 			deleteWordForward();
 		else
 			cutSelection(true, false);
@@ -1221,12 +1225,13 @@ void LyXText::deleteLineForward()
 
 void LyXText::changeCase(LyXText::TextCase action)
 {
+	LCursor & cur = bv()->cursor();
 	CursorSlice from;
 	CursorSlice to;
 
-	if (bv()->selection().set()) {
-		from = bv()->selStart();
-		to = bv()->selEnd();
+	if (cur.selection()) {
+		from = cur.selStart();
+		to = cur.selEnd();
 	} else {
 		from = cursor();
 		getWord(from, to, lyx::PARTIAL_WORD);
@@ -1507,14 +1512,15 @@ void LyXText::previousRow(ParagraphList::iterator & pit,
 
 string LyXText::selectionAsString(Buffer const & buffer, bool label) const
 {
-	if (!bv()->selection().set())
+	LCursor & cur = bv()->cursor();
+	if (!cur.selection())
 		return string();
 
 	// should be const ...
-	ParagraphList::iterator startpit = getPar(bv()->selStart());
-	ParagraphList::iterator endpit = getPar(bv()->selEnd());
-	size_t const startpos = bv()->selStart().pos();
-	size_t const endpos = bv()->selEnd().pos();
+	ParagraphList::iterator startpit = getPar(cur.selStart());
+	ParagraphList::iterator endpit = getPar(cur.selEnd());
+	size_t const startpos = cur.selStart().pos();
+	size_t const endpos = cur.selEnd().pos();
 
 	if (startpit == endpit)
 		return startpit->asString(buffer, startpos, endpos, label);
@@ -1601,7 +1607,7 @@ void LyXText::redoParagraph(ParagraphList::iterator pit)
 void LyXText::fullRebreak()
 {
 	redoParagraphs(paragraphs().begin(), paragraphs().end());
-	bv()->resetAnchor();
+	bv()->cursor().resetAnchor();
 }
 
 
@@ -1937,23 +1943,23 @@ int LyXText::cursorY(CursorSlice const & cur) const
 
 CursorSlice & LyXText::cursor()
 {
-	return bv()->cursor();
+	return bv()->cursor().cursor_.back();
 }
 
 
 CursorSlice const & LyXText::cursor() const
 {
-	return bv()->cursor();
+	return bv()->cursor().cursor_.back();
 }
 
 
 CursorSlice & LyXText::anchor()
 {
-	return bv()->anchor();
+	return bv()->cursor().anchor_.back();
 }
 
 
 CursorSlice const & LyXText::anchor() const
 {
-	return bv()->anchor();
+	return bv()->cursor().anchor_.back();
 }

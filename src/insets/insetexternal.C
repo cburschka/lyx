@@ -19,6 +19,7 @@
 
 #include "buffer.h"
 #include "BufferView.h"
+#include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
@@ -41,10 +42,10 @@
 #include "support/lyxlib.h"
 #include "support/tostr.h"
 #include "support/translator.h"
+#include "support/std_sstream.h"
 
 #include <boost/bind.hpp>
 
-#include "support/std_sstream.h"
 
 namespace support = lyx::support;
 namespace external = lyx::external;
@@ -441,12 +442,12 @@ void InsetExternal::statusChanged() const
 
 
 DispatchResult
-InsetExternal::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+InsetExternal::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
 	case LFUN_EXTERNAL_EDIT: {
-		Buffer const & buffer = *bv.buffer();
+		Buffer const & buffer = *cur.bv().buffer();
 		InsetExternalParams p;
 		InsetExternalMailer::string2params(cmd.argument, buffer, p);
 		external::editExternal(p, buffer);
@@ -454,20 +455,20 @@ InsetExternal::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 	}
 
 	case LFUN_INSET_MODIFY: {
-		Buffer const & buffer = *bv.buffer();
+		Buffer const & buffer = *cur.bv().buffer();
 		InsetExternalParams p;
 		InsetExternalMailer::string2params(cmd.argument, buffer, p);
 		setParams(p, buffer);
-		bv.update();
+		cur.bv().update();
 		return DispatchResult(true, true);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetExternalMailer(*this).updateDialog(&bv);
+		InsetExternalMailer(*this).updateDialog(&cur.bv());
 		return DispatchResult(true, true);
 
 	case LFUN_MOUSE_RELEASE:
-		InsetExternalMailer(*this).showDialog(&bv);
+		InsetExternalMailer(*this).showDialog(&cur.bv());
 		return DispatchResult(true, true);
 
 	default:
@@ -476,9 +477,9 @@ InsetExternal::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 }
 
 
-void InsetExternal::edit(BufferView * bv, bool)
+void InsetExternal::edit(LCursor & cur, bool)
 {
-	InsetExternalMailer(*this).showDialog(bv);
+	InsetExternalMailer(*this).showDialog(&cur.bv());
 }
 
 

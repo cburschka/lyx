@@ -105,7 +105,7 @@ void LyXView::setLayout(string const & layout)
 
 void LyXView::updateToolbar()
 {
-	bool const math = mathcursor;
+	bool const math = inMathed();
 	bool const table =
 		!getLyXFunc().getStatus(FuncRequest(LFUN_LAYOUT_TABULAR)).disabled();
 	toolbar_->update(math, table);

@@ -85,7 +85,7 @@ protected:
 	///
 	virtual
 	DispatchResult
-	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
+	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 private:
 	/// Slot receiving a signal that the preview is ready to display.
 	void statusChanged() const;

@@ -400,33 +400,34 @@ void BufferView::Pimpl::resizeCurrentBuffer()
 	if (!text)
 		return;
 
-	par = bv_->cursor().par();
-	pos = bv_->cursor().pos();
-	selstartpar = bv_->selStart().par();
-	selstartpos = bv_->selStart().pos();
-	selendpar = bv_->selEnd().par();
-	selendpos = bv_->selEnd().pos();
-	sel = bv_->selection().set();
-	mark_set = bv_->selection().mark();
+	LCursor & cur = bv_->cursor();
+	par = cur.par();
+	pos = cur.pos();
+	selstartpar = cur.selStart().par();
+	selstartpos = cur.selStart().pos();
+	selendpar = cur.selEnd().par();
+	selendpos = cur.selEnd().pos();
+	sel = cur.selection();
+	mark_set = cur.mark();
 	text->textwidth_ = bv_->workWidth();
 	text->fullRebreak();
 	update();
 
 	if (par != -1) {
-		bv_->selection().set(true);
+		cur.selection() = true;
 		// At this point just to avoid the Delete-Empty-Paragraph-
 		// Mechanism when setting the cursor.
-		bv_->selection().mark(mark_set);
+		cur.mark() = mark_set;
 		if (sel) {
 			text->setCursor(selstartpar, selstartpos);
-			bv_->resetAnchor();
+			cur.resetAnchor();
 			text->setCursor(selendpar, selendpos);
-			bv_->setSelection();
+			cur.setSelection();
 			text->setCursor(par, pos);
 		} else {
 			text->setCursor(par, pos);
-			bv_->resetAnchor();
-			bv_->selection().set(false);
+			cur.resetAnchor();
+			cur.selection() = false;
 		}
 	}
 
@@ -536,21 +537,21 @@ void BufferView::Pimpl::selectionRequested()
 	if (!available())
 		return;
 
-	LyXText * text = bv_->getLyXText();
+	LCursor & cur = bv_->cursor();
 
-	if (!bv_->selection().set()) {
+	if (!cur.selection()) {
 		xsel_cache_.set = false;
 		return;
 	}
 
 	if (!xsel_cache_.set ||
-	    bv_->cursor() != xsel_cache_.cursor ||
-	    bv_->anchor() != xsel_cache_.anchor)
+	    cur.cursor_.back() != xsel_cache_.cursor ||
+	    cur.anchor_.back() != xsel_cache_.anchor)
 	{
-		xsel_cache_.cursor = bv_->cursor();
-		xsel_cache_.anchor = bv_->anchor();
-		xsel_cache_.set = bv_->selection().set();
-		sel = text->selectionAsString(*bv_->buffer(), false);
+		xsel_cache_.cursor = cur.cursor_.back();
+		xsel_cache_.anchor = cur.anchor_.back();
+		xsel_cache_.set = cur.selection();
+		sel = bv_->getLyXText()->selectionAsString(*bv_->buffer(), false);
 		if (!sel.empty())
 			workarea().putClipboard(sel);
 	} 
@@ -561,7 +562,7 @@ void BufferView::Pimpl::selectionLost()
 {
 	if (available()) {
 		screen().hideCursor();
-		bv_->clearSelection();
+		bv_->cursor().clearSelection();
 		xsel_cache_.set = false;
 	}
 }
@@ -640,12 +641,13 @@ Change const BufferView::Pimpl::getCurrentChange()
 		return Change(Change::UNCHANGED);
 
 	LyXText * text = bv_->getLyXText();
+	LCursor & cur = bv_->cursor();
 
-	if (!bv_->selection().set())
+	if (!cur.selection())
 		return Change(Change::UNCHANGED);
 
-	return text->getPar(bv_->selStart())
-		->lookupChangeFull(bv_->selStart().pos());
+	return text->getPar(cur.selStart())
+		->lookupChangeFull(cur.selStart().pos());
 }
 
 
@@ -668,7 +670,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 
 	string const fname = saved_positions[i].filename;
 
-	bv_->clearSelection();
+	bv_->cursor().clearSelection();
 
 	if (fname != buffer_->fileName()) {
 		Buffer * b = 0;
@@ -720,7 +722,7 @@ void BufferView::Pimpl::center()
 {
 	LyXText * text = bv_->text();
 
-	bv_->clearSelection();
+	bv_->cursor().clearSelection();
 	int const half_height = workarea().workHeight() / 2;
 	int new_y = std::max(0, text->cursorY() - half_height);
 
@@ -879,7 +881,7 @@ void BufferView::Pimpl::trackChanges()
 }
 
 #warning remove me
-LCursor theTempCursor;
+CursorBase theTempCursor;
 
 namespace {
 
@@ -888,7 +890,7 @@ namespace {
 		lyxerr << "insetFromCoords" << endl;
 		LyXText * text = bv->text();
 		InsetOld * inset = 0;
-		theTempCursor = LCursor(*bv);
+		theTempCursor.clear();
 		while (true) {
 			InsetOld * const inset_hit = text->checkInsetHit(x, y);
 			if (!inset_hit) {
@@ -906,9 +908,9 @@ namespace {
 			text = inset_hit->getText(cell);
 			lyxerr << "Hit inset: " << inset << " at x: " << x
 				<< " text: " << text << " y: " << y << endl;
-			theTempCursor.push(static_cast<UpdatableInset*>(inset));
+			theTempCursor.push_back(CursorSlice(inset));
 		}
-		lyxerr << "theTempCursor: " << theTempCursor << endl;
+		//lyxerr << "theTempCursor: " << theTempCursor << endl;
 		return inset;
 	}
 
@@ -917,25 +919,26 @@ namespace {
 
 bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 {
+	LCursor & cur = bv_->cursor();
 	switch (cmd.action) {
 	case LFUN_MOUSE_MOTION: {
 		if (!available())
 			return false;
 		FuncRequest cmd1 = cmd;
-		UpdatableInset * inset = bv_->fullCursor().innerInset();
+		InsetBase * inset = cur.inset();
 		DispatchResult res;
 		if (inset) {
 			cmd1.x -= inset->x();
 			cmd1.y -= inset->y();
-			res = inset->dispatch(*bv_, cmd1);
+			res = inset->dispatch(cur, cmd1);
 		} else {
 			cmd1.y += bv_->top_y();
-			res = bv_->fullCursor().innerText()->dispatch(*bv_, cmd1);
+			res = cur.innerText()->dispatch(cur, cmd1);
 		}
 
 		if (bv_->fitCursor() || res.update()) {
 			bv_->update();
-			bv_->fullCursor().updatePos();
+			cur.updatePos();
 		}
 
 		return true;
@@ -971,10 +974,10 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 			       << " to inset " << inset << endl;
 			cmd2.x -= inset->x();
 			cmd2.y -= inset->y();
-			res = inset->dispatch(*bv_, cmd2);
+			res = inset->dispatch(cur, cmd2);
 			if (res.update()) {
 				bv_->update();
-				bv_->fullCursor().updatePos();
+				cur.updatePos();
 			}
 			res.update(false);
 			switch (res.val()) {
@@ -982,9 +985,9 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 				case FINISHED_RIGHT:
 				case FINISHED_UP:
 				case FINISHED_DOWN:
-					theTempCursor.pop();
-					bv_->fullCursor(theTempCursor);
-					bv_->fullCursor().innerText()
+					theTempCursor.pop_back();
+					cur.cursor_ = theTempCursor;
+					cur.innerText()
 						->setCursorFromCoordinates(cmd.x, top_y() + cmd.y);
 					if (bv_->fitCursor())
 						bv_->update();
@@ -997,14 +1000,14 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd)
 
 		// otherwise set cursor to surrounding LyXText
 		if (!res.dispatched()) {
-			lyxerr << "temp cursor is: " << theTempCursor << endl;
-			lyxerr << "dispatching " << cmd
-			       << " to surrounding LyXText "
-			       << theTempCursor.innerText() << endl;
-			bv_->fullCursor(theTempCursor);
+			//lyxerr << "temp cursor is: " << theTempCursor << endl;
+			//lyxerr << "dispatching " << cmd
+			 //      << " to surrounding LyXText "
+			  //     << theTempCursor.innerText() << endl;
+			cur.cursor_ = theTempCursor;
 			FuncRequest cmd1 = cmd;
 			cmd1.y += bv_->top_y();
-			res = bv_->fullCursor().innerText()->dispatch(*bv_, cmd1);
+			res = cur.innerText()->dispatch(cur, cmd1);
 			if (bv_->fitCursor() || res.update())
 				bv_->update();
 
@@ -1046,6 +1049,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		<< endl;
 
 	LyXTextClass const & tclass = buffer_->params().getLyXTextClass();
+	LCursor & cur = bv_->cursor();
 
 	switch (ev.action) {
 
@@ -1142,7 +1146,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	case LFUN_MATH_IMPORT_SELECTION: // Imports LaTeX from the X selection
 	case LFUN_MATH_DISPLAY:          // Open or create a displayed math inset
 	case LFUN_MATH_MODE:             // Open or create an inlined math inset
-		mathDispatch(*bv_, ev);
+		mathDispatch(cur, ev);
 		break;
 
 	case LFUN_INSET_INSERT: {
@@ -1248,29 +1252,29 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		break;
 
 	case LFUN_MARK_OFF:
-		bv_->clearSelection();
+		cur.clearSelection();
 		bv_->update();
-		bv_->resetAnchor();
+		cur.resetAnchor();
 		ev.message(N_("Mark off"));
 		break;
 
 	case LFUN_MARK_ON:
-		bv_->clearSelection();
-		bv_->selection().mark(true);
+		cur.clearSelection();
+		cur.mark() = true;
 		bv_->update();
-		bv_->resetAnchor();
+		cur.resetAnchor();
 		ev.message(N_("Mark on"));
 		break;
 
 	case LFUN_SETMARK:
-		bv_->clearSelection();
-		if (bv_->selection().mark()) {
+		cur.clearSelection();
+		if (cur.mark()) {
 			ev.message(N_("Mark removed"));
 		} else {
-			bv_->selection().mark(true);
+			cur.mark() = true;
 			ev.message(N_("Mark set"));
 		}
-		bv_->resetAnchor();
+		cur.resetAnchor();
 		bv_->update();
 		break;
 
@@ -1279,7 +1283,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 		break;
 
 	default:
-		return bv_->getLyXText()->dispatch(*bv_, ev).dispatched();
+		return cur.dispatch(ev).dispatched();
 	} // end of switch
 
 	return true;
@@ -1292,7 +1296,7 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 	bv_->text()->recUndo(bv_->text()->cursor().par());
 	freezeUndo();
 
-	bv_->clearSelection();
+	bv_->cursor().clearSelection();
 	if (!lout.empty()) {
 		bv_->text()->breakParagraph(bv_->buffer()->paragraphs());
 
@@ -1308,7 +1312,7 @@ bool BufferView::Pimpl::insertInset(InsetOld * inset, string const & lout)
 		bv_->text()->setLayout(hasLayout ? lres : tclass.defaultLayoutName());
 		bv_->text()->setParagraph(Spacing(), LYX_ALIGN_LAYOUT, string(), 0);
 	}
-	bv_->fullCursor().innerText()->insertInset(inset);
+	bv_->cursor().innerText()->insertInset(inset);
 	unFreezeUndo();
 	return true;
 }

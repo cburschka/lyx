@@ -15,7 +15,7 @@
 #include "buffer.h"
 #include "bufferparams.h"
 #include "BranchList.h"
-#include "BufferView.h"
+#include "cursor.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
 #include "gettext.h"
@@ -111,7 +111,7 @@ bool InsetBranch::showInsetDialog(BufferView * bv) const
 
 
 DispatchResult
-InsetBranch::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+InsetBranch::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
@@ -124,22 +124,22 @@ InsetBranch::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 
 	case LFUN_MOUSE_PRESS:
 		if (cmd.button() != mouse_button::button3)
-			return InsetCollapsable::priv_dispatch(bv, cmd);
+			return InsetCollapsable::priv_dispatch(cur, cmd);
 		return DispatchResult(false);
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetBranchMailer(*this).updateDialog(&bv);
+		InsetBranchMailer(*this).updateDialog(&cur.bv());
 		return DispatchResult(true);
 
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
-			InsetBranchMailer(*this).showDialog(&bv);
+			InsetBranchMailer(*this).showDialog(&cur.bv());
 			return DispatchResult(true);
 		}
-		return InsetCollapsable::priv_dispatch(bv, cmd);
+		return InsetCollapsable::priv_dispatch(cur, cmd);
 
 	default:
-		return InsetCollapsable::priv_dispatch(bv, cmd);
+		return InsetCollapsable::priv_dispatch(cur, cmd);
 	}
 }
 

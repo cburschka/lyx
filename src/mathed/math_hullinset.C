@@ -706,9 +706,9 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest const & func)
 
 #ifdef WITH_WARNINGS
 #warning temporarily disabled
-	//if (selection()) {
+	//if (cur.selection()) {
 	//	MathArray ar;
-	//	selGet(ar);
+	//	selGet(cur.ar);
 	//	lyxerr << "use selection: " << ar << endl;
 	//	insert(pipeThroughExtern(lang, extra, ar));
 	//	return;
@@ -725,8 +725,8 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest const & func)
 	if (getType() == "simple") {
 		size_type pos = cur.cell().find_last(eq);
 		MathArray ar;
-		if (mathcursor && mathcursor->selection()) {
-			asArray(mathcursor->grabAndEraseSelection(cur), ar);
+		if (inMathed() && cur.selection()) {
+			asArray(mathcursor::grabAndEraseSelection(cur), ar);
 		} else if (pos == cur.cell().size()) {
 			ar = cur.cell();
 			lyxerr << "use whole cell: " << ar << endl;
@@ -775,9 +775,8 @@ void MathHullInset::doExtern(LCursor & cur, FuncRequest const & func)
 
 
 DispatchResult
-MathHullInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+MathHullInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
-	CursorSlice & cur = cursorTip(bv);
 	switch (cmd.action) {
 
 		case LFUN_BREAKLINE:
@@ -787,28 +786,28 @@ MathHullInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 				cur.pos() = 0;
 				return DispatchResult(true, FINISHED);
 			}
-			return MathGridInset::priv_dispatch(bv, cmd);
+			return MathGridInset::priv_dispatch(cur, cmd);
 
 		case LFUN_MATH_NUMBER:
 			//lyxerr << "toggling all numbers" << endl;
 			if (display()) {
-				//recordUndo(bv, Undo::INSERT);
+				//recordUndo(cur, Undo::INSERT);
 				bool old = numberedType();
 				if (type_ == "multline")
 					numbered(nrows() - 1, !old);
 				else
 					for (row_type row = 0; row < nrows(); ++row)
 						numbered(row, !old);
-				//bv->owner()->message(old ? _("No number") : _("Number"));
+				//cur.bv()->owner()->message(old ? _("No number") : _("Number"));
 			}
 			return DispatchResult(true, true);
 
 		case LFUN_MATH_NONUMBER:
 			if (display()) {
 				row_type r = (type_ == "multline") ? nrows() - 1 : cur.row();
-				//recordUndo(bv, Undo::INSERT);
+				//recordUndo(cur, Undo::INSERT);
 				bool old = numbered(r);
-				//bv->owner()->message(old ? _("No number") : _("Number"));
+				//cur.bv()->owner()->message(old ? _("No number") : _("Number"));
 				numbered(r, !old);
 			}
 			return DispatchResult(true, true);
@@ -839,7 +838,7 @@ MathHullInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 		}
 
 		case LFUN_MATH_EXTERN:
-			doExtern(bv.fullCursor(), cmd);
+			doExtern(cur, cmd);
 			return DispatchResult(true, FINISHED);
 
 		case LFUN_MATH_MUTATE: {
@@ -863,7 +862,7 @@ MathHullInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 		}
 
 		default:
-			return MathGridInset::priv_dispatch(bv, cmd);
+			return MathGridInset::priv_dispatch(cur, cmd);
 	}
 }
 

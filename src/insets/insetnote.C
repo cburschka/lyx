@@ -15,6 +15,7 @@
 #include "insetnote.h"
 
 #include "BufferView.h"
+#include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
@@ -184,30 +185,30 @@ bool InsetNote::showInsetDialog(BufferView * bv) const
 
 
 DispatchResult
-InsetNote::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+InsetNote::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
 	case LFUN_INSET_MODIFY: {
 		InsetNoteMailer::string2params(cmd.argument, params_);
 		setButtonLabel();
-		bv.update();
+		cur.bv().update();
 		return DispatchResult(true, true);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetNoteMailer(*this).updateDialog(&bv);
+		InsetNoteMailer(*this).updateDialog(&cur.bv());
 		return DispatchResult(true, true);
 
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
-			InsetNoteMailer(*this).showDialog(&bv);
+			InsetNoteMailer(*this).showDialog(&cur.bv());
 			return DispatchResult(true, true);
 		}
-		return InsetCollapsable::priv_dispatch(bv, cmd);
+		return InsetCollapsable::priv_dispatch(cur, cmd);
 
 	default:
-		return InsetCollapsable::priv_dispatch(bv, cmd);
+		return InsetCollapsable::priv_dispatch(cur, cmd);
 	}
 }
 

@@ -19,6 +19,7 @@
 #include "buffer.h"
 #include "bufferlist.h"
 #include "BufferView.h"
+#include "cursor.h"
 #include "debug.h"
 #include "gettext.h"
 #include "lastfiles.h"
@@ -358,7 +359,7 @@ void InsertAsciiFile(BufferView * bv, string const & f, bool asParagraph)
 
 	// clear the selection
 	if (bv->text() == bv->getLyXText())
-		bv->clearSelection();
+		bv->cursor().clearSelection();
 	if (asParagraph)
 		bv->getLyXText()->insertStringAsParagraphs(tmpstr);
 	else

@@ -14,7 +14,7 @@
 
 #include "buffer.h"
 #include "BufferView.h"
-#include "cursor_slice.h"
+#include "cursor.h"
 #include "iterators.h"
 #include "lyxtext.h"
 #include "paragraph.h"

@@ -13,11 +13,12 @@
 #ifndef INSET_LATEXCOMMAND_H
 #define INSET_LATEXCOMMAND_H
 
-
 #include "inset.h"
 #include "insetcommandparams.h"
 #include "render_button.h"
 #include "mailinset.h"
+#include "cursor.h"
+
 
 // Created by Alejandro 970222
 /** Used to insert a LaTeX command automatically
@@ -30,9 +31,7 @@
 class InsetCommand : public InsetOld {
 public:
 	///
-	explicit
-	InsetCommand(InsetCommandParams const &,
-		     std::string const & mailer_name);
+	InsetCommand(InsetCommandParams const &, std::string const & mailer_name);
 	///
 	~InsetCommand();
 	///
@@ -77,7 +76,7 @@ protected:
 	///
 	virtual
 	DispatchResult
-	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
+	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 	///
 	std::string const getCommand() const { return p_.getCommand(); }
 	///

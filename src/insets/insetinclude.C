@@ -17,6 +17,7 @@
 #include "bufferlist.h"
 #include "bufferparams.h"
 #include "BufferView.h"
+#include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
@@ -108,7 +109,7 @@ InsetInclude::~InsetInclude()
 
 
 DispatchResult
-InsetInclude::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+InsetInclude::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
@@ -116,23 +117,23 @@ InsetInclude::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 		InsetCommandParams p;
 		InsetIncludeMailer::string2params(cmd.argument, p);
 		if (!p.getCmdName().empty()) {
-			set(p, *bv.buffer());
-			bv.update();
+			set(p, *cur.bv().buffer());
+			cur.bv().update();
 		}
 		return DispatchResult(true, true);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetIncludeMailer(*this).updateDialog(&bv);
+		InsetIncludeMailer(*this).updateDialog(&cur.bv());
 		return DispatchResult(true, true);
 
 	case LFUN_MOUSE_RELEASE:
 		if (button_.box().contains(cmd.x, cmd.y))
-			InsetIncludeMailer(*this).showDialog(&bv);
+			InsetIncludeMailer(*this).showDialog(&cur.bv());
 		return DispatchResult(true, true);
 
 	case LFUN_INSET_DIALOG_SHOW:
-		InsetIncludeMailer(*this).showDialog(&bv);
+		InsetIncludeMailer(*this).showDialog(&cur.bv());
 		return DispatchResult(true, true);
 
 	default:

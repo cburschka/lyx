@@ -208,7 +208,7 @@ int InsetERT::docbook(Buffer const &, ostream & os,
 }
 
 
-DispatchResult InsetERT::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+DispatchResult InsetERT::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
@@ -237,7 +237,7 @@ DispatchResult InsetERT::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 		return DispatchResult(true);
 
 	default:
-		return InsetCollapsable::priv_dispatch(bv, cmd);
+		return InsetCollapsable::priv_dispatch(cur, cmd);
 	}
 }
 

@@ -55,7 +55,7 @@ void CommandInset::draw(PainterInfo & pi, int x, int y) const
 
 
 DispatchResult
-CommandInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+CommandInset::priv_dispatch(LCursor & bv, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 		default:

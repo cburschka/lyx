@@ -132,7 +132,7 @@ RowPainter::RowPainter(BufferView const & bv, LyXText const & text,
 		paintBackground();
 
 	// paint the selection background
-	if (bv_.selection().set() && &text_ == bv_.fullCursor().innerText())
+	if (bv_.cursor().selection() && &text_ == bv_.cursor().innerText())
 		paintSelection();
 
 	// vertical lines for appendix
@@ -391,14 +391,15 @@ void RowPainter::paintSelection()
 	bool const is_rtl = pit_->isRightToLeftPar(bv_.buffer()->params());
 
 	// the current selection
-	int const startx = text_.cursorX(bv_.selStart());
-	int const endx = text_.cursorX(bv_.selEnd());
-	int const starty = text_.cursorY(bv_.selStart());
-	int const endy = text_.cursorY(bv_.selEnd());
-	ParagraphList::iterator startpit = text_.getPar(bv_.selStart());
-	ParagraphList::iterator endpit = text_.getPar(bv_.selEnd());
-	RowList::iterator startrow = startpit->getRow(bv_.selStart().pos());
-	RowList::iterator endrow = endpit->getRow(bv_.selEnd().pos());
+	LCursor const & cur = bv_.cursor();
+	int const startx = text_.cursorX(cur.selStart());
+	int const endx = text_.cursorX(cur.selEnd());
+	int const starty = text_.cursorY(cur.selStart());
+	int const endy = text_.cursorY(cur.selEnd());
+	ParagraphList::iterator startpit = text_.getPar(cur.selStart());
+	ParagraphList::iterator endpit = text_.getPar(cur.selEnd());
+	RowList::iterator startrow = startpit->getRow(cur.selStart().pos());
+	RowList::iterator endrow = endpit->getRow(cur.selEnd().pos());
 	int const h = row_.height();
 
 	int const row_y = pit_->y + row_.y_offset();
@@ -468,9 +469,9 @@ void RowPainter::paintSelection()
 		}
 
 		if (((startpit != pit_ && startrow != rit_)
-				|| bv_.selStart().pos() <= pos) &&
+				|| cur.selStart().pos() <= pos) &&
 			((endpit != pit_ && endrow != rit_)
-				|| pos < bv_.selEnd().pos())) {
+				|| pos < cur.selEnd().pos())) {
 			// Here we do not use x_ as xo_ was added to x_.
 			pain_.fillRectangle(int(old_tmpx), yo_,
 				int(tmpx - old_tmpx + 1), h, LColor::selection);

@@ -15,6 +15,7 @@
 #include "buffer.h"
 #include "bufferparams.h"
 #include "BufferView.h"
+#include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
 #include "Floating.h"
@@ -80,7 +81,7 @@ InsetWrap::~InsetWrap()
 
 
 DispatchResult
-InsetWrap::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+InsetWrap::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
@@ -90,16 +91,16 @@ InsetWrap::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 		params_.placement = params.placement;
 		params_.width     = params.width;
 
-		bv.update();
+		cur.bv().update();
 		return DispatchResult(true, true);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetWrapMailer(*this).updateDialog(&bv);
+		InsetWrapMailer(*this).updateDialog(&cur.bv());
 		return DispatchResult(true, true);
 
 	default:
-		return InsetCollapsable::priv_dispatch(bv, cmd);
+		return InsetCollapsable::priv_dispatch(cur, cmd);
 	}
 }
 

@@ -19,6 +19,8 @@
 #include "debug.h"
 #include "funcrequest.h"
 #include "LColor.h"
+#include "undo.h"
+
 #include "frontends/Painter.h"
 
 
@@ -214,7 +216,7 @@ bool MathNestInset::contains(MathArray const & ar) const
 
 bool MathNestInset::editing() const
 {
-	return mathcursor && mathcursor->isInside(this);
+	return inMathed() && mathcursor::isInside(this);
 }
 
 
@@ -239,7 +241,7 @@ bool MathNestInset::isActive() const
 MathArray MathNestInset::glue() const
 {
 	MathArray ar;
-	for (unsigned i = 0; i < nargs(); ++i)
+	for (size_t i = 0; i < nargs(); ++i)
 		ar.append(cell(i));
 	return ar;
 }
@@ -248,7 +250,7 @@ MathArray MathNestInset::glue() const
 void MathNestInset::write(WriteStream & os) const
 {
 	os << '\\' << name().c_str();
-	for (unsigned i = 0; i < nargs(); ++i)
+	for (size_t i = 0; i < nargs(); ++i)
 		os << '{' << cell(i) << '}';
 	if (nargs() == 0)
 		os.pendingSpace(true);
@@ -262,7 +264,7 @@ void MathNestInset::write(WriteStream & os) const
 void MathNestInset::normalize(NormalStream & os) const
 {
 	os << '[' << name().c_str();
-	for (unsigned i = 0; i < nargs(); ++i)
+	for (size_t i = 0; i < nargs(); ++i)
 		os << ' ' << cell(i);
 	os << ']';
 }
@@ -275,29 +277,75 @@ void MathNestInset::notifyCursorLeaves(idx_type idx)
 
 
 DispatchResult
-MathNestInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
-	CursorSlice & cur = cursorTip(bv);
+	//lyxerr << "InsetFormulaBase::localDispatch: act: " << cmd.action
+	//	<< " arg: '" << cmd.argument
+	//	<< "' x: '" << cmd.x
+	//	<< " y: '" << cmd.y
+	//	<< "' button: " << cmd.button() << endl;
+
 	switch (cmd.action) {
 
-		case LFUN_PASTE: {
-			MathArray ar;
-			mathed_parse_cell(ar, cmd.argument);
-			cur.cell().insert(cur.pos(), ar);
-			cur.pos() += ar.size();
-			return DispatchResult(true, true);
+	case LFUN_PASTE: {
+		MathArray ar;
+		mathed_parse_cell(ar, cmd.argument);
+		cur.cell().insert(cur.pos(), ar);
+		cur.pos() += ar.size();
+		return DispatchResult(true, true);
+	}
+
+	case LFUN_PASTESELECTION:
+		return dispatch(cur, FuncRequest(LFUN_PASTE, cur.bv().getClipboard())); 
+
+	case LFUN_MOUSE_PRESS:
+		if (cmd.button() == mouse_button::button2)
+			return priv_dispatch(cur, FuncRequest(LFUN_PASTESELECTION));
+		return DispatchResult(false);
+
+	case LFUN_RIGHTSEL:
+		cur.selection() = true; // fall through...
+	case LFUN_RIGHT:
+		return mathcursor::right(cur, cur.selection()) ?
+			DispatchResult(true, true) : DispatchResult(false, FINISHED_RIGHT);
+		//lyxerr << "calling scroll 20" << endl;
+		//scroll(&cur.bv(), 20);
+		// write something to the minibuffer
+		//cur.bv().owner()->message(mathcursor::info());
+
+	case LFUN_LEFTSEL:
+		cur.selection() = true; // fall through
+	case LFUN_LEFT:
+		return mathcursor::left(cur, cur.selection()) ?
+			DispatchResult(true, true) : DispatchResult(false, FINISHED);
+
+	case LFUN_UPSEL:
+		cur.selection() = true; // fall through
+	case LFUN_UP:
+		return mathcursor::up(cur, cur.selection()) ?
+			DispatchResult(true, true) : DispatchResult(false, FINISHED_UP);
+
+	case LFUN_DOWNSEL:
+		cur.selection() = true; // fall through
+	case LFUN_DOWN:
+		return mathcursor::down(cur, cur.selection()) ?
+			DispatchResult(true, true) : DispatchResult(false, FINISHED_DOWN);
+
+	case LFUN_SELFINSERT:
+		if (!cmd.argument.empty()) {
+			recordUndo(cur, Undo::ATOMIC);
+			if (cmd.argument.size() == 1) {
+				if (mathcursor::interpret(cur, cmd.argument[0]))
+					return DispatchResult(true, true);
+				else
+					return DispatchResult(false, FINISHED_RIGHT);
+			}
+			mathcursor::insert(cur, cmd.argument);
 		}
+		break;
 
-		case LFUN_PASTESELECTION:
-			return dispatch(bv, FuncRequest(LFUN_PASTE, bv.getClipboard())); 
-
-		case LFUN_MOUSE_PRESS:
-			if (cmd.button() == mouse_button::button2)
-				return priv_dispatch(bv, FuncRequest(LFUN_PASTESELECTION));
-			return DispatchResult(false);
-
-		default:
-			return MathInset::priv_dispatch(bv, cmd);
+	default:
+		return MathInset::priv_dispatch(cur, cmd);
 	}
 }
 

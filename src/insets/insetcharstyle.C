@@ -148,7 +148,7 @@ void InsetCharStyle::getDrawFont(LyXFont & font) const
 
 
 DispatchResult
-InsetCharStyle::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+InsetCharStyle::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	setStatus(Inlined);
 	switch (cmd.action) {
@@ -157,10 +157,10 @@ InsetCharStyle::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 				has_label_ = !has_label_;
 				return DispatchResult(true);
 			}
-			inset.dispatch(bv, cmd);
+			inset.dispatch(cur, cmd);
 			return DispatchResult(true, true);
 		default:
-			return InsetCollapsable::priv_dispatch(bv, cmd);
+			return InsetCollapsable::priv_dispatch(cur, cmd);
 	}
 }
 
@@ -235,7 +235,7 @@ int InsetCharStyle::docbook(Buffer const &, std::ostream & os,
 
 
 int InsetCharStyle::plaintext(Buffer const &, std::ostream & os,
-			      OutputParams const & runparams) const
+			      OutputParams const & /*runparams*/) const
 {
 	return outputVerbatim(os, inset);
 }

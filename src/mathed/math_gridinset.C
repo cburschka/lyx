@@ -15,6 +15,7 @@
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
 #include "BufferView.h"
+#include "cursor.h"
 #include "dispatchresult.h"
 #include "debug.h"
 #include "funcrequest.h"
@@ -1043,9 +1044,8 @@ void MathGridInset::splitCell(LCursor & cur)
 
 
 DispatchResult
-MathGridInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+MathGridInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
-	LCursor & cur = bv.fullCursor();
 	switch (cmd.action) {
 
 		case LFUN_MOUSE_RELEASE:
@@ -1056,7 +1056,7 @@ MathGridInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 			return DispatchResult(false);
 
 		case LFUN_INSET_DIALOG_UPDATE:
-			GridInsetMailer(*this).updateDialog(&bv);
+			GridInsetMailer(*this).updateDialog(&cur.bv());
 			return DispatchResult(false);
 
 		// insert file functions
@@ -1076,12 +1076,12 @@ MathGridInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 			return DispatchResult(true, FINISHED);
 
 		case LFUN_CELL_SPLIT:
-			//recordUndo(bv, Undo::ATOMIC);
+			//recordUndo(cur, Undo::ATOMIC);
 			splitCell(cur);
 			return DispatchResult(true, FINISHED);
 
 		case LFUN_BREAKLINE: {
-			//recordUndo(bv, Undo::INSERT);
+			//recordUndo(cur, Undo::INSERT);
 			row_type const r = cur.row();
 			addRow(r);
 
@@ -1191,6 +1191,6 @@ cur.row());
 		}
 
 		default:
-			return MathNestInset::priv_dispatch(bv, cmd);
+			return MathNestInset::priv_dispatch(cur, cmd);
 	}
 }

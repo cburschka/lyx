@@ -13,7 +13,6 @@
 #ifndef MATH_INSET_H
 #define MATH_INSET_H
 
-#include "cursor.h"
 #include "insets/insetbase.h"
 
 #include <string>
@@ -68,6 +67,7 @@ class MathMacroTemplate;
 class MathMacro;
 class MathPosFinder;
 class Dimension;
+class LCursor;
 class TextPainter;
 class TextMetricsInfo;
 class ReplaceData;
@@ -228,10 +228,6 @@ public:
 	virtual void mathmlize(MathMLStream &) const;
 	/// write content as something readable by Octave
 	virtual void octave(OctaveStream &) const;
-	/// describe content if cursor inside
-	virtual void infoize(std::ostream &) const {}
-	/// describe content if cursor behind
-	virtual void infoize2(std::ostream &) const {}
 	/// plain ascii output
 	virtual int plaintext(std::ostream & os, OutputParams const &) const;
 	/// linuxdoc output

@@ -164,13 +164,15 @@ void changeDepth(BufferView * bv, LyXText * text, DEPTH_CHANGE type)
 // Returns the current font and depth as a message.
 string const currentState(BufferView * bv)
 {
+	ostringstream state;
+
 	if (!bv->available())
 		return string();
 
-	if (mathcursor)
-		return mathcursor->info(bv->fullCursor());
-
-	ostringstream state;
+	if (inMathed()) {
+		bv->cursor().info(state);
+		return state.str();
+	}
 
 	LyXText * text = bv->getLyXText();
 	Buffer * buffer = bv->buffer();
@@ -254,7 +256,7 @@ string const currentState(BufferView * bv)
 // deletes a selection during an insertion
 void replaceSelection(LyXText * text)
 {
-	if (text->bv()->selection().set()) {
+	if (text->bv()->cursor().selection()) {
 		text->cutSelection(true, false);
 		text->bv()->update();
 	}

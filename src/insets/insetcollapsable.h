@@ -121,7 +121,7 @@ protected:
 	///
 	virtual
 	DispatchResult
-	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
+	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 	///
 	void dimension_collapsed(Dimension &) const;
 	///
@@ -133,13 +133,13 @@ protected:
 	///
 	Box const & buttonDim() const;
 	///
-	void edit(BufferView *, bool);
+	void edit(LCursor & cur, bool left);
 	///
-	void edit(BufferView *, int, int);
+	void edit(LCursor & cur, int x, int y);
 
 private:
 	///
-	DispatchResult lfunMouseRelease(BufferView & bv, FuncRequest const &);
+	DispatchResult lfunMouseRelease(LCursor & cur, FuncRequest const & cmd);
 	///
 	FuncRequest adjustCommand(FuncRequest const &);
 

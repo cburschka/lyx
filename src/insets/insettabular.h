@@ -82,7 +82,7 @@ public:
 	///
 	std::string const editMessage() const;
 	///
-	void updateLocal(BufferView & bv) const;
+	void updateLocal(LCursor & cur) const;
 	///
 	bool insetAllowed(InsetOld::Code) const { return true; }
 	///
@@ -112,9 +112,9 @@ public:
 	/// get the absolute screen x,y of the cursor
 	void getCursorPos(int cell, int & x, int & y) const;
 	///
-	bool tabularFeatures(BufferView & bv, std::string const & what);
+	bool tabularFeatures(LCursor & cur, std::string const & what);
 	///
-	void tabularFeatures(BufferView & bv, LyXTabular::Feature feature,
+	void tabularFeatures(LCursor & cur, LyXTabular::Feature feature,
 			     std::string const & val = std::string());
 	///
 	void openLayoutDialog(BufferView *) const;
@@ -147,9 +147,9 @@ public:
 	/// set the owning buffer
 	void buffer(Buffer * buf);
 	/// lock cell with given index
-	void edit(BufferView * bv, bool);
+	void edit(LCursor & cur, bool);
 	///
-	void edit(BufferView * bv, int, int);
+	void edit(LCursor & cur, int, int);
 	/// can we go further down on mouse click?
 	bool descendable() const { return true; }
 
@@ -162,14 +162,14 @@ protected:
 	///
 	virtual
 	DispatchResult
-	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
+	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 private:
 	///
-	void lfunMousePress(BufferView & bv, FuncRequest const & cmd);
+	void lfunMousePress(LCursor & cur, FuncRequest const & cmd);
 	///
-	void lfunMouseRelease(BufferView & bv, FuncRequest const & cmd);
+	void lfunMouseRelease(LCursor & cur, FuncRequest const & cmd);
 	///
-	void lfunMouseMotion(BufferView & bv, FuncRequest const & cmd);
+	void lfunMouseMotion(LCursor & cur, FuncRequest const & cmd);
 	///
 	void calculate_dimensions_of_cells(MetricsInfo & mi) const;
 	///
@@ -181,33 +181,33 @@ private:
 	///
 	void setPos(BufferView &, int x, int y) const;
 	///
-	bool moveRight(BufferView &, CursorSlice & cur);
+	bool moveRight(LCursor & cur);
 	///
-	bool moveLeft(BufferView &, CursorSlice & cur);
+	bool moveLeft(LCursor & cur);
 	///
-	bool moveUp(BufferView &, CursorSlice & cur);
+	bool moveUp(LCursor & cur);
 	///
-	bool moveDown(BufferView &, CursorSlice & cur);
+	bool moveDown(LCursor & cur);
 
 	///
-	bool moveRightLock(BufferView &, CursorSlice & cur);
+	bool moveRightLock(LCursor & cur);
 	///
-	bool moveLeftLock(BufferView &, CursorSlice & cur);
+	bool moveLeftLock(LCursor & cur);
 	///
-	bool moveUpLock(BufferView &, CursorSlice & cur);
+	bool moveUpLock(LCursor & cur);
 	///
-	bool moveDownLock(BufferView &, CursorSlice & cur);
+	bool moveDownLock(LCursor & cur);
 
 	///
-	bool moveNextCell(BufferView &, CursorSlice & cur);
+	bool moveNextCell(LCursor & cur);
 	///
-	bool movePrevCell(BufferView &, CursorSlice & cur);
+	bool movePrevCell(LCursor & cur);
 
 
 	///
 	int getCellXPos(int cell) const;
 	///
-	void resetPos(BufferView &) const;
+	void resetPos(LCursor & cur) const;
 	///
 	void removeTabularRow();
 	///
@@ -215,9 +215,9 @@ private:
 	///
 	void setSelection(int start, int end) const;
 	///
-	void activateCellInset(BufferView &, int cell, int x, int y);
+	void activateCellInset(LCursor &, int cell, int x, int y);
 	///
-	void activateCellInset(BufferView &, int cell, bool behind);
+	void activateCellInset(LCursor &, int cell, bool behind);
 	///
 	bool hasPasteBuffer() const;
 	///
@@ -227,7 +227,7 @@ private:
 	///
 	bool cutSelection(BufferParams const & bp);
 	///
-	bool isRightToLeft(BufferView &);
+	bool isRightToLeft(LCursor & cur);
 	///
 	void getSelection(int cell,
 		int & scol, int & ecol, int & srow, int & erow) const;

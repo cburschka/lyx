@@ -16,6 +16,7 @@
 #include "buffer.h"
 #include "bufferparams.h"
 #include "BufferView.h"
+#include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
 #include "Floating.h"
@@ -31,7 +32,6 @@
 
 #include "support/lstrings.h"
 #include "support/tostr.h"
-
 #include "support/std_sstream.h"
 
 using lyx::support::contains;
@@ -156,7 +156,7 @@ InsetFloat::~InsetFloat()
 
 
 DispatchResult
-InsetFloat::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+InsetFloat::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
@@ -165,18 +165,18 @@ InsetFloat::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 		InsetFloatMailer::string2params(cmd.argument, params);
 		params_.placement = params.placement;
 		params_.wide      = params.wide;
-		wide(params_.wide, bv.buffer()->params());
-		bv.update();
+		wide(params_.wide, cur.bv().buffer()->params());
+		cur.bv().update();
 		return DispatchResult(true, true);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE: {
-		InsetFloatMailer(*this).updateDialog(&bv);
+		InsetFloatMailer(*this).updateDialog(&cur.bv());
 		return DispatchResult(true, true);
 	}
 
 	default:
-		return InsetCollapsable::priv_dispatch(bv, cmd);
+		return InsetCollapsable::priv_dispatch(cur, cmd);
 	}
 }
 

@@ -100,7 +100,7 @@ protected:
 	///
 	virtual
 	DispatchResult
-	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
+	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 	///
 	std::string eolString(row_type row, bool fragile) const;
 

@@ -146,13 +146,13 @@ public:
 	///
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 	///
-	void edit(BufferView * bv, bool);
+	void edit(LCursor & cur, bool);
 
 protected:
 	///
 	virtual
 	DispatchResult
-	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
+	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 private:
 	/** This method is connected to the graphics loader, so we are
 	 *  informed when the image has been loaded.

@@ -42,27 +42,17 @@ using std::auto_ptr;
 using std::endl;
 
 
-InsetFormula::InsetFormula(bool chemistry)
+InsetFormula::InsetFormula()
 	: par_(MathAtom(new MathHullInset)),
 	  preview_(new RenderPreview)
 {
 	preview_->connect(boost::bind(&InsetFormula::statusChanged, this));
-	if (chemistry)
-		mutate("chemistry");
 }
 
 
 InsetFormula::InsetFormula(InsetFormula const & other)
 	: InsetFormulaBase(other),
 	  par_(other.par_),
-	  preview_(new RenderPreview)
-{
-	preview_->connect(boost::bind(&InsetFormula::statusChanged, this));
-}
-
-
-InsetFormula::InsetFormula(BufferView *)
-	: par_(MathAtom(new MathHullInset)),
 	  preview_(new RenderPreview)
 {
 	preview_->connect(boost::bind(&InsetFormula::statusChanged, this));
@@ -178,8 +168,8 @@ namespace {
 
 bool editing_inset(InsetFormula const * inset)
 {
-	return mathcursor &&
-		(const_cast<InsetFormulaBase const *>(mathcursor->formula()) ==
+	return inMathed() &&
+		(const_cast<InsetFormulaBase const *>(mathcursor::formula()) ==
 		 inset);
 }
 
@@ -214,7 +204,7 @@ void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 			p.pain.fillRectangle(x, y - a, w, h, LColor::mathbg);
 
 		if (editing_inset(this)) {
-			mathcursor->drawSelection(pi);
+			mathcursor::drawSelection(pi);
 			//p.pain.rectangle(x, y - a, w, h, LColor::mathframe);
 		}
 

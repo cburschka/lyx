@@ -35,9 +35,6 @@ using std::auto_ptr;
 using std::ostream;
 
 
-extern MathCursor * mathcursor;
-
-
 InsetFormulaMacro::InsetFormulaMacro()
 {
 	// inset name is inherited from Inset
@@ -173,9 +170,9 @@ void InsetFormulaMacro::draw(PainterInfo & p, int x, int y) const
 	pi.pain.fillRectangle(x, a, w, h, LColor::mathmacrobg);
 	pi.pain.rectangle(x, a, w, h, LColor::mathframe);
 
-	if (mathcursor &&
-			const_cast<InsetFormulaBase const *>(mathcursor->formula()) == this)
-		mathcursor->drawSelection(pi);
+	if (inMathed() &&
+			const_cast<InsetFormulaBase const *>(mathcursor::formula()) == this)
+		mathcursor::drawSelection(pi);
 
 	pi.pain.text(x + 2, y, prefix(), font);
 

@@ -66,7 +66,7 @@ std::auto_ptr<InsetBase> InsetBibtex::clone() const
 
 
 DispatchResult
-InsetBibtex::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+InsetBibtex::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
@@ -79,7 +79,7 @@ InsetBibtex::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 	}
 		
 	default:
-		return InsetCommand::priv_dispatch(bv, cmd);
+		return InsetCommand::priv_dispatch(cur, cmd);
 	}
 }
 

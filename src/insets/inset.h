@@ -17,8 +17,6 @@
 
 #include "insetbase.h"
 #include "dimension.h"
-#include "ParagraphList_fwd.h"
-
 
 class Buffer;
 class LColor_color;
@@ -37,107 +35,10 @@ namespace graphics {
 }
 }
 
+
 /// Insets
 class InsetOld : public InsetBase {
 public:
-	/** This is not quite the correct place for this enum. I think
-	    the correct would be to let each subclass of Inset declare
-	    its own enum code. Actually the notion of an InsetOld::Code
-	    should be avoided, but I am not sure how this could be done
-	    in a cleaner way. */
-	enum Code {
-		///
-		NO_CODE, // 0
-		///
-		TOC_CODE,  // do these insets really need a code? (ale)
-		///
-		QUOTE_CODE,
-		///
-		MARK_CODE,
-		///
-		REF_CODE,
-		///
-		URL_CODE, // 5
-		///
-		HTMLURL_CODE,
-		///
-		SEPARATOR_CODE,
-		///
-		ENDING_CODE,
-		///
-		LABEL_CODE,
-		///
-		NOTE_CODE, // 10
-		///
-		ACCENT_CODE,
-		///
-		MATH_CODE,
-		///
-		INDEX_CODE,
-		///
-		INCLUDE_CODE,
-		///
-		GRAPHICS_CODE, // 15
-		///
-		BIBITEM_CODE,
-		///
-		BIBTEX_CODE,
-		///
-		TEXT_CODE,
-		///
-		ERT_CODE,
-		///
-		FOOT_CODE, // 20
-		///
-		MARGIN_CODE,
-		///
-		FLOAT_CODE,
-		///
-		WRAP_CODE,
-		///
-		SPACE_CODE, // 25
-		///
-		SPECIALCHAR_CODE,
-		///
-		TABULAR_CODE,
-		///
-		EXTERNAL_CODE,
-#if 0
-		///
-		THEOREM_CODE,
-#endif
-		///
-		CAPTION_CODE,
-		///
-		MATHMACRO_CODE, // 30
-		///
-		ERROR_CODE,
-		///
-		CITE_CODE,
-		///
-		FLOAT_LIST_CODE,
-		///
-		INDEX_PRINT_CODE,
-		///
-		OPTARG_CODE, // 35
-		///
-		ENVIRONMENT_CODE,
-		///
-		HFILL_CODE,
-		///
-		NEWLINE_CODE,
-		///
-		LINE_CODE,
-		///
-		BRANCH_CODE, // 40
-		///
-		BOX_CODE,
-		///
-		CHARSTYLE_CODE,
-		///
-		VSPACE_CODE
-	};
-
 	///
 	enum {
 		///
@@ -194,9 +95,6 @@ public:
 	///
 	virtual int docbook(Buffer const &, std::ostream &,
 			    OutputParams const &) const = 0;
-
-	/// returns LyX code associated with the inset. Used for TOC, ...)
-	virtual InsetOld::Code lyxCode() const { return NO_CODE; }
 
 	/// returns true to override begin and end inset in file
 	virtual bool directWrite() const;

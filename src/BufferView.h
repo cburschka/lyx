@@ -21,7 +21,6 @@
 
 class Buffer;
 class Change;
-class CursorSlice;
 class Encoding;
 class ErrorList;
 class FuncRequest;
@@ -33,32 +32,8 @@ class LyXScreen;
 class LyXView;
 class Painter;
 class PosIterator;
-class Selection;
 class TeXErrors;
 class UpdatableInset;
-
-
-// The structure that keeps track of the selections set.
-struct Selection {
-	Selection()
-		: set_(false), mark_(false)
-		{}
-	bool set() const {
-		return set_;
-	}
-	void set(bool s) {
-		set_ = s;
-	}
-	bool mark() const {
-		return mark_;
-	}
-	void mark(bool m) {
-		mark_ = m;
-	}
-private:
-	bool set_; // former selection
-	bool mark_; // former mark_set
-};
 
 /**
  * A buffer view encapsulates a view onto a particular
@@ -204,55 +179,17 @@ public:
 	/// execute the given function
 	bool dispatch(FuncRequest const & argument);
 	
-	/// set target x position of cursor
-	void x_target(int x);
-	/// return target x position of cursor
-	int x_target() const;
-
 	/// clear the X selection
 	void unsetXSel();
 
 	/// access to full cursor
-	LCursor & fullCursor();
+	LCursor & cursor();
 	/// access to full cursor
-	void fullCursor(LCursor const &);
-	/// access to full cursor
-	LCursor const & fullCursor() const;
-	/// access to topmost cursor slice
-	CursorSlice & cursor();
-	/// access to topmost cursor slice
-	CursorSlice const & cursor() const;
-	/// access to selection anchor
-	CursorSlice & anchor();
-	/// access to selection anchor
-	CursorSlice const & anchor() const;
-	///
-	UpdatableInset * innerInset() const;
+	LCursor const & cursor() const;
 	///
 	LyXText * text() const;
-	/// 
-	void resetAnchor();
-	///
-	Selection & selection();
-	///
-	Selection const & selection() const;
-	///
-	CursorSlice & selStart();
-	///
-	CursorSlice const & selStart() const;
-	///
-	CursorSlice & selEnd();
-	///
-	CursorSlice const & selEnd() const;
-	///
-	void setSelection();
-	///
-	void clearSelection();
 	///
 	void putSelectionAt(PosIterator const & cur, int length, bool backwards);
-
-	///
-	Selection selection_;
 
 private:
 	///
@@ -261,21 +198,6 @@ private:
 	friend struct BufferView::Pimpl;
 	///
 	Pimpl * pimpl_;
-
-	/**
-	 * The target x position of the cursor. This is used for when
-	 * we have text like :
-	 *
-	 * blah blah blah blah| blah blah blah
-	 * blah blah blah
-	 * blah blah blah blah blah blah
-	 *
-	 * When we move onto row 3, we would like to be vertically aligned
-	 * with where we were in row 1, despite the fact that row 2 is
-	 * shorter than x()
-	 */
-	int x_target_;
-
 };
 
 #endif // BUFFERVIEW_H

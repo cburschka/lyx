@@ -101,7 +101,7 @@ protected:
 	///
 	virtual
 	DispatchResult
-	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
+	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 
 	/// we store the cells in a vector
 	typedef std::vector<MathArray> cells_type;

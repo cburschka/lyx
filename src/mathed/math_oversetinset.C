@@ -13,7 +13,7 @@
 #include "math_oversetinset.h"
 #include "math_data.h"
 #include "math_mathmlstream.h"
-
+#include "cursor.h"
 
 using std::max;
 using std::auto_ptr;

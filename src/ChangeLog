@@ -1,4 +1,25 @@
 
+2004-01-20  André Pönitz  <poenitz@gmx.net>
+
+	* BufferView.[Ch]:
+	* BufferView_pimpl.C:
+	* PosIterator.C:
+	* bufferview_funcs.C:
+	* cursor.[Ch]:
+	* cursor_slice.[Ch]:
+	* factory.C:
+	* iterators.C:
+	* lyx_cb.C:
+	* lyxfind.C:
+	* lyxfunc.C:
+	* lyxtext.h:
+	* rowpainter.C:
+	* text.C:
+	* text2.C:
+	* text3.C:
+	* undo.[Ch]: lots of IU. Shift selection stuff from the BufferView to
+	  LCursor and mathcursor parts to LCursor and InsetBase.
+
 2004-01-15  André Pönitz  <poenitz@gmx.net>
 
 	* cursor_slice.[Ch]: add a few covienience functions

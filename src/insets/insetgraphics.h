@@ -78,12 +78,12 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///
-	void edit(BufferView * bv, bool);
+	void edit(LCursor & cur, bool);
 protected:
 	///
 	virtual
 	DispatchResult
-	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
+	priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 private:
 	///
 	friend class InsetGraphicsMailer;

@@ -13,7 +13,7 @@
 #ifndef MATH_CURSOR
 #define MATH_CURSOR
 
-#include "cursor_slice.h"
+#include "cursor.h"
 #include "math_inset.h"
 #include "math_data.h"
 
@@ -36,8 +36,7 @@ this formula's MathHullInset to the current position.
 */
 
 
-class MathCursor {
-public:
+namespace mathcursor {
 	/// short of anything else reasonable
 	typedef size_t             size_type;
 	/// type for column numbers
@@ -51,10 +50,6 @@ public:
 	/// type for column numbers
 	typedef size_t             col_type;
 
-	///
-	explicit MathCursor(BufferView *, InsetFormulaBase *, bool left);
-	///
-	~MathCursor();
 	///
 	void insert(LCursor & cur, MathAtom const &);
 	///
@@ -79,10 +74,6 @@ public:
 	bool up(LCursor & cur, bool sel = false);
 	/// called for LFUN_DOWN etc
 	bool down(LCursor & cur, bool sel = false);
-	/// Put the cursor in the first position
-	void first(LCursor & cur);
-	/// Put the cursor in the last position
-	void last(LCursor & cur);
 	/// move to next cell in current inset
 	void idxNext(LCursor & bv);
 	/// move to previous cell in current inset
@@ -99,11 +90,11 @@ public:
 	/// in pixels from top of screen
 	void setScreenPos(LCursor & cur, int x, int y);
 	/// in pixels from top of screen
-	void getScreenPos(LCursor & cur, int & x, int & y) const;
+	void getScreenPos(LCursor & cur, int & x, int & y);
 	/// in pixels from left of screen
-	int targetX(LCursor & cur) const;
+	int targetX(LCursor & cur);
 	/// return the next enclosing grid inset and the cursor's index in it
-	MathGridInset * enclosingGrid(LCursor & cur, idx_type & idx) const;
+	MathGridInset * enclosingGrid(LCursor & cur, idx_type & idx);
 	/// go up to enclosing grid
 	void popToEnclosingGrid(LCursor & cur);
 	/// go up to the hull inset
@@ -113,7 +104,7 @@ public:
 	/// adjust anchor position after deletions/insertions
 	void adjust(LCursor & cur, pos_type from, difference_type diff);
 	///
-	InsetFormulaBase * formula() const;
+	InsetFormulaBase * formula();
 	/// current offset in the current cell
 	///
 	bool script(LCursor & cur, bool);
@@ -122,19 +113,15 @@ public:
 	/// interpret name a name of a macro
 	void macroModeClose(LCursor & cur);
 	/// are we currently typing the name of a macro?
-	bool inMacroMode(LCursor & cur) const;
+	bool inMacroMode(LCursor & cur);
 	/// get access to the macro we are currently typing
 	MathUnknownInset * activeMacro(LCursor & cur);
-	/// get access to the macro we are currently typing
-	MathUnknownInset const * activeMacro(LCursor & cur) const;
 	/// are we currently typing '#1' or '#2' or...?
-	bool inMacroArgMode(LCursor & cur) const;
+	bool inMacroArgMode(LCursor & cur);
 	/// are we in math mode (1), text mode (-1) or unsure?
-	MathInset::mode_type currentMode(LCursor & cur) const;
+	MathInset::mode_type currentMode(LCursor & cur);
 
 	// Local selection methods
-	///
-	bool selection() const;
 	///
 	void selCopy(LCursor & cur);
 	///
@@ -152,18 +139,18 @@ public:
 	/// clears or deletes selection depending on lyxrc setting
 	void selClearOrDel(LCursor & cur);
 	/// draws light-blue selection background
-	void drawSelection(PainterInfo & pi) const;
+	void drawSelection(PainterInfo & pi);
 	/// replace selected stuff with at, placing the former
 	// selection in given cell of atom
 	void handleNest(LCursor & cur, MathAtom const & at, int cell = 0);
 	/// remove this as soon as LyXFunc::getStatus is "localized"
-	std::string getLastCode() const { return "mathnormal"; }
+	inline std::string getLastCode() { return "mathnormal"; }
 	///
-	bool isInside(MathInset const *) const;
+	bool isInside(MathInset const *);
 	///
-	char valign(LCursor & cur) const;
+	char valign(LCursor & cur);
 	///
-	char halign(LCursor & cur) const;
+	char halign(LCursor & cur);
 
 	/// make sure cursor position is valid
 	void normalize(LCursor & cur);
@@ -181,21 +168,17 @@ public:
 	/// leave current MathInset to the left
 	bool popRight(LCursor & cur);
 
-	/// returns the selection
-	void getSelection(LCursor & cur, CursorSlice &, CursorSlice &) const;
 	/// returns the normalized anchor of the selection
-	CursorSlice normalAnchor(LCursor & cur) const;
+	CursorSlice normalAnchor(LCursor & cur);
 
-	/// describe the situation
-	std::string info(LCursor & cur) const;
 	/// dump selection information for debugging
-	void seldump(char const * str) const;
+	void seldump(char const * str);
 	/// dump selection information for debugging
-	void dump(char const * str) const;
+	void dump(char const * str);
 	/// moves on
 	void setSelection(LCursor & cur, CursorBase const & where, size_type n);
 	/// grab selection marked by anchor and current cursor
-	std::string grabSelection(LCursor & cur) const;
+	std::string grabSelection(LCursor & cur);
 	/// guess what
 	std::string grabAndEraseSelection(LCursor & cur);
 	///
@@ -214,47 +197,13 @@ public:
 	void handleFont(LCursor & cur, std::string const & font);
 	///
 	DispatchResult dispatch(LCursor & cur, FuncRequest const & cmd);
-private:
-	/// moves cursor index one cell to the left
-	bool idxLeft(LCursor & bv);
-	/// moves cursor index one cell to the right
-	bool idxRight(LCursor & bv);
-	/// moves cursor to end of last cell of current line
-	bool idxLineLast(LCursor & bv);
-	/// moves position somehow up or down
-	bool goUpDown(LCursor & cur, bool up);
-	/// moves position closest to (x, y) in given box
-	bool bruteFind(LCursor & cur,
-		int x, int y, int xlow, int xhigh, int ylow, int yhigh);
-	/// moves position closest to (x, y) in current cell
-	void bruteFind2(LCursor & cur, int x, int y);
-	/// are we in a nucleus of a script inset?
-	bool inNucleus(LCursor & cur) const;
-
-	/// erase the selected part and re-sets the cursor
-	void eraseSelection(LCursor & cur);
-
-	/// the name of the macro we are currently inputting
-	std::string macroName(LCursor & cur) const;
-	/// where in the curent cell does the macro name start?
-	difference_type macroNamePos(LCursor & cur) const;
-	/// can we enter the inset?
-	bool openable(MathAtom const &, bool selection) const;
 
 	/// pointer to enclsing LyX inset
-	InsetFormulaBase * formula_;
-	// Selection stuff
-	/// text code of last char entered
-	//MathTextCodes lastcode_;
-	/// do we allow autocorrection
-	bool autocorrect_;
-	/// do we currently select
-	bool selection_;
-	/// are we entering a macro name?
-	bool macromode_;
-};
+	extern InsetFormulaBase * formula_;
+}
 
-extern MathCursor * mathcursor;
-void releaseMathCursor(BufferView & bv);
+void releaseMathCursor(LCursor & cur);
+
+bool inMathed();
 
 #endif

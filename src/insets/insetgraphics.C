@@ -58,6 +58,7 @@ TODO
 #include "buffer.h"
 #include "BufferView.h"
 #include "converter.h"
+#include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
 #include "format.h"
@@ -79,11 +80,10 @@ TODO
 #include "support/os.h"
 #include "support/systemcall.h"
 #include "support/tostr.h"
+#include "support/std_sstream.h"
 
 #include <boost/bind.hpp>
 #include <boost/tuple/tuple.hpp>
-
-#include "support/std_sstream.h"
 
 namespace support = lyx::support;
 using lyx::support::AbsolutePath;
@@ -192,26 +192,26 @@ void InsetGraphics::statusChanged() const
 
 
 DispatchResult
-InsetGraphics::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+InsetGraphics::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY: {
-		Buffer const & buffer = *bv.buffer();
+		Buffer const & buffer = *cur.bv().buffer();
 		InsetGraphicsParams p;
 		InsetGraphicsMailer::string2params(cmd.argument, buffer, p);
 		if (!p.filename.empty()) {
 			setParams(p);
-			bv.update();
+			cur.bv().update();
 		}
 		return DispatchResult(true, true);
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetGraphicsMailer(*this).updateDialog(&bv);
+		InsetGraphicsMailer(*this).updateDialog(&cur.bv());
 		return DispatchResult(true, true);
 
 	case LFUN_MOUSE_RELEASE:
-		InsetGraphicsMailer(*this).showDialog(&bv);
+		InsetGraphicsMailer(*this).showDialog(&cur.bv());
 		return DispatchResult(true, true);
 
 	default:
@@ -220,9 +220,9 @@ InsetGraphics::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 }
 
 
-void InsetGraphics::edit(BufferView * bv, bool)
+void InsetGraphics::edit(LCursor & cur, bool)
 {
-	InsetGraphicsMailer(*this).showDialog(bv);
+	InsetGraphicsMailer(*this).showDialog(&cur.bv());
 }
 
 

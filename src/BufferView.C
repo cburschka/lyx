@@ -58,8 +58,7 @@ extern BufferList bufferlist;
 
 BufferView::BufferView(LyXView * owner, int xpos, int ypos,
 		       int width, int height)
-	: pimpl_(new Pimpl(*this, owner, xpos, ypos, width, height)),
-	  x_target_(0)
+	: pimpl_(new Pimpl(*this, owner, xpos, ypos, width, height))
 {}
 
 
@@ -260,7 +259,7 @@ bool BufferView::insertLyXFile(string const & filen)
 
 	string const fname = MakeAbsPath(filen);
 
-	clearSelection();
+	cursor().clearSelection();
 	text()->breakParagraph(buffer()->paragraphs());
 
 	bool res = buffer()->readFile(fname, text()->cursorPar());
@@ -313,11 +312,11 @@ void BufferView::gotoLabel(string const & label)
 		vector<string> labels;
 		it->getLabelList(*buffer(), labels);
 		if (find(labels.begin(),labels.end(),label) != labels.end()) {
-			clearSelection();
+			cursor().clearSelection();
 			text()->setCursor(
 				std::distance(text()->paragraphs().begin(), it.getPar()),
 				it.getPos());
-			resetAnchor();
+			cursor().resetAnchor();
 			update();
 			return;
 		}
@@ -331,7 +330,7 @@ void BufferView::undo()
 		return;
 
 	owner()->message(_("Undo"));
-	clearSelection();
+	cursor().clearSelection();
 	if (!textUndo(this))
 		owner()->message(_("No further undo information"));
 	update();
@@ -345,7 +344,7 @@ void BufferView::redo()
 		return;
 
 	owner()->message(_("Redo"));
-	clearSelection();
+	cursor().clearSelection();
 	if (!textRedo(this))
 		owner()->message(_("No further redo information"));
 	update();
@@ -392,15 +391,9 @@ bool BufferView::ChangeRefsIfUnique(string const & from, string const & to)
 }
 
 
-UpdatableInset * BufferView::innerInset() const
-{
-	return static_cast<UpdatableInset*>(fullCursor().innerInset());
-}
-
-
 LyXText * BufferView::getLyXText() const
 {
-	return fullCursor().innerText();
+	return cursor().innerText();
 }
 
 
@@ -437,72 +430,6 @@ int BufferView::workHeight() const
 }
 
 
-void BufferView::fullCursor(LCursor const & cur)
-{
-	pimpl_->cursor_ = cur;
-}
-
-
-LCursor & BufferView::fullCursor()
-{
-	return pimpl_->cursor_;
-}
-
-
-LCursor const & BufferView::fullCursor() const
-{
-	return pimpl_->cursor_;
-}
-
-
-CursorSlice & BufferView::cursor()
-{
-	return fullCursor().cursor_.back();
-}
-
-
-CursorSlice const & BufferView::cursor() const
-{
-	return fullCursor().cursor_.back();
-}
-
-
-CursorSlice & BufferView::anchor()
-{
-	return fullCursor().anchor_.back();
-}
-
-
-CursorSlice const & BufferView::anchor() const
-{
-	return fullCursor().anchor_.back();
-}
-
-
-Selection & BufferView::selection()
-{
-	return selection_;
-}
-
-
-Selection const & BufferView::selection() const
-{
-	return selection_;
-}
-
-
-void BufferView::x_target(int x)
-{
-	x_target_ = x;
-}
-
-
-int BufferView::x_target() const
-{
-	return x_target_;
-}
-
-
 void BufferView::updateParagraphDialog()
 {
 	pimpl_->updateParagraphDialog();
@@ -514,62 +441,6 @@ LyXText * BufferView::text() const
 	return pimpl_->buffer_ ? &pimpl_->buffer_->text() : 0;
 }
 
-
-void BufferView::resetAnchor()
-{
-	return fullCursor().resetAnchor();
-}
-
-
-CursorSlice const & BufferView::selStart() const
-{
-	if (!selection().set())
-		return cursor();
-	// can't use std::min as this creates a new object
-	return anchor() < cursor() ? anchor() : cursor();
-}
-
-
-CursorSlice const & BufferView::selEnd() const
-{
-	if (!selection().set())
-		return cursor();
-	return anchor() > cursor() ? anchor() : cursor();
-}
-
-
-CursorSlice & BufferView::selStart()
-{
-	if (!selection().set())
-		return cursor();
-	return anchor() < cursor() ? anchor() : cursor();
-}
-
-
-CursorSlice & BufferView::selEnd()
-{
-	if (selection().set())
-		return cursor();
-	return anchor() > cursor() ? anchor() : cursor();
-}
-
-
-void BufferView::setSelection()
-{
-	selection().set(true);
-	// a selection with no contents is not a selection
-	if (cursor().par() == anchor().par() && cursor().pos() == anchor().pos())
-		selection().set(false);
-}
-
-
-void BufferView::clearSelection()
-{
-	selection().set(false);
-	selection().mark(false);
-	resetAnchor();
-	unsetXSel();
-}
 
 
 
@@ -592,7 +463,7 @@ void BufferView::putSelectionAt(PosIterator const & cur,
 {
 	ParIterator par(cur);
 	
-	clearSelection();
+	cursor().clearSelection();
 
 	LyXText * text = par.text(*buffer());
 	par.lockPath(this);
@@ -601,13 +472,13 @@ void BufferView::putSelectionAt(PosIterator const & cur,
 		top_y(par.outerPar()->y);
 	update();
 	text->setCursor(cur.pit(), cur.pos());
-	fullCursor().updatePos();
+	cursor().updatePos();
 
 	if (length) {
 		text->setSelectionRange(length);
-		setSelection();
+		cursor().setSelection();
 		if (backwards)
-			std::swap(cursor(), anchor());
+			std::swap(cursor().cursor_, cursor().anchor_);
 	}
 
 	fitCursor();
@@ -615,7 +486,14 @@ void BufferView::putSelectionAt(PosIterator const & cur,
 }
 
 
-CursorSlice & cursorTip(BufferView & bv)
+LCursor & BufferView::cursor()
 {
-	return bv.cursor();
+	return pimpl_->cursor_;
 }
+
+
+LCursor const & BufferView::cursor() const
+{
+	return pimpl_->cursor_;
+}
+

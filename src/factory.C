@@ -179,16 +179,19 @@ InsetOld * createInset(BufferView * bv, FuncRequest const & cmd)
 		bv->owner()->getDialogs().show("tabularcreate");
 		return 0;
 
-	case LFUN_INSET_CAPTION: 
-	if (!bv->innerInset()) {
-		auto_ptr<InsetCaption> inset(new InsetCaption(params));
-		inset->setOwner(bv->innerInset());
-		inset->setAutoBreakRows(true);
-		inset->setDrawFrame(InsetText::LOCKED);
-		inset->setFrameColor(LColor::captionframe);
-		return inset.release();
+	case LFUN_INSET_CAPTION: {
+		UpdatableInset * up = bv->cursor().inset()
+			? bv->cursor().inset()->asUpdatableInset() : 0;
+		if (!up) {
+			auto_ptr<InsetCaption> inset(new InsetCaption(params));
+			inset->setOwner(up);
+			inset->setAutoBreakRows(true);
+			inset->setDrawFrame(InsetText::LOCKED);
+			inset->setFrameColor(LColor::captionframe);
+			return inset.release();
+		}
+		return 0;
 	}
-	return 0;
 
 	case LFUN_INDEX_PRINT:
 		return new InsetPrintIndex(InsetCommandParams("printindex"));

@@ -14,7 +14,7 @@
 
 #include "insetbox.h"
 
-#include "BufferView.h"
+#include "cursor.h"
 #include "dispatchresult.h"
 #include "debug.h"
 #include "funcrequest.h"
@@ -170,7 +170,7 @@ bool InsetBox::showInsetDialog(BufferView * bv) const
 
 
 DispatchResult
-InsetBox::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+InsetBox::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
@@ -182,18 +182,18 @@ InsetBox::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 	}
 
 	case LFUN_INSET_DIALOG_UPDATE:
-		InsetBoxMailer(*this).updateDialog(&bv);
+		InsetBoxMailer(*this).updateDialog(&cur.bv());
 		return DispatchResult(true);
 
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3 && hitButton(cmd)) {
-			InsetBoxMailer(*this).showDialog(&bv);
+			InsetBoxMailer(*this).showDialog(&cur.bv());
 			return DispatchResult(true);
 		}
-		return InsetCollapsable::priv_dispatch(bv, cmd);
+		return InsetCollapsable::priv_dispatch(cur, cmd);
 
 	default:
-		return InsetCollapsable::priv_dispatch(bv, cmd);
+		return InsetCollapsable::priv_dispatch(cur, cmd);
 	}
 }
 

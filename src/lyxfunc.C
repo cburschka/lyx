@@ -157,7 +157,7 @@ void LyXFunc::handleKeyFunc(kb_action action)
 	// actions
 	keyseq.clear();
 	// copied verbatim from do_accent_char
-	view()->resetAnchor();
+	view()->cursor().resetAnchor();
 	view()->update();
 }
 
@@ -320,8 +320,9 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		}
 	}
 
-	UpdatableInset * tli = view()->fullCursor().innerInset();
-	InsetTabular * tab = view()->fullCursor().innerInsetTabular();
+	UpdatableInset * tli = view()->cursor().inset()
+		? view()->cursor().inset()->asUpdatableInset() : 0;
+	InsetTabular * tab = view()->cursor().innerInsetTabular();
 
 	// I would really like to avoid having this switch and rather try to
 	// encode this in the function itself.
@@ -342,7 +343,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		if (tab && tab->hasSelection())
 			disable = false;
 		else
-			disable = !mathcursor && !view()->selection().set();
+			disable = !inMathed() && !view()->cursor().selection();
 		break;
 
 	case LFUN_RUNCHKTEX:
@@ -354,7 +355,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 
 	case LFUN_LAYOUT_TABULAR:
-		disable = !view()->fullCursor().innerInsetTabular();
+		disable = !view()->cursor().innerInsetTabular();
 		break;
 
 	case LFUN_DEPTH_MIN:
@@ -378,10 +379,10 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 
 	case LFUN_TABULAR_FEATURE:
 #if 0
-		if (mathcursor) {
+		if (inMathed()) {
 			// FIXME: check temporarily disabled
 			// valign code
-			char align = mathcursor->valign();
+			char align = mathcursor::valign();
 			if (align == '\0') {
 				disable = true;
 				break;
@@ -398,7 +399,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		} else {
 			disable = true;
 
-			char align = mathcursor->halign();
+			char align = mathcursor::halign();
 			if (align == '\0') {
 				disable = true;
 				break;
@@ -413,7 +414,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			}
 			flag.setOnOff(ev.argument[0] == align);
 
-			disable = !mathcursor->halign();
+			disable = !mathcursor::halign();
 			break;
 		}
 
@@ -469,7 +470,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 
 	case LFUN_INSET_SETTINGS: {
 		disable = true;
-		UpdatableInset * inset = view()->fullCursor().innerInset();
+		UpdatableInset * inset = view()->cursor().inset()
+			? view()->cursor().inset()->asUpdatableInset() : 0;
 
 		if (!inset)
 			break;
@@ -509,8 +511,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	}
 
 	case LFUN_MATH_MUTATE:
-		if (mathcursor)
-			//flag.setOnOff(mathcursor->formula()->hullType() == ev.argument);
+		if (inMathed())
+			//flag.setOnOff(mathcursor::formula()->hullType() == ev.argument);
 			flag.setOnOff(false);
 		else
 			disable = true;
@@ -523,7 +525,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 	case LFUN_MATH_NONUMBER:
 	case LFUN_MATH_NUMBER:
 	case LFUN_MATH_EXTERN:
-		disable = !mathcursor;
+		disable = !inMathed();
 		break;
 
 	case LFUN_DIALOG_SHOW: {
@@ -541,8 +543,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			disable = !Exporter::IsExportable(*buf, "dvi") ||
 				lyxrc.print_command == "none";
 		} else if (name == "character") {
-			UpdatableInset * tli = view()->fullCursor().innerInset();
-			disable = tli && tli->lyxCode() == InsetOld::ERT_CODE;
+			InsetBase * inset = view()->cursor().inset();
+			disable = inset && inset->lyxCode() == InsetOld::ERT_CODE;
 		} else if (name == "vclog") {
 			disable = !buf->lyxvc().inUse();
 		} else if (name == "latexlog") {
@@ -682,7 +684,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 		break;
 	case LFUN_SPACE_INSERT:
 		// slight hack: we know this is allowed in math mode
-		if (!mathcursor)
+		if (!inMathed())
 			code = InsetOld::SPACE_CODE;
 		break;
 	case LFUN_INSET_DIALOG_SHOW: {
@@ -734,7 +736,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 
 #ifdef LOCK
 	// the font related toggles
-	if (!mathcursor) {
+	if (!inMathed()) {
 		LyXFont const & font = view()->getLyXText()->real_current_font;
 		switch (ev.action) {
 		case LFUN_EMPH:
@@ -759,7 +761,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 			break;
 		}
 	} else {
-		string tc = mathcursor->getLastCode();
+		string tc = mathcursor::getLastCode();
 		switch (ev.action) {
 		case LFUN_BOLD:
 			flag.setOnOff(tc == "mathbf");
@@ -864,7 +866,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		case LFUN_ESCAPE: {
 			if (!view()->available())
 				break;
-			view()->fullCursor().pop();
+			view()->cursor().pop();
 			// Tell the paragraph dialog that we changed paragraph
 			dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 			break;
@@ -1097,7 +1099,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			break;
 
 		case LFUN_LAYOUT_TABULAR:
-			if (InsetTabular * tab = view()->fullCursor().innerInsetTabular())
+			if (InsetTabular * tab = view()->cursor().innerInsetTabular())
 				tab->openLayoutDialog(view());
 			break;
 
@@ -1291,7 +1293,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 		case LFUN_INSET_DIALOG_SHOW: {
 			InsetOld * inset = view()->getLyXText()->getInset();
 			if (inset)
-				inset->dispatch(*view(), FuncRequest(LFUN_INSET_DIALOG_SHOW));
+				inset->dispatch(view()->cursor(), FuncRequest(LFUN_INSET_DIALOG_SHOW));
 			break;
 		}
 
@@ -1301,7 +1303,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			InsetBase * inset = owner->getDialogs().getOpenInset(name);
 			if (inset) {
 				FuncRequest fr(LFUN_INSET_DIALOG_UPDATE, func.argument);
-				inset->dispatch(*view(), fr);
+				inset->dispatch(view()->cursor(), fr);
 			} else if (name == "paragraph") {
 				dispatch(FuncRequest(LFUN_PARAGRAPH_UPDATE));
 			}
@@ -1439,11 +1441,11 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			break;
 
 		case LFUN_EXTERNAL_EDIT:
-			InsetExternal().dispatch(*view(), FuncRequest(action, argument));
+			InsetExternal().dispatch(view()->cursor(), FuncRequest(action, argument));
 			break;
 
 		default:
-			view()->fullCursor().dispatch(FuncRequest(func));
+			view()->cursor().dispatch(FuncRequest(func));
 			break;
 		}
 	}
@@ -1453,7 +1455,7 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 	if (view()->available()) {
 		view()->fitCursor();
 		view()->update();
-		view()->fullCursor().updatePos();
+		view()->cursor().updatePos();
 		// if we executed a mutating lfun, mark the buffer as dirty
 		if (!getStatus(func).disabled()
 		    && !lyxaction.funcHasFlag(func.action, LyXAction::NoBuffer)

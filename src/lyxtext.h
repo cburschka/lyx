@@ -122,7 +122,7 @@ public:
 	void draw(PainterInfo & pi, int x, int y) const;
 
 	/// try to handle that request
-	DispatchResult dispatch(BufferView & bv, FuncRequest const & cmd);
+	DispatchResult dispatch(LCursor & cur, FuncRequest const & cmd);
 
 	BufferView * bv();
 

@@ -72,7 +72,7 @@ public:
 	///
 	virtual void mutateToText();
 	///
-	virtual void revealCodes(BufferView & bv) const;
+	virtual void revealCodes(LCursor & cur) const;
 	///
 	virtual EDITABLE editable() const { return HIGHLY_EDITABLE; }
 	///
@@ -80,24 +80,23 @@ public:
 	// return the selection as std::string
 	std::string selectionAsString(BufferView & bv) const;
 	///
-	void edit(BufferView * bv, bool);
+	void edit(LCursor & cur, bool);
 	///
-	void edit(BufferView * bv, int, int);
+	void edit(LCursor & cur, int, int);
 protected:
 	/// To allow transparent use of math editing functions
-	virtual
-	DispatchResult priv_dispatch(BufferView & bv, FuncRequest const & cmd);
+	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 private:
 	/// unimplemented
 	void operator=(const InsetFormulaBase &);
 	/// common base for handling accents
 	void handleAccent(BufferView & bv, std::string const & arg, std::string const & name);
 	/// lfun handler
-	DispatchResult lfunMousePress(BufferView &, FuncRequest const &);
+	DispatchResult lfunMousePress(LCursor &, FuncRequest const &);
 	///
-	DispatchResult lfunMouseRelease(BufferView &, FuncRequest const &);
+	DispatchResult lfunMouseRelease(LCursor &, FuncRequest const &);
 	///
-	DispatchResult lfunMouseMotion(BufferView &, FuncRequest const &);
+	DispatchResult lfunMouseMotion(LCursor &, FuncRequest const &);
 
 protected:
 
@@ -117,9 +116,9 @@ protected:
 
 // We don't really mess want around with mathed stuff outside mathed.
 // So do it here.
-void mathDispatch(BufferView & bv, FuncRequest const & cmd);
+void mathDispatch(LCursor & cur, FuncRequest const & cmd);
 
 ///
-void releaseMathCursor(BufferView & bv);
+void releaseMathCursor(LCursor & cur);
 
 #endif

@@ -401,7 +401,9 @@ ParIterator::ParIterator(PosIterator const & pos)
 
 void ParIterator::lockPath(BufferView * bv) const
 {
-	bv->fullCursor() = LCursor(*bv);
+	LCursor & cur = bv->cursor();
+	cur.cursor_.clear();
 	for (int i = 0, last = size() - 1; i < last; ++i)
-		(*pimpl_->positions[i].it)->inset->edit(bv, true);
+		(*pimpl_->positions[i].it)->inset->edit(cur, true);
+	cur.resetAnchor();
 }

@@ -16,6 +16,7 @@
 #include "updatableinset.h"
 
 #include "BufferView.h"
+#include "cursor.h"
 #include "debug.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
@@ -85,7 +86,7 @@ void UpdatableInset::scroll(BufferView & bv, int offset) const
 
 ///  An updatable inset could handle lyx editing commands
 DispatchResult
-UpdatableInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+UpdatableInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_MOUSE_RELEASE:
@@ -94,10 +95,10 @@ UpdatableInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 	case LFUN_SCROLL_INSET:
 		if (!cmd.argument.empty()) {
 			if (cmd.argument.find('.') != cmd.argument.npos)
-				scroll(bv, static_cast<float>(strToDbl(cmd.argument)));
+				scroll(cur.bv(), static_cast<float>(strToDbl(cmd.argument)));
 			else
-				scroll(bv, strToInt(cmd.argument));
-			bv.update();
+				scroll(cur.bv(), strToInt(cmd.argument));
+			cur.bv().update();
 			return DispatchResult(true, true);
 		}
 

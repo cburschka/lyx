@@ -17,7 +17,7 @@
 #include "undo.h"
 
 #include "buffer.h"
-#include "cursor_slice.h"
+#include "cursor.h"
 #include "debug.h"
 #include "BufferView.h"
 #include "iterators.h"
@@ -179,12 +179,13 @@ bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 	       << std::endl;
 
 	// set cursor again to force the position to be the right one
-	bv->cursor().par(undo.cursor_par);
-	bv->cursor().pos(undo.cursor_pos);
+	LCursor & cur = bv->cursor();
+	cur.par() = undo.cursor_par;
+	cur.pos() = undo.cursor_pos;
 
 	// clear any selection
-	bv->clearSelection();
-	bv->resetAnchor();
+	cur.clearSelection();
+	cur.resetAnchor();
 	text->updateCounters();
 
 	// rebreak the entire lyxtext
@@ -293,11 +294,11 @@ void recordUndo(Undo::undo_kind kind, LyXText const * text, paroffset_type par)
 
 void recordUndo(BufferView * bv, Undo::undo_kind kind)
 {
-	recordUndo(*bv, kind);
+	recordUndo(bv->cursor(), kind);
 }
 
 
-void recordUndo(BufferView & bv, Undo::undo_kind kind)
+void recordUndo(LCursor & cur, Undo::undo_kind kind)
 {
-	recordUndo(kind, bv.text(), bv.text()->cursor().par());
+	recordUndo(kind, cur.bv().text(), cur.bv().text()->cursor().par());
 }

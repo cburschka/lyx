@@ -13,10 +13,11 @@
 #include "math_undersetinset.h"
 #include "math_data.h"
 #include "math_mathmlstream.h"
-
+#include "cursor.h"
 
 using std::max;
 using std::auto_ptr;
+
 
 
 auto_ptr<InsetBase> MathUndersetInset::clone() const

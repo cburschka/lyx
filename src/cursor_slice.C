@@ -15,6 +15,8 @@
 
 #include "cursor_slice.h"
 #include "debug.h"
+#include "lyxtext.h"
+#include "paragraph.h"
 
 #include "mathed/math_inset.h"
 #include "mathed/math_data.h"
@@ -48,6 +50,12 @@ void CursorSlice::idx(idx_type idx)
 size_t CursorSlice::nargs() const
 {
 	return inset_->nargs();
+}
+
+
+size_t CursorSlice::nrows() const
+{
+	return inset_->nrows();
 }
 
 
@@ -107,9 +115,7 @@ CursorSlice::pos_type & CursorSlice::pos()
 
 CursorSlice::pos_type CursorSlice::lastpos() const
 {
-	BOOST_ASSERT(inset_);
-#warning implement me for texted, too.
-	return inset_->asMathInset() ? cell().size() : 0;
+	return (inset_ && inset_->asMathInset()) ? cell().size() : paragraph().size();
 }
 
 
@@ -171,6 +177,22 @@ LyXText * CursorSlice::text() const
 }
 
 
+Paragraph & CursorSlice::paragraph()
+{
+	// access to the main lyx text must be handled in the cursor
+	BOOST_ASSERT(text());
+	return *text()->getPar(par_);
+}
+
+
+Paragraph const & CursorSlice::paragraph() const
+{
+	// access to the main lyx text must be handled in the cursor
+	BOOST_ASSERT(text());
+	return *text()->getPar(par_);
+}
+
+
 bool operator==(CursorSlice const & p, CursorSlice const & q)
 {
 	return p.inset_ == q.inset_
@@ -212,8 +234,8 @@ bool operator>(CursorSlice const & p, CursorSlice const & q)
 
 std::ostream & operator<<(std::ostream & os, CursorSlice const & item)
 {
-	os << " inset: " << item.inset_
-	   << " text: " << item.text()
+	os << "inset: " << item.inset_
+//	   << " text: " << item.text()
 	   << " idx: " << item.idx_
 	   << " par: " << item.par_
 	   << " pos: " << item.pos_
@@ -221,65 +243,4 @@ std::ostream & operator<<(std::ostream & os, CursorSlice const & item)
 //	   << " y: " << item.inset_->y()
 ;
 	return os;
-}
-
-
-
-
-void increment(CursorBase & it)
-{
-	CursorSlice & top = it.back();
-	MathArray   & ar  = top.asMathInset()->cell(top.idx_);
-
-	// move into the current inset if possible
-	// it is impossible for pos() == size()!
-	MathInset * n = 0;
-	if (top.pos_ != ar.size())
-		n = (ar.begin() + top.pos_)->nucleus();
-	if (n && n->isActive()) {
-		it.push_back(CursorSlice(n));
-		return;
-	}
-
-	// otherwise move on one cell back if possible
-	if (top.pos_ < ar.size()) {
-		// pos() == size() is valid!
-		++top.pos_;
-		return;
-	}
-
-	// otherwise try to move on one cell if possible
-	while (top.idx_ + 1 < top.asMathInset()->nargs()) {
-		// idx() == nargs() is _not_ valid!
-		++top.idx_;
-		if (top.asMathInset()->validCell(top.idx_)) {
-			top.pos_ = 0;
-			return;
-		}
-	}
-
-	// otherwise leave array, move on one back
-	// this might yield pos() == size(), but that's a ok.
-	it.pop_back();
-	// it certainly invalidates top
-	++it.back().pos_;
-}
-
-
-CursorBase ibegin(InsetBase * p)
-{
-	CursorBase it;
-	it.push_back(CursorSlice(p));
-	return it;
-}
-
-
-CursorBase iend(InsetBase * p)
-{
-	CursorBase it;
-	it.push_back(CursorSlice(p));
-	CursorSlice & top = it.back();
-	top.idx_ = top.asMathInset()->nargs() - 1;
-	top.pos_ = top.asMathInset()->cell(top.idx_).size();
-	return it;
 }

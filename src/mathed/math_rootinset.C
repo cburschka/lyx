@@ -14,12 +14,14 @@
 #include "math_rootinset.h"
 #include "math_data.h"
 #include "math_mathmlstream.h"
+#include "cursor.h"
 #include "LColor.h"
-#include "frontends/Painter.h"
 
+#include "frontends/Painter.h"
 
 using std::max;
 using std::auto_ptr;
+
 
 
 MathRootInset::MathRootInset()

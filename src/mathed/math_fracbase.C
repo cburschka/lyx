@@ -12,6 +12,7 @@
 
 #include "math_fracbase.h"
 #include "math_data.h"
+#include "cursor.h"
 
 
 MathFracbaseInset::MathFracbaseInset()

@@ -15,6 +15,7 @@
 #include "math_factory.h"
 
 #include "BufferView.h"
+#include "cursor.h"
 #include "dispatchresult.h"
 #include "debug.h"
 #include "funcrequest.h"
@@ -25,10 +26,10 @@
 #include "frontends/LyXView.h"
 #include "frontends/Dialogs.h"
 
-
 using std::string;
 using std::auto_ptr;
 using std::endl;
+
 
 
 RefInset::RefInset()
@@ -53,8 +54,7 @@ void RefInset::infoize(std::ostream & os) const
 }
 
 
-DispatchResult
-RefInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+DispatchResult RefInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 	case LFUN_INSET_MODIFY:
@@ -62,35 +62,34 @@ RefInset::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 			MathArray ar;
 			if (!createMathInset_fromDialogStr(cmd.argument, ar))
 				return DispatchResult(false);
-
 			*this = *ar[0].nucleus()->asRefInset();
-
 			return DispatchResult(true, true);
 		}
-		break;
+		return DispatchResult(false);
+
 	case LFUN_MOUSE_RELEASE:
 		if (cmd.button() == mouse_button::button3) {
 			lyxerr << "trying to goto ref" << cell(0) << endl;
-			bv.dispatch(FuncRequest(LFUN_REF_GOTO, asString(cell(0))));
+			cur.bv().dispatch(FuncRequest(LFUN_REF_GOTO, asString(cell(0))));
 			return DispatchResult(true, true);
 		}
 		if (cmd.button() == mouse_button::button1) {
 			// Eventually trigger dialog with button 3
 			// not 1
 			string const data = createDialogStr("ref");
-			bv.owner()->getDialogs().show("ref", data, this);
+			cur.bv().owner()->getDialogs().show("ref", data, this);
 			return DispatchResult(true, true);
 		}
-		break;
+		return DispatchResult(false);
+
 	case LFUN_MOUSE_PRESS:
 	case LFUN_MOUSE_MOTION:
 		// eat other mouse commands
 		return DispatchResult(true, true);
+
 	default:
-		return CommandInset::priv_dispatch(bv, cmd);
+		return CommandInset::priv_dispatch(cur, cmd);
 	}
-	// not our business
-	return DispatchResult(false);
 }
 
 

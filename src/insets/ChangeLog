@@ -1,4 +1,30 @@
 
+2004-01-20  André Pönitz  <poenitz@gmx.net>
+
+	* inset.h:
+	* insetbase.[Ch]: move stuff from mathcursor here.
+
+	* insetbibitem.[Ch]:
+	* insetbibtex.[Ch]:
+	* insetbox.[Ch]:
+	* insetbranch.[Ch]:
+	* insetcharstyle.[Ch]:
+	* insetcollapsable.[Ch]:
+	* insetcommand.[Ch]:
+	* insetert.[Ch]:
+	* insetexternal.[Ch]:
+	* insetfloat.[Ch]:
+	* insetgraphics.[Ch]:
+	* insetinclude.[Ch]:
+	* insetlabel.[Ch]:
+	* insetnote.[Ch]:
+	* insetref.[Ch]:
+	* insettabular.[Ch]:
+	* insettext.[Ch]:
+	* insetvspace.[Ch]:
+	* insetwrap.[Ch]:
+	* updatableinset.[Ch]: Adjust to IU changes (see comment in src/Changelog)
+
 2004-01-15  André Pönitz  <poenitz@gmx.net>
 
 	* insetbase.[Ch]:

@@ -15,27 +15,26 @@
 #include "dispatchresult.h"
 
 
-DispatchResult InsetBase::dispatch(BufferView & bv, FuncRequest const & cmd)
+DispatchResult InsetBase::dispatch(LCursor & cur, FuncRequest const & cmd)
 {
-	return priv_dispatch(bv, cmd);
+	return priv_dispatch(cur, cmd);
 }
 
 
-DispatchResult
-InsetBase::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+DispatchResult InsetBase::priv_dispatch(LCursor &, FuncRequest const & cmd)
 {
 	return DispatchResult(false);
 }
 
 
-void InsetBase::edit(BufferView *, bool)
+void InsetBase::edit(LCursor &, bool)
 {
 	lyxerr << "InsetBase: edit left/right" << std::endl;
 }
 
 
-void InsetBase::edit(BufferView * bv, int, int)
+void InsetBase::edit(LCursor & cur, int, int)
 {
 	lyxerr << "InsetBase: edit xy" << std::endl;
-	edit(bv, true);
+	edit(cur, true);
 }

@@ -52,7 +52,7 @@ string const InsetLabel::getScreenLabel(Buffer const &) const
 
 
 DispatchResult
-InsetLabel::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+InsetLabel::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
@@ -63,15 +63,15 @@ InsetLabel::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 			return DispatchResult(false);
 		bool clean = true;
 		if (p.getContents() != params().getContents())
-			clean = bv.ChangeRefsIfUnique(params().getContents(),
+			clean = cur.bv().ChangeRefsIfUnique(params().getContents(),
 						       p.getContents());
 		setParams(p);
-		bv.update();
+		cur.bv().update();
 		return DispatchResult(true, true);
 	}
 
 	default:
-		return InsetCommand::priv_dispatch(bv, cmd);
+		return InsetCommand::priv_dispatch(cur, cmd);
 	}
 }
 

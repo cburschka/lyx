@@ -25,9 +25,7 @@ class RenderPreview;
 class InsetFormula : public InsetFormulaBase {
 public:
 	///
-	InsetFormula(bool chemistry = false);
-	///
-	explicit InsetFormula(BufferView *);
+	InsetFormula();
 	///
 	explicit InsetFormula(std::string const & data);
 	///

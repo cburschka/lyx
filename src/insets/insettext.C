@@ -227,23 +227,37 @@ void InsetText::drawFrame(Painter & pain, int x) const
 }
 
 
-void InsetText::updateLocal(BufferView * bv)
+void InsetText::updateLocal(LCursor & cur)
 {
-	if (!bv)
-		return;
+	if (!autoBreakRows_ && paragraphs().size() > 1) {
+		// collapseParagraphs
+		while (paragraphs().size() > 1) {
+			ParagraphList::iterator const first = paragraphs().begin();
+			ParagraphList::iterator second = first;
+			++second;
+			size_t const first_par_size = first->size();
 
-	if (!autoBreakRows_ && paragraphs().size() > 1)
-		collapseParagraphs(bv);
+			if (!first->empty() &&
+					!second->empty() &&
+					!first->isSeparator(first_par_size - 1)) {
+				first->insertChar(first_par_size, ' ');
+			}
 
-	if (!bv->selection().set())
-		bv->resetAnchor();
+			cur.clearSelection();
+			mergeParagraph(cur.bv().buffer()->params(), paragraphs(), first);
+		}
+	}
 
-	bv->owner()->view_state_changed();
-	bv->owner()->updateMenubar();
-	bv->owner()->updateToolbar();
-	if (old_par != bv->cursor().par()) {
-		bv->owner()->setLayout(text_.cursorPar()->layout()->name());
-		old_par = bv->cursor().par();
+	if (!cur.selection())
+		cur.resetAnchor();
+
+	LyXView * lv = cur.bv().owner();
+	lv->view_state_changed();
+	lv->updateMenubar();
+	lv->updateToolbar();
+	if (old_par != cur.par()) {
+		lv->setLayout(text_.cursorPar()->layout()->name());
+		old_par = cur.par();
 	}
 }
 
@@ -254,57 +268,56 @@ string const InsetText::editMessage() const
 }
 
 
-void InsetText::sanitizeEmptyText(BufferView * bv)
+void InsetText::sanitizeEmptyText(BufferView & bv)
 {
 	if (paragraphs().size() == 1
 	    && paragraphs().begin()->empty()
-	    && bv->getParentLanguage(this) != text_.current_font.language()) {
+	    && bv.getParentLanguage(this) != text_.current_font.language()) {
 		LyXFont font(LyXFont::ALL_IGNORE);
-		font.setLanguage(bv->getParentLanguage(this));
+		font.setLanguage(bv.getParentLanguage(this));
 		text_.setFont(font, false);
 	}
 }
 
 
-extern LCursor theTempCursor;
+extern CursorBase theTempCursor;
 
 
-void InsetText::edit(BufferView * bv, bool left)
+void InsetText::edit(LCursor & cur, bool left)
 {
 	lyxerr << "InsetText: edit left/right" << endl;
 	old_par = -1;
-	setViewCache(bv);
+	setViewCache(&cur.bv());
 	int const par = left ? 0 : paragraphs().size() - 1;
 	int const pos = left ? 0 : paragraphs().back().size();
 	text_.setCursor(par, pos);
-	bv->clearSelection();
+	cur.clearSelection();
 	finishUndo();
-	sanitizeEmptyText(bv);
-	updateLocal(bv);
-	bv->updateParagraphDialog();
+	sanitizeEmptyText(cur.bv());
+	updateLocal(cur);
+	cur.bv().updateParagraphDialog();
 }
 
 
-void InsetText::edit(BufferView * bv, int x, int y)
+void InsetText::edit(LCursor & cur, int x, int y)
 {
 	lyxerr << "InsetText::edit xy" << endl;
 	old_par = -1;
-	text_.setCursorFromCoordinates(x - text_.xo_, y + bv->top_y() - text_.yo_);
-	bv->clearSelection();
+	text_.setCursorFromCoordinates(x - text_.xo_, y + cur.bv().top_y() - text_.yo_);
+	cur.clearSelection();
 	finishUndo();
-	sanitizeEmptyText(bv);
-	updateLocal(bv);
-	bv->updateParagraphDialog();
+	sanitizeEmptyText(cur.bv());
+	updateLocal(cur);
+	cur.bv().updateParagraphDialog();
 }
 
 
-DispatchResult
-InsetText::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+DispatchResult InsetText::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	//lyxerr << "InsetText::priv_dispatch (begin), act: "
 	//      << cmd.action << " " << endl;
 
-	setViewCache(&bv);
+	setViewCache(&cur.bv());
 
 	DispatchResult result;
 	result.dispatched(true);
@@ -313,10 +326,13 @@ InsetText::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 
 	switch (cmd.action) {
 	case LFUN_MOUSE_PRESS:
-		bv.fullCursor(theTempCursor);
-		// fall through
+		cur.cursor_ = theTempCursor;
+		cur.resetAnchor();
+		result = text_.dispatch(cur, cmd);
+		break;
+
 	default:
-		result = text_.dispatch(bv, cmd);
+		result = text_.dispatch(cur, cmd);
 		break;
 	}
 
@@ -326,7 +342,7 @@ InsetText::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 	if (!was_empty && paragraphs().begin()->empty() &&
 	    paragraphs().size() == 1) {
 		LyXFont font(LyXFont::ALL_IGNORE);
-		font.setLanguage(bv.getParentLanguage(this));
+		font.setLanguage(cur.bv().getParentLanguage(this));
 		text_.setFont(font, false);
 	}
 
@@ -524,26 +540,6 @@ void InsetText::clearInset(Painter & pain, int x, int y) const
 LyXText * InsetText::getText(int i) const
 {
 	return (i == 0) ? const_cast<LyXText*>(&text_) : 0;
-}
-
-
-void InsetText::collapseParagraphs(BufferView * bv)
-{
-	while (paragraphs().size() > 1) {
-		ParagraphList::iterator const first = paragraphs().begin();
-		ParagraphList::iterator second = first;
-		++second;
-		size_t const first_par_size = first->size();
-
-		if (!first->empty() &&
-		    !second->empty() &&
-		    !first->isSeparator(first_par_size - 1)) {
-			first->insertChar(first_par_size, ' ');
-		}
-
-		bv->clearSelection();
-		mergeParagraph(bv->buffer()->params(), paragraphs(), first);
-	}
 }
 
 

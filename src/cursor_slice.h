@@ -17,8 +17,8 @@
 #ifndef CURSORSLICE_H
 #define CURSORSLICE_H
 
-#include <iosfwd>
 #include <cstddef>
+#include <iosfwd>
 
 #include "support/types.h"
 
@@ -27,6 +27,7 @@ class InsetBase;
 class MathInset;
 class MathArray;
 class LyXText;
+class Paragraph;
 class UpdatableInset;
 
 
@@ -99,6 +100,10 @@ public:
 	LyXText * text() const;
 	///
 	UpdatableInset * asUpdatableInset() const;
+	///
+	Paragraph & paragraph();
+	///
+	Paragraph const & paragraph() const;
 
 	///
 	/// mathed specific stuff
@@ -147,21 +152,5 @@ bool operator!=(CursorSlice const &, CursorSlice const &);
 bool operator<(CursorSlice const &, CursorSlice const &);
 /// test for order
 bool operator>(CursorSlice const &, CursorSlice const &);
-
-#include <vector>
-
-
-// this is used for traversing math insets
-typedef std::vector<CursorSlice> CursorBase;
-/// move on one step
-void increment(CursorBase &);
-///
-CursorBase ibegin(InsetBase * p);
-///
-CursorBase iend(InsetBase * p);
-///
-CursorSlice & cursorTip(BufferView &);
-
-
 
 #endif

@@ -15,6 +15,7 @@
 
 #include "buffer.h"
 #include "BufferView.h"
+#include "cursor.h"
 #include "dispatchresult.h"
 #include "funcrequest.h"
 #include "gettext.h"
@@ -60,7 +61,7 @@ std::auto_ptr<InsetBase> InsetVSpace::clone() const
 
 
 DispatchResult
-InsetVSpace::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+InsetVSpace::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
@@ -70,11 +71,11 @@ InsetVSpace::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 	}
 
 	case LFUN_MOUSE_PRESS:
-		InsetVSpaceMailer(*this).showDialog(&bv);
+		InsetVSpaceMailer(*this).showDialog(&cur.bv());
 		return DispatchResult(true, true);
 
 	default:
-		return InsetOld::priv_dispatch(bv, cmd);
+		return InsetOld::priv_dispatch(cur, cmd);
 	}
 }
 

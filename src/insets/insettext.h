@@ -144,9 +144,9 @@ public:
 	void addPreview(lyx::graphics::PreviewLoader &) const;
 
 	///
-	void edit(BufferView *, bool);
+	void edit(LCursor & cur, bool);
 	///
-	void edit(BufferView *, int, int);
+	void edit(LCursor & cur, int, int);
 
 	///
 	int numParagraphs() const { return 1; }
@@ -155,15 +155,14 @@ public:
 
 private:
 	///
-	DispatchResult
-	priv_dispatch(BufferView & bv, FuncRequest const & cmd);
+	DispatchResult priv_dispatch(LCursor & cur, FuncRequest const & cmd);
 	///
-	void updateLocal(BufferView *);
+	void updateLocal(LCursor &);
 	///
 	void init();
 	// If the inset is empty set the language of the current font to the
 	// language to the surronding text (if different).
-	void sanitizeEmptyText(BufferView *);
+	void sanitizeEmptyText(BufferView &);
 	///
 	void setCharFont(Buffer const &, int pos, LyXFont const & font);
 	///
@@ -172,8 +171,6 @@ private:
 	void drawFrame(Painter &, int x) const;
 	///
 	void clearInset(Painter &, int x, int y) const;
-	///
-	void collapseParagraphs(BufferView *);
 
 	/* Private structures and variables */
 	///

@@ -54,7 +54,7 @@ auto_ptr<InsetBase> InsetBibitem::clone() const
 
 
 DispatchResult
-InsetBibitem::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
+InsetBibitem::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 {
 	switch (cmd.action) {
 
@@ -64,13 +64,13 @@ InsetBibitem::priv_dispatch(BufferView & bv, FuncRequest const & cmd)
 		if (p.getCmdName().empty())
 			return DispatchResult(true, true);
 		setParams(p);
-		bv.update();
-		bv.fitCursor();
+		cur.bv().update();
+		cur.bv().fitCursor();
 		return DispatchResult(true, true);
 	}
 
 	default:
-		return InsetCommand::priv_dispatch(bv, cmd);
+		return InsetCommand::priv_dispatch(cur, cmd);
 	}
 }
 
