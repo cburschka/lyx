@@ -30,6 +30,7 @@ widehat             decoration none
 widetilde           decoration none
 
 # dots
+dots              dots        none
 cdots             dots        none
 ddots             dots        none
 dotsb             dots        none
@@ -786,6 +787,7 @@ iffont cmsy
 \def\longleftarrow{\leftarrow\kern-9.5mu\lyxbar}
 \def\Longrightarrow{\lyxeq\kern-9.5mu\Rightarrow}
 \def\Longleftarrow{\Leftarrow\kern-9.5mu\lyxeq}
+\def\implies{\Longrightarrow}
 \def\mapsto{\mapstochar\kern-9mu\rightarrow}
 \def\longmapsto{\mapstochar\kern-6mu\lyxbar\kern-9.5mu\rightarrow}
 \def\models{\vert\kern-7mu\lyxeq}
