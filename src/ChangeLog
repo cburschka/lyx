@@ -1,3 +1,37 @@
+2001-06-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* paragraph_pimpl.C: add std:: qualifier to lower_bound and
+	upper_bound. 
+
+	* bufferlist.C: include assert.h for emergencyWrite().
+
+2001-06-22  John Levon  <moz@compsoc.man.ac.uk>
+
+	* lyx_main.C: if we can't even find a readable LYX_DIR directory,
+	  give up at last (bug #425202) !
+ 
+2001-06-27  John Levon  <moz@compsoc.man.ac.uk>
+
+	* lyx_gui_misc.C:
+	* sp_form.h:
+	* sp_form.C:
+	* spellchecker.h:
+	* spellchecker.C: strip spellchecker options and bring up
+	  preferences tab instead
+	 
+2001-06-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* BufferView_pimpl.C (Dispatch): add .c_str() to the argument of
+	the istringstream constructor
+
+2001-06-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* paragraph.C (getLayout): fix return value
+
+	* paragraph.h: do not declare getLayout as inline.
+
+	* lyxtext.h: remove LyXText:: qualifier to changeRegionCase
+
 2001-06-27  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* lyxcursor.h (operator<): new func

@@ -217,7 +217,6 @@ public:
 	///
 	void setLabelWidthString(string const & s);
 	///
-	inline
 	LyXTextClass::LayoutList::size_type getLayout() const;
 	///
 	char getAlign() const;

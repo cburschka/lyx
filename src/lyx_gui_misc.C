@@ -38,7 +38,6 @@ extern BufferView * current_view;
 extern FD_form_figure * fd_form_figure;
 extern FD_form_sendto * fd_form_sendto;
 extern FD_form_spell_check * fd_form_spell_check;
-extern FD_form_spell_options * fd_form_spell_options;
 
 extern void HideFiguresPopups();
 
@@ -60,10 +59,6 @@ void RedrawAllBufferRelatedDialogs()
 	if (fd_form_spell_check &&
 	    fd_form_spell_check->form_spell_check->visible) {
 		fl_redraw_form(fd_form_spell_check->form_spell_check);
-	}
-	if (fd_form_spell_options &&
-	    fd_form_spell_options->form_spell_options->visible) {
-		fl_redraw_form(fd_form_spell_options->form_spell_options);
 	}
 }
 

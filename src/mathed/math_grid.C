@@ -239,7 +239,7 @@ void MathGridInset::appendRow()
 {
 	rowinfo_.push_back(RowInfo());
 	for (int i = 0; i < ncols(); ++i)
-		cells_.push_back();
+		cells_.push_back(cells_type::value_type());
 }
 
 
@@ -270,7 +270,7 @@ void MathGridInset::addCol(int newcol)
 				= cells_[row * nc + col];
 	std::swap(cells_, new_cells);
 
-	colinfo_.insert(colinfo_.begin() + newcol);
+	colinfo_.insert(colinfo_.begin() + newcol, ColInfo());
 }
 
 

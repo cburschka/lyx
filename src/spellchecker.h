@@ -23,7 +23,5 @@ class BufferView;
 /** This function has to be implemented by the spell checker.
     It will show the spellcheker form*/ 
 void ShowSpellChecker(BufferView *);
-///
-void SpellCheckerOptions();
 
 #endif

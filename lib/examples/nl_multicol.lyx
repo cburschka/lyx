@@ -1,0 +1,710 @@
+#LyX 1.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 218
+\textclass article
+\begin_preamble
+\usepackage{multicol}
+\end_preamble
+\language dutch
+\inputencoding default
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize a4paper
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+Meervoudige kolommen
+\layout Author
+
+door 
+\noun on 
+Lars Gullik Bjønnes
+\layout Section
+
+Strekking
+\layout Standard
+
+Het is de bedoeling van dit hoofdstuk aan te geven hoe het LaTeX pakket
+ 
+\family typewriter 
+multicol
+\family default 
+ gebruikt kan worden in een LyX document.
+ Aangezien LyX het pakket 
+\family typewriter 
+multicol
+\family default 
+ nog niet van nature ondersteunt, moeten we een aantal kleine handelingen
+ verrichten.
+ Door dit deel te lezen zal duidelijk worden hoe dit gedaan moet worden.
+\layout Subsection
+
+Beperkingen 
+\layout Standard
+
+Met het 
+\family typewriter 
+multicol
+\family default 
+ pakket kun je op dezelfde pagina tussen een of meer kolommen schakelen.
+ Voetnoten worden correct behandeld (voor het merendeel), maar worden aan
+ de voet van de pagina geplaatst en niet onder elke kolom.
+ Echter, het LaTeX float mechanisme wordt gedeeltelijk uitgeschakeld in
+ de huidige implementatie.
+ Op dit moment kunnen alleen pagina-brede floats worden gebruikt binnen
+ de omgeving.
+ 
+\layout Subsection
+
+Voorbeelden
+\layout Subsubsection
+
+Twee kolommen
+\layout Standard
+\added_space_bottom -2ex 
+Als je twee kolommen in uw tekst wenst, moet je de LaTeX mode gebruiken
+ om 
+\family typewriter 
+
+\backslash 
+begin{multicols}{2}
+\family default 
+ te plaatsen op het punt waar je wilt dat de twee kolommen beginnen en 
+\family typewriter 
+
+\backslash 
+end{multicols}
+\family default 
+ waar je wilt dat ze eindigen.
+ Zoals hier: 
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+begin{multicols}{2}
+\layout Standard
+\noindent 
+
+\series bold 
+\size small 
+Het avontuur van het lege huis
+\series default 
+
+\newline 
+door 
+\noun on 
+Sir Arthur Conan Doyle
+\layout Standard
+
+
+\size small 
+Het was in het voorjaar van het jaar 1894 dat iedereen in Londen  geïnteresseerd
+ was in, en de fatsoenlijke wereld ontzet door, de moord op de  rechtschapen
+ Ronald Adair, onder de meest ongebruikelijke en onverklaarbare  omstandigheden.
+ Het publiek had reeds kennis genomen van de bijzonderheden van de misdaad
+ die uit het politieonderzoek bekend werden, maar een groot deel was in
+ dit geval achtergehouden, aangezien de zaak voor de officier van Justitie
+ zo overweldigend sterk was dat het niet nodig leek alle feiten naar voren
+ te brengen.
+ Pas nu, na bijna tien jaar, heb ik het recht de ontbrekende informatie
+ te verschaffen die het geheel van deze opmerkelijke reeks gebeurtenissen
+ verbindt.
+ De misdaad was op zichzelf al interessant, maar deze interesse was niets
+ in vergelijking met deze onbegrijpelijke aaneenschakeling, die me de grootste
+ schok en verrassing bracht van alle gebeurtenissen in mijn avontuurlijk
+ leven.
+ Zelfs nu, na zo lange tijd, word ik gegrepen als ik er aan denk, en voel
+ ik nogmaals die plotselinge vloed van geluk, verbijstering en ongeloof
+ die mijn gedachten volslagen overspoelden.
+ Laat ik aan het volk, dat enige interesse in de vluchtige blikken heeft
+ getoond die ik bij gelegenheid aan hen heb gegeven over de gedachten en
+ acties van een zeer bijzonder man, zeggen dat zij me niet moeten veroordelen
+ omdat ik mijn kennis niet met hen heb gedeeld, want ik zou het tot mijn
+ belangrijkste taak hebben moeten rekenen zo te handelen, als ik niet gehouden
+ was geweest aan het verbod van hemzelf, dat slechts sinds de derde van
+ de  vorige maand werd opgeheven.
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+end{multicols}
+\layout Subsubsection
+
+Meervoudige kolommen
+\layout Standard
+\added_space_bottom -2ex 
+Hetzelfde patroon wordt toegepast als je meer dan twee kolommen wenst.
+ (je kunt meer dan drie kolommen definieren, maar dat is mogelijk minder
+ plezierig voor het oog.)
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+begin{multicols}{3}
+\layout Standard
+
+
+\size footnotesize 
+U kunt zich voorstellen dat mijn nauwe vriendschap met Sherlock Holmes me
+ heeft geïnteresseerd in misdaad, en dat ik na zijn verdwijnen nooit heb
+ nagelaten nauwgezet de diverse zaken te lezen die werden voorgeleid.
+ Zelf heb ik meer dan eens gepoogd, voor mijn eigen persoonlijke genoegdoening,
+ zijn methoden toe te passen in hun oplossingen, hoewel met matig succes.
+ Er was geen, echter, die me meer aantrok dan de deze tragedie van Ronald
+ Adair.
+ Toen ik in het onderzoek het bewijs las dat had geleid tot de uitspraak,
+ moord op een onbekend persoon met voorbedachte rade, realiseerde ik me
+ duidelijker dan ooit tevoren het verlies dat de gemeenschap had geleden
+ door de dood van Sherlock Holmes.
+ Er waren speciale aanwijzingen in deze vreemde zaak die, zo was ik zeker,
+ hem speciaal zouden hebben aangetrokken, en de pogingen van de politie
+ zouden zijn aangevuld, of waarschijnlijker zijn voorzien, door de getrainde
+ observatie en de scherpe geest van de eerste misdaad rechercheur in Europa.
+ De hele dag, terwijl ik stond te ijsberen, heeft de zaak in mijn gedachten
+ gekronkeld, maar ik vond geen uitleg die me geschikt leek.
+ Met het risico een bekend verhaal te vertellen, wil ik de feiten samenvatten,
+ die bij het gerecht bekend waren in de conclusie van het onderzoek.
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+end{multicols}
+\layout Subsubsection
+
+Kolommen binnen kolommen
+\layout Standard
+\added_space_bottom -2ex 
+Je kunt zelfs kolommen binnen kolommen definieren:
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+begin{multicols}{2}
+\layout Standard
+\added_space_bottom -2ex 
+
+\size footnotesize 
+De rechtschapen Ronald Adair was de tweede zoon van de Graaf van Maynooth,
+ de toenmalige gouverneur van een Australische kolonie.
+ Adair's moeder was teruggekeerd uit Australie om een staar operatie te
+ ondergaan en zij, haar zoon Ronald en haar dochter Hilda leefden samen
+ op Park Lane 427.
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+begin{multicols}{2}
+\layout Standard
+
+
+\size footnotesize 
+De kinderen begaven zich in het beste milieu en hadden, voor zover bekend,
+ geen vijanden en geen bijzondere gebreken.
+ Hij was verloofd geweest met Edith Woodley, uit Carstairs, maar de verloving
+ werd verbroken met een onderlinge overeenstemming een paar maanden eerder
+ en er was geen enkele voorbode dat het een erg diepe gevoelens had  achtergelat
+en.
+ Het leven van de man speelde zich af op een nauwgezette en gebruikelijke
+ manier, want zijn gewoonten waren rustig en zijn natuur niet emotioneel.
+ Desondanks was het deze gemakkelijke jonge aristocraat die de dood vond,
+ op een vreemde en onverwachte manier, tussen tien en elf-twintig op de
+ avond van 30 maart, 1894.
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+end{multicols}
+\layout Standard
+
+
+\size footnotesize 
+Ronald Adair was bijzonder gesteld op het kaartspel, maar nooit zodanig
+ dat de verliezen hem zouden schaden.
+ Hij was een lid van de Baldwin, de Cavendish en de Bagatelle kaart clubs.
+ Het was bekend dat hij na het middagmaal op de dag van zijn dood een spelletje
+ whist had gespeeld bij de laatstgenoemde club.
+ Hij had daar in de namiddag ook gespeeld.
+
+\size default 
+ 
+\size footnotesize 
+De bewijzen van zij die met hem gespeeld hadden-- Mr.
+ Murray, Sir John Hardy,  en kolonel Moran-- toonden aan dat het spel whist
+ was geweest en dat er  eerlijk was gedeeld.
+ Adair heeft hier misschien vijf pond verloren, maar niet meer.
+ Zijn kapitaal was respectabel en een dergelijk verlies kon hem op geen
+ enkele manier beïnvloeden.
+ Hij speelde bijna iedere dag bij een van de clubs, maar hij was een  voorzichti
+ge speler en werd meestal de winnaar.
+ Uit de bewijsvoering bleek dat hij, samen met zijn partner kolonel Moran,
+ al eens vierhonderd en twintig pond had gewonnen in een enkele zitting,
+ enkele weken geleden, van Godfrey Milner en Lord Balmoral.
+ Tot zover zijn recente geschiedenis zoals dat uit het onderzoek bleek.
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+end{multicols}
+\layout Subsection
+
+Voorbeelden voor gevorderden
+\layout Standard
+
+Zoals je mogelijk weet, kent 
+\family typewriter 
+multicol
+\family default 
+ vele mogelijkheden om eigenschappen aan te passen.
+ De volgende voorbeelden tonen hoe deze mogelijkheden vanuit LyX kunnen
+ worden gebruikt.
+ 
+\layout Subsubsection
+
+Inleiding en overslaan
+\layout Standard
+
+Als er minder dan 5cm ruimte op de pagina over is, zal op een nieuwe pagina
+ worden begonnen voor dit deel dat een inleidende tekst boven twee  kolommen
+ heeft:
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+begin{multicols}{2}[
+\latex default 
+En het verhaal gaat verder en verder en verder\SpecialChar \ldots{}
+ 
+\latex latex 
+][5cm]
+\layout Standard
+
+
+\size small 
+Op de avond van de misdaad kwam hij precies om tien uur terug van de club.
+ Zijn moeder en zuster waren uit en brachten de avond bij een kennis door.
+ De bediende getuigde dat ze hem in de voorste kamer op de tweede verdieping,
+ meestal gebruikt als zijn zitkamer, hoorde binnenkomen.
+ Ze had daar een vuur gemaakt en omdat het zo rookte had ze het raam geopend.
+ Er werd geen geluid gehoord uit de kamer tot twintig over elf, de tijd
+ dat Lady Maynooth en haar dochter terugkeerden.
+ Ze wilde hem welterusten wensen en probeerde de kamer van haar zoon in
+ te gaan.
+ De deur was aan de binnenkant op slot gedraaid en er kwam geen  antwoord
+ op hun roepen en kloppen.
+ Hulp werd gehaald en de deur geforceerd.
+ De onfortuinlijke jongeman werd gevonden, liggend nabij de tafel.
+ Zijn hoofd was verschrikkelijk verminkt door een revolverschot, maar er
+ werd geen wapen van welk soort dan ook in de kamer gevonden.
+ Op de tafel lagen twee briefjes van tien pond en zeventien pond in zilver
+ en goud, het geld gestapeld in kleine hoeveelheden.
+ Er stonden een aantal getallen op een vel papier, met de namen van enkele
+ kaartvrienden daarnaast, waaruit de conclusie werd getrokken dat hij voor
+ zijn dood naar streefde zijn verliezen en winsten aan het spel op te maken.
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+end{multicols}
+\layout Subsubsection
+
+Inleiding en secties
+\layout Standard
+
+Wat te doen als je wilt dat met de inleiding meteen een nieuwe sectie begint?
+ Dat kan, maar alleen door LaTeX opdrachten binnen de parameters voor de
+ 
+\family typewriter 
+multicols
+\family default 
+ opdracht.
+ Hierdoor kan de sectie opdracht niet door LyX worden gegenereerd.
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+begin{multicols}{2}[
+\backslash 
+subsubsection{
+\latex default 
+Dit is de sectie opdracht als inleiding
+\latex latex 
+}][5cm]
+\layout Standard
+
+
+\size small 
+Het nauwkeurig onderzoeken van de omstandigheden zorgde er alleen voor dat
+ de zaak moeilijker werd.
+ In de eerste plaats was er geen reden te verzinnen waarom de jonge man
+ de deur vanaf de binnenkant gesloten zou hebben.
+ Het was mogelijk dat de moordenaar dat gedaan had en na afloop was ontsnapt
+ via het raam.
+ De val was echter nagenoeg twintig voet en bovendien lag er een bed met
+ krokussen in volle bloei onder.
+ Zowel de bloemen als de grond vertoonden geen teken dat ze waren verstoord,
+ en er waren geen sporen op het smalle grasperk dat het huis van de straat
+ scheidde.
+ Waarschijnlijk was het dus de jonge man zelf die de deur vanaf de binnenkant
+ had gesloten.
+ Maar hoe was hij dan vermoord? Niemand zou het door raam hebben kunnen
+ klimmen zonder sporen achter te laten.
+ Als we aannemen dat iemand door het raam had geschoten, dan zou het een
+ werkelijk opmerkelijke schutter moeten zijn geweest die met een revolver
+ een dergelijke dodelijke wond kon toebrengen.
+ Wederom, Park Lane is een veelgebruikte hoofdstraat; er is een taxi  standplaat
+s op nog geen honderd yards van het huis.
+  Niemand had een schot gehoord.
+ En desondanks was er de dode man en het revolver patroon, dat het lichaam
+ had doorboord, zoals patronen met zachte punt doen, en op die manier een
+ wond had veroorzaakt die een onmiddellijke dood tot gevolg moet hebben
+ gehad.
+ Deze waren de omstandigheden van het Park Lane raadsel, die verder gecompliceer
+d werden door de volledige afwezigheid van een motief, want, zoals ik heb
+ gezegd, de jonge Adair had voor zover bekend geen vijanden en er was geen
+ poging gedaan om geld of andere waardevolle zaken uit de kamer te verwijderen.
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+end{multicols}
+\layout Subsubsection
+
+Lege ruimte
+\layout Standard
+
+Het 
+\family typewriter 
+multicol
+\family default 
+ pakket vereist dat een zekere ruimte aanwezig is voor en na een deel met
+  meerdere kolommen.
+  Bovendien zal 
+\family typewriter 
+multicol
+\family default 
+ een lege ruimte plaatsen voor en na het deel met meerdere kolommen.
+   De opdrachten om de voorkeursinstellingen voor de witruimte aan te passen
+ moeten geplaatst worden voor 
+\family typewriter 
+
+\backslash 
+begin{multicols}
+\family default 
+.
+ Dit voorbeeld plaatst een witruimte van 3cm voor en na de tekst in meerdere
+ kolommen:
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+setlength{
+\backslash 
+multicolsep}{3cm}
+\backslash 
+begin{multicols}{2}
+\layout Standard
+
+
+\size small 
+De hele dag bleven deze feiten in mijn gedachten, strevend naar een theorie
+ die ze allemaal kon verenigen en de weg van de minste weerstand die volgens
+ mijn vriend het startpunt was van elk onderzoek.
+ Ik geef toe dat ik weinig voortgang boekte.
+ In de avond slenterde ik door het park en ik bevond me rond zes uur nabij
+ Oxford Street aan het einde van de Park Lane.
+ Een groep schooiers op de trottoirs, allemaal starend naar hetzelfde raam,
+ leidde me naar het huis dat ik kwam zien.
+  Een lange, dunne man met gekleurde glazen, die ik er sterk van verdenk
+ een een politieman in burger te zijn, vertelde zijn theorie, terwijl de
+ anderen zich om hem heen verzamelden en luisterden naar wat hij te vertellen
+ had.
+  Ik kwam zo dicht bij hem als ik kon, maar zijn waarnemingen leken mij
+ erg vreemd, zodat ik met afkeer afdroop.
+ Onderwijl stootte ik tegen een oudere, vervormde man die achter me stond
+ en  gooide ik enkele boeken die hij droeg op de grond.
+  Ik herinner me dat, terwijl ik de boeken opraapte, de titel van een van
+ de boeken bekeek, DE OORSPRONG VAN BOOM AANBIDDING, en het overviel me
+ dat de man een of andere arme bibliofiel moest zijn, die, dan wel van beroep
+ of bij wijze van hobby, verzamelaar van vreemde boekdelen was.
+ Ik probeerde me voor het ongeluk te verontschuldigen, maar het was duidelijk
+ dat de boeken die ik zo onfortuinlijk had behandeld in de ogen van hun
+ bezitter erg waardevol waren.
+ Met een verwijtende snauw lichte hij zijn hielen en ik zag zijn kromme
+ rug en witte bakkebaarden verdwijnen tussen de menigte.
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+end{multicols}
+\layout Paragraph
+
+Opmerking:
+\layout Standard
+
+De waarden die u heeft aangepast met 
+\family typewriter 
+
+\backslash 
+setlength
+\family default 
+ moeten na gebruik weer naar hun voorkeursinstelling worden teruggezet,
+ omdat je anders de aangepaste waarden voor de rest van het document behoudt.
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+setlength{
+\backslash 
+multicolsep}{13pt}
+\layout Subsubsection
+
+Kolom breedte en afscheiding
+\layout Standard
+
+De breedte van de kolommen in de 
+\family sans 
+multicols
+\family default 
+ omgeving wordt automatisch ingesteld, maar je kunt de ruimte tussen de
+ kolommen bewust aanpassen.
+ De ruimte tussen de volgende twee kolommen is 3cm breed:
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+setlength{
+\backslash 
+columnsep}{3cm}
+\backslash 
+begin{multicols}{2}
+\layout Standard
+
+
+\size small 
+Mijn observatie van Park Lane nr.
+  427 heeft weinig bijgedragen aan een oplossing voor het probleem waarin
+ ik was geïnteresseerd.
+ Het huis was van de straat gescheiden door een  lage muur en reling, in
+ totaal niet meer dan vijf voet hoog.
+  Het was daardoor behoorlijk gemakkelijk om in de tuin te komen, maar het
+ raam was totaal niet toegankelijk omdat er geen regenpijp of iets dergelijks
+ was dat kon helpen erin te klimmen.
+  In raadselen gehuld ging ik terug naar Kensington.
+ Ik was nog geen vijf minuten in mijn werkkamer toen mijn huishoudster me
+ vertelde dat er iemand was die me wilde spreken.
+ Tot mijn verbazing was het niemand minder dan de vreemde oude boeken verzamelaa
+r, zijn spitse verschrompelde gezicht in het witte haar gehuld, en zijn
+ waardevolle boekdelen, minstens tientallen, onder zijn arm geklemd.
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+end{multicols}
+\layout Standard
+
+Wederom moeten we de waarden naar hun voorkeursinstellingen terugzetten
+ om te voorkomen dat ze voor de rest van het document worden gebruikt.
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+setlength{
+\backslash 
+columnsep}{10pt}
+\layout Subsubsection
+
+Vertikale strepen
+\layout Standard
+
+Tussen twee kolommen wordt een regel met breedte 
+\family typewriter 
+
+\backslash 
+columnseprule
+\family default 
+ geplaatst.
+ Als deze lijn op 0 pt is ingesteld wordt de streep onderdrukt.
+ In het volgende voorbeeld is de lijn die twee kolommen van elkaar scheidt
+ 2 pt breed.
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+setlength{
+\backslash 
+columnseprule}{2pt}
+\backslash 
+begin{multicols}{2}
+\layout Standard
+
+
+\size small 
+
+\begin_inset Quotes eld
+\end_inset 
+
+U bent verbaasd mij te zien, mijnheer,
+\begin_inset Quotes erd
+\end_inset 
+
+ zij hij, met een vreemde, schorre stem.
+\layout Standard
+
+
+\size small 
+Dat werd door mij bevestigd.
+\layout Standard
+
+
+\size small 
+
+\begin_inset Quotes eld
+\end_inset 
+
+Weet U, ik heb een geweten, mijnheer, en toen ik zag dat u in dit huis ging,
+ terwijl ik u achterna strompelde, dacht ik bij mezelf, ik zal eens binnen
+ gaan en die aardige man vertellen dat ik een beetje bars was, dat ik geen
+ kwade bedoelingen had en hem veel verschuldigd ben voor het oprapen van
+ mijn boeken.
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Standard
+
+
+\size small 
+
+\begin_inset Quotes eld
+\end_inset 
+
+Het was een kleine moeite,
+\begin_inset Quotes erd
+\end_inset 
+
+ zei ik.
+ 
+\begin_inset Quotes eld
+\end_inset 
+
+Mag ik u vragen hoe u wist wie ik ben?
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Standard
+
+
+\size small 
+
+\begin_inset Quotes eld
+\end_inset 
+
+Weet u, meneer, als ik zo vrij mag zijn, ik ben een buurman van u, want
+ mijn kleine boekenwinkel is op de hoek van de Church Street en ik zou 
+ u er graag eens zien.
+ Misschien verzamelt u ook boeken, meneer.
+ Hier heb ik 
+\noun on 
+British\SpecialChar ~
+Birds
+\noun default 
+, 
+\noun on 
+Catullus
+\noun default 
+ en 
+\noun on 
+The Holy War
+\noun default 
+--een koopje, stuk voor stuk.
+ Met vijf boeken kunt u dat gat vullen op de tweede boekenplank.
+ Het lijkt rommelig, vindt u ook niet, meneer?
+\begin_inset Quotes erd
+\end_inset 
+
+
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+end{multicols}
+\layout Standard
+
+Zoals gebruikelijk moeten we de waarde herstellen na gebruik.
+\layout Standard
+
+
+\latex latex 
+
+\backslash 
+setlength{
+\backslash 
+columnseprule}{0pt}
+\layout Standard
+
+Je zult naar de bibliotheek moeten gaan om de rest van het verhaal te lezen.
+\begin_float footnote 
+\layout Standard
+
+\SpecialChar \ldots{}
+of het verhaal opscharrelen in het Gutenberg project, ergens op het web.
+ 
+\end_float 
+ Geloof het of niet, maar dit is een erg spannende scène uit het verhaal\SpecialChar \ldots{}
+
+\the_end

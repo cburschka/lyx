@@ -1,5 +1,9 @@
 2001-06-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
+	* math_grid.C (addCol): add second argument to cellinfo_.insert.
+	Cleanup a bit the code.
+	(appendRow): do not call push_back without argument.
+
 	* *.C: remove all "using namespace std" directives (not
 	good!!) and replaced it with relevant "using" directives.
 	

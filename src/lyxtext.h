@@ -354,7 +354,7 @@ public:
 	/// Change the case of the word at cursor position.
 	void changeCase(BufferView *, TextCase action);
 	///
-	void LyXText::changeRegionCase(BufferView * bview,
+	void changeRegionCase(BufferView * bview,
 				       LyXCursor const & from,
 				       LyXCursor const & to,
 				       LyXText::TextCase action);

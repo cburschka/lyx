@@ -19,7 +19,6 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <cstdlib>
-//#include <cstring>
 #include <csignal>
 #include <sys/wait.h>
 #include <sys/types.h>
@@ -57,6 +56,8 @@
 #include "buffer.h"
 #include "lyxrc.h"
 #include "BufferView.h"
+#include "LyXView.h" 
+#include "frontends/Dialogs.h" 
 #include "gettext.h"
 #include "lyx_gui_misc.h"
 #include "debug.h"
@@ -110,7 +111,6 @@ PspellManager * sc;
 
 
 // Non-static so that it can be redrawn if the xforms colors are re-mapped
-FD_form_spell_options *fd_form_spell_options = 0;
 FD_form_spell_check *fd_form_spell_check = 0;
 
 void sigchldhandler(pid_t pid, int *status);
@@ -165,129 +165,9 @@ const char * isp_result::next_miss()
 
 #endif
 
-const char * spell_error;
-
-
-/***** Spellchecker options *****/
-
-// Rewritten to use ordinary LyX xforms loop and OK, Apply and Cancel set,
-// now also string. Amazing, eh? (Asger)
-
-// Set (sane) values in form to current spellchecker options
-void SpellOptionsUpdate() 
-{
-	// Alternate language
-	if (lyxrc.isp_alt_lang.empty()) {
-		lyxrc.isp_use_alt_lang = false;
-	} else {
-		fl_set_input(fd_form_spell_options->altlang_input,
-			     lyxrc.isp_alt_lang.c_str());
-	}
-	if (lyxrc.isp_use_alt_lang) {
-		fl_set_button(fd_form_spell_options->buflang, 0);
-		fl_set_button(fd_form_spell_options->altlang, 1);
-	} else {
-		fl_set_button(fd_form_spell_options->buflang, 1);
-		fl_set_button(fd_form_spell_options->altlang, 0);
-	}  
-
-	// Personal dictionary
-	if (lyxrc.isp_pers_dict.empty()) {
-		lyxrc.isp_use_pers_dict = false;
-	} else {
-		fl_set_input(fd_form_spell_options->perdict_input,
-			     lyxrc.isp_pers_dict.c_str());
-	}
-	fl_set_button(fd_form_spell_options->perdict,
-		      lyxrc.isp_use_pers_dict ? 1:0);
-
-	// Escape chars
-	if (lyxrc.isp_esc_chars.empty()) {
-		lyxrc.isp_use_esc_chars = false;
-	} else {
-		fl_set_input(fd_form_spell_options->esc_chars_input,
-			     lyxrc.isp_esc_chars.c_str());
-	}
-	fl_set_button(fd_form_spell_options->esc_chars,
-		      lyxrc.isp_use_esc_chars ? 1:0);
-
-	// Options
-	fl_set_button(fd_form_spell_options->compounds,
-		      lyxrc.isp_accept_compound ? 1 : 0);
-	fl_set_button(fd_form_spell_options->inpenc,
-		      lyxrc.isp_use_input_encoding ? 1 : 0);
-}
-
-// Update spellchecker options
-void SpellOptionsApplyCB(FL_OBJECT *, long)
-{
-	// Build new status from form data
-	lyxrc.isp_use_alt_lang = 
-		fl_get_button(fd_form_spell_options->altlang);
-	lyxrc.isp_use_pers_dict = 
-		fl_get_button(fd_form_spell_options->perdict);
-	lyxrc.isp_accept_compound = 
-		fl_get_button(fd_form_spell_options->compounds);
-	lyxrc.isp_use_esc_chars = 
-		fl_get_button(fd_form_spell_options->esc_chars);
-	lyxrc.isp_use_input_encoding = 
-		fl_get_button(fd_form_spell_options->inpenc);
-
-	// Update strings with data from input fields
-	lyxrc.isp_alt_lang = 
-		fl_get_input(fd_form_spell_options->altlang_input);
-	lyxrc.isp_pers_dict = 
-		fl_get_input(fd_form_spell_options->perdict_input);
-	lyxrc.isp_esc_chars = 
-		fl_get_input(fd_form_spell_options->esc_chars_input);
-
-	// Update form
-	SpellOptionsUpdate();
-}
-
-
-void SpellOptionsCancelCB(FL_OBJECT *, long)
-{
-	fl_hide_form(fd_form_spell_options->form_spell_options);
-}
-
-
-void SpellOptionsOKCB(FL_OBJECT * ob, long data)
-{
-	SpellOptionsApplyCB(ob, data);
-	SpellOptionsCancelCB(ob, data);
-}
-
-
-// Show spellchecker options form
-void SpellCheckerOptions()
-{
-	// Create form if nescessary
-	if (fd_form_spell_options ==  0) {
-		fd_form_spell_options = create_form_form_spell_options();
-		// Make sure pressing the close box does not kill LyX. (RvdK)
-		fl_set_form_atclose(fd_form_spell_options->form_spell_options, 
-				    CancelCloseBoxCB, 0);
-	}
-
-	// Update form to current options
-	SpellOptionsUpdate();
-
-	// Focus in alternate language field
-	fl_set_focus_object(fd_form_spell_options->form_spell_options,
-			    fd_form_spell_options->altlang_input);
-
-	// Show form
-	if (fd_form_spell_options->form_spell_options->visible) {
-		fl_raise_form(fd_form_spell_options->form_spell_options);
-	} else {
-		fl_show_form(fd_form_spell_options->form_spell_options,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
-			     _("Spellchecker Options"));
-	}
-}
-
 namespace {
+ 
+const char * spell_error;
 
 #ifndef USE_PSPELL
 
@@ -480,7 +360,7 @@ void init_spell_checker(BufferParams const & params, string const & lang)
 			"could be that you do not have a dictionary file\n"
 			"for the language of this document installed.\n"
 			"Check /usr/lib/ispell or set another\n"
-			"dictionary in the Spellchecker Options menu.";
+			"dictionary in the spellchecker preferences.";
 	} else {
 		spell_error = 0;
 	}
@@ -740,7 +620,7 @@ void ShowSpellChecker(BufferView * bv)
 	while (true) {
 		obj = fl_do_forms();
 		if (obj == fd_form_spell_check->options) {
-			SpellCheckerOptions();
+			bv->owner()->getDialogs()->showSpellcheckerPreferences();
 		}
 		if (obj == fd_form_spell_check->start) {
 			// activate insert, accept, and stop

@@ -9,68 +9,6 @@
 #include <cstdlib>
 #include "sp_form.h"
 
-FD_form_spell_options *create_form_form_spell_options(void)
-{
-  FL_OBJECT *obj;
-  FD_form_spell_options *fdui = (FD_form_spell_options *) fl_calloc(1, sizeof(FD_form_spell_options));
-
-  fdui->form_spell_options = fl_bgn_form(FL_NO_BOX, 340, 400);
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 340, 400, "");
-    fl_set_object_lsize(obj, 0);
-  obj = fl_add_frame(FL_ENGRAVED_FRAME, 10, 20, 320, 110, "");
-    fl_set_object_color(obj, FL_COL1, FL_COL1);
-  obj = fl_add_frame(FL_ENGRAVED_FRAME, 10, 150, 320, 200, "");
-    fl_set_object_color(obj, FL_COL1, FL_COL1);
-
-  fdui->lang_buts = fl_bgn_group();
-  fdui->buflang = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 30, 320, 30, idex(_("Use language of document|#D")));fl_set_button_shortcut(obj, scex(_("Use language of document|#D")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-  fdui->altlang = obj = fl_add_checkbutton(FL_RADIO_BUTTON, 10, 60, 320, 30, idex(_("Use alternate language:|#U")));fl_set_button_shortcut(obj, scex(_("Use alternate language:|#U")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-  fl_end_group();
-
-  fdui->altlang_input = obj = fl_add_input(FL_NORMAL_INPUT, 40, 90, 240, 30, "");
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-  fdui->compounds = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 10, 160, 320, 30, idex(_("Treat run-together words as legal|#T")));fl_set_button_shortcut(obj, scex(_("Treat run-together words as legal|#T")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-  fdui->inpenc = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 10, 190, 320, 30, idex(_("Input Encoding switch to ispell|#I")));fl_set_button_shortcut(obj, scex(_("Input Encoding switch to ispell|#I")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-  fdui->ok = obj = fl_add_button(FL_RETURN_BUTTON, 10, 360, 100, 30, _("OK"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, SpellOptionsOKCB, 0);
-  obj = fl_add_button(FL_NORMAL_BUTTON, 230, 360, 100, 30, idex(_("Cancel|^[")));fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, SpellOptionsCancelCB, 0);
-  fdui->perdict = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 10, 220, 320, 30, idex(_("Use alternate personal dictionary:|#P")));fl_set_button_shortcut(obj, scex(_("Use alternate personal dictionary:|#P")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-  fdui->esc_chars = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 10, 280, 320, 30, idex(_("Extra special chars allowed in words:|#E")));fl_set_button_shortcut(obj, scex(_("Extra special chars allowed in words:|#E")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-  fdui->perdict_input = obj = fl_add_input(FL_NORMAL_INPUT, 40, 250, 240, 30, "");
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-  fdui->esc_chars_input = obj = fl_add_input(FL_NORMAL_INPUT, 40, 310, 240, 30, "");
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-  obj = fl_add_text(FL_NORMAL_TEXT, 20, 10, 90, 20, _("Dictionary"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-    fl_set_object_lstyle(obj, FL_BOLD_STYLE);
-  obj = fl_add_text(FL_NORMAL_TEXT, 30, 140, 70, 20, _("Options"));
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_lalign(obj, FL_ALIGN_LEFT|FL_ALIGN_INSIDE);
-    fl_set_object_lstyle(obj, FL_BOLD_STYLE);
-  obj = fl_add_button(FL_NORMAL_BUTTON, 120, 360, 100, 30, idex(_("Apply|#A")));fl_set_button_shortcut(obj, scex(_("Apply|#A")), 1);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-    fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
-    fl_set_object_callback(obj, SpellOptionsApplyCB, 0);
-  fl_end_form();
-
-  fdui->form_spell_options->fdui = fdui;
-
-  return fdui;
-}
-/*---------------------------------------*/
-
 FD_form_spell_check *create_form_form_spell_check(void)
 {
   FL_OBJECT *obj;

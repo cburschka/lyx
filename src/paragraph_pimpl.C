@@ -93,17 +93,17 @@ void Paragraph::Pimpl::insertChar(Paragraph::size_type pos,
 
 	// Update the font table.
 	FontTable search_font(pos, LyXFont());
-	for (FontList::iterator it = lower_bound(fontlist.begin(),
-						 fontlist.end(),
-						 search_font, matchFT());
+	for (FontList::iterator it = std::lower_bound(fontlist.begin(),
+						      fontlist.end(),
+						      search_font, matchFT());
 	     it != fontlist.end(); ++it)
 		(*it).pos((*it).pos() + 1);
    
 	// Update the inset table.
 	InsetTable search_inset(pos, 0);
-	for (InsetList::iterator it = lower_bound(owner_->insetlist.begin(),
-						  owner_->insetlist.end(),
-						  search_inset, matchIT());
+	for (InsetList::iterator it = std::lower_bound(owner_->insetlist.begin(),
+						       owner_->insetlist.end(),
+						       search_inset, matchIT());
 	     it != owner_->insetlist.end(); ++it)
 		++(*it).pos;
 
@@ -122,9 +122,9 @@ void Paragraph::Pimpl::insertInset(Paragraph::size_type pos,
 	
 	// Add a new entry in the inset table.
 	InsetTable search_inset(pos, 0);
-	InsetList::iterator it = lower_bound(owner_->insetlist.begin(),
-					     owner_->insetlist.end(),
-					     search_inset, matchIT());
+	InsetList::iterator it = std::lower_bound(owner_->insetlist.begin(),
+						  owner_->insetlist.end(),
+						  search_inset, matchIT());
 	if (it != owner_->insetlist.end() && (*it).pos == pos) {
 		lyxerr << "ERROR (Paragraph::InsertInset): "
 			"there is an inset in position: " << pos << std::endl;
@@ -145,9 +145,9 @@ void Paragraph::Pimpl::erase(Paragraph::size_type pos)
 		// find the entry
 		InsetTable search_inset(pos, 0);
 		InsetList::iterator it =
-			lower_bound(owner_->insetlist.begin(),
-				    owner_->insetlist.end(),
-				    search_inset, matchIT());
+			std::lower_bound(owner_->insetlist.begin(),
+					 owner_->insetlist.end(),
+					 search_inset, matchIT());
 		if (it != owner_->insetlist.end() && (*it).pos == pos) {
 			delete (*it).inset;
 			owner_->insetlist.erase(it);
@@ -160,7 +160,7 @@ void Paragraph::Pimpl::erase(Paragraph::size_type pos)
 	FontTable search_font(pos, LyXFont());
 	
 	FontList::iterator it =
-		lower_bound(fontlist.begin(),
+		std::lower_bound(fontlist.begin(),
 			    fontlist.end(),
 			    search_font, matchFT());
 	if (it != fontlist.end() && (*it).pos() == pos &&
@@ -190,9 +190,9 @@ void Paragraph::Pimpl::erase(Paragraph::size_type pos)
 	InsetTable search_inset(pos, 0);
 	InsetList::iterator lend = owner_->insetlist.end();
 	for (InsetList::iterator it =
-		     upper_bound(owner_->insetlist.begin(),
-				 lend,
-				 search_inset, matchIT());
+		     std::upper_bound(owner_->insetlist.begin(),
+				      lend,
+				      search_inset, matchIT());
 	     it != lend; ++it)
 		--(*it).pos;
 }

@@ -2004,7 +2004,7 @@ void  Paragraph::id(int id_arg)
 }
 
 
-LyXTextClass::size_type Paragraph::getLayout() const
+LyXTextClass::LayoutList::size_type Paragraph::getLayout() const
 {
 	return layout;
 }

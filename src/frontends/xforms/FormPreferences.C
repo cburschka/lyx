@@ -79,6 +79,7 @@ FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	// This is a permanent connection so we won't bother
 	// storing a copy because we won't be disconnecting.
 	d->showPreferences.connect(slot(this, &FormPreferences::show));
+	d->showSpellcheckerPreferences.connect(slot(this, &FormPreferences::showSpellPref));
 }
 
 
@@ -136,6 +137,14 @@ FL_FORM * FormPreferences::form() const
 {
 	if (dialog_.get()) return dialog_->form;
 	return 0;
+}
+
+
+void FormPreferences::showSpellPref()
+{
+	show();
+	fl_set_folder(dialog_->tabfolder_prefs, lang_opts_tab_->form);
+	fl_set_folder(lang_opts_tab_->tabfolder_outer, spellchecker_.dialog()->form);
 }
 
 

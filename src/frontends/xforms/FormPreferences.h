@@ -71,6 +71,8 @@ private:
 	virtual void redraw();
 	/// Update the dialog.
 	virtual void update();
+	/// show the spellchecker tab
+	void showSpellPref();
 	/// Hide the dialog.
 	virtual void hide();
 	/// OK (Save) from dialog

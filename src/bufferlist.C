@@ -18,6 +18,7 @@
 
 #include <config.h>
 
+#include <assert.h>
 #include <algorithm>
 #include <functional>
 

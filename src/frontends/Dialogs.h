@@ -133,6 +133,8 @@ public:
 	SigC::Signal0<void> showPreamble;
 	///
 	SigC::Signal0<void> showPreferences;
+	/// bring up the spellchecker tab in preferences
+	SigC::Signal0<void> showSpellcheckerPreferences;
 	///
 	SigC::Signal0<void> showPrint;
 	///

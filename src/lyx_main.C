@@ -311,12 +311,19 @@ void LyX::init(bool gui)
 		       <<_("set the environment variable LYX_DIR_11x to the "
 			   "LyX system directory ")
 		       << _("containing the file `chkconfig.ltx'.") << endl;
-		if (!path_shown)
+		if (!path_shown) {
+			FileInfo fi(LYX_DIR);
+			if (!fi.exist()) {
+				lyxerr << "Couldn't even find the default LYX_DIR." << endl
+					<< "Giving up." << endl;
+				exit(1);
+			}
 			lyxerr << _("Using built-in default ") 
 			       << LYX_DIR << _(" but expect problems.")
 			       << endl;
-		else
+		} else {
 			lyxerr << _("Expect problems.") << endl;
+		}
 		system_lyxdir = LYX_DIR;
 		path_shown = true;
 	}
