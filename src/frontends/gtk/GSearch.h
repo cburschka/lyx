@@ -27,7 +27,7 @@ public:
 private:
 	virtual void apply() {}
 	virtual void doBuild();
-	virtual void update() {}
+	virtual void update();
 
 	void onFindNext();
 	void onReplace();

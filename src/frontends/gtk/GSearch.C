@@ -62,6 +62,13 @@ void GSearch::doBuild()
 }
 
 
+void GSearch::update()
+{
+	bc().refreshReadOnly();
+	onFindEntryChanged();
+}
+
+
 void GSearch::onFindNext()
 {
 	controller().find(findentry->get_text(),
@@ -101,8 +108,8 @@ void GSearch::onFindEntryChanged()
 		replaceallbutton->set_sensitive(false);
 	} else {
 		findnextbutton->set_sensitive(true);
-		replacebutton->set_sensitive(true);
-		replaceallbutton->set_sensitive(true);
+		replacebutton->set_sensitive(!readOnly());
+		replaceallbutton->set_sensitive(!readOnly());
 	}
 }
 
