@@ -15,7 +15,6 @@
 #include "math_fontoldinset.h"
 #include "math_fracinset.h"
 #include "math_kerninset.h"
-#include "math_inferinset.h"
 #include "math_lefteqninset.h"
 #include "math_macro.h"
 #include "math_macrotable.h"
