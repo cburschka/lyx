@@ -1,4 +1,10 @@
 
+2004-02-02  André Pönitz  <poenitz@gmx.net>
+
+	* cursor.[Ch]: remove direct access to anchor
+
+	* text.C: remove findText() hack
+
 2004-02-02  Alfredo Braunstein  <abraunst@lyx.org>
 
 	* iterators.[Ch] (lockPath): remove in favour of...

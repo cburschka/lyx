@@ -79,9 +79,9 @@ LyXText::LyXText(BufferView * bv, bool in_inset)
 {}
 
 
-void LyXText::init(BufferView * bview)
+void LyXText::init(BufferView * bv)
 {
-	bv_owner = bview;
+	bv_owner = bv;
 
 	ParagraphList::iterator const beg = paragraphs().begin();
 	ParagraphList::iterator const end = paragraphs().end();
@@ -94,8 +94,7 @@ void LyXText::init(BufferView * bview)
 	current_font = getFont(beg, 0);
 
 	redoParagraphs(beg, end);
-	setCursorIntern(0, 0);
-	bv()->cursor().resetAnchor();
+	bv->cursor().resetAnchor();
 
 	updateCounters();
 }

@@ -391,10 +391,6 @@ public:
 	CursorSlice & cursor();
 	/// the topmost cursor slice
 	CursorSlice const & cursor() const;
-	/// access to the selection anchor
-	CursorSlice & anchor();
-	/// access to the selection anchor
-	CursorSlice const & anchor() const;
 
 	friend class LyXScreen;
 

@@ -328,9 +328,6 @@ void BufferView::Pimpl::buffer(Buffer * b)
 		if (bv_->text() == 0)
 			resizeCurrentBuffer();
 
-		// FIXME: needed when ?
-		fitCursor();
-
 		// Buffer-dependent dialogs should be updated or
 		// hidden. This should go here because some dialogs (eg ToC)
 		// require bv_->text.
@@ -905,7 +902,7 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 		if (inset) {
 			res = inset->dispatch(cur, cmd);
 		} else {
-			res = cur.innerText()->dispatch(cur, cmd);
+			res = bv_->text()->dispatch(cur, cmd);
 		}
 
 		if (bv_->fitCursor() || res.update()) {

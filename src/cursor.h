@@ -201,6 +201,8 @@ public:
 	///
 	Paragraph const & paragraph() const;
 	///
+	LyXText * text() const;
+	///
 	InsetBase * innerInsetOfType(int code) const;
 	///
 	InsetTabular * innerInsetTabular() const;

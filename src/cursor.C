@@ -474,6 +474,12 @@ void LCursor::clearTargetX()
 }
 
 
+LyXText * LCursor::text() const
+{
+	return current_ ? current().text() : bv_->text();
+}
+
+
 Paragraph & LCursor::paragraph()
 {
 	return current_ ? current().paragraph() : *bv_->text()->getPar(par());
@@ -723,7 +729,7 @@ std::ostream & operator<<(std::ostream & os, LCursor const & cur)
 	os << "\n";
 	for (size_t i = 0, n = cur.cursor_.size(); i != n; ++i)
 		os << "  (" << cur.cursor_[i] << " | " << cur.anchor_[i] << "\n";
-	return os;
+	return os << "current: " << cur.current_ << endl;
 }
 
 
@@ -1705,7 +1711,7 @@ CursorSlice LCursor::normalAnchor()
 	}
 	//lyx::BOOST_ASSERT(Anchor_.size() >= cursor.depth());
 	// use Anchor on the same level as Cursor
-	CursorSlice normal = anchor_[depth() - 1];
+	CursorSlice normal = anchor_[current_];
 #if 0
 	if (depth() < anchor_.size() && !(normal < xx())) {
 		// anchor is behind cursor -> move anchor behind the inset

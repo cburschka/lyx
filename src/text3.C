@@ -762,9 +762,10 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	case LFUN_BACKSPACE_SKIP:
 		// Reverse the effect of LFUN_BREAKPARAGRAPH_SKIP.
 		if (!cur.selection()) {
-			CursorSlice cur = cursor();
+#warning look here
+			//CursorSlice cur = cursor();
 			backspace();
-			anchor() = cur;
+			//anchor() = cur;
 		} else {
 			cutSelection(true, false);
 		}
@@ -793,10 +794,11 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		// When at the beginning of a paragraph, remove
 		// indentation and add a "defskip" at the top.
 		// Otherwise, do the same as LFUN_BREAKPARAGRAPH.
-		CursorSlice cur = cursor();
+#warning look here
+//		CursorSlice cur = cursor();
 		replaceSelection(bv->getLyXText());
 		if (cur.pos() == 0) {
-			ParagraphParameters & params = getPar(cur)->params();
+			ParagraphParameters & params = getPar(cur.current())->params();
 			setParagraph(
 					params.spacing(),
 					params.align(),
@@ -805,7 +807,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			breakParagraph(bv->buffer()->paragraphs(), 0);
 		}
 		bv->update();
-		anchor() = cur;
+//	anchor() = cur;
 		bv->switchKeyMap();
 		bv->owner()->view_state_changed();
 		break;

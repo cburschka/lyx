@@ -1933,46 +1933,26 @@ int LyXText::cursorY(CursorSlice const & cur) const
 }
 
 
-namespace {
-
-int findText(LyXText const * text)
-{
-	CursorBase & cur = text->bv()->cursor().cursor_;
-	//lyxerr << "findText: text: " << text << " cursor: "
-	//	<< text->bv()->cursor() << endl;
-	for (int i = cur.size() - 1; i > 0; --i)
-		if (cur[i].text() == text)
-			return i;
-	if (text->bv()->text() == text)
-		return 0;
-	lyxerr << "Trying to access text not touched by cursor" << endl;
-	BOOST_ASSERT(false);
-	return 0; // shut up compiler
-}
-
-}
-
-
 CursorSlice & LyXText::cursor()
 {
 	//lyxerr << "# accessing slice " << findText(this) << endl;
-	return bv()->cursor().cursor_[findText(this)];
+	if (this != bv()->cursor().text()) {
+		lyxerr << "cursor: " << bv()->cursor()
+			<< "\ntext: " << bv()->cursor().text() 
+			<< "\nthis: " << this << endl;
+		BOOST_ASSERT(false);
+	}
+	return bv()->cursor().current();
 }
 
 
 CursorSlice const & LyXText::cursor() const
 {
-	return bv()->cursor().cursor_[findText(this)];
-}
-
-
-CursorSlice & LyXText::anchor()
-{
-	return bv()->cursor().anchor_[findText(this)];
-}
-
-
-CursorSlice const & LyXText::anchor() const
-{
-	return bv()->cursor().anchor_[findText(this)];
+	if (this != bv()->cursor().text()) {
+		lyxerr << "cursor: " << bv()->cursor()
+			<< "\ntext: " << bv()->cursor().text() 
+			<< "\nthis: " << this << endl;
+		BOOST_ASSERT(false);
+	}
+	return bv()->cursor().current();
 }
