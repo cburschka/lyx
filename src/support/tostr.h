@@ -20,6 +20,9 @@
 
 #include <string>
 
+
+#if 0
+// Commented out since BOOST_STATIC_ASSERT does not work with gcc 4.0
 template <class Target, class Source>
 Target convert(Source arg)
 {
@@ -28,6 +31,11 @@ Target convert(Source arg)
 	BOOST_STATIC_ASSERT(sizeof(bool) == 0);
 	return Target();
 }
+#else
+template <class Target, class Source>
+Target convert(Source arg);
+#endif
+
 
 template<>
 std::string convert<std::string>(bool);
