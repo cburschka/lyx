@@ -296,7 +296,6 @@ void LyXScreen::redraw(BufferView & bv)
 
 	workarea().getPainter().start();
 
-	bv.text->updateRowPositions();
 	hideCursor();
 
 	int const y = paintText(bv, *bv.text);
