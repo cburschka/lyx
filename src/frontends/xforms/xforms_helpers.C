@@ -201,7 +201,7 @@ void updateWidgetsFromLength(FL_OBJECT * input, FL_OBJECT * choice,
 	lyx::Assert(input  && input->objclass  == FL_INPUT &&
 		    choice && choice->objclass == FL_CHOICE);
 
-	if (len.zero()) {
+	if (len.empty()) {
 		fl_set_input(input, "");
 		fl_set_choice_text(choice, default_unit.c_str());
 	} else {

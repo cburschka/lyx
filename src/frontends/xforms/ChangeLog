@@ -1,3 +1,8 @@
+2002-12-18  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* xforms_helpers.C: (updateWidgetsFromLength)
+	use len.empty() instead of len.zero() [bug 490]
+
 2002-10-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* xformsGImage.C (getWidth): add 4 instead of 2 in the fix below,

@@ -22,4 +22,10 @@ What's new
 
 ** Bug fixes
 
+- fix problem where it was not possible to force some values to 0 in
+  custom margins
+
+- fix functions word-find-forward and word-find-backward, which
+  meaning was inverted
+
 - fix an installation issue with solaris

@@ -1,3 +1,12 @@
+2002-12-18  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
+
+	* lyxlength.[Ch]: set default unit to UNIT_NONE,
+	implement bool empty() [bug 490]
+
+2002-12-17  Alfredo Braunstein <abraunst@libero.it>
+
+	* lyxfunc.C: correct  inversion of WORDFINDBACK/FORWARD
+
 2002-12-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* version.C.in: update (again) release date for 1.2.2

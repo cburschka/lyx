@@ -63,6 +63,8 @@ public:
 	void unit(LyXLength::UNIT unit);
 	///
 	bool zero() const;
+	///
+	bool empty() const;
 	/// return string representation
 	string const asString() const;
 	/// return string representation for LaTeX
