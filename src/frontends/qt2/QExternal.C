@@ -79,17 +79,18 @@ void QExternal::update_contents()
 
 	int item = 0;
 	switch (params.display) {
-		case lyx::graphics::DefaultDisplay: item = 0; break;
-		case lyx::graphics::MonochromeDisplay: item = 1; break;
-		case lyx::graphics::GrayscaleDisplay: item = 2; break;
-		case lyx::graphics::ColorDisplay: item = 3; break;
-		case lyx::graphics::NoDisplay: item = 0; break;
+		case lyx::external::DefaultDisplay: item = 0; break;
+		case lyx::external::MonochromeDisplay: item = 1; break;
+		case lyx::external::GrayscaleDisplay: item = 2; break;
+		case lyx::external::ColorDisplay: item = 3; break;
+		case lyx::external::PreviewDisplay: item = 4; break;
+		case lyx::external::NoDisplay: item = 0; break;
 	}
 	dialog_->showCB->setCurrentItem(item);
-	dialog_->showCB->setEnabled(params.display != lyx::graphics::NoDisplay &&
+	dialog_->showCB->setEnabled(params.display != lyx::external::NoDisplay &&
 				    !readOnly());
-	dialog_->displayCB->setChecked(params.display != lyx::graphics::NoDisplay);
-	dialog_->displayscale->setEnabled(params.display != lyx::graphics::NoDisplay &&
+	dialog_->displayCB->setChecked(params.display != lyx::external::NoDisplay);
+	dialog_->displayscale->setEnabled(params.display != lyx::external::NoDisplay &&
 					  !readOnly());
 	dialog_->displayscale->setText(toqstr(tostr(params.lyxscale)));
 
@@ -157,15 +158,16 @@ void QExternal::apply()
 		controller().getTemplate(dialog_->externalCO->currentItem()).lyxName);
 
 	switch (dialog_->showCB->currentItem()) {
-		case 0: params.display = lyx::graphics::DefaultDisplay; break;
-		case 1: params.display = lyx::graphics::MonochromeDisplay; break;
-		case 2: params.display = lyx::graphics::GrayscaleDisplay; break;
-		case 3: params.display = lyx::graphics::ColorDisplay; break;
+		case 0: params.display = lyx::external::DefaultDisplay; break;
+		case 1: params.display = lyx::external::MonochromeDisplay; break;
+		case 2: params.display = lyx::external::GrayscaleDisplay; break;
+		case 3: params.display = lyx::external::ColorDisplay; break;
+		case 4: params.display = lyx::external::PreviewDisplay; break;
 		default:;
 	}
 
 	if (!dialog_->displayCB->isChecked())
-		params.display = lyx::graphics::NoDisplay;
+		params.display = lyx::external::NoDisplay;
 
 	params.lyxscale = strToInt(fromqstr(dialog_->displayscale->text()));
 

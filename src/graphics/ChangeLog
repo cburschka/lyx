@@ -1,5 +1,10 @@
 2003-10-22  Angus Leeming  <leeming@lyx.org>
 
+	* PreviewImage.C (statusChanged): always pass on the signal, not just
+	when the preview is ready for display.
+
+2003-10-22  Angus Leeming  <leeming@lyx.org>
+
 	* GraphicsConverter.C (Impl c-tor): add a warning message if the file
 	to contain the conversion script cannot be opened.
 

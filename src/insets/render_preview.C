@@ -10,12 +10,16 @@
 
 #include <config.h>
 
-#include "render_preview.h"
+#include "insets/render_preview.h"
+#include "insets/inset.h"
 
+#include "BufferView.h"
 #include "dimension.h"
+#include "gettext.h"
 #include "LColor.h"
 #include "metricsinfo.h"
 
+#include "frontends/font_metrics.h"
 #include "frontends/Painter.h"
 
 #include "graphics/PreviewImage.h"
@@ -57,16 +61,53 @@ RenderBase * RenderPreview::clone() const
 }
 
 
-void RenderPreview::metrics(MetricsInfo &, Dimension & dim) const
+namespace {
+
+string const statusMessage(BufferView const * bv, string const & snippet)
+{
+	BOOST_ASSERT(bv && bv->buffer());
+
+	Buffer const & buffer = *bv->buffer();
+	graphics::Previews const & previews = graphics::Previews::get();
+	graphics::PreviewLoader const & loader = previews.loader(buffer);
+	graphics::PreviewLoader::Status const status = loader.status(snippet);
+
+	string message;
+	switch (status) {
+	case graphics::PreviewLoader::InQueue:
+	case graphics::PreviewLoader::Processing:
+		message = _("Preview loading");
+		break;
+	case graphics::PreviewLoader::Ready:
+		message = _("Preview ready");
+		break;
+	case graphics::PreviewLoader::NotFound:
+		message = _("Preview failed");
+		break;
+	}
+
+	return message;
+}
+
+} // namespace anon
+
+
+void RenderPreview::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (previewReady()) {
 		dim.asc = pimage_->ascent();
 		dim.des = pimage_->descent();
 		dim.wid = pimage_->width();
 	} else {
-		dim.asc = 20;
-		dim.des = 20;
-		dim.wid = 20;
+		dim.asc = 50;
+		dim.des = 0;
+
+		LyXFont font(mi.base.font);
+		font.setFamily(LyXFont::SANS_FAMILY);
+		font.setSize(LyXFont::SIZE_FOOTNOTE);
+		dim.wid = 15 +
+			font_metrics::width(statusMessage(mi.base.bv, snippet_),
+					    font);
 	}
 
 	dim_ = dim;
@@ -75,12 +116,28 @@ void RenderPreview::metrics(MetricsInfo &, Dimension & dim) const
 
 void RenderPreview::draw(PainterInfo & pi, int x, int y) const
 {
-	if (!previewReady())
-		pi.pain.rectangle(x, y - dim_.asc, dim_.wid, dim_.height(),
-				  LColor::foreground);
-	else
+	BOOST_ASSERT(pi.base.bv && pi.base.bv->buffer());
+	Buffer const & buffer = *pi.base.bv->buffer();
+	startLoading(buffer);
+
+	if (previewReady()) {
 		pi.pain.image(x, y - dim_.asc, dim_.wid, dim_.height(),
 			      *(pimage_->image()));
+		return;
+	}
+
+	pi.pain.rectangle(x + InsetOld::TEXT_TO_INSET_OFFSET,
+			  y - dim_.asc,
+			  dim_.wid - 2 * InsetOld::TEXT_TO_INSET_OFFSET,
+			  dim_.asc + dim_.des,
+			  LColor::foreground);
+
+	LyXFont font(pi.base.font);
+	font.setFamily(LyXFont::SANS_FAMILY);
+	font.setSize(LyXFont::SIZE_FOOTNOTE);
+	pi.pain.text(x + InsetOld::TEXT_TO_INSET_OFFSET + 6,
+		     y - font_metrics::maxAscent(font) - 4,
+		     statusMessage(pi.base.bv, snippet_), font);
 }
 
 
@@ -90,8 +147,19 @@ boost::signals::connection RenderPreview::connect(slot_type const & slot)
 }
 
 
-void RenderPreview::generatePreview(string const & latex_snippet,
-				     Buffer const & buffer)
+void RenderPreview::startLoading(Buffer const & buffer) const
+{
+	if (!activated() && !snippet_.empty())
+		return;
+
+	graphics::Previews & previews = graphics::Previews::get();
+	graphics::PreviewLoader & loader = previews.loader(buffer);
+	loader.startLoading();
+}
+
+
+void RenderPreview::addPreview(string const & latex_snippet,
+			       Buffer const & buffer)
 {
 	if (!activated())
 		return;
@@ -99,13 +167,11 @@ void RenderPreview::generatePreview(string const & latex_snippet,
 	graphics::Previews & previews = graphics::Previews::get();
 	graphics::PreviewLoader & loader = previews.loader(buffer);
 	addPreview(latex_snippet, loader);
-	if (!snippet_.empty())
-		loader.startLoading();
 }
 
 
 void RenderPreview::addPreview(string const & latex_snippet,
-				graphics::PreviewLoader & ploader)
+			       graphics::PreviewLoader & ploader)
 {
 	if (!activated())
 		return;
@@ -161,10 +227,17 @@ void RenderPreview::imageReady(graphics::PreviewImage const & pimage)
 }
 
 
-void RenderMonitoredPreview::startMonitoring(string const & file)
+void RenderMonitoredPreview::setAbsFile(string const & file)
 {
 	monitor_.reset(file);
-	monitor_.start();
+}
+
+
+void RenderMonitoredPreview::draw(PainterInfo & pi, int x, int y) const
+{
+	RenderPreview::draw(pi, x, y);
+	if (!monitoring())
+		startMonitoring();
 }
 
 

@@ -150,9 +150,9 @@ void PreviewImage::Impl::statusChanged()
 
 	case Ready:
 		support::unlink(iloader_.filename());
-		ploader_.emitSignal(parent_);
 		break;
 	}
+	ploader_.emitSignal(parent_);
 }
 
 } // namespace graphics

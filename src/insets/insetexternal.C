@@ -15,6 +15,7 @@
 #include "insets/ExternalTemplate.h"
 #include "insets/render_button.h"
 #include "insets/render_graphic.h"
+#include "insets/render_preview.h"
 
 #include "buffer.h"
 #include "BufferView.h"
@@ -31,6 +32,10 @@
 #include "frontends/lyx_gui.h"
 #include "frontends/LyXView.h"
 
+#include "graphics/PreviewLoader.h"
+
+#include "support/FileInfo.h"
+#include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
 #include "support/tostr.h"
@@ -42,6 +47,7 @@
 
 namespace support = lyx::support;
 namespace external = lyx::external;
+namespace graphics = lyx::graphics;
 
 using std::endl;
 using std::string;
@@ -54,7 +60,7 @@ using std::vector;
 
 namespace {
 
-lyx::graphics::DisplayType const defaultDisplayType = lyx::graphics::NoDisplay;
+external::DisplayType const defaultDisplayType = external::NoDisplay;
 
 unsigned int defaultLyxScale = 100;
 
@@ -91,6 +97,32 @@ TempName::operator=(TempName const & other)
 	if (this != &other)
 		tempname_ = TempName()();
 	return *this;
+}
+
+namespace {
+
+/// The translator between the Display enum and corresponding lyx string.
+Translator<DisplayType, string> const initTranslator()
+{
+	Translator<DisplayType, string> translator(DefaultDisplay, "default");
+
+	// Fill the display translator
+	translator.addPair(MonochromeDisplay, "monochrome");
+	translator.addPair(GrayscaleDisplay, "grayscale");
+	translator.addPair(ColorDisplay, "color");
+	translator.addPair(PreviewDisplay, "preview");
+	translator.addPair(NoDisplay, "none");
+
+	return translator;
+}
+
+} // namespace anon
+
+Translator<DisplayType, string> const & displayTranslator() 
+{
+	static Translator<DisplayType, string> const translator =
+		initTranslator();
+	return translator;
 }
 
 } // namespace external
@@ -155,7 +187,7 @@ void InsetExternalParams::write(Buffer const & buffer, ostream & os) const
 
 	if (display != defaultDisplayType)
 		os << "\tdisplay "
-		   << lyx::graphics::displayTranslator().find(display)
+		   << external::displayTranslator().find(display)
 		   << '\n';
 
 	if (lyxscale != defaultLyxScale)
@@ -260,7 +292,7 @@ bool InsetExternalParams::read(Buffer const & buffer, LyXLex & lex)
 		case EX_DISPLAY: {
 			lex.next();
 			string const name = lex.getString();
-			display = lyx::graphics::displayTranslator().find(name);
+			display = external::displayTranslator().find(name);
 			break;
 		}
 
@@ -351,6 +383,55 @@ bool InsetExternalParams::read(Buffer const & buffer, LyXLex & lex)
 }
 
 
+namespace {
+
+enum RenderType {
+	RENDERBUTTON,
+	RENDERGRAPHIC,
+	RENDERPREVIEW
+};
+
+RenderType getRenderType(InsetExternalParams const & p)
+{
+	if (!external::getTemplatePtr(p) || p.filename.empty() ||
+	    p.display == external::NoDisplay)
+		return RENDERBUTTON;
+
+	if (p.display == external::PreviewDisplay) {
+		if (RenderPreview::activated())
+			return RENDERPREVIEW;
+		return RENDERBUTTON;
+	}
+
+	if (p.display == external::DefaultDisplay &&
+	    lyxrc.display_graphics == graphics::NoDisplay)
+		return RENDERBUTTON;
+	return RENDERGRAPHIC;
+}
+
+
+RenderGraphic &
+graphicRenderer(boost::scoped_ptr<RenderBase> const & renderer) 
+{
+	RenderGraphic * const ptr =
+		dynamic_cast<RenderGraphic *>(renderer.get());
+	BOOST_ASSERT(ptr);
+	return *ptr;
+}
+
+
+RenderMonitoredPreview &
+previewRenderer(boost::scoped_ptr<RenderBase> const & renderer) 
+{
+	RenderMonitoredPreview * const ptr =
+		dynamic_cast<RenderMonitoredPreview *>(renderer.get());
+	BOOST_ASSERT(ptr);
+	return *ptr;
+}
+
+} // namespace anon
+
+
 InsetExternal::InsetExternal()
 	: renderer_(new RenderButton)
 {}
@@ -362,10 +443,42 @@ InsetExternal::InsetExternal(InsetExternal const & other)
 	  params_(other.params_),
 	  renderer_(other.renderer_->clone())
 {
-	RenderGraphic * ptr =
-		dynamic_cast<RenderGraphic *>(renderer_.get());
-	if (ptr)
+	switch (getRenderType(params_)) {
+	case RENDERBUTTON:
+		break;
+
+	case RENDERGRAPHIC: {
+		RenderGraphic * const ptr =
+			dynamic_cast<RenderGraphic *>(renderer_.get());
+		if (!ptr) {
+			lyxerr << "InsetExternal::InsetExternal "
+			       << "Not a RenderGraphic!!"
+			       << std::endl;
+			return;
+		}
 		ptr->connect(boost::bind(&InsetExternal::statusChanged, this));
+// 		RenderGraphic & renderer = graphicRenderer(renderer_);
+// 		renderer.connect(boost::bind(&InsetExternal::statusChanged, this));
+		break;
+	}
+
+	case RENDERPREVIEW: {
+		RenderMonitoredPreview * const ptr =
+		dynamic_cast<RenderMonitoredPreview *>(renderer_.get());
+		if (!ptr) {
+			lyxerr << "InsetExternal::InsetExternal "
+			       << "Not a RenderPreview!!"
+			       << std::endl;
+			return;
+		}
+		ptr->connect(boost::bind(&InsetExternal::statusChanged, this));
+		ptr->fileChanged(boost::bind(&InsetExternal::fileChanged, this));
+// 		RenderMonitoredPreview & renderer = previewRenderer(renderer_);
+// 		renderer.connect(boost::bind(&InsetExternal::statusChanged, this));
+// 		renderer.fileChanged(boost::bind(&InsetExternal::fileChanged, this));
+		break;
+	}
+	}
 }
 
 
@@ -443,9 +556,9 @@ void InsetExternal::draw(PainterInfo & pi, int x, int y) const
 
 namespace {
 
-lyx::graphics::Params get_grfx_params(InsetExternalParams const & eparams)
+graphics::Params get_grfx_params(InsetExternalParams const & eparams)
 {
-	lyx::graphics::Params gparams;
+	graphics::Params gparams;
 
 	gparams.filename = eparams.filename.absFilename();
 	gparams.scale = eparams.lyxscale;
@@ -453,12 +566,30 @@ lyx::graphics::Params get_grfx_params(InsetExternalParams const & eparams)
 		gparams.bb = eparams.clipdata.bbox;
 	gparams.angle = eparams.rotationdata.angle();
 
-	gparams.display = eparams.display;
-	if (gparams.display == lyx::graphics::DefaultDisplay)
+	switch (eparams.display) {
+	case external::DefaultDisplay:
+		gparams.display = graphics::DefaultDisplay;
+		break;
+	case external::MonochromeDisplay:
+		gparams.display = graphics::MonochromeDisplay;
+		break;
+	case external::GrayscaleDisplay:
+		gparams.display = graphics::GrayscaleDisplay;
+		break;
+	case external::ColorDisplay:
+		gparams.display = graphics::ColorDisplay;
+		break;
+	case external::NoDisplay:
+		gparams.display = graphics::NoDisplay;
+		break;
+	default:
+		BOOST_ASSERT(false);
+	}
+	if (gparams.display == graphics::DefaultDisplay)
 		gparams.display = lyxrc.display_graphics;
 	// Override the above if we're not using a gui
 	if (!lyx_gui::use_gui)
-		gparams.display = lyx::graphics::NoDisplay;
+		gparams.display = graphics::NoDisplay;
 
 	return gparams;
 }
@@ -474,6 +605,8 @@ string const getScreenLabel(InsetExternalParams const & params,
 					params.templatename());
 	return external::doSubstitution(params, buffer, ptr->guiName);
 }
+
+void add_preview(RenderMonitoredPreview &, InsetExternal const &, Buffer const &);
 
 } // namespace anon
 
@@ -491,11 +624,8 @@ void InsetExternal::setParams(InsetExternalParams const & p,
 	params_ = p;
 
 	// We display the inset as a button by default.
-	bool display_button = (!external::getTemplatePtr(params_) ||
-			       params_.filename.empty() ||
-			       params_.display == lyx::graphics::NoDisplay);
-
-	if (display_button) {
+	switch (getRenderType(params_)) {
+	case RENDERBUTTON: {
 		RenderButton * button_ptr =
 			dynamic_cast<RenderButton *>(renderer_.get());
 		if (!button_ptr) {
@@ -504,8 +634,9 @@ void InsetExternal::setParams(InsetExternalParams const & p,
 		}
 
 		button_ptr->update(getScreenLabel(params_, buffer), true);
+		break;
 
-	} else {
+	} case RENDERGRAPHIC: {
 		RenderGraphic * graphic_ptr =
 			dynamic_cast<RenderGraphic *>(renderer_.get());
 		if (!graphic_ptr) {
@@ -516,7 +647,42 @@ void InsetExternal::setParams(InsetExternalParams const & p,
 		}
 
 		graphic_ptr->update(get_grfx_params(params_));
+
+		break;
+	} case RENDERPREVIEW: {
+		RenderMonitoredPreview * preview_ptr =
+			dynamic_cast<RenderMonitoredPreview *>(renderer_.get());
+		if (!preview_ptr) {
+			preview_ptr  = new RenderMonitoredPreview;
+			preview_ptr->connect(
+				boost::bind(&InsetExternal::statusChanged, this));
+			preview_ptr->fileChanged(
+				boost::bind(&InsetExternal::fileChanged, this));
+			renderer_.reset(preview_ptr);
+		}
+
+		if (preview_ptr->monitoring())
+			preview_ptr->stopMonitoring();
+		add_preview(*preview_ptr, *this, buffer);
+
+		break;
 	}
+	}
+}
+
+
+void InsetExternal::fileChanged() const
+{
+	Buffer const * const buffer_ptr = LyX::cref().updateInset(this);
+	if (!buffer_ptr)
+		return;
+
+	RenderMonitoredPreview & renderer = previewRenderer(renderer_);
+
+	Buffer const & buffer = *buffer_ptr;
+	renderer.removePreview(buffer);
+	add_preview(renderer, *this, buffer);
+	renderer.startLoading(buffer);
 }
 
 
@@ -610,6 +776,63 @@ void InsetExternal::validate(LaTeXFeatures & features) const
 	}
 }
 
+
+//
+// preview stuff
+//
+
+namespace {
+
+bool preview_wanted(InsetExternalParams const & params)
+{
+	string const included_file = params.filename.absFilename();
+
+	return params.display == external::PreviewDisplay &&
+		support::IsFileReadable(included_file);
+}
+
+
+string const latex_string(InsetExternal const & inset, Buffer const & buffer)
+{
+	ostringstream os;
+	LatexRunParams runparams;
+	runparams.flavor = LatexRunParams::LATEX;
+	inset.latex(buffer, os, runparams);
+
+	return os.str();
+}
+
+
+void add_preview(RenderMonitoredPreview & renderer, InsetExternal const & inset,
+		 Buffer const & buffer)
+{
+	InsetExternalParams const & params = inset.params();
+	if (RenderPreview::activated() && preview_wanted(params)) {
+		renderer.setAbsFile(params.filename.absFilename());
+		string const snippet = latex_string(inset, buffer);
+		renderer.addPreview(snippet, buffer);
+	}
+}
+
+} // namespace anon
+
+
+void InsetExternal::addPreview(graphics::PreviewLoader & ploader) const
+{
+	if (getRenderType(params_) != RENDERPREVIEW)
+		return;
+
+	RenderMonitoredPreview & renderer = previewRenderer(renderer_);
+
+	if (preview_wanted(params())) {
+		renderer.setAbsFile(params_.filename.absFilename());
+		string const snippet = latex_string(*this, ploader.buffer());
+		renderer.addPreview(snippet, ploader);
+	}
+}
+
+
+/// Mailer stuff
 
 string const InsetExternalMailer::name_("external");
 

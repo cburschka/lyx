@@ -15,9 +15,8 @@
 #include "inset.h"
 #include "ExternalTransforms.h"
 
-#include "graphics/GraphicsTypes.h"
-
 #include "support/filename.h"
+#include "support/translator.h"
 
 #include <boost/scoped_ptr.hpp>
 #include <boost/signals/trackable.hpp>
@@ -43,6 +42,20 @@ private:
 	std::string tempname_;
 };
 
+/// How is the image to be displayed on the LyX screen?
+enum DisplayType {
+	DefaultDisplay,
+	MonochromeDisplay,
+	GrayscaleDisplay,
+	ColorDisplay,
+	PreviewDisplay,
+	NoDisplay
+};
+
+
+/// The translator between the Display enum and corresponding lyx string.
+Translator<DisplayType, std::string> const & displayTranslator();
+
 } // namespace external
 } // namespace lyx
 
@@ -64,7 +77,7 @@ struct InsetExternalParams {
 	/// The external file.
 	lyx::support::FileName filename;
 	/// How the inset is to be displayed by LyX.
-	lyx::graphics::DisplayType display;
+	lyx::external::DisplayType display;
 	/// The scale of the displayed graphic (if shown).
 	unsigned int lyxscale;
 
@@ -123,6 +136,9 @@ public:
 	///
 	InsetExternalParams const & params() const;
 	void setParams(InsetExternalParams const &, Buffer const &);
+	///
+	void addPreview(lyx::graphics::PreviewLoader &) const;
+
 protected:
 	///
 	virtual
@@ -133,6 +149,11 @@ private:
 	 *  informed when the image has been loaded.
 	 */
 	void statusChanged() const;
+
+	/** Slot receiving a signal that the external file has changed
+	 *  and the preview should be regenerated.
+	 */
+	void fileChanged() const;
 
 	/// The current params
 	InsetExternalParams params_;

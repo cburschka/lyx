@@ -53,17 +53,19 @@ public:
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 
-	/** Find the PreviewLoader, add a LaTeX snippet to it and
-	 *  start the loading process.
+	/** Find the PreviewLoader and add a LaTeX snippet to it.
+	 *  Do not start the loading process.
 	 */
-	void generatePreview(std::string const & latex_snippet,
-			     Buffer const &);
+	void addPreview(std::string const & latex_snippet, Buffer const &);
 
-	/** Add a LaTeX snippet to the PreviewLoader but do not start the
-	 *  loading process.
+	/** Add a LaTeX snippet to the PreviewLoader.
+	 *  Do not start the loading process.
 	 */
 	void addPreview(std::string const & latex_snippet,
 			lyx::graphics::PreviewLoader & ploader);
+
+	/// Begin the loading process.
+	void startLoading(Buffer const & buffer) const;
 
 	/** Remove a snippet from the cache of previews.
 	 *  Useful if previewing the contents of a file that has changed.
@@ -104,18 +106,20 @@ class RenderMonitoredPreview : public RenderPreview {
 public:
 	RenderMonitoredPreview() : monitor_(std::string(), 2000) {}
 	///
+	void draw(PainterInfo & pi, int x, int y) const;
+	///
+	void setAbsFile(std::string const & file);
+	///
 	bool monitoring() const { return monitor_.monitoring(); }
-	///
-	void startMonitoring(std::string const & file);
-	///
-	void stopMonitoring() { monitor_.stop(); }
+	void startMonitoring() const { monitor_.start(); }
+	void stopMonitoring() const { monitor_.stop(); }
 
 	/// Connect and you'll be informed when the file changes.
 	boost::signals::connection fileChanged(slot_type const &);
 
 private:
 	///
-	lyx::support::FileMonitor monitor_;
+	mutable lyx::support::FileMonitor monitor_;
 };
 
 #endif // RENDERPREVIEW_H

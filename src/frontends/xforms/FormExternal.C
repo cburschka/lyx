@@ -58,20 +58,23 @@ void FormExternal::apply()
 		params.lyxscale = 100;
 
 	switch (fl_get_choice(dialog_->choice_display)) {
+	case 6:
+		params.display = lyx::external::NoDisplay;
+		break;
 	case 5:
-		params.display = lyx::graphics::NoDisplay;
+		params.display = lyx::external::PreviewDisplay;
 		break;
 	case 4:
-		params.display = lyx::graphics::ColorDisplay;
+		params.display = lyx::external::ColorDisplay;
 		break;
 	case 3:
-		params.display = lyx::graphics::GrayscaleDisplay;
+		params.display = lyx::external::GrayscaleDisplay;
 		break;
 	case 2:
-		params.display = lyx::graphics::MonochromeDisplay;
+		params.display = lyx::external::MonochromeDisplay;
 		break;
 	case 1:
-		params.display = lyx::graphics::DefaultDisplay;
+		params.display = lyx::external::DefaultDisplay;
 	}
 
 	std::map<string, string>::const_iterator it  = extra_.begin();
@@ -110,7 +113,7 @@ void FormExternal::build()
 	fl_set_input_filter(dialog_->input_lyxscale, fl_unsigned_int_filter);
 
 	string const display_List =
-		_("Default|Monochrome|Grayscale|Color|Do not display");
+		_("Default|Monochrome|Grayscale|Color|Preview|Do not display");
 	fl_addto_choice(dialog_->choice_display, display_List.c_str());
 
 	// Set up the tooltips.
@@ -148,19 +151,22 @@ void FormExternal::update()
 	fl_set_input(dialog_->input_lyxscale, tostr(params.lyxscale).c_str());
 
 	switch (params.display) {
-	case lyx::graphics::NoDisplay:
+	case lyx::external::NoDisplay:
+		fl_set_choice(dialog_->choice_display, 6);
+		break;
+	case lyx::external::PreviewDisplay:
 		fl_set_choice(dialog_->choice_display, 5);
 		break;
-	case lyx::graphics::ColorDisplay:
+	case lyx::external::ColorDisplay:
 		fl_set_choice(dialog_->choice_display, 4);
 		break;
-	case lyx::graphics::GrayscaleDisplay:
+	case lyx::external::GrayscaleDisplay:
 		fl_set_choice(dialog_->choice_display, 3);
 		break;
-	case lyx::graphics::MonochromeDisplay:
+	case lyx::external::MonochromeDisplay:
 		fl_set_choice(dialog_->choice_display, 2);
 		break;
-	case lyx::graphics::DefaultDisplay:
+	case lyx::external::DefaultDisplay:
 		fl_set_choice(dialog_->choice_display, 1);
 	}
 }

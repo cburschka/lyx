@@ -1,5 +1,18 @@
 2003-10-22  Angus Leeming  <leeming@lyx.org>
 
+w	* insetexternal.[Ch]: add the ability to 'preview' the external file
+	if so desired.
+
+	* insetinclude.C: changes due to the changes in the RenderPreview
+	interface.
+
+	* render_preview.[Ch]: Lots of small changes. Display a diagnostic
+	message if the preview image is not available. Only initiate the
+	loading of the preview from draw(). Ditto, start the monitoring
+	of an external file from RenderMonitoredPreview::draw.
+
+2003-10-22  Angus Leeming  <leeming@lyx.org>
+
 	* insetcite.[Ch] (setLoadingBuffer): removed.
 	(getNatbibLabel): use the new Buffer::fully_loaded member function to
 	ascertain whether to proceed with the (expensive) task of computing

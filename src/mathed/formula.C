@@ -319,5 +319,6 @@ void InsetFormula::addPreview(lyx::graphics::PreviewLoader & ploader) const
 void InsetFormula::generatePreview(Buffer const & buffer) const
 {
 	string const snippet = latex_string(*this, buffer);
-	preview_->generatePreview(snippet, buffer);
+	preview_->addPreview(snippet, buffer);
+	preview_->startLoading(buffer);
 }

@@ -1,3 +1,8 @@
+2003-10-22  Angus Leeming  <leeming@lyx.org>
+
+	* formula.C (generatePreview): changes due to the changed
+	RenderPreview interface.
+
 2003-10-20  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* formula.[Ch]: re-introduce display() for insets, fixing the

@@ -194,7 +194,7 @@ string const includedFilename(Buffer const & buffer,
 }
 
 
-void generate_preview(RenderPreview &, InsetInclude const &, Buffer const &);
+void add_preview(RenderMonitoredPreview &, InsetInclude const &, Buffer const &);
 
 } // namespace anon
 
@@ -208,7 +208,7 @@ void InsetInclude::set(InsetCommandParams const & p, Buffer const & buffer)
 		preview_->stopMonitoring();
 
 	if (type(params_) == INPUT)
-		generate_preview(*preview_, *this, buffer);
+		add_preview(*preview_, *this, buffer);
 }
 
 
@@ -547,13 +547,6 @@ void InsetInclude::draw(PainterInfo & pi, int x, int y) const
 		return;
 	}
 
-	BOOST_ASSERT(pi.base.bv);
-	Buffer const * const buffer = pi.base.bv->buffer();
-	if (!preview_->monitoring() && buffer) {
-		string const included_file = includedFilename(*buffer, params_);
-		preview_->startMonitoring(included_file);
-	}
-
 	preview_->draw(pi, x + button_.box().x1, y);
 }
 
@@ -576,7 +569,8 @@ void InsetInclude::fileChanged() const
 
 	Buffer const & buffer = *buffer_ptr;
 	preview_->removePreview(buffer);
-	generate_preview(*preview_.get(), *this, buffer);
+	add_preview(*preview_.get(), *this, buffer);
+	preview_->startLoading(buffer);
 }
 
 
@@ -602,14 +596,14 @@ string const latex_string(InsetInclude const & inset, Buffer const & buffer)
 }
 
 
-void generate_preview(RenderPreview & renderer,
-		      InsetInclude const & inset,
-		      Buffer const & buffer)
+void add_preview(RenderMonitoredPreview & renderer, InsetInclude const & inset,
+		 Buffer const & buffer)
 {
 	InsetCommandParams const & params = inset.params();
 	if (RenderPreview::activated() && preview_wanted(params, buffer)) {
+		renderer.setAbsFile(includedFilename(buffer, params));
 		string const snippet = latex_string(inset, buffer);
-		renderer.generatePreview(snippet, buffer);
+		renderer.addPreview(snippet, buffer);
 	}
 }
 
@@ -618,8 +612,10 @@ void generate_preview(RenderPreview & renderer,
 
 void InsetInclude::addPreview(lyx::graphics::PreviewLoader & ploader) const
 {
-	if (preview_wanted(params(), ploader.buffer())) {
-		string const snippet = latex_string(*this, ploader.buffer());
+	Buffer const & buffer = ploader.buffer();
+	if (preview_wanted(params(), buffer)) {
+		preview_->setAbsFile(includedFilename(buffer, params()));
+		string const snippet = latex_string(*this, buffer);
 		preview_->addPreview(snippet, ploader);
 	}
 }
