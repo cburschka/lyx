@@ -364,11 +364,11 @@ int LyXText::leftMargin(ParagraphList::iterator pit, Row const & row) const
 		// row in this paragraph.
 		RowList::iterator rit = pit->rows.begin();
 		RowList::iterator end = pit->rows.end();
-		int minfill = rit->fill();
+#warning This is wrong.
+		int minfill = workWidth() / 2;
 		for ( ; rit != end; ++rit)
 			if (rit->fill() < minfill)
 				minfill = rit->fill();
-
 		x += font_metrics::signedWidth(layout->leftmargin,
 			tclass.defaultfont());
 		x += minfill;
