@@ -1,3 +1,8 @@
+2002-03-18  Juergen Vigna  <jug@sad.it>
+
+	* FormTabular.C (update): deactivate left/right border settings for
+	multicolumns if not an outer cell or no parent multicolumn cell.
+
 2002-03-13  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormBase.C (show):

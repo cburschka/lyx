@@ -207,12 +207,29 @@ void FormTabular::update()
 		fl_set_button(cell_options_->check_border_bottom,
 		              tabular->BottomLine(cell)?1:0);
 		setEnabled(cell_options_->check_border_bottom, true);
-		fl_set_button(cell_options_->check_border_left,
-		              tabular->LeftLine(cell)?1:0);
-		setEnabled(cell_options_->check_border_left, true);
-		fl_set_button(cell_options_->check_border_right,
-		              tabular->RightLine(cell)?1:0);
-		setEnabled(cell_options_->check_border_right, true);
+		// pay attention to left/right lines they are only allowed
+		// to set if we are in first/last cell of row or if the left/right
+		// cell is also a multicolumn.
+		if (tabular->IsFirstCellInRow(cell) ||
+			tabular->IsMultiColumn(cell-1))
+		{
+			fl_set_button(cell_options_->check_border_left,
+			              tabular->LeftLine(cell)?1:0);
+			setEnabled(cell_options_->check_border_left, true);
+		} else {
+			fl_set_button(cell_options_->check_border_left, 0);
+			setEnabled(cell_options_->check_border_left, false);
+		}
+		if (tabular->IsLastCellInRow(cell) ||
+			tabular->IsMultiColumn(cell+1))
+		{
+			fl_set_button(cell_options_->check_border_right,
+		                  tabular->RightLine(cell)?1:0);
+			setEnabled(cell_options_->check_border_right, true);
+		} else {
+			fl_set_button(cell_options_->check_border_right, 0);
+			setEnabled(cell_options_->check_border_right, false);
+		}
 		pwidth = tabular->GetMColumnPWidth(cell);
 		align = tabular->GetAlignment(cell);
 		if (!pwidth.zero() || (align == LYX_ALIGN_LEFT))

@@ -465,7 +465,9 @@ bool LyXTabular::BottomLine(int cell, bool onlycolumn) const
 
 bool LyXTabular::LeftLine(int cell, bool onlycolumn) const
 {
-	if (!onlycolumn && IsMultiColumn(cell)) {
+	if (!onlycolumn && IsMultiColumn(cell) &&
+		(IsFirstCellInRow(cell) || IsMultiColumn(cell-1)))
+	{
 #ifdef SPECIAL_COLUM_HANDLING
 		if (cellinfo_of_cell(cell)->align_special.empty())
 			return cellinfo_of_cell(cell)->left_line;
@@ -486,7 +488,9 @@ bool LyXTabular::LeftLine(int cell, bool onlycolumn) const
 
 bool LyXTabular::RightLine(int cell, bool onlycolumn) const
 {
-	if (!onlycolumn && IsMultiColumn(cell)) {
+	if (!onlycolumn && IsMultiColumn(cell) &&
+		(IsLastCellInRow(cell) || IsMultiColumn(cell+1)))
+	{
 #ifdef SPECIAL_COLUM_HANDLING
 		if (cellinfo_of_cell(cell)->align_special.empty())
 			return cellinfo_of_cell(cell)->right_line;
@@ -535,7 +539,7 @@ bool LyXTabular::LeftAlreadyDrawed(int cell) const
 		if (GetAdditionalWidth(cell_info[row][column].cellno))
 			return false;
 #ifdef SPECIAL_COLUM_HANDLING
-		return column_info[column].right_line;
+		return RightLine(cell_info[row][column].cellno);
 #else
 		return RightLine(cell_info[row][column].cellno, true);
 #endif
@@ -588,8 +592,8 @@ int LyXTabular::GetAdditionalWidth(int cell) const
 	// used to get it back in text.C
 	int const col = right_column_of_cell(cell);
 	int const row = row_of_cell(cell);
-	if (col < columns_ - 1 && RightLine(cell, true) &&
-		LeftLine(cell_info[row][col+1].cellno, true)) // column_info[col+1].left_line)
+	if (col < columns_ - 1 && RightLine(cell) &&
+		LeftLine(cell_info[row][col+1].cellno)) // column_info[col+1].left_line)
 	{
 		return WIDTH_OF_LINE;
 	} else {

@@ -1,5 +1,10 @@
 2002-03-18  Juergen Vigna  <jug@sad.it>
 
+	* tabular.C (LeftAlreadyDrawed): fixed for multicolumn borders.
+	(GetAdditionalWidth): ditto.
+	(RightLine): ditto.
+	(LeftLine): ditto.
+
 	* BufferView2.C (copy): use getLyXText() so that we do it inside an
 	inset if we're there actually (probably not used right now but this
 	is the direction to go for unifying code).
