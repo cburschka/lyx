@@ -147,8 +147,14 @@ void LyXScreen::checkAndGreyOut()
 
 void LyXScreen::showCursor(BufferView & bv)
 {
-	// this is needed to make sure we copy back the right
-	// pixmap on the hide for the Qt frontend
+	// You are not expected to understand this. This forces Qt
+	// (the problem case) to deal with its event queue. This is
+	// necessary when holding down a key such as 'page down' or
+	// just typing: without this processing of the event queue,
+	// the cursor gets ahead of itself without a selection or
+	// workarea redraw having a chance to keep up. If you think
+	// you can remove this, try selecting text with the mouse
+	// in Qt, or holding Page Down on the User's Guide.
 	lyx_gui::sync_events();
 
 	if (cursor_visible_)
