@@ -699,6 +699,10 @@ bool MathGridInset::idxEnd(idx_type & idx, pos_type & pos) const
 
 bool MathGridInset::idxDelete(idx_type & idx)
 {
+	// nothing to do if we have just one row
+	if (nrows() == 1)
+		return false;
+
 	// nothing to do if we are in the middle of the last row of the inset
 	if (idx + ncols() > nargs())
 		return false;
