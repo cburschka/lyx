@@ -194,7 +194,7 @@ string const currentState(BufferView * bv)
 #ifdef DEVEL_VERSION
 	state << _(", Paragraph: ") << text->cursor.par()->id();
 #endif
-	return state.str().c_str();
+	return STRCONV(state.str());
 }
 
 

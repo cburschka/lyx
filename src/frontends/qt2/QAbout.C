@@ -64,7 +64,7 @@ void QAbout::build_dialog()
 	ostringstream in;
 	controller().getCredits(in);
 
-	istringstream ss(in.str().c_str());
+	istringstream ss(in.str());
 
 	string s;
 	ostringstream out;

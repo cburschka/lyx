@@ -6,7 +6,7 @@
  * \author Alejandro Aguilar Sierra
  * \author Pablo De Napoli
  * \author John Levon
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -106,7 +106,7 @@ void FormMathsMatrix::apply()
 	ostringstream os;
 	os << nx << ' ' << ny << ' ' << c << ' ' << sh;
 
-	lv_.dispatch(FuncRequest(LFUN_INSERT_MATRIX, os.str().c_str()));
+	lv_.dispatch(FuncRequest(LFUN_INSERT_MATRIX, STRCONV(os.str())));
 }
 
 

@@ -1,5 +1,7 @@
 2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* QAbout.C (build_dialog): do not use str().c_str() when not needed.
+
 	* qttableview.C: include config.h
 
 	* lyx_gui.C: move includes around a bit

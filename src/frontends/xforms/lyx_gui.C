@@ -249,7 +249,7 @@ void lyx_gui::start(string const & batch, vector<string> const & files)
 
 	int const geometryBitmask =
 		XParseGeometry(geometry,
-				&xpos, &ypos, &width, &height);
+			       &xpos, &ypos, &width, &height);
 
 	// if width is not set by geometry, check it against monitor width
 	if (!(geometryBitmask & WidthValue)) {
@@ -353,7 +353,7 @@ string const lyx_gui::hexname(LColor::color col)
 	   << setw(2) << (xcol.green / 256)
 	   << setw(2) << (xcol.blue  / 256);
 
-	return os.str().c_str();
+	return STRCONV(os.str());
 }
 
 

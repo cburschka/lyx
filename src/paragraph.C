@@ -1743,7 +1743,7 @@ string const Paragraph::asString(Buffer const * buffer, bool label)
 			 getInset(i)->lyxCode() == Inset::MATH_CODE) {
 			ostringstream ost;
 			getInset(i)->ascii(buffer, ost);
-			s += subst(ost.str().c_str(),'\n',' ');
+			s += subst(STRCONV(ost.str()),'\n',' ');
 		}
 	}
 
@@ -1775,7 +1775,7 @@ string const Paragraph::asString(Buffer const * buffer,
 		}
 	}
 
-	return ost.str().c_str();
+	return STRCONV(ost.str());
 }
 
 

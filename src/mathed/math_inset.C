@@ -18,7 +18,7 @@
 #include <config.h>
 
 #ifdef __GNUG__
-#pragma implementation 
+#pragma implementation
 #endif
 
 #include "math_inset.h"
@@ -264,7 +264,7 @@ int MathInset::docbook(std::ostream &, bool) const
 
 
 MathInset::result_type
-	MathInset::dispatch(FuncRequest const &, idx_type &, pos_type &) 
+	MathInset::dispatch(FuncRequest const &, idx_type &, pos_type &)
 {
 	return UNDISPATCHED;
 }
@@ -288,7 +288,7 @@ string asString(MathArray const & ar)
 	std::ostringstream os;
 	WriteStream ws(os);
 	ws << ar;
-	return os.str().c_str();
+	return STRCONV(os.str());
 }
 
 

@@ -2529,7 +2529,7 @@ bool InsetTabular::copySelection(BufferView * bv)
 	ostringstream sstr;
 	paste_tabular->ascii(bv->buffer(), sstr,
 			     (int)parOwner()->params().depth(), true, '\t');
-	bv->stuffClipboard(sstr.str().c_str());
+	bv->stuffClipboard(STRCONV(sstr.str()));
 	return true;
 }
 

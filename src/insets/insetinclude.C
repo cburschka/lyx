@@ -86,7 +86,7 @@ string const uniqueID()
 	ost << "file" << ++seed;
 
 	// Needed if we use lyxstring.
-	return ost.str().c_str();
+	return STRCONV(ost.str());
 }
 
 } // namespace anon
@@ -554,7 +554,7 @@ string const InsetInclude::PreviewImpl::latexString() const
 	ostringstream os;
 	parent().latex(view()->buffer(), os, false, false);
 
-	return os.str().c_str();
+	return STRCONV(os.str());
 }
 
 

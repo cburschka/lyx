@@ -53,7 +53,7 @@ string const LyXLength::asString() const
 {
 	ostringstream buffer;
 	buffer << val_ << unit_name[unit_]; // setw?
-	return buffer.str().c_str();
+	return STRCONV(buffer.str());
 }
 
 
@@ -89,7 +89,7 @@ string const LyXLength::asLatexString() const
 	    buffer << val_ << unit_name[unit_]; // setw?
 	    break;
 	}
-	return buffer.str().c_str();
+	return STRCONV(buffer.str());
 }
 
 
@@ -134,7 +134,7 @@ int LyXLength::inPixels(int text_width, int em_width_base) const
 	double const em_width = (em_width_base > 0)
 		? em_width_base
 		: 10*(dpi/72.27)*zoom;
-	// A different estimate for em_width is 
+	// A different estimate for em_width is
 	// font_metrics::width('M', LyXFont(LyXFont::ALL_SANE))
 	// but this estimate might not be more accurate as the screen font
 	// is different then the latex font.

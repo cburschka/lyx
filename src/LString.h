@@ -19,9 +19,12 @@
 #endif
 
 #ifndef USE_INCLUDED_STRING
+
 #include <string>
 using std::string;
+#define STRCONV(STR) STR
 #else
+
 #ifdef __STRING__
 #error The <string> header has been included before LString.h
 #else
@@ -30,5 +33,7 @@ using std::string;
 #include "support/lyxstring.h"
 // using lyx::string;
 typedef lyxstring string;
+#define STRCONV(STR) STR.c_str()
 #endif
+
 #endif

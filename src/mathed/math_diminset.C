@@ -1,6 +1,5 @@
-
 #ifdef __GNUG__
-#pragma implementation 
+#pragma implementation
 #endif
 
 #include "math_diminset.h"
@@ -28,6 +27,6 @@ void MathDimInset::drawT(TextPainter &, int, int) const
 /*
 	std::ostringstream os;
 	os << MathAtom(this);
-	pain.draw(x, y, os.str().c_str());
+	pain.draw(x, y, STRCONV(os.str()));
 */
 }

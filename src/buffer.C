@@ -1180,7 +1180,7 @@ bool Buffer::readFile(LyXLex & lex, string const & filename, Paragraph * par)
 							       "running the conversion script."));
 						return false;
 					}
-					istringstream is(ret.second);
+					istringstream is(STRCONV(ret.second));
 					LyXLex tmplex(0, 0);
 					tmplex.setStream(is);
 					return readFile(tmplex, string());
@@ -1588,7 +1588,7 @@ string const Buffer::asciiParagraph(Paragraph const & par,
 		}
 	}
 	buffer << word;
-	return buffer.str().c_str();
+	return STRCONV(buffer.str());
 }
 
 
@@ -1775,7 +1775,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 			options << params.options << ',';
 		}
 
-		string strOptions(options.str().c_str());
+		string strOptions(STRCONV(options.str()));
 		if (!strOptions.empty()) {
 			strOptions = rtrim(strOptions, ",");
 			os << '[' << strOptions << ']';
@@ -2055,7 +2055,7 @@ void Buffer::makeLaTeXFile(ostream & os,
 			if (!lyxrc.language_global_options
 			    && tmp == "\\usepackage{babel}")
 				tmp = string("\\usepackage[") +
-					language_options.str().c_str() +
+					STRCONV(language_options.str()) +
 					"]{babel}";
 			preamble += tmp + "\n";
 			preamble += features.getBabelOptions();

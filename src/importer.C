@@ -40,7 +40,7 @@ bool Importer::Import(LyXView * lv, string const & filename,
 	string const displaypath = MakeDisplayPath(filename);
 	ostringstream s1;
 	s1 << _("Importing") << ' ' << displaypath << "...";
-	lv->message(s1.str().c_str());
+	lv->message(STRCONV(s1.str()));
 
 	string const lyxfile = ChangeExtension(filename, ".lyx");
 

@@ -447,8 +447,8 @@ bool regexMatch(string const & a, string const & pattern)
 	string regex(pattern);
 	regex = subst(regex, ".", "\\.");
 	regex = subst(regex, "*", ".*");
-	boost::regex reg(regex);
-	return boost::regex_match(a, reg);
+	boost::regex reg(STRCONV(regex));
+	return boost::regex_match(STRCONV(a), reg);
 }
 
 
@@ -637,7 +637,20 @@ vector<string> const getVectorFromString(string const & str,
 #else
 	boost::char_separator<char> sep(delim.c_str());
 	boost::tokenizer<boost::char_separator<char> > tokens(str, sep);
+#ifndef USE_INCLUDED_STRING
 	return vector<string>(tokens.begin(), tokens.end());
+#else
+	vector<string> vec;
+	using boost::tokenizer;
+	using boost::char_separator;
+
+	tokenizer<char_separator<char> >::iterator it = tokens.begin();
+	tokenizer<char_separator<char> >::iterator end = tokens.end();
+	for (; it != end; ++it) {
+		vec.push_back(STRCONV((*it)));
+	}
+	return vec;
+#endif
 #endif
 }
 

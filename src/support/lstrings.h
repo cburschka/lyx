@@ -97,7 +97,7 @@ string const tostr(T const & t)
 {
 	ostringstream ostr;
 	ostr << t;
-	return ostr.str().c_str();
+	return STRCONV(ostr.str());
 	// We need to use the .c_str since we sometimes are using
 	// our own string class and that is not compatible with
 	// basic_string<char>. (of course we don't want this later)

@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- *  \author Angus Leeming 
+ *  \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -161,7 +161,7 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 
 		lyxerr[Debug::GRAPHICS] << "\tConversion script:"
 				<< "\n--------------------------------------\n"
-				<< script.str().c_str()
+				<< STRCONV(script.str())
 				<< "\n--------------------------------------\n";
 
 		// Output the script to file.
@@ -173,7 +173,7 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 		if (!fs.good())
 			return;
 
-		fs << script.str().c_str();
+		fs << STRCONV(script.str());
 		fs.close();
 
 		// The command needed to run the conversion process
@@ -251,7 +251,7 @@ string const move_file(string const & from_file, string const & to_file)
 		<< "\t'rm' -f ${fromfile}\n"
 		<< "fi\n";
 
-	return command.str().c_str();
+	return STRCONV(command.str());
 }
 
 

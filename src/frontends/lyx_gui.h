@@ -14,6 +14,7 @@
 
 #include "LColor.h"
 #include "LString.h"
+
 #include <vector>
 
 class Dialogs;
@@ -36,7 +37,7 @@ void parse_lyxrc();
  * Start the main event loop, after executing the given
  * batch commands, and loading the given documents
  */
-void start(string const & batch, std::vector<std::string> const & files);
+void start(string const & batch, std::vector<string> const & files);
 
 /**
  * quit running LyX
@@ -70,6 +71,7 @@ void set_read_callback(int fd, LyXComm * comm);
 
 /**
  * remove a I/O read callback
+ * @param fd file descriptor
  */
 void remove_read_callback(int fd);
 

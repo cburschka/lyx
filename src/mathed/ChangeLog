@@ -1,5 +1,24 @@
 2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* math_inset.C (asString): STRCONV
+
+	* math_factory.C (initSymbols): do not std:: qualify getline, use
+	empty() to check for empty string, STRCONV
+
+	* math_extern.C: STRCONV
+
+	* math_diminset.C (drawT): STRCONV
+
+	* math_cursor.C (info): STRCONV
+
+	* math_autocorrect.C (initAutoCorrect): STRCONV
+
+	* formulamacro.C (InsetFormulaMacro): STRCONV
+
+	* formulabase.C (localDispatch): STRCONV
+
+	* formula.C (latexString): STRCONV
+
 	* math_factory.C: add using std::endl
 	(math_font_available): use it
 	(initSymbols): use it

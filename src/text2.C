@@ -1257,9 +1257,8 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 				.numberLabel(layout->latexname(),
 					     numbertype, langtype, head);
 
-			par->params().labelString(par->params().labelString() + s.str().c_str());
-			// We really want to remove the c_str as soon as
-			// possible...
+			par->params().labelString(par->params().labelString()
+						  + STRCONV(s.str()));
 
 			// reset enum counters
 			textclass.counters().reset("enum");
@@ -1292,7 +1291,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 			s << textclass.counters()
 				.numberLabel(enumcounter,
 					     "enumeration", langtype);
-			par->params().labelString(s.str().c_str());
+			par->params().labelString(STRCONV(s.str()));
 		}
 	} else if (layout->labeltype == LABEL_BIBLIO) {// ale970302
 		textclass.counters().step("bibitem");
@@ -1335,7 +1334,7 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 				ostringstream o;
 				//o << fl.name() << " " << buf->counters().value(fl.name()) << ":";
 				o << fl.name() << " #:";
-				s = o.str();
+				s = STRCONV(o.str());
 			} else {
 				// par->SetLayout(0);
 				// s = layout->labelstring;

@@ -35,6 +35,5 @@ void FormVCLog::update()
 	ostringstream ss;
 	controller().getVCLogFile(ss);
 
-	fl_add_browser_line(dialog_->browser,
-			    ss.str().c_str());
+	fl_add_browser_line(dialog_->browser, ss.str().c_str());
 }

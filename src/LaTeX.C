@@ -47,7 +47,12 @@ using std::vector;
 using std::set;
 using boost::regex;
 using boost::regex_match;
+
+#ifndef USE_INCLUDED_STRING
 using boost::smatch;
+#else
+using boost::cmatch;
+#endif
 
 // TODO: in no particular order
 // - get rid of the extern BufferList and the call to
@@ -104,18 +109,18 @@ void LaTeX::deleteFilesOnError() const
 
 	// but the reason for the error might be in a generated file...
 
-	string ofname = OnlyFilename(file);
+	string const ofname = OnlyFilename(file);
 
 	// bibtex file
-	string bbl = ChangeExtension(ofname, ".bbl");
+	string const bbl = ChangeExtension(ofname, ".bbl");
 	lyx::unlink(bbl);
 
 	// makeindex file
-	string ind = ChangeExtension(ofname, ".ind");
+	string const ind = ChangeExtension(ofname, ".ind");
 	lyx::unlink(ind);
 
 	// Also remove the aux file
-	string aux = ChangeExtension(ofname, ".aux");
+	string const aux = ChangeExtension(ofname, ".aux");
 	lyx::unlink(aux);
 }
 
@@ -130,7 +135,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	int scanres = NO_ERRORS;
 	unsigned int count = 0; // number of times run
 	num_errors = 0; // just to make sure.
-	const unsigned int MAX_RUN = 6;
+	unsigned int const MAX_RUN = 6;
 	DepTable head; // empty head
 	bool rerun = false; // rerun requested
 
@@ -198,7 +203,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	if (lfun) {
 		ostringstream str;
 		str << _("LaTeX run number") << ' ' << count;
-		lfun->dispatch(FuncRequest(LFUN_MESSAGE, str.str().c_str()));
+		lfun->dispatch(FuncRequest(LFUN_MESSAGE, STRCONV(str.str())));
 	}
 
 	this->operator()();
@@ -284,7 +289,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 			ostringstream str;
 			str << _("LaTeX run number") << ' ' << count;
 			// check lyxstring string stream and gcc 3.1 before fixing
-			lfun->dispatch(FuncRequest(LFUN_MESSAGE, str.str().c_str()));
+			lfun->dispatch(FuncRequest(LFUN_MESSAGE, STRCONV(str.str())));
 		}
 
 		this->operator()();
@@ -340,7 +345,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		if (lfun) {
 			ostringstream str;
 			str << _("LaTeX run number") << ' ' << count;
-			lfun->dispatch(FuncRequest(LFUN_MESSAGE, str.str().c_str()));
+			lfun->dispatch(FuncRequest(LFUN_MESSAGE, STRCONV(str.str())));
 		}
 
 		this->operator()();
@@ -432,9 +437,13 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 
 	while (getline(ifs, token)) {
 		token = rtrim(token, "\r");
+#ifndef USE_INCLUDED_STRING
 		smatch sub;
-		if (regex_match(token, sub, reg1)) {
-			string data = sub.str(1);
+#else
+		cmatch sub;
+#endif
+		if (regex_match(STRCONV(token), sub, reg1)) {
+			string data = STRCONV(sub.str(1));
 			while (!data.empty()) {
 				string citation;
 				data = split(data, citation, ',');
@@ -442,8 +451,8 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 						     << citation << endl;
 				aux_info.citations.insert(citation);
 			}
-		} else if (regex_match(token, sub, reg2)) {
-			string data = sub.str(1);
+		} else if (regex_match(STRCONV(token), sub, reg2)) {
+			string data = sub.STRCONV(str(1));
 			// data is now all the bib files separated by ','
 			// get them one by one and pass them to the helper
 			while (!data.empty()) {
@@ -454,16 +463,16 @@ void LaTeX::scanAuxFile(string const & file, Aux_Info & aux_info)
 						     << database << "'" << endl;
 				aux_info.databases.insert(database);
 			}
-		} else if (regex_match(token, sub, reg3)) {
-			string style = sub.str(1);
+		} else if (regex_match(STRCONV(token), sub, reg3)) {
+			string style = STRCONV(sub.str(1));
 			// token is now the style file
 			// pass it to the helper
 			style = ChangeExtension(style, "bst");
 			lyxerr[Debug::LATEX] << "Bibtex style: `"
 					     << style << "'" << endl;
 			aux_info.styles.insert(style);
-		} else if (regex_match(token, sub, reg4)) {
-			string file2 = sub.str(1);
+		} else if (regex_match(STRCONV(token), sub, reg4)) {
+			string const file2 = STRCONV(sub.str(1));
 			scanAuxFile(file2, aux_info);
 		}
 	}
@@ -683,17 +692,21 @@ void LaTeX::deplog(DepTable & head)
 		token = rtrim(token, "\r");
 		if (token.empty()) continue;
 
+#ifndef USE_INCLUDED_STRING
 		smatch sub;
-		if (regex_match(token, sub, reg1)) {
-			foundfile = sub.str(1);
-		} else if (regex_match(token, sub, reg2)) {
-			foundfile = sub.str(1);
-		} else if (regex_match(token, sub, reg3)) {
-			foundfile = sub.str(1);
-		} else if (regex_match(token, sub, reg4)) {
-			foundfile = sub.str(1);
-		} else if (regex_match(token, sub, reg5)) {
-			foundfile = sub.str(1);
+#else
+		cmatch sub;
+#endif
+		if (regex_match(STRCONV(token), sub, reg1)) {
+			foundfile = STRCONV(sub.str(1));
+		} else if (regex_match(STRCONV(token), sub, reg2)) {
+			foundfile = STRCONV(sub.str(1));
+		} else if (regex_match(STRCONV(token), sub, reg3)) {
+			foundfile = STRCONV(sub.str(1));
+		} else if (regex_match(STRCONV(token), sub, reg4)) {
+			foundfile = STRCONV(sub.str(1));
+		} else if (regex_match(STRCONV(token), sub, reg5)) {
+			foundfile = STRCONV(sub.str(1));
 		} else {
 			continue;
 		}
@@ -726,7 +739,7 @@ void LaTeX::deplog(DepTable & head)
 		// (2) foundfile is in the tmpdir
 		//     insert it into head
 		else if (FileInfo(OnlyFilename(foundfile)).exist()) {
-			if (regex_match(foundfile, unwanted)) {
+			if (regex_match(STRCONV(foundfile), unwanted)) {
 				lyxerr[Debug::DEPEND]
 					<< "We don't want "
 					<< OnlyFilename(foundfile)

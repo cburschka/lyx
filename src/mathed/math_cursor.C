@@ -1290,7 +1290,7 @@ string MathCursor::info() const
 		if (prevAtom()->asSymbolInset() || prevAtom()->asScriptInset())
 			prevAtom()->infoize(os);
 	os << "                    ";
-	return os.str().c_str(); // .c_str() needed for lyxstring
+	return STRCONV(os.str());
 }
 
 

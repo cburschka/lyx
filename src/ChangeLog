@@ -1,5 +1,59 @@
 2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* vc-backend.C: STRCONV
+	(scanMaster): ditto
+
+	* text2.C (setCounter): STRCONV
+
+	* paragraph.C (asString): STRCONV
+
+	* lyxlength.C (asString): STRCONV
+	(asLatexString): ditto
+
+	* lyxgluelength.C (asString): STRCONV
+	(asLatexString): ditto
+
+	* lyxfunc.C (dispatch): STRCONV
+	(open): ditto
+
+	* lyxfont.C (stateText): STRCONV
+
+	* importer.C (Import): STRCONV
+
+	* counters.C (labelItem): STRCONV
+	(numberLabel): ditto
+	(numberLabel): remove unused ostringstream o
+
+	* chset.C: STRCONV
+	(loadFile): ditto
+
+	* bufferview_funcs.C (currentState): STRCONV
+
+	* buffer.C (readFile): STRCONV
+	(asciiParagraph): ditto
+	(makeLaTeXFile): ditto
+
+	* Spacing.C (writeEnvirBegin): STRCONV
+
+	* LaTeXFeatures.C (getLanguages): STRCONV
+	(getPackages): ditto
+	(getMacros): ditto
+	(getBabelOptions): ditto
+	(getTClassPreamble): ditto
+	(getLyXSGMLEntities): ditto
+	(getIncludedFiles): ditto
+
+	* LaTeX.C: STRCONV
+	(run): ditto
+	(scanAuxFile): ditto
+	(deplog): ditto
+
+	* LString.h: add the STRCONV macros
+
+	* BufferView_pimpl.C (savePosition): STRCONV
+	(restorePosition): ditto
+	(MenuInsertLyXFile): ditto
+
 	* vc-backend.C (scanMaster): change from submatch[...] to
 	submatch.str(...)
 

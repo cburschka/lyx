@@ -638,7 +638,7 @@ void BufferView::Pimpl::savePosition(unsigned int i)
 	if (i > 0) {
 		ostringstream str;
 		str << _("Saved bookmark") << ' ' << i;
-		owner_->message(str.str().c_str());
+		owner_->message(STRCONV(str.str()));
 	}
 }
 
@@ -670,7 +670,7 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 	if (i > 0) {
 		ostringstream str;
 		str << _("Moved to bookmark") << ' ' << i;
-		owner_->message(str.str().c_str());
+		owner_->message(STRCONV(str.str()));
 	}
 }
 
@@ -879,18 +879,18 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 	ostringstream s1;
 	s1 << _("Inserting document") << ' '
 	   << disp_fn << " ...";
-	owner_->message(s1.str().c_str());
+	owner_->message(STRCONV(s1.str()));
 	bool const res = bv_->insertLyXFile(filename);
 	if (res) {
 		ostringstream str;
 		str << _("Document") << ' ' << disp_fn
 		    << ' ' << _("inserted.");
-		owner_->message(str.str().c_str());
+		owner_->message(STRCONV(str.str()));
 	} else {
 		ostringstream str;
 		str << _("Could not insert document") << ' '
 		    << disp_fn;
-		owner_->message(str.str().c_str());
+		owner_->message(STRCONV(str.str()));
 	}
 }
 
@@ -908,7 +908,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	// e.g. Qt mouse press when no buffer
 	if (!buffer_)
 		return false;
- 
+
 	LyXTextClass const & tclass = buffer_->params.getLyXTextClass();
 
 	switch (ev.action) {
@@ -1126,7 +1126,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 			inset->setLoadingBuffer(bv_->buffer(), false);
 			updateInset(inset, true);
 		}
-		
+
 	}
 	break;
 
@@ -1175,7 +1175,7 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	{
 		InsetBibtex * inset =
 			static_cast<InsetBibtex*>(getInsetByCode(Inset::BIBTEX_CODE));
-		if (inset) 
+		if (inset)
 			inset->setOptions(ev.argument);
 	}
 	break;

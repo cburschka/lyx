@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Michael Koziarski 
+ * \author Michael Koziarski
  *
  * Full author contact details are available in file CREDITS
  */
@@ -59,21 +59,21 @@ void GAbout::update()
 	cr += controller().getDisclaimer();
 	copyright()->get_buffer()->set_text(cr);
 
-	
+
 
 	version()->set_text(controller().getVersion());
 
 	stringstream in;
 	controller().getCredits(in);
 
-	istringstream ss(in.str().c_str());
+	istringstream ss(in.str());
 
 	string s;
 	string out;
 	Gtk::TextIter  e;
 
 	while (getline(ss, s)) {
-	
+
 		if (prefixIs(s, "@b"))
 			out += s.substr(2);
 		else if (prefixIs(s, "@i"))
@@ -88,19 +88,19 @@ void GAbout::update()
 
 
 
-Gtk::Button * GAbout::close_btn() const 
+Gtk::Button * GAbout::close_btn() const
 {
-        return getWidget<Gtk::Button>("r_close_btn");
+	return getWidget<Gtk::Button>("r_close_btn");
 }
-Gtk::Label * GAbout::version() const 
+Gtk::Label * GAbout::version() const
 {
-        return getWidget<Gtk::Label>("r_version");
+	return getWidget<Gtk::Label>("r_version");
 }
-Gtk::TextView * GAbout::credits() const 
+Gtk::TextView * GAbout::credits() const
 {
-        return getWidget<Gtk::TextView>("r_credits");
+	return getWidget<Gtk::TextView>("r_credits");
 }
-Gtk::TextView * GAbout::copyright() const 
+Gtk::TextView * GAbout::copyright() const
 {
-        return getWidget<Gtk::TextView>("r_copyright");
+	return getWidget<Gtk::TextView>("r_copyright");
 }

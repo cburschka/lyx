@@ -1,5 +1,5 @@
 #ifdef __GNUG__
-#pragma implementation 
+#pragma implementation
 #endif
 
 #include <config.h>
@@ -146,7 +146,8 @@ void initAutoCorrect()
 			//lyxerr[Debug::MATHED] << "ignoring line '" << line << "'" << endl;
 			continue;
 		}
-		istringstream il(line);
+		istringstream il(STRCONV(line));
+
 		//lyxerr[Debug::MATHED] << "line '" << line << "'" << endl;
 		Correction corr;
 		if (corr.read(il)) {

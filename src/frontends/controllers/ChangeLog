@@ -1,5 +1,10 @@
 2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* biblio.C (regexSearch): STRCONV
+	(getInfo): ditto
+
+	* ControlAboutlyx.C (getVersion): STRCONV
+
 	* ControlMath.C: include config.h
 
 2002-10-31  John Levon  <levon@movementarian.org>

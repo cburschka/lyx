@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -258,7 +258,7 @@ struct IncrementedFileName {
 	{
 		ostringstream os;
 		os << base_ << counter_++ << "." << to_format_;
-		string const file = os.str().c_str();
+		string const file = STRCONV(os.str());
 
 		return make_pair(snippet, file);
 	}
@@ -281,7 +281,7 @@ InProgress::InProgress(string const & filename_base,
 	PendingSnippets::const_iterator pend = pending.end();
 	BitmapFile::iterator sit = snippets.begin();
 
-	std::transform(pit, pend, sit, 
+	std::transform(pit, pend, sit,
 		       IncrementedFileName(to_format, filename_base));
 }
 
@@ -478,7 +478,7 @@ void PreviewLoader::Impl::startLoading()
 	cs << pconverter_->command << " " << latexfile << " "
 	   << int(font_scaling_factor_) << " " << pconverter_->to;
 
-	string const command = "sh " + LibScriptSearch(cs.str().c_str());
+	string const command = "sh " + LibScriptSearch(STRCONV(cs.str()));
 
 	// Initiate the conversion from LaTeX to bitmap images files.
 	Forkedcall::SignalTypePtr convert_ptr(new Forkedcall::SignalType);

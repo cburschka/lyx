@@ -6,7 +6,7 @@
  * \author Alejandro Aguilar Sierra
  * \author Pablo De Napoli
  * \author John Levon
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -103,7 +103,7 @@ void FormMathsDelim::apply()
 	ostringstream os;
 	os << delim_values[left] << ' ' << delim_values[right];
 
-	lv_.dispatch(FuncRequest(LFUN_MATH_DELIM, os.str().c_str()));
+	lv_.dispatch(FuncRequest(LFUN_MATH_DELIM, STRCONV(os.str())));
 }
 
 
@@ -136,13 +136,13 @@ bool FormMathsDelim::input(FL_OBJECT *, long)
 		}
 	}
 
-	// Re-initialize button_pix to solid blue 
+	// Re-initialize button_pix to solid blue
 	// (not elegant but works, MV 24.5.2002)
 	fl_free_pixmap_pixmap(dialog_->button_pix);
 	fl_set_pixmap_data(dialog_->button_pix, const_cast<char**>(delim1));
 	Pixmap p1;
 	fl_get_pixmap_pixmap(dialog_->button_pix, &p1, 0);
-	
+
 	fl_draw_bmtable_item(dialog_->bmtable, left, p1, 0, 0);
 	fl_draw_bmtable_item(dialog_->bmtable, right, p1, 16, 0);
 	fl_redraw_object(dialog_->button_pix);

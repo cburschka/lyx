@@ -8,23 +8,23 @@
  */
 
 #include <config.h>
- 
+
 #include "support/LOstream.h"
- 
+
 #include "paragraph.h"
 #include "sgml.h"
- 
+
 using std::pair;
 using std::make_pair;
 using std::ostream;
 using std::endl;
- 
+
 namespace sgml {
 
 pair<bool, string> escapeChar(char c)
 {
 	string str;
- 
+
 	switch (c) {
 	case Paragraph::META_HFILL:
 		break;
@@ -83,7 +83,7 @@ pair<bool, string> escapeChar(char c)
 	return make_pair(false, str);
 }
 
- 
+
 int openTag(ostream & os, Paragraph::depth_type depth,
 	    bool mixcont, string const & latexname)
 {

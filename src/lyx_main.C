@@ -91,7 +91,7 @@ LyX::LyX(int & argc, char * argv[])
 	// if this should not be in this file, please also remove
 	// #include "graphics/GraphicsTypes.h" at the top -- Rob Lahaye.
 	grfx::setDisplayTranslator();
-	
+
 	if (want_gui) {
 		lyx_gui::parse_init(argc, argv);
 	}

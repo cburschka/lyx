@@ -20,7 +20,13 @@ using std::make_pair;
 using std::endl;
 using boost::regex;
 using boost::regex_match;
+
+#ifndef USE_INCLUDED_STRING
 using boost::smatch;
+#else
+using boost::cmatch;
+#endif
+
 
 
 bool CharacterSet::loadFile(string const & fname)
@@ -50,10 +56,14 @@ bool CharacterSet::loadFile(string const & fname)
 	// without the use of a keyword table.
 	regex reg("^([12][0-9][0-9])[ \t]+\"([^ ]+)\".*");
 	while (getline(ifs, line)) {
+#ifndef USE_INCLUDED_STRING
 		smatch sub;
-		if (regex_match(line, sub, reg)) {
-			int const n = lyx::atoi(sub.str(1));
-			string const str = sub.str(2);
+#else
+		cmatch sub;
+#endif
+		if (regex_match(STRCONV(line), sub, reg)) {
+			int const n = lyx::atoi(STRCONV(sub.str(1)));
+			string const str = STRCONV(sub.str(2));
 			if (lyxerr.debugging(Debug::KBMAP))
 				lyxerr << "Chardef: " << n
 				       << " to [" << str << "]" << endl;

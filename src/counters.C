@@ -278,7 +278,8 @@ string Counters::labelItem(string const & ctr,
 		}
 		s << o.str();
 	}
-	return s.str();
+
+	return STRCONV(s.str());
 }
 
 
@@ -287,7 +288,8 @@ string Counters::numberLabel(string const & ctr,
 			     string const & langtype,
 			     int head)
 {
-	ostringstream s, o;
+	ostringstream s;
+
 	if (numbertype == "sectioning" || numbertype == "appendix") {
 		if (ctr == "chapter" && head == 0) {
 			s << labelItem("chapter", numbertype, langtype, true);
@@ -340,5 +342,6 @@ string Counters::numberLabel(string const & ctr,
 			s << eiv.str();
 		}
 	}
-	return s.str();
+
+	return STRCONV(s.str());
 }

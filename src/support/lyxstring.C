@@ -665,7 +665,7 @@ lyxstring::const_reference lyxstring::operator[](size_type pos) const
 #if 0
 	// This is actually what the standard requires,
 	lyx::Assert(pos <= rep->sz); // OURS!
-	static char helper = '\0';
+	static char const helper = '\0';
 	return pos == rep->sz ? helper : rep->s[pos];
 #else
 	// but we use this one since it is stricter

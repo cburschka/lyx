@@ -52,13 +52,14 @@ src/frontends/qt2/QGraphics.C
 src/frontends/qt2/QInclude.C
 src/frontends/qt2/QIndex.C
 src/frontends/qt2/QLog.C
+src/frontends/qt2/QLPrintDialog.C
 src/frontends/qt2/QMathDialog.C
+src/frontends/qt2/QMathMatrixDialog.C
 src/frontends/qt2/QMinipage.C
 src/frontends/qt2/QParagraph.C
 src/frontends/qt2/QPreamble.C
 src/frontends/qt2/QPreambleDialog.C
 src/frontends/qt2/QPrint.C
-src/frontends/qt2/QPrintDialog.C
 src/frontends/qt2/QRef.C
 src/frontends/qt2/QSearch.C
 src/frontends/qt2/QSendto.C
@@ -107,6 +108,7 @@ src/frontends/xforms/FormPrint.C
 src/frontends/xforms/FormRef.C
 src/frontends/xforms/FormSearch.C
 src/frontends/xforms/FormSendto.C
+src/frontends/xforms/FormShowFile.C
 src/frontends/xforms/FormSpellchecker.C
 src/frontends/xforms/FormTabular.C
 src/frontends/xforms/FormTabularCreate.C

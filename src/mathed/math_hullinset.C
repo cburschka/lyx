@@ -393,7 +393,7 @@ void MathHullInset::footer_write(WriteStream & os) const
 		else
 			os << "\\]\n";
 
-	else if (type_ == "eqnarray" || type_ == "align" || type_ == "flalign"  
+	else if (type_ == "eqnarray" || type_ == "align" || type_ == "flalign"
 	     || type_ == "alignat" || type_ == "xalignat")
 		os << "\\end{" << type_ << star(n) << "}\n";
 
@@ -433,7 +433,7 @@ void MathHullInset::delRow(row_type row)
 
 void MathHullInset::addCol(col_type col)
 {
-	if (colChangeOK()) 
+	if (colChangeOK())
 		MathGridInset::addCol(col);
 	else
 		lyxerr << "Can't change number of columns in '" << type_ << "'\n";
@@ -442,7 +442,7 @@ void MathHullInset::addCol(col_type col)
 
 void MathHullInset::delCol(col_type col)
 {
-	if (colChangeOK()) 
+	if (colChangeOK())
 		MathGridInset::delCol(col);
 	else
 		lyxerr << "Can't change number of columns in '" << type_ << "'\n";
@@ -592,7 +592,7 @@ void MathHullInset::mutate(string const & newtype)
 	}
 
 	else if (type_ == "multline") {
-		if (newtype == "gather" || newtype == "align" ||	
+		if (newtype == "gather" || newtype == "align" ||
 		    newtype == "xalignat" || newtype == "xxalignat" || newtype == "flalign")
 			setType(newtype);
 		else if (newtype == "eqnarray") {
@@ -826,7 +826,7 @@ MathInset::result_type MathHullInset::dispatch
 			idx = r * ncols() + c;
 			if (idx >= nargs())
 				idx = nargs() - 1;
-			if (pos > cell(idx).size()) 
+			if (pos > cell(idx).size())
 				pos = cell(idx).size();
 			return DISPATCHED_POP;
 		}

@@ -145,7 +145,7 @@ string LaTeXFeatures::getLanguages() const
 	     ++cit)
 		languages << (*cit)->babel() << ',';
 
-	return languages.str().c_str();
+	return STRCONV(languages.str());
 }
 
 
@@ -289,7 +289,7 @@ string const LaTeXFeatures::getPackages() const
 
 	packages << externalPreambles;
 
-	return packages.str().c_str();
+	return STRCONV(packages.str());
 }
 
 
@@ -346,7 +346,7 @@ string const LaTeXFeatures::getMacros() const
 	// floats
 	getFloatDefinitions(macros);
 
-	return macros.str().c_str();
+	return STRCONV(macros.str());
 }
 
 
@@ -361,7 +361,7 @@ string const LaTeXFeatures::getBabelOptions() const
 	if (!params.language->latex_options().empty())
 		tmp << params.language->latex_options() << '\n';
 
-	return tmp.str().c_str();
+	return STRCONV(tmp.str());
 }
 
 
@@ -379,7 +379,7 @@ string const LaTeXFeatures::getTClassPreamble() const
 		tcpreamble << tclass[*cit]->preamble();
 	}
 
-	return tcpreamble.str().c_str();
+	return STRCONV(tcpreamble.str());
 }
 
 
@@ -392,7 +392,7 @@ string const LaTeXFeatures::getLyXSGMLEntities() const
 		entities << "<!ENTITY lyxarrow \"-&gt;\">" << '\n';
 	}
 
-	return entities.str().c_str();
+	return STRCONV(entities.str());
 }
 
 
@@ -408,7 +408,7 @@ string const LaTeXFeatures::getIncludedFiles(string const & fname) const
 			     << (IsSGMLFilename(fi->second) ? " SYSTEM \"" : " \"")
 			     << MakeRelPath(fi->second, basename) << "\">";
 
-	return sgmlpreamble.str().c_str();
+	return STRCONV(sgmlpreamble.str());
 }
 
 

@@ -1,5 +1,13 @@
 2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* insettabular.C (copySelection): STRCONV
+
+	* insetinclude.C (uniqueID): STRCONV
+	(latexString): ditto
+
+	* insetgraphics.C: put VersionNumber inside anon namespace
+	(createLatexOptions): STRCONV
+
 	* insetcommandparams.C: include config.h
 
 2002-10-31  Rob Lahaye  <lahaye@snu.ac.kr>

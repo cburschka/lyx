@@ -100,11 +100,12 @@ extern string system_tempdir;
 using std::ostream;
 using std::endl;
 
+
+namespace {
+
 ///////////////////////////////////////////////////////////////////////////
 int const VersionNumber = 1;
 ///////////////////////////////////////////////////////////////////////////
-
-namespace {
 
 // This function is a utility function
 // ... that should be with ChangeExtension ...
@@ -114,10 +115,6 @@ string const RemoveExtension(string const & filename)
 	return ChangeExtension(filename, string());
 }
 
-} // namespace anon
-
-
-namespace {
 
 string const uniqueID()
 {
@@ -127,7 +124,30 @@ string const uniqueID()
 	ost << "graph" << ++seed;
 
 	// Needed if we use lyxstring.
-	return ost.str().c_str();
+	return STRCONV(ost.str());
+}
+
+
+string findTargetFormat(string const & suffix)
+{
+	// lyxrc.pdf_mode means:
+	// Are we creating a PDF or a PS file?
+	// (Should actually mean, are we using latex or pdflatex).
+	if (lyxrc.pdf_mode) {
+		lyxerr[Debug::GRAPHICS] << "findTargetFormat: PDF mode\n";
+		if (contains(suffix, "ps") || suffix == "pdf")
+			return "pdf";
+		else if (suffix == "jpg")	// pdflatex can use jpeg
+			return suffix;
+		else
+			return "png";		// and also png
+	}
+	// If it's postscript, we always do eps.
+	lyxerr[Debug::GRAPHICS] << "findTargetFormat: PostScript mode\n";
+	if (suffix != "ps")			// any other than ps
+	    return "eps";			// is changed to eps
+	else
+	    return suffix;			// let ps untouched
 }
 
 } // namespace anon
@@ -468,7 +488,6 @@ string const InsetGraphics::createLatexOptions() const
 	    options << "  draft,\n";
 	if (params().clip)
 	    options << "  clip,\n";
-	
 	if (!lyx::float_equal(params().scale, 0.0, 0.05)) {
 		if (!lyx::float_equal(params().scale, 100.0, 0.05))
 			options << "  scale=" << params().scale / 100.0
@@ -479,7 +498,7 @@ string const InsetGraphics::createLatexOptions() const
 		if (!params().height.zero())
 			options << "  height=" << params().height.asLatexString() << ",\n";
 		if (params().keepAspectRatio)
-	    		options << "  keepaspectratio,\n";
+			options << "  keepaspectratio,\n";
 	}
 
 	// Make sure rotation angle is not very close to zero;
@@ -501,37 +520,13 @@ string const InsetGraphics::createLatexOptions() const
 	if (!params().special.empty())
 	    options << params().special << ",\n";
 
-	string opts = options.str().c_str();
-	return opts.substr(0,opts.size()-2);	// delete last ",\n"
+	string opts = STRCONV(options.str());
+	// delete last ",\n"
+	return opts.substr(0, opts.size() - 2);
 }
 
-namespace {
-string findTargetFormat(string const & suffix)
-{
-	// lyxrc.pdf_mode means:
-	// Are we creating a PDF or a PS file?
-	// (Should actually mean, are we using latex or pdflatex).
-	if (lyxrc.pdf_mode) {
-		lyxerr[Debug::GRAPHICS] << "findTargetFormat: PDF mode\n";
-		if (contains(suffix, "ps") || suffix == "pdf")
-			return "pdf";
-		else if (suffix == "jpg")	// pdflatex can use jpeg
-			return suffix;
-		else
-			return "png";		// and also png
-	}
-	// If it's postscript, we always do eps.
-	lyxerr[Debug::GRAPHICS] << "findTargetFormat: PostScript mode\n";
-	if (suffix != "ps")			// any other than ps
-	    return "eps";			// is changed to eps
-	else
-	    return suffix;			// let ps untouched
-}
 
-} // Anon. namespace
-
-
-string const InsetGraphics::prepareFile(Buffer const *buf) const
+string const InsetGraphics::prepareFile(Buffer const * buf) const
 {
 	// LaTeX can cope if the graphics file doesn't exist, so just return the
 	// filename.

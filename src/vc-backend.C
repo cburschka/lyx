@@ -31,7 +31,13 @@ using std::ifstream;
 using std::getline;
 using boost::regex;
 using boost::regex_match;
+
+#ifndef USE_INCLUDED_STRING
 using boost::smatch;
+#else
+using boost::cmatch;
+#endif
+
 
 int VCS::doVCCommand(string const & cmd, string const & path)
 {
@@ -252,13 +258,18 @@ void CVS::scanMaster()
 		lyxerr[Debug::LYXVC] << "\t  line: " << line << endl;
 		if (contains(line, tmpf)) {
 			// Ok extract the fields.
+#ifndef USE_INCLUDED_STRING
 			smatch sm;
-			regex_match(line, sm, reg);
+#else
+			cmatch sm;
+#endif
+			regex_match(STRCONV(line), sm, reg);
 
 			//sm[0]; // whole matched string
 			//sm[1]; // filename
-			version_ = sm.str(2);
-			string file_date = sm.str(3);
+			version_ = STRCONV(sm.str(2));
+			string const file_date = STRCONV(sm.str(3));
+
 			//sm[4]; // options
 			//sm[5]; // tag or tagdate
 			FileInfo fi(file_);

@@ -61,7 +61,7 @@ InsetFormulaMacro::InsetFormulaMacro(string const & name, int nargs)
 
 InsetFormulaMacro::InsetFormulaMacro(string const & s)
 {
-	std::istringstream is(s);
+	std::istringstream is(STRCONV(s));
 	read(is);
 }
 

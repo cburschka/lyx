@@ -118,7 +118,7 @@ regexSearch(InfoMap const & theMap,
 	    vector<string>::const_iterator start,
 	    Direction dir)
 {
-	boost::regex reg(expr);
+	boost::regex reg(STRCONV(expr));
 
 	for (vector<string>::const_iterator it = start;
 	     // End condition is direction-dependent.
@@ -131,7 +131,7 @@ regexSearch(InfoMap const & theMap,
 		if (info != theMap.end())
 			data += " " + info->second;
 
-		if (boost::regex_match(data, reg)) {
+		if (boost::regex_match(STRCONV(data), reg)) {
 			return it;
 		}
 	}
@@ -336,7 +336,7 @@ string const getInfo(InfoMap const & map, string const & key)
 	if (!year.empty())
 		result << ", " << year;
 
-	string const result_str = rtrim(result.str().c_str());
+	string const result_str = rtrim(STRCONV(result.str()));
 	if (!result_str.empty())
 		return result_str;
 

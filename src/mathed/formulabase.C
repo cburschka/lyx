@@ -310,7 +310,7 @@ Inset::RESULT InsetFormulaBase::lfunMouseRelease(FuncRequest const & cmd)
 
 	if (cmd.button() == mouse_button::button3) {
 		// try to dispatch to enclosed insets first
-		if (mathcursor->dispatch(cmd) == MathInset::UNDISPATCHED) {	
+		if (mathcursor->dispatch(cmd) == MathInset::UNDISPATCHED) {
 			// launch math panel for right mouse button
 			bv->owner()->getDialogs().showMathPanel();
 		}
@@ -382,12 +382,12 @@ Inset::RESULT InsetFormulaBase::lfunMouseMotion(FuncRequest const & cmd)
 		return DISPATCHED;
 
 	// only select with button 1
-	if (cmd.button() != mouse_button::button1) 
+	if (cmd.button() != mouse_button::button1)
 		return DISPATCHED;
 
 	if (abs(cmd.x - first_x) < 2 && abs(cmd.y - first_y) < 2)
 		return DISPATCHED;
-	
+
 	first_x = cmd.x;
 	first_y = cmd.y;
 
@@ -662,7 +662,7 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		unsigned int n = 1;
 		string v_align;
 		string h_align;
-		istringstream is(argument);
+		istringstream is(STRCONV(argument));
 		is >> m >> n >> v_align >> h_align;
 		m = max(1u, m);
 		n = max(1u, n);
@@ -736,7 +736,7 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 		mathcursor->niceInsert(argument);
 		updateLocal(bv, true);
 		break;
-	
+
 	case -1:
 	case LFUN_SELFINSERT:
 		if (!argument.empty()) {
@@ -949,7 +949,7 @@ bool InsetFormulaBase::display() const
 
 string InsetFormulaBase::selectionAsString() const
 {
-	return mathcursor ? mathcursor->grabSelection() : string(); 
+	return mathcursor ? mathcursor->grabSelection() : string();
 }
 
 /////////////////////////////////////////////////////////////////////
@@ -1025,13 +1025,13 @@ void mathDispatch(FuncRequest const & cmd)
 			}
 			break;
 
-		case LFUN_GREEK: 
-		case LFUN_INSERT_MATH: 
-		case LFUN_INSERT_MATRIX: 
+		case LFUN_GREEK:
+		case LFUN_INSERT_MATH:
+		case LFUN_INSERT_MATRIX:
 		case LFUN_MATH_DELIM: {
 			InsetFormula * f = new InsetFormula(bv);
 			if (openNewInset(bv, f)) {
-				bv->theLockingInset()->	
+				bv->theLockingInset()->
 					localDispatch(FuncRequest(bv, LFUN_MATH_MUTATE, "simple"));
 				bv->theLockingInset()->localDispatch(cmd);
 			}

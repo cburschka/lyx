@@ -1,6 +1,5 @@
-
 #ifdef __GNUG__
-#pragma implementation 
+#pragma implementation
 #endif
 
 // This file contains most of the magic that extracts "context
@@ -306,7 +305,7 @@ void extractExps(MathArray & ar)
 		if (!sup || sup->hasDown())
 			continue;
 
-		// create a proper exp-inset as replacement 
+		// create a proper exp-inset as replacement
 		ar[i] = MathAtom(new MathExFuncInset("exp", sup->cell(1)));
 		ar.erase(i + 1);
 	}
@@ -490,7 +489,7 @@ bool testIntegral(MathAtom const & at)
 {
 	return
 	 testIntSymbol(at) ||
-		( at->asScriptInset() 
+		( at->asScriptInset()
 		  && at->asScriptInset()->nuc().size()
 			&& testIntSymbol(at->asScriptInset()->nuc().back()) );
 }
@@ -569,7 +568,7 @@ bool testSum(MathAtom const & at)
 {
 	return
 	 testSumSymbol(at) ||
-		( at->asScriptInset() 
+		( at->asScriptInset()
 		  && at->asScriptInset()->nuc().size()
 			&& testSumSymbol(at->asScriptInset()->nuc().back()) );
 }
@@ -750,7 +749,7 @@ void extractLims(MathArray & ar)
 		MathArray::iterator it = ar.begin() + i;
 
 		// is this a limit function?
-		if (!testSymbol(*it, "lim")) 
+		if (!testSymbol(*it, "lim"))
 			continue;
 
 		// the next one must be a subscript (without superscript)
@@ -767,7 +766,7 @@ void extractLims(MathArray & ar)
 		// the -> splits the subscript int x and x0
 		MathArray x  = MathArray(s.begin(), st);
 		MathArray x0 = MathArray(st + 1, s.end());
-		
+
 		// use something behind the script as core
 		MathArray f;
 		MathArray::iterator tt = extractArgument(f, it + 2, ar.end());
@@ -927,7 +926,7 @@ namespace {
 		ostringstream os;
 		MaximaStream ms(os);
 		ms << ar;
-		string expr = os.str().c_str();
+		string expr = STRCONV(os.str());
 		string const header = "SIMPSUM:true;";
 
 		string out;
@@ -1050,7 +1049,7 @@ namespace {
 		ostringstream os;
 		MapleStream ms(os);
 		ms << ar;
-		string expr = os.str().c_str();
+		string expr = STRCONV(os.str());
 		lyxerr << "ar: '" << ar << "'\n";
 		lyxerr << "ms: '" << os.str() << "'\n";
 
@@ -1098,7 +1097,7 @@ namespace {
 		ostringstream os;
 		OctaveStream vs(os);
 		vs << ar;
-		string expr = os.str().c_str();
+		string expr = STRCONV(os.str());
 		string out;
 
 		lyxerr << "pipe: ar: '" << ar << "'\n";
@@ -1182,7 +1181,7 @@ MathArray pipeThroughExtern(string const & lang, string const & extra,
 	os << "[" << extra << ' ';
 	ns << ar;
 	os << "]";
-	string data = os.str().c_str();
+	string data = STRCONV(os.str());
 
 	// search external script
 	string file = LibFileSearch("mathed", "extern_" + lang);

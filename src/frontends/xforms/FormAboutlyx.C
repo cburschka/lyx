@@ -26,8 +26,6 @@
 
 #include FORMS_H_LOCATION
 
-using std::string;
-
 
 typedef FormCB<ControlAboutlyx, FormDB<FD_aboutlyx> > base_class;
 
@@ -50,7 +48,7 @@ void FormAboutlyx::build()
 	fl_add_browser_line(version_->browser_version, vs.str().c_str());
 
 	// create credits tab
- 	credits_.reset(build_aboutlyx_credits(this));
+	credits_.reset(build_aboutlyx_credits(this));
 
 	ostringstream crs;
 	controller().getCredits(crs);
@@ -73,7 +71,7 @@ void FormAboutlyx::build()
 			   version_->form);
 	fl_addto_tabfolder(dialog_->tabfolder, _("Credits"),
 			   credits_->form);
-	fl_addto_tabfolder(dialog_->tabfolder, _("License"), 
+	fl_addto_tabfolder(dialog_->tabfolder, _("License"),
 			   license_->form);
 
 	// work-around xforms bug re update of folder->x, folder->y coords.

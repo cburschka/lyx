@@ -160,7 +160,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 		       << keysym->getSymbolName()
 		       << endl;
 	}
- 
+
 	// Do nothing if we have nothing (JMarc)
 	if (!keysym->isOK()) {
 		lyxerr[Debug::KEY] << "Empty kbd action (probably composing)"
@@ -948,10 +948,10 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 			ostringstream s1;
 			s1 << _("Saving document") << ' '
 			   << MakeDisplayPath(owner->buffer()->fileName() + "...");
-			owner->message(s1.str().c_str());
+			owner->message(STRCONV(s1.str()));
 			MenuWrite(view(), owner->buffer());
 			s1 << _(" done.");
-			owner->message(s1.str().c_str());
+			owner->message(STRCONV(s1.str()));
 		} else
 			WriteAs(view(), owner->buffer());
 		break;
@@ -1106,7 +1106,7 @@ void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 		ostringstream str;
 		str << _("Opening help file") << ' '
 		    << MakeDisplayPath(fname) << "...";
-		owner->message(str.str().c_str());
+		owner->message(STRCONV(str.str()));
 		view()->buffer(bufferlist.loadLyXFile(fname, false));
 		owner->allowInput();
 		break;
@@ -1675,19 +1675,17 @@ void LyXFunc::open(string const & fname)
 	ostringstream str;
 	str << _("Opening document") << ' ' << disp_fn << "...";
 
-	owner->message(str.str().c_str());
+	owner->message(STRCONV(str.str()));
 
 	Buffer * openbuf = bufferlist.loadLyXFile(filename);
+	ostringstream str2;
 	if (openbuf) {
 		view()->buffer(openbuf);
-		ostringstream str;
-		str << _("Document") << ' ' << disp_fn << ' ' << _("opened.");
-		owner->message(str.str().c_str());
+		str2 << _("Document") << ' ' << disp_fn << ' ' << _("opened.");
 	} else {
-		ostringstream str;
-		str << _("Could not open document") << ' ' << disp_fn;
-		owner->message(str.str().c_str());
+		str2 << _("Could not open document") << ' ' << disp_fn;
 	}
+	owner->message(STRCONV(str2.str()));
 }
 
 

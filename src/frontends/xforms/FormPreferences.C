@@ -3,7 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
- * \author Angus Leeming 
+ * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS
  */
@@ -911,7 +911,7 @@ string const FormPreferences::Colors::X11hexname(RGBColor const & col) const
 	     << setw(2) << col.g
 	     << setw(2) << col.b;
 
-	return ostr.str().c_str();
+	return STRCONV(ostr.str());
 }
 
 
@@ -1871,7 +1871,7 @@ void FormPreferences::LnFmisc::build()
 	setPrehandler(dialog_->check_dialogs_iconify_with_main);
 	setPrehandler(dialog_->check_preview_latex);
 	setPrehandler(dialog_->counter_wm_jump);
-	
+
 	fl_addto_choice(dialog_->choice_display, _("Monochrome|Grayscale|Color|Do not display"));
 }
 

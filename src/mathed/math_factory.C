@@ -57,6 +57,7 @@ bool has_math_fonts;
 
 using std::endl;
 
+
 namespace {
 
 // file scope
@@ -98,15 +99,15 @@ void initSymbols()
 	std::ifstream fs(filename.c_str());
 	string line;
 	bool skip = false;
-	while (std::getline(fs, line)) {
+	while (getline(fs, line)) {
 		int charid     = 0;
 		int fallbackid = 0;
-		if (line.size() > 0 && line[0] == '#')
+		if (!line.empty() && line[0] == '#')
 			continue;
 
 		// special case of iffont/else/endif
 		if (line.size() >= 7 && line.substr(0, 6) == "iffont") {
-			istringstream is(line);
+			istringstream is(STRCONV(line));
 			string tmp;
 			is >> tmp;
 			is >> tmp;
@@ -122,13 +123,13 @@ void initSymbols()
 
 		// special case of pre-defined macros
 		if (line.size() > 8 && line.substr(0, 5) == "\\def\\") {
-			//lyxerr << "defining: '" << line << "'\n";
-			istringstream is(line);
+			//lyxerr << "defining: '" << line << "'" << endl;
+			istringstream is(STRCONV(line));
 			MathMacroTable::create(MathAtom(new MathMacroTemplate(is)));
 			continue;
 		}
 
-		istringstream is(line);
+		istringstream is(STRCONV(line));
 		latexkeys tmp;
 		is >> tmp.name >> tmp.inset;
 		if (isFontName(tmp.inset))
@@ -145,7 +146,7 @@ void initSymbols()
 		if (isFontName(tmp.inset)) {
 			// tmp.inset _is_ the fontname here.
 			// create fallbacks if necessary
-			if (tmp.extra=="func" || tmp.extra=="funclim" || tmp.extra=="special") {
+			if (tmp.extra == "func" || tmp.extra == "funclim" || tmp.extra == "special") {
 				lyxerr[Debug::MATHED] << "symbol abuse for " << tmp.name << endl;
 				tmp.draw = tmp.name;
 			} else if (math_font_available(tmp.inset)) {
@@ -165,20 +166,24 @@ void initSymbols()
 			}
 		} else {
 			// it's a proper inset
-			lyxerr[Debug::MATHED] << "inset " << tmp.inset << " used for "
-				<< tmp.name << endl;
+			lyxerr[Debug::MATHED] << "inset " << tmp.inset
+					      << " used for " << tmp.name
+					      << endl;
 		}
 
 		if (theWordList.find(tmp.name) != theWordList.end())
-			lyxerr[Debug::MATHED] << "readSymbols: inset " << tmp.name
-					      << " already exists." << endl;
+			lyxerr[Debug::MATHED]
+				<< "readSymbols: inset " << tmp.name
+				<< " already exists." << endl;
 		else
 			theWordList[tmp.name] = tmp;
-		lyxerr[Debug::MATHED] << "read symbol '" << tmp.name
-					<<  "  inset: " << tmp.inset
-					<<  "  draw: " << int(tmp.draw[0])
-					<<  "  extra: " << tmp.extra
-				      << "'" << endl;
+
+		lyxerr[Debug::MATHED]
+			<< "read symbol '" << tmp.name
+			<< "  inset: " << tmp.inset
+			<< "  draw: " << int(tmp.draw.empty() ? 0 : tmp.draw[0])
+			<< "  extra: " << tmp.extra
+			<< "'" << endl;
 	}
 	string tmp = "cmm";
 	string tmp2 = "cmsy";
@@ -203,18 +208,20 @@ latexkeys const * in_word_set(string const & str)
 {
 	WordList::iterator it = theWordList.find(str);
 	//lyxerr << "looking up '" << str << "' found: "
-	// << (it != theWordList.end()) << "\n";
+	// << (it != theWordList.end()) << endl;
 	return (it != theWordList.end()) ? &(it->second) : 0;
 }
 
 
 MathAtom createMathInset(string const & s)
 {
-	lyxerr[Debug::MATHED] << "creating inset with name: '" << s << "'" << endl;
+	lyxerr[Debug::MATHED] << "creating inset with name: '"
+			      << s << "'" << endl;;
 	latexkeys const * l = in_word_set(s);
 	if (l) {
 		string const & inset = l->inset;
-		lyxerr[Debug::MATHED] << " found inset: '" << inset << "'" << endl;
+		lyxerr[Debug::MATHED] << " found inset: '" <<
+			inset << "'" << endl;
 		if (inset == "ref")
 			return MathAtom(new RefInset(l->name));
 		if (inset == "underset")

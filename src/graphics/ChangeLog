@@ -1,5 +1,11 @@
 2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* PreviewLoader.C (IncrementedFileName): STRCONV
+	(startLoading): ditto
+
+	* GraphicsConverter.C (Impl): STRCONV
+	(move_file): ditto
+
 	* GraphicsTypes.C: include config.h
 
 2002-10-25  Angus Leeming  <leeming@lyx.org>

@@ -1,5 +1,9 @@
 2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* lyx_gui.h: do not use std:: on string
+
+2002-11-04  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* lyx_gui.h: reindent a bit, change signeture on lyx_gui::start.
 
 2002-10-24  Rob Lahaye  <lahaye@snu.ac.kr>
