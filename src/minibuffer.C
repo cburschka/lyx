@@ -100,6 +100,9 @@ void MiniBuffer::stored_set(string const & str)
 int MiniBuffer::peek_event(FL_OBJECT * ob, int event, int key)
 {
 	switch (event) {
+	case FL_UNFOCUS:
+		deactivate();
+		break;
 	case FL_KEYBOARD:
 	{
 		char const * tmp = fl_get_input(ob);

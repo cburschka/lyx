@@ -842,8 +842,17 @@ bool InsetText::updateInsetInInset(BufferView * bv, Inset * inset)
 		setUpdateStatus(bv, CURSOR_PAR);
 		return the_locking_inset->updateInsetInInset(bv, inset);
 	}
-	if (getLyXText(bv)->updateInset(bv, inset))
+	bool clear = false;
+	if (!lt) {
+		lt = getLyXText(bv);
+		clear = true;
+	}
+	if (lt->updateInset(bv, inset)) {
+		if (clear)
+			lt = 0;
 		updateLocal(bv, CURSOR_PAR, false);
+	} else if (clear)
+		lt = 0;
 	if (cpar(bv) == inset_par && cpos(bv) == inset_pos) {
 		inset_x = cx(bv) - top_x + drawTextXOffset;
 		inset_y = cy(bv) + drawTextYOffset;
@@ -2202,12 +2211,18 @@ void InsetText::reinitLyXText() const
 
 void InsetText::removeNewlines()
 {
+	bool changed = false;
+	
 	for (Paragraph * p = par; p; p = p->next()) {
 		for (int i = 0; i < p->size(); ++i) {
-			if (p->getChar(i) == Paragraph::META_NEWLINE)
+			if (p->getChar(i) == Paragraph::META_NEWLINE) {
+				changed = true;
 				p->erase(i);
+			}
 		}
 	}
+	if (changed)
+		reinitLyXText();
 }
 
 

@@ -233,9 +233,7 @@ int LyXText::singleWidth(BufferView * bview, Paragraph * par,
 // Returns the paragraph position of the last character in the specified row
 pos_type LyXText::rowLast(Row const * row) const
 {
-	if (row->next() == 0)
-		return row->par()->size() - 1;
-	else if (row->next()->par() != row->par()) 
+	if (!row->next() || row->next()->par() != row->par())
 		return row->par()->size() - 1;
 	else 
 		return row->next()->pos() - 1;

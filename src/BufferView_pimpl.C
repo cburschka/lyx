@@ -874,58 +874,45 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 	text->setCursorFromCoordinates(bv_, cursor, x, y_tmp);
 	text->setCursor(bv_, cursor, cursor.par(),cursor.pos(),true);
 
-
+	lyx::pos_type pos;
+ 
 	if (cursor.pos() < cursor.par()->size()
 	    && cursor.par()->isInset(cursor.pos())
-	    && isEditableInset(cursor.par()->getInset(cursor.pos()))) {
-
-		// Check whether the inset really was hit
-		Inset * tmpinset = cursor.par()->getInset(cursor.pos());
-		LyXFont font = text->getFont(buffer_,
-						  cursor.par(), cursor.pos());
-		int const width = tmpinset->width(bv_, font);
-		int const inset_x = font.isVisibleRightToLeft()
-			? cursor.x() - width : cursor.x();
-		int const start_x = inset_x + tmpinset->scroll();
-		int const end_x = inset_x + width;
-
-		if (x > start_x && x < end_x
-		    && y_tmp > cursor.y() - tmpinset->ascent(bv_, font)
-		    && y_tmp < cursor.y() + tmpinset->descent(bv_, font)) {
-			text->setCursor(bv_, cursor.par(),cursor.pos(), true);
-			x = x - start_x;
-			// The origin of an inset is on the baseline
-			y = y_tmp - (text->cursor.y()); 
-			return tmpinset;
-		}
+	    && isEditableInset(cursor.par()->getInset(cursor.pos())))
+	{
+		pos = cursor.pos();
+	} else if ((cursor.pos() - 1 >= 0)
+		&& cursor.par()->isInset(cursor.pos() - 1)
+		&& isEditableInset(cursor.par()->getInset(cursor.pos() - 1)))
+	{
+		pos = cursor.pos() - 1;
+		// if the inset takes a full row, then the cursor.y()
+		// at the end of the inset will be wrong. So step the cursor
+		// back one
+		text->setCursor(bv_, cursor, cursor.par(), cursor.pos() - 1, true);
+	} else {
+		return 0;
 	}
 
-	if ((cursor.pos() - 1 >= 0) &&
-	    cursor.par()->isInset(cursor.pos() - 1) &&
-	    isEditableInset(cursor.par()->getInset(cursor.pos() - 1))) {
-		Inset * tmpinset = cursor.par()->getInset(cursor.pos()-1);
-		LyXFont font = text->getFont(buffer_, cursor.par(),
-						  cursor.pos() - 1);
-		int const width = tmpinset->width(bv_, font);
-		int const inset_x = font.isVisibleRightToLeft()
-			? cursor.x() : cursor.x() - width;
-		int const start_x = inset_x + tmpinset->scroll();
-		int const end_x = inset_x + width;
-
-		if (x > start_x && x < end_x
-		    && y_tmp > cursor.y() - tmpinset->ascent(bv_, font)
-		    && y_tmp < cursor.y() + tmpinset->descent(bv_, font)) {
-#if 0
-			if (move_cursor && (tmpinset != bv_->theLockingInset()))
-#endif
-				text->setCursor(bv_, cursor.par(),
-						cursor.pos() - 1, true);
-			x = x - start_x;
-			// The origin of an inset is on the baseline
-			y = y_tmp - (text->cursor.y()); 
-			return tmpinset;
-		}
+	// Check whether the inset really was hit
+	Inset * inset = cursor.par()->getInset(pos);
+	LyXFont const & font = text->getFont(buffer_, cursor.par(), pos);
+	int const width = inset->width(bv_, font);
+	int const inset_x = font.isVisibleRightToLeft()
+		? cursor.x() - width : cursor.x();
+	int const start_x = inset_x + inset->scroll();
+	int const end_x = inset_x + width;
+	int const start_y = cursor.y() - inset->ascent(bv_, font);
+	int const end_y = cursor.y() + inset->descent(bv_, font);
+ 
+	if (x > start_x && x < end_x && y_tmp > start_y && y < end_y) {
+		text->setCursor(bv_, cursor.par(), pos, true);
+		x = x - start_x;
+		// The origin of an inset is on the baseline
+		y = y_tmp - (text->cursor.y()); 
+		return inset;
 	}
+
 	return 0;
 }
 

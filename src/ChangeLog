@@ -1,8 +1,20 @@
+2001-12-03  Juergen Vigna  <jug@sad.it>
+
+	* text.C (rowLast): simplified code
+
+2001-12-03  John Levon  <moz@compsoc.man.ac.uk>
+
+	* lyxfunc.C: fix show options on timeout
+ 
 2001-12-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* screen.C (topCursorVisible): scroll half a page when the cursor
 	reached top of bottom of screen
 
+2001-12-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* minibuffer.C: deactivate on loss of focus
+ 
 2001-12-02  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* vspace.[Ch] (operator!=): add operator. 
@@ -12,6 +24,10 @@
 	* BufferView_pimpl.C: refuse to open an inset when
 	there's a selection.
 
+2001-11-30  John Levon  <moz@compsoc.man.ac.uk>
+
+	* BufferView_pimpl.C: allow to click on RHS of full row insets
+ 
 2001-11-30  Juergen Vigna  <jug@sad.it>
 
 	* tabular.C (LyXTabular): add a same_id to set the same id's in the
@@ -107,7 +123,7 @@
 	* paragraph_pimpl.h:
 	* paragraph_pimpl.C: tidy, and fix font-change in "LaTeX"
 	  bug a bit
- 
+
 2001-11-26  John Levon  <moz@compsoc.man.ac.uk>
 
 	* text.C: 

@@ -18,6 +18,8 @@
 
 #include "Lsstream.h"
 
+#include <cmath>
+
 namespace {
 // this is now here and in lyxgluelength.C
 

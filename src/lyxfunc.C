@@ -2015,7 +2015,7 @@ void LyXFunc::initMiniBuffer()
 
 	// Else, when a non-complete key sequence is pressed,
 	// show the available options.
-	else if (keyseq.length() > 1) {
+	if (keyseq.length() > 0 && !keyseq.deleted()) {
 		text = keyseq.printOptions();
 	}
    
