@@ -41,7 +41,7 @@ using std::ostream;
 
 InsetCollapsable::InsetCollapsable(BufferParams const & bp,
 	CollapseStatus status)
-	: inset(bp), label("Label"), status_(status)
+	: inset(bp), label("Label"), status_(status), openinlined_(false)
 {
 	inset.setOwner(this);
 	inset.setAutoBreakRows(true);
@@ -127,14 +127,6 @@ void InsetCollapsable::dimension_collapsed(Dimension & dim) const
 }
 
 
-int InsetCollapsable::height_collapsed() const
-{
-	Dimension dim;
-	font_metrics::buttonText(label, labelfont_, dim.wid, dim.asc, dim.des);
-	return dim.asc + dim.des;
-}
-
-
 void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	if (status_ == Inlined) {
@@ -144,8 +136,16 @@ void InsetCollapsable::metrics(MetricsInfo & mi, Dimension & dim) const
 		if (status_ == Open) {
 			Dimension insetdim;
 			inset.metrics(mi, insetdim);
-			dim.des += insetdim.height() + TEXT_TO_BOTTOM_OFFSET;
-			dim.wid = max(dim.wid, insetdim.wid);
+			openinlined_ = (insetdim.wid + dim.wid <= mi.base.textwidth);
+			if (openinlined_) {
+				dim.wid += insetdim.wid;
+				dim.des = max(dim.des, insetdim.des);
+				dim.asc = max(dim.asc, insetdim.asc);
+			} else {
+				dim.des += insetdim.height()
+					+ TEXT_TO_BOTTOM_OFFSET;
+				dim.wid = max(dim.wid, insetdim.wid);
+			}
 		}
 	}
 	dim_ = dim;
@@ -177,7 +177,11 @@ void InsetCollapsable::draw(PainterInfo & pi, int x, int y) const
 		if (status_ == Open) {
 			if (!owner())
 				x += scroll();
-			inset.draw(pi, x, y - aa + dimc.height() + inset.ascent());
+			
+			if (openinlined_)
+				inset.draw(pi, x + dimc.width(), y - aa + inset.ascent());
+			else 
+				inset.draw(pi, x, y - aa + dimc.height() + inset.ascent());
 		}
 	}
 }
@@ -324,14 +328,14 @@ void InsetCollapsable::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 		case LFUN_MOUSE_PRESS:
 			if (status_ == Inlined)
 				inset.dispatch(cur, cmd);
-			else if (status_ == Open && cmd.y > button_dim.y2)
+			else if (status_ == Open && !hitButton(cmd))
 				inset.dispatch(cur, cmd);
 			break;
 
 		case LFUN_MOUSE_MOTION:
 			if (status_ == Inlined)
 				inset.dispatch(cur, cmd);
-			else if (status_ == Open && cmd.y > button_dim.y2)
+			else if (status_ == Open && !hitButton(cmd))
 				inset.dispatch(cur, cmd);
 			break;
 

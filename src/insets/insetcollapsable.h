@@ -127,8 +127,6 @@ protected:
 	///
 	void dimension_collapsed(Dimension &) const;
 	///
-	int height_collapsed() const;
-	///
 	void draw_collapsed(PainterInfo & pi, int x, int y) const;
 	///
 	int getMaxTextWidth(Painter & pain, UpdatableInset const *) const;
@@ -160,6 +158,8 @@ protected:
 private:
 	///
 	mutable CollapseStatus status_;
+	/// a substatus of the Open status, determined automatically in metrics
+	mutable bool openinlined_;
 };
 
 #endif
