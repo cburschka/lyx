@@ -30,7 +30,6 @@
 #endif
 
 #include "DialogBase.h"
-#include "support/LAssert.h"
 
 // Maybe this should be a UIFunc modelled on LyXFunc
 class LyXView;
@@ -172,16 +171,5 @@ private:
 	/// the splash dialog
 	boost::scoped_ptr<DialogBase> splash_;
 };
-
-inline void Dialogs::add(DialogBase * ptr)
-{
-	lyx::Assert(ptr);
-	dialogs_.push_back(db_ptr(ptr));
-}
-
-inline void Dialogs::destroySplash()
-{
-	splash_.reset();
-}
 
 #endif

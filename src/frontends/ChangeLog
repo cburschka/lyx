@@ -1,3 +1,11 @@
+2001-04-26  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* Makefile.am: make controllers subdir before xforms.
+
+	* Dialogs.h: (add, destroySplash): moved out of line and into Dialogs.C.
+
+	* Dialogs.C: new file, instantiating the add, destroySplash methods.
+
 2001-04-17  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* Liason.[Ch] (setMinibuffer): change second arg to string
