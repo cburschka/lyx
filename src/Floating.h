@@ -32,7 +32,7 @@ public:
 	Floating(string const & type, string const & placement,
 		 string const & ext, string const & within,
 		 string const & style, string const & name,
-		 bool builtin = false);
+		 string const & listName, bool builtin = false);
 	///
 	string const & type() const;
 	///
@@ -45,6 +45,8 @@ public:
 	string const & style() const;
 	///
 	string const & name() const;
+	///
+	string const & listName() const;
 	///
 	bool builtin() const;
 private:
@@ -60,6 +62,8 @@ private:
 	string style_;
 	///
 	string name_;
+	///
+	string listName_;
 	///
 	bool builtin_;
 };

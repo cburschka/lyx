@@ -1,3 +1,17 @@
+2002-04-04  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* MenuBackend.C (expand): use Floating::listName
+
+	* FloatList.C (FloatList): add listName argument to the built-in
+	floats
+
+	* Floating.[Ch]: add listName member, which is the 'List of XXX'
+	text associated with the float.
+
+2002-04-03  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* MenuBackend.C (expand): change label "Wide xxx" to "xxx (wide)".
+
 2002-04-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* ShareContainer.h: add a couple of missing typenames.

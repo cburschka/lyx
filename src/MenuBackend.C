@@ -377,9 +377,9 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 				int const action =  lyxaction
 					.getPseudoAction(LFUN_FLOAT_LIST,
 							 cit->second.type());
-				string const label = _(cit->second.name()) + _(" List");
 				tomenu.add(MenuItem(MenuItem::Command,
-						    label, action));
+						    _(cit->second.listName()),
+						    action));
 			}
 		}
 		break;
@@ -401,7 +401,7 @@ void Menu::expand(Menu & tomenu, Buffer * buf) const
 				int const action2 = lyxaction
 					.getPseudoAction(LFUN_INSET_WIDE_FLOAT,
 							 cit->second.type());
-				string const label2 = _("Wide ") + label;
+				string const label2 = label + _(" (wide)");
 				tomenu.add(MenuItem(MenuItem::Command,
 						    label2, action2));
 			}

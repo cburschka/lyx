@@ -6,6 +6,7 @@
 
 #include "insetfloatlist.h"
 #include "FloatList.h"
+#include "LaTeXFeatures.h"
 #include "frontends/Dialogs.h"
 #include "LyXView.h"
 #include "BufferView.h"
@@ -33,10 +34,9 @@ InsetFloatList::InsetFloatList(string const & type)
 
 string const InsetFloatList::getScreenLabel(Buffer const *) const
 {
-	string const guiName = floatList[getCmdName()]->second.name();
+	string const guiName = floatList[getCmdName()]->second.listName();
 	if (!guiName.empty()) {
-		string const res = _(guiName) + _(" List");
-		return res;
+		return _(guiName);
 	}
 	return _("ERROR: Nonexistent float type!");
 }
@@ -105,7 +105,7 @@ int InsetFloatList::latex(Buffer const *, ostream & os, bool, bool) const
 			}
 		} else {
 			os << "\\listof{" << getCmdName() << "}{"
-			   << _("List of ") << cit->second.name() << "}\n";
+			   << cit->second.listName() << "}\n";
 		}
 	} else {
 		os << "%%\\listof{" << getCmdName() << "}{"
@@ -132,4 +132,10 @@ int InsetFloatList::ascii(Buffer const * buffer, ostream & os, int) const
 
 	os << "\n";
 	return 0;
+}
+
+
+void InsetFloatList::validate(LaTeXFeatures & features) const
+{
+	features.useFloat(getCmdName());
 }

@@ -54,6 +54,8 @@ public:
 	int docbook(Buffer const *, std::ostream &) const { return 0; }
 	///
 	int ascii(Buffer const *, std::ostream &, int linelen) const;
+	///
+	void validate(LaTeXFeatures & features) const;
 };
 
 #endif
