@@ -110,16 +110,16 @@ void LyXComm::openConnection()
  
 	if (pipename.empty()) return;
 
-	if ((infd = startPipe(pipename + ".in")) == -1)
+	if ((infd = startPipe(inPipeName(), false)) == -1)
 		return;
 
-	if ((outfd = startPipe(pipename + ".out")) == -1) {
-		endPipe(infd, pipename + ".in");
+	if ((outfd = startPipe(outPipeName(), true)) == -1) {
+		endPipe(infd, inPipeName());
 		return;
 	}
  
 	if (fcntl(outfd, F_SETFL, O_NONBLOCK) < 0) {
-		lyxerr << "LyXComm: Could not set flags on pipe " << pipename << ".out"
+		lyxerr << "LyXComm: Could not set flags on pipe " << outPipeName()
 		       << '\n' << strerror(errno) << endl;
 		return;
 	}
@@ -144,13 +144,13 @@ void LyXComm::closeConnection()
 		return;
 	}
  
-	endPipe(infd, pipename + ".in");
-	endPipe(outfd, pipename + ".out");
+	endPipe(infd, inPipeName());
+	endPipe(outfd, outPipeName());
  
 	ready = false;
 }
 
-int LyXComm::startPipe(string const & filename)
+int LyXComm::startPipe(string const & filename, bool write)
 {
 	int fd;
  
@@ -201,7 +201,7 @@ int LyXComm::startPipe(string const & filename)
 		       << strerror(errno) << endl;
 		return -1;
 	};
-	fd = ::open(filename.c_str(), O_RDONLY|O_NONBLOCK);
+	fd = ::open(filename.c_str(), write ? (O_RDWR) : (O_RDONLY|O_NONBLOCK));
 #endif
  
 	if (fd < 0) {
@@ -210,7 +210,10 @@ int LyXComm::startPipe(string const & filename)
 		lyx::unlink(filename);
 		return -1;
 	}
-	fl_add_io_callback(fd, FL_READ, C_LyXComm_callback, this);
+ 
+	if (!write)
+		fl_add_io_callback(fd, FL_READ, C_LyXComm_callback, this);
+ 
 	return fd;
 }
 
@@ -252,8 +255,8 @@ void LyXComm::endPipe(int & fd, string const & filename)
 
 void LyXComm::emergencyCleanup()
 {
-	endPipe(infd, pipename + ".in");
-	endPipe(outfd, pipename + ".out");
+	endPipe(infd, inPipeName());
+	endPipe(outfd, outPipeName());
 }
 
 
@@ -399,7 +402,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 	        if (compare(p, "LYXSRV:", 7) == 0) {
 			server_only = true; 
 		} else if (0 != compare(p, "LYXCMD:", 7)) {
-			lyxerr << "LyXServer: Unknown request" << endl;
+			lyxerr << "LyXServer: Unknown request \"" << p << "\"" << endl;
 			return;
 		}
 		p += 7;

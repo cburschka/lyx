@@ -59,6 +59,16 @@ public:
 	static void callback(int fd, void *v);
 
 private:
+	/// the filename of the in pipe
+	string const inPipeName() {
+		return pipename + ".in";
+	}
+
+	/// the filename of the out pipe
+	string const outPipeName() {
+		return pipename + ".out";
+	}
+
 	/// Open pipes
 	void openConnection();
 	
@@ -66,7 +76,7 @@ private:
 	void closeConnection();
 
 	/// start a pipe
-	int startPipe(string const &);
+	int startPipe(string const &, bool);
  
 	/// finish a pipe
 	void endPipe(int &, string const &);
