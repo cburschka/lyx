@@ -104,6 +104,14 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 	lyxerr << "trying to dispatch to main text " << bv_->text << endl;
 	DispatchResult res = bv_->text->dispatch(cmd);
 	lyxerr << "   result: " << res.val() << endl;
+
+	if (!res.dispatched()) {
+		lyxerr << "trying to dispatch to bv " << bv_ << endl;
+		bool sucess = bv_->dispatch(cmd);
+		lyxerr << "   result: " << sucess << endl;
+		res.dispatched(sucess);
+	}
+
 	return res;
 }
 

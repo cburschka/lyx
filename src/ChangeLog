@@ -1,3 +1,8 @@
+2003-11-14  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* cursor.C (dispatch): dispatch to BufferView::dispatch at the end
+	of the path
+
 2003-11-14  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* lyxlayout.[Ch]: 
