@@ -1278,10 +1278,15 @@ void LyXFunc::dispatch(FuncRequest const & func, bool verbose)
 			setMessage(N_("Opening child document ") +
 					 MakeDisplayPath(filename) + "...");
 			view()->savePosition(0);
+			string const parentfilename = owner->buffer()->fileName();
 			if (bufferlist.exists(filename))
 				view()->buffer(bufferlist.getBuffer(filename));
 			else
 				view()->loadLyXFile(filename);
+			// Set the parent name of the child document.
+			// This makes insertion of citations and references in the child work,
+			// when the target is in the parent or another child document.
+			owner->buffer()->setParentName(parentfilename);
 			break;
 		}
 
