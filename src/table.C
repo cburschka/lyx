@@ -743,6 +743,8 @@ bool LyXTable::calculate_width_of_column(int column)
 {
 	int old_column_width = column_info[column].width_of_column;
 	int maximum = 0;
+	using std::max;
+
 	for (int i = 0; i < rows; ++i) {
 		maximum = max(cell_info[i][column].width_of_cell, maximum);
 	}
