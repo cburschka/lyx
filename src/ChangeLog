@@ -1,3 +1,7 @@
+2001-06-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* gettext.C: include LString.h even when --disable-nls is on. 
+
 2001-06-12  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* converter.h (Get): changed argument type from int to

@@ -11,9 +11,9 @@
 
 #include <config.h>
 
-#ifdef ENABLE_NLS
-
 #include "LString.h"
+
+#ifdef ENABLE_NLS
 
 #  if HAVE_GETTEXT
 #    include <libintl.h>      // use the header already in the system *EK*
