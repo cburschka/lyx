@@ -241,7 +241,7 @@ void Toolbar::Pimpl::add(int action)
 		combo_ = new QLComboBox(toolbars_.back());
 		QSizePolicy p(QSizePolicy::Minimum, QSizePolicy::Fixed);
 		combo_->setSizePolicy(p);
-		combo_->setFocusPolicy(QWidget::TabFocus);
+		combo_->setFocusPolicy(QWidget::ClickFocus);
 		combo_->setMinimumWidth(combo_->sizeHint().width());
  
 		QObject::connect(combo_, SIGNAL(activated(const QString &)),

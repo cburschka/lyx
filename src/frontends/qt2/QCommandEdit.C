@@ -11,6 +11,7 @@
 QCommandEdit::QCommandEdit(QWidget * parent)
 	: QLineEdit(parent)
 { 
+	setFocusPolicy(QWidget::ClickFocus); 
 }
 
 
