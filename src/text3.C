@@ -32,6 +32,7 @@
 #include "gettext.h"
 #include "intl.h"
 #include "language.h"
+#include "LyXAction.h"
 #include "lyxfunc.h"
 #include "lyxlex.h"
 #include "lyxrc.h"
@@ -251,7 +252,7 @@ void LyXText::gotoInset(LCursor & cur, InsetBase_code code, bool same_content)
 }
 
 
-void LyXText::cursorPrevious(LCursor & cur)
+bool LyXText::cursorPrevious(LCursor & cur)
 {
 	pos_type cpos = cur.pos();
 	lyx::pit_type cpar = cur.pit();
@@ -259,36 +260,38 @@ void LyXText::cursorPrevious(LCursor & cur)
 	int x = cur.x_target();
 
 	setCursorFromCoordinates(cur, x, 0);
-	cursorUp(cur);
+	bool updated = cursorUp(cur);
 
 	if (cpar == cur.pit() && cpos == cur.pos()) {
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the previous row instead.
-		cursorUp(cur);
+		updated |= cursorUp(cur);
 	}
 
 	cur.bv().updateScrollbar();
 	finishUndo();
+	return updated;
 }
 
 
-void LyXText::cursorNext(LCursor & cur)
+bool LyXText::cursorNext(LCursor & cur)
 {
 	pos_type cpos = cur.pos();
 	lyx::pit_type cpar = cur.pit();
 
 	int x = cur.x_target();
 	setCursorFromCoordinates(cur, x, cur.bv().workHeight() - 1);
-	cursorDown(cur);
+	bool updated = cursorDown(cur);
 
 	if (cpar == cur.pit() && cpos == cur.pos()) {
 		// we have a row which is taller than the workarea. The
 		// simplest solution is to move to the next row instead.
-		cursorDown(cur);
+		updated |= cursorDown(cur);
 	}
 
 	cur.bv().updateScrollbar();
 	finishUndo();
+	return updated;
 }
 
 
@@ -357,9 +360,9 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 
 	BOOST_ASSERT(cur.text() == this);
 	BufferView * bv = &cur.bv();
-	CursorSlice sl = cur.top();
+	CursorSlice oldTopSlice = cur.top();
 	bool sel = cur.selection();
-	bool moving = false;
+	bool needsUpdate = !lyxaction.funcHasFlag(cmd.action, LyXAction::NoUpdate);
 
 	switch (cmd.action) {
 
@@ -403,24 +406,22 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_WORDRIGHT:
-		moving = true;
 		if (!cur.mark())
 			cur.clearSelection();
 		if (isRTL(cur.paragraph()))
-			cursorLeftOneWord(cur);
+			needsUpdate = cursorLeftOneWord(cur);
 		else
-			cursorRightOneWord(cur);
+			needsUpdate = cursorRightOneWord(cur);
 		finishChange(cur, false);
 		break;
 
 	case LFUN_WORDLEFT:
-		moving = true;
 		if (!cur.mark())
 			cur.clearSelection();
 		if (isRTL(cur.paragraph()))
-			cursorRightOneWord(cur);
+			needsUpdate = cursorRightOneWord(cur);
 		else
-			cursorLeftOneWord(cur);
+			needsUpdate = cursorLeftOneWord(cur);
 		finishChange(cur, false);
 		break;
 
@@ -469,59 +470,63 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	case LFUN_RIGHT:
-		moving = true;
 	case LFUN_RIGHTSEL:
-		//lyxerr << "handle LFUN_RIGHT[SEL]:\n" << cur << endl;
+		lyxerr << BOOST_CURRENT_FUNCTION
+		       << " LFUN_RIGHT[SEL]:\n" << cur << endl;
 		cur.selHandle(cmd.action == LFUN_RIGHTSEL);
 		if (isRTL(cur.paragraph()))
-			cursorLeft(cur);
+			needsUpdate = cursorLeft(cur);
 		else
-			cursorRight(cur);
-		if (sl == cur.top()) {
+			needsUpdate = cursorRight(cur);
+		if (!needsUpdate && oldTopSlice == cur.top()) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 		}
 		break;
 
 	case LFUN_LEFT:
-		moving = true;
 	case LFUN_LEFTSEL:
 		//lyxerr << "handle LFUN_LEFT[SEL]:\n" << cur << endl;
 		cur.selHandle(cmd.action == LFUN_LEFTSEL);
 		if (isRTL(cur.paragraph()))
-			cursorRight(cur);
+			needsUpdate = cursorRight(cur);
 		else
-			cursorLeft(cur);
-		if (sl == cur.top()) {
+			needsUpdate = cursorLeft(cur);
+		if (oldTopSlice == cur.top()) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_LEFT);
 		}
 		break;
 
 	case LFUN_UP:
-		moving = true;
 	case LFUN_UPSEL:
 		update(cur);
 		//lyxerr << "handle LFUN_UP[SEL]:\n" << cur << endl;
 		cur.selHandle(cmd.action == LFUN_UPSEL);
-		cursorUp(cur);
-		if (sl == cur.top()) {
+		needsUpdate = cursorUp(cur);
+		if (oldTopSlice == cur.top()) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_UP);
 		}
 		break;
 
 	case LFUN_DOWN:
-		moving = true;
 	case LFUN_DOWNSEL:
 		update(cur);
 		//lyxerr << "handle LFUN_DOWN[SEL]:\n" << cur << endl;
 		cur.selHandle(cmd.action == LFUN_DOWNSEL);
-		cursorDown(cur);
-		if (sl == cur.top()) {
+		needsUpdate = cursorDown(cur);
+		if (oldTopSlice == cur.top()) {
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_DOWN);
 		}
+		break;
+
+	case LFUN_UP_PARAGRAPH:
+		if (!cur.mark())
+			cur.clearSelection();
+		needsUpdate = cursorUpParagraph(cur);
+		finishChange(cur, false);
 		break;
 
 	case LFUN_UP_PARAGRAPHSEL:
@@ -529,6 +534,13 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			cur.resetAnchor();
 		cursorUpParagraph(cur);
 		finishChange(cur, true);
+		break;
+
+	case LFUN_DOWN_PARAGRAPH:
+		if (!cur.mark())
+			cur.clearSelection();
+		needsUpdate = cursorDownParagraph(cur);
+		finishChange(cur, false);
 		break;
 
 	case LFUN_DOWN_PARAGRAPHSEL:
@@ -596,25 +608,8 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 	}
 
-	case LFUN_UP_PARAGRAPH:
-		moving = true;
-		if (!cur.mark())
-			cur.clearSelection();
-		cursorUpParagraph(cur);
-		finishChange(cur, false);
-		break;
-
-	case LFUN_DOWN_PARAGRAPH:
-		moving = true;
-		if (!cur.mark())
-			cur.clearSelection();
-		cursorDownParagraph(cur);
-		finishChange(cur, false);
-		break;
-
 	case LFUN_PRIOR:
 		update(cur);
-		moving = true;
 		if (!cur.mark())
 			cur.clearSelection();
 		finishChange(cur, false);
@@ -622,13 +617,12 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_UP);
 		} else {
-			cursorPrevious(cur);
+			needsUpdate = cursorPrevious(cur);
 		}
 		break;
 
 	case LFUN_NEXT:
 		update(cur);
-		moving = true;
 		if (!cur.mark())
 			cur.clearSelection();
 		finishChange(cur, false);
@@ -637,7 +631,7 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 			cur.undispatched();
 			cmd = FuncRequest(LFUN_FINISHED_DOWN);
 		} else {
-			cursorNext(cur);
+			needsUpdate = cursorNext(cur);
 		}
 		break;
 
@@ -1598,17 +1592,20 @@ void LyXText::dispatch(LCursor & cur, FuncRequest & cmd)
 		break;
 
 	default:
+		lyxerr << BOOST_CURRENT_FUNCTION
+		       << " Not DISPATCHED by LyXText" << endl;
 		cur.undispatched();
 		break;
 	}
 
-	// avoid to update when navigating
-	if (moving
-	    && &sl.inset() == &cur.inset()
-	    && sl.idx() == cur.idx()
-	    && sel == false
-	    && cur.selection() == false)
+	if (!needsUpdate
+	    && &oldTopSlice.inset() == &cur.inset()
+	    && oldTopSlice.idx() == cur.idx()
+	    && !sel
+	    && !cur.selection())
 		cur.noUpdate();
+	else
+		cur.needsUpdate();
 }
 
 

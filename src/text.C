@@ -1316,41 +1316,47 @@ LyXText::computeRowMetrics(pit_type const pit, Row const & row) const
 // the cursor set functions have a special mechanism. When they
 // realize, that you left an empty paragraph, they will delete it.
 
-void LyXText::cursorRightOneWord(LCursor & cur)
+bool LyXText::cursorRightOneWord(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
-	if (cur.pos() == cur.lastpos() && cur.pit() != cur.lastpit()) {
-		++cur.pit();
-		cur.pos() = 0;
+
+	LCursor old = cur;
+
+	if (old.pos() == old.lastpos() && old.pit() != old.lastpit()) {
+		++old.pit();
+		old.pos() = 0;
 	} else {
 		// Skip through initial nonword stuff.
 		// Treat floats and insets as words.
-		while (cur.pos() != cur.lastpos() && !cur.paragraph().isLetter(cur.pos()))
-			++cur.pos();
+		while (old.pos() != old.lastpos() && !old.paragraph().isLetter(old.pos()))
+			++old.pos();
 		// Advance through word.
-		while (cur.pos() != cur.lastpos() && cur.paragraph().isLetter(cur.pos()))
-			++cur.pos();
+		while (old.pos() != old.lastpos() && old.paragraph().isLetter(old.pos()))
+			++old.pos();
 	}
-	setCursor(cur, cur.pit(), cur.pos());
+	return setCursor(cur, old.pit(), old.pos());
 }
 
 
-void LyXText::cursorLeftOneWord(LCursor & cur)
+bool LyXText::cursorLeftOneWord(LCursor & cur)
 {
 	BOOST_ASSERT(this == cur.text());
-	if (cur.pos() == 0 && cur.pit() != 0) {
-		--cur.pit();
-		cur.pos() = cur.lastpos();
+
+	LCursor old = cur;
+
+	if (old.pos() == 0 && old.pit() != 0) {
+		--old.pit();
+		old.pos() = old.lastpos();
 	} else {
 		// Skip through initial nonword stuff.
 		// Treat floats and insets as words.
-		while (cur.pos() != 0 && !cur.paragraph().isLetter(cur.pos() - 1))
-			--cur.pos();
+		while (old.pos() != 0 && !old.paragraph().isLetter(old.pos() - 1))
+			--old.pos();
 		// Advance through word.
-		while (cur.pos() != 0 && cur.paragraph().isLetter(cur.pos() - 1))
-			--cur.pos();
+		while (old.pos() != 0 && old.paragraph().isLetter(old.pos() - 1))
+			--old.pos();
 	}
-	setCursor(cur, cur.pit(), cur.pos());
+	return setCursor(cur, old.pit(), old.pos());
 }
 
 

@@ -247,7 +247,9 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 	cancel_meta_seq.reset();
 
 	FuncRequest func = cancel_meta_seq.addkey(keysym, state);
-	lyxerr[Debug::KEY] << "action first set to [" << func.action << ']' << endl;
+	lyxerr[Debug::KEY] << BOOST_CURRENT_FUNCTION
+			   << " action first set to [" << func.action << ']'
+			   << endl;
 
 	// When not cancel or meta-fake, do the normal lookup.
 	// Note how the meta_fake Mod1 bit is OR-ed in and reset afterwards.
@@ -255,20 +257,22 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 	if ((func.action != LFUN_CANCEL) && (func.action != LFUN_META_FAKE)) {
 		// remove Caps Lock and Mod2 as a modifiers
 		func = keyseq.addkey(keysym, (state | meta_fake_bit));
-		lyxerr[Debug::KEY] << "action now set to ["
-			<< func.action << ']' << endl;
+		lyxerr[Debug::KEY] << BOOST_CURRENT_FUNCTION
+				   << "action now set to ["
+				   << func.action << ']' << endl;
 	}
 
 	// Dont remove this unless you know what you are doing.
 	meta_fake_bit = key_modifier::none;
 
-	// can this happen now ?
+	// Can this happen now ?
 	if (func.action == LFUN_NOACTION) {
 		func = FuncRequest(LFUN_PREFIX);
 	}
 
 	if (lyxerr.debugging(Debug::KEY)) {
-		lyxerr << "Key [action="
+		lyxerr << BOOST_CURRENT_FUNCTION
+		       << " Key [action="
 		       << func.action << "]["
 		       << keyseq.print() << ']'
 		       << endl;
@@ -308,7 +312,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym, key_modifier::state state)
 
 	if (func.action == LFUN_SELFINSERT) {
 		if (encoded_last_key != 0) {
-			string arg(1, encoded_last_key);
+			string const arg(1, encoded_last_key);
 			dispatch(FuncRequest(LFUN_SELFINSERT, arg));
 			lyxerr[Debug::KEY]
 				<< "SelfInsert arg[`" << arg << "']" << endl;
@@ -437,7 +441,6 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_MENURELOAD:
 		enable = !buf->isUnnamed() && !buf->isClean();
 		break;
-
 
 	case LFUN_INSET_SETTINGS: {
 		enable = false;
@@ -673,7 +676,7 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 	errorstat = false;
 	dispatch_buffer.erase();
 
-	bool update = true;
+	bool update = false;
 
 	FuncStatus const flag = getStatus(cmd);
 	if (!flag.enabled()) {
@@ -1510,12 +1513,12 @@ void LyXFunc::dispatch(FuncRequest const & cmd)
 		}
 
 		default: {
-			update = false;
 			view()->cursor().dispatch(cmd);
-			if (view()->cursor().result().dispatched())
-				update |= view()->cursor().result().update();
-			else
+			update |= view()->cursor().result().update();
+			if (!view()->cursor().result().dispatched()) {
 				update |= view()->dispatch(cmd);
+			}
+
 			break;
 		}
 		}

@@ -1159,6 +1159,7 @@ Row const & LyXText::getRowNearY(int y, pit_type pit) const
 	return *rit;
 }
 
+
 // x,y are absolute screen coordinates
 // sets cursor recursively descending into nested editable insets
 InsetBase * LyXText::editXY(LCursor & cur, int x, int y) const
@@ -1179,8 +1180,8 @@ InsetBase * LyXText::editXY(LCursor & cur, int x, int y) const
 	InsetBase * inset = checkInsetHit(x, y);
 	lyxerr << "inset " << inset << " hit at x: " << x << " y: " << y << endl;
 	if (!inset) {
-		//either we deconst editXY or better we move current_font
-		//and real_current_font to LCursor
+		// Either we deconst editXY or better we move current_font
+		// and real_current_font to LCursor
 		const_cast<LyXText *>(this)->setCurrentFont(cur);
 		return 0;
 	}
@@ -1214,49 +1215,55 @@ bool LyXText::checkAndActivateInset(LCursor & cur, bool front)
 }
 
 
-void LyXText::cursorLeft(LCursor & cur)
+bool LyXText::cursorLeft(LCursor & cur)
 {
 	if (cur.pos() != 0) {
 		bool boundary = cur.boundary();
-		setCursor(cur, cur.pit(), cur.pos() - 1, true, false);
+		bool updateNeeded = setCursor(cur, cur.pit(), cur.pos() - 1, true, false);
 		if (!checkAndActivateInset(cur, false)) {
 			if (false && !boundary &&
 					bidi.isBoundary(cur.buffer(), cur.paragraph(), cur.pos() + 1))
-				setCursor(cur, cur.pit(), cur.pos() + 1, true, true);
+				updateNeeded |=
+					setCursor(cur, cur.pit(), cur.pos() + 1, true, true);
 		}
-		return;
+		return updateNeeded;
 	}
 
 	if (cur.pit() != 0) {
-		// steps into the paragraph above
-		setCursor(cur, cur.pit() - 1, getPar(cur.pit() - 1).size());
+		// Steps into the paragraph above
+		return setCursor(cur, cur.pit() - 1, getPar(cur.pit() - 1).size());
 	}
+	return false;
 }
 
 
-void LyXText::cursorRight(LCursor & cur)
+bool LyXText::cursorRight(LCursor & cur)
 {
 	if (false && cur.boundary()) {
-		setCursor(cur, cur.pit(), cur.pos(), true, false);
-		return;
+		return setCursor(cur, cur.pit(), cur.pos(), true, false);
 	}
 
 	if (cur.pos() != cur.lastpos()) {
+		bool updateNeeded = false;
 		if (!checkAndActivateInset(cur, true)) {
-			setCursor(cur, cur.pit(), cur.pos() + 1, true, false);
+			lyxerr << BOOST_CURRENT_FUNCTION
+			       << " Running setCursor" << endl;
+
+			updateNeeded |= setCursor(cur, cur.pit(), cur.pos() + 1, true, false);
 			if (false && bidi.isBoundary(cur.buffer(), cur.paragraph(),
 							 cur.pos()))
-				setCursor(cur, cur.pit(), cur.pos(), true, true);
+				updateNeeded |= setCursor(cur, cur.pit(), cur.pos(), true, true);
 		}
-		return;
+		return updateNeeded;
 	}
 
 	if (cur.pit() != cur.lastpit())
-		setCursor(cur, cur.pit() + 1, 0);
+		return setCursor(cur, cur.pit() + 1, 0);
+	return false;
 }
 
 
-void LyXText::cursorUp(LCursor & cur)
+bool LyXText::cursorUp(LCursor & cur)
 {
 	Paragraph const & par = cur.paragraph();
 	int const row = par.pos2row(cur.pos());
@@ -1264,23 +1271,38 @@ void LyXText::cursorUp(LCursor & cur)
 
 	if (!cur.selection()) {
 		int const y = bv_funcs::getPos(cur).y_;
+		LCursor old = cur;
 		editXY(cur, x, y - par.rows()[row].ascent() - 1);
-		return;
+
+		// This happens when you move out of an inset.
+		// And to give the DEPM the possibility of doing
+		// something we must provide it with two different
+		// cursors. (Lgb)
+		LCursor dummy = cur;
+		if (dummy == old)
+			++dummy.pos();
+
+		return deleteEmptyParagraphMechanism(dummy, old);
 	}
+
+	bool updateNeeded = false;
 
 	if (row > 0) {
-		setCursor(cur, cur.pit(), x2pos(cur.pit(), row - 1, x));
+		updateNeeded |= setCursor(cur, cur.pit(),
+					  x2pos(cur.pit(), row - 1, x));
 	} else if (cur.pit() > 0) {
 		--cur.pit();
-		setCursor(cur, cur.pit(), x2pos(cur.pit(), cur.paragraph().rows().size() - 1, x));
-
+		updateNeeded |= setCursor(cur, cur.pit(),
+					  x2pos(cur.pit(), par.rows().size() - 1, x));
 	}
 
 	cur.x_target() = x;
+
+	return updateNeeded;
 }
 
 
-void LyXText::cursorDown(LCursor & cur)
+bool LyXText::cursorDown(LCursor & cur)
 {
 	Paragraph const & par = cur.paragraph();
 	int const row = par.pos2row(cur.pos());
@@ -1288,36 +1310,63 @@ void LyXText::cursorDown(LCursor & cur)
 
 	if (!cur.selection()) {
 		int const y = bv_funcs::getPos(cur).y_;
+		LCursor old = cur;
 		editXY(cur, x, y + par.rows()[row].descent() + 1);
-		return;
+
+		// This happens when you move out of an inset.
+		// And to give the DEPM the possibility of doing
+		// something we must provide it with two different
+		// cursors. (Lgb)
+		LCursor dummy = cur;
+		if (dummy == old)
+			++dummy.pos();
+
+		bool const changed = deleteEmptyParagraphMechanism(dummy, old);
+
+		// Make sure that cur gets back whatever happened to dummy(Lgb)
+		if (changed)
+			cur = dummy;
+
+		return changed;
+
 	}
 
+	bool updateNeeded = false;
+
 	if (row + 1 < int(par.rows().size())) {
-		setCursor(cur, cur.pit(), x2pos(cur.pit(), row + 1, x));
+		updateNeeded |= setCursor(cur, cur.pit(),
+					  x2pos(cur.pit(), row + 1, x));
 	} else if (cur.pit() + 1 < int(paragraphs().size())) {
 		++cur.pit();
-		setCursor(cur, cur.pit(), x2pos(cur.pit(), 0, x));
+		updateNeeded |= setCursor(cur, cur.pit(),
+					  x2pos(cur.pit(), 0, x));
 	}
 
 	cur.x_target() = x;
+
+	return updateNeeded;
 }
 
 
-void LyXText::cursorUpParagraph(LCursor & cur)
+bool LyXText::cursorUpParagraph(LCursor & cur)
 {
+	bool updated = false;
 	if (cur.pos() > 0)
-		setCursor(cur, cur.pit(), 0);
+		updated = setCursor(cur, cur.pit(), 0);
 	else if (cur.pit() != 0)
-		setCursor(cur, cur.pit() - 1, 0);
+		updated = setCursor(cur, cur.pit() - 1, 0);
+	return updated;
 }
 
 
-void LyXText::cursorDownParagraph(LCursor & cur)
+bool LyXText::cursorDownParagraph(LCursor & cur)
 {
+	bool updated = false;
 	if (cur.pit() != cur.lastpit())
-		setCursor(cur, cur.pit() + 1, 0);
+		updated = setCursor(cur, cur.pit() + 1, 0);
 	else
-		setCursor(cur, cur.pit(), cur.lastpos());
+		updated = setCursor(cur, cur.pit(), cur.lastpos());
+	return updated;
 }
 
 
@@ -1325,16 +1374,16 @@ void LyXText::cursorDownParagraph(LCursor & cur)
 // position. Called by deleteEmptyParagraphMechanism
 void LyXText::fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where)
 {
-	// do notheing if cursor is not in the paragraph where the
+	// Do nothing if cursor is not in the paragraph where the
 	// deletion occured,
 	if (cur.pit() != where.pit())
 		return;
 
-	// if cursor position is after the deletion place update it
+	// If cursor position is after the deletion place update it
 	if (cur.pos() > where.pos())
 		--cur.pos();
 
-	// check also if we don't want to set the cursor on a spot behind the
+	// Check also if we don't want to set the cursor on a spot behind the
 	// pagragraph because we erased the last character.
 	if (cur.pos() > cur.lastpos())
 		cur.pos() = cur.lastpos();
@@ -1343,7 +1392,6 @@ void LyXText::fixCursorAfterDelete(CursorSlice & cur, CursorSlice const & where)
 
 bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor const & old)
 {
-	BOOST_ASSERT(cur.size() == old.size());
 	// Would be wrong to delete anything if we have a selection.
 	if (cur.selection())
 		return false;
@@ -1399,7 +1447,7 @@ bool LyXText::deleteEmptyParagraphMechanism(LCursor & cur, LCursor const & old)
 #warning DEPM, look here
 #endif
 			//fixCursorAfterDelete(cur.anchor(), old.top());
-			return false;
+			return true;
 		}
 	}
 

@@ -1,13 +1,54 @@
+2005-02-08  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
+	* text3.C (cursorPrevious): return true if depm changed something
+	(cursorNext): ditto
+	(dispatch): rename sl to oldTopSlice, remove moving use the new
+	NoUpdate func attrib instead. Make sure that needsUpdate is set
+	for function that have NoUpdate, but where depm might have changed
+	the buffer anyway.
+
+	* text2.C (cursorLeft): make us return true if depm changed
+	something
+	(cursorRight): ditto
+	(cursorUpParagraph): ditto
+	(curosrDownParagraph): ditto
+	(cursorUp, cursorDown): ditto, make sure to read comments in code
+	(deleteEmptyParagraphMechanism): remove an assert, also return
+	true if just a single char was deleted.
+
+	* text.C (cursorRightOneWord, cursorLeftOneWord): use a temp
+	cursor that we modify, to avoid modifying an active cursor before
+	we call setCursor. This allows depm to run. Also return true if
+	depm deleted something.
+
+	* lyxtext.h: Make cursorUp, cursorDown, cursorLeft, cursorRight,
+	cursorLeftOneWord, cursorRightOneWord, cursorUpParagraph,
+	cursorDownParagraph, cursorPrevious and cursorNext, return true if
+	something was changed in the buffer because of them (ie. depm run)
+
+	* lyxfunc.C (processKeySym): add BOOST_CURRENT_FUNCTION to some
+	debug messages. Make update by default be false. Make sure that
+	the result of update is retained throught several calls down to
+	dispatch.
+
+	* LyXAction.h: add a new func_attrib: NoUpdate
+
+	* LyXAction.C (init): add noupdate to LFUN_LEFT, LFUN_RIGHT,
+	LFUN_DOWN, LFUN_HOME, LFUN_END, LFUN_DOWN_PARAGRAPH,
+	LFUN_UP_PARAGRAPH, LFUN_NEXT, LFUN_PRIOR, LFUN_UP, LFUN_WORDRIGHT
+	and LFUN_WORDLEFT
+	(init): add missing lfuns: LFUN_FINISHED_*, LFUN_MOUSE_*
+
 2005-02-07  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* BufferView_pimpl.C: replace all occurences of bv_->cursor(),
 	bv_->owner(), bv_->buffer() by direct references to the private
-	members. 
+	members.
 	(MenuInsertLyXFile): replace bv_->resize() with resizeCurrentBuffer.
 	(getStatus): isSavedPosition() is in BufferView::Pimpl.
 	(fitCursor): center() is in BufferView::Pimpl.
 	(getStatus, trackChanges, dispatch): no need for a temporary buf
-	variable 
+	variable
 	(fitCursor, workAreaDispatch): use workarea().workheight()
 
 2005-02-07  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
@@ -20,7 +61,7 @@
 	* CutAndPaste.C (pasteSelectionHelper): convert newline to paragraph
 	break if pasting into ERT
 	* lyxfunc.C (getStatus): suppress mathpanel and
-	LFUN_DIALOG_SHOW_NEW_INSET in ERT 
+	LFUN_DIALOG_SHOW_NEW_INSET in ERT
 
 2005-02-01  Angus Leeming  <leeming@lyx.org>
 
@@ -42,7 +83,7 @@
 	LyXText containing the cursor, not the top-level one.
 
 	* buffer.C (Impl): make sure the toplevel insettext has AutoBreak_
-	true. 
+	true.
 	(insertStringAsLines): rename par to pit; use temporary variable
 	par to hold a Paragraph; do not store par.layout() in a variable,
 	since the pointer may die when breaking paragraphs; pass pars to
@@ -83,7 +124,7 @@
 
 	* text.C: various obvious clean-ups. Removal of ancient cruft.
 	Bug fixes, even.
-	
+
 2005-01-31  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* vc-backend.C (find_file): rewrite to use boost.filesystem

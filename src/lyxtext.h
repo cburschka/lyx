@@ -179,30 +179,42 @@ public:
 	void setCursorFromCoordinates(LCursor & cur, int x, int y);
 	///
 	InsetBase * editXY(LCursor & cur, int x, int y) const;
+	/// Move cursor one line up.
+	/**
+	 * Returns true if an update is needed after the move.
+	 */
+	bool cursorUp(LCursor & cur);
+	/// Move cursor one line down.
+	/**
+	 * Returns true if an update is needed after the move.
+	 */
+	bool cursorDown(LCursor & cur);
+	/// Move cursor one position left
+	/**
+	 * Returns true if an update is needed after the move.
+	 */
+	bool cursorLeft(LCursor & cur);
+	/// Move cursor one position right
+	/**
+	 * Returns true if an update is needed after the move.
+	 */
+	bool cursorRight(LCursor & cur);
 	///
-	void cursorUp(LCursor & cur);
+	bool cursorLeftOneWord(LCursor & cur);
 	///
-	void cursorDown(LCursor & cur);
+	bool cursorRightOneWord(LCursor & cur);
 	///
-	void cursorLeft(LCursor & cur);
+	bool cursorUpParagraph(LCursor & cur);
 	///
-	void cursorRight(LCursor & cur);
-	///
-	void cursorLeftOneWord(LCursor & cur);
-	///
-	void cursorRightOneWord(LCursor & cur);
-	///
-	void cursorUpParagraph(LCursor & cur);
-	///
-	void cursorDownParagraph(LCursor & cur);
+	bool cursorDownParagraph(LCursor & cur);
 	///
 	void cursorHome(LCursor & cur);
 	///
 	void cursorEnd(LCursor & cur);
 	///
-	void cursorPrevious(LCursor & cur);
+	bool cursorPrevious(LCursor & cur);
 	///
-	void cursorNext(LCursor & cur);
+	bool cursorNext(LCursor & cur);
 	///
 	void cursorTop(LCursor & cur);
 	///

@@ -50,7 +50,8 @@ public:
 		Noop = 0, //< nothing special about this func
 		ReadOnly = 1, //< can be used in RO mode (perhaps this should change)
 		NoBuffer = 2, //< Can be used when there is no document open
-		Argument = 4 //< Requires argument
+		Argument = 4, //< Requires argument
+		NoUpdate = 8 //< Does not (usually) require update
 	};
 
 	LyXAction();
