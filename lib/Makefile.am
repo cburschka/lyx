@@ -52,7 +52,7 @@ libinstalldirs:
 
 install-xfonts:
 	test -f xfonts/fonts.dir || exit 0 ; \
-	files=`sed -e 's/^[0-9]*$$//' -e 's/^\([^ ]*\) .*$$/\1/' xfonts/fonts.dir` ; echo [$$files] ;\
+	files=`sed -e 's/^[0-9]*$$//' -e 's/^\([^ ]*\) .*$$/\1/' xfonts/fonts.dir` ; \
 	for i in $${files} ; do \
 	  ln -sf `kpsewhich $$i` $(DESTDIR)$(pkgdatadir)/xfonts/$$i ; \
 	done ; \
