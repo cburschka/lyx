@@ -2,9 +2,9 @@
 
 #include "math_streamstr.h"
 #include "math_mathmlstream.h"
+#include "support/LOstream.h"
 
 #include <algorithm>
-#include <iostream>
 
 
 WriteStream & operator<<(WriteStream & ws, string const & s)
