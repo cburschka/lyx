@@ -1186,7 +1186,7 @@ bool MathCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhig
 
 	MathIterator it = ibegin(formula()->par().nucleus());
 	MathIterator et = iend(formula()->par().nucleus());
-	for ( ; it != et; ++it) {
+	while (1) {
 		// avoid invalid nesting hen selecting
 		if (selection_ && !positionable(it.cursor(), Anchor_))
 			continue;
@@ -1201,7 +1201,12 @@ bool MathCursor::bruteFind(int x, int y, int xlow, int xhigh, int ylow, int yhig
 				best_cursor = it.cursor();
 			}
 		}
+
+		if (it == et)
+			break;
+		++it;
 	}
+
 	if (best_dist < 1e10)
 		Cursor_ = best_cursor;
 	return best_dist < 1e10;
