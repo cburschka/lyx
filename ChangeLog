@@ -1,3 +1,18 @@
+2000-11-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/frontends/xforms/FormPreferences.C: constify several variables
+	(BrowserLyX): rewrite to not need the choice variable
+	(Modify): rewrite to not need the choide variable
+	(compare_converter): make operator const
+
+	* src/lyxrc.C (output): be a bit nicer og os usage, and try to
+	correct the writing of \set_color
+	(getDescription): return a const string
+
+	* src/kbsequence.[Ch] (addkey): remove dead code
+
+	* src/Painter.C (text): remove some commented code
+
 2000-11-15  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* src/ColorHandler.[Ch]: removed some header files from .h file.

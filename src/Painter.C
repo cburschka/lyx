@@ -283,14 +283,11 @@ PainterBase & Painter::text(int x, int y, char const * s, size_t ls,
 	if (lyxrc.font_norm_type == LyXRC::ISO_10646_1) {
 		XChar2b * xs = new XChar2b[ls];
 		Encoding const * encoding = f.language()->encoding();
-		//LyXFont const * font = &f;
 		LyXFont font(f);
 		if (f.family() == LyXFont::SYMBOL_FAMILY) {
 #ifdef USE_UNICODE_FOR_SYMBOLS
-			//LyXFont font2 = f;
 			font.setFamily(LyXFont::ROMAN_FAMILY);
 			font.setShape(LyXFont::UP_SHAPE);
-			//font = &font2;
 #endif
 			encoding = encodings.symbol_encoding();
 		}

@@ -47,6 +47,7 @@ Dialogs::Dialogs(LyXView * lv)
 	hideAll.connect(hideBufferDependent.slot());
 }
 
+
 Dialogs::~Dialogs()
 {
 	for (vector<DialogBase *>::iterator iter = dialogs_.begin();

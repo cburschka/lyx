@@ -1144,18 +1144,18 @@ void LyXRC::output(ostream & os) const
 		    != system_lyxrc.font_sizes[LyXFont::SIZE_HUGER]) {
 			os.setf(ios::fixed);
 			os.precision(2);
-			os << "\\screen_font_sizes";
-			os << " " << font_sizes[LyXFont::SIZE_TINY];
-			os << " " << font_sizes[LyXFont::SIZE_SCRIPT];
-			os << " " << font_sizes[LyXFont::SIZE_FOOTNOTE];
-			os << " " << font_sizes[LyXFont::SIZE_SMALL];
-			os << " " << font_sizes[LyXFont::SIZE_NORMAL];
-			os << " " << font_sizes[LyXFont::SIZE_LARGE];
-			os << " " << font_sizes[LyXFont::SIZE_LARGER];
-			os << " " << font_sizes[LyXFont::SIZE_LARGEST];
-			os << " " << font_sizes[LyXFont::SIZE_HUGE];
-			os << " " << font_sizes[LyXFont::SIZE_HUGER];
-			os << "\n";
+			os << "\\screen_font_sizes"
+			   << " " << font_sizes[LyXFont::SIZE_TINY]
+			   << " " << font_sizes[LyXFont::SIZE_SCRIPT]
+			   << " " << font_sizes[LyXFont::SIZE_FOOTNOTE]
+			   << " " << font_sizes[LyXFont::SIZE_SMALL]
+			   << " " << font_sizes[LyXFont::SIZE_NORMAL]
+			   << " " << font_sizes[LyXFont::SIZE_LARGE]
+			   << " " << font_sizes[LyXFont::SIZE_LARGER]
+			   << " " << font_sizes[LyXFont::SIZE_LARGEST]
+			   << " " << font_sizes[LyXFont::SIZE_HUGE]
+			   << " " << font_sizes[LyXFont::SIZE_HUGER]
+			   << "\n";
 		}
 		
 		os << "\n#\n"
@@ -1163,13 +1163,14 @@ void LyXRC::output(ostream & os) const
 		   << "#\n\n";
 		
 	case RC_SET_COLOR:
-		for( int i=0; i<LColor::ignore; ++i ) {
+		for (int i = 0; i < LColor::ignore; ++i ) {
 			LColor::color lc = static_cast<LColor::color>(i);
-
-			if (lcolor.getX11Name(lc) !=
-			    system_lcolor.getX11Name(lc)) {
-				os << "\\set_color \"" << lcolor.getX11Name(lc)
-				   << "\"\n";
+			
+			string const col(lcolor.getX11Name(lc));
+			if (col != system_lcolor.getX11Name(lc)) {
+				os << "\\set_color \""
+				   << lcolor.getLyXName(lc) << "\" \""
+				   << col << "\"\n";
 			}
 		}
 		
@@ -1575,7 +1576,8 @@ void LyXRC::set_font_norm_type()
 		font_norm_type = OTHER_ENCODING;
 }
 
-string LyXRC::getDescription(LyXRCTags tag)
+
+string const LyXRC::getDescription(LyXRCTags tag) 
 {
 	string str;
 	
