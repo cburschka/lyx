@@ -576,6 +576,7 @@ bool Parser::parse_macro(string & name)
 
 bool Parser::parse_normal(MathAtom & at)
 {
+	skipSpaces();
 	MathArray ar;
 	parse_into(ar, false, false);
 	if (ar.size() != 1) {
