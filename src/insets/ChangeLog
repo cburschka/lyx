@@ -1,3 +1,10 @@
+
+2004-02-04  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* insettext.C (edit): 
+	(updateLocal): use the cur argument instead of the global cursor
+	* insetcollapsable.C (edit): dont call inset.edit(x,y) when opening
+
 2004-02-01  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* insetlatexaccent.C (checkContents): "c" -> 'c' in calls to contains

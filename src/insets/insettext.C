@@ -253,7 +253,7 @@ void InsetText::updateLocal(LCursor & cur)
 	lv->updateMenubar();
 	lv->updateToolbar();
 	if (old_par != cur.par()) {
-		lv->setLayout(text_.cursorPar()->layout()->name());
+		lv->setLayout(text_.getPar(cur.par())->layout()->name());
 		old_par = cur.par();
 	}
 }
@@ -287,7 +287,7 @@ void InsetText::edit(LCursor & cur, bool left)
 	setViewCache(&cur.bv());
 	int const par = left ? 0 : paragraphs().size() - 1;
 	int const pos = left ? 0 : paragraphs().back().size();
-	text_.setCursor(par, pos);
+	text_.setCursor(cur.current(), par, pos);
 	cur.clearSelection();
 	finishUndo();
 	sanitizeEmptyText(cur.bv());
