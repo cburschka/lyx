@@ -969,6 +969,9 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 			clear = true;
 		}
 		lt->setCursorFromCoordinates(bv, x-drawTextXOffset, y + insetAscent);
+		// set the selection cursor!
+		lt->selection.cursor = lt->cursor;
+		lt->cursor.x_fix(lt->cursor.x());
 		if (lt->selection.set()) {
 			lt->clearSelection();
 			updateLocal(bv, FULL, false);
@@ -989,6 +992,8 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 		}
 		if (clear)
 			lt = 0;
+	} else {
+		lt->clearSelection();
 	}
 	showInsetCursor(bv);
 	no_selection = false;
@@ -1030,7 +1035,7 @@ void InsetText::insetMotionNotify(BufferView * bv, int x, int y, int state)
 		return;
 	if (the_locking_inset) {
 		the_locking_inset->insetMotionNotify(bv, x - inset_x,
-						     y - inset_y,state);
+		                                     y - inset_y,state);
 		return;
 	}
 	bool clear = false;
@@ -1039,7 +1044,10 @@ void InsetText::insetMotionNotify(BufferView * bv, int x, int y, int state)
 		clear = true;
 	}
 	hideInsetCursor(bv);
+	LyXCursor cur = lt->cursor;
 	lt->setCursorFromCoordinates(bv, x - drawTextXOffset, y + insetAscent);
+	if (cur == lt->cursor)
+		return;
 	lt->setSelection(bv);
 	if (lt->toggle_cursor.par() != lt->toggle_end_cursor.par() ||
 		lt->toggle_cursor.pos() != lt->toggle_end_cursor.pos())

@@ -1,3 +1,7 @@
+2001-12-17  Juergen Vigna  <jug@sad.it>
+
+	* tabular.C (AppendColumn): applied John's fix
+
 2001-12-15  John Levon  <moz@compsoc.man.ac.uk>
 
 	* BufferView.h: 
@@ -8,14 +12,10 @@
 	* Makefile.am:
 	* box.h: new start of class for above
 
-2001-12-15  John Levon  <moz@compsoc.man.ac.uk>
-
 	* lyxfunc.C: ignore space-only minibuffer dispatches.
 	  Show the command name when it doesn't exist
 
 	* minibuffer.C: don't add empty lines to the history
-
-2001-12-15  John Levon  <moz@compsoc.man.ac.uk>
 
 	* minibuffer.C: add a space on dropdown completion
  

@@ -1,5 +1,9 @@
 2001-12-17  Juergen Vigna  <jug@sad.it>
 
+	* insettext.C (insetButtonPress): set the selection cursor!
+	(insetButtonPress): clear the selection (and set with that the
+	selection.cursor) if we only hit an inset!
+
 	* insetert.C (read): removed piece of compatibility code only needed
 	for 1.2.0.
 
