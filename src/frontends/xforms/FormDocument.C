@@ -240,7 +240,7 @@ void FormDocument::build()
 	language_.reset(build_doc_language());
 	fl_addto_choice(language_->choice_inputenc,
 			"default|auto|latin1|latin2|latin3|latin4|latin5|latin9"
-			"|koi8-r|koi8-u|cp866|cp1251|iso88595");
+			"|koi8-r|koi8-u|cp866|cp1251|iso88595|pt154");
 
 	vector<frnt::LanguagePair> const langs = frnt::getLanguageData(false);
 	// Store the identifiers for later
