@@ -47,7 +47,7 @@ using std::endl;
 
 #define cellstart(p) ((p % 2) == 0)
 
-#define USE_NEW_LAYOUT 1
+//#define USE_NEW_LAYOUT 1
 
 InsetTabular::InsetTabular(Buffer * buf, int rows, int columns)
 {
@@ -66,6 +66,7 @@ InsetTabular::InsetTabular(Buffer * buf, int rows, int columns)
     actcell = 0;
     cursor.pos(0);
     sel_pos_start = sel_pos_end = sel_cell_start = sel_cell_end = 0;
+    dialogs_ = 0;
     need_update = INIT;
 }
 
@@ -81,6 +82,7 @@ InsetTabular::InsetTabular(InsetTabular const & tab, Buffer * buf)
     actcell = 0;
     cursor.pos(0);
     sel_pos_start = sel_pos_end = sel_cell_start = sel_cell_end = 0;
+    dialogs_ = 0;
     need_update = INIT;
 }
 
@@ -91,6 +93,8 @@ InsetTabular::~InsetTabular()
 #ifdef USE_NEW_LAYOUT
     if (buffer->getUser())
 	buffer->getUser()->owner()->getDialogs()->hideTabular(this);
+    else if (dialogs_)
+	dialogs_->hideTabular(this);
 #endif
 }
 
@@ -430,7 +434,12 @@ bool InsetTabular::UnlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 	if ((inset->LyxCode() == TABULAR_CODE) &&
 	    !the_locking_inset->GetFirstLockingInsetOfType(TABULAR_CODE))
 	{
+#ifdef USE_NEW_LAYOUT
+	    dialogs_ = bv->owner()->getDialogs();
+	    dialogs_->updateTabular(const_cast<InsetTabular *>(this));
+#else
 	    UpdateLayoutTabular(true, const_cast<InsetTabular *>(this));
+#endif
 	    oldcell = actcell;
 	}
 	return true;
@@ -524,7 +533,8 @@ void InsetTabular::InsetButtonRelease(BufferView * bv,
 	    }
 	}
 #ifdef USE_NEW_LAYOUT
-        bv->owner()->getDialogs()->showTabular(this);
+	dialogs_ = bv->owner()->getDialogs();
+        dialogs_->showTabular(this);
 #if 0
 	else if (ocell != actcell)
 		bview->getOwner()->getPopups().updateTabular();
@@ -733,8 +743,13 @@ UpdatableInset::RESULT InsetTabular::LocalDispatch(BufferView * bv, int action,
 	break;
     case LFUN_LAYOUT_TABLE:
     {
+#ifdef USE_NEW_LAYOUT
+	dialogs_ = bv->owner()->getDialogs();
+        dialogs_->showTabular(this);
+#else
 	int flag = (arg == "true");
 	MenuLayoutTabular(flag, this);
+#endif
     }
     break;
     default:
@@ -937,7 +952,12 @@ void InsetTabular::resetPos(BufferView * bv) const
     if ((!the_locking_inset ||
 	 !the_locking_inset->GetFirstLockingInsetOfType(TABULAR_CODE)) &&
 	(actcell != oldcell)) {
+#ifdef USE_NEW_LAYOUT
+	dialogs_ = bv->owner()->getDialogs();
+        dialogs_->updateTabular(const_cast<InsetTabular *>(this));
+#else
 	UpdateLayoutTabular(true, const_cast<InsetTabular *>(this));
+#endif
 	oldcell = actcell;
     }
 }

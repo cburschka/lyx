@@ -105,7 +105,7 @@ void FormTabular::show()
     } else {
 	fl_show_form(dialog_->form_tabular,
 		     FL_PLACE_MOUSE | FL_FREE_SIZE,
-		     FL_FULLBORDER,
+		     FL_TRANSIENT,
 		     _("Tabular Layout"));
 //	u_ = d_->updateBufferDependent.connect(slot(this,
 //						    &FormTabular::update));
@@ -154,9 +154,12 @@ void FormTabular::update()
     }
 }
 
-void FormTabular::updateInset(InsetTabular *)
+void FormTabular::updateInset(InsetTabular * ti)
 {
-    update();
+    inset_ = ti;
+    if (ti && dialog_ && dialog_->form_tabular->visible) {
+	update();
+    }
 }
 
 void FormTabular::input()

@@ -4769,10 +4769,13 @@ int LyXText::GetColumnNearX(BufferView * bview, Row * row, int & x,
 
 	if (row->pos() > last)  // Row is empty?
 		c = row->pos();
+#warning This is wrong, please have a look Dekel (Jug)
+#if 0
 	else if (lastrow &&
 		 ( (rtl && vc == row->pos()&& x < tmpx - 5) ||
 		   (!rtl && vc == last + 1 && x > tmpx + 5) ))
 		c = last + 1;
+#endif
 	else if (vc == row->pos() ||
 		 (row->par()->table
 		  && vc <= last && row->par()->IsNewline(vc-1)) ) {

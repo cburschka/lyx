@@ -225,5 +225,6 @@ private:
     bool no_selection;
     mutable bool locked;
     mutable UpdateCodes need_update;
+    mutable Dialogs * dialogs_;
 };
 #endif
