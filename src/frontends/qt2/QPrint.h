@@ -13,21 +13,20 @@
 #ifndef QPRINT_H
 #define QPRINT_H
 
-
-#include "Qt2Base.h"
+#include "QDialogView.h"
 
 class ControlPrint;
 class QLPrintDialog;
 
 ///
 class QPrint
-	: public Qt2CB<ControlPrint, Qt2DB<QLPrintDialog> >
+	: public QController<ControlPrint, QView<QLPrintDialog> >
 {
 public:
 	///
 	friend class QLPrintDialog;
 	///
-	QPrint();
+	QPrint(Dialog &);
 private:
 	/// Apply changes
 	virtual void apply();

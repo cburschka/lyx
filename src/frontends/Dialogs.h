@@ -71,8 +71,6 @@ public:
 	void showPreamble();
 	///
 	void showPreferences();
-	///
-	void showPrint();
 	/// bring up the spellchecker
 	void showSpellchecker();
 	//@}

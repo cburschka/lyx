@@ -31,10 +31,6 @@
 #include "FormColorpicker.h"
 #include "forms/form_preferences.h"
 
-#include "ControlPrint.h"
-#include "FormPrint.h"
-#include "forms/form_print.h"
-
 #include "ControlSpellchecker.h"
 #include "FormSpellchecker.h"
 #include "forms/form_spellchecker.h"
@@ -48,9 +44,6 @@ PreambleDialog;
 typedef GUI<ControlPrefs, FormPreferences, OkApplyCancelPolicy, xformsBC>
 PreferencesDialog;
 
-typedef GUI<ControlPrint, FormPrint, OkApplyCancelPolicy, xformsBC>
-PrintDialog;
-
 typedef GUI<ControlSpellchecker, FormSpellchecker, NoRepeatedApplyReadOnlyPolicy, xformsBC>
 SpellcheckerDialog;
 
@@ -61,7 +54,6 @@ struct Dialogs::Impl {
 	DocumentDialog      document;
 	PreambleDialog      preamble;
 	PreferencesDialog   preferences;
-	PrintDialog         print;
 	SpellcheckerDialog  spellchecker;
 };
 
@@ -70,7 +62,6 @@ Dialogs::Impl::Impl(LyXView & lv, Dialogs & d)
 	: document(lv, d),
 	  preamble(lv, d),
 	  preferences(lv, d),
-	  print(lv, d),
 	  spellchecker(lv, d)
 {}
 
@@ -102,12 +93,6 @@ void Dialogs::showPreamble()
 void Dialogs::showPreferences()
 {
 	pimpl_->preferences.controller().show();
-}
-
-
-void Dialogs::showPrint()
-{
-	pimpl_->print.controller().show();
 }
 
 

@@ -27,11 +27,11 @@
 #include <qpushbutton.h>
 
 
-typedef Qt2CB<ControlPrint, Qt2DB<QLPrintDialog> > base_class;
+typedef QController<ControlPrint, QView<QLPrintDialog> > base_class;
 
 
-QPrint::QPrint()
-	: base_class(_("LyX: Print Document"))
+QPrint::QPrint(Dialog & parent)
+	: base_class(parent, _("LyX: Print Document"))
 {
 }
 

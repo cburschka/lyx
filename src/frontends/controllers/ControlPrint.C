@@ -12,106 +12,68 @@
 
 #include "ControlPrint.h"
 
-#include "ViewBase.h"
 #include "ButtonController.h"
+#include "helper_funcs.h"
 
 #include "buffer.h"
 #include "bufferparams.h"
+#include "funcrequest.h"
 #include "gettext.h"
-#include "helper_funcs.h"
 #include "PrinterParams.h"
-#include "exporter.h"
-
-#include "frontends/Alert.h"
 
 #include "support/tostr.h"
 #include "support/filetools.h"
 #include "support/globbing.h"
-#include "support/path.h"
-#include "support/systemcall.h"
 
-#include "debug.h"
-
-using lyx::support::bformat;
 using lyx::support::ChangeExtension;
 using lyx::support::FileFilterList;
-using lyx::support::IsDirWriteable;
-using lyx::support::MakeAbsPath;
-using lyx::support::MakeDisplayPath;
-using lyx::support::Path;
-using lyx::support::QuoteName;
-using lyx::support::Systemcall;
 
-using std::endl;
 using std::string;
 
-
-ControlPrint::ControlPrint(LyXView & lv, Dialogs & d)
-	: ControlDialogBD(lv, d),
+ControlPrint::ControlPrint(Dialog & parent)
+	: Dialog::Controller(parent),
 	  params_(0)
 {}
 
 
-PrinterParams & ControlPrint::params() const
+bool ControlPrint::initialiseParams(std::string const &)
 {
-	BOOST_ASSERT(params_);
-	return *params_;
-}
-
-
-void ControlPrint::setParams()
-{
-	if (params_) delete params_;
-
 	/// get global printer parameters
-	string const name =  ChangeExtension(buffer()->fileName(),
+	string const name =  ChangeExtension(kernel().buffer().fileName(),
 					lyxrc.print_file_extension);
-	params_ = new PrinterParams (PrinterParams::PRINTER,
-					lyxrc.printer, name);
+	params_.reset(new PrinterParams (PrinterParams::PRINTER,
+					 lyxrc.printer, name));
 
-	bc().valid(); // so that the user can press Ok
+	dialog().bc().valid(); // so that the user can press Ok
+	return true;
 }
 
 
 void ControlPrint::clearParams()
 {
-	if (params_) {
-		delete params_;
-		params_ = 0;
-	}
+	params_.reset();
+}
+
+
+PrinterParams & ControlPrint::params() const
+{
+	BOOST_ASSERT(params_.get());
+	return *params_;
 }
 
 
 string const ControlPrint::browse(string const & in_name) const
 {
-	return browseRelFile(in_name, buffer().filePath(),
+	return browseRelFile(in_name, kernel().buffer().filePath(),
 			     _("Print to file"),
 			     FileFilterList("PostScript files (*.ps)"),
 			     true);
 }
 
 
-namespace {
-
-void showPrintError(string const & name)
-{
-		string str = bformat(_("Could not print the document %1$s.\n"
-			"Check that your printer is set up correctly."),
-			MakeDisplayPath(name, 50));
-		Alert::error(_("Print document failed"), str);
-}
-
-}
-
-
 /// print the current buffer
-void ControlPrint::apply()
+void ControlPrint::dispatchParams()
 {
-	if (!bufferIsAvailable())
-		return;
-
-	view().apply();
-
 	PrinterParams const pp = params();
 	string command(lyxrc.print_command + ' ');
 
@@ -162,67 +124,15 @@ void ControlPrint::apply()
 		command += lyxrc.print_extra_options + ' ';
 	}
 
-	command += buffer()->params().dvips_options() + ' ';
+	command += kernel().buffer().params().dvips_options() + ' ';
 
-	if (!Exporter::Export(buffer(), "dvi", true)) {
-		showPrintError(buffer()->fileName());
-		return;
-	}
+	string const target = (pp.target == PrinterParams::PRINTER) ?
+		"printer" : "file";
+	
+	string const target_name = (pp.target == PrinterParams::PRINTER) ?
+		(pp.printer_name.empty() ? "default" : pp.printer_name) :
+		pp.file_name;
 
-	// Push directory path.
-	string const path = buffer()->temppath();
-	Path p(path);
-
-	// there are three cases here:
-	// 1. we print to a file
-	// 2. we print directly to a printer
-	// 3. we print using a spool command (print to file first)
-	Systemcall one;
-	int res = 0;
-	string const dviname = ChangeExtension(buffer()->getLatexName(true), "dvi");
-	switch (pp.target) {
-	case PrinterParams::PRINTER:
-		if (!lyxrc.print_spool_command.empty()) {
-			// case 3: print using a spool
-			string const psname = ChangeExtension(dviname, ".ps");
-			command += lyxrc.print_to_file
-				+ QuoteName(psname)
-				+ ' '
-				+ QuoteName(dviname);
-
-			string command2 = lyxrc.print_spool_command + ' ';
-			if (!pp.printer_name.empty()) {
-				command2 += lyxrc.print_spool_printerprefix
-					+ pp.printer_name
-					+ ' ';
-			}
-			command2 += QuoteName(psname);
-			// First run dvips.
-			// If successful, then spool command
-			res = one.startscript(Systemcall::Wait, command);
-			if (res == 0)
-				res = one.startscript(Systemcall::DontWait,
-						      command2);
-		} else {
-			// case 2: print directly to a printer
-			res = one.startscript(Systemcall::DontWait,
-					      command + QuoteName(dviname));
-		}
-		break;
-
-	case PrinterParams::FILE:
-		// case 1: print to a file
-		command += lyxrc.print_to_file
-			+ QuoteName(MakeAbsPath(pp.file_name, path))
-			+ ' '
-			+ QuoteName(dviname);
-		res = one.startscript(Systemcall::DontWait, command);
-		break;
-	}
-
-	lyxerr[Debug::LATEX] << "ControlPrint::apply(): print command = \""
-			     << command << '"' << endl;
-
-	if (res != 0)
-		showPrintError(buffer()->fileName());
+	string const data = target + " " + target_name + " " + command;
+	kernel().dispatch(FuncRequest(LFUN_PRINT, data));
 }

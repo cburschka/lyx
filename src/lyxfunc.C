@@ -76,6 +76,7 @@
 #include "support/filetools.h"
 #include "support/forkedcontr.h"
 #include "support/globbing.h"
+#include "support/lstrings.h"
 #include "support/path.h"
 #include "support/path_defines.h"
 #include "support/systemcall.h"
@@ -101,6 +102,7 @@ using lyx::support::isStrInt;
 using lyx::support::MakeAbsPath;
 using lyx::support::MakeDisplayPath;
 using lyx::support::Path;
+using lyx::support::QuoteName;
 using lyx::support::rtrim;
 using lyx::support::split;
 using lyx::support::strToInt;
@@ -482,6 +484,7 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_KMAP_TOGGLE:
 	case LFUN_REPEAT:
 	case LFUN_EXPORT_CUSTOM:
+	case LFUN_PRINT:
 	case LFUN_SEQUENCE:
 	case LFUN_SAVEPREFERENCES:
 	case LFUN_SCREEN_FONT_UPDATE:
@@ -533,6 +536,14 @@ bool ensureBufferClean(BufferView * bv)
 		bv->owner()->dispatch(FuncRequest(LFUN_MENUWRITE));
 
 	return buf.isClean();
+}
+
+void showPrintError(string const & name)
+{
+		string str = bformat(_("Could not print the document %1$s.\n"
+			"Check that your printer is set up correctly."),
+			MakeDisplayPath(name, 50));
+		Alert::error(_("Print document failed"), str);
 }
 
 } //namespace anon
@@ -730,6 +741,97 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 			break;
 		}
 
+		case LFUN_PRINT: {
+			string target;
+			string target_name;
+			string command = split(split(argument, target, ' '),
+					       target_name, ' ');
+
+			if (target.empty()
+			    || target_name.empty()
+			    || command.empty()) {
+				lyxerr << "Unable to parse \""
+				       << argument << '"' << std::endl;
+				break;
+			}
+			if (target != "printer" && target != "file") {
+				lyxerr << "Unrecognized target \""
+				       << target << '"' << std::endl;
+				break;
+			}
+
+			Buffer * buffer = owner->buffer();
+
+			if (!Exporter::Export(buffer, "dvi", true)) {
+				showPrintError(buffer->fileName());
+				break;
+			}
+
+			// Push directory path.
+			string const path = buffer->temppath();
+			Path p(path);
+
+			// there are three cases here:
+			// 1. we print to a file
+			// 2. we print directly to a printer
+			// 3. we print using a spool command (print to file first)
+			Systemcall one;
+			int res = 0;
+			string const dviname =
+				ChangeExtension(buffer->getLatexName(true),
+						"dvi");
+
+			if (target == "printer") {
+				if (!lyxrc.print_spool_command.empty()) {
+					// case 3: print using a spool
+					string const psname =
+						ChangeExtension(dviname,".ps");
+					command += lyxrc.print_to_file
+						+ QuoteName(psname)
+						+ ' '
+						+ QuoteName(dviname);
+
+					string command2 =
+						lyxrc.print_spool_command +' ';
+					if (target_name != "default") {
+						command2 += lyxrc.print_spool_printerprefix
+							+ target_name
+							+ ' ';
+					}
+					command2 += QuoteName(psname);
+					// First run dvips.
+					// If successful, then spool command
+					res = one.startscript(
+						Systemcall::Wait,
+						command);
+
+					if (res == 0)
+						res = one.startscript(
+							Systemcall::DontWait,
+							command2);
+				} else {
+					// case 2: print directly to a printer
+					res = one.startscript(
+						Systemcall::DontWait,
+						command + QuoteName(dviname));
+				}
+		
+			} else {
+				// case 1: print to a file
+				command += lyxrc.print_to_file
+					+ QuoteName(MakeAbsPath(target_name,
+								path))
+					+ ' '
+					+ QuoteName(dviname);
+				res = one.startscript(Systemcall::DontWait,
+						      command);
+			}
+
+			if (res != 0)
+				showPrintError(buffer->fileName());
+			break;
+		}
+
 		case LFUN_IMPORT:
 			doImport(argument);
 			break;
@@ -915,8 +1017,6 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 				owner->getDialogs().showPreamble();
 			else if (name == "preferences")
 				owner->getDialogs().showPreferences();
-			else if (name == "print")
-				owner->getDialogs().showPrint();
 			else if (name == "spellchecker")
 				owner->getDialogs().showSpellchecker();
 

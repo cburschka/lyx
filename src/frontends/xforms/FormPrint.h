@@ -13,9 +13,7 @@
 #ifndef FORMPRINT_H
 #define FORMPRINT_H
 
-
-
-#include "FormBase.h"
+#include "FormDialogView.h"
 #include "RadioButtonGroup.h"
 
 class ControlPrint;
@@ -24,10 +22,11 @@ struct FD_print;
 /** This class provides an XForms implementation of the FormPrint Dialog.
     The print dialog allows users to print their documents.
  */
-class FormPrint : public FormCB<ControlPrint, FormDB<FD_print> > {
+class FormPrint
+	: public FormController<ControlPrint, FormView<FD_print> > {
 public:
 	///
-	FormPrint();
+	FormPrint(Dialog &);
 private:
 	/// Apply from dialog
 	virtual void apply();

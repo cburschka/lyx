@@ -32,10 +32,10 @@ using lyx::support::strToInt;
 using std::string;
 
 
-typedef FormCB<ControlPrint, FormDB<FD_print> > base_class;
+typedef FormController<ControlPrint, FormView<FD_print> > base_class;
 
-FormPrint::FormPrint()
-	: base_class(_("Print Document"))
+FormPrint::FormPrint(Dialog & parent)
+	: base_class(parent, _("Print Document"))
 {}
 
 

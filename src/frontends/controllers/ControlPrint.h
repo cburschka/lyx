@@ -13,33 +13,33 @@
 #ifndef CONTROLPRINT_H
 #define CONTROLPRINT_H
 
-
-#include "ControlDialog_impl.h"
-
+#include "Dialog.h"
+#include <boost/scoped_ptr.hpp>
 
 class PrinterParams;
 
 /** A controller for Print dialogs.
  */
-class ControlPrint : public ControlDialogBD {
+class ControlPrint : public Dialog::Controller {
 public:
 	///
-	ControlPrint(LyXView &, Dialogs &);
+	ControlPrint(Dialog &);
+	///
+	virtual bool initialiseParams(std::string const & data);
+	///
+	virtual void clearParams();
+	///
+	virtual void dispatchParams();
+	///
+	virtual bool isBufferDependent() const { return true; }
 
 	/// Browse for a file
 	std::string const browse(std::string const &) const;
 	///
 	PrinterParams & params() const;
 private:
-	/// Get changed parameters and Dispatch them to the kernel.
-	virtual void apply();
-	/// set the params before show or update.
-	virtual void setParams();
-	/// clean-up on hide.
-	virtual void clearParams();
-
 	///
-	PrinterParams * params_;
+	boost::scoped_ptr<PrinterParams> params_;
 };
 
 #endif // CONTROLPRINT_H

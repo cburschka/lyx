@@ -1,6 +1,13 @@
+2004-03-28  Angus Leeming  <leeming@lyx.org>
+
+	* Dialogs.C (build): added print dialog.
+	* Dialogs2.C (showPrint): removed.
+
+	* QPrint.[Ch]: converted to the Dialog-based scheme.
+
 2004-03-27  Angus Leeming  <leeming@lyx.org>
 
-	* Dialogs.C (build): added sendto, dialog.
+	* Dialogs.C (build): added sendto dialog.
 	* Dialogs2.C (showSendto): removed.
 
 	* QSendto.[Ch]: converted to the Dialog-based scheme.

@@ -40,12 +40,6 @@ void gui_ShowPreferences(Dialogs & d)
 }
 
 
-void gui_ShowPrint(Dialogs & d)
-{
-	d.showPrint();
-}
-
-
 void gui_ShowSpellchecker(Dialogs & d)
 {
 	d.showSpellchecker();

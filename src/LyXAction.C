@@ -115,6 +115,7 @@ void LyXAction::init()
 		{ LFUN_ENDBUFSEL, "buffer-end-select", ReadOnly },
 		{ LFUN_EXPORT, "buffer-export", ReadOnly },
 		{ LFUN_EXPORT_CUSTOM, "buffer-export-custom", ReadOnly },
+		{ LFUN_PRINT, "buffer-print", ReadOnly },
 		{ LFUN_IMPORT, "buffer-import", NoBuffer },
 		{ LFUN_MENUNEW, "buffer-new", NoBuffer },
 		{ LFUN_MENUNEWTMPLT,"buffer-new-template", NoBuffer },

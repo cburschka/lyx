@@ -1,7 +1,14 @@
+2004-03-28  Angus Leeming  <leeming@lyx.org>
+
+	* lfuns.h:
+	* LyXAction.C (init): new LFUN_PRINT.
+
+	* lyxfunc.C (getStatus, dispatch): handle LFUN_PRINT.
+
 2004-03-27  Angus Leeming  <leeming@lyx.org>
 
 	* lfuns.h:
-	* LyXAction.C (init): new LFUN_EXPORT_CUSTOM
+	* LyXAction.C (init): new LFUN_EXPORT_CUSTOM.
 
 	* lyxfunc.C (getStatus, dispatch): handle LFUN_EXPORT_CUSTOM.
 
