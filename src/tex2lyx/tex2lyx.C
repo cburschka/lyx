@@ -29,6 +29,11 @@ using std::ostringstream;
 using std::stack;
 using std::string;
 using std::vector;
+using std::string;
+using std::stack;
+using std::istringstream;
+using std::ostringstream;
+using std::ifstream;
 
 
 namespace {
