@@ -14,12 +14,15 @@
 #include <config.h>
 #include "ControlBibitem.h"
 #include "FormBibitem.h"
+#include "form_bibitem.h"
 #include "gettext.h"
 #include "xformsBC.h"
 #include "support/lstrings.h" // compare
 
+typedef FormCB<ControlBibitem, FormDB<FD_form_bibitem> > base_class;
+
 FormBibitem::FormBibitem(ControlBibitem & c)
-	: FormBase2<ControlBibitem, FD_form_bibitem>(c, _("Bibliography Entry"))
+	: base_class(c, _("Bibliography Entry"))
 {}
 
 

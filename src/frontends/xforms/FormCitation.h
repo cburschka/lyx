@@ -8,7 +8,7 @@
  *
  * ======================================================
  *
- * Author: Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 
 #ifndef FORMCITATION_H
@@ -22,10 +22,10 @@
 
 /** This class provides an XForms implementation of the Citation Dialog.
  */
-#include "form_citation.h"
 class ControlCitation;
+struct FD_form_citation;
 
-class FormCitation : public FormBase2<ControlCitation, FD_form_citation> {
+class FormCitation : public FormCB<ControlCitation, FormDB<FD_form_citation> > {
 public:
 	///
 	FormCitation(ControlCitation &);

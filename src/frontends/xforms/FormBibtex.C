@@ -14,12 +14,15 @@
 #include <config.h>
 #include "ControlBibtex.h"
 #include "FormBibtex.h"
+#include "form_bibtex.h"
 #include "gettext.h"
 #include "xformsBC.h"
 #include "debug.h"
 
+typedef FormCB<ControlBibtex, FormDB<FD_form_bibtex> > base_class;
+
 FormBibtex::FormBibtex(ControlBibtex & c)
-	: FormBase2<ControlBibtex, FD_form_bibtex>(c, _("BibTeX Database"))
+	: base_class(c, _("BibTeX Database"))
 {}
 
 

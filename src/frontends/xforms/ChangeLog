@@ -1,3 +1,28 @@
+2001-03-20  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormBase.[Ch] (input): no longer pure virtual. Has defualt state of
+	SMI_NOOP.
+	(FormBase2): split into two template classes, FormDB (DialogBase) and
+	FormCB (ControllerBase) for greater flexibility.
+
+	* FormBibitem.[Ch]:
+	* FormBibtex.[Ch]:
+	* FormCitation.[Ch]: associated changes.
+
+	* FormBrowser.[Ch]:
+	* FormLog.[Ch]:
+	* FormVCLog.[Ch]:
+	* forms/form_browser.fd: implemented controller-view split.
+
+	* Dialogs.C: associated changes.
+
+2001-03-19  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormBibtex.[Ch]:
+	* forms/form_bibtex.fd: implemented controller-view split.
+
+	* Dialogs.C: associated changes.
+
 2001-03-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormBibtex.[Ch]:

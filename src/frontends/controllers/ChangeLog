@@ -1,3 +1,11 @@
+2001-03-20  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* ControlLog.[Ch]:
+	* ControlVCLog.[Ch]: new files; controllers for LaTeX and Version
+	Control log files, respectively.
+
+	* Makefile.am: added new files.
+
 2001-03-19  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* ControlBibtex.[Ch]: new files; controller for an InsetBibtex popup.

@@ -7,6 +7,8 @@
  *           Copyright 2000 The LyX Team.
  *
  * ======================================================
+ *
+ * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 
 #include <config.h>
@@ -84,6 +86,12 @@ void FormBase::hide()
 void FormBase::InputCB(FL_OBJECT * ob, long data)
 {
 	bc().input(input(ob, data));
+}
+
+
+ButtonPolicy::SMInput FormBase::input(FL_OBJECT *, long)
+{
+	return ButtonPolicy::SMI_NOOP;
 }
 
 

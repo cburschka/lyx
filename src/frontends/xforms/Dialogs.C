@@ -20,11 +20,21 @@
 #include "ControlBibitem.h"
 #include "ControlBibtex.h"
 #include "ControlCitation.h"
+#include "ControlLog.h"
+#include "ControlVCLog.h"
 #include "xformsBC.h"
+
+#include "form_bibitem.h" // needed for clean destructtion of boost::scoped ptr
+#include "form_bibtex.h"
+#include "form_browser.h"
+#include "form_citation.h"
 
 #include "FormBibitem.h"
 #include "FormBibtex.h"
 #include "FormCitation.h"
+#include "FormLog.h"
+#include "FormVCLog.h"
+
 #include "FormCharacter.h"
 #include "FormCopyright.h"
 #include "FormCredits.h"
@@ -34,7 +44,6 @@
 #include "FormGraphics.h"
 #include "FormInclude.h"
 #include "FormIndex.h"
-#include "FormLog.h"
 #include "FormMathsPanel.h"
 #include "FormParagraph.h"
 #include "FormPreamble.h"
@@ -47,7 +56,6 @@
 #include "FormTabularCreate.h"
 #include "FormToc.h"
 #include "FormUrl.h"
-#include "FormVCLog.h"
 #include "FormMinipage.h"
 
 // Signal enabling all visible popups to be redrawn if so desired.
@@ -61,6 +69,8 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new GUICitation<FormCitation, xformsBC>(*lv, *this));
 	add(new GUIBibitem<FormBibitem, xformsBC>(*lv, *this));
 	add(new GUIBibtex<FormBibtex, xformsBC>(*lv, *this));
+	add(new GUILog<FormLog, xformsBC>(*lv, *this));
+	add(new GUIVCLog<FormVCLog, xformsBC>(*lv, *this));
 
 	add(new FormCharacter(lv, this));
 	add(new FormCopyright(lv, this));
@@ -71,7 +81,6 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new FormGraphics(lv, this));
 	add(new FormInclude(lv, this));
 	add(new FormIndex(lv, this));
-	add(new FormLog(lv, this));
  	add(new FormMathsPanel(lv, this));
 	add(new FormParagraph(lv, this));
 	add(new FormPreamble(lv, this));
@@ -84,7 +93,6 @@ Dialogs::Dialogs(LyXView * lv)
 	add(new FormTabularCreate(lv, this));
 	add(new FormToc(lv, this));
 	add(new FormUrl(lv, this));
-	add(new FormVCLog(lv, this));
 	add(new FormMinipage(lv, this));
 	
 	// reduce the number of connections needed in

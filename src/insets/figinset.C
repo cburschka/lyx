@@ -85,6 +85,10 @@ extern FL_OBJECT * figinset_canvas;
 
 extern char ** environ; // is this only redundtant on linux systems? Lgb.
 
+// xforms doesn't define this (but it should be in <forms.h>).
+extern "C"
+FL_APPEVENT_CB fl_set_preemptive_callback(Window, FL_APPEVENT_CB, void *);
+
 namespace {
 
 float const DEG2PI = 57.295779513;
@@ -373,12 +377,6 @@ void AllocGrays(int num)
 	}
 	gs_color = true;
 }
-
-
-// xforms doesn't define this
-extern "C"
-FL_APPEVENT_CB fl_set_preemptive_callback(Window, FL_APPEVENT_CB, void *);
-
 
 void InitFigures()
 {

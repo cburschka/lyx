@@ -8,7 +8,7 @@
  *
  * ======================================================
  *
- * Author: Angus Leeming <a.leeming@ic.ac.uk>
+ * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 
 #ifndef FORMBASE_H
@@ -53,7 +53,7 @@ private:
 	virtual FL_FORM * form() const = 0;
 	/** Filter the inputs on callback from xforms
 	    Return true if inputs are valid. */
-	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long) = 0;
+	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 
 	/** Redraw the form (on receipt of a Signal indicating, for example,
 	    that the xform colors have been re-mapped). */
@@ -71,14 +71,12 @@ private:
 };
 
 
-template <class Controller, class Dialog>
-class FormBase2: public FormBase
+template <class Dialog>
+class FormDB: public FormBase
 {
 protected:
 	///
-	FormBase2(ControlBase &, string const &);
-	/// The parent controller
-	Controller & controller() const;
+	FormDB(ControlBase &, string const &);
 	/// Pointer to the actual instantiation of xform's form
 	virtual FL_FORM * form() const;
 	/// Real GUI implementation.
@@ -86,25 +84,42 @@ protected:
 };
 
 
-template <class Controller, class Dialog>
-FormBase2<Controller, Dialog>::FormBase2(ControlBase & c, string const & t)
+template <class Dialog>
+FormDB<Dialog>::FormDB(ControlBase & c, string const & t)
 	: FormBase(c, t)
 {}
 
 
-template <class Controller, class Dialog>
-Controller & FormBase2<Controller, Dialog>::controller() const
-{
-	return static_cast<Controller &>(controller_);
-	//return dynamic_cast<Controller &>(controller_);
-}
-
-
-template <class Controller, class Dialog>
-FL_FORM * FormBase2<Controller, Dialog>::form() const
+template <class Dialog>
+FL_FORM * FormDB<Dialog>::form() const
 {
 	if (dialog_.get()) return dialog_->form;
 	return 0;
+}
+
+
+template <class Controller, class Base>
+class FormCB: public Base
+{
+protected:
+	///
+	FormCB(ControlBase &, string const &);
+	/// The parent controller
+	Controller & controller() const;
+};
+
+
+template <class Controller, class Base>
+FormCB<Controller, Base>::FormCB(ControlBase & c, string const & t)
+	: Base(c, t)
+{}
+
+
+template <class Controller, class Base>
+Controller & FormCB<Controller, Base>::controller() const
+{
+	return static_cast<Controller &>(controller_);
+	//return dynamic_cast<Controller &>(controller_);
 }
 
 

@@ -23,15 +23,16 @@
 #include "MathsSymbols.h"
 #include "debug.h"
 
+#include "form_maths_deco.h"
+#include "form_maths_delim.h"
+#include "form_maths_matrix.h"
+#include "form_maths_space.h"
+
 #include "FormMathsBitmap.h"
 #include "FormMathsDeco.h"
-#include "form_maths_deco.h"
 #include "FormMathsDelim.h"
-#include "form_maths_delim.h"
 #include "FormMathsMatrix.h"
-#include "form_maths_matrix.h"
 #include "FormMathsSpace.h"
-#include "form_maths_space.h"
 
 #include "deco.xpm"
 #include "delim.xpm"

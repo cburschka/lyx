@@ -4,11 +4,12 @@
  *
  *           LyX, The Document Processor
  *
- *           Copyright 2000 The LyX Team.
+ *           Copyright 2001 The LyX Team.
  *
  * ======================================================
  *
  * \file ControlBibitem.C
+ * \author John Levon, moz@compsoc.man.ac.uk
  * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 

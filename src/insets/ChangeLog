@@ -1,3 +1,8 @@
+2001-03-20  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* figinset.C (fl_set_preemptive_callback): moved definition outside
+	of namespace anon.
+
 2001-03-20  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* insetminipage.C (Read): prepare for reading of minipage arguments.

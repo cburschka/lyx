@@ -17,14 +17,13 @@
 
 #include "FormBase.h"
 
-#include "form_bibtex.h"
-
 class ControlBibtex;
+struct FD_form_bibtex;
 
 /**
  * For bibtex database setting
  */
-class FormBibtex : public FormBase2<ControlBibtex, FD_form_bibtex> {
+class FormBibtex : public FormCB<ControlBibtex, FormDB<FD_form_bibtex> > {
 public:
 	///
 	FormBibtex(ControlBibtex &);

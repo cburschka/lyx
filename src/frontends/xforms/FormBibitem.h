@@ -4,8 +4,8 @@
  * Copyright 2001 the LyX Team
  * Read the file COPYING
  *
- * \author Angus Leeming
- * \author John Levon
+ * \author John Levon, moz@compsoc.man.ac.uk
+ * \author Angus Leeming, a.leeming@.ac.uk
  */
 
 #ifndef FORMBIBITEM_H
@@ -17,14 +17,13 @@
 
 #include "FormBase.h"
 
-#include "form_bibitem.h"
-
 class ControlBibitem;
+struct FD_form_bibitem;
 
 /**
  * For bibliography entry editing
  */
-class FormBibitem : public FormBase2<ControlBibitem, FD_form_bibitem> {
+class FormBibitem : public FormCB<ControlBibitem, FormDB<FD_form_bibitem> > {
 public:
 	///
 	FormBibitem(ControlBibitem &);

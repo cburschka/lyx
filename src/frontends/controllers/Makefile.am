@@ -26,6 +26,10 @@ libcontrollers_la_SOURCES=\
 	ControlCommand.h \
 	ControlConnections.C \
 	ControlConnections.h \
+	ControlLog.C \
+	ControlLog.h \
+	ControlVCLog.C \
+	ControlVCLog.h \
 	ViewBase.h
 
 # just copied from old lyx repository

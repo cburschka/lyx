@@ -9,27 +9,29 @@
 #ifndef FORMVCLOG_H
 #define FORMVCLOG_H
 
-#include "FormBaseDeprecated.h"
-#include "FormBrowser.h"
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-class LyXView;
-class Dialogs;
+#include "FormBrowser.h"
+
+class ControlVCLog;
 
 /**
  * This class provides an XForms implementation of the Version Control
  * log viewer
  */
-class FormVCLog : public FormBrowser {
+class FormVCLog : public FormCB<ControlVCLog, FormBrowser> {
 public:
 	///
-	FormVCLog(LyXView *, Dialogs *);
-private:
-	/// Update the dialog.
+	FormVCLog(ControlVCLog &);
+
+	// Functions accessible to the Controller.
+
+	/// Set the Params variable for the Controller.
+	virtual void apply() {}
+	/// Update dialog before/whilst showing it.
 	virtual void update();
 };
 
-#endif
+#endif // FORMVCLOG_H

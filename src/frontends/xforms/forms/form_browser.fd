@@ -63,7 +63,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_close
-callback: C_FormBaseDeprecatedCancelCB
+callback: C_FormBaseCancelCB
 argument: 0
 
 --------------------
@@ -81,7 +81,7 @@ shortcut:
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_update
-callback: C_FormBaseDeprecatedInputCB
+callback: C_FormBaseRestoreCB
 argument: 0
 
 ==============================

@@ -9,27 +9,29 @@
 #ifndef FORMLOG_H
 #define FORMLOG_H
 
-#include "FormBaseDeprecated.h"
-#include "FormBrowser.h"
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-class LyXView;
-class Dialogs;
+#include "FormBrowser.h"
+
+class ControlLog;
 
 /**
  * This class provides an XForms implementation of the LaTeX log dialog
  * for viewing the last LaTeX log file.
  */
-class FormLog : public FormBrowser {
+class FormLog : public FormCB<ControlLog, FormBrowser> {
 public:
 	///
-	FormLog(LyXView *, Dialogs *);
-private:
-	/// Update the dialog.
+	FormLog(ControlLog &);
+
+	// Functions accessible to the Controller.
+
+	/// Set the Params variable for the Controller.
+	virtual void apply() {}
+	/// Update dialog before/whilst showing it.
 	virtual void update();
 };
 
-#endif
+#endif // FORMLOG_H

@@ -7,6 +7,8 @@
  *           Copyright 2000 The LyX Team.
  *
  * ======================================================
+ *
+ * \author Angus Leeming <a.leeming@ic.ac.uk>
  */
 
 #include <algorithm>
@@ -31,8 +33,10 @@ using std::pair;
 using std::sort;
 using std::vector;
 
+typedef FormCB<ControlCitation, FormDB<FD_form_citation> > base_class;
+
 FormCitation::FormCitation(ControlCitation & c)
-	: FormBase2<ControlCitation, FD_form_citation>(c, _("Citation"))
+	: base_class(c, _("Citation"))
 {}
 
 
@@ -241,7 +245,7 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 			ControlCitation::REGEX : ControlCitation::SIMPLE;
 
 		vector<string>::const_iterator start = bibkeys.begin();
-		unsigned int const sel = fl_get_browser(dialog_->browser_bib);
+		int const sel = fl_get_browser(dialog_->browser_bib);
 		if (sel >= 1 && sel <= bibkeys.size())
 			start += sel-1;
 
