@@ -6,7 +6,7 @@ man_MANS = lyxclient.1
 
 bin_PROGRAMS = lyxclient
 
-INCLUDES = $(BOOST_INCLUDES)
+INCLUDES = -I$(srcdir)/../ $(BOOST_INCLUDES)
 
 AM_CXXFLAGS = $(PCH_FLAGS)
 

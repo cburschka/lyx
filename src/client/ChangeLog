@@ -1,3 +1,8 @@
+2004-09-06  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* Makefile.am (INCLUDES): add ${srcdir}/.. to INCLUDES (needed
+	when building outside of source tree)
+
 2004-09-04  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* messages.h: new file
