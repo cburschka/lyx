@@ -79,7 +79,10 @@ keyword_item lyxrcTags[] = {
 	{ "\\language_auto_end", LyXRC::RC_LANGUAGE_AUTO_END },
 	{ "\\language_command_begin", LyXRC::RC_LANGUAGE_COMMAND_BEGIN },
 	{ "\\language_command_end", LyXRC::RC_LANGUAGE_COMMAND_END },
+	{ "\\language_command_local", LyXRC::RC_LANGUAGE_COMMAND_LOCAL },
+	{ "\\language_global_options", LyXRC::RC_LANGUAGE_GLOBAL_OPTIONS },
 	{ "\\language_package", LyXRC::RC_LANGUAGE_PACKAGE },
+	{ "\\language_use_babel", LyXRC::RC_LANGUAGE_USE_BABEL },
 	{ "\\lastfiles", LyXRC::RC_LASTFILES },
 	{ "\\make_backup", LyXRC::RC_MAKE_BACKUP },
 	{ "\\mark_foreign_language", LyXRC::RC_MARK_FOREIGN_LANGUAGE },
@@ -220,11 +223,14 @@ void LyXRC::setDefaults() {
 	rtl_support = false;
 	auto_number = true;
 	mark_foreign_language = true;
-	language_package = "\\usepackage{babel}";
 	language_auto_begin = true;
 	language_auto_end = true;
+	language_global_options = true;
+	language_use_babel = true;
+	language_package = "\\usepackage{babel}";
 	language_command_begin = "\\selectlanguage{$$lang}";
 	language_command_end = "\\selectlanguage{$$lang}";
+	language_command_local = "\\foreignlanguage{$$lang}{";
 	default_language = "english";
 	//
 	new_ask_filename = false;
@@ -800,6 +806,14 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				language_auto_end = lexrc.GetBool();
 			break;
+		case RC_LANGUAGE_GLOBAL_OPTIONS:
+			if (lexrc.next())
+				language_global_options = lexrc.GetBool();
+			break;
+		case RC_LANGUAGE_USE_BABEL:
+			if (lexrc.next())
+				language_use_babel = lexrc.GetBool();
+			break;
 		case RC_LANGUAGE_COMMAND_BEGIN:
 			if (lexrc.next())
 				language_command_begin = lexrc.GetString();
@@ -807,6 +821,10 @@ int LyXRC::read(string const & filename)
 		case RC_LANGUAGE_COMMAND_END:
 			if (lexrc.next())
 				language_command_end = lexrc.GetString();
+			break;
+		case RC_LANGUAGE_COMMAND_LOCAL:
+			if (lexrc.next())
+				language_command_local = lexrc.GetString();
 			break;
 		case RC_RTL_SUPPORT:
 			if (lexrc.next())
@@ -1413,6 +1431,19 @@ void LyXRC::output(ostream & os) const
 			os << "\\language_package \"" << language_package
 			   << "\"\n";
 		}
+	case RC_LANGUAGE_GLOBAL_OPTIONS:
+		if (language_global_options
+		    != system_lyxrc.language_global_options) {
+			os << "\\language_global_options \""
+			   << tostr(language_global_options)
+			   << "\"\n";
+		}
+	case RC_LANGUAGE_USE_BABEL:
+		if (language_use_babel != system_lyxrc.language_use_babel) {
+			os << "\\language_use_babel \""
+			   << tostr(language_use_babel)
+			   << "\"\n";
+		}
 	case RC_LANGUAGE_COMMAND_BEGIN:
 		if (language_command_begin
 		    != system_lyxrc.language_command_begin) {
@@ -1424,6 +1455,13 @@ void LyXRC::output(ostream & os) const
 		if (language_command_end
 		    != system_lyxrc.language_command_end) {
 			os << "\\language_command_end \"" << language_command_end
+			   << "\"\n";
+		}
+	case RC_LANGUAGE_COMMAND_LOCAL:
+		if (language_command_local
+		    != system_lyxrc.language_command_local) {
+			os << "\\language_command_local \""
+			   << language_command_local
 			   << "\"\n";
 		}
 	case RC_LANGUAGE_AUTO_BEGIN:
@@ -1815,6 +1853,14 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	case RC_LANGUAGE_PACKAGE:
 		str = N_("The latex command for loading the language package. E.g. \"\\usepackage{babel}\", \"\\usepackage{omega}\".");
 		break;
+
+	case RC_LANGUAGE_GLOBAL_OPTIONS:
+		str = N_("De-select if you don't want the language(s) used as an argument to \\documentclass.");
+		break;
+
+	case RC_LANGUAGE_USE_BABEL:
+		str = N_("De-select if you don't want babel to be used when the language of the document is the default language.");
+		break;
 		
 	case RC_LANGUAGE_AUTO_BEGIN:
 		str = N_("Select if a language switching command is needed at the beginning of the document.");
@@ -1831,7 +1877,11 @@ string const LyXRC::getDescription(LyXRCTags tag)
 	case RC_LANGUAGE_COMMAND_END:
 		str = N_("The latex command for changing back to the language of the document.");
 		break;
-		
+
+	case RC_LANGUAGE_COMMAND_LOCAL:
+		str = N_("The latex command for local changing of the language.");
+		break;
+
 	case RC_DATE_INSERT_FORMAT:
 		//xgettext:no-c-format
 		str = N_("This accepts the normal strftime formats; see man strftime for full details. E.g.\"%A, %e. %B %Y\".");

@@ -124,6 +124,8 @@ struct FD_form_language {
 	FL_OBJECT *input_kbmap2;
 	FL_OBJECT *button_kbmap1_browse;
 	FL_OBJECT *button_kbmap2_browse;
+	FL_OBJECT *check_use_babel;
+	FL_OBJECT *check_global_options;
 };
 struct FD_form_colors {
 	~FD_form_colors();

@@ -1184,7 +1184,7 @@ bool FormPreferences::Converters::Input()
 
 string const FormPreferences::Converters::GetFrom() const
 {
-	Formats::FormatList::size_type const i =
+	::Formats::FormatList::size_type const i =
 		fl_get_choice(dialog_->choice_from);
 
 	if (i > 0 && i <= local_formats.size())
@@ -1199,7 +1199,7 @@ string const FormPreferences::Converters::GetFrom() const
 
 string const FormPreferences::Converters::GetTo() const
 {
-	Formats::FormatList::size_type const i =
+	::Formats::FormatList::size_type const i =
 		fl_get_choice(dialog_->choice_from);
 
 	if (i > 0 && i <= local_formats.size())
@@ -1649,14 +1649,20 @@ void FormPreferences::Language::apply()
 	button = fl_get_button(dialog_->check_rtl_support);
 	lyxrc.rtl_support = static_cast<bool>(button);
 
+	button = fl_get_button(dialog_->check_mark_foreign);
+	lyxrc.mark_foreign_language = static_cast<bool>(button);
+
 	button = fl_get_button(dialog_->check_auto_begin);
 	lyxrc.language_auto_begin = static_cast<bool>(button);
 
 	button = fl_get_button(dialog_->check_auto_end);
 	lyxrc.language_auto_end = static_cast<bool>(button);
 
-	button = fl_get_button(dialog_->check_mark_foreign);
-	lyxrc.mark_foreign_language = static_cast<bool>(button);
+	button = fl_get_button(dialog_->check_use_babel);
+	lyxrc.language_use_babel = static_cast<bool>(button);
+
+	button = fl_get_button(dialog_->check_global_options);
+	lyxrc.language_global_options = static_cast<bool>(button);
 
 	lyxrc.language_package = fl_get_input(dialog_->input_package);
 	lyxrc.language_command_begin = fl_get_input(dialog_->input_command_begin);
@@ -1713,6 +1719,8 @@ void FormPreferences::Language::build()
 	setPreHandler(dialog_->check_mark_foreign);
 	setPreHandler(dialog_->check_auto_begin);
 	setPreHandler(dialog_->check_auto_end);
+	setPreHandler(dialog_->check_use_babel);
+	setPreHandler(dialog_->check_global_options);
 	setPreHandler(dialog_->input_command_begin);
 	setPreHandler(dialog_->input_command_end);
 
@@ -1737,12 +1745,16 @@ FormPreferences::Language::feedback(FL_OBJECT const * const ob) const
 		str = lyxrc.getDescription(LyXRC::RC_KBMAP_SECONDARY);
 	else if (ob == dialog_->check_rtl_support)
 		str = lyxrc.getDescription(LyXRC::RC_RTL_SUPPORT);
+	else if (ob == dialog_->check_mark_foreign)
+		str = lyxrc.getDescription(LyXRC::RC_MARK_FOREIGN_LANGUAGE);
 	else if (ob == dialog_->check_auto_begin)
 		str = lyxrc.getDescription(LyXRC::RC_LANGUAGE_AUTO_BEGIN);
 	else if (ob == dialog_->check_auto_end)
 		str = lyxrc.getDescription(LyXRC::RC_LANGUAGE_AUTO_END);
-	else if (ob == dialog_->check_mark_foreign)
-		str = lyxrc.getDescription(LyXRC::RC_MARK_FOREIGN_LANGUAGE);
+	else if (ob == dialog_->check_use_babel)
+		str = lyxrc.getDescription(LyXRC::RC_LANGUAGE_USE_BABEL);
+	else if (ob == dialog_->check_global_options)
+		str = lyxrc.getDescription(LyXRC::RC_LANGUAGE_GLOBAL_OPTIONS);
 	else if (ob == dialog_->input_package)
 		str = lyxrc.getDescription(LyXRC::RC_LANGUAGE_PACKAGE);
 	else if (ob == dialog_->input_command_begin)
@@ -1833,10 +1845,13 @@ void FormPreferences::Language::update()
 	}
 	
 	fl_set_button(dialog_->check_rtl_support, lyxrc.rtl_support);
-	fl_set_button(dialog_->check_auto_begin,  lyxrc.language_auto_begin);
-	fl_set_button(dialog_->check_auto_end,    lyxrc.language_auto_end);
 	fl_set_button(dialog_->check_mark_foreign,
 		      lyxrc.mark_foreign_language);
+	fl_set_button(dialog_->check_auto_begin, lyxrc.language_auto_begin);
+	fl_set_button(dialog_->check_auto_end, lyxrc.language_auto_end);
+	fl_set_button(dialog_->check_use_babel, lyxrc.language_use_babel);
+	fl_set_button(dialog_->check_global_options,
+		      lyxrc.language_global_options);
 
 	fl_set_input(dialog_->input_package,
 		     lyxrc.language_package.c_str());

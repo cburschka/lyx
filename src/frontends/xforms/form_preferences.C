@@ -406,7 +406,7 @@ FD_form_language * FormPreferences::build_language()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("RtL support|#R");
-    fdui->check_rtl_support = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 154, 161, 30, 30, idex(_(dummy)));
+    fdui->check_rtl_support = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 140, 161, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -414,7 +414,7 @@ FD_form_language * FormPreferences::build_language()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Mark foreign|#M");
-    fdui->check_mark_foreign = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 154, 187, 30, 30, idex(_(dummy)));
+    fdui->check_mark_foreign = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 140, 187, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -422,7 +422,7 @@ FD_form_language * FormPreferences::build_language()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Auto begin|#b");
-    fdui->check_auto_begin = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 362, 161, 30, 30, idex(_(dummy)));
+    fdui->check_auto_begin = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 265, 161, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -430,7 +430,7 @@ FD_form_language * FormPreferences::build_language()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Auto finish|#f");
-    fdui->check_auto_end = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 362, 187, 30, 30, idex(_(dummy)));
+    fdui->check_auto_end = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 265, 187, 30, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -467,6 +467,22 @@ FD_form_language * FormPreferences::build_language()
   fdui->button_kbmap1_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 341, 99, 90, 30, _("Browse"));
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fdui->button_kbmap2_browse = obj = fl_add_button(FL_NORMAL_BUTTON, 341, 128, 90, 30, _("Browse"));
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  {
+    char const * const dummy = N_("Use babel|#U");
+    fdui->check_use_babel = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 390, 161, 30, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  {
+    char const * const dummy = N_("Global|#G");
+    fdui->check_global_options = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 390, 187, 30, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_lalign(obj, FL_ALIGN_LEFT);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_form();
 

@@ -1,3 +1,13 @@
+2001-02-23  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* lyxrc.C: Add language_command_local, language_use_babel and
+ 	language_global_options.
+
+	* lyxfont.C (latexWriteStartChanges): Use language_command_local.
+
+	* buffer.C (makeLaTeXFile): Use language_use_babel and 
+	language_global_options.
+
 2001-02-23  Juergen Vigna  <jug@sad.it>
 
 	* lyxfunc.C (Dispatch): removed the whole part of the switch statement

@@ -105,6 +105,9 @@ enum LyXRCTags {
 	RC_LANGUAGE_AUTO_END,
 	RC_LANGUAGE_COMMAND_BEGIN,
 	RC_LANGUAGE_COMMAND_END,
+	RC_LANGUAGE_COMMAND_LOCAL,
+	RC_LANGUAGE_GLOBAL_OPTIONS,
+	RC_LANGUAGE_USE_BABEL,
 	RC_DATE_INSERT_FORMAT,
 	RC_SHOW_BANNER,
 	RC_WHEEL_JUMP,
@@ -301,6 +304,12 @@ enum LyXRCTags {
 	string language_command_begin;
 	///
 	string language_command_end;
+	///
+	string language_command_local;
+	///
+	bool language_global_options; 
+	///
+	bool language_use_babel;
 	///
 	bool rtl_support;
 	///

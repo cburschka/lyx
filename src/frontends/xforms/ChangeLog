@@ -1,3 +1,8 @@
+2001-02-23  Dekel Tsur  <dekelts@tau.ac.il>
+ 
+	* FormPreferences.C: Handle lyxrc.language_use_babel and
+	lyxrc.language_global_options.
+
 2001-02-23  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* FormPreferences(GetFrom, GetTo): use size_type rather than int.
