@@ -45,12 +45,16 @@ public:
 	};
 	///
 	Undo(undo_kind kind, int inset_id,
+	     int plist,
 	     int first, int last,
 	     int cursor, int cursor_pos,
 	     ParagraphList const & par_arg);
 
 	/// Which kind of operation are we recording for?
 	undo_kind kind;
+
+	/// to what paragraph list do we belong?
+	int plist;
 
 	/**
 	 * ID of hosting inset if the cursor is in one.

@@ -57,9 +57,16 @@ void recordUndo(BufferView * bv, Undo::undo_kind kind,
 	LyXText * text = inset ? inset->getLyXText(bv) : bv->text;
 	int const inset_id = inset ? inset->id() : -1;
 
-	// We simply record the entire outer paragraphs
+	// Try to find the appropriate list by counting the,
 	ParIterator null = buf->par_iterator_end();
 
+	int pcount = 0;
+	for (ParIterator it = buf->par_iterator_begin(); it != null; ++it, ++pcount)
+		if (&it.plist() == &plist)
+			break;
+	//lyxerr << "This is plist #" << pcount << ' ' << &plist << endl;
+		
+	// We simply record the entire outer paragraphs
 	// First, identify the outer paragraphs
 	for (ParIterator it = buf->par_iterator_begin(); it != null; ++it) {
 		if (it->id() == first->id())
@@ -93,11 +100,11 @@ void recordUndo(BufferView * bv, Undo::undo_kind kind,
 
 	// Make and push the Undo entry
 	stack.push(Undo(kind, inset_id,
+		pcount,
 		first_offset, last_offset,
 		cursor_offset, text->cursor.pos(),
 		ParagraphList()));
 
-	lyxerr << "G" << endl;
 	// Record the relevant paragraphs
 	ParagraphList & undo_pars = stack.top().pars;
 
@@ -118,6 +125,13 @@ bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 {
 	Buffer * buf = bv->buffer();
 	ParagraphList & plist = buf->paragraphs();
+
+	ParIterator null = buf->par_iterator_end();
+	ParIterator plit = buf->par_iterator_begin();
+	int n = undo.plist;
+	for ( ; n && plit != null; ++plit, --n)
+		;
+	//lyxerr << "undo: using plist #" << undo.plist << " " << &plit.plist() << endl;
 
 	// Remove new stuff between first and last
 	{
@@ -152,10 +166,10 @@ bool performUndoOrRedo(BufferView * bv, Undo const & undo)
 		LyXText * text = inset ? inset->getLyXText(bv) : bv->text;
 		text->setCursorIntern(undo.cursor_par_offset, undo.cursor_pos);
 
-		lyxerr << "undo, inset: " << inset << endl;
+		//lyxerr << "undo, inset: " << inset << endl;
 
 		if (inset) {
-			lyxerr << "undo, inset owner: " << inset->owner() << endl;
+			//lyxerr << "undo, inset owner: " << inset->owner() << endl;
 
 			// Magic needed to update inset internal state
 			FuncRequest cmd(bv, LFUN_INSET_EDIT, "left");
