@@ -415,7 +415,7 @@ namespace {
 string const findTargetFormat(string const & from)
 {
 	typedef GImage::FormatList FormatList;
-	FormatList const & formats = GImage::loadableFormats();
+	FormatList const formats = GImage::loadableFormats();
 
 	// There must be a format to load from.
 	lyx::Assert(!formats.empty());

@@ -1,3 +1,8 @@
+2002-04-08  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* GraphicsCacheItem.C (findTargetFormat): fix bug waiting to bite:
+	a reference to a temp object that's going out of scope...
+
 2002-04-09  Herbert Voss  <voss@lyx.org>
 
 	* GraphicsParams.C (BoundingBox c-tor): fix rounding errors by using
