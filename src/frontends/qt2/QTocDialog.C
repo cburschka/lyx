@@ -54,13 +54,13 @@ void QTocDialog::close_adaptor()
 }
 
 
-void QTocDialog::depth_adaptor(int depth)
+void QTocDialog::depth_adaptor(int /*depth*/)
 {
 	//form_->set_depth(depth);
 }
 
 
-void QTocDialog::select_adaptor(QListViewItem * item)
+void QTocDialog::select_adaptor(QListViewItem * /*item*/)
 {
 	//form_->select(item->text(0));
 }

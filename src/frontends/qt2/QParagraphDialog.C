@@ -218,12 +218,12 @@ void QParagraphDialog::setExtra(float widthval, LyXLength::UNIT units, const str
 LyXGlueLength QParagraphDialog::getAboveLength() const
 {
 	LyXGlueLength len(
-		spacingAboveValue->text().toFloat(),
-		getLyXLength( spacingAboveValueUnit->currentItem() ),
-		spacingAbovePlus->text().toFloat(),
-		getLyXLength( spacingAbovePlusUnit->currentItem() ),
-		spacingAboveMinus->text().toFloat(),
-		getLyXLength( spacingAboveMinusUnit->currentItem() )
+		LyXLength(spacingAboveValue->text().toFloat(),
+		getLyXLength(spacingAboveValueUnit->currentItem())),
+		LyXLength(spacingAbovePlus->text().toFloat(),
+		getLyXLength(spacingAbovePlusUnit->currentItem())),
+		LyXLength(spacingAboveMinus->text().toFloat(),
+		getLyXLength(spacingAboveMinusUnit->currentItem()))
 		);
 	return len;
 }
@@ -232,12 +232,12 @@ LyXGlueLength QParagraphDialog::getAboveLength() const
 LyXGlueLength QParagraphDialog::getBelowLength() const
 {
 	LyXGlueLength len(
-		spacingBelowValue->text().toFloat(),
-		getLyXLength( spacingBelowValueUnit->currentItem() ),
-		spacingBelowPlus->text().toFloat(),
-		getLyXLength( spacingBelowPlusUnit->currentItem() ),
-		spacingBelowMinus->text().toFloat(),
-		getLyXLength( spacingBelowMinusUnit->currentItem() )
+		LyXLength(spacingBelowValue->text().toFloat(),
+		getLyXLength(spacingBelowValueUnit->currentItem())),
+		LyXLength(spacingBelowPlus->text().toFloat(),
+		getLyXLength(spacingBelowPlusUnit->currentItem())),
+		LyXLength(spacingBelowMinus->text().toFloat(),
+		getLyXLength(spacingBelowMinusUnit->currentItem()))
 		);
 	return len;
 }

@@ -16,6 +16,7 @@
 #include "vspace.h"
 #include "paragraph.h"
 #include "layout.h"
+#include "lyxgluelength.h"
 
 
 class QParagraph;
@@ -32,9 +33,9 @@ public:
 	void setAlign(int);
 	void setChecks(bool, bool, bool, bool, bool);
 	void setSpace(VSpace::vspace_kind, VSpace::vspace_kind, bool, bool);
-	void setAboveLength(float, float, float, LyXGlueLength::UNIT, LyXGlueLength::UNIT, LyXGlueLength::UNIT);
-	void setBelowLength(float, float, float, LyXGlueLength::UNIT, LyXGlueLength::UNIT, LyXGlueLength::UNIT);
-	void setExtra(float, LyXGlueLength::UNIT, const string, int, bool, bool, Paragraph::PEXTRA_TYPE);
+	void setAboveLength(float, float, float, LyXLength::UNIT, LyXLength::UNIT, LyXLength::UNIT);
+	void setBelowLength(float, float, float, LyXLength::UNIT, LyXLength::UNIT, LyXLength::UNIT);
+	void setExtra(float, LyXLength::UNIT, const string, int, bool, bool, Paragraph::PEXTRA_TYPE);
 	LyXGlueLength getAboveLength() const;
 	LyXGlueLength getBelowLength() const;
 	LyXLength getExtraWidth() const;

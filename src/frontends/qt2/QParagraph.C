@@ -69,16 +69,16 @@ void QParagraph::update(bool switched)
 	if (params->spaceTop().kind() == VSpace::LENGTH) {
 		LyXGlueLength above = params->spaceTop().length();
 		lyxerr[Debug::GUI] << "Reading above space : \"" << params->spaceTop().length().asString() << "\"" << endl;
-		dialog_->setAboveLength(above.value(), above.plusValue(), above.minusValue(),
-			above.unit(), above.plusUnit(), above.minusUnit());
+		dialog_->setAboveLength(above.len().value(), above.plus().value(), above.minus().value(),
+			above.len().unit(), above.plus().unit(), above.minus().unit());
 	} else
 		dialog_->setAboveLength(0.0, 0.0, 0.0, LyXLength::UNIT_NONE, LyXLength::UNIT_NONE, LyXLength::UNIT_NONE);
 
 	if (params->spaceBottom().kind() == VSpace::LENGTH) {
 		LyXGlueLength below = params->spaceBottom().length();
 		lyxerr[Debug::GUI] << "Reading below space : \"" << params->spaceBottom().length().asString() << "\"" << endl;
-		dialog_->setBelowLength(below.value(), below.plusValue(), below.minusValue(),
-			below.unit(), below.plusUnit(), below.minusUnit());
+		dialog_->setBelowLength(below.len().value(), below.plus().value(), below.minus().value(),
+			below.len().unit(), below.plus().unit(), below.minus().unit());
 	} else
 		dialog_->setBelowLength(0.0, 0.0, 0.0, LyXLength::UNIT_NONE, LyXLength::UNIT_NONE, LyXLength::UNIT_NONE);
 
