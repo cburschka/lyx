@@ -322,10 +322,11 @@ void InsetCollapsable::insetButtonPress(BufferView * bv,
 }
 
 
-void InsetCollapsable::insetButtonRelease(BufferView * bv,
+bool InsetCollapsable::insetButtonRelease(BufferView * bv,
                                           int x, int y, int button)
 {
-	if ((x >= 0)  && (x < button_length) &&
+	bool ret = false;
+	if ((button != 3) && (x >= 0)  && (x < button_length) &&
 	    (y >= button_top_y) &&  (y <= button_bottom_y))
 	{
 		if (collapsed_) {
@@ -345,8 +346,12 @@ void InsetCollapsable::insetButtonRelease(BufferView * bv,
 		    (ascent_collapsed() +
 		     descent_collapsed() +
 		     inset.ascent(bv, font));
-		inset.insetButtonRelease(bv, x, yy, button);
+		ret = inset.insetButtonRelease(bv, x, yy, button);
 	}
+	if ((button == 3) && !ret) {
+		return showInsetDialog(bv);
+	}
+	return false;
 }
 
 

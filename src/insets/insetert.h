@@ -73,7 +73,7 @@ public:
 	///
 	void insetButtonPress(BufferView *, int x, int y, int button);
 	///
-	void insetButtonRelease(BufferView * bv, int x, int y, int button);
+	bool insetButtonRelease(BufferView * bv, int x, int y, int button);
 	///
 	void insetMotionNotify(BufferView *, int x, int y, int state);
 	///

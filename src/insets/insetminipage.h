@@ -81,8 +81,6 @@ public:
 	///
 	SigC::Signal0<void> hideDialog;
 	///
-	void insetButtonRelease(BufferView * bv, int x, int y, int button);
-	///
 	int getMaxWidth(BufferView *, UpdatableInset const *) const;
 	///
 	bool needFullRow() const { return false; }

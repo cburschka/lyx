@@ -995,34 +995,32 @@ void InsetText::insetButtonPress(BufferView * bv, int x, int y, int button)
 }
 
 
-void InsetText::insetButtonRelease(BufferView * bv, int x, int y, int button)
+bool InsetText::insetButtonRelease(BufferView * bv, int x, int y, int button)
 {
-	UpdatableInset * inset = 0;
-
 	if (the_locking_inset) {
-		the_locking_inset->insetButtonRelease(bv,
-						      x - inset_x, y - inset_y,
-						      button);
-	} else {
-		if (cpar(bv)->isInset(cpos(bv))) {
-			inset = static_cast<UpdatableInset*>(cpar(bv)->getInset(cpos(bv)));
-			if (isHighlyEditableInset(inset)) {
-				inset->insetButtonRelease(bv,
-							  x - inset_x,
-							  y - inset_y, button);
-			} else {
-				inset_x = cx(bv) - top_x + drawTextXOffset;
-				inset_y = cy(bv) + drawTextYOffset;
-				inset->insetButtonRelease(bv,
-							  x - inset_x,
-							  y - inset_y, button);
-				inset->edit(bv,
-					    x - inset_x, y - inset_y, button);
-			}
-			updateLocal(bv, CURSOR_PAR, false);
-		}
+		return the_locking_inset->insetButtonRelease(bv,
+		                                             x - inset_x, y - inset_y,
+		                                             button);
 	}
-	no_selection = false;
+	int tmp_x = x - drawTextXOffset;
+	int tmp_y = y + insetAscent - getLyXText(bv)->first;
+	Inset * inset = bv->checkInsetHit(getLyXText(bv), tmp_x, tmp_y, button);
+	bool ret = false;
+	if (inset) {
+		if (isHighlyEditableInset(inset)) {
+			ret = inset->insetButtonRelease(bv, x - inset_x,
+			                                y - inset_y, button);
+		} else {
+			inset_x = cx(bv) - top_x + drawTextXOffset;
+			inset_y = cy(bv) + drawTextYOffset;
+			ret = inset->insetButtonRelease(bv, x - inset_x,
+			                                y - inset_y, button);
+			inset->edit(bv, x - inset_x,
+			            y - inset_y, button);
+		}
+		updateLocal(bv, CURSOR_PAR, false);
+	}
+	return ret;
 }
 
 

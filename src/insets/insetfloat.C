@@ -271,26 +271,6 @@ bool InsetFloat::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetFloat::insetButtonRelease(BufferView * bv, int x, int y, int button)
-{
-#if 1
-	if ((x >= 0)  && (x < button_length) &&
-	    (y >= button_top_y) &&  (y <= button_bottom_y) &&
-	    (button == 3))
-	{
-		showInsetDialog(bv);
-		return;
-	}
-#else
-	if (button == 3) {
-		showInsetDialog(bv);
-		return;
-	}
-#endif
-	InsetCollapsable::insetButtonRelease(bv, x, y, button);
-}
-
-
 string const & InsetFloat::type() const 
 {
 	return floatType_;

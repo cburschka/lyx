@@ -89,7 +89,7 @@ public:
 	///
 	unsigned int insetInInsetY();
 	///
-	void insetButtonRelease(BufferView *, int, int, int);
+	bool insetButtonRelease(BufferView *, int, int, int);
 	///
 	void insetButtonPress(BufferView *, int, int, int);
 	///

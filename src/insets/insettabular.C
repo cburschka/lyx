@@ -745,6 +745,7 @@ void InsetTabular::insetButtonPress(BufferView * bv, int x, int y, int button)
 	if (actrow != orow)
 		updateLocal(bv, NONE, false);
 	clearSelection();
+#if 0
 	if (button == 3) {
 		if ((ocell != actcell) && the_locking_inset) {
 			the_locking_inset->insetUnlock(bv);
@@ -753,6 +754,7 @@ void InsetTabular::insetButtonPress(BufferView * bv, int x, int y, int button)
 		showInsetCursor(bv);
 		return;
 	}
+#endif
 
 	bool const inset_hit = insetHit(bv, x, y);
 
@@ -782,26 +784,17 @@ void InsetTabular::insetButtonPress(BufferView * bv, int x, int y, int button)
 }
 
 
-void InsetTabular::insetButtonRelease(BufferView * bv,
-				      int x, int y, int button)
+bool InsetTabular::insetButtonRelease(BufferView * bv,
+                                      int x, int y, int button)
 {
-	if (button == 3) {
-		if (the_locking_inset) {
-			UpdatableInset * i;
-			if ((i = the_locking_inset->getFirstLockingInsetOfType(TABULAR_CODE))) {
-				i->insetButtonRelease(bv, x, y, button);
-				return;
-			}
-		}
+	bool ret = false;
+	if (the_locking_inset)
+		ret = the_locking_inset->insetButtonRelease(bv, x, y, button);
+	if (button == 3 && !ret) {
 		bv->owner()->getDialogs()->showTabular(this);
-		return;
+		return true;
 	}
-	if (the_locking_inset) {
-		the_locking_inset->insetButtonRelease(bv,
-						      x - inset_x, y - inset_y,
-						      button);
-		return;
-	}
+	return ret;
 }
 
 

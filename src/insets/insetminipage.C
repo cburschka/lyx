@@ -324,17 +324,6 @@ bool InsetMinipage::showInsetDialog(BufferView * bv) const
 }
 
 
-void InsetMinipage::insetButtonRelease(BufferView * bv, int x, int y,
-                                       int button)
-{
-	if (button == 3) {
-		showInsetDialog(bv);
-		return;
-	}
-	InsetCollapsable::insetButtonRelease(bv, x, y, button);
-}
-
-
 int InsetMinipage::getMaxWidth(BufferView * bv, UpdatableInset const * inset)
 	const
 {

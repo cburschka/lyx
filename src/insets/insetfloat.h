@@ -51,8 +51,6 @@ public:
 	///
 	bool insetAllowed(Inset::Code) const;
 	///
-	void insetButtonRelease(BufferView * bv, int x, int y, int button);
-	///
 	string const & type() const;
 	///
 	void placement(string const & p);

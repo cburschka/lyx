@@ -122,7 +122,7 @@ public:
 	///
 	bool updateInsetInInset(BufferView *, Inset *);
 	///
-	void insetButtonRelease(BufferView *, int, int, int);
+	bool insetButtonRelease(BufferView *, int, int, int);
 	///
 	void insetButtonPress(BufferView *, int, int, int);
 	///

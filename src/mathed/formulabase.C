@@ -252,15 +252,16 @@ void InsetFormulaBase::updateLocal(BufferView * bv, bool dirty)
 }
 
 
-void InsetFormulaBase::insetButtonRelease(BufferView * bv,
-					  int /*x*/, int /*y*/, int /*button*/)
+bool InsetFormulaBase::insetButtonRelease(BufferView * bv,
+                                          int /*x*/, int /*y*/, int /*button*/)
 {
 	if (!mathcursor)
-		return;
+		return false;
 	//lyxerr << "insetButtonRelease: " << x << " " << y << "\n";
 	hideInsetCursor(bv);
 	showInsetCursor(bv);
 	bv->updateInset(this, false);
+	return false;
 }
 
 

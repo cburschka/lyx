@@ -80,7 +80,7 @@ public:
 	///
 	virtual void insetButtonPress(BufferView *, int x, int y, int button);
 	///
-	virtual void insetButtonRelease(BufferView *, int x, int y, int button);
+	virtual bool insetButtonRelease(BufferView *, int x, int y, int button);
 	///
 	virtual void insetKeyPress(XKeyEvent * ev);
 	///

@@ -126,6 +126,7 @@ void InsetERT::read(Buffer const * buf, LyXLex & lex)
 			lex.pushToken(token);
 		}
 	}
+#if 0
 #warning this should be really short lived only for compatibility to
 #warning files written 07/08/2001 so this has to go before 1.2.0! (Jug)
 	if (lex.isOK()) {
@@ -139,6 +140,7 @@ void InsetERT::read(Buffer const * buf, LyXLex & lex)
 			lex.pushToken(token);
 		}
 	}
+#endif
 	inset.read(buf, lex);
 
 #ifndef INHERIT_LANG
@@ -299,11 +301,11 @@ void InsetERT::insetButtonPress(BufferView * bv,
 }
 
 
-void InsetERT::insetButtonRelease(BufferView * bv, int x, int y, int button)
+bool InsetERT::insetButtonRelease(BufferView * bv, int x, int y, int button)
 {
 	if (button == 3) {
 		showInsetDialog(bv);
-		return;
+		return true;
 	}
  
 	if (status_ != Inlined && (x >= 0)  && (x < button_length) &&
@@ -322,6 +324,7 @@ void InsetERT::insetButtonRelease(BufferView * bv, int x, int y, int button)
 			inset.insetButtonRelease(bv, x, yy, button);
 		}
 	}
+	return false;
 }
 
 

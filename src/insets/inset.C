@@ -164,10 +164,11 @@ void UpdatableInset::insetButtonPress(BufferView *, int x, int y, int button)
 }
 
 
-void UpdatableInset::insetButtonRelease(BufferView *, int x, int y, int button)
+bool UpdatableInset::insetButtonRelease(BufferView *, int x, int y, int button)
 {
 	lyxerr[Debug::INFO] << "Inset Button Release x=" << x
 		       << ", y=" << y << ", button=" << button << endl;
+	return false;
 }
 
 

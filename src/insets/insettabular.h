@@ -131,7 +131,7 @@ public:
 	///
 	bool display() const { return tabular->IsLongTabular(); }
 	///
-	void insetButtonRelease(BufferView *, int, int, int);
+	bool insetButtonRelease(BufferView *, int, int, int);
 	///
 	void insetButtonPress(BufferView *, int, int, int);
 	///
