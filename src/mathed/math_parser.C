@@ -424,6 +424,7 @@ void Parser::tokenize(string const & buffer)
 void Parser::error(string const & msg) 
 {
 	lyxerr << "Line ~" << lineno_ << ": Math parse error: " << msg << endl;
+	//exit(1);
 }
 
 
@@ -652,7 +653,7 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		}
 
 		if (flags & FLAG_BLOCK) {
-			if (t.cat() == catAlign || t.cs() == "\\")
+			if (t.cat() == catAlign || t.cs() == "\\" || t.cs() == "right")
 				return;
 			if (t.cs() == "end") {
 				getArg('{', '}');
@@ -767,8 +768,10 @@ void Parser::parse_into(MathArray & array, unsigned flags, MathTextCodes code)
 		}
 		
 		else if (t.cs() == "right") {
-			if (!(flags & FLAG_RIGHT))
+			if (!(flags & FLAG_RIGHT)) {
+				lyxerr << "got so far: '" << array << "'\n";
 				error("Unmatched right delimiter");
+			}
 			return;
 		}
 
