@@ -1,3 +1,8 @@
+2002-05-29  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxserver.C (callback): fix of lyxserver for gbib. Does not use
+	lyxaction directly now.
+
 2002-05-30  John Levon  <moz@compsoc.man.ac.uk>
 
 	* lyx_main.C:

@@ -1,5 +1,5 @@
-#LyX 1.1 created this file. For more info see http://www.lyx.org/
-\lyxformat 2.16
+#LyX 1.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 220
 \textclass IEEEtran
 \language english
 \inputencoding default
@@ -12,6 +12,8 @@
 \paperpackage a4
 \use_geometry 0
 \use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
 \paperorientation portrait
 \secnumdepth 3
 \tocdepth 3
@@ -29,17 +31,28 @@ Your Title: And maybe a bit extra
 \layout Author
 
 
-\begin_inset Info Remember that initial submissions don't show the authors
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Remember that initial submissions don't show the authors
+\layout Standard
+
 names so you'll need to make this a 'Comment'.
 \end_inset 
 
 Your Name, Your Co-Author
-\begin_float footnote 
+\begin_inset Foot
+collapsed true
+
 \layout Standard
 
 Your name is with xyz Department\SpecialChar \ldots{}
 
-\end_float 
+\end_inset 
+
+
 \layout Abstract
 
 This paper presents a simple template for IEEEtran documents.
@@ -50,18 +63,34 @@ simplicity, beauty, elegance
 \layout MarkBoth
 
 This is for left pages
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }{
-\latex default 
+\end_inset 
+
 and this is for right pages
 \layout Section
 
 Introduction
-\begin_inset Info Don't panic the section numbering may look different in
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Don't panic the section numbering may look different in
+\layout Standard
+
 LyX but LaTeX uses the correct Roman numerals and
+\layout Standard
+
 Alpha for section counters.
+\layout Standard
 
 It's just that LyX doesn't handle counters other than arabic
+\layout Standard
+
 numerals.
 \end_inset 
 
@@ -69,11 +98,15 @@ numerals.
 \layout Standard
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 
 \backslash 
 PARstart{T}{here}
-\latex default 
+\end_inset 
+
  is a need for a little Evil Red Text in the first paragraph.
  Refer to the IEEEtran documentation (sample document) for more details.
 \layout Section
@@ -88,13 +121,21 @@ Methodology
 \layout Theorem
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 [
-\latex default 
+\end_inset 
+
 Theorem name
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 ]
-\latex default 
+\end_inset 
+
  For a named theorem or theorem-like environment you need to use a little
  evil red text (LaTeX mode) around the name.
 \layout Lemma
@@ -108,7 +149,12 @@ And here's the proof!
 Results
 \layout Standard
 
-\begin_float fig 
+
+\begin_inset Float figure
+placement htbp
+wide false
+collapsed false
+
 \layout Standard
 \align center 
 
@@ -121,8 +167,14 @@ Captions go
 under
 \emph default 
  the figure
-\end_float 
-\begin_float tab 
+\end_inset 
+
+
+\begin_inset Float table
+placement htbp
+wide false
+collapsed false
+
 \layout Caption
 
 Table captions go 
@@ -131,38 +183,84 @@ above
 \emph default 
  the table
 \layout Standard
-\align center \LyXTable
-multicol5
-2 2 0 0 -1 -1 -1 -1
-1 1 0 0
-1 1 0 0
-8 1 0 "" ""
-8 1 1 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
-0 8 1 0 0 0 0 "" ""
+\align center 
+
+\begin_inset  Tabular
+<lyxtabular version="3" rows="2" columns="2">
+<features>
+<column alignment="center" valignment="top" leftline="true" width="0pt">
+<column alignment="center" valignment="top" leftline="true" rightline="true" width="0pt">
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
 
 delete
-\newline 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 this
-\newline 
+\end_inset 
+</cell>
+</row>
+<row topline="true" bottomline="true">
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 example
-\newline 
+\end_inset 
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\layout Standard
+
 table
-\end_float 
+\end_inset 
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset 
+
+
+\end_inset 
+
+
 \layout Section
 
 Conclusions
 \layout Comment
 
 
-\begin_inset Info Change this paragraphs style to 'Standard' to enable
+\begin_inset Note
+collapsed true
+
+\layout Standard
+
+Change this paragraphs style to 'Standard' to enable
+\layout Standard
+
 BibTeX bibliography generation.
+\layout Standard
 
 Remember though that your final submission is supposed to have
-all the bibliography entries embedded in the latex file.  This means
+\layout Standard
+
+all the bibliography entries embedded in the latex file.
+ This means
+\layout Standard
+
 you eventually have to copy the .bbl file into the latex file and
+\layout Standard
+
 remove the bibtex lines.
 \end_inset 
 
@@ -175,31 +273,54 @@ remove the bibtex lines.
 \layout Biography
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 {
-\latex default 
+\end_inset 
+
 Your Name
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 }
-\latex default 
+\end_inset 
+
  All about you and the what your interests are.
  Don't forget to put your name in between a pair of {}'s that are set as
  raw TeX.
-\layout LaTeX
+\layout Standard
 
-% This LaTeX comment is needed to force LyX to generate two separate environment
-s
+
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
+% This LaTeX comment is needed to force LyX to generate two separate environments
 \newline 
+
+\end_inset 
+
 
 \layout Biography
 
 
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 {
-\latex default 
+\end_inset 
+
 Coauthor
-\latex latex 
+\begin_inset ERT
+status Collapsed
+
+\layout Standard
 } 
-\latex default 
+\end_inset 
+
 Same again for the co-author.
 \the_end

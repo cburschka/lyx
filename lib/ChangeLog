@@ -1,3 +1,10 @@
+2002-05-30  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* templates/IEEEtran.lyx: update to 1.2.0 format by Michael
+	Schmitt 
+
+	* reLyX/reLyX.in: honor variable LYX_DIR_12x, and not LYX_DIR_11x.
+
 2002-05-29  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* configure.m4: fix handling of --with-version-suffix, so that

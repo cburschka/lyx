@@ -1,3 +1,8 @@
+2002-05-10  Herbert Voss  <voss@perce.de>
+
+	* FormInclude.C (input, update): disable load-button when 
+	"use verbatim" is enabled
+
 2002-05-28  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* FormDocument.C (input): set preamble too when saving default
