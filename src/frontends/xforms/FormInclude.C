@@ -140,11 +140,13 @@ ButtonPolicy::SMInput FormInclude::input(FL_OBJECT * ob, long)
 
 	} else if (ob == dialog_->radio_verbatim) {
 		setEnabled(dialog_->check_visiblespace, true);
+		setEnabled(dialog_->button_load, false);
 
 	} else if (ob == dialog_->radio_useinclude ||
 		   ob == dialog_->radio_useinput) {
 		fl_set_button(dialog_->check_visiblespace, 0);
 		setEnabled(dialog_->check_visiblespace, false);
+		setEnabled(dialog_->button_load, true);
 
 	} else if (ob == dialog_->input_filename) {
 		string const in_name = fl_get_input(dialog_->input_filename);
