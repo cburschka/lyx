@@ -17,8 +17,6 @@
 #include "ExternalTemplate.h"
 #include "LString.h"
 
-#include <boost/signals/signal0.hpp>
-
 ///
 class InsetExternal : public InsetButton {
 public:
@@ -39,6 +37,8 @@ public:
 	InsetExternal();
 	///
 	virtual ~InsetExternal();
+	///
+	virtual dispatch_result localDispatch(FuncRequest const & cmd);	
 	/// what appears in the minibuffer when opening
 	virtual string const editMessage() const;
 	///
@@ -97,10 +97,10 @@ public:
 	void viewExternal() const;
 
 	/// return a copy of our current params
-	Params params() const;
+	Params const & params() const;
 
-	/// hide connection
-	boost::signal0<void> hideDialog;
+	///
+	void setView(BufferView * bv) { view_ = bv; }
 
 private:
 	/// Write the output for a specific file format
@@ -127,5 +127,29 @@ private:
 bool operator==(InsetExternal::Params const &, InsetExternal::Params const &);
 ///
 bool operator!=(InsetExternal::Params const &, InsetExternal::Params const &);
+
+#include "mailinset.h"
+
+class InsetExternalMailer : public MailInset {
+public:
+	///
+	InsetExternalMailer(InsetExternal & inset);
+	///
+	virtual Inset & inset() const { return inset_; }
+	///
+	virtual string const & name() const { return name_; }
+	///
+	virtual string const inset2string() const;
+	///
+	static void string2params(string const &, InsetExternal::Params &);
+	///
+	static string const params2string(string const & name,
+					  InsetExternal::Params const &);
+private:
+	///
+	string const name_;
+	///
+	InsetExternal & inset_;
+};
 
 #endif
