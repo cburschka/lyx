@@ -92,8 +92,10 @@ bool CutAndPaste::cutSelection(Paragraph * startpar, Paragraph ** endpar,
 	
 	if (!(*endpar) || startpar == (*endpar)) {
 		// only within one paragraph
-		if (realcut)
+		if (realcut) {
 			buf = new Paragraph;
+			buf->layout(startpar->layout());
+		}
 		pos_type i = start;
 		if (end > startpar->size())
 			end = startpar->size();
