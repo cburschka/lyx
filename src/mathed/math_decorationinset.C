@@ -9,8 +9,7 @@
 #include "math_parser.h"
 #include "math_mathmlstream.h"
 #include "math_streamstr.h"
-
-#include <ostream>
+#include "support/LOstream.h"
 
 
 MathDecorationInset::MathDecorationInset(string const & name)
