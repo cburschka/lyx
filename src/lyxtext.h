@@ -606,8 +606,9 @@ private:
 	 */
 
 
-	/// get the next breakpoint in a given paragraph
-	lyx::pos_type nextBreakPoint(BufferView &, Row const & row) const;
+	/// return the pos value *before* which a row should break.
+	/// for example, the pos at which IsNewLine(pos) == true
+	lyx::pos_type rowBreakPoint(BufferView &, Row const & row) const;
 
 	/// returns the minimum space a row needs on the screen in pixel
 	int fill(BufferView &, Row & row, int workwidth) const;
