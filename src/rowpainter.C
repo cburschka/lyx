@@ -1007,8 +1007,7 @@ void RowPainter::paintText()
 
 void RowPainter::paint()
 {
-	width_ = text_.isInInset()
-		? text_.inset_owner->textWidth(perv(bv_), true) : bv_.workWidth();
+	width_ = text_.workWidth();
 
 	// FIXME: must be a cleaner way here. Aren't these calculations
 	// belonging to row metrics ?

@@ -144,11 +144,7 @@ void LyXText::anchor_row(RowList::iterator rit)
 
 int LyXText::workWidth() const
 {
-	if (inset_owner) {
-		// FIXME: pass (const ?) ref
-		return inset_owner->textWidth(bv());
-	}
-	return bv()->workWidth();
+	return inset_owner ? inset_owner->textWidth() : bv()->workWidth();
 }
 
 

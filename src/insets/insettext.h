@@ -88,7 +88,7 @@ public:
 	///
 	void metrics(MetricsInfo &, Dimension &) const;
 	///
-	int textWidth(BufferView *, bool fordraw = false) const;
+	int textWidth() const;
 	///
 	void draw(PainterInfo & pi, int x, int y) const;
 	///

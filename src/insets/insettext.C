@@ -285,28 +285,14 @@ void InsetText::metrics(MetricsInfo & mi, Dimension & dim) const
 	text_.rebuild(mi.base.textwidth);
 	dim.asc = text_.rows().begin()->ascent_of_text() + TEXT_TO_INSET_OFFSET;
 	dim.des = text_.height - dim.asc + TEXT_TO_INSET_OFFSET;
-	dim.wid = max(textWidth(bv), int(text_.width)) + 2 * TEXT_TO_INSET_OFFSET;
+	dim.wid = max(textwidth_, int(text_.width)) + 2 * TEXT_TO_INSET_OFFSET;
 	dim.wid = max(dim.wid, 10);
 	dim_ = dim;
 }
 
 
-int InsetText::textWidth(BufferView * bv, bool fordraw) const
+int InsetText::textWidth() const
 {
-/*
-	int w = autoBreakRows ? getMaxWidth(bv, this) : -1;
-
-	if (fordraw)
-		return max(w - 2 * TEXT_TO_INSET_OFFSET,
-			   (int)getLyXText(bv)->width);
-
-	if (w < 0)
-		return -1;
-
-	return w - 2 * TEXT_TO_INSET_OFFSET;
-	lyxerr << "InsetText::textWidth: " << getInsetName()
-		<< " " << textwidth_ << endl;
-*/
 	return textwidth_;
 }
 
