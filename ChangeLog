@@ -1,3 +1,10 @@
+2001-07-06  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* lib/layouts/IEEEtran.layout: Add qed box at the end of proof.
+
+	* lib/templates/IEEEtran.lyx: Use footnote instead of ERT in the
+	  author paragraph.
+
 2001-07-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/kbsequence.C (getiso): handle latin[23489] characters.
