@@ -31,6 +31,8 @@ What's new
 
 ** Bug fixes
 
+- fix loading of symbol fonts when using Qt 3.2
+
 - fix possible crash when changing text class [bug #1050]
 
 - fix math bug where formulas containing for example a \prettyref
