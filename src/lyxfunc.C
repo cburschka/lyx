@@ -104,7 +104,6 @@ using std::find_if;
 
 extern BufferList bufferlist;
 extern LyXServer * lyxserver;
-extern int greek_kb_flag;
 extern bool selection_possible;
 extern void MenuSendto();
 
