@@ -24,6 +24,7 @@ class InsetError;
 class InsetERT;
 class InsetExternal;
 class InsetFloat;
+class InsetWrap;
 class InsetGraphics;
 class InsetInclude;
 class InsetMinipage;
@@ -45,6 +46,7 @@ extern "C" {
 	void gui_ShowExternal(InsetExternal *, Dialogs &);
 	void gui_ShowFile(string const &, Dialogs &);
 	void gui_ShowFloat(InsetFloat *, Dialogs &);
+	void gui_ShowWrap(InsetWrap *, Dialogs &);
 	void gui_ShowForks(Dialogs &);
 	void gui_ShowGraphics(InsetGraphics *, Dialogs &);
 	void gui_ShowInclude(InsetInclude *, Dialogs &);

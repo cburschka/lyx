@@ -30,6 +30,7 @@ class InsetError;
 class InsetERT;
 class InsetExternal;
 class InsetFloat;
+class InsetWrap;
 class InsetGraphics;
 class InsetInclude;
 class InsetInfo;
@@ -109,6 +110,8 @@ public:
 	void showFile(string const &);
 	///
 	void showFloat(InsetFloat *);
+	///
+	void showWrap(InsetWrap *);
 	/// show all forked child processes
 	void showForks();
 	///

@@ -169,6 +169,10 @@
 #include "ControlVCLog.h"
 #include "FormVCLog.h"
 
+#include "ControlWrap.h"
+#include "FormWrap.h"
+#include "forms/form_wrap.h"
+
 
 typedef GUI<ControlAboutlyx, FormAboutlyx, OkCancelPolicy, xformsBC>
 AboutlyxDialog;
@@ -267,6 +271,9 @@ UrlDialog;
 typedef GUI<ControlVCLog, FormVCLog, OkCancelPolicy, xformsBC>
 VCLogFileDialog;
 
+typedef GUI<ControlWrap, FormWrap, NoRepeatedApplyReadOnlyPolicy, xformsBC>
+WrapDialog;
+
 struct Dialogs::Impl {
 	Impl(LyXView & lv, Dialogs & d);
 
@@ -307,6 +314,7 @@ struct Dialogs::Impl {
 	TocDialog           toc;
 	UrlDialog           url;
 	VCLogFileDialog     vclogfile;
+	WrapDialog          wrap;
 };
 
 #endif // DIALOGS_IMPL_H

@@ -39,6 +39,7 @@
 #include "insets/insetspecialchar.h"
 #include "insets/insettext.h"
 #include "insets/insetfloat.h"
+#include "insets/insetwrap.h"
 
 #include "support/LAssert.h"
 #include "support/textutils.h"
@@ -1315,7 +1316,8 @@ void LyXText::setCounter(Buffer const * buf, Paragraph * par) const
 			while (tmppar && tmppar->inInset()
 			       // the single '=' is intended below
 			       && (in = tmppar->inInset()->owner())) {
-				if (in->lyxCode() == Inset::FLOAT_CODE) {
+				if (in->lyxCode() == Inset::FLOAT_CODE ||
+				    in->lyxCode() == Inset::WRAP_CODE) {
 					isOK = true;
 					break;
 				} else {

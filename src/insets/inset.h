@@ -93,6 +93,8 @@ public:
 		///
 		FLOAT_CODE,
 		///
+		WRAP_CODE,
+		///
 		MINIPAGE_CODE,
 		///
 		SPECIALCHAR_CODE, // 25

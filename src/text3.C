@@ -1577,6 +1577,7 @@ Inset::RESULT LyXText::dispatch(FuncRequest const & cmd)
 	case LFUN_INSET_MINIPAGE:
 	case LFUN_INSET_OPTARG:
 	case LFUN_INSET_WIDE_FLOAT:
+	case LFUN_INSET_WRAP:
 	case LFUN_TABULAR_INSERT:
 	case LFUN_INDEX_INSERT:
 	case LFUN_INDEX_PRINT: 

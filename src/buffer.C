@@ -75,6 +75,7 @@
 #include "insets/insetoptarg.h"
 #include "insets/insetminipage.h"
 #include "insets/insetfloat.h"
+#include "insets/insetwrap.h"
 #include "insets/insettabular.h"
 #if 0
 #include "insets/insettheorem.h"
@@ -1116,6 +1117,10 @@ void Buffer::readInset(LyXLex & lex, Paragraph *& par,
 			lex.next();
 			string tmptok = lex.getString();
 			inset = new InsetFloat(params, tmptok);
+		} else if (tmptok == "Wrap") {
+			lex.next();
+			string tmptok = lex.getString();
+			inset = new InsetWrap(params, tmptok);
 #if 0
 		} else if (tmptok == "List") {
 			inset = new InsetList;

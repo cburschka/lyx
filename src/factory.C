@@ -23,6 +23,7 @@
 #include "insets/insettext.h"
 #include "insets/insettoc.h"
 #include "insets/inseturl.h"
+#include "insets/insetwrap.h"
 #include "frontends/Dialogs.h"
 #include "frontends/LyXView.h"
 
@@ -72,6 +73,12 @@ Inset * createInset(FuncRequest const & cmd)
 				p->wide(true, params);
 			}
 			lyxerr << "Non-existent float type: " << cmd.argument << endl;
+			return 0;
+
+		case LFUN_INSET_WRAP:
+			if (cmd.argument == "figure")
+				return new InsetWrap(params, cmd.argument);
+			lyxerr << "Non-existent floatflt type: " << cmd.argument << endl;
 			return 0;
 
 		case LFUN_INDEX_INSERT: {
