@@ -1581,6 +1581,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 		// if values really changed...but not very important right now. (Lgb)
 		// All visible buffers will need resize
 		owner->view()->resize();
+		owner->view()->repaint();
 		// We also need to empty the textcache so that
 		// the buffer will be formatted correctly after
 		// a zoom change.
