@@ -13,8 +13,8 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>287</width>
-            <height>185</height>
+            <width>353</width>
+            <height>266</height>
         </rect>
     </property>
     <property stdset="1">
@@ -412,6 +412,12 @@
         <receiver>QIncludeDialogBase</receiver>
         <slot>typeChanged(int)</slot>
     </connection>
+    <connection>
+        <sender>previewCB</sender>
+        <signal>toggled(bool)</signal>
+        <receiver>QIncludeDialogBase</receiver>
+        <slot>change_adaptor()</slot>
+    </connection>
     <slot access="public">browseClicked()</slot>
     <slot access="public">change_adaptor()</slot>
     <slot access="public">loadClicked()</slot>
@@ -421,8 +427,9 @@
     <tabstop>filenameED</tabstop>
     <tabstop>browsePB</tabstop>
     <tabstop>typeCO</tabstop>
-    <tabstop>visiblespaceCB</tabstop>
     <tabstop>loadPB</tabstop>
+    <tabstop>visiblespaceCB</tabstop>
+    <tabstop>previewCB</tabstop>
     <tabstop>okPB</tabstop>
     <tabstop>closePB</tabstop>
 </tabstops>

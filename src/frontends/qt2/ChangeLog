@@ -1,5 +1,10 @@
 2003-04-07  John Levon  <levon@movementarian.org>
 
+	* ui/QIncludeDialogBase.ui: make "Show preview"
+	call change_adaptor()
+
+2003-04-07  John Levon  <levon@movementarian.org>
+
 	* QtView.h:
 	* QtView.C: implement clearMessage()
 
