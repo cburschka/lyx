@@ -18,7 +18,7 @@ EXTRA_DIST = ANNOUNCE INSTALL.OS2 INSTALL.autoconf README.OS2 \
 man_MANS = lyx.1
 
 ## Needed by bindist
-bindistdir=lyxbin
+bindistdir=$(PWD)/lyxbin
 bindistfile=$(PACKAGE)-$(VERSION)-bin.tar.gz
 
 lyx.1:
@@ -42,6 +42,28 @@ bindist:
 	$(MAKE) $(AM_MAKEFLAGS) install-strip prefix=`pwd`/$(bindistdir)
 	(cd $(bindistdir) ; tar cf - .) | gzip >$(bindistfile)
 	rm -rf $(bindistdir)
+	@if test -f README.bin ; then \
+	  echo "*** Did you remember to check the contents of README.bin?" ; \
+	else \
+	  echo "*** WARNING: You did not provide a README.bin file." ; \
+	  echo "*** Please make one now from the example file" ; \
+	  echo "***   development/tools/README.bin.example" ; \
+	fi
+	@echo "*** It should mention any problem concerning your binary"
+	@echo "*** distribution and refer to *you* in case of problem."
+	@echo "*** $(bindistfile) has been created."
+
+
+newbindist:
+	rm -f $(bindistfile)
+	$(MAKE) $(AM_MAKEFLAGS) DESTDIR=$(bindistdir) install-strip
+	if test -f $(top_srcdir)/README.bin ; then \
+	  $(INSTALL) $(top_srcdir)/README.bin \
+		$(bindistdir)$(prefix)/README.bin ; \
+	fi
+	(cd $(bindistdir)$(prefix) ; $(AMTAR) cf - . ) | \
+	GZIP=$(GZIP_ENV) gzip > $(bindistfile)
+	-chmod -R a+w $(bindistdir) > /dev/null 2>&1 ; rm -rf $(bindistdir)
 	@if test -f README.bin ; then \
 	  echo "*** Did you remember to check the contents of README.bin?" ; \
 	else \
