@@ -15,9 +15,6 @@
 
 #include <config.h>
 
-#include <cctype>
-#include <cstdlib>
-
 #ifdef __GNUG__
 #pragma implementation "formula.h"
 #endif
@@ -829,9 +826,14 @@ InsetFormula::LocalDispatch(BufferView * bv,
     case LFUN_SETXY:
       {
 	 int x, y, x1, y1;
-         sscanf(arg.c_str(), "%d %d", &x, &y);
+#ifdef HAVE_SSTREAM
+	 istringstream ist(arg.c_str());
+#else
+	 istrstream ist(arg.c_str());
+#endif
+	 ist >> x >> y;
 	 par->GetXY(x1, y1);
-	 mathcursor->SetPos(x1+x, y1+y);
+	 mathcursor->SetPos(x1 + x, y1 + y);
       }
       break;
 

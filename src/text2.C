@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-#include <cctype>
 #include FORMS_H_LOCATION
 
 
@@ -925,7 +924,7 @@ void LyXText::SetSelection()
 		sel_end_cursor = sel_cursor;
 	}
    
-	selection = True;
+	selection = true;
    
 	// first the toggling area
 	if (cursor.y < last_sel_cursor.y ||
@@ -1349,17 +1348,14 @@ void LyXText::SetParagraphExtraOpt(int type,
 
 
 static
-char const * alphaCounter(int n) {
-	static char result[2];
-	result[1] = 0;
-	if (n == 0)
-		return "";
-	else {
-		result[0] = 'A' + n;
+string alphaCounter(int n) {
+	if (n != 0) {
 		if (n > 'Z')
 			return "??";
+		char result[2] = { 'A' + n - 1, 0 };
+		return result;
 	}
-	return result;
+	return "";
 }
 
 
@@ -1485,8 +1481,6 @@ void LyXText::SetCounter(LyXParagraph * par) const
 		if (i >= 0 && i<= parameters->secnumdepth) {
 			par->incCounter(i);	// increment the counter  
 	 
-			char * s = new char[50];
-
 			// Is there a label? Useful for Chapter layout
 			if (!par->appendix){
 				if (!layout.labelstring().empty())
@@ -1499,103 +1493,114 @@ void LyXText::SetCounter(LyXParagraph * par) const
 				else
 					par->labelstring.clear();
 			}
- 
-			if (!par->appendix){
+
+#ifdef HAVE_SSTREAM
+			ostringstream s;
+#else
+			ostrstream s;
+#endif
+			if (!par->appendix) {
 				switch (2 * LABEL_FIRST_COUNTER -
 					textclass.maxcounter() + i) {
 				case LABEL_COUNTER_CHAPTER:
-					sprintf(s, "%d",
-						par->getCounter(i));
+					s << par->getCounter(i);
 					break;
 				case LABEL_COUNTER_SECTION:
-					sprintf(s, "%d.%d",
-						par->getCounter(i - 1),
-						par->getCounter(i));
+					s << par->getCounter(i - 1) << '.'
+					   << par->getCounter(i);
 					break;
 				case LABEL_COUNTER_SUBSECTION:
-					sprintf(s, "%d.%d.%d",
-						par->getCounter(i-2),
-						par->getCounter(i-1),
-						par->getCounter(i));
+					s << par->getCounter(i - 2) << '.'
+					  << par->getCounter(i - 1) << '.'
+					  << par->getCounter(i);
 					break;
 				case LABEL_COUNTER_SUBSUBSECTION:
-					sprintf(s, "%d.%d.%d.%d",
-						par->getCounter(i-3),
-						par->getCounter(i-2),
-						par->getCounter(i-1),
-						par->getCounter(i));
+					s << par->getCounter(i - 3) << '.'
+					  << par->getCounter(i - 2) << '.'
+					  << par->getCounter(i - 1) << '.'
+					  << par->getCounter(i);
+					
 					break;
 				case LABEL_COUNTER_PARAGRAPH:
-					sprintf(s, "%d.%d.%d.%d.%d",
-						par->getCounter(i-4),
-						par->getCounter(i-3),
-						par->getCounter(i-2),
-						par->getCounter(i-1),
-						par->getCounter(i));
+					s << par->getCounter(i - 4) << '.'
+					  << par->getCounter(i - 3) << '.'
+					  << par->getCounter(i - 2) << '.'
+					  << par->getCounter(i - 1) << '.'
+					  << par->getCounter(i);
 					break;
 				case LABEL_COUNTER_SUBPARAGRAPH:
-					sprintf(s, "%d.%d.%d.%d.%d.%d",
-						par->getCounter(i-5),
-						par->getCounter(i-4),
-						par->getCounter(i-3),
-						par->getCounter(i-2),
-						par->getCounter(i-1),
-						par->getCounter(i));
+					s << par->getCounter(i - 5) << '.'
+					  << par->getCounter(i - 4) << '.'
+					  << par->getCounter(i - 3) << '.'
+					  << par->getCounter(i - 2) << '.'
+					  << par->getCounter(i - 1) << '.'
+					  << par->getCounter(i);
+
 					break;
 				default:
-					sprintf(s, "%d.", par->getCounter(i));
+					s << par->getCounter(i) << '.';
                                         break;
 				}
-			} else {
+			} else { // appendix
 				switch (2 * LABEL_FIRST_COUNTER - textclass.maxcounter() + i) {
 				case LABEL_COUNTER_CHAPTER:
-					sprintf(s, "%s",
-						alphaCounter(par->getCounter(i)));
+					s << alphaCounter(par->getCounter(i));
 					break;
 				case LABEL_COUNTER_SECTION:
-					sprintf(s, "%s.%d",
-						alphaCounter(par->getCounter(i - 1)),
-						par->getCounter(i));
+					s << alphaCounter(par->getCounter(i - 1)) << '.'
+					  << par->getCounter(i);
+
 					break;
 				case LABEL_COUNTER_SUBSECTION:
-					sprintf(s, "%s.%d.%d",
-						alphaCounter(par->getCounter(i-2)),
-						par->getCounter(i-1),
-						par->getCounter(i));
+					s << alphaCounter(par->getCounter(i - 2)) << '.'
+					  << par->getCounter(i-1) << '.'
+					  << par->getCounter(i);
+
 					break;
 				case LABEL_COUNTER_SUBSUBSECTION:
-					sprintf(s, "%s.%d.%d.%d",
-						alphaCounter(par->getCounter(i-3)),
-						par->getCounter(i-2),
-						par->getCounter(i-1),
-						par->getCounter(i));
+					s << alphaCounter(par->getCounter(i-3)) << '.'
+					  << par->getCounter(i-2) << '.'
+					  << par->getCounter(i-1) << '.'
+					  << par->getCounter(i);
+
 					break;
 				case LABEL_COUNTER_PARAGRAPH:
-					sprintf(s, "%s.%d.%d.%d.%d",
-						alphaCounter(par->getCounter(i-4)),
-						par->getCounter(i-3),
-						par->getCounter(i-2),
-						par->getCounter(i-1),
-						par->getCounter(i));
+					s << alphaCounter(par->getCounter(i-4)) << '.'
+					  << par->getCounter(i-3) << '.'
+					  << par->getCounter(i-2) << '.'
+					  << par->getCounter(i-1) << '.'
+					  << par->getCounter(i);
+
 					break;
 				case LABEL_COUNTER_SUBPARAGRAPH:
-					sprintf(s, "%s.%d.%d.%d.%d.%d",
-						alphaCounter(par->getCounter(i-5)),
-						par->getCounter(i-4),
-						par->getCounter(i-3),
-						par->getCounter(i-2),
-						par->getCounter(i-1),
-						par->getCounter(i));
+					s << alphaCounter(par->getCounter(i-5)) << '.'
+					  << par->getCounter(i-4) << '.'
+					  << par->getCounter(i-3) << '.'
+					  << par->getCounter(i-2) << '.'
+					  << par->getCounter(i-1) << '.'
+					  << par->getCounter(i);
+
 					break;
 				default:
-					sprintf(s, "%c.", par->getCounter(i));
+					// Can this ever be reached? And in the
+					// case it is, how can this be correct?
+					// (Lgb)
+					s << static_cast<unsigned char>(par->getCounter(i)) << '.';
+					
 					break;
 				}
 			}
-	 
-			par->labelstring += s;
-			delete[] s;
-	 
+#ifdef HAVE_SSTREAM
+			par->labelstring += s.str().c_str();
+			// We really want to remove the c_str as soon as
+			// possible...
+#else
+			s << '\0';
+			char * tmps = s.str();
+			par->labelstring += tmps;
+			delete [] tmps;
+#endif
+			
 			for (i++; i < 10; ++i) {
 				// reset the following counters
 				par->setCounter(i, 0);
@@ -1607,7 +1612,6 @@ void LyXText::SetCounter(LyXParagraph * par) const
 			}
 		} else if (layout.labeltype == LABEL_COUNTER_ENUMI) {
 			par->incCounter(i + par->enumdepth);
-			char * s = new char[25];
 			int number = par->getCounter(i + par->enumdepth);
 
 			static const char *roman[20] = {
@@ -1621,35 +1625,57 @@ void LyXText::SetCounter(LyXParagraph * par) const
 				'é', 'ë', 'ì', 'î', 'ð', 'ñ', 'ò', 'ô', 'ö', 
 				'÷', 'ø', 'ù', 'ú'
 			};
-
+#ifdef HAVE_SSTREAM
+			ostringstream s;
+#else
+			ostrstream s;
+#endif
 			switch (par->enumdepth) {
 			case 1:
 				if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
-					sprintf(s, "(%c)", ((number-1) % 26) + 'a');
+					s << '('
+					  << static_cast<unsigned char>
+						(((number - 1) % 26) + 'a')
+					  << ')';
+				
 				else
-					sprintf(s, "(%c)", hebrew[(number-1) % 22]);
+					s << '('
+					  << static_cast<unsigned char>
+						(hebrew[(number - 1) % 22])
+					  << ')';
 				break;
 			case 2:
 				if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
-					sprintf(s, "%s.", roman[(number-1) % 20]);
+					s << roman[(number - 1) % 20] << '.';
 				else
-					sprintf(s, ".%s", roman[(number-1) % 20]);
+					s << '.' << roman[(number - 1) % 20];
 				break;
 			case 3:
 				if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
-					sprintf(s, "%c.", ((number-1) % 26) + 'A');
+					s << static_cast<unsigned char>
+						(((number - 1) % 26) + 'A')
+					  << '.';
 				else
-					sprintf(s, ".%c", ((number-1) % 26) + 'A');
+					s << '.'
+					  << static_cast<unsigned char>
+						(((number - 1) % 26) + 'A');
 				break;
 			default:
 				if (par->getParDirection() == LYX_DIR_LEFT_TO_RIGHT)
-					sprintf(s, "%d.", number);
+					s << number << '.';
 				else
-					sprintf(s, ".%d", number);	
+					s << '.' << number;
 				break;
 			}
-			par->labelstring = s;
-			delete[] s;
+#ifdef HAVE_SSTREAM
+			par->labelstring = s.str().c_str();
+			// we really want to get rid of that c_str()
+#else
+			s << '\0';
+			char * tmps = s.str();
+			par->labelstring = tmps;
+			delete [] tmps;
+#endif
 
 			for (i += par->enumdepth + 1; i < 10; ++i)
 				par->setCounter(i, 0);  /* reset the following counters  */

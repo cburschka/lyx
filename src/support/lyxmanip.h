@@ -2,19 +2,27 @@
 #ifndef LYX_MANIP_H
 #define LYX_MANIP_H
 
-#include <iomanip>
+#include <iostream>
+
+///
+struct NewLineAndDepth_ {
+	int depth_;
+};
 
 ///
 inline
-ostream & newlineAndDepth_helper(ostream & s, int n)
+NewLineAndDepth_ newlineAndDepth(int n)
 {
-	return s << '\n' << string(n, ' ');
+	NewLineAndDepth_ nlad_;
+	nlad_.depth_ = n;
+	return nlad_;
 }
 ///
 inline
-omanip<int> newlineAndDepth(int n)
+ostream & operator<<(ostream & os, NewLineAndDepth_ const & nlad_)
 {
-	return omanip<int>(newlineAndDepth_helper, n);
+	os << string(nlad_.depth_, ' ');
+	return os;
 }
 
 #endif

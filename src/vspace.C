@@ -4,8 +4,8 @@
  * 
  *           LyX, The Document Processor
  * 	 
- *	    Copyright 1995 Matthias Ettrich
- *          Copyright 1995-1999 The LyX Team.
+ *           Copyright 1995 Matthias Ettrich
+ *           Copyright 1995-2000 The LyX Team.
  *
  * ====================================================== */
 
@@ -20,7 +20,6 @@
 #include "vspace.h"
 #include "lyxrc.h"
 #include "lyxtext.h"
-#include <cstring>
 #include "BufferView.h"
 #include "support/lstrings.h"
 
@@ -55,17 +54,20 @@ static LyXLength::UNIT unit[4]   = { LyXLength::UNIT_NONE,
 //static int number_index, unit_index;
 int number_index, unit_index;
 
+
 static inline
 void lyx_advance (string & data, unsigned int n)
 {
 	data.erase(0, n);
 }
 
+
 static inline
 bool isEndOfData (string const & data)
 {
 	return frontStrip (data).empty();
 }
+
 
 static
 char nextToken (string & data)
@@ -119,25 +121,32 @@ char nextToken (string & data)
 	}
 }
 
-static struct {
+
+struct LaTeXLength {
 	char const * pattern;
 	int   plus_val_index, minus_val_index,
 		plus_uni_index, minus_uni_index;
-} table[] = { { "nu",       0, 0, 0, 0 },
-	      { "nu+nu",    2, 0, 2, 0 },
-	      { "nu+nu-nu", 2, 3, 2, 3 },
-	      { "nu+-nu",   2, 2, 2, 2 },
-	      { "nu-nu",    0, 2, 0, 2 },
-	      { "nu-nu+nu", 3, 2, 3, 2 },
-	      { "nu-+nu",   2, 2, 2, 2 },
-	      { "n+nu",     2, 0, 1, 0 },
-	      { "n+n-nu",   2, 3, 1, 1 },
-	      { "n+-nu",    2, 2, 1, 1 },
-	      { "n-nu",     0, 2, 0, 1 },
-	      { "n-n+nu",   3, 2, 1, 1 },
-	      { "n-+nu",    2, 2, 1, 1 },
-              { "",         0, 0, 0, 0 }   // sentinel, must be empty
 };
+
+
+static
+LaTeXLength table[] = {
+	{ "nu",       0, 0, 0, 0 },
+	{ "nu+nu",    2, 0, 2, 0 },
+	{ "nu+nu-nu", 2, 3, 2, 3 },
+	{ "nu+-nu",   2, 2, 2, 2 },
+	{ "nu-nu",    0, 2, 0, 2 },
+	{ "nu-nu+nu", 3, 2, 3, 2 },
+	{ "nu-+nu",   2, 2, 2, 2 },
+	{ "n+nu",     2, 0, 1, 0 },
+	{ "n+n-nu",   2, 3, 1, 1 },
+	{ "n+-nu",    2, 2, 1, 1 },
+	{ "n-nu",     0, 2, 0, 1 },
+	{ "n-n+nu",   3, 2, 1, 1 },
+	{ "n-+nu",    2, 2, 1, 1 },
+	{ "",         0, 0, 0, 0 }   // sentinel, must be empty
+};
+
 
 bool isValidGlueLength (string const & data, LyXGlueLength * result)
 {
@@ -265,6 +274,7 @@ bool isValidLength(string const & data, LyXLength * result)
 	return true;
 }
 
+
 /// LyXLength class
 
 LyXLength::LyXLength(string const & data)
@@ -279,18 +289,26 @@ LyXLength::LyXLength(string const & data)
 	}
 }
 
+
 bool LyXLength::operator== (LyXLength const & other) const
 {
 	return (val == other.val &&
 		uni == other.uni);
 }
 
+
 string LyXLength::asString() const
 {
-	char buffer[20];
-
-	sprintf (buffer, "%g%s", val, unit_name[uni]);
-	return string (buffer);
+#ifdef HAVE_SSTREAM
+	ostringstream buffer;
+	buffer << val << unit_name[uni]; // setw?
+	return buffer.str().c_str();
+#else
+	char tbuf[20];
+	ostrstream buffer(tbuf, 20);
+	buffer << val << unit_name[uni] << '\0'; // setw?
+	return buffer.str();
+#endif
 }
 
 
@@ -327,74 +345,99 @@ bool LyXGlueLength::operator== (LyXGlueLength const & other) const
 
 string LyXGlueLength::asString() const
 {
-	char buffer[20];
-	
+#ifdef HAVE_SSTREAM
+	ostringstream buffer;
+#else
+	char tbuf[20];
+	ostrstream buffer(tbuf, 20);
+#endif
 	if (plus_val != 0.0)
 		if (minus_val != 0.0)
 			if ((uni == plus_uni) && (uni == minus_uni))
 				if (plus_val == minus_val)
-					sprintf (buffer, "%g+-%g%s",
-						 val, plus_val, unit_name[uni]);
+					buffer << val << "+-"
+					       << plus_val << unit_name[uni];
 				else
-					sprintf (buffer, "%g+%g-%g%s",
-						 val, plus_val, minus_val, 
-						 unit_name[uni]);
+					buffer << val
+					       << '+' << plus_val
+					       << '-' << minus_val
+					       << unit_name[uni];
 			else
-				if ((plus_uni == minus_uni) && (plus_val == minus_val))
-					sprintf (buffer, "%g%s+-%g%s",
-						 val, unit_name[uni],
-						 plus_val, unit_name[plus_uni]);
+				if (plus_uni == minus_uni
+				    && plus_val == minus_val)
+					buffer << val << unit_name[uni]
+					       << "+-" << plus_val
+					       << unit_name[plus_uni];
+	
 				else
-					sprintf (buffer, "%g%s+%g%s-%g%s",
-						 val,       unit_name[uni],
-						 plus_val,  unit_name[plus_uni],
-						 minus_val, unit_name[minus_uni]);
+					buffer << val << unit_name[uni]
+					       << '+' << plus_val
+					       << unit_name[plus_uni]
+					       << '-' << minus_val
+					       << unit_name[minus_uni];
 		else 
 			if (uni == plus_uni)
-				sprintf (buffer, "%g+%g%s",
-					 val, plus_val, unit_name[uni]);
+				buffer << val << '+' << plus_val
+				       << unit_name[uni];
 			else
-				sprintf (buffer, "%g%s+%g%s",
-					 val,      unit_name[uni],
-					 plus_val, unit_name[plus_uni]);
+				buffer << val << unit_name[uni]
+				       << '+' << plus_val
+				       << unit_name[plus_uni];
+	
 	else
 		if (minus_val != 0.0)
 			if (uni == minus_uni)
-				sprintf (buffer, "%g-%g%s",
-					 val, minus_val, unit_name[uni]);
+				buffer << val << '-' << minus_val
+				       << unit_name[uni];
+	
 			else
-				sprintf (buffer, "%g%s-%g%s",
-					 val,       unit_name[uni],
-					 minus_val, unit_name[minus_uni]);
+				buffer << val << unit_name[uni]
+				       << '-' << minus_val
+				       << unit_name[minus_uni];
 		else
-			sprintf (buffer, "%g%s", val, unit_name[uni]);
-	return string (buffer);
+			buffer << val << unit_name[uni];
+#ifdef HAVE_SSTREAM
+	return buffer.str().c_str();
+#else
+	buffer << '\0';
+	return buffer.str();
+#endif
 }
 
 
 string LyXGlueLength::asLatexString() const
 {
-	char buffer[40];
+#ifdef HAVE_SSTREAM
+	ostringstream buffer;
+#else
+	char tbuf[40];
+	ostrstream buffer(tbuf, 40);
+#endif
 
 	if (plus_val != 0.0)
 		if (minus_val != 0.0)
-			sprintf (buffer, "%g%s plus %g%s minus %g%s",
-				 val, unit_name[uni],
-				 plus_val,  unit_name[plus_uni],
-				 minus_val, unit_name[minus_uni]);
+			buffer << val << unit_name[uni]
+			       << " plus "
+			       << plus_val << unit_name[plus_uni]
+			       << " minus "
+			       << minus_val << unit_name[minus_uni];
 		else
-			sprintf (buffer, "%g%s plus %g%s",
-				 val,      unit_name[uni],
-				 plus_val, unit_name[plus_uni]);
+			buffer << val << unit_name[uni]
+			       << " plus "
+			       << plus_val << unit_name[plus_uni];
 	else
 		if (minus_val != 0.0)
-			sprintf (buffer, "%g%s minus %g%s",
-				 val,       unit_name[uni],
-				 minus_val, unit_name[minus_uni]);
+			buffer << val << unit_name[uni]
+			       << " minus "
+			       << minus_val << unit_name[minus_uni];
 		else
-			sprintf (buffer, "%g%s",
-				 val, unit_name[uni]);
-	return string (buffer);
+			buffer << val << unit_name[uni];
+#ifdef HAVE_SSTREAM
+	return buffer.str().c_str();
+#else
+	buffer << '\0';
+	return buffer.str();
+#endif
 }
 
 

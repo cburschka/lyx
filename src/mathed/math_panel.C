@@ -15,7 +15,6 @@
 #include <config.h>
 
 #include FORMS_H_LOCATION
-#include <cstdlib>
 
 #include "lyx_gui_misc.h" 
 #include "math_panel.h"
@@ -147,10 +146,17 @@ void delim_cb(FL_OBJECT *, long data)
     case MM_APPLY:
     case MM_OK:
       {
-	 char s[80];
-	 sprintf(s, "%d %d", delim_code[left], delim_code[right]); 
-	 lyxfunc->Dispatch(LFUN_MATH_DELIM, s);
-	 if (data == MM_APPLY) break;
+#ifdef HAVE_SSTREAM
+	      ostringstream ost;
+	      ost << delim_code[left] << ' ' << delim_code[right];
+	      lyxfunc->Dispatch(LFUN_MATH_DELIM, ost.str().c_str());
+#else
+	      char s[80];
+	      ostrstream ost(s, 80);
+	      ost << delim_code[left] << ' ' << delim_code[right] << '\0';
+	      lyxfunc->Dispatch(LFUN_MATH_DELIM, ost.str());
+#endif
+	      if (data == MM_APPLY) break;
       }
     case MM_CLOSE: fl_hide_form(fd_delim->delim); break;
     case 2: 
@@ -194,14 +200,21 @@ void matrix_cb(FL_OBJECT *, long data)
     case MM_APPLY:
     case MM_OK: 
       {
-	 char s[80];
 	 char c = v_align_c[fl_get_choice(fd_matrix->valign)-1];
 	 char const * sh = fl_get_input(fd_matrix->halign);
 	 int nx = int(fl_get_slider_value(fd_matrix->columns)+0.5);
 	 int ny = int(fl_get_slider_value(fd_matrix->rows)+0.5);
-	 sprintf(s, "%d %d %c%s", nx, ny, c, sh);      
 	 if (data == MM_OK) fl_hide_form(fd_matrix->matrix);
-	 lyxfunc->Dispatch(LFUN_INSERT_MATRIX, s);
+#ifdef HAVE_SSTREAM
+	 ostringstream ost;
+	 ost << nx << ' ' << ny << ' ' << c << sh;
+	 lyxfunc->Dispatch(LFUN_INSERT_MATRIX, ost.str().c_str());
+#else
+	 char s[80];
+	 ostrstream ost(s, 80);
+	 ost << nx << ' ' << ny << ' ' << c << sh << '\0';
+	 lyxfunc->Dispatch(LFUN_INSERT_MATRIX, ost.str());
+#endif
 	 break;
       }
     case MM_CLOSE: fl_hide_form(fd_matrix->matrix); break;

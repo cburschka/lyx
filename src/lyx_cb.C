@@ -10,12 +10,6 @@
 
 #include <config.h>
 
-#include <cctype>
-#include <unistd.h>
-#include <csignal>
-#include <cstring>
-#include <cstdlib>
-
 #include <fstream>
 using std::ifstream;
 
@@ -1847,9 +1841,19 @@ bool UpdateLayoutDocument(BufferParams * params)
 	case Spacing::Other:
 	{
 		fl_set_choice(fd_form_document->choice_spacing, 4);
-		char sval[20];
-		sprintf(sval, "%g", params->spacing.getValue()); 
-		fl_set_input(fd_form_document->input_spacing, sval);
+		//char sval[20];
+		//sprintf(sval, "%g", params->spacing.getValue()); 
+#ifdef HAVE_SSTREAM
+		ostringstream sval;
+		sval << params->spacing.getValue(); // setw?
+		fl_set_input(fd_form_document->input_spacing,
+			     sval.str().c_str());
+#else
+		char tval[20];
+		ostrstream sval(tval, 20);
+		sval << params->spacing.getValue() << '\0'; // setw?
+		fl_set_input(fd_form_document->input_spacing, sval.str());
+#endif
 		break;
 	}
 	}

@@ -12,6 +12,7 @@
 #include <config.h>
 
 #include <fstream>
+#include <algorithm>
 using std::ifstream;
 using std::min;
 using std::max;

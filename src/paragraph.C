@@ -5326,15 +5326,13 @@ LyXParagraph * LyXParagraph::TeXFootnote(ostream & os, TexRow & texrow,
 		if (pextra_type == PEXTRA_FLOATFLT
 		    && (!pextra_width.empty()
 			|| !pextra_widthp.empty())) {
-			char bufr[80];
 			if (!pextra_width.empty())
-				sprintf(bufr, "\\begin{floatingfigure}{%s}\n",
-					pextra_width.c_str());
+				os << "\\begin{floatingfigure}{"
+				   << pextra_width << "}\n";
 			else
-				sprintf(bufr,
-					"\\begin{floatingfigure}{%f\\textwidth}\n",
-					atoi(pextra_widthp.c_str())/100.0);
-			os << bufr;
+				os << "\\begin{floatingfigure}{"
+				   << atoi(pextra_widthp.c_str())/100.0
+				   << "\\textwidth}\n";
 		} else {
 			os << "\\begin{figure}";
 			if (!params->float_placement.empty()) { 
@@ -5588,7 +5586,8 @@ LyXParagraph * LyXParagraph::TeXFootnote(string & file, TexRow & texrow,
 			|| !pextra_widthp.empty())) {
 			char bufr[80];
 			if (!pextra_width.empty())
-				sprintf(bufr, "\\begin{floatingfigure}{%s}\n",
+				sprintf(bufr,
+					"\\begin{floatingfigure}{%s}\n",
 					pextra_width.c_str());
 			else
 				sprintf(bufr,

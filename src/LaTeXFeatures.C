@@ -127,10 +127,24 @@ string LaTeXFeatures::getPackages(BufferParams const & params)
 		packages += "\\doublespacing\n";
 		break;
 	case Spacing::Other:
-		char value[30];
-		sprintf(value, "%.2f", params.spacing.getValue());
+		//char value[30];
+		//sprintf(value, "%.2f", params.spacing.getValue());
+#ifdef HAVE_SSTREAM
+		ostringstream value;
+#else
+		char val[30];
+		ostrstream value(val, 30);
+		
+#endif
+		value << params.spacing.getValue(); // setw?
+#ifdef HAVE_SSTREAM
 		packages += string("\\setstretch{") 
-			  + value + "}\n";
+			  + value.str().c_str() + "}\n";
+#else
+		value << '\0';
+		packages += string("\\setstretch{") 
+			  + value.str() + "}\n";
+#endif
 		break;
 	}
 

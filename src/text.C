@@ -44,6 +44,31 @@ extern int bibitemMaxWidth(Painter &, LyXFont const &);
 
 #define FIX_DOUBLE_SPACE 1
 
+// This is the comments that some of the warnings below refers to.
+// There are some issues in this file and I don't think they are
+// really related to the FIX_DOUBLE_SPACE patch. I'd rather think that
+// this is a problem that has been here almost from day one and that a
+// larger userbase with differenct access patters triggers the bad
+// behaviour. (segfaults.) What I think happen is: In several places
+// we store the paragraph in the current cursor and then moves the
+// cursor. This movement of the cursor will delete paragraph at the
+// old position if it is now empty. This will make the temporary
+// pointer to the old cursor paragraph invalid and dangerous to use.
+// And is some cases this will trigger a segfault. I have marked some
+// of the cases where this happens with a warning, but I am sure there
+// are others in this file and in text2.C. There is also a note in
+// Delete() that you should read. In Delete I store the paragraph->id
+// instead of a pointer to the paragraph. I am pretty sure this faulty
+// use of temporary pointers to paragraphs that might have gotten
+// invalidated (through a cursor movement) before they are used, are
+// the cause of the strange crashes we get reported often.
+//
+// It is very tiresom to change this code, especially when it is as
+// hard to read as it is. Help to fix all the cases where this is done
+// would be greately appreciated.
+//
+// Lgb
+
 int LyXText::SingleWidth(LyXParagraph * par,
 			 LyXParagraph::size_type pos) const
 {
@@ -601,7 +626,7 @@ int LyXText::LeftMargin(Row const * row) const
 		}
 	}
 	
-	int align;
+	int align; // wrong type
 	if (row->par->FirstPhysicalPar()->align == LYX_ALIGN_LAYOUT)
 		align = layout.align;
 	else
@@ -1006,11 +1031,6 @@ int LyXText::LabelFill(Row const * row) const
 int LyXText::NumberOfSeparators(Row const * row) const
 {
 	int last = RowLast(row);
-	//int p = row->pos;
-	//int main_body = BeginningOfMainBody(row->par);
-	//if (p < main_body)
-	//	p = main_body;
-	// I think this is equivalent to the above. (Lgb)
 	int p = max(row->pos, BeginningOfMainBody(row->par));
 	int n = 0;
 	for (; p < last; ++p) {
@@ -1035,10 +1055,6 @@ int LyXText::NumberOfHfills(Row const * row) const
 			++first;
 	}
 
-	//int main_body = BeginningOfMainBody(row->par);
-	//if (first < main_body)
-	//	first = main_body;
-	// I think this is equivalent to the above. (Lgb)
 	first = max(first, BeginningOfMainBody(row->par));
 	int n = 0;
 	for (int p = first; p <= last; ++p) { // last, because the end is ignored!
@@ -1060,11 +1076,7 @@ int LyXText::NumberOfLabelHfills(Row const * row) const
 		while(first < last && row->par->IsHfill(first))
 			++first;
 	}
-	//LyXParagraph::size_type main_body = 
-	//BeginningOfMainBody(row->par);
-	//if (last > main_body)
-	//last = main_body;
-	// I think this is eqvialent to the above. (Lgb)
+
 	last = min(last, BeginningOfMainBody(row->par));
 	int n = 0;
 	for (LyXParagraph::size_type p = first;
@@ -1662,6 +1674,7 @@ void LyXText::OpenFootnote()
    /* set the dimensions of the cursor row */
    row->fill = Fill(row, paperwidth);
    SetHeightOfRow(row);
+#warning See comment on top of text.C
    tmppar = tmppar->Next();
    
    while (tmppar != endpar) {
@@ -2258,6 +2271,7 @@ void LyXText::CheckParagraphInTable(LyXParagraph * par,
 		/* redraw only the row */
 		LyXCursor tmpcursor = cursor;
 		SetCursorIntern(par, pos);
+#warning See comment on top of text.C
 		refresh_y = y;
 		refresh_x = cursor.x;
 		refresh_row = row;
@@ -2769,6 +2783,7 @@ void LyXText::CursorRightOneWord() const
 {
 	// treat floats, HFills and Insets as words
 	LyXCursor tmpcursor = cursor;
+#warning See comment on top of text.C
 
 	if (tmpcursor.pos == tmpcursor.par->Last()
 	    && tmpcursor.par->Next())
@@ -3068,6 +3083,7 @@ void LyXText::DeleteWordForward()
         
 	if (!cursor.par->Last())
 		CursorRight();
+#warning See comment on top of text.C
 	else {
 		/* -------> Skip initial non-word stuff. */
 		while ( cursor.pos < cursor.par->Last() 
@@ -3094,6 +3110,7 @@ void LyXText::DeleteWordBackward()
        LyXCursor tmpcursor = cursor;
        if (!cursor.par->Last())
          CursorLeft();
+#warning See comment on top of text.C
        else{
          selection = true; // to avoid deletion 
          CursorLeftOneWord();
@@ -3111,6 +3128,7 @@ void LyXText::DeleteLineForward()
 	LyXCursor tmpcursor = cursor;
 	if (!cursor.par->Last())
 		CursorRight();
+#warning See comment on top of text.C
 	else {
 		CursorEnd();
 		sel_cursor = cursor;
@@ -3183,6 +3201,7 @@ void LyXText::Delete()
 	// just move to the right
 	CursorRightIntern();
 
+#warning Look at the comment here.
 	// This check is not very good...
 	// The CursorRightIntern calls DeleteEmptyParagrapgMechanism
 	// and that can very well delete the par or par->previous in
@@ -3277,6 +3296,7 @@ void  LyXText::Backspace()
 		tmppar = cursor.par;
 		tmprow = cursor.row;
 		CursorLeftIntern();
+#warning See comment on top of text.C
 		/* Pasting is not allowed, if the paragraphs have different
 		   layout. I think it is a real bug of all other
 		   word processors to allow it. It confuses the user.

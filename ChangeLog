@@ -1,3 +1,41 @@
+2000-03-08  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/insets/insettext.C: added <algorithm>.
+
+2000-03-07  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/mathed/math_panel.C (delim_cb): case MM_OK use string stream
+	(matrix_cb): case MM_OK use string stream
+
+	* src/mathed/formula.C (LocalDispatch): case LFUN_SETXY use string
+	stream.
+
+	* src/mathed/math_macro.C (draw): use string stream
+	(Metrics): use string stream
+
+	* src/paragraph.C (TeXFootnote): for case LyXParagraph::FIG, write
+	directly to the ostream.
+
+	* src/vspace.C (asString): use string stream.
+	(asString): use string stream
+	(asLatexString): use string stream
+
+	* src/lyx_cb.C (UpdateLayoutDocument): use string stream for
+	setting Spacing::Other.
+
+	* src/LaTeXFeatures.C (getPackages): use string stream instead of
+	sprintf when creating the stretch vale.
+
+	* src/text2.C (alphaCounter): changed to return a string and to
+	not use a static variable internally. Also fixed a one-off bug.
+	(SetCounter): changed the drawing of the labels to use string
+	streams instead of sprintf.
+
+	* src/support/lyxmanip.h: rewrite the newlineanDepth ostream
+	manipulator to use a scheme that does not require library support.
+	This is also the way it is done in the new GNU libstdc++. Should
+	work with DEC cxx now. 
+
 2000-03-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/mathed/math_inset.h (Write(ostream & os): add a space at the
