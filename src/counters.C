@@ -16,7 +16,7 @@
 #include "debug.h"
 
 #include "support/lstrings.h"
-#include "support/tostr.h"
+#include "support/convert.h"
 
 #include <boost/assert.hpp>
 

@@ -21,7 +21,7 @@
 #include "gettext.h"
 #include "PrinterParams.h"
 
-#include "support/tostr.h"
+#include "support/convert.h"
 #include "support/filefilterlist.h"
 #include "support/filetools.h"
 

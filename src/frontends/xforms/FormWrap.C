@@ -23,7 +23,7 @@
 #include "insets/insetwrap.h"
 #include "support/lstrings.h"
 #include "lyx_forms.h"
-#include "support/tostr.h"
+#include "support/convert.h"
 
 using std::string;
 

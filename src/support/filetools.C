@@ -21,7 +21,7 @@
 
 #include <config.h>
 
-#include "support/tostr.h"
+#include "support/convert.h"
 #include "support/systemcall.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"

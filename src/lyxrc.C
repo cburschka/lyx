@@ -35,7 +35,7 @@
 
 #include "support/filetools.h"
 #include "support/lstrings.h"
-#include "support/tostr.h"
+#include "support/convert.h"
 #include "support/userinfo.h"
 
 using lyx::support::ascii_lowercase;

@@ -33,7 +33,7 @@
 #include "support/forkedcontr.h"
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
-#include "support/tostr.h"
+#include "support/convert.h"
 
 #include <boost/bind.hpp>
 

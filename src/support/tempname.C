@@ -12,7 +12,7 @@
 
 #include "support/lyxlib.h"
 #include "support/filetools.h"
-#include "support/tostr.h"
+#include "support/convert.h"
 #include "support/os.h"
 
 #include "debug.h"

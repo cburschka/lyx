@@ -86,7 +86,7 @@
 #include "support/path.h"
 #include "support/path_defines.h"
 #include "support/systemcall.h"
-#include "support/tostr.h"
+#include "support/convert.h"
 #include "support/os.h"
 
 #include <sstream>

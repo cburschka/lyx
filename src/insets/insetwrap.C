@@ -28,7 +28,7 @@
 #include "outputparams.h"
 #include "paragraph.h"
 
-#include "support/tostr.h"
+#include "support/convert.h"
 
 #include <sstream>
 

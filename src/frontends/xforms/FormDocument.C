@@ -40,7 +40,7 @@
 #include "tex-strings.h"
 #include "vspace.h"
 
-#include "support/tostr.h"
+#include "support/convert.h"
 #include "support/lstrings.h" // contains, getStringFromVector
 #include "support/filetools.h" // LibFileSearch
 

@@ -25,7 +25,7 @@
 #include "insets/insetfloat.h"
 #include "insets/insetwrap.h"
 
-#include "support/tostr.h"
+#include "support/convert.h"
 
 using std::vector;
 using std::max;

@@ -29,7 +29,7 @@
 
 #include "support/filefilterlist.h"
 #include "support/filetools.h"
-#include "support/tostr.h"
+#include "support/convert.h"
 
 using std::advance;
 using std::vector;

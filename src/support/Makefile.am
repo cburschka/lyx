@@ -22,6 +22,8 @@ libsupport_la_SOURCES = \
 	abort.C \
 	atoi.C \
 	chdir.C \
+	convert.C \
+	convert.h \
 	copy.C \
 	copied_ptr.h \
 	cow_ptr.h \
@@ -71,8 +73,6 @@ libsupport_la_SOURCES = \
 	systemcall.h \
 	tempname.C \
 	textutils.h \
-	tostr.h \
-	tostr.C \
 	translator.h \
 	types.h \
 	userinfo.C \

@@ -28,7 +28,7 @@
 #include "Spacing.h"
 
 #include "support/lstrings.h"
-#include "support/tostr.h"
+#include "support/convert.h"
 
 #include "lyx_forms.h"
 

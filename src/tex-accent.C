@@ -12,7 +12,7 @@
 #include <config.h>
 
 #include "tex-accent.h"
-#include "support/tostr.h"
+#include "support/convert.h"
 
 using std::string;
 

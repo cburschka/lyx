@@ -38,7 +38,7 @@
 #include "frontends/Alert.h"
 
 #include "support/lyxalgo.h" // for lyx::count
-#include "support/tostr.h"
+#include "support/convert.h"
 #include "support/translator.h"
 
 #include <boost/array.hpp>

@@ -1,9 +1,13 @@
 2005-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* tostr.[Ch]: renamed to convert[ch]
+
+2005-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
 	* lstrings.[Ch]: change bformat to be a template
-	
+
 	* tostr.[Ch]: tostr -> convert, convert is a template
-	
+
 	* tempname.C:
 	* filetools.C (createBufferTmpDir): tostr -> convert
 

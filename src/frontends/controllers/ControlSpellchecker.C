@@ -33,7 +33,7 @@
 #endif
 
 #include "support/textutils.h"
-#include "support/tostr.h"
+#include "support/convert.h"
 
 #include "frontends/Alert.h"
 

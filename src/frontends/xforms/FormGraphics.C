@@ -31,7 +31,7 @@
 #include "frontends/Alert.h"
 
 #include "support/lyxlib.h"  // for float_equal
-#include "support/tostr.h"
+#include "support/convert.h"
 
 #include "lyx_forms.h"
 

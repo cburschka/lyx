@@ -21,7 +21,7 @@
 #include "support/FileInfo.h"
 #include "support/filetools.h"
 #include "support/lstrings.h" // frontStrip, strip
-#include "support/tostr.h"
+#include "support/convert.h"
 
 #include "lyx_forms.h"
 #include "combox.h"

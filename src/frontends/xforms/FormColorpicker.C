@@ -20,7 +20,7 @@
 #include "lyxrc.h"
 
 #include "support/filetools.h" //  LibFileSearch
-#include "support/tostr.h"
+#include "support/convert.h"
 
 #include "lyx_forms.h"
 

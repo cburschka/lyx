@@ -29,7 +29,7 @@
 #include "support/filefilterlist.h"
 #include "support/filetools.h"
 #include "support/path_defines.h"
-#include "support/tostr.h"
+#include "support/convert.h"
 #include "support/types.h"
 
 using std::make_pair;

@@ -13,7 +13,7 @@
 #include "ControlTabularCreate.h"
 #include "funcrequest.h"
 
-#include "support/tostr.h"
+#include "support/convert.h"
 
 
 using std::string;
@@ -43,7 +43,7 @@ void ControlTabularCreate::clearParams()
 
 void ControlTabularCreate::dispatchParams()
 {
-	string data = convert<string>(params().first) + ' ' + convert<string>(params().second);
+	string const data = convert<string>(params().first) + ' ' + convert<string>(params().second);
 	kernel().dispatch(FuncRequest(LFUN_TABULAR_INSERT, data));
 }
 

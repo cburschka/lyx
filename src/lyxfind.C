@@ -30,7 +30,7 @@
 #include "frontends/Alert.h"
 #include "frontends/LyXView.h"
 
-#include "support/tostr.h"
+#include "support/convert.h"
 
 #include <sstream>
 

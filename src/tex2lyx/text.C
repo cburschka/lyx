@@ -19,7 +19,7 @@
 #include "lengthcommon.h"
 #include "support/FileInfo.h"
 #include "support/lstrings.h"
-#include "support/tostr.h"
+#include "support/convert.h"
 #include "support/filetools.h"
 
 #include <boost/tuple/tuple.hpp>

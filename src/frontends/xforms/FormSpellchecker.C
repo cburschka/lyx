@@ -19,7 +19,7 @@
 #include "xforms_helpers.h"
 #include "xformsBC.h"
 
-#include "support/tostr.h"
+#include "support/convert.h"
 
 #include "lyx_forms.h"
 

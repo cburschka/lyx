@@ -25,7 +25,7 @@
 
 #include "support/lstrings.h"
 #include "support/std_ostream.h"
-#include "support/tostr.h"
+#include "support/convert.h"
 
 using lyx::support::prefixIs;
 using lyx::support::strToInt;

@@ -11,7 +11,7 @@
 
 #include <config.h>
 
-#include "tostr.h"
+#include "convert.h"
 
 #include <boost/lexical_cast.hpp>
 

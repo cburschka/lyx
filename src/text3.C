@@ -54,7 +54,7 @@
 
 #include "support/lstrings.h"
 #include "support/lyxlib.h"
-#include "support/tostr.h"
+#include "support/convert.h"
 
 #include "mathed/math_hullinset.h"
 #include "mathed/math_macrotemplate.h"

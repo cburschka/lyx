@@ -68,7 +68,7 @@
 #include "support/filetools.h"
 #include "support/forkedcontr.h"
 #include "support/path_defines.h"
-#include "support/tostr.h"
+#include "support/convert.h"
 #include "support/types.h"
 
 #include <boost/bind.hpp>

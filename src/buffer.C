@@ -70,7 +70,7 @@
 #include "support/os.h"
 #include "support/path.h"
 #include "support/textutils.h"
-#include "support/tostr.h"
+#include "support/convert.h"
 
 #include <boost/bind.hpp>
 

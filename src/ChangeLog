@@ -1,7 +1,9 @@
 2005-01-06  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* everywhere: change support/tostr.h -> support/convert.h
+
 	* tabular.C: make all write_attributes templates, tostr -> convert
-	
+
 	* paragraph.C (simpleLinuxDocOnePar): fix type for ret from getChar
 	(emptyTag): and -> &&, and fix type for ret from getChar
 	(getFirstWord): fix type for ret from getChar
