@@ -24,7 +24,7 @@ fi
 changequote([, ]) dnl
 AC_SUBST(lyx_devel_version)
 if test $lyx_devel_version = yes ; then
-  AC_DEFINE(DEVEL_VERSION, 1, Define if you are building a development version of LyX)
+  AC_DEFINE(DEVEL_VERSION, 1, [Define if you are building a development version of LyX])
 fi])
 
 
@@ -217,7 +217,10 @@ if test x$GXX = xyes; then
     esac
     if test x$enable_debug = xyes ; then
 	case $gxx_version in
-	    3.4*) CXXFLAGS="-g -D_GLIBCXX_DEBUG -D_GLIBCXX_DEBUG_PEDANTIC $CXXFLAGS";;
+	    3.4*) CXXFLAGS="-g $CXXFLAGS"
+		AC_DEFINE(_GLIBCXX_DEBUG, 1, [libstdc++ debug mode])
+		AC_DEFINE(_GLIBCXX_DEBUG_PEDANTIC, 1, [libstdc++ pedantic debug mode])
+		;;
 	    *)    CXXFLAGS="-g $CXXFLAGS";;
 	esac
     fi
@@ -227,6 +230,7 @@ if test x$GXX = xyes; then
 	2.95.*) CXXFLAGS="$CXXFLAGS -W -Wall";;
 	2.96*)  CXXFLAGS="$CXXFLAGS -W -Wall";;
 	3.1*)  CXXFLAGS="$CXXFLAGS -W -Wall";;
+	3.4*)   CXXFLAGS="$CXXFLAGS -Wextra -Wall";;
 	*)      CXXFLAGS="$CXXFLAGS -W -Wall";;
     esac
   fi

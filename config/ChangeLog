@@ -1,7 +1,11 @@
+2004-05-18  Lars Gullik Bjonnes  <larsbj@lyx.org>
+
+	* lyxinclude.m4 (lyx_warning): change debug mode setup to use AC_DEFINE
+
 2004-05-18  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* lyxinclude.m4 (enable-debug): Use the libstdc++ debugging mode
-	if configuring with enable-debug. 
+	if configuring with enable-debug.
 
 2004-05-05  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
