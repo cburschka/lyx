@@ -19,6 +19,7 @@
 #endif
 
 #include "LString.h"
+#include <boost/weak_ptr.hpp>
 #include <boost/signals/trackable.hpp>
 #include <boost/signals/connection.hpp>
 
@@ -56,9 +57,14 @@ public:
 	/// If !previewReady() returns 0.
 	PreviewImage const * pimage() const { return pimage_; }
 
+	///
+	void setView(BufferView *);
+
 protected:
 	/// Allow the daughter classes to cast up to the parent inset.
 	Inset * inset() const { return &inset_; }
+	///
+	BufferView * view() const { return view_.get(); }
 
 private:
 	/** This method is connected to the grfx::PreviewLoader::imageReady
@@ -68,8 +74,6 @@ private:
 
 	/// Does the owning inset want a preview?
 	virtual bool previewWanted() const = 0;
-	///
-	virtual BufferView * view() const = 0;
 	/// a wrapper to Inset::latex
 	virtual string const latexString() const = 0;
 
@@ -77,6 +81,9 @@ private:
 	Inset & inset_;
 	///
 	string snippet_;
+	///
+	boost::weak_ptr<BufferView> view_;
+	
 	/// We don't own this. Cached for efficiency reasons.
 	mutable PreviewImage const * pimage_;
 	///

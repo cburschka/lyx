@@ -137,6 +137,8 @@ struct PreviewLoader::Impl : public boost::signals::trackable {
 	/// Emit this signal when an image is ready for display.
 	boost::signal1<void, PreviewImage const &> imageReady;
 
+	Buffer const & buffer() const { return buffer_; }
+
 private:
 	/// Called by the Forkedcall process that generated the bitmap files.
 	void finishedGenerating(string const &, pid_t, int);
@@ -230,6 +232,12 @@ boost::signals::connection PreviewLoader::connect(slot_type const & slot) const
 void PreviewLoader::emitSignal(PreviewImage const & pimage) const
 {
 	pimpl_->imageReady(pimage);
+}
+
+
+Buffer const & PreviewLoader::buffer() const
+{
+	return pimpl_->buffer();
 }
 
 } // namespace grfx
@@ -383,9 +391,13 @@ void PreviewLoader::Impl::add(string const & latex_snippet)
 	if (!pconverter_ || status(latex_snippet) != NotFound)
 		return;
 
-	lyxerr[Debug::GRAPHICS] << "adding snippet:\n" << latex_snippet << endl;
+	string const snippet = trim(latex_snippet);
+	if (snippet.empty())
+		return;
 
-	pending_.push_back(latex_snippet);
+	lyxerr[Debug::GRAPHICS] << "adding snippet:\n" << snippet << endl;
+
+	pending_.push_back(snippet);
 }
 
 

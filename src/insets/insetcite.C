@@ -40,7 +40,7 @@ using std::map;
 namespace {
 
 // An optimisation. We assume that until the first InsetCitation::edit is
-// called, we're loding the buffer and that, therefore, we don't need to
+// called, we're loading the buffer and that, therefore, we don't need to
 // reload the bibkey list
 std::map<Buffer const *, bool> loading_buffer;
 

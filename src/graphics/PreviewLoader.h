@@ -84,6 +84,9 @@ public:
 	 */
 	void emitSignal(PreviewImage const &) const;
 
+	/// Which buffer owns this loader.
+	Buffer const & buffer() const;
+
 private:
 	/// Use the Pimpl idiom to hide the internals.
 	class Impl;

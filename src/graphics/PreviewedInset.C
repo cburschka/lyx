@@ -14,13 +14,17 @@
 #include <config.h>
 
 #include "PreviewedInset.h"
-
-#include "BufferView.h"
-
 #include "GraphicsImage.h"
 #include "PreviewLoader.h"
 #include "PreviewImage.h"
 #include "Previews.h"
+
+#include "buffer.h"
+#include "BufferView.h"
+
+#include "frontends/LyXView.h"
+
+#include "support/lstrings.h"
 
 #include <boost/bind.hpp>
 
@@ -42,7 +46,8 @@ void PreviewedInset::generatePreview()
 	grfx::Previews & previews = grfx::Previews::get();
 	grfx::PreviewLoader & loader = previews.loader(view()->buffer());
 	addPreview(loader);
-	loader.startLoading();
+	if (!snippet_.empty())
+		loader.startLoading();
 }
 
 
@@ -51,7 +56,11 @@ void PreviewedInset::addPreview(grfx::PreviewLoader & ploader)
 	if (!Previews::activated() || !previewWanted())
 		return;
 
-	snippet_ = latexString();
+	setView(ploader.buffer().getUser());
+
+	snippet_ = trim(latexString());
+	if (snippet_.empty())
+		return;
 
 	pimage_ = ploader.preview(snippet_);
 	if (pimage_)
@@ -71,7 +80,7 @@ void PreviewedInset::addPreview(grfx::PreviewLoader & ploader)
 
 bool PreviewedInset::previewReady() const
 {
-	if (!grfx::Previews::activated() || !previewWanted() ||
+	if (!Previews::activated() || !previewWanted() ||
 	    !view() || !view()->buffer())
 		return false;
 
@@ -88,6 +97,14 @@ bool PreviewedInset::previewReady() const
 }
 
 
+void PreviewedInset::setView(BufferView * bv)
+{
+	if (!bv)
+		return;
+	
+	view_ = bv->owner()->view();
+}
+
 void PreviewedInset::imageReady(grfx::PreviewImage const & pimage) const
 {
 	// Check snippet against the Inset's current contents
@@ -95,6 +112,7 @@ void PreviewedInset::imageReady(grfx::PreviewImage const & pimage) const
 		return;
 
 	pimage_ = &pimage;
+
 	if (view())
 		view()->updateInset(&inset_, false);
 }

@@ -64,7 +64,6 @@ TODO
 #include "graphics/GraphicsImage.h"
 #include "graphics/GraphicsParams.h"
 
-#include "frontends/LyXView.h"
 #include "lyxtext.h"
 #include "buffer.h"
 #include "BufferView.h"
@@ -77,8 +76,10 @@ TODO
 #include "LaTeXFeatures.h"
 #include "lyxlex.h"
 
-#include "frontends/Dialogs.h"
 #include "frontends/Alert.h"
+#include "frontends/Dialogs.h"
+#include "frontends/LyXView.h"
+
 #include "frontends/controllers/helper_funcs.h" // getVectorFromString
 
 #include "support/LAssert.h"
@@ -88,13 +89,11 @@ TODO
 #include "support/systemcall.h"
 #include "support/os.h"
 
+#include <boost/weak_ptr.hpp>
 #include <boost/bind.hpp>
 #include <boost/signals/trackable.hpp>
 
 #include <algorithm> // For the std::max
-
-// Very, Very UGLY!
-extern BufferView * current_view;
 
 extern string system_tempdir;
 
@@ -147,6 +146,8 @@ struct InsetGraphics::Cache : boost::signals::trackable
 	grfx::Loader loader;
 	///
 	unsigned long checksum;
+	///
+	boost::weak_ptr<BufferView> view;
 
 private:
 	///
@@ -293,6 +294,7 @@ int InsetGraphics::width(BufferView *, LyXFont const & font) const
 void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 			 int baseline, float & x, bool) const
 {
+	cache_->view = bv->owner()->view();
 	int oasc = cache_->old_ascent;
 
 	int ldescent = descent(bv, font);
@@ -888,7 +890,8 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 
 void InsetGraphics::statusChanged()
 {
-	current_view->updateInset(this, false);
+	if (cache_->view.get())
+		cache_->view.get()->updateInset(this, false);
 }
 
 

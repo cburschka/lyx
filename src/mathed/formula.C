@@ -74,11 +74,6 @@ private:
 	///
 	string const latexString() const;
 	///
-	BufferView * view() const
-	{
-		return parent().view();
-	}
-	///
 	InsetFormula & parent() const
 	{
 		return *static_cast<InsetFormula*>(inset());
@@ -207,7 +202,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 {
 	// This initiates the loading of the preview, so should come
 	// before the metrics are computed.
-	view_ = bv->owner()->view();
+	preview_->setView(bv);
 	bool const use_preview = preview_->previewReady();
 
 	int const x = int(xx);

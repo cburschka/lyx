@@ -13,14 +13,19 @@
 #endif
 
 #include "GraphicsLoader.h"
+
+#include "BufferView.h"
+
 #include "GraphicsCache.h"
 #include "GraphicsCacheItem.h"
 #include "GraphicsImage.h"
 #include "GraphicsParams.h"
 #include "GraphicsSupport.h"
 
+#include "frontends/LyXView.h"
 #include "frontends/Timeout.h"
 
+#include <boost/weak_ptr.hpp>
 #include <boost/bind.hpp>
 #include <boost/signals/trackable.hpp>
 
@@ -70,7 +75,7 @@ private:
 	///
 	InsetList insets;
 	///
-	BufferView const * view;
+	boost::weak_ptr<BufferView const> view;
 };
 
 
@@ -194,7 +199,7 @@ Image const * Loader::image() const
 
 Loader::Impl::Impl(Params const & params)
 	: status_(WaitingToLoad), params_(params),
-	  timer(2000, Timeout::ONETIME), view(0)
+	  timer(2000, Timeout::ONETIME)
 {
 	timer.timeout.connect(boost::bind(&Impl::checkedLoading, this));
 }
@@ -298,7 +303,7 @@ void Loader::Impl::startLoading(Inset const & inset, BufferView const & bv)
 	it = std::find(it, end, &inset);
 	if (it == end)
 		insets.push_back(&inset);
-	view = &bv;
+	view = bv.owner()->view();
 
 	timer.start();
 }
@@ -326,10 +331,11 @@ private:
 
 void Loader::Impl::checkedLoading()
 {
-	if (insets.empty() || !view)
+	if (insets.empty() || !view.get())
 		return;
 
-	std::list<VisibleParagraph> const vps = getVisibleParagraphs(*view);
+	std::list<VisibleParagraph> const vps =
+		getVisibleParagraphs(*view.get());
 
 	InsetList::const_iterator it  = insets.begin();
 	InsetList::const_iterator end = insets.end();

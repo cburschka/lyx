@@ -10,11 +10,11 @@
 #include "BufferView.h"
 #include "debug.h"
 #include "lyxrc.h"
-#include "frontends/LyXView.h"
 #include "LaTeXFeatures.h"
 #include "gettext.h"
 
 #include "frontends/Dialogs.h"
+#include "frontends/LyXView.h"
 #include "frontends/Painter.h"
 
 #include "support/filetools.h"
@@ -33,7 +33,7 @@ using std::vector;
 using std::pair;
 
 extern BufferList bufferlist;
-extern BufferView * current_view;
+
 
 class InsetInclude::PreviewImpl : public grfx::PreviewedInset {
 public:
@@ -44,9 +44,6 @@ public:
 	bool previewWanted() const;
 	///
 	string const latexString() const;
-
-	///
-	BufferView * view() const { return current_view; }
 	///
 	InsetInclude & parent() const {
 		return *static_cast<InsetInclude*>(inset());
@@ -500,6 +497,7 @@ int InsetInclude::width(BufferView * bv, LyXFont const & font) const
 void InsetInclude::draw(BufferView * bv, LyXFont const & font, int y,
 			float & xx, bool b) const
 {
+	preview_->setView(bv);
 	if (!preview_->previewReady()) {
 		InsetButton::draw(bv, font, y, xx, b);
 		return;
@@ -524,7 +522,6 @@ void InsetInclude::draw(BufferView * bv, LyXFont const & font, int y,
 
 void InsetInclude::addPreview(grfx::PreviewLoader & ploader) const
 {
-	lyxerr << "InsetInclude::addPreview" << endl;
 	preview_->addPreview(ploader);
 }
 
