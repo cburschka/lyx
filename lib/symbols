@@ -412,7 +412,14 @@ Bbbk               msb  124   0 mathord
 hslash             msb  125   0 mathord
 backepsilon        msb  127   0 mathrel
 
-neq                x   0 185 mathrel
-textdegree         x   0 176 mathord
-cong               x   0  64 mathrel
-surd               x   0 214 mathord
+neq                x      0 185 mathrel
+textdegree         x      0 176 mathord
+cong               x      0  64 mathrel
+surd               x      0 214 mathord
+
+lyxbar             cmsy 161   0 mathord
+lyxeq              cmr   61   0 mathord      
+lyxdabar           msa   57   0 mathord
+lyxright           msa   75   0 mathord
+lyxleft            msa   76   0 mathord
+

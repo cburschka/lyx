@@ -1,3 +1,8 @@
+2001-09-19  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* math_macrotable.C (builtinMacros): Add some macros if latex
+	fonts are available.
+
 2001-09-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* formula.C (insetAllowed): disallow label insertion in inline

@@ -11,7 +11,7 @@
 #include "math_macrotemplate.h"
 #include "math_parser.h"
 #include "debug.h"
-
+#include "support.h" // math_font_available
 
 MathArray mathed_parse_cell(string const &);
 
@@ -106,36 +106,45 @@ void MathMacroTable::builtinMacros()
 	createTemplate("Longleftrightarrow", 0, "\\Leftarrow\\kern-6mu\\Rightarrow");
 	createTemplate("doteq", 0, "\\stackrel{\\cdot}{=}");
 
-#if 0
-	// The following either require using the latex fonts,
-	// or don't look good, so they are disabled
+	//createTemplate("models",         0, "|\\kern-9mu=");
 
-	createTemplate("hookrightarrow", 0, "\\lhook\\kern-3mu\\rightarrow");
-	createTemplate("hookleftarrow",  0, "\\leftarrow\\kern-3mu\\rhook");
-	createTemplate("bowtie",         0, "\\triangleright\\kern-3mu\\triangleleft");
+	if (math_font_available(LM_TC_CMSY)) {
+		createTemplate("longrightarrow", 0, "\\lyxbar\\kern-5mu\\rightarrow");
+		createTemplate("longleftarrow",  0, "\\leftarrow\\kern-5mu\\lyxbar");
+		createTemplate("mapsto",  0, "\\mapstochar\\rightarrow");
+		createTemplate("longmapsto",  0, "\\mapstochar\\lyxbar\\kern-5mu\\rightarrow");
+	}
 
-	createTemplate("models",         0, "|\\kern-9mu=");
-	createTemplate("longrightarrow", 0, "-\\kern-9mu\\rightarrow");
-	createTemplate("longleftarrow",  0, "\\leftarrow\\kern-9mu-");
-	createTemplate("Longrightarrow", 0, "=\\kern-9mu\\Rightarrow");
-	createTemplate("Longleftarrow",  0, "\\Leftarrow\\kern-9mu=");
+	if (math_font_available(LM_TC_CMR)) {
+		createTemplate("Longrightarrow", 0, "\\lyxeq\\kern-3mu\\Rightarrow");
+		createTemplate("Longleftarrow",  0, "\\Leftarrow\\kern-9mu\\lyxeq");
+	}
 
-	//amsfonts.sty
+	if (math_font_available(LM_TC_CMM)) {
+		createTemplate("hookrightarrow", 0, "\\lhook\\kern-5mu\\rightarrow");
+		createTemplate("hookleftarrow",  0, "\\leftarrow\\kern-5mu\\rhook");
+		createTemplate("bowtie",         0, "\\triangleright\\kern-3mu\\triangleleft");
+	}
 
-	createTemplate("dasharrow",    0, "\\dashrightarrow");
-	createTemplate("Box",          0, "\\square");
-	createTemplate("Diamond",      0, "\\lozenge");
-	createTemplate("leadsto",      0, "\\rightsquigarrow");
+	if (math_font_available(LM_TC_MSA)) {
+		//amsfonts.sty
 
-	// amssymb.sty
+		createTemplate("dashrightarrow", 0, "\\lyxdabar\\lyxdabar\\lyxright");
+		createTemplate("dashleftarrow", 0, "\\lyxleft\\lyxdabar\\lyxdabar");
+		createTemplate("dasharrow",    0, "\\dashrightarrow");
+		createTemplate("Box",          0, "\\square");
+		createTemplate("Diamond",      0, "\\lozenge");
+		createTemplate("leadsto",      0, "\\rightsquigarrow");
 
-	createTemplate("restriction",  0, "\\upharpoonright");
-	createTemplate("Doteq",        0, "\\doteqdot");
-	createTemplate("doublecup",    0, "\\Cup");
-	createTemplate("doublecap",    0, "\\Cap");
-	createTemplate("llless",       0, "\\lll");
-	createTemplate("gggtr",        0, "\\ggg");
-#endif
+		// amssymb.sty
+
+		createTemplate("restriction",  0, "\\upharpoonright");
+		createTemplate("Doteq",        0, "\\doteqdot");
+		createTemplate("doublecup",    0, "\\Cup");
+		createTemplate("doublecap",    0, "\\Cap");
+		createTemplate("llless",       0, "\\lll");
+		createTemplate("gggtr",        0, "\\ggg");
+	}
 
   	//createTemplate("lint",       4, "\\int_#1^#2#3 d#4");
   	//createTemplate("silentmult", 0, "\\cdot");
