@@ -305,12 +305,12 @@ bool MathScriptInset::hasLimits() const
 
 void MathScriptInset::removeScript(bool up)
 {
-	lyxerr << "MathNestInset::removeScript: 1 up: " << up << endl;
+	lyxerr << "MathScriptInset::removeScript: 1 up: " << up << endl;
 	if (nargs() == 2) {
-		lyxerr << "MathNestInset::removeScript: a up: " << up << endl;
+		lyxerr << "MathScriptInset::removeScript: a up: " << up << endl;
 		if (up == cell_1_is_up_)
 			cells_.pop_back();
-		lyxerr << "MathNestInset::removeScript: b up: " << up << endl;
+		lyxerr << "MathScriptInset::removeScript: b up: " << up << endl;
 	} else if (nargs() == 3) {
 		if (up == true) {
 			swap(cells_[1], cells_[2]);
@@ -320,7 +320,7 @@ void MathScriptInset::removeScript(bool up)
 		}
 		cells_.pop_back();
 	}
-	lyxerr << "MathNestInset::removeScript: 2 up: " << up << endl;
+	lyxerr << "MathScriptInset::removeScript: 2 up: " << up << endl;
 }
 
 
@@ -557,20 +557,20 @@ void MathScriptInset::notifyCursorLeaves(LCursor & cur)
 {
 	MathNestInset::notifyCursorLeaves(cur);
 
+	lyxerr << "MathScriptInset::notifyCursorLeaves: 1 " << cur << endl;
+
 	// remove empty scripts if possible
+if (0) {
 	if (nargs() > 2 && cur.idx() == 2 && cell(2).empty()) {
 		// must be a subscript...
 		removeScript(false);
-		// sanitize cursor, even if this slice will be removed immediately
-		cur.idx() = 0;
-		cur.pos() = 0;
 	} else if (nargs() > 1 && cur.idx() == 1 && cell(1).empty()) {
 		// could be either subscript or super script
 		removeScript(cell_1_is_up_);
-		// sanitize cursor, even if this slice will be removed immediately
-		cur.idx() = 0;
-		cur.pos() = 0;
 	}
+}
+
+	lyxerr << "MathScriptInset::notifyCursorLeaves: 2 " << cur << endl;
 }
 
 

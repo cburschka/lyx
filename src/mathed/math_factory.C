@@ -16,6 +16,7 @@
 #include "math_amsarrayinset.h"
 #include "math_binominset.h"
 #include "math_boxinset.h"
+#include "math_boxedinset.h"
 #include "math_boldsymbolinset.h"
 #include "math_casesinset.h"
 #include "math_colorinset.h"
@@ -275,6 +276,8 @@ MathAtom createMathInset(string const & s)
 	if (s.size() == 3 && s[0] == '\\' && s[1] == '#'
 			&& s[2] >= '1' && s[2] <= '9')
 		return MathAtom(new MathMacroArgument(s[2] - '0'));
+	if (s == "boxed")
+		return MathAtom(new MathBoxedInset());
 	if (s == "mbox")
 		return MathAtom(new MathBoxInset("mbox"));
 	if (s == "fbox")

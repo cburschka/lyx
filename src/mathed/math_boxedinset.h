@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file math_fboxinset.h
+ * \file math_boxedinset.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -9,21 +9,21 @@
  * Full author contact details are available in file CREDITS.
  */
 
-#ifndef MATH_FBOXINSET_H
-#define MATH_FBOXINSET_H
+#ifndef MATH_BOXEDINSET_H
+#define MATH_BOXEDINSET_H
 
 #include "math_nestinset.h"
 
 
 /// Non-AMS-style frame
-class MathFboxInset : public MathNestInset {
+class MathBoxedInset : public MathNestInset {
 public:
 	///
-	MathFboxInset();
+	MathBoxedInset();
 	///
 	std::auto_ptr<InsetBase> clone() const;
 	///
-	mode_type currentMode() const;
+	void validate(LaTeXFeatures & features) const;
 	///
 	void metrics(MetricsInfo & mi, Dimension & dim) const;
 	///

@@ -44,7 +44,7 @@ void MathFboxInset::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	FontSetChanger dummy(mi.base, "textnormal");
 	cell(0).metrics(mi, dim);
-	metricsMarkers(dim, 5); // 5 pixels margin
+	metricsMarkers(dim, 3); // 1 pixel space, 1 frame, 1 space
 	dim_ = dim;
 }
 
@@ -54,7 +54,7 @@ void MathFboxInset::draw(PainterInfo & pi, int x, int y) const
 	pi.pain.rectangle(x + 1, y - dim_.ascent() + 1,
 		dim_.width() - 2, dim_.height() - 2, LColor::foreground);
 	FontSetChanger dummy(pi.base, "textnormal");
-	cell(0).draw(pi, x + 5, y);
+	cell(0).draw(pi, x + 3, y);
 	setPosCache(pi, x, y);
 }
 

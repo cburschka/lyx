@@ -25,6 +25,8 @@ libmathed_la_SOURCES = \
 	math_boldsymbolinset.h \
 	math_boxinset.C \
 	math_boxinset.h \
+	math_boxedinset.C \
+	math_boxedinset.h \
 	math_braceinset.C \
 	math_braceinset.h \
 	math_casesinset.C \
