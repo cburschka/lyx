@@ -31,28 +31,28 @@ public:
 	the file that is obtained by tracing the links. */
 	FileInfo(string const & path, bool link = false);
 
-	///
+	/// File descriptor
 	FileInfo(int fildes);
 
 	///
 	~FileInfo();
 
-	///
+	/// Query a new file
 	FileInfo& newFile(string const & path, bool link = false);
 
-	///
+	/// Query a new file descriptor
         FileInfo& newFile(int fildes);
 	
-	/// returns a character describing file type (ls -F)
+	/// Returns a character describing file type (ls -F)
 	char const * typeIndicator() const;
 
-	///
+	/// File protection mode
 	mode_t getMode() const;
 
-	///
+	/// Get "preferred" block size for efficient file system I/O
 	long getBlockSize() const;
 	
-	/// constructs standard mode string (ls style)
+	/// Constructs standard mode string (ls style)
 	void modeString(char * szString) const;
 	
 	/// returns a letter describing a file type (ls style)
@@ -73,34 +73,37 @@ public:
 	///
 	time_t getStatusChangeTime() const;
 
-	///
+	/// Total file size in bytes
 	off_t getSize() const;
 
-	///
+	/// Number of hard links
 	nlink_t getNumberOfLinks() const;
 
-	///
+	/// User ID of owner
 	uid_t getUid() const;
-	///
+
+	/// Group ID of owner
 	gid_t getGid() const;
-	///
+
+	/// Is the file information correct? Did the query succeed?
 	bool isOK() const;
-	///
+
+	/// Permission flags
 	enum perm_test {
 		rperm = R_OK, // test for read permission
 		wperm = W_OK, // test for write permission
 		xperm = X_OK, // test for execute (search) permission
 		eperm = F_OK  // test for existence of file
 	};
-	///
+	/// Test whether the current user has a given set of permissions
 	bool access(int p);
-	///
+	/// Is the file writable for the current user?
 	bool writable() { return access(FileInfo::wperm); }
-	///
+	/// Is the file readable for the current user?
 	bool readable() { return access(FileInfo::rperm); }
-	///
+	/// Is the file executable for the current user?
 	bool executable() { return access(FileInfo::xperm); }
-	///
+	/// Does the file exist?
 	bool exist() { return access(FileInfo::eperm); }
 	///
 	bool isLink() const;
@@ -139,4 +142,3 @@ private:
 };
 
 #endif
-

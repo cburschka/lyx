@@ -48,6 +48,7 @@
 \bind "M-f e p"                 "buffer-export postscript"
 \bind "M-f e d"                 "buffer-export linuxdoc"
 \bind "M-f e t"                 "buffer-export ascii"
+\bind "M-f e h"			"buffer-export html"
 \bind "M-f e m"                 "buffer-export custom"
 \bind "M-f x"			"lyx-quit"
 \bind "M-f space"		"menu-open File" 

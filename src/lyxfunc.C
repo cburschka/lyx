@@ -58,6 +58,7 @@
 #include "trans_mgr.h"
 #include "ImportLaTeX.h"
 #include "ImportNoweb.h"
+#include "support/syscall.h"
 
 extern bool cursor_follows_scrollbar;
 
@@ -729,6 +730,27 @@ string LyXFunc::Dispatch(int ac,
 		else if (extyp == "custom") {
 			MenuSendto();
 			break;
+		}
+		// HTML
+		else if (extyp == "html") {
+			// First, create LaTeX file
+			MenuMakeLaTeX(owner->currentBuffer());
+
+			// And now, run tth
+			string file = owner->currentBuffer()->getFileName();
+			file = ChangeExtension(file, ".tex", false);
+			string result = ChangeExtension(file, ".html", false);
+			string tmp = lyxrc->tth_command + " < " + file 
+			    + " > " + result ;
+			Systemcalls one;
+			int res = one.startscript(Systemcalls::System, tmp);
+			if (res == 0) {
+				setMessage(string(
+				  N_("Document exported as HTML to file: ")) + result);
+			} else {
+				setErrorMessage(string(
+				  N_("An unexpected error occured while converting document to HTML in file:")) + result);
+			}
 		}
 		else {
 			setErrorMessage(string(N_("Unknown export type: "))

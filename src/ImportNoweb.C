@@ -37,7 +37,7 @@ Buffer * ImportNoweb::run()
 					documentclass() + " -f " + file;
         Systemcalls one;
 	Buffer * buf = 0;
-	int result= one.Startscript(Systemcalls::System, tmp);
+	int result= one.startscript(Systemcalls::System, tmp);
 	if (result==0) {
 		string filename = file + ".lyx";
 		// File was generated without problems. Load it.

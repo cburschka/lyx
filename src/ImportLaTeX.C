@@ -42,7 +42,7 @@ Buffer * ImportLaTeX::run()
 	string tmp = lyxrc->relyx_command + " -f " + file;
         Systemcalls one;
 	Buffer * buf = 0;
-	int result= one.Startscript(Systemcalls::System, tmp);
+	int result= one.startscript(Systemcalls::System, tmp);
 	if (result==0) {
 		string filename = ChangeExtension(file, ".lyx", false);
 		// File was generated without problems. Load it.

@@ -1,8 +1,5 @@
 #include <config.h>
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/wait.h>
 #include "syscontr.h"
 
 
@@ -19,30 +16,23 @@ contr = 0;
 int SystemcallsSingletoncontroller::Startcontroller::
 refcount = 0;
 
-// default constructor. 
-// Nothing to do at moment.
 SystemcallsSingletoncontroller::Startcontroller::
-Startcontroller() 
-{
+Startcontroller() {
 }
 
-// default destructor.
-// Nothing to do at moment
 SystemcallsSingletoncontroller::Startcontroller::
-~Startcontroller() 
-{
+~Startcontroller() {
 }
 
 // Give reference to global controller-instance
 // 
 SystemcallsSingletoncontroller *
-SystemcallsSingletoncontroller::Startcontroller::
-GetController()
+SystemcallsSingletoncontroller::Startcontroller::getController()
 { 
-	if (! contr) 
-		{ // generate the global controller
-                        contr = new SystemcallsSingletoncontroller;
-		}
+	if (!contr) { 
+		// Create the global controller
+                contr = new SystemcallsSingletoncontroller;
+	}
 	refcount++;
 	return contr;
 }

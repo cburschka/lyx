@@ -9,42 +9,27 @@
 
 class Systemcalls;
 
-///
-class SystemcallsSingletoncontroller{
+class SystemcallsSingletoncontroller {
 public:
-	///
-	class Startcontroller{
+	class Startcontroller {
 	public:
-		///
 		Startcontroller();
-		///
                 ~Startcontroller();
-		///
-		static SystemcallsSingletoncontroller *GetController();
-		///
-                void ReduceRefcount() { refcount--; }
+		static SystemcallsSingletoncontroller * getController();
+                void reduceRefcount() { refcount--; }
 	private:
-		///
-		static SystemcallsSingletoncontroller *contr;
-		///
+		static SystemcallsSingletoncontroller * contr;
                 static int refcount;
         };
-	///
 	~SystemcallsSingletoncontroller();
-	///
-	void AddCall(Systemcalls const &newcall);
-	///
-	void Timer();
+	void addCall(Systemcalls const & newcall);
+	void timer();
 	// private: // DEC cxx does not like that (JMarc)
-	///
 	SystemcallsSingletoncontroller();
 private:
-	///
 	struct ControlledCalls {
-		///
 		Systemcalls *call;
-		///
-		ControlledCalls *next; };
-	///
-	ControlledCalls *SysCalls;
+		ControlledCalls *next; 
+	};
+	ControlledCalls * sysCalls;
 };

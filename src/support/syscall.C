@@ -4,87 +4,101 @@
 #pragma implementation
 #endif
 
+#include <errno.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <signal.h>
 #include <cstdlib>
 #include <cstdio>
-#include "debug.h"
 #include <unistd.h>
+#include "debug.h"
 #include "syscall.h"
 #include "syscontr.h"
 #include "support/lstrings.h"
 
-//----------------------------------------------------------------------
-// Class, which controlls a system-call
-//----------------------------------------------------------------------
-
-// constructor
-Systemcalls::Systemcalls()
-{
-	pid = (pid_t) 0; // yet no child
+Systemcalls::Systemcalls() {
+	pid = (pid_t) 0; // No child yet
 }
 
-// constructor
-// 
-// starts child
-Systemcalls::Systemcalls(Starttype how, string what, Callbackfct cback)
+Systemcalls::Systemcalls(Starttype how, string const & what, Callbackfct cback)
 {
 	start   = how;
 	command = what;
 	cbk     = cback;
-	pid     = (pid_t) 0; // no child yet
+	pid     = (pid_t) 0;
 	retval  = 0;
-	Startscript();
+	startscript();
 }
 
-// destructor
-// not yet implemented (?)
-Systemcalls::~Systemcalls()
-{
+Systemcalls::~Systemcalls() {
+#if 0
+	// If the child is alive, we have to brutally kill it
+	if (getpid() != 0) {
+		::kill(getpid(), SIGKILL);
+	}
+#endif
 }
 
 // Start a childprocess
 // 
 // if child runs in background, add information to global controller.
 
-int Systemcalls::Startscript()
-{
+int Systemcalls::startscript() {
 	retval = 0;
 	switch (start) {
 	case System: 
 		retval = system(command.c_str());
-		Callback();
+		callback();
 		break;
 	case Wait:   
-		pid = Fork();
+		pid = fork();
 		if (pid>0) { // Fork succesful. Wait for child
 			waitForChild();
-			Callback();
+			callback();
 		} else
 			retval = 1;
 		break;
 	case DontWait:
-		pid=Fork();
+		pid = fork();
 		if (pid>0) {
 			// Now integrate into Controller
 			SystemcallsSingletoncontroller::Startcontroller starter;
-			SystemcallsSingletoncontroller *contr=
-				starter.GetController();
-			// Add this to contr
-			contr->AddCall(*this);
+			SystemcallsSingletoncontroller * contr = starter.getController();
+			// Add this to controller
+			contr->addCall(*this);
 		} else
 			retval = 1;
 		break;
-		//default:  // error();
-		//break;
 	}
 	return retval;
 }
 
+void Systemcalls::kill(int tolerance) {
+	if (getpid() == 0) {
+		lyxerr << "LyX: Can't kill non-existing process." << endl;
+		return;
+	}
+	int ret = ::kill(getpid(), SIGHUP);
+	bool wait_for_death = true;
+	if (ret != 0) {
+		if (errno == ESRCH) {
+			// The process is already dead!
+			wait_for_death = false;
+		} else {
+			// Something is rotten - maybe we lost permissions?
+		}
+	}
+	if (wait_for_death) {
+		// Here, we should add the PID to a list of
+		// waiting processes to kill if they are not
+		// dead without tolerance seconds
+#warning Implement this using the timer of the singleton systemcontroller (Asger)
+	}
+}
+
 
 // Wait for child process to finish. Returns returncode from child.
-void Systemcalls::waitForChild()
-{
+void Systemcalls::waitForChild() {
 	// We'll pretend that the child returns 1 on all errorconditions.
 	retval = 1;
 	int status;
@@ -92,7 +106,7 @@ void Systemcalls::waitForChild()
 	while (wait) {
 		pid_t waitrpid = waitpid(pid, &status, WUNTRACED);
 		if (waitrpid == -1) {
-			perror("LyX: Error waiting for child");
+			lyxerr << "LyX: Error waiting for child:" << strerror(errno) << endl;
 			wait = false;
 		} else if (WIFEXITED(status)) {
 			// Child exited normally. Update return value.
@@ -100,18 +114,17 @@ void Systemcalls::waitForChild()
 			wait = false;
 		} else if (WIFSIGNALED(status)) {
 			lyxerr << "LyX: Child didn't catch signal "
-			       << WTERMSIG(status)
-			       <<" and died. Too bad." << endl;
+			       << WTERMSIG(status) 
+			       << "and died. Too bad." << endl;
 			wait = false;
 		} else if (WIFSTOPPED(status)) {
-			lyxerr << "LyX: Child (pid: " << pid
+			lyxerr << "LyX: Child (pid: " << pid 
 			       << ") stopped on signal "
-			       << WSTOPSIG(status)
+			       << WSTOPSIG(status) 
 			       << ". Waiting for child to finish." << endl;
 		} else {
 			lyxerr << "LyX: Something rotten happened while "
-				"waiting for child "
-			       << pid << endl;
+				"waiting for child " << pid << endl;
 			wait = false;
 		}
 	}
@@ -120,9 +133,9 @@ void Systemcalls::waitForChild()
 
 // generate child in background
 
-pid_t Systemcalls::Fork()
+pid_t Systemcalls::fork()
 {
-	pid_t cpid=fork();
+	pid_t cpid= ::fork();
 	if (cpid == 0) { // child
 		string childcommand(command); // copy
 		string rest = split(command, childcommand, ' ');
@@ -130,7 +143,7 @@ pid_t Systemcalls::Fork()
 		char *syscmd = 0; 
 		char *argv[MAX_ARGV];
 		int  index = 0;
-		bool Abbruch;
+		bool more;
 		do {
 			if (syscmd == 0) {
 				syscmd = new char[childcommand.length() + 1];
@@ -142,17 +155,17 @@ pid_t Systemcalls::Fork()
 			tmp[childcommand.length()] = '\0';
 			argv[index++] = tmp;
 			// reinit
-			Abbruch = !rest.empty();
-			if (Abbruch) 
+			more = !rest.empty();
+			if (more) 
 				rest = split(rest, childcommand, ' ');
-		} while (Abbruch);
+		} while (more);
 		argv[index] = 0;
 		// replace by command. Expand using PATH-environment-var.
 		execvp(syscmd, argv);
 		// If something goes wrong, we end up here:
-		perror("LyX: execvp failed");
+		lyxerr << "LyX: execvp failed: " << strerror(errno) << endl;
 	} else if (cpid < 0) { // error
-		perror("LyX: Could not fork");
+		lyxerr << "LyX: Could not fork: " << strerror(errno) << endl;
 	} else { // parent
 		return cpid;
 	}
@@ -162,14 +175,15 @@ pid_t Systemcalls::Fork()
 
 // Reuse of instance
 
-int Systemcalls::Startscript(Starttype how, string what, Callbackfct cback)
+int Systemcalls::startscript(Starttype how, string const & what, 
+			     Callbackfct cback)
 {
 	start   = how;
 	command = what;
 	cbk     = cback;
 	pid     = (pid_t) 0; // yet no child
 	retval	= 0;
-        return Startscript();
+        return startscript();
 }
 
 

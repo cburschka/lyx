@@ -119,6 +119,11 @@
 # Example: use this to ignore warnings about using "\ldots" instead of "..."
 #\chktex_command "chktex -n11 -n1 -n3 -n6 -n9 -22 -n25 -n30 -n38"
 
+# Define which program to use to run "tth", the LaTeX to HTML converter
+# You should include options. The default is "tth -t"
+# Example: use this to let math be italic
+#\tth_command "tth -t -i"
+
 # If you want to pass extra flags to the LinuxDoc sgml scripts, insert them
 # here. 
 # Example: the next line activates iso-latin1 support:

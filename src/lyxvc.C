@@ -386,7 +386,7 @@ int LyXVC::doVCCommand(string const & cmd)
 	lyxerr[Debug::LYXVC] << "doVCCommand: " << cmd << endl;
         Systemcalls one;
 	PathPush(_owner->filepath);
-	int ret = one.Startscript(Systemcalls::System, cmd);
+	int ret = one.startscript(Systemcalls::System, cmd);
 	PathPop();
 	return ret;
 }

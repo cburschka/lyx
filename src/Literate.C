@@ -63,8 +63,8 @@ int Literate::weave(TeXErrors &terr, MiniBuffer *minib)
         //
         tmp1 = literate_cmd + " < " + litfile + " > " + file + " 2> " + litfile + ".out";
         tmp2 = literate_filter + " < " + litfile + ".out" + " > " + litfile + ".log";
-        ret1 = one.Startscript(Systemcalls::System, tmp1);
-        ret2 = two.Startscript(Systemcalls::System, tmp2);
+        ret1 = one.startscript(Systemcalls::System, tmp1);
+        ret2 = two.startscript(Systemcalls::System, tmp2);
         lyxerr.debug() << "LITERATE {" << tmp1 << "} {" << tmp2 << "}" << endl;
 	scanres = scanLiterateLogFile(terr);
 	if (scanres & Literate::ERRORS) return scanres; // return on literate error
@@ -96,8 +96,8 @@ int Literate::build(TeXErrors &terr, MiniBuffer *minib)
         //
         tmp1 = build_cmd + ' ' + litfile + " > " + litfile + ".out 2>&1";
         tmp2 = build_filter + " < " + litfile + ".out" + " > " + litfile + ".log";
-        ret1 = one.Startscript(Systemcalls::System, tmp1);
-        ret2 = two.Startscript(Systemcalls::System, tmp2);
+        ret1 = one.startscript(Systemcalls::System, tmp1);
+        ret2 = two.startscript(Systemcalls::System, tmp2);
         scanres = scanBuildLogFile(terr);
         lyxerr[Debug::LATEX] << "Done." << endl;
 

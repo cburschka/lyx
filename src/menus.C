@@ -423,7 +423,8 @@ void Menus::ShowFileMenu(FL_OBJECT *ob, long)
 					"|as DVI...%x41"
 					"|as PostScript...%x42"
 					"|as Ascii Text...%x43"
-					"|Custom...%x44"));
+					"|as HTML...%x44"
+					"|Custom...%x45"));
         else if(LinuxDoc)
             SubFileExport=fl_defpup(FL_ObjWin(ob),
 				      _("Export%t"
@@ -443,7 +444,10 @@ void Menus::ShowFileMenu(FL_OBJECT *ob, long)
 	fl_setpup_shortcut(SubFileExport, 41, scex(_("FEX|Dd#d#D")));
 	fl_setpup_shortcut(SubFileExport, 42, scex(_("FEX|Pp#p#P")));
 	fl_setpup_shortcut(SubFileExport, 43, scex(_("FEX|Tt#t#T")));
-	fl_setpup_shortcut(SubFileExport, 44, scex(_("FEX|mM#m#M")));
+	if (!LinuxDoc && !DocBook) {
+		fl_setpup_shortcut(SubFileExport, 44, scex(_("FEX|Hh#h#H")));
+		fl_setpup_shortcut(SubFileExport, 45, scex(_("FEX|mM#m#M")));
+	}
 	
 	int FileMenu = fl_defpup(FL_ObjWin(ob),
 				 _("New..."
@@ -592,7 +596,9 @@ void Menus::ShowFileMenu(FL_OBJECT *ob, long)
 		break;
 	case 43: tmpfunc->Dispatch(LFUN_EXPORT, "ascii");
 		break;
-	case 44: tmpfunc->Dispatch(LFUN_EXPORT, "custom"); 
+	case 44: tmpfunc->Dispatch(LFUN_EXPORT, "html");
+		break;
+	case 45: tmpfunc->Dispatch(LFUN_EXPORT, "custom"); 
 		break;
 	case 17: tmpfunc->Dispatch(LFUN_QUIT); break;
 		// Lastfiles:

@@ -425,7 +425,7 @@ int LaTeX::operator()()
 	string tmp = cmd + ' ' + file + " > nul";
 #endif
         Systemcalls one;
-	return one.Startscript(Systemcalls::System, tmp);
+	return one.startscript(Systemcalls::System, tmp);
 }
 
 
@@ -442,7 +442,7 @@ bool LaTeX::runMakeIndex(string const &file)
 	string tmp = "makeindex -c -q ";
 	tmp += file;
 	Systemcalls one;
-	one.Startscript(Systemcalls::System, tmp);
+	one.startscript(Systemcalls::System, tmp);
 	return true;
 }
 
@@ -468,7 +468,7 @@ bool LaTeX::runBibTeX(string const &file)
 			string tmp="bibtex ";
 			tmp += ChangeExtension(file, string(), true);
 			Systemcalls one;
-			one.Startscript(Systemcalls::System, tmp);
+			one.startscript(Systemcalls::System, tmp);
 			return true;
 		}
 		

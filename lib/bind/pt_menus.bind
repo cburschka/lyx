@@ -51,6 +51,7 @@
 \bind "M-a e p"                 "buffer-export postscript"
 \bind "M-a e d"                 "buffer-export linuxdoc"
 \bind "M-a e t"                 "buffer-export ascii"
+\bind "M-a e h"			"buffer-export html"
 \bind "M-a e m"                 "buffer-export custom"
 \bind "M-a s"			"lyx-quit"
 \bind "M-a space"		"menu-open Arquivo" 

@@ -46,7 +46,7 @@ int Chktex::run(TeXErrors &terr)
 	string log = ChangeExtension(file, ".log", true);
 	string tmp = cmd + " -q -v0 -b0 -x " + file + " -o " + log;
         Systemcalls one;
-	int result= one.Startscript(Systemcalls::System, tmp);
+	int result= one.startscript(Systemcalls::System, tmp);
 	if (result == 0) {
 		result = scanLogFile(terr);
 	} else {

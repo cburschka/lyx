@@ -616,10 +616,10 @@ bool RunScript(Buffer *buffer, bool wait,
 #warning What should we do here?
 #endif		
 		minibuffer->Set(_("Executing command:"), cmd);
-		result = one.Startscript(Systemcalls::System, cmd);
+		result = one.startscript(Systemcalls::System, cmd);
 	} else {
 		minibuffer->Set(_("Executing command:"), cmd);
-		result = one.Startscript(wait ? Systemcalls::Wait
+		result = one.startscript(wait ? Systemcalls::Wait
 					: Systemcalls::DontWait, cmd);
 	}
 	PathPop();
@@ -1277,21 +1277,21 @@ int RunLinuxDoc(int flag, string const & filename)
 				MakeDisplayPath(filename), "'...");
 		s2 = "sgml2lyx " + lyxrc->sgml_extra_options + ' ' 
 			+ name;
-		if (one.Startscript(Systemcalls::System, s2)) 
+		if (one.startscript(Systemcalls::System, s2)) 
 			errorcode = 1;
 		break;
 	case 0: /* TeX output asked */
 		minibuffer->Set(_("Converting LinuxDoc SGML to TeX file..."));
 		s2 = "sgml2latex " + add_flags + " -o tex "
 			+ lyxrc->sgml_extra_options + ' ' + name;
-		if (one.Startscript(Systemcalls::System, s2)) 
+		if (one.startscript(Systemcalls::System, s2)) 
 			errorcode = 1;
 		break;
 	case 1: /* dvi output asked */
 		minibuffer->Set(_("Converting LinuxDoc SGML to dvi file..."));
 		s2 = "sgml2latex " + add_flags + " -o dvi "
 			+ lyxrc->sgml_extra_options + ' ' + name;
-		if (one.Startscript(Systemcalls::System, s2)) {
+		if (one.startscript(Systemcalls::System, s2)) {
 			errorcode = 1;
 		} else
 			current_view->currentBuffer()->markDviClean();
@@ -1348,7 +1348,7 @@ int RunDocBook(int flag, string const & filename)
 	case 1: /* dvi output asked */
 		minibuffer->Set(_("Converting DocBook SGML to dvi file..."));
 		s2 = "sgmltools --backend dvi " + name;
-		if (one.Startscript(Systemcalls::System, s2)) {
+		if (one.startscript(Systemcalls::System, s2)) {
 			errorcode = 1;
 		} else
 			current_view->currentBuffer()->markDviClean();

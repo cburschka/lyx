@@ -1,3 +1,23 @@
+1999-10-12  Asger Alstrup Nielsen  <alstrup@alstrup.galaxy.dk>
+
+	* src/sys*: Cleaned up the Systemcall stuff a bit. Added "kill(int)"
+	  method to the SystemCall class which can kill a process, but it's
+	  not fully implemented yet.
+
+	* src/*.C: Changed Systemcalls::Startscript() to startscript()
+
+	* src/support/FileInfo.h: Better documentation	
+
+	* src/lyxfunc.C: Added support for buffer-export html
+	
+	* src/menus.C: Added Export->As HTML...
+	
+	* lib/bind/*.bind: Added short-cut for buffer-export html
+
+	* src/lyxrc.*: Added support for new \tth_command
+	
+	* lib/lyxrc.example: Added stuff for new \tth_command
+
 1999-10-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/LaTeX.C: some no-op changes moved declaration of some
