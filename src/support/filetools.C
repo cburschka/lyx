@@ -333,18 +333,35 @@ i18nLibFileSearch(string const & dir, string const & name,
 }
 
 
-string const LibScriptSearch(string const & command)
+string const LibScriptSearch(string const & command_in)
 {
-	string script;
-	string args = command;
-	args = split(args, script, ' ');
-	script = LibFileSearch("scripts", script);
-	if (script.empty())
+	string const token_scriptpath("$$s/");
+
+	string command = command_in;
+	// Find the starting position of "$$s/"
+	string::size_type const pos1 = command.find(token_scriptpath);
+	if (pos1 == string::npos)
 		return command;
-	else if (args.empty())
-		return script;
-	else
-		return script + ' ' + args;
+	// Find the end of the "$$s/some_script" word within command
+	string::size_type const start_script = pos1 + 4;
+	string::size_type const pos2 = command.find(' ', start_script);
+	string::size_type const size_script = pos2 == string::npos?
+		(command.size() - start_script) : pos2 - start_script;
+
+	// Does this script file exist?
+	string const script =
+		LibFileSearch("scripts", command.substr(start_script, size_script));
+
+	if (script.empty()) {
+		// Replace "$$s/" with ""
+		command.erase(pos1, 4);
+	} else {
+		// Replace "$$s/some_script" with "$LYX_SCRIPT_PATH/some_script"
+		string::size_type const size_replace = size_script + 4;
+		command.replace(pos1, size_replace, script);
+	}
+
+	return command;
 }
 
 

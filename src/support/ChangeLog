@@ -1,3 +1,9 @@
+2003-05-30  Angus Leeming  <leeming@lyx.org>
+
+	* filetools.C (LibScriptSearch): make it search for "$$s/" and replace
+	this with the path to the script. If the script is not found, the "$$s/"
+	string is removed.
+
 2003-05-22  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
 	* lstrings.[Ch] (prefixIs,suffixIs,subst): remove variants taking
