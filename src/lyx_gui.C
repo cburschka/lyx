@@ -142,8 +142,11 @@ LyXGUI::LyXGUI(LyX * owner, int * argc, char * argv[], bool GUI)
 	XSetErrorHandler(LyX_XErrHandler);
 
 	// A width less than 590 pops up an awkward main window
-	if (width < 590) width = 590;
-
+	// The minimal values of width/height (590/400) are defined in
+	// src/lyx.C  
+        if (width < 590) width = 590;
+	if (height < 400) height = 400;
+	
 	// If width is not set by geometry, check it against monitor width
 	if ( !(geometryBitmask & 4) ) {
 		Screen * scr = DefaultScreenOfDisplay(fl_get_display());
