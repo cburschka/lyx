@@ -50,7 +50,7 @@ struct BufferView::Pimpl : public SigC::Object {
 	///
 	void scrollCB(double value);
 	///
-	Inset * checkInsetHit(int & x, int & y, unsigned int button);
+	Inset * checkInsetHit(LyXText *, int & x, int & y, unsigned int button);
 	/// 
 	int scrollUp(long time);
 	///

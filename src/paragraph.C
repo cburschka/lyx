@@ -4403,8 +4403,8 @@ void LyXParagraph::deleteInsetsLyXText(BufferView * bv)
 	     cit != insetlist.end(); ++cit) {
 		if ((*cit).inset) {
 			if ((*cit).inset->IsTextInset()) {
-				static_cast<InsetText *>((*cit).inset)->
-					deleteLyXText(bv);
+				static_cast<UpdatableInset *>
+					((*cit).inset)->deleteLyXText(bv);
 			}
 		}
 	}

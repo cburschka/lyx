@@ -38,15 +38,20 @@ class LyXScreen;
 class InsetText : public UpdatableInset {
 public:
     ///
-    enum { TEXT_TO_INSET_OFFSET = 2 };
-    ///
     enum UpdateCodes {
 	NONE = 0,
 	INIT,
 	FULL,
 	CURSOR_PAR,
 	CURSOR,
-	SELECTION
+	SELECTION,
+	FRAME
+    };
+    ///
+    enum DrawFrame {
+	NEVER = 0,
+	LOCKED,
+	ALWAYS
     };
     ///
     explicit
@@ -132,15 +137,17 @@ public:
     ///
     void init(InsetText const * ins = 0);
     ///
+    void WriteParagraphData(Buffer const *, std::ostream &) const;
+    ///
     void SetParagraphData(LyXParagraph *);
     ///
     void SetAutoBreakRows(bool);
     ///
-    void SetDrawLockedFrame(bool);
+    void SetDrawFrame(BufferView *, DrawFrame);
     ///
-    void SetFrameColor(LColor::color);
+    void SetFrameColor(BufferView *, LColor::color);
     ///
-    LyXFont GetDrawFont(BufferView *, LyXParagraph *, int pos) const;
+//    LyXFont GetDrawFont(BufferView *, LyXParagraph *, int pos) const;
     ///
     LyXText * getLyXText(BufferView *) const;
     void deleteLyXText(BufferView *);
@@ -151,15 +158,13 @@ protected:
     ///
     void UpdateLocal(BufferView *, UpdateCodes, bool mark_dirty);
     ///
-    void WriteParagraphData(Buffer const *, std::ostream &) const;
-    ///
     virtual int getMaxTextWidth(Painter &, UpdatableInset const *) const;
 
     mutable int drawTextXOffset;
     mutable int drawTextYOffset;
     ///
     bool autoBreakRows;
-    bool drawLockedFrame;
+    DrawFrame drawFrame;
     ///
     LColor::color frame_color;
     ///
@@ -189,6 +194,7 @@ private:
     ///
     string getText(int);
     ///
+    bool checkAndActivateInset(BufferView * bv, bool behind);
     bool checkAndActivateInset(BufferView * bv, int x = 0, int y = 0,
 			       int button = 0);
     ///
@@ -213,6 +219,8 @@ private:
     mutable int last_width;
     mutable int last_height;
     mutable int top_y;
+    ///
+    LyXParagraph * inset_par;
     ///
     int inset_pos;
     ///

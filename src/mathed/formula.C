@@ -735,28 +735,38 @@ InsetFormula::LocalDispatch(BufferView * bv,
     case LFUN_RIGHT:
       {
 	 result = DISPATCH_RESULT(mathcursor->Right(sel));
+	 if (!sel && (result == DISPATCHED))
+	     result = DISPATCHED_NOUPDATE;
 	 break;
       }
     case LFUN_LEFTSEL: sel = true;     
     case LFUN_LEFT:
       {
 	 result = DISPATCH_RESULT(mathcursor->Left(sel));
+	 if (!sel && (result == DISPATCHED))
+	     result = DISPATCHED_NOUPDATE;
 	 break;
       }
     case LFUN_UPSEL: sel = true;  
     case LFUN_UP:
       result = DISPATCH_RESULT(mathcursor->Up(sel));
+      if (!sel && (result == DISPATCHED))
+	  result = DISPATCHED_NOUPDATE;
       break;
        
     case LFUN_DOWNSEL: sel = true;  
     case LFUN_DOWN:
       result = DISPATCH_RESULT(mathcursor->Down(sel));
+      if (!sel && (result == DISPATCHED))
+	  result = DISPATCHED_NOUPDATE;
       break;
     case LFUN_HOME:
       mathcursor->Home();
+      result = DISPATCHED_NOUPDATE;
       break;
     case LFUN_END:
       mathcursor->End();
+      result = DISPATCHED_NOUPDATE;
       break;
     case LFUN_DELETE_LINE_FORWARD:
 	    //current_view->lockedInsetStoreUndo(Undo::INSERT);
@@ -1190,7 +1200,7 @@ InsetFormula::LocalDispatch(BufferView * bv,
    if (mathcursor->Selection() || was_selection)
        ToggleInsetSelection(bv);
     
-   if (result == DISPATCHED)
+   if ((result == DISPATCHED) || (result == DISPATCHED_NOUPDATE))
       ShowInsetCursor(bv);
    else
       bv->unlockInset(this);

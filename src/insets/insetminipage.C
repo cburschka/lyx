@@ -19,6 +19,7 @@
 #include "BufferView.h"
 #include "Painter.h"
 #include "lyxtext.h"
+#include "insets/insettext.h"
 #include "support/LOstream.h"
 
 using std::ostream;
@@ -77,7 +78,7 @@ void InsetMinipage::Write(Buffer const * buf, ostream & os) const
 Inset * InsetMinipage::Clone() const
 {
 	InsetMinipage * result = new InsetMinipage;
-	result->init(this);
+	result->inset->init(inset);
 	
 	result->collapsed = collapsed;
 	return result;
@@ -95,32 +96,32 @@ int InsetMinipage::Latex(Buffer const * buf,
 {
 	os << "\\begin{minipage}{\\columnwidth}%\n";
 	
-	int i = InsetText::Latex(buf, os, fragile, fp);
+	int i = inset->Latex(buf, os, fragile, fp);
 	os << "\\end{minipage}%\n";
 	
 	return i + 2;
 }
 
 
-bool InsetMinipage::InsertInset(BufferView * bv, Inset * inset)
+bool InsetMinipage::InsertInset(BufferView * bv, Inset * in)
 {
-	if (!InsertInsetAllowed(inset))
+	if (!InsertInsetAllowed(in))
 		return false;
 	
-	return InsetText::InsertInset(bv, inset);
+	return inset->InsertInset(bv, in);
 }
 
 
-bool InsetMinipage::InsertInsetAllowed(Inset * inset) const
+bool InsetMinipage::InsertInsetAllowed(Inset * in) const
 {
-	if ((inset->LyxCode() == Inset::FLOAT_CODE) ||
-	    (inset->LyxCode() == Inset::MARGIN_CODE)) {
+	if ((in->LyxCode() == Inset::FLOAT_CODE) ||
+	    (in->LyxCode() == Inset::MARGIN_CODE)) {
 		return false;
 	}
 	return true;
 }
 
-
+#if 0
 LyXFont InsetMinipage::GetDrawFont(BufferView * bv,
 				   LyXParagraph * p, int pos) const
 {
@@ -128,3 +129,4 @@ LyXFont InsetMinipage::GetDrawFont(BufferView * bv,
 	fn.decSize().decSize();
 	return fn;
 }
+#endif

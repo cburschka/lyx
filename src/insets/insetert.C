@@ -18,6 +18,7 @@
 #include "lyxfont.h"
 #include "Painter.h"
 #include "buffer.h"
+#include "insets/insettext.h"
 #include "support/LOstream.h"
 #include "lyx_gui_misc.h"
 
@@ -46,8 +47,8 @@ void InsetERT::Write(Buffer const * buf, ostream & os) const
 
 Inset * InsetERT::Clone() const
 {
-    InsetERT * result = new InsetERT();
-    result->init(this);
+    InsetERT * result = new InsetERT;
+    result->inset->init(inset);
 
     result->collapsed = collapsed;
     return result;

@@ -26,6 +26,7 @@
 class BufferView;
 class Buffer;
 class Painter;
+class LyXText;
 
 struct LaTeXFeatures;
 
@@ -101,6 +102,9 @@ public:
 		///
 		EXTERNAL_CODE
 	};
+
+	///
+	enum { TEXT_TO_INSET_OFFSET = 2 };
 
 	enum EDITABLE {
 	    NOT_EDITABLE = 0,
@@ -181,9 +185,13 @@ public:
 	virtual bool DirectWrite() const;
 
 	/// Returns true if the inset should be centered alone
-	virtual bool display() const { return false; }  
+	virtual bool display() const { return false; }
 	/// Changes the display state of the inset
-	virtual void display(bool) {}  
+	virtual void display(bool) {}
+	///
+	/// returns true if this inset needs a row on it's own
+	///
+	virtual bool needFullRow() const { return false; }
 	///
 	virtual bool InsertInsetAllowed(Inset *) const { return false; }
 	///
@@ -326,6 +334,11 @@ public:
 	virtual bool isCursorVisible() const { return cursor_visible; }
 	///
 	virtual int getMaxWidth(Painter & pain, UpdatableInset const *) const;
+	///
+	/// because we could have fake text insets and have to call this
+	/// inside them without cast!!!
+	virtual LyXText * getLyXText(BufferView *) const { return 0; }
+	virtual void deleteLyXText(BufferView *) {}
 
 protected:
 	///

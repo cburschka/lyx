@@ -17,18 +17,25 @@
 #pragma interface
 #endif
 
-#include "insettext.h"
+#include "lyxinset.h"
 #include "lyxfont.h"
 #include "LColor.h"
 
 
 class Painter;
+class InsetText;
+class LyXText;
 
 /** A colapsable text inset
   
 */
-class InsetCollapsable : public InsetText {
+class InsetCollapsable : public UpdatableInset {
 public:
+    ///
+    enum UpdateCodes {
+	NONE = 0,
+	FULL
+    };
     ///
     static int const TEXT_TO_TOP_OFFSET = 2;
     ///
@@ -59,15 +66,51 @@ public:
     ///
     EDITABLE Editable() const;
     ///
+    bool IsTextInset() const { return true; }
+    ///
+    bool doClearArea() const;
+    ///
     void InsetUnlock(BufferView *);
     ///
-    bool display() const { return (!collapsed); }
+    bool needFullRow() const { return !collapsed; }
+    ///
+    bool LockInsetInInset(BufferView *, UpdatableInset *);
+    ///
+    bool UnlockInsetInInset(BufferView *, UpdatableInset *, bool lr = false);
+    ///
+    bool UpdateInsetInInset(BufferView *, Inset *);
+    ///
+    int InsetInInsetY();
     ///
     void InsetButtonRelease(BufferView *, int, int, int);
     ///
     void InsetButtonPress(BufferView *, int, int, int);
     ///
     void InsetMotionNotify(BufferView *, int, int, int);
+    ///
+    void InsetKeyPress(XKeyEvent *);
+    ///
+    UpdatableInset::RESULT LocalDispatch(BufferView *, int, string const &);
+    ///
+    int Latex(Buffer const *, std::ostream &, bool fragile, bool free_spc) const;
+    ///
+    int Ascii(Buffer const *, std::ostream &) const { return 0; }
+    ///
+    int Linuxdoc(Buffer const *, std::ostream &) const { return 0; }
+    ///
+    int DocBook(Buffer const *, std::ostream &) const { return 0; }
+    ///
+    void Validate(LaTeXFeatures & features) const;
+    ///
+    void GetCursorPos(BufferView *, int & x, int & y) const;
+    ///
+    void ToggleInsetCursor(BufferView *);
+    ///
+    UpdatableInset * GetLockingInset();
+    ///
+    UpdatableInset * GetFirstLockingInsetOfType(Inset::Code);
+    ///
+    void SetFont(BufferView *, LyXFont const &, bool toggleall = false);
     ///
     void setLabel(string const & l) { label = l; }
     ///
@@ -76,6 +119,9 @@ public:
     void setAutoCollapse(bool f) { autocollapse = f; }
     ///
     int getMaxWidth(Painter & pain, UpdatableInset const *) const;
+    ///
+    LyXText * getLyXText(BufferView *) const;
+    void deleteLyXText(BufferView *);
 
 protected:
     ///
@@ -95,24 +141,27 @@ protected:
     LColor::color framecolor;
     ///
     LyXFont labelfont;
+    ///
+    InsetText * inset;
+    // Instead of making these ints protected we could have a
+    // protected method "clickInButton" (Lgb)
+    ///
+    mutable int
+	button_length, button_top_y, button_bottom_y;
 
 private:
     ///
     string label;
     ///
     bool autocollapse;
-protected:
-	// Instead of making these ints protected we could have a
-	// protected method "clickInButton" (Lgb)
     ///
-    mutable int
-	button_length, button_top_y, button_bottom_y;
-private:
+    int widthCollapsed;
     ///
-    int widthOffset;
+    int oldWidth;
     ///
     mutable int topx;
     mutable int topbaseline;
+    mutable UpdateCodes need_update;
 };
 
 #endif

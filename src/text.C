@@ -565,8 +565,9 @@ void LyXText::draw(BufferView * bview, Row const * row,
 	} else
 #endif
 		if (c == LyXParagraph::META_INSET) {
-		Inset const * tmpinset = row->par()->GetInset(pos);
+		Inset * tmpinset = row->par()->GetInset(pos);
 		if (tmpinset) {
+			tmpinset->update(bview, font);
 			tmpinset->draw(bview, font, offset+row->baseline(), x,
 				       cleared);
 		}
@@ -1095,25 +1096,30 @@ LyXText::NextBreakPoint(BufferView * bview, Row const * row, int width) const
 			par->Last();
 		// this is the usual handling
 		int x = LeftMargin(bview, row);
-		while (x < width && i < last) {
+		bool doitonetime = true;
+		while (doitonetime || ((x < width) && (i < last))) {
+			doitonetime = false;
 			char c = par->GetChar(i);
 			if (IsNewlineChar(c)) {
 				last_separator = i;
 				x = width; // this means break
 			} else if (c == LyXParagraph::META_INSET &&
-				   par->GetInset(i) && par->GetInset(i)->display()){
+				   par->GetInset(i)) {
+				
 				// check wether a Display() inset is
 				// valid here. if not, change it to
 				// non-display
-				if (layout.isCommand()
-				    || (layout.labeltype == LABEL_MANUAL
-					&& i < BeginningOfMainBody(bview->buffer(), par))){
+				if (par->GetInset(i)->display() &&
+				    (layout.isCommand() ||
+				     ((layout.labeltype == LABEL_MANUAL) &&
+				      (i < BeginningOfMainBody(bview->buffer(), par))))) {
 					// display istn't allowd
 					par->GetInset(i)->display(false);
 					x += SingleWidth(bview, par, i, c);
-				} else {
-					// inset is display. So break the line here
-					if (i == pos){
+				} else if (par->GetInset(i)->display() ||
+					 par->GetInset(i)->needFullRow()) {
+					// So break the line here
+					if (i == pos) {
 						if (pos < last-1) {
 							last_separator = i;
 							if (IsLineSeparatorChar(par->GetChar(i+1)))
@@ -1123,6 +1129,13 @@ LyXText::NextBreakPoint(BufferView * bview, Row const * row, int width) const
 					} else
 						last_separator = i - 1;
 					x = width;  // this means break
+				} else {
+#if 0
+					last_separator = i;
+					x += width;
+#else
+					x += SingleWidth(bview, par, i, c);
+#endif
 				}
 			} else  {
 				if (IsLineSeparatorChar(c))
@@ -2761,7 +2774,8 @@ void LyXText::InsertChar(BufferView * bview, char c)
 	// the display inset stuff
 	if (cursor.row()->par()->GetChar(cursor.row()->pos()) == LyXParagraph::META_INSET
 	    && cursor.row()->par()->GetInset(cursor.row()->pos())
-	    && cursor.row()->par()->GetInset(cursor.row()->pos())->display())
+	    && (cursor.row()->par()->GetInset(cursor.row()->pos())->display() ||
+		cursor.row()->par()->GetInset(cursor.row()->pos())->needFullRow()))
 		cursor.row()->fill(-1); // to force a new break  
 
 	// get the cursor row fist
@@ -3608,7 +3622,8 @@ void LyXText::Backspace(BufferView * bview)
 				return; 
 			// force complete redo when erasing display insets
 			// this is a cruel method but safe..... Matthias 
-			if (cursor.par()->GetInset(cursor.pos())->display()){
+			if (cursor.par()->GetInset(cursor.pos())->display() ||
+			    cursor.par()->GetInset(cursor.pos())->needFullRow()) {
 				cursor.par()->Erase(cursor.pos());
 				RedoParagraph(bview);
 				return;
@@ -3787,7 +3802,7 @@ void LyXText::Backspace(BufferView * bview)
 
 
 void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
-			    Row * row_ptr, long y)
+			    Row * row_ptr, long y, bool cleared)
 {
 	/* returns a printed row */
 	Painter & pain = bview->painter();
@@ -3810,6 +3825,8 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	PrepareToPrint(bview, row_ptr, x, fill_separator,
 		       fill_hfill, fill_label_hfill);
 	
+	if (inset_owner && (x < 0))
+		x = 0;
 	x += x_offset;
 	
 	// clear the area where we want to paint/print
@@ -3825,7 +3842,9 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 	{
 		clear_area = inset->doClearArea();
 	}
-	if (clear_area) {
+	if (cleared) { // we don't need to clear it's already done!!!
+		clear_area = true;
+	} else if (clear_area) {
 		int w;
 		if (inset_owner)
 			w = inset_owner->width(bview->painter(), font);

@@ -19,6 +19,7 @@
 #include "BufferView.h"
 #include "Painter.h"
 #include "lyxtext.h"
+#include "insets/insettext.h"
 #include "support/LOstream.h"
 
 using std::ostream;
@@ -59,7 +60,7 @@ void InsetList::Write(Buffer const * buf, ostream & os) const
 Inset * InsetList::Clone() const
 {
 	InsetList * result = new InsetList;
-	result->init(this);
+	result->inset->init(inset);
 	
 	result->collapsed = collapsed;
 	return result;
@@ -77,35 +78,36 @@ int InsetList::Latex(Buffer const * buf,
 {
 	os << "\\footnote{%\n";
 	
-	int i = InsetText::Latex(buf, os, fragile, fp);
+	int i = inset->Latex(buf, os, fragile, fp);
 	os << "}%\n";
 	
 	return i + 2;
 }
 
 
-bool InsetList::InsertInset(BufferView * bv, Inset * inset)
+bool InsetList::InsertInset(BufferView * bv, Inset * in)
 {
-	if (!InsertInsetAllowed(inset))
+	if (!InsertInsetAllowed(in))
 		return false;
 	
-	return InsetText::InsertInset(bv, inset);
+	return inset->InsertInset(bv, in);
 }
 
 
-bool InsetList::InsertInsetAllowed(Inset * inset) const
+bool InsetList::InsertInsetAllowed(Inset * in) const
 {
-	if ((inset->LyxCode() == Inset::FOOT_CODE) ||
-	    (inset->LyxCode() == Inset::MARGIN_CODE)) {
+	if ((in->LyxCode() == Inset::FOOT_CODE) ||
+	    (in->LyxCode() == Inset::MARGIN_CODE)) {
 		return false;
 	}
 	return true;
 }
 
-
+#if 0
 LyXFont InsetList::GetDrawFont(BufferView * bv,LyXParagraph * p, int pos) const
 {
 	LyXFont fn = getLyXText(bv)->GetFont(bv->buffer(), p, pos);
 	fn.decSize().decSize();
 	return fn;
 }
+#endif

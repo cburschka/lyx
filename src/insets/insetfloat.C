@@ -19,6 +19,7 @@
 #include "BufferView.h"
 #include "Painter.h"
 #include "lyxtext.h"
+#include "insets/insettext.h"
 #include "support/LOstream.h"
 #include "FloatList.h"
 #include "LaTeXFeatures.h"
@@ -130,7 +131,7 @@ void InsetFloat::Validate(LaTeXFeatures & features) const
 Inset * InsetFloat::Clone() const
 {
     InsetFloat * result = new InsetFloat;
-    result->init(this);
+    result->inset->init(inset);
 
     result->collapsed = collapsed;
     return result;
@@ -152,32 +153,32 @@ int InsetFloat::Latex(Buffer const * buf,
 		os << "[" << floatPlacement << "]";
 	os << "%\n";
     
-    int i = InsetText::Latex(buf, os, fragile, fp);
+    int i = inset->Latex(buf, os, fragile, fp);
     os << "\\end{" << floatType << "}%\n";
     
     return i + 2;
 }
 
 
-bool InsetFloat::InsertInset(BufferView * bv, Inset * inset)
+bool InsetFloat::InsertInset(BufferView * bv, Inset * in)
 {
-    if (!InsertInsetAllowed(inset))
+    if (!InsertInsetAllowed(in))
 	return false;
 
-    return InsetText::InsertInset(bv, inset);
+    return inset->InsertInset(bv, in);
 }
 
 
-bool InsetFloat::InsertInsetAllowed(Inset * inset) const
+bool InsetFloat::InsertInsetAllowed(Inset * in) const
 {
-    if ((inset->LyxCode() == Inset::FOOT_CODE) ||
-	(inset->LyxCode() == Inset::MARGIN_CODE)) {
+    if ((in->LyxCode() == Inset::FOOT_CODE) ||
+	(in->LyxCode() == Inset::MARGIN_CODE)) {
 	return false;
     }
     return true;
 }
 
-
+#if 0
 LyXFont InsetFloat::GetDrawFont(BufferView * bv,
 				LyXParagraph * p, int pos) const
 {
@@ -185,7 +186,7 @@ LyXFont InsetFloat::GetDrawFont(BufferView * bv,
     fn.decSize().decSize();
     return fn;
 }
-
+#endif
 
 void InsetFloat::InsetButtonRelease(BufferView * bv, int x, int y, int button)
 {

@@ -168,7 +168,7 @@ void LyXTabular::Init(int rows_arg, int columns_arg)
     for (i = 0; i < rows_; ++i) {
         for (j = 0; j < columns_; ++j) {
 	    cell_info[i][j].inset.setOwner(owner_);
-	    cell_info[i][j].inset.SetDrawLockedFrame(true);
+	    cell_info[i][j].inset.SetDrawFrame(0, InsetText::LOCKED);
             cell_info[i][j].cellno = cellno++;
         }
     }

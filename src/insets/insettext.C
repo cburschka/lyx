@@ -56,10 +56,6 @@ using std::max;
 
 extern unsigned char getCurrentTextClass(Buffer *);
 
-// Jürgen, we don't like macros, even small ones like this. (Lgb)
-//#define TEXT(a) getLyXText(a)
-// I created a inline function in insettext.h instead. (Lgb)
-
 InsetText::InsetText()
 {
     par = new LyXParagraph();
@@ -93,12 +89,13 @@ void InsetText::init(InsetText const * ins)
     no_selection = false;
     need_update = INIT;
     drawTextXOffset = drawTextYOffset = 0;
-    autoBreakRows = drawLockedFrame = false;
+    autoBreakRows = false;
+    drawFrame = NEVER;
     xpos = 0.0;
     if (ins) {
 	SetParagraphData(ins->par);
 	autoBreakRows = ins->autoBreakRows;
-	drawLockedFrame = ins->drawLockedFrame;
+	drawFrame = ins->drawFrame;
     }
     par->SetInsetOwner(this);
     frame_color = LColor::insetframe;
@@ -210,7 +207,21 @@ int InsetText::width(Painter &, LyXFont const &) const
 
 int InsetText::textWidth(Painter & pain) const
 {
-    return getMaxTextWidth(pain, this) - drawTextXOffset;
+    int w = getMaxWidth(pain, this);
+    if (w < 0) {
+//	printf("WW1: %d\n",w);
+	return w;
+    }
+#if 0
+    if (owner()) {
+	w = w - top_x + owner()->x();
+	printf("WW2: %d\n",w);
+	return w; // - top_x + owner()->x();
+    }
+#endif
+    w -= (2 * TEXT_TO_INSET_OFFSET);
+//    printf("WW2: %d\n",w);
+    return w; // - top_x - (2 * TEXT_TO_INSET_OFFSET);
 }
 
 
@@ -248,7 +259,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
     last_width = width(pain, f);
     last_height = ascent(pain, f) + descent(pain, f);
 
-    if (the_locking_inset && (cpos(bv) == inset_pos)) {
+    if (the_locking_inset && (cpar(bv) == inset_par) && (cpos(bv) == inset_pos)) {
 	inset_x = cx(bv) - top_x + drawTextXOffset;
 	inset_y = cy(bv) + drawTextYOffset;
     }
@@ -263,7 +274,7 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
     y += baseline - row->ascent_of_text() + 1;
     if (cleared || !locked || (need_update == FULL)) {
 	while (row != 0) {
-	    TEXT(bv)->GetVisibleRow(bv, y, x, row, y);
+	    TEXT(bv)->GetVisibleRow(bv, y, x, row, y, cleared);
 	    y += row->height();
 	    row = row->next();
 	}
@@ -276,12 +287,12 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
     }
     TEXT(bv)->refresh_y = 0;
     TEXT(bv)->status = LyXText::UNCHANGED;
-    if (drawLockedFrame && locked) {
-	    pain.rectangle(top_x, baseline - ascent(pain, f), width(pain, f),
-			   ascent(pain,f) + descent(pain, f), frame_color);
+    if ((drawFrame == ALWAYS) || ((drawFrame == LOCKED) && locked)) {
+	    pain.rectangle(top_x, baseline - insetAscent, insetWidth,
+			   insetAscent + insetDescent, frame_color);
     } else {
-	    pain.rectangle(top_x, baseline - ascent(pain, f), width(pain, f),
-			   ascent(pain,f) + descent(pain, f),
+	    pain.rectangle(top_x, baseline - insetAscent, insetWidth,
+			   insetAscent + insetDescent,
 			   LColor::background);
     }
     x += width(pain, f) - TEXT_TO_INSET_OFFSET;
@@ -297,19 +308,66 @@ void InsetText::update(BufferView * bv, LyXFont const & font, bool dodraw)
 	deleteLyXText(bv);
 	need_update = FULL;
     }
+    int oldw = insetWidth;
+#if 1
+    insetWidth = max(textWidth(bv->painter()),
+		     static_cast<int>(TEXT(bv)->width) + drawTextXOffset) +
+	(2 * TEXT_TO_INSET_OFFSET);
+#else
+    insetWidth = textWidth(bv->painter());
+    if (insetWidth < 0)
+	    insetWidth = static_cast<int>(TEXT(bv)->width);
+#endif
+    if (oldw != insetWidth) {
+	    printf("TW(%p): %d-%d-%d-%d\n",this,insetWidth, oldw,
+		   textWidth(bv->painter()),static_cast<int>(TEXT(bv)->width));
+	deleteLyXText(bv);
+#if 0
+	if (owner()) {
+		owner()->update(bv, font, dodraw);
+		return;
+	}
+#else
+#if 1
+	update(bv, font, dodraw);
+#else
+	UpdateLocal(bv, INIT, false);
+#endif
+#endif
+	return;
+    }
     if (dodraw && (need_update != CURSOR))
 	    need_update = FULL;
 
     TEXT(bv)->FullRebreak(bv);
+
+    if ((need_update==CURSOR_PAR) && (TEXT(bv)->status==LyXText::UNCHANGED) &&
+	the_locking_inset)
+    {
+	TEXT(bv)->UpdateInset(bv, the_locking_inset);
+    }
 
     long int y_temp = 0;
     Row * row = TEXT(bv)->GetRowNearY(y_temp);
     insetAscent = row->ascent_of_text() + TEXT_TO_INSET_OFFSET;
     insetDescent = TEXT(bv)->height - row->ascent_of_text() +
 	TEXT_TO_INSET_OFFSET;
-    insetWidth = max(textWidth(bv->painter()),
-		     static_cast<int>(TEXT(bv)->width)) +
-	(2 * TEXT_TO_INSET_OFFSET);
+}
+
+
+void InsetText::UpdateLocal(BufferView * bv, UpdateCodes what, bool mark_dirty)
+{
+    TEXT(bv)->FullRebreak(bv);
+    if (TEXT(bv)->status == LyXText::NEED_MORE_REFRESH)
+	need_update = FULL;
+    else if (!the_locking_inset || (what != CURSOR))
+	need_update = what;
+    if ((need_update != CURSOR) || (TEXT(bv)->status != LyXText::UNCHANGED))
+	    bv->updateInset(this, mark_dirty);
+    if (old_par != cpar(bv)) {
+	    bv->owner()->getToolbar()->combox->select(cpar(bv)->GetLayout()+1);
+	    old_par = cpar(bv);
+    }
 }
 
 
@@ -331,10 +389,9 @@ void InsetText::Edit(BufferView * bv, int x, int y, unsigned int button)
     locked = true;
     the_locking_inset = 0;
     inset_pos = inset_x = inset_y = 0;
-    TEXT(bv)->SetCursorFromCoordinates(bv, x-drawTextXOffset,
-				       y+TEXT(bv)->first-drawTextYOffset+
-				       insetAscent);
-    checkAndActivateInset(bv, x, y, button);
+    inset_par = 0;
+    if (!checkAndActivateInset(bv, x, y, button))
+	TEXT(bv)->SetCursorFromCoordinates(bv, x-drawTextXOffset, y);
     TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
     bv->text->FinishUndo();
     UpdateLocal(bv, FULL, false);
@@ -364,15 +421,15 @@ bool InsetText::LockInsetInInset(BufferView * bv, UpdatableInset * inset)
     if (inset == cpar(bv)->GetInset(cpos(bv))) {
 	lyxerr[Debug::INSETS] << "OK" << endl;
 	the_locking_inset = inset;
-//	resetPos(bv->painter());
 	inset_x = cx(bv) - top_x + drawTextXOffset;
 	inset_y = cy(bv) + drawTextYOffset;
 	inset_pos = cpos(bv);
+	inset_par = cpar(bv);
+	TEXT(bv)->UpdateInset(bv, the_locking_inset);
 	return true;
     } else if (the_locking_inset && (the_locking_inset == inset)) {
-	if (cpos(bv) == inset_pos) {
+	if (cpar(bv) == inset_par && cpos(bv) == inset_pos) {
 	    lyxerr[Debug::INSETS] << "OK" << endl;
-//	    resetPos(bv->painter());
 	    inset_x = cx(bv) - top_x + drawTextXOffset;
 	    inset_y = cy(bv) + drawTextYOffset;
 	} else {
@@ -398,7 +455,7 @@ bool InsetText::UnlockInsetInInset(BufferView * bv, UpdatableInset * inset,
         the_locking_inset = 0;
         if (lr)
             moveRight(bv, false);
-	UpdateLocal(bv, FULL, false);
+	UpdateLocal(bv, CURSOR_PAR, false);
         return true;
     }
     return the_locking_inset->UnlockInsetInInset(bv, inset, lr);
@@ -409,11 +466,15 @@ bool InsetText::UpdateInsetInInset(BufferView * bv, Inset * inset)
 {
     if (!the_locking_inset)
         return false;
-    if (the_locking_inset != inset)
+    if (the_locking_inset != inset) {
+	TEXT(bv)->UpdateInset(bv, the_locking_inset);
+	need_update = CURSOR_PAR;
         return the_locking_inset->UpdateInsetInInset(bv, inset);
+    }
 //    UpdateLocal(bv, FULL, false);
-    TEXT(bv)->UpdateInset(bv, inset);
-    if (cpos(bv) == inset_pos) {
+    if (TEXT(bv)->UpdateInset(bv, inset))
+	UpdateLocal(bv, CURSOR_PAR, false);
+    if (cpar(bv) == inset_par && cpos(bv) == inset_pos) {
 	inset_x = cx(bv) - top_x + drawTextXOffset;
 	inset_y = cy(bv) + drawTextYOffset;
     }
@@ -428,13 +489,13 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	UpdateLocal(bv, FULL, false);
     }
     no_selection = false;
-    TEXT(bv)->SetCursorFromCoordinates(bv, x-drawTextXOffset,
-				       y+TEXT(bv)->first-drawTextYOffset+
-				       insetAscent);
+
+    int tmp_x = x - drawTextXOffset;
+//    int tmp_y = y + TEXT(bv)->first + insetAscent;
+    int tmp_y = y + insetAscent;
+    Inset * inset = bv->checkInsetHit(TEXT(bv), tmp_x, tmp_y, button);
+
     if (the_locking_inset) {
-	UpdatableInset * inset = 0;
-	if (cpar(bv)->GetChar(cpos(bv)) == LyXParagraph::META_INSET)
-	    inset = static_cast<UpdatableInset*>(cpar(bv)->GetInset(cpos(bv)));
 	if (the_locking_inset == inset) {
 	    the_locking_inset->InsetButtonPress(bv,x-inset_x,y-inset_y,button);
 	    return;
@@ -445,7 +506,8 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	    inset_y = cy(bv) + drawTextYOffset;
 	    inset->InsetButtonPress(bv, x - inset_x, y - inset_y, button);
 	    inset->Edit(bv, x - inset_x, y - inset_y, button);
-	    UpdateLocal(bv, FULL, false);
+	    if (the_locking_inset)
+		UpdateLocal(bv, CURSOR_PAR, false);
 	    return;
 	}
 	// otherwise only unlock the_locking_inset
@@ -453,19 +515,22 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 	the_locking_inset = 0;
     }
     if (bv->the_locking_inset) {
-	if ((cpar(bv)->GetChar(cpos(bv)) == LyXParagraph::META_INSET) &&
-	    cpar(bv)->GetInset(cpos(bv)) &&
-	    (cpar(bv)->GetInset(cpos(bv))->Editable() == Inset::HIGHLY_EDITABLE)) {
-	    UpdatableInset * inset =
-		static_cast<UpdatableInset*>(cpar(bv)->GetInset(cpos(bv)));
+	if (inset && inset->Editable() == Inset::HIGHLY_EDITABLE) {
+	    UpdatableInset * uinset = static_cast<UpdatableInset*>(inset);
 	    inset_x = cx(bv) - top_x + drawTextXOffset;
 	    inset_y = cy(bv) + drawTextYOffset;
-	    inset->InsetButtonPress(bv, x - inset_x, y - inset_y, button);
-	    inset->Edit(bv, x - inset_x, y - inset_y, 0);
-	    UpdateLocal(bv, FULL, false);
+	    inset_pos = cpos(bv);
+	    inset_par = cpar(bv);
+	    uinset->InsetButtonPress(bv, x - inset_x, y - inset_y, button);
+	    uinset->Edit(bv, x - inset_x, y - inset_y, 0);
+	    if (the_locking_inset)
+		UpdateLocal(bv, CURSOR_PAR, false);
+	    return;
 	}
     }
-//    selection_start_cursor = selection_end_cursor = cursor;
+    if (!inset)
+	TEXT(bv)->SetCursorFromCoordinates(bv, x-drawTextXOffset,
+					   y+TEXT(bv)->first+insetAscent);
 }
 
 
@@ -903,11 +968,9 @@ InsetText::moveRight(BufferView * bv, bool activate_inset)
 {
     if (!cpar(bv)->next && (cpos(bv) >= cpar(bv)->Last()))
 	return FINISHED;
-    if (activate_inset && checkAndActivateInset(bv)) {
+    if (activate_inset && checkAndActivateInset(bv, false))
 	return DISPATCHED;
-    }
     TEXT(bv)->CursorRight(bv);
-//    real_current_font = current_font = GetFont(bv->buffer(), cpar(bv), cpos(bv));
     return DISPATCHED_NOUPDATE;
 }
 
@@ -918,9 +981,8 @@ InsetText::moveLeft(BufferView * bv, bool activate_inset)
     if (!cpar(bv)->previous && (cpos(bv) <= 0))
 	return FINISHED;
     TEXT(bv)->CursorLeft(bv);
-    if (activate_inset)
-	if (checkAndActivateInset(bv, -1, -1))
-	    return DISPATCHED;
+    if (activate_inset && checkAndActivateInset(bv, true))
+	return DISPATCHED;
     return DISPATCHED_NOUPDATE;
 }
 
@@ -989,32 +1051,43 @@ void InsetText::SetFont(BufferView * bv, LyXFont const & font, bool toggleall)
 }
 
 
-void InsetText::UpdateLocal(BufferView * bv, UpdateCodes what, bool mark_dirty)
+bool InsetText::checkAndActivateInset(BufferView * bv, bool behind)
 {
-    if (TEXT(bv)->status == LyXText::NEED_MORE_REFRESH)
-	need_update = FULL;
-    else
-	need_update = what;
-    if ((need_update != CURSOR) || (TEXT(bv)->status != LyXText::UNCHANGED))
-	    bv->updateInset(this, mark_dirty);
-    if (old_par != cpar(bv)) {
-	    bv->owner()->getToolbar()->combox->select(cpar(bv)->GetLayout()+1);
-	    old_par = cpar(bv);
+    if (cpar(bv)->GetChar(cpos(bv)) == LyXParagraph::META_INSET) {
+	int x, y;
+	Inset * inset =
+	    static_cast<UpdatableInset*>(cpar(bv)->GetInset(cpos(bv)));
+	LyXFont font = TEXT(bv)->GetFont(bv->buffer(), cpar(bv), cpos(bv));
+	if (behind) {
+	    x = inset->width(bv->painter(), font);
+	    y = inset->descent(bv->painter(), font);
+	} else {
+	    x = y = 0;
+	}
+	inset_x = cx(bv) - top_x + drawTextXOffset;
+	inset_y = cy(bv) + drawTextYOffset;
+	inset->Edit(bv, x-inset_x, y-inset_y, 0);
+	if (!the_locking_inset)
+	    return false;
+	UpdateLocal(bv, CURSOR_PAR, false);
+	return true;
     }
+    return false;
 }
 
 
 bool InsetText::checkAndActivateInset(BufferView * bv, int x, int y,
 				      int button)
 {
-    if (cpar(bv)->GetChar(cpos(bv)) == LyXParagraph::META_INSET) {
-	UpdatableInset * inset =
-	    static_cast<UpdatableInset*>(cpar(bv)->GetInset(cpos(bv)));
-	LyXFont font = TEXT(bv)->GetFont(bv->buffer(), cpar(bv), cpos(bv));
+    int tmp_x = x - drawTextXOffset;
+    int tmp_y = y + insetAscent;
+    Inset * inset = bv->checkInsetHit(TEXT(bv), tmp_x, tmp_y, button);
+
+    if (inset) {
 	if (x < 0)
-	    x = inset->width(bv->painter(), font);
+	    x = insetWidth;
 	if (y < 0)
-	    y = inset->descent(bv->painter(), font);
+	    y = insetDescent;
 	inset_x = cx(bv) - top_x + drawTextXOffset;
 	inset_y = cy(bv) + drawTextYOffset;
 	inset->Edit(bv, x - inset_x, y - inset_y, button);
@@ -1070,25 +1143,31 @@ void InsetText::SetAutoBreakRows(bool flag)
 }
 
 
-void InsetText::SetDrawLockedFrame(bool flag)
+void InsetText::SetDrawFrame(BufferView * bv, DrawFrame how)
 {
-    if (flag != drawLockedFrame)
-	drawLockedFrame = flag;
+    if (how != drawFrame) {
+	drawFrame = how;
+	if (bv)
+	    UpdateLocal(bv, FRAME, false);
+    }
 }
 
 
-void InsetText::SetFrameColor(LColor::color col)
+void InsetText::SetFrameColor(BufferView * bv, LColor::color col)
 {
-    if (frame_color != col)
+    if (frame_color != col) {
 	frame_color = col;
+	if (bv)
+	    UpdateLocal(bv, FRAME, false);
+    }
 }
 
-
+#if 0
 LyXFont InsetText::GetDrawFont(BufferView * bv, LyXParagraph * p, int pos) const
 {
     return TEXT(bv)->GetFont(bv->buffer(), p, pos);
 }
-
+#endif
 
 int InsetText::cx(BufferView * bv) const
 {
@@ -1129,6 +1208,9 @@ LyXText * InsetText::getLyXText(BufferView * bv) const
     LyXText * lt = new LyXText(const_cast<InsetText *>(this));
     lt->init(bv);
     cache[bv] = lt;
+    if (the_locking_inset) {
+	lt->SetCursor(bv, inset_par, inset_pos);
+    }
     return lt;
 }
 
@@ -1136,4 +1218,9 @@ LyXText * InsetText::getLyXText(BufferView * bv) const
 void InsetText::deleteLyXText(BufferView * bv)
 {
     cache.erase(bv);
+    /// then remove all LyXText in text-insets
+    LyXParagraph * p = par;
+    for(;p;p = p->next) {
+	    p->deleteInsetsLyXText(bv);
+    }
 }

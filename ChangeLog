@@ -1,3 +1,14 @@
+2000-07-04  Juergen Vigna  <jug@sad.it>
+
+	* src/text.C (NextBreakPoint): added support for needFullRow()
+
+	* src/insets/lyxinset.h: added needFullRow()
+
+	* src/insets/insetcollapsable.C: redone now this uses a text-inset
+	and isn't one.
+
+	* src/insets/insettext.C: lots of changes for update!
+
 2000-07-03 Angus Leeming <a.leeming@ic.ac.uk>
 
 	* src/LaTeXFeatures.h: add a missing std:: qualifier.
@@ -35,6 +46,14 @@
 
 	* src/lyx_main.C (easyParse): accept linuxdoc and docbook as
 	formats to export with command line argument -x.
+
+2000-06-29  Juergen Vigna  <jug@sad.it>
+
+	* src/mathed/formula.C (LocalDispatch): changed only-cursor-movements
+	to return DISPATCHED_NOUPDATE so that a it does not redraw the inset!
+
+	* src/text.C (GetVisibleRow): added 'bool cleared' parameter as the
+	region could already been cleared by an inset!
 
 2000-06-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
 

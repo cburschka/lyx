@@ -20,6 +20,7 @@
 #include "BufferView.h"
 #include "Painter.h"
 #include "lyxtext.h"
+#include "insets/insettext.h"
 #include "support/LOstream.h"
 
 using std::ostream;
@@ -49,7 +50,7 @@ void InsetMarginal::Write(Buffer const * buf, ostream & os) const
 Inset * InsetMarginal::Clone() const
 {
     InsetMarginal * result = new InsetMarginal;
-    result->init(this);
+    result->inset->init(inset);
     
     result->collapsed = collapsed;
     return result;
@@ -67,32 +68,32 @@ int InsetMarginal::Latex(Buffer const * buf,
 {
     os << "\\marginpar{%\n";
     
-    int i = InsetText::Latex(buf, os, fragile, fp);
+    int i = inset->Latex(buf, os, fragile, fp);
     os << "}%\n";
     
     return i + 2;
 }
 
 
-bool InsetMarginal::InsertInset(BufferView * bv, Inset * inset)
+bool InsetMarginal::InsertInset(BufferView * bv, Inset * in)
 {
-    if (!InsertInsetAllowed(inset))
+    if (!InsertInsetAllowed(in))
 	return false;
 
-    return InsetText::InsertInset(bv, inset);
+    return inset->InsertInset(bv, in);
 }
 
 
-bool InsetMarginal::InsertInsetAllowed(Inset * inset) const
+bool InsetMarginal::InsertInsetAllowed(Inset * in) const
 {
-    if ((inset->LyxCode() == Inset::FOOT_CODE) ||
-	(inset->LyxCode() == Inset::MARGIN_CODE)) {
+    if ((in->LyxCode() == Inset::FOOT_CODE) ||
+	(in->LyxCode() == Inset::MARGIN_CODE)) {
 	return false;
     }
     return true;
 }
 
-
+#if 0
 LyXFont InsetMarginal::GetDrawFont(BufferView * bv,
 				   LyXParagraph * p, int pos) const
 {
@@ -100,3 +101,4 @@ LyXFont InsetMarginal::GetDrawFont(BufferView * bv,
     fn.decSize().decSize();
     return fn;
 }
+#endif

@@ -49,7 +49,7 @@ public:
 	///
 	bool InsertInsetAllowed(Inset * inset) const;
 	///
-	LyXFont GetDrawFont(BufferView *, LyXParagraph * par, int pos) const;
+//	LyXFont GetDrawFont(BufferView *, LyXParagraph * par, int pos) const;
 	///
 	void InsetButtonRelease(BufferView * bv, int x, int y, int button);
 private:

@@ -332,7 +332,7 @@ public:
 	  solution but faster.
 	 */
 	void GetVisibleRow(BufferView *, int y_offset, int x_offset,
-			   Row * row_ptr, long y);
+			   Row * row_ptr, long y, bool cleared=false);
 
 	/* footnotes: */
 	///

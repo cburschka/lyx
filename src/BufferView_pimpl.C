@@ -529,7 +529,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 
 	if (buffer_ == 0 || !screen_) return;
 
-	Inset * inset_hit = checkInsetHit(xpos, ypos, button);
+	Inset * inset_hit = checkInsetHit(bv_->text, xpos, ypos, button);
 
 	// ok ok, this is a hack.
 	if (button == 4 || button == 5) {
@@ -725,7 +725,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 	// If we hit an inset, we have the inset coordinates in these
 	// and inset_hit points to the inset.  If we do not hit an
 	// inset, inset_hit is 0, and inset_x == x, inset_y == y.
-	Inset * inset_hit = checkInsetHit(x, y, button);
+	Inset * inset_hit = checkInsetHit(bv_->text, x, y, button);
 
 	if (bv_->the_locking_inset) {
 		// We are in inset locking mode.
@@ -877,19 +877,19 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
  * If hit, the coordinates are changed relative to the inset. 
  * Otherwise coordinates are not changed, and false is returned.
  */
-Inset * BufferView::Pimpl::checkInsetHit(int & x, int & y,
+Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 					 unsigned int /* button */)
 {
 	if (!screen_)
 		return 0;
   
-	unsigned int y_tmp = y + bv_->text->first;
+	unsigned int y_tmp = y + text->first;
   
 	LyXCursor cursor;
-	bv_->text->SetCursorFromCoordinates(bv_, cursor, x, y_tmp);
+	text->SetCursorFromCoordinates(bv_, cursor, x, y_tmp);
 #if 0 // Are you planning to use this Jürgen? (Lgb)
-	bool move_cursor = ((cursor.par != bv_->text->cursor.par) ||
-			    (cursor.pos != bv_->text->cursor.pos()));
+	bool move_cursor = ((cursor.par != text->cursor.par) ||
+			    (cursor.pos != text->cursor.pos()));
 #endif
 	if (cursor.pos() < cursor.par()->Last()
 	    && cursor.par()->GetChar(cursor.pos()) == LyXParagraph::META_INSET
@@ -898,7 +898,7 @@ Inset * BufferView::Pimpl::checkInsetHit(int & x, int & y,
 
 		// Check whether the inset really was hit
 		Inset * tmpinset = cursor.par()->GetInset(cursor.pos());
-		LyXFont font = bv_->text->GetFont(bv_->buffer(),
+		LyXFont font = text->GetFont(bv_->buffer(),
 						  cursor.par(), cursor.pos());
 		bool is_rtl = font.isVisibleRightToLeft();
 		int start_x, end_x;
@@ -917,10 +917,10 @@ Inset * BufferView::Pimpl::checkInsetHit(int & x, int & y,
 #if 0
 			if (move_cursor && (tmpinset != bv_->the_locking_inset))
 #endif
-				bv_->text->SetCursor(bv_, cursor.par(),cursor.pos(),true);
+				text->SetCursor(bv_, cursor.par(),cursor.pos(),true);
 			x = x - start_x;
 			// The origin of an inset is on the baseline
-			y = y_tmp - (bv_->text->cursor.y()); 
+			y = y_tmp - (text->cursor.y()); 
 			return tmpinset;
 		}
 	}
@@ -930,7 +930,7 @@ Inset * BufferView::Pimpl::checkInsetHit(int & x, int & y,
 	    (cursor.par()->GetInset(cursor.pos() - 1)) &&
 	    (cursor.par()->GetInset(cursor.pos() - 1)->Editable())) {
 		Inset * tmpinset = cursor.par()->GetInset(cursor.pos()-1);
-		LyXFont font = bv_->text->GetFont(bv_->buffer(), cursor.par(),
+		LyXFont font = text->GetFont(bv_->buffer(), cursor.par(),
 						  cursor.pos()-1);
 		bool is_rtl = font.isVisibleRightToLeft();
 		int start_x, end_x;
@@ -948,10 +948,10 @@ Inset * BufferView::Pimpl::checkInsetHit(int & x, int & y,
 #if 0
 			if (move_cursor && (tmpinset != bv_->the_locking_inset))
 #endif
-				bv_->text->SetCursor(bv_, cursor.par(),cursor.pos()-1,true);
+				text->SetCursor(bv_, cursor.par(),cursor.pos()-1,true);
 			x = x - start_x;
 			// The origin of an inset is on the baseline
-			y = y_tmp - (bv_->text->cursor.y()); 
+			y = y_tmp - (text->cursor.y()); 
 			return tmpinset;
 		}
 	}
