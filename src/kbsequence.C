@@ -263,8 +263,11 @@ char kb_sequence::getiso() const
 {
 	unsigned int const c = getsym();
 
-	lyxerr << "Raw keysym: " << std::hex << c << std::dec << endl;
-	lyxerr << "byte 3: " << std::hex << (c & 0x0000FF00) << std::dec << endl;
+	lyxerr[Debug::KBMAP] << "Raw keysym: "
+			     << std::hex << c << std::dec << endl;
+	lyxerr[Debug::KBMAP] << "byte 3: "
+			     << std::hex << (c & 0x0000FF00) << std::dec
+			     << endl;
 	
 	switch (c & 0x0000FF00) {
 		// latin 1 byte 3 = 0

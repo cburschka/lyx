@@ -1139,7 +1139,7 @@ void mathDispatchInsertMath(BufferView * bv, string const & arg)
 			InsetFormula * f = new InsetFormula(arg);
 			openNewInset(bv, f);
 		} else {
-			return mathDispatchMathMode(bv, arg);
+			mathDispatchMathMode(bv, arg);
 		}
 	}
 }

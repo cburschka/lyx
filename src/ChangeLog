@@ -1,3 +1,7 @@
+2001-07-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* kbsequence.C (getiso): redirect debug info to Debug::KBMAP.
+
 2001-07-09  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* text2.C (getParFromID): removed
@@ -67,7 +71,7 @@
 2001-07-05  Juergen Vigna  <jug@sad.it>
 
 	* paragraph_pimpl.C (Pimpl): set id_ also here (this is because some
-	unknow mechanism does not call the proper consturctor but only this
+	unknow mechanism does not call the proper constructor but only this
 	one also if I request the other!?
 
 2001-07-06  Lars Gullik Bjønnes  <larsbj@birdstep.com>

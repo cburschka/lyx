@@ -1,3 +1,8 @@
+2001-07-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* formulabase.C (mathDispatchInsertMath): remove bogus return
+	statement. 
+
 2001-07-04 André Pönitz  <poenitz@htwm.de>
 
 	* math_*inset.C: Change order of arguments in MathInset constructor 
@@ -13,7 +18,6 @@
 	* math_parser.C: fix reading of "unusual" alpha chars
 
 	* xarray.[hC]: fix debug output of xarray
-
 
 2001-07-03 André Pönitz  <poenitz@htwm.de>
 
