@@ -17,6 +17,7 @@
 #include <qrect.h>
 #include <boost/scoped_ptr.hpp>
 
+class QWorkArea;
 class WorkArea;
 
 
@@ -31,7 +32,7 @@ public:
 
 protected:
 	/// get the work area
-	virtual WorkArea & workarea() const { return owner_; }
+	virtual WorkArea & workarea() const;
 
 	/// repaint the whole content immediately
 	void repaint();

@@ -15,9 +15,9 @@
 
 #include "converter.h"
 #include "format.h"
+#include "ControlPrefs.h"
 
 #include "Qt2Base.h"
-#include "ControlPrefs.h"
 
 #include <vector>
 

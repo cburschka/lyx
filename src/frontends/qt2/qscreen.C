@@ -45,6 +45,12 @@ QScreen::~QScreen()
 }
 
 
+WorkArea & QScreen::workarea() const
+{
+	return owner_;
+}
+
+
 void QScreen::repaint()
 {
 	QWidget * content = owner_.getContent();

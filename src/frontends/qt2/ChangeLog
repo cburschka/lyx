@@ -1,5 +1,13 @@
 2003-09-05  Angus Leeming  <leeming@lyx.org>
 
+	* QCitation.h: 
+	* QGraphics.h: 
+	* QPrefs.h: 
+	* qscreen.[Ch]: 
+	ensure that the header files can be compiled stand-alone.
+
+2003-09-05  Angus Leeming  <leeming@lyx.org>
+
 	* *.C: strip out redundant #includes. (352 in total.)
 
 2003-09-03  Juergen Spitzmueller  <j.spitzmueller@gmx.de>

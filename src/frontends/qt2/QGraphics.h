@@ -15,6 +15,7 @@
 
 
 #include "QDialogView.h"
+#include <vector>
 
 
 class ControlGraphics;
