@@ -373,9 +373,8 @@ notify us.
      }
 
     At the time of writing, cxx V6.5-026 is the latest cxx compiler. It is
-    /not/ recommended. Not only do the bugs in the system header files still
-    exist, but the compiler itself appears to be both buggy and extremely
-    bloated (trebles the size of the stripped LyX binary).
+    /not/ recommended. The compiler itself appears to be both buggy and
+    extremely bloated (trebling the size of the stripped LyX binary).
 
     In order to compile LyX with the cxx compiler, you should run configure
     with the following flags:
