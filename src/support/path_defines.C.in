@@ -40,6 +40,8 @@ string build_lyxdir_;
 // Store for the path to the user-level support files.
 string user_lyxdir_;
 
+// Store for the path to the locale directory.
+string localedir_;
 
 /* The absolute path to the system-level lyx support files.
  * (Make-time value.)
@@ -73,7 +75,10 @@ string const & top_srcdir()
 string const & lyx_localedir()
 {
 	static string const ll = "%LOCALEDIR%";
-	return ll;
+	if (localedir_.empty())
+		return ll;
+	else
+		return localedir_;
 }
 
 
@@ -287,6 +292,15 @@ bool setLyxPaths()
 		lyxerr[Debug::INIT] << "System directory: '"
 				    << system_lyxdir_ << '\'' << endl;
 
+	// This is true when we are running from a Mac OS X bundle
+	// (for LyX/Mac)
+	bool const inOSXBundle = 
+		system_lyxdir_ == NormalizePath(AddPath(binpath, "../Resources/")
+						+ OnlyFilename(binname));
+	if (inOSXBundle)
+		lyxerr[Debug::INIT] << "Running from LyX/Mac bundle."
+				    << endl;
+
 	//
 	// Set PATH for LyX/Mac
 	// LyX/Mac is a relocatable application bundle; here we add to
@@ -295,14 +309,32 @@ bool setLyxPaths()
 	// needs to run latex, previewers, etc.
 	//
 
-	if (system_lyxdir_ == NormalizePath(AddPath(binpath, "../Resources/")
-					    + OnlyFilename(binname))) {
-	  const string newpath = GetEnv("PATH") + ":" + binpath
-	    + ":/sw/bin:/usr/local/bin"
-	    + ":/usr/local/teTeX/bin/powerpc-apple-darwin-current";
-	  lyx::support::putenv("PATH", newpath);
-	  lyxerr[Debug::INIT] << "Running from LyX/Mac bundle. "
-	    "Setting PATH to: " << GetEnv("PATH") << endl;
+	if (inOSXBundle) {
+		const string newpath = GetEnv("PATH") + ":" + binpath
+			+ ":/sw/bin:/usr/local/bin"
+			+ ":/usr/local/teTeX/bin/powerpc-apple-darwin-current";
+		lyx::support::putenv("PATH", newpath);
+		lyxerr[Debug::INIT] << "LyX/Mac: setting PATH to: " 
+				    << GetEnv("PATH") << endl;
+	}
+
+
+	// 
+	// Determine locale directory
+	//
+	if (!GetEnv("LYX_LOCALEDIR").empty()) {
+		localedir_ = GetEnv("LYX_LOCALEDIR");
+		lyxerr[Debug::INIT] << "LYX_LOCALEDIR=" << localedir_ << endl;
+	} else if (inOSXBundle) {
+		string const maybe_localedir = 
+			NormalizePath(AddPath(system_lyxdir_, "../locale")); 
+		FileInfo fi(maybe_localedir);
+		if (fi.isOK() && fi.isDir()) {
+			lyxerr[Debug::INIT] 
+				<< "LyX/Mac: setting locale directory to "
+				<< maybe_localedir << endl;
+			localedir_ = maybe_localedir;
+		}
 	}
 
 	//
@@ -323,9 +355,13 @@ bool setLyxPaths()
 
 		// default behaviour
 		if (user_lyxdir_.empty())
-			user_lyxdir_ = AddPath(GetEnvPath("HOME"),
-					       string(".") + PACKAGE);
-			explicit_userdir = false;
+			if (inOSXBundle)
+				user_lyxdir_ = AddPath(GetEnvPath("HOME"),
+						       "Library/Preferences/LyX");
+			else
+				user_lyxdir_ = AddPath(GetEnvPath("HOME"),
+						       string(".") + PACKAGE);
+		explicit_userdir = false;
 	}
 
 	lyxerr[Debug::INIT] << "User LyX directory: '"

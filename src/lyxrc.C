@@ -272,9 +272,6 @@ void LyXRC::setDefaults() {
 	user_name = lyx::support::user_name();
 
 	user_email = lyx::support::user_email();
-
-	if (user_email.empty())
-		user_email = _("email address unknown");
 }
 
 

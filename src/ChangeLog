@@ -1,3 +1,13 @@
+2004-05-10  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* lyxrc.C: do not set user_email to a default value but use empty
+	instead. The entry used to be translated, which does not work
+	since at the point where lyxrc is constructed there is no
+	translation service available
+
+	* messages.C (getLocaleDir): remove and use directly
+	lyx_localedir() instead
+
 2004-06-02  Angus Leeming  <leeming@lyx.org>
 
 	Fix crash caused by dereferencing null pointer 'exportdata' in

@@ -21,21 +21,6 @@ using std::string;
 
 #ifdef ENABLE_NLS
 
-namespace {
-
-string const & getLocaleDir()
-{
-	static string locale_dir;
-
-	if (locale_dir.empty()) {
-		locale_dir = GetEnvPath("LYX_LOCALEDIR");
-		if (locale_dir.empty())
-			locale_dir = lyx_localedir();
-	}
-	return locale_dir;
-}
-
-} // anon namespace
 
 #if 0
 
@@ -55,7 +40,7 @@ public:
 		//lyxerr << "Messages: language(" << l
 		//       << ") in dir(" << dir << ")" << std::endl;
 
-		cat_gl = mssg_gl.open(PACKAGE, loc_gl, getLocaleDir().c_str());
+		cat_gl = mssg_gl.open(PACKAGE, loc_gl, lyx_localedir().c_str());
 
 	}
 
@@ -99,8 +84,6 @@ public:
 		//lyxerr << "Messages: language(" << l
 		//       << ") in dir(" << dir << ")" << std::endl;
 
-	      bindtextdomain(PACKAGE, getLocaleDir().c_str());
-	      textdomain(PACKAGE);
 	}
 
 	~Pimpl() {}
@@ -112,6 +95,8 @@ public:
 
 		char * old = strdup(setlocale(LC_ALL, 0));
 		char * n = setlocale(LC_ALL, lang_.c_str());
+		bindtextdomain(PACKAGE, lyx_localedir().c_str());
+		textdomain(PACKAGE);
 		const char* msg = gettext(m.c_str());
 		setlocale(LC_ALL, old);
 		free(old);
