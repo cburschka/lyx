@@ -37,43 +37,43 @@ struct FD_form_file {
 	FL_FORM *form;
 	FL_OBJECT *input_filename;
 	FL_OBJECT *button_browse;
-	FL_OBJECT *check_subcaption;
-	FL_OBJECT *input_subcaption;
 	FL_OBJECT *choice_display;
 	FL_OBJECT *input_lyxwidth;
 	FL_OBJECT *choice_width_lyxwidth;
 	FL_OBJECT *input_lyxheight;
 	FL_OBJECT *choice_width_lyxheight;
+	FL_OBJECT *check_subcaption;
+	FL_OBJECT *input_subcaption;
 };
 struct FD_form_size {
 	~FD_form_size();
 
 	FL_FORM *form;
+	FL_OBJECT *radio_size;
+	FL_OBJECT *button_default;
+	FL_OBJECT *button_wh;
+	FL_OBJECT *button_scale;
 	FL_OBJECT *input_width;
 	FL_OBJECT *choice_width_units;
 	FL_OBJECT *input_height;
 	FL_OBJECT *choice_height_units;
 	FL_OBJECT *input_scale;
-	FL_OBJECT *radio_size;
-	FL_OBJECT *button_default;
-	FL_OBJECT *button_wh;
-	FL_OBJECT *button_scale;
 	FL_OBJECT *check_aspectratio;
 };
 struct FD_form_bbox {
 	~FD_form_bbox();
 
 	FL_FORM *form;
-	FL_OBJECT *input_bbx0;
+	FL_OBJECT *input_bb_x0;
 	FL_OBJECT *choice_bb_x0;
-	FL_OBJECT *input_bbx1;
+	FL_OBJECT *input_bb_x1;
 	FL_OBJECT *choice_bb_x1;
-	FL_OBJECT *input_bby0;
+	FL_OBJECT *input_bb_y0;
 	FL_OBJECT *choice_bb_y0;
-	FL_OBJECT *input_bby1;
+	FL_OBJECT *input_bb_y1;
 	FL_OBJECT *choice_bb_y1;
-	FL_OBJECT *button_draft;
 	FL_OBJECT *button_clip;
+	FL_OBJECT *button_draft;
 	FL_OBJECT *button_getBB;
 };
 struct FD_form_special {

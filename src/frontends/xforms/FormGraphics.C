@@ -118,10 +118,10 @@ void FormGraphics::build()
 
 	// the bounding box selection
 	bbox_.reset(build_bbox());
-	fl_set_input_return (bbox_->input_bbx0, FL_RETURN_CHANGED);
-	fl_set_input_return (bbox_->input_bby0, FL_RETURN_CHANGED);
-	fl_set_input_return (bbox_->input_bbx1, FL_RETURN_CHANGED);
-	fl_set_input_return (bbox_->input_bby1, FL_RETURN_CHANGED);
+	fl_set_input_return (bbox_->input_bb_x0, FL_RETURN_CHANGED);
+	fl_set_input_return (bbox_->input_bb_y0, FL_RETURN_CHANGED);
+	fl_set_input_return (bbox_->input_bb_x1, FL_RETURN_CHANGED);
+	fl_set_input_return (bbox_->input_bb_y1, FL_RETURN_CHANGED);
 
 	bc().addReadOnly(bbox_->button_getBB);
 	bc().addReadOnly(bbox_->button_clip);
@@ -169,25 +169,25 @@ void FormGraphics::apply()
 	    igp.bb = string();			// don't write anything	    
 	else {
 	    string bb;
-	    if (getStringFromInput(bbox_->input_bbx0).empty())
+	    if (getStringFromInput(bbox_->input_bb_x0).empty())
 		bb = "0 ";
 	    else
-		bb = getLengthFromWidgets(bbox_->input_bbx0,
+		bb = getLengthFromWidgets(bbox_->input_bb_x0,
 			bbox_->choice_bb_x0)+" ";
-	    if (getStringFromInput(bbox_->input_bby0).empty())
+	    if (getStringFromInput(bbox_->input_bb_y0).empty())
 		bb += "0 ";
 	    else
-		bb += (getLengthFromWidgets(bbox_->input_bby0,
+		bb += (getLengthFromWidgets(bbox_->input_bb_y0,
 			bbox_->choice_bb_y0)+" ");
-	    if (getStringFromInput(bbox_->input_bbx1).empty())
+	    if (getStringFromInput(bbox_->input_bb_x1).empty())
 		bb += "0 ";
 	    else
-		bb += (getLengthFromWidgets(bbox_->input_bbx1,
+		bb += (getLengthFromWidgets(bbox_->input_bb_x1,
 			bbox_->choice_bb_x1)+" ");
-	    if (getStringFromInput(bbox_->input_bby1).empty())
+	    if (getStringFromInput(bbox_->input_bb_y1).empty())
 		bb += "0 ";
 	    else
-		bb += (getLengthFromWidgets(bbox_->input_bby1,
+		bb += (getLengthFromWidgets(bbox_->input_bb_y1,
 			bbox_->choice_bb_y1)+" ");
 	    igp.bb = bb;
 	}
@@ -268,25 +268,25 @@ void FormGraphics::update()
 	    if (!bb.empty()) {		
 		// get the values from the file
 		// in this case we always have the point-unit
-		fl_set_input(bbox_->input_bbx0, token(bb,' ',0).c_str());
-		fl_set_input(bbox_->input_bby0, token(bb,' ',1).c_str());
-		fl_set_input(bbox_->input_bbx1, token(bb,' ',2).c_str());
-		fl_set_input(bbox_->input_bby1, token(bb,' ',3).c_str());
+		fl_set_input(bbox_->input_bb_x0, token(bb,' ',0).c_str());
+		fl_set_input(bbox_->input_bb_y0, token(bb,' ',1).c_str());
+		fl_set_input(bbox_->input_bb_x1, token(bb,' ',2).c_str());
+		fl_set_input(bbox_->input_bb_y1, token(bb,' ',3).c_str());
 	    }
 	} else { 				// get the values from the inset
 	    controller().bbChanged = true;
 	    LyXLength anyLength;
 	    anyLength = LyXLength(token(igp.bb,' ',0));
-	    updateWidgetsFromLength(bbox_->input_bbx0,
+	    updateWidgetsFromLength(bbox_->input_bb_x0,
 	    		bbox_->choice_bb_x0,anyLength,"pt");
 	    anyLength = LyXLength(token(igp.bb,' ',1));
-	    updateWidgetsFromLength(bbox_->input_bby0,
+	    updateWidgetsFromLength(bbox_->input_bb_y0,
 	    		bbox_->choice_bb_y0,anyLength,"pt");
 	    anyLength = LyXLength(token(igp.bb,' ',2));
-	    updateWidgetsFromLength(bbox_->input_bbx1,
+	    updateWidgetsFromLength(bbox_->input_bb_x1,
 	    		bbox_->choice_bb_x1,anyLength,"pt");
 	    anyLength = LyXLength(token(igp.bb,' ',3));
-	    updateWidgetsFromLength(bbox_->input_bby1,
+	    updateWidgetsFromLength(bbox_->input_bb_y1,
 	    		bbox_->choice_bb_y1,anyLength,"pt");
 	}
 	// Update the draft and clip mode
@@ -367,6 +367,18 @@ void FormGraphics::update()
 }
 
 
+namespace {
+
+bool isValid(FL_OBJECT * ob)
+{
+	string const input = getStringFromInput(ob);
+	return input.empty() || isValidLength(input) || isStrDbl(input);
+}
+
+} // namespace anon
+
+ 
+	
 ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 {
 	if (ob == file_->button_browse) {
@@ -377,8 +389,8 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 			fl_set_input(file_->input_filename, out_name.c_str());
 		}
 	} else if (!controller().bbChanged && 
-		    ((ob == bbox_->input_bbx0) || (ob == bbox_->input_bby0) ||
-		    (ob == bbox_->input_bbx1) || (ob == bbox_->input_bby1) ||
+		    ((ob == bbox_->input_bb_x0) || (ob == bbox_->input_bb_y0) ||
+		    (ob == bbox_->input_bb_x1) || (ob == bbox_->input_bb_y1) ||
 		    (ob == bbox_->choice_bb_x0) || (ob == bbox_->choice_bb_y0) ||
 		    (ob == bbox_->choice_bb_x1) || (ob == bbox_->choice_bb_y1))) {
 	    controller().bbChanged = true; 
@@ -410,10 +422,10 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 		string bb = controller().readBB(fileWithAbsPath);
 		lyxerr << "getBB::BoundingBox = " << bb << "\n";
 		if (!bb.empty()) {		
-		    fl_set_input(bbox_->input_bbx0, token(bb,' ',0).c_str());
-		    fl_set_input(bbox_->input_bby0, token(bb,' ',1).c_str());
-		    fl_set_input(bbox_->input_bbx1, token(bb,' ',2).c_str());
-		    fl_set_input(bbox_->input_bby1, token(bb,' ',3).c_str());
+		    fl_set_input(bbox_->input_bb_x0, token(bb,' ',0).c_str());
+		    fl_set_input(bbox_->input_bb_y0, token(bb,' ',1).c_str());
+		    fl_set_input(bbox_->input_bb_x1, token(bb,' ',2).c_str());
+		    fl_set_input(bbox_->input_bb_y1, token(bb,' ',3).c_str());
 		}
 		controller().bbChanged = false;
 	    }
@@ -425,33 +437,22 @@ ButtonPolicy::SMInput FormGraphics::input(FL_OBJECT * ob, long)
 	// Possibly use a label in the bottom of the dialog to give the reason.
 	ButtonPolicy::SMInput activate = ButtonPolicy::SMI_VALID;
 
-	string input;
-	bool invalid = false;
-
 	// check if the input is valid
-	input = fl_get_input(bbox_->input_bbx0);
-	invalid = !input.empty() && !isValidLength(input) && !isStrDbl(input);
-	input = fl_get_input(bbox_->input_bbx1);
-	invalid = invalid || (!input.empty() && !isValidLength(input) && !isStrDbl(input));
-	input = fl_get_input(bbox_->input_bby0);
-	invalid = invalid || (!input.empty() && !isValidLength(input) && !isStrDbl(input));
-	input = fl_get_input(bbox_->input_bby1);
-	invalid = invalid || (!input.empty() && !isValidLength(input) && !isStrDbl(input));
-	input = fl_get_input(size_->input_width);
-	invalid = invalid || !input.empty() && (!isValidLength(input) && !isStrDbl(input));
-	input = fl_get_input(size_->input_height);
-	invalid = invalid || !input.empty() && (!isValidLength(input) && !isStrDbl(input));
-	input = fl_get_input(file_->input_lyxwidth);
-	invalid = invalid || (!input.empty() && !isValidLength(input) && !isStrDbl(input));
-	input = fl_get_input(file_->input_lyxheight);
-	invalid = invalid || (!input.empty() && !isValidLength(input) && !isStrDbl(input));
+	bool invalid = !isValid(bbox_->input_bb_x0);
+	invalid = invalid || !isValid(bbox_->input_bb_x1);
+	invalid = invalid || !isValid(bbox_->input_bb_y0);
+	invalid = invalid || !isValid(bbox_->input_bb_y1);
+	invalid = invalid || !isValid(size_->input_width);
+	invalid = invalid || !isValid(size_->input_height);
+	invalid = invalid || !isValid(file_->input_lyxwidth);
+	invalid = invalid || !isValid(file_->input_lyxheight);
 
 	// deactivate OK/ Apply buttons and
 	// spit out warnings if invalid
-	if (ob == bbox_->input_bbx0
-			|| ob == bbox_->input_bbx1
-			|| ob == bbox_->input_bby0
-			|| ob == bbox_->input_bby1
+	if (ob == bbox_->input_bb_x0
+			|| ob == bbox_->input_bb_x1
+			|| ob == bbox_->input_bb_y0
+			|| ob == bbox_->input_bb_y1
 			|| ob == size_->input_width
 			|| ob == size_->input_height
 			|| ob == file_->input_lyxwidth
