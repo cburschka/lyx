@@ -92,6 +92,8 @@ ostream & operator<<(ostream & os, Token const & t)
 		os << '\\' << t.cs() << ' ';
 	else if (t.cat() == catLetter)
 		os << t.character();
+	else if (t.cat() == catNewline)
+		os << "[\\n," << t.cat() << "]\n";
 	else
 		os << '[' << t.character() << ',' << t.cat() << ']';
 	return os;
@@ -121,6 +123,7 @@ Parser::Parser(istream & is)
 	tokenize(is);
 }
 
+
 Parser::Parser(string const & s)
 	: lineno_(0), pos_(0)
 {
@@ -141,21 +144,21 @@ void Parser::pop_back()
 }
 
 
-Token const & Parser::prevToken() const
+Token const & Parser::prev_token() const
 {
 	static const Token dummy;
 	return pos_ > 0 ? tokens_[pos_ - 1] : dummy;
 }
 
 
-Token const & Parser::nextToken() const
+Token const & Parser::next_token() const
 {
 	static const Token dummy;
 	return good() ? tokens_[pos_] : dummy;
 }
 
 
-Token const & Parser::getToken()
+Token const & Parser::get_token()
 {
 	static const Token dummy;
 	//cerr << "looking at token " << tokens_[pos_] << " pos: " << pos_ << '\n';
@@ -166,11 +169,11 @@ Token const & Parser::getToken()
 void Parser::skipSpaces()
 {
 	while (1) {
-		if (nextToken().cat() == catSpace || nextToken().cat() == catNewline)
-			getToken();
-		else if (nextToken().cat() == catComment) 
-			while (nextToken().cat() != catNewline)
-				getToken();
+		if (next_token().cat() == catSpace || next_token().cat() == catNewline)
+			get_token();
+		else if (next_token().cat() == catComment) 
+			while (next_token().cat() != catNewline)
+				get_token();
 		else
 			break;
 	}
@@ -238,12 +241,15 @@ void Parser::tokenize(istream & is)
 			case catNewline: {
 				++lineno_;
 				is.get(c);
-				if (catcode(c) == catNewline)
+				if (catcode(c) == catNewline) {
+					//do {
+						is.get(c);
+					//} while (catcode(c) == catNewline);
 					push_back(Token("par"));
-				else {
+				} else {
 					push_back(Token('\n', catNewline));
-					is.putback(c);
 				}
+				is.putback(c);
 				break;
 			}
 
@@ -317,12 +323,12 @@ void Parser::error(string const & msg)
 string Parser::verbatimOption()
 {
 	string res;
-	if (nextToken().character() == '[') {
-		Token t = getToken();
-		for (Token t = getToken(); t.character() != ']' && good(); t = getToken()) {
+	if (next_token().character() == '[') {
+		Token t = get_token();
+		for (Token t = get_token(); t.character() != ']' && good(); t = get_token()) {
 			if (t.cat() == catBegin) {
 				putback();
-				res += '{' + verbatimItem() + '}';
+				res += '{' + verbatim_item() + '}';
 			} else
 				res += t.asString();
 		}
@@ -331,25 +337,25 @@ string Parser::verbatimOption()
 }
 
 
-string Parser::verbatimItem()
+string Parser::verbatim_item()
 {
 	if (!good())
 		error("stream bad");
 	skipSpaces();
-	if (nextToken().cat() == catBegin) {
-		Token t = getToken(); // skip brace
+	if (next_token().cat() == catBegin) {
+		Token t = get_token(); // skip brace
 		string res;
-		for (Token t = getToken(); t.cat() != catEnd && good(); t = getToken()) {
+		for (Token t = get_token(); t.cat() != catEnd && good(); t = get_token()) {
 			if (t.cat() == catBegin) {
 				putback();
-				res += '{' + verbatimItem() + '}';
+				res += '{' + verbatim_item() + '}';
 			}
 			else
 				res += t.asInput();
 		}
 		return res;
 	}
-	return getToken().asInput();
+	return get_token().asInput();
 }
 
 

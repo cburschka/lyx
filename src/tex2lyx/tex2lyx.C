@@ -12,7 +12,6 @@
 #include <cctype>
 #include <fstream>
 #include <iostream>
-#include <stack>
 #include <string>
 #include <vector>
 
@@ -20,23 +19,22 @@ using std::cout;
 using std::cerr;
 using std::endl;
 using std::getline;
+using std::istream;
 using std::ifstream;
 using std::istringstream;
 using std::ostream;
 using std::ostringstream;
-using std::stack;
+using std::stringstream;
 using std::string;
 using std::vector;
 
-
-//namespace {
 
 
 void handle_comment(Parser & p)
 {
 	string s;
 	while (p.good()) {
-		Token const & t = p.getToken();
+		Token const & t = p.get_token();
 		if (t.cat() == catNewline)
 			break;
 		s += t.asString();
@@ -44,8 +42,6 @@ void handle_comment(Parser & p)
 	//cerr << "comment: " << s << "\n";
 	p.skipSpaces();
 }
-
-
 
 
 string const trim(string const & a, char const * p)
@@ -100,36 +96,41 @@ char const ** is_known(string const & str, char const ** what)
 
 
 // current stack of nested environments
-stack<string> active_environments;
+vector<string> active_environments;
 
 
-void active_environments_push(std::string const & name)
+string active_environment()
 {
-	active_environments.push(name);
+	return active_environments.empty() ? string() : active_environments.back();
 }
 
 
-void active_environments_pop()
+void clean_layouts(istream & is, ostream & os)
 {
-	active_environments.pop();
+	string last;
+	string line;
+	bool eating = false;
+	while (getline(is, line)) {
+		string tline = trim(line, " ");
+		if (line.substr(0, 8) == "\\layout ") {
+			//cerr << "layout: " << line << "\n";
+			last = line;
+			eating = true;
+		} else if (eating && tline.empty()) {
+			//cerr << "eat empty line\n"; 
+		} else if (line.substr(0, 13) == "\\begin_deeper") {
+			os << line << "\n";
+		} else {
+			// ordinary line  
+			//cerr << "ordinary line\n"; 
+			if (eating) {
+				eating = false;
+				os << last << "\n\n";
+			}
+			os << line << "\n";
+		}
+	}
 }
-
-
-bool active_environments_empty()
-{
-	return active_environments.empty();
-}
-
-
-string curr_env()
-{
-	return active_environments.empty() ? string() : active_environments.top();
-}
-
-
-
-
-//} // anonymous namespace
 
 
 int main(int argc, char * argv[])
@@ -141,10 +142,16 @@ int main(int argc, char * argv[])
 
 	ifstream is(argv[1]);
 	Parser p(is);
-	parse_preamble(p, cout);
-	active_environments.push("document");
-	parse_text(p, cout, FLAG_END, true);
-	cout << "\n\\the_end";
+	//p.dump();
+
+	stringstream ss;
+	parse_preamble(p, ss);
+	active_environments.push_back("document");
+	parse_text(p, ss, FLAG_END, true);
+	ss << "\n\\the_end\n";
+
+	ss.seekg(0);
+	clean_layouts(ss, cout);
 
 	return 0;
 }

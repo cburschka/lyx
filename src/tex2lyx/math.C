@@ -35,7 +35,7 @@ bool is_math_env(string const & name)
 void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 {
 	while (p.good()) {
-		Token const & t = p.getToken();
+		Token const & t = p.get_token();
 
 #ifdef FILEDEBUG
 		cerr << "t: " << t << " flags: " << flags << "\n";
@@ -64,13 +64,13 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 		if (t.cat() == catMath) {
 			if (mode == MATHTEXT_MODE) {
 				// we are inside some text mode thingy, so opening new math is allowed
-				Token const & n = p.getToken();
+				Token const & n = p.get_token();
 				if (n.cat() == catMath) {
 					// TeX's $$...$$ syntax for displayed math
 					os << "\\[";
 					parse_math(p, os, FLAG_SIMPLE, MATH_MODE);
 					os << "\\]";
-					p.getToken(); // skip the second '$' token
+					p.get_token(); // skip the second '$' token
 				} else {
 					// simple $...$  stuff
 					p.putback();
@@ -103,8 +103,8 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 			os << t.character();
 
 		else if (t.cat() == catNewline) {
-			//if (p.nextToken().cat() == catNewline) {
-			//	p.getToken();
+			//if (p.next_token().cat() == catNewline) {
+			//	p.get_token();
 			//	handle_par(os);
 			//} else {
 				os << "\n "; // note the space
@@ -148,7 +148,7 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 
 		else if (t.cs() == "begin") {
 			string const name = p.getArg('{', '}');
-			active_environments_push(name);
+			active_environments.push_back(name);
 			os << "\\begin{" << name << "}";
 			if (name == "tabular")
 				parse_math(p, os, FLAG_END, MATHTEXT_MODE);
@@ -161,10 +161,10 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 			if (flags & FLAG_END) {
 				// eat environment name
 				string const name = p.getArg('{', '}');
-				if (name != curr_env())
+				if (name != active_environment())
 					p.error("\\end{" + name + "} does not match \\begin{"
-						+ curr_env() + "}");
-				active_environments_pop();
+						+ active_environment() + "}");
+				active_environments.pop_back();
 				return;
 			}
 			p.error("found 'end' unexpectedly");
@@ -196,7 +196,7 @@ void parse_math(Parser & p, ostream & os, unsigned flags, const mode_type mode)
 		}
 
 		else if (t.cs() == "\"") {
-			string const name = p.verbatimItem();
+			string const name = p.verbatim_item();
 			     if (name == "a") os << 'ä';
 			else if (name == "o") os << 'ö';
 			else if (name == "u") os << 'ü';

@@ -28,10 +28,11 @@ namespace {
 
 struct ColInfo
 {
-	ColInfo() : rightline(false) {}
+	ColInfo() : rightline(0), leftline(false) {}
 	string align;      // column alignment
 	string width;      // column width
-	bool   rightline;  // a line on the right?
+	int    rightline;  // a line on the right?
+	bool   leftline;
 };
 
 
@@ -39,7 +40,7 @@ struct RowInfo
 {
 	RowInfo() : topline(false), bottomline(false) {} 
 	bool topline;     // horizontal line above
-	bool bottomline;  // horizontal line below
+	int  bottomline;  // horizontal line below
 };
 
 
@@ -74,18 +75,18 @@ string read_hlines(Parser & p)
 	ostringstream os;
 	p.skipSpaces();
 	while (p.good()) {
-		if (p.nextToken().cs() == "hline") {
-			p.getToken();
+		if (p.next_token().cs() == "hline") {
+			p.get_token();
 			os << "\\hline";
-		} else if (p.nextToken().cs() == "cline") {
-			p.getToken();
-			os << "\\cline{" << p.verbatimItem() << "}";
+		} else if (p.next_token().cs() == "cline") {
+			p.get_token();
+			os << "\\cline{" << p.verbatim_item() << "}";
 		} else
 			break;
 		p.skipSpaces();
 	};
 	//cerr << "read_hlines(), read: '" << os.str() << "'\n";
-	//cerr << "read_hlines(), next token: " << p.nextToken() << "\n";
+	//cerr << "read_hlines(), next token: " << p.next_token() << "\n";
 	return os.str();
 }
 
@@ -110,46 +111,57 @@ char const TAB   = '\001';
 char const LINE  = '\002';
 char const HLINE = '\004';
 
-
-bool handle_colalign(Parser & p, vector<ColInfo> & colinfo)
+string get_align(char c)
 {
-	if (p.getToken().cat() != catBegin)
+	switch (c) {
+		case 'c': return "center";
+		case 'l': return "left";
+		case 'r': return "right";
+		case 'b': return "block";
+	}
+	return "center";
+}
+
+
+void handle_colalign(Parser & p, vector<ColInfo> & colinfo)
+{
+	if (p.get_token().cat() != catBegin)
 		cerr << "wrong syntax for table column alignment. '{' expected\n";
 
 	string nextalign = "block";
 	bool leftline = false;
-	for (Token t = p.getToken(); p.good() && t.cat() != catEnd; t = p.getToken()){
+	for (Token t=p.get_token(); p.good() && t.cat() != catEnd; t = p.get_token()){
 #ifdef FILEDEBUG
 		cerr << "t: " << t << "  c: '" << t.character() << "'\n";
 #endif
 
 		switch (t.character()) {
 			case 'c':
-				colinfo.push_back(ColInfo());
-				colinfo.back().align = "center";
-				break;
 			case 'l':
-				colinfo.push_back(ColInfo());
-				colinfo.back().align = "left";
+			case 'r': {
+				ColInfo ci;
+				ci.align = get_align(t.character());
+				if (colinfo.size() && colinfo.back().rightline > 1) {
+					ci.leftline = true;
+					--colinfo.back().rightline;
+				}
+				colinfo.push_back(ci);
 				break;
-			case 'r':
-				colinfo.push_back(ColInfo());
-				colinfo.back().align = "right";
-				break;
+			}
 			case 'p':
 				colinfo.push_back(ColInfo());
 				colinfo.back().align = nextalign;
-				colinfo.back().width = p.verbatimItem();
+				colinfo.back().width = p.verbatim_item();
 				nextalign = "block";
 				break;
 			case '|':
 				if (colinfo.empty())
 					leftline = true;
 				else
-					colinfo.back().rightline = true;
+					++colinfo.back().rightline;
 				break;
 			case '>': {
-				string s = p.verbatimItem();
+				string s = p.verbatim_item();
 				if (s == "\\raggedleft ")
 					nextalign = "left";
 				else if (s == "\\raggedright ")
@@ -163,7 +175,8 @@ bool handle_colalign(Parser & p, vector<ColInfo> & colinfo)
 				break;
 			}
 	}
-	return leftline;
+	if (colinfo.size() && leftline)
+		colinfo[0].leftline = true;
 }
 
 
@@ -175,7 +188,7 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 	string hlines;
 
 	while (p.good()) {
-		Token const & t = p.getToken();
+		Token const & t = p.get_token();
 
 #ifdef FILEDEBUG
 		cerr << "t: " << t << " flags: " << flags << "\n";
@@ -186,13 +199,13 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 		//
 		if (t.cat() == catMath) {
 				// we are inside some text mode thingy, so opening new math is allowed
-			Token const & n = p.getToken();
+			Token const & n = p.get_token();
 			if (n.cat() == catMath) {
 				// TeX's $$...$$ syntax for displayed math
 				os << "\\[";
 				parse_math(p, os, FLAG_SIMPLE, MATH_MODE);
 				os << "\\]";
-				p.getToken(); // skip the second '$' token
+				p.get_token(); // skip the second '$' token
 			} else {
 				// simple $...$  stuff
 				p.putback();
@@ -228,7 +241,8 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 			os << TAB;
 		}
 
-		else if (t.cs() == "tabularnewline" || t.cs() == "\\") {
+		//else if (t.cs() == "tabularnewline" || t.cs() == "\\") {
+		else if (t.cs() == "tabularnewline") {
 			// stuff before the line break
 			// and look ahead for stuff after the line break
 			os << HLINE << hlines << HLINE << LINE << read_hlines(p) << HLINE;
@@ -239,7 +253,7 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 			hlines += "\\hline";
 
 		else if (t.cs() == "cline")
-			hlines += "\\cline{" + p.verbatimItem() + '}';
+			hlines += "\\cline{" + p.verbatim_item() + '}';
 
 		else if (t.cat() == catComment)
 			handle_comment(p);
@@ -258,7 +272,7 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 
 		else if (t.cs() == "begin") {
 			string const name = p.getArg('{', '}');
-			active_environments_push(name);
+			active_environments.push_back(name);
 			parse_table(p, os, FLAG_END);
 		}
 
@@ -266,15 +280,34 @@ void parse_table(Parser & p, ostream & os, unsigned flags)
 			if (flags & FLAG_END) {
 				// eat environment name
 				string const name = p.getArg('{', '}');
-				if (name != curr_env())
+				if (name != active_environment())
 					p.error("\\end{" + name + "} does not match \\begin{"
-						+ curr_env() + "}");
-				active_environments_pop();
+						+ active_environment() + "}");
+				active_environments.pop_back();
 				return;
 			}
 			p.error("found 'end' unexpectedly");
 		}
+
+		else 
+			os << t.asInput();
 	}
+}
+
+
+void handle_hline_above(RowInfo & ri, vector<CellInfo> & ci)
+{
+	ri.topline = true;
+	for (size_t col = 0; col < ci.size(); ++col)
+		ci[col].topline = true;
+}
+
+
+void handle_hline_below(RowInfo & ri, vector<CellInfo> & ci)
+{
+	ri.bottomline = true;
+	for (size_t col = 0; col < ci.size(); ++col)
+		ci[col].bottomline = true;
 }
 
 
@@ -287,7 +320,7 @@ void handle_tabular(Parser & p, ostream & os)
 	vector<ColInfo>            colinfo;
 
 	// handle column formatting
-	bool leftline = handle_colalign(p, colinfo);
+	handle_colalign(p, colinfo);
 
 	// handle initial hlines
 
@@ -308,8 +341,7 @@ void handle_tabular(Parser & p, ostream & os)
 	for (size_t row = 0; row < rowinfo.size(); ++row) {
 
 		// init row
-		vector<CellInfo> & cellinfos = cellinfo[row];
-		cellinfos.resize(colinfo.size());
+		cellinfo[row].resize(colinfo.size());
 
 		// split row	
 		vector<string> dummy;
@@ -333,31 +365,41 @@ void handle_tabular(Parser & p, ostream & os)
 			//cerr << "   reading from line string '" << dummy[i] << "'\n";
 			Parser p1(dummy[i]);
 			while (p1.good()) {
-				Token t = p1.getToken();
+				Token t = p1.get_token();
 				//cerr << "read token: " << t << "\n";
 				if (t.cs() == "hline") {
 					if (i == 0) {
-						rowinfo[row].topline = true;
-						for (size_t col = 0; col < colinfo.size(); ++col)
-							cellinfos[col].topline = true;
-					} else {
-						rowinfo[row].bottomline = true;
-						for (size_t col = 0; col < colinfo.size(); ++col)
-							cellinfos[col].bottomline = true;
+						if (rowinfo[row].topline) {
+							if (row > 0) // extra bottomline above
+								handle_hline_below(rowinfo[row - 1], cellinfo[row - 1]);
+							else
+								cerr << "dropping extra hline\n";
+							//cerr << "below row: " << row-1 << endl;
+						} else {
+							handle_hline_above(rowinfo[row], cellinfo[row]);
+							//cerr << "above row: " << row << endl;
+						}
+					} else {	
+						//cerr << "below row: " << row << endl;
+						handle_hline_below(rowinfo[row], cellinfo[row]);
 					}
 				} else if (t.cs() == "cline") {
-					string arg = p1.verbatimItem();
+					string arg = p1.verbatim_item();
 					//cerr << "read cline arg: '" << arg << "'\n";
 					vector<string> t;
 					split(arg, t, '-');
 					t.resize(2);
-					size_t from = string2int(t[0]);
+					size_t from = string2int(t[0]) - 1;
 					size_t to = string2int(t[1]);
 					for (size_t col = from; col < to; ++col) {
-						if (i == 0) 
-							cellinfos[col].topline = true;
-						else	
-							cellinfos[col].bottomline = true;
+						//cerr << "row: " << row << " col: " << col << " i: " << i << endl;
+						if (i == 0) {
+							rowinfo[row].topline = true;
+							cellinfo[row][col].topline = true;
+						} else {
+							rowinfo[row].bottomline = true;
+							cellinfo[row][col].bottomline = true;
+						}
 					}
 				} else {
 					cerr << "unexpected line token: " << t << endl;
@@ -368,45 +410,48 @@ void handle_tabular(Parser & p, ostream & os)
 		// split into cells
 		vector<string> cells;
 		split(lines[row], cells, TAB);
-		for (size_t col = 0, cell = 0; cell < cells.size() && col < colinfo.size(); ++col, ++cell) {
-			//cerr << "cell content: " << cells[cell] << "\n";
+		for (size_t col = 0, cell = 0;
+				cell < cells.size() && col < colinfo.size(); ++col, ++cell) {
+			//cerr << "cell content: '" << cells[cell] << "'\n";
 			Parser p(cells[cell]);
 			p.skipSpaces();	
-			//cerr << "handling cell: " << p.nextToken().cs() << " '" <<
 			//cells[cell] << "'\n";
-			if (p.nextToken().cs() == "multicolumn") {
+			if (p.next_token().cs() == "multicolumn") {
 				// how many cells?
-				p.getToken();
-				size_t ncells = string2int(p.verbatimItem());
+				p.get_token();
+				size_t const ncells = string2int(p.verbatim_item());
 
 				// special cell properties alignment	
 				vector<ColInfo> t;
-				bool leftline = handle_colalign(p, t);
-				CellInfo & ci = cellinfos[col];
-				ci.multi     = 1;
-				ci.align     = t.front().align;
-				ci.content   = parse_text(p, FLAG_ITEM, false);
-				ci.leftline  = leftline;
-				ci.rightline = t.front().rightline;
+				handle_colalign(p, t);
+				cellinfo[row][col].multi     = 1;
+				cellinfo[row][col].align     = t.front().align;
+				cellinfo[row][col].content   = parse_text(p, FLAG_ITEM, false);
+				cellinfo[row][col].leftline  |= t.front().leftline;
+				cellinfo[row][col].rightline |= t.front().rightline;
 
 				// add dummy cells for multicol
 				for (size_t i = 0; i < ncells - 1 && col < colinfo.size(); ++i) {
 					++col;
-					cellinfos[col].multi = 2;
-					cellinfos[col].align = "center";
+					cellinfo[row][col].multi = 2;
+					cellinfo[row][col].align = "center";
 				}
-			} else {
-				cellinfos[col].content = parse_text(p, FLAG_ITEM, false);
+
+				// more than one line on the right?
+				if (t.front().rightline > 1)
+					cellinfo[row][col + 1].leftline = true;
+
+			} else {	
+				// FLAG_END is a hack, we need to read all of it
+				cellinfo[row][col].content = parse_text(p, FLAG_END, false);
 			}
 		}
-
-		cellinfo.push_back(cellinfos);
 
 		//cerr << "//  handle almost empty last row what we have\n";
 		// handle almost empty last row
 		if (row && lines[row].empty() && row + 1 == rowinfo.size()) {
 			//cerr << "remove empty last line\n";
-			if (rowinfo[row].topline);
+			if (rowinfo[row].topline)
 				rowinfo[row - 1].bottomline = true;
 			for (size_t col = 0; col < colinfo.size(); ++col)
 				if (cellinfo[row][col].topline)
@@ -427,7 +472,7 @@ void handle_tabular(Parser & p, ostream & os)
 		os << "<column alignment=\"" << colinfo[col].align << "\"";
 		if (colinfo[col].rightline)
 			os << " rightline=\"true\"";
-		if (col == 0 && leftline)
+		if (colinfo[col].leftline)
 			os << " leftline=\"true\"";
 		os << " valignment=\"top\"";
 		os << " width=\"" << colinfo[col].width << "\"";
@@ -455,6 +500,11 @@ void handle_tabular(Parser & p, ostream & os)
 				os << " topline=\"true\"";
 			if (cell.bottomline)
 				os << " bottomline=\"true\"";
+			//cerr << "\nrow: " << row << " col: " << col;
+			//if (cell.topline)
+			//	cerr << " topline=\"true\"";
+			//if (cell.bottomline)
+			//	cerr << " bottomline=\"true\"";
 			os << " alignment=\"" << cell.align << "\""
 				 << " valignment=\"top\""
 				 << " usebox=\"none\""

@@ -45,7 +45,7 @@ char const * known_fontsizes[] = { "10pt", "11pt", "12pt", 0 };
 // some ugly stuff
 ostringstream h_preamble;
 string h_textclass               = "article";
-string h_options                 = "";
+string h_options                 = string();
 string h_language                = "english";
 string h_inputencoding           = "latin1";
 string h_fontscheme              = "default";
@@ -130,9 +130,10 @@ void end_preamble(ostream & os)
 	os << "# tex2lyx 0.0.2 created this file\n"
 	   << "\\lyxformat 222\n"
 	   << "\\textclass " << h_textclass << "\n"
-	   << "\\begin_preamble\n" << h_preamble.str() << "\n\\end_preamble\n"
-	   << "\\options " << h_options << "\n"
-	   << "\\language " << h_language << "\n"
+	   << "\\begin_preamble\n" << h_preamble.str() << "\n\\end_preamble\n";
+	if (h_options.size())
+	   os << "\\options " << h_options << "\n";
+	os << "\\language " << h_language << "\n"
 	   << "\\inputencoding " << h_inputencoding << "\n"
 	   << "\\fontscheme " << h_fontscheme << "\n"
 	   << "\\graphics " << h_graphics << "\n"
@@ -154,7 +155,8 @@ void end_preamble(ostream & os)
 	   << "\\papercolumns " << h_papercolumns << "\n"
 	   << "\\papersides " << h_papersides << "\n"
 	   << "\\paperpagestyle " << h_paperpagestyle << "\n"
-	   << "\\tracking_changes " << h_tracking_changes << "\n";
+	   << "\\tracking_changes " << h_tracking_changes << "\n"
+	   << "\\end_header\n\n\\layout Standard\n";
 }
 
 
@@ -163,7 +165,7 @@ void end_preamble(ostream & os)
 void parse_preamble(Parser & p, ostream & os)
 {
 	while (p.good()) {
-		Token const & t = p.getToken();
+		Token const & t = p.get_token();
 
 #ifdef FILEDEBUG
 		cerr << "t: " << t << " flags: " << flags << "\n";
@@ -191,7 +193,7 @@ void parse_preamble(Parser & p, ostream & os)
 			handle_comment(p);
 
 		else if (t.cs() == "pagestyle")
-			h_paperpagestyle == p.verbatimItem();
+			h_paperpagestyle == p.verbatim_item();
 
 		else if (t.cs() == "makeatletter") {
 			p.setCatCode('@', catLetter);
@@ -206,13 +208,13 @@ void parse_preamble(Parser & p, ostream & os)
 		else if (t.cs() == "newcommand" || t.cs() == "renewcommand"
 			    || t.cs() == "providecommand") {
 			bool star = false;
-			if (p.nextToken().character() == '*') {
-				p.getToken();
+			if (p.next_token().character() == '*') {
+				p.get_token();
 				star = true;
 			}
-			string const name = p.verbatimItem();
+			string const name = p.verbatim_item();
 			string const opts = p.getOpt();
-			string const body = p.verbatimItem();
+			string const body = p.verbatim_item();
 			// only non-lyxspecific stuff
 			if (name != "\\noun "
 				  && name != "\\tabularnewline "
@@ -267,8 +269,8 @@ void parse_preamble(Parser & p, ostream & os)
 			ss << "\\newenvironment{" << name << "}";
 			ss << p.getOpt();
 			ss << p.getOpt();
-			ss << '{' << p.verbatimItem() << '}';
-			ss << '{' << p.verbatimItem() << '}';
+			ss << '{' << p.verbatim_item() << '}';
+			ss << '{' << p.verbatim_item() << '}';
 			ss << '\n';
 			if (name != "lyxcode" && name != "lyxlist"
 					&& name != "lyxrightadress" && name != "lyxaddress")
@@ -276,10 +278,10 @@ void parse_preamble(Parser & p, ostream & os)
 		}
 
 		else if (t.cs() == "def") {
-			string name = p.getToken().cs();
-			while (p.nextToken().cat() != catBegin)
-				name += p.getToken().asString();
-			h_preamble << "\\def\\" << name << '{' << p.verbatimItem() << "}\n";
+			string name = p.get_token().cs();
+			while (p.next_token().cat() != catBegin)
+				name += p.get_token().asString();
+			h_preamble << "\\def\\" << name << '{' << p.verbatim_item() << "}\n";
 		}
 
 		else if (t.cs() == "setcounter") {
@@ -294,8 +296,8 @@ void parse_preamble(Parser & p, ostream & os)
 		}
 
 		else if (t.cs() == "setlength") {
-			string const name = p.verbatimItem();
-			string const content = p.verbatimItem();
+			string const name = p.verbatim_item();
+			string const content = p.verbatim_item();
 			if (name == "parskip")
 				h_paragraph_separation = "skip";
 			else if (name == "parindent")
@@ -311,7 +313,6 @@ void parse_preamble(Parser & p, ostream & os)
 			string const name = p.getArg('{', '}');
 			if (name == "document") {
 				end_preamble(os);
-				os << "\n\n\\layout Standard\n\n";
 				return;
 			}
 			h_preamble << "\\begin{" << name << "}";

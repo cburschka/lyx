@@ -122,11 +122,11 @@ public:
 	///
 	void pop_back();
 	///
-	Token const & prevToken() const;
+	Token const & prev_token() const;
 	///
-	Token const & nextToken() const;
+	Token const & next_token() const;
 	///
-	Token const & getToken();
+	Token const & get_token();
 	/// skips spaces if any
 	void skipSpaces();
 	///
@@ -134,7 +134,7 @@ public:
 	///
 	bool good() const;
 	///
-	string verbatimItem();
+	string verbatim_item();
 	///
 	string verbatimOption();
 

@@ -31,9 +31,7 @@ bool is_math_env(std::string const & name);
 char const ** is_known(string const & str, char const ** what);
 
 // Access to environment stack
-std::string curr_env();
-void active_environments_push(std::string const & name);
-void active_environments_pop();
-bool active_environments_empty();
+extern std::vector<std::string> active_environments;
+std::string active_environment();
 
 #endif
