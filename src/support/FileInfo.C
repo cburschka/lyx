@@ -90,7 +90,7 @@
 
 namespace {
 
-/// builds 'rwx' string describing file access rights
+// builds 'rwx' string describing file access rights
 void flagRWX(mode_t i, char * str)
 {
 	str[0] = (i & S_IRUSR) ? 'r' : '-';
@@ -98,7 +98,7 @@ void flagRWX(mode_t i, char * str)
 	str[2] = (i & S_IXUSR) ? 'x' : '-';
 }
 
-/// updates mode string to match suid/sgid/sticky bits
+// updates mode string to match suid/sgid/sticky bits
 void setSticky(mode_t i, char * str)
 {
 #ifdef S_ISUID
@@ -114,6 +114,34 @@ void setSticky(mode_t i, char * str)
 		str[9] = (str[9] == 'x') ? 's' : 'S';
 #endif
 }
+
+// returns a letter describing a file type (ls style)
+char typeLetter(mode_t i)
+{
+#ifdef S_ISBLK
+	if (S_ISBLK(i)) return 'b';
+#endif
+	if (S_ISCHR(i)) return 'c';
+	if (S_ISDIR(i)) return 'd';
+	if (S_ISREG(i)) return '-';
+#ifdef S_ISFIFO
+	if (S_ISFIFO(i)) return 'p';
+#endif
+#ifdef S_ISLNK
+	if (S_ISLNK(i)) return 'l';
+#endif
+#ifdef S_ISSOCK
+	if (S_ISSOCK(i)) return 's';
+#endif
+#ifdef S_ISMPC
+	if (S_ISMPC(i)) return 'm';
+#endif
+#ifdef S_ISNWK
+	if (S_ISNWK(i)) return 'n';
+#endif
+	return '?';
+}
+
 
 } // namespace anon
 
@@ -181,26 +209,26 @@ FileInfo & FileInfo::newFile(int fildes)
 
 
 // should not be in FileInfo
-char const * FileInfo::typeIndicator() const
+char FileInfo::typeIndicator() const
 {
 	lyx::Assert(isOK());
 	if (S_ISDIR(buf_.st_mode))
-		return "/";
+		return '/';
 #ifdef S_ISLNK
 	if (S_ISLNK(buf_.st_mode))
-		return "@";
+		return '@';
 #endif
 #ifdef S_ISFIFO
 	if (S_ISFIFO(buf_.st_mode))
-		return "|";
+		return '|';
 #endif
 #ifdef S_ISSOCK
 	if (S_ISSOCK(buf_.st_mode))
-		return "=";
+		return '=';
 #endif
 	if (S_ISREG(buf_.st_mode) && (buf_.st_mode & (S_IEXEC | S_IXGRP | S_IXOTH)))
-		return "*";
-	return "";
+		return '*';
+	return ' ';
 }
 
 
@@ -212,45 +240,17 @@ mode_t FileInfo::getMode() const
 
 
 // should not be in FileInfo
-void FileInfo::modeString(char * str) const
+string FileInfo::modeString() const
 {
-	str[0] = typeLetter();
+	lyx::Assert(isOK());
+	char str[11];
+	str[0] = typeLetter(buf_.st_mode);
 	flagRWX((buf_.st_mode & 0700) << 0, &str[1]);
 	flagRWX((buf_.st_mode & 0070) << 3, &str[4]);
 	flagRWX((buf_.st_mode & 0007) << 6, &str[7]);
-	lyx::Assert(isOK());
 	setSticky(buf_.st_mode, str);
 	str[10] = 0;
-}
-
-
-// should not be in FileInfo
-char FileInfo::typeLetter() const
-{
-	lyx::Assert(isOK());
-
-#ifdef S_ISBLK
-	if (S_ISBLK(buf_.st_mode)) return 'b';
-#endif
-	if (S_ISCHR(buf_.st_mode)) return 'c';
-	if (S_ISDIR(buf_.st_mode)) return 'd';
-	if (S_ISREG(buf_.st_mode)) return '-';
-#ifdef S_ISFIFO
-	if (S_ISFIFO(buf_.st_mode)) return 'p';
-#endif
-#ifdef S_ISLNK
-	if (S_ISLNK(buf_.st_mode)) return 'l';
-#endif
-#ifdef S_ISSOCK
-	if (S_ISSOCK(buf_.st_mode)) return 's';
-#endif
-#ifdef S_ISMPC
-	if (S_ISMPC(buf_.st_mode)) return 'm';
-#endif
-#ifdef S_ISNWK
-	if (S_ISNWK(buf_.st_mode)) return 'n';
-#endif
-	return '?';
+	return str;
 }
 
 

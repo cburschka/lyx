@@ -37,12 +37,10 @@ public:
 	/** Get information about file.
 	    If link is true, the information is about the link itself, not
 	    the file that is obtained by tracing the links. */
-	explicit
-	FileInfo(string const & path, bool link = false);
+	explicit FileInfo(string const & path, bool link = false);
 
 	/// File descriptor
-	explicit
-	FileInfo(int fildes);
+	explicit FileInfo(int fildes);
 
 	/// Query a new file
 	FileInfo & newFile(string const & path, bool link = false);
@@ -51,16 +49,13 @@ public:
 	FileInfo & newFile(int fildes);
 
 	/// Returns a character describing file type (ls -F)
-	char const * typeIndicator() const;
+	char typeIndicator() const;
 
 	/// File protection mode
 	mode_t getMode() const;
 
 	/// Constructs standard mode string (ls style)
-	void modeString(char * str) const;
-
-	/// returns a letter describing a file type (ls style)
-	char typeLetter() const;
+	string modeString() const;
 
 	///
 	time_t getModificationTime() const;

@@ -13,7 +13,6 @@
 #include <cstdlib>
 #include <pwd.h>
 #include <grp.h>
-//#include <cstring>
 #include <map>
 #include <algorithm>
 
@@ -188,7 +187,7 @@ void FileDialog::Private::Reread()
 	DIR * dir = ::opendir(directory_.c_str());
 	if (!dir) {
 		Alert::err_alert(_("Warning! Couldn't open directory."),
-			     directory_);
+			directory_);
 		directory_ = lyx::getcwd();
 		dir = ::opendir(directory_.c_str());
 	}
@@ -204,13 +203,13 @@ void FileDialog::Private::Reread()
 	// Splits complete directory name into directories and compute depth
 	depth_ = 0;
 	string line, Temp;
-	char szMode[15];
+	string mode;
 	string File = directory_;
 	if (File != "/") {
 		File = split(File, Temp, '/');
 	}
 	while (!File.empty() || !Temp.empty()) {
-		string dline = "@b"+line + Temp + '/';
+		string dline = "@b" + line + Temp + '/';
 		fl_add_browser_line(file_dlg_form_->List, dline.c_str());
 		File = split(File, Temp, '/');
 		line += ' ';
@@ -220,16 +219,16 @@ void FileDialog::Private::Reread()
 	// Parses all entries of the given subdirectory
 	time_t curTime = time(0);
 	rewinddir(dir);
-	while (dirent * pDirEntry = readdir(dir)) {
+	while (dirent * entry = readdir(dir)) {
 		bool isLink = false, isDir = false;
 
 		// If the pattern doesn't start with a dot, skip hidden files
 		if (!mask_.empty() && mask_[0] != '.' &&
-		    pDirEntry->d_name[0] == '.')
+		    entry->d_name[0] == '.')
 			continue;
 
 		// Gets filename
-		string fname = pDirEntry->d_name;
+		string fname = entry->d_name;
 
 		// Under all circumstances, "." and ".." are not wanted
 		if (fname == "." || fname == "..")
@@ -244,10 +243,10 @@ void FileDialog::Private::Reread()
 		if (!fileInfo.isOK())
 			continue;
 
-		fileInfo.modeString(szMode);
-		unsigned int nlink = fileInfo.getNumberOfLinks();
-		string user =	lyxUserCache.find(fileInfo.getUid());
-		string group = lyxGroupCache.find(fileInfo.getGid());
+		mode = fileInfo.modeString();
+		unsigned int const nlink = fileInfo.getNumberOfLinks();
+		string const user  = lyxUserCache.find(fileInfo.getUid());
+		string const group = lyxGroupCache.find(fileInfo.getGid());
 
 		time_t modtime = fileInfo.getModificationTime();
 		string Time = ctime(&modtime);
@@ -265,21 +264,22 @@ void FileDialog::Private::Reread()
 			Time.erase(16, string::npos);
 		}
 
-		string Buffer = string(szMode) + ' ' +
+		string buffer = mode + ' ' +
 			tostr(nlink) + ' ' +
 			user + ' ' +
 			group + ' ' +
 			Time.substr(4, string::npos) + ' ';
 
-		Buffer += pDirEntry->d_name;
-		Buffer += fileInfo.typeIndicator();
+		buffer += entry->d_name;
+		buffer += fileInfo.typeIndicator();
 
-		if ((isLink = fileInfo.isLink())) {
+		isLink = fileInfo.isLink();
+		if (isLink) {
 			string Link;
 
 			if (LyXReadLink(File, Link)) {
-				Buffer += " -> ";
-				Buffer += Link;
+				buffer += " -> ";
+				buffer += Link;
 
 				// This gives the FileType of the file that
 				// is really pointed too after resolving all
@@ -289,7 +289,7 @@ void FileDialog::Private::Reread()
 				//                              JV 199902
 				fileInfo.newFile(File);
 				if (fileInfo.isOK())
-					Buffer += fileInfo.typeIndicator();
+					buffer += fileInfo.typeIndicator();
 				else
 					continue;
 			}
@@ -308,14 +308,14 @@ void FileDialog::Private::Reread()
 		DirEntry tmp;
 
 		// Note ls_entry_ is an string!
-		tmp.ls_entry_ = Buffer;
+		tmp.ls_entry_ = buffer;
 		// creates used name
 		string temp = fname;
 		if (isDir) temp += '/';
 
 		tmp.name_ = temp;
 		// creates displayed name
-		temp = pDirEntry->d_name;
+		temp = entry->d_name;
 		if (isLink)
 			temp += '@';
 		else
