@@ -11,13 +11,14 @@ INCLUDES = ${FRONTEND_INCLUDES} -I${srcdir}/.. -I${srcdir}/xforms ${SIGC_CFLAGS}
 LIBS =
 noinst_LTLIBRARIES = libfrontends.o
 
-libfrontends_o_LIBADD= `cat libxforms.objects` \
-	`cat libcontrollers.objects` \
+libfrontends_o_LIBADD= \
+	xforms/*.lo \
+	controllers/*.lo \
 	support/libfrontendsupport.o
 
 libfrontends_o_DEPENDENCIES = \
-	libxforms.objects \
-	libcontrollers.objects \
+	xforms/*.lo \
+	controllers/*.lo \
 	support/libfrontendsupport.o
 
 libfrontends_o_SOURCES=\
