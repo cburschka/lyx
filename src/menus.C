@@ -1652,6 +1652,12 @@ void Menus::ShowHelpMenu(FL_OBJECT * ob, long)
 void Menus::MenuDocu(string const & docname) 
 {
 	string fname = i18nLibFileSearch("doc", docname, "lyx");
+	if (fname.empty()) {
+		WriteAlert(_("Error!"),
+			   _("Could not find requested Documentation file"),
+			   fname);
+		return;
+	}
 	_view->getMiniBuffer()->Set(_("Opening help file"),
 				    MakeDisplayPath(fname), "...");
 	currentView()->buffer(bufferlist.loadLyXFile(fname, false));
