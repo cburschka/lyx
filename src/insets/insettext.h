@@ -86,7 +86,7 @@ public:
 	///
 	void setAutoBreakRows(bool);
 	///
-	bool getAutoBreakRows() const { return autoBreakRows_; }
+	bool getAutoBreakRows() const { return text_.autoBreakRows_; }
 	///
 	void setDrawFrame(bool);
 	///
@@ -157,8 +157,6 @@ private:
 	///
 	void clearInset(Painter &, int x, int y) const;
 
-	///
-	bool autoBreakRows_;
 	///
 	bool drawFrame_;
 	/** We store the LColor::color value as an int to get LColor.h out

@@ -74,7 +74,8 @@ using std::string;
 LyXText::LyXText(BufferView * bv)
 	: maxwidth_(bv ? bv->workWidth() : 100),
 	  background_color_(LColor::background),
-	  bv_owner(bv)
+	  bv_owner(bv),
+	  autoBreakRows_(false)
 {}
 
 
@@ -893,7 +894,8 @@ void LyXText::insertStringAsLines(LCursor & cur, string const & str)
 
 	// only to be sure, should not be neccessary
 	cur.clearSelection();
-	cur.buffer().insertStringAsLines(pars_, pit, pos, current_font, str);
+	cur.buffer().insertStringAsLines(pars_, pit, pos, current_font, str,
+		autoBreakRows_);
 
 	cur.resetAnchor();
 	setCursor(cur, cur.pit(), pos);

@@ -716,12 +716,6 @@ bool Paragraph::forceDefaultParagraphs() const
 }
 
 
-bool Paragraph::autoBreakRows() const
-{
-	return inInset() && static_cast<InsetText *>(inInset())->getAutoBreakRows();
-}
-
-
 namespace {
 
 // paragraphs inside floats need different alignment tags to avoid

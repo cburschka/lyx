@@ -169,8 +169,6 @@ public:
 	///
 	InsetBase::Code ownerCode() const;
 	///
-	bool autoBreakRows() const;
-	///
 	bool forceDefaultParagraphs() const;
 
 	///

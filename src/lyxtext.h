@@ -352,6 +352,8 @@ public:
 	/// our 'outermost' Font
 	LyXFont font_;
 
+	///
+	bool autoBreakRows_;
 private:
 	/// return past-the-last paragraph influenced by a layout
 	/// change on pit

@@ -99,7 +99,7 @@ public:
 	///
 	void insertStringAsLines(ParagraphList & plist,
 		lyx::pit_type &, lyx::pos_type &,
-		LyXFont const &, std::string const &);
+		LyXFont const &, std::string const &, bool);
 	///
 	ParIterator getParFromID(int id) const;
 	/// do we have a paragraph with this id?

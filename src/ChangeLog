@@ -1,3 +1,14 @@
+2004-12-17  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* paragraph.[Ch] (autoBreakRows): remove
+
+	* lyxtext.h: move autoBreakRows_ flag from InsetText to here.
+
+	* buffer.[Ch] (insertStringAsLines): receive an autobreakrows bool to
+	avoid using the paragraph one
+
+	* text2.C (LyXText, insertStringAsLines): adjust
+	
 2004-12-16  Angus Leeming  <leeming@lyx.org>
 
 	* bufferlist.C:

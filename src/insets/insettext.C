@@ -72,8 +72,7 @@ using std::vector;
 
 
 InsetText::InsetText(BufferParams const & bp)
-	: autoBreakRows_(false), drawFrame_(false),
-	  frame_color_(LColor::insetframe), text_(0)
+	: drawFrame_(false), frame_color_(LColor::insetframe), text_(0)
 {
 	paragraphs().push_back(Paragraph());
 	paragraphs().back().layout(bp.getLyXTextClass().defaultLayout());
@@ -86,7 +85,7 @@ InsetText::InsetText(BufferParams const & bp)
 InsetText::InsetText(InsetText const & in)
 	: UpdatableInset(in), text_(in.text_.bv_owner)
 {
-	autoBreakRows_ = in.autoBreakRows_;
+	text_.autoBreakRows_ = in.text_.autoBreakRows_;
 	drawFrame_ = in.drawFrame_;
 	frame_color_ = in.frame_color_;
 	text_.paragraphs() = in.text_.paragraphs();
@@ -226,7 +225,7 @@ void InsetText::clearInset(Painter & pain, int x, int y) const
 
 void InsetText::updateLocal(LCursor & cur)
 {
-	if (!autoBreakRows_ && paragraphs().size() > 1) {
+	if (!text_.autoBreakRows_ && paragraphs().size() > 1) {
 		// collapse paragraphs
 		while (paragraphs().size() > 1) {
 			ParagraphList::iterator const first = paragraphs().begin();
@@ -409,8 +408,8 @@ void InsetText::setText(string const & data, LyXFont const & font)
 
 void InsetText::setAutoBreakRows(bool flag)
 {
-	if (flag != autoBreakRows_) {
-		autoBreakRows_ = flag;
+	if (flag != text_.autoBreakRows_) {
+		text_.autoBreakRows_ = flag;
 		if (!flag)
 			removeNewlines();
 	}

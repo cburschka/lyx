@@ -474,7 +474,7 @@ bool Buffer::readDocument(LyXLex & lex)
 // needed to insert the selection
 void Buffer::insertStringAsLines(ParagraphList & pars,
 	pit_type & par, pos_type & pos,
-	LyXFont const & fn, string const & str)
+	LyXFont const & fn, string const & str, bool autobreakrows)
 {
 	LyXLayout_ptr const & layout = pars[par].layout();
 
@@ -483,7 +483,6 @@ void Buffer::insertStringAsLines(ParagraphList & pars,
 	pars[par].checkInsertChar(font);
 	// insert the string, don't insert doublespace
 	bool space_inserted = true;
-	bool autobreakrows = pars[par].autoBreakRows();
 	for (string::const_iterator cit = str.begin();
 	    cit != str.end(); ++cit) {
 		if (*cit == '\n') {
