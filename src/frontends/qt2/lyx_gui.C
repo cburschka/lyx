@@ -145,6 +145,9 @@ bool LQApplication::macEventFilter(EventRef event)
 
 void lyx_gui::parse_init(int & argc, char * argv[])
 {
+	// Force adding of font path _before_ QApplication is initialized
+	qfont_loader::initFontPath();
+	
 	static LQApplication app(argc, argv);
 
 #if QT_VERSION >= 0x030200
