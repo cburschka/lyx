@@ -21,7 +21,7 @@
 #include "LString.h"
 #include "Timeout.h"
 #include "support/utility.hpp"
-
+#include "layout.h"
 
 class LyXFunc;
 class Toolbar;

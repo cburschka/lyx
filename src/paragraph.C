@@ -2403,17 +2403,7 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 			break;
 	default:
 		// we don't need it for the last paragraph!!!
-		if (next
-#ifndef NEW_INSETS
-			&& !(    footnoteflag != LyXParagraph::NO_FOOTNOTE
-		      && footnotekind != LyXParagraph::FOOTNOTE
-		      && footnotekind != LyXParagraph::MARGIN)
-#endif
-			) {
-			// don't insert this if we would be adding it
-			// before or after a table in a float.  This 
-			// little trick is needed in order to allow
-			// use of tables in \subfigures or \subtables.
+		if (next) {
 			os << '\n';
 			texrow.newline();
 		}

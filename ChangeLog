@@ -1,3 +1,16 @@
+2000-09-28  Allan Rae  <rae@lyx.org>
+
+	* src/paragraph.C (TeXOnePar): fixed output of '\n'.  The problem was
+	that the #ifdef's had been applied to part of what should have been
+	a complete condition.  It's possible there are other tests that
+	were specific to tables that are also wrong now that InsetTabular is
+	being used. Now we need to fix the output of '\n' after a table in a
+	float for the same reason as the original condition:
+	"don't insert this if we would be adding it before or after a table
+	in a float.  This little trick is needed in order to allow use of
+	tables in \subfigures or \subtables."
+	Juergen can you check this?
+
 2000-09-27  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/insets/insettext.C (Ascii): return numer of '\n' in the text
