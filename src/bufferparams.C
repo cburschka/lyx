@@ -959,3 +959,60 @@ void BufferParams::readGraphicsDriver(LyXLex & lex)
 		}
 	}
 }
+
+
+string const BufferParams::paperSizeName() const
+{
+	char real_papersize = papersize;
+	if (real_papersize == PAPER_DEFAULT)
+		real_papersize = lyxrc.default_papersize;
+
+	switch (real_papersize) {
+	case PAPER_A3PAPER:
+		return "a3";
+	case PAPER_A4PAPER:
+		return "a4";
+	case PAPER_A5PAPER:
+		return "a5";
+	case PAPER_B5PAPER:
+		return "b5";
+	case PAPER_EXECUTIVEPAPER:
+		return "foolscap";
+	case PAPER_LEGALPAPER:
+		return "legal";
+	case PAPER_USLETTER:
+	default:
+		return "letter";
+	}
+}
+
+
+string const BufferParams::dvips_options() const
+{
+	string result;
+
+	if (use_geometry
+	    && papersize2 == VM_PAPER_CUSTOM
+	    && !lyxrc.print_paper_dimension_flag.empty()
+	    && !paperwidth.empty()
+	    && !paperheight.empty()) {
+		// using a custom papersize
+		result = lyxrc.print_paper_dimension_flag;
+		result += ' ' + paperwidth;
+		result += ',' + paperheight;
+	} else {
+		string const paper_option = paperSizeName();
+		if (paper_option != "letter" ||
+		    orientation != ORIENTATION_LANDSCAPE) {
+			// dvips won't accept -t letter -t landscape.  
+			// In all other cases, include the paper size
+			// explicitly.
+			result = lyxrc.print_paper_flag;
+			result += ' ' + paper_option;
+		}
+	}
+	if (orientation == ORIENTATION_LANDSCAPE &&
+	    papersize2 != VM_PAPER_CUSTOM)
+		result += ' ' + lyxrc.print_landscape_flag;
+	return result;
+}

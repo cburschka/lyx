@@ -238,6 +238,10 @@ public:
 
 	/// map of the file's author IDs to buffer author IDs
 	std::vector<int> author_map;
+	///
+	string const dvips_options() const;
+	///
+	string const paperSizeName() const;
 
 private:
 	/// the author list

@@ -12,6 +12,7 @@
 
 #include "format.h"
 #include "buffer.h"
+#include "buffer_funcs.h"
 #include "lyxrc.h"
 #include "debug.h"
 #include "gettext.h"
@@ -173,7 +174,7 @@ bool Formats::view(Buffer const * buffer, string const & filename,
 	if (format_name == "dvi" &&
 	    !lyxrc.view_dvi_paper_option.empty()) {
 		command += ' ' + lyxrc.view_dvi_paper_option;
-		string paper_size = papersize(buffer);
+		string paper_size = buffer->params.paperSizeName();
 		if (paper_size == "letter")
 			paper_size = "us";
 		command += ' ' + paper_size;
@@ -226,30 +227,6 @@ string const Formats::extension(string const & name) const
 }
 
 
-string const papersize(Buffer const * buffer)
-{
-	char real_papersize = buffer->params.papersize;
-	if (real_papersize == BufferParams::PAPER_DEFAULT)
-		real_papersize = lyxrc.default_papersize;
-
-	switch (real_papersize) {
-	case BufferParams::PAPER_A3PAPER:
-		return "a3";
-	case BufferParams::PAPER_A4PAPER:
-		return "a4";
-	case BufferParams::PAPER_A5PAPER:
-		return "a5";
-	case BufferParams::PAPER_B5PAPER:
-		return "b5";
-	case BufferParams::PAPER_EXECUTIVEPAPER:
-		return "foolscap";
-	case BufferParams::PAPER_LEGALPAPER:
-		return "legal";
-	case BufferParams::PAPER_USLETTER:
-	default:
-		return "letter";
-	}
-}
 
 
 Formats formats;

@@ -32,9 +32,9 @@ Buffer * newFile(string const & filename, string const & templatename,
 
 ///return the format of the buffer on a string
 string const BufferFormat(Buffer const & buffer);
-
+///
 void bufferErrors(Buffer const &, TeXErrors const &);
-
+///
 void bufferErrors(Buffer const &, ErrorList const &);
 
 #endif // BUFFER_FUNCS_H

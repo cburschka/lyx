@@ -1,3 +1,9 @@
+2003-07-17  Alfredo Braunstein  <abraunst@libero.it>
+
+	* format.[Ch] (papersize): moved to BufferParams
+	* converter.[Ch] (dvips_options): moved to BufferParams 
+	(dvipdfm_options): moved to anon namespace
+	* bufferparams.[Ch]: added above functions.
 
 2003-07-17  André Pönitz  <poenitz@gmx.net>
 

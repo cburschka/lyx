@@ -23,8 +23,6 @@
 
 class Buffer;
 
-string const papersize(Buffer const * buffer) ;
-
 class Format {
 public:
 	///

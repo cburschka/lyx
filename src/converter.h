@@ -108,10 +108,6 @@ public:
 		     string const & from_file, string const & to_file_base,
 		     string const & from_format, string const & to_format);
 	///
-	string const dvips_options(Buffer const * buffer);
-	///
-	string const dvipdfm_options(Buffer const * buffer);
-	///
 	void update(Formats const & formats);
 	///
 	void updateLast(Formats const & formats);

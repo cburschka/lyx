@@ -15,6 +15,7 @@
 #include "format.h"
 #include "lyxrc.h"
 #include "buffer.h"
+#include "bufferparams.h"
 #include "buffer_funcs.h"
 #include "bufferview_funcs.h"
 #include "errorlist.h"
@@ -60,6 +61,23 @@ string const add_options(string const & command, string const & options)
 	string head;
 	string const tail = split(command, head, ' ');
 	return head + ' ' + options + ' ' + tail;
+}
+
+
+string const dvipdfm_options(BufferParams const & bp)
+{
+	string result;
+
+	if (bp.papersize2 != BufferParams::VM_PAPER_CUSTOM) {
+		string const paper_size = bp.paperSizeName();
+		if (paper_size != "b5" && paper_size != "foolscap")
+			result = "-p "+ paper_size;
+
+		if (bp.orientation == BufferParams::ORIENTATION_LANDSCAPE)
+			result += " -l";
+	}
+
+	return result;
 }
 
 } // namespace anon
@@ -113,7 +131,6 @@ bool operator<(Converter const & a, Converter const & b)
 	else
 		return i < 0;
 }
-
 
 
 class compare_Converter {
@@ -327,10 +344,10 @@ bool Converters::convert(Buffer const * buffer,
 
 			if (conv.from == "dvi" && conv.to == "ps")
 				command = add_options(command,
-						      dvips_options(buffer));
+						      buffer->params.dvips_options());
 			else if (conv.from == "dvi" && prefixIs(conv.to, "pdf"))
 				command = add_options(command,
-						      dvipdfm_options(buffer));
+						      dvipdfm_options(buffer->params));
 
 			lyxerr[Debug::FILES] << "Calling " << command << endl;
 			if (buffer)
@@ -544,56 +561,6 @@ bool Converters::runLaTeX(Buffer const * buffer, string const & command,
 
 }
 
-
-string const Converters::dvips_options(Buffer const * buffer)
-{
-	string result;
-	if (!buffer)
-		return result;
-
-	if (buffer->params.use_geometry
-	    && buffer->params.papersize2 == BufferParams::VM_PAPER_CUSTOM
-	    && !lyxrc.print_paper_dimension_flag.empty()
-	    && !buffer->params.paperwidth.empty()
-	    && !buffer->params.paperheight.empty()) {
-		// using a custom papersize
-		result = lyxrc.print_paper_dimension_flag;
-		result += ' ' + buffer->params.paperwidth;
-		result += ',' + buffer->params.paperheight;
-	} else {
-		string const paper_option = papersize(buffer);
-		if (paper_option != "letter" ||
-		    buffer->params.orientation != BufferParams::ORIENTATION_LANDSCAPE) {
-			// dvips won't accept -t letter -t landscape.  In all other
-			// cases, include the paper size explicitly.
-			result = lyxrc.print_paper_flag;
-			result += ' ' + paper_option;
-		}
-	}
-	if (buffer->params.orientation == BufferParams::ORIENTATION_LANDSCAPE &&
-	    buffer->params.papersize2 != BufferParams::VM_PAPER_CUSTOM)
-		result += ' ' + lyxrc.print_landscape_flag;
-	return result;
-}
-
-
-string const Converters::dvipdfm_options(Buffer const * buffer)
-{
-	string result;
-	if (!buffer)
-		return result;
-
-	if (buffer->params.papersize2 != BufferParams::VM_PAPER_CUSTOM) {
-		string const paper_size = papersize(buffer);
-		if (paper_size != "b5" && paper_size != "foolscap")
-			result = "-p "+ paper_size;
-
-		if (buffer->params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
-			result += " -l";
-	}
-
-	return result;
-}
 
 
 void Converters::buildGraph()

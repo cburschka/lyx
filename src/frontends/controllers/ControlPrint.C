@@ -16,11 +16,11 @@
 #include "ButtonController.h"
 
 #include "buffer.h"
+#include "bufferparams.h"
 #include "gettext.h"
 #include "helper_funcs.h"
 #include "PrinterParams.h"
 #include "exporter.h"
-#include "converter.h"
 
 #include "frontends/Alert.h"
 
@@ -154,7 +154,7 @@ void ControlPrint::apply()
 		command += lyxrc.print_extra_options + ' ';
 	}
 
-	command += converters.dvips_options(buffer()) + ' ';
+	command += buffer()->params.dvips_options() + ' ';
 
 	if (!Exporter::Export(buffer(), "dvi", true)) {
 		showPrintError(buffer()->fileName());
