@@ -41,6 +41,7 @@
 #include "undo_funcs.h"
 #include "funcrequest.h"
 #include "language.h"
+#include "factory.h"
 
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
@@ -50,22 +51,11 @@
 #include "insets/insetref.h"
 #include "insets/insetparent.h"
 #include "insets/insetindex.h"
-#include "insets/insetnote.h"
 #include "insets/insetinclude.h"
 #include "insets/insetcite.h"
-#include "insets/insetert.h"
-#include "insets/insetexternal.h"
 #include "insets/insetgraphics.h"
-#include "insets/insetfoot.h"
 #include "insets/insetmarginal.h"
-#include "insets/insetminipage.h"
-#include "insets/insetfloat.h"
 #include "insets/insettabular.h"
-#include "insets/insetoptarg.h"
-#if 0
-#include "insets/insettheorem.h"
-#include "insets/insetlist.h"
-#endif
 #include "insets/insetcaption.h"
 #include "insets/insetfloatlist.h"
 
@@ -1626,67 +1616,41 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 	}
 	break;
 
-	case LFUN_INSET_ERT:
-		insertAndEditInset(new InsetERT(buffer_->params));
-		break;
-
-	case LFUN_INSET_EXTERNAL:
-		insertAndEditInset(new InsetExternal);
-		break;
-
-	case LFUN_INSET_FOOTNOTE:
-		insertAndEditInset(new InsetFoot(buffer_->params));
-		break;
-
-	case LFUN_INSET_MARGINAL:
-		insertAndEditInset(new InsetMarginal(buffer_->params));
-		break;
-
-	case LFUN_INSET_MINIPAGE:
-		insertAndEditInset(new InsetMinipage(buffer_->params));
-		break;
-
-	case LFUN_INSERT_NOTE:
-		insertAndEditInset(new InsetNote(buffer_->params));
-		break;
-
-	case LFUN_INSET_OPTARG:
-		insertAndEditInset(new InsetOptArg(buffer_->params));
-		break;
-
-	case LFUN_INSET_FLOAT:
-		// check if the float type exist
-		if (floatList.typeExist(ev.argument)) {
-			insertAndEditInset(new InsetFloat(buffer_->params,
-							  ev.argument));
-		} else {
-			lyxerr << "Non-existent float type: "
-			       << ev.argument << endl;
-		}
-		break;
-
-	case LFUN_INSET_WIDE_FLOAT:
-		// check if the float type exist
-		if (floatList.typeExist(ev.argument)) {
-			InsetFloat * new_inset =
-				new InsetFloat(buffer_->params, ev.argument);
-			new_inset->wide(true);
-			insertAndEditInset(new_inset);
-		} else {
-			lyxerr << "Non-existent float type: "
-			       << ev.argument << endl;
-		}
-		break;
-
 #if 0
 	case LFUN_INSET_LIST:
-		insertAndEditInset(new InsetList);
-		break;
-
 	case LFUN_INSET_THEOREM:
-		insertAndEditInset(new InsetTheorem);
-		break;
 #endif
+	case LFUN_INSERT_NOTE:
+	case LFUN_INSET_ERT:
+	case LFUN_INSET_EXTERNAL:
+	case LFUN_INSET_FLOAT:
+	case LFUN_INSET_FOOTNOTE:
+	case LFUN_INSET_MARGINAL:
+	case LFUN_INSET_MINIPAGE:
+	case LFUN_INSET_OPTARG:
+	case LFUN_INSET_WIDE_FLOAT:
+	{
+		FuncRequest cmd = ev;
+		cmd.setView(bv_);
+		Inset * inset = createInset(cmd);
+		if (inset) {
+			bool gotsel = false;
+
+			if (bv_->getLyXText()->selection.set()) {
+				bv_->getLyXText()->cutSelection(bv_, true, false);
+				gotsel = true;
+			}
+
+			if (insertInset(inset)) {
+				inset->edit(bv_);
+				if (gotsel)
+					owner_->dispatch(FuncRequest(LFUN_PASTESELECTION));
+			}
+			else
+				delete inset;
+		}
+		break;
+	}
 
 	case LFUN_INSET_CAPTION:
 	{
@@ -1991,32 +1955,6 @@ void BufferView::Pimpl::smartQuote()
 				 pos).language()->lang() == "hebrew" ||
 		(!insertInset(new InsetQuotes(c, buffer_->params))))
 		bv_->owner()->dispatch(FuncRequest(LFUN_SELFINSERT, "\""));
-}
-
-
-void BufferView::Pimpl::insertAndEditInset(Inset * inset)
-{
-#if 0
-	if (insertInset(inset))
-		inset->edit(bv_);
-	else
-		delete inset;
-#else
-	bool gotsel = false;
-
-	if (bv_->getLyXText()->selection.set()) {
-		bv_->getLyXText()->cutSelection(bv_, true, false);
-		gotsel = true;
-	}
-
-	if (insertInset(inset)) {
-		inset->edit(bv_);
-		if (gotsel)
-			owner_->dispatch(FuncRequest(LFUN_PASTESELECTION));
-	}
-	else
-		delete inset;
-#endif
 }
 
 

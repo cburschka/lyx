@@ -230,7 +230,7 @@ void InsetFormula::draw(BufferView * bv, LyXFont const & font,
 			//pi.pain.rectangle(x, y - a, w, h, LColor::mathframe);
 		}
 
-		par_->draw(pi, x + 1, y);
+		par_->draw(pi, x, y);
 	}
 
 	xx += w;
