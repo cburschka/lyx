@@ -18,21 +18,27 @@
 #include "support/LAssert.h"
 
 #define USE_ORIGINAL_MANAGER_FUNCS 1
+// new aspell pspell missing extern "C" 
+extern "C" { 
 #include <pspell/pspell.h>
+}
 
 #include "pspell.h"
 
+using std::endl;
 
-PSpell::PSpell(BufferParams const & params, string const & lang)
+PSpell::PSpell(BufferParams const &, string const & lang)
 	: sc(0), els(0), spell_error_object(0), alive_(false)
 {
 	PspellConfig * config = new_pspell_config();
-	config->replace("language-tag", lang.c_str());
+	pspell_config_replace(config, "lang", lang.c_str());
 	spell_error_object = new_pspell_manager(config);
 	if (pspell_error_number(spell_error_object) == 0) {
 		sc = to_pspell_manager(spell_error_object);
 		spell_error_object = 0;
 		alive_ = true;
+	} else {
+		lyxerr << pspell_error_message(spell_error_object) << endl;
 	}
 }
 
@@ -118,7 +124,7 @@ string const PSpell::error()
 {
 	char const * err = 0;
  
-	if (pspell_error_number(spell_error_object) != 0) {
+	if (spell_error_object && pspell_error_number(spell_error_object) != 0) {
 		err = pspell_error_message(spell_error_object);
 	}
 
