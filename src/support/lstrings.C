@@ -204,8 +204,18 @@ bool prefixIs(string const & a, char const * pre)
 	unsigned int l = strlen(pre);
 	if (l > a.length() || a.empty())
 		return false;
-	else
+	else {
+#if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)
+		// Delete this code when the compilers get a bit better.
+		return ::strncmp(a.c_str(), pre, l) == 0;
+#else
+		// This is the code that we really want to use
+		// but until gcc ships with a basic_string that
+		// implements std::string correctly we have to
+		// use the code above.
 		return a.compare(0, l, pre, l) == 0;
+#endif
+	}
 }
 
 
@@ -222,7 +232,17 @@ bool suffixIs(string const & a, char const * suf)
 	if (suflen > a.length())
 		return false;
 	else {
+#if !defined(USE_INCLUDED_STRING) && !defined(STD_STRING_IS_GOOD)
+		// Delete this code when the compilers get a bit better.
+		string tmp(a, a.length() - suflen);
+		return ::strncmp(tmp.c_str(), suf, suflen) == 0;
+#else
+		// This is the code that we really want to use
+		// but until gcc ships with a basic_string that
+		// implements std::string correctly we have to
+		// use the code above.
 		return a.compare(a.length() - suflen, suflen, suf) == 0;
+#endif
 	}
 }
 

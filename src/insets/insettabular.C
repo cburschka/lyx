@@ -1095,9 +1095,15 @@ void InsetTabular::TabularFeatures(BufferView * bv, int feature, string val)
 	sel_col_start = sel_col_end = tabular->column_of_cell(actcell);
 	sel_row_start = sel_row_end = tabular->row_of_cell(actcell);
     }
-    bv->text->SetUndo(bv->buffer(), Undo::FINISH, 
+    bv->text->SetUndo(bv->buffer(), Undo::FINISH,
+#ifndef NEW_INSETS
 	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
-	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next);
+	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+#else
+	      bv->text->cursor.par()->previous,
+	      bv->text->cursor.par()->next
+#endif
+	    );
 
     int row = tabular->row_of_cell(actcell);
     int column = tabular->column_of_cell(actcell);

@@ -193,6 +193,13 @@
 # this line:
 #\relyx_command "none"
 
+# Default format string for the date-insert command
+#
+# This accepts the normal strftime formats; see man strftime for full
+# details of the format.
+#
+#\date_insert_format "%A, %e. %B %Y"
+
 #
 # SCREEN & FONTS SECTION #################################################
 #
@@ -572,12 +579,6 @@
 # does not work with all dictionaries, so this is disabled by default.
 #\use_input_encoding true
 
-# Default format string for the date-insert command
-#
-# This accepts the normal strftime formats; see man strftime for full
-# details of the format.
-#
-#\date_insert_format "%A, %e. %B %Y"
 
 #
 # LANGUAGE SUPPORT SECTION ####################################################

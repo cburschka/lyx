@@ -85,8 +85,10 @@ private:
 	void deadKeyBindings(kb_keymap * kbmap);
 	///
 	void queryUserLyXDir(bool explicit_userdir);
-	///
-        void ReadRcFile(string const & name);
+	/** Search for and read the LyXRC file name, return
+	    true if successfull.
+	*/
+        bool ReadRcFile(string const & name);
 	/// Read the ui file `name'
 	void ReadUIFile(string const & name);
         ///

@@ -13,6 +13,8 @@
 #include <iosfwd>
 
 /** These are all the lyxfunctions (as enums).
+    Please add new functions at the end of the enum, right
+    before LFUN_LASTACTION.
  */
 enum kb_action {
 	LFUN_UNKNOWN_ACTION = -1,
@@ -26,7 +28,7 @@ enum kb_action {
 	LFUN_MENUPRINT,
 	LFUN_MENUSENDTO,
 	LFUN_RUNLATEX,
-        LFUN_BUILDPROG,
+        LFUN_BUILDPROG, // 10
 	LFUN_TOCVIEW,
 	LFUN_PREVIEW,
 	LFUN_PREVIEWPS,
@@ -36,7 +38,7 @@ enum kb_action {
 	LFUN_QUIT,
 	LFUN_AUTOSAVE,
 	LFUN_UNDO,
-	LFUN_REDO,
+	LFUN_REDO,     // 20
 	LFUN_MENUSEARCH,
 	LFUN_PASTE,
 	LFUN_PASTESELECTION,
@@ -46,18 +48,17 @@ enum kb_action {
 	LFUN_GOTONOTE,
 	LFUN_OPENSTUFF,
 	LFUN_HYPHENATION,
-	LFUN_HFILL,
+	LFUN_HFILL,     // 30
 	LFUN_DEPTH,
 	LFUN_FREE,
 	LFUN_TEX,
-	LFUN_FOOTMELT,
-	LFUN_MARGINMELT,
-	LFUN_SWITCHBUFFER,
+	LFUN_FOOTMELT, // schedule for deletion
+	LFUN_MARGINMELT, // schedule for deletion
 	LFUN_EMPH,
 	LFUN_BOLD,
 	LFUN_ROMAN,
 	LFUN_NOUN,
-	LFUN_RIGHT,
+	LFUN_RIGHT,    // 40
 	LFUN_LEFT,
 	LFUN_UP,
 	LFUN_DOWN,
@@ -67,7 +68,7 @@ enum kb_action {
 	LFUN_END,
 	LFUN_TAB,
 	LFUN_SHIFT_TAB, // Jug 20000522
-	LFUN_WORDRIGHT,
+	LFUN_WORDRIGHT,   // 50
 	LFUN_WORDLEFT,
 	LFUN_BEGINNINGBUF,
 	LFUN_ENDBUF,
@@ -77,7 +78,7 @@ enum kb_action {
 	LFUN_DOWNSEL,
 	LFUN_PRIORSEL,
 	LFUN_NEXTSEL,
-	LFUN_HOMESEL,
+	LFUN_HOMESEL, // 60
 	LFUN_ENDSEL,
 	LFUN_WORDRIGHTSEL,
 	LFUN_WORDLEFTSEL,
@@ -87,7 +88,7 @@ enum kb_action {
 	LFUN_SETMARK,
 	LFUN_DELETE,
 	LFUN_BACKSPACE,
-	LFUN_BREAKLINE,
+	LFUN_BREAKLINE, // 70
 	LFUN_BREAKPARAGRAPH,
 	LFUN_BREAKPARAGRAPHKEEPLAYOUT,
 	LFUN_QUOTE,
@@ -97,7 +98,7 @@ enum kb_action {
 	LFUN_TILDE,
 	LFUN_CEDILLA,
 	LFUN_MACRON,
-	LFUN_UNDERBAR,
+	LFUN_UNDERBAR,  // 80
 	LFUN_UNDERDOT,
 	LFUN_CIRCLE,
 	LFUN_TIE,
@@ -107,7 +108,7 @@ enum kb_action {
 	LFUN_HUNG_UMLAUT,
 	LFUN_UMLAUT,
 	LFUN_DOT,
-	LFUN_OGONEK,
+	LFUN_OGONEK,  // 90
 	LFUN_VECTOR,        //  Alejandro 040696
 	LFUN_SELFINSERT,
 	LFUN_GETBUFNAME,
@@ -117,7 +118,7 @@ enum kb_action {
 	LFUN_LINEATCURSOR,
 	LFUN_GETLAYOUT,
 	LFUN_GETFONT,
-	LFUN_GETLATEX,
+	LFUN_GETLATEX,  // 100
 	LFUN_GETNAME,
 	LFUN_NOTIFY,
         LFUN_GOTOFILEROW,   // Edmar 12/23/98
@@ -127,7 +128,7 @@ enum kb_action {
 	LFUN_KMAP_SEC,
 	LFUN_KMAP_TOGGLE,
 	LFUN_INSERT_MATH,
-	LFUN_INSERT_MATRIX,
+	LFUN_INSERT_MATRIX, // 110
 	LFUN_GREEK,
 	LFUN_MATH_LIMITS,  
 	LFUN_GREEK_TOGGLE,
@@ -137,17 +138,17 @@ enum kb_action {
 	LFUN_MATH_NUMBER,   //  Alejandro 040696
 	LFUN_MATH_NONUMBER,   //  Alejandro 180696
 	LFUN_MATH_SIZE,   //  Alejandro 150896
-	LFUN_MATH_MACRO,  // ale970510
+	LFUN_MATH_MACRO,  // 120 // ale970510
 	LFUN_MATH_MACROARG,  // ale970510
 	LFUN_FIGURE,
-	LFUN_TABLE,
+	LFUN_TABLE, // schedule for deletion
 	LFUN_MELT,
 	LFUN_DELETE_WORD_FORWARD,
 	LFUN_DELETE_WORD_BACKWARD,
 	LFUN_DELETE_LINE_FORWARD,
 	LFUN_MARK_OFF,
 	LFUN_MARK_ON,
-	LFUN_LAYOUT,
+	LFUN_LAYOUT,  // 130
 	LFUN_LAYOUTNO,    // Lgb 97-06-10
 	LFUN_LAYOUT_CHARACTER,
 	LFUN_LAYOUT_PARAGRAPH,
@@ -157,7 +158,7 @@ enum kb_action {
 	LFUN_LAYOUT_QUOTES,
 	LFUN_LAYOUT_PREAMBLE,
         LFUN_LAYOUT_SAVE_DEFAULT,
-	LFUN_DROP_LAYOUTS_CHOICE,
+	LFUN_DROP_LAYOUTS_CHOICE, // 140
 	LFUN_CODE,
 	LFUN_SANS,
 	LFUN_DEFAULT,
@@ -167,7 +168,7 @@ enum kb_action {
 	LFUN_UPCASE_WORD,
 	LFUN_LOWCASE_WORD,
 	LFUN_CAPITALIZE_WORD,
-	LFUN_INSERT_LABEL,
+	LFUN_INSERT_LABEL,  // 150
 	LFUN_INSERT_REF,
 	LFUN_PUSH_TOOLBAR,
 	LFUN_ADD_TO_TOOLBAR,
@@ -177,7 +178,7 @@ enum kb_action {
 	LFUN_SPELLCHECK,                     // RVDK_PATCH_5
 	LFUN_CANCEL,                         // RVDK_PATCH_5
 	LFUN_META_FAKE,                      // RVDK_PATCH_5
-	LFUN_EXEC_COMMAND,
+	LFUN_EXEC_COMMAND,  // 160
 	LFUN_FILE_INSERT,
 	LFUN_FILE_INSERT_ASCII,         // CFO-G 1997-11-19
 	LFUN_FILE_NEW,
@@ -187,7 +188,7 @@ enum kb_action {
 	LFUN_DOWN_PARAGRAPH,		// Asger 1996-10-01
 	LFUN_DOWN_PARAGRAPHSEL,		// Asger 1996-10-01
 	LFUN_BREAKPARAGRAPH_SKIP,
-	LFUN_BACKSPACE_SKIP,
+	LFUN_BACKSPACE_SKIP, // 170
 	LFUN_DELETE_SKIP,
 	LFUN_MENUNEWTMPLT,		// Asger 1997-02-02
 	LFUN_RUNDVIPS,			// Asger 1997-02-02
@@ -197,7 +198,7 @@ enum kb_action {
 	LFUN_INSERT_CITATION,           // AAS 97-02-23
 	LFUN_INSERT_BIBTEX,             // AAS 97-02-23
 	LFUN_INDEX_INSERT,              // Lgb 97-02-27
-	LFUN_INDEX_INSERT_LAST,         // Reh 98-09-17
+	LFUN_INDEX_INSERT_LAST, // 180  // Reh 98-09-17
 	LFUN_INDEX_PRINT,               // Lgb 97-02-27
 	LFUN_APROPOS,                   // Asger 1997-02-27
 	LFUN_LATEX_LOG,                 // Lgb 97-04-05
@@ -207,7 +208,7 @@ enum kb_action {
 	LFUN_CHILDINSERT,               // Ale 970521
 	LFUN_CHILDOPEN,                 // Ale 970528
 	LFUN_TOC_INSERT,                // Lgb 97-05-27
-	LFUN_LOA_INSERT,                // Bernhard 97-08-07
+	LFUN_LOA_INSERT, // 190         // Bernhard 97-08-07
 	LFUN_LOF_INSERT,                // Lgb 97-05-27
 	LFUN_LOT_INSERT,                // Lgb 97-05-27
 	LFUN_READ_ONLY_TOGGLE,          // Lgb 97-05-27    
@@ -217,7 +218,7 @@ enum kb_action {
 	LFUN_GETTIP,                    // Ale 970603
 	LFUN_VC_REGISTER,               // Lgb 97-07-01
 	LFUN_VC_CHECKIN,                // Lgb 97-07-01
-	LFUN_VC_CHECKOUT,               // Lgb 97-07-01
+	LFUN_VC_CHECKOUT, // 200        // Lgb 97-07-01
 	LFUN_VC_REVERT,                 // Lgb 97-07-01
 	LFUN_VC_UNDO,                   // Lgb 97-07-01
 	LFUN_VC_HISTORY,                // Lgb 97-07-01
@@ -227,8 +228,8 @@ enum kb_action {
 	LFUN_REFGOTO,                   // Ale 970806
 	LFUN_REFBACK,                   // Ale 970806
 	LFUN_PARENTINSERT,		// Ale 970813
-	LFUN_REMOVEERRORS,		// Asger 970906
-	LFUN_LDOTS,			// Asger 970929
+	LFUN_REMOVEERRORS, // 210       // Asger 970906
+	LFUN_LDOTS,                     // Asger 970929
 	LFUN_END_OF_SENTENCE,		// Asger 970929
 	LFUN_RUNCHKTEX,			// Asger 971030
 	LFUN_BUFFERBULLETSSELECT,	// ARRae 971018
@@ -237,8 +238,8 @@ enum kb_action {
 	LFUN_URL,                       // CFO-G 971121
 	LFUN_WORDFINDFORWARD,		// Etienne 980216
 	LFUN_WORDFINDBACKWARD,		// Etienne 980220
-	LFUN_APPENDIX,                  // ettrich 980505
-	LFUN_IMPORT, 			// Asger 980724
+	LFUN_APPENDIX, // 220           // ettrich 980505
+	LFUN_IMPORT,     		// Asger 980724
 	LFUN_MENU_SEPARATOR,            // Asger 990220
 	LFUN_SEQUENCE,                  // Andre' 991111
 	LFUN_SAVEPREFERENCES,           // Lgb 991127
@@ -250,8 +251,8 @@ enum kb_action {
 	LFUN_LANGUAGE,                  // Dekel 20000203
 	LFUN_INSET_TEXT,		// Jug 20000214
 	LFUN_INSET_ERT,			// Jug 20000218
-	LFUN_INSERT_GRAPHICS,           // Lgb 20000226
-	LFUN_INSET_FOOTNOTE,		// Jug 20000307
+	LFUN_INSET_GRAPHICS, // 230     // Lgb 20000226
+	LFUN_INSET_FOOTNOTE,            // Jug 20000307
 	LFUN_PARAGRAPH_SPACING,         // Lgb 20000411
 	LFUN_INSET_TABULAR,		// Jug 20000412
 	LFUN_LOFVIEW,			// Dekel 20000519	
@@ -260,14 +261,20 @@ enum kb_action {
  	LFUN_SET_COLOR,			// SLior 20000611
 	LFUN_INSET_EXTERNAL,		// Alstrup 20000609
 	LFUN_INSET_MARGINAL,            // Lgb 20000626
-	LFUN_INSET_MINIPAGE,            // Lgb 20000627
+	LFUN_INSET_MINIPAGE, // 240     // Lgb 20000627
 	LFUN_INSET_FLOAT,               // Lgb 20000627
 	LFUN_INSET_LIST,                // Lgb 20000627
 	LFUN_INSET_THEOREM,             // Lgb 20000630
 	LFUN_CREATE_CITATION,           // Angus 20000705
 	LFUN_INSET_CAPTION,            // Lgb 20000718
+	LFUN_SWITCHBUFFER,  // and where is this comming from?
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 
 std::ostream & operator<<(std::ostream &, kb_action);
 #endif
+
+
+
+
+

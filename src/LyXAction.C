@@ -18,6 +18,10 @@
 #include "debug.h"
 #include "gettext.h"
 #include "support/lstrings.h"
+#if 1
+// only to get access to NEW_INSETS and NEW_TABULAR
+#include "lyxparagraph.h"
+#endif
 
 using std::ostream;
 using std::endl;
@@ -123,7 +127,9 @@ void LyXAction::init()
 		  N_("Select to end of document"), ReadOnly },
 		{ LFUN_EXPORT, "buffer-export", N_("Export to"), ReadOnly },
 		{ LFUN_FAX, "buffer-fax", N_("Fax"), ReadOnly },
+#ifndef NEW_INSETS
 		{ LFUN_INSERTFOOTNOTE, "buffer-float-insert", "", Noop },
+#endif
 		{ LFUN_IMPORT, "buffer-import",
 		  N_("Import document"), NoBuffer },
 		{ LFUN_BUFFERBULLETSSELECT, "buffer-itemize-bullets-select",
@@ -187,12 +193,12 @@ void LyXAction::init()
 		{ LFUN_GOTOERROR, "error-next", N_("Go to next error"), Noop },
 		{ LFUN_REMOVEERRORS, "error-remove-all",
 		  N_("Remove all error boxes"), ReadOnly },
-		{ LFUN_INSET_ERT, "ert-inset-insert",
+		{ LFUN_INSET_ERT, "ert-insert",
 		  N_("Insert a new ERT Inset"), Noop },
-		{ LFUN_INSET_EXTERNAL, "external-inset-insert",
+		{ LFUN_INSET_EXTERNAL, "external-insert",
 		  N_("Insert a new external inset"), Noop },
 		{ LFUN_FIGURE, "figure-insert", N_("Insert Figure"), Noop },
-		{ LFUN_INSERT_GRAPHICS, "graphics-insert",
+		{ LFUN_INSET_GRAPHICS, "graphics-insert",
 		  N_("Insert Graphics"), Noop },
 		{ LFUN_FILE_INSERT, "file-insert", "", Noop },
 		{ LFUN_FILE_INSERT_ASCII, "file-insert-ascii", "", Noop },
@@ -216,11 +222,14 @@ void LyXAction::init()
 		  ReadOnly },
 		{ LFUN_UNDERLINE, "font-underline",
 		  N_("Toggle font underline"), Noop },
+#ifndef NEW_INSETS
 		{ LFUN_FOOTMELT, "footnote-insert", N_("Insert Footnote"),
 		  Noop },
-		{ LFUN_INSET_FOOTNOTE, "footnote-inset-insert",
+#else
+		{ LFUN_INSET_FOOTNOTE, "footnote-insert",
 		  N_("Insert Footnote"), Noop },
-		{ LFUN_INSET_MARGINAL, "marginalnote-inset-insert",
+#endif
+		{ LFUN_INSET_MARGINAL, "marginalnote-insert",
 		  N_("Insert Marginalnote"), Noop },
 		{ LFUN_RIGHTSEL, "forward-select", N_("Select next char"),
 		  ReadOnly },
@@ -293,8 +302,10 @@ void LyXAction::init()
 		{ LFUN_LOTVIEW, "lot-view",
 		  N_("View list of tables"), ReadOnly },
 		{ LFUN_QUIT, "lyx-quit", N_("Exit"), NoBuffer },
+#ifndef NEW_INSETS
 		{ LFUN_MARGINMELT, "marginpar-insert",
 		  N_("Insert Margin note"), Noop },
+#endif
 		{ LFUN_MARK_OFF, "mark-off", "", ReadOnly },
 		{ LFUN_MARK_ON, "mark-on", "", ReadOnly },
 		{ LFUN_SETMARK, "mark-toggle", "", ReadOnly },
@@ -330,7 +341,7 @@ void LyXAction::init()
 		{ LFUN_PARENTINSERT, "parent-insert", "", Noop },
 		{ LFUN_PASTE, "paste", N_("Paste") , Noop },
 		{ LFUN_SAVEPREFERENCES, "preferences-save",
-		  "Save Preferences", NoBuffer },
+		  N_("Save Preferences"), NoBuffer },
 		{ LFUN_PASTESELECTION, "primary-selection-paste", "", Noop },
 		{ LFUN_PROTECTEDSPACE, "protected-space-insert",
 		  N_("Insert protected space"), Noop },
@@ -364,11 +375,13 @@ void LyXAction::init()
 		{ LFUN_SHIFT_TAB, "tab-backward", "", Noop },
 		{ LFUN_TAB, "tab-forward", "", Noop },
 		{ LFUN_TABINSERT, "tab-insert", "", Noop },
+#ifndef NEW_TABULAR
 		{ LFUN_TABLE, "table-insert", N_("Insert Table"), Noop },
-		{ LFUN_INSET_TABULAR, "tabular-inset-insert",
+#endif
+		{ LFUN_INSET_TABULAR, "tabular-insert",
 		  N_("Insert a new Tabular Inset"), Noop },
 		{ LFUN_TEX, "tex-mode", N_("Toggle TeX style"), Noop },
-		{ LFUN_INSET_TEXT, "text-inset-insert",
+		{ LFUN_INSET_TEXT, "text-insert",
 		  N_("Insert a new Text Inset"), Noop },
 		{ LFUN_TOC_INSERT, "toc-insert",
 		  N_("Insert table of contents"), Noop },
@@ -405,11 +418,11 @@ void LyXAction::init()
 		{ LFUN_DATE_INSERT, "date-insert", "", Noop },
 		{ LFUN_PARAGRAPH_SPACING, "paragraph-spacing", "", Noop },
 		{ LFUN_SET_COLOR, "set-color", "", Noop },
-		{ LFUN_INSET_MINIPAGE, "minipage-inset-insert", "", Noop },
-		{ LFUN_INSET_FLOAT, "float-inset-insert", "", Noop },
-		{ LFUN_INSET_LIST, "list-inset-insert", "", Noop },
-		{ LFUN_INSET_THEOREM, "theorem-inset-insert", "", Noop },
-		{ LFUN_INSET_CAPTION, "caption-inset-insert", "", Noop },
+		{ LFUN_INSET_MINIPAGE, "minipage-insert", "", Noop },
+		{ LFUN_INSET_FLOAT, "float-insert", "", Noop },
+		{ LFUN_INSET_LIST, "list-insert", "", Noop },
+		{ LFUN_INSET_THEOREM, "theorem-insert", "", Noop },
+		{ LFUN_INSET_CAPTION, "caption-insert", "", Noop },
 		{ LFUN_NOACTION, "", "", Noop }
 	};
 
@@ -639,7 +652,8 @@ bool LyXAction::funcHasFlag(kb_action action,
 		return (*ici).second.attrib & flag;
 	} else {
 		// it really should exist, but...
-		lyxerr << "No info about kb_action: " << action << '\n';
+		lyxerr << "LyXAction::funcHasFlag: "
+			"No info about kb_action: " << action << '\n';
 		return false;
 	}
 

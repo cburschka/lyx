@@ -306,6 +306,10 @@ bool Buffer::readLyXformat2(LyXLex & lex, LyXParagraph * par)
 }
 
 
+// We'll remove this later. (Lgb)
+static string last_inset_read;
+
+
 bool
 Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				   LyXParagraph *& return_par,
@@ -318,8 +322,6 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 	)
 {
 	bool the_end_read = false;
-	// We'll remove this later. (Lgb)
-	static string last_inset_read;
 	
 	if (token[0] != '\\') {
 		for (string::const_iterator cit = token.begin();
@@ -850,6 +852,9 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 		// But insets should read it, it is a part of
 		// the inset isn't it? Lgb.
 	} else if (token == "\\begin_inset") {
+#if 1
+		readInset(lex, par, pos, font);
+#else
 		// Should be moved out into its own function/method. (Lgb)
 		lex.next();
 		string tmptok = lex.GetString();
@@ -993,6 +998,7 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 				++pos;
 			}
 		}
+#endif
 	} else if (token == "\\SpecialChar") {
 		LyXLayout const & layout =
 			textclasslist.Style(params.textclass, 
@@ -1072,6 +1078,164 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, LyXParagraph *& par,
 	}
 	return the_end_read;
 }
+
+
+void Buffer::readInset(LyXLex & lex, LyXParagraph *& par,
+		       int & pos, LyXFont & font)
+{
+	// consistency check
+	if (lex.GetString() != "\\begin_inset") {
+		lyxerr << "Buffer::readInset: Consistency check failed."
+		       << endl;
+	}
+	
+	lex.next();
+	string tmptok = lex.GetString();
+	last_inset_read = tmptok;
+	// test the different insets
+	if (tmptok == "Quotes") {
+		Inset * inset = new InsetQuotes;
+		inset->Read(this, lex);
+		par->InsertInset(pos, inset, font);
+		++pos;
+	} else if (tmptok == "External") {
+		Inset * inset = new InsetExternal;
+		inset->Read(this, lex);
+		par->InsertInset(pos, inset, font);
+		++pos;
+	} else if (tmptok == "FormulaMacro") {
+		Inset * inset = new InsetFormulaMacro;
+		inset->Read(this, lex);
+		par->InsertInset(pos, inset, font);
+		++pos;
+	} else if (tmptok == "Formula") {
+		Inset * inset = new InsetFormula;
+		inset->Read(this, lex);
+		par->InsertInset(pos, inset, font);
+		++pos;
+	} else if (tmptok == "Figure") {
+		Inset * inset = new InsetFig(100, 100, this);
+		inset->Read(this, lex);
+		par->InsertInset(pos, inset, font);
+		++pos;
+	} else if (tmptok == "Info") {
+		Inset * inset = new InsetInfo;
+		inset->Read(this, lex);
+		par->InsertInset(pos, inset, font);
+		++pos;
+	} else if (tmptok == "Include") {
+		Inset * inset = new InsetInclude(string(), this);
+		inset->Read(this, lex);
+		par->InsertInset(pos, inset, font);
+		++pos;
+	} else if (tmptok == "ERT") {
+		Inset * inset = new InsetERT;
+		inset->Read(this, lex);
+		par->InsertInset(pos, inset, font);
+		++pos;
+	} else if (tmptok == "Tabular") {
+		Inset * inset = new InsetTabular(this);
+		inset->Read(this, lex);
+		par->InsertInset(pos, inset, font);
+		++pos;
+	} else if (tmptok == "Text") {
+		Inset * inset = new InsetText;
+		inset->Read(this, lex);
+		par->InsertInset(pos, inset, font);
+		++pos;
+	} else if (tmptok == "Foot") {
+		Inset * inset = new InsetFoot;
+		inset->Read(this, lex);
+		par->InsertInset(pos, inset, font);
+		++pos;
+	} else if (tmptok == "Marginal") {
+		Inset * inset = new InsetMarginal;
+		inset->Read(this, lex);
+		par->InsertInset(pos, inset, font);
+		++pos;
+	} else if (tmptok == "Minipage") {
+		Inset * inset = new InsetMinipage;
+		inset->Read(this, lex);
+		par->InsertInset(pos, inset, font);
+		++pos;
+	} else if (tmptok == "Float") {
+		lex.next();
+		string tmptok = lex.GetString();
+		Inset * inset = new InsetFloat(tmptok);
+		inset->Read(this, lex);
+		par->InsertInset(pos, inset, font);
+		++pos;
+	} else if (tmptok == "List") {
+		Inset * inset = new InsetList;
+		inset->Read(this, lex);
+		par->InsertInset(pos, inset, font);
+		++pos;
+	} else if (tmptok == "Theorem") {
+		Inset * inset = new InsetList;
+		inset->Read(this, lex);
+		par->InsertInset(pos, inset, font);
+		++pos;
+	} else if (tmptok == "Caption") {
+		Inset * inset = new InsetCaption;
+		inset->Read(this, lex);
+		par->InsertInset(pos, inset, font);
+		++pos;
+	} else if (tmptok == "GRAPHICS") {
+		Inset * inset = new InsetGraphics;
+				//inset->Read(this, lex);
+		par->InsertInset(pos, inset, font);
+	} else if (tmptok == "LatexCommand") {
+		InsetCommand inscmd;
+		inscmd.Read(this, lex);
+		Inset * inset = 0;
+		if (inscmd.getCmdName() == "cite") {
+			inset = new InsetCitation(inscmd.getContents(),
+						  inscmd.getOptions());
+		} else if (inscmd.getCmdName() == "bibitem") {
+			lex.printError("Wrong place for bibitem");
+			inset = inscmd.Clone();
+		} else if (inscmd.getCmdName() == "BibTeX") {
+			inset = new InsetBibtex(inscmd.getContents(),
+						inscmd.getOptions(), this);
+		} else if (inscmd.getCmdName() == "index") {
+			inset = new InsetIndex(inscmd.getContents());
+		} else if (inscmd.getCmdName() == "include") {
+			inset = new InsetInclude(inscmd.getContents(), this);
+		} else if (inscmd.getCmdName() == "label") {
+			inset = new InsetLabel(inscmd.getCommand());
+		} else if (inscmd.getCmdName() == "url"
+			   || inscmd.getCmdName() == "htmlurl") {
+			inset = new InsetUrl(inscmd.getCommand());
+		} else if (inscmd.getCmdName() == "ref"
+			   || inscmd.getCmdName() == "pageref"
+			   || inscmd.getCmdName() == "vref"
+			   || inscmd.getCmdName() == "vpageref"
+			   || inscmd.getCmdName() == "prettyref") {
+			if (!inscmd.getOptions().empty()
+			    || !inscmd.getContents().empty()) {
+				inset = new InsetRef(inscmd, this);
+			}
+		} else if (inscmd.getCmdName() == "tableofcontents") {
+			inset = new InsetTOC(this);
+		} else if (inscmd.getCmdName() == "listoffigures") {
+			inset = new InsetLOF(this);
+		} else if (inscmd.getCmdName() == "listofalgorithms") {
+			inset = new InsetLOA(this);
+		} else if (inscmd.getCmdName() == "listoftables") {
+			inset = new InsetLOT(this);
+		} else if (inscmd.getCmdName() == "printindex") {
+			inset = new InsetPrintIndex(this);
+		} else if (inscmd.getCmdName() == "lyxparent") {
+			inset = new InsetParent(inscmd.getContents(), this);
+		}
+		
+		if (inset) {
+			par->InsertInset(pos, inset, font);
+			++pos;
+		}
+	}
+}
+
 
 bool Buffer::readFile(LyXLex & lex, LyXParagraph * par)
 {
@@ -2175,8 +2339,11 @@ void Buffer::latexParagraphs(ostream & ofs, LyXParagraph * par,
 		ftcount = -1;
 		if (layout.isEnvironment()
                     || par->pextra_type != LyXParagraph::PEXTRA_NONE) {
-			par = par->TeXEnvironment(this, params, ofs, texrow,
-						  ftnote, ft_texrow, ftcount);
+			par = par->TeXEnvironment(this, params, ofs, texrow
+#ifndef NEW_INSETS
+						  ,ftnote, ft_texrow, ftcount
+#endif
+				);
 		} else {
 			par = par->TeXOnePar(this, params, ofs, texrow, false
 #ifndef NEW_INSETS

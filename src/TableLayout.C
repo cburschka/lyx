@@ -22,6 +22,7 @@ extern FD_form_table_options * fd_form_table_options;
 extern FD_form_table_extra * fd_form_table_extra;
 extern BufferView * current_view;
 
+#ifndef NEW_TABULAR
 static int Confirmed = false;
 static int ActCell;
 
@@ -33,6 +34,7 @@ static int ActCell;
 // in 1.1 anyway)
 static int extra_col_cursor_x; // need no y's, one-line input fields
 static int extra_multicol_cursor_x;
+#endif
 // Joacim
 
 

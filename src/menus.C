@@ -1827,27 +1827,62 @@ void Menus::ShowInsertMenu(FL_OBJECT * ob, long)
 
 		case 6: tmpfunc->Dispatch(LFUN_INSET_EXTERNAL); break;
 
-		case 7: tmpfunc->Dispatch(LFUN_FOOTMELT); break
-								  ;
-		case 8: tmpfunc->Dispatch(LFUN_MARGINMELT); break;
+		case 7:
+#ifndef NEW_INSETS
+			tmpfunc->Dispatch(LFUN_FOOTMELT); break;
+#else
+			tmpfunc->Dispatch(LFUN_INSET_FOOTNOTE);
+			break;
+#endif
+		case 8:
+#ifndef NEW_INSETS
+			tmpfunc->Dispatch(LFUN_MARGINMELT); break;
+#else
+			tmpfunc->Dispatch(LFUN_INSET_MARGINAL);
+			break;
+#endif
   
 		case 9: // Float sub-menu
                 case 71:
+#ifndef NEW_INSETS
 			tmpfunc->Dispatch(LFUN_INSERTFOOTNOTE, "figure");
 			break;
+#else
+			tmpfunc->Dispatch(LFUN_INSET_FLOAT, "figure");
+			break;
+#endif
 		case 72:
+#ifndef NEW_INSETS
 			tmpfunc->Dispatch(LFUN_INSERTFOOTNOTE, "table");
 			break;
+#else
+			tmpfunc->Dispatch(LFUN_INSET_FLOAT, "table");
+			break;
+#endif
 		case 73:
+#ifndef NEW_INSETS
 			tmpfunc->Dispatch(LFUN_INSERTFOOTNOTE, "wide-fig");
 			break;
+#else
+			tmpfunc->Dispatch(LFUN_INSET_FLOAT, "figure");
+			break;
+#endif
 		case 74:
+#ifndef NEW_INSETS
 			tmpfunc->Dispatch(LFUN_INSERTFOOTNOTE, "wide-tab");
 			break;
+#else
+			tmpfunc->Dispatch(LFUN_INSET_FLOAT, "table");
+			break;
+#endif
 		case 75:
+#ifndef NEW_INSETS
 			tmpfunc->Dispatch(LFUN_INSERTFOOTNOTE, "algorithm");
 			break;
-
+#else
+			tmpfunc->Dispatch(LFUN_INSET_FLOAT, "algorithm");
+			break;
+#endif
 		case 10: // Table/List submenu
 			break;
 		case 21: tmpfunc->Dispatch(LFUN_TOC_INSERT); break;

@@ -305,20 +305,20 @@ void InsetText::draw(BufferView * bv, LyXFont const & f,
     y += baseline - row->ascent_of_text() + 1;
     if (cleared || !locked || (need_update == FULL)) {
 	while (row != 0) {
-	    TEXT(bv)->GetVisibleRow(bv, y, x, row, y, cleared);
+	    TEXT(bv)->GetVisibleRow(bv, y, int(x), row, y, cleared);
 	    y += row->height();
 	    row = row->next();
 	}
     } else if (need_update == SELECTION) {
-	bv->screen()->ToggleToggle(TEXT(bv), y, x);
+	bv->screen()->ToggleToggle(TEXT(bv), y, int(x));
     } else {
 	locked = false;
 	if (need_update == CURSOR) {
-	    bv->screen()->ToggleSelection(TEXT(bv), true, y, x);
+	    bv->screen()->ToggleSelection(TEXT(bv), true, y, int(x));
 	    TEXT(bv)->ClearSelection();
 	    TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
 	}
-	bv->screen()->Update(TEXT(bv), y, x);
+	bv->screen()->Update(TEXT(bv), y, int(x));
 	locked = true;
     }
     TEXT(bv)->refresh_y = 0;
@@ -707,9 +707,15 @@ InsetText::LocalDispatch(BufferView * bv,
 	     * "auto_region_delete", which defaults to
 	     * true (on). */
 
-	    bv->text->SetUndo(bv->buffer(), Undo::INSERT, 
+	    bv->text->SetUndo(bv->buffer(), Undo::INSERT,
+#ifndef NEW_INSETS
 			      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
-			      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next);
+			      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+#else
+			      bv->text->cursor.par()->previous,
+			      bv->text->cursor.par()->next
+#endif
+		    );
 	    if (lyxrc.auto_region_delete) {
 		if (TEXT(bv)->selection){
 		    TEXT(bv)->CutSelection(bv, false);
@@ -777,23 +783,41 @@ InsetText::LocalDispatch(BufferView * bv,
 	UpdateLocal(bv, CURSOR, false);
 	break;
     case LFUN_BACKSPACE:
-	bv->text->SetUndo(bv->buffer(), Undo::DELETE, 
+	bv->text->SetUndo(bv->buffer(), Undo::DELETE,
+#ifndef NEW_INSETS
 	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
-	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next);
+	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+#else
+	  bv->text->cursor.par()->previous,
+	  bv->text->cursor.par()->next
+#endif
+		);
 	TEXT(bv)->Backspace(bv);
 	UpdateLocal(bv, CURSOR_PAR, true);
 	break;
     case LFUN_DELETE:
-	bv->text->SetUndo(bv->buffer(), Undo::DELETE, 
+	bv->text->SetUndo(bv->buffer(), Undo::DELETE,
+#ifndef NEW_INSETS
 	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
-	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next);
+	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+#else
+	  bv->text->cursor.par()->previous,
+	  bv->text->cursor.par()->next
+#endif
+		);
 	TEXT(bv)->Delete(bv);
 	UpdateLocal(bv, CURSOR_PAR, true);
 	break;
     case LFUN_CUT:
-	bv->text->SetUndo(bv->buffer(), Undo::DELETE, 
+	bv->text->SetUndo(bv->buffer(), Undo::DELETE,
+#ifndef NEW_INSETS
 	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
-	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next);
+	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+#else
+	  bv->text->cursor.par()->previous,
+	  bv->text->cursor.par()->next
+#endif
+		);
 	TEXT(bv)->CutSelection(bv);
 	UpdateLocal(bv, CURSOR_PAR, true);
 	break;
@@ -813,9 +837,15 @@ InsetText::LocalDispatch(BufferView * bv,
 		break;
 	    }
 	}
-	bv->text->SetUndo(bv->buffer(), Undo::INSERT, 
+	bv->text->SetUndo(bv->buffer(), Undo::INSERT,
+#ifndef NEW_INSETS
 	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
-	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next);
+	  bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+#else
+	  bv->text->cursor.par()->previous,
+	  bv->text->cursor.par()->next
+#endif
+		);
 	TEXT(bv)->PasteSelection(bv);
 	UpdateLocal(bv, CURSOR_PAR, true);
 	break;
@@ -828,9 +858,15 @@ InsetText::LocalDispatch(BufferView * bv,
     case LFUN_BREAKLINE:
 	if (!autoBreakRows)
 	    return DISPATCHED;
-	bv->text->SetUndo(bv->buffer(), Undo::INSERT, 
+	bv->text->SetUndo(bv->buffer(), Undo::INSERT,
+#ifndef NEW_INSETS
 	    bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
-	    bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next);
+	    bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+#else
+	    bv->text->cursor.par()->previous,
+	    bv->text->cursor.par()->next
+#endif
+		);
 	TEXT(bv)->InsertChar(bv, LyXParagraph::META_NEWLINE);
 	UpdateLocal(bv, CURSOR_PAR, true);
 	break;
@@ -1079,9 +1115,15 @@ bool InsetText::InsertInset(BufferView * bv, Inset * inset)
 	    return the_locking_inset->InsertInset(bv, inset);
 	return false;
     }
-    bv->text->SetUndo(bv->buffer(), Undo::INSERT, 
+    bv->text->SetUndo(bv->buffer(), Undo::INSERT,
+#ifndef NEW_INSETS
 	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->previous,
-	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next);
+	      bv->text->cursor.par()->ParFromPos(bv->text->cursor.pos())->next
+#else
+	      bv->text->cursor.par()->previous,
+	      bv->text->cursor.par()->next
+#endif
+	    );
     if (inset->Editable() == Inset::IS_EDITABLE) {
 	UpdatableInset * i = static_cast<UpdatableInset *>(inset);
 	i->setOwner(static_cast<UpdatableInset *>(this));

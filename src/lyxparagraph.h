@@ -188,9 +188,12 @@ public:
 
 	///
 	LyXParagraph * TeXEnvironment(Buffer const *, BufferParams const &,
-				      std::ostream &, TexRow & texrow,
-				      std::ostream & foot, TexRow & foot_texrow,
-				      int & foot_count);
+				      std::ostream &, TexRow & texrow
+#ifndef NEW_INSETS
+				      ,std::ostream & foot, TexRow & foot_texrow,
+				      int & foot_count
+#endif
+		);
 	///
 	LyXParagraph * Clone() const;
 	
@@ -369,12 +372,11 @@ public:
 	LyXParagraph * FirstPhysicalPar();
 	///
 	LyXParagraph const * FirstPhysicalPar() const;
-#endif
-
 	/// returns the physical paragraph
 	LyXParagraph * ParFromPos(size_type pos);
 	/// returns the position in the physical par
 	int PositionInParFromPos(size_type pos) const;
+#endif
 
 	/// for the environments
 	LyXParagraph * DepthHook(int depth);
@@ -428,8 +430,6 @@ public:
 	  LyXFont::TOGGLE.
 	  */
 	LyXFont getFont(BufferParams const &, size_type pos) const;
-	///
-	value_type GetChar(size_type pos);
 	///
 	value_type GetChar(size_type pos) const;
 	/// The position must already exist.
@@ -619,9 +619,12 @@ private:
 	InsetList insetlist;
 	///
 	LyXParagraph * TeXDeeper(Buffer const *, BufferParams const &,
-				 std::ostream &, TexRow & texrow,
-				 std::ostream & foot, TexRow & foot_texrow,
-				 int & foot_count);
+				 std::ostream &, TexRow & texrow
+#ifndef NEW_INSETS
+				 ,std::ostream & foot, TexRow & foot_texrow,
+				 int & foot_count
+#endif
+		);
 #ifndef NEW_INSETS
 	///
 	LyXParagraph * TeXFootnote(Buffer const *, BufferParams const &,

@@ -72,44 +72,4 @@ extern Encoding cp1255;
 extern Encoding koi8;
 extern Encoding symbol_encoding;
 
-inline
-bool Encoding::IsComposeChar_hebrew(unsigned char c)
-{
-	return c <= 0xd2 && c >= 0xc0 &&
-		c != 0xce && c != 0xd0;
-}
-
-
-inline
-bool Encoding::IsComposeChar_arabic(unsigned char c)
-{
-	return c >= 0xeb && c <= 0xf2;
-}
-
-
-extern unsigned char arabic_table[][2];
-extern unsigned char arabic_table2[][4];
-unsigned char const arabic_start = 0xc1;
-
-
-inline
-bool Encoding::is_arabic(unsigned char c)
-{
-	return c >= arabic_start && arabic_table[c-arabic_start][0];
-}
-
-
-inline
-unsigned char Encoding::TransformChar(unsigned char c, Encoding::Letter_Form form)
-{
-	if (!is_arabic(c))
-		return c;
-
-	if (lyxrc.font_norm == "iso10646-1")
-		return arabic_table2[c-arabic_start][form];
-	else
-		return arabic_table[c-arabic_start][form >> 1];
-}
-
-
 #endif

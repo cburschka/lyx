@@ -1,3 +1,72 @@
+2000-07-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
+
+	* src/support/lstrings.C (prefixIs): rewrite so that gcc bastring
+	can be used.
+	(suffixIs): ditto
+
+	* src/paragraph.C (GetChar): remove non-const version
+
+	* src/lyxlex_pimpl.C (compare_tags): rewritten to suit cvs gcc 2.96
+	(search_kw): use it.
+
+	* src/lyx_main.C (init): if "preferences" exist, read that instead
+	of "lyxrc".
+	(ReadRcFile): return bool if the file could be read ok.
+	(ReadUIFile): add a check to see if lex file is set ok.
+
+	* src/lyx_cb.C (InsertAsciiFile): rewrite a bit so that gcc
+	bastring can be used instead of lyxstring (still uses the old code
+	if std::string is good enough or if lyxstring is used.)
+
+	* src/encoding.C: make the arrays static, move ininle functions
+	here
+	* src/encoding.h: from here.
+
+	* src/buffer.C: have last_isnet_read as a file scope variable for now.
+	(parseSingleLyXformat2Token): move inset parsing to separate method
+	(readInset): new private method
+
+	* src/Variables.h: remove virtual from get().
+
+	* src/ToolbarDefaults.C: include lyxparagraph.h temporary to get
+	access to NEW_INSETS and NEW_TABULAR
+
+	* src/MenuBackend.h: remove superfluous forward declaration of
+	MenuItem. Add documentations tags "///", remove empty MenuItem
+	destructor, remove private default contructor.
+
+	* src/MenuBackend.C (MenuItem): remove unneeded copy contructor 
+	(add): return *this
+	(read): more string mlabel and mname to where they are used
+	(read): remove unused variables mlabel and mname
+	(defaults): unconditional clear, make menusetup take advantage of
+	add returning Menu &.
+
+	* src/LyXView.h: define NEW_MENUBAR as default
+
+	* src/LyXAction.C: include lyxparagraph.h temporary to get access
+	to NEW_INSETS and NEW_TABULAR.
+	(init): commetn out some funcs that is obsolete when NEW_INSETS is
+	defined. Change some of the "xxxx-inset-insert" functions names to
+	"xxxx-insert".
+
+	* several files: more enahncements to NEW_INSETS and the resulting
+	LyXParagraph code.
+	
+	* lib/lyxrc.example (\date_insert_format): move to misc section 
+
+	* config/lyxinclude.m4 (LYX_CXX_STL_STRING): allow to use the gcc
+	bastring and use AC_CACHE_CHECK. 
+	(LYX_CXX_GOOD_STD_STRING): new check. Checks if the std::string of
+	the system have the newest methods. uses AC_CACHE_CHECK 
+	(LYX_CXX_MUTABLE): use AC_CACHE_CHECK 
+	(LYX_CXX_PARTIAL): use AC_CACHE_CHECK 
+	(LYX_CXX_NAMESPACES): use AC_CACHE_CHECK
+
+	* configure.in: add LYX_CXX_GOOD_STD_STRING
+
+	* acinclude.m4: recreated
+
 2000-07-24  Amir Karger
 
 	* README: add Hebrew, Arabic kmaps

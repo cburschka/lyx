@@ -138,7 +138,10 @@ public:
 					LyXParagraph::footnote_kind &
 #endif
 		);
-
+private:
+	// Parse a single inset.
+	void readInset(LyXLex &, LyXParagraph *& par, int & pos, LyXFont &);
+public:
 	/** Save file
 	    Takes care of auto-save files and backup file if requested.
 	    Returns true if the save is successful, false otherwise.

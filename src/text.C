@@ -1628,7 +1628,12 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
    }
    
    /* is it a bottom line? */ 
-   if (row_ptr->par()->ParFromPos(RowLast(row_ptr) + 1) == par
+   if (
+#ifndef NEW_INSETS
+	   row_ptr->par()->ParFromPos(RowLast(row_ptr) + 1) == par
+#else
+	   row_ptr->par() == par
+#endif
        && (!row_ptr->next() || row_ptr->next()->par() != row_ptr->par())) {     
 	  
 	  /* the paper margins */ 
@@ -1701,7 +1706,7 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
    height += row_ptr->height();
    float x, dummy;
    PrepareToPrint(bview, row_ptr, x, dummy, dummy, dummy, false);
-   row_ptr->width(maxwidth+x);
+   row_ptr->width(int(maxwidth + x));
    if (inset_owner) {
 	   Row * r = firstrow;
 	   width = max(0,workWidth(bview));
@@ -1859,9 +1864,15 @@ void LyXText::BreakParagraph(BufferView * bview, char keep_layout)
        layout.labeltype!= LABEL_SENSITIVE)
      return;
 
-   SetUndo(bview->buffer(), Undo::INSERT, 
+   SetUndo(bview->buffer(), Undo::INSERT,
+#ifndef NEW_INSETS
 	   cursor.par()->ParFromPos(cursor.pos())->previous, 
-	   cursor.par()->ParFromPos(cursor.pos())->next); 
+	   cursor.par()->ParFromPos(cursor.pos())->next
+#else
+	   cursor.par()->previous, 
+	   cursor.par()->next
+#endif
+	   ); 
 
 #ifndef NEW_TABULAR
    /* table stuff -- begin */
@@ -2709,9 +2720,15 @@ void LyXText::RedoParagraph(BufferView * bview) const
  * same Paragraph one to the right and make a rebreak */
 void LyXText::InsertChar(BufferView * bview, char c)
 {
-	SetUndo(bview->buffer(), Undo::INSERT, 
+	SetUndo(bview->buffer(), Undo::INSERT,
+#ifndef NEW_INSETS
 		cursor.par()->ParFromPos(cursor.pos())->previous, 
-		cursor.par()->ParFromPos(cursor.pos())->next);
+		cursor.par()->ParFromPos(cursor.pos())->next
+#else
+		cursor.par()->previous, 
+		cursor.par()->next
+#endif
+		);
 
 	// When the free-spacing option is set for the current layout,
 	// disable the double-space checking
@@ -3432,12 +3449,20 @@ void LyXText::DeleteLineForward(BufferView * bview)
 // version did. (JMarc) 
 void LyXText::ChangeWordCase(BufferView * bview, LyXText::TextCase action) 
 {
+#ifndef NEW_INSETS
 	LyXParagraph * tmppar = cursor.par()->ParFromPos(cursor.pos());
+#else
+	LyXParagraph * tmppar = cursor.par();
+#endif
 
 	SetUndo(bview->buffer(),Undo::FINISH, tmppar->previous, tmppar->next); 
 
+#ifndef NEW_INSETS
 	LyXParagraph::size_type tmppos = 
 		cursor.par()->PositionInParFromPos(cursor.pos());
+#else
+	LyXParagraph::size_type tmppos = cursor.pos();
+#endif
 	while (tmppos < tmppar->size()) {
 		unsigned char c = tmppar->GetChar(tmppos);
 		if (IsKommaChar(c) || IsLineSeparatorChar(c))
@@ -3493,9 +3518,15 @@ void LyXText::Delete(BufferView * bview)
 	if (old_cursor.par() != cursor.par() || old_cursor.pos() != cursor.pos()) {
 		LyXCursor tmpcursor = cursor;
 		cursor = old_cursor; // to make sure undo gets the right cursor position
-		SetUndo(bview->buffer(), Undo::DELETE, 
+		SetUndo(bview->buffer(), Undo::DELETE,
+#ifndef NEW_INSETS
 			cursor.par()->ParFromPos(cursor.pos())->previous, 
-			cursor.par()->ParFromPos(cursor.pos())->next); 
+			cursor.par()->ParFromPos(cursor.pos())->next
+#else
+			cursor.par()->previous, 
+			cursor.par()->next
+#endif
+			); 
 		cursor = tmpcursor;
 		Backspace(bview);
 	}
@@ -3573,12 +3604,20 @@ void LyXText::Backspace(BufferView * bview)
 				return;
 			}
 		}
-		
+
+#ifndef NEW_INSETS
 		if (cursor.par()->ParFromPos(cursor.pos())->previous){
 			SetUndo(bview->buffer(), Undo::DELETE,
 				cursor.par()->ParFromPos(cursor.pos())->previous->previous,
 				cursor.par()->ParFromPos(cursor.pos())->next);
 		}
+#else
+		if (cursor.par()->previous) {
+			SetUndo(bview->buffer(), Undo::DELETE,
+				cursor.par()->previous->previous,
+				cursor.par()->next);
+		}
+#endif
 		
   		LyXParagraph * tmppar = cursor.par();
   		Row * tmprow = cursor.row();
@@ -3651,9 +3690,15 @@ void LyXText::Backspace(BufferView * bview)
 	} else {
 		/* this is the code for a normal backspace, not pasting
 		 * any paragraphs */ 
-		SetUndo(bview->buffer(), Undo::DELETE, 
+		SetUndo(bview->buffer(), Undo::DELETE,
+#ifndef NEW_INSETS
 			cursor.par()->ParFromPos(cursor.pos())->previous, 
-			cursor.par()->ParFromPos(cursor.pos())->next); 
+			cursor.par()->ParFromPos(cursor.pos())->next
+#else
+			cursor.par()->previous, 
+			cursor.par()->next
+#endif
+			); 
 		// We used to do CursorLeftIntern() here, but it is
 		// not a good idea since it triggers the auto-delete
 		// mechanism. So we do a CursorLeftIntern()-lite,
@@ -4459,8 +4504,13 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 #else
 	LyXParagraph * par = row_ptr->par();
 #endif
-	if ((row_ptr->par()->ParFromPos(last + 1) == par) &&
-	    (!row_ptr->next() || (row_ptr->next()->par() != row_ptr->par())))
+	if (
+#ifndef NEW_INSETS
+		(row_ptr->par()->ParFromPos(last + 1) == par)
+#else
+		(row_ptr->par() == par)
+#endif
+	    && (!row_ptr->next() || (row_ptr->next()->par() != row_ptr->par())))
 	{
 		/* think about the margins */ 
 		if (!row_ptr->next() && bv_owner)

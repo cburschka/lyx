@@ -898,7 +898,7 @@ string LyXFunc::Dispatch(int ac,
 		Figure();
 		break;
 
-	case LFUN_INSERT_GRAPHICS:
+	case LFUN_INSET_GRAPHICS:
 	{
 		Inset * new_inset = new InsetGraphics;
 		if (!owner->view()->insertInset(new_inset))

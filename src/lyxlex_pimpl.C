@@ -19,12 +19,7 @@ using std::lower_bound;
 
 // namespace {
 struct compare_tags {
-	// used by lower_bound
-	inline
-	int operator()(keyword_item const & a, char const * const tag) const {
-		return compare_no_case(a.tag, tag) < 0;
-	}
-	// used by sorted and sort
+	// used by lower_bound, sort and sorted
 	inline
 	int operator()(keyword_item const & a, keyword_item const & b) const {
 		return compare_no_case(a.tag, b.tag) < 0;
@@ -345,12 +340,13 @@ bool LyXLex::Pimpl::next(bool esc /* = false */)
 	}
 }
 
-	///
+
 int LyXLex::Pimpl::search_kw(char const * const tag) const
 {
+	keyword_item search_tag = { tag, 0 };
 	keyword_item * res =
 		lower_bound(table, table + no_items,
-			    tag, compare_tags());
+			    search_tag, compare_tags());
 	if (res != table + no_items
 	    && !compare_no_case(res->tag, tag))
 		return res->code;

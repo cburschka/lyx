@@ -467,11 +467,6 @@ int LyXRC::read(string const & filename)
 			}
 			break;
 			
-		case RC_KBMAP:
-			if (lexrc.next())
-				use_kbmap = lexrc.GetBool();
-			break;
-			
 		case RC_EXIT_CONFIRMATION:
 			if (lexrc.next())
 				exit_confirmation = lexrc.GetBool();
@@ -482,22 +477,35 @@ int LyXRC::read(string const & filename)
 				display_shortcuts = lexrc.GetBool();
 			break;
 			
+		case RC_KBMAP:
+			if (lexrc.next())
+				use_kbmap = lexrc.GetBool();
+			break;
+			
 		case RC_KBMAP_PRIMARY:
-			if (lexrc.next()) 
-				if (!LibFileSearch("kbd", lexrc.GetString(), 
-						   "kmap").empty()) 
-					primary_kbmap = lexrc.GetString();
+			if (lexrc.next()) {
+				string kmap(lexrc.GetString());
+				if (kmap.empty()) {
+					// nothing
+				} else if (!LibFileSearch("kbd", kmap, 
+							  "kmap").empty()) 
+					primary_kbmap = kmap;
 				else 
 					lexrc.printError("LyX: Keymap `$$Token' not found");
+			}
 			break;
 			
 		case RC_KBMAP_SECONDARY:
-			if (lexrc.next()) 
-				if (!LibFileSearch("kbd", lexrc.GetString(), 
-						   "kmap").empty()) 
-					secondary_kbmap = lexrc.GetString();
+			if (lexrc.next()) {
+				string kmap(lexrc.GetString());
+				if (kmap.empty()) {
+					// nothing
+				} else if (!LibFileSearch("kbd", kmap, 
+							  "kmap").empty()) 
+					secondary_kbmap = kmap;
 				else 
 					lexrc.printError("LyX: Keymap `$$Token' not found");
+			}
 			break;
 			
 		case RC_FONT_ENCODING:
@@ -1122,14 +1130,12 @@ void LyXRC::output(ostream & os) const
 	   << "###          LyX, The Document Processor\n"
 	   << "###\n"
 	   << "###          Copyright 1995 Matthias Ettrich\n"
-	   << "###          Copyright 1995-1998 The LyX Team.\n"
+	   << "###          Copyright 1995-2000 The LyX Team.\n"
 	   << "###\n"
 	   << "### ========================================================\n"
 	   << "\n"
 	   << "# This file is written by LyX, if you want to make your own\n"
 	   << "# modifications you should do them from inside LyX and save\n"
-	   << "# your preferences, or you can also make your modifications\n"
-	   << "# to lyxrc by hand. It is not advisable to edit this file.\n"
 	   << "\n";
 	
 	// Why the switch you might ask. It is a trick to ensure that all
@@ -1145,134 +1151,51 @@ void LyXRC::output(ostream & os) const
 	case RC_BIND:
 		// bindings is not written to the preferences file.
 	case RC_BINDFILE:
+		os << "\\bind_file " << bind_file << "\n";
+
+		//
+		// Misc Section
+		//
+		os << "\n#\n"
+		   << "# MISC SECTION ######################################\n"
+		   << "#\n\n";
+		
+	case RC_SHOW_BANNER:
+		os << "# Set to false to inhibit the startup banner.\n"
+		   << "\\show_banner " << tostr(show_banner) << "\n";
+
 		// bind files are not done here.
 	case RC_UIFILE:
 		os << "\\ui_file \"" << ui_file << "\"\n";
-	//case RC_SET_COLOR:
-		// color bindings not written to preference file.
-		// And we want to be warned about that. (Lgb)
-	case RC_FONT_ENCODING:
-		os << "\\font_encoding \"" << fontenc << "\"\n";
-	case RC_PRINTER:
-		os << "\\printer \"" << printer << "\"\n";
-	case RC_PRINT_COMMAND:
-		os << "\\print_command \"" << print_command << "\"\n";
-	case RC_PRINTEVENPAGEFLAG:
-		os << "\\print_evenpage_flag \"" << print_evenpage_flag
-		   << "\"\n";
-	case RC_PRINTODDPAGEFLAG:
-		os << "\\print_oddpage_flag \"" << print_oddpage_flag
-		   << "\"\n";
-	case RC_PRINTPAGERANGEFLAG:
-		os << "\\print_pagerange_flag \"" << print_pagerange_flag
-		   << "\"\n";
-	case RC_PRINTCOPIESFLAG:
-		os << "\\print_copies_flag \"" << print_copies_flag << "\"\n";
-	case RC_PRINTCOLLCOPIESFLAG:
-		os << "\\print_collcopies_flag \"" << print_collcopies_flag
-		   << "\"\n";
-	case RC_PRINTREVERSEFLAG:
-		os << "\\print_reverse_flag \"" << print_reverse_flag
-		   << "\"\n";
-	case RC_PRINTLANDSCAPEFLAG:
-		os << "\\print_landscape_flag \"" << print_landscape_flag
-		   << "\"\n";
-	case RC_PRINTTOPRINTER:
-		os << "\\print_to_printer \"" << print_to_printer << "\"\n";
-	case RC_PRINT_ADAPTOUTPUT:
-		os << "\\print_adapt_output " << tostr(print_adapt_output)
-		   << "\n";
-	case RC_PRINTTOFILE:
-		os << "\\print_to_file \"" << print_to_file << "\"\n";
-	case RC_PRINTFILEEXTENSION:
-		os << "\\print_file_extension \"" << print_file_extension
-		   << "\"\n";
-	case RC_PRINTEXSTRAOPTIONS:
-		os << "\\print_extra_options \"" << print_extra_options
-		   << "\"\n";
-	case RC_PRINTSPOOL_COMMAND:
-		os << "\\print_spool_command \"" << print_spool_command
-		   << "\"\n";
-	case RC_PRINTSPOOL_PRINTERPREFIX:
-		os << "\\print_spool_printerprefix \""
-		   << print_spool_printerprefix << "\"\n";
-	case RC_PRINTPAPERDIMENSIONFLAG:
-		os << "\\print_paper_dimension_flag \""
-		   << print_paper_dimension_flag << "\"\n";
-	case RC_PRINTPAPERFLAG:
-		os << "\\print_paper_flag \"" << print_paper_flag << "\"\n";
-	case RC_CUSTOM_EXPORT_COMMAND:
-		os << "\\custom_export_command \"" << custom_export_command
-		   << "\"\n";
-	case RC_CUSTOM_EXPORT_FORMAT:
-		os << "\\custom_export_format \"" << custom_export_format
-		   << "\"\n";
-	case RC_PDF_MODE:
-		os << "\\pdf_mode " << tostr(pdf_mode) << "\n";
-	case RC_LATEX_COMMAND:
-		os << "\\latex_command \"" << latex_command << "\"\n";
-	case RC_PDFLATEX_COMMAND:
-		os << "\\pdflatex_command \"" << pdflatex_command << "\"\n";
-	case RC_PDF_TO_PS_COMMAND:
-		os << "\\pdf_to_ps_command \"" << pdf_to_ps_command << "\"\n";
-	case RC_DVI_TO_PS_COMMAND:
-		os << "\\dvi_to_ps_command \"" << dvi_to_ps_command << "\"\n";
-	case RC_LITERATE_COMMAND:
-		os << "\\literate_command \"" << literate_command << "\"\n";
-	case RC_LITERATE_EXTENSION:
-		os << "\\literate_extension \"" << literate_extension
-		   << "\"\n";
-	case RC_LITERATE_ERROR_FILTER:
-		os << "\\literate_error_filter \"" << literate_error_filter
-		   << "\"\n";
-	case RC_BUILD_COMMAND:
-		os << "\\build_command \"" << build_command << "\"\n";
-	case RC_BUILD_ERROR_FILTER:
-		os << "\\build_error_filter \"" << build_error_filter
-		   << "\"\n";
-	case RC_SCREEN_DPI:
-		os << "\\screen_dpi " << dpi << "\n";
-	case RC_SCREEN_ZOOM:
-		os << "\\screen_zoom " << zoom << "\n";
-	case RC_WHEEL_JUMP:
-		os << "\\wheel_jump " << wheel_jump << "\n";
-	case RC_SCREEN_FONT_SIZES:
-		os.setf(ios::fixed);
-		os.precision(2);
-		os << "\\screen_font_sizes";
-		os << " " << font_sizes[LyXFont::SIZE_TINY];
-		os << " " << font_sizes[LyXFont::SIZE_SCRIPT];
-		os << " " << font_sizes[LyXFont::SIZE_FOOTNOTE];
-		os << " " << font_sizes[LyXFont::SIZE_SMALL];
-		os << " " << font_sizes[LyXFont::SIZE_NORMAL];
-		os << " " << font_sizes[LyXFont::SIZE_LARGE];
-		os << " " << font_sizes[LyXFont::SIZE_LARGER];
-		os << " " << font_sizes[LyXFont::SIZE_LARGEST];
-		os << " " << font_sizes[LyXFont::SIZE_HUGE];
-		os << " " << font_sizes[LyXFont::SIZE_HUGER];
-		os << "\n";
-	case RC_OVERRIDE_X_DEADKEYS:
-		os << "\\override_x_deadkeys " 
-		   << override_x_deadkeys << "\n";
 	case RC_AUTOREGIONDELETE:
-		os << "\\auto_region_delete " << tostr(auto_region_delete)
+		os << "# Set to false to inhibit automatic replacement of\n"
+		   << "# the current selection.\n"
+		   << "\\auto_region_delete " << tostr(auto_region_delete)
 		   << "\n";
 	case RC_AUTOSAVE:
-		os << "\\autosave " << autosave << "\n";
+		os << "# The time interval between auto-saves in seconds.\n"
+		   << "\\autosave " << autosave << "\n";
 	case RC_EXIT_CONFIRMATION:
-		os << "\\exit_confirmation " << tostr(exit_confirmation)
+		os << "# Ask for confirmation before exit if there are\n"
+		   << "# unsaved changed documents.\n"
+		   << "\\exit_confirmation " << tostr(exit_confirmation)
 		   << "\n";
 	case RC_DISPLAY_SHORTCUTS:
-		os << "\\display_shortcuts " << tostr(display_shortcuts)
+		os << "# Display name of the last command executed, with a\n"
+		   << "# list of short-cuts in the minibuffer.\n" 
+		   << "\\display_shortcuts " << tostr(display_shortcuts)
 		   << "\n";
 	case RC_VIEWDVI_COMMAND:
-		os << "\\view_dvi_command \"" << view_dvi_command << "\"\n";
+		os << "# Program used to view dvi files.\n"
+		   << "\\view_dvi_command \"" << view_dvi_command << "\"\n";
 	case RC_VIEWDVI_PAPEROPTION:
-		os << "\\view_dvi_paper_option \"" << view_dvi_paper_option << "\"\n";
-	case RC_VIEWPDF_COMMAND:
-		os << "\\view_pdf_command \"" << view_pdf_command << "\"\n";
+		os << "# Options used to specify paper size to the\n"
+		   << "# view_dvi_command\n"
+		   << "\\view_dvi_paper_option \""
+		   << view_dvi_paper_option << "\"\n";
 	case RC_DEFAULT_PAPERSIZE:
-		os << "\\default_papersize \"";
+		os << "# The default papersize to use.\n"
+		   << "\\default_papersize \"";
 		switch (default_papersize) {
 		case BufferParams::PAPER_USLETTER:
 			os << "usletter"; break;
@@ -1291,13 +1214,20 @@ void LyXRC::output(ostream & os) const
 		case BufferParams::PAPER_DEFAULT: break;
 		}
 		os << "\"\n";
+	case RC_VIEWPDF_COMMAND:
+		os << "# Command used to view PDF files.\n"
+		   << "\\view_pdf_command \"" << view_pdf_command << "\"\n";
 	case RC_VIEWPS_COMMAND:
-		os << "\\view_ps_command \"" << view_ps_command << "\"\n";
+		os << "# Command used to view PostScript files.\n"
+		   << "\\view_ps_command \"" << view_ps_command << "\"\n";
 	case RC_VIEWPSPIC_COMMAND:
-		os << "\\view_pspic_command \"" << view_pspic_command
+		os << "# Command used to view full screen included PS\n"
+		   << "# pictures.\n"
+		   << "\\view_pspic_command \"" << view_pspic_command
 		   << "\"\n";
 	case RC_PS_COMMAND:
-		os << "\\ps_command \"" << ps_command << "\"\n";
+		os << "# Program used for interpreting postscript.\n"
+		   << "\\ps_command \"" << ps_command << "\"\n";
 	case RC_CHKTEX_COMMAND:
 		os << "\\chktex_command \"" << chktex_command << "\"\n";
 	case RC_HTML_COMMAND:
@@ -1312,20 +1242,24 @@ void LyXRC::output(ostream & os) const
 		os << "\\serverpipe \"" << lyxpipes << "\"\n";
 	case RC_RELYX_COMMAND:
 		os << "\\relyx_command \"" << relyx_command << "\"\n";
-	case RC_DOCUMENTPATH:
-		os << "\\document_path \"" << document_path << "\"\n";
-	case RC_TEMPLATEPATH:
-		os << "\\template_path \"" << template_path << "\"\n";
-	case RC_TEMPDIRPATH:
-		os << "\\tempdir_path \"" << tempdir_path << "\"\n";
-	case RC_USETEMPDIR:
-		os << "\\use_tempdir " << tostr(use_tempdir) << "\n";
-	case RC_LASTFILES:
-		os << "\\lastfiles \"" << lastfiles << "\"\n";
-	case RC_NUMLASTFILES:
-		os << "\\num_lastfiles " << num_lastfiles << "\n";
-	case RC_CHECKLASTFILES:
-		os << "\\check_lastfiles " << tostr(check_lastfiles) << "\n";
+	case RC_DATE_INSERT_FORMAT:
+		os << "\\date_insert_format \"" << date_insert_format
+		   << "\"\n";
+
+		
+		os << "\n#\n"
+		   << "# SCREEN & FONTS SECTION ############################\n"
+		   << "#\n\n";
+		
+	case RC_SCREEN_DPI:
+		os << "\\screen_dpi " << dpi << "\n";
+	case RC_SCREEN_ZOOM:
+		os << "\\screen_zoom " << zoom << "\n";
+	case RC_WHEEL_JUMP:
+		os << "\\wheel_jump " << wheel_jump << "\n";
+	case RC_CURSOR_FOLLOWS_SCROLLBAR:
+		os << "\\cursor_follows_scrollbar "
+		   << tostr(cursor_follows_scrollbar) << "\n";
 	case RC_SCREEN_FONT_ROMAN:
 		os << "\\screen_font_roman \"" << roman_font_name << "\"\n";
 	case RC_SCREEN_FONT_SANS:
@@ -1333,95 +1267,129 @@ void LyXRC::output(ostream & os) const
 	case RC_SCREEN_FONT_TYPEWRITER:
 		os << "\\screen_font_typewriter \""
 		   << typewriter_font_name << "\"\n";
-	case RC_SCREEN_FONT_MENU:
-		os << "\\screen_font_menu \"" << menu_font_name << "\"\n";
-	case RC_SCREEN_FONT_POPUP:
-		os << "\\screen_font_popup \"" << popup_font_name << "\"\n";
-	case RC_SCREEN_FONT_ENCODING:
-		os << "\\screen_font_encoding \"" << font_norm << "\"\n";
-	case RC_SCREEN_FONT_ENCODING_MENU:
-		os << "\\screen_font_encoding_menu \"" << font_norm_menu
-		   << "\"\n";
 	case RC_SCREEN_FONT_SCALABLE:
 		os << "\\screen_font_scalable " << tostr(use_scalable_fonts)
 		   << "\n";
-	case RC_CURSOR_FOLLOWS_SCROLLBAR:
-		os << "\\cursor_follows_scrollbar "
-		   << tostr(cursor_follows_scrollbar) << "\n";
-	case RC_FAX_COMMAND:
-		os << "\\fax_command \"" << fax_command << "\"\n";
-	case RC_FAXPROGRAM:
-		os << "\\fax_program \"" << fax_program << "\"\n";
-	case RC_PHONEBOOK:
-		os << "\\phone_book \"" << phone_book << "\"\n";
-	case RC_ASCIIROFF_COMMAND:
-		os << "\\ascii_roff_command \"" << ascii_roff_command
-		   << "\"\n";
-	case RC_ASCII_LINELEN:
-		os << "\\ascii_linelen " << ascii_linelen << "\n";
-	case RC_SPELL_COMMAND:
-		os << "\\spell_command \"" << isp_command << "\"\n";
-	case RC_ACCEPT_COMPOUND:
-		os << "\\accept_compound " << tostr(isp_accept_compound)
+	case RC_SCREEN_FONT_ENCODING:
+		os << "\\screen_font_encoding \"" << font_norm << "\"\n";
+	case RC_SCREEN_FONT_POPUP:
+		os << "\\screen_font_popup \"" << popup_font_name << "\"\n";
+	case RC_SCREEN_FONT_MENU:
+		os << "\\screen_font_menu \"" << menu_font_name << "\"\n";
+	case RC_SCREEN_FONT_SIZES:
+		os.setf(ios::fixed);
+		os.precision(2);
+		os << "\\screen_font_sizes";
+		os << " " << font_sizes[LyXFont::SIZE_TINY];
+		os << " " << font_sizes[LyXFont::SIZE_SCRIPT];
+		os << " " << font_sizes[LyXFont::SIZE_FOOTNOTE];
+		os << " " << font_sizes[LyXFont::SIZE_SMALL];
+		os << " " << font_sizes[LyXFont::SIZE_NORMAL];
+		os << " " << font_sizes[LyXFont::SIZE_LARGE];
+		os << " " << font_sizes[LyXFont::SIZE_LARGER];
+		os << " " << font_sizes[LyXFont::SIZE_LARGEST];
+		os << " " << font_sizes[LyXFont::SIZE_HUGE];
+		os << " " << font_sizes[LyXFont::SIZE_HUGER];
+		os << "\n";
+	//case RC_SET_COLOR:
+		// color bindings not written to preference file.
+		// And we want to be warned about that. (Lgb)
+		
+		os << "\n#\n"
+		   << "# PRINTER SECTION ###################################\n"
+		   << "#\n\n";
+		
+	case RC_PRINTER:
+		os << "\\printer \"" << printer << "\"\n";
+	case RC_PRINT_ADAPTOUTPUT:
+		os << "\\print_adapt_output " << tostr(print_adapt_output)
 		   << "\n";
-	case RC_USE_INP_ENC:
-		os << "\\use_input_encoding " << tostr(isp_use_input_encoding)
-		   << "\n";
-	case RC_USE_ALT_LANG:
-		os << "\\use_alt_language " << tostr(isp_use_alt_lang) << "\n";
-	case RC_USE_PERS_DICT:
-		os << "\\use_personal_dictionary " << tostr(isp_use_pers_dict)
-		   << "\n";
-	case RC_USE_ESC_CHARS:
-		os << "\\use_escape_chars " << tostr(isp_use_esc_chars)
-		   << "\n";
-	case RC_ALT_LANG:
-		os << "\\alternate_language \"" << isp_alt_lang << "\"\n";
-	case RC_PERS_DICT:
-		os << "\\personal_dictionary \"" << isp_pers_dict << "\"\n";
-	case RC_ESC_CHARS:
-		os << "\\escape_chars \"" << isp_esc_chars << "\"\n";
-	case RC_RTL_SUPPORT:
-		os << "\\rtl " << tostr(rtl_support) << "\n";
-	case RC_AUTO_NUMBER:
-		os << "\\auto_number " << tostr(auto_number) << "\n";
-	case RC_MARK_FOREIGN_LANGUAGE:
-		os << "\\mark_foreign_language " << 
-			tostr(mark_foreign_language) << "\n";
-	case RC_LANGUAGE_AUTO_BEGIN:
-		os << "\\language_auto_begin " 
-		   << tostr(language_auto_begin) << "\n";
-	case RC_LANGUAGE_AUTO_END:
-		os << "\\language_auto_end " 
-		   << tostr(language_auto_end) << "\n";
-	case RC_LANGUAGE_PACKAGE:
-		os << "\\language_package \"" << language_package << "\"\n";
-	case RC_LANGUAGE_COMMAND_BEGIN:
-		os << "\\language_command_begin \"" << language_command_begin
+	case RC_PRINT_COMMAND:
+		os << "\\print_command \"" << print_command << "\"\n";
+	case RC_PRINTEXSTRAOPTIONS:
+		os << "\\print_extra_options \"" << print_extra_options
 		   << "\"\n";
-	case RC_LANGUAGE_COMMAND_END:
-		os << "\\language_command_end \"" << language_command_end
+	case RC_PRINTSPOOL_COMMAND:
+		os << "\\print_spool_command \"" << print_spool_command
 		   << "\"\n";
-	case RC_MAKE_BACKUP:
-		os << "\\make_backup " << tostr(make_backup) << "\n";
-	case RC_BACKUPDIR_PATH:
-		os << "\\backupdir_path \"" << backupdir_path << "\"\n";
-	case RC_DATE_INSERT_FORMAT:
-		os << "\\date_insert_format \"" << date_insert_format
+	case RC_PRINTSPOOL_PRINTERPREFIX:
+		os << "\\print_spool_printerprefix \""
+		   << print_spool_printerprefix << "\"\n";
+	case RC_PRINTEVENPAGEFLAG:
+		os << "\\print_evenpage_flag \"" << print_evenpage_flag
 		   << "\"\n";
-	case RC_SHOW_BANNER:
-		os << "\\show_banner " << tostr(show_banner) << "\n";
-	case RC_USE_GUI:
-		os << "\\use_gui " << tostr(show_banner) << "\n";
-	case RC_LINUXDOC_TO_LYX_COMMAND:
-		os << "\\linuxdoc_to_lyx_command \"" << linuxdoc_to_lyx_command
+	case RC_PRINTODDPAGEFLAG:
+		os << "\\print_oddpage_flag \"" << print_oddpage_flag
+		   << "\"\n";
+	case RC_PRINTREVERSEFLAG:
+		os << "\\print_reverse_flag \"" << print_reverse_flag
+		   << "\"\n";
+	case RC_PRINTLANDSCAPEFLAG:
+		os << "\\print_landscape_flag \"" << print_landscape_flag
+		   << "\"\n";
+	case RC_PRINTPAGERANGEFLAG:
+		os << "\\print_pagerange_flag \"" << print_pagerange_flag
+		   << "\"\n";
+	case RC_PRINTCOPIESFLAG:
+		os << "\\print_copies_flag \"" << print_copies_flag << "\"\n";
+	case RC_PRINTCOLLCOPIESFLAG:
+		os << "\\print_collcopies_flag \"" << print_collcopies_flag
+		   << "\"\n";
+	case RC_PRINTPAPERFLAG:
+		os << "\\print_paper_flag \"" << print_paper_flag << "\"\n";
+	case RC_PRINTPAPERDIMENSIONFLAG:
+		os << "\\print_paper_dimension_flag \""
+		   << print_paper_dimension_flag << "\"\n";
+	case RC_PRINTTOPRINTER:
+		os << "\\print_to_printer \"" << print_to_printer << "\"\n";
+	case RC_PRINTTOFILE:
+		os << "\\print_to_file \"" << print_to_file << "\"\n";
+	case RC_PRINTFILEEXTENSION:
+		os << "\\print_file_extension \"" << print_file_extension
+		   << "\"\n";
+
+		os << "\n#\n"
+		   << "# EXPORT SECTION ####################################\n"
+		   << "#\n\n";
+		
+	case RC_CUSTOM_EXPORT_COMMAND:
+		os << "\\custom_export_command \"" << custom_export_command
+		   << "\"\n";
+	case RC_CUSTOM_EXPORT_FORMAT:
+		os << "\\custom_export_format \"" << custom_export_format
+		   << "\"\n";
+
+		os << "\n#\n"
+		   << "# TEX SECTION #######################################\n"
+		   << "#\n\n";
+		
+	case RC_LATEX_COMMAND:
+		os << "\\latex_command \"" << latex_command << "\"\n";
+	case RC_PDFLATEX_COMMAND:
+		os << "\\pdflatex_command \"" << pdflatex_command << "\"\n";
+	case RC_PDF_MODE:
+		os << "\\pdf_mode " << tostr(pdf_mode) << "\n";
+	case RC_FONT_ENCODING:
+		os << "\\font_encoding \"" << fontenc << "\"\n";
+
+		os << "\n#\n"
+		   << "# LINUXDOC SECTION ##################################\n"
+		   << "#\n\n";
+
+	case RC_LINUXDOC_TO_LATEX_COMMAND:
+		os << "\\linuxdoc_to_latex_command \"" << linuxdoc_to_latex_command
 		   << "\"\n";
 	case RC_LINUXDOC_TO_HTML_COMMAND:
 		os << "\\linuxdoc_to_html_command \"" << linuxdoc_to_html_command
 		   << "\"\n";
-	case RC_LINUXDOC_TO_LATEX_COMMAND:
-		os << "\\linuxdoc_to_latex_command \"" << linuxdoc_to_latex_command
+	case RC_LINUXDOC_TO_LYX_COMMAND:
+		os << "\\linuxdoc_to_lyx_command \"" << linuxdoc_to_lyx_command
 		   << "\"\n";
+		
+		os << "\n#\n"
+		   << "# DOCBOOK SECTION ###################################\n"
+		   << "#\n\n";
+
 	case RC_DOCBOOK_TO_DVI_COMMAND:
 		os << "\\docbook_to_dvi_command \"" << docbook_to_dvi_command
 		   << "\"\n";
@@ -1431,6 +1399,133 @@ void LyXRC::output(ostream & os) const
 	case RC_DOCBOOK_TO_PDF_COMMAND:
 		os << "\\docbook_to_pdf_command \"" << docbook_to_pdf_command
 		   << "\"\n";
+
+		os << "\n#\n"
+		   << "# FILE SECTION ######################################\n"
+		   << "#\n\n";
+
+	case RC_DOCUMENTPATH:
+		os << "\\document_path \"" << document_path << "\"\n";
+	case RC_LASTFILES:
+		os << "\\lastfiles \"" << lastfiles << "\"\n";
+	case RC_NUMLASTFILES:
+		os << "\\num_lastfiles " << num_lastfiles << "\n";
+	case RC_CHECKLASTFILES:
+		os << "\\check_lastfiles " << tostr(check_lastfiles) << "\n";
+	case RC_TEMPLATEPATH:
+		os << "\\template_path \"" << template_path << "\"\n";
+	case RC_TEMPDIRPATH:
+		os << "\\tempdir_path \"" << tempdir_path << "\"\n";
+	case RC_USETEMPDIR:
+		os << "\\use_tempdir " << tostr(use_tempdir) << "\n";
+	case RC_ASCII_LINELEN:
+		os << "\\ascii_linelen " << ascii_linelen << "\n";
+	case RC_MAKE_BACKUP:
+		os << "\\make_backup " << tostr(make_backup) << "\n";
+	case RC_BACKUPDIR_PATH:
+		os << "\\backupdir_path \"" << backupdir_path << "\"\n";
+
+		os << "\n#\n"
+		   << "# FAX SECTION #######################################\n"
+		   << "#\n\n";
+		
+	case RC_FAX_COMMAND:
+		os << "\\fax_command \"" << fax_command << "\"\n";
+	case RC_PHONEBOOK:
+		os << "\\phone_book \"" << phone_book << "\"\n";
+	case RC_FAXPROGRAM:
+		os << "\\fax_program \"" << fax_program << "\"\n";
+
+		os << "\n#\n"
+		   << "# ASCII EXPORT SECTION ##############################\n"
+		   << "#\n\n";
+
+	case RC_ASCIIROFF_COMMAND:
+		os << "\\ascii_roff_command \"" << ascii_roff_command
+		   << "\"\n";
+
+		os << "\n#\n"
+		   << "# SPELLCHECKER SECTION ##############################\n"
+		   << "#\n\n";
+
+	case RC_SPELL_COMMAND:
+		os << "\\spell_command \"" << isp_command << "\"\n";
+	case RC_ACCEPT_COMPOUND:
+		os << "\\accept_compound " << tostr(isp_accept_compound)
+		   << "\n";
+	case RC_USE_ALT_LANG:
+		os << "\\use_alt_language " << tostr(isp_use_alt_lang) << "\n";
+	case RC_ALT_LANG:
+		os << "\\alternate_language \"" << isp_alt_lang << "\"\n";
+	case RC_USE_ESC_CHARS:
+		os << "\\use_escape_chars " << tostr(isp_use_esc_chars)
+		   << "\n";
+	case RC_ESC_CHARS:
+		os << "\\escape_chars \"" << isp_esc_chars << "\"\n";
+	case RC_USE_PERS_DICT:
+		os << "\\use_personal_dictionary " << tostr(isp_use_pers_dict)
+		   << "\n";
+	case RC_PERS_DICT:
+		os << "\\personal_dictionary \"" << isp_pers_dict << "\"\n";
+	case RC_USE_INP_ENC:
+		os << "\\use_input_encoding " << tostr(isp_use_input_encoding)
+		   << "\n";
+
+		os << "\n#\n"
+		   << "# LANGUAGE SUPPORT SECTION ##########################\n"
+		   << "#\n\n";
+
+	case RC_RTL_SUPPORT:
+		os << "\\rtl " << tostr(rtl_support) << "\n";
+	case RC_LANGUAGE_PACKAGE:
+		os << "\\language_package \"" << language_package << "\"\n";
+	case RC_LANGUAGE_COMMAND_BEGIN:
+		os << "\\language_command_begin \"" << language_command_begin
+		   << "\"\n";
+	case RC_LANGUAGE_COMMAND_END:
+		os << "\\language_command_end \"" << language_command_end
+		   << "\"\n";
+	case RC_LANGUAGE_AUTO_BEGIN:
+		os << "\\language_auto_begin " 
+		   << tostr(language_auto_begin) << "\n";
+	case RC_LANGUAGE_AUTO_END:
+		os << "\\language_auto_end " 
+		   << tostr(language_auto_end) << "\n";
+	case RC_MARK_FOREIGN_LANGUAGE:
+		os << "\\mark_foreign_language " << 
+			tostr(mark_foreign_language) << "\n";
+
+		os << "\n#\n"
+		   << "# 2nd MISC SUPPORT SECTION ##########################\n"
+		   << "#\n\n";
+
+	case RC_PDF_TO_PS_COMMAND:
+		os << "\\pdf_to_ps_command \"" << pdf_to_ps_command << "\"\n";
+	case RC_DVI_TO_PS_COMMAND:
+		os << "\\dvi_to_ps_command \"" << dvi_to_ps_command << "\"\n";
+	case RC_LITERATE_COMMAND:
+		os << "\\literate_command \"" << literate_command << "\"\n";
+	case RC_LITERATE_EXTENSION:
+		os << "\\literate_extension \"" << literate_extension
+		   << "\"\n";
+	case RC_LITERATE_ERROR_FILTER:
+		os << "\\literate_error_filter \"" << literate_error_filter
+		   << "\"\n";
+	case RC_BUILD_COMMAND:
+		os << "\\build_command \"" << build_command << "\"\n";
+	case RC_BUILD_ERROR_FILTER:
+		os << "\\build_error_filter \"" << build_error_filter
+		   << "\"\n";
+	case RC_OVERRIDE_X_DEADKEYS:
+		os << "\\override_x_deadkeys " 
+		   << tostr(override_x_deadkeys) << "\n";
+	case RC_SCREEN_FONT_ENCODING_MENU:
+		os << "\\screen_font_encoding_menu \"" << font_norm_menu
+		   << "\"\n";
+	case RC_AUTO_NUMBER:
+		os << "\\auto_number " << tostr(auto_number) << "\n";
+	case RC_USE_GUI:
+		os << "\\use_gui " << tostr(use_gui) << "\n";
 	}
 	os.flush();
 }

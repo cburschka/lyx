@@ -26,13 +26,9 @@ using std::endl;
 // This is the global menu definition
 MenuBackend menubackend;
 
-MenuItem::MenuItem(MenuItem const & m) 
-  : kind_(m.kind_), label_(m.label_), action_(m.action_), submenu_(m.submenu_) 
-{}
-
 
 MenuItem::MenuItem(Kind kind, string const & label, string const & command) 
-  : kind_(kind), label_(label) 
+	: kind_(kind), label_(label) 
 {
 	switch(kind) {
 	case Separator:
@@ -53,9 +49,11 @@ MenuItem::MenuItem(Kind kind, string const & label, string const & command)
 	}
 }
 
-void Menu::add(MenuItem const & i)
+
+Menu & Menu::add(MenuItem const & i)
 {
 	items_.push_back(i);
+	return *this;
 }
 
 
@@ -84,7 +82,6 @@ void Menu::read(LyXLex & lex)
 	if (lyxerr.debugging(Debug::PARSER))
 		lex.printTable(lyxerr);
 
-	string mlabel, mname;
 	bool quit = false;
 
 	while (lex.IsOK() && !quit) {
@@ -108,9 +105,9 @@ void Menu::read(LyXLex & lex)
 			break;
 		case md_submenu: {
 			lex.next();
-			mlabel = lex.GetString();
+			string mlabel = lex.GetString();
 			lex.next();
-			mname = lex.GetString();
+			string mname = lex.GetString();
 			add(MenuItem(MenuItem::Submenu, mlabel, mname));
 			break;
 		}
@@ -136,7 +133,7 @@ void MenuBackend::read(LyXLex & lex)
 		md_last
 	};
 
-	struct keyword_item menutags[md_last-1] = {
+	struct keyword_item menutags[md_last - 1] = {
 		{ "end", md_endmenuset },
 		{ "menu", md_menu },
 		{ "menubar", md_menubar }
@@ -151,7 +148,6 @@ void MenuBackend::read(LyXLex & lex)
 	if (lyxerr.debugging(Debug::PARSER))
 		lex.printTable(lyxerr);
 
-	string mlabel, mname;
 	bool quit = false;
 
 	while (lex.IsOK() && !quit) {
@@ -184,43 +180,38 @@ void MenuBackend::read(LyXLex & lex)
 	lex.popTable();
 }
 
+
 void MenuBackend::defaults()
 {
-	if (menulist_.size() > 0)
-		menulist_.clear();
+	menulist_.clear();
 
 	lyxerr[Debug::GUI] << "MenuBackend::defaults: using default values" 
 			   << endl;
 
 	Menu file("file");
-	file.add(MenuItem(MenuItem::Command,
-			  "New...|N", "buffer-new"));
-	file.add(MenuItem(MenuItem::Command,
-			  "Open...|O", "buffer-open"));
-	file.add(MenuItem(MenuItem::Submenu,
-			  "Import|I", "import"));
-	file.add(MenuItem(MenuItem::Command,
-			  "Quit|Q", "lyx-quit"));
-	file.add(MenuItem(MenuItem::Separator));
-	file.add(MenuItem(MenuItem::Lastfiles));
+	file
+		.add(MenuItem(MenuItem::Command, "New...|N", "buffer-new"))
+		.add(MenuItem(MenuItem::Command, "Open...|O", "buffer-open"))
+		.add(MenuItem(MenuItem::Submenu, "Import|I", "import"))
+		.add(MenuItem(MenuItem::Command, "Quit|Q", "lyx-quit"))
+		.add(MenuItem(MenuItem::Separator))
+		.add(MenuItem(MenuItem::Lastfiles));
 	add(file);
 
 	Menu import("import");
-	import.add(MenuItem(MenuItem::Command,
-			    "LaTeX...|L", "buffer-import latex"));
-	import.add(MenuItem(MenuItem::Command,
-			    "LinuxDoc...|L", "buffer-import linuxdoc"));
+	import
+		.add(MenuItem(MenuItem::Command,
+			      "LaTeX...|L", "buffer-import latex"))
+		.add(MenuItem(MenuItem::Command,
+			      "LinuxDoc...|L", "buffer-import linuxdoc"));
 	add(import);
  
 	Menu edit("edit");
-	edit.add(MenuItem(MenuItem::Command,
-			  "Cut", "cut"));
-	edit.add(MenuItem(MenuItem::Command,
-			  "Copy", "copy"));
-	edit.add(MenuItem(MenuItem::Command,
-			  "Paste", "paste"));
-	edit.add(MenuItem(MenuItem::Command,
-			  "Emphasize", "font-emph"));
+	edit
+		.add(MenuItem(MenuItem::Command, "Cut", "cut"))
+		.add(MenuItem(MenuItem::Command, "Copy", "copy"))
+		.add(MenuItem(MenuItem::Command, "Paste", "paste"))
+		.add(MenuItem(MenuItem::Command, "Emphasize", "font-emph"));
 	add(edit);
 
 	Menu documents("documents");
@@ -228,15 +219,15 @@ void MenuBackend::defaults()
 	add(documents);
 
 	Menu main("main", true);
-	main.add(MenuItem(MenuItem::Submenu, "File|F", "file"));
-	main.add(MenuItem(MenuItem::Submenu, "Edit|E", "edit"));
-	main.add(MenuItem(MenuItem::Submenu, 
-			  "Documents|D", "documents"));
+	main
+		.add(MenuItem(MenuItem::Submenu, "File|F", "file"))
+		.add(MenuItem(MenuItem::Submenu, "Edit|E", "edit"))
+		.add(MenuItem(MenuItem::Submenu, 
+			      "Documents|D", "documents"));
 	add(main);
 
 	Menu main_nobuffer("main_nobuffer", true);
-	main_nobuffer.add(MenuItem(MenuItem::Submenu, 
-				   "File|F", "file"));
+	main_nobuffer.add(MenuItem(MenuItem::Submenu, "File|F", "file"));
 	add(main_nobuffer);
 
 	if (lyxerr.debugging(Debug::GUI)) {
@@ -248,12 +239,14 @@ void MenuBackend::defaults()
 	}
 }
 
-void MenuBackend::add(Menu const &menu)
+
+void MenuBackend::add(Menu const & menu)
 {
 	menulist_.push_back(menu);
 }
 
-bool MenuBackend::hasMenu(string const &name) const
+
+bool MenuBackend::hasMenu(string const & name) const
 {
 	for (const_iterator cit = begin(); cit != end(); ++cit) {
 		if ((*cit).name() == name)
@@ -262,7 +255,8 @@ bool MenuBackend::hasMenu(string const &name) const
 	return false;
 }
 
-Menu const & MenuBackend::getMenu(string const &name) const
+
+Menu const & MenuBackend::getMenu(string const & name) const
 {
 	for (const_iterator cit = begin(); cit != end(); ++cit) {
 		if ((*cit).name() == name)

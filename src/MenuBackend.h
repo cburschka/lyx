@@ -3,8 +3,8 @@
 * 
 *           LyX, The Document Processor
 *
-*           Copyright (C) 1995 Matthias Ettrich
-*           Copyright (C) 1995-1999 The LyX Team.
+*           Copyright 1995 Matthias Ettrich
+*           Copyright 1995-2000 The LyX Team.
 *
 *           This file is Copyright 1999
 *           Jean-Marc Lasgouttes
@@ -23,64 +23,67 @@
 #include <vector>
 
 class LyXLex;
-class MenuItem;
 
+///
 class MenuItem {
 public:
-	// The type of elements that can be in a menu
-	enum Kind { 
-		Command, 
-		Submenu, 
-		Separator, 
-		Lastfiles, // This is the list of last opened file,
-		           // typically for the File menu. 
-		Documents  // This is the list of opened Documents,
-		           // typically for the Documents menu.
+	/// The type of elements that can be in a menu
+	enum Kind {
+		///
+		Command,
+		///
+		Submenu,
+		///
+		Separator,
+		/** This is the list of last opened file,
+		    typically for the File menu. */
+		Lastfiles,
+		/** This is the list of opened Documents,
+		    typically for the Documents menu. */
+		Documents
 	};
-	// Create a copy of a given MenuItem
-	MenuItem(MenuItem const &);
-	// Create a Command type MenuItem
+	/// Create a Command type MenuItem
 	MenuItem(Kind kind_, string const & label_ = string(), 
 		 string const & command_ = string());
-	//
-	~MenuItem() {}
-
-	// The label of a given menuitem
+	/// The label of a given menuitem
 	string const & label() const { return label_; }
-	// The kind of entry
+	/// The kind of entry
 	Kind kind() const { return kind_; } 
-	// the action (if relevant)
+	/// the action (if relevant)
 	int action() const { return action_; }
-	// the description of the  submenu (if relevant)
+	/// the description of the  submenu (if relevant)
 	string const & submenu() const { return submenu_; }
-	
 private:
+	///
 	Kind kind_;
+	///
 	string label_;
+	///
 	int action_;
+	///
 	string submenu_;
-	MenuItem() {}
 };
 
 
+///
 class Menu {
 public:
-	//
+	///
 	typedef std::vector<MenuItem> ItemList;
-	//
+	///
 	typedef ItemList::const_iterator const_iterator;
-	//
+	///
 	explicit Menu(string const & name, bool mb = false) 
 		: menubar_(mb), name_(name) {}
-	//
-	void add(MenuItem const &);
-	//
+	///
+	Menu & add(MenuItem const &);
+	///
 	void read(LyXLex &);
-	// 
+	/// 
 	bool menubar() const { return menubar_; }
-	// 
+	/// 
 	string const & name() const { return name_; }
-	//
+	///
 	bool empty() const { return items_.empty(); }
         ///
         const_iterator begin() const {
@@ -90,7 +93,6 @@ public:
         const_iterator end() const {
                 return items_.end();
         }
-    
 private:
 	///
 	ItemList items_;
@@ -102,6 +104,7 @@ private:
 };
 
 
+///
 class MenuBackend {
 public:
 	///
@@ -133,6 +136,7 @@ private:
 	MenuList menulist_;
 };
 
+///
 extern MenuBackend menubackend;
 
 #endif /* MENUBACKEND_H */

@@ -403,7 +403,10 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	//
 
 	ReadRcFile("lyxrc.defaults");
-	ReadRcFile("lyxrc");
+	// If there is a preferences file we read that instead
+	// of the old lyxrc file.
+	if (!ReadRcFile("preferences"))
+	    ReadRcFile("lyxrc");
 
 	// Ensure that we have really read a bind file, so that LyX is
 	// usable.
@@ -566,7 +569,7 @@ void LyX::queryUserLyXDir(bool explicit_userdir)
 
 
 // Read the rc file `name'
-void LyX::ReadRcFile(string const & name)
+bool LyX::ReadRcFile(string const & name)
 {
 	lyxerr[Debug::INIT] << "About to read " << name << "..." << endl;
 	
@@ -578,9 +581,12 @@ void LyX::ReadRcFile(string const & name)
 		        WriteAlert(_("LyX Warning!"), 
 				   _("Error while reading ")+lyxrc_path+".",
 				   _("Using built-in defaults."));
+			return false;
 		}
+		return true;
 	} else
 	  	lyxerr[Debug::INIT] << "Could not find " << name << endl;
+	return false;
 }
 
 
@@ -611,6 +617,11 @@ void LyX::ReadUIFile(string const & name)
 			    << " in " << ui_path << endl;
 	LyXLex lex(uitags, ui_last - 1);
 	lex.setFile(ui_path);
+	if (!lex.IsOK()) {
+		lyxerr << "Unable to set LyXLeX for ui file: " << ui_path
+		       << endl;
+	}
+	
 	if (lyxerr.debugging(Debug::PARSER))
 		lex.printTable(lyxerr);
 

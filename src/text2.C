@@ -559,7 +559,11 @@ LyXParagraph * LyXText::SetLayout(BufferView * bview,
 	}
    
 	SetUndo(bview->buffer(), Undo::EDIT,
-		sstart_cur.par()->ParFromPos(sstart_cur.pos())->previous, 
+#ifndef NEW_INSETS
+		sstart_cur.par()->ParFromPos(sstart_cur.pos())->previous,
+#else
+		sstart_cur.par()->previous,
+#endif
 		undoendpar);
 
 	/* ok we have a selection. This is always between sstart_cur
@@ -628,80 +632,6 @@ void LyXText::SetLayout(BufferView * bview, LyXTextClass::size_type layout)
 {
 	LyXCursor tmpcursor = cursor;  /* store the current cursor  */
 
-//  #ifdef USE_OLD_SET_LAYOUT
-//  	// if there is no selection just set the layout
-//  	// of the current paragraph  */
-//  	if (!selection) {
-//  		sel_start_cursor = cursor;  // dummy selection
-//  		sel_end_cursor = cursor;
-//  	}
-
-//  	LyXParagraph * endpar = sel_end_cursor.par()->LastPhysicalPar()->Next();
-//  	LyXParagraph * undoendpar = endpar;
-
-//  	if (endpar && endpar->GetDepth()) {
-//  		while (endpar && endpar->GetDepth()) {
-//  			endpar = endpar->LastPhysicalPar()->Next();
-//  			undoendpar = endpar;
-//  		}
-//  	}
-//  	else if (endpar) {
-//  		endpar = endpar->Next(); // because of parindents etc.
-//  	}
-   
-//  	SetUndo(Undo::EDIT, 
-//  		sel_start_cursor.par()->ParFromPos(sel_start_cursor.pos())->previous, 
-//  		undoendpar);
-
-//  	/* ok we have a selection. This is always between sel_start_cursor
-//  	 * and sel_end cursor */ 
-//  	cursor = sel_start_cursor;
-   
-//  	LyXLayout const & lyxlayout =
-//  		textclasslist.Style(bview->buffer()->params.textclass, layout);
-   
-//  	while (cursor.par() != sel_end_cursor.par()) {
-//  		if (cursor.par()->footnoteflag ==
-//  		    sel_start_cursor.par()->footnoteflag) {
-//  			cursor.par()->SetLayout(layout);
-//  			MakeFontEntriesLayoutSpecific(cursor.par());
-//  			LyXParagraph* fppar = cursor.par()->FirstPhysicalPar();
-//  			fppar->added_space_top = lyxlayout.fill_top ?
-//  				VSpace(VSpace::VFILL) : VSpace(VSpace::NONE);
-//  			fppar->added_space_bottom = lyxlayout.fill_bottom ? 
-//  				VSpace(VSpace::VFILL) : VSpace(VSpace::NONE); 
-//  			if (lyxlayout.margintype == MARGIN_MANUAL)
-//  				cursor.par()->SetLabelWidthString(lyxlayout.labelstring());
-//  			if (lyxlayout.labeltype != LABEL_BIBLIO
-//  			    && fppar->bibkey) {
-//  				delete fppar->bibkey;
-//  				fppar->bibkey = 0;
-//  			}
-//  		}
-//  		cursor.par() = cursor.par()->Next();
-//  	}
-//  	if (cursor.par()->footnoteflag ==
-//  	    sel_start_cursor.par()->footnoteflag) {
-//  		cursor.par()->SetLayout(layout);
-//  		MakeFontEntriesLayoutSpecific(cursor.par());
-//  #ifndef NEW_INSETS
-//  		LyXParagraph* fppar = cursor.par()->FirstPhysicalPar();
-//  #else
-//  		LyXParagraph* fppar = cursor.par();
-//  #endif
-//  		fppar->added_space_top = lyxlayout.fill_top ?
-//  			VSpace(VSpace::VFILL) : VSpace(VSpace::NONE);
-//  		fppar->added_space_bottom = lyxlayout.fill_bottom ? 
-//  			VSpace(VSpace::VFILL) : VSpace(VSpace::NONE); 
-//  		if (lyxlayout.margintype == MARGIN_MANUAL)
-//  			cursor.par()->SetLabelWidthString(lyxlayout.labelstring());
-//  		if (lyxlayout.labeltype != LABEL_BIBLIO
-//  		    && fppar->bibkey) {
-//  			delete fppar->bibkey;
-//  			fppar->bibkey = 0;
-//  		}
-//  	}
-//  #else
 	// if there is no selection just set the layout
 	// of the current paragraph  */
 	if (!selection) {
@@ -711,7 +641,6 @@ void LyXText::SetLayout(BufferView * bview, LyXTextClass::size_type layout)
 	LyXParagraph *
 		endpar = SetLayout(bview, cursor, sel_start_cursor,
 				   sel_end_cursor, layout);
-//#endif
 	RedoParagraphs(bview, sel_start_cursor, endpar);
    
 	// we have to reset the selection, because the
@@ -761,9 +690,13 @@ void  LyXText::IncDepth(BufferView * bview)
 		endpar = endpar->Next(); // because of parindents etc.
 	}
 	
-	SetUndo(bview->buffer(), Undo::EDIT, 
+	SetUndo(bview->buffer(), Undo::EDIT,
+#ifndef NEW_INSETS
 		sel_start_cursor
-		.par()->ParFromPos(sel_start_cursor.pos())->previous, 
+		.par()->ParFromPos(sel_start_cursor.pos())->previous,
+#else
+		sel_start_cursor.par()->previous,
+#endif
 		undoendpar);
 
 	LyXCursor tmpcursor = cursor; // store the current cursor
@@ -873,9 +806,13 @@ void  LyXText::DecDepth(BufferView * bview)
 		endpar = endpar->Next(); // because of parindents etc.
 	}
    
-	SetUndo(bview->buffer(), Undo::EDIT, 
+	SetUndo(bview->buffer(), Undo::EDIT,
+#ifndef NEW_INSETS
 		sel_start_cursor
-		.par()->ParFromPos(sel_start_cursor.pos())->previous, 
+		.par()->ParFromPos(sel_start_cursor.pos())->previous,
+#else
+		sel_start_cursor.par()->previous,
+#endif
 		undoendpar);
 
 	LyXCursor tmpcursor = cursor; // store the current cursor
@@ -945,9 +882,15 @@ void LyXText::SetFont(BufferView * bview, LyXFont const & font, bool toggleall)
 	// ok we have a selection. This is always between sel_start_cursor
 	// and sel_end cursor
    
-	SetUndo(bview->buffer(), Undo::EDIT, 
+	SetUndo(bview->buffer(), Undo::EDIT,
+#ifndef NEW_INSETS
 		sel_start_cursor.par()->ParFromPos(sel_start_cursor.pos())->previous, 
-		sel_end_cursor.par()->ParFromPos(sel_end_cursor.pos())->next); 
+		sel_end_cursor.par()->ParFromPos(sel_end_cursor.pos())->next
+#else
+		sel_start_cursor.par()->previous, 
+		sel_end_cursor.par()->next
+#endif
+		); 
 	cursor = sel_start_cursor;
 	while (cursor.par() != sel_end_cursor.par() ||
 	       (
@@ -1520,9 +1463,13 @@ void LyXText::SetParagraph(BufferView * bview,
 		endpar = endpar->Next(); // because of parindents etc.
 	}
    
-	SetUndo(bview->buffer(), Undo::EDIT, 
+	SetUndo(bview->buffer(), Undo::EDIT,
+#ifndef NEW_INSETS
 		sel_start_cursor
-		.par()->ParFromPos(sel_start_cursor.pos())->previous, 
+		.par()->ParFromPos(sel_start_cursor.pos())->previous,
+#else
+		sel_start_cursor.par()->previous,
+#endif
 		undoendpar);
 
 	
@@ -1619,9 +1566,13 @@ void LyXText::SetParagraphExtraOpt(BufferView * bview, int type,
 		endpar = endpar->Next(); // because of parindents etc.
 	}
    
-	SetUndo(bview->buffer(), Undo::EDIT, 
+	SetUndo(bview->buffer(), Undo::EDIT,
+#ifndef NEW_INSETS
 		sel_start_cursor
-		.par()->ParFromPos(sel_start_cursor.pos())->previous, 
+		.par()->ParFromPos(sel_start_cursor.pos())->previous,
+#else
+		sel_start_cursor.par()->previous,
+#endif
 		undoendpar);
 	
 	tmppar = sel_end_cursor.par();
@@ -2203,9 +2154,15 @@ void LyXText::InsertInset(BufferView * bview, Inset * inset)
 {
 	if (!cursor.par()->InsertInsetAllowed(inset))
 		return;
-	SetUndo(bview->buffer(), Undo::INSERT, 
+	SetUndo(bview->buffer(), Undo::INSERT,
+#ifndef NEW_INSETS
 		cursor.par()->ParFromPos(cursor.pos())->previous, 
-		cursor.par()->ParFromPos(cursor.pos())->next);
+		cursor.par()->ParFromPos(cursor.pos())->next
+#else
+		cursor.par()->previous, 
+		cursor.par()->next
+#endif
+		);
 	cursor.par()->InsertInset(cursor.pos(), inset);
 	InsertChar(bview, LyXParagraph::META_INSET);  /* just to rebreak and refresh correctly.
 				      * The character will not be inserted a
@@ -2293,16 +2250,26 @@ void LyXText::CutSelection(BufferView * bview, bool doclear)
 		endpar = endpar->Next(); // because of parindents etc.
 	}
     
-	SetUndo(bview->buffer(), Undo::DELETE, sel_start_cursor
+	SetUndo(bview->buffer(), Undo::DELETE,
+#ifndef NEW_INSETS
+		sel_start_cursor
 		.par()->ParFromPos(sel_start_cursor.pos())->previous,
+#else
+		sel_start_cursor.par()->previous,
+#endif
 		undoendpar);
     
 	CutAndPaste cap;
 
 	// there are two cases: cut only within one paragraph or
 	// more than one paragraph
+#ifndef NEW_INSETS
 	if (sel_start_cursor.par()->ParFromPos(sel_start_cursor.pos()) 
-	    == sel_end_cursor.par()->ParFromPos(sel_end_cursor.pos())) {
+	    == sel_end_cursor.par()->ParFromPos(sel_end_cursor.pos()))
+#else
+	if (sel_start_cursor.par() == sel_end_cursor.par())
+#endif
+		{
 		// only within one paragraph
 		endpar = sel_start_cursor.par();
 		int pos = sel_end_cursor.pos();
@@ -2411,9 +2378,15 @@ void LyXText::PasteSelection(BufferView * bview)
 	if (!cap.checkPastePossible(cursor.par(), cursor.pos()))
 		return;
 
-	SetUndo(bview->buffer(), Undo::INSERT, 
+	SetUndo(bview->buffer(), Undo::INSERT,
+#ifndef NEW_INSETS
 		cursor.par()->ParFromPos(cursor.pos())->previous, 
-		cursor.par()->ParFromPos(cursor.pos())->next); 
+		cursor.par()->ParFromPos(cursor.pos())->next
+#else
+		cursor.par()->previous, 
+		cursor.par()->next
+#endif
+		); 
 
 	LyXParagraph * endpar;
 	LyXParagraph * actpar = cursor.par();
@@ -2899,13 +2872,13 @@ void LyXText::SetCursor(BufferView * bview, LyXParagraph * par,
 void LyXText::SetCursor(BufferView *bview, LyXCursor & cur, LyXParagraph * par,
 			LyXParagraph::size_type pos, bool boundary) const
 {
+#ifndef NEW_INSETS
 	// correct the cursor position if impossible
 	if (pos > par->Last()){
 		LyXParagraph * tmppar = par->ParFromPos(pos);
 		pos = par->PositionInParFromPos(pos);
 		par = tmppar;
 	}
-#ifndef NEW_INSETS
 	if (par->IsDummy() && par->previous &&
 	    par->previous->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE) {
 		while (par->previous &&
@@ -3758,9 +3731,14 @@ Undo * LyXText::CreateUndo(Buffer * buf, Undo::undo_kind kind,
 		tmppar2->next = 0;
 	} else
 		undopar = 0; // nothing to replace (undo of delete maybe)
-  
+
+#ifndef NEW_INSETS
 	int cursor_par = cursor.par()->ParFromPos(cursor.pos())->id();
 	int cursor_pos =  cursor.par()->PositionInParFromPos(cursor.pos());
+#else
+	int cursor_par = cursor.par()->id();
+	int cursor_pos =  cursor.pos();
+#endif
 
 	Undo * undo = new Undo(kind, 
 			       before_number, behind_number,  
@@ -3776,9 +3754,15 @@ void LyXText::SetCursorParUndo(Buffer * buf)
 {
 	if (inset_owner)
 		return;
-	SetUndo(buf, Undo::FINISH, 
+	SetUndo(buf, Undo::FINISH,
+#ifndef NEW_INSETS
 		cursor.par()->ParFromPos(cursor.pos())->previous, 
-		cursor.par()->ParFromPos(cursor.pos())->next); 
+		cursor.par()->ParFromPos(cursor.pos())->next
+#else
+		cursor.par()->previous, 
+		cursor.par()->next
+#endif
+		); 
 }
 
 

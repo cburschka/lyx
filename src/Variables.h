@@ -26,7 +26,7 @@ public:
   /// 
   void set(string const &, string const &);
   /// 
-  virtual string get(string const &) const;
+  string get(string const &) const;
   ///
   bool isset(string const & var) const;
   /// 

@@ -809,10 +809,16 @@ void BufferView::lockedInsetStoreUndo(Undo::undo_kind kind)
 	if (kind == Undo::EDIT) // in this case insets would not be stored!
 		kind = Undo::FINISH;
 	text->SetUndo(buffer(), kind,
+#ifndef NEW_INSETS
 		      text->cursor.par()->
 		      ParFromPos(text->cursor.pos())->previous, 
 		      text->cursor.par()->
-		      ParFromPos(text->cursor.pos())->next);
+		      ParFromPos(text->cursor.pos())->next
+#else
+		      text->cursor.par()->previous, 
+		      text->cursor.par()->next
+#endif
+		);
 }
 
 
@@ -870,8 +876,13 @@ bool BufferView::ChangeRefs(string const & from, string const & to)
 	LyXParagraph * par = buffer()->paragraph;
 	LyXCursor cursor = text->cursor;
 	LyXCursor tmpcursor = cursor;
+#ifndef NEW_INSETS
 	cursor.par(tmpcursor.par()->ParFromPos(tmpcursor.pos()));
 	cursor.pos(tmpcursor.par()->PositionInParFromPos(tmpcursor.pos()));
+#else
+	cursor.par(tmpcursor.par());
+	cursor.pos(tmpcursor.pos());
+#endif
 
 	while (par) {
 		bool flag2 = false;

@@ -20,6 +20,10 @@
 #include "lyxlex.h"
 #include "debug.h"
 #include "lyxlex.h"
+#if 1
+// only until we don't need access tot he NEW_INSETS or NEW_TABULAR anymore
+#include "lyxparagraph.h"
+#endif
 
 using std::endl;
 
@@ -56,8 +60,13 @@ void ToolbarDefaults::init()
 	add(LFUN_FREE);
 	add(SEPARATOR);
 	
+#ifndef NEW_INSETS	
 	add(LFUN_FOOTMELT);
 	add(LFUN_MARGINMELT);
+#else
+	add(LFUN_INSET_FOOTNOTE);
+	add(LFUN_INSET_MARGINAL);
+#endif
 	add(LFUN_DEPTH);
 	add(SEPARATOR);
 
@@ -66,7 +75,11 @@ void ToolbarDefaults::init()
 	add(SEPARATOR);
 
 	add(LFUN_FIGURE);
+#ifndef NEW_TABULAR
 	add(LFUN_TABLE);
+#else
+	add(LFUN_INSET_TABULAR);
+#endif
 	//add(LFUN_MELT);
 }
 

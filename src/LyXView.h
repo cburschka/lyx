@@ -21,7 +21,7 @@
 #include "Timeout.h"
 
 // uncomment this line to try out the new menus
-//#define NEW_MENUBAR
+#define NEW_MENUBAR 1
 
 class LyXFunc;
 class Toolbar;

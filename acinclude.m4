@@ -333,38 +333,84 @@ fi])
 
 
 dnl Usage: LYX_CXX_STL_STRING : checks whether the C++ compiler
-dnl   has a working stl string container, the check is really stupid
-dnl   and could need some improvement.
+dnl   has a std::string that is usable for LyX. LyX does not require this
+dnl   std::string to be standard.
 AC_DEFUN(LYX_CXX_STL_STRING,[
     AC_REQUIRE([LYX_PROG_CXX])
     AC_MSG_CHECKING(whether the included std::string should be used)
     AC_ARG_WITH(included-string,
        [  --with-included-string  use LyX string class instead of STL string],
-       [with_included_string=$withval],
-       [AC_TRY_COMPILE([
+       [lyx_cv_with_included_string=$withval],
+       [AC_CACHE_CHECK([],lyx_cv_with_included_string,
+	[AC_TRY_COMPILE([
 	    #include <string>
 	    using std::string;
 	],[
+	    // LyX has reduced its requirements on the basic_string
+	    // implementation so that the basic_string supplied
+	    // with gcc is usable. In particular this means that
+	    // lyx does not use std::string::clear and not the
+	    // strncmp version of std::string::compare. This is mainly
+	    // done so that LyX can use precompiled C++ libraries that
+	    // already uses the systems basic_string, e.g. gtk--
+	    string a("hello there");
+	    a.erase();
+	    a = "hey";
+	    //char s[] = "y";
+	    //int t = a.compare(a.length() - 1, 1, s);
+	    a.erase();
+	],[
+	    lyx_cv_with_included_string=no
+	],[
+	    lyx_cv_with_included_string=yes
+	])
+	])
+    ])
+    if test x$lyx_cv_with_included_string = xyes ; then
+	AC_DEFINE(USE_INCLUDED_STRING, 1,
+	    [Define to use the lyxstring class bundled with LyX.])
+	    lyx_flags="$lyx_flags included-string"
+    fi
+    AM_CONDITIONAL(USE_LYXSTRING, test x$lyx_cv_with_included_string = xyes)
+dnl    AC_MSG_RESULT([$with_included_string])
+])
+
+
+dnl Usage: LYX_CXX_GOOD_STD_STRING : checks whether the C++ compiler
+dnl   has a std::string that is close to the standard. So close that
+dnl   methods not found in "unstandard" std::strings are present here.
+AC_DEFUN(LYX_CXX_GOOD_STD_STRING,[
+    AC_REQUIRE([LYX_PROG_CXX])
+dnl    AC_MSG_CHECKING(whether the systems std::string is really good)
+    AC_CACHE_CHECK([whether the systems std::string is really good],
+    [lyx_cv_std_string_good],
+    [AC_TRY_COMPILE([
+	    #include <string>
+	    using std::string;
+	],[
+	    // From a std::string that is supposed to be close to the
+	    // standard we require at least three things:
+	    // - clear() and erase()
+	    // - the strncmp of compare()
+	    // - push_back()
 	    string a("hello there");
 	    a.erase();
 	    a = "hey";
 	    char s[] = "y";
 	    int t = a.compare(a.length() - 1, 1, s);
-	    a.erase();
+	    a.push_back('g');
+	    a.clear();
 	],[
-	    with_included_string=no
+	    lyx_cv_std_string_good=yes
 	],[
-	    with_included_string=yes
+	    lyx_cv_std_string_good=no
 	    
 	])
     ])
-    if test x$with_included_string = xyes ; then
-	AC_DEFINE(USE_INCLUDED_STRING, 1,
-	    [Define to use the lyxstring class bundled with LyX.])
-	    lyx_flags="$lyx_flags included-string"
+    if test x$lyx_cv_std_string_good = xyes ; then
+	AC_DEFINE(STD_STRING_IS_GOOD, 1,
+	    [Define is the systems std::string is really good.])
     fi
-    AM_CONDITIONAL(USE_LYXSTRING, test x$with_included_string = xyes)
-    AC_MSG_RESULT([$with_included_string])
 ])
 
 
@@ -379,49 +425,56 @@ AC_DEFUN(LYX_REGEX,[
 
 dnl LYX_CXX_MUTABLE
 AC_DEFUN(LYX_CXX_MUTABLE, [
-AC_REQUIRE([LYX_PROG_CXX])
-AC_MSG_CHECKING(if C++ compiler supports mutable)
-AC_TRY_COMPILE(
-[
-class k {       
-        mutable char *c;
-public:
-   void foo() const { c=0; }
-};
-],[
-],[
-  ac_mutable=yes
-  AC_DEFINE(HAVE_MUTABLE, 1, 
-   [Defined if you compiler supports 'mutable'.])
-],[
-  ac_mutable=no
-]) 
-AC_MSG_RESULT([$ac_mutable])
+    AC_REQUIRE([LYX_PROG_CXX])
+dnl AC_MSG_CHECKING(if C++ compiler supports mutable)
+    AC_CACHE_CHECK([if C++ compiler supports mutable],
+    lyx_cv_cxx_mutable,[
+	AC_TRY_COMPILE(
+	[
+	class k {       
+		mutable char *c;
+	public:
+		void foo() const { c=0; }
+	};
+	],[
+	],[
+	lyx_cv_cxx_mutable=yes
+	],[
+	lyx_cv_cxx_mutable=no
+	])
+    ])
+    if test $lyx_cv_cxx_mutable = yes ; then
+	AC_DEFINE(HAVE_MUTABLE, 1,
+	[Defined if your compiler suports 'mutable'.])
+    fi
 ])
 
 
 dnl LYX_CXX_PARTIAL
 AC_DEFUN(LYX_CXX_PARTIAL, [
-AC_REQUIRE([LYX_PROG_CXX])
-AC_MSG_CHECKING(if C++ compiler supports partial specialization)
-AC_TRY_COMPILE(
-[
-template<class T, class K>
-class k {       
-public:
-};
-template<class T> class k<void,T> { };
-],[
-  k<float, float> b;
-  k<void,void> a;
-],[
-  ac_partial_specialization=yes
-  AC_DEFINE(HAVE_PARTIAL_SPECIALIZATION, 1, 
-   [Defined if your compiler supports partial specialization.])
-],[
-  ac_partial_specialization=no
-]) 
-AC_MSG_RESULT([$ac_partial_specialization])
+    AC_REQUIRE([LYX_PROG_CXX])
+    AC_CACHE_CHECK([if C++ compiler supports partial specialization],
+	[lyx_cv_cxx_partial_specialization],
+	[AC_TRY_COMPILE(
+	    [
+	    template<class T, class K>
+	    class k {       
+	    public:
+	    };
+	    template<class T> class k<void,T> { };
+	    ],[
+	    k<float, float> b;
+	    k<void,void> a;
+	    ],[
+	    lyx_cv_cxx_partial_specialization=yes
+	    ],[
+	    lyx_cv_cxx_partial_specialization=no
+	    ])
+	])
+    if test x$lyx_cv_cxx_partial_specialization = xyes ; then
+    AC_DEFINE(HAVE_PARTIAL_SPECIALIZATION, 1, 
+	[Defined if your compiler supports partial specialization.])
+    fi
 ])
 
 
@@ -440,7 +493,7 @@ AC_CACHE_CHECK(for correct namespaces support,lyx_cv_cxx_namespace,
 	return 0;
 ],lyx_cv_cxx_namespace=yes,lyx_cv_cxx_namespace=no)
 ])
-if test $lyx_cv_cxx_namespace = yes ; then
+if test x$lyx_cv_cxx_namespace = xyes ; then
   AC_DEFINE(CXX_WORKING_NAMESPACES, 1, 
    [Define if your C++ compiler has correct support for namespaces])
 fi])
