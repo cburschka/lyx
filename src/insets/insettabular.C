@@ -1323,7 +1323,7 @@ int InsetTabular::getCellXPos(int cell) const
 
 void InsetTabular::resetPos(BufferView * bv) const
 {
-	if (!locked)
+	if (!locked || nodraw())
 		return;
 	actcol = tabular->column_of_cell(actcell);
 

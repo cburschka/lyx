@@ -1,7 +1,11 @@
 2001-08-10  Juergen Vigna  <jug@sad.it>
 
+	* insettext.C (saveLyXTextState): check for invalid cursor-par.
+	(reinitLyXText): remove wrong_cursor bool as not needed anymore!
+
 	* insettabular.C (calculate_dimensions_of_cells): let's try to call
 	update only for fixed with cells.
+	(resetPos): try to fix the lockup on spellchecking or s&r.
 
 	* insettext.C (update): comment this out as it seems first wrong
 	and second not needed anymore!

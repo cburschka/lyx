@@ -69,18 +69,30 @@ extern int greek_kb_flag;
 
 void InsetText::saveLyXTextState(LyXText * t) const
 {
-	sstate.lpar = t->cursor.par();
-	sstate.pos = t->cursor.pos();
-	sstate.boundary = t->cursor.boundary();
-	sstate.selstartpar = t->selection.start.par();
-	sstate.selstartpos = t->selection.start.pos();
-	sstate.selstartboundary = t->selection.start.boundary();
-	sstate.selendpar = t->selection.end.par();
-	sstate.selendpos = t->selection.end.pos();
-	sstate.selendboundary = t->selection.end.boundary();
-	sstate.selection = t->selection.set();
-	sstate.mark_set = t->selection.mark();
-	sstate.refresh = t->refresh_row != 0;
+	// check if my paragraphs are still valid
+	Paragraph * p = par;
+	while(p) {
+		if (p == t->cursor.par())
+			break;
+		p = p->next();
+	}
+	
+	if (p && t->cursor.pos() <= p->size()) {
+		sstate.lpar = t->cursor.par();
+		sstate.pos = t->cursor.pos();
+		sstate.boundary = t->cursor.boundary();
+		sstate.selstartpar = t->selection.start.par();
+		sstate.selstartpos = t->selection.start.pos();
+		sstate.selstartboundary = t->selection.start.boundary();
+		sstate.selendpar = t->selection.end.par();
+		sstate.selendpos = t->selection.end.pos();
+		sstate.selendboundary = t->selection.end.boundary();
+		sstate.selection = t->selection.set();
+		sstate.mark_set = t->selection.mark();
+		sstate.refresh = t->refresh_row != 0;
+	} else {
+		sstate.lpar = 0;
+	}
 }
 
 void InsetText::restoreLyXTextState(BufferView * bv, LyXText * t) const
@@ -1942,7 +1954,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 }
 
 
-void InsetText::reinitLyXText(bool wrong_cursor) const
+void InsetText::reinitLyXText() const
 {
 //	lyxerr << "InsetText::reinitLyXText\n";
 	for(Cache::iterator it = cache.begin(); it != cache.end(); ++it) {
@@ -1951,11 +1963,6 @@ void InsetText::reinitLyXText(bool wrong_cursor) const
 		LyXText * t = it->second.text.get();
 		BufferView * bv = it->first;
 
-		if (wrong_cursor) {
-			t->cursor.par(par);
-			t->cursor.pos(0);
-			t->clearSelection();
-		}
 		saveLyXTextState(t);
 		for (Paragraph * p = par; p; p = p->next()) {
 			p->resizeInsetsLyXText(bv);
