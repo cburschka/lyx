@@ -803,7 +803,6 @@ MathNestInset::priv_dispatch(LCursor & cur, FuncRequest const & cmd)
 
 void MathNestInset::edit(LCursor & cur, bool left)
 {
-	lyxerr << "XXX Called MathNestInset::edit" << endl;
 	cur.push(this);
 	cur.idx() = left ? 0 : cur.lastidx();
 	cur.pos() = left ? 0 : cur.lastpos();
@@ -813,8 +812,6 @@ void MathNestInset::edit(LCursor & cur, bool left)
 
 void MathNestInset::edit(LCursor & cur, int x, int y)
 {
-	lyxerr << "XXX Called MathNestInset::edit with '"	
-		<< x << ' ' << y << "'" << endl;
 	int idx_min = 0;
 	int dist_min = 1000000;
 	for (idx_type i = 0; i < nargs(); ++i) {
@@ -911,7 +908,8 @@ MathNestInset::lfunMouseMotion(LCursor & cur, FuncRequest const & cmd)
 	if (!cur.selection())
 		cur.selBegin();
 
-	cur.setScreenPos(cmd.x + xo_, cmd.y + yo_);
-	cur.bv().update();
+	//cur.setScreenPos(cmd.x + xo_, cmd.y + yo_);
+	cur.bv().cursor().cursor_ = cur.cursor_;
+	cur.bv().cursor().selection() = true;
 	return DispatchResult(true, true);
 }

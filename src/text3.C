@@ -587,15 +587,12 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		break;
 
 	case LFUN_BREAKLINE: {
-		lyx::pos_type body = cursorPar()->beginOfBody();
-
 		// Not allowed by LaTeX (labels or empty par)
-		if (cursor().pos() <= body)
-			break;
-
-		replaceSelection(bv->getLyXText());
-		insertInset(new InsetNewline);
-		moveCursor(cur, false);
+		if (cursor().pos() > cursorPar()->beginOfBody()) {
+			replaceSelection(this);
+			insertInset(new InsetNewline);
+			moveCursor(cur, false);
+		}
 		break;
 	}
 
@@ -661,7 +658,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		break;
 
 	case LFUN_BREAKPARAGRAPH:
-		replaceSelection(bv->getLyXText());
+		replaceSelection(this);
 		breakParagraph(bv->buffer()->paragraphs(), 0);
 		bv->update();
 		cur.resetAnchor();
@@ -670,7 +667,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		break;
 
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
-		replaceSelection(bv->getLyXText());
+		replaceSelection(this);
 		breakParagraph(bv->buffer()->paragraphs(), 1);
 		bv->update();
 		cur.resetAnchor();
@@ -684,7 +681,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		// Otherwise, do the same as LFUN_BREAKPARAGRAPH.
 #warning look here
 //		CursorSlice cur = cursor();
-		replaceSelection(bv->getLyXText());
+		replaceSelection(this);
 		if (cur.pos() == 0) {
 			ParagraphParameters & params = getPar(cur.current())->params();
 			setParagraph(
@@ -824,7 +821,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 
 	case LFUN_PASTE:
 		cur.message(_("Paste"));
-		replaceSelection(bv->getLyXText());
+		replaceSelection(this);
 #warning FIXME Check if the arg is in the domain of available selections.
 		if (isStrUnsignedInt(cmd.argument))
 			pasteSelection(strToUnsignedInt(cmd.argument));
@@ -985,7 +982,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	}
 
 	case LFUN_QUOTE: {
-		replaceSelection(bv->getLyXText());
+		replaceSelection(this);
 		ParagraphList::iterator pit = cursorPar();
 		lyx::pos_type pos = cursor().pos();
 		char c;
@@ -1008,7 +1005,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	}
 
 	case LFUN_DATE_INSERT: {
-		replaceSelection(bv->getLyXText());
+		replaceSelection(this);
 		time_t now_time_t = time(NULL);
 		struct tm * now_tm = localtime(&now_time_t);
 		setlocale(LC_TIME, "");
@@ -1030,7 +1027,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	}
 
 	case LFUN_MOUSE_TRIPLE:
-		if (bv->buffer() && cmd.button() == mouse_button::button1) {
+		if (cmd.button() == mouse_button::button1) {
 			selection_possible = true;
 			cursorHome();
 			cur.resetAnchor();
@@ -1041,7 +1038,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		break;
 
 	case LFUN_MOUSE_DOUBLE:
-		if (bv->buffer() && cmd.button() == mouse_button::button1) {
+		if (cmd.button() == mouse_button::button1) {
 			selection_possible = true;
 			selectWord(lyx::WHOLE_WORD_STRICT);
 			bv->haveSelection(cur.selection());
@@ -1049,15 +1046,9 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		break;
 
 	case LFUN_MOUSE_MOTION: {
-#if 0
 		// Only use motion with button 1
 		//if (ev.button() != mouse_button::button1)
 		//	return false;
-		// don't set anchor_
-		bv->cursor().cursor_ = cur.cursor_;
-
-		if (!bv->buffer())
-			break;
 		// The test for not selection possible is needed, that
 		// only motion events are used, where the bottom press
 		// event was on the drawing area too
@@ -1068,6 +1059,7 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 		}
 		RowList::iterator cursorrow = cursorRow();
 
+#warning
 		setCursorFromCoordinates(cmd.x, cmd.y);
 
 		// This is to allow jumping over large insets
@@ -1078,16 +1070,16 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			else if (cmd.y - bv->top_y() < 0)
 				cursorUp(true);
 		}
-		cur.setSelection();
-#endif
+
+		// don't set anchor_
+		bv->cursor().cursor_ = cur.cursor_;
+		bv->cursor().setSelection();
+
 		break;
 	}
 
 	// Single-click on work area
 	case LFUN_MOUSE_PRESS: {
-		if (!bv->buffer())
-			break;
-
 		// ok ok, this is a hack (for xforms)
 		// We shouldn't go further down as we really should only do the
 		// scrolling and be done with this. Otherwise we may open some
@@ -1096,8 +1088,16 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 			bv->scroll(-lyxrc.wheel_jump);
 			break;
 		}
+
 		if (cmd.button() == mouse_button::button5) {
 			bv->scroll(lyxrc.wheel_jump);
+			break;
+		}
+
+		// Right click on a footnote flag opens float menu
+		if (cmd.button() == mouse_button::button3) {
+			cur.clearSelection();
+			selection_possible = false;
 			break;
 		}
 
@@ -1115,12 +1115,6 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 
 		// Clear the selection
 		cur.clearSelection();
-
-		// Right click on a footnote flag opens float menu
-		if (cmd.button() == mouse_button::button3) {
-			selection_possible = false;
-			break;
-		}
 
 		setCursorFromCoordinates(cur.current(), cmd.x - xo_,
 					 cmd.y - yo_);
@@ -1148,9 +1142,6 @@ DispatchResult LyXText::dispatch(LCursor & cur, FuncRequest const & cmd)
 	}
 
 	case LFUN_MOUSE_RELEASE: {
-		if (!bv->buffer())
-			break;
-
 		// do nothing if we used the mouse wheel
 		if (cmd.button() == mouse_button::button4
 		 || cmd.button() == mouse_button::button5)

@@ -890,7 +890,9 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 	cmd.y += bv_->top_y();
 	//lyxerr << "*** workAreaDispatch: request: " << cmd << std::endl;
 	LCursor cur(*bv_);
+	cur.selection() = bv_->cursor().selection();
 	switch (cmd.action) {
+
 #if 0
 	case LFUN_MOUSE_MOTION: {
 		if (!available())
@@ -910,9 +912,10 @@ bool BufferView::Pimpl::workAreaDispatch(FuncRequest const & cmd0)
 		}
 		return true;
 	}
+#else
+	case LFUN_MOUSE_MOTION: 
 #endif
 
-	case LFUN_MOUSE_MOTION:
 	case LFUN_MOUSE_PRESS:
 	case LFUN_MOUSE_RELEASE:
 	case LFUN_MOUSE_DOUBLE:

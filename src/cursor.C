@@ -80,12 +80,10 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 	lyxerr << "\nLCursor::dispatch: cmd: " << cmd0 << endl << *this << endl;
 	FuncRequest cmd = cmd0;
 	for (current_ = cursor_.size() - 1; current_ >= 1; --current_) {
-		lyxerr << "trying to dispatch to inset " << inset() << endl;
 		DispatchResult res = inset()->dispatch(*this, cmd);
-		if (res.dispatched()) {
-			lyxerr << " successfully dispatched to inset " << inset() << endl;
+		if (res.dispatched())
 			return DispatchResult(true, true);
-		}
+
 		// "Mutate" the request for semi-handled requests that need
 		// additional handling in outer levels.
 		switch (res.val()) {
@@ -108,8 +106,6 @@ DispatchResult LCursor::dispatch(FuncRequest const & cmd0)
 		}
 	}
 	BOOST_ASSERT(current_ == 0);
-	//lyxerr << "trying to dispatch to main text " << bv_->text()
-	//	<< " with cursor: " << *this << endl;
 	DispatchResult res = bv_->text()->dispatch(*this, cmd);
 	//lyxerr << "   result: " << res.val() << endl;
 	return res;
@@ -736,10 +732,11 @@ void LCursor::selClearOrDel()
 
 std::ostream & operator<<(std::ostream & os, LCursor const & cur)
 {
-	os << "\n";
 	for (size_t i = 0, n = cur.cursor_.size(); i != n; ++i)
 		os << "  (" << cur.cursor_[i] << " | " << cur.anchor_[i] << "\n";
-	return os << "current: " << cur.current_ << endl;
+	os << "  current: " << cur.current_ << endl;
+	os << "  selection: " << cur.selection_ << endl;
+	return os;
 }
 
 
