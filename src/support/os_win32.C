@@ -52,7 +52,7 @@ void os::init(int /* argc */, char * argv[])
 	 *
 	 * #if defined (_WIN32)
 	 * # define WIN32_LEAN_AND_MEAN
-	 * # include <stdlib.h>  // for __argc, __argv
+	 * # include <stdlib.h>  // for __argc,__argv
 	 * # include <windows.h> // for WinMain
 	 * #endif
 	 *
@@ -62,7 +62,7 @@ void os::init(int /* argc */, char * argv[])
 	 * #if defined (_WIN32)
 	 * int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 	 * {
-	 *     return mymain(__argc, __argv);
+	 *     return mymain(__argc, __argv);
 	 * }
 	 * #endif
 	 *
@@ -73,9 +73,9 @@ void os::init(int /* argc */, char * argv[])
 	 *
 	 * #ifdef WIN32
 	 *  AllocConsole();
-	 *  freopen("conin$", "r", stdin);
-	 *  freopen("conout$", "w", stdout);
-	 *  freopen("conout$", "w", stderr);
+	 *  freopen("conin$","r",stdin);
+	 *  freopen("conout$","w",stdout);
+	 *  freopen("conout$","w",stderr);
 	 * #endif
 	 *
 	 * This code could be invoked (say) the first time that lyxerr
