@@ -1,3 +1,7 @@
+2001-04-20  Juergen Vigna  <jug@sad.it>
+
+	* insettext.C (Edit): call checkAndActivateInset with y=0 if y < 0.
+
 2001-04-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* insetquotes.C (Latex): improve the guard against

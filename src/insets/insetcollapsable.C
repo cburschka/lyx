@@ -251,7 +251,7 @@ void InsetCollapsable::Edit(BufferView * bv, int xp, int yp,
 	} else if (!collapsed) {
 		if (!bv->lockInset(this))
 			return;
-		inset.Edit(bv, xp, yp+(top_baseline - inset.y()), button);
+		inset.Edit(bv, xp, yp + (top_baseline - inset.y()), button);
 	}
 }
 

@@ -566,7 +566,8 @@ void InsetText::Edit(BufferView * bv, int x, int y, unsigned int button)
 	inset_boundary = false;
 	inset_par = 0;
 	old_par = 0;
-	if (!checkAndActivateInset(bv, x, y, button))
+	int tmp_y = (y < 0)?0:y;
+	if (!checkAndActivateInset(bv, x, tmp_y, button))
 		TEXT(bv)->SetCursorFromCoordinates(bv, x - drawTextXOffset,
 						   y + insetAscent);
 	TEXT(bv)->sel_cursor = TEXT(bv)->cursor;
@@ -737,7 +738,7 @@ void InsetText::InsetButtonPress(BufferView * bv, int x, int y, int button)
 			return;
 		}
 	}
-	if (!inset && (button == 2)) {
+	if (!inset) { // && (button == 2)) {
 		bool paste_internally = false;
 		if ((button == 2) && TEXT(bv)->selection) {
 			LocalDispatch(bv, LFUN_COPY, "");
