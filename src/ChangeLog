@@ -1,3 +1,10 @@
+2002-06-05  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* xtl/*: get rid of xtl, which is not in use anyway
+	
+	* LyXAction.C (init): 
+	* commandtags.h: remove BUFFER_PRINT and BUFFER_PARAMS_GET, which
+	were unimplemented xtl experimentation
 
 2002-06-04  André Pönitz <poenitz@gmx.net>
 
