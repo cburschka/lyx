@@ -6,6 +6,9 @@
 
 	* ControlGraphics.[Ch]: replace checkFilename with isFilenameValid.
 
+	* ControlGraphics.C (applyParamsToInset): pass filepath to
+	InsetGraphics::updateInset.
+
 2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* most files: ws cleanup

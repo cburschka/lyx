@@ -42,7 +42,7 @@ public:
 	~GCache();
 
 	/// Add a file to the cache (or modify an existing image).
-	void update(InsetGraphics const &);
+	void update(InsetGraphics const &, string const & filepath);
 
 	/** Remove the data associated with this inset.
 	 *  Called from the InsetGraphics d-tor.

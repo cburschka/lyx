@@ -1,5 +1,14 @@
 2002-03-22  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* insetgraphics.[Ch] (c-tor, setParams, updateInset): passed filepath.
+	Used to determine the absolute path to the graphics file in the
+	graphics cache and only in the graphics cache.
+	(readInsetGraphics, readFigInset) : no longer passed buffer. Do not
+	make graphics file name absolute if it is stored as a relative path.
+
+	* insetgraphicsParams.[Ch] (Read): no longer passed buffer. Do not
+	make graphics file name absolute if it is stored as a relative path.
+
 	* insettext.C (edit): emit an updateParagraph signal on entering a text
 	inset. Needs to be emitted when leaving the inset also.
 

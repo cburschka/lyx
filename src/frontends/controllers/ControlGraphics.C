@@ -66,7 +66,7 @@ void ControlGraphics::applyParamsToInset()
 {
 	// Set the parameters in the inset, it also returns true if the new
 	// parameters are different from what was in the inset already.
-	bool changed = inset()->setParams(params());
+	bool changed = inset()->setParams(params(), lv_.buffer()->filePath());
 	// Tell LyX we've got a change, and mark the document dirty,
 	// if it changed.
 	lv_.view()->updateInset(inset(), changed);

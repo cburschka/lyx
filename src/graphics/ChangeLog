@@ -1,3 +1,10 @@
+2002-03-22  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* GraphicsCache.[Ch] (update): now passed filepath to determine absolute
+	path to graphics file.
+
+	* GraphicsParams.[Ch] (c-tor): now passed filepath.
+	
 2002-03-21  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* most files: ws cleanup

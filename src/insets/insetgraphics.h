@@ -34,7 +34,8 @@ public:
 	///
 	InsetGraphics();
 	///
-	InsetGraphics(InsetGraphics const &, bool same_id = false);
+	InsetGraphics(InsetGraphics const &, string const & filepath,
+		      bool same_id = false);
 	///
 	~InsetGraphics();
 	///
@@ -83,7 +84,8 @@ public:
 	/** Set the inset parameters, used by the GUIndependent dialog.
 	    Return true of new params are different from what was so far.
 	*/
-	bool setParams(InsetGraphicsParams const & params);
+	bool setParams(InsetGraphicsParams const & params,
+		       string const & filepath);
 
 	/// Get the inset parameters, used by the GUIndependent dialog.
 	InsetGraphicsParams const & params() const;
@@ -100,12 +102,12 @@ private:
 	bool drawImage() const;
 
 	/// Read the inset native format
-	void readInsetGraphics(Buffer const * buf, LyXLex & lex);
+	void readInsetGraphics(LyXLex & lex);
 	/// Read the FigInset file format
-	void readFigInset(Buffer const * buf, LyXLex & lex);
+	void readFigInset(LyXLex & lex);
 
 	/// Update the inset after parameter change.
-	void updateInset() const;
+	void updateInset(string const & filepath) const;
 	/// Get the status message, depends on the image loading status.
 	string const statusMessage() const;
 	/// Create the options for the latex command.

@@ -147,13 +147,15 @@ InsetGraphics::InsetGraphics()
 {}
 
 
-InsetGraphics::InsetGraphics(InsetGraphics const & ig, bool same_id)
+InsetGraphics::InsetGraphics(InsetGraphics const & ig,
+			     string const & filepath,
+			     bool same_id)
 	: Inset(ig, same_id),
 	  SigC::Object(),
 	  graphic_label(unique_id()),
 	  cached_status_(grfx::ErrorUnknown), cache_filled_(false), old_asc(0)
 {
-	setParams(ig.params());
+	setParams(ig.params(), filepath);
 }
 
 
@@ -355,10 +357,10 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 // Update the inset after parameters changed (read from file or changed in
 // dialog. The grfx::GCache makes the decisions about whether or not to draw
 // (interogates lyxrc, ascertains whether file exists etc)
-void InsetGraphics::updateInset() const
+void InsetGraphics::updateInset(string const & filepath) const
 {
 	grfx::GCache & gc = grfx::GCache::get();
-	gc.update(*this);
+	gc.update(*this, filepath);
 }
 
 
@@ -392,16 +394,16 @@ void InsetGraphics::read(Buffer const * buf, LyXLex & lex)
 	string const token = lex.getString();
 
 	if (token == "Graphics")
-		readInsetGraphics(buf, lex);
+		readInsetGraphics(lex);
 	else if (token == "Figure") // Compatibility reading of FigInset figures.
-		readFigInset(buf, lex);
+		readFigInset(lex);
 	else
 		lyxerr[Debug::GRAPHICS] << "Not a Graphics or Figure inset!\n";
 
-	updateInset();
+	updateInset(buf->filePath());
 }
 
-void InsetGraphics::readInsetGraphics(Buffer const * buf, LyXLex & lex)
+void InsetGraphics::readInsetGraphics(LyXLex & lex)
 {
 	bool finished = false;
 
@@ -428,7 +430,7 @@ void InsetGraphics::readInsetGraphics(Buffer const * buf, LyXLex & lex)
 			// TODO: Possibly open up a dialog?
 		}
 		else {
-			if (! params_.Read(buf, lex, token))
+			if (! params_.Read(lex, token))
 				lyxerr << "Unknown token, " << token << ", skipping."
 					<< std::endl;
 		}
@@ -436,7 +438,7 @@ void InsetGraphics::readInsetGraphics(Buffer const * buf, LyXLex & lex)
 }
 
 // FormatVersion < 1.0  (LyX < 1.2)
-void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
+void InsetGraphics::readFigInset(LyXLex & lex)
 {
 	std::vector<string> const oldUnits =
 		getVectorFromString("pt,cm,in,p%,c%");
@@ -462,9 +464,7 @@ void InsetGraphics::readFigInset(Buffer const * buf, LyXLex & lex)
 			finished = true;
 		} else if (token == "file") {
 			if (lex.next()) {
-				string const name = lex.getString();
-				string const path = buf->filePath();
-				params_.filename = MakeAbsPath(name, path);
+				params_.filename = lex.getString();
 			}
 		} else if (token == "extra") {
 			if (lex.next());
@@ -730,7 +730,8 @@ void InsetGraphics::validate(LaTeXFeatures & features) const
 }
 
 
-bool InsetGraphics::setParams(InsetGraphicsParams const & p)
+bool InsetGraphics::setParams(InsetGraphicsParams const & p,
+			      string const & filepath)
 {
 	// If nothing is changed, just return and say so.
 	if (params() == p && !p.filename.empty()) {
@@ -741,7 +742,7 @@ bool InsetGraphics::setParams(InsetGraphicsParams const & p)
 	params_ = p;
 
 	// Update the inset with the new parameters.
-	updateInset();
+	updateInset(filepath);
 
 	// We have changed data, report it.
 	return true;
@@ -754,7 +755,7 @@ InsetGraphicsParams const & InsetGraphics::params() const
 }
 
 
-Inset * InsetGraphics::clone(Buffer const &, bool same_id) const
+Inset * InsetGraphics::clone(Buffer const & buffer, bool same_id) const
 {
-	return new InsetGraphics(*this, same_id);
+	return new InsetGraphics(*this, buffer.filePath(), same_id);
 }

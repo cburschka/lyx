@@ -237,16 +237,11 @@ void InsetGraphicsParams::Write(Buffer const * buf, ostream & os) const
 }
 
 
-bool InsetGraphicsParams::Read(Buffer const * buf, LyXLex & lex,
-			       string const& token)
+bool InsetGraphicsParams::Read(LyXLex & lex, string const& token)
 {
 	if (token == "filename") {
 		lex.next();
 		filename = lex.getString();
-		if (!filename.empty()) {
-			// Make the filename with absolute directory.
-			filename = MakeAbsPath(filename, buf->filePath());
-		}
 	} else if (token == "BoundingBox") {
 		for (int i=0; i<4 ;i++) {
 		    lex.next();

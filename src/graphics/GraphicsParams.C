@@ -15,17 +15,23 @@
 #include "GraphicsParams.h"
 #include "insets/insetgraphicsParams.h"
 #include "lyxrc.h"
+#include "support/filetools.h"
 #include "support/lstrings.h"
+#include "support/LAssert.h"
 
 namespace grfx {
 
-GParams::GParams(InsetGraphicsParams const & iparams)
-	: filename(iparams.filename),
-	  width(0),
+GParams::GParams(InsetGraphicsParams const & iparams, string const & filepath)
+	: width(0),
 	  height(0),
 	  scale(0),
 	  angle(0)
 {
+	filename = iparams.filename;
+	if (!filepath.empty()) {
+		filename = MakeAbsPath(filename, filepath);
+	}
+	
 	if (iparams.clip)
 		bb = iparams.bb;
 
