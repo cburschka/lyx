@@ -1,4 +1,9 @@
 2003-08-06  Martin Vermeer  <martin.vermeer@hut.di>
+
+	* Color.C: Kayvan's std::setw micropatch.
+
+2003-08-06  Martin Vermeer  <martin.vermeer@hut.di>
+
 	* Color.[Ch]:
 	* FormPreferences.C: moved the RGB to hex string method
 	from FormPreferences to Color and added a hex string to RGB
