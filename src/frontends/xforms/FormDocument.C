@@ -584,7 +584,7 @@ ButtonPolicy::SMInput FormDocument::input(FL_OBJECT * ob, long)
 		if (!enable)
 			fl_set_choice(paper_->choice_paperpackage,
 				BufferParams::PACKAGE_NONE + 1);
-		setEnabled(paper_->choice_paperpackage, 
+		setEnabled(paper_->choice_paperpackage,
 			enable && fl_get_button(paper_->radio_portrait));
 	}
 

@@ -44,7 +44,7 @@ public:
 
 	/// general browse
 	string const browse(string const & file, string const & title);
-	
+
 	/// browse directory
 	string const browsedir(string const & path, string const & title);
 

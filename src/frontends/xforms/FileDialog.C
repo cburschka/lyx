@@ -50,7 +50,7 @@ FileDialog::Result const FileDialog::save(string const & path, string const & ma
 
 FileDialog::Result const FileDialog::opendir(string const & path, string const & suggested)
 {
-	lyxerr[Debug::GUI] << "filedialog open  with path \"" << path << "\", suggested \"" 
+	lyxerr[Debug::GUI] << "filedialog open  with path \"" << path << "\", suggested \""
 		<< suggested << '"' << endl;
 
 	// no support for asynchronous selection yet

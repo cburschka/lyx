@@ -272,7 +272,7 @@ int Menubar::Pimpl::create_submenu(Window win, XFormsView * view,
 			if (!shortcut.empty()) {
 				shortcut += lowercase(shortcut[0]);
 				label += "%h";
-			} 
+			}
 
 			// Finally add the action/submenu
 			if (item.kind() == MenuItem::Submenu) {

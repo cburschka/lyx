@@ -354,7 +354,7 @@ private:
 		boost::scoped_ptr<FD_preferences_identity> dialog_;
 	};
 	friend class Identity;
- 
+
 	///
 	class OutputsMisc {
 	public:

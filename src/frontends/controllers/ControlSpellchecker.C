@@ -55,7 +55,7 @@ void ControlSpellchecker::clearParams()
 	endSession();
 }
 
-	
+
 void ControlSpellchecker::startSession()
 {
 	lyxerr[Debug::GUI] << "spell startSession" << endl;

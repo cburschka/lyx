@@ -5,7 +5,7 @@
  * Licence details can be found in the file COPYING.
  *
  * \author Allan Rae
- * \author Angus Leeming 
+ * \author Angus Leeming
  * \author Baruch Even
  *
  * Full author contact details are available in file CREDITS
@@ -16,7 +16,7 @@
  */
 
 #include "ButtonController.h"
-#include "debug.h" 
+#include "debug.h"
 
 template <class Button, class Widget>
 GuiBC<Button, Widget>::GuiBC(string const & cancel, string const & close)
@@ -28,7 +28,7 @@ GuiBC<Button, Widget>::GuiBC(string const & cancel, string const & close)
 template <class Button, class Widget>
 void GuiBC<Button, Widget>::refresh()
 {
-	lyxerr[Debug::GUI] << "Calling BC refresh()" << std::endl; 
+	lyxerr[Debug::GUI] << "Calling BC refresh()" << std::endl;
 
 	bool const all_valid = checkWidgets();
 
@@ -38,12 +38,12 @@ void GuiBC<Button, Widget>::refresh()
 		setButtonEnabled(okay_, enabled);
 	}
 	if (apply_) {
-		bool const enabled = 
+		bool const enabled =
 			all_valid && bp().buttonStatus(ButtonPolicy::APPLY);
 		setButtonEnabled(apply_, enabled);
 	}
 	if (restore_) {
-		bool const enabled = 
+		bool const enabled =
 			all_valid && bp().buttonStatus(ButtonPolicy::RESTORE);
 		setButtonEnabled(restore_, enabled);
 	}

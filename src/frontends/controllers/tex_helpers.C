@@ -80,13 +80,13 @@ string const getTexFileList(string const & filename, bool withFullPath)
 
 	if (withFullPath) {
 		lyx::eliminate_duplicates(dbase);
-		string const str_out = 
+		string const str_out =
 			getStringFromVector(dbase, "\n");
 		return str_out;
 	}
 	vector<string> dbaseWP = listWithoutPath(dbase);
 	lyx::eliminate_duplicates(dbaseWP);
-	string const str_out = 
+	string const str_out =
 		getStringFromVector(dbaseWP, "\n");
 	return str_out;
 }
