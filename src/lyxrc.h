@@ -221,6 +221,8 @@ public:
 	///
 	bool auto_number;
 	///
+	bool mark_foreign_language;
+	///
 	bool show_banner;
 	/// Do we have to use a GUI?
 	bool use_gui;

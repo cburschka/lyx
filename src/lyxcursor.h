@@ -24,6 +24,8 @@ struct LyXCursor {
 	///
 	LyXParagraph::size_type pos;
 	///
+	bool boundary;
+	///
 	int x;
 	///
 	int x_fix;
@@ -33,9 +35,9 @@ struct LyXCursor {
 	Row * row;
 	///
 	inline bool operator==(const LyXCursor &a) const
-		{ return (a.par == par) && (a.pos == pos); }
+		{ return a.par == par && a.pos == pos && a.boundary == boundary ; }
 	inline bool operator!=(const LyXCursor &a) const
-		{ return (a.par != par) || (a.pos != pos); }
+		{ return a.par != par || a.pos != pos || a.boundary != boundary; }
 };
 
 #endif

@@ -182,7 +182,7 @@ public:
 	/** returns the column near the specified x-coordinate of the row 
 	 x is set to the real beginning of this column
 	 */ 
-	int GetColumnNearX(Row * row, int & x) const;
+	int GetColumnNearX(Row * row, int & x, bool & boundary) const;
 	
 	/** returns a pointer to a specified row. y is set to the beginning
 	 of the row
@@ -244,13 +244,28 @@ public:
 	///
 	void SetCursor(LyXParagraph * par,
 		       LyXParagraph::size_type pos,
-		       bool setfont = true) const;
+		       bool setfont = true,
+		       bool boundary = false) const;
+
 	void SetCursor(LyXCursor &, LyXParagraph * par,
-		       LyXParagraph::size_type pos) const;
+		       LyXParagraph::size_type pos,
+		       bool boundary = false) const;
 	///
 	void SetCursorIntern(LyXParagraph * par,
 			     LyXParagraph::size_type pos,
-			     bool setfont = true) const;
+			     bool setfont = true,
+			     bool boundary = false) const;
+	///
+	void SetCurrentFont() const;
+
+	///
+	bool IsBoundary(LyXParagraph * par,
+			LyXParagraph::size_type pos) const;
+	///
+	bool IsBoundary(LyXParagraph * par,
+			 LyXParagraph::size_type pos,
+			 LyXFont const & font) const;
+
 	///
 	void SetCursorFromCoordinates(int x, long y) const;
 	void SetCursorFromCoordinates(LyXCursor &, int x, long y) const;
@@ -259,9 +274,13 @@ public:
 	///
 	void CursorDown() const;
 	///
-	void CursorLeft() const;
+	void CursorLeft(bool internal = true) const;
 	///
-	void CursorRight() const;
+	void CursorRight(bool internal = true) const;
+	///
+	void CursorLeftIntern(bool internal = true) const;
+	///
+	void CursorRightIntern(bool internal = true) const;
 	///
 	void CursorLeftOneWord() const;
 	///
@@ -469,10 +488,6 @@ public:
 	/// for external use in lyx_cb.C
 	void SetCursorParUndo();
 	///
-	void CursorLeftIntern() const;
-	///
-	void CursorRightIntern() const;
-	///
 	void RemoveTableRow(LyXCursor * cursor) const;
 	///
 	bool IsEmptyTableCell() const;
@@ -480,6 +495,41 @@ public:
 	void toggleAppendix();
 	///
 	unsigned short paperWidth() const { return paperwidth; }
+
+	///
+	void ComputeBidiTables(Row *row) const;
+
+	/// Maps positions in the visual string to positions in logical string.
+	inline
+	LyXParagraph::size_type log2vis(LyXParagraph::size_type pos) const {
+		if (bidi_start == -1)
+			return pos;
+		else
+			return log2vis_list[pos-bidi_start];
+	}
+
+	/// Maps positions in the logical string to positions in visual string.
+	inline
+	LyXParagraph::size_type vis2log(LyXParagraph::size_type pos) const {
+		if (bidi_start == -1)
+			return pos;
+		else
+			return vis2log_list[pos-bidi_start];
+	}
+
+	inline
+	int bidi_level(LyXParagraph::size_type pos) const {
+		if (bidi_start == -1)
+			return 0;
+		else
+			return bidi_levels[pos-bidi_start];
+	}	
+
+	inline
+	bool bidi_InRange(LyXParagraph::size_type pos) const {
+		return bidi_start == -1 ||
+			(bidi_start <= pos && pos <= bidi_end);
+	}
 private:
 	///
 	BufferView * owner_;
@@ -612,36 +662,10 @@ private:
 	mutable LyXParagraph::size_type bidi_start;
 
 	///
-	mutable bool bidi_same_direction;
+	mutable LyXParagraph::size_type bidi_end;
 
 	///
-	void ComputeBidiTables(Row *row) const;
-
-	/// Maps positions in the visual string to positions in logical string.
-	inline
-	LyXParagraph::size_type log2vis(LyXParagraph::size_type pos) const {
-		if (bidi_start == -1)
-			return pos;
-		else
-			return log2vis_list[pos-bidi_start];
-	}
-
-	/// Maps positions in the logical string to positions in visual string.
-	inline
-	LyXParagraph::size_type vis2log(LyXParagraph::size_type pos) const {
-		if (bidi_start == -1)
-			return pos;
-		else
-			return vis2log_list[pos-bidi_start];
-	}
-
-	inline
-	int bidi_level(LyXParagraph::size_type pos) const {
-		if (bidi_start == -1)
-			return 0;
-		else
-			return bidi_levels[pos-bidi_start];
-	}	
+	mutable bool bidi_same_direction;
 
 	///
 	unsigned char TransformChar(unsigned char c, Letter_Form form) const;

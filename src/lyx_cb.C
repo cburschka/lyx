@@ -2377,10 +2377,12 @@ extern "C" void DocumentApplyCB(FL_OBJECT *, long)
 	if (current_view->available()) {
 		if (old_language != new_language &&
 		    old_language->RightToLeft == new_language->RightToLeft && 
-		    ! current_view->buffer()->isMultiLingual() ) {
+		    ! current_view->buffer()->isMultiLingual() )
 			current_view->buffer()->ChangeLanguage(old_language,
 							       new_language);
-			current_view->buffer()->redraw();
+		if (old_language != new_language) {
+			//current_view->buffer()->redraw();
+			redo = true;
 		}
 	}
 	params->language_info = new_language;

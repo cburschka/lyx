@@ -293,5 +293,17 @@ void ToggleAndShow(BufferView * bv, LyXFont const & font)
 		else
 			bv->text->ToggleFree(font, toggleall);
 		bv->update(1);
+
+		if (font.language() != ignore_language ||
+		    font.latex() != LyXFont::IGNORE) {
+			LyXText * text = bv->text;
+			LyXCursor & cursor = text->cursor;
+			text->ComputeBidiTables(cursor.row);
+			if (cursor.boundary != 
+			    text->IsBoundary(cursor.par, cursor.pos,
+					     text->real_current_font) )
+				text->SetCursor(cursor.par, cursor.pos,
+						false, !cursor.boundary);
+		}
 	}
 }

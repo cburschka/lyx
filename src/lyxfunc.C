@@ -1222,18 +1222,16 @@ string LyXFunc::Dispatch(int ac,
 		break;
 
 	case LFUN_LANGUAGE:
-	{
 		Lang(owner->view(), argument);
 		owner->view()->setState();
 		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
-	}
 		break;
 
 	case LFUN_EMPH:
 		Emph(owner->view());
 		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
 		break;
-		
+
 	case LFUN_BOLD:
 		Bold(owner->view());
 		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
@@ -1367,7 +1365,7 @@ string LyXFunc::Dispatch(int ac,
 			owner->view()->beforeChange();
 		owner->view()->update(-2);
 		if (is_rtl)
-			tmptext->CursorLeft();
+			tmptext->CursorLeft(false);
 		if (tmptext->cursor.pos < tmptext->cursor.par->Last()
 		    && tmptext->cursor.par->GetChar(tmptext->cursor.pos)
 		    == LyXParagraph::META_INSET
@@ -1379,7 +1377,7 @@ string LyXFunc::Dispatch(int ac,
 			break;
 		}
 		if (!is_rtl)
-			tmptext->CursorRight();
+			tmptext->CursorRight(false);
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);
 		owner->getMiniBuffer()->Set(CurrentState(owner->view()));
@@ -1395,7 +1393,7 @@ string LyXFunc::Dispatch(int ac,
 		if(!txt->mark_set) owner->view()->beforeChange();
 		owner->view()->update(-2);
 		if (!is_rtl)
-			txt->CursorLeft();
+			txt->CursorLeft(false);
 		if (txt->cursor.pos < txt->cursor.par->Last()
 		    && txt->cursor.par->GetChar(txt->cursor.pos)
 		    == LyXParagraph::META_INSET
@@ -1412,7 +1410,7 @@ string LyXFunc::Dispatch(int ac,
 			break;
 		}
 		if  (is_rtl)
-			txt->CursorRight();
+			txt->CursorRight(false);
 
 		owner->view()->text->FinishUndo();
 		moveCursorUpdate(false);

@@ -137,6 +137,7 @@ enum LyXRCTags {
 	RC_BACKUPDIR_PATH,
 	RC_RTL_SUPPORT,
 	RC_AUTO_NUMBER,
+	RC_MARK_FOREIGN_LANGUAGE,
 	RC_LANGUAGE_PACKAGE,
 	RC_LANGUAGE_AUTO_BEGIN,
 	RC_LANGUAGE_AUTO_END,
@@ -213,6 +214,7 @@ keyword_item lyxrcTags[] = {
         { "\\literate_error_filter", RC_LITERATE_ERROR_FILTER },
         { "\\literate_extension", RC_LITERATE_EXTENSION },
 	{ "\\make_backup", RC_MAKE_BACKUP },
+	{ "\\mark_foreign_language", RC_MARK_FOREIGN_LANGUAGE },
 	{ "\\num_lastfiles", RC_NUMLASTFILES },
 	{ "\\override_x_deadkeys", RC_OVERRIDE_X_DEADKEYS },
 	{ "\\pdf_mode", RC_PDF_MODE },
@@ -367,6 +369,7 @@ void LyXRC::setDefaults() {
 	hasBindFile = false;
 	rtl_support = false;
 	auto_number = true;
+	mark_foreign_language = true;
 	language_package = "\\usepackage{babel}";
 	language_auto_begin = true;
 	language_auto_end = true;
@@ -1011,6 +1014,9 @@ int LyXRC::read(string const & filename)
 			if (lexrc.next())
 				auto_number = lexrc.GetBool();
 			break;
+		case RC_MARK_FOREIGN_LANGUAGE:
+			if (lexrc.next())
+				mark_foreign_language = lexrc.GetBool();
 		case RC_SHOW_BANNER:
 			if (lexrc.next())
 				show_banner = lexrc.GetBool();
@@ -1337,6 +1343,9 @@ void LyXRC::output(ostream & os) const
 		os << "\\rtl " << tostr(rtl_support) << "\n";
 	case RC_AUTO_NUMBER:
 		os << "\\auto_number" << tostr(auto_number) << "\n";
+	case RC_MARK_FOREIGN_LANGUAGE:
+		os << "\\mark_foreign_language " << 
+			tostr(mark_foreign_language) << "\n";
 	case RC_LANGUAGE_AUTO_BEGIN:
 		os << "\\language_auto_begin " 
 		   << tostr(language_auto_begin) << "\n";

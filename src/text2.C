@@ -846,7 +846,7 @@ void LyXText::SetFont(LyXFont const & font, bool toggleall)
 	SetCursor(sel_end_cursor.par, sel_end_cursor.pos);
 	ClearSelection();
 	SetSelection();
-	SetCursor(tmpcursor.par, tmpcursor.pos);
+	SetCursor(tmpcursor.par, tmpcursor.pos, true, tmpcursor.boundary);
 }
 
 
@@ -875,7 +875,7 @@ void LyXText::RedoHeightOfParagraph(LyXCursor const & cur)
 	status = LyXText::NEED_MORE_REFRESH;
 	refresh_y = y;
 	refresh_row = tmprow;
-	SetCursor(cur.par, cur.pos);
+	SetCursor(cur.par, cur.pos, false, cursor.boundary);
 }
 
 
@@ -1054,8 +1054,8 @@ void LyXText::SetSelection()
 	}
    
 	// a selection with no contents is not a selection
-	if (sel_start_cursor.x == sel_end_cursor.x && 
-	    sel_start_cursor.y == sel_end_cursor.y)
+	if (sel_start_cursor.par == sel_end_cursor.par && 
+	    sel_start_cursor.pos == sel_end_cursor.pos)
 		selection = false;
 
 	// Stuff what we got on the clipboard. Even if there is no selection.
@@ -3115,16 +3115,17 @@ int LyXText::UpdateInset(Inset * inset)
 
 
 void LyXText::SetCursor(LyXParagraph * par,
-			LyXParagraph::size_type pos, bool setfont) const
+			LyXParagraph::size_type pos, 
+			bool setfont, bool boundary) const
 {
 	LyXCursor old_cursor = cursor;
-	SetCursorIntern(par, pos, setfont);
+	SetCursorIntern(par, pos, setfont, boundary);
 	DeleteEmptyParagraphMechanism(old_cursor);
 }
 
 
 void LyXText::SetCursor(LyXCursor & cur, LyXParagraph * par,
-			LyXParagraph::size_type pos) const
+			LyXParagraph::size_type pos, bool boundary) const
 {
 	// correct the cursor position if impossible
 	if (pos > par->Last()){
@@ -3154,6 +3155,7 @@ void LyXText::SetCursor(LyXCursor & cur, LyXParagraph * par,
 
 	cur.par = par;
 	cur.pos = pos;
+	cur.boundary = boundary;
 
 	/* get the cursor y position in text  */
 	long y = 0;
@@ -3175,16 +3177,18 @@ void LyXText::SetCursor(LyXCursor & cur, LyXParagraph * par,
 
 	if (last < row->pos)
                 cursor_vpos = 0;
-	else if ((pos > last) ||
-		 ((pos - 1 >= row->pos) &&
-		  (row->par->IsSeparator(pos) ||
-		   (row->par->table && row->par->IsNewline(pos)))))
+	else if (pos > last && !boundary)
+		cursor_vpos = (row->par->isRightToLeftPar())
+			? row->pos : last+1; 
+	else if (pos > row->pos &&
+		 (pos > last || boundary || 
+		  (row->par->table && row->par->IsNewline(pos))))
 		/// Place cursor after char at (logical) position pos-1
-		cursor_vpos = !(bidi_level(pos-1) % 2)
+		cursor_vpos = (bidi_level(pos-1) % 2 == 0)
 			? log2vis(pos-1) + 1 : log2vis(pos-1);
 	else
 		/// Place cursor before char at (logical) position pos
-		cursor_vpos = !(bidi_level(pos) % 2)
+		cursor_vpos = (bidi_level(pos) % 2 == 0)
 			? log2vis(pos) : log2vis(pos) + 1;
 
 	/* table stuff -- begin*/
@@ -3248,9 +3252,10 @@ void LyXText::SetCursor(LyXCursor & cur, LyXParagraph * par,
 
 
 void LyXText::SetCursorIntern(LyXParagraph * par,
-			      LyXParagraph::size_type pos, bool setfont) const
+			      LyXParagraph::size_type pos,
+			      bool setfont, bool boundary) const
 {
-	SetCursor(cursor, par, pos);
+	SetCursor(cursor, par, pos, boundary);
 // #warning Remove this when verified working (Jug 20000413)
 #if 0
 	// correct the cursor position if impossible
@@ -3369,18 +3374,32 @@ void LyXText::SetCursorIntern(LyXParagraph * par,
 	cursor.x_fix = cursor.x;
 	cursor.row = row;
 #endif
-	if (setfont) {
-		if (cursor.pos && 
-		    (cursor.pos == cursor.par->Last() || cursor.par->IsSeparator(cursor.pos)
-		     || (cursor.par->table && cursor.par->IsNewline(cursor.pos))
-		     )) {
-			current_font = cursor.par->GetFontSettings(cursor.pos - 1);
-			real_current_font = GetFont(cursor.par, cursor.pos - 1);
-		} else {
-			current_font = cursor.par->GetFontSettings(cursor.pos);
-			real_current_font = GetFont(cursor.par, cursor.pos);
+	if (setfont)
+		SetCurrentFont();
+}
+
+void LyXText::SetCurrentFont() const
+{
+	LyXParagraph::size_type pos = cursor.pos;
+	if (cursor.boundary && pos > 0)
+		--pos;
+
+	if (pos > 0) {
+		if (pos == cursor.par->Last() ||
+		    (cursor.par->table && cursor.par->IsNewline(pos)))
+			--pos;
+		else if (cursor.par->IsSeparator(pos)) {
+			if (pos > cursor.row->pos &&
+			    bidi_level(pos) % 2 == 
+			    bidi_level(pos - 1) % 2)
+				--pos;
+			else if (pos + 1 < cursor.par->Last())
+				++pos;
 		}
 	}
+
+	current_font = cursor.par->GetFontSettings(pos);
+	real_current_font = GetFont(cursor.par, pos);
 }
 
 
@@ -3391,29 +3410,14 @@ void LyXText::SetCursorFromCoordinates(int x, long y) const
 	/* get the row first */ 
    
 	Row * row = GetRowNearY(y);
-   
 	cursor.par = row->par;
-   
-	int column = GetColumnNearX(row, x);
+
+	int column = GetColumnNearX(row, x, cursor.boundary);
 	cursor.pos = row->pos + column;
 	cursor.x = x;
 	cursor.y = y + row->baseline;
-   
 	cursor.row = row;
-    
-	if (cursor.pos && 
-	    (cursor.pos == cursor.par->Last()
-	     || cursor.par->IsSeparator(cursor.pos)
-	     || (cursor.pos && cursor.pos == BeginningOfMainBody(cursor.par)
-		 && !cursor.par->IsSeparator(cursor.pos))
-	     || (cursor.par->table && cursor.par->IsNewline(cursor.pos))
-		    )) {
-		current_font = cursor.par->GetFontSettings(cursor.pos - 1);
-		real_current_font = GetFont(cursor.par, cursor.pos - 1);
-	} else {
-		current_font = cursor.par->GetFontSettings(cursor.pos);
-		real_current_font = GetFont(cursor.par, cursor.pos);
-	}
+	SetCurrentFont();
 	DeleteEmptyParagraphMechanism(old_cursor);
 }
 
@@ -3422,7 +3426,7 @@ void LyXText::SetCursorFromCoordinates(LyXCursor & cur, int x, long y) const
 	/* get the row first */ 
    
 	Row * row = GetRowNearY(y);
-	int column = GetColumnNearX(row, x);
+	int column = GetColumnNearX(row, x, cur.boundary);
    
 	cur.par = row->par;
 	cur.pos = row->pos + column;
@@ -3432,9 +3436,9 @@ void LyXText::SetCursorFromCoordinates(LyXCursor & cur, int x, long y) const
 }
 
 
-void LyXText::CursorLeft() const
+void LyXText::CursorLeft(bool internal) const
 {
-	CursorLeftIntern();
+	CursorLeftIntern(internal);
         if (cursor.par->table) {
                 int cell = NumberOfCell(cursor.par, cursor.pos);
                 if (cursor.par->table->IsContRow(cell) &&
@@ -3445,20 +3449,27 @@ void LyXText::CursorLeft() const
 }
 
 
-void LyXText::CursorLeftIntern() const
+void LyXText::CursorLeftIntern(bool internal) const
 {
 	if (cursor.pos > 0) {
-		SetCursor(cursor.par, cursor.pos - 1);
-	}
-	else if (cursor.par->Previous()) { // steps into the above paragraph.
-		SetCursor(cursor.par->Previous(), cursor.par->Previous()->Last());
+		bool boundary = cursor.boundary;
+		SetCursor(cursor.par, cursor.pos - 1, true, false);
+		if (!internal && !boundary &&
+		    IsBoundary(cursor.par, cursor.pos + 1))
+			SetCursor(cursor.par, cursor.pos + 1, true, true);
+	} else if (cursor.par->Previous()) { // steps into the above paragraph.
+		LyXParagraph * par = cursor.par->Previous();
+		LyXParagraph::size_type pos = par->Last();
+		SetCursor(par, pos);
+		if (IsBoundary(par, pos))
+			SetCursor(par, pos, false, true);
 	}
 }
 
 
-void LyXText::CursorRight() const
+void LyXText::CursorRight(bool internal) const
 {
-	CursorRightIntern();
+	CursorRightIntern(internal);
         if (cursor.par->table) {
                 int cell = NumberOfCell(cursor.par, cursor.pos);
                 if (cursor.par->table->IsContRow(cell) &&
@@ -3469,14 +3480,19 @@ void LyXText::CursorRight() const
 }
 
 
-void LyXText::CursorRightIntern() const
+void LyXText::CursorRightIntern(bool internal) const
 {
 	if (cursor.pos < cursor.par->Last()) {
-		SetCursor(cursor.par, cursor.pos + 1);
-	}
-	else if (cursor.par->Next()) {
+		if (!internal && cursor.boundary &&
+		    (!cursor.par->table || !cursor.par->IsNewline(cursor.pos)))
+			SetCursor(cursor.par, cursor.pos, true, false);
+		else {
+			SetCursor(cursor.par, cursor.pos + 1, true, false);
+			if (!internal && IsBoundary(cursor.par, cursor.pos))
+				SetCursor(cursor.par, cursor.pos, true, true);
+		}
+	} else if (cursor.par->Next())
 		SetCursor(cursor.par->Next(), 0);
-	}
 }
 
 

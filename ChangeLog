@@ -1,3 +1,22 @@
+2000-05-27  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/text.C (draw): draw bars under foreign language words.
+	
+	* src/LColor.[Ch]: add LColor::language
+                            
+2000-05-27 Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/lyxcursor.h (boundary): New member variable
+
+	* src/text.C (IsBoundary): New methods
+
+	* src/text.C: Use the above for currect cursor movement when there
+	is both RTL & LTR text.
+	
+	* src/text2.C: ditto
+	
+	* src/bufferview_funcs.C (ToggleAndShow): ditto
+
 2000-05-30  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/text.C (DeleteLineForward): set selection to true to avoid

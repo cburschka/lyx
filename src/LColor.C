@@ -66,6 +66,7 @@ LColor::LColor()
 	{ notebg, N_("note background"), "notebg", "yellow", "notebg" },
 	{ noteframe, N_("note frame"), "noteframe", "black", "noteframe" },
 	{ depthbar, N_("depth bar"), "depthbar", "IndianRed", "depthbar" },
+	{ language, N_("language"), "language", "Blue", "language" },
 	{ command, N_("command-inset"), "command", "black", "command" },
 	{ commandbg, N_("command-inset background"), "commandbg", "grey80", "commandbg" },
 	{ commandframe, N_("inset frame"), "commandframe", "black", "commandframe" },

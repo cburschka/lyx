@@ -78,6 +78,8 @@ public:
 
 		/// Color for the depth bars in the margin
 		depthbar,
+		/// Color for marking foreign language words
+		language,
 
 		/// Text color for command insets
 		command,

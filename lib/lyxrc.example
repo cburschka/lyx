@@ -659,6 +659,11 @@
 # the document. Default is true.
 #\language_auto_end false
 
+# Set mark_foreign_language to "false" to disable the highlighting of words
+# with a foreign language to the language of the documet.
+# Default is "true"
+#\mark_foreign_language false
+
 #
 # HEBREW SUPPORT SECTION ####################################################
 #
@@ -674,6 +679,9 @@
 # You also need to bind a key for switching between Hebrew and English.
 # For example,
 #\bind "F12" "language hebrew"
+
+# You might want ot disable the foreign language marking:
+#\mark_foreign_language false
 
 # Finally, you need to select iso8859-8 font encoding, and select screen fonts
 # (below are the default fonts. You need to replace them by Hebrew fonts)
