@@ -19,20 +19,6 @@
 
 #include "Lsstream.h"
 
-#if 0
-namespace {
-// this is now here and in lyxlenght.h
-
-int const num_units = LyXLength::UNIT_NONE;
-
-// I am not sure if "mu" should be possible to select (Lgb)
-char const * unit_name[num_units] = { "sp", "pt", "bp", "dd",
-				      "mm", "pc", "cc", "cm",
-				      "in", "ex", "em", "mu",
-				      "%",  "c%", "p%", "l%" };
-
-}
-#endif
 
 LyXGlueLength::LyXGlueLength(LyXLength const & len)
 	: len_(len)

@@ -29,9 +29,6 @@ TransFSMData::TransFSMData()
 {
 	deadkey_ = deadkey2_ = 0;
 	deadkey_info_.accent = deadkey2_info_.accent = TEX_NOACCENT;
-#if 0
-	comb_info_ = 0;
-#endif
 }
 
 
@@ -46,23 +43,12 @@ TransInitState::TransInitState()
 }
 
 
-#if 0
-string const TransInitState::normalkey(char c, string const & t)
-{
-	string res;
-	if (!t.empty()) res = t;
-	else res = c;
-	
-	return res;
-}
-#else
 string const TransInitState::normalkey(char c)
 {
 	string res;
 	res = c;
 	return res;
 }
-#endif
 
 
 string const TransInitState::deadkey(char c, KmodInfo d)
@@ -81,56 +67,8 @@ TransDeadkeyState::TransDeadkeyState()
 }
 
 
-#if 0
-string const TransDeadkeyState::normalkey(char c, string const & trans)
-{
-	string res;
-	
-	// Check if it is an exception
-	KmodException l = deadkey_info_.exception_list;
-	while (l != 0) {
-		if (l->c == c) {
-			res = l->data;
-			break;
-		}
-		l = l->next;
-	}
-	if (l == 0) {
-		// Not an exception. Check if it allowed
-		if (countChar(deadkey_info_.allowed, c) > 0) {
-			res = DoAccent(c, deadkey_info_.accent);
-		} else {
-			// Not allowed
-			if (deadkey_!= 0)
-				res = deadkey_;
-			res+= TOKEN_SEP;
-			res+= trans;
-		}
-	}
-	currentState = init_state_;
-	return res;
-}
-#else
 string const TransDeadkeyState::normalkey(char c)
 {
-#if 0
-	string res;
-	
-	// Check if it is an exception
-	KmodException l = deadkey_info_.exception_list;
-	while (l != 0) {
-		if (l->c == c) {
-			res = l->data;
-			break;
-		}
-		l = l->next;
-	}
-	if (l == 0) {
-			res = DoAccent(c, deadkey_info_.accent);
-	}
-	currentState = init_state_;
-	return res;
-#else
 	string res;
 	
 	KmodException::iterator it = deadkey_info_.exception_list.begin();
@@ -147,9 +85,7 @@ string const TransDeadkeyState::normalkey(char c)
 	}
 	currentState = init_state_;
 	return res;
-#endif
 }
-#endif
 
 
 string const TransDeadkeyState::deadkey(char c, KmodInfo d)
@@ -166,28 +102,6 @@ string const TransDeadkeyState::deadkey(char c, KmodInfo d)
 	}
 	
 	// Check if it is a combination or an exception
-#if 0
-	KmodException l;
-	l = deadkey_info_.exception_list;
-	
-	while (l) {
-		if (l->combined == true && l->accent == d.accent) {
-			deadkey2_ = c;
-			deadkey2_info_ = d;
-			comb_info_ = l;
-			currentState = combined_state_;
-			return string();
-		}
-		if (l->c == c) {
-			res = l->data;
-			deadkey_ = 0;
-			deadkey_info_.accent = TEX_NOACCENT;
-			currentState = init_state_;
-			return res;
-		}
-		l = l->next;
-	}
-#else
 	KmodException::const_iterator cit = deadkey_info_.exception_list.begin();
 	KmodException::const_iterator end = deadkey_info_.exception_list.end();
 	for (; cit != end; ++cit) {
@@ -206,7 +120,7 @@ string const TransDeadkeyState::deadkey(char c, KmodInfo d)
 			return res;
 		}
 	}
-#endif
+
 	// Not a combination or an exception. 
 	// Output deadkey1 and keep deadkey2
 	
@@ -225,39 +139,13 @@ TransCombinedState::TransCombinedState()
 }
 
 
-#if 0
-string const TransCombinedState::normalkey(char c, string const & trans)
-{
-	string res;
-
-	// Check if the key is allowed on the combination
-	if (countChar(comb_info_->data, c) > 0) {
-		string const temp = DoAccent(c, deadkey2_info_.accent);
-		res = DoAccent(temp, deadkey_info_.accent);
-		currentState = init_state_;
-	} else {
-		// Not allowed. Output deadkey1 and check deadkey2 + c
-		if (deadkey_ != 0)
-			res += deadkey_;
-		res += TOKEN_SEP;
-		deadkey_ = deadkey2_;
-		deadkey_info_ = deadkey2_info_;
-		// Call deadkey state and leave it to setup the FSM
-		res += deadkey_state_->normalkey(c, trans);
-	}
-	return res;
-}
-#else
 string const TransCombinedState::normalkey(char c)
 {
-	string res;
-
 	string const temp = DoAccent(c, deadkey2_info_.accent);
-	res = DoAccent(temp, deadkey_info_.accent);
+	string const res = DoAccent(temp, deadkey_info_.accent);
 	currentState = init_state_;
 	return res;
 }
-#endif
 
 
 string const TransCombinedState::deadkey(char c, KmodInfo d)
@@ -420,13 +308,7 @@ void TransManager::deadkey(char c, tex_accent accent, LyXText * t)
 	if (active_ == &default_ || c == 0) {
 		KmodInfo i;
 		i.accent = accent;
-#if 0
-		i.allowed = lyx_accent_table[accent].native;
-#endif
 		i.data.erase();
-#if 0
-		i.exception_list = 0;
-#endif	
 		string res = trans_fsm_.currentState->deadkey(c, i);
 		insert(res, t);
 	} else {
