@@ -28,7 +28,7 @@
 #include "BufferView.h"
 
 
-using std::endl;
+//using std::endl;
 using SigC::slot;
 using std::vector;
 
