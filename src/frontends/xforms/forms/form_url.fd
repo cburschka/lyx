@@ -40,8 +40,8 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: URL
-shortcut: Url|#U
+label: URL|#U
+shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: url
@@ -58,8 +58,8 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Name
-shortcut: Name|#N
+label: Name|#N
+shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: name
@@ -76,8 +76,8 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: HTML type
-shortcut: HTML type|#H
+label: HTML type|#H
+shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_NorthEast
 name: radio_html
@@ -94,8 +94,8 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Cancel
-shortcut: ^[
+label: Cancel|#C^[
+shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_cancel

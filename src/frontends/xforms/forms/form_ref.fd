@@ -36,7 +36,7 @@ type: HOLD_BROWSER
 box: 10 10 270 280
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_BOTTOM
+alignment: FL_ALIGN_TOP
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
@@ -58,8 +58,8 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Update
-shortcut: Update|#U#u
+label: Update|#U
+shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
 name: button_update
@@ -76,7 +76,7 @@ alignment: FL_ALIGN_RIGHT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Sort
+label: Sort|#S
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_NoGravity FL_NoGravity
@@ -94,7 +94,7 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Name:
+label: Name:|#N
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_NorthEast FL_NorthEast
@@ -112,7 +112,7 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Reference:
+label: Ref:
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_NorthEast FL_NorthEast
@@ -130,8 +130,8 @@ alignment: FL_ALIGN_TOP
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Reference type
-shortcut: Reference type|#t
+label: Reference type|#R
+shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: type
@@ -148,8 +148,8 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Goto reference
-shortcut: Goto reference|#G
+label: Goto reference|#G
+shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_go
@@ -184,7 +184,7 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Cancel
+label: Cancel|#C^[
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast

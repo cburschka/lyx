@@ -58,8 +58,8 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Close
-shortcut: ^M
+label: Close|#C^[^M
+shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: 
@@ -76,8 +76,8 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Update
-shortcut: Update|#U#u
+label: Update|#U
+shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: 
@@ -94,8 +94,8 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Type
-shortcut: Type|#T#t
+label: Type|#T
+shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: type

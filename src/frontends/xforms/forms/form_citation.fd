@@ -166,7 +166,7 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Citation style
+label: Citation style|#s
 shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
@@ -184,7 +184,7 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Text before
+label: Text before|#b
 shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
@@ -202,7 +202,7 @@ alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Text after
+label: Text after|#a
 shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
@@ -238,8 +238,8 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Cancel
-shortcut: ^[
+label: Cancel|#C^[
+shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_SouthEast FL_SouthEast
 name: button_cancel

@@ -29,8 +29,8 @@ FD_form_tabbed_document * FormDocument::build_tabbed_document()
   obj = fl_add_box(FL_UP_BOX, 0, 0, 465, 450, "");
   fdui->tabbed_folder = obj = fl_add_tabfolder(FL_TOP_TABFOLDER, 20, 15, 435, 365, _("Tabbed folder"));
     fl_set_object_resize(obj, FL_RESIZE_ALL);
-  fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 355, 410, 100, 30, idex(_("Cancel|^[")));
-    fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
+  fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 355, 410, 100, 30, idex(_("Cancel|#C^[")));
+    fl_set_button_shortcut(obj, scex(_("Cancel|#C^[")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseCancelCB, INPUT);
   fdui->button_apply = obj = fl_add_button(FL_NORMAL_BUTTON, 245, 410, 100, 30, idex(_("Apply|#A")));
@@ -193,7 +193,7 @@ FD_form_doc_class * FormDocument::build_doc_class()
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 300, 200, 120, 80, _("Separation"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
-  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 300, 110, 120, 70, _("Columns"));
+  obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 300, 110, 120, 70, _("Page cols"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lstyle(obj, FL_BOLD_STYLE);
   obj = fl_add_labelframe(FL_ENGRAVED_FRAME, 300, 20, 120, 70, _("Sides"));

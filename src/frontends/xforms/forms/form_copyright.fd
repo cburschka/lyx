@@ -76,8 +76,8 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: OK
-shortcut: ^M
+label: Close|#C^[^M
+shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_South FL_South
 name: button_ok

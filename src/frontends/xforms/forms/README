@@ -39,13 +39,13 @@ can will be converted as the FormXxxx::build_xxxx method without any extra
 editting to make it work.  Every forms implementation will thereby follow a very
 simple pattern and make it easier to maintain.
 
-All the forms are rebuild by running `make updatesrc`.  This will generate all
-the form_xxxx.[Ch] files. You should run `make install` to install them in the
-parent directory.  `make install` will also regenerate all the files for you
-so you don't have to do the `make updatesrc` step unless, for example, you are
-testing the conversion scripts. The fdfix.sh, fdfixh.sed and makefile contain
-the necessary smarts to convert the generated code into something that can be
-used directly in the LyX codebase..
+All the forms are rebuild by running `make test`.  This will generate all
+the form_xxxx.[Ch] files. You should run `make updatesrc` to install them in the
+parent directory.  `make updatesrc` will also regenerate all the files for you
+so you don't have to do the `make test` step unless, for example, you are
+testing the conversion scripts. The files fdfix.sh, fdfixc.sed, fdfixh.sed and
+makefile contain the necessary smarts to convert the generated code into
+something that can be used directly in the LyX codebase.
 
 The easiest way to fit into the pattern is to copy an existing dialogs
 implementation and adjust it to suit, keeping the variable names the same.

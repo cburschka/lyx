@@ -8,14 +8,14 @@ Unit of measure: FL_COORD_PIXEL
 
 =============== FORM ===============
 Name: form_graphics
-Width: 410
+Width: 490
 Height: 390
 Number of Objects: 37
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 410 390
+box: 0 0 490 390
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -33,7 +33,7 @@ argument:
 --------------------
 class: FL_FRAME
 type: ENGRAVED_FRAME
-box: 10 310 390 30
+box: 20 310 138 30
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -51,7 +51,7 @@ argument:
 --------------------
 class: FL_FRAME
 type: ENGRAVED_FRAME
-box: 230 250 170 50
+box: 279 250 201 50
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -69,14 +69,14 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 90 20 210 30
+box: 150 20 210 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Graphics File|F#F
+label: Graphics File|#F
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -87,14 +87,14 @@ argument: CHECKINPUT
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 310 20 90 30
+box: 370 20 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Browse|B#B
+label: Browse|#B
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -105,7 +105,7 @@ argument: BROWSE
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 10 70 200 160
+box: 20 70 240 160
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -123,7 +123,7 @@ argument:
 --------------------
 class: FL_TEXT
 type: NORMAL_TEXT
-box: 130 60 50 20
+box: 164 60 60 20
 boxtype: FL_FLAT_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT|FL_ALIGN_INSIDE
@@ -141,7 +141,7 @@ argument:
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 20 190 90 30
+box: 32 190 108 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -159,7 +159,7 @@ argument: CHECKINPUT
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 120 190 80 30
+box: 152 190 96 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -177,7 +177,7 @@ argument: CHECKINPUT
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 230 70 170 160
+box: 270 70 210 160
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -195,7 +195,7 @@ argument:
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 10 350 70 30
+box: 190 350 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -213,14 +213,14 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 100 350 70 30
+box: 290 350 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Apply|A#A
+label: Apply|#A
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -231,14 +231,14 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 190 350 70 30
+box: 390 350 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Cancel|C#C^[
+label: Cancel|^[
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -267,7 +267,7 @@ argument:
 --------------------
 class: FL_CHECKBUTTON
 type: RADIO_BUTTON
-box: 10 140 80 30
+box: 20 140 80 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -285,7 +285,7 @@ argument: CHECKINPUT
 --------------------
 class: FL_CHECKBUTTON
 type: RADIO_BUTTON
-box: 10 80 80 30
+box: 20 80 80 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -304,7 +304,7 @@ argument: CHECKINPUT
 --------------------
 class: FL_CHECKBUTTON
 type: RADIO_BUTTON
-box: 10 100 80 30
+box: 20 100 80 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -322,7 +322,7 @@ argument: CHECKINPUT
 --------------------
 class: FL_CHECKBUTTON
 type: RADIO_BUTTON
-box: 10 120 80 30
+box: 20 120 80 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -340,7 +340,7 @@ argument: CHECKINPUT
 --------------------
 class: FL_CHECKBUTTON
 type: RADIO_BUTTON
-box: 10 160 80 30
+box: 20 160 96 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -394,7 +394,7 @@ argument:
 --------------------
 class: FL_CHECKBUTTON
 type: RADIO_BUTTON
-box: 110 140 80 30
+box: 140 140 96 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -412,7 +412,7 @@ argument: CHECKINPUT
 --------------------
 class: FL_CHECKBUTTON
 type: RADIO_BUTTON
-box: 110 120 80 30
+box: 140 120 96 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -430,7 +430,7 @@ argument: CHECKINPUT
 --------------------
 class: FL_CHECKBUTTON
 type: RADIO_BUTTON
-box: 110 100 80 30
+box: 140 100 80 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -448,7 +448,7 @@ argument: CHECKINPUT
 --------------------
 class: FL_CHECKBUTTON
 type: RADIO_BUTTON
-box: 110 80 80 30
+box: 140 80 96 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
@@ -503,14 +503,14 @@ argument:
 --------------------
 class: FL_CHECKBUTTON
 type: RADIO_BUTTON
-box: 250 80 80 30
+box: 295 80 98 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: in Monochrome
+label: in Monochrome|#M
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -522,14 +522,14 @@ argument:
 --------------------
 class: FL_CHECKBUTTON
 type: RADIO_BUTTON
-box: 250 110 80 30
+box: 295 110 98 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: in Grayscale
+label: in Grayscale|#G
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -540,14 +540,14 @@ argument:
 --------------------
 class: FL_CHECKBUTTON
 type: RADIO_BUTTON
-box: 250 140 80 30
+box: 295 140 98 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: in Color
+label: in Color|#C
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -558,14 +558,14 @@ argument:
 --------------------
 class: FL_CHECKBUTTON
 type: RADIO_BUTTON
-box: 250 170 80 30
+box: 295 170 98 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Don't display
+label: Don't display|#D
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -594,7 +594,7 @@ argument:
 --------------------
 class: FL_LABELFRAME
 type: ENGRAVED_FRAME
-box: 10 250 200 50
+box: 20 250 236 50
 boxtype: FL_NO_BOX
 colors: FL_BLACK FL_COL1
 alignment: FL_ALIGN_TOP_LEFT
@@ -612,14 +612,14 @@ argument:
 --------------------
 class: FL_INPUT
 type: INT_INPUT
-box: 70 260 80 30
+box: 91 260 94 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Angle
+label: Angle|#A
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -630,14 +630,14 @@ argument: CHECKINPUT
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 230 260 170 30
+box: 279 260 201 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Inline Figure
+label: Inline Figure|#I
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
@@ -648,7 +648,7 @@ argument: CHECKINPUT
 --------------------
 class: FL_INPUT
 type: NORMAL_INPUT
-box: 120 310 280 30
+box: 158 310 322 30
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_MCOL
 alignment: FL_ALIGN_LEFT
@@ -666,14 +666,14 @@ argument: CHECKINPUT
 --------------------
 class: FL_CHECKBUTTON
 type: PUSH_BUTTON
-box: 10 310 110 30
+box: 120 310 30 30
 boxtype: FL_NO_BOX
 colors: FL_COL1 FL_YELLOW
-alignment: FL_ALIGN_CENTER
+alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
 size: FL_DEFAULT_SIZE
 lcol: FL_BLACK
-label: Subcaption|S#S
+label: Subcaption|#S
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity

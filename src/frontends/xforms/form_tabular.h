@@ -51,20 +51,16 @@ struct FD_form_column_options {
 	FL_OBJECT *radio_align_left;
 	FL_OBJECT *radio_align_right;
 	FL_OBJECT *radio_align_center;
-	FL_OBJECT *input_column_width;
-	FL_OBJECT *input_special_alignment;
 	FL_OBJECT *radio_valign_top;
 	FL_OBJECT *radio_valign_center;
 	FL_OBJECT *radio_valign_bottom;
+	FL_OBJECT *input_column_width;
+	FL_OBJECT *input_special_alignment;
 };
 struct FD_form_cell_options {
 	~FD_form_cell_options();
 
 	FL_FORM *form;
-	FL_OBJECT *radio_multicolumn;
-	FL_OBJECT *radio_rotate_cell;
-	FL_OBJECT *input_special_multialign;
-	FL_OBJECT *input_mcolumn_width;
 	FL_OBJECT *radio_border_top;
 	FL_OBJECT *radio_border_bottom;
 	FL_OBJECT *radio_border_left;
@@ -75,7 +71,11 @@ struct FD_form_cell_options {
 	FL_OBJECT *radio_valign_top;
 	FL_OBJECT *radio_valign_center;
 	FL_OBJECT *radio_valign_bottom;
+	FL_OBJECT *input_mcolumn_width;
+	FL_OBJECT *input_special_multialign;
+	FL_OBJECT *radio_multicolumn;
 	FL_OBJECT *radio_useminipage;
+	FL_OBJECT *radio_rotate_cell;
 };
 struct FD_form_longtable_options {
 	~FD_form_longtable_options();

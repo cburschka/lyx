@@ -1,3 +1,16 @@
+2000-10-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/minibuffer.C: add "using SigC::slot" statement.
+
+2000-10-25  Angus Leeming <a.leeming@ic.ac.uk>
+
+	* src/frontends/xforms/forms/README: updated section about make.
+
+	* src/frontends/xforms/forms/form_*.fd: lots and lots of shortcuts.
+	Tidied some forms up, made two of form_tabular's tabs more
+	self-consistent, fixed Jean-Marc's size problem in form_preferences,
+	fixed translation problem with "Column".
+	
 2000-10-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/minibuffer.h: use Timeout instead of the xforms timer

@@ -1,20 +1,10 @@
 // File modified by fdfix.sh for use by lyx (with xforms >= 0.88) and gettext
 /** Header file generated with fdesign **/
 
-#ifndef FD_form_lnf_general_h_
-#define FD_form_lnf_general_h_
+#ifndef FD_form_preferences_h_
+#define FD_form_preferences_h_
 
 /** Callbacks, globals and object handlers **/
-extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
-
-extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
-
-extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
-
-extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
-
-extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
-
 extern  "C" void C_FormBaseApplyCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseCancelCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseOKCB(FL_OBJECT *, long);
@@ -25,20 +15,34 @@ extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
 extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
 
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
+
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
+
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
+
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
+
+extern  "C" void C_FormBaseInputCB(FL_OBJECT *, long);
+
 
 /**** Forms and Objects ****/
-struct FD_form_lnf_general {
-	~FD_form_lnf_general();
+struct FD_form_preferences {
+	~FD_form_preferences();
 
 	FL_FORM *form;
-	FL_OBJECT *check_banner;
-	FL_OBJECT *check_auto_region_delete;
-	FL_OBJECT *check_exit_confirm;
-	FL_OBJECT *check_display_shortcuts;
-	FL_OBJECT *counter_autosave;
-	FL_OBJECT *check_ask_new_file;
-	FL_OBJECT *check_cursor_follows_scrollbar;
-	FL_OBJECT *counter_wm_jump;
+	FL_OBJECT *tabfolder_prefs;
+	FL_OBJECT *button_apply;
+	FL_OBJECT *button_cancel;
+	FL_OBJECT *button_ok;
+	FL_OBJECT *button_restore;
+	FL_OBJECT *text_warning;
+};
+struct FD_form_outer_tab {
+	~FD_form_outer_tab();
+
+	FL_FORM *form;
+	FL_OBJECT *tabfolder_outer;
 };
 struct FD_form_screen_fonts {
 	~FD_form_screen_fonts();
@@ -60,6 +64,42 @@ struct FD_form_screen_fonts {
 	FL_OBJECT *input_normal;
 	FL_OBJECT *input_huge;
 	FL_OBJECT *input_huger;
+};
+struct FD_form_outputs_general {
+	~FD_form_outputs_general();
+
+	FL_FORM *form;
+	FL_OBJECT *counter_line_len;
+	FL_OBJECT *input_tex_encoding;
+	FL_OBJECT *choice_default_papersize;
+};
+struct FD_form_spellchecker {
+	~FD_form_spellchecker();
+
+	FL_FORM *form;
+	FL_OBJECT *choice_spell_command;
+	FL_OBJECT *check_alt_lang;
+	FL_OBJECT *input_alt_lang;
+	FL_OBJECT *check_escape_chars;
+	FL_OBJECT *input_escape_chars;
+	FL_OBJECT *check_personal_dict;
+	FL_OBJECT *input_personal_dict;
+	FL_OBJECT *button_personal_dict;
+	FL_OBJECT *check_compound_words;
+	FL_OBJECT *check_input_enc;
+};
+struct FD_form_lnf_general {
+	~FD_form_lnf_general();
+
+	FL_FORM *form;
+	FL_OBJECT *check_banner;
+	FL_OBJECT *check_auto_region_delete;
+	FL_OBJECT *check_exit_confirm;
+	FL_OBJECT *check_display_shortcuts;
+	FL_OBJECT *counter_autosave;
+	FL_OBJECT *check_ask_new_file;
+	FL_OBJECT *check_cursor_follows_scrollbar;
+	FL_OBJECT *counter_wm_jump;
 };
 struct FD_form_interface {
 	~FD_form_interface();
@@ -107,56 +147,16 @@ struct FD_form_paths {
 	FL_OBJECT *input_template_path;
 	FL_OBJECT *button_template_browse;
 	FL_OBJECT *check_last_files;
-	FL_OBJECT *input_temp_dir;
 	FL_OBJECT *button_temp_dir_browse;
 	FL_OBJECT *input_lastfiles;
 	FL_OBJECT *button_lastfiles_browse;
-	FL_OBJECT *check_use_temp_dir;
 	FL_OBJECT *check_make_backups;
 	FL_OBJECT *input_backup_path;
 	FL_OBJECT *button_backup_path_browse;
 	FL_OBJECT *input_serverpipe;
 	FL_OBJECT *button_serverpipe_browse;
-};
-struct FD_form_preferences {
-	~FD_form_preferences();
-
-	FL_FORM *form;
-	FL_OBJECT *button_apply;
-	FL_OBJECT *button_cancel;
-	FL_OBJECT *button_ok;
-	FL_OBJECT *tabfolder_prefs;
-	FL_OBJECT *button_restore;
-	FL_OBJECT *text_warning;
-};
-struct FD_form_outer_tab {
-	~FD_form_outer_tab();
-
-	FL_FORM *form;
-	FL_OBJECT *tabfolder_outer;
-};
-struct FD_form_outputs_general {
-	~FD_form_outputs_general();
-
-	FL_FORM *form;
-	FL_OBJECT *counter_line_len;
-	FL_OBJECT *input_tex_encoding;
-	FL_OBJECT *choice_default_papersize;
-};
-struct FD_form_spellchecker {
-	~FD_form_spellchecker();
-
-	FL_FORM *form;
-	FL_OBJECT *choice_spell_command;
-	FL_OBJECT *check_alt_lang;
-	FL_OBJECT *input_alt_lang;
-	FL_OBJECT *check_escape_chars;
-	FL_OBJECT *input_escape_chars;
-	FL_OBJECT *check_personal_dict;
-	FL_OBJECT *input_personal_dict;
-	FL_OBJECT *button_personal_dict;
-	FL_OBJECT *check_compound_words;
-	FL_OBJECT *check_input_enc;
+	FL_OBJECT *input_temp_dir;
+	FL_OBJECT *check_use_temp_dir;
 };
 
-#endif /* FD_form_lnf_general_h_ */
+#endif /* FD_form_preferences_h_ */

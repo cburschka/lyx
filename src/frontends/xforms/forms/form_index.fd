@@ -41,7 +41,7 @@ style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
 label: Keyword
-shortcut: Keyword|#K#k
+shortcut: Keyword|#K
 resize: FL_RESIZE_X
 gravity: FL_NoGravity FL_NoGravity
 name: key
@@ -58,8 +58,8 @@ alignment: FL_ALIGN_CENTER
 style: FL_NORMAL_STYLE
 size: FL_NORMAL_SIZE
 lcol: FL_BLACK
-label: Cancel
-shortcut: ^[
+label: Cancel|#C^[
+shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_cancel

@@ -29,6 +29,7 @@
 #include "buffer.h"
 
 using std::endl;
+using SigC::slot;
 
 extern bool keyseqUncomplete();
 extern string keyseqOptions(int l = 190);

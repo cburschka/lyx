@@ -60,8 +60,8 @@ FD_form_print * FormPrint::build_print()
     fl_set_button_shortcut(obj, scex(_("Apply|#A")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseApplyCB, 0);
-  fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 230, 315, 100, 30, idex(_("Cancel|^[")));
-    fl_set_button_shortcut(obj, scex(_("Cancel|^[")), 1);
+  fdui->button_cancel = obj = fl_add_button(FL_NORMAL_BUTTON, 230, 315, 100, 30, idex(_("Cancel|C#C^[")));
+    fl_set_button_shortcut(obj, scex(_("Cancel|C#C^[")), 1);
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
 
