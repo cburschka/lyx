@@ -1,3 +1,7 @@
+2004-11-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* insetoptarg.C (latexOptional): honor 'fragile' argument (bug 1739)
+
 2004-10-25  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* insetfoot.C (latex): use \thanks instead of \footnote on titlepage 

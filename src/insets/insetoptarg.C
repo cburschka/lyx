@@ -76,10 +76,10 @@ int InsetOptArg::latex(Buffer const *, ostream &, bool, bool) const
 
 
 int InsetOptArg::latexOptional(Buffer const * buf, ostream & os,
-				bool, bool fp) const
+				bool fragile, bool fp) const
 {
 	os << '[';
-	int const i = inset.latex(buf, os, false, fp);
+	int const i = inset.latex(buf, os, fragile, fp);
 	os << ']';
 	return i + 2;
 }

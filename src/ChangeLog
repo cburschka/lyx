@@ -1,7 +1,13 @@
+2004-11-15  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* paragraph.C (TeXOnePar): use LyXStyle::needprotect and pass it
+	to InsetOptArg::latexOptional as needed (bug 1739)
+	(simpleTeXOnePar): no need to honor needprotect here
+
 2004-11-12  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
-	* lengthcommon.C (unitFromString): revert fix, which is is not
-	needed (and indeed wrong) for 1.3.X
+	* lengthcommon.C (unitFromString): revert fix for bug 1682, which
+	is is not needed (and indeed wrong) for 1.3.X
 
 2004-11-09  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 

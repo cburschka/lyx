@@ -29,12 +29,15 @@ What's new
 
 * Document input/output:
 
-- Fix lyxpreview2ppm.py to work with python versions older than 2.1.
-
 - Fix LaTeX output of percentage length values <10% [bug 1523].
 
 - Fix output of footnotes on the titlepage, which did not work with
   the memoir class [bug 1677]. 
+
+- Fix the LaTeX output of Short Titles (aka optional inset) that did
+  not get \protect added when needed [bug 1739].
+
+- Fix lyxpreview2ppm.py to work with python versions older than 2.1.
 
 
 * User Interface:

@@ -975,6 +975,8 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 	else 
 		style = bparams.getLyXTextClass().defaultLayout();
 
+	moving_arg |= style->needprotect;
+
 	Language const * language = getParLanguage(bparams);
 	Language const * doc_language = bparams.language;
 	Language const * previous_language = previous()
@@ -1066,7 +1068,7 @@ Paragraph * Paragraph::TeXOnePar(Buffer const * buf,
 		if (style->optionalargs == 1) {
 			InsetOptArg * it = optArgInset(*this);
 			if (it != 0)
-				it->latexOptional(buf, os, false, false);
+				it->latexOptional(buf, os, moving_arg, false);
 		}
 		else
 			os << style->latexparam();
@@ -1353,8 +1355,6 @@ bool Paragraph::simpleTeXOnePar(Buffer const * buf,
 	} else {
 		basefont = getLayoutFont(bparams);
 	}
-
-	moving_arg |= style->needprotect;
 
 	// Which font is currently active?
 	LyXFont running_font(basefont);
