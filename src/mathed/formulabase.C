@@ -417,6 +417,9 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	//	<< " y: '" << cmd.y
 	//	<< "' button: " << cmd.button() << endl;
 
+	// delete empty mathbox (LFUN_BACKSPACE and LFUN_DELETE)
+	bool remove_inset; 
+
 	switch (cmd.action) {
 		case LFUN_MOUSE_PRESS:
 			return lfunMousePress(cmd);
@@ -558,15 +561,25 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	case LFUN_DELETE_WORD_BACKWARD:
 	case LFUN_BACKSPACE:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
-		mathcursor->backspace();
+		if (mathcursor->backspace()) {
+			result = DISPATCHED;
+		} else {
+			result = FINISHED;
+			remove_inset = true;
+		}
 		updateLocal(bv, true);
 		break;
 
 	case LFUN_DELETE_WORD_FORWARD:
 	case LFUN_DELETE:
 		bv->lockedInsetStoreUndo(Undo::EDIT);
-		mathcursor->erase();
-		bv->updateInset(this, true);
+		if (mathcursor->erase()) {
+			result = DISPATCHED;
+		} else {
+			result = FINISHED;
+			remove_inset = true;
+		}
+		updateLocal(bv, true);
 		break;
 
 	//    case LFUN_GETXY:
@@ -826,6 +839,8 @@ Inset::RESULT InsetFormulaBase::localDispatch(FuncRequest const & cmd)
 	} else {
 		releaseMathCursor(bv);
 		bv->unlockInset(this);
+		if (remove_inset)
+			bv->owner()->dispatch(FuncRequest(LFUN_DELETE));
 	}
 
 	return result;  // original version

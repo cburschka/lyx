@@ -410,56 +410,66 @@ void MathCursor::paste(string const & data)
 }
 
 
-void MathCursor::backspace()
+bool MathCursor::backspace()
 {
 	autocorrect_ = false;
 
 	if (selection_) {
 		selDel();
-		return;
+		return true;
 	}
 
 	if (pos() == 0) {
-		pullArg();
-		return;
+		if (par()->ncols() == 1 && par()->nrows() == 1 && depth() == 1 && size() == 0)
+			return false;
+		else{
+			pullArg();
+			return true;
+		}
 	}
 
 	if (inMacroMode()) {
 		MathUnknownInset * p = activeMacro();
 		if (p->name().size() > 1) {
 			p->setName(p->name().substr(0, p->name().size() - 1));
-			return;
+			return true;
 		}
 	}
 
 	--pos();
 	plainErase();
+        return true;
 }
 
 
-void MathCursor::erase()
+bool MathCursor::erase()
 {
 	autocorrect_ = false;
 	if (inMacroMode())
-		return;
+		return true;
 
 	if (selection_) {
 		selDel();
-		return;
+		return true;
 	}
 
 	// delete empty cells if possible
 	if (array().empty())
 		if (par()->idxDelete(idx()))
-			return;
+			return true;
 
 	// old behaviour when in last position of cell
 	if (pos() == size()) {
-		par()->idxGlue(idx());
-		return;
+		if (par()->ncols() == 1 && par()->nrows() == 1 && depth() == 1 && size() == 0)
+			return false;
+		else{
+			par()->idxGlue(idx());
+			return true;
+		}
 	}
 
 	plainErase();
+	return true;
 }
 
 

@@ -1,3 +1,12 @@
+
+2003-02-13  Bo Peng <bpeng@rice.edu>
+ 
+	* math_cursor.h:
+	* math_cursor.C (backspace, erase): return false for empty mathboxes.
+
+	* formulabase.C: When LFUN_DELETE, LFUN_BACKSPACE return false, delete 
+		the empty mathbox. Fix Bug 686.
+
 2003-01-12  Michael Schmitt <michael.schmitt@teststep.org>
 
 	* formula.C (draw, width): Fix spacing around previewed formula.

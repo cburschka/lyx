@@ -64,10 +64,10 @@ public:
 	void insert(MathArray const &);
 	///
 	void paste(string const & data);
-	///
-	void erase();
-	///
-	void backspace();
+	/// return false for empty math insets
+	bool erase();
+	/// return false for empty math insets
+	bool backspace();
 	/// called for LFUN_HOME etc
 	bool home(bool sel = false);
 	/// called for LFUN_END etc
