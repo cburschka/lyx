@@ -94,6 +94,16 @@ changequote(,)dnl
 dnl ######### End M4 macros #############################################
 
 
+# Be Bourne compatible (taken from autoconf 2.53)
+if test -n "${ZSH_VERSION+set}" && (emulate sh) >/dev/null 2>&1; then
+  emulate sh
+  NULLCMD=:
+elif test -n "${BASH_VERSION+set}" && (set -o posix) >/dev/null 2>&1; then
+  set -o posix
+fi
+
+
+
 ####some configuration variables
 outfile=lyxrc.defaults
 rc_entries=
