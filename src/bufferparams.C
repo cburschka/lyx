@@ -573,7 +573,7 @@ void BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 		texrow.newline();
 	}
 
-	os << preamble;
+	os << lyxpreamble;
 }
 
 void BufferParams::setPaperStuff()
