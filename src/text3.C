@@ -284,6 +284,7 @@ void LyXText::cursorPrevious()
 	}
 
 	LyXCursor cur;
+	rit = cursorRow();
 	ParagraphList::iterator pit = cursorPar();
 	rit = cursorRow();
 	previousRow(pit, rit);
