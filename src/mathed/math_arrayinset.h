@@ -18,6 +18,8 @@ public:
 	///
 	void write(std::ostream &, bool fragile) const;
 	///
+	void metrics(MathStyles st) const;
+	///
 	bool isArray() const { return true; }
 };
 

@@ -37,3 +37,10 @@ void MathArrayInset::write(std::ostream & os, bool fragile) const
 		os << "\\protect";
 	os << "\\end{array}\n";
 }
+
+
+void MathArrayInset::metrics(MathStyles st) const
+{
+	MathGridInset::metrics(st == LM_ST_DISPLAY ? LM_ST_TEXT : st);
+}
+
