@@ -27,6 +27,10 @@ What's new
   require a file: URL as HTML viewers (mozilla is used as default if
   found)
 
+- when a new LyX version is launched, the Edit>Reconfigure tool is
+  automatically invoked; this should avoid many problems with users
+  who are not aware that it is needed
+
 - when changing the current layout with the toolbar, the corresponding
   keyboard binding is shown in the minibuffer
 
