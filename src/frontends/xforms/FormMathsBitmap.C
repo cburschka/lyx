@@ -37,9 +37,9 @@ extern  "C" void C_FormBaseDeprecatedCancelCB(FL_OBJECT *, long);
 extern  "C" void C_FormBaseDeprecatedInputCB(FL_OBJECT *, long);
 
 FormMathsBitmap::FormMathsBitmap(LyXView * lv, Dialogs * d,   
-				 FormMathsPanel const & p,
+				 FormMathsPanel const & p, string const & t,
 				 vector<string> const & l)
-	: FormMathsSub(lv, d, p, _("Maths Bitmaps"), false),
+	: FormMathsSub(lv, d, p, t, false),
 	  latex_(l), form_(0), ww_(0), x_(0), y_(0), w_(0), h_(0)
 {
 	ww_ = 2 * FL_abs(FL_BOUND_WIDTH);

@@ -37,7 +37,7 @@ public:
 	
 	///
 	FormMathsBitmap(LyXView *, Dialogs * d, FormMathsPanel const &,
-			std::vector<string> const &);
+			string const &, std::vector<string> const &);
 	///
 	~FormMathsBitmap();
 	///

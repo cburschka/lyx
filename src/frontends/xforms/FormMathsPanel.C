@@ -82,75 +82,76 @@ FormMathsPanel::FormMathsPanel(LyXView * lv, Dialogs * d)
 	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
 		latex[i] = latex_arrow[i];
 	}
-	arrow_.reset(new FormMathsBitmap(lv, d, *this, latex));
+	arrow_.reset(new FormMathsBitmap(lv, d, *this, _("Arrows"), latex));
 
 	latex.resize(nr_latex_bop);
 	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
 		latex[i] = latex_bop[i];
 	}
-	boperator_.reset(new FormMathsBitmap(lv, d, *this, latex));
+	boperator_.reset(new FormMathsBitmap(lv, d, *this, _("Binary Ops"), latex));
 
 	latex.resize(nr_latex_brel);
 	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
 		latex[i] = latex_brel[i];
 	}
-	brelats_.reset(new FormMathsBitmap(lv, d, *this, latex));
+	brelats_.reset(new FormMathsBitmap(lv, d, *this, _("Bin Relations"), latex));
 
 	latex.resize(nr_latex_greek);
 	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
 		latex[i] = latex_greek[i];
 	}
-	greek_.reset(new FormMathsBitmap(lv, d, *this, latex));
+	greek_.reset(new FormMathsBitmap(lv, d, *this, _("Greek"),latex));
 
 	latex.resize(nr_latex_misc);
 	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
 		latex[i] = latex_misc[i];
 	}
-	misc_.reset(new FormMathsBitmap(lv, d, *this, latex));
+	misc_.reset(new FormMathsBitmap(lv, d, *this, _("Misc"),latex));
 
 	latex.resize(nr_latex_dots);
 	for (StringVec::size_type i = 0; i<latex.size(); ++i) {
 		latex[i] = latex_dots[i];
 	}
 
-	dots_.reset(new FormMathsBitmap(lv, d, *this, latex));
+	dots_.reset(new FormMathsBitmap(lv, d, *this, _("Dots"), latex));
 
 	latex.resize(nr_latex_varsz);
 	for (StringVec::size_type i = 0; i<latex.size(); ++i) {
 		latex[i] = latex_varsz[i];
 	}
-	varsize_.reset(new FormMathsBitmap(lv, d, *this, latex));
+	varsize_.reset(new FormMathsBitmap(lv, d, *this, _("Big Operators"),latex));
 
 	latex.resize(nr_latex_ams_misc);
 	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
 		latex[i] = latex_ams_misc[i];
 	}
-	ams_misc_.reset(new FormMathsBitmap(lv, d, *this, latex));
+	ams_misc_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Misc"), latex));
 
 	latex.resize(nr_latex_ams_arrows);
 	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
 		latex[i] = latex_ams_arrows[i];
 	}
-	ams_arrows_.reset(new FormMathsBitmap(lv, d, *this, latex));
+	ams_arrows_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Arrows"), latex));
 
 	latex.resize(nr_latex_ams_rel);
 	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
 		latex[i] = latex_ams_rel[i];
 	}
-	ams_rel_.reset(new FormMathsBitmap(lv, d, *this, latex));
+	ams_rel_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Relations"), latex));
 
 	latex.resize(nr_latex_ams_nrel);
 	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
 		latex[i] = latex_ams_nrel[i];
 	}
-	ams_nrel_.reset(new FormMathsBitmap(lv, d, *this, latex));
+	ams_nrel_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Negated Rel"), latex));
 
 	latex.resize(nr_latex_ams_ops);
 	for (StringVec::size_type i = 0; i < latex.size(); ++i) {
 		latex[i] = latex_ams_ops[i];
 	}
-	ams_ops_.reset(new FormMathsBitmap(lv, d, *this, latex));
+	ams_ops_.reset(new FormMathsBitmap(lv, d, *this, _("AMS Operators"), latex));
 
+	//showUnderMouse(false);
 	d->showMathPanel.connect(slot(this, &FormMathsPanel::show));
 }
 
