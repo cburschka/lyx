@@ -25,8 +25,10 @@
 
 #include "frontends/Painter.h"
 
-#include "graphics/PreviewedInset.h"
 #include "graphics/PreviewImage.h"
+#include "graphics/PreviewLoader.h"
+
+#include "insets/render_preview.h"
 
 #include "support/std_sstream.h"
 
@@ -40,24 +42,9 @@ using std::auto_ptr;
 using std::endl;
 
 
-class InsetFormula::PreviewImpl : public PreviewedInset {
-public:
-	///
-	PreviewImpl(InsetFormula const & p) : parent_(p) {}
-
-private:
-	///
-	bool previewWanted(Buffer const &) const;
-	///
-	string const latexString(Buffer const &) const;
-	///
-	InsetFormula const & parent_;
-};
-
-
 InsetFormula::InsetFormula(bool chemistry)
 	: par_(MathAtom(new MathHullInset)),
-	  preview_(new PreviewImpl(*this))
+	  preview_(new RenderPreview)
 {
 	preview_->connect(boost::bind(&InsetFormula::statusChanged, this));
 	if (chemistry)
@@ -68,7 +55,7 @@ InsetFormula::InsetFormula(bool chemistry)
 InsetFormula::InsetFormula(InsetFormula const & other)
 	: InsetFormulaBase(other),
 	  par_(other.par_),
-	  preview_(new PreviewImpl(*this))
+	  preview_(new RenderPreview)
 {
 	preview_->connect(boost::bind(&InsetFormula::statusChanged, this));
 }
@@ -76,7 +63,7 @@ InsetFormula::InsetFormula(InsetFormula const & other)
 
 InsetFormula::InsetFormula(BufferView *)
 	: par_(MathAtom(new MathHullInset)),
-	  preview_(new PreviewImpl(*this))
+	  preview_(new RenderPreview)
 {
 	preview_->connect(boost::bind(&InsetFormula::statusChanged, this));
 }
@@ -84,7 +71,7 @@ InsetFormula::InsetFormula(BufferView *)
 
 InsetFormula::InsetFormula(string const & data)
 	: par_(MathAtom(new MathHullInset)),
-	  preview_(new PreviewImpl(*this))
+	  preview_(new RenderPreview)
 {
 	preview_->connect(boost::bind(&InsetFormula::statusChanged, this));
 	if (!data.size())
@@ -193,6 +180,7 @@ void InsetFormula::read(Buffer const &, LyXLex & lex)
 
 void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 {
+	BOOST_ASSERT(pi.base.bv);
 	BufferView * bv = pi.base.bv;
 	cache(bv);
 
@@ -206,8 +194,8 @@ void InsetFormula::draw(PainterInfo & pi, int x, int y) const
 	int const h = a + d;
 
 	if (use_preview) {
-		pi.pain.image(x + 1, y - a, w, h,   // one pixel gap in front
-			      *(preview_->pimage()->image()));
+		// one pixel gap in front
+		preview_->draw(pi, x + 1, y);
 	} else {
 		PainterInfo p(bv);
 		p.base.style = LM_ST_TEXT;
@@ -260,16 +248,16 @@ bool InsetFormula::insetAllowed(InsetOld::Code code) const
 
 void InsetFormula::metrics(MetricsInfo & m, Dimension & dim) const
 {
+	BOOST_ASSERT(m.base.bv);
 	view_ = m.base.bv;
 
 	bool const editing_inset = mathcursor && mathcursor->formula() == this;
 	bool const use_preview = !editing_inset && preview_->previewReady();
 
 	if (use_preview) {
-		dim.asc = preview_->pimage()->ascent();
-		dim.des = preview_->pimage()->descent();
+		preview_->metrics(m, dim);
 		// insert a one pixel gap in front of the formula
-		dim.wid = 1 + preview_->pimage()->width();
+		dim.wid += 1;
 		if (display())
 			dim.des += 12;
 	} else {
@@ -309,28 +297,39 @@ void InsetFormula::statusChanged() const
 }
 
 
+namespace {
+
+bool preview_wanted(InsetFormula const & inset, Buffer const &)
+{
+	// Don't want a preview when we're editing the inset
+	return !(mathcursor && mathcursor->formula() == &inset);
+}
+
+
+string const latex_string(InsetFormula const & inset, Buffer const &)
+{
+	ostringstream ls;
+	WriteStream wi(ls, false, false);
+	inset.par()->write(wi);
+	return ls.str();
+}
+
+} // namespace anon
+
+
 void InsetFormula::addPreview(lyx::graphics::PreviewLoader & ploader) const
 {
-	preview_->addPreview(ploader);
+	if (preview_wanted(*this, ploader.buffer())) {
+		string const snippet = latex_string(*this, ploader.buffer());
+		preview_->addPreview(snippet, ploader);
+	}
 }
 
 
 void InsetFormula::generatePreview(Buffer const & buffer) const
 {
-	preview_->generatePreview(buffer);
-}
-
-
-bool InsetFormula::PreviewImpl::previewWanted(Buffer const &) const
-{
-	return !parent_.par_->asNestInset()->editing();
-}
-
-
-string const InsetFormula::PreviewImpl::latexString(Buffer const &) const
-{
-	ostringstream ls;
-	WriteStream wi(ls, false, false);
-	parent_.par_->write(wi);
-	return ls.str();
+	if (preview_wanted(*this, buffer)) {
+		string const snippet = latex_string(*this, buffer);
+		preview_->generatePreview(snippet, buffer);
+	}
 }

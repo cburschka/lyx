@@ -1,3 +1,29 @@
+2003-10-10  Angus Leeming  <leeming@lyx.org>
+
+	* renderers.[Ch]: removed.
+
+	* render_base.[Ch]:
+	* render_button.[Ch]:
+	* render_graphic.[Ch]:
+	* render_preview.[Ch]: new files. The first three are split out of
+	renderers.[Ch]. The last one is a renamed PreviewedInset.[Ch]. which
+	contains a re-worked InsetInclude::PreviewImpl also.
+
+	* Makefile.am: reflect the changed files.
+
+	* insetcommand.h:
+	* insetexternal.[Ch]:
+	* insetgraphics.[Ch]: trivial changes ButtonRenderer -> RenderButton, etc.
+
+	* insetinclude.[Ch]: changes reflecting the change from
+	InsetInclude::PreviewImpl to RenderMonitoredPreview.
+
+	* insethfill.C:
+	* insetindex.C:
+	* insetlabel.C:
+	* insettoc.C:
+	* inseturl.C: add #include "support/std_ostream.h"
+
 2003-10-09  Angus Leeming  <leeming@lyx.org>
 
 	* insetinclude.C (metrics, draw): no longer need to pass a Buffer arg

@@ -21,7 +21,7 @@
 
 
 class Dialogs;
-class GraphicRenderer;
+class RenderGraphic;
 class LaTeXFeatures;
 
 ///
@@ -104,7 +104,7 @@ private:
 	std::string const graphic_label;
 
 	/// The thing that actually draws the image on LyX's screen.
-	boost::scoped_ptr<GraphicRenderer> const graphic_;
+	boost::scoped_ptr<RenderGraphic> const graphic_;
 };
 
 

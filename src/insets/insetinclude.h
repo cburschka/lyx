@@ -14,15 +14,15 @@
 
 #include "inset.h"
 #include "insetcommandparams.h"
-#include "renderers.h"
+#include "render_button.h"
 #include <boost/scoped_ptr.hpp>
 
 
 class Buffer;
 class Dimension;
 struct LaTeXFeatures;
+class RenderMonitoredPreview;
 
-// Created by AAS 970521
 
 /// for including tex/lyx files
 class InsetInclude: public InsetOld {
@@ -85,6 +85,11 @@ public:
 private:
 	/// Slot receiving a signal that the preview is ready to display.
 	void statusChanged() const;
+	/** Slot receiving a signal that the external file has changed
+	 *  and the preview should be regenerated.
+	 */
+	void fileChanged() const;
+
 	
 	friend class InsetIncludeMailer;
 
@@ -102,15 +107,12 @@ private:
 	/// holds the entity name that defines the file location (SGML)
 	std::string const include_label;
 
-	/// Use the Pimpl idiom to hide the internals of the previewer.
-	class PreviewImpl;
-	friend class PreviewImpl;
 	/// The pointer never changes although *preview_'s contents may.
-	boost::scoped_ptr<PreviewImpl> const preview_;
+	boost::scoped_ptr<RenderMonitoredPreview> const preview_;
 
 	/// cache
 	mutable bool set_label_;
-	mutable ButtonRenderer button_;
+	mutable RenderButton button_;
 };
 
 

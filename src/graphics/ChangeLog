@@ -1,3 +1,9 @@
+2003-10-10  Angus Leeming  <leeming@lyx.org>
+
+	* PreviewedInset.[Ch]: removed.
+
+	* Makefile.am: remove PreviewedInset.[Ch].
+
 2003-10-09  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewedInset.[Ch] (previewReady): remove the side effects.

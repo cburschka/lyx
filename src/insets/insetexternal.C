@@ -11,9 +11,10 @@
 #include <config.h>
 
 #include "insetexternal.h"
-#include "insets/renderers.h"
 #include "insets/ExternalSupport.h"
 #include "insets/ExternalTemplate.h"
+#include "insets/render_button.h"
+#include "insets/render_graphic.h"
 
 #include "buffer.h"
 #include "BufferView.h"
@@ -358,7 +359,7 @@ bool InsetExternalParams::read(Buffer const & buffer, LyXLex & lex)
 
 
 InsetExternal::InsetExternal()
-	: renderer_(new ButtonRenderer)
+	: renderer_(new RenderButton)
 {}
 
 
@@ -368,8 +369,8 @@ InsetExternal::InsetExternal(InsetExternal const & other)
 	  params_(other.params_),
 	  renderer_(other.renderer_->clone())
 {
-	GraphicRenderer * ptr =
-		dynamic_cast<GraphicRenderer *>(renderer_.get());
+	RenderGraphic * ptr =
+		dynamic_cast<RenderGraphic *>(renderer_.get());
 	if (ptr)
 		ptr->connect(boost::bind(&InsetExternal::statusChanged, this));
 }
@@ -503,20 +504,20 @@ void InsetExternal::setParams(InsetExternalParams const & p,
 			       params_.display == lyx::graphics::NoDisplay);
 
 	if (display_button) {
-		ButtonRenderer * button_ptr =
-			dynamic_cast<ButtonRenderer *>(renderer_.get());
+		RenderButton * button_ptr =
+			dynamic_cast<RenderButton *>(renderer_.get());
 		if (!button_ptr) {
-			button_ptr = new ButtonRenderer;
+			button_ptr = new RenderButton;
 			renderer_.reset(button_ptr);
 		}
 
 		button_ptr->update(getScreenLabel(params_, buffer), true);
 
 	} else {
-		GraphicRenderer * graphic_ptr =
-			dynamic_cast<GraphicRenderer *>(renderer_.get());
+		RenderGraphic * graphic_ptr =
+			dynamic_cast<RenderGraphic *>(renderer_.get());
 		if (!graphic_ptr) {
-			graphic_ptr = new GraphicRenderer;
+			graphic_ptr = new RenderGraphic;
 			graphic_ptr->connect(
 				boost::bind(&InsetExternal::statusChanged, this));
 			renderer_.reset(graphic_ptr);

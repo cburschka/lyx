@@ -27,24 +27,25 @@
 
 #include "frontends/Painter.h"
 
-#include "graphics/PreviewedInset.h"
 #include "graphics/PreviewImage.h"
+#include "graphics/PreviewLoader.h"
+
+#include "insets/render_preview.h"
 
 #include "support/FileInfo.h"
-#include "support/FileMonitor.h"
 #include "support/filetools.h"
 #include "support/lstrings.h" // contains
 #include "support/tostr.h"
 
 #include <boost/bind.hpp>
 
+#include "support/std_ostream.h"
 #include "support/std_sstream.h"
 
 using lyx::support::AddName;
 using lyx::support::ChangeExtension;
 using lyx::support::contains;
 using lyx::support::FileInfo;
-using lyx::support::FileMonitor;
 using lyx::support::GetFileContents;
 using lyx::support::IsFileReadable;
 using lyx::support::IsLyXFilename;
@@ -65,33 +66,6 @@ using std::ostringstream;
 extern BufferList bufferlist;
 
 
-class InsetInclude::PreviewImpl : public PreviewedInset {
-public:
-	///
-	PreviewImpl(InsetInclude const & p) : parent_(p) {}
-
-	///
-	bool previewWanted(Buffer const &) const;
-	///
-	string const latexString(Buffer const &) const;
-	///
-	///
-	bool monitoring() const { return monitor_.get(); }
-	///
-	void startMonitoring(string const & file);
-	///
-	void stopMonitoring() { monitor_.reset(); }
-
-private:
-	/// Invoked by monitor_ should the parent file change.
-	void restartLoading();
-	///
-	boost::scoped_ptr<FileMonitor> monitor_;
-	///
-	InsetInclude const & parent_;
-};
-
-
 namespace {
 
 string const uniqueID()
@@ -105,10 +79,11 @@ string const uniqueID()
 
 InsetInclude::InsetInclude(InsetCommandParams const & p)
 	: params_(p), include_label(uniqueID()),
-	  preview_(new PreviewImpl(*this)),
+	  preview_(new RenderMonitoredPreview),
 	  set_label_(false)
 {
 	preview_->connect(boost::bind(&InsetInclude::statusChanged, this));
+	preview_->fileChanged(boost::bind(&InsetInclude::fileChanged, this));
 }
 
 
@@ -116,10 +91,11 @@ InsetInclude::InsetInclude(InsetInclude const & other)
 	: InsetOld(other),
 	  params_(other.params_),
 	  include_label(other.include_label),
-	  preview_(new PreviewImpl(*this)),
+	  preview_(new RenderMonitoredPreview),
 	  set_label_(other.set_label_)
 {
 	preview_->connect(boost::bind(&InsetInclude::statusChanged, this));
+	preview_->fileChanged(boost::bind(&InsetInclude::fileChanged, this));
 }
 
 
@@ -201,6 +177,23 @@ bool isVerbatim(InsetCommandParams const & params)
 		command_name == "verbatiminput*";
 }
 
+
+string const masterFilename(Buffer const & buffer)
+{
+	return buffer.fileName();
+}
+
+
+string const includedFilename(Buffer const & buffer,
+			      InsetCommandParams const & params)
+{
+	return MakeAbsPath(params.getContents(),
+			   OnlyPath(masterFilename(buffer)));
+}
+
+
+void generate_preview(RenderPreview &, InsetInclude const &, Buffer const &);
+
 } // namespace anon
 
 
@@ -212,8 +205,8 @@ void InsetInclude::set(InsetCommandParams const & p, Buffer const & buffer)
 	if (preview_->monitoring())
 		preview_->stopMonitoring();
 
-	if (PreviewedInset::activated() && type(params_) == INPUT)
-		preview_->generatePreview(buffer);
+	if (type(params_) == INPUT)
+		generate_preview(*preview_, *this, buffer);
 }
 
 
@@ -271,20 +264,6 @@ string const InsetInclude::getScreenLabel(Buffer const &) const
 
 
 namespace {
-
-string const masterFilename(Buffer const & buffer)
-{
-	return buffer.fileName();
-}
-
-
-string const includedFilename(Buffer const & buffer,
-			      InsetCommandParams const & params)
-{
-	return MakeAbsPath(params.getContents(),
-			   OnlyPath(masterFilename(buffer)));
-}
-
 
 /// return true if the file is or got loaded.
 bool loadIfNeeded(Buffer const & buffer, InsetCommandParams const & params)
@@ -598,51 +577,63 @@ void InsetInclude::statusChanged() const
 }
 
 
-void InsetInclude::addPreview(lyx::graphics::PreviewLoader & ploader) const
+void InsetInclude::fileChanged() const
 {
-	preview_->addPreview(ploader);
+	BufferView * const bv = view();
+	if (!bv)
+		return;
+	bv->updateInset(this);
+
+	if (!bv->buffer())
+		return;
+	Buffer const & buffer = *bv->buffer();
+
+	preview_->removePreview(buffer);
+	generate_preview(*preview_.get(), *this, buffer);
 }
 
 
-bool InsetInclude::PreviewImpl::previewWanted(Buffer const & buffer) const
-{
-	string const included_file = includedFilename(buffer, parent_.params());
+namespace {
 
-	return type(parent_.params_) == INPUT &&
-		parent_.params_.preview() &&
+bool preview_wanted(InsetCommandParams const & params, Buffer const & buffer)
+{
+	string const included_file = includedFilename(buffer, params);
+
+	return type(params) == INPUT && params.preview() &&
 		IsFileReadable(included_file);
 }
 
 
-string const InsetInclude::PreviewImpl::latexString(Buffer const & buffer) const
+string const latex_string(InsetInclude const & inset, Buffer const & buffer)
 {
 	ostringstream os;
 	LatexRunParams runparams;
 	runparams.flavor = LatexRunParams::LATEX;
-	parent_.latex(buffer, os, runparams);
+	inset.latex(buffer, os, runparams);
 
 	return os.str();
 }
 
 
-void InsetInclude::PreviewImpl::startMonitoring(string const & file)
+void generate_preview(RenderPreview & renderer,
+		      InsetInclude const & inset,
+		      Buffer const & buffer)
 {
-	monitor_.reset(new FileMonitor(file, 2000));
-	monitor_->connect(boost::bind(&PreviewImpl::restartLoading, this));
-	monitor_->start();
+	InsetCommandParams const & params = inset.params();
+	if (RenderPreview::activated() && preview_wanted(params, buffer)) {
+		string const snippet = latex_string(inset, buffer);
+		renderer.generatePreview(snippet, buffer);
+	}
 }
 
+} // namespace anon
 
-void InsetInclude::PreviewImpl::restartLoading()
+
+void InsetInclude::addPreview(lyx::graphics::PreviewLoader & ploader) const
 {
-	BufferView * const view = parent_.view();
-	if (!view)
-		return;
-	view->updateInset(&parent_);
-	if (view->buffer()) {
-		Buffer const & buffer = *view->buffer();
-		removePreview(buffer);
-		generatePreview(buffer);
+	if (preview_wanted(params(), ploader.buffer())) {
+		string const snippet = latex_string(*this, ploader.buffer());
+		preview_->addPreview(snippet, ploader);
 	}
 }
 

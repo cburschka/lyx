@@ -14,7 +14,7 @@
 #define COMMAND_INSET_H
 
 #include "math_nestinset.h"
-#include "insets/renderers.h"
+#include "insets/render_button.h"
 
 
 /// Inset for things like \name[options]{contents}
@@ -44,7 +44,7 @@ public:
 private:
 	std::string name_;
 	mutable bool set_label_;
-	mutable ButtonRenderer button_;
+	mutable RenderButton button_;
 };
 
 #endif

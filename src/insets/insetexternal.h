@@ -79,7 +79,7 @@ private:
 };
 
 
-class RenderInset;
+class RenderBase;
 
 ///
 class InsetExternal : public InsetOld, public boost::signals::trackable
@@ -136,7 +136,7 @@ private:
 	/// The current params
 	InsetExternalParams params_;
 	/// The thing that actually draws the image on LyX's screen.
-	boost::scoped_ptr<RenderInset> renderer_;
+	boost::scoped_ptr<RenderBase> renderer_;
 };
 
 

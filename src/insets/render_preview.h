@@ -1,6 +1,6 @@
 // -*- C++ -*-
 /**
- * \file PreviewedInset.h
+ * \file render_preview.h
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -8,13 +8,17 @@
  *
  * Full author contact details are available in file CREDITS.
  *
- * lyx::graphics::PreviewedInset is an abstract base class that can help
+ * lyx::graphics::RenderPreview is an abstract base class that can help
  * insets to generate previews. The daughter class must instantiate two small
  * methods. The Inset would own an instance of this daughter class.
  */
 
-#ifndef PREVIEWEDINSET_H
-#define PREVIEWEDINSET_H
+#ifndef RENDER_PREVIEW_H
+#define RENDER_PREVIEW_H
+
+#include "render_base.h"
+
+#include "support/FileMonitor.h"
 
 #include <boost/signals/signal0.hpp>
 #include <boost/signals/trackable.hpp>
@@ -22,7 +26,8 @@
 
 class Buffer;
 class BufferView;
-
+class MetricsInfo;
+class PainterInfo;
 
 namespace lyx {
 namespace graphics {
@@ -33,23 +38,32 @@ class PreviewLoader;
 } // namespace graphics
 } // namespace lyx
 
-class PreviewedInset : public boost::signals::trackable {
+
+class RenderPreview : public RenderBase, public boost::signals::trackable {
 public:
 	/// a wrapper for Previews::activated()
 	static bool activated();
 
+	RenderPreview();
+	RenderPreview(RenderPreview const &);
+	RenderBase * clone() const;
+
+	/// Compute the size of the object, returned in dim
+	void metrics(MetricsInfo &, Dimension & dim) const;
 	///
-	PreviewedInset();
+	void draw(PainterInfo & pi, int x, int y) const;
 
 	/** Find the PreviewLoader, add a LaTeX snippet to it and
 	 *  start the loading process.
 	 */
-	void generatePreview(Buffer const &);
+	void generatePreview(std::string const & latex_snippet,
+			     Buffer const &);
 
 	/** Add a LaTeX snippet to the PreviewLoader but do not start the
 	 *  loading process.
 	 */
-	void addPreview(lyx::graphics::PreviewLoader & ploader);
+	void addPreview(std::string const & latex_snippet,
+			lyx::graphics::PreviewLoader & ploader);
 
 	/** Remove a snippet from the cache of previews.
 	 *  Useful if previewing the contents of a file that has changed.
@@ -60,30 +74,25 @@ public:
 	bool previewReady() const;
 
 	/// If the preview is not ready, returns 0.
-	lyx::graphics::PreviewImage const * const pimage() const { return pimage_; }
+	lyx::graphics::PreviewImage const * const pimage() const
+		{ return pimage_; }
 
 	/// Connect and you'll be informed when the preview is ready.
 	typedef boost::signal0<void>::slot_type slot_type;
 	boost::signals::connection connect(slot_type const &);
 
-protected:
-	///
-	virtual ~PreviewedInset() {}
-
 private:
-	/// This method is connected to the PreviewLoader::imageReady signal.
-	void imageReady(lyx::graphics::PreviewImage const &) const;
+	/// Not implemented.
+	void operator=(RenderPreview const &);
 
-	/// Does the owning inset want a preview?
-	virtual bool previewWanted(Buffer const &) const = 0;
-	/// a wrapper to Inset::latex
-	virtual std::string const latexString(Buffer const &) const = 0;
+	/// This method is connected to the PreviewLoader::imageReady signal.
+	void imageReady(lyx::graphics::PreviewImage const &);
 
 	/// The thing that we're trying to generate a preview of.
 	std::string snippet_;
 
 	/// We don't own this. Cached for efficiency reasons.
-	mutable lyx::graphics::PreviewImage const * pimage_;
+	lyx::graphics::PreviewImage const * pimage_;
 
 	/** Store the connection to the preview loader so that we connect
 	 *  only once.
@@ -94,4 +103,23 @@ private:
 	boost::signal0<void> preview_ready_signal_;
 };
 
-#endif // PREVIEWEDINSET_H
+
+class RenderMonitoredPreview : public RenderPreview {
+public:
+	RenderMonitoredPreview() : monitor_(std::string(), 2000) {}
+	///
+	bool monitoring() const { return monitor_.monitoring(); }
+	///
+	void startMonitoring(std::string const & file);
+	///
+	void stopMonitoring() { monitor_.stop(); }
+
+	/// Connect and you'll be informed when the file changes.
+	boost::signals::connection fileChanged(slot_type const &);
+
+private:
+	///
+	lyx::support::FileMonitor monitor_;
+};
+
+#endif // RENDERPREVIEW_H

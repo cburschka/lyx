@@ -53,7 +53,7 @@ TODO
 #include <config.h>
 
 #include "insets/insetgraphics.h"
-#include "insets/renderers.h"
+#include "insets/render_graphic.h"
 
 #include "buffer.h"
 #include "BufferView.h"
@@ -152,7 +152,7 @@ string findTargetFormat(string const & suffix, LatexRunParams const & runparams)
 
 InsetGraphics::InsetGraphics()
 	: graphic_label(uniqueID()),
-	  graphic_(new GraphicRenderer)
+	  graphic_(new RenderGraphic)
 {
 	graphic_->connect(boost::bind(&InsetGraphics::statusChanged, this));
 }
@@ -162,7 +162,7 @@ InsetGraphics::InsetGraphics(InsetGraphics const & ig)
 	: InsetOld(ig),
 	  boost::signals::trackable(),
 	  graphic_label(uniqueID()),
-	  graphic_(new GraphicRenderer(*ig.graphic_))
+	  graphic_(new RenderGraphic(*ig.graphic_))
 {
 	graphic_->connect(boost::bind(&InsetGraphics::statusChanged, this));
 	setParams(ig.params());

@@ -16,7 +16,7 @@
 
 #include "inset.h"
 #include "insetcommandparams.h"
-#include "renderers.h"
+#include "render_button.h"
 #include "mailinset.h"
 
 // Created by Alejandro 970222
@@ -67,7 +67,7 @@ public:
 	///
 	std::string const & getOptions() const { return p_.getOptions(); }
 	///
-	ButtonRenderer & button() const { return button_; }
+	RenderButton & button() const { return button_; }
 
 protected:
 	///
@@ -89,7 +89,7 @@ private:
 	///
 	InsetCommandParams p_;
 	mutable bool set_label_;
-	mutable ButtonRenderer button_;
+	mutable RenderButton button_;
 };
 
 

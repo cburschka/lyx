@@ -18,6 +18,8 @@
 
 #include <boost/scoped_ptr.hpp>
 
+class RenderPreview;
+
 
 /// The main LyX math inset
 class InsetFormula : public InsetFormulaBase {
@@ -84,10 +86,7 @@ private:
 	/// x offset for drawing displayed formula
 	mutable int offset_;
 
-	/// Use the Pimpl idiom to hide the internals of the previewer.
-	class PreviewImpl;
-	friend class PreviewImpl;
 	/// The pointer never changes although *preview_'s contents may.
-	boost::scoped_ptr<PreviewImpl> const preview_;
+	boost::scoped_ptr<RenderPreview> const preview_;
 };
 #endif

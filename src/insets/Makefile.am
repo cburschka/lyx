@@ -19,8 +19,14 @@ libinsets_la_SOURCES = \
 	ExternalTemplate.h \
 	ExternalTransforms.C \
 	ExternalTransforms.h \
-	renderers.C \
-	renderers.h \
+	render_base.C \
+	render_base.h \
+	render_button.C \
+	render_button.h \
+	render_graphic.C \
+	render_graphic.h \
+	render_preview.C \
+	render_preview.h \
 	inset.C \
 	inset.h \
 	insetbase.h \

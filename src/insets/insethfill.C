@@ -12,6 +12,8 @@
 
 #include "insethfill.h"
 
+#include "support/std_ostream.h"
+
 using std::ostream;
 
 

@@ -1,5 +1,12 @@
 2003-10-10  Angus Leeming  <leeming@lyx.org>
 
+	* command_inset.h:trivial changes ButtonRenderer -> RenderButton.
+
+	* formula.[Ch]: get rid of InsetFormula::PreviewImpl entirely. Use
+	RenderPreview and some free-standing functions in its place.
+
+2003-10-10  Angus Leeming  <leeming@lyx.org>
+
 	* formula.C (draw): don't try and generate the previews from draw.
 	insetUnlock is already doing a fine job...
 

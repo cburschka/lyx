@@ -1,5 +1,5 @@
 /**
- * \file renderers.C
+ * \file render_graphic.C
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
@@ -10,7 +10,7 @@
 
 #include <config.h>
 
-#include "insets/renderers.h"
+#include "render_graphic.h"
 
 #include "insets/inset.h"
 
@@ -34,106 +34,26 @@ using lyx::support::OnlyFilename;
 using std::string;
 
 
-RenderInset::RenderInset()
-{}
-
-
-RenderInset::RenderInset(RenderInset const &)
-{
-	// Cached variables are not copied
-}
-
-
-RenderInset::~RenderInset()
-{}
-
-
-RenderInset & RenderInset::operator=(RenderInset const &)
-{
-	// Cached variables are not copied
-	return *this;
-}
-
-
-BufferView * RenderInset::view() const
-{
-	return view_.lock().get();
-}
-
-
-ButtonRenderer::ButtonRenderer()
-	: editable_(false)
-{}
-
-
-RenderInset * ButtonRenderer::clone() const
-{
-	return new ButtonRenderer(*this);
-}
-
-
-void ButtonRenderer::update(string const & text, bool editable)
-{
-	text_ = text;
-	editable_ = editable;
-}
-
-
-void ButtonRenderer::metrics(MetricsInfo & mi, Dimension & dim) const
-{
-	BOOST_ASSERT(mi.base.bv);
-
-	LyXFont font(LyXFont::ALL_SANE);
-	font.decSize();
-
-	if (editable_)
-		font_metrics::buttonText(text_, font, dim.wid, dim.asc, dim.des);
-	else
-		font_metrics::rectText(text_, font, dim.wid, dim.asc, dim.des);
-
-	dim.wid += 4;
-}
-
-
-void ButtonRenderer::draw(PainterInfo & pi, int x, int y) const
-{
-	BOOST_ASSERT(pi.base.bv);
-	view_ = pi.base.bv->owner()->view();
-
-	// Draw it as a box with the LaTeX text
-	LyXFont font(LyXFont::ALL_SANE);
-	font.setColor(LColor::command);
-	font.decSize();
-
-	if (editable_) {
-		pi.pain.buttonText(x + 2, y, text_, font);
-	} else {
-		pi.pain.rectText(x + 2, y, text_, font,
-			      LColor::commandbg, LColor::commandframe);
-	}
-}
-
-
-GraphicRenderer::GraphicRenderer()
+RenderGraphic::RenderGraphic()
 	: checksum_(0)
 {}
 
 
-GraphicRenderer::GraphicRenderer(GraphicRenderer const & other)
-	: RenderInset(other),
+RenderGraphic::RenderGraphic(RenderGraphic const & other)
+	: RenderBase(other),
 	  loader_(other.loader_),
 	  params_(other.params_),
 	  checksum_(0)
 {}
 
 
-RenderInset * GraphicRenderer::clone() const
+RenderBase * RenderGraphic::clone() const
 {
-	return new GraphicRenderer(*this);
+	return new RenderGraphic(*this);
 }
 
 
-void GraphicRenderer::update(lyx::graphics::Params const & params)
+void RenderGraphic::update(lyx::graphics::Params const & params)
 {
 	params_ = params;
 
@@ -144,7 +64,7 @@ void GraphicRenderer::update(lyx::graphics::Params const & params)
 }
 
 
-bool GraphicRenderer::hasFileChanged() const
+bool RenderGraphic::hasFileChanged() const
 {
 	unsigned long const new_checksum = loader_.checksum();
 	bool const file_has_changed = checksum_ != new_checksum;
@@ -154,13 +74,13 @@ bool GraphicRenderer::hasFileChanged() const
 }
 
 
-boost::signals::connection GraphicRenderer::connect(slot_type const & slot) const
+boost::signals::connection RenderGraphic::connect(slot_type const & slot) const
 {
 	return loader_.connect(slot);
 }
 
 
-string const GraphicRenderer::statusMessage() const
+string const RenderGraphic::statusMessage() const
 {
 	switch (loader_.status()) {
 		case lyx::graphics::WaitingToLoad:
@@ -190,7 +110,7 @@ string const GraphicRenderer::statusMessage() const
 }
 
 
-bool GraphicRenderer::readyToDisplay() const
+bool RenderGraphic::readyToDisplay() const
 {
 	if (!loader_.image() || loader_.status() != lyx::graphics::Ready)
 		return false;
@@ -198,7 +118,7 @@ bool GraphicRenderer::readyToDisplay() const
 }
 
 
-void GraphicRenderer::metrics(MetricsInfo & mi, Dimension & dim) const
+void RenderGraphic::metrics(MetricsInfo & mi, Dimension & dim) const
 {
 	bool image_ready = readyToDisplay();
 
@@ -234,35 +154,10 @@ void GraphicRenderer::metrics(MetricsInfo & mi, Dimension & dim) const
 }
 
 
-void GraphicRenderer::draw(PainterInfo & pi, int x, int y) const
+void RenderGraphic::draw(PainterInfo & pi, int x, int y) const
 {
 	BOOST_ASSERT(pi.base.bv);
 	view_ = pi.base.bv->owner()->view();
-
-#if 0
-	// Comment this out and see if anything goes wrong.
-	// The explanation for why it _was_ needed once upon a time is below.
-
-	// MakeAbsPath returns filename_ unchanged if it is absolute
-	// already.
-	string const file_with_path =
-		MakeAbsPath(params_.filename, view_->buffer()->filePath());
-
-	// A 'paste' operation creates a new inset with the correct filepath,
-	// but then the 'old' inset stored in the 'copy' operation is actually
-	// added to the buffer.
-
-	// Thus, pasting a graphic into a new buffer with different
-	// buffer->filePath() will result in the image being displayed in LyX even
-	// though the relative path now points at nothing at all. Subsequent
-	// loading of the file into LyX will therefore fail.
-
-	// We should ensure that the filepath is correct.
-	if (file_with_path != loader_.filename()) {
-		params_.filename = file_with_path;
-		update(params_);
-	}
-#endif
 
 	if (params_.display != lyx::graphics::NoDisplay &&
 	    loader_.status() == lyx::graphics::WaitingToLoad)
