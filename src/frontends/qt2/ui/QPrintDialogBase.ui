@@ -13,7 +13,7 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>407</width>
+            <width>403</width>
             <height>454</height>
         </rect>
     </property>
@@ -346,6 +346,14 @@
                         <name>text</name>
                         <string>&amp;Print</string>
                     </property>
+                    <property stdset="1">
+                        <name>autoDefault</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>default</name>
+                        <bool>true</bool>
+                    </property>
                 </widget>
                 <widget>
                     <class>QPushButton</class>
@@ -358,8 +366,12 @@
                         <string>Close</string>
                     </property>
                     <property stdset="1">
+                        <name>autoDefault</name>
+                        <bool>false</bool>
+                    </property>
+                    <property stdset="1">
                         <name>default</name>
-                        <bool>true</bool>
+                        <bool>false</bool>
                     </property>
                 </widget>
             </hbox>

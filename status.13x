@@ -67,6 +67,9 @@ What's new
 
 - enable instant preview to work on solaris machines.
 
+- set the default button in the print dialog, activated on Return, 
+  to be the Ok button rather than the Close button. [Qt bug only]
+
 * Configuration/Installation:
 
 - when running under windows, configure correctly the ps and pdf
