@@ -469,11 +469,6 @@ void MathCursor::insert(MathArray const & ar)
 
 void MathCursor::backspace()
 {
-	if (inMacroMode()) {
-		left();
-		return;
-	}
-
 	if (posLeft()) {
 		plainErase();
 		return;
