@@ -13,13 +13,17 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>331</width>
+            <width>327</width>
             <height>342</height>
         </rect>
     </property>
     <property stdset="1">
         <name>caption</name>
         <string>Print</string>
+    </property>
+    <property stdset="1">
+        <name>sizeGripEnabled</name>
+        <bool>true</bool>
     </property>
     <vbox>
         <property stdset="1">
@@ -119,12 +123,12 @@
                         <cstring>browsePB</cstring>
                     </property>
                     <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Browse ...</string>
-                    </property>
-                    <property stdset="1">
                         <name>enabled</name>
                         <bool>true</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Browse ...</string>
                     </property>
                 </widget>
             </grid>
@@ -207,12 +211,12 @@
                         <cstring>toPageL</cstring>
                     </property>
                     <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Last page:</string>
-                    </property>
-                    <property stdset="1">
                         <name>enabled</name>
                         <bool>true</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Last page:</string>
                     </property>
                     <property>
                         <name>buddy</name>
@@ -290,12 +294,12 @@
                         <cstring>fromPageL</cstring>
                     </property>
                     <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Starting range:</string>
-                    </property>
-                    <property stdset="1">
                         <name>enabled</name>
                         <bool>true</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Starting range:</string>
                     </property>
                     <property>
                         <name>buddy</name>
@@ -349,12 +353,12 @@
                         <cstring>collateCB</cstring>
                     </property>
                     <property stdset="1">
-                        <name>text</name>
-                        <string>&amp;Collate</string>
-                    </property>
-                    <property stdset="1">
                         <name>enabled</name>
                         <bool>false</bool>
+                    </property>
+                    <property stdset="1">
+                        <name>text</name>
+                        <string>&amp;Collate</string>
                     </property>
                     <property>
                         <name>toolTip</name>

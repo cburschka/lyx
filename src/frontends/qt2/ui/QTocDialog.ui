@@ -13,13 +13,17 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>361</width>
+            <width>357</width>
             <height>313</height>
         </rect>
     </property>
     <property stdset="1">
         <name>caption</name>
         <string>Table Of Contents</string>
+    </property>
+    <property stdset="1">
+        <name>sizeGripEnabled</name>
+        <bool>true</bool>
     </property>
     <vbox>
         <property stdset="1">
@@ -130,6 +134,10 @@
             </property>
             <property stdset="1">
                 <name>pageStep</name>
+                <number>1</number>
+            </property>
+            <property stdset="1">
+                <name>value</name>
                 <number>1</number>
             </property>
             <property stdset="1">

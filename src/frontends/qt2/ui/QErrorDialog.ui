@@ -13,13 +13,17 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>360</width>
+            <width>356</width>
             <height>236</height>
         </rect>
     </property>
     <property stdset="1">
         <name>caption</name>
         <string>LaTeX Error</string>
+    </property>
+    <property stdset="1">
+        <name>sizeGripEnabled</name>
+        <bool>true</bool>
     </property>
     <vbox>
         <property stdset="1">

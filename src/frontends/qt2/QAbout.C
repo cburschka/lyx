@@ -68,6 +68,12 @@ void QAbout::build_dialog()
 
 	dialog_->creditsTV->setText(out.c_str());
 
+	// try to resize to a good size
+	dialog_->copyright->hide();
+	dialog_->setMinimumSize(dialog_->copyright->sizeHint());
+	dialog_->copyright->show();
+	dialog_->setMinimumSize(dialog_->sizeHint());
+ 
 	// Manage the cancel/close button
 	bc().setCancel(dialog_->closePB);
 	bc().refresh();

@@ -13,13 +13,17 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>420</width>
+            <width>416</width>
             <height>328</height>
         </rect>
     </property>
     <property stdset="1">
         <name>caption</name>
         <string>Version control log</string>
+    </property>
+    <property stdset="1">
+        <name>sizeGripEnabled</name>
+        <bool>true</bool>
     </property>
     <vbox>
         <property stdset="1">

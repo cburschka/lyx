@@ -13,13 +13,17 @@
         <rect>
             <x>0</x>
             <y>0</y>
-            <width>331</width>
+            <width>327</width>
             <height>232</height>
         </rect>
     </property>
     <property stdset="1">
         <name>caption</name>
         <string>About LyX</string>
+    </property>
+    <property stdset="1">
+        <name>sizeGripEnabled</name>
+        <bool>true</bool>
     </property>
     <vbox>
         <property stdset="1">

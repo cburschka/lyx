@@ -21,6 +21,10 @@
         <name>caption</name>
         <string>Index</string>
     </property>
+    <property stdset="1">
+        <name>sizeGripEnabled</name>
+        <bool>true</bool>
+    </property>
     <vbox>
         <property stdset="1">
             <name>margin</name>
