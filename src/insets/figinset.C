@@ -80,6 +80,15 @@ using std::copy;
 using std::pair;
 using std::make_pair;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::memcopy;
+using std::sin;
+using std::cos;
+using std::fabs;
+#endif
+
+
+
 extern BufferView * current_view;
 extern FL_OBJECT * figinset_canvas;
 
@@ -632,8 +641,8 @@ void runqueue()
 			env[0] = new char[tmp.size() + 1];
 			std::copy(tmp.begin(), tmp.end(), env[0]);
 			env[0][tmp.size()] = '\0';
-			std::memcpy(&env[1], environ,
-				    sizeof(char*) * (ne + 1));
+			memcpy(&env[1], environ,
+			       sizeof(char*) * (ne + 1));
 			environ = env;
 
 			// now make gs command
@@ -1437,10 +1446,10 @@ void InsetFig::Recompute()
 
 	if (changed) GetPSSizes();
 
-	float sin_a = std::sin (angle / DEG2PI);  /* rotation; H. Zeller 021296 */
-	float cos_a = std::cos (angle / DEG2PI);
-	int frame_wid = int(ceil(std::fabs(cos_a * pswid) + std::fabs(sin_a * pshgh)));
-	int frame_hgh= int(ceil(std::fabs(cos_a * pshgh) + std::fabs(sin_a * pswid)));
+	float sin_a = sin(angle / DEG2PI);  /* rotation; H. Zeller 021296 */
+	float cos_a = cos(angle / DEG2PI);
+	int frame_wid = int(ceil(fabs(cos_a * pswid) + fabs(sin_a * pshgh)));
+	int frame_hgh= int(ceil(fabs(cos_a * pshgh) + fabs(sin_a * pswid)));
 
 	string lfname = fname;
 	if (GetExtension(fname).empty())

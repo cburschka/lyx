@@ -57,6 +57,11 @@ using std::endl;
 using std::vector;
 using std::max;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strlen;
+#endif
+
+
 extern string mathed_label;
 
 extern char const * latex_special_chars;
@@ -982,7 +987,7 @@ InsetFormula::LocalDispatch(BufferView * bv, kb_action action,
 
 		if (mathcursor) {
 			MathMatrixInset * p = new MathMatrixInset(m, n);
-			if (k > 2 && int(std::strlen(s)) > m)
+			if (k > 2 && int(strlen(s)) > m)
 				p->SetAlign(s[0], &s[1]);
 			mathcursor->insertInset(p, LM_TC_ACTIVE_INSET);
 			// Andre:

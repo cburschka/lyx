@@ -397,8 +397,8 @@ bool LyXLex::Pimpl::EatLine()
 	while(is && c != '\n' && i != (LEX_MAX_BUFF - 1)) {
 		is.get(cc);
 		c = cc;
-		lyxerr[Debug::LYXLEX] << "LyXLex::EatLine read char: `"
-				      << c << "'" << endl;
+		//lyxerr[Debug::LYXLEX] << "LyXLex::EatLine read char: `"
+		//		      << c << "'" << endl;
 		if (c != '\r')
 			buff[i++] = c;
 	}

@@ -1,3 +1,21 @@
+2001-06-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lyxfont.C: 
+	* tabular.C:
+	* tabular-old.C: 
+	* FontInfo.C: bring C functions into global namespace when
+	necessary
+
+2001-05-30  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* LString.h: make sure config.h has been loaded before LString.h.
+
+	* lyxlex_pimpl.C (EatLine): comment out annoying debug messages
+	(one for each char read by EatLine!).
+
+	* lyx_main.C (init): constify lyxdir. Lowercase the name of some
+	variables. 
+
 2001-06-01  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* paragraph.C (BreakParagraph): set the inset_owner in the new par

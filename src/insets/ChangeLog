@@ -1,3 +1,8 @@
+2001-05-31  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* figinset.C: add using std:: directive for the C functions which
+	need that.
+
 2001-05-31  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* insetfloat.C (Write): write out wide info

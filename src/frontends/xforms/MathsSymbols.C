@@ -26,6 +26,11 @@ using std::max;
 using std::endl;
 using std::ostream;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strstr;
+#endif
+
+
 /* Latex code for those bitmaps */
 
 #include "greek.xbm"
@@ -268,7 +273,7 @@ static char const ** pixmapFromBitmapData(char const * s, int wx, int hx)
 		XpmCreateDataFromImage(fl_get_display(), const_cast<char***>(&data), sbima, sbima, 0);
 
 		// Dirty hack to get blue symbols quickly
-		char * sx = const_cast<char*>(std::strstr(data[2], "FFFFFFFF"));
+		char * sx = const_cast<char*>(strstr(data[2], "FFFFFFFF"));
 		if (sx) {
 			for (int k = 0; k < 8; ++k) sx[k] = '0';
 		}

@@ -29,6 +29,11 @@
 using std::ostream;
 using std::endl;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strlen;
+#endif
+
+
 //
 // Names for the GUI
 //
@@ -841,21 +846,21 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 		os << '\\'
 		   << LaTeXFamilyNames[f.family()]
 		   << '{';
-		count += std::strlen(LaTeXFamilyNames[f.family()]) + 2;
+		count += strlen(LaTeXFamilyNames[f.family()]) + 2;
 		env = true; //We have opened a new environment
 	}
 	if (f.series() != INHERIT_SERIES) {
 		os << '\\'
 		   << LaTeXSeriesNames[f.series()]
 		   << '{';
-		count += std::strlen(LaTeXSeriesNames[f.series()]) + 2;
+		count += strlen(LaTeXSeriesNames[f.series()]) + 2;
 		env = true; //We have opened a new environment
 	}
 	if (f.shape() != INHERIT_SHAPE) {
 		os << '\\'
 		   << LaTeXShapeNames[f.shape()]
 		   << '{';
-		count += std::strlen(LaTeXShapeNames[f.shape()]) + 2;
+		count += strlen(LaTeXShapeNames[f.shape()]) + 2;
 		env = true; //We have opened a new environment
 	}
 	if (f.color() != LColor::inherit && f.color() != LColor::ignore) {
@@ -890,7 +895,7 @@ int LyXFont::latexWriteStartChanges(ostream & os, LyXFont const & base,
 		os << '\\'
 		   << LaTeXSizeNames[f.size()]
 		   << ' ';
-		count += std::strlen(LaTeXSizeNames[f.size()]) + 2;
+		count += strlen(LaTeXSizeNames[f.size()]) + 2;
 	}
 	return count;
 }

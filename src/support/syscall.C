@@ -20,6 +20,10 @@
 
 using std::endl;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strerror;
+#endif
+
 
 Systemcalls::Systemcalls() {
 	pid = 0; // No child yet
@@ -111,7 +115,7 @@ void Systemcalls::waitForChild() {
 		pid_t waitrpid = waitpid(pid, &status, WUNTRACED);
 		if (waitrpid == -1) {
 			lyxerr << "LyX: Error waiting for child:"
-			       << std::strerror(errno) << endl;
+			       << strerror(errno) << endl;
 			wait = false;
 		} else if (WIFEXITED(status)) {
 			// Child exited normally. Update return value.
@@ -178,14 +182,14 @@ pid_t Systemcalls::fork()
 		execvp(syscmd, argv);
 		// If something goes wrong, we end up here:
 		lyxerr << "LyX: execvp failed: "
-		       << std::strerror(errno) << endl;
+		       << strerror(errno) << endl;
 	} else if (cpid < 0) { // error
 #else
 	pid_t cpid = spawnvp(P_SESSION|P_DEFAULT|P_MINIMIZE|P_BACKGROUND, syscmd, argv);
 	if (cpid < 0) { // error
 #endif
 		lyxerr << "LyX: Could not fork: "
-		       << std::strerror(errno) << endl;
+		       << strerror(errno) << endl;
 	} else { // parent
 		return cpid;
 	}

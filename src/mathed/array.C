@@ -16,6 +16,11 @@
 using std::ostream;
 using std::endl;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::memmove;
+#endif
+
+
 namespace {
 
 inline
@@ -227,7 +232,7 @@ void MathedArray::move(int p, int shift)
 {
 	if (p <= last_) {
 		need_size(last_ + shift);
-		std::memmove(&bf_[p + shift], &bf_[p], last_ - p);
+		memmove(&bf_[p + shift], &bf_[p], last_ - p);
 		last_ += shift;
 		bf_[last_] = 0;
 	}

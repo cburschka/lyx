@@ -1,3 +1,7 @@
+2001-05-31  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* array.C: bring memmove into main namespace if necessary
+
 2001-05-31  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* math_parser.C (yylex): use contains instead of strchr

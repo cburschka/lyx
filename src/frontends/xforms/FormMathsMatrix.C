@@ -23,6 +23,11 @@
 #include "lyxfunc.h"
 #include "support/LAssert.h"
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strlen;
+#endif
+
+
 static char h_align_str[80] = "c";
 static char v_align_c[] = "tcb";
 
@@ -106,7 +111,7 @@ bool FormMathsMatrix::input(FL_OBJECT * ob, long)
 int FormMathsMatrix::AlignFilter(char const * cur, int c)
 {
 	int const n = int(fl_get_slider_value(dialog_->slider_columns) + 0.5) -
-		int(std::strlen(cur));
+		int(strlen(cur));
 	if (n < 0)
 		return FL_INVALID;
 

@@ -25,6 +25,10 @@
 
 using std::endl;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::fabs;
+#endif
+
 /// Load font close to this size
 string const FontInfo::getFontname(int size)
 {
@@ -41,8 +45,8 @@ string const FontInfo::getFontname(int size)
 			lyxerr[Debug::FONT] << "Exact font match with\n"
 					    << strings[i] << endl;
 			return strings[i];
-		} else if (std::fabs(sizes[i] - size - 0.1) < error) {
-			error = std::fabs(sizes[i] - size - 0.1);
+		} else if (fabs(sizes[i] - size - 0.1) < error) {
+			error = fabs(sizes[i] - size - 0.1);
 			closestind = i;
 		}
 	}

@@ -12,6 +12,10 @@
 #ifndef LSTRING_H
 #define LSTRING_H 
 
+#ifndef _CONFIG_H
+#error The <config.h> header should always be included before LString.h
+#endif
+
 #ifndef USE_INCLUDED_STRING
 #include <string>
 using std::string;

@@ -30,6 +30,7 @@ using std::transform;
 #ifndef CXX_GLOBAL_CSTD
 using std::tolower;
 using std::toupper;
+using std::strlen;
 #endif
 
 
@@ -232,7 +233,7 @@ bool prefixIs(string const & a, char const * pre)
 {
 	lyx::Assert(pre);
 	
-	size_t const l = std::strlen(pre);
+	size_t const l = strlen(pre);
 	string::size_type const alen = a.length();
 	
 	if (l > alen || a.empty())
@@ -280,7 +281,7 @@ bool suffixIs(string const & a, char const * suf)
 {
 	lyx::Assert(suf);
 	
-	size_t const suflen = std::strlen(suf);
+	size_t const suflen = strlen(suf);
 	string::size_type const alen = a.length();
 	
 	if (suflen > alen)
@@ -478,7 +479,7 @@ string const subst(string const & a,
 	
 	string lstr(a);
 	string::size_type i = 0;
-	string::size_type olen = std::strlen(oldstr);
+	string::size_type olen = strlen(oldstr);
 	while((i = lstr.find(oldstr, i)) != string::npos) {
 		lstr.replace(i, olen, newstr);
 		i += newstr.length(); // We need to be sure that we dont

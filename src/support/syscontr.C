@@ -15,6 +15,10 @@
 
 using std::endl;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strerror;
+#endif
+
 //
 // Default constructor
 //
@@ -76,7 +80,7 @@ SystemcallsSingletoncontroller::timer() {
 		int waitrpid = waitpid(pid, &stat_loc, WNOHANG);
 		if (waitrpid == -1) {
 			lyxerr << "LyX: Error waiting for child:" 
-			       << std::strerror(errno) << endl;
+			       << strerror(errno) << endl;
 		} else if (WIFEXITED(stat_loc) || WIFSIGNALED(stat_loc)) {
 			if (WIFEXITED(stat_loc)) {
 				// Ok, the return value goes into retval.

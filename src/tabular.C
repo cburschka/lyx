@@ -41,6 +41,10 @@ using std::max;
 using std::endl;
 using std::vector;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strlen;
+#endif
+
 namespace {
 
 	int const WIDTH_OF_LINE = 5;
@@ -1149,7 +1153,7 @@ bool string2type(string const str, bool & num)
 
 bool getTokenValue(string const & str, const char * token, string & ret)
 {
-	size_t token_length = std::strlen(token);
+	size_t token_length = strlen(token);
 	string::size_type pos = str.find(token);
 
 	if (pos == string::npos || pos + token_length + 1 >= str.length()

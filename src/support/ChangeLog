@@ -1,3 +1,14 @@
+2001-06-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* lstrings.C: 
+	* syscall.C:
+	* syscontr.C: 
+	* LSubstring.C: bring C functions in global namespace if
+	necessary. 
+
+	* lstrings.h (compare): use the std:: version of str[n]cmp only
+	when it exists.
+
 2001-05-31  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* syscontr.C: add std::

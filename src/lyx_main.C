@@ -235,7 +235,7 @@ void LyX::init(bool gui)
 		searchpath= MakeAbsPath(system_lyxdir) + ';';
 
 	// LYX_DIR_11x environment variable
-	string lyxdir = GetEnvPath("LYX_DIR_11x");
+	string const lyxdir = GetEnvPath("LYX_DIR_11x");
 	
 	if (!lyxdir.empty()) {
 		lyxerr[Debug::INIT] << "LYX_DIR_11x: " << lyxdir << endl;
@@ -256,7 +256,7 @@ void LyX::init(bool gui)
 		build_lyxdir.erase();
 	}
 
-        bool FollowLink;
+        bool followlink;
 	do {
 	  // Path of binary/../share/name of binary/
 		searchpath += NormalizePath(AddPath(binpath, "../share/") + 
@@ -264,18 +264,18 @@ void LyX::init(bool gui)
 
 	  // Follow Symlinks
 		FileInfo file(fullbinpath, true);
-		FollowLink = file.isLink();
-		if (FollowLink) {
-			string Link;
-			if (LyXReadLink(fullbinpath, Link)) {
-				fullbinpath = Link;
+		followlink = file.isLink();
+		if (followlink) {
+			string link;
+			if (LyXReadLink(fullbinpath, link)) {
+				fullbinpath = link;
 				binpath = MakeAbsPath(OnlyPath(fullbinpath));
 			}
 			else {
-				FollowLink = false;
+				followlink = false;
 			}
 		}
-	} while (FollowLink);
+	} while (followlink);
 
 	// Hardcoded dir
 	searchpath += LYX_DIR;
