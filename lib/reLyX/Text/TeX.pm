@@ -96,13 +96,22 @@ $notusualtoks = "\\\\" . '\${}^_~&@%'; # Why \\\\? double interpretation!
 $notusualtokenclass = "[$notusualtoks]";
 $usualtokenclass = "[^$notusualtoks]";
 
-# Original $macro wouldn't recognize, e.g., '\section*'. Added '\*?' - Ak
-# (Had to add it for \section and \\ separately.)
-#    \" or \frac, e.g. Note that it eats whitespace AFTER the token. This is
-# correct LaTeX behavior, but if text follows such a macro, and you just
-# print out the macro & then the text, they will run together.
-$macro = '\\\\(?:[^a-zA-Z]\*?|([a-zA-Z]+\*?)\s*)'; # Has one level of grouping
-#$macro = '\\\\(?:[^a-zA-Z]|([a-zA-Z]+)\s*)'; # Contains one level of grouping
+# The $macro RE matches LaTeX macros. Here's exactly what it does:
+# $macro = \\\\(?:RE)
+# This matches either '\\' or \RE where RE = RE1 or RE2
+# RE1 = '\)', so $macro will match the end of a math environment, '\)'
+# RE2 = (((RE3 or RE4)\*?)\s*) where
+# RE3 and RE4 can each be followed by zero or one asterisks. Either is still
+# a macro. Ditto, trailing whitespace is included in the token because that's
+# what LaTeX does.
+# RE3 = '([^a-zA-Z)])' matches a single non-alphabetic char. We already
+# test for '\)', so that is explictly excluded from RE3 because '\)*' is not
+# a macro. Rather it is '\)' followed by an asterisk.
+# RE4 = '([a-zA-Z]+\*?)'
+# Ie, one or more alphabetic chars followed by zero or 1 asterisks
+# Eg, \section or \section*
+# Putting all this together:
+$macro = '\\\\(?:\)|((([^a-zA-Z)])|([a-zA-Z]+))\*?)\s*)';
 
 # active is a backslashed macro or $$ (same as \[) or ^^ followed by a char
 #    (^^A means ASCII(1), e.g. See the TeXbook) or a special character like ~
