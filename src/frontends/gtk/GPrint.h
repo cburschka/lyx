@@ -1,6 +1,12 @@
 // -*- C++ -*-
-/*
- * /file GPrint.h
+/**
+ * \file GPrint.h
+ * This file is part of LyX, the document processor.
+ * Licence details can be found in the file COPYING.
+ *
+ * \author Huang Ying
+ *
+ * Full author contact details are available in file CREDITS.
  */
 
 #ifndef GPRINT_H

@@ -6,7 +6,7 @@
  *
  * \author Huang Ying
  *
- * Full author contact details are available in file CREDITS
+ * Full author contact details are available in file CREDITS.
  */
 
 #ifndef GPAINTER_H
