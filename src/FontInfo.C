@@ -25,6 +25,10 @@
 
 using std::endl;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::fabs;
+#endif
+
 /// Load font close to this size
 string const FontInfo::getFontname(int size)
 {

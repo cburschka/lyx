@@ -9,6 +9,10 @@
 #include "math_parser.h"
 //struct latexkeys { char* name; short token; int id; };
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strcmp;
+#endif
+
 #define TOTAL_KEYWORDS 269
 #define MIN_WORD_LENGTH 2
 #define MAX_WORD_LENGTH 18

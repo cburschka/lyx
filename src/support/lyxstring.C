@@ -29,6 +29,16 @@ using std::min;
 using std::istream;
 using std::ostream;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::memcmp;
+using std::memcpy;
+using std::memset;
+using std::memmove;
+using std::strlen;
+using std::memchr;
+using std::strchr;
+#endif
+
 // This class is supposed to be functionaly equivalent to a
 // standard conformant string. This mean among others that we
 // are useing the same requirements. Before you change anything

@@ -18,6 +18,9 @@
 
 #include "LSubstring.h"
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strlen;
+#endif
 
 LSubstring::LSubstring(string & s, size_type i, size_type l)
 	: ps(&s), pos(i), n(l)

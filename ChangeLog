@@ -1,6 +1,49 @@
+2001-06-08  Yves Bastide  <stid@acm.org>
+
+	* src/support/lyxstring.C: 
+	* src/mathed/math_write.C:
+	* src/mathed/math_hash.C:
+	* src/support/syscontr.C:
+	* src/support/syscall.C:
+	* src/support/lstrings.C:
+	* src/support/LSubstring.C:
+	* src/mathed/math_symbols.C:
+	* src/mathed/math_parser.C:
+	* src/mathed/math_panel.C:
+	* src/mathed/math_iter.C:
+	* src/mathed/formula.C:
+	* src/insets/insetgraphics.C:
+	* src/frontends/xforms/FormPrint.C:
+	* src/tabular.C:
+	* src/tabular-old.C:
+	* src/spellchecker.C:
+	* src/lyxserver.C:
+	* src/lyxfont.C:
+	* src/lyx_gui_misc.C:
+	* src/buffer.C:
+	* src/FontInfo.C: added necessary using directives
+
+	* src/mathed/array.h: include <cstring>, not <string.h>
+	(LyxArrayBase::Init):
+	(LyxArrayBase::Resize):
+	(LyxArrayBase::LyxArrayBase):
+	(LyxArrayBase::operator=):
+	(LyxArrayBase::Move):
+	(LyxArrayBase::Merge):
+	(LyxArrayBase::MergeF):
+	(LyxArrayBase::Copy): added necessary using directives
+	
+	* src/insets/figinset.C: added necessary using directives
+	(runqueue): removed a spurious ::
+
+	* src/font.h (lyxfont::width(char const * s, LyXFont const & f)):
+	commented out
+
+	* src/support/lstrings.h (compare): use CXX_GLOBAL_CSTD
+
 2001-06-13  Juergen Vigna  <jug@sad.it>
 
-	* src/tabular.C (ReadNew): fixed reading of files with trailing LF.
+	* src/tabular.C (ReadNew): fixed reading of files with trailing CR.
 
 2001-06-12  Peter Suetterlin  <P.Suetterlin@astro.uu.nl>
 

@@ -69,6 +69,11 @@
 
 using std::endl;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strerror;
+using std::strncmp;
+#endif
+
 // provide an empty mkfifo() if we do not have one. This disables the
 // lyxserver. 
 #ifndef HAVE_MKFIFO

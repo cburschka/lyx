@@ -37,8 +37,8 @@
 #include "matrix.xpm"
 #include "equation.xpm"
 
-#if 0
-using std::free;
+#ifndef CXX_GLOBAL_CSTD
+using std::strlen;
 #endif
 
 static LyXFunc * lyxfunc = 0;

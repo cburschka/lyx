@@ -81,6 +81,16 @@ using std::endl;
 using std::ostringstream;
 using std::copy;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strlen;
+using std::strcmp;
+using std::memcpy;
+using std::sin;
+using std::cos;
+using std::ceil;
+using std::fabs;
+#endif
+
 extern BufferView * current_view;
 extern FL_OBJECT * figinset_canvas;
 
@@ -644,7 +654,7 @@ void runqueue()
 			env[0] = new char[tmp.size() + 1];
 			std::copy(tmp.begin(), tmp.end(), env[0]);
 			env[0][tmp.size()] = '\0';
-			::memcpy(&env[1], environ, sizeof(char*) * (ne + 1));
+			memcpy(&env[1], environ, sizeof(char*) * (ne + 1));
 			environ = env;
 
 			// now make gs command

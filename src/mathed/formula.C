@@ -47,12 +47,10 @@ using std::endl;
 using std::vector;
 using std::max;
 
-#if 0
-using std::strncmp;
-using std::strcmp;
-using std::abs;
-using std::isdigit;
-using std::isalpha;
+#ifndef CXX_GLOBAL_CSTD
+using std::strncpy;
+using std::strlen;
+using std::strchr;
 #endif
 
 extern string mathed_label;

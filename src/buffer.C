@@ -107,6 +107,13 @@ using std::vector;
 using std::max;
 using std::set;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strlen;
+using std::strstr;
+using std::strcmp;
+using std::strcpy;
+#endif
+
 // all these externs should eventually be removed.
 extern BufferList bufferlist;
 

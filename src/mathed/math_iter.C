@@ -29,6 +29,10 @@
 
 using std::endl;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strncpy;
+#endif
+
 const int SizeInset = sizeof(char*) + 2;
 
 extern int mathed_char_width(short type, int style, byte c);

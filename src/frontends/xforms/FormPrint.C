@@ -32,6 +32,10 @@ using Liason::printBuffer;
 using Liason::getPrinterParams;
 #endif
 
+// Should be needed sooner or later
+// #ifndef CXX_GLOBAL_CSTD
+// using std::strlen;
+// #endif
 
 FormPrint::FormPrint(LyXView * lv, Dialogs * d)
 	: FormBaseBD(lv, d, _("Print"), new OkApplyCancelPolicy),

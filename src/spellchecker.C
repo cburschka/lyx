@@ -72,6 +72,13 @@
 using std::reverse;
 using std::endl;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strpbrk;
+using std::strstr;
+using std::strlen;
+using std::strcpy;
+#endif
+
 // Spellchecker status
 enum {
 	ISP_OK = 1,

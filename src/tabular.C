@@ -40,6 +40,10 @@ using std::max;
 using std::endl;
 using std::vector;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strlen;
+#endif
+
 static int const WIDTH_OF_LINE = 5;
 
 /// Define a few methods for the inner structs

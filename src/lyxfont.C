@@ -29,6 +29,10 @@
 using std::ostream;
 using std::endl;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strlen;
+#endif
+
 //
 // Names for the GUI
 //

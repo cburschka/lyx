@@ -18,6 +18,9 @@
 
 using std::endl;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strerror;
+#endif
 
 Systemcalls::Systemcalls() {
 	pid = 0; // No child yet

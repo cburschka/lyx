@@ -44,6 +44,12 @@ using std::max;
 using std::endl;
 using std::ostream;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strlen;
+using std::strcmp;
+using std::strstr;
+#endif
+
 extern int greek_kb_flag;
 
 extern BufferView * current_view;

@@ -34,10 +34,11 @@
 using std::istream;
 using std::endl;
 
-#if 0
-using std::isalpha;
-using std::isdigit;
-using std::isspace;
+#ifndef CXX_GLOBAL_CSTD
+using std::strchr;
+using std::strlen;
+using std::strcpy;
+using std::strcmp;
 #endif
 
 enum {

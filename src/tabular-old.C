@@ -20,6 +20,9 @@ using std::istream;
 using std::getline;
 using std::endl;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strlen;
+#endif
 
 static
 bool getTokenValue(string const & str, const char * token, string & ret)

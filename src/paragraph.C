@@ -2895,7 +2895,7 @@ void LyXParagraph::SimpleTeXSpecialChars(Buffer const * buf,
 			if (tmp) {
 				column = 0;
 			} else {
-				column += os.tellp() - len;
+				column += int(os.tellp()) - len;
 			}
 			for (; tmp--;) {
 				texrow.newline();

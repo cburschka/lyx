@@ -27,6 +27,10 @@
 using std::ostream;
 using std::endl;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strcmp;
+#endif
+
 extern char const * latex_mathenv[];
 extern char * latex_mathspace[];
 

@@ -14,7 +14,7 @@
  *   the GNU General Public Licence version 2 or later.
  */
 
-#include <string.h>
+#include <cstring>
 
 #ifndef byte
 #define byte unsigned char
@@ -108,6 +108,9 @@ private:
 inline
 void LyxArrayBase::Init()
 {
+#ifndef CXX_GLOBAL_CSTD
+	using std::memset;
+#endif
 	memset(bf, 0, maxsize);
 	last = 0;
 }
@@ -115,6 +118,9 @@ void LyxArrayBase::Init()
 inline // Hmmm, Hp-UX's CC can't handle this inline. Asger.
 void LyxArrayBase::Resize(int newsize)
 {
+#ifndef CXX_GLOBAL_CSTD
+	using std::memcpy;
+#endif
 	if (newsize<ARRAY_MIN_SIZE)
 		newsize = ARRAY_MIN_SIZE;
 	newsize += ARRAY_STEP - (newsize % ARRAY_STEP);
@@ -144,6 +150,9 @@ LyxArrayBase::~LyxArrayBase()
 inline
 LyxArrayBase::LyxArrayBase(LyxArrayBase const & a) 
 {
+#ifndef CXX_GLOBAL_CSTD
+	using std::memcpy;
+#endif
 	maxsize = a.maxsize;
 	bf = new byte[maxsize];
 	memcpy(&bf[0], &a.bf[0], maxsize);
@@ -153,6 +162,9 @@ LyxArrayBase::LyxArrayBase(LyxArrayBase const & a)
 inline
 LyxArrayBase & LyxArrayBase::operator=(LyxArrayBase const & a)
 {
+#ifndef CXX_GLOBAL_CSTD
+	using std::memcpy;
+#endif
 	if (this != &a) {
 		Resize(a.maxsize);
 		memcpy(&bf[0], &a.bf[0], maxsize);
@@ -163,6 +175,9 @@ LyxArrayBase & LyxArrayBase::operator=(LyxArrayBase const & a)
 inline   
 bool LyxArrayBase::Move(int p, int shift) 
 {
+#ifndef CXX_GLOBAL_CSTD
+	using std::memmove;
+#endif
 	bool result = false;
 	if (p <= last) {
 		if (last + shift >= maxsize) { 
@@ -191,6 +206,9 @@ void LyxArrayBase::Remove(int pos, int dx)
 inline
 void LyxArrayBase::Merge(LyxArrayBase * a, int p, int dx)
 {
+#ifndef CXX_GLOBAL_CSTD
+	using std::memcpy;
+#endif
 	Move(p, dx);
 	memcpy(&bf[p], &a->bf[0], dx);
 }
@@ -198,12 +216,18 @@ void LyxArrayBase::Merge(LyxArrayBase * a, int p, int dx)
 inline
 void LyxArrayBase::MergeF(LyxArrayBase * a, int p, int dx)
 {
+#ifndef CXX_GLOBAL_CSTD
+	using std::memcpy;
+#endif
 	memcpy(&bf[p], &a->bf[0], dx);
 }
  
 inline
 void LyxArrayBase::Copy(void * a, int p, int dx)
 {
+#ifndef CXX_GLOBAL_CSTD
+	using std::memcpy;
+#endif
 	memcpy(&bf[p], a, dx);
 }
 

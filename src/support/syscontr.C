@@ -15,6 +15,10 @@
 
 using std::endl;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strerror;
+#endif
+
 //
 // Default constructor
 //

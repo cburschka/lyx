@@ -192,6 +192,10 @@ using std::ostream;
 using std::endl;
 using std::max;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strlen;
+#endif
+
 // Initialize only those variables that do not have a constructor.
 InsetGraphics::InsetGraphics()
 #ifdef IG_OLDPARAMS

@@ -26,9 +26,11 @@
 
 using std::count;
 using std::transform;
+
 #ifndef CXX_GLOBAL_CSTD
 using std::tolower;
 using std::toupper;
+using std::strlen;
 #endif
 
 

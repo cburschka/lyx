@@ -42,6 +42,10 @@ using std::pair;
 using std::make_pair;
 using std::endl;
 
+#ifndef CXX_GLOBAL_CSTD
+using std::strerror;
+#endif
+
 extern BufferView * current_view;
 
 extern FD_form_character * fd_form_character;
