@@ -33,6 +33,7 @@ class InsetGraphics;
 class InsetBibKey;
 class InsetBibtex;
 class InsetError;
+class InsetExternal;
 class InsetInclude;
 class InsetInfo;
 class InsetTabular;
@@ -98,6 +99,8 @@ public:
 	Signal0<void> showCredits;
 	///
 	Signal1<void, InsetError *> showError;
+	/// show the external inset dialog
+	Signal1<void, InsetExternal *> showExternal; 
 	///
 	Signal1<void, InsetGraphics *> showGraphics;
 	/// show the details of a LyX file include inset

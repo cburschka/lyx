@@ -9,7 +9,9 @@ DEFINES = -DQT_CLEAN_NAMESPACE
 CXXFLAGS= $(DEFINES)
 
 # moc generated files
-BUILTSOURCES = 	moc_FormCopyrightDialogBase.C \
+BUILTSOURCES = \
+	moc_FileDialog_private.C \
+	moc_FormCopyrightDialogBase.C \
                 moc_FormCopyrightDialog.C \
 	       moc_chardlg.C \
 	       moc_chardlgimpl.C \
@@ -32,6 +34,7 @@ libqt2_la_OBJADD = \
 	../xforms/Color.lo \
 	../xforms/FormBase.lo \
 	../xforms/FormCitation.lo \
+	../xforms/FormCredits.lo \
 	../xforms/FormDocument.lo \
 	../xforms/FormError.lo \
 	../xforms/FormGraphics.lo \
@@ -48,6 +51,7 @@ libqt2_la_OBJADD = \
 	../xforms/Toolbar_pimpl.lo \
 	../xforms/Timeout_pimpl.lo \
 	../xforms/form_citation.lo \
+	../xforms/form_credits.lo \
 	../xforms/form_copyright.lo \
 	../xforms/form_document.lo \
 	../xforms/form_error.lo \
@@ -76,6 +80,8 @@ libqt2_la_SOURCES = \
 	chardlg.h \
 	chardlgimpl.C \
 	chardlgimpl.h \
+	FileDialog.C \
+	FileDialog_private.C \
 	FormCopyright.C	\
 	FormCopyright.h	\
 	FormCopyrightDialog.C \
@@ -128,6 +134,8 @@ FormCopyrightDialogBase.h: FormCopyrightDialogBase.ui
 	$(UIC) -o $@ $<
 FormCopyrightDialogBase.C: FormCopyrightDialogBase.ui
 	$(UIC) -impl FormCopyrightDialogBase.h -o $@ $<
+moc_FileDialog_private.C: FileDialog_private.h
+	$(MOC) -o $@ $<
 moc_FormCopyrightDialogBase.C: FormCopyrightDialogBase.h
 	$(MOC) -o $@ $<
 moc_FormCopyrightDialog.C: FormCopyrightDialog.h

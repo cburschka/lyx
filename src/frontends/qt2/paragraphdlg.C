@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Form implementation generated from reading ui file 'paragraphdlg.ui'
 **
-** Created: Sat Feb 10 14:22:28 2001
+** Created: Fri Mar 9 13:08:59 2001
 **      by:  The User Interface Compiler (uic)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -465,12 +465,12 @@ ParagraphDlg::ParagraphDlg( QWidget* parent,  const char* name, bool modal, WFla
 
     minipageStart = new QCheckBox( minipageOptions, "minipageStart" );
     minipageStart->setText( tr( "Start new minipage" ) );
-    minipageStart->setEnabled( FALSE );
+    minipageStart->setEnabled( TRUE );
     minipageOptionsLayout->addWidget( minipageStart );
 
     minipageHfill = new QCheckBox( minipageOptions, "minipageHfill" );
     minipageHfill->setText( tr( "HFill between minipage paragraphs" ) );
-    minipageHfill->setEnabled( FALSE );
+    minipageHfill->setEnabled( TRUE );
     minipageOptionsLayout->addWidget( minipageHfill );
 
     Layout15 = new QHBoxLayout; 

@@ -129,6 +129,12 @@ ExternalTemplateManager::getTemplates() const
 }
 
 
+ExternalTemplate const & ExternalTemplateManager::getTemplateByName(string const & name)
+{
+	return templates[name];
+}
+
+ 
 void ExternalTemplateManager::readTemplates(string const & path) 
 {
 	Path p(path);

@@ -246,7 +246,7 @@ void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::I
 	    action = static_cast<kb_action>(ac);
 
 	  switch(action) {
-	  case LFUN_MENUOPEN:
+	  case LFUN_FILE_OPEN:
 	    gitem = Open(cback);
 	    break;
 	  case LFUN_QUIT:
@@ -258,7 +258,7 @@ void Menubar::Pimpl::composeUIInfo(string const & menu_name, vector<Gnome::UI::I
 	  case LFUN_MENUWRITE:
 	    gitem = Save(cback);
 	    break;
-	  case LFUN_MENUWRITEAS:
+	  case LFUN_WRITEAS:
 	    gitem = SaveAs(cback);
 	    break;
 	  case LFUN_BUFFER_PRINT:

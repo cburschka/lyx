@@ -9,6 +9,9 @@ INCLUDES = ${FRONTEND_INCLUDES} -I${top_srcdir}/src/ \
 libgnome_la_OBJADD = \
 	../xforms/ButtonController.lo \
 	../xforms/Color.lo \
+	../xforms/FileDialog.lo \
+	../xforms/FormFiledialog.lo \
+	../xforms/form_filedialog.lo \
 	../xforms/FormBase.lo \
 	../xforms/FormCitation.lo \
 	../xforms/form_citation.lo \
@@ -31,6 +34,8 @@ libgnome_la_OBJADD = \
 	../xforms/form_print.lo \
 	../xforms/FormRef.lo \
 	../xforms/form_ref.lo \
+	../xforms/FormSplash.lo \
+	../xforms/form_splash.lo \
 	../xforms/FormTabular.lo \
 	../xforms/form_tabular.lo \
 	../xforms/FormTabularCreate.lo \

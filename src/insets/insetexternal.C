@@ -1,8 +1,8 @@
 /* This file is part of
  * ======================================================
- * 
+ *
  *           LyX, The Document Processor
- * 	 
+ * 	
  *	    Copyright 1995 Matthias Ettrich
  *          Copyright 1995-2000 The LyX Team.
  *
@@ -14,344 +14,122 @@
 #pragma implementation
 #endif
 
-#include FORMS_H_LOCATION
 #include <cstdio>
-#include <utility> 
+#include <utility>
 
 #include "insetexternal.h"
 #include "ExternalTemplate.h"
-#include "lyx_gui_misc.h" // CancelCloseBoxCB
 #include "BufferView.h"
 #include "buffer.h"
-#include "frontends/FileDialog.h"
+#include "LyXView.h"
+#include "frontends/Dialogs.h"
 #include "lyx_main.h"
 #include "LaTeXFeatures.h"
 #include "support/filetools.h"
 #include "support/lstrings.h"
 #include "support/path.h"
 #include "support/syscall.h"
-#include "frontends/Dialogs.h" // redrawGUI
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::slot;
 #endif
 
 using std::endl;
-using std::pair;
-using std::make_pair; 
 
 InsetExternal::InsetExternal() 
-	: form_external(0)
+	: view(0)
 {
 	tempname = lyx::tempName(string(), "lyxext");
-	r_ = Dialogs::redrawGUI.connect(slot(this, &InsetExternal::redraw));
+	ExternalTemplateManager::Templates::const_iterator i1;
+	params_.templ = ExternalTemplateManager::get().getTemplates().begin()->second;
 }
 
 
 InsetExternal::~InsetExternal()
 {
 	lyx::unlink(tempname);
-	r_.disconnect();
+	hideDialog();
 }
 
 
-void InsetExternal::redraw()
+InsetExternal::InsetExternalParams InsetExternal::params() const
 {
-	if (form_external && form_external->form_external->visible)
-		fl_redraw_form(form_external->form_external);
+	return params_;
 }
-
-
-extern "C"
-void ExternalTemplateCB(FL_OBJECT * ob, long data)
+ 
+ 
+void InsetExternal::setFromParams(InsetExternalParams const & p)
 {
-	InsetExternal::templateCB(ob, data);
-}
-
-
-extern "C"
-void ExternalBrowseCB(FL_OBJECT * ob, long data)
-{
-	InsetExternal::browseCB(ob, data);
-}
-
-
-extern "C"
-void ExternalEditCB(FL_OBJECT * ob, long data)
-{
-	InsetExternal::editCB(ob, data);
-}
-
-
-extern "C"
-void ExternalViewCB(FL_OBJECT * ob, long data)
-{
-	InsetExternal::viewCB(ob, data);
-}
-
-
-extern "C"
-void ExternalUpdateCB(FL_OBJECT * ob, long data)
-{
-	InsetExternal::updateCB(ob, data);
-}
-
-
-extern "C"
-void ExternalOKCB(FL_OBJECT * ob, long data)
-{
-	InsetExternal::okCB(ob, data);
-}
-
-
-extern "C"
-void ExternalCancelCB(FL_OBJECT * ob, long data)
-{
-	InsetExternal::cancelCB(ob, data);
-}
-
-
-void InsetExternal::templateCB(FL_OBJECT * ob, long)
-{
-	Holder * holder = static_cast<Holder*>(ob->form->u_vdata);
-	InsetExternal * inset = holder->inset;
-	ExternalTemplate et = inset->getTemplate(inset->getCurrentTemplate());
-	// Update the help text
-	fl_clear_browser(inset->form_external->helptext);
-	fl_addto_browser(inset->form_external->helptext, et.helpText.c_str());
-	fl_set_browser_topline(inset->form_external->helptext, 0);
-}
-
-
-void InsetExternal::browseCB(FL_OBJECT * ob, long)
-{
-	Holder * holder = static_cast<Holder*>(ob->form->u_vdata);
-	InsetExternal * inset = holder->inset;
-
-	static string current_path;
-	static int once = 0;
-	
-	string p = inset->filename;
-	string buf = MakeAbsPath(holder->view->buffer()->fileName());
-	string buf2 = OnlyPath(buf);
-	if (!p.empty()) {
-		buf = MakeAbsPath(p, buf2);
-		buf = OnlyPath(buf);
-	} else {
-		buf = OnlyPath(holder->view->buffer()->fileName());
-	}
-       
-	FileDialog fileDlg(holder->view->owner(), _("Select external file"),
-		LFUN_SELECT_FILE_SYNC,
-		make_pair(string(_("Document")), string(buf)));
-	
-	// FIXME: should have "nice name" for file type e.g. "Xfig files"
-
-	/// Determine the template file extension
-	ExternalTemplate et = inset->getTemplate(inset->getCurrentTemplate());
-	string regexp = et.fileRegExp;
-	if (regexp.empty()) {
-		regexp = "*";
-	}
-
-	regexp += "|";
-
-	bool error = false;
-	do {
-		string const path = (once) ? current_path : buf;
-		FileDialog::Result result = fileDlg.Select(path, regexp);
-
-		if (result.second.empty()) 
-			return;
-
-		string p = result.second;
-
-		buf = MakeRelPath(p, buf2);
-		current_path = OnlyPath(p);
-		once = 1;
-		
-		if (contains(p, "#") || contains(p, "~") || contains(p, "$")
-		    || contains(p, "%")) {
-			WriteAlert(_("Filename can't contain any "
-				     "of these characters:"),
-				   // xgettext:no-c-format
-				   _("'#', '~', '$' or '%'.")); 
-			error = true;
-		}
-	} while (error);
-
-	if (inset->form_external) 
-		fl_set_input(inset->form_external->filename, buf.c_str());
-	
-}
-
-
-void InsetExternal::editCB(FL_OBJECT * ob, long)
-{
-	Holder * holder = static_cast<Holder*>(ob->form->u_vdata);
-	InsetExternal * inset = holder->inset;
-	inset->doApply(holder->view);
-	inset->doEdit(holder->view);
-}
-
-
-void InsetExternal::viewCB(FL_OBJECT * ob, long)
-{
-	Holder * holder = static_cast<Holder*>(ob->form->u_vdata);
-	InsetExternal * inset = holder->inset;
-	inset->doApply(holder->view);
-	inset->doView(holder->view);
-}
-
-
-void InsetExternal::updateCB(FL_OBJECT * ob, long)
-{
-	Holder * holder = static_cast<Holder*>(ob->form->u_vdata);
-	InsetExternal * inset = holder->inset;
-	inset->doApply(holder->view);
-	inset->doUpdate(holder->view);
-}
-
-
-void InsetExternal::okCB(FL_OBJECT * ob, long data)
-{
-	Holder * holder = static_cast<Holder*>(ob->form->u_vdata);
-	InsetExternal * inset = holder->inset;
-	inset->doApply(holder->view);
-	cancelCB(ob,data);
-}
-
-
-void InsetExternal::doApply(BufferView * bufview)
-{
-	bool update = false;
-	if (templatename != getCurrentTemplate()) {
-		templatename = getCurrentTemplate();
-		update = true;
-	}
-	if (filename != fl_get_input(form_external->filename)) {
-		filename = fl_get_input(form_external->filename);
-		update = true;
-	}
-	if (parameters != fl_get_input(form_external->parameters)) {
-		parameters = fl_get_input(form_external->parameters);
-		update = true;
-	}
-
-	if (update) {
-		// The text might have change,
-		// so we should update the button look
-		bufview->updateInset(this, true);
-	}
-}
-
-
-void InsetExternal::cancelCB(FL_OBJECT * ob, long)
-{
-	Holder * holder = static_cast<Holder*>(ob->form->u_vdata);
-
-	InsetExternal * inset = holder->inset;
-	// BufferView * bv = holder->view;
-
-	if (inset->form_external) {
-		fl_hide_form(inset->form_external->form_external);
-		fl_free_form(inset->form_external->form_external);
-		inset->form_external = 0;
-	}
-}
+	params_.filename = p.filename;
+	params_.parameters = p.parameters;
+	params_.templ = p.templ;
+}      
 
 
 string const InsetExternal::EditMessage() const
 {
-	ExternalTemplate const & et = getTemplate(templatename);
-	return doSubstitution(0, et.guiName);
+	return doSubstitution(0, params_.templ.guiName);
 }
 
 
 void InsetExternal::Edit(BufferView * bv,
 			 int /*x*/, int /*y*/, unsigned int /*button*/)
 {
-	static int ow = -1, oh;
-
-	if (bv->buffer()->isReadonly())
-		WarnReadonly(bv->buffer()->fileName());
-
-	if (!form_external) {
-		form_external = create_form_form_external();
-		holder.inset = this;
-		//		form_external->ok->u_vdata = &holder;
-		form_external->form_external->u_vdata = &holder;
-		fl_set_form_atclose(form_external->form_external,
-				    CancelCloseBoxCB, 0);
-	}
-	holder.view = bv;
-	fl_addto_choice(form_external->templatechoice,
-			getTemplateString().c_str());
-	fl_set_input(form_external->filename, filename.c_str());
-	fl_set_input(form_external->parameters, parameters.c_str());
-	if (!templatename.empty()) {
-		fl_set_choice(form_external->templatechoice,
-			      getTemplateNumber(templatename));
-	}
-	// Update the help text
-	templateCB(form_external->templatechoice, 0);
-
-	ExternalTemplate const & et = getTemplate(templatename);
-	if (et.automaticProduction) {
-		fl_deactivate_object(form_external->update);
-		fl_set_object_lcol(form_external->update, FL_INACTIVE);
-	} else {
-		fl_activate_object(form_external->update);
-		fl_set_object_lcol(form_external->update, FL_BLACK);
-	}
-
-	if (form_external->form_external->visible) {
-		fl_raise_form(form_external->form_external);
-	} else {
-		fl_show_form(form_external->form_external,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
-			     _("Insert external inset"));
-		if (ow < 0) {
-			ow = form_external->form_external->w;
-			oh = form_external->form_external->h;
-		}
-		fl_set_form_minsize(form_external->form_external, ow, oh);
-	}
+	view = bv;
+	view->owner()->getDialogs()->showExternal(this);
 }
 
 
 void InsetExternal::Write(Buffer const *, std::ostream & os) const
 {
-	os << "External " << templatename << ",\"" << filename 
-	   << "\",\"" << parameters << "\"\n";
+	os << "External " << params_.templ.lyxName << ",\"" << params_.filename 
+	   << "\",\"" << params_.parameters << "\"\n";
 }
 
 
 void InsetExternal::Read(Buffer const *, LyXLex & lex)
 {
-	lex.EatLine();
-	string const format = lex.GetString();
-	string::size_type const pos1 = format.find(",");
-	templatename = format.substr(0, pos1);
-	string::size_type const pos2 = format.find("\",\"", pos1);
-	filename = format.substr(pos1 + 2, pos2 - (pos1 + 2));
-	parameters = format.substr(pos2 + 3, format.length() - (pos2 + 4));
+	string format;
+	string token;
 
-	lyxerr[Debug::INFO] << "InsetExternal::Read: " << templatename
-			    << " " << filename
-			    << " " << parameters << endl;
+	// Read inset data from lex and store in format
+	if (lex.EatLine()) {
+		format = lex.GetString();
+	} else
+		lex.printError("InsetExternal: Parse error: `$$Token'");
+	while (lex.IsOK()) {
+		lex.nextToken();
+		token = lex.GetString();
+		if (token == "\\end_inset")
+			break;
+	}
+	if (token != "\\end_inset") {
+		lex.printError("Missing \\end_inset at this point. "
+			       "Read: `$$Token'");
+	}
+
+	// Parse string format...
+	string::size_type const pos1 = format.find(",");
+	params_.templ = ExternalTemplateManager::get().getTemplateByName(format.substr(0, pos1));
+	string::size_type const pos2 = format.find("\",\"", pos1);
+	params_.filename = format.substr(pos1 + 2, pos2 - (pos1 + 2));
+	params_.parameters = format.substr(pos2 + 3, format.length() - (pos2 + 4));
+
+	lyxerr[Debug::INFO] << "InsetExternal::Read: " << params_.templ.lyxName
+			    << " " << params_.filename
+			    << " " << params_.parameters << endl;
 }
 
 
 int InsetExternal::write(string const & format,
 			 Buffer const * buf, std::ostream & os) const
 {
-	ExternalTemplate const & et = getTemplate(templatename);
+	ExternalTemplate const & et = params_.templ;
 	ExternalTemplate::Formats::const_iterator cit =
 		et.formats.find(format);
 	if (cit == et.formats.end()) {
 		lyxerr << "External template format '" << format
-		       << "' not specified in template " << templatename
+		       << "' not specified in template " << params_.templ.lyxName
 		       << endl;
 		return 0;
 	}
@@ -363,7 +141,7 @@ int InsetExternal::write(string const & format,
 	}
 	
 	os << doSubstitution(buf, (*cit).second.product);
-	return 0; // CHECK
+	return 0; // CHECK  (FIXME check what ? - jbl)
 }
 
 
@@ -394,12 +172,12 @@ int InsetExternal::DocBook(Buffer const * buf, std::ostream & os) const
 
 void InsetExternal::Validate(LaTeXFeatures & features) const
 {
-	ExternalTemplate const & et = getTemplate(templatename);
+	ExternalTemplate const & et = params_.templ;
 	ExternalTemplate::Formats::const_iterator cit =
 		et.formats.find("LaTeX");
-	if (cit == et.formats.end()) {
+
+	if (cit == et.formats.end())
 		return;
-	}
 	
 	if (!(*cit).second.requirement.empty()) {
 		features.require((*cit).second.requirement);
@@ -413,56 +191,18 @@ void InsetExternal::Validate(LaTeXFeatures & features) const
 Inset * InsetExternal::Clone(Buffer const &) const
 {
 	InsetExternal * inset = new InsetExternal();
-	inset->templatename = templatename;
-	inset->filename = filename;
-	inset->parameters = parameters;
+	inset->params_ = params_;
 	return inset;
 }
 
 
 string const InsetExternal::getScreenLabel() const
 {
-	if (templatename.empty()) {
+	ExternalTemplate const & et = params_.templ;
+	if (et.guiName.empty())
 		return _("External");
-	} else {
-		ExternalTemplate const & et = getTemplate(templatename);
-		if (et.guiName.empty())
-			return "ext: ???";
-		else
-			return doSubstitution(0, et.guiName);
-	}
-}
-
-
-void InsetExternal::doUpdate(BufferView const * bv) const
-{
-	ExternalTemplate const & et = getTemplate(getCurrentTemplate());
-	ExternalTemplate::Formats::const_iterator cit =
-		et.formats.find("LaTeX");
-	if (cit == et.formats.end())
-		return;
-	
-	executeCommand(doSubstitution(bv->buffer(),
-				      (*cit).second.updateCommand),
-		       bv->buffer());
-}
-
-
-void InsetExternal::doView(BufferView const * bv) const
-{
-	automaticUpdate(bv);
-	ExternalTemplate const & et = getTemplate(getCurrentTemplate());
-	executeCommand(doSubstitution(bv->buffer(), et.viewCommand),
-		       bv->buffer());
-}
-
-
-void InsetExternal::doEdit(BufferView const * bv) const
-{
-	automaticUpdate(bv);
-	ExternalTemplate const & et = getTemplate(getCurrentTemplate());
-	executeCommand(doSubstitution(bv->buffer(), et.editCommand),
-		       bv->buffer());
+	else
+		return doSubstitution(0, et.guiName);
 }
 
 
@@ -481,23 +221,14 @@ void InsetExternal::executeCommand(string const & s,
 }
 
 
-void InsetExternal::automaticUpdate(BufferView const * bv) const
-{
-	ExternalTemplate const & et = getTemplate(templatename);
-	if (et.automaticProduction) {
-		doUpdate(bv);
-	}
-}
-
-
 string const InsetExternal::doSubstitution(Buffer const * buffer,
 				     string const & s) const
 {
 	string result;
-	string const basename = ChangeExtension(filename, string());
-	result = subst(s, "$$FName", filename);
+	string const basename = ChangeExtension(params_.filename, string());
+	result = subst(s, "$$FName", params_.filename);
 	result = subst(result, "$$Basename", basename);
-	result = subst(result, "$$Parameters", parameters);
+	result = subst(result, "$$Parameters", params_.parameters);
 	result = ReplaceEnvironmentPath(result);
 	result = subst(result, "$$Tempname", tempname);
 	result = subst(result, "$$Sysdir", system_lyxdir);
@@ -527,70 +258,39 @@ string const InsetExternal::doSubstitution(Buffer const * buffer,
 }
 
 
-string const InsetExternal::getCurrentTemplate() const
+void InsetExternal::updateExternal() const
 {
-	return getTemplateName(fl_get_choice(form_external->templatechoice));
+	ExternalTemplate const & et = params_.templ;
+	ExternalTemplate::Formats::const_iterator cit =
+		et.formats.find("LaTeX");
+	if (cit == et.formats.end())
+		return;
+	
+	executeCommand(doSubstitution(view->buffer(),
+			(*cit).second.updateCommand),
+			view->buffer());
 }
 
 
-ExternalTemplate const InsetExternal::getTemplate(string const & name) const
+void InsetExternal::viewExternal() const
 {
-	ExternalTemplateManager::Templates::iterator i = 
-		ExternalTemplateManager::get().getTemplates().find(name);
-	// Make sure that the template exists in the map
-	if (i == ExternalTemplateManager::get().getTemplates().end()) {
-		lyxerr << "Unknown external material template: "
-		       << name << endl;
-		return ExternalTemplate();
-	}
-	return (*i).second;
+	ExternalTemplate const & et = params_.templ;
+	if (et.automaticProduction)
+		updateExternal();
+
+	executeCommand(doSubstitution(view->buffer(),
+			et.viewCommand),
+			view->buffer());
 }
 
 
-int InsetExternal::getTemplateNumber(string const & name) const
+void InsetExternal::editExternal() const
 {
-	int i = 1;
-	ExternalTemplateManager::Templates::const_iterator i1, i2;
-	i1 = ExternalTemplateManager::get().getTemplates().begin();
-	i2 = ExternalTemplateManager::get().getTemplates().end();
-	for (; i1 != i2; ++i1) {
-		if ((*i1).second.lyxName == name)
-			return i;
-		++i;
-	}
-	// This should never happen
-	///  This can happen if someone sends you a lyx file that uses
-	///  external templates that are defined only on his machine
-	//Assert(false);
-	return 0;
-}
+	ExternalTemplate const & et = params_.templ;
+	if (et.automaticProduction)
+		updateExternal();
 
-
-string const InsetExternal::getTemplateName(int i) const
-{
-	ExternalTemplateManager::Templates::const_iterator i1;
-	i1 = ExternalTemplateManager::get().getTemplates().begin();
-	for (int n = 1; n < i; ++n) {
-		++i1;
-	}
-	return (*i1).second.lyxName;
-}
-
-
-string const InsetExternal::getTemplateString() const
-{
-	string result;
-	bool first = true;
-	ExternalTemplateManager::Templates::const_iterator i1, i2;
-	i1 = ExternalTemplateManager::get().getTemplates().begin();
-	i2 = ExternalTemplateManager::get().getTemplates().end();
-	for (; i1 != i2; ++i1) {
-		if (!first) {
-			result += "|";
-		} else {
-			first = false;
-		}
-		result += (*i1).second.lyxName;
-	}
-	return result;
+	executeCommand(doSubstitution(view->buffer(),
+			et.editCommand),
+			view->buffer());
 }

@@ -76,10 +76,12 @@ class ExternalTemplateManager : public noncopyable {
 public:
 	/// Map from the LyX name of the template to the template structure
 	typedef std::map<string, ExternalTemplate> Templates;
-	
+
 	static ExternalTemplateManager & get();
 	Templates & getTemplates();
 	Templates const & getTemplates() const;
+	/// return the template by LyX name 
+	ExternalTemplate const & getTemplateByName(const string & name);
 private:
 	ExternalTemplateManager();
 	void readTemplates(string const & path);
@@ -88,4 +90,3 @@ private:
 };
 
 #endif
-

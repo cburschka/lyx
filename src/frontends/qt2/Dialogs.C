@@ -14,6 +14,7 @@
 #include "Dialogs.h"
 #include "FormCharacter.h"
 #include "FormCitation.h"
+#include "FormCredits.h"
 #include "FormCopyright.h"
 #include "FormDocument.h"
 #include "FormError.h"
@@ -35,10 +36,6 @@
 
 using std::endl;
 
-// temporary till ported
-extern void ShowCredits();
-
-
 // Signal enabling all visible popups to be redrawn if so desired.
 // E.g., when the GUI colours have been remapped.
 Signal0<void> Dialogs::redrawGUI;
@@ -49,6 +46,7 @@ Dialogs::Dialogs(LyXView * lv)
 	dialogs_.push_back(new FormCharacter(lv, this));
 	dialogs_.push_back(new FormCitation(lv, this));
 	dialogs_.push_back(new FormCopyright(lv, this));
+	dialogs_.push_back(new FormCredits(lv, this));
 	dialogs_.push_back(new FormDocument(lv, this));
 	dialogs_.push_back(new FormError(lv, this));
 	dialogs_.push_back(new FormGraphics(lv, this));
@@ -62,8 +60,6 @@ Dialogs::Dialogs(LyXView * lv)
 	dialogs_.push_back(new FormTabularCreate(lv, this));
 	dialogs_.push_back(new FormToc(lv, this));
 	dialogs_.push_back(new FormUrl(lv, this));
-
-	showCredits.connect(slot(ShowCredits));
 
 	// reduce the number of connections needed in
 	// dialogs by a simple connection here.

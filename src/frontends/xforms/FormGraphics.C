@@ -357,8 +357,9 @@ void FormGraphics::browse()
 	string const filename = fl_get_input(dialog_->input_filename);
 
 	string const title = N_("Graphics");
-	// we need the second '|' to prevent mis-interpretation 
-	string const pattern = "*.(ps|png)|";
+	// FIXME: currently we need the second '|' to prevent mis-interpretation 
+	// FIXME: rfind() in split() seems to be broken hence the second space 
+	string const pattern = "*.(ps|png)| ";
 
   	// Does user clipart directory exist?
   	string clipdir = AddName (user_lyxdir, "clipart");

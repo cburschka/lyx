@@ -395,7 +395,7 @@ int ParagraphDlgImpl::getItem(LyXLength::UNIT unit) const {
 
 void ParagraphDlgImpl::enable_extraOptions(int item)
 {
-   bool enable = (item==0);
+   bool enable = (item!=0);
    extraWidth->setEnabled(enable);
    extraWidthL->setEnabled(enable);
    extraUnit->setEnabled(enable);

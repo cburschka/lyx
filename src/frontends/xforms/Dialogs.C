@@ -20,6 +20,7 @@
 #include "FormCredits.h"
 #include "FormDocument.h"
 #include "FormError.h"
+#include "FormExternal.h" 
 #include "FormGraphics.h"
 #include "FormInclude.h"
 #include "FormIndex.h"
@@ -58,6 +59,7 @@ Dialogs::Dialogs(LyXView * lv)
 	dialogs_.push_back(new FormCredits(lv, this));
 	dialogs_.push_back(new FormDocument(lv, this));
 	dialogs_.push_back(new FormError(lv, this));
+	dialogs_.push_back(new FormExternal(lv, this)); 
 	dialogs_.push_back(new FormGraphics(lv, this));
 	dialogs_.push_back(new FormInclude(lv, this));
 	dialogs_.push_back(new FormIndex(lv, this));

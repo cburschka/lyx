@@ -72,22 +72,22 @@ void FormParagraph::update(bool switched)
 		align = textclasslist.Style(buf->params.textclass, par->GetLayout()).align;
 
 #ifndef NEW_INSETS
-	LyXParagraph *physpar = par->FirstPhysicalPar();
+	ParagraphParameters *params = &(par->FirstPhysicalPar()->params);
 #else
-	LyXParagraph *physpar = par;
+	ParagraphParameters *params = &(par->params);
 #endif
-
-	if (physpar->added_space_top.kind()==VSpace::LENGTH) {
-		LyXGlueLength above = physpar->added_space_top.length();
-		lyxerr[Debug::GUI] << "Reading above space : \"" << physpar->added_space_top.length().asString() << "\"" << endl;
+    
+	if (params->spaceTop().kind() == VSpace::LENGTH) {
+		LyXGlueLength above = params->spaceTop().length();
+		lyxerr[Debug::GUI] << "Reading above space : \"" << params->spaceTop().length().asString() << "\"" << endl;
 		dialog_->setAboveLength(above.value(), above.plusValue(), above.minusValue(),
 			above.unit(), above.plusUnit(), above.minusUnit());
 	} else
 		dialog_->setAboveLength(0.0, 0.0, 0.0, LyXLength::UNIT_NONE, LyXLength::UNIT_NONE, LyXLength::UNIT_NONE);
 
-	if (physpar->added_space_bottom.kind()==VSpace::LENGTH) {
-		LyXGlueLength below = physpar->added_space_bottom.length();
-		lyxerr[Debug::GUI] << "Reading below space : \"" << physpar->added_space_bottom.length().asString() << "\"" << endl;
+	if (params->spaceBottom().kind() == VSpace::LENGTH) {
+		LyXGlueLength below = params->spaceBottom().length();
+		lyxerr[Debug::GUI] << "Reading below space : \"" << params->spaceBottom().length().asString() << "\"" << endl;
 		dialog_->setBelowLength(below.value(), below.plusValue(), below.minusValue(),
 			below.unit(), below.plusUnit(), below.minusUnit());
 	} else
@@ -95,30 +95,31 @@ void FormParagraph::update(bool switched)
 
 	dialog_->setLabelWidth(text->cursor.par()->GetLabelWidthString().c_str());
 	dialog_->setAlign(align);
-	dialog_->setChecks(physpar->line_top, physpar->line_bottom,
-		physpar->pagebreak_top, physpar->pagebreak_bottom, physpar->noindent);
-	dialog_->setSpace(physpar->added_space_top.kind(), physpar->added_space_bottom.kind(),
-		physpar->added_space_top.keep(), physpar->added_space_bottom.keep());
+	dialog_->setChecks(params->lineTop(), params->lineBottom(),
+		params->pagebreakTop(), params->pagebreakBottom(), params->noindent());
+	dialog_->setSpace(params->spaceTop().kind(), params->spaceBottom().kind(),
+		params->spaceTop().keep(), params->spaceBottom().keep());
 
 	// now the extras page
 
 	LyXLength extrawidth;
 	float val = 0.0;
 	LyXLength::UNIT unit = LyXLength::CM;
+	params = &(par->params);
 
-	if (isValidLength(par->pextra_width, &extrawidth)) {
+	if (isValidLength(params->pextraWidth(), &extrawidth)) {
 		lyxerr[Debug::GUI] << "Reading extra width \"" << extrawidth.asString() << "\"" << endl;
 		val = extrawidth.value();
 		unit = extrawidth.unit();
 	}
 
-	lyxerr[Debug::GUI] << "Reading widthp \"" << par->pextra_widthp << "\"" << endl;
+	lyxerr[Debug::GUI] << "Reading widthp \"" << params->pextraWidthp() << "\"" << endl;
 
-	dialog_->setExtra(val, unit, par->pextra_widthp,
-		par->pextra_alignment,
-		par->pextra_hfill,
-		par->pextra_start_minipage,
-		static_cast<LyXParagraph::PEXTRA_TYPE>(par->pextra_type));
+	dialog_->setExtra(val, unit, params->pextraWidthp(),
+		params->pextraAlignment(),
+		params->pextraHfill(),
+		params->pextraStartMinipage(),
+		static_cast<LyXParagraph::PEXTRA_TYPE>(params->pextraType()));
 }
 
 void FormParagraph::apply()

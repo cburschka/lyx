@@ -25,6 +25,7 @@ SRCS := form_bibitem.fd \
 	form_credits.fd \
 	form_document.fd \
 	form_error.fd \
+	form_external.fd \
 	form_filedialog.fd \
 	form_graphics.fd \
 	form_include.fd \

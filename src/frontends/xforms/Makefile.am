@@ -61,6 +61,10 @@ libxforms_la_SOURCES = \
 	FormError.h \
 	form_error.C \
 	form_error.h \
+	FormExternal.C \
+	FormExternal.h \
+	form_external.C \
+	form_external.h \
 	FormGraphics.C \
 	FormGraphics.h \
 	form_graphics.C \

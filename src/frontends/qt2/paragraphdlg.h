@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Form interface generated from reading ui file 'paragraphdlg.ui'
 **
-** Created: Sat Feb 10 14:22:05 2001
+** Created: Fri Mar 9 13:08:44 2001
 **      by:  The User Interface Compiler (uic)
 **
 ** WARNING! All changes made in this file will be lost!

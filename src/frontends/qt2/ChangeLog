@@ -1,3 +1,13 @@
+2001-03-09  Edwin Leuven  <leuven@fee.uva.nl>
+
+	* Makefile.am: updated
+	* paragraphdlg.ui: manually enabled items in minipage settings
+	* paragraphdlgimpl.C: tweak enable code on extra page
+	* Stuff sent in by Denis Perchine <dyp@perchine.com> to compile again:
+	* FileDialog_private.[Ch]: added
+	* FileDialog.C: added
+	* FormParagraph.C: params settings updated
+
 2001-03-06  Edwin Leuven  <leuven@fee.uva.nl>
 
 	* Search dialog added:
