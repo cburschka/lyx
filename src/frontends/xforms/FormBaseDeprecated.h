@@ -22,10 +22,12 @@
 #include "DialogBase.h"
 #include "LString.h"
 #include "xformsBC.h"
+#include "FeedbackController.h"
 
 class Buffer;
 class Dialogs;
 class LyXView;
+class Tooltips;
 
 /** This class is an XForms GUI base class.
     It is meant to be used solely as the parent class to FormBaseBI
@@ -35,26 +37,30 @@ class LyXView;
     @author Angus Leeming
  */
 
-class FormBaseDeprecated : public DialogBase {
+class FormBaseDeprecated : public DialogBase, public FeedbackController
+{
 public:
-	/// Callback functions
-	static  int WMHideCB(FL_FORM *, void *);
-	///
-	static void ApplyCB(FL_OBJECT *, long);
-	///
-	static void OKCB(FL_OBJECT *, long);
-	///
-	static void CancelCB(FL_OBJECT *, long);
-	///
-	static void InputCB(FL_OBJECT *, long);
-	///
-	static void RestoreCB(FL_OBJECT *, long);
-
-protected: // methods
 	///
 	FormBaseDeprecated(LyXView *, Dialogs *, string const &, bool);
 	///
-	virtual ~FormBaseDeprecated() {}
+	virtual ~FormBaseDeprecated();
+
+	/// Callback functions
+	void WMHideCB();
+	///
+	void ApplyCB();
+	///
+	void OKCB();
+	///
+	void CancelCB();
+	///
+	void InputCB(FL_OBJECT *, long);
+	///
+	void RestoreCB();
+
+	Tooltips & tooltips();
+
+protected: // methods
 
 	/// Pointer to the actual instantiation of the ButtonController.
 	virtual xformsBC & bc() = 0;
@@ -102,6 +108,14 @@ protected: // methods
 	/// Pointer to the actual instantiation of xform's form
 	virtual FL_FORM * form() const = 0;
 
+	/** Prepare the way to:
+	    1. display feedback as the mouse moves over ob. This feedback will
+	    typically be rather more verbose than just a tooltip.
+	    2. activate the button controller after a paste with the middle
+	    mouse button.
+	*/
+	static void setPrehandler(FL_OBJECT * ob);
+
 	/** Which LyXFunc do we use?
 	    We could modify Dialogs to have a visible LyXFunc* instead and
 	    save a couple of bytes per dialog.
@@ -123,6 +137,8 @@ private:
 	int minh_;
 	/// Can the dialog be resized after it has been created?
 	bool allow_resize_;
+	///
+	Tooltips * tooltips_;
 };
 
 

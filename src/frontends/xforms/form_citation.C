@@ -164,7 +164,7 @@ FD_form_citation * FormCitation::build_citation()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Restore|#R");
-    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 220, 400, 100, 30, idex(_(dummy)));
+    fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 400, 100, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -190,13 +190,6 @@ FD_form_citation * FormCitation::build_citation()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
-  {
-    char const * const dummy = N_("Help:|#H");
-    fdui->choice_help = obj = fl_add_choice(FL_NORMAL_CHOICE, 80, 400, 130, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_boxtype(obj, FL_FRAME_BOX);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

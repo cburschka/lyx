@@ -23,7 +23,6 @@ struct FD_form_texinfo {
 	FL_OBJECT *button_fullPath;
 	FL_OBJECT *button_texhash;
 	FL_OBJECT *button_close;
-	FL_OBJECT *choice_help;
 };
 
 #endif /* FD_form_texinfo_h_ */

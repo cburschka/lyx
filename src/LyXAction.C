@@ -437,6 +437,7 @@ void LyXAction::init()
 		  N_("Show the processes forked by LyX"), NoBuffer },
 		{ LFUN_FORKS_KILL, "kill-forks",
 		  N_("Kill the forked process with this PID"), NoBuffer },
+		{ LFUN_TOOLTIPS_TOGGLE, "toggle-tooltips", "", NoBuffer },
 		{ LFUN_NOACTION, "", "", Noop }
 	};
 

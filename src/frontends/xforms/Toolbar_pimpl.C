@@ -30,7 +30,9 @@
 #include "LyXAction.h"
 #include "MathsSymbols.h" 
 #include "gettext.h"
+#include "Tooltips.h"
 
+#include "support/LAssert.h"
 #include "support/filetools.h"
 #include "support/lstrings.h" 
 
@@ -90,74 +92,15 @@ Toolbar::Pimpl::Pimpl(LyXView * o, int x, int y)
 	: owner(static_cast<XFormsView *>(o)), sxpos(x), sypos(y)
 {
 	combox = 0;
-#if FL_REVISION < 89
-	bubble_timer = 0;
-#endif
+	tooltip_ = new Tooltips();
 }
 
 
-namespace {
-
-#if FL_REVISION < 89
-// timer-cb for bubble-help (Matthias)
-void BubbleTimerCB(FL_OBJECT *, long data)
+Toolbar::Pimpl::~Pimpl()
 {
-	FL_OBJECT * ob = reinterpret_cast<FL_OBJECT*>(data);
-	// The trick we use to get the help text is to read the
-	// argument of the callback that has been registered for
-	// ToolBarCB.  (JMarc)
-	string help = _(lyxaction.helpText(ob->argument));
-	fl_show_oneliner(help.c_str(), ob->form->x + ob->x,
-			 ob->form->y + ob->y + ob->h);
+	clean();
+	delete tooltip_;
 }
-
-
-extern "C" {
-	
-static
-void C_Toolbar_BubbleTimerCB(FL_OBJECT * ob, long data)
-{
-	BubbleTimerCB(ob, data);
-}
-
-}
-
-// post_handler for bubble-help (Matthias)
-int BubblePost(FL_OBJECT *ob, int event,
-	       FL_Coord /*mx*/, FL_Coord /*my*/,
-	       int /*key*/, void * /*xev*/)
-{
-	FL_OBJECT * bubble_timer = reinterpret_cast<FL_OBJECT *>(ob->u_cdata);
-	
-	// We do not test for empty help here, since this can never happen
-	if (event == FL_ENTER) {
-		fl_set_object_callback(bubble_timer,
-				       C_Toolbar_BubbleTimerCB,
-				       reinterpret_cast<long>(ob));
-		fl_set_timer(bubble_timer, 1);
-	}
-	else if (event != FL_MOTION) {
-		fl_set_timer(bubble_timer, 0);
-		fl_hide_oneliner();
-	}
-	return 0;
-}
-
-
-extern "C" {
-	
-static
-int C_Toolbar_BubblePost(FL_OBJECT * ob, int event,
-			 FL_Coord /*mx*/, FL_Coord /*my*/, 
-			 int key, void * xev)
-{
-	return BubblePost(ob, event, 0, 0, key, xev);
-}
-
-}
-#endif
-
-} // namespace anon
 
 
 void Toolbar::Pimpl::activate()
@@ -377,13 +320,6 @@ void Toolbar::Pimpl::set(bool doingmain)
 		fl_addto_form(owner->getForm());
 	}
 
-#if FL_REVISION < 89
-	// add the time if it don't exist
-	if (bubble_timer == 0)
-		bubble_timer = fl_add_timer(FL_HIDDEN_TIMER,
-					    xpos, ypos, 0, 0, "Timer");
-#endif
-	
 	ToolbarList::iterator item = toollist.begin();
 	ToolbarList::iterator end = toollist.end();
 	for (; item != end; ++item) {
@@ -420,15 +356,10 @@ void Toolbar::Pimpl::set(bool doingmain)
 			// Remove the blue feedback rectangle
 			fl_set_pixmapbutton_focus_outline(obj, 0);
 
-			// Set the tooltip
-#if FL_REVISION >= 89
-			string const help(_(lyxaction.helpText(item->action)));
-			fl_set_object_helper(obj, help.c_str());	
-#else
-			fl_set_object_posthandler(obj, C_Toolbar_BubblePost);
-			obj->u_cdata = reinterpret_cast<char *>(bubble_timer);
-#endif
-
+			// initialise the tooltip
+			string const tip = _(lyxaction.helpText(obj->argument));
+			tooltip_->initTooltip(obj, tip);
+			
 			// The view that this object belongs to.
 			obj->u_vdata = owner;
 

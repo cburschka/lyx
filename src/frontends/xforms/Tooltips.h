@@ -19,31 +19,57 @@
 #include <boost/utility.hpp>
 #include <sigc++/signal_system.h>
 #include FORMS_H_LOCATION // Can't forward-declare FL_OBJECT
+#include <map>
 
 #ifdef __GNUG__
 #pragma interface
 #endif
 
-class Tooltips : boost::noncopyable {
+class Tooltips : boost::noncopyable, public SigC::Object {
 public:
-	/// Activate tooltips for this ob
-	void activateTooltip(FL_OBJECT * ob);
-	/** Connect this signal to the function returning the tooltip for ob
-	    Eg, string FormBase::getTooltip(FL_OBJECT const *)
-	    Note that SigC is unable to create a Signal1 returning string const
-	    or to connect it to a const method.
-	 */
-	SigC::Signal1<string, FL_OBJECT const *> getTooltip;
+	Tooltips();
 
-	// We use the old method because we want to change tooltips on the fly
-//#if FL_REVISION < 89
-	///
-	Tooltips() : tooltip_timer_(0) {}
+	/// Initialise a tooltip for this ob
+	void initTooltip(FL_OBJECT * ob, string const & tip);
+
+	/// Are the tooltips on or off?
+	static bool enabled() { return enabled_; }
+
+#if FL_REVISION < 89
+
+	/// Return the tooltip associated with this object
+	string const getTooltip(FL_OBJECT *) const;
+
+#endif
 
 private:
 
+	/// Are the tooltips on or off?
+	static bool enabled_;
+
+	/** This method is connected to Dialogs::toggleTooltips and toggles
+	 *  the state of enabled_
+	 */
+	static void toggleEnabled();
+
+	/** Once enabled_ is changed, then this signal is emitted to update
+	 *  all the tooltips.
+	 */
+	static SigC::Signal0<void> tooltipsToggled;
+
+	/// This method is connected to the tooltipsToggled signal.
+	void toggleTooltips();
+
+	/// The tooltips are stored so that they can be turned on and off
+	typedef std::map<FL_OBJECT *, string> TooltipsMap;
+
+	TooltipsMap tooltipsMap;
+
+#if FL_REVISION < 89
+
 	FL_OBJECT * tooltip_timer_;
-//#endif
+
+#endif // FL_REVISION >= 89
 };
 
 #endif // TOOLTIPS_H

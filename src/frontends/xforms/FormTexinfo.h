@@ -34,10 +34,6 @@ private:
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 	///
-	string const getMinimalTooltip(FL_OBJECT const *) const;
-	///
-	string const getVerboseTooltip(FL_OBJECT const *) const;
-	///
 	void updateStyles(ControlTexinfo::texFileSuffix);
 	/// Fdesign generated method
 	FD_form_texinfo * build_texinfo();

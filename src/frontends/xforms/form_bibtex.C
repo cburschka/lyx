@@ -67,13 +67,6 @@ FD_form_bibtex * FormBibtex::build_bibtex()
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  {
-    char const * const dummy = N_("Help:|#H");
-    fdui->choice_help = obj = fl_add_choice(FL_NORMAL_CHOICE, 89, 120, 136, 29, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_boxtype(obj, FL_FRAME_BOX);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

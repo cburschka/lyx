@@ -17,9 +17,10 @@
 #include "FormForks.h"
 #include "ControlForks.h"
 #include "form_forks.h"
-#include "gettext.h"
+#include "Tooltips.h"
 #include "helper_funcs.h"
 #include "xforms_helpers.h"
+#include "gettext.h"
 #include "support/lstrings.h"
 
 using std::vector;
@@ -50,11 +51,20 @@ void FormForks::build() {
 	bc().invalid();
 
 	// Set up the tooltip mechanism
-	setTooltipHandler(dialog_->browser_children);
-	setTooltipHandler(dialog_->browser_kill);
-	setTooltipHandler(dialog_->button_all);
-	setTooltipHandler(dialog_->button_add);
-	setTooltipHandler(dialog_->button_remove);
+	string str = N_("All currently running child processes forked by LyX.");
+	tooltips().initTooltip(dialog_->browser_children, str);
+
+	str = N_("A list of all child processes to kill.");
+	tooltips().initTooltip(dialog_->browser_kill, str);
+
+	str = N_("Add all processes to the list of processes to kill.");
+	tooltips().initTooltip(dialog_->button_all, str);
+
+	str = N_("Add the currently selected child process to the list of processes to kill.");
+	tooltips().initTooltip(dialog_->button_add, str);
+
+	str = N_("Remove the currently selected item from the list of processes to kill.");
+	tooltips().initTooltip(dialog_->button_remove, str);
 }
 
 
@@ -399,25 +409,3 @@ ButtonPolicy::SMInput FormForks::input_button_remove()
 
 	return ButtonPolicy::SMI_VALID;
 }
-
-
-string const FormForks::getVerboseTooltip(FL_OBJECT const * ob) const
-{
-	string str;
-	
-	if (ob == dialog_->browser_children) {
-		str = _("All currently running child processes forked by LyX.");
-	} else if (ob == dialog_->browser_kill) {
-		str = _("A list of all child processes to kill.");
-	} else if (ob == dialog_->button_all) {
-		str = _("Add all processes to the list of processes to kill.");
-	} else if (ob == dialog_->button_add) {
-		str = _("Add the currently selected child process to the list of processes to kill.");
-	} else if (ob == dialog_->button_remove) {
-		str = _("Remove the currently selected item from the list of processes to kill.");
-	}
-	
-	return str;
-}
-
-

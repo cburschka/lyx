@@ -325,6 +325,7 @@ Menuset
 # HELP MENU
 #
     Menu "help"
+	Item "What's This|W" "toggle-tooltips"
 	Item "Introduction|I" "help-open Intro"
 	Item "Tutorial|T" "help-open Tutorial"
 	Item "User's Guide|U" "help-open UserGuide"

@@ -16,6 +16,7 @@
 #include "form_sendto.h"
 #include "ControlSendto.h"
 #include "xformsBC.h"
+#include "Tooltips.h"
 #include "xforms_helpers.h"
 #include "converter.h"
 #include "gettext.h"
@@ -35,17 +36,17 @@ void FormSendto::build()
 
 	fl_set_input_return(dialog_->input_command, FL_RETURN_CHANGED);
 
-	// The help choice
-	fillTooltipChoice(dialog_->choice_help);
-
-	// Set up the tooltip mechanism
-	setTooltipHandler(dialog_->browser_formats);
-	setTooltipHandler(dialog_->input_command);
-
         // Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
 	bc().setApply(dialog_->button_apply);
 	bc().setCancel(dialog_->button_cancel);
+
+	// Set up the tooltip mechanism
+	string str = N_("Export the buffer to this format before running the command below on it.");
+	tooltips().initTooltip(dialog_->browser_formats, str);
+
+	str = N_("Run this command on the buffer exported to the chosen format. $$FName will be replaced by the name of this file.");
+	tooltips().initTooltip(dialog_->input_command, str);
 }
 
 
@@ -64,7 +65,7 @@ void FormSendto::update()
 	for (; it != end; ++it, ++result) {
 		*result = (*it)->prettyname();
 	}
-	
+
 	vector<string> const browser_keys =
 		getVectorFromBrowser(dialog_->browser_formats);
 
@@ -83,13 +84,8 @@ void FormSendto::update()
 }
 
 
-ButtonPolicy::SMInput FormSendto::input(FL_OBJECT * ob, long)
+ButtonPolicy::SMInput FormSendto::input(FL_OBJECT *, long)
 {
-	if (ob == dialog_->choice_help) {
-		setTooltipLevel(dialog_->choice_help);
-		return ButtonPolicy::SMI_NOOP;
-	}
-
 	int const line = fl_get_browser(dialog_->browser_formats);
 	if (line < 1 || line > fl_get_browser_maxline(dialog_->browser_formats))
 		return ButtonPolicy::SMI_INVALID;
@@ -113,19 +109,4 @@ void FormSendto::apply()
 
 	controller().setFormat(all_formats_[line-1]);
 	controller().setCommand(cmd);
-}
-
-
-string const FormSendto::getVerboseTooltip(FL_OBJECT const * ob) const
-{
-	string str;
-
-	if (ob == dialog_->browser_formats) {
-		str = N_("Export the buffer to this format before running the command below on it.");
-		
-	} else if (ob == dialog_->input_command) {
-		str = N_("Run this command on the buffer exported to the chosen format. $$FName will be replaced by the name of this file.");
-	}
-	
-	return str;
 }

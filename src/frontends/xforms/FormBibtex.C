@@ -17,10 +17,11 @@
 #include "ControlBibtex.h"
 #include "FormBibtex.h"
 #include "form_bibtex.h"
-#include "gettext.h"
-#include "debug.h"
+#include "Tooltips.h"
 #include "xforms_helpers.h"
 #include "helper_funcs.h"
+#include "gettext.h"
+#include "debug.h"
 #include "support/LAssert.h"
 #include "support/lstrings.h"
 #include "support/filetools.h"
@@ -41,8 +42,6 @@ void FormBibtex::build()
 {
 	dialog_.reset(build_bibtex());
 
-	// the help choice
-	fillTooltipChoice(dialog_->choice_help);
 	fl_set_input_return(dialog_->database, FL_RETURN_CHANGED);
 	fl_set_input_return(dialog_->style, FL_RETURN_CHANGED);
 
@@ -56,12 +55,18 @@ void FormBibtex::build()
 	bc().addReadOnly(dialog_->style);
 	bc().addReadOnly(dialog_->radio_bibtotoc);
 
-	// set up the help mechanism
-	setTooltipHandler(dialog_->database_browse);
-	setTooltipHandler(dialog_->database);
-	setTooltipHandler(dialog_->style_browse);
-	setTooltipHandler(dialog_->style);
-	setTooltipHandler(dialog_->radio_bibtotoc);
+	// set up the tooltips
+	string str = N_("The database you want to cite from. Insert it without the default extension \".bib\". If you insert it with the browser, LyX strips the extension. Several databases must be separated by a comma: \"natbib, books\".");
+	tooltips().initTooltip(dialog_->database_browse, str);
+
+	str = N_("Browse your directory for BibTeX stylefiles.");
+	tooltips().initTooltip(dialog_->style_browse, str);
+
+	str = N_("The BibTeX style to use (only one allowed). Insert it without the default extension \".bst\" and without path. Most of the bibstyles are stored in $TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In \"Help->TeX Info\" you can list all installed styles.");
+	tooltips().initTooltip(dialog_->style, str);
+
+	str = N_("Activate this option if you want the bibliography to appear in the Table of Contents (which doesn't happen by default).");
+	tooltips().initTooltip(dialog_->radio_bibtotoc, str);
 }
 
 
@@ -98,11 +103,6 @@ ButtonPolicy::SMInput FormBibtex::input(FL_OBJECT * ob, long)
 		}
 	}
   
-	if (ob == dialog_->choice_help) {
-		setTooltipLevel(dialog_->choice_help);
-		return ButtonPolicy::SMI_NOOP;
-	}
-
 	if (!compare(fl_get_input(dialog_->database),"")) {
 		return ButtonPolicy::SMI_NOOP;
 	}
@@ -193,51 +193,4 @@ void FormBibtex::apply()
 		// only style
 		controller().params().setOptions(bibstyle);
 	}
-}
-
-
-string const FormBibtex::getMinimalTooltip(FL_OBJECT const * ob) const
-{
-	string str;
-
-	if (ob == dialog_->database) {
-		str = N_("The BibTeX Database");
-
-	} else if (ob == dialog_->database_browse) {
-		str = _("Browse for BibTeX databases.");
-
-	} else if (ob == dialog_->style) {
-		str = _("The BibTeX style to use");
-
-	} else if (ob == dialog_->style_browse) {
-		str = _("Browse for BibTeX stylefiles.");
-
-	} else if (ob == dialog_->radio_bibtotoc) {
-		str = _("Bibliography to Table of Contents");
-	}
-
-	return str;
-}
-
-string const FormBibtex::getVerboseTooltip(FL_OBJECT const * ob) const
-{
-	string str;
-
-	if (ob == dialog_->database) {
-		str = N_("The database you want to cite from. Insert it without the default extension \".bib\". If you insert it with the browser, LyX strips the extension. Several databases must be separated by a comma: \"natbib, books\".");
-
-	} else if (ob == dialog_->database_browse) {
-		str = _("Browse your directory for BibTeX databases.");
-
-	} else if (ob == dialog_->style) {
-		str = _("The BibTeX style to use (only one allowed). Insert it without the default extension \".bst\" and without path. Most of the bibstyles are stored in $TEXMF/bibtex/bst. $TEXMF is the root dir of the local TeX tree. In \"Help->TeX Info\" you can list all installed styles.");
-
-	} else if (ob == dialog_->style_browse) {
-		str = _("Browse your directory for BibTeX stylefiles.");
-
-	} else if (ob == dialog_->radio_bibtotoc) {
-		str = _("Activate this option if you want the bibliography to appear in the Table of Contents (which doesn't happen by default).");
-	}
-
-	return str;
 }

@@ -51,10 +51,6 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
-	/// tooltips
-	string const getMinimalTooltip(FL_OBJECT const *) const;
-	///
-	string const getVerboseTooltip(FL_OBJECT const *) const;
 
 	/// Fdesign generated method
 	FD_form_citation * build_citation();

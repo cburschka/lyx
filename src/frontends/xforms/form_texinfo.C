@@ -22,9 +22,9 @@ FD_form_texinfo * FormTexinfo::build_texinfo()
   FL_OBJECT *obj;
   FD_form_texinfo *fdui = new FD_form_texinfo;
 
-  fdui->form = fl_bgn_form(FL_NO_BOX, 513, 353);
+  fdui->form = fl_bgn_form(FL_NO_BOX, 513, 312);
   fdui->form->u_vdata = this;
-  obj = fl_add_box(FL_UP_BOX, 0, 0, 513, 353, "");
+  obj = fl_add_box(FL_UP_BOX, 0, 0, 513, 312, "");
     fl_set_object_lstyle(obj, FL_FIXED_STYLE);
   fdui->browser = obj = fl_add_browser(FL_HOLD_BROWSER, 15, 12, 324, 241, "");
     fl_set_object_lalign(obj, FL_ALIGN_TOP);
@@ -102,19 +102,12 @@ FD_form_texinfo * FormTexinfo::build_texinfo()
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Close|^[^M");
-    fdui->button_close = obj = fl_add_button(FL_NORMAL_BUTTON, 409, 313, 90, 30, idex(_(dummy)));
+    fdui->button_close = obj = fl_add_button(FL_NORMAL_BUTTON, 409, 270, 90, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_gravity(obj, FL_SouthEast, FL_SouthEast);
     fl_set_object_callback(obj, C_FormBaseCancelCB, 0);
-  {
-    char const * const dummy = N_("Help:|#H");
-    fdui->choice_help = obj = fl_add_choice(FL_NORMAL_CHOICE, 344, 270, 155, 29, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_boxtype(obj, FL_FRAME_BOX);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fl_end_form();
 
   fdui->form->fdui = fdui;

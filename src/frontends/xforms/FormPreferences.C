@@ -76,7 +76,6 @@ Converters local_converters;
 
 FormPreferences::FormPreferences(LyXView * lv, Dialogs * d)
 	: FormBaseBI(lv, d, _("Preferences"), false),
-	  warningPosted(false),
 	  colors_(*this), converters_(*this), inputs_misc_(*this),
 	  formats_(*this), interface_(*this), language_(*this), 
 	  lnf_misc_(*this), outputs_misc_(*this), paths_(*this),
@@ -174,6 +173,9 @@ void FormPreferences::build()
 	bc().setCancel(dialog_->button_cancel);
 	bc().setRestore(dialog_->button_restore);
 
+	// Allow the base class to control messages
+	setMessageWidget(dialog_->text_warning);
+	
 	// build the tab folders
 	converters_tab_.reset(build_inner_tab());
 	look_n_feel_tab_.reset(build_inner_tab());
@@ -291,7 +293,7 @@ void FormPreferences::apply()
 }
 
 
-void FormPreferences::feedback(FL_OBJECT * ob)
+string const FormPreferences::getFeedback(FL_OBJECT * ob)
 {
 	lyx::Assert(ob);
 
@@ -323,10 +325,7 @@ void FormPreferences::feedback(FL_OBJECT * ob)
 		str = spelloptions_.feedback(ob);
 	}
 
-	str = formatted(_(str), dialog_->text_warning->w-10, FL_SMALL_SIZE);
-
-	fl_set_object_label(dialog_->text_warning, str.c_str());
-	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
+	return str;
 }
 
 
@@ -433,6 +432,8 @@ void FormPreferences::Colors::apply()
 					    cit->r, cit->g, cit->b);
 				fl_set_cursor_color(FL_DEFAULT_CURSOR,
 						    GUI_COLOR_CURSOR, FL_WHITE);
+				fl_set_cursor_color(XC_question_arrow,
+						    GUI_COLOR_CURSOR, FL_WHITE);
 			}
 		}
 		Dialogs::redrawGUI();
@@ -494,19 +495,19 @@ void FormPreferences::Colors::build()
 	fl_set_slider_bounds(dialog_->slider_blue, 0.0, 255.0);
 	fl_set_slider_step(dialog_->slider_blue, 1.0);
 	fl_set_slider_return(dialog_->slider_blue, FL_RETURN_CHANGED);
-	
+
 	// set up the feedback mechanism
-	setPreHandler(dialog_->browser_lyx_objs);
-	setPreHandler(dialog_->button_color);
-	setPreHandler(dialog_->button_modify);
-	setPreHandler(dialog_->dial_hue);
-	setPreHandler(dialog_->slider_saturation);
-	setPreHandler(dialog_->slider_value);
-	setPreHandler(dialog_->slider_red);
-	setPreHandler(dialog_->slider_green);
-	setPreHandler(dialog_->slider_blue);
-	setPreHandler(dialog_->radio_rgb);
-	setPreHandler(dialog_->radio_hsv);
+	setPrehandler(dialog_->browser_lyx_objs);
+	setPrehandler(dialog_->button_color);
+	setPrehandler(dialog_->button_modify);
+	setPrehandler(dialog_->dial_hue);
+	setPrehandler(dialog_->slider_saturation);
+	setPrehandler(dialog_->slider_value);
+	setPrehandler(dialog_->slider_red);
+	setPrehandler(dialog_->slider_green);
+	setPrehandler(dialog_->slider_blue);
+	setPrehandler(dialog_->radio_rgb);
+	setPrehandler(dialog_->radio_hsv);
 }
 
 string const
@@ -722,9 +723,6 @@ void FormPreferences::Colors::LoadBrowserLyX()
 	xcol.name = _("GUI text");
 	xcol.colorID = FL_BLACK;
 	fl_getmcolor(FL_BLACK, &xcol.r, &xcol.g, &xcol.b);
-
-	fl_mapcolor(GUI_COLOR_CURSOR, xcol.r, xcol.g, xcol.b);
-	fl_set_cursor_color(FL_DEFAULT_CURSOR, GUI_COLOR_CURSOR, FL_WHITE);
 
 	xformsColorDB.push_back(xcol);
 
@@ -957,13 +955,13 @@ void FormPreferences::Converters::build()
 	fl_set_input_return(dialog_->input_flags, FL_RETURN_CHANGED);
 
 	// set up the feedback mechanism
-	setPreHandler(dialog_->browser_all);
-	setPreHandler(dialog_->button_delete);
-	setPreHandler(dialog_->button_add);
-	setPreHandler(dialog_->input_converter);
-	setPreHandler(dialog_->choice_from);
-	setPreHandler(dialog_->choice_to);
-	setPreHandler(dialog_->input_flags);
+	setPrehandler(dialog_->browser_all);
+	setPrehandler(dialog_->button_delete);
+	setPrehandler(dialog_->button_add);
+	setPrehandler(dialog_->input_converter);
+	setPrehandler(dialog_->choice_from);
+	setPrehandler(dialog_->choice_to);
+	setPrehandler(dialog_->input_flags);
 }
 
 
@@ -1219,14 +1217,14 @@ void FormPreferences::Formats::build()
 	fl_set_input_filter(dialog_->input_format, fl_lowercase_filter);
 
 	// set up the feedback mechanism
-	setPreHandler(dialog_->browser_all);
-	setPreHandler(dialog_->input_format);
-	setPreHandler(dialog_->input_gui_name);
-	setPreHandler(dialog_->button_delete);
-	setPreHandler(dialog_->button_add);
-	setPreHandler(dialog_->input_extension);
-	setPreHandler(dialog_->input_viewer);
-	setPreHandler(dialog_->input_shrtcut);
+	setPrehandler(dialog_->browser_all);
+	setPrehandler(dialog_->input_format);
+	setPrehandler(dialog_->input_gui_name);
+	setPrehandler(dialog_->button_delete);
+	setPrehandler(dialog_->button_add);
+	setPrehandler(dialog_->input_extension);
+	setPrehandler(dialog_->input_viewer);
+	setPrehandler(dialog_->input_shrtcut);
 }
 
 
@@ -1365,7 +1363,7 @@ bool FormPreferences::Formats::erase()
 	string const name = fl_get_input(dialog_->input_format);
 
 	if (local_converters.formatIsUsed(name)) {
-		parent_.printWarning(_("Cannot remove a Format used by a Converter. Remove the converter first."));
+		parent_.postWarning(_("Cannot remove a Format used by a Converter. Remove the converter first."));
 		setEnabled(dialog_->button_delete, false);
 		return false;
 	}
@@ -1439,7 +1437,7 @@ void FormPreferences::InputsMisc::build()
 	fl_set_input_return(dialog_->input_date_format, FL_RETURN_CHANGED);
 
 	// set up the feedback mechanism
-	setPreHandler(dialog_->input_date_format);
+	setPrehandler(dialog_->input_date_format);
 }
 
 
@@ -1498,14 +1496,14 @@ void FormPreferences::Interface::build()
 	fl_set_input_return(dialog_->input_ui_file, FL_RETURN_CHANGED);
 
 	// set up the feedback mechanism
-	setPreHandler(dialog_->input_popup_normal_font);
-	setPreHandler(dialog_->input_popup_bold_font);
-	setPreHandler(dialog_->input_popup_font_encoding);
-	setPreHandler(dialog_->input_bind_file);
-	setPreHandler(dialog_->button_bind_file_browse);
-	setPreHandler(dialog_->input_ui_file);
-	setPreHandler(dialog_->button_ui_file_browse);
-	setPreHandler(dialog_->check_override_x_dead_keys);
+	setPrehandler(dialog_->input_popup_normal_font);
+	setPrehandler(dialog_->input_popup_bold_font);
+	setPrehandler(dialog_->input_popup_font_encoding);
+	setPrehandler(dialog_->input_bind_file);
+	setPrehandler(dialog_->button_bind_file_browse);
+	setPrehandler(dialog_->input_ui_file);
+	setPrehandler(dialog_->button_ui_file_browse);
+	setPrehandler(dialog_->check_override_x_dead_keys);
 }
 
 
@@ -1663,26 +1661,26 @@ void FormPreferences::Language::build()
 	fl_unfreeze_form(dialog_->form);
 
 	// set up the feedback mechanism
-	setPreHandler(dialog_->input_package);
-	setPreHandler(dialog_->check_use_kbmap);
+	setPrehandler(dialog_->input_package);
+	setPrehandler(dialog_->check_use_kbmap);
 
 	// This is safe, as nothing is done to the pointer, other than
 	// to use its address in a block-if statement.
 	// No it's not! Leads to crash.
-	// setPreHandler(
+	// setPrehandler(
 	// 		reinterpret_cast<FL_OBJECT *>(combo_default_lang),
 	//		C_FormPreferencesFeedbackCB);
 
-	setPreHandler(dialog_->input_kbmap1);
-	setPreHandler(dialog_->input_kbmap2);
-	setPreHandler(dialog_->check_rtl_support);
-	setPreHandler(dialog_->check_mark_foreign);
-	setPreHandler(dialog_->check_auto_begin);
-	setPreHandler(dialog_->check_auto_end);
-	setPreHandler(dialog_->check_use_babel);
-	setPreHandler(dialog_->check_global_options);
-	setPreHandler(dialog_->input_command_begin);
-	setPreHandler(dialog_->input_command_end);
+	setPrehandler(dialog_->input_kbmap1);
+	setPrehandler(dialog_->input_kbmap2);
+	setPrehandler(dialog_->check_rtl_support);
+	setPrehandler(dialog_->check_mark_foreign);
+	setPrehandler(dialog_->check_auto_begin);
+	setPrehandler(dialog_->check_auto_end);
+	setPrehandler(dialog_->check_use_babel);
+	setPrehandler(dialog_->check_global_options);
+	setPrehandler(dialog_->input_command_begin);
+	setPrehandler(dialog_->input_command_end);
 
 	// Activate/Deactivate the input fields dependent on the state of the
 	// buttons.
@@ -1866,19 +1864,19 @@ void FormPreferences::LnFmisc::build()
 	fl_set_counter_return(dialog_->counter_wm_jump, FL_RETURN_CHANGED);
 
 	// set up the feedback mechanism
-	setPreHandler(dialog_->check_banner);
-	setPreHandler(dialog_->check_auto_region_delete);
-	setPreHandler(dialog_->check_exit_confirm);
-	setPreHandler(dialog_->check_display_shrtcuts);
-	setPreHandler(dialog_->counter_autosave);
-	setPreHandler(dialog_->check_ask_new_file);
-	setPreHandler(dialog_->check_cursor_follows_scrollbar);
-	setPreHandler(dialog_->check_dialogs_iconify_with_main);
-	setPreHandler(dialog_->counter_wm_jump);
-	setPreHandler(dialog_->radio_display_monochrome);
-	setPreHandler(dialog_->radio_display_grayscale);
-	setPreHandler(dialog_->radio_display_color);
-	setPreHandler(dialog_->radio_no_display);
+	setPrehandler(dialog_->check_banner);
+	setPrehandler(dialog_->check_auto_region_delete);
+	setPrehandler(dialog_->check_exit_confirm);
+	setPrehandler(dialog_->check_display_shrtcuts);
+	setPrehandler(dialog_->counter_autosave);
+	setPrehandler(dialog_->check_ask_new_file);
+	setPrehandler(dialog_->check_cursor_follows_scrollbar);
+	setPrehandler(dialog_->check_dialogs_iconify_with_main);
+	setPrehandler(dialog_->counter_wm_jump);
+	setPrehandler(dialog_->radio_display_monochrome);
+	setPrehandler(dialog_->radio_display_grayscale);
+	setPrehandler(dialog_->radio_display_color);
+	setPrehandler(dialog_->radio_no_display);
 }
 
 
@@ -1986,13 +1984,13 @@ void FormPreferences::OutputsMisc::build()
 			_(" default | US letter | legal | executive | A3 | A4 | A5 | B5 "));
 
 	// set up the feedback mechanism
-	setPreHandler(dialog_->counter_line_len);
-	setPreHandler(dialog_->input_tex_encoding);
-	setPreHandler(dialog_->choice_default_papersize);
-	setPreHandler(dialog_->input_ascii_roff);
-	setPreHandler(dialog_->input_checktex);
-	setPreHandler(dialog_->input_paperoption);
-	setPreHandler(dialog_->check_autoreset_classopt);
+	setPrehandler(dialog_->counter_line_len);
+	setPrehandler(dialog_->input_tex_encoding);
+	setPrehandler(dialog_->choice_default_papersize);
+	setPrehandler(dialog_->input_ascii_roff);
+	setPrehandler(dialog_->input_checktex);
+	setPrehandler(dialog_->input_paperoption);
+	setPrehandler(dialog_->check_autoreset_classopt);
 }
 
 
@@ -2099,16 +2097,16 @@ void FormPreferences::Paths::build()
 	fl_set_input_return(dialog_->input_serverpipe, FL_RETURN_CHANGED);
 
 	// set up the feedback mechanism
-	setPreHandler(dialog_->input_default_path);
-	setPreHandler(dialog_->counter_lastfiles);
-	setPreHandler(dialog_->input_template_path);
-	setPreHandler(dialog_->check_last_files);
-	setPreHandler(dialog_->input_lastfiles);
-	setPreHandler(dialog_->check_make_backups);
-	setPreHandler(dialog_->input_backup_path);
-	setPreHandler(dialog_->input_serverpipe);
-	setPreHandler(dialog_->input_temp_dir);
-	setPreHandler(dialog_->check_use_temp_dir);
+	setPrehandler(dialog_->input_default_path);
+	setPrehandler(dialog_->counter_lastfiles);
+	setPrehandler(dialog_->input_template_path);
+	setPrehandler(dialog_->check_last_files);
+	setPrehandler(dialog_->input_lastfiles);
+	setPrehandler(dialog_->check_make_backups);
+	setPrehandler(dialog_->input_backup_path);
+	setPrehandler(dialog_->input_serverpipe);
+	setPrehandler(dialog_->input_temp_dir);
+	setPrehandler(dialog_->check_use_temp_dir);
 }
 
 
@@ -2168,7 +2166,7 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 	if (!ob || ob == dialog_->input_default_path) {
 		string const name = fl_get_input(dialog_->input_default_path);
 		if (!name.empty() && !RWInfo::WriteableDir(name)) {
-			parent_.printWarning(RWInfo::ErrorMessage());
+			parent_.postWarning(RWInfo::ErrorMessage());
 			return false;
 		}
 	}
@@ -2176,7 +2174,7 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 	if (!ob || ob == dialog_->input_template_path) {
 		string const name = fl_get_input(dialog_->input_template_path);
 		if (!name.empty() && !RWInfo::ReadableDir(name)) {
-			parent_.printWarning(RWInfo::ErrorMessage());
+			parent_.postWarning(RWInfo::ErrorMessage());
 			return false;
 		}
 	}
@@ -2186,7 +2184,7 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 		if (fl_get_button(dialog_->check_make_backups)
 		    && !name.empty()
 		    && !RWInfo::WriteableDir(name)) {
-			parent_.printWarning(RWInfo::ErrorMessage());
+			parent_.postWarning(RWInfo::ErrorMessage());
 			return false;
 		}
 	}
@@ -2196,7 +2194,7 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 		if (fl_get_button(dialog_->check_make_backups)
 		    && !name.empty()
 		    && !RWInfo::WriteableDir(name)) {
-			parent_.printWarning(RWInfo::ErrorMessage());
+			parent_.postWarning(RWInfo::ErrorMessage());
 			return false;
 		}
 	}
@@ -2206,7 +2204,7 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 		if (fl_get_button(dialog_->check_last_files)
 		    && !name.empty()
 		    && !RWInfo::WriteableFile(name)) {
-			parent_.printWarning(RWInfo::ErrorMessage());
+			parent_.postWarning(RWInfo::ErrorMessage());
 			return false;
 		}
 	}
@@ -2217,11 +2215,11 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 			// strip off the extension
 			string const str = ChangeExtension(name, "");
 			if (!RWInfo::WriteableFile(str + ".in")) {
-				parent_.printWarning(RWInfo::ErrorMessage());
+				parent_.postWarning(RWInfo::ErrorMessage());
 				return false;
 			}
 			if (!RWInfo::WriteableFile(str + ".out")) {
-				parent_.printWarning(RWInfo::ErrorMessage());
+				parent_.postWarning(RWInfo::ErrorMessage());
 				return false;
 			}
 		}
@@ -2399,24 +2397,24 @@ void FormPreferences::Printer::build()
 	fl_set_input_return(dialog_->input_name, FL_RETURN_CHANGED);
 
 	// set up the feedback mechanism
-	setPreHandler(dialog_->input_command);
-	setPreHandler(dialog_->input_page_range);
-	setPreHandler(dialog_->input_copies);
-	setPreHandler(dialog_->input_reverse);
-	setPreHandler(dialog_->input_to_printer);
-	setPreHandler(dialog_->input_file_extension);
-	setPreHandler(dialog_->input_spool_command);
-	setPreHandler(dialog_->input_paper_type);
-	setPreHandler(dialog_->input_even_pages);
-	setPreHandler(dialog_->input_odd_pages);
-	setPreHandler(dialog_->input_collated);
-	setPreHandler(dialog_->input_landscape);
-	setPreHandler(dialog_->input_to_file);
-	setPreHandler(dialog_->input_extra_options);
-	setPreHandler(dialog_->input_spool_prefix);
-	setPreHandler(dialog_->input_paper_size);
-	setPreHandler(dialog_->input_name);
-	setPreHandler(dialog_->check_adapt_output);
+	setPrehandler(dialog_->input_command);
+	setPrehandler(dialog_->input_page_range);
+	setPrehandler(dialog_->input_copies);
+	setPrehandler(dialog_->input_reverse);
+	setPrehandler(dialog_->input_to_printer);
+	setPrehandler(dialog_->input_file_extension);
+	setPrehandler(dialog_->input_spool_command);
+	setPrehandler(dialog_->input_paper_type);
+	setPrehandler(dialog_->input_even_pages);
+	setPrehandler(dialog_->input_odd_pages);
+	setPrehandler(dialog_->input_collated);
+	setPrehandler(dialog_->input_landscape);
+	setPrehandler(dialog_->input_to_file);
+	setPrehandler(dialog_->input_extra_options);
+	setPrehandler(dialog_->input_spool_prefix);
+	setPrehandler(dialog_->input_paper_size);
+	setPrehandler(dialog_->input_name);
+	setPrehandler(dialog_->check_adapt_output);
 }
 
 
@@ -2624,23 +2622,23 @@ void FormPreferences::ScreenFonts::build()
 	fl_set_input_filter(dialog_->input_huger,    fl_unsigned_float_filter);
 
 	// set up the feedback mechanism
-	setPreHandler(dialog_->input_roman);
-	setPreHandler(dialog_->input_sans);
-	setPreHandler(dialog_->input_typewriter);
-	setPreHandler(dialog_->counter_zoom);
-	setPreHandler(dialog_->counter_dpi);
-	setPreHandler(dialog_->check_scalable);
-	setPreHandler(dialog_->input_screen_encoding);
-	setPreHandler(dialog_->input_tiny);
-	setPreHandler(dialog_->input_script);
-	setPreHandler(dialog_->input_footnote);
-	setPreHandler(dialog_->input_small);
-	setPreHandler(dialog_->input_large);
-	setPreHandler(dialog_->input_larger);
-	setPreHandler(dialog_->input_largest);
-	setPreHandler(dialog_->input_normal);
-	setPreHandler(dialog_->input_huge);
-	setPreHandler(dialog_->input_huger);
+	setPrehandler(dialog_->input_roman);
+	setPrehandler(dialog_->input_sans);
+	setPrehandler(dialog_->input_typewriter);
+	setPrehandler(dialog_->counter_zoom);
+	setPrehandler(dialog_->counter_dpi);
+	setPrehandler(dialog_->check_scalable);
+	setPrehandler(dialog_->input_screen_encoding);
+	setPrehandler(dialog_->input_tiny);
+	setPrehandler(dialog_->input_script);
+	setPrehandler(dialog_->input_footnote);
+	setPrehandler(dialog_->input_small);
+	setPrehandler(dialog_->input_large);
+	setPrehandler(dialog_->input_larger);
+	setPrehandler(dialog_->input_largest);
+	setPrehandler(dialog_->input_normal);
+	setPrehandler(dialog_->input_huge);
+	setPrehandler(dialog_->input_huger);
 }
 
 	
@@ -2725,7 +2723,7 @@ bool FormPreferences::ScreenFonts::input()
 	}
 
 	if (!activate)
-		parent_.printWarning(str);
+		parent_.postWarning(str);
 	
 	return activate;
 }
@@ -2858,16 +2856,16 @@ void FormPreferences::SpellOptions::build()
 	fl_set_input_return(dialog_->input_personal_dict, FL_RETURN_CHANGED);
 
 	// set up the feedback mechanism
-	setPreHandler(dialog_->choice_spell_command);
-	setPreHandler(dialog_->check_alt_lang);
-	setPreHandler(dialog_->input_alt_lang);
-	setPreHandler(dialog_->check_escape_chars);
-	setPreHandler(dialog_->input_escape_chars);
-	setPreHandler(dialog_->check_personal_dict);
-	setPreHandler(dialog_->input_personal_dict);
-	setPreHandler(dialog_->button_personal_dict);
-	setPreHandler(dialog_->check_compound_words);
-	setPreHandler(dialog_->check_input_enc);
+	setPrehandler(dialog_->choice_spell_command);
+	setPrehandler(dialog_->check_alt_lang);
+	setPrehandler(dialog_->input_alt_lang);
+	setPrehandler(dialog_->check_escape_chars);
+	setPrehandler(dialog_->input_escape_chars);
+	setPrehandler(dialog_->check_personal_dict);
+	setPrehandler(dialog_->input_personal_dict);
+	setPrehandler(dialog_->button_personal_dict);
+	setPrehandler(dialog_->check_compound_words);
+	setPrehandler(dialog_->check_input_enc);
 }
 
 
@@ -3002,18 +3000,6 @@ void FormPreferences::SpellOptions::update()
 }
 
 
-void FormPreferences::printWarning(string const & warning)
-{
-	warningPosted = true;
-
-	string str = _("WARNING!") + string(" ") + warning;
-	str = formatted(str, dialog_->text_warning->w-10, FL_SMALL_SIZE);
-
-	fl_set_object_label(dialog_->text_warning, str.c_str());
-	fl_set_object_lsize(dialog_->text_warning, FL_SMALL_SIZE);
-}
-
-
 void FormPreferences::browse(FL_OBJECT * inpt,
 			     string const & title,
 			     string const & pattern, 
@@ -3032,67 +3018,4 @@ void FormPreferences::browse(FL_OBJECT * inpt,
 		fl_set_input(inpt, new_filename.c_str());
 		input(inpt, 0);
 	}
-}
-
-
-// C function wrapper, required by xforms.
-extern "C" {
-	
-	static
-	int C_FormPreferencesFeedbackCB(FL_OBJECT * ob, int event,
-					FL_Coord mx, FL_Coord my,
-					int key, void * xev)
-	{
-		return FormPreferences::FeedbackCB(ob, event,
-						   mx, my, key, xev);
-	}
-	
-}
-
-
-int FormPreferences::FeedbackCB(FL_OBJECT * ob, int event,
-				FL_Coord, FL_Coord, int, void *)
-{
-	// Note that the return value is important in the pre-emptive handler.
-	// Don't return anything other than 0.
-
-	lyx::Assert(ob);
-	// Don't Assert this one, as it can happen quite reasonably when things
-	// are being deleted in the d-tor.
-	//Assert(ob->form);
-	if (!ob->form) return 0;
-
-	FormPreferences * pre =
-		static_cast<FormPreferences*>(ob->form->u_vdata);
-	pre->Feedback(ob, event);
-	return 0;
-}
-
-
-// preemptive handler for feedback messages
-void FormPreferences::Feedback(FL_OBJECT * ob, int event)
-{
-	lyx::Assert(ob);
-
-	switch (event) {
-	case FL_ENTER:
-		warningPosted = false;
-		feedback(ob);
-		break;
-
-	case FL_LEAVE:
-		if (!warningPosted)
-			fl_set_object_label(dialog_->text_warning, "");
-		break;
-
-	default:
-		break;
-	}
-}
-
-
-void FormPreferences::setPreHandler(FL_OBJECT * ob)
-{
-	lyx::Assert(ob);
-	fl_set_object_prehandler(ob, C_FormPreferencesFeedbackCB);
 }

@@ -83,6 +83,14 @@
 #include "FormPreferences.h"
 #include "FormTabular.h"
 
+#include "Tooltips.h"
+
+/// Are the tooltips on or off?
+bool Dialogs::tooltipsEnabled()
+{
+	return Tooltips::enabled();
+}
+
 
 Dialogs::Dialogs(LyXView * lv)
 {

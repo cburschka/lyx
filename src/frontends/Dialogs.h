@@ -67,6 +67,12 @@ public:
 	    have been re-mapped. */
 	static SigC::Signal0<void> redrawGUI;
 
+	/// Toggle tooltips on/off in all dialogs.
+	static SigC::Signal0<void> toggleTooltips;
+
+	/// Are the tooltips on or off?
+	static bool tooltipsEnabled();
+
 	/**@name Global Hide and Update Signals */
 	//@{
 	/// Hide all visible dialogs

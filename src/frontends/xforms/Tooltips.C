@@ -18,26 +18,85 @@
 #endif
 
 #include "Tooltips.h"
+#include "Dialogs.h"
+#include "xforms_helpers.h" // formatted
+#include "gettext.h"
+#include "support/lstrings.h"
 #include "support/LAssert.h"
 
-//#if FL_REVISION >= 89
-// Usually, this is all that is needed for xforms 0.89
-// However, I can't see an easy way to change Tooltips on the fly
-// with this method, so for now use the jiggery pokery below. ;-)
-// Angus 6 Feb 2002
+using SigC::slot;
 
-/*
-void Tooltips::activateTooltip(FL_OBJECT * ob)
+
+bool Tooltips::enabled_ = false;
+
+SigC::Signal0<void> Tooltips::tooltipsToggled;
+
+
+#if FL_REVISION >= 89
+
+Tooltips::Tooltips()
+{
+	static bool first = true;
+	if (first) {
+		first = false;
+		Dialogs::toggleTooltips.connect(slot(&Tooltips::toggleEnabled));
+	}
+	tooltipsToggled.connect(slot(this, &Tooltips::toggleTooltips));
+}
+
+
+void Tooltips::toggleEnabled()
+{
+	enabled_ = !enabled_;
+	tooltipsToggled();
+}
+
+
+void Tooltips::toggleTooltips()
+{
+	if (tooltipsMap.empty())
+		// There are no objects with tooltips in this dialog, so
+		// just go away. Don't change the cursor to a question mark.
+		return;
+
+	TooltipsMap::iterator it  = tooltipsMap.begin();
+	TooltipsMap::iterator end = tooltipsMap.end();
+	for (; it != end; ++it) {
+		FL_OBJECT * const ob = it->first;
+		char const * const c_str = enabled_ ? it->second.c_str() : 0;
+		fl_set_object_helper(ob, c_str);
+	}
+
+	// Set the cursor to a question mark or back to the default.
+	FL_OBJECT * const ob = tooltipsMap.begin()->first;
+	int const cursor = enabled_ ? XC_question_arrow : FL_DEFAULT_CURSOR;
+	fl_set_cursor(FL_ObjWin(ob), cursor);
+}
+
+
+void Tooltips::initTooltip(FL_OBJECT * ob, string const & tip)
 {
 	lyx::Assert(ob);
 
-	string const help(getTooltip(ob));
-	if (!help.empty())
-		fl_set_object_helper(ob, help.c_str());	
-}
-*/
+	// Paranoia check!
+	TooltipsMap::const_iterator it = tooltipsMap.find(ob);
+	if (it != tooltipsMap.end())
+		return;
 
-//#else // if FL_REVISION < 89
+	string const str = strip(frontStrip(tip));
+	if (str.empty())
+		return;
+
+	// Store the tooltip string
+	tooltipsMap[ob] = formatted(_(str), 400);
+
+	// Set the initial state of the tooltips
+	char const * const c_str = enabled_ ? str.c_str() : 0;
+	fl_set_object_helper(ob, c_str);
+}
+
+
+#else // if FL_REVISION < 89
 
 namespace {
 
@@ -64,20 +123,82 @@ static void C_TooltipTimerCB(FL_OBJECT * ob, long data)
 }
  
 
-void Tooltips::activateTooltip(FL_OBJECT * ob)
+Tooltips::Tooltips()
+	: tooltip_timer_(0)
+{
+	static bool first = true;
+	if (first) {
+		first = false;
+		Dialogs::toggleTooltips.connect(slot(&Tooltips::toggleEnabled));
+	}
+	tooltipsToggled.connect(slot(this, &Tooltips::toggleTooltips));
+}
+
+
+void Tooltips::toggleEnabled()
+{
+	enabled_ = !enabled_;
+	tooltipsToggled();
+}
+
+
+void Tooltips::toggleTooltips()
+{
+	if (tooltipsMap.empty())
+		// There are no objects with tooltips in this dialog, so
+		// just go away. Don't change the cursor to a question mark.
+		return;
+
+	// Set the cursor to a question mark or back to the default.
+	FL_OBJECT * const ob = tooltipsMap.begin()->first;
+	int const cursor = enabled_ ? XC_question_arrow : FL_DEFAULT_CURSOR;
+	fl_set_cursor(FL_ObjWin(ob), cursor);
+}
+
+
+void Tooltips::initTooltip(FL_OBJECT * ob, string const & tip)
 {
 	lyx::Assert(ob);
 
+	// Paranoia check!
+	TooltipsMap::const_iterator it = tooltipsMap.find(ob);
+	if (it != tooltipsMap.end())
+		return;
+
+	string const str = strip(frontStrip(tip));
+	if (str.empty())
+		return;
+
+	// Store the tooltip string
+	tooltipsMap[ob] = formatted(_(str), 400);
+
 	if (!tooltip_timer_) {
 		lyx::Assert(ob->form);
-		fl_addto_form(ob->form);
+		if (fl_current_form && ob->form != fl_current_form)
+			fl_end_form();
+
+		bool const open_form = !fl_current_form;
+		if (open_form)
+			fl_addto_form(ob->form);
+
 		tooltip_timer_ = fl_add_timer(FL_HIDDEN_TIMER, 0, 0, 0, 0, "");
-		fl_end_form();
+
+		if (open_form)
+			fl_end_form();
 	}
 
 	fl_set_object_posthandler(ob, C_TooltipHandler);
 	ob->u_cdata = reinterpret_cast<char *>(tooltip_timer_);
 	tooltip_timer_->u_vdata = this;
+}
+
+
+string const Tooltips::getTooltip(FL_OBJECT * ob) const 
+{
+	TooltipsMap::const_iterator it = tooltipsMap.find(ob);
+	if (it == tooltipsMap.end())
+		return string();
+	return it->second;
 }
 
 
@@ -99,9 +220,12 @@ void TooltipTimerCB(FL_OBJECT * timer, long data)
 }
 
 
-// post_handler for bubble-help (Matthias)
-int TooltipHandler(FL_OBJECT *ob, int event)
+// post_handler for tooltip help
+int TooltipHandler(FL_OBJECT * ob, int event)
 {
+	if (!Tooltips::enabled())
+		return 0;
+
 	lyx::Assert(ob);
 	FL_OBJECT * timer = reinterpret_cast<FL_OBJECT *>(ob->u_cdata);
 	lyx::Assert(timer);
@@ -122,4 +246,4 @@ int TooltipHandler(FL_OBJECT *ob, int event)
 
 } // namespace anon
 
-//#endif // FL_REVISION < 89
+#endif // FL_REVISION >= 89

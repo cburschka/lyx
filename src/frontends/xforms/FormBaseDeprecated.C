@@ -18,11 +18,12 @@
 
 #include "Dialogs.h"
 #include "FormBaseDeprecated.h"
-#include "LyXView.h"
-#include "GUIRunTime.h"
-#include "support/LAssert.h"
 #include "xformsBC.h"
+#include "GUIRunTime.h"
+#include "Tooltips.h"
+#include "LyXView.h"
 #include "lyxrc.h"
+#include "support/LAssert.h"
 
 using SigC::slot;
 
@@ -30,17 +31,33 @@ extern "C" {
 
 // Callback function invoked by xforms when the dialog is closed by the
 // window manager
-static int C_FormBaseDeprecatedWMHideCB(FL_FORM *, void *);
- 
+static int C_WMHideCB(FL_FORM *, void *);
+
+// Callback function invoked by the xforms pre- and post-handler routines
+static int C_PrehandlerCB(FL_OBJECT *, int, FL_Coord, FL_Coord, int, void *);
+
 } // extern "C"
 
 
 FormBaseDeprecated::FormBaseDeprecated(LyXView * lv, Dialogs * d,
 				       string const & t, bool allowResize)
 	: lv_(lv), d_(d), h_(0), r_(0), title_(t),
-	  minw_(0), minh_(0), allow_resize_(allowResize)
+	  minw_(0), minh_(0), allow_resize_(allowResize),
+	  tooltips_(new Tooltips)
 {
 	lyx::Assert(lv && d);
+}
+
+
+FormBaseDeprecated::~FormBaseDeprecated()
+{
+	delete tooltips_;
+}
+
+
+Tooltips & FormBaseDeprecated::tooltips()
+{
+	return *tooltips_;
 }
 
 
@@ -76,8 +93,7 @@ void FormBaseDeprecated::show()
 		minw_ = form()->w;
 		minh_ = form()->h;
 
-		fl_set_form_atclose(form(),
-				    C_FormBaseDeprecatedWMHideCB, 0);
+		fl_set_form_atclose(form(), C_WMHideCB, 0);
 	}
 
 	fl_freeze_form(form());
@@ -130,78 +146,57 @@ void FormBaseDeprecated::hide()
 }
 
 
-int FormBaseDeprecated::WMHideCB(FL_FORM * form, void *)
+void FormBaseDeprecated::setPrehandler(FL_OBJECT * ob)
 {
-	lyx::Assert(form);
-	// Ensure that the signals (u and h) are disconnected even if the
-	// window manager is used to close the dialog.
-	FormBaseDeprecated * pre =
-		static_cast<FormBaseDeprecated*>(form->u_vdata);
-	lyx::Assert(pre);
-	pre->hide();
-	pre->bc().hide();
-	return FL_CANCEL;
+	lyx::Assert(ob);
+	fl_set_object_prehandler(ob, C_PrehandlerCB);
 }
 
 
-void FormBaseDeprecated::ApplyCB(FL_OBJECT * ob, long)
+void FormBaseDeprecated::WMHideCB()
 {
-	lyx::Assert(ob && ob->form);
-	FormBaseDeprecated * pre =
-		static_cast<FormBaseDeprecated*>(ob->form->u_vdata);
-	lyx::Assert(pre);
-	pre->apply();
-	pre->bc().apply();
+	hide();
+	bc().hide();
 }
 
 
-void FormBaseDeprecated::OKCB(FL_OBJECT * ob, long)
+void FormBaseDeprecated::ApplyCB()
 {
-	lyx::Assert(ob && ob->form);
-	FormBaseDeprecated * pre =
-		static_cast<FormBaseDeprecated*>(ob->form->u_vdata);
-	lyx::Assert(pre);
-	pre->ok();
-	pre->bc().ok();
+	apply();
+	bc().apply();
 }
 
 
-void FormBaseDeprecated::CancelCB(FL_OBJECT * ob, long)
+void FormBaseDeprecated::OKCB()
 {
-	lyx::Assert(ob && ob->form);
-	FormBaseDeprecated * pre =
-		static_cast<FormBaseDeprecated*>(ob->form->u_vdata);
-	lyx::Assert(pre);
-	pre->cancel();
-	pre->bc().cancel();
+	ok();
+	bc().ok();
+}
+
+
+void FormBaseDeprecated::CancelCB()
+{
+	cancel();
+	bc().cancel();
 }
 
 
 void FormBaseDeprecated::InputCB(FL_OBJECT * ob, long data)
 {
-	lyx::Assert(ob && ob->form);
-	FormBaseDeprecated * pre =
-		static_cast<FormBaseDeprecated*>(ob->form->u_vdata);
-	lyx::Assert(pre);
-
 	// It is possible to set the choice to 0 when using the
 	// keyboard shortcuts. This work-around deals with the problem.
 	if (ob && ob->objclass == FL_CHOICE && fl_get_choice(ob) < 1) {
 		fl_set_choice(ob, 1);
 	}
 
-	pre->bc().valid(pre->input(ob, data));
+	bc().valid(input(ob, data));
 }
 
 
-void FormBaseDeprecated::RestoreCB(FL_OBJECT * ob, long)
+void FormBaseDeprecated::RestoreCB()
 {
-	lyx::Assert(ob && ob->form);
-	FormBaseDeprecated * pre =
-		static_cast<FormBaseDeprecated*>(ob->form->u_vdata);
-	lyx::Assert(pre);
-	pre->bc().restore();
-	pre->restore();
+	bc().restore();
+	restore();
 }
 
 
@@ -242,42 +237,79 @@ void FormBaseBD::disconnect()
 }
 
 
+namespace {
+
+FormBaseDeprecated * GetForm(FL_OBJECT * ob)
+{
+	lyx::Assert(ob && ob->form && ob->form->u_vdata);
+	FormBaseDeprecated * ptr =
+		static_cast<FormBaseDeprecated *>(ob->form->u_vdata);
+	return ptr;
+}
+
+} // namespace anon
+
+
 extern "C" {
-	
-static int C_FormBaseDeprecatedWMHideCB(FL_FORM * ob, void * d)
+
+void C_FormBaseDeprecatedApplyCB(FL_OBJECT * ob, long)
 {
-	return FormBaseDeprecated::WMHideCB(ob, d);
+	GetForm(ob)->ApplyCB();
 }
 
 
-void C_FormBaseDeprecatedApplyCB(FL_OBJECT * ob, long d)
+void C_FormBaseDeprecatedOKCB(FL_OBJECT * ob, long)
 {
-	FormBaseDeprecated::ApplyCB(ob, d);
+	GetForm(ob)->OKCB();
 }
 
 
-void C_FormBaseDeprecatedOKCB(FL_OBJECT * ob, long d)
+void C_FormBaseDeprecatedCancelCB(FL_OBJECT * ob, long)
 {
-	FormBaseDeprecated::OKCB(ob, d);
-}
-
-
-void C_FormBaseDeprecatedCancelCB(FL_OBJECT * ob, long d)
-{
-	FormBaseDeprecated::CancelCB(ob, d);
+	GetForm(ob)->CancelCB();
 }
 
 
 void C_FormBaseDeprecatedInputCB(FL_OBJECT * ob, long d)
 {
-		FormBaseDeprecated::InputCB(ob, d);
+	GetForm(ob)->InputCB(ob, d);
 }
 
 
-void C_FormBaseDeprecatedRestoreCB(FL_OBJECT * ob, long d)
+void C_FormBaseDeprecatedRestoreCB(FL_OBJECT * ob, long)
 {
-	FormBaseDeprecated::RestoreCB(ob, d);
+	GetForm(ob)->RestoreCB();
+}
+
+static int C_WMHideCB(FL_FORM * form, void *)
+{
+	// Close the dialog cleanly, even if the WM is used to do so.
+	lyx::Assert(form && form->u_vdata);
+	FormBaseDeprecated * ptr =
+		static_cast<FormBaseDeprecated *>(form->u_vdata);
+	ptr->WMHideCB();
+	return FL_CANCEL;
+}
+
+static int C_PrehandlerCB(FL_OBJECT * ob, int event,
+			  FL_Coord, FL_Coord, int key, void *)
+{
+	// Note that the return value is important in the pre-emptive handler.
+	// Don't return anything other than 0.
+	lyx::Assert(ob);
+
+	// Don't Assert this one, as it can happen quite naturally when things
+	// are being deleted in the d-tor.
+	//Assert(ob->form);
+	if (!ob->form) return 0;
+
+	FormBaseDeprecated * ptr =
+		static_cast<FormBaseDeprecated *>(ob->form->u_vdata);
+
+	if (ptr)
+		ptr->PrehandlerCB(ob, event, key);
+
+	return 0;
 }
 
 } // extern "C"
-

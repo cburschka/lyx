@@ -10,7 +10,7 @@ Unit of measure: FL_COORD_PIXEL
 Name: form_citation
 Width: 680
 Height: 440
-Number of Objects: 26
+Number of Objects: 25
 
 --------------------
 class: FL_BOX
@@ -393,7 +393,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 220 400 100 30
+box: 10 400 100 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -460,24 +460,6 @@ resize: FL_RESIZE_ALL
 gravity: FL_SouthEast FL_SouthEast
 name: button_cancel
 callback: C_FormBaseCancelCB
-argument: 0
-
---------------------
-class: FL_CHOICE
-type: NORMAL_CHOICE
-box: 80 400 130 30
-boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_BLACK
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: Help:|#H
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: choice_help
-callback: C_FormBaseInputCB
 argument: 0
 
 ==============================

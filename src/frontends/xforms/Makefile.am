@@ -30,12 +30,13 @@ libxforms_la_SOURCES = \
 	Dialogs.C \
 	DropDown.h \
 	DropDown.C \
+	FeedbackController.C \
+	FeedbackController.h \
 	FileDialog.C \
 	FormFiledialog.h \
 	FormFiledialog.C \
 	form_filedialog.C \
 	form_filedialog.h \
-	GUIRunTime.C \
 	FormAboutlyx.C \
 	FormAboutlyx.h \
 	form_aboutlyx.C \
@@ -194,6 +195,7 @@ libxforms_la_SOURCES = \
 	form_url.h \
 	FormVCLog.C \
 	FormVCLog.h \
+	GUIRunTime.C \
 	input_validators.C \
 	input_validators.h \
 	MathsSymbols.C \

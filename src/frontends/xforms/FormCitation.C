@@ -23,11 +23,12 @@
 #include "ControlCitation.h"
 #include "FormCitation.h"
 #include "form_citation.h"
+#include "Tooltips.h"
+#include "helper_funcs.h"
+#include "xforms_helpers.h"
 #include "gettext.h"
 #include "support/LAssert.h"
 #include "support/lstrings.h"
-#include "helper_funcs.h"
-#include "xforms_helpers.h"
 
 using std::find;
 using std::max;
@@ -154,8 +155,6 @@ void FormCitation::build()
 
 	fl_set_button(dialog_->button_search_case, 0);
 	fl_set_button(dialog_->button_search_type, 0);
-	// the help choice
-	fillTooltipChoice(dialog_->choice_help);
 
         // Manage the ok, apply, restore and cancel/close buttons
 	bc().setOK(dialog_->button_ok);
@@ -174,20 +173,50 @@ void FormCitation::build()
 	bc().addReadOnly(dialog_->button_force_uppercase);
 
 	//set up the tooltip mechanism
-	setTooltipHandler(dialog_->button_add);
-	setTooltipHandler(dialog_->button_del);
-	setTooltipHandler(dialog_->button_up);
-	setTooltipHandler(dialog_->button_down);
-	setTooltipHandler(dialog_->choice_style);
-	setTooltipHandler(dialog_->input_before);
-	setTooltipHandler(dialog_->input_after);
-	setTooltipHandler(dialog_->button_full_author_list);
-	setTooltipHandler(dialog_->button_force_uppercase);
-	setTooltipHandler(dialog_->input_search);
-	setTooltipHandler(dialog_->button_search_case);
-	setTooltipHandler(dialog_->button_search_type);
-	setTooltipHandler(dialog_->button_previous);
-	setTooltipHandler(dialog_->button_next);
+	string str = N_("Add the selected entry to the current citation reference.");
+	tooltips().initTooltip(dialog_->button_add, str);
+
+	str = N_("Delete the selected entry from the current citation reference.");
+	tooltips().initTooltip(dialog_->button_del, str);
+
+	str = N_("Move the selected entry upwards (in the current list).");
+	tooltips().initTooltip(dialog_->button_up, str);
+
+	str = N_("Move the selected entry downwards (in the current list).");
+	tooltips().initTooltip(dialog_->button_down, str);
+
+	str = N_("The entries which will be cited. Select them with the arrow buttons from the right browser window.");
+	tooltips().initTooltip(dialog_->browser_cite, str);
+
+	str = N_("All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTex Reference\"). Move the ones you want to cite with the arrow buttons into the left browser window.");
+	tooltips().initTooltip(dialog_->browser_bib, str);
+
+	str = N_("Information about the selected entry");
+	tooltips().initTooltip(dialog_->browser_info, str);
+
+	str = N_("Here you may select how the citation label should look inside the text (Natbib).");
+	tooltips().initTooltip(dialog_->choice_style, str);
+
+	str = N_("Activate if you want to print all authors in a reference with more than three authors, and not \"<First Author> et.al.\" (Natbib).");
+	tooltips().initTooltip(dialog_->button_full_author_list, str);
+
+	str = N_("Activate if you want to print the first character of the author name as uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of sentences (Natbib).");
+	tooltips().initTooltip(dialog_->button_force_uppercase, str);
+
+	str = N_("Optional text which appears before the citation reference, e.g. \"see <Ref>\"");
+	tooltips().initTooltip(dialog_->input_before, str);
+
+	str = N_("Optional text which appears after the citation reference, e.g. \"pp. 12\"");
+	tooltips().initTooltip(dialog_->input_after, str);
+
+	str = N_("Search your database (all fields will be searched).");
+	tooltips().initTooltip(dialog_->input_search, str);
+
+	str = N_("Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex\", but not \"BibTeX\".");
+	tooltips().initTooltip(dialog_->button_search_case, str);
+
+	str = N_("Activate if you want to enter Regular Expressions.");
+	tooltips().initTooltip(dialog_->button_search_type, str);
 }
 
 
@@ -384,11 +413,6 @@ ButtonPolicy::SMInput FormCitation::input(FL_OBJECT * ob, long)
 		activate = ButtonPolicy::SMI_VALID;
 	}
 
-	if (ob == dialog_->choice_help) {
-		setTooltipLevel(dialog_->choice_help);
-		return ButtonPolicy::SMI_NOOP;
-	}
-
 	string currentCitekey;
 	if (!citekeys.empty())
 		currentCitekey = citekeys[0];
@@ -482,109 +506,4 @@ void FormCitation::setCiteButtons(State status) const
 	setEnabled(dialog_->button_del,  activate);
 	setEnabled(dialog_->button_up,   activate_up);
 	setEnabled(dialog_->button_down, activate_down);
-}
-
-
-string const FormCitation::getMinimalTooltip(FL_OBJECT const * ob) const
-{
-	string str;
-
-	if (ob == dialog_->button_add) {
-		str = N_("Add entry");
-
-	} else if (ob == dialog_->button_del) {
-		str = _("Delete entry");
-
-	} else if (ob == dialog_->button_up) {
-		str = _("Move entry up");
-
-	} else if (ob == dialog_->button_down) {
-		str = _("Move entry down");
-
-	} else if (ob == dialog_->choice_style) {
-		str = N_("Natbib Citation Style");
-
-	} else if (ob == dialog_->button_full_author_list) {
-		str = N_("List all authors");
-
-	} else if (ob == dialog_->button_force_uppercase) {
-		str = N_("Author Name begins with uppercase");
-
-	} else if (ob == dialog_->input_before) {
-		str = N_("Optional text before");
-
-	} else if (ob == dialog_->input_after) {
-		str = N_("Optional text after");
-
-	} else if (ob == dialog_->input_search) {
-		str = N_("Search the database");
-
-	} else if (ob == dialog_->button_search_case) {
-		str = N_("Case sensitive search");
-
-	} else if (ob == dialog_->button_search_type) {
-		str = N_("Use Regular Expressions.");
-
-	} else if (ob == dialog_->button_previous) {
-		str = N_("Search Backwards");
-
-	} else if (ob == dialog_->button_next) {
-		str = N_("Search Forwards");
-	}
-
-	return str;
-}
-
-
-string const FormCitation::getVerboseTooltip(FL_OBJECT const * ob) const
-{
-	string str;
-
-	if (ob == dialog_->button_add) {
-		str = N_("Add the selected entry to the current citation reference.");
-
-	} else if (ob == dialog_->button_del) {
-		str = N_("Delete the selected entry from the current citation reference.");
-
-	} else if (ob == dialog_->button_up) {
-		str = N_("Move the selected entry upwards (in the current list).");
-
-	} else if (ob == dialog_->button_down) {
-		str = N_("Move the selected entry downwards (in the current list).");
-
-	} else if (ob == dialog_->browser_cite) {
-		str = N_("The entries which will be cited. Select them with the arrow buttons from the right browser window.");
-
-	} else if (ob == dialog_->browser_bib) {
-		str = N_("All entries in the database you have loaded (via \"Insert->Lists&TOC->BibTex Reference\"). Move the ones you want to cite with the arrow buttons into the left browser window.");
-
-	} else if (ob == dialog_->browser_info) {
-		str = N_("Information about the selected entry");
-
-	} else if (ob == dialog_->choice_style) {
-		str = N_("Here you may select how the citation label should look inside the text (Natbib).");
-
-	} else if (ob == dialog_->button_full_author_list) {
-		str = N_("Activate if you want to print all authors in a reference with more than three authors, and not \"<First Author> et.al.\" (Natbib).");
-
-	} else if (ob == dialog_->button_force_uppercase) {
-		str = N_("Activate if you want to print the first character of the author name as uppercase (\"Van Gogh\", not \"van Gogh\"). Useful at the beginning of sentences (Natbib).");
-
-	} else if (ob == dialog_->input_before) {
-		str = N_("Optional text which appears before the citation reference, e.g. \"see <Ref>\"");
-
-	} else if (ob == dialog_->input_after) {
-		str = N_("Optional text which appears after the citation reference, e.g. \"pp. 12\"");
-
-	} else if (ob == dialog_->input_search) {
-		str = N_("Search your database (all fields will be searched).");
-
-	} else if (ob == dialog_->button_search_case) {
-		str = N_("Activate if you want to have case sensitive search: \"bibtex\" finds \"bibtex\", but not \"BibTeX\".");
-
-	} else if (ob == dialog_->button_search_type) {
-		str = N_("Activate if you want to enter Regular Expressions.");
-	}
-
-	return str;
 }

@@ -53,11 +53,8 @@ struct FD_form_spelloptions;
  */
 class FormPreferences : public FormBaseBI {
 public:
-	/// #FormPreferences x(LyXFunc ..., Dialogs ...);#
-	FormPreferences(LyXView *, Dialogs *);
 	///
-	static int FeedbackCB(FL_OBJECT *, int,
-			      FL_Coord, FL_Coord, int, void *);
+	FormPreferences(LyXView *, Dialogs *);
 
 private:
 	/// Pointer to the actual instantiation of the ButtonController.
@@ -81,18 +78,9 @@ private:
 	virtual void build();
 	/// Pointer to the actual instantiation of the xforms form.
 	virtual FL_FORM * form() const;
-	/// control which feedback message is output
-	void feedback(FL_OBJECT *);
-
-       	/// Set the preemptive handler for each FL_OBJECT.
-	static void setPreHandler(FL_OBJECT *);
-	/// The preemptive handler for feedback messages.
-	void Feedback(FL_OBJECT *, int);
-	/// Print a warning message and set warning flag.
-	void printWarning(string const &);
-	/** Launch a file dialog and modify input if it returns a new file.
-	    For an explanation of the various parameters, see xforms_helpers.h.
-	 */
+  	/// control which feedback message is output
+ 	string const getFeedback(FL_OBJECT *);
+	///
 	void browse(FL_OBJECT * input,
 		     string const & title, string const & pattern, 
 		     std::pair<string,string> const & dir1= std::make_pair(string(),string()), 
@@ -140,10 +128,6 @@ private:
 	/// Spellchecker, language stuff, etc
 	boost::scoped_ptr<FD_form_inner_tab> lang_opts_tab_;
 
-	/** Flag whether a warning has been posted to the text window.
-	    If so, don't redraw the window when the mouse leaves an object. */
-	bool warningPosted;
-	
 	/** Each tab folder is encapsulated in its own class.
 	 */
 
@@ -151,9 +135,9 @@ private:
 	public:
 		///
 		enum GuiColors {
-			GUI_COLOR_CHOICE = FL_FREE_COL1,
-			GUI_COLOR_HUE_DIAL = FL_FREE_COL2,
-			GUI_COLOR_CURSOR = FL_FREE_COL3
+			GUI_COLOR_CHOICE   = FL_FREE_COL14,
+			GUI_COLOR_HUE_DIAL = FL_FREE_COL15,
+			GUI_COLOR_CURSOR   = FL_FREE_COL16
 		};
 		///
 		Colors(FormPreferences & p);

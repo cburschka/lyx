@@ -20,38 +20,38 @@
 #include "FormBase.h"
 #include "xformsBC.h"
 #include "GUIRunTime.h"
-#include "support/LAssert.h"
 #include "Tooltips.h"
-#include "xforms_helpers.h" // formatted
+#include "support/LAssert.h"
 
 extern "C" {
 
 // Callback function invoked by xforms when the dialog is closed by the
 // window manager
-static int C_FormBaseWMHideCB(FL_FORM * form, void *);
+static int C_WMHideCB(FL_FORM * form, void *);
 
-// Use this to diaplay feedback messages or to trigger an input event on paste
-// with the middle mouse button
-static int C_FormBasePrehandler(FL_OBJECT * ob, int event,
-				FL_Coord, FL_Coord, int key, void *);
+// Callback function invoked by the xforms pre- and post-handler routines
+static int C_PrehandlerCB(FL_OBJECT *, int, FL_Coord, FL_Coord, int, void *);
 
 } // extern "C"
 
 
 FormBase::FormBase(ControlButtons & c, string const & t, bool allowResize)
 	: ViewBC<xformsBC>(c), minw_(0), minh_(0), allow_resize_(allowResize),
-	  title_(t), warning_posted_(false), tooltip_level_(NO_TOOLTIP)
-
-{
-	tooltip_ = new Tooltips;
-	tooltip_->getTooltip.connect(SigC::slot(this, &FormBase::getTooltip));
-}
+	  title_(t), tooltips_(new Tooltips)
+{}
 
 
 FormBase::~FormBase()
 {
-	delete tooltip_;
+	delete tooltips_;
 }
+
+
+Tooltips & FormBase::tooltips()
+{
+	return *tooltips_;
+}
+
 
 void FormBase::redraw()
 {
@@ -75,7 +75,7 @@ void FormBase::show()
 		minw_ = form()->w;
 		minh_ = form()->h;
 
-		fl_set_form_atclose(form(), C_FormBaseWMHideCB, 0);
+		fl_set_form_atclose(form(), C_WMHideCB, 0);
 	}
 
 	fl_freeze_form(form());
@@ -122,6 +122,13 @@ void FormBase::hide()
 }
 
 
+void FormBase::setPrehandler(FL_OBJECT * ob)
+{
+	lyx::Assert(ob);
+	fl_set_object_prehandler(ob, C_PrehandlerCB);
+}
+
+
 void FormBase::InputCB(FL_OBJECT * ob, long data)
 {
 	// It is possible to set the choice to 0 when using the
@@ -140,119 +147,13 @@ ButtonPolicy::SMInput FormBase::input(FL_OBJECT *, long)
 }
 
 
-// preemptive handler for feedback messages
-void FormBase::FeedbackCB(FL_OBJECT * ob, int event)
-{
-	lyx::Assert(ob);
-
-	switch (event) {
-	case FL_ENTER:
-		warning_posted_ = false;
-		feedback(ob);
-		break;
-
-	case FL_LEAVE:
-		if (!warning_posted_)
-			clear_feedback();
-		break;
-
-	default:
-		break;
-	}
-}
-
-
-void FormBase::setTooltipHandler(FL_OBJECT * ob)
-{
-	tooltip_->activateTooltip(ob);
-}
-
-
-string FormBase::getTooltip(FL_OBJECT const * ob)
-{
-	lyx::Assert(ob);
-
-	switch (tooltip_level_) {
-	case VERBOSE_TOOLTIP: 
-	{
-		string str = getVerboseTooltip(ob);
-		if (!str.empty())
-			return formatted(_(str), 400);
-		// else, fall through
-	}
-	
-	case MINIMAL_TOOLTIP:
-		return getMinimalTooltip(ob);
-		
-	case NO_TOOLTIP:
-	default:
-		return string();
-	}
-	
-}
-		
-
-/// Fill the tooltips chooser with the standard descriptions
-void FormBase::fillTooltipChoice(FL_OBJECT * ob)
-{
-	lyx::Assert(ob && ob->objclass == FL_CHOICE);
-
-	fl_clear_choice(ob);
-	fl_addto_choice(ob, _(" None | Normal | Verbose "));
-
-	switch (tooltip_level_) {
-	case NO_TOOLTIP:
-		fl_set_choice(ob, 1);
-		break;
-	case MINIMAL_TOOLTIP:
-		fl_set_choice(ob, 2);
-		break;
-	case VERBOSE_TOOLTIP:
-		fl_set_choice(ob, 3);
-		break;
-	}
-}
-
-
-void FormBase::setTooltipLevel(FL_OBJECT * ob)
-{
-	lyx::Assert(ob && ob->objclass == FL_CHOICE &&
-		    fl_get_choice_maxitems(ob) == 3);
-
-	switch (fl_get_choice(ob)) {
-	case 1:
-		tooltip_level_ = NO_TOOLTIP;
-		break;
-	case 2:
-		tooltip_level_ = MINIMAL_TOOLTIP;
-		break;
-	case 3:
-		tooltip_level_ = VERBOSE_TOOLTIP;
-		break;
-	}
-}
-
-
-void FormBase::setPrehandler(FL_OBJECT * ob)
-{
-	lyx::Assert(ob);
-	fl_set_object_prehandler(ob, C_FormBasePrehandler);
-}
-
-
-void FormBase::setWarningPosted(bool warning)
-{
-	warning_posted_ = warning;
-}
-
-
 namespace {
 
 FormBase * GetForm(FL_OBJECT * ob)
 {
 	lyx::Assert(ob && ob->form && ob->form->u_vdata);
-	FormBase * pre = static_cast<FormBase *>(ob->form->u_vdata);
-	return pre;
+	FormBase * ptr = static_cast<FormBase *>(ob->form->u_vdata);
+	return ptr;
 }
 
 } // namespace anon
@@ -291,18 +192,17 @@ void C_FormBaseInputCB(FL_OBJECT * ob, long d)
 }
 
 
-static int C_FormBaseWMHideCB(FL_FORM * form, void *)
+static int C_WMHideCB(FL_FORM * form, void *)
 {
 	// Close the dialog cleanly, even if the WM is used to do so.
 	lyx::Assert(form && form->u_vdata);
-	FormBase * pre = static_cast<FormBase *>(form->u_vdata);
-	pre->CancelButton();
+	FormBase * ptr = static_cast<FormBase *>(form->u_vdata);
+	ptr->CancelButton();
 	return FL_CANCEL;
 }
 
-
-static int C_FormBasePrehandler(FL_OBJECT * ob, int event,
-				FL_Coord, FL_Coord, int key, void *)
+static int C_PrehandlerCB(FL_OBJECT * ob, int event,
+			  FL_Coord, FL_Coord, int key, void *)
 {
 	// Note that the return value is important in the pre-emptive handler.
 	// Don't return anything other than 0.
@@ -313,19 +213,10 @@ static int C_FormBasePrehandler(FL_OBJECT * ob, int event,
 	//Assert(ob->form);
 	if (!ob->form) return 0;
 
-	FormBase * pre = static_cast<FormBase *>(ob->form->u_vdata);
-	if (!pre) return 0;
-
-	if (event == FL_PUSH && key == 2 && ob->objclass == FL_INPUT) {
-		// Trigger an input event when pasting in an xforms input object
-		// using the middle mouse button.
-		pre->InputCB(ob, 0);
-
-	} else if (event == FL_ENTER || event == FL_LEAVE) {
-		// Post feedback as the mouse enters the object,
-		// remove it as the mouse leaves.
-		pre->FeedbackCB(ob, event);
-	}
+	FormBase * ptr = static_cast<FormBase *>(ob->form->u_vdata);
+  
+	if (ptr)
+		ptr->PrehandlerCB(ob, event, key);
 
 	return 0;
 }

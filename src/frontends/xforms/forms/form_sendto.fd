@@ -10,7 +10,7 @@ Unit of measure: FL_COORD_PIXEL
 Name: form_sendto
 Width: 360
 Height: 410
-Number of Objects: 7
+Number of Objects: 6
 
 --------------------
 class: FL_BOX
@@ -33,7 +33,7 @@ argument:
 --------------------
 class: FL_BROWSER
 type: HOLD_BROWSER
-box: 15 30 145 250
+box: 105 30 145 250
 boxtype: FL_DOWN_BOX
 colors: FL_COL1 FL_YELLOW
 alignment: FL_ALIGN_TOP_LEFT
@@ -63,24 +63,6 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_SouthWest FL_SouthEast
 name: input_command
-callback: C_FormBaseInputCB
-argument: 0
-
---------------------
-class: FL_CHOICE
-type: NORMAL_CHOICE
-box: 215 250 130 30
-boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_BLACK
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_NORMAL_SIZE
-lcol: FL_BLACK
-label: Help:|#H
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: choice_help
 callback: C_FormBaseInputCB
 argument: 0
 

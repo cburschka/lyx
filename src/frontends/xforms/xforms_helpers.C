@@ -363,15 +363,16 @@ namespace {
 
 // sorted by hand to prevent LyXLex from complaining on read().
 keyword_item xformTags[] = {
-	{ "\\gui_background", FL_COL1 },
+	{ "\\gui_background",   FL_COL1 },
 	{ "\\gui_buttonbottom", FL_BOTTOM_BCOL },
-	{ "\\gui_buttonleft", FL_LEFT_BCOL },
-	{ "\\gui_buttonright", FL_RIGHT_BCOL },
-	{ "\\gui_buttontop", FL_TOP_BCOL },
-	{ "\\gui_inactive", FL_INACTIVE },
-	{ "\\gui_push_button", FL_YELLOW },
-	{ "\\gui_selected", FL_MCOL },	
-	{ "\\gui_text", FL_BLACK }
+	{ "\\gui_buttonleft",   FL_LEFT_BCOL },
+	{ "\\gui_buttonright",  FL_RIGHT_BCOL },
+	{ "\\gui_buttontop",    FL_TOP_BCOL },
+	{ "\\gui_inactive",     FL_INACTIVE },
+	{ "\\gui_pointer",      FL_FREE_COL16 },
+	{ "\\gui_push_button",  FL_YELLOW },
+	{ "\\gui_selected",     FL_MCOL },	
+	{ "\\gui_text",         FL_BLACK }
 };
 
 
@@ -398,6 +399,8 @@ bool XformsColor::read(string const & filename)
 		default: break;
 		}
 
+		string const tag = lexrc.getString();
+
 		RGBColor col;
 
 		if (!lexrc.next()) break;
@@ -410,6 +413,13 @@ bool XformsColor::read(string const & filename)
 		col.b = lexrc.getInteger();
 
 		fl_mapcolor(le, col.r, col.g, col.b);
+
+		if (tag == "\\gui_pointer") {
+			fl_set_cursor_color(FL_DEFAULT_CURSOR,
+					    FL_FREE_COL16, FL_WHITE);
+			fl_set_cursor_color(XC_question_arrow,
+					    FL_FREE_COL16, FL_WHITE);
+		}
 	}
 		
 	return true;
@@ -427,7 +437,7 @@ bool XformsColor::write(string const & filename)
 	   << "###          LyX, The Document Processor\n"
 	   << "###\n"
 	   << "###          Copyright 1995 Matthias Ettrich\n"
-	   << "###          Copyright 1995-2001 The LyX Team.\n"
+	   << "###          Copyright 1995-2002 The LyX Team.\n"
 	   << "###\n"
 	   << "### ========================================================\n"
 	   << "\n"

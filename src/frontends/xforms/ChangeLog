@@ -1,3 +1,44 @@
+2002-03-08  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FeedbackController.[Ch]: new files, providing a standard interface to
+	the feedback and warning messages. Created by stripping code out of
+	FormBase.
+
+	* FormBase.[Ch]: strip out all the feedback code and simplify yet
+	further the tooltips code.
+
+	* FormBase.[Ch]:
+	* FormBaseDeprecated.[Ch]: Add a Tooltips pointer.
+	Derive both classes from FeedbackController so daughter classes each
+	have a common interface for same.
+
+	* Toolbar_pimpl.[Ch]: strip out all the tooltip code and use the
+	Tooltips wrapper class.
+
+	* Tooltips.[Ch]: work out how to update tooltips when using
+	xforms 0.89's fl_set_object_helper. Can now toggle tooltips with both
+	xforms 0.88 and 0.89. Change the cursor to a "?" when in query mode
+	and when the dialog has some tooltips.
+
+	* FormPreferences.[Ch]: strip out all the feedback code and use
+	the FeedbackController.
+
+	* xforms_helpers.C: save the color of the gui pointer.
+
+	* FormBibtex.[Ch]:
+	* forms/form_bibtex.fd:
+	* FormCitation.[Ch]:
+	* forms/form_citation.fd:
+	* FormForks.[Ch]:
+	* forms/form_forks.fd:
+	* FormSendto.[Ch]:
+	* forms/form_sendto.fd:
+	* FormTexinfo.[Ch]:
+	* forms/form_texinfo.fd: remove "Help" button and rejig for much
+	simplified tooltips code.
+
+	* Makefile.am: add FeedbackController.[Ch].
+
 2002-03-08  Juergen Spitzmueller  <j.spitzmueller@gmx.de>
 
 	* FormGraphics.C: Tiny stylistic correction.

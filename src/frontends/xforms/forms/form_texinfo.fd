@@ -10,13 +10,13 @@ SnapGrid: 1
 =============== FORM ===============
 Name: form_texinfo
 Width: 513
-Height: 353
-Number of Objects: 13
+Height: 312
+Number of Objects: 12
 
 --------------------
 class: FL_BOX
 type: UP_BOX
-box: 0 0 513 353
+box: 0 0 513 312
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -215,7 +215,7 @@ argument: 0
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 409 313 90 30
+box: 409 270 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -228,24 +228,6 @@ resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
 name: button_close
 callback: C_FormBaseCancelCB
-argument: 0
-
---------------------
-class: FL_CHOICE
-type: NORMAL_CHOICE
-box: 344 270 155 29
-boxtype: FL_FRAME_BOX
-colors: FL_COL1 FL_BLACK
-alignment: FL_ALIGN_LEFT
-style: FL_NORMAL_STYLE
-size: FL_DEFAULT_SIZE
-lcol: FL_BLACK
-label: Help:|#H
-shortcut: 
-resize: FL_RESIZE_ALL
-gravity: FL_NoGravity FL_NoGravity
-name: choice_help
-callback: C_FormBaseInputCB
 argument: 0
 
 ==============================

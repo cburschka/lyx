@@ -674,6 +674,10 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 	
 	// A few general toggles
 	switch (action) {
+	case LFUN_TOOLTIPS_TOGGLE:
+		flag.setOnOff(owner->getDialogs()->tooltipsEnabled());
+		break;
+
 	case LFUN_READ_ONLY_TOGGLE:
 		flag.setOnOff(buf->isReadonly());
 		break;
@@ -1647,6 +1651,10 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 		fcc.kill(pid);
 		break;
 	}
+
+	case LFUN_TOOLTIPS_TOGGLE:
+		owner->getDialogs()->toggleTooltips();
+		break;
 
 	default:
 		// Then if it was none of the above

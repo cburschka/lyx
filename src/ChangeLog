@@ -1,3 +1,11 @@
+2002-03-08  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* commandtags.h:
+	* LyXAction.C: add LFUN_TOOLTIPS_TOGGLE, "toggle-tooltips"
+	* lyxfunc.C (getStatus(LFUN_TOOLTIPS_TOGGLE)): set flag based on
+	value of Dialogs::tooltipsEnabled().
+	(dispatch(LFUN_TOOLTIPS_TOGGLE)): emit signal Dialogs::toggleTooltips.
+
 2002-03-08  Juergen Vigna  <jug@sad.it>
 
 	* BufferView_pimpl.C (updateInset): update inset inside inset also

@@ -27,7 +27,7 @@ FD_form_sendto * FormSendto::build_sendto()
   obj = fl_add_box(FL_UP_BOX, 0, 0, 360, 410, "");
   {
     char const * const dummy = N_("Export format|#E");
-    fdui->browser_formats = obj = fl_add_browser(FL_HOLD_BROWSER, 15, 30, 145, 250, idex(_(dummy)));
+    fdui->browser_formats = obj = fl_add_browser(FL_HOLD_BROWSER, 105, 30, 145, 250, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
@@ -42,14 +42,6 @@ FD_form_sendto * FormSendto::build_sendto()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_TOP_LEFT);
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthEast);
-    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
-  {
-    char const * const dummy = N_("Help:|#H");
-    fdui->choice_help = obj = fl_add_choice(FL_NORMAL_CHOICE, 215, 250, 130, 30, idex(_(dummy)));
-    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
-  }
-    fl_set_object_boxtype(obj, FL_FRAME_BOX);
-    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   fdui->button_ok = obj = fl_add_button(FL_RETURN_BUTTON, 65, 370, 90, 30, _("OK"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);

@@ -299,6 +299,7 @@ enum kb_action {
 	LFUN_HELP_TEXINFO,              // Herbert 20011001
 	LFUN_FORKS_SHOW,                // Angus 16 Feb 2002
 	LFUN_FORKS_KILL,                // Angus 16 Feb 2002
+	LFUN_TOOLTIPS_TOGGLE,           // Angus 8 Mar 2002
 	LFUN_LASTACTION  /* this marks the end of the table */
 };
 

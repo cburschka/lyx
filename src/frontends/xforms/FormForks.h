@@ -36,8 +36,7 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
-	/// tooltips
-	string const getVerboseTooltip(FL_OBJECT const * ob) const;
+
 	/// Fdesign generated method
 	FD_form_forks * build_forks();
 

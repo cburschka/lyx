@@ -28,6 +28,7 @@
 #endif
 
 class XFormsView;
+class Tooltips;
 
 /** The LyX xforms toolbar class
   */
@@ -37,11 +38,8 @@ public:
 	static void layoutSelectedCB(int, void *, Combox *);
 	///
 	Pimpl(LyXView * o, int x, int y);
-
 	///
-	~Pimpl() {
-		clean();
-	}
+	~Pimpl();
 	
 	/// (re)sets the toolbar
 	void set(bool doingmain = false);
@@ -95,10 +93,8 @@ public:
 	ToolbarList toollist;
 	///
 	XFormsView * owner;
-#if FL_REVISION < 89
 	///
-	FL_OBJECT * bubble_timer;
-#endif
+	Tooltips * tooltip_;
 	///
 	Combox * combox;
 	/// Starting position

@@ -18,7 +18,6 @@ struct FD_form_sendto {
 	FL_FORM *form;
 	FL_OBJECT *browser_formats;
 	FL_OBJECT *input_command;
-	FL_OBJECT *choice_help;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_apply;
 	FL_OBJECT *button_cancel;
