@@ -32,7 +32,7 @@ using SigC::slot;
 
 FormTabular::FormTabular(LyXView * lv, Dialogs * d)
 	: FormInset(lv, d, _("Tabular Layout")),
-	  inset_(0), actCell_(-1)
+	  inset_(0), actCell_(-1), closing_(false)
 {
 	// let the dialog be shown
 	// This is a permanent connection so we won't bother
