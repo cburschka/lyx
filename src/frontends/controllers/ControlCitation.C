@@ -25,13 +25,6 @@
 #include "Dialogs.h"
 #include "LyXView.h"
 
-// need to #include this in _one_ of the ControlCommand-derived classses in
-// order to instantiate
-// ControlInset<InsetCommand, InsetCommandParams>::showInset
-// ControlInset<InsetCommand, InsetCommandParams>::createInset
-#include "ControlInset.tmpl"
-
-
 using std::pair;
 using std::vector;
 using SigC::slot;

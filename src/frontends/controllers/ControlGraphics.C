@@ -22,7 +22,6 @@
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"
 #include "ControlGraphics.h"
-#include "ControlInset.tmpl"
 
 #include "helper_funcs.h"
 

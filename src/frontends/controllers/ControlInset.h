@@ -106,4 +106,7 @@ private:
 };
 
 
+
+#include "ControlInset.tmpl"
+
 #endif // CONTROLINSET_H

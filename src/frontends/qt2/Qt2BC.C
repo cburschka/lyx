@@ -14,7 +14,6 @@
 #endif
 
 #include "Qt2BC.h"
-#include "ButtonController.tmpl"
 #include "debug.h"
 
 #include <qbutton.h>

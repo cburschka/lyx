@@ -47,4 +47,7 @@ private:
 	bool dialog_built_;
 };
 
+
+#include "ControlDialog.tmpl"
+
 #endif // CONTROLDIALOG_H

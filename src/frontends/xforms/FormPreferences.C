@@ -14,7 +14,6 @@
 
 #include "FormPreferences.h"
 #include "form_preferences.h"
-#include "ButtonController.tmpl"
 #include "Dialogs.h"
 
 #include "buffer.h"

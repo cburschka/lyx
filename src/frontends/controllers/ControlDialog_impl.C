@@ -9,7 +9,6 @@
 #include <config.h>
 
 #include "ControlDialog_impl.h"
-#include "ControlDialog.tmpl"
 
 ControlDialogBD::ControlDialogBD(LyXView & lv, Dialogs & d)
 	: ControlDialog<ControlConnectBD>(lv, d)
