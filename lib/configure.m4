@@ -532,7 +532,7 @@ SEARCH_PROG([for an EPSI ->  EPS/XPM converter], EPS2EPS, eps2eps)
 if test "$EPS2EPS" = "eps2eps"; then
 cat >>$outfile <<EOF
 \\converter epsi pdf "epstopdf --outfile=\$\$o \$\$i" ""
-\\converter epsi eps "eps2eps \$\$i $$o" ""
+\\converter epsi eps "eps2eps \$\$i \$\$o" ""
 \\converter epsi xpm "eps2eps -sOutputFile=- \$\$i dummy.eps | convert - \$\$o" ""
 EOF
 fi
