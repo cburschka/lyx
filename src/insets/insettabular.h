@@ -121,7 +121,7 @@ public:
 	    insets that may contain several paragraphs */
 	bool noFontChange() const { return true; }
 	///
-	bool display() const { return tabular->IsLongTabular(); }
+	bool display() const { return tabular->isLongTabular(); }
 	///
 	RESULT localDispatch(FuncRequest const &);
 	///

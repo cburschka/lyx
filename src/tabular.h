@@ -162,7 +162,7 @@ public:
 	struct ltType {
 		// constructor
 		ltType();
-		// we have this header type (is set in the GetLT... functions)
+		// we have this header type (is set in the getLT... functions)
 		bool set;
 		// double borders on top
 		bool topDL;
@@ -174,11 +174,10 @@ public:
 		bool empty;
 	};
 
-	/* konstruktor */
-	///
+	/// constructor
 	LyXTabular(BufferParams const &,
 		   InsetTabular *, int columns_arg, int rows_arg);
-	///
+	/// sort of copy constructir
 	LyXTabular(BufferParams const &,
 		   InsetTabular *, LyXTabular const &);
 	///
@@ -190,105 +189,105 @@ public:
 	LyXTabular * clone(BufferParams const &, InsetTabular *);
 
 	/// Returns true if there is a topline, returns false if not
-	bool TopLine(int cell, bool onlycolumn = false) const;
+	bool topLine(int cell, bool onlycolumn = false) const;
 	/// Returns true if there is a topline, returns false if not
-	bool BottomLine(int cell, bool onlycolumn = false) const;
+	bool bottomLine(int cell, bool onlycolumn = false) const;
 	/// Returns true if there is a topline, returns false if not
-	bool LeftLine(int cell, bool onlycolumn = false) const;
+	bool leftLine(int cell, bool onlycolumn = false) const;
 	/// Returns true if there is a topline, returns false if not
-	bool RightLine(int cell, bool onlycolumn = false) const;
+	bool rightLine(int cell, bool onlycolumn = false) const;
 
 	///
 	bool topAlreadyDrawn(int cell) const;
 	///
 	bool leftAlreadyDrawn(int cell) const;
 	///
-	bool IsLastRow(int cell) const;
+	bool isLastRow(int cell) const;
 
 	///
-	int GetAdditionalHeight(int row) const;
+	int getAdditionalHeight(int row) const;
 	///
-	int GetAdditionalWidth(int cell) const;
+	int getAdditionalWidth(int cell) const;
 
 	/* returns the maximum over all rows */
 	///
-	int GetWidthOfColumn(int cell) const;
+	int getWidthOfColumn(int cell) const;
 	///
-	int GetWidthOfTabular() const;
+	int getWidthOfTabular() const;
 	///
-	int GetAscentOfRow(int row) const;
+	int getAscentOfRow(int row) const;
 	///
-	int GetDescentOfRow(int row) const;
+	int getDescentOfRow(int row) const;
 	///
-	int GetHeightOfTabular() const;
+	int getHeightOfTabular() const;
 	/// Returns true if a complete update is necessary, otherwise false
-	bool SetAscentOfRow(int row, int height);
+	bool setAscentOfRow(int row, int height);
 	/// Returns true if a complete update is necessary, otherwise false
-	bool SetDescentOfRow(int row, int height);
+	bool setDescentOfRow(int row, int height);
 	/// Returns true if a complete update is necessary, otherwise false
-	bool SetWidthOfCell(int cell, int new_width);
+	bool setWidthOfCell(int cell, int new_width);
 	/// Returns true if a complete update is necessary, otherwise false
-	bool SetAllLines(int cell, bool line);
+	bool setAllLines(int cell, bool line);
 	/// Returns true if a complete update is necessary, otherwise false
-	bool SetTopLine(int cell, bool line, bool onlycolumn = false);
+	bool setTopLine(int cell, bool line, bool onlycolumn = false);
 	/// Returns true if a complete update is necessary, otherwise false
-	bool SetBottomLine(int cell, bool line, bool onlycolumn = false);
+	bool setBottomLine(int cell, bool line, bool onlycolumn = false);
 	/// Returns true if a complete update is necessary, otherwise false
-	bool SetLeftLine(int cell, bool line, bool onlycolumn = false);
+	bool setLeftLine(int cell, bool line, bool onlycolumn = false);
 	/// Returns true if a complete update is necessary, otherwise false
-	bool SetRightLine(int cell, bool line, bool onlycolumn = false);
+	bool setRightLine(int cell, bool line, bool onlycolumn = false);
 	/// Returns true if a complete update is necessary, otherwise false
-	bool SetAlignment(int cell, LyXAlignment align,
+	bool setAlignment(int cell, LyXAlignment align,
 			  bool onlycolumn = false);
 	/// Returns true if a complete update is necessary, otherwise false
-	bool SetVAlignment(int cell, VAlignment align,
+	bool setVAlignment(int cell, VAlignment align,
 			   bool onlycolumn = false);
 	///
-	bool SetColumnPWidth(int cell, LyXLength const & width);
+	bool setColumnPWidth(int cell, LyXLength const & width);
 	///
-	bool SetMColumnPWidth(int cell, LyXLength const & width);
+	bool setMColumnPWidth(int cell, LyXLength const & width);
 	///
-	bool SetAlignSpecial(int cell, string const & special, Feature what);
+	bool setAlignSpecial(int cell, string const & special, Feature what);
 	///
-	LyXAlignment GetAlignment(int cell, bool onlycolumn = false) const;
+	LyXAlignment getAlignment(int cell, bool onlycolumn = false) const;
 	///
-	VAlignment GetVAlignment(int cell, bool onlycolumn = false) const;
+	VAlignment getVAlignment(int cell, bool onlycolumn = false) const;
 	///
-	LyXLength const GetPWidth(int cell) const;
+	LyXLength const getPWidth(int cell) const;
 	///
-	LyXLength const GetColumnPWidth(int cell) const;
+	LyXLength const getColumnPWidth(int cell) const;
 	///
-	LyXLength const GetMColumnPWidth(int cell) const;
+	LyXLength const getMColumnPWidth(int cell) const;
 	///
-	string const GetAlignSpecial(int cell, int what) const;
+	string const getAlignSpecial(int cell, int what) const;
 	///
-	int GetWidthOfCell(int cell) const;
+	int getWidthOfCell(int cell) const;
 	///
-	int GetBeginningOfTextInCell(int cell) const;
+	int getBeginningOfTextInCell(int cell) const;
 	///
-	void AppendRow(BufferParams const &, int cell);
+	void appendRow(BufferParams const &, int cell);
 	///
-	void DeleteRow(int row);
+	void deleteRow(int row);
 	///
-	void AppendColumn(BufferParams const &, int cell);
+	void appendColumn(BufferParams const &, int cell);
 	///
-	void DeleteColumn(int column);
+	void deleteColumn(int column);
 	///
-	bool IsFirstCellInRow(int cell) const;
+	bool isFirstCellInRow(int cell) const;
 	///
-	int GetFirstCellInRow(int row) const;
+	int getFirstCellInRow(int row) const;
 	///
-	bool IsLastCellInRow(int cell) const;
+	bool isLastCellInRow(int cell) const;
 	///
-	int GetLastCellInRow(int row) const;
+	int getLastCellInRow(int row) const;
 	///
-	int GetNumberOfCells() const;
+	int getNumberOfCells() const;
 	///
-	int NumberOfCellsInRow(int cell) const;
+	int numberOfCellsInRow(int cell) const;
 	///
-	void Write(Buffer const *, std::ostream &) const;
+	void write(Buffer const *, std::ostream &) const;
 	///
-	void Read(Buffer const *, LyXLex &);
+	void read(Buffer const *, LyXLex &);
 	///
 	int latex(Buffer const *, std::ostream &,
 		  LatexRunParams const &) const;
@@ -298,13 +297,13 @@ public:
 	int ascii(Buffer const *, std::ostream &, int const depth,
 		  bool onlydata, unsigned char delim) const;
 	///
-	bool IsMultiColumn(int cell, bool real = false) const;
+	bool isMultiColumn(int cell, bool real = false) const;
 	///
-	void SetMultiColumn(Buffer *, int cell, int number);
+	void setMultiColumn(Buffer *, int cell, int number);
 	///
-	int UnsetMultiColumn(int cell); // returns number of new cells
+	int unsetMultiColumn(int cell); // returns number of new cells
 	///
-	bool IsPartOfMultiColumn(int row, int column) const;
+	bool isPartOfMultiColumn(int row, int column) const;
 	///
 	int row_of_cell(int cell) const;
 	///
@@ -312,55 +311,55 @@ public:
 	///
 	int right_column_of_cell(int cell) const;
 	///
-	void SetLongTabular(bool);
+	void setLongTabular(bool);
 	///
-	bool IsLongTabular() const;
+	bool isLongTabular() const;
 	///
-	void SetRotateTabular(bool);
+	void setRotateTabular(bool);
 	///
-	bool GetRotateTabular() const;
+	bool getRotateTabular() const;
 	///
-	void SetRotateCell(int cell, bool);
+	void setRotateCell(int cell, bool);
 	///
-	bool GetRotateCell(int cell) const;
+	bool getRotateCell(int cell) const;
 	///
-	bool NeedRotating() const;
+	bool needRotating() const;
 	///
-	bool IsLastCell(int cell) const;
+	bool isLastCell(int cell) const;
 	///
-	int GetCellAbove(int cell) const;
+	int getCellAbove(int cell) const;
 	///
-	int GetCellBelow(int cell) const;
+	int getCellBelow(int cell) const;
 	///
-	int GetLastCellAbove(int cell) const;
+	int getLastCellAbove(int cell) const;
 	///
-	int GetLastCellBelow(int cell) const;
+	int getLastCellBelow(int cell) const;
 	///
-	int GetCellNumber(int row, int column) const;
+	int getCellNumber(int row, int column) const;
 	///
-	void SetUsebox(int cell, BoxType);
+	void setUsebox(int cell, BoxType);
 	///
-	BoxType GetUsebox(int cell) const;
+	BoxType getUsebox(int cell) const;
 	//
 	// Long Tabular Options support functions
 	///
 	bool checkLTType(int row, ltType const &) const;
 	///
-	void SetLTHead(int row, bool flag, ltType const &, bool first);
+	void setLTHead(int row, bool flag, ltType const &, bool first);
 	///
-	bool GetRowOfLTHead(int row, ltType &) const;
+	bool getRowOfLTHead(int row, ltType &) const;
 	///
-	bool GetRowOfLTFirstHead(int row, ltType &) const;
+	bool getRowOfLTFirstHead(int row, ltType &) const;
 	///
-	void SetLTFoot(int row, bool flag, ltType const &, bool last);
+	void setLTFoot(int row, bool flag, ltType const &, bool last);
 	///
-	bool GetRowOfLTFoot(int row, ltType &) const;
+	bool getRowOfLTFoot(int row, ltType &) const;
 	///
-	bool GetRowOfLTLastFoot(int row, ltType &) const;
+	bool getRowOfLTLastFoot(int row, ltType &) const;
 	///
-	void SetLTNewPage(int row, bool what);
+	void setLTNewPage(int row, bool what);
 	///
-	bool GetLTNewPage(int row) const;
+	bool getLTNewPage(int row) const;
 	///
 	bool haveLTHead() const;
 	///
@@ -372,28 +371,26 @@ public:
 	///
 	// end longtable support
 	///
-	InsetText * GetCellInset(int cell) const;
+	InsetText * getCellInset(int cell) const;
 	///
-	InsetText * GetCellInset(int row, int column) const;
+	InsetText * getCellInset(int row, int column) const;
 	/// Search for \param inset in the tabular, with the
 	/// additional hint that it could be at \param maybe_cell
-	int GetCellFromInset(Inset const * inset, int maybe_cell = -1) const;
+	int getCellFromInset(Inset const * inset, int maybe_cell = -1) const;
 	///
 	int rows() const { return rows_; }
 	///
 	int columns() const { return columns_;}
 	///
-	InsetTabular * owner() const { return owner_; }
-	///
-	void Validate(LaTeXFeatures &) const;
+	void validate(LaTeXFeatures &) const;
 	///
 	std::vector<string> const getLabelList() const;
 	///
 	/// recalculate the widths/heights only!
 	void reinit();
+private:
 	///
 	mutable int cur_cell;
-private:
 	///
 	struct cellstruct {
 		///
@@ -522,14 +519,14 @@ private:
 	InsetTabular * owner_;
 
 	///
-	void Init(BufferParams const &,
+	void init(BufferParams const &,
 		  int columns_arg, int rows_arg, LyXTabular const * lt = 0);
 	///
 	void Reinit(bool reset_widths = true);
 	///
 	void set_row_column_number_info(bool oldformat = false);
 	/// Returns true if a complete update is necessary, otherwise false
-	bool SetWidthOfMulticolCell(int cell, int new_width);
+	bool setWidthOfMulticolCell(int cell, int new_width);
 	///
 	void recalculateMulticolumnsOfColumn(int column);
 	/// Returns true if change
@@ -545,7 +542,7 @@ private:
 	///
 	int cells_in_multicolumn(int cell) const;
 	///
-	BoxType UseParbox(int cell) const;
+	BoxType useParbox(int cell) const;
 	///
 	void setHeaderFooterRows(int header, int fheader, int footer, int lfooter);
 	///

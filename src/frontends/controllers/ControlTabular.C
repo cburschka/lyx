@@ -74,7 +74,7 @@ bool ControlTabular::useMetricUnits() const
 
 void ControlTabular::toggleTopLine()
 {
-	if (tabular().IsMultiColumn(getActiveCell()))
+	if (tabular().isMultiColumn(getActiveCell()))
 		set(LyXTabular::M_TOGGLE_LINE_TOP);
 	else
 		set(LyXTabular::TOGGLE_LINE_TOP);
@@ -83,7 +83,7 @@ void ControlTabular::toggleTopLine()
 
 void ControlTabular::toggleBottomLine()
 {
-	if (tabular().IsMultiColumn(getActiveCell()))
+	if (tabular().isMultiColumn(getActiveCell()))
 		set(LyXTabular::M_TOGGLE_LINE_BOTTOM);
 	else
 		set(LyXTabular::TOGGLE_LINE_BOTTOM);
@@ -92,7 +92,7 @@ void ControlTabular::toggleBottomLine()
 
 void ControlTabular::toggleLeftLine()
 {
-	if (tabular().IsMultiColumn(getActiveCell()))
+	if (tabular().isMultiColumn(getActiveCell()))
 		set(LyXTabular::M_TOGGLE_LINE_LEFT);
 	else
 		set(LyXTabular::TOGGLE_LINE_LEFT);
@@ -101,7 +101,7 @@ void ControlTabular::toggleLeftLine()
 
 void ControlTabular::toggleRightLine()
 {
-	if (tabular().IsMultiColumn(getActiveCell()))
+	if (tabular().isMultiColumn(getActiveCell()))
 		set(LyXTabular::M_TOGGLE_LINE_RIGHT);
 	else
 		set(LyXTabular::TOGGLE_LINE_RIGHT);
@@ -110,7 +110,7 @@ void ControlTabular::toggleRightLine()
 
 void ControlTabular::setSpecial(string const & special)
 {
-	if (tabular().IsMultiColumn(getActiveCell()))
+	if (tabular().isMultiColumn(getActiveCell()))
 		set(LyXTabular::SET_SPECIAL_MULTI, special);
 	else
 		set(LyXTabular::SET_SPECIAL_COLUMN, special);
@@ -119,7 +119,7 @@ void ControlTabular::setSpecial(string const & special)
 
 void ControlTabular::setWidth(string const & width)
 {
-	if (tabular().IsMultiColumn(getActiveCell()))
+	if (tabular().isMultiColumn(getActiveCell()))
 		set(LyXTabular::SET_MPWIDTH, width);
 	else
 		set(LyXTabular::SET_PWIDTH, width);
@@ -177,7 +177,7 @@ void ControlTabular::halign(ControlTabular::HALIGN h)
 			break;
 	}
 
-	if (tabular().IsMultiColumn(getActiveCell()))
+	if (tabular().isMultiColumn(getActiveCell()))
 		set(multi_num);
 	else
 		set(num);
@@ -204,7 +204,7 @@ void ControlTabular::valign(ControlTabular::VALIGN v)
 			break;
 	}
 
-	if (tabular().IsMultiColumn(getActiveCell()))
+	if (tabular().isMultiColumn(getActiveCell()))
 		set(multi_num);
 	else
 		set(num);

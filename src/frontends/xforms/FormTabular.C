@@ -167,37 +167,37 @@ void FormTabular::update()
 	sprintf(buf, "%d", row + 1);
 	fl_set_input(dialog_->input_tabular_row, buf);
 	fl_deactivate_object(dialog_->input_tabular_row);
-	if (tabular.IsMultiColumn(cell)) {
+	if (tabular.isMultiColumn(cell)) {
 		fl_set_button(cell_options_->check_multicolumn, 1);
 		fl_set_button(cell_options_->check_border_top,
-			      tabular.TopLine(cell)?1:0);
+			      tabular.topLine(cell)?1:0);
 		setEnabled(cell_options_->check_border_top, true);
 		fl_set_button(cell_options_->check_border_bottom,
-			      tabular.BottomLine(cell)?1:0);
+			      tabular.bottomLine(cell)?1:0);
 		setEnabled(cell_options_->check_border_bottom, true);
 		// pay attention to left/right lines they are only allowed
 		// to set if we are in first/last cell of row or if the left/right
 		// cell is also a multicolumn.
-		if (tabular.IsFirstCellInRow(cell) ||
-		    tabular.IsMultiColumn(cell-1)) {
+		if (tabular.isFirstCellInRow(cell) ||
+		    tabular.isMultiColumn(cell-1)) {
 			fl_set_button(cell_options_->check_border_left,
-				      tabular.LeftLine(cell)?1:0);
+				      tabular.leftLine(cell)?1:0);
 			setEnabled(cell_options_->check_border_left, true);
 		} else {
 			fl_set_button(cell_options_->check_border_left, 0);
 			setEnabled(cell_options_->check_border_left, false);
 		}
-		if (tabular.IsLastCellInRow(cell) ||
-		    tabular.IsMultiColumn(cell+1)) {
+		if (tabular.isLastCellInRow(cell) ||
+		    tabular.isMultiColumn(cell+1)) {
 			fl_set_button(cell_options_->check_border_right,
-				      tabular.RightLine(cell)?1:0);
+				      tabular.rightLine(cell)?1:0);
 			setEnabled(cell_options_->check_border_right, true);
 		} else {
 			fl_set_button(cell_options_->check_border_right, 0);
 			setEnabled(cell_options_->check_border_right, false);
 		}
-		pwidth = tabular.GetMColumnPWidth(cell);
-		align = tabular.GetAlignment(cell);
+		pwidth = tabular.getMColumnPWidth(cell);
+		align = tabular.getAlignment(cell);
 		// set the horiz. alignment, default is left here
 		fl_set_button(cell_options_->radio_align_left, 0);
 		fl_set_button(cell_options_->radio_align_right, 0);
@@ -209,7 +209,7 @@ void FormTabular::update()
 		else
 			fl_set_button(cell_options_->radio_align_left, 1);
 
-		align = tabular.GetVAlignment(cell);
+		align = tabular.getVAlignment(cell);
 		fl_set_button(cell_options_->radio_valign_top, 0);
 		fl_set_button(cell_options_->radio_valign_bottom, 0);
 		fl_set_button(cell_options_->radio_valign_center, 0);
@@ -220,7 +220,7 @@ void FormTabular::update()
 		else
 			fl_set_button(cell_options_->radio_valign_top, 1);
 
-		special = tabular.GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
+		special = tabular.getAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
 		fl_set_input(cell_options_->input_special_multialign, special.c_str());
 		bool const metric(controller().useMetricUnits());
 		string const default_unit = metric ? "cm" : "in";
@@ -281,33 +281,33 @@ void FormTabular::update()
 		setEnabled(cell_options_->input_mcolumn_width, false);
 		setEnabled(cell_options_->choice_value_mcolumn_width, false);
 	}
-	if (tabular.GetRotateCell(cell))
+	if (tabular.getRotateCell(cell))
 		fl_set_button(cell_options_->check_rotate_cell, 1);
 	else
 		fl_set_button(cell_options_->check_rotate_cell, 0);
-	if (tabular.TopLine(cell, true))
+	if (tabular.topLine(cell, true))
 		fl_set_button(column_options_->check_border_top, 1);
 	else
 		fl_set_button(column_options_->check_border_top, 0);
-	if (tabular.BottomLine(cell, true))
+	if (tabular.bottomLine(cell, true))
 		fl_set_button(column_options_->check_border_bottom, 1);
 	else
 		fl_set_button(column_options_->check_border_bottom, 0);
-	if (tabular.LeftLine(cell, true))
+	if (tabular.leftLine(cell, true))
 		fl_set_button(column_options_->check_border_left, 1);
 	else
 		fl_set_button(column_options_->check_border_left, 0);
-	if (tabular.RightLine(cell, true))
+	if (tabular.rightLine(cell, true))
 		fl_set_button(column_options_->check_border_right, 1);
 	else
 		fl_set_button(column_options_->check_border_right, 0);
-	special = tabular.GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
+	special = tabular.getAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
 	fl_set_input(column_options_->input_special_alignment, special.c_str());
 
 	bool const isReadonly = bc().bp().isReadOnly();
 	setEnabled(column_options_->input_special_alignment, !isReadonly);
 
-	pwidth = tabular.GetColumnPWidth(cell);
+	pwidth = tabular.getColumnPWidth(cell);
 	bool const metric = controller().useMetricUnits();
 	string const default_unit = metric ? "cm" : "in";
 	updateWidgetsFromLength(column_options_->input_column_width,
@@ -318,14 +318,14 @@ void FormTabular::update()
 
 	setEnabled(cell_options_->check_useminipage, !pwidth.zero());
 	if (!pwidth.zero()) {
-		if (tabular.GetUsebox(cell) == 2)
+		if (tabular.getUsebox(cell) == 2)
 			fl_set_button(cell_options_->check_useminipage, 1);
 		else
 			fl_set_button(cell_options_->check_useminipage, 0);
 	} else {
 		fl_set_button(cell_options_->check_useminipage, 0);
 	}
-	align = tabular.GetAlignment(cell, true);
+	align = tabular.getAlignment(cell, true);
 	fl_set_button(column_options_->radio_align_left, 0);
 	fl_set_button(column_options_->radio_align_right, 0);
 	fl_set_button(column_options_->radio_align_center, 0);
@@ -338,7 +338,7 @@ void FormTabular::update()
 		fl_set_button(column_options_->radio_align_center, 1);
 	else
 		fl_set_button(column_options_->radio_align_block, 1);
-	align = tabular.GetVAlignment(cell, true);
+	align = tabular.getVAlignment(cell, true);
 	fl_set_button(column_options_->radio_valign_top, 0);
 	fl_set_button(column_options_->radio_valign_bottom, 0);
 	fl_set_button(column_options_->radio_valign_center, 0);
@@ -358,9 +358,9 @@ void FormTabular::update()
 	setEnabled(column_options_->radio_valign_center, !pwidth.zero());
 
 	fl_set_button(tabular_options_->check_longtable,
-		      tabular.IsLongTabular());
+		      tabular.isLongTabular());
 
-	bool const enable = tabular.IsLongTabular();
+	bool const enable = tabular.isLongTabular();
 
 	setEnabled(longtable_options_->check_lt_firsthead, enable);
 	setEnabled(longtable_options_->check_1head_2border_above, enable);
@@ -381,7 +381,7 @@ void FormTabular::update()
 	if (enable) {
 		LyXTabular::ltType ltt;
 		bool use_empty;
-		bool row_set = tabular.GetRowOfLTHead(row, ltt);
+		bool row_set = tabular.getRowOfLTHead(row, ltt);
 		fl_set_button(longtable_options_->check_lt_head, row_set);
 		if (ltt.set) {
 			fl_set_button(longtable_options_->check_head_2border_above,
@@ -399,7 +399,7 @@ void FormTabular::update()
 			use_empty = false;
 		}
 		//
-		row_set = tabular.GetRowOfLTFirstHead(row, ltt);
+		row_set = tabular.getRowOfLTFirstHead(row, ltt);
 		fl_set_button(longtable_options_->check_lt_firsthead, row_set);
 		if (ltt.set && (!ltt.empty || !use_empty)) {
 			fl_set_button(longtable_options_->check_1head_2border_above,
@@ -418,7 +418,7 @@ void FormTabular::update()
 			}
 		}
 		//
-		row_set = tabular.GetRowOfLTFoot(row, ltt);
+		row_set = tabular.getRowOfLTFoot(row, ltt);
 		fl_set_button(longtable_options_->check_lt_foot, row_set);
 		if (ltt.set) {
 			fl_set_button(longtable_options_->check_foot_2border_above,
@@ -436,7 +436,7 @@ void FormTabular::update()
 			use_empty = false;
 		}
 		//
-		row_set = tabular.GetRowOfLTLastFoot(row, ltt);
+		row_set = tabular.getRowOfLTLastFoot(row, ltt);
 		fl_set_button(longtable_options_->check_lt_lastfoot, row_set);
 		if (ltt.set && (!ltt.empty || !use_empty)) {
 			fl_set_button(longtable_options_->check_lastfoot_2border_above,
@@ -456,7 +456,7 @@ void FormTabular::update()
 			}
 		}
 		fl_set_button(longtable_options_->check_lt_newpage,
-			      tabular.GetLTNewPage(row));
+			      tabular.getLTNewPage(row));
 	} else {
 		fl_set_button(longtable_options_->check_lt_firsthead, 0);
 		fl_set_button(longtable_options_->check_1head_2border_above, 0);
@@ -475,7 +475,7 @@ void FormTabular::update()
 		fl_set_button(longtable_options_->check_lt_newpage, 0);
 	}
 	fl_set_button(tabular_options_->check_rotate_tabular,
-		      tabular.GetRotateTabular());
+		      tabular.getRotateTabular());
 }
 
 
@@ -497,13 +497,13 @@ ButtonPolicy::SMInput FormTabular::input(FL_OBJECT * ob, long)
 			getLengthFromWidgets(column_options_->input_column_width,
 					     column_options_->choice_value_column_width);
 		string w2;
-		LyXLength llen = tabular.GetColumnPWidth(cell);
+		LyXLength llen = tabular.getColumnPWidth(cell);
 		if (!llen.zero())
 			w2 = llen.asString();
 
 		string mw1 = getLengthFromWidgets(cell_options_->input_mcolumn_width,
 					    cell_options_->choice_value_mcolumn_width);
-		llen = tabular.GetMColumnPWidth(cell);
+		llen = tabular.getMColumnPWidth(cell);
 		string mw2;
 		if (llen.zero())
 			mw2 = "";
@@ -511,9 +511,9 @@ ButtonPolicy::SMInput FormTabular::input(FL_OBJECT * ob, long)
 			mw2 = llen.asString();
 
 		string al1 = getString(column_options_->input_special_alignment);
-		string al2 = tabular.GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
+		string al2 = tabular.getAlignSpecial(cell, LyXTabular::SET_SPECIAL_COLUMN);
 		string mal1 = getString(cell_options_->input_special_multialign);
-		string mal2 = tabular.GetAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
+		string mal2 = tabular.getAlignSpecial(cell, LyXTabular::SET_SPECIAL_MULTI);
 
 		// we must do these all at the end
 		if (w1 != w2)

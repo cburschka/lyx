@@ -41,21 +41,21 @@ string const tostr(LyXTabular::VAlignment const & num);
 string const tostr(LyXTabular::BoxType const & num);
 
 // I would have liked a fromstr template a lot better. (Lgb)
-extern bool string2type(string const str, LyXAlignment & num);
-extern bool string2type(string const str, LyXTabular::VAlignment & num);
-extern bool string2type(string const str, LyXTabular::BoxType & num);
-extern bool string2type(string const str, bool & num);
-extern bool getTokenValue(string const & str, char const * token, string &ret);
-extern bool getTokenValue(string const & str, char const * token, int & num);
-extern bool getTokenValue(string const & str, char const * token,
+bool string2type(string const str, LyXAlignment & num);
+bool string2type(string const str, LyXTabular::VAlignment & num);
+bool string2type(string const str, LyXTabular::BoxType & num);
+bool string2type(string const str, bool & num);
+bool getTokenValue(string const & str, char const * token, string &ret);
+bool getTokenValue(string const & str, char const * token, int & num);
+bool getTokenValue(string const & str, char const * token,
 			  LyXAlignment & num);
-extern bool getTokenValue(string const & str, char const * token,
+bool getTokenValue(string const & str, char const * token,
 			  LyXTabular::VAlignment & num);
-extern bool getTokenValue(string const & str, char const * token,
+bool getTokenValue(string const & str, char const * token,
 			  LyXTabular::BoxType & num);
-extern bool getTokenValue(string const & str, char const * token, bool & flag);
-extern bool getTokenValue(string const & str, char const * token,
+bool getTokenValue(string const & str, char const * token, bool & flag);
+bool getTokenValue(string const & str, char const * token,
 			  LyXLength & len);
-extern void l_getline(std::istream & is, string & str);
+void l_getline(std::istream & is, string & str);
 
 #endif
