@@ -749,7 +749,7 @@ void InsetTabular::calculate_width_of_cells(BufferView * bv,
 }
 
 
-void InsetTabular::GetCursorPos(int & x, int & y) const
+void InsetTabular::GetCursorPos(BufferView *, int & x, int & y) const
 {
     x = cursor.x() - top_x;
     y = cursor.y();

@@ -132,7 +132,7 @@ public:
     ///
     Inset::Code LyxCode() const { return Inset::TABULAR_CODE; }
     ///
-    void GetCursorPos(int & x, int & y) const;
+    void GetCursorPos(BufferView *, int & x, int & y) const;
     ///
     void ToggleInsetCursor(BufferView *);
     ///
