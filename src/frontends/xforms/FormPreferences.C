@@ -27,6 +27,7 @@
 #include "lyxrc.h"
 #include "LColor.h"
 #include "Lsstream.h"
+#include "funcrequest.h"
 
 #include "combox.h"
 #include "Color.h"
@@ -436,7 +437,7 @@ void FormPreferences::Colors::apply()
 
 			string const s = lcolor.getLyXName(lc) + string(" ") +
 				hexname;
-			parent_.lv_->getLyXFunc()->dispatch(LFUN_SET_COLOR, s);
+			parent_.lv_->getLyXFunc()->dispatch(FuncRequest(LFUN_SET_COLOR, s));
 		}
 	}
 }
@@ -487,6 +488,7 @@ void FormPreferences::Colors::build()
 	setPrehandler(dialog_->radio_rgb);
 	setPrehandler(dialog_->radio_hsv);
 }
+
 
 string const
 FormPreferences::Colors::feedback(FL_OBJECT const * const ob) const
@@ -682,7 +684,8 @@ void FormPreferences::Colors::InputRGB()
 
 void FormPreferences::Colors::LoadBrowserLyX()
 {
-	if (!dialog_->browser_lyx_objs->visible) return;
+	if (!dialog_->browser_lyx_objs->visible)
+		return;
 
 	// First, define the modifiable xforms colors
 	xformsColorDB.clear();
@@ -742,7 +745,7 @@ void FormPreferences::Colors::LoadBrowserLyX()
 
 			string const arg = lcolor.getLyXName(lc) + " black";
 			parent_.lv_->getLyXFunc()->
-				dispatch(LFUN_SET_COLOR, arg);
+				dispatch(FuncRequest(LFUN_SET_COLOR, arg));
 			continue;
 		}
 

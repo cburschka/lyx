@@ -22,7 +22,7 @@
 #include "BufferView.h"
 #include "frontends/LyXView.h"
 #include "support/LOstream.h"
-#include "commandtags.h"
+#include "funcrequest.h"
 #include "buffer.h"
 #include "gettext.h"
 #include "lyxfunc.h"
@@ -47,7 +47,7 @@ string const InsetParent::getScreenLabel(Buffer const *) const
 void InsetParent::edit(BufferView * bv, int, int, mouse_button::state)
 {    
 	bv->owner()->getLyXFunc()->
-		dispatch(LFUN_CHILDOPEN, getContents());
+		dispatch(FuncRequest(LFUN_CHILDOPEN, getContents()));
 }
 
 

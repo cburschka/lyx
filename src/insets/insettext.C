@@ -19,7 +19,6 @@
 #include "lyxlex.h"
 #include "debug.h"
 #include "lyxfont.h"
-#include "commandtags.h"
 #include "buffer.h"
 #include "frontends/LyXView.h"
 #include "BufferView.h"
@@ -40,6 +39,7 @@
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
 #include "lyxfind.h"
+#include "funcrequest.h"
 
 #include "frontends/Alert.h"
 #include "frontends/Dialogs.h"
@@ -1043,7 +1043,7 @@ void InsetText::insetButtonPress(BufferView * bv,
 	if (bv->theLockingInset()) {
 		if (isHighlyEditableInset(inset)) {
 			// We just have to lock the inset before calling a
-			// PressEvent on it!
+			// PressFuncRequest on it!
 			UpdatableInset * uinset = static_cast<UpdatableInset*>(inset);
 			if (!bv->lockInset(uinset)) {
 				lyxerr[Debug::INSETS] << "Cannot lock inset" << endl;
@@ -1057,7 +1057,7 @@ void InsetText::insetButtonPress(BufferView * bv,
 	if (!inset) { // && (button == mouse_button::button2)) {
 		bool paste_internally = false;
 		if ((button == mouse_button::button2) && getLyXText(bv)->selection.set()) {
-			localDispatch(bv, LFUN_COPY, "");
+			localDispatch(bv, FuncRequest(LFUN_COPY));
 			paste_internally = true;
 		}
 		bool clear = false;
@@ -1096,10 +1096,9 @@ void InsetText::insetButtonPress(BufferView * bv,
 		// insert this
 		if (button == mouse_button::button2) {
 			if (paste_internally)
-				localDispatch(bv, LFUN_PASTE, "");
+				localDispatch(bv, FuncRequest(LFUN_PASTE));
 			else
-				localDispatch(bv, LFUN_PASTESELECTION,
-					      "paragraph");
+				localDispatch(bv, FuncRequest(LFUN_PASTESELECTION, "paragraph"));
 		}
 	} else {
 		getLyXText(bv)->clearSelection();
@@ -1177,23 +1176,21 @@ void InsetText::insetMotionNotify(BufferView * bv, int x, int y, mouse_button::s
 
 
 UpdatableInset::RESULT
-InsetText::localDispatch(BufferView * bv,
-			 kb_action action, string const & arg)
+InsetText::localDispatch(BufferView * bv, FuncRequest const & ev)
 {
 	bool was_empty = par->size() == 0 && !par->next();
 	no_selection = false;
 	UpdatableInset::RESULT
-		result= UpdatableInset::localDispatch(bv, action, arg);
-	if (result != UNDISPATCHED) {
+		result= UpdatableInset::localDispatch(bv, ev);
+	if (result != UNDISPATCHED)
 		return DISPATCHED;
-	}
 
 	result = DISPATCHED;
-	if ((action < 0) && arg.empty())
+	if (ev.action < 0 && ev.argument.empty())
 		return FINISHED;
 
 	if (the_locking_inset) {
-		result = the_locking_inset->localDispatch(bv, action, arg);
+		result = the_locking_inset->localDispatch(bv, ev);
 		if (result == DISPATCHED_NOUPDATE)
 			return result;
 		else if (result == DISPATCHED) {
@@ -1244,14 +1241,14 @@ InsetText::localDispatch(BufferView * bv,
 	}
 	int updwhat = 0;
 	int updflag = false;
-	switch (action) {
+	switch (ev.action) {
 	// Normal chars
 	case LFUN_SELFINSERT:
 		if (bv->buffer()->isReadonly()) {
 //	    setErrorMessage(N_("Document is read only"));
 			break;
 		}
-		if (!arg.empty()) {
+		if (!ev.argument.empty()) {
 			/* Automatically delete the currently selected
 			 * text and replace it with what is being
 			 * typed in now. Depends on lyxrc settings
@@ -1267,9 +1264,9 @@ InsetText::localDispatch(BufferView * bv,
 				}
 			}
 			lt->clearSelection();
-			for (string::size_type i = 0; i < arg.length(); ++i) {
+			for (string::size_type i = 0; i < ev.argument.length(); ++i) {
 				bv->owner()->getIntl()->getTransManager().
-					TranslateAndInsert(arg[i], lt);
+					TranslateAndInsert(ev.argument[i], lt);
 			}
 		}
 		lt->selection.cursor = lt->cursor;
@@ -1376,7 +1373,7 @@ InsetText::localDispatch(BufferView * bv,
 
 		if (clip.empty())
 			break;
-		if (arg == "paragraph") {
+		if (ev.argument == "paragraph") {
 			lt->insertStringAsParagraphs(bv, clip);
 		} else {
 			lt->insertStringAsLines(bv, clip);
@@ -1449,7 +1446,7 @@ InsetText::localDispatch(BufferView * bv,
 			// and current buffer's textclass (number). */
 			LyXTextClass const & tclass =
 				bv->buffer()->params.getLyXTextClass();
-			string layout = arg;
+			string layout = ev.argument;
 			bool hasLayout = tclass.hasLayout(layout);
 
 			// If the entry is obsolete, use the new one instead.
@@ -1462,8 +1459,8 @@ InsetText::localDispatch(BufferView * bv,
 
 			// see if we found the layout number:
 			if (!hasLayout) {
-				string const msg = string(N_("Layout ")) + arg + N_(" not known");
-				bv->owner()->getLyXFunc()->dispatch(LFUN_MESSAGE, msg);
+				FuncRequest lf(LFUN_MESSAGE, N_("Layout ") + ev.argument + N_(" not known"));
+				bv->owner()->getLyXFunc()->dispatch(lf);
 				break;
 			}
 
@@ -1491,7 +1488,7 @@ InsetText::localDispatch(BufferView * bv,
 			cur_value = par->params().spacing().getValue();
 		}
 
-		istringstream istr(arg.c_str());
+		istringstream istr(ev.argument.c_str());
 		string tmp;
 		istr >> tmp;
 		Spacing::Space new_spacing = cur_spacing;
@@ -1516,7 +1513,7 @@ InsetText::localDispatch(BufferView * bv,
 			new_spacing = Spacing::Default;
 		} else {
 			lyxerr << _("Unknown spacing argument: ")
-				   << arg << endl;
+				   << ev.argument << endl;
 		}
 		if (cur_spacing != new_spacing || cur_value != new_value) {
 			par->params().spacing(Spacing(new_spacing, new_value));
@@ -1527,7 +1524,7 @@ InsetText::localDispatch(BufferView * bv,
 	break;
 
 	default:
-		if (!bv->dispatch(action, arg))
+		if (!bv->dispatch(ev))
 			result = UNDISPATCHED;
 		break;
 	}

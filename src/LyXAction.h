@@ -8,12 +8,12 @@
 
 #include <map>
 
-#include "commandtags.h"
-#include "LString.h"
+#include "funcrequest.h"
 #include <boost/utility.hpp>
 
 /** This class encapsulates LyX action and user command operations.
  */
+
 class LyXAction : boost::noncopyable {
 private:
 	///
@@ -26,20 +26,13 @@ private:
 		string helpText;
 	};
 
-	///
-	struct pseudo_func {
-		///
-		kb_action action;
-		///
-		string arg;
-	};
 public:
 	///
 	typedef std::map<string, kb_action> func_map;
 	///
 	typedef std::map<kb_action, func_info> info_map;
 	///
-	typedef std::map<unsigned int, pseudo_func> pseudo_map;
+	typedef std::map<unsigned int, FuncRequest> pseudo_map;
 	///
 	typedef std::map<string, unsigned int> arg_item;
 	///

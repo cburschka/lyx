@@ -21,6 +21,7 @@
 #include "ButtonControllerBase.h"
 #include "BufferView.h"
 #include "lyxfunc.h"
+#include "funcrequest.h"
 
 #include "frontends/LyXView.h"
 
@@ -34,7 +35,7 @@ ControlTabularCreate::ControlTabularCreate(LyXView & lv, Dialogs & d)
 
 ControlTabularCreate::rowsCols & ControlTabularCreate::params()
 {
-		return params_;
+	return params_;
 }
 
 
@@ -51,7 +52,6 @@ void ControlTabularCreate::apply()
 
 	view().apply();
 
-	string const val(tostr(params().first) + " " + tostr(params().second));
-
-	lv_.getLyXFunc()->dispatch(LFUN_TABULAR_INSERT, val);
+	string const val = tostr(params().first) + " " + tostr(params().second);
+	lv_.getLyXFunc()->dispatch(FuncRequest(LFUN_TABULAR_INSERT, val));
 }

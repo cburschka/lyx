@@ -20,6 +20,7 @@
 #include "ControlRef.h"
 #include "lyxfunc.h"
 #include "bufferlist.h"
+#include "funcrequest.h"
 
 #include "support/filetools.h" // MakeAbsPath, MakeDisplayPath
 
@@ -44,14 +45,14 @@ vector<string> const ControlRef::getLabelList(string const & name) const
 
 void ControlRef::gotoRef(string const & ref) const
 {
-	lv_.getLyXFunc()->dispatch(LFUN_BOOKMARK_SAVE, "0", false);
-	lv_.getLyXFunc()->dispatch(LFUN_REF_GOTO, ref);
+	lv_.getLyXFunc()->dispatch(FuncRequest(LFUN_BOOKMARK_SAVE, "0"), false);
+	lv_.getLyXFunc()->dispatch(FuncRequest(LFUN_REF_GOTO, ref));
 }
 
 
 void ControlRef::gotoBookmark() const
 {
-	lv_.getLyXFunc()->dispatch(LFUN_BOOKMARK_GOTO, "0", false);
+	lv_.getLyXFunc()->dispatch(FuncRequest(LFUN_BOOKMARK_GOTO, "0"), false);
 }
 
 

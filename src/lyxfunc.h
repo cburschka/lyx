@@ -7,15 +7,16 @@
 #endif
 
 
-#include "commandtags.h" // for kb_action enum
 #include "FuncStatus.h"
 #include "kbsequence.h"
+#include "commandtags.h"
 #include "LString.h"
 
 #include <boost/signals/trackable.hpp>
 
 class LyXView;
 class LyXText;
+class FuncRequest;
 
 
 /** This class encapsulates all the LyX command operations.
@@ -31,7 +32,7 @@ public:
 	LyXFunc(LyXView *);
 
 	/// LyX dispatcher, executes lyx actions.
-	void dispatch(kb_action ac, string argument = string(), bool verbose = false);
+	void dispatch(FuncRequest const &, bool verbose = false);
 
 	/// Dispatch via a string argument
 	void dispatch(string const & s, bool verbose = false);
@@ -49,8 +50,7 @@ public:
 	/// can contain the string argument.
 	FuncStatus getStatus(int ac) const;
 	///
-	FuncStatus getStatus(kb_action action,
-			     string const & argument = string()) const;
+	FuncStatus getStatus(FuncRequest const & action) const;
 
 	/// The last key was meta
 	bool wasMetaKey() const;
@@ -101,7 +101,7 @@ private:
 	mutable string status_buffer;
 
 	/// send a post-dispatch status message
-	void sendDispatchMessage(string const & msg, kb_action ac, string const & arg, bool verbose);
+	void sendDispatchMessage(string const & msg, FuncRequest const & ev, bool verbose);
 
 	// I think the following should be moved to BufferView. (Asger)
 

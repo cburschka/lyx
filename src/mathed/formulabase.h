@@ -24,7 +24,6 @@
 #include "lyxfont.h"
 
 #include <boost/weak_ptr.hpp>
-
 #include <iosfwd>
 
 class Buffer;
@@ -90,7 +89,7 @@ public:
 	virtual void insetUnlock(BufferView *);
 
 	/// To allow transparent use of math editing functions
-	virtual RESULT localDispatch(BufferView *, kb_action, string const &);
+	virtual RESULT localDispatch(BufferView *, FuncRequest const &);
 
 	///
 	virtual std::vector<string> const getLabelList() const;
@@ -165,7 +164,7 @@ void mathDispatchGreek(BufferView *, string const &);
 //
 void mathDispatchMathImportSelection(BufferView *, string const &);
 //
-void mathDispatch(BufferView *, kb_action, string const &);
+void mathDispatch(BufferView *, FuncRequest const &);
 //
 void mathDispatch(BufferView *, string const &);
 

@@ -20,7 +20,6 @@
 #include <config.h>
 
 #include "formula.h"
-#include "commandtags.h"
 #include "math_cursor.h"
 #include "math_parser.h"
 #include "math_charinset.h"
@@ -37,6 +36,7 @@
 #include "gettext.h"
 #include "debug.h"
 #include "lyxrc.h"
+#include "funcrequest.h"
 
 #include "support/LOstream.h"
 #include "support/LAssert.h"
@@ -252,12 +252,11 @@ vector<string> const InsetFormula::getLabelList() const
 
 
 UpdatableInset::RESULT
-InsetFormula::localDispatch(BufferView * bv, kb_action action,
-	 string const & arg)
+InsetFormula::localDispatch(BufferView * bv, FuncRequest const & ev)
 {
 	RESULT result = DISPATCHED;
 
-	switch (action) {
+	switch (ev.action) {
 
 		case LFUN_BREAKLINE:
 			bv->lockedInsetStoreUndo(Undo::INSERT);
@@ -305,7 +304,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 
 			MathCursor::row_type row = mathcursor->hullRow();
 			string old_label = hull()->label(row);
-			string new_label = arg;
+			string new_label = ev.argument;
 
 			if (new_label.empty()) {
 				string const default_label =
@@ -343,7 +342,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 			int x;
 			int y;
 			mathcursor->getPos(x, y);
-			mutate(arg);
+			mutate(ev.argument);
 			mathcursor->setPos(x, y);
 			mathcursor->normalize();
 			updateLocal(bv, true);
@@ -354,7 +353,7 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 		{
 			bv->lockedInsetStoreUndo(Undo::EDIT);
 			if (mathcursor)
-				mathcursor->handleExtern(arg);
+				mathcursor->handleExtern(ev.argument);
 			// re-compute inset dimension
 			metrics(bv);
 			updateLocal(bv, true);
@@ -379,13 +378,13 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 		case LFUN_PASTESELECTION:
 		{
 			string const clip = bv->getClipboard();
-		if (!clip.empty())
+			if (!clip.empty())
 				mathed_parse_normal(par_, clip);
 			break;
 		}
 
 		default:
-			result = InsetFormulaBase::localDispatch(bv, action, arg);
+			result = InsetFormulaBase::localDispatch(bv, ev);
 	}
 
 	return result;

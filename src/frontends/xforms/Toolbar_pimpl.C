@@ -23,13 +23,14 @@
 #include "FuncStatus.h"
 #include "BufferView.h"
 #include "buffer.h"
-#include "LyXAction.h"
+#include "funcrequest.h"
 #include "MathsSymbols.h"
 #include "gettext.h"
 #include "Tooltips.h"
 #include FORMS_H_LOCATION
 #include "combox.h"
 #include "ToolbarDefaults.h"
+#include "LyXAction.h"
 
 #include "support/LAssert.h"
 #include "support/filetools.h"
@@ -155,9 +156,7 @@ void Toolbar::Pimpl::update()
 // this one is not "C" because combox callbacks are really C++ %-|
 void Toolbar::Pimpl::layoutSelectedCB(int, void * arg, Combox *)
 {
-	Toolbar::Pimpl * tb = reinterpret_cast<Toolbar::Pimpl *>(arg);
-
-	tb->layoutSelected();
+	reinterpret_cast<Toolbar::Pimpl *>(arg)->layoutSelected();
 }
 
 
@@ -171,7 +170,7 @@ void Toolbar::Pimpl::layoutSelected()
 	for (LyXTextClass::const_iterator cit = tc.begin();
 	     cit != end; ++cit) {
 		if (_((*cit)->name()) == layoutguiname) {
-			owner_->getLyXFunc()->dispatch(LFUN_LAYOUT, (*cit)->name());
+			owner_->getLyXFunc()->dispatch(FuncRequest(LFUN_LAYOUT, (*cit)->name()));
 			return;
 		}
 	}

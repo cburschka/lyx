@@ -16,7 +16,6 @@
 
 #include "LString.h"
 #include "undo.h"
-#include "commandtags.h"
 
 #include "insets/inset.h"
 #include "WordLangTuple.h"
@@ -203,7 +202,7 @@ public:
 	///
 	void stuffClipboard(string const &) const;
 	///
-	bool dispatch(kb_action action, string const & argument);
+	bool dispatch(FuncRequest const & argument);
 private:
 	///
 	struct Pimpl;

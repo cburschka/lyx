@@ -21,6 +21,7 @@
 #include "gettext.h"
 #include "helper_funcs.h"
 #include "lyxrc.h"
+#include "funcrequest.h"
 
 #include "support/filetools.h"
 
@@ -72,15 +73,16 @@ string const ControlInclude::Browse(string const & in_name, Type in_type)
 
 void ControlInclude::load(string const & file)
 {
-	lv_.getLyXFunc()->dispatch(LFUN_CHILDOPEN, file);
+	lv_.getLyXFunc()->dispatch(FuncRequest(LFUN_CHILDOPEN, file));
 }
 
 
 bool ControlInclude::fileExists(string const & file)
 {
-	string const fileWithAbsPath = MakeAbsPath(file, OnlyPath(params().masterFilename_));
+	string const fileWithAbsPath
+		= MakeAbsPath(file, OnlyPath(params().masterFilename_));
 
-	if (params().noload){
+	if (params().noload) {
 
 		if (prefixIs(file, "../") || prefixIs(file, "/"))
 			Alert::alert(_("Warning!"),
@@ -92,7 +94,6 @@ bool ControlInclude::fileExists(string const & file)
 		return true;
 	
 	else
-		Alert::alert(_("Warning!"),
-			_("Specified file doesn't exist"));
+		Alert::alert(_("Warning!"), _("Specified file doesn't exist"));
 		return false;
 }

@@ -18,10 +18,11 @@
  */
 class WordLangTuple {
 public:
-	WordLangTuple() {};
+	WordLangTuple() {}
  
 	WordLangTuple(string const & w, string const & c)
-		: word_(w), code_(c) {}
+		: word_(w), code_(c)
+	{}
  
 	/// return the word
 	string const word() const {

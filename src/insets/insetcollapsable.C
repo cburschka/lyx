@@ -437,10 +437,9 @@ void InsetCollapsable::update(BufferView * bv, LyXFont const & font,
 
 
 UpdatableInset::RESULT
-InsetCollapsable::localDispatch(BufferView * bv, kb_action action,
-				string const & arg)
+InsetCollapsable::localDispatch(BufferView * bv, FuncRequest const & ev)
 {
-	UpdatableInset::RESULT result = inset.localDispatch(bv, action, arg);
+	UpdatableInset::RESULT result = inset.localDispatch(bv, ev);
 	if (result >= FINISHED)
 		bv->unlockInset(this);
 	first_after_edit = false;

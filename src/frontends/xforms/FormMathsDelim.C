@@ -23,6 +23,7 @@
 #include "debug.h"
 #include "support/lstrings.h"
 #include "lyxfunc.h"
+#include "funcrequest.h"
 #include FORMS_H_LOCATION
 
 #include "delim.xbm"
@@ -31,7 +32,8 @@
 
 static int const delim_rversion[] = {
 	1,1,3,3,4,5,7,7,9,9,10,11,
-	13,13,14,15,16,17,19,19,20,21,22,23 };
+	13,13,14,15,16,17,19,19,20,21,22,23
+};
 
 static char const * delim_values[] = {
 	"(", ")", "lceil",  "rceil",  "uparrow",  "Uparrow",
@@ -91,8 +93,10 @@ void FormMathsDelim::apply()
 	ostringstream ost;
 	ost << delim_values[left] << ' ' << delim_values[right];
 
-	lv_->getLyXFunc()->dispatch(LFUN_MATH_DELIM, ost.str().c_str(), false);
+	lv_->getLyXFunc()->
+		dispatch(FuncRequest(LFUN_MATH_DELIM, ost.str().c_str()), false);
 }
+
 
 bool FormMathsDelim::input(FL_OBJECT *, long)
 {

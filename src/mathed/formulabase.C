@@ -25,7 +25,7 @@
 #include "formula.h"
 #include "formulamacro.h"
 #include "lyxrc.h"
-#include "commandtags.h"
+#include "funcrequest.h"
 #include "BufferView.h"
 #include "lyxtext.h"
 #include "lyxfunc.h"
@@ -397,8 +397,7 @@ void InsetFormulaBase::insetMotionNotify(BufferView * bv,
 
 
 UpdatableInset::RESULT
-InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
-			    string const & arg)
+InsetFormulaBase::localDispatch(BufferView * bv, FuncRequest const & ev)
 {
 	//lyxerr << "InsetFormulaBase::localDispatch: act: " << action
 	//	<< " arg: '" << arg
@@ -406,8 +405,8 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 
 	if (!mathcursor)
 		return UNDISPATCHED;
-	string argument  = arg;
 
+	string argument    = ev.argument;
 	RESULT result      = DISPATCHED;
 	bool sel           = false;
 	bool was_macro     = mathcursor->inMacroMode();
@@ -418,7 +417,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	mathcursor->normalize();
 	mathcursor->touch();
 
-	switch (action) {
+	switch (ev.action) {
 
 	case LFUN_WORDRIGHTSEL:
 	case LFUN_RIGHTSEL:
@@ -524,7 +523,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		lyxerr << "LFUN_SETXY broken!\n";
 		int x = 0;
 		int y = 0;
-		istringstream is(arg.c_str());
+		istringstream is(ev.argument.c_str());
 		is >> x >> y;
 		mathcursor->setPos(x, y);
 		updateLocal(bv, false);
@@ -553,7 +552,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	// Special casing for superscript in case of LyX handling
 	// dead-keys:
 	case LFUN_CIRCUMFLEX:
-		if (arg.empty()) {
+		if (ev.argument.empty()) {
 			// do superscript if LyX handles
 			// deadkeys
 			bv->lockedInsetStoreUndo(Undo::EDIT);
@@ -579,27 +578,27 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		break;
 
 	//  Math fonts
-	case LFUN_GREEK_TOGGLE: handleFont(bv, arg, "lyxgreek"); break;
-	case LFUN_BOLD:         handleFont(bv, arg, "textbf"); break;
-	case LFUN_SANS:         handleFont(bv, arg, "textsf"); break;
-	case LFUN_EMPH:         handleFont(bv, arg, "mathcal"); break;
-	case LFUN_ROMAN:        handleFont(bv, arg, "mathrm"); break;
-	case LFUN_CODE:         handleFont(bv, arg, "texttt"); break;
-	case LFUN_FRAK:         handleFont(bv, arg, "mathfrak"); break;
-	case LFUN_ITAL:         handleFont(bv, arg, "mathit"); break;
-	case LFUN_NOUN:         handleFont(bv, arg, "mathbb"); break;
-	case LFUN_DEFAULT:      handleFont(bv, arg, "textnormal"); break;
-	case LFUN_FREE:         handleFont(bv, arg, "textrm"); break;
+	case LFUN_GREEK_TOGGLE: handleFont(bv, ev.argument, "lyxgreek"); break;
+	case LFUN_BOLD:         handleFont(bv, ev.argument, "textbf"); break;
+	case LFUN_SANS:         handleFont(bv, ev.argument, "textsf"); break;
+	case LFUN_EMPH:         handleFont(bv, ev.argument, "mathcal"); break;
+	case LFUN_ROMAN:        handleFont(bv, ev.argument, "mathrm"); break;
+	case LFUN_CODE:         handleFont(bv, ev.argument, "texttt"); break;
+	case LFUN_FRAK:         handleFont(bv, ev.argument, "mathfrak"); break;
+	case LFUN_ITAL:         handleFont(bv, ev.argument, "mathit"); break;
+	case LFUN_NOUN:         handleFont(bv, ev.argument, "mathbb"); break;
+	case LFUN_DEFAULT:      handleFont(bv, ev.argument, "textnormal"); break;
+	case LFUN_FREE:         handleFont(bv, ev.argument, "textrm"); break;
 
 	case LFUN_GREEK:
-		handleFont(bv, arg, "lyxgreek1");
-		if (arg.size())
-			mathcursor->interpret(arg);
+		handleFont(bv, ev.argument, "lyxgreek1");
+		if (ev.argument.size())
+			mathcursor->interpret(ev.argument);
 		break;
 
 	case LFUN_MATH_MODE:
 		if (mathcursor->currentMode()) {
-			handleFont(bv, arg, "textrm");
+			handleFont(bv, ev.argument, "textrm");
 		} else {
 			mathcursor->niceInsert(MathAtom(new MathHullInset("simple")));
 			updateLocal(bv, true);
@@ -624,9 +623,9 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		break;
 
 	case LFUN_INSERT_MATRIX:
-		if (!arg.empty()) {
+		if (!ev.argument.empty()) {
 			bv->lockedInsetStoreUndo(Undo::EDIT);
-			mathcursor->interpret("matrix " + arg);
+			mathcursor->interpret("matrix " + ev.argument);
 			updateLocal(bv, true);
 		}
 		break;
@@ -635,7 +634,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	case LFUN_SUBSCRIPT:
 	{
 		bv->lockedInsetStoreUndo(Undo::EDIT);
-		mathcursor->script(action == LFUN_SUPERSCRIPT);
+		mathcursor->script(ev.action == LFUN_SUPERSCRIPT);
 		updateLocal(bv, true);
 		break;
 	}
@@ -644,7 +643,7 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 	{
 		//lyxerr << "formulabase::LFUN_MATH_DELIM, arg: '" << arg << "'\n";
 		string ls;
-		string rs = split(arg, ls, ' ');
+		string rs = split(ev.argument, ls, ' ');
 		// Reasonable default values
 		if (ls.empty())
 			ls = '(';
@@ -681,8 +680,8 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		if (p) {
 			mathcursor->popToEnclosingGrid();
 			bv->lockedInsetStoreUndo(Undo::EDIT);
-			char align = arg.size() ? arg[0] : 'c';
-			switch (action) {
+			char align = ev.argument.size() ? ev.argument[0] : 'c';
+			switch (ev.action) {
 				case LFUN_MATH_HALIGN: p->halign(align, p->col(idx)); break;
 				case LFUN_MATH_VALIGN: p->valign(align); break;
 				case LFUN_MATH_ROW_INSERT: p->addRow(p->row(idx)); break;
@@ -757,13 +756,13 @@ InsetFormulaBase::localDispatch(BufferView * bv, kb_action action,
 		//		updateInset(inset, true);
 		//}
 		//
-		if (arg.empty()) {
+		if (ev.argument.empty()) {
 			InsetCommandParams p("ref");
 			bv->owner()->getDialogs()->createRef(p.getAsString());
 		} else {
 			//mathcursor->handleNest(new InsetRef2);
 			//mathcursor->insert(arg);
-			mathcursor->insert(MathAtom(new RefInset(arg)));
+			mathcursor->insert(MathAtom(new RefInset(ev.argument)));
 		}
 		updateLocal(bv, true);
 		break;
@@ -941,8 +940,8 @@ void mathDispatchCreation(BufferView * bv, string const & arg, bool display)
 			// always changing to mathrm when opening an inlined inset
 			// -- I really hate "LyXfunc overloading"...
 			if (display)
-				f->localDispatch(bv, LFUN_MATH_DISPLAY, string());
-			f->localDispatch(bv, LFUN_INSERT_MATH, arg);
+				f->localDispatch(bv, FuncRequest(LFUN_MATH_DISPLAY));
+			f->localDispatch(bv, FuncRequest(LFUN_INSERT_MATH, arg));
 		}
 	} else {
 		// create a macro if we see "\\newcommand" somewhere, and an ordinary
@@ -1000,7 +999,7 @@ void mathDispatchMathDelim(BufferView * bv, string const & arg)
 	InsetFormula * f = new InsetFormula(bv);
 	if (openNewInset(bv, f)) {
 		f->mutate("simple");
-		bv->theLockingInset()->localDispatch(bv, LFUN_MATH_DELIM, arg);
+		bv->theLockingInset()->localDispatch(bv, FuncRequest(LFUN_MATH_DELIM, arg));
 	}
 }
 
@@ -1012,7 +1011,7 @@ void mathDispatchInsertMatrix(BufferView * bv, string const & arg)
 	InsetFormula * f = new InsetFormula(bv);
 	if (openNewInset(bv, f)) {
 		f->mutate("simple");
-		bv->theLockingInset()->localDispatch(bv, LFUN_INSERT_MATRIX, arg);
+		bv->theLockingInset()->localDispatch(bv, FuncRequest(LFUN_INSERT_MATRIX, arg));
 	}
 }
 
@@ -1024,7 +1023,7 @@ void mathDispatchInsertMath(BufferView * bv, string const & arg)
 	InsetFormula * f = new InsetFormula(bv);
 	if (openNewInset(bv, f)) {
 		f->mutate("simple");
-    bv->theLockingInset()->localDispatch(bv, LFUN_INSERT_MATH, arg);
+    bv->theLockingInset()->localDispatch(bv, FuncRequest(LFUN_INSERT_MATH, arg));
 	}
 }
 
@@ -1036,7 +1035,7 @@ void mathDispatchGreek(BufferView * bv, string const & arg)
 	InsetFormula * f = new InsetFormula(bv);
 	if (openNewInset(bv, f)) {
 		f->mutate("simple");
-		bv->theLockingInset()->localDispatch(bv, LFUN_GREEK, arg);
+		bv->theLockingInset()->localDispatch(bv, FuncRequest(LFUN_GREEK, arg));
 		bv->unlockInset(f);
 	}
 }

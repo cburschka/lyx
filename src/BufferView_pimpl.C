@@ -39,6 +39,7 @@
 #include "gettext.h"
 #include "ParagraphParameters.h"
 #include "undo_funcs.h"
+#include "funcrequest.h"
 
 #include "insets/insetbib.h"
 #include "insets/insettext.h"
@@ -617,8 +618,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 		if (paste_internally)
 			owner_->getLyXFunc()->dispatch(LFUN_PASTE);
 		else
-			owner_->getLyXFunc()->dispatch(LFUN_PASTESELECTION,
-						       string("paragraph"));
+			owner_->getLyXFunc()->dispatch(FuncRequest(LFUN_PASTESELECTION, "paragraph"));
 		selection_possible = false;
 		return;
 	}
@@ -734,7 +734,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 		// We are in inset locking mode.
 
 		/* LyX does a kind of work-area grabbing for insets.
-		   Only a ButtonPress Event outside the inset will
+		   Only a ButtonPress FuncRequest outside the inset will
 		   force a insetUnlock. */
 		bv_->theLockingInset()->
 			insetButtonRelease(bv_, x, y, button);
@@ -1485,14 +1485,14 @@ void BufferView::Pimpl::MenuInsertLyXFile(string const & filen)
 }
 
 
-bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
+bool BufferView::Pimpl::dispatch(FuncRequest const & ev)
 {
 	lyxerr[Debug::ACTION] << "BufferView::Pimpl::Dispatch: action["
-			      << action <<"] arg[" << argument << "]" << endl;
+	  << ev.action <<"] arg[" << ev.argument << "]" << endl;
 
 	LyXTextClass const & tclass = buffer_->params.getLyXTextClass();
 
-	switch (action) {
+	switch (ev.action) {
 		// --- Misc -------------------------------------------
 	case LFUN_APPENDIX:
 	{
@@ -1542,13 +1542,8 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 		break;
 
 	case LFUN_PASTESELECTION:
-	{
-		bool asPara = false;
-		if (argument == "paragraph")
-			asPara = true;
-		pasteClipboard(asPara);
-	}
-	break;
+		pasteClipboard(ev.argument == "paragraph");
+		break;
 
 	case LFUN_CUT:
 		bv_->cut();
@@ -1621,28 +1616,28 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 		break;
 
 	case LFUN_FILE_INSERT:
-		MenuInsertLyXFile(argument);
+		MenuInsertLyXFile(ev.argument);
 		break;
 
 	case LFUN_FILE_INSERT_ASCII_PARA:
-		InsertAsciiFile(bv_, argument, true);
+		InsertAsciiFile(bv_, ev.argument, true);
 		break;
 
 	case LFUN_FILE_INSERT_ASCII:
-		InsertAsciiFile(bv_, argument, false);
+		InsertAsciiFile(bv_, ev.argument, false);
 		break;
 
 	case LFUN_LAYOUT:
 	{
 		lyxerr[Debug::INFO] << "LFUN_LAYOUT: (arg) "
-				    << argument << endl;
+				    << ev.argument << endl;
 
 		// This is not the good solution to the empty argument
 		// problem, but it will hopefully suffice for 1.2.0.
 		// The correct solution would be to augument the
 		// function list/array with information about what
 		// functions needs arguments and their type.
-		if (argument.empty()) {
+		if (ev.argument.empty()) {
 			owner_->getLyXFunc()->setErrorMessage(
 				_("LyX function 'layout' needs an argument."));
 			break;
@@ -1650,8 +1645,8 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number). */
-		bool hasLayout = tclass.hasLayout(argument);
-		string layout = argument;
+		bool hasLayout = tclass.hasLayout(ev.argument);
+		string layout = ev.argument;
 
 		// If the entry is obsolete, use the new one instead.
 		if (hasLayout) {
@@ -1662,7 +1657,7 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 
 		if (!hasLayout) {
 			owner_->getLyXFunc()->setErrorMessage(
-				string(N_("Layout ")) + argument +
+				string(N_("Layout ")) + ev.argument +
 				N_(" not known"));
 			break;
 		}
@@ -1699,7 +1694,7 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 	break;
 
 	case LFUN_LANGUAGE:
-		lang(bv_, argument);
+		lang(bv_, ev.argument);
 		switchKeyMap();
 		owner_->view_state_changed();
 		break;
@@ -1745,7 +1740,7 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 		break;
 
 	case LFUN_FONT_SIZE:
-		fontSize(bv_, argument);
+		fontSize(bv_, ev.argument);
 		owner_->view_state_changed();
 		break;
 
@@ -1817,16 +1812,16 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 
 
 	case LFUN_INSERT_LABEL:
-		MenuInsertLabel(bv_, argument);
+		MenuInsertLabel(bv_, ev.argument);
 		break;
 
 	case LFUN_REF_INSERT:
-		if (argument.empty()) {
+		if (ev.argument.empty()) {
 			InsetCommandParams p("ref");
 			owner_->getDialogs()->createRef(p.getAsString());
 		} else {
 			InsetCommandParams p;
-			p.setFromString(argument);
+			p.setFromString(ev.argument);
 
 			InsetRef * inset = new InsetRef(p, *buffer_);
 			if (!insertInset(inset))
@@ -1837,16 +1832,16 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 		break;
 
 	case LFUN_BOOKMARK_SAVE:
-		savePosition(strToUnsignedInt(argument));
+		savePosition(strToUnsignedInt(ev.argument));
 		break;
 
 	case LFUN_BOOKMARK_GOTO:
-		restorePosition(strToUnsignedInt(argument));
+		restorePosition(strToUnsignedInt(ev.argument));
 		break;
 
 	case LFUN_REF_GOTO:
 	{
-		string label(argument);
+		string label = ev.argument;
 		if (label.empty()) {
 			InsetRef * inset =
 				static_cast<InsetRef*>(getInsetByCode(Inset::REF_CODE));
@@ -2657,7 +2652,7 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 			cur_value = par->params().spacing().getValue();
 		}
 
-		istringstream istr(argument.c_str());
+		istringstream istr(ev.argument.c_str());
 
 		string tmp;
 		istr >> tmp;
@@ -2683,7 +2678,7 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 			new_spacing = Spacing::Default;
 		} else {
 			lyxerr << _("Unknown spacing argument: ")
-			       << argument << endl;
+			       << ev.argument << endl;
 		}
 		if (cur_spacing != new_spacing || cur_value != new_value) {
 			par->params().spacing(Spacing(new_spacing, new_value));
@@ -2716,7 +2711,7 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 	case LFUN_URL:
 	{
 		InsetCommandParams p;
-		if (action == LFUN_HTMLURL)
+		if (ev.action == LFUN_HTMLURL)
 			p.setCmdName("htmlurl");
 		else
 			p.setCmdName("url");
@@ -2727,7 +2722,7 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 	case LFUN_INSERT_URL:
 	{
 		InsetCommandParams p;
-		p.setFromString(argument);
+		p.setFromString(ev.argument);
 
 		InsetUrl * inset = new InsetUrl(p);
 		if (!insertInset(inset))
@@ -2763,25 +2758,25 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 
 	case LFUN_INSET_FLOAT:
 		// check if the float type exist
-		if (floatList.typeExist(argument)) {
+		if (floatList.typeExist(ev.argument)) {
 			insertAndEditInset(new InsetFloat(buffer_->params,
-							  argument));
+							  ev.argument));
 		} else {
 			lyxerr << "Non-existent float type: "
-			       << argument << endl;
+			       << ev.argument << endl;
 		}
 		break;
 
 	case LFUN_INSET_WIDE_FLOAT:
 		// check if the float type exist
-		if (floatList.typeExist(argument)) {
+		if (floatList.typeExist(ev.argument)) {
 			InsetFloat * new_inset =
-				new InsetFloat(buffer_->params, argument);
+				new InsetFloat(buffer_->params, ev.argument);
 			new_inset->wide(true);
 			insertAndEditInset(new_inset);
 		} else {
 			lyxerr << "Non-existent float type: "
-			       << argument << endl;
+			       << ev.argument << endl;
 		}
 		break;
 
@@ -2817,14 +2812,14 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 
 	case LFUN_TABULAR_INSERT:
 	{
-		if (argument.empty()) {
+		if (ev.argument.empty()) {
 			owner_->getDialogs()->showTabularCreate();
 			break;
 		}
  
 		int r = 2;
 		int c = 2;
-		::sscanf(argument.c_str(),"%d%d", &r, &c);
+		::sscanf(ev.argument.c_str(),"%d%d", &r, &c);
 		InsetTabular * new_inset =
 			new InsetTabular(*buffer_, r, c);
 		bool const rtl =
@@ -2857,9 +2852,9 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 	{
 		int x = 0;
 		int y = 0;
-		if (::sscanf(argument.c_str(), " %d %d", &x, &y) != 2) {
+		if (::sscanf(ev.argument.c_str(), " %d %d", &x, &y) != 2) {
 			lyxerr << "SETXY: Could not parse coordinates in '"
-			       << argument << std::endl;
+			       << ev.argument << std::endl;
 		}
 		bv_->getLyXText()->setCursorFromCoordinates(bv_, x, y);
 	}
@@ -2901,13 +2896,13 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 	case LFUN_HUNG_UMLAUT:
 	case LFUN_CIRCLE:
 	case LFUN_OGONEK:
-		if (argument.empty()) {
+		if (ev.argument.empty()) {
 			// As always...
-			owner_->getLyXFunc()->handleKeyFunc(action);
+			owner_->getLyXFunc()->handleKeyFunc(ev.action);
 		} else {
-			owner_->getLyXFunc()->handleKeyFunc(action);
+			owner_->getLyXFunc()->handleKeyFunc(ev.action);
 			owner_->getIntl()->getTransManager()
-				.TranslateAndInsert(argument[0], bv_->getLyXText());
+				.TranslateAndInsert(ev.argument[0], bv_->getLyXText());
 			update(bv_->getLyXText(),
 			       BufferView::SELECT
 			       | BufferView::FITCUR
@@ -2916,45 +2911,45 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 		break;
 
 	case LFUN_MATH:
-		mathDispatch(bv_, argument);
+		mathDispatch(bv_, ev.argument);
 		break;
 
 	case LFUN_MATH_MACRO:
-		mathDispatchMathMacro(bv_, argument);
+		mathDispatchMathMacro(bv_, ev.argument);
 		break;
 
 	case LFUN_MATH_DELIM:
-		mathDispatchMathDelim(bv_, argument);
+		mathDispatchMathDelim(bv_, ev.argument);
 		break;
 
 	case LFUN_INSERT_MATRIX:
-		mathDispatchInsertMatrix(bv_, argument);
+		mathDispatchInsertMatrix(bv_, ev.argument);
 		break;
 
 	case LFUN_INSERT_MATH:
-		mathDispatchInsertMath(bv_, argument);
+		mathDispatchInsertMath(bv_, ev.argument);
 		break;
 
 	case LFUN_MATH_IMPORT_SELECTION: // Imports LaTeX from the X selection
-		mathDispatchMathImportSelection(bv_, argument);
+		mathDispatchMathImportSelection(bv_, ev.argument);
 		break;
 
 	case LFUN_MATH_DISPLAY:          // Open or create a displayed math inset
-		mathDispatchMathDisplay(bv_, argument);
+		mathDispatchMathDisplay(bv_, ev.argument);
 		break;
 
 	case LFUN_MATH_MODE:             // Open or create an inlined math inset
-		mathDispatchMathMode(bv_, argument);
+		mathDispatchMathMode(bv_, ev.argument);
 		break;
 
 	case LFUN_GREEK:                 // Insert a single greek letter
-		mathDispatchGreek(bv_, argument);
+		mathDispatchGreek(bv_, ev.argument);
 		break;
 
 	case LFUN_CITATION_INSERT:
 	{
 		InsetCommandParams p;
-		p.setFromString(argument);
+		p.setFromString(ev.argument);
 
 		InsetCitation * inset = new InsetCitation(p);
 		if (!insertInset(inset))
@@ -2969,14 +2964,14 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 		// ale970405+lasgoutt970425
 		// The argument can be up to two tokens separated
 		// by a space. The first one is the bibstyle.
-		string const db       = token(argument, ' ', 0);
-		string const bibstyle = token(argument, ' ', 1);
+		string const db       = token(ev.argument, ' ', 0);
+		string const bibstyle = token(ev.argument, ' ', 1);
 
 		InsetCommandParams p("BibTeX", db, bibstyle);
 		InsetBibtex * inset = new InsetBibtex(p);
 
 		if (insertInset(inset)) {
-			if (argument.empty())
+			if (ev.argument.empty())
 				inset->edit(bv_);
 		} else
 			delete inset;
@@ -2989,7 +2984,7 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 		InsetBibtex * inset =
 			static_cast<InsetBibtex*>(getInsetByCode(Inset::BIBTEX_CODE));
 		if (inset) {
-			inset->addDatabase(argument);
+			inset->addDatabase(ev.argument);
 		}
 	}
 	break;
@@ -2999,7 +2994,7 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 		InsetBibtex * inset =
 			static_cast<InsetBibtex*>(getInsetByCode(Inset::BIBTEX_CODE));
 		if (inset) {
-			inset->delDatabase(argument);
+			inset->delDatabase(ev.argument);
 		}
 	}
 	break;
@@ -3009,14 +3004,14 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 		InsetBibtex * inset =
 			static_cast<InsetBibtex*>(getInsetByCode(Inset::BIBTEX_CODE));
 		if (inset) {
-			inset->setOptions(argument);
+			inset->setOptions(ev.argument);
 		}
 	}
 	break;
 
 	case LFUN_INDEX_INSERT:
 	{
-		string entry = argument;
+		string entry = ev.argument;
 		if (entry.empty()) {
 			entry = bv_->getLyXText()->getStringToIndex(bv_);
 		}
@@ -3047,7 +3042,7 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 
 	case LFUN_PARENTINSERT:
 	{
-		InsetCommandParams p("lyxparent", argument);
+		InsetCommandParams p("lyxparent", ev.argument);
 		Inset * inset = new InsetParent(p, *buffer_);
 		if (!insertInset(inset, tclass.defaultLayoutName()))
 			delete inset;
@@ -3058,7 +3053,7 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 	case LFUN_CHILD_INSERT:
 	{
 		InsetInclude::Params p;
-		p.cparams.setFromString(argument);
+		p.cparams.setFromString(ev.argument);
 		p.masterFilename_ = buffer_->fileName();
 
 		InsetInclude * inset = new InsetInclude(p);
@@ -3072,19 +3067,19 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 	break;
 
 	case LFUN_FLOAT_LIST:
-		if (floatList.typeExist(argument)) {
-			Inset * inset = new InsetFloatList(argument);
+		if (floatList.typeExist(ev.argument)) {
+			Inset * inset = new InsetFloatList(ev.argument);
 			if (!insertInset(inset, tclass.defaultLayoutName()))
 				delete inset;
 		} else {
 			lyxerr << "Non-existent float type: "
-			       << argument << endl;
+			       << ev.argument << endl;
 		}
 		break;
 
 	case LFUN_THESAURUS_ENTRY:
 	{
-		string arg = argument;
+		string arg = ev.argument;
 
 		if (arg.empty()) {
 			arg = bv_->getLyXText()->selectionAsString(buffer_,
@@ -3105,7 +3100,7 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 
 	case LFUN_SELFINSERT:
 	{
-		if (argument.empty()) break;
+		if (ev.argument.empty()) break;
 
 		/* Automatically delete the currently selected
 		 * text and replace it with what is being
@@ -3129,8 +3124,8 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 		beforeChange(lt);
 		LyXFont const old_font(lt->real_current_font);
 
-		string::const_iterator cit = argument.begin();
-		string::const_iterator end = argument.end();
+		string::const_iterator cit = ev.argument.begin();
+		string::const_iterator end = ev.argument.end();
 		for (; cit != end; ++cit) {
 			owner_->getIntl()->getTransManager().
 				TranslateAndInsert(*cit, lt);
@@ -3158,8 +3153,8 @@ bool BufferView::Pimpl::dispatch(kb_action action, string const & argument)
 		struct tm * now_tm = localtime(&now_time_t);
 		setlocale(LC_TIME, "");
 		string arg;
-		if (!argument.empty())
-			arg = argument;
+		if (!ev.argument.empty())
+			arg = ev.argument;
 		else
 			arg = lyxrc.date_insert_format;
 		char datetmp[32];
@@ -3265,7 +3260,8 @@ void BufferView::Pimpl::smartQuote()
 
 	if (style->pass_thru ||
 		(!insertInset(new InsetQuotes(c, bv_->buffer()->params))))
-		bv_->owner()->getLyXFunc()->dispatch(LFUN_SELFINSERT, string("\""));
+		bv_->owner()->getLyXFunc()
+			->dispatch(FuncRequest(LFUN_SELFINSERT, "\""));
 }
 
 

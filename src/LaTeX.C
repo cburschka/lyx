@@ -22,6 +22,7 @@
 #include "gettext.h"
 #include "lyxfunc.h"
 #include "debug.h"
+#include "funcrequest.h"
 #include "support/filetools.h"
 #include "support/FileInfo.h"
 #include "support/lstrings.h"
@@ -197,7 +198,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	if (lfun) {
 		ostringstream str;
 		str << _("LaTeX run number") << ' ' << count;
-		lfun->dispatch(LFUN_MESSAGE, str.str().c_str(), false);
+		lfun->dispatch(FuncRequest(LFUN_MESSAGE, str.str().c_str()));
 	}
 
 	this->operator()();
@@ -233,7 +234,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
 		if (lfun) {
-			lfun->dispatch(LFUN_MESSAGE, _("Running MakeIndex."), false);
+			lfun->dispatch(FuncRequest(LFUN_MESSAGE, _("Running MakeIndex.")));
 		}
 
 		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")));
@@ -248,7 +249,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running BibTeX." << endl;
 		if (lfun) {
-			lfun->dispatch(LFUN_MESSAGE, _("Running BibTeX."), false);
+			lfun->dispatch(FuncRequest(LFUN_MESSAGE, _("Running BibTeX.")));
 		}
 
 		updateBibtexDependencies(head, bibtex_info);
@@ -283,7 +284,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 			ostringstream str;
 			str << _("LaTeX run number") << ' ' << count;
 			// check lyxstring string stream and gcc 3.1 before fixing
-			lfun->dispatch(LFUN_MESSAGE, str.str().c_str(), false);
+			lfun->dispatch(FuncRequest(LFUN_MESSAGE, str.str().c_str()));
 		}
 
 		this->operator()();
@@ -313,7 +314,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
 		if (lfun) {
-			lfun->dispatch(LFUN_MESSAGE, _("Running MakeIndex."), false);
+			lfun->dispatch(FuncRequest(LFUN_MESSAGE, _("Running MakeIndex.")));
 		}
 
 		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")));
@@ -339,7 +340,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		if (lfun) {
 			ostringstream str;
 			str << _("LaTeX run number") << ' ' << count;
-			lfun->dispatch(LFUN_MESSAGE, str.str().c_str(), false);
+			lfun->dispatch(FuncRequest(LFUN_MESSAGE, str.str().c_str()));
 		}
 
 		this->operator()();

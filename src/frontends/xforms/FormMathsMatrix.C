@@ -23,6 +23,7 @@
 #include "frontends/LyXView.h"
 #include "Lsstream.h"
 #include "lyxfunc.h"
+#include "funcrequest.h"
 #include "support/LAssert.h"
 #include "support/lyxalgo.h" // lyx::count
 #include FORMS_H_LOCATION
@@ -99,8 +100,10 @@ void FormMathsMatrix::apply()
 	ostringstream ost;
 	ost << nx << ' ' << ny << ' ' << c << ' ' << sh;
 
-	lv_->getLyXFunc()->dispatch(LFUN_INSERT_MATRIX, ost.str().c_str(), false);
+	lv_->getLyXFunc()->
+		dispatch(FuncRequest(LFUN_INSERT_MATRIX, ost.str().c_str()));
 }
+
 
 bool FormMathsMatrix::input(FL_OBJECT * ob, long)
 {
@@ -123,9 +126,9 @@ int FormMathsMatrix::AlignFilter(char const * cur, int c)
 {
 	size_t len = strlen(cur);
 
-	int const n = int(fl_get_slider_value(dialog_->slider_columns) + 0.5) -
-		int(len) +
-		int(lyx::count(cur, cur + len, '|'));
+	int const n = int(fl_get_slider_value(dialog_->slider_columns) + 0.5)
+		- int(len)
+		+ int(lyx::count(cur, cur + len, '|'));
 	if (n < 0)
 		return FL_INVALID;
 

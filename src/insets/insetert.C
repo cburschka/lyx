@@ -21,6 +21,7 @@
 #include "BufferView.h"
 #include "frontends/LyXView.h"
 #include "lyxtext.h"
+#include "funcrequest.h"
 #include "debug.h"
 #include "lyxrow.h"
 #include "lyxlex.h"
@@ -444,7 +445,7 @@ int InsetERT::docbook(Buffer const *, ostream & os, bool) const
 
 
 UpdatableInset::RESULT
-InsetERT::localDispatch(BufferView * bv, kb_action action, string const & arg)
+InsetERT::localDispatch(BufferView * bv, FuncRequest const & ev)
 {
 	UpdatableInset::RESULT result = DISPATCHED_NOUPDATE;
 
@@ -452,14 +453,14 @@ InsetERT::localDispatch(BufferView * bv, kb_action action, string const & arg)
 		set_latex_font(bv);
 	}
 
-	switch (action) {
+	switch (ev.action) {
 	case LFUN_LAYOUT:
 		bv->owner()->setLayout(inset.paragraph()->layout()->name());
 		break;
 	default:
-		result = InsetCollapsable::localDispatch(bv, action, arg);
+		result = InsetCollapsable::localDispatch(bv, ev);
 	}
-	switch (action) {
+	switch (ev.action) {
 	case LFUN_BREAKPARAGRAPH:
 	case LFUN_BREAKPARAGRAPHKEEPLAYOUT:
 	case LFUN_BACKSPACE:

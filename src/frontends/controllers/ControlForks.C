@@ -18,6 +18,7 @@
 #include "BufferView.h"
 #include "frontends/LyXView.h"
 #include "lyxfunc.h"
+#include "funcrequest.h"
 
 #include "support/forkedcontr.h"
 #include "support/lstrings.h"
@@ -65,7 +66,7 @@ void ControlForks::apply()
 
 	for (vector<string>::const_iterator it = pids_.begin();
 	     it != pids_.end(); ++it) {
-		lv_.getLyXFunc()->dispatch(LFUN_FORKS_KILL, *it);
+		lv_.getLyXFunc()->dispatch(FuncRequest(LFUN_FORKS_KILL, *it));
 	}
 
 	pids_.clear();

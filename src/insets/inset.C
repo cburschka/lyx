@@ -20,7 +20,7 @@
 #include "support/lstrings.h"
 #include "frontends/Painter.h"
 #include "frontends/mouse_state.h"
-#include "commandtags.h"
+#include "funcrequest.h"
 #include "support/lstrings.h"
 #include "gettext.h"
 #include "lyxfont.h"
@@ -301,15 +301,14 @@ void UpdatableInset::scroll(BufferView * bv, int offset) const
 
 ///  An updatable inset could handle lyx editing commands
 UpdatableInset::RESULT
-UpdatableInset::localDispatch(BufferView * bv,
-			      kb_action action, string const & arg)
+UpdatableInset::localDispatch(BufferView * bv, FuncRequest const & ev)
 {
-	if (!arg.empty() && (action==LFUN_SCROLL_INSET)) {
-		if (arg.find('.') != arg.npos) {
-			float const xx = static_cast<float>(strToDbl(arg));
+	if (!ev.argument.empty() && ev.action == LFUN_SCROLL_INSET) {
+		if (ev.argument.find('.') != ev.argument.npos) {
+			float const xx = static_cast<float>(strToDbl(ev.argument));
 			scroll(bv, xx);
 		} else {
-			int const xx = strToInt(arg);
+			int const xx = strToInt(ev.argument);
 			scroll(bv, xx);
 		}
 		bv->updateInset(this, false);

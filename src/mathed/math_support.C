@@ -524,7 +524,7 @@ LyXFont::FONT_SERIES const inh_series = LyXFont::INHERIT_SERIES;
 LyXFont::FONT_SHAPE  const inh_shape  = LyXFont::INHERIT_SHAPE; 
 
 
-// mathnormal should be the first, otherwise the fallback fuerther down
+// mathnormal should be the first, otherwise the fallback further down
 // does not work
 fontinfo fontinfos[] = {
 	{"mathnormal",

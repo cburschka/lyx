@@ -25,6 +25,8 @@
 #include "frontends/LyXView.h"
 #include "lyxfunc.h"
 #include "BufferView.h"
+#include "funcrequest.h"
+
 
 ControlCommand::ControlCommand(LyXView & lv, Dialogs & d, kb_action ac)
 	: ControlInset<InsetCommand, InsetCommandParams>(lv, d),
@@ -55,6 +57,7 @@ void ControlCommand::applyParamsToInset()
 
 void ControlCommand::applyParamsNoInset()
 {
-	if (action_ == LFUN_NOACTION) return;
-	lv_.getLyXFunc()->dispatch(action_, params().getAsString());
+	if (action_ == LFUN_NOACTION)
+		return;
+	lv_.getLyXFunc()->dispatch(FuncRequest(action_, params().getAsString()));
 }

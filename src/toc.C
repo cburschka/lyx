@@ -48,7 +48,7 @@ string const TocItem::asString() const
 void TocItem::goTo(LyXView & lv_) const
 {
 	string const tmp = tostr(par->id());
-	lv_.getLyXFunc()->dispatch(LFUN_GOTO_PARAGRAPH, tmp, false);
+	lv_.getLyXFunc()->dispatch(FuncRequest(LFUN_GOTO_PARAGRAPH, tmp));
 }
 
 

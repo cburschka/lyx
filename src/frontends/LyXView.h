@@ -123,7 +123,7 @@ public:
 	void resetAutosaveTimer();
 
 protected:
-	/// view of a buffer. Eventually there will be several.
+	/// view of a buffer. FuncRequestually there will be several.
 	boost::shared_ptr<BufferView> bufferview_;
 
 	/// view's menubar

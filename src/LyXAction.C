@@ -74,14 +74,14 @@ void LyXAction::init()
 	static bool init;
 	if (init) return;
 
-	struct lfun_item {
+	struct ev_item {
 		kb_action action;
 		char const * name;
 		char const * helpText;
 		unsigned int attrib;
 	};
 
-	lfun_item items[] = {
+	ev_item items[] = {
 		{ LFUN_ACUTE, "accent-acute", "", Noop },
 		{ LFUN_BREVE, "accent-breve", "", Noop },
 		{ LFUN_CARON, "accent-caron", "", Noop },
@@ -483,10 +483,7 @@ int LyXAction::getPseudoAction(kb_action action, string const & arg) const
 	static unsigned int pseudo_counter = LFUN_LASTACTION;
 
 	// Create new pseudo action.
-	pseudo_func tmp_p;
-	tmp_p.action = action;
-	tmp_p.arg = arg;
-	lyx_pseudo_map[++pseudo_counter] = tmp_p;
+	lyx_pseudo_map[++pseudo_counter] = FuncRequest(action, arg);
 
 	// First ensure that the action is in lyx_arg_map;
 	lyx_arg_map[action];
@@ -517,8 +514,8 @@ kb_action LyXAction::retrieveActionArg(int pseudo, string & arg) const
 	if (pit != lyx_pseudo_map.end()) {
 		lyxerr[Debug::ACTION] << "Found the pseudoaction: ["
 				      << pit->second.action << '|'
-				      << pit->second.arg << "]\n";
-		arg = pit->second.arg;
+				      << pit->second.argument << "]\n";
+		arg = pit->second.argument;
 		return pit->second.action;
 	} else {
 		lyxerr << "Lyx Error: Unrecognized pseudo-action "

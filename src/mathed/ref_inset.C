@@ -2,7 +2,7 @@
 
 #include "ref_inset.h"
 #include "math_cursor.h"
-#include "commandtags.h"
+#include "funcrequest.h"
 #include "formulabase.h"
 #include "BufferView.h"
 #include "frontends/LyXView.h"
@@ -41,13 +41,13 @@ int RefInset::dispatch(string const & cmd, idx_type, pos_type)
 	if (cmd == "mouse-3-release") {
 		lyxerr << "trying to goto ref" << cell(0) << "\n";
 		mathcursor->formula()->view()->owner()->getLyXFunc()->
-			dispatch(LFUN_REF_GOTO, asString(cell(0)));
+			dispatch(FuncRequest(LFUN_REF_GOTO, asString(cell(0))));
 		return 1; // dispatched
 	}
 
 	if (cmd == "mouse-1-release") {
 		lyxerr << "trying to open ref" << cell(0) << "\n";
-		// Eventually trigger dialog with button 3 not 1
+		// FuncRequestually trigger dialog with button 3 not 1
 //		mathcursor->formula()->view()->owner()->getDialogs()
 //			->showRef(this);
 		return 1; // dispatched

@@ -22,6 +22,7 @@
 #include "MathsSymbols.h"
 #include "debug.h"
 #include "lyxfunc.h"
+#include "funcrequest.h"
 
 #include "forms/form_maths_deco.h"
 #include "forms/form_maths_delim.h"
@@ -381,9 +382,9 @@ bool FormMathsPanel::input(FL_OBJECT *, long data)
 void FormMathsPanel::insertSymbol(string const & sym, bool bs) const
 {
 	if (bs)
-		lv_->getLyXFunc()->dispatch(LFUN_INSERT_MATH, '\\' + sym);
+		lv_->getLyXFunc()->dispatch(FuncRequest(LFUN_INSERT_MATH, '\\' + sym));
 	else
-		lv_->getLyXFunc()->dispatch(LFUN_INSERT_MATH, sym);
+		lv_->getLyXFunc()->dispatch(FuncRequest(LFUN_INSERT_MATH, sym));
 }
 
 

@@ -11,7 +11,6 @@
 #define BUFFERVIEW_PIMPL_H
 
 #include "BufferView.h"
-#include "commandtags.h"
 #include "frontends/Timeout.h"
 #include "frontends/key_state.h"
 #include "frontends/mouse_state.h"
@@ -125,7 +124,7 @@ struct BufferView::Pimpl : public boost::signals::trackable {
 	///
 	void updateInset(Inset * inset, bool mark_dirty);
 	///
-	bool dispatch(kb_action action, string const & argument);
+	bool dispatch(FuncRequest const & ev);
 private:
 	/**
 	 * Return the on-screen dimensions of the inset at the cursor.

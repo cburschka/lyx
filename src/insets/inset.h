@@ -17,10 +17,9 @@
 
 #include <vector>
 #include "LString.h"
-#include "commandtags.h"
+#include "LColor.h"
 #include "frontends/mouse_state.h"
 #include "WordLangTuple.h"
-#include "LColor.h"
 
 class LyXFont;
 class BufferView;
@@ -30,6 +29,7 @@ class LyXText;
 class LyXLex;
 class Paragraph;
 class LyXCursor;
+class FuncRequest;
 
 struct LaTeXFeatures;
 
@@ -512,7 +512,7 @@ public:
 					bool /*lr*/ = false)
 		{ return false; }
 	///  An updatable inset could handle lyx editing commands
-	virtual RESULT localDispatch(BufferView *, kb_action, string const &);
+	virtual RESULT localDispatch(BufferView *, FuncRequest const & ev);
 	///
 	bool isCursorVisible() const { return cursor_visible_; }
 	///

@@ -237,7 +237,7 @@ BufferView::UpdateCodes operator|(BufferView::UpdateCodes uc1,
 }
 
 
-bool BufferView::dispatch(kb_action action, string const & argument)
+bool BufferView::dispatch(FuncRequest const & ev)
 {
-	return pimpl_->dispatch(action, argument);
+	return pimpl_->dispatch(ev);
 }

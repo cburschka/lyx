@@ -190,7 +190,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 		       << endl;
 	}
 	// Do nothing if we have nothing (JMarc)
-	if ( ! keysym->isOK() ) {
+	if (!keysym->isOK()) {
 		lyxerr[Debug::KEY] << "Empty kbd action (probably composing)"
 				   << endl;
 		return;
@@ -264,7 +264,7 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 		if (c != 0)
 			argument = c;
 
-		dispatch(LFUN_SELFINSERT, argument);
+		dispatch(FuncRequest(LFUN_SELFINSERT, argument));
 		lyxerr[Debug::KEY] << "SelfInsert arg[`"
 				   << argument << "']" << endl;
 	} else {
@@ -275,25 +275,23 @@ void LyXFunc::processKeySym(LyXKeySymPtr keysym,
 
 FuncStatus LyXFunc::getStatus(int ac) const
 {
-	kb_action action;
 	string argument;
-	action = lyxaction.retrieveActionArg(ac, argument);
-	return getStatus(action, argument);
+	kb_action action = lyxaction.retrieveActionArg(ac, argument);
+	return getStatus(FuncRequest(action, argument));
 }
 
 
-FuncStatus LyXFunc::getStatus(kb_action action,
-			      string const & argument) const
+FuncStatus LyXFunc::getStatus(FuncRequest const & ev) const
 {
 	FuncStatus flag;
 	Buffer * buf = owner->buffer();
 
-	if (action == LFUN_NOACTION) {
+	if (ev.action == LFUN_NOACTION) {
 		setStatusMessage(N_("Nothing to do"));
 		return flag.disabled(true);
 	}
 
-	if (action == LFUN_UNKNOWN_ACTION) {
+	if (ev.action == LFUN_UNKNOWN_ACTION) {
 		setStatusMessage(N_("Unknown action"));
 		return flag.unknown(true);
 	}
@@ -302,13 +300,13 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 	setStatusMessage(N_("Command disabled"));
 
 	// Check whether we need a buffer
-	if (!lyxaction.funcHasFlag(action, LyXAction::NoBuffer)) {
+	if (!lyxaction.funcHasFlag(ev.action, LyXAction::NoBuffer)) {
 		// Yes we need a buffer, do we have one?
 		if (buf) {
 			// yes
 			// Can we use a readonly buffer?
 			if (buf->isReadonly() &&
-			    !lyxaction.funcHasFlag(action,
+			    !lyxaction.funcHasFlag(ev.action,
 						   LyXAction::ReadOnly)) {
 				// no
 				setStatusMessage(N_("Document is read-only"));
@@ -327,14 +325,14 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 	// I would really like to avoid having this switch and rather try to
 	// encode this in the function itself.
 	bool disable = false;
-	switch (action) {
+	switch (ev.action) {
 	case LFUN_MENUPRINT:
 		disable = !Exporter::IsExportable(buf, "dvi")
 			|| lyxrc.print_command == "none";
 		break;
 	case LFUN_EXPORT:
-		disable = argument == "fax" &&
-			!Exporter::IsExportable(buf, argument);
+		disable = ev.argument == "fax" &&
+			!Exporter::IsExportable(buf, ev.argument);
 		break;
 	case LFUN_UNDO:
 		disable = buf->undostack.empty();
@@ -378,11 +376,11 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 			//ret.disabled(true);
 			if (tli->lyxCode() == Inset::TABULAR_CODE) {
 				ret = static_cast<InsetTabular *>(tli)
-					->getStatus(argument);
+					->getStatus(ev.argument);
 			} else if (tli->getFirstLockingInsetOfType(Inset::TABULAR_CODE)) {
 				ret = static_cast<InsetTabular *>
 					(tli->getFirstLockingInsetOfType(Inset::TABULAR_CODE))
-					->getStatus(argument);
+					->getStatus(ev.argument);
 			}
 			flag |= ret;
 			disable = false;
@@ -391,7 +389,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 			FuncStatus ret;
 
 			disable = true;
-			ret = inset.getStatus(argument);
+			ret = inset.getStatus(ev.argument);
 			if (ret.onoff(true) || ret.onoff(false))
 				flag.setOnOff(false);
 		}
@@ -413,7 +411,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		break;
 	case LFUN_BOOKMARK_GOTO:
 		disable =  !owner->view()->
-			isSavedPosition(strToUnsignedInt(argument));
+			isSavedPosition(strToUnsignedInt(ev.argument));
 		break;
 	case LFUN_INSET_TOGGLE: {
 		LyXText * lt = owner->view()->getLyXText();
@@ -433,15 +431,15 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 				disable = true;
 				break;
 			}
-			if (argument.empty()) {
+			if (ev.argument.empty()) {
 				flag.clear();
 				break;
 			}
-			if (!contains("tcb", argument[0])) {
+			if (!contains("tcb", ev.argument[0])) {
 				disable = true;
 				break;
 			}
-			flag.setOnOff(argument[0] == align);
+			flag.setOnOff(ev.argument[0] == align);
 		} else
 			disable = true;
 		break;
@@ -453,22 +451,22 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 				disable = true;
 				break;
 			}
-			if (argument.empty()) {
+			if (ev.argument.empty()) {
 				flag.clear();
 				break;
 			}
-			if (!contains("lcr", argument[0])) {
+			if (!contains("lcr", ev.argument[0])) {
 				disable = true;
 				break;
 			}
-			flag.setOnOff(argument[0] == align);
+			flag.setOnOff(ev.argument[0] == align);
 		} else
 			disable = true;
 		break;
 
 	case LFUN_MATH_MUTATE:
 		if (tli && (tli->lyxCode() == Inset::MATH_CODE))
-			flag.setOnOff(mathcursor->formula()->hullType() == argument);
+			flag.setOnOff(mathcursor->formula()->hullType() == ev.argument);
 		else
 			disable = true;
 		break;
@@ -498,7 +496,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 
 	// the functions which insert insets
 	Inset::Code code = Inset::NO_CODE;
-	switch (action) {
+	switch (ev.action) {
 	case LFUN_INSET_ERT:
 		code = Inset::ERT_CODE;
 		break;
@@ -602,7 +600,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		flag.disabled(true);
 
 	// A few general toggles
-	switch (action) {
+	switch (ev.action) {
 	case LFUN_TOOLTIPS_TOGGLE:
 		flag.setOnOff(owner->getDialogs()->tooltipsEnabled());
 		break;
@@ -616,7 +614,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 	case LFUN_SWITCHBUFFER:
 		// toggle on the current buffer, but do not toggle off
 		// the other ones (is that a good idea?)
-		if (argument == buf->fileName())
+		if (ev.argument == buf->fileName())
 			flag.setOnOff(true);
 		break;
 	default:
@@ -626,7 +624,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 	// the font related toggles
 	if (!mathcursor) {
 		LyXFont const & font = TEXT(false)->real_current_font;
-		switch (action) {
+		switch (ev.action) {
 		case LFUN_EMPH:
 			flag.setOnOff(font.emph() == LyXFont::ON);
 			break;
@@ -650,7 +648,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 		}
 	} else {
 		string tc = mathcursor->getLastCode();
-		switch (action) {
+		switch (ev.action) {
 		case LFUN_BOLD:
 			flag.setOnOff(tc == "mathbf");
 			break;
@@ -679,10 +677,9 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 
 	// this one is difficult to get right. As a half-baked
 	// solution, we consider only the first action of the sequence
-	if (action == LFUN_SEQUENCE) {
+	if (ev.action == LFUN_SEQUENCE) {
 		// argument contains ';'-terminated commands
-		const int ac = lyxaction.LookupFunc(token(argument, ';', 0));
-		flag = getStatus(ac);
+		flag = getStatus(lyxaction.LookupFunc(token(ev.argument, ';', 0)));
 	}
 
 	return flag;
@@ -708,15 +705,15 @@ void LyXFunc::dispatch(int ac, bool verbose)
 {
 	string argument;
 	kb_action const action = lyxaction.retrieveActionArg(ac, argument);
-	dispatch(action, argument, verbose);
+	dispatch(FuncRequest(action, argument), verbose);
 }
 
 
 
-void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
+void LyXFunc::dispatch(FuncRequest const & ev, bool verbose)
 {
-	lyxerr[Debug::ACTION] << "LyXFunc::dispatch: action[" << action
-			      <<"] arg[" << argument << "]" << endl;
+	lyxerr[Debug::ACTION] << "LyXFunc::dispatch: action[" << ev.action
+			      <<"] arg[" << ev.argument << "]" << endl;
 
 	// we have not done anything wrong yet.
 	errorstat = false;
@@ -734,8 +731,11 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 	if (owner->view()->available())
 		owner->view()->hideCursor();
 
+	string argument = ev.argument;
+	kb_action action = ev.action;
+
 	// We cannot use this function here
-	if (getStatus(action, argument).disabled()) {
+	if (getStatus(ev).disabled()) {
 		lyxerr[Debug::ACTION] << "LyXFunc::dispatch: "
 		       << lyxaction.getActionName(action)
 		       << " [" << action << "] is disabled at this location"
@@ -768,7 +768,7 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 				goto exit_with_message;
 			} else if (((result=inset->
 				     // Hand-over to inset's own dispatch:
-				     localDispatch(owner->view().get(), action, argument)) ==
+				     localDispatch(owner->view().get(), FuncRequest(action, argument))) ==
 				    UpdatableInset::DISPATCHED) ||
 				   (result == UpdatableInset::DISPATCHED_NOUPDATE))
 				goto exit_with_message;
@@ -1336,10 +1336,10 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 
 	// passthrough hat and underscore outside mathed:
 	case LFUN_SUBSCRIPT:
-		dispatch(LFUN_SELFINSERT, "_", false);
+		dispatch(FuncRequest(LFUN_SELFINSERT, "_"));
 		break;
 	case LFUN_SUPERSCRIPT:
-		dispatch(LFUN_SELFINSERT, "^", false);
+		dispatch(FuncRequest(LFUN_SELFINSERT, "^"));
 		break;
 
 	case LFUN_MATH_PANEL:
@@ -1361,7 +1361,7 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 			} else {
 				p.setContents(argument);
 			}
-			dispatch(LFUN_CITATION_INSERT, p.getAsString());
+			dispatch(FuncRequest(LFUN_CITATION_INSERT, p.getAsString()));
 		} else
 			owner->getDialogs()->createCitation(p.getAsString());
 	}
@@ -1507,48 +1507,47 @@ void LyXFunc::dispatch(kb_action action, string argument, bool verbose)
 	default:
 		// Then if it was none of the above
 		// Trying the BufferView::pimpl dispatch:
-		if (!owner->view()->dispatch(action, argument))
+		if (!owner->view()->dispatch(ev))
 			lyxerr << "A truly unknown func ["
-			       << lyxaction.getActionName(action) << "]!"
+			       << lyxaction.getActionName(ev.action) << "]!"
 			       << endl;
 		break;
 	} // end of switch
 
 exit_with_message:
-	string const & msg = getMessage();
-	sendDispatchMessage(msg, action, argument, verbose);
+	sendDispatchMessage(getMessage(), ev, verbose);
 }
 
 
-void LyXFunc::sendDispatchMessage(string const & msg, kb_action action, string const & arg, bool verbose)
+void LyXFunc::sendDispatchMessage(string const & msg, FuncRequest const & ev, bool verbose)
 {
 	owner->updateMenubar();
 	owner->updateToolbar();
 
-	if (action == LFUN_SELFINSERT || !verbose) {
+	if (ev.action == LFUN_SELFINSERT || !verbose) {
 		lyxerr[Debug::ACTION] << "dispatch msg is " << msg << endl;
 		if (!msg.empty())
 			owner->message(msg);
 		return;
 	}
 
-	string dispatch_msg(msg);
+	string dispatch_msg = msg;
 	if (!dispatch_msg.empty())
 		dispatch_msg += " ";
 
-	string comname = lyxaction.getActionName(action);
+	string comname = lyxaction.getActionName(ev.action);
 
-	int pseudoaction = action;
+	int pseudoaction = ev.action;
 	bool argsadded = false;
 
-	if (!arg.empty()) {
+	if (!ev.argument.empty()) {
 		// the pseudoaction is useful for the bindings
-		pseudoaction = lyxaction.searchActionArg(action, arg);
+		pseudoaction = lyxaction.searchActionArg(ev.action, ev.argument);
 
 		if (pseudoaction == LFUN_UNKNOWN_ACTION) {
-			pseudoaction = action;
+			pseudoaction = ev.action;
 		} else {
-			comname += " " + arg;
+			comname += " " + ev.argument;
 			argsadded = true;
 		}
 	}
@@ -1557,8 +1556,8 @@ void LyXFunc::sendDispatchMessage(string const & msg, kb_action action, string c
 
 	if (!shortcuts.empty()) {
 		comname += ": " + shortcuts;
-	} else if (!argsadded && !arg.empty()) {
-		comname += " " + arg;
+	} else if (!argsadded && !ev.argument.empty()) {
+		comname += " " + ev.argument;
 	}
 
 	if (!comname.empty()) {

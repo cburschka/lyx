@@ -35,6 +35,7 @@
 #include "lyxlength.h"
 #include "ParagraphParameters.h"
 #include "lyxlex.h"
+#include "funcrequest.h"
 
 #include "frontends/Dialogs.h"
 #include "frontends/Alert.h"
@@ -820,7 +821,7 @@ void InsetTabular::insetButtonPress(BufferView * bv, int x, int y, mouse_button:
 		the_locking_inset = 0;
 	}
 	if (button == mouse_button::button2) {
-		localDispatch(bv, LFUN_PASTESELECTION, "paragraph");
+		localDispatch(bv, FuncRequest(LFUN_PASTESELECTION, "paragraph"));
 		return;
 	}
 	if (inset_hit && bv->theLockingInset()) {
@@ -877,20 +878,19 @@ void InsetTabular::insetMotionNotify(BufferView * bv, int x, int y, mouse_button
 
 
 UpdatableInset::RESULT
-InsetTabular::localDispatch(BufferView * bv, kb_action action,
-			    string const & arg)
+InsetTabular::localDispatch(BufferView * bv, FuncRequest const & ev)
 {
 	// We need to save the value of the_locking_inset as the call to
 	// the_locking_inset->LocalDispatch might unlock it.
 	old_locking_inset = the_locking_inset;
 	UpdatableInset::RESULT result =
-		UpdatableInset::localDispatch(bv, action, arg);
+		UpdatableInset::localDispatch(bv, ev);
 	if (result == DISPATCHED || result == DISPATCHED_NOUPDATE) {
 		resetPos(bv);
 		return result;
 	}
 
-	if ((action < 0) && arg.empty())
+	if (ev.action < 0 && ev.argument.empty())
 		return FINISHED;
 
 	bool hs = hasSelection();
@@ -899,12 +899,12 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 	// this one have priority over the locked InsetText, if we're not already
 	// inside another tabular then that one get's priority!
 	if (getFirstLockingInsetOfType(Inset::TABULAR_CODE) == this) {
-		switch (action) {
+		switch (ev.action) {
 		case LFUN_SHIFT_TAB:
 		case LFUN_TAB:
 			hideInsetCursor(bv);
 			unlockInsetInInset(bv, the_locking_inset);
-			if (action == LFUN_TAB)
+			if (ev.action == LFUN_TAB)
 				moveNextCell(bv, old_locking_inset != 0);
 			else
 				movePrevCell(bv, old_locking_inset != 0);
@@ -922,8 +922,10 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 		}
 	}
 
+	kb_action action = ev.action;
+	string    arg    = ev.argument;
 	if (the_locking_inset) {
-		result = the_locking_inset->localDispatch(bv, action, arg);
+		result = the_locking_inset->localDispatch(bv, ev);
 		if (result == DISPATCHED_NOUPDATE) {
 			int sc = scroll();
 			resetPos(bv);
@@ -1248,7 +1250,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 			case LFUN_DEFAULT:
 			case LFUN_UNDERLINE:
 			case LFUN_FONT_SIZE:
-				if (bv->dispatch(action, arg))
+				if (bv->dispatch(FuncRequest(action, arg)))
 					result = DISPATCHED;
 				break;
 			default:
@@ -1263,7 +1265,7 @@ InsetTabular::localDispatch(BufferView * bv, kb_action action,
 		if (activateCellInset(bv)) {
 			// reset need_update setted in above function!
 			need_update = NONE;
-			result = the_locking_inset->localDispatch(bv, action, arg);
+			result = the_locking_inset->localDispatch(bv, FuncRequest(action, arg));
 			if ((result == UNDISPATCHED) || (result >= FINISHED)) {
 				unlockInsetInInset(bv, the_locking_inset);
 				nodraw(false);

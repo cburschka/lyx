@@ -15,12 +15,15 @@
 
 #include "QtLyXView.h"
 #include "debug.h"
+#include "funcrequest.h"
 
 #include "FileDialog_private.h"
 
-LyXFileDialog::LyXFileDialog(LyXView * lv, kb_action a, string const & p, string const & m, string const & t)
-	: QFileDialog(p.c_str(), m.c_str(), qApp->mainWidget(), t.c_str(), a == LFUN_SELECT_FILE_SYNC),
-	lv_(lv), action_(a)
+LyXFileDialog::LyXFileDialog(LyXView * lv, kb_action a,
+		string const & p, string const & m, string const & t)
+	: QFileDialog(p.c_str(), m.c_str(), qApp->mainWidget(), t.c_str(),
+		            a == LFUN_SELECT_FILE_SYNC),
+	  lv_(lv), action_(a)
 {
 	setCaption(t.c_str());
 }
@@ -33,9 +36,10 @@ void LyXFileDialog::done(int what)
 	if (action_ == LFUN_SELECT_FILE_SYNC) {
 		QDialog::done(what);
 		return;
-	} else if (what == QDialog::Accepted) {
-		lv_->getLyXFunc()->dispatch(action_, selectedFile().data(), false);
 	}
+
+	if (what == QDialog::Accepted)
+		lv_->getLyXFunc()->dispatch(FuncRequest(action_, selectedFile().data()));
 
 	delete this;
 }

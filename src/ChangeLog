@@ -1,3 +1,16 @@
+
+2002-08-07  André Pönitz <poenitz@gmx.net>
+
+	* funcrequest.h: new class to wrap a kb_action and its argument
+
+	* BufferView.[Ch]:
+	* BufferView_pimpl[Ch]:
+	* LaTeX.C:
+	* LyXAction.[Ch]:
+	* lyxfunc.[Ch]:
+	* lyxrc.C: subsequent changes
+
+
 2002-08-07  John Levon  <levon@movementarian.org>
 
 	* BufferView_pimpl.C (redoCurrentBuffer): fix screen update when
