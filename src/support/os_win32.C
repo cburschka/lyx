@@ -12,7 +12,7 @@
 #include <io.h>
 #include <fcntl.h>
 
-#ifdef __CYGWIN__
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
 #include <sys/cygwin.h>
 #include <cstdlib>
 #endif
@@ -24,7 +24,7 @@ string os::tmpdir_;
 string os::homepath_;
 string os::nulldev_;
 
-#ifdef __CYGWIN__
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
 os::shell_type os::_shell = os::UNIX;
 #else
 os::shell_type os::_shell = os::CMD_EXE;
@@ -58,7 +58,7 @@ void os::init(int /* argc */, char * argv[])
 		tmp.erase(tmp.length()-6, string::npos);
 	binpath_ = tmp;
 
-#ifdef __CYGWIN__
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
 	tmpdir_ = "/tmp";
 	homepath_ = GetEnvPath("HOME");
 	nulldev_ = "/dev/null";
@@ -99,7 +99,7 @@ string os::external_path(string const & p)
 {	
 	string dos_path;
 
-#ifdef __CYGWIN__
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
 	// Translate from cygwin path syntax to dos path syntax
 	if (is_absolute_path(p)) {
 		char dp[MAX_PATH];
@@ -129,18 +129,14 @@ string os::external_path(string const & p)
 // the Win32/DOS pathnames into Cygwin pathnames.
 string os::internal_path(string const & p)
 {
-#ifdef __CYGWIN__
-	char pp[MAX_PATH];
-	cygwin_conv_to_posix_path(p.c_str(), pp);
-	string const posix_path = MakeLatexName(pp);
-#else
-	string const posix_path = subst(p,"\\","/");
-#endif
-	lyxerr[Debug::DEPEND]
-		<< "<Win32 path correction> ["
-		<< p << "]->>["
-		<< posix_path << ']' << endl;
+#if defined(__CYGWIN__) || defined(__CYGWIN32__)
+	char posix_path[MAX_PATH];
+	posix_path[0] = '\0';
+	cygwin_conv_to_posix_path(p.c_str(), posix_path);
 	return posix_path;
+#else
+	return subst(p,"\\","/");
+#endif
 }
 
 // (Claus H.) On Win32 both Unix and Win32/DOS pathnames are used.
