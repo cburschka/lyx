@@ -1,5 +1,118 @@
-# Generated from fontmath.ltx 
+#
+# things supported by real insets in mathed
+#
 
+# decorations
+acute               decoration none 
+bar                 decoration none
+breve               decoration none
+check               decoration none
+dddot               decoration none
+ddot                decoration none
+dot                 decoration none
+grave               decoration none
+hat                 decoration none
+mathring            decoration none
+overbrace           decoration none
+overleftarrow       decoration none
+overleftrightarrow  decoration none
+overline            decoration none
+overrightarrow      decoration none
+tilde               decoration none
+underbar            decoration none
+underbrace          decoration none
+underleftarrow      decoration none
+underleftrightarrow decoration none
+underline           decoration none
+underrightarrow     decoration none
+vec                 decoration none
+widehat             decoration none
+widetilde           decoration none
+
+# dots
+cdots             dots        none
+ddots             dots        none
+dotsb             dots        none
+dotsc             dots        none
+dotsi             dots        none
+dotsm             dots        none
+dotso             dots        none
+ldots             dots        none
+vdots             dots        none
+
+# font changes
+frak              font        none
+mathbb            font        none
+mathbf            font        none
+mathcal           font        none
+mathfrak          font        none
+mathit            font        none
+mathnormal        font        none
+mathrm            font        none
+mathsf            font        none
+mathtt            font        none
+text              font        forcetext
+textbf            font        forcetext
+textipa           font        forcetext
+textit            font        forcetext
+textmd            font        forcetext
+textrm            font        forcetext
+textsl            font        forcetext
+textup            font        forcetext
+
+# old-style font commands
+bf                oldfont     none
+cal               oldfont     none
+it                oldfont     none
+rm                oldfont     none
+tt                oldfont     none
+                              
+# matrix environments
+Vmatrix           matrix      none
+bmatrix           matrix      none
+matrix            matrix      none
+pmatrix           matrix      none
+psmatrix          matrix      none
+vmatrix           matrix      none
+
+# references                  
+pageref           ref         none
+prettyref         ref         none
+ref               ref         none
+vpageref          ref         none
+vref              ref         none
+                              
+# spaces                      
+lyxnegspace       space       none
+lyxposspace       space       none
+qquad             space       none
+quad              space       none
+                              
+# styles                      
+displaystyle      style       none
+scriptscriptstyle style       none
+scriptstyle       style       none
+textstyle         style       none
+                              
+# misc                        
+begin             begin       none
+right             right       none
+underset          underset    none
+parbox            parbox      none
+protect           protect     none
+mbox              mbox        forcetext
+newcommand        newcommand  none
+label             label       none
+left              left        none
+end               end         none
+fbox              fbox        none
+
+
+#
+# symbols generated from fontmath.ltx 
+#
+
+#symbol            font   charid   charid-in-fallback-Xsymbol-font
 alpha              cmm         174  97 mathord  x
 beta               cmm         175  98 mathord  x
 gamma              cmm         176 103 mathord  x
