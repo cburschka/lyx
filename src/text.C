@@ -2773,10 +2773,7 @@ void LyXText::backspace(BufferView * bview)
 		setCursorIntern(bview, cursor.par(), cursor.pos()- 1,
 				false, cursor.boundary());
 
-		// some insets are undeletable here
 		if (cursor.par()->isInset(cursor.pos())) {
-			if (!cursor.par()->getInset(cursor.pos())->deletable())
-				return;
 			// force complete redo when erasing display insets
 			// this is a cruel method but safe..... Matthias
 			if (cursor.par()->getInset(cursor.pos())->display() ||

@@ -228,8 +228,6 @@ public:
 	virtual int docbook(Buffer const *, std::ostream &, bool) const = 0;
 	/// Updates needed features for this inset.
 	virtual void validate(LaTeXFeatures & features) const;
-	///
-	virtual bool deletable() const;
 
 	/// returns LyX code associated with the inset. Used for TOC, ...)
 	virtual Inset::Code lyxCode() const { return NO_CODE; }

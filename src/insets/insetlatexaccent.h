@@ -62,8 +62,6 @@ public:
 	///
 	int docbook(Buffer const *, std::ostream &, bool mixcont) const;
 	///
-	bool deletable() const;
-	///
 	bool directWrite() const;
 	///
 	virtual Inset * clone(Buffer const &, bool same_id = false) const;

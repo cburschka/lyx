@@ -660,12 +660,6 @@ int InsetLatexAccent::docbook(Buffer const *, ostream & os, bool) const
 }
 
 
-bool InsetLatexAccent::deletable() const
-{
-	return true;
-}
-
-
 bool InsetLatexAccent::directWrite() const
 {
 	return true;

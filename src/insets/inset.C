@@ -56,12 +56,6 @@ Inset::Inset(Inset const & in, bool same_id)
 }
 
 
-bool Inset::deletable() const
-{
-	return true;
-}
-
-
 bool Inset::directWrite() const
 {
 	return false;

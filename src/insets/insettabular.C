@@ -1769,12 +1769,6 @@ bool InsetTabular::movePrevCell(BufferView * bv, bool lock)
 }
 
 
-bool InsetTabular::deletable() const
-{
-	return true;
-}
-
-
 void InsetTabular::setFont(BufferView * bv, LyXFont const & font, bool tall,
 			   bool selectall)
 {
