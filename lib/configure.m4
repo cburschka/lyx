@@ -254,6 +254,9 @@ SEARCH_PROG([for a DVI previewer],DVI_VIEWER, xdvi windvi yap)
 # Search something to preview html
 SEARCH_PROG([for a HTML previewer],HTML_VIEWER, netscape)
 
+# Search for a program to preview latex code
+SEARCH_PROG([for a LaTeX preview],LATEX_VIEWER, "xterm -e less")
+
 # Search for a program to convert ps to pdf
 SEARCH_PROG([for a PS to PDF converter],ps_to_pdf_command,ps2pdf)
 test $ps_to_pdf_command = "ps2pdf" && ps_to_pdf_command="ps2pdf \$\$i"
@@ -265,6 +268,10 @@ test $dvi_to_ps_command = "dvips" && dvi_to_ps_command="dvips -o \$\$o \$\$i"
 # Search for a program to convert dvi to pdf
 SEARCH_PROG([for a DVI to PDF converter],dvi_to_pdf_command,dvipdfm)
 test $dvi_to_pdf_command = "dvipdfm" && dvi_to_pdf_command="dvipdfm \$\$i"
+
+# Search for a program to convert previewlyx to eps
+SEARCH_PROG([for a LyX preview converter],lyxpreview_to_xpm_command,lyxpreview2xpm.sh)
+test $lyxpreview_to_xpm_command = "lyxpreview2xpm.sh" && lyxpreview_to_xpm_command="lyxpreview2xpm.sh \$\$i \$\$o"
 
 # Search a *roff program (used to translate tables in ASCII export)
 LYXRC_PROG([for a *roff formatter], \ascii_roff_command, dnl
@@ -445,6 +452,7 @@ cat >$outfile <<EOF
 \\Format tiff     tif	TIFF		""
 \\Format word	  doc	Word		W
 \\Format xpm	  xpm	XPM		""
+\\Format lyxpreview	  lyxpreview	LYXPREVIEW		""
 
 \\converter latex dvi "$latex_to_dvi" "latex"
 \\converter latex pdf2 "$latex_to_pdf" "latex"
@@ -460,6 +468,7 @@ cat >$outfile <<EOF
 \\converter linuxdoc html "$linuxdoc_to_html_command" ""
 \\converter docbook dvi "$docbook_to_dvi_command" ""
 \\converter docbook html "$docbook_to_html_command" ""
+\\converter lyxpreview xpm "$lyxpreview_to_xpm_command" ""
 
 \\converter latex lyx "$tex_to_lyx_command" ""
 \\converter literate lyx "$literate_to_lyx_command" ""
@@ -471,6 +480,7 @@ cat >$outfile <<EOF
 \\viewer pdf "$PDF_VIEWER"
 \\viewer ps "$GHOSTVIEW -swap"
 \\viewer eps "$GHOSTVIEW"
+\\viewer latex "$LATEX_VIEWER"
 
 $rc_entries
 \\font_encoding "$chk_fontenc"
