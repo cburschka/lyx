@@ -3,6 +3,7 @@
  * This file is part of LyX, the document processor.
  * Licence details can be found in the file COPYING.
  *
+ * \author Jean-Marc Lasgouttes
  * \author Angus Leeming
  *
  * Full author contact details are available in file CREDITS.
@@ -18,7 +19,8 @@
 #include "frontends/Alert.h"
 #include "frontends/FileDialog.h"
 
-#include "support/filetools.h" // OnlyPath, OnlyFilename
+#include "support/filetools.h"
+#include "support/path_defines.h"
 #include "support/globbing.h"
 
 using std::pair;
@@ -30,12 +32,18 @@ extern const char * stringFromUnit(int);
 
 namespace lyx {
 
+using support::AddName;
+using support::ChangeExtension;
 using support::FileFilterList;
+using support::GetExtension;
+using support::LibFileSearch;
 using support::MakeAbsPath;
 using support::MakeRelPath;
 using support::OnlyFilename;
 using support::OnlyPath;
 using support::prefixIs;
+using support::system_lyxdir;
+using support::user_lyxdir;
 
 namespace frontend {
 
@@ -98,6 +106,38 @@ string const browseRelFile(string const & filename,
 		return outname;
 	else
 		return reloutname;
+}
+
+
+
+string const browseLibFile(string const & dir,
+			   string const & name,
+			   string const & ext,
+			   string const & title,
+			   FileFilterList const & filters)
+{
+	pair<string,string> const dir1(_("System files|#S#s"),
+				       AddName(system_lyxdir(), dir));
+	
+	pair<string,string> const dir2(_("User files|#U#u"),
+				       AddName(user_lyxdir(), dir));
+	
+	string const result = browseFile(LibFileSearch(dir, name, ext), title,
+				   filters, false, dir1, dir2);
+
+	// remove the extension if it is the default one
+	string noextresult;
+	if (GetExtension(result) == ext)
+		noextresult = ChangeExtension(result, string());
+	else
+		noextresult = result;
+
+	// remove the directory, if it is the default one
+	string const file = OnlyFilename(noextresult);
+	if (LibFileSearch(dir, file, ext) == result)
+		return file;
+	else
+		return noextresult;
 }
 
 

@@ -44,11 +44,11 @@ browseFile(std::string const & filename,
 	   std::make_pair(std::string(), std::string()));
 
 
-/* Wrapper around browseFile which tries to provide a filename
-   relative to relpath.  If the relative path is of the form "foo.txt"
-   or "bar/foo.txt", then it is returned as relative. OTOH, if it is
-   of the form "../baz/foo.txt", an absolute path is returned. This is
-   intended to be useful for insets which encapsulate files/
+/** Wrapper around browseFile which tries to provide a filename
+    relative to relpath.  If the relative path is of the form "foo.txt"
+    or "bar/foo.txt", then it is returned as relative. OTOH, if it is
+    of the form "../baz/foo.txt", an absolute path is returned. This is
+    intended to be useful for insets which encapsulate files/
 */
 std::string const
 browseRelFile(std::string const & filename,
@@ -60,6 +60,19 @@ browseRelFile(std::string const & filename,
 	      std::make_pair(std::string(), std::string()),
 	      std::pair<std::string,std::string> const & dir2 =
 	      std::make_pair(std::string(), std::string()));
+
+
+/** Wrapper around browseFile which tries to provide a filename
+ *  relative to the user or system directory. The dir, name and ext
+ *  parameters have the same meaning as in the
+ *  lyx::support::LibFileSearch function.
+ */
+std::string const
+browseLibFile(std::string const & dir,
+	      std::string const & name,
+	      std::string const & ext,
+	      std::string const & title,
+	      support::FileFilterList const & filters);
 
 
 /** Launch a file dialog and return the chosen directory.

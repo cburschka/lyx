@@ -20,9 +20,7 @@
 #include "funcrequest.h"
 #include "LColor.h"
 
-#include "support/filetools.h"
 #include "support/globbing.h"
-#include "support/path_defines.h"
 
 #include <sstream>
 
@@ -36,10 +34,7 @@ extern BufferList bufferlist;
 
 namespace lyx {
 
-using support::AddName;
 using support::FileFilterList;
-using support::system_lyxdir;
-using support::user_lyxdir;
 
 namespace frontend {
 
@@ -123,37 +118,22 @@ void ControlPrefs::updateScreenFonts()
 
 string const ControlPrefs::browsebind(string const & file) const
 {
-	pair<string,string> dir1(_("System Bind|#S#s"),
-				 AddName(system_lyxdir(), "bind"));
-
-	pair<string,string> dir2(_("User Bind|#U#u"),
-				 AddName(user_lyxdir(), "bind"));
-
-	return browseFile(file, _("Choose bind file"),
-			  FileFilterList("*.bind"), false, dir1, dir2);
+	return browseLibFile("bind", file, "bind", _("Choose bind file"),
+			  FileFilterList("LyX bind files (*.bind)"));
 }
 
 
 string const ControlPrefs::browseUI(string const & file) const
 {
-	pair<string,string> const dir1(_("Sys UI|#S#s"),
-				       AddName(system_lyxdir(), "ui"));
-
-	pair<string,string> const dir2(_("User UI|#U#u"),
-				       AddName(user_lyxdir(), "ui"));
-
-	return browseFile(file, _("Choose UI file"),
-			  FileFilterList("*.ui"), false, dir1, dir2);
+	return browseLibFile("ui", file, "ui", _("Choose UI file"),
+			  FileFilterList("LyX UI files (*.ui)"));
 }
 
 
 string const ControlPrefs::browsekbmap(string const & file) const
 {
-	pair<string, string> dir(_("Key maps|#K#k"),
-				 AddName(system_lyxdir(), "kbd"));
-
-	return browseFile(file, _("Choose keyboard map"),
-			  FileFilterList("*.kmap"), false, dir);
+	return browseLibFile("kbd", file, "kmap", _("Choose keyboard map"),
+			  FileFilterList("LyX keyboard maps (*.kmap)"));
 }
 
 
