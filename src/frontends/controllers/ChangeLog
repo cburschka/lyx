@@ -1,5 +1,10 @@
 2002-04-22  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* biblio.C (getAbbreviatedAuthor, getYear): Deal with sub-standard
+	BibTeX databases in a WYSIWYM way.
+
+2002-04-22  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* biblio.C (getAbbreviatedAuthor, getYear): Cæsar is dead. RIP; he was
 	way past his use-by date.
 	Make use of the improved info from Buffer::getBibkeyList when using

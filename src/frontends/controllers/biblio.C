@@ -198,6 +198,13 @@ string const getAbbreviatedAuthor(InfoMap const & map, string const & key)
 	if (author.empty())
 		author = parseBibTeX(it->second, "editor");
 
+	if (author.empty()) {
+		author = parseBibTeX(it->second, "key");
+		if (author.empty())
+			author = key;
+		return author;
+	}
+
 	vector<string> authors = getVectorFromString(author, "and");
 
 	if (!authors.empty()) {
@@ -247,6 +254,9 @@ string const getYear(InfoMap const & map, string const & key)
 	}
 
 	string year = parseBibTeX(it->second, "year");
+	if (year.empty())
+		year = _("No year");
+
 	return year;
 }
 
