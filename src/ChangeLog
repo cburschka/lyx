@@ -1,3 +1,9 @@
+2001-03-11  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
+
+	* paragraph.C (Last): remove when NEW_INSETS is defined.
+
+	* other file: changes because of the above.
+
 2001-03-09  Lars Gullik Bjønnes  <larsbj@trylle.birdstep.com>
 
 	* lyxparagraph.h: rename next to next_, previous to previous_,

@@ -618,8 +618,12 @@ void FigureApplyCB(FL_OBJECT *, long)
 
 	current_view->text->BreakParagraph(current_view);
 	current_view->update(current_view->text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-      
+
+#ifndef NEW_INSETS
 	if (current_view->text->cursor.par()->Last()) {
+#else
+	if (current_view->text->cursor.par()->size()) {
+#endif
 		current_view->text->CursorLeft(current_view);
 	 
 		current_view->text->BreakParagraph(current_view);

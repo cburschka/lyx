@@ -290,7 +290,7 @@ string const bibitemWidest(Buffer const * buffer)
 				bkey = par->bibkey;
 			}
 		}
-#ifndef NEW_INSETS#
+#ifndef NEW_INSETS
 		par = par->next_;
 #else
 		par = par->next();

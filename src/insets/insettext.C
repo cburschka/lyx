@@ -549,7 +549,7 @@ void InsetText::Edit(BufferView * bv, int x, int y, unsigned int button)
 #ifndef NEW_INSETS
     if (par->Last() == 0 && !par->next_) {
 #else#
-    if (par->Last() == 0 && !par->next()) {
+    if (par->size() == 0 && !par->next()) {
 #endif
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setLanguage(bv->getParentLanguage(this));
@@ -1144,7 +1144,7 @@ InsetText::LocalDispatch(BufferView * bv,
 #ifndef NEW_INSETS
     if (par->Last() == 0 && !par->next_) {
 #else
-    if (par->Last() == 0 && !par->next()) {
+    if (par->size() == 0 && !par->next()) {
 #endif
 	LyXFont font(LyXFont::ALL_IGNORE);
 	font.setLanguage(bv->getParentLanguage(this));
@@ -1325,7 +1325,7 @@ InsetText::moveRightIntern(BufferView * bv, bool behind,
 #ifndef NEW_INSETS
     if (!cpar(bv)->next_ && (cpos(bv) >= cpar(bv)->Last()))
 #else
-    if (!cpar(bv)->next() && (cpos(bv) >= cpar(bv)->Last()))
+    if (!cpar(bv)->next() && (cpos(bv) >= cpar(bv)->size()))
 #endif
 	return FINISHED;
     if (activate_inset && checkAndActivateInset(bv, behind))
@@ -1788,10 +1788,11 @@ void InsetText::removeNewlines()
 {
 #ifndef NEW_INSETS
     for (LyXParagraph * p = par; p; p = p->next_) {
+	for (int i = 0; i < p->Last(); ++i) {
 #else
     for (LyXParagraph * p = par; p; p = p->next()) {
+	for (int i = 0; i < p->size(); ++i) {
 #endif
-	for (int i = 0; i < p->Last(); ++i) {
 	    if (p->GetChar(i) == LyXParagraph::META_NEWLINE)
 		p->Erase(i);
 	}

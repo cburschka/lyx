@@ -526,7 +526,11 @@ void LyXText::MakeFontEntriesLayoutSpecific(Buffer const * buf,
 
 	LyXFont layoutfont, tmpfont;
 	for (LyXParagraph::size_type pos = 0;
+#ifndef NEW_INSETS
 	     pos < par->Last(); ++pos) {
+#else
+	     pos < par->size(); ++pos) {
+#endif
 		if (pos < BeginningOfMainBody(buf, par))
 			layoutfont = layout.labelfont;
 		else
@@ -905,10 +909,12 @@ void LyXText::SetFont(BufferView * bview, LyXFont const & font, bool toggleall)
 #endif
 		cursor.pos() < sel_end_cursor.pos())) 
 	{
-		if (cursor.pos() < cursor.par()->Last()
 #ifndef NEW_INSETS
+		if (cursor.pos() < cursor.par()->Last()
 		    && cursor.par()->footnoteflag
 		    == sel_start_cursor.par()->footnoteflag
+#else
+		if (cursor.pos() < cursor.par()->size()
 #endif
 			) {
 			// an open footnote should behave
@@ -1188,16 +1194,27 @@ string const LyXText::selectionAsString(Buffer const * buffer) const
 	// The selection spans more than one paragraph
 
 	// First paragraph in selection
+#ifndef NEW_INSETS
 	result += sel_start_cursor.par()->String(buffer,
 						 sel_start_cursor.pos(),
 						 sel_start_cursor.par()->Last())
 		+ "\n\n";
+#else
+	result += sel_start_cursor.par()->String(buffer,
+						 sel_start_cursor.pos(),
+						 sel_start_cursor.par()->size())
+		+ "\n\n";
+#endif
 	
 	// The paragraphs in between (if any)
 	LyXCursor tmpcur(sel_start_cursor);
 	tmpcur.par(tmpcur.par()->next());
 	while (tmpcur.par() != sel_end_cursor.par()) {
+#ifndef NEW_INSETS
 		result += tmpcur.par()->String(buffer, 0, tmpcur.par()->Last()) + "\n\n";
+#else
+		result += tmpcur.par()->String(buffer, 0, tmpcur.par()->size()) + "\n\n";
+#endif
 		tmpcur.par(tmpcur.par()->next()); // Or NextAfterFootnote??
 	}
 
@@ -1226,7 +1243,11 @@ void LyXText::CursorEnd(BufferView * bview) const
 	if (!cursor.row()->next() || cursor.row()->next()->par() != cursor.row()->par())
 		SetCursor(bview, cursor.par(), RowLast(cursor.row()) + 1);
 	else {
-		if (cursor.par()->Last() && 
+#ifndef NEW_INSETS
+		if (cursor.par()->Last() &&
+#else
+		if (cursor.par()->size() &&
+#endif
 		    (cursor.par()->GetChar(RowLast(cursor.row())) == ' '
 		     || cursor.par()->IsNewline(RowLast(cursor.row()))))
 			SetCursor(bview, cursor.par(), RowLast(cursor.row()));
@@ -1248,7 +1269,11 @@ void  LyXText::CursorBottom(BufferView * bview) const
 {
 	while (cursor.par()->next())
 		cursor.par(cursor.par()->next());
+#ifndef NEW_INSETS
 	SetCursor(bview, cursor.par(), cursor.par()->Last());
+#else
+	SetCursor(bview, cursor.par(), cursor.par()->size());
+#endif
 }
    
    
@@ -2326,7 +2351,11 @@ void LyXText::CopySelection(BufferView * bview)
 #endif
    
 	// copy behind a space if there is one
+#ifndef NEW_INSETS
 	while (sel_start_cursor.par()->Last() > sel_start_cursor.pos()
+#else
+	while (sel_start_cursor.par()->size() > sel_start_cursor.pos()
+#endif
 	       && sel_start_cursor.par()->IsLineSeparator(sel_start_cursor.pos())
 	       && (sel_start_cursor.par() != sel_end_cursor.par()
 		   || sel_start_cursor.pos() < sel_end_cursor.pos()))
@@ -2547,7 +2576,11 @@ bool LyXText::GotoNextInset(BufferView * bview,
 	LyXCursor res = cursor;
 	Inset * inset;
 	do {
+#ifndef NEW_INSETS
 		if (res.pos() < res.par()->Last() - 1) {
+#else
+		if (res.pos() < res.par()->size() - 1) {
+#endif
 			res.pos(res.pos() + 1);
 		} else  {
 			res.par(res.par()->next());
@@ -2822,14 +2855,22 @@ void LyXText::SetCurrentFont(BufferView * bview) const
 		--pos;
 
 	if (pos > 0) {
+#ifndef NEW_INSETS
 		if (pos == cursor.par()->Last())
+#else
+		if (pos == cursor.par()->size())
+#endif
 			--pos;
 		else if (cursor.par()->IsSeparator(pos)) {
 			if (pos > cursor.row()->pos() &&
 			    bidi_level(pos) % 2 == 
 			    bidi_level(pos - 1) % 2)
 				--pos;
+#ifndef NEW_INSETS
 			else if (pos + 1 < cursor.par()->Last())
+#else
+			else if (pos + 1 < cursor.par()->size())
+#endif
 				++pos;
 		}
 	}
@@ -2838,7 +2879,11 @@ void LyXText::SetCurrentFont(BufferView * bview) const
 		cursor.par()->GetFontSettings(bview->buffer()->params, pos);
 	real_current_font = GetFont(bview->buffer(), cursor.par(), pos);
 
+#ifndef NEW_INSETS
 	if (cursor.pos() == cursor.par()->Last() &&
+#else
+	if (cursor.pos() == cursor.par()->size() &&
+#endif
 	    IsBoundary(bview->buffer(), cursor.par(), cursor.pos()) &&
 	    !cursor.boundary()) {
 		Language const * lang =
@@ -2900,7 +2945,11 @@ void LyXText::CursorLeft(BufferView * bview, bool internal) const
 			SetCursor(bview, cursor.par(), cursor.pos() + 1, true, true);
 	} else if (cursor.par()->previous()) { // steps into the above paragraph.
 		LyXParagraph * par = cursor.par()->previous();
+#ifndef NEW_INSETS
 		SetCursor(bview, par, par->Last());
+#else
+		SetCursor(bview, par, par->size());
+#endif
 	}
 }
 
@@ -2910,7 +2959,11 @@ void LyXText::CursorRight(BufferView * bview, bool internal) const
 	if (!internal && cursor.boundary() &&
 	    !cursor.par()->IsNewline(cursor.pos()))
 		SetCursor(bview, cursor.par(), cursor.pos(), true, false);
+#ifndef NEW_INSETS
 	else if (cursor.pos() < cursor.par()->Last()) {
+#else
+	else if (cursor.pos() < cursor.par()->size()) {
+#endif
 		SetCursor(bview, cursor.par(), cursor.pos() + 1, true, false);
 		if (!internal &&
 		    IsBoundary(bview->buffer(), cursor.par(), cursor.pos()))
@@ -2951,7 +3004,11 @@ void LyXText::CursorDownParagraph(BufferView * bview) const
 	if (cursor.par()->next()) {
 		SetCursor(bview, cursor.par()->next(), 0);
 	} else {
+#ifndef NEW_INSETS
 		SetCursor(bview, cursor.par(), cursor.par()->Last());
+#else
+		SetCursor(bview, cursor.par(), cursor.par()->size());
+#endif
 	}
 }
 
@@ -2997,7 +3054,11 @@ void LyXText::DeleteEmptyParagraphMechanism(BufferView * bview,
 		// Only if the cursor has really moved
 		
 		if (old_cursor.pos() > 0
+#ifndef NEW_INSETS
 		    && old_cursor.pos() < old_cursor.par()->Last()
+#else
+		    && old_cursor.pos() < old_cursor.par()->size()
+#endif
 		    && old_cursor.par()->IsLineSeparator(old_cursor.pos())
 		    && old_cursor.par()->IsLineSeparator(old_cursor.pos() - 1)) {
 			old_cursor.par()->Erase(old_cursor.pos() - 1);
@@ -3021,13 +3082,18 @@ void LyXText::DeleteEmptyParagraphMechanism(BufferView * bview,
 
 	LyXCursor tmpcursor;
 
+#ifndef NEW_INSETS
 	if (old_cursor.par() != cursor.par()) {
 		if ((old_cursor.par()->Last() == 0
 		      || (old_cursor.par()->Last() == 1
 			  && old_cursor.par()->IsLineSeparator(0)))
-#ifndef NEW_INSETS
 		     && old_cursor.par()->FirstPhysicalPar()
 		     == old_cursor.par()->LastPhysicalPar()
+#else
+	if (old_cursor.par() != cursor.par()) {
+		if ((old_cursor.par()->size() == 0
+		      || (old_cursor.par()->size() == 1
+			  && old_cursor.par()->IsLineSeparator(0)))
 #endif
 			) {
 			// ok, we will delete anything

@@ -75,8 +75,13 @@ void DeleteBuffer()
 bool CutAndPaste::cutSelection(LyXParagraph * startpar, LyXParagraph ** endpar,
 			       int start, int & end, char tc, bool doclear)
 {
+#ifndef NEW_INSETS
     if (!startpar || (start > startpar->Last()))
 	return false;
+#else
+    if (!startpar || (start > startpar->size()))
+	return false;
+#endif
 
     DeleteBuffer();
 
@@ -93,13 +98,22 @@ bool CutAndPaste::cutSelection(LyXParagraph * startpar, LyXParagraph ** endpar,
 	// only within one paragraph
 	buf = new LyXParagraph;
 	LyXParagraph::size_type i = start;
+#ifndef NEW_INSETS
 	if (end > startpar->Last())
 	    end = startpar->Last();
+#else
+	if (end > startpar->size())
+	    end = startpar->size();
+#endif
 	for (; i < end; ++i) {
 	    startpar->CopyIntoMinibuffer(*current_view->buffer(), start);
 	    startpar->Erase(start);
 
+#ifndef NEW_INSETS
 	    buf->InsertFromMinibuffer(buf->Last());
+#else
+	    buf->InsertFromMinibuffer(buf->size());
+#endif
 	}
 	end = start-1;
     } else {
@@ -151,10 +165,11 @@ bool CutAndPaste::cutSelection(LyXParagraph * startpar, LyXParagraph ** endpar,
 	    startpar->next()->StripLeadingSpaces(textclass);
 #ifndef NEW_INSETS
 	if (startpar->FirstPhysicalPar()->HasSameLayout(startpar->next()) ||
+	    !startpar->next()->Last()) {
 #else
 	if (startpar->HasSameLayout(startpar->next()) ||
+	    !startpar->next()->size()) {
 #endif
-	    !startpar->next()->Last()) {
 #ifndef NEW_INSETS
 	    startpar->ParFromPos(start)->PasteParagraph(current_view->buffer()->params);
 #else
@@ -170,8 +185,13 @@ bool CutAndPaste::cutSelection(LyXParagraph * startpar, LyXParagraph ** endpar,
 bool CutAndPaste::copySelection(LyXParagraph * startpar, LyXParagraph * endpar,
 				int start, int end, char tc)
 {
+#ifndef NEW_INSETS
     if (!startpar || (start > startpar->Last()))
 	return false;
+#else
+    if (!startpar || (start > startpar->size()))
+	return false;
+#endif
 
     DeleteBuffer();
 
@@ -188,11 +208,20 @@ bool CutAndPaste::copySelection(LyXParagraph * startpar, LyXParagraph * endpar,
 	// only within one paragraph
 	buf = new LyXParagraph;
 	LyXParagraph::size_type i = start;
+#ifndef NEW_INSETS
 	if (end > startpar->Last())
 	    end = startpar->Last();
+#else
+	if (end > startpar->size())
+	    end = startpar->size();
+#endif
 	for (; i < end; ++i) {
 	    startpar->CopyIntoMinibuffer(*current_view->buffer(), i);
+#ifndef NEW_INSETS
 	    buf->InsertFromMinibuffer(buf->Last());
+#else
+	    buf->InsertFromMinibuffer(buf->size());
+#endif
 	}
     } else {
 	// copy more than one paragraph
@@ -265,9 +294,14 @@ bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
     if (!checkPastePossible(*par, pos))
 	return false;
 
+#ifndef NEW_INSETS
     if (pos > (*par)->Last())
 	pos = (*par)->Last();
-
+#else
+    if (pos > (*par)->size())
+	pos = (*par)->size();
+#endif
+    
     LyXParagraph * tmpbuf;
     LyXParagraph * tmppar = *par;
     int tmppos = pos;
@@ -348,6 +382,7 @@ bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
 	
 	bool paste_the_end = false;
 	
+#ifndef NEW_INSETS
 	// open the paragraph for inserting the buf
 	// if necessary
 	if (((*par)->Last() > pos) || !(*par)->next()) {
@@ -355,9 +390,7 @@ bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
 					       pos);
 	    paste_the_end = true;
 	}
-	
 	// set the end for redoing later
-#ifndef NEW_INSETS
 	*endpar = (*par)->ParFromPos(pos)->next_->next();
 	
 	// paste it!
@@ -373,7 +406,34 @@ bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
 	    lastbuffer = *par;
 	
 	(*par)->ParFromPos(pos)->PasteParagraph(current_view->buffer()->params);
+	// store the new cursor position
+	*par = lastbuffer;
+	pos = lastbuffer->Last();
+	// maybe some pasting
+	if (lastbuffer->next() && paste_the_end) {
+	    if (lastbuffer->next()->HasSameLayout(lastbuffer)) {
+		lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph(current_view->buffer()->params);
+	    } else if (!lastbuffer->next()->Last()) {
+		lastbuffer->next()->MakeSameLayout(lastbuffer);
+		lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph(current_view->buffer()->params);
+	    } else if (!lastbuffer->Last()) {
+		lastbuffer->MakeSameLayout(lastbuffer->next_);
+		lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph(current_view->buffer()->params);
+	    } else
+		lastbuffer->next()->StripLeadingSpaces(tc);
+	}
+	// restore the simple cut buffer
+	buf = simple_cut_clone;
+    }
 #else
+	// open the paragraph for inserting the buf
+	// if necessary
+	if (((*par)->size() > pos) || !(*par)->next()) {
+	    (*par)->BreakParagraphConservative(current_view->buffer()->params,
+					       pos);
+	    paste_the_end = true;
+	}
+	// set the end for redoing later
 	*endpar = (*par)->next()->next();
 	
 	// paste it!
@@ -387,38 +447,26 @@ bool CutAndPaste::pasteSelection(LyXParagraph ** par, LyXParagraph ** endpar,
 	    lastbuffer = *par;
 	
 	(*par)->PasteParagraph(current_view->buffer()->params);
-#endif
 	// store the new cursor position
 	*par = lastbuffer;
-	pos = lastbuffer->Last();
-	
+	pos = lastbuffer->size();
 	// maybe some pasting
 	if (lastbuffer->next() && paste_the_end) {
-#ifndef NEW_INSETS
-	    if (lastbuffer->next()->HasSameLayout(lastbuffer)) {
-		lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph(current_view->buffer()->params);
-	    } else if (!lastbuffer->next()->Last()) {
-		lastbuffer->next()->MakeSameLayout(lastbuffer);
-		lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph(current_view->buffer()->params);
-	    } else if (!lastbuffer->Last()) {
-		lastbuffer->MakeSameLayout(lastbuffer->next_);
-		lastbuffer->ParFromPos(lastbuffer->Last())->PasteParagraph(current_view->buffer()->params);
-#else
 	    if (lastbuffer->next()->HasSameLayout(lastbuffer)) {
 		lastbuffer->PasteParagraph(current_view->buffer()->params);
-	    } else if (!lastbuffer->next()->Last()) {
+	    } else if (!lastbuffer->next()->size()) {
 		lastbuffer->next()->MakeSameLayout(lastbuffer);
 		lastbuffer->PasteParagraph(current_view->buffer()->params);
-	    } else if (!lastbuffer->Last()) {
+	    } else if (!lastbuffer->size()) {
 		lastbuffer->MakeSameLayout(lastbuffer->next());
 		lastbuffer->PasteParagraph(current_view->buffer()->params);
-#endif
 	    } else
 		lastbuffer->next()->StripLeadingSpaces(tc);
 	}
 	// restore the simple cut buffer
 	buf = simple_cut_clone;
     }
+#endif
 
     return true;
 }

@@ -74,7 +74,11 @@ unsigned char LyXText::TransformChar(unsigned char c, LyXParagraph * par,
 
 	unsigned char const prev_char = pos > 0 ? par->GetChar(pos-1) : ' ';
 	unsigned char next_char = ' ';
+#ifndef NEW_INSETS
 	for (LyXParagraph::size_type i = pos+1; i < par->Last(); ++i)
+#else
+	for (LyXParagraph::size_type i = pos+1; i < par->size(); ++i)
+#endif
 		if (!Encodings::IsComposeChar_arabic(par->GetChar(i))) {
 			next_char = par->GetChar(i);
 			break;
@@ -205,12 +209,21 @@ int LyXText::SingleWidth(BufferView * bview, LyXParagraph * par,
 // Returns the paragraph position of the last character in the specified row
 LyXParagraph::size_type LyXText::RowLast(Row const * row) const
 {
+#ifndef NEW_INSETS
 	if (row->next() == 0)
 		return row->par()->Last() - 1;
 	else if (row->next()->par() != row->par()) 
 		return row->par()->Last() - 1;
 	else 
 		return row->next()->pos() - 1;
+#else
+	if (row->next() == 0)
+		return row->par()->size() - 1;
+	else if (row->next()->par() != row->par()) 
+		return row->par()->size() - 1;
+	else 
+		return row->next()->pos() - 1;
+#endif
 }
 
 
@@ -719,7 +732,11 @@ int LyXText::LeftMargin(BufferView * bview, Row const * row) const
 			       newpar->GetLayout()).isEnvironment()) {
 			Row dummyrow;
 			dummyrow.par(newpar);
+#ifndef NEW_INSETS
 			dummyrow.pos(newpar->Last());
+#else
+			dummyrow.pos(newpar->size());
+#endif
 			x = LeftMargin(bview, &dummyrow);
 		} else {
 			// this is no longer an error, because this function
@@ -981,7 +998,11 @@ int LyXText::LabelEnd(BufferView * bview, Row const * row) const
 	    == MARGIN_MANUAL) {
 		Row tmprow;
 		tmprow = *row;
+#ifndef NEW_INSETS
 		tmprow.pos(row->par()->Last());
+#else
+		tmprow.pos(row->par()->size());
+#endif
 		return LeftMargin(bview, &tmprow);  /* just the beginning 
 						of the main body */
 	} else
@@ -998,7 +1019,11 @@ LyXText::NextBreakPoint(BufferView * bview, Row const * row, int width) const
 	LyXParagraph * par = row->par();
 
 	if (width < 0)
+#ifndef NEW_INSETS
 		return par->Last();
+#else
+		return par->size();
+#endif
 
 	LyXParagraph::size_type const pos = row->pos();
 
@@ -1016,10 +1041,18 @@ LyXText::NextBreakPoint(BufferView * bview, Row const * row, int width) const
 
 	if (layout.margintype == MARGIN_RIGHT_ADDRESS_BOX) {
 		/* special code for right address boxes, only newlines count */
+#ifndef NEW_INSETS
 		while (i < par->Last()) {
+#else
+		while (i < par->size()) {
+#endif
 			if (par->IsNewline(i)) {
 				last_separator = i;
+#ifndef NEW_INSETS
 				i = par->Last() - 1; // this means break
+#else
+				i = par->size() - 1; // this means break
+#endif
 				//x = width;
 			} else if (par->GetChar(i) == LyXParagraph::META_INSET &&
 				   par->GetInset(i) && par->GetInset(i)->display()){
@@ -1029,8 +1062,13 @@ LyXText::NextBreakPoint(BufferView * bview, Row const * row, int width) const
 		}
 	} else {
 		// Last position is an invariant
+#ifndef NEW_INSETS
 		LyXParagraph::size_type const last = 
 			par->Last();
+#else
+		LyXParagraph::size_type const last = 
+			par->size();
+#endif
 		// this is the usual handling
 		int x = LeftMargin(bview, row);
 		bool doitonetime = true;
@@ -1332,8 +1370,12 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
    
    LyXLayout const & layout = textclasslist.Style(bview->buffer()->params.textclass,
 						  firstpar->GetLayout());
-   
+
+#ifndef NEW_INSETS
    LyXFont font = GetFont(bview->buffer(), par, par->Last() - 1);
+#else
+   LyXFont font = GetFont(bview->buffer(), par, par->size() - 1);
+#endif
    LyXFont::FONT_SIZE const size = font.size();
    font = GetFont(bview->buffer(), par, -1);
    font.setSize(size);
@@ -1556,9 +1598,16 @@ void LyXText::SetHeightOfRow(BufferView * bview, Row * row_ptr) const
 	  
 	  /* do not forget the DTP-lines! 
 	   * there height depends on the font of the nearest character */
+#ifndef NEW_INSETS
 	  if (firstpar->params.lineBottom())
 		  maxdesc += 2 * lyxfont::ascent('x', GetFont(bview->buffer(),
 							      par, par->Last() - 1));
+#else
+	  if (firstpar->params.lineBottom())
+		  maxdesc += 2 * lyxfont::ascent('x',
+						 GetFont(bview->buffer(),
+							 par, par->size() - 1));
+#endif
 	  
 	  /* and now the pagebreaks */
 	  if (firstpar->params.pagebreakBottom())
@@ -1629,8 +1678,11 @@ void LyXText::AppendParagraph(BufferView * bview, Row * row) const
    
    // The last character position of a paragraph is an invariant so we can 
    // safely get it here. (Asger)
+#ifndef NEW_INSETS
    int const lastposition = row->par()->Last();
-
+#else
+   int const lastposition = row->par()->size();
+#endif
    do {
       // Get the next breakpoint
       int z = NextBreakPoint(bview, row, workWidth(bview));
@@ -1663,8 +1715,12 @@ void LyXText::BreakAgain(BufferView * bview, Row * row) const
       /* get the next breakpoint */
 	LyXParagraph::size_type z = NextBreakPoint(bview, row, workWidth(bview));
       Row * tmprow = row;
-      
+
+#ifndef NEW_INSETS
       if (z < row->par()->Last()) {
+#else
+      if (z < row->par()->size()) {
+#endif
 	 if (!row->next() || (row->next() && row->next()->par() != row->par())) {
 		 // insert a new row
 	    ++z;
@@ -1707,8 +1763,12 @@ void LyXText::BreakAgainOneRow(BufferView * bview, Row * row)
 	// get the next breakpoint
 	LyXParagraph::size_type z = NextBreakPoint(bview, row, workWidth(bview));
 	Row * tmprow = row;
-	
+
+#ifndef NEW_INSETS
 	if (z < row->par()->Last()) {
+#else
+	if (z < row->par()->size()) {
+#endif
 		if (!row->next()
 		    || (row->next() && row->next()->par() != row->par())) {
 			/* insert a new row */ 
@@ -1749,29 +1809,33 @@ void LyXText::BreakParagraph(BufferView * bview, char keep_layout)
 			       cursor.par()->GetLayout());
 
    // this is only allowed, if the current paragraph is not empty or caption
-   if ((cursor.par()->Last() <= 0
 #ifndef NEW_INSETS
-	&& !cursor.par()->IsDummy()
-#endif
-	   )
-       && 
-       layout.labeltype!= LABEL_SENSITIVE)
-     return;
+   if ((cursor.par()->Last() <= 0
+	&& !cursor.par()->IsDummy())
+       && layout.labeltype!= LABEL_SENSITIVE)
+	   return;
 
    SetUndo(bview->buffer(), Undo::INSERT,
-#ifndef NEW_INSETS
 	   cursor.par()->ParFromPos(cursor.pos())->previous_, 
-	   cursor.par()->ParFromPos(cursor.pos())->next_
+	   cursor.par()->ParFromPos(cursor.pos())->next_); 
 #else
+   if ((cursor.par()->size() <= 0)
+       && layout.labeltype!= LABEL_SENSITIVE)
+	   return;
+   
+   SetUndo(bview->buffer(), Undo::INSERT,
 	   cursor.par()->previous(), 
-	   cursor.par()->next()
+	   cursor.par()->next()); 
 #endif
-	   ); 
 
    // Always break behind a space
    //
    // It is better to erase the space (Dekel)
+#ifndef NEW_INSETS
    if (cursor.pos() < cursor.par()->Last()
+#else
+   if (cursor.pos() < cursor.par()->size()
+#endif
        && cursor.par()->IsLineSeparator(cursor.pos()))
 	   cursor.par()->Erase(cursor.pos());
            // cursor.pos(cursor.pos() + 1);
@@ -1821,8 +1885,12 @@ void LyXText::BreakParagraph(BufferView * bview, char keep_layout)
    cursor.row()->fill(Fill(bview, cursor.row(), workWidth(bview)));
 
    SetHeightOfRow(bview, cursor.row());
-   
+
+#ifndef NEW_INSETS
    while (cursor.par()->next()->Last()
+#else
+   while (cursor.par()->next()->size()
+#endif
 	  && cursor.par()->next()->IsNewline(0))
 	   cursor.par()->next()->Erase(0);
    
@@ -2000,7 +2068,11 @@ void LyXText::InsertChar(BufferView * bview, char c)
 				     * current font */
 
 	// Get the font that is used to calculate the baselineskip
+#ifndef NEW_INSETS
 	LyXParagraph::size_type const lastpos = cursor.par()->Last();
+#else
+	LyXParagraph::size_type const lastpos = cursor.par()->size();
+#endif
 	LyXFont rawparfont = cursor.par()->GetFontSettings(bview->buffer()->params,
 							   lastpos - 1);
 
@@ -2038,8 +2110,12 @@ void LyXText::InsertChar(BufferView * bview, char c)
 		/* No newline at first position 
 		 * of a paragraph or behind labels. 
 		 * TeX does not allow that. */
-		
+
+#ifndef NEW_INSETS
 		if (cursor.pos() < cursor.par()->Last() &&
+#else
+		if (cursor.pos() < cursor.par()->size() &&
+#endif
 		    cursor.par()->IsLineSeparator(cursor.pos()))
 			// newline always after a blank!
 			CursorRight(bview);
@@ -2106,8 +2182,12 @@ void LyXText::InsertChar(BufferView * bview, char c)
 			else
 				need_break_row = 0;
 	     
-			// check, wether the last characters font has changed. 
+			// check, wether the last characters font has changed.
+#ifndef NEW_INSETS
 			if (cursor.pos() && cursor.pos() == cursor.par()->Last()
+#else
+			if (cursor.pos() && cursor.pos() == cursor.par()->size()
+#endif
 			    && rawparfont != rawtmpfont)
 				RedoHeightOfParagraph(bview, cursor);
 			
@@ -2168,7 +2248,11 @@ void LyXText::InsertChar(BufferView * bview, char c)
 	}
 
 	// check, wether the last characters font has changed.
+#ifndef NEW_INSETS
 	if (cursor.pos() && cursor.pos() == cursor.par()->Last()
+#else
+	if (cursor.pos() && cursor.pos() == cursor.par()->size()
+#endif
 	    && rawparfont != rawtmpfont) {
 		RedoHeightOfParagraph(bview, cursor);
 	} else {
@@ -2327,7 +2411,11 @@ void LyXText::CursorRightOneWord(BufferView * bview) const
 	LyXCursor tmpcursor = cursor;
 	// CHECK See comment on top of text.C
 
+#ifndef NEW_INSETS
 	if (tmpcursor.pos() == tmpcursor.par()->Last()
+#else
+	if (tmpcursor.pos() == tmpcursor.par()->size()
+#endif
 	    && tmpcursor.par()->next()) {
 			tmpcursor.par(tmpcursor.par()->next());
 			tmpcursor.pos(0);
@@ -2335,7 +2423,11 @@ void LyXText::CursorRightOneWord(BufferView * bview) const
 		int steps = 0;
 
 		// Skip through initial nonword stuff.
+#ifndef NEW_INSETS
 		while (tmpcursor.pos() < tmpcursor.par()->Last() &&
+#else
+		while (tmpcursor.pos() < tmpcursor.par()->size() &&
+#endif
 			! tmpcursor.par()->IsWord( tmpcursor.pos() ) ) 
 		{
 		  //    printf("Current pos1 %d", tmpcursor.pos()) ;
@@ -2343,7 +2435,11 @@ void LyXText::CursorRightOneWord(BufferView * bview) const
 			++steps;
 		}
 		// Advance through word.
+#ifndef NEW_INSETS
 		while (tmpcursor.pos() < tmpcursor.par()->Last() &&
+#else
+		while (tmpcursor.pos() < tmpcursor.par()->size() &&
+#endif
 		        tmpcursor.par()->IsWord( tmpcursor.pos() ) )
 		{
 		  //     printf("Current pos2 %d", tmpcursor.pos()) ;
@@ -2358,11 +2454,19 @@ void LyXText::CursorRightOneWord(BufferView * bview) const
 void LyXText::CursorTab(BufferView * bview) const
 {
     LyXCursor tmpcursor = cursor;
+#ifndef NEW_INSETS
     while (tmpcursor.pos() < tmpcursor.par()->Last()
+#else
+    while (tmpcursor.pos() < tmpcursor.par()->size()
+#endif
            && !tmpcursor.par()->IsNewline(tmpcursor.pos()))
         tmpcursor.pos(tmpcursor.pos() + 1);
-   
+
+#ifndef NEW_INSETS
     if (tmpcursor.pos() == tmpcursor.par()->Last()){
+#else
+    if (tmpcursor.pos() == tmpcursor.par()->size()){
+#endif
         if (tmpcursor.par()->next()) {
             tmpcursor.par(tmpcursor.par()->next());
             tmpcursor.pos(0);
@@ -2400,7 +2504,11 @@ void LyXText::CursorLeftOneWord(BufferView * bview)  const
 	} else if (!tmpcursor.pos()) {
 		if (tmpcursor.par()->previous()){
 			tmpcursor.par(tmpcursor.par()->previous());
+#ifndef NEW_INSETS
 			tmpcursor.pos(tmpcursor.par()->Last());
+#else
+			tmpcursor.pos(tmpcursor.par()->size());
+#endif
 		}
 	} else {		// Here, tmpcursor != 0 
 		while (tmpcursor.pos() > 0 &&
@@ -2424,7 +2532,11 @@ void LyXText::SelectWord(BufferView * bview)
 	// set the sel cursor
 	sel_cursor = cursor;
 
+#ifndef NEW_INSETS
 	while (cursor.pos() < cursor.par()->Last()
+#else
+	while (cursor.pos() < cursor.par()->size()
+#endif
 	       && !cursor.par()->IsSeparator(cursor.pos())
 	       && !cursor.par()->IsKomma(cursor.pos()) )
 		cursor.pos(cursor.pos() + 1);
@@ -2442,7 +2554,11 @@ void LyXText::SelectWord(BufferView * bview)
 bool LyXText::SelectWordWhenUnderCursor(BufferView * bview) 
 {
 	if (!selection &&
+#ifndef NEW_INSETS
 	    cursor.pos() > 0 && cursor.pos() < cursor.par()->Last()
+#else
+	    cursor.pos() > 0 && cursor.pos() < cursor.par()->size()
+#endif
 	    && !cursor.par()->IsSeparator(cursor.pos())
 	    && !cursor.par()->IsKomma(cursor.pos())
 	    && !cursor.par()->IsSeparator(cursor.pos() -1)
@@ -2472,20 +2588,32 @@ string const LyXText::SelectNextWord(BufferView * bview,
 	}
 #else
 	if (cursor.pos() || cursor.par()->previous()) {
-		while (cursor.pos() < cursor.par()->Last()
+		while (cursor.pos() < cursor.par()->size()
 		       && cursor.par()->IsLetter(cursor.pos()))
 			cursor.pos(cursor.pos() + 1);
 	}
 #endif
 	
 	// Now, skip until we have real text (will jump paragraphs)
+#ifndef NEW_INSETS
 	while ((cursor.par()->Last() > cursor.pos()
+#else
+	while ((cursor.par()->size() > cursor.pos()
+#endif
 		&& (!cursor.par()->IsLetter(cursor.pos())
 		    || cursor.par()->getFont(bview->buffer()->params, cursor.pos())
 		    .latex() == LyXFont::ON))
-	       || (cursor.par()->Last() == cursor.pos() 
+#ifndef NEW_INSETS
+	       || (cursor.par()->Last() == cursor.pos()
+#else
+	       || (cursor.par()->size() == cursor.pos()
+#endif
 		   && cursor.par()->next())){
+#ifndef NEW_INSETS
 		if (cursor.pos() == cursor.par()->Last()) {
+#else
+		if (cursor.pos() == cursor.par()->size()) {
+#endif
 			cursor.par(cursor.par()->next());
 			cursor.pos(0);
 		} else
@@ -2505,7 +2633,11 @@ string const LyXText::SelectNextWord(BufferView * bview,
 
 	// and find the end of the word 
 	// (optional hyphens are part of a word)
+#ifndef NEW_INSETS
 	while (cursor.pos() < cursor.par()->Last()
+#else
+	while (cursor.pos() < cursor.par()->size()
+#endif
 	       && (cursor.par()->IsLetter(cursor.pos())) 
 	           || (cursor.par()->GetChar(cursor.pos()) == LyXParagraph::META_INSET
 		       && cursor.par()->GetInset(cursor.pos()) != 0
@@ -2539,7 +2671,11 @@ void LyXText::SelectSelectedWord(BufferView * bview)
 	std::ostringstream latex;
 	
 	// now find the end of the word
+#ifndef NEW_INSETS
 	while (cursor.pos() < cursor.par()->Last()
+#else
+	while (cursor.pos() < cursor.par()->size()
+#endif
 	       && (cursor.par()->IsLetter(cursor.pos())
 	           || (cursor.par()->GetChar(cursor.pos()) == LyXParagraph::META_INSET
 		       && cursor.par()->GetInset(cursor.pos()) != 0
@@ -2558,7 +2694,11 @@ void LyXText::SelectSelectedWord(BufferView * bview)
 /* -------> Delete from cursor up to the end of the current or next word. */
 void LyXText::DeleteWordForward(BufferView * bview)
 {
+#ifndef NEW_INSETS
 	if (!cursor.par()->Last())
+#else
+	if (!cursor.par()->size())
+#endif
 		CursorRight(bview);
 	else {
 		LyXCursor tmpcursor = cursor;
@@ -2579,7 +2719,11 @@ void LyXText::DeleteWordForward(BufferView * bview)
 /* -------> Delete from cursor to start of current or prior word. */
 void LyXText::DeleteWordBackward(BufferView * bview)
 {
+#ifndef NEW_INSETS
        if (!cursor.par()->Last())
+#else
+       if (!cursor.par()->size())
+#endif
 	       CursorLeft(bview);
        else {
 	       LyXCursor tmpcursor = cursor;
@@ -2598,7 +2742,11 @@ void LyXText::DeleteWordBackward(BufferView * bview)
 /* -------> Kill to end of line. */
 void LyXText::DeleteLineForward(BufferView * bview)
 {
+#ifndef NEW_INSETS
 	if (!cursor.par()->Last())
+#else
+	if (!cursor.par()->size())
+#endif
 		// Paragraph is empty, so we just go to the right
 		CursorRight(bview);
 	else {
@@ -2731,7 +2879,11 @@ void LyXText::Delete(BufferView * bview)
 void LyXText::Backspace(BufferView * bview)
 {
 	// Get the font that is used to calculate the baselineskip
+#ifndef NEW_INSETS
 	LyXParagraph::size_type lastpos = cursor.par()->Last();
+#else
+	LyXParagraph::size_type lastpos = cursor.par()->size();
+#endif
 	LyXFont rawparfont = cursor.par()->GetFontSettings(bview->buffer()->params,
 							 lastpos - 1);
 
@@ -2810,8 +2962,14 @@ void LyXText::Backspace(BufferView * bview)
 		// without the dreaded mechanism. (JMarc)
 		if (cursor.par()->previous()) { 
 			// steps into the above paragraph.
+#ifndef NEW_INSETS
 			SetCursorIntern(bview, cursor.par()->previous(),
 					cursor.par()->previous()->Last(), false);
+#else
+			SetCursorIntern(bview, cursor.par()->previous(),
+					cursor.par()->previous()->size(),
+					false);
+#endif
 		}
 
 		/* Pasting is not allowed, if the paragraphs have different
@@ -2921,8 +3079,14 @@ void LyXText::Backspace(BufferView * bview)
 			}
 			if (cursor.par()->IsLineSeparator(cursor.pos() - 1))
 				cursor.pos(cursor.pos() - 1);
-			
-			if (cursor.pos() < cursor.par()->Last() && !cursor.par()->IsSeparator(cursor.pos())) {
+
+#ifndef NEW_INSETS
+			if (cursor.pos() < cursor.par()->Last()
+			    && !cursor.par()->IsSeparator(cursor.pos())) {
+#else
+			if (cursor.pos() < cursor.par()->size()
+			    && !cursor.par()->IsSeparator(cursor.pos())) {
+#endif
 				cursor.par()->InsertChar(cursor.pos(), ' ');
 				SetCharFont(bview->buffer(), cursor.par(), 
 					    cursor.pos(), current_font);
@@ -2945,7 +3109,11 @@ void LyXText::Backspace(BufferView * bview)
 			}
 
 			// delete newlines at the beginning of paragraphs
+#ifndef NEW_INSETS
 			while (cursor.par()->Last() &&
+#else
+			while (cursor.par()->size() &&
+#endif
 			       cursor.par()->IsNewline(cursor.pos()) &&
 			       cursor.pos() == BeginningOfMainBody(bview->buffer(),
 								   cursor.par())) {
@@ -2970,7 +3138,11 @@ void LyXText::Backspace(BufferView * bview)
 				Row * tmprow = row->previous();
 				
 				// maybe the current row is now empty
+#ifndef NEW_INSETS
 				if (row->pos() >= row->par()->Last()) {
+#else
+				if (row->pos() >= row->par()->size()) {
+#endif
 					// remove it
 					RemoveRow(row);
 					need_break_row = 0;
@@ -2996,9 +3168,15 @@ void LyXText::Backspace(BufferView * bview)
 				//current_font = rawtmpfont;
 				//real_current_font = realtmpfont;
 				// check, whether the last character's font has changed.
+#ifndef NEW_INSETS
 				if (rawparfont !=
 				    cursor.par()->GetFontSettings(bview->buffer()->params,
 								  cursor.par()->Last() - 1))
+#else
+				if (rawparfont !=
+				    cursor.par()->GetFontSettings(bview->buffer()->params,
+								  cursor.par()->size() - 1))
+#endif
 					RedoHeightOfParagraph(bview, cursor);
 				return;
 			}
@@ -3006,14 +3184,22 @@ void LyXText::Backspace(BufferView * bview)
 		
 		// break the cursor row again
 		if (row->next() && row->next()->par() == row->par() &&
+#ifndef NEW_INSETS
 		    (RowLast(row) == row->par()->Last() - 1 ||
+#else
+		    (RowLast(row) == row->par()->size() - 1 ||
+#endif
 		     NextBreakPoint(bview, row, workWidth(bview)) != RowLast(row))) {
 			
 			/* it can happen that a paragraph loses one row
 			 * without a real breakup. This is when a word
 			 * is to long to be broken. Well, I don t care this 
-			 * hack ;-) */ 
+			 * hack ;-) */
+#ifndef NEW_INSETS
 			if (RowLast(row) == row->par()->Last() - 1)
+#else
+			if (RowLast(row) == row->par()->size() - 1)
+#endif
 				RemoveRow(row->next());
 			
 			refresh_y = y;
@@ -3057,7 +3243,11 @@ void LyXText::Backspace(BufferView * bview)
 		SetCursor(bview, cursor.par(), cursor.pos(), false,
 			  !cursor.boundary());
 
+#ifndef NEW_INSETS
 	lastpos = cursor.par()->Last();
+#else
+	lastpos = cursor.par()->size();
+#endif
 	if (cursor.pos() == lastpos)
 		SetCurrentFont(bview);
 	
@@ -3734,8 +3924,17 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 		
 		if (firstpar->params.lineBottom()) {
 			/* draw a bottom line */
-			y_bottom -= lyxfont::ascent('x', GetFont(bview->buffer(),
-								 par, par->Last() - 1));
+#ifndef NEW_INSETS
+			y_bottom -= lyxfont::ascent('x',
+						    GetFont(bview->buffer(),
+							    par,
+							    par->Last() - 1));
+#else
+			y_bottom -= lyxfont::ascent('x',
+						    GetFont(bview->buffer(),
+							    par,
+							    par->size() - 1));
+#endif
 			int const w = (inset_owner ?
 				       inset_owner->width(bview, font) : ww);
 			int const xp = static_cast<int>(inset_owner ? x : 0);
@@ -3743,10 +3942,17 @@ void LyXText::GetVisibleRow(BufferView * bview, int y_offset, int x_offset,
 				  w, y_offset + y_bottom,
 				  LColor::topline, Painter::line_solid,
 				  Painter::line_thick);
+#ifndef NEW_INSETS
 			y_bottom -= lyxfont::ascent('x',
 						    GetFont(bview->buffer(),
 							    par,
 							    par->Last() - 1));
+#else
+			y_bottom -= lyxfont::ascent('x',
+						    GetFont(bview->buffer(),
+							    par,
+							    par->size() - 1));
+#endif
 		}
 
 		// draw an endlabel

@@ -1530,7 +1530,11 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
     InsetText * inset = GetCellInset(cell);
     int row;
 
+#ifndef NEW_INSETS
     for (int i = 0; i < par->Last(); ++i) {
+#else
+    for (int i = 0; i < par->size(); ++i) {
+#endif
 	if (par->IsNewline(i)) {
 	    ++cell;
 	    if (cell > GetNumberOfCells()) {
@@ -1559,7 +1563,11 @@ void LyXTabular::OldFormatRead(LyXLex & lex, string const & fl)
 	    }
 	}
 	par->CopyIntoMinibuffer(*owner_->BufferOwner(), i);
+#ifndef NEW_INSETS
 	inset->par->InsertFromMinibuffer(inset->par->Last());
+#else
+	inset->par->InsertFromMinibuffer(inset->par->size());
+#endif
     }
     delete par;
     Reinit();
@@ -2162,7 +2170,11 @@ int LyXTabular::Latex(Buffer const * buf,
 	    InsetText * inset = GetCellInset(cell);
 
 	    bool rtl = inset->par->isRightToLeftPar(buf->params) &&
+#ifndef NEW_INSETS
 		    inset->par->Last() > 0 && GetPWidth(cell).empty();
+#else
+		    inset->par->size() > 0 && GetPWidth(cell).empty();
+#endif
 	    if (rtl)
 		os << "\\R{";
 	    ret += inset->Latex(buf, os, fragile, fp);
@@ -2560,7 +2572,7 @@ LyXTabular::BoxType LyXTabular::UseParbox(int cell) const
     LyXParagraph * par = GetCellInset(cell)->par;
 
     for (; par; par = par->next()) {
-	for (int i = 0; i < par->Last(); ++i) {
+	for (int i = 0; i < par->size(); ++i) {
 	    if (par->GetChar(i)	== LyXParagraph::META_NEWLINE)
 		return BOX_PARBOX;
 	}

@@ -809,6 +809,7 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 		return;
 	}
 
+#ifndef NEW_INSETS
 	// check whether we want to open a float
 	if (bv_->text) {
 		bool hit = false;
@@ -818,7 +819,6 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 			c = bv_->text->cursor.par()->
 				GetChar(bv_->text->cursor.pos());
 		}
-#ifndef NEW_INSETS
 	       if(!bv_->text->selection)
 		if (c == LyXParagraph::META_FOOTNOTE
 		    || c == LyXParagraph::META_MARGIN
@@ -829,11 +829,9 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
                     || c == LyXParagraph::META_ALGORITHM){
 			hit = true;
 		} else
-#endif
 			if (bv_->text->cursor.pos() - 1 >= 0) {
 			c = bv_->text->cursor.par()->
 				GetChar(bv_->text->cursor.pos() - 1);
-#ifndef NEW_INSETS
 			if (c == LyXParagraph::META_FOOTNOTE
 			    || c == LyXParagraph::META_MARGIN
 			    || c == LyXParagraph::META_FIG
@@ -845,18 +843,13 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 				bv_->text->CursorLeft(bv_);
 				hit = true;
 			}
-#endif
 		}
 		if (hit == true) {
-#ifndef NEW_INSETS
 			bv_->toggleFloat();
-#endif
 			selection_possible = false;
 			return;
 		}
 	}
-
-#ifndef NEW_INSETS
 	// Do we want to close a float? (click on the float-label)
 	if (bv_->text->cursor.row()->par()->footnoteflag == 
 	    LyXParagraph::OPEN_FOOTNOTE
@@ -882,8 +875,26 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 			return;
 		}
 	}
+#else
+	// check whether we want to open a float
+	if (bv_->text) {
+		bool hit = false;
+		char c = ' ';
+		if (bv_->text->cursor.pos() <
+		    bv_->text->cursor.par()->size()) {
+			c = bv_->text->cursor.par()->
+				GetChar(bv_->text->cursor.pos());
+		}
+			if (bv_->text->cursor.pos() - 1 >= 0) {
+			c = bv_->text->cursor.par()->
+				GetChar(bv_->text->cursor.pos() - 1);
+		}
+		if (hit == true) {
+			selection_possible = false;
+			return;
+		}
+	}
 #endif
-
 	// Maybe we want to edit a bibitem ale970302
 	if (bv_->text->cursor.par()->bibkey && x < 20 + 
 	    bibitemMaxWidth(bv_, textclasslist.
@@ -912,7 +923,11 @@ Inset * BufferView::Pimpl::checkInsetHit(LyXText * text, int & x, int & y,
 	LyXCursor cursor;
 	text->SetCursorFromCoordinates(bv_, cursor, x, y_tmp);
 
+#ifndef NEW_INSETS
 	if (cursor.pos() < cursor.par()->Last()
+#else
+	if (cursor.pos() < cursor.par()->size()
+#endif
 	    && cursor.par()->GetChar(cursor.pos()) == LyXParagraph::META_INSET
 	    && cursor.par()->GetInset(cursor.pos())
 	    && cursor.par()->GetInset(cursor.pos())->Editable()) {
@@ -1225,8 +1240,13 @@ void BufferView::Pimpl::restorePosition(unsigned int i)
 	if (!par)
 		return;
 
+#ifndef NEW_INSETS
 	bv_->text->SetCursor(bv_, par,
 			     min(par->Last(), saved_positions[i].par_pos));
+#else
+	bv_->text->SetCursor(bv_, par,
+			     min(par->size(), saved_positions[i].par_pos));
+#endif
 	update(bv_->text, BufferView::SELECT|BufferView::FITCUR);
 	if (i > 0)
 		owner_->getMiniBuffer()->Set(_("Moved to bookmark ") + tostr(i));
@@ -1811,7 +1831,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		update(TEXT(bv_), BufferView::SELECT|BufferView::FITCUR);
 		if (is_rtl)
 			TEXT(bv_)->CursorLeft(bv_, false);
+#ifndef NEW_INSETS
 		if (TEXT(bv_)->cursor.pos() < TEXT(bv_)->cursor.par()->Last()
+#else
+		if (TEXT(bv_)->cursor.pos() < TEXT(bv_)->cursor.par()->size()
+#endif
 		    && TEXT(bv_)->cursor.par()->GetChar(TEXT(bv_)->cursor.pos())
 		    == LyXParagraph::META_INSET
 		    && TEXT(bv_)->cursor.par()->GetInset(TEXT(bv_)->cursor.pos())
@@ -1849,7 +1873,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		if (!is_rtl)
 			TEXT(bv_)->CursorLeft(bv_, false);
 		if ((is_rtl || cur != TEXT(bv_)->cursor) && // only if really moved!
+#ifndef NEW_INSETS
 		    TEXT(bv_)->cursor.pos() < TEXT(bv_)->cursor.par()->Last() &&
+#else
+		    TEXT(bv_)->cursor.pos() < TEXT(bv_)->cursor.par()->size() &&
+#endif
 		    (TEXT(bv_)->cursor.par()->GetChar(TEXT(bv_)->cursor.pos()) ==
 		     LyXParagraph::META_INSET) &&
 		    TEXT(bv_)->cursor.par()->GetInset(TEXT(bv_)->cursor.pos()) &&
@@ -2220,7 +2248,11 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 		LyXCursor cursor = TEXT(bv_)->cursor;
 
 		if (!TEXT(bv_)->selection) {
+#ifndef NEW_INSETS
 			if (cursor.pos() == cursor.par()->Last()) {
+#else
+			if (cursor.pos() == cursor.par()->size()) {
+#endif
 				TEXT(bv_)->CursorRight(bv_);
 				cursor = TEXT(bv_)->cursor;
 				if (cursor.pos() == 0

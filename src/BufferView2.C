@@ -120,6 +120,10 @@ bool BufferView::removeAutoInsets()
 		}
 		par = par->next_;
 	}
+
+	// avoid forbidden cursor positions caused by error removing
+	if (tmpcursor.pos() > tmpcursor.par()->Last())
+		tmpcursor.pos(tmpcursor.par()->Last());
 #else
 	while (par) {
 		// this has to be done before the delete
@@ -132,11 +136,11 @@ bool BufferView::removeAutoInsets()
 		}
 		par = par->next();
 	}
-#endif
 
 	// avoid forbidden cursor positions caused by error removing
-	if (tmpcursor.pos() > tmpcursor.par()->Last())
-		tmpcursor.pos(tmpcursor.par()->Last());
+	if (tmpcursor.pos() > tmpcursor.par()->size())
+		tmpcursor.pos(tmpcursor.par()->size());
+#endif
 	text->SetCursorIntern(this, tmpcursor.par(), tmpcursor.pos());
 
 	return a;
@@ -231,8 +235,12 @@ bool BufferView::insertInset(Inset * inset, string const & lout,
 		update(text, BufferView::SELECT|BufferView::FITCUR);
 		text->BreakParagraph(this);
 		update(text, BufferView::SELECT|BufferView::FITCUR|BufferView::CHANGE);
-		
+
+#ifndef NEW_INSETS
 		if (text->cursor.par()->Last()) {
+#else
+		if (text->cursor.par()->size()) {
+#endif
 			text->CursorLeft(this);
 			
 			text->BreakParagraph(this);

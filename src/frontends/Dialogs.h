@@ -38,8 +38,6 @@ class InsetInfo;
 class InsetTabular;
 class InsetCommand;
 
-using std::vector;
-
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::Signal0;
 using SigC::Signal1;
@@ -83,7 +81,7 @@ public:
 	   Put into some sort of alphabetical order */
 	//@{
 	/// Do we really have to push this?
-	Signal1<void, vector<string> const &> SetDocumentClassChoice;
+	Signal1<void, std::vector<string> const &> SetDocumentClassChoice;
 	/// show the key and label of a bibliography entry
 	Signal1<void, InsetCommand *> showBibitem;
 	/// show the bibtex dialog
@@ -159,7 +157,7 @@ public:
 	//@}
 private:
 	///
-	vector<DialogBase *> dialogs_;
+	std::vector<DialogBase *> dialogs_;
 };
 
 #endif

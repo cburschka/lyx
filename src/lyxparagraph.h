@@ -338,8 +338,10 @@ public:
 			   LyXTextClass::LayoutList::size_type new_layout);
 	///
 	int GetFirstCounter(int i) const;
+#ifndef NEW_INSETS
 	///
 	size_type Last() const;
+#endif
 	///
 	void Erase(size_type pos);
 	/** the flag determines wether the layout should be copied

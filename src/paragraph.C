@@ -124,14 +124,9 @@ void LyXParagraph::writeFile(Buffer const * buf, ostream & os,
 			     char footflag, char dth) const
 {
 #ifndef NEW_INSETS
-	if (
-		footnoteflag != LyXParagraph::NO_FOOTNOTE ||
+	if (footnoteflag != LyXParagraph::NO_FOOTNOTE ||
 	    !previous_
-	    || previous_->footnoteflag == LyXParagraph::NO_FOOTNOTE
-		) {
-#endif
-		
-#ifndef NEW_INSETS
+	    || previous_->footnoteflag == LyXParagraph::NO_FOOTNOTE) {
 		// The beginning or the end of a footnote environment?
 		if (footflag != footnoteflag) {
 			footflag = footnoteflag;
@@ -1075,20 +1070,17 @@ string const LyXParagraph::GetWord(LyXParagraph::size_type & lastpos) const
 }
 
 
-#ifdef NEW_INSETS
-#warning Remember to get rid of this one. (Lgb)
-#endif
+#ifndef NEW_INSETS
 LyXParagraph::size_type LyXParagraph::Last() const
 {
-#ifndef NEW_INSETS
 	if (next_ && next_->footnoteflag == LyXParagraph::CLOSED_FOOTNOTE)
 		return text.size() + NextAfterFootnote()->Last() + 1;
 	// the 1 is the symbol
 	// for the footnote
 	else
-#endif
 		return text.size();
 }
+#endif
 
 
 #ifndef NEW_INSETS
@@ -1496,7 +1488,7 @@ void LyXParagraph::BreakParagraph(BufferParams const & bparams,
 		tmp->params.depth(firstpar->params.depth());
 		tmp->params.noindent(firstpar->params.noindent());
 #else
-	if (Last() > pos || !Last() || flag == 2) {
+	if (size() > pos || !size() || flag == 2) {
 		tmp->SetOnlyLayout(bparams, layout);
 		tmp->params.align(params.align());
 		tmp->SetLabelWidthString(params.labelWidthString());
@@ -1624,8 +1616,10 @@ int LyXParagraph::StripLeadingSpaces(LyXTextClassList::size_type tclass)
 	int i = 0;
 #ifndef NEW_INSETS
 	if (!IsDummy()) {
-#endif
 		while (Last()
+#else
+		while (size()
+#endif
 		       && (IsNewline(0) || IsLineSeparator(0))){
 			Erase(0);
 			++i;
@@ -1727,7 +1721,7 @@ void LyXParagraph::BreakParagraphConservative(BufferParams const & bparams,
 
 	// When can pos > Last()?
 	// I guess pos == Last() is possible.
-	if (Last() > pos) {
+	if (size() > pos) {
 		// copy everything behind the break-position to the new
 		// paragraph
 		size_type pos_end = text.size() - 1;
@@ -1757,23 +1751,24 @@ void LyXParagraph::PasteParagraph(BufferParams const & bparams)
 {
 	// copy the next paragraph to this one
 	LyXParagraph * the_next = next();
-#ifndef NEW_INSETS   
-	LyXParagraph * firstpar = FirstPhysicalPar();
-#endif
    
 	// first the DTP-stuff
 #ifndef NEW_INSETS
+	LyXParagraph * firstpar = FirstPhysicalPar();
 	firstpar->params.lineBottom(the_next->params.lineBottom());
 	firstpar->params.spaceBottom(the_next->params.spaceBottom());
 	firstpar->params.pagebreakBottom(the_next->params.pagebreakBottom());
+
+	size_type pos_end = the_next->text.size() - 1;
+	size_type pos_insert = Last();
 #else
 	params.lineBottom(the_next->params.lineBottom());
 	params.spaceBottom(the_next->params.spaceBottom());
 	params.pagebreakBottom(the_next->params.pagebreakBottom());
-#endif
 
 	size_type pos_end = the_next->text.size() - 1;
-	size_type pos_insert = Last();
+	size_type pos_insert = size();
+#endif
 
 	// ok, now copy the paragraph
 	size_type i, j;
@@ -2385,7 +2380,11 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 	// Is this really needed ? (Dekel)
 	// We do not need to use to change the font for the last paragraph
 	// or for a command.
+#ifndef NEW_INSETS
 	LyXFont font = getFont(bparams, Last() - 1);
+#else
+	LyXFont font = getFont(bparams, size() - 1);
+#endif
 	bool is_command = textclasslist.Style(bparams.textclass,
 					      GetLayout()).isCommand();
 	if (style.resfont.size() != font.size() && next_ && !is_command) {
@@ -2438,7 +2437,13 @@ LyXParagraph * LyXParagraph::TeXOnePar(Buffer const * buf,
 	
 	further_blank_line = false;
 	if (params.lineBottom()) {
-		os << "\\lyxline{\\" << getFont(bparams, Last() - 1).latexSize() << '}';
+#ifndef NEW_INSETS
+		os << "\\lyxline{\\" << getFont(bparams,
+						Last() - 1).latexSize() << '}';
+#else
+		os << "\\lyxline{\\" << getFont(bparams,
+						size() - 1).latexSize() << '}';
+#endif
 		further_blank_line = true;
 	}
 

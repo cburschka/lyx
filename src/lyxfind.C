@@ -118,7 +118,11 @@ bool IsStringInText(LyXParagraph * par, LyXParagraph::size_type pos,
    
 	string::size_type size = str.length();
 	LyXParagraph::size_type i = 0;
+#ifndef NEW_INSETS
 	while (((pos + i) < par->Last())
+#else
+	while (((pos + i) < par->size())
+#endif
 	       && (string::size_type(i) < size)
 	       && (cs ? (str[i] == par->GetChar(pos + i))
 		   : (toupper(str[i]) == toupper(par->GetChar(pos + i)))))
@@ -129,7 +133,11 @@ bool IsStringInText(LyXParagraph * par, LyXParagraph::size_type pos,
 	  // if necessary, check whether string matches word
 	  if (!mw || 
 	      (mw && ((pos <= 0 || !IsLetterCharOrDigit(par->GetChar(pos - 1)))
+#ifndef NEW_INSETS
 		      && (pos + size >= par->Last()
+#else
+		      && (pos + size >= par->size()
+#endif
 			  || !IsLetterCharOrDigit(par->GetChar(pos + size))))
 	       )
 	      )
@@ -148,7 +156,11 @@ bool SearchForward(BufferView * bv, string const & str,
 	LyXParagraph::size_type pos = bv->text->cursor.pos();
    
 	while (par && !IsStringInText(par, pos, str, cs, mw)) {
+#ifndef NEW_INSETS
 		if (pos < par->Last() - 1)
+#else
+		if (pos < par->size() - 1)
+#endif
 			++pos;
 		else {
 			pos = 0;
@@ -181,7 +193,11 @@ bool SearchBackward(BufferView * bv, string const & str,
 			do {
 				par = par->previous();
 				if (par)
+#ifndef NEW_INSETS
 					pos = par->Last() - 1;
+#else
+					pos = par->size() - 1;
+#endif
 			} while (par && pos < 0);
 		}
 	} while (par && !IsStringInText(par, pos, str, cs, mw));

@@ -21,18 +21,9 @@ public:
 	value_type
 	get(Share const & ps) const {
 		// First see if we already have this ps in the container
-#if 0
-		Params::iterator it = params.begin();
-		Params::iterator end = params.end();
-		for (; it != end; ++it) {
-			if (ps == *(*it).get())
-				break;
-		}
-#else
 		Params::iterator it = std::find_if(params.begin(),
-					      params.end(),
-					      isEqual(ps));
-#endif
+						   params.end(),
+						   isEqual(ps));
 		value_type tmp;
 		if (it == params.end()) {
 			// ok we don't have it so we should
@@ -43,10 +34,13 @@ public:
 			// some (one) unique elemements some times
 			// but we should gain a lot in speed.
 			clean();
-			std::sort(params.rbegin(), params.rend(), comp());
+			//std::sort(params.rbegin(), params.rend(), comp());
 		} else {
 			// yes we have it already
 			tmp = *it;
+			// move it forward
+			if (it != params.begin())
+				swap(*it, *(it - 1));
 		}
 		return tmp;
 	}
@@ -61,19 +55,19 @@ private:
 		Share const & p_;
 	};
 	///
-	struct comp {
-		int operator()(value_type const & p1,
-			       value_type const & p2) const {
-			return p1.use_count() < p2.use_count();
-		}
-	};
+	//struct comp {
+	//	int operator()(value_type const & p1,
+	//		       value_type const & p2) const {
+	//		return p1.use_count() < p2.use_count();
+	//	}
+	//};
 	///
 	struct isUnique {
 		bool operator()(value_type const & p) const {
 			return p.unique();
 		}
 	};
-
+	
 	///
 	void clean() const {
 		// Remove all unique items. (i.e. entries that only
