@@ -32,6 +32,7 @@ using std::istringstream;
 #include "kbmap.h"
 #include "lyxfunc.h"
 #include "bufferlist.h"
+#include "ColorHandler.h"
 #include "lyxserver.h"
 #include "lyx.h"
 #include "intl.h"
@@ -2600,6 +2601,30 @@ string LyXFunc::Dispatch(int ac,
 		lyxrc.write("preferences");
 	}
 	break;
+
+	case LFUN_SET_COLOR:
+	{
+		string lyx_name, x11_name;
+		x11_name = split(argument, lyx_name, ' ');
+		if (lyx_name.empty() || x11_name.empty()) {
+			LyXBell();
+			setErrorMessage(N_("Syntax: set-color <lyx_name>"
+						" <x11_name>"));
+			break;
+			}
+
+		if (!lcolor.setColor(lyx_name, x11_name)) {
+			static string err1 (N_("Set-color \""));
+			static string err2 (N_("\" failed - color is undefined "
+						"or may not be redefined"));
+			LyXBell();
+			setErrorMessage(err1 + lyx_name + err2);
+			break;
+		}
+		lyxColorHandler->updateColor(lcolor.getFromLyXName(lyx_name));
+		owner->view()->redraw();
+		break;
+	}
 
 	case LFUN_UNKNOWN_ACTION:
 	{

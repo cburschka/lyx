@@ -22,6 +22,7 @@
 #include "gettext.h"
 #include "support/lstrings.h"
 
+using std::endl;
 
 void LColor::fill(LColor::color col, string const & gui,
 		  string const & latex, string const & x11,
@@ -168,6 +169,22 @@ void LColor::setColor(LColor::color col, string const & x11name)
 	}
 	lyxerr << "LyX internal error: color and such.\n";
 	Assert(false);
+}
+
+
+bool LColor::setColor(string const & lyxname, string const & x11name)
+{
+	color col = getFromLyXName (lyxname);
+
+	// "inherit" is returned for colors not in the database
+	// (and anyway should not be redefined)
+	if (col == inherit || col == ignore) {
+		lyxerr << "Color " << lyxname << " is undefined or may not be"
+			" redefined" << endl;
+		return false;
+	}
+	setColor (col, x11name);
+	return true;
 }
 
 

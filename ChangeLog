@@ -1,3 +1,18 @@
+2000-06-26  Lior Silberman <slior@math.huji.ac.il>
+
+	* src/lyxrc.C: 
+	* lib/lyxrc.example: new lyxrc tag \set_color.
+
+	* src/lyxfunc.C (Dispatch): 
+	* src/commandtags.h: 
+	* src/LyXAction.C: new lyxfunc "set-color".
+
+	* src/LColor.[Ch] (setColor): new method to set colors from a lyxname
+	and an x11name given as strings.
+
+	* src/ColorHandler.[Ch] (updateColor): new method. Updates the GC
+	cache when a color is changed.
+
 2000-06-26  Juergen Vigna  <jug@sad.it>
 
 	* src/lyxrow.C (width): added this functions and variable.
@@ -8,6 +23,13 @@
 	* src/text.C (SetHeightOfRow): fixed calcualting of width.
 
 2000-06-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* images/undo_bw.xpm: new icon.
+	* images/redo_bw.xpm: ditto.
+
+	* configure.in (INSTALL_SCRIPT): change value to
+	${INSTALL} to avoid failures of install-script target.
+	* lib/reLyX/configure.in (INSTALL_SCRIPT): ditto
 
 	* src/BufferView.h: add a magic "friend" declaration to please
 	compaq cxx.

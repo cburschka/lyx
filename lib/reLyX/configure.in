@@ -26,6 +26,12 @@ test "x$exec_prefix" = xNONE && exec_prefix='${prefix}'
 LYX_DIR=`eval "echo \`eval \"echo ${datadir}/${PACKAGE}\"\`"`
 AC_SUBST(LYX_DIR)
 
+# Work around a problem in automake 1.4: when invoking install-strip,
+# INSTALL_PROGRAM is changed to 'install -s', and since
+# INSTALL_SCRIPT==INSTALL_PROGRAM, we get errors with fileutils-4.0
+# which returns an error condition when stripping fails.
+INSTALL_SCRIPT='${INSTALL}'
+
 dnl Checks for programs.
 AC_PROG_INSTALL
 RELYX_CHECK_PERL

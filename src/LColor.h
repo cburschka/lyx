@@ -173,6 +173,8 @@ public:
 	LColor();
 	///
 	void setColor(LColor::color col, string const & x11name);
+	///
+	bool setColor(string const & lyxname, string const & x11name);
 	/// Get GUI name of color
 	string getGUIName(LColor::color c) const;
 
