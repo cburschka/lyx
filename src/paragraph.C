@@ -166,7 +166,7 @@ Paragraph::~Paragraph()
 
 void Paragraph::write(Buffer const * buf, ostream & os,
 			  BufferParams const & bparams,
-			  depth_type dth) const
+			  depth_type & dth) const
 {
 	// The beginning or end of a deeper (i.e. nested) area?
 	if (dth != params().depth()) {

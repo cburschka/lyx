@@ -239,8 +239,9 @@ void InsetText::writeParagraphData(Buffer const * buf, ostream & os) const
 {
 	ParagraphList::iterator it = paragraphs.begin();
 	ParagraphList::iterator end = paragraphs.end();
+	Paragraph::depth_type dth = 0;
 	for (; it != end; ++it) {
-		it->write(buf, os, buf->params, 0);
+		it->write(buf, os, buf->params, dth);
 	}
 }
 

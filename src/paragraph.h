@@ -84,7 +84,7 @@ public:
 
 	///
 	void write(Buffer const *, std::ostream &, BufferParams const &,
-		       depth_type) const;
+		       depth_type & depth) const;
 	///
 	void validate(LaTeXFeatures &) const;
 
