@@ -71,6 +71,18 @@ CharStyle Literal
 	EndFont
 End
 
+CharStyle Email
+        LatexType             Command
+        LatexName             email
+        Font
+          Family              Typewriter
+        EndFont
+        LabelFont
+          Family              Roman
+          Color               blue
+        EndFont
+End
+
 
 Input db_stdlists.inc
 Input db_stdsections.inc
