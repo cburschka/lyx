@@ -1,5 +1,10 @@
 2002-01-25  Angus Leeming  <a.leeming@ic.ac.uk>
 
+	* ControlAboutlyx.h:
+	* ControlTexinfo.h: added #include "LString.h" where they belong.
+
+2002-01-25  Angus Leeming  <a.leeming@ic.ac.uk>
+
 	* ControlCitation.C:
 	* ControlDialog_impl.C: remove redundant // -*- C++ -*-
 

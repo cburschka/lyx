@@ -11,13 +11,13 @@
 #ifndef CONTROLABOUTLYX_H
 #define CONTROLABOUTLYX_H
 
-#include "Lsstream.h"
-
 #ifdef __GNUG__
 #pragma interface
 #endif
 
 #include "ControlDialog_impl.h"
+#include "Lsstream.h"
+#include "LString.h"
 
 /** A controller for the About LyX dialogs.
  */

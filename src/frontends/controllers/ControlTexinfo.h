@@ -20,6 +20,7 @@
 #endif
 
 #include "ControlDialog_impl.h"
+#include "LString.h"
 
 /** A controller for Texinfo dialogs. */
 
