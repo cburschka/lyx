@@ -18,6 +18,7 @@
 #include "support/std_sstream.h"
 
 
+using std::istringstream;
 using std::vector;
 using std::getline;
 using std::endl;

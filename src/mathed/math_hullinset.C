@@ -31,6 +31,8 @@
 
 using namespace lyx::support;
 
+using std::istringstream;
+using std::ostringstream;
 using std::vector;
 using std::max;
 using std::endl;

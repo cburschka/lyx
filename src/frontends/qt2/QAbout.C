@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "support/lstrings.h"
 #include "support/std_sstream.h"
 #include "qt_helpers.h"
@@ -28,9 +27,11 @@
 using namespace lyx::support;
 
 using std::getline;
+using std::istringstream;
+using std::ostringstream;
+
 
 typedef QController<ControlAboutlyx, QView<QAboutDialog> > base_class;
-
 
 QAbout::QAbout(Dialog & parent)
 	: base_class(parent, _("About LyX"))

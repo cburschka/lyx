@@ -23,8 +23,4 @@
 #include "support/sstream.h"
 #endif
 
-using std::istringstream;
-using std::ostringstream;
-using std::stringstream;
-
 #endif // NOT STD_SSTREAM_H

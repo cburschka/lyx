@@ -36,6 +36,7 @@ using namespace lyx::support;
 
 using std::abs;
 using std::ostream;
+using std::ostringstream;
 using std::istream;
 using std::getline;
 using std::max;

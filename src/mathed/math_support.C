@@ -25,6 +25,7 @@
 
 using std::max;
 using std::endl;
+using std::ostringstream;
 
 
 ///

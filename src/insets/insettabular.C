@@ -44,7 +44,9 @@ using std::max;
 using std::swap;
 using std::auto_ptr;
 using std::ifstream;
+using std::istringstream;
 using std::ostream;
+using std::ostringstream;
 using std::vector;
 
 

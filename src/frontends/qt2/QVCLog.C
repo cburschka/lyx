@@ -10,7 +10,6 @@
 
 #include <config.h>
 
-
 #include "support/std_sstream.h"
 #include "qt_helpers.h"
 #include "support/lstrings.h"
@@ -26,8 +25,10 @@
 
 using namespace lyx::support;
 
-typedef QController<ControlVCLog, QView<QVCLogDialog> > base_class;
+using std::ostringstream;
 
+
+typedef QController<ControlVCLog, QView<QVCLogDialog> > base_class;
 
 QVCLog::QVCLog(Dialog & parent)
 	: base_class(parent, _("LyX: Version Control Log"))

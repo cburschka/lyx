@@ -33,6 +33,7 @@ using namespace lyx::support;
 
 using std::endl;
 using std::ostream;
+using std::ostringstream;
 
 
 InsetCaption::InsetCaption(BufferParams const & bp)

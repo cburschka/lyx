@@ -20,7 +20,9 @@
 
 #include "support/std_sstream.h"
 
+using std::istringstream;
 using std::ostream;
+using std::ostringstream;
 
 
 InsetCommand::InsetCommand(InsetCommandParams const & p)

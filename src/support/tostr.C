@@ -13,6 +13,8 @@
 #include "support/std_sstream.h"
 #include "support/std_string.h"
 
+using std::ostringstream;
+
 
 string const tostr(bool b)
 {

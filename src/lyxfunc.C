@@ -74,6 +74,7 @@ using std::pair;
 using std::make_pair;
 using std::endl;
 using std::find_if;
+using std::istringstream;
 using std::vector;
 using std::transform;
 using std::back_inserter;

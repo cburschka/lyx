@@ -43,7 +43,9 @@ using namespace lyx::support;
 
 using std::endl;
 using std::auto_ptr;
+using std::istringstream;
 using std::ostream;
+using std::ostringstream;
 using std::pair;
 using std::vector;
 

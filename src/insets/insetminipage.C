@@ -24,7 +24,9 @@
 
 using std::endl;
 using std::auto_ptr;
+using std::istringstream;
 using std::ostream;
+using std::ostringstream;
 
 
 // Some information about Minipages in LaTeX:

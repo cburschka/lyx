@@ -51,6 +51,7 @@ using std::map;
 using std::ifstream;
 using std::ofstream;
 using std::ostream;
+using std::ostringstream;
 using std::pair;
 using std::vector;
 

@@ -55,6 +55,7 @@
 
 using namespace lyx::support;
 
+using std::ostringstream;
 using std::vector;
 using std::copy;
 using std::endl;

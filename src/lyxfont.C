@@ -27,6 +27,7 @@
 using namespace lyx::support;
 
 using std::ostream;
+using std::ostringstream;
 using std::endl;
 
 #ifndef CXX_GLOBAL_CSTD

@@ -26,6 +26,8 @@ using std::max;
 using std::min;
 using std::vector;
 using std::istream;
+using std::istringstream;
+using std::ostringstream;
 using std::auto_ptr;
 using std::endl;
 

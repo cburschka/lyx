@@ -21,6 +21,7 @@
 using namespace lyx::support;
 
 using std::endl;
+using std::ostringstream;
 using std::vector;
 
 

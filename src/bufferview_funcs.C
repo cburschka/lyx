@@ -32,6 +32,9 @@
 
 using namespace lyx::support;
 
+using std::istringstream;
+using std::ostringstream;
+
 
 namespace {
 

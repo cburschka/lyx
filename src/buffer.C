@@ -71,6 +71,7 @@ using std::pow;
 #endif
 
 using std::ostream;
+using std::ostringstream;
 using std::ofstream;
 using std::ifstream;
 using std::fstream;

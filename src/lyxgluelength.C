@@ -17,6 +17,8 @@
 
 #include "support/std_sstream.h"
 
+using std::ostringstream;
+
 
 LyXGlueLength::LyXGlueLength(LyXLength const & len)
 	: len_(len)

@@ -41,6 +41,7 @@ using namespace lyx::support;
 using lyx::pos_type;
 //using lyx::layout_type;
 using std::endl;
+using std::istringstream;
 using std::ostream;
 
 

@@ -28,6 +28,8 @@ using std::floor;
 using std::max;
 using std::min;
 using std::setw;
+using std::istringstream;
+using std::ostringstream;
 
 
 namespace {

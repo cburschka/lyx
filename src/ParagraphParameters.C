@@ -31,7 +31,10 @@
 
 using namespace lyx::support;
 
+using std::istringstream;
 using std::ostream;
+using std::ostringstream;
+
 
 // Initialize static member var.
 ShareContainer<ParameterStruct> ParagraphParameters::container;

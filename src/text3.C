@@ -45,6 +45,7 @@ using namespace bv_funcs;
 
 using std::endl;
 using std::find;
+using std::istringstream;
 using std::vector;
 using lyx::pos_type;
 

@@ -16,6 +16,7 @@
 #include "support/std_sstream.h"
 
 using std::auto_ptr;
+using std::ostringstream;
 
 
 CommandInset::CommandInset(string const & name)

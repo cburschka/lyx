@@ -66,6 +66,7 @@ following hack as starting point to write some macros:
 
 
 using std::istream;
+using std::istringstream;
 using std::ostream;
 using std::ios;
 using std::endl;

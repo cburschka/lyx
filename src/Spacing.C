@@ -15,7 +15,10 @@
 #include "Spacing.h"
 
 using std::ios;
+using std::istringstream;
 using std::ostream;
+using std::ostringstream;
+
 
 string const Spacing::spacing_string[]
 	= {"single", "onehalf", "double", "other"};

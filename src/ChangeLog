@@ -1,5 +1,10 @@
 2003-09-05  Angus Leeming  <leeming@lyx.org>
 
+	Changes most place everywhere due to the removal of using directives
+	from support/std_sstream.h.
+
+2003-09-05  Angus Leeming  <leeming@lyx.org>
+
 	Replace LString.h with support/std_string.h,
 	Lsstream.h with support/std_sstream.h,
 	support/LIstream.h with support/std_istream.h,

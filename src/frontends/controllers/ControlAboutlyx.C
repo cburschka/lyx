@@ -11,7 +11,6 @@
 
 #include <config.h>
 
-
 #include "ControlAboutlyx.h"
 #include "gettext.h"
 #include "version.h"
@@ -25,6 +24,7 @@
 using namespace lyx::support;
 
 using std::ostream;
+using std::ostringstream;
 
 
 ControlAboutlyx::ControlAboutlyx(Dialog & parent)

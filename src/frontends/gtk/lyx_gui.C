@@ -51,6 +51,9 @@
 #include "xformsImage.h"
 #include "xforms_helpers.h"
 
+using std::ostringstream;
+
+
 extern BufferList bufferlist;
 
 // FIXME: wrong place !

@@ -22,8 +22,9 @@
 
 #include "support/std_sstream.h"
 
-
 using std::abs;
+using std::ostringstream;
+
 
 LyXLength::LyXLength()
 	: val_(0), unit_(LyXLength::UNIT_NONE)

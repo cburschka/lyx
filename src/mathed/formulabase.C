@@ -40,7 +40,9 @@
 using namespace lyx::support;
 
 using std::endl;
+using std::istringstream;
 using std::ostream;
+using std::ostringstream;
 using std::vector;
 using std::abs;
 using std::max;

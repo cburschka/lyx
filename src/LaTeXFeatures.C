@@ -35,6 +35,7 @@ using std::list;
 using std::set;
 using std::find;
 using std::ostream;
+using std::ostringstream;
 
 
 LaTeXFeatures::LaTeXFeatures(BufferParams const & p)

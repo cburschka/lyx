@@ -24,6 +24,8 @@
 
 #include "support/std_sstream.h"
 
+using std::ostringstream;
+
 #include "delim.xbm"
 #include "delim0.xpm"
 #include "delim1.xpm"

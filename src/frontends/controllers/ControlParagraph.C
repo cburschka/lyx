@@ -21,6 +21,10 @@
 
 using namespace lyx::support;
 
+using std::istringstream;
+using std::ostringstream;
+
+
 ControlParagraph::ControlParagraph(Dialog & parent)
 	: Dialog::Controller(parent), ininset_(false)
 {}

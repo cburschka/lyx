@@ -23,6 +23,7 @@
 
 using namespace lyx::support;
 
+using std::ostringstream;
 using std::vector;
 
 

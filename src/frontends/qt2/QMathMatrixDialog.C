@@ -24,6 +24,8 @@
 #include <qspinbox.h>
 #include "emptytable.h"
 
+using std::ostringstream;
+
 
 static char h_align_str[80] = "c";
 static char v_align_c[] = "tcb";

@@ -26,6 +26,7 @@
 
 using namespace lyx::support;
 
+using std::istringstream;
 using std::ostream;
 using std::auto_ptr;
 

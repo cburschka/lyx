@@ -21,7 +21,9 @@
 #include "support/std_sstream.h"
 
 using std::auto_ptr;
+using std::istringstream;
 using std::ostream;
+using std::ostringstream;
 
 
 void InsetBranch::init()

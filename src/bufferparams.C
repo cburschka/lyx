@@ -34,7 +34,9 @@
 
 using namespace lyx::support;
 
+using std::istringstream;
 using std::ostream;
+using std::ostringstream;
 using std::endl;
 using std::pair;
 

@@ -30,7 +30,7 @@ void FormVCLog::update()
 {
 	fl_clear_browser(dialog_->browser);
 
-	ostringstream ss;
+	std::ostringstream ss;
 	controller().getVCLogFile(ss);
 
 	fl_add_browser_line(dialog_->browser, ss.str().c_str());

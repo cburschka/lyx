@@ -1,5 +1,12 @@
 2003-09-05  Angus Leeming  <leeming@lyx.org>
 
+	* std_istream.h: new file Just renaming of LIstream.h
+	* std_ostream.h: new file Just renaming of LIstream.h
+	* std_sstream.h: new file Just renaming of Lsstream.h
+	* std_string.h:  new file Just renaming of LString.h
+
+2003-09-05  Angus Leeming  <leeming@lyx.org>
+
 	* lyxmanip.h: 
 	* textutils.h: 
 	ensure that the header file can be compiled stand-alone.

@@ -12,6 +12,8 @@
 
 #include "math_diminset.h"
 
+using std::ostringstream;
+
 
 void MathDimInset::metricsT(TextMetricsInfo const &) const
 {

@@ -21,6 +21,9 @@
 #include <gtkmm/button.h>
 #include <gtkmm/textview.h>
 
+using std::istringstream;
+
+
 GAbout::GAbout()
 	: GnomeCB<ControlAboutlyx>("GAbout")
 {}

@@ -43,6 +43,7 @@ using support::unlink;
 
 using std::endl;
 using std::ostream;
+using std::ostringstream;
 
 
 namespace lyx {

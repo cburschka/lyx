@@ -77,6 +77,7 @@ using std::make_pair;
 using std::pair;
 using std::endl;
 using std::ifstream;
+using std::ostringstream;
 using std::vector;
 using std::getline;
 

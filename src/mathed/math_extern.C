@@ -41,6 +41,7 @@ using namespace lyx::support;
 
 using std::ostream;
 using std::istringstream;
+using std::ostringstream;
 using std::find_if;
 using std::endl;
 

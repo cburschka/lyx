@@ -54,6 +54,7 @@ using std::hex;
 using std::setbase;
 using std::setfill;
 using std::setw;
+using std::ostringstream;
 using std::vector;
 
 

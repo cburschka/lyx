@@ -19,6 +19,9 @@
 #include "support/filetools.h"
 #include "version.h"
 
+using std::ostringstream;
+
+
 namespace {
 
 enum TranslateState {NORMAL, BEGIN, IN_AT, IN_BOLD, IN_ITALIC};

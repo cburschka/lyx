@@ -51,6 +51,7 @@
 using std::exit;
 #endif
 
+using std::ostringstream;
 using std::vector;
 using std::hex;
 using std::dec;

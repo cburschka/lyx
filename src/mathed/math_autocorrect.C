@@ -24,6 +24,7 @@ using namespace lyx::support;
 
 using std::ifstream;
 using std::istream;
+using std::istringstream;
 using std::ostream;
 using std::endl;
 using std::vector;

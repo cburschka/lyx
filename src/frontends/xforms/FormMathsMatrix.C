@@ -30,6 +30,8 @@
 
 using namespace lyx::support;
 
+using std::ostringstream;
+
 #ifndef CXX_GLOBAL_CSTD
 using std::strlen;
 #endif

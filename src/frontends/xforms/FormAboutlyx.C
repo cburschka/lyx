@@ -23,6 +23,9 @@
 
 #include "lyx_forms.h"
 
+using std::ostringstream;
+
+
 namespace {
 
 #if FL_VERSION == 0 || (FL_REVISION == 0 && FL_FIXLEVEL < 2)
