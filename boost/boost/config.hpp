@@ -265,6 +265,11 @@
 #       define BOOST_NO_SLIST
 #       define BOOST_NO_HASH
 #     endif
+// LYX: begin
+#   ifndef HAVE_LIMITS
+#      define BOOST_NO_LIMITS
+#   endif
+// LYX: end
 #   endif
 
 //  Intel on Linux ---------------------------------------------------------

@@ -4,6 +4,8 @@
 	* boost/static_assert.hpp: update
 	* boost/smart_ptr.hpp: update
 	* boost/config.hpp: update
+	(BOOST_NO_LIMITS): add a hack so that we can continue to use
+	lyxstring.
 
 	* boost/detail/limits.hpp: new file
 	* boost/limits.hpp: new file
