@@ -2,10 +2,13 @@ AUTOMAKE_OPTIONS = foreign 1.4
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 noinst_LTLIBRARIES = libkde.la
 INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
-	${SIGC_CFLAGS} ${FRONTEND_INCLUDES} -I${top_srcdir}/src/frontends/xforms
+	${SIGC_CFLAGS} ${FRONTEND_INCLUDES} \
+	-I${top_srcdir}/src/frontends/xforms
 
 # just to make sure, automake makes them 
-BUILTSOURCES =	formcopyrightdialog_moc.C
+BUILTSOURCES =	formcopyrightdialog_moc.C \
+		formurldialog_moc.C
+
 DISTCLEANFILES = $(BUILTSOURCES) *.orig *.rej *~ *.bak core
 
 libkde_la_OBJADD = \
@@ -28,8 +31,6 @@ libkde_la_OBJADD = \
         ../xforms/form_tabular.lo \
         ../xforms/FormToc.lo \
         ../xforms/form_toc.lo \
-	../xforms/FormUrl.lo \
-	../xforms/form_url.lo \
         ../xforms/input_validators.lo \
         ../xforms/RadioButtonGroup.lo \
         ../xforms/Toolbar_pimpl.lo \
@@ -41,11 +42,17 @@ LYXDATADIRS = dlg
 ETAGS_ARGS = --lang=c++
 libkde_la_SOURCES = \
 	Dialogs.C \
+	GUIRunTime_pimpl.C \
+	GUIRunTime_pimpl.h \
 	FormCopyright.C \
 	FormCopyright.h \
 	formcopyrightdialog.C \
 	formcopyrightdialog.h \
 	formcopyrightdialogdata.C \
+	FormUrl.C \
+	FormUrl.h \
+	formurldialog.C \
+	formurldialog.h \
 	$(BUILTSOURCES)
 
 # These still have to be added. Sooner or later. ARRae-20000129
@@ -75,3 +82,7 @@ dist-hook:
 formcopyrightdialog.C:formcopyrightdialog_moc.C
 formcopyrightdialog_moc.C: formcopyrightdialog.h
 	$(MOC) formcopyrightdialog.h -o formcopyrightdialog_moc.C
+
+formurldialog.C: formurldialog_moc.C
+formurldialog_moc.C: formurldialog.h
+	$(MOC) formurldialog.h -o formurldialog_moc.C

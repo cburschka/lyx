@@ -5,10 +5,10 @@
 // 
 data Information
 {
-   Filename="/nfs/sinco/source/lyx/rae/src/frontends/kde/dlg/formcopyrightdialog.kdevdlg"
-   KDevelopVersion="0.4"
+   Filename="/sinco/source/lyx/lyx-devel/src/frontends/kde/dlg/formcopyrightdialog.kdevdlg"
+   KDevelopVersion="1.1"
    DlgEditVersion="0.1alpha"
-   LastChanged="Mon Feb 7 12:39:07 2000"
+   LastChanged="Wed Aug 16 15:45:09 2000"
 }
 
 data SessionManagement
@@ -30,6 +30,7 @@ item QWidget
    Height="400"
    MinWidth="0"
    MinHeight="0"
+   IsFixedSize="true"
 
    item QLabel
    {

@@ -405,6 +405,7 @@ void LyXAction::init()
 		{ LFUN_UP, "up", "", ReadOnly },
 		{ LFUN_UPSEL, "up-select", "", ReadOnly },
 		{ LFUN_URL, "url-insert", "", Noop },
+		{ LFUN_INSERT_URL, "", "", Noop },
 		{ LFUN_VC_CHECKIN, "vc-check-in", "", ReadOnly },
 		{ LFUN_VC_CHECKOUT, "vc-check-out", "", ReadOnly },
 		{ LFUN_VC_HISTORY, "vc-history", "", ReadOnly },

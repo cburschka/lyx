@@ -1,9 +1,39 @@
+2000-08-16  Juergen Vigna  <jug@sad.it>
+
+	* src/lyx_gui.C (runTime): added GUII RunTime support.
+
+	* src/frontends/Makefile.am: 
+	* src/frontends/GUIRunTime.[Ch]:
+	* src/frontends/xforms/GUIRunTime_pimpl.[Ch]:
+	* src/frontends/kde/GUIRunTime_pimpl.[Ch]:
+	* src/frontends/gnome/GUIRunTime_pimpl.[Ch]: added GUII runtime support
+
+	* src/LyXAction.C (init): added dummy LFUN_INSERT_URL.
+
+	* src/frontends/Makefile.am (INCLUDES): don't set the FRONTENDS include
+	as this is already set in ${FRONTEND_INCLUDE} if needed.
+
+	* configure.in (CPPFLAGS): setting the include dir for the frontend
+	directory and don't set FRONTEND=xforms for now as this is executed
+	always.
+
+2000-08-16 John Levon (moz@compsoc.man.ac.uk)
+ 
+	* src/frontends/kde/Makefile.am:
+	* src/frontends/kde/FormUrl.C:
+	* src/frontends/kde/FormUrl.h:
+	* src/frontends/kde/formurldialog.h:
+	* src/frontends/kde/formurldialog.C: Add KDE URL dialog
+
+2000-08-15  Kayvan A. Sylvan <kayvan@sylvan.com>
+
+       	* src/frontend/Makefile.am: Add gnome and kde to dist tar file.
+
 2000-08-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/BufferView_pimpl.C (workAreaKeyPress): enable the
 	processKeySym
 	
-
 2000-08-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/WorkArea.C (work_area_handler): more work to get te
@@ -772,7 +802,7 @@
 
 	* src/lyxfunc.C (Dispatch) : modified to accomodate new FormToc class
 	and modified InsetTOC class
-	* src/buffer.C: ditto                    
+	* src/buffer.C: ditto            
 
 	* forms/lyx.fd: strip out old FD_form_toc code
 	* src/lyx_gui_misc.C: ditto

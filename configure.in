@@ -164,11 +164,12 @@ case "$lyx_use_frontend" in
     FRONTEND="kde"
     FRONTEND_GUILIB="\${top_builddir}/src/frontends/kde/libkde.la"
     FRONTEND_LDFLAGS="\$(QT_LDFLAGS) \$(KDE_LDFLAGS)"
-    FRONTEND_INCLUDES="\$(QT_INCLUDES) \$(KDE_INCLUDES)"
+    FRONTEND_INCLUDES="-I\${srcdir}/kde \$(QT_INCLUDES) \$(KDE_INCLUDES)"
     FRONTEND_LIBS="\$(KDE_LIBS)"
     AC_DEFINE(KDEGUI);;
   xforms) 
-    FRONTEND="xforms"
+  # for now don't set it for xforms as this is always entered
+    FRONTEND=""
     FRONTEND_GUILIB="\${top_builddir}/src/frontends/xforms/libxforms.la";;
   gnome)    
     AM_PATH_GTKMM(1.2.1,,
@@ -178,7 +179,7 @@ case "$lyx_use_frontend" in
     FRONTEND="gnome"
     FRONTEND_GUILIB="\${top_builddir}/src/frontends/gnome/libgnome.la"
     FRONTEND_LDFLAGS="\$(GNOMEMM_LIBDIR)"
-    FRONTEND_INCLUDES="\$(GNOMEMM_INCLUDEDIR) \$(GTKMM_CFLAGS)"
+    FRONTEND_INCLUDES="-I\${srcdir}/gnome \$(GNOMEMM_INCLUDEDIR) \$(GTKMM_CFLAGS)"
     FRONTEND_LIBS="\$(GNOMEMM_LIBS) \$(GTKMM_LIBS)"
     AC_DEFINE(GTKGUI);;
   *)

@@ -6,7 +6,7 @@ MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
 # here.
 SUBDIRS = xforms @FRONTEND@
 ETAGS_ARGS = --lang=c++
-INCLUDES = ${FRONTEND_INCLUDES} -I${srcdir}/.. -I${srcdir}/@FRONTEND@ -I${srcdir}/xforms ${SIGC_CFLAGS}
+INCLUDES = ${FRONTEND_INCLUDES} -I${srcdir}/.. -I${srcdir}/xforms ${SIGC_CFLAGS}
 LIBS =
 noinst_LTLIBRARIES = libfrontends.la
 libfrontends_la_SOURCES=\
@@ -14,6 +14,8 @@ libfrontends_la_SOURCES=\
 	ButtonPolicies.h \
 	Dialogs.h \
 	DialogBase.h \
+	GUIRunTime.C \
+	GUIRunTime.h \
 	Liason.C \
 	Liason.h \
 	Menubar.C \
@@ -21,3 +23,8 @@ libfrontends_la_SOURCES=\
 	Toolbar.C \
 	Toolbar.h
 
+EXTRA_DIST = kde gnome
+
+dist-hook:
+	@cd $(distdir) ; rm -rf `find kde -name \*CVS\*`; \
+	rm -rf `find gnome -name \*CVS\*` 

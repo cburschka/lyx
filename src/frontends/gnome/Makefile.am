@@ -32,6 +32,8 @@ LYXDATADIRS =
 #ETAGS_ARGS = --lang=c++
 libgnome_la_SOURCES = \
 	Dialogs.C \
+	GUIRunTime_pimpl.C \
+	GUIRunTime_pimpl.h \
 	FormCopyright.C \
 	FormCopyright.h \
 	FormPrint.C \

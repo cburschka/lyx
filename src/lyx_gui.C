@@ -15,14 +15,6 @@
 #pragma implementation
 #endif
 
-#ifdef KDEGUI
-#    include <kapp.h>
-#endif
-
-#ifdef GTKGUI
-#    include <gnome--/main.h>
-#endif
-
 #include <fcntl.h>
 #include "lyx_gui.h"
 #include FORMS_H_LOCATION
@@ -47,6 +39,7 @@
 #include "bufferlist.h"
 #include "language.h"
 #include "ColorHandler.h"
+#include "frontends/GUIRunTime.h"
 
 using std::endl;
 
@@ -567,17 +560,15 @@ void LyXGUI::runTime()
 	if (!gui)
 		return;
 
+	GUIRunTime grt;
+
 	// XForms specific
 	XEvent ev;
 
 	while (!finished) {
-#ifdef KDEGUI
-		kapp->processEvents();
-#endif
-#ifdef GTKGUI
-		while(Gnome::Main::instance()->events_pending()) Gnome::Main::instance()->iteration(FALSE);
-#endif
-		
+		grt.processEvents();
+		// for now we have to leave this here then if the GUII is
+		// completed this obviously has to be removed! (Jug)
 		if (fl_check_forms() == FL_EVENT) {
 			lyxerr << "LyX: This shouldn't happen..." << endl;
 			fl_XNextEvent(&ev);
