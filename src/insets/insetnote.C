@@ -232,7 +232,7 @@ int InsetNote::latex(Buffer const & buf, ostream & os,
 	string const str = ss.str();
 	os << str;
 	// Return how many newlines we issued.
-	return int(lyx::count(str.begin(), str.end(),'\n') + 1);
+	return int(lyx::count(str.begin(), str.end(),'\n'));
 }
 
 
@@ -254,7 +254,7 @@ int InsetNote::linuxdoc(Buffer const & buf, std::ostream & os,
 	string const str = ss.str();
 	os << str;
 	// Return how many newlines we issued.
-	return int(lyx::count(str.begin(), str.end(),'\n') + 1);
+	return int(lyx::count(str.begin(), str.end(),'\n'));
 }
 
 
@@ -276,7 +276,7 @@ int InsetNote::docbook(Buffer const & buf, std::ostream & os,
 	string const str = ss.str();
 	os << str;
 	// Return how many newlines we issued.
-	return int(lyx::count(str.begin(), str.end(),'\n') + 1);
+	return int(lyx::count(str.begin(), str.end(),'\n'));
 }
 
 
@@ -294,7 +294,7 @@ int InsetNote::plaintext(Buffer const & buf, std::ostream & os,
 	string const str = ss.str();
 	os << str;
 	// Return how many newlines we issued.
-	return int(lyx::count(str.begin(), str.end(),'\n') + 1);
+	return int(lyx::count(str.begin(), str.end(),'\n'));
 }
 
 

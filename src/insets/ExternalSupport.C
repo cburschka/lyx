@@ -314,7 +314,7 @@ int writeExternal(InsetExternalParams const & params,
 	str = substituteCommands(params, str, format);
 	str = substituteOptions(params, str, format);
 	os << str;
-	return int(lyx::count(str.begin(), str.end(),'\n') + 1);
+	return int(lyx::count(str.begin(), str.end(),'\n'));
 }
 
 namespace {
