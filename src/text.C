@@ -68,7 +68,7 @@ int LyXText::workWidth(BufferView * bview, Inset * inset) const
 {
 	Buffer::inset_iterator it;
 	Paragraph * par = 0;
-	Paragraph::size_type pos;
+	Paragraph::size_type pos = 0;
 
 	for(it=bview->buffer()->inset_iterator_begin();
 	    it != bview->buffer()->inset_iterator_end();
@@ -80,20 +80,38 @@ int LyXText::workWidth(BufferView * bview, Inset * inset) const
 			break;
 		}
 	}
-	if (par) {
+	
+	if (!par) {
+		lyxerr << "LyXText::workWidth: cannot find inset!" <<endl;
+		return workWidth(bview);
+	}
+	
+	LyXLayout const & layout =
+		textclasslist.Style(bview->buffer()->params.textclass,
+				    par->getLayout());
+
+	if (layout.margintype != MARGIN_RIGHT_ADDRESS_BOX) {
+		// Optimization here: in most cases, the real row is
+		// not needed, but only the par/pos values. So we just
+		// construct a dummy row for leftMargin. (JMarc)
+		Row dummyrow;
+		dummyrow.par(par);
+		dummyrow.pos(pos);
+		return workWidth(bview) - leftMargin(bview, &dummyrow);
+	} else {
 		Row * row = firstrow;
 		for(; row; row = row->next()) {
 			if ((row->par() == par && row->pos() >= pos)) {
 				if (!row->next())
 					break;
 				else if ((row->next()->par() == par) &&
-						 (row->next()->pos() >= pos))
+					 (row->next()->pos() >= pos))
 					continue;
 			}
 		}
 		if (row) {
 			return workWidth(bview) - leftMargin(bview, row);
-		}
+		} 
 	}
 	return workWidth(bview);
 }
