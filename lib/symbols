@@ -423,6 +423,157 @@ lyxdabar           msa          57   0 mathord  x
 lyxright           msa          75   0 mathord  x
 lyxleft            msa          76   0 mathord  x
 
+male               wasy          26  0 x        x
+female             wasy          25  0 x        x
+currency           wasy          27  0 x        x
+phone              wasy          7   0 x        x
+recorder           wasy          6   0 x        x
+clock              wasy          28  0 x        x
+lightning          wasy          18  0 x        x
+pointer            wasy          9   0 x        x
+RIGHTarrow         wasy          17  0 x        x
+LEFTarrow          wasy          16  0 x        x
+UParrow            wasy          75  0 x        x
+DOWNarrow          wasy          76  0 x        x
+#AC                 wasy          n0.5pt\wasyfamily\char58\kern0.5pt}}
+#HF         {\leavevmode
+#   \lower0.9pt\hbox to 0pt{\kern0.5pt\wasyfamily\char58\hss}%
+#   \raise0.9pt\hbox{\kern0.5pt\wasyfamily\char58\kern0.5pt}}
+#VHF                wasy          64  0 x        x
+Square             wasy          50  0 x        x
+#CheckedBox         wasy          50\hss}\hbox{\wasyfamily\char8  0 x
+XBox               wasy          52  0 x        x
+hexagon            wasy          55  0 x        x
+pentagon           wasy          68  0 x        x
+octagon            wasy          56  0 x        x
+varhexagon         wasy          57  0 x        x
+hexstar            wasy          65  0 x        x
+varhexstar         wasy          66  0 x        x
+davidsstar         wasy          67  0 x        x
+diameter           wasy          31  0 x        x
+invdiameter        wasy          21  0 x        x
+varangle           wasy          30  0 x        x
+wasylozenge        wasy          53  0 x        x
+kreuz              wasy          54  0 x        x
+smiley             wasy          44  0 x        x
+frownie            wasy          47  0 x        x
+blacksmiley        wasy          45  0 x        x
+sun                wasy          46  0 x        x
+checked            wasy          8   0 x        x
+bell               wasy          10  0 x        x
+eighthnote         wasy          11  0 x        x
+quarternote        wasy          12  0 x        x
+halfnote           wasy          13  0 x        x
+fullnote           wasy          14  0 x        x
+twonotes           wasy          15  0 x        x
+brokenvert         wasy          124 0 x        x
+ataribox           wasy          109 0 x        x
+wasytherefore      wasy          5   0 x        x
+Circle             wasy          35  0 x        x
+CIRCLE             wasy          32  0 x        x
+Leftcircle         wasy          73  0 x        x
+LEFTCIRCLE         wasy          71  0 x        x
+Rightcircle        wasy          74  0 x        x
+RIGHTCIRCLE        wasy          72  0 x        x
+#LEFTcircle {\hbox to 0pt{\wasyfamily\char71\hss}\hbox{\wasyfamily\char35}}
+#RIGHTcircle{\hbox to 0pt{\wasyfamily\char72\hss}\hbox{\wasyfamily\char35}}
+
+#
+# wasy astronomy
+#
+
+vernal             wasy          23  0 x        x
+ascnode            wasy          19  0 x        x
+descnode           wasy          20  0 x        x
+fullmoon           wasy          35  0 x        x
+newmoon            wasy          32  0 x        x
+leftmoon           wasy          36  0 x        x
+rightmoon          wasy          37  0 x        x
+astrosun           cmsy         175  0 mathbin  x
+mercury            wasy          39  0 x        x
+venus              wasy          25  0 x        x
+earth              wasy          38  0 x        x
+mars               wasy          26  0 x        x
+jupiter            wasy          88  0 x        x
+saturn             wasy          89  0 x        x
+uranus             wasy          90  0 x        x
+neptune            wasy          91  0 x        x
+pluto              wasy          92  0 x        x
+
+#
+# wasy zodiac
+#
+aries              wasy          23  0 x        x
+taurus             wasy          93  0 x        x
+gemini             wasy          94  0 x        x
+cancer             wasy          95  0 x        x
+leo                wasy          19
+virgo              wasy          96  0 x        x
+libra              wasy          97  0 x        x
+scorpio            wasy          98  0 x        x
+sagittarius        wasy          99  0 x        x
+capricornus        wasy          100 0 x        x
+aquarius           wasy          101 0 x        x
+pisces             wasy          102 0 x        x
+conjunction        wasy          86  0 x        x
+opposition         wasy          87  0 x        x
+% APL characters
+APLstar            wasy          69  0 x        x
+APLlog             wasy          22  0 x        x
+APLbox             wasy          126 0 x        x
+APLup              wasy          0   0 x        x
+APLdown            wasy          70  0 x        x
+APLinput           wasy          125 0 x        x
+APLcomment         wasy          127 0 x        x
+#APLinv     {{\hbox to 0pt{$\div$\hss}\APLbox}}
+APLuparrowbox      wasy         110  0 x        x
+APLdownarrowbox    wasy         111  0 x        x
+APLleftarrowbox    wasy         112  0 x        x
+APLrightarrowbox   wasy         113  0 x        x
+
+# math characters
+Bowtie             wasy          49  0 x        x
+leftturn           wasy          34  0 x        x
+rightturn          wasy          33  0 x        x
+# diagrams
+#photon             wasy          58\char58\char58\char58}}
+#gluon              wasy          81\char80\char80\char80%
+#char80\char80\char80\char82}}
+# special characters
+cent               wasy         103   0 x        x
+permil             wasy         104   0 x        x
+agemO              wasy          48   0 x        x
+thorn              wasy         105   0 x        x
+Thorn              wasy         106   0 x        x
+openo              wasy         108   0 x        x
+inve               wasy          85   0 x        x
+
+#mho               wasy          48    0  mathord x
+Join               wasy          49    0  mathrel x
+Box                wasy          50    0  mathord x
+Diamond            wasy          51    0  mathord x
+leadsto            wasy          59    0  mathrel x
+#sqsubset          wasy          60    0  mathrel x
+#sqsupset          wasy          61    0  mathrel x
+#lhd               wasy           1    0  mathbin x
+#unlhd             wasy           2    0  mathbin x
+LHD                wasy          16    0  mathbin x
+#rhd               wasy           3    0  mathbin x
+#unrhd             wasy           4    0  mathbin x
+RHD                wasy          17    0  mathbin x
+apprle             wasy          62    0  mathrel x
+apprge             wasy          63    0  mathrel x
+wasypropto         wasy          29    0  mathrel x
+invneg             wasy          24    0  mathrel x
+ocircle            wasy          35    0  mathbin x
+logof              wasy          22    0  mathrel x
+varint             wasy         114    0  mathop  x
+iint               wasy         115    0  mathop  x
+iiint              wasy         116    0  mathop  x
+varoint            wasy         117    0  mathop  x
+oiint              wasy         118    0  mathop  x
+
+
 log                lyxblacktext  0   0 func     x
 lg                 lyxblacktext  0   0 func     x
 ln                 lyxblacktext  0   0 func     x
