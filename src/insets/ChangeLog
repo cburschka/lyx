@@ -1,5 +1,9 @@
 2001-04-05  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
+	* insetcollapsable.[Ch] (getLabelList): implement
+
+	* insettext.[Ch] (getLabelList): implement
+
 	* insettext.h: reindent
 
 	* insettabular.h: make tabular a scoped_ptr

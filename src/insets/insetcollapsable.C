@@ -466,3 +466,9 @@ void InsetCollapsable::resizeLyXText(BufferView * bv) const
 	LyXFont font(LyXFont::ALL_SANE);
 	oldWidth = width(bv, font);
 }
+
+
+vector<string> const InsetCollapsable::getLabelList() const
+{
+	return inset.getLabelList();
+}

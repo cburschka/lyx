@@ -35,7 +35,7 @@ InsetLabel::InsetLabel(InsetCommandParams const & p)
 
 vector<string> const InsetLabel::getLabelList() const
 {
-	return vector<string>(1,getContents());
+	return vector<string>(1, getContents());
 }
 
 

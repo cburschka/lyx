@@ -178,6 +178,8 @@ public:
 	///
 	bool ShowInsetDialog(BufferView *) const;
 	///
+	vector<string> const getLabelList() const;
+	///
 	LyXParagraph * par;
 	///
 	mutable int need_update;
