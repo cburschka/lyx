@@ -138,7 +138,7 @@ void QLPopupMenu::populate(Menu * menu)
 			*/
 			if (status.enabled()
 			    && qApp->activeWindow() != qApp->mainWidget()
-			    && !lyxaction.funcHasFlag(m->func().action, 
+			    && !lyxaction.funcHasFlag(m->func().action,
 						      LyXAction::NoBuffer))
 				status.enabled(false);
 

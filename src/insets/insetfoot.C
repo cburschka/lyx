@@ -63,7 +63,7 @@ int InsetFoot::latex(Buffer const & buf, ostream & os,
 	OutputParams runparams = runparams_in;
 	// footnotes in titling commands like \title have moving arguments
 	runparams.moving_arg |= runparams_in.intitle;
-	
+
 	// in titling commands, \thanks should be used instead of \footnote.
 	// some classes (e.g. memoir) do not understand \footnote.
 	if (runparams_in.intitle)

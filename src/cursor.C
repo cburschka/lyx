@@ -243,12 +243,12 @@ bool LCursor::getStatus(FuncRequest const & cmd, FuncStatus & status)
 			idx() = lastidx();
 		}
 		if (par() > lastpar()) {
-			lyxerr << "wrong par " << par() << ", max is " << lastpar() 
+			lyxerr << "wrong par " << par() << ", max is " << lastpar()
 				<< ". Trying to correct this."  << endl;
 			par() = lastpar();
 		}
 		if (pos() > lastpos()) {
-			lyxerr << "wrong pos " << pos() << ", max is " << lastpos() 
+			lyxerr << "wrong pos " << pos() << ", max is " << lastpos()
 				<< ". Trying to correct this."  << endl;
 			pos() = lastpos();
 		}

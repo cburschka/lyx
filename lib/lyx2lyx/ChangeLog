@@ -2,7 +2,7 @@
 
 	* lyx2lyx: moved code to LyX module making effectively lyx2lyx and
 	interface to the LyX module.
-	
+
 	* LyX.py: white space changes.  New class that serves as the basis
 	to two derived classes. One for reading and another for new files.
 	New function get_toc, to be used in Doc_toc.py in the
@@ -165,7 +165,7 @@
 2004-03-29  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
 
 	* lyx2lyx: up the format to 232.
-	
+
 	* lyx2lyx: up the format to 231.
 
 2004-03-26  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
@@ -208,7 +208,7 @@
 
 2003-12-19  Angus Leeming  <leeming@lyx.org>
 
-	* lyxconvert_227.py (convert_collapsable): 
+	* lyxconvert_227.py (convert_collapsable):
 	* lyxrevert_228.py (convert_collapsable): a more robust method of
 	finding the collapsed status.
 
@@ -290,4 +290,4 @@
 	* lyxconvert_223.py:
 	* lyxconvert_224.py (convert_minipage): move funtion to its right place.
 	(convert_breaks): convert line and page break, at bottom and top.
-	
+

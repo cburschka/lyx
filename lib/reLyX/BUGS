@@ -20,7 +20,7 @@ commands (see the Syntax Files section of the man page).  Also, if you have
 an underscore in a file name, you have to use the LaTeX style of \input. That
 is, write "\input{a_b}" instead of the old TeX style "\input a_b" (even though
 the latter is legal LaTeX). If \includegraphics can't be copied for various
-reasons (see the reLyX man page), underscore will break. Finally, 
+reasons (see the reLyX man page), underscore will break. Finally,
 \label{foo_bar} in math mode will break.
 
 - Complicated nesting could confuse matters. Simple nesting, including nesting
@@ -49,7 +49,7 @@ math mode. Write \mathbf{foo} explicitly in the LyX file instead.
 a reference to "Dr." in the LyX file, with an extra "foo}" printed as
 regular text
 
-- \end or \begin in a \newcommand, for example, will really confuse reLyX, 
+- \end or \begin in a \newcommand, for example, will really confuse reLyX,
 because they're not being used for their regular purpose of starting or
 ending an environment. Put the \newcommand in the preamble to avoid this
 problem.

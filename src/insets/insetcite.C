@@ -325,7 +325,7 @@ int InsetCitation::plaintext(Buffer const & buffer, ostream & os, OutputParams c
 
 
 namespace {
-	
+
 string const cleanupWhitespace(string const & citelist)
 {
 	string::const_iterator it  = citelist.begin();

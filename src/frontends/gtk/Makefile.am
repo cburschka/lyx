@@ -96,7 +96,7 @@ libgtk_la_SOURCES = \
 	lyx_gui.C \
 	xftFontLoader.C \
 	xftFontLoader.h \
-	xftFontMetrics.C 
+	xftFontMetrics.C
 
 
 xforms_objects = \

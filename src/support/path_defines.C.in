@@ -294,7 +294,7 @@ bool setLyxPaths()
 
 	// This is true when we are running from a Mac OS X bundle
 	// (for LyX/Mac)
-	bool const inOSXBundle = 
+	bool const inOSXBundle =
 		system_lyxdir_ == NormalizePath(AddPath(binpath, "../Resources/")
 						+ OnlyFilename(binname));
 	if (inOSXBundle)
@@ -314,23 +314,23 @@ bool setLyxPaths()
 			+ ":/sw/bin:/usr/local/bin"
 			+ ":/usr/local/teTeX/bin/powerpc-apple-darwin-current";
 		lyx::support::putenv("PATH", newpath);
-		lyxerr[Debug::INIT] << "LyX/Mac: setting PATH to: " 
+		lyxerr[Debug::INIT] << "LyX/Mac: setting PATH to: "
 				    << GetEnv("PATH") << endl;
 	}
 
 
-	// 
+	//
 	// Determine locale directory
 	//
 	if (!GetEnv("LYX_LOCALEDIR").empty()) {
 		localedir_ = GetEnv("LYX_LOCALEDIR");
 		lyxerr[Debug::INIT] << "LYX_LOCALEDIR=" << localedir_ << endl;
 	} else if (inOSXBundle) {
-		string const maybe_localedir = 
-			NormalizePath(AddPath(system_lyxdir_, "../locale")); 
+		string const maybe_localedir =
+			NormalizePath(AddPath(system_lyxdir_, "../locale"));
 		FileInfo fi(maybe_localedir);
 		if (fi.isOK() && fi.isDir()) {
-			lyxerr[Debug::INIT] 
+			lyxerr[Debug::INIT]
 				<< "LyX/Mac: setting locale directory to "
 				<< maybe_localedir << endl;
 			localedir_ = maybe_localedir;

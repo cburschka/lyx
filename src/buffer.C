@@ -1095,7 +1095,7 @@ void Buffer::makeDocBookFile(string const & fname,
 			preamble += "<!ENTITY % output.print.eps \"IGNORE\">\n";
 			preamble += "<!ENTITY % output.print.bmp \"IGNORE\">\n";
 		}
-			
+
 		string const name = runparams.nice ? ChangeExtension(pimpl_->filename, ".sgml")
 			 : fname;
 		preamble += features.getIncludedFiles(name);

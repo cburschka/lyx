@@ -457,7 +457,7 @@ def revert_end_document(file):
 # New:
 #\begin layout Standard
 #
-#\newpage 
+#\newpage
 #
 #\lyxline
 #\begin_inset VSpace xxx
@@ -472,12 +472,12 @@ def revert_end_document(file):
 #
 #\begin_inset VSpace xxx
 #\end_inset
-#\lyxline 
+#\lyxline
 #
 #\newpage
 #
 #\end_layout
-def convert_breaks(file):    
+def convert_breaks(file):
     i = 0
     while 1:
         i = find_token(file.body, "\\begin_layout", i)
@@ -519,7 +519,7 @@ def convert_breaks(file):
         #  Create an empty paragraph for line and page break that belong
         # above the paragraph
         if pb_top !=-1 or line_top != -1 or vspace_bot != -1:
-            
+
             paragraph_above = ['','\\begin_layout Standard','','']
 
             if pb_top != -1:
@@ -544,7 +544,7 @@ def convert_breaks(file):
             return
 
         if pb_top !=-1 or line_top != -1 or vspace_bot != -1:
-            
+
             paragraph_bellow = ['','\\begin_layout Standard','','']
 
             if line_bot != -1:
@@ -1540,7 +1540,7 @@ def convert(file):
         if file.end_format == file.format:
             return
 
-        
+
 def revert(file):
     table = { 236: [use_x_binary],
               235: [denormalize_papersize, remove_begin_body,remove_begin_header,

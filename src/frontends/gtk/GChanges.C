@@ -95,7 +95,7 @@ void GChanges::promptChange()
 	if(author.empty())
 		author = _("unknown author");
 	if(date.empty())
-		date = _("unknown date");		
+		date = _("unknown date");
 
 	messagelabel_->set_markup("<big><b>" + header +
 	                        "</b></big>\n\nChanged by <b>" + author

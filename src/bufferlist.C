@@ -217,11 +217,11 @@ Buffer * BufferList::getBuffer(unsigned int choice)
 }
 
 
-Buffer * BufferList::next(Buffer const * buf) const 
+Buffer * BufferList::next(Buffer const * buf) const
 {
 	if (bstore.empty())
 		return 0;
-	BufferStorage::const_iterator it = find(bstore.begin(), 
+	BufferStorage::const_iterator it = find(bstore.begin(),
 						bstore.end(), buf);
 	BOOST_ASSERT(it != bstore.end());
 	++it;
@@ -232,11 +232,11 @@ Buffer * BufferList::next(Buffer const * buf) const
 }
 
 
-Buffer * BufferList::previous(Buffer const * buf) const 
+Buffer * BufferList::previous(Buffer const * buf) const
 {
 	if (bstore.empty())
 		return 0;
-	BufferStorage::const_iterator it = find(bstore.begin(), 
+	BufferStorage::const_iterator it = find(bstore.begin(),
 						bstore.end(), buf);
 	BOOST_ASSERT(it != bstore.end());
 	if (it == bstore.begin())

@@ -1216,7 +1216,7 @@ void BufferParams::readBullets(LyXLex & lex)
 	temp_bullet(index).setCharacter(temp_int);
 	lex >> temp_int;
 	user_defined_bullet(index).setSize(temp_int);
-	temp_bullet(index).setSize(temp_int);	
+	temp_bullet(index).setSize(temp_int);
 }
 
 

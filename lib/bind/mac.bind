@@ -2,18 +2,18 @@
 # ==================================================================
 #
 #                  LyX, the High Level Word Processor
-# 
+#
 #         Copyright (C) 1995-1997 Asger Alstrup & The LyX Team
 #
 # ==================================================================
 
 #
-# This is the Mac flavour bind file for LyX/Mac 1.4.x, based on 
+# This is the Mac flavour bind file for LyX/Mac 1.4.x, based on
 # bindings found in the Mac world.
 #
 # DO NOT CHANGE THIS DEFAULT BINDING FILE! It will be replaced
-# with every new install of LyX and your changes will be lost. 
-# Instead, customize a copy of this file placed in 
+# with every new install of LyX and your changes will be lost.
+# Instead, customize a copy of this file placed in
 # ~/.lyx/bind/.
 #
 # Happy tuning!
@@ -113,7 +113,7 @@
 \bind "S-M-Up"			"paragraph-up-select"
 \bind "S-M-Down"		"paragraph-down-select"
 \bind "S-C-Left"			"line-begin-select"
-\bind "S-C-Right"			"line-end-select"               
+\bind "S-C-Right"			"line-end-select"
 \bind "S-Prior"			"screen-up-select"
 \bind "S-Next"			"screen-down-select"
 \bind "S-C-Up"		"buffer-begin-select"
@@ -132,7 +132,7 @@
 \bind "S-M-KP_Up"               "paragraph-up-select"
 \bind "S-M-KP_Down"             "paragraph-down-select"
 \bind "S-KP_Home"               "line-begin-select"
-\bind "S-KP_End"                "line-end-select"               
+\bind "S-KP_End"                "line-end-select"
 \bind "S-KP_Prior"              "screen-up-select"
 \bind "S-KP_Next"               "screen-down-select"
 \bind "S-C-KP_Home"             "buffer-begin-select"

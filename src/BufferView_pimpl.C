@@ -364,7 +364,7 @@ void BufferView::Pimpl::setBuffer(Buffer * b)
 		// hidden. This should go here because some dialogs (eg ToC)
 		// require bv_->text.
 		owner_->getDialogs().updateBufferDependent(true);
-	} 
+	}
 
 	update();
 	updateScrollbar();

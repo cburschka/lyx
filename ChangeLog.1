@@ -32,7 +32,7 @@
 
 2001-01-10  Dekel Tsur  <dekelts@tau.ac.il>
 
-	* src/insets/insettext.C (LocalDispatch): Add handling of 
+	* src/insets/insettext.C (LocalDispatch): Add handling of
 	LFUN_BREAKPARAGRAPHKEEPLAYOUT.
 
 2001-01-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
@@ -75,7 +75,7 @@
 	(string2type): added a bunch of this functions per type.
 	(Write): use type2string and write columns first.
 	(type2string): added a bunch of this functions per type.
-	(TeXBottomHLine): 
+	(TeXBottomHLine):
 	(TeXTopHLine): check row parameter.
 
 2001-01-08  Dekel Tsur  <dekelts@tau.ac.il>
@@ -104,7 +104,7 @@
 
 2001-01-08  Dekel Tsur  <dekelts@tau.ac.il>
 
-	* src/mathed/formula.C (LocalDispatch): Toggle font properties. 
+	* src/mathed/formula.C (LocalDispatch): Toggle font properties.
 
 2001-01-07  Dekel Tsur  <dekelts@tau.ac.il>
 
@@ -124,7 +124,7 @@
 
 	* src/insets/insettabular.C (LocalDispatch): When dispatching
 	LFUN_TAB/LFUN_SHIFT_TAB, if the insettext of the old cell was
-	locked, then the insettext of the new cell will be locked. 
+	locked, then the insettext of the new cell will be locked.
  	(moveLeft, moveRight): Fixed for RTL tabulars.
  	(moveNextCell, movePrevCell): Ditto.
 	(isRightToLeft): New method.
@@ -133,11 +133,11 @@
 	non-dispatched function in the locking inset.
 	(Edit): If the inset is empty set the language of the current font
  	to the language to the surronding text (this code was moved from
-	LocalDispatch to allow the user to change the languaeg before 
+	LocalDispatch to allow the user to change the languaeg before
 	inserting text).
 	(moveRight, moveLeft): Fixed for RTL text.
 	(checkAndActivateInset): Fixed.
-	
+
 	* src/tabular.C (OldFormatRead): Use ALL_INHERIT font as the base font.
 
 2001-01-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
@@ -190,7 +190,7 @@
 2001-01-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/mathed/math_panel.C (deco_cb): check the decoration index is
-	valid. 
+	valid.
 
 	* src/frontends/xforms/FormPreferences.C (feedback): apply
 	formatting to the translated string, not to the original one.
@@ -199,7 +199,7 @@
 	* src/gettext.C (_): translate empty string with empty string.
 
 	* src/frontends/xforms/FormCopyright.C (build): use _() instead of
-	N_(). 
+	N_().
 
 	* NEWS: small update
 
@@ -239,14 +239,14 @@
 
 2001-01-03  Miyata Shigeru  <miyata@kusm.kyoto-u.ac.jp>
 
-	* development/OS2/quick_fix.patch: 
+	* development/OS2/quick_fix.patch:
 	* lib/configure.cmd: update OS/2 support files.
 
 2001-01-02  Juergen Vigna  <jug@sad.it>
 
 	* src/insets/insettabular.C (pasteSelection): rewritten correctly.
 
-	* src/tabular.C (TeXTopHLine): 
+	* src/tabular.C (TeXTopHLine):
 	(TeXBottomHLine): fixed Lars new code.
 
 	* src/insets/insettext.C (LocalDispatch): added support for math_greek.
@@ -276,7 +276,7 @@
 2000-12-29  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/FileInfo.h: move unistd.h to after sys/types.h and
-	sys/stat.h. 
+	sys/stat.h.
 
 	* src/support/FileInfo.C: don't include sys/types. and sys/stat.h
 
@@ -291,7 +291,7 @@
 
 	* src/trans.C (Load): constify filename and res
 
-	* src/text2.C (SetCounter): call Floating::name() 
+	* src/text2.C (SetCounter): call Floating::name()
 
 	* src/screen.C: change to not use owner from WorkArea, but from
 	text instead.
@@ -404,7 +404,7 @@
 
 2000-12-19  Juergen Vigna  <jug@sad.it>
 
-	* src/lyxfunc.C (Dispatch): 
+	* src/lyxfunc.C (Dispatch):
 	* src/bufferview_funcs.C (changeDepth): implemented DEPTH functions
 	for insettext.
 
@@ -413,7 +413,7 @@
 	* src/WorkArea.C (work_area_handler): simplify the key/keysym
 	handling for XForms 0.89, this might have rendered some cases
 	unusable. I have at least deadkeys, accent-xxx and KP_x working.
-	Please report proplems. 
+	Please report proplems.
 
 	* src/lyxfunc.C (processKeySym): make the self-insert handling
 	work as it should
@@ -453,12 +453,12 @@
 	* src/support/copy.C: don't include filetools.h
 
 	* lib/images: revert to old banner, drop the cucumber.
-	
+
 2000-12-12  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/converter.C (Formats::View): Change the current directory to
 	the directory of the file.
-                                                                           
+
 2000-12-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/kbsequence.C (addkey): also clear sequence and modifiers if
@@ -491,7 +491,7 @@
 	* src/sp_form.C: fix the font size of some text entries
 
 	* src/frontends/xforms/Menubar_pimpl.C (add_toc): honor separator
-	after TOC when there is no TOC. 
+	after TOC when there is no TOC.
 
 	* src/lyxrc.C (readBindFileIfNeeded): new method. Reads the main
 	bind file if it has not been done yet.
@@ -523,7 +523,7 @@
 	changing from display math to eqnarray (however, the label
 	do not appear at the first line, as one might expects, but at the
 	second line).
-	(LocalDispatch): When inserting a label to a formula which already 
+	(LocalDispatch): When inserting a label to a formula which already
 	have a label, the old label is used as default value.
 	Also, if the label is changed, then all references to the label
  	are changed.
@@ -569,7 +569,7 @@
 	* src/converter.C (Add): Remove $$i when setting latex_command.
 
 	* src/text.C (IsBoundary): Return false when pos = 0.
-	
+
 2000-12-08  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* lib/kbd/hebrew.kmap: Add Hebrew points (nikud).
@@ -595,7 +595,7 @@
 	* lib/ui/default.ui: put TOC at the beginning of the TOC menu.
 
 	* src/lyxfunc.C (getStatus): disable insertion of floats in a
-	tabular. 
+	tabular.
 
 2000-12-06  Angus Leeming <a.leeming@ic.ac.uk>
 
@@ -612,7 +612,7 @@
 	* src/frontends/xforms/forms/fdfixc.sed: I defy gettext to get
 	confused now! And if you think I'm going to do this in
 	./forms/fdfix.sh with its "sed -e" declarations, then think again!
-                          
+
 2000-12-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/buffer.C (asciiParagraph): small NEW_INSETS fix from Levon
@@ -630,7 +630,7 @@
 	* src/frontends/xforms/Menubar_pimpl.C (openByName): check that
 	the menu exists in the current menubar before opening it.
 
-	* src/MenuBackend.C (hasSubmenu): new method. 
+	* src/MenuBackend.C (hasSubmenu): new method.
 
 	* src/frontends/xforms/Menubar_pimpl.C: fix problem with bogus
 	action value by offsetting actions by a large constant (so that
@@ -673,7 +673,7 @@
 	* src/frontends/kde/dlg/emptytable.C:
 	* src/frontends/kde/dlg/tabstack.C: ctors shouldn't have
 	default parameters (from Angus Leeming)
-		
+
 	* src/frontends/kde/dlg/moc/.cvsignore:
 	* src/frontends/kde/dlg/.cvsignore:
 	* src/frontends/kde/moc/.cvsignore: fix the library name
@@ -821,7 +821,7 @@
 	* src/buffer.C: bring up a dialog if we load a document
 	with an un-installed text class, rather than just complain
 	on the console.
-                        
+
 2000-11-29  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* src/combox.[Ch] )(add, Show): workaround xforms bug when Show()ing
@@ -840,7 +840,7 @@
 	setSize): removed.
 	No max size limitation. Same popup for new and existing insets. Fixes
 	bugs reported by Rob Lahaye.
-	
+
 	* src/frontends/xforms/FormCitation.C (c-tor):
 	* src/frontends/xforms/FormCopyright.C (c-tor):
 	* src/frontends/xforms/FormError.C (c-tor):
@@ -877,7 +877,7 @@
 	to check for systems where mkstemp() is available but not declared
 	in headers. The new autoconf macro lyx_CHECK_DECL can be used
 	to check for declarations in headers.
-                 
+
 2000-11-23  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* forms/bibforms.fd: tiny fix to get it to run with fdesign.
@@ -973,7 +973,7 @@
 	* src/frontends/gnome/Dialogs.C: added signal Dialogs::redrawGUI
 
 	* src/frontends/gnome/Makefile.am: updated list of XForms object files
-              
+
 2000-11-21  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* src/LColor.C (init):
@@ -1009,7 +1009,7 @@
 2000-11-17  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* src/LColor.C (c-tor): fixed a couple of items in the ColorEntry
-	array. 
+	array.
 	* src/LyXAction.C (init): LFUN_SET_COLOR now has the attrib
 	ReadOnly|NoBuffer.
 
@@ -1051,7 +1051,7 @@
 	* config/lyxinclude.m4 (LYX_PROG_CXX): please somebody
 
 	* src/screen.C (setCursorColor): new method. Sets the color of the
-	cursor. 
+	cursor.
 	(ShowManualCursor): call it.
 	Constify some local variables.
 
@@ -1135,7 +1135,7 @@
 	present. The problem appears to lie in ColorHandler, because I can
 	change the color using LColor.SetColor(). Similarly, when reading in a
 	preferences file with some set_color instances, I'll get a warning
-	like: Color sea green is undefined or may not be redefined 
+	like: Color sea green is undefined or may not be redefined
 	Bad lyxrc set_color for sea green
 
 	Once the buffer is loaded, however, I can happily change to this color.
@@ -1143,11 +1143,11 @@
 	Finally, it appears that I have to set the color of "inset frame"
 	explicitly, or it oscillates from "black" to "indian red" with each
 	successive "Apply".
-                                           
+
 2000-11-15  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* ANNOUNCE: corrected a spelling mistake.
-	
+
 	* src/tabular.C (OldFormatRead): variable "h" was set but never used.
 	Removed.
 
@@ -1156,7 +1156,7 @@
 	* src/kbsequence.C (addkey): use a vector as per Andre Poenitz patch.
 
 	* lib/Makefile.am (dist-hook): also delete doc/.cvsignore from
-	distdir. 
+	distdir.
 
 	* src/support/lyxfunctional.h: make back_insert_fun_iterator(s)
 	match the requirements from the standard better. This is required
@@ -1168,11 +1168,11 @@
 	FormPreferences.h, to match initalizaton order.
 
 	* several files: constify more local variables.
-	
+
 	* src/buffer.C: remove some commented functions.
 
 	* src/DepTable.C (remove_files_with_extension): temporary
-	work around for gcc 2.97 
+	work around for gcc 2.97
 	* src/filedlg.C (find): ditto
 	* src/Variables.C (set): ditto
 	* src/LyXAction.C (searchActionArg): ditto
@@ -1190,9 +1190,9 @@
 	* src/support/tempname.C (make_tempfile): new function, wrapper
 	around mkstemp and mktemp. Only mkstemp has been tested.
 	(tempName): call it.
-	
+
 2000-11-14  Rob Lahaye  <lahaye@postech.edu>
-	
+
 	* default.ui: capitalized some menu items to improve shortcuts.
 
 2000-11-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
@@ -1223,9 +1223,9 @@
 	* src/support/tempname.C (tempName): small changes to make it
 	safer. remove the '.' before XXXXXX
 
-	* src/support/filetools.C (TmpFileName): remove func 
+	* src/support/filetools.C (TmpFileName): remove func
 	(GetCWD): ditto
-	
+
 	* src/frontends/xforms/FormRef.C (FormRef): explicit call the bp
 	* src/frontends/xforms/FormUrl.C (FormUrl): ditto
 	* src/frontends/xforms/FormTabularCreate.C (FormTabularCreate): ditto
@@ -1233,7 +1233,7 @@
 
 	* src/frontends/xforms/FormInset.h (FormInset): remove default for bp
 	(FormCommand): ditto
-	
+
 	* src/frontends/xforms/FormGraphics.C (FormGraphics): explicit
 	call the bp
 
@@ -1246,7 +1246,7 @@
 	* src/frontends/xforms/FormBase.h: make bp_ private
 	(FormBaseBI): remove default for bp
 	(FormBaseBD): ditto
-	
+
 	* src/frontends/xforms/Dialogs.C (Dialogs): use the old method it
 	is safe enough.
 
@@ -1255,13 +1255,13 @@
 	(HSVColor): similar
 
 	* several files: added const to local variables.
-	
+
 	* src/lyx_cb.C: removed several function prototypes and moved them
 	to lyx_cb.h
 	(MenuWrite):
 	(MenuWriteAs):
-	(UpdateLayoutPreamble): 
-	(MenuLayoutSave): 
+	(UpdateLayoutPreamble):
+	(MenuLayoutSave):
 	(MenuInsertLabel): add BufferView as arguemnt
 	(LayoutsCB): make tmp const
 
@@ -1278,26 +1278,26 @@
 	* forms/layout_forms.h.patch: make the patch more correct and more appalyable
 
 	* config/lyxinclude.m4 (LYX_STD_COUNT): change test to not involve
-	string. 
+	string.
 	(LYX_PROG_CXX): change 2.97 rules to include the -f.. that
 	libstdc++ is compiled with.
 
 2000-11-13  José Abílio Matos <jamatos@fep.up.pt>
-	
+
 	* lib/layouts/docbook-book.layout
 	* lib/layouts/docbook.layout
 	* lib/layouts/linuxdoc.layout: No need for "dummy" paragraphs, now
 	those paragraphs are expresse as SGML comments <!-- -->.
 
 	* src/LaTeXFeatures.h
-	* src/LaTeXFeatures.C (getIncludedFiles): takes a filename as 
+	* src/LaTeXFeatures.C (getIncludedFiles): takes a filename as
 	parameter, this allows to express all the include files as relative
 	paths to the master buffer. The verbatim insert works as the other
 	include file modes.
 
 	* src/buffer.C (sgmlOpenTag) (sgmlCloseTag): don't write if latexname
 	is a SGML comment.
-	(MakeLinuxdocFile) (MakeDocBookFile): included files are relative 
+	(MakeLinuxdocFile) (MakeDocBookFile): included files are relative
 	to master path.
 	(MakeDocBookFile): top_element is always written. Some clean up, as
 	sgmlOpenTag() and sgmlCloseTag() take care of the SGML comment case.
@@ -1308,7 +1308,7 @@
 	(Validate): use the relative path for the filename.
 
 	* src/insets/insetlabel.C (DocBook): write end tag, for XML
-	compatibility. 
+	compatibility.
 
 	* src/support/filetools.h
 	* src/support/filetools.C (IsSGMLFilename): added.
@@ -1316,8 +1316,8 @@
 
 2000-11-13  Miyata Shigeru  <miyata@kusm.kyoto-u.ac.jp>
 
-	* development/OS2/quick_fix.patch: 
-	* lib/configure.cmd: 
+	* development/OS2/quick_fix.patch:
+	* lib/configure.cmd:
 	* README.OS2: quick update to the OS/2 port.
 
 2000-11-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
@@ -1328,7 +1328,7 @@
 	(compare_converter): add "int" as return type.
 
 	* src/frontends/xforms/Color.C: comment out FL_LIGHTER_COL1 here
-	too. 
+	too.
 
 2000-11-11  Angus Leeming <a.leeming@ic.ac.uk>
 
@@ -1336,7 +1336,7 @@
 	mapping exist. Ie, call XformColor::read().
 
 	* src/frontends/xforms/Color.[Ch] renamed struct RGB as RGBColor
-	and struct HSV as HSVColor.	
+	and struct HSV as HSVColor.
 	(XformColor::read, XformColor::write) : new methods that
 	input/output any changes to the cform GUI colors.
 
@@ -1352,7 +1352,7 @@
 2000-11-11  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/converter.C: A lot of changes:
-	- It is no longer possible to choose between two or more ways to 
+	- It is no longer possible to choose between two or more ways to
 	export to some format (the new code uses only the shortest path).
 	However, it is still possible to choose between pdflatex/ps2pdf
 	for  creating a PDF file, by defining two PDF formats: pdf & pdf2.
@@ -1365,7 +1365,7 @@
 	* src/frontends/xforms/FormPreferences.C: The formats/converters
 	tabs are now fully functional.
 
-	* src/buffer.C (getTocList): Add numbers to the captions. 
+	* src/buffer.C (getTocList): Add numbers to the captions.
 
 	* lib/lyxrc.example: Removed fax section
 
@@ -1379,7 +1379,7 @@
 2000-11-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/frontends/xforms/Color.C: include <algorithm> and <cmath>
-	headers. 
+	headers.
 
 	* lib/Makefile.am (DOCINST): do not install everything in the
 	documentation directory.
@@ -1423,7 +1423,7 @@
 	subsequently opened dialogs will, of course, also have the new
 	color scheme. Cannot yet save (or load) the choices to file, so
 	they are lost when exiting LyX.
-	
+
 	* src/frontends/Dialogs.h:
 	* src/frontends/xforms/Dialogs.C (redrawGUI): new static Signal.
 	Used to trigger a redraw of any dialogs connected to it because,
@@ -1505,9 +1505,9 @@
 
 2000-11-09  Juergen Vigna  <jug@sad.it>
 
-	* src/insets/insettext.C (~InsetText): 
-	(clear): 
-	(Read): 
+	* src/insets/insettext.C (~InsetText):
+	(clear):
+	(Read):
 	(SetParagraphData): set cache.second to 0 after deleting it!
 	(getLyXText): check if cache.second is not 0 if finding it.
 
@@ -1519,7 +1519,7 @@
 	* src/lyxlex.[Ch]:
 	* src/lyxlex_pimpl.[Ch]: implement setCommentChar method, to
 	replace the default '#' comment character.
-	
+
 	* src/support/tempname.C: add "using" directive
 	* src/frontends/ButtonPolicies.C: ditto.
 
@@ -1537,7 +1537,7 @@
 	* src/insets/insetexternal.C (InsetExternal): use lyx::tempName
 
 	* src/graphics/GraphicsCacheItem_pimpl.C (renderXPM): use
-	lyx::tempName 
+	lyx::tempName
 
 	* src/frontends/xforms/ButtonController.C: new file
 
@@ -1561,7 +1561,7 @@
 
 	* src/LaTeX.C (run): use lyx::getcwd
 
-	* configure.in: check for mkstemp as well 
+	* configure.in: check for mkstemp as well
 
 2000-11-07  Angus Leeming <a.leeming@ic.ac.uk>
 
@@ -1606,7 +1606,7 @@
 	* src/mathed/math_panel.C:
 	use FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT in fl_show_form(), so
 	all "daughter" dialogs now have identical "feel".
-                                
+
 2000-11-07  Angus Leeming <a.leeming@ic.ac.uk>
 
 	* src/lyx_gui_misc.[Ch] (IgnoreCloseBoxCB): removed as it's no longer
@@ -1654,7 +1654,7 @@
 
 	* src/support/filetools.[Ch] (DirList): new function. Not at all sure
 	if this is the best way to do this.
-                                                       
+
 2000-11-07  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/reLyX/acinclude.m4 (RELYX_CHECK_ERRORS): remove useless message.
@@ -1733,7 +1733,7 @@
 
 	* src/MenuBackend.[Ch]: Add support for importformats tag.
 
-	* src/support/rename.C (rename): Call to lyx::copy if ::rename fails. 
+	* src/support/rename.C (rename): Call to lyx::copy if ::rename fails.
 
 	* lib/configure.m4: Add word->tex and ps->fax converters.
 
@@ -1761,12 +1761,12 @@
 
 	* many files: change formatting to be a bit more uniform for
 	if,while,for,switch statements, remove some parantesis not needed.
-	
+
 
 2000-11-03  John Levon  <moz@compsoc.man.ac.uk>
 
 	* config/kde.m4: make config more robust when KDEDIR is set
-	
+
 2000-11-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/frontends/xforms/Toolbar_pimpl.C: do not crash if mathed has
@@ -1800,7 +1800,7 @@
 2000-11-03  Rob Lahaye  <lahaye@postech.edu>
 
 	* lib/ui/default.ui: update again the menu layout (fix some
-	shortcuts). 
+	shortcuts).
 
 2000-11-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -1813,12 +1813,12 @@
 
 2000-11-03  Andre Poenitz  <poenitz@HTWM.De>
 
-	* src/insets/insettext.C (InsetButtonPress): shut off warning. 
+	* src/insets/insettext.C (InsetButtonPress): shut off warning.
 
 2000-11-02  Lior Silberman  <lior@Princeton.EDU>
 
 	* lib/examples/*.lyx : '\language default' => '\language english'
-	
+
 	* lib/examples/it_splash.lyx : except where it should be italian
 
 	* lib/templates/*.lyx : the same
@@ -1847,7 +1847,7 @@
 	feedback.
 
 	* src/frontends/xforms/input_validators.[ch]
-	(fl_lowercase_filter): new. 
+	(fl_lowercase_filter): new.
 
 2000-10-27   Dekel Tsur  <dekelts@tau.ac.il>
 
@@ -1864,7 +1864,7 @@
 	* src/insets/insettabular.C (UpdateInsetInInset): update the inset
 	if an inset inside was updated.
 
-	* lib/configure.cmd: commented out fax-search code 
+	* lib/configure.cmd: commented out fax-search code
 
 2000-11-01  Yves Bastide  <stid@acm.org>
 
@@ -2052,8 +2052,8 @@
 
 	* src/insets/insettabular.C (draw): fixed drawing bug.
 
-	* src/insets/insettext.C (clear): 
-	(Read): 
+	* src/insets/insettext.C (clear):
+	(Read):
 	(SetParagraphData): clearing the TEXT buffers when deleting the
 	paragraphs used by it.
 
@@ -2074,7 +2074,7 @@
 	longer used.
 
 	* src/frontends/xforms/FormRef.[Ch]: fix bug when setting the min
-	size. 
+	size.
 
 	* src/frontends/xforms/FormPreferences.[Ch]:
 	* src/frontends/xforms/forms/form_preferences.fd: lots and lots!
@@ -2120,17 +2120,17 @@
 	Tidied some forms up, made two of form_tabular's tabs more
 	self-consistent, fixed Jean-Marc's size problem in form_preferences,
 	fixed translation problem with "Column".
-	
+
 2000-10-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/minibuffer.h: use Timeout instead of the xforms timer
-	object. 
+	object.
 	(setTimer) rewrite for the Timeout, change to unsigned arg
 	(set): change to unsigned timer arg
 	(TimerCB): remove
 
-	* src/minibuffer.C (TimerCB): removed func 
-	(C_MiniBuffer_TimerCB): removed func 
+	* src/minibuffer.C (TimerCB): removed func
+	(C_MiniBuffer_TimerCB): removed func
 	(C_MiniBuffer_ExecutingCB): rewrite to not depend on TimerCB
 	(peek_event): use a switch statement
 	(add): don't use fl_add_timer.
@@ -2171,7 +2171,7 @@
 2000-10-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/filetools.C (MakeRelPath): change some types to
-	string::size_type 
+	string::size_type
 
 	* src/frontends/ButtonPolicies.h (operator<<): new operator for
 	ButtonPolicy::SMInput and ButtonPolicy::State.
@@ -2182,24 +2182,24 @@
 	* src/FontInfo.C (getFontname): initialize error to 10000.0
 
 2000-10-24  Angus Leeming <a.leeming@ic.ac.uk>
-	
+
 	* src/frontends/xforms/FormPreferences.[Ch]:
 	* src/frontends/xforms/forms/form_preferences.fd: added spell checker,
 	TeX encoding and default paper size sections.
-	
+
 2000-10-24  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/frontends/xforms/FormTabularCreate.C: add missing #pragma
-	implementation 
+	implementation
 
 	* src/frontends/xforms/FormError.C (disconnect): use erase() to
 	make the message_ empty.
 	(FormError): don't initialize message_ in initializer list.
 
 2000-10-24  Angus Leeming <a.leeming@ic.ac.uk>
-	
-	* src/frontends/xforms/FormInset.[Ch]: Aieeeeee! Ok, I'm an idiot. 
-	
+
+	* src/frontends/xforms/FormInset.[Ch]: Aieeeeee! Ok, I'm an idiot.
+
 2000-10-24  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/kbd/latvian.kmap: new file from Janne Pänkälä (epa@iki.fi)
@@ -2214,8 +2214,8 @@
 	* src/buffer.C: removed redundant using directive.
 
 	* src/frontends/DialogBase.h: revert to original definition of
-	update(). 
-	
+	update().
+
 	* src/frontends/xforms/Dialogs.C (c-tor): splitting the tabular
 	stuff into two classes, one for each dialog, requires a new
 	element in the dialogs vector, FormTabularCreate.
@@ -2228,7 +2228,7 @@
 	don't need to worry about "update or hide?".
 
 	* src/frontends/xforms/FormError.C (showInset): add connection
-	again ;-) 
+	again ;-)
 
 	* src/frontends/xforms/FormTabular.[Ch]: split into two classes,
 	one for each dialog. FormTabular now contains main tabular dialog
@@ -2236,7 +2236,7 @@
 
 	* src/frontends/xforms/FormTabularCreate.[Ch]:
 	* src/frontends/xforms/forms/form_tabular_create.fd: the create
-	dialog. 
+	dialog.
 
 	* src/frontends/xforms/FormGraphics.[Ch]:
 	* src/frontends/xforms/forms/form_graphics.fd
@@ -2291,9 +2291,9 @@
 
 	* src/support/lyxlib.h: unify namespace/struct implementation.
 	Remove extra declarations.
-	
+
 	* src/support/chdir.C (chdir): remove version taking char const *
-	argument. 
+	argument.
 	* src/support/rename.C: ditto.
 	* src/support/lyxsum.C: ditto.
 
@@ -2381,7 +2381,7 @@
 
 2000-10-17  Dekel Tsur  <dekelts@tau.ac.il>
 
-	* src/lyxfunc.C (Dispatch): Call to showState() after insertion of 
+	* src/lyxfunc.C (Dispatch): Call to showState() after insertion of
 	a char only if real_current_font was changed.
 
 2000-10-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
@@ -2459,13 +2459,13 @@
 	* src/text.C (Backspace): Make sure that the row of the cursor is
 	rebreaked.
 
-	* src/lyxfunc.C (Dispatch): Call to showState() after insertion of 
+	* src/lyxfunc.C (Dispatch): Call to showState() after insertion of
 	a char.
 
-	* src/lyx_gui.C (init): Prevent a crash when only one font from 
+	* src/lyx_gui.C (init): Prevent a crash when only one font from
 	menu/popup fonts is not found.
 
-	* lib/lyxrc.example: Add an example for binding a key for language 
+	* lib/lyxrc.example: Add an example for binding a key for language
 	switching.
 
 2000-10-15  Dekel Tsur  <dekelts@tau.ac.il>
@@ -2496,7 +2496,7 @@
 	* src/frontends/xforms/Menubar_pimpl.C: small changes so that they
 	compile without "conversion to integral type of smaller size"
 	warnings.
-	
+
 2000-10-13  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/text.C (GetColumnNearX): Fixed disabled code.
@@ -2525,12 +2525,12 @@
 
 	* src/frontends/kde/FormCitation.C:
 	* src/frontends/kde/FormIndex.C: read-only
-	correctness 
+	correctness
 
 2000-10-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/support/lyxfunctional.h (void_class_fun_t): fix name of
-	constructor. 
+	constructor.
 
 	* src/bufferlist.C: add using directive.
 
@@ -2538,7 +2538,7 @@
 
 	* src/support/lyxfunctional.h: version of class_fun for void
 	returns added, const versions of back_inseter_fun and compare_fun
-	added.	
+	added.
 
 2000-10-13  Angus Leeming <a.leeming@ic.ac.uk>
 
@@ -2570,7 +2570,7 @@
 	* src/frontends/gnome/FormToc.C
 	* src/frontends/gnome/FormUrl.C: replacing gettext N_() with _() where
 	appropriate.
-	
+
 	* src/frontends/gnome/Menubar_pimpl.C
 	* src/frontends/gnome/Menubar_pimpl.h: using new Menu::expand method to
 	fill the menus.
@@ -2579,7 +2579,7 @@
 
 	* src/minibuffer.h:
 	* src/minibuffer.C: Changed the method ExecCommand to PrepareForCommand
-	to convey its real action. 
+	to convey its real action.
 
 	* src/minibuffer.C (peek_event): Added action when mouse clicks to
 	clear the minibuffer and prepare to enter a command.
@@ -2597,7 +2597,7 @@
 
 	* src/lyx_gui.C (create_forms): better fix for crash with
 	translated interface.
-	
+
 2000-10-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* src/frontends/kde/Makefile.am:
@@ -2612,7 +2612,7 @@
 
 2000-10-12  Dekel Tsur  <dekelts@tau.ac.il>
 
-	* src/encoding.C (read): Fixed bug that caused an error message at 
+	* src/encoding.C (read): Fixed bug that caused an error message at
 	the end of the file.
 
 	* po/Makefile.in.in: Fixed rule for ext_l10n.h
@@ -2622,13 +2622,13 @@
 2000-10-13  Allan Rae <rae@lyx.org>
 
 	* src/frontends/xforms/FormPreferences.C (input): reworking the
-	checking 
+	checking
 	(build, update, apply): New inputs in various tabfolders
 
 	* src/frontends/xforms/FormToc.C: use new button policy.
 	* src/frontends/ButtonPolicies.h (class IgnorantPolicy): for
 	dialogs that either can't use any existing policy or where it just
-	doesn't care. 
+	doesn't care.
 
 	* src/frontends/xforms/FormTabular.h: removed copyright notice that
 	said it was mine.
@@ -2637,37 +2637,37 @@
 	added a bool parameter which is ignored.
 
 	* src/buffer.C (setReadonly):
-	* src/BufferView_pimpl.C (buffer): 
-	* src/frontends/kde/FormCopyright.h (update): 
-	* src/frontends/kde/FormCitation.[Ch] (update): 
-	* src/frontends/kde/FormIndex.[Ch] (update): 
-	* src/frontends/kde/FormPrint.[Ch] (update): 
-	* src/frontends/kde/FormRef.[Ch] (update): 
-	* src/frontends/kde/FormToc.[Ch] (update): 
-	* src/frontends/kde/FormUrl.[Ch] (update): 
-	* src/frontends/gnome/FormCopyright.h (update): 
-	* src/frontends/gnome/FormCitation.[Ch] (update): 
-	* src/frontends/gnome/FormError.[Ch] (update): 
-	* src/frontends/gnome/FormIndex.[Ch] (update): 
-	* src/frontends/gnome/FormPrint.[Ch] (update): 
-	* src/frontends/gnome/FormRef.h (update): 
-	* src/frontends/gnome/FormToc.[Ch] (update): 
-	* src/frontends/gnome/FormUrl.[Ch] (update): 
+	* src/BufferView_pimpl.C (buffer):
+	* src/frontends/kde/FormCopyright.h (update):
+	* src/frontends/kde/FormCitation.[Ch] (update):
+	* src/frontends/kde/FormIndex.[Ch] (update):
+	* src/frontends/kde/FormPrint.[Ch] (update):
+	* src/frontends/kde/FormRef.[Ch] (update):
+	* src/frontends/kde/FormToc.[Ch] (update):
+	* src/frontends/kde/FormUrl.[Ch] (update):
+	* src/frontends/gnome/FormCopyright.h (update):
+	* src/frontends/gnome/FormCitation.[Ch] (update):
+	* src/frontends/gnome/FormError.[Ch] (update):
+	* src/frontends/gnome/FormIndex.[Ch] (update):
+	* src/frontends/gnome/FormPrint.[Ch] (update):
+	* src/frontends/gnome/FormRef.h (update):
+	* src/frontends/gnome/FormToc.[Ch] (update):
+	* src/frontends/gnome/FormUrl.[Ch] (update):
 	* src/frontends/xforms/FormGraphics.[Ch] (update): reflect new changes
 	to updateBufferDependent and DialogBase
 
-	* src/frontends/xforms/FormCitation.[hC]: 
+	* src/frontends/xforms/FormCitation.[hC]:
 	* src/frontends/xforms/FormDocument.[hC]: also removed restore()
-	* src/frontends/xforms/FormError.[Ch]: 
-	* src/frontends/xforms/FormGraphics.[Ch]: 
-	* src/frontends/xforms/FormIndex.[Ch]: 
+	* src/frontends/xforms/FormError.[Ch]:
+	* src/frontends/xforms/FormGraphics.[Ch]:
+	* src/frontends/xforms/FormIndex.[Ch]:
 	* src/frontends/xforms/FormParagraph.[Ch]: also added missing "virtual"s
 	and fixed readOnly handling.
-	* src/frontends/xforms/FormPrint.[Ch]: 
-	* src/frontends/xforms/FormRef.[Ch]: 
+	* src/frontends/xforms/FormPrint.[Ch]:
+	* src/frontends/xforms/FormRef.[Ch]:
 	* src/frontends/xforms/FormTabular.[Ch]:
 	* src/frontends/xforms/FormToc.[Ch]:
-	* src/frontends/xforms/FormUrl.[Ch]: 
+	* src/frontends/xforms/FormUrl.[Ch]:
 	* src/frontends/xforms/FormInset.[Ch]:
 	* src/frontends/xforms/FormBase.[hC]: modifications to use the new
 	form of updateBufferDependent.
@@ -2687,7 +2687,7 @@
 	got more confusing.  Hence the decision to make everyone have an
 	update(bool). An alternative might have been to override show() in
 	FormBaseB[DI] and that would allow the different and appropriate
-	update signatures. 
+	update signatures.
 
 	* src/frontends/Dialogs.h (updateBufferDependent): now takes a bool.
 	true == buffer change occurred.  I decided against using a default
@@ -2757,12 +2757,12 @@
 2000-10-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxtext.h (bidi_level): change return type to
-	LyXParagraph::size_type. 
+	LyXParagraph::size_type.
 
 	* src/lyxparagraph.h: change size_type to
 	TextContainer::difference_type. This should really be
 	TextContainer::size_type, but we need currently to support signed
-	values. 
+	values.
 
 2000-10-11  Marko Vendelin <markov@ioc.ee>
 	* src/frontends/gnome/FormError.h
@@ -2770,7 +2770,7 @@
 	* src/frontends/gnome/FormRef.h
 	* src/frontends/gnome/FormError.C
 	* src/frontends/gnome/Makefile.am
-	* src/frontends/gnome/pixbutton.h: FormError and FormRef are ported 
+	* src/frontends/gnome/pixbutton.h: FormError and FormRef are ported
 	to Gnome frontend. Both dialogs	use "action" area.
 
 2000-10-12  Baruch Even  <baruch.even@writeme.com>
@@ -2791,12 +2791,12 @@
 
 	* src/filedlg.C (GroupCache::find): de-inlined the function, makes
 	compiling on egcs 1.1.2 possible.
-	
+
 	* src/filedlg.C (comp_direntry::operator() ): ditto.
 
 2000-08-31  Baruch Even  <baruch.even@writeme.com>
 
-	* src/lyx_cb.[hC] (ShowMessage): Result of the const-ificiation of the 
+	* src/lyx_cb.[hC] (ShowMessage): Result of the const-ificiation of the
 	Buffer parameter.
 
 	* src/frontends/xforms/FormGraphics.C: Changed the dialog to be
@@ -2819,7 +2819,7 @@
 
 	* src/frontends/support: Directory added for the support of GUII LyX.
 
-	* src/frontends/support/LyXImage.h:	
+	* src/frontends/support/LyXImage.h:
 	* src/frontends/support/LyXImage.C:  Base class for GUII holding of
 	images.
 
@@ -2830,7 +2830,7 @@
 	* src/PainterBase.h:
 	* src/PainterBase.C:
 	* src/Painter.h:
-	* src/Painter.C: Added a new method image() to draw LyXImage-s, a GUII 
+	* src/Painter.C: Added a new method image() to draw LyXImage-s, a GUII
 	replacement	to Pixmap.
 
 	* src/insets/insetgraphics.h:
@@ -2842,7 +2842,7 @@
 	instead  of Pixmap.
 
 	* src/graphics/GraphicsCacheItem.h:
-	* src/graphics/GraphicsCacheItem.C: Added the Clone() method to create 
+	* src/graphics/GraphicsCacheItem.C: Added the Clone() method to create
 	another copy of the object.
 
 	* src/insets/insetgraphics.C (Clone): Changed to create a second copy
@@ -2870,7 +2870,7 @@
 	bugs in egcs.
 
 	* src/buffer.C (setFileName): had to change name of function to
-	work around bugs in egcs. (renamed from fileName) 
+	work around bugs in egcs. (renamed from fileName)
 
 2000-10-11  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
@@ -2904,7 +2904,7 @@
 	* src/graphics/XPM_Renderer.C (renderImage): use ScreenOfDisplay
 
 	* src/frontends/xforms/Toolbar_pimpl.C (updateLayoutList): remove
-	c_str() 
+	c_str()
 
 	* src/frontends/xforms/Menubar_pimpl.C: make several file scope
 	variables static
@@ -2998,7 +2998,7 @@
 	* src/LColor.C (getGUIName): remove c_str()
 
 	* several files: change all occurrences of fl_display to
-	fl_get_display() 
+	fl_get_display()
 
 	* config/lyxinclude.m4 (LYX_PROG_CXX): add a 2.97 clause so
 	that -pedantic is not used for gcc 2.97 (cvs gcc)
@@ -3011,12 +3011,12 @@
 	a readable directory.  It doesn't need to be writeable.
 	(build, delete, update, apply): New inputs in the various tabfolders
 
-	* src/frontends/xforms/forms/form_preferences.fd: 
+	* src/frontends/xforms/forms/form_preferences.fd:
 	* src/frontends/xforms/FormPreferences.h: New tabfolder and added
 	several new entries to existing folders.  Shuffled some existing stuff
-	around. 
+	around.
 
-	* src/frontends/xforms/forms/form_print.fd: 
+	* src/frontends/xforms/forms/form_print.fd:
 	* src/frontends/xforms/FormPrint.C (apply): rename unsorted to collated.
 	Should probably rework PrinterParams as well.  Note that the switch to
 	collated is effectively the same as !unsorted so changing PrinterParams
@@ -3031,8 +3031,8 @@
 2000-10-10  Allan Rae <rae@lyx.org>
 
 	* src/lyxrc.[Ch]:
-	* src/lyxfunc.C (Dispatch): 
-	* src/lyx_gui.C: 
+	* src/lyxfunc.C (Dispatch):
+	* src/lyx_gui.C:
 	* src/BufferView_pimpl.C (scrollCB): cursor_follows_scrollbar made a
 	member of LyXRC
 
@@ -3041,7 +3041,7 @@
 
 	* src/lyx_main.C:
 	* src/lyxrc.[Ch]: commented out noncopyable so I can keep a
-	system_lyxrc. 
+	system_lyxrc.
 	I'll rewrite this later, after 1.1.6 probably, to keep a single
 	LyXRC but two instances of a LyXRCStruct.
 
@@ -3078,7 +3078,7 @@
 	* src/buffer.C (makeLaTeXFile): Use babel() instead of lang()
 	* src/lyxfont.C (latexWriteStartChanges): ditto.
 	* src/paragraph.C (validate,TeXOnePar): ditto.
-	
+
 	* src/lyxfont.C (update): Restored deleted code.
 
 	* src/frontends/xforms/FormDocument.C (build): Made the combox taller
@@ -3117,7 +3117,7 @@
 
 	* src/text.C (GetRow): small fix.
 
-	* src/BufferView_pimpl.C (cursorPrevious): 
+	* src/BufferView_pimpl.C (cursorPrevious):
 	(cursorNext): added LyXText parameter to function.
 
 	* src/insets/insettabular.C (LocalDispatch): activate cell inset on
@@ -3129,10 +3129,10 @@
 	(copySelection): redone this function and also copy ascii representa-
 	tion to clipboard.
 
-	* src/tabular.C (Ascii): 
-	(AsciiPrintCell): 
-	(AsciiBottomHLine): 
-	(AsciiTopHLine): 
+	* src/tabular.C (Ascii):
+	(AsciiPrintCell):
+	(AsciiBottomHLine):
+	(AsciiTopHLine):
 	(print_n_chars): new functions to realize the ascii export of tabulars.
 
 2000-10-05  Juergen Vigna  <jug@sad.it>
@@ -3191,7 +3191,7 @@
 	* src/frontends/xforms/FormParagraph.[Ch]
 	* src/frontends/xforms/forms/form_paragraph.fd: now derived from
 	FormBase.
-	
+
 2000-10-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/bind/cua.bind: fix a bit.
@@ -3200,15 +3200,15 @@
 	* lib/bind/menus.bind: remove real menu entries from there.
 
 	* src/spellchecker.C: make sure we only include strings.h when
-	_AIX is defined.	
+	_AIX is defined.
 
 2000-10-05  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/frontends/xforms/Menubar_pimpl.C (get_new_submenu): New
 	function. It enlarges the maximum number of pup when needed.
-	(add_toc2): Open a new menu if maximum number of items per menu has 
+	(add_toc2): Open a new menu if maximum number of items per menu has
 	reached.
-	
+
 2000-10-05  John Levon  <moz@compsoc.man.ac.uk>
 
 	* src/frontends/kde/FormPrint.C: fix error reporting
@@ -3257,7 +3257,7 @@
 	print dialog
 
 	* src/frontends/kde/dlg/README: Added explanatory readme
-	
+
 	* src/frontends/kde/dlg/checkinitorder.pl: small perl
 	script to double-check qtarch's output
 
@@ -3319,19 +3319,19 @@
 2000-10-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/mathed/math_parser.C (LexInitCodes): set lexcode of "@" to
-	LexAlpha. 
+	LexAlpha.
 
 	* src/mathed/formula.C (LocalDispatch): add '@' as an LM_TC_VAR
-	character. 
+	character.
 
 	* lib/layouts/amsart.layout: include lyxmacros.inc, so that
 	LyX-Code is defined.
 	* lib/layouts/amsbook.layout: ditto.
 
-	* boost/Makefile.am: fix typo. 
+	* boost/Makefile.am: fix typo.
 
 	* src/frontends/xforms/Menubar_pimpl.C (create_submenu): use
-	Menu::expand. 
+	Menu::expand.
 	(add_lastfiles): removed.
 	(add_documents): removed.
 	(add_formats): removed.
@@ -3376,7 +3376,7 @@
 2000-10-03  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* src/exporter.C (IsExportable): Fixed
-	
+
 	* lib/configure.m4: Small fix
 
 2000-10-03  Dekel Tsur  <dekelts@tau.ac.il>
@@ -3394,8 +3394,8 @@
 	surronding paragraph on inserting the first character.
 
 	* various files: changed use of BufferView::the_locking_inset.
-	
-	* src/BufferView2.C (theLockingInset): 
+
+	* src/BufferView2.C (theLockingInset):
 	(theLockingInset): new functions.
 
 	* src/BufferView.h: removed the_locking_inset.
@@ -3447,7 +3447,7 @@
 	* src/insets/figinset.C (Preview): Use Formats::View.
 
 	* lib/configure.m4: Add sgml->dvi converter to lyxrc.default
-	
+
 2000-10-02  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxfunc.C (Dispatch): move declaration of text variable at
@@ -3494,7 +3494,7 @@
 	* src/frontends/xforms/FormRef.[Ch]:
 	* src/frontends/xforms/FormUrl.[Ch]: Renamed a few buttons, consistent
 	with Allan's naming policy
-	
+
 	* src/frontends/xforms/FormCitation.C: some static casts to remove
 	compiler warnings.
 
@@ -3525,7 +3525,7 @@
 	* src/frontends/kde/FormRef.h:
 	* src/frontends/kde/FormToc.h:
 	* src/frontends/kde/FormUrl.h: fix remaining users of
-	support/utility.hpp 
+	support/utility.hpp
 
 2000-10-02  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -3539,7 +3539,7 @@
 	FormDocument:: qualifier.
 
 	* sigc++/macros/basic_signal.h.m4: remove erroneous virtual
-	destructor. 
+	destructor.
 	* sigc++/handle.h: ditto.
 
 	* src/lyx_gui_misc.C: add "using" directive.
@@ -3581,7 +3581,7 @@
 
 	* src/lyx_main.C (easyParse): Disable gui when exporting
 
-	* src/insets/figinset.C: 
+	* src/insets/figinset.C:
 	* src/LaTeX.C
 	* src/converter.C
 	* src/lyx_gui_misc.C
@@ -3699,21 +3699,21 @@
 2000-09-29  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* several files: type changes to reduce the number of warnings and
-	to unify type hangling a bit. Still much to do. 
+	to unify type hangling a bit. Still much to do.
 
 2000-09-29  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/images/*: rename a bunch of icons to match Dekel converter
-	changes. 
+	changes.
 
 	* src/buffer.h (SimpleLinuxDocOnePar): remove const qualifier to
 	last parameter.
 
-	* src/frontends/xforms/FormBase.C (disconnect): remove bogus test. 
+	* src/frontends/xforms/FormBase.C (disconnect): remove bogus test.
 
 	* sigc++/macros/basic_signal.h.m4: fix class Signal_ to have a
 	virtual destructor
-	* sigc++/handle.h: ditto for class Handle. 
+	* sigc++/handle.h: ditto for class Handle.
 
 2000-09-27  John Levon  <moz@compsoc.man.ac.uk>
 
@@ -3734,7 +3734,7 @@
 	* lib/layouts/docbook-book.layout: new docbook book layout.
 
 	* lib/layouts/linuxdoc.layout: LatexName of Style SGML is now dummy.
-	
+
 	* lib/layouts/manpage.layout: Same as above. Style SubSection removed.
 
 	* src/insets/figinset.C (DocBook):fixed small typo.
@@ -3743,7 +3743,7 @@
 
 	* src/insets/insetinclude.h: string include_label doesn't need to be
 	mutable.
-	
+
 2000-09-29  Allan Rae  <rae@lyx.org>
 
 	* src/frontends/xforms/FormBase.[Ch] (connect, disconnect): new.
@@ -3758,14 +3758,14 @@
 	(InsetButtonPress): fixed!
 
 	* various files: added LyXText Parameter to fitCursor call.
-	
+
 	* src/BufferView.C (fitCursor): added LyXText parameter.
 
 	* src/insets/insettabular.C (draw): small draw fix.
 
 	* src/tabular.C: right setting of left/right celllines.
 
-	* src/tabular.[Ch]: fixed various types in funcions and structures. 
+	* src/tabular.[Ch]: fixed various types in funcions and structures.
 	* src/insets/insettabular.C: ditto
 	* src/frontends/xforms/FormTabular.C: ditto
 
@@ -3787,7 +3787,7 @@
 	* src/insets/insettext.C (Ascii): return numer of '\n' in the text
 	output to the ostream.
 
-	* several files: fixed types based on warnings from cxx 
+	* several files: fixed types based on warnings from cxx
 
 2000-09-26  John Levon  <moz@compsoc.man.ac.uk>
 
@@ -3796,15 +3796,15 @@
 
 	* src/.cvsignore: add ext_l10n.h to ignore
 
-	* acconfig.h: stop messing with __STRICT_ANSI__ 
+	* acconfig.h: stop messing with __STRICT_ANSI__
 	* config/gnome.m4: remove option to set -ansi
 	* config/kde.m4: remove option to set -ansi
-	* config/lyxinclude.m4: don't set -ansi 
+	* config/lyxinclude.m4: don't set -ansi
 
 2000-09-27  Juergen Vigna  <jug@sad.it>
 
 	* various files: remove "default" language check.
-	
+
 	* src/insets/insetquotes.C: removed use of current_view.
 
 	* src/lyxfunc.C (MenuNew): I don't know how put the AddPath here but
@@ -3825,7 +3825,7 @@
 
 	* src/buffer.C (asciiParagraph): remove actcell and fname1.
 
-	* src/insets/inseturl.[Ch]: 
+	* src/insets/inseturl.[Ch]:
 	* src/insets/insetref.[Ch]:
 	* src/insets/insetlabel.[Ch]: add linelen to Ascii
 
@@ -3877,7 +3877,7 @@
 	(writeFileAscii): use now asciiParagraph.
 
 	* various inset files: added the linelen parameter to the Ascii-func.
-	
+
 	* src/tabular.C (Write): fixed error in writing file introduced by
 	the last changes from Lars.
 
@@ -3896,47 +3896,47 @@
 
 	* src/support/unlink.C src/support/remove.C src/support/mkdir.C:
 	new files use the everwhere possible.
-	
-	* several files: 
+
+	* several files:
 	* src/form1.C src/form1.h src/layout_forms.C src/layout_forms.h
 	src/log_form.C src/lyx.C:
 	regenerated
-	
+
 	* src/buffer.C (runLaTeX): remove func
-	
+
 	* src/PaperLayout.C: removed file
 	* src/ParagraphExtra.C: likewise
 	* src/bullet_forms.C: likewise
 	* src/bullet_forms.h: likewise
 	* src/bullet_forms_cb.C: likewise
-	
+
 	* src/Makefile.am (lyx_SOURCES): remove PaperLayout.C,
 	ParagraphExtra.C, bullet_forms.C, bullet_forms.h and
-	bullet_forms_cb.C 
+	bullet_forms_cb.C
 
 	* several files: remove all traces of the old fd_form_paragraph,
 	and functions belonging to that.
-	
+
 	* several files: remove all traces of the old fd_form_document,
 	and functions belonging to that.
-	
+
 	* several files: constify local variables were possible.
-	
+
 	* several files: remove all code that was dead when NEW_EXPORT was
-	defined 
-	
+	defined
+
 	* several files: removed string::c_str in as many places as
 	possible.
-	
+
 	* forms/makefile (SRCS,OBJS,COBJS): removed bullet_forms.[fd,c,C]
 	(e): be a bit more outspoken when patching
 	(updatesrc): only move files if changed.
 
 	* forms/layout_forms.h.patch: regenerated
-	
+
 	* forms/layout_forms.fd: remove form_document and form_paragraph
 	and form_quotes and form_paper and form_table_options and
-	form_paragraph_extra 
+	form_paragraph_extra
 
 	* forms/form1.fd: remove form_table
 
@@ -3946,7 +3946,7 @@
 	* forms/bullet_forms.C.patch: removed file
 	* forms/bullet_forms.fd: likewise
 	* forms/bullet_forms.h.patch: likewise
-	
+
 	* development/Code_rules/Rules: added a section on switch
 	statements. Updated some comment to xforms 0.88.
 
@@ -3971,7 +3971,7 @@
 
 	* src/intl.C (InitKeyMapper): remove a bunch of string::c_str()
 	calls (fixes some memory leaks)
-	
+
 	* src/intl.[Ch]: add a destructor for Intl, in order to delete the
 	trans member on exit.
 
@@ -3992,9 +3992,9 @@
 
 2000-09-25  Juergen Vigna  <jug@sad.it>
 
-	* src/frontends/kde/Dialogs.C (Dialogs): 
-	* src/frontends/gnome/Dialogs.C (Dialogs): 
-	* src/frontends/kde/Makefile.am: 
+	* src/frontends/kde/Dialogs.C (Dialogs):
+	* src/frontends/gnome/Dialogs.C (Dialogs):
+	* src/frontends/kde/Makefile.am:
 	* src/frontends/gnome/Makefile.am: added FormParagraph from xforms.
 
 	* src/frontends/xforms/forms/makefile: added form_paragraph.fd.
@@ -4003,7 +4003,7 @@
 
 	* src/frontends/xforms/Makefile.am: added files for FormParagraph.
 
-	* src/frontends/xforms/FormParagraph.C: 
+	* src/frontends/xforms/FormParagraph.C:
 	* src/frontends/xforms/FormParagraph.h:
 	* src/frontends/xforms/form_paragraph.C:
 	* src/frontends/xforms/form_paragraph.h:
@@ -4030,22 +4030,22 @@
 2000-09-24  Marko Vendelin <markov@ioc.ee>
 
 	* src/frontends/gnome/mainapp.C
-	* src/frontends/gnome/mainapp.h: added support for keyboard 
+	* src/frontends/gnome/mainapp.h: added support for keyboard
 	accelerators
 
 	* src/frontends/gnome/FormCitation.C
 	* src/frontends/gnome/FormCitation.h
 	* src/frontends/gnome/Makefile.am
-	* src/frontends/gnome/pixbutton.h: completed the rewrite of 
+	* src/frontends/gnome/pixbutton.h: completed the rewrite of
 	FormCitation to use "action area" in mainapp window
 
-	* src/frontends/gnome/Menubar_pimpl.C	
+	* src/frontends/gnome/Menubar_pimpl.C
 	* src/frontends/gnome/Menubar_pimpl.h: Gnome menu can handle
 	large TOC.
 
 2000-09-23  Dekel Tsur  <dekel@math.tau.ac.il>
 
-	* src/mathed/formula.C (MathFuncInset::Metrics): Use default 
+	* src/mathed/formula.C (MathFuncInset::Metrics): Use default
 	width/descent/ascent values if name is empty.
 	(mathed_string_height): Use std::max.
 
@@ -4064,7 +4064,7 @@
 	(tabular) code.
 
 	* src/TableLayout.C: removed file
-	
+
 2000-09-22  Juergen Vigna  <jug@sad.it>
 
 	* src/frontends/kde/Dialogs.C: added credits forms.
@@ -4095,7 +4095,7 @@
 	* src/frontends/xforms/FormError.[Ch]
 	* src/frontends/xforms/forms/form_error.fd: new files. Xforms
 	implementation of InsetError dialog.
-	
+
 	* src/insets/inseterror.[Ch]: rendered GUI-independent.
 
 	* src/frontends/kde/Dialogs.C: added new xforms dialog FormError.
@@ -4131,7 +4131,7 @@
 2000-09-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/table.[Ch]: deleted files
-	
+
 	* src/lyxfunc.C (Dispatch): Don't pass 0 as argument to Dispatch
 	second arg.
 
@@ -4168,13 +4168,13 @@
 	* src/frontends/kde/FormRef.h: removed trailing comma from enums.
 
 2000-09-19  Marko Vendelin <markov@ioc.ee>
-	
+
 	* src/frontends/gnome/Menubar_pimpl.C
 	* src/frontends/gnome/Menubar_pimpl.h: Gnome menus show now
 	Toc, ViewFormats, UpdateFormats, and ExportFormats.
 
 	* src/frontends/gnome/mainapp.C
-	* src/frontends/gnome/mainapp.h: support for menu update used 
+	* src/frontends/gnome/mainapp.h: support for menu update used
 	by Toc menu.
 
 	* src/frontends/gnome/mainapp.C
@@ -4217,12 +4217,12 @@
 	methods are static. constify a bit remove unneded using + headers.
 
 	* src/tabular.C: some more const to local vars move some loop vars
-	
+
 	* src/spellchecker.C: added some c_str after some word for pspell
 
 	* src/frontends/GUIRunTime.h: add new static method setDefaults
-	* src/frontends/xforms/GUIRunTime.C (setDefaults): 
-	* src/frontends/kde/GUIRunTime.C (setDefaults): 
+	* src/frontends/xforms/GUIRunTime.C (setDefaults):
+	* src/frontends/kde/GUIRunTime.C (setDefaults):
 	* src/frontends/gnome/GUIRunTime.C (setDefaults): new method
 
 	* src/mathed/math_cursor.C (MacroModeClose): don't call SetName
@@ -4230,12 +4230,12 @@
 
 	* several files: remove all commented code with relation to
 	HAVE_SSTREAM beeing false. We now only support stringstream and
-	not strstream. 
+	not strstream.
 
 2000-09-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxfunc.C: construct correctly the automatic new file
-	names. 
+	names.
 
 	* src/text2.C (IsStringInText): change type of variable i to shut
 	off a warning.
@@ -4278,11 +4278,11 @@
 	* src/frontends/kde/FormToc.h: corrected definition of doTree.
 
 	* src/frontends/kde/GUIRunTime.C (initApplication): use lyxerr not
-	cerr. 
+	cerr.
 
 	* src/mathed/math_defs.h: redefine SetAlign to use string rather
 	than char *.
-	
+
 2000-09-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/buffer.C (pop_tag): revert for the second time a change by
@@ -4304,23 +4304,23 @@
 	* src/Lsstream.h src/support/sstream.h: new files.
 
 	* also commented out all cases where strstream were used.
-	
+
 	* src/Bullet.h (c_str): remove method.
-	
+
 	* remove all stuff that is irrelevant when NEW_MENUBAR is defined
-	
+
 	* a lot of files: get rid of "char const *" and "char *" is as
 	many places as possible. We only want to use them in interaction
 	with system of other libraries, not inside lyx.
-	
+
 	* a lot of files: return const object is not of pod type. This
 	helps ensure that temporary objects is not modified. And fits well
 	with "programming by contract".
 
-	* configure.in: check for the locale header too 
+	* configure.in: check for the locale header too
 
 	* Makefile.am (sourcedoc): new tag for generation of doc++
-	documentation 
+	documentation
 
 2000-09-14  Juergen Vigna  <jug@sad.it>
 
@@ -4337,7 +4337,7 @@
 
 	* src/combox.h: added Combox * to callback prototype.
 
-	* src/frontends/xforms/Toolbar_pimpl.C: 
+	* src/frontends/xforms/Toolbar_pimpl.C:
 	* src/lyx_cb.C (LayoutsCB): added Combox * to function call.
 
 2000-09-14  Garst Reese  <reese@isn.net>
@@ -4350,7 +4350,7 @@
 2000-09-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxlex_pimpl.C (setFile): change error message to debug
-	message. 
+	message.
 
 2000-09-13  Juergen Vigna  <jug@sad.it>
 
@@ -4429,7 +4429,7 @@
 	* src/lyx_main.C (LyX): Call to QuitLyX() to remove temporary
 	directory!
 	(easyParse): Fixed to work with new export code.
-	
+
 	* src/support/filetools.C (DeleteAllFilesInDir) Fixed to delete
 	directories.
 
@@ -4445,9 +4445,9 @@
 
 	* src/main.C (main): now GUII defines global guiruntime!
 
-	* src/frontends/gnome/GUIRunTime.C (initApplication): 
-	* src/frontends/kde/GUIRunTime.C (initApplication): 
-	* src/frontends/xforms/GUIRunTime.C (initApplication): 
+	* src/frontends/gnome/GUIRunTime.C (initApplication):
+	* src/frontends/kde/GUIRunTime.C (initApplication):
+	* src/frontends/xforms/GUIRunTime.C (initApplication):
 	* src/frontends/GUIRunTime.h: added new function initApplication.
 
 	* src/spellchecker.C (sc_accept_word): change to add_to_session.
@@ -4485,7 +4485,7 @@
 	* src/frontends/gnome/diainsertcitation_callbacks.h
 	* src/frontends/gnome/diainsertcitation_interface.c
 	* src/frontends/gnome/diainsertcitation_interface.h
-	* src/frontends/gnome/dialogs/diainsertcitation.glade: Insert Citation 
+	* src/frontends/gnome/dialogs/diainsertcitation.glade: Insert Citation
 	dialog for Gnome frontend
 
 	* src/main.C: Gnome libraries require keeping application name
@@ -4537,11 +4537,11 @@
 
 	* src/frontends/xforms/Menubar_pimpl.C: added two using directives
 	so that code compiles with DEC cxx.
-	
+
 	* src/frontends/xforms/FormCitation.C (setSize): code re-writtenn
 	to work correctly! Also now supports the additional elements
 	neeeded by natbib.
-	
+
 2000-09-01  Allan Rae  <rae@lyx.org>
 
 	* src/frontends/ButtonPolicies.C: renamed all the references to
@@ -4619,38 +4619,38 @@
 
 	* src/converter.[Ch]: New file for converting between different
 	formats.
-	
+
 	* src/export.[Ch]: New file for exporting a LyX file to different
 	formats.
-	
+
 	* src/lyx_cb.C:	Remove many functions when NEW_EXPORT is defined:
 	MenuRunLaTeX, MakeLaTeXOutput, RunScript, CreatePostscript,
 	PreviewPostscript, PreviewDVI, AskOverwrite, MenuMakeLaTeX,
 	MenuMakeLinuxDoc, MenuMakeDocBook, MenuMakeHTML,
 	MenuMakeHTML_LinuxDoc, MenuMakeHTML_DocBook, RunLinuxDoc,
 	RunDocBook, MenuExport.
-	
+
 	* src/lyxfunc.C (Dispatch): Use the Exporter::Export and
-	Exporter::Preview methods if NEW_EXPORT is defined.	
-	
+	Exporter::Preview methods if NEW_EXPORT is defined.
+
 	* src/buffer.C (Dispatch): Use Exporter::Export.
-	
+
 	* src/lyxrc.C: Added new tags: \converter and \viewer.
-	
+
 	* src/commandtags.h
 	* src/LyXAction.C: Define new lyx-function: buffer-update.
 	Remove obsolete buffer-typeset,buffer-typeset-ps & buffer-view-ps
 	when NEW_EXPORT is defined.
-	
+
 	* src/MenuBackend.C: Added new tags: updateformats and viewformats.
-	
+
 	* src/frontends/xforms/Menubar_pimpl.C (add_formats) New method.
-	
-	* lib/ui/default.ui: Added submenus "view" and "update" to the 
+
+	* lib/ui/default.ui: Added submenus "view" and "update" to the
 	"file" menu.
-	
+
 	* src/filetools.C (GetExtension): New function.
-	
+
 	* src/LaTeX.C (LaTeX): Add "-pdf" to depfile if pdflatex is used.
 
 2000-08-29  Allan Rae  <rae@lyx.org>
@@ -4704,7 +4704,7 @@
 2000-08-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* some whitespace and comment changes.
-	
+
 	* src/lyx_gui.C (LyXGUI): use C++ style casts instead of C ones.
 
 	* src/buffer.C: up te LYX_FORMAT to 2.17
@@ -4731,7 +4731,7 @@
 
 2000-08-22  Juergen Vigna  <jug@sad.it>
 
-	* src/lyx_gui_misc.C (updateAllVisibleBufferRelatedDialogs): 
+	* src/lyx_gui_misc.C (updateAllVisibleBufferRelatedDialogs):
 	ifdef form_table out if NEW_TABULAR.
 
 2000-08-21  Juergen Vigna  <jug@sad.it>
@@ -4749,7 +4749,7 @@
 	made BoxType into an enum.
 
 2000-08-22  Marko Vendelin <markov@ioc.ee>
-	* src/frontends/gnome/Menubar_pimpl.C: Mathces LyX action with Gnome 
+	* src/frontends/gnome/Menubar_pimpl.C: Mathces LyX action with Gnome
 	stock menu item using action numerical value, not its string
 	representation.
 
@@ -4778,7 +4778,7 @@
 	* src/frontends/gnome/GUIRunTime.C: new file
 
 	* src/frontends/Makefile.am (libfrontends_la_SOURCES): removed
-	GUIRunTime.C 
+	GUIRunTime.C
 
 	* src/frontends/GUIRunTime.h: removed constructor and destructor,
 	small change to documetentation.
@@ -4896,7 +4896,7 @@
 	* src/frontends/gnome/diainsertindex_interface.h
 	* src/frontends/gnome/diatoc_interface.h
 	* src/frontends/gnome/diatoc_interface.c
-	* src/frontends/gnome/Makefile.am: Table of Contents and 
+	* src/frontends/gnome/Makefile.am: Table of Contents and
 	Insert Index dialogs implementation for Gnome frontend
 
 	* src/frontends/gnome/GUIRunTime_pimpl.C: fix some small bugs
@@ -4914,7 +4914,7 @@
 	xforms.
 	(runTime): static method. event loop for xforms
 	* similar as above for kde and gnome.
-	
+
 	* src/frontends/GUIRunTime.C (GUIRunTime): new Pimpl() is wrong
 	new Pimpl is correct
 	(runTime): new method calss the real frontends runtime func.
@@ -4929,7 +4929,7 @@
 
 	* src/lyx_gui.C (runTime): added GUII RunTime support.
 
-	* src/frontends/Makefile.am: 
+	* src/frontends/Makefile.am:
 	* src/frontends/GUIRunTime.[Ch]:
 	* src/frontends/xforms/GUIRunTime_pimpl.[Ch]:
 	* src/frontends/kde/GUIRunTime_pimpl.[Ch]:
@@ -4960,7 +4960,7 @@
 
 	* src/BufferView_pimpl.C (workAreaKeyPress): enable the
 	processKeySym
-	
+
 2000-08-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/WorkArea.C (work_area_handler): more work to get te
@@ -4978,7 +4978,7 @@
 	* src/Timeout.h: remove Qt::emit hack.
 
 	* several files: changes to allo doc++ compilation
-	
+
 	* src/lyxfunc.C (processKeySym): new method
 	(processKeyEvent): comment out if FL_REVISION < 89
 
@@ -5002,7 +5002,7 @@
 
 	* config/kde.m4: addes some features
 
-	* src/frontends/kde/Makefile.am (libkde_la_OBJADD): modified to 
+	* src/frontends/kde/Makefile.am (libkde_la_OBJADD): modified to
 	include missing xforms dialogs.
 
 	* src/Timeout.h: a hack to be able to compile with qt/kde.
@@ -5040,9 +5040,9 @@
 	* src/frontends/gnome/diaprint_callbacks.c
 	* src/frontends/gnome/diaprint_callbacks.h
 	* src/frontends/gnome/diaprint_interface.c
-	* src/frontends/gnome/diaprint_interface.h: Print dialog Gnome 
+	* src/frontends/gnome/diaprint_interface.h: Print dialog Gnome
 	implementation
-	
+
 	* src/frontends/gnome/dialogs/diainserturl.glade
 	* src/frontends/gnome/FormUrl.C
 	* src/frontends/gnome/FormUrl.h
@@ -5056,7 +5056,7 @@
 	* src/frontends/gnome/Makefile.am: added Print, Insert Url  and
 	all other dialogs. Copy all unimplemented dialogs from Xforms
 	frontend
-	
+
 	* src/frontends/gnome/support.c
 	* src/frontends/gnome/support.h: support files generated by Glade
 
@@ -5122,7 +5122,7 @@
 	* src/lyx_cb.C: ditto + code from here moved to make
 	screen-font-update. And people wonder why progress on GUII is
 	slow.  Look at how scattered this stuff was!  It takes forever
-	just find it all. 
+	just find it all.
 
 	* forms/fdfix.sh: Fixup the spacing after commas.
 	* forms/makefile: Remove date from generated files. Fewer clashes now.
@@ -5173,8 +5173,8 @@
 
 	* lib/ui/default.ui: commented out PaperLayout entry
 
-	* src/frontends/xforms/form_document.[Ch]: new added files 
-	
+	* src/frontends/xforms/form_document.[Ch]: new added files
+
 	* src/frontends/xforms/FormDocument.[Ch]: ditto
 
 	* src/frontends/xforms/forms/form_document.fd: ditto
@@ -5190,7 +5190,7 @@
 2000-08-10  Baruch Even  <baruch.even@writeme.com>
 
 	* src/graphics/GraphicsCache.h:
-	* src/graphics/GraphicsCache.C (addFile, removeFile): Changed to work 
+	* src/graphics/GraphicsCache.C (addFile, removeFile): Changed to work
 	correctly as a cache.
 
 	* src/graphics/GraphicsCacheItem.h:
@@ -5201,7 +5201,7 @@
 	* src/graphics/GraphicsCacheItem_pimpl.C: The implementation of the
 	GraphicsCacheItem.
 
-	* src/insets/insetgraphics.h: 
+	* src/insets/insetgraphics.h:
 	* src/insets/insetgraphics.C: Changed from using a signal notification
 	to polling when image is not loaded.
 
@@ -5223,7 +5223,7 @@
 	* src/frontends/gnome/Menubar_pimpl.C
 	* src/frontends/gnome/Menubar_pimpl.h: Gnome frontend Menubar
 	implementation: new files
-	
+
 	* src/frontends/gnome/mainapp.C
 	* src/frontends/gnome/mainapp.h: Gnome main window (temporary
 	implementation)
@@ -5232,21 +5232,21 @@
 
 	* src/frontends/xforms/Menubar_pimpl.h
 	* src/frontends/Menubar.C
-	* src/frontends/Menubar.h: added method Menubar::update that calls 
+	* src/frontends/Menubar.h: added method Menubar::update that calls
 	Menubar_pimpl::update and xforms/Menubar_pimpl::update (empty one)
 
 	* src/LyXView.C: calls Menubar::update to update the state
 	of menu items
 
 	* src/frontends/gnome/Makefile.am: added new files
-	
+
 	* src/frontends/Makefile.am: added frontend compiler options
 
 2000-08-08  Juergen Vigna  <jug@sad.it>
 
 	* src/lyx_cb.C (AutoSave): autosave for unnamed files enabled!
 
-	* src/bufferlist.C (close): 
+	* src/bufferlist.C (close):
 	* src/bufferlist.C (QwriteAll): remove Autosave-files for Unnamed()
 	documents if exiting without saving.
 
@@ -5299,7 +5299,7 @@
 	* src/insets/insetref.[Ch]: strip out large amounts of code.
 	The inset is now a container and this functionality is now
 	managed by a new FormRef dialog
-	
+
 	* src/frontends/Dialogs.h (showRef, createRef): new signals
 
 	* src/frontends/xforms/FormIndex.[Ch],
@@ -5334,7 +5334,7 @@
 
 2000-08-07  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
-	* src/CutAndPaste.[Ch]: make all metods static. 
+	* src/CutAndPaste.[Ch]: make all metods static.
 
 	* development/Code_rules/Rules: more work, added section on
 	Exceptions, and a References section.
@@ -5347,8 +5347,8 @@
 
 	* src/insets/insettabular.C (recomputeTextInsets): removed function
 
-	* src/tabular.C (SetWidthOfMulticolCell): 
-	(SetWidthOfCell): 
+	* src/tabular.C (SetWidthOfMulticolCell):
+	(SetWidthOfCell):
 	(calculate_width_of_column_NMC): fixed return value so that it really
 	only returns true if the column-width has changed (there where
 	problems with muliticolumn-cells in this column).
@@ -5365,8 +5365,8 @@
 
 	* src/insets/insettabular.C (resetPos): scroll tabular automatically.
 
-	* src/commandtags.h: 
-	* src/LyXAction.C (init): 
+	* src/commandtags.h:
+	* src/LyXAction.C (init):
 	* src/insets/inset.C (LocalDispatch): added support for
 	LFUN_SCROLL_INSET.
 
@@ -5466,7 +5466,7 @@
 	* src/lastfiles.[Ch] (operator): return string const
 
 	* src/buffer.C (parseSingleLyXformat2Token): pass string to
-	istringstream not char const *. 
+	istringstream not char const *.
 	move token.end() out of loop.
 	(readFile): move initializaton of token
 
@@ -5479,7 +5479,7 @@
 	better and covering more of the unwritten rules that we have.
 
 	* development/Code_rules/Recommendations: a couple of wording
-	changes. 
+	changes.
 
 2000-08-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -5514,14 +5514,14 @@
 	(Clone): removed
 	(getScreenLabel): made pure virtual
 	new InsetCommandParams operators== and !=
-	
+
 	* src/insets/insetbib.[Ch] (InsetBibKey, InsetBibtex): new
 	c-tors based on InsetCommandParams. Removed others.
 	* src/insets/insetinclude.[Ch]: ditto
 	* src/insets/insetlabel.[Ch]: ditto
 	* src/insets/insetparent.[Ch]: ditto
 	* src/insets/insetref.[Ch]: ditto. Also moved gotoLabel into .C
-	
+
 	* src/buffer.C (parseSingleLyXformat2Token, readInset): all
 	insets derived from InsetCommand created using similar c-tors
 	based on InsetCommandParams
@@ -5604,7 +5604,7 @@
 	(getFromLyXName): move infotab.end() out of loop.
 
 	* config/lyxinclude.m4 (CXXFLAGS): change for 2.96 add
-	-fvtable-thunks -ffunction-sections -fdata-sections 
+	-fvtable-thunks -ffunction-sections -fdata-sections
 
 2000-08-03  Dekel Tsur  <dekel@math.tau.ac.il>
 
@@ -5628,7 +5628,7 @@
 	* src/lyx_gui_misc.C: stripped out old FD_index_form code
 
 	* src/lyxfunc.C (dispatch): use signals to insert index entry
-	
+
 	* src/frontends/Dialogs.h: new signal createIndex
 
 	* src/frontends/xforms/FormCommand.[Ch],
@@ -5641,12 +5641,12 @@
 	* src/frontends/xforms/FormIndex.[Ch],
 	* src/frontends/xforms/forms/form_index.fd: xforms implementation
 	of the Index dialog
-	
+
 2000-08-01  Dekel Tsur  <dekel@math.tau.ac.il>
 
-	* src/mathed/math_write.C (MathDecorationInset::Write) Put \protect 
+	* src/mathed/math_write.C (MathDecorationInset::Write) Put \protect
 	before \overbrace, \underbrace, \overleftarrow, or \overrightarrow.
-	
+
 2000-08-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/insets/insetref.C (Latex): rewrite so that there is now
@@ -5708,7 +5708,7 @@
 	* src/insets/insetloa.[Ch]: redundant
 	* src/insets/insetlof.[Ch]: ditto
 	* src/insets/insetlot.[Ch]: ditto
-	
+
 	* src/frontends/xforms/forms/form_url.fd: tweaked!
 	* src/frontends/xforms/forms/form_citation.fd: ditto
 
@@ -5745,7 +5745,7 @@
 
 	* src/insets/insettabular.h: removed initFeatures() as it's not needed.
 
-	* src/commandtags.h: 
+	* src/commandtags.h:
 	* src/LyXAction.C (init): added LFUN_LAYOUT_TABULAR and
 	LFUN_TABULAR_FEATURES.
 
@@ -5775,7 +5775,7 @@
 2000-07-31  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/translator.h (equal_1st_in_pair::operator()): take
-	const ref pair_type as arg. 
+	const ref pair_type as arg.
 	(equal_2nd_in_pair::operator()): ditto
 	(Translator::~Translator): remove empty d-tor.
 
@@ -5798,8 +5798,8 @@
 	* src/frontends/xforms/RadioButtonGroup.h: include header
 	<utility> instead of <pair.h>
 
-	* src/insets/insetgraphicsParams.C: add using directive. 
-	(readResize): change return type to void. 
+	* src/insets/insetgraphicsParams.C: add using directive.
+	(readResize): change return type to void.
 	(readOrigin): ditto.
 
 	* src/lyxfunc.C (getStatus): add missing break for build-program
@@ -5824,7 +5824,7 @@
 2000-07-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/frontends/xforms/FormCitation.h: fix conditioning around
-	#pragma. 
+	#pragma.
 
 2000-07-31  Juergen Vigna  <jug@sad.it>
 
@@ -5849,20 +5849,20 @@
 	* src/frontends/xforms/forms/form_graphics.fd: Added file, the
 	xforms form definition of the graphics dialog.
 
-	* src/frontends/xforms/FormGraphics.h: 
+	* src/frontends/xforms/FormGraphics.h:
 	* src/frontends/xforms/FormGraphics.C: Added files, the
 	GUIndependent code of InsetGraphics
 
-	* src/insets/insetgraphics.h: 
+	* src/insets/insetgraphics.h:
 	* src/insets/insetgraphics.C: Major writing to make it work.
 
-	* src/insets/insetgraphicsParams.h:	
+	* src/insets/insetgraphicsParams.h:
 	* src/insets/insetgraphicsParams.C: Added files, parameter passing
 	struct between InsetGraphics and GUI.
 
 	* src/LaTeXFeatures.h:
 	* src/LaTeXFeatures.C (c-tor, require, getPackages): Enabled
-	support for graphicx package. 
+	support for graphicx package.
 
 	* src/buffer.C (parseSingleLyXformat2Token): Fixed read support
 	for the graphics inset.
@@ -5871,13 +5871,13 @@
 	InsetGraphicsParams. this is a template to translate between two
 	types.
 
-	* src/frontends/xforms/RadioButtonGroup.h: 
+	* src/frontends/xforms/RadioButtonGroup.h:
 	* src/frontends/xforms/RadioButtonGroup.C: Added files, Comprise a
 	way to easily control a radio button group.
 
 2000-07-28  Juergen Vigna  <jug@sad.it>
 
-	* src/insets/insettabular.C (LocalDispatch): 
+	* src/insets/insettabular.C (LocalDispatch):
 	(TabularFeatures): added support for lyx-functions of tabular features.
 	(cellstart): refixed this function after someone wrongly changed it.
 
@@ -5890,10 +5890,10 @@
 	checking.  NOTE: It seems that pressing ESC to cancel the dialog also
 	triggers the callback for input checking. As a result we sometimes get
 	"LyX: This shouldn't happen..." printed to cerr.
-	(input): Started using status variable since I only free() on 
+	(input): Started using status variable since I only free() on
 	destruction.  Some input checking for paths and font sizes.
 
-	* src/frontends/xforms/FormPreferences.h: Use status to control 
+	* src/frontends/xforms/FormPreferences.h: Use status to control
 	activation of Ok and Apply
 
 	* src/frontends/xforms/forms/form_preferences.fd: Setup input return
@@ -5977,7 +5977,7 @@
 
 	* src/frontends/Dialogs.h: add signals showUrl, createUrl.
 
-	* src/frontends/xforms/FormCitation.C (apply): uses 
+	* src/frontends/xforms/FormCitation.C (apply): uses
 	InsetCommandParams.
 
 	* src/frontends/xforms/form_url.C
@@ -5995,7 +5995,7 @@
 2000-07-26  Juergen Vigna  <jug@sad.it>
 	* renamed frontend from gtk to gnome as it is that what is realized
 	and did the necessary changes in the files.
-	
+
 2000-07-26  Marko Vendelin <markov@ioc.ee>
 	* autogen.sh
 	* configure.in: cleaning up gnome configuration scripts
@@ -6045,32 +6045,32 @@
 
 	* src/frontends/xforms/Toolbar_pimpl.C (updateLayoutList): run
 	gettext on the style string right before inserting them into the
-	combox. 
+	combox.
 
 	* autogen.sh: add code to extract style strings form layout files,
-	not good enough yet. 
+	not good enough yet.
 
 	* src/frontends/gtk/.cvsignore: add MAKEFILE
 
 	* src/MenuBackend.C (read): run the label strings through gettext
 	before storing them in the containers.
 
-	* src/ext_l10n.h: new file 
+	* src/ext_l10n.h: new file
 
 	* autogen.sh : generate the ext_l10n.h file here
 
 2000-07-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxrc.C (read): do not use LyXLex::lex() to parse set_color
-	arguments. 
+	arguments.
 
 	* lib/ui/default.ui: fix a couple of typos.
 
-	* config/gnome/gtk.m4: added (and added to the list of files in 
+	* config/gnome/gtk.m4: added (and added to the list of files in
 	autogen.sh).
 
 	* src/insets/insetinclude.C (unique_id): fix when we are using
-	lyxstring instead of basic_string<>. 
+	lyxstring instead of basic_string<>.
 	* src/insets/insettext.C (LocalDispatch): ditto.
 	* src/support/filetools.C: ditto.
 
@@ -6104,10 +6104,10 @@
 	function, used as a shortcut.
 	(create_submenu): align correctly the shortcuts on the widest
 	entry.
-	
+
 	* src/MenuBackend.h: MenuItem.label() only returns the label of
 	the menu without shortcut; new method shortcut().
-	
+
 2000-07-14  Marko Vendelin <markov@ioc.ee>
 
 	* src/frontends/gtk/Dialogs.C:
@@ -6194,7 +6194,7 @@
 	MenuItem. Add documentations tags "///", remove empty MenuItem
 	destructor, remove private default contructor.
 
-	* src/MenuBackend.C (MenuItem): remove unneeded copy contructor 
+	* src/MenuBackend.C (MenuItem): remove unneeded copy contructor
 	(add): return *this
 	(read): more string mlabel and mname to where they are used
 	(read): remove unused variables mlabel and mname
@@ -6211,15 +6211,15 @@
 
 	* several files: more enahncements to NEW_INSETS and the resulting
 	LyXParagraph code.
-	
-	* lib/lyxrc.example (\date_insert_format): move to misc section 
+
+	* lib/lyxrc.example (\date_insert_format): move to misc section
 
 	* config/lyxinclude.m4 (LYX_CXX_STL_STRING): allow to use the gcc
-	bastring and use AC_CACHE_CHECK. 
+	bastring and use AC_CACHE_CHECK.
 	(LYX_CXX_GOOD_STD_STRING): new check. Checks if the std::string of
-	the system have the newest methods. uses AC_CACHE_CHECK 
-	(LYX_CXX_MUTABLE): use AC_CACHE_CHECK 
-	(LYX_CXX_PARTIAL): use AC_CACHE_CHECK 
+	the system have the newest methods. uses AC_CACHE_CHECK
+	(LYX_CXX_MUTABLE): use AC_CACHE_CHECK
+	(LYX_CXX_PARTIAL): use AC_CACHE_CHECK
 	(LYX_CXX_NAMESPACES): use AC_CACHE_CHECK
 
 	* configure.in: add LYX_CXX_GOOD_STD_STRING
@@ -6239,14 +6239,14 @@
 2000-07-23  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* Lot of files: add pragma interface/implementation.
-	
+
 	* src/lyx_main.C (ReadUFile): new method. Read the UI file.
 
 	* lib/ui/default.ui: new file (ans new directory). Contains the
 	default menu and toolbar.
 
 	* src/lyxrc.[Ch]: new variable ui_file. Move toolbardefaults to
-	global space. Toolbars are now read (as menus) in ui files. 
+	global space. Toolbars are now read (as menus) in ui files.
 
 	* src/debug.C: change Debug::TOOLBAR to Debug::GUI.
 
@@ -6255,17 +6255,17 @@
 	toggle state of the function anyway.
 	(getStatus): add code for LFUN_VC* functions (mimicking what is
 	done in old-style menus)
-	
+
 	* src/lyxfunc.C (Dispatch): news functions LFUN_SWITCHBUFFER,
 	LFUN_HELP_CREDITS, LFUN_HELP_VERSION, LFUN_HELP_OPEN.
 
 	* src/LyXView.[Ch]: add code for the NEW_MENUBAR define.
-	* src/BufferView_pimpl.C: ditto. 
-	* src/lyxfunc.C: ditto. 	
+	* src/BufferView_pimpl.C: ditto.
+	* src/lyxfunc.C: ditto.
 
 	* src/LyXView.h: add a define NEW_MENUBAR (commented out by
 	default). This replaces old-style menus by new ones.
-	
+
 	* src/MenuBackend.[Ch]: new classes MenuBackend, Menu and
 	MenuItem. Contain the data structure of a menu.
 
@@ -6274,26 +6274,26 @@
 	* src/lyxfunc.C (Dispatch): ditto.
 
 	* src/LyXView.C (setLayout): new method, which just calls
-	Toolbar::setLayout(). 
+	Toolbar::setLayout().
 	(updateLayoutChoice): move part of this method in Toolbar.
 
 	* src/toolbar.[Ch]: removed.
-	
+
 	* src/frontend/xforms/Toolbar_pimpl.[Ch]: new files. The xforms
-	implementation the toolbar. 
+	implementation the toolbar.
 
 	* src/frontend/Toolbar.[Ch]: new files. The abstract interface of
 	the toolbar. It might make sense to merge it with ToolbarDefaults
-	later. 
-	(setLayout): new function. 
+	later.
+	(setLayout): new function.
 	(updateLayoutList): ditto.
 	(openLayoutList): ditto.
-	
+
 	* src/frontend/xforms/Toolbar_pimpl.[Ch]: new files. Contain the
 	xforms implementation of the toolbar.
 	(get_toolbar_func): comment out, since I do not
-	know what it is good for. 
-	
+	know what it is good for.
+
 	* src/ToolbarDefaults.h: Add the ItemType enum.
 
 	* src/support/StrPool.[Ch]: new class. Acts as a reference holder
@@ -6327,14 +6327,14 @@
 	* src/ToolbarDefaults.C: add include "lyxlex.h"
 
 	* files using the old table/tabular: use NEW_TABULAR to control
-	compilation of old tabular stuff. 
+	compilation of old tabular stuff.
 
 	* src/paragraph.C (SimpleTeXOnePar): NEW_INSETS: move some #ifdef
 	to correct place.
 
 	* src/buffer.C (parseSingleLyXformat2Token): NEW_INSETS: fix the
 	planemet in reading of old style floats, fix the \end_deeper
-	problem when reading old style floats. 
+	problem when reading old style floats.
 
 2000-07-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
@@ -6352,7 +6352,7 @@
 2000-07-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/Makefile.am (INCLUDES): remove image directory from include
-	path. 
+	path.
 
 	* src/bullet_forms.C (create_form_form_bullet): small cleanup.
 	* src/bullet_forms_cb.C (BulletPanelCB): ditto.
@@ -6361,7 +6361,7 @@
 	from the disk.
 
 	* lib/images/*.xpm: change the icons to use transparent color for
-	background. 
+	background.
 
 	* src/toolbar.C (update): change the color of the button when it
 	is toggled on.
@@ -6375,16 +6375,16 @@
 	* src/LyXView.C (showState): new function. Shows font information
 	in minibuffer and update toolbar state.
 	(LyXView): call Toolbar::update after creating the
-	view. 
+	view.
 
 	* src/toolbar.C: change toollist to be a vector instead of a
 	linked list.
 	(BubbleTimerCB): get help string directly from the callback
-	argument of the corresponding icon (which is the action) 
+	argument of the corresponding icon (which is the action)
 	(set): remove unnecessary ugliness.
 	(update): new function. update the icons (depressed, disabled)
 	depending of the status of the corresponding action.
-	
+
 	* src/toolbar.h: remove help in toolbarItem
 
 2000-07-19  Dekel Tsur  <dekel@math.tau.ac.il>
@@ -6412,7 +6412,7 @@
 	* lots of files: apply the NEW_INSETS on all code that will not be
 	needed when we move to use the new insets. Enable the define in
 	lyxparagrah.h to try it.
-	
+
 	* src/insets/insettabular.C (cellstart): change to be a static
 	inline function
 	(InsetTabular): initialize buffer in the initializer list.
@@ -6428,7 +6428,7 @@
 
 	* src/commandtags.h: do not include "debug.h" which does not
 	belong there. #include it in some other places because of this
-	change. 
+	change.
 
 2000-07-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -6438,10 +6438,10 @@
 	(getPixmap): nuked.
 	(setPixmap): new function. Loads from disk and sets a pixmap on a
 	botton; the name of the pixmap file is derived from the command
-	name. 
+	name.
 
 	* src/toolbar.h: remove members isBitmap and pixmap from
-	toobarItem struct. 
+	toobarItem struct.
 
 	* lib/images/*.xbm *_bw.xpm: remove (not used any more).
 	* lib/images/: move many files from images/banner.xpm.
@@ -6451,7 +6451,7 @@
 	* src/lyx_gui.C (create_forms): remove TWO_COLORS_ICONS support.
 	* src/toolbar.C: ditto.
 	* configure.in: ditto.
-	* INSTALL: document. 
+	* INSTALL: document.
 
 	* src/spellchecker.C (ShowSpellChecker): use CancelCloseCB when
 	the spellchecker popup is closed from the WM.
@@ -6479,7 +6479,7 @@
 	hide() to the inset's hide signal
 	(show): modified to use fl_set_object_position rather than
 	fl_set_object_geometry wherever possible
-	
+
 2000-07-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/insets/lyxinset.h: add caption code
@@ -6510,7 +6510,7 @@
 
 	* src/Variables.[Ch]: new files. Intended to be used for language
 	specific strings (like \chaptername) and filename substitution in
-	commands. 
+	commands.
 
 	* src/trans.C (AddDeadkey): replace keyword "all" with "native" in
 	kmap files.
@@ -6534,7 +6534,7 @@
 	* src/lyx_cb.C (LaTeXOptions): ditto
 
 	* src/lyx_gui.C (create_forms): do not handle the
-	fd_latex_options form. 
+	fd_latex_options form.
 
 2000-07-18  Juergen Vigna  <jug@sad.it>
 
@@ -6614,7 +6614,7 @@
 2000-07-17  R. Lahaye  <lahaye@postech.ac.kr>
 
 	* src/lyx_gui.C (LyXGUI): make sure that the height is large
-	enough. 
+	enough.
 
 2000-07-17  Kayvan Sylvan <ksylvan@synopsys.com>
 
@@ -6627,7 +6627,7 @@
 2000-07-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* some whitespace chagnes to a number of files.
-	
+
 	* src/support/DebugStream.h: change to make it easier for
 	doc++ to parse correctly.
 	* src/support/lyxstring.h: ditto
@@ -6647,9 +6647,9 @@
 
 	* src/insets/insetlatex.h: remove file
 	* src/insets/insetlatex.C: remove file
-	
+
 	* src/insets/insetindex.[Ch] (InsetPrintIndex): remove default
-	constructor 
+	constructor
 	(InsetPrintIndex): remove destructor
 
 	* src/insets/insetinclude.h: remove default constructor
@@ -6751,7 +6751,7 @@
 	did submit that to Karl).
 
 	* configure.in: use -isystem instead of -I for X headers. This
-	fixes a problem on solaris with a recent gcc; 
+	fixes a problem on solaris with a recent gcc;
 	put the front-end code after the X detection code;
 	configure in sigc++ before lib/
 
@@ -6795,7 +6795,7 @@
 
 	* text.C (Backspace): Prevent rebreaking of a row if it is the last
 	row of the paragraph.
-	(SetHeightOfRow): Call to PrepareToPrint with 7th argument = false 
+	(SetHeightOfRow): Call to PrepareToPrint with 7th argument = false
 	to prevent calculation of bidi tables
 
 2000-07-07  Juergen Vigna  <jug@sad.it>
@@ -6822,7 +6822,7 @@
 	* src/insets/insettext.C (draw): set the status of the bv->text to
 	CHANGED_IN_DRAW if top_x changed and so a reinit is necessary.
 
-	* src/screen.C (DrawOneRow): 
+	* src/screen.C (DrawOneRow):
 	(DrawFromTo): redraw the actual row if something has changed in it
 	while drawing.
 
@@ -6845,7 +6845,7 @@
 	* src/insets/insetcite.[Ch] and elsewhere: stripped out xforms
 	citation dialog from main code and placed it in src/frontends/xforms.
 	Dialog launched through signals instead of callbacks
-	
+
 2000-07-06  R. Lahaye  <lahaye@postech.ac.kr>
 
 	* lyx.man: update the options description.
@@ -6853,7 +6853,7 @@
 2000-07-05  R. Lahaye  <lahaye@postech.ac.kr>
 
 	* src/lyx_gui.C src/lyx_main.C: improve the -geometry support,
-	handle neg values, set min width to 590, add doc about -display  
+	handle neg values, set min width to 590, add doc about -display
 
 2000-07-05  Juergen Vigna  <jug@sad.it>
 
@@ -6901,7 +6901,7 @@
 	(set_font_norm_type): New method.
 
 	* src/paragraph.C (TeXOnePar): Put "\inputencoding{}" between
-	paragraphs with different encodings.  
+	paragraphs with different encodings.
 
 	* src/text.C (is_arabic, is_nikud, TransformChar): Moved to encoding.C
 	(TransformChar): Changed to work correctly with Arabic points.
@@ -6924,7 +6924,7 @@
 
 	* src/insets/lyxinset.h: add THEOREM_CODE
 
-	* src/insets/insettheorem.[Ch]: new files 
+	* src/insets/insettheorem.[Ch]: new files
 
 	* src/insets/insetminipage.C: (InsertInset): remove
 
@@ -6934,7 +6934,7 @@
 
 	* src/insets/insetlist.C: (InsertList): remove
 
-	* src/insets/insetfootlike.[Ch]: new files 
+	* src/insets/insetfootlike.[Ch]: new files
 
 	* src/insets/insetfoot.C: inherit from InsetFootLike instead of
 	InsetCollapsable.
@@ -7028,7 +7028,7 @@
 
 	* src/insets/insetinclude.h:
 	* src/insets/insetinclude.C (Validate): keeps a list of included files.
-	(Linuxdoc): 
+	(Linuxdoc):
 	(DocBook): new export methods.
 
 	* src/lyx_cb.C: adjust to the new calling sequence for makeLinuxDocFile
@@ -7064,17 +7064,17 @@
 	* src/insets/insetindex.C (Edit): add a callback when popup is
 	closed by the WM.
 
-	* src/insets/insettext.C (LocalDispatch): 
-	* src/insets/insetmarginal.h: 
-	* src/insets/insetlist.h: 
-	* src/insets/insetfoot.h: 
-	* src/insets/insetfloat.h: 
+	* src/insets/insettext.C (LocalDispatch):
+	* src/insets/insetmarginal.h:
+	* src/insets/insetlist.h:
+	* src/insets/insetfoot.h:
+	* src/insets/insetfloat.h:
 	* src/insets/insetert.h: add a missing std:: qualifier.
 
 2000-06-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/lyxsum.C (sum): '\0' teminate file read when using
-	strstream. 
+	strstream.
 
 	* src/insets/lyxinset.h: add FLOAT_CODE and MINIPAGE_CODE
 
@@ -7106,7 +7106,7 @@
 	new files
 
 	* src/insets/Makefile.am (libinsets_la_SOURCES): add new files
-	
+
 	* src/lyxfunc.C (Dispatch): cases for new insets/commands
 
 	* src/Makefile.am (lyx_SOURCES): add the new files
@@ -7114,7 +7114,7 @@
 	* src/LyXAction.C (init): add LFUN_INSET_MARGINAL,
 	LFUN_INSET_MINIPAGE, LFUN_INSET_FLOAT, LFUN_INSET_LIST
 	* src/commandtags.h: ditto
-	
+
 	* src/LaTeXFeatures.h: add a std::set of used floattypes
 
 	* src/LaTeXFeatures.C (getPackages): add basic support for float.sty
@@ -7122,14 +7122,14 @@
 	* src/FloatList.[Ch] src/Floating.h: new files
 
 	* src/CutAndPaste.C (SwitchLayoutsBetweenClasses): change call to
-	InsertInset. 
+	InsertInset.
 	* src/lyx_cb.C (TableApplyCB): ditto
 	* src/text.C: ditto
 	* src/text2.C: ditto
 	* src/buffer.C (SimpleLinuxDocOnePar): ditto
 	(parseSingleLyXformat2Token): ditto + add code for
 	backwards compability for old float styles + add code for new insets
-	
+
 	* src/lyxparagraph.[Ch] (InsertChar(size_type, char, LyXFont)): new
 	method
 	(InsertInset(size_type, Inset *, LyXFont)): new method
@@ -7137,9 +7137,9 @@
 	with a LyXFont(ALL_INHERIT).
 	(InsetInset(size_type, Inset*)): changed to use InsetChar to
 	insert the META_INSET.
-	
+
 	* sigc++/thread.cc (Privete<int>::operator int&): move definition
-	out of line. 
+	out of line.
 	* sigc++/thread.h (Threads): from here
 
 	* sigc++/scope.cc (ScopeIterator_::ScopeIterator_): move
@@ -7155,15 +7155,15 @@
 
 	* INSTALL: add instructions for doing a binary distribution.
 
-	* development/tools/README.bin.example: update a bit. 
+	* development/tools/README.bin.example: update a bit.
 
 2000-06-26  Lior Silberman <slior@math.huji.ac.il>
 
-	* src/lyxrc.C: 
+	* src/lyxrc.C:
 	* lib/lyxrc.example: new lyxrc tag \set_color.
 
-	* src/lyxfunc.C (Dispatch): 
-	* src/commandtags.h: 
+	* src/lyxfunc.C (Dispatch):
+	* src/commandtags.h:
 	* src/LyXAction.C: new lyxfunc "set-color".
 
 	* src/LColor.[Ch] (setColor): new method to set colors from a lyxname
@@ -7246,7 +7246,7 @@
 
 2000-06-20  Dekel Tsur  <dekel@math.tau.ac.il>
 
-	* src/lyx_gui.C (create_forms): Add "Reset" option to the language 
+	* src/lyx_gui.C (create_forms): Add "Reset" option to the language
 	combox in the character popup
 
 	* src/lyx_cb.C (UserFreeFont): Add argument to the method:
@@ -7263,28 +7263,28 @@
 	* src/LyXView.h (struct FD_form_main): remove, LyXView inherits
 	from SigC::Object
 	(form_main_): remove
-	
-	* src/LyXView.C (LyXView_AutosaveTimerCB): remove 
+
+	* src/LyXView.C (LyXView_AutosaveTimerCB): remove
 	(create_form_form_main): remove FD_form_main stuff, connect to
 	autosave_timeout signal
 
-	* src/LyXView.[Ch] (getMainForm): remove 
+	* src/LyXView.[Ch] (getMainForm): remove
 	(UpdateTimerCB): remove
 	* src/BufferView_pimpl.h: inherit from SigC::Object
 
 	* src/BufferView_pimpl.C (Pimpl): connect to cursor_timeout with
 	signal instead of callback
 
-	* src/BufferView.[Ch] (cursorToggleCB): remove 
+	* src/BufferView.[Ch] (cursorToggleCB): remove
 
 2000-06-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/BufferView_pimpl.C: changes because of the one below
 
 	* src/screen.[Ch]: Made the lyxscreen take LyXText as argument
-	instead of storing a pointer to a LyXText. 
+	instead of storing a pointer to a LyXText.
 
-	* src/buffer.[Ch]: apply Baruch's remove isdviclean patch. 
+	* src/buffer.[Ch]: apply Baruch's remove isdviclean patch.
 
 2000-06-10  Dekel Tsur  <dekel@math.tau.ac.il>
 
@@ -7302,7 +7302,7 @@
 	* src/vspace.C (nextToken): use stringfunctions instead of sscanf.
 
 	* src/insets/insettext.C (SetParagraphData):
-	(Read): 
+	(Read):
 	(InsetText):  fixes for multiple paragraphs.
 
 2000-06-17  Kayvan A. Sylvan  <kayvan@sylvan.com>
@@ -7311,14 +7311,14 @@
 	to work around a bug with the Makefiles when doing ``make lyxrpm''.
 	This should be fine, however, since we generally don't want to be
 	verbose when making an RPM.
-	
+
 2000-06-16  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* lib/scripts/fig2pstex.py: New file
 
 2000-06-16  Juergen Vigna  <jug@sad.it>
 
-	* src/insets/insettabular.C (UpdateLocal): 
+	* src/insets/insettabular.C (UpdateLocal):
 	* src/insets/insettext.C (UpdateLocal): fixed mark_dirty problem.
 	(LocalDispatch): Changed all functions to use LyXText.
 
@@ -7327,7 +7327,7 @@
 	* src/text.C (SetHeightOfRow): call inset::update before requesting
 	any width/height.
 
-	* src/insets/insettext.C (update): 
+	* src/insets/insettext.C (update):
 	* src/insets/insettabular.C (update): added implementation
 
 	* src/insets/lyxinset.h: added update function
@@ -7336,7 +7336,7 @@
 
 	* src/text.C (SelectNextWord): protect against null pointers with
 	old-style string streams. (fix from Paul Theo Gonciari
-	<gptheo@yahoo.com>) 
+	<gptheo@yahoo.com>)
 
 	* src/cite.[Ch]: remove erroneous files.
 
@@ -7364,7 +7364,7 @@
 	* src/insets/ExternalTemplate.C: add a "using" directive.
 
 	* src/lyx_main.h: remove the act_ struct, which seems unused
-	anyway. 
+	anyway.
 
 2000-06-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
@@ -7396,7 +7396,7 @@
 	* src/xtl/, src/lyxfunc.[Ch], src/buffer.[Ch]:  Removed XTL and
 	and the Dispatch methods that used it.
 
-	* src/frontends/Liason.[Ch]: replaced with a Liason namespace for 
+	* src/frontends/Liason.[Ch]: replaced with a Liason namespace for
 	access to functions formerly kept in Dispatch.
 
 2000-05-19  Allan Rae  <rae@lyx.org>
@@ -7568,7 +7568,7 @@
 	* src/LString.h: JMarc's <string> header fix
 
 	* src/PrinterParams.h: Used string for most data to remove some
-	ugly code in the Print dialog and avoid even uglier code when 
+	ugly code in the Print dialog and avoid even uglier code when
 	appending the ints to a string for output.
 
 	* src/buffer.C (Dispatch): Added a couple of braces to fix an error
@@ -7605,7 +7605,7 @@
 
 	* src/frontends/xforms/FormCopyright.[Ch]: Modified to use a friendly
 	extern "C" callback instead of static member functions.  Hopefully,
-	JMarc will be able to compile this.  I haven't changed 
+	JMarc will be able to compile this.  I haven't changed
 	forms/form_copyright.fd yet. Breaking one of my own rules already.
 
 	* src/commandtags.h: New xtl-based LFUN's no description in LyXAction
@@ -7720,7 +7720,7 @@
 
 2000-02-08  Allan Rae <rae@lyx.org>
 
-	* all Makefile.am:  Fixed up so the make targets dist, distclean, 
+	* all Makefile.am:  Fixed up so the make targets dist, distclean,
 	install and uninstall all work even if builddir != srcdir.  Still
 	have a new sigc++ minidist update to come.
 
@@ -7730,7 +7730,7 @@
 
 	* config/lyxinclude.m4, development/tools/makeLyXsigc.sh:
 	Many mods to get builddir != srcdir working.
-	
+
 	* sigc++/: Upgraded to 0.8.7.  This includes many needed fixes both
 	for building on NT and so we can do the builddir != srcdir stuff.
 
@@ -7743,14 +7743,14 @@
 	system supplied library compilation.
 
 	* sigc++/*, sigc++/macros/*, config/sigc++.m4, config/lyxinclude.m4:
-	Added a 'mini' distribution of libsigc++.  If you feel the urge to 
-	change something in these directories - Resist it.  If you can't 
+	Added a 'mini' distribution of libsigc++.  If you feel the urge to
+	change something in these directories - Resist it.  If you can't
 	resist the urge then you should modify the following script and rebuild
 	the dist.  LYX_WITH_SIGC in lyxinclude.m4 is the wrapper to make it
 	all happen.  Still uses a hacked version of libsigc++'s configure.in.
 	I'm quite happy with the results.  I'm not sure the extra work to turn
 	the sigc++/configure.in into a few extra AC_DEFUNs in sigc++.m4 is
-	worth the trouble and would probably lead to extra maintenance 
+	worth the trouble and would probably lead to extra maintenance
 	headaches.
 	I haven't tested the following important make targets: install, dist.
 	Not ready for prime time but very close.  Maybe 1.1.5.
@@ -7792,7 +7792,7 @@
 	* src/support/LSubstring.C (operator): simplify
 
 	* src/lyxtext.h: removed bparams, use buffer_->params instead
-	
+
 	* src/lyxrow.h: make Row a real class, move all variables to
 	private and use accessors.
 
@@ -7824,7 +7824,7 @@
 	(SimpleTeXOneTablePar): ditto
 	(TeXContTableRows): ditto
 	(SimpleTeXSpecialChars): ditto
-	
+
 
 	* src/lyxcursor.h: make LyXCursor a real class, move all variables
 	to private and use accessors.
@@ -7843,9 +7843,9 @@
 	(beforeChange): change for new timer
 
 	* src/BufferView.h (cursorToggleCB): removed last paramter because
-	of new timer code. 
+	of new timer code.
 
-	* src/BufferView.C (C_BufferView_CursorToggleCB): removed 
+	* src/BufferView.C (C_BufferView_CursorToggleCB): removed
 	(cursorToggleCB): change because of new timer code
 
 	* lib/CREDITS: updated own mailaddress
@@ -7865,7 +7865,7 @@
 	* lib/reLyX/configure.in (VERSION): avoid using a previously
 	generated reLyX wrapper to find out $prefix.
 
-	* lib/examples/eu_adibide_lyx-atua.lyx: 
+	* lib/examples/eu_adibide_lyx-atua.lyx:
 	* lib/examples/eu_adibide_gordina.lyx: new examples for the Basque
 	translation of the Tutorial (Dooteo)
 
@@ -7879,7 +7879,7 @@
 	* src/insetbib.C: InsetBibtex::getKeys() uses STL containers
 	(Dekel).
 
-	* src/insets/insetcommand.h: data members made private. 
+	* src/insets/insetcommand.h: data members made private.
 
 2000-06-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
@@ -7895,8 +7895,8 @@
 2000-06-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/reLyX/reLyXmain.pl, lib/reLyX/LastLyX.pm: fix suffix of file
-	in \include{} (from Tomasz Motylewski <motyl@stan.chemie.unibas.ch>) 
-	
+	in \include{} (from Tomasz Motylewski <motyl@stan.chemie.unibas.ch>)
+
 	* NEWS: update.
 
 	* lib/CREDITS: update entry for Martin Vermeer.
@@ -7931,7 +7931,7 @@
 
 2000-06-02  Dekel Tsur  <dekel@math.tau.ac.il>
 
-	* src/BufferView2.C (removeAutoInsets): Fix a bug: 
+	* src/BufferView2.C (removeAutoInsets): Fix a bug:
 	Do not call to SetCursor when the paragraph is a closed footnote!
 
 2000-06-01  Dekel Tsur  <dekel@math.tau.ac.il>
@@ -7952,7 +7952,7 @@
 	* src/menus.C (Add_to_refs_menu): Limit the size of each item in
 	the menus. Also fixed a bug.
 
-	* src/lyx_cb.C (updateAllVisibleBufferRelatedPopups): Do not close 
+	* src/lyx_cb.C (updateAllVisibleBufferRelatedPopups): Do not close
 	the math panels when switching buffers (unless new buffer is readonly).
 
 	* src/BufferView.C (NoSavedPositions)
@@ -7964,7 +7964,7 @@
 	less of dvi dirty or not.
 
 	* src/trans_mgr.[Ch] (insert): change first parameter to string
-	const &.  
+	const &.
 
 	* src/chset.[Ch] (encodeString): add const to first parameter
 
@@ -7978,12 +7978,12 @@
 	the latex log. Uses now regexps.
 
 	* lib/layouts/stdlists.inc (lyxlist): fix the label to use \hfil
-	instead of the box hack or \hfill. 
+	instead of the box hack or \hfill.
 
 2000-05-31  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxfunc.C (doImportHelper): do not create the file before
-	doing the actual import. 
+	doing the actual import.
 	(doImportASCIIasLines): create a new file before doing the insert.
 	(doImportASCIIasParagraphs): ditto.
 
@@ -7991,13 +7991,13 @@
 
 	* lyx.man: remove mention of color-related switches.
 
-	* src/lyxrc.C: remove RC_SELECTIONCOLOR and RC_BACKGROUNDCOLOR. 
+	* src/lyxrc.C: remove RC_SELECTIONCOLOR and RC_BACKGROUNDCOLOR.
 
 	* src/lyx_gui.C: remove all the color-related ressources, which
 	are not used anymore.
 
 	* src/lyx_gui_misc.C (WarnReadonly): use MakeDisplayPath on file
-	name. 
+	name.
 
 2000-05-31 Dekel Tsur  <dekel@math.tau.ac.il>
 
@@ -8006,14 +8006,14 @@
 2000-05-30 Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/text2.C (InsertStringA): Fix a bug with insertion into table
-	
+
 	* src/trans_mgr.C (insertVerbatim): Do not use insetquote when the
 	text is Hebrew.
 
 2000-05-27  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/text.C (draw): draw bars under foreign language words.
-	
+
 	* src/LColor.[Ch]: add LColor::language
 
 2000-05-27 Dekel Tsur  <dekel@math.tau.ac.il>
@@ -8024,9 +8024,9 @@
 
 	* src/text.C: Use the above for currect cursor movement when there
 	is both RTL & LTR text.
-	
+
 	* src/text2.C: ditto
-	
+
 	* src/bufferview_funcs.C (ToggleAndShow): ditto
 
 2000-05-30  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
@@ -8036,7 +8036,7 @@
 	is done in all other functions, and seems reasonable.
 	(DeleteWordForward): do not jump over non-word stuff, since
 	CursorRightOneWord() already does it.
-	
+
 	Remove the CHECK tag from DeleteLineForward, DeleteWordForward and
 	DeleteWordBackward, since they seem safe to me (since selection is
 	set to "true") DeleteEmptyParagraphMechanism does nothing.
@@ -8057,7 +8057,7 @@
 	* src/menus.C (Add_to_toc_menu): Limit the number of popups, and
 	the number of items per popup.
 	(Add_to_refs_menu): Ditto.
-	
+
 2000-05-26  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxparagraph.h: renamed ClearParagraph() to
@@ -8081,9 +8081,9 @@
 	* src/insets/insettabular.C (TabularFeatures): added missing features.
 
 	* src/tabular.C (DeleteColumn):
-	(AppendColumn): 
+	(AppendColumn):
 	(AppendRow): implemented this functions
-	(cellsturct::operator=): clone the inset too; 
+	(cellsturct::operator=): clone the inset too;
 
 2000-05-23  Juergen Vigna  <jug@sad.it>
 
@@ -8099,7 +8099,7 @@
 	* src/ColorHandler.C (getGCForeground): put more test into _()
 
 	* lib/examples/eu_splash.lyx: new file (Basque translation) from
-	Dooteo. 
+	Dooteo.
 
 	* config/lyxinclude.m4 (LYX_PROG_CXX): use ${CXX} and not g++ to
 	get the version.
@@ -8167,7 +8167,7 @@
 
 	* layouts/hollywood.layout, broadway.layout : move Dialogue to top
 	 of list, change all references to Environment to Command
-	* tex/hollywood.cls : rewrite environments as commands, add 
+	* tex/hollywood.cls : rewrite environments as commands, add
 	\uppercase to interiorshot and exteriorshot to force uppecase.
 	* tex/broadway.cls : rewrite environments as commands. Tweak
 	whitespace.
@@ -8219,7 +8219,7 @@
 	* src/LyXAction.C
 	* src/lyxfunc.C (Dispatch): Added LFUN_LOFVIEW, LFUN_LOTVIEW
 	and LFUN_LOAVIEW
-	
+
 	* src/insets/insetlo*.[Ch]: Made editable
 
 2000-05-20  Lars Gullik Bjønnes  <larsbj@lyx.org>
@@ -8279,7 +8279,7 @@
 	* src/LaTeXFeatures.[Ch]
 	* src/buffer.C
 	* src/lyx_cb.C
-	* src/menus.C	
+	* src/menus.C
 	* src/insets/insetref.[Ch]: Added support for varioref and prettyref.
 
 	* src/buffer.h
@@ -8295,24 +8295,24 @@
 	* src/BufferView2.C (ChangeRefs): New method.
 
 	* src/buffer.C (getLabelList): New method. It replaces the old
-	getReferenceList. The return type is vector<string> instead of 
+	getReferenceList. The return type is vector<string> instead of
 	string.
 
 	* src/insets/insetinclude.C (getLabelList): New method. Replaces
 	the old getLabel() and GetNumberOfLabels() methods.
 	* src/insets/insetlabel.C (getLabelList): ditto
 	* src/mathed/formula.C (getLabelList): ditto
-	
+
 	* src/paragraph.C (String): New method.
 
 	* src/lyx_cb.C (TocSelectCB,TocUpdateCB): Rewritten.
-	Uses the new getTocList() method. 
-	TocSelectCB() now calls to TocUpdateCB() before moving the cursor, 
+	Uses the new getTocList() method.
+	TocSelectCB() now calls to TocUpdateCB() before moving the cursor,
 	which automatically updates the contents of the browser.
 	(RefUpdateCB): Use the new getLabelList method.
 
 	* src/lyxfunc.C (Dispatch): Give an error if the label is not found.
-	
+
 	* src/BufferView2.C (gotoLabel) Use the new getLabelList method.
 
 	* src/spellchecker.C: Added using std::reverse;
@@ -8359,10 +8359,10 @@
 	have 6-digits debug codes.
 
 	* lib/layouts/hollywood.layout:
-	* lib/tex/hollywood.cls: 	
-	* lib/tex/brodway.cls: 
+	* lib/tex/hollywood.cls:
+	* lib/tex/brodway.cls:
 	* lib/layouts/brodway.layout: more commands and fewer
-	environments. Preambles moved in the .cls files. Broadway now has 
+	environments. Preambles moved in the .cls files. Broadway now has
 	more options on scene numbering and less whitespace (from Garst)
 
 	* src/insets/insetbib.C (getKeys): make sure that we are in the
@@ -8379,7 +8379,7 @@
 
 	* src/insets/insettabular.C (Clone): Clone the LyXTabular for
 	undo-handling.
-	(getCellXPos): 
+	(getCellXPos):
 	(draw): fixed cursor position and drawing so that the cursor is
 	visible when before the tabular-inset.
 
@@ -8391,11 +8391,11 @@
 2000-05-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/tex/hollywood.cls: better algorithm for page breaks (Garst)
-	* lib/tex/brodway.cls: ditto 
+	* lib/tex/brodway.cls: ditto
 
 	* lib/layouts/brodway.layout: change alignment of parenthical
 	layout (Garst)
-	
+
 2000-05-12  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* config/lyxinclude.m4 (LYX_PATH_XFORMS): make it clear that only
@@ -8424,23 +8424,23 @@
 	* src/lyxfunc.C: changed all places where insertInset was used so
 	that now if it couldn't be inserted it is deleted!
 
-	* src/TabularLayout.C: 
+	* src/TabularLayout.C:
 	* src/TableLayout.C: added support for new tabular-inset!
 
 	* src/BufferView2.C (insertInset): this now returns a bool if the
 	inset was really inserted!!!
 
-	* src/tabular.C (GetLastCellInRow): 
+	* src/tabular.C (GetLastCellInRow):
 	(GetFirstCellInRow): new helper functions.
 	(Latex): implemented for new tabular class.
-	(TeXCellPostamble): 
-	(TeXCellPreamble): 
-	(TeXBottomHLine): 
+	(TeXCellPostamble):
+	(TeXCellPreamble):
+	(TeXBottomHLine):
 	(TeXTopHLine): new Latex() helper functions.
 
 2000-05-12  Juergen Vigna  <jug@sad.it>
 
-	* src/mathed/formulamacro.C (Read): 
+	* src/mathed/formulamacro.C (Read):
 	* src/mathed/formula.C (Read): read also the \end_inset here!
 
 2000-05-10  Dekel Tsur  <dekel@math.tau.ac.il>
@@ -8461,8 +8461,8 @@
 	* lib/layouts/heb-article.layout: Do not use slanted font shape
 	for Theorem like environments.
 
-	* src/buffer.C (makeLaTeXFile): Always add "american" to 
-	the UsedLanguages list if document language is RTL. 
+	* src/buffer.C (makeLaTeXFile): Always add "american" to
+	the UsedLanguages list if document language is RTL.
 
 2000-05-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -8480,24 +8480,24 @@
 
 	* src/lyxlookup.C (isDeadEvent): use a switch statement instead of
 	a chain of "if". Return false when deadkeys are not handled.
-	
+
 	* src/lyx_main.C (LyX): adapted the code for default bindings.
 
 	* src/kbmap.C (defaultKeyBindings): new method. Performs the default
 	bindings for basic functionality (except deadkeys).
 	(deadKeyBindings): new method. Performs the bindings of deadkeys.
 
-	* src/lyxrc.C (defaultKeyBindings): moved to lyx_main.C 
+	* src/lyxrc.C (defaultKeyBindings): moved to lyx_main.C
 	several methods: handle override_x_deadkeys.
 
 	* src/lyxrc.h: remove the "bindings" map, which did not make much
 	sense anyway. New variable override_x_deadkeys, defaulting to "true".
-	
+
 2000-05-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxfont.C (stateText): use a saner method to determine
 	whether the font is "default". Seems to fix the crash with DEC
-	cxx. 
+	cxx.
 
 	* src/Bullet.[Ch] (Bullet): remove const on parameters.
 
@@ -8545,7 +8545,7 @@
 
 	* src/text.C (draw): do not display an exclamation mark in the
 	margin for margin notes. This is confusing, ugly and
-	uninformative. 
+	uninformative.
 
 	* src/LaTeXFeatures.C (getPackages): load amssymb also when 'Use
 	AMS math' is checked.
@@ -8568,7 +8568,7 @@
 2000-05-04  Dekel Tsur  <dekel@math.tau.ac.il>
 
 	* src/text.C (GetVisibleRow): Improved drawing of vertical lines
-	for appendix/minipage/depth. The lines can be now both in the footnote 
+	for appendix/minipage/depth. The lines can be now both in the footnote
 	frame, and outside the frame.
 
 	* src/text.C (SingleWidth,draw): Correct rendering of Hebrew vowels
@@ -8582,7 +8582,7 @@
 2000-05-05  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/insets/insetspecialchar.C (Read): allow command == '~' for
-	PROTECTED_SEPARATOR 
+	PROTECTED_SEPARATOR
 	(Write): write '~' for PROTECTED_SEPARATOR
 
 2000-05-04  Lars Gullik Bjønnes  <larsbj@lyx.org>
@@ -8675,7 +8675,7 @@
 	* src/lyx_cb.C (TocUpdateCB): Reverse strings for Hebrew paragraphs
 
 	* src/spellchecker.C (RunSpellChecker): Reverse Hebrew strings in
-	the spellchecker popup. 
+	the spellchecker popup.
 
 	* lib/lyxrc.example:  Removed the \number_inset section
 
@@ -8683,15 +8683,15 @@
 
 	* src/insets/figinset.C (various): Use IsFileReadable() to make
 	sure that the file actually exist. Relying on ghostscripts errors
-	is a bad idea since they can lead to X server crashes.	
+	is a bad idea since they can lead to X server crashes.
 
 2000-04-27  Claus Hentschel <claus.hentschel@mbau.fh-hannover.de>
 
 	* intl/loadmsgcat.c (_nl_load_domain): pass O_BINARY as flag to
-	open under CYGWIN 
+	open under CYGWIN
 
 	* lib/lyxrc.example: smallish typo in description of
-	\view_dvi_paper_option 
+	\view_dvi_paper_option
 
 2000-04-26  André Pönitz <poenitz@mathematik.tu-chemnitz.de>
 
@@ -8738,7 +8738,7 @@
 
 	* src/menus.C: revert the change of naming (Figure->Graphic...)
 	from 2000-04-11. It was incomplete and bad.
-	
+
 	* src/LColor.[Ch]: add LColor::depthbar.
 	* src/text.C (GetVisibleRow): use it.
 
@@ -8774,7 +8774,7 @@
 	(DrawOneRow): change second arg to long (from long &)
 	(screen_refresh_y): remove var
 	(scree_refresh_row): ditto
-	
+
 	* src/lyxrow.h: change baseline to usigned int from unsigned
 	short, this brings some implicit/unsigned issues out in the open.
 
@@ -8845,7 +8845,7 @@
 	* src/lyxtext.h src/text.C src/text2.C: removed support for the
 	currentrow, currentrow_y optimization. This did not help a lot and
 	if we want to do this kind of optimization we should rather use
-	cursor.row instead of the currentrow. 
+	cursor.row instead of the currentrow.
 
 	* src/buffer.C (parseSingleLyXformat2Token): fixed mistake in
 	buffer spacing and klyx spacing support.
@@ -8863,17 +8863,17 @@
 
 	* A lot of files: Added Ascii(ostream &) methods to all inset
 	classes. Used when exporting to ASCII.
-	
+
 	* src/buffer.C (writeFileAscii,RoffAsciiTable)
 	* src/paragraph.C (RoffContTableRows): Use the Ascii() methods
 	instead of Latex()
 
 	* src/text2.C (ToggleFree): Disabled implicit word selection when
 	there is a change in the language
-	
+
 	* src/insets/insetspecialchar.C (Linuxdoc,DocBook): Fixed a bug:
 	no output was generated for end-of-sentence inset.
-	
+
 	* src/insets/lyxinset.h
 	* src/buffer.C
 	* src/lyxfunc.C
@@ -8893,7 +8893,7 @@
 
 2000-04-20  Juergen Vigna  <jug@sad.it>
 
-	* src/insets/insettext.C (cutSelection): 
+	* src/insets/insettext.C (cutSelection):
 	(copySelection): Fixed with selection from right to left.
 	(draw): now the rows are not recalculated at every draw.
 	(computeTextRows): for now reset the inset-owner here (this is
@@ -8923,21 +8923,21 @@
 	* src/insets/insettext.h: Using a LyXCursor now. Added a clear() call.
 	Changed parameters of various functions and added LockInsetInInset().
 
-	* src/insets/insettext.C: 
+	* src/insets/insettext.C:
 
-	* src/insets/insetcollapsable.h: 
-	* src/insets/insetcollapsable.C: 
-	* src/insets/insetfoot.h: 
-	* src/insets/insetfoot.C: 
-	* src/insets/insetert.h: 
+	* src/insets/insetcollapsable.h:
+	* src/insets/insetcollapsable.C:
+	* src/insets/insetfoot.h:
+	* src/insets/insetfoot.C:
+	* src/insets/insetert.h:
 	* src/insets/insetert.C: cleaned up the code so that it works now
 	correctly with insettext.
 
-	* src/insets/inset.C: 
+	* src/insets/inset.C:
 	* src/insets/lyxinset.h: inserted inset_owner and some more changes so
 	that insets in insets are supported right.
 
-	* src/table.h: 
+	* src/table.h:
 	* src/table.C: lots of changes for use with inset tabular (and cleanup)
 
 	* src/paragraph.C: some small fixes
@@ -8947,7 +8947,7 @@
 	* src/lyxfunc.C (Dispatch): added code for InsetTabular and some inset
 	fixes (f.ex. calling LFUN_DOWN if exiting inset with LFUN_DOWN).
 
-	* src/commandtags.h: 
+	* src/commandtags.h:
 	* src/LyXAction.C: insert code for InsetTabular.
 
 	* src/BufferView_pimpl.C (workAreaMotionNotify): do return always if
@@ -8975,16 +8975,16 @@
 
 2000-04-19  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
-	* ANNOUNCE: 
-	* INSTALL: 
-	* UPGRADING: 
+	* ANNOUNCE:
+	* INSTALL:
+	* UPGRADING:
 	* NEWS: updated for prerelease of 1.1.5. Please comment and send
 	patches for things that should be in or should be changed.
 
 	* src/* [insetfiles]: change "usigned char fragile" to bool
 	fragile. There was only one point that could that be questioned
 	and that is commented in formulamacro.C. Grep for "CHECK".
-	
+
 	* src/CutAndPaste.C (getBufferTextClass): unused func, removed.
 	(DeleteBuffer): take it out of CutAndPaste and make it static.
 
@@ -9040,10 +9040,10 @@
 	(NextToken): removed functions.
 	(GetPSSizes): use ifs >> string instead of NextToken.
 
-	* src/Painter.[Ch]: the color cache moved out of this file. 
+	* src/Painter.[Ch]: the color cache moved out of this file.
 
 	* src/ColorHandler.[Ch]: new files. Holds the gc cache for color
-	and lines.  
+	and lines.
 
 2000-04-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
@@ -9084,7 +9084,7 @@
 2000-04-11  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/lyx_cb.[Ch]: made several functions take a BufferView* arg
-	instead of using current_view directly. 
+	instead of using current_view directly.
 
 	* src/lyxfunc.C (Dispatch): the paragraph-spacing implementation
 
@@ -9103,7 +9103,7 @@
 
 	* src/paragraph.C (writeFile): output the spacing parameter too.
 	(validate): set the correct features if spacing is used in the
-	paragraph. 
+	paragraph.
 	(Clear): set spacing to default
 	(MakeSameLayout): spacing too
 	(HasSameLayout): spacing too
@@ -9124,10 +9124,10 @@
 	* src/lyxserver.C (callback): fix dispatch of functions
 
 	* src/insets/insetlatexaccent.C (checkContents): turn bogus
-	printf() into lyxerr call. 
+	printf() into lyxerr call.
 
 	* src/tex-strings.C (tex_fonts): add "pslatex" to the choice of
-	fonts. 
+	fonts.
 
 	* src/menus.C (ShowInsertMenu): rename "Figure" to "Graphic",
 	"Table" to "Table Box", "Float" to "Floating Material"; deletes
@@ -9138,9 +9138,9 @@
 	2.8.x compiler error. Yes, I know, gcc 2.8.1 is bad, but I
 	documented the change so that the workaround can be nuked later.
 
-	* src/lyx_gui_misc.C (getScreenDPI): new function. Code moved from 
+	* src/lyx_gui_misc.C (getScreenDPI): new function. Code moved from
 	LyX::init().
-	
+
 	* src/lyxlex_pimpl.C (next): do not re-declare the default value
 	of arguments.
 	* src/buffer.C (getLatexName): ditto
@@ -9163,7 +9163,7 @@
 	Make struct InsetTable private again. Used matchpos.
 
 2000-04-08  Dekel Tsur  <dekel@math.tau.ac.il>
-	
+
 	* src/lyx_cb.C (DocumentApplyCB): When changing the language of the
 	document, the language of existing text is changed (unless the
 	document is multi-lingual)
@@ -9173,7 +9173,7 @@
 	* src/paragraph.C (ChangeLanguage,isMultiLingual) New methods.
 
 	* A lot of files: A rewrite of the Right-to-Left support.
-  
+
 2000-04-10  Juergen Vigna  <jug@sad.it>
 
 	* src/BufferView2.C (showLockedInsetCursor): small bugfix for
@@ -9198,8 +9198,8 @@
 	Cloned insets.
 	(init): now set the inset_owner in paragraph.C
 	(LocalDispatch): added some resetPos() in the right position
-	(cutSelection): 
-	(copySelection): 
+	(cutSelection):
+	(copySelection):
 	(pasteSelection): changed to use the new CutAndPaste-Class.
 
 	* src/insets/lyxinset.h: inserted new function InsertInsetAllowed
@@ -9212,13 +9212,13 @@
 	InsertInsetAllowed.
 	(DeleteSimpleCutBuffer): removed (for now only with #ifdef) as this
 	is not needed anymore here!
-	(CutSelection): 
-	(CopySelection): 
+	(CutSelection):
+	(CopySelection):
 	(PasteSelection): redone (also with #ifdef) so that now this uses
 	the CutAndPaste-Class.
 	(SwitchLayoutsBetweenClasses): removed here and implemented in the
 	CutAndPaste-Class.
-	
+
 	* src/CutAndPaste.[Ch]: added this for clean handling of CutAndPaste
 	from/to text/insets.
 
@@ -9228,8 +9228,8 @@
 	may happen that an inset is not inserted in the paragraph.
 	(InsertInsetAllowed): this checks if it is allowed to insert an
 	inset in this paragraph.
-	(PasteParagraph): 
-	(BreakParagraphConservative): 
+	(PasteParagraph):
+	(BreakParagraphConservative):
 	(BreakParagraph) : small change for the above change of the return
 	value of InsertFromMinibuffer.
 
@@ -9240,7 +9240,7 @@
 
 	* src/BufferView.[Ch], src/BufferView_pimpl.[Ch]: move more
 	functions from BufferView to BufferView::Pimpl to ease maintence.
-	
+
 	* src/text2.C (DeleteEmptyParagraphMechanism): update the cursor
 	correctly. Also use SetCursorIntern instead of SetCursor.
 
@@ -9276,13 +9276,13 @@
 	ptrdiff_t. Add std:: modifiers to streams.
 
 	* src/font.C: include the <cctype> header, for islower() and
-	isupper(). 
+	isupper().
 
 2000-04-03  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/font.[Ch]: new files. Contains the metric functions for
 	fonts, takes a LyXFont as parameter. Better separation of concepts.
-	
+
 	* src/lyxfont.[Ch]: move the metric functions to font.[Ch] several
 	changes because of this.
 
@@ -9290,7 +9290,7 @@
 
 	* src/*: compile with -Winline and move functions that don't
 	inline out of line.
-	
+
 	* src/lyx_cb.C (stringOnlyContains): use string::find_first_not_of
 	instead of strspn.
 
@@ -9304,12 +9304,12 @@
 	* src/lyxfont.[Ch] (drawText): removed unused member func.
 	(drawString): ditto
 
-	* src/*.C: added needed "using" statements and "std::" qualifiers. 
+	* src/*.C: added needed "using" statements and "std::" qualifiers.
 
 2000-03-31  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/*.h: removed all use of "using" from header files use
-	qualifier std:: instead. 
+	qualifier std:: instead.
 
 2000-04-03  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -9348,7 +9348,7 @@
 	* src/paragraph.C (Clone): Use the assignment operator for cloning,
 	which is much faster.
 
-	* src/text.C (GetVisibleRow and other): Do not draw the last space 
+	* src/text.C (GetVisibleRow and other): Do not draw the last space
 	in a row if the direction of the last letter is not equal to the
 	direction of the paragraph.
 
@@ -9388,7 +9388,7 @@
 
 2000-03-29  Amir Karger <karger@lyx.org>
 
-	* lib/examples/it_ItemizeBullets.lyx: translation by 
+	* lib/examples/it_ItemizeBullets.lyx: translation by
 	Stefano Mastella
 
 	* Implemented \textasciitilde and fixed a tiny bug in reLyX
@@ -9408,7 +9408,7 @@
 	* src/text.C (Backspace): Small fix for the a | a Backspace problem
 
 2000-03-24  Dekel Tsur <dekel@math.tau.ac.il>
-	
+
 	* src/paragraph.C (AutoDeleteInsets) Fixed a bug (wrong positions
 	were erased)
 
@@ -9430,7 +9430,7 @@
 2000-03-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/text.C (Backspace): hopefully fix the dreaded backaspace
-	bug. 
+	bug.
 
 2000-03-27  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -9452,7 +9452,7 @@
 	* src/BufferView.C (checkInsetHit): Now hopefully fixed all the
 	problems with clicking on insets (last famous words ;)
 
-	* src/insets/insetcommand.C (draw): 
+	* src/insets/insetcommand.C (draw):
 	(width): Changed to have a bit of space before and after the inset so
 	that the blinking cursor can be seen (otherwise it was hidden)
 
@@ -9464,13 +9464,13 @@
 
 2000-03-24  Juergen Vigna  <jug@sad.it>
 
-	* src/insets/insetcollapsable.C (Edit): 
-	* src/mathed/formula.C (InsetButtonRelease): 
+	* src/insets/insetcollapsable.C (Edit):
+	* src/mathed/formula.C (InsetButtonRelease):
 	(InsetButtonPress): fixed for new handling of ButtonPress/Release
 	handling.
 
-	* src/BufferView.C (workAreaButtonPress): 
-	(workAreaButtonRelease): 
+	* src/BufferView.C (workAreaButtonPress):
+	(workAreaButtonRelease):
 	(checkInsetHit): Finally fixed the clicking on insets be handled
 	correctly!
 
@@ -9501,12 +9501,12 @@
 	linuxdoc import.
 
 	* src/menus.C Added menus entries for the new import/exports formats.
-	
+
 2000-03-09 André Pönitz <poenitz@mathematik.tu-chemnitz.de>
 
-	* src/lyxrc.*: Added support for running without Gui 
+	* src/lyxrc.*: Added support for running without Gui
 	(\use_gui false)
-	  
+
 	* src/FontLoader.C: sensible defaults if no fonts are needed
 
 	* src/lyx_cb.C: New function ShowMessage (writes either to the
@@ -9532,7 +9532,7 @@
 
 	* lib/layouts/scrclass.inc: changed to include stdtitle.inc, then
 	define the additional title elements and then include
-	stdstruct.inc. 
+	stdstruct.inc.
 
 	* many other layout files: changed to include stdtitle.inc just
 	before stdstruct.inc.
@@ -9554,16 +9554,16 @@
 	* src/lyx_cb.C: add a couple using directives.
 
 2000-03-17 José Abílio Matos <jamatos@lyx.org>
-	* src/lyx_cb.C (RunLinuxDoc) Removed the flag==-1 option for linuxdoc 
+	* src/lyx_cb.C (RunLinuxDoc) Removed the flag==-1 option for linuxdoc
 	import based on the filename.
-	
+
 	* src/bufferlist.C () Removed the call to RunLinuxDoc where a linuxdoc
 	file would be imported at start, if the filename where of a sgml file.
 
 	* src/support/filetools.C (IsSGMLfilename) Removed, no longer needed.
-	
+
 	* src/support/filetools.h (IsSGMLfilename) Removed, no longer needed.
-	
+
 2000-03-16 Dekel Tsur <dekel@math.tau.ac.il>
 	* src/lyxfont.h Replaced the member variable bits.direction by the
 	member variable lang. Made many changes in other files.
@@ -9577,7 +9577,7 @@
 	format for Hebrew documents)
 
 	* src/lyxrc.C, src/lyxfunc.C Added a new lyxrc command "auto_mathmode"
-	When auto_mathmode is "true", pressing a digit key in normal mode 
+	When auto_mathmode is "true", pressing a digit key in normal mode
 	will cause entering into mathmode.
 	If auto_mathmode is "rtl" then this behavior will be active only
 	when writing right-to-left text.
@@ -9638,25 +9638,25 @@
 
 	* src/lyx_main.C (LyX): remove the setup of lyxrc. (new)
 	also initialize the toplevel_keymap with the default bindings from
-	lyxrc. 
-	
+	lyxrc.
+
 	* src/buffer.C (Buffer): remove lyxrc from the parameters.
 
 	* all files using lyxrc: have lyxrc as a real variable and not a
 	pointer. remove all extern LyXRC * lyxrc. The equiv to this is
 	done in lyxrc.h.
-	
+
 	* src/lyxrc.C: remove double call to defaultKeyBindings
 
 	* src/toolbar.[Ch]: Let the ToolbarDefaults handle the reading of
 	toolbar defauls using lyxlex. Remove enums, structs, functions
-	related to this. 
+	related to this.
 
 	* src/lyxrc.h: use ToolbarDefaults instead of Toolbar for storing
 	toolbar defaults. Also store default keybindings in a map.
 
 	* src/ToolbarDefaults.[Ch]: New file. This class is used for
-	storing the toolbar defaults without any xforms dependencies. 
+	storing the toolbar defaults without any xforms dependencies.
 
 	* src/insets/figinset.C: patch posted to list by Andre Poenitz
 	applied. Changed to use iterators.
@@ -9688,14 +9688,14 @@
 
 	* src/language.[Ch]: New files. Used for holding the information
 	about each language. Now! Use this new language map enhance it and
-	make it really usable for our needs. 
+	make it really usable for our needs.
 
 2000-03-09 Dekel Tsur <dekel@math.tau.ac.il>
-	
+
 	* screen.C (ShowCursor): Removed duplicate code.
 	(ShowManualCursor): Support for 3 cursor shapes: Bar (default),
 	L (LTR text in RTL document), and reversed-L (RTL text in LTR document)
-	
+
 	* src/text.C (NextBreakPoint,Fill): Moved declaration of left_margin
 
 	* src/lyxtext.h
@@ -9744,7 +9744,7 @@
 
 	* All files with a USE_OSTREAM_ONLY within: removed all code that
 	was unused when USE_OSTREAM_ONLY is defined.
-	
+
 	* src/support/lyxalgo.h (sorted): rewrote to use plain '<' instead
 	of any less. Removed header and using.
 
@@ -9764,7 +9764,7 @@
 
 	* src/insets/insetfoot.[Ch]: Clone() always returns an Inset* (well I
 	know it is right to return InsetFoot* too, but cxx does not like
-	it...). 
+	it...).
 
 	* src/insets/insetcollapsable.[Ch] (Clone): make const.
 
@@ -9803,79 +9803,79 @@
 	(Latex): Add free_spacing boolean to inset::Latex()
 
 	* src/mathed/formula.h (Latex):	Added free_spacing boolean arg.
-	
+
 	* src/insets/lyxinset.h: Changed definition of the inset::Latex()
 	virtual function to include the free_spacing boolean from
 	the containing paragraph's style.
 
 	* src/insets/inseturl.C, src/insets/inseturl.h (Latex):
 	Added free_spacing boolean arg to match inset.h
-	
+
 	* src/insets/insettext.C, src/insets/insettext.h (Latex):
 	Added free_spacing boolean arg to match inset.h
-	
+
 	* src/insets/insetspecialchar.C, src/insets/insetspecialchar.h (Latex):
 	Added free_spacing boolean and made sure that if in a free_spacing
 	paragraph, that we output normal space if there is a protected space.
- 	
+
 	* src/insets/insetref.C, src/insets/insetref.h (Latex):
 	Added free_spacing boolean arg to match inset.h
-	
+
 	* src/insets/insetquotes.C, src/insets/insetquotes.h (Latex):
 	Added free_spacing boolean arg to match inset.h
-	
+
 	* src/insets/insetparent.C, src/insets/insetparent.h (Latex):
 	Added free_spacing boolean arg to match inset.h
-	
+
 	* src/insets/insetlatexaccent.C, src/insets/insetlatexaccent.h (Latex):
 	Added free_spacing boolean arg to match inset.h
-	
+
 	* src/insets/insetlatex.C, src/insets/insetlatex.h (Latex):
 	Added free_spacing boolean arg to match inset.h
-	
+
 	* src/insets/insetlabel.C, src/insets/insetlabel.h (Latex): Added
-	free_spacing boolean arg to match inset.h 
-	
+	free_spacing boolean arg to match inset.h
+
 	* src/insets/insetinfo.C, src/insets/insetinfo.h (Latex):
 	Added free_spacing boolean arg to match inset.h
-	
+
 	* src/insets/insetinclude.C, src/insets/insetinclude.h (Latex):
 	Added free_spacing boolean arg to match inset.h
-	
+
 	* src/insets/insetgraphics.C, src/insets/insetgraphics.h (Latex):
 	Added free_spacing boolean arg to match inset.h
-	
+
 	* src/insets/inseterror.C, src/insets/inseterror.h (Latex):
 	Added free_spacing boolean arg to match inset.h
-	
+
 	* src/insets/insetcommand.C, src/insets/insetcommand.h (Latex):
 	Added free_spacing boolean arg to match inset.h
-	
+
 	* src/insets/insetbib.C, src/insets/insetbib.h (Latex): Added
 	free_spacing boolean arg to match inset.h
-	
+
 	* src/insets/figinset.C, src/insets/figinset.h (Latex): Added
 	free_spacing boolean arg to match inset.h
-	
+
 	* src/text2.C (DeleteEmptyParagraphMechanism): Fix this to
 	ignore free_spacing paragraphs. The user's spaces are left
-	alone. 
-	
+	alone.
+
 	* src/text.C (InsertChar): Fixed the free_spacing layout
 	attribute behavior. Now, if free_spacing is set, you can
 	add multiple spaces in a paragraph with impunity (and they
 	get output verbatim).
 	(SelectSelectedWord): Added dummy argument to inset::Latex()
 	call.
-	
+
 	* src/paragraph.C (TeXOnePar): Added dummy args to inset::Latex(...)
 	calls.
-	
+
 	* src/lyxfunc.C (Dispatch): Hard-spaces input in free_spacing
 	paragraph layouts now only input a simple space instead.
 	Special character insets don't make any sense in free-spacing
 	paragraphs.
-	
+
 	* src/buffer.C (parseSingleLyXformat2Token): Code to convert
 	hard-spaces in the *input* file to simple spaces if the layout
 	is free-spacing. This converts old files which had to have
@@ -9885,15 +9885,15 @@
 	reworked inset::Latex(...) methods. The inset::Latex() code
 	ensures that hard-spaces in free-spacing paragraphs get output
 	as spaces (rather than "~").
-	
+
 2000-03-09  Lars Gullik Bjønnes  <larsbj@lyx.org>
-	
+
 	* src/mathed/math_delim.C (draw): draw the empty placeholder
 	delims with a onoffdash line.
 	(struct math_deco_compare): struct that holds the "functors" used
 	for the sort and the binary search in math_deco_table.
 	(class init_deco_table): class used for initial sort of the
-	math_deco_table. 
+	math_deco_table.
 	(search_deco): use lower_bound to do a binary search in the
 	math_deco_table.
 
@@ -9904,7 +9904,7 @@
 	* src/lyxlex.C (printTable): changed to take a ostream as paramter
 	and to not flush the stream as often as it used to.
 
-	* src/support/lyxalgo.h: new file 
+	* src/support/lyxalgo.h: new file
 	(sorted): template function used for checking if a sequence is
 	sorted or not. Two versions with and without user supplied
 	compare. Uses same compare as std::sort.
@@ -9981,16 +9981,16 @@
 	* src/support/lyxmanip.h: rewrite the newlineanDepth ostream
 	manipulator to use a scheme that does not require library support.
 	This is also the way it is done in the new GNU libstdc++. Should
-	work with DEC cxx now. 
+	work with DEC cxx now.
 
 2000-03-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/mathed/math_inset.h (Write(ostream & os): add a space at the
-	end. This fixes a bug. 
+	end. This fixes a bug.
 
 	* src/mathed (all files concerned with file writing): apply the
 	USE_OSTREAM_ONLY changes to mathed too.
-	
+
 	* src/support/DebugStream.h: make the constructor explicit.
 
 	* src/lyxfont.C (latexWriteStartChanges): small bug related to
@@ -10039,16 +10039,16 @@
 	stringstreams. mathed output is still not adapted to iostreams.
 	This change can be turned off by commenting out all the occurences
 	of the "#define USE_OSTREAM_ONLY 1" lines.
-	
+
 	* src/WorkArea.C (createPixmap): don't output debug messages.
 	(WorkArea): don't output debug messages.
 
 	* lib/lyxrc.example: added a comment about the new variable
-	\show_banner 
+	\show_banner
 
 	* development/Code_rules/Rules: Added some more commente about how
 	to build class interfaces and on how better encapsulation can be
-	achieved. 
+	achieved.
 
 2000-03-03  Juergen Vigna  <jug@sad.it>
 
@@ -10068,7 +10068,7 @@
 	*  all insets and some code that use them: I have conditionalized
 	removed the Latex(string & out, ...) this means that only the
 	Latex(ostream &, ...) will be used. This is a work in progress to
-	move towards using streams for all output of files. 
+	move towards using streams for all output of files.
 
 	* src/text.C (GetColumnNearX): initialize LyXParagraph::size_type
 	c to 0.
@@ -10107,7 +10107,7 @@
 
 	* src/lyxfunc.C (Dispatch(LFUN_MENUSEARCH)): Do the Search dialog
 	directly instead of going through a func. One very bad thing: a
-	static LyXFindReplace, but I don't know where to place it. 
+	static LyXFindReplace, but I don't know where to place it.
 
 	* src/lyxfr1.C (GetCurrentSelectionAsString): rewritten to use a
 	string instead of char[]. Also changed to static.
@@ -10117,7 +10117,7 @@
 	* src/lyxfr0.[Ch] src/lyxfr1.[Ch]: rewrite to get rid of
 	current_view and global variables. both classes has changed names
 	and LyXFindReplace is not inherited from SearchForm.
-	
+
 	* src/lyx_gui_misc.C (CloseAllBufferRelatedPopups): remove the
 	fl_form_search form.
 
@@ -10135,17 +10135,17 @@
 2000-03-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* some things that I should comment but the local pub says head to
-	swirly... 
-	
+	swirly...
+
 	* comment out all code that belongs to the Roff code for Ascii
 	export of tables. (this is unused)
-	
+
 	* src/LyXView.C: use correct type for global variable
 	current_layout. (LyXTextClass::size_type)
 
 	* some code to get the new insetgraphics closer to working I'd be
 	grateful for any help.
-	
+
 	* src/BufferView2.C (insertInset): use the return type of
 	NumberOfLayout properly. (also changes in other files)
 
@@ -10161,7 +10161,7 @@
 	with out using protected spaces or multiple hfills. Now it is
 	"label" for left justified, "\hfill label\hfill" for center, and
 	"\hfill label" for right justified. UserGuide.lyx sec. 3.3.6.5
-	should be changed accordingly. 
+	should be changed accordingly.
 
 2000-02-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -10177,7 +10177,7 @@
 	* lib/lyxrc.example: fix description of \date_insert_format
 
 	* lib/layouts/llncs.layout: new layout, contributed by Martin
-	Vermeer. 
+	Vermeer.
 
 2000-02-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
@@ -10191,7 +10191,7 @@
 2000-02-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/insets/insettext.C (LocalDispatch): remove extra break
-	statement. 
+	statement.
 
 	* src/insets/insetert.[Ch] (Clone): change return value to Inset*
 	* src/insets/insettext.[Ch] (Clone): change return value to Inset*
@@ -10215,7 +10215,7 @@
 2000-02-24  Juergen Vigna  <jug@sad.it>
 
 	* src/buffer.C:
-	* src/commandtags.h: 
+	* src/commandtags.h:
 	* src/LyXAction.C:
 	* src/lyxfunc.C: added code for LFUN_INSET_ERT and LFUN_INSET_TEXT
 
@@ -10244,13 +10244,13 @@
 	* src/bufferlist.[Ch] (updateInset): remove func, not needed.
 
 	* several files: use the new interface to the "updateinsetlist"
-	
+
 	* src/WorkArea.C (work_area_handler): call BufferView::doubleClick
 	on doubleclick.
 	(work_area_handler): call BufferView::trippleClick on trippleclick.
 
 	* src/BufferView.C (doubleClick): new function, selects word on
-	doubleclick. 
+	doubleclick.
 	(trippleClick): new function, selects line on trippleclick.
 
 2000-02-22  Allan Rae  <rae@lyx.org>
@@ -10274,38 +10274,38 @@
 
 	* src/text.C src/text2.C: get rid of current_view from these
 	files.
-	
+
 	* src/lyxfont.C (getFontDirection): move this function here from
 	text.C
-	
+
 	* src/bufferparams.C (getDocumentDirection): move this function
 	here from text.C
 
 	* src/paragraph.C (getParDirection): move this function here from
-	text.C 
+	text.C
 	(getLetterDirection): ditto
-	
+
 2000-02-18  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* WorkArea, Painter, LyXScreen: Fixed the crash that occured on
 	resize due to wrong pixmap beeing used. Also took the opurtunity
 	to make the LyXScreen stateless on regard to WorkArea and some
 	general cleanup in the same files.
-	
+
 2000-02-17  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/Makefile.am: add missing direction.h
 
 	* src/PainterBase.h: made the width functions const.
-	
+
 	* lib/kbd/iso8859-1.cdef: fix a couple of entries and define some
 	missing ones.
-	
+
 	* src/insets/insetcommand.C (draw): draw Editable as buttons.
 
 	* src/insets/insetlatexaccent.C (draw): make the accents draw
 	better, at present this will only work well with iso8859-1.
-	
+
 	* several files: remove the old drawing code, now we use the new
 	painter only.
 
@@ -10331,7 +10331,7 @@
 	workarea. (Code that are not active when NEW_WA is defined.)
 
 	* Make the uses of XSync not conditionalized on define USE_XSYNC.
-	
+
 2000-02-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxfunc.C (Dispatch): fix LFUN_LAYOUT when giving a
@@ -10340,9 +10340,9 @@
 	* lib/lyxrc.example: document \view_dvi_paper_option
 
 	* src/lyxrc.[Ch]: add support for the \view_dvi_paper_option
-	variable. 
+	variable.
 
-	* src/lyx_cb.C (RunScript): handle $$FName for command names. 
+	* src/lyx_cb.C (RunScript): handle $$FName for command names.
 	(PreviewDVI): handle the view_dvi_paper_option variable.
 	[Both from Roland Krause]
 
@@ -10350,7 +10350,7 @@
 
 	* src/Painter.C (text(int,int,char,LyXFont)): call text(int, int,
 	char const *, int, LyXFont)
-	(text(int, int, string, LyXFont)): ditto 
+	(text(int, int, string, LyXFont)): ditto
 
 	* src/text.C (InsertCharInTable): attempt to fix the double-space
 	feature in tables too.
@@ -10370,12 +10370,12 @@
 
 	* src/text.C src/mathed/math_cursor.C: nailed and fixed the
 	drawing of mathframe, hfills, protected space, table lines. I have
-	now no outstanding drawing problems with the new Painter code. 
+	now no outstanding drawing problems with the new Painter code.
 
 2000-02-11  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/PainterBase.C (ellipse, circle): do not specify the default
-	arguments. 
+	arguments.
 
 	* src/LColor.h: add using directive.
 
@@ -10383,7 +10383,7 @@
 	PainterBase&. Add a using directive.
 
 	* src/WorkArea.C: wrap xforms callbacks in C functions
-	C_WorkArea_xxx. 
+	C_WorkArea_xxx.
 
 	* lib/layouts/foils.layout: font fix and simplifications from Carl
 	Ollivier-Gooch.
@@ -10397,7 +10397,7 @@
 	with USE_PAINTER defined (do this in config.h f.ex.) There are
 	still some rought edges, and I'd like some help to clear those
 	out. It looks stable (loads and displays the Userguide very well).
-	
+
 
 2000-02-10  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -10423,7 +10423,7 @@
 2000-02-08  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyx_gui.C (create_forms): make combo box taller (from Dekel
-	Tsur). 
+	Tsur).
 
 	* src/toolbar.C (set): ditto
 	* src/insets/insetbib.C (create_form_citation_form): ditto
@@ -10433,9 +10433,9 @@
 	* lib/kbd/hebrew.kmap, lib/kbd/null.kmap,
 	lib/layouts/heb-article.layout, lib/layouts/heb-letter.layout: new
 	hebrew supports files from Dekel Tsur.
-	
+
 	* lib/kbd/iso8859-8.cdef: new file, from Tzafrir Cohen
-	<tzafrir@technion.ac.il> 
+	<tzafrir@technion.ac.il>
 
 	* src/lyxrc.C: put \date_insert_format at the right place.
 
@@ -10463,42 +10463,42 @@
 2000-02-04  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/lyxsum.C: rework to be more flexible.
-	
+
 	* several places: don't check if a pointer is 0 if you are going
 	to delete it.
 
 	* src/text.C: remove some dead code.
 
 	* src/insets/figinset.C: remove some dead code
-	
+
 	* src/buffer.C: move the BufferView funcs to BufferView2.C
 	remove all support for insetlatexdel
 	remove support for oldpapersize stuff
 	made some member funcs const
 
 	* src/kbmap.C: use a std::list to store the bindings in.
-	
+
 	* src/BufferView2.C: new file
 
 	* src/kbsequence.[Ch]: new files
-	
+
 	* src/LyXAction.C + others: remove all trace of buffer-previous
-	
+
 	* src/Bullet.[Ch]: moved ITEMIZE_DEFAULTS inside Bullet.C so that we
 	only have one copy in the binary of this table.
-	
+
 	* hebrew patch: moved some functions from LyXText to more
 	appropriate places. (LyXParagraph, BufferParams, LyXFont)
-	
+
 	* several files: remove support for XForms older than 0.88
 	whitespace changes.
 	remove some #if 0 #endif code
-	
+
 	* src/TextCache.[Ch]: new file. Holds the textcache.
 
 	* src/BufferView.C: changes to use the new TextCache interface.
 	(waitForX): remove the now unused code.
-	
+
 	* src/BackStack.h: remove some commented code
 
 	* lib/bind/emacs.bind: remove binding for buffer-previous
@@ -10538,7 +10538,7 @@
 	* po/it.po: updated a bit the italian po file and also changed the
 	'file nuovo' for newfile to 'filenuovo' without a space, this did
 	annoy me a lot :)
-	
+
 	* src/lyxrc.C (LyXRC): added support for a default insert_date_format
 	for the new insert_date command.
 
@@ -10586,12 +10586,12 @@
 	* src/table.C: ditto
 
 	* lib/reLyX/reLyX.in: use variable @LYX_DIR@ as built-in data
-	directory. 
+	directory.
 
 	* lib/reLyX/configure.in (LYX_DIR): re-introduce this variable
 	that I removed earlier... It is really needed.
 
-	* lib/examples/multicol.lyx: new file, splitted from Extended.lyx. 
+	* lib/examples/multicol.lyx: new file, splitted from Extended.lyx.
 
 2000-01-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -10600,7 +10600,7 @@
 	* lib/configure.m4: fix a bug with unreadable layout files.
 
 	* src/table.C (calculate_width_of_column): add "using std::max"
-	directive. 
+	directive.
 
 2000-01-25  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
@@ -10631,7 +10631,7 @@
 	old_cursor.par->prev could be 0.
 
 	* several files: changed post inc/dec to pre inc/dec
-	
+
 	* src/lastfiles.C (writeFile): use ostream_iterator and copy to
 	write the lastfiles to file.
 
@@ -10670,7 +10670,7 @@
 	(sigchldchecker): ditto
 
 	* src/bmtable.c (fl_set_bmtable_file): have arguments in the X r5
-	version also. 
+	version also.
 
 	* src/paragraph.C (FirstPhysicalPar): remove assert and comment
 	that obviously was wrong...
@@ -10722,16 +10722,16 @@
 	to allocate memory for figures and bitmaps.
 	(DoneFigures): use delete[] instead of free to deallocate memory
 	for figures and bitmaps.
-	(runqueue): use new to allocate 
+	(runqueue): use new to allocate
 	(getfigdata): use new/delete[] instead of malloc/free
 	(RegisterFigure): ditto
 
 	* some files: moved some declarations closer to first use, small
 	whitespace changes use preincrement instead of postincrement where
 	it does not make a difference.
-	
+
 	* src/kbmap.[Ch]: delete code according to define NO_HASH, it is a
-	step on the way to use stl::containers for key maps. 
+	step on the way to use stl::containers for key maps.
 
 	* src/bufferlist.h: add a typedef for const_iterator and const
 	versions of begin and end.
@@ -10754,12 +10754,12 @@
 	* lib/templates/IEEEtran.lyx: Example theorem environments and a
 	couple of minor additions.
 
-	* lib/doc/LaTeXConfig.lyx.in:  Use URL insets for ftp sites 
+	* lib/doc/LaTeXConfig.lyx.in:  Use URL insets for ftp sites
 	(except for those in footnotes of course)
 
 2000-01-19  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
-	* src/lyxlookup.C (CloseLyXLookup): set xic=0; after destruction. 
+	* src/lyxlookup.C (CloseLyXLookup): set xic=0; after destruction.
 
 	* src/mathed/math_utils.C (MathedLookupBOP): rewrite to use
 	std::sort and std::lower_bound instead of qsort and handwritten
@@ -10777,7 +10777,7 @@
 
 	* src/buffer.C (makeLaTeXFile): we do not need the user name here.
 	(makeLinuxDocFile): do not put date and user name in linuxdoc
-	headers. 
+	headers.
 
 	* src/support/lyxlib.h (kill): change first argument to long int,
 	since that's what solaris uses.
@@ -10828,7 +10828,7 @@
 
 	* src/texrow.C (getIdFromRow): actually return something useful in
 	id and pos. Hopefully fixes the bug with positionning of errorbox
-	insets. 
+	insets.
 
 	* src/lyx_main.C (easyParse): output an error and exit if an
 	incorrect command line option has been given.
@@ -10837,14 +10837,14 @@
 
 	* src/bufferlist.C (write): fix mismatched allocation/deletion,
 	where a "struct utimbuf" is allocated with "new" and deleted with
-	"delete[]". 
+	"delete[]".
 
 2000-01-13  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/text2.C (CutSelection): don't delete double spaces.
 	(PasteSelection): ditto
 	(CopySelection): ditto
-	
+
 	* src/text.C (Backspace): don't delete double spaces.
 
 	* src/lyxlex.C (next): fix a bug that were only present with
@@ -10869,10 +10869,10 @@
 	cursor is not really needed.
 
 	* src/lyxtext.[Ch] (IsEmptyTableCell): commented out. As used at
-	present it could only return false anyway. 
+	present it could only return false anyway.
 	(several functions): Did something not so smart...added a const
 	specifier on a lot of methods.
-	
+
 	* src/paragraph.C (BreakParagraph): removed the tmp->text.reserve
 	and add a tmp->text.resize. The LyXParagraph constructor does the
 	resize for us.
@@ -10888,14 +10888,14 @@
 	which was bogus for several reasons.
 
 	* src/LaTeX.C (scanAux): fix the regular expression used to scan
-	.aux files. 
+	.aux files.
 	(runBibTeX): ditto.
 
 	* autogen.sh: do not use "type -path" (what's that anyway?).
 
 	* src/support/filetools.C (findtexfile): remove extraneous space
 	which caused a kpsewhich warning (at least with kpathsea version
-	3.0). 
+	3.0).
 
 2000-01-11  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
@@ -10945,7 +10945,7 @@
 	\view_pdf_command., \pdf_to_ps_command
 
 	* lib/configure.m4: added search for PDF viewer, and search for
-	PDF to PS converter. 
+	PDF to PS converter.
 	(lyxrc.defaults output): add \pdflatex_command,
 	\view_pdf_command and \pdf_to_ps_command.
 
@@ -10960,7 +10960,7 @@
 	problems with both compilers I tried. See comments in the file.
 
 	* lib/reLyX/configure.in: do not define LYX_DIR. support flag
-	--with-lyxname. 
+	--with-lyxname.
 
 	* lib/reLyX/reLyX.in: change LYX_DIR to pkgdatadir; change env.
 	variable LYX_DIR_10x to LYX_DIR_11x.
@@ -11017,7 +11017,7 @@
 
 	* po/*: updated to gettext 0.10.35, tried to add our own required
 	modifications. Please verify.
-	
+
 	* src/support/lstrings.C (tostr): go at fixing the problem with
 	cxx and stringstream. When stringstream is used return
 	oss.str().c_str() so that problems with lyxstring and basic_string
@@ -11038,7 +11038,7 @@
 
 	* config/progtest.m4: updated to most recent. used when creating
 	acinclude.m4.
-	
+
 	* config/gettext.m4: updated to most recent. applied patch for
 	tmplinguas.
 
@@ -11049,9 +11049,9 @@
 
 	* config/lyxinclude.m4: new file, this is the lyx created m4
 	macros, used in making acinclude.m4.
-	
+
 	* autogen.sh: GNU m4 discovered as a separate task not as part of
-	the lib/configure creation. 
+	the lib/configure creation.
 	Generate acinlucde from files in config. Actually cat
 	lyxinclude.m4, libtool.m4 and gettext.m4 together. This makes it
 	easier to upgrade .m4 files that really are external.
@@ -11064,7 +11064,7 @@
 	* src/lyx_cb.C: began some work to remove the dependency a lot of
 	functions have on BufferView::text, even if not really needed.
 	(GetCurrentTextClass): removed this func, it only hid the
-	current_view. 
+	current_view.
 
 	* src/Makefile.am (lyx_DEPENDENCIES): use support/libsupport.la I
 	forgot this in last commit.
@@ -11081,7 +11081,7 @@
 
 	* buffer.[Ch], BufferView.[Ch] + others: moved the_locking_inset
 	from Buffer to BufferView.
-	
+
 	* acinclude.m4: include libtool.m4 from libtool 1.3.4.
 
 	* config/ltmain.sh: updated to version 1.3.4 of libtool
@@ -11105,7 +11105,7 @@
 	* src/lyxlex.C: ditto.
 
 	* NEWS: add some changes for 1.1.4.
-	
+
 2000-01-06  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/BufferView.C: first go at a TextCache to speed up switching
@@ -11113,15 +11113,15 @@
 
 2000-01-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* lib/examples/ItemizeBullets.lyx: update from Tino Meinen. 
+	* lib/examples/ItemizeBullets.lyx: update from Tino Meinen.
 	* lib/examples/nl_voorbeeld_ruw.lyx: ditto.
 	* lib/examples/nl_voorbeeld_verlyxt.lyx: ditto.
 	* lib/examples/nl_opsommingstekens.lyx: new translation from Tino
 	Meinen.
-	
+
 	* src/mathed/math_defs.h (MathedRowSt): make sure that all
 	members of the struct are correctly initialized to 0 (detected by
-	purify) 
+	purify)
 	* src/lyxrc.C (LyXRC): ditto for print_adapt_output.
 	* src/insets/figinset.C (InsetFig): ditto for pswid and pshgh.
 
@@ -11143,7 +11143,7 @@
 	* src/lyxvc.C (registrer, checkIn), src/lyx_cb.C (MenuInsertLabel),
 	src/mathed/formula.C (LocalDispatch): askForText changes
 
-	* src/lyx_gui_misc.[Ch] (askForText): now returns a bool also so we 
+	* src/lyx_gui_misc.[Ch] (askForText): now returns a bool also so we
 	know when a user has cancelled input. Fixes annoying problems with
 	inserting labels and version control.
 
@@ -11174,7 +11174,7 @@
 
 	* src/buffer.C (insertLyXFile): use ifstream instead of FilePtr
 
-	* src/mathed/math_parser.C: have yyis to be an istream 
+	* src/mathed/math_parser.C: have yyis to be an istream
 	(LexGetArg): use istream (yyis)
 	(yylex): ditto
 	(mathed_parse): ditto
@@ -11184,7 +11184,7 @@
 
 	* src/mathed/formulamacro.C (Read): rewritten to use istream
 
-	* src/lyxlex.h (~LyXLex): deleted desturctor 
+	* src/lyxlex.h (~LyXLex): deleted desturctor
 	(getStream): new function, returns an istream
 	(getFile): deleted funtion
 	(IsOK): return is.good();
@@ -11192,7 +11192,7 @@
 	* src/lyxlex.C (LyXLex): delete file and owns_file
 	(setFile): open an filebuf and assign that to a istream instead of
 	using FILE*
-	(setStream): new function, takes an istream as arg. 
+	(setStream): new function, takes an istream as arg.
 	(setFile): deleted function
 	(EatLine): rewritten us use istream instead of FILE*
 	(next): ditto
@@ -11214,7 +11214,7 @@
 	config.h.in to the AC_DEFINE_UNQUOTED() call.
 	(LYX_FUNC_PUTENV_ARGTYPE): new macro. Checks whether putenv()
 	needs char * as argument (because Solaris 7 declares it like
-	that). 
+	that).
 
 	* acconfig.h: remove placeholder for STL_STRING_FWD_H_LOCATION;
 	remove definition of BZERO.
@@ -11236,22 +11236,22 @@
 	* src/insets/Makefile.am (noinst_LTLIBRARIES): changed from
 	pkglib_ to noinst_
 
-	* configure.in: add call to LYX_REGEX 
+	* configure.in: add call to LYX_REGEX
 
 	* acinclude.m4 (LYX_REGEX): checks if we need to use the included
-	regex or not. Uses a a AM_CONDITIONAL to decide what to compile. 
+	regex or not. Uses a a AM_CONDITIONAL to decide what to compile.
 
 1999-12-22  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* lib/bind/fi_menus.bind: new file, from
-	pauli.virtanen@saunalahti.fi. 
+	pauli.virtanen@saunalahti.fi.
 
 	* src/buffer.C (getBibkeyList): pass the parameter delim to
 	InsetInclude::getKeys and InsetBibtex::getKeys.
 
 	* src/insets/insetinclude.[Ch] (getKeys): add parameter delim, which
 	is passed to Buffer::getBibkeyList
-	
+
 	* src/insets/insetbib.[Ch] (getKeys): add parameter delim, and use it
 	instead of the hardcoded comma.
 
@@ -11268,7 +11268,7 @@
 	* src/insets/insetbib.C (getKeys): ditto
 
 	* src/debug.C (showTags): make sure that the output is correctly
-	aligned. 
+	aligned.
 
 	* configure.in: add a comment for TWO_COLOR_ICON define.
 
@@ -11310,7 +11310,7 @@
 	defined.
 
 	* src/bmtable.c: new file, a C'ified copy of bmtable.C, this is
-	compiled by a C compiler not C++. 
+	compiled by a C compiler not C++.
 
 	* src/layout.h (LyXTextClass): added typedef for const_iterator
 	(LyXTextClassList): added typedef for const_iterator + member
@@ -11322,7 +11322,7 @@
 	layoutlist in the toolbar.
 
 	* src/BufferView.h (BufferView::work_area_width): removed unused
-	variable. 
+	variable.
 
 	* src/lyx_gui_misc.C (WarnReadonly): added string parameter 'file'
 
@@ -11335,18 +11335,18 @@
 	* src/support/lstrings.C (countChar): use HAVE_STD_COUNT to choose
 	what version of this func to use. Also made to return unsigned int.
 
-	* configure.in: call LYX_STD_COUNT 
+	* configure.in: call LYX_STD_COUNT
 
 	* acinclude.m4 (LYX_STD_COUNT): new function checks for a standard
-	conforming std::count. 
+	conforming std::count.
 
 1999-12-20  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/mathed/math_draw.C (Draw, Metrics): fix a bug where a prime
 	and a subscript would give bad display (patch from Dekel Tsur
-	<dekel@math.tau.ac.il>). 
+	<dekel@math.tau.ac.il>).
 
-	* src/insets/insetlatexaccent.h: make sure ACCENT_TYPES is public. 
+	* src/insets/insetlatexaccent.h: make sure ACCENT_TYPES is public.
 
 	* src/spellchecker.C (create_ispell_pipe): use a const_cast to
 	please sun CC.
@@ -11382,12 +11382,12 @@
 	input from JMarc.  Now use preprocessor to find the header.
 	Also stopped making HAVE_STL_STRING_FWD_H and extended the comments.
 	(LYX_PATH_HEADER): My, so far, failed attempt to generalize
-	LYX_STL_STRING_FWD.  See comments in file.	
+	LYX_STL_STRING_FWD.  See comments in file.
 
 1999-12-19  Asger Alstrup Nielsen  <alstrup@diku.dk>
 
 	* The global MiniBuffer * minibuffer variable is dead.
-	
+
 	* The global FD_form_main * fd_form_main variable is dead.
 
 1999-12-17  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
@@ -11396,26 +11396,26 @@
 
 	* src/table.h: add the LOstream.h header
 	* src/debug.h: ditto
-	
+
 	* src/LyXAction.h: change the explaination of the ReadOnly
 	attribute: is indicates that the function _can_ be used.
 
 	* src/LyXAction.C (init): find-replace _can_ be used in read-only
-	mode. 
+	mode.
 
 1999-12-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyxfont.C (ascent): Make sure that char is _always_ used as
-	unsigned. 
+	unsigned.
 	(descent): ditto
 	(lbearing): ditto
 	(rbearing): ditto
 
 	* src/paragraph.C (GetWord): assert on pos>=0
 	(GetChar): ditto
-	
+
 	* src/support/lyxstring.C: condition the use of an invariant on
-	ENABLE_ASSERTIONS 
+	ENABLE_ASSERTIONS
 	* src/support/lyxstring.h: ditto
 
 	* src/Bullet.[Ch]: replace DEBUG_AS_DEFAULT by ENABLE_ASSERTIONS.
@@ -11427,10 +11427,10 @@
 	* src/support/filetools.C: ditto
 
 	* src/support/LAssert.h: make Assert a no-op if ENABLE_ASSERTIONS
-	is not defined. 
+	is not defined.
 
 	* INSTALL: document the new configure flags
-	
+
 	* configure.in: suppress --with-debug; add --enable-assertions
 
 	* acinclude.m4: various changes in alignment of help strings.
@@ -11438,11 +11438,11 @@
 1999-12-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/kbmap.C: commented out the use of the hash map in kb_map,
-	beginning of movement to a stl::container. 
+	beginning of movement to a stl::container.
 
 	* several files: removed code that was not in effect when
 	MOVE_TEXT was defined.
-	
+
 	* lib/kbd/iso8859-1.cdef: removed bogus backslashes. Backslashes
 	for escaping should not be used. We can discuss if the string
 	should be enclosed in f.ex. [] instead of "".
@@ -11461,7 +11461,7 @@
 	* src/insets/insetlatexaccent.C (Draw): use fillArc for the
 	approp. accents.
 
-	* configure.in (chmod +x some scripts): remove config/gcc-hack 
+	* configure.in (chmod +x some scripts): remove config/gcc-hack
 
 1999-12-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -11474,7 +11474,7 @@
 
 	* po/de.po: update from Pit Sütterlin
 	* lib/bind/de_menus.bind: ditto.
-	
+
 	* src/lyxfunc.C (Dispatch): call MenuExport()
 	* src/buffer.C (Dispatch): ditto
 
@@ -11516,7 +11516,7 @@
 
 	* configure.in: Use LYX_STL_STRING_FWD.
 
-	* acinclude.m4 (LYX_STL_STRING_FWD), acconfig.h: Test if 
+	* acinclude.m4 (LYX_STL_STRING_FWD), acconfig.h: Test if
 	stl_string_fwd.h is around and try to determine it's location.
  	Major improvement over previous SGI STL 3.2 compatability.
 	Three small problems remain with this function due to my zero
@@ -11525,17 +11525,17 @@
 1999-12-14  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/broken_const.h, config/hack-gcc, config/README: removed
-	
+
 	* configure.in: remove --with-gcc-hack option; do not call
-	LYX_CXX_STL_STACK 
+	LYX_CXX_STL_STACK
 
 	* INSTALL: remove documentation of --with-broken-const and
 	--with-gcc-hack
-	
+
 	* acconfig.h: remove all trace of BROKEN_CONST define
 
 	* src/buffer.C (makeDocBookFile): update version number in output
-	file. 
+	file.
 	(SimpleDocBookOnePar): fix an assert when trying to a character
 	access beyond string length
 	[Patch from Jose']
@@ -11556,7 +11556,7 @@
 	* src/debug.h: moved some code to debug.C
 
 	* src/debug.C: new file. Contains code to set and show debug
-	level. 
+	level.
 
 	* src/layout.C: remove 'break' after 'continue' in switch
 	statements, since these cannot be reached.
@@ -11566,7 +11566,7 @@
 	* src/mathed/math_hash.C (math_hash): renamed from hash(), name clash.
 	(in_word_set): hash() -> math_hash()
 
-	* src/LString.h: Used USING_EXCEPTIONS in SGI STL-3.2 support 
+	* src/LString.h: Used USING_EXCEPTIONS in SGI STL-3.2 support
 
 	* acconfig.h: Added a test for whether we are using exceptions in the
 	current compilation run. If so USING_EXCEPTIONS is defined.
@@ -11593,7 +11593,7 @@
 	* lib/templates/IEEEtran.lyx:  New template file.
 
 1999-12-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
-	
+
 	* Makefile.in.in (MKINSTALLDIRS): use $(srcdir)/@MKINSTALLDIRS@
 	* intl/Makefile.in (MKINSTALLDIRS):  ditto
 
@@ -11604,7 +11604,7 @@
 
 	* a lot of files: compiled with -Wold-style-cast, changed most of
 	the reported offenders to C++ style casts. Did not change the
-	offenders in C files. 
+	offenders in C files.
 
 	* src/trans.h (Match): change argument type to unsigned int.
 
@@ -11643,10 +11643,10 @@
 	between buffer contents and buffer view. One side effect is that
 	the BufferView needs a rebreak when swiching buffers, if we want
 	to avoid this we can add a cache that holds pointers to LyXText's
-	that is not currently in use. 
+	that is not currently in use.
 
 	* buffer.[Ch], lyx_main.C: small changes to the "-export" patch by
-	André Pönitz. 
+	André Pönitz.
 
 1999-11-18  André Pönitz <poenitz@mathematik.tu-chemnitz.de>
 
@@ -11670,7 +11670,7 @@
 
 	* lib/examples/nl_voorbeeld_{ruw,verlyxt}.lyx: new tutorial
 	example files from Tino Meinen.
-	
+
 1999-12-06  Allan Rae  <rae@lyx.org>
 
 	* src/LaTeX.C (runBibTeX): fix typo in accessing submatch pair.
@@ -11679,22 +11679,22 @@
 
 	* src/support/lyxstring.C: added a lot of inline for no good
 	reason
-	
+
 	* src/lyxfont.[Ch]: removed latexWriteStartChanges, and
 	latexWriteEndChanges, they were not used.
-	
+
 	* src/layout.h (operator<<): output operator for PageSides
 
 	* src/mathed/math_iter.C (my_memcpy): slightly changed.
 
 	* some example files: loaded in LyX 1.0.4 and saved again to update
-	certain constructs (table format) 
+	certain constructs (table format)
 
 	* a lot of files: did the change to use fstream/iostream for all
 	writing of files. Done with a close look at Andre Poenitz's patch.
 
 	* some files: whitespace changes.
-	
+
 1999-12-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/mathed/math_iter.C (my_memcpy): new function. Since the
@@ -11715,7 +11715,7 @@
 	elements contain spaces
 
 	* lib/configure: regenerated
-	
+
 	* lib/configure.m4 (SEARCH_PROG): make it work when the PATH
 	elements contain spaces; display the list of programs that are
 	tried.
@@ -11745,8 +11745,8 @@
 	(runChktex): ditto
 	* src/lyx_cb.C (RunScript): ditto
 	(MenuMakeLaTeX): ditto
-	
-	* src/buffer.h (getLatexName): new method 
+
+	* src/buffer.h (getLatexName): new method
 
 	* src/support/filetools.C (MakeLatexName): renamed from SpaceLess
 
@@ -11763,7 +11763,7 @@
 	few "using".
 
 	* src/bmtable.C (fl_set_bmtable_data): add a const_cast.
-	
+
 1999-12-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/mathed/formula.C (LocalDispatch): fix small whitspace bug
@@ -11798,7 +11798,7 @@
 	(write): new function. opens a ofstream and pass that to output
 	(output): new function, takes a ostream and writes the lyxrc
 	elemts to it. uses a dummy switch to make sure no elements are
-	forgotten. 
+	forgotten.
 
 	* src/lyxlex.h: added a struct pushpophelper for use in functions
 	with more than one exit point.
@@ -11814,13 +11814,13 @@
 	the diff.
 
 	* src/bmtable.[Ch]: change some member prototypes because of the
-	image const changes. 
+	image const changes.
 
 	* commandtags.h, src/LyXAction.C (init): new function:
 	"preferences-save", saves the lyxrc entries into .lyx/preferences.
 	This file is not read automatically but you can add \input
 	preferences to your lyxrc if you want to. We need to discuss how
-	to handle this. 
+	to handle this.
 
 	* src/LaTeX.C (runBibTeX): use regex to match for the needed lines
 	in .aux, also remove .bib and .bst files from dependencies when
@@ -11830,7 +11830,7 @@
 	because of changes to images.
 
 	* lib/images/*: same change as for images/*
-	
+
 	* lib/lyxrc.example: Default for accept_compound is false not no.
 
 	* images/*: changed to be const, however I have som misgivings
@@ -11843,16 +11843,16 @@
 	* autogen.sh: autogenerate lib/configure from lib/configure.m4
 
 	* config/lib_configure.m4: removed
-	
+
 	* lib/configure.m4: new file (was config/lib_configure.m4)
 
 	* configure.in: do not test for rtti, since we do not use it.
-	
+
 1999-11-26  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/lyxstring.C (lyxstring::Srep): Changed to use a
 	doubling of allocated space scheme. This makes it faster for large
-	strings end to use less memory for small strings. xtra rememoved. 
+	strings end to use less memory for small strings. xtra rememoved.
 
 	* src/insets/figinset.C (waitalarm): commented out.
 	(GhostscriptMsg): use static_cast
@@ -11864,13 +11864,13 @@
 	* src/LaTeX.C (scanAux): new method. Scans the .aux file and looks
 	for changes in bibtex database or style.
 	(runBibTeX): remove all .bib and .bst files from dep before we
-	begin. 
+	begin.
 	(run): use scanAuc in when dep file already exist.
 
 	* src/DepTable.C (remove_files_with_extension): new method
 	(exist): new method
 
-	* src/DepTable.[Ch]: made many of the methods const. 
+	* src/DepTable.[Ch]: made many of the methods const.
 
 1999-11-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -11885,7 +11885,7 @@
 	* src/debug.h (value): fix the code that parses debug levels.
 
 	* src/debug.h: add new debug type ACTION, reserved for LyXAction
-	class.  
+	class.
 
 	* src/LyXAction.C: use Debug::ACTION as debug channel.
 
@@ -11900,7 +11900,7 @@
 	red), but done for the sake of correctness.
 
 	* src/mathed/formulamacro.h, src/mathed/math_macro.[Ch],
-	  src/mathed/math_root.[Ch] (Clone): return a MathedInset*  
+	  src/mathed/math_root.[Ch] (Clone): return a MathedInset*
 
 	* src/insets/inseterror.h, src/insets/inseturl.h,
 	  src/insets/insetinfo.h, src/insets/figinset.h,
@@ -11910,7 +11910,7 @@
 
 	* src/ImportNoweb.C, src/LyXAction.h, src/insets/figinset.C,
 	  src/insets/insetbib.C, src/support/filetools.C: add `using'
-	directives for cxx.  
+	directives for cxx.
 
 	* src/lyxfunc.C (Dispatch): make sure nothing bad happens when
 	doing 'Insert index of last word' at the beginning of a paragraph.
@@ -11933,7 +11933,7 @@
 
 	* all classes inherited form MathInset: return value of Clone
 	changed back to MathedInset *.
-	
+
 	* src/insets/figinset.C (runqueue): use a ofstream to output the
 	gs/ps file. Might need some setpresicion or setw. However I can
 	see no problem with the current code.
@@ -11960,7 +11960,7 @@
 
 	* src/LaTeX.C, src/support/filetools.[Ch]: moved do_popen and
 	findtexfile from LaTeX to filetools.
-	
+
 	* src/ImportNoweb.C (documentclass): rewrote to use ifstream
 	instead of FilePtr. Needs to be verified by a literate user.
 
@@ -11987,7 +11987,7 @@
 	* src/mathed/math_defs.h: made the mathaligns be in a enum instead
 	of defines.
 	(MathIsInset ++): changed several macros to be inline functions
-	instead. 
+	instead.
 
 	* src/mathed/Makefile.am: changed to use libtool
 
@@ -11995,14 +11995,14 @@
 
 	* src/insets/inset* : Clone changed to const and return type is
 	the true insettype not just Inset*.
-	
+
 	* src/insets/Makefile.am: changed to use libtool
 
 	* src/insets/.cvsignore: added *.lo, .libs and libinsets.la
 
 	* src/undo.[Ch] : added empty() and changed some of the method
 	names.
-	
+
 	* src/texrow.[Ch]: rewrote to store texrow's in a std::list.
 
 	* src/lyxparagraph.h: use id() and id(...) instead of getID and
@@ -12020,12 +12020,12 @@
 	as dependencies.
 
 	* src/LyXView.[Ch] + other files : changed currentView to view.
-	
+
 	* src/LyXAction.[Ch] : ported from the old devel branch.
-	
+
 	* src/.cvsignore: added .libs and a.out
 
-	* configure.in : changes to use libtool. 
+	* configure.in : changes to use libtool.
 
 	* acinclude.m4 : inserted libtool.m4
 
@@ -12042,7 +12042,7 @@
 
 1999-11-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* lib/doc/LaTeXConfig.lyx.in, 
+	* lib/doc/LaTeXConfig.lyx.in,
 	  lib/chkconfig.ltx: remove the test for linuxdoc-sgml.sty.
 
 	* src/buffer.C (writeFile): Do not add a comment on top of .lyx
@@ -12088,7 +12088,7 @@
 	* configure.in: Use LYX_GNU_GETTEXT.
 
 	* acinclude.m4 (LYX_GNU_GETTEXT): new macro, essentially a copy of
-	AM_GNU_GETTEXT with a bug fixed. 
+	AM_GNU_GETTEXT with a bug fixed.
 
 	* src/lyx_cb.C (RunLinuxDoc): add a cast to please dec cxx.
 
@@ -12102,13 +12102,13 @@
 1999-11-15  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/LSubstring.[Ch]: made the second arg of most of the
-	constructors be a const reference. 
+	constructors be a const reference.
 
 	* src/mathed/math_parser.C (LexInitCodes): small bug introduced by
 	me fixed.
 
 	* src/support/lyxstring.[Ch] (swap): added missing member function
-	and specialization of swap(str, str); 
+	and specialization of swap(str, str);
 
 	* src/menus.C (ShowBufferMenu): to use the new BufferStorage
 
@@ -12120,14 +12120,14 @@
 
 	* src/lyxparagraph.h, src/paragraph.C + a lot of files: removed
 	NEW_TEXT and have now only code that was included when this was
-	defined. 
+	defined.
 
 	* src/intl.C (LCombo): use static_cast
 	(LCombo2): ditto
 	(DispatchCallback): ditto
 
 	* src/definitions.h: removed whole file
-	
+
 	* src/commandtags.h: comment out LFUN_INSERT_INSET_LATEX
 
 	* src/chset.[Ch]: a lot rewritten, does not use lyxlex for cdef
@@ -12140,14 +12140,14 @@
 	and to make the whole class assignable.
 
 	* src/bufferparams.C (Copy): removed this functions, use a default
-	assignment instead. 
+	assignment instead.
 
 	* src/buffer.h: made isLatex, isLinuxDoc, isDocBook, isSGML and
 	isLiterate const.
 
 	* src/buffer.C (readLyXformat2): commend out all that have with
 	oldpapersize to do. also comment out all that hve to do with
-	insetlatex and insetlatexdel. 
+	insetlatex and insetlatexdel.
 	(setOldPaperStuff): commented out
 
 	* src/Makefile.am (lyx_SOURCES): remove definitions.h, add undo.C
@@ -12157,7 +12157,7 @@
 	* src/mathed/math_panel.C (button_cb): use static_cast
 
 	* src/insets/Makefile.am (insets_o_SOURCES): removed
-	insetlatex.[Ch] 
+	insetlatex.[Ch]
 
 	* src/support/lyxstring.C (helper): use the unsigned long
 	specifier, UL, instead of a static_cast.
@@ -12182,25 +12182,25 @@
 	* src/{mathed,insets}/Makefile.am (CXXLINK): add $(LDFLAGS) to the
 	link line, so that Irix users (for example) can set it explicitely to
 	"-n32".
-	
+
 	* src/Makefile.am (lyx_LDADD): use LYX_LIB as a variable, so that
 	it can be overidden at make time (static or dynamic link, for
 	example).
-	
-	* src/vc-backend.C, src/LaTeXFeatures.h, 
-	  src/support/LRegex.C, src/support/LRegex.h: add a few "using" 
+
+	* src/vc-backend.C, src/LaTeXFeatures.h,
+	  src/support/LRegex.C, src/support/LRegex.h: add a few "using"
 	statements to bring templates to global namespace.
 
 1999-11-10  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/lyxstring.C (operator[] const): make it standard
-	conforming. 
+	conforming.
 
 	* src/minibuffer.C (Init): changed to reflect that more
 	information is given from the lyxvc and need not be provided here.
 
 	* src/lyxvc.[Ch]: rewrote to use the vc-backend.
-	
+
 	* src/Makefile.am (lyx_SOURCES): add vc-backend.[Ch]
 
 	* src/LyXView.C (UpdateTimerCB): use static_cast
@@ -12216,10 +12216,10 @@
 	* src/vc-backend.[Ch]: new files. The backends for vc handling,
 	have no support for RCS and partial support for CVS, will be
 	improved later.
-	
+
 	* src/insets/ several files: changes because of function name
 	changes in Bufferview and LyXView.
-	
+
 	* src/mathed/math_symbols.C (math_insert_symbol): use static_cast
 
 	* src/support/LSubstring.[Ch]: new files. These implement a
@@ -12232,7 +12232,7 @@
 	* src/support/LRegex.[Ch]: a regex class that can be used to pick
 	out patterns and subpatterns of strings. It is used by LSubstring
 	and also by vc-backend.C
-	
+
 	* src/support/lyxstring.C: went over all the assertions used and
 	tried to correct the wrong ones and flag which of them is required
 	by the standard. some bugs found because of this. Also removed a
@@ -12272,7 +12272,7 @@
 
 	* development/lyx.spec.in: WHATSNEW has been renamed to NEWS
 	(from Kayvan).
-	
+
 
 1999-11-05  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -12289,7 +12289,7 @@
 
 	* src/bufferlist.C: use a vector to store the buffers in. This is
 	an internal change and should not affect any other thing.
-	
+
 	* src/BufferView.C (waitForX): use XSync instead of the lengthy
 	stuff in waitForX.
 
@@ -12308,7 +12308,7 @@
 	characters.
 	(compare): all compare functions rewritten to use
 	internal_compare.
-	
+
 1999-11-03  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/lyxstring.C (compare): pass c_str()
@@ -12336,9 +12336,9 @@
 1999-11-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/layout.C (less_textclass_desc): functor for use in sorting
-	of textclasses. 
+	of textclasses.
 	(LyXTextClass::Read): sort the textclasses after reading.
-	
+
 	* src/support/filetools.C (SpaceLess): new version of the
 	SpaceLess functions. What problems does this one give? Please
 	report.
@@ -12351,14 +12351,14 @@
 	two versions of find where this has not been done yet.
 
 	* src/support/lyxlib.h: add missing int return type to
-	lyx::chdir(). 
+	lyx::chdir().
 
 	* src/menus.C (ShowFileMenu): disable exporting to html if no
 	html export command is present.
 
 	* config/lib_configure.m4: add a test for an HTML converter. The
 	programs checked for are, in this order: tth, latex2html and
-	hevea. 
+	hevea.
 
 	* lib/configure: generated from config/lib_configure.m4.
 
@@ -12368,7 +12368,7 @@
 
 	* src/lyxrc.{C,h}: rename \tth_command to \html_command.
 
-	* lib/lyxrc.example: update description of \html_command. 
+	* lib/lyxrc.example: update description of \html_command.
 	add "quotes" around \screen_font_xxx font setting examples to help
 	people who use fonts with spaces in their names.
 
@@ -12391,12 +12391,12 @@
 
 1999-10-28  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
-	* src/support/syscall.C (Systemcalls::kill): 
-	  src/support/filetools.C (PutEnv, PutEnvPath): 
-	  src/lyx_cb.C (addNewlineAndDepth): 
+	* src/support/syscall.C (Systemcalls::kill):
+	  src/support/filetools.C (PutEnv, PutEnvPath):
+	  src/lyx_cb.C (addNewlineAndDepth):
 	  src/FontInfo.C (FontInfo::resize): condition some #warning
 	directives with WITH_WARNINGS.
-	
+
 
 1999-10-28  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
@@ -12404,7 +12404,7 @@
 	limited and made accessor functions instead a lot of code changed
 	becuase of this. Also instead of returning pointers often a const
 	reference is returned instead.
-	
+
 	* src/form1.C (create_form_Figure): added a couple fo "no-c-format"
 
 	* src/Makefile.am (dist-hook): added used to remove the CVS from
@@ -12412,7 +12412,7 @@
 	(EXTRA_DIST): added cheaders
 
 	* src/support/lstrings.C (tostr(char)): fix it to handle param as
-	a character not as a small integer. 
+	a character not as a small integer.
 
 	* src/support/lyxstring.C (find): removed Assert and added i >=
 	rep->sz to the first if.
@@ -12421,7 +12421,7 @@
 
 	* src/layout.[Ch] src/BufferView.C src/LaTeXFeatures.C
 	src/LyXView.C src/buffer.C src/bufferparams.C
-	src/lyx_cb.C src/lyxfunc.C src/paragraph.C src/text.C 
+	src/lyx_cb.C src/lyxfunc.C src/paragraph.C src/text.C
 	src/text2.C src/insets/insetinclude.C:
 	lyxlayout renamed to textclasslist.
 
@@ -12438,7 +12438,7 @@
 	(LyXTextClassList::Style): bug fix. do the right thing if layout
 	is to big.
 	(LyXTextClassList::NumberOfLayout): new acces to layoutlist.
-	(LyXTextClassList::NameOfLayout): ditto 
+	(LyXTextClassList::NameOfLayout): ditto
 	(LyXTextClassList::Load): ditto
 
 	* src/buffer.C (makeLaTeXFile): new access to layoutlist
@@ -12501,7 +12501,7 @@
 	std::container to store textclasses and layouts in.
 	Simplified, removed a lot of code. Make all classes
 	assignable. Further simplifications and review of type
-	use still to be one. 
+	use still to be one.
 
 	* src/menus.C (ShowFileMenu/ShowFileMenu2): Use the iterators from
 	lastfiles to create the lastfiles partr of the menu.
@@ -12519,7 +12519,7 @@
 
 	* src/PaperLayout.C: removed code snippets that were commented out.
 
-	* src/lyx_gui_misc.C: removed code snippets that were commented out. 
+	* src/lyx_gui_misc.C: removed code snippets that were commented out.
 
 	* src/lyx_main.C: removed code snippets that wer commented out.
 
@@ -12577,7 +12577,7 @@
 	(C_InsetInfo_CloseInfoCB): forward the ob parameter
 	(CloseInfoCB): static_cast from ob->u_vdata instead.
 	(Edit): removed bogus arg from fl_set_object_shortcut, set to 1
-	instead. 
+	instead.
 
 	* src/insets/inseterror.C (Edit): pass object in u_vdata instead
 	(C_InsetError_CloseErrorCB): forward the ob parameter
@@ -12590,13 +12590,13 @@
 	used a lyx_ prefix instead. Expect this to change when we begin
 	using namespaces.
 
-	* src/BufferView.[Ch] (BufferView::~BufferView): removed 
+	* src/BufferView.[Ch] (BufferView::~BufferView): removed
 
 	* src/BackStack.h: rewrote to use std::stack. made BackStackItem
 	and removed now defunct constructor and deconstructor.
 
 	* src/BufferView.h: have backstack as a object not as a pointer.
-	removed initialization from constructor. added include for BackStack 
+	removed initialization from constructor. added include for BackStack
 
 	* development/lyx.spec.in (%build): add CFLAGS also.
 
@@ -12622,8 +12622,8 @@
 	* acinclude.m4 (VERSION): new rules for when a version is
 	development, added also a variable for prerelease.
 	(warnings): we set with_warnings=yes for prereleases
-	(lyx_opt): prereleases compile with same optimization as development 
-	(CXXFLAGS): only use pedantic if we are a development version 
+	(lyx_opt): prereleases compile with same optimization as development
+	(CXXFLAGS): only use pedantic if we are a development version
 
 	* src/BufferView.C (restorePosition): don't do anything if the
 	backstack is empty.
@@ -12658,13 +12658,13 @@
 	* src/lyxvc.C +
 	* src/menus.C: fixed various resize issues. So now forms can be
 	resized savely or not be resized at all.
-	
+
 	* forms/form_url.fd +
 	* src/insets/form_url.[Ch]: added because it's cleaner and easier
 	to modify IMO.
 
 	* src/insets/Makefile.am: added files form_url.[Ch]
-	
+
 1999-10-25  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* INSTALL: it is now possible to compile LyX with digital C++ 6.1
@@ -12672,10 +12672,10 @@
 
 	* src/{BufferView,LyXView,combox,filedlg,intl,lyxserver,lyxvc,
 	menus,minibuffer,toolbar}.{C,h}: added C_xxx wrappers around
-	remaining static member callbacks. 
+	remaining static member callbacks.
 
 	* src/lyxfunc.C (Dispatch): Use _() instead of N_() fot minibuffer
-	messages. 
+	messages.
 
 	* src/support/lyxstring.h: declare struct Srep as friend of
 	lyxstring, since DEC cxx complains otherwise.
@@ -12692,7 +12692,7 @@
 	* src/spellchecker.C (create_ispell_pipe): removed old #warning,
 	the code has shown itself to work
 	(create_ispell_pipe): removed another warning, added a comment
-	instead. 
+	instead.
 
 	* src/minibuffer.C (ExecutingCB): removed code that has been
 	commented out a long time
@@ -12738,11 +12738,11 @@
 
 	* Makefile.am (MAINTAINERCLEANFILES): added po/POTFILES.in
 
-	* acinclude.m4 (LYX_GXX_STRENGHT_REDUCE): removed. 
+	* acinclude.m4 (LYX_GXX_STRENGHT_REDUCE): removed.
 	(LYX_PROG_CXX): added -pedantic to g++ compile options when
 	with-warnings, removed the __STRING_ANSI__ hack, seems to not be
-	needed. 
-	(LYX_CXX_CHEADERS): added <clocale> to the test. 
+	needed.
+	(LYX_CXX_CHEADERS): added <clocale> to the test.
 
 1999-10-23  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
@@ -12766,10 +12766,10 @@
 
 	* src/insets/figinset.C (CallbackFig): Just changed the defines a bit.
 
-	* src/lyx_cb.C (MenuInsertRef) + 
+	* src/lyx_cb.C (MenuInsertRef) +
 	* src/lyx_gui.C (create_forms): Inserted fl_set_form_minsize so that
 	the form cannot be resized under it limits (fixes a segfault)
-	
+
 	* src/lyx.C (create_form_form_ref) +
 	* forms/lyx.fd: Changed Gravity on name input field so that it is
 	resized correctly.
@@ -12778,7 +12778,7 @@
 
 	* configure.in: use LYX_CXX_STL_MODERN_STREAMS; check for headers
 	<ostream> and <istream>.
-	
+
 	* acinclude.m4 (LYX_CXX_STL_MODERN_STREAMS): new test. Checks
 	whether <fstream> provides the latest standard features, or if we
 	have an oldstyle library (like in egcs).
@@ -12897,12 +12897,12 @@
 	conditional compile of lyxstring.Ch
 
 	* acinclude.m4 (LYX_CXX_STL_STRING): new and improved, still a
-	stupid check, but it is a lot better than the bastring hack. 
-	(LYX_CXX_STL_STRING): bruker nå AM_CONDITIONAL(USE_LYXSTRING  
+	stupid check, but it is a lot better than the bastring hack.
+	(LYX_CXX_STL_STRING): bruker nå AM_CONDITIONAL(USE_LYXSTRING
 
 	* several files: changed string::erase into string::clear. Not
 	really needed.
-	
+
 	* src/chset.C (encodeString): use a char temporary instead
 
 	* src/table.C (TexEndOfCell): added tostr around
@@ -12933,7 +12933,7 @@
 	* src/insets/insetbib.C (setCounter): added tostr around counter.
 
 	* src/support/lyxstring.h: added an operator+=(int) to catch more
-	mistakes. 
+	mistakes.
 
 	* src/support/lyxstring.C (lyxstring): We DON'T allow NULL pointers.
 	(lyxstring): We DON'T allow NULL pointers.
@@ -12945,7 +12945,7 @@
 	when writing them out.
 
 	* src/LString.C: remove, since it is not used anymore.
-	
+
 	* src/support/lyxstring.C: condition the content to
 	USE_INCLUDED_STRING macro.
 
@@ -12956,7 +12956,7 @@
 
 	* many files: change all callback functions to "C" linkage
 	functions to please strict C++ compilers like DEC cxx 6.1 in mode
-	strict_ansi. Those who were static are now global. 
+	strict_ansi. Those who were static are now global.
 	    The case of callbacks which are static class members is
 	trickier, since we have to make C wrappers around them (see
 	InsetError, InsetInfo and InsetUrl). The same holds for friends. I
@@ -12979,7 +12979,7 @@
 1999-10-19  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/lyx_cb.C (LayoutsCB): fix bug where int was added to a
-	string. 
+	string.
 
 1999-10-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -12990,7 +12990,7 @@
 
 	* src/DepTable.[Ch]: rewritten to store the dependencies in a map
 	instead, use fstreams for io of the depfile, removed unneeded
-	functions and variables. 
+	functions and variables.
 
 	* src/LaTeX.[Ch] (class TeXErrors): rewrote to store the errors in a
 	vector instead, removed all functions and variables that is not in
@@ -13025,7 +13025,7 @@
 	* src/cheader/: new directory, populated with cname headers from
 	libstdc++-2.8.1. They are a bit old, but probably good enough for
 	what we want (support compilers who lack them).
-	
+
 	* src/insets/Makefile.am, src/mathed/Makefile.am: remove src/support
 	from includes. It turns out is was stupid.
 
@@ -13044,7 +13044,7 @@
 	* development/lyx.spec.in: new file
 
 	* po/*.po: merged with lyx.pot becuase of make distcheck
-	
+
 	* lib/Makefile.am (dist-hook): added dist-hook so that
 	documentation files will be included when doing a make
 	dist/distdir/distcheck. Requires cvs export -r HEAD lyxdoc to run.
@@ -13058,7 +13058,7 @@
 
 	* all files that used to use pathstack: uses now Path instead.
 	This change was a lot easier than expected.
-	
+
 	* src/support/path.h: new file
 
 	* src/support/Makefile.am (libsupport_a_SOURCES): added path.h
@@ -13068,22 +13068,22 @@
 	* src/support/lyxstring.C (getline): Default arg was given for
 	para 3. removed.
 
-	* Configure.cmd: removed file 
+	* Configure.cmd: removed file
 
 1999-10-13  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* src/support/DebugStream.[Ch]: remove the explicit std:: before
 	streams classes and types, add the proper 'using' statements when
 	MODERN_STL is defined.
-	
+
 	* src/debug.h: move the << operator definition after the inclusion
 	of DebugStream.h
 
 	* src/support/filetools.C: include "LAssert.h", which is needed
-	later. 
+	later.
 
 	* src/insets/Makefile.am, src/mathed/Makefile.am: add src/support
-	to includes. 
+	to includes.
 
 	* src/lyxfont.h, src/commandtags.h, src/mathed/math_defs.h:
 	include "debug.h" to define a proper ostream.
@@ -13096,16 +13096,16 @@
 
 	* src/*.C: Changed Systemcalls::Startscript() to startscript()
 
-	* src/support/FileInfo.h: Better documentation	
+	* src/support/FileInfo.h: Better documentation
 
 	* src/lyxfunc.C: Added support for buffer-export html
-	
+
 	* src/menus.C: Added Export->As HTML...
-	
+
 	* lib/bind/*.bind: Added short-cut for buffer-export html
 
 	* src/lyxrc.*: Added support for new \tth_command
-	
+
 	* lib/lyxrc.example: Added stuff for new \tth_command
 
 1999-10-12  Lars Gullik Bjønnes  <larsbj@lyx.org>
@@ -13124,7 +13124,7 @@
 
 	* lib/reLyX/Makefile.am: install noweb2lyx.
 
-	* lib/Makefile.am: install configure. 
+	* lib/Makefile.am: install configure.
 
 	* lib/reLyX/configure.in: declare a config aux dir; set package
 	name to lyx (not sure what the best solution is); generate noweb2lyx.
@@ -13136,7 +13136,7 @@
 	* src/support/filetools.C (FileOpenSearch): Fixed a bug where
 	when in the PATH was something like /usr/bin;;/bin (note: the ;;)
 	it returned without continuing to search the path.
-	
+
 1999-10-07  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/insets/insetquotes.C (Draw): Simplified a gread deal. This
@@ -13176,7 +13176,7 @@
 	outputting enums to lyxerr. This as thus eliminated a lot of
 	explicit casts and has made the code clearer. Among the enums
 	affected: kb_action, InsetLatexAccent::ACCENT_TYPE, a couple of
-	mathed enums, some font enum the Debug::type enum. 
+	mathed enums, some font enum the Debug::type enum.
 
 	* src/support/lyxstring.h (clear): missing method. equivalent of
 	erase(0, npos).
@@ -13192,7 +13192,7 @@
 
 	* configure.in (Check for programs): Added a check for kpsewhich,
 	the latex generation will use this later to better the dicovery of
-	all used files. 
+	all used files.
 
 	* src/BufferView.C (create_view): we don't need to cast this to
 	(void*) that is done automatically.
@@ -13208,19 +13208,19 @@
 	* lib/reLyX/configure.in: setup LYX_DIR correctly in reLyX.
 
 	* src/bufferparams.C (BufferParams): default input encoding is now
-	"latin1" 
+	"latin1"
 
 	* acinclude.m4 (cross_compiling): comment out macro
-	LYX_GXX_STRENGTH_REDUCE. 
+	LYX_GXX_STRENGTH_REDUCE.
 
 	* acconfig.h: make sure that const is not defined (to empty) when
 	we are compiling C++. Remove commented out code using SIZEOF_xx
 	macros.
-	
+
 	* configure.in : move the test for const and inline as late as
 	possible so that these C tests do not interefere with C++ ones.
 	Remove the call to LYX_GXX_STRENGTH_REDUCE, since its usefulness
-	has not been proven. 
+	has not been proven.
 
 1999-10-04  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
@@ -13228,7 +13228,7 @@
 	isColumn parameter.
 
 	* src/menus.C (ShowFileMenu): add a missing tostr() for lastfiles
-	shortcut. 
+	shortcut.
 	(ShowFileMenu2): ditto.
 
 	* lib/reLyX/.cvsignore: add configure and aclocal.m4 to the list
@@ -13238,7 +13238,7 @@
 
 	* Most files: finished the change from the old error code to use
 	DebugStream for all lyxerr debugging. Only minor changes remain
-	(e.g. the setting of debug levels using strings instead of number) 
+	(e.g. the setting of debug levels using strings instead of number)
 
 1999-10-02  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
@@ -13250,13 +13250,13 @@
 1999-10-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/support/Makefile.am: added -I${srcdir}/../ to INCLUDES and
-	set ETAGS_ARGS to --c++ 
+	set ETAGS_ARGS to --c++
 
 1999-09-30  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/table.C (DocBookEndOfCell): commented out two unused variables
 
-	* src/paragraph.C: commented out four unused variables. 
+	* src/paragraph.C: commented out four unused variables.
 
 	* src/lyx_cb.C (TocUpdateCB): moved variable i and added a new i
 	insed a if clause with type string::size_type.
@@ -13296,10 +13296,10 @@
 
 	* most files: removed the RCS tags. With them we had to recompile
 	a lot of files after a simple cvs commit. Also we have never used
-	them for anything meaningful. 
+	them for anything meaningful.
 
 	* most files: tags-query-replace NULL 0. As adviced several plases
-	we now use "0" instead of "NULL" in our code. 
+	we now use "0" instead of "NULL" in our code.
 
 	* src/support/filetools.C (SpaceLess): use string::size_type as
 	loop variable type.
@@ -13326,20 +13326,20 @@
 	new subdir. More files moved to support.
 
 	* imported som of the functions from repository lyx, filetools
-	
+
 	* ran tags-query-replace on LString -> string, corrected the bogus
 	cases. Tried to make use of lstrings.[hC], debugged a lot. There
 	is still some errors in there. This is errors where too much or
 	too litle get deleted from strings (string::erase, string::substr,
 	string::replace), there can also be some off by one errors, or
 	just plain wrong use of functions from lstrings. Viewing of quotes
-	is wrong. 
+	is wrong.
 
 	* LyX is now running fairly well with string, but there are
 	certainly some bugs yet (see above) also string is quite different
 	from LString among others in that it does not allow null pointers
 	passed in and will abort if it gets any.
-	
+
 	* Added the revtex4 files I forgot when setting up the repository.
 
 1999-09-27  Lars Gullik Bjønnes  <larsbj@lyx.org>

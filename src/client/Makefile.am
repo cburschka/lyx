@@ -12,7 +12,7 @@ AM_CXXFLAGS = $(PCH_FLAGS)
 
 if USE_INCLUDED_BOOST
 BOOST_LIBS = $(top_builddir)/boost/libs/filesystem/src/libboostfilesystem.la \
-	$(top_builddir)/boost/libs/regex/src/libboostregex.la 
+	$(top_builddir)/boost/libs/regex/src/libboostregex.la
 else
 BOOST_LIBS = -lboost_regex -lboost_filesystem
 endif

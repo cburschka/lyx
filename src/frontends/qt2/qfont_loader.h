@@ -50,7 +50,7 @@ public:
 
 	/// Called before QApplication is initialized
 	static void initFontPath();
-	
+
 	/// Called the first time when available() can't load a symbol font
 	static void addToFontPath();
 

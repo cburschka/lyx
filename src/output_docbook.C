@@ -130,7 +130,7 @@ ParagraphList::const_iterator makeEnvironment(Buffer const & buf,
 
 	LyXLayout_ptr const & bstyle = par->layout();
 	string item_tag;
-	
+
 	string id = par->getDocbookId();
 	string env_name = bstyle->latexname();
 	// Opening outter tag
@@ -230,7 +230,7 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 	ParagraphList::const_iterator par = pbegin;
 	Counters & counters = buf.params().getLyXTextClass().counters();
 	LyXLayout_ptr const & bstyle = par->layout();
-	
+
 	string id = par->getDocbookId();
 	id = id.empty()? "" : " id = \"" + id + "\"";
 
@@ -254,7 +254,7 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 		os << expandLabel(buf.params().getLyXTextClass(), bstyle, false);
 		sgml::closeTag(os, depth, false, bstyle->labeltag());
 	}
-	
+
 	// Opend inner tag
 	sgml::openTag(buf, os, depth, true, bstyle->innertag());
 
@@ -263,7 +263,7 @@ ParagraphList::const_iterator makeCommand(Buffer const & buf,
 	// Close inner tags
 	sgml::closeTag(os, depth, true, bstyle->innertag());
 	os << '\n';
-	
+
 	++par;
 	while (par != pend) {
 		LyXLayout_ptr const & style = par->layout();

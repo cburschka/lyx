@@ -7,12 +7,12 @@ Quick compilation guide
 These four steps will compile, test and install LyX:
 
 	0) Linux users beware: if compiling the Qt frontend, you need
-           qt and qt-devel packages of the same version to compile LyX. 
+           qt and qt-devel packages of the same version to compile LyX.
 
 	1) ./configure
 	   configures LyX to your system. By default, LyX configures
            the xforms frontend, use --with-frontend=qt to build a Qt
-           version. You may have to set 
+           version. You may have to set
            --with-qt-dir=<path-to-your-qt-installation> to succeed.
 
 	2) make
@@ -169,7 +169,7 @@ flags:
 
     You can use this feature to install more than one version of LyX
     on the same system. You can optionally specify a "version" of your
-    own, by doing something like : 
+    own, by doing something like :
        ./configure --with-version-suffix=-latestcvs
 
     Note that the standard configure options --program-prefix,
