@@ -1,5 +1,17 @@
 2002-02-20  Juergen Vigna  <jug@sad.it>
 
+	* insettext.C (getDrawFont): implemented this function to call the
+	one of the owner if present as the owner normally knows what to do
+	with us.
+
+	* insetert.C: implement getDrawFont() function and comment out all
+	the crap for setting a special latex font inside this inset.
+	(InsetERT): added a Lanugage parameter to this constructor.
+
+	* inset.h: added function getDrawFont(LyXFont & font) to be able to
+	change the font for being drawn on screen (used only in InsetERT for
+	now).
+
 	* insettabular.C (draw): clear the parts around a cellinset ALWAYS
 	and also above (was missing).
 	(updateLocal): don't remove the cell selection if we have one this

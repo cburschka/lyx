@@ -1,5 +1,11 @@
 2002-02-20  Juergen Vigna  <jug@sad.it>
 
+	* text2.C (getFont): get the drawing font of the Inset if this
+	paragraph is inside an inset (only important for InsetERT for now).
+
+	* buffer.C (insertErtContents): use new lanugage params in ERT
+	constructor.
+
 	* CutAndPaste.C: commenting out seemingly uneeded code.
 
 2002-02-19  Allan Rae  <rae@lyx.org>
