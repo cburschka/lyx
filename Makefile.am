@@ -29,7 +29,12 @@ dist-hook:
 
 rpmdist: dist
 	ln -s lib/images/lyx.xpm . ; \
-	rpmbuild -ta $(PACKAGE)-$(VERSION).tar.gz ; saved_status=$$?; \
+	if [ -z "`type -path rpmbuild`" ]; \
+	then \
+		RPMBUILD=rpm; \
+	else \
+		RPMBUILD=rpmbuild; \
+	fi; $$RPMBUILD -ta $(PACKAGE)-$(VERSION).tar.gz ; saved_status=$$?; \
 	rm lyx.xpm; exit $$saved_status
 
 bindist:
