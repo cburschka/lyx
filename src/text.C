@@ -3296,10 +3296,6 @@ void LyXText::Delete()
 
 void LyXText::Backspace()
 {
-	LyXParagraph * tmppar;
-	Row * tmprow, * row;
-	long y;
-	int tmpheight;
 
 	/* table stuff -- begin */
 	if (cursor.par->table) {
@@ -3316,6 +3312,9 @@ void LyXText::Backspace()
 	LyXFont rawparfont = cursor.par->GetFontSettings(lastpos - 1);
 
 	if (cursor.pos == 0) {
+		// The cursor is at the beginning of a paragraph, so the the backspace
+		// will collapse two paragraphs into one.
+		
 		// we may paste some paragraphs
       
 		// is it an empty paragraph?
@@ -3323,17 +3322,19 @@ void LyXText::Backspace()
 		if ((lastpos == 0
 		     || (lastpos == 1 && cursor.par->IsSeparator(0)))
 		    && !(cursor.par->Next() 
-			 && cursor.par->footnoteflag == 
-			 LyXParagraph::NO_FOOTNOTE
-			 && cursor.par->Next()->footnoteflag == 
-			 LyXParagraph::OPEN_FOOTNOTE)) {
+			 && cursor.par->footnoteflag == LyXParagraph::NO_FOOTNOTE
+			 && cursor.par->Next()->footnoteflag == LyXParagraph::OPEN_FOOTNOTE)) {
+			// This is an empty paragraph and we delete it just by moving the curosr one step
+			// left and let the DeleteEmptyParagraphMechanism handle the actual deleteion
+			// of the paragraph.
 			
 			if (cursor.par->previous) {
-				tmppar = cursor.par->previous->FirstPhysicalPar();
+				LyXParagraph * tmppar = cursor.par->previous->FirstPhysicalPar();
 				if (cursor.par->GetLayout() == tmppar->GetLayout()
 				    && cursor.par->footnoteflag == tmppar->footnoteflag
 				    && cursor.par->GetAlign() == tmppar->GetAlign()) {
-					
+					// Inherit botom DTD from the paragraph below.
+					// (the one we are deleting)
 					tmppar->line_bottom = cursor.par->line_bottom;
 					tmppar->added_space_bottom = cursor.par->added_space_bottom;
 					tmppar->pagebreak_bottom = cursor.par->pagebreak_bottom;
@@ -3342,7 +3343,7 @@ void LyXText::Backspace()
 				CursorLeftIntern();
 		     
 				// the layout things can change the height of a row !
-				tmpheight = cursor.row->height;
+				int tmpheight = cursor.row->height;
 				SetHeightOfRow(cursor.row);
 				if (cursor.row->height != tmpheight) {
 					refresh_y = cursor.y - cursor.row->baseline;
@@ -3352,13 +3353,15 @@ void LyXText::Backspace()
 				return;
 			}
 		}
+		
 		if (cursor.par->ParFromPos(cursor.pos)->previous){
 			SetUndo(Undo::DELETE,
 				cursor.par->ParFromPos(cursor.pos)->previous->previous,
 				cursor.par->ParFromPos(cursor.pos)->next);
 		}
-		tmppar = cursor.par;
-		tmprow = cursor.row;
+		
+		LyXParagraph * tmppar = cursor.par;
+		Row * tmprow = cursor.row;
 		CursorLeftIntern();
 #warning See comment on top of text.C
 		/* Pasting is not allowed, if the paragraphs have different
@@ -3373,18 +3376,22 @@ void LyXText::Backspace()
 		*/
 		if (cursor.par != tmppar
 		    && (cursor.par->GetLayout() == tmppar->GetLayout()
-			|| !tmppar->GetLayout())
+			|| tmppar->GetLayout() == 0 /*standard*/)
 		    && cursor.par->footnoteflag == tmppar->footnoteflag
 		    /* table stuff -- begin*/
 		    && !cursor.par->table /* no pasting of tables */ 
 		    /* table stuff -- end*/
 		    && cursor.par->GetAlign() == tmppar->GetAlign()) {
-			
+
+			RemoveParagraph(tmprow);
+			RemoveRow(tmprow);
 			cursor.par->PasteParagraph();
 			
-			if (!(cursor.pos &&
-			      cursor.par->IsSeparator(cursor.pos - 1)))
-				cursor.par->InsertChar(cursor.pos, ' ');
+			if (!cursor.pos || !cursor.par->IsSeparator(cursor.pos - 1))
+				; //cursor.par->InsertChar(cursor.pos, ' ');
+			// strangely enough it seems that commenting out the line above removes
+			// most or all of the segfaults. I will however also try to move the
+			// two Remove... lines in front of the PasteParagraph too.
 			else
 				if (cursor.pos)
 					cursor.pos--;
@@ -3394,10 +3401,14 @@ void LyXText::Backspace()
 			refresh_y = cursor.y - cursor.row->baseline;
 			
 			// remove the lost paragraph
-			RemoveParagraph(tmprow);
-			RemoveRow(tmprow);  
+			// This one is not safe, since the paragraph that the tmprow and the
+			// following rows belong to has been deleted by the PasteParagraph
+			// above. The question is... could this be moved in front of the
+			// PasteParagraph?
+			//RemoveParagraph(tmprow);
+			//RemoveRow(tmprow);  
 			
-			AppendParagraph(cursor.row);
+			AppendParagraph(cursor.row); // This rebuilds the rows.
 			UpdateCounters(cursor.row);
 			
 			// the row may have changed, block, hfills etc.
@@ -3424,8 +3435,8 @@ void LyXText::Backspace()
 			}
 		}
 		
-		row = cursor.row;
-		y = cursor.y - row->baseline;
+		Row * row = cursor.row;
+		long y = cursor.y - row->baseline;
 		LyXParagraph::size_type z;
 		/* remember that a space at the end of a row doesnt count
 		 * when calculating the fill */ 
@@ -3439,7 +3450,7 @@ void LyXText::Backspace()
 		if (cursor.pos && cursor.par->IsNewline(cursor.pos)) {
 			cursor.par->Erase(cursor.pos);
 			// refresh the positions
-			tmprow = row;
+			Row * tmprow = row;
 			while (tmprow->next && tmprow->next->par == row->par) {
 				tmprow = tmprow->next;
 				tmprow->pos--;
@@ -3460,7 +3471,7 @@ void LyXText::Backspace()
 			cursor.par->Erase(cursor.pos);
 			
 			// refresh the positions
-			tmprow = row;
+			Row * tmprow = row;
 			while (tmprow->next && tmprow->next->par == row->par) {
 				tmprow = tmprow->next;
 				tmprow->pos--;
@@ -3509,7 +3520,7 @@ void LyXText::Backspace()
 			if ( z >= row->pos) {
 				row->pos = z + 1;
 				
-				tmprow = row->previous;
+				Row * tmprow = row->previous;
 				
 				// maybe the current row is now empty
 				if (row->pos >= row->par->Last()) {

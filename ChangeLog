@@ -1,5 +1,10 @@
 2000-03-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
+	* src/text.C (Backspace): move RemoveParagraph and RemoveRow in
+	front of PasteParagraph. Never insert a ' '. This should at least
+	fix some cause for the segfaults that we have been experiencing,
+	it also fixes backspace behaviour slightly. (Phu!)
+
 	* src/support/lstrings.C (compare_no_case): some change to make it
 	compile with gcc 2.95.2 and stdlibc++-v3
 
