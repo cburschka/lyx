@@ -830,7 +830,7 @@ bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
 #warning pretty ugly
 #endif
 	static InsetFormulaBase * lastformula = 0;
-	static MathIterator current = MathIterator(ibegin(par().nucleus()));
+	static CursorBase current = CursorBase(ibegin(par().nucleus()));
 	static MathArray ar;
 	static string laststr;
 
@@ -842,11 +842,11 @@ bool InsetFormulaBase::searchForward(BufferView * bv, string const & str,
 		ar.clear();
 		mathed_parse_cell(ar, str);
 	} else {
-		++current;
+		increment(current);
 	}
 	//lyxerr << "searching '" << str << "' in " << this << ar << endl;
 
-	for (MathIterator it = current; it != iend(par().nucleus()); ++it) {
+	for (CursorBase it = current; it != iend(par().nucleus()); increment(it)) {
 		CursorSlice & top = it.back();
 		MathArray const & a = top.asMathInset()->cell(top.idx_);
 		if (a.matchpart(ar, top.pos_)) {

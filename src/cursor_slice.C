@@ -17,7 +17,10 @@
 #include "debug.h"
 
 #include "mathed/math_inset.h"
+#include "mathed/math_data.h"
+
 #include "insets/updatableinset.h"
+
 
 #include <boost/assert.hpp>
 
@@ -180,4 +183,65 @@ std::ostream & operator<<(std::ostream & os, CursorSlice const & item)
 //	   << " y: " << item.inset_->y()
 ;
 	return os;
+}
+
+
+
+
+void increment(CursorBase & it)
+{
+	CursorSlice & top = it.back();
+	MathArray   & ar  = top.asMathInset()->cell(top.idx_);
+
+	// move into the current inset if possible
+	// it is impossible for pos() == size()!
+	MathInset * n = 0;
+	if (top.pos_ != ar.size())
+		n = (ar.begin() + top.pos_)->nucleus();
+	if (n && n->isActive()) {
+		it.push_back(CursorSlice(n));
+		return;
+	}
+
+	// otherwise move on one cell back if possible
+	if (top.pos_ < ar.size()) {
+		// pos() == size() is valid!
+		++top.pos_;
+		return;
+	}
+
+	// otherwise try to move on one cell if possible
+	while (top.idx_ + 1 < top.asMathInset()->nargs()) {
+		// idx() == nargs() is _not_ valid!
+		++top.idx_;
+		if (top.asMathInset()->validCell(top.idx_)) {
+			top.pos_ = 0;
+			return;
+		}
+	}
+
+	// otherwise leave array, move on one back
+	// this might yield pos() == size(), but that's a ok.
+	it.pop_back();
+	// it certainly invalidates top
+	++it.back().pos_;
+}
+
+
+CursorBase ibegin(InsetBase * p)
+{
+	CursorBase it;
+	it.push_back(CursorSlice(p));
+	return it;
+}
+
+
+CursorBase iend(InsetBase * p)
+{
+	CursorBase it;
+	it.push_back(CursorSlice(p));
+	CursorSlice & top = it.back();
+	top.idx_ = top.asMathInset()->nargs() - 1;
+	top.pos_ = top.asMathInset()->cell(top.idx_).size();
+	return it;
 }

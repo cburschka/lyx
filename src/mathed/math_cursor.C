@@ -246,14 +246,14 @@ void MathCursor::last()
 
 
 bool positionable
-	(MathIterator const & cursor, MathIterator const & anchor)
+	(CursorBase const & cursor, CursorBase const & anchor)
 {
 	// avoid deeper nested insets when selecting
 	if (cursor.size() > anchor.size())
 		return false;
 
 	// anchor might be deeper, should have same path then
-	for (MathIterator::size_type i = 0; i < cursor.size(); ++i)
+	for (CursorBase::size_type i = 0; i < cursor.size(); ++i)
 		if (cursor[i].asMathInset() != anchor[i].asMathInset())
 			return false;
 
@@ -491,7 +491,7 @@ bool MathCursor::up(bool sel)
 	dump("up 1");
 	macroModeClose();
 	selHandle(sel);
-	MathIterator save = Cursor_;
+	CursorBase save = Cursor_;
 	if (goUpDown(true))
 		return true;
 	Cursor_ = save;
@@ -505,7 +505,7 @@ bool MathCursor::down(bool sel)
 	dump("down 1");
 	macroModeClose();
 	selHandle(sel);
-	MathIterator save = Cursor_;
+	CursorBase save = Cursor_;
 	if (goUpDown(false))
 		return true;
 	Cursor_ = save;
@@ -788,8 +788,8 @@ void MathCursor::pullArg()
 
 void MathCursor::touch()
 {
-	MathIterator::const_iterator it = Cursor_.begin();
-	MathIterator::const_iterator et = Cursor_.end();
+	CursorBase::const_iterator it = Cursor_.begin();
+	CursorBase::const_iterator et = Cursor_.end();
 	for ( ; it != et; ++it)
 		it->cell().touch();
 }
@@ -1028,11 +1028,11 @@ bool MathCursor::goUpDown(bool up)
 bool MathCursor::bruteFind
 	(int x, int y, int xlow, int xhigh, int ylow, int yhigh)
 {
-	MathIterator best_cursor;
+	CursorBase best_cursor;
 	double best_dist = 1e10;
 
-	MathIterator it = ibegin(formula()->par().nucleus());
-	MathIterator et = iend(formula()->par().nucleus());
+	CursorBase it = ibegin(formula()->par().nucleus());
+	CursorBase et = iend(formula()->par().nucleus());
 	while (1) {
 		// avoid invalid nesting when selecting
 		if (!selection_ || positionable(it, Anchor_)) {
@@ -1052,7 +1052,7 @@ bool MathCursor::bruteFind
 
 		if (it == et)
 			break;
-		++it;
+		increment(it);
 	}
 
 	if (best_dist < 1e10)
@@ -1065,9 +1065,9 @@ void MathCursor::bruteFind2(int x, int y)
 {
 	double best_dist = 1e10;
 
-	MathIterator it = Cursor_;
+	CursorBase it = Cursor_;
 	it.back().setPos(0);
-	MathIterator et = Cursor_;
+	CursorBase et = Cursor_;
 	int n = et.back().asMathInset()->cell(et.back().idx_).size();
 	et.back().setPos(n);
 	for (int i = 0; ; ++i) {
@@ -1083,7 +1083,7 @@ void MathCursor::bruteFind2(int x, int y)
 		}
 		if (it == et)
 			break;
-		++it;
+		increment(it);
 	}
 }
 
@@ -1286,7 +1286,7 @@ bool MathCursor::interpret(char c)
 }
 
 
-void MathCursor::setSelection(MathIterator const & where, size_type n)
+void MathCursor::setSelection(CursorBase const & where, size_type n)
 {
 	selection_ = true;
 	Anchor_ = where;

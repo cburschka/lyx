@@ -13,10 +13,9 @@
 #ifndef MATH_CURSOR
 #define MATH_CURSOR
 
+#include "cursor_slice.h"
 #include "math_inset.h"
 #include "math_data.h"
-#include "math_iterator.h"
-#include "support/types.h"
 
 #include <string>
 
@@ -225,7 +224,7 @@ public:
 	/// dump selection information for debugging
 	void dump(char const * str) const;
 	/// moves on
-	void setSelection(MathIterator const & where, size_type n);
+	void setSelection(CursorBase const & where, size_type n);
 	/// grab selection marked by anchor and current cursor
 	std::string grabSelection() const;
 	/// guess what
@@ -282,9 +281,9 @@ private:
 	idx_type & idx();
 
 	/// path of positions the cursor had to go if it were leaving each inset
-	MathIterator Cursor_;
+	CursorBase Cursor_;
 	/// path of positions the anchor had to go if it were leaving each inset
-	mutable MathIterator Anchor_;
+	mutable CursorBase Anchor_;
 	/// pointer to enclsing LyX inset
 	InsetFormulaBase * formula_;
 	// Selection stuff

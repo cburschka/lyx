@@ -127,4 +127,17 @@ bool operator<(CursorSlice const &, CursorSlice const &);
 /// test for order
 bool operator>(CursorSlice const &, CursorSlice const &);
 
+#include <vector>
+
+
+// this is used for traversing math insets
+typedef std::vector<CursorSlice> CursorBase;
+/// move on one step
+void increment(CursorBase &);
+///
+CursorBase ibegin(InsetBase * p);
+///
+CursorBase iend(InsetBase * p);
+
+
 #endif
