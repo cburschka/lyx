@@ -1,5 +1,5 @@
 /**
- * $Id: FormCitationDialogImpl.C,v 1.5 2001/03/31 08:39:24 kalle Exp $
+ * $Id: FormCitationDialogImpl.C,v 1.6 2001/04/02 20:08:43 kalle Exp $
  */
 
 #include "FormCitationDialogImpl.h"
@@ -61,7 +61,7 @@ void FormCitationDialogImpl::slotBibSelected( int sel )
     citeLB->clearSelection();
 
     if (sel < 0 || sel >= (int)form_->bibkeys.size()) {
-	form_->bc().input( ButtonPolicy::SMI_NOOP );
+      //	form_->bc().input( ButtonPolicy::SMI_NOOP );
 	return;
     }
 
@@ -94,7 +94,7 @@ void FormCitationDialogImpl::slotBibSelected( int sel )
 	}
     }
 
-    form_->bc().input( ButtonPolicy::SMI_VALID );
+    //    form_->bc().input( ButtonPolicy::SMI_VALID );
 }
 
 
@@ -103,7 +103,7 @@ void FormCitationDialogImpl::slotCiteSelected( int sel )
     biblio::InfoMap const & theMap = form_->controller().bibkeysInfo();
 
     if (sel < 0 || sel >= (int)form_->citekeys.size()) {
-	form_->bc().input( ButtonPolicy::SMI_NOOP );
+      //	form_->bc().input( ButtonPolicy::SMI_NOOP );
 	return;
     }
 
@@ -127,7 +127,7 @@ void FormCitationDialogImpl::slotCiteSelected( int sel )
 	infoML->setText( biblio::getInfo( theMap, form_->bibkeys[sel] ).c_str() );
     }
 
-    form_->bc().input( ButtonPolicy::SMI_VALID );
+    //    form_->bc().input( ButtonPolicy::SMI_VALID );
 }
 
 
@@ -135,7 +135,7 @@ void FormCitationDialogImpl::slotAddClicked()
 {
     int const sel = bibLB->currentItem();
     if (sel < 0 || sel >= (int)form_->bibkeys.size()) {
-	form_->bc().input( ButtonPolicy::SMI_NOOP );
+      //	form_->bc().input( ButtonPolicy::SMI_NOOP );
 	return;
     }
 
@@ -149,7 +149,7 @@ void FormCitationDialogImpl::slotAddClicked()
     form_->setBibButtons(FormCitation::OFF);
     form_->setCiteButtons(FormCitation::ON);
 
-    form_->bc().input( ButtonPolicy::SMI_VALID );
+    //    form_->bc().input( ButtonPolicy::SMI_VALID );
 }
 
 
@@ -157,7 +157,7 @@ void FormCitationDialogImpl::slotDelClicked()
 {
     int const sel = citeLB->currentItem();
     if (sel < 0 || sel >= (int)form_->citekeys.size()) {
-	form_->bc().input( ButtonPolicy::SMI_NOOP );
+      //	form_->bc().input( ButtonPolicy::SMI_NOOP );
 	return;
     }
 
@@ -168,7 +168,7 @@ void FormCitationDialogImpl::slotDelClicked()
     form_->setBibButtons(FormCitation::ON);
     form_->setCiteButtons(FormCitation::OFF);
 
-    form_->bc().input( ButtonPolicy::SMI_VALID );
+    //    form_->bc().input( ButtonPolicy::SMI_VALID );
 }
 
 
@@ -176,7 +176,7 @@ void FormCitationDialogImpl::slotUpClicked()
 {
     int const sel = citeLB->currentItem();
     if (sel < 1 || sel >= (int)form_->citekeys.size()) {
-	form_->bc().input( ButtonPolicy::SMI_NOOP );
+      //	form_->bc().input( ButtonPolicy::SMI_NOOP );
 	return;
     }
 
@@ -192,7 +192,7 @@ void FormCitationDialogImpl::slotUpClicked()
     form_->citekeys.insert(it-1, tmp);
     form_->setCiteButtons(FormCitation::ON);
 
-    form_->bc().input( ButtonPolicy::SMI_VALID );
+    //    form_->bc().input( ButtonPolicy::SMI_VALID );
 }
 
 
@@ -200,7 +200,7 @@ void FormCitationDialogImpl::slotDownClicked()
 {
     int const sel = citeLB->currentItem();
     if (sel < 0 || sel >= (int)form_->citekeys.size()-1) {
-	form_->bc().input( ButtonPolicy::SMI_NOOP );
+      //	form_->bc().input( ButtonPolicy::SMI_NOOP );
 	return;
     }
 
@@ -216,7 +216,7 @@ void FormCitationDialogImpl::slotDownClicked()
     form_->citekeys.insert(it+1, tmp);
     form_->setCiteButtons(FormCitation::ON);
 
-    form_->bc().input( ButtonPolicy::SMI_VALID );
+    //    form_->bc().input( ButtonPolicy::SMI_VALID );
 }
 
 
@@ -263,13 +263,13 @@ void FormCitationDialogImpl::doPreviousNext( bool next )
 			   start, type, dir, caseSensitive );
 
     if (cit == form_->bibkeys.end()) {
-	form_->bc().input( ButtonPolicy::SMI_NOOP );
+      //	form_->bc().input( ButtonPolicy::SMI_NOOP );
 	return;
     }
 
     int const found = int(cit - form_->bibkeys.begin());
     if (found == sel) {
-	form_->bc().input( ButtonPolicy::SMI_NOOP );
+      //	form_->bc().input( ButtonPolicy::SMI_NOOP );
 	return;
     }
 
@@ -279,24 +279,24 @@ void FormCitationDialogImpl::doPreviousNext( bool next )
     bibLB->setSelected( found, true );
     slotBibSelected( 0 );
 
-    form_->bc().input( ButtonPolicy::SMI_VALID );
+    //    form_->bc().input( ButtonPolicy::SMI_VALID );
 }
 
 
 void FormCitationDialogImpl::slotCitationStyleSelected( int )
 {
-    form_->bc().input( ButtonPolicy::SMI_VALID );
+  //    form_->bc().input( ButtonPolicy::SMI_VALID );
 }
 
 
 void FormCitationDialogImpl::slotTextBeforeReturn()
 {
-    form_->bc().input( ButtonPolicy::SMI_VALID );
+  //    form_->bc().input( ButtonPolicy::SMI_VALID );
 }
 
 
 void FormCitationDialogImpl::slotTextAfterReturn()
 {
-    form_->bc().input( ButtonPolicy::SMI_VALID );
+  //    form_->bc().input( ButtonPolicy::SMI_VALID );
 }
 

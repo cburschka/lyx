@@ -16,6 +16,8 @@ BUILTSOURCES = \
 	moc_FormCitationDialogImpl.C	\
 	moc_FormCopyrightDialog.C	\
 	moc_FormCopyrightDialogImpl.C	\
+	moc_FormCreditsDialog.C	\
+	moc_FormCreditsDialogImpl.C	\
 	       moc_chardlg.C \
 	       moc_chardlgimpl.C \
 	       moc_paragraphdlg.C \
@@ -113,6 +115,12 @@ libqt2_la_SOURCES = \
 	FormCopyrightDialog.h	\
 	FormCopyrightDialogImpl.C	\
 	FormCopyrightDialogImpl.h	\
+	FormCredits.C	\
+	FormCredits.h	\
+	FormCreditsDialog.C	\
+	FormCreditsDialog.h	\
+	FormCreditsDialogImpl.C	\
+	FormCreditsDialogImpl.h	\
 	FormParagraph.C	\
 	FormParagraph.h	\
 	paragraphdlg.C \
@@ -160,7 +168,7 @@ dist-hook:
 	done ; \
 	done
 
-moc_Qt2Base.C: Qt2Base.h
+moc_%.C: %.h
 	$(MOC) -o $@ $<
 
 FormCitation.C: FormCitationDialog.h
@@ -168,72 +176,45 @@ FormCitationDialog.h: FormCitationDialog.ui
 	$(UIC) -o $@ $<
 FormCitationDialog.C: FormCitationDialog.ui
 	$(UIC) -impl FormCitationDialog.h -o $@ $<
-moc_FormCitationDialog.C: FormCitationDialog.h
-	$(MOC) -o $@ $<
-moc_FormCitationDialogImpl.C: FormCitationDialogImpl.h
-	$(MOC) -o $@ $<
 
 FormCopyright.C: FormCopyrightDialogImpl.h
 FormCopyrightDialog.h: FormCopyrightDialog.ui
 	$(UIC) -o $@ $<
 FormCopyrightDialog.C: FormCopyrightDialog.ui
 	$(UIC) -impl FormCopyrightDialog.h -o $@ $<
-moc_FormCopyrightDialog.C: FormCopyrightDialog.h
-	$(MOC) -o $@ $<
-moc_FormCopyrightDialogImpl.C: FormCopyrightDialogImpl.h
-	$(MOC) -o $@ $<
+
+FormCredits.C: FormCreditsDialogImpl.h
+FormCreditsDialog.h: FormCreditsDialog.ui
+	$(UIC) -o $@ $<
+FormCreditsDialog.C: FormCreditsDialog.ui
+	$(UIC) -impl FormCreditsDialog.h -o $@ $<
 
 FormParagraph.C: paragraphdlg.h
 paragraphdlg.h: paragraphdlg.ui
 	$(UIC) -o $@ $<
 paragraphdlg.C: paragraphdlg.ui
 	$(UIC) -impl paragraphdlg.h -o $@ $<
-moc_paragraphdlg.C: paragraphdlg.h
-	$(MOC) -o $@ $<
-moc_paragraphdlgimpl.C: paragraphdlgimpl.h
-	$(MOC) -o $@ $<
 
 FormPrint.C: printdlg.h
 printdlg.h: printdlg.ui
 	$(UIC) -o $@ $<
 printdlg.C: printdlg.ui
 	$(UIC) -impl printdlg.h -o $@ $<
-moc_printdlg.C: printdlg.h
-	$(MOC) -o $@ $<
-moc_printdlgimpl.C: printdlgimpl.h
-	$(MOC) -o $@ $<
 
 FormTabularCreate.C: tabularcreatedlg.h
 tabularcreatedlg.h: tabularcreatedlg.ui
 	$(UIC) -o $@ $<
 tabularcreatedlg.C: tabularcreatedlg.ui
 	$(UIC) -impl tabularcreatedlg.h -o $@ $<
-moc_tabularcreatedlg.C: tabularcreatedlg.h
-	$(MOC) -o $@ $<
-moc_tabularcreatedlgimpl.C: tabularcreatedlgimpl.h
-	$(MOC) -o $@ $<
-moc_emptytable.C: emptytable.h
-	$(MOC) -o $@ $<
 
 FormCharacter.C: chardlg.h
 chardlg.h: chardlg.ui
 	$(UIC) -o $@ $<
 chardlg.C: chardlg.ui
 	$(UIC) -impl chardlg.h -o $@ $<
-moc_chardlg.C: chardlg.h
-	$(MOC) -o $@ $<
-moc_chardlgimpl.C: chardlgimpl.h
-	$(MOC) -o $@ $<
 
 FormSearch.C: searchdlg.h
 searchdlg.h: searchdlg.ui
 	$(UIC) -o $@ $<
 searchdlg.C: searchdlg.ui
 	$(UIC) -impl searchdlg.h -o $@ $<
-moc_searchdlg.C: searchdlg.h
-	$(MOC) -o $@ $<
-moc_searchdlgimpl.C: searchdlgimpl.h
-	$(MOC) -o $@ $<
-
-moc_FileDialog_private.C: FileDialog_private.h
-	$(MOC) -o $@ $<

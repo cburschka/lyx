@@ -19,9 +19,9 @@
 
 #include "FormCitationDialogImpl.h"
 #include "FormCopyrightDialogImpl.h"
+#include "FormCreditsDialogImpl.h"
 #undef emit
 
-#include "../xforms/FormCredits.h"
 #include "../xforms/FormError.h"
 #include "../xforms/FormGraphics.h"
 #include "../xforms/FormPreferences.h"
@@ -30,6 +30,7 @@
 #include "FormCharacter.h"
 #include "FormCitation.h"
 #include "FormCopyright.h"
+#include "FormCredits.h"
 //#include "FormDocument.h"
 //#include "FormIndex.h"
 #include "FormParagraph.h"
@@ -46,6 +47,7 @@
 
 #include "controllers/ControlCitation.h"
 #include "controllers/ControlCopyright.h"
+#include "controllers/ControlCredits.h"
 
 #include "GUI.h"
 
@@ -63,14 +65,12 @@ Dialogs::Dialogs(LyXView * lv)
     // dialogs that have been converted to new scheme
     add( new GUICitation<FormCitation, qt2BC>( *lv, *this ) );
     add( new GUICopyright<FormCopyright, qt2BC>( *lv, *this ) );
+    add( new GUICredits<FormCredits, qt2BC>( *lv, *this ) );
 
     // ------------------------------------------
 
     // dialogs that are still old-style
     add( new FormCharacter(lv, this));
-
-    // REMOVED THIS UNTIL CHANGED TO NEW SCHEME -- Kalle, 2001-03-22
-    //    add( new FormCredits(lv, this));
 
     //	add(new FormDocument(lv, this));
 

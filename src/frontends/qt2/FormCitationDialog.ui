@@ -684,12 +684,6 @@
         <slot>slotDelClicked()</slot>
     </connection>
     <connection>
-        <sender>upPB</sender>
-        <signal>clicked()</signal>
-        <receiver>FormCitationDialog</receiver>
-        <slot>slotIUpClicked()</slot>
-    </connection>
-    <connection>
         <sender>downPB</sender>
         <signal>clicked()</signal>
         <receiver>FormCitationDialog</receiver>
@@ -743,18 +737,24 @@
         <receiver>FormCitationDialog</receiver>
         <slot>slotCiteSelected(int)</slot>
     </connection>
-    <slot access="protected">slotTextAfterReturn()</slot>
+    <connection>
+        <sender>upPB</sender>
+        <signal>clicked()</signal>
+        <receiver>FormCitationDialog</receiver>
+        <slot>slotUpClicked()</slot>
+    </connection>
     <slot access="protected">slotAddClicked()</slot>
     <slot access="protected">slotBibSelected(int)</slot>
     <slot access="protected">slotCitationStyleSelected(int)</slot>
     <slot access="protected">slotCiteSelected(int)</slot>
     <slot access="protected">slotDelClicked()</slot>
     <slot access="protected">slotDownClicked()</slot>
-    <slot access="protected">slotIUpClicked()</slot>
+    <slot access="protected">slotUpClicked()</slot>
     <slot access="protected">slotNextClicked()</slot>
     <slot access="protected">slotPreviousClicked()</slot>
     <slot access="protected">slotRestoreClicked()</slot>
     <slot access="protected">slotSearchTypeSelected(bool)</slot>
+    <slot access="protected">slotTextAfterReturn()</slot>
     <slot access="protected">slotTextBeforeReturn()</slot>
 </connections>
 </UI>
