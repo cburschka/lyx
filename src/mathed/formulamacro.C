@@ -189,7 +189,7 @@ void InsetFormulaMacro::draw(BufferView * bv, LyXFont const & f,
 	pain.text(x + 2, y, prefix(), font);
 
 	// formula
-	par()->draw(pain, xx + lyxfont::width(prefix(), f) + 5, y);
+	par()->draw(pain, x + lyxfont::width(prefix(), f) + 5, y);
 	xx += w + 2;
 	xo_ = x;
 	yo_ = y;
