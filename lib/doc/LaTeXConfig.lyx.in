@@ -1128,6 +1128,11 @@ Notes: The Society for Industrial and Applied Mathematics, Philadelphia,
  standards by providing this LaTeX style.
 \layout Subsection
 
+
+\begin_inset LatexCommand \label{svjog}
+
+\end_inset 
+
 Springer Journal of Geodesy
 \layout Description
 
@@ -1174,6 +1179,39 @@ svjour.inc
 sv<journal>.layout
 \family default 
  to support any other Springer journals (hint, hint!)
+\layout Subsection
+
+Springer Probability Theory and Related Fields
+\layout Description
+
+Found: @chk_svprobth@
+\layout Description
+
+CTAN: 
+\family typewriter 
+macros/latex/contrib/supported/springer/svjour/prothe
+\layout Description
+
+WWW: 
+\begin_inset LatexCommand \url{http://www.springer.de/author/tex/help-journals.html}
+
+\end_inset 
+
+
+\layout Description
+
+Notes: 
+\family sans 
+Svprothe
+\family default 
+ is a format suitable for publication in the journal Probability Theory
+ and Related Fields.
+ For more information, see section 
+\begin_inset LatexCommand \ref{svjog}
+
+\end_inset 
+
+.
 \layout Section
 
 Required packages

@@ -307,7 +307,7 @@ Style  Keywords
   Align			Block
   AlignPossible		Block, Left
   LabelType		Static
-  LabelString		"Key Words: " 
+  LabelString		"Key words: " 
 
   # label font definition
   LabelFont 
