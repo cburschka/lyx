@@ -186,9 +186,17 @@ dnl problems with the AC_REQUIRE contained in KDE_DO_IT_ALL.
 case "$lyx_use_frontend" in 
   xforms) 
   # for now don't set it for xforms as this is always entered
-    FRONTEND="xforms"
-    FRONTEND_GUILIB="xforms/*.lo"
-    FRONTEND_INCLUDES="-I\$(srcdir)/xforms";;
+	LYX_PATH_XPM
+	LYX_PATH_XFORMS
+	FRONTEND="xforms"
+	FRONTEND_GUILIB="xforms/*.lo"
+	FRONTEND_INCLUDES="-I\$(srcdir)/xforms"
+	FRONTEND_LIBS="@XPM_LIB@ @XFORMS_LIB@"
+	FRONTEND_INFO=`cat <<EOF
+    libXpm version:               ${XPM_VERSION}\n\
+    libforms version:             ${XFORMS_VERSION}\n
+`
+	;;
   gnome)
     AM_PATH_GTKMM(1.2.1,,
         AC_MSG_ERROR(Cannot find GTK--: Please install Version 1.2.1+))
@@ -223,18 +231,18 @@ dnl Ensure gnome-config is available...
 esac
 
 ### Check for xforms and xpm (only if X has been found).
-if test "$have_x" = yes ; then
+if test "$have_x" = no ; then
 # We surely need these two libraries and want to check carefully the
 # version numbers... 
-LYX_PATH_XPM
-LYX_PATH_XFORMS
-FRONTEND_INFO=`cat <<EOF
-    libXpm version:               ${XPM_VERSION}\n\
-    libforms version:             ${XFORMS_VERSION}\n
-`
-
-AC_SUBST(LYX_LIBS)
-else
+#LYX_PATH_XPM
+#LYX_PATH_XFORMS
+#FRONTEND_INFO=`cat <<EOF
+#    libXpm version:               ${XPM_VERSION}\n\
+#    libforms version:             ${XFORMS_VERSION}\n
+#`
+#
+#AC_SUBST(LYX_LIBS)
+#else
 LYX_ERROR(dnl
 [Cannot find X window libraries and/or headers. Check your installation. 
    If you use a Linux system, check that you have installed 

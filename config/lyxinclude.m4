@@ -511,9 +511,9 @@ AC_DEFUN(LYX_CXX_GLOBAL_CSTD,[
 dnl Usage LYX_PATH_XPM: Checks for xpm library and header
 AC_DEFUN(LYX_PATH_XPM,[
 ### Check for Xpm library
-AC_CHECK_LIB(Xpm, XpmCreateBufferFromImage,LYX_LIBS="-lXpm $LYX_LIBS",
-        [LYX_LIB_ERROR(libXpm,Xpm)], $LYX_LIBS)
-
+AC_CHECK_LIB(Xpm, XpmCreateBufferFromImage,XPM_LIB="-lXpm",
+        [LYX_LIB_ERROR(libXpm,Xpm)], $XPM_LIB)
+AC_SUBST(XPM_LIB)
 ### Check for Xpm headers
 lyx_cv_xpm_h_location="<xpm.h>"
 AC_CHECK_HEADER(X11/xpm.h,[
@@ -562,10 +562,10 @@ fi])
 dnl Usage LYX_PATH_XFORMS: Checks for xforms library and flags
 AC_DEFUN(LYX_PATH_XFORMS,[
 ### Check for xforms library
-AC_CHECK_LIB(forms, fl_initialize, LYX_LIBS="-lforms $LYX_LIBS", 
-  [AC_CHECK_LIB(xforms, fl_initialize, LYX_LIBS="-lxforms $LYX_LIBS", 
-    [LYX_LIB_ERROR(libforms or libxforms,xforms)], $LYX_LIBS)], $LYX_LIBS) 
-
+AC_CHECK_LIB(forms, fl_initialize, XFORMS_LIB="-lforms", 
+  [AC_CHECK_LIB(xforms, fl_initialize, XFORMS_LIB="-lxforms", 
+    [LYX_LIB_ERROR(libforms or libxforms,xforms)], $XFORMS_LIB)], $XFORMS_LIB) 
+AC_SUBST(XFORMS_LIB)
 ### Check for xforms headers
 lyx_cv_forms_h_location="<forms.h>"
 AC_CHECK_HEADER(X11/forms.h,[

@@ -1,17 +1,18 @@
 AUTOMAKE_OPTIONS = foreign 1.4
 MAINTAINERCLEANFILES = $(srcdir)/Makefile.in
+DISTCLEANFILES = $(XFORMS_SOURCES) $(BUILTSOURCES) *.orig *.rej *~ *.bak core
+
 noinst_LTLIBRARIES = libqt2xforms.la
+
 BOOST_INCLUDES = -I$(top_srcdir)/boost
 INCLUDES = -I${top_srcdir}/src/ -I${top_srcdir}/src/frontends/ \
 	${SIGC_CFLAGS} -I$(top_srcdir)/images ${FRONTEND_INCLUDES} $(BOOST_INCLUDES) \
 	-I$(top_srcdir)/src/frontends/controllers
 
-DISTCLEANFILES = $(XFORMS_SOURCES) $(BUILTSOURCES) *.orig *.rej *~ *.bak core
-
 LIBS=
 ETAGS_ARGS = --lang=c++
 
-XFORMS_SOURCES = \
+libqt2xforms_la_SOURCES = \
 	bmtable.h \
 	bmtable.c \
 	combox.h \
@@ -84,11 +85,10 @@ XFORMS_SOURCES = \
 	xformsBC.C \
 	xforms_helpers.h \
 	xforms_helpers.C
- 
-$(XFORMS_SOURCES):
-	for i in $(XFORMS_SOURCES); do ln -sf "${top_srcdir}/src/frontends/xforms/$$i" . ; done
- 
-ETAGS_ARGS = --lang=c++
 
-libqt2xforms_la_SOURCES = \
-	$(XFORMS_SOURCES)
+libqt2xforms.la: link_files $(XFORMS_SOURCES)
+
+link_files:
+	for i in $(XFORMS_SOURCES); do \
+		ln -sf "${top_srcdir}/src/frontends/xforms/$$i" . ; \
+	 done
