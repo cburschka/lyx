@@ -3013,8 +3013,7 @@ bool BufferView::Pimpl::Dispatch(kb_action action, string const & argument)
 			new InsetTabular(*buffer_, r, c);
 		bool const rtl =
 			bv_->getLyXText()->real_current_font.isRightToLeft();
-		if (!open_new_inset(new_inset, rtl))
-			delete new_inset;
+		open_new_inset(new_inset, rtl);
 	}
 	break;
 
