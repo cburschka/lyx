@@ -86,6 +86,10 @@ public:
 	int col(int idx) const { return idx % ncols(); }
 	///
 	int row(int idx) const { return idx / ncols(); }
+	///
+	int cellXOffset(int idx) const;
+	///
+	int cellYOffset(int idx) const;
 
 	///
 	bool idxUp(int &, int &) const;

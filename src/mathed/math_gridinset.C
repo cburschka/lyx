@@ -193,22 +193,13 @@ void MathGridInset::metrics(MathStyles st) const
 */
 }
 
+
 void MathGridInset::draw(Painter & pain, int x, int y) const
 {
 	xo(x);
 	yo(y);
-	for (int row = 0; row < nrows(); ++row) {
-		int yy = y + rowinfo_[row].offset_;
-		for (int col = 0; col < ncols(); ++col) {
-			int xx = x + colinfo_[col].offset_;
-			char align = colinfo_[col].h_align_;
-			if (align == 'r' || align == 'R')
-				xx += colinfo_[col].width_ - xcell(index(row, col)).width(); 
-			if (align == 'c' || align == 'C')
-				xx += (colinfo_[col].width_ - xcell(index(row, col)).width()) / 2; 
-			xcell(index(row, col)).draw(pain, xx, yy);
-		}
-	}
+	for (int idx = 0; idx < nargs(); ++idx)
+		xcell(idx).draw(pain, x + cellXOffset(idx), y + cellYOffset(idx));
 }
 
 
@@ -282,6 +273,24 @@ void MathGridInset::delCol(int col)
 	colinfo_.erase(colinfo_.begin() + col);
 }
 
+
+int MathGridInset::cellXOffset(int idx) const
+{
+	int c = col(idx);
+	int x = colinfo_[c].offset_;
+	char align = colinfo_[c].h_align_;
+	if (align == 'r' || align == 'R')
+		x += colinfo_[c].width_ - xcell(idx).width(); 
+	if (align == 'c' || align == 'C')
+		x += (colinfo_[c].width_ - xcell(idx).width()) / 2; 
+	return x;
+}
+
+
+int MathGridInset::cellYOffset(int idx) const
+{
+	return rowinfo_[row(idx)].offset_;
+}
 
 bool MathGridInset::idxUp(int & idx, int & pos) const
 {

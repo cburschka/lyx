@@ -906,6 +906,9 @@ void MathCursor::handleNest(MathInset * p)
 
 void MathCursor::getPos(int & x, int & y)
 {
+#ifdef WITH_WARNINGS
+#warning This should probably take cellXOffset and cellYOffset into account
+#endif
 	x = xarray().xo() + xarray().pos2x(pos());
 	y = xarray().yo();
 }
@@ -1142,19 +1145,6 @@ MathXArray & MathCursor::xarray() const
 }
 
 
-int MathCursor::xpos() const 
-{
-	normalize();
-	return xarray().pos2x(pos());
-}
-
-
-void MathCursor::gotoX(int x)
-{
-	pos() = xarray().x2pos(x);	
-}
-
-
 void MathCursor::idxNext()
 {
 	par()->idxNext(idx(), pos());
@@ -1305,22 +1295,53 @@ MathCursorPos MathCursor::normalAnchor() const
 }
 
 
+int MathCursor::cellXOffset() const
+{
+	return par()->cellXOffset(idx());
+}
+
+
+int MathCursor::cellYOffset() const
+{
+	return par()->cellYOffset(idx());
+}
+
+
+int MathCursor::xpos() const
+{
+	return cellXOffset() + xarray().pos2x(pos());
+}
+
+
+int MathCursor::ypos() const
+{
+	return cellYOffset();
+}
+
+
+
+void MathCursor::gotoX(int x) 
+{
+	pos() = xarray().x2pos(x - cellXOffset());
+}
+
+
 bool MathCursor::idxUp()
 {
-	int x = xarray().pos2x(pos());
+	int x = xpos();
 	if (!par()->idxUp(idx(), pos()))
 		return false;
-	pos() = xarray().x2pos(x);
+	gotoX(x);
 	return true;
 }
 
 
 bool MathCursor::idxDown()
 {
-	int x = xarray().pos2x(pos());
+	int x = xpos();
 	if (!par()->idxDown(idx(), pos()))
 		return false;
-	pos() = xarray().x2pos(x);
+	gotoX(x);
 	return true;
 }
 

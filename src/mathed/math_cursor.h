@@ -246,11 +246,6 @@ public:
 	void dump(char const * str) const;
 
 	///
-	int xpos() const;
-	///
-	void gotoX(int x);
-
-	///
 	void merge(MathArray const & arr);
 	///
 	MathInset * nextInset() const;
@@ -265,6 +260,16 @@ private:
 	int & pos();
 	///
 	int & idx();
+	/// x-offset of current cell relative to par xo
+	int cellXOffset() const;
+	/// y-offset of current cell relative to par yo
+	int cellYOffset() const;
+	/// current x position relative to par xo
+	int xpos() const;
+	/// current y position relative to par yo
+	int ypos() const;
+	/// adjust position in current cell according to x. idx is not changed.
+	void gotoX(int x);
 
 	///
 	InsetFormulaBase * const formula_;

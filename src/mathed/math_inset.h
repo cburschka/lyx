@@ -150,6 +150,10 @@ public:
 	///
 	virtual int row(int) const { return 0; }
 	///
+	virtual int cellXOffset(int) const { return 0; }
+	///
+	virtual int cellYOffset(int) const { return 0; }
+	///
 	virtual void addRow(int) {}
 	///
 	virtual void delRow(int) {}

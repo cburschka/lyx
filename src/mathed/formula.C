@@ -172,9 +172,6 @@ InsetFormula::localDispatch(BufferView * bv, kb_action action,
 
 		case LFUN_BREAKLINE: 
 			bv->lockedInsetStoreUndo(Undo::INSERT);
-			int x;
-			int y;
-			mathcursor->getPos(x, y);
 			mathcursor->breakLine();
 			mathcursor->normalize();
 			updateLocal(bv, true);
