@@ -44,9 +44,9 @@ label: Inset keys|#I
 shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_NorthWest FL_South
-name: citeBrsr
+name: browser_cite
 callback: C_FormBaseInputCB
-argument: CITEBRSR
+argument: 0
 
 --------------------
 class: FL_BROWSER
@@ -62,9 +62,9 @@ label: Bibliography keys|#B
 shortcut: 
 resize: FL_RESIZE_X
 gravity: FL_North FL_SouthEast
-name: bibBrsr
+name: browser_bib
 callback: C_FormBaseInputCB
-argument: BIBBRSR
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -80,9 +80,9 @@ label: @4->
 shortcut: #&D
 resize: FL_RESIZE_NONE
 gravity: FL_North FL_North
-name: addBtn
+name: button_add
 callback: C_FormBaseInputCB
-argument: ADD
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -98,9 +98,9 @@ label: @9+
 shortcut: #X
 resize: FL_RESIZE_NONE
 gravity: FL_North FL_North
-name: delBtn
+name: button_del
 callback: C_FormBaseInputCB
-argument: DELETE
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -116,9 +116,9 @@ label: @8->
 shortcut: #&A
 resize: FL_RESIZE_NONE
 gravity: FL_North FL_North
-name: upBtn
+name: button_up
 callback: C_FormBaseInputCB
-argument: UP
+argument: 0
 
 --------------------
 class: FL_BUTTON
@@ -134,9 +134,9 @@ label: @2->
 shortcut: #&B
 resize: FL_RESIZE_NONE
 gravity: FL_North FL_North
-name: downBtn
+name: button_down
 callback: C_FormBaseInputCB
-argument: DOWN
+argument: 0
 
 --------------------
 class: FL_BROWSER
@@ -152,7 +152,7 @@ label: Info
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthWest FL_SouthEast
-name: infoBrsr
+name: browser_info
 callback: 
 argument: 
 
@@ -160,7 +160,7 @@ argument:
 class: FL_CHOICE
 type: NORMAL_CHOICE
 box: 160 470 130 30
-boxtype: FL_DOWN_BOX
+boxtype: FL_FRAME_BOX
 colors: FL_COL1 FL_BLACK
 alignment: FL_ALIGN_LEFT
 style: FL_NORMAL_STYLE
@@ -170,9 +170,9 @@ label: Citation style|#s
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthWest FL_SouthEast
-name: style
-callback: 
-argument: 
+name: choice_style
+callback: C_FormBaseInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -188,9 +188,9 @@ label: Text before|#T
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthWest FL_SouthEast
-name: textBefore
-callback: 
-argument: 
+name: input_before
+callback: C_FormBaseInputCB
+argument: 0
 
 --------------------
 class: FL_INPUT
@@ -206,9 +206,9 @@ label: Text after|#e
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthWest FL_SouthEast
-name: textAftr
-callback: 
-argument: 
+name: input_after
+callback: C_FormBaseInputCB
+argument: 0
 
 --------------------
 class: FL_BUTTON

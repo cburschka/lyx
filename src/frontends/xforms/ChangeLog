@@ -1,3 +1,17 @@
+2001-02-16  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormCitation.C: lots of white-space changes to make file consistent
+	with LyX style.
+	(input): use the FL_OBJECT * parameter to decide what to do, not the
+	long parameter.
+
+	* FormCitation.h: removed most entries in enum.
+
+	* forms/form_citation.fd: change names of variables, consistent with
+	Allan's naming scheme.
+	Don't pass any particular arguments to the InputCB function.
+	choice_style now triggers a callback and looks like other choices.
+
 2001-02-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* other: use compare instead of strcmp/strncmp

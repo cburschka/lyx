@@ -18,16 +18,16 @@ struct FD_form_citation {
 
 	FL_FORM *form;
 	FL_OBJECT *box;
-	FL_OBJECT *citeBrsr;
-	FL_OBJECT *bibBrsr;
-	FL_OBJECT *addBtn;
-	FL_OBJECT *delBtn;
-	FL_OBJECT *upBtn;
-	FL_OBJECT *downBtn;
-	FL_OBJECT *infoBrsr;
-	FL_OBJECT *style;
-	FL_OBJECT *textBefore;
-	FL_OBJECT *textAftr;
+	FL_OBJECT *browser_cite;
+	FL_OBJECT *browser_bib;
+	FL_OBJECT *button_add;
+	FL_OBJECT *button_del;
+	FL_OBJECT *button_up;
+	FL_OBJECT *button_down;
+	FL_OBJECT *browser_info;
+	FL_OBJECT *choice_style;
+	FL_OBJECT *input_before;
+	FL_OBJECT *input_after;
 	FL_OBJECT *button_restore;
 	FL_OBJECT *button_ok;
 	FL_OBJECT *button_apply;

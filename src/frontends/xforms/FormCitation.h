@@ -30,19 +30,6 @@ public:
 private:
 	///
 	enum State {
-		///
-		DOWN,
-		///
-		UP,
-		///
-		DELETE,
-		///
-		ADD,
-		///
-		BIBBRSR,
-		///
-		CITEBRSR,
-		///
 		ON,
 		///
 		OFF
@@ -55,7 +42,7 @@ private:
 	/// Build the dialog
 	virtual void build();
 	/// Filter the inputs
-	virtual bool input( FL_OBJECT *, long );
+	virtual bool input(FL_OBJECT *, long);
 	/// Update dialog before showing it
 	virtual void update();
 	/// Apply from dialog (modify or create inset)
@@ -64,13 +51,13 @@ private:
 	virtual FL_FORM * form() const;
 
 	///
-	void updateBrowser( FL_OBJECT *, std::vector<string> const & ) const;
+	void updateBrowser(FL_OBJECT *, std::vector<string> const &) const;
 	///
-	void setBibButtons( State ) const;
+	void setBibButtons(State) const;
 	///
-	void setCiteButtons( State ) const;
+	void setCiteButtons(State) const;
 	///
-	void setSize( int, bool ) const;
+	void setSize(int, bool) const;
 	/// Type definition from the fdesign produced header file.
 	FD_form_citation * build_citation();
 

@@ -27,68 +27,71 @@ FD_form_citation * FormCitation::build_citation()
   fdui->box = obj = fl_add_box(FL_UP_BOX, 0, 0, 435, 665, "");
   {
     char const * const dummy = N_("Inset keys|#I");
-    fdui->citeBrsr = obj = fl_add_browser(FL_HOLD_BROWSER, 10, 30, 180, 300, idex(_(dummy)));
+    fdui->browser_cite = obj = fl_add_browser(FL_HOLD_BROWSER, 10, 30, 180, 300, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lalign(obj, FL_ALIGN_TOP_LEFT);
     fl_set_object_gravity(obj, FL_NorthWest, FL_South);
     fl_set_object_resize(obj, FL_RESIZE_X);
-    fl_set_object_callback(obj, C_FormBaseInputCB, CITEBRSR);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Bibliography keys|#B");
-    fdui->bibBrsr = obj = fl_add_browser(FL_HOLD_BROWSER, 240, 30, 180, 300, idex(_(dummy)));
+    fdui->browser_bib = obj = fl_add_browser(FL_HOLD_BROWSER, 240, 30, 180, 300, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_lalign(obj, FL_ALIGN_TOP_LEFT);
     fl_set_object_gravity(obj, FL_North, FL_SouthEast);
     fl_set_object_resize(obj, FL_RESIZE_X);
-    fl_set_object_callback(obj, C_FormBaseInputCB, BIBBRSR);
-  fdui->addBtn = obj = fl_add_button(FL_NORMAL_BUTTON, 200, 30, 30, 30, _("@4->"));
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->button_add = obj = fl_add_button(FL_NORMAL_BUTTON, 200, 30, 30, 30, _("@4->"));
     fl_set_button_shortcut(obj, _("#&D"), 1);
     fl_set_object_gravity(obj, FL_North, FL_North);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
-    fl_set_object_callback(obj, C_FormBaseInputCB, ADD);
-  fdui->delBtn = obj = fl_add_button(FL_NORMAL_BUTTON, 200, 65, 30, 30, _("@9+"));
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->button_del = obj = fl_add_button(FL_NORMAL_BUTTON, 200, 65, 30, 30, _("@9+"));
     fl_set_button_shortcut(obj, _("#X"), 1);
     fl_set_object_gravity(obj, FL_North, FL_North);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
-    fl_set_object_callback(obj, C_FormBaseInputCB, DELETE);
-  fdui->upBtn = obj = fl_add_button(FL_NORMAL_BUTTON, 200, 100, 30, 30, _("@8->"));
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->button_up = obj = fl_add_button(FL_NORMAL_BUTTON, 200, 100, 30, 30, _("@8->"));
     fl_set_button_shortcut(obj, _("#&A"), 1);
     fl_set_object_gravity(obj, FL_North, FL_North);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
-    fl_set_object_callback(obj, C_FormBaseInputCB, UP);
-  fdui->downBtn = obj = fl_add_button(FL_NORMAL_BUTTON, 200, 135, 30, 30, _("@2->"));
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->button_down = obj = fl_add_button(FL_NORMAL_BUTTON, 200, 135, 30, 30, _("@2->"));
     fl_set_button_shortcut(obj, _("#&B"), 1);
     fl_set_object_gravity(obj, FL_North, FL_North);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
-    fl_set_object_callback(obj, C_FormBaseInputCB, DOWN);
-  fdui->infoBrsr = obj = fl_add_browser(FL_NORMAL_BROWSER, 10, 360, 410, 80, _("Info"));
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
+  fdui->browser_info = obj = fl_add_browser(FL_NORMAL_BROWSER, 10, 360, 410, 80, _("Info"));
     fl_set_object_lalign(obj, FL_ALIGN_TOP_LEFT);
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthEast);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
   {
     char const * const dummy = N_("Citation style|#s");
-    fdui->style = obj = fl_add_choice(FL_NORMAL_CHOICE, 160, 470, 130, 30, idex(_(dummy)));
+    fdui->choice_style = obj = fl_add_choice(FL_NORMAL_CHOICE, 160, 470, 130, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
-    fl_set_object_boxtype(obj, FL_DOWN_BOX);
+    fl_set_object_boxtype(obj, FL_FRAME_BOX);
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthEast);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Text before|#T");
-    fdui->textBefore = obj = fl_add_input(FL_NORMAL_INPUT, 100, 520, 250, 30, idex(_(dummy)));
+    fdui->input_before = obj = fl_add_input(FL_NORMAL_INPUT, 100, 520, 250, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthEast);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Text after|#e");
-    fdui->textAftr = obj = fl_add_input(FL_NORMAL_INPUT, 100, 570, 250, 30, idex(_(dummy)));
+    fdui->input_after = obj = fl_add_input(FL_NORMAL_INPUT, 100, 570, 250, 30, idex(_(dummy)));
     fl_set_button_shortcut(obj, scex(_(dummy)), 1);
   }
     fl_set_object_gravity(obj, FL_SouthWest, FL_SouthEast);
     fl_set_object_resize(obj, FL_RESIZE_NONE);
+    fl_set_object_callback(obj, C_FormBaseInputCB, 0);
   {
     char const * const dummy = N_("Restore|#R");
     fdui->button_restore = obj = fl_add_button(FL_NORMAL_BUTTON, 10, 630, 90, 30, idex(_(dummy)));
