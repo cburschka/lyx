@@ -56,6 +56,6 @@ void ControlCommand::applyParamsToInset()
 void ControlCommand::applyParamsNoInset()
 {
 	if (action_ == LFUN_NOACTION) return;
-	lv_.getLyXFunc()->Dispatch(action_, params().getAsString());
+	lv_.getLyXFunc()->dispatch(action_, params().getAsString());
 }
 

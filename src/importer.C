@@ -78,7 +78,7 @@ bool Importer::Import(LyXView * lv, string const & filename,
 			: ChangeExtension(filename,
 					  formats.Extension(loader_format));
 		InsertAsciiFile(lv->view(), filename2, as_paragraphs);
-		lv->getLyXFunc()->Dispatch(LFUN_MARK_OFF);
+		lv->getLyXFunc()->dispatch(LFUN_MARK_OFF);
 	}
 
 	// we are done

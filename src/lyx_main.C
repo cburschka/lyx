@@ -169,7 +169,7 @@ LyX::LyX(int * argc, char * argv[])
 
 		// otherwise, let the GUI handle the batch command
 		lyxGUI->regBuf(last_loaded);
-		lyxGUI->getLyXView()->getLyXFunc()->Dispatch(batch_command);
+		lyxGUI->getLyXView()->getLyXFunc()->dispatch(batch_command);
 
 		// fall through...
 	}

@@ -249,13 +249,13 @@ bool FormMathsPanel::input(FL_OBJECT *, long data)
 
 void FormMathsPanel::insertSymbol(string const & sym) const
 {
-	lv_->getLyXFunc()->Dispatch(LFUN_INSERT_MATH, sym);
+	lv_->getLyXFunc()->dispatch(LFUN_INSERT_MATH, sym);
 }
 
 
 void FormMathsPanel::mathDisplay() const
 {
-	lv_->getLyXFunc()->Dispatch(LFUN_MATH_DISPLAY);
+	lv_->getLyXFunc()->dispatch(LFUN_MATH_DISPLAY);
 }
 
 

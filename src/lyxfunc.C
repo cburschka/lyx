@@ -344,7 +344,7 @@ void LyXFunc::processKeySym(KeySym keysym, unsigned int state)
 	
         bool tmp_sc = show_sc;
 	show_sc = false;
-	Dispatch(action, argument);
+	dispatch(action, argument);
 	show_sc = tmp_sc;
 	
 	//return 0;
@@ -638,23 +638,23 @@ func_status::value_type LyXFunc::getStatus(int ac,
 void LyXFunc::miniDispatch(string const & s) 
 {
 	if (!s.empty()) {
-		Dispatch(s);
+		dispatch(s);
 	}
 }
 
 
-string const LyXFunc::Dispatch(string const & s) 
+string const LyXFunc::dispatch(string const & s) 
 {
 	// Split command string into command and argument
 	string cmd;
 	string line = frontStrip(s);
 	string const arg = strip(frontStrip(split(line, cmd, ' ')));
 
-	return Dispatch(lyxaction.LookupFunc(cmd), arg);
+	return dispatch(lyxaction.LookupFunc(cmd), arg);
 }
 
 
-string const LyXFunc::Dispatch(int ac,
+string const LyXFunc::dispatch(int ac,
 			       string const & do_not_use_this_arg)
 {
 	lyxerr[Debug::ACTION] << "LyXFunc::Dispatch: action[" << ac
@@ -897,7 +897,7 @@ string const LyXFunc::Dispatch(int ac,
 		meta_fake_bit = 0;
 		if (owner->view()->available())
 			// cancel any selection
-			Dispatch(LFUN_MARK_OFF);
+			dispatch(LFUN_MARK_OFF);
 		setMessage(N_("Cancel"));
 		break;
 
@@ -925,15 +925,15 @@ string const LyXFunc::Dispatch(int ac,
 		
 		// --- Menus -----------------------------------------------
 	case LFUN_MENUNEW:
-		MenuNew(false);
+		menuNew(false);
 		break;
 		
 	case LFUN_MENUNEWTMPLT:
-		MenuNew(true);
+		menuNew(true);
 		break;
 		
 	case LFUN_CLOSEBUFFER:
-		CloseBuffer();
+		closeBuffer();
 		break;
 		
 	case LFUN_MENUWRITE:
@@ -1182,7 +1182,7 @@ string const LyXFunc::Dispatch(int ac,
 	break;
 			
 	case LFUN_FILE_OPEN:
-		Open(argument);
+		open(argument);
 		break;
 
 	case LFUN_LATEX_LOG:
@@ -1202,7 +1202,7 @@ string const LyXFunc::Dispatch(int ac,
 		--sel; // sel 1..., but layout 0...
 
 		// Pretend we got the name instead.
-		Dispatch(int(LFUN_LAYOUT), 
+		dispatch(int(LFUN_LAYOUT), 
 			 textclasslist.NameOfLayout(owner->view()
 						    ->buffer()->params.textclass,
 						    sel));
@@ -1422,7 +1422,7 @@ string const LyXFunc::Dispatch(int ac,
 			} else {
 				p.setContents( argument );
 			}
-			Dispatch(LFUN_CITATION_INSERT, p.getAsString());
+			dispatch(LFUN_CITATION_INSERT, p.getAsString());
 		} else
 			owner->getDialogs()->createCitation( p.getAsString() );
 	}
@@ -1469,7 +1469,7 @@ string const LyXFunc::Dispatch(int ac,
 		while (argument.find(';') != string::npos) {
 			string first;
 			argument = split(argument, first, ';');
-			Dispatch(first);
+			dispatch(first);
 		}
 	}
 	break;
@@ -1619,7 +1619,7 @@ void LyXFunc::setupLocalKeymap()
 }
 
 
-void LyXFunc::MenuNew(bool fromTemplate)
+void LyXFunc::menuNew(bool fromTemplate)
 {
 	string initpath = lyxrc.document_path;
 
@@ -1745,7 +1745,7 @@ void LyXFunc::MenuNew(bool fromTemplate)
 }
 
 
-void LyXFunc::Open(string const & fname)
+void LyXFunc::open(string const & fname)
 {
 	string initpath = lyxrc.document_path;
   
@@ -1906,7 +1906,7 @@ void LyXFunc::reloadBuffer()
 }
 
 
-void LyXFunc::CloseBuffer()
+void LyXFunc::closeBuffer()
 {
 	if (bufferlist.close(owner->buffer()) && !quitting) {
 		if (bufferlist.empty()) {

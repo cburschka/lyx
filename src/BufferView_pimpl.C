@@ -598,7 +598,7 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	bool paste_internally = false;
 	if (button == 2
 	    && bv_->text->selection.set()) {
-		owner_->getLyXFunc()->Dispatch(LFUN_COPY);
+		owner_->getLyXFunc()->dispatch(LFUN_COPY);
 		paste_internally = true;
 	}
 	
@@ -644,9 +644,9 @@ void BufferView::Pimpl::workAreaButtonPress(int xpos, int ypos,
 	// insert this
 	if (button == 2) {
 		if (paste_internally)
-			owner_->getLyXFunc()->Dispatch(LFUN_PASTE);
+			owner_->getLyXFunc()->dispatch(LFUN_PASTE);
 		else
-			owner_->getLyXFunc()->Dispatch(LFUN_PASTESELECTION,
+			owner_->getLyXFunc()->dispatch(LFUN_PASTESELECTION,
 						       "paragraph");
 		selection_possible = false;
 		return;

@@ -48,8 +48,13 @@ protected:
 	char deadkey2_;
 	///
 	KmodInfo deadkey2_info_;
+#if 0
 	///
 	KmodException comb_info_;
+#else
+	///
+	Keyexc comb_info_;
+#endif
 	///
 	TransState * init_state_;
 	///

@@ -157,7 +157,7 @@ void Toolbar::Pimpl::layoutSelectedCB(int sel, void * arg, Combox *)
 void Toolbar::Pimpl::layoutSelected(int sel)
 {
 	string const tmp = tostr(sel);
-	owner->getLyXFunc()->Dispatch(LFUN_LAYOUTNO, tmp);
+	owner->getLyXFunc()->dispatch(LFUN_LAYOUTNO, tmp);
 }
  
 
@@ -270,7 +270,7 @@ void ToolbarCB(FL_OBJECT * ob, long ac)
 {
 	XFormsView * owner = static_cast<XFormsView *>(ob->u_vdata);
 	
-	string res = owner->getLyXFunc()->Dispatch(int(ac));
+	string res = owner->getLyXFunc()->dispatch(int(ac));
 	if (!res.empty())
 		lyxerr[Debug::GUI] << "ToolbarCB: Function returned: " 
 				   << res << endl;

@@ -42,7 +42,7 @@ ControlToc::ControlToc(LyXView & lv, Dialogs & d)
 void ControlToc::Goto(int const & id) const
 {
 	string const tmp = tostr(id);
-	lv_.getLyXFunc()->Dispatch(LFUN_GOTO_PARAGRAPH, tmp);
+	lv_.getLyXFunc()->dispatch(LFUN_GOTO_PARAGRAPH, tmp);
 }
 
 

@@ -578,16 +578,15 @@ void Menubar::Pimpl::MenuCallback(FL_OBJECT * ob, long button)
 		// If the action value is too low, then it is not a
 		// valid action, but something else.
 		if (choice >= action_offset + 1) {
-			view->getLyXFunc()->Dispatch(choice - action_offset);
-		}
-		else {
+			view->getLyXFunc()->dispatch(choice - action_offset);
+		} else {
 			lyxerr[Debug::GUI]
 				<< "MenuCallback: ignoring bogus action "
 				<< choice << endl;
 		}
-	}
-	else 
+	} else {
 		lyxerr << "Error in MenuCallback" << endl;
+	}
 	
 	std::for_each(submenus.begin(), submenus.end(), fl_freepup);
 	// restore tabstop length

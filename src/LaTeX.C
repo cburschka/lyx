@@ -177,7 +177,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	if (lfun) {
 		ostringstream str;
 		str << _("LaTeX run number") << ' ' << count;
-		lfun->Dispatch(LFUN_MESSAGE, str.str().c_str());
+		lfun->dispatch(LFUN_MESSAGE, str.str().c_str());
 	}
 	
 	
@@ -214,7 +214,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	if (head.haschanged(OnlyFilename(ChangeExtension(file, ".idx")))) {
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
-		if (lfun) lfun->Dispatch(LFUN_MESSAGE, _("Running MakeIndex."));
+		if (lfun) lfun->dispatch(LFUN_MESSAGE, _("Running MakeIndex."));
 //		WriteStatus(minib, _("Running MakeIndex."));
 		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")));
 	}
@@ -227,7 +227,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		// tags is found -> run bibtex and set rerun = true;
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running BibTeX." << endl;
-		if (lfun) lfun->Dispatch(LFUN_MESSAGE, _("Running BibTeX."));
+		if (lfun) lfun->dispatch(LFUN_MESSAGE, _("Running BibTeX."));
 		//WriteStatus(minib, _("Running BibTeX."));
 		updateBibtexDependencies(head, bibtex_info);
 		rerun |= runBibTeX(bibtex_info);
@@ -259,7 +259,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		if (lfun) {
 			ostringstream str;
 			str << _("LaTeX run number") << ' ' << count;
-			lfun->Dispatch(LFUN_MESSAGE, str.str().c_str());
+			lfun->dispatch(LFUN_MESSAGE, str.str().c_str());
 		}
 		
 //		WriteStatus(minib,
@@ -290,7 +290,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 	if (head.haschanged(OnlyFilename(ChangeExtension(file, ".idx")))) {
 		// no checks for now
 		lyxerr[Debug::LATEX] << "Running MakeIndex." << endl;
-		if (lfun) lfun->Dispatch(LFUN_MESSAGE, _("Running MakeIndex."));
+		if (lfun) lfun->dispatch(LFUN_MESSAGE, _("Running MakeIndex."));
 		//WriteStatus(minib, _("Running MakeIndex."));
 		rerun = runMakeIndex(OnlyFilename(ChangeExtension(file, ".idx")));
 	}
@@ -315,7 +315,7 @@ int LaTeX::run(TeXErrors & terr, LyXFunc * lfun)
 		if (lfun) {
 			ostringstream str;
 			str << _("LaTeX run number") << ' ' << count;
-			lfun->Dispatch(LFUN_MESSAGE, str.str().c_str());
+			lfun->dispatch(LFUN_MESSAGE, str.str().c_str());
 		}
 		
 //		WriteStatus(minib, string(_("LaTeX run number ")) + tostr(count));

@@ -30,7 +30,9 @@ TransFSMData::TransFSMData()
 {
 	deadkey_ = deadkey2_ = 0;
 	deadkey_info_.accent = deadkey2_info_.accent = TEX_NOACCENT;
+#if 0
 	comb_info_ = 0;
+#endif
 }
 
 
@@ -112,6 +114,7 @@ string const TransDeadkeyState::normalkey(char c, string const & trans)
 #else
 string const TransDeadkeyState::normalkey(char c)
 {
+#if 0
 	string res;
 	
 	// Check if it is an exception
@@ -128,6 +131,24 @@ string const TransDeadkeyState::normalkey(char c)
 	}
 	currentState = init_state_;
 	return res;
+#else
+	string res;
+	
+	KmodException::iterator it = deadkey_info_.exception_list.begin();
+	KmodException::iterator end = deadkey_info_.exception_list.end();
+
+	for (; it != end; ++it) {
+		if (it->c == c) {
+			res = it->data;
+			break;
+		}
+	}
+	if (it == end) {
+		res = DoAccent(c, deadkey_info_.accent);
+	}
+	currentState = init_state_;
+	return res;
+#endif
 }
 #endif
 
@@ -146,6 +167,7 @@ string const TransDeadkeyState::deadkey(char c, KmodInfo d)
 	}
 	
 	// Check if it is a combination or an exception
+#if 0
 	KmodException l;
 	l = deadkey_info_.exception_list;
 	
@@ -166,7 +188,26 @@ string const TransDeadkeyState::deadkey(char c, KmodInfo d)
 		}
 		l = l->next;
 	}
-	
+#else
+	KmodException::const_iterator cit = deadkey_info_.exception_list.begin();
+	KmodException::const_iterator end = deadkey_info_.exception_list.end();
+	for (; cit != end; ++cit) {
+		if (cit->combined == true && cit->accent == d.accent) {
+			deadkey2_ = c;
+			deadkey2_info_ = d;
+			comb_info_ = (*cit);
+			currentState = combined_state_;
+			return string();
+		}
+		if (cit->c == c) {
+			res = cit->data;
+			deadkey_ = 0;
+			deadkey_info_.accent = TEX_NOACCENT;
+			currentState = init_state_;
+			return res;
+		}
+	}
+#endif
 	// Not a combination or an exception. 
 	// Output deadkey1 and keep deadkey2
 	
@@ -359,13 +400,15 @@ void TransManager::insert(string const & str, LyXText * text)
 		// Could not find an encoding
 		InsetLatexAccent ins(str);
 		if (ins.canDisplay()) {
-			text->insertInset(current_view, new InsetLatexAccent(ins));
+			text->insertInset(current_view,
+					  new InsetLatexAccent(ins));
 		} else {
 			insertVerbatim(str, text);
 		}
 		return;
 	}
-	string tmp; tmp += static_cast<char>(enc.second);
+	string tmp;
+	tmp += static_cast<char>(enc.second);
 	insertVerbatim(tmp, text);
 }
 
@@ -391,8 +434,9 @@ void TransManager::deadkey(char c, tex_accent accent, LyXText * t)
 		i.allowed = lyx_accent_table[accent].native;
 #endif
 		i.data.erase();
+#if 0
 		i.exception_list = 0;
-		
+#endif	
 		string res = trans_fsm_.currentState->deadkey(c, i);
 		insert(res, t);
 	} else {

@@ -158,7 +158,7 @@ void FormPreferences::ok()
 		colors_.modifiedXformsPrefs = !XformsColor::write(filename);
 	}
 	
-	lv_->getLyXFunc()->Dispatch(LFUN_SAVEPREFERENCES);
+	lv_->getLyXFunc()->dispatch(LFUN_SAVEPREFERENCES);
 }
 
 
@@ -468,7 +468,7 @@ void FormPreferences::Colors::apply()
 
 			string const s = lcolor.getLyXName(lc) + string(" ") +
 				hexname;
-			parent_.lv_->getLyXFunc()->Dispatch(LFUN_SET_COLOR, s);
+			parent_.lv_->getLyXFunc()->dispatch(LFUN_SET_COLOR, s);
 		}
 	}
 }
@@ -778,7 +778,7 @@ void FormPreferences::Colors::LoadBrowserLyX()
 
 			string const arg = lcolor.getLyXName(lc) + " black";
 			parent_.lv_->getLyXFunc()->
-				Dispatch(LFUN_SET_COLOR, arg);
+				dispatch(LFUN_SET_COLOR, arg);
 			continue;
 		}
 
@@ -2553,7 +2553,7 @@ void FormPreferences::ScreenFonts::apply() const
 	if (changed) {
 		// Now update the buffers
 		// Can anything below here affect the redraw process?
-		parent_.lv_->getLyXFunc()->Dispatch(LFUN_SCREEN_FONT_UPDATE);
+		parent_.lv_->getLyXFunc()->dispatch(LFUN_SCREEN_FONT_UPDATE);
 	}
 }
 

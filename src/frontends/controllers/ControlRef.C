@@ -43,13 +43,13 @@ std::vector<string> const ControlRef::getLabelList() const
 
 void ControlRef::gotoRef(string const & ref) const
 {
-	lv_.getLyXFunc()->Dispatch(LFUN_BOOKMARK_SAVE, "0");
-	lv_.getLyXFunc()->Dispatch(LFUN_REF_GOTO, ref);
+	lv_.getLyXFunc()->dispatch(LFUN_BOOKMARK_SAVE, "0");
+	lv_.getLyXFunc()->dispatch(LFUN_REF_GOTO, ref);
 }
 
 
 void ControlRef::gotoBookmark() const
 {
-	lv_.getLyXFunc()->Dispatch(LFUN_BOOKMARK_GOTO, "0");
+	lv_.getLyXFunc()->dispatch(LFUN_BOOKMARK_GOTO, "0");
 }
 

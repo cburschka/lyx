@@ -88,7 +88,7 @@ void FormMathsMatrix::apply()
 	ostringstream ost;
 	ost << nx << ' ' << ny << ' ' << c << sh;
  
-	lv_->getLyXFunc()->Dispatch(LFUN_INSERT_MATRIX, ost.str().c_str());
+	lv_->getLyXFunc()->dispatch(LFUN_INSERT_MATRIX, ost.str().c_str());
 }
 
 bool FormMathsMatrix::input(FL_OBJECT * ob, long)

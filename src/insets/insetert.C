@@ -117,18 +117,23 @@ void InsetERT::edit(BufferView * bv, int x, int y, unsigned int button)
 int InsetERT::latex(Buffer const *, std::ostream & os, bool /*fragile*/,
 		    bool /*free_spc*/) const
 {
-	Paragraph::size_type siz = inset.paragraph()->size();
-	for (Paragraph::size_type i = 0; i != siz; ++i) {
-		char c = inset.paragraph()->getChar(i);
-		switch (c) {
-		case Paragraph::META_NEWLINE:
-			os << '\n';
-			break;
-		default:
-			os << c;
-			break;
+	Paragraph * par = inset.paragraph();
+	while (par) {
+		Paragraph::size_type siz = inset.paragraph()->size();
+		for (Paragraph::size_type i = 0; i != siz; ++i) {
+			char c = inset.paragraph()->getChar(i);
+			switch (c) {
+			case Paragraph::META_NEWLINE:
+				os << '\n';
+				break;
+			default:
+				os << c;
+				break;
+			}
 		}
+		par = par->next();
 	}
+	
 	return 1;
 }
 

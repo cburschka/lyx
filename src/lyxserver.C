@@ -528,7 +528,7 @@ void LyXServer::callback(LyXServer * serv, string const & msg)
 			string rval, buf;
 		    
 			if (action>= 0) {
-				rval = serv->func->Dispatch(action, arg);
+				rval = serv->func->dispatch(action, arg);
 			} else {
 				rval = "Unknown command";
 			}

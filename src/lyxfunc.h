@@ -30,10 +30,10 @@ public:
 	LyXFunc(LyXView *);
     
 	/// LyX dispatcher, executes lyx actions.
-	string const Dispatch(int action, string const & arg = string());
+	string const dispatch(int action, string const & arg = string());
 			 
 	/// The same but uses the name of a lyx command.
-	string const Dispatch(string const & cmd);
+	string const dispatch(string const & cmd);
 
 	///
 	void miniDispatch(string const & cmd);
@@ -109,16 +109,16 @@ private:
 	// I think the following should be moved to BufferView. (Asger)
 
 	///
-	void MenuNew(bool fromTemplate);
+	void menuNew(bool fromTemplate);
 
 	///
-	void Open(string const &);
+	void open(string const &);
 
 	///
 	void doImport(string const &);
 
 	///
-	void CloseBuffer();
+	void closeBuffer();
 	///
 	void reloadBuffer();
 	///

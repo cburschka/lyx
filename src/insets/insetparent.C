@@ -46,7 +46,7 @@ string const InsetParent::getScreenLabel() const
 void InsetParent::edit(BufferView * bv, int, int, unsigned int)
 {    
 	bv->owner()->getLyXFunc()->
-		Dispatch(LFUN_CHILDOPEN, getContents());
+		dispatch(LFUN_CHILDOPEN, getContents());
 }
 
 

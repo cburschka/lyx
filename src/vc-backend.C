@@ -147,7 +147,7 @@ void RCS::registrer(string const & msg)
 	cmd += OnlyFilename(owner_->fileName());
 	cmd += "\"";
 	doVCCommand(cmd, owner_->filepath);
-	owner_->getUser()->owner()->getLyXFunc()->Dispatch("buffer-reload");
+	owner_->getUser()->owner()->getLyXFunc()->dispatch("buffer-reload");
 }
 
 
@@ -155,7 +155,7 @@ void RCS::checkIn(string const & msg)
 {
 	doVCCommand("ci -q -u -m\"" + msg + "\" \""
 		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filepath);
-	owner_->getUser()->owner()->getLyXFunc()->Dispatch("buffer-reload");
+	owner_->getUser()->owner()->getLyXFunc()->dispatch("buffer-reload");
 }
 
 
@@ -164,7 +164,7 @@ void RCS::checkOut()
 	owner_->markLyxClean();
 	doVCCommand("co -q -l \""
 		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filepath);
-	owner_->getUser()->owner()->getLyXFunc()->Dispatch("buffer-reload");
+	owner_->getUser()->owner()->getLyXFunc()->dispatch("buffer-reload");
 }
 
 
@@ -175,7 +175,7 @@ void RCS::revert()
 	// We ignore changes and just reload!
 	owner_->markLyxClean();
 	owner_->getUser()->owner()
-		->getLyXFunc()->Dispatch("buffer-reload");
+		->getLyXFunc()->dispatch("buffer-reload");
 }
 
 
@@ -277,7 +277,7 @@ void CVS::registrer(string const & msg)
 {
 	doVCCommand("cvs -q add -m \"" + msg + "\" \""
 		    + OnlyFilename(owner_->fileName()) + "\"", owner_->filepath);
-	owner_->getUser()->owner()->getLyXFunc()->Dispatch("buffer-reload");
+	owner_->getUser()->owner()->getLyXFunc()->dispatch("buffer-reload");
 }
 
 
@@ -286,7 +286,7 @@ void CVS::checkIn(string const & msg)
 	doVCCommand("cvs -q commit -m \"" + msg + "\" \""
 		    + OnlyFilename(owner_->fileName()) + "\"",
 		    owner_->filepath);
-	owner_->getUser()->owner()->getLyXFunc()->Dispatch("buffer-reload");
+	owner_->getUser()->owner()->getLyXFunc()->dispatch("buffer-reload");
 }
 
 
@@ -307,7 +307,7 @@ void CVS::revert()
 		    owner_->filepath);
 	owner_->markLyxClean();
 	owner_->getUser()->owner()
-		->getLyXFunc()->Dispatch("buffer-reload");
+		->getLyXFunc()->dispatch("buffer-reload");
 }
 
 

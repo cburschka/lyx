@@ -18,10 +18,13 @@ using std::endl;
 // KmodInfo
 KmodInfo::KmodInfo()
 {
+#if 0
 	exception_list = 0;
+#endif
 }
 
 
+#if 0
 // Default Trans
 bool DefaultTrans::init_ = false;
 
@@ -49,14 +52,16 @@ string const DefaultTrans::process(char c, TransManager & k)
 	return k.normalkey(c);
 }
 #endif
-
+#endif
 
 // Trans class
 
 Trans::Trans()
 {
+#if 0
 	for (int i = 0; i < TEX_MAX_ACCENT + 1; ++i)
 		kmod_list_[i] = 0;
+#endif
 }
 
 
@@ -66,9 +71,10 @@ Trans::~Trans()
 }
 
 
-void Trans::InsertException(Trans::keyexc & exclist, char c,
+void Trans::InsertException(KmodException & exclist, char c,
 			    string const & data, bool flag, tex_accent accent)
 {
+#if 0
 	keyexc p = new Keyexc; 
 	p->next = exclist;
 	p->c = c;
@@ -78,22 +84,37 @@ void Trans::InsertException(Trans::keyexc & exclist, char c,
 	p->accent = accent;
 
 	exclist = p;
+#else
+	Keyexc p;
+	p.c = c;
+	p.data = data;
+	p.combined = flag;
+	p.accent = accent;
+	exclist.insert(exclist.begin(), p);
+	// or just
+	// exclist.push_back(p);
+#endif
 }
 
 
-void Trans::FreeException(Trans::keyexc & exclist)
+void Trans::FreeException(KmodException & exclist)
 {
+#if 0
 	Trans::keyexc p = exclist;
 	while (p) {
 		p = exclist->next;
 		delete exclist;
 		exclist = p;
 	}
+#else
+	exclist.clear();
+#endif
 }
 
 
 void Trans::FreeKeymap()
 {
+#if 0
 	for (int i = 0; i < 256; ++i)
 		if (!keymap_[i].empty()) {
 			keymap_[i].erase();
@@ -104,6 +125,10 @@ void Trans::FreeKeymap()
 			delete kmod_list_[i];
 			kmod_list_[i] = 0;
 		}
+#else
+	kmod_list_.clear();
+	keymap_.clear();
+#endif
 }
 
 
@@ -146,27 +171,29 @@ void Trans::AddDeadkey(tex_accent accent, string const & keys,
 void Trans::AddDeadkey(tex_accent accent, string const & keys)
 #endif
 {
+#if 0
 	if (kmod_list_[accent]) {
 		FreeException(kmod_list_[accent]->exception_list);
 		
 		delete kmod_list_[accent];
 	}
 	
-	kmod_list_[accent] = new kmod_list_decl;
+	kmod_list_[accent] = new KmodInfo;
 	kmod_list_[accent]->data = keys;
 	kmod_list_[accent]->accent = accent;
+#else
+	KmodInfo tmp;
+	tmp.data = keys;
+	tmp.accent = accent;
+	kmod_list_[accent] = tmp;
+#endif
 #if 0
 	if (allowed == "native") { 
 		kmod_list_[accent]->allowed= lyx_accent_table[accent].native;
 	} else {
-#endif
-#if 0
 		kmod_list_[accent]->allowed = allowed;
-#endif
-#if 0
 	}
-#endif
-	
+
 	for (string::size_type i = 0; i < keys.length(); ++i) {
 		string & temp =
 			keymap_[static_cast<unsigned char>(keys[i])];
@@ -179,7 +206,17 @@ void Trans::AddDeadkey(tex_accent accent, string const & keys)
 		temp += char(0);
 		temp += char(accent);
 	}
+#else
+	for (string::size_type i = 0; i < keys.length(); ++i) {
+		string tmp;
+		tmp += char(0);
+		tmp += char(accent);
+		keymap_[keys[i]] = tmp;
+	}
+#endif
+#if 0
 	kmod_list_[accent]->exception_list = 0;
+#endif
 }
 
 
@@ -254,12 +291,24 @@ int Trans::Load(LyXLex & lex)
 			tex_accent accent_2= getkeymod(str);
 			if (accent_2 == TEX_NOACCENT) return -1;
 
+#if 0
 			if (kmod_list_[accent_1] == 0
 			    || kmod_list_[accent_2] == 0)
 				return -1;
+#else
+			std::map<int, KmodInfo>::iterator it1 =
+				kmod_list_.find(accent_1);
+			std::map<int, KmodInfo>::iterator it2 =
+				kmod_list_.find(accent_2);
+			if (it1 == kmod_list_.end()
+			    || it2 == kmod_list_.end()) {
+				return -1;
+			}
+#endif
 
 			// Find what key accent_2 is on - should
 			// check about accent_1 also
+#if 0
 			int key = 0;
 			for (; key < 256; ++key) {
 				if (!keymap_[key].empty()
@@ -276,9 +325,31 @@ int Trans::Load(LyXLex & lex)
 			} else
 				return -1;
 
-			InsertException(kmod_list_[accent_1]->exception_list,
+			InsertException(kmod_list_[accent_1].exception_list,
 					static_cast<char>(key), allowed,
 					true, accent_2);
+#else
+			std::map<int, string>::iterator it = keymap_.begin();
+			std::map<int, string>::iterator end = keymap_.end();
+			for (; it != end; ++it) {
+				if (!it->second.empty()
+				    && it->second[0] == 0
+				    && it->second[1] == accent_2)
+					break;
+			}
+			string allowed;
+			if (lex.next()) {
+				allowed = lex.GetString();
+				lyxerr[Debug::KBMAP] << "allowed: "
+						     << allowed << endl;
+			} else {
+				return -1;
+			}
+			
+			InsertException(kmod_list_[accent_1].exception_list,
+					static_cast<char>(it->first), allowed,
+					true, accent_2);
+#endif
 		}
 		break;
 		case KMAP: {
@@ -296,9 +367,11 @@ int Trans::Load(LyXLex & lex)
 
 			if (lex.next(true)) {
 				string string_to = lex.text();
-				//char * string_to =
-				//	strcpy(new char[strlen(t)+1], t);
+#if 0
 				keymap_[key_from] = string_to;
+#else
+				keymap_[key_from] = string_to;
+#endif
 				if (lyxerr.debugging(Debug::KBMAP))
 					lyxerr << "\t`" << string_to << "'"
 					       << endl;
@@ -338,7 +411,7 @@ int Trans::Load(LyXLex & lex)
 			} else
 				return -1;
 
-			InsertException(kmod_list_[accent]->exception_list,
+			InsertException(kmod_list_[accent].exception_list,
 					key, str);
 			break;
 		}
@@ -357,11 +430,20 @@ int Trans::Load(LyXLex & lex)
 
 bool Trans::isAccentDefined(tex_accent accent, KmodInfo & i) const
 {
+#if 0
 	if (kmod_list_[accent] != 0) {
 		i = *kmod_list_[accent];
 		return true;
 	}
 	return false;
+#else
+	std::map<int, KmodInfo>::const_iterator cit = kmod_list_.find(accent);
+	if (cit != kmod_list_.end()) {
+		i = cit->second;
+		return true;
+	}
+	return false;
+#endif
 }
 
 
@@ -390,10 +472,16 @@ string const Trans::process(char c, TransManager & k)
 	if (t.empty() && c != 0) {
 		return k.normalkey(c);
 	} else if (!t.empty() && t[0] != char(0)) {
-		return k.normalkey(c);
+		//return k.normalkey(c);
+		return t;
 	} else {
+#if 0
 		return k.deadkey(c,
 				 *kmod_list_[static_cast<tex_accent>(t[1])]);
+#else
+		return k.deadkey(c,
+				 kmod_list_[static_cast<tex_accent>(t[1])]);
+#endif
 	}
 }
 #endif

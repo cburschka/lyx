@@ -27,7 +27,7 @@ void InsetRef::edit(BufferView * bv, int, int, unsigned int button)
 	// Eventually trigger dialog with button 3 not 1
 	if (button == 3 )
 	  	bv->owner()->getLyXFunc()->
-			Dispatch(LFUN_REF_GOTO, getContents());
+			dispatch(LFUN_REF_GOTO, getContents());
 	else if (button == 1 )
 		bv->owner()->getDialogs()->showRef( this );
 }

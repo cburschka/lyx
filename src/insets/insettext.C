@@ -1120,7 +1120,7 @@ InsetText::localDispatch(BufferView * bv,
 			// see if we found the layout number:
 			if (!layout.first) {
 				string const msg = string(N_("Layout ")) + arg + N_(" not known");
-				bv->owner()->getLyXFunc()->Dispatch(LFUN_MESSAGE, msg);
+				bv->owner()->getLyXFunc()->dispatch(LFUN_MESSAGE, msg);
 				break;
 			}
 
