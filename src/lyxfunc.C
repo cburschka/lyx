@@ -1082,26 +1082,33 @@ string LyXFunc::Dispatch(int ac,
 		
 		// Derive layout number from given argument (string)
 		// and current buffer's textclass (number). */    
-		int layoutno = 
-			textclasslist.NumberOfLayout(owner->
-						     view()->
-						     text->parameters->
-						     textclass,
-						     argument).second;
+		LyXTextClassList::ClassList::size_type tclass =
+			owner->view()->text->parameters->textclass;
+		pair <bool, int> layout = 
+			textclasslist.NumberOfLayout(tclass, argument);
+
+		// If the entry is obsolete, use the new one instead.
+		if (layout.first) {
+			string obs = textclasslist.Style(tclass,layout.second)
+			      .obsoleted_by();
+			if (!obs.empty()) 
+				layout = 
+				  textclasslist.NumberOfLayout(tclass, obs);
+		}
 
 		// see if we found the layout number:
-		if (layoutno == -1) {
+		if (!layout.first) {
 			setErrorMessage(string(N_("Layout ")) + argument + 
 					N_(" not known"));
 			break;
 		}
-			
-		if (current_layout != layoutno) {
+
+		if (current_layout != layout.second) {
 			owner->view()->getScreen()->HideCursor();
-			current_layout = layoutno;
+			current_layout = layout.second;
 			owner->view()->update(-2);
 			owner->view()->text->
-				SetLayout(layoutno);
+				SetLayout(layout.second);
 			owner->getToolbar()->combox->
 				select(owner->view()->
 				       text->cursor.par->

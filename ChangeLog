@@ -1,3 +1,17 @@
+2000-02-15  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyxfunc.C (Dispatch): fix LFUN_LAYOUT when giving a
+	nonexisting layout; correctly redirect obsoleted layouts.
+
+	* lib/lyxrc.example: document \view_dvi_paper_option
+
+	* src/lyxrc.[Ch]: add support for the \view_dvi_paper_option
+	variable. 
+
+	* src/lyx_cb.C (RunScript): handle $$FName for command names. 
+	(PreviewDVI): handle the view_dvi_paper_option variable.
+	[Both from Roland Krause]
+
 2000-02-14  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/Painter.C (text(int,int,char,LyXFont)): call text(int, int,

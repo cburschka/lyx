@@ -105,6 +105,8 @@ public:
 	string view_pspic_command;
 	/// program for viewing dvi output (default "xdvi")
 	string view_dvi_command;
+	/// option for telling the dvi viewer about the paper size
+	string view_dvi_paper_option;
 	/// program for viewing pdf output (default "xpdf")
 	string view_pdf_command;
         /// default paper size for local xdvi/dvips/ghostview/whatever

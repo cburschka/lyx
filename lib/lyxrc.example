@@ -80,14 +80,23 @@
 
 # Define which program to use to view dvi files here.
 # You can include any options you need by "quoting" the entire command.
-# You don't need to specify the paper-size and orientation, which is done
-# automatically by LyX (hence, your viewer has to interpret the -paper
-# option like xdvi does)
 # The default is "xdvi".
 # Example: the next line would use xdvi and display with shrink 2:
 #\view_dvi_command "xdvi -s 2"
 # It can get more involved. Expert users might prefer something like:
 #\view_dvi_command "xdvi -s 2 -expert -geometry 1014x720+0+0 -keep -margins 1.5"
+
+# \view_dvi_paper_option allows to specify a paper option to the dvi
+# viewer. By default LyX specifies the paper size of the document to
+# the dvi viewer via the command line option -paper size, where size
+# is one of "us","letter","a3","a4" and so on. The command
+# \view_dvi_paper_option allows the user to overwrite the name of the
+# command line flag, i.e. replace -paper with something else. If
+# specified and left empty, i.e. \view_dvi_paper_option "", LyX does
+# not append the -paper option to the dvi command at all. This case is
+# especially useful when viewing your documents on Windows with yap,
+# because yap does not allow a command line option for the paper size.
+#\view_dvi_paper "" 
 
 # LyX assumes that the default papersize should be usletter.  If this is not
 # true for your site, use the next line to specify usletter, legal,

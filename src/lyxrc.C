@@ -113,6 +113,7 @@ enum LyXRCTags {
 	RC_NUMLASTFILES,
 	RC_CHECKLASTFILES,
 	RC_VIEWDVI_COMMAND,
+	RC_VIEWDVI_PAPEROPTION,
 	RC_DEFAULT_PAPERSIZE,
 	RC_PS_COMMAND,
 	RC_VIEWPS_COMMAND,
@@ -236,6 +237,7 @@ static keyword_item lyxrcTags[] = {
 	{ "\\use_personal_dictionary", RC_USE_PERS_DICT },
 	{ "\\use_tempdir", RC_USETEMPDIR },
 	{ "\\view_dvi_command", RC_VIEWDVI_COMMAND },
+	{ "\\view_dvi_paper_option", RC_VIEWDVI_PAPEROPTION },
 	{ "\\view_pdf_command", RC_VIEWPDF_COMMAND },
 	{ "\\view_ps_command", RC_VIEWPS_COMMAND },
         { "\\view_pspic_command", RC_VIEWPSPIC_COMMAND }
@@ -289,6 +291,7 @@ LyXRC::LyXRC()
 	view_ps_command = "ghostview -swap";
 	view_pspic_command = "ghostview";
 	view_dvi_command = "xdvi";
+	view_dvi_paper_option = "-paper";
 	view_pdf_command = "xpdf";
 	default_papersize = BufferParams::PAPER_USLETTER;
 	custom_export_format = "ps";
@@ -621,6 +624,13 @@ int LyXRC::read(string const & filename)
 		case RC_VIEWDVI_COMMAND:
 			if (lexrc.next())
 				view_dvi_command = lexrc.GetString();
+			break;
+
+		case RC_VIEWDVI_PAPEROPTION:
+			if (lexrc.next())
+				view_dvi_paper_option = lexrc.GetString();
+			else 
+				view_dvi_paper_option = "";
 			break;
 
 		case RC_VIEWPDF_COMMAND:
@@ -1097,6 +1107,8 @@ void LyXRC::output(ostream & os) const
 		   << "\n";
 	case RC_VIEWDVI_COMMAND:
 		os << "\\view_dvi_command \"" << view_dvi_command << "\"\n";
+	case RC_VIEWDVI_PAPEROPTION:
+		os << "\\view_dvi_paper_option \"" << view_dvi_paper_option << "\"\n";
 	case RC_VIEWPDF_COMMAND:
 		os << "\\view_pdf_command \"" << view_pdf_command << "\"\n";
 	case RC_DEFAULT_PAPERSIZE:

@@ -506,8 +506,18 @@ bool RunScript(Buffer * buffer, bool wait,
 		path = buffer->tmppath;
 	}
 	Path p(path);
-
-	cmd = command + ' ' + QuoteName(name);
+	// At this point we check whether the command contains the
+	// filename parameter $$FName and if that's the case we
+	// substitute the real file name otherwise the filename is
+	// simply appended. rokrau 1/12/00
+	cmd = command;
+	std::string::size_type i;
+ 	if ( (i=command.find("$$FName")) != std::string::npos)
+	{
+		cmd.replace(i,7,QuoteName(name));
+	}
+	else
+		cmd = command + ' ' + QuoteName(name);
 
 	Systemcalls one;
 
@@ -705,58 +715,60 @@ bool PreviewDVI(Buffer * buffer)
 	//if (!bv->text)
 	//	return false;
 
-	string paper;
-
-	// wrong type
-	char real_papersize = buffer->params.papersize;
-	if (real_papersize == BufferParams::PAPER_DEFAULT)
-		real_papersize = lyxrc->default_papersize;
-   
-	switch (real_papersize) {
-	case BufferParams::PAPER_USLETTER:
-		paper = "us";
-		break;
-	case BufferParams::PAPER_A3PAPER:
-		paper = "a3";
-		break;
-	case BufferParams::PAPER_A4PAPER:
-		paper = "a4";
-		break;
-	case BufferParams::PAPER_A5PAPER:
-		paper = "a5";
-		break;
-	case BufferParams::PAPER_B5PAPER:
-		paper = "b5";
-		break;
-	case BufferParams::PAPER_EXECUTIVEPAPER:
-		paper = "foolscap";
-		break;
-	case BufferParams::PAPER_LEGALPAPER:
-		paper = "legal";
-		break;
-	default: /* If nothing else fits, keep the empty value */
-		break;
-	}
-   
-	if (paper.empty()) {
-		if (buffer->params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
-			// we HAVE to give a size when the page is in
-			// landscape, so use USletter.		
-			paper = " -paper usr";
-	} else {
-		paper = " -paper " + paper;
-		if (buffer->params.orientation == BufferParams::ORIENTATION_LANDSCAPE)
-			paper+= 'r';
-	}
-
-	// push directorypath, if necessary 
-        string path = OnlyPath(buffer->fileName());
-        if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)){
-		path = buffer->tmppath;
+	string paper = lyxrc->view_dvi_paper_option;
+	if (!paper.empty()) {
+		// wrong type
+		char real_papersize = buffer->params.papersize;
+		if (real_papersize == BufferParams::PAPER_DEFAULT)
+			real_papersize = lyxrc->default_papersize;
+  
+		switch (real_papersize) {
+		case BufferParams::PAPER_USLETTER:
+			paper += " us";
+			break;
+		case BufferParams::PAPER_A3PAPER:
+			paper += " a3";
+			break;
+		case BufferParams::PAPER_A4PAPER:
+			paper += " a4";
+			break;
+		case BufferParams::PAPER_A5PAPER:
+			paper += " a5";
+			break;
+		case BufferParams::PAPER_B5PAPER:
+			paper += " b5";
+			break;
+		case BufferParams::PAPER_EXECUTIVEPAPER:
+			paper += " foolscap";
+			break;
+		case BufferParams::PAPER_LEGALPAPER:
+			paper += " legal";
+			break;
+		default: /* If nothing else fits, keep the empty value */
+			break;
+		}
+		if (real_papersize==' ') {
+			//      if (paper.empty()) {
+		  	if (buffer->params.orientation 
+			    == BufferParams::ORIENTATION_LANDSCAPE)
+			  // we HAVE to give a size when the page is in
+			  // landscape, so use USletter.          
+				paper = " -paper usr";
+		} else {
+			// paper = " -paper " + paper;
+			if (buffer->params.orientation 
+			    == BufferParams::ORIENTATION_LANDSCAPE)
+                               paper+= 'r';
+		}
         }
-        Path p(path);
-	// Run dvi-viewer
-	string command = lyxrc->view_dvi_command + paper ;
+        // push directorypath, if necessary 
+	string path = OnlyPath(buffer->fileName());
+	if (lyxrc->use_tempdir || (IsDirWriteable(path) < 1)) {
+		path = buffer->tmppath;
+	}
+	Path p(path);
+        // Run dvi-viewer
+	string command = lyxrc->view_dvi_command + " " + paper;
 	bool ret = RunScript(buffer, false, command);
 	return ret;
 }
