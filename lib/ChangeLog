@@ -4,6 +4,8 @@
 	'latex', 'dvips', 'gs' and 'pnmcrop' and move their definition to
 	the top of the script.
 
+	* scripts/lyxpreview2bitmap.sh: enable BAIL_OUT to print a message.
+
 2003-03-10  Angus Leeming  <leeming@lyx.org>
 
 	* images/graphics-insert.xpm: rename as

@@ -72,6 +72,8 @@ FIND_IT ()
 
 BAIL_OUT ()
 {
+	test $# -eq 1 && echo $1
+
 	# Remove everything except the original .tex file.
 	FILES=`ls ${BASE}* | sed -e "/${BASE}\.tex/d"`
 	rm -f ${FILES} texput.log
@@ -105,9 +107,8 @@ elif [ "$3" = "png" ]; then
 	GSDEVICE=png16m
 	GSSUFFIX=png
 else
-	echo "Unrecognised output format ${OUTPUTFORMAT}."
-	echo "Expected either \"ppm\" or \"png\"."
-	BAIL_OUT
+	BAIL_OUT "Unrecognised output format ${OUTPUTFORMAT}. \
+	Expected either \"ppm\" or \"png\"."
 fi
 
 # We use latex, dvips and gs, so check that they're all there.
@@ -127,8 +128,7 @@ readonly TEXFILE LOGFILE DVIFILE PSFILE METRICSFILE
 cd ${DIR}
 ${LATEX} ${TEXFILE} ||
 {
-	echo "Failed: ${LATEX} ${TEXFILE}"
-	BAIL_OUT
+	BAIL_OUT "Failed: ${LATEX} ${TEXFILE}"
 }
 
 # Parse ${LOGFILE} to obtain bounding box info to output to
@@ -137,9 +137,8 @@ ${LATEX} ${TEXFILE} ||
 # "Preview: Snippet".
 grep -E 'Preview: [ST]' ${LOGFILE} > ${METRICSFILE} ||
 {
-	echo "Failed: grep -E 'Preview: [ST]' ${LOGFILE}"
 	REQUIRED_VERSION ${LOGFILE}
-	BAIL_OUT
+	BAIL_OUT "Failed: grep -E 'Preview: [ST]' ${LOGFILE}"
 }
 
 # Parse ${LOGFILE} to obtain ${RESOLUTION} for the gs process to follow.
@@ -148,9 +147,8 @@ grep -E 'Preview: [ST]' ${LOGFILE} > ${METRICSFILE} ||
 # not found.
 LINE=`grep 'Preview: Fontsize' ${LOGFILE}` ||
 {
-	echo "Failed: grep 'Preview: Fontsize' ${LOGFILE}"
 	REQUIRED_VERSION ${LOGFILE}
-	BAIL_OUT
+	BAIL_OUT "Failed: grep 'Preview: Fontsize' ${LOGFILE}"
 }
 # The sed script strips out everything that won't form a decimal number
 # from the line. It bails out after the first match has been made in
@@ -179,8 +177,7 @@ RESOLUTION=`echo "scale=2; \
 # DVI -> PostScript
 ${DVIPS} -o ${PSFILE} ${DVIFILE} ||
 {
-	echo "Failed: ${DVIPS} -o ${PSFILE} ${DVIFILE}"
-	BAIL_OUT
+	BAIL_OUT "Failed: ${DVIPS} -o ${PSFILE} ${DVIFILE}"
 }
 
 # PostScript -> Bitmap files
@@ -201,8 +198,7 @@ ${GS} -q -dNOPAUSE -dBATCH -dSAFER \
 	-dGraphicsAlphaBit=${ALPHA} -dTextAlphaBits=${ALPHA} \
 	-r${RESOLUTION} ${PSFILE} ||
 {
-	echo "Failed: ${GS} ${PSFILE}"
-	BAIL_OUT
+	BAIL_OUT "Failed: ${GS} ${PSFILE}"
 }
 
 # All has been successful, so remove everything except the bitmap files
