@@ -1,3 +1,22 @@
+2003-05-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* text3.C: adjust
+
+	* text2.C (cursorBottom): adjust
+	(setCounter): use ParagraphList::find, adjust
+
+	* text.C (workWidth): use ParagraphList::find, adjust
+
+	* lyxcursor.C (LyXCursor): adjust
+
+	* buffer.C (inset_iterator): adjust
+
+	* ParagraphList.h: make iterator(value_type) private, make
+	ParagraphList a friend of iterator.
+
+	* ParagraphList.C (find): new function
+
+	* BufferView_pimpl.C (resizeCurrentBuffer): adjust
 
 2003-05-27  André Pönitz  <poenitz@gmx.net>
 

@@ -12,7 +12,7 @@
 
 
 LyXCursor::LyXCursor()
-	: par_(0), pos_(0), boundary_(false),
+	: par_(), pos_(0), boundary_(false),
 	  x_(0), ix_(0), x_fix_(0), y_(0), iy_(0), row_(0)
 {}
 

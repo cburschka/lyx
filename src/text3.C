@@ -95,20 +95,20 @@ namespace {
 		LyXCursor const & cur, int & x, int & y)
 	{
 		lyx::pos_type const pos = cur.pos();
-		Paragraph /*const*/ & par = *cur.par();
+		ParagraphList::iterator par = cur.par();
 
-		if (pos >= par.size() || !par.isInset(pos))
+		if (pos >= par->size() || !par->isInset(pos))
 			return 0;
 
-		Inset /*const*/ * inset = par.getInset(pos);
+		Inset /*const*/ * inset = par->getInset(pos);
 
 		if (!isEditableInset(inset))
 			return 0;
 
 		// get inset dimensions
-		lyx::Assert(par.getInset(pos));
+		lyx::Assert(par->getInset(pos));
 
-		LyXFont const & font = text.getFont(bv->buffer(), &par, pos);
+		LyXFont const & font = text.getFont(bv->buffer(), par, pos);
 
 		int const width = inset->width(bv, font);
 		int const inset_x = font.isVisibleRightToLeft()
@@ -128,7 +128,7 @@ namespace {
 			return 0;
 		}
 
-		text.setCursor(&par, pos, true);
+		text.setCursor(par, pos, true);
 
 		x -= b.x1;
 		// The origin of an inset is on the baseline

@@ -26,6 +26,7 @@ public:
 	///
 	class iterator {
 	public:
+		friend class ParagraphList;
 		///
 		typedef std::bidirectional_iterator_tag iterator_category;
 		///
@@ -39,8 +40,6 @@ public:
 		///
 		iterator();
 		///
-		iterator(value_type);
-		///
 		reference operator*();
 		///
 		pointer operator->();
@@ -53,6 +52,8 @@ public:
 		///
 		iterator operator--(int);
 	private:
+		///
+		iterator(value_type);
 		///
 		Paragraph * ptr;
 	};
@@ -98,6 +99,8 @@ public:
 	int size() const;
 	///
 	bool empty() const;
+	///
+	iterator find(Paragraph const &);
 private:
 	///
 	Paragraph * parlist;

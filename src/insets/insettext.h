@@ -386,9 +386,9 @@ private:
 	mutable boost::shared_ptr<LyXText> cached_text;
 	///
 	struct save_state {
-		Paragraph * lpar;
-		Paragraph * selstartpar;
-		Paragraph * selendpar;
+		ParagraphList::iterator lpar;
+		ParagraphList::iterator selstartpar;
+		ParagraphList::iterator selendpar;
 		lyx::pos_type pos;
 		lyx::pos_type selstartpos;
 		lyx::pos_type selendpos;

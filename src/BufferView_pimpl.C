@@ -260,9 +260,9 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 {
 	lyxerr[Debug::INFO] << "resizeCurrentBuffer" << endl;
 
-	Paragraph * par = 0;
-	Paragraph * selstartpar = 0;
-	Paragraph * selendpar = 0;
+	ParagraphList::iterator par;
+	ParagraphList::iterator selstartpar;
+	ParagraphList::iterator selendpar;
 	UpdatableInset * the_locking_inset = 0;
 
 	pos_type pos = 0;
@@ -276,11 +276,11 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 	owner_->message(_("Formatting document..."));
 
 	if (bv_->text) {
-		par = &*bv_->text->cursor.par();
+		par = bv_->text->cursor.par();
 		pos = bv_->text->cursor.pos();
-		selstartpar = &*bv_->text->selection.start.par();
+		selstartpar = bv_->text->selection.start.par();
 		selstartpos = bv_->text->selection.start.pos();
-		selendpar = &*bv_->text->selection.end.par();
+		selendpar = bv_->text->selection.end.par();
 		selendpos = bv_->text->selection.end.pos();
 		selection = bv_->text->selection.set();
 		mark_set = bv_->text->selection.mark();
@@ -311,9 +311,13 @@ int BufferView::Pimpl::resizeCurrentBuffer()
 			bv_->text->init(bv_);
 			//buffer_->resizeInsets(bv_);
 		}
+
+		par = bv_->text->ownerParagraphs().end();
+		selstartpar = bv_->text->ownerParagraphs().end();
+		selendpar = bv_->text->ownerParagraphs().end();
 	}
 
-	if (par) {
+	if (par != bv_->text->ownerParagraphs().end()) {
 		bv_->text->selection.set(true);
 		// At this point just to avoid the Delete-Empty-Paragraph-
 		// Mechanism when setting the cursor.

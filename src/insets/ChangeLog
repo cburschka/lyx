@@ -1,3 +1,14 @@
+2003-05-27  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
+	* insettext.C (saveLyXTextState): adjust
+	(restoreLyXTextState): adjust
+	(init): adjust
+	(lockInset): adjust
+	(unlockInsetInInset): adjust
+	(localDispatch): adjust
+	(getLyXText): adjust
+
+	* insettabular.C (insertAsciiString): adjust
 
 2003-05-27  André Pönitz  <poenitz@gmx.net>
 

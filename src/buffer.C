@@ -2383,7 +2383,7 @@ void Buffer::setParentName(string const & name)
 
 
 Buffer::inset_iterator::inset_iterator()
-	: pit(0), pend(0)
+	: pit(), pend()
 {}
 
 

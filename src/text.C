@@ -147,8 +147,8 @@ int LyXText::workWidth() const
 
 int LyXText::workWidth(Inset const * inset) const
 {
-	Paragraph * par = inset->parOwner();
-	lyx::Assert(par);
+	ParagraphList::iterator par = ownerParagraphs().find(*inset->parOwner());
+	//lyx::Assert(par);
 
 	pos_type pos = par->getPositionOfInset(inset);
 	lyx::Assert(pos != -1);

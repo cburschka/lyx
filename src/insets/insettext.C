@@ -82,31 +82,31 @@ void InsetText::saveLyXTextState(LyXText * t) const
 	ParagraphList::iterator it = paragraphs.begin();
 	ParagraphList::iterator end = paragraphs.end();
 	for (; it != end; ++it) {
-		if (&*it == t->cursor.par())
+		if (it == t->cursor.par())
 			break;
 	}
 
 	if (it != end && t->cursor.pos() <= it->size()) {
-		sstate.lpar = &*t->cursor.par();
+		sstate.lpar = t->cursor.par();
 		sstate.pos = t->cursor.pos();
 		sstate.boundary = t->cursor.boundary();
-		sstate.selstartpar = &*t->selection.start.par();
+		sstate.selstartpar = t->selection.start.par();
 		sstate.selstartpos = t->selection.start.pos();
 		sstate.selstartboundary = t->selection.start.boundary();
-		sstate.selendpar = &*t->selection.end.par();
+		sstate.selendpar = t->selection.end.par();
 		sstate.selendpos = t->selection.end.pos();
 		sstate.selendboundary = t->selection.end.boundary();
 		sstate.selection = t->selection.set();
 		sstate.mark_set = t->selection.mark();
 	} else {
-		sstate.lpar = 0;
+		sstate.lpar = paragraphs.end();
 	}
 }
 
 
 void InsetText::restoreLyXTextState(LyXText * t) const
 {
-	if (!sstate.lpar)
+	if (sstate.lpar == paragraphs.end())
 		return;
 
 	t->selection.set(true);
@@ -193,10 +193,10 @@ void InsetText::init(InsetText const * ins)
 	drawTextXOffset = 0;
 	drawTextYOffset = 0;
 	locked = false;
-	old_par = 0;
+	old_par = paragraphs.end();
 	last_drawn_width = -1;
 	cached_bview = 0;
-	sstate.lpar = 0;
+	sstate.lpar = paragraphs.end();
 	in_insetAllowed = false;
 }
 
@@ -671,8 +671,8 @@ void InsetText::lockInset(BufferView * bv)
 	the_locking_inset = 0;
 	inset_pos = inset_x = inset_y = 0;
 	inset_boundary = false;
-	inset_par = 0;
-	old_par = 0;
+	inset_par = paragraphs.end();
+	old_par = paragraphs.end();
 	bool clear = false;
 	if (!lt) {
 		lt = getLyXText(bv);
@@ -774,7 +774,7 @@ bool InsetText::unlockInsetInInset(BufferView * bv, UpdatableInset * inset,
 		the_locking_inset = 0;
 		if (lr)
 			moveRightIntern(bv, true, false);
-		old_par = 0; // force layout setting
+		old_par = paragraphs.end(); // force layout setting
 		if (scroll())
 			scroll(bv, 0.0F);
 		else
@@ -1029,8 +1029,8 @@ Inset::RESULT InsetText::localDispatch(FuncRequest const & cmd)
 		the_locking_inset = 0;
 		inset_pos = inset_x = inset_y = 0;
 		inset_boundary = false;
-		inset_par = 0;
-		old_par = 0;
+		inset_par = paragraphs.end();
+		old_par = paragraphs.end();
 
 		bool clear = false;
 		if (!lt) {
@@ -2204,7 +2204,7 @@ LyXText * InsetText::getLyXText(BufferView const * lbv,
 				if (locked) {
 					saveLyXTextState(it->second.text.get());
 				} else {
-					sstate.lpar = 0;
+					sstate.lpar = paragraphs.end();
 				}
 			}
 			//
