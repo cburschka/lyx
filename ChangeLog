@@ -1,3 +1,27 @@
+2000-08-10  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insetgraphics.C (draw): fixed access to 0 cacheHandle.
+	(InsetGraphics): initialized cacheHandle to 0.
+	(draw): changed call to updateInset to status=CHANGE_IN_DRAW.
+
+2000-08-10	Baruch Even  <baruch.even@writeme.com>
+
+	* src/graphics/GraphicsCache.h:
+	* src/graphics/GraphicsCache.C (addFile, removeFile): Changed to work 
+	correctly as a cache.
+
+	* src/graphics/GraphicsCacheItem.h:
+	* src/graphics/GraphicsCacheItem.C: Changed to the pimpl idiom to allow
+	reference counting.
+
+	* src/graphics/GraphicsCacheItem_pimpl.h:
+	* src/graphics/GraphicsCacheItem_pimpl.C: The implementation of the
+	GraphicsCacheItem.
+
+	* src/insets/insetgraphics.h: 
+	* src/insets/insetgraphics.C: Changed from using a signal notification
+	to polling when image is not loaded.
+
 2000-08-10  Allan Rae  <rae@lyx.org>
 
 	* development/tools/makeLyXsigc.sh: Updated to allow Signal3.  Note

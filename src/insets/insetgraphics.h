@@ -21,6 +21,7 @@
 
 #include "insets/lyxinset.h"
 #include "insets/insetgraphicsParams.h"
+#include "graphics/GraphicsCacheItem.h"
 
 #include "LaTeXFeatures.h"
 
@@ -33,7 +34,6 @@ using SigC::Object;
 #endif
 
 class Dialogs;
-class GraphicsCacheItem;
 
 ///
 #ifdef SIGC_CXX_NAMESPACES
@@ -103,15 +103,14 @@ private:
     /// Update the inset after parameter change.
     void updateInset();
 
-	/// Get notified when the inline image processing has finished.
-	void imageDone();
-
     /// The graphics cache handle.
-    GraphicsCacheItem * cachehandle;
+    GraphicsCacheItem * cacheHandle;
 
-	/// Holds the buffer view that we are associated with.
-	BufferView * bv_;
-
+	/// The pixmap
+	mutable Pixmap pixmap;
+	/// is the pixmap initialized?
+	mutable bool pixmapInitialized;
+	
     InsetGraphicsParams params;
 
     // Baruch Even (baruch.even@writeme.com) 2000-07-17

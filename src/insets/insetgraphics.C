@@ -173,6 +173,7 @@ TODO Extended features:
 #include "filedlg.h"
 #include "support/FileInfo.h"
 #include "support/filetools.h"
+#include "lyxtext.h"
 
 #include "debug.h"
 
@@ -185,9 +186,10 @@ using std::endl;
 InsetGraphics::InsetGraphics()
 #ifdef IG_OLDPARAMS    
       : use_bb(false), hiresbb(false), angle(0.0), origin(DEFAULT)
-      ,keepaspectratio(false), scale(0.0), clip(false), draft(false) 
+    ,keepaspectratio(false), scale(0.0), clip(false), draft(false)
+    ,cacheHandle(0)
 #endif     
-	: cachehandle(0), bv_(0)
+    : pixmapInitialized(false),cacheHandle(0)
 {}
 
 InsetGraphics::~InsetGraphics()
@@ -198,9 +200,8 @@ InsetGraphics::~InsetGraphics()
 
 int InsetGraphics::ascent(BufferView *, LyXFont const &) const 
 {
-	if (cachehandle && 
-			cachehandle->getImageStatus() == GraphicsCacheItem::Loaded)
-		return cachehandle->getHeight();
+	if (pixmapInitialized)
+		return cacheHandle->getHeight();
 	else
 		return 50;
 }
@@ -215,34 +216,40 @@ int InsetGraphics::descent(BufferView *, LyXFont const &) const
 
 int InsetGraphics::width(BufferView *, LyXFont const &) const 
 {
-	if (cachehandle && 
-			cachehandle->getImageStatus() == GraphicsCacheItem::Loaded)
-		return cachehandle->getWidth();
+	if (pixmapInitialized)
+		return cacheHandle->getWidth();
 	else
 		return 50;
 }
 
 
 void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
-			 int baseline, float & x, bool) const
+		int baseline, float & x, bool) const
 {
 	Painter & paint = bv->painter();
 
-
-	// This will draw the graphics. As for now we only draw a
-	// placeholder rectangele.
-	if (cachehandle && 
-			cachehandle->getImageStatus() == GraphicsCacheItem::Loaded) {
+	// This will draw the graphics. If the graphics has not been loaded yet,
+	// we draw just a rectangle.
+	if (pixmapInitialized) {
 
 		paint.pixmap(int(x)+2, baseline - ascent(bv, font),
 			    width(bv, font) - 4, 
-				ascent(bv,font) + descent(bv,font), 
-				cachehandle->getImage());
+				ascent(bv,font) + descent(bv,font),
+				pixmap);
 	} else { 
 		paint.rectangle(int(x)+2, baseline - ascent(bv, font),
 		       width(bv, font) - 4,
 		       ascent(bv, font) + descent(bv, font));
 
+		// Check if the image is now ready.
+		if (cacheHandle &&
+		    (cacheHandle->getImageStatus() == GraphicsCacheItem::Loaded)) {
+			pixmap = cacheHandle->getImage();
+			pixmapInitialized = true;
+
+			// Tell BufferView we need to be updated!
+			bv->text->status = LyXText::CHANGED_IN_DRAW;
+		}
 	}
 
 	x += width(bv, font);
@@ -251,7 +258,6 @@ void InsetGraphics::draw(BufferView * bv, LyXFont const & font,
 
 void InsetGraphics::Edit(BufferView *bv, int, int, unsigned int)
 {
-	bv_ = bv;
     bv->owner()->getDialogs() -> showGraphics(this);
 }
 
@@ -584,8 +590,8 @@ int InsetGraphics::Latex(Buffer const *buf, ostream & os,
     }
 
     // How do we decide to what format should we export?
-//    cachehandle->export(ImageType::EPS);
-//    cachehandle->export(ImageType::PNG);
+//    cacheHandle->>export(ImageType::EPS);
+//    cacheHandle->>export(ImageType::PNG);
         
 	return 1;
 }
@@ -635,19 +641,10 @@ void InsetGraphics::updateInset()
 
 	if (!params.filename.empty()) {
 		temp = gc->addFile(params.filename);
-		if (temp)
-			temp->imageDone.connect(slot(this, &InsetGraphics::imageDone));
 	}
 
-	delete cachehandle;
-	cachehandle = temp;
-	
-}
-
-void InsetGraphics::imageDone()
-{
-	if (bv_)
-		bv_->updateInset(this, false);
+	delete cacheHandle;
+	cacheHandle = temp;
 }
 
 bool InsetGraphics::setParams(InsetGraphicsParams const & params)

@@ -11,7 +11,11 @@ libgraphics_la_SOURCES = \
 	Renderer.C \
 	XPM_Renderer.h \
 	XPM_Renderer.C \
+	EPS_Renderer.h \
+	EPS_Renderer.C \
 	GraphicsCache.h \
 	GraphicsCache.C \
 	GraphicsCacheItem.h \
-	GraphicsCacheItem.C
+	GraphicsCacheItem.C \
+	GraphicsCacheItem_pimpl.h \
+	GraphicsCacheItem_pimpl.C \

@@ -46,37 +46,35 @@ GraphicsCache::~GraphicsCache()
 }
 
 
-GraphicsCacheItem * 
+GraphicsCacheItem *
 GraphicsCache::addFile(string const & filename)
 {
     CacheType::const_iterator it = cache.find(filename);
     
     if (it != cache.end()) {
-        return (*it).second;
+        return new GraphicsCacheItem( *((*it).second) );
     }
 	
 	GraphicsCacheItem * cacheItem = new GraphicsCacheItem();
-	if (cacheItem == 0) {
+	if (cacheItem == 0)
 		return 0;
-	}
 
-	bool result = cacheItem->setFilename(filename);
-	if (!result) 
-		return 0;
+	cacheItem->setFilename(filename);
 
 	cache[filename] = cacheItem;
-	
-    return cacheItem;
+
+	// We do not want to return the main cache object, otherwise when the
+	// will destroy their copy they will destroy the main copy.
+    return new GraphicsCacheItem( *cacheItem );
 }
 
 
 void
 GraphicsCache::removeFile(string const & filename)
 {
-    CacheType::const_iterator it = cache.find(filename);
-    
-    if (it != cache.end()) {
-        // INCOMPLETE!
-//        cache.erase(it);
-    }
+	// We do not destroy the GraphicsCacheItem since we are here because
+	// the last copy of it is being erased.
+
+	if (cache.find(filename) != cache.end())
+		cache.erase(filename);
 }

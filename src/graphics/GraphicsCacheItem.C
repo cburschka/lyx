@@ -15,134 +15,78 @@
 #pragma implementation
 #endif
 
-#include "GraphicsCacheItem.h"
-
-#include "graphics/XPM_Renderer.h"
-#include "support/filetools.h"
-#include "debug.h"
-#include "support/LAssert.h"
-#include <unistd.h> // unlink
-
-#include <map>
-
-#include FORMS_H_LOCATION
-
-using std::endl;
-using std::map;
+#include "graphics/GraphicsCache.h"
+#include "graphics/GraphicsCacheItem.h"
+#include "graphics/GraphicsCacheItem_pimpl.h"
 
 GraphicsCacheItem::GraphicsCacheItem()
-	: height_(-1), width_(-1), imageStatus_(Loading),
-	  pixmap_(0), renderer(0)
-{}
+	: pimpl(new GraphicsCacheItem_pimpl)
+{
+	pimpl->refCount = 1;
+}
 
 GraphicsCacheItem::~GraphicsCacheItem()
 {
-	if (imageStatus_ == Loaded) {
-		XFreePixmap(fl_display, pixmap_);
-	}
-
-	delete renderer;
+	destroy();
 }
 
 bool
 GraphicsCacheItem::setFilename(string const & filename)
 {
-	imageStatus_ = Loading;
-
-	renderer = new XPM_Renderer();
-	if (renderXPM(filename))
-		return true;
-	
-	return false;
+	filename_ = filename;
+	return pimpl->setFilename(filename);
 }
 
-/*** Callback method ***/
+GraphicsCacheItem::GraphicsCacheItem(GraphicsCacheItem const & gci)
+{
+	pimpl = 0;
+	copy(gci);
+}
 
-typedef map<string, GraphicsCacheItem*> CallbackMap;
-static CallbackMap callbackMap;
+GraphicsCacheItem const &
+GraphicsCacheItem::operator=(GraphicsCacheItem const & gci)
+{
+	// Are we trying to copy the object onto itself.
+	if (this == &gci)
+		return *this;
+
+	// Destory old copy 
+	destroy();
+
+	// And then copy new object.
+	copy(gci);
+
+	return *this;
+}
 
 void
-callback(string cmd, int retval)
+GraphicsCacheItem::copy(GraphicsCacheItem const & gci)
 {
-	lyxerr << "callback, cmd="<<cmd<<", retval="<<retval<<endl;
-
-	GraphicsCacheItem * item = callbackMap[cmd];
-	callbackMap.erase(cmd);
-	
-	item->imageConverted(retval);
+	pimpl = gci.pimpl;
+	++(pimpl->refCount);
 }
 
 void
-GraphicsCacheItem::imageConverted(int retval)
+GraphicsCacheItem::destroy()
 {
-	lyxerr << "imageConverted, retval="<<retval<<endl;
-
-	if (retval) {
-		imageStatus_ = ErrorConverting;
-		return;
+	if (pimpl) {
+		--(pimpl->refCount);
+		if (pimpl->refCount == 0) {
+			delete pimpl;
+			GraphicsCache * gc = GraphicsCache::getInstance();
+			gc->removeFile(filename_);
+		}
 	}
-
-	// Do the actual image loading from XPM to memory.
-	loadXPMImage();	
 }
 
-/**********************/
+GraphicsCacheItem::ImageStatus 
+GraphicsCacheItem::getImageStatus() const { return pimpl->imageStatus_; }
 
-bool
-GraphicsCacheItem::renderXPM(string const & filename)
-{
-	// Create the command to do the conversion, this depends on ImageMagicks
-	// convert program.
-	string command = "convert ";
-	command += filename;
-	command += " XPM:";
-
-	// Take only the filename part of the file, without path or extension.
-	string temp = OnlyFilename(filename);
-	temp = ChangeExtension(filename , string());
+int 
+GraphicsCacheItem::getHeight() const { return pimpl->height_; }	
 	
-	// Add some stuff to have it a unique temp file.
-	xpmfile = TmpFileName(string(), temp);
-	xpmfile = ChangeExtension(xpmfile, ".xpm");	
-	
-	command += xpmfile;
+int 
+GraphicsCacheItem::getWidth() const { return pimpl->width_; }
 
-	// Set the callback mapping to point to us.
-	callbackMap[command] = this;
-
-	// Run the convertor.
-	// There is a problem with running it asyncronously, it doesn't return
-	// to call the callback, so until the Systemcalls mechanism is fixed
-	// I use the syncronous method.
-	lyxerr << "Launching convert to xpm, command="<<command<<endl;
-//	syscall.startscript(Systemcalls::DontWait, command, &callback);
-	syscall.startscript(Systemcalls::Wait, command, &callback);
-
-	return true;
-}
-
-// This function gets called from the callback after the image has been
-// converted successfully.
-void
-GraphicsCacheItem::loadXPMImage()
-{
-	if (! renderer->setFilename(xpmfile)) {
-		return;
-	}
-
-	if (renderer->renderImage()) {
-		pixmap_ = renderer->getPixmap();
-		width_ = renderer->getWidth();
-		height_ = renderer->getHeight();
-		imageStatus_ = Loaded;
-	} else {
-		imageStatus_ = ErrorReading;
-	}
-
-	imageDone.emit();
-
-	// remove the xpm file now.
-	::unlink(xpmfile.c_str());
-	// and remove the reference to the filename.
-	xpmfile = string();
-}
+Pixmap 
+GraphicsCacheItem::getImage() const { return pimpl->pixmap_; }
