@@ -28,7 +28,7 @@ What's new
 
 ** Bug fixes
 
-* LaTeX output:
+* LaTeX input/output:
 
 - partly fix handling of included files; external insets are still not
   working correctly [bug #605]
@@ -41,7 +41,9 @@ What's new
 - fix running makeindex and bibtex when the file name contains some
   special characters [bug #1526]
 
-- Prevent clashes with LaTeX packages defining "\boldsymbol"
+- prevent clashes with LaTeX packages defining "\boldsymbol"
+
+- make import of the preamble of LaTeX files more robust [bug #1584]
 
 - fix handling of floats and counters in  svjog and svprobth
   textclasses [bug #1430]
