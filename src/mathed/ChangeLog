@@ -1,3 +1,8 @@
+2002-10-18  Angus Leeming  <leeming@lyx.org>
+
+	* formula.C (latexString): Revert yesterday's change. It's going to
+	be too complicated to deal with nasty surprises.
+
 2002-10-17  Angus Leeming  <leeming@lyx.org>
 
 	* formula.C (latexString): change "\[ ... \]" to "$ \displaystyle ... $"
