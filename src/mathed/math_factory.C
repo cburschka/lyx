@@ -2,6 +2,7 @@
 
 #include "math_parser.h"
 #include "math_bigopinset.h"
+#include "math_binominset.h"
 #include "math_decorationinset.h"
 #include "math_dotsinset.h"
 #include "math_funcinset.h"
@@ -31,6 +32,10 @@ MathInset * createMathInset(latexkeys const * l)
 			return new MathSymbolInset(l);
 		case LM_TK_STACK:
 			return new MathStackrelInset;
+		case LM_TK_BINOM:
+		case LM_TK_CHOOSE:
+			return new MathBinomInset;
+		case LM_TK_OVER:
 		case LM_TK_FRAC:
 			return new MathFracInset;
 		case LM_TK_SQRT:

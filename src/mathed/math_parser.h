@@ -45,9 +45,11 @@ enum MathTokenEnum
 	///
 	LM_TK_SYM,
 	///
-	LM_TK_OVER,
-	///
 	LM_TK_CHOOSE,
+	///
+	LM_TK_BINOM,
+	///
+	LM_TK_OVER,
 	///
 	LM_TK_FRAC,
 	///

@@ -35,7 +35,6 @@
 #include "math_charinset.h"
 #include "math_decorationinset.h"
 #include "math_deliminset.h"
-#include "math_fracinset.h"
 #include "math_funcinset.h"
 #include "math_macro.h"
 #include "math_macrotable.h"
@@ -1283,9 +1282,9 @@ void MathCursor::interpret(string const & s)
 		return;
 	}
 
-	if (s == "\\over") {
+	if (s == "\\over" || s == "\\choose") {
 		MathArray ar = array();
-		MathFracInset * p = new MathFracInset;
+		MathInset * p = createMathInset(in_word_set(s.substr(1)));
 		p->cell(0).swap(array());
 		pos() = 0;
 		niceInsert(p);
@@ -1305,8 +1304,10 @@ void MathCursor::interpret(string const & s)
 		return;
 	}
 
-	if (s.size() > 1)
-		return niceInsert(new MathFuncInset(s.substr(1)));
+	if (s.size() > 1) {
+		niceInsert(new MathFuncInset(s.substr(1)));
+		return;
+	}
 
 
 	// we got just a single char now

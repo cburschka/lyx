@@ -97,5 +97,5 @@ void MathMacroTable::builtinMacros()
 	createTemplate("to",           0, "\\rightarrow");
 	//createTemplate("lint",       4, "\\int_#1^#2#3 d#4");
 	//createTemplate("silentmult", 0, "\\cdot");
-	createTemplate("binom",        2, "\\left(\\frac#1#2\\right)");
+	//createTemplate("binom",        2, "\\left(\\frac#1#2\\right)");
 }

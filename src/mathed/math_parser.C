@@ -30,7 +30,6 @@
 #include "math_charinset.h"
 #include "math_deliminset.h"
 #include "math_factory.h"
-#include "math_fracinset.h"
 #include "math_funcinset.h"
 #include "math_macro.h"
 #include "math_macrotable.h"
@@ -815,9 +814,11 @@ void Parser::parse_into(MathArray & array, unsigned flags)
 			curr_label_ = lexArg('{', true);
 			break;
 
+		case LM_TK_CHOOSE:
 		case LM_TK_OVER:
 		{
-			MathFracInset * p = new MathFracInset;
+			limits = 0;
+			MathInset * p = createMathInset(lval_);
 			p->cell(0).swap(array);
 			array.push_back(p);
 			parse_into(p->cell(1), FLAG_BLOCK);

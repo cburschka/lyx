@@ -7,8 +7,10 @@
 		math_cursor.C:
 		math_hash.C: simplifications
 
+	* math_binom.[Ch]: new files for "native" \binom/\choose inset
+
 	* math_parser.C:
-		math_cursor.C: reading support for TeX style \over
+		math_cursor.C: reading support for TeX style \over and \choose
 
 2001-08-10  André Pönitz  <poenitz@gmx.net>
 

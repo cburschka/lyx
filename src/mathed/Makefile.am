@@ -24,6 +24,8 @@ libmathed_la_SOURCES = \
 	math_arrayinset.h \
 	math_bigopinset.C \
 	math_bigopinset.h \
+	math_binominset.C \
+	math_binominset.h \
 	math_charinset.C \
 	math_charinset.h \
 	math_cursor.C \
