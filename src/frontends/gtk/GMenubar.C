@@ -180,9 +180,6 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 			break;
 		case MenuItem::Command:
 		{
-#ifdef WITH_WARNINGS
-#warning Bindings are not inserted into the menu labels here. (Lgb)
-#endif
 			FuncStatus const flag =
 				view_->getLyXFunc().getStatus(i->func());
 			bool on = flag.onoff(true);
@@ -198,10 +195,21 @@ void GMenubar::onSubMenuActivate(MenuItem const * item,
 						gmenu->items().back());
 				citem.set_active(on);
 			} else {
-				gmenu->items().push_back(
-					Gtk::Menu_Helpers::MenuElem(
-						labelTrans(i->label(),
-							   i->shortcut())));
+				//This is necessary because add_accel_label is protected,
+				//and even if you subclass Gtk::MenuItem then add_accel_label
+				//doesn't do what you'd expect.
+				Gtk::MenuItem * item = Gtk::manage(new Gtk::MenuItem);
+				Gtk::HBox * hbox = Gtk::manage(new Gtk::HBox);
+				Gtk::Label * label1 = Gtk::manage(new Gtk::Label(
+					labelTrans(i->label(), i->shortcut()), true));
+				Gtk::Label * label2 = Gtk::manage(new Gtk::Label(
+					"   " + i->binding(), false));
+				hbox->pack_start(*label1, false, false, 0);
+				hbox->pack_end(*label2, false, false, 0);
+				item->add(*hbox);
+
+				gmenu->append(*item);
+				item->show_all();
 			}
 			Gtk::MenuItem & item = gmenu->items().back();
 			item.signal_activate().connect(

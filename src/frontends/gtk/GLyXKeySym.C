@@ -13,6 +13,8 @@
 #include "GLyXKeySym.h"
 #include "kbmap.h"
 
+#include "support/lstrings.h"
+
 #include <gtkmm.h>
 #include <gdk/gdkkeysyms.h>
 
@@ -94,9 +96,27 @@ char GLyXKeySym::getISOEncoded(string const & /*encoding*/) const
 }
 
 
+//Produce a human readable version (eg "Ctrl+N")
 string const GLyXKeySym::print(key_modifier::state mod) const
 {
-	return kb_keymap::printKeySym(*this, mod);
+	string buf;
+
+	if (mod & key_modifier::ctrl)
+		buf += "Ctrl+";
+	if (mod & key_modifier::shift)
+		buf += "Shift+";
+	if (mod & key_modifier::alt)
+		buf += "Alt+";
+
+	//Uppercase the first letter, for Ctrl+N rather than Ctrl+n,
+	//and for Ctrl+Greater rather than Ctrl+GREATER
+	string symname = getSymbolName();
+  if (!symname.empty()) {
+	  symname[0] = lyx::support::uppercase(symname[0]);
+	  buf += symname;
+	}
+
+	return buf;
 }
 
 
