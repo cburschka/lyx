@@ -957,6 +957,18 @@ ChangeExtension(string const & oldname, string const & extension)
 	return CleanupPath(oldname.substr(0, last_dot) + ext);
 }
 
+/// Return the extension of the file (not including the .)
+string GetExtension(string const & name)
+{
+	string::size_type last_slash = name.rfind('/');
+	string::size_type last_dot = name.rfind('.');
+	if (last_dot != string::npos &&
+	    (last_slash == string::npos || last_dot > last_slash))
+		return name.substr(last_dot + 1,
+				   name.length() - (last_dot + 1));
+	else
+		return string();
+}
 
 // Creates a nice compact path for displaying
 string const

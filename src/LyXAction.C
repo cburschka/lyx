@@ -149,6 +149,10 @@ void LyXAction::init()
 		  N_("Switch to an open document"), ReadOnly },
 		{ LFUN_READ_ONLY_TOGGLE, "buffer-toggle-read-only",
 		  N_("Toggle read-only"), ReadOnly },
+#ifdef NEW_EXPORT
+		{ LFUN_UPDATE, "buffer-update", N_("Update"), ReadOnly },
+		{ LFUN_PREVIEW, "buffer-view", N_("View") , ReadOnly },
+#else
 		{ LFUN_RUNLATEX, "buffer-typeset", N_("Update DVI"),
 		  ReadOnly },
 		{ LFUN_RUNDVIPS, "buffer-typeset-ps",
@@ -156,6 +160,7 @@ void LyXAction::init()
 		{ LFUN_PREVIEW, "buffer-view", N_("View DVI") , ReadOnly },
 		{ LFUN_PREVIEWPS, "buffer-view-ps",
 		  N_("View PostScript") , ReadOnly },
+#endif
 		{ LFUN_MENUWRITE, "buffer-write", N_("Save"), ReadOnly },
 		{ LFUN_MENUWRITEAS, "buffer-write-as", N_("Save As"),
 		  ReadOnly },

@@ -30,6 +30,7 @@
 #include "support/path.h"
 #include "support/filetools.h"
 #include "lyxtext.h"
+#include "converter.h"
 
 using std::ostream;
 using std::ofstream;
@@ -155,6 +156,8 @@ enum LyXRCTags {
 	RC_DOCBOOK_TO_HTML_COMMAND,
 	RC_DOCBOOK_TO_PDF_COMMAND,
 	RC_WHEEL_JUMP,
+	RC_CONVERTER,
+	RC_VIEWER,
 	RC_NEW_ASK_FILENAME,
 	RC_LAST
 };
@@ -176,6 +179,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\build_error_filter", RC_BUILD_ERROR_FILTER },
 	{ "\\check_lastfiles", RC_CHECKLASTFILES },
 	{ "\\chktex_command", RC_CHKTEX_COMMAND },
+	{ "\\converter", RC_CONVERTER },
 	{ "\\cursor_follows_scrollbar", RC_CURSOR_FOLLOWS_SCROLLBAR },
 	{ "\\custom_export_command", RC_CUSTOM_EXPORT_COMMAND },
 	{ "\\custom_export_format", RC_CUSTOM_EXPORT_FORMAT },
@@ -270,6 +274,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\view_pdf_command", RC_VIEWPDF_COMMAND },
 	{ "\\view_ps_command", RC_VIEWPS_COMMAND },
         { "\\view_pspic_command", RC_VIEWPSPIC_COMMAND },
+	{ "\\viewer" ,RC_VIEWER}, 
 	{ "\\wheel_jump", RC_WHEEL_JUMP }
 };
 
@@ -1106,6 +1111,34 @@ int LyXRC::read(string const & filename)
 			if ( lexrc.next())
 				new_ask_filename = lexrc.GetBool();
 			break;
+		case RC_CONVERTER:
+		{
+			string from, to, command, flags;
+			if (lexrc.next())
+				from = lexrc.GetString();
+			if (lexrc.next())
+				to = lexrc.GetString();
+			if (lexrc.next())
+				command = lexrc.GetString();
+			if (lexrc.next())
+				flags = lexrc.GetString();
+			command = subst(command, "$$FName", "'$$FName'");
+			command = subst(command, "$$BaseName", "'$$BaseName'");
+			command = subst(command, "$$OutName", "'$$OutName'");
+			Converter::Add(from, to, command, flags);
+			break;
+		}
+		case RC_VIEWER:
+		{
+			string format, command;
+			if (lexrc.next())
+				format = lexrc.GetString();
+			if (lexrc.next())
+				command = lexrc.GetString();
+			command = subst(command, "$$FName", "'$$FName'");
+			Formats::SetViewer(format, command);
+			break;
+		}
 
 		case RC_LAST: break; // this is just a dummy
 		}

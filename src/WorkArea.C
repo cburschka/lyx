@@ -21,7 +21,10 @@
 #include "BufferView.h"
 #include "LyXView.h"
 #include "lyxfunc.h"
+
+#if FL_REVISION < 89
 #include "lyxlookup.h"
+#endif
 
 using std::endl;
 
@@ -319,7 +322,7 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		break;
 	case FL_KEYBOARD:
 	{
-		lyxerr[Debug::KEY] << "Workarea event: KEYBOARD";
+		lyxerr[Debug::KEY] << "Workarea event: KEYBOARD" << endl;
 		
 		KeySym keysym = 0;
 		char dummy[1];
@@ -352,6 +355,8 @@ int WorkArea::work_area_handler(FL_OBJECT * ob, int event,
 		}
 		KeySym ret_key = keysym;
 #else
+		// Ok, this is a bit simplistic...seems that the rules
+		// need to be a bit more...
 		if (!key) break;
 		KeySym ret_key = (keysym ? keysym : key);
 #endif	

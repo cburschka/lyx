@@ -28,6 +28,7 @@
 #include "LyXView.h"
 #include "MenuBackend.h"
 #include "Menubar_pimpl.h"
+#include "exporter.h"
 
 using std::endl;
 
@@ -268,6 +269,30 @@ void Menubar::Pimpl::add_documents(int menu, string const & extra_label,
 }
 
 
+void Menubar::Pimpl::add_formats(int menu, string const & extra_label,
+				 std::vector<int> & /*smn*/, 
+				 StrPool & strpool,
+				 kb_action action, bool viewable)
+{
+	std::vector<pair<string,string> > names = 
+		viewable
+		? Exporter::GetViewableFormats(owner_->buffer())
+		: Exporter::GetExportableFormats(owner_->buffer());
+
+	for (std::vector<pair<string,string> >::const_iterator cit = names.begin();
+	     cit != names.end() ; ++cit) {
+		int action2 =
+			lyxaction.getPseudoAction(action, (*cit).first);
+		string label = (*cit).second
+			+ "%x" + tostr(action2);
+		if ((cit + 1) == names.end())
+			label += extra_label;
+				
+		fl_addtopup(menu, strpool.add(label));
+	}
+}
+
+
 int Menubar::Pimpl::create_submenu(Window win, LyXView * view, 
 				   string const & menu_name, 
 				   std::vector<int> & smn, StrPool & strpool) 
@@ -403,9 +428,23 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 			add_documents(menu, extra_label, smn, strpool);
 			break;
 
-
 		case MenuItem::Lastfiles: 
 			add_lastfiles(menu, extra_label, smn, strpool);
+			break;
+
+		case MenuItem::ViewFormats:
+			add_formats(menu, extra_label, smn, strpool,
+				    LFUN_PREVIEW, true);
+			break;
+
+		case MenuItem::UpdateFormats:
+			add_formats(menu, extra_label, smn, strpool,
+				    LFUN_UPDATE, true);
+			break;  
+
+		case MenuItem::ExportFormats:
+			add_formats(menu, extra_label, smn, strpool,
+				    LFUN_EXPORT, false);
 			break;
 
 		}

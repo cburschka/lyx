@@ -109,6 +109,8 @@ lyx_SOURCES = \
 	combox.h \
 	commandtags.h \
 	config.h.in \
+	converter.C \
+	converter.h \
 	counters.C \
 	counters.h \
 	credits.C \
@@ -119,6 +121,8 @@ lyx_SOURCES = \
 	debug.h \
 	encoding.C \
 	encoding.h \
+	exporter.C \
+	exporter.h \
 	ext_l10n.h \
 	figure.h \
 	filedlg.C \

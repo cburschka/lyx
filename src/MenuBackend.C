@@ -38,6 +38,9 @@ MenuItem::MenuItem(Kind kind, string const & label,
 	case Separator:
 	case Documents:
 	case Lastfiles:
+	case ViewFormats:
+	case UpdateFormats:
+	case ExportFormats:
 		break;
 	case Command:
 		action_ = lyxaction.LookupFunc(command);
@@ -70,21 +73,27 @@ Menu & Menu::read(LyXLex & lex)
 		md_item = 1,
 		md_documents,
 		md_endmenu,
+		md_exportformats,
 		md_lastfiles,
 		md_optitem,
 		md_submenu,
 		md_separator,
+		md_updateformats,
+		md_viewformats,
 		md_last
 	};
 
 	struct keyword_item menutags[md_last-1] = {
 		{ "documents", md_documents },
 		{ "end", md_endmenu },
+		{ "exportformats", md_exportformats },
 		{ "item", md_item },
 		{ "lastfiles", md_lastfiles },
 		{ "optitem", md_optitem }, 
 		{ "separator", md_separator },
-		{ "submenu", md_submenu }
+		{ "submenu", md_submenu },
+		{ "updateformats", md_updateformats },
+		{ "viewformats", md_viewformats }
 	};
 
 	lex.pushTable(menutags, md_last - 1);
@@ -119,6 +128,15 @@ Menu & Menu::read(LyXLex & lex)
 			break;
 		case md_documents:
 			add(MenuItem(MenuItem::Documents));
+			break;
+		case md_viewformats:
+			add(MenuItem(MenuItem::ViewFormats));
+			break;
+		case md_updateformats:
+			add(MenuItem(MenuItem::UpdateFormats));
+			break;
+		case md_exportformats:
+			add(MenuItem(MenuItem::ExportFormats));
 			break;
 		case md_submenu: {
 			lex.next();

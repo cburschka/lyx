@@ -1,3 +1,41 @@
+2000-08-30  Dekel Tsur  <dekel@math.tau.ac.il>
+
+	* src/converter.[Ch]: New file for converting between different
+	formats.
+	
+	* src/export.[Ch]: New file for exporting a LyX file to different
+	formats.
+	
+	* src/lyx_cb.C:	Remove many functions when NEW_EXPORT is defined:
+	MenuRunLaTeX, MakeLaTeXOutput, RunScript, CreatePostscript,
+	PreviewPostscript, PreviewDVI, AskOverwrite, MenuMakeLaTeX,
+	MenuMakeLinuxDoc, MenuMakeDocBook, MenuMakeHTML,
+	MenuMakeHTML_LinuxDoc, MenuMakeHTML_DocBook, RunLinuxDoc,
+	RunDocBook, MenuExport.
+	
+	* src/lyxfunc.C (Dispatch): Use the Exporter::Export and
+	Exporter::Preview methods if NEW_EXPORT is defined.	
+	
+	* src/buffer.C (Dispatch): Use Exporter::Export.
+	
+	* src/lyxrc.C: Added new tags: \converter and \viewer.
+	
+	* src/commandtags.h
+	* src/LyXAction.C: Define new lyx-function: buffer-update.
+	Remove obsolete buffer-typeset,buffer-typeset-ps & buffer-view-ps
+	when NEW_EXPORT is defined.
+	
+	* src/MenuBackend.C: Added new tags: updateformats and viewformats.
+	
+	* src/frontends/xforms/Menubar_pimpl.C (add_formats) New method.
+	
+	* lib/ui/default.ui: Added submenus "view" and "update" to the 
+	"file" menu.
+	
+	* src/filetools.C (GetExtension): New function.
+	
+	* src/LaTeX.C (LaTeX): Add "-pdf" to depfile if pdflatex is used.
+
 2000-08-29  Allan Rae  <rae@lyx.org>
 
 	* lib/bind/xemacs.bind: update a binding due to Juergen's recent work

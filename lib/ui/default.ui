@@ -34,8 +34,10 @@ Menuset
 	Separator
 	Item "View dvi|d" "buffer-view"
 	Item "View Postscript|w" "buffer-view-ps"
+	Submenu "View" "view"
 	Item "Update dvi|v" "buffer-typeset"
 	Item "Update Postscript|U" "buffer-typeset-ps"
+	Submenu "Update" "update"
 	OptItem "Build program|B" "build-program"
 	Separator
 	Item "Print...|P" "buffer-print"
@@ -60,6 +62,14 @@ Menuset
 	Lastfiles
     End
 
+    Menu "view"
+	ViewFormats
+    End
+
+    Menu "update"
+	UpdateFormats
+    End
+
     Menu "import"
 	Item "LaTeX|L" "buffer-import latex"
 	Item "Ascii text as lines|A" "buffer-import ascii"
@@ -68,6 +78,7 @@ Menuset
     End
 
     Menu "export"
+	ExportFormats
 	OptItem "as LaTeX|L" "buffer-export latex"
 	OptItem "as LinuxDoc|L" "buffer-export linuxdoc"
 	OptItem "as DocBook|B" "buffer-export docbook"

@@ -87,6 +87,7 @@
 #include "lyx_gui_misc.h"	// WarnReadonly()
 #include "frontends/Dialogs.h"
 #include "encoding.h"
+#include "exporter.h"
 
 using std::ostream;
 using std::ofstream;
@@ -106,7 +107,9 @@ using std::istringstream;
 // all these externs should eventually be removed.
 extern BufferList bufferlist;
 
+#ifndef NEW_EXPORT
 extern void MenuExport(Buffer *, string const &);
+#endif
 extern LyXAction lyxaction;
 
 
@@ -3318,6 +3321,8 @@ void Buffer::SimpleDocBookOnePar(ostream & os, string & extra,
 
 int Buffer::runLaTeX()
 {
+#ifndef NEW_EXPORT
+
 	if (!users->text) return 0;
 
 	ProhibitInput(users);
@@ -3376,6 +3381,7 @@ int Buffer::runLaTeX()
         AllowInput(users);
  
         return latex.getNumErrors();
+#endif
 }
 
 
@@ -3839,7 +3845,11 @@ bool Buffer::Dispatch(int action, string const & argument)
 	bool dispatched = true;
 	switch (action) {
 		case LFUN_EXPORT: 
+#ifdef NEW_EXPORT
+			Exporter::Export(this, argument, false);
+#else
 			MenuExport(this, argument);
+#endif
 			break;
 
 		default:

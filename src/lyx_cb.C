@@ -43,6 +43,7 @@
 #include "lyxrc.h"
 #include "lyxtext.h"
 #include "CutAndPaste.h"
+#include "exporter.h"
 
 using std::ifstream;
 using std::copy;
@@ -297,7 +298,7 @@ bool MenuWriteAs(Buffer * buffer)
 	return true;
 }
 
-
+#ifndef NEW_EXPORT
 int MenuRunLaTeX(Buffer * buffer)
 {
 	int ret = 0;
@@ -326,7 +327,7 @@ int MenuRunLaTeX(Buffer * buffer)
 	}
 	return ret;
 }
-
+#endif
 
 int MenuBuildProg(Buffer * buffer)
 {
@@ -388,7 +389,7 @@ int MenuRunChktex(Buffer * buffer)
 	return ret;
 }
 
- 
+#ifndef NEW_EXPORT
 int MakeLaTeXOutput(Buffer * buffer)
 {
 	// Who cares?
@@ -601,7 +602,7 @@ bool PreviewPostscript(Buffer * buffer)
 	AllowInput(current_view);
 	return ret;
 }
-
+#endif
 
 void MenuFax(Buffer * buffer)
 {
@@ -609,6 +610,15 @@ void MenuFax(Buffer * buffer)
 	//if (!bv->text)
 	//	return;
 
+#ifdef NEW_EXPORT
+	// Generate postscript file
+	if (!Exporter::Export(buffer, "ps", true))
+		return;
+
+	// Send fax
+	string ps = OnlyFilename(ChangeExtension (buffer->fileName(), 
+						  ".ps"));
+#else
 	// Generate postscript file
 	if (!CreatePostscript(buffer, true)) {
 		return;
@@ -617,6 +627,7 @@ void MenuFax(Buffer * buffer)
 	// Send fax
 	string ps = OnlyFilename(ChangeExtension (buffer->fileName(), 
 						  ".ps_tmp"));
+#endif
 	string path = OnlyPath (buffer->fileName());
 	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1)) {
 		path = buffer->tmppath;
@@ -631,6 +642,7 @@ void MenuFax(Buffer * buffer)
 }
 
 
+#ifndef NEW_EXPORT
 // Returns false if we fail
 bool PreviewDVI(Buffer * buffer)
 {
@@ -952,6 +964,7 @@ void MenuExport(Buffer * buffer, string const & extyp)
 		ShowMessage(buffer, _("Unknown export type: ") + extyp);
 	}
 }
+#endif
 
 
 void QuitLyX()
@@ -1169,7 +1182,7 @@ void LayoutsCB(int sel, void *)
 						      tmp.c_str());
 }
 
-
+#ifndef NEW_EXPORT
 /*
  * SGML Linuxdoc support:
  * (flag == 0) make TeX output
@@ -1287,7 +1300,7 @@ int RunDocBook(int flag, string const & filename)
         current_view->buffer()->redraw();
 	return errorcode;
 }
-
+#endif
 
 void MenuLayoutCharacter()
 {

@@ -139,6 +139,9 @@ string const AddPath(string const & path, string const & path2);
 string const
 ChangeExtension(string const & oldname, string const & extension);
 
+/// Return the extension of the file (not including the .)
+string GetExtension(string const & name);
+
 /// Create absolute path. If impossible, don't do anything
 string const ExpandPath(string const & path);
 

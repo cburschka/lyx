@@ -71,6 +71,8 @@ LaTeX::LaTeX(string const & latex, string const & f, string const & p)
 {
 	num_errors = 0;
 	depfile = file + ".dep";
+	if (prefixIs(cmd, "pdf")) // Do we use pdflatex ?
+		depfile += "-pdf";
 }
 
 

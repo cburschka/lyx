@@ -40,7 +40,16 @@ public:
 		Lastfiles,
 		/** This is the list of opened Documents,
 		    typically for the Documents menu. */
-		Documents
+		Documents,
+		/** This is a list of viewable formats
+		    typically for the Documents menu. */
+		ViewFormats,
+		/** This is a list of updatable formats
+		    typically for the Documents menu. */
+		UpdateFormats,
+		/** This is a list of exportable formats
+		    typically for the Documents menu. */
+		ExportFormats
 	};
 	/// Create a Command type MenuItem
 	MenuItem(Kind kind, 

@@ -21,6 +21,7 @@
 #include <vector>
 #include "LString.h"
 #include "frontends/Menubar.h"
+#include "commandtags.h"
 #include FORMS_H_LOCATION
 class LyXView;
 class MenuBackend;
@@ -56,6 +57,11 @@ public:
 	*/
 	void add_documents(int menu, string const & extra_label,
 			   std::vector<int> & smn, StrPool & strpool);
+	/// Add to "menu" the list of exportable/viewable formats
+	/// (add "extra_label" to the last entry)
+	void add_formats(int menu, string const & extra_label,
+			 std::vector<int> & smn, StrPool & strpool,
+			 kb_action action, bool viewable);
 	///
 	int create_submenu(Window win, LyXView * view, 
 			   string const & menuname, 

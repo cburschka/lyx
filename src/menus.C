@@ -51,10 +51,12 @@
 #include "insets/insetref.h"
 #include "insets/insettabular.h"
 #include "tabular.h"
+#include "exporter.h"
 
 #include "frontends/Dialogs.h"
 
 using std::vector;
+using std::pair;
 using std::endl;
 using std::max;
 using std::min;
@@ -499,9 +501,22 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 	fl_setpup_shortcut(SubFileImport, 34, scex(_("FIM|Dd#d#D")));
 
 	// Export sub-menu
-
+#ifdef NEW_EXPORT
+	int SubFileExport = fl_defpup(FL_ObjWin(ob),
+				      _("Export%t"));
+	vector<pair<string,string> > formats =
+		Exporter::GetExportableFormats(tmpbuffer);
+	for (vector<pair<string,string> >::size_type i = 0;
+	     i < formats.size(); ++i) {
+		string entry = _("as ")
+			+ formats[i].second
+			+ "%x" + tostr(1000+i);
+		fl_addtopup(SubFileExport, entry.c_str());
+	}
+#else
 	// remember to make this handle linuxdoc too.
 	// and now docbook also.
+
 	int SubFileExport = 0;
 	if (!LinuxDoc && !DocBook)
 		SubFileExport= fl_defpup(FL_ObjWin(ob),
@@ -528,7 +543,6 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 					   "|as PostScript...%x42"
 					   "|as Ascii Text...%x43"
 					   "|as HTML...%x44"));
-
 	fl_setpup_shortcut(SubFileExport, 40, scex(_("FEX|Ll#l#L")));
 	fl_setpup_shortcut(SubFileExport, 41, scex(_("FEX|Dd#d#D")));
 	fl_setpup_shortcut(SubFileExport, 42, scex(_("FEX|Pp#p#P")));
@@ -538,6 +552,7 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 	if (!LinuxDoc && !DocBook) {
 		fl_setpup_shortcut(SubFileExport, 45, scex(_("FEX|mM#m#M")));
 	}
+#endif
 	
 	int FileMenu = fl_defpup(FL_ObjWin(ob),
 				 _("New..."
@@ -605,6 +620,7 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 	if ( lyxrc.linuxdoc_to_lyx_command == "none")
 		fl_setpup_mode(SubFileImport, 34, FL_PUP_GREY);
 
+#ifndef NEW_EXPORT
 	if (!hasLaTeX) {
 		// Disable export dvi and export postscript
 		fl_setpup_mode(SubFileExport, 41, FL_PUP_GREY);
@@ -617,6 +633,7 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 		// Disable export HTML
 		fl_setpup_mode(SubFileExport, 44, FL_PUP_GREY);
 	}
+#endif
 
 	// xgettext:no-c-format
 	fl_addtopup(FileMenu, _("|Import%m"), SubFileImport);
@@ -660,10 +677,17 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 	case  5: tmpfunc->Dispatch(LFUN_MENUWRITE); break;
 	case  6: tmpfunc->Dispatch(LFUN_MENUWRITEAS); break;
 	case  7: tmpfunc->Dispatch(LFUN_MENURELOAD); break;
+#ifdef NEW_EXPORT
+	case 8: tmpfunc->Dispatch(LFUN_PREVIEW, "dvi"); break;
+	case 9: tmpfunc->Dispatch(LFUN_PREVIEW, "ps"); break;
+	case 10: tmpfunc->Dispatch(LFUN_UPDATE, "dvi"); break;
+	case 11: tmpfunc->Dispatch(LFUN_UPDATE, "ps"); break;
+#else
 	case  8: tmpfunc->Dispatch(LFUN_PREVIEW); break;
 	case  9: tmpfunc->Dispatch(LFUN_PREVIEWPS); break;
 	case 10: tmpfunc->Dispatch(LFUN_RUNLATEX); break;
 	case 11: tmpfunc->Dispatch(LFUN_RUNDVIPS); break;
+#endif
 	case 12: tmpfunc->Dispatch(LFUN_BUILDPROG); break;
 	case 13: tmpfunc->Dispatch(LFUN_MENUPRINT); break;
 	case 14: tmpfunc->Dispatch(LFUN_FAX); break;
@@ -678,6 +702,20 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 		break;
 	case 34: tmpfunc->Dispatch(LFUN_IMPORT, "linuxdoc");
 		break;
+#ifdef NEW_EXPORT
+	case 18:
+		tmpfunc->Dispatch(LFUN_QUIT);
+		break;
+	default:
+		if (choice >= 1000)
+			tmpfunc->Dispatch(LFUN_EXPORT,
+					  formats[choice-1000].first.c_str());
+		else
+			men->currentView()
+				->buffer(bufferlist
+					 .loadLyXFile((*lastfiles)[choice - 18]));
+		break;
+#else
 	case 16: // export menu
 	case 40:
 		if (!LinuxDoc && !DocBook)
@@ -705,6 +743,7 @@ void Menus::ShowFileMenu(FL_OBJECT * ob, long)
 			->buffer(bufferlist
 				 .loadLyXFile((*lastfiles)[choice - 18]));
 		break;
+#endif
 	}
 	fl_freepup(SubFileImport);
 	fl_freepup(SubFileExport);

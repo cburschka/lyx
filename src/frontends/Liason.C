@@ -24,6 +24,7 @@
 #include "support/lstrings.h"
 #include "support/filetools.h"
 #include "support/path.h"
+#include "exporter.h"
 #include "minibuffer.h"
 
 extern LyXRC lyxrc;
@@ -171,6 +172,7 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 	}
 	Path p(path);
 
+#ifndef NEW_EXPORT
 	// there are three cases here:
 	// 1. we print to a file
 	// 2. we print direct to a printer
@@ -207,6 +209,7 @@ bool printBuffer(Buffer * buffer, PrinterParams const & pp)
 		result = RunScript(buffer, false, command);
 		break;
 	}
+#endif
 	return result;
 }
 

@@ -92,6 +92,7 @@ using std::istringstream;
 #include "menus.h"
 #endif
 #include "FloatList.h"
+#include "exporter.h"
 #include "FontLoader.h"
 #include "TextCache.h"
 
@@ -112,15 +113,21 @@ extern kb_keymap * toplevel_keymap;
 
 extern bool MenuWrite(Buffer *);
 extern bool MenuWriteAs(Buffer *);
+#ifdef NEW_MENUBAR
 extern int  MenuRunLaTeX(Buffer *);
+#endif
 extern int  MenuBuildProg(Buffer *);
 extern int  MenuRunChktex(Buffer *);
+#ifndef NEW_EXPORT
 extern bool CreatePostscript(Buffer *, bool);
+#endif
 extern void MenuPrint(Buffer *);
 extern void MenuSendto();
 extern void QuitLyX();
 extern void MenuFax(Buffer *);
+#ifndef NEW_EXPORT
 extern void MenuExport(Buffer *, string const &);
+#endif
 extern void show_symbols_form(LyXFunc *);
 
 extern LyXAction lyxaction;
@@ -128,8 +135,10 @@ extern LyXAction lyxaction;
 extern tex_accent_struct get_accent(kb_action action);
 
 extern void AutoSave(BufferView *);
+#ifndef NEW_EXPORT
 extern bool PreviewDVI(Buffer *);
 extern bool PreviewPostscript(Buffer *);
+#endif
 extern void MenuInsertLabel(char const *);
 extern void MenuLayoutCharacter();
 extern void MenuLayoutParagraph();
@@ -486,6 +495,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
         static bool noLaTeX = lyxrc.latex_command == "none";
         bool disable = false;
         switch (action) {
+#ifndef NEW_EXPORT
 	case LFUN_PREVIEW:
 		disable = noLaTeX || lyxrc.view_dvi_command == "none";
 		break;
@@ -496,6 +506,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 	case LFUN_RUNDVIPS:
 		disable = noLaTeX;
 		break;
+#endif
 	case LFUN_MENUPRINT:
 		disable = noLaTeX || lyxrc.print_command == "none";
 		break;
@@ -508,6 +519,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 		else if (argument == "linuxdoc")
 			disable = lyxrc.linuxdoc_to_lyx_command == "none";
 		break;
+#ifndef NEW_EXPORT
 	case LFUN_EXPORT:
 		if (argument == "latex")
 			disable = (! buf->isLatex() && ! buf->isLiterate()) ;
@@ -527,6 +539,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 		else if (argument == "custom")
 			disable = (! buf->isLatex() && ! buf->isLiterate());
 		break;
+#endif
 	case LFUN_UNDO:
 		disable = buf->undostack.empty();
 		break;
@@ -963,6 +976,15 @@ string LyXFunc::Dispatch(int ac,
 		reloadBuffer();
 		break;
 		
+#ifdef NEW_EXPORT
+	case LFUN_UPDATE:
+		Exporter::Export(owner->buffer(), argument, true);
+		break;
+
+	case LFUN_PREVIEW:
+		Exporter::Preview(owner->buffer(), argument);
+		break;
+#else
 	case LFUN_PREVIEW:
 		PreviewDVI(owner->buffer());
 		break;
@@ -974,6 +996,11 @@ string LyXFunc::Dispatch(int ac,
 	case LFUN_RUNLATEX:
 		MenuRunLaTeX(owner->buffer());
 		break;
+
+	case LFUN_RUNDVIPS:
+		CreatePostscript(owner->buffer(), false);
+		break;
+#endif
 		
         case LFUN_BUILDPROG:
                 MenuBuildProg(owner->buffer());
@@ -982,11 +1009,7 @@ string LyXFunc::Dispatch(int ac,
  	case LFUN_RUNCHKTEX:
 		MenuRunChktex(owner->buffer());
 		break;
-		
-	case LFUN_RUNDVIPS:
-		CreatePostscript(owner->buffer(), false);
-		break;
-		
+				
 	case LFUN_MENUPRINT:
 		owner->getDialogs()->showPrint();
 		break;
@@ -996,7 +1019,11 @@ string LyXFunc::Dispatch(int ac,
 		break;
 			
 	case LFUN_EXPORT:
+#ifdef NEW_EXPORT
+		Exporter::Export(owner->buffer(), argument, false);
+#else
 		MenuExport(owner->buffer(), argument);
+#endif
 		break;
 
 	case LFUN_IMPORT:
