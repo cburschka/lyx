@@ -1,3 +1,8 @@
+1999-10-18  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/lyxrc.C (Read): RC_PRINTEXSTRAOPTIONS now uses
+	LyXLex::netx() and not eatline() to get its argument.
+
 1999-10-16  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* Makefile.am (rpmdist): added a rpmdist target

@@ -322,7 +322,7 @@
 
 # Extra options to pass to printing program after everything 
 # else, but before the filename of the DVI file to be printed.
-#\print_extra_options
+#\print_extra_options ""
 
 # When set, this printer option automatically prints to a file 
 # and then calls a separate print spooling program on that file

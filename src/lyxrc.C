@@ -448,7 +448,7 @@ int LyXRC::Read(string const &filename)
 			break;
 			
 		case RC_PRINTEXSTRAOPTIONS:
-			if (lexrc.EatLine())
+			if (lexrc.next())
 				print_extra_options = lexrc.GetString();
 			break;
 			
