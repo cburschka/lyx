@@ -1367,8 +1367,8 @@ int LyXTable::TexEndOfCell(ostream & os, int cell)
 		os << "\\multicolumn{"
 		   << cells_in_multicolumn(nvcell)
 		   << "}{";
-            if (!cellinfo_of_cell(cell+1)->align_special.empty()) {
-		    os << cellinfo_of_cell(cell+1)->align_special
+            if (!cellinfo_of_cell(nvcell)->align_special.empty()) {
+		    os << cellinfo_of_cell(nvcell)->align_special
 		       << "}{";
             } else {
                 if (LeftLine(nvcell))

@@ -167,10 +167,6 @@ public:
     ///
     int GetNumberOfCells() const;
     ///
-    int AppendCellAfterCell(int append_cell, int question_cell);
-    ///
-    int DeleteCellIfColumnIsDeleted(int cell, int delete_column_cell);
-    ///
     int NumberOfCellsInRow(int cell) const;
     ///
     void Write(std::ostream &) const;
@@ -209,6 +205,8 @@ public:
     ///
     int column_of_cell(int cell) const;
     ///
+    int right_column_of_cell(int cell) const;
+    ///
     void SetLongTabular(int what);
     ///
     bool IsLongTabular() const;
@@ -228,6 +226,10 @@ public:
     int GetCellAbove(int cell) const;
     ///
     int GetCellBelow(int cell) const;
+    ///
+    int GetLastCellAbove(int cell) const;
+    ///
+    int GetLastCellBelow(int cell) const;
     ///
     int GetCellNumber(int row, int column) const;
     ///
@@ -297,6 +299,9 @@ private: //////////////////////////////////////////////////////////////////
 	///
 	InsetText * inset;
     };
+    typedef std::vector<cellstruct> cell_vector;
+    typedef std::vector<cell_vector> cell_vvector;
+
     ///
     struct rowstruct {
 	///
@@ -313,6 +318,8 @@ private: //////////////////////////////////////////////////////////////////
 	/// This are for longtabulars only
 	bool newpage;
     };
+    typedef std::vector<rowstruct> row_vector;
+
     ///
     struct columnstruct {
 	///
@@ -329,6 +336,8 @@ private: //////////////////////////////////////////////////////////////////
 	string p_width;
 	string align_special;
     };
+    typedef std::vector<columnstruct> column_vector;
+
     ///
     int rows_;
     ///
@@ -340,11 +349,11 @@ private: //////////////////////////////////////////////////////////////////
     ///
     int * columnofcell;
     ///
-    std::vector<rowstruct> row_info;
+    row_vector row_info;
     ///
-    std::vector<columnstruct> column_info;
+    column_vector column_info;
     ///
-    mutable std::vector< std::vector<cellstruct> > cell_info;
+    mutable cell_vvector cell_info;
     ///
     int width_of_tabular;
     ///
@@ -371,9 +380,6 @@ private: //////////////////////////////////////////////////////////////////
     bool calculate_width_of_column_NMC(int column); // no multi cells
     ///
     void calculate_width_of_tabular();
-
-    ///
-    int right_column_of_cell(int cell) const;
 
     ///
     cellstruct * cellinfo_of_cell(int cell) const;

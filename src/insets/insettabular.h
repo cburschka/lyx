@@ -153,8 +153,8 @@ private:
     void DrawCellLines(Painter &, int x, int baseline, int row, int cell)
 	    const;
     ///
-    void DrawCellSelection(Painter &, int x, int baseline, int row, int cell)
-	    const;
+    void DrawCellSelection(Painter &, int x, int baseline,
+			   int row, int column, int cell) const;
     ///
     void ShowInsetCursor(BufferView *);
     ///

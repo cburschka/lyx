@@ -1,3 +1,20 @@
+2000-05-26  Juergen Vigna  <jug@sad.it>
+
+	* src/TabularLayout.C (TabularOptionsCB): removed delete-table as this
+	is not needed in tabular insets.
+
+	* src/insets/insettabular.C (TabularFeatures): added missing features.
+
+	* src/tabular.C (DeleteColumn):
+	(AppendColumn): 
+	(AppendRow): implemented this functions
+	(cellsturct::operator=): clone the inset too; 
+
+2000-05-23  Juergen Vigna  <jug@sad.it>
+
+	* src/insets/insettabular.C (LocalDispatch): better selection support
+	when having multicolumn-cells.
+
 2000-05-26  Jose Abilio Oliveira Matos <jamatos@novalis.fc.up.pt>
 
 	* lib/layouts/linuxdoc.layout: fix indentation of paragraphs.

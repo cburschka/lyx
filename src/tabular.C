@@ -73,6 +73,8 @@ LyXTabular::cellstruct::cellstruct(cellstruct const & cs)
     rotate = cs.rotate;
     linebreaks = cs.linebreaks;
     inset = 0;
+//    if (cs.inset)
+//	inset = static_cast<InsetText *>(cs.inset->Clone());
 }
 
 
@@ -87,6 +89,8 @@ LyXTabular::cellstruct::operator=(cellstruct const & cs)
     bottom_line = cs.bottom_line;
     rotate = cs.rotate;
     linebreaks = cs.linebreaks;
+    if (cs.inset)
+	inset = static_cast<InsetText *>(cs.inset->Clone());
     return *this;
 }
 
@@ -203,7 +207,8 @@ void LyXTabular::Init(int rows_arg, int columns_arg)
     // Jürgen, use iterators.
     for (i = 0; i < rows_; ++i) {
         for (j = 0; j < columns_; ++j) {
-            cell_info[i][j].inset = new InsetText(owner_->BufferOwner());
+	    if (!cell_info[i][j].inset)
+		cell_info[i][j].inset = new InsetText(owner_->BufferOwner());
 	    cell_info[i][j].inset->setOwner(owner_);
 	    cell_info[i][j].inset->SetDrawLockedFrame(true);
             cell_info[i][j].cellno = cellno++;
@@ -231,146 +236,113 @@ void LyXTabular::Init(int rows_arg, int columns_arg)
 }
 
 
-void LyXTabular::AppendRow(int /* cell */)
+void LyXTabular::AppendRow(int cell )
 {
-#if 0
-    int row = row_of_cell(cell);
-    rowstruct * row_info2 = new rowstruct[rows_ + 1];
-    cellstruct ** cell_info2 = new cellstruct * [rows_ + 1];
-    int i;
+//    cell_vector::iterator cit = cell_info.begin() + row;
+//    cell_info.insert(cit, vector<cellstruct>(columns_, cellstruct()));
+//    cell_info.insert(cell_info.begin(), vector<cellstruct>(columns_, cellstruct()));
 
-    for (i = 0; i <= row; ++i) {
-        cell_info2[i] = cell_info[i];
-        row_info2[i] = row_info[i];
-    }
-    for (i = rows_ - 1; i >= row; --i) {
-        cell_info2[i + 1] = cell_info[i];
-        row_info2[i + 1] = row_info[i];
-    }
-    row_info2[row + 1].top_line = row_info[i].top_line;
-    cell_info2[row + 1] = new cellstruct[columns_](owner_->BufferOwner());
-    for (i = 0; i < columns_; ++i) {
-        cell_info2[row + 1][i].width_of_cell = 0;
-        cell_info2[row + 1][i] = cell_info2[row][i];
-    }
-   
-    delete[] cell_info;
-    cell_info = cell_info2;
-    delete[] row_info;
-    row_info = row_info2;
-   
     ++rows_;
    
+//    row_vector r_info = row_vector(rows_, rowstruct());
+
+    cell_vvector c_info = cell_vvector(rows_, cell_vector(columns_,
+							  cellstruct()));
+    int row = row_of_cell(cell);
+    int i;
+
+    row_vector::iterator rit = row_info.begin() + row;
+    row_info.insert(rit, rowstruct());
+
+    for(i = 0; i <= row; ++i) {
+//	r_info[i] = row_info[i];
+	for(int j = 0; j < columns_; ++j) {
+	    c_info[i][j] = cell_info[i][j];
+	}
+    }
+    for(i = row+1; i < rows_; ++i) {
+//	r_info[i] = row_info[i-1];
+	for(int j = 0; j < columns_; ++j) {
+	    c_info[i][j] = cell_info[i-1][j];
+	}
+    }
+//    row_info = r_info;
+    cell_info = c_info;
+    for(i = 0; i < rows_; ++i) {
+	for(int j = 0; j < columns_; ++j) {
+	    cell_info[i][j].inset = static_cast<InsetText *>(c_info[i][j].inset->Clone());
+	}
+    }
+    ++row;
+    for (int j = 0; j < columns_; ++j) {
+	cell_info[row][j].inset->clear();
+    }
     Reinit();
-#endif
 }
 
 
 void LyXTabular::DeleteRow(int row)
 {
-	row_info.erase(row_info.begin() + row); //&row_info[row]);
-	cell_info.erase(cell_info.begin() + row); //&cell_info[row]);
-	--rows_;
-	Reinit();
+    if (!(rows_ - 1))
+	return;
+    row_info.erase(row_info.begin() + row); //&row_info[row]);
+    cell_info.erase(cell_info.begin() + row); //&cell_info[row]);
+    --rows_;
+    Reinit();
 }
 
 
-void LyXTabular::AppendColumn(int /*cell*/)
+void LyXTabular::AppendColumn(int cell)
 {
-#if 0
-    int j;
-    columnstruct * column_info2 = new columnstruct[columns_ + 1];
-    int column = right_column_of_cell(cell);
+    ++columns_;
+   
+    cell_vvector c_info = cell_vvector(rows_, cell_vector(columns_,
+							  cellstruct()));
+    int column = column_of_cell(cell);
+    int i, j;
+    column_vector::iterator cit = column_info.begin() + column;
+    column_info.insert(cit, columnstruct());
 
-    int i = 0;
-    for (; i <= column; ++i) {
-        column_info2[i] = column_info[i];
-    }
-    for (i = columns_ - 1; i >= column; --i) {
-        column_info2[i + 1] = column_info[i];
-    }
-    
-    delete[] column_info;
-    column_info = column_info2;
-    
     for (i = 0; i < rows_; ++i) {
-        cellstruct * tmp = cell_info[i];
-        cell_info[i] = new cellstruct[columns_ + 1](owner_->BufferOwner());
         for (j = 0; j <= column; ++j) {
-            cell_info[i][j] = tmp[j];
+            c_info[i][j] = cell_info[i][j];
         }
-        for (j = column; j < columns_; ++j) {
-            cell_info[i][j + 1] = tmp[j];
+        for (j = column+1; j < columns_; ++j) {
+            c_info[i][j] = cell_info[i][j-1];
         }
         // care about multicolumns
-        if (cell_info[i][column + 1].multicolumn
-            == LyXTabular::CELL_BEGIN_OF_MULTICOLUMN){
-            cell_info[i][column + 1].multicolumn = 
-                LyXTabular::CELL_PART_OF_MULTICOLUMN;
+        if (cell_info[i][column+1].multicolumn == CELL_BEGIN_OF_MULTICOLUMN) {
+            cell_info[i][column+1].multicolumn = CELL_PART_OF_MULTICOLUMN;
         }
-        if (column + 1 == columns_
-            || cell_info[i][column + 2].multicolumn
-            != LyXTabular::CELL_PART_OF_MULTICOLUMN){
-            cell_info[i][column + 1].multicolumn = 
-                LyXTabular::CELL_NORMAL;
+        if (((column+1) == columns_) ||
+            (cell_info[i][column+2].multicolumn != CELL_PART_OF_MULTICOLUMN)) {
+            cell_info[i][column+1].multicolumn = LyXTabular::CELL_NORMAL;
         }
-        delete[] tmp;
     }
-    
-    ++columns_;
-    Reinit();
-#endif
-}
-
-
-void LyXTabular::DeleteColumn(int /*cell*/)
-{
-#if 0
-    int column1 = column_of_cell(cell);
-    int column2 = right_column_of_cell(cell);
-    
-    if (column1 == 0 && column2 == columns_ - 1)
-	return;
-    
-    for (int column = column1; column <= column2; ++column) {
-	delete_column(column1);
+    cell_info = c_info;
+    for(i = 0; i < rows_; ++i) {
+	for(j = 0; j < columns_; ++j) {
+	    cell_info[i][j].inset = static_cast<InsetText *>(c_info[i][j].inset->Clone());
+	}
     }
-    Reinit();
-#endif
-}
-
-
-void LyXTabular::delete_column(int /*column*/)
-{
-#if 0
-    int i, j;
-    columnstruct * column_info2 = new columnstruct[columns_-1];
-   
-    for (i = 0; i < column; ++i) {
-        column_info2[i] = column_info[i];
-    }
-    for (i = column; i < columns_ - 1; ++i) {
-        column_info2[i] = column_info[i + 1];
-    }
-   
-    delete[] column_info;
-    column_info = column_info2;
-
+    ++column;
     for (i = 0; i < rows_; ++i) {
-        cellstruct * tmp = cell_info[i];
-        cell_info[i] = new cellstruct[columns_ - 1](owner_->BufferOwner());
-        for (j = 0; j < column; ++j) {
-            cell_info[i][j] = tmp[j];
-        }
-        for (j = column; j < columns_ - 1; ++j) {
-            cell_info[i][j] = tmp[j + 1];
-        }
-        delete[] tmp;
+	cell_info[i][column].inset->clear();
     }
+    Reinit();
+}
 
+
+void LyXTabular::DeleteColumn(int column)
+{
+    if (!(columns_ - 1))
+	return;
+    column_info.erase(column_info.begin() + column);
+    for (int i = 0; i < rows_; ++i) {
+	cell_info[i].erase(cell_info[i].begin() + column);
+    }
     --columns_;
     Reinit();
-#endif
 }
 
 
@@ -459,25 +431,6 @@ int LyXTabular::NumberOfCellsInRow(int cell) const
 	    ++result;
     }
     return result;
-}
-
-
-int LyXTabular::AppendCellAfterCell(int append_cell, int question_cell)
-{
-    return (right_column_of_cell(append_cell) ==
-	    right_column_of_cell(question_cell));
-}
-
-
-int LyXTabular::DeleteCellIfColumnIsDeleted(int cell, int delete_column_cell)
-{
-    if (column_of_cell(delete_column_cell) == 0 && 
-        right_column_of_cell(delete_column_cell) == columns_ - 1)
-        return 0;
-    else
-        return
-            (column_of_cell(cell) >= column_of_cell(delete_column_cell) &&
-             column_of_cell(cell) <= right_column_of_cell(delete_column_cell));
 }
 
 
@@ -1561,19 +1514,14 @@ LyXTabular::cellstruct * LyXTabular::cellinfo_of_cell(int cell) const
 
 void LyXTabular::SetMultiColumn(int cell, int number)
 {
-    int new_width = cellinfo_of_cell(cell)->width_of_cell;
-    
-    cellinfo_of_cell(cell)->multicolumn = LyXTabular::CELL_BEGIN_OF_MULTICOLUMN;
+    cellinfo_of_cell(cell)->multicolumn = CELL_BEGIN_OF_MULTICOLUMN;
     cellinfo_of_cell(cell)->alignment = column_info[column_of_cell(cell)].alignment;
     cellinfo_of_cell(cell)->top_line = row_info[row_of_cell(cell)].top_line;
     cellinfo_of_cell(cell)->bottom_line = row_info[row_of_cell(cell)].bottom_line;
     for (number--; number > 0; --number) {
-        cellinfo_of_cell(cell+number)->multicolumn = 
-            LyXTabular::CELL_PART_OF_MULTICOLUMN;
-        new_width += cellinfo_of_cell(cell+number)->width_of_cell;
+        cellinfo_of_cell(cell+number)->multicolumn = CELL_PART_OF_MULTICOLUMN;
     }
     set_row_column_number_info();
-    SetWidthOfCell(cell, new_width);
 }
 
 
@@ -1583,8 +1531,9 @@ int LyXTabular::cells_in_multicolumn(int cell) const
     int column = column_of_cell(cell);
     int result = 1;
     ++column;
-    while (column < columns_ && cell_info[row][column].multicolumn
-           == LyXTabular::CELL_PART_OF_MULTICOLUMN){
+    while ((column < columns_) &&
+	   cell_info[row][column].multicolumn == CELL_PART_OF_MULTICOLUMN)
+    {
         ++result;
         ++column;
     }
@@ -1599,15 +1548,13 @@ int LyXTabular::UnsetMultiColumn(int cell)
     
     int result = 0;
     
-    if (cell_info[row][column].multicolumn
-        == LyXTabular::CELL_BEGIN_OF_MULTICOLUMN){
-        cell_info[row][column].multicolumn = LyXTabular::CELL_NORMAL;
+    if (cell_info[row][column].multicolumn == CELL_BEGIN_OF_MULTICOLUMN) {
+        cell_info[row][column].multicolumn = CELL_NORMAL;
         ++column;
-        while (column < columns_ &&
-               cell_info[row][column].multicolumn
-               == LyXTabular::CELL_PART_OF_MULTICOLUMN){
-            cell_info[row][column].multicolumn = 
-                LyXTabular::CELL_NORMAL;
+        while ((column < columns_) &&
+               (cell_info[row][column].multicolumn ==CELL_PART_OF_MULTICOLUMN))
+	{
+            cell_info[row][column].multicolumn = CELL_NORMAL;
             ++column;
             ++result;
         }
@@ -1688,6 +1635,26 @@ int LyXTabular::GetCellBelow(int cell) const
     if (row_of_cell(cell)+1 < rows_)
         return cell_info[row_of_cell(cell)+1][column_of_cell(cell)].cellno;
     return cell;
+}
+
+
+int LyXTabular::GetLastCellAbove(int cell) const
+{
+    if (row_of_cell(cell) <= 0)
+	return cell;
+    if (!IsMultiColumn(cell))
+	return GetCellAbove(cell);
+    return cell_info[row_of_cell(cell)-1][right_column_of_cell(cell)].cellno;
+}
+
+
+int LyXTabular::GetLastCellBelow(int cell) const
+{
+    if (row_of_cell(cell)+1 >= rows_)
+	return cell;
+    if (!IsMultiColumn(cell))
+	return GetCellBelow(cell);
+    return cell_info[row_of_cell(cell)+1][right_column_of_cell(cell)].cellno;
 }
 
 

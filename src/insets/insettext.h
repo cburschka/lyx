@@ -121,6 +121,8 @@ public:
     void SetFrameColor(LColor::color);
     ///
     void computeTextRows(Painter &) const;
+    ///
+    Buffer * BufferOwner() const { return buffer; }
 
     LyXParagraph * par;
 

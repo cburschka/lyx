@@ -234,6 +234,7 @@ bool UpdateLayoutTabular(bool flag, InsetTabular *ins)
         }
         fl_set_button(fd_form_table_options->radio_rotate_table,
 		      table->GetRotateTabular());
+	fl_hide_object(fd_form_table_options->button_table_delete);
 	fl_set_focus_object(fd_form_table_options->form_table_options,
 			    fd_form_table_options->button_table_delete);
     } else if (fd_form_table_options->form_table_options->visible) {
@@ -313,12 +314,16 @@ void TabularOptionsCB(FL_OBJECT * ob, long)
         num = LyXTabular::ALIGN_RIGHT;
     else if (ob == fd_form_table_options->radio_align_center)
         num = LyXTabular::ALIGN_CENTER;
+#if 0
+    // not needed in tabulars as you can delete them with a single delete!
     else if ((ob == fd_form_table_options->button_table_delete) && !Confirmed) {
         fl_set_object_label(fd_form_table_options->text_warning,
                             _("Confirm: press Delete-Button again"));
         Confirmed = true;
         return;
-    } else if ((ob == fd_form_table_options->button_table_delete) 
+    }
+#endif
+    else if ((ob == fd_form_table_options->button_table_delete) 
 	       && Confirmed) {
         num = LyXTabular::DELETE_TABULAR;
         Confirmed = false;
@@ -409,12 +414,7 @@ void TabularOptionsCB(FL_OBJECT * ob, long)
 	current_view->hideCursor();
 	inset->TabularFeatures(current_view, num, special);
     }
-    if (num == LyXTabular::DELETE_TABULAR) {
-	fl_set_focus_object(fd_form_table_options->form_table_options,
-			    fd_form_table_options->button_table_delete);
-        fl_hide_form(fd_form_table_options->form_table_options);
-    } else
-        UpdateLayoutTabular(true, inset);
+    UpdateLayoutTabular(true, inset);
     return;
 }
 
