@@ -1,7 +1,12 @@
+2002-07-22  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* GraphicsConverter.C (build_script): take a ostream as a more
+	general argument than ostringstream.
+
 2002-07-22  Herbert Voss  <voss@lyx.org>
 
 	* GraphicsConverter.C: get the "default converter" run again
-	
+
 2002-07-21  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* PreviewLoader.C: use BufferParams::getLyXTextClass
@@ -27,7 +32,7 @@
 2002-07-18  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* GraphicsCacheItem.C (reset): use erase() instead of clear() for
-	strings 
+	strings
 
 2002-07-18  Angus Leeming  <leeming@lyx.org>
 
@@ -66,7 +71,7 @@
 	* GraphicsConverter.[Ch]: (startConversion): const-ify.
 	(finishedConversion): move the signal into the Impl class.
 	(connect): new method, enabling a listener to connect to this signal.
-	
+
 	* GraphicsLoader.[Ch] (reset, startLoading): const-ify.
 	(statusChanged): move the signal into the Impl class.
 	(connect): new method, enabling a listener to connect to this signal.
@@ -107,11 +112,11 @@
 	* Previews.[Ch]: use const in more places.
 	(generateBufferPreviews): now takes a Buffer const & argument, not a
 	pointer.
- 
+
 2002-07-15  John Levon  <moz@compsoc.man.ac.uk>
 
 	* GraphicsImage.h: remove getPixmap/X, add isDrawable()
- 
+
 2002-07-12  Angus Leeming  <leeming@lyx.org>
 
 	* GraphicsLoader.[Ch]: smart loading of images. Images are loaded only
@@ -130,7 +135,7 @@
 2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
 
 	* GraphicsCache.C: remove init_graphics()
- 
+
 2002-07-09  Angus Leeming  <leeming@lyx.org>
 
 	* PreviewLoader.C (setAscentFractions): fix bug due to use of integer

@@ -25,10 +25,12 @@
 #include <boost/signals/trackable.hpp>
 
 #include "Lsstream.h"
+#include "support/LOstream.h"
 #include <fstream>
 #include <sys/types.h> // needed for pid_t
 
 using std::endl;
+using std::ostream;
 
 namespace grfx {
 
@@ -114,7 +116,7 @@ namespace {
  */
 bool build_script(string const & from_file, string const & to_file_base,
 		  string const & from_format, string const & to_format,
-		  ostringstream & script);
+		  ostream & script);
 
 } // namespace anon
 
@@ -140,21 +142,21 @@ Converter::Impl::Impl(string const & from_file,   string const & to_file_base,
 	// The converted image is to be stored in this file
 	to_file_ = ChangeExtension(to_file_base, formats.extension(to_format));
 
-	if (!success) {	
+	if (!success) {
 		script_file_ = string();
 		if (from_format == "lyxpreview") {
-			script_command_ = 
-				LibFileSearch("scripts", "lyxpreview2xpm.sh") 
+			script_command_ =
+				LibFileSearch("scripts", "lyxpreview2xpm.sh")
 					+ " " +from_file + " " + to_file_;
-			lyxerr[Debug::GRAPHICS] 
+			lyxerr[Debug::GRAPHICS]
 				<< "\tI use lyxpreview2xpm for the conversion\n\t"
 				<< script_command_ << endl;
-		} else {			
-			script_command_ = 
+		} else {
+			script_command_ =
 				LibFileSearch("scripts", "convertDefault.sh") +
 					' ' + from_format + ':' + from_file + ' ' +
 					to_format + ':' + to_file_;
-			lyxerr[Debug::GRAPHICS] 
+			lyxerr[Debug::GRAPHICS]
 				<< "\tNo converter defined! I use convertDefault.sh\n\t"
 				<< script_command_ << endl;
 		}
@@ -256,11 +258,12 @@ string const move_file(string const & from_file, string const & to_file)
 	return command.str().c_str();
 }
 
+
 bool build_script(string const & from_file,
 		  string const & to_file_base,
 		  string const & from_format,
 		  string const & to_format,
-		  ostringstream & script)
+		  ostream & script)
 {
 	lyxerr[Debug::GRAPHICS] << "build_script ... ";
 	typedef Converters::EdgePath EdgePath;
