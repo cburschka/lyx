@@ -280,7 +280,7 @@ string const sanitizeLatexOption(string const & input)
 		}
 		output += what.str(1) + ",";
 		it = what[3].first;
- 	}
+	}
 
 	// Strip any trailing commas
 	// "...foo,,,]" -> "...foo"

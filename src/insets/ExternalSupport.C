@@ -237,7 +237,7 @@ int writeExternal(InsetExternalParams const & params,
 			support::MakeAbsPath(params.filename.mangledFilename(),
 					     buffer.temppath());
 	}
-	
+
 	string str = doSubstitution(params, buffer, cit->second.product,
 				    from_file);
 	str = substituteCommands(params, str, format);

@@ -22,7 +22,7 @@
 struct InsetBoxParams {
 	///
 	InsetBoxParams(std::string const &);
-	///	
+	///
 	void write(std::ostream & os) const;
 	///
 	void read(LyXLex & lex);
@@ -92,7 +92,7 @@ public:
 	void validate(LaTeXFeatures &) const;
 	///
 	InsetBoxParams const & params() const { return params_; }
-	///	
+	///
 	enum BoxType {
 		Frameless,
 		Boxed,

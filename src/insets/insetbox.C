@@ -225,13 +225,13 @@ int InsetBox::latex(Buffer const & buf, ostream & os,
 			break;
 		}
 	}
-	
+
 	int i = 0;
 	os << "%\n";
 	// Adapt to column/text width correctly also if paragraphs indented:
 	if (stdwidth)
 		os << "\\noindent";
-	
+
 	switch (btype) {
 	case Frameless:
 		break;
@@ -248,7 +248,7 @@ int InsetBox::latex(Buffer const & buf, ostream & os,
 			if (params_.hor_pos != 'c')
 				os << "[" << params_.hor_pos << "]";
 		}
-		
+
 		os << "{";
 		break;
 	case ovalbox:
@@ -298,7 +298,7 @@ int InsetBox::latex(Buffer const & buf, ostream & os,
 		else
 			os << "%\n\\end{minipage}";
 	}
-	
+
 	switch (btype) {
 	case Frameless:
 		break;
@@ -313,9 +313,9 @@ int InsetBox::latex(Buffer const & buf, ostream & os,
 	case Shadowbox:
 		os << "}";
 		break;
-	}	
+	}
 	os << "%\n";
-	
+
 	i += 3;
 
 	return i;
@@ -485,7 +485,7 @@ void InsetBoxParams::read(LyXLex & lex)
 	}
 	string token;
 	if (!lex.isOK())
-   		return;
+		return;
 	lex.next();
 	token = lex.getString();
 	if (token == "position") {
@@ -498,7 +498,7 @@ void InsetBoxParams::read(LyXLex & lex)
 		lex.pushToken(token);
 	}
 	if (!lex.isOK())
-   		return;
+		return;
 	lex.next();
 	token = lex.getString();
 	if (token == "hor_pos") {
@@ -509,7 +509,7 @@ void InsetBoxParams::read(LyXLex & lex)
 		lex.pushToken(token);
 	}
 	if (!lex.isOK())
-   		return;
+		return;
 	lex.next();
 	token = lex.getString();
 	if (token == "has_inner_box") {
@@ -521,7 +521,7 @@ void InsetBoxParams::read(LyXLex & lex)
 	}
 
 	if (!lex.isOK())
-   		return;
+		return;
 	lex.next();
 	token = lex.getString();
 	if (token == "inner_pos") {
@@ -533,7 +533,7 @@ void InsetBoxParams::read(LyXLex & lex)
 		lex.pushToken(token);
 	}
 	if (!lex.isOK())
-   		return;
+		return;
 	lex.next();
 	token = lex.getString();
 	if (token == "use_parbox") {
@@ -544,7 +544,7 @@ void InsetBoxParams::read(LyXLex & lex)
 		lex.pushToken(token);
 	}
 	if (!lex.isOK())
-   		return;
+		return;
 	lex.next();
 	token = lex.getString();
 	if (token == "width") {
@@ -555,7 +555,7 @@ void InsetBoxParams::read(LyXLex & lex)
 		lex.pushToken(token);
 	}
 	if (!lex.isOK())
-   		return;
+		return;
 	lex.next();
 	token = lex.getString();
 	if (token == "special") {
@@ -566,7 +566,7 @@ void InsetBoxParams::read(LyXLex & lex)
 		lex.pushToken(token);
 	}
 	if (!lex.isOK())
-   		return;
+		return;
 	lex.next();
 	token = lex.getString();
 	if (token == "height") {
@@ -577,7 +577,7 @@ void InsetBoxParams::read(LyXLex & lex)
 		lex.pushToken(token);
 	}
 	if (!lex.isOK())
-   		return;
+		return;
 	lex.next();
 	token = lex.getString();
 	if (token == "height_special") {

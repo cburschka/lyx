@@ -1,5 +1,12 @@
 2003-10-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
 
+	* ExternalSupport.C:
+	* ExternalTransforms.C:
+	* insetbox.C:
+	* insetbox.h: ws changes only
+	
+2003-10-13  Lars Gullik Bjønnes  <larsbj@gullik.net>
+
 	* insetinclude.C (localDispatch): do not call
 	InsetOld::localDispatch, just return UNDISPATCHED
 	* insetgraphics.C (localDispatch): ditto
