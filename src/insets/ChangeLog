@@ -1,3 +1,8 @@
+2002-10-24  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* insetexternal.C (doSubstitution): change order of substitution
+	to work around ReplaceEnvironmentPath brokenness
+
 2002-10-24  Rob Lahaye  <lahaye@snu.ac.kr>
 
 	* insetgraphicsParams.h (scale): is now a float, not an unsigned int.
