@@ -354,7 +354,7 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 	Buffer * buf = owner->buffer();
 	
 	if (action == LFUN_UNKNOWN_ACTION) {
-		setErrorMessage(N_("Unknown action"));
+		setStatusMessage(N_("Unknown action"));
 		return flag.unknown(true);
 	}
 	
@@ -368,12 +368,12 @@ FuncStatus LyXFunc::getStatus(kb_action action,
 			    !lyxaction.funcHasFlag(action,
 						   LyXAction::ReadOnly)) {
 				// no
-				setErrorMessage(N_("Document is read-only"));
+				setStatusMessage(N_("Document is read-only"));
 				flag.disabled(true);
 			}
 		} else {
 			// no
-			setErrorMessage(N_("Command not allowed with"
+			setStatusMessage(N_("Command not allowed with"
 					   "out any document open"));
 			return flag.disabled(true);
 		}
@@ -869,6 +869,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 		       << lyxaction.getActionName(action)
 		       << " [" << action << "] is disabled at this location"
 		       << endl;
+		setErrorMessage(getStatusMessage());
 		goto exit_with_message;
 	}
 
@@ -884,36 +885,36 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 			// Undo/Redo is a bit tricky for insets.
 			if (action == LFUN_UNDO) {
 				owner->view()->menuUndo();
-				return string();
+				goto exit_with_message;
 			} else if (action == LFUN_REDO) {
 				owner->view()->menuRedo();
-				return string();
+				goto exit_with_message;
 			} else if (((result=owner->view()->theLockingInset()->
 			             localDispatch(owner->view(), action, argument)) ==
 			            UpdatableInset::DISPATCHED) ||
 			           (result == UpdatableInset::DISPATCHED_NOUPDATE))
-				return string();
+				goto exit_with_message;
 			else if (result == UpdatableInset::FINISHED) {
 					if (TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
 						TEXT()->cursorRight(owner->view());
 						moveCursorUpdate(true, false);
 						owner->showState();
 					}
-					return string();
+					goto exit_with_message;
 			} else if (result == UpdatableInset::FINISHED_RIGHT) {
 				if (!TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
 					TEXT()->cursorRight(owner->view());
 					moveCursorUpdate(true, false);
 					owner->showState();
 				}
-				return string();
+				goto exit_with_message;
 			} else if (result == UpdatableInset::FINISHED_UP) {
 				if (TEXT()->cursor.row()->previous()) {
 					TEXT()->cursorUp(owner->view());
 					moveCursorUpdate(true, false);
 					owner->showState();
 				}
-				return string();
+				goto exit_with_message;
 			} else if (result == UpdatableInset::FINISHED_DOWN) {
 				if (TEXT()->cursor.row()->next())
 					TEXT()->cursorDown(owner->view());
@@ -921,7 +922,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 					TEXT()->cursorRight(owner->view());
 				moveCursorUpdate(true, false);
 				owner->showState();
-				return string();
+				goto exit_with_message;
 			} else {
 				//setMessage(N_("Text mode"));
 				switch (action) {
@@ -938,14 +939,14 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 						moveCursorUpdate(true, false);
 						owner->showState();
 					}
-					return string();
+					goto exit_with_message;
 				case LFUN_LEFT: 
 					if (TEXT()->cursor.par()->isRightToLeftPar(owner->buffer()->params)) {
 						TEXT()->cursorRight(owner->view());
 						moveCursorUpdate(true, false);
 						owner->showState();
 					}
-					return string();
+					goto exit_with_message;
 				case LFUN_DOWN:
 					if (TEXT()->cursor.row()->next())
 						TEXT()->cursorDown(owner->view());
@@ -953,7 +954,7 @@ string const LyXFunc::dispatch(kb_action action, string argument)
 						TEXT()->cursorRight(owner->view());
 					moveCursorUpdate(true, false);
 					owner->showState();
-					return string();
+					goto exit_with_message;
 				default:
 					break;
 				}
@@ -1632,7 +1633,9 @@ exit_with_message:
 
 	if (!res.empty())
 		owner->message(_(res));
-
+	owner->updateMenubar();
+	owner->updateToolbar();
+	
 	return res;
 }
 
@@ -1965,9 +1968,15 @@ void LyXFunc::setErrorMessage(string const & m) const
 }
 
 
-void LyXFunc::setMessage(string const & m)
+void LyXFunc::setMessage(string const & m) const 
 {
 	dispatch_buffer = m;
+}
+
+
+void LyXFunc::setStatusMessage(string const & m) const
+{
+	status_buffer = m;
 }
 
 

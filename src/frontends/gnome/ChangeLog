@@ -1,3 +1,12 @@
+2002-01-12  Michael A. Koziarski  <michael@koziarski.com>
+
+	* Menubar_pimpl.C
+	* Menubar_pimpl.h
+	* mainapp.h
+	* mainapp.C: Removed,  We should behave similarly to the qt2
+	frontend, so I've removed the LyXGnomified and menubar code.  The
+	menubar wasn't working properly anyway.
+
 2002-01-08  Martin Vermeer  <martin.vermeer@hut.fi>
 
 	* Menubar_pimpl.C (composeUIInfo): 

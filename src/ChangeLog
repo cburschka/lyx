@@ -1,3 +1,17 @@
+2002-01-13  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* BufferView_pimpl.C (workAreaButtonRelease): remove dead code (to
+	open a float)
+
+	* lyxfunc.C (setStatusMessage):
+	(getStatusMessage): new methods
+	(getStatus):use setStatusMessage instead of setErrorMessage
+	(dispatch): when function is disabled, set error message here
+	[instead of in getStatus previously]
+
+	* BufferView_pimpl.C (workAreaButtonRelease): update
+	toolbar/menubar here too.
+
 2002-01-13  Allan Rae  <rae@lyx.org>
 
 	* BufferView2.C (removeAutoInsets): finished off earlier fix.
@@ -39,6 +53,12 @@
 	Making use of the return value may help fix other bugs.
 
 2002-01-12  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lyxfunc.C (dispatch): update toolbar/menubar after dispatching. 
+
+	* LyXView.C (updateMenubar): call MenuBar::update here
+	(updateToolbar): but not here
+	(showState): do not update toolbar/menubar
 
 	* LyXAction.[Ch]: move isPseudoAction to the C file, since nobody
 	should need to care about that.
@@ -745,6 +765,12 @@
 	(simpleDocBookOnePar): changed a PAR::META_INSET to isInset().
 	Fixed a double write of labels.
 	
+2001-11-29 Ben Stanley <bds02@uow.edu.au>
+
+	* LaTeX.C:
+	* LaTeX.h Fixed bug in LaTeX class where it would not
+	re-run latex if no depfiles were changed, but the .dvi was removed.
+
 2001-11-28  André Pönitz <poenitz@gmx.net>
 
 	* all the files from the change on 2001/11/26:

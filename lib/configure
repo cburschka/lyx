@@ -729,7 +729,7 @@ if test -n "$ac_word"; then
 
   if test -n "$prog"; then
     ac_result=yes
-    test $prog = "nroff" && prog='tbl $$FName | nroff'
+    test "$prog" = "nroff" && prog='tbl $$FName | nroff'
   else
     ac_result=no
   fi

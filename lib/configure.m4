@@ -269,7 +269,7 @@ test $dvi_to_pdf_command = "dvipdfm" && dvi_to_pdf_command="dvipdfm \$\$i"
 # Search a *roff program (used to translate tables in ASCII export)
 LYXRC_PROG([for a *roff formatter], \ascii_roff_command, dnl
   'groff -t -Tlatin1 $$FName' nroff,dnl
-  test $prog = "nroff" && prog='tbl $$FName | nroff')
+  test "$prog" = "nroff" && prog='tbl $$FName | nroff')
 
 # Search the ChkTeX program
 LYXRC_PROG([for ChkTeX], \chktex_command,dnl

@@ -111,7 +111,6 @@ void LyXView::setLayout(layout_type layout)
 void LyXView::updateToolbar()
 {
 	toolbar->update();
-	menubar->update();
 }
 
 
@@ -158,6 +157,7 @@ void LyXView::updateMenubar()
 		menubar->set("main_nobuffer");
 	else
 		menubar->set("main");
+	menubar->update();
 }
 
 
@@ -246,6 +246,4 @@ void LyXView::updateWindowTitle()
 void LyXView::showState()
 {
 	message(currentState(view()));
-	getToolbar()->update();
-	menubar->update();
 }

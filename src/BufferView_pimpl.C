@@ -782,6 +782,8 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 
 	setState();
 	owner_->showState();
+	owner_->updateMenubar();
+	owner_->updateToolbar();
 
 	// Did we hit an editable inset?
 	if (inset_hit) {
@@ -832,29 +834,6 @@ void BufferView::Pimpl::workAreaButtonRelease(int x, int y,
 			inset_hit->edit(bv_, x, y, button);
 		}
 		return;
-	}
-
-#ifdef WITH_WARNINGS
-#warning variable c is set but never used. What is it good for?? (JMarc)
-#warning isnt this code dead ?? "open a float" ??? (jbl)
-#endif
-	// check whether we want to open a float
-	if (bv_->text) {
-		bool hit = false;
-		char c = ' ';
-		if (bv_->text->cursor.pos() <
-		    bv_->text->cursor.par()->size()) {
-			c = bv_->text->cursor.par()->
-				getChar(bv_->text->cursor.pos());
-		}
-			if (bv_->text->cursor.pos() - 1 >= 0) {
-			c = bv_->text->cursor.par()->
-				getChar(bv_->text->cursor.pos() - 1);
-		}
-		if (hit == true) {
-			selection_possible = false;
-			return;
-		}
 	}
 
 	// Maybe we want to edit a bibitem ale970302

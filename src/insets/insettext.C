@@ -621,6 +621,8 @@ void InsetText::updateLocal(BufferView * bv, int what, bool mark_dirty) const
 	if (need_update == CURSOR)
 		need_update = NONE;
 	bv->owner()->showState();
+	bv->owner()->updateMenubar();
+	bv->owner()->updateToolbar();
 	if (old_par != cpar(bv)) {
 		bv->owner()->setLayout(cpar(bv)->getLayout());
 		old_par = cpar(bv);

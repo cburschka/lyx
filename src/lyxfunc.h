@@ -67,11 +67,15 @@ public:
         /// True if lyxfunc reports an error
         bool errorStat() const { return errorstat; }
         /// Buffer to store result messages
-        void setMessage(string const & m);
+        void setMessage(string const & m) const;
         /// Buffer to store result messages
         void setErrorMessage(string const &) const; 
+        /// Buffer to store result messages from getStatus
+        void setStatusMessage(string const &) const; 
         /// Buffer to store result messages
         string const getMessage() const { return dispatch_buffer; }
+        /// Buffer to store result messages
+        string const getStatusMessage() const { return status_buffer; }
 	/// Handle a accented char keysequenze
 	void handleKeyFunc(kb_action action);
 
@@ -101,6 +105,9 @@ private:
 	    good reason to have this one as static in Dispatch? (Ale)
 	*/
         mutable string dispatch_buffer;
+        /** Buffer to store messages and result data from getStatus
+	*/
+        mutable string status_buffer;
 	/// Command name and shortcut information
 	string commandshortcut;
 
