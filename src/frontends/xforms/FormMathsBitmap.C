@@ -107,12 +107,12 @@ void FormMathsBitmap::build()
 	y_ = y_close + 10;
 
 	char const * const label = _("Close|^[");
-	FL_OBJECT * button_close =
+	fdui->button_close =
 		fl_add_button(FL_NORMAL_BUTTON, x_, y_, 90, 30,
 			      idex(_(label)).c_str());
-	fl_set_button_shortcut(button_close, scex(_(label)).c_str(), 1);
-	fl_set_object_lsize(button_close, FL_NORMAL_SIZE);
-	fl_set_object_callback(button_close, C_FormBaseCancelCB, 0);
+	fl_set_button_shortcut(fdui->button_close, scex(_(label)).c_str(), 1);
+	fl_set_object_lsize(fdui->button_close, FL_NORMAL_SIZE);
+	fl_set_object_callback(fdui->button_close, C_FormBaseCancelCB, 0);
 
 	fl_end_form();
 
