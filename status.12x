@@ -29,13 +29,18 @@ What's new
 
 - update cl2emult textclass
 
-- update to German User Guide
+- small cleanup of UserGuide; update to German User Guide and Extended
+  manual.
 
 - update german and danish localization of the interface
 
 ** Bug fixes
 
 - fix bug with citation keys that contain spaces
+
+- fix bug with graphics files which name contain a '.'
+
+- fix placement of cursor with mouse in presence of hfills
 
 - fix the thesaurus dialog so that it can be closed with the Escape key
 
@@ -46,3 +51,5 @@ What's new
 
 - harmonize the behavior of delete and backspace in main text,
   insettext, and tabulars, i.e. don't put stuff into the clipboard
+
+- add missing autoconf file xforms.m4

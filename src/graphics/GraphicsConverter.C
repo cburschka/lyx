@@ -163,8 +163,10 @@ bool GConverter::build_script(string const & from_file,
 {
 	typedef Converters::EdgePath EdgePath;
 
-	string const to_file = ChangeExtension(to_file_base,
-					       formats.extension(to_format));
+	// We do not use ChangeExtension here because this is a
+	// basename, which may nevertheless contain a dot
+	string const to_file =
+		to_file_base + '.' + formats.extension(to_format);
 
 	if (from_format == to_format) {
 		script << move_file(QuoteName(from_file), QuoteName(to_file));
