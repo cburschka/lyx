@@ -367,6 +367,12 @@ static int
 combox_handle(FL_OBJECT * ob, int event, FL_Coord mx, FL_Coord my, int key,
 	      void * ev)
 {
+    /* Silence warnings about unused parameters */
+    (void) mx;
+    (void) my;
+    (void) key;
+    (void) ev;
+
     if (!ob || ob->objclass != FL_COMBOX)
 	return 0;
 
@@ -452,6 +458,9 @@ show_browser(COMBOX_SPEC * sp)
 static void
 state_cb(FL_OBJECT * ob, long data)
 {
+    /* Silence warning about unused parameter */
+    (void) data;
+
     show_browser(ob->u_vdata);
 }
 
@@ -459,6 +468,9 @@ state_cb(FL_OBJECT * ob, long data)
 static void
 chosen_cb(FL_OBJECT * ob, long data)
 {
+    /* Silence warning about unused parameter */
+    (void) data;
+
     show_browser(ob->u_vdata);
 }
 

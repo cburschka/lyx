@@ -125,6 +125,9 @@ fl_hide_freebrowser(FL_FREEBROWSER * fb)
 static void
 browser_cb(FL_OBJECT * ob, long data)
 {
+    /* Silence warning about unused parameter */
+    (void) data;
+
     FL_FREEBROWSER * fb = ob->u_vdata;
     fl_hide_freebrowser(fb);
     if (fb->callback)

@@ -169,6 +169,9 @@ static void draw_bitmaptable(FL_OBJECT *ob)
 int handle_bitmaptable(FL_OBJECT * ob, int event, FL_Coord mx,
 		       FL_Coord my, int key, void * xev)
 {
+	/* Silence warning about unused parameter */
+	(void) xev;
+
 	int i, j;
 	BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
 
@@ -398,12 +401,26 @@ int fl_get_bmtable_maxitems(FL_OBJECT * ob)
 
 void fl_replace_bmtable_item(FL_OBJECT * ob, int id, int cw, int ch, char * data)
 {
+	/* Silence warnings about unused parameters */
+	(void) ob;
+	(void) id;
+	(void) cw;
+	(void) ch;
+	(void) data;
+
 	fprintf(stderr, "Replace bmtable item: Sorry, not yet implemented!\n");
 }
 
 
 void fl_get_bmtable_item(FL_OBJECT * ob, int id, int * cw, int * ch, char * data)
 {
+	/* Silence warnings about unused parameters */
+	(void) ob;
+	(void) id;
+	(void) cw;
+	(void) ch;
+	(void) data;
+
 	fprintf(stderr, "Get bmtable item: Sorry, not yet implemented!\n");
 }
 
@@ -471,7 +488,7 @@ void fl_free_bmtable_bitmap(FL_OBJECT * ob)
 }
 
 /* Free the current pixmap in preparation for installing a new one */
-/* This is needed when using data instead of files to set bitmaps  */
+/* This is needed when using data instead of files to set bitmaps */
 void fl_free_bmtable_pixmap(FL_OBJECT *ob)
 {
 	BMTABLE_SPEC * sp = (BMTABLE_SPEC *)ob->spec;
