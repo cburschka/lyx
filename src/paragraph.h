@@ -21,6 +21,8 @@
 #include "ParagraphList.h"
 #include "LString.h"
 
+#include <boost/optional.hpp>
+
 class BufferParams;
 class BufferView;
 class Counters;
@@ -299,6 +301,10 @@ public:
 	InsetList insetlist;
 	///
 	//Counters & counters();
+	///
+	void owningBuffer(Buffer const & b) {
+		buffer_.reset(&b);
+	}
 private:
 	///
 	LyXLayout_ptr layout_;
@@ -308,6 +314,9 @@ private:
 	Paragraph * next_par_;
 	Paragraph * prev_par_;
 #endif
+	///
+	boost::optional<Buffer const *> buffer_;
+
 	struct Pimpl;
 	///
 	friend struct Paragraph::Pimpl;

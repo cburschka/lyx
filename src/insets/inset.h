@@ -103,7 +103,7 @@ public:
 		///
 		MINIPAGE_CODE,
 		///
-		SPACE_CODE, 
+		SPACE_CODE,
 		///
 		SPECIALCHAR_CODE, // 25
 		///

@@ -67,9 +67,6 @@ Inset * minibuffer_inset;
 } // namespace anon
 
 
-extern BufferView * current_view;
-
-
 Paragraph::Paragraph()
 	: pimpl_(new Paragraph::Pimpl(this))
 {
@@ -95,14 +92,14 @@ Paragraph::Paragraph(Paragraph const & lp, bool same_ids)
 	// this is because of the dummy layout of the paragraphs that
 	// follow footnotes
 	layout_ = lp.layout();
-
+	buffer_ = lp.buffer_;
+	
 	// copy everything behind the break-position to the new paragraph
 	insetlist = lp.insetlist;
 	InsetList::iterator it = insetlist.begin();
 	InsetList::iterator end = insetlist.end();
 	for (; it != end; ++it) {
-		it.setInset(it.getInset()->clone(*current_view->buffer(),
-						 same_ids));
+		it.setInset(it.getInset()->clone(**buffer_, same_ids));
 		// tell the new inset who is the boss now
 		it.getInset()->parOwner(this);
 	}
