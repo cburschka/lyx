@@ -968,6 +968,12 @@ bool InsetTabular::getStatus(LCursor & cur, FuncRequest const & cmd,
 		return true;
 	}
 
+	// These are only enabled inside tabular
+	case LFUN_CELL_BACKWARD:
+	case LFUN_CELL_FORWARD:
+		status.enabled(true);
+			return true;
+	
 	// disable these with multiple cells selected
 	case LFUN_INSERT_CHARSTYLE:
 	case LFUN_INSET_FLOAT:

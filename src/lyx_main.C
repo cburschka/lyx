@@ -525,7 +525,9 @@ void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 	kbmap->bind("Down", FuncRequest(LFUN_DOWN));
 
 	kbmap->bind("Tab", FuncRequest(LFUN_CELL_FORWARD));
-	kbmap->bind("ISO_Left_Tab", FuncRequest(LFUN_CELL_FORWARD));
+	kbmap->bind("C-Tab", FuncRequest(LFUN_CELL_SPLIT));
+	kbmap->bind("~S-ISO_Left_Tab", FuncRequest(LFUN_CELL_BACKWARD));
+	kbmap->bind("~S-BackTab", FuncRequest(LFUN_CELL_BACKWARD));
 
 	kbmap->bind("Home", FuncRequest(LFUN_HOME));
 	kbmap->bind("End", FuncRequest(LFUN_END));
@@ -564,10 +566,6 @@ void LyX::defaultKeyBindings(kb_keymap  * kbmap)
 	kbmap->bind("KP_End", FuncRequest(LFUN_END));
 	kbmap->bind("KP_Prior", FuncRequest(LFUN_PRIOR));
 	kbmap->bind("KP_Next", FuncRequest(LFUN_NEXT));
-
-	kbmap->bind("C-Tab", FuncRequest(LFUN_CELL_SPLIT));
-	kbmap->bind("S-Tab", FuncRequest(LFUN_CELL_BACKWARD));
-	kbmap->bind("S-ISO_Left_Tab", FuncRequest(LFUN_CELL_BACKWARD));
 }
 
 
