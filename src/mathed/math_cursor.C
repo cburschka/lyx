@@ -1159,7 +1159,7 @@ bool MathCursor::goUp()
 
 	// leave subscript to the nearest side	
 	MathScriptInset * p = par()->asScriptInset();
-	if (p && p->hasDown()) {
+	if (p && idx() == 0) {
 		if (pos() <= size() / 2)
 			popLeft();
 		else
@@ -1192,7 +1192,7 @@ bool MathCursor::goDown()
 
 	// leave superscript to the nearest side	
 	MathScriptInset * p = par()->asScriptInset();
-	if (p && p->hasUp()) {
+	if (p && idx() == 1) {
 		if (pos() <= size() / 2)
 			popLeft();
 		else
