@@ -94,8 +94,6 @@ public:
 	///
 	virtual MathAtom & par() = 0;
 	///
-	virtual void metrics(BufferView * bv = 0, LyXFont const & font = LyXFont()) const;
-	///
 	virtual void updateLocal(BufferView * bv, bool mark_dirty);
 	///
 	int xo() const { return xo_; }
@@ -103,14 +101,22 @@ public:
 	int yo() const { return yo_; }
 	///
 	BufferView * view() const { return view_; }
+
 private:
 	/// unimplemented
 	void operator=(const InsetFormulaBase &);
+
 	///
 	mutable BufferView * view_;	
 	///
 	mutable LyXFont font_;
+
 protected:
+	///
+	void metrics(BufferView * bv, LyXFont const & font) const;
+	///
+	void metrics(BufferView * bv = 0) const;
+
 	///
 	mutable int xo_;
 	///
