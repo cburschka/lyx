@@ -1,3 +1,8 @@
+2002-05-29  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* paragraph_pimpl.C (isTextAt): rewrite to be much faster (do not
+	call getFont all the time)
+
 2002-05-29  Lars Gullik Bjønnes  <larsbj@birdstep.com>
 
 	* switch from SigC signals to boost::signals

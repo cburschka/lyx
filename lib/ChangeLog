@@ -1,3 +1,8 @@
+2002-05-29  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* configure.m4: fix handling of --with-version-suffix, so that
+	reLyX is still found. (bug #357)
+
 2002-05-28  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* layouts/hollywood.layout: fix style "FADE_OUT:"

@@ -151,8 +151,7 @@ struct Paragraph::Pimpl {
 	ParagraphParameters params;
 private:
 	/// match a string against a particular point in the paragraph
-	bool isTextAt(BufferParams const &,
-		      string const & str, lyx::pos_type pos);
+	bool isTextAt(string const & str, lyx::pos_type pos);
 
 	/// Who owns us?
 	Paragraph * owner_;
