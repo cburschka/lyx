@@ -118,6 +118,25 @@ void PreferencesPolicy::input(SMInput input)
 }
 
 
+/*-------------------------------OkViewPolicy------------------------------*/
+
+
+OkViewPolicy::OkViewPolicy()
+	: state_(INITIAL),
+	  outputs_(INVALID + 1, ButtonPolicy::ALL_BUTTONS),
+	  state_machine_(INVALID + 1,
+			 StateArray(int(SMI_TOTAL), ButtonPolicy::BOGUS))
+{
+}
+
+
+
+void OkViewPolicy::input(SMInput)
+{
+	state_ = VALID;
+}
+
+
 /*-------------------------------OkCancelPolicy------------------------------*/
 
 

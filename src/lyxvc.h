@@ -8,7 +8,6 @@
 #endif
 
 #include "LString.h"
-#include "log_form.h"
 
 class VCS;
 class Buffer;
@@ -69,11 +68,8 @@ public:
 	/// Undo last check-in.
 	void undoLast();
 
-	///
-	void viewLog(string const &);
-
-	///
-	void showLog();
+	/// generate a log file and return the filename
+	const string getLogFile() const;
 
 	/// 
 	void toggleReadOnly();
@@ -87,20 +83,12 @@ public:
 	/// Returns the userid of the person who has locked the doc.
 	string const & locker() const;
 
-	///
-	static void logClose(FL_OBJECT *, long);
-	///
-	static void logUpdate(FL_OBJECT *, long);
 private:
 	///
 	Buffer * owner_;
 	
 	///
 	VCS * vcs;
-
-	///
-	FD_LaTeXLog * browser; // FD_LaTeXLog is just a browser with a
-	// close button. Unfortunately we can not use the standard callbacks.
 };
 
 #endif

@@ -1,3 +1,10 @@
+2001-02-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* ButtonPolicies.C:
+	* ButtonPolicies.h: add OkViewPolicy
+
+	* src/frontends/Dialogs.h: add showVCLogFile signal
+
 2001-01-24  John Levon  <moz@compsoc.man.ac.uk>
 
 	* Makefile.am: add qt2 frontend

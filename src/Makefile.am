@@ -53,7 +53,6 @@ lyx_SOURCES = \
 	LaTeX.h \
 	LaTeXFeatures.C \
 	LaTeXFeatures.h \
-	LaTeXLog.C \
 	Lsstream.h \
 	LyXAction.C \
 	LyXAction.h \
@@ -143,8 +142,6 @@ lyx_SOURCES = \
 	layout.h \
 	layout_forms.C \
 	layout_forms.h \
-	log_form.C \
-	log_form.h \
 	lyx.C \
 	lyx.h \
 	lyx_cb.C \

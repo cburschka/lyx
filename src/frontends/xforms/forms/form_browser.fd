@@ -7,7 +7,7 @@ Number of forms: 1
 Unit of measure: FL_COORD_PIXEL
 
 =============== FORM ===============
-Name: LaTeXLog
+Name: form_browser
 Width: 470
 Height: 380
 Number of Objects: 4
@@ -44,14 +44,14 @@ label:
 shortcut: 
 resize: FL_RESIZE_ALL
 gravity: FL_NorthWest FL_SouthEast
-name: browser_latexlog
+name: browser
 callback: 
 argument: 
 
 --------------------
 class: FL_BUTTON
 type: RETURN_BUTTON
-box: 270 340 90 30
+box: 370 340 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -62,14 +62,14 @@ label: Close
 shortcut: ^M
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
-name: 
-callback: LatexLogClose
+name: button_close
+callback: C_FormBaseOKCB
 argument: 0
 
 --------------------
 class: FL_BUTTON
 type: NORMAL_BUTTON
-box: 370 340 90 30
+box: 270 340 90 30
 boxtype: FL_UP_BOX
 colors: FL_COL1 FL_COL1
 alignment: FL_ALIGN_CENTER
@@ -80,8 +80,8 @@ label: Update|#Uu
 shortcut: 
 resize: FL_RESIZE_NONE
 gravity: FL_SouthEast FL_SouthEast
-name: 
-callback: LatexLogUpdate
+name: button_update
+callback: C_FormBaseInputCB
 argument: 0
 
 ==============================

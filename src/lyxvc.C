@@ -24,18 +24,12 @@ using std::pair;
 LyXVC::LyXVC()
 {
 	vcs = 0;
-	browser = 0;
 	owner_ = 0;
 }
 
 
 LyXVC::~LyXVC()
 {
-	if (browser) {
-		if (browser->LaTeXLog->visible)
-			fl_hide_form(browser->LaTeXLog);
-		fl_free_form(browser->LaTeXLog);
-	}
 	delete vcs;
 }
 
@@ -218,83 +212,13 @@ string const & LyXVC::locker() const
 }
 
 
-// This is a hack anyway so I'll put it here in the mean time.
-void LyXVC::logClose(FL_OBJECT * obj, long)
+const string LyXVC::getLogFile() const
 {
-	LyXVC * This = static_cast<LyXVC*>(obj->form->u_vdata);
-	fl_hide_form(This->browser->LaTeXLog);
-}
+	if (!vcs)
+		return string();
 
-
-// and, hack over hack, here is a C wrapper :)
-extern "C" void C_LyXVC_logClose(FL_OBJECT * ob, long data)
-{
-	LyXVC::logClose(ob, data);
-}
-
-
-void LyXVC::logUpdate(FL_OBJECT * obj, long)
-{
-	LyXVC * This = static_cast<LyXVC*>(obj->form->u_vdata);
-	This->showLog();
-}
-
-extern "C" void C_LyXVC_logUpdate(FL_OBJECT *ob, long data)
-{
-	LyXVC::logUpdate(ob, data);
-}
-
-
-void LyXVC::viewLog(string const & fil)
-{
-	static int ow = -1, oh;
-
-	if (!browser) {
-		FL_OBJECT * obj;
-		browser = (FD_LaTeXLog *) fl_calloc(1, sizeof(*browser));
-		
-		browser->LaTeXLog = fl_bgn_form(FL_NO_BOX, 470, 380);
-		browser->LaTeXLog->u_vdata = this;
-		obj = fl_add_box(FL_UP_BOX, 0, 0, 470, 380, "");
-		browser->browser_latexlog = fl_add_browser(FL_NORMAL_BROWSER,
-							   10, 10,
-							   450, 320, "");
-		obj = fl_add_button(FL_RETURN_BUTTON, 270, 340, 90, 30,
-				    _("Close"));
-		fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-		fl_set_object_callback(obj, C_LyXVC_logClose, 0);
-		obj = fl_add_button(FL_NORMAL_BUTTON, 370, 340, 90, 30,
-				    idex(_("Update|#Uu")));
-		fl_set_button_shortcut(obj, scex(_("Update|#Uu")), 1);
-		fl_set_object_lsize(obj, FL_NORMAL_SIZE);
-		fl_set_object_callback(obj, C_LyXVC_logUpdate, 0);
-		fl_end_form();
-		fl_set_form_atclose(browser->LaTeXLog, CancelCloseBoxCB, 0);
-	}
-
-	if (!fl_load_browser(browser->browser_latexlog, fil.c_str()))
-		fl_add_browser_line(browser->browser_latexlog,
-				    _("No VC History!"));
-	
-	if (browser->LaTeXLog->visible) {
-		fl_raise_form(browser->LaTeXLog);
-	} else {
-		fl_show_form(browser->LaTeXLog,
-			     FL_PLACE_MOUSE | FL_FREE_SIZE, FL_TRANSIENT,
-			     _("VC History"));
-		if (ow < 0) {
-			ow = browser->LaTeXLog->w;
-			oh = browser->LaTeXLog->h;
-		}
-		fl_set_form_minsize(browser->LaTeXLog, ow, oh);
-	}
-}
-
-
-void LyXVC::showLog()
-{
 	string tmpf = lyx::tempName(string(), "lyxvclog");
+	lyxerr[Debug::LYXVC] << "Generating logfile " << tmpf << endl;
 	vcs->getLog(tmpf);
-	viewLog(tmpf);
-	lyx::unlink(tmpf);
+	return tmpf;
 }

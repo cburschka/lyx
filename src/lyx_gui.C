@@ -27,7 +27,6 @@
 #include "print_form.h"
 #include "tex-strings.h"
 #include "lyx_main.h"
-#include "log_form.h"
 #include "debug.h"
 #include "version.h"
 #include "LyXView.h"
@@ -52,7 +51,6 @@ FD_form_character * fd_form_character;
 FD_form_preamble * fd_form_preamble;
 FD_form_sendto * fd_form_sendto;
 FD_form_figure * fd_form_figure;
-FD_LaTeXLog * fd_latex_log; // from log_form.h
 Combox * combo_language;
 Combox * combo_language2;
 
@@ -368,11 +366,6 @@ void LyXGUI::create_forms()
 	fl_set_form_atclose(fd_form_figure->form_figure,
 			    CancelCloseBoxCB, 0);
 	fl_set_button(fd_form_figure->radio_postscript, 1);
-
-	// the latex log form
-	fd_latex_log = create_form_LaTeXLog();
-	fl_set_form_atclose(fd_latex_log->LaTeXLog,
-			    CancelCloseBoxCB, 0);
 
 	// This is probably as good a time as any to map the xform colours,
 	// should a mapping exist.

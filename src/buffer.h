@@ -240,6 +240,11 @@ public:
 	*/
 	string const getLatexName(bool no_path = true) const;
 
+	/**
+	 * get the name of the LaTeX log
+	 */
+	string const getLatexLogName(void) const;
+ 
 	/// Change name of buffer. Updates "read-only" flag.
 	void setFileName(string const & newfile);
 

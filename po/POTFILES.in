@@ -63,6 +63,7 @@ src/frontends/kde/tocdlg.C
 src/frontends/kde/urldlg.C
 src/frontends/qt2/FormCopyright.C
 src/frontends/xforms/FormBase.h
+src/frontends/xforms/form_browser.C
 src/frontends/xforms/FormCitation.C
 src/frontends/xforms/form_citation.C
 src/frontends/xforms/FormCopyright.C
@@ -76,6 +77,7 @@ src/frontends/xforms/form_graphics.C
 src/frontends/xforms/FormIndex.C
 src/frontends/xforms/form_index.C
 src/frontends/xforms/FormInset.h
+src/frontends/xforms/FormLog.C
 src/frontends/xforms/FormParagraph.C
 src/frontends/xforms/form_paragraph.C
 src/frontends/xforms/FormPreferences.C
@@ -92,6 +94,7 @@ src/frontends/xforms/FormToc.C
 src/frontends/xforms/form_toc.C
 src/frontends/xforms/FormUrl.C
 src/frontends/xforms/form_url.C
+src/frontends/xforms/FormVCLog.C
 src/frontends/xforms/input_validators.C
 src/frontends/xforms/Menubar_pimpl.C
 src/frontends/xforms/xform_helpers.C
@@ -124,11 +127,9 @@ src/intl.C
 src/kbsequence.C
 src/language.C
 src/LaTeX.C
-src/LaTeXLog.C
 src/layout.C
 src/layout_forms.C
 src/LColor.C
-src/log_form.C
 src/LyXAction.C
 src/lyx.C
 src/lyx_cb.C

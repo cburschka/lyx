@@ -1,3 +1,20 @@
+2001-02-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* form_browser.h:
+	* form_browser.C:
+	* forms/form_browser.fd:
+	* forms/makefile:
+	* FormBrowser.C:
+	* FormBrowser.h: readonly browser form
+
+	* FormLog.C:
+	* FormLog.h:
+	* FormVCLog.C:
+	* FormVCLog.h:
+	* Dialogs.C: add Log and VCLog
+
+	* Makefile.am: add Log and VCLog, add updatesrc target
+
 2001-01-31  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* Menubar_pimpl.C (add_toc2): Add shortcut to the TOC menu.

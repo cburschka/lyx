@@ -1,3 +1,18 @@
+2001-02-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.am: remove LaTeXLog.C, log_form.[Ch]
+
+	* LaTeXLog.C: deleted, useful code moved to Buffer
+
+	* buffer.h:
+	* buffer.C: new function getLatexLogName()
+
+	* lyx_gui_misc.C:
+	* lyx_gui.C:
+	* lyxvc.C:
+	* lyxvc.h:
+	* lyxfunc.C: use frontends for LaTeX and VC logs
+
 2001-02-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* LaTeX.h: yet another std:: that Allan forgot.

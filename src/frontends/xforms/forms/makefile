@@ -23,6 +23,7 @@ SRCS := form_citation.fd \
 	form_error.fd \
 	form_graphics.fd \
 	form_index.fd \
+	form_browser.fd \
 	form_paragraph.fd \
 	form_preferences.fd \
 	form_print.fd \

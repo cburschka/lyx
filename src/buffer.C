@@ -94,6 +94,7 @@
 #include "encoding.h"
 #include "exporter.h"
 #include "Lsstream.h"
+#include "converter.h"
 
 using std::ostream;
 using std::ofstream;
@@ -177,6 +178,33 @@ string const Buffer::getLatexName(bool no_path) const
 				       ".tex"); 
 }
 
+string const Buffer::getLatexLogName(void) const
+{
+	string filename, fname, bname, path;
+
+	filename = getLatexName(false);
+
+	if (filename.empty())
+		return string();
+
+	fname = OnlyFilename(ChangeExtension(filename, ".log"));
+	bname = OnlyFilename(ChangeExtension(filename,
+		formats.Extension("literate") + ".out"));
+	path = OnlyPath(filename);
+
+	if (lyxrc.use_tempdir || (IsDirWriteable(path) < 1))
+		path = tmppath + "/";
+
+	lyxerr[Debug::FILES] << "LaTeX Log calculated as : " << path + fname << endl;
+
+	// If no Latex log or Build log is newer, show Build log
+	FileInfo f_fi(path + fname), b_fi(path + bname);
+	if (b_fi.exist() &&
+		(!f_fi.exist() || f_fi.getModificationTime() < b_fi.getModificationTime()))
+		return path + bname;
+	else
+		return path + fname;
+}
 
 void Buffer::setReadonly(bool flag)
 {

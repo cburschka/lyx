@@ -20,6 +20,10 @@ libxforms_la_SOURCES = \
 	GUIRunTime.C \
 	FormBase.C \
 	FormBase.h \
+	FormBrowser.C \
+	FormBrowser.h \
+	form_browser.C \
+	form_browser.h \
 	FormCitation.C \
 	FormCitation.h \
 	form_citation.C \
@@ -46,6 +50,8 @@ libxforms_la_SOURCES = \
 	form_index.h \
 	FormInset.C \
 	FormInset.h \
+	FormLog.C \
+	FormLog.h \
 	FormParagraph.C \
 	FormParagraph.h \
 	form_paragraph.C \
@@ -78,6 +84,8 @@ libxforms_la_SOURCES = \
 	FormUrl.h \
 	form_url.C \
 	form_url.h \
+	FormVCLog.C \
+	FormVCLog.h \
 	input_validators.h \
 	input_validators.C \
 	Menubar_pimpl.C \
@@ -96,6 +104,10 @@ libxforms_la_SOURCES = \
 #	GUI_runtime.C \
 #	GUI_applymenu.C
 
+# for convenience only
+updatesrc:
+	$(MAKE) -C forms updatesrc
+ 
 # just copied from old lyx repository
 dist-hook:
 	for subdir in $(LYXDATADIRS) ; do \

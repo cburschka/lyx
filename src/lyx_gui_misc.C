@@ -24,7 +24,6 @@
 #include "form1.h"
 #include "gettext.h"
 #include "include_form.h"
-#include "log_form.h"
 #include "layout_forms.h"
 #include "lyx.h"
 #include "lyx_cb.h"
@@ -51,7 +50,6 @@ extern FD_form_preamble * fd_form_preamble;
 extern FD_form_sendto * fd_form_sendto;
 extern FD_form_spell_check * fd_form_spell_check;
 extern FD_form_spell_options * fd_form_spell_options;
-extern FD_LaTeXLog * fd_latex_log;
 extern FD_panel  * fd_panel;
 extern FD_delim  * fd_delim;
 extern FD_deco   * fd_deco;
@@ -103,9 +101,6 @@ void RedrawAllBufferRelatedDialogs()
 	    fd_form_spell_options->form_spell_options->visible) {
 		fl_redraw_form(fd_form_spell_options->form_spell_options);
 	}
-	if (fd_latex_log->LaTeXLog->visible) {
-		fl_redraw_form(fd_latex_log->LaTeXLog);
-	}
 	if (fd_matrix && fd_matrix->matrix->visible) {
 		fl_redraw_form(fd_matrix->matrix);
 	}
@@ -141,9 +136,6 @@ void CloseAllBufferRelatedDialogs()
 	}
 	if (fd_form_sendto->form_sendto->visible) {
 		fl_hide_form(fd_form_sendto->form_sendto);
-	}
-	if (fd_latex_log->LaTeXLog->visible) {
-		fl_hide_form(fd_latex_log->LaTeXLog);
 	}
 	if (fd_form_spell_check) {
 		if (fd_form_spell_check->form_spell_check->visible) {
@@ -194,9 +186,6 @@ void updateAllVisibleBufferRelatedDialogs(bool)
 {
 	if (fd_form_preamble->form_preamble->visible) {
 		UpdateLayoutPreamble(current_view);
-	}
-	if (fd_latex_log->LaTeXLog->visible) {
-		LatexLogUpdate(0,0);
 	}
 	if (current_view->buffer() &&  current_view->buffer()->isReadonly()) {
 		// a little crude perhaps but it works. ARRae

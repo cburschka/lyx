@@ -216,7 +216,32 @@ private:
 	StateMachine state_machine_;
 };
 
-
+/** OK button policy for dialogs that can't mutate the document,
+    and are always valid
+ */ 
+class OkViewPolicy : public ButtonPolicy {
+public:
+	///
+	OkViewPolicy();
+	/// Trigger a transition with this input
+	virtual void input(SMInput);
+	/// activation status
+	virtual bool buttonStatus(Button button) const {
+		return button & outputs_[state_];
+	}
+	/// are we in a read-only state ?
+	virtual bool isReadOnly() const { 
+		return false;
+	}
+private:
+	/// current state
+	State state_;
+	/// which buttons are active
+	StateOutputs outputs_;
+	///
+	StateMachine state_machine_;
+};
+ 
 /** Ok and Cancel buttons for dialogs where read-only operation is blocked.
     The state machine design for this policy allows changes to occur within
     the dialog while a file is read-only -- the okay button is disabled until

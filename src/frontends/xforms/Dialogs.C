@@ -18,6 +18,7 @@
 #include "FormError.h"
 #include "FormGraphics.h"
 #include "FormIndex.h"
+#include "FormLog.h"
 #include "FormParagraph.h"
 #include "FormPreferences.h"
 #include "FormPrint.h"
@@ -26,7 +27,7 @@
 #include "FormTabularCreate.h"
 #include "FormToc.h"
 #include "FormUrl.h"
-//#include "debug.h"
+#include "FormVCLog.h"
 
 #ifdef __GNUG__
 #pragma implementation
@@ -51,6 +52,7 @@ Dialogs::Dialogs(LyXView * lv)
 	dialogs_.push_back(new FormError(lv, this));
 	dialogs_.push_back(new FormGraphics(lv, this));
 	dialogs_.push_back(new FormIndex(lv, this));
+	dialogs_.push_back(new FormLog(lv, this));
 	dialogs_.push_back(new FormParagraph(lv, this));
 	dialogs_.push_back(new FormPreferences(lv, this));
 	dialogs_.push_back(new FormPrint(lv, this));
@@ -59,6 +61,7 @@ Dialogs::Dialogs(LyXView * lv)
 	dialogs_.push_back(new FormTabularCreate(lv, this));
 	dialogs_.push_back(new FormToc(lv, this));
 	dialogs_.push_back(new FormUrl(lv, this));
+	dialogs_.push_back(new FormVCLog(lv, this));
 
 	showCredits.connect(slot(ShowCredits));
 
@@ -73,7 +76,6 @@ Dialogs::~Dialogs()
 	for (vector<DialogBase *>::iterator iter = dialogs_.begin();
 	     iter != dialogs_.end();
 	     ++iter) {
-		//lyxerr << "delete *iter" << endl;
 		delete *iter;
 	}
 }

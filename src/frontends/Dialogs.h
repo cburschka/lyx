@@ -114,7 +114,9 @@ public:
 	Signal0<void> showLayoutDocument;
 	///
 	Signal0<void> showLayoutParagraph;
-	///
+	/// show the version control log
+	Signal0<void> showVCLogFile;
+	/// show the LaTeX log or build file
 	Signal0<void> showLogFile;
 	///
 	Signal0<void> showPreamble;

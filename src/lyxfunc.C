@@ -1178,7 +1178,7 @@ string const LyXFunc::Dispatch(int ac,
 		
 	case LFUN_VC_HISTORY:
 	{
-		owner->buffer()->lyxvc.showLog();
+		owner->getDialogs()->showVCLogFile();
 		break;
 	}
 	
@@ -1216,7 +1216,7 @@ string const LyXFunc::Dispatch(int ac,
 		break;
 
 	case LFUN_LATEX_LOG:
-		ShowLatexLog();
+		owner->getDialogs()->showLogFile();
 		break;
 		
 	case LFUN_LAYOUTNO:
