@@ -366,7 +366,7 @@ public:
 		pointer operator->();
 
 		///
-		Paragraph * getPar();
+		ParagraphList::iterator getPar() const;
 		///
 		lyx::pos_type getPos() const;
 		///

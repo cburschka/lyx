@@ -2479,9 +2479,9 @@ Buffer::inset_iterator::pointer Buffer::inset_iterator::operator->()
 }
 
 
-Paragraph * Buffer::inset_iterator::getPar()
+ParagraphList::iterator Buffer::inset_iterator::getPar() const
 {
-	return &(*pit);
+	return pit;
 }
 
 
