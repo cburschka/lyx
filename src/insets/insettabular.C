@@ -263,6 +263,8 @@ void InsetTabular::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 {
+	setPosCache(pi, x, y);
+
 	//lyxerr << "InsetTabular::draw: " << x << " " << y << endl;
 	BufferView * bv = pi.base.bv;
 
@@ -270,8 +272,6 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 	static PainterInfo nullpi(bv, nop);
 
 	resetPos(bv->cursor());
-
-	setPosCache(pi, x, y);
 
 	x += scroll();
 	x += ADD_TO_TABULAR_WIDTH;
@@ -283,11 +283,6 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 		int const a = tabular.getAscentOfRow(i);
 		int const d = tabular.getDescentOfRow(i);
 		idx = tabular.getCellNumber(i, 0);
-		if (y + d <= 0 && y - a < pi.pain.paperHeight()) {
-			y += d	+ tabular.getAscentOfRow(i + 1)
-				+ tabular.getAdditionalHeight(i + 1);
-			continue;
-		}
 		for (col_type j = 0; j < tabular.columns(); ++j) {
 			if (tabular.isPartOfMultiColumn(i, j))
 				continue;
@@ -297,6 +292,7 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 			int const cx = nx + tabular.getBeginningOfTextInCell(idx);
 			if (nx + tabular.getWidthOfColumn(idx) < 0
 			    || nx > bv->workWidth()
+			    || y + d < 0
 			    || y - a > bv->workHeight()) {
 				cell(idx)->draw(nullpi, cx, y);
 				drawCellLines(nop, nx, y, i, idx);
@@ -317,15 +313,19 @@ void InsetTabular::draw(PainterInfo & pi, int x, int y) const
 
 void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 {
+	setPosCache(pi, x, y);
+
 	LCursor & cur = pi.base.bv->cursor();
 	if (!cur.selection())
 		return;
 	if (!ptr_cmp(&cur.inset(), this))
 		return;
 
+	resetPos(cur);
+
 	x += scroll();
 	x += ADD_TO_TABULAR_WIDTH;
-
+	
 	if (tablemode(cur)) {
 		row_type rs, re;
 		col_type cs, ce;
@@ -351,7 +351,7 @@ void InsetTabular::drawSelection(PainterInfo & pi, int x, int y) const
 		}
 		
 	} else {
-		cur.text()->drawSelection(pi, x, y);
+		cur.text()->drawSelection(pi, x + getCellXPos(cur.idx()) + tabular.getBeginningOfTextInCell(cur.idx()), 0 /*this value is ignored */);
 	}
 }
 
@@ -509,6 +509,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (sl == cur.top()) {
 			cmd = FuncRequest(LFUN_FINISHED_RIGHT);
 			cur.undispatched();
+			resetPos(cur);
 		}
 		break;
 
@@ -521,6 +522,7 @@ void InsetTabular::doDispatch(LCursor & cur, FuncRequest & cmd)
 		if (sl == cur.top()) {
 			cmd = FuncRequest(LFUN_FINISHED_LEFT);
 			cur.undispatched();
+			resetPos(cur);
 		}
 		break;
 
@@ -998,7 +1000,7 @@ void InsetTabular::getCursorPos(CursorSlice const & sl, int & x, int & y) const
 			y += tabular.getDescentOfRow(i);
 	}
 
-	// x offset	correction
+	// x offset correction
 	int const col = tabular.column_of_cell(sl.idx());
 	int idx = tabular.getCellNumber(row, 0);
 	for (int j = 0; j < col; ++j) {
@@ -1062,6 +1064,7 @@ InsetBase * InsetTabular::setPos(LCursor & cur, int x, int y) const
 	}
 	cur.idx() = idx_min;
 	//lyxerr << "# InsetTabular::setPos()\n" << cur << endl;
+	resetPos(cur);
 	return cell(cur.idx())->text_.editXY(cur, x, y);
 }
 
@@ -1076,14 +1079,12 @@ int InsetTabular::getCellXPos(idx_type const cell) const
 	for (; c < cell; ++c)
 		lx += tabular.getWidthOfColumn(c);
 
-	return lx - tabular.getWidthOfColumn(cell) + xo();
+	return lx - tabular.getWidthOfColumn(cell);
 }
 
 
 void InsetTabular::resetPos(LCursor & cur) const
 {
-	
-	
 	BufferView & bv = cur.bv();
 //	col_type const actcol = tabular.column_of_cell(cur.idx());
 //	int const offset = ADD_TO_TABULAR_WIDTH + 2;
@@ -1107,18 +1108,17 @@ void InsetTabular::resetPos(LCursor & cur) const
 //	}
 
 	if (&cur.inset() != this) {
-		scroll(bv, 0);
+		scroll(bv, 0.0F);
 	} else {
 		int const X1 = 0;
 		int const X2 = bv.workWidth();
 		int const offset = ADD_TO_TABULAR_WIDTH + 2;
-		int const col_width = tabular.getWidthOfColumn(cur.idx());
-		int const x1 = getCellXPos(cur.idx()) + offset + scroll();
-		int const x2 = x1 + col_width;
+		int const x1 = xo() + scroll() + getCellXPos(cur.idx()) + offset;
+		int const x2 = x1 + tabular.getWidthOfColumn(cur.idx());
 
-		if (x1 < X1 + 20)
+		if (x1 < X1)
 			scroll(bv, X1 + 20 - x1);
-		else if (x2 > X2 - 20)
+		else if (x2 > X2)
 			scroll(bv, X2 - 20 - x2);
 	}
 

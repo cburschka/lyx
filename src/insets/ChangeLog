@@ -1,3 +1,14 @@
+
+2004-12-06  Alfredo Braunstein  <abraunst@lyx.org>
+
+	* insettabular.C (getCellXPos): make it return a relative x
+	position wrt. the begin of the tabular
+	(resetPos): a couple of fixes
+	(doDispatch): add a couple of resetPos calls 
+	(drawSelection): fix drawing of selection in single-cell mode
+	(draw): replace 'do not draw' optimization by 'draw with
+	nullpainter' one
+
 2004-12-03  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
 	* insetbase.[Ch] (idxUpDown2): remove function
