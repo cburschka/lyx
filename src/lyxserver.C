@@ -271,7 +271,9 @@ void LyXComm::read_ready()
 	errno = 0;
 	int status;
 	// the single = is intended here.
-	while ((status = read(infd, charbuf, CMDBUFLEN-1))) {
+	while ((status = read(infd, charbuf, CMDBUFLEN - 1))) {
+		int rerrno = errno;
+ 
 		if (status > 0) {
 			charbuf[status]= '\0'; // turn it into a c string
 			lsbuf += rtrim(charbuf, "\r");
@@ -289,14 +291,13 @@ void LyXComm::read_ready()
 					//\n or not \n?
 			}
 		}
-		if (errno == EAGAIN) {
+		if (rerrno == EAGAIN) {
 			errno = 0;
 			return;
 		}
-		if (errno != 0) {
-			lyxerr << "LyXComm: " << strerror(errno) << endl;
-			if (!lsbuf.empty())
-			{
+		if (rerrno != 0) {
+			lyxerr << "LyXComm: " << strerror(rerrno) << endl;
+			if (!lsbuf.empty()) {
 				lyxerr << "LyxComm: truncated command: "
 				       << lsbuf << endl;
 				lsbuf.erase();

@@ -1,3 +1,8 @@
+2002-07-31  John Levon  <levon@movementarian.org>
+
+	* lyxserver.C: don't let incidental errors get
+	  in the way (errno)
+ 
 2002-07-30  John Levon  <levon@movementarian.org>
 
 	* lyxfunc.C: disable character dialog in ERT inset (partial fix)
