@@ -2159,13 +2159,13 @@ LyXText::selectNextWordToSpellcheck(float & value)
 			break;
 		}
 
-		bool const is_bad_inset(cpit->isInset(cpos)
-			&& !cpit->getInset(cpos)->allowSpellcheck());
-
-		if (cpit->isLetter(cpos) && !isDeletedText(*cpit, cpos)
-			&& !is_bad_inset)
-			break;
-
+		bool const is_good_inset = cpit->isInset(cpos)
+			&& cpit->getInset(cpos)->allowSpellcheck();
+  
+		if (!isDeletedText(*cpit, cpos) 
+		    && (is_good_inset || cpit->isLetter(cpos)))
+  			break;
+  
 		cursor.pos(cpos + 1);
 	}
 
