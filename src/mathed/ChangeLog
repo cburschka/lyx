@@ -1,3 +1,11 @@
+
+2005-04-04  Martin Vermeer  <martin.vermeer@hut.fi>
+	* math_amsarrayinset.C:
+	* math_casesinset.C:
+	* math_gridinset.C:
+	* math_gridinset.h: Add drawWithMargin method for use by
+	AMSArray and Cases, to position corner markers right
+
 2005-03-31  Georg Baum  <Georg.Baum@post.rwth-aachen.de>
 
 	* math_amsarrayinset.[Ch], math_tabularinset.[Ch],

@@ -479,21 +479,28 @@ void MathGridInset::metrics(MetricsInfo & mi, Dimension & dim) const
 
 void MathGridInset::draw(PainterInfo & pi, int x, int y) const
 {
+	drawWithMargin(pi, x, y, 0, 0);
+}
+
+void MathGridInset::drawWithMargin(PainterInfo & pi, int x, int y, 
+	int lmargin, int rmargin) const
+{
 	for (idx_type idx = 0; idx < nargs(); ++idx)
-		cell(idx).draw(pi, x + cellXOffset(idx), y + cellYOffset(idx));
+		cell(idx).draw(pi, x + lmargin + cellXOffset(idx), 
+			y + cellYOffset(idx));
 
 	for (row_type row = 0; row <= nrows(); ++row)
 		for (unsigned int i = 0; i < rowinfo_[row].lines_; ++i) {
 			int yy = y + rowinfo_[row].offset_ - rowinfo_[row].ascent_
 				- i * hlinesep() - hlinesep()/2 - rowsep()/2;
-			pi.pain.line(x + 1, yy,
-				     x + dim_.width() - 1, yy,
+			pi.pain.line(x + lmargin + 1, yy,
+				     x + dim_.width() - rmargin - 1, yy,
 				     LColor::foreground);
 		}
 
 	for (col_type col = 0; col <= ncols(); ++col)
 		for (unsigned int i = 0; i < colinfo_[col].lines_; ++i) {
-			int xx = x + colinfo_[col].offset_
+			int xx = x + lmargin + colinfo_[col].offset_
 				- i * vlinesep() - vlinesep()/2 - colsep()/2;
 			pi.pain.line(xx, y - dim_.ascent() + 1,
 				     xx, y + dim_.descent() - 1,

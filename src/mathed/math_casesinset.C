@@ -58,7 +58,7 @@ void MathCasesInset::metrics(MetricsInfo & mi, Dimension & dim) const
 void MathCasesInset::draw(PainterInfo & pi, int x, int y) const
 {
 	mathed_draw_deco(pi, x + 1, y - dim_.ascent(), 6, dim_.height(), "{");
-	MathGridInset::draw(pi, x + 8, y);
+	MathGridInset::drawWithMargin(pi, x, y, 8, 0);
 	setPosCache(pi, x, y);
 }
 
