@@ -442,7 +442,7 @@ void mathed_draw_deco(MathPainterInfo & pain, int x, int y, int w, int h,
 	if (r >= 2)
 		x += w;
 
-	for (int i = 0; d[i];) {
+	for (int i = 0; d[i]; ) {
 		int code = int(d[i++]);
 		if (code & 1) {  // code == 1 || code == 3
 			double xx = d[i++];
@@ -454,8 +454,10 @@ void mathed_draw_deco(MathPainterInfo & pain, int x, int y, int w, int h,
 			else
 				mt.transform(xx, yy);
 			mt.transform(x2, y2);
-			pain.pain.line(x + int(xx), y + int(yy), x + int(x2), y + int(y2),
-					LColor::math);
+			pain.pain.line(
+				x + int(xx + 0.5), y + int(yy + 0.5),
+				x + int(x2 + 0.5), y + int(y2 + 0.5),
+				LColor::math);
 		}	else {
 			int xp[32];
 			int yp[32];
@@ -468,8 +470,8 @@ void mathed_draw_deco(MathPainterInfo & pain, int x, int y, int w, int h,
 					sqmt.transform(xx, yy);
 				else
 					mt.transform(xx, yy);
-				xp[j] = x + int(xx);
-				yp[j] = y + int(yy);
+				xp[j] = x + int(xx + 0.5);
+				yp[j] = y + int(yy + 0.5);
 				//  lyxerr << "P[" << j " " << xx << " " << yy << " " << x << " " << y << "]";
 			}
 			pain.pain.lines(xp, yp, n, LColor::math);
