@@ -38,7 +38,7 @@ void MathSymbolInset::metrics(MathStyles st) const
 		code_ = (sym_->token == LM_TK_BIGSYM) ? LM_TC_BSYM : LM_TC_SYMB;
 	} else {
 		ssym_ = sym_->name;
-		code_ = LM_TC_TEXTRM;
+		code_ = LM_TC_TEX;
 	}
 
 	mathed_string_dim(code_, size(), ssym_, ascent_, descent_, width_);

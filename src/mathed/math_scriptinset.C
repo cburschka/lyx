@@ -247,7 +247,7 @@ void MathScriptInset::metrics(MathStyles st) const
 			symbol_->metrics(st);
 			wid  = symbol_->width();
 			asc  = symbol_->ascent();
-			des = symbol_->descent();
+			des  = symbol_->descent();
 		}
 		ascent_  = up()   ? xcell(0).height() + asc : 0;
 		descent_ = down() ? xcell(1).height() + des : 0;
