@@ -1,3 +1,22 @@
+2005-01-24  Jürgen Spitzmüller  <j.spitzmueller@gmx.de>
+
+	* LaTeXFeatures.[Ch]: Add a static list packages_ that
+	holds the contens of packages.lst. New functions getAvailable
+	and isAvailable to parse and check that list, resp.
+	
+	* LyXAction.C:
+	* lfuns.h:
+	* BufferView_pimpl.C: new LFUN_OUTPUT_CHANGES.
+	
+	* bufferparams.[Ch]: new param output_changes.
+	
+	* Buffer.C: increase file format to 240.
+	Use output_changes and isVailable.
+	
+	* changes.[Ch]: 
+	* paragraph.C: 
+	* paragraph_pimpl.C: Use output_changes and isVailable.
+
 2005-01-23  Angus Leeming  <leeming@lyx.org>
 
 	* output_latex.C: #include "insetbibitem.h", rather than

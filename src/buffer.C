@@ -139,7 +139,7 @@ extern BufferList bufferlist;
 
 namespace {
 
-int const LYX_FORMAT = 239;
+int const LYX_FORMAT = 240;
 
 } // namespace anon
 
@@ -1185,7 +1185,8 @@ void Buffer::validate(LaTeXFeatures & features) const
 {
 	LyXTextClass const & tclass = params().getLyXTextClass();
 
-	if (params().tracking_changes) {
+	if (features.isAvailable("dvipost") && params().tracking_changes 
+		&& params().output_changes) {
 		features.require("dvipost");
 		features.require("color");
 	}

@@ -22,6 +22,7 @@
 #include "Floating.h"
 #include "FloatList.h"
 #include "language.h"
+#include "lyxlex.h"
 #include "lyx_sty.h"
 #include "lyxrc.h"
 
@@ -30,6 +31,7 @@
 #include <sstream>
 
 using lyx::support::IsSGMLFilename;
+using lyx::support::LibFileSearch;
 using lyx::support::MakeRelPath;
 using lyx::support::OnlyPath;
 
@@ -42,6 +44,9 @@ using std::ostringstream;
 using std::set;
 
 namespace biblio = lyx::biblio;
+
+
+LaTeXFeatures::PackagesList LaTeXFeatures::packages_;
 
 
 LaTeXFeatures::LaTeXFeatures(Buffer const & b, BufferParams const & p, bool n)
@@ -63,6 +68,39 @@ void LaTeXFeatures::require(string const & name)
 		return;
 
 	features_.push_back(name);
+}
+
+
+void LaTeXFeatures::getAvailable()
+{
+	LyXLex lex(0, 0);
+	string real_file = LibFileSearch("", "packages.lst");
+
+	if (real_file.empty())
+		return;
+
+	lex.setFile(real_file);
+
+	if (!lex.isOK()) 
+		return;
+
+	bool finished = false;
+	// Parse config-file
+	while (lex.isOK() && !finished) {
+		switch (lex.lex()) {
+		case LyXLex::LEX_FEOF:
+			finished = true;
+			break;
+		default:
+			string const name = lex.getString();
+			PackagesList::const_iterator begin = packages_.begin();
+			PackagesList::const_iterator end   = packages_.end();
+			if (find(begin, end, name) == end)
+				packages_.push_back(name);
+		}
+	}
+
+	return;
 }
 
 
@@ -108,6 +146,14 @@ void LaTeXFeatures::useLayout(string const & layoutname)
 bool LaTeXFeatures::isRequired(string const & name) const
 {
 	return find(features_.begin(), features_.end(), name) != features_.end();
+}
+
+
+bool LaTeXFeatures::isAvailable(string const & name) const
+{
+	if (packages_.empty())
+		getAvailable();
+	return find(packages_.begin(), packages_.end(), name) != packages_.end();
 }
 
 

@@ -27,6 +27,7 @@
 #include "debug.h"
 #include "gettext.h"
 #include "language.h"
+#include "LaTeXFeatures.h"
 #include "lyxfont.h"
 #include "lyxrc.h"
 #include "lyxrow.h"
@@ -900,6 +901,15 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 	}
 
 	LyXFont basefont;
+	
+	LaTeXFeatures features(buf, bparams, runparams.nice);
+	
+	// output change tracking marks only if desired,
+	// if dvipost is installed,
+	// and with dvi/ps (other formats don't work)
+	bool const output = bparams.output_changes
+		&& runparams.flavor == OutputParams::LATEX
+		&& features.isAvailable("dvipost");
 
 	// Maybe we have to create a optional argument.
 	pos_type body_pos = beginOfBody();
@@ -1010,23 +1020,28 @@ bool Paragraph::simpleTeXOnePar(Buffer const & buf,
 
 		Change::Type change = pimpl_->lookupChange(i);
 
-		column += Changes::latexMarkChange(os, running_change, change);
+		column += Changes::latexMarkChange(os, running_change, 
+			change, output);
 		running_change = change;
 
-		OutputParams rp = runparams;
-		rp.free_spacing = style->free_spacing;
-		rp.local_language = font.language()->babel();
-		rp.intitle = style->intitle;
-		pimpl_->simpleTeXSpecialChars(buf, bparams,
-					      os, texrow, rp,
-					      font, running_font,
-					      basefont, outerfont, open_font,
-					      running_change,
-					      *style, i, column, c);
+		// do not output text which is marked deleted
+		// if change tracking output is not desired
+		if (output || running_change != Change::DELETED) {
+			OutputParams rp = runparams;
+			rp.free_spacing = style->free_spacing;
+			rp.local_language = font.language()->babel();
+			rp.intitle = style->intitle;
+			pimpl_->simpleTeXSpecialChars(buf, bparams,
+						os, texrow, rp,
+						font, running_font,
+						basefont, outerfont, open_font,
+						running_change,
+						*style, i, column, c);
+		}
 	}
 
 	column += Changes::latexMarkChange(os,
-			running_change, Change::UNCHANGED);
+			running_change, Change::UNCHANGED, output);
 
 	// If we have an open font definition, we have to close it
 	if (open_font) {

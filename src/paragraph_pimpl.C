@@ -503,9 +503,17 @@ void Paragraph::Pimpl::simpleTeXSpecialChars(Buffer const & buf,
 			break;
 		}
 
+		// output change tracking marks only if desired,
+		// if dvipost is installed,
+		// and with dvi/ps (other formats don't work)
+		LaTeXFeatures features(buf, bparams, runparams.nice);
+		bool const output = bparams.output_changes
+			&& runparams.flavor == OutputParams::LATEX
+			&& features.isAvailable("dvipost");
+
 		if (inset->isTextInset()) {
 			column += Changes::latexMarkChange(os, running_change,
-				Change::UNCHANGED);
+				Change::UNCHANGED, output);
 			running_change = Change::UNCHANGED;
 		}
 

@@ -341,6 +341,7 @@ BufferParams::BufferParams()
 	cite_engine = biblio::ENGINE_BASIC;
 	use_bibtopic = false;
 	tracking_changes = false;
+	output_changes = false;
 	secnumdepth = 3;
 	tocdepth = 3;
 	language = default_language;
@@ -508,6 +509,8 @@ string const BufferParams::readToken(LyXLex & lex, string const & token)
 		lex >> use_bibtopic;
 	} else if (token == "\\tracking_changes") {
 		lex >> tracking_changes;
+	} else if (token == "\\output_changes") {
+		lex >> output_changes;
 	} else if (token == "\\branch") {
 		lex.next();
 		string branch = lex.getString();
@@ -711,6 +714,7 @@ void BufferParams::writeFile(ostream & os) const
 	}
 
 	os << "\\tracking_changes " << convert<string>(tracking_changes) << "\n";
+	os << "\\output_changes " << convert<string>(output_changes) << "\n";
 
 	if (tracking_changes) {
 		AuthorList::Authors::const_iterator it = pimpl_->authorlist.begin();
@@ -1100,7 +1104,7 @@ bool BufferParams::writeLaTeX(ostream & os, LaTeXFeatures & features,
 	lyxpreamble += "\\makeatother\n";
 
 	// dvipost settings come after everything else
-	if (tracking_changes) {
+	if (features.isAvailable("dvipost") && tracking_changes && output_changes) {
 		lyxpreamble +=
 			"\\dvipostlayout\n"
 			"\\dvipost{osstart color push Red}\n"

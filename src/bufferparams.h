@@ -209,6 +209,14 @@ public:
 	bool use_bibtopic;
 	/// revision tracking for this buffer ?
 	bool tracking_changes;
+	/** This param decides if change tracking marks should be output
+	 *  (using the dvipost package) or if the current "state" of the 
+	 *  document should be output instead. Since dvipost needs dvi 
+	 *  specials, it only works with dvi/ps output (the param will be
+	 *  ignored with other output flavors and disabled when dbipost is 
+	 *  not installed).
+	 */
+	bool output_changes;
 	/// Time ago we agreed that this was a buffer property [ale990407]
 	std::string parentname;
 	///

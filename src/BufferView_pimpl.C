@@ -34,6 +34,7 @@
 #include "gettext.h"
 #include "intl.h"
 #include "insetiterator.h"
+#include "LaTeXFeatures.h"
 #include "lyx_cb.h" // added for Dispatch functions
 #include "lyx_main.h"
 #include "lyxfind.h"
@@ -972,6 +973,14 @@ FuncStatus BufferView::Pimpl::getStatus(FuncRequest const & cmd)
 		flag.setOnOff(buf->params().tracking_changes);
 		break;
 
+	case LFUN_OUTPUT_CHANGES: {
+		LaTeXFeatures features(*buf, buf->params(), false);
+		flag.enabled(buf && buf->params().tracking_changes 
+			&& features.isAvailable("dvipost"));
+		flag.setOnOff(buf->params().output_changes);
+		break;
+	}
+
 	case LFUN_MERGE_CHANGES:
 	case LFUN_ACCEPT_CHANGE: // what about these two
 	case LFUN_REJECT_CHANGE: // what about these two
@@ -1070,6 +1079,13 @@ bool BufferView::Pimpl::dispatch(FuncRequest const & cmd)
 	case LFUN_TRACK_CHANGES:
 		trackChanges();
 		break;
+
+	case LFUN_OUTPUT_CHANGES: {
+		Buffer * buf = bv_->buffer();
+		bool const state = buf->params().output_changes;
+		buf->params().output_changes = !state;
+		break;
+	}
 
 	case LFUN_MERGE_CHANGES:
 		owner_->getDialogs().show("changes");

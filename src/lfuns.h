@@ -354,6 +354,7 @@ enum kb_action {
 	LFUN_PREVIOUSBUFFER,
 	// 270
 	LFUN_WORDS_COUNT,
+	LFUN_OUTPUT_CHANGES,             // jspitzm 20050121
 
 	LFUN_LASTACTION                  // end of the table
 };

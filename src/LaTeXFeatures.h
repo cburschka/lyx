@@ -62,8 +62,12 @@ public:
 	void addExternalPreamble(std::string const &);
 	/// Provide a string name-space to the requirements
 	void require(std::string const & name);
+	/// Which of the required packages are installed?
+	static void getAvailable();
 	/// Is the package required?
 	bool isRequired(std::string const & name) const;
+	/// Is the (required) package available?
+	bool isAvailable(std::string const & name) const;
 	///
 	void useFloat(std::string const & name);
 	///
@@ -96,6 +100,10 @@ private:
 	FeaturesList features_;
 	///
 	FeaturesList preamble_snippets_;
+	/// The available (required) packages
+	typedef std::list<std::string> PackagesList;
+	///
+	static PackagesList packages_;
 	///
 	typedef std::set<Language const *> LanguageList;
 	///

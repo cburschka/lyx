@@ -1534,6 +1534,24 @@ def normalize_paragraph_params(file):
 
 
 ##
+# Add/remove output_changes parameter
+#
+def convert_output_changes (file):
+    i = find_token(file.header, '\\tracking_changes', 0)
+    if i == -1:
+        file.warning("Malformed lyx file: Missing '\\tracking_changes'.")
+        return
+    file.header.insert(i+1, '\\output_changes true')
+
+
+def revert_output_changes (file):
+    i = find_token(file.header, '\\output_changes', 0)
+    if i == -1:
+        return
+    del file.header[i]
+
+
+##
 # Convertion hub
 #
 
@@ -1556,9 +1574,11 @@ convert = [[223, [insert_tracking_changes, add_end_header, remove_color_default,
                   normalize_papersize, strip_end_space]],
            [237, [use_x_boolean]],
            [238, [update_latexaccents]],
-           [239, [normalize_paragraph_params]]]
+           [239, [normalize_paragraph_params]],
+           [240, [convert_output_changes]]]
 
-revert =  [[238, []],
+revert =  [[239, [revert_output_changes]],
+           [238, []],
            [237, []],
            [236, [use_x_binary]],
            [235, [denormalize_papersize, remove_begin_body,remove_begin_header,

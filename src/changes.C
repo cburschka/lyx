@@ -495,11 +495,12 @@ void Changes::check() const
 
 
 int Changes::latexMarkChange(std::ostream & os,
-			     Change::Type const old, Change::Type const change)
+			     Change::Type const old, Change::Type const change,
+			     bool const & output)
 {
-	if (old == change)
+	if (!output || old == change)
 		return 0;
-
+		
 	string const start("\\changestart{}");
 	string const end("\\changeend{}");
 	string const son("\\overstrikeon{}");
