@@ -1,3 +1,10 @@
+2001-07-03  Lars Gullik Bjønnes  <larsbj@birdstep.com>
+
+	* insettext.C (getLyXText): avoid multiple lookups, and simplify
+	slightly
+	(deleteLyXText): ditto
+	(resizeLyXText): ditto
+
 2001-07-02  Juergen Vigna  <jug@sad.it>
 
 	* insettext.C (getLyXText): introduce a cache in getLyXText so that

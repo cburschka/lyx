@@ -1617,26 +1617,35 @@ Row * InsetText::crow(BufferView * bv) const
 LyXText * InsetText::getLyXText(BufferView const * lbv,
 				bool const recursive) const
 {
-	if (!recursive && cached_bview && (cached_bview == lbv))
+	if (!recursive && (cached_bview == lbv))
 		return cached_text;
-
+	
 	// Super UGLY! (Lgb)
 	BufferView * bv = const_cast<BufferView *>(lbv);
 	
 	cached_bview = bv;
-	if ((cache.find(bv) != cache.end()) && cache[bv]) {
-		cached_text = cache[bv];
-		if (recursive && the_locking_inset)
+	Cache::iterator it = cache.find(bv);
+	
+	if (it != cache.end()) {
+		lyx::Assert(it->second);
+			
+		cached_text = it->second;
+		if (recursive && the_locking_inset) {
 			return the_locking_inset->getLyXText(bv);
+		}
 		return cached_text;
 	}
 	cached_text = new LyXText(const_cast<InsetText *>(this));
 	cached_text->init(bv);
-	cache[bv] = cached_text;
+
+	cache.insert(make_pair(bv, cached_text));
+	
 	if (the_locking_inset) {
-		cached_text->setCursor(bv, inset_par, inset_pos, true, inset_boundary);
-		if (recursive)
+		cached_text->setCursor(bv, inset_par, inset_pos,
+							   true, inset_boundary);
+		if (recursive) {
 			return the_locking_inset->getLyXText(bv);
+		}
 	}
 	return cached_text;
 }
@@ -1645,9 +1654,16 @@ LyXText * InsetText::getLyXText(BufferView const * lbv,
 void InsetText::deleteLyXText(BufferView * bv, bool recursive) const
 {
 	cached_bview = 0;
-	if ((cache.find(bv) == cache.end()) || !cache[bv])
+
+	Cache::iterator it = cache.find(bv);
+	
+	if (it == cache.end()) {
 		return;
-	delete cache[bv];
+	}
+
+	lyx::Assert(it->second);
+	
+	delete it->second;
 	cache.erase(bv);
 	if (recursive) {
 		/// then remove all LyXText in text-insets
@@ -1666,9 +1682,13 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 	// one endless line, resize normally not necessary
 	if (!force && getMaxWidth(bv, this) < 0)
 		return;
-	if ((cache.find(bv) == cache.end()) || !cache[bv])
-		return;
 
+	Cache::iterator it = cache.find(bv);
+	if (it == cache.end()) {
+		return;
+	}
+	lyx::Assert(it->second);
+	
 	Paragraph * lpar = 0;
 	Paragraph * selstartpar = 0;
 	Paragraph * selendpar = 0;
@@ -1684,7 +1704,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 //    ProhibitInput(bv);
 
 	if (locked) {
-			LyXText * t = getLyXText(bv);
+		LyXText * t = getLyXText(bv);
 		lpar = t->cursor.par();
 		pos = t->cursor.pos();
 		boundary = t->cursor.boundary();
@@ -1700,7 +1720,7 @@ void InsetText::resizeLyXText(BufferView * bv, bool force) const
 	deleteLyXText(bv, (the_locking_inset == 0) || force);
 
 	if (lpar) {
-			LyXText * t = getLyXText(bv);
+		LyXText * t = getLyXText(bv);
 			
 		t->selection.set(true);
 		/* at this point just to avoid the Delete-Empty-Paragraph
