@@ -11,10 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "lyxtextclasslist.h"
 #include "lyxtextclass.h"
 #include "debug.h"

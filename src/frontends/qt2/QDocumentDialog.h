@@ -12,10 +12,6 @@
 #ifndef QDOCUMENTDIALOG_H
 #define QDOCUMENTDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ui/QDocumentDialogBase.h"
 #include "LString.h"
 

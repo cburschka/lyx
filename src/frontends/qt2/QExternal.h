@@ -12,10 +12,6 @@
 #ifndef QEXTERNAL_H
 #define QEXTERNAL_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "Qt2Base.h"
 
 class ControlExternal;

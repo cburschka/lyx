@@ -13,10 +13,6 @@
 #ifndef XFONT_METRICS_H
 #define XFONT_METRICS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 
 #include "font_metrics.h"

@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation "lyxrc.h"
-#endif
-
 #include <fstream>
 #include <iomanip>
 #include <iostream>

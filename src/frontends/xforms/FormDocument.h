@@ -12,10 +12,6 @@
 #ifndef FORM_DOCUMENT_H
 #define FORM_DOCUMENT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "FormBase.h"
 
 #include <boost/scoped_ptr.hpp>

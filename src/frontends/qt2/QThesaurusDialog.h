@@ -12,10 +12,6 @@
 #ifndef QTHESAURUSDIALOG_H
 #define QTHESAURUSDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ui/QThesaurusDialogBase.h"
 
 class QThesaurus;

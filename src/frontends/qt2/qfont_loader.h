@@ -12,10 +12,6 @@
 #ifndef QFONTLOADER_H
 #define QFONTLOADER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <map>
  
 #include "encoding.h"

@@ -14,10 +14,6 @@
 
 #include <utility>
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ControlDialog_impl.h"
 
 /** A controller for the TabularCreate Dialog.

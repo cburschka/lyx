@@ -7,10 +7,6 @@
 #include "LString.h"
 #include "math_nestinset.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 /// The \kern primitive
 /// Some hack for visual effects
 

@@ -1,9 +1,5 @@
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "math_charinset.h"
 #include "LColor.h"
 #include "frontends/Painter.h"

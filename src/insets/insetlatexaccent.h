@@ -12,10 +12,6 @@
 #ifndef INSET_LATEX_ACCENT_H
 #define INSET_LATEX_ACCENT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "inset.h"
 #include "LString.h"
 

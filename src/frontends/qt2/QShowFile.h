@@ -12,10 +12,6 @@
 #ifndef QSHOWFILE_H
 #define QSHOWFILE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "Qt2Base.h"
 
 class ControlShowFile;

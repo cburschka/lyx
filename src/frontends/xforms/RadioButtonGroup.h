@@ -15,10 +15,6 @@
 #ifndef RADIOBUTTONGROUP_H
 #define RADIOBUTTONGROUP_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "support/types.h"
 #include <vector>
 #include <utility>

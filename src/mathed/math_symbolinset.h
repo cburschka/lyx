@@ -2,10 +2,6 @@
 #ifndef MATH_SYMBOLINSET_H
 #define MATH_SYMBOLINSET_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "math_diminset.h"
 
 struct latexkeys;

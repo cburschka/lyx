@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include FORMS_H_LOCATION
 #include "gnome_helpers.h"
 #include "GUIRunTime.h"

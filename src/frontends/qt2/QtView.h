@@ -13,10 +13,6 @@
 #ifndef QTVIEW_H
 #define QTVIEW_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "frontends/LyXView.h"
 
 #include <qmainwindow.h>

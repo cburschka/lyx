@@ -12,10 +12,6 @@
 #ifndef QCOMMANDBUFFER_H
 #define QCOMMANDBUFFER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <qtoolbar.h>
 
 class QtView;

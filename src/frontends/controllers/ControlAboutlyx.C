@@ -11,10 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "ControlAboutlyx.h"
 #include "gettext.h"
 #include "version.h"

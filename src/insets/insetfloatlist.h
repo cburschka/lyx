@@ -12,10 +12,6 @@
 #ifndef INSET_FLOATLIST_H
 #define INSET_FLOATLIST_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "insetcommand.h"
 
 /** Used to insert table of contents

@@ -11,10 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "FontInfo.h"
 #include "debug.h"
 #include "lyxrc.h"	// lyxrc.use_scalable_fonts

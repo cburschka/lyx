@@ -12,10 +12,6 @@
 #ifndef CONTROLSENDTO_H
 #define CONTROLSENDTO_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ControlDialog_impl.h"
 #include "LString.h"
 

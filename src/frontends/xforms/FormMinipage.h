@@ -12,10 +12,6 @@
 #ifndef FORMMINIPAGE_H
 #define FORMMINIPAGE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "FormBase.h"
 
 class ControlMinipage;

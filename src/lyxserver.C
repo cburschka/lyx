@@ -42,10 +42,6 @@
 #include <fcntl.h>
 #include <cerrno>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "lyxserver.h"
 #include "lyx_main.h"
 #include "debug.h"

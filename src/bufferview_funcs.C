@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "bufferview_funcs.h"
 #include "frontends/LyXView.h"
 #include "BufferView.h"

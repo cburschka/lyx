@@ -2,10 +2,6 @@
 #ifndef TRANS_MANAGER_H
 #define TRANS_MANAGER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "tex-accent.h"
 #include "trans_decl.h"
 #include "chset.h"

@@ -12,10 +12,6 @@
 #ifndef QSENDTODIALOG_H
 #define QSENDTODIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ui/QSendtoDialogBase.h"
 
 class QSendto;

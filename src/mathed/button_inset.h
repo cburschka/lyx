@@ -14,10 +14,6 @@
 #ifndef BUTTON_INSET_H
 #define BUTTON_INSET_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "math_nestinset.h"
 
 /// try to implement the button-like insets "natively" for mathed

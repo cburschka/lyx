@@ -12,10 +12,6 @@
 #ifndef INSET_REF_H
 #define INSET_REF_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "insetcommand.h"
 
 struct LaTeXFeatures;

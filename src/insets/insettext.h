@@ -12,10 +12,6 @@
 #ifndef INSETTEXT_H
 #define INSETTEXT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "inset.h"
 #include "LString.h"
 #include "LColor.h"

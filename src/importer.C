@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "importer.h"
 #include "converter.h"
 #include "frontends/LyXView.h"

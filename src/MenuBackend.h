@@ -14,10 +14,6 @@
 #ifndef MENUBACKEND_H
 #define MENUBACKEND_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 #include <vector>
 #include <boost/shared_ptr.hpp>

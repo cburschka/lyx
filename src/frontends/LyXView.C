@@ -11,10 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "LyXView.h"
 #include "debug.h"
 #include "intl.h"

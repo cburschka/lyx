@@ -11,10 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "XPainter.h"
 #include "LString.h"
 #include "debug.h"

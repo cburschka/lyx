@@ -12,10 +12,6 @@
 #ifndef CONTROLINDEX_H
 #define CONTROLINDEX_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ControlCommand.h"
 
 /** A controller for Index dialogs.

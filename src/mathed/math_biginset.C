@@ -1,9 +1,5 @@
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "math_biginset.h"
 #include "math_support.h"
 #include "math_parser.h"

@@ -12,10 +12,6 @@
 #ifndef FORM_PARAGRAPH_H
 #define FORM_PARAGRAPH_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "FormBase.h"
 #include "RadioButtonGroup.h"
 

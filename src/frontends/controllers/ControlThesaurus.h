@@ -13,10 +13,6 @@
 #ifndef CONTROLTHESAURUS_H
 #define CONTROLTHESAURUS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <vector>
 
 #include "LString.h"

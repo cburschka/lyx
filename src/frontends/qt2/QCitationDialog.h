@@ -12,10 +12,6 @@
 #ifndef QCITATIONDIALOG_H
 #define QCITATIONDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ui/QCitationDialogBase.h"
 #include "controllers/biblio.h"
 

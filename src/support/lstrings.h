@@ -16,10 +16,6 @@
 #ifndef LSTRINGS_H
 #define LSTRINGS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <vector>
 
 #include "Lsstream.h"

@@ -5,11 +5,6 @@
 #include "math_gridinset.h"
 #include "LString.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
-
 class MathSplitInset : public MathGridInset {
 public:
 	///

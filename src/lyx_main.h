@@ -10,10 +10,6 @@
 #ifndef LYX_MAIN_H
 #define LYX_MAIN_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 
 #include <boost/scoped_ptr.hpp>

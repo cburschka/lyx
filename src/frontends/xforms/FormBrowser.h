@@ -13,10 +13,6 @@
 #ifndef FORMBROWSER_H
 #define FORMBROWSER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "FormBase.h"
 
 /**

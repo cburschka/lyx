@@ -4,10 +4,6 @@
 
 #include "math_gridinset.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 /**
  * Inset for things like \begin{array}...\end{array}
  *

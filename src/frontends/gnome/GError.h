@@ -13,10 +13,6 @@
 #ifndef GERROR_H
 #define GERROR_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ControlError.h"
 #include "GnomeBase.h"
 

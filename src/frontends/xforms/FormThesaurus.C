@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "ControlThesaurus.h"
 #include "FormThesaurus.h"
 #include "forms/form_thesaurus.h"

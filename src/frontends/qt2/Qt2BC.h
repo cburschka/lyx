@@ -14,10 +14,6 @@
 #ifndef QT2BC_H
 #define QT2BC_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ButtonController.h"
 
 class QWidget;

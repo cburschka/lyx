@@ -1,7 +1,3 @@
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "math_inferinset.h"
 #include "math_support.h"
 #include "frontends/Painter.h"

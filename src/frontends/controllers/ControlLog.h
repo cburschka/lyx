@@ -15,10 +15,6 @@
 
 #include <utility>
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ControlDialog_impl.h"
 #include "buffer.h" // Buffer::LogType
 

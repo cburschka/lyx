@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "LaTeXFeatures.h"
 #include "debug.h"
 #include "lyx_sty.h"

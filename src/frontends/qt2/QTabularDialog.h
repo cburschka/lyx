@@ -14,10 +14,6 @@
 #ifndef QTABULARDIALOG_H
 #define QTABULARDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ui/QTabularDialogBase.h"
 
 class QTabular;

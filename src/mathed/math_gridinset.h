@@ -6,10 +6,6 @@
 #include "vspace.h"
 #include "LString.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 /** Gridded math inset base class.
     This is the base to all grid-like editable math objects
     like array and eqnarray.

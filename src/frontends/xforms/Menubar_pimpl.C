@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "Menubar_pimpl.h"
 #include "MenuBackend.h"
 #include "LyXAction.h"

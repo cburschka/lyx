@@ -13,10 +13,6 @@
 #ifndef QGRAPHICS_H
 #define QGRAPHICS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "insets/insetgraphics.h"
 #include "Qt2Base.h"
 

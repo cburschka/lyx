@@ -9,10 +9,6 @@
 #if 0 // Let's not bother with this just yet.
 #include <cstddef>
 
-#ifdef __GNUG__
-#pragma interface "cstring"
-#endif
-
 // The ANSI C prototypes for these functions have a const argument type and
 // non-const return type, so we can't use them.
 

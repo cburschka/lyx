@@ -11,10 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "support/lyxlib.h"
 #include "support/os.h"
 #include "support/filetools.h"

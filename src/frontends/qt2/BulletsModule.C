@@ -11,10 +11,6 @@
 #include <config.h>
 #include "qt_helpers.h"
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include <functional> // for operator %
 
 #include <qinputdialog.h>

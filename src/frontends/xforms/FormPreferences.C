@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "ControlPrefs.h"
 #include "FormPreferences.h"
 #include "forms/form_preferences.h"

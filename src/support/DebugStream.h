@@ -12,10 +12,6 @@
 #ifndef DEBUGSTREAM_H
 #define DEBUGSTREAM_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LOstream.h"
 
 #ifdef TEST_DEBUGSTREAM

@@ -18,10 +18,6 @@
 #include "Lsstream.h"
 #include "support/LAssert.h"
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "formula.h"
 #include "formulamacro.h"
 #include "lyxrc.h"

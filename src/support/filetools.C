@@ -18,10 +18,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation "filetools.h"
-#endif
-
 #include "debug.h"
 #include "support/lstrings.h"
 #include "support/systemcall.h"

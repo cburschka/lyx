@@ -11,10 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "insetmarginal.h"
 #include "gettext.h"
 #include "lyxfont.h"

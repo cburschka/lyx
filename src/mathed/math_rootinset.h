@@ -17,10 +17,6 @@
 
 #include "math_nestinset.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 /** The general n-th root inset.
  *  \author Alejandro Aguilar Sierra
  *

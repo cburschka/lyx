@@ -12,10 +12,6 @@
 #ifndef QTABULARCREATE_H
 #define QTABULARCREATE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "Qt2Base.h"
 
 class ControlTabularCreate;

@@ -18,10 +18,6 @@
 
 #include "frontends/Toolbar.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 class XFormsView;
 class Tooltips;
 class Combox;

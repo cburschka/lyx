@@ -12,10 +12,6 @@
 #ifndef QEXTERNALDIALOG_H
 #define QEXTERNALDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ui/QExternalDialogBase.h"
 
 class QExternal;

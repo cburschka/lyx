@@ -4,10 +4,6 @@
 
 #include "math_nestinset.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 /** The square root inset.
  *  \author Alejandro Aguilar Siearra
  *

@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "FileMonitor.h"
 
 #include "frontends/Timeout.h"

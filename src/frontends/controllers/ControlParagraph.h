@@ -14,10 +14,6 @@
 
 #include <boost/scoped_ptr.hpp>
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ControlDialog_impl.h"
 #include "layout.h" // for LyXAlignment
 

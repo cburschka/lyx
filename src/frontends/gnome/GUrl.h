@@ -13,10 +13,6 @@
 #ifndef GURL_H
 #define GURL_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ControlUrl.h"
 #include "GnomeBase.h"
 

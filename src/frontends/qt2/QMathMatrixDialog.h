@@ -14,10 +14,6 @@
 #ifndef QMATHMATRIXDIALOG_H
 #define QMATHMATRIXDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ui/QMathMatrixDialogBase.h"
 
 class QMath;

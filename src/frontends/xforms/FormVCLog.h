@@ -12,10 +12,6 @@
 #ifndef FORMVCLOG_H
 #define FORMVCLOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "FormBrowser.h"
 
 class ControlVCLog;

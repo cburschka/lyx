@@ -12,10 +12,6 @@
 #ifndef GTABULARCREATE_H
 #define GTABULARCREATE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ControlTabularCreate.h"
 #include "GnomeBase.h"
 

@@ -12,10 +12,6 @@
 #ifndef INSETCAPTION_H
 #define INSETCAPTION_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "insettext.h"
 
 /** A caption inset

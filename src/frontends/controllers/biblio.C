@@ -11,10 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "LString.h"
 #include "biblio.h"
 #include "gettext.h" // for _()

@@ -24,10 +24,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "forkedcall.h"
 #include "forkedcontr.h"
 #include "lstrings.h"

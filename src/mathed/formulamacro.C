@@ -13,10 +13,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "formulamacro.h"
 #include "commandtags.h"
 #include "math_cursor.h"

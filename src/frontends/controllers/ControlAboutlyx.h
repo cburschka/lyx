@@ -13,10 +13,6 @@
 #ifndef CONTROLABOUTLYX_H
 #define CONTROLABOUTLYX_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ControlDialog_impl.h"
 #include "LString.h"
 

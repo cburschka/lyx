@@ -14,10 +14,6 @@
  *  This code is under the GNU General Public Licence version 2 or later.
  */
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "math_macro.h"
 #include "math_support.h"
 #include "math_extern.h"

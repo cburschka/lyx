@@ -11,10 +11,6 @@
 #include <config.h>
 #include <vector>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "gettext.h"
 #include "character.h"
 

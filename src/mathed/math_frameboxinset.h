@@ -4,10 +4,6 @@
 
 #include "math_nestinset.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 /** Extra nesting
  *  \author André Pönitz
  *

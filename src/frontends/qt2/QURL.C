@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "ControlUrl.h"
 #include "debug.h"
 #include "qt_helpers.h"

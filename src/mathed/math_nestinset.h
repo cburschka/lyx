@@ -1,10 +1,6 @@
 #ifndef MATH_NESTINSET_H
 #define MATH_NESTINSET_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "math_diminset.h"
 
 /** Abstract base class for all math objects that contain nested items.

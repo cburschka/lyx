@@ -12,10 +12,6 @@
 #ifndef BUTTONCONTROLLERBASE_H
 #define BUTTONCONTROLLERBASE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ButtonPolicies.h"
 #include "LString.h"
 

@@ -11,10 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "QLyXKeySym.h"
 #include "qlkey.h"
 #include "debug.h"

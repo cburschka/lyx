@@ -12,10 +12,6 @@
 #include <config.h>
 #include <fstream>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "xformsBC.h"
 #include "FormTexinfo.h"
 #include "forms/form_texinfo.h"

@@ -18,10 +18,6 @@
 #ifndef TOOLTIPS_H
 #define TOOLTIPS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 
 #include <boost/utility.hpp>

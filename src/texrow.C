@@ -10,10 +10,6 @@
 
 #include <algorithm>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "texrow.h"
 #include "paragraph.h"
 #include "debug.h"

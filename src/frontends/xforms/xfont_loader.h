@@ -12,10 +12,6 @@
 #ifndef FONTLOADER_H_
 #define FONTLOADER_H_
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <X11/Xlib.h>
 #include "lyxfont.h"
 #include "LString.h"

@@ -6,11 +6,6 @@
 #include "LString.h"
 #include "math_atom.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
-
 ///
 class MathMacroTable {
 public:

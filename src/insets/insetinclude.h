@@ -12,10 +12,6 @@
 #ifndef INSET_INCLUDE_H
 #define INSET_INCLUDE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "insetcommand.h"
 
 #include <boost/signals/signal0.hpp>

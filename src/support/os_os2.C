@@ -3,10 +3,6 @@
 // Various OS specific functions
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation "os.h"
-#endif
-
 #include "os.h"
 #include "support/filetools.h"
 #define INCL_DOSFILEMGR

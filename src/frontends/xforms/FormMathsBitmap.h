@@ -14,10 +14,6 @@
 #ifndef FORM_MATHSBITMAP_H
 #define FORM_MATHSBITMAP_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "FormBase.h"
 #include <boost/shared_ptr.hpp>
 #include <vector>

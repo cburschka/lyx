@@ -11,10 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "insetcite.h"
 #include "buffer.h"
 #include "BufferView.h"

@@ -11,10 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "ControlGraphics.h"
 #include "debug.h"
 #include "qt_helpers.h"

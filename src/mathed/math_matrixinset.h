@@ -4,10 +4,6 @@
 
 #include "math_gridinset.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 // "shortcut" for DelimInset("(",ArrayInset,")")
 
 class MathMatrixInset : public MathGridInset {

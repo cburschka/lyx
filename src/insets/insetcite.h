@@ -13,10 +13,6 @@
 #ifndef INSET_CITE_H
 #define INSET_CITE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "insetcommand.h"
 
 /** Used to insert citations

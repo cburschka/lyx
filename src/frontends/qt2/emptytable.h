@@ -12,10 +12,6 @@
 #ifndef EMPTYTABLE_H
 #define EMPTYTABLE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <qpainter.h>
 #include "qttableview.h"
 

@@ -12,10 +12,6 @@
 #ifndef GNOMEBC_H
 #define GNOMEBC_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ButtonController.h"
 
 namespace Gtk {

@@ -14,10 +14,6 @@
 #ifndef COUNTERS_H
 #define COUNTERS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 #include <map>
 

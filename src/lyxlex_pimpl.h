@@ -9,9 +9,6 @@
 
 #include "lyxlex.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 ///
 struct LyXLex::Pimpl : boost::noncopyable {

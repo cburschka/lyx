@@ -11,10 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "ControlERT.h"
 
 // sorry this is just a temporary hack we should include vspace.h! (Jug)

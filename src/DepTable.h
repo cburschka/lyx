@@ -19,10 +19,6 @@
 #include "LString.h"
 #include <map>
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 ///
 class DepTable {
 public:

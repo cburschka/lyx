@@ -11,10 +11,6 @@
 
 #include <vector>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include <config.h>
 
 #include "xformsBC.h"

@@ -1,10 +1,5 @@
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#pragma implementation "ParameterStruct.h"
-#endif
-
 #include "ParagraphParameters.h"
 #include "ParameterStruct.h"
 

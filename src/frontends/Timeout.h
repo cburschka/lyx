@@ -13,10 +13,6 @@
 #ifndef TIMEOUT_H
 #define TIMEOUT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <boost/signals/signal0.hpp>
 
 /**

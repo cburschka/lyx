@@ -16,10 +16,6 @@
 #ifndef PREVIEWEDINSET_H
 #define PREVIEWEDINSET_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 #include <boost/weak_ptr.hpp>
 #include <boost/signals/trackable.hpp>

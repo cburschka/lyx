@@ -1,9 +1,5 @@
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "math_kerninset.h"
 #include "math_extern.h"
 #include "math_mathmlstream.h"

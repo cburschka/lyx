@@ -26,10 +26,6 @@
 #include <list>
 #include <vector>
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 class ForkedProcess;
 class Timeout;
 

@@ -14,10 +14,6 @@
 #ifndef CONTROLGRAPHICS_H
 #define CONTROLGRAPHICS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ControlInset.h"
 
 // needed to instatiate inset->hideDialog in ControlInset

@@ -4,10 +4,6 @@
 
 #include "math_nestinset.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 /** Old-style font changes
  *  \author André Pönitz
  *

@@ -9,10 +9,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #ifdef USE_PSPELL
 
 #include "support/LAssert.h"

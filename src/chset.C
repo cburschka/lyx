@@ -1,9 +1,5 @@
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "chset.h"
 #include "support/filetools.h"
 #include "support/lyxlib.h"

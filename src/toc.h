@@ -16,10 +16,6 @@
 #ifndef TOC_H
 #define TOC_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <config.h>
 
 #include "support/LOstream.h"

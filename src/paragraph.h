@@ -9,10 +9,6 @@
 #ifndef PARAGRAPH_H
 #define PARAGRAPH_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "lyxlayout_ptr_fwd.h"
 #include "lyxfont.h" // Just for LyXFont::FONT_SIZE
 #include "InsetList.h"

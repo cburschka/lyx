@@ -2,10 +2,6 @@
 #ifndef MATH_EXINTINSET_H
 #define MATH_EXINTINSET_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 // \int_l^u f(x) dx in one block (as opposed to 'f','(','x',')' or 'f','x')
 // or \sum, \prod...  for interfacing external programs
 

@@ -12,10 +12,6 @@
 #ifndef QWRAP_H
 #define QWRAP_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "Qt2Base.h"
 
 class ControlWrap;

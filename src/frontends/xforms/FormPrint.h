@@ -14,11 +14,6 @@
 #ifndef FORMPRINT_H
 #define FORMPRINT_H
 
-
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "FormBase.h"
 #include "RadioButtonGroup.h"
 

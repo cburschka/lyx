@@ -12,10 +12,6 @@
 #ifndef FORMFORKS_H
 #define FORMFORKS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "FormBase.h"
 
 class ControlForks;

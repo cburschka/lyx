@@ -11,10 +11,6 @@
  *  Full author contact details are available in file CREDITS.
  */
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #ifndef COMMAND_INSET_H
 #define COMMAND_INSET_H
 

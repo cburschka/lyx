@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "insetcaption.h"
 #include "frontends/Painter.h"
 #include "frontends/font_metrics.h"

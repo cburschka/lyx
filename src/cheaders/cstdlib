@@ -5,10 +5,6 @@
 #define __CSTDLIB__
 #include <stdlib.h>
 
-#ifdef __GNUG__
-#pragma interface "cstdlib"
-#endif
-
 extern "C++" {
 
 #if _G_HAS_LABS

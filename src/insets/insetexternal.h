@@ -12,10 +12,6 @@
 #ifndef INSET_EXTERNAL_H
 #define INSET_EXTERNAL_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "insetbutton.h"
 #include "ExternalTemplate.h"
 #include "LString.h"

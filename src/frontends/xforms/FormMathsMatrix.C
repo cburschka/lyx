@@ -13,10 +13,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "FormMathsMatrix.h"
 #include "forms/form_maths_matrix.h"
 #include "ControlMath.h"

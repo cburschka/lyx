@@ -4,10 +4,6 @@
 
 #include "math_gridinset.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 /** for proof.sty's \infer
  *  \author André Poenitz
  *

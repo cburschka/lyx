@@ -12,10 +12,6 @@
 #ifndef FORMREF_H
 #define FORMREF_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "FormBase.h"
 
 class ControlRef;

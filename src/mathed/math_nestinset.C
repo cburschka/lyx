@@ -1,7 +1,3 @@
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "math_nestinset.h"
 #include "math_cursor.h"
 #include "math_mathmlstream.h"

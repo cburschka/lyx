@@ -1,9 +1,5 @@
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "math_braceinset.h"
 #include "math_parser.h"
 #include "math_support.h"

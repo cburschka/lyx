@@ -17,10 +17,6 @@
 
 #include "formulabase.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 class MathMacroTemplate;
 
 // An InsetFormulaMacro only knows its name and asks the global

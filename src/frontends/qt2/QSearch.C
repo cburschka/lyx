@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "LyXView.h"
 #include "ControlSearch.h"
 #include "qt_helpers.h"

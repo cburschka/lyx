@@ -9,10 +9,6 @@
  */
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "insetfloatlist.h"
 #include "FloatList.h"
 #include "LaTeXFeatures.h"

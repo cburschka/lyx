@@ -12,10 +12,6 @@
 #ifndef INSET_LABEL_H
 #define INSET_LABEL_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "insetcommand.h"
 
 class InsetLabel : public InsetCommand {

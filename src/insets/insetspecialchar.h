@@ -14,10 +14,6 @@
 #ifndef INSET_SPECIALCHAR_H
 #define INSET_SPECIALCHAR_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "inset.h"
 #include "LString.h"
 

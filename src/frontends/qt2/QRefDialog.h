@@ -13,10 +13,6 @@
 #ifndef QREFDIALOG_H
 #define QREFDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ui/QRefDialogBase.h"
 
 class QRef;

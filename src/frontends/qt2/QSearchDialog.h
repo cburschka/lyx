@@ -12,10 +12,6 @@
 #ifndef QSEARCHDIALOG_H
 #define QSEARCHDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ui/QSearchDialogBase.h"
 #include "LString.h"
 

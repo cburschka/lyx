@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation "Variables.h"
-#endif
-
 #include "Variables.h"
 #include "support/LRegex.h"
 

@@ -11,10 +11,6 @@
 #ifndef LYX_GLUE_LENGTH_H
 #define LYX_GLUE_LENGTH_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "lyxlength.h"
 
 #include "LString.h"

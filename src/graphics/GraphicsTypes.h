@@ -15,10 +15,6 @@
 #ifndef GRAPHICSTYPES_H
 #define GRAPHICSTYPES_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "support/translator.h"
 
 namespace grfx {

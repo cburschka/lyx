@@ -14,10 +14,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "FormMathsStyle.h"
 #include "forms/form_maths_style.h"
 #include "ControlMath.h"

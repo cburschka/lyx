@@ -12,10 +12,6 @@
 #ifndef CONTROLPREFS_H
 #define CONTROLPREFS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ControlDialog_impl.h"
 #include "LString.h"
 #include "funcrequest.h"

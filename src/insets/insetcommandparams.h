@@ -12,10 +12,6 @@
 #ifndef INSETCOMMANDPARAMS_H
 #define INSETCOMMANDPARAMS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <config.h>
 
 #include "LString.h"

@@ -13,11 +13,6 @@
 #ifndef INSET_GRAPHICS_H
 #define INSET_GRAPHICS_H
 
-
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "insets/inset.h"
 #include "insets/insetgraphicsParams.h"
 

@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "xforms_resize.h"
 #include "support/LAssert.h"
 #include <algorithm> // std::max. Use FL_max in .c code...

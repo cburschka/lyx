@@ -12,10 +12,6 @@
 #ifndef TEX_ACCENT
 #define TEX_ACCENT
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "commandtags.h"
 
 /* the names used by TeX and XWindows for deadkeys/accents are not the same

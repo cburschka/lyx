@@ -5,10 +5,6 @@
 #include "math_nestinset.h"
 #include "math_nestinset.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 /** An inset for multiplication
  *  \author André Pönitz
  *

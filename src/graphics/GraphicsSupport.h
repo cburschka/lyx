@@ -12,10 +12,6 @@
 #ifndef GRAPHICSSUPPORT_H
 #define GRAPHICSSUPPORT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "support/types.h"
 #include <list>
 

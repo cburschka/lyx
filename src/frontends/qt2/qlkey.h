@@ -12,10 +12,6 @@
 #ifndef QLKEY_H
 #define QLKEY_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <qnamespace.h>
 #include "LString.h"
 

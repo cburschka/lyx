@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "ControlFloat.h"
 #include "QFloatDialog.h"
 #include "QFloat.h"

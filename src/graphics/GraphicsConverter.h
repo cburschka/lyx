@@ -17,10 +17,6 @@
 #ifndef GRAPHICSCONVERTER_H
 #define GRAPHICSCONVERTER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 #include <boost/signals/signal1.hpp>
 #include <boost/scoped_ptr.hpp>

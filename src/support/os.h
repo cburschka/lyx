@@ -3,10 +3,6 @@
 #ifndef OS_H
 #define OS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 
 /// Do we need a base class for this?

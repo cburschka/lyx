@@ -18,10 +18,6 @@
 
 #include <vector>
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 class LyXFunc;
 
 /**

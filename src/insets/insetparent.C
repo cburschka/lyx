@@ -13,11 +13,6 @@
 
 #include <config.h>
 
-
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "insetparent.h"
 #include "support/filetools.h"
 #include "BufferView.h"

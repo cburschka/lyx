@@ -1,8 +1,5 @@
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
 #include <algorithm>
 
 #include "lyxlex_pimpl.h"

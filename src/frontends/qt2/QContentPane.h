@@ -12,10 +12,6 @@
 #ifndef QCONTENTPANE_H
 #define QCONTENTPANE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #ifdef emit
 #undef emit
 #endif

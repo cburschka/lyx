@@ -12,10 +12,6 @@
 #ifndef INSET_ERROR_H
 #define INSET_ERROR_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "inset.h"
 #include "LString.h"
 

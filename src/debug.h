@@ -12,10 +12,6 @@
 #ifndef LYXDEBUG_H
 #define LYXDEBUG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <iosfwd>
 
 #include "LString.h"

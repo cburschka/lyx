@@ -13,10 +13,6 @@
 #ifndef QPARAGRAPH_H
 #define QPARAGRAPH_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "Qt2Base.h"
 #include <vector>
 

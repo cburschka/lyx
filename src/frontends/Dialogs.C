@@ -11,10 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "Dialogs.h"
 
 // Note that static boost signals break some compilers, so this wrapper

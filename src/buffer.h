@@ -13,10 +13,6 @@
 #ifndef BUFFER_H
 #define BUFFER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 #include "undo.h"
 #include "support/limited_stack.h"

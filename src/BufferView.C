@@ -9,10 +9,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "BufferView.h"
 #include "BufferView_pimpl.h"
 

@@ -11,10 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "xformsBC.h"
 #include "ControlUrl.h"
 #include "FormUrl.h"

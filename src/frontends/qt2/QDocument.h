@@ -13,10 +13,6 @@
 #ifndef QDOCUMENT_H
 #define QDOCUMENT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "Qt2Base.h"
 #include "Qt2BC.h"
 

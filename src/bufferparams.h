@@ -12,10 +12,6 @@
 #ifndef BUFFERPARAMS_H
 #define BUFFERPARAMS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 #include "vspace.h"
 #include "Spacing.h"

@@ -10,11 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
-
 #include "Dialogs.h"
 
 #include "GUI.h"

@@ -10,10 +10,6 @@
 #ifndef VSPACE_H
 #define VSPACE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "lyxgluelength.h"
 
 #include "LString.h"

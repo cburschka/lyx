@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "insetfootlike.h"
 #include "lyxfont.h"
 #include "buffer.h"

@@ -13,10 +13,6 @@
 #ifndef QPRINT_H
 #define QPRINT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "Qt2Base.h"
 
 class ControlPrint;

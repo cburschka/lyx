@@ -28,10 +28,6 @@
 #ifndef GRAPHICSCACHEITEM_H
 #define GRAPHICSCACHEITEM_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "GraphicsTypes.h"
 #include "LString.h"
 

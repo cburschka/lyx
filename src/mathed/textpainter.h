@@ -1,10 +1,6 @@
 #ifndef TEXTPAINTER_H
 #define TEXTPAINTER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <vector>
 #include <iosfwd>
 

@@ -17,10 +17,6 @@
 #ifndef MATH_MACRO_H
 #define MATH_MACRO_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "math_nestinset.h"
 #include "math_metricsinfo.h"
 #include "math_macroarg.h"

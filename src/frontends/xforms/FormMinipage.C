@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "xformsBC.h"
 #include "ControlMinipage.h"
 #include "FormMinipage.h"

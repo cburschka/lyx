@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "QSpellcheckerDialog.h"
 #include "QSpellchecker.h"
 #include "qt_helpers.h"

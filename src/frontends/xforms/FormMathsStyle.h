@@ -14,10 +14,6 @@
 #ifndef FORM_MATHSSTYLE_H
 #define FORM_MATHSSTYLE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "FormBase.h"
 
 class ControlMathSub;

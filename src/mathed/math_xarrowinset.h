@@ -5,10 +5,6 @@
 #include "math_fracbase.h"
 #include "LString.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 /** Wide arrows like \xrightarrow
  *  \author André Pönitz
  *

@@ -13,10 +13,6 @@
 #ifndef INSETMARGINAL_H
 #define INSETMARGINAL_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "insetfootlike.h"
 
 /** The marginal note inset

@@ -1,10 +1,6 @@
 #ifndef MATH_MATHMLSTREAM_H
 #define MATH_MATHMLSTREAM_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 // Please keep all four streams in one file until the interface has
 // settled.
 

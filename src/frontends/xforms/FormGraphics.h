@@ -13,10 +13,6 @@
 #ifndef FORMGRAPHICS_H
 #define FORMGRAPHICS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "FormBase.h"
 
 #include <boost/scoped_ptr.hpp>

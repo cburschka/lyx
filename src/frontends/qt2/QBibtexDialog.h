@@ -12,10 +12,6 @@
 #ifndef QBIBTEXDIALOG_H
 #define QBIBTEXDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ui/QBibtexDialogBase.h"
 
 class QBibtex;

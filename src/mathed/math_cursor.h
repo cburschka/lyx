@@ -17,10 +17,6 @@
 #ifndef MATH_CURSOR
 #define MATH_CURSOR
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "math_inset.h"
 #include "math_iterator.h"
 #include "LString.h"

@@ -13,10 +13,6 @@
 #include <config.h>
 #include <algorithm>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "debug.h"
 
 #include "xformsBC.h"

@@ -12,10 +12,6 @@
 #ifndef QBIBITEM_H
 #define QBIBITEM_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "Qt2Base.h"
 
 class ControlBibitem;

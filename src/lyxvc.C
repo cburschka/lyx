@@ -1,9 +1,5 @@
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "lyxvc.h"
 #include "vc-backend.h"
 #include "debug.h"

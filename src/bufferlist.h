@@ -9,10 +9,6 @@
 #ifndef BUFFER_LIST_H
 #define BUFFER_LIST_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 
 #include <boost/utility.hpp>

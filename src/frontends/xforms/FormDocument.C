@@ -11,10 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "ControlDocument.h"
 #include "FormDocument.h"
 #include "forms/form_document.h"

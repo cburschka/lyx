@@ -10,10 +10,6 @@
 #ifndef BUFFER_VIEW_H
 #define BUFFER_VIEW_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 #include "undo.h"
 

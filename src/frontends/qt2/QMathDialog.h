@@ -12,10 +12,6 @@
 #ifndef QMATHDIALOG_H
 #define QMATHDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ui/QMathDialogBase.h"
 #include "LString.h"
 

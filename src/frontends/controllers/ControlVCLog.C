@@ -11,10 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "ControlVCLog.h"
 #include "ButtonControllerBase.h"
 #include "buffer.h"

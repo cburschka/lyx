@@ -5,10 +5,6 @@
 #include "math_nestinset.h"
 #include "LString.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 class MathMacro;
 
 /** This class contains the macro definition

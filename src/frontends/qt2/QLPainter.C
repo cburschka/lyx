@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "font_metrics.h"
 #include "support/lstrings.h"
 #include "lyxrc.h"

@@ -1,7 +1,3 @@
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "math_diffinset.h"
 #include "math_support.h"
 #include "math_mathmlstream.h"

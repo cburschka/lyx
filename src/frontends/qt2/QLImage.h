@@ -13,10 +13,6 @@
 #ifndef QLIMAGE_H
 #define QLIMAGE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "graphics/GraphicsImage.h"
 
 #include <qpixmap.h>

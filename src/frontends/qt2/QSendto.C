@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "Qt2BC.h"
 #include "ControlSendto.h"
 #include "QSendtoDialog.h"

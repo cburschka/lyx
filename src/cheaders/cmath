@@ -7,10 +7,6 @@
 
 #include <math.h>
 
-#ifdef __GNUG__
-#pragma interface "cmath"
-#endif
-
 namespace std {
 	inline float  abs (float  x) { return fabs (x); }
 	inline double abs (double x) { return fabs (x); }

@@ -12,10 +12,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "FormAboutlyx.h"
 #include "xformsBC.h"
 #include "ControlAboutlyx.h"

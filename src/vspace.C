@@ -8,10 +8,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "vspace.h"
 #include "lengthcommon.h"
 #include "buffer.h"

@@ -11,10 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "QLImage.h"
 #include "graphics/GraphicsParams.h"
 #include "converter.h"

@@ -12,10 +12,6 @@
 #ifndef FDESIGN_BASE_H
 #define FDESIGN_BASE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "forms_fwd.h"
 
 /// A base class for the fdesign-generated structs

@@ -13,10 +13,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "FormMathsSpace.h"
 #include "forms/form_maths_space.h"
 #include "ControlMath.h"

@@ -12,10 +12,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "ControlCommandBuffer.h"
 #include "support/lyxalgo.h"
 #include "support/lstrings.h"

@@ -15,10 +15,6 @@
 #ifndef QTABULAR_H
 #define QTABULAR_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "Qt2Base.h"
 
 class ControlTabular;

@@ -32,10 +32,6 @@ following hack as starting point to write some macros:
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "math_parser.h"
 #include "math_inset.h"
 #include "math_arrayinset.h"

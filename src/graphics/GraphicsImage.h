@@ -33,10 +33,6 @@
 #include <vector>
 #include <utility>
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 namespace grfx {
 
 class Params;

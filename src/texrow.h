@@ -11,10 +11,6 @@
 #ifndef TEXROW_H
 #define TEXROW_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <list>
 
 class Paragraph;

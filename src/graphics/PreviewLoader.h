@@ -18,10 +18,6 @@
 #ifndef PREVIEWLOADER_H
 #define PREVIEWLOADER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 #include <boost/utility.hpp>
 #include <boost/scoped_ptr.hpp>

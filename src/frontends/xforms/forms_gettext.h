@@ -12,10 +12,6 @@
 #ifndef FORMS_GETTEXT_H
 #define FORMS_GETTEXT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 
 /// Extract shortcut from "<identifer>|<shortcut>" string

@@ -14,10 +14,6 @@
 #ifndef FORMEXTERNAL_H
 #define FORMEXTERNAL_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "FormBase.h"
 #include "insets/insetexternal.h"
 

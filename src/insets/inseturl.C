@@ -9,10 +9,6 @@
  */
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "inseturl.h"
 #include "BufferView.h"
 #include "LaTeXFeatures.h"

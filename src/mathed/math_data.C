@@ -1,9 +1,5 @@
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "math_data.h"
 #include "math_inset.h"
 #include "math_cursor.h"

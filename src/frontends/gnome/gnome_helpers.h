@@ -12,10 +12,6 @@
 #ifndef GNOME_HELPERS_H
 #define GNOME_HELPERS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "debug.h"
 
 #undef Status

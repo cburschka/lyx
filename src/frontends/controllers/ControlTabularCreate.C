@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "ControlTabularCreate.h"
 #include "ViewBase.h"
 #include "ButtonControllerBase.h"

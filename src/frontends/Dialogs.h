@@ -11,10 +11,6 @@
 #ifndef DIALOGS_H
 #define DIALOGS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 
 #include <boost/utility.hpp>

@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "checkedwidgets.h"
 #include "xforms_helpers.h"
 #include "lyxlength.h"

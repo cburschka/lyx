@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "xformsImage.h"
 #include "graphics/GraphicsParams.h"
 #include "LColor.h"

@@ -10,10 +10,6 @@
 #ifndef LYXCURSOR_H
 #define LYXCURSOR_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "support/types.h"
 
 class Paragraph;

@@ -10,13 +10,8 @@
  * Full author contact details are available in file CREDITS
  */
 
-
 #ifndef MENUBAR_PIMPL_H
 #define MENUBAR_PIMPL_H
-
-#ifdef __GNUG__
-#pragma interface
-#endif
 
 #include "frontends/Menubar.h"
 #include "LString.h"

@@ -14,10 +14,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "math_atom.h"
 #include "math_inset.h"
 

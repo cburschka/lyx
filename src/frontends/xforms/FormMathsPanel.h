@@ -14,10 +14,6 @@
 #ifndef FORM_MATHSPANEL_H
 #define FORM_MATHSPANEL_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "FormBase.h"
 
 class ControlMath;

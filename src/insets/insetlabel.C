@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "insetlabel.h"
 #include "support/LOstream.h"
 #include "frontends/Alert.h"

@@ -14,10 +14,6 @@
 #include "ControlPrefs.h"
 #include "QPrefs.h"
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "QPrefsDialog.h"
 
 #include "ui/QPrefAsciiModule.h"

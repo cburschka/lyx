@@ -4,10 +4,6 @@
 
 #include "math_gridinset.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 /** This provides an interface between "LyX insets" and "LyX math insets"
  *  \author André Pönitz
  *

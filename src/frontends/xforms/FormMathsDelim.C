@@ -13,10 +13,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "FormMathsDelim.h"
 #include "forms/form_maths_delim.h"
 #include "ControlMath.h"

@@ -8,10 +8,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "BufferView_pimpl.h"
 #include "frontends/WorkArea.h"
 #include "frontends/screen.h"

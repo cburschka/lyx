@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "language.h"
 #include "gettext.h"
 #include "encoding.h"

@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "FormFiledialog.h"
 #include "frontends/FileDialog.h"
 // temp. hack until Allow/prohibitInput is not

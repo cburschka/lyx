@@ -12,10 +12,6 @@
 #ifndef QTOCDIALOG_H
 #define QTOCDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ui/QTocDialogBase.h"
 
 class QToc;

@@ -4,10 +4,6 @@
 
 #include "math_diminset.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 /** Some inset that "is" a number
  *  maily for math-extern
  *  \author André Pönitz

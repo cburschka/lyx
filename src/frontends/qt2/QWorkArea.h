@@ -13,10 +13,6 @@
 #ifndef QWORKAREA_H
 #define QWORKAREA_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "WorkArea.h"
 #include "QLPainter.h"
 #include "QContentPane.h"

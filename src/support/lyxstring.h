@@ -21,10 +21,6 @@
 #ifndef LYXSTRING_H
 #define LYXSTRING_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <iosfwd>
 
 #if 0

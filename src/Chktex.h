@@ -16,10 +16,6 @@
 #ifndef CHKTEX_H
 #define CHKTEX_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 
 class LyXLex;

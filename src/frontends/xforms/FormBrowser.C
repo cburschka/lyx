@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "FormBrowser.h"
 #include "forms/form_browser.h"
 #include "xformsBC.h"

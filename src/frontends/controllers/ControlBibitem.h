@@ -13,10 +13,6 @@
 #ifndef CONTROLBIBITEM_H
 #define CONTROLBIBITEM_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ControlCommand.h"
 
 /** A controller for Bibitem dialogs.

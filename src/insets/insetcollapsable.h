@@ -14,10 +14,6 @@
 #ifndef INSETCOLLAPSABLE_H
 #define INSETCOLLAPSABLE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "inset.h"
 #include "insettext.h"
 #include "lyxfont.h"

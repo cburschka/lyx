@@ -12,10 +12,6 @@
 #ifndef TOOLBAR_H
 #define TOOLBAR_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 
 class LyXView;

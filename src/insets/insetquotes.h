@@ -12,10 +12,6 @@
 #ifndef INSET_QUOTES_H
 #define INSET_QUOTES_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "inset.h"
 
 class BufferParams;

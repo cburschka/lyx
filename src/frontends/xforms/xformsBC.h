@@ -16,10 +16,6 @@
 
 #include "forms_fwd.h"
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ButtonController.h"
 
 class xformsBC : public GuiBC<FL_OBJECT, FL_OBJECT> {

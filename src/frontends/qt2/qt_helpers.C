@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "support/lstrings.h"
 #include "gettext.h"
 #include "qt_helpers.h"

@@ -12,10 +12,6 @@
 #ifndef CONTROLDOCUMENT_H
 #define CONTROLDOCUMENT_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <boost/scoped_ptr.hpp>
 #include "ControlDialog_impl.h"
 #include "LString.h"

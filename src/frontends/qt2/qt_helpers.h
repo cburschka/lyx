@@ -12,10 +12,6 @@
 #ifndef QTHELPERS_H
 #define QTHELPERS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 
 #include <utility>

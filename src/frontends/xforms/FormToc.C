@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "FormToc.h"
 #include "xformsBC.h"
 #include "xforms_helpers.h"

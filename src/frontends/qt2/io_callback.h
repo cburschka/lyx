@@ -13,10 +13,6 @@
 #ifndef IO_CALLBACK_H
 #define IO_CALLBACK_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <qobject.h>
 #include <qsocketnotifier.h>
 #include <boost/scoped_ptr.hpp>

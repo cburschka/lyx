@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "lyxfunc.h"
 #include "version.h"
 #include "kbmap.h"

@@ -12,10 +12,6 @@
 #ifndef QLPAINTER_H
 #define QLPAINTER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "Painter.h"
 #include "LString.h"
 #include "LColor.h"

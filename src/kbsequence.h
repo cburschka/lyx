@@ -8,10 +8,6 @@
 #ifndef KBSEQUENCE_H
 #define KBSEQUENCE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <config.h>
 
 #include "frontends/key_state.h"

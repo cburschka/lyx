@@ -12,10 +12,6 @@
 #ifndef QBIBITEMDIALOG_H
 #define QBIBITEMDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ui/QBibitemDialogBase.h"
 
 class QBibitem;

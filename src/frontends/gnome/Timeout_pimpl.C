@@ -11,10 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include <gtkmm/main.h>
 #include "Timeout_pimpl.h"
 #include "debug.h"

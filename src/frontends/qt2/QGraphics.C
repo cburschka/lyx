@@ -12,10 +12,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "QtLyXView.h"
 #include "ControlGraphics.h"
 #include "controllers/helper_funcs.h"

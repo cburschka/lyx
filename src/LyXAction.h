@@ -8,10 +8,6 @@
 #ifndef LYXACTION_H
 #define LYXACTION_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <map>
 
 #include "funcrequest.h"

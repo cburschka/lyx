@@ -19,10 +19,6 @@
 #ifndef MATH_PARSER_H
 #define MATH_PARSER_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 
 class MathAtom;

@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "ControlThesaurus.h"
 #include "QThesaurusDialog.h"
 #include "QThesaurus.h"

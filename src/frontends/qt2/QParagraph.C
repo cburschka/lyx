@@ -10,10 +10,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "ControlParagraph.h"
 #include "QParagraph.h"
 #include "QParagraphDialog.h"

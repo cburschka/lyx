@@ -12,10 +12,6 @@
 #ifndef BIBLIOHELPERS_H
 #define BIBLIOHELPERS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 #include <map>
 #include <vector>

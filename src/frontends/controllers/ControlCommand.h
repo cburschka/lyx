@@ -20,10 +20,6 @@
 #ifndef CONTROLCOMMAND_H
 #define CONTROLCOMMAND_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ControlInset.h"
 #include "insets/insetcommand.h"
 #include "commandtags.h" // kb_action

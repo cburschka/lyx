@@ -12,10 +12,6 @@
 #ifndef QABOUTDIALOG_H
 #define QABOUTDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ui/QAboutDialogBase.h"
 
 class QAboutDialog : public QAboutDialogBase {

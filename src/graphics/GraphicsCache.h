@@ -19,10 +19,6 @@
 #ifndef GRAPHICSCACHE_H
 #define GRAPHICSCACHE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 #include <vector>
 #include <boost/utility.hpp>

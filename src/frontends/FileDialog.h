@@ -13,10 +13,6 @@
 #ifndef FILEDIALOG_H
 #define FILEDIALOG_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <utility>
 
 #include "commandtags.h"

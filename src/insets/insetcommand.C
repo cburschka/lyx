@@ -11,10 +11,6 @@
 
 #include <config.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "insetcommand.h"
 #include "debug.h"
 #include "frontends/Painter.h"

@@ -12,10 +12,6 @@
 #ifndef FORMSENDTO_H
 #define FORMSENDTO_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "FormBase.h"
 #include <vector>
 

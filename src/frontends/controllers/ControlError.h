@@ -12,10 +12,6 @@
 #ifndef CONTROLERROR_H
 #define CONTROLERROR_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "ControlInset.h"
 #include "insets/inseterror.h" // needed for proper instantiation of GUI<>.
 

@@ -12,10 +12,6 @@
 #ifndef EXTERNALTEMPLATE_H
 #define EXTERNALTEMPLATE_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include <iosfwd>
 #include <map>
 #include "LString.h"

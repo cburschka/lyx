@@ -11,10 +11,6 @@
 #ifndef TEX_HELPERS_H
 #define TEX_HELPERS_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "LString.h"
 
 // build filelists of all availabe bst/cls/sty-files. done through

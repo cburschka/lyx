@@ -12,10 +12,6 @@
 #ifndef QTEXINFO_H
 #define QTEXINFO_H
 
-#ifdef __GNUG__
-#pragma interface
-#endif
-
 #include "Qt2Base.h"
 
 #include "ControlTexinfo.h"

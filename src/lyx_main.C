@@ -9,10 +9,6 @@
 #include <config.h>
 #include <version.h>
 
-#ifdef __GNUG__
-#pragma implementation
-#endif
-
 #include "lyx_main.h"
 
 #include "support/filetools.h"
