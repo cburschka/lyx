@@ -49,8 +49,8 @@ public:
 	///
 	ParIterator(DocIterator const &);
 
-	///
-	void operator=(ParIterator const &);
+	/// This really should be implemented...
+	//void operator=(ParIterator const &);
 	///
 	ParIterator & operator++();
 	///

@@ -1,5 +1,13 @@
 2004-11-17  Lars Gullik Bjonnes  <larsbj@gullik.net>
 
+	* pariterator.h (operatir=): comment out un-implemented member
+	function. 
+
+	* paragraph.h: resolv ambiguity found by gcc 4.0 with the use of a
+	static cast.
+
+2004-11-17  Lars Gullik Bjonnes  <larsbj@gullik.net>
+
 	* lyxfont.h: include LColor.h to satisfy concept checks.
 
 2004-11-16  Lars Gullik Bjonnes  <larsbj@gullik.net>
