@@ -30,12 +30,12 @@ FloatList::FloatList()
 	// (these will later be read from a layout file)
 
 	// table
-	Floating table("table", "htbp", "lot", "", "plain", N_("Table"),
+	Floating table("table", "tbp", "lot", "", "plain", N_("Table"),
 		       N_("List of Tables"), true);
 	newFloat(table);
 
 	// figure
-	Floating figure("figure", "htbp", "lof",
+	Floating figure("figure", "tbp", "lof",
 			"", "plain", N_("Figure"), 
 			N_("List of Figures"), true);
 	newFloat(figure);

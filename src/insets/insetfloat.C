@@ -154,10 +154,7 @@ void InsetFloat::write(Buffer const * buf, ostream & os) const
 	os << "Float " // getInsetName()
 	   << floatType_ << '\n';
 
-	if (floatPlacement_.empty()) {
-		os << "placement "
-		   << floatList.getType(floatType_).placement() << "\n";
-	} else {
+	if (!floatPlacement_.empty()) {
 		os << "placement " << floatPlacement_ << "\n";
 	}
 	if (wide_) {
@@ -179,8 +176,6 @@ void InsetFloat::read(Buffer const * buf, LyXLex & lex)
 			lex.next();
 			floatPlacement_ = lex.getString();
 		} else {
-			lyxerr << "InsetFloat::Read: Missing placement!"
-			       << endl;
 			// take countermeasures
 			lex.pushToken(token);
 		}

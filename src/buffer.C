@@ -803,34 +803,29 @@ Buffer::parseSingleLyXformat2Token(LyXLex & lex, Paragraph *& par,
 			old_float << "collapsed true\n";
 		} else if (tmptok == "fig") {
 			inset = new InsetFloat(params, "figure");
-			old_float << "placement htbp\n"
-				  << "wide false\n"
+			old_float << "wide false\n"
 				  << "collapsed false\n";
 		} else if (tmptok == "tab") {
 			inset = new InsetFloat(params, "table");
-			old_float << "placement htbp\n"
-				  << "wide false\n"
+			old_float << "wide false\n"
 				  << "collapsed false\n";
 		} else if (tmptok == "alg") {
 			inset = new InsetFloat(params, "algorithm");
-			old_float << "placement htbp\n"
-				  << "wide false\n"
+			old_float << "wide false\n"
 				  << "collapsed false\n";
 		} else if (tmptok == "wide-fig") {
 			inset = new InsetFloat(params, "figure");
 			//InsetFloat * tmp = new InsetFloat("figure");
 			//tmp->wide(true);
 			//inset = tmp;
-			old_float << "placement htbp\n"
-				  << "wide true\n"
+			old_float << "wide true\n"
 				  << "collapsed false\n";
 		} else if (tmptok == "wide-tab") {
 			inset = new InsetFloat(params, "table");
 			//InsetFloat * tmp = new InsetFloat("table");
 			//tmp->wide(true);
 			//inset = tmp;
-			old_float << "placement htbp\n"
-				  << "wide true\n"
+			old_float << "wide true\n"
 				  << "collapsed false\n";
 		}
 
