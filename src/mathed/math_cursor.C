@@ -45,6 +45,7 @@
 
 static MathedArray selarray;
 
+using std::cerr;
 using std::endl;
 
 // This was very smaller, I'll change it later
