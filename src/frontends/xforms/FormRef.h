@@ -40,7 +40,7 @@ private:
 	virtual void update();
 	/// Not used but must be instantiated
 	virtual void apply();
-	/// Pointer to the actual instantiation of the xform's form
+	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
 
 	///

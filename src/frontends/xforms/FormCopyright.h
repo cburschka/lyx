@@ -37,7 +37,7 @@ public:
 private:
 	/// Build the dialog
 	virtual void build();
-	/// Pointer to the actual instantiation of the xform's form
+	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
 	/// Fdesign generated method
 	FD_form_copyright * build_copyright();

@@ -48,7 +48,7 @@ private:
 	virtual void update();
 	/// Apply from dialog (modify or create inset)
 	virtual void apply();
-	/// Pointer to the actual instantiation of the xform's form
+	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
 
 	/// Type definition from the fdesign produced header file.

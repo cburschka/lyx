@@ -36,7 +36,7 @@ public:
 
 private:
 	/** Redraw the form (on receipt of a Signal indicating, for example,
-	    that the xform colours have been re-mapped). */
+	    that the xforms colours have been re-mapped). */
 	virtual void redraw();
 	/// Disconnect signals. Also perform any necessary housekeeping.
 	virtual void disconnect();
@@ -51,7 +51,7 @@ private:
 	virtual void build();
 	/// Filter the inputs
 	virtual bool input(FL_OBJECT *, long);
-	/// Pointer to the actual instantiation of the xform's form
+	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
 
 	/// Fdesign generated methods

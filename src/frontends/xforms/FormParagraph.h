@@ -36,7 +36,7 @@ public:
 
 private:
 	/** Redraw the form (on receipt of a Signal indicating, for example,
-	    that the xform colours have been re-mapped). */
+	    that the xforms colours have been re-mapped). */
 	virtual void redraw();
 	/// Build the popup
 	virtual void build();

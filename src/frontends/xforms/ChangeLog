@@ -1,3 +1,27 @@
+2001-03-05  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* xform_helpers.[Ch]: renamed as xforms_helpers.[Ch].
+
+	* various: in a rush of delayed guilt, I've renamed all instances of
+	xform as xforms. Jean-Marc sowed this seed a long, long time ago and it
+	finally sprouted.
+
+	* xforms_helpers.[Ch] (setEnabled): a little wrapper function to
+	activate/deactivate an FL_OBJECT.
+
+	* FormCitation.C:
+	* FormDocument.C:
+	* FormInclude.C:
+	* FormParagraph.C:
+	* FormPreamble.C:
+	* FormPreferences.C:
+	* FormRef.C:
+	* FormTabular.C: used it.
+
+2001-03-05  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormPreferences.C: removed three unused using directives.
+
 2001-02-27  Dekel Tsur  <dekelts@tau.ac.il>
 
 	* FormRef.C: Fixed the behaviour of Goto-Ref.

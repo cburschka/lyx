@@ -24,6 +24,7 @@
 #include "buffer.h"
 #include "lyxrc.h" 
 #include "lyxfunc.h" 
+#include "xforms_helpers.h" 
  
 #include "form_include.h"
 
@@ -198,15 +199,13 @@ bool FormInclude::input(FL_OBJECT *, long data)
 			break;
 
 		case VERBATIM:
-			fl_activate_object(dialog_->flag41);
-			fl_set_object_lcol(dialog_->flag41, FL_BLACK); 
+			setEnabled(dialog_->flag41, true);
 			break;
 	 
 		case INPUTINCLUDE:
 			cout << "inputinclude" << endl;
 			/* huh ? why doesn't this work ? */ 
-			fl_deactivate_object(dialog_->flag41);
-			fl_set_object_lcol(dialog_->flag41, FL_INACTIVE);
+			setEnabled(dialog_->flag41, false);
 			fl_set_button(dialog_->flag41, 0);
 			break;
 	}

@@ -45,7 +45,7 @@ private:
    /// Update the popup.
    virtual void update();
    
-   /// Pointer to the actual instantiation of the xform's form
+   /// Pointer to the actual instantiation of the xforms form
    virtual FL_FORM * form() const;
 
    FD_form_character * build_character();

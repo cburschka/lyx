@@ -37,6 +37,7 @@
 #include "Liason.h"
 #include "CutAndPaste.h"
 #include "bufferview_funcs.h"
+#include "xforms_helpers.h" 
 
 #ifdef CXX_WORKING_NAMESPACES
 using Liason::setMinibuffer;
@@ -796,14 +797,10 @@ void FormDocument::bullets_update(BufferParams const & params)
     if (!bullets_ || ((XpmVersion<4) || (XpmVersion==4 && XpmRevision<7)))
         return;
 
-    if (lv_->buffer()->isLinuxDoc()) {
-	fl_deactivate_object(fbullet);
-	fl_set_object_lcol(fbullet, FL_INACTIVE);
-	return;
-    } else {
-	fl_activate_object(fbullet);
-	fl_set_object_lcol(fbullet, FL_BLACK);
-    }
+    bool const isLinuxDoc = lv_->buffer()->isLinuxDoc();
+    setEnabled(fbullet, !isLinuxDoc);
+
+    if (isLinuxDoc) return;
 
     fl_set_button(bullets_->radio_bullet_depth_1, 1);
     fl_set_input(bullets_->input_bullet_latex,

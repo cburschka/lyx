@@ -24,6 +24,7 @@
 #include "LyXView.h"
 #include "buffer.h"
 #include "lyxtext.h"
+#include "xforms_helpers.h"
 
 #ifdef CXX_WORKING_NAMESPACES
 using Liason::setMinibuffer;
@@ -441,19 +442,17 @@ void FormParagraph::general_update()
 		   added_space_bottom.keep());
     fl_set_button(general_->check_noindent,
 		  text->cursor.par()->FirstPhysicalPar()->noindent);
-    if (text->cursor.par()->FirstPhysicalPar()->InInset()) {
-	fl_set_button(general_->check_pagebreaks_top, 0);
-	fl_deactivate_object(general_->check_pagebreaks_top);
-	fl_set_object_lcol(general_->check_pagebreaks_top, FL_INACTIVE);
-	fl_set_button(general_->check_pagebreaks_bottom, 0);
-	fl_deactivate_object(general_->check_pagebreaks_bottom);
-	fl_set_object_lcol(general_->check_pagebreaks_bottom, FL_INACTIVE);
-    } else {
-	fl_activate_object(general_->check_pagebreaks_top);
-	fl_set_object_lcol(general_->check_pagebreaks_top, FL_BLACK);
-	fl_activate_object(general_->check_pagebreaks_bottom);
-	fl_set_object_lcol(general_->check_pagebreaks_bottom, FL_BLACK);
+
+    bool const enable = (!text->cursor.par()->FirstPhysicalPar()->InInset());
+
+    setEnabled(general_->check_pagebreaks_top,    enable);
+    setEnabled(general_->check_pagebreaks_bottom, enable);
+    
+    if (!enable) {
+	    fl_set_button(general_->check_pagebreaks_top, 0);
+	    fl_set_button(general_->check_pagebreaks_bottom, 0);
     }
+
 #else
         fl_set_input(general_->input_space_below, text->cursor.par()->
 		     added_space_bottom.length().asString().c_str());
@@ -474,10 +473,9 @@ void FormParagraph::extra_update()
 
     LyXParagraph * par = lv_->view()->text->cursor.par();
 
-    fl_activate_object(extra_->input_pextra_width);
-    fl_set_object_lcol(extra_->input_pextra_width, FL_BLACK);
-    fl_activate_object(extra_->input_pextra_widthp);
-    fl_set_object_lcol(extra_->input_pextra_widthp, FL_BLACK);
+    setEnabled(extra_->input_pextra_width,  true);
+    setEnabled(extra_->input_pextra_widthp, true);
+
     fl_set_input(extra_->input_pextra_width,
 		 par->pextra_width.c_str());
     fl_set_input(extra_->input_pextra_widthp,
@@ -501,49 +499,35 @@ void FormParagraph::extra_update()
 	fl_set_button(extra_->radio_pextra_indent, 1);
 	fl_set_button(extra_->radio_pextra_minipage, 0);
 	fl_set_button(extra_->radio_pextra_floatflt, 0);
-	fl_deactivate_object(extra_->radio_pextra_top);
-	fl_set_object_lcol(extra_->radio_pextra_top, FL_INACTIVE);
-	fl_deactivate_object(extra_->radio_pextra_middle);
-	fl_set_object_lcol(extra_->radio_pextra_middle, FL_INACTIVE);
-	fl_deactivate_object(extra_->radio_pextra_bottom);
-	fl_set_object_lcol(extra_->radio_pextra_bottom, FL_INACTIVE);
+	setEnabled(extra_->radio_pextra_top,    false);
+	setEnabled(extra_->radio_pextra_middle, false);
+	setEnabled(extra_->radio_pextra_bottom, false);
 	input(extra_->radio_pextra_indent, 0);
     } else if (par->pextra_type == LyXParagraph::PEXTRA_MINIPAGE) {
 	fl_set_button(extra_->radio_pextra_indent, 0);
 	fl_set_button(extra_->radio_pextra_minipage, 1);
 	fl_set_button(extra_->radio_pextra_floatflt, 0);
-	fl_activate_object(extra_->radio_pextra_top);
-	fl_set_object_lcol(extra_->radio_pextra_top, FL_BLACK);
-	fl_activate_object(extra_->radio_pextra_middle);
-	fl_set_object_lcol(extra_->radio_pextra_middle, FL_BLACK);
-	fl_activate_object(extra_->radio_pextra_bottom);
-	fl_set_object_lcol(extra_->radio_pextra_bottom, FL_BLACK);
+	setEnabled(extra_->radio_pextra_top,    true);
+	setEnabled(extra_->radio_pextra_middle, true);
+	setEnabled(extra_->radio_pextra_bottom, true);
 	input(extra_->radio_pextra_minipage, 0);
     } else if (par->pextra_type == LyXParagraph::PEXTRA_FLOATFLT) {
 	fl_set_button(extra_->radio_pextra_indent, 0);
 	fl_set_button(extra_->radio_pextra_minipage, 0);
 	fl_set_button(extra_->radio_pextra_floatflt, 1);
-	fl_deactivate_object(extra_->radio_pextra_top);
-	fl_set_object_lcol(extra_->radio_pextra_top, FL_INACTIVE);
-	fl_deactivate_object(extra_->radio_pextra_middle);
-	fl_set_object_lcol(extra_->radio_pextra_middle, FL_INACTIVE);
-	fl_deactivate_object(extra_->radio_pextra_bottom);
-	fl_set_object_lcol(extra_->radio_pextra_bottom, FL_INACTIVE);
+	setEnabled(extra_->radio_pextra_top,    false);
+	setEnabled(extra_->radio_pextra_middle, false);
+	setEnabled(extra_->radio_pextra_bottom, false);
 	input(extra_->radio_pextra_floatflt, 0);
     } else {
 	fl_set_button(extra_->radio_pextra_indent, 0);
 	fl_set_button(extra_->radio_pextra_minipage, 0);
 	fl_set_button(extra_->radio_pextra_floatflt, 0);
-	fl_deactivate_object(extra_->input_pextra_width);
-	fl_set_object_lcol(extra_->input_pextra_width, FL_INACTIVE);
-	fl_deactivate_object(extra_->input_pextra_widthp);
-	fl_set_object_lcol(extra_->input_pextra_widthp, FL_INACTIVE);
-	fl_deactivate_object(extra_->radio_pextra_top);
-	fl_set_object_lcol(extra_->radio_pextra_top, FL_INACTIVE);
-	fl_deactivate_object(extra_->radio_pextra_middle);
-	fl_set_object_lcol(extra_->radio_pextra_middle, FL_INACTIVE);
-	fl_deactivate_object(extra_->radio_pextra_bottom);
-	fl_set_object_lcol(extra_->radio_pextra_bottom, FL_INACTIVE);
+	setEnabled(extra_->input_pextra_width,  false);
+	setEnabled(extra_->input_pextra_widthp, false);
+	setEnabled(extra_->radio_pextra_top,    false);
+	setEnabled(extra_->radio_pextra_middle, false);
+	setEnabled(extra_->radio_pextra_bottom, false);
 	input(0, 0);
     }
     fl_hide_object(dialog_->text_warning);
@@ -574,90 +558,53 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
     // then the extra form
     //
     if (ob == extra_->radio_pextra_indent) {
-	int n = fl_get_button(extra_->radio_pextra_indent);
-	if (n) {
+	bool const enable = (fl_get_button(extra_->radio_pextra_indent) != 0);
+
+	if (enable) {
 	    fl_set_button(extra_->radio_pextra_minipage, 0);
 	    fl_set_button(extra_->radio_pextra_floatflt, 0);
-	    fl_activate_object(extra_->input_pextra_width);
-	    fl_set_object_lcol(extra_->input_pextra_width, FL_BLACK);
-	    fl_activate_object(extra_->input_pextra_widthp);
-	    fl_set_object_lcol(extra_->input_pextra_widthp, FL_BLACK);
-	} else {
-	    fl_deactivate_object(extra_->input_pextra_width);
-	    fl_set_object_lcol(extra_->input_pextra_width, FL_INACTIVE);
-	    fl_deactivate_object(extra_->input_pextra_widthp);
-	    fl_set_object_lcol(extra_->input_pextra_widthp, FL_INACTIVE);
 	}
-	fl_deactivate_object(extra_->radio_pextra_top);
-	fl_set_object_lcol(extra_->radio_pextra_top, FL_INACTIVE);
-	fl_deactivate_object(extra_->radio_pextra_middle);
-	fl_set_object_lcol(extra_->radio_pextra_middle, FL_INACTIVE);
-	fl_deactivate_object(extra_->radio_pextra_bottom);
-	fl_set_object_lcol(extra_->radio_pextra_bottom, FL_INACTIVE);
-	fl_activate_object(extra_->radio_pextra_hfill);
-	fl_set_object_lcol(extra_->radio_pextra_hfill, FL_INACTIVE);
-	fl_activate_object(extra_->radio_pextra_startmp);
-	fl_set_object_lcol(extra_->radio_pextra_startmp, FL_INACTIVE);
+
+	setEnabled(extra_->input_pextra_width,  enable);
+	setEnabled(extra_->input_pextra_widthp, enable);
+
+	setEnabled(extra_->radio_pextra_top,     false);
+	setEnabled(extra_->radio_pextra_middle,  false);
+	setEnabled(extra_->radio_pextra_bottom,  false);
+	setEnabled(extra_->radio_pextra_hfill,   false);
+	setEnabled(extra_->radio_pextra_startmp, false);
+
     } else if (ob == extra_->radio_pextra_minipage) {
-	int n = fl_get_button(extra_->radio_pextra_minipage);
-	if (n) {
+	bool const enable = (fl_get_button(extra_->radio_pextra_minipage) != 0);
+	
+	if (enable) {
 	    fl_set_button(extra_->radio_pextra_indent, 0);
 	    fl_set_button(extra_->radio_pextra_floatflt, 0);
-	    fl_activate_object(extra_->input_pextra_width);
-	    fl_set_object_lcol(extra_->input_pextra_width, FL_BLACK);
-	    fl_activate_object(extra_->input_pextra_widthp);
-	    fl_set_object_lcol(extra_->input_pextra_widthp, FL_BLACK);
-	    fl_activate_object(extra_->radio_pextra_top);
-	    fl_set_object_lcol(extra_->radio_pextra_top, FL_BLACK);
-	    fl_activate_object(extra_->radio_pextra_middle);
-	    fl_set_object_lcol(extra_->radio_pextra_middle, FL_BLACK);
-	    fl_activate_object(extra_->radio_pextra_bottom);
-	    fl_set_object_lcol(extra_->radio_pextra_bottom, FL_BLACK);
-	    fl_activate_object(extra_->radio_pextra_hfill);
-	    fl_set_object_lcol(extra_->radio_pextra_hfill, FL_BLACK);
-	    fl_activate_object(extra_->radio_pextra_startmp);
-	    fl_set_object_lcol(extra_->radio_pextra_startmp, FL_BLACK);
-	} else {
-	    fl_deactivate_object(extra_->input_pextra_width);
-	    fl_set_object_lcol(extra_->input_pextra_width, FL_INACTIVE);
-	    fl_deactivate_object(extra_->input_pextra_widthp);
-	    fl_set_object_lcol(extra_->input_pextra_widthp, FL_INACTIVE);
-	    fl_deactivate_object(extra_->radio_pextra_top);
-	    fl_set_object_lcol(extra_->radio_pextra_top, FL_INACTIVE);
-	    fl_deactivate_object(extra_->radio_pextra_middle);
-	    fl_set_object_lcol(extra_->radio_pextra_middle, FL_INACTIVE);
-	    fl_deactivate_object(extra_->radio_pextra_bottom);
-	    fl_set_object_lcol(extra_->radio_pextra_bottom, FL_INACTIVE);
-	    fl_activate_object(extra_->radio_pextra_hfill);
-	    fl_set_object_lcol(extra_->radio_pextra_hfill, FL_INACTIVE);
-	    fl_activate_object(extra_->radio_pextra_startmp);
-	    fl_set_object_lcol(extra_->radio_pextra_startmp, FL_INACTIVE);
 	}
+	
+	setEnabled(extra_->input_pextra_width,   enable);
+	setEnabled(extra_->input_pextra_widthp,  enable);
+	setEnabled(extra_->radio_pextra_top,     enable);
+	setEnabled(extra_->radio_pextra_middle,  enable);
+	setEnabled(extra_->radio_pextra_bottom,  enable);
+	setEnabled(extra_->radio_pextra_hfill,   enable);
+	setEnabled(extra_->radio_pextra_startmp, enable);
     } else if (ob == extra_->radio_pextra_floatflt) {
-	int n = fl_get_button(extra_->radio_pextra_floatflt);
-	if (n) {
+	bool const enable = (fl_get_button(extra_->radio_pextra_floatflt) != 0);
+	
+	if (enable) {
 	    fl_set_button(extra_->radio_pextra_indent, 0);
 	    fl_set_button(extra_->radio_pextra_minipage, 0);
-	    fl_activate_object(extra_->input_pextra_width);
-	    fl_set_object_lcol(extra_->input_pextra_width, FL_BLACK);
-	    fl_activate_object(extra_->input_pextra_widthp);
-	    fl_set_object_lcol(extra_->input_pextra_widthp, FL_BLACK);
-	} else {
-	    fl_deactivate_object(extra_->input_pextra_width);
-	    fl_set_object_lcol(extra_->input_pextra_width, FL_INACTIVE);
-	    fl_deactivate_object(extra_->input_pextra_widthp);
-	    fl_set_object_lcol(extra_->input_pextra_widthp, FL_INACTIVE);
 	}
-	fl_deactivate_object(extra_->radio_pextra_top);
-	fl_set_object_lcol(extra_->radio_pextra_top, FL_INACTIVE);
-	fl_deactivate_object(extra_->radio_pextra_middle);
-	fl_set_object_lcol(extra_->radio_pextra_middle, FL_INACTIVE);
-	fl_deactivate_object(extra_->radio_pextra_bottom);
-	fl_set_object_lcol(extra_->radio_pextra_bottom, FL_INACTIVE);
-	fl_activate_object(extra_->radio_pextra_hfill);
-	fl_set_object_lcol(extra_->radio_pextra_hfill, FL_INACTIVE);
-	fl_activate_object(extra_->radio_pextra_startmp);
-	fl_set_object_lcol(extra_->radio_pextra_startmp, FL_INACTIVE);
+	
+	setEnabled(extra_->input_pextra_width,  enable);
+	setEnabled(extra_->input_pextra_widthp, enable);
+
+	setEnabled(extra_->radio_pextra_top,     false);
+	setEnabled(extra_->radio_pextra_middle,  false);
+	setEnabled(extra_->radio_pextra_bottom,  false);
+	setEnabled(extra_->radio_pextra_hfill,   false);
+	setEnabled(extra_->radio_pextra_startmp, false);
     }
     
     //
@@ -695,23 +642,17 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
     string s1 = fl_get_input(extra_->input_pextra_width);
     string s2 = fl_get_input(extra_->input_pextra_widthp);
     if (!n) { // no button pressed both should be deactivated now
-	fl_deactivate_object(extra_->input_pextra_width);
-	fl_set_object_lcol(extra_->input_pextra_width, FL_INACTIVE);
-	fl_deactivate_object(extra_->input_pextra_widthp);
-	fl_set_object_lcol(extra_->input_pextra_widthp, FL_INACTIVE);
+	setEnabled(extra_->input_pextra_width,  false);
+	setEnabled(extra_->input_pextra_widthp, false);
 	fl_hide_object(dialog_->text_warning);
     } else if (s1.empty() && s2.empty()) {
-	fl_activate_object(extra_->input_pextra_width);
-	fl_set_object_lcol(extra_->input_pextra_width, FL_BLACK);
-	fl_activate_object(extra_->input_pextra_widthp);
-	fl_set_object_lcol(extra_->input_pextra_widthp, FL_BLACK);
+	setEnabled(extra_->input_pextra_width,  true);
+	setEnabled(extra_->input_pextra_widthp, true);
 	fl_hide_object(dialog_->text_warning);
 	ret = false;
     } else if (!s1.empty()) { // LyXLength parameter
-	fl_activate_object(extra_->input_pextra_width);
-	fl_set_object_lcol(extra_->input_pextra_width, FL_BLACK);
-	fl_deactivate_object(extra_->input_pextra_widthp);
-	fl_set_object_lcol(extra_->input_pextra_widthp, FL_INACTIVE);
+	setEnabled(extra_->input_pextra_width,  true);
+	setEnabled(extra_->input_pextra_widthp, false);
 	if (!isValidLength(s1)) {
 	    fl_set_object_label(dialog_->text_warning,
 			_("Warning: Invalid Length (valid example: 10mm)"));
@@ -719,10 +660,8 @@ bool FormParagraph::input(FL_OBJECT * ob, long)
 	    ret = false;
 	}
     } else { // !s2.empty() % parameter
-	fl_deactivate_object(extra_->input_pextra_width);
-	fl_set_object_lcol(extra_->input_pextra_width, FL_INACTIVE);
-	fl_activate_object(extra_->input_pextra_widthp);
-	fl_set_object_lcol(extra_->input_pextra_widthp, FL_BLACK);
+	setEnabled(extra_->input_pextra_width,  false);
+	setEnabled(extra_->input_pextra_widthp, true);
 	if ((lyx::atoi(s2) < 0 ) || (lyx::atoi(s2) > 100)) {
 	    ret = false;
 	    fl_set_object_label(dialog_->text_warning,

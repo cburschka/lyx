@@ -1,5 +1,5 @@
-#ifndef XFORMHELPERS_H
-#define XFORMHELPERS_H
+#ifndef XFORMSHELPERS_H
+#define XFORMSHELPERS_H
 
 #ifdef __GNUG_
 #pragma interface
@@ -9,6 +9,9 @@
 //#include <config.h>
 #include "LString.h"
 #include "Color.h"
+
+// Set an FL_OBJECT to activated or deactivated
+void setEnabled(FL_OBJECT *, bool enable);
 
 // Take a string and add breaks so that it fits into a desired label width, w
 string formatted(string const &label, int w, int size, int style);
@@ -26,9 +29,9 @@ string const browseFile(string const & filename,
 			std::pair<string,string> const & dir2);
 
 /// struct holding xform-specific colors
-struct XformColor : public NamedColor {
+struct XformsColor : public NamedColor {
 	int colorID;
-	XformColor() : NamedColor(), colorID(0) {}
+	XformsColor() : NamedColor(), colorID(0) {}
 	static bool read(string const &);
 	static bool write(string const &);
 };
@@ -53,4 +56,4 @@ private:
 	///
 	static string error_message;
 };
-#endif
+#endif // XFORMSHELPERS_H

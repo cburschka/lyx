@@ -17,6 +17,7 @@
 #include "LyXView.h"
 #include "buffer.h"
 #include "gettext.h"
+#include "xforms_helpers.h"
 
 #ifdef CXX_WORKING_NAMESPACES
 using Liason::setMinibuffer;
@@ -81,19 +82,11 @@ void FormPreamble::update()
      return;
 
    fl_set_input(dialog_->input_preamble,lv_->buffer()->params.preamble.c_str());
-   if (lv_->buffer()->isReadonly()) {
-      fl_deactivate_object(dialog_->input_preamble);
-      fl_deactivate_object(dialog_->button_ok);
-      fl_deactivate_object(dialog_->button_apply);
-      fl_set_object_lcol(dialog_->button_ok, FL_INACTIVE);
-      fl_set_object_lcol(dialog_->button_apply, FL_INACTIVE);
-   } else {
-      fl_activate_object(dialog_->input_preamble);
-      fl_activate_object(dialog_->button_ok);
-      fl_activate_object(dialog_->button_apply);
-      fl_set_object_lcol(dialog_->button_ok, FL_BLACK);
-      fl_set_object_lcol(dialog_->button_apply, FL_BLACK);
-   }
+
+   bool const enable = (! lv_->buffer()->isReadonly());
+   setEnabled(dialog_->input_preamble, enable);
+   setEnabled(dialog_->button_ok,      enable);
+   setEnabled(dialog_->button_apply,   enable);
    
    // need this?
    // bc_.readOnly(lv_->buffer()->isReadonly());

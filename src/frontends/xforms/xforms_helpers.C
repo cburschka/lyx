@@ -12,7 +12,7 @@
 #pragma implementation
 #endif
 
-#include "xform_helpers.h"
+#include "xforms_helpers.h"
 #include "lyxlex.h"
 #include "filedlg.h" // LyXFileDlg
 #include "support/FileInfo.h"
@@ -24,6 +24,19 @@ using std::ofstream;
 using std::pair;
 using std::vector;
 
+// Set an FL_OBJECT to activated or deactivated
+void setEnabled(FL_OBJECT * ob, bool enable)
+{
+	if (enable) {
+		fl_activate_object(ob);
+		fl_set_object_lcol(ob, FL_BLACK);
+	} else {
+		fl_deactivate_object(ob);
+		fl_set_object_lcol(ob, FL_INACTIVE);
+	}
+}
+
+	
 // Take a string and add breaks so that it fits into a desired label width, w
 string formatted(string const & sin, int w, int size, int style)
 {
@@ -137,7 +150,7 @@ keyword_item xformTags[] = {
 static const int xformCount = sizeof(xformTags) / sizeof(keyword_item);
 
 
-bool XformColor::read(string const & filename)
+bool XformsColor::read(string const & filename)
 {
 	LyXLex lexrc(xformTags, xformCount);
 	if (!lexrc.setFile(filename))
@@ -173,7 +186,7 @@ bool XformColor::read(string const & filename)
 }
 
 
-bool XformColor::write(string const & filename)
+bool XformsColor::write(string const & filename)
 {
 	ofstream os(filename.c_str());
 	if (!os)

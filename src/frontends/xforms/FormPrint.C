@@ -22,7 +22,7 @@
 #include "debug.h"
 #include "BufferView.h"
 #include "lyx_gui_misc.h"      // WriteAlert
-#include "xform_helpers.h"     // for browseFile
+#include "xforms_helpers.h"     // for browseFile
 
 #ifdef SIGC_CXX_NAMESPACES
 using SigC::slot;

@@ -36,7 +36,7 @@ protected:
 	FD_form_browser * dialog_;
 
 private:
-	/// Pointer to the actual instantiation of the xform's form
+	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
 	/// Filter the inputs on callback from xforms
 	virtual bool input(FL_OBJECT *, long);

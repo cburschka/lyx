@@ -11,12 +11,12 @@
 
 #include <config.h>
 
+#include <algorithm>
 #include FORMS_H_LOCATION
 
 #ifdef __GNUG__
 #pragma implementation
 #endif
-
 
 #include "Dialogs.h"
 #include "FormRef.h"
@@ -25,8 +25,7 @@
 #include "form_ref.h"
 #include "lyxfunc.h"
 #include "insets/insetref.h"
-
-#include <algorithm>
+#include "xforms_helpers.h"
 
 using std::find;
 using std::max;
@@ -110,17 +109,13 @@ void FormRef::update()
 	// Name is irrelevant to LaTeX/Literate documents, while
 	// type is irrelevant to LinuxDoc/DocBook.
 	if (lv_->buffer()->isLatex() || lv_->buffer()->isLatex()) {
-		fl_deactivate_object(dialog_->name);
-		fl_set_object_lcol(dialog_->name, FL_INACTIVE);
-		fl_activate_object(dialog_->type);
-		fl_set_object_lcol(dialog_->type, FL_BLACK);
+		setEnabled(dialog_->name, false);
+		setEnabled(dialog_->type, true);
 	} else {
 		fl_set_choice(dialog_->type, 1);
 
-		fl_activate_object(dialog_->name);
-		fl_set_object_lcol(dialog_->name, FL_BLACK);
-		fl_deactivate_object(dialog_->type);
-		fl_set_object_lcol(dialog_->type, FL_INACTIVE);
+		setEnabled(dialog_->name, true);
+		setEnabled(dialog_->type, false);
 	}
 
 	refs = lv_->buffer()->getLabelList();
@@ -144,17 +139,14 @@ void FormRef::updateBrowser(vector<string> const & akeys) const
 	if (keys.empty()) {
 		fl_add_browser_line(dialog_->browser,
 				    _("*** No labels found in document ***"));
+	
+		setEnabled(dialog_->browser, false);
+		setEnabled(dialog_->sort,    false);
 
-		fl_deactivate_object(dialog_->browser);
-		fl_deactivate_object(dialog_->sort);
-		fl_set_object_lcol(dialog_->browser, FL_INACTIVE);
-		fl_set_object_lcol(dialog_->sort, FL_INACTIVE);
 		fl_set_input(dialog_->ref, "");
 	} else {
-		fl_activate_object(dialog_->browser);
-		fl_set_object_lcol(dialog_->browser, FL_BLACK);
-		fl_activate_object(dialog_->sort);
-		fl_set_object_lcol(dialog_->sort, FL_BLACK);
+		setEnabled(dialog_->browser, true);
+		setEnabled(dialog_->sort,    true);
 
 		string ref = fl_get_input(dialog_->ref);
 		vector<string>::const_iterator cit =
@@ -237,10 +229,8 @@ bool FormRef::input(FL_OBJECT *, long data)
 		at_ref = false;
 		fl_set_object_label(dialog_->button_go, _("Goto reference"));
 
-		fl_activate_object(dialog_->type);
-		fl_set_object_lcol(dialog_->type, FL_BLACK);
-		fl_activate_object(dialog_->button_go);
-		fl_set_object_lcol(dialog_->button_go, FL_BLACK);
+		setEnabled(dialog_->type,      true);
+		setEnabled(dialog_->button_go, true);
 		fl_set_object_lcol(dialog_->ref, FL_BLACK);
 	}
 	break;

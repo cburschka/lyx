@@ -20,7 +20,7 @@
 
 #include "support/lstrings.h"  // for strToDbl & tostr
 #include "support/FileInfo.h"  // for FileInfo
-#include "xform_helpers.h"     // for browseFile
+#include "xforms_helpers.h"     // for browseFile
 #include "support/filetools.h" // for AddName
 #include "insets/insetgraphics.h"
 #include "insets/insetgraphicsParams.h"

@@ -41,19 +41,16 @@
 #include "lyx_gui_misc.h" // idex, scex
 #include "lyxlex.h"
 #include "input_validators.h"
-#include "xform_helpers.h"
+#include "xforms_helpers.h"
 #include "converter.h"
 #include "support/lyxfunctional.h"
 #include "support/lyxmanip.h"
 
 using std::endl;
-using std::find;
-using std::find_if;
 using std::pair;
 using std::make_pair;
 using std::max;
 using std::min;
-using std::sort;
 using std::vector;
 
 extern string system_lyxdir;
@@ -155,10 +152,10 @@ void FormPreferences::ok()
 {
 	FormBase::ok();
 
-	if (colors_.modifiedXformPrefs) {
+	if (colors_.modifiedXformsPrefs) {
 		string const filename =
 			AddName(user_lyxdir, "preferences.xform");
-		colors_.modifiedXformPrefs = !XformColor::write(filename);
+		colors_.modifiedXformsPrefs = !XformsColor::write(filename);
 	}
 	
 	lv_->getLyXFunc()->Dispatch(LFUN_SAVEPREFERENCES);
@@ -411,12 +408,12 @@ void FormPreferences::Colors::apply()
 	bool modifiedText = false;
 	bool modifiedBackground = false;
 
-	for (vector<XformColor>::const_iterator cit = xformColorDB.begin();
-	     cit != xformColorDB.end(); ++cit) {
+	for (vector<XformsColor>::const_iterator cit = xformsColorDB.begin();
+	     cit != xformsColorDB.end(); ++cit) {
 		RGBColor col;
 		fl_getmcolor((*cit).colorID, &col.r, &col.g, &col.b);
 		if (col != (*cit).color()) {
-			modifiedXformPrefs = true;
+			modifiedXformsPrefs = true;
 			if ((*cit).colorID == FL_BLACK)
 				modifiedText = true;
 			if ((*cit).colorID == FL_COL1)
@@ -424,10 +421,10 @@ void FormPreferences::Colors::apply()
 		}
 	}
 
-	if (modifiedXformPrefs) {
-		for (vector<XformColor>::const_iterator cit =
-			     xformColorDB.begin(); 
-		     cit != xformColorDB.end(); ++cit) {
+	if (modifiedXformsPrefs) {
+		for (vector<XformsColor>::const_iterator cit =
+			     xformsColorDB.begin(); 
+		     cit != xformsColorDB.end(); ++cit) {
 			fl_mapcolor((*cit).colorID,
 				    (*cit).r, (*cit).g, (*cit).b);
 
@@ -599,14 +596,14 @@ void FormPreferences::Colors::InputBrowserLyX() const
 	// Is the choice an Xforms color...
 	RGBColor col;
 
-	if( selLyX-1 < xformColorDB.size() ) {
-		vector<XformColor>::size_type const i = selLyX - 1;
-		col = xformColorDB[i].color();
+	if( selLyX-1 < xformsColorDB.size() ) {
+		vector<XformsColor>::size_type const i = selLyX - 1;
+		col = xformsColorDB[i].color();
 	}
 	// or a LyX Logical color?
 	else {
 		vector<NamedColor>::size_type const i = selLyX - 1 -
-			xformColorDB.size();
+			xformsColorDB.size();
 		col = lyxColorDB[i].color();
 	}
 
@@ -619,8 +616,7 @@ void FormPreferences::Colors::InputBrowserLyX() const
 	SwitchColorSpace();
 	
 	// Deactivate the modify button to begin with...
-	fl_deactivate_object(dialog_->button_modify);
-	fl_set_object_lcol(dialog_->button_modify, FL_INACTIVE);
+	setEnabled(dialog_->button_modify, false);
 	
 	fl_unfreeze_form(dialog_->form);
 }
@@ -663,24 +659,18 @@ void FormPreferences::Colors::InputHSV()
 	bool modify = false;
 	
 	// Is the choice an Xforms color...
-	if( selLyX-1 < xformColorDB.size() ) {
-		vector<XformColor>::size_type const i = selLyX - 1;
-		modify = (xformColorDB[i].color() != col);
+	if( selLyX-1 < xformsColorDB.size() ) {
+		vector<XformsColor>::size_type const i = selLyX - 1;
+		modify = (xformsColorDB[i].color() != col);
 	}
 	// or a LyX Logical color?
 	else {
 		vector<NamedColor>::size_type const i = selLyX - 1 -
-			xformColorDB.size();
+			xformsColorDB.size();
 		modify = (lyxColorDB[i].color() != col);
 	}
 
-	if (modify) {
-		fl_activate_object(dialog_->button_modify);
-		fl_set_object_lcol(dialog_->button_modify, FL_BLACK);
-	} else {
-		fl_deactivate_object(dialog_->button_modify);
-		fl_set_object_lcol(dialog_->button_modify, FL_INACTIVE);
-	}
+	setEnabled(dialog_->button_modify, modify);
 }
 
 
@@ -710,24 +700,18 @@ void FormPreferences::Colors::InputRGB()
 	bool modify = false;
 	
 	// Is the choice an Xforms color...
-	if( selLyX-1 < xformColorDB.size() ) {
-		vector<XformColor>::size_type const i = selLyX - 1;
-		modify = (xformColorDB[i].color() != col);
+	if( selLyX-1 < xformsColorDB.size() ) {
+		vector<XformsColor>::size_type const i = selLyX - 1;
+		modify = (xformsColorDB[i].color() != col);
 	}
 	// or a LyX Logical color?
 	else {
 		vector<NamedColor>::size_type const i = selLyX - 1 -
-			xformColorDB.size();
+			xformsColorDB.size();
 		modify = (lyxColorDB[i].color() != col);
 	}
 
-	if (modify) {
-		fl_activate_object(dialog_->button_modify);
-		fl_set_object_lcol(dialog_->button_modify, FL_BLACK);
-	} else {
-		fl_deactivate_object(dialog_->button_modify);
-		fl_set_object_lcol(dialog_->button_modify, FL_INACTIVE);
-	}
+	setEnabled(dialog_->button_modify, modify);
 }
 
 
@@ -735,15 +719,15 @@ void FormPreferences::Colors::LoadBrowserLyX()
 {
 	if (!dialog_->browser_lyx_objs->visible) return;
 
-	// First, define the modifiable xform colors
-	xformColorDB.clear();
-	XformColor xcol;
+	// First, define the modifiable xforms colors
+	xformsColorDB.clear();
+	XformsColor xcol;
 
 	xcol.name = _("GUI background");
 	xcol.colorID = FL_COL1;
 	fl_getmcolor(FL_COL1, &xcol.r, &xcol.g, &xcol.b);
 
-	xformColorDB.push_back(xcol);
+	xformsColorDB.push_back(xcol);
 
 	xcol.name = _("GUI text");
 	xcol.colorID = FL_BLACK;
@@ -752,19 +736,19 @@ void FormPreferences::Colors::LoadBrowserLyX()
 	fl_mapcolor(GUI_COLOR_CURSOR, xcol.r, xcol.g, xcol.b);
 	fl_set_cursor_color(FL_DEFAULT_CURSOR, GUI_COLOR_CURSOR, FL_WHITE);
 
-	xformColorDB.push_back(xcol);
+	xformsColorDB.push_back(xcol);
 
 	xcol.name = _("GUI selection");
 	xcol.colorID = FL_YELLOW;
 	fl_getmcolor(FL_YELLOW, &xcol.r, &xcol.g, &xcol.b);
 
-	xformColorDB.push_back(xcol);
+	xformsColorDB.push_back(xcol);
 
 	xcol.name = _("GUI pointer");
 	xcol.colorID = GUI_COLOR_CURSOR;
 	fl_getmcolor(GUI_COLOR_CURSOR, &xcol.r, &xcol.g, &xcol.b);
 
-	xformColorDB.push_back(xcol);
+	xformsColorDB.push_back(xcol);
 
 	// Now create the the LyX LColors database
 	lyxColorDB.clear();
@@ -831,8 +815,8 @@ void FormPreferences::Colors::LoadBrowserLyX()
 	FL_OBJECT * colbr = dialog_->browser_lyx_objs;
 	fl_freeze_form(dialog_->form);
 	fl_clear_browser(colbr);
-	for (vector<XformColor>::const_iterator cit = xformColorDB.begin();
-	     cit != xformColorDB.end(); ++cit) {
+	for (vector<XformsColor>::const_iterator cit = xformsColorDB.begin();
+	     cit != xformsColorDB.end(); ++cit) {
 		fl_addto_browser(colbr, (*cit).getname().c_str());
 	}
 	for (vector<NamedColor>::const_iterator cit = lyxColorDB.begin();
@@ -859,26 +843,23 @@ void FormPreferences::Colors::Modify()
 	fl_getmcolor(GUI_COLOR_CHOICE, &col.r, &col.g, &col.b);
 
 	// Is the choice an Xforms color...
-	if( selLyX-1 < xformColorDB.size() ) {
-		vector<XformColor>::size_type const i = selLyX - 1;
-		xformColorDB[i].r  = col.r;
-		xformColorDB[i].g  = col.g;
-		xformColorDB[i].b  = col.b;
+	if( selLyX-1 < xformsColorDB.size() ) {
+		vector<XformsColor>::size_type const i = selLyX - 1;
+		xformsColorDB[i].r  = col.r;
+		xformsColorDB[i].g  = col.g;
+		xformsColorDB[i].b  = col.b;
 	}
 	// or a LyX Logical color?
 	else {
 		vector<NamedColor>::size_type const i = selLyX - 1 -
-			xformColorDB.size();
+			xformsColorDB.size();
 		lyxColorDB[i].r  = col.r;
 		lyxColorDB[i].g  = col.g;
 		lyxColorDB[i].b  = col.b;
 	}
 
 	fl_freeze_form(dialog_->form);
-
-	fl_deactivate_object(dialog_->button_modify);
-	fl_set_object_lcol(dialog_->button_modify, FL_INACTIVE);
-	
+	setEnabled(dialog_->button_modify, false);	
 	fl_unfreeze_form(dialog_->form);
 }
 
@@ -1083,8 +1064,7 @@ bool FormPreferences::Converters::Add()
 		local_converters.UpdateLast(local_formats);
 		UpdateBrowser();
 	}
-	fl_deactivate_object(dialog_->button_add);
-	fl_set_object_lcol(dialog_->button_add, FL_INACTIVE);
+	setEnabled(dialog_->button_add, false);
 
 	return true;
 }
@@ -1113,11 +1093,8 @@ bool FormPreferences::Converters::Browser()
 	fl_set_button_shortcut(dialog_->button_add,
 				scex(_("Modify|#M")), 1);
 
-	fl_deactivate_object(dialog_->button_add);
-	fl_set_object_lcol(dialog_->button_add, FL_INACTIVE);
-
-	fl_activate_object(dialog_->button_delete);
-	fl_set_object_lcol(dialog_->button_delete, FL_BLACK);
+	setEnabled(dialog_->button_add,    false);
+	setEnabled(dialog_->button_delete, true);
 				
 	fl_unfreeze_form(dialog_->form);
 	return false;
@@ -1150,9 +1127,7 @@ bool FormPreferences::Converters::Input()
 					scex(_("Add|#A")), 1);
 
 		fl_deselect_browser(dialog_->browser_all);
-
-		fl_deactivate_object(dialog_->button_delete);
-		fl_set_object_lcol(dialog_->button_delete, FL_INACTIVE);
+		setEnabled(dialog_->button_delete, false);
 
 	} else {
 		fl_set_object_label(dialog_->button_add,
@@ -1163,19 +1138,12 @@ bool FormPreferences::Converters::Input()
 		int top = max(sel-5, 0);
 		fl_set_browser_topline(dialog_->browser_all, top);
 		fl_select_browser_line(dialog_->browser_all, sel+1);
-		
-		fl_activate_object(dialog_->button_delete);
-		fl_set_object_lcol(dialog_->button_delete, FL_BLACK);
+		setEnabled(dialog_->button_delete, true);
 	}
 
 	string const command = fl_get_input(dialog_->input_converter);
-	if (command.empty() || from == to) {
-		fl_deactivate_object(dialog_->button_add);
-		fl_set_object_lcol(dialog_->button_add, FL_INACTIVE);
-	} else {
-		fl_activate_object(dialog_->button_add);
-		fl_set_object_lcol(dialog_->button_add, FL_BLACK);
-	}
+	bool const enable = !(command.empty() || from == to);
+	setEnabled(dialog_->button_add, enable);
 
 	fl_unfreeze_form(dialog_->form);
 	return false;
@@ -1367,8 +1335,7 @@ bool FormPreferences::Formats::Add()
 		if (old)
 			parent_.converters_.UpdateBrowser();
 	}
-	fl_deactivate_object(dialog_->button_add);
-	fl_set_object_lcol(dialog_->button_add, FL_INACTIVE);
+	setEnabled(dialog_->button_add, false);
 
 	return true;
 }
@@ -1392,11 +1359,8 @@ bool FormPreferences::Formats::Browser()
 	fl_set_object_label(dialog_->button_add, idex(_("Modify|#M")));
 	fl_set_button_shortcut(dialog_->button_add, scex(_("Modify|#M")), 1);
 
-	fl_deactivate_object(dialog_->button_add);
-	fl_set_object_lcol(dialog_->button_add, FL_INACTIVE);
-
-	fl_activate_object(dialog_->button_delete);
-	fl_set_object_lcol(dialog_->button_delete, FL_BLACK);
+	setEnabled(dialog_->button_add,    false);
+	setEnabled(dialog_->button_delete, true);
 				
 	fl_unfreeze_form(dialog_->form);
 	return false;
@@ -1409,8 +1373,7 @@ bool FormPreferences::Formats::Delete()
 
 	if (local_converters.FormatIsUsed(name)) {
 		parent_.printWarning(_("Cannot remove a Format used by a Converter. Remove the converter first."));
-		fl_deactivate_object(dialog_->button_delete);
-		fl_set_object_lcol(dialog_->button_delete, FL_INACTIVE);
+		setEnabled(dialog_->button_delete, false);
 		return false;
 	}
 
@@ -1433,9 +1396,7 @@ bool FormPreferences::Formats::Input()
 					scex(_("Add|#A")), 1);
 
 		fl_deselect_browser(dialog_->browser_all);
-
-		fl_deactivate_object(dialog_->button_delete);
-		fl_set_object_lcol(dialog_->button_delete, FL_INACTIVE);
+		setEnabled(dialog_->button_delete, false);
 
 	} else {
 		fl_set_object_label(dialog_->button_add,
@@ -1446,22 +1407,14 @@ bool FormPreferences::Formats::Input()
 		int const top = max(sel-5, 0);
 		fl_set_browser_topline(dialog_->browser_all, top);
 		fl_select_browser_line(dialog_->browser_all, sel+1);
-		
-		fl_activate_object(dialog_->button_add);
-		fl_set_object_lcol(dialog_->button_add, FL_BLACK);
 
-		fl_activate_object(dialog_->button_delete);
-		fl_set_object_lcol(dialog_->button_delete, FL_BLACK);
+		setEnabled(dialog_->button_add, true);
+		setEnabled(dialog_->button_delete, true);
 	}
 
 	string const prettyname = fl_get_input(dialog_->input_gui_name);
-	if (name.empty() || prettyname.empty()) {
-		fl_deactivate_object(dialog_->button_add);
-		fl_set_object_lcol(dialog_->button_add, FL_INACTIVE);
-	} else {
-		fl_activate_object(dialog_->button_add);
-		fl_set_object_lcol(dialog_->button_add, FL_BLACK);
-	}
+	bool const enable = !(name.empty() || prettyname.empty());
+	setEnabled(dialog_->button_add, enable);
 
 	fl_unfreeze_form(dialog_->form);
 	return false;
@@ -1774,35 +1727,11 @@ bool FormPreferences::Language::input(FL_OBJECT const * const ob)
 	// objects,
 	// otherwise the function is called by an xforms CB via input().
 	if (!ob || ob == dialog_->check_use_kbmap) {
-		if (fl_get_button(dialog_->check_use_kbmap)) {
-			fl_activate_object(dialog_->button_kbmap1_browse);
-			fl_set_object_lcol(dialog_->button_kbmap1_browse,
-					   FL_BLACK);
-
-			fl_activate_object(dialog_->button_kbmap2_browse);
-			fl_set_object_lcol(dialog_->button_kbmap2_browse,
-					   FL_BLACK);
-
-			fl_activate_object(dialog_->input_kbmap1);
-			fl_set_object_lcol(dialog_->input_kbmap1, FL_BLACK);
-			fl_activate_object(dialog_->input_kbmap2);
-			fl_set_object_lcol(dialog_->input_kbmap2, FL_BLACK);
-		} else {
-			fl_deactivate_object(dialog_->button_kbmap1_browse);
-			fl_set_object_lcol(dialog_->button_kbmap1_browse,
-					   FL_INACTIVE);
-
-			fl_deactivate_object(dialog_->button_kbmap2_browse);
-			fl_set_object_lcol(dialog_->button_kbmap2_browse,
-					   FL_INACTIVE);
-
-			fl_deactivate_object(dialog_->input_kbmap1);
-			fl_set_object_lcol(dialog_->input_kbmap1,
-					   FL_INACTIVE);
-			fl_deactivate_object(dialog_->input_kbmap2);
-			fl_set_object_lcol(dialog_->input_kbmap2,
-					   FL_INACTIVE);
-		}
+		bool const enable = fl_get_button(dialog_->check_use_kbmap);
+		setEnabled(dialog_->button_kbmap1_browse, enable);
+		setEnabled(dialog_->button_kbmap2_browse, enable);
+		setEnabled(dialog_->input_kbmap1, enable);
+		setEnabled(dialog_->input_kbmap2, enable);
 	}
 
 	if (ob == dialog_->button_kbmap1_browse) {
@@ -2148,39 +2077,18 @@ bool FormPreferences::Paths::input(FL_OBJECT const * const ob)
 	// objects,
 	// otherwise the function is called by an xforms CB via input().
 	if (!ob || ob == dialog_->check_use_temp_dir) {
-		if (fl_get_button(dialog_->check_use_temp_dir)) {
-			fl_activate_object(dialog_->input_temp_dir);
-			fl_set_object_lcol(dialog_->input_temp_dir,
-					   FL_BLACK);
-		} else {
-			fl_deactivate_object(dialog_->input_temp_dir);
-			fl_set_object_lcol(dialog_->input_temp_dir,
-					   FL_INACTIVE);
-		}
+		bool const enable = fl_get_button(dialog_->check_use_temp_dir);
+		setEnabled(dialog_->input_temp_dir, enable);
 	}
 
 	if (!ob || ob == dialog_->check_last_files) {
-		if (fl_get_button(dialog_->check_last_files)) {
-			fl_activate_object(dialog_->input_lastfiles);
-			fl_set_object_lcol(dialog_->input_lastfiles,
-					   FL_BLACK);
-		} else {
-			fl_deactivate_object(dialog_->input_lastfiles);
-			fl_set_object_lcol(dialog_->input_lastfiles,
-					   FL_INACTIVE);
-		}
+		bool const enable = fl_get_button(dialog_->check_last_files);
+		setEnabled(dialog_->input_lastfiles, enable);
 	}
 
 	if (!ob || ob == dialog_->check_make_backups) {
-		if (fl_get_button(dialog_->check_make_backups)) {
-			fl_activate_object(dialog_->input_backup_path);
-			fl_set_object_lcol(dialog_->input_backup_path,
-					   FL_BLACK);
-		} else {
-			fl_deactivate_object(dialog_->input_backup_path);
-			fl_set_object_lcol(dialog_->input_backup_path,
-					   FL_INACTIVE);
-		}
+		bool const enable = fl_get_button(dialog_->check_make_backups);
+		setEnabled(dialog_->input_backup_path, enable);
 	}
 
 	if (!ob || ob == dialog_->input_default_path) {
@@ -2931,39 +2839,18 @@ bool FormPreferences::SpellChecker::input(FL_OBJECT const * const ob)
 	}
 
 	if (!ob || ob == dialog_->check_alt_lang) {
-		if (fl_get_button(dialog_->check_alt_lang)) {
-			fl_activate_object(dialog_->input_alt_lang);
-			fl_set_object_lcol(dialog_->input_alt_lang,
-					   FL_BLACK);
-		} else {
-			fl_deactivate_object(dialog_->input_alt_lang);
-			fl_set_object_lcol(dialog_->input_alt_lang,
-					   FL_INACTIVE);
-		}
+		bool const enable = fl_get_button(dialog_->check_alt_lang);
+		setEnabled(dialog_->input_alt_lang, enable);
 	}
 
 	if (!ob || ob == dialog_->check_escape_chars) {
-		if (fl_get_button(dialog_->check_escape_chars)) {
-			fl_activate_object(dialog_->input_escape_chars);
-			fl_set_object_lcol(dialog_->input_escape_chars,
-					   FL_BLACK);
-		} else {
-			fl_deactivate_object(dialog_->input_escape_chars);
-			fl_set_object_lcol(dialog_->input_escape_chars,
-					   FL_INACTIVE);
-		}
+		bool const enable = fl_get_button(dialog_->check_escape_chars);
+		setEnabled(dialog_->input_escape_chars, enable);
 	}
 
 	if (!ob || ob == dialog_->check_personal_dict) {
-		if (fl_get_button(dialog_->check_personal_dict)) {
-			fl_activate_object(dialog_->input_personal_dict);
-			fl_set_object_lcol(dialog_->input_personal_dict,
-					   FL_BLACK);
-		} else {
-			fl_deactivate_object(dialog_->input_personal_dict);
-			fl_set_object_lcol(dialog_->input_personal_dict,
-					   FL_INACTIVE);
-		}
+		bool const enable = fl_get_button(dialog_->check_personal_dict);
+		setEnabled(dialog_->input_personal_dict, enable);
 	}
 
 	if (ob == dialog_->button_personal_dict) {

@@ -120,8 +120,8 @@ libxforms_la_SOURCES = \
 	Timeout_pimpl.h \
 	Toolbar_pimpl.C \
 	Toolbar_pimpl.h \
-	xform_helpers.C \
-	xform_helpers.h
+	xforms_helpers.C \
+	xforms_helpers.h
 
 # These still have to be added. Sooner or later. ARRae-20000411
 #	GUI_defaults.C \

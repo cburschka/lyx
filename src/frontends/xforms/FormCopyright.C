@@ -14,7 +14,7 @@
 #include "LyXView.h"
 #include "form_copyright.h"
 #include "FormCopyright.h"
-#include "xform_helpers.h"
+#include "xforms_helpers.h"
 
 FormCopyright::FormCopyright( LyXView * lv, Dialogs * d	)
 	: FormBaseBI(lv, d, _("Copyright and Warranty"), new OkCancelPolicy),

@@ -43,7 +43,7 @@ private:
 	virtual void apply();
 	/// Update dialog before showing it
 	virtual void update();
-	/// Pointer to the actual instantiation of the xform's form
+	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
 	/// Build the dialog
 	virtual void build();

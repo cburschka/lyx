@@ -37,7 +37,7 @@ private:
 	virtual bool input(FL_OBJECT *, long);
 	/// Apply from dialog (modify or create inset)
 	virtual void apply();
-	/// Pointer to the actual instantiation of the xform's form
+	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
 	///
 	FD_form_bibtex * build_bibtex();

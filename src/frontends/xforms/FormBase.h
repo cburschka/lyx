@@ -56,7 +56,7 @@ protected: // methods
 	virtual ~FormBase();
 
 	/** Redraw the form (on receipt of a Signal indicating, for example,
-	    that the xform colors have been re-mapped).
+	    that the xforms colors have been re-mapped).
 	    Must be virtual because dialogs with tabbed folders will need to
 	    redraw the form for each tab.
 	*/
@@ -95,7 +95,7 @@ protected: // methods
 	virtual void restore() {
 		update();
 	}
-	/// Pointer to the actual instantiation of xform's form
+	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const = 0;
 
 	/** Which LyXFunc do we use?

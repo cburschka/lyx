@@ -91,7 +91,7 @@ private:
 	/// Open the file browse dialog to select an image file.
 	void browse();
 
-	/// Pointer to the actual instantiation of the xform's form
+	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
 	/// Fdesign generated method
 	FD_form_graphics * build_graphics();

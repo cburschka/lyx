@@ -40,7 +40,7 @@ private:
 	virtual void update();
 	/// Filter the inputs on callback from xforms
 	virtual bool input( FL_OBJECT *, long);
-	/// Pointer to the actual instantiation of the xform's form
+	/// Pointer to the actual instantiation of the xforms form
 	virtual FL_FORM * form() const;
 	///
 	void updateToc();

@@ -24,7 +24,7 @@
 #include <utility> // pair
 #include "FormBase.h"
 #include "Color.h" // NamedColor
-#include "xform_helpers.h" // XformColor
+#include "xforms_helpers.h" // XformsColor
 
 class Combox;
 class Dialogs;
@@ -65,7 +65,7 @@ private:
 	/// Disconnect signals. Also perform any necessary housekeeping.
 	virtual void disconnect();
 	/** Redraw the form (on receipt of a Signal indicating, for example,
-	    that the xform colours have been re-mapped). */
+	    that the xforms colours have been re-mapped). */
 	virtual void redraw();
 	/// Update the dialog.
 	virtual void update();
@@ -79,7 +79,7 @@ private:
 	virtual bool input(FL_OBJECT *, long);
 	/// Build the dialog
 	virtual void build();
-	/// Pointer to the actual instantiation of xform's form.
+	/// Pointer to the actual instantiation of the xforms form.
 	virtual FL_FORM * form() const;
 	/// control which feedback message is output
 	void feedback(FL_OBJECT *);
@@ -91,7 +91,7 @@ private:
 	/// Print a warning message and set warning flag.
 	void printWarning( string const & );
 	/** Launch a file dialog and modify input if it returns a new file.
-	    For an explanation of the various parameters, see xform_helpers.h.
+	    For an explanation of the various parameters, see xforms_helpers.h.
 	 */
 	void browse( FL_OBJECT * input,
 		     string const & title, string const & pattern, 
@@ -162,7 +162,7 @@ private:
 		///
 		FD_form_colors const * dialog() { return dialog_; }
 		///
-		void apply(); // not const as modifies modifiedXformPrefs.
+		void apply(); // not const as modifies modifiedXformsPrefs.
 		///
 		void build();
 		///
@@ -173,7 +173,7 @@ private:
 		void update() { LoadBrowserLyX(); }
 		
 		/// Flag whether Xforms colors have changed since last file save
-		bool modifiedXformPrefs;
+		bool modifiedXformsPrefs;
 
 	private:
 		///
@@ -200,8 +200,8 @@ private:
 
 		/// A vector of LyX LColor GUI name and associated RGB color.
 		std::vector<NamedColor> lyxColorDB;
-		/// A vector of xform color ID, RGB colors and associated name.
-		std::vector<XformColor> xformColorDB;
+		/// A vector of xforms color ID, RGB colors and associated name.
+		std::vector<XformsColor> xformsColorDB;
 	};
 	///
 	friend class Colors;

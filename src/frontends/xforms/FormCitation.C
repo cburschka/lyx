@@ -24,6 +24,7 @@
 #include "form_citation.h"
 #include "lyxfunc.h"
 #include "support/filetools.h"
+#include "xforms_helpers.h"
 
 using std::find;
 using std::max;
@@ -164,65 +165,22 @@ void FormCitation::updateBrowser(FL_OBJECT * browser,
 
 void FormCitation::setBibButtons(State status) const
 {
-	switch (status) {
-	case ON:
-		fl_activate_object(dialog_->button_add);
-		fl_set_object_lcol(dialog_->button_add, FL_BLACK);
-		break;
-
-	case OFF:
-		fl_deactivate_object(dialog_->button_add);
-		fl_set_object_lcol(dialog_->button_add, FL_INACTIVE);
-		break;
-
-	default:
-		break;
-	}
+	setEnabled(dialog_->button_add, (status == ON));
 }
 
 
 void FormCitation::setCiteButtons(State status) const
 {
-	switch (status) {
-	case ON:
-        {
-		fl_activate_object(dialog_->button_del);
-		fl_set_object_lcol(dialog_->button_del, FL_BLACK);
+	int const sel     = fl_get_browser(dialog_->browser_cite);
+	int const maxline = fl_get_browser_maxline(dialog_->browser_cite);
 
-		int sel = fl_get_browser(dialog_->browser_cite);
+	bool const activate      = (status == ON);
+	bool const activate_up   = (activate && sel != 1);
+	bool const activate_down = (activate && sel != maxline);
 
-		if (sel != 1) {
-			fl_activate_object(dialog_->button_up);
-			fl_set_object_lcol(dialog_->button_up, FL_BLACK);
-		} else {
-			fl_deactivate_object(dialog_->button_up);
-			fl_set_object_lcol(dialog_->button_up, FL_INACTIVE);
-		}
-
-		if (sel != fl_get_browser_maxline(dialog_->browser_cite)) {
-			fl_activate_object(dialog_->button_down);
-			fl_set_object_lcol(dialog_->button_down, FL_BLACK);
-		} else {
-			fl_deactivate_object(dialog_->button_down);
-			fl_set_object_lcol(dialog_->button_down, FL_INACTIVE);
-		}
-
-		break;
-	}
-	case OFF:
-	{
-		fl_deactivate_object(dialog_->button_del);
-		fl_set_object_lcol(dialog_->button_del, FL_INACTIVE);
-
-		fl_deactivate_object(dialog_->button_up);
-		fl_set_object_lcol(dialog_->button_up, FL_INACTIVE);
-
-		fl_deactivate_object(dialog_->button_down);
-		fl_set_object_lcol(dialog_->button_down, FL_INACTIVE);
-	}
-	default:
-		break;
-	}
+	setEnabled(dialog_->button_del,  activate);
+	setEnabled(dialog_->button_up,   activate_up);
+	setEnabled(dialog_->button_down, activate_down);
 }
 
 

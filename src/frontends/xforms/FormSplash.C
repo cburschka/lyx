@@ -19,7 +19,7 @@
 #include "LyXView.h"
 #include "form_splash.h"
 #include "FormSplash.h"
-#include "xform_helpers.h"
+#include "xforms_helpers.h"
 #include "version.h"
 #include "support/filetools.h"
 #include "lyxrc.h"
