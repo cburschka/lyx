@@ -76,8 +76,6 @@ public:
 	///
 	void erase();
 	///
-	bool next(int & pos) const;
-	///
 	int last() const;
 
 

@@ -210,6 +210,7 @@ bool MathCursor::openable(MathInset * p, bool sel, bool useupdown) const
 {
 	if (!p)
 		return false;
+
 	if (!(p->isActive() || (useupdown && p->isScriptInset())))
 		return false;
 
@@ -227,6 +228,12 @@ bool MathCursor::openable(MathInset * p, bool sel, bool useupdown) const
 void MathCursor::plainLeft()
 {
 	--cursor().pos_;
+}
+
+
+void MathCursor::plainRight()
+{
+	++cursor().pos_;
 }
 
 
@@ -263,12 +270,6 @@ bool MathCursor::left(bool sel)
 }
 
 
-void MathCursor::plainRight()
-{
-	++cursor().pos_;
-}
-
-
 bool MathCursor::right(bool sel)
 {
 	dump("Right 1");
@@ -284,14 +285,18 @@ bool MathCursor::right(bool sel)
 		push(p, true);
 		return true;
 	}
-	if (array().next(cursor().pos_))
+	if (cursor().pos_ != array().size()) {
+		plainRight();
 		return true;
-	if (cursor().par_->idxRight(cursor().idx_, cursor().pos_))
+	}
+	if (cursor().par_->idxRight(cursor().idx_, cursor().pos_)) {
 		return true;
-	if (!pop())
-		return false;
-	array().next(cursor().pos_);
-	return true;
+	}
+	if (pop()) {
+		plainRight();
+		return true;
+	}
+	return false;
 }
 
 
@@ -450,7 +455,7 @@ void MathCursor::erase()
 	}
 
 	// delete empty cells if necessary
-	if (cursor().pos_ == 0 && array().size() == 0) {
+	if (cursor().pos_ == 0 && array().empty()) {
 		bool popit;
 		bool removeit;
 		cursor().par_->idxDelete(cursor().idx_, popit, removeit);
@@ -721,15 +726,12 @@ void MathCursor::interpret(string const & s)
 	}
 
 	if (p) {
-		bool oldsel = selection_;
-		if (oldsel) 
-			selCut();
+		selCut();
 		insert(p);
 		if (p->nargs()) {
 			plainLeft();
 			right();  // do not push for e.g. MathSymbolInset
-			if (oldsel) 
-				selPaste();
+			selPaste();
 		}
 		p->metrics(p->size());
 	}
@@ -776,8 +778,8 @@ void MathCursor::selCut()
 	if (selection_) {
 		theSelection.grab(*this);
 		theSelection.erase(*this);
-		selClear();
 	}
+	selClear();
 }
 
 
@@ -1282,7 +1284,7 @@ MathCursorPos MathCursor::normalAnchor() const
 	MathCursorPos normal = Anchor_[Cursor_.size() - 1];
 	if (Cursor_.size() < Anchor_.size() && !(normal < cursor())) {
 		// anchor is behind cursor -> move anchor behind the inset
-		normal.cell().next(normal.pos_);
+		++normal.pos_;
 	}
 	//lyxerr << "normalizing: from " << Anchor_[Anchor_.size() - 1] << " to "
 	//	<< normal << "\n";

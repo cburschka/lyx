@@ -465,15 +465,16 @@ void MathMatrixInset::mutate(short newtype)
 					MathGridInset::addCol(1);
 
 					// split it "nicely" on the firest relop
-					int pos1 = firstRelOp(cell(0));	
+					int pos = firstRelOp(cell(0));	
 					cell(1) = cell(0);
-					cell(0).erase(pos1, cell(0).size());
-					cell(1).erase(0, pos1);
-					int pos2 = 0;
-					cell(1).next(pos2);
-					cell(2) = cell(1);
-					cell(1).erase(pos2, cell(1).size());
-					cell(2).erase(0, pos2);
+					cell(0).erase(pos, cell(0).size());
+					cell(1).erase(0, pos);
+
+					if (cell(1).size()) {
+						cell(2) = cell(1);
+						cell(1).erase(1, cell(1).size());
+						cell(2).erase(0);
+					}
 
 					halign("rcl");
 					setType(LM_OT_EQNARRAY);

@@ -46,16 +46,6 @@ void MathArray::deep_copy(int pos1, int pos2)
 }
 
 
-bool MathArray::next(int & pos) const
-{
-	if (pos >= size() - 1)
-		return false;
-
-	++pos;
-	return true;
-}
-
-
 int MathArray::last() const
 {
 	return size() - 1;
@@ -107,7 +97,7 @@ string MathArray::getString(int & pos) const
 	MathTextCodes const fcode = getCode(pos);
 	do {
 		s += getChar(pos);
-		next(pos);
+		++pos;
 	} while (pos < size() && !isInset(pos) && getCode(pos) == fcode);
 
 	return s;
@@ -198,14 +188,14 @@ void MathArray::erase()
 void MathArray::erase(int pos)
 {
 	if (pos < size())
-		bf_.erase(bf_.begin() + pos);
+		erase(pos, pos + 1);
 }
 
 
 void MathArray::erase(int pos1, int pos2)
 {
 	for (int pos = pos1; pos < pos2; ++pos)
-		delete nextInset(pos);
+		delete bf_[pos];
 	bf_.erase(bf_.begin() + pos1, bf_.begin() + pos2);
 }
 
