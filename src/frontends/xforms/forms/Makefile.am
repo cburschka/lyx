@@ -5,7 +5,7 @@ MAINTAINERCLEANFILES += *.C *.h *.c
 EXTRA_DIST = fdfixc.sed fdfixh.sed fdfix.sh README $(SRCS)
 
 # For (forms_fwd.h, forms_gettext.h) and LString.h, respectively.
-INCLUDES = -I$(srcdir)/..  -I$(top_srcdir)/src
+INCLUDES = -I$(srcdir)/..  -I$(top_srcdir)/src -I..
 
 noinst_LTLIBRARIES = libfdesign.la
 
