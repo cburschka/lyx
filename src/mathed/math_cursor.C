@@ -30,18 +30,14 @@
 #include "formulabase.h"
 #include "math_cursor.h"
 #include "math_arrayinset.h"
-#if 0
 #include "math_bigopinset.h"
-#endif
 #include "math_symbolinset.h"
 #include "math_decorationinset.h"
 #include "math_deliminset.h"
 #include "math_dotsinset.h"
 #include "math_fracinset.h"
 #include "math_funcinset.h"
-#if 0
 #include "math_funcliminset.h"
-#endif
 #include "math_gridinset.h"
 #include "math_macro.h"
 #include "math_macroarg.h"
@@ -679,15 +675,11 @@ void MathCursor::interpret(string const & s)
 	} else {
 		switch (l->token) {
 			case LM_TK_BIGSYM:
-#if 0
 				p = new MathBigopInset(l);
-#endif
 				break;
 
 			case LM_TK_FUNCLIM:
-#if 0
 				p = new MathFuncLimInset(l);
-#endif
 				break;
 
 			case LM_TK_SYM: 

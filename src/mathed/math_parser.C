@@ -29,17 +29,13 @@
 #include "array.h"
 #include "math_inset.h"
 #include "math_arrayinset.h"
-#if 0
 #include "math_bigopinset.h"
-#endif
 #include "math_dotsinset.h"
 #include "math_decorationinset.h"
 #include "math_deliminset.h"
 #include "math_fracinset.h"
 #include "math_funcinset.h"
-#if 0
 #include "math_funcliminset.h"
-#endif
 #include "math_macro.h"
 #include "math_macrotable.h"
 #include "math_macrotemplate.h"
@@ -664,16 +660,12 @@ void mathed_parse_into(MathArray & array, unsigned flags)
 
 		case LM_TK_BIGSYM:  
 			limits = 0;
-#if 0
 			array.push_back(new MathBigopInset(yylval.l));
-#endif
 			break;
 
 		case LM_TK_FUNCLIM:
 			limits = 0;
-#if 0
 			array.push_back(new MathFuncLimInset(yylval.l));
-#endif
 			break;
 
 		case LM_TK_SYM:
