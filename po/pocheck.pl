@@ -91,9 +91,9 @@ foreach $pofilename ( @ARGV )
         $msgid_clean = lc($msgid);
         $msgstr_clean = lc($msgstr);
 
-        $msgid_clean =~ s/|.*?$//;
+        $msgid_clean =~ s/\|.*?$//;
         $msgid_clean =~ s/&([^ ])/$1/;
-        $msgstr_clean =~ s/|.*?$//;
+        $msgstr_clean =~ s/\|.*?$//;
         $msgstr_clean =~ s/&([^ ])/$1/; 
 
         $trans{$msgid_clean}{$msgstr_clean} = [ $msgid, $msgstr ];
