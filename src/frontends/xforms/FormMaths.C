@@ -149,13 +149,13 @@ extern "C" void C_FormMathsDelimCB(FL_OBJECT * ob, long data)
  
 	switch (val) {
 		case MM_OK:
-	      		form->insertDelim(ost.str());
+	      		form->insertDelim(ost.str().c_str());
 		case MM_CLOSE:
 			fl_hide_form(form->delim_->form);
 			break;
 
 		case MM_APPLY:
-			form->insertDelim(ost.str());
+			form->insertDelim(ost.str().c_str());
 			break;
 
 		/* the bmtable */

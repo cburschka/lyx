@@ -1,3 +1,4 @@
+#include <config.h>
 
 #include "math_rowst.h"
 #include "support/LAssert.h"

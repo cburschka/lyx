@@ -1,3 +1,8 @@
+2001-03-16  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* FormMaths.C (C_FormMathsDelimCB): add usual .c_str() for lyxstring
+	compatibility. 
+
 2001-03-16  Angus Leeming  <a.leeming@ic.ac.uk>
 
 	* Form_various.h: cleaned up #includes and forward declarations.
