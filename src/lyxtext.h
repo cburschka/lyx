@@ -418,8 +418,7 @@ public:
 
 	/** this calculates the specified parameters. needed when setting
 	 * the cursor and when creating a visible row */
-	void prepareToPrint(ParagraphList::iterator pit,
-	        RowList::iterator row) const;
+	void prepareToPrint(ParagraphList::iterator pit, Row & row) const;
 
 private:
 	///

@@ -1391,10 +1391,9 @@ void LyXText::charInserted()
 }
 
 
-void LyXText::prepareToPrint(ParagraphList::iterator pit,
-           RowList::iterator const rit) const
+void LyXText::prepareToPrint(ParagraphList::iterator pit, Row & row) const
 {
-	double w = rit->fill();
+	double w = row.fill();
 	double fill_hfill = 0;
 	double fill_label_hfill = 0;
 	double fill_separator = 0;
@@ -1403,9 +1402,9 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 	bool const is_rtl =
 		pit->isRightToLeftPar(bv()->buffer()->params());
 	if (is_rtl)
-		x = workWidth() > 0 ? rightMargin(*pit, *bv()->buffer(), *rit) : 0;
+		x = workWidth() > 0 ? rightMargin(*pit, *bv()->buffer(), row) : 0;
 	else
-		x = workWidth() > 0 ? leftMargin(pit, *rit) : 0;
+		x = workWidth() > 0 ? leftMargin(pit, row) : 0;
 
 	// is there a manual margin with a manual label
 	LyXLayout_ptr const & layout = pit->layout();
@@ -1413,7 +1412,7 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 	if (layout->margintype == MARGIN_MANUAL
 	    && layout->labeltype == LABEL_MANUAL) {
 		/// We might have real hfills in the label part
-		int nlh = numberOfLabelHfills(*pit, *rit);
+		int nlh = numberOfLabelHfills(*pit, row);
 
 		// A manual label par (e.g. List) has an auto-hfill
 		// between the label text and the body of the
@@ -1424,12 +1423,12 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 			++nlh;
 
 		if (nlh && !pit->getLabelWidthString().empty()) {
-			fill_label_hfill = labelFill(pit, *rit) / double(nlh);
+			fill_label_hfill = labelFill(pit, row) / double(nlh);
 		}
 	}
 
 	// are there any hfills in the row?
-	int const nh = numberOfHfills(*pit, *rit);
+	int const nh = numberOfHfills(*pit, row);
 
 	if (nh) {
 		if (w > 0)
@@ -1437,7 +1436,7 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 	// we don't have to look at the alignment if it is ALIGN_LEFT and
 	// if the row is already larger then the permitted width as then
 	// we force the LEFT_ALIGN'edness!
-	} else if (int(rit->width()) < workWidth()) {
+	} else if (int(row.width()) < workWidth()) {
 		// is it block, flushleft or flushright?
 		// set x how you need it
 		int align;
@@ -1458,8 +1457,8 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 		// Display-style insets should always be on a centred row
 		// The test on pit->size() is to catch zero-size pars, which
 		// would trigger the assert in Paragraph::getInset().
-		//inset = pit->size() ? pit->getInset(rit->pos()) : 0;
-		inset = pit->isInset(rit->pos()) ? pit->getInset(rit->pos()) : 0;
+		//inset = pit->size() ? pit->getInset(row.pos()) : 0;
+		inset = pit->isInset(row.pos()) ? pit->getInset(row.pos()) : 0;
 		if (inset && inset->display()) {
 			align = LYX_ALIGN_CENTER;
 		}
@@ -1467,10 +1466,10 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 		switch (align) {
 	    case LYX_ALIGN_BLOCK:
 		{
-			int const ns = numberOfSeparators(*pit, *rit);
+			int const ns = numberOfSeparators(*pit, row);
 			bool disp_inset = false;
-			if (rit->end() < pit->size()) {
-				InsetOld * in = pit->getInset(rit->end());
+			if (row.end() < pit->size()) {
+				InsetOld * in = pit->getInset(row.end());
 				if (in)
 					disp_inset = in->display();
 			}
@@ -1478,8 +1477,8 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 			// par, does not end in newline, and is not row above a
 			// display inset... then stretch it
 			if (ns
-				&& rit->end() < pit->size()
-				&& !pit->isNewline(rit->end())
+				&& row.end() < pit->size()
+				&& !pit->isNewline(row.end())
 				&& !disp_inset
 				) {
 					fill_separator = w / ns;
@@ -1497,10 +1496,10 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 		}
 	}
 
-	computeBidiTables(*pit, *bv()->buffer(), *rit);
+	computeBidiTables(*pit, *bv()->buffer(), row);
 	if (is_rtl) {
 		pos_type body_pos = pit->beginningOfBody();
-		pos_type last = lastPos(*pit, *rit);
+		pos_type last = lastPos(*pit, row);
 
 		if (body_pos > 0 &&
 				(body_pos - 1 > last ||
@@ -1511,10 +1510,10 @@ void LyXText::prepareToPrint(ParagraphList::iterator pit,
 		}
 	}
 
-	rit->fill_hfill(fill_hfill);
-	rit->fill_label_hfill(fill_label_hfill);
-	rit->fill_separator(fill_separator);
-	rit->x(x);
+	row.fill_hfill(fill_hfill);
+	row.fill_label_hfill(fill_label_hfill);
+	row.fill_separator(fill_separator);
+	row.x(x);
 }
 
 
@@ -2155,7 +2154,7 @@ int LyXText::redoParagraphInternal(ParagraphList::iterator pit)
 		row.width(w);
 		pit->rows.push_back(row);
 		RowList::iterator rit = boost::prior(pit->rows.end());
-		prepareToPrint(pit, rit);
+		prepareToPrint(pit, *rit);
 		setHeightOfRow(pit, *rit);
 		rit->y_offset(pit->height);
 		pit->height += rit->height();
