@@ -1,3 +1,17 @@
+1999-12-01  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* images/sqrt.xpm: change name of the sqrt icon to sqrt_xpm.
+	* src/mathed/math_panel.C (mathed_get_pixmap_from_icon): ditto
+	(create_math_panel): ditto
+
+	* src/lyxfunc.C (getStatus): re-activate the code which gets
+	current font and cursor; add test for export to html.
+
+	* src/lyxrc.C (read): remove unreachable break statements; add a
+	few "using".
+
+	* src/bmtable.C (fl_set_bmtable_data): add a const_cast.
+
 1999-12-01  Lars Gullik Bjønnes  <larsbj@lyx.org>
 
 	* src/mathed/formula.C (LocalDispatch): fix small whitspace bug

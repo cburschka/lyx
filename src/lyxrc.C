@@ -16,6 +16,9 @@
 
 #include <fstream>
 #include <iomanip>
+using std::ofstream;
+using std::cout;
+using std::ios;
 
 #include "debug.h"
 
@@ -340,9 +343,9 @@ int LyXRC::read(string const & filename)
 		switch(le) {
 		case LyXLex::LEX_UNDEF:
 			lexrc.printError("Unknown tag `$$Token'");
-			continue; break;
+			continue; 
 		case LyXLex::LEX_FEOF:
-			continue; break;
+			continue; 
 		default: break;
 		}
 		switch (static_cast<LyXRCTags>(le)) {

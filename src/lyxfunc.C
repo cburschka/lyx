@@ -374,6 +374,8 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
           case LFUN_EXPORT:
                   if (argument == "dvi" || argument == "postscript")
                           disable = noLaTeX;
+		  if (argument == "html")
+		  	  disable = lyxrc->html_command == "none";
                   break;
 	  case LFUN_UNDO:
 		  disable = buf->undostack.empty();
@@ -388,8 +390,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
 		  disable = lyxrc->chktex_command == "none";
 		  break;
 	  case LFUN_LAYOUT_TABLE:
-#warning change this and font code once it is possible to get to cursor
-		  //		  disable = ! buf->text->cursor.par->table;
+		  disable = ! buf->text->cursor.par->table;
 		  break;
 	  default:
                   break;
@@ -398,8 +399,7 @@ LyXFunc::func_status LyXFunc::getStatus(int ac) const
                 flag |= LyXFunc::Disabled;
 
 	func_status box = LyXFunc::ToggleOff;
-	//	LyXFont font = buf->text->real_current_font;
-	LyXFont font;
+	LyXFont font = buf->text->real_current_font;
 	switch (action) {
 	case LFUN_EMPH:
 		if (font.emph() == LyXFont::ON)

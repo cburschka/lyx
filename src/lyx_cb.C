@@ -1113,7 +1113,9 @@ void InsertAsciiFile(string const & f, bool asParagraph)
 	tmppar->readSimpleWholeFile(myfile);
 	
 	// set the end of the string
+#ifdef WITH_WARNINGS
 #warning why do we do this?
+#endif
 	// I don't think this is needed. Actually it might be plain wrong.
 	tmppar->InsertChar(tmppar->text.size() - 1, '\0');
 

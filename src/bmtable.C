@@ -239,7 +239,7 @@ void fl_set_bmtable_data(FL_OBJECT * ob, int nx, int ny, int bw, int bh,
      sp->maxi = sp->nx * sp->ny;
      sp->bw = bw;
      sp->bh = bh;
-     sp->bdata = bdata;
+     sp->bdata = const_cast<unsigned char *>(bdata);
    }
 }
 

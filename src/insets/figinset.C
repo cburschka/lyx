@@ -1702,7 +1702,9 @@ void InsetFig::Recompute()
 
 void InsetFig::GetPSSizes()
 {
+#ifdef WITH_WARNINGS
 #warning rewrite this method to use ifstream
+#endif
 	/* get %%BoundingBox: from postscript file */
 	char * p = 0;
 	

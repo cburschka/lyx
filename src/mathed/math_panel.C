@@ -272,7 +272,7 @@ char const ** mathed_get_pixmap_from_icon(int d)
 {
    switch (d) {
     case MM_FRAC: return frac;
-    case MM_SQRT: return sqrt;
+    case MM_SQRT: return sqrt_xpm;
     case MM_DELIM: return delim;
     case MM_MATRIX: return matrix;
     case MM_EQU: return equation; 
@@ -298,7 +298,7 @@ FD_panel * create_math_panel( )
 		       delim_bits);
    fl_set_bmtable_maxitems(fd_delim->menu, 23);
    
-   fl_set_pixmap_data(fd_panel->sqrt, const_cast<char**>(sqrt));
+   fl_set_pixmap_data(fd_panel->sqrt, const_cast<char**>(sqrt_xpm));
    fl_set_pixmap_data(fd_panel->frac, const_cast<char**>(frac));
    fl_set_pixmap_data(fd_panel->delim, const_cast<char**>(delim));
    fl_set_pixmap_data(fd_panel->deco, const_cast<char**>(deco));
