@@ -57,6 +57,8 @@ public:
 	void CancelButton();
 	///
 	void RestoreButton();
+	///
+	bool IconifyWithMain() const;
 
 	/** Allow the view to access the ButtonController. This method must be
 	    instantiated in a daughter class that creates the actual instance

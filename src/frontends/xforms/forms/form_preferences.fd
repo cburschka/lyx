@@ -938,7 +938,7 @@ argument: 0
 Name: form_lnf_misc
 Width: 450
 Height: 350
-Number of Objects: 9
+Number of Objects: 10
 
 --------------------
 class: FL_BOX
@@ -1068,6 +1068,25 @@ shortcut:
 resize: FL_RESIZE_ALL
 gravity: FL_NoGravity FL_NoGravity
 name: check_cursor_follows_scrollbar
+callback: C_FormBaseDeprecatedInputCB
+argument: 0
+	value: 1
+
+--------------------
+class: FL_CHECKBUTTON
+type: PUSH_BUTTON
+box: 15 195 30 30
+boxtype: FL_NO_BOX
+colors: FL_COL1 FL_YELLOW
+alignment: FL_ALIGN_CENTER
+style: FL_NORMAL_STYLE
+size: FL_NORMAL_SIZE
+lcol: FL_BLACK
+label: Dialogs iconify with main window|#D
+shortcut: 
+resize: FL_RESIZE_ALL
+gravity: FL_NoGravity FL_NoGravity
+name: check_dialogs_iconify_with_main
 callback: C_FormBaseDeprecatedInputCB
 argument: 0
 	value: 1

@@ -20,6 +20,7 @@
 #include "ControlButtons.h"
 #include "ButtonControllerBase.h"
 #include "ViewBase.h"
+#include "lyxrc.h"
 
 ControlButtons::ControlButtons()
 	: is_closing_(false)
@@ -54,4 +55,10 @@ void ControlButtons::RestoreButton()
 {
 	update();
 	bc().restore();
+}
+
+
+bool ControlButtons::IconifyWithMain() const
+{
+        return lyxrc.dialogs_iconify_with_main;
 }

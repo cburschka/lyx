@@ -85,8 +85,9 @@ void FormBase::show()
 			fl_set_form_maxsize(form(), minw_, minh_);
 
 		fl_show_form(form(),
-			     FL_PLACE_MOUSE | FL_FREE_SIZE, 0,
-			     title_.c_str());
+			FL_PLACE_MOUSE | FL_FREE_SIZE,
+			(controller_.IconifyWithMain() ? FL_TRANSIENT : 0),
+			title_.c_str());
 	}
 }
 

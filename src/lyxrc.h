@@ -94,6 +94,7 @@ enum LyXRCTags {
 	RC_ESC_CHARS,
 	RC_CHKTEX_COMMAND,
 	RC_CURSOR_FOLLOWS_SCROLLBAR,
+	RC_DIALOGS_ICONIFY_WITH_MAIN,
 	RC_EXIT_CONFIRMATION,
 	RC_DISPLAY_SHORTCUTS,
 	RC_MAKE_BACKUP,
@@ -335,6 +336,8 @@ enum LyXRCTags {
 	string default_language;
 	///
 	bool cursor_follows_scrollbar;
+	///
+	bool dialogs_iconify_with_main;
 	///
 	int label_init_length;
 private:

@@ -115,6 +115,7 @@ struct FD_form_lnf_misc {
 	FL_OBJECT *check_display_shrtcuts;
 	FL_OBJECT *check_ask_new_file;
 	FL_OBJECT *check_cursor_follows_scrollbar;
+	FL_OBJECT *check_dialogs_iconify_with_main;
 	FL_OBJECT *counter_wm_jump;
 	FL_OBJECT *counter_autosave;
 };

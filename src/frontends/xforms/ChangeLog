@@ -1,3 +1,19 @@
+2001-09-07  Rob Lahaye  <lahaye@users.sourceforge.net>
+
+	* FormBase.C (show): use controller_.IconifyWithMain() to control
+	the dialog's show policy
+
+	* FormBaseDeprecated.C (show): ditto, but use lyxrc variable directly.
+
+	* FormPreferences.C:
+	* forms/form_preferences.fd: add a check_dialogs_iconify_with_main
+	check button to the Look & Feel->Misc tab and code to modify the lyxrc
+	variable dialogs_iconify_with_main appropriately.
+
+2001-09-07  Angus Leeming  <a.leeming@ic.ac.uk>
+
+	* FormBase.h: clean-up comments. Remove mutable status of minw_, minh_.
+
 2001-09-06  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
 
 	* Toolbar_pimpl.C (updateLayoutList): do not display obsolete

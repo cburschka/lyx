@@ -21,6 +21,7 @@
 #include "LyXView.h"
 #include "support/LAssert.h"
 #include "xformsBC.h"
+#include "lyxrc.h"
 //#include "debug.h"
 
 using SigC::slot;
@@ -112,9 +113,11 @@ void FormBaseDeprecated::show()
 		// calls to fl_set_form_minsize/maxsize apply only to the next
 		// fl_show_form(), so connect() comes first.
 		connect();
+
 		fl_show_form(form(),
-			     FL_PLACE_MOUSE | FL_FREE_SIZE, 0,
-			     title_.c_str());
+			FL_PLACE_MOUSE | FL_FREE_SIZE,
+			(lyxrc.dialogs_iconify_with_main ? FL_TRANSIENT : 0),
+			title_.c_str());
 	}
 }
 

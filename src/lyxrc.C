@@ -65,6 +65,7 @@ keyword_item lyxrcTags[] = {
 	{ "\\date_insert_format", LyXRC::RC_DATE_INSERT_FORMAT },
 	{ "\\default_language", LyXRC::RC_DEFAULT_LANGUAGE },
 	{ "\\default_papersize", LyXRC::RC_DEFAULT_PAPERSIZE },
+	{ "\\dialogs_iconify_with_main", LyXRC::RC_DIALOGS_ICONIFY_WITH_MAIN },
 	{ "\\display_shortcuts", LyXRC::RC_DISPLAY_SHORTCUTS },
 	{ "\\document_path", LyXRC::RC_DOCUMENTPATH },
 	{ "\\escape_chars", LyXRC::RC_ESC_CHARS },
@@ -248,6 +249,7 @@ void LyXRC::setDefaults() {
 	date_insert_format = "%A, %e %B %Y";
 	show_banner = true;
 	cursor_follows_scrollbar = false;
+	dialogs_iconify_with_main = false;
 	label_init_length = 3;
 
 	/// These variables are not stored on disk (perhaps they
@@ -751,6 +753,11 @@ int LyXRC::read(string const & filename)
 				cursor_follows_scrollbar = lexrc.getBool();
 			break;
 
+		case RC_DIALOGS_ICONIFY_WITH_MAIN:
+			if (lexrc.next())
+				dialogs_iconify_with_main = lexrc.getBool();
+			break;
+
 		case RC_ASCIIROFF_COMMAND:
  			if (lexrc.next())
 				ascii_roff_command = lexrc.getString();
@@ -1116,6 +1123,12 @@ void LyXRC::output(ostream & os) const
 		    != system_lyxrc.cursor_follows_scrollbar) {
 			os << "\\cursor_follows_scrollbar "
 			   << tostr(cursor_follows_scrollbar) << "\n";
+		}
+	case RC_DIALOGS_ICONIFY_WITH_MAIN:
+		if (dialogs_iconify_with_main
+		   != system_lyxrc.dialogs_iconify_with_main) {
+			os << "\\dialogs_iconify_with_main "
+			  <<  tostr(dialogs_iconify_with_main) << "\n";
 		}
 	case RC_SCREEN_FONT_ROMAN:
 		if (roman_font_name != system_lyxrc.roman_font_name) {
@@ -1852,6 +1865,10 @@ string const LyXRC::getDescription(LyXRCTags tag)
 		
 	case RC_CURSOR_FOLLOWS_SCROLLBAR:
 		str = N_("LyX normally doesn't update the cursor position if you move the scrollbar. Set to true if you'd prefer to always have the cursor on screen.");
+		break;
+		
+	case RC_DIALOGS_ICONIFY_WITH_MAIN:
+		str = N_("Iconify the dialogs when the main window is iconified. (Affects only dialogs shown after the change has been made.)");
 		break;
 		
 	case RC_EXIT_CONFIRMATION:

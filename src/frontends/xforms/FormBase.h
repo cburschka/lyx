@@ -51,21 +51,19 @@ protected:
 private:
 	/// Pointer to the actual instantiation of xform's form
 	virtual FL_FORM * form() const = 0;
-	/** Filter the inputs on callback from xforms
-	    Return true if inputs are valid. */
+	/// Filter the inputs on callback from xforms 
 	virtual ButtonPolicy::SMInput input(FL_OBJECT *, long);
 
 	/** Redraw the form (on receipt of a Signal indicating, for example,
 	    that the xform colors have been re-mapped). */
 	virtual void redraw();
 
-	/// Overcome a dumb xforms sizing bug
-	mutable int minw_;
+	/// The dialog's minimum allowable dimensions.
+	int minw_;
 	///
-	mutable int minh_;
+	int minh_;
 	/// Can the dialog be resized after it has been created?
 	bool allow_resize_;
-
 	/// dialog title, displayed by WM.
   	string title_;
 };

@@ -402,6 +402,14 @@ FD_form_lnf_misc * FormPreferences::build_lnf_misc()
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
     fl_set_button(obj, 1);
+  {
+    char const * const dummy = N_("Dialogs iconify with main window|#D");
+    fdui->check_dialogs_iconify_with_main = obj = fl_add_checkbutton(FL_PUSH_BUTTON, 15, 195, 30, 30, idex(_(dummy)));
+    fl_set_button_shortcut(obj, scex(_(dummy)), 1);
+  }
+    fl_set_object_lsize(obj, FL_NORMAL_SIZE);
+    fl_set_object_callback(obj, C_FormBaseDeprecatedInputCB, 0);
+    fl_set_button(obj, 1);
   fdui->counter_wm_jump = obj = fl_add_counter(FL_NORMAL_COUNTER, 320, 225, 115, 30, _("Wheel mouse jump"));
     fl_set_object_lsize(obj, FL_NORMAL_SIZE);
     fl_set_object_lalign(obj, FL_ALIGN_LEFT);
