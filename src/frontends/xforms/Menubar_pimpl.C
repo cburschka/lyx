@@ -548,7 +548,7 @@ int Menubar::Pimpl::create_submenu(Window win, LyXView * view,
 				// tabs to align shortcuts.
 				do 
 					label += '\t';
-				while (string_width(label) < max_width);
+				while (string_width(label) < max_width + 5);
 				label += accel.substr(1,accel.find(']') - 1);
 			}
 			label += "%x" + tostr(item.action() + action_offset)

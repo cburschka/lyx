@@ -127,6 +127,8 @@ class MathedCursor {
     ///
     void setLastCode(MathedTextCodes t) { lastcode = t; }
     ///
+    void toggleLastCode(MathedTextCodes t);
+    ///
     MathedTextCodes getLastCode() const { return lastcode; }
     
  protected:

@@ -1030,3 +1030,11 @@ void MathedCursor::doAccent(MathedInset * p)
 	accent = 0;  // consumed!
 }
 
+
+void MathedCursor::toggleLastCode(MathedTextCodes t)
+{
+	if (lastcode == t)
+		lastcode = LM_TC_VAR;
+	else
+		lastcode = t;
+}

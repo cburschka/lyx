@@ -356,7 +356,7 @@ void Combox::input_cb(FL_OBJECT * ob, long)
 
 	char const * text = fl_get_input(ob);
 
-	combo->addto(text ? text : string());
+	combo->addto(text ? string(text) : string());
 	combo->is_empty = false;
 }
 

@@ -351,10 +351,10 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	bool explicit_userdir = true;
 	if (user_lyxdir.empty()) {
 
-	// LYX_USERDIR_11x environment variable
+		// LYX_USERDIR_11x environment variable
 		user_lyxdir = GetEnvPath("LYX_USERDIR_11x");
 
-	// default behaviour
+		// default behaviour
 		if (user_lyxdir.empty())
 			user_lyxdir = AddPath(GetEnvPath("HOME"),
 							string(".") + PACKAGE);
@@ -364,8 +364,10 @@ void LyX::init(int */*argc*/, char **argv, bool gui)
 	lyxerr[Debug::INIT] << "User LyX directory: '" 
 			    <<  user_lyxdir << '\'' << endl;
 
-	// Check that user LyX directory is ok.
-	queryUserLyXDir(explicit_userdir);
+	// Check that user LyX directory is ok. We don't do that if
+	// running in batch mode.
+	if (gui)
+		queryUserLyXDir(explicit_userdir);
 
 	//
 	// Shine up lyxrc defaults

@@ -21,6 +21,12 @@ else
     lyx=lyx 
 fi
 
+if [ -z "`grep literate-article textclass.lst`" ]
+then
+    touch listerrors
+    exit 0
+fi
+
 $lyx --export literate $dir/examples/Literate.lyx
 # if no literate support stuff is installed nothing will be output
 if [ -f $dir/examples/Literate.nw ]
@@ -31,6 +37,9 @@ else
    # you don't have noweb installed so we'll produce a dummy file
    # just so make doesn't keep trying to output it.
    touch listerrors
+   # tell the user nothing bad happened
+   echo
+   echo "LyX did not detect NoWeb support. Proceeding normally."
 fi
 
 exit 0

@@ -1,5 +1,23 @@
 2001-01-07  Dekel Tsur  <dekelts@tau.ac.il>
 
+	* lib/build-listerrors: Exit if literate-article doesn't appear in
+	textclass.lst
+
+2001-01-09  Jean-Marc Lasgouttes  <Jean-Marc.Lasgouttes@inria.fr>
+
+	* src/combox.h (getline): small fix for sun CC 6.0
+	* src/combox.C (input_cb): ditto.
+	* src/spellchecker.C (sigchldhandler): ditto.
+
+	* src/lyx_main.C (init): do not query for creation of user
+	directory when running without a GUI.
+
+2001-01-08  Dekel Tsur  <dekelts@tau.ac.il>
+
+	* src/mathed/formula.C (LocalDispatch): Toggle font properties. 
+
+2001-01-07  Dekel Tsur  <dekelts@tau.ac.il>
+
 	* BufferView2.C (open_new_inset): Added 2nd argument.
 	(getParentText, getParentLanguage): New methods.
 

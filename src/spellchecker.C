@@ -966,7 +966,9 @@ bool RunSpellChecker(BufferView * bv)
 	}
 }
 
+#ifdef WITH_WARNINGS
 #warning should go somewhere more sensible
+#endif
 void sigchldhandler(pid_t pid, int * status)
 {
 #ifndef USE_PSPELL

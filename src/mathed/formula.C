@@ -896,12 +896,12 @@ InsetFormula::LocalDispatch(BufferView * bv,
     }  
    
       //  Math fonts 
-    case LFUN_BOLD:  	mathcursor->setLastCode(LM_TC_BF); break;
-    case LFUN_SANS:  mathcursor->setLastCode( LM_TC_SF); break;
-    case LFUN_EMPH:  mathcursor->setLastCode(LM_TC_CAL); break;
-    case LFUN_ROMAN: mathcursor->setLastCode(LM_TC_RM); break;
-    case LFUN_CODE: mathcursor->setLastCode(LM_TC_TT); break;   
-    case LFUN_DEFAULT:  mathcursor->setLastCode(LM_TC_VAR ) ; break;
+    case LFUN_BOLD:  mathcursor->toggleLastCode(LM_TC_BF); break;
+    case LFUN_SANS:  mathcursor->toggleLastCode(LM_TC_SF); break;
+    case LFUN_EMPH:  mathcursor->toggleLastCode(LM_TC_CAL); break;
+    case LFUN_ROMAN: mathcursor->toggleLastCode(LM_TC_RM); break;
+    case LFUN_CODE:  mathcursor->toggleLastCode(LM_TC_TT); break;   
+    case LFUN_DEFAULT:  mathcursor->setLastCode(LM_TC_VAR); break;
     case LFUN_TEX: 
     {
 //       varcode = LM_TC_TEX;
