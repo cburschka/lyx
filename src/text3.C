@@ -258,12 +258,15 @@ void LyXText::cursorPrevious(BufferView * bv)
 
 	int new_y;
 	if (cursorrow == bv->text->cursor.row()) {
-		// we have a row which is higher than the workarea so we leave the
-		// cursor on the start of the row and move only the draw up as soon
-		// as we move the cursor or do something while inside the row (it may
-		// span several workarea-heights) we'll move to the top again, but this
-		// is better than just jump down and only display part of the row.
+		// we have a row which is taller than the workarea. The
+		// simplest solution is to move to the previous row instead.
+		cursorUp(bv, true);
+		return;
+		// This is what we used to do, so we wouldn't skip right past
+		// tall rows, but it's not working right now.
+#if 0
 		new_y = bv->text->first_y - bv->workHeight();
+#endif
 	} else {
 		if (inset_owner) {
 			new_y = bv->text->cursor.iy()
@@ -319,12 +322,15 @@ void LyXText::cursorNext(BufferView * bv)
 
 	int new_y;
 	if (cursorrow == bv->text->cursor.row()) {
-		// we have a row which is higher than the workarea so we leave the
-		// cursor on the start of the row and move only the draw down as soon
-		// as we move the cursor or do something while inside the row (it may
-		// span several workarea-heights) we'll move to the top again, but this
-		// is better than just jump down and only display part of the row.
+		// we have a row which is taller than the workarea. The
+		// simplest solution is to move to the next row instead.
+		cursorDown(bv, true);
+		return;
+		// This is what we used to do, so we wouldn't skip right past
+		// tall rows, but it's not working right now.
+#if 0
 		new_y = bv->text->first_y + bv->workHeight();
+#endif
 	} else {
 		if (inset_owner) {
 			new_y = bv->text->cursor.iy()
