@@ -75,7 +75,7 @@ Menubar::Pimpl::Pimpl(LyXView * view, MenuBackend const & mbe)
 		Menu tomenu;
 		Menu const frommenu = menubackend_.getMenu(m->submenuname());
 		menubackend_.expand(frommenu, tomenu, owner_->buffer());
-		fillMenu(createMenu(owner_->menuBar(), m), tomenu);
+		fillMenu(createMenu(owner_->menuBar(), &(*m)), tomenu);
 	}
 }
 
@@ -100,10 +100,10 @@ void Menubar::Pimpl::fillMenu(QMenuData * qmenu, Menu const & menu)
 		if (m->kind() == MenuItem::Separator) {
 			qmenu->insertSeparator();
 		} else if (m->kind() == MenuItem::Submenu) {
-			fillMenu(createMenu(qmenu, m), *m->submenu());
+			fillMenu(createMenu(qmenu, &(*m)), *m->submenu());
 		} else {
 			qmenu->insertItem(getLabel(*m).c_str(), m->action());
-			MenuItemInfo const info(qmenu, m->action(), m);
+			MenuItemInfo const info(qmenu, m->action(), &(*m));
 			items_[m->label()] = info;
 			updateItem(info);
 		}
