@@ -16,9 +16,10 @@
 
 #include "debug.h"
 
+#include <boost/bind.hpp>
+
 #include "QWorkArea.h"
 #include "QLyXKeySym.h"
-#include "funcrequest.h"
 #include "qt_helpers.h"
 
 #include <qevent.h>
@@ -82,10 +83,20 @@ mouse_button::state q_motion_state(Qt::ButtonState state)
 } // namespace anon
 
 
+SyntheticMouseEvent::SyntheticMouseEvent()
+	: timeout(200), restart_timeout(true),
+	  x_old(-1), y_old(-1), scrollbar_value_old(-1.0)
+{}
+
+
 QContentPane::QContentPane(QWorkArea * parent)
 	: QWidget(parent, "content_pane", WRepaintNoErase),
 	wa_(parent)
 {
+	synthetic_mouse_event_.timeout.timeout.connect(
+		boost::bind(&QContentPane::generateSyntheticMouseEvent,
+			    this));
+
 	setFocusPolicy(QWidget::WheelFocus);
 	setFocus();
 	setCursor(ibeamCursor);
@@ -103,6 +114,25 @@ void QContentPane::scrollBarChanged(int val)
 }
 
 
+void QContentPane::generateSyntheticMouseEvent()
+{
+	// Set things off to generate the _next_ 'pseudo' event.
+	if (synthetic_mouse_event_.restart_timeout)
+		synthetic_mouse_event_.timeout.start();
+
+	// Has anything changed on-screen since the last timeout signal
+	// was received?
+	double const scrollbar_value = wa_->scrollbar_->value();
+	if (scrollbar_value != synthetic_mouse_event_.scrollbar_value_old) {
+		// Yes it has. Store the params used to check this.
+		synthetic_mouse_event_.scrollbar_value_old = scrollbar_value;
+
+		// ... and dispatch the event to the LyX core.
+		wa_->dispatch(synthetic_mouse_event_.cmd);
+	}
+ }
+ 
+ 
 void QContentPane::mousePressEvent(QMouseEvent * e)
 {
 	if (dc_event_.active && dc_event_ == *e) {
@@ -122,6 +152,9 @@ void QContentPane::mousePressEvent(QMouseEvent * e)
 
 void QContentPane::mouseReleaseEvent(QMouseEvent * e)
 {
+	if (synthetic_mouse_event_.timeout.running())
+		synthetic_mouse_event_.timeout.stop();
+
 	FuncRequest cmd(LFUN_MOUSE_RELEASE, e->x(), e->y(),
 			q_button_state(e->button()));
 	wa_->dispatch(cmd);
@@ -130,9 +163,55 @@ void QContentPane::mouseReleaseEvent(QMouseEvent * e)
 
 void QContentPane::mouseMoveEvent(QMouseEvent * e)
 {
-	FuncRequest cmd
-		(LFUN_MOUSE_MOTION, e->x(), e->y(), q_motion_state(e->state()));
-	wa_->dispatch(cmd);
+ 	FuncRequest const cmd(LFUN_MOUSE_MOTION, e->x(), e->y(),
+ 			      q_motion_state(e->state()));
+
+	// If we're above or below the work area...
+	if (e->y() <= 0 || e->y() >= height()) {
+		// Store the event, to be handled when the timeout expires.
+		synthetic_mouse_event_.cmd = cmd;
+
+		if (synthetic_mouse_event_.timeout.running()) {
+			// Discard the event. Note that it _may_ be handled
+			// when the timeout expires if
+			// synthetic_mouse_event_.cmd has not been overwritten.
+			// Ie, when the timeout expires, we handle the
+			// most recent event but discard all others that
+			// occurred after the one used to start the timeout
+			// in the first place.
+			return;
+		} else {
+			synthetic_mouse_event_.restart_timeout = true;
+			synthetic_mouse_event_.timeout.start();
+			// Fall through to handle this event...
+		}
+
+	} else if (synthetic_mouse_event_.timeout.running()) {
+		// Store the event, to be possibly handled when the timeout
+		// expires.
+		// Once the timeout has expired, normal control is returned
+		// to mouseMoveEvent (restart_timeout = false).
+		// This results in a much smoother 'feel' when moving the
+		// mouse back into the work area.
+		synthetic_mouse_event_.cmd = cmd;
+		synthetic_mouse_event_.restart_timeout = false;
+		return;
+	}
+
+	// Has anything changed on-screen since the last QMouseEvent
+	// was received?
+	double const scrollbar_value = wa_->scrollbar_->value();
+	if (e->x() != synthetic_mouse_event_.x_old ||
+	    e->y() != synthetic_mouse_event_.y_old ||
+	    scrollbar_value != synthetic_mouse_event_.scrollbar_value_old) {
+		// Yes it has. Store the params used to check this.
+		synthetic_mouse_event_.x_old = e->x();
+		synthetic_mouse_event_.y_old = e->y();
+		synthetic_mouse_event_.scrollbar_value_old = scrollbar_value;
+
+		// ... and dispatch the event to the LyX core.
+		wa_->dispatch(cmd);
+	}
 }
 
 
