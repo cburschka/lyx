@@ -156,6 +156,7 @@ void QCitationDialog::slotAddClicked()
 	int const n = int(form_->citekeys.size());
 	citeLB->setSelected(n - 1, true);
 
+	slotBibHighlighted(sel);
 	form_->setBibButtons(QCitation::OFF);
 	form_->setCiteButtons(QCitation::ON);
 	form_->changed();
@@ -265,23 +266,22 @@ void QCitationDialog::doFind(biblio::Direction dir)
 
 	vector<string>::const_iterator cit =
 		biblio::searchKeys(theMap, form_->bibkeys, str,
-			start, type, dir, caseSensitive);
+				   start, type, dir, caseSensitive);
 
-	// FIXME: should work ...
+	// not found. let's loop round
 	if (cit == form_->bibkeys.end()) {
-		// not found. let's loop round
-		if (dir == biblio::FORWARD)
+		if (dir == biblio::FORWARD) {
 			start = form_->bibkeys.begin();
-		else
-			start = form_->bibkeys.end();
+		}
+		else start = form_->bibkeys.end() - 1;
 
 		cit = biblio::searchKeys(theMap, form_->bibkeys, str,
-			start, type, dir, caseSensitive);
+					 start, type, dir, caseSensitive);
 
 		if (cit == form_->bibkeys.end())
 			return;
 	}
-
+	
 	int const found = int(cit - form_->bibkeys.begin());
 	if (found == sel) {
 		return;
