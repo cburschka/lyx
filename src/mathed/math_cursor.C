@@ -30,7 +30,7 @@
 #include "formulabase.h"
 #include "math_cursor.h"
 #include "math_arrayinset.h"
-#include "math_bigopinset.h"
+#include "math_symbolinset.h"
 #include "math_decorationinset.h"
 #include "math_deliminset.h"
 #include "math_dotsinset.h"
@@ -668,7 +668,7 @@ void MathCursor::interpret(string const & s)
 			case LM_TK_SYM: 
 			case LM_TK_BIGSYM: 
 			case LM_TK_FUNCLIM:
-				p = new MathBigopInset(l);
+				p = new MathSymbolInset(l);
 				break;
 
 			case LM_TK_STACK:
@@ -712,7 +712,7 @@ void MathCursor::interpret(string const & s)
 		insert(p);
 		if (p->nargs()) {
 			plainLeft();
-			right();  // do not push for e.g. MathBigopInset
+			right();  // do not push for e.g. MathSymbolInset
 			if (oldsel) 
 				selPaste();
 		}

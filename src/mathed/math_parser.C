@@ -29,7 +29,7 @@
 #include "array.h"
 #include "math_inset.h"
 #include "math_arrayinset.h"
-#include "math_bigopinset.h"
+#include "math_symbolinset.h"
 #include "math_dotsinset.h"
 #include "math_decorationinset.h"
 #include "math_deliminset.h"
@@ -644,7 +644,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 		case LM_TK_SYM:
 		case LM_TK_FUNCLIM:
 			limits = 0;
-			array.push_back(new MathBigopInset(yylval.l));
+			array.push_back(new MathSymbolInset(yylval.l));
 			break;
 
 		case LM_TK_BOP:
@@ -748,7 +748,7 @@ void mathed_parse(MathArray & array, unsigned flags)
 			break;
 		
 		case LM_TK_FUNC:
-			array.push_back(new MathFuncInset(yylval.l->name));
+			array.push_back(new MathSymbolInset(yylval.l));
 			break;
 		
 		case LM_TK_UNDEF: 

@@ -1,16 +1,16 @@
 // -*- C++ -*-
-#ifndef MATH_BIGOPINSET_H
-#define MATH_BIGOPINSET_H
+#ifndef MATH_SYMBOLINSET_H
+#define MATH_SYMBOLINSET_H
 
 #include "math_inset.h"
 
 struct latexkeys;
 
 /// big operators
-class MathBigopInset : public MathInset {
+class MathSymbolInset : public MathInset {
 public:
 	///
-	explicit MathBigopInset(latexkeys const *);
+	explicit MathSymbolInset(latexkeys const *);
 	///
 	MathInset * clone() const;
 	///

@@ -177,7 +177,7 @@ latexkeys const wordlist[] =
 	{"neq",  LM_TK_SYM, LM_neq, LMB_RELATION},
 	{"newcommand",  LM_TK_NEWCOMMAND, 0 , LMB_NONE},
 	{"ni",  LM_TK_SYM, LM_ni, LMB_RELATION},
-	{"nolimits",  LM_TK_LIMIT, -1, LMB_NONE},
+	{"nolimits",  LM_TK_LIMIT, static_cast<unsigned>(-1), LMB_NONE},
 	{"nonumber",  LM_TK_NONUM, 0, LMB_NONE},
 	{"not",  LM_TK_DECORATION, LM_not, LMB_NONE},
 	{"notin",  LM_TK_MACRO, LM_notin, LMB_RELATION},

@@ -20,8 +20,6 @@ libmathed_la_SOURCES = \
 	formulamacro.h \
 	math_arrayinset.C \
 	math_arrayinset.h \
-	math_bigopinset.C \
-	math_bigopinset.h \
 	math_cursor.C \
 	math_cursor.h \
 	math_decorationinset.C \
@@ -62,6 +60,8 @@ libmathed_la_SOURCES = \
 	math_spaceinset.h \
 	math_sqrtinset.C \
 	math_sqrtinset.h \
+	math_symbolinset.C \
+	math_symbolinset.h \
 	support.C \
 	support.h \
 	symbol_def.h

@@ -1,34 +1,34 @@
-#include "math_bigopinset.h"
+#include "math_symbolinset.h"
 #include "mathed/math_parser.h"
 #include "support/LOstream.h"
 
 
 using std::ostream;
 
-MathBigopInset::MathBigopInset(const latexkeys * l)
+MathSymbolInset::MathSymbolInset(const latexkeys * l)
 	: sym_(l)
 {}
 
 
-MathInset * MathBigopInset::clone() const
+MathInset * MathSymbolInset::clone() const
 {
-	return new MathBigopInset(*this);
+	return new MathSymbolInset(*this);
 }
 
 
-void MathBigopInset::write(ostream & os, bool /* fragile */) const
+void MathSymbolInset::write(ostream & os, bool /* fragile */) const
 {
 	os << '\\' << sym_->name << ' ';
 }
 
 
-void MathBigopInset::writeNormal(ostream & os) const
+void MathSymbolInset::writeNormal(ostream & os) const
 {
 	os << "[bigop " << sym_->name << "] ";
 }
 
 
-void MathBigopInset::metrics(MathStyles st)
+void MathSymbolInset::metrics(MathStyles st)
 {
 	size(st);
 	
@@ -45,7 +45,7 @@ void MathBigopInset::metrics(MathStyles st)
 }
 
 
-void MathBigopInset::draw(Painter & pain, int x, int y)
+void MathSymbolInset::draw(Painter & pain, int x, int y)
 {  
 	xo(x);
 	yo(y);
