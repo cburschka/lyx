@@ -129,6 +129,7 @@ key_type wordlist_array[] =
 	{"rm",  "oldfont", ""},
 	{"scriptscriptstyle",  "style", ""},
 	{"scriptstyle",  "style", ""},
+	{"text",    "font", "mathtext"},
 	{"textbf",  "font", "mathtext"},
 	{"textit",  "font", "mathtext"},
 	{"textmd",  "font", "mathtext"},
