@@ -1,3 +1,15 @@
+2002-04-04  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lib/languages: add basque (from Dooteo)
+
+2002-04-02  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* config/lyxinclude.m4 (LYX_WITH_SIGC): fix typo
+
+2002-03-28  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
+
+	* lib/layouts/kluwer.layout: remove TocDepth directive
+
 2002-03-15  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
 	* src/insets/insettext.C (InsetButtonPress): fix crash when

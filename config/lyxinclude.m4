@@ -807,7 +807,7 @@ else
   # of libsigc++.  A tarball distribution doesn't have everything in it that we
   # need.
   # We need both these -I entries to build when builddir != srcdir
-  if test "x$src_dir" = "x." ; then
+  if test "x$srcdir" = "x." ; then
     SIGC_CFLAGS="-I\${top_srcdir}"
   else
     SIGC_CFLAGS="-I\${top_builddir} -I\${top_srcdir}"
