@@ -108,6 +108,8 @@ int InsetFormulaMacro::docBook(ostream & os) const
 void InsetFormulaMacro::read(LyXLex & lex)
 {
 	MathMacroTemplate * t = mathed_parse_macro(lex);
+	if (!t) 
+		t = new MathMacroTemplate("{parse error}", 0);
 	MathMacroTable::insertTemplate(*t);
 	setInsetName(t->name());
 	delete t;
