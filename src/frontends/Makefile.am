@@ -19,7 +19,6 @@ libfrontends_la_SOURCES = \
 	Alert_pimpl.h \
 	Dialogs.C \
 	Dialogs.h \
-	DialogBase.h \
 	FileDialog.h \
 	Liason.C \
 	Liason.h \
@@ -41,6 +40,7 @@ libfrontends_la_SOURCES = \
 	WorkAreaFactory.h \
 	font_metrics.h \
 	guiapi.h \
+	guiapi.C \
 	key_state.h \
 	lyx_gui.h \
 	mouse_state.h \
