@@ -217,6 +217,35 @@ Buffer * BufferList::getBuffer(unsigned int choice)
 }
 
 
+Buffer * BufferList::next(Buffer const * buf) const 
+{
+	if (bstore.empty())
+		return 0;
+	BufferStorage::const_iterator it = find(bstore.begin(), 
+						bstore.end(), buf);
+	BOOST_ASSERT(it != bstore.end());
+	++it;
+	if (it == bstore.end())
+		return bstore.front();
+	else
+		return *it;
+}
+
+
+Buffer * BufferList::previous(Buffer const * buf) const 
+{
+	if (bstore.empty())
+		return 0;
+	BufferStorage::const_iterator it = find(bstore.begin(), 
+						bstore.end(), buf);
+	BOOST_ASSERT(it != bstore.end());
+	if (it == bstore.begin())
+		return bstore.back();
+	else
+		return *(it - 1);
+}
+
+
 void BufferList::updateIncludedTeXfiles(string const & mastertmpdir,
 					OutputParams const & runparams)
 {

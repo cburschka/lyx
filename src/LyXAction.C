@@ -337,6 +337,8 @@ void LyXAction::init()
 		{ LFUN_BUFFERPARAMS_APPLY, "buffer-params-apply", Noop },
 		{ LFUN_LYXRC_APPLY, "lyxrc-apply", NoBuffer },
 		{ LFUN_INSET_REFRESH, "", Noop },
+		{ LFUN_NEXTBUFFER, "buffer-next", ReadOnly },
+		{ LFUN_PREVIOUSBUFFER, "buffer-previous", ReadOnly },
 		{ LFUN_NOACTION, "", Noop }
 	};
 

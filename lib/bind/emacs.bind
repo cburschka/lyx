@@ -101,6 +101,8 @@
 #\bind "C-x C-r"                "buffer-update dvi"
 \bind "C-x C-s"                "buffer-write"
 \bind "C-x C-t"                "buffer-update dvi"
+\bind "C-Next"		       "buffer-next"
+\bind "C-Prior"		       "buffer-previous"
 
 
 # this is "upcase-region" in emacs

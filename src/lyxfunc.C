@@ -503,6 +503,8 @@ FuncStatus LyXFunc::getStatus(FuncRequest const & cmd) const
 	case LFUN_SAVE_AS_DEFAULT:
 	case LFUN_BUFFERPARAMS_APPLY:
 	case LFUN_LYXRC_APPLY:
+	case LFUN_NEXTBUFFER:
+	case LFUN_PREVIOUSBUFFER:
 		// these are handled in our dispatch()
 		break;
 
@@ -956,6 +958,14 @@ void LyXFunc::dispatch(FuncRequest const & cmd, bool verbose)
 		// --- buffers ----------------------------------------
 		case LFUN_SWITCHBUFFER:
 			view()->setBuffer(bufferlist.getBuffer(argument));
+			break;
+
+		case LFUN_NEXTBUFFER:
+			view()->setBuffer(bufferlist.next(view()->buffer()));
+			break;
+
+		case LFUN_PREVIOUSBUFFER:
+			view()->setBuffer(bufferlist.previous(view()->buffer()));
 			break;
 
 		case LFUN_FILE_NEW:

@@ -111,6 +111,8 @@
 \bind "C-x C-t"                "buffer-update dvi"
 \bind "C-x C-u"			"word-upcase"		# upcase-region!
 \bind "C-x C-w"                "buffer-write-as"
+\bind "C-Next"		       "buffer-next"
+\bind "C-Prior"		       "buffer-previous"
 
 #bind "C-1"                    "------"
 #bind "C-2"                    "------"

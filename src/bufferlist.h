@@ -71,6 +71,18 @@ public:
 	/// returns a pointer to the buffer whose temppath matches the string
 	Buffer * BufferList::getBufferFromTmp(std::string const &);
 
+	/** returns a pointer to the buffer that follows argument in
+	 * buffer list. The buffer following the last in list is the
+	 * first one.
+	 */
+	Buffer * next(Buffer const *) const;
+
+	/** returns a pointer to the buffer that precedes argument in
+	 * buffer list. The buffer preceding the first in list is the
+	 * last one.
+	 */
+	Buffer * previous(Buffer const *) const;
+
 	/// reset current author for all buffers
 	void setCurrentAuthor(std::string const & name, std::string const & email);
 

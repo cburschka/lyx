@@ -49,6 +49,8 @@
 \bind "C-S-D"			"buffer-update dvi"	# 'd' for dvi
 \bind "C-S-T"			"buffer-update ps"
 \bind "C-q"			"lyx-quit"
+\bind "C-Next"			"buffer-next"
+\bind "C-Prior"			"buffer-previous"
 
 \bind "C-b"			"font-bold"
 \bind "C-e"			"font-emph"
@@ -85,8 +87,10 @@
 \bind "F2"			"buffer-write"
 \bind "F3"			"file-open"
 \bind "C-F4"			"buffer-close"
-\bind "F5"			"screen-recenter"
 \bind "M-F4"			"lyx-quit"
+\bind "F5"			"screen-recenter"
+\bind "C-F6"			"buffer-next"
+\bind "C-S-F6"			"buffer-previous"
 \bind "F7"			"dialog-show spellchecker"
 \bind "S-F7"			"thesaurus-entry"
 
