@@ -1,5 +1,7 @@
 2002-02-08  Jean-Marc Lasgouttes  <lasgouttes@freesurf.fr>
 
+	* FileInfo.h: remove special cygwin code.
+
 	* filetools.C (do_popen): use os::read_mode().
 
 	* os_win32.C (read_mode): 

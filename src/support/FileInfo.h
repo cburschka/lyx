@@ -24,11 +24,6 @@
 #include <boost/utility.hpp>
 #include "LString.h"
 
-#if defined(__CYGWIN__) //Cygwin has it's own concept of X_OK ???
-#undef X_OK
-#define X_OK 1
-#endif
-
 /** Use objects of this class to get information about files.
  *
  * Users must make sure to check fi.isOK() before any operations
