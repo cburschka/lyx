@@ -1,4 +1,3 @@
-// -*- C++ -*-
 /**
  * \file XMiniBuffer.C
  * This file is part of LyX, the document processor.
