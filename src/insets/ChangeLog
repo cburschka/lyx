@@ -3,6 +3,8 @@
 
 	* insettext.[Ch] (cx, cy): remove
 
+	* insettext.[Ch] (dispatch): move most of it to LyXText::dispatch
+
 2003-11-13  André Pönitz  <poenitz@gmx.net>
 
 	* inset.h: 
