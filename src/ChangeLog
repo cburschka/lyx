@@ -1,3 +1,13 @@
+2004-08-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	* MenuBackend.C (Menu::operator[]): new method to access
+	individual menu items
+	(Menu::hasFunc): new method. search for an item that corresponds
+	to a given func
+	(MenuBackend::specialMenu): new method
+	(MenuBackend::expand): if a special menu has been set, skip
+	entries whose func() appears in this menu
+
 2004-08-14  Lars Gullik Bjonnes  <larsbj@lyx.org>
 
 	* text3.C: use Debug::DEBUG a bit more
@@ -22,11 +32,11 @@
 
 	* coordcache.[Ch]:
 	* Makefile.am: new files to accomodate an 'external' (x,y)-position
-    cache for all insets in (at least partially) visible (top-level)
-	  paragraphs.
-
-  * BufferView_pimpl.C: reset external coord cache before every update.
-	  This means the coord cache only contains valid entries.
+	cache for all insets in (at least partially) visible (top-level)
+	paragraphs.
+	
+	* BufferView_pimpl.C: reset external coord cache before every update.
+	This means the coord cache only contains valid entries.
 
 2004-08-14  Lars Gullik Bjonnes  <larsbj@lyx.org>
 

@@ -22,14 +22,13 @@
 #include <qmenubar.h>
 #include <qcursor.h>
 
-
 using std::pair;
 using std::string;
 
 namespace lyx {
 namespace frontend {
 
-QLMenubar::QLMenubar(LyXView * view, MenuBackend const & mbe)
+QLMenubar::QLMenubar(LyXView * view, MenuBackend & mbe)
 	: owner_(static_cast<QtView*>(view)), menubackend_(mbe)
 #ifdef Q_WS_MACX
 	, menubar_(new QMenuBar)
@@ -41,18 +40,14 @@ QLMenubar::QLMenubar(LyXView * view, MenuBackend const & mbe)
 		pair<int, QLPopupMenu *> menu =
 			createMenu(menuBar(), &(*m), this, true);
 		name_map_[m->submenuname()] = menu.second;
-#ifdef Q_WS_MACX
-		/* The qt/mac menu code has a very silly hack that
-		   moves some menu entries that it recognizes by name
-		   (ex: "Preferences...") to the "LyX" menu. This
-		   feature can only work if the menu entries are
-		   always available. Since we build menus on demand,
-		   we have to have a reasonable default value before
-		   the menus have been explicitely opened. (JMarc)
-		*/
-		menu.second->showing();
-#endif
 	}
+#ifdef Q_WS_MACX
+	// this is the name of the menu that contains our special entries
+	menubackend_.specialMenu("LyX");
+	// make sure that the special entries are added to the first
+	// menu even before this menu has been opened.
+	name_map_[mbe.getMenubar().begin()->submenuname()]->showing();
+#endif
 }
 
 void QLMenubar::openByName(string const & name)

@@ -57,6 +57,11 @@ string const getLabel(MenuItem const & mi)
 	return label;
 }
 
+#ifdef Q_WS_MACX
+// The offset added to the special Mac menu entries
+const int indexOffset = 5000;
+#endif
+
 } // namespace anon
 
 
@@ -84,7 +89,13 @@ QLPopupMenu::QLPopupMenu(QLMenubar * owner,
 void QLPopupMenu::fire(int index)
 {
 	qApp->processEvents();
-	owner_->view()->activated(funcs_[index]);
+#ifdef Q_WS_MACX
+	if (index >= indexOffset) {
+		MenuItem mi = owner_->backend().getMenu("LyX")[index - indexOffset];
+		owner_->view()->activated(mi.func());
+	} else
+#endif
+		owner_->view()->activated(funcs_[index]);
 }
 
 
@@ -101,7 +112,7 @@ void QLPopupMenu::populate(Menu * menu)
 			pair<int, QLPopupMenu *> res = createMenu(this, &(*m), owner_);
 			setItemEnabled(res.first, m->status().enabled());
 			res.second->populate(m->submenu());
-		} else {
+		} else { // we have a MenuItem::Command
 			FuncStatus const status = m->status();
 
 			Funcs::iterator fit =
@@ -131,6 +142,8 @@ void QLPopupMenu::populate(Menu * menu)
 				label += '\t' + toqstr(binding);
 			}
 #endif
+
+			// Actually insert the menu item
 			insertItem(label, index);
 			setItemEnabled(index, status.enabled());
 			setItemChecked(index, status.onoff(true));
@@ -146,6 +159,24 @@ void QLPopupMenu::showing()
 	Menu const frommenu = owner_->backend().getMenu(name_);
 	owner_->backend().expand(frommenu, tomenu, owner_->view());
 	populate(&tomenu);
+#ifdef Q_WS_MACX
+	/* The qt/mac menu code has a very silly hack that
+	   moves some menu entries that it recognizes by name
+	   (e.g. "Preferences...") to the "LyX" menu. This
+	   feature can only work if the menu entries are
+	   always available. Since we build menus on demand,
+	   we add some dummy contents to one of the menus (JMarc)
+	*/
+	static QLPopupMenu * themenu = this;
+	if (themenu == this && owner_->backend().hasMenu("LyX")) {
+		Menu special = owner_->backend().getMenu("LyX");
+		Menu::const_iterator end = special.end();
+		Menu::size_type i = 0;
+		for (Menu::const_iterator cit = special.begin();
+		     cit != end ; ++cit, ++i)
+			insertItem(toqstr(cit->label()), indexOffset + i);
+	}
+#endif
 }
 
 } // namespace frontend

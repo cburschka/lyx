@@ -152,7 +152,6 @@ namespace lyx_gui {
 
 bool use_gui = true;
 
-
 void parse_init(int & argc, char * argv[])
 {
 	static LQApplication app(argc, argv);
@@ -173,6 +172,23 @@ void parse_init(int & argc, char * argv[])
 		lyxerr[Debug::GUI]
 			<< "Could not find  Qt translations for locale "
 			<< QTextCodec::locale() << std::endl;
+#endif
+
+#ifdef Q_WS_MACX
+	// These translations are meant to break Qt/Mac menu merging
+	// algorithm on some entries. It lists the menu names that
+	// should not be moved to the LyX menu
+	static QTranslator aqua_trans(0);
+	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Setting", 0, 
+					     "do_not_merge_me"));
+	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Config", 0, 
+					     "do_not_merge_me"));
+	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Options", 0, 
+					     "do_not_merge_me"));
+	aqua_trans.insert(QTranslatorMessage("QMenuBar", "Setup", 0, 
+					     "do_not_merge_me"));
+
+	app.installTranslator(&aqua_trans);
 #endif
 
 	using namespace lyx::graphics;

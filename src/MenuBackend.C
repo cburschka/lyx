@@ -357,6 +357,20 @@ Menu & Menu::read(LyXLex & lex)
 }
 
 
+MenuItem const & Menu::operator[](size_type i) const
+{
+	return items_[i];
+}
+
+
+bool Menu::hasFunc(FuncRequest const & func) const
+{
+	return find_if(begin(), end(),
+		       bind(std::equal_to<FuncRequest>(),
+			    bind(&MenuItem::func, _1),
+			    func)) != end();
+}
+
 void Menu::checkShortcuts() const
 {
 	// This is a quadratic algorithm, but we do not care because
@@ -380,6 +394,13 @@ void Menu::checkShortcuts() const
 			}
 		}
 	}
+}
+
+
+void MenuBackend::specialMenu(string const &name)
+{
+	if (hasMenu(name)) 
+		specialmenu_ = &getMenu(name);
 }
 
 
@@ -775,8 +796,14 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 		}
 		break;
 
-		default:
+		case MenuItem::Separator:
 			tomenu.add(*cit, view);
+			break;
+
+		case MenuItem::Command:
+			if (!specialmenu_ 
+			    || !specialmenu_->hasFunc(cit->func()))
+				tomenu.add(*cit, view);
 		}
 	}
 
@@ -787,27 +814,6 @@ void MenuBackend::expand(Menu const & frommenu, Menu & tomenu,
 
 	// Check whether the shortcuts are unique
 	tomenu.checkShortcuts();
-}
-
-
-bool Menu::hasSubmenu(string const & name) const
-{
-#if 1
-	return find_if(begin(), end(),
-		       bind(std::equal_to<string>(),
-			    bind(&MenuItem::submenuname, _1),
-			    name)) != end();
-#else
-	// I would have prefered this, but I am not sure if it
-	// makes a difference. (Lgb)
-	return find_if(
-		make_transform_iterator(begin(),
-					bind(&MenuItem::submenuname, _1)),
-		make_transform_iterator(end(),
-					bind(&MenuItem::submenuname, _1)),
-		name
-		).base() != end();
-#endif
 }
 
 

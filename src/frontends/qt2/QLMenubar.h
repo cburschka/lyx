@@ -29,7 +29,7 @@ class QtView;
 
 class QLMenubar : public Menubar {
 public:
-	QLMenubar(LyXView *, MenuBackend const &);
+	QLMenubar(LyXView *, MenuBackend &);
 
 	/// opens a top-level submenu given its name
 	void openByName(std::string const &);
@@ -47,7 +47,7 @@ private:
 	QtView * owner_;
 
 	/// menu controller
-	MenuBackend const & menubackend_;
+	MenuBackend & menubackend_;
 
 	typedef std::map<std::string, QLPopupMenu *> NameMap;
 

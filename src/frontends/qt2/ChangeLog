@@ -1,3 +1,20 @@
+2004-08-11  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
+
+	Fix problem with the menu merging functionality of Qt/Mac. All the
+	code below is #ifdef Q_WS_MACX.
+	
+	* QLPopupMenu.C (showing): append dummy entries to one menu (so that
+	Qt/Mac moves them to the LyX menu) and give them special index value.
+	(fire): if index is more than indexOffset, dispatch to the
+	corresponding entry from the "LyX" menu.
+
+	* lyx_gui.C (parse_init): add a new translator whose sole purpose
+	is to hide some menu entries from Qt/Mac scrutiny and avoid some
+	menu merging.
+
+	* QLMenubar.C (QLMenubar): Use "LyX" as special menu; initialize
+	the contents of the first menu in the menubar
+
 2004-08-14  Jean-Marc Lasgouttes  <lasgouttes@lyx.org>
 
 	* QPrefsDialog.C (change_color): 

@@ -407,6 +407,16 @@ Menuset
 		Item "About LyX|X" "dialog-show aboutlyx"
 	End
 
+#
+#  LYX MENU - this menu is only used by LyX/Mac
+#
+
+	Menu "LyX"
+		Item "About LyX" "dialog-show aboutlyx"
+		Item "Preferences..." "dialog-show prefs"
+		Item "Quit LyX" "lyx-quit"
+	End
+
 End
 
 # Which toolbars to use.

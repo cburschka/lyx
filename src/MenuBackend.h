@@ -156,7 +156,9 @@ public:
 	///
 	ItemList::size_type size() const { return items_.size(); }
 	///
-	bool hasSubmenu(std::string const &) const;
+	MenuItem const & operator[](size_type) const;
+	///
+	bool hasFunc(FuncRequest const &) const;
 	///
 	const_iterator begin() const {
 		return items_.begin();
@@ -188,6 +190,8 @@ public:
 	///
 	typedef MenuList::iterator iterator;
 	///
+	MenuBackend::MenuBackend() : specialmenu_(0) {}
+	///
 	void read(LyXLex &);
 	///
 	void add(Menu const &);
@@ -201,6 +205,11 @@ public:
 	Menu const & getMenubar() const;
 	///
 	bool empty() const { return menulist_.empty(); }
+	/** This defines a menu whose entries list the FuncRequests
+	    will be removed by expand() in other menus. This is used by
+	    the Qt/Mac code
+	*/
+	void specialMenu(std::string const &);
 	/// Expands some special entries of the menu
 	/** The entries with the following kind are expanded to a
 	    sequence of Command MenuItems: Lastfiles, Documents,
@@ -229,6 +238,8 @@ private:
 	MenuList menulist_;
 	///
 	Menu menubar_;
+	///
+	Menu * specialmenu_;
 };
 
 ///
